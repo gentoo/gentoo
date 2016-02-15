@@ -7,7 +7,7 @@ EAPI=5
 PYTHON_COMPAT=( python{2_7,3_4,3_5} )
 
 MY_PN="curator"
-ES_VERSION="1.7.3"
+ES_VERSION="2.2.0"
 
 inherit distutils-r1
 
@@ -23,7 +23,7 @@ IUSE="doc test"
 
 RDEPEND="
 	>=dev-python/elasticsearch-py-1.8.0[${PYTHON_USEDEP}]
-	<dev-python/elasticsearch-py-2.1.0[${PYTHON_USEDEP}]
+	<dev-python/elasticsearch-py-2.4.0[${PYTHON_USEDEP}]
 	>=dev-python/click-3.3[${PYTHON_USEDEP}]
 	dev-python/certifi[${PYTHON_USEDEP}]
 	>=dev-python/urllib3-1.8.3[${PYTHON_USEDEP}]"
@@ -46,12 +46,15 @@ python_test() {
 	PID="${ES}/elasticsearch.pid"
 
 	# run Elasticsearch instance on custom port
-	sed -i "s/#http.port: 9200/http.port: ${ES_PORT}/g; \
-		s/#cluster.name: elasticsearch/cluster.name: gentoo-es-curator-test/g" \
+	sed -i "s/# http.port: 9200/http.port: ${ES_PORT}/g; \
+		s/# cluster.name: my-application/cluster.name: gentoo-es-curator-test/g" \
 		${ES}/config/elasticsearch.yml
 
 	# Elasticsearch 1.6+ needs to set path.repo
-	echo "path.repo: /" >> ${ES}/config/elasticsearch.yml
+	grep -q "^path.repo" "${ES}/config/elasticsearch.yml"
+	if [ $? -ne 0 ]; then
+		echo "path.repo: /" >> "${ES}/config/elasticsearch.yml"
+	fi
 
 	# start local instance of elasticsearch
 	${ES}/bin/elasticsearch -d -p ${PID}
