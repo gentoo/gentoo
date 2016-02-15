@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
+EAPI=6
 
 # Subslot: libavutil major.libavcodec major.libavformat major
 # Since FFmpeg ships several libraries, subslot is kind of limited here.
@@ -17,7 +17,7 @@ FFMPEG_SUBSLOT=55.57.57
 
 SCM=""
 if [ "${PV#9999}" != "${PV}" ] ; then
-	SCM="git-2"
+	SCM="git-r3"
 	EGIT_REPO_URI="git://source.ffmpeg.org/ffmpeg.git"
 fi
 
@@ -301,7 +301,7 @@ src_prepare() {
 	if [[ "${PV%_p*}" != "${PV}" ]] ; then # Snapshot
 		export revision=git-N-${FFMPEG_REVISION}
 	fi
-	epatch_user
+	default
 }
 
 multilib_src_configure() {
@@ -414,6 +414,7 @@ multilib_src_configure() {
 		--prefix="${EPREFIX}/usr" \
 		--libdir="${EPREFIX}/usr/$(get_libdir)" \
 		--shlibdir="${EPREFIX}/usr/$(get_libdir)" \
+		--docdir="${EPREFIX}/usr/share/doc/${PF}/html" \
 		--mandir="${EPREFIX}/usr/share/man" \
 		--enable-shared \
 		--cc="$(tc-getCC)" \
@@ -453,7 +454,6 @@ multilib_src_install() {
 multilib_src_install_all() {
 	dodoc Changelog README.md CREDITS doc/*.txt doc/APIchanges
 	[ -f "RELEASE_NOTES" ] && dodoc "RELEASE_NOTES"
-	use doc && dohtml -r doc/*
 	if use examples ; then
 		dodoc -r doc/examples
 		docompress -x /usr/share/doc/${PF}/examples
