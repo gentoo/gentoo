@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -10,7 +10,7 @@ inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="Fast, efficient Java serialization and cloning"
 HOMEPAGE="https://github.com/EsotericSoftware/kryo"
-SRC_URI="https://${PN}.googlecode.com/files/${P}.zip"
+SRC_URI="https://github.com/EsotericSoftware/${PN}/archive/${P}.zip"
 
 LICENSE="BSD-2"
 SLOT="2"
@@ -18,20 +18,26 @@ KEYWORDS="~amd64 ~x86"
 
 IUSE=""
 
-CDEPEND="dev-java/objenesis:0
+CDEPEND="
+	dev-java/objenesis:0
 	dev-java/reflectasm:0
 	dev-java/minlog:0"
 
-DEPEND="${CDEPEND}
-	test? ( dev-java/junit:4 )
-	>=virtual/jdk-1.5"
-RDEPEND="${CDEPEND}
-	>=virtual/jre-1.5"
+DEPEND="
+	${CDEPEND}
+	test? (
+		dev-java/junit:4
+	)
+	>=virtual/jdk-1.6"
 
-S="${WORKDIR}/${P}/java"
+RDEPEND="
+	${CDEPEND}
+	>=virtual/jre-1.6"
 
-JAVA_GENTOO_CLASSPATH="objenesis,reflectasm,minlog"
+S="${WORKDIR}/${PN}-${P}"
+
 JAVA_SRC_DIR="src"
+JAVA_GENTOO_CLASSPATH="objenesis,reflectasm,minlog"
 
 src_prepare() {
 	rm "${S}"/pom.xml || die

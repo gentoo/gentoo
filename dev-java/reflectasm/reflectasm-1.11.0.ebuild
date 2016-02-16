@@ -13,7 +13,7 @@ SRC_URI="https://github.com/EsotericSoftware/${PN}/archive/${P}.zip"
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc64 ~x86"
+KEYWORDS="amd64 ppc64 x86"
 IUSE=""
 
 CDEPEND="dev-java/asm:4"
