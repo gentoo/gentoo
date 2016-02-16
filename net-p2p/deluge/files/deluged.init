@@ -40,15 +40,16 @@ start() {
 	fi
 	ebegin "Starting Deluged"
 	start-stop-daemon --start --user "${DELUGED_USER%:*}" \
-	--name deluged --pidfile /var/run/deluged.pid --background --make-pidfile \
-	--exec /usr/bin/deluged -e HOME="${DELUGED_USER_HOME}" -- --do-not-daemonize "${DELUGED_OPTS}"
+	--name deluged --pidfile /run/deluged.pid --background --make-pidfile \
+	${DELUGED_UMASK:+--umask ${DELUGED_UMASK}} \
+	--exec /usr/bin/deluged -e HOME="${DELUGED_USER_HOME}" -- --do-not-daemonize ${DELUGED_OPTS}
 	eend $?
 
 	
 	if [ "${DELUGEUI_START}" = "true" ] ; then
 		ebegin "Starting Deluge"
 		start-stop-daemon --start --background --pidfile \
-		/var/run/deluge.pid  --make-pidfile \
+		/run/deluge.pid  --make-pidfile \
 		--exec /usr/bin/deluge --user "${DELUGED_USER%:*}" \
 		-e HOME="${DELUGED_USER_HOME}" -- ${DELUGEUI_OPTS}
 		eend $?
@@ -58,14 +59,14 @@ start() {
 stop() {
 	ebegin "Stopping Deluged"
 	start-stop-daemon --stop --user "${DELUGED_USER%:*}" \
-	--name deluged --pidfile /var/run/deluged.pid
+	--name deluged --pidfile /run/deluged.pid
 	eend $?
 
 
 	if [ "${DELUGEUI_START}" = "true" ] ; then
 		ebegin "Stopping Deluge"
 		start-stop-daemon --stop --user "${DELUGED_USER%:*}" \
-		--name deluge --pidfile /var/run/deluge.pid
+		--name deluge --pidfile /run/deluge.pid
 		eend $?
 	fi
 }
