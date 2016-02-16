@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 inherit autotools eutils
 
 DESCRIPTION="A TCP, UDP, and SCTP network bandwidth measurement tool"
@@ -20,6 +20,9 @@ S=${WORKDIR}/${P/_beta/b}
 
 src_prepare() {
 	epatch "${FILESDIR}"/${PN}-3.0.5-flags.patch
+
+	eapply_user
+
 	eautoreconf
 }
 
@@ -29,5 +32,7 @@ src_configure() {
 
 src_install() {
 	default
+	newconfd "${FILESDIR}"/iperf.confd iperf3
+	newinitd "${FILESDIR}"/iperf3.initd iperf3
 	prune_libtool_files
 }
