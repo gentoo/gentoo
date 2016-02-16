@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -90,6 +90,8 @@ check-reqs_export_vars() {
 		export CHECKREQS_DISK_BUILD="1400M"
 		export CHECKREQS_DISK_USR="450M"
 	fi
+
+	export CHECKREQS_MEMORY="7G"
 }
 
 user_setup() {
@@ -183,4 +185,12 @@ src_install() {
 	udev_dorules udev/95-ceph-osd.rules
 
 	readme.gentoo_create_doc
+}
+
+pkg_postinst() {
+	if [[ -n ${REPLACING_VERSIONS} ]] && ! version_is_at_least 9.0 ${REPLACING_VERSIONS}; then
+		ewarn "You've upgraded ceph from old version, please fix the permission issue"
+		ewarn "Please refer section 4) in README.gentoo doc for detail info"
+		ewarn "  bzless /usr/share/doc/${P}/README.gentoo.bz2"
+	fi
 }

@@ -93,6 +93,7 @@ esac
 # specify the full path
 #
 # e.g. CLI_install/rpm/intel-vtune-amplifier-xe-cli
+: ${INTEL_BIN_RPMS:=""}
 
 # @ECLASS-VARIABLE: INTEL_DAT_RPMS
 # @DESCRIPTION:
@@ -299,10 +300,10 @@ _isdp_run-test() {
 
 # @FUNCTION: intel-sdp_pkg_pretend
 # @DESCRIPTION:
-# @CODE
+#
 # * Check that the user has a (valid) license file before going on.
+#
 # * Check for space requirements being fullfilled
-# @CODE
 intel-sdp_pkg_pretend() {
 	debug-print-function ${FUNCNAME} "${@}"
 
