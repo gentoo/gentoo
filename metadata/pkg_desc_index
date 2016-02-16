@@ -3900,7 +3900,7 @@ dev-java/icedtea 6.1.13.9-r2 7.2.6.4-r1: A harness to build OpenJDK using Free S
 dev-java/icedtea-bin 3.0.0_pre08 6.1.13.9 7.2.6.4: A Gentoo-made binary build of the IcedTea JDK
 dev-java/icedtea-sound 1.0.1: Plugins for javax.sound
 dev-java/icedtea-web 1.5.1-r1 1.6.1: FOSS Java browser plugin and Web Start implementation
-dev-java/icu4j 3.8.1-r1 4.0.1.1 4.2.1.1 4.4.2 49.1 52.1 53.1 54.1.1 55.1: A set of Java libraries providing Unicode and Globalization support
+dev-java/icu4j 4.0.1.1 4.4.2 54.1.1 55.1: A set of Java libraries providing Unicode and Globalization support
 dev-java/idm-console-framework 1.1.7: A Java Management Console framework used for remote server management
 dev-java/ini4j 0.5.1: Simple Java API Windows style .ini file handling
 dev-java/invokebinder 1.6: Provide a friendly DSL for binding method handles
@@ -17127,7 +17127,7 @@ sys-libs/lrmi 0.10-r1: library for calling real mode BIOS routines under Linux
 sys-libs/lwp 2.2 2.5 2.6: Light weight process library (used by Coda). This is NOT libwww-perl
 sys-libs/mars 1.0.1: Multicore Application Runtime System
 sys-libs/mtdev 1.1.4 1.1.5: Multitouch Protocol Translation Library
-sys-libs/musl 1.1.12 9999: Lightweight, fast and simple C library focused on standards-conformance and safety
+sys-libs/musl 1.1.12 1.1.13 9999: Light, fast and simple C library focused on standards-conformance and safety
 sys-libs/ncurses 5.9-r3 5.9-r4 5.9-r5 5.9-r99 5.9-r101 6.0 6.0-r1: console display library
 sys-libs/newlib 1.18.0 1.19.0 1.20.0 2.0.0 2.1.0 2.2.0 2.2.0.20150423 2.3.0.20160104 9999: Newlib is a C library intended for use on embedded systems
 sys-libs/nss-db 2.2.3_pre1-r2 2.2.3_pre1-r3 2.2.3_pre1-r4: Allows important system files to be stored in a fast database file rather than plain text
