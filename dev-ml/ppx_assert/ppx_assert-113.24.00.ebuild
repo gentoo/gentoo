@@ -6,7 +6,7 @@ EAPI="5"
 
 inherit oasis
 
-DESCRIPTION="Optional compilation for OCaml"
+DESCRIPTION="Assert-like extension nodes that raise useful errors on failure"
 HOMEPAGE="http://www.janestreet.com/ocaml"
 SRC_URI="http://ocaml.janestreet.com/ocaml-core/${PV%.*}/files/${P}.tar.gz"
 
