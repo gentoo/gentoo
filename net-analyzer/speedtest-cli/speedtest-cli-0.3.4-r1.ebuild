@@ -21,6 +21,8 @@ DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 
 DOCS=( CONTRIBUTING.md README.rst )
 
+PATCHES=( "${FILESDIR}/${PN}-0.3.4-fix-unicode-py3.patch" )
+
 python_install_all() {
 	doman ${PN}.1
 	distutils-r1_python_install_all
