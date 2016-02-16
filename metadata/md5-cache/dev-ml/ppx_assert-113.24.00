@@ -1,6 +1,6 @@
 DEFINED_PHASES=compile configure install prepare test unpack
 DEPEND=dev-ml/ppx_tools:= dev-ml/ppx_compare:= dev-ml/ppx_driver:= dev-ml/ppx_here:= dev-ml/ppx_sexp_conv:= dev-ml/ppx_type_conv dev-ml/sexplib:= dev-ml/ppx_core:= dev-ml/oasis >=dev-ml/findlib-1.0.4-r1 >=dev-lang/ocaml-3.12:=[ocamlopt?]
-DESCRIPTION=Optional compilation for OCaml
+DESCRIPTION=Assert-like extension nodes that raise useful errors on failure
 EAPI=5
 HOMEPAGE=http://www.janestreet.com/ocaml
 IUSE=+ocamlopt debug
@@ -11,4 +11,4 @@ SLOT=0/113.24.00
 SRC_URI=http://ocaml.janestreet.com/ocaml-core/113.24/files/ppx_assert-113.24.00.tar.gz
 _eclass_exported_funcs=src_unpack:base src_prepare:base src_configure:- src_compile:- src_test:oasis src_install:-
 _eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	28fb3e5852485af1c348d446b0b98389	findlib	9909e5ca0f77ff5b693885a3d7aeadb7	multilib	3972ca401cf7dbb430df9995f5d8d580	oasis	dab31007fb098ff15db810bfe5001e64	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
-_md5_=a5f12a1bcfbcf1a272dcbd66e2ae780a
+_md5_=b511cc6990a43e3b3bfdfdafe4347913
