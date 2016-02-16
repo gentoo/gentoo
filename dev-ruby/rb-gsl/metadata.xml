@@ -6,6 +6,6 @@
     <name>Gentoo Ruby Project</name>
   </maintainer>
   <upstream>
-    <remote-id type="github">david-macmahon/rb-gsl</remote-id>
+    <remote-id type="github">SciRuby/rb-gsl</remote-id>
   </upstream>
 </pkgmetadata>
