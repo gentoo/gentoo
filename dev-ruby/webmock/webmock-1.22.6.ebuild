@@ -4,7 +4,7 @@
 
 EAPI=5
 
-USE_RUBY="ruby20 ruby21"
+USE_RUBY="ruby20 ruby21 ruby22"
 
 RUBY_FAKEGEM_TASK_TEST="test spec NO_CONNECTION=true"
 
