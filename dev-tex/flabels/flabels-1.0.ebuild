@@ -18,12 +18,3 @@ IUSE=""
 
 S=${WORKDIR}/${PN}
 DOCS="README"
-
-src_prepare() {
-	chmod +x makedoc
-}
-
-src_compile() {
-	latex-package_src_compile
-	./makedoc
-}

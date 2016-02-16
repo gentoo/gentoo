@@ -1,0 +1,23 @@
+--- configure.ac	2005-04-05 18:12:49.000000000 +0200
++++ configure.ac	2016-01-17 22:58:57.203979927 +0100
+@@ -1,7 +1,7 @@
+ AC_INIT([TorrentZip], [0.0], [StatMan, shindakun, Ultrasubmarine, r3nh03k <http://trrntzip.sf.net>], [trrntzip])
+ 
+ AM_INIT_AUTOMAKE
+-AM_CONFIG_HEADER(config.h)
++#AM_CONFIG_HEADER(config.h)
+ AM_MAINTAINER_MODE
+ 
+ AC_PROG_CC
+@@ -11,6 +11,11 @@
+ AC_CHECK_LIB([m], [fmod], [], [AC_MSG_ERROR("Need libm to build TorrentZip")])
+ AC_CHECK_LIB([z], [zlibVersion], [], [AC_MSG_ERROR("Need libz to build TorrentZip")])
+ 
++AC_CHECK_DECL(OF, [],
++    [AC_CHECK_DECL(_Z_OF, [AC_DEFINE([OF(args)], [_Z_OF(args)])],
++	[AC_MSG_ERROR("Unsupported zlib version")], [#include "zlib.h"])],
++    [#include "zlib.h"])
++
+ AC_CONFIG_FILES([Makefile src/Makefile torrentzip.spec])
+ 
+ AC_OUTPUT
