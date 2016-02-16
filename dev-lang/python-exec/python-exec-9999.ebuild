@@ -68,10 +68,16 @@ src_install() {
 	insinto /etc/python-exec
 	doins "${T}"/python-exec.conf
 
-	# Create Python interpreter executable wrappers
 	local f
-	for f in python{,2,3}{,-config} 2to3 idle pydoc pyvenv; do
-		dosym python-exec2-c /usr/bin/"${f}"
+	for f in python{,2,3}; do
+		# symlink the C wrapper for python to avoid shebang recursion
+		# bug #568974
+		dosym python-exec2c /usr/bin/"${f}"
+	done
+	for f in python{,2,3}-config 2to3 idle pydoc pyvenv; do
+		# those are python scripts (except for new python-configs)
+		# so symlink them via the python wrapper
+		dosym ../lib/python-exec/python-exec2 /usr/bin/"${f}"
 	done
 }
 
