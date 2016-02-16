@@ -1,7 +1,7 @@
 DEFINED_PHASES=configure install prepare unpack
 DEPEND=virtual/libusb:1 dev-libs/glib:2 dev-libs/nss x11-libs/pixman virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 virtual/pkgconfig
 DESCRIPTION=library to add support for consumer fingerprint readers
-EAPI=5
+EAPI=6
 HOMEPAGE=http://cgit.freedesktop.org/libfprint/libfprint/
 IUSE=debug static-libs vanilla
 KEYWORDS=~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~x86
@@ -11,4 +11,4 @@ SLOT=0
 SRC_URI=http://cgit.freedesktop.org/libfprint/libfprint/snapshot/V_0_6_0.tar.bz2 -> libfprint-0.6.0.tar.bz2 https://dev.gentoo.org/~xmw/libfprint-0.6.0_vfs0050.patch.gz
 _eclass_exported_funcs=src_unpack:vcs-snapshot src_prepare:- src_configure:- src_install:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	28fb3e5852485af1c348d446b0b98389	libtool	b75230758539a7da029e24afdb693960	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	udev	73058269b3e70e34e084fa3981282338	vcs-snapshot	b45be87e7012be0af8424e8a5644da1d
-_md5_=86124b7700a4991237329af174708b16
+_md5_=c084a945698b9f2629c94196d2016f3f

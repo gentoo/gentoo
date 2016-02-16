@@ -16540,7 +16540,7 @@ sys-auth/fprint_demo 0.4: a simple GTK+ application to demonstrate and test libf
 sys-auth/fprintd 0.2.0-r1 0.4.1 0.5.0 0.5.1 0.6.0: D-Bus service to access fingerprint readers
 sys-auth/icmpdn 0.4: ICMP Domain Name utilities & NSS backend
 sys-auth/keystone 8.0.1-r1 2015.2.9999: The Openstack authentication, authorization, and service catalog
-sys-auth/libfprint 0.4.0 0.5.0-r1 0.5.1-r1 0.6.0-r1: library to add support for consumer fingerprint readers
+sys-auth/libfprint 0.4.0 0.5.0-r1 0.5.1-r1 0.6.0-r2: library to add support for consumer fingerprint readers
 sys-auth/libnss-cache 0.1-r1 0.10.1 0.10.2: libnss-cache is a library that serves nss lookups
 sys-auth/libnss-mysql 1.5_p20060915-r2 1.5_p20060915-r3: NSS MySQL Library
 sys-auth/libnss-pgsql 1.4.0 1.5.0_beta: Name Service Switch module for use with PostgreSQL
@@ -17074,7 +17074,7 @@ sys-libs/fortify-headers 0.6 0.7 9999: A standalone implementation of fortify so
 sys-libs/freeipmi 1.2.2 1.4.3 1.4.6-r1 1.4.8: Provides Remote-Console and System Management Software as per IPMI v1.5/2.0
 sys-libs/fts-standalone 0.2: Standalone fts library for use with musl
 sys-libs/gdbm 1.8.3-r3 1.8.3-r4 1.9.1-r2 1.10 1.10-r1 1.11: Standard GNU database libraries
-sys-libs/glibc 2.17 2.18-r1 2.19-r1 2.20-r2 2.21-r1 2.21-r2 2.22-r1 9999: GNU libc6 (also called glibc2) C library
+sys-libs/glibc 2.17 2.18-r1 2.19-r1 2.20-r2 2.21-r1 2.21-r2 2.22-r1 2.22-r2 9999: GNU libc6 (also called glibc2) C library
 sys-libs/gpm 1.20.7-r2: Console-based mouse driver
 sys-libs/gwenhywfar 4.3.3 4.12.0_beta 4.13.1: A multi-platform helper library for other libraries
 sys-libs/itx-bind 0.1-r2: the bind library for interix
