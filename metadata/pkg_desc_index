@@ -8898,7 +8898,7 @@ dev-ruby/rake 0.9.6-r1 10.3.2 10.4.0 10.4.2 10.5.0: Make-like scripting in Ruby
 dev-ruby/rake-compiler 0.9.2 0.9.2-r1 0.9.5: Provide a standard and simplified way to build and package Ruby extensions
 dev-ruby/rake-remote_task 2.3.0: Vlad the Deployer's sexy brainchild is rake-remote_task, extending Rake with remote task goodness
 dev-ruby/rash 0.4.0-r2: Rash is an extension to Hashie
-dev-ruby/rb-gsl 1.16.0.3 1.16.0.4 1.16.0.5 1.16.0.6: Ruby interface to GNU Scientific Library
+dev-ruby/rb-gsl 1.16.0.6: Ruby interface to GNU Scientific Library
 dev-ruby/rb-inotify 0.9.5 0.9.5-r1 0.9.6 0.9.7: A thorough inotify wrapper for Ruby using FFI
 dev-ruby/rb-readline 0.5.1 0.5.2 0.5.3: Ruby implementation of the GNU readline C library
 dev-ruby/rb-readline-r7 0.5.2.0: Ruby implementation of the GNU readline C library forked by r7
