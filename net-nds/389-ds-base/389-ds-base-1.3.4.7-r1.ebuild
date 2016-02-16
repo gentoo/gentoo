@@ -109,11 +109,6 @@ src_compile() {
 src_install () {
 	emake DESTDIR="${D}" install
 
-	# for build free-ipa require winsync-plugin
-	# Freeipa no longer uses winsync. Please see AD trust.
-	doins ldap/servers/plugins/replication/winsync-plugin.h
-	doins ldap/servers/plugins/replication/repl-session-plugin.h
-
 	# remove redhat style init script
 	rm -rf "${D}"/etc/rc.d || die
 	# Needs a config option to remove this.
