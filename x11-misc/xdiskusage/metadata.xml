@@ -5,9 +5,6 @@
     <email>desktop-misc@gentoo.org</email>
     <name>Gentoo Desktop Miscellaneous Project</name>
   </maintainer>
-  <longdescription>
-	xdiskusage is a user-friendly program to show you what is using up all your disk space.
-  </longdescription>
   <upstream>
     <remote-id type="sourceforge">xdiskusage</remote-id>
   </upstream>
