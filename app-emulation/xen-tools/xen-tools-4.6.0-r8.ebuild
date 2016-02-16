@@ -70,7 +70,7 @@ SLOT="0/${MAJOR_V}"
 # Inclusion of IUSE ocaml on stabalizing requires maintainer of ocaml to (get off his hands and) make
 # >=dev-lang/ocaml-4 stable
 # Masked in profiles/eapi-5-files instead
-IUSE="api custom-cflags debug doc flask hvm qemu ocaml ovmf qemu-traditional +pam python pygrub screen sdl static-libs system-qemu system-seabios"
+IUSE="api custom-cflags debug doc flask hvm qemu ocaml ovmf +qemu-traditional +pam python pygrub screen sdl static-libs system-qemu system-seabios"
 
 REQUIRED_USE="hvm? ( || ( qemu system-qemu ) )
 	${PYTHON_REQUIRED_USE}
