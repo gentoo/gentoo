@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -9,14 +9,13 @@ PYTHON_REQ_USE="gdbm"
 
 WANT_AUTOMAKE=1.11
 
-inherit autotools eutils flag-o-matic multilib multilib-minimal mono-env \
-	python-r1 systemd user
+inherit autotools eutils flag-o-matic multilib multilib-minimal mono-env python-r1 systemd user
 
 DESCRIPTION="System which facilitates service discovery on a local network"
 HOMEPAGE="http://avahi.org/"
-SRC_URI="https://github.com/lathiat/avahi/archive/0.6.32-rc.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/lathiat/avahi/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
-S="${WORKDIR}/avahi-0.6.32-rc"
+S="${WORKDIR}/${P}"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
@@ -102,17 +101,9 @@ src_prepare() {
 	# https://github.com/lathiat/avahi/issues/24
 	epatch "${FILESDIR}"/${PN}-0.6.30-optional-gtk-utils.patch
 
-	# Fix init scripts for >=openrc-0.9.0, bug #383641
-	# https://github.com/lathiat/avahi/issues/25
-	epatch "${FILESDIR}"/${PN}-0.6.x-openrc-0.9.x-init-scripts-fixes.patch
-
 	# Don't install avahi-discover unless ENABLE_GTK_UTILS, bug #359575
 	# https://github.com/lathiat/avahi/issues/24
 	epatch "${FILESDIR}"/${PN}-0.6.31-fix-install-avahi-discover.patch
-
-	# Allow building client without the daemon
-	# https://github.com/lathiat/avahi/issues/26
-	epatch "${FILESDIR}"/${PN}-0.6.31-build-client-without-daemon.patch
 
 	# Fix build under various locales, bug #501664
 	# https://github.com/lathiat/avahi/issues/27
