@@ -93,6 +93,7 @@ esac
 # specify the full path
 #
 # e.g. CLI_install/rpm/intel-vtune-amplifier-xe-cli
+: ${INTEL_BIN_RPMS:=""}
 
 # @ECLASS-VARIABLE: INTEL_DAT_RPMS
 # @DESCRIPTION:
