@@ -78,7 +78,7 @@ DEPEND=">=app-shells/bash-3.0:*
 	>=dev-lang/polyml-5.5.2:=[-portable]
 	>=dev-lang/perl-5.8.8-r2
 	dev-lang/swi-prolog
-	sci-mathematics/csdp
+	sci-libs/coinor-csdp
 	=virtual/jdk-1.7*
 	doc? (
 		virtual/latex-base
