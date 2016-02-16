@@ -20,8 +20,8 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE="doc"
 
-DEPEND+=" >=sci-libs/gsl-1.15"
-RDEPEND+=" >=sci-libs/gsl-1.15"
+DEPEND+=" >=sci-libs/gsl-1.15 <sci-libs/gsl-2.1"
+RDEPEND+=" >=sci-libs/gsl-1.15 <sci-libs/gsl-2.1"
 
 RUBY_S="${PN}-${P}"
 
