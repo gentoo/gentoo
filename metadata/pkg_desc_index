@@ -237,7 +237,7 @@ app-antivirus/clamav-unofficial-sigs 3.7.2 4.5.3 4.9.2: Download and install thi
 app-antivirus/skyldav 0.5-r2: Skyld AV: on-access scanning daemon for ClamAV using fanotify
 app-arch/advancecomp 1.15 1.16 1.17 1.19: Recompress ZIP, PNG and MNG using deflate 7-Zip, considerably improving compression
 app-arch/afio 2.5 2.5.1: makes cpio-format archives and deals somewhat gracefully with input data corruption
-app-arch/alien 8.89 8.90 8.93 8.94: Converts between the rpm, dpkg, stampede slp, and slackware tgz file formats
+app-arch/alien 8.89 8.90 8.93 8.94 8.95: Converts between the rpm, dpkg, stampede slp, and slackware tgz file formats
 app-arch/arc 5.21p: Create & extract files from DOS .ARC files
 app-arch/arj 3.10.22-r5 3.10.22-r6: Utility for opening arj archives
 app-arch/atool 0.39.0: a script for managing file archives of various types
@@ -310,7 +310,7 @@ app-arch/tardelta 1.0.1: Generate a tarball of differences between two tarballs
 app-arch/tardy 1.28: A tar post-processor
 app-arch/tarsync 0.2.1-r1: Delta compression suite for using/generating binary patches
 app-arch/threadzip 1.2-r1: threaded compressor logic for zlib/lzma
-app-arch/torrentzip 0.2-r1 0.2-r9: Archiver that creates standard zips to create identical files over multiple systems
+app-arch/torrentzip 0.2-r2: Advanced archiver to create identical files over multiple systems
 app-arch/unace 2.5-r3 2.5-r4: ACE unarchiver
 app-arch/unadf 0.7.9b 0.7.12: Extract files from Amiga adf disk images
 app-arch/unar 1.1 1.2 1.5 1.6 1.8.1: unpacker for various archiving formats, e.g. rar v3
@@ -4403,7 +4403,7 @@ dev-lang/rubinius 2.5.3 2.5.5: A re-implementation of the Ruby VM designed for s
 dev-lang/ruby 2.0.0_p647-r1 2.0.0_p648 2.1.7 2.1.7-r1 2.1.8 2.2.2-r1 2.2.3 2.2.3-r1 2.2.3-r2 2.2.4 2.3.0: An object-oriented scripting language
 dev-lang/rust 1.2.0 1.3.0 1.5.0: Systems programming language from Mozilla
 dev-lang/rust-bin 1.2.0 1.3.0 1.5.0 1.6.0: Systems programming language from Mozilla
-dev-lang/scala 2.9.2-r1 2.9.3 2.10.2-r3 2.10.3-r2 2.10.4-r2 2.10.6 2.11.1-r2 2.11.2-r2 2.11.4-r1 2.11.4-r2 2.11.6-r1 2.11.7-r1: The Scala Programming Language
+dev-lang/scala 2.9.3 2.10.2-r3 2.10.3-r2 2.10.4-r2 2.10.6 2.11.1-r2 2.11.2-r2 2.11.4-r1 2.11.4-r2 2.11.6-r1 2.11.7-r1: The Scala Programming Language
 dev-lang/scala-bin 2.11.7: The Scala Programming Language
 dev-lang/smlnj 110.75: Standard ML of New Jersey compiler and libraries
 dev-lang/snobol 0.99.4 0.99.44 1.1 1.4.1: Phil Budne's port of Macro SNOBOL4 in C, for modern machines
@@ -5084,7 +5084,6 @@ dev-ml/pa_bench 109.55.02 111.28.00 112.06.00: Syntax extension writing inline b
 dev-ml/pa_ounit 112.35.00 113.00.00: Syntax extension that helps writing in-line test in ocaml
 dev-ml/pa_sexp_conv 113.00.01: Deprecated camlp4 syntax extension for sexplib.
 dev-ml/pa_structural_sexp 112.35.00 113.00.00: Quotation expanders to simplify building s-expressions from ocaml values
-dev-ml/pa_test 111.08.01 112.24.00: Quotation expanders for assertions
 dev-ml/parmap 1.0_rc6 1.0_rc7: Library allowing to exploit multicore architectures for OCaml programs with minimal modifications
 dev-ml/pcre-ocaml 6.2.5 7.1.6: Perl Compatibility Regular Expressions for O'Caml
 dev-ml/pgocaml 2.2: PG'OCaml is a set of OCaml bindings for the PostgreSQL database
