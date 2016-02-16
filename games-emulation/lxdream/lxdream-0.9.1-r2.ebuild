@@ -1,9 +1,9 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
-inherit eutils games
+EAPI=5
+inherit eutils flag-o-matic games
 
 DESCRIPTION="An emulator for the Sega Dreamcast system"
 HOMEPAGE="http://www.lxdream.org/"
@@ -16,7 +16,7 @@ IUSE="debug lirc profile pulseaudio sdl"
 
 RDEPEND="lirc? ( app-misc/lirc )
 	media-libs/alsa-lib
-	media-libs/libpng
+	media-libs/libpng:0
 	pulseaudio? ( media-sound/pulseaudio )
 	sdl? ( media-libs/libsdl[sound] )
 	virtual/opengl
@@ -35,13 +35,14 @@ src_prepare() {
 		-e '/Encoding/d' \
 		-e '/FilePattern/d' \
 		-e '/Categories/s|$|;|' \
-		${PN}.desktop || die "sed failed"
+		${PN}.desktop || die
 	# Do not override user-specified CFLAGS
 	sed -i \
 		-e s/'CFLAGS=\"-g -fexceptions\"'/'CFLAGS=\"${CFLAGS} -g -fexceptions\"'/ \
 		-e '/CCOPT/d' \
 		-e '/OBJCOPT/d' \
-		configure || die "sed failed"
+		configure || die
+	append-libs -lX11 -lm
 }
 
 src_configure() {
@@ -57,7 +58,6 @@ src_configure() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" install
-	dodoc ChangeLog NEWS README
+	default
 	prepgamesdirs
 }
