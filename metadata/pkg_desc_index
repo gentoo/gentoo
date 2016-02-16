@@ -4082,7 +4082,7 @@ dev-java/jvyaml 0.2.1-r1: Java YAML parser and emitter
 dev-java/jvyamlb 0.2.5: JvYAMLb, YAML processor extracted from JRuby
 dev-java/jython 2.7.0: An implementation of Python written in Java
 dev-java/jzlib 1.0.7-r1 1.1.1 1.1.3: JZlib is a re-implementation of zlib in pure Java
-dev-java/kryo 1.05 2.21 2.22: Fast, efficient Java serialization and cloning
+dev-java/kryo 2.24.0: Fast, efficient Java serialization and cloning
 dev-java/kunststoff 2.0.2-r1: Kunststoff Look&Feel
 dev-java/kxml 2.3.0: Small XML pull parser for constrained environments such as Applets, Personal Java or MIDP devices
 dev-java/l2fprod-common 7.3-r2: Java/Swing GUI components and libraries for building desktop applications
@@ -4160,7 +4160,7 @@ dev-java/osgi-core-api 5.0.0 5.0.0-r1: OSGi Service Platform Core API (Companion
 dev-java/osgi-enterprise-api 5.0.0: OSGi Enterprise Release 5 Companion Code
 dev-java/osgi-foundation 1.2.0-r1: OSGi R4 Foundation EE by Apache Felix
 dev-java/osgi-obr 1.0.2: OSGi Service OBR by Apache
-dev-java/pat 1.5.3: Regular Expressions in Java
+dev-java/pat 1.5.3-r1: Regular Expressions in Java
 dev-java/pdf-renderer 0.9.1 1.0.5: a 100% Java PDF renderer and viewer
 dev-java/pdfbox 1.8.8: Java library and utilities for working with PDF documents
 dev-java/piccolo 1.04: A small, extremely fast XML parser for Java
@@ -4179,7 +4179,7 @@ dev-java/relaxng-datatype 1.0-r1: Interface between RELAX NG validators and data
 dev-java/relaxngcc 1.12-r2 1.12-r3: RELAX NG Compiler Compiler
 dev-java/resin-servlet-api 3.0.25 3.1.12 4.0.26 4.0.27 4.0.44 4.0.46: Resin Servlet API 3.0/JSP API 2.1 implementation
 dev-java/rhino 1.7.7-r1: An open-source implementation of JavaScript written in Java
-dev-java/rngom 20051226 20100718-r1: RNGOM is an open-source Java library for parsing RELAX NG grammars
+dev-java/rngom 20100718-r1: RNGOM is an open-source Java library for parsing RELAX NG grammars
 dev-java/rome 0.9-r2: Open source Atom/RSS Java utilities that make it easy to work in Java with most syndication formats
 dev-java/rundoc 0.11: A Ant helper task for keeping documentation in source files
 dev-java/rxtx 2.1.7.2-r3 2.2_pre2: Native lib providing serial and parallel communication for Java
@@ -11596,7 +11596,7 @@ mail-filter/mapson 3.3: A challenge/response-based white-list spam filter
 mail-filter/milter-regex 1.9: A milter-based regular expression filter
 mail-filter/mimedefang 2.73 2.74 2.75: Antispam, antivirus and other customizable filtering for MTAs with Milter support
 mail-filter/normalizemime 1.19: Helper program to normalize MIME encoded messages
-mail-filter/opendkim 2.9.2-r1 2.9.3 2.10.0 2.10.2 2.10.3: A milter-based application to provide DKIM signing and verification
+mail-filter/opendkim 2.10.3: A milter-based application to provide DKIM signing and verification
 mail-filter/opendmarc 1.1.3 1.3.0 1.3.1: Open source DMARC implementation
 mail-filter/opensmtpd-extras 5.4.5.201506020835 5.7.1 5.7.1-r1: Extra tables, filters, and various other addons for OpenSMTPD
 mail-filter/p3scan 2.3.1 2.3.2-r1 2.3.2-r2: This is a full-transparent proxy-server for POP3-Clients
