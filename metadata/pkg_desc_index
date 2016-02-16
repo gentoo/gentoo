@@ -2308,7 +2308,7 @@ app-text/libpaper 1.1.24-r2: Library for handling paper characteristics
 app-text/libspectre 0.2.6 0.2.7: A library for rendering Postscript documents
 app-text/libwpd 0.9.9 0.10.0 0.10.0-r1 0.10.0-r2 0.10.1: WordPerfect Document import/export library
 app-text/libwpg 0.2.2 0.3.0 0.3.1: C++ library to read and parse graphics in WPG
-app-text/libwps 0.2.9 0.3.1 0.4.1 0.4.2: Microsoft Works file word processor format import filter library
+app-text/libwps 0.2.9 0.3.1 0.4.2 0.4.3: Microsoft Works file word processor format import filter library
 app-text/libxmlpatch 0.3.3: A set of tools to create and apply patch to XML files using XPath
 app-text/linuxdoc-tools 0.9.71-r1: A toolset for processing LinuxDoc DTD SGML files
 app-text/llpp 20_p20140818 21 21_p20150427 22 9999: a graphical PDF viewer which aims to superficially resemble less(1)
@@ -8999,7 +8999,7 @@ dev-ruby/ruby-yadis 0.3.4-r2: A ruby library for performing Yadis service discov
 dev-ruby/ruby2ruby 2.1.4 2.2.0: Generates readable ruby from ParseTree
 dev-ruby/ruby_gntp 0.3.4: Ruby library for GNTP(Growl Notification Transport Protocol)
 dev-ruby/ruby_parser 3.6.6 3.7.2 3.7.3: A ruby parser written in pure ruby
-dev-ruby/rubygems 2.2.5-r1 2.4.8 2.5.1: Centralized Ruby extension management system
+dev-ruby/rubygems 2.2.5-r1 2.5.1 2.5.2: Centralized Ruby extension management system
 dev-ruby/rubyntlm 0.4.0 0.5.2 0.5.3: Ruby/NTLM provides message creator and parser for the NTLM authentication.
 dev-ruby/rubypants 0.2.0-r4 0.2.0-r5: A Ruby port of the SmartyPants PHP library
 dev-ruby/rubytest 0.7.0 0.8.1: Ruby Test is a universal test harness for Ruby
