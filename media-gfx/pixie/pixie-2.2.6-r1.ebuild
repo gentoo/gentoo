@@ -57,7 +57,7 @@ src_prepare() {
 	rm "${S}"/shaders/*.sdr
 
 	# FIX: flex does not translate variable name in custom YY_DECL
-	sed -i -e '/define YY_DECL/ s/yylval/riblval/' src/ri/rib.l
+	sed -i -e '/define YY_DECL/ s/yylval/riblval/' src/ri/rib.l || die
 }
 
 src_configure() {
