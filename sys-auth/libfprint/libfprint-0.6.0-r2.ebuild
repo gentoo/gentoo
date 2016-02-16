@@ -1,8 +1,8 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 inherit autotools eutils udev vcs-snapshot
 
@@ -24,10 +24,16 @@ RDEPEND="virtual/libusb:1
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
+PATCHES=(
+	"${FILESDIR}/${P}-fix-udev-rules.patch"
+)
+
 src_prepare() {
 	if ! use vanilla ; then
-		epatch "${WORKDIR}"/${P}_vfs0050.patch
+		eapply "${WORKDIR}"/${P}_vfs0050.patch
 	fi
+
+	default
 
 	# upeke2 and fdu2000 were missing from all_drivers.
 	sed -e '/^all_drivers=/s:"$: upeke2 fdu2000":' \
