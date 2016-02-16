@@ -20,7 +20,6 @@ DEPEND="${RDEPEND}
 
 src_prepare() {
 	epatch "${FILESDIR}/0.21-nvme_ioctl.h.patch"
-	epatch "${FILESDIR}/0.22-flags.patch"
 	epatch_user
 }
 
