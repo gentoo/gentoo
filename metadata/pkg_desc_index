@@ -15850,6 +15850,7 @@ sci-mathematics/cado-nfs 1.1 2.0 2.1 2.1.1 2.2.0: Number Field Sieve (NFS) imple
 sci-mathematics/calc 2.12.1.5 2.12.2.2 2.12.4.3 2.12.4.4 2.12.4.13: Arbitrary precision C-like arithmetic system
 sci-mathematics/cgal 4.3 4.3-r1 4.6.1: C++ library for geometric algorithms and data structures
 sci-mathematics/coq 8.4_p5 8.4_p6 8.5: Proof assistant written in O'Caml
+sci-mathematics/csdp 6.1.1: A C Library for Semidefinite Programming
 sci-mathematics/cvc3 2.4.1: CVC3 is an automatic theorem prover for Satisfiability Modulo Theories (SMT) problems
 sci-mathematics/dataplot 20090821: Program for scientific visualization and statistical analyis
 sci-mathematics/diagrtb 2.64: Calculation of some eigenvectors of a large real, symmetrical, matrix
@@ -15877,7 +15878,7 @@ sci-mathematics/gmp-ecm 6.4.3-r5 6.4.4-r1 9999: Elliptic Curve Method for Intege
 sci-mathematics/gretl 1.9.14 1.9.90: Regression, econometrics and time-series library
 sci-mathematics/gsl-shell 2.2.0: Lua interactive shell for sci-libs/gsl
 sci-mathematics/gwnum 277: George Woltman's GWNUM library
-sci-mathematics/isabelle 2011.1 2011.1-r2 2012-r1 2013-r2 2013.2-r1: Isabelle is a generic proof assistant
+sci-mathematics/isabelle 2011.1 2011.1-r2 2012-r1 2013-r2 2013.2-r1 2015: Isabelle is a generic proof assistant
 sci-mathematics/jags 3.4.0 4.0.0 4.1.0: Just Another Gibbs Sampler for Bayesian MCMC simulation
 sci-mathematics/kodkod 1.5.2: a constraint solver for relational logic
 sci-mathematics/kodkodi 1.5.2: A text front-end for the Kodkod Java library
