@@ -16,7 +16,7 @@ IUSE="debug lirc profile pulseaudio sdl"
 
 RDEPEND="lirc? ( app-misc/lirc )
 	media-libs/alsa-lib
-	media-libs/libpng
+	media-libs/libpng:0
 	pulseaudio? ( media-sound/pulseaudio )
 	sdl? ( media-libs/libsdl[sound] )
 	virtual/opengl
