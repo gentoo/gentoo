@@ -14691,7 +14691,7 @@ net-misc/siproxd 0.8.0-r2 0.8.1-r1: A proxy/masquerading daemon for the SIP prot
 net-misc/sipsak 0.9.6_p1-r1 0.9.6_p1-r2: small command line tool for testing SIP applications and devices
 net-misc/sitecopy 0.16.6-r1: Maintain remote web sites with ease
 net-misc/sjphone 1.60.2235: VOIP softphone supports both SIP and H.323 standards
-net-misc/sks 1.1.5-r1 1.1.5-r2: An OpenPGP keyserver which is decentralized and provides highly reliable synchronization
+net-misc/sks 1.1.5-r3: An OpenPGP keyserver which is decentralized with highly reliable synchronization
 net-misc/slimrat 9999: Linux Rapidshare downloader
 net-misc/smb4k 1.2.1: The advanced network neighborhood browser for KDE
 net-misc/smbc 1.2.2-r2: A text mode (ncurses) SMB network commander. Features: resume and UTF-8
