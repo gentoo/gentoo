@@ -49,7 +49,7 @@ start() {
 	if [ "${DELUGEUI_START}" = "true" ] ; then
 		ebegin "Starting Deluge"
 		start-stop-daemon --start --background --pidfile \
-		/var/run/deluge.pid  --make-pidfile \
+		/run/deluge.pid  --make-pidfile \
 		--exec /usr/bin/deluge --user "${DELUGED_USER%:*}" \
 		-e HOME="${DELUGED_USER_HOME}" -- ${DELUGEUI_OPTS}
 		eend $?
