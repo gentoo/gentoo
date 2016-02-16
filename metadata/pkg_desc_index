@@ -10044,7 +10044,7 @@ games-board/biloba 0.9.3: a board game, up to 4 players, with AI and network
 games-board/blokish 0.9.4-r2: Open source clone of the four-player board game Blokus
 games-board/camato 0.7.4: A map editor for the game gnocatan
 games-board/capicity 1.0: A monopd compatible boardgame to play Monopoly-like games (previously named capitalism)
-games-board/ccgo 0.3.6.4 0.3.6.5: An IGS client written in C++
+games-board/ccgo 0.3.6.5: An IGS client written in C++
 games-board/cgoban 1.9.14: A Go-frontend
 games-board/cgoban2 2.6.12: A Java client for the Kiseido Go Server, and a SGF editor
 games-board/chessx 1.3.2: Qt5-based Chess Database Utility
@@ -10127,7 +10127,7 @@ games-emulation/dosbox 0.74 9999: DOS emulator
 games-emulation/emutos 0.9.3 0.9.4: a single-user single-tasking operating system for 32 bit Atari computer emulators
 games-emulation/fakenes 0.5.8-r2: portable, Open Source NES emulator which is written mostly in C
 games-emulation/fbzx 2.10.0: A Sinclair Spectrum emulator, designed to work at full screen using the FrameBuffer
-games-emulation/fceux 2.2.2 2.2.2-r1: A portable Famicom/NES emulator, an evolution of the original FCE Ultra
+games-emulation/fceux 2.2.2-r1: A portable Famicom/NES emulator, an evolution of the original FCE Ultra
 games-emulation/gambatte 0.5.0_p20131102: An accuracy-focused Gameboy / Gameboy Color emulator
 games-emulation/gcube 0.4-r1: Gamecube emulator
 games-emulation/generator 0.35_p4: Sega Genesis / Mega Drive emulator
@@ -10145,7 +10145,7 @@ games-emulation/lxdream 0.9.1-r2: An emulator for the Sega Dreamcast system
 games-emulation/m64py 0.2.1-r1 0.2.3-r2: A frontend for Mupen64Plus
 games-emulation/mamory 0.2.25: ROM management tools and library
 games-emulation/mastergear-bin 2.0: SEGA Master System / Game Gear emulator
-games-emulation/mednafen 0.9.38.4 0.9.38.7: An advanced NES, GB/GBC/GBA, TurboGrafx 16/CD, NGPC and Lynx emulator
+games-emulation/mednafen 0.9.38.7: An advanced NES, GB/GBC/GBA, TurboGrafx 16/CD, NGPC and Lynx emulator
 games-emulation/mednaffe 0.8: A front-end (GUI) for mednafen emulator
 games-emulation/mekanix 070: SG-1000, SC-3000, SF-7000, SSC, SMS, GG, COLECO, and OMV emulator
 games-emulation/mupen64plus 1.5-r1 1.5-r2 2.0 2.5: A fork of Mupen64 Nintendo 64 emulator, meta-package
@@ -10197,12 +10197,12 @@ games-engines/xzip 1.8.2-r2: X interface to Z-code based text games
 games-engines/zoom 1.1.5: A fast, clean, modern Z-code interpreter for X
 games-fps/aaquake2 0.1: text mode Quake II
 games-fps/aaut 1: ascii mode unreal tournament
-games-fps/alephone 20100424 20150620: An enhanced version of the game engine from the classic Mac game, Marathon
+games-fps/alephone 20150620: An enhanced version of the game engine from the classic Mac game, Marathon
 games-fps/alephone-infinity 20080622: Aleph One - Marathon Infinity
-games-fps/alienarena 20120629 20130827: Fast-paced multiplayer deathmatch game
+games-fps/alienarena 20130827: Fast-paced multiplayer deathmatch game
 games-fps/avp 20150214: Linux port of Aliens vs Predator
 games-fps/blackshades 20070723: you control a psychic bodyguard, and try to protect the VIP
-games-fps/darkplaces 20110628 20140513: Enhanced engine for iD Software's Quake 1
+games-fps/darkplaces 20140513: Enhanced engine for iD Software's Quake 1
 games-fps/doom-data 1-r1: collection of doom wad files from id
 games-fps/doom3 1.3.1304-r1: 3rd installment of the classic iD 3D first-person shooter
 games-fps/doom3-cdoom 1.3.1: Doom 3 Classic Doom - Doom 1 conversion for Doom 3
@@ -10258,7 +10258,7 @@ games-fps/quake3-bfp 1.2-r1: Quake III Bid For Power - Control Ki-powered superh
 games-fps/quake3-bin 1.32c-r2: 3rd installment of the classic id 3D first-person shooter
 games-fps/quake3-cpma 1.48: Quake III Challenge Pro Mode Arena - advanced FPS competition mod
 games-fps/quake3-data 1.32b: Quake III Arena - data portion
-games-fps/quake3-defrag 1.91.20 1.91.21: Quake III Defrag - Trickjumping challenges for Quake III
+games-fps/quake3-defrag 1.91.21: Quake III Defrag - Trickjumping challenges for Quake III
 games-fps/quake3-demo 1.11-r1: the playable demo of Quake III Arena by Id Software
 games-fps/quake3-excessiveplus 2.3: Quake III Excessive Plus - Makes the weapons much faster and stronger
 games-fps/quake3-lrctf 1.1: Quake III Loki's Revenge CTF - offhand grapple all-weapons capture the flag mod
@@ -10585,7 +10585,7 @@ games-rpg/gwiz 0.8: clone of old-school Wizardry(tm) games by SirTech
 games-rpg/kqlives 0.99: A console-style role playing game
 games-rpg/lure 1.1: Lure of the Temptress
 games-rpg/mana 0.6.1: A fully free and open source MMORPG game client
-games-rpg/manaplus 1.5.11.21 1.5.12.19 1.6.1.16: OpenSource 2D MMORPG client for Evol Online and The Mana World
+games-rpg/manaplus 1.5.11.21 1.6.1.16: OpenSource 2D MMORPG client for Evol Online and The Mana World
 games-rpg/nwmouse 20090906.183839: Hardware mouse cursors for Neverwinter Nights
 games-rpg/nwmovies 20090223.080954: Play Neverwinter Nights movies inside the Linux client
 games-rpg/nwn 1.68-r5 1.68-r6 1.69-r1: role-playing game set in a huge medieval fantasy world of Dungeons and Dragons
@@ -10633,7 +10633,7 @@ games-simulation/gl117 1.3.2: An action flight simulator
 games-simulation/lincity 1.13.1: city/country simulation game for X and Linux SVGALib
 games-simulation/lincity-ng 2.0: city/country simulation game for X and opengl
 games-simulation/micropolis 1.0: Free version of the well-known city building simulation
-games-simulation/openttd 1.5.0 1.5.3: OpenTTD is a clone of Transport Tycoon Deluxe
+games-simulation/openttd 1.5.3: OpenTTD is a clone of Transport Tycoon Deluxe
 games-simulation/planets 0.1.13: a simple interactive planetary system simulator
 games-simulation/pmars-sdl 0.9.2e: Portable redcode simulator's sdl port for core war
 games-simulation/searchandrescue 1.5.0: Helicopter based air rescue flight simulator
@@ -10671,8 +10671,8 @@ games-strategy/dominions2 2.16: Dominions 2: The Ascension Wars is an epic turn-
 games-strategy/dopewars 1.5.12-r2: Re-Write of the game Drug Wars
 games-strategy/dunelegacy 0.96.3: Updated clone of Westood Studios' Dune2
 games-strategy/endless-sky 0.8.11: Space exploration, trading & combat game.
-games-strategy/freeciv 2.5.1 2.5.2 2.5.3: multiplayer strategy game (Civilization Clone)
-games-strategy/freecol 0.10.7 0.11.5: An open source clone of the game Colonization
+games-strategy/freeciv 2.5.1 2.5.3: multiplayer strategy game (Civilization Clone)
+games-strategy/freecol 0.11.5: An open source clone of the game Colonization
 games-strategy/freeorion 0.4.5_pre 0.4.5: A free turn-based space empire and galactic conquest game
 games-strategy/freesynd 0.7.1: A cross-platform reimplementation of engine for the classic Bullfrog game, Syndicate
 games-strategy/galaxyhack 1.74: Multiplayer AI script based strategy game
@@ -10685,7 +10685,7 @@ games-strategy/heroes3-demo 1.3.1a: turn-based 2D medieval combat
 games-strategy/ja2-stracciatella 0.12.1_p7072: A port of Jagged Alliance 2 to SDL
 games-strategy/ja2-stracciatella-data 1: A port of Jagged Alliance 2 to SDL (data files)
 games-strategy/knights-demo 1.32-r1: Anglo-Saxon medieval army battles and resource management
-games-strategy/lgeneral 1.3.0 1.3.1: A Panzer General clone written in SDL
+games-strategy/lgeneral 1.3.1: A Panzer General clone written in SDL
 games-strategy/lightyears 1.4-r1: a single-player game with a science-fiction theme
 games-strategy/liquidwar 5.6.4-r1: unique multiplayer wargame
 games-strategy/liquidwar6 0.4.3681-r1: Unique multiplayer wargame between liquids
@@ -10699,7 +10699,7 @@ games-strategy/netherearth 0.52: A remake of the SPECTRUM game Nether Earth
 games-strategy/netpanzer 0.8.2: Fast-action multiplayer strategic network game
 games-strategy/openra 20120630-r1 20130514-r2 20131223-r2 20140608-r1 20140722-r1 20141029-r2: A free RTS engine supporting games like Command & Conquer and Red Alert
 games-strategy/outerspace 0.5.68: on-line strategy game taking place in the dangerous universe
-games-strategy/s25rttr 0.8.1 0.8.1-r1: Open Source remake of The Settlers II game (needs original game files)
+games-strategy/s25rttr 0.8.1-r1: Open Source remake of The Settlers II game (needs original game files)
 games-strategy/scorched3d 44-r1: Multi-player tank battle in 3D (OpenGL)
 games-strategy/seven-kingdoms 2.14.4 2.14.5: Seven Kingdoms: Ancient Adversaries
 games-strategy/smac 6.0a: Linux port of the popular strategy game from Firaxis
@@ -12477,10 +12477,10 @@ media-libs/sdl-sound 1.0.3-r1: A library that handles the decoding of sound file
 media-libs/sdl-terminal 1.1.3-r1: library that provides a pseudo-ansi color terminal that can be used with any SDL application
 media-libs/sdl-ttf 2.0.11-r1: library that allows you to use TrueType fonts in SDL applications
 media-libs/sdl2-gfx 1.0.1: Graphics drawing primitives library for SDL2
-media-libs/sdl2-image 2.0.0-r1 2.0.1: Image file loading library
-media-libs/sdl2-mixer 2.0.0-r1 2.0.1: Simple Direct Media Layer Mixer Library
-media-libs/sdl2-net 2.0.0-r1 2.0.1: Simple Direct Media Layer Network Support Library
-media-libs/sdl2-ttf 2.0.12-r1 2.0.13: library that allows you to use TrueType fonts in SDL applications
+media-libs/sdl2-image 2.0.1: Image file loading library
+media-libs/sdl2-mixer 2.0.1: Simple Direct Media Layer Mixer Library
+media-libs/sdl2-net 2.0.1: Simple Direct Media Layer Network Support Library
+media-libs/sdl2-ttf 2.0.13: library that allows you to use TrueType fonts in SDL applications
 media-libs/sdlmm 0.1.8-r1: A C++ Wrapper for the Simple DirectMedia Layer
 media-libs/sg 1.5: Socket Graphics tool for displaying polygons
 media-libs/sge 030809: Graphics extensions library for SDL
