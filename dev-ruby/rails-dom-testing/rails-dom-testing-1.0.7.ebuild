@@ -15,7 +15,7 @@ HOMEPAGE="https://github.com/kaspth/rails-dom-testing"
 
 LICENSE="MIT"
 SLOT="1"
-KEYWORDS="~amd64 ~arm ~ppc ~ppc64"
+KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86"
 IUSE=""
 
 ruby_add_rdepend "
