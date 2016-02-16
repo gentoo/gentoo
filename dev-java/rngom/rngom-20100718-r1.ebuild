@@ -13,7 +13,7 @@ SRC_URI="https://repo1.maven.org/maven2/org/kohsuke/${PN}/${PN}/${PV}/${P}-sourc
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc64 ~x86"
+KEYWORDS="amd64 ppc64 x86"
 IUSE=""
 
 CDEPEND="
