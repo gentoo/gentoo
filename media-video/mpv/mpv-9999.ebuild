@@ -74,7 +74,7 @@ COMMON_DEPEND="
 		libguess? ( >=app-i18n/libguess-1.0 )
 		uchardet? ( dev-libs/uchardet )
 	)
-	jack? ( media-sound/jack-audio-connection-kit )
+	jack? ( virtual/jack )
 	jpeg? ( virtual/jpeg:0 )
 	lcms? ( >=media-libs/lcms-2.6:2 )
 	libass? (
