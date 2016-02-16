@@ -9,3 +9,4 @@ move dev-python/socksipy dev-python/PySocks
 move x11-apps/ardesia x11-misc/ardesia
 slotmove <sci-libs/libint-2 0 1
 slotmove >=sci-libs/libint-2 0 2
+move dev-ml/pa_test dev-ml/ppx_assert
