@@ -7,7 +7,7 @@ EAPI=5
 EGO_PN="github.com/syncthing/syncthing"
 EGIT_COMMIT=v${PV}
 
-inherit golang-vcs-snapshot systemd
+inherit golang-vcs-snapshot systemd user
 
 DESCRIPTION="Syncthing is an open, trustworthy and decentralized cloud storage system"
 HOMEPAGE="http://syncthing.net"
@@ -20,6 +20,11 @@ IUSE=""
 
 DEPEND=""
 RDEPEND=""
+
+pkg_setup() {
+	enewgroup ${PN}
+	enewuser ${PN} -1 -1 /var/lib/${PN} ${PN}
+}
 
 src_compile() {
 	export GOPATH="${S}:$(get_golibdir_gopath)"
@@ -34,8 +39,15 @@ src_test() {
 
 src_install() {
 	cd src/${EGO_PN}
+	doman man/*.[157] || die
 	dobin bin/*
-	dodoc README.md AUTHORS  CONTRIBUTING.md
+	dodoc README.md AUTHORS CONTRIBUTING.md
 	systemd_dounit "${S}"/src/${EGO_PN}/etc/linux-systemd/system/${PN}@.service
 	systemd_douserunit "${S}"/src/${EGO_PN}/etc/linux-systemd/user/${PN}.service
+	newconfd "${FILESDIR}/${PN}.confd" ${PN}
+	newinitd "${FILESDIR}/${PN}.initd" ${PN}
+	keepdir /var/{lib,log}/${PN}
+	fowners ${PN}:${PN} /var/{lib,log}/${PN}
+	insinto /etc/logrotate.d
+	newins "${FILESDIR}/${PN}.logrotate" ${PN}
 }
