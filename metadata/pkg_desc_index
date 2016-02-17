@@ -6822,6 +6822,7 @@ dev-python/backports-unittest-mock 1.1.1: Backport of unittest.mock
 dev-python/bandit 0.12.0 0.13.0 0.13.1 0.13.2 0.13.2-r1 0.14.1 0.17.0 0.17.3: A security linter from OpenStack Security
 dev-python/basemap 1.0.7-r1: matplotlib toolkit to plot map projections
 dev-python/bashate 0.3.1: A pep8 equivalent for bash scripts
+dev-python/batinfo 0.3: A simple Python lib to retreive battery information
 dev-python/bcolz 0.10.0 0.11.3 0.12.1: Provides columnar and compressed data containers
 dev-python/bcrypt 1.1.1 2.0.0: Modern password hashing for software and servers
 dev-python/beaker 1.6.4-r1 1.7.0-r1: A Session and Caching library with WSGI Middleware
@@ -7006,7 +7007,7 @@ dev-python/djangocms-text-ckeditor 2.6.0 2.8.1: Text Plugin for django CMS with 
 dev-python/djangocms-video 0.1: Video plugin for django CMS
 dev-python/dnspython 1.12.0-r200 1.12.0-r300: DNS toolkit for Python
 dev-python/doc8 0.6.0: Style checker for Sphinx (or other) RST documentation
-dev-python/docker-py 1.1.0-r2 1.2.2 1.3.1 1.4.0 1.5.0: Python client for Docker
+dev-python/docker-py 1.1.0-r2 1.2.2 1.3.1 1.4.0 1.5.0 1.7.0: Python client for Docker
 dev-python/dockerpty 0.3.2 0.3.3 0.3.4: Python library to use the pseudo-tty of a docker container
 dev-python/docopt 0.6.2: Pythonic argument parser, that will make you smile
 dev-python/doctest-ignore-unicode 0.1.2: Add flag to ignore unicode literal prefixes in doctests
@@ -7186,6 +7187,7 @@ dev-python/imdbpy 4.9-r1 5.0: Python package to access the IMDb movie database
 dev-python/iminuit 1.2: Minuit numerical function minimization in Python
 dev-python/importing 1.10: Import objects dynamically, lazily, weakly, and more
 dev-python/inflect 0.2.5: Correctly inflect words and numbers
+dev-python/influxdb 2.12.0: InfluxDB client
 dev-python/iniparse 0.4-r1: Better INI parser for Python
 dev-python/inotifyx 0.2.2: Python bindings to the Linux inotify file system event monitoring API
 dev-python/intelhex 2.0: Python library for Intel HEX files manipulations
@@ -7387,7 +7389,7 @@ dev-python/numpy 1.8.2 1.9.2 1.9.3 1.10.1-r1 1.10.2-r2 1.10.4 9999: Fast array a
 dev-python/numpydoc 0.4-r1 0.5 0.6.0: Sphinx extension to support docstrings in Numpy format
 dev-python/oauth 1.0.1-r1: Python OAuth module
 dev-python/oauth2 1.5.211-r1 1.9.0_p1: Library for OAuth version 1.0
-dev-python/oauth2client 1.4.6 1.4.11 1.4.12 1.5.1 1.5.2: Library for accessing resources protected by OAuth 2.0
+dev-python/oauth2client 1.4.6 1.4.11 1.4.12 1.5.1 1.5.2 2.0.0: Library for accessing resources protected by OAuth 2.0
 dev-python/oauthlib 0.7.2 1.0.1: Spec-compliant and thorough implementation of the OAuth request-signing logic
 dev-python/objgraph 1.7.2 1.8.1: Draws Python object reference graphs with graphviz
 dev-python/oct2py 1.3.0-r1 3.3.3: Python to GNU Octave bridge
@@ -7503,6 +7505,7 @@ dev-python/pxml 0.2.11-r1 0.2.12: A python library and command-line tool to pret
 dev-python/py 1.4.30 1.4.31: library with cross-python path, ini-parsing, io, code, log facilities
 dev-python/py-amqp 1.4.5 1.4.6 1.4.7 1.4.8 1.4.9: Low-level AMQP client for Python (fork of amqplib)
 dev-python/py-bcrypt 0.4: py-bcrypt is an implementation of the OpenBSD Blowfish password hashing algorithm
+dev-python/py-cpuinfo 0.1.8: Get CPU info with pure Python 2 & 3
 dev-python/py-gfm 0.1.1: Github-Flavored Markdown for Python-Markdown
 dev-python/py-notify 0.3.1-r1: Tools for implementing the Observer programming pattern in Python
 dev-python/py-smbpasswd 1.0.1 1.0.1-r1: This module can generate both LANMAN and NT password hashes, suitable for use with Samba
@@ -7619,6 +7622,7 @@ dev-python/pylirc 0.0.5-r1: lirc module for Python
 dev-python/pylons 1.0.1-r1 1.0.2: Pylons Web Framework
 dev-python/pylzma 0.4.4-r1 0.4.5 0.4.6 0.4.8: Python bindings for the LZMA compression library
 dev-python/pymad 0.6 0.6-r1: Python wrapper for libmad MP3 decoding in python
+dev-python/pymdstat 0.4.2: Python library to parse Linux /proc/mdstat
 dev-python/pymediainfo 1.4.0 2.0: A wrapper around the mediainfo command
 dev-python/pymetar 0.19-r1: Downloads, decodes and provides access to the weather report for a given station ID
 dev-python/pyminuit 1.2.1: Minuit numerical function minimization in Python
@@ -7866,7 +7870,7 @@ dev-python/repoze-sphinx-autointerface 0.7.1: Sphinx extension: auto-generates A
 dev-python/repoze-who 2.2: repoze.who is an identification and authentication framework for WSGI.
 dev-python/requests 2.7.0 2.8.0 2.8.1 2.9.1-r2: HTTP library for human beings
 dev-python/requests-cache 0.4.9 0.4.10: Persistent cache for requests library
-dev-python/requests-mock 0.5.1 0.6.0: Mock out responses from the requests package
+dev-python/requests-mock 0.5.1 0.6.0 0.7.0: Mock out responses from the requests package
 dev-python/requests-oauthlib 0.4.1: This project provides first-class OAuth library support for Requests
 dev-python/responses 0.5.1: A utility for mocking out the Python Requests library
 dev-python/restkit 4.2.2: A HTTP ressource kit for Python
@@ -7982,6 +7986,7 @@ dev-python/ssh 1.8.0-r1: SSH2 protocol library
 dev-python/ssl-fetch 0.2 0.2.1 0.3 0.4 9999: A small convenience library for fetching files securely
 dev-python/starcluster 0.93.3-r2: Utility for creating / managing general purpose computing clusters
 dev-python/statistics 1.0.3.5: A Python 2.* port of 3.4 Statistics Module
+dev-python/statsd 3.2.1: A simple statsd client
 dev-python/statsmodels 0.5.0 0.6.1: Statistical computations and models for use with SciPy
 dev-python/steadymark 0.5.3: Markdown-based test runner for python
 dev-python/stevedore 1.1.0-r1 1.3.0 1.4.0-r1 1.6.0 1.6.0-r1 1.10.0: Manage dynamic plugins for Python applications
@@ -8148,6 +8153,7 @@ dev-python/yubiotp 0.2.1: Python library for verifying YubiKey OTP tokens, both 
 dev-python/zake 0.2.1: A python package that works to provide a nice set of testing utilities for the kazoo library.
 dev-python/zbase32 1.1.5: base32 encoder/decoder (not RFC 3548 compliant)
 dev-python/zc-buildout 2.3.1: System for managing development buildouts
+dev-python/zeroconf 0.17.4: Pure Python Multicast DNS Service Discovery Library (Bonjour/Avahi compatible)
 dev-python/zfec 1.4.24: Fast erasure codec which can be used with the command-line, C, Python, or Haskell
 dev-python/zope-component 4.2.2: Zope Component Architecture
 dev-python/zope-event 4.0.3 4.1.0: Event publishing / dispatch, used by Zope Component Architecture
@@ -17199,7 +17205,7 @@ sys-process/dcron 4.5-r1: A cute little cron from Matt Dillon
 sys-process/fcron 3.1.1 3.1.2-r2 3.2.0: A command scheduler with extended capabilities over cron and anacron
 sys-process/ftop 1.0: Monitor open files and filesystems
 sys-process/fuser-bsd 1142334561: fuser(1) utility for *BSD
-sys-process/glances 2.2.1 2.3 2.4.2: CLI curses based monitoring tool
+sys-process/glances 2.2.1 2.3 2.4.2 2.5.1: CLI curses based monitoring tool
 sys-process/htop 1.0.3 1.0.3-r1 2.0.0 2.0.0-r1: interactive process viewer
 sys-process/incron 0.5.10 0.5.10-r1: inotify based cron daemon
 sys-process/iotop 0.6: Top-like UI used to show which process is using the I/O
