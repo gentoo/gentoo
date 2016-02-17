@@ -395,7 +395,9 @@ src_install() {
 	multilib-minimal_src_install
 
 	# Remove unnecessary headers on FreeBSD, bug #417171
-	use kernel_FreeBSD && use clang && rm "${ED}"usr/lib/clang/${PV}/include/{std,float,iso,limits,tgmath,varargs}*.h
+	if use kernel_FreeBSD && use clang; then
+		rm "${ED}"usr/lib/clang/${PV}/include/{std,float,iso,limits,tgmath,varargs}*.h || die
+	fi
 }
 
 multilib_src_install() {
