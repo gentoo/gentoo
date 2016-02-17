@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -73,7 +73,6 @@ COMMON_DEP="dev-java/ant-core:0
 
 DEPEND="${COMMON_DEP}
 	=virtual/jdk-1.7*
-	java-virtuals/jdk-with-com-sun:0
 	!binary? (
 		dev-java/ant-contrib:0
 	)
