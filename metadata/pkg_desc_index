@@ -11559,8 +11559,8 @@ mail-client/pinepgp 0.18.0-r1: Use GPG/PGP with Pine
 mail-client/roundcube 1.1.4 1.2_beta: A browser-based multilingual IMAP client with an application-like user interface
 mail-client/squirrelmail 1.4.23_pre20140426: Webmail for nuts!
 mail-client/sylpheed 3.4.2 3.4.3 3.4.3-r1: A lightweight email client and newsreader
-mail-client/thunderbird 24.8.0 31.8.0 38.4.0 38.5.0 38.6.0: Thunderbird Mail Client
-mail-client/thunderbird-bin 31.8.0 38.4.0 38.5.0: Thunderbird Mail Client
+mail-client/thunderbird 24.8.0 31.8.0 38.5.0 38.6.0: Thunderbird Mail Client
+mail-client/thunderbird-bin 31.8.0 38.5.0 38.6.0: Thunderbird Mail Client
 mail-client/trojita 0.4.1 0.5 0.6 9999: A Qt IMAP e-mail client
 mail-filter/MailScanner 4.84.5.2: Free Anti-Virus and Anti-Spam Filter
 mail-filter/amavisd-milter 1.5.0 1.5.0-r1 1.6.0 1.6.0-r1: sendmail milter for amavisd-new
