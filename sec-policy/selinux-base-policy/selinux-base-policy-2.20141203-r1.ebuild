@@ -11,12 +11,6 @@ if [[ ${PV} == 9999* ]]; then
 	EGIT_SOURCEDIR="${WORKDIR}/refpolicy"
 
 	inherit git-2
-
-	if [[ $PV == 9999* ]] ; then
-	KEYWORDS=""
-else
-	KEYWORDS="amd64 x86"
-fi
 else
 	SRC_URI="https://raw.githubusercontent.com/wiki/TresysTechnology/refpolicy/files/refpolicy-${PV}.tar.bz2
 			https://dev.gentoo.org/~swift/patches/${PN}/patchbundle-${PN}-${PVR}.tar.bz2"
@@ -31,11 +25,6 @@ IUSE="+unconfined"
 RDEPEND="=sec-policy/selinux-base-${PVR}"
 PDEPEND="unconfined? ( sec-policy/selinux-unconfined )"
 DEPEND=""
-if [[ $PV == 9999* ]] ; then
-	KEYWORDS=""
-else
-	KEYWORDS="amd64 x86"
-fi
 
 MODS="application authlogin bootloader clock consoletype cron dmesg fstools getty hostname hotplug init iptables libraries locallogin logging lvm miscfiles modutils mount mta netutils nscd portage raid rsync selinuxutil setrans ssh staff storage su sysadm sysnetwork tmpfiles udev userdomain usermanage unprivuser xdg"
 LICENSE="GPL-2"
