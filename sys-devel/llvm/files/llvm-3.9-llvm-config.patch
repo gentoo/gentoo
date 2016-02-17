@@ -52,24 +52,3 @@ diff -Naur llvm-9999.orig/tools/llvm-config/llvm-config.cpp llvm-9999/tools/llvm
        } else if (Arg == "--link-shared") {
          LinkMode = LinkModeShared;
        } else if (Arg == "--link-static") {
-diff -Naur llvm-9999.orig/utils/llvm-build/llvmbuild/main.py llvm-9999/utils/llvm-build/llvmbuild/main.py
---- llvm-9999.orig/utils/llvm-build/llvmbuild/main.py	2016-01-25 14:47:55.511301054 +0100
-+++ llvm-9999/utils/llvm-build/llvmbuild/main.py	2016-01-25 14:58:13.014228689 +0100
-@@ -393,6 +393,8 @@
- //
- //===----------------------------------------------------------------------===//
- 
-+#include "llvm/Config/config.h"
-+
- """)
-         f.write('struct AvailableComponent {\n')
-         f.write('  /// The name of the component.\n')
-@@ -413,7 +415,7 @@
-             if library_name is None:
-                 library_name_as_cstr = 'nullptr'
-             else:
--                library_name_as_cstr = '"lib%s.a"' % library_name
-+                library_name_as_cstr = '"lib%s" LTDL_SHLIB_EXT' % library_name
-             if is_installed:
-                 is_installed_as_cstr = 'true'
-             else:
