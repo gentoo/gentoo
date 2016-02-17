@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -13,7 +13,7 @@ HOMEPAGE="http://openvpn.net/"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~sparc-fbsd ~x86-fbsd ~x86-freebsd ~amd64-linux ~arm-linux ~x86-linux"
-IUSE="examples down-root iproute2 libressl +lzo pam passwordsave pkcs11 +plugins polarssl selinux socks +ssl static systemd userland_BSD"
+IUSE="examples down-root iproute2 libressl +lzo pam pkcs11 +plugins polarssl selinux socks +ssl static systemd userland_BSD"
 
 REQUIRED_USE="static? ( !plugins !pkcs11 )
 			polarssl? ( ssl !libressl )
@@ -30,7 +30,7 @@ DEPEND="
 			!libressl? ( >=dev-libs/openssl-0.9.7:* )
 			libressl? ( dev-libs/libressl )
 		)
-		polarssl? ( >=net-libs/polarssl-1.2.10 )
+		polarssl? ( >=net-libs/polarssl-1.3.8 )
 	)
 	lzo? ( >=dev-libs/lzo-1.07 )
 	pkcs11? ( >=dev-libs/pkcs11-helper-1.11 )
@@ -38,6 +38,10 @@ DEPEND="
 RDEPEND="${DEPEND}
 	selinux? ( sec-policy/selinux-openvpn )
 "
+
+src_prepare() {
+	epatch "${FILESDIR}"/${P}-fix-libressl.patch
+}
 
 src_configure() {
 	use static && LDFLAGS="${LDFLAGS} -Xcompiler -static"
@@ -47,7 +51,6 @@ src_configure() {
 		${myconf} \
 		--docdir="${EPREFIX}/usr/share/doc/${PF}" \
 		--with-plugindir="${ROOT}/usr/$(get_libdir)/$PN" \
-		$(use_enable passwordsave password-save) \
 		$(use_enable ssl) \
 		$(use_enable ssl crypto) \
 		$(use_enable lzo) \

@@ -42,6 +42,7 @@
 # Breaks some of its reverse dependencies.
 # Bug 574788
 >=media-video/ffmpeg-3.0
+>=media-video/mplayer-1.3.0
 
 # Michael Palimaka <kensington@gentoo.org> (12 Feb 2016)
 # Fails to build. No revdeps. Masked for removal in 30 days.
