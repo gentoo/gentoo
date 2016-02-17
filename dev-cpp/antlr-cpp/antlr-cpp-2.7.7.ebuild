@@ -25,7 +25,7 @@ IUSE="doc examples static-libs"
 RESTRICT="test" # No tests but test target blows up!
 
 DEPEND="doc? ( app-doc/doxygen )"
-RDEPEND="!!dev-java/antlr:0[cxx]"
+RDEPEND="!dev-java/antlr:0[cxx]"
 
 S="${WORKDIR}/${MY_P}"
 DOCS=( lib/cpp/AUTHORS lib/cpp/ChangeLog lib/cpp/README lib/cpp/TODO )
