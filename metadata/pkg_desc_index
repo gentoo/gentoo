@@ -11244,6 +11244,7 @@ kde-base/ksysguard 4.11.19 4.11.22: KSysguard is a network enabled task manager 
 kde-base/ksystraycmd 4.11.19 4.11.22: Ksystraycmd embeds applications given as argument into the system tray
 kde-base/kwin 4.11.19 4.11.22: KDE window manager
 kde-base/kwrited 4.11.19 4.11.22: KDE daemon listening for wall and write messages
+kde-base/legacy-icons 4.11.22: KDE legacy icons
 kde-base/libkgreeter 4.11.19 4.11.22: Conversation widgets for KDM greeter
 kde-base/libkworkspace 4.11.19 4.11.22: A library for KDE desktop applications
 kde-base/liboxygenstyle 4.11.19 4.11.22: Library to support the Oxygen style in KDE
@@ -11262,7 +11263,7 @@ kde-base/smokegen 4.14.3: Scripting Meta Object Kompiler Engine - generators
 kde-base/smokekde 4.14.3: Scripting Meta Object Kompiler Engine - KDE bindings
 kde-base/smokeqt 4.14.3-r1: Scripting Meta Object Kompiler Engine - Qt bindings
 kde-base/solid-actions-kcm 4.11.19 4.11.22: KDE control module for Solid actions
-kde-base/systemsettings 4.11.19 4.11.22: System settings utility
+kde-base/systemsettings 4.11.19 4.11.22-r1: System settings utility
 kde-frameworks/attica 5.17.0 5.18.0 5.19.0: Framework providing access to Open Collaboration Services
 kde-frameworks/baloo 5.17.0 5.18.0 5.19.0: Framework for searching and managing metadata
 kde-frameworks/bluez-qt 5.17.0 5.18.0 5.19.0: Qt wrapper for Bluez 5 DBus API
