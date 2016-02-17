@@ -32,6 +32,9 @@ IUSE="crosscompile_opts_headers-only"
 
 RDEPEND="!sys-apps/getent"
 
+QA_SONAME="/usr/lib/libc.so"
+QA_DT_NEEDED="/usr/lib/libc.so"
+
 is_crosscompile() {
 	[[ ${CHOST} != ${CTARGET} ]]
 }
@@ -78,7 +81,7 @@ src_configure() {
 }
 
 src_compile() {
-	emake include/bits/alltypes.h
+	emake obj/include/bits/alltypes.h
 	just_headers && return 0
 
 	emake
