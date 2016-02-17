@@ -10,5 +10,5 @@ RDEPEND=>=net-libs/ptlib-2.6.4:=[wav] aec? ( >=media-libs/speex-1.2_rc1 ) sound?
 SLOT=0/1.25.0
 SRC_URI=mirror://sourceforge/h323plus/h323plus-v1_25_0.tar.gz
 _eclass_exported_funcs=src_prepare:- src_configure:- src_compile:-
-_eclasses_=eutils	28fb3e5852485af1c348d446b0b98389	flag-o-matic	d270fa247153df66074f795fa42dba3e	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=eutils	9d81603248f2ba3ec59124320d123e5e	flag-o-matic	d270fa247153df66074f795fa42dba3e	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=f10b760fc299e156cb1e67d81cf83358

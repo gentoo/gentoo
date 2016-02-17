@@ -10,5 +10,5 @@ RDEPEND=dev-python/pygtk:2 dev-python/pygobject:2 dev-python/dbus-python sci-ele
 SLOT=0
 SRC_URI=http://geda.seul.org/dist/geda-xgsch2pcb-0.1.3.tar.gz
 _eclass_exported_funcs=pkg_preinst:- pkg_postrm:- pkg_postinst:- pkg_setup:- src_prepare:- src_configure:- src_install:-
-_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	28fb3e5852485af1c348d446b0b98389	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	gnome2-utils	d19e7813f27c8f982134d657889b13cf	libtool	b75230758539a7da029e24afdb693960	multilib	3972ca401cf7dbb430df9995f5d8d580	python	efc1c55fc44c5b7272fc2ffba73c3e6f	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	xdg-utils	e2b2bd56125ce8cf59ce30c642b59d48
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	9d81603248f2ba3ec59124320d123e5e	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	gnome2-utils	d19e7813f27c8f982134d657889b13cf	libtool	b75230758539a7da029e24afdb693960	multilib	3972ca401cf7dbb430df9995f5d8d580	python	efc1c55fc44c5b7272fc2ffba73c3e6f	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	xdg-utils	e2b2bd56125ce8cf59ce30c642b59d48
 _md5_=0495d3b18164d23f16c326d5069474a1

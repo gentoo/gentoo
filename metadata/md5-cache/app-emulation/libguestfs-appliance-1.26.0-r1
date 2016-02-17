@@ -9,5 +9,5 @@ RDEPEND=!<app-emulation/libguestfs-1.26.0
 SLOT=0
 SRC_URI=http://libguestfs.org/download/binaries/appliance/appliance-1.26.0.tar.xz
 _eclass_exported_funcs=pkg_pretend:check-reqs pkg_setup:check-reqs src_unpack:- src_install:-
-_eclasses_=check-reqs	aee25bdf4e2f459af86d17f7c41dcdf6	eutils	28fb3e5852485af1c348d446b0b98389	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=check-reqs	aee25bdf4e2f459af86d17f7c41dcdf6	eutils	9d81603248f2ba3ec59124320d123e5e	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=f5c7e17f59bbd1765fa4e1aaf387097b

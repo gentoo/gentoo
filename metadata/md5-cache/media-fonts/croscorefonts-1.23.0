@@ -10,5 +10,5 @@ RESTRICT=binchecks strip test
 SLOT=0
 SRC_URI=http://commondatastorage.googleapis.com/chromeos-localmirror/distfiles/croscorefonts-1.23.0.tar.gz
 _eclass_exported_funcs=pkg_postrm:font pkg_postinst:font pkg_setup:font src_install:font
-_eclasses_=eutils	28fb3e5852485af1c348d446b0b98389	font	cd7790315ca5b8c505e1e0513df6acce	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=eutils	9d81603248f2ba3ec59124320d123e5e	font	cd7790315ca5b8c505e1e0513df6acce	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=fe1456169bd117938014224bdb059d0e

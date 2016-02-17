@@ -9,5 +9,5 @@ RDEPEND=>=dev-lang/mono-2.0 >=gnome-base/libgnome-keyring-2.30.0 || ( >=dev-dotn
 SLOT=0
 SRC_URI=http://www.go-mono.com/archive/gnome-keyring-sharp/gnome-keyring-sharp-1.0.2.tar.gz
 _eclass_exported_funcs=pkg_setup:mono-env src_prepare:- src_compile:- src_install:-
-_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	28fb3e5852485af1c348d446b0b98389	libtool	b75230758539a7da029e24afdb693960	mono-env	10809200679bcceefebac9e72bebb6e6	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	9d81603248f2ba3ec59124320d123e5e	libtool	b75230758539a7da029e24afdb693960	mono-env	10809200679bcceefebac9e72bebb6e6	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=98c2c1c19fc002b32f23bbeee12dc6a6

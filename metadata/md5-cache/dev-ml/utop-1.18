@@ -10,5 +10,5 @@ RDEPEND=>=dev-ml/lwt-2.4.0:=[react] >=dev-ml/lambda-term-1.2:= >=dev-ml/zed-1.2:
 SLOT=0/1.18
 SRC_URI=https://github.com/diml/utop/archive/1.18.tar.gz -> utop-1.18.tar.gz
 _eclass_exported_funcs=pkg_postrm:- pkg_postinst:- src_unpack:base src_prepare:- src_configure:- src_compile:- src_test:oasis src_install:-
-_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	elisp-common	9f56c4e9bf1282dbfc2a5a09e1124e74	eutils	28fb3e5852485af1c348d446b0b98389	findlib	9909e5ca0f77ff5b693885a3d7aeadb7	multilib	3972ca401cf7dbb430df9995f5d8d580	oasis	dab31007fb098ff15db810bfe5001e64	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	elisp-common	9f56c4e9bf1282dbfc2a5a09e1124e74	eutils	9d81603248f2ba3ec59124320d123e5e	findlib	9909e5ca0f77ff5b693885a3d7aeadb7	multilib	3972ca401cf7dbb430df9995f5d8d580	oasis	dab31007fb098ff15db810bfe5001e64	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=7ed284f8790692925ea97be444918656

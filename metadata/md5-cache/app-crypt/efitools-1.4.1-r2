@@ -9,5 +9,5 @@ RDEPEND=dev-libs/openssl sys-apps/util-linux
 SLOT=0
 SRC_URI=https://build.opensuse.org/package/rawsourcefile/home:jejb1:UEFI/efitools/efitools-1.4.1.tar.gz
 _eclass_exported_funcs=src_prepare:-
-_eclasses_=eutils	28fb3e5852485af1c348d446b0b98389	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=eutils	9d81603248f2ba3ec59124320d123e5e	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=dcd2e7f181cba886fb5afa66243e9f39

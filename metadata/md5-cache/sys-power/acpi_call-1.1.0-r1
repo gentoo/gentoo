@@ -10,5 +10,5 @@ RDEPEND=kernel_linux? ( virtual/modutils )
 SLOT=0
 SRC_URI=https://github.com/mkottman/acpi_call/archive/v1.1.0.tar.gz -> acpi_call-1.1.0.tar.gz
 _eclass_exported_funcs=pkg_preinst:linux-mod pkg_postrm:linux-mod pkg_postinst:linux-mod pkg_setup:linux-mod src_unpack:vcs-snapshot src_prepare:- src_compile:- src_install:linux-mod
-_eclasses_=eutils	28fb3e5852485af1c348d446b0b98389	linux-info	fd1e29abbb02cbc49f1a14299846e9c4	linux-mod	4755518412586c2fd655ff6e55780bcb	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	vcs-snapshot	b45be87e7012be0af8424e8a5644da1d	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=eutils	9d81603248f2ba3ec59124320d123e5e	linux-info	fd1e29abbb02cbc49f1a14299846e9c4	linux-mod	4755518412586c2fd655ff6e55780bcb	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	vcs-snapshot	b45be87e7012be0af8424e8a5644da1d	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=cf7f330426a23ee9cea201ffa2ef65c5

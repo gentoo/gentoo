@@ -10,5 +10,5 @@ RDEPEND=>=dev-haskell/cpphs-1.11:=[profile?] >=dev-haskell/haskell-src-exts-1.14
 SLOT=0/1.8.55
 SRC_URI=mirror://hackage/packages/archive/hlint/1.8.55/hlint-1.8.55.tar.gz
 _eclass_exported_funcs=pkg_postrm:- pkg_postinst:- pkg_setup:haskell-cabal src_configure:- src_compile:- src_test:haskell-cabal src_install:-
-_eclasses_=elisp-common	9f56c4e9bf1282dbfc2a5a09e1124e74	eutils	28fb3e5852485af1c348d446b0b98389	ghc-package	892c6c35a9ac0993e65049c039438508	haskell-cabal	2d9bae28d8a91ec04d1bb1ef0071c64f	multilib	3972ca401cf7dbb430df9995f5d8d580	multiprocessing	e32940a7b2a9992ad217eccddb84d548	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=elisp-common	9f56c4e9bf1282dbfc2a5a09e1124e74	eutils	9d81603248f2ba3ec59124320d123e5e	ghc-package	892c6c35a9ac0993e65049c039438508	haskell-cabal	2d9bae28d8a91ec04d1bb1ef0071c64f	multilib	3972ca401cf7dbb430df9995f5d8d580	multiprocessing	e32940a7b2a9992ad217eccddb84d548	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=07379b6af1efca32ac9377a749333aac

@@ -10,5 +10,5 @@ RESTRICT=test
 SLOT=0
 SRC_URI=mirror://sourceforge/jadetex/jadetex-3.13.tar.gz
 _eclass_exported_funcs=pkg_postrm:- pkg_postinst:- src_unpack:base src_prepare:base src_configure:base src_compile:- src_install:-
-_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	28fb3e5852485af1c348d446b0b98389	latex-package	343898697e1130e0665632129e623648	multilib	3972ca401cf7dbb430df9995f5d8d580	texlive-common	cf8d3d36261adafe564b821b75b34a05	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	9d81603248f2ba3ec59124320d123e5e	latex-package	343898697e1130e0665632129e623648	multilib	3972ca401cf7dbb430df9995f5d8d580	texlive-common	cf8d3d36261adafe564b821b75b34a05	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=0d2e3a1939b15e181b279dcc809e0f6e

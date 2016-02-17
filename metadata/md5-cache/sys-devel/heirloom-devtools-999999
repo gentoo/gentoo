@@ -7,5 +7,5 @@ LICENSE=BSD BSD-4 CDDL
 RDEPEND=app-shells/heirloom-sh
 SLOT=0
 _eclass_exported_funcs=pkg_postinst:- src_unpack:cvs src_prepare:- src_compile:- src_install:-
-_eclasses_=cvs	e94c89c58918dff87fa3db1e817c25be	eutils	28fb3e5852485af1c348d446b0b98389	flag-o-matic	d270fa247153df66074f795fa42dba3e	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=cvs	e94c89c58918dff87fa3db1e817c25be	eutils	9d81603248f2ba3ec59124320d123e5e	flag-o-matic	d270fa247153df66074f795fa42dba3e	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=b93a7cd76d4495e851c331dee7be7777

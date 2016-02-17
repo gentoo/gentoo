@@ -9,5 +9,5 @@ RDEPEND=sci-libs/cfitsio:0= sci-astronomy/wcslib:0= sys-libs/readline:0= virtual
 SLOT=0
 SRC_URI=https://casacore.googlecode.com/files/casacore-1.5.0.tar.bz2
 _eclass_exported_funcs=pkg_setup:- src_prepare:cmake-utils src_configure:- src_compile:- src_test:cmake-utils src_install:-
-_eclasses_=cmake-utils	c67ce9708a9c02be2d296cf547740e9c	eutils	28fb3e5852485af1c348d446b0b98389	flag-o-matic	d270fa247153df66074f795fa42dba3e	fortran-2	8200fc942c3b3c1fc75d4d5bfd0ba7a2	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=cmake-utils	c67ce9708a9c02be2d296cf547740e9c	eutils	9d81603248f2ba3ec59124320d123e5e	flag-o-matic	d270fa247153df66074f795fa42dba3e	fortran-2	8200fc942c3b3c1fc75d4d5bfd0ba7a2	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=107425fd1fa64362cc8d81c552a54211

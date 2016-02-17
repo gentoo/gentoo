@@ -10,5 +10,5 @@ RESTRICT=strip binchecks
 SLOT=0
 SRC_URI=http://vico.kleinplanet.de/files/vc-fonts-20020207.tar.bz2 mirror://gentoo/bleed3.bdf.gz
 _eclass_exported_funcs=pkg_postrm:font pkg_postinst:font pkg_setup:font src_unpack:- src_compile:font-ebdftopcf src_install:font
-_eclasses_=eutils	28fb3e5852485af1c348d446b0b98389	font	cd7790315ca5b8c505e1e0513df6acce	font-ebdftopcf	2152f6c46f91648120cdb689c0895d58	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=eutils	9d81603248f2ba3ec59124320d123e5e	font	cd7790315ca5b8c505e1e0513df6acce	font-ebdftopcf	2152f6c46f91648120cdb689c0895d58	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=7efa09dd1b2805af9c45e72b8f1abf87

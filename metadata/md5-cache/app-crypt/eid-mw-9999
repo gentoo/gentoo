@@ -9,5 +9,5 @@ RDEPEND=gtk? ( x11-libs/gtk+:* ) >=sys-apps/pcsc-lite-1.2.9 xpi? ( || ( >=www-cl
 REQUIRED_USE=dialogs? ( gtk )
 SLOT=0
 _eclass_exported_funcs=src_unpack:git-2 src_prepare:- src_configure:- src_install:-
-_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	28fb3e5852485af1c348d446b0b98389	git-2	df00117322129fb906bb0a53c3d6a020	libtool	b75230758539a7da029e24afdb693960	mozextension	3d8ee4835f89ff39d4666656aa603433	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	9d81603248f2ba3ec59124320d123e5e	git-2	df00117322129fb906bb0a53c3d6a020	libtool	b75230758539a7da029e24afdb693960	mozextension	3d8ee4835f89ff39d4666656aa603433	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=ef5294a110aff6d54eb24e6815b0aaf9

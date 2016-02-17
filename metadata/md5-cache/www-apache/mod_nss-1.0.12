@@ -10,5 +10,5 @@ RDEPEND=>=dev-libs/nss-3.11.4 >=dev-libs/nspr-4.6.4 net-dns/bind-tools =www-serv
 SLOT=0
 SRC_URI=https://fedorahosted.org/released/mod_nss/mod_nss-1.0.12.tar.gz
 _eclass_exported_funcs=pkg_postinst:apache-module pkg_setup:depend.apache src_prepare:- src_configure:- src_compile:- src_install:-
-_eclasses_=apache-module	5e66430013d92dfe0bf8672b05319b6d	autotools	07e71b3b5690738ef7e8bc097077e00c	depend.apache	e3c541cb90838388f81620d630c28f41	eutils	28fb3e5852485af1c348d446b0b98389	libtool	b75230758539a7da029e24afdb693960	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=apache-module	5e66430013d92dfe0bf8672b05319b6d	autotools	07e71b3b5690738ef7e8bc097077e00c	depend.apache	e3c541cb90838388f81620d630c28f41	eutils	9d81603248f2ba3ec59124320d123e5e	libtool	b75230758539a7da029e24afdb693960	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=5398901f475ef7c2ab115715ebd94e71

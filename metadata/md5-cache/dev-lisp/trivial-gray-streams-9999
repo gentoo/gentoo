@@ -9,5 +9,5 @@ RDEPEND=!dev-lisp/cl-trivial-gray-streams
 RESTRICT=mirror
 SLOT=0
 _eclass_exported_funcs=src_unpack:git-2 src_compile:common-lisp-3 src_install:common-lisp-3
-_eclasses_=common-lisp-3	732b3b6e2021a252e13158c86e4ea4d0	eutils	28fb3e5852485af1c348d446b0b98389	git-2	df00117322129fb906bb0a53c3d6a020	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=common-lisp-3	732b3b6e2021a252e13158c86e4ea4d0	eutils	9d81603248f2ba3ec59124320d123e5e	git-2	df00117322129fb906bb0a53c3d6a020	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=7aa2ee792584889d90dc4902f0d886a4

@@ -8,5 +8,5 @@ RDEPEND=!=sci-biology/meme-4.8.1
 SLOT=0
 SRC_URI=ftp://mama.indstate.edu/linux/tree/tree-1.7.0.tgz
 _eclass_exported_funcs=src_prepare:- src_compile:- src_install:-
-_eclasses_=bash-completion-r1	acf715fa09463f043fbfdc1640f3fb85	eutils	28fb3e5852485af1c348d446b0b98389	flag-o-matic	d270fa247153df66074f795fa42dba3e	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=bash-completion-r1	acf715fa09463f043fbfdc1640f3fb85	eutils	9d81603248f2ba3ec59124320d123e5e	flag-o-matic	d270fa247153df66074f795fa42dba3e	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=cc6ff4a27b875d8c5f8aa252b0b8ad37

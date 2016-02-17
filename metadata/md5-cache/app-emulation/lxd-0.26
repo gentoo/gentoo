@@ -10,5 +10,5 @@ RDEPEND=daemon? ( app-admin/cgmanager app-arch/xz-utils app-emulation/lxc[cgmana
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~stasibear/distfiles/lxd-0.26.tar.bz2
 _eclass_exported_funcs=pkg_postinst:- src_unpack:vcs-snapshot src_prepare:- src_compile:- src_test:- src_install:-
-_eclasses_=bash-completion-r1	acf715fa09463f043fbfdc1640f3fb85	eutils	28fb3e5852485af1c348d446b0b98389	golang-base	1f6a08c05da2d91150032ff45db6a2c5	golang-build	a44f10e6bd86ecccf2a07cc0d4cf6bec	l10n	714aaf78929eade946da5eaff7d2001a	multilib	3972ca401cf7dbb430df9995f5d8d580	systemd	3165c885f3c71ffae7a867d931fb0e07	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	user	906f3c8eb3a2350a4f1191a89baa3e46	vcs-snapshot	b45be87e7012be0af8424e8a5644da1d
+_eclasses_=bash-completion-r1	acf715fa09463f043fbfdc1640f3fb85	eutils	9d81603248f2ba3ec59124320d123e5e	golang-base	1f6a08c05da2d91150032ff45db6a2c5	golang-build	a44f10e6bd86ecccf2a07cc0d4cf6bec	l10n	714aaf78929eade946da5eaff7d2001a	multilib	3972ca401cf7dbb430df9995f5d8d580	systemd	3165c885f3c71ffae7a867d931fb0e07	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	user	906f3c8eb3a2350a4f1191a89baa3e46	vcs-snapshot	b45be87e7012be0af8424e8a5644da1d
 _md5_=25eb69a22843a8caa6cd1c67bbefe4cf

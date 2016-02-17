@@ -11,5 +11,5 @@ RDEPEND=dev-libs/expat >=sci-physics/clhep-2.1.3:2= dawn? ( media-gfx/dawn ) gdm
 SLOT=4
 SRC_URI=http://geant4.cern.ch/support/source/geant4.10.01.tar.gz
 _eclass_exported_funcs=pkg_postinst:- pkg_setup:fortran-2 src_prepare:- src_configure:- src_compile:cmake-utils src_test:cmake-utils src_install:-
-_eclasses_=cmake-utils	c67ce9708a9c02be2d296cf547740e9c	eutils	28fb3e5852485af1c348d446b0b98389	flag-o-matic	d270fa247153df66074f795fa42dba3e	fortran-2	8200fc942c3b3c1fc75d4d5bfd0ba7a2	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=cmake-utils	c67ce9708a9c02be2d296cf547740e9c	eutils	9d81603248f2ba3ec59124320d123e5e	flag-o-matic	d270fa247153df66074f795fa42dba3e	fortran-2	8200fc942c3b3c1fc75d4d5bfd0ba7a2	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=5da9c2820438f908468d7891ea9889df

@@ -10,5 +10,5 @@ RDEPEND=>=app-text/podofo-0.8.2:= >=app-text/poppler-0.12.3-r3:=[qt4,xpdf-header
 SLOT=0
 SRC_URI=http://sourceforge.net/projects/calibre/files/1.20.0/calibre-1.20.0.tar.xz
 _eclass_exported_funcs=pkg_postinst:- src_prepare:- src_install:-
-_eclasses_=bash-completion-r1	acf715fa09463f043fbfdc1640f3fb85	eutils	28fb3e5852485af1c348d446b0b98389	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=bash-completion-r1	acf715fa09463f043fbfdc1640f3fb85	eutils	9d81603248f2ba3ec59124320d123e5e	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=eafbf4471459b9da1dc5b6edeb8a3dcf

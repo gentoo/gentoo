@@ -10,5 +10,5 @@ RDEPEND=virtual/perl-MIME-Base64 virtual/perl-Socket virtual/perl-Sys-Syslog vir
 SLOT=0
 SRC_URI=minimal? ( mirror://sourceforge/webadmin/webmin-1.770-minimal.tar.gz ) !minimal? ( mirror://sourceforge/webadmin/webmin-1.770.tar.gz )
 _eclass_exported_funcs=pkg_prerm:- pkg_preinst:- pkg_postrm:- pkg_postinst:- src_prepare:- src_install:-
-_eclasses_=eutils	28fb3e5852485af1c348d446b0b98389	flag-o-matic	d270fa247153df66074f795fa42dba3e	multilib	3972ca401cf7dbb430df9995f5d8d580	pam	3ecd5b75e39b0bb05a3183c08fcdfdb4	ssl-cert	e90a74de57c48ea6c058b1cb3a735907	systemd	3165c885f3c71ffae7a867d931fb0e07	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=eutils	9d81603248f2ba3ec59124320d123e5e	flag-o-matic	d270fa247153df66074f795fa42dba3e	multilib	3972ca401cf7dbb430df9995f5d8d580	pam	3ecd5b75e39b0bb05a3183c08fcdfdb4	ssl-cert	e90a74de57c48ea6c058b1cb3a735907	systemd	3165c885f3c71ffae7a867d931fb0e07	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=28af9faa5c3524834c0ef5445770c5cf
