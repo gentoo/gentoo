@@ -5,7 +5,14 @@
     <email>sci@gentoo.org</email>
     <name>Gentoo Science Project</name>
   </maintainer>
+  <longdescription>
+    netcdf4-python is a Python interface to the netCDF C library.
+    netCDF version 4 can read and write files in both the new netCDF 4
+    and the old netCDF 3 format, and can create files that are readable
+    by HDF5 clients. The API modelled after Scientific.IO.NetCDF, and 
+    should be familiar to users of that module.
+  </longdescription>
   <upstream>
-    <remote-id type="github">Unidata/netcdf4-python</remote-id>
+    <remote-id type="pypi">netCDF4</remote-id>
   </upstream>
 </pkgmetadata>
