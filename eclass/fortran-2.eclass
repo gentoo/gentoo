@@ -27,6 +27,13 @@
 #
 # FORTRAN_NEED_OPENMP=1
 
+inherit eutils toolchain-funcs
+
+case ${EAPI:-0} in
+	0|1|2|3|4|5|6) EXPORT_FUNCTIONS pkg_setup ;;
+	*) die "EAPI=${EAPI} is not supported" ;;
+esac
+
 if [[ ! ${_FORTRAN_2_CLASS} ]]; then
 
 # @ECLASS-VARIABLE: FORTRAN_NEED_OPENMP
@@ -55,8 +62,6 @@ if [[ ! ${_FORTRAN_2_CLASS} ]]; then
 #
 # If unset, we always depend on virtual/fortran.
 : ${FORTRAN_NEEDED:=always}
-
-inherit eutils toolchain-funcs
 
 for _f_use in ${FORTRAN_NEEDED}; do
 	case ${_f_use} in
@@ -194,7 +199,7 @@ _fortran_die_msg() {
 	eerror "set FC variable accordingly and take care that the necessary"
 	eerror "fortran dialects are supported."
 	echo
-	die "Currently no working fortran compiler is available"
+	die "Currently no working fortran compiler is available (see ${T}/_fortran_compile_test.log for information)"
 }
 
 # @FUNCTION: _fortran_test_function
@@ -285,11 +290,6 @@ fortran-2_pkg_setup() {
 			;;
 	esac
 }
-
-case ${EAPI:-0} in
-	0|1|2|3|4|5|6) EXPORT_FUNCTIONS pkg_setup ;;
-	*) die "EAPI=${EAPI} is not supported" ;;
-esac
 
 _FORTRAN_2_ECLASS=1
 fi
