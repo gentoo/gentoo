@@ -46,7 +46,7 @@ src_prepare() {
 
 src_configure() {
 	tc-export CC
-	./configure $(use pam && echo --without-pam) || die
+	./configure $(usex pam '' '--without-pam') || die
 
 	sed -i \
 		-e "s:-pipe -O2:${CFLAGS}:" \
