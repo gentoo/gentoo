@@ -1,0 +1,34 @@
+#!/sbin/runscript
+# Copyright 1999-2016 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+SYNCTHING_USER=${SYNCTHING_USER:-syncthing}
+SYNCTHING_GROUP=${SYNCTHING_GROUP:-syncthing}
+SYNCTHING_HOMEDIR=${SYNCTHING_HOMEDIR:-/var/lib/syncthing}
+SYNCTHING_LOGFILE=${SYNCTHING_LOGFILE:-/var/log/syncthing/syncthing.log}
+SYNCTHING_UMASK=${SYNCTHING_UMASK:-007}
+SYNCTHING_IONICE=${SYNCTHING_IONICE:-0}
+SYNCTHING_NICE=${SYNCTHING_NICE:-0}
+
+description="Syncthing is an open, trustworthy and decentralized cloud storage system"
+command="/usr/bin/syncthing"
+command_args="-no-browser -home=${SYNCTHING_HOMEDIR} ${SYNCTHING_OPTS}"
+pidfile="/run/syncthing.pid"
+start_stop_daemon_args="--background \
+  --user ${SYNCTHING_USER} \
+  --group ${SYNCTHING_GROUP} \
+  --umask ${SYNCTHING_UMASK} \
+  --make-pidfile \
+  --ionice ${SYNCTHING_IONICE} \
+  --nicelevel ${SYNCTHING_NICE} \
+  --stdout ${SYNCTHING_LOGFILE} \
+  --stderr ${SYNCTHING_LOGFILE}"
+
+depend() {
+  need localmount net
+}
+
+start_pre() {
+  checkpath -q -d -o ${SYNCTHING_USER}:${SYNCTHING_GROUP} ${SYNCTHING_HOMEDIR}
+  checkpath -q -f -o ${SYNCTHING_USER}:${SYNCTHING_GROUP} ${SYNCTHING_LOGFILE}
+}
