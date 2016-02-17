@@ -6,9 +6,9 @@ HOMEPAGE=https://www.kde.org/
 IUSE=aqua
 KEYWORDS=~amd64 ~arm ~ppc ~ppc64 ~x86 ~x86-fbsd ~amd64-linux ~x86-linux
 LICENSE=GPL-2
-RDEPEND=|| ( >=kde-base/kactivitymanagerd-4.13.3:4[aqua=] kde-frameworks/kactivities:5 ) kde-frameworks/oxygen-icons >=dev-qt/qtdeclarative-4.8.5:4 dev-lang/perl >=dev-qt/qt3support-4.8.5:4[accessibility] >=dev-qt/qtcore-4.8.5:4[qt3support,ssl] >=dev-qt/qtdbus-4.8.5:4 >=dev-qt/designer-4.8.5:4 >=dev-qt/qtgui-4.8.5:4[accessibility,dbus(+)] >=dev-qt/qtscript-4.8.5:4 >=dev-qt/qtsql-4.8.5:4[qt3support] >=dev-qt/qtsvg-4.8.5:4 >=dev-qt/qttest-4.8.5:4 >=dev-qt/qtwebkit-4.8.5:4 >=kde-base/kdelibs-4.13.3:4[aqua=]
+RDEPEND=|| ( >=kde-base/kactivitymanagerd-4.13.3:4[aqua=] <kde-frameworks/kactivities-5.20.0:5 kde-plasma/kactivitymanagerd:5 ) kde-frameworks/oxygen-icons >=dev-qt/qtdeclarative-4.8.5:4 dev-lang/perl >=dev-qt/qt3support-4.8.5:4[accessibility] >=dev-qt/qtcore-4.8.5:4[qt3support,ssl] >=dev-qt/qtdbus-4.8.5:4 >=dev-qt/designer-4.8.5:4 >=dev-qt/qtgui-4.8.5:4[accessibility,dbus(+)] >=dev-qt/qtscript-4.8.5:4 >=dev-qt/qtsql-4.8.5:4[qt3support] >=dev-qt/qtsvg-4.8.5:4 >=dev-qt/qttest-4.8.5:4 >=dev-qt/qtwebkit-4.8.5:4 >=kde-base/kdelibs-4.13.3:4[aqua=]
 SLOT=4/4.13
 SRC_URI=mirror://kde/stable/applications/4.13.3/src/kactivities-4.13.3.tar.xz
 _eclass_exported_funcs=pkg_preinst:kde4-base pkg_postrm:kde4-base pkg_postinst:kde4-base pkg_setup:kde4-base src_unpack:kde4-base src_prepare:kde4-base src_configure:- src_compile:kde4-base src_test:kde4-base src_install:kde4-base
 _eclasses_=cmake-utils	c67ce9708a9c02be2d296cf547740e9c	eutils	28fb3e5852485af1c348d446b0b98389	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	flag-o-matic	d270fa247153df66074f795fa42dba3e	gnome2-utils	d19e7813f27c8f982134d657889b13cf	kde4-base	d530f4b52e4c1d51837c1f96f673a215	kde4-functions	f6f7b3906630fb197969f914b1ad454a	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	virtualx	86c9305a59b3e0459e7fbef3a5f30b96	xdg-utils	e2b2bd56125ce8cf59ce30c642b59d48
-_md5_=e18a6b134644365780dc5e1f62a2d5eb
+_md5_=f37a2c4ecab2378e7b5878e5a9f896e1

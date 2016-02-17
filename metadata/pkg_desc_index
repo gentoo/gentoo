@@ -4393,7 +4393,7 @@ dev-lang/php 5.4.45 5.5.30 5.5.31 5.5.32 5.6.14 5.6.17 5.6.18 7.0.3: The PHP lan
 dev-lang/pocl 0.11 0.12: PortableCL: opensource implementation of the OpenCL standard
 dev-lang/polyml 5.4.1 5.5.0 5.5.1 5.5.2: Poly/ML is a full implementation of Standard ML
 dev-lang/python 2.7.10-r1 2.7.11-r2 3.3.5-r2 3.3.5-r7 3.4.3-r1 3.4.3-r7 3.5.0-r2 3.5.1-r2: An interpreted, interactive, object-oriented programming language
-dev-lang/python-exec 2.0.1-r1 2.0.2 2.1 2.2 2.2.1 2.3.1 9999: Python script wrapper
+dev-lang/python-exec 2.0.1-r1 2.0.2 2.1 2.2 2.2.1 2.3 2.3.1 9999: Python script wrapper
 dev-lang/qu-prolog 9.1 9.1-r1 9.5 9.6 9.7: Extended Prolog supporting quantifiers, object-variables and substitutions
 dev-lang/rakudo 2016.01.1: A compiler for the Perl 6 programming language
 dev-lang/rebol 9999: Relative Expression-Based Object Language
@@ -4417,7 +4417,7 @@ dev-lang/tcl 8.5.17 8.5.17-r100 8.6.4: Tool Command Language
 dev-lang/teyjus 2.0.2: Higher-order logic programming language Lambda Prolog
 dev-lang/tinycobol 0.65.9: COBOL for linux
 dev-lang/tk 8.5.17 8.5.17-r100 8.6.4-r1: Tk Widget Set
-dev-lang/tuprolog 2.4.0_rc5 2.7.2 2.9.0: tuProlog is a light-weight Prolog for Internet applications and infrastructures
+dev-lang/tuprolog 2.4.0_rc5 2.7.2 2.9.0 2.9.2: tuProlog is a light-weight Prolog for Internet applications and infrastructures
 dev-lang/ucblogo 5.5 5.5-r1: a reflective, functional programming language
 dev-lang/vala 0.22.1 0.26.2 0.28.1 0.30.1: Compiler for the GObject type system
 dev-lang/whitespace 0.3 0.4: Whitespace, an esoteric programming language
@@ -5912,6 +5912,7 @@ dev-perl/Net-IP 1.260.0-r1: Perl extension for manipulating IPv4/IPv6 addresses
 dev-perl/Net-IP-Minimal 0.60.0: Minimal functions from Net::IP
 dev-perl/Net-IPv4Addr 0.100.0: Perl extension for manipulating IPv4 addresses
 dev-perl/Net-IRC 0.790.0-r1: Perl IRC module
+dev-perl/Net-IRR 0.80.0: Internet Route Registry daemon (IRRd) client
 dev-perl/Net-Ident 1.230.0-r1 1.240.0: lookup the username on the remote end of a TCP/IP connection
 dev-perl/Net-Jabber 2.0.0-r1: Jabber Perl library
 dev-perl/Net-Kismet 0.04-r1: Module for writing perl Kismet clients
@@ -11208,7 +11209,7 @@ kde-apps/umbrello 4.14.3 15.08.3: KDE UML Modeller
 kde-apps/zeroconf-ioslave 4.14.3 15.08.3: A DNSSD (DNS Service Discovery - part of Rendezvous) ioslave and kded module
 kde-base/baloo 4.14.3: Next generation of the Nepomuk project
 kde-base/freespacenotifier 4.11.19 4.11.22: A module that monitors free disk space on the home dir
-kde-base/kactivities 4.13.3 4.13.3-r1: KDE Activity Manager
+kde-base/kactivities 4.13.3 4.13.3-r2: KDE Activity Manager
 kde-base/kactivitymanagerd 4.13.3-r1: KDE Activity Manager Daemon
 kde-base/katepart 4.14.3: KDE Editor KPart
 kde-base/kcheckpass 4.11.19 4.11.22-r1: A simple password checker, used by any software in need of user authentication
