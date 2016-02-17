@@ -1,0 +1,10 @@
+--- src/lfd/lockdaemon.c.orig	2007-04-26 06:26:07.000000000 +0100
++++ src/lfd/lockdaemon.c	2016-02-17 20:41:09.137509089 +0000
+@@ -69,6 +69,7 @@
+ #include <errno.h>
+ #include <signal.h>
+ #include <pwd.h>
++#include <limits.h>
+ 
+ #define FHS
+ #define LOCKFILEPREFIX "LCK.."
