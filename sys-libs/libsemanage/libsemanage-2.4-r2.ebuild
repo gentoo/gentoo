@@ -70,6 +70,7 @@ src_prepare() {
 		"${FILESDIR}/0003-libsemanage-Add-file_contexts-and-seusers-to-the-sto.patch" \
 		"${FILESDIR}/0004-libsemanage-save-homedir_template-in-the-policy-stor.patch" \
 		"${FILESDIR}/0005-libsemanage-store-users_extra-in-the-policy-store.patch"
+	epatch "${FILESDIR}"/${PN}-2.4-build-paths.patch
 
 	epatch_user
 

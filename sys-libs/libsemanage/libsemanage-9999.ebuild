@@ -76,6 +76,7 @@ src_prepare() {
 		# If wanted for live builds, please use /etc/portage/patches
 		epatch "${FILESDIR}/0001-libsemanage-do-not-copy-contexts-in-semanage_migrate.patch"
 	fi
+	epatch "${FILESDIR}"/${PN}-2.4-build-paths.patch
 
 	epatch_user
 

@@ -1,0 +1,35 @@
+there's no point in using -I/-L flags to the system paths and this breaks
+cross-compiling.  just drop them.
+
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -60,7 +60,7 @@
+ SWIG_CFLAGS += -Wno-error -Wno-unused-but-set-variable -Wno-unused-variable -Wno-shadow \
+ 		-Wno-unused-parameter
+ 
+-override CFLAGS += -I../include -I$(INCLUDEDIR) -D_GNU_SOURCE 
++override CFLAGS += -I../include -D_GNU_SOURCE
+ RANLIB=ranlib
+ 
+ SWIG = swig -Wall -python -o $(SWIGCOUT) -outdir ./
+@@ -82,17 +82,17 @@
+ 	$(CC) $(CFLAGS) $(SWIG_CFLAGS) $(RUBYINC) -fPIC -DSHARED -c -o $@ $<
+ 
+ $(SWIGSO): $(SWIGLOBJ)
+-	$(CC) $(CFLAGS) $(LDFLAGS) -shared -o $@ $< -L. -lsemanage -L$(LIBDIR)
++	$(CC) $(CFLAGS) $(LDFLAGS) -shared -o $@ $< -L. -lsemanage
+ 
+ $(SWIGRUBYSO): $(SWIGRUBYLOBJ)
+-	$(CC) $(CFLAGS) $(LDFLAGS) -shared -o $@ $^ -L. -lsemanage -L$(LIBDIR)
++	$(CC) $(CFLAGS) $(LDFLAGS) -shared -o $@ $^ -L. -lsemanage
+ 
+ $(LIBA): $(OBJS)
+ 	$(AR) rcs $@ $^
+ 	$(RANLIB) $@
+ 
+ $(LIBSO): $(LOBJS)
+-	$(CC) $(CFLAGS) $(LDFLAGS) -shared -o $@ $^ -lsepol -laudit -lselinux -lbz2 -lustr -L$(LIBDIR) -Wl,-soname,$(LIBSO),--version-script=libsemanage.map,-z,defs
++	$(CC) $(CFLAGS) $(LDFLAGS) -shared -o $@ $^ -lsepol -laudit -lselinux -lbz2 -lustr -Wl,-soname,$(LIBSO),--version-script=libsemanage.map,-z,defs
+ 	ln -sf $@ $(TARGET)
+ 
+ $(LIBPC): $(LIBPC).in ../VERSION
