@@ -32,6 +32,13 @@ DEPEND="${RDEPEND}
 # Needs network
 RESTRICT=test
 
+python_prepare_all() {
+	sed \
+		-e "s:find_packages():find_packages(exclude=['tests']):" \
+		-i setup.py || die
+	distutils-r1_python_prepare_all
+}
+
 python_test() {
 	nosetests || die
 }
