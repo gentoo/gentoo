@@ -7684,9 +7684,9 @@ dev-python/pysfml 1.6-r1: Python library for the Simple and Fast Multimedia Libr
 dev-python/pyshark 0.3.4 0.3.5 0.3.6: A Python wrapper for tshark output parsing
 dev-python/pyside 1.2.2-r1: Python bindings for the Qt framework
 dev-python/pyside-tools 0.2.15-r1: PySide development tools (lupdate, rcc, uic)
-dev-python/pysnmp 4.2.5 4.3.0 4.3.1: Python SNMP library
-dev-python/pysnmp-apps 0.3.4 0.4.0: PySNMP applications
-dev-python/pysnmp-mibs 0.1.4 0.1.5: SNMP framework in Python - MIBs
+dev-python/pysnmp 4.2.5 4.3.0 4.3.1 4.3.2: Python SNMP library
+dev-python/pysnmp-apps 0.3.4 0.4.0 0.4.1: PySNMP applications
+dev-python/pysnmp-mibs 0.1.4 0.1.5 0.1.6: SNMP framework in Python - MIBs
 dev-python/pysolr 3.3.0 3.3.2: Lightweight python wrapper for Apache Solr
 dev-python/pyspf 2.0.11: Python implementation of the Sender Policy Framework (SPF) protocol
 dev-python/pysrt 0.5.1 1.0.0 1.0.1 9999: Python library used to edit or create SubRip files
