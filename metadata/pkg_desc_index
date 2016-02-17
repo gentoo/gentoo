@@ -5912,7 +5912,7 @@ dev-perl/Net-IP 1.260.0-r1: Perl extension for manipulating IPv4/IPv6 addresses
 dev-perl/Net-IP-Minimal 0.60.0: Minimal functions from Net::IP
 dev-perl/Net-IPv4Addr 0.100.0: Perl extension for manipulating IPv4 addresses
 dev-perl/Net-IRC 0.790.0-r1: Perl IRC module
-dev-perl/Net-IRR 0.80.0: Internet Route Registry daemon (IRRd) client
+dev-perl/Net-IRR 0.80.0-r1: Internet Route Registry daemon (IRRd) client
 dev-perl/Net-Ident 1.230.0-r1 1.240.0: lookup the username on the remote end of a TCP/IP connection
 dev-perl/Net-Jabber 2.0.0-r1: Jabber Perl library
 dev-perl/Net-Kismet 0.04-r1: Module for writing perl Kismet clients
