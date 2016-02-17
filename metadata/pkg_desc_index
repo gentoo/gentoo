@@ -2117,7 +2117,7 @@ app-portage/smart-live-rebuild 1.3.3 1.3.4 1.3.4.1 9999: Check live packages for
 app-portage/splat 0.08-r1: Simple Portage Log Analyzer Tool
 app-portage/tatt 0.3 9999: arch testing tool
 app-portage/ufed 0.91 0.92 9999: Gentoo Linux USE flags editor
-app-shells/autojump 22.2.4-r3 22.2.4-r4: change directory command that learns
+app-shells/autojump 22.2.4-r4: change directory command that learns
 app-shells/bash 2.05b_p13 3.0_p22 3.1_p23 3.2_p57 4.0_p44 4.1_p17 4.2_p53 4.3_p39_pre0 4.3_p42-r1 4.3_p42-r2 4.4_beta: The standard GNU Bourne again shell
 app-shells/bash-completion 1.3-r2 2.1 2.1-r2 2.1-r91 2.1-r92 2.1-r93 2.1-r94 2.1_p20141224-r1: Programmable Completion for bash
 app-shells/bashdb 4.3.0.91-r1: bash source code debugging
@@ -4320,7 +4320,7 @@ dev-lang/clojure 1.5.1 1.6.0 1.7.0: Clojure is a dynamic programming language th
 dev-lang/closure-compiler-bin 20120305 20121212 20130227 20130411 20150126: JavaScript optimizing compiler
 dev-lang/coffee-script 1.9.3-r1 1.10.0: A little language that compiles into javascript
 dev-lang/confluence 0.10.6: Functional programming language for reactive system design (digital logic, hard-real-time software)
-dev-lang/crystal 0.7.7 0.8.0 0.11.1: The Crystal Programming Language
+dev-lang/crystal 0.7.7 0.8.0 0.11.1 0.12.0: The Crystal Programming Language
 dev-lang/dmd-bin 1.016 2.008-r1: Digital Mars D Compiler
 dev-lang/ekopath 6.0.619_p20151213 6.0.637_p20151231 6.0.661_p20160124: PathScale EKOPath Compiler Suite
 dev-lang/elixir 1.0.5 1.1.1: Elixir programming language
