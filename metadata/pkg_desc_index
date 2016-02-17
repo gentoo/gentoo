@@ -4347,7 +4347,7 @@ dev-lang/helium 1.6 1.8.1: The Helium Compiler
 dev-lang/hy 0.10.0 0.10.1 0.11.1: A LISP dialect running in python
 dev-lang/icc 13.1.5.192 14.0.3.174 15.0.6.233: Intel C/C++ Compiler
 dev-lang/icon 9.4.3-r5 9.5.0 9.5.0-r1 9.5.1: very high level language
-dev-lang/idb 13.0.0.079 13.0.1.117-r1 13.0.2.146 13.0.3.163 13.0.5.192 14.0.0.080 14.0.1.106 14.0.2.144 14.0.3.174: Intel C/C++/FORTRAN debugger
+dev-lang/idb 13.0.5.192 14.0.3.174: Intel C/C++/FORTRAN debugger
 dev-lang/ifc 13.1.5.192 14.0.3.174 15.0.6.233: Intel FORTRAN Compiler
 dev-lang/inform 6.33.1_p2: design system for interactive fiction
 dev-lang/interprolog 2.1.2: InterProlog is a Java front-end and enhancement for Prolog
@@ -15857,7 +15857,6 @@ sci-mathematics/cado-nfs 1.1 2.0 2.1 2.1.1 2.2.0: Number Field Sieve (NFS) imple
 sci-mathematics/calc 2.12.1.5 2.12.2.2 2.12.4.3 2.12.4.4 2.12.4.13: Arbitrary precision C-like arithmetic system
 sci-mathematics/cgal 4.3 4.3-r1 4.6.1: C++ library for geometric algorithms and data structures
 sci-mathematics/coq 8.4_p5 8.4_p6 8.5: Proof assistant written in O'Caml
-sci-mathematics/csdp 6.1.1: A C Library for Semidefinite Programming
 sci-mathematics/cvc3 2.4.1: CVC3 is an automatic theorem prover for Satisfiability Modulo Theories (SMT) problems
 sci-mathematics/dataplot 20090821: Program for scientific visualization and statistical analyis
 sci-mathematics/diagrtb 2.64: Calculation of some eigenvectors of a large real, symmetrical, matrix
