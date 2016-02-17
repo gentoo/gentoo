@@ -11,7 +11,6 @@ inherit distutils-r1
 DESCRIPTION="OpenStack logging config library"
 HOMEPAGE="https://pypi.python.org/pypi/oslo.log https://github.com/openstack/oslo.log"
 SRC_URI="mirror://pypi/o/oslo.log/oslo.log-${PV}.tar.gz"
-S="${WORKDIR}/oslo.log-${PV}"
 
 LICENSE="Apache-2.0"
 SLOT="0"
@@ -49,6 +48,8 @@ DEPEND="
 		>=dev-python/oslo-sphinx-2.5.0[${PYTHON_USEDEP}]
 		dev-python/nose[${PYTHON_USEDEP}]
 	)"
+
+S="${WORKDIR}/oslo.log-${PV}"
 
 python_prepare_all() {
 	sed -i '/^hacking/d' test-requirements.txt || die
