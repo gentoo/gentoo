@@ -5,6 +5,10 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in package.use.mask
 
+# Michael Palimaka <kensington@gentoo.org (17 Feb 2016)
+# Needs unsable media-libs/opencv
+media-gfx/nomacs qt5
+
 # Sergey Popov <pinkbyte@gentoo.org> (15 Feb 2016)
 # Mask monitoring capabilities of Ganeti on stable branches
 app-emulation/ganeti monitoring
