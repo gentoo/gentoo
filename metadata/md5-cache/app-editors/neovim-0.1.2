@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-lang/luajit:2 >=dev-libs/libtermkey-0.17 >=dev-libs/libuv-1.2.0 >=dev-libs/msgpack-1.0.0 >=dev-libs/unibilium-1.1.1 dev-libs/libvterm dev-lua/lpeg dev-lua/messagepack jemalloc? ( dev-libs/jemalloc ) virtual/libiconv virtual/libintl sys-devel/make >=dev-util/cmake-2.8.12
+DESCRIPTION=Vim-fork focused on extensibility and agility.
+EAPI=5
+HOMEPAGE=https://neovim.io
+IUSE=+nvimpager perl python +jemalloc
+KEYWORDS=~amd64 ~x86
+LICENSE=Apache-2.0 vim
+RDEPEND=dev-lang/luajit:2 >=dev-libs/libtermkey-0.17 >=dev-libs/libuv-1.2.0 >=dev-libs/msgpack-1.0.0 >=dev-libs/unibilium-1.1.1 dev-libs/libvterm dev-lua/lpeg dev-lua/messagepack jemalloc? ( dev-libs/jemalloc ) perl? ( dev-lang/perl ) python? ( dev-python/neovim-python-client )
+SLOT=0
+SRC_URI=https://github.com/neovim/neovim/archive/v0.1.2.tar.gz -> neovim-0.1.2.tar.gz
+_eclass_exported_funcs=src_prepare:- src_configure:- src_compile:cmake-utils src_test:cmake-utils src_install:-
+_eclasses_=cmake-utils	c67ce9708a9c02be2d296cf547740e9c	eutils	28fb3e5852485af1c348d446b0b98389	flag-o-matic	d270fa247153df66074f795fa42dba3e	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=5aafaddbc8c74b4330ff9788e0a0df27
