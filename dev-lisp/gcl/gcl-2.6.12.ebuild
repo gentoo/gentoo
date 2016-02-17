@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -38,6 +38,7 @@ src_prepare() {
 	chmod a+x add-defs add-defs1 config.guess config.sub configure install.sh
 	chmod a+x bin/info bin/info1 gcl-tk/gcltksrv.in gcl-tk/ngcltksrv mp/gcclab
 	chmod a+x o/egrep-def utils/replace xbin/*
+	epatch "${FILESDIR}"/${P}-gcc5.patch
 
 	# fedora patches
 	epatch "${WORKDIR}"/fedora/fd-leak.patch
@@ -62,6 +63,7 @@ src_prepare() {
 src_configure() {
 	strip-flags
 	filter-flags -fstack-protector -fstack-protector-all
+	append-cflags $(test-flags-CC -fgnu89-inline)
 
 	local tcl=""
 	if use tk; then
