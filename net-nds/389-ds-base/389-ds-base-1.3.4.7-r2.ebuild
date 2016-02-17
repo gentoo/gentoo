@@ -19,8 +19,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="autobind auto-dn-suffix debug doc +pam-passthru +dna +ldapi +bitwise +presence kerberos selinux"
 
-ALL_DEPEND="
-	=sys-libs/db-5*:*
+COMMON_DEPEND="
+	sys-libs/db:5.3
 	>=dev-libs/cyrus-sasl-2.1.19
 	>=net-analyzer/net-snmp-5.1.2
 	>=dev-libs/icu-3.4:=
@@ -36,12 +36,12 @@ ALL_DEPEND="
 	sys-libs/zlib
 	kerberos? ( >=app-crypt/mit-krb5-1.7-r100[openldap] )"
 
-DEPEND="${ALL_DEPEND}
+DEPEND="${COMMON_DEPEND}
 	virtual/pkgconfig
 	sys-devel/libtool
 	doc? ( app-doc/doxygen )
 	sys-apps/sed"
-RDEPEND="${ALL_DEPEND}
+RDEPEND="${COMMON_DEPEND}
 	selinux? ( sec-policy/selinux-dirsrv )
 	virtual/perl-Time-Local
 	virtual/perl-MIME-Base64"
