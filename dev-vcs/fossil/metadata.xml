@@ -11,10 +11,23 @@
         <description>Co-Maintainer</description>
     </maintainer>
     <use>
+        <flag name="fusefs">Enable the Fuse Filesystem</flag>
         <flag name="json">Enable the JSON API of Fossil's wiki</flag>
+        <flag name="legacy-mv-rm">
+	        Enable legacy behavior for mv/rm (skip checkout files)
+        </flag>
         <flag name="lineedit">Enable line-editing with libedit or readline</flag>
+        <flag name="miniz">
+	        Use the bundled miniz for compression instead of zlib
+        </flag>
         <flag name="sqlite">
             Use the system SQLite instead of the bundled one
+        </flag>
+        <flag name="th1-docs">
+	        Enable TH1 for embedded documentation pages
+        </flag>
+        <flag name="th1-hooks">
+	        Enable TH1 hooks for commands and web pages
         </flag>
     </use>
 </pkgmetadata>
