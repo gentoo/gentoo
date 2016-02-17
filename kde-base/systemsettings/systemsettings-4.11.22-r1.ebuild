@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -46,6 +46,7 @@ RDEPEND="${COMMONDEPEND}
 	x11-misc/xkeyboard-config
 	gtk? ( kde-misc/kde-gtk-config )
 	kscreen? ( kde-misc/kscreen:4 )
+	|| ( $(add_kdebase_dep legacy-icons) >=kde-frameworks/oxygen-icons-5.19.0:5 )
 "
 
 KMEXTRA="
@@ -79,6 +80,9 @@ src_prepare() {
 	sed -i -e 's/systemsettingsrc DESTINATION ${SYSCONF_INSTALL_DIR}/systemsettingsrc DESTINATION ${CONFIG_INSTALL_DIR}/' \
 		systemsettings/CMakeLists.txt \
 		|| die "Failed to fix systemsettingsrc install location"
+
+	sed -i -e '/kde4_install_icons/ s/^/#/' kcontrol/kfontinst/kio/CMakeLists.txt \
+		|| die "Failed to disable icons"
 
 	kde4-meta_src_prepare
 }
