@@ -26,38 +26,29 @@ src_prepare() {
 	multilib_copy_sources
 }
 
-multilib_src_compile() {
+_emake() {
 	emake \
 		AR="$(tc-getAR)" \
 		CC="$(tc-getCC)" \
-		CFLAGS="${CFLAGS}" \
+		CFLAGS="${CFLAGS} ${CPPFLAGS}" \
 		LDFLAGS="${LDFLAGS}" \
 		prefix="${EPREFIX}/usr" \
-		SHRDIR="/usr/share/${P}" \
+		libdir="${EPREFIX}/usr/$(get_libdir)" \
+		mandir="${EPREFIX}/usr/share/man" \
+		SHRDIR="${EPREFIX}/usr/share/${P}" \
+		DOCSHRDIR="${EPREFIX}/usr/share/doc/${PF}" \
 		HIDE= \
-		all-shared
+		"$@"
+}
+
+multilib_src_compile() {
+	_emake all-shared
 }
 
 multilib_src_install() {
-	emake \
-		DESTDIR="${D}" \
-		prefix="${EPREFIX}/usr" \
-		libdir="${EPREFIX}/usr/$(get_libdir)" \
-		mandir="/usr/share/man" \
-		SHRDIR="/usr/share/${P}" \
-		DOCSHRDIR="/usr/share/doc/${PF}" \
-		HIDE= \
-		install
+	_emake DESTDIR="${D}" install
 }
 
 multilib_src_test() {
-	emake \
-		AR="$(tc-getAR)" \
-		CC="$(tc-getCC)" \
-		CFLAGS="${CFLAGS}" \
-		LDFLAGS="${LDFLAGS}" \
-		prefix="${EPREFIX}/usr" \
-		SHRDIR="/usr/share/${P}" \
-		HIDE= \
-		check
+	_emake check
 }
