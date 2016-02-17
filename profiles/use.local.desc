@@ -4391,6 +4391,7 @@ media-sound/kid3:acoustid - Enable support for acoustic fingerprinting plugin us
 media-sound/kid3:phonon - Enable sound support via media-libs/phonon or dev-qt/qtphonon
 media-sound/kwave:opus - Enable Opus audio codec support
 media-sound/kwave:phonon - Enable playback via Phonon
+media-sound/lame:frontend - Build and install the 'lame' executable frontend to lame libraries.
 media-sound/lame:mp3rtp - Build the mp3-to-RTP streaming utility. **UNSUPPORTED**
 media-sound/linuxsampler:lv2 - Add support for Ladspa V2
 media-sound/lmms:fluidsynth - Enables Fluidsynth MIDI software synthesis plugin.
