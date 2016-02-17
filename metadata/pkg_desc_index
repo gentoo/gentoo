@@ -10902,7 +10902,7 @@ gnustep-apps/mpdcon 1.5.1: GNUstep client for the Music Player Daemon
 gnustep-apps/pictureframe 1.0.0 1.1.2 1.1.3: digital picture frame software
 gnustep-apps/preferences 1.3.0_pre20061204-r1 1.3.0_pre20100523: Preferences is the GNUstep program with which you define your own personal user experience
 gnustep-apps/preview 0.8.5-r1 0.9: Simple image viewer
-gnustep-apps/price 1.1.0 1.2.0: Precision Raster Image Convolution Engine
+gnustep-apps/price 1.2.0 1.3.0: Precision Raster Image Convolution Engine
 gnustep-apps/projectcenter 0.6.1 0.6.2: An IDE for GNUstep
 gnustep-apps/remotedesk 0.1: GNUstep remote windows access tool
 gnustep-apps/simpleagenda 0.42.2 0.43: a simple calendar and agenda application
@@ -10930,12 +10930,12 @@ gnustep-libs/highlighterkit 0.1.2 0.1.3: Syntax highlighter framework
 gnustep-libs/iconkit 0.4.1: framework used to create icons using different elements
 gnustep-libs/netclasses 1.06-r1: An asynchronous networking library for GNUstep
 gnustep-libs/pantomime 1.2.0 1.2.2: A set of Objective-C classes that model a mail system
-gnustep-libs/performance 0.4.0: Help improve the performance of GNUstep applications
+gnustep-libs/performance 0.4.0 0.5.0: Help improve the performance of GNUstep applications
 gnustep-libs/prefsmodule 1.1.1_pre20061204-r1: Preferences is the GNUstep program with which you define your own personal user experience
 gnustep-libs/renaissance 0.9.0: GNUstep Renaissance allows to describe user interfaces XML files
 gnustep-libs/smbkit 0.0.1.20061010 0.0.1.20061010-r1: SMBKit offers a samba library and headers for GNUstep
 gnustep-libs/sope 2.3.2: An extensive set of frameworks which form a complete Web application server environment
-gnustep-libs/sqlclient 1.7.0: GNUstep lightweight database abstraction layer
+gnustep-libs/sqlclient 1.7.0 1.8.1: GNUstep lightweight database abstraction layer
 java-virtuals/ejb-api 0: Virtual for Enterprise JavaBeans API (javax.ejb)
 java-virtuals/interceptor-api 0: Virtual for Interceptor API (javax.interceptor)
 java-virtuals/jaf 1.1-r1: Virtual for JavaBeans Activation Framework (JAF)
