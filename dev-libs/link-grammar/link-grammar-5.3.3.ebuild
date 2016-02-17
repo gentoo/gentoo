@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=5
-PYTHON_COMPAT=( python{2_7,3_3,3_4} )
+PYTHON_COMPAT=( python{2_7,3_4,3_5} )
 
 inherit eutils gnome2 java-pkg-opt-2 python-any-r1
 
@@ -20,7 +20,7 @@ IUSE="aspell +hunspell java python static-libs threads"
 DEPEND="
 	aspell? ( app-text/aspell )
 	hunspell? ( app-text/hunspell )
-	java? ( virtual/jdk:= dev-java/ant-core )
+	java? ( >=virtual/jdk-0:= dev-java/ant-core )
 	${PYTHON_DEPS}"
 
 RDEPEND="${DEPEND}"
