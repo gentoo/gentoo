@@ -2120,6 +2120,7 @@ dev-libs/totem-pl-parser:archive - Enables support for accessing media files in 
 dev-libs/totem-pl-parser:quvi - Use media-libs/libquvi for parsing video links
 dev-libs/ucommon:socks - Build with socks proxy support
 dev-libs/userspace-rcu:regression-test - Run regression tests (requires FEATURES=test)
+dev-libs/ustr:ustr-import - Install ustr-import developer program and source code for bundling.
 dev-libs/weston:colord - Allow setting color managment
 dev-libs/weston:drm - Enable drm compositor support
 dev-libs/weston:editor - Install wayland-editor example application
