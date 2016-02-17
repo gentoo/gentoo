@@ -34,7 +34,7 @@ RESTRICT=test
 
 python_prepare_all() {
 	sed \
-		-e "s:find_packages():find_packages(exclude=['tests']):" \
+		-e "s:find_packages():find_packages(exclude=['tests','tests.*']):" \
 		-i setup.py || die
 	distutils-r1_python_prepare_all
 }
