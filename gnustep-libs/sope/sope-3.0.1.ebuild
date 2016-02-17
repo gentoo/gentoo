@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
+EAPI=6
 
 inherit eutils gnustep-2 vcs-snapshot
 
@@ -34,12 +34,6 @@ pkg_pretend() {
 		ewarn "You have enabled both gnutls and libressl, but only"
 		ewarn "one provider can be active. Using gnutls!"
 	fi
-}
-
-src_prepare() {
-	# https://github.com/inverse-inc/sope/pull/33
-	epatch "${FILESDIR}"/${P}-optional-deps.patch
-	gnustep-base_src_prepare
 }
 
 src_configure() {
