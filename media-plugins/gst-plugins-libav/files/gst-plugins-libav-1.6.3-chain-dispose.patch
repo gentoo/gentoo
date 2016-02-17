@@ -1,0 +1,23 @@
+commit e04bcf0601286990d0fa2dd9999fcfcff1b5784b
+Author: Sebastian Dröge <sebastian@centricular.com>
+Date:   Sat Jan 16 16:43:16 2016 +0200
+
+    avdeinterlace: Chain up to parent class' dispose()
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=757498
+
+diff --git a/ext/libav/gstavdeinterlace.c b/ext/libav/gstavdeinterlace.c
+index fe2d60d..6bdc605 100644
+--- a/ext/libav/gstavdeinterlace.c
++++ b/ext/libav/gstavdeinterlace.c
+@@ -310,7 +310,10 @@ static void
+ gst_ffmpegdeinterlace_dispose (GObject * obj)
+ {
+   GstFFMpegDeinterlace *deinterlace = GST_FFMPEGDEINTERLACE (obj);
++
+   delete_filter_graph (deinterlace);
++
++  G_OBJECT_CLASS (gst_ffmpegdeinterlace_parent_class)->dispose (obj);
+ }
+ 
+ static int

@@ -1,0 +1,356 @@
+commit 6235a04ef356f8d7e2f933758ddba359fa95a5ec
+Author: Andreas Cadhalpun <Andreas.Cadhalpun@googlemail.com>
+Date:   Wed Nov 4 21:18:56 2015 +0100
+
+    libav: Remove usage of deprecated API
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=757498
+
+diff --git a/ext/libav/gstavcfg.c b/ext/libav/gstavcfg.c
+index a85f547..d38cce1 100644
+--- a/ext/libav/gstavcfg.c
++++ b/ext/libav/gstavcfg.c
+@@ -173,13 +173,10 @@ gst_ffmpeg_idct_algo_get_type (void)
+       {FF_IDCT_SIMPLEMMX, "Simple MMX", "simplemmx"},
+       {FF_IDCT_ARM, "ARM", "arm"},
+       {FF_IDCT_ALTIVEC, "Altivec", "altivec"},
+-      {FF_IDCT_SH4, "SH4", "sh4"},
+       {FF_IDCT_SIMPLEARM, "Simple ARM", "simplearm"},
+-      {FF_IDCT_IPP, "IPP", "ipp"},
+       {FF_IDCT_XVID, "XVID", "xvid"},
+       {FF_IDCT_SIMPLEARMV5TE, "Simple ARMV5TE", "simplearmv5te"},
+       {FF_IDCT_SIMPLEARMV6, "Simple ARMV6", "simplearmv6"},
+-      {FF_IDCT_SIMPLEVIS, "Simple Vis", "simplevis"},
+       {FF_IDCT_FAAN, "FAAN", "faan"},
+       {FF_IDCT_SIMPLENEON, "Simple NEON", "simpleneon"},
+       {0, NULL, NULL},
+@@ -665,7 +662,7 @@ gst_ffmpeg_cfg_init (void)
+   gst_ffmpeg_add_pspec (pspec, interlaced, FALSE, mpeg, NULL);
+ 
+   pspec = g_param_spec_int ("max-bframes", "Max B-Frames",
+-      "Maximum B-frames in a row", 0, FF_MAX_B_FRAMES, 0,
++      "Maximum B-frames in a row", 0, INT_MAX, 0,
+       G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
+   gst_ffmpeg_add_pspec (pspec, config.max_b_frames, FALSE, mpeg, NULL);
+ 
+diff --git a/ext/libav/gstavcodecmap.c b/ext/libav/gstavcodecmap.c
+index 11a9ed2..2f8dc8a 100644
+--- a/ext/libav/gstavcodecmap.c
++++ b/ext/libav/gstavcodecmap.c
+@@ -770,10 +770,6 @@ gst_ffmpeg_codecid_to_caps (enum AVCodecID codec_id,
+       }
+       break;
+ 
+-    case AV_CODEC_ID_MPEG2VIDEO_XVMC:
+-      /* this is a special ID - don't need it in GStreamer, I think */
+-      break;
+-
+     case AV_CODEC_ID_H263:
+       if (encode) {
+         caps =
+@@ -2202,7 +2198,7 @@ gst_ffmpeg_codecid_to_caps (enum AVCodecID codec_id,
+  */
+ 
+ static GstCaps *
+-gst_ffmpeg_pixfmt_to_caps (enum PixelFormat pix_fmt, AVCodecContext * context,
++gst_ffmpeg_pixfmt_to_caps (enum AVPixelFormat pix_fmt, AVCodecContext * context,
+     enum AVCodecID codec_id)
+ {
+   GstCaps *caps = NULL;
+@@ -2533,7 +2529,7 @@ gst_ffmpeg_caps_to_pixfmt (const GstCaps * caps,
+ typedef struct
+ {
+   GstVideoFormat format;
+-  enum PixelFormat pixfmt;
++  enum AVPixelFormat pixfmt;
+ } PixToFmt;
+ 
+ /* FIXME : FILLME */
+@@ -2625,7 +2621,7 @@ static const PixToFmt pixtofmttable[] = {
+ };
+ 
+ GstVideoFormat
+-gst_ffmpeg_pixfmt_to_videoformat (enum PixelFormat pixfmt)
++gst_ffmpeg_pixfmt_to_videoformat (enum AVPixelFormat pixfmt)
+ {
+   guint i;
+ 
+@@ -2637,7 +2633,7 @@ gst_ffmpeg_pixfmt_to_videoformat (enum PixelFormat pixfmt)
+   return GST_VIDEO_FORMAT_UNKNOWN;
+ }
+ 
+-static enum PixelFormat
++static enum AVPixelFormat
+ gst_ffmpeg_videoformat_to_pixfmt_for_codec (GstVideoFormat format,
+     const AVCodec * codec)
+ {
+@@ -2661,7 +2657,7 @@ gst_ffmpeg_videoformat_to_pixfmt_for_codec (GstVideoFormat format,
+   return AV_PIX_FMT_NONE;
+ }
+ 
+-enum PixelFormat
++enum AVPixelFormat
+ gst_ffmpeg_videoformat_to_pixfmt (GstVideoFormat format)
+ {
+   return gst_ffmpeg_videoformat_to_pixfmt_for_codec (format, NULL);
+diff --git a/ext/libav/gstavcodecmap.h b/ext/libav/gstavcodecmap.h
+index 40f46c3..486a0d5 100644
+--- a/ext/libav/gstavcodecmap.h
++++ b/ext/libav/gstavcodecmap.h
+@@ -132,8 +132,8 @@ void
+ gst_ffmpeg_audioinfo_to_context (GstAudioInfo *info,
+ 				 AVCodecContext *context);
+ 
+-GstVideoFormat gst_ffmpeg_pixfmt_to_videoformat (enum PixelFormat pixfmt);
+-enum PixelFormat gst_ffmpeg_videoformat_to_pixfmt (GstVideoFormat format);
++GstVideoFormat gst_ffmpeg_pixfmt_to_videoformat (enum AVPixelFormat pixfmt);
++enum AVPixelFormat gst_ffmpeg_videoformat_to_pixfmt (GstVideoFormat format);
+ 
+ GstAudioFormat gst_ffmpeg_smpfmt_to_audioformat (enum AVSampleFormat sample_fmt);
+ 
+diff --git a/ext/libav/gstavdeinterlace.c b/ext/libav/gstavdeinterlace.c
+index 6906059..fe2d60d 100644
+--- a/ext/libav/gstavdeinterlace.c
++++ b/ext/libav/gstavdeinterlace.c
+@@ -94,7 +94,7 @@ typedef struct _GstFFMpegDeinterlace
+   gboolean reconfigure;
+   GstFFMpegDeinterlaceMode new_mode;
+ 
+-  enum PixelFormat pixfmt;
++  enum AVPixelFormat pixfmt;
+   AVPicture from_frame, to_frame;
+ 
+   AVFilterContext *buffersink_ctx;
+diff --git a/ext/libav/gstavutils.c b/ext/libav/gstavutils.c
+index c434202..5d1567b 100644
+--- a/ext/libav/gstavutils.c
++++ b/ext/libav/gstavutils.c
+@@ -279,7 +279,7 @@ gst_ffmpeg_avpicture_get_size (int pix_fmt, int width, int height)
+ 
+ int
+ gst_ffmpeg_avpicture_fill (AVPicture * picture,
+-    uint8_t * ptr, enum PixelFormat pix_fmt, int width, int height)
++    uint8_t * ptr, enum AVPixelFormat pix_fmt, int width, int height)
+ {
+   int size, w2, h2, size2;
+   int stride, stride2;
+diff --git a/ext/libav/gstavutils.h b/ext/libav/gstavutils.h
+index 6d111a2..f4d90ef 100644
+--- a/ext/libav/gstavutils.h
++++ b/ext/libav/gstavutils.h
+@@ -42,7 +42,7 @@ gst_ffmpeg_avpicture_get_size (int pix_fmt, int width, int height);
+ int
+ gst_ffmpeg_avpicture_fill (AVPicture * picture,
+                            uint8_t *   ptr,
+-                           enum PixelFormat pix_fmt,
++                           enum AVPixelFormat pix_fmt,
+                            int         width,
+                            int         height);
+ 
+diff --git a/ext/libav/gstavviddec.c b/ext/libav/gstavviddec.c
+index da9acf6..cc0cf03 100644
+--- a/ext/libav/gstavviddec.c
++++ b/ext/libav/gstavviddec.c
+@@ -444,9 +444,6 @@ gst_ffmpegviddec_set_format (GstVideoDecoder * decoder,
+ 
+   /* set buffer functions */
+   ffmpegdec->context->get_buffer2 = gst_ffmpegviddec_get_buffer2;
+-  ffmpegdec->context->get_buffer = NULL;
+-  ffmpegdec->context->reget_buffer = NULL;
+-  ffmpegdec->context->release_buffer = NULL;
+   ffmpegdec->context->draw_horiz_band = NULL;
+ 
+   /* reset coded_width/_height to prevent it being reused from last time when
+@@ -825,10 +822,6 @@ gst_ffmpegviddec_get_buffer2 (AVCodecContext * context, AVFrame * picture,
+ 
+   picture->buf[0] = av_buffer_create (NULL, 0, dummy_free_buffer, dframe, 0);
+ 
+-  /* tell ffmpeg we own this buffer, transfer the ref we have on the buffer to
+-   * the opaque data. */
+-  picture->type = FF_BUFFER_TYPE_USER;
+-
+   GST_LOG_OBJECT (ffmpegdec, "returned frame %p", dframe->buffer);
+ 
+   return 0;
+@@ -1355,8 +1348,6 @@ gst_ffmpegviddec_video_frame (GstFFMpegVidDec * ffmpegdec,
+       (guint64) ffmpegdec->picture->pts);
+   GST_DEBUG_OBJECT (ffmpegdec, "picture: num %d",
+       ffmpegdec->picture->coded_picture_number);
+-  GST_DEBUG_OBJECT (ffmpegdec, "picture: ref %d",
+-      ffmpegdec->picture->reference);
+   GST_DEBUG_OBJECT (ffmpegdec, "picture: display %d",
+       ffmpegdec->picture->display_picture_number);
+   GST_DEBUG_OBJECT (ffmpegdec, "picture: opaque %p",
+diff --git a/ext/libav/gstavviddec.h b/ext/libav/gstavviddec.h
+index f152ba8..a9965b7 100644
+--- a/ext/libav/gstavviddec.h
++++ b/ext/libav/gstavviddec.h
+@@ -41,7 +41,7 @@ struct _GstFFMpegVidDec
+   gboolean opened;
+ 
+   /* current output pictures */
+-  enum PixelFormat pic_pix_fmt;
++  enum AVPixelFormat pic_pix_fmt;
+   gint pic_width;
+   gint pic_height;
+   gint pic_par_n;
+@@ -70,7 +70,7 @@ struct _GstFFMpegVidDec
+   GstBufferPool *internal_pool;
+   gint pool_width;
+   gint pool_height;
+-  enum PixelFormat pool_format;
++  enum AVPixelFormat pool_format;
+   GstVideoInfo pool_info;
+ };
+ 
+diff --git a/ext/libav/gstavvidenc.c b/ext/libav/gstavvidenc.c
+index 1df1699..94aca49 100644
+--- a/ext/libav/gstavvidenc.c
++++ b/ext/libav/gstavvidenc.c
+@@ -290,7 +290,7 @@ gst_ffmpegvidenc_set_format (GstVideoEncoder * encoder,
+   GstCaps *allowed_caps;
+   GstCaps *icaps;
+   GstVideoCodecState *output_format;
+-  enum PixelFormat pix_fmt;
++  enum AVPixelFormat pix_fmt;
+   GstFFMpegVidEnc *ffmpegenc = (GstFFMpegVidEnc *) encoder;
+   GstFFMpegVidEncClass *oclass =
+       (GstFFMpegVidEncClass *) G_OBJECT_GET_CLASS (ffmpegenc);
+diff --git a/ext/libswscale/gstffmpegscale.c b/ext/libswscale/gstffmpegscale.c
+index f34259b..62343d0 100644
+--- a/ext/libswscale/gstffmpegscale.c
++++ b/ext/libswscale/gstffmpegscale.c
+@@ -45,7 +45,7 @@ typedef struct _GstFFMpegScale
+   /* state */
+   GstVideoInfo in_info, out_info;
+ 
+-  enum PixelFormat in_pixfmt, out_pixfmt;
++  enum AVPixelFormat in_pixfmt, out_pixfmt;
+   struct SwsContext *ctx;
+ 
+   /* property */
+@@ -214,8 +214,8 @@ gst_ffmpegscale_init (GstFFMpegScale * scale)
+ {
+   scale->method = DEFAULT_PROP_METHOD;
+   scale->ctx = NULL;
+-  scale->in_pixfmt = PIX_FMT_NONE;
+-  scale->out_pixfmt = PIX_FMT_NONE;
++  scale->in_pixfmt = AV_PIX_FMT_NONE;
++  scale->out_pixfmt = AV_PIX_FMT_NONE;
+ }
+ 
+ static void
+@@ -226,8 +226,8 @@ gst_ffmpegscale_reset (GstFFMpegScale * scale)
+     scale->ctx = NULL;
+   }
+ 
+-  scale->in_pixfmt = PIX_FMT_NONE;
+-  scale->out_pixfmt = PIX_FMT_NONE;
++  scale->in_pixfmt = AV_PIX_FMT_NONE;
++  scale->out_pixfmt = AV_PIX_FMT_NONE;
+ }
+ 
+ static void
+@@ -442,11 +442,11 @@ gst_ffmpegscale_get_unit_size (GstBaseTransform * trans, GstCaps * caps,
+ 
+ /* Convert a GstCaps (video/raw) to a FFMPEG PixFmt
+  */
+-static enum PixelFormat
++static enum AVPixelFormat
+ gst_ffmpeg_caps_to_pixfmt (const GstCaps * caps)
+ {
+   GstVideoInfo info;
+-  enum PixelFormat pix_fmt;
++  enum AVPixelFormat pix_fmt;
+ 
+   GST_DEBUG ("converting caps %" GST_PTR_FORMAT, caps);
+ 
+@@ -455,52 +455,52 @@ gst_ffmpeg_caps_to_pixfmt (const GstCaps * caps)
+ 
+   switch (GST_VIDEO_INFO_FORMAT (&info)) {
+     case GST_VIDEO_FORMAT_YUY2:
+-      pix_fmt = PIX_FMT_YUYV422;
++      pix_fmt = AV_PIX_FMT_YUYV422;
+       break;
+     case GST_VIDEO_FORMAT_UYVY:
+-      pix_fmt = PIX_FMT_UYVY422;
++      pix_fmt = AV_PIX_FMT_UYVY422;
+       break;
+     case GST_VIDEO_FORMAT_I420:
+-      pix_fmt = PIX_FMT_YUV420P;
++      pix_fmt = AV_PIX_FMT_YUV420P;
+       break;
+     case GST_VIDEO_FORMAT_Y41B:
+-      pix_fmt = PIX_FMT_YUV411P;
++      pix_fmt = AV_PIX_FMT_YUV411P;
+       break;
+     case GST_VIDEO_FORMAT_Y42B:
+-      pix_fmt = PIX_FMT_YUV422P;
++      pix_fmt = AV_PIX_FMT_YUV422P;
+       break;
+     case GST_VIDEO_FORMAT_YUV9:
+-      pix_fmt = PIX_FMT_YUV410P;
++      pix_fmt = AV_PIX_FMT_YUV410P;
+       break;
+     case GST_VIDEO_FORMAT_ARGB:
+-      pix_fmt = PIX_FMT_ARGB;
++      pix_fmt = AV_PIX_FMT_ARGB;
+       break;
+     case GST_VIDEO_FORMAT_RGBA:
+-      pix_fmt = PIX_FMT_RGBA;
++      pix_fmt = AV_PIX_FMT_RGBA;
+       break;
+     case GST_VIDEO_FORMAT_BGRA:
+-      pix_fmt = PIX_FMT_BGRA;
++      pix_fmt = AV_PIX_FMT_BGRA;
+       break;
+     case GST_VIDEO_FORMAT_ABGR:
+-      pix_fmt = PIX_FMT_ABGR;
++      pix_fmt = AV_PIX_FMT_ABGR;
+       break;
+     case GST_VIDEO_FORMAT_BGR:
+-      pix_fmt = PIX_FMT_BGR24;
++      pix_fmt = AV_PIX_FMT_BGR24;
+       break;
+     case GST_VIDEO_FORMAT_RGB:
+-      pix_fmt = PIX_FMT_RGB24;
++      pix_fmt = AV_PIX_FMT_RGB24;
+       break;
+     case GST_VIDEO_FORMAT_RGB16:
+-      pix_fmt = PIX_FMT_RGB565;
++      pix_fmt = AV_PIX_FMT_RGB565;
+       break;
+     case GST_VIDEO_FORMAT_RGB15:
+-      pix_fmt = PIX_FMT_RGB555;
++      pix_fmt = AV_PIX_FMT_RGB555;
+       break;
+     case GST_VIDEO_FORMAT_RGB8P:
+-      pix_fmt = PIX_FMT_PAL8;
++      pix_fmt = AV_PIX_FMT_PAL8;
+       break;
+     default:
+-      pix_fmt = PIX_FMT_NONE;
++      pix_fmt = AV_PIX_FMT_NONE;
+       break;
+   }
+   return pix_fmt;
+@@ -508,7 +508,7 @@ gst_ffmpeg_caps_to_pixfmt (const GstCaps * caps)
+   /* ERROR */
+ invalid_caps:
+   {
+-    return PIX_FMT_NONE;
++    return AV_PIX_FMT_NONE;
+   }
+ }
+ 
+@@ -537,8 +537,8 @@ gst_ffmpegscale_set_caps (GstBaseTransform * trans, GstCaps * incaps,
+   scale->in_pixfmt = gst_ffmpeg_caps_to_pixfmt (incaps);
+   scale->out_pixfmt = gst_ffmpeg_caps_to_pixfmt (outcaps);
+ 
+-  if (!ok || scale->in_pixfmt == PIX_FMT_NONE ||
+-      scale->out_pixfmt == PIX_FMT_NONE ||
++  if (!ok || scale->in_pixfmt == AV_PIX_FMT_NONE ||
++      scale->out_pixfmt == AV_PIX_FMT_NONE ||
+       GST_VIDEO_INFO_FORMAT (&scale->in_info) == GST_VIDEO_FORMAT_UNKNOWN ||
+       GST_VIDEO_INFO_FORMAT (&scale->out_info) == GST_VIDEO_FORMAT_UNKNOWN)
+     goto refuse_caps;

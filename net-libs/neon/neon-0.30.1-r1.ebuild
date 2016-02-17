@@ -56,7 +56,8 @@ src_prepare() {
 	done
 	sed -e "s/ALL_LINGUAS=.*/ALL_LINGUAS=\"${linguas}\"/" -i configure.ac || die
 
-	epatch "${FILESDIR}"/${P}-xml2-config.patch
+	epatch "${FILESDIR}"/${P}-xml2-config.patch \
+		"${FILESDIR}"/${P}-gnutls3.4.patch
 	AT_M4DIR="macros" eautoreconf
 
 	elibtoolize

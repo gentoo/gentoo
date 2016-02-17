@@ -1,0 +1,22 @@
+Preserve compatibility with ffmpeg 2.8 for rc-min-rate option.
+
+Index: gst-libav-1.6.3/ext/libav/gstavcfg.c
+===================================================================
+--- gst-libav-1.6.3.orig/ext/libav/gstavcfg.c
++++ gst-libav-1.6.3/ext/libav/gstavcfg.c
+@@ -524,9 +524,15 @@ gst_ffmpeg_cfg_init (void)
+ #endif
+   gst_ffmpeg_add_pspec (pspec, config.rc_max_rate, FALSE, mpeg, NULL);
+ 
++#if LIBAVCODEC_VERSION_INT < AV_VERSION_INT (57, 3, 0)
++  pspec = g_param_spec_int ("rc-min-rate", "Ratecontrol Minimum Bitrate",
++      "Ratecontrol Minimum Bitrate", 0, G_MAXINT, 0,
++      G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
++#else
+   pspec = g_param_spec_int64 ("rc-min-rate", "Ratecontrol Minimum Bitrate",
+       "Ratecontrol Minimum Bitrate", 0, G_MAXINT64, 0,
+       G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
++#endif
+   gst_ffmpeg_add_pspec (pspec, config.rc_min_rate, FALSE, mpeg, NULL);
+ 
+   pspec =

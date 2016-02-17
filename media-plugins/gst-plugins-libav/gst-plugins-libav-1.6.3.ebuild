@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI="5"
-inherit eutils multilib-minimal
+inherit eutils multilib-minimal autotools
 
 MY_PN="gst-libav"
 DESCRIPTION="FFmpeg based gstreamer plugin"
@@ -30,6 +30,17 @@ DEPEND="${RDEPEND}
 "
 
 S="${WORKDIR}/${MY_PN}-${PV}"
+
+src_prepare() {
+	epatch \
+		"${FILESDIR}/${PN}-1.6.3-deinterlace-lavf.patch" \
+		"${FILESDIR}/${PN}-1.6.3-no-deprecated.patch" \
+		"${FILESDIR}/${PN}-1.6.3-bitrate.patch" \
+		"${FILESDIR}/${PN}-1.6.3-chain-dispose.patch" \
+		"${FILESDIR}/${PN}-1.6.3-minr-maxr.patch" \
+		"${FILESDIR}/${PN}-1.6.3-minr-compat.patch"
+	eautoreconf
+}
 
 multilib_src_configure() {
 	GST_PLUGINS_BUILD=""

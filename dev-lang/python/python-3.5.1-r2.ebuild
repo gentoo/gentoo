@@ -73,6 +73,8 @@ src_prepare() {
 	epatch "${FILESDIR}/${PN}-3.4.3-ncurses-pkg-config.patch"
 	epatch "${FILESDIR}/3.5-secondary-targets.patch"
 
+	epatch_user
+
 	sed -i -e "s:@@GENTOO_LIBDIR@@:$(get_libdir):g" \
 		configure.ac \
 		Lib/distutils/command/install.py \
@@ -86,8 +88,6 @@ src_prepare() {
 		setup.py || die "sed failed to replace @@GENTOO_LIBDIR@@"
 
 	#sed -i -e 's/\$(GRAMMAR_H): \$(GRAMMAR_INPUT) \$(PGEN)/$(GRAMMAR_H): \$(GRAMMAR_INPUT)/' Makefile.pre.in || die
-
-	epatch_user
 
 	eautoreconf
 }
