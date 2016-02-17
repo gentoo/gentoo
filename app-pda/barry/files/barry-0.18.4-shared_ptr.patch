@@ -1,0 +1,25 @@
+With -std=c++-11 shared_ptr is available in the standard library so pulling in
+the std::tr1 namespace creates an ambiguous reference.  Simple fix is to stop
+doing that but isn't backwards compatible.  We don't care in Gentoo since we'll
+always be building barry with -std=c++11 due to libsigc++ abi compatibility.
+
+--- a/tools/bio.cc
++++ b/tools/bio.cc
+@@ -42,7 +42,6 @@
+ #include "i18n.h"
+ 
+ using namespace std;
+-using namespace std::tr1;
+ using namespace Barry;
+ 
+ // keeping a record of all the -i device / -o device pin numbers, so
+--- a/tools/btool.cc
++++ b/tools/btool.cc
+@@ -59,7 +59,6 @@
+ #include "barrygetopt.h"
+ 
+ using namespace std;
+-using namespace std::tr1;
+ using namespace Barry;
+ 
+ std::map<std::string, std::string> SortKeys;
