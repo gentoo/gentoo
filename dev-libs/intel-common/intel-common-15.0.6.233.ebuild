@@ -1,13 +1,14 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=5
 
 INTEL_DPN=parallel_studio_xe
-INTEL_DID=2872
-INTEL_DPV=2013_update1
+INTEL_DID=8470
+INTEL_DPV=2015_update6
 INTEL_SUBDIR=composerxe
+INTEL_SINGLE_ARCH=false
 
 inherit intel-sdp
 
@@ -17,15 +18,15 @@ HOMEPAGE="http://software.intel.com/en-us/articles/intel-compilers/"
 IUSE="+compiler"
 KEYWORDS="-* ~amd64 ~x86 ~amd64-linux ~x86-linux"
 
-CHECKREQS_DISK_BUILD=325M
+CHECKREQS_DISK_BUILD=375M
 
 pkg_setup() {
 	einfo ${INTEL_SDP_EDIR}
 	INTEL_BIN_RPMS="openmp openmp-devel"
-	INTEL_DAT_RPMS="compilerpro-common"
+	INTEL_DAT_RPMS="compilerpro-common compilerpro-common-pset"
 	if use compiler; then
 		INTEL_BIN_RPMS+=" compilerpro-devel sourcechecker-devel"
-		INTEL_DAT_RPMS+=" compilerpro-vars sourcechecker-common"
+		INTEL_DAT_RPMS+=" compilerpro-vars sourcechecker-common ccompxe compxe fcompxe"
 	fi
 	intel-sdp_pkg_setup
 }
