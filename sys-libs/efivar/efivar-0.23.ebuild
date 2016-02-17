@@ -19,6 +19,7 @@ DEPEND="${RDEPEND}
 	>=sys-kernel/linux-headers-3.18"
 
 src_prepare() {
+	tc-ld-disable-gold
 	epatch "${FILESDIR}/0.21-nvme_ioctl.h.patch"
 	epatch_user
 }
