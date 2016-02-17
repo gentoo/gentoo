@@ -6,6 +6,7 @@
     <name>Gentoo Sound project</name>
   </maintainer>
   <use>
+    <flag name="frontend">Build and install the 'lame' executable frontend to lame libraries.</flag>
     <flag name="mp3rtp">Build the mp3-to-RTP streaming utility. **UNSUPPORTED**</flag>
   </use>
   <upstream>
