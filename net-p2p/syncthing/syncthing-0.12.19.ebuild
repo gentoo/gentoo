@@ -32,10 +32,12 @@ src_compile() {
 	go run build.go -version "v${PV}" -no-upgrade || die "build failed"
 }
 
-src_test() {
-	cd src/${EGO_PN}
-	go run build.go test || die "test failed"
-}
+# go test: -race is only supported on amd64 platforms
+# https://github.com/syncthing/syncthing/issues/2765
+#src_test() {
+#	cd src/${EGO_PN}
+#	go run build.go test || die "test failed"
+#}
 
 src_install() {
 	cd src/${EGO_PN}
