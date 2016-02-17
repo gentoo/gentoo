@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -6,7 +6,7 @@ EAPI=5
 
 inherit nsplugins multilib-minimal
 
-MOZVER=38
+MOZVER=39
 DESCRIPTION="Cisco OpenH264 library and Gecko Media Plugin for Mozilla packages"
 HOMEPAGE="http://www.openh264.org/"
 SRC_URI="https://github.com/cisco/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
@@ -24,7 +24,7 @@ DEPEND="dev-lang/nasm"
 DOCS=( LICENSE CONTRIBUTORS README.md )
 
 src_prepare() {
-	epatch "${FILESDIR}"/pkgconfig-pathfix.patch
+	epatch "${FILESDIR}"/${P}-pkgconfig-pathfix.patch
 	multilib_copy_sources
 }
 
@@ -36,6 +36,7 @@ emakecmd() {
 	CC="$(tc-getCC)" CXX="$(tc-getCXX)" LD="$(tc-getLD)" \
 	emake V=Yes CFLAGS_M32="" CFLAGS_M64="" CFLAGS_OPT="" \
 		PREFIX="${EPREFIX}/usr" \
+		LIBDIR_NAME="$(get_libdir)" \
 		SHAREDLIB_DIR="${EPREFIX}/usr/$(get_libdir)" \
 		INCLUDES_DIR="${EPREFIX}/usr/include/${PN}" \
 		$@
