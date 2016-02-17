@@ -573,7 +573,7 @@ app-crypt/oclhashcat-plus-bin 0.15: An opencl multihash cracker
 app-crypt/onak 0.4.0: onak is an OpenPGP keyserver
 app-crypt/openssl-blacklist 0.5.3: Detection of weak ssl keys produced by certain debian versions between 2006 and 2008
 app-crypt/openssl-tpm-engine 0.4.1 0.4.2: This provides a OpenSSL engine that uses private keys stored in TPM hardware
-app-crypt/openvpn-blacklist 0.4-r1: Detection of weak openvpn keys produced by certain debian versions between 2006 and 2008
+app-crypt/openvpn-blacklist 0.4-r1 0.5: Detection of weak openvpn keys produced by certain debian versions in 2006-2008
 app-crypt/ophcrack 3.1.0-r2 3.3.0 3.3.1 3.4.0 3.6.0: A time-memory-trade-off-cracker
 app-crypt/ophcrack-tables 1.0-r2: Tables available for ophcrack
 app-crypt/osslsigncode 1.4: Platform-independent tool for Authenticode signing of EXE/CAB files
@@ -1054,7 +1054,7 @@ app-editors/pluma 1.8.1 1.10.2: Pluma text editor for the MATE desktop
 app-editors/qemacs 0.4.0_pre20090420-r1 0.4.1_pre20150916: QEmacs is a very small but powerful UNIX editor
 app-editors/qwriter 0.1.9 0.1.9-r1: Advanced text editor with syntax highlighting
 app-editors/qxmledit 0.8.8.1: Qt4 XML Editor
-app-editors/retext 4.1.3 5.0.2 5.1.0 5.2.0 5.2.1 5.3.0 9999: Simple editor for Markdown and reStructuredText
+app-editors/retext 4.1.3 5.2.1 5.3.0 9999: Simple editor for Markdown and reStructuredText
 app-editors/sandy 0.4: an ncurses text editor with an easy-to-read, hackable C source
 app-editors/scite 3.5.5 3.6.1 3.6.2: A very powerful editor for programmers
 app-editors/shed 1.12 1.13 1.15: Simple Hex EDitor
@@ -4182,7 +4182,7 @@ dev-java/rhino 1.7.7-r1: An open-source implementation of JavaScript written in 
 dev-java/rngom 20100718-r1: RNGOM is an open-source Java library for parsing RELAX NG grammars
 dev-java/rome 0.9-r2: Open source Atom/RSS Java utilities that make it easy to work in Java with most syndication formats
 dev-java/rundoc 0.11: A Ant helper task for keeping documentation in source files
-dev-java/rxtx 2.1.7.2-r3 2.2_pre2: Native lib providing serial and parallel communication for Java
+dev-java/rxtx 2.2_pre2 2.2_pre2-r1: Native lib providing serial and parallel communication for Java
 dev-java/saaj 1.3.19-r1: SOAP with Attachments API for Java
 dev-java/sablecc 3.2 3.7: Java based compiler / parser generator
 dev-java/sablecc-anttask 1.1.0-r1: Ant task for sablecc
@@ -4260,7 +4260,7 @@ dev-java/tomcat-jstl-el 1.2.5-r1: JSP Standard Tag Library (JSTL) - EL jar
 dev-java/tomcat-jstl-impl 1.2.5-r1: JSP Standard Tag Library (JSTL) - Implementation jar
 dev-java/tomcat-jstl-spec 1.2.5-r1: JSP Standard Tag Library (JSTL) - Specification jar
 dev-java/tomcat-native 1.1.33-r1 1.2.3 1.2.4: Native APR library for Tomcat
-dev-java/tomcat-servlet-api 3 4.1.36 5.5.27-r1 5.5.34 6.0.44 6.0.44-r1 6.0.45 7.0.59 7.0.67 8.0.30 8.0.32 9.0.0_alpha3: Tomcat's Servlet API 4.0/JSP API 2.3 implementation
+dev-java/tomcat-servlet-api 3 4.1.36 5.5.27-r1 5.5.34 6.0.44-r1 6.0.45 7.0.59 7.0.67 8.0.30 8.0.32 9.0.0_alpha3: Tomcat's Servlet API 4.0/JSP API 2.3 implementation
 dev-java/toolbar 1.1.0-r1: An improved version of JToolBar
 dev-java/touchgraph-graphlayout 1.22-r1: TouchGraph provides a set of interfaces for graph visualization
 dev-java/treelayout 1.0.2: Efficiently create compact tree layouts in Java
@@ -8976,7 +8976,7 @@ dev-ruby/ruby-gtksourceview3 2.2.3 2.2.3-r1 2.2.5 3.0.7: Ruby Gtk3 bindings
 dev-ruby/ruby-hmac 0.4.0-r1: A common interface to HMAC functionality as documented in RFC2104
 dev-ruby/ruby-inifile 2.0.0-r2: Small library to parse INI-files in Ruby
 dev-ruby/ruby-ldap 0.9.16-r1 0.9.17: A Ruby interface to some LDAP libraries
-dev-ruby/ruby-mp3info 0.8.6 0.8.7 0.8.8: A pure Ruby library for access to mp3 files (internal infos and tags)
+dev-ruby/ruby-mp3info 0.8.8 0.8.9: A pure Ruby library for access to mp3 files (internal infos and tags)
 dev-ruby/ruby-net-ldap 0.12.1 0.13.0 0.14.0: Pure ruby LDAP client implementation
 dev-ruby/ruby-oci8 2.1.7 2.1.7-r1 2.1.8 2.2.1: A Ruby library for Oracle OCI8
 dev-ruby/ruby-odbc 0.99997 0.99997-r1: RubyODBC - For accessing ODBC data sources from the Ruby language
@@ -9055,7 +9055,7 @@ dev-ruby/sshkit 1.7.1 1.8.0 1.8.1: SSHKit makes it easy to write structured, tes
 dev-ruby/stamp 0.5.0-r1 0.6.0: Date and time formatting for humans
 dev-ruby/state_machine 1.2.0: Adds support for creating state machines for attributes on any Ruby class
 dev-ruby/stomp 1.3.2 1.3.2-r1 1.3.4: Ruby bindings for the stomp messaging protocol
-dev-ruby/stringex 2.5.2: Extensions for Ruby's String class
+dev-ruby/stringex 2.5.2 2.6.0: Extensions for Ruby's String class
 dev-ruby/subexec 0.2.3-r1: Subexec spawns an external command with a timeout
 dev-ruby/syntax 1.2.0-r1: Syntax highlighting for sourcecode and HTML
 dev-ruby/syslogger 1.6.2 1.6.3 1.6.4: Drop-in replacement for the standard Logger, that logs to the syslog
@@ -13379,7 +13379,7 @@ media-video/mpeg2vidcodec 12-r1: MPEG Library
 media-video/mpglen 0.1: A program to scan through a MPEG file and count the number of GOPs and frames
 media-video/mpgtx 1.3.1-r2: Command line MPEG audio/video/system file toolbox
 media-video/mplay-sh 0.5.3-r1: mplayer wrapper script as backend for vdr-mplayer
-media-video/mplayer 1.1.1-r1 1.2_pre20150214-r1 1.2-r2 1.2.1 9999: Media Player for Linux
+media-video/mplayer 1.1.1-r1 1.2_pre20150214-r1 1.2-r2 1.2.1 1.3.0 9999: Media Player for Linux
 media-video/mplayer-resume 2.0: MPlayer wrapper script to save/resume playback position
 media-video/mplayer-sh 0.8.6-r2 0.8.7: Video Disk Recorder Mplayer API Script
 media-video/mpv 0.9.2-r1 0.14.0-r1 0.15.0-r1 9999: Media player based on MPlayer and mplayer2
@@ -14631,7 +14631,7 @@ net-misc/openr2 1.3.0: An open implementation of the MFC/R2 telephony signaling 
 net-misc/openrdate 1.2: use TCP or UDP to retrieve the current time of another machine
 net-misc/openssh 7.1_p1-r2 7.1_p1-r3 7.1_p2 7.1_p2-r1: Port of OpenBSD's free SSH release
 net-misc/openssh-blacklist 0.4.1: Source files of vuln Debian keys
-net-misc/openvpn 2.3.8 2.3.8-r1 2.3.9 2.3.10 9999: Robust and highly flexible tunneling application compatible with many OSes
+net-misc/openvpn 2.3.8 2.3.10 2.3.10-r1 9999: Robust and highly flexible tunneling application compatible with many OSes
 net-misc/openvpn-auth-ldap 2.0.4_pre20131110: LDAP authentication and authorization plugin for OpenVPN 2.x
 net-misc/openvswitch 1.11.0 2.0.0-r3 2.1.3 2.3.0 2.3.1 2.3.2 2.4.0: Production quality, multilayer virtual switch
 net-misc/orbited 0.7.10-r1 0.7.10-r2: Real-time communication for the browser.
