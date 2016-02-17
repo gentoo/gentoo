@@ -221,7 +221,6 @@ multilib_src_configure() {
 
 	local libdir=$(get_libdir)
 	local mycmakeargs=(
-		"${mycmakeargs[@]}"
 		-DLLVM_LIBDIR_SUFFIX=${libdir#lib}
 
 		-DLLVM_LINK_LLVM_DYLIB=ON
