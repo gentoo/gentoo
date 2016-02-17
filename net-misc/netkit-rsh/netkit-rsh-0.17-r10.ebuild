@@ -15,13 +15,13 @@ SRC_URI="ftp://ftp.uk.linux.org/pub/linux/Networking/netkit/${P}.tar.gz
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 ~m68k ~mips ppc ppc64 s390 sh sparc x86 ~x86-fbsd"
+KEYWORDS="alpha amd64 arm hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~x86-fbsd"
 IUSE="pam"
 
 RDEPEND=">=sys-libs/ncurses-5.2
 	pam? ( >=sys-auth/pambase-20080219.1 )"
 DEPEND="${RDEPEND}
-	|| ( app-arch/xz-utils app-arch/lzma-utils )"
+	app-arch/xz-utils"
 
 FILECAPS=(
 	cap_net_bind_service usr/bin/r{cp,login,sh}
@@ -46,7 +46,7 @@ src_prepare() {
 
 src_configure() {
 	tc-export CC
-	./configure $(use pam && echo --without-pam) || die
+	./configure $(usex pam '' '--without-pam') || die
 
 	sed -i \
 		-e "s:-pipe -O2:${CFLAGS}:" \
