@@ -70,6 +70,7 @@ src_prepare() {
 		"${FILESDIR}/0003-libsemanage-Add-file_contexts-and-seusers-to-the-sto.patch" \
 		"${FILESDIR}/0004-libsemanage-save-homedir_template-in-the-policy-stor.patch" \
 		"${FILESDIR}/0005-libsemanage-store-users_extra-in-the-policy-store.patch"
+	epatch "${FILESDIR}"/${PN}-2.4-build-paths.patch
 
 	epatch_user
 
@@ -111,8 +112,8 @@ multilib_src_install() {
 
 pkg_postinst() {
 	# Migrate the SELinux semanage configuration store if not done already
-	local selinuxtype=$(awk -F'=' '/SELINUXTYPE=/ {print $2}' /etc/selinux/config);
-	if [ -n "${selinuxtype}" ] && [ ! -d /var/lib/selinux/${mcs}/active ] ; then
+	local selinuxtype=$(awk -F'=' '/SELINUXTYPE=/ {print $2}' "${EROOT}"/etc/selinux/config 2>/dev/null)
+	if [ -n "${selinuxtype}" ] && [ ! -d "${EROOT}"/var/lib/selinux/${mcs}/active ] ; then
 		ewarn "Since the 2.4 SELinux userspace, the policy module store is moved"
 		ewarn "from /etc/selinux to /var/lib/selinux. The migration will be run now."
 		ewarn "If there are any issues, it can be done manually by running:"
@@ -123,7 +124,7 @@ pkg_postinst() {
 
 	# Run the store migration without rebuilds
 	for POLICY_TYPE in ${POLICY_TYPES} ; do
-		if [ ! -d "${ROOT}/var/lib/selinux/${POLICY_TYPE}/active" ] ; then
+		if [ ! -d "${EROOT}/var/lib/selinux/${POLICY_TYPE}/active" ] ; then
 			einfo "Migrating store ${POLICY_TYPE} (without policy rebuild)."
 			/usr/libexec/selinux/semanage_migrate_store -n -s "${POLICY_TYPE}" || die "Failed to migrate store ${POLICY_TYPE}"
 		fi
