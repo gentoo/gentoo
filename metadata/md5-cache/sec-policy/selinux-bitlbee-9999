@@ -8,4 +8,4 @@ RDEPEND=sec-policy/selinux-inetd >=sys-apps/policycoreutils-2.0.82 >=sec-policy/
 SLOT=0
 _eclass_exported_funcs=pkg_postrm:selinux-policy-2 pkg_postinst:selinux-policy-2 src_unpack:selinux-policy-2 src_prepare:selinux-policy-2 src_compile:selinux-policy-2 src_install:selinux-policy-2
 _eclasses_=eutils	28fb3e5852485af1c348d446b0b98389	git-r3	ef66dfc3db09f327af21cf32f140fb2b	multilib	3972ca401cf7dbb430df9995f5d8d580	selinux-policy-2	de3221b44061d1a089c15c628b625d38	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
-_md5_=298cbf34dd27051ebcd3ee8ab3077f3e
+_md5_=159242d90ed5111f3ebbbf8af529547e

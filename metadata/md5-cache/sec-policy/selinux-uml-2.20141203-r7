@@ -10,4 +10,4 @@ SLOT=0
 SRC_URI=https://raw.githubusercontent.com/wiki/TresysTechnology/refpolicy/files/refpolicy-2.20141203.tar.bz2 https://dev.gentoo.org/~swift/patches/selinux-base-policy/patchbundle-selinux-base-policy-2.20141203-r7.tar.bz2
 _eclass_exported_funcs=pkg_postrm:selinux-policy-2 pkg_postinst:selinux-policy-2 src_unpack:selinux-policy-2 src_prepare:selinux-policy-2 src_compile:selinux-policy-2 src_install:selinux-policy-2
 _eclasses_=eutils	28fb3e5852485af1c348d446b0b98389	multilib	3972ca401cf7dbb430df9995f5d8d580	selinux-policy-2	de3221b44061d1a089c15c628b625d38	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
-_md5_=6136cc7b0a2039379639d04ffddbee7f
+_md5_=62b85f499b55e94f0e162daa5ccf1508
