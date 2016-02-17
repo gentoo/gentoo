@@ -9689,7 +9689,7 @@ dev-util/skelgen 1.2: A Skeleton Source File Generator
 dev-util/skipfish 2.10_beta: A fully automated, active web application security reconnaissance tool
 dev-util/smem 20071119_p1: A tool to parse smaps statistics
 dev-util/source-highlight 3.1.7-r2: Generate highlighted source code as an (x)html document
-dev-util/spec-cleaner 0.7.2 9999: SUSE spec file cleaner and formatter
+dev-util/spec-cleaner 0.7.8 9999: SUSE spec file cleaner and formatter
 dev-util/splint 3.1.2-r1 3.1.2-r2: Check C programs for vulnerabilities and programming mistakes
 dev-util/squashdelta 0.1 9999: Efficient (partially uncompressed) SquashFS binary delta tool
 dev-util/squashmerge 0.1 9999: dev-util/squashdelta delta merge tool
