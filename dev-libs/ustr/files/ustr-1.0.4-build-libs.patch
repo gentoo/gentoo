@@ -1,0 +1,49 @@
+make static lib build/install controllable so we can disable it by default
+
+punt the -debug lib variants ... if people want debug libs, they can rebuild
+the package using their desired build settings.
+
+--- a/Makefile
++++ b/Makefile
+@@ -291,8 +291,10 @@
+ OPT_LIB_SHARED      = libustr-$(VERS_BSO).so.$(VERS_ESO)
+ OPT_LIB_STATIC      = libustr.a
+ 
+-LIB_SHARED = $(DBG_LIB_SHARED) $(OPT_LIB_SHARED)
+-LIB_STATIC = $(DBG_LIB_STATIC) $(OPT_LIB_STATIC)
++LIB_SHARED = $(OPT_LIB_SHARED)
++ifeq ($(USE_STATIC),yes)
++LIB_STATIC = $(OPT_LIB_STATIC)
++endif
+ 
+ DEPS_NONC_ALL  = $(SRC_HDRS) $(SRC_SRCS_H)
+ DEPS_C_ALL     = $(SRC_HDRS)
+@@ -388,17 +390,14 @@
+ 		install -d $(DESTDIR)$(bindir)
+ 		install -d $(DESTDIR)$(libdir)/pkgconfig
+ 		$(HIDE)echo Installing files
++ifeq ($(USE_STATIC),yes)
+ 		install -m 644 -t $(DESTDIR)$(libdir) $(LIB_STATIC)
++endif
+ 		install -m 755 -t $(DESTDIR)$(libdir) $(LIB_SHARED)
+ 		-rm -f $(DESTDIR)$(libdir)/$(OPT_LIB_SHARED_NAME)
+ 		ln -s $(OPT_LIB_SHARED) $(DESTDIR)$(libdir)/$(OPT_LIB_SHARED_NAME)
+ 		-rm -f $(DESTDIR)$(libdir)/$(OPT_LIB_SHAREDEV)
+ 		ln -s $(OPT_LIB_SHARED_NAME) $(DESTDIR)$(libdir)/$(OPT_LIB_SHAREDEV)
+-		-rm -f $(DESTDIR)$(libdir)/$(DBG_LIB_SHARED_NAME)
+-		ln -s $(DBG_LIB_SHARED) $(DESTDIR)$(libdir)/$(DBG_LIB_SHARED_NAME)
+-		-rm -f $(DESTDIR)$(libdir)/$(DBG_LIB_SHAREDEV)
+-		ln -s $(DBG_LIB_SHARED_NAME) $(DESTDIR)$(libdir)/$(DBG_LIB_SHAREDEV)
+-		$(LDCONFIG) -n $(DESTDIR)$(libdir)
+ 		install -pm 644 -t $(DESTDIR)$(includedir) $(SRC_HDRS)
+ 		install -pm 644 -t $(DESTDIR)$(SHRDIR) $(SRC_SRCS)
+ 		install -pm 644 -t $(DESTDIR)$(SHRDIR) $(XSRC_SRCS)
+@@ -406,7 +406,7 @@ endif
+ 		install -pm 644 -t $(DESTDIR)$(mandir)/man1 $(MAN_PAGES_1)
+ 		install -pm 644 -t $(DESTDIR)$(mandir)/man3 $(MAN_PAGES_3)
+ 		install -m 755 -t $(DESTDIR)$(bindir) ustr-import
+-		install -pm 644 -t $(DESTDIR)$(libdir)/pkgconfig ustr.pc ustr-debug.pc
++		install -pm 644 -t $(DESTDIR)$(libdir)/pkgconfig ustr.pc
+ 
+ ustr-import-multilib: ustr-import-multilib.in
+ 		sed -e 's,@INCLUDEDIR@,$(includedir),g' -e 's,@MBINDIR@,$(MBINDIR),g' < $< > $@

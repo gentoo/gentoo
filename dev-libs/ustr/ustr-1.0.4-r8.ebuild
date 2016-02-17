@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI="5"
 
 inherit toolchain-funcs multilib-minimal
 
@@ -12,7 +12,8 @@ SRC_URI="ftp://ftp.and.org/pub/james/ustr/${PV}/${P}.tar.bz2"
 
 LICENSE="|| ( BSD-2 MIT LGPL-2 )"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~mips ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~mips ~x86"
+IUSE="static-libs ustr-import"
 
 DOCS=(ChangeLog README README-DEVELOPERS AUTHORS NEWS TODO)
 
@@ -23,11 +24,13 @@ MULTILIB_WRAPPED_HEADERS=(
 
 src_prepare() {
 	epatch "${FILESDIR}/${P}-gcc_5-check.patch"
+	epatch "${FILESDIR}/${PN}-1.0.4-build-libs.patch"
 	multilib_copy_sources
 }
 
 _emake() {
 	emake \
+		USE_STATIC=$(usex static-libs) \
 		AR="$(tc-getAR)" \
 		CC="$(tc-getCC)" \
 		CFLAGS="${CFLAGS} ${CPPFLAGS}" \
@@ -67,6 +70,13 @@ multilib_src_compile() {
 
 multilib_src_install() {
 	_emake DESTDIR="${D}" install
+
+	if ! use ustr-import ; then
+		rm -r \
+			"${ED}/usr/bin/ustr-import" \
+			"${ED}/usr/share/man/man1/ustr-import.1" \
+			"${ED}/usr/share/${P}" || die
+	fi
 }
 
 multilib_src_test() {
