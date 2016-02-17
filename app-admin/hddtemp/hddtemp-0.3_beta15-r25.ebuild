@@ -1,9 +1,10 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
-inherit eutils autotools readme.gentoo systemd
+
+inherit eutils autotools readme.gentoo-r1 systemd
 
 MY_P=${P/_beta/-beta}
 DBV=20080531
@@ -37,13 +38,17 @@ If hddtemp complains but finds your HDD temperature sensor, use the
 --quiet option to suppress the warning.
 "
 
+PATCHES=(
+	"${FILESDIR}"/${P}-satacmds.patch
+	"${FILESDIR}"/${P}-byteswap.patch
+	"${FILESDIR}"/${P}-execinfo.patch
+	"${FILESDIR}"/${P}-nls.patch
+	"${FILESDIR}"/${P}-iconv.patch
+	"${FILESDIR}"/${P}-dontwake.patch
+)
+
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-satacmds.patch
-	epatch "${FILESDIR}"/${P}-byteswap.patch
-	epatch "${FILESDIR}"/${P}-execinfo.patch
-	epatch "${FILESDIR}"/${P}-nls.patch
-	epatch "${FILESDIR}"/${P}-iconv.patch
-	epatch "${FILESDIR}"/${P}-dontwake.patch
+	epatch "${PATCHES[@]}"
 	AT_M4DIR="m4" eautoreconf
 }
 
@@ -77,6 +82,10 @@ src_install() {
 		echo -e "#!/bin/sh\n/usr/sbin/update-hddtemp.db" > "${T}"/hddtemp.cron
 		newexe "${T}"/hddtemp.cron update-hddtemp.db
 	fi
+}
+
+pkg_postinst() {
+	readme.gentoo_print_elog
 }
 
 update_db() {

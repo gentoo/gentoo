@@ -4,12 +4,15 @@
 
 EAPI=5
 
-PYTHON_COMPAT=( python{2_7,3_{3,4,5}} )
+PYTHON_COMPAT=( python{2_7,3_{3,4,5}} pypy{,3} )
 
 inherit distutils-r1
 
 DESCRIPTION="Portable network interface information"
-HOMEPAGE="http://alastairs-place.net/netifaces/ https://pypi.python.org/pypi/netifaces/"
+HOMEPAGE="
+	https://pypi.python.org/pypi/netifaces/
+	http://alastairs-place.net/netifaces/
+	https://bitbucket.org/al45tair/netifaces"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
