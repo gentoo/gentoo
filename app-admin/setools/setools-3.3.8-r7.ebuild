@@ -58,6 +58,9 @@ src_prepare() {
 	EPATCH_FORCE="yes" \
 	epatch
 
+	epatch "${FILESDIR}"/${PN}-3.3.8-no-check-file.patch
+	epatch "${FILESDIR}"/${PN}-3.3.8-policy-max.patch
+
 	# Fix build failure due to double __init__.py installation
 	sed -e "s/^wrappedpy_DATA = qpol.py \$(pkgpython_PYTHON)/wrappedpy_DATA = qpol.py/" -i libqpol/swig/python/Makefile.am || die
 	# Disable broken check for SWIG version. Bug #542032

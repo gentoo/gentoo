@@ -1,0 +1,15 @@
+there's no real need to run AC_CHECK_FILE to see if a file exists.  if the
+static link fails later on, then the static lib didn't exist.  this also
+breaks cross-compiling.
+
+--- a/configure.ac
++++ b/configure.ac
+@@ -448,8 +448,6 @@
+               sepol_srcdir="")
+ if test "x${sepol_srcdir}" = "x"; then
+    sepol_srcdir=${sepol_devel_libdir}
+-   AC_CHECK_FILE([${sepol_srcdir}/libsepol.a],,
+-      AC_MSG_ERROR([make sure libsepol-static is installed]))
+ else
+    AC_MSG_CHECKING([for compatible sepol source tree])
+    sepol_version=${sepol_srcdir}/VERSION
