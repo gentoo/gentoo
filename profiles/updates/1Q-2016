@@ -11,3 +11,4 @@ slotmove <sci-libs/libint-2 0 1
 slotmove >=sci-libs/libint-2 0 2
 move dev-ml/pa_test dev-ml/ppx_assert
 move dev-ml/custom_printf dev-ml/ppx_custom_printf
+move sci-mathematics/csdp sci-libs/coinor-csdp
