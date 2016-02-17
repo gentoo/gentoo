@@ -14593,7 +14593,7 @@ net-misc/netkit-bootparamd 0.17-r2 0.17-r3: Netkit - bootparamd
 net-misc/netkit-bootpd 2.4-r1: Netkit - bootp
 net-misc/netkit-fingerd 0.17-r3: Netkit - fingerd and finger client
 net-misc/netkit-routed 0.17-r4: Netkit - routed
-net-misc/netkit-rsh 0.17-r9 0.17-r10: Netkit's Remote Shell Suite: rexec{,d} rlogin{,d} rsh{,d}
+net-misc/netkit-rsh 0.17-r10: Netkit's Remote Shell Suite: rexec{,d} rlogin{,d} rsh{,d}
 net-misc/netkit-rusers 0.17-r1: Netkit - rup rpc.rusersd rusers
 net-misc/netkit-rwall 0.17-r1: Netkit - rwall
 net-misc/netkit-rwho 0.17-r4: Netkit - ruptime/rwho/rwhod
@@ -17095,7 +17095,7 @@ sys-libs/libacpi 0.2: A general purpose library for ACPI
 sys-libs/libapparmor 2.8.3 2.8.4 2.10: Library to support AppArmor userspace utilities
 sys-libs/libavc1394 0.5.3 0.5.4 0.5.4-r1: library for the 1394 Trade Association AV/C (Audio/Video Control) Digital Interface Command Set
 sys-libs/libcap 2.22-r2 2.24-r2 2.25: POSIX 1003.1e capabilities
-sys-libs/libcap-ng 0.6.6 0.7.3 0.7.4 0.7.5 0.7.6 0.7.7: POSIX 1003.1e capabilities
+sys-libs/libcap-ng 0.7.7: POSIX 1003.1e capabilities
 sys-libs/libchipcard 5.0.2: Libchipcard is a library for easy access to chip cards via chip card readers (terminals)
 sys-libs/libcxx 3.7.0 3.7.1 9999: New implementation of the C++ standard library, targeting C++11
 sys-libs/libcxxrt 0.0_p20140322 0.0_p20150423 9999: C++ Runtime from PathScale, FreeBSD and NetBSD
