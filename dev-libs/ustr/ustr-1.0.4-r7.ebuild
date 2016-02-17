@@ -41,6 +41,26 @@ _emake() {
 		"$@"
 }
 
+multilib_src_configure() {
+	# The included configure tests require execution.
+
+	# We require vsnprintf everywhere as it's in POSIX.
+	printf '#!/bin/sh\necho 0\n' > autoconf_vsnprintf
+	chmod a+rx autoconf_vsnprintf
+
+	# Always use stdint.h as it's in POSIX.
+	sed -i '/have_stdint_h=0/s:=0:=1:' Makefile || die
+
+	# Figure out the size of size_t.
+	printf '#include <sys/types.h>\nint main() { char buf[sizeof(size_t) - 8]; }\n' > sizet_test.c
+	 $(tc-getCC) ${CPPFLAGS} ${CFLAGS} -c sizet_test.c 2>/dev/null
+	printf '#!/bin/sh\necho %s\n' $(( $? == 0 )) > autoconf_64b
+	chmod a+rx autoconf_64b
+
+	# Generate the config file now to avoid bad makefile deps.
+	_emake ustr-import
+}
+
 multilib_src_compile() {
 	_emake all-shared
 }
