@@ -248,8 +248,8 @@ src_prepare() {
 		EPATCH_OPTS="-p1" \
 			epatch "${WORKDIR}"/patches-ovmf
 		popd > /dev/null
+		mv ../ovmf-${OVMF_PV} tools/firmware/ovmf-dir-remote || die
 	fi
-	mv ../ovmf-${OVMF_PV} tools/firmware/ovmf-dir-remote || die
 
 	mv tools/qemu-xen/qemu-bridge-helper.c tools/qemu-xen/xen-bridge-helper.c || die
 
