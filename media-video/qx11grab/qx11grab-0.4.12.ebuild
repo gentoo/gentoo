@@ -25,6 +25,7 @@ RDEPEND="
 	>=sys-apps/dbus-1.6.4
 	>=x11-libs/libX11-1.3.4
 	>=x11-libs/libXrandr-1.3
+	dev-libs/qjson
 	libav? ( >=media-video/libav-9:0=[X,encode,truetype] )
 	!libav? ( >=media-video/ffmpeg-1.1:0=[X,encode,truetype] )
 	kde? ( kde-base/kdelibs:4 )
