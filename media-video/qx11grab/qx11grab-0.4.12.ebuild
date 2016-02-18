@@ -36,6 +36,7 @@ DEPEND="${RDEPEND}
 	kde? ( dev-util/automoc )
 "
 PDEPEND="virtual/freedesktop-icon-theme"
+PATCHES=( "${FILESDIR}/${P}-ffmpeg3.patch" )
 
 src_prepare() {
 	cmake-utils_src_prepare
