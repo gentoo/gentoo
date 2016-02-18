@@ -29,6 +29,10 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.3.2-mysql-preamble.patch
+)
+
 pkg_pretend() {
 	if use ssl && use gnutls && use libressl ; then
 		ewarn "You have enabled both gnutls and libressl, but only"

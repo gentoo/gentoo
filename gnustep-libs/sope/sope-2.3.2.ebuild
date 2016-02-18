@@ -39,6 +39,7 @@ pkg_pretend() {
 src_prepare() {
 	# https://github.com/inverse-inc/sope/pull/33
 	epatch "${FILESDIR}"/${P}-optional-deps.patch
+	epatch "${FILESDIR}"/${P}-mysql-preamble.patch
 	gnustep-base_src_prepare
 }
 

@@ -18,7 +18,7 @@ IUSE="doc javascript nsplugin tagsoup test"
 RESTRICT="test"
 
 CDEPEND="javascript? ( dev-java/rhino:1.6 )
-	nsplugin? ( >=dev-libs/glib-2.16 )
+	nsplugin? ( >=dev-libs/glib-2.16:2= )
 	tagsoup? ( dev-java/tagsoup:0 )"
 
 DEPEND="${CDEPEND}
@@ -39,7 +39,8 @@ RDEPEND="${CDEPEND}
 src_prepare() {
 	# http://icedtea.classpath.org/bugzilla/show_bug.cgi?id=2779
 	# http://icedtea.classpath.org/bugzilla/show_bug.cgi?id=2780
-	epatch "${FILESDIR}"/${PN}-1.6-{javadoc,no-hg,launchers,respect-ldflags}.patch
+	# http://icedtea.classpath.org/bugzilla/show_bug.cgi?id=2855
+	epatch "${FILESDIR}"/${PN}-1.6-{javadoc,no-hg,launchers,respect-ldflags,unused-libs}.patch
 
 	if java-pkg_is-vm-version-ge "1.8" ; then
 		sed -i 's/JAVADOC_OPTS=/\0-Xdoclint:none /g' Makefile.am || die
