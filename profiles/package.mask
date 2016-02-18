@@ -30,6 +30,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Michael Palimaka <kensington@gentoo.org> (18 Feb 2016)
+# Fails to build with recent kernels. Dead upstream.
+# Masked for removal in 30 days. Bug 488128.
+media-video/stk11xx
+
 # Yixun Lan <dlan@gentoo.org> (16 Feb 2016)
 # Mask early development version, leave only upstream stable version
 >=sys-cluster/ceph-10
