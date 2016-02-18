@@ -2358,7 +2358,7 @@ app-text/pep 2.8-r1: General purpose filter and file cleaning program
 app-text/pinfo 0.6.10-r5: Hypertext info and man viewer based on (n)curses
 app-text/po4a 0.45-r1 0.45-r2: Tools for helping translation of documentation
 app-text/podofo 0.9.2 0.9.3: PoDoFo is a C++ library to work with the PDF file format
-app-text/poppler 0.32.0 0.38.0 0.39.0 0.40.0 0.40.0-r1 9999: PDF rendering library based on the xpdf-3.0 code base
+app-text/poppler 0.32.0 0.38.0 0.40.0-r1 0.41.0 9999: PDF rendering library based on the xpdf-3.0 code base
 app-text/poppler-data 0.4.7: Data files for poppler to support uncommon encodings without xpdfrc
 app-text/ps2eps 1.68: Generate Encapsulated Postscript Format (EPS,EPSF) files from one-page Postscript documents
 app-text/ps2pkm 1.5_p20120701 1.5_p20130530 1.5_p20140525 1.7_p20150521: Tool that converts a PostScript type1 font into a corresponding TeX PK font
@@ -7340,12 +7340,12 @@ dev-python/mongoengine 0.8.3: A Python Object-Document-Mapper for working with M
 dev-python/monotonic 0.2 0.3 0.4 0.5: An implementation of time.monotonic() for Python 2 & < 3.3
 dev-python/morbid 0.8.7.3 0.8.7.3-r1: A Twisted-based publish/subscribe messaging server that uses the STOMP protocol
 dev-python/more-itertools 2.2 2.2-r1: More routines for operating on iterables, beyond itertools
-dev-python/moto 0.3.8 0.4.3 0.4.8: Mock library for boto
+dev-python/moto 0.3.8 0.4.3 0.4.8 0.4.21: Mock library for boto
 dev-python/mox 0.5.3-r1: A mock object framework for Python, loosely based on EasyMock for Java
 dev-python/mox3 0.7.0 0.7.0-r1 0.10.0 0.12.0: Mock object framework for Python
 dev-python/mpi4py 1.3.1 2.0.0: Message Passing Interface for Python
 dev-python/mpmath 0.18 0.19: Python library for arbitrary-precision floating-point arithmetic
-dev-python/msgpack 0.4.6: MessagePack (de)serializer for Python
+dev-python/msgpack 0.4.6 0.4.7: MessagePack (de)serializer for Python
 dev-python/multipledispatch 0.4.6 0.4.7 0.4.8: RESTful HTTP Content Negotiation for Flask, Bottle, web.py and webapp2
 dev-python/munkres 1.0.5.4-r2: Module implementing munkres algorithm for the Assignment Problem
 dev-python/mwlib 0.15.15: Tools for parsing Mediawiki content to other formats
@@ -7360,7 +7360,7 @@ dev-python/mysql-python 1.2.3-r1 1.2.5 1.2.5-r1: Python interface to MySQL
 dev-python/mysqlclient 1.3.6 1.3.7: Fork of MySQL-python
 dev-python/nagiosplugin 1.2.3: A class library for writing nagios-compatible plugins
 dev-python/natgrid 0.2.1-r2: Matplotlib toolkit for gridding irreguraly spaced data
-dev-python/natsort 3.4.0 4.0.3: Natural sorting for Python
+dev-python/natsort 3.4.0 4.0.3 4.0.4: Natural sorting for Python
 dev-python/nautilus-python 1.1-r1 1.1-r2: Python bindings for the Nautilus file manager
 dev-python/nbconvert 4.1.0: Converting Jupyter Notebooks
 dev-python/nbformat 4.0.1: Reference implementation of the Jupyter Notebook format
@@ -7443,7 +7443,7 @@ dev-python/paste 1.7.5.1-r1 1.7.5.1-r2 2.0.2: Tools for using a Web Server Gatew
 dev-python/pastedeploy 1.5.2: Load, configure, and compose WSGI applications and servers
 dev-python/pastescript 2.0.2: A pluggable command-line frontend, including commands to setup package file layouts
 dev-python/path-py 8.1.2: A module wrapper for os.path
-dev-python/pathlib 1.0.1-r1: Object-oriented filesystem paths
+dev-python/pathlib 1.0.1-r1 1.0.1-r2: Object-oriented filesystem paths
 dev-python/pathtools 0.1.2: Pattern matching and various utilities for file systems paths
 dev-python/patsy 0.4.1: Python module to describe statistical models and design matrices
 dev-python/paver 1.2.3 1.2.4: Python-based software project scripting tool along the lines of Make
@@ -8987,7 +8987,7 @@ dev-ruby/ruby-opengl 0.8.0 0.9.2: OpenGL / GLUT bindings for ruby
 dev-ruby/ruby-openid 2.7.0: A robust library for verifying and serving OpenID identities
 dev-ruby/ruby-pango 2.2.3 2.2.3-r1 2.2.5 3.0.7: Ruby Pango bindings
 dev-ruby/ruby-poppler 2.2.3 2.2.3-r1 2.2.5 3.0.7 3.0.7-r1: Ruby poppler-glib bindings
-dev-ruby/ruby-prof 0.15.8-r1: A module for profiling Ruby code
+dev-ruby/ruby-prof 0.15.8-r1 0.15.9: A module for profiling Ruby code
 dev-ruby/ruby-progressbar 1.4.2 1.4.2-r1 1.7.5: A Text Progress Bar Library for Ruby
 dev-ruby/ruby-rc4 0.1.5-r1 0.1.5-r2: A pure Ruby implementation of the Rc4 algorithm
 dev-ruby/ruby-romkan 0.4-r5 0.4-r6: A Romaji <-> Kana conversion library for Ruby
@@ -17188,7 +17188,7 @@ sys-power/powertop 1.13 2.6 2.8 9999: tool that helps you find what software is 
 sys-power/sispmctl 3.1: GEMBIRD SiS-PM control utility
 sys-power/suspend 1.0 1.0_p20150810: Userspace Software Suspend and S2Ram
 sys-power/thermald 1.3 1.4.2-r1: Thermal daemon for Intel architectures
-sys-power/upower 0.99.2-r1 0.99.3: D-Bus abstraction for enumerating power devices and querying history and statistics
+sys-power/upower 0.99.2-r1 0.99.3 0.99.4: D-Bus abstraction for enumerating power devices, querying history and statistics
 sys-power/upower-pm-utils 0.9.23-r2: The upstream upower 0.9 git branch for use with sys-power/pm-utils
 sys-power/yacpi 3.0.1: Yet Another Configuration and Power Interface
 sys-process/acct 6.5.5-r3 6.6.1 6.6.2: GNU system accounting utilities
