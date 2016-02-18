@@ -764,14 +764,6 @@ sci-libs/libbufr
 # Masked for removal in 30 days.
 media-tv/xawtv
 
-# Patrick Lauer <patrick@gentoo.org> (20 Dec 2015)
-# Mask TOFU release that doesn't work #567768 and friends
-=app-crypt/gkeys-gen-0.1-r1
-
-# Patrick Lauer <patrick@gentoo.org> (20 Dec 2015)
-# Ebuild uninstallable #557090
-=app-crypt/gkeys-0.1-r1
-
 # Fabian Groffen <grobian@gentoo.org> (11 Dec 2015)
 # Release candidates for Exim 4.87
 =mail-mta/exim-4.87_rc2
