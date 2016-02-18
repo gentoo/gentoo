@@ -12,15 +12,16 @@ HOMEPAGE="http://divmod.org/trac/wiki/DivmodVertex https://pypi.python.org/pypi/
 SRC_URI="mirror://pypi/${TWISTED_PN:0:1}/${TWISTED_PN}/${TWISTED_P}.tar.gz"
 
 KEYWORDS="~amd64 ~x86"
-IUSE="libressl"
+IUSE="libressl test"
 
-DEPEND="
+RDEPEND="
 	!libressl? ( dev-libs/openssl:0 )
 	libressl? ( dev-libs/libressl )
 	>=dev-python/epsilon-0.6.0-r1[${PYTHON_USEDEP}]
 	>=dev-python/pyopenssl-0.13-r1[${PYTHON_USEDEP}]
 	dev-python/twisted-core[${PYTHON_USEDEP}]"
-RDEPEND="${DEPEND}"
+DEPEND="${RDEPEND}
+	test? ( dev-python/pretend )"
 
 python_install_all() {
 	distutils-r1_python_install_all
