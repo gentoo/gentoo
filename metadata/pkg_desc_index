@@ -3937,7 +3937,7 @@ dev-java/jarbundler 1.8.1-r2 2.3.1: Jar Bundler Ant Task
 dev-java/jargs 1.0: Command-line argument parsing library in Java
 dev-java/jarjar 1.4: Tool for repackaging third-party jars
 dev-java/java-apicheck 0_p20150907: Command line tool to check Java packages for API compatibility
-dev-java/java-config 2.2.0: Java environment configuration query tool
+dev-java/java-config 2.2.0 2.2.0-r1: Java environment configuration query tool
 dev-java/java-config-wrapper 0.16 0.16-r1: Wrapper for java-config
 dev-java/java-dep-check 0.3-r1: Java Dependency checker
 dev-java/java-getopt 1.0.14: Java command line option parser
@@ -6946,11 +6946,11 @@ dev-python/dingus 0.3.4-r1: A record-then-assert mocking library
 dev-python/discogs-client 2.0.2 2.2.0 2.2.1: Official Python API client for Discogs
 dev-python/disqus-python 0.4.2: Python client library for accessing the disqus.com API
 dev-python/distlib 0.2.1 0.2.1-r1 0.2.2: Distribution utilities
-dev-python/dj-database-url 0.3.0: Use Database URLs in your Django Application
+dev-python/dj-database-url 0.3.0 0.4.0: Use Database URLs in your Django Application
 dev-python/django 1.4.22 1.5.12 1.6.11 1.7.11 1.8.9 1.9.2 9999: High-level Python web framework
-dev-python/django-annoying 0.7.6-r1 0.7.7 0.8.2: This is django application that try to eliminate annoying things in Django framework
+dev-python/django-annoying 0.7.6-r1 0.7.7 0.8.2 0.8.7: This is django application that try to eliminate annoying things in Django framework
 dev-python/django-appconf 0.6 1.0.1: A helper class for handling configuration defaults of packaged apps gracefully
-dev-python/django-auth-ldap 1.2.2 1.2.6: Django LDAP authentication backend
+dev-python/django-auth-ldap 1.2.2 1.2.6 1.2.7: Django LDAP authentication backend
 dev-python/django-baker 0.11-r2: Management command that generates views, forms, urls, admin, and templates for models
 dev-python/django-celery 3.1.16 3.1.17: Celery Integration for Django
 dev-python/django-classy-tags 0.6.2 0.7.1: Class based template tags for Django
