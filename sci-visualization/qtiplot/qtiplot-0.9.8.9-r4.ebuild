@@ -2,18 +2,19 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit eutils qt4-r2 fdo-mime python-single-r1 toolchain-funcs
+inherit eutils qmake-utils python-single-r1 toolchain-funcs xdg
 
 DESCRIPTION="Qt based clone of the Origin plotting package"
-HOMEPAGE="http://soft.proindependent.com/qtiplot.html
+HOMEPAGE="
+	http://soft.proindependent.com/qtiplot.html
 	http://www.staff.science.uu.nl/~zeven101/qtiplot.html"
 SRC_URI="
 	https://dev.gentoo.org/~dilfridge/distfiles/${P}.tar.bz2
-	https://dev.gentoo.org/~dilfridge/distfiles/${P}-origin.patch.bz2"
+	https://dev.gentoo.org/~jlec/distfiles/${P}-origin.patch.xz"
 
 LICENSE="GPL-2 GPL-3"
 SLOT="0"
@@ -45,7 +46,7 @@ CDEPEND="
 	dev-libs/quazip
 	media-libs/libpng:=
 	sci-libs/alglib:=
-	<sci-libs/gsl-2
+	>=sci-libs/gsl-2
 	sci-libs/tamu_anova
 	latex? ( dev-tex/qtexengine )
 	mono? ( dev-dotnet/libgdiplus )
@@ -63,7 +64,7 @@ DEPEND="${CDEPEND}
 RDEPEND="${CDEPEND}"
 
 PATCHES=(
-	"${DISTDIR}"/${P}-origin.patch.bz2
+	"${WORKDIR}"/${P}-origin.patch
 	"${FILESDIR}"/${P}-origin-2.patch
 	"${FILESDIR}"/${P}-qt48.patch
 	"${FILESDIR}"/${PN}-0.9.8.8-system-gl2ps.patch
@@ -76,6 +77,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-private.patch
 	"${FILESDIR}"/${P}-sip-4.15.patch
 	"${FILESDIR}"/${P}-PyQt4-4.11.3.patch
+	"${FILESDIR}"/${P}-gsl-2.patch
 	)
 
 RESTRICT="!bindist? ( bindist )"
@@ -87,13 +89,15 @@ pkg_setup() {
 src_prepare() {
 	local mylibs
 
-	qt4-r2_src_prepare
+	xdg_src_prepare
 
-	rm -rf 3rdparty/{liborigin,QTeXEngine,/qwtplot3d/3rdparty/gl2ps/,boost,alglib} || die
+	rm -rf \
+		3rdparty/{liborigin,QTeXEngine,/qwtplot3d/3rdparty/gl2ps/,boost,alglib} \
+		|| die
 	sed \
 		-e "s:dll:static:g" \
 		-e "/INSTALLS/d" \
-		-i 3rdparty/qwtplot3d/*.pro
+		-i 3rdparty/qwtplot3d/*.pro || die
 
 	mylibs="${mylibs} -lquazip"
 	use mono && mylibs="${mylibs} $($(tc-getPKG_CONFIG) --libs libgdiplus)"
@@ -111,7 +115,7 @@ src_prepare() {
 	QWT_LIBS = \$\$QTI_ROOT/3rdparty/qwt/lib/libqwt.a
 	QWT3D_INCLUDEPATH = \$\$QTI_ROOT/3rdparty/qwtplot3d/include
 	QWT3D_LIBS = \$\$QTI_ROOT/3rdparty/qwtplot3d/lib/libqwtplot3d.a
-	EMF_INCLUDEPATH = "${EPREFIX}/usr/include/libEMF
+	EMF_INCLUDEPATH = "${EPREFIX}"/usr/include/libEMF
 	SYS_LIBS = -lgl2ps ${mylibs} -lGLU
 
 	LUPDATE = lupdate
@@ -176,9 +180,11 @@ src_prepare() {
 	chmod -x qtiplot/qti_wordlist.txt
 
 	# sed out debian paths
-	sed -e 's:\(/usr/share/sgml/\)docbook/stylesheet/dsssl/modular\(/html/docbook.dsl\):\1stylesheets/dsssl/docbook\2:' \
+	sed \
+		-e 's:\(/usr/share/sgml/\)docbook/stylesheet/dsssl/modular\(/html/docbook.dsl\):\1stylesheets/dsssl/docbook\2:' \
 		-i manual/qtiplot.dsl || die
-	sed -e 's:\(/usr/share/\)xml/docbook/stylesheet/nwalsh\(/html/chunk.xsl\):\1sgml/docbook/xsl-stylesheets\2:' \
+	sed \
+		-e 's:\(/usr/share/\)xml/docbook/stylesheet/nwalsh\(/html/chunk.xsl\):\1sgml/docbook/xsl-stylesheets\2:' \
 		-i manual/qtiplot_html.xsl || die
 
 	sed \
@@ -192,16 +198,16 @@ src_configure() {
 }
 
 src_compile() {
-	emake
+	default
 	lrelease qtiplot/qtiplot.pro || die
 	if use doc; then
-		cd manual
+		cd manual || die
 		emake web
 	fi
 }
 
 src_install() {
-	qt4-r2_src_install
+	emake INSTALL_ROOT="${D}" install
 
 	insinto /usr/share/qtiplot
 	doins qtiplot/qti_wordlist.txt
@@ -209,7 +215,7 @@ src_install() {
 	newicon qtiplot_logo.png qtiplot.png
 	make_desktop_entry qtiplot "QtiPlot Scientific Plotting" qtiplot
 
-	use doc && dohtml -r manual/html/*
+	use doc && dodoc -r manual/html
 
 	use python && python_optimize
 
@@ -230,9 +236,5 @@ pkg_postinst() {
 			dev-python/pygsl dev-python/rpy sci-libs/scipy dev-python/sympy
 	fi
 
-	fdo-mime_desktop_database_update
-}
-
-pkg_postrm() {
-	fdo-mime_desktop_database_update
+	xdg_pkg_postinst
 }
