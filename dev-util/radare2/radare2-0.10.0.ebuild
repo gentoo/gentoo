@@ -28,3 +28,15 @@ src_configure() {
 	econf \
 		$(use_with ssl openssl)
 }
+
+src_install() {
+	# a workaround for unstable $(INSTALL) call, bug #574866
+	local d
+	for d in doc/*; do
+		if [[ -d $d ]]; then
+			rm -rfv "$d" || die "failed to delete '$d'"
+		fi
+	done
+
+	default
+}
