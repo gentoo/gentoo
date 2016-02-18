@@ -31,6 +31,11 @@
 #--- END OF EXAMPLES ---
 
 # Michael Palimaka <kensington@gentoo.org> (18 Feb 2016)
+# Fails to build. Dead upstream.
+# Masked for removal in 30 days. Bug 574248.
+dev-util/vdkbuilder
+
+# Michael Palimaka <kensington@gentoo.org> (18 Feb 2016)
 # Fails to build. Dead upstream. Use net-misc/connman-gtk instead.
 # Masked for removal in 30 days. Bug 502552.
 gnome-extra/connman-gnome
