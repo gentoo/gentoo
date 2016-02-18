@@ -19,5 +19,8 @@
     <flag name="pgplot">
     Builds PGBSOX routines, needs <pkg>sci-libs/pgplot</pkg> library
   </flag>
+    <flag name="tools">
+    Builds and installs extra command line utilities for WCS checking
+  </flag>
   </use>
 </pkgmetadata>
