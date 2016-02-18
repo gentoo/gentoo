@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>voyageur@gentoo.org</email>
-		<name>Bernard Cafarelli</name>
-	</maintainer>
 	<longdescription>Mono Remote Desktop Client for the GNOME Desktop. Supported protocols: RDP, VNC, SSH. Configured sessions can be saved to the built in list</longdescription>
 	<upstream>
 		<remote-id type="sourceforge">gnome-rdp</remote-id>
