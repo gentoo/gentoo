@@ -22,6 +22,16 @@ DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 # Req'd to ensure a unique tmp.db for each python impl running the testsuite.
 DISTUTILS_IN_SOURCE_BUILD=1
 
+python_prepare_all() {
+	sed -i -e "s#test_suite='tests',##g;" ./setup.py || die
+	distutils-r1_python_prepare_all
+}
+
+python_compile() {
+	python_is_python3 || local -x CFLAGS="${CFLAGS} -fno-strict-aliasing"
+	distutils-r1_python_compile
+}
+
 python_compile_all() {
 	use doc && emake -C docs html
 }
