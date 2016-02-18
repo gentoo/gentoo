@@ -17,17 +17,16 @@ KEYWORDS="amd64 ~ppc64 ~x86"
 
 CDEPEND="
 	dev-java/qdox:1.6
-	dev-java/ant-core:0
-	java-virtuals/jdk-with-com-sun:0"
+	dev-java/ant-core:0"
 
 RDEPEND="
 	${CDEPEND}
-	>=virtual/jdk-1.6"
+	>=virtual/jre-1.6"
 
 DEPEND="
 	${CDEPEND}
 	app-arch/unzip
-	>=virtual/jre-1.6"
+	>=virtual/jdk-1.6"
 
 # com.sun.mirror.declaration was removed from JDK 7 onwards.
 # These two files are just interfaces anyway.
