@@ -1,21 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<longdescription>
-OWFS (One Wire File System) is an easy way to use the powerful 1-wire system
-of Dallas/Maxim. A simple and flexible program to monitor and control the
-physical environment. You can write scripts to read temperature, flash
-lights, write to an LCD, log and graph, ...
-</longdescription>
+	<longdescription lang="en">
+		OWFS (One Wire File System) is an easy way to use the powerful 1-wire system
+		of Dallas/Maxim. A simple and flexible program to monitor and control the
+		physical environment. You can write scripts to read temperature, flash
+		lights, write to an LCD, log and graph, ...
+	</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">owfs</remote-id>
+	</upstream>
 	<use>
 		<flag name="ftpd">Enable building the OWFS FTP server (owftpd)</flag>
 		<flag name="fuse">Enable building the FUSE-based OWFS client (owfs)</flag>
 		<flag name="httpd">Enable building the OWFS web server (owhttpd)</flag>
-		<flag name="parport">Enable support for the DS1410E parallel port
-		adapter</flag>
+		<flag name="parport">Enable support for the DS1410E parallel port adapter</flag>
 		<flag name="server">Enable building the OWFS server (owserver)</flag>
 	</use>
-	<upstream>
-		<remote-id type="sourceforge">owfs</remote-id>
-	</upstream>
 </pkgmetadata>
