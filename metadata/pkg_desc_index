@@ -6800,7 +6800,7 @@ dev-python/astng 0.24.3: Abstract Syntax Tree for logilab packages
 dev-python/astor 0.3 0.4 0.4.1 0.5: Read/rewrite/write Python ASTs
 dev-python/astroid 1.3.8 1.4.1 1.4.2 1.4.3 1.4.4: Abstract Syntax Tree for logilab packages
 dev-python/astropy 1.0.4 1.0.6: Core functionality for performing astrophysics with Python
-dev-python/astropy-helpers 0.4.1 1.0.3 1.0.5 1.0.6: Helpers for Astropy and Affiliated packages
+dev-python/astropy-helpers 1.0.6 1.1.1: Helpers for Astropy and Affiliated packages
 dev-python/async 0.6.2: Async Framework
 dev-python/asyncio 3.4.2 3.4.3: reference implementation of PEP 3156
 dev-python/atom 0.3.10: Memory efficient Python objects
