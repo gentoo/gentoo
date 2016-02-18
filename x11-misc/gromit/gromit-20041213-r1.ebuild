@@ -1,9 +1,8 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="2"
-
+EAPI=6
 inherit toolchain-funcs
 
 DESCRIPTION="GRaphics Over MIscellaneous Things, a presentation helper"
@@ -17,25 +16,17 @@ IUSE=""
 
 RDEPEND="x11-libs/gtk+:2"
 DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+	virtual/pkgconfig
+"
 
-src_prepare() {
-	sed -i Makefile \
-		-e 's:-Wall:-Wall $(CFLAGS) $(LDFLAGS):' \
-		-e 's:gcc:$(CC):g' \
-		|| die "sed Makefile failed"
-
-	# Drop DEPRECATED flags, bug #387833
-	sed -i -e 's:-D[A-Z_]*DISABLE_DEPRECATED ::g' \
-		Makefile || die
-}
+PATCHES=( "${FILESDIR}"/${P}-build.patch )
 
 src_compile() {
-	emake CC=$(tc-getCC) || die
+	emake CC=$(tc-getCC)
 }
 
 src_install() {
 	dobin ${PN}
 	newdoc ${PN}rc ${PN}rc.example
-	dodoc AUTHORS ChangeLog README
+	einstalldocs
 }
