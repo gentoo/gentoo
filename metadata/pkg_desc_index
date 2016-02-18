@@ -6877,7 +6877,7 @@ dev-python/cfgparse 1.3-r1: Config File parser for Python
 dev-python/cgkit 2.0.0: Python library for creating 3D images
 dev-python/cgroup-utils 0.6: Tools and libraries for control groups of Linux
 dev-python/chaco 4.5.0: Enthought Tool Suite: Interactive plotting toolkit
-dev-python/chameleon 2.16 2.19 2.20 2.22: Fast HTML/XML template compiler for Python
+dev-python/chameleon 2.16 2.19 2.20 2.22 2.24: Fast HTML/XML template compiler for Python
 dev-python/characteristic 14.1.0 14.3.0 14.3.0-r1: Python attributes without the boilerplate
 dev-python/charade 1.0.3: Universal encoding detector for python 2 and 3 (fork of chardet)
 dev-python/chardet 2.2.1 2.3.0: Universal encoding detector
@@ -6894,7 +6894,7 @@ dev-python/clint 0.3.1-r1 0.4.1 0.5.1: Python Command-line Application Tools
 dev-python/cloudlib 0.4.0 0.5.0: Cloud middleware for in application use.
 dev-python/cmd2 0.6.7 0.6.8: Extra features for standard library's cmd module
 dev-python/codetools 4.2.0: Enthought Tool Suite: Code analysis and execution tools
-dev-python/colander 1.0: A simple schema-based serialization and deserialization library
+dev-python/colander 1.0 1.2: A simple schema-based serialization and deserialization library
 dev-python/colorama 0.3.3 0.3.5 0.3.6: ANSI escape character sequences for colored terminal text & cursor positioning
 dev-python/coloredlogs 3.1.4 5.0: Colored stream handler for the logging module
 dev-python/colorlog 2.6.0 2.6.1: Log formatting with colors
@@ -6907,7 +6907,7 @@ dev-python/configclass 0.1.0: A Python to class to hold configuration values
 dev-python/configobj 4.7.2-r2 5.0.5 5.0.6: Simple config file reader and writer
 dev-python/configparser 3.3.0.2: Backport of Python-3 built-in configparser
 dev-python/configshell 9999: ConfigShell Community Edition for target_core_mod/ConfigFS
-dev-python/contextlib2 0.4.0: Backports and enhancements for the contextlib module
+dev-python/contextlib2 0.4.0 0.5.1: Backports and enhancements for the contextlib module
 dev-python/cookies 2.2.1: Friendlier RFC 6265-compliant cookie parser/renderer
 dev-python/cosmolopy 0.1.104-r1: Cosmology routines built on NumPy/SciPy
 dev-python/couchdb-python 0.9 0.10 1.0: Python library for working with CouchDB
@@ -6926,10 +6926,10 @@ dev-python/cvxopt 1.1.6-r2 1.1.8: Python package for convex optimization
 dev-python/cx_Freeze 4.3.1-r2 4.3.2 4.3.3: Create standalone executables from Python scripts
 dev-python/cycler 0.9.0 0.10.0: Composable style cycles
 dev-python/cython 0.22 0.23.2 0.23.3 0.23.4: A Python to C compiler
-dev-python/cytoolz 0.7.1 0.7.2-r2 0.7.3 0.7.4: Cython implementation of Toolz: High performance functional utilities
+dev-python/cytoolz 0.7.1 0.7.2-r2 0.7.3 0.7.4 0.7.5: Cython implementation of Toolz: High performance functional utilities
 dev-python/d2to1 0.2.11 0.2.12 0.2.12_p1: Allows using distutils2-like setup.cfg files for a package metadata
 dev-python/dap 2.2.6.7-r1: Data Access Protocol client and server
-dev-python/datashape 0.4.2 0.4.4 0.4.5 0.4.6: Language defining a data description protocol
+dev-python/datashape 0.4.2 0.4.4 0.4.5 0.4.6 0.4.7: Language defining a data description protocol
 dev-python/dbus-python 1.2.0-r1: Python bindings for the D-Bus messagebus
 dev-python/dbutils 1.1-r1: Database connections for multi-threaded environments
 dev-python/ddt 1.0.0: A library to multiply test cases
