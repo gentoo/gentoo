@@ -4,7 +4,8 @@
 
 EAPI=5
 
-OASIS_BUILD_DOCS=1
+#doesn't build: https://bugs.gentoo.org/show_bug.cgi?id=574572
+#OASIS_BUILD_DOCS=1
 OASIS_BUILD_TESTS=1
 
 inherit oasis

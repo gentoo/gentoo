@@ -11,7 +11,7 @@
     <name>Gentoo ProAudio Project</name>
   </maintainer>
   <use>
-    <flag name="pam">Add basic realime configuration via <pkg>sys-auth/realtime-base</pkg></flag>
+    <flag name="pam">Add basic realtime configuration via <pkg>sys-auth/realtime-base</pkg></flag>
     <flag name="celt">Support CELT low delay audio codec (<pkg>media-libs/celt</pkg>)</flag>
     <flag name="opus">Support <pkg>media-libs/opus</pkg></flag>
   </use>
