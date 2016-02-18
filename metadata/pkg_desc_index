@@ -6799,7 +6799,7 @@ dev-python/assets 0.1.1-r1: Cache-friendly asset management via content-hash-nam
 dev-python/astng 0.24.3: Abstract Syntax Tree for logilab packages
 dev-python/astor 0.3 0.4 0.4.1 0.5: Read/rewrite/write Python ASTs
 dev-python/astroid 1.3.8 1.4.1 1.4.2 1.4.3 1.4.4: Abstract Syntax Tree for logilab packages
-dev-python/astropy 1.0.4 1.0.6: Core functionality for performing astrophysics with Python
+dev-python/astropy 1.0.6: Core functionality for performing astrophysics with Python
 dev-python/astropy-helpers 1.0.6 1.1.1: Helpers for Astropy and Affiliated packages
 dev-python/async 0.6.2: Async Framework
 dev-python/asyncio 3.4.2 3.4.3: reference implementation of PEP 3156
@@ -7048,7 +7048,7 @@ dev-python/enum34 1.0.4 1.1.2: Python 3.4 Enum backported
 dev-python/envisage 4.4.0: Enthought Tool Suite: Extensible application framework
 dev-python/envoy 0.0.3: Simple API for running external processes
 dev-python/enzyme 0.4.1 9999: Python video metadata parser
-dev-python/epsilon 0.6.0-r2 0.7.0: Epsilon is a Python utilities package, most famous for its Time class
+dev-python/epsilon 0.6.0-r2 0.7.0 0.7.1: Epsilon is a Python utilities package, most famous for its Time class
 dev-python/epydoc 3.0.1-r2: Tool for generating API documentation for Python modules from docstrings
 dev-python/errorhandler 1.1.1-r2: Logging framework handler that tracks when messages above a certain level have been logged
 dev-python/et_xmlfile 1.0.0 1.0.1: An implementation of lxml.xmlfile for the standard library
@@ -7056,7 +7056,7 @@ dev-python/ets 4.4.1: Meta package for the Enthought Tool Suite
 dev-python/etsdevtools 4.0.2-r1: Enthought Tool Suite: Tools to support Python development
 dev-python/etsproxy 0.1.2-r1: Enthought Tool Suite: Proxy modules for backwards compatibility
 dev-python/eunuchs 20050320.1-r1: Missing manly parts of UNIX API for Python
-dev-python/eventlet 0.13.0 0.15.2 0.17.1 0.17.4: Highly concurrent networking library
+dev-python/eventlet 0.13.0 0.15.2 0.17.1 0.17.4 0.18.3: Highly concurrent networking library
 dev-python/execnet 1.2.0-r2 1.4.1: Rapid multi-Python deployment
 dev-python/expects 0.4.2 0.8.0_rc2 0.8.0_rc3 0.8.0_rc4: Expressive and extensible TDD/BDD assertion library for Python
 dev-python/extras 0.0.3: Useful extra bits for Python that should be in the standard library
@@ -7070,8 +7070,8 @@ dev-python/feedparser 5.1.3-r2 5.2.1: Parse RSS and Atom feeds in Python
 dev-python/fexpect 0.2: Extension for fabric to handle prompts through pexpect
 dev-python/figleaf 0.6.1-r1: Code coverage tool
 dev-python/fixtures 0.3.14-r2 1.2.0 1.3.0 1.3.1-r1 1.4.0: Fixtures, reusable state for writing clean tests and more
-dev-python/flake8 2.0-r1 2.1.0 2.2.5 2.4.1-r1 2.5.0 2.5.1: A wrapper around PyFlakes, pep8 & mccabe
-dev-python/flaky 2.4.0 2.4.1 3.0.1 3.0.3: Plugin for nose or py.test that automatically reruns flaky tests
+dev-python/flake8 2.0-r1 2.1.0 2.2.5 2.4.1-r1 2.5.0 2.5.1 2.5.4: A wrapper around PyFlakes, pep8 & mccabe
+dev-python/flaky 2.4.0 2.4.1 3.0.1 3.0.3 3.1.0: Plugin for nose or py.test that automatically reruns flaky tests
 dev-python/flask 0.10.1-r1 0.10.1-r2 9999: A microframework based on Werkzeug, Jinja2 and good intentions
 dev-python/flask-admin 1.0.6 1.1.0 1.2.0 1.4.0: Simple and extensible admin interface framework for Flask
 dev-python/flask-babel 0.8-r1 0.9: i18n and l10n support for Flask based on Babel and pytz
@@ -12017,7 +12017,7 @@ media-gfx/kuickshow 0.9.1-r2: KDE program to view images
 media-gfx/kxstitch 1.2.0 1.3.0: Program to create cross stitch patterns
 media-gfx/librecad 2.0.3 2.0.5 2.0.6 2.0.7 2.0.8 2.0.9 9999: Generic 2D CAD program
 media-gfx/llgal 0.13.17-r1: Command-line static web gallery generator
-media-gfx/luminance-hdr 2.3.0 2.3.1 2.4.0: Luminance HDR is a graphical user interface that provides a workflow for HDR imaging
+media-gfx/luminance-hdr 2.3.0 2.4.0: Luminance HDR is a graphical user interface that provides a workflow for HDR imaging
 media-gfx/lximage-qt 0.2.0 0.3.0 0.4.0: LXImage Image Viewer - GPicView replacement
 media-gfx/mandelbulber 1.11 1.12.1 1.21.1: Tool to render 3D fractals
 media-gfx/mcomix 1.00-r1 1.01 1.2.1: A fork of comix, a GTK image viewer for comic book archives
@@ -15208,7 +15208,7 @@ sci-astronomy/sofa_c 20120301a: Library for algorithms for models in fundamental
 sci-astronomy/stellarium 0.12.4 0.13.3 0.14.0 0.14.2: 3D photo-realistic skies in real time
 sci-astronomy/stiff 2.1.3: Converts astronomical FITS images to the TIFF format
 sci-astronomy/swarp 2.19.1: Resample and coadd astronomical FITS images
-sci-astronomy/wcslib 4.21 4.22 4.23 4.25.1: Astronomical World Coordinate System transformations library
+sci-astronomy/wcslib 4.25.1 5.14: Astronomical World Coordinate System transformations library
 sci-astronomy/wcstools 3.8.7: World Coordinate System library for astronomical FITS images
 sci-astronomy/xephem 3.7.5 3.7.6: Interactive tool for astronomical ephemeris and sky simulation
 sci-astronomy/xfitsview 2.2-r1: Viewer for astronomical images in FITS format
