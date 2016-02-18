@@ -32,6 +32,12 @@
 
 # Michael Palimaka <kensington@gentoo.org> (18 Feb 2016)
 # Fails to build with recent kernels. Dead upstream.
+# Use kernel driver VIDEO_GO7007 instead.
+# Masked for removal in 30 days. Bug 482120.
+media-tv/wis-go7007
+
+# Michael Palimaka <kensington@gentoo.org> (18 Feb 2016)
+# Fails to build with recent kernels. Dead upstream.
 # Masked for removal in 30 days. Bug 488128.
 media-video/stk11xx
 
