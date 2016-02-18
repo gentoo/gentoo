@@ -7230,14 +7230,14 @@ dev-python/jinja 2.7.3 2.8: A small but fast and easy to use stand-alone templat
 dev-python/jmespath 0.5.0 0.7.1 0.9.0: JSON Matching Expressions
 dev-python/joblib 0.8.4 0.9.2 0.9.3 0.9.4: Tools to provide lightweight pipelining in Python
 dev-python/jonpy 0.10-r1 0.11 0.12: Powerful multi-threaded object-oriented CGI/FastCGI/mod_python/html-templating facilities
-dev-python/jsmin 2.1.1 2.1.2 2.1.6: JavaScript minifier
+dev-python/jsmin 2.1.1 2.1.2 2.1.6 2.2.0: JavaScript minifier
 dev-python/json-rpc 1.10.1: JSON-RPC transport implementation for python
 dev-python/json-tools 0.3.3 0.4.0: A set of tools to manipulate JSON: diff, patch, and pretty-printing
 dev-python/jsonfield 1.0.3: Reusable Django field that allows you to store validated JSON in your model
 dev-python/jsonmerge 1.1.0: Merge a series of JSON documents.
-dev-python/jsonpatch 1.9 1.11: Apply JSON-Patches according to http://tools.ietf.org/html/draft-pbryan-json-patch-04
+dev-python/jsonpatch 1.9 1.11 1.13: Apply JSON-Patches according to http://tools.ietf.org/html/draft-pbryan-json-patch-04
 dev-python/jsonpickle 0.8.0 0.9.1 0.9.2: Python library for serializing any arbitrary object graph into JSON
-dev-python/jsonpointer 1.7 1.9: Identify specific nodes in a JSON document (according to draft 08)
+dev-python/jsonpointer 1.7 1.9 1.10: Identify specific nodes in a JSON document (according to draft 08)
 dev-python/jsonrpclib 0_pre20110820-r1 0_pre20150305 9999: python implementation of the JSON-RPC spec (1.0 and 2.0)
 dev-python/jsonschema 2.3.0 2.4.0 2.5.1-r2: An implementation of JSON-Schema validation for Python
 dev-python/jupyter 1.0.0: Jupyter metapackage. Install all the Jupyter components in one go
