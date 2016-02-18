@@ -30,6 +30,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michael Sterrett <mr_bones_@gentoo.org> (18 Feb 2016)
+# Now part of games-emulation/sdlmame
+# Masked for removal on 20160319
+games-emulation/sdlmess
+games-emulation/sdlmametools
+
 # Michael Palimaka <kensington@gentoo.org> (18 Feb 2016)
 # Fails to build. Dead upstream.
 # Masked for removal in 30 days. Bug 574248.
