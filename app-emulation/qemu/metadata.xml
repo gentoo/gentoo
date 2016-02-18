@@ -13,6 +13,9 @@
 		<flag name="fdt">Enables firmware device tree support</flag>
 		<flag name="glusterfs">Enables GlusterFS cluster fileystem via
 			<pkg>sys-cluster/glusterfs</pkg></flag>
+		<flag name="gnutls">Enable TLS support for the VNC console server.
+		For 1.4 and newer this also enables WebSocket support.
+		For 2.0 through 2.3 also enables disk quorum support.</flag>
 		<flag name="gtk2">Use gtk-2 instead of gtk-3</flag>
 		<flag name="iscsi">Enable direct iSCSI support via
 		<pkg>net-libs/libiscsi</pkg> instead of indirectly via the Linux
