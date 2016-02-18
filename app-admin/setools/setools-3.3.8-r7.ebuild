@@ -14,7 +14,7 @@ SRC_URI="http://oss.tresys.com/projects/setools/chrome/site/dists/${P}/${P}.tar.
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64 ~arm ~arm64 ~mips x86"
 IUSE="X debug java python"
 
 COMMONDEPEND=">=sys-libs/libsepol-2.4
