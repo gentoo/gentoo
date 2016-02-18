@@ -1,9 +1,9 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=6
-inherit autotools toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="GRaphics Over MIscellaneous Things, a presentation helper"
 HOMEPAGE="http://www.home.unix-ag.org/simon/gromit"
