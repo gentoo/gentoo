@@ -16,7 +16,7 @@ else
 fi
 KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86"
 
-inherit check-reqs autotools eutils multilib python-single-r1 udev user readme.gentoo systemd ${scm_eclass}
+inherit check-reqs autotools eutils multilib python-single-r1 udev user readme.gentoo systemd versionator ${scm_eclass}
 
 DESCRIPTION="Ceph distributed filesystem"
 HOMEPAGE="http://ceph.com/"
