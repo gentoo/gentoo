@@ -1,18 +1,20 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 
-inherit linux-mod
+inherit linux-mod versionator
 
 MY_P="${P/_rc/-rc}"
+MY_SLOT="$(get_version_component_range 1-2)"
+
 DESCRIPTION="LTTng Kernel Tracer Modules"
 HOMEPAGE="http://lttng.org"
 SRC_URI="http://lttng.org/files/${PN}/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2"
-SLOT="0"
+SLOT="0/${MY_SLOT}"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
