@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -18,17 +18,20 @@ if [[ $PV == *9999 ]]; then
 	SRC_URI=""
 else
 	KEYWORDS="~amd64 ~arm ~arm64 -x86"
-	UPSTREAM_VER=0
-	SECURITY_VER=0
+	UPSTREAM_VER=
+	SECURITY_VER=
 	# var set to reflect https://dev.gentoo.org/~idella4/
-	SEC_VER=4
+	# first instance of UPS_VER (usptream ver)
+	UPS_VER=
+	SEC_VER=
 	GENTOO_VER=
 
 	[[ -n ${UPSTREAM_VER} ]] && \
-		UPSTREAM_PATCHSET_URI="https://dev.gentoo.org/~dlan/distfiles/${P}-upstream-patches-${UPSTREAM_VER}.tar.xz"
+		UPSTREAM_PATCHSET_URI="https://dev.gentoo.org/~dlan/distfiles/${P}-upstream-patches-${UPSTREAM_VER}.tar.xz
+		https://dev.gentoo.org/~idella4/distfiles/${PN}-upstream-patches-${UPS_VER}.tar.gz"
 	[[ -n ${SECURITY_VER} ]] && \
 		SECURITY_PATCHSET_URI="https://dev.gentoo.org/~idella4/distfiles/${PN/-tools}-security-patches-${SECURITY_VER}.tar.xz
-		https://dev.gentoo.org/~idella4/distfiles/${PN/-tools}-security-patches-${SEC_VER}.tar.gz"
+		https://dev.gentoo.org/~idella4/distfiles/${PN}-security-patches-${SEC_VER}.tar.gz"
 	[[ -n ${GENTOO_VER} ]] && \
 		GENTOO_PATCHSET_URI="https://dev.gentoo.org/~dlan/distfiles/${PN}-gentoo-patches-${GENTOO_VER}.tar.xz"
 	SRC_URI="http://bits.xensource.com/oss-xen/release/${MY_PV}/${MY_P}.tar.gz
@@ -87,7 +90,8 @@ src_prepare() {
 		EPATCH_SUFFIX="patch" \
 		EPATCH_FORCE="yes" \
 		EPATCH_OPTS="-p1" \
-			epatch "${WORKDIR}"/patches-upstream
+			epatch "${WORKDIR}"/patches-upstream \
+				"${WORKDIR}"/libexec.patch
 	fi
 
 	if [[ -n ${SECURITY_VER} ]]; then

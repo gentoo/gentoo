@@ -19,24 +19,28 @@ if [[ $PV == *9999 ]]; then
 	EGIT_REPO_URI="git://xenbits.xen.org/${REPO}"
 	S="${WORKDIR}/${REPO}"
 else
-	KEYWORDS="amd64 ~arm ~arm64 x86"
-	UPSTREAM_VER=0
-	SECURITY_VER=7
+	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+	UPSTREAM_VER=
+	SECURITY_VER=
 	# vars set to reflect https://dev.gentoo.org/~idella4/
-	SEC_VER=3
-	QEMU_VER=0
+	# first instance of UPS_VER (usptream ver)
+	UPS_VER=
+	SEC_VER=
+	QEMU_VER=
 	# xen-tools's gentoo patches tarball
 	GENTOO_VER=4
 	# xen-tools's gentoo patches version which apply to this specific ebuild
 	GENTOO_GPV=0
 	# xen-tools ovmf's patches
-	OVMF_VER=1
+	OVMF_VER=2
 
 	SEABIOS_VER=1.8.2
-	OVMF_PV=20150629
+	# OVMF upstream 52a99493cce88a9d4ec8a02d7f1bd1a1001ce60d
+	OVMF_PV=20151110
 
 	[[ -n ${UPSTREAM_VER} ]] && \
-		UPSTREAM_PATCHSET_URI="https://dev.gentoo.org/~dlan/distfiles/${P/-tools/}-upstream-patches-${UPSTREAM_VER}.tar.xz"
+		UPSTREAM_PATCHSET_URI="https://dev.gentoo.org/~dlan/distfiles/${P/-tools/}-upstream-patches-${UPSTREAM_VER}.tar.xz
+		https://dev.gentoo.org/~idella4/distfiles/${PN/-tools}-upstream-patches-${UPS_VER}.tar.gz"
 	[[ -n ${SECURITY_VER} ]] && \
 		SECURITY_PATCHSET_URI="https://dev.gentoo.org/~idella4/distfiles/${PN/-tools}-security-patches-${SECURITY_VER}.tar.xz
 		https://dev.gentoo.org/~idella4/distfiles/${PN/-tools}-security-patches-${SEC_VER}.tar.gz
@@ -67,7 +71,7 @@ SLOT="0/${MAJOR_V}"
 # Inclusion of IUSE ocaml on stabalizing requires maintainer of ocaml to (get off his hands and) make
 # >=dev-lang/ocaml-4 stable
 # Masked in profiles/eapi-5-files instead
-IUSE="api custom-cflags debug doc flask hvm qemu ocaml ovmf +pam python pygrub screen sdl static-libs system-qemu system-seabios"
+IUSE="api custom-cflags debug doc flask hvm qemu ocaml ovmf +qemu-traditional +pam python pygrub screen sdl static-libs system-qemu system-seabios"
 
 REQUIRED_USE="hvm? ( || ( qemu system-qemu ) )
 	${PYTHON_REQUIRED_USE}
@@ -175,7 +179,8 @@ src_prepare() {
 		EPATCH_SUFFIX="patch" \
 		EPATCH_FORCE="yes" \
 		EPATCH_OPTS="-p1" \
-			epatch "${WORKDIR}"/patches-upstream
+			epatch "${WORKDIR}"/patches-upstream \
+				"${WORKDIR}"/libexec.patch
 	fi
 
 	# Security patchset
@@ -243,8 +248,8 @@ src_prepare() {
 		EPATCH_OPTS="-p1" \
 			epatch "${WORKDIR}"/patches-ovmf
 		popd > /dev/null
-		mv ../ovmf-${OVMF_PV} tools/firmware/ovmf-dir-remote || die
 	fi
+	mv ../ovmf-${OVMF_PV} tools/firmware/ovmf-dir-remote || die
 
 	mv tools/qemu-xen/qemu-bridge-helper.c tools/qemu-xen/xen-bridge-helper.c || die
 
@@ -362,7 +367,7 @@ src_configure() {
 
 	use system-seabios && myconf+=" --with-system-seabios=/usr/share/seabios/bios.bin"
 	use qemu || myconf+=" --with-system-qemu"
-	use amd64 && myconf+=" --enable-qemu-traditional"
+	use amd64 && myconf+=" $(use_enable qemu-traditional)"
 	econf ${myconf}
 }
 
