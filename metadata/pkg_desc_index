@@ -202,7 +202,7 @@ app-admin/sudo 1.8.12 1.8.14_p3 1.8.15-r1 9999: Allows users or groups to run co
 app-admin/sulfur 1.0_rc104-r1: Sulfur, the Entropy Package Manager Store
 app-admin/superadduser 1.0.9: Interactive adduser script from Slackware
 app-admin/supernova 2.0.9 2.1.0 2.2.0: novaclient wrapper for multiple nova environments
-app-admin/supervisor 3.1.3: A system for controlling process state under UNIX
+app-admin/supervisor 3.1.3 3.2.1: A system for controlling process state under UNIX
 app-admin/swatch 3.2.3-r2: Perl-based system log watcher
 app-admin/sxid 4.2-r1: suid, sgid file and directory checking
 app-admin/sysklogd 1.5.1: Standard log daemons
@@ -3899,7 +3899,7 @@ dev-java/ical4j 1.0.5: a Java library for handling iCalendar data streams
 dev-java/icedtea 6.1.13.9-r2 7.2.6.4-r1: A harness to build OpenJDK using Free Software build tools and dependencies
 dev-java/icedtea-bin 3.0.0_pre08 6.1.13.9 7.2.6.4: A Gentoo-made binary build of the IcedTea JDK
 dev-java/icedtea-sound 1.0.1: Plugins for javax.sound
-dev-java/icedtea-web 1.5.1-r1 1.6.1: FOSS Java browser plugin and Web Start implementation
+dev-java/icedtea-web 1.5.1-r1 1.6.1-r1: FOSS Java browser plugin and Web Start implementation
 dev-java/icu4j 4.0.1.1 4.4.2 54.1.1 55.1: A set of Java libraries providing Unicode and Globalization support
 dev-java/idm-console-framework 1.1.7: A Java Management Console framework used for remote server management
 dev-java/ini4j 0.5.1: Simple Java API Windows style .ini file handling
@@ -13373,7 +13373,7 @@ media-video/mkvalidator 0.3.7-r1 0.4.0 0.4.1 0.4.2 0.5.0: mkvalidator is a comma
 media-video/mkvtoolnix 8.5.2 8.6.1 8.7.0 8.8.0: Tools to create, alter, and inspect Matroska files
 media-video/motion 3.2.12-r2 3.2.12-r3: A software motion detector
 media-video/motiontrack 0.1.3: A set of tools that detect motion between two images
-media-video/movit 1.1 1.1.1 1.1.2 1.1.3 1.2.0 1.3.0: Modern Video Toolkit
+media-video/movit 1.2.0 1.3.0 1.3.1: Modern Video Toolkit
 media-video/mpeg-tools 1.5b-r4 1.5b-r5: Tools for MPEG video
 media-video/mpeg2vidcodec 12-r1: MPEG Library
 media-video/mpglen 0.1: A program to scan through a MPEG file and count the number of GOPs and frames
@@ -16495,7 +16495,7 @@ sys-apps/secilc 9999: SELinux Common Intermediate Language (CIL) Compiler
 sys-apps/sed 4.2.1-r1 4.2.2: Super-useful stream editor
 sys-apps/servicelog 1.0.1 1.1.11 1.1.13: Provides utilities for logging service-related events
 sys-apps/setserial 2.17-r4: Configure your serial ports with it
-sys-apps/sg3_utils 1.40 1.41: Apps for querying the sg SCSI interface
+sys-apps/sg3_utils 1.40 1.41 1.42: Apps for querying the sg SCSI interface
 sys-apps/shadow 4.1.5.1-r1 4.2.1 4.2.1-r1 4.2.1-r2: Utilities to deal with user accounts
 sys-apps/smartmontools 6.3 6.4 9999: Self-Monitoring, Analysis and Reporting Technology System (S.M.A.R.T.) monitoring tools
 sys-apps/sparc-utils 1.9-r4: Various sparc utilities from Debian GNU/Linux
