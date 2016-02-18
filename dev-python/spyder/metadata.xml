@@ -22,6 +22,7 @@
     <flag name="pep8">Add support for <pkg>dev-python/pep8</pkg></flag>
     <flag name="pyflakes">Add support for <pkg>dev-python/pyflakes</pkg></flag>
     <flag name="pylint">Add support for <pkg>dev-python/pylint</pkg></flag>
+    <flag name="qtconsole">Add support for <pkg>dev-python/qtconsole</pkg></flag>
     <flag name="rope">Add support for <pkg>dev-python/rope</pkg></flag>
     <flag name="scipy">Add support for <pkg>sci-libs/scipy</pkg></flag>
     <flag name="sphinx">Add support for <pkg>dev-python/sphinx</pkg></flag>
