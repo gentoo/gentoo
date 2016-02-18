@@ -2,28 +2,21 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=6
+EAPI=5
 
 export CBUILD=${CBUILD:-${CHOST}}
 export CTARGET=${CTARGET:-${CHOST}}
 
-MY_PV=${PV/_/}
-
-inherit toolchain-funcs
+inherit eutils toolchain-funcs
 
 if [[ ${PV} = 9999 ]]; then
 	EGIT_REPO_URI="git://github.com/golang/go.git"
 	inherit git-r3
 else
-	SRC_URI="https://storage.googleapis.com/golang/go${MY_PV}.src.tar.gz"
+	SRC_URI="https://storage.googleapis.com/golang/go${PV}.src.tar.gz"
 	# go-bootstrap-1.4 only supports go on amd64, arm and x86 architectures.
 	# Allowing other bootstrap options would enable arm64 and ppc64 builds.
-	case ${PV} in
-		*9999*|*_rc*) ;;
-		*)
-			KEYWORDS="-* ~amd64 ~arm ~x86 ~amd64-fbsd ~x86-fbsd ~x64-macos ~x86-macos"
-			;;
-	esac
+	KEYWORDS="-* ~amd64 ~arm ~x86 ~amd64-fbsd ~x86-fbsd ~x64-macos ~x86-macos ~x64-solaris"
 fi
 
 DESCRIPTION="A concurrent garbage collected and typesafe programming language"
@@ -161,8 +154,6 @@ src_install()
 	doins -r bin doc lib pkg src
 	fperms -R +x /usr/lib/go/bin /usr/lib/go/pkg/tool
 
-	cp -a misc "${D}"/usr/lib/go/misc
-
 	if go_cross_compile; then
 		bin_path="bin/$(go_tuple)"
 	else
@@ -172,6 +163,11 @@ src_install()
 		f=${x##*/}
 		dosym ../lib/go/${bin_path}/${f} /usr/bin/${f}
 	done
+
+	dodir /usr/lib/go/misc
+	insinto /usr/lib/go/misc
+	doins -r misc/trace
+
 	dodoc AUTHORS CONTRIBUTORS PATENTS README.md
 }
 
