@@ -28,7 +28,7 @@ python_install_all() {
 	distutils-r1_python_install_all
 
 	# This replaces the file installed by java-config-wrapper.
-	cp -a "${ED}/usr/bin/${PN}-2" "${ED}/usr/bin/${PN}" || die
+	dosym java-config-2 /usr/bin/java-config
 }
 
 python_test() {

@@ -1,0 +1,15 @@
+Author: Kacper Kowalik <xarthisius.kk@gmail.com>
+Description: Copy keys to a list, since orignal map is modified
+Url: https://github.com/astropy/astropy/issues/4477
+Bug:  https://github.com/astropy/astropy/issues/4460
+--- a/astropy/wcs/wcs.py
++++ b/astropy/wcs/wcs.py
+@@ -988,7 +988,7 @@
+         """
+         # Never pass SIP coefficients to wcslib
+         # CTYPE must be passed with -SIP to wcslib
+-        for key in (m.group() for m in map(SIP_KW.match, header.keys())
++        for key in (m.group() for m in map(SIP_KW.match, list(header))
+                     if m is not None):
+             del header[key]
+ 
