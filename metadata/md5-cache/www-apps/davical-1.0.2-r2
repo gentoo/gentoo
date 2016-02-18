@@ -10,5 +10,5 @@ RDEPEND=app-admin/pwgen dev-lang/php:*[calendar,curl,pdo,postgres,xml] dev-perl/
 SLOT=1.0.2-r2
 SRC_URI=http://debian.mcmillan.net.nz/packages/davical/davical-1.0.2.tar.gz
 _eclass_exported_funcs=pkg_prerm:webapp pkg_postinst:webapp pkg_setup:webapp src_prepare:- src_compile:- src_install:-
-_eclasses_=webapp	42c6ef7af496b228f9854b3c81e4b226
-_md5_=10e9cbae6e67c727290d051db2f5341a
+_eclasses_=eutils	9d81603248f2ba3ec59124320d123e5e	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	webapp	42c6ef7af496b228f9854b3c81e4b226
+_md5_=60108439069851aec5f18556db71e175
