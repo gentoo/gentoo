@@ -15687,7 +15687,7 @@ sci-libs/deap 0.9.1 1.0.0: Distributed Evolutionary Algorithms in Python
 sci-libs/djbfft 0.76-r2: Extremely fast library for floating-point convolution
 sci-libs/dlib 18.7 18.15: Numerical and networking C++ library
 sci-libs/dsdp 5.8-r2: Software for interior-point for semidefinite programming
-sci-libs/exodusii 5.22b 5.24 5.26 6.02: Model developed to store and retrieve transient data for finite element analyses
+sci-libs/exodusii 6.02: Model developed to store and retrieve transient data for finite element analyses
 sci-libs/fcl 0.3.2 0.4.0 9999: The Flexible Collision Library
 sci-libs/fetk 1.5: The Finite Element ToolKit - Meta package
 sci-libs/fftw 2.1.5-r8 3.3.4: Fast C library for the Discrete Fourier Transform
@@ -16006,7 +16006,7 @@ sci-visualization/opendx-samples 4.4.0-r1: Samples for IBM Data Explorer
 sci-visualization/paraview 4.1.0-r2 4.3.1 4.4.0: ParaView is a powerful scientific data visualization application
 sci-visualization/pythonprop 0.13 0.18: Scripts to prepare and plot VOACAP propagation predictions
 sci-visualization/pyxplot 0.9.2: Gnuplot like graphing program publication-quality figures
-sci-visualization/qtiplot 0.9.8.9-r2 0.9.8.9-r3: Qt based clone of the Origin plotting package
+sci-visualization/qtiplot 0.9.8.9-r2 0.9.8.9-r3 0.9.8.9-r4: Qt based clone of the Origin plotting package
 sci-visualization/quickplot 0.10.6 0.10.8: A fast interactive 2D plotter
 sci-visualization/spectromatic 1.0-r2: Generates time-frequency analysis images from wav files
 sci-visualization/spyview 20111018 20130823: Interactive plotting program
