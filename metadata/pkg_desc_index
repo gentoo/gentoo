@@ -3753,7 +3753,7 @@ dev-java/cdegroot-db 0.08-r1: OO database written in Java
 dev-java/cdi-api 1.2: Contexts and Dependency Injection for the Java EE platform
 dev-java/cglib 3.1: cglib is a powerful, high performance and quality Code Generation Library
 dev-java/charva 1.1.4-r1: A Java Windowing Toolkit for Text Terminals
-dev-java/classmate 0.9.0-r1: Library for introspecting generic type information of types, member/static methods, fields
+dev-java/classmate 0.9.0-r1 1.0.0: Zero-dependency Java library for accurately introspecting type information
 dev-java/cldc-api 1.1-r1: Java ME Connected Limited Device Configuration API
 dev-java/codemodel 2.6: Java library for code generators
 dev-java/cofoja 1.2: Contracts for Java
@@ -3801,7 +3801,7 @@ dev-java/db4o-jdk5 7.4: Core files for the object database for java
 dev-java/dbus-java 2.7-r1: Java bindings for the D-Bus messagebus
 dev-java/dict4j 1.1: Dict protocol implementation in Java
 dev-java/disruptor 3.2.0: High Performance Inter-Thread Messaging Library
-dev-java/dnsjava 2.1.6: An implementation of DNS in Java
+dev-java/dnsjava 2.1.6 2.1.7: An implementation of DNS in Java
 dev-java/dom4j 1.6.1-r5: Java library for working with XML
 dev-java/dsiutils 1.0.10-r2: A Mish Mash of classes that were initially distributed with mg4j (amount others)
 dev-java/dtdparser 1.21-r2: A Java DTD Parser
@@ -3974,7 +3974,7 @@ dev-java/jcip-annotations 1.0.1: Clean room implementation of the JCIP Annotatio
 dev-java/jclasslib 3.0-r1: A bytecode viewer is a tool
 dev-java/jcmdline 1.0.2-r2 2.0.0: Library for parsing/handling of command line parameters
 dev-java/jcodings 1.0.4 1.0.5 1.0.11: Byte-based encoding support library for Java
-dev-java/jcommander 1.32 1.48: Command line parsing framework for Java
+dev-java/jcommander 1.48: Command line parsing framework for Java
 dev-java/jcommon 1.0.23: JCommon is a collection of useful classes used by JFreeChart, JFreeReport and other projects
 dev-java/jcs 2.0: JCS is a distributed caching system written in Java for server-side Java applications
 dev-java/jdbc-informix 3.00.3: JDBC Type 4 Drivers for Informix
@@ -4036,7 +4036,7 @@ dev-java/jnr-x86asm 1.0.2-r1: A pure-java port of asmjit
 dev-java/joda-convert 1.3.1: Java library for conversion between Object and String
 dev-java/joda-time 1.6 2.2 2.3 2.7: A quality open-source replacement for the Java Date and Time classes
 dev-java/joni 2.1.0: Java port of the Oniguruma regular expression engine
-dev-java/jopt-simple 4.7: A Java library for parsing command line options
+dev-java/jopt-simple 4.7 4.8: A Java library for parsing command line options
 dev-java/jortho 1.0: A Java spell-checking library
 dev-java/jreleaseinfo 1.3.0-r2: Ant Task for build-time creation of Java source file with version, build number or other info
 dev-java/jrexx 1.1.1-r1: Regular expression API for textual pattern matching based on the finite state automaton theory
@@ -7164,7 +7164,7 @@ dev-python/hcluster 0.2.0-r1: Python hierarchical clustering package for Scipy
 dev-python/hcs-utils 1.4 1.5: A library containing some useful snippets
 dev-python/hgdistver 0.22 0.25: utility lib to generate python package version infos from mercurial tags
 dev-python/hglib 1.0 1.5: Library for using the Mercurial Command Server from Python
-dev-python/hgtools 6.0 6.3: Classes and setuptools plugin for Mercurial repositories
+dev-python/hgtools 6.0 6.3 6.5.1: Classes and setuptools plugin for Mercurial repositories
 dev-python/hiredis 0.1.1-r2 0.2.0: Python extension that wraps hiredis
 dev-python/hp3parclient 2.0.0 3.0.0: A python interface to sendfile(2) system call
 dev-python/html2text 2014.4.5-r1: Turn HTML into equivalent Markdown-structured text
@@ -7172,13 +7172,13 @@ dev-python/html5lib 0.9999999 0.9999999-r1: HTML parser based on the HTML5 speci
 dev-python/htmlgen 2.2.2-r1: HTMLgen - Python modules for the generation of HTML documents
 dev-python/httmock 1.2.2 1.2.3 1.2.4: A mocking library for requests
 dev-python/http-parser 0.8.3: HTTP request/response parser for python in C
-dev-python/httpbin 0.4.0: HTTP Request and Response Service
+dev-python/httpbin 0.4.0 0.4.1: HTTP Request and Response Service
 dev-python/httplib2 0.8 0.9.1 0.9.2-r1: A comprehensive HTTP client library
 dev-python/httpretty 0.7.0 0.7.1 0.8.0 0.8.0-r1 0.8.6 0.8.10 0.8.12 0.8.14: HTTP client mock for Python
 dev-python/httreplay 0.2.0: A HTTP replay library for testing.
 dev-python/humanfriendly 1.33 1.35 1.38 1.42 1.43.1: Human friendly output for text interfaces using Python
 dev-python/husl 4.0.3: Human-friendly HSL
-dev-python/hypothesis 1.12.0 1.19.0 2.0.0: A library for property based testing
+dev-python/hypothesis 1.12.0 1.19.0 2.0.0 3.0.0: A library for property based testing
 dev-python/icalendar 3.8.4 3.9.0: Package used for parsing and generating iCalendar files (RFC 2445)
 dev-python/iconvcodec 1.1.2-r1: Python Codecs for Iconv Encodings
 dev-python/id3-py 1.2 1.2-r1: Module for manipulating ID3 tags in Python
@@ -14489,7 +14489,7 @@ net-misc/googlecl 0.9.14: Command line tools for the Google Data APIs
 net-misc/grdesktop 0.23-r1: Gtk2 frontend for rdesktop
 net-misc/grive 0.4.0_pre20150905 0.4.0_pre20150905-r1 0.4.0_pre20151011 0.5.1_pre20160114: An open source Linux client for Google Drive
 net-misc/gsasl 1.8.0-r1: The GNU SASL client, server, and library
-net-misc/gsutil 3.42 4.15 4.16: command line tool for interacting with cloud storage services
+net-misc/gsutil 3.42 4.15 4.16 4.17: command line tool for interacting with cloud storage services
 net-misc/gtkvncviewer 0.4: A small GTK tool to connect to VNC servers
 net-misc/guacamole-server 0.9.0 0.9.2 0.9.3 0.9.7 0.9.8 0.9.9: This is the proxy-daemon used by www-apps/guacamole
 net-misc/gupnp-tools 0.8.10 0.8.11: Free replacements of Intel UPnP tools that use GUPnP

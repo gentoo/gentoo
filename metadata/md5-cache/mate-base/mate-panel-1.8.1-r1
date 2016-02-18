@@ -4,11 +4,11 @@ DESCRIPTION=The MATE panel
 EAPI=5
 HOMEPAGE=http://mate-desktop.org
 IUSE=X +introspection networkmanager
-KEYWORDS=~amd64 ~x86
+KEYWORDS=amd64 ~x86
 LICENSE=GPL-2 FDL-1.1 LGPL-2
 RDEPEND=dev-libs/atk:0 >=dev-libs/dbus-glib-0.80:0 >=dev-libs/glib-2.26:2 >=dev-libs/libmateweather-1.8 dev-libs/libxml2:2 >=gnome-base/dconf-0.10:0 gnome-base/librsvg:2 >=mate-base/mate-desktop-1.8:0 >=mate-base/mate-menus-1.8:0 >=media-libs/libcanberra-0.23:0[gtk] >=sys-apps/dbus-1.1.2:0 >=x11-libs/cairo-1:0 >=x11-libs/gdk-pixbuf-2.7.1:2 x11-libs/libICE:0 x11-libs/libSM:0 x11-libs/libX11:0 >=x11-libs/libwnck-2.30:1[introspection?] >=x11-libs/pango-1.15.4:0[introspection?] >=x11-libs/gtk+-2.19.7:2[introspection?] x11-libs/libXau:0 >=x11-libs/libXrandr-1.2:0 virtual/libintl:0 introspection? ( >=dev-libs/gobject-introspection-0.6.7:0 ) networkmanager? ( >=net-misc/networkmanager-0.6:0 )
 SLOT=0
 SRC_URI=http://pub.mate-desktop.org/releases/1.8/mate-panel-1.8.1.tar.xz
 _eclass_exported_funcs=pkg_preinst:gnome2 pkg_postrm:gnome2 pkg_postinst:gnome2 src_unpack:gnome2 src_prepare:- src_configure:- src_compile:gnome2 src_install:gnome2
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	9d81603248f2ba3ec59124320d123e5e	gnome.org	ad34f378a3d57a6f2f2b8b4aaca4543e	gnome2	2096a489d1689a40b2a4c434c3e79236	gnome2-utils	d19e7813f27c8f982134d657889b13cf	libtool	b75230758539a7da029e24afdb693960	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	xdg	a5c4c5ce4f5ce9a2e777f5d9a40a8723	xdg-utils	e2b2bd56125ce8cf59ce30c642b59d48
-_md5_=35be7da2d21b498b542f6e44cd4967ed
+_md5_=8e6a215dd8f12672c872a81a2a285c92

@@ -10,4 +10,4 @@ SLOT=0
 SRC_URI=https://dev.gentoo.org/~perfinion/distfiles/policycoreutils-extra-1.34.tar.bz2
 _eclass_exported_funcs=pkg_postinst:- src_unpack:- src_prepare:- src_compile:- src_install:-
 _eclasses_=bash-completion-r1	acf715fa09463f043fbfdc1640f3fb85	eutils	9d81603248f2ba3ec59124320d123e5e	git-r3	ef66dfc3db09f327af21cf32f140fb2b	multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	3972ca401cf7dbb430df9995f5d8d580	python-r1	0f6937650a475d673baa5d0c8c0b37b3	python-utils-r1	2e6826f6a93ad2acf904eecf5b5fb6d2	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
-_md5_=bce87c2cf660b1797ad04898ef800ec8
+_md5_=838270bf777e5e73682a91ad9154e040

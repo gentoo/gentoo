@@ -9,4 +9,4 @@ RDEPEND=>=sys-libs/libsemanage-9999
 SLOT=0
 _eclass_exported_funcs=pkg_postinst:- src_unpack:git-r3 src_prepare:- src_compile:- src_install:-
 _eclasses_=eutils	9d81603248f2ba3ec59124320d123e5e	git-r3	ef66dfc3db09f327af21cf32f140fb2b	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
-_md5_=2ce071b8986ddccbca96b2613b09530e
+_md5_=ba3c5c86417e0d1b1863ec1284f79b05
