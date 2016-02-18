@@ -9,12 +9,16 @@
 		<email>blueness@gentoo.org</email>
 		<name>Anthony G. Basile</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>tomboy64@sina.cn</email>
+		<name>Proxy maintainer. Please subscribe to bugs.</name>
+	</maintainer>
 	<use>
 		<flag name="i2p-hardening">
 			Compile with hardening on vanilla compilers/linkers
 		</flag>
 	</use>
 	<upstream>
-		<remote-id type="github">PrivacySolutions/i2pd</remote-id>
+		<remote-id type="github">PurpleI2P/i2pd</remote-id>
 	</upstream>
 </pkgmetadata>
