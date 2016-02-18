@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit webapp
+inherit webapp eutils
 
 DESCRIPTION="A CalDAV and CardDAV Server"
 HOMEPAGE="http://davical.org/"
