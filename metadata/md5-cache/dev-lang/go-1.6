@@ -1,12 +1,13 @@
 DEFINED_PHASES=compile install postinst preinst pretend test
 DEPEND=>=dev-lang/go-bootstrap-1.4.1
 DESCRIPTION=A concurrent garbage collected and typesafe programming language
-EAPI=6
+EAPI=5
 HOMEPAGE=http://www.golang.org
+KEYWORDS=-* ~amd64 ~arm ~x86 ~amd64-fbsd ~x86-fbsd ~x64-macos ~x86-macos ~x64-solaris
 LICENSE=BSD
 RDEPEND=!<dev-go/go-tools-0_pre20150902
-SLOT=0/1.6_rc2
-SRC_URI=https://storage.googleapis.com/golang/go1.6rc2.src.tar.gz
+SLOT=0/1.6
+SRC_URI=https://storage.googleapis.com/golang/go1.6.src.tar.gz
 _eclass_exported_funcs=pkg_pretend:- pkg_preinst:- pkg_postinst:- src_compile:- src_test:- src_install:-
-_eclasses_=multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
-_md5_=3f2a95d08b7b37a5a6de743f320ee2d4
+_eclasses_=eutils	9d81603248f2ba3ec59124320d123e5e	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_md5_=ab3d45408acf25cc38027e228c95cc66
