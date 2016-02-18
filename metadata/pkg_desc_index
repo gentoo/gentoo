@@ -6777,7 +6777,7 @@ dev-python/alembic 0.7.7 0.8.2 0.8.4: database migrations tool, written by the a
 dev-python/algopy 0.5.1 0.5.2 0.5.3: Taylor Arithmetic Computation and Algorithmic Differentiation
 dev-python/amodem 1.12.0 1.13: Transmit data between two computers using audio
 dev-python/amqplib 0.6.1-r1 1.0.2-r1: Python client for the Advanced Message Queuing Procotol (AMQP)
-dev-python/aniso8601 0.82 0.83 0.90 0.92 1.0.0: A library for parsing ISO 8601 strings
+dev-python/aniso8601 0.82 0.83 0.90 0.92 1.0.0 1.1.0: A library for parsing ISO 8601 strings
 dev-python/ansi2html 1.0.7 1.1.0: Convert text with ANSI color codes to HTML
 dev-python/ansicolor 0.2.1 0.2.4: Produce ansi color output and colored highlighting and diffing
 dev-python/anyjson 0.3.3-r1: Wraps the best available JSON implementation available in a common interface
@@ -6789,12 +6789,12 @@ dev-python/apptools 4.2.1 4.3.0: Enthought Tool Suite: Application tools
 dev-python/apse 0.2-r3: Approximate String Matching in Python
 dev-python/apsw 3.8.7.1_p1 3.8.10.1_p1 3.8.11.1_p1 3.9.2_p1-r1: APSW - Another Python SQLite Wrapper
 dev-python/aquarium 2.3-r1: Aquarium web application framework
-dev-python/argcomplete 0.8.1 0.8.9 0.9.0: Bash tab completion for argparse
+dev-python/argcomplete 0.8.1 0.8.9 0.9.0 1.0.0: Bash tab completion for argparse
 dev-python/argh 0.25.0 0.26.0 0.26.1: A simple argparse wrapper
 dev-python/args 0.1.0: Command Arguments for Humans
 dev-python/arrayterator 1.0.1-r1: A buffered iterator for reading big arrays in small contiguous blocks
 dev-python/asciitable 0.8.0-r1: An extensible ASCII table reader
-dev-python/asset 0.6.1-r1 0.6.2 0.6.3 0.6.4: A package resource and symbol loading helper library
+dev-python/asset 0.6.1-r1 0.6.2 0.6.3 0.6.4 0.6.10: A package resource and symbol loading helper library
 dev-python/assets 0.1.1-r1: Cache-friendly asset management via content-hash-naming
 dev-python/astng 0.24.3: Abstract Syntax Tree for logilab packages
 dev-python/astor 0.3 0.4 0.4.1 0.5: Read/rewrite/write Python ASTs
@@ -6808,7 +6808,7 @@ dev-python/atpy 0.9.7: Astronomical tables support for Python
 dev-python/attrdict 2.0.0: A dict with attribute-style access
 dev-python/audioread 1.0.1: Module for decoding audio files using whichever backend is available
 dev-python/authres 0.701 0.702 0.800: Authentication Results Header Module
-dev-python/autobahn 0.9.4.2 0.10.4 0.11.0: WebSocket and WAMP for Twisted and Asyncio
+dev-python/autobahn 0.9.4.2 0.10.4 0.11.0 0.12.1: WebSocket and WAMP for Twisted and Asyncio
 dev-python/automaton 0.8.0: Friendly state machines for python.
 dev-python/autopep8 1.0.4 1.1 1.1.1 1.2 1.2.1 9999: Automatically formats Python code to conform to the PEP 8 style guide
 dev-python/axiom 0.6.0-r1 0.7.2 0.7.3: Object database implemented on top of SQLite
