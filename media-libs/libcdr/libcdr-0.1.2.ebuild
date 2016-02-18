@@ -16,7 +16,7 @@ LICENSE="MPL-2.0"
 SLOT="0"
 [[ ${PV} == 9999 ]] || \
 KEYWORDS="~amd64 ~arm ~hppa ~ppc64 ~x86"
-IUSE="doc static-libs"
+IUSE="doc static-libs test"
 
 RDEPEND="
 	dev-libs/icu:=
@@ -29,6 +29,7 @@ DEPEND="${RDEPEND}
 	sys-devel/libtool
 	virtual/pkgconfig
 	doc? ( app-doc/doxygen )
+	test? ( dev-util/cppunit )
 "
 
 src_prepare() {
@@ -42,7 +43,8 @@ src_configure() {
 		--docdir="${EPREFIX}/usr/share/doc/${PF}" \
 		$(use_enable static-libs static) \
 		--disable-werror \
-		$(use_with doc docs)
+		$(use_with doc docs) \
+		$(use_enable test tests)
 }
 
 src_install() {
