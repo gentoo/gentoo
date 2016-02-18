@@ -5,13 +5,14 @@
 EAPI=5
 
 XORG_DRI=dri
+XORG_EAUTORECONF=yes
 inherit linux-info xorg-2
 
 DESCRIPTION="X.Org driver for Intel cards"
 
 KEYWORDS="~amd64 ~x86 ~amd64-fbsd -x86-fbsd"
-IUSE="debug +sna +udev uxa xvmc"
-COMMIT_ID="8b8c9a36828e90e46ad0755c6861df85f5307fb5"
+IUSE="debug dri3 +sna +udev uxa xvmc"
+COMMIT_ID="636b52913cac10e691834a699cff10fb94d395fa"
 SRC_URI="http://cgit.freedesktop.org/xorg/driver/xf86-video-intel/snapshot/${COMMIT_ID}.tar.xz -> ${P}.tar.xz"
 
 S=${WORKDIR}/${COMMIT_ID}
@@ -23,6 +24,9 @@ RDEPEND="x11-libs/libXext
 	x11-libs/libXfixes
 	>=x11-libs/pixman-0.27.1
 	>=x11-libs/libdrm-2.4.29[video_cards_intel]
+	dri3? (
+		>=x11-base/xorg-server-1.18
+	)
 	sna? (
 		>=x11-base/xorg-server-1.10
 	)
@@ -41,26 +45,23 @@ DEPEND="${RDEPEND}
 	x11-proto/presentproto
 	x11-proto/resourceproto"
 
-src_prepare() {
-	eautoreconf
-}
-
 src_configure() {
 	XORG_CONFIGURE_OPTIONS=(
 		$(use_enable debug)
 		$(use_enable dri)
+		$(use_enable dri3)
+		$(usex dri3 "--with-default-dri=3")
 		$(use_enable sna)
-		$(use_enable uxa)
 		$(use_enable udev)
+		$(use_enable uxa)
 		$(use_enable xvmc)
-		--disable-dri3
 	)
 	xorg-2_src_configure
 }
 
 pkg_postinst() {
 	if linux_config_exists \
-		&& ! linux_chkconfig_present DRM_I915_KMS; then
+		kernel_is -lt 4 3 && ! linux_chkconfig_present DRM_I915_KMS; then
 		echo
 		ewarn "This driver requires KMS support in your kernel"
 		ewarn "  Device Drivers --->"

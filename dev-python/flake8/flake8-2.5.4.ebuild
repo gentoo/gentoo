@@ -31,11 +31,11 @@ DEPEND="${RDEPEND}
 		dev-python/nose[${PYTHON_USEDEP}]
 		$(python_gen_cond_dep 'dev-python/mock[${PYTHON_USEDEP}]' python2_7)
 		>=dev-python/mccabe-0.2.1[${PYTHON_USEDEP}]
-	        <dev-python/mccabe-0.4[${PYTHON_USEDEP}]
+	        <dev-python/mccabe-0.5[${PYTHON_USEDEP}]
 	)"
 PDEPEND="
 	>=dev-python/mccabe-0.2.1[${PYTHON_USEDEP}]
-	<dev-python/mccabe-0.4[${PYTHON_USEDEP}]"
+	<dev-python/mccabe-0.5[${PYTHON_USEDEP}]"
 
 python_prepare_all() {
 	# This tests requires / assumes this version is already installed.
