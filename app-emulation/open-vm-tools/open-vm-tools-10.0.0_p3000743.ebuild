@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -112,6 +112,9 @@ src_install() {
 	if use X; then
 		fperms 4755 /usr/bin/vmware-user-suid-wrapper
 		dobin scripts/common/vmware-xdg-detect-de
+
+		insinto /etc/xdg/autostart
+		doins "${FILESDIR}"/open-vm-tools.desktop
 
 		elog "To be able to use the drag'n'drop feature of VMware for file"
 		elog "exchange, please add the users to the 'vmware' group."
