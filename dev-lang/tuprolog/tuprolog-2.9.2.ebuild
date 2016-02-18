@@ -16,18 +16,19 @@ KEYWORDS="~amd64 ~x86"
 IUSE="doc examples test"
 
 RDEPEND=">=virtual/jdk-1.7:=
-	>=dev-java/javassist-3"
+	 dev-java/javassist:3"
 
 DEPEND="${RDEPEND}
 	dev-java/ant-core
 	test? (
-		dev-java/ant-junit4
-		dev-java/hamcrest-core
+		dev-java/ant-junit4:0
+		dev-java/junit:4
+		dev-java/hamcrest-core:1.3
 	)"
 
 S="${WORKDIR}"/${P}
 
-EANT_GENTOO_CLASSPATH="javassist-3"
+EANT_GENTOO_CLASSPATH="javassist:3"
 
 src_prepare() {
 	epatch "${FILESDIR}"/${P}-no-ikvm.patch
@@ -42,11 +43,10 @@ src_compile() {
 
 src_test() {
 	cd "${S}"/dist
-	java-pkg_jar-from junit-4
-	java-pkg_jar-from hamcrest-core
+	java-pkg_jar-from junit:4
+	java-pkg_jar-from hamcrest-core:1.3
 	cd "${S}"
-	ANT_TASKS="ant-junit4" eant -Djunit.jar=junit.jar test \
-		|| die "eant test failed"
+	ANT_TASKS="ant-junit4" eant test || die "eant test failed"
 }
 
 src_install() {
