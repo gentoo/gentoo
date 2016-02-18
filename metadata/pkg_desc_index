@@ -6783,7 +6783,7 @@ dev-python/ansicolor 0.2.1 0.2.4: Produce ansi color output and colored highligh
 dev-python/anyjson 0.3.3-r1: Wraps the best available JSON implementation available in a common interface
 dev-python/anyvc 0.3.7.1-r1: Library to access any version control system
 dev-python/apipkg 1.2-r1 1.4: namespace control and lazy-import mechanism
-dev-python/aplpy 0.9.14: Astronomical Plotting Library in Python
+dev-python/aplpy 0.9.14 1.0: Astronomical Plotting Library in Python
 dev-python/appdirs 1.4.0: Module for determining appropriate platform-specific dirs
 dev-python/apptools 4.2.1 4.3.0: Enthought Tool Suite: Application tools
 dev-python/apse 0.2-r3: Approximate String Matching in Python
@@ -14139,6 +14139,7 @@ net-libs/libgrss 0.5.0-r1 0.7.0: LibGRSS is a library for easy management of RSS
 net-libs/libgsasl 1.8.0-r1: The GNU SASL library
 net-libs/libgssglue 0.4: exports a gssapi interface which calls other random gssapi libraries
 net-libs/libhackrf 2014.04.1 2014.08.1 2015.07.2 9999: library for communicating with HackRF SDR platform
+net-libs/libhtp 0.5.18: security-aware parser for the HTTP protocol and the related bits and pieces
 net-libs/libhubbub 0.3.0-r1 0.3.1-r1: HTML5 compliant parsing library, written in C
 net-libs/libident 0.32: A small library to interface to the Ident protocol server
 net-libs/libinfinity 0.5.4: An implementation of the Infinote protocol written in GObject-based C
