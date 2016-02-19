@@ -19,8 +19,7 @@ IUSE="test"
 LICENSE="MIT"
 SLOT="0"
 
-RDEPEND=">=dev-python/pep8-1.4.3[${PYTHON_USEDEP}]
-	dev-python/flake8[${PYTHON_USEDEP}]"
+RDEPEND="dev-python/flake8[${PYTHON_USEDEP}]"
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 	dev-python/pytest-runner[${PYTHON_USEDEP}]"
 
