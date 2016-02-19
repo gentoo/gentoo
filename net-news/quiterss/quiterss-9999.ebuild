@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -22,7 +22,7 @@ SLOT="0"
 IUSE="debug phonon +qt4 qt5"
 REQUIRED_USE="^^ ( qt4 qt5 )"
 
-RDEPEND="dev-db/sqlite:3
+RDEPEND=">=dev-db/sqlite-3.10.0:3
 	dev-qt/qtsingleapplication[X,qt4(+)?,qt5(-)?]
 	qt4? ( dev-qt/qtcore:4
 		dev-qt/qtgui:4
