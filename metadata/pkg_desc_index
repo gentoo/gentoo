@@ -7385,7 +7385,7 @@ dev-python/nosehtmloutput 0.0.4-r1 0.0.5: Nose plugin to produce test results in
 dev-python/nosexcover 1.0.10: Extends nose.plugins.cover to add Cobertura-style XML reports
 dev-python/notebook 4.0.6 4.1.0: Jupyter Interactive Notebook
 dev-python/notify-python 0.1.1-r3: Python bindings for libnotify
-dev-python/numba 0.18.2 0.19.2 0.20.0 0.22.1: NumPy aware dynamic Python compiler using LLVM
+dev-python/numba 0.18.2 0.19.2 0.20.0 0.22.1 0.23.1: NumPy aware dynamic Python compiler using LLVM
 dev-python/numdisplay 1.6.0-r1: Python package for interactively displaying FITS arrays
 dev-python/numexpr 2.4.3 2.4.4 2.4.6 2.5: Fast numerical array expression evaluator for Python and NumPy
 dev-python/numpy 1.8.2 1.9.2 1.9.3 1.10.1-r1 1.10.2-r2 1.10.4 9999: Fast array and numerical python library
