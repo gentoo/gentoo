@@ -18069,7 +18069,7 @@ x11-misc/apwal 0.4.5-r1: A simple application launcher and combined editor
 x11-misc/arandr 0.1.7.1 0.1.8: A simple visual frontend for XRandR 1.2/1.3
 x11-misc/ardesia 1.0: Color, record and share free-hand annotations on screen and on network
 x11-misc/autocutsel 0.9.0 0.10.0: Synchronise the two copy/paste buffers mainly used by X applications
-x11-misc/basqet 0.1.4 0.2.0: Keep your notes, pictures, ideas, and information in Baskets
+x11-misc/basqet 0.2.0: Keep your notes, pictures, ideas, and information in Baskets
 x11-misc/bbacpi 0.1.5-r1 0.1.5-r2: ACPI monitor for X11
 x11-misc/bbappconf 0.0.2: utility that allows you to specify window properties in blackbox
 x11-misc/bbcd 0.3.1-r1: Basic CD Player for blackbox wm
@@ -18157,7 +18157,7 @@ x11-misc/imake 1.0.5 1.0.6 1.0.7: C preprocessor interface to the make utility
 x11-misc/imwheel 1.0.0_pre12 1.0.0_pre13_p20100827: mouse tool for advanced features such as wheels and 3+ buttons
 x11-misc/ipager 1.1.0: A themable desktop pager for fluxbox and other window managers
 x11-misc/kapow 1.4.3 1.4.4: A punch clock program designed to easily keep track of your hours
-x11-misc/kaqaz 1.2.0 1.2.0-r1: Modern note manager
+x11-misc/kaqaz 1.2.0-r1: Modern note manager
 x11-misc/kbdd 0.5.2 0.7 0.7-r1: Very simple layout switcher
 x11-misc/kdocker 4.8-r2: Helper to dock any application into the system tray
 x11-misc/kronometer 2.0.0 2.0.1: KF5-based stopwatch application
@@ -18197,7 +18197,7 @@ x11-misc/obconf-qt 0.1.0 0.9.0_p20150729: Openbox window manager configuration t
 x11-misc/obmenu 1.0 1.0-r1: Menu editor designed for openbox
 x11-misc/obmenu-generator 0.61 0.66: A fast pipe/static menu generator for the Openbox Window Manager
 x11-misc/obtheme 2013.2.20.2: A gui theme editor for openbox
-x11-misc/okindd 0.6.0 0.6.1: On Screen Display (OSD) for KDE 4.x - works on any Qt desktop
+x11-misc/okindd 0.6.1: On Screen Display (OSD) for KDE 4.x - works on any Qt desktop
 x11-misc/openbox-menu 0.5.1 0.7.0 0.8.0: Another dynamic menu generator for Openbox
 x11-misc/oroborus-desklaunch 1.1.8: utility for creating desktop icons for Oroborus
 x11-misc/oroborus-deskmenu 1.4.5: root menu program for Oroborus
