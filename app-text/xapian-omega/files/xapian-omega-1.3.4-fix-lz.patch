@@ -1,0 +1,20 @@
+commit 755169cc3b0991bb783ade963da3a473db147067
+Author: Olly Betts <olly@survex.com>
+Date:   Tue Jan 12 17:24:11 2016 +1300
+
+    Need to AC_SUBST probed value of ZLIB_LIBS
+    
+    Noted by Paul Wise
+
+diff --git a/xapian-applications/omega/configure.ac b/xapian-applications/omega/configure.ac
+index db56262..36d894e 100644
+--- a/xapian-applications/omega/configure.ac
++++ b/xapian-applications/omega/configure.ac
+@@ -120,6 +120,7 @@ AC_SEARCH_LIBS([zlibVersion], [z zlib zdll], [], [
+   AC_MSG_ERROR([zlibVersion() not found in -lz, -lzlib, or -lzdll (you  may need to install the zlib1g-dev or zlib-devel package)])
+   ])
+ ZLIB_LIBS=$LIBS
++AC_SUBST([ZLIB_LIBS])
+ LIBS=$SAVE_LIBS
+ 
+ dnl libmagic used to detect MIME types for files we don't detect by extension.
