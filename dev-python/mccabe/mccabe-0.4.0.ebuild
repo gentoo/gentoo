@@ -21,7 +21,12 @@ SLOT="0"
 
 RDEPEND="dev-python/flake8[${PYTHON_USEDEP}]"
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
-	dev-python/pytest-runner[${PYTHON_USEDEP}]"
+	test? ( dev-python/pytest-runner[${PYTHON_USEDEP}] )"
+
+src_prepare() {
+	sed -i -e '/pytest-runner/d' setup.py || die
+	distutils-r1_src_prepare
+}
 
 python_test() {
 	${EPYTHON} test_mccabe.py || die
