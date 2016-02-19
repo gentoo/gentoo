@@ -6,8 +6,6 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 python3_{3,4,5} )
 
-RESTRICT="test"
-
 inherit distutils-r1
 
 DESCRIPTION="flake8 plugin: McCabe complexity checker"
