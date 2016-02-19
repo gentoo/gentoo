@@ -58,8 +58,8 @@ pkg_setup() {
 
 	if [[ "${KV_MINOR}" -gt "${PATCH_MAX_VER}" ]]; then
 		PATCH_BRANCH="x-rcN"
-	elif [[ "${KV_MINOR}" == "14" ]] && [[ "${KV_PATCH}" -ge "21" ]]; then
-		PATCH_BRANCH="${KV_MINOR}".21+
+	elif [[ "${KV_MINOR}" == "18" ]] && [[ "${KV_PATCH}" -ge "25" ]]; then
+		PATCH_BRANCH="${KV_MINOR}".25+
 	elif [[ "${KV_MINOR}" == "18" ]] && [[ "${KV_PATCH}" -ge "1" ]]; then
 		PATCH_BRANCH="${KV_MINOR}".1+
 	else
