@@ -7,6 +7,6 @@
   </maintainer>
   <upstream>
     <remote-id type="pypi">mccabe</remote-id>
-    <remote-id type="github">flintwork/mccabe</remote-id>
+    <remote-id type="github">PyCQA/mccabe</remote-id>
   </upstream>
 </pkgmetadata>
