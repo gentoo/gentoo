@@ -28,7 +28,7 @@ else
 	SEC_VER=
 	QEMU_VER=
 	# xen-tools's gentoo patches tarball
-	GENTOO_VER=4
+	GENTOO_VER=6
 	# xen-tools's gentoo patches version which apply to this specific ebuild
 	GENTOO_GPV=0
 	# xen-tools ovmf's patches
