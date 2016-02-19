@@ -11,4 +11,4 @@ SLOT=0
 SRC_URI=https://dev.gentoo.org/~jlec/distfiles/aufs4-standalone-0_pre20160219.tar.xz
 _eclass_exported_funcs=pkg_preinst:linux-mod pkg_postrm:linux-mod pkg_postinst:- pkg_setup:- src_prepare:- src_compile:- src_install:-
 _eclasses_=eutils	9d81603248f2ba3ec59124320d123e5e	flag-o-matic	d270fa247153df66074f795fa42dba3e	linux-info	fd1e29abbb02cbc49f1a14299846e9c4	linux-mod	4755518412586c2fd655ff6e55780bcb	multilib	3972ca401cf7dbb430df9995f5d8d580	readme.gentoo-r1	03878c06495db70bc36bd717383c09f7	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=e597577c64bbee2dc5f2265d6c7aedfb
+_md5_=961e0579d11cd876090ac561cdfba5cd
