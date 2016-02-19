@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install prepare pretend setup test
+DEPEND=|| ( dev-db/postgresql:9.5 dev-db/postgresql:9.4 dev-db/postgresql:9.3 dev-db/postgresql:9.2 dev-db/postgresql:9.1 dev-db/postgresql:9.0 ) python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
+DESCRIPTION=A Python interface for the PostgreSQL database
+EAPI=5
+HOMEPAGE=http://www.pygresql.org/
+IUSE=doc python_targets_python2_7
+KEYWORDS=~alpha ~amd64 ~hppa ~ia64 ~ppc ~sparc ~x86
+LICENSE=POSTGRESQL
+RDEPEND=|| ( dev-db/postgresql:9.5 dev-db/postgresql:9.4 dev-db/postgresql:9.3 dev-db/postgresql:9.2 dev-db/postgresql:9.1 dev-db/postgresql:9.0 ) python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
+REQUIRED_USE=|| ( python_targets_python2_7 )
+SLOT=0
+SRC_URI=mirror://pypi/P/PyGreSQL/PyGreSQL-4.2.zip
+_eclass_exported_funcs=pkg_pretend:- pkg_setup:- src_prepare:distutils-r1 src_configure:distutils-r1 src_compile:distutils-r1 src_test:distutils-r1 src_install:distutils-r1
+_eclasses_=distutils-r1	4e8ac1ba76ddacd8f7c0289aa586a34c	eutils	9d81603248f2ba3ec59124320d123e5e	multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	3972ca401cf7dbb430df9995f5d8d580	multiprocessing	e32940a7b2a9992ad217eccddb84d548	python-r1	0f6937650a475d673baa5d0c8c0b37b3	python-utils-r1	2e6826f6a93ad2acf904eecf5b5fb6d2	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_md5_=58abddf5ebd24ea38f590f2001d67083
