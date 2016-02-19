@@ -27,7 +27,7 @@ case ${PV} in
 	;;
 esac
 GCC_BOOTSTRAP_VER="4.7.3-r1"
-PATCH_VER=""                                   # Gentoo patchset
+PATCH_VER="1"                                  # Gentoo patchset
 : ${NPTL_KERN_VER:="2.6.32"}                   # min kernel version nptl requires
 
 IUSE="debug gd hardened multilib nscd selinux systemtap profile suid vanilla crosscompile_opts_headers-only"
@@ -155,10 +155,15 @@ done
 
 eblit-src_unpack-pre() {
 	[[ -n ${GCC_BOOTSTRAP_VER} ]] && use multilib && unpack gcc-${GCC_BOOTSTRAP_VER}-multilib-bootstrap.tar.bz2
+	# Bug 558636 we don't apply the pie works around for 2.22. It shoud have the support. #558636
+	GLIBC_PATCH_EXCLUDE+=" 00_all_0002-workaround-crash-when-handling-signals-in-static-PIE.patch"
+	GLIBC_PATCH_EXCLUDE+=" 00_all_0012-disable-PIE-when-checking-for-PIC-default.patch"
 }
 
 eblit-src_prepare-post() {
 	cd "${S}"
+
+	epatch "${FILESDIR}"/2.19/${PN}-2.19-ia64-gcc-4.8-reloc-hack.patch #503838
 
 	if use hardened ; then
 		# We don't enable these for non-hardened as the output is very terse --
@@ -181,4 +186,12 @@ eblit-src_prepare-post() {
 			-e 's:-fstack-protector$:-fstack-protector-all:' \
 			*/Makefile || die
 	fi
+
+	case $(gcc-fullversion) in
+	4.8.[0-3]|4.9.0)
+		eerror "You need to switch to a newer compiler; gcc-4.8.[0-3] and gcc-4.9.0 miscompile"
+		eerror "glibc.  See https://bugs.gentoo.org/547420 for details."
+		die "need to switch compilers #547420"
+		;;
+	esac
 }
