@@ -17636,7 +17636,7 @@ www-client/epiphany 3.16.3 3.18.2 3.18.3: GNOME webbrowser based on Webkit
 www-client/fetch 1.0-r1: Fetch is a simple, fast, and flexible HTTP download tool built on the HTTP Fetcher library
 www-client/firefox 38.5.0 38.6.0 38.6.1 44.0.2: Firefox Web Browser
 www-client/firefox-bin 38.5.0 38.6.0 44.0: Firefox Web Browser
-www-client/google-chrome 48.0.2564.109_p1: The web browser from Google
+www-client/google-chrome 48.0.2564.116_p1: The web browser from Google
 www-client/google-chrome-beta 49.0.2623.56_p1: The web browser from Google
 www-client/google-chrome-unstable 50.0.2652.0_p1: The web browser from Google
 www-client/httrack 3.48.21-r1 3.48.21-r2: HTTrack Website Copier, Open Source Offline Browser
@@ -17694,7 +17694,7 @@ www-misc/wsmake 0.6.4: Website Pre-processor
 www-misc/xxv 1.6.1-r1: WWW Admin for the VDR (Video Disk Recorder)
 www-misc/zoneminder 1.27.0 1.28.0 1.28.1: ZoneMinder allows you to capture, analyse, record and monitor any cameras attached to your system
 www-plugins/adobe-flash 11.2.202.569: Adobe Flash Player
-www-plugins/chrome-binary-plugins 48.0.2564.109_p1 49.0.2623.56_beta1 50.0.2652.0_alpha1: Binary plugins from Google Chrome for use in Chromium
+www-plugins/chrome-binary-plugins 48.0.2564.116_p1 49.0.2623.56_beta1 50.0.2652.0_alpha1: Binary plugins from Google Chrome for use in Chromium
 www-plugins/freshplayerplugin 0.3.1-r2 0.3.2 0.3.3 0.3.3-r1 0.3.3-r2 0.3.4 0.3.4-r1: PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers
 www-plugins/gecko-mediaplayer 1.0.8 1.0.9: A browser plugin that uses GNOME MPlayer
 www-plugins/gnash 0.8.10_p20131019 0.8.10_p20150316: GNU Flash movie player that supports many SWF v7,8,9 features
