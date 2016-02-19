@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -13,13 +13,20 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="libav"
+IUSE="libav qt5"
 
 RDEPEND="
 	dev-libs/openssl:0
-	dev-qt/qtcore:4
-	dev-qt/qtgui:4
 	media-libs/libsdl[sound]
+	qt5? (
+		dev-qt/qtcore:5
+		dev-qt/qtgui:5
+		dev-qt/qtwidgets:5
+	)
+	!qt5? (
+		dev-qt/qtcore:4
+		dev-qt/qtgui:4
+	)
 	libav? ( media-video/libav:= )
 	!libav? ( media-video/ffmpeg:= )
 "
@@ -30,10 +37,15 @@ DEPEND="${RDEPEND}
 PATCHES=(
 	"${FILESDIR}/${PN}-1.11-libav.patch"
 	"${FILESDIR}/${PN}-2.1-ffmpeg3.patch"
+	"${FILESDIR}/${PN}-2.1-qt55.patch"
 )
 
 src_configure() {
-	eqmake4 "${PN}.pro"
+	if use qt5; then
+		eqmake5 "${PN}.pro"
+	else
+		eqmake4 "${PN}.pro"
+	fi
 }
 
 src_install() {
