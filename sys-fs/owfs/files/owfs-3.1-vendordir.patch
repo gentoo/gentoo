@@ -1,0 +1,26 @@
+diff --git a/module/ownet/perl5/Makefile.am b/module/ownet/perl5/Makefile.am
+index 5823f4b..cebe1e6 100644
+--- a/module/ownet/perl5/Makefile.am
++++ b/module/ownet/perl5/Makefile.am
+@@ -8,7 +8,7 @@ OWNet/Makefile: OWNet/Makefile.PL
+ if HAVE_DEBIAN
+ 	cd OWNet; $(PERL) Makefile.PL INSTALLDIRS=vendor
+ else
+-	cd OWNet; $(PERL) Makefile.PL
++	cd OWNet; $(PERL) Makefile.PL INSTALLDIRS=vendor
+ endif
+ 
+ install-data-local: OWNet/Makefile
+diff --git a/module/swig/perl5/Makefile.am b/module/swig/perl5/Makefile.am
+index 8e5f583..49cd252 100644
+--- a/module/swig/perl5/Makefile.am
++++ b/module/swig/perl5/Makefile.am
+@@ -19,7 +19,7 @@ else
+ if HAVE_DEBIAN
+ 	( cd OW; $(PERL) Makefile.PL INSTALLDIRS=vendor )
+ else
+-	( cd OW; $(PERL) Makefile.PL )
++	( cd OW; $(PERL) Makefile.PL INSTALLDIRS=vendor )
+ if HAVE_FREEBSD
+ 	$(PERL) -pi -e 's/ doc_(perl|site|\$$\(INSTALLDIRS\))_install$$//' OW/Makefile
+ 
