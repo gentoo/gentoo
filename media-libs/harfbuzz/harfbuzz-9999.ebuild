@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 EGIT_REPO_URI="git://anongit.freedesktop.org/harfbuzz"
 [[ ${PV} == 9999 ]] && inherit git-r3 autotools
@@ -49,6 +49,8 @@ pkg_setup() {
 }
 
 src_prepare() {
+	default
+
 	if [[ ${CHOST} == *-darwin* || ${CHOST} == *-solaris* ]] ; then
 		# on Darwin/Solaris we need to link with g++, like automake defaults
 		# to, but overridden by upstream because on Linux this is not
