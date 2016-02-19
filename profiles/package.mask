@@ -30,6 +30,11 @@
 
 #--- END OF EXAMPLES ---
 
+# James Le Cuirot <chewi@gentoo.org> (19 Feb 2016)
+# Upstream EOL is December 2016. We would rather focus on other things
+# than support it until then. Removal in 30 days.
+www-servers/tomcat:6
+
 # Michael Palimaka <kensington@gentoo.org> (19 Feb 2016)
 # Superceded by other filesharing systems. Dead upstream. Unmaintained.
 # Masked for removal in 30 days. Bug 314359.
