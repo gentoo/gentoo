@@ -109,8 +109,10 @@ src_prepare() {
 }
 
 src_configure() {
+	pushd src > /dev/null || die
 	use qt4 && eqmake4
 	use qt5 && eqmake5
+	popd > /dev/null || die
 }
 
 gen_translation() {
