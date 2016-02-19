@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit mercurial qmake-utils
+inherit mercurial qmake-utils gnome2-utils fdo-mime
 
 DESCRIPTION="Cloth patternmaking software"
 HOMEPAGE="http://valentinaproject.bitbucket.org/"
@@ -15,6 +15,7 @@ EHG_REVISION="develop"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
+IUSE="gnome"
 
 # en_IN not supported in Gentoo so not added here
 LANGS="cs_CZ de_DE en_CA en_US es_ES fi_FI fr_FR he_IL id_ID it_IT nl_NL ro_RO ru_RU uk_UA zh_CN"
@@ -50,4 +51,21 @@ src_configure() {
 
 src_install() {
 	emake install INSTALL_ROOT="${D}"
+
+	dodoc LICENSE_GPL.txt ChangeLog.txt README.txt
+
+	doman dist/debian/${PN}.1
+	doman dist/debian/tape.1
+
+	cp dist/debian/valentina.sharedmimeinfo dist/debian/${PN}.xml || die
+	insinto /usr/share/mime/packages
+	doins dist/debian/${PN}.xml
+}
+
+pkg_postinst() {
+	fdo-mime_desktop_database_update
+
+	if use gnome ; then
+		gnome2_icon_cache_update
+	fi
 }
