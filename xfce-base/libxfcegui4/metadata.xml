@@ -5,7 +5,4 @@
     <email>xfce@gentoo.org</email>
     <name>XFCE Team</name>
   </maintainer>
-  <use>
-    <flag name="glade">Build glade bindings</flag>
-  </use>
 </pkgmetadata>
