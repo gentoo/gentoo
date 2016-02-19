@@ -1,24 +1,13 @@
 certificate version 0.1
-pusher Michael Palimaka <kensington@gentoo.org> 1455899936 +1100
-pushee git+ssh://git.gentoo.org/repo/gentoo
-nonce 1455899935-dd872b98f304ef50d8c0
+pusher 0x95CB947B215AD14D 1455900957 +0100
+pushee git+ssh://git.gentoo.org/repo/gentoo.git
+nonce 1455900981-cfdba489236ec8fa9b33
 
-2e7218d91a50cb6acb3f31f86a0ccf2abf3a1042 9feb9fa0da21b58cb26531e6c9809c9b5deba0f0 refs/heads/master
+9feb9fa0da21b58cb26531e6c9809c9b5deba0f0 ba6473341f414f64c355302901890f5b3d9d752d refs/heads/master
 -----BEGIN PGP SIGNATURE-----
-Version: GnuPG v2.0
+Version: GnuPG v2
 
-iQJiBAABCgBMBQJWx0UgRRSAAAAAABQAKGlzc3Vlci1mcHJAbm90YXRpb25zOTc5
-MTY5NkQ3RDM3NkRBN0U5QjZGMTUwMDZCMUYzOERDQTQ1QTFFQwAKCRAGsfONykWh
-7D/nD/9I1fErTjhWUXxlxWlM5aSCk+QKXqy1PAutcgEzDt0DcypeoXVBdzZR6Xh2
-inwdm5JtONuZd1ojnPx0KgLdHvuCSIT+SAmvXar0oaS5GKmdjVnwaLJWNmQE3PPF
-km0BZQkXt35yKTwTy17kkb/wWIBoflmnblBSaw8gReqi6+sloseD68mlPCKwAkQk
-dOtHJ7fwyYxo3m+Uu4GoJRLHjbR1R+576OCoCg2Pe0onGIbW/UN0FByv2+wRx5EW
-kpCcJQg0Bkkg3NhfAlFKDXJF3TWk11zc4C9TGaE/joJNgHVvZBhsNpA9IyE2tcl+
-waBwqjzWiFLukonBf1SzUcX8JD0kjTEqfAFpsDDImzbt7g2yo/fFokiPQZF4c/ph
-vcuZexB6ykwVMfDMNlKs68iILeS22G2iuYpRd4SpZTiHpMn1ohi/GbFqMYVHWGnL
-NjQCMKWKL5SEfZXu+2QT58GEXTNPfjP1HsDCFqy3MZQJOJIzwJyx4yVBLWpZujkH
-aj993sCm5xUxtPpth3HxohN3oZ6egoTnKBov0QeNP7nT3vUZujW7I+LGDzwelzCE
-swo3guEPGbn/rypzRqHPtAfRXDSVeDq2gwi2wCjjiHTghofgUrQvCpKZ91djShEr
-KCMu65A9fki8+STNb6Itd2unMgLilf/5Y6EnJb1goIUzHE/qvQ==
-=ALZY
+iEYEABEIAAYFAlbHSR0ACgkQlcuUeyFa0U3tsACg8QUx7w+nE8aCHmxObA9FAcFh
+EXoAoMl4GEVDrSDDVzodshoBZZR/c1yD
+=JH5/
 -----END PGP SIGNATURE-----
