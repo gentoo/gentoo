@@ -9021,6 +9021,7 @@ dev-ruby/samuel 0.3.3-r1 0.3.3-r2: An automatic logger for HTTP requests in Ruby
 dev-ruby/sanitize 2.0.6-r1 2.1.0 4.0.0-r1 4.0.1: Sanitize is a whitelist-based HTML sanitizer
 dev-ruby/sass 3.2.19-r1 3.2.19-r2 3.3.14 3.3.14-r1 3.4.15 3.4.19 3.4.20 3.4.21: An extension of CSS3, adding nested rules, variables, mixins, and more
 dev-ruby/sass-rails 3.2.6 4.0.5 5.0.3 5.0.4 5.0.4-r1: Official Ruby-on-Rails Integration with Sass
+dev-ruby/sawyer 0.7.0: Secret User Agent of HTTP
 dev-ruby/sdoc 0.3.20 0.4.1: rdoc generator html with javascript search index
 dev-ruby/seed-fu 2.2.0 2.3.3 2.3.4 2.3.5: Advanced seed data handling for Rails, combining the best practices of several methods together
 dev-ruby/selenium-webdriver 2.47.1 2.50.0 2.51.0 2.52.0: This gem provides Ruby bindings for WebDriver
