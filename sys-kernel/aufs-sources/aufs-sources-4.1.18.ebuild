@@ -6,15 +6,15 @@ EAPI=5
 
 ETYPE="sources"
 K_WANT_GENPATCHES="base extras experimental"
-K_GENPATCHES_VER="22"
+K_GENPATCHES_VER="23"
 K_DEBLOB_AVAILABLE="0"
 K_KDBUS_AVAILABLE="0"
 UNIPATCH_STRICTORDER=1
-inherit kernel-2 eutils readme.gentoo
+inherit kernel-2 eutils readme.gentoo-r1
 detect_version
 detect_arch
 
-AUFS_VERSION=4.1_p20160118
+AUFS_VERSION=4.1.13+_p20160219
 AUFS_TARBALL="aufs-sources-${AUFS_VERSION}.tar.xz"
 # git archive -v --remote=git://git.code.sf.net/p/aufs/aufs4-standalone aufs${AUFS_VERSION/_p*} > aufs-sources-${AUFS_VERSION}.tar
 AUFS_URI="https://dev.gentoo.org/~jlec/distfiles/${AUFS_TARBALL}"
@@ -78,7 +78,7 @@ pkg_postinst() {
 	has_version sys-fs/aufs-util || \
 		elog "In order to use aufs FS you need to install sys-fs/aufs-util"
 
-	readme.gentoo_pkg_postinst
+	readme.gentoo_print_elog
 }
 
 pkg_postrm() {

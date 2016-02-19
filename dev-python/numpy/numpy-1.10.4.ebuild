@@ -109,9 +109,9 @@ python_prepare_all() {
 	sed -i -e '/f2py_exe/s: + os\.path.*$::' numpy/f2py/setup.py || die
 
 	# we don't have f2py-3.3
-#	sed \
-#		-e 's:test_f2py:_&:g' \
-#		-i numpy/tests/test_scripts.py || die
+	sed \
+		-e 's:test_f2py:_&:g' \
+		-i numpy/tests/test_scripts.py || die
 
 	distutils-r1_python_prepare_all
 	epatch_user
