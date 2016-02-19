@@ -7670,7 +7670,7 @@ dev-python/pypy-bin 2.6.0-r2 4.0.0-r1 4.0.1: Pre-built version of PyPy
 dev-python/pypy3 2.4.0 2.4.0-r1 9999: A fast, compliant alternative implementation of the Python language
 dev-python/pypy3-bin 2.4.0-r1 2.4.0-r2: A fast, compliant alternative implementation of Python 3 (binary package)
 dev-python/pyqtgraph 0.9.9 0.9.10: a pure-python scientific graphics and GUI library built on PyQt4/PySide and numpy
-dev-python/pyquery 1.2.4 1.2.8 1.2.9 1.2.9-r1: A jQuery-like library for python
+dev-python/pyquery 1.2.4 1.2.8 1.2.9 1.2.9-r1 1.2.11: A jQuery-like library for python
 dev-python/pyqwt 5.2.0-r1: Python bindings for the Qwt library
 dev-python/pyramid 1.5.1 1.5.2 1.5.4 1.5.7: A small open source Python web framework
 dev-python/pyrax 1.9.2 1.9.3 1.9.4: Python language bindings for OpenStack Clouds
@@ -7684,7 +7684,7 @@ dev-python/pyrsistent 0.11.12: Persistent/Functional/Immutable data structures
 dev-python/pyrtf 0.45-r1: A set of Python classes that make it possible to produce RTF documents from Python programs
 dev-python/pysaml2 2.1.0 3.0.0: Python implementation of SAML Version 2 to be used in a WSGI environment
 dev-python/pyscaffold 2.4.1 2.4.4: Tool for easily putting up the scaffold of a Python project
-dev-python/pyscard 1.9.1: Smart cards support in python
+dev-python/pyscard 1.9.1 1.9.2: Smart cards support in python
 dev-python/pysctp 0.6: PySCTP gives access to the SCTP transport protocol from Python
 dev-python/pysendfile 2.0.1: A python interface to sendfile(2) system call
 dev-python/pyserial 2.6-r1 2.7 2.7-r1: Python Serial Port Extension
