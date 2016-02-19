@@ -30,5 +30,3 @@ RDEPEND=">=dev-python/PyQt4-4.9.6-r2[${PYTHON_USEDEP},svg]
 	>=dev-python/lxml-3.0.1[${PYTHON_USEDEP}]"
 
 DOCS=(changelog HACKING NEWS README THANKS TODO)
-
-PATCHES=("${FILESDIR}/${P}-pyqt4.11.4.patch")
