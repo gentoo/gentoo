@@ -1996,10 +1996,10 @@ app-office/kmymoney 4.7.2: Personal finance manager for KDE
 app-office/kraft 0.59: Software for operating a small business, creating documents such as invoices
 app-office/ledger 2.6.3-r1 3.1 3.1-r1: A double-entry accounting system with a command-line reporting interface
 app-office/libalkimia 4.3.2-r1: Library with common classes and functionality used by KDE finance applications
-app-office/libreoffice 4.4.6.3 4.4.9999 5.0.3.2 5.0.4.2 5.0.9999 9999: A full office productivity suite
+app-office/libreoffice 4.4.6.3 4.4.9999 5.0.3.2 5.0.4.2 5.0.5.2 5.0.9999 9999: A full office productivity suite
 app-office/libreoffice-bin 5.0.3.2: A full office productivity suite. Binary package
 app-office/libreoffice-bin-debug 5.0.3.2: LibreOffice, a full office productivity suite. Binary package, debug info
-app-office/libreoffice-l10n 4.4.6.3 5.0.3.2 5.0.4.2: Translations for the Libreoffice suite
+app-office/libreoffice-l10n 4.4.6.3 5.0.3.2 5.0.4.2 5.0.5.2: Translations for the Libreoffice suite
 app-office/lotus-notes 8.5.3: Commercial fork of openoffice.org with extra features for company usage
 app-office/lyx 1.6.10 2.0.8.1 2.1.3 2.1.4: WYSIWYM frontend for LaTeX, DocBook, etc.
 app-office/magicpoint 1.13a_p20121015: An X11 based presentation tool
@@ -12237,7 +12237,7 @@ media-libs/guilib 1.2.1: a simple widget set for SDL
 media-libs/gupnp-dlna 0.10.2 0.10.3: Library providing DLNA-related functionality for MediaServers
 media-libs/hal-flash 0.2.0_rc1: A libhal stub library forwarding to UDisks for www-plugins/adobe-flash to play DRM content
 media-libs/hamlib 1.2.15.3-r1 3.0 3.0.1: Ham radio backend rig control libraries
-media-libs/harfbuzz 0.9.41 1.0.6 1.1.2 1.1.3 9999: An OpenType text shaping engine
+media-libs/harfbuzz 0.9.41 1.0.6 1.1.3 1.2.0 9999: An OpenType text shaping engine
 media-libs/herqq 1.0.0-r2: A software library for building UPnP devices
 media-libs/hupnp-ng 9999: A software library for building UPnP devices, fork of herqq
 media-libs/icc-profiles-basiccolor-printing2009 1.2.0: ICC profiles for printing/offset
@@ -12471,6 +12471,7 @@ media-libs/quesoglc 0.7.2: A free implementation of the OpenGL Character Rendere
 media-libs/quvi 0.2.19 0.4.2 0.9.4 0.9.5: A command line tool for parsing video download links
 media-libs/raptor 2.0.9 2.0.14: The RDF Parser Toolkit
 media-libs/raspberrypi-userland 0_pre20130705-r1 0_pre20140117 0_pre20140830 0_pre20150921 9999: Raspberry Pi userspace tools and libraries
+media-libs/raspberrypi-userland-bin 1.20160209: Raspberry Pi userspace tools and libraries
 media-libs/raul 0.8.0 0.8.0-r1: C++ utility library primarily aimed at audio/musical applications
 media-libs/resid 0.16_p2: C++ library to emulate the C64 SID chip
 media-libs/rply 1.01-r1: A library to read and write PLY files
@@ -16811,7 +16812,7 @@ sys-devel/boost-m4 0.4 0.4-r1: Another set of autoconf macros for compiling agai
 sys-devel/byfl 1.4 9999: Compiler-based Application Analysis
 sys-devel/clang 3.3-r100 3.4.2-r100 3.5.0-r100 3.5.2-r100 3.6.2-r100 3.7.0-r100 3.7.1-r100 3.8.0_rc2-r100 9999-r100: C language family frontend for LLVM (meta-ebuild)
 sys-devel/cons 2.2.0: Extensible perl-based build utility
-sys-devel/crossdev 20150602 20150716 20151026 99999999: Gentoo Cross-toolchain generator
+sys-devel/crossdev 20150602 20150716 20151026 20151026-r1 99999999: Gentoo Cross-toolchain generator
 sys-devel/ct-ng 1.21.0 1.22.0: crosstool-ng is a tool to build cross-compiling toolchains
 sys-devel/dev86 0.16.19 0.16.21 0.16.21-r2: Bruce's C compiler - Simple C compiler to generate 8086 code
 sys-devel/distcc 3.1-r10 3.2_rc1-r4: Distribute compilation of C code across several machines on a network

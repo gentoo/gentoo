@@ -4104,6 +4104,7 @@ media-libs/phonon-gstreamer:network - Enable network streaming support via libso
 media-libs/portmidi:test-programs - Install various example programs
 media-libs/quvi:json - Enable support for JSON output
 media-libs/raptor:json - Enable support for JSON parsing
+media-libs/raspberrypi-userland-bin:hardfp - Use armv6 hardfp ABI
 media-libs/sdif:ftruncate - Enables usage of ftruncate v. truncate
 media-libs/sdl-image:webp - support loading WEBP images
 media-libs/sdl-mixer:fluidsynth - Use media-sound/fluidsynth for MIDI support

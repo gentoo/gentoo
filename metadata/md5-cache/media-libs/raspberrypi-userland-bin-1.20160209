@@ -1,0 +1,14 @@
+DEFINED_PHASES=install prepare unpack
+DESCRIPTION=Raspberry Pi userspace tools and libraries
+EAPI=5
+HOMEPAGE=https://github.com/raspberrypi/firmware
+IUSE=+hardfp examples
+KEYWORDS=~arm -*
+LICENSE=BSD GPL-2 raspberrypi-videocore-bin
+RDEPEND=!media-libs/raspberrypi-userland
+RESTRICT=binchecks
+SLOT=0
+SRC_URI=https://github.com/raspberrypi/firmware/archive/1.20160209.tar.gz -> raspberrypi-firmware-1.20160209.tar.gz
+_eclass_exported_funcs=src_unpack:vcs-snapshot src_prepare:- src_install:-
+_eclasses_=multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	vcs-snapshot	b45be87e7012be0af8424e8a5644da1d
+_md5_=50cfcc941bafdb7d8304efce7815ea0d
