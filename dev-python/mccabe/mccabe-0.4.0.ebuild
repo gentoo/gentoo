@@ -22,7 +22,7 @@ SLOT="0"
 RDEPEND=">=dev-python/pep8-1.4.3[${PYTHON_USEDEP}]
 	dev-python/flake8[${PYTHON_USEDEP}]"
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
-	test? ( dev-python/pytest-runner[${PYTHON_USEDEP}] )"
+	dev-python/pytest-runner[${PYTHON_USEDEP}]"
 
 python_test() {
 	${EPYTHON} test_mccabe.py || die
