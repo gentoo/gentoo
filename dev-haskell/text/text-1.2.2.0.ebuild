@@ -35,8 +35,11 @@ DEPEND="${RDEPEND}
 		>=dev-haskell/test-framework-quickcheck2-0.2 )
 "
 
+src_prepare() {
+	epatch "${FILESDIR}"/${P}-integer-simple.patch
+}
+
 src_configure() {
 	haskell-cabal_src_configure \
-		--flag=-developer \
-		--flag=-integer-pure
+		--flag=-developer
 }
