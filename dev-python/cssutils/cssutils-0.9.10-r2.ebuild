@@ -20,8 +20,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~ppc ~x86"
 IUSE="examples test"
 
-RDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
-		"
+RDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
 	test? ( dev-python/mock[${PYTHON_USEDEP}] )"
 
@@ -36,9 +35,7 @@ python_prepare_all() {
 
 python_test() {
 	ln -s "${S}/sheets" "${BUILD_DIR}/sheets" || die
-	# exclude tests that connect to the network
-	set --  nosetests \
-		-e test_parseUrl -e test_handlers -P "${BUILD_DIR}/lib/cssutils/tests"
+	set --  nosetests -P "${BUILD_DIR}/lib/cssutils/tests"
 	echo "$@"
 	"$@" || die "Testing failed with ${EPYTHON}"
 }

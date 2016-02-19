@@ -1,12 +1,11 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 CMAKE_MIN_VERSION="3.0"
 
-# Sigil supports Python 3.5 already. Include it when our deps support it.
-PYTHON_COMPAT=( python3_4 )
+PYTHON_COMPAT=( python3_4 python3_5 )
 
 inherit eutils cmake-utils python-single-r1
 
