@@ -4,8 +4,6 @@
 
 EAPI=6
 
-inherit autotools
-
 DESCRIPTION="Reimplementation of Bourne shell based on pdksh"
 HOMEPAGE="http://packages.debian.org/posh"
 SRC_URI="mirror://debian/pool/main/p/posh/${P/-/_}.tar.xz"
@@ -17,14 +15,7 @@ IUSE=""
 
 DEPEND="app-arch/xz-utils"
 
-src_prepare() {
-	eapply "${FILESDIR}/${P}-test-perl-fix.patch"
-
-	default
-
-	# tarball bundles outdated generated files
-	eautoreconf
-}
+S=${WORKDIR}/posh
 
 src_configure() {
 	local myconf=(

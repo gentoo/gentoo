@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -26,7 +26,6 @@ ECJ_SLOT="4.5"
 SAPI_SLOT="4.0"
 
 COMMON_DEP="dev-java/eclipse-ecj:${ECJ_SLOT}
-	dev-java/oracle-javamail:0
 	dev-java/tomcat-servlet-api:${SAPI_SLOT}"
 RDEPEND="${COMMON_DEP}
 	!<dev-java/tomcat-native-1.1.24
@@ -50,8 +49,8 @@ pkg_setup() {
 java_prepare() {
 	find -name '*.jar' -type f -delete -print || die
 
-	# Remove bundled javamail, servlet-api
-	rm -rv java/javax/{el,mail,servlet} || die
+	# Remove bundled servlet-api
+	rm -rv java/javax/{el,servlet} || die
 
 	epatch "${FILESDIR}/${P}-build.xml.patch"
 
@@ -64,7 +63,7 @@ java_prepare() {
 JAVA_ANT_REWRITE_CLASSPATH="true"
 
 EANT_BUILD_TARGET="deploy"
-EANT_GENTOO_CLASSPATH="eclipse-ecj-${ECJ_SLOT},oracle-javamail,tomcat-servlet-api-${SAPI_SLOT}"
+EANT_GENTOO_CLASSPATH="eclipse-ecj-${ECJ_SLOT},tomcat-servlet-api-${SAPI_SLOT}"
 EANT_TEST_GENTOO_CLASSPATH="easymock-3.2"
 EANT_GENTOO_CLASSPATH_EXTRA="${S}/output/classes"
 EANT_NEEDS_TOOLS="true"
