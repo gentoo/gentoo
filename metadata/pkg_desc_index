@@ -16890,8 +16890,8 @@ sys-fs/arm-fdisk 3.0.6-r1: edit disk partitions on Acorn machines
 sys-fs/atari-fdisk 0.7.1.5.4: create and edit the partition table of a disk partitioned in Atari format
 sys-fs/aufs-headers 3.19_p20150323 3.19_p20150420 4.0_p20150420 4.0_p20151116: User space headers for aufs3
 sys-fs/aufs-util 3.19_p20150323 3.19_p20150420 4.0_p20150420 4.0_p20151116: Utilities are always necessary for aufs
-sys-fs/aufs3 3_p20150406 3_p20150420 3_p20150504 3_p20150511 3_p20150518 3_p20150525 3_p20150608 3_p20150622 3_p20151012 3_p20151102 3_p20151109 3_p20151116 3_p20151221 3_p20160118 3_p20160215: An entirely re-designed and re-implemented Unionfs
-sys-fs/aufs4 0_pre20150420 0_pre20150504 0_pre20150511 0_pre20150518 0_pre20150525 0_pre20150608 0_pre20150622 0_pre20150629 0_pre20150928 0_pre20151012 0_pre20151102 0_pre20151109 0_pre20151116 0_pre20151221 0_pre20160111 0_pre20160118 0_pre20160215: An entirely re-designed and re-implemented Unionfs
+sys-fs/aufs3 3_p20150622 3_p20160219: An entirely re-designed and re-implemented Unionfs
+sys-fs/aufs4 0_pre20160219: An entirely re-designed and re-implemented Unionfs
 sys-fs/autorun 3.17: auto cdrom mounter for the lazy user
 sys-fs/avfs 1.0.1 1.0.2 1.0.3: AVFS is a virtual filesystem that allows browsing of compressed files
 sys-fs/bashmount 3.2.0: A bash script that uses udisks to handle removable devices without dependencies on any GUI
@@ -17587,7 +17587,7 @@ www-apps/moodle 2.7.12 2.8.10 2.9.4 3.0.2: The Moodle Course Management System
 www-apps/mypictures 20040202 20040202-r1: Simple photo-gallery for websites
 www-apps/mythweb 0.26.0 0.27 0.27.5: PHP scripts intended to manage MythTV from a web browser
 www-apps/nanoblogger 3.2.3 3.3 3.5_rc1: Small and simple weblog engine written in Bash for the command-line
-www-apps/nanoc 3.7.5 3.8.0 4.1.4: nanoc is a simple but very flexible static site generator written in Ruby
+www-apps/nanoc 3.7.5 3.8.0 4.1.4 4.1.4-r1: nanoc is a simple but very flexible static site generator written in Ruby
 www-apps/nikola 7.2.0 7.6.0 7.6.1 7.6.2 7.6.3: A static website and blog generator
 www-apps/novnc 0.5 9999: noVNC is a VNC client implemented using HTML5 technologies
 www-apps/openwebstats 1.1: PHP stats application that reads Apache log files and imports the data to a MySQL database
@@ -17705,6 +17705,7 @@ www-plugins/lightspark 0.7.2_p20150318: High performance flash player
 www-plugins/mozplugger 2.1.6: Streaming media plugin for Mozilla, based on netscape-plugger
 www-plugins/nspluginwrapper 1.4.4-r3: Netscape Plugin Wrapper - Load 32bit plugins on 64bit browser
 www-plugins/pipelight 0.2.7.3 0.2.8 9999: Wine-based wrapper for running Windows plugins on POSIX systems
+www-servers/adsf 1.2.0: A Dead Simple Fileserver is a static file server that can launch in a directory
 www-servers/apache 2.2.31 2.4.16 2.4.18: The Apache Web Server
 www-servers/blogc-runserver 0.1 9999: A simple HTTP server to test blogc websites
 www-servers/boa 0.94.14_rc21-r1 0.94.14_rc21-r2: A very small and very fast http daemon
