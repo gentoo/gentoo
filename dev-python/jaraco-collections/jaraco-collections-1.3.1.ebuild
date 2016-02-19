@@ -20,7 +20,7 @@ IUSE="test"
 
 PDEPEND="dev-python/jaraco-text[${PYTHON_USEDEP}]"
 RDEPEND="dev-python/jaraco-classes[${PYTHON_USEDEP}]
-dev-python/six[${PYTHON_USEDEP}]
+	dev-python/six[${PYTHON_USEDEP}]
 "
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 	>=dev-python/setuptools_scm-1.9[${PYTHON_USEDEP}]
