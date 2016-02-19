@@ -233,14 +233,16 @@ src_prepare() {
 	fi
 
 	# Ovmf's patchset
-	if [[ -n ${OVMF_VER} ]] && use ovmf; then
-		einfo "Try to apply Ovmf patch set"
-		pushd "${WORKDIR}"/ovmf-*/ > /dev/null
-		EPATCH_SUFFIX="patch" \
-		EPATCH_FORCE="yes" \
-		EPATCH_OPTS="-p1" \
-			epatch "${WORKDIR}"/patches-ovmf
-		popd > /dev/null
+	if use ovmf; then
+		if [[ -n ${OVMF_VER} ]];then
+			einfo "Try to apply Ovmf patch set"
+			pushd "${WORKDIR}"/ovmf-*/ > /dev/null
+			EPATCH_SUFFIX="patch" \
+			EPATCH_FORCE="yes" \
+			EPATCH_OPTS="-p1" \
+				epatch "${WORKDIR}"/patches-ovmf
+			popd > /dev/null
+		fi
 		mv ../ovmf-${OVMF_PV} tools/firmware/ovmf-dir-remote || die
 	fi
 

@@ -55,6 +55,8 @@ DEPEND="${RDEPEND}
 DOCS="AUTHORS ChangeLog NEWS README TODO"
 
 src_prepare() {
+	epatch "${FILESDIR}"/${P}-giflib-5.patch #571902
+
 	# m4/ax_create_pkgconfig_info.m4 is passing environment LDFLAGS to Libs:
 	sed -i \
 		-e '/^ax_create_pkgconfig_ldflags=/s:$LDFLAGS ::' \
