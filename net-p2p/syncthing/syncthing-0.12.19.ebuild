@@ -9,11 +9,11 @@ EGIT_COMMIT=v${PV}
 
 inherit golang-vcs-snapshot systemd user
 
-DESCRIPTION="Syncthing is an open, trustworthy and decentralized cloud storage system"
-HOMEPAGE="http://syncthing.net"
+DESCRIPTION="Open Source Continuous File Synchronization"
+HOMEPAGE="https://syncthing.net"
 SRC_URI="https://${EGO_PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="MIT"
+LICENSE="MPL-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
