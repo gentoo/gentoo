@@ -191,7 +191,7 @@ app-admin/rigo 254: Rigo, the Sabayon Application Browser
 app-admin/rsyslog 8.13.0 8.16.0: An enhanced multi-threaded syslogd with database support and more
 app-admin/sagan 0.2.3 1.0.0_rc3: Sagan is a multi-threaded, real time system and event log monitoring system
 app-admin/sagan-rules 20130430 20140617 99999999: Rules for Sagan log analyzer
-app-admin/salt 2015.5.8 2015.5.9 2015.8.3 2015.8.5 9999: Salt is a remote execution and configuration manager
+app-admin/salt 2015.5.8 2015.5.9 2015.8.3 2015.8.5 2015.8.7 9999: Salt is a remote execution and configuration manager
 app-admin/setools 3.3.8-r5 3.3.8-r7 9999: Policy Analysis Tools for SELinux
 app-admin/showconsole 1.08: small daemon for logging console output during boot
 app-admin/socklog 2.1.0: small secure replacement for syslogd with automatic log rotation
@@ -13729,7 +13729,7 @@ net-analyzer/tleds 1.05_beta11-r2: Blinks keyboard LEDs indicating outgoing and 
 net-analyzer/tptest 3.1.7-r2: Internet bandwidth tester
 net-analyzer/tracebox 0.2: A Middlebox Detection Tool
 net-analyzer/traceproto 1.1.2_beta1: A traceroute-like utility that sends packets based on protocol
-net-analyzer/traceroute 2.0.18 2.0.19 2.0.19-r1 2.0.20 2.0.21: Utility to trace the route of IP packets
+net-analyzer/traceroute 2.0.20 2.0.21 2.0.22: Utility to trace the route of IP packets
 net-analyzer/traceroute-nanog 6.4.2-r1: Traceroute with AS lookup, TOS support, MTU discovery and other features
 net-analyzer/trafshow 5.2.3: Full screen visualization of the network traffic
 net-analyzer/tsung 1.5.1 1.6.0: Erlang's multi-protocol distributed load testing tool
