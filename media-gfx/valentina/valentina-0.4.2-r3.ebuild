@@ -40,7 +40,8 @@ S=${WORKDIR}/dismine-${PN}-44d43351cb59
 
 src_prepare() {
 	epatch "${FILESDIR}/locales.patch" \
-		"${FILESDIR}/fix-insecure-runpaths.patch"
+		"${FILESDIR}/fix-insecure-runpaths.patch" \
+		"${FILESDIR}/disable-tests-compilation.patch"
 }
 
 src_configure() {
@@ -52,7 +53,7 @@ src_configure() {
 		fi
 	done
 
-	eqmake5 LOCALES="${locales}" CONFIG+=noStripDebugSymbols CONFIG+=no_ccache CONFIG+=noRunPath Valentina.pro -r
+	eqmake5 LOCALES="${locales}" "CONFIG+=noStripDebugSymbols no_ccache noRunPath noTests" Valentina.pro -r
 }
 
 src_install() {
