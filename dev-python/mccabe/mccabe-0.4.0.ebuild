@@ -29,5 +29,5 @@ src_prepare() {
 }
 
 python_test() {
-	${EPYTHON} test_mccabe.py || die
+	py.test -v || die "Testing failed with ${EPYTHON}"
 }
