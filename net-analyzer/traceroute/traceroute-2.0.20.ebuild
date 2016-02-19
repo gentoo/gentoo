@@ -20,6 +20,7 @@ RDEPEND="!<net-misc/iputils-20121221-r1
 
 src_compile() {
 	use static && append-ldflags -static
+	append-ldflags -L../libsupp #432116
 	tc-export AR CC RANLIB
 	emake env=yes
 }
