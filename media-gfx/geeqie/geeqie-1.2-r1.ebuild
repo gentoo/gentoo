@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -23,7 +23,7 @@ RDEPEND="x11-libs/gtk+:2
 	lirc? ( app-misc/lirc )
 	lua? ( >=dev-lang/lua-5.1:= )
 	xmp? ( >=media-gfx/exiv2-0.17:=[xmp] )
-	!xmp? ( exif? ( >=media-gfx/exiv2-0.17 ) )
+	!xmp? ( exif? ( >=media-gfx/exiv2-0.17:= ) )
 	tiff? ( media-libs/tiff:0 )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig

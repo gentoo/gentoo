@@ -23,7 +23,7 @@ RDEPEND="gtk3? ( x11-libs/gtk+:3 )
 	lirc? ( app-misc/lirc )
 	lua? ( >=dev-lang/lua-5.1:= )
 	xmp? ( >=media-gfx/exiv2-0.17:=[xmp] )
-	!xmp? ( exif? ( >=media-gfx/exiv2-0.17 ) )
+	!xmp? ( exif? ( >=media-gfx/exiv2-0.17:= ) )
 	tiff? ( media-libs/tiff:0 )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
