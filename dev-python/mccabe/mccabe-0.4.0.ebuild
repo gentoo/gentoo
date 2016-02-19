@@ -10,7 +10,7 @@ RESTRICT="test"
 
 inherit distutils-r1
 
-DESCRIPTION="a plugin for flake8"
+DESCRIPTION="flake8 plugin: McCabe complexity checker"
 HOMEPAGE="https://github.com/PyCQA/mccabe"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
