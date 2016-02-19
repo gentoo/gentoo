@@ -12995,7 +12995,7 @@ media-sound/jokosher 0.11.5-r1: A simple yet powerful multi-track studio
 media-sound/jtagger 1.0-r1: Powerful MP3 tag and filename editor
 media-sound/justeport 0.2: Stream audio to your AirPort Express
 media-sound/k4guitune 1.1.1: A program to tune a musical instrument using your computer and it's mic- or line- input
-media-sound/karlyriceditor 1.4 1.11-r1 2.1: Application to edit and synchronize lyrics with karaoke songs in various formats
+media-sound/karlyriceditor 1.11-r1 2.1: Application to edit and synchronize lyrics with karaoke songs in various formats
 media-sound/kaudiocreator 1.3-r2: KDE CD ripper and audio encoder frontend
 media-sound/kenvy24 1.2: VIA Envy24 based sound card control utility for KDE
 media-sound/kid3 3.1.2 3.2.1-r1 3.3.1: A simple tag editor for KDE
@@ -18735,7 +18735,7 @@ x11-themes/skulpture 0.2.4-r1: Classical style and window decorations for KDE
 x11-themes/slim-themes 1.2.3a-r7: SLiM (Simple Login Manager) themes pack
 x11-themes/smaragd 0.0.7: KWin theme engine that uses Emerald themes
 x11-themes/smplayer-skins 14.9.0 15.2.0: Skins for SMPlayer
-x11-themes/smplayer-themes 14.9.0 14.12.0 15.6.0: Icon themes for smplayer
+x11-themes/smplayer-themes 14.9.0 14.12.0 15.6.0 15.12.0: Icon themes for smplayer
 x11-themes/solar-backgrounds 0.92.0.5: Fedora official background artwork
 x11-themes/sound-theme-freedesktop 0.8: Default freedesktop.org sound theme following the XDG theming specification
 x11-themes/tactile 0_pre20060612: Nice, calm and dark low contrast GTK+ theme
