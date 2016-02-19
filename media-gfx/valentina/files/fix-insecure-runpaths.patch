@@ -1,0 +1,56 @@
+# HG changeset patch
+# User Roman Telezhynskyi <kroluku@gmail.com>
+# Date 1455895311 -7200
+# Branch develop
+# Node ID ebb8c53b8fdc09d2542ec6b8a63585be63c02725
+# Parent  a29fbab1f3ac59fda0e81bf1e99d153b5f47bd7c
+CONFIG key to disable setting custom rpath option.
+
+diff --git a/src/app/tape/tape.pro b/src/app/tape/tape.pro
+--- a/src/app/tape/tape.pro
++++ b/src/app/tape/tape.pro
+@@ -348,10 +348,16 @@
+ # Path to recource file.
+ win32:RC_FILE = share/resources/tape.rc
+ 
+-unix:!macx{
+-    # suppress the default RPATH
+-    QMAKE_LFLAGS_RPATH =
+-    QMAKE_LFLAGS += "-Wl,-rpath,\'\$$ORIGIN\' -Wl,-rpath,$${OUT_PWD}/../../libs/qmuparser/$${DESTDIR} -Wl,-rpath,$${OUT_PWD}/../../libs/vpropertyexplorer/$${DESTDIR}"
++noRunPath{ # For enable run qmake with CONFIG+=noRunPath
++    # do nothing
++} else {
++    unix:!macx{
++        # suppress the default RPATH
++        # helps to run the program without Qt Creator
++        # see problem with path to libqmuparser and libpropertybrowser
++        QMAKE_LFLAGS_RPATH =
++        QMAKE_LFLAGS += "-Wl,-rpath,\'\$$ORIGIN\' -Wl,-rpath,$${OUT_PWD}/../../libs/qmuparser/$${DESTDIR} -Wl,-rpath,$${OUT_PWD}/../../libs/vpropertyexplorer/$${DESTDIR}"
++    }
+ }
+ 
+ # When the GNU linker sees a library, it discards all symbols that it doesn't need.
+diff --git a/src/app/valentina/valentina.pro b/src/app/valentina/valentina.pro
+--- a/src/app/valentina/valentina.pro
++++ b/src/app/valentina/valentina.pro
+@@ -476,10 +476,16 @@
+     copyToDestdir($$pdftops_path, $$shell_path($${OUT_PWD}/$$DESTDIR))
+ }
+ 
+-unix:!macx{
+-    # suppress the default RPATH
+-    QMAKE_LFLAGS_RPATH =
+-    QMAKE_LFLAGS += "-Wl,-rpath,\'\$$ORIGIN\' -Wl,-rpath,$${OUT_PWD}/../../libs/qmuparser/$${DESTDIR} -Wl,-rpath,$${OUT_PWD}/../../libs/vpropertyexplorer/$${DESTDIR}"
++noRunPath{ # For enable run qmake with CONFIG+=noRunPath
++    # do nothing
++} else {
++    unix:!macx{
++        # suppress the default RPATH
++        # helps to run the program without Qt Creator
++        # see problem with path to libqmuparser and libpropertybrowser
++        QMAKE_LFLAGS_RPATH =
++        QMAKE_LFLAGS += "-Wl,-rpath,\'\$$ORIGIN\' -Wl,-rpath,$${OUT_PWD}/../../libs/qmuparser/$${DESTDIR} -Wl,-rpath,$${OUT_PWD}/../../libs/vpropertyexplorer/$${DESTDIR}"
++    }
+ }
+ 
+ # When the GNU linker sees a library, it discards all symbols that it doesn't need.

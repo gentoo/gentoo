@@ -39,7 +39,8 @@ DEPEND="${CDEPEND}
 S=${WORKDIR}/dismine-${PN}-44d43351cb59
 
 src_prepare() {
-	epatch "${FILESDIR}/locales.patch"
+	epatch "${FILESDIR}/locales.patch" \
+		"${FILESDIR}/fix-insecure-runpaths.patch"
 }
 
 src_configure() {
@@ -51,7 +52,7 @@ src_configure() {
 		fi
 	done
 
-	eqmake5 LOCALES="${locales}" CONFIG+=noStripDebugSymbols CONFIG+=no_ccache Valentina.pro -r
+	eqmake5 LOCALES="${locales}" CONFIG+=noStripDebugSymbols CONFIG+=no_ccache CONFIG+=noRunPath Valentina.pro -r
 }
 
 src_install() {
