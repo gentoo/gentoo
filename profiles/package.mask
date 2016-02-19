@@ -30,6 +30,17 @@
 
 #--- END OF EXAMPLES ---
 
+# Michael Palimaka <kensington@gentoo.org> (19 Feb 2016)
+# Superceded by other filesharing systems. Dead upstream. Unmaintained.
+# Masked for removal in 30 days. Bug 314359.
+net-p2p/gift
+net-p2p/gift-ares
+net-p2p/gift-fasttrack
+net-p2p/gift-gnutella
+net-p2p/gift-openft
+net-p2p/giftcurs
+sec-policy/selinux-gift
+
 # Michael Sterrett <mr_bones_@gentoo.org> (18 Feb 2016)
 # Now part of games-emulation/sdlmame
 # Masked for removal on 20160319
