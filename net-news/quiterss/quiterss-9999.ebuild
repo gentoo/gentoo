@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 PLOCALES="ar bg cs de el_GR es fa fi fr gl he hi hu it ja ko lt nl pl pt_BR pt_PT ro_RO ru sk sr sv tg_TJ th_TH tr uk vi zh_CN zh_TW"
 inherit eutils l10n fdo-mime gnome2-utils qmake-utils
 
@@ -48,7 +48,7 @@ src_prepare() {
 		sed -i -e "s:lang/${PN}_${1}.ts::" lang/lang.pri || die
 	}
 
-	epatch_user
+	default
 
 	# dedicated english locale file is not installed at all
 	rm "lang/${PN}_en.ts" || die
