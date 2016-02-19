@@ -8460,7 +8460,6 @@ x11-wm/xpra:webp - Enable webp image format support
 x11-wm/xpra:x265 - Enable x265 support
 xfce-base/libxfce4ui:glade - Build support for Glade 3's GtkBuilder implementation
 xfce-base/libxfce4ui:gtk3 - Enable gtk3 support
-xfce-base/libxfcegui4:glade - Build glade bindings
 xfce-base/xfce4-settings:libcanberra - Enable sound event support using media-libs/libcanberra
 xfce-base/xfce4-settings:libinput - Enable libinput Xorg driver (x11-drivers/xf86-input-libinput) support
 xfce-base/xfce4-settings:xklavier - Enable keyboard layout selection support using x11-libs/libxklavier
