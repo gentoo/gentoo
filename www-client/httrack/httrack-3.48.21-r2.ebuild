@@ -29,8 +29,8 @@ src_prepare() {
 
 src_configure() {
 	econf $(use_enable static-libs static) \
-		--docdir=/usr/share/doc/${PF} \
-		--htmldir=/usr/share/doc/${PF}/html
+		--docdir=${EPREFIX}/usr/share/doc/${PF} \
+		--htmldir=${EPREFIX}/usr/share/doc/${PF}/html
 }
 
 src_install() {
