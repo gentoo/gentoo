@@ -14439,7 +14439,7 @@ net-misc/clipgrab 3.4.9-r1 3.4.11 3.5.6: Download from various internet video se
 net-misc/clockspeed 0.62-r6: A simple Network Time Protocol (NTP) client
 net-misc/clockspeed-conf 0.4.5-r1: scripts to setup a clockspeed client and/or a taiclockd server
 net-misc/clusterssh 4.03.03 4.30.600 9999: Concurrent Multi-Server Terminal Access
-net-misc/cmst 2015.03.01 2015.12.03: Qt GUI for Connman with system tray icon
+net-misc/cmst 2015.12.03: Qt GUI for Connman with system tray icon
 net-misc/cocaine-core 0.9.2-r1 0.11.2.5 0.11.3.2: Cloud platform, core parts
 net-misc/connect 1.100 1.103: network connection relaying command (proxy)
 net-misc/connman 1.27 1.29 1.30 1.31: Provides a daemon for managing internet connections
@@ -14837,7 +14837,7 @@ net-nntp/inn 2.5.3-r1 2.5.3-r2 2.5.4 2.5.5: The Internet News daemon, fully feat
 net-nntp/kwooty 1.1.0: Friendly nzb linux usenet binary client
 net-nntp/leafnode 1.11.8 1.11.10 1.11.11: A USENET software package designed for small sites
 net-nntp/newspost 2.1.1-r3: A usenet binary autoposter for unix
-net-nntp/nzb 0.2 0.3: A binary news grabber
+net-nntp/nzb 0.3: A binary news grabber
 net-nntp/nzbget 14.1 14.2 15.0 16.4: A command-line based binary newsgrapper supporting .nzb files
 net-nntp/pan 0.139 0.139-r1: A newsreader for GNOME
 net-nntp/sabnzbd 0.7.16 0.7.17 0.7.18 0.7.19 0.7.20: Binary newsgrabber with web-interface
