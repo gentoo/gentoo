@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -13,7 +13,7 @@ SRC_URI="http://www.openinfosecfoundation.org/download/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="+af-packet control-socket cuda debug geoip hardened lua luajit nflog +nfqueue +rules test"
+IUSE="+af-packet control-socket cuda debug +detection geoip hardened lua luajit nflog +nfqueue +rules test"
 
 DEPEND="
 	>=dev-libs/jansson-2.2
@@ -54,8 +54,8 @@ src_prepare() {
 src_configure() {
 	local myeconfargs=(
 		"--localstatedir=/var/" \
-		"--disable-detection" \
 		$(use_enable af-packet) \
+		$(use_enable detection) \
 		$(use_enable nfqueue) \
 		$(use_enable test coccinelle) \
 		$(use_enable test unittests) \
