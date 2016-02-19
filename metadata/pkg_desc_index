@@ -1305,7 +1305,7 @@ app-emulation/libvirt 1.2.21-r2 1.3.0-r1 1.3.1 9999: C toolkit to manipulate vir
 app-emulation/libvirt-glib 0.2.2 0.2.3: GLib and GObject mappings for libvirt
 app-emulation/libvirt-snmp 0.0.2-r2 0.0.3: Provides SNMP functionality for libvirt
 app-emulation/lxc 1.0.6-r1 1.0.7 1.0.8 1.1.0-r6 1.1.1-r1 1.1.2 1.1.2-r1 1.1.2-r2 1.1.3 1.1.4 1.1.5: LinuX Containers userspace utilities
-app-emulation/lxd 0.26 0.27 2.0.0_beta1: Fast, dense and secure container management
+app-emulation/lxd 0.26 0.27 2.0.0_beta1 2.0.0_beta3: Fast, dense and secure container management
 app-emulation/open-vm-tools 9.4.0.1280544 9.10.0_p2476743 9.10.2_p2822639 10.0.0_p3000743: Opensourced tools for VMware guests
 app-emulation/open-vm-tools-kmod 9.4.0.1280544 9.10.0_p2476743 10.0.0_p3000743: Opensourced tools for VMware guests
 app-emulation/openstack-guest-agents-unix 1.39.0 1.39.0-r1 1.39.0-r2 1.39.1: Openstack Unix Guest Agent
@@ -11848,7 +11848,7 @@ media-fonts/sil-galatia 2.1: The Galatia SIL Greek Unicode Fonts package
 media-fonts/sil-gentium 1.508 5.000: Gentium Plus unicode font for Latin and Greek languages
 media-fonts/sil-padauk 2.8: SIL fonts for Myanmar script
 media-fonts/sophia-nubian 1.0: Unicode sans-serif typeface for Coptic/Nubian languages
-media-fonts/source-han-sans 1.001: Pan-CJK OpenType/CFF font family
+media-fonts/source-han-sans 1.001 1.001-r1: Pan-CJK OpenType/CFF font family
 media-fonts/source-pro 20121216 20130316 20141211: Adobe's open source typeface family designed for UI environments
 media-fonts/stix-fonts 1.0.0-r1 1.1.1: Comprehensive OpenType font set of mathematical symbols and alphabets
 media-fonts/symbola 7.12 8.00: Unicode font for Basic Latin, IPA Extensions, Greek, Cyrillic and many Symbol Blocks
@@ -16973,7 +16973,7 @@ sys-fs/nilfs-utils 2.1.5-r1 2.1.6 2.2.2: A New Implementation of a Log-structure
 sys-fs/ntfs3g 2014.2.15 2014.2.15-r1 2015.3.14: Open source read-write NTFS driver that runs under FUSE
 sys-fs/obexfs 0.11 0.12: FUSE filesystem interface for ObexFTP
 sys-fs/ocfs2-tools 1.8.2-r1: Support programs for the Oracle Cluster Filesystem 2
-sys-fs/owfs 2.7_p21-r4: Access 1-Wire devices like a filesystem
+sys-fs/owfs 2.7_p21-r4 3.1_p1: Access 1-Wire devices like a filesystem
 sys-fs/progsreiserfs 0.3.1_rc8: Library for accessing and manipulating reiserfs partitions
 sys-fs/pysize 0.2-r1: A graphical and console tool for exploring the size of directories
 sys-fs/pytagsfs 0.9.2_rc2 0.9.2: File system that arranges media files based their tags
