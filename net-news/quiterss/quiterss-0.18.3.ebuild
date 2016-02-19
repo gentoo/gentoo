@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=6
-PLOCALES="ar bg cs de el_GR es fa fi fr gl he hi hu it ja ko lt nl pl pt_BR pt_PT ro_RO ru sk sr sv tg_TJ th_TH tr uk vi zh_CN zh_TW"
+PLOCALES="ar bg cs de el_GR es fa fi fr gl hi hu it ja ko lt nl pl pt_BR pt_PT ro_RO ru sk sr sv tg_TJ tr uk vi zh_CN zh_TW"
 inherit eutils l10n fdo-mime gnome2-utils qmake-utils
 
 DESCRIPTION="A Qt-based RSS/Atom feed reader"

@@ -50,7 +50,7 @@ src_configure() {
 		fi
 	done
 
-	eqmake5 LOCALES="${locales}" CONFIG+=no_ccache Valentina.pro -r
+	eqmake5 LOCALES="${locales}" CONFIG+=noStripDebugSymbols CONFIG+=no_ccache Valentina.pro -r
 }
 
 src_install() {
