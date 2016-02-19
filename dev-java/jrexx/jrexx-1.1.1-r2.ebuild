@@ -8,7 +8,7 @@ JAVA_PKG_IUSE="doc source"
 
 inherit java-pkg-2 java-pkg-simple
 
-DESCRIPTION="Regular expression API for textual pattern matching based on the finite state automaton theory"
+DESCRIPTION="API for textual pattern matching based on the finite state automaton theory"
 HOMEPAGE="http://www.karneim.com/jrexx/"
 SRC_URI="mirror://sourceforge/${PN}/${P}-src.zip -> ${P}.zip"
 LICENSE="LGPL-2.1"
