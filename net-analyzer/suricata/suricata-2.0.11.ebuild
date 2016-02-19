@@ -13,7 +13,7 @@ SRC_URI="http://www.openinfosecfoundation.org/download/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="+af-packet control-socket cuda debug +detection geoip hardened lua luajit nflog +nfqueue +rules test"
+IUSE="+af-packet control-socket cuda debug +detection geoip hardened lua luajit nflog +nfqueue +rules system-htp test"
 
 DEPEND="
 	>=dev-libs/jansson-2.2
@@ -31,11 +31,11 @@ DEPEND="
 	luajit?     ( dev-lang/luajit:* )
 	nflog?      ( net-libs/libnetfilter_log )
 	nfqueue?    ( net-libs/libnetfilter_queue )
+	system-htp? ( >=net-libs/libhtp-0.5.18 )
 "
 # #446814
 #	prelude?    ( dev-libs/libprelude )
 #	pfring?     ( sys-process/numactl net-libs/pf_ring)
-#	system-htp? ( >=net-analyzer/htp-0.5.5 )
 RDEPEND="${DEPEND}"
 
 pkg_setup() {
@@ -85,10 +85,9 @@ src_configure() {
 # 	if use prelude ; then
 # 		myeconfargs+=( $(use_enable prelude) )
 # 	fi
-	# htp not added into portage yet
-# 	if use system-htp ; then
-# 		myeconfargs+=( $(use_enable system-htp non-bundled-htp) )
-# 	fi
+	if use system-htp ; then
+		myeconfargs+=( $(use_enable system-htp non-bundled-htp) )
+	fi
 	if use lua ; then
 		myeconfargs+=( $(use_enable lua) )
 	fi
