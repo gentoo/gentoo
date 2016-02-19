@@ -1,0 +1,13 @@
+diff -Naur a/cmake/ConkyPlatformChecks.cmake b/cmake/ConkyPlatformChecks.cmake
+--- a/cmake/ConkyPlatformChecks.cmake	2015-11-18 20:47:45.000000000 +0500
++++ b/cmake/ConkyPlatformChecks.cmake	2016-01-31 20:04:58.036144590 +0500
+@@ -141,7 +141,8 @@
+ endif(BUILD_MYSQL)
+ 
+ if(BUILD_WLAN)
+-	check_include_file(iwlib.h IWLIB_H -D_GNU_SOURCE)
++	set(CMAKE_REQUIRED_DEFINITIONS -D_GNU_SOURCE) 
++	check_include_files(iwlib.h IWLIB_H -D_GNU_SOURCE)
+ 	if(NOT IWLIB_H)
+ 		message(FATAL_ERROR "Unable to find iwlib.h")
+ 	endif(NOT IWLIB_H)

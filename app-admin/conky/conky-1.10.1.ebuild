@@ -76,6 +76,8 @@ pkg_setup() {
 }
 
 src_prepare() {
+	epatch "${FILESDIR}/${P}-includewlan.patch"
+
 	# Allow user patches #478482
 	epatch_user
 }
