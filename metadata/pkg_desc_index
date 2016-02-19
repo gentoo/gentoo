@@ -13707,7 +13707,7 @@ net-analyzer/ssldump 0.9-r2: An SSLv3/TLS network protocol analyzer
 net-analyzer/sslscan 1.8.2: Fast SSL port scanner
 net-analyzer/sslsniff 0.8-r2: MITM all SSL connections on a LAN and dynamically generates certs
 net-analyzer/ssmping 0.9.1: Tool for testing multicast connectivity
-net-analyzer/suricata 2.0.10 2.0.11: High performance Network IDS, IPS and Network Security Monitoring engine
+net-analyzer/suricata 2.0.11: High performance Network IDS, IPS and Network Security Monitoring engine
 net-analyzer/symon 2.86-r1 2.87: Performance and information monitoring tool
 net-analyzer/synscan 5.01: A fast asynchronous half-open TCP portscanner
 net-analyzer/syweb 0.65: Web frontend to symon
@@ -14432,7 +14432,7 @@ net-misc/cgminer 4.7.0 4.8.0 4.9.0 4.9.1 4.9.2: Bitcoin CPU/GPU/FPGA/ASIC miner 
 net-misc/cgterm 1.6: Connect to C64 telnet BBS's with the correct colours and font
 net-misc/charm 1.9.1 1.9.2-r1: A text based livejournal client
 net-misc/chrome-remote-desktop 47.0.2526.18: access remote computers via Chrome!
-net-misc/chrony 2.2 2.2.1 2.3_pre1 9999: NTP client and server programs
+net-misc/chrony 2.2 2.2.1 2.3 9999: NTP client and server programs
 net-misc/clamz 0.4 0.5: Command-line downloader for the Amazon.com MP3 music store
 net-misc/clipgrab 3.4.9-r1 3.4.11 3.5.6: Download from various internet video services like Youtube etc.
 net-misc/clockspeed 0.62-r6: A simple Network Time Protocol (NTP) client
@@ -17648,9 +17648,9 @@ www-client/lynx 2.8.8_p2 2.8.9_pre4 2.8.9_pre6: An excellent console-based web b
 www-client/midori 0.5.10 0.5.11: A lightweight web browser based on WebKitGTK+
 www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
 www-client/netsurf 3.2-r1 3.3-r1: a free, open source web browser
-www-client/opera 12.16_p1860-r1 34.0.2036.50 35.0.2066.37: A fast and secure web browser
+www-client/opera 12.16_p1860-r1 34.0.2036.50 35.0.2066.37 35.0.2066.68: A fast and secure web browser
 www-client/opera-beta 35.0.2066.35 36.0.2130.2: A fast and secure web browser
-www-client/opera-developer 36.0.2120.0 36.0.2129.0: A fast and secure web browser
+www-client/opera-developer 36.0.2120.0 36.0.2129.0 37.0.2142.0: A fast and secure web browser
 www-client/otter 0.9.07 0.9.08 0.9.09 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
 www-client/phantomjs 1.9.8 2.0.0 2.0.0-r1: A headless WebKit scriptable with a JavaScript API
 www-client/pybugz 0.11.1 9999: Command line interface to (Gentoo) Bugzilla

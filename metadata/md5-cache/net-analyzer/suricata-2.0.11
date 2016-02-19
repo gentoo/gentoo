@@ -3,7 +3,7 @@ DEPEND=>=dev-libs/jansson-2.2 dev-libs/libpcre dev-libs/libyaml net-libs/libnet:
 DESCRIPTION=High performance Network IDS, IPS and Network Security Monitoring engine
 EAPI=5
 HOMEPAGE=http://suricata-ids.org/
-IUSE=+af-packet control-socket cuda debug geoip hardened lua luajit nflog +nfqueue +rules test
+IUSE=+af-packet control-socket cuda debug +detection geoip hardened lua luajit nflog +nfqueue +rules test
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2
 RDEPEND=>=dev-libs/jansson-2.2 dev-libs/libpcre dev-libs/libyaml net-libs/libnet:* net-libs/libnfnetlink dev-libs/nspr dev-libs/nss net-libs/libpcap sys-apps/file cuda? ( dev-util/nvidia-cuda-toolkit ) geoip? ( dev-libs/geoip ) lua? ( dev-lang/lua:* ) luajit? ( dev-lang/luajit:* ) nflog? ( net-libs/libnetfilter_log ) nfqueue? ( net-libs/libnetfilter_queue )
@@ -11,4 +11,4 @@ SLOT=0
 SRC_URI=http://www.openinfosecfoundation.org/download/suricata-2.0.11.tar.gz
 _eclass_exported_funcs=pkg_setup:- src_prepare:- src_configure:- src_install:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	9d81603248f2ba3ec59124320d123e5e	libtool	b75230758539a7da029e24afdb693960	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	user	906f3c8eb3a2350a4f1191a89baa3e46
-_md5_=ebaa526daf686444d8f0cfcb18eab60b
+_md5_=85f262805bf2c7fce6ed2933e86d8633

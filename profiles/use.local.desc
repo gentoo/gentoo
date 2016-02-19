@@ -5142,6 +5142,7 @@ net-analyzer/snort:zlib - Enables HTTP inspection of compressed web traffic. Req
 net-analyzer/suricata:af-packet - Enable AF_PACKET support
 net-analyzer/suricata:control-socket - Enable unix socket
 net-analyzer/suricata:cuda - Enable NVIDIA Cuda computations support
+net-analyzer/suricata:detection - Enable detection modules
 net-analyzer/suricata:luajit - Enable Luajit support
 net-analyzer/suricata:nflog - Enable libnetfilter_log support
 net-analyzer/suricata:nfqueue - Enable AF_PACKET support
