@@ -4422,7 +4422,7 @@ dev-lang/tuprolog 2.4.0_rc5 2.7.2 2.9.0 2.9.2: tuProlog is a light-weight Prolog
 dev-lang/ucblogo 5.5 5.5-r1: a reflective, functional programming language
 dev-lang/vala 0.22.1 0.26.2 0.28.1 0.30.1: Compiler for the GObject type system
 dev-lang/whitespace 0.3 0.4: Whitespace, an esoteric programming language
-dev-lang/xsb 3.3.6 3.3.7 3.5.0: XSB is a logic programming and deductive database system
+dev-lang/xsb 3.3.6 3.3.7 3.5.0 3.6.0: XSB is a logic programming and deductive database system
 dev-lang/yap 6.2.2 6.3.2 6.3.3: YAP is a high-performance Prolog compiler
 dev-lang/yasm 1.2.0-r1 1.3.0 9999: An assembler for x86 and x86_64 instruction sets
 dev-libs/389-adminutil 1.1.15: 389 adminutil
@@ -12121,7 +12121,7 @@ media-gfx/tuxpaint 0.9.21-r1: Drawing program designed for young children
 media-gfx/tuxpaint-stamps 20090628: Set of 'Rubber Stamp' images which can be used within Tux Paint
 media-gfx/ufraw 0.20-r1 0.21 0.21-r1 0.22: RAW Image format viewer and GIMP plugin
 media-gfx/uniconvertor 2.0_pre379-r1: Commandline tool for popular vector formats convertion
-media-gfx/valentina 0.4.2-r2 9999: Cloth patternmaking software
+media-gfx/valentina 0.4.2-r3 9999: Cloth patternmaking software
 media-gfx/videorbits 2.201 2.205: a collection of programs for creating high dynamic range images
 media-gfx/viewer 0.8.0: A stereo pair image viewer (supports ppm's only)
 media-gfx/viewnior 1.3 1.4: Fast and simple image viewer

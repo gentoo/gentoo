@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install preinst prepare setup
+DEPEND=curl? ( net-misc/curl ) iodbc? ( dev-db/libiodbc ) java? ( >=virtual/jdk-1.4:= ) mysql? ( virtual/mysql ) odbc? ( dev-db/unixODBC ) pcre? ( dev-libs/libpcre ) xml? ( dev-libs/libxml2 ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 java? ( >=dev-java/java-config-2.2.0 )
+DESCRIPTION=XSB is a logic programming and deductive database system
+EAPI=5
+HOMEPAGE=http://xsb.sourceforge.net
+IUSE=curl debug iodbc java mysql odbc pcre threads xml elibc_FreeBSD java
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2 LGPL-2
+RDEPEND=curl? ( net-misc/curl ) iodbc? ( dev-db/libiodbc ) java? ( >=virtual/jdk-1.4:= ) mysql? ( virtual/mysql ) odbc? ( dev-db/unixODBC ) pcre? ( dev-libs/libpcre ) xml? ( dev-libs/libxml2 ) java? ( >=dev-java/java-config-2.2.0 )
+SLOT=0
+SRC_URI=http://xsb.sourceforge.net/downloads/XSB360.tar.gz mirror://gentoo/xsb-3.6.0-gentoo-patchset-0.tar.gz
+_eclass_exported_funcs=pkg_preinst:java-pkg-opt-2 pkg_setup:java-pkg-opt-2 src_prepare:- src_configure:- src_compile:- src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	9d81603248f2ba3ec59124320d123e5e	java-pkg-opt-2	40db73f27fc6458ec2105812a4f261c7	java-utils-2	51a42ff2f35cd75af735cd1626829b06	libtool	b75230758539a7da029e24afdb693960	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=6095f0868517153ed7acffdeecf58276
