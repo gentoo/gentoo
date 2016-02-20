@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -27,7 +27,7 @@ RDEPEND="
 	xscreensaver? ( x11-misc/xscreensaver )
 "
 DEPEND="${RDEPEND}
-	eigen? ( dev-cpp/eigen:2 )
+	eigen? ( dev-cpp/eigen:3 )
 "
 
 PATCHES=(
@@ -40,7 +40,7 @@ src_configure() {
 	local mycmakeargs=(
 		-DKSCREENSAVER_SOUND_SUPPORT=ON
 		-DOPENGL=ON
-		$(cmake-utils_use_with eigen Eigen2)
+		$(cmake-utils_use_with eigen Eigen3)
 		$(cmake-utils_use_with kexiv2)
 		$(cmake-utils_use_with xscreensaver)
 	)
