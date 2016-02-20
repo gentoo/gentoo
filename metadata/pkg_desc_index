@@ -13178,7 +13178,7 @@ media-sound/specimen 0.5.2_rc3-r1 0.5.2_rc3-r2: A Midi Controllable Audio Sample
 media-sound/spek 0.8.3 0.8.3-r1: Analyse your audio files by showing their spectrogram
 media-sound/splay 0.9.5.2 0.9.5.2-r2: An audio player, primarily for the console
 media-sound/split2flac 0.1_pre20111110-r2 113_p20131017 114 115 9999: sh script to split one big APE/FLAC/WV/WAV audio image with CUE sheet into tracks
-media-sound/spotify 1.0.19.106-r1: Spotify is a social music platform
+media-sound/spotify 1.0.19.106-r1 1.0.23.93: Spotify is a social music platform
 media-sound/squeezeslave 1.1_p365 1.1_p381: A lightweight streaming audio player for Logitech Media Server
 media-sound/streamripper 1.64.6: Extracts and records individual MP3 file tracks from shoutcast streams
 media-sound/streamtranscoder 1.2.4 3.1.11: Command line application to transcode shoutcast/icecast streams to different bitrates
