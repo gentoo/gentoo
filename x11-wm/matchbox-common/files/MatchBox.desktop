@@ -1,8 +1,0 @@
-[Desktop Entry]
-Name=MatchBox
-Comment=This session logs you into MatchBox 
-Exec=matchbox-session
-TryExec=/usr/bin/matchbox-session
-# no icon yet, only the top three are currently used
-Icon=
-Type=Application

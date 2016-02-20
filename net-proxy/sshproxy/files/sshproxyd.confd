@@ -1,7 +1,0 @@
-# /etc/conf.d/sshproxyd: config file for /etc/init.d/sshproxyd
-
-# Where is your sshproxy.ini file stored?
-SSHPROXYD_CONFDIR="/etc/sshproxy"
-
-# What user runs the proxy?
-SSHPROXYD_USER="sshproxy"

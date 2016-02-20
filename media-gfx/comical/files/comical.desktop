@@ -1,9 +1,0 @@
-[Desktop Entry]
-Name=Comical
-GenericName=Comic Book Reader
-Exec=comical %F
-Icon=comical
-Type=Application
-Terminal=false
-Categories=Graphics;Viewer;
-MimeType=application/x-cbr;application/x-cbz;

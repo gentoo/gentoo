@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
-<pkgmetadata>
-<maintainer type="project">
-	<email>ada@gentoo.org</email>
-	<name>Gentoo Resources for Ada</name>
-</maintainer>
-<longdescription>XML/Ada includes a complete XML parser that fully supports the XML 1.0 specifications, including DTDs, entity resolution, external entities,attribute normalization, and conditional sections. XML/Ada also supports the SAX 2.0 standard. Through an object-oriented Ada interface, the XML/Ada SAX implementation provides an extremely efficient way to convert XML streams to application-specific data representations. XML/Ada includes full support for the core part of DOM 2.0. In addition to this XML support, XML/Ada includes an extensive set of packages to read, manipulate and write Unicode streams, in various encodings like UTF-8, UTF-16 and UTF-32. It provides a conversion mechanism between Unicode and encodings such as Latin-1, Latin-2, etc.</longdescription>
-</pkgmetadata>

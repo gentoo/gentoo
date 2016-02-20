@@ -1,4 +1,0 @@
-# /etc/conf.d/kumo-gateway: config file for /etc/init.d/kumo-gateway
-
-#KUMO_GATEWAY_OPTS="-m manager1 -p manager2 -t 11211"
-KUMO_GATEWAY_OPTS="-m ${HOSTNAME} -t 11211"
