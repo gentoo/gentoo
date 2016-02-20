@@ -31,6 +31,7 @@ RDEPEND=">=dev-python/fuse-python-0.2-r1
 			app-admin/gam-server ) )
 	media-libs/mutagen"
 DEPEND="${RDEPEND}
+	dev-libs/libxml2[python]
 	dev-libs/libxslt
 	app-text/docbook-xsl-stylesheets
 	test? ( dev-python/inotifyx
