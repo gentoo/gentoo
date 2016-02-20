@@ -3093,7 +3093,7 @@ dev-go/go-resiliency 1.0.0 9999: Resiliency patterns for golang
 dev-go/go-snappy 0_pre20150729 9999: The Snappy compression format in the Go programming language.
 dev-go/go-spew 0_pre20150619 9999: Implements a deep pretty printer for Go data structures to aid in debugging
 dev-go/go-sqlite3 1.1.0_p20160131: Go sqlite3 driver using database/sql
-dev-go/go-sys 0_pre20150729 9999: Go packages for low-level interaction with the operating system
+dev-go/go-sys 0_pre20150729 0_pre20160204 9999: Go packages for low-level interaction with the operating system
 dev-go/go-text 0_pre20150806 9999: Go text processing support
 dev-go/go-tools 0_pre20150823-r1 0_pre20150902 0_pre20160121 9999: Go Tools
 dev-go/go-tour 0_p20160209: A Tour of Go
