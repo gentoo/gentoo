@@ -18,5 +18,5 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE=""
 
-ruby_add_rdepend "dev-ruby/faraday
-	dev-ruby/addressable"
+ruby_add_rdepend "<dev-ruby/faraday-0.10
+	<dev-ruby/addressable-2.5"
