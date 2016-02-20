@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 EAPI=5
+
 JAVA_PKG_IUSE="doc source"
 
 inherit java-pkg-2 java-pkg-simple
@@ -17,7 +18,7 @@ SRC_URI="
 	https://repo1.maven.org/maven2/org/${PN}/org.${PN}.ant/${PV}.${DATE}/org.${PN}.ant-${PV}.${DATE}-sources.jar -> ${P}-ant.jar"
 LICENSE="EPL-1.0"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc64 ~x86"
+KEYWORDS="amd64 ppc64 x86"
 IUSE=""
 
 CDEPEND="
