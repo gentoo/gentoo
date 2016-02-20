@@ -2783,7 +2783,7 @@ dev-cpp/cairomm 1.10.0-r1 1.12.0 1.12.0-r1: C++ bindings for the Cairo vector gr
 dev-cpp/clucene 2.3.3.4-r5: High-performance, full-featured text search engine based off of lucene in C++
 dev-cpp/commoncpp2 1.8.1-r1: C++ framework offering portable support for threading, sockets, file access, daemons, persistence, serial I/O, XML parsing, and system services
 dev-cpp/ctemplate 2.2 2.2_p129 2.3: A simple but powerful template language for C++
-dev-cpp/eigen 2.0.17 3.1.3 3.2.5 3.2.6 3.2.7: C++ template library for linear algebra
+dev-cpp/eigen 2.0.17 3.1.3 3.2.5 3.2.6 3.2.7 3.2.8: C++ template library for linear algebra
 dev-cpp/gccxml 0.9.0_pre20120309 0.9.0_pre20131217: XML output extension to GCC
 dev-cpp/gconfmm 2.28.3 2.28.3-r1: C++ bindings for GConf
 dev-cpp/gflags 2.1.1-r1 2.1.2 9999: Google's C++ argument parsing library
@@ -15765,7 +15765,7 @@ sci-libs/linux-gpib 3.2.21-r1 4.0.2: Kernel module and driver library for GPIB (
 sci-libs/lis 1.4.11 1.4.23: Library of Iterative Solvers for Linear Systems
 sci-libs/lrslib 042c-r1 042c-r2 051: self-contained ANSI C implementation of the reverse search algorithm
 sci-libs/magma 1.4.0 1.4.1: Matrix Algebra on GPU and Multicore Architectures
-sci-libs/mathgl 2.1.3 2.1.3.1 2.3.3: Math Graphics Library
+sci-libs/mathgl 2.1.3 2.1.3.1 2.3.3 2.3.3-r1: Math Graphics Library
 sci-libs/matio 1.5.1 1.5.2: Library for reading and writing matlab files
 sci-libs/mc 1.5: 2D/3D AFEM code for nonlinear geometric PDE
 sci-libs/metis 4.0.3 5.1.0-r1: A package for unstructured serial graph partitioning
