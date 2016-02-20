@@ -9,7 +9,7 @@ inherit cmake-utils
 DESCRIPTION="GNU RTP stack for the zrtp protocol developed by Phil Zimmermann"
 HOMEPAGE="http://www.gnutelephony.org/index.php/GNU_ZRTP"
 SRC_URI="mirror://gnu/ccrtp/${P}.tar.gz"
-KEYWORDS="amd64 ppc ~ppc64 x86"
+KEYWORDS="amd64 ~ppc ~ppc64 x86"
 LICENSE="GPL-3"
 IUSE=""
 SLOT="0"
