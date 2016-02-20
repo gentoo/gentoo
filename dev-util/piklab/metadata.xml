@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
-<pkgmetadata>
-	<upstream>
-		<remote-id type="sourceforge">piklab</remote-id>
-		<bugs-to>http://sourceforge.net/tracker/?group_id=138852</bugs-to>
-	</upstream>
-</pkgmetadata>
