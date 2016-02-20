@@ -1,21 +1,20 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI="5"
 GCONF_DEBUG="no"
 GNOME2_LA_PUNT="yes"
-VALA_MIN_API_VERSION="0.18"
 VALA_USE_DEPEND="vapigen"
 
 inherit gnome2 vala
 
 DESCRIPTION="Library providing DLNA-related functionality for MediaServers"
-HOMEPAGE="http://gupnp.org/"
+HOMEPAGE="https://wiki.gnome.org/Projects/GUPnP"
 
 LICENSE="LGPL-2"
 SLOT="2.0"
-KEYWORDS="~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="+introspection"
 
 RDEPEND="
@@ -23,7 +22,7 @@ RDEPEND="
 	>=dev-libs/libxml2-2.5:2
 	media-libs/gstreamer:1.0
 	media-libs/gst-plugins-base:1.0[introspection?]
-	introspection? ( >=dev-libs/gobject-introspection-0.6.4 )
+	introspection? ( >=dev-libs/gobject-introspection-0.6.4:= )
 "
 DEPEND="${RDEPEND}
 	>=dev-util/gtk-doc-am-1.11

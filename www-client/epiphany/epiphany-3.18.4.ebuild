@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -11,7 +11,6 @@ inherit eutils gnome2 virtualx
 DESCRIPTION="GNOME webbrowser based on Webkit"
 HOMEPAGE="https://wiki.gnome.org/Apps/Web"
 
-# TODO: coverage
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="nss test"
@@ -36,19 +35,17 @@ COMMON_DEPEND="
 	x11-libs/libwnck:3
 	x11-libs/libX11
 
-	x11-themes/adwaita-icon-theme
-
 	nss? ( dev-libs/nss )
 "
 # epiphany-extensions support was removed in 3.7; let's not pretend it still works
 RDEPEND="${COMMON_DEPEND}
+	x11-themes/adwaita-icon-theme
 	!www-client/epiphany-extensions
 "
 # paxctl needed for bug #407085
 # eautoreconf requires gnome-common-3.5.5
 DEPEND="${COMMON_DEPEND}
 	app-text/yelp-tools
-	>=gnome-base/gnome-common-3.6
 	dev-libs/appstream-glib
 	>=dev-util/intltool-0.50
 	dev-util/itstool
@@ -88,9 +85,4 @@ src_test() {
 
 	unset DISPLAY
 	GSETTINGS_SCHEMA_DIR="${S}/data" Xemake check
-}
-
-src_install() {
-	DOCS="AUTHORS ChangeLog* NEWS README TODO"
-	gnome2_src_install
 }

@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -9,7 +9,7 @@ GNOME2_LA_PUNT="yes"
 inherit autotools bash-completion-r1 eutils gnome2
 
 DESCRIPTION="Virtual filesystem implementation for gio"
-HOMEPAGE="https://git.gnome.org/browse/gvfs"
+HOMEPAGE="https://wiki.gnome.org/Projects/gvfs"
 
 LICENSE="LGPL-2+"
 SLOT="0"
@@ -38,7 +38,7 @@ RDEPEND="
 	gnome-keyring? ( app-crypt/libsecret )
 	gnome-online-accounts? ( >=net-libs/gnome-online-accounts-3.7.1 )
 	google? (
-		>=dev-libs/libgdata-0.17.3:=[gnome]
+		>=dev-libs/libgdata-0.17.3:=[crypt,gnome-online-accounts]
 		>=net-libs/gnome-online-accounts-3.17.1 )
 	gphoto2? ( >=media-libs/libgphoto2-2.4.7:= )
 	gtk? ( >=x11-libs/gtk+-3.0:3 )

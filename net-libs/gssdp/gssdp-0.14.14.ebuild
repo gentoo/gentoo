@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -22,11 +22,11 @@ RDEPEND="
 	gtk? ( >=x11-libs/gtk+-3.0:3 )
 	introspection? (
 		$(vala_depend)
-		>=dev-libs/gobject-introspection-0.6.7:= )
+		>=dev-libs/gobject-introspection-1.36:= )
 	!<net-libs/gupnp-vala-0.10.3
 "
 DEPEND="${RDEPEND}
-	>=dev-util/gtk-doc-am-1.10
+	>=dev-util/gtk-doc-am-1.14
 	sys-devel/gettext
 	>=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}]
 "
