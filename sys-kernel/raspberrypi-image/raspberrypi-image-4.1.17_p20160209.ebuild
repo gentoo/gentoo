@@ -12,7 +12,7 @@ MY_PV="1.20160209"
 SRC_URI="https://github.com/raspberrypi/firmware/archive/${MY_PV} -> raspberrypi-firmware-${MY_PV}.tar.gz"
 
 LICENSE="GPL-2 raspberrypi-videocore-bin"
-SLOT="0"
+SLOT="${PVR}"
 KEYWORDS="~arm -*"
 IUSE=""
 
