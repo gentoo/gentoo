@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -135,5 +135,4 @@ pkg_postinst() {
 		ewarn "(pre-3.12 evolution versions) addressbook data"
 	fi
 }
-
 		
