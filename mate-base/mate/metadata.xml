@@ -10,6 +10,9 @@
 			recommended for the most common usage; for example, this installs
 			the file manager. Disable this and other USE flags if you want a
 			more minimal MATE Desktop.</flag>
+		<flag name="notification">Force notification daemon to default to MATE's
+			notification daemon. Enabled by default. Disable if it causes conflicts
+			with other installed desktop environments.</flag>
 		<flag name="themes">Install MATE Desktop's themes; if you use other
 			themes, you can disable this to spare some space and time.</flag>
 		<flag name="extras">Install additional MATE Desktop applications that
