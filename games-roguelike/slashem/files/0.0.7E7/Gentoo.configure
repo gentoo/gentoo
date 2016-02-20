@@ -1,5 +1,0 @@
-configure config_h $toplevel/include/config.h
-BEGIN
-	redefine COMPRESS \"/bin/gzip\"
-END
-
