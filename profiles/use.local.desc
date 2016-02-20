@@ -435,12 +435,6 @@ app-crypt/qca:pkcs11 - Enable PKCS#11 plugin
 app-crypt/qca:sasl - Enable SASL plugin
 app-crypt/qca:softstore - Enable softstore plugin
 app-crypt/seahorse:ldap - Enable seahorse to manipulate GPG keys on a LDAP server.
-app-crypt/shishi:3des - Enable 3DES encryption/checksum type.
-app-crypt/shishi:aes - Enable AES encryption/checksum types.
-app-crypt/shishi:arcfour - Enable ARCFOUR encryption/checksum type.
-app-crypt/shishi:des - Enable DES related encryption/checksum types.
-app-crypt/shishi:md - Enable unkeyed MD4/MD5 checksum types.
-app-crypt/shishi:null - Enable dummy NULL encryption/checksum type.
 app-crypt/tc-play:openssl - Use openssl crypto backend.
 app-crypt/tpm-tools:pkcs11 - Build Token data management utilities based on OpenCryptoki's (dev-libs/opencryptoki) PKCS#11 implementation.
 app-crypt/truecrypt:asm - Enable assembly for optimization
@@ -819,15 +813,6 @@ app-laptop/ibam:gkrellm - Enable building of app-admin/gkrellm module
 app-laptop/laptop-mode-tools:scsi - Adds dependency on sdparm to control non-SATA SCSI drivers
 app-laptop/pbbuttonsd:ibam - Enable support for Intelligent Battery Monitoring
 app-laptop/pbbuttonsd:macbook - Enable support for the Macbook and Macbook Pro
-app-laptop/prey:alarm - Module for playing an audio file
-app-laptop/prey:alert - Display a warning message when the computer seems to be stolen"
-app-laptop/prey:geo - Module for retrieving the physical location of the stolen computer
-app-laptop/prey:lock - Lock stolen computer
-app-laptop/prey:network - Get network information (active connections, traceroute) from stolen computer
-app-laptop/prey:secure - Delete or hide sensitive user data
-app-laptop/prey:session - Get screenshots from user session
-app-laptop/prey:userpriv - Create a prey user group so regular users can access and modify the prey configuration. Use it with caution
-app-laptop/prey:webcam - Use computer's webcam to take screenshots of the thief
 app-laptop/thinkfan:atasmart - include libatasmart support to get disc temperature
 app-laptop/tp_smapi:hdaps - Install a compatible HDAPS module
 app-leechcraft/lc-aggregator:webaccess - Enables web interface submodule for Aggregator
@@ -1026,8 +1011,6 @@ app-mobilephone/gnokii:ical - Enable support for dev-libs/libical
 app-mobilephone/gnokii:irda - Enable infrared support
 app-mobilephone/gnokii:pcsc-lite - Enable smartcard support with sys-apps/pcsc-lite
 app-mobilephone/gnokii:sms - Enable SMS support (build smsd)
-app-mobilephone/obexd:nokia - Add support for Nokia backup plugin
-app-mobilephone/obexd:server - Enables server installation, it's incompatible with obex-data-server provided one
 app-mobilephone/smstools:stats - Enable statistic reporting
 app-mobilephone/yaps:capi - Enable CAPI support
 app-office/abiword:collab - Enable collaborative editing plugin
@@ -2610,25 +2593,6 @@ dev-ruby/ruby-sdl:image - Enable media-libs/sdl-image support
 dev-ruby/ruby-sdl:mixer - Enable media-libs/sdl-mixer support
 dev-ruby/ruby-sdl:sge - Enable sdl-sge support
 dev-ruby/rubygems:server - Install support for the rubygems server
-dev-scheme/bigloo:bglpkg - Build bglpkg binary, which can be use to access scmpkg servers (requires web)
-dev-scheme/bigloo:calendar - Build the embedded library for calendar programming
-dev-scheme/bigloo:crypto - Build the embedded cryptographic library
-dev-scheme/bigloo:debug - Enable extra debug codepaths
-dev-scheme/bigloo:doc - Install Bigloo Manual (HTML docs of Bigloo and r5rs)
-dev-scheme/bigloo:emacs - Build and install the Bigloo Developement Environment for Emacs (aka bee-mode)
-dev-scheme/bigloo:gmp - Adds support for dev-libs/gmp (GNU MP library)
-dev-scheme/bigloo:java - Enable the JVM backend for the Bigloo compiler
-dev-scheme/bigloo:mail - Mail library for email management (e.g. maildir and imap support)
-dev-scheme/bigloo:multimedia - Build multimedia library (e.g. for managing images). Needed for dev-scheme/hop
-dev-scheme/bigloo:openpgp - Build OpenPGP support (requires crypto)
-dev-scheme/bigloo:packrat - Bigloo port of Tony Garnock-Jones' packrat parser (requires srfi1)
-dev-scheme/bigloo:sqlite - Use the system-wide dev-db/sqlite
-dev-scheme/bigloo:srfi1 - Build the srfi1 library: List library
-dev-scheme/bigloo:srfi27 - Build the srfi27 library: Source of Random Bits (32bit-arch only, requires gmp)
-dev-scheme/bigloo:ssl - Adds support for SSL connections through dev-libs/openssl
-dev-scheme/bigloo:text - Library for dealing with text (e.g. BibTeX parser)
-dev-scheme/bigloo:threads - Enable thread support, it depends on dev-libs/boehm-gc built with threads use flag
-dev-scheme/bigloo:web - Library for web programming (e.g. XML, CGI parsers). Needed for dev-scheme/hop
 dev-scheme/gauche-gl:cg - Enable NVidia Cg binding
 dev-scheme/gauche-gtk:glgd - Enable GL graph draw
 dev-scheme/guile:debug-freelist - Include garbage collector freelist debugging code
@@ -2637,9 +2601,6 @@ dev-scheme/guile:deprecated - Enable deprecated features
 dev-scheme/guile:discouraged - (implied by deprecated) enable merely discouraged features
 dev-scheme/guile:networking - Include networking interfaces
 dev-scheme/guile:regex - Include regular expression interfaces
-dev-scheme/hop:debug - Enables building with debug symbols
-dev-scheme/hop:ssl - Enable SSL support for hop
-dev-scheme/hop:threads - Enable thread support for hop, it depends on dev-scheme/bigloo built with threads use flag.
 dev-scheme/kawa:awt - Assume AWT is available
 dev-scheme/kawa:echo2 - Enable support for the Echo2 web toolkit with dev-java/echo2
 dev-scheme/kawa:frontend - Build "kawa" front-end program using sys-libs/readline
@@ -4370,7 +4331,6 @@ media-sound/flacon:tta - Add support for True Audio input files
 media-sound/forked-daapd:itunes - Enable support for iTunes library XML
 media-sound/forked-daapd:lastfm - Enable LastFM scrobbling support
 media-sound/forked-daapd:mpd - Enable streaming to mpd
-media-sound/freewheeling:fluidsynth - compile with support for fluidsynth
 media-sound/frescobaldi:portmidi - Enable media-libs/portmidi support
 media-sound/gejengel:audioscrobbler - Enable track submission on last.fm
 media-sound/gimmix:cover - Enable cover art fetching
@@ -4977,7 +4937,6 @@ media-video/vlc:wma-fixed - Enables fixed point WMA decoder.
 media-video/vlc:x265 - Support X265 Encoder.
 media-video/vlc:xcb - Support the X C-language Binding, a replacement for Xlib; !!! you will need this option to be able to integrate video in the Qt interface, see bug #500678.
 media-video/vlc:zvbi - Enables support for teletext subtitles via the zvbi library.
-media-video/winki:mjpeg - Enables mjpegtools support
 media-video/x264-encoder:10bit - Set output bit depth to 10
 media-video/x264-encoder:avs - enable AvxSynth support in the AviSynth input module
 media-video/x264-encoder:ffmpegsource - Enable ffmpegsource aka ffms support, disables lavf
@@ -6346,7 +6305,6 @@ net-misc/wicd:ncurses - Installs a ncurses UI
 net-misc/wicd:pm-utils - Installs the pm-utils hooks for suspend/resume and requires sys-power/pm-utils
 net-misc/x2goserver:fuse - Use sys-fs/sshfs-fuse to allow shared folders
 net-misc/xrdp:fuse - Enable clipboard file / device redirection via sys-fs/fuse
-net-misc/yaydl:soundextract - Extract the soundtracks of the downloaded videos
 net-misc/youtube-viewer:gtk - Install the gtk GUI, called gtk-youtube-viewer
 net-nds/389-ds-base:auto-dn-suffix - Enable auto bind with auto dn suffix over unix domain socket (LDAPI) support
 net-nds/389-ds-base:autobind - Enable auto bind over unix domain socket (LDAPI) support
@@ -6503,19 +6461,6 @@ net-print/hplip:scanner - Enable scanner on multifunction devices which support 
 net-print/hplip:snmp - Add support for net-analyzer/net-snmp which enables this driver to work over networks (both for server and client)
 net-print/hplip:static-ppds - Use statically-generated PPDs instead of Dynamic PPDs. Although this is deprecated some printers may still need it to work properly. Use this flag if hp-setup fails to find/create a valid PPD file
 net-print/magicfilter:lprng-failsafe - Refuse options for compability with certain LPRng versions.
-net-proxy/dansguardian:avast - Enable support for the AvastD content scanner.
-net-proxy/dansguardian:backtrace - Enable logging a backtrace when a segmentation fault occurs.
-net-proxy/dansguardian:clamav - Enable support for the ClamD content scanner.
-net-proxy/dansguardian:commandline - Enable support for command-line content scanners.
-net-proxy/dansguardian:email - Enable support for email reporting functionality.
-net-proxy/dansguardian:fancydm - Enable support for the fancy download manager.
-net-proxy/dansguardian:icap - Enable support for ICAP AV server content scanner.
-net-proxy/dansguardian:kaspersky - Enable support for the Kaspersky AV daemon content scanner.
-net-proxy/dansguardian:lfs - Enable large file support on 32 bit systems.
-net-proxy/dansguardian:logrotate - Use app-admin/logrotate for rotating logs.
-net-proxy/dansguardian:ntlm - Enable support for the NTLM auth plugin.
-net-proxy/dansguardian:orig-ip - Enable support for checking the client's original destination IP address against HTTP request details when deployed as a transparent proxy (US-CERT VU#435052).
-net-proxy/dansguardian:trickledm - Enable support for the trickle download manager.
 net-proxy/haproxy:net_ns - Enable network namespace support (CONFIG_NET_NS)
 net-proxy/haproxy:pcre-jit - Use JIT support for PCRE
 net-proxy/haproxy:tools - Install additional tools (halog, iprange)
@@ -7729,7 +7674,6 @@ sys-kernel/pf-sources:experimental - Apply patches that are considered experimen
 sys-kernel/rt-sources:deblob - Remove binary blobs from kernel sources to provide libre license compliance.
 sys-kernel/spl:debug-log - Enable additional diagnostics
 sys-kernel/tuxonice-sources:experimental - Apply experimental patches; for more information, see "https://wiki.gentoo.org/wiki/Project:Kernel/Experimental".
-sys-kernel/vserver-sources:deblob - Remove binary blobs from kernel sources to provide libre license compliance.
 sys-libs/binutils-libs:64-bit-bfd - Support 64-bit targets even on 32-bit hosts (is ignored on 64-bit hosts)
 sys-libs/binutils-libs:multitarget - Enable all possible targets in libbfd
 sys-libs/db:rpc - Enable rpc client/server
@@ -7880,9 +7824,6 @@ www-apps/drupal:accelerator - Add dependency on a php accelerator
 www-apps/drupal:uploadprogress - Install dev-php/pecl-uploadprogress package
 www-apps/egroupware:gallery - Install gallery2 port for eGW
 www-apps/egroupware:jpgraph - Add dev-php/jpgraph support
-www-apps/gallery:netpbm - Add media-libs/netpbm support
-www-apps/gallery:unzip - Add app-arch/unzip support for the archive upload module
-www-apps/gallery:zip - Add app-arch/zip for the zip download module
 www-apps/gitit:network-uri - Get Network.URI from the network-uri package.
 www-apps/gitit:plugins - enables optional plugin runtime loader
 www-apps/guacamole:noauth - enable support for leaving out any authentication on the webinterface
