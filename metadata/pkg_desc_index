@@ -1305,7 +1305,7 @@ app-emulation/libvirt 1.2.21-r2 1.3.0-r1 1.3.1 9999: C toolkit to manipulate vir
 app-emulation/libvirt-glib 0.2.2 0.2.3: GLib and GObject mappings for libvirt
 app-emulation/libvirt-snmp 0.0.2-r2 0.0.3: Provides SNMP functionality for libvirt
 app-emulation/lxc 1.0.6-r1 1.0.7 1.0.8 1.1.0-r6 1.1.1-r1 1.1.2 1.1.2-r1 1.1.2-r2 1.1.3 1.1.4 1.1.5: LinuX Containers userspace utilities
-app-emulation/lxd 0.26 0.27 2.0.0_beta1 2.0.0_beta3: Fast, dense and secure container management
+app-emulation/lxd 0.27 2.0.0_beta1 2.0.0_beta3: Fast, dense and secure container management
 app-emulation/open-vm-tools 9.4.0.1280544 9.10.0_p2476743 9.10.2_p2822639 10.0.0_p3000743: Opensourced tools for VMware guests
 app-emulation/open-vm-tools-kmod 9.4.0.1280544 9.10.0_p2476743 10.0.0_p3000743: Opensourced tools for VMware guests
 app-emulation/openstack-guest-agents-unix 1.39.0 1.39.0-r1 1.39.0-r2 1.39.1: Openstack Unix Guest Agent
@@ -17463,7 +17463,7 @@ www-apache/mod_authnz_external 3.2.6 3.3.2: An Apache2 authentication DSO using 
 www-apache/mod_authnz_persona 0.8.1: An Apache2 module for easy Persona authentication
 www-apache/mod_backtrace 2.01: Debug segmentation faults in Apache threads
 www-apache/mod_bw 0.9.2-r1: Bandwidth Management Module for Apache2
-www-apache/mod_caucho 4.0.26 4.0.26-r1: mod_caucho connects Resin and Apache2
+www-apache/mod_caucho 4.0.47: mod_caucho connects Resin and Apache2
 www-apache/mod_cband 0.9.7.5: Apache2 bandwidth quota and throttling module
 www-apache/mod_common_redirect 0.1.1: mod_common_redirect implements common redirects without mod_rewrite overhead
 www-apache/mod_depends 0.7.0_p200702041: An apache helper module for handling dependencies properly
@@ -17727,7 +17727,7 @@ www-servers/ocsigenserver 2.5-r2 2.6: Ocaml-powered webserver and framework for 
 www-servers/pathod 0.10 0.11.1 0.12.0: A collection of pathological tools for testing and torturing HTTP clients and servers
 www-servers/pound 2.6 2.7d 2.7f 2.7f-r1: A http/https reverse-proxy and load-balancer
 www-servers/pshs 0.2.6 0.3 0.3-r1 9999: Pretty small HTTP server -- a command-line tool to share files
-www-servers/resin 4.0.44-r4 4.0.46: A fast Servlet and JSP engine
+www-servers/resin 4.0.46: A fast Servlet and JSP engine
 www-servers/servefile 0.4.4: Serve a single file via HTTP
 www-servers/spawn-fcgi 1.6.3-r1 1.6.3-r2 1.6.4: A FCGI spawner for lighttpd and cherokee and other webservers
 www-servers/thin 1.6.3 1.6.3-r1 1.6.4-r1: A fast and very simple Ruby web server
