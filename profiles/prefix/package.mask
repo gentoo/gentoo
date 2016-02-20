@@ -10,11 +10,6 @@
 #
 
 
-# Fabian Groffen <grobian@gentoo.org> (17 Feb 2016)
-# Kills python, and confuses eselect-python completely (listing
-# duplicates, selecting multiple python versions as primary)
-=dev-lang/python-exec-2.3.1
-
 # Bernard Cafarelli <voyageur@gentoo.org> (27 Jan 2016)
 # New llvm version, masked for testing
 =sys-devel/llvm-3.8.0*
