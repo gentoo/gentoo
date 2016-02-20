@@ -185,7 +185,6 @@ app-admin/recursos 2.0: Script to create html and text report about your system
 app-admin/reportmagic 2.21: Makes usable statistics from your web site log file analysis
 app-admin/restart_services 0.13.0-r1 0.13.1: Tool to manage OpenRC services that need to be restarted
 app-admin/rex 1.0.0 1.2.0 1.3.2 1.3.2-r1 1.3.3 1.4.0_rc2: (R)?ex is a small script to ease the execution of remote commands
-app-admin/rigo 254: Rigo, the Sabayon Application Browser
 app-admin/rsyslog 8.13.0 8.16.0: An enhanced multi-threaded syslogd with database support and more
 app-admin/sagan 0.2.3 1.0.0_rc3: Sagan is a multi-threaded, real time system and event log monitoring system
 app-admin/sagan-rules 20130430 20140617 99999999: Rules for Sagan log analyzer
@@ -608,7 +607,6 @@ app-crypt/tinyca 2.0.7.5-r2: Simple Perl/Tk GUI to manage a small certification 
 app-crypt/tpm-emulator 0.7.4-r1: Emulator driver for tpm
 app-crypt/tpm-tools 1.3.8: TrouSerS' support tools for the Trusted Platform Modules
 app-crypt/trousers 0.3.10-r1 0.3.13 0.3.13-r1: An open-source TCG Software Stack (TSS) v1.1 implementation
-app-crypt/truecrypt 7.1a 7.2: Free open-source disk encryption software
 app-crypt/xca 1.1.0 1.3.0 1.3.1 1.3.2: A GUI to OpenSSL, RSA public keys, certificates, signing requests and revokation lists
 app-crypt/xor-analyze 0.5: program for cryptanalyzing xor 'encryption' with variable key length
 app-crypt/yubikey-neo-manager 1.1.0 1.1.0-r1 1.2.1 1.2.1-r1 1.3.0 1.3.0-r1 1.4.0: Cross platform personalization tool for the YubiKey NEO
@@ -1262,7 +1260,6 @@ app-emacs/yc 4.0.13: Yet another Canna client on Emacsen
 app-emacs/zenburn 20110907: Zenburn color theme for Emacs
 app-emacs/zenirc 2.112-r1: A full-featured scriptable IRC client for the Emacs text editor
 app-emulation/aqemu 0.8.2-r2 0.8.2-r3: Graphical interface for QEMU and KVM emulators, using Qt4
-app-emulation/aranym 0.9.14 0.9.16: Atari Running on Any Machine, a VM running Atari ST/TT/Falcon OS and TOS/GEM applications
 app-emulation/armv8-fast-model 0.8.5206: emulator for a basic ARMv8 platform environment (for running bare metal & Linux)
 app-emulation/bochs 2.6 2.6.8: LGPL-ed pc emulator
 app-emulation/cloud-init 0.7.6-r1: EC2 initialisation magic
@@ -1525,7 +1522,6 @@ app-i18n/rime-data 0.22 0.32 0.35: Data resources for Rime Input Method Engine
 app-i18n/scim 1.4.14: Smart Common Input Method (SCIM) is an Input Method (IM) development platform
 app-i18n/scim-anthy 1.2.7-r1 1.3.1: Japanese input method Anthy IMEngine for SCIM
 app-i18n/scim-bridge 0.4.16-r2: Yet another IM-client of SCIM
-app-i18n/scim-canna 1.0.1: Japanese input method Canna IMEngine for SCIM
 app-i18n/scim-hangul 0.3.2 0.4.0: Hangul IMEngine for SCIM ported from imhangul
 app-i18n/scim-input-pad 0.1.3 0.1.3.1: Input pad for SCIM used to input symbols and special characters
 app-i18n/scim-m17n 0.2.3: scim-m17n is an input module for Smart Common Input Method (SCIM) which uses m17n as backend
@@ -1768,7 +1764,6 @@ app-misc/goobook 1.8 1.9: Google Contacts wrapper for mutt
 app-misc/gourmet 0.17.4 0.17.4-r1: Recipe Organizer and Shopping List Generator for Gnome
 app-misc/grabcartoons 2.8.4_p20141112 9999: Comic-summarizing utility
 app-misc/gramps 3.4.5-r1 3.4.9: Genealogical Research and Analysis Management Programming System
-app-misc/granule 1.4.0 1.4.0-r1: A flashcard program that implements Leitner cardfile methodology
 app-misc/graphlcd-base 0.1.5-r1 0.1.9: Graphical LCD Driver
 app-misc/grc 1.5: Generic Colouriser beautifies your logfiles or output of commands
 app-misc/gtk-sunlight 0.4.2: Real-time Sunlight Wallpaper
@@ -1798,7 +1793,6 @@ app-misc/jq 1.4 1.4-r1 1.5-r1: A lightweight and flexible command-line JSON proc
 app-misc/kanatest 0.4.8: Visual flashcard tool for memorizing the Japanese Hiragana and Katakana alphabet
 app-misc/klavaro 3.0.1: Another free touch typing tutor program
 app-misc/ktoblzcheck 1.39 1.45 1.48: Library to check account numbers and bank codes of German banks
-app-misc/lcd-stuff 0.1.6: lcd-stuff is a client for lcdproc that displays RSS, Weather, MPD and new mail
 app-misc/lcd4linux 0.10.1_rc2-r3: Shows system and ISDN information on an external display or in a X11 window
 app-misc/lcdproc 0.5.2-r1 0.5.5 0.5.6-r1: Client/Server suite to drive all kinds of LCD (-like) devices
 app-misc/leave 20100918: Command-line tool from FreeBSD that reminds you when its time to leave
@@ -1814,7 +1808,6 @@ app-misc/logserial 0.4.2: A tool for logging raw data from a serial device
 app-misc/lsx 0.1: list executables
 app-misc/ltunify 0.2-r1: Tool for working with Logitech Unifying receivers and devices
 app-misc/lxsplit 0.2.4: Command-line file splitter/joiner for Linux
-app-misc/magneto-loader 254: Official Sabayon Linux Entropy Notification Applet Loader
 app-misc/matew 1.9: Make Album The Easy Way (Matew) is an HTML/CSS generator for static image albums
 app-misc/mc 4.8.14 4.8.15 9999: GNU Midnight Commander is a text based file manager
 app-misc/media-player-info 21-r1 22: A repository of data files describing media player capabilities
@@ -1833,7 +1826,6 @@ app-misc/note 1.3.3-r1: A note taking perl program
 app-misc/nullmodem 0.0.6: A Utility to loopback Pseudo-Terminals
 app-misc/nut 20.1: Record what you eat and analyze your nutrient levels
 app-misc/ofl 20110721: Open file lister (replaces fuser and lsof -m)
-app-misc/ompload 20101220: CLI script for uploading files to http://ompldr.org/
 app-misc/ondir 0.2.2-r1: Automatically execute scripts as you traverse directories
 app-misc/oneko 1.2-r2: A cat, dog and others which chase the mouse or windows around the screen
 app-misc/pal 0.4.3-r1: pal command-line calendar program
@@ -2092,7 +2084,6 @@ app-portage/install-mask 0.1.1 9999: Handle INSTALL_MASK setting in make.conf
 app-portage/kuroo4 0.90.4 0.90.5: Graphical Portage frontend based on KDE4/Qt4
 app-portage/layman 2.0.0-r1 2.0.0-r3 2.1.0-r3 2.2.0-r7 2.3.0-r1 9999: Tool to manage Gentoo overlays
 app-portage/layman-dbtools 0_p20100322: Tools to work with layman-global.txt/repositories.xml like files
-app-portage/maintainer-helper 0.1.2 0.1.2-r1: An application to help with ebuild maintenance
 app-portage/metagen 0.6.2-r1 0.6.3 9999: metadata.xml generator for ebuilds
 app-portage/mirrorselect 2.2.0.1 2.2.2 2.2.2-r2 9999: Tool to help select distfiles mirrors for Gentoo
 app-portage/overlint 0.5.2 0.5.3: Simple tool for static analysis of overlays
@@ -2755,15 +2746,11 @@ app-xemacs/xslide 1.09: XSL editing support
 app-xemacs/xslt-process 1.12: XSLT processing support
 app-xemacs/xwem 1.22 1.23: X Emacs Window Manager
 app-xemacs/zenirc 1.16: ZENIRC IRC Client
-dev-ada/adadoc 2.1: A tool for Ada95 to create documentation from specification packages
 dev-ada/asis-gcc 3.4.6 4.1.2 4.1.2-r1 4.2.2 4.3.0_pre132166 4.3.1 4.3.1-r1 4.4: The Ada Semantic Interface Specification (semantic analysis and tools tied to compiler)
 dev-ada/asis-gpl 3.4.6.2006 4.1.3.2007-r1 4.1.3.2007-r2 4.1.3.2008 4.1.3.2008-r1: The Ada Semantic Interface Specification (semantic analysis and tools tied to compiler)
-dev-ada/aunit 1.05 2.01 2.03: Aunit, Ada unit testing framework
 dev-ada/cbind 6.0.1: This tool is designed to aid in the creation of Ada bindings to C
 dev-ada/charles 20050913: Posix bindings for Ada
-dev-ada/florist 2007.0: Posix bindings for Ada
 dev-ada/glade 2006.0: An implementation of the Distributed Systems Annex for the GNAT compiler
-dev-ada/xmlada 1.0-r4 2.2.0 2.2.0-r1: XML library for Ada
 dev-cpp/ETL 0.04.15: ETL is a multi-platform class and template library
 dev-cpp/antlr-cpp 2.7.7: The ANTLR 2 C++ Runtime
 dev-cpp/asio 1.4.5 1.4.8-r1: Asynchronous Network Library
@@ -2834,7 +2821,6 @@ dev-db/dbmodel 0.3: Qt4 tool for drawing entity-relational diagrams
 dev-db/etcd 2.0.10-r1 2.2.1: A highly-available key value store for shared configuration and service discovery
 dev-db/etcdctl 0.4.6 0.4.6-r1: A simple command line client for etcd
 dev-db/firebird 2.5.3.26780.0-r3: A relational database offering many ANSI SQL:2003 and some SQL:2008 features
-dev-db/flamerobin 0.9.2: A database administration tool for Firebird DBMS
 dev-db/freetds 0.91 0.91-r1: Tabular Datastream Library
 dev-db/gigabase 3.83-r1: OO-DBMS with interfaces for C/C++/Java/PHP/Perl
 dev-db/go-etcd 0_p20141013-r1 2.0.0 2.0.0-r1: Go client library for etcd
@@ -4867,7 +4853,6 @@ dev-libs/starpu 1.1.5: Unified runtime system for heterogeneous multicore archit
 dev-libs/stfl 0.22-r2 0.23 0.24: A library which implements a curses-based widget set for text terminals
 dev-libs/stlsoft 1.9.111: Robust, Lightweight, Cross-platform, Template Software
 dev-libs/svrcore 4.0.4: Mozilla LDAP C SDK
-dev-libs/syck 0.55-r4 0.55-r6: Syck is an extension for reading and writing YAML swiftly in popular scripting languages
 dev-libs/syncdir 1.0-r1: Provides an alternate implementation for open, link, rename, and unlink
 dev-libs/tinyxml 2.6.2-r2: a simple, small, C++ XML parser that can be easily integrating into other programs
 dev-libs/tinyxml2 1.0.9_p20121123 2.2.0: A simple, small, efficient, C++ XML parser
@@ -6692,7 +6677,6 @@ dev-php/pecl-spl_types 0.4.0-r1: Standard PHP library types add-on
 dev-php/pecl-ssh2 0.12-r3: PHP bindings for the libssh2 library
 dev-php/pecl-stomp 1.0.8: PHP extension to communicate with Stomp compliant Message Brokers
 dev-php/pecl-svn 1.0.2-r1: PHP Bindings for the Subversion Revision control system
-dev-php/pecl-syck 0.9.3-r3 0.9.3-r4: PHP bindings for Syck - reads and writes YAML with it
 dev-php/pecl-taint 1.2.2-r1 2.0.0_beta: Extension used for detecting XSS codes(tainted string)
 dev-php/pecl-timezonedb 2014.7 2015.7: Timezone Database to be used with PHP's date and time functions
 dev-php/pecl-translit 0.6.1-r1: Transliterates non-latin character sets to latin
@@ -6734,7 +6718,6 @@ dev-python/BitVector 3.3.2: A pure-Python memory-efficient packed representation
 dev-python/CacheControl 0.11.5 0.11.6: The httplib2 caching algorithms packaged up for use with requests
 dev-python/Coffin 0.3.8 2.0.1: Jinja2 adapter for Django
 dev-python/CoverageTestRunner 1.9-r1 1.10: fail Python program unit tests unless they test everything
-dev-python/Djblets 0.7.31: A collection of useful extensions for Django
 dev-python/Flask-KVSession 0.6.1 0.6.2: Transparent server-side session support for flask
 dev-python/GridDataFormats 0.2.2 0.2.5: Reading and writing of data on regular grids in Python
 dev-python/Kivy 1.9.0-r1: A software library for rapid development of hardware-accelerated multitouch applications
@@ -7744,7 +7727,6 @@ dev-python/python-fastcgi 1.1-r1: Interface to OpenMarket's FastCGI C Library/SD
 dev-python/python-fastimport 0.9.2-r1: Library for parsing the fastimport VCS serialization format
 dev-python/python-fchksum 1.7.1-r1: Python module to find the checksum of files
 dev-python/python-gammu 2.5: Python bindings for Gammu
-dev-python/python-geoclue 0.1.0-r1: Geoclue python module
 dev-python/python-gflags 2.0 3.0.2: Google's Python argument parsing library
 dev-python/python-glanceclient 0.13.1 0.14.2 0.17.0 0.17.1 0.17.2 0.18.0 0.19.0 0.19.0-r1 1.0.0 1.1.0: A client for the OpenStack Glance API
 dev-python/python-gnupg 0.3.7 0.3.8: Python wrapper for GNU Privacy Guard
@@ -9624,7 +9606,6 @@ dev-util/patchutils 0.3.3: A collection of tools that operate on patch files
 dev-util/peg 0.1.9 0.1.13 0.1.15 0.1.15-r1: Recursive-descent parser generators for C
 dev-util/perf 3.8-r1 3.12 3.13.1-r1 3.15.5 4.1.5-r1: Userland tools for Linux Performance Counters
 dev-util/pida 0.6.2-r1: Gtk and/or Vim-based Python Integrated Development Application
-dev-util/piklab 0.16.2: IDE for applications based on PIC and dsPIC microcontrollers
 dev-util/pkgcheck 0.5 0.5.1 9999: pkgcore-based QA utility
 dev-util/pkgconf 0.9.11 0.9.12 9999: pkg-config compatible replacement with no dependencies other than ANSI C89
 dev-util/pkgconfig 0.28-r2 0.28-r3 0.29 9999: Package config system that manages compile/link flags
@@ -9653,7 +9634,6 @@ dev-util/redet 8.26: A regular expression development and execution tool
 dev-util/regexxer 0.10: An interactive tool for performing search and replace operations
 dev-util/rej 0.16: A utility for solving diff/patch rejects
 dev-util/reswrap 3.2.0 4.0.0: Utility to wrap icon resources into C++ code, from the FOX Toolkit
-dev-util/reviewboard 1.7.28: A web-based code review tool that offers developers an easy way to handle code reviews
 dev-util/rootstrap 0.3.24 0.3.24_p5-r1: A tool for building complete Linux filesystem images
 dev-util/rosdep 0.11.4 9999: Command-line tool for installing ROS system dependencies
 dev-util/rosinstall 0.7.6 0.7.7 9999: Command-line tools for maintaining a workspace of projects for ROS
@@ -9867,7 +9847,6 @@ games-action/openclonk 6.1 7.0: A free multiplayer action game where you control
 games-action/openlierox 0.58_rc3: Real-time excessive Worms-clone
 games-action/orbital-eunuchs-sniper 1.30: Snipe terrorists from your orbital base
 games-action/phobiaii 1.1: Just a moment ago, you were safe inside your ship, behind five inch armour
-games-action/poopmup 1.2: You are now free to fly around the city and poop on passers-by
 games-action/postalplus 1: Ultraviolent and controversial game featuring the Postal Dude
 games-action/powermanga 0.91 0.93.1: An arcade 2D shoot-em-up game
 games-action/rafkill 1.2.3: space shoot-em-up game
@@ -10297,7 +10276,6 @@ games-fps/ut2003-demo 2206-r3: Demo for the sequel to the 1999 Game of the Year 
 games-fps/ut2004 3369.3-r1: Editor's Choice Edition plus Mega Pack for the critically-acclaimed first-person shooter
 games-fps/ut2004-action 1: UT2004 Action - Action movie mod
 games-fps/ut2004-airbuccaneers 1.6-r2: UT2004 Air Buccaneers - Pirate-style conversion with flying wooden ships
-games-fps/ut2004-alienswarm 1.32: UT2004 Alien Swarm - an overhead-view tactical squad-based shooter
 games-fps/ut2004-bonuspack-cbp1 1-r2: UT2004 Community Bonus Pack Volume 1 - UT2003 Community Bonus Pack repacked for UT2004
 games-fps/ut2004-bonuspack-cbp2 1-r2: UT2004 Community Bonus Pack 2 volumes 1 and 2 - Community Bonus Pack 2 volumes 1 and 2
 games-fps/ut2004-bonuspack-ece 1-r3: UT2004 Editor's Choice Edition - Editor's Choice Edition bonus pack
@@ -10590,7 +10568,6 @@ games-rpg/openglad 0.98: An SDL clone of Gladiator, a classic RPG game
 games-rpg/pcgen 6.04.01: D&D character generator
 games-rpg/penumbra-collection 1.1: Scary first-person adventure game trilogy which focuses on story, immersion and puzzles
 games-rpg/queen 1: Flight of the Amazon Queen - a 2D point-and-click adventure game set in the 1940s
-games-rpg/sacred-gold 1.0 1.0.01: Action role-playing game
 games-rpg/soltys 1.0-r1: Classic adventure game
 games-rpg/sumwars 0.5.8: a multi-player, 3D action role-playing game
 games-rpg/tmw 20130201: Branding for the Mana client for server.themanaworld.org
@@ -10652,7 +10629,6 @@ games-strategy/0ad 0.0.18_alpha-r4: A free, real-time strategy game
 games-strategy/0ad-data 0.0.18_alpha: Data files for 0ad
 games-strategy/asc 2.6.0.0-r1: turn based strategy game designed in the tradition of the Battle Isle series
 games-strategy/boswars 2.7-r1: Futuristic real-time strategy game
-games-strategy/coldwar 1.0.1-r1: Third-person sneaker like Splinter Cell
 games-strategy/crimson 0.5.3: Tactical war game in the tradition of Battle Isle
 games-strategy/darwinia 1.3.0 1.4.0_beta9: the hyped indie game of the year. By the Uplink creators
 games-strategy/darwinia-demo 1.3.0: Darwinia, the hyped indie game of the year. By the Uplink creators
@@ -10781,7 +10757,6 @@ gnome-base/nautilus 3.16.2 3.18.2 3.18.2-r1 3.18.3 3.18.4 3.18.5: A file manager
 gnome-base/orbit 2.14.19-r4: ORBit2 is a high-performance CORBA ORB
 gnome-extra/activity-log-manager 0.9.7-r1: GUI which lets you easily control what gets logged by Zeitgeist
 gnome-extra/assogiate 0.2.1 0.2.1-r1: assoGiate is an editor of the file types database for GNOME
-gnome-extra/at-spi 2.12.0 2.14.0: The Gnome Accessibility Toolkit
 gnome-extra/avant-window-navigator 0.4.2: A dock-like bar which sits at the bottom of the screen
 gnome-extra/avant-window-navigator-extras 0.4.0: Applets for the Avant Window Navigator
 gnome-extra/cameramonitor 0.3.2: Local Webcam monitoring in system tray
@@ -10800,7 +10775,6 @@ gnome-extra/eiciel 0.9.11 0.9.11-r1: ACL editor for GNOME, with Nautilus extensi
 gnome-extra/evolution-data-server 3.16.5 3.18.4 3.18.5: Evolution groupware backend
 gnome-extra/evolution-ews 3.16.5 3.18.4 3.18.5: Evolution module for connecting to Microsoft Exchange Web Services
 gnome-extra/gconf-editor 3.0.1-r1: An editor to the GNOME config system
-gnome-extra/gdesklets-core 0.36.3-r4: GNOME Desktop Applets: Core library for desktop applets
 gnome-extra/gnome-activity-journal 0.8.0-r4 0.8.0-r5: Tool for easily browsing and finding files on your computer
 gnome-extra/gnome-boxes 3.16.2 3.18.1: Simple GNOME 3 application to access remote or virtual systems
 gnome-extra/gnome-builder 3.16.3 3.18.1: Builder attempts to be an IDE for writing software for GNOME
@@ -10857,7 +10831,6 @@ gnome-extra/yelp-xsl 3.16.1 3.18.1: XSL stylesheets for yelp
 gnome-extra/zeitgeist 0.9.16: Service to log activities and present to other apps
 gnome-extra/zeitgeist-datasources 0.8.1: Plugins whose work is to push activities as events into Zeitgeist daemon
 gnome-extra/zeitgeist-explorer 0.2-r1: Monitor and inspect Zeitgeist's log at a low level - developer tool
-gnome-extra/zeitgeist-extensions 0.0.13-r2: Allow manipulating events before/after insertion as well as before fetching
 gnome-extra/zenity 3.16.3 3.18.1.1: Tool to display dialogs from the commandline and shell scripts
 gnustep-apps/aclock 0.4.0: Analog dockapp clock for GNUstep
 gnustep-apps/addresses 0.4.7 0.4.8: Addresses is a Apple Addressbook work alike (standalone and for GNUMail)
@@ -11391,7 +11364,6 @@ kde-misc/kte-collaborative 0.2.0: Collaborative text editor via kde-telepathy
 kde-misc/ktrafficanalyzer 0.5.4.1: A network traffic visualizer
 kde-misc/kvkbd 0.6-r1: A virtual keyboard for KDE
 kde-misc/kwebkitpart 1.3.4-r1: A WebKit KPart for Konqueror
-kde-misc/magneto-kde 254: Entropy Package Manager notification applet KDE frontend
 kde-misc/milou 0.1: Dedicated search application built on top of Baloo
 kde-misc/miniplayer 2.5-r1: Multimedia player plasmoid
 kde-misc/networkmanagement 0.9.0.12: KDE frontend for NetworkManager
@@ -11884,7 +11856,6 @@ media-gfx/brlcad 7.18.4: Constructive solid geometry modeling system
 media-gfx/cairosvg 1.0 1.0.7: A simple cairo based SVG converter with support for PDF, PostScript and PNG formats
 media-gfx/cellwriter 1.3.4 1.3.5: Grid-entry natural handwriting input panel
 media-gfx/colorhug-client 0.2.7 0.2.8: Client tools for the ColorHug display colorimeter
-media-gfx/comical 0.8-r3: A sequential image display program, to deal with .cbr and .cbz files
 media-gfx/comix 4.0.4-r1: A GTK image viewer specifically designed to handle comic books
 media-gfx/converseen 0.6.4 0.6.8: Batch image converter and resizer based on ImageMagick
 media-gfx/cptutils 1.54 1.59 1.61: A number of utilities for the manipulation of color gradient files
@@ -13005,8 +12976,6 @@ media-sound/meterbridge 0.9.3: Software meterbridge for the UNIX based JACK audi
 media-sound/mhwaveedit 1.4.22 1.4.23: GTK+ Sound file editor (wav, and a few others.)
 media-sound/mikmod 3.2.6 3.2.7: A console MOD-Player based on libmikmod
 media-sound/milkytracker 0.90.86: FastTracker 2 inspired music tracker
-media-sound/mimd 0.30.1: Multicast streaming server for MPEG1/2 and MP3 files
-media-sound/miniaudicle 0.1.3.8-r2: integrated development + performance environment for chuck
 media-sound/mixxx 1.10.1 1.11.0: A Qt based Digital DJ tool
 media-sound/mmix 0.3: A soundcard mixer for the OSS driver
 media-sound/moc 2.5.0 2.6_alpha1 2.6_alpha1-r1: Music On Console - ncurses interface for playing audio files
@@ -13039,7 +13008,6 @@ media-sound/mpg321 0.3.1-r1 0.3.2: A realtime MPEG 1.0/2.0/2.5 audio player for 
 media-sound/mplay 0.80: A Curses front-end for mplayer
 media-sound/mserv 0.35-r1: Jukebox-style music server
 media-sound/mt-daapd 0.2.4.2: A multi-threaded implementation of Apple's DAAP server
-media-sound/muine 0.8.11-r3: A music player for GNOME
 media-sound/multimux 0.2.5.2: combines up to 8 audio mono wave ch. into one big multi ch. wave file
 media-sound/mumble 1.2.6 1.2.12 1.2.13: Mumble is an open source, low-latency, high quality voice chat software
 media-sound/mup 5.7: Program for printing music scores
@@ -13066,7 +13034,6 @@ media-sound/patchage 0.5.0-r1 1.0.0: Modular patch bay for JACK-based audio and 
 media-sound/pavucontrol 2.0-r1 3.0: Pulseaudio Volume Control, GTK based mixer for Pulseaudio
 media-sound/pavumeter 0.9.3-r1: PulseAudio Volume Meter, simple GTK volume meter for PulseAudio
 media-sound/peercast 0.1218-r2: A client and server for Peercast P2P-radio network
-media-sound/phasex 0.12.0_beta3: Software synthesizer (Phase Harmonic Advanced Synthesis EXperiment)
 media-sound/pianobar 2015.11.22 9999: A console-based replacement for Pandora's flash player
 media-sound/pianobooster 0.6.4b: A MIDI file player that teaches how to play the piano
 media-sound/picard 1.3.1 1.3.2-r1: A cross-platform music tagger
@@ -13159,7 +13126,6 @@ media-sound/streamripper 1.64.6: Extracts and records individual MP3 file tracks
 media-sound/streamtranscoder 1.2.4 3.1.11: Command line application to transcode shoutcast/icecast streams to different bitrates
 media-sound/subsonic-bin 5.2.1-r1: Subsonic is a complete, personal media streaming solution
 media-sound/substract_wave 0.3-r1: substracts 2 mono wave files from each other by a factor specified on the command line
-media-sound/sweep 0.9.3-r1: Audio editor and live playback tool
 media-sound/synaesthesia 2.4: a nice graphical accompaniment to music
 media-sound/taginfo 1.2-r1: a simple ID3 tag reader for use in shell scripts
 media-sound/tagtool 0.12.3 0.12.3-r1: Audio Tag Tool Ogg/Mp3 Tagger
@@ -13318,7 +13284,6 @@ media-video/h264enc 9.4.0 9.4.1 10.4.1: Script to encode H.264/AVC/MPEG-4 Part 1
 media-video/handbrake 0.10.2-r1 9999: Open-source, GPL-licensed, multiplatform, multithreaded video transcoder
 media-video/harvid 0.8.0: HTTP Ardour Video Daemon
 media-video/hasciicam 1.1.1 1.1.2: A webcam software displaying ascii art using aalib
-media-video/hwdecode-demos 0.9.5: Standalone programs showing off various HW acceleration APIs
 media-video/imagination 3.0 3.0-r1: Simple DVD slideshow maker
 media-video/isight-firmware-tools 1.6-r1: Extract, load or export firmware for the iSight webcams
 media-video/istanbul 0.2.2 0.2.2.1_pre20120909: Istanbul is a screencast application for the Unix desktop
@@ -13799,7 +13764,6 @@ net-dns/fpdns 0.10.0_pre20130404-r1: Fingerprinting DNS servers
 net-dns/hash-slinger 2.6-r1: Various tools to generate special DNS records like SSHFP, TLSA, OPENPGPKEY, IPSECKEY
 net-dns/hesinfo 3.1.0: A simple command-line interface to the net-dns/hesiod service library
 net-dns/hesiod 3.1.0: Use DNS functionality to provide access to databases of information that changes infrequently
-net-dns/host 20070128-r1: A powerful command-line DNS query and test tool implementing many additional protocols
 net-dns/idnkit 1.0-r2: Toolkit for Internationalized Domain Names (IDN)
 net-dns/knot 1.6.6 2.1.0: High-performance authoritative-only DNS server
 net-dns/ldns-utils 1.6.12 1.6.17: Set of utilities to simplify various dns(sec) tasks
@@ -13976,7 +13940,6 @@ net-im/turses 0.2.13-r1 0.2.23: Command line twitter client
 net-im/vacuum 1.2.4 9999: Qt4 Crossplatform Jabber client
 net-im/ysm 2.9.9.1 2.9.9.1-r1: A console ICQ client supporting versions 7/8
 net-irc/anope 1.8.7-r2: Anope IRC Services
-net-irc/asuka 1.2.1: The QuakeNet IRC Server
 net-irc/atheme-services 6.0.11-r1 7.0.6-r1 9999: A portable and secure set of open-source and modular IRC services
 net-irc/bip 0.8.9: Multiuser IRC proxy with SSL support
 net-irc/bnc 2.9.4: BNC (BouNCe) is used as a gateway to an IRC Server
@@ -14124,7 +14087,6 @@ net-libs/libkpeople 0.3.0: KDE contact person abstraction library
 net-libs/libktorrent 1.3.1: A BitTorrent library based on KDE Platform
 net-libs/libkvkontakte 4.4.0 4.12.0: Library for accessing the features of social networking site vkontakte.ru
 net-libs/liblockfile 1.09: Implements functions designed to lock the standard mailboxes
-net-libs/libmapi 1.0: Portable open-source implementations of Exchange protocols
 net-libs/libmbim 1.6.0 1.10.0 1.12.2 9999: MBIM modem protocol helper library
 net-libs/libmediawiki 4.4.0 4.12.0 4.13.0: KDE C++ interface for MediaWiki based web service as wikipedia.org
 net-libs/libmicrohttpd 0.9.47 0.9.48: Small C library to run an HTTP server as part of another application
@@ -14254,7 +14216,6 @@ net-mail/autorespond 2.0.4 2.0.5: Autoresponder add on package for qmailadmin
 net-mail/bincimap 1.2.13: IMAP server for Maildir
 net-mail/checkpassword 0.90-r2 0.90-r3: A uniform password checking interface for root applications
 net-mail/checkpassword-pam 0.99: checkpassword-compatible authentication program w/pam support
-net-mail/checkpw 1.02: an implementation of the checkpassword interface that checks a password
 net-mail/cmd5checkpw 0.30-r1: A checkpassword compatible authentication program that used CRAM-MD5 authentication mode
 net-mail/courier-imap 4.15-r1 4.16.0 4.16.2: An IMAP daemon designed specifically for maildirs
 net-mail/courierpassd 1.1.2-r1: Courierpassd is a utility for changing a user's password from across a network
@@ -14499,8 +14460,6 @@ net-misc/iputils 20121221 20121221-r1 20121221-r2 20150815 20150815-r1 99999999:
 net-misc/ipv6calc 0.94.1 0.97.4 0.99.0 0.99.1: IPv6 address calculator
 net-misc/ipx-utils 1.1-r3: The IPX Utilities
 net-misc/isatapd 0.9.7-r2: creates and maintains an ISATAP tunnel (rfc5214)
-net-misc/italc 2.0.0: Intelligent Teaching And Learning with Computers (iTALC) supports working with computers in school
-net-misc/ixp4xx 2.1: kernel drivers for intel ixp4xx systems (like the NSLU2)
 net-misc/java-wakeonlan 1.0.0-r2: A wakeonlan commandline tool and Java library
 net-misc/jigdo 0.7.3-r2: Jigsaw Download is a tool designed to ease the distribution of large files, for example DVD images
 net-misc/jlj 2.12: A simple console LiveJournal entry system
@@ -14513,7 +14472,6 @@ net-misc/knemo 0.7.7: The KDE Network Monitor
 net-misc/knock 0.6 0.7: A simple port-knocking daemon
 net-misc/knutclient 1.0.5: A visual KDE client for UPS systems
 net-misc/ksshaskpass 0.5.3-r1: KDE implementation of ssh-askpass with Kwallet integration
-net-misc/kumofs 0.4.13: a scalable and highly available distributed key-value store
 net-misc/kvpnc 0.9.6a-r2: KDE frontend for various VPN clients
 net-misc/l7-filter-userspace 0.11 0.12_beta1: Userspace utilities for layer 7 iptables QoS
 net-misc/l7-protocols 2009.05.28: Protocol definitions of l7-filter kernel modules
@@ -14622,7 +14580,6 @@ net-misc/portfwd 0.29: Port Forwarding Daemon
 net-misc/portspoof 1.1 1.3 9999: return SYN+ACK for every port connection attempt
 net-misc/pps-tools 0.0.20110710 0.0.20120407: User-space tools for LinuxPPS
 net-misc/proxychains 4.8.1 4.10: force any tcp connections to flow through a proxy (or proxy chain)
-net-misc/proxyper 341a 347a: distributed.net personal proxy
 net-misc/proxytunnel 1.9.1-r1: Connect stdin and stdout to a server somewhere on the network, through a standard HTTPS proxy
 net-misc/ps3mediaserver 1.82.0 1.90.0 1.90.1: DLNA compliant UPNP server for streaming media to Playstation 3
 net-misc/pssh 2.3.1-r1: PSSH provides parallel versions of OpenSSH and related tools
@@ -14846,12 +14803,10 @@ net-p2p/gtk-gnutella 1.1.6 1.1.8: A GTK+ Gnutella client
 net-p2p/gtorrentviewer 0.2b: A GTK2-based viewer and editor for BitTorrent meta files
 net-p2p/hx 0.4.11: This is a Hotline 1.5+ compatible *nix Hotline Client in CLI. It supports IRC compatibility
 net-p2p/i2p 0.9.22 0.9.22-r1 0.9.23 0.9.24: A privacy-centric, anonymous network.
-net-p2p/imule 2.3.2.3 2.3.2.3-r1: P2P sharing software which connects through I2P and Kad networks
 net-p2p/kmldonkey 2.0.7: Provides integration for the MLDonkey P2P software and KDE 4
 net-p2p/ktorrent 4.3.1-r1: A BitTorrent program for KDE
 net-p2p/litecoin-qt 0.10.2.2-r3: P2P Internet currency based on Bitcoin but easier to mine
 net-p2p/litecoind 0.10.2.2-r4: P2P Internet currency based on Bitcoin but easier to mine
-net-p2p/microdc 0.11.0: A small command-line based Direct Connect client
 net-p2p/microdc2 0.15.6-r2: A small command-line based Direct Connect client
 net-p2p/mktorrent 1.0-r1: Simple command line utility to create BitTorrent metainfo files
 net-p2p/mktorrent-borg 0.9.9: Console .torrent file creator. It support Multi Trackers (tier groups)
@@ -14941,7 +14896,6 @@ net-proxy/havp 0.92a-r1: HTTP AntiVirus Proxy
 net-proxy/http-replicator 3.0-r4 4.0_alpha2-r4: Proxy cache for Gentoo packages
 net-proxy/httpush 0.9_beta11-r1: Httpush is an intercepting proxy, allowing user to modify HTTP requests on-the-fly
 net-proxy/mitmproxy 0.10.1 0.11.1 0.11.3: An interactive, SSL-capable, man-in-the-middle HTTP proxy
-net-proxy/ntlmaps 0.9.9-r2 0.9.9.6-r3: NTLM proxy Authentication against MS proxy/web server
 net-proxy/nutcracker 0.2.4 0.3.0: A fast, light-weight proxy for Memcached and Redis. (Twitter's Twemproxy)
 net-proxy/nylon 1.21-r1: A lightweight SOCKS proxy server
 net-proxy/obfsproxy 0.2.11 0.2.12 0.2.13: An obfuscating proxy using Tor's pluggable transport protocol
@@ -14956,7 +14910,6 @@ net-proxy/squid 3.5.6 3.5.7 3.5.8 3.5.9 3.5.10 3.5.11 3.5.12 3.5.14: A full-feat
 net-proxy/squidclamav 6.8 6.10: HTTP Antivirus for Squid based on ClamAv and ICAP
 net-proxy/squidguard 1.4-r4 1.5_beta-r1: Combined filter, redirector and access controller plugin for Squid
 net-proxy/squirm 1.26-r1: A redirector for Squid
-net-proxy/sshproxy 0.6.0_beta2-r2: sshproxy is an ssh gateway to apply ACLs on ssh connections
 net-proxy/sshuttle 0.61-r3 0.73 0.75 0.76: Transparent proxy server that works as a poor man's VPN using ssh
 net-proxy/tayga 0.9.2: out-of-kernel stateless NAT64 implementation based on TUN
 net-proxy/tinyproxy 1.8.3-r3: A lightweight HTTP/SSL proxy
@@ -14982,7 +14935,6 @@ net-wireless/aircrack-ng 1.2_rc1-r1 1.2_rc2 1.2_rc3 9999: WLAN tools for breakin
 net-wireless/airpwn 1.4-r2: Tool for generic packet injection on 802.11
 net-wireless/airsnort 0.2.7e: 802.11b Wireless Packet Sniffer/WEP Cracker
 net-wireless/airtraf 1.1-r3: AirTraf 802.11b Wireless traffic sniffer
-net-wireless/ap-utils 1.4 1.5: Wireless Access Point Utilities for Unix
 net-wireless/b43-fwcutter 018 019: Firmware Tool for Broadcom 43xx based wireless network devices using the mac80211 wireless stack
 net-wireless/bcm43xx-fwcutter 005 006: Firmware Tool for Broadcom 43xx based wireless network devices
 net-wireless/bladerf 2015.02 2015.07 9999: Libraries for supporing the BladeRF hardware from Nuand
@@ -15384,7 +15336,6 @@ sci-chemistry/gamess 20110811.1: A powerful quantum chemistry package
 sci-chemistry/gamessq 1.2: Simple job manager for GAMESS-US
 sci-chemistry/gelemental 1.2.0-r1: Periodic table viewer with detailed information on the chemical elements
 sci-chemistry/ghemical 2.99.2-r2 3.0.0: Chemical quantum mechanics and molecular mechanics
-sci-chemistry/gopenmol 3.00-r2 3.00-r3: Tool for the visualization and analysis of molecular structures
 sci-chemistry/gperiodic 2.0.10-r2 3.0.1: Periodic table application for Linux
 sci-chemistry/gromacs 5.0.4 5.0.4-r1 5.0.5 5.0.6 5.0.7 5.1 5.1.1: The ultimate molecular dynamics simulation package
 sci-chemistry/gsim 21.3 21.3-r1: Visualisation and processing of experimental and simulated NMR spectra
@@ -15952,7 +15903,6 @@ sci-physics/xfoil 6.97: Design and analysis of subsonic isolated airfoils
 sci-physics/yoda 1.4.0: Yet more Objects for (High Energy Physics) Data Analysis
 sci-visualization/circos 0.55: Circular layout visualization of genomic and other data
 sci-visualization/epix 1.2.10 1.2.11 1.2.11-r1: 2- and 3-D plotter for creating images (to be used in LaTeX)
-sci-visualization/extrema 4.4.5: Interactive data analysis and visualization tool
 sci-visualization/fig2sxd 0.21: Utility to convert files in xfig format to OpenOffice.org Draw format
 sci-visualization/fityk 1.2.1 1.2.9: General-purpose nonlinear curve fitting and data analysis
 sci-visualization/g3data 1.5.4: Tool for extracting data from graphs
@@ -16379,7 +16329,6 @@ sys-apps/lsadb 0.1.3: Prints out information on all devices attached to the ADB 
 sys-apps/lsb-release 1.4 1.4-r1 1.4-r2 1.4-r3: LSB version query program
 sys-apps/lshw 02.16b-r2 02.17b 02.17b-r1 02.17b-r2: Hardware Lister
 sys-apps/lssbus 0.1: Small utility for Linux/SPARC that list devices on SBUS
-sys-apps/magneto-core 254: Entropy Package Manager notification applet library
 sys-apps/makedev 3.23.1: program used for creating device files in /dev
 sys-apps/man 1.6g 1.6g-r1: Standard commands to read man pages
 sys-apps/man-db 2.7.2 2.7.4 2.7.5: a man replacement that utilizes berkdb instead of flat files
@@ -16446,7 +16395,6 @@ sys-apps/rename 1.3 1.3-r1: tool for easily renaming files
 sys-apps/renameutils 0.12.0: Use your favorite text editor to rename files
 sys-apps/rescan-scsi-bus 1.29 1.56 1.57 1.57-r1: Script to rescan the SCSI bus without rebooting
 sys-apps/restartd 0.2.2: A daemon for checking your running and not running processes
-sys-apps/rigo-daemon 254: Entropy Client DBus Services, aka RigoDaemon
 sys-apps/rkflashtool 5.1: Tool for flashing Rockchip devices
 sys-apps/rng-tools 4-r7 5 5-r1 5-r2: Daemon to use hardware random number generators
 sys-apps/roccat-tools 3.4.0 3.5.0 3.5.0-r1 3.6.1 3.7.0: Utility for advanced configuration of Roccat devices
@@ -16702,7 +16650,6 @@ sys-cluster/galera 25.3.10 25.3.12 25.3.13: Synchronous multi-master replication
 sys-cluster/ganglia 3.5.0 3.5.0-r1 3.6.0-r1 3.7.1 3.7.1-r1: A scalable distributed monitoring system for clusters and grids
 sys-cluster/ganglia-web 3.5.8-r1 3.5.10-r1: Web frontend for sys-cluster/ganglia
 sys-cluster/gearmand 0.34-r1: Generic framework to farm out work to other machines
-sys-cluster/gfs-kernel 2.03.09: GFS kernel module
 sys-cluster/glusterfs 3.1.2 3.5.4 3.6.5 3.7.4: GlusterFS is a powerful network/cluster filesystem
 sys-cluster/heartbeat 3.0.5-r2: Heartbeat high availability cluster manager
 sys-cluster/hpl 2.0-r3: A Portable Implementation of the High-Performance Linpack Benchmark for Distributed-Memory Computers
@@ -16737,7 +16684,6 @@ sys-cluster/openmpi 1.4.3 1.4.5 1.6.5-r1 1.7.5-r1 1.8.4-r4 1.8.7-r1 1.8.8 1.10.0
 sys-cluster/openstack-meta 2015.2.9999: A openstack meta-package for installing the various openstack pieces
 sys-cluster/osc-mpiexec 0.83: replacement for mpirun, integrates MPI with PBS
 sys-cluster/pacemaker 1.1.12-r2 1.1.14: Pacemaker CRM
-sys-cluster/pacemaker-gui 2.1.2: Pacemaker python GUI and management daemon
 sys-cluster/pbs-python 4.3.3-r1: Python bindings to the Torque C API
 sys-cluster/pconsole 1.0-r3: Tool for managing multiple xterms simultaneously
 sys-cluster/ploop 1.13.2 1.14.1: openvz tool and a library to control ploop block devices
@@ -16753,7 +16699,6 @@ sys-cluster/torque 2.5.13 4.1.7 4.2.9-r4: Resource manager and queuing system ba
 sys-cluster/util-vserver 0.30.216_pre3025 0.30.216_pre3062 0.30.216_pre3120: Linux-VServer admin utilities
 sys-cluster/vzctl 4.9.1 4.9.4: OpenVZ ConTainers control utility
 sys-cluster/wulfware 2.6.0: Applications to monitor on a beowulf- or GRID-style clusters
-sys-cluster/xgridagent 1.0: A simple system for setting up and using a cluster of OS X machines
 sys-devel/autoconf 2.13 2.59-r7 2.61-r2 2.62-r1 2.63-r1 2.64 2.65-r1 2.67 2.68 2.69 2.69-r1 9999: Used to create autoconfiguration files
 sys-devel/autoconf-archive 2015.02.04 2015.02.24 2015.09.25: GNU Autoconf Macro Archive
 sys-devel/autoconf-wrapper 13: wrapper for autoconf to manage multiple autoconf versions
@@ -17950,7 +17895,6 @@ x11-libs/libgksu 2.0.12-r2: A library for integration of su into applications
 x11-libs/libgxim 0.5.0: GObject-based XIM protocol library
 x11-libs/libiterm-mbt 0.5: Hacked version of libiterm -- Internationalized Terminal Emulator Library
 x11-libs/libkscreen 1.0.5_p20150822: KDE screen management library
-x11-libs/libmatchbox 1.9-r1: The Matchbox Library
 x11-libs/libnotify 0.7.6-r1: A library for sending desktop notifications
 x11-libs/liboglappth 0.98 1.0.0: A library for creating portable OpenGL applications with easy-to-code scene setup and selection
 x11-libs/libpciaccess 0.13.3 0.13.4: Library providing generic access to the PCI bus and devices
@@ -18018,7 +17962,6 @@ x11-misc/accessx 0951-r1: Interface to the XKEYBOARD extension in X11
 x11-misc/afbinit 1.0.1-r7: loads the microcode for Elite3D framebuffers to use X
 x11-misc/alacarte 3.10.0 3.11.91: Simple GNOME menu editor
 x11-misc/albert 0.7.7 0.8.0: Desktop agnostic launcher
-x11-misc/alltray 0.7.5.1: An application which allows any application to be docked into the system notification area
 x11-misc/alock 94 94-r1: locks the local X display until a password is entered
 x11-misc/andromeda 0.3: Qt4-based filemanager
 x11-misc/appmenu-qt 0.2.6: Application menu module for Qt
@@ -18040,7 +17983,6 @@ x11-misc/bbrun 1.6-r1: blackbox program execution dialog box
 x11-misc/bbtime 0.1.5: blackbox time watcher
 x11-misc/bbweather 0.6.3-r1: blackbox weather monitor
 x11-misc/blockdpy 1: Tool to block access via the physical display while x11vnc is running
-x11-misc/bmpanel 0.9.27-r1: a lightweight, NETWM compliant panel for X11 Window System
 x11-misc/bumblebee 3.2.1: Service providing elegant and stable means of managing Optimus graphics chipsets
 x11-misc/cairo-clock 0.3.3 0.3.4: An analog clock displaying the system-time
 x11-misc/calise 0.4.2: Computes ambient brightness and sets screen's correct backlight using a webcam
@@ -18057,7 +17999,6 @@ x11-misc/devilspie2 0.36 0.37 0.39: Devilspie like window matching utility, usin
 x11-misc/dex 0.6 0.7: DesktopEntry eXecution - tool to manage and launch autostart entries
 x11-misc/dmenu 4.5-r3 4.5-r4 4.6 9999: a generic, highly customizable, and efficient menu for the X Window System
 x11-misc/dockmanager 0.1.0-r1: dock-independent helper scripts
-x11-misc/dragbox 0.4.0: GTK tool for connecting the commandline with the desktop environment
 x11-misc/driconf 0.9.1-r1: driconf is a GTK+2 GUI configurator for DRI
 x11-misc/dsx 0.1: command line selection of your X desktop environment
 x11-misc/dunst 0.5.0 1.0.0 1.0.0-r1 1.1.0: customizable and lightweight notification-daemon
@@ -18131,8 +18072,6 @@ x11-misc/lsw 0.3: list window names
 x11-misc/lxmed 20110717 20120515: freedesktop.org specification compatible menu editor
 x11-misc/macopix 1.7.4: MaCoPiX (Mascot Constructive Pilot for X) is a desktop mascot application on UNIX / X Window system
 x11-misc/magick-rotation 1.6.2-r2: Application that rotates tablet pc's screen automatically, depending on orientation
-x11-misc/magneto-gtk 254: Entropy Package Manager notification applet GTK2 frontend
-x11-misc/magneto-gtk3 254: Entropy Package Manager notification applet GTK3 frontend
 x11-misc/makedepend 1.0.3 1.0.4 1.0.5: create dependencies in makefiles
 x11-misc/matchbox-keyboard 0.1: Matchbox-keyboard is an on screen 'virtual' or 'software' keyboard
 x11-misc/mate-notification-daemon 1.8.0 1.8.1 1.10.2: MATE Notification daemon
@@ -18328,14 +18267,6 @@ x11-plugins/compiz-plugins-extra 0.8.8: Compiz Fusion Window Decorator Extra Plu
 x11-plugins/compiz-plugins-main 0.8.8: Compiz Fusion Window Decorator Plugins
 x11-plugins/compiz-plugins-unsupported 0.8.8: Compiz Fusion Window Decorator Unsupported Plugins
 x11-plugins/cputnik 0.2.0: cputnik is a simple cpu monitor dockapp
-x11-plugins/desklet-Genesis 0.2: An application launcher for gDesklets
-x11-plugins/desklet-ImageSlideShow 0.8-r1: ImageSlideShow Control for gDesklets
-x11-plugins/desklet-Mouse 0.1: Control for gDesklets that reports information about the cursor
-x11-plugins/desklet-SlideShow 0.9: Slideshow desklet for gDesklets that cycles through a collection of pictures
-x11-plugins/desklet-WeeklyCalendar 0.60: A weekly calendar with task management capability
-x11-plugins/desklet-ftb 0.3.2: Configurable, stackable system monitors
-x11-plugins/desklet-iCalendarEvent 0.5: iCalendarEvent Control for gDesklets
-x11-plugins/desklet-justanicon 0.2: A configurable desktop icon
 x11-plugins/docker 1.5 1.5-r1: Openbox app which acts as a system tray for KDE and GNOME2
 x11-plugins/echievements 2: Show enlightenment echievements
 x11-plugins/epplets 0.12 0.14: Base files for Enlightenment epplets and some epplets
@@ -18369,11 +18300,6 @@ x11-plugins/gkwebmon 0.2: A web monitor plugin for GKrellM2
 x11-plugins/guifications 2.16: Guifications is a graphical notification plugin for the open source instant message client pidgin
 x11-plugins/hexchat-javascript 0.3.1 0.3.2: Javascript interface for HexChat
 x11-plugins/i8krellm 2.5 2.5-r1: GKrellM2 Plugin for the Dell Inspiron and Latitude notebooks
-x11-plugins/matchbox-applet-input-manager 0.6: Matchbox panel tray app for managing software input methods
-x11-plugins/matchbox-applet-startup-monitor 0.1: Startup notification matchbox panel tray app
-x11-plugins/matchbox-applet-volume 0.1: Matchbox panel tray app for controlling volume levels
-x11-plugins/matchbox-desktop-image-browser 0.2-r1: An alpha-ish image browser plug in for matchbox-desktop
-x11-plugins/matchbox-desktop-xine 0.4: A matchbox-desktop plugin that allows you to browse and play media
 x11-plugins/monto 0.1.1-r1: a simple manual device mounter (up to four devices)
 x11-plugins/pidgin-birthday-reminder 1.7: Plugin for Pidgin that reminds you of your buddies birthdays
 x11-plugins/pidgin-bot-sentry 1.3.0: Bot Sentry is a Pidgin plugin to prevent Instant Message (IM) spam
@@ -18658,7 +18584,6 @@ x11-themes/leonidas-backgrounds 11.0.0.2: Fedora official background artwork
 x11-themes/light-themes 0.1.93-r4 15.04_p20150410: GTK2/GTK3 Ambiance and Radiance themes from Ubuntu
 x11-themes/lovelock-backgrounds 14.91.1.1: Fedora official background artwork
 x11-themes/lush 0.1.0-r2: Lush KDE icon theme
-x11-themes/matchbox-themes-extra 0.3: Extra themes for the matchbox window manager
 x11-themes/mate-backgrounds 1.8.0 1.10.0: A set of backgrounds packaged with the MATE desktop
 x11-themes/mate-icon-theme 1.8.0 1.10.1: MATE default icon themes
 x11-themes/mate-icon-theme-faenza 1.8.0 1.10.1: Faenza icon theme, that was adapted for MATE desktop
@@ -18744,10 +18669,6 @@ x11-wm/larswm 7.5.3-r1: Tiling window manager for X11, based on 9wm by David Hog
 x11-wm/lwm 1.2.1 1.2.2 1.2.3: The ultimate lightweight window manager
 x11-wm/marco 1.8.0 1.8.2 1.10.3: MATE default window manager
 x11-wm/matchbox 1.0: Light weight WM designed for use on PDA computers
-x11-wm/matchbox-common 0.9.1-r2: Common files used by matchbox-panel and matchbox-desktop packages
-x11-wm/matchbox-desktop 0.9.1: The Matchbox Desktop
-x11-wm/matchbox-panel 0.9.3-r1: The Matchbox Panel
-x11-wm/matchbox-window-manager 1.2-r1: Light weight WM designed for use on PDA computers
 x11-wm/matwm2 0.1.1: Simple EWMH compatible window manager with titlebars and frames
 x11-wm/muffin 2.6.1 2.8.3 2.8.4: Compositing window manager forked from Mutter for use with Cinnamon
 x11-wm/musca 0.9.24_p20100226-r3 0.9.24_p20100226-r4: A simple dynamic window manager for X, with features nicked from ratpoison and dwm
