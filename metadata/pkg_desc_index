@@ -3083,7 +3083,7 @@ dev-go/bee 1.4.1_p20160125: A tool for helping develop with beego app framework
 dev-go/beego 1.6.0_p20160126: High-performance web framework for Go
 dev-go/blackfriday 1.2_p20150720 9999: a markdown processor implemented in Go
 dev-go/go-colortext 0_pre20150720: Change the console foreground and background colors
-dev-go/go-crypto 0_pre20150808 9999: Go supplementary cryptography libraries
+dev-go/go-crypto 0_pre20150808 0_pre20160126 9999: Go supplementary cryptography libraries
 dev-go/go-eapache-queue 1.0.2 9999: Fast golang queue using ring-buffer
 dev-go/go-md2man 1.0.3: A utility to convert markdown to man pages
 dev-go/go-net 0_pre20150804 9999: Go supplementary network libraries
