@@ -26,9 +26,9 @@ IUSE=""
 RDEPEND=">=sys-apps/portage-2.1
 	>=app-portage/portage-utils-0.55
 	app-shells/bash
+	sys-apps/gentoo-functions
 	!sys-devel/crossdev-wrappers"
-DEPEND="app-arch/xz-utils
-	sys-apps/gentoo-functions"
+DEPEND="app-arch/xz-utils"
 
 src_prepare() {
 	epatch "${FILESDIR}"/use-new-path-for-functions.sh.patch
