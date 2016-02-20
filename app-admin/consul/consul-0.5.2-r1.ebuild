@@ -47,6 +47,7 @@ IUSE="test web"
 RESTRICT="test"
 
 DEPEND="
+	app-arch/zip
 	>=dev-lang/go-1.4:=
 	dev-go/go-crypto:=
 	test? ( dev-go/go-tools )
