@@ -10,7 +10,7 @@ DESCRIPTION="Rapid spam filtering system"
 SRC_URI="https://rspamd.com/downloads/${P}.tar.xz"
 HOMEPAGE="https://github.com/vstakhov/rspamd"
 
-LICENSE="BSD-2"
+LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="+jit"
@@ -43,14 +43,14 @@ src_configure() {
 		-DRUNDIR=/var/run/rspamd
 		-DDBDIR=/var/lib/rspamd
 		-DLOGDIR=/var/log/rspamd
-		-DENABLE_LUAJIT=$(usex jit)
+		-DENABLE_LUAJIT=$(usex jit ON OFF)
 	)
 	cmake-utils_src_configure
 }
 
 src_install() {
 	cmake-utils_src_install
-	newinitd "${FILESDIR}/rspamd.init" rspamd
+	newinitd "${FILESDIR}/rspamd.init-r1" rspamd
 
 	dodir /var/lib/rspamd
 	dodir /var/log/rspamd
