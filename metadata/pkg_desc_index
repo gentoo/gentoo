@@ -11652,7 +11652,7 @@ mail-mta/sendmail 8.14.9 8.14.9-r1: Widely-used Mail Transport Agent (MTA)
 mail-mta/ssmtp 2.64-r2 2.64-r3: Extremely simple MTA to get mail off the system to a Mailhub
 mate-base/caja 1.8.1 1.8.2-r1 1.10.4: Caja file manager for the MATE desktop
 mate-base/libmatekbd 1.8.0 1.10.1: MATE keyboard configuration library
-mate-base/mate 1.8.0 1.10.0: Meta ebuild for MATE, a traditional desktop environment
+mate-base/mate 1.8.0 1.10.0-r1: Meta ebuild for MATE, a traditional desktop environment
 mate-base/mate-applets 1.8.0-r1 1.8.1 1.10.4-r1: Applets for the MATE Desktop and Panel
 mate-base/mate-applets-meta 1.10: Meta package for MATE panel applets
 mate-base/mate-common 1.8.0 1.10.0: Common files for development of MATE packages
