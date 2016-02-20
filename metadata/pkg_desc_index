@@ -18411,7 +18411,7 @@ x11-plugins/gkrellmwireless 2.0.3 2.0.3-r1: A plugin for GKrellM that monitors y
 x11-plugins/gkrellshoot 0.4.4: GKrellm2 plugin to take screen shots and lock screen
 x11-plugins/gkrellstock 0.5-r1 0.5.1: Get Stock quotes plugin for Gkrellm2
 x11-plugins/gkrellsun 1.0.0-r1 1.0.0-r2 1.0.0-r3: A GKrellM plugin that shows sunrise and sunset times
-x11-plugins/gkrelltop 2.2.11 2.2.11-r1 2.2.13: a GKrellM2 plugin which displays the top three processes
+x11-plugins/gkrelltop 2.2.11-r1 2.2.13-r1: a GKrellM2 plugin which displays the top three processes
 x11-plugins/gkrellweather 2.0.8: GKrellM2 Plugin that monitors a METAR station and displays weatherinfo
 x11-plugins/gkwebmon 0.2: A web monitor plugin for GKrellM2
 x11-plugins/guifications 2.16: Guifications is a graphical notification plugin for the open source instant message client pidgin
