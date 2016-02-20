@@ -7747,7 +7747,7 @@ dev-python/python-magic 0.4.10: Access the libmagic file type identification lib
 dev-python/python-memcached 1.53-r1 1.54 1.57: Pure python memcached client
 dev-python/python-meteor 0.1.6: An event driven meteor client
 dev-python/python-mhash 1.4-r1: Python interface to libmhash
-dev-python/python-mpd 0.5.4: Python MPD client library
+dev-python/python-mpd 0.5.4 0.5.5: Python MPD client library
 dev-python/python-msrplib 0.18.0: Client library for MSRP protocol and its relay extension
 dev-python/python-musicbrainz 0.7.4-r1: Python Bindings for the MusicBrainz XML Web Service
 dev-python/python-musicbrainz-ngs 0.4 0.5: Python bindings for the MusicBrainz NGS and the Cover Art Archive webservices
