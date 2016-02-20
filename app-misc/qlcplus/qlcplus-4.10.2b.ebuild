@@ -15,7 +15,7 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE="qt4 qt5"
 
-REQUIRED_USE="?? ( qt4 qt5 )"
+REQUIRED_USE="^^ ( qt4 qt5 )"
 
 RDEPEND="dev-libs/glib:2
 	virtual/libusb:0
