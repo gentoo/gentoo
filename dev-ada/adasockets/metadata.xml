@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
-<pkgmetadata>
-<maintainer type="project">
-	<email>ada@gentoo.org</email>
-	<name>Gentoo Resources for Ada</name>
-</maintainer>
-<longdescription>AdaSockets is a set of free software Ada packages allowing Ada programmers to use the so-called BSD sockets from their favourite programming language. AdaSockets has been designed and tested with the GNAT free software Ada compiler, but should be portable to other compilers quite easily. AdaSockets philosophy is to help the Ada programmer by providing easy-to-use objects. Special care has been taken to ensure that performances do however remain good.</longdescription>
-</pkgmetadata>
