@@ -3087,7 +3087,7 @@ dev-go/go-crypto 0_pre20150808 0_pre20160126 9999: Go supplementary cryptography
 dev-go/go-eapache-queue 1.0.2 9999: Fast golang queue using ring-buffer
 dev-go/go-md2man 1.0.3: A utility to convert markdown to man pages
 dev-go/go-net 0_pre20150804 0_pre20160216 9999: Go supplementary network libraries
-dev-go/go-oauth2 0_pre20150701 9999: Go client implementation for OAuth 2.0 spec
+dev-go/go-oauth2 0_pre20150701 0_pre20160220 9999: Go client implementation for OAuth 2.0 spec
 dev-go/go-protobuf 0_pre20150809 0_pre20160216 9999: Go support for Google's protocol buffers
 dev-go/go-resiliency 1.0.0 9999: Resiliency patterns for golang
 dev-go/go-snappy 0_pre20150729 9999: The Snappy compression format in the Go programming language.
@@ -17416,7 +17416,7 @@ www-apache/mod_xml2enc 1.0.3: An Apache2 module to provide libxml2 encoding
 www-apache/mod_xsendfile 1.0_beta1: Apache2 module that processes X-SENDFILE headers registered by the original output handler
 www-apache/modsec-flameeyes 20130216 99999999: Flameeyes's Ruleset for ModSecurity
 www-apache/modsecurity-crs 2.2.6-r1 2.2.7: Core Rule Set for ModSecurity
-www-apache/mpm_itk 2.4.7_p4: Run virtual hosts under separate users/groups
+www-apache/mpm_itk 2.4.7_p4-r1: Run virtual hosts under separate users/groups
 www-apache/passenger 4.0.60 5.0.22 5.0.23 5.0.24: Passenger makes deployment of Ruby on Rails applications a breeze
 www-apache/pwauth 2.3.10: A Unix Web Authenticator
 www-apps/389-dsgw 1.1.10: 389 Directory Server Gateway Web Application
