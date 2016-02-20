@@ -17043,7 +17043,7 @@ sys-libs/lrmi 0.10-r1: library for calling real mode BIOS routines under Linux
 sys-libs/lwp 2.2 2.5 2.6: Light weight process library (used by Coda). This is NOT libwww-perl
 sys-libs/mars 1.0.1: Multicore Application Runtime System
 sys-libs/mtdev 1.1.4 1.1.5: Multitouch Protocol Translation Library
-sys-libs/musl 1.1.12 1.1.13 9999: Light, fast and simple C library focused on standards-conformance and safety
+sys-libs/musl 1.1.12 9999: Light, fast and simple C library focused on standards-conformance and safety
 sys-libs/ncurses 5.9-r3 5.9-r4 5.9-r5 5.9-r99 5.9-r101 6.0 6.0-r1: console display library
 sys-libs/newlib 1.18.0 1.19.0 1.20.0 2.0.0 2.1.0 2.2.0 2.2.0.20150423 2.3.0.20160104 9999: Newlib is a C library intended for use on embedded systems
 sys-libs/nss-usrfiles 2.18.1: NSS module to read passwd/group files from CoreOS /usr location
@@ -18668,7 +18668,6 @@ x11-wm/jwm 2.1.0 2.3.2 2.3.4: Very fast and lightweight still powerful window ma
 x11-wm/larswm 7.5.3-r1: Tiling window manager for X11, based on 9wm by David Hogan
 x11-wm/lwm 1.2.1 1.2.2 1.2.3: The ultimate lightweight window manager
 x11-wm/marco 1.8.0 1.8.2 1.10.3: MATE default window manager
-x11-wm/matchbox 1.0: Light weight WM designed for use on PDA computers
 x11-wm/matwm2 0.1.1: Simple EWMH compatible window manager with titlebars and frames
 x11-wm/muffin 2.6.1 2.8.3 2.8.4: Compositing window manager forked from Mutter for use with Cinnamon
 x11-wm/musca 0.9.24_p20100226-r3 0.9.24_p20100226-r4: A simple dynamic window manager for X, with features nicked from ratpoison and dwm
