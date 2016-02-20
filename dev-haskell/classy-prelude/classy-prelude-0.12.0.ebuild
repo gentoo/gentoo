@@ -45,3 +45,7 @@ DEPEND="${RDEPEND}
 	test? ( >=dev-haskell/hspec-1.3
 		dev-haskell/quickcheck )
 "
+
+src_prepare() {
+	epatch "${FILESDIR}"/${P}-mt-0.9.3.patch
+}
