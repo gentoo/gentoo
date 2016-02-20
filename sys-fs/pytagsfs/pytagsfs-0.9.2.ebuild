@@ -1,15 +1,13 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="2"
-PYTHON_DEPEND="2:2.5"
-SUPPORT_PYTHON_ABIS="1"
-RESTRICT_PYTHON_ABIS="2.4 3.* *-jython 2.7-pypy-*"
-DISTUTILS_USE_SEPARATE_SOURCE_DIRECTORIES="1"
-DISTUTILS_SRC_TEST="setup.py"
+EAPI="5"
 
-inherit distutils
+PYTHON_COMPAT=( python2_7 )
+DISTUTILS_IN_SOURCE_BUILD=yes
+
+inherit distutils-r1
 
 MY_PV="${PV/_/}"
 MY_P="${PN}-${MY_PV}"
@@ -40,3 +38,7 @@ DEPEND="${RDEPEND}
 		media-sound/madplay
 		media-sound/vorbis-tools
 		media-libs/flac )"
+
+python_test() {
+	${PYTHON} setup.py test || die
+}
