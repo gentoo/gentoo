@@ -8203,8 +8203,6 @@ x11-libs/libwnck:tools - Install wnckprop-3 and wnck-urgency-monitor-3 command-l
 x11-libs/libxcb:xkb - Enable the XCB keyboard extension
 x11-libs/libxklavier:introspection - Use dev-libs/gobject-introspection for introspection
 x11-libs/motif:motif22-compatibility - Compatibility with Open Motif 2.2
-x11-libs/mx:glade - Build the dev-util/glade catalog files
-x11-libs/mx:introspection - Use dev-libs/gobject-introspection for introspection
 x11-libs/pixman:loongson2f - Enable Loongson2f MMI optimizations.
 x11-libs/qscintilla:designer - Build plugin for Qt Designer
 x11-libs/qwt:designer - Installs dev-qt/designer plugin
