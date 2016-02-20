@@ -10559,7 +10559,6 @@ games-roguelike/nethack 3.6.0-r3: The ultimate old-school single player dungeon 
 games-roguelike/powder 117: A game in the genre of Rogue, Nethack, and Diablo. Emphasis is on tactical play
 games-roguelike/rogue 5.4.4: The original graphical adventure game that spawned an entire genre
 games-roguelike/scourge 0.21.1: A graphical rogue-like adventure game
-games-roguelike/slashem 0.0.772: Super Lotsa Added Stuff Hack - Extended Magic. A Nethack Variant
 games-roguelike/stone-soup 0.14.2-r1 0.16.2: Dungeon Crawl Stone Soup is a role-playing roguelike game of exploration and treasure-hunting in dungeons
 games-roguelike/tome 2.3.5: save the world from Morgoth and battle evil (or become evil ;])
 games-roguelike/tomenet 4.6.0 4.6.1a: A MMORPG based on the works of J.R.R. Tolkien
@@ -10669,7 +10668,6 @@ games-sports/xmoto 0.5.11: A challenging 2D motocross platform game
 games-strategy/0ad 0.0.18_alpha-r4: A free, real-time strategy game
 games-strategy/0ad-data 0.0.18_alpha: Data files for 0ad
 games-strategy/asc 2.6.0.0-r1: turn based strategy game designed in the tradition of the Battle Isle series
-games-strategy/attal 0.10.1: turn-based strategy game project
 games-strategy/boswars 2.7-r1: Futuristic real-time strategy game
 games-strategy/coldwar 1.0.1-r1: Third-person sneaker like Splinter Cell
 games-strategy/coldwar-demo 1-r2: Third-person sneaker like Splinter Cell
