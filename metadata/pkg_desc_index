@@ -15923,7 +15923,7 @@ sci-mathematics/reduce 20110414-r1: A general-purpose computer algebra system
 sci-mathematics/relational 0.11: Qt4 relational algebra application
 sci-mathematics/rkward 0.6.1: IDE for the R-project
 sci-mathematics/rngstreams 1.0.1: Multiple independent streams of pseudo-random numbers
-sci-mathematics/rstudio 0.97.336 0.97.551 0.98.490 0.98.490-r1 0.98.932 0.98.953 0.98.1028 0.98.1091 0.99.473-r1 0.99.482 0.99.483 0.99.484 0.99.486-r1 0.99.491: IDE for the R language
+sci-mathematics/rstudio 0.97.336 0.97.551 0.98.490 0.98.490-r1 0.98.932 0.98.953 0.98.1028 0.98.1091 0.99.473-r1 0.99.482 0.99.483 0.99.484 0.99.486-r1 0.99.491 0.99.879: IDE for the R language
 sci-mathematics/rw 0.7: Compute rank-width decompositions of graphs
 sci-mathematics/sha1-polyml 5.5.0: implementation of SHA1 is taken from the GNU coreutils package
 sci-mathematics/singular 3.1.6 4.0.2: Computer algebra system for polynomial computations
@@ -17057,7 +17057,7 @@ sys-kernel/genkernel 3.4.45.1 3.4.48 3.4.49.2 3.4.50 3.4.51.4 3.4.52.2 3.4.52.3 
 sys-kernel/genkernel-next 35 55 60 63: Gentoo automatic kernel building scripts, reloaded
 sys-kernel/gentoo-sources 3.4.110 3.4.9999 3.10.95 3.10.96 3.10.97 3.12.52-r1 3.12.53 3.12.54 3.12.9999 3.14.58-r1 3.14.59 3.14.60 3.14.61 3.18.25-r1 3.18.26 3.18.27 4.0.4 4.0.9 4.1.12 4.1.15-r1 4.1.16 4.1.17 4.1.18 4.3.3-r1 4.3.4 4.3.5 4.3.6 4.4.0-r1 4.4.1 4.4.2: Full sources including the Gentoo patchset for the 4.4 kernel tree
 sys-kernel/git-sources 4.5_rc1 4.5_rc2 4.5_rc3 4.5_rc4: The very latest -git version of the Linux kernel
-sys-kernel/hardened-sources 4.1.7-r1 4.2.7 4.3.5-r2 4.4.2: Hardened kernel sources (kernel series 4.4)
+sys-kernel/hardened-sources 4.1.7-r1 4.2.7 4.3.3-r4 4.3.5-r2 4.4.2: Hardened kernel sources (kernel series 4.4)
 sys-kernel/kccmp 0.3: A simple tool for comparing two linux kernel .config files
 sys-kernel/kergen 0.1.1 0.1.3: Kernel config generator
 sys-kernel/linux-docs 3.4.104 3.10.58 3.12.30 3.14.22 4.1.12 4.2.5 4.3: Developer documentation generated from the Linux kernel
