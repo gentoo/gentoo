@@ -35,6 +35,11 @@
 # than support it until then. Removal in 30 days.
 www-servers/tomcat:6
 
+# Aaron Bauman <bman@gentoo.org> (20 Feb 2016)
+# No maintainer and unmitigated vulnerabilities.
+# Masked for removal in 30 days. Bug 395367
+media-libs/libfpx
+
 # Michael Palimaka <kensington@gentoo.org> (19 Feb 2016)
 # Superceded by other filesharing systems. Dead upstream. Unmaintained.
 # Masked for removal in 30 days. Bug 314359.
