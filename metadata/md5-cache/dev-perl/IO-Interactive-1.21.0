@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=>=virtual/perl-version-0.780.0 >=virtual/perl-ExtUtils-MakeMaker-6.640.0 virtual/perl-File-Spec test? ( >=virtual/perl-Test-Simple-0.940.0 ) dev-lang/perl:=
+DESCRIPTION=Utilities for interactive I/O
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/IO-Interactive/
+IUSE=test
+KEYWORDS=~amd64 ~x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=>=virtual/perl-version-0.780.0 dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/B/BD/BDFOY/IO-Interactive-1.021.tar.gz
+_eclass_exported_funcs=src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:- src_install:perl-module
+_eclasses_=multiprocessing	e32940a7b2a9992ad217eccddb84d548	perl-functions	15aff0b9cba2282790142295ceb6be0c	perl-module	b2108b3c85ac7a6a6a9b035b54f6813c
+_md5_=f7c3105be34d260d93e2a48c233d07a4

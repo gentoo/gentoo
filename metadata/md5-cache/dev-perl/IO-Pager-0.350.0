@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=virtual/perl-File-Spec dev-perl/File-Which virtual/perl-IO virtual/perl-ExtUtils-MakeMaker test? ( virtual/perl-Exporter virtual/perl-Test-Simple virtual/perl-File-Temp ) dev-lang/perl:=
+DESCRIPTION=Select a pager, optionally pipe it output if destination is a TTY
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/IO-Pager/
+IUSE=test
+KEYWORDS=~amd64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=virtual/perl-File-Spec dev-perl/File-Which virtual/perl-IO dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/J/JP/JPIERCE/IO-Pager-0.35.tgz
+_eclass_exported_funcs=src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
+_eclasses_=multiprocessing	e32940a7b2a9992ad217eccddb84d548	perl-functions	15aff0b9cba2282790142295ceb6be0c	perl-module	b2108b3c85ac7a6a6a9b035b54f6813c
+_md5_=d04b077cf0339fbd5afdbd98b8b9a5f8

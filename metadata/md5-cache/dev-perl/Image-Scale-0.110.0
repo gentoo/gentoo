@@ -1,0 +1,16 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=png? ( media-libs/libpng:0 ) jpeg? ( virtual/jpeg:0 ) gif? ( media-libs/giflib ) test? ( dev-perl/Test-NoWarnings ) virtual/perl-ExtUtils-MakeMaker dev-lang/perl:=
+DESCRIPTION=Fast, high-quality fixed-point image resizing
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/Image-Scale/
+IUSE=+gif jpeg +png test
+KEYWORDS=~amd64 ~x86
+LICENSE=|| ( GPL-2 GPL-3 )
+RDEPEND=png? ( media-libs/libpng:0 ) jpeg? ( virtual/jpeg:0 ) gif? ( media-libs/giflib ) dev-lang/perl:=
+REQUIRED_USE=|| ( jpeg png )
+RESTRICT=test
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/A/AG/AGRUNDMA/Image-Scale-0.11.tar.gz
+_eclass_exported_funcs=src_prepare:- src_configure:- src_compile:perl-module src_test:perl-module src_install:perl-module
+_eclasses_=multiprocessing	e32940a7b2a9992ad217eccddb84d548	perl-functions	15aff0b9cba2282790142295ceb6be0c	perl-module	b2108b3c85ac7a6a6a9b035b54f6813c
+_md5_=0f0596585fc1f896e197f1bb6ed1f838
