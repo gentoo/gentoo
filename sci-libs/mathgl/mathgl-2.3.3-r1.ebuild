@@ -30,7 +30,7 @@ RDEPEND="
 	fltk? ( x11-libs/fltk:1 )
 	gif? ( media-libs/giflib )
 	glut? ( media-libs/freeglut )
-	gsl? ( <sci-libs/gsl-2 )
+	gsl? ( >=sci-libs/gsl-2 )
 	hdf? ( sci-libs/hdf )
 	hdf5? ( >=sci-libs/hdf5-1.8[mpi=] )
 	jpeg? ( virtual/jpeg:0 )
@@ -56,19 +56,27 @@ REQUIRED_USE="
 	pdf? ( png )
 	python? ( ${PYTHON_REQUIRED_USE} )"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-gsl-2.patch
+)
+
 pkg_setup() {
 	use mpi && export CC=mpicc CXX=mpicxx
 	use python && python-single-r1_pkg_setup
 }
 
 src_unpack() {
-	unpack ${A}
-	[[ -d "${S}"/fonts ]] || mkdir "${S}"/fonts
+	default
+	if ! [[ -d "${S}"/fonts ]]; then
+		mkdir "${S}"/fonts || die
+	fi
 	cd "${S}"/fonts || die
 	unpack STIX_font.tgz
 }
 
 src_prepare() {
+	default
+	epatch "${PATCHES[@]}"
 	# fix for location of hdf headers
 	sed -i -e 's:hdf/::g' src/data_io.cpp || die
 	# bored of reporting bad libdir upstream
@@ -82,9 +90,13 @@ src_prepare() {
 	sed -i -e 's/update-mime-database/true/' udav/CMakeLists.txt || die
 	sed -i -e 's/update-desktop-database/true/' udav/CMakeLists.txt || die
 	# fix missing include, bug 564204
-	sed -i -e '/#include <QStringList>/i #include <QObject>' json/Backend.hpp || die
+	sed \
+		-e '/#include <QStringList>/i #include <QObject>' \
+		-i json/Backend.hpp || die
 
-	use python && append-cppflags -I"$(${EPYTHON} -c 'import numpy; print(numpy.get_include())')"
+	use python && \
+		append-cppflags \
+		-I"$(${EPYTHON} -c 'import numpy; print(numpy.get_include())')"
 	use wxwidgets && need-wxwidgets unicode
 }
 
@@ -128,7 +140,9 @@ src_configure() {
 src_install() {
 	cmake-utils_src_install
 	dodoc README* *.txt AUTHORS
-	use static-libs || rm "${ED}"/usr/$(get_libdir)/*.a
+	if ! use static-libs; then
+		rm "${ED}"/usr/$(get_libdir)/*.a || die
+	fi
 	if use qt4 ; then
 		local lang
 		insinto /usr/share/udav

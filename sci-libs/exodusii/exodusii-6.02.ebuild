@@ -29,6 +29,14 @@ S="${WORKDIR}"/${MY_P}/${MY_PN}
 
 PATCHES=( "${FILESDIR}"/${PN}-5.26-multilib.patch )
 
+src_prepare() {
+	use test || \
+		sed \
+		-e 's:Fortran::g' \
+		-i CMakeLists.txt || die
+	cmake-utils_src_prepare
+}
+
 src_configure() {
 	local mycmakeargs=(
 		-DLIB_INSTALL_DIR=$(get_libdir)
