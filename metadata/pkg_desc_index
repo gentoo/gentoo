@@ -3094,7 +3094,7 @@ dev-go/go-snappy 0_pre20150729 9999: The Snappy compression format in the Go pro
 dev-go/go-spew 0_pre20150619 9999: Implements a deep pretty printer for Go data structures to aid in debugging
 dev-go/go-sqlite3 1.1.0_p20160131: Go sqlite3 driver using database/sql
 dev-go/go-sys 0_pre20150729 0_pre20160204 9999: Go packages for low-level interaction with the operating system
-dev-go/go-text 0_pre20150806 9999: Go text processing support
+dev-go/go-text 0_pre20150806 0_pre20160211 9999: Go text processing support
 dev-go/go-tools 0_pre20150823-r1 0_pre20150902 0_pre20160121 9999: Go Tools
 dev-go/go-tour 0_p20160209: A Tour of Go
 dev-go/godep 50 51 52 9999: dependency tool for go
@@ -3802,7 +3802,7 @@ dev-java/felix-gogo-runtime 0.10.0: Felix Gogo Runtime
 dev-java/felix-shell 1.4.3: Felix Shell
 dev-java/felix-utils 1.2.0: Felix Utils
 dev-java/flyingsaucer 7-r2: 100% Java XHTML+CSS renderer
-dev-java/fontbox 0.1.0 1.7.1: An open source Java library for parsing font files
+dev-java/fontbox 1.7.1: An open source Java library for parsing font files
 dev-java/fop 2.0-r2: Formatting Objects Processor is a print formatter driven by XSL
 dev-java/forehead 1.0_beta5-r1 1.0_beta5-r2: A framework to assist in controlling the run-time ClassLoader
 dev-java/freehep-export 2.1.1: High Energy Physics Java library - FreeHEP Export and Save As Library
