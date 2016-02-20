@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -11,10 +11,10 @@ DISTUTILS_SINGLE_IMPL=Yes
 
 inherit distutils-r1 eutils user webapp
 
-MY_PV=${PV/_beta/b}
+MY_PV=${PV/_p/.post}
 MY_P=Trac-${MY_PV}
 
-DESCRIPTION="Trac is a minimalistic web-based project management, wiki and bug/issue tracking system"
+DESCRIPTION="Enhanced wiki and issue tracking system for software development projects"
 HOMEPAGE="http://trac.edgewall.com/ https://pypi.python.org/pypi/Trac"
 SRC_URI="http://ftp.edgewall.com/pub/trac/${MY_P}.tar.gz"
 
