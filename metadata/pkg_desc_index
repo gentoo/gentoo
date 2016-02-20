@@ -193,7 +193,6 @@ app-admin/sagan 0.2.3 1.0.0_rc3: Sagan is a multi-threaded, real time system and
 app-admin/sagan-rules 20130430 20140617 99999999: Rules for Sagan log analyzer
 app-admin/salt 2015.5.8 2015.5.9 2015.8.3 2015.8.5 2015.8.7 9999: Salt is a remote execution and configuration manager
 app-admin/setools 3.3.8-r5 3.3.8-r7 9999: Policy Analysis Tools for SELinux
-app-admin/showconsole 1.08: small daemon for logging console output during boot
 app-admin/socklog 2.1.0: small secure replacement for syslogd with automatic log rotation
 app-admin/sshguard 1.5-r1 1.5-r2 1.5-r3 1.6.2: protects hosts from brute force attacks against ssh
 app-admin/stow 2.2.0-r2: Manage installation of software in /var/lib/
@@ -2765,11 +2764,9 @@ app-xemacs/xslt-process 1.12: XSLT processing support
 app-xemacs/xwem 1.22 1.23: X Emacs Window Manager
 app-xemacs/zenirc 1.16: ZENIRC IRC Client
 dev-ada/adadoc 2.1: A tool for Ada95 to create documentation from specification packages
-dev-ada/adasockets 1.8.4.7: An Interface to BSD sockets from Ada (TCP, UDP and multicast)
 dev-ada/asis-gcc 3.4.6 4.1.2 4.1.2-r1 4.2.2 4.3.0_pre132166 4.3.1 4.3.1-r1 4.4: The Ada Semantic Interface Specification (semantic analysis and tools tied to compiler)
 dev-ada/asis-gpl 3.4.6.2006 4.1.3.2007-r1 4.1.3.2007-r2 4.1.3.2008 4.1.3.2008-r1: The Ada Semantic Interface Specification (semantic analysis and tools tied to compiler)
 dev-ada/aunit 1.05 2.01 2.03: Aunit, Ada unit testing framework
-dev-ada/booch_components 20051222-r1 20070420: Booch Components for Ada
 dev-ada/cbind 6.0.1: This tool is designed to aid in the creation of Ada bindings to C
 dev-ada/charles 20050913: Posix bindings for Ada
 dev-ada/florist 2007.0: Posix bindings for Ada
@@ -2935,7 +2932,7 @@ dev-db/spatialite 2.4.0_rc4 3.0.1 4.1.1: A complete Spatial DBMS in a nutshell b
 dev-db/spatialite-tools 3.1.0: A complete Spatial DBMS in a nutshell built upon sqlite
 dev-db/sqlcipher 3.3.0: Full Database Encryption for SQLite
 dev-db/sqldeveloper 3.2.20.09.87 4.0.2.15.21 4.1.1.19.59 4.1.3.20.78 4.1.3.20.78-r1: Oracle SQL Developer is a graphical tool for database development
-dev-db/sqlite 2.8.16-r5 3.8.10.1 3.8.10.2 3.8.11.1 3.9.1 3.9.2 3.10.0 3.10.2: A SQL Database Engine in a C Library
+dev-db/sqlite 3.8.10.1 3.8.10.2 3.8.11.1 3.9.1 3.9.2 3.10.0 3.10.2: A SQL Database Engine in a C Library
 dev-db/sqlitebrowser 3.7.0-r1 3.8.0: SQLite Database Browser
 dev-db/sqliteman 1.2.2-r1: Powerful GUI manager for the Sqlite3 database
 dev-db/sqliteodbc 0.96 0.99: ODBC driver to access local SQLite database files
@@ -9450,7 +9447,6 @@ dev-util/cmocka 0.3.1 0.3.1-r1 0.4.1 1.0.1: A unit testing framework for C
 dev-util/cmt 1.26: Cross platform configuration management environment
 dev-util/coccigrep 1.10 1.11 1.12 1.13: A semantic grep for the C language
 dev-util/coccinelle 1.0.0 1.0.1 1.0.2 1.0.4: Program matching and transformation engine
-dev-util/cocom 0.996-r1: Toolset to help create compilers, cross-compilers, interpreters, and other language processors
 dev-util/codeblocks 13.12 13.12-r1 9999: The open source, cross platform, free C++ IDE
 dev-util/colm 0.12.0 0.13.0.3: COmputer Language Manipulation
 dev-util/colorgcc 1.3.2-r6 1.3.2-r7: Perl script to colorise the gcc output.
@@ -13752,7 +13748,6 @@ net-dialup/accel-ppp 1.8.0-r1 1.10.0: High performance PPTP, PPPoE and L2TP serv
 net-dialup/capi4k-utils 20050718-r6: CAPI4Linux Utils
 net-dialup/capidivert 0.0.2: CAPI based utility to control ISDN diversion facilities
 net-dialup/capifwd 0.6.3-r1: A daemon forwarding CAPI messages to capi20proxy clients
-net-dialup/capisuite 0.4.5-r8: ISDN telecommunication suite providing fax and voice services
 net-dialup/cistronradius 1.6.8-r1: Authentication and accounting server for terminal servers that speak the RADIUS protocol
 net-dialup/cutecom 0.22.0-r1: CuteCom is a serial terminal, like minicom, written in qt
 net-dialup/dgcmodem 1.10: Driver for Connexant DGC modems
@@ -13840,7 +13835,6 @@ net-dns/mydns 1.2.8.31: A DNS-Server which gets its data from a MySQL-/PostgreSQ
 net-dns/namecoin-qt 0.3.72 0.3.80: A P2P network based domain name system
 net-dns/namecoind 0.3.72 0.3.80: A P2P network based domain name system
 net-dns/ndu 0.4-r4: DNS serial number incrementer and reverse zone builder
-net-dns/noip-updater 2.1.9-r1: no-ip.com dynamic DNS updater
 net-dns/nsd 3.2.18 3.2.20 4.1.0 4.1.7: An authoritative only, high performance, open source name server
 net-dns/odsclient 1.03-r1: Client for the Open Domain Server's dynamic dns
 net-dns/opendnssec 1.3.17 1.3.18 1.4.7 1.4.8.2: An open-source turn-key solution for DNSSEC
@@ -17142,7 +17136,6 @@ sys-libs/mtdev 1.1.4 1.1.5: Multitouch Protocol Translation Library
 sys-libs/musl 1.1.12 1.1.13 9999: Light, fast and simple C library focused on standards-conformance and safety
 sys-libs/ncurses 5.9-r3 5.9-r4 5.9-r5 5.9-r99 5.9-r101 6.0 6.0-r1: console display library
 sys-libs/newlib 1.18.0 1.19.0 1.20.0 2.0.0 2.1.0 2.2.0 2.2.0.20150423 2.3.0.20160104 9999: Newlib is a C library intended for use on embedded systems
-sys-libs/nss-db 2.2.3_pre1-r2 2.2.3_pre1-r3 2.2.3_pre1-r4: Allows important system files to be stored in a fast database file rather than plain text
 sys-libs/nss-usrfiles 2.18.1: NSS module to read passwd/group files from CoreOS /usr location
 sys-libs/nss_wrapper 1.1.1 1.1.2: A wrapper for the user, group and hosts NSS API
 sys-libs/ntdb 1.0-r1: A not-so trivial keyword/data database system
