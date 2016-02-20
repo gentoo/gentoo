@@ -684,10 +684,6 @@ dev-scheme/schemik
 # Fails to build, bug #514602. Removal in a month.
 app-crypt/shishi
 
-# Pacho Ramos <pacho@gentoo.org> (05 Jan 2016)
-# Fails to build, bug #514634. Removal in a month.
-app-arch/torrentzip
-
 # Patrice Clement <monsieurp@gentoo.org> (05 Jan 2016)
 # According to its maintainer. this project is slowly dying 
 # and there's no activity occuring on mailing lists / git repo.
