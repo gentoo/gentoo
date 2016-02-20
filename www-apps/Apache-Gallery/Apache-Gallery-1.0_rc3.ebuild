@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -26,7 +26,7 @@ DEPEND="${DEPEND}
 	=www-apache/libapreq2-2*[perl]
 	>=media-libs/imlib2-1.0.6-r1
 	dev-perl/URI
-	>=dev-perl/ImageInfo-1.04-r2
+	>=dev-perl/Image-Info-1.40.0
 	>=dev-perl/ImageSize-2.99-r1
 	dev-perl/text-template
 	>=dev-perl/CGI-3.08
