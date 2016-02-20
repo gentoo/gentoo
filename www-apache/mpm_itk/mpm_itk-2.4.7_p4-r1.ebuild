@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=6
+EAPI=5
 inherit apache-module linux-info
 
 MY_PN=${PN/_/-}
