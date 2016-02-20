@@ -63,6 +63,7 @@ DEPEND="
 	app-arch/zip
 	>=dev-lang/go-1.4:=
 	dev-go/go-crypto:=
+	dev-go/go-sys:=
 	>=dev-go/go-tools-0_pre20160121"
 RDEPEND=""
 
