@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# Patrick Lauer (20 Feb 2015)
+# Missing keywords on deps
+net-libs/ortp zrtp
+
 # Pacho Ramos <pacho@gentoo.org> (15 Nov 2015)
 # Missing keywords
 media-sound/rhythmbox upnp-av
