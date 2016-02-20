@@ -668,7 +668,7 @@ app-dicts/dictd-foldoc 2001.03.13-r1: The Free On-line Dictionary of Computing f
 app-dicts/dictd-gazetteer 1.2-r1: The original U.S. Gazetteer Place and Zipcode Files for dict
 app-dicts/dictd-jargon 4.2.3-r1: Jargon lexicon
 app-dicts/dictd-misc 1.5b-r1: Easton's 1897 Bible Dictionary for dict
-app-dicts/dictd-vera 1.22: V.E.R.A. -- Virtual Entity of Relevant Acronyms for dict
+app-dicts/dictd-vera 1.22 1.23: V.E.R.A. -- Virtual Entity of Relevant Acronyms for dict
 app-dicts/dictd-web1913 1.4-r1: Webster's Revised Unabridged Dictionary (1913) for dict
 app-dicts/dictd-wn 1.5-r1 2.0: WordNet for dict
 app-dicts/dikt 2l: A dictionary for KDE
