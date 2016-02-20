@@ -1,4 +1,0 @@
-# /etc/conf.d/hop: config file for /etc/init.d/hop
-
-# see `hop --help` # for valid cmdline options
-#HOP_OPTS=""
