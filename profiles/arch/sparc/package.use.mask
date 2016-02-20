@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# Pacho Ramos <pacho@gentoo.org> (20 Feb 2016)
+# Missing keywords, bug #551580
+app-office/planner eds
+
 # Pacho Ramos <pacho@gentoo.org> (31 Jan 2016)
 # Missing keywords, bug #560382
 media-video/ffmpeg snappy
