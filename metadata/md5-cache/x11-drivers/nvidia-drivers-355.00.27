@@ -1,0 +1,16 @@
+DEFINED_PHASES=compile install postinst postrm preinst prepare prerm pretend setup unpack
+DEPEND=app-eselect/eselect-opencl gtk3? ( x11-libs/cairo ) kernel_linux? ( >=sys-libs/glibc-2.6.1 ) X? ( >=app-eselect/eselect-opengl-1.0.9 ) app-arch/xz-utils kernel_linux? ( virtual/linux-sources ) kernel_linux? ( virtual/modutils ) sys-apps/sed kernel_linux? ( virtual/linux-sources ) sys-apps/pciutils virtual/pkgconfig
+DESCRIPTION=NVIDIA Accelerated Graphics Driver
+EAPI=5
+HOMEPAGE=http://www.nvidia.com/ http://www.nvidia.com/Download/Find.aspx
+IUSE=acpi multilib kernel_FreeBSD kernel_linux pax_kernel +tools gtk2 gtk3 +X uvm kernel_linux
+KEYWORDS=-* ~amd64 ~x86 ~amd64-fbsd ~x86-fbsd
+LICENSE=GPL-2 NVIDIA-r2
+RDEPEND=app-eselect/eselect-opencl gtk3? ( x11-libs/cairo ) kernel_linux? ( >=sys-libs/glibc-2.6.1 ) X? ( >=app-eselect/eselect-opengl-1.0.9 ) acpi? ( sys-power/acpid ) tools? ( dev-libs/atk dev-libs/glib:2 x11-libs/gdk-pixbuf gtk2? ( >=x11-libs/gtk+-2.4:2 ) gtk3? ( x11-libs/gtk+:3 ) x11-libs/libX11 x11-libs/libXext x11-libs/pango[X] ) X? ( <x11-base/xorg-server-1.18.99:= >=x11-libs/libvdpau-0.3-r1 multilib? ( >=x11-libs/libX11-1.6.2[abi_x86_32] >=x11-libs/libXext-1.3.2[abi_x86_32] ) ) kernel_linux? ( virtual/modutils )
+REQUIRED_USE=tools? ( X || ( gtk2 gtk3 ) )
+RESTRICT=bindist fetch mirror
+SLOT=0/355.00
+SRC_URI=amd64? ( http://us.download.nvidia.com/XFree86/Linux-x86_64/355.00.27/NVIDIA-Linux-x86_64-355.00.27.run ) x86? ( http://us.download.nvidia.com/XFree86/Linux-x86/355.00.27/NVIDIA-Linux-x86-355.00.27.run )
+_eclass_exported_funcs=pkg_pretend:- pkg_prerm:- pkg_preinst:- pkg_postrm:- pkg_postinst:- pkg_setup:- src_unpack:unpacker src_prepare:- src_compile:- src_install:-
+_eclasses_=eutils	9d81603248f2ba3ec59124320d123e5e	flag-o-matic	d270fa247153df66074f795fa42dba3e	linux-info	fd1e29abbb02cbc49f1a14299846e9c4	linux-mod	4755518412586c2fd655ff6e55780bcb	multilib	3972ca401cf7dbb430df9995f5d8d580	nvidia-driver	fe3e559a49de32cd7df5ae282f98d107	portability	3a50b3ec310b86914f98babecc8f89c6	readme.gentoo-r1	03878c06495db70bc36bd717383c09f7	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	udev	73058269b3e70e34e084fa3981282338	unpacker	1d149d9bda7723e740cfd28118f27813	user	906f3c8eb3a2350a4f1191a89baa3e46	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=d8bb1ac7190081441a649a3790874b26
