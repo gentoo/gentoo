@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -22,7 +22,7 @@ for i in ${LINS}; do
 done
 
 RDEPEND="media-gfx/imagemagick
-	 dev-perl/ImageSize
+	 dev-perl/Image-Size
 	 dev-perl/URI
 	 dev-perl/Locale-gettext
 	 exif? ( media-libs/exiftool )"
