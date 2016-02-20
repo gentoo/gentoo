@@ -4370,7 +4370,7 @@ dev-lang/php 5.4.45 5.5.30 5.5.31 5.5.32 5.6.14 5.6.17 5.6.18 7.0.3: The PHP lan
 dev-lang/pocl 0.11 0.12: PortableCL: opensource implementation of the OpenCL standard
 dev-lang/polyml 5.4.1 5.5.0 5.5.1 5.5.2: Poly/ML is a full implementation of Standard ML
 dev-lang/python 2.7.10-r1 2.7.11-r2 3.3.5-r2 3.3.5-r7 3.4.3-r1 3.4.3-r7 3.5.0-r2 3.5.1-r2: An interpreted, interactive, object-oriented programming language
-dev-lang/python-exec 2.0.1-r1 2.0.2 2.1 2.2 2.2.1 2.3 2.3.2 2.4 9999: Python script wrapper
+dev-lang/python-exec 2.0.1-r1 2.0.2 2.1 2.2 2.2.1 2.3 2.3.2 9999: Python script wrapper
 dev-lang/qu-prolog 9.1 9.1-r1 9.5 9.6 9.7: Extended Prolog supporting quantifiers, object-variables and substitutions
 dev-lang/rakudo 2016.01.1: A compiler for the Perl 6 programming language
 dev-lang/rebol 9999: Relative Expression-Based Object Language
