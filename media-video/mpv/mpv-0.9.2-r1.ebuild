@@ -50,7 +50,10 @@ REQUIRED_USE="
 
 RDEPEND="
 	libav? ( >=media-video/libav-11:0=[encode?,threads,vaapi?,vdpau?] )
-	!libav? ( >=media-video/ffmpeg-2.4.0:0=[encode?,threads,vaapi?,vdpau?] )
+	!libav? (
+		>=media-video/ffmpeg-2.4.0:0=[encode?,threads,vaapi?,vdpau?]
+		<media-video/ffmpeg-3.0
+	)
 	sys-libs/zlib
 	X? (
 		x11-libs/libX11
