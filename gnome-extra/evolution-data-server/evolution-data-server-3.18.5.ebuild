@@ -135,4 +135,3 @@ pkg_postinst() {
 		ewarn "(pre-3.12 evolution versions) addressbook data"
 	fi
 }
-		
