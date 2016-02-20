@@ -6922,7 +6922,7 @@ dev-python/crumbs 2.0.0 2.0.1 2.0.2 2.1.0: Generalized all-in-one parameters mod
 dev-python/cryptography 1.0.2 1.1 1.1.1 1.1.2 1.2.1 1.2.2: Library providing cryptographic recipes and primitives
 dev-python/cryptography-vectors 1.0.2 1.1 1.1.1 1.1.2 1.2.1 1.2.2: Test vectors for the cryptography package
 dev-python/cssselect 0.9.1: parses CSS3 Selectors and translates them to XPath 1.0
-dev-python/cssutils 0.9.10-r1 1.0 1.0.1: A CSS Cascading Style Sheets library
+dev-python/cssutils 0.9.10-r1 0.9.10-r2 1.0 1.0.1: A CSS Cascading Style Sheets library
 dev-python/ctypesgen 0_p72-r1: Python wrapper generator for ctypes
 dev-python/curtsies 0.1.18 0.1.23 0.2.3 0.2.4 0.2.6: Curses-like terminal wrapper, with colored strings
 dev-python/cvxopt 1.1.6-r2 1.1.8: Python package for convex optimization
@@ -7313,7 +7313,7 @@ dev-python/markups 0.2.4-r1 0.6.1 0.6.3 1.0.0 1.0.1: A wrapper around various te
 dev-python/markupsafe 0.23: Implements a XML/HTML/XHTML Markup safe string for Python
 dev-python/matplotlib 1.4.3 1.5.0 1.5.1 9999: Pure python plotting library with matlab like syntax
 dev-python/maybe 0.3.0: See what a program does before deciding whether you really want it to happen
-dev-python/mccabe 0.2.1 0.3 0.3.1 0.4.0: a plugin for flake8
+dev-python/mccabe 0.2.1 0.3 0.3.1 0.4.0: flake8 plugin: McCabe complexity checker
 dev-python/mecab-python 0.996: Python binding for MeCab
 dev-python/mechanize 0.2.5-r1: Stateful programmatic web browsing in Python
 dev-python/medusa 0.5.4-r1: A framework for writing asynchronous long-running, high-performance network servers in Python
