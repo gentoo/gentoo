@@ -16,7 +16,7 @@ LICENSE="metapackage"
 
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="+base -bluetooth +themes +extras"
+IUSE="+base -bluetooth +notification +themes +extras"
 
 S="${WORKDIR}"
 
@@ -58,12 +58,19 @@ RDEPEND="
 	)
 "
 
-PDEPEND="virtual/notification-daemon:0"
+PDEPEND="
+	notification? ( x11-misc/mate-notification-daemon )
+	virtual/notification-daemon:0"
 
 pkg_postinst() {
 	elog "For installation, usage and troubleshooting details regarding MATE;"
 	elog "read more about it at Gentoo Wiki: https://wiki.gentoo.org/wiki/MATE"
 	elog ""
+	if ! has_version x11-misc/mate-notification-daemon; then
+		elog "If you experience any issues with notifications, please try using"
+		elog "x11-misc/mate-notification-daemon instead your currently installed daemon"
+		elog ""
+	fi
 	elog "MATE 1.10 had some packages renamed, replaced and/or dropped; for more"
 	elog "details, see http://mate-desktop.org/blog/2015-06-11-mate-1-10-released/"
 	elog ""
