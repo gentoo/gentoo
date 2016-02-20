@@ -1,0 +1,34 @@
+--- logtalk-3.03.0.orig/scripts/logtalk_user_setup.sh	2016-02-16 22:09:02.000000000 +0100
++++ logtalk-3.03.0/scripts/logtalk_user_setup.sh	2016-02-20 09:49:34.000000000 +0100
+@@ -110,14 +110,12 @@
+ 
+ echo "Copying Logtalk files and directories..."
+ mkdir -p "$LOGTALKUSER"/contributions
+-mkdir -p "$LOGTALKUSER"/docs
+ mkdir -p "$LOGTALKUSER"/examples
+ mkdir -p "$LOGTALKUSER"/library
+ mkdir -p "$LOGTALKUSER"/scratch
+ mkdir -p "$LOGTALKUSER"/tests
+ mkdir -p "$LOGTALKUSER"/tools
+ cp -RL "$LOGTALKHOME"/contributions "$LOGTALKUSER"/
+-cp -RL "$LOGTALKHOME"/docs "$LOGTALKUSER"/
+ cp -RL "$LOGTALKHOME"/examples "$LOGTALKUSER"/
+ cp -RL "$LOGTALKHOME"/library "$LOGTALKUSER"/
+ cp -RL "$LOGTALKHOME"/scratch "$LOGTALKUSER"/
+@@ -131,16 +129,7 @@
+ rm -f "$LOGTALKUSER"/tools/lgtdoc/xml/lgt2*
+ rm -f "$LOGTALKUSER"/tools/lgtdoc/xml/logtalk.dtd
+ rm -f "$LOGTALKUSER"/tools/lgtdoc/xml/logtalk.xsd
+-ln -sf "$LOGTALKHOME"/BIBLIOGRAPHY.bib "$LOGTALKUSER"/BIBLIOGRAPHY.bib
+-ln -sf "$LOGTALKHOME"/CUSTOMIZE.md "$LOGTALKUSER"/CUSTOMIZE.md
+-ln -sf "$LOGTALKHOME"/INSTALL.md "$LOGTALKUSER"/INSTALL.md
+-ln -sf "$LOGTALKHOME"/LICENSE.txt "$LOGTALKUSER"/LICENSE.txt
+-ln -sf "$LOGTALKHOME"/QUICK_START.md "$LOGTALKUSER"/QUICK_START.md
+-ln -sf "$LOGTALKHOME"/README.md "$LOGTALKUSER"/README.md
+-ln -sf "$LOGTALKHOME"/RELEASE_NOTES.md "$LOGTALKUSER"/RELEASE_NOTES.md
+-ln -sf "$LOGTALKHOME"/UPGRADING.md "$LOGTALKUSER"/UPGRADING.md
+ ln -sf "$LOGTALKHOME"/adapters "$LOGTALKUSER"/adapters
+-ln -sf "$LOGTALKHOME"/manuals "$LOGTALKUSER"/manuals
+ ln -sf "$LOGTALKHOME"/paths "$LOGTALKUSER"/paths
+ ln -sf "$LOGTALKHOME"/coding "$LOGTALKUSER"/coding
+ ln -sf "$LOGTALKHOME"/tools/lgtdoc/xml/lgt2html.sh "$LOGTALKUSER"/tools/lgtdoc/xml/lgt2html
