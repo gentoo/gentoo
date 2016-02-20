@@ -6,7 +6,7 @@ EAPI=5
 USE_RUBY="ruby20 ruby21 ruby22"
 
 RUBY_FAKEGEM_RECIPE_DOC="rdoc"
-RUBY_FAKEGEM_EXTRADOC="README.md SPEC.md"
+RUBY_FAKEGEM_EXTRADOC="README.md"
 
 inherit multilib ruby-fakegem
 
@@ -18,5 +18,5 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE=""
 
-ruby_add_rdepend "dev-ruby/faraday
-	dev-ruby/addressable"
+ruby_add_rdepend "<dev-ruby/faraday-0.10
+	<dev-ruby/addressable-2.5"
