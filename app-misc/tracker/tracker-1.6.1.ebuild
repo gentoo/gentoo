@@ -18,7 +18,7 @@ IUSE="cue eds elibc_glibc exif ffmpeg firefox-bookmarks flac gif gsf
 gstreamer gtk iptc +iso +jpeg libav +miner-fs mp3 nautilus networkmanager
 pdf playlist rss stemmer test thunderbird +tiff upnp-av upower +vorbis +xml xmp xps"
 
-KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 
 REQUIRED_USE="
 	?? ( gstreamer ffmpeg )
