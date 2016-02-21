@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# Mike Frysinger <vapier@gentoo.org> 21 Feb 2016
+# Needs arch love for elementary. #575322
+media-libs/elementary javascript
+
 # Pacho Ramos <pacho@gentoo.org> (31 Jan 2016)
 # Missing keywords, bug #560382
 media-video/ffmpeg snappy

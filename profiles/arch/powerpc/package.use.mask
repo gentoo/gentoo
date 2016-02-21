@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# Mike Frysinger <vapier@gentoo.org> 21 Feb 2016
+# Needs arch love for elementary. #575322
+media-libs/elementary javascript
+
 # Patrick Lauer (20 Feb 2015)
 # Missing keywords on deps
 net-libs/ortp zrtp

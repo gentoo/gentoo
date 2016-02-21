@@ -4,6 +4,10 @@
 
 # DON'T TOUCH THIS FILE. Instead, file a bug and assign it to <hppa@gentoo.org>.
 
+# Mike Frysinger <vapier@gentoo.org> 21 Feb 2016
+# Needs arch love for elementary. #575322
+media-libs/elementary javascript
+
 # Jeroen Roovers <jer@gentoo.org> (16 Aug 2015)
 # Bundles luajit which has not been ported to HPPA (bug #554376)
 app-text/texlive-core luajittex
