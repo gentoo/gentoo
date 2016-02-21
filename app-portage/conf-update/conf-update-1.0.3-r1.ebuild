@@ -17,7 +17,7 @@ IUSE="colordiff libressl"
 
 RDEPEND=">=dev-libs/glib-2.6
 		sys-libs/ncurses:0
-		libressl? ( dev-libs/openssl:0 )
+		!libressl? ( dev-libs/openssl:0 )
 		libressl? ( dev-libs/libressl )
 		colordiff? ( app-misc/colordiff )"
 DEPEND="virtual/pkgconfig
