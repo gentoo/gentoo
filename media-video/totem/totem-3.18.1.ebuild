@@ -22,7 +22,7 @@ REQUIRED_USE="
 	zeitgeist? ( introspection )
 "
 
-KEYWORDS="~amd64 ~arm ~ia64 ~ppc ~ppc64 ~x86 ~x86-fbsd"
+KEYWORDS="amd64 ~arm ~ia64 ~ppc ~ppc64 ~x86 ~x86-fbsd"
 
 # FIXME:
 # Runtime dependency on gnome-session-2.91
