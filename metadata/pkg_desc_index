@@ -3782,7 +3782,7 @@ dev-java/dbus-java 2.7-r1: Java bindings for the D-Bus messagebus
 dev-java/dict4j 1.1: Dict protocol implementation in Java
 dev-java/disruptor 3.2.0: High Performance Inter-Thread Messaging Library
 dev-java/dnsjava 2.1.6 2.1.7: An implementation of DNS in Java
-dev-java/dom4j 1.6.1-r5: Java library for working with XML
+dev-java/dom4j 1.6.1-r5 1.6.1-r6: Java library for working with XML
 dev-java/dsiutils 1.0.10-r2: A Mish Mash of classes that were initially distributed with mg4j (amount others)
 dev-java/dtdparser 1.21-r2: A Java DTD Parser
 dev-java/dynalang 0.4-r1: Library for implementation of interoperable metaobject protocols for dynamic languages
@@ -3902,7 +3902,7 @@ dev-java/jacoco 0.7.5: Java Code Coverage library.
 dev-java/jad-bin 1.5.8e-r1: Jad - The fast JAva Decompiler
 dev-java/jade 3.3-r1 3.3-r2: JADE is FIPA-compliant Java Agent Development Environment
 dev-java/jaffl 0.5.11-r1: An abstracted interface to invoking native functions from java
-dev-java/jakarta-oro 2.0.8-r3: A set of text-processing Java classes
+dev-java/jakarta-oro 2.0.8-r3 2.0.8-r4: A set of text-processing Java classes
 dev-java/jakarta-regexp 1.3-r4 1.3-r5 1.4-r1 1.4-r2 1.5: 100% Pure Java Regular Expression package
 dev-java/jakarta-slide-webdavclient 2.1-r3 2.1-r4: A content repository
 dev-java/jal 20031117-r3: Partial port of the C++ Standard Template Library
@@ -16465,7 +16465,7 @@ sys-apps/vbetool 1.1: Run real-mode video BIOS code to alter hardware state (i.e
 sys-apps/watchdog 5.13-r1 5.14: A software watchdog and /dev/watchdog daemon
 sys-apps/which 2.20-r1 2.21: Prints out location of specified executables that are in your path
 sys-apps/x86info 1.30: Dave Jones' handy, informative x86 CPU diagnostic utility
-sys-apps/xinetd 2.3.15-r1 2.3.15-r2 2.3.15-r3: powerful replacement for inetd
+sys-apps/xinetd 2.3.15-r2 2.3.15-r3: powerful replacement for inetd
 sys-apps/xmbmon 2.0.5-r1: Mother Board Monitor Program for X Window System
 sys-apps/yum 3.4.3_p20130218 3.4.3_p20130218-r1: automatic updater and package installer/remover for rpm systems
 sys-apps/zorroutils 0.04: Zorro bus utility for Amigas running 2.1 and later kernels
