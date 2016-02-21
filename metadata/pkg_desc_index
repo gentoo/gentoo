@@ -3090,7 +3090,7 @@ dev-go/go-net 0_pre20150804 0_pre20160216 9999: Go supplementary network librari
 dev-go/go-oauth2 0_pre20150701 0_pre20160220 9999: Go client implementation for OAuth 2.0 spec
 dev-go/go-protobuf 0_pre20150809 0_pre20160216 9999: Go support for Google's protocol buffers
 dev-go/go-resiliency 1.0.0 9999: Resiliency patterns for golang
-dev-go/go-snappy 0_pre20150729 9999: The Snappy compression format in the Go programming language.
+dev-go/go-snappy 0_pre20150729 0_pre20160213 9999: The Snappy compression format in the Go programming language.
 dev-go/go-spew 0_pre20150619 9999: Implements a deep pretty printer for Go data structures to aid in debugging
 dev-go/go-sqlite3 1.1.0_p20160131: Go sqlite3 driver using database/sql
 dev-go/go-sys 0_pre20150729 0_pre20160204 9999: Go packages for low-level interaction with the operating system
