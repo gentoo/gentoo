@@ -14,7 +14,7 @@ HOMEPAGE="https://wiki.gnome.org/action/show/Projects/DVBDaemon"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="nls totem vala"
 
 RDEPEND=">=dev-libs/glib-2.32.0:2
