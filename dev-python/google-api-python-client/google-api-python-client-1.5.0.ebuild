@@ -19,9 +19,14 @@ IUSE="test"
 
 RDEPEND="
 	>=dev-python/httplib2-0.8[${PYTHON_USEDEP}]
-	<dev-python/oauth2client-2[${PYTHON_USEDEP}]
+	<dev-python/httplib2-1[${PYTHON_USEDEP}]
+	>=dev-python/oauth2client-2[${PYTHON_USEDEP}]
+	<dev-python/oauth2client-3[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]
-	dev-python/uritemplate[${PYTHON_USEDEP}]
+	>=dev-python/uritemplate-0.6[${PYTHON_USEDEP}]
+	<dev-python/uritemplate-1[${PYTHON_USEDEP}]
+	>=dev-python/six-1.6.1[${PYTHON_USEDEP}]
+	<dev-python/six-2[${PYTHON_USEDEP}]
 	"
 DEPEND="${RDEPEND}
 	test? (

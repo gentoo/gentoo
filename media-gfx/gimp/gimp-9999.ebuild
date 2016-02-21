@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -138,6 +138,7 @@ src_configure() {
 
 src_compile() {
 	addwrite /dev/nvidiactl  # bug #569738
+	addwrite /dev/dri/  # bug #574038
 	gnome2_src_compile
 }
 
