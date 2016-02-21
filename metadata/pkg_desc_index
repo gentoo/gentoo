@@ -218,7 +218,7 @@ app-admin/tripwire 2.4.2.2-r3 2.4.2.2-r4: Open Source File Integrity Checker and
 app-admin/ulogd 2.0.5-r3 2.0.5-r4: A userspace logging daemon for netfilter/iptables related logging
 app-admin/usbview 2.0: Display the topology of devices on the USB bus
 app-admin/usermin 1.600: A web-based user administration interface
-app-admin/vault 0.1.2-r1 0.4.1 9999: A tool for managing secrets
+app-admin/vault 0.4.1 9999: A tool for managing secrets
 app-admin/verynice 1.1-r2: A tool for dynamically adjusting the nice-level of processes
 app-admin/watchfolder 0.3.3: Watches directories and processes files, similar to the watchfolder option of Acrobat Distiller
 app-admin/webalizer 2.23.05 2.23.08: Webserver log file analyzer
@@ -1275,7 +1275,7 @@ app-emulation/dlx 1.0.0 1.0.0-r1: DLX Simulator
 app-emulation/docker 1.6.1 1.6.2 1.7.1 1.8.1 1.8.2 1.9.0 1.9.1 1.10.0 9999: Docker complements kernel namespacing with a high-level API which operates at the process level
 app-emulation/docker-compose 1.4.0 1.5.1 1.5.2: Multi-container orchestration for Docker
 app-emulation/docker-machine 0.4.1 0.5.2 0.5.4: Machine management for a container-centric world
-app-emulation/docker-swarm 0.4.0 1.0.1: A Docker-native clustering system
+app-emulation/docker-swarm 1.0.1: A Docker-native clustering system
 app-emulation/domi 20060816: Scripts for building Xen domains
 app-emulation/dosemu 1.4.1_pre20091009 1.4.1_pre20130107-r3: DOS Emulator
 app-emulation/dynamips 0.2.12 0.2.14-r1: Cisco 7200/3600 Simulator

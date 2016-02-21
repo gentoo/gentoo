@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile install test unpack
-DEPEND=>=dev-lang/go-1.4.2:=
+DEPEND=!!<app-admin/consul-0.6.3-r1 >=dev-lang/go-1.4.2:=
 DESCRIPTION=A Docker-native clustering system
 EAPI=5
 HOMEPAGE=https://docs.docker.com/swarm/
@@ -10,4 +10,4 @@ SLOT=0
 SRC_URI=https://github.com/docker/swarm/archive/v1.0.1.tar.gz -> docker-swarm-1.0.1.tar.gz
 _eclass_exported_funcs=src_unpack:golang-vcs-snapshot src_compile:- src_test:golang-build src_install:-
 _eclasses_=golang-base	1f6a08c05da2d91150032ff45db6a2c5	golang-build	a44f10e6bd86ecccf2a07cc0d4cf6bec	golang-vcs-snapshot	1caa6d8238d2378ad688ae068ff22e5a
-_md5_=ffcfd6801738cd4203706c49b8cec49f
+_md5_=ae2f7e1004628f902264624d8859cb53
