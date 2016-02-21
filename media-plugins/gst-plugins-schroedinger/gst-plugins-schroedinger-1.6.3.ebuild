@@ -7,7 +7,7 @@ GST_ORG_MODULE=gst-plugins-bad
 
 inherit gstreamer
 
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE=""
 
 RDEPEND=">=media-libs/schroedinger-1.0.11-r1[${MULTILIB_USEDEP}]"
