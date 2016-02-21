@@ -91,7 +91,8 @@ src_compile() {
 src_install() {
 	# Prevent installing ledger.so into python site-packages.  It's an
 	# unnecessary copy of libledger.so and generates security warnings.
-	sed -i -e '/python/d' ../${P}_build/src/cmake_install.cmake
+	sed -i -e '/python/d' ../${P}_build/src/cmake_install.cmake \
+		|| die "Failed to disable installation of ledger.so"
 
 	enable_cmake-utils_src_install
 

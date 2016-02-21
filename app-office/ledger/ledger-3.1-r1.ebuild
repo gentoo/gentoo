@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -18,7 +18,7 @@ IUSE="doc emacs"
 SITEFILE=50${PN}-gentoo-${PV}.el
 
 RDEPEND="
-	dev-libs/boost:=
+	<dev-libs/boost-1.58:=
 	dev-libs/gmp:0
 	dev-libs/mpfr:0
 	emacs? ( virtual/emacs )
