@@ -3,9 +3,11 @@
 # $Id$
 
 EAPI=5
+GCONF_DEBUG="no"
+GNOME2_LA_PUNT="yes"
 PYTHON_COMPAT=( python{2_7,3_4,3_5} )
 
-inherit eutils gnome2 java-pkg-opt-2 python-any-r1
+inherit autotools eutils gnome2 java-pkg-opt-2 python-any-r1
 
 DESCRIPTION="A Syntactic English parser"
 HOMEPAGE="http://www.abisource.com/projects/link-grammar/ http://www.link.cs.cmu.edu/link/"
@@ -15,51 +17,52 @@ LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 
-IUSE="aspell +hunspell +java python static-libs threads"
+IUSE="aspell +hunspell java python static-libs threads"
 
-DEPEND="
+RDEPEND="
 	aspell? ( app-text/aspell )
 	hunspell? ( app-text/hunspell )
-	java? ( >=virtual/jdk-1.6:=
-			dev-java/ant-core )
-	${PYTHON_DEPS}"
+	java? (
+		>=virtual/jdk-1.6:*
+		dev-java/ant-core )
+	python? ( ${PYTHON_DEPS} )
+"
+DEPEND="${RDEPEND}
+	dev-lang/swig:0
+"
 
-RDEPEND="${DEPEND}"
+S="${WORKDIR}/${PN}-${P}"
 
 pkg_setup() {
-	if use java; then
-		java-pkg-opt-2_pkg_setup
-	fi
 	if use aspell && use hunspell; then
 		ewarn "You have enabled 'aspell' and 'hunspell' support, but both cannot coexist,"
-		ewarn "only aspell will be build. Press Ctrl+C and set only 'hunspell' USE flag if"
-		ewarn "you want hunspell support."
+		ewarn "only hunspell will be built. Press Ctrl+C and set only 'aspell' USE flag if"
+		ewarn "you want aspell support."
 	fi
-}
-
-src_unpack() {
-	unpack ${A}
-	S=${WORKDIR}/${PN}-${P}
+	use java && java-pkg-opt-2_pkg_setup
+	use python && python-any-r1_pkg_setup
 }
 
 src_prepare() {
-	if use java; then
-		java-pkg-opt-2_src_prepare
-	fi
-	./autogen.sh || die
+	use java && java-pkg-opt-2_src_prepare
+	AT_M4DIR="ac-helpers/" eautoreconf
+	gnome2_src_prepare
 }
 
 src_configure() {
-	local myconf
-
-	use hunspell && myconf="${myconf} --with-hunspell-dictdir=/usr/share/myspell"
 	gnome2_src_configure \
+		--disable-perl-bindings \
 		--enable-shared \
 		$(use_enable aspell) \
 		$(use_enable hunspell) \
+		$(usex hunspell --with-hunspell-dictdir=/usr/share/myspell) \
 		$(use_enable java java-bindings) \
 		$(use_enable python python-bindings) \
 		$(use_enable static-libs static) \
-		$(use_enable threads pthreads) \
-		${myconf}
+		$(use_enable threads pthreads)
+}
+
+pkg_preinst() {
+	use java && java-pkg-opt-2_pkg_preinst
+	gnome2_pkg_preinst
 }
