@@ -540,7 +540,7 @@ app-crypt/ima-evm-utils 0.2 0.8 9999: Supporting tools for IMA and EVM
 app-crypt/jacksum 1.7.0: Java utility for computing and verifying checksums: CRC*, MD*, RIPEMD*, SHA*, TIGER*, WHIRLPOOL
 app-crypt/johntheripper 1.7.9-r6 1.7.9-r10: fast password cracker
 app-crypt/kencfs 1.5.0: GUI frontend for encfs
-app-crypt/keybase 0.8.13 0.8.18 0.8.22 0.8.23 0.8.24 0.8.25 1.0.8.0 1.0.9.0: Client for keybase.io
+app-crypt/keybase 0.8.13 0.8.18 0.8.22 0.8.23 0.8.24 0.8.25 1.0.8.0 1.0.9.0 1.0.12.0: Client for keybase.io
 app-crypt/keylookup 2.2 2.2-r9999: A tool to fetch PGP keys from keyservers
 app-crypt/keynote 2.3-r3: The KeyNote Trust-Management System
 app-crypt/kstart 4.1: Modified versions of kinit for refreshing kerberos tickets automatically
