@@ -276,12 +276,6 @@ www-apps/389-dsgw
 # #370021, #478614, #513964
 sci-libs/libbufr
 
-# Manuel Rüger <mrueg@rueg.eu> (24 Dec 2015)
-# Effectively unmaintained, multiple bugs
-# Bug 288611,358013,413987,468186,480854,528750,548480,566226
-# Masked for removal in 30 days.
-media-tv/xawtv
-
 # Fabian Groffen <grobian@gentoo.org> (11 Dec 2015)
 # Release candidates for Exim 4.87
 =mail-mta/exim-4.87_rc2
