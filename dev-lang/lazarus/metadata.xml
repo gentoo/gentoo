@@ -5,6 +5,9 @@
 		A Borland Delphi lookalike for linux.
 		Uses the free pascal compiler.
 	</longdescription>
+	<maintainer type="person">
+            <email>amynka@gentoo.org</email>
+        </maintainer>
 	<use>
 		<flag name="minimal">Don't build extra packages from the
 			bigide component</flag>
