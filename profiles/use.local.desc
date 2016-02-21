@@ -4580,8 +4580,6 @@ media-tv/tvheadend:timeshift - Enable TimeShift support
 media-tv/tvheadend:uriparser - Use dev-libs/uriparser
 media-tv/tvheadend:xmltv - Use media-tv/xmltv
 media-tv/v4l-dvb-saa716x:firmware - Install firmware
-media-tv/xawtv:xext - Enable use of XFree extensions (DGA,VidMode,DPMS)
-media-tv/xawtv:zvbi - Enable VBI Decoding Library for Zapping
 media-tv/xbmc:airplay - enable AirPlay support
 media-tv/xbmc:bluray - Enable playback of Blu-ray filesystems
 media-tv/xbmc:cec - Enable support for HDMI-CEC devices via libcec

@@ -4,7 +4,7 @@ DESCRIPTION=Partial OpenSSL binding for Haskell
 EAPI=5
 HOMEPAGE=https://github.com/phonohawk/HsOpenSSL
 IUSE=+fast-bignum libressl doc hscolour profile test
-KEYWORDS=~amd64 ~x86
+KEYWORDS=amd64 x86
 LICENSE=public-domain
 RDEPEND=>=dev-haskell/network-2.1:=[profile?] <dev-haskell/network-2.7:=[profile?] >=dev-haskell/old-locale-1.0:=[profile?] <dev-haskell/old-locale-1.1:=[profile?] >=dev-lang/ghc-7.4.1:= !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:= )
 RESTRICT=test
@@ -12,4 +12,4 @@ SLOT=0/0.11.1.1
 SRC_URI=mirror://hackage/packages/archive/HsOpenSSL/0.11.1.1/HsOpenSSL-0.11.1.1.tar.gz
 _eclass_exported_funcs=pkg_postrm:haskell-cabal pkg_postinst:haskell-cabal pkg_setup:haskell-cabal src_configure:- src_compile:haskell-cabal src_test:haskell-cabal src_install:haskell-cabal
 _eclasses_=eutils	9d81603248f2ba3ec59124320d123e5e	ghc-package	892c6c35a9ac0993e65049c039438508	haskell-cabal	2d9bae28d8a91ec04d1bb1ef0071c64f	multilib	3972ca401cf7dbb430df9995f5d8d580	multiprocessing	e32940a7b2a9992ad217eccddb84d548	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=7668a0dae08822cb14d6b1edf7c065e5
+_md5_=a23e82003091be01c4f15b67f6012e74

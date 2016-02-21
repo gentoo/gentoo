@@ -13222,7 +13222,6 @@ media-tv/v4l-dvb-saa716x 0.0.1_p20140322 0.0.1_p20141109 0.0.1_p20141109-r1 0.0.
 media-tv/v4l-utils 1.0.0 1.6.0 1.6.2: Separate utilities ebuild from upstream v4l-utils package
 media-tv/w_scan 20121111 20130331 20140118 20140727 20141122: Scan for DVB-C/DVB-T/DVB-S channels without prior knowledge of frequencies and modulations
 media-tv/wis-go7007 0.9.8-r3: Linux drivers for go7007 chipsets (Plextor ConvertX PVR)
-media-tv/xawtv 3.95-r3: Small suite of video4linux related software
 media-tv/xbmc 11.0 12.1-r1 12.2-r1 12.3 13.0_p2 13.1 13.2 13.2-r1 9999: Stub ebuild to migrate people to media-tv/kodi
 media-tv/xmltv 0.5.57 0.5.67: Set of utilities to manage TV listings stored in the XMLTV format
 media-video/2mandvd 1.8.5: The successor of ManDVD
