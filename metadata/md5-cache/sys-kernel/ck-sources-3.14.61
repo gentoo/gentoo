@@ -1,15 +1,15 @@
 DEFINED_PHASES=compile install postinst postrm preinst prepare setup test unpack
 DEPEND=!build? ( sys-apps/sed >=sys-devel/binutils-2.11.90.0.31 ) deblob? ( || ( >=dev-lang/python-2.7.5-r2:2.7 ) )
-DESCRIPTION=Con Kolivas' high performance patchset and Gentoo's genpatches for Linux 4.3
+DESCRIPTION=Con Kolivas' high performance patchset and Gentoo's genpatches for Linux 3.14
 EAPI=5
 HOMEPAGE=https://www.kernel.org/ https://www.gentoo.org/ https://dev.gentoo.org/~mpagano/genpatches/ http://users.tpg.com.au/ckolivas/kernel/ http://www.fsfla.org/svn/fsfla/software/linux-libre/releases/tags
-IUSE=symlink build deblob
+IUSE=bfsonly symlink build deblob
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2 !deblob? ( freedist )
 RDEPEND=!build? ( >=sys-libs/ncurses-5.2 sys-devel/make dev-lang/perl sys-devel/bc )
 RESTRICT=binchecks strip
-SLOT=4.3.6
-SRC_URI=mirror://kernel/linux/kernel/v4.x/linux-4.3.tar.xz deblob? ( http://www.fsfla.org/svn/fsfla/software/linux-libre/releases/tags/4.3-gnu/deblob-4.3 http://www.fsfla.org/svn/fsfla/software/linux-libre/releases/tags/4.3-gnu/deblob-check -> deblob-check-4.3 ) mirror://gentoo/genpatches-4.3-8.base.tar.xz mirror://gentoo/genpatches-4.3-8.extras.tar.xz mirror://gentoo/genpatches-4.3-8.experimental.tar.xz http://ck.kolivas.org/patches/4.0/4.3/4.3-ck3/patch-4.3-ck3.xz
+SLOT=3.14.61
+SRC_URI=mirror://kernel/linux/kernel/v3.x/linux-3.14.tar.xz deblob? ( http://www.fsfla.org/svn/fsfla/software/linux-libre/releases/tags/3.14-gnu/deblob-3.14 http://www.fsfla.org/svn/fsfla/software/linux-libre/releases/tags/3.14-gnu/deblob-check -> deblob-check-3.14 ) mirror://gentoo/genpatches-3.14-68.base.tar.xz mirror://gentoo/genpatches-3.14-68.extras.tar.xz mirror://gentoo/genpatches-3.14-68.experimental.tar.xz !bfsonly? ( http://ck.kolivas.org/patches/3.0/3.14/3.14-ck1/patch-3.14-ck1.bz2 ) bfsonly? ( http://ck.kolivas.org/patches/3.0/3.14/3.14-ck1/patches/3.14-sched-bfs-447.patch )
 _eclass_exported_funcs=pkg_preinst:kernel-2 pkg_postrm:kernel-2 pkg_postinst:- pkg_setup:kernel-2 src_unpack:kernel-2 src_prepare:- src_compile:kernel-2 src_test:kernel-2 src_install:kernel-2
 _eclasses_=eutils	9d81603248f2ba3ec59124320d123e5e	kernel-2	f745fe70cd0e35af07412905687b9a7f	multilib	3972ca401cf7dbb430df9995f5d8d580	python-any-r1	8eb13cdf35f6e43c48107b911900b2cc	python-utils-r1	2e6826f6a93ad2acf904eecf5b5fb6d2	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=e0eef4439d68dee095271048509cd646
+_md5_=9712684361f84eeceadccf1421bfa9a5
