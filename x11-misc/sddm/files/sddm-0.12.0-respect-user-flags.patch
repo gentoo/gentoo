@@ -1,6 +1,6 @@
 diff -u CMakeLists.txt CMakeLists.txt 
---- CMakeLists.txt      2015-09-05 22:40:50.000000000 +0200
-+++ CMakeLists.txt      2015-09-07 12:15:33.419530808 +0200
+--- a/CMakeLists.txt      2015-09-05 22:40:50.000000000 +0200
++++ b/CMakeLists.txt      2015-09-07 12:15:33.419530808 +0200
 @@ -35,22 +35,6 @@
  # Definitions
  add_definitions(-Wall -std=c++11 -DQT_NO_CAST_FROM_ASCII)

@@ -1,5 +1,5 @@
---- data/scripts/Xsession.old	2015-01-08 12:58:24.448241484 +0100
-+++ data/scripts/Xsession	2015-01-08 13:00:07.794244087 +0100
+--- a/data/scripts/Xsession	2015-01-08 12:58:24.448241484 +0100
++++ b/data/scripts/Xsession	2015-01-08 13:00:07.794244087 +0100
 @@ -93,7 +93,7 @@
      exec xterm -geometry 80x24-0-0
      ;;
