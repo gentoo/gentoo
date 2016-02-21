@@ -3913,7 +3913,7 @@ dev-java/jarbundler 1.8.1-r2 2.3.1: Jar Bundler Ant Task
 dev-java/jargs 1.0: Command-line argument parsing library in Java
 dev-java/jarjar 1.4: Tool for repackaging third-party jars
 dev-java/java-apicheck 0_p20150907: Command line tool to check Java packages for API compatibility
-dev-java/java-config 2.2.0 2.2.0-r2: Java environment configuration query tool
+dev-java/java-config 2.2.0 2.2.0-r3: Java environment configuration query tool
 dev-java/java-config-wrapper 0.16 0.16-r1: Wrapper for java-config
 dev-java/java-dep-check 0.3-r1: Java Dependency checker
 dev-java/java-getopt 1.0.14: Java command line option parser
