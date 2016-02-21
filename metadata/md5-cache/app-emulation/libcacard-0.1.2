@@ -1,7 +1,7 @@
-DEFINED_PHASES=configure install
-DEPEND=>=dev-libs/nss-3.13 >=sys-apps/pcsc-lite-1.8 virtual/pkgconfig
+DEFINED_PHASES=configure install prepare
+DEPEND=>=dev-libs/nss-3.13 >=sys-apps/pcsc-lite-1.8 virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=Library for emulating CAC cards
-EAPI=4
+EAPI=6
 HOMEPAGE=http://spice-space.org/
 IUSE=static-libs
 KEYWORDS=alpha amd64 arm ia64 ppc ppc64 sparc x86
@@ -9,5 +9,6 @@ LICENSE=GPL-3
 RDEPEND=>=dev-libs/nss-3.13 >=sys-apps/pcsc-lite-1.8
 SLOT=0
 SRC_URI=http://spice-space.org/download/libcacard/libcacard-0.1.2.tar.bz2
-_eclass_exported_funcs=src_configure:- src_install:-
-_md5_=0aa79b3beba98cc05971c3a071fd4d13
+_eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	9d81603248f2ba3ec59124320d123e5e	libtool	b75230758539a7da029e24afdb693960	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_md5_=b2d46fe139a31cd4e82934291641826d
