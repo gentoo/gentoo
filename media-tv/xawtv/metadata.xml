@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
-<pkgmetadata>
-  <use>
-    <flag name="xext">Enable use of XFree extensions (DGA,VidMode,DPMS)</flag>
-    <flag name="zvbi">Enable VBI Decoding Library for Zapping</flag>
-  </use>
-</pkgmetadata>
