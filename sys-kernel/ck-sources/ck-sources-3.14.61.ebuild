@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -8,12 +8,12 @@ KEYWORDS="~amd64 ~x86"
 IUSE="bfsonly"
 
 HOMEPAGE="https://dev.gentoo.org/~mpagano/genpatches/
-	http://users.on.net/~ckolivas/kernel/"
+	http://users.tpg.com.au/ckolivas/kernel/"
 
 K_WANT_GENPATCHES="base extras experimental"
 K_EXP_GENPATCHES_PULL="1"
 K_EXP_GENPATCHES_NOUSE="1"
-K_GENPATCHES_VER="57"
+K_GENPATCHES_VER="68"
 K_SECURITY_UNSUPPORTED="1"
 K_DEBLOB_AVAILABLE="1"
 
@@ -23,7 +23,7 @@ detect_arch
 
 K_BRANCH_ID="${KV_MAJOR}.${KV_MINOR}"
 
-DESCRIPTION="Full Linux ${K_BRANCH_ID} kernel sources with Con Kolivas' high performance patchset and Gentoo's genpatches"
+DESCRIPTION="Con Kolivas' high performance patchset and Gentoo's genpatches for Linux ${K_BRANCH_ID}"
 
 #-- If Gentoo-Sources don't follow then extra incremental patches are needed -
 

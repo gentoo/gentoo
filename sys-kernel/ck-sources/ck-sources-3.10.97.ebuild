@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -8,12 +8,12 @@ KEYWORDS="~amd64 ~x86"
 IUSE="bfsonly"
 
 HOMEPAGE="https://dev.gentoo.org/~mpagano/genpatches/
-	http://users.on.net/~ckolivas/kernel/"
+	http://users.tpg.com.au/ckolivas/kernel/"
 
 K_WANT_GENPATCHES="base extras experimental"
 K_EXP_GENPATCHES_PULL="1"
 K_EXP_GENPATCHES_NOUSE="1"
-K_GENPATCHES_VER="9"
+K_GENPATCHES_VER="102"
 K_SECURITY_UNSUPPORTED="1"
 K_DEBLOB_AVAILABLE="1"
 
@@ -23,7 +23,7 @@ detect_arch
 
 K_BRANCH_ID="${KV_MAJOR}.${KV_MINOR}"
 
-DESCRIPTION="Full Linux ${K_BRANCH_ID} kernel sources with Con Kolivas' high performance patchset and Gentoo's genpatches"
+DESCRIPTION="Con Kolivas' high performance patchset and Gentoo's genpatches for Linux ${K_BRANCH_ID}"
 
 #-- If Gentoo-Sources don't follow then extra incremental patches are needed -
 
@@ -33,15 +33,17 @@ XTRA_INCP_MAX=""
 #--
 
 CK_VERSION="1"
-BFS_VERSION="461"
+BFS_VERSION="440"
 
-CK_FILE="patch-${K_BRANCH_ID}-ck${CK_VERSION}.xz"
-BFS_FILE="${K_BRANCH_ID}-sched-bfs-${BFS_VERSION}.patch"
+CK_FILE="patch-${K_BRANCH_ID}-ck${CK_VERSION}-r1.bz2"
+BFS_FILE="${K_BRANCH_ID}-sched-bfs-${BFS_VERSION}-r1.patch"
 
 CK_BASE_URL="http://ck.kolivas.org/patches/3.0"
 CK_LVER_URL="${CK_BASE_URL}/${K_BRANCH_ID}/${K_BRANCH_ID}-ck${CK_VERSION}"
-CK_URI="${CK_LVER_URL}/${CK_FILE}"
-BFS_URI="${CK_LVER_URL}/patches/${BFS_FILE}"
+CK_URI="https://dev.gentoo.org/~dlan/distfiles/${CK_FILE}
+	${CK_LVER_URL}/${CK_FILE}"
+BFS_URI="https://dev.gentoo.org/~dlan/distfiles/${BFS_FILE}
+	${CK_LVER_URL}/patches/${BFS_FILE}"
 
 #-- Build extra incremental patches list --------------------------------------
 
@@ -56,7 +58,7 @@ if [ -n "${XTRA_INCP_MIN}" ]; then
 	done
 fi
 
-#-- CK needs sometimes to patch itself... (3.7/3.13)---------------------------
+#-- CK needs sometimes to patch itself... (3.7)--------------------------------
 
 CK_INCP_URI=""
 CK_INCP_LIST=""

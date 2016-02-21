@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -8,12 +8,12 @@ KEYWORDS="~amd64 ~x86"
 IUSE="bfsonly"
 
 HOMEPAGE="https://dev.gentoo.org/~mpagano/genpatches/
-	http://users.on.net/~ckolivas/kernel/"
+	http://users.tpg.com.au/ckolivas/kernel/"
 
 K_WANT_GENPATCHES="base extras experimental"
 K_EXP_GENPATCHES_PULL="1"
 K_EXP_GENPATCHES_NOUSE="1"
-K_GENPATCHES_VER="11"
+K_GENPATCHES_VER="28"
 K_SECURITY_UNSUPPORTED="1"
 K_DEBLOB_AVAILABLE="1"
 
@@ -23,7 +23,7 @@ detect_arch
 
 K_BRANCH_ID="${KV_MAJOR}.${KV_MINOR}"
 
-DESCRIPTION="Full Linux ${K_BRANCH_ID} kernel sources with Con Kolivas' high performance patchset and Gentoo's genpatches"
+DESCRIPTION="Con Kolivas' high performance patchset and Gentoo's genpatches for Linux ${K_BRANCH_ID}"
 
 #-- If Gentoo-Sources don't follow then extra incremental patches are needed -
 
@@ -33,12 +33,12 @@ XTRA_INCP_MAX=""
 #--
 
 CK_VERSION="1"
-BFS_VERSION="462"
+BFS_VERSION="460"
 
 CK_FILE="patch-${K_BRANCH_ID}-ck${CK_VERSION}.bz2"
 BFS_FILE="${K_BRANCH_ID}-sched-bfs-${BFS_VERSION}.patch"
 
-CK_BASE_URL="http://ck.kolivas.org/patches/4.0"
+CK_BASE_URL="http://ck.kolivas.org/patches/3.0"
 CK_LVER_URL="${CK_BASE_URL}/${K_BRANCH_ID}/${K_BRANCH_ID}-ck${CK_VERSION}"
 CK_URI="${CK_LVER_URL}/${CK_FILE}"
 BFS_URI="${CK_LVER_URL}/patches/${BFS_FILE}"
@@ -50,22 +50,21 @@ LX_INCP_LIST=""
 if [ -n "${XTRA_INCP_MIN}" ]; then
 	LX_INCP_URL="${KERNEL_BASE_URI}/incr"
 	for i in `seq ${XTRA_INCP_MIN} ${XTRA_INCP_MAX}`; do
-		LX_INCP[i]="patch-${K_BRANCH_ID}.${i}-$(($i+1)).bz2"
+		LX_INCP[i]="patch-${K_BRANCH_ID}.${i}-$(($i+1)).xz"
 		LX_INCP_URI="${LX_INCP_URI} ${LX_INCP_URL}/${LX_INCP[i]}"
 		LX_INCP_LIST="${LX_INCP_LIST} ${DISTDIR}/${LX_INCP[i]}"
 	done
 fi
 
-#-- CK needs sometimes to patch itself... ---------------------------
+#-- CK needs sometimes to patch itself... (3.7/3.13)---------------------------
 
 CK_INCP_URI=""
 CK_INCP_LIST=""
 
-#-- Local patches needed for the ck-patches to apply smoothly -------
+#-- Local patches needed for the ck-patches to apply smoothly (3.4/3.5) -------
 
 PRE_CK_FIX=""
-POST_CK_FIX="( ${FILESDIR}/bfs462-rtmn-fix.patch
-	${FILESDIR}/bfs462-update_inittask.patch )"
+POST_CK_FIX=""
 
 #--
 
