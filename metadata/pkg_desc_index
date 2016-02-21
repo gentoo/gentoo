@@ -13412,7 +13412,7 @@ net-analyzer/arping 2.15 2.15-r2 2.15-r3 2.16 9999: ARP Ping
 net-analyzer/arpoison 0.6-r2: A utility to poison ARP caches
 net-analyzer/arpon 2.7-r1 2.7.2: ArpON (Arp handler inspectiON) is a portable Arp handler
 net-analyzer/arptools 1.0.2: a collection of libnet and libpcap based ARP utilities
-net-analyzer/arpwatch 2.1.15-r6 2.1.15-r7: An ethernet monitor program that keeps track of ethernet/ip address pairings
+net-analyzer/arpwatch 2.1.15-r6 2.1.15-r7 2.1.15-r8: An ethernet monitor program that keeps track of ethernet/ip address pairings
 net-analyzer/authforce 0.9.9-r1: An HTTP authentication brute forcer
 net-analyzer/barnyard 0.2.0-r3: Fast output system for Snort
 net-analyzer/barnyard2 1.9: Parser for Snort unified/unified2 files
