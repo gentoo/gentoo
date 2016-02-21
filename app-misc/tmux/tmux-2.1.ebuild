@@ -22,7 +22,7 @@ CDEPEND="
 		=dev-libs/libevent-2.0*
 		>=dev-libs/libevent-2.1.5-r4
 	)
-	!sys-apps/utempter
+	sys-libs/libutempter
 	sys-libs/ncurses:0="
 DEPEND="${CDEPEND}
 	virtual/pkgconfig"
