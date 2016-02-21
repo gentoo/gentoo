@@ -46,6 +46,7 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 PATCHES=(
 	"${FILESDIR}/${P}-fix-ncurses-underlinking.patch"
+	"${FILESDIR}/${P}-audioconvert.h.patch"
 )
 S="${WORKDIR}/${PN}-${MY_PV}"
 
