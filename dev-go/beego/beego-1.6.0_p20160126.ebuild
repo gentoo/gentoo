@@ -73,7 +73,7 @@ src_unpack() {
 golang_install_pkgs() {
 	insopts -m0644 -p # preserve timestamps for bug 551486
 	insinto $(dirname "${EPREFIX}$(get_golibdir)/pkg/$(go env GOOS)_$(go env GOARCH)/${EGO_PN%/*}")
-	doins -r "${S}"/pkg/$(go env GOOS)_$(go env GOARCH)/${EGO_PN%/*}
+	doins -r "${S}"/pkg/$(go env GOOS)_$(go env GOARCH)/${EGO_PN%/*}{,.a}
 	insinto $(dirname "${EPREFIX}$(get_golibdir)/src/${EGO_PN%/*}")
 	doins -r "${S}"/src/${EGO_PN%/*}
 }
