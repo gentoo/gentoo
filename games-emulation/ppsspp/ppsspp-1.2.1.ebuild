@@ -9,10 +9,11 @@ inherit eutils cmake-utils qt4-r2 git-r3
 DESCRIPTION="A PSP emulator written in C++."
 HOMEPAGE="http://www.ppsspp.org/"
 EGIT_REPO_URI="git://github.com/hrydgard/${PN}.git"
+EGIT_COMMIT="v${PV}"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="qt4 qt5 +sdl"
 REQUIRED_USE="
 	?? ( qt4 qt5 sdl )
