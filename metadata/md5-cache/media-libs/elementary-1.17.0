@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare unpack
+DEPEND=>=dev-libs/efl-1.17.0[fbcon?,sdl?,png,wayland?,X?] javascript? ( net-libs/nodejs ) doc? ( app-doc/doxygen )
+DESCRIPTION=Basic widget set, based on EFL for mobile touch-screen devices
+EAPI=5
+HOMEPAGE=https://trac.enlightenment.org/e/wiki/Elementary
+IUSE=debug examples fbcon javascript quicklaunch sdl wayland X static-libs nls doc
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-interix ~x86-solaris ~x64-solaris
+LICENSE=LGPL-2.1
+RDEPEND=>=dev-libs/efl-1.17.0[fbcon?,sdl?,png,wayland?,X?] javascript? ( net-libs/nodejs ) nls? ( sys-devel/gettext )
+SLOT=0
+SRC_URI=https://download.enlightenment.org/rel/libs/elementary/elementary-1.17.0.tar.xz
+_eclass_exported_funcs=src_unpack:enlightenment src_prepare:enlightenment src_configure:- src_compile:enlightenment src_install:enlightenment
+_eclasses_=enlightenment	c185b1fa0d87798fd07fb1cd85866b23	eutils	9d81603248f2ba3ec59124320d123e5e	libtool	b75230758539a7da029e24afdb693960	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_md5_=f2e9948573c813d2ffb8e9eb3ce1ee1e
