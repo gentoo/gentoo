@@ -30,10 +30,11 @@
 
 #--- END OF EXAMPLES ---
 
-# Patrice Clement <monsieurp@gentoo.org> (21 Feb 2016)
-# Part of the JDK since 1.5. No reason to exist anymore.
-# Removal in 30 days. See bug #544038.
-dev-java/concurrent-util
+# James Le Cuirot <chewi@gentoo.org> (21 Feb 2016)
+# No revdeps, no release since 2007, and upstream have even moved the
+# download to a hidden OldFiles directory in the parent SourceForge
+# project. Removal in 30 days.
+dev-java/xsd2jibx
 
 # James Le Cuirot <chewi@gentoo.org> (19 Feb 2016)
 # Upstream EOL is December 2016. We would rather focus on other things
