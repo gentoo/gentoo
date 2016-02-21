@@ -4752,7 +4752,7 @@ dev-libs/libxslt 1.1.28-r4 1.1.28-r5: XSLT libraries and tools
 dev-libs/libyaml 0.1.6: YAML 1.1 parser and emitter written in C
 dev-libs/libzeitgeist 0.3.18: Client library to interact with zeitgeist
 dev-libs/libzip 1.0.1 1.1 1.1.1: Library for manipulating zip archives
-dev-libs/link-grammar 4.8.6 5.3.3: A Syntactic English parser
+dev-libs/link-grammar 4.8.6 5.3.3-r1: A Syntactic English parser
 dev-libs/lockdev 1.0.3.1.2-r2 1.0.3.1.2-r3: Library for locking devices
 dev-libs/log4c 1.2.1 1.2.4: Log4c is a library of C for flexible logging to files, syslog and other destinations
 dev-libs/log4cplus 1.1.2: C++ port of the Log for Java (log4j) logging library
