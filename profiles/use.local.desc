@@ -5004,6 +5004,16 @@ net-analyzer/munin:syslog - Configure the node by default to log on syslog. This
 net-analyzer/nagios-core:classicui - use the classic web theme
 net-analyzer/nagios-core:lighttpd - install www-servers/lighttpd config
 net-analyzer/nagios-core:web - enable web interface
+net-analyzer/nagios-plugin-check_raid:3ware - Support 3ware RAID controllers
+net-analyzer/nagios-plugin-check_raid:aacraid - Support Adaptec AAC-RAID controllers
+net-analyzer/nagios-plugin-check_raid:dmraid - Support Device-Mapper RAID
+net-analyzer/nagios-plugin-check_raid:hpa - Support HP Array controllers
+net-analyzer/nagios-plugin-check_raid:hpsa - Support HP SmartArray (CCISS) controllers
+net-analyzer/nagios-plugin-check_raid:i2o - Support DPT-I2O controllers (mostly Adaptec)
+net-analyzer/nagios-plugin-check_raid:megaraid-sas - Support LSI MegaRAID SAS controllers
+net-analyzer/nagios-plugin-check_raid:megaraid-scsi - Support LSI MegaRAID SCSI controllers
+net-analyzer/nagios-plugin-check_raid:mpt - Support LSI MPT Fusion controllers
+net-analyzer/nagios-plugin-check_raid:mpt-sas2 - Support LSI SAS-2 controllers
 net-analyzer/nagios-plugins:nagios-dns - Install net-dns/bind-tools required for monitoring DNS servers. Disabling the flag does not remove any plugin file.
 net-analyzer/nagios-plugins:nagios-game - Install games-util/qstat required for monitoring FPS servers. Disabling the flag does not remove any plugin file.
 net-analyzer/nagios-plugins:nagios-ping - Install net-analyzer/fping required for fancy ping monitoring. Disabling the flag does not remove any plugin file.
