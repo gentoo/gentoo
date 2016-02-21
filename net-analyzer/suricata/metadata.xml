@@ -13,6 +13,5 @@
     <flag name="nflog">Enable libnetfilter_log support</flag>
     <flag name="nfqueue">Enable AF_PACKET support</flag>
     <flag name="rules">Enable AF_PACKET support</flag>
-    <flag name="system-htp">Use net-libs/libhtp instead of bundled one</flag>
   </use>
 </pkgmetadata>
