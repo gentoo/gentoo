@@ -7,7 +7,7 @@ EAPI="5"
 GST_ORG_MODULE=gst-plugins-bad
 inherit gstreamer
 
-KEYWORDS="~alpha ~amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="~alpha amd64 ~ppc ~ppc64 ~x86"
 IUSE=""
 
 RDEPEND=">=net-libs/neon-0.30.0[${MULTILIB_USEDEP}]"
