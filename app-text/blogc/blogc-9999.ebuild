@@ -31,7 +31,7 @@ IUSE="test"
 RDEPEND=""
 
 # pkg-config is used only to find cmocka libraries
-DEPEND="${RDEPEND}
+DEPEND="${DEPEND}
 	test? (
 		virtual/pkgconfig
 		dev-util/cmocka )"
