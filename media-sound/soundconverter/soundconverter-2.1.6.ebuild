@@ -6,7 +6,7 @@ EAPI=5
 GCONF_DEBUG=no
 PYTHON_COMPAT=( python2_7 )
 
-inherit gnome2 multilib python-single-r1
+inherit eutils gnome2 multilib python-single-r1
 
 DESCRIPTION="A simple audiofile converter application for the GNOME environment"
 HOMEPAGE="http://soundconverter.org/"
@@ -14,7 +14,7 @@ SRC_URI="https://launchpad.net/${PN}/trunk/${PV}/+download/${P}.tar.xz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 
 IUSE="aac flac mp3 opus vorbis"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
