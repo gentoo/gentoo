@@ -67,10 +67,10 @@ unset _wxconf
 #  In wxGTK-2.9 and later it also controls the level of debugging output
 #  from the libraries.  In these versions debugging features are enabled
 #  by default and need to be disabled at the package level.  Because this
-#  causes many warning dialogs to regularly pop up we add -DNDEBUG to
-#  CPPFLAGS by default, unless your ebuild has a debug USE flag and it's
-#  enabled.  If you don't like this behavior you can set WX_DISABLE_DEBUG
-#  to disable it.
+#  causes many warning dialogs to pop up during runtime we add -DNDEBUG to
+#  CPPFLAGS to disable debugging features (unless your ebuild has a debug
+#  USE flag and it's enabled).  If you don't like this behavior you can set
+#  WX_DISABLE_NDEBUG to override it.
 #
 #  See: http://docs.wxwidgets.org/trunk/overview_debugging.html
 
@@ -83,13 +83,13 @@ setup-wxwidgets() {
 	case "${WX_GTK_VER}" in
 		3.0-gtk3)
 			wxtoolkit=gtk3
-			if [[ -z ${WX_DISABLE_DEBUG} ]]; then
+			if [[ -z ${WX_DISABLE_NDEBUG} ]]; then
 				use_if_iuse debug || append-cppflags -DNDEBUG
 			fi
 			;;
 		2.9|3.0)
 			wxtoolkit=gtk2
-			if [[ -z ${WX_DISABLE_DEBUG} ]]; then
+			if [[ -z ${WX_DISABLE_NDEBUG} ]]; then
 				use_if_iuse debug || append-cppflags -DNDEBUG
 			fi
 			;;
