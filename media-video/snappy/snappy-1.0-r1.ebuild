@@ -10,7 +10,7 @@ inherit autotools eutils gnome2
 DESCRIPTION="A simple media player written using GStreamer and Clutter"
 HOMEPAGE="https://wiki.gnome.org/Apps/Snappy"
 
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 LICENSE="GPL-2 LGPL-2"
 SLOT="0"
