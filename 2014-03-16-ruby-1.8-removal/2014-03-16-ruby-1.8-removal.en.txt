@@ -2,9 +2,9 @@ Title: Ruby 1.8 removal; Ruby 1.9/2.0 default
 Author: Manuel Rüger <mrueg@gentoo.org>
 Content-Type: text/plain
 Posted: 2014-03-16
-Revision: 1
+Revision: 2
 News-Item-Format: 1.0
-Display-If-Installed: dev-lang/ruby
+Display-If-Installed: <dev-lang/ruby-1.9
 
 Ruby MRI 1.8 has been retired by upstream in June 2013.[1]
 We remove Ruby MRI 1.8 support from the tree now. In parallel Ruby MRI 2.0 
