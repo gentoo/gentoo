@@ -510,6 +510,7 @@ app-crypt/codegroup 20080907-r1: encode / decode binary file as five letter code
 app-crypt/coolkey 1.1.0-r6: Linux Driver support for the CoolKey and CAC products
 app-crypt/crackpkcs12 0.2.9: multithreaded program to crack PKCS#12 files
 app-crypt/cryptkeeper 0.9.5: EncFS system tray applet for GNOME
+app-crypt/debian-archive-keyring 2014.3: GnuPG archive keys of the Debian archive
 app-crypt/dieharder 2.28.1 3.31.1 3.31.1-r1: An advanced suite for testing the randomness of RNG's
 app-crypt/dirmngr 1.1.1-r1: DirMngr is a daemon to handle CRL and certificate requests for GnuPG
 app-crypt/easy-rsa 2.2.2 2.2.2-r1 3.0.1: Small RSA key management package, based on OpenSSL
@@ -538,6 +539,7 @@ app-crypt/heimdal 1.5.3-r2: Kerberos 5 implementation from KTH
 app-crypt/hmaccalc 0.9.13 0.9.14: Tools for computing and checking HMAC values for files
 app-crypt/ima-evm-utils 0.2 0.8 9999: Supporting tools for IMA and EVM
 app-crypt/jacksum 1.7.0: Java utility for computing and verifying checksums: CRC*, MD*, RIPEMD*, SHA*, TIGER*, WHIRLPOOL
+app-crypt/jetring 0.21: GPG keyring maintenance using changesets
 app-crypt/johntheripper 1.7.9-r6 1.7.9-r10: fast password cracker
 app-crypt/kencfs 1.5.0: GUI frontend for encfs
 app-crypt/keybase 0.8.13 0.8.18 0.8.22 0.8.23 0.8.24 0.8.25 1.0.8.0 1.0.9.0 1.0.12.0: Client for keybase.io
@@ -607,6 +609,7 @@ app-crypt/tinyca 2.0.7.5-r2: Simple Perl/Tk GUI to manage a small certification 
 app-crypt/tpm-emulator 0.7.4-r1: Emulator driver for tpm
 app-crypt/tpm-tools 1.3.8: TrouSerS' support tools for the Trusted Platform Modules
 app-crypt/trousers 0.3.10-r1 0.3.13 0.3.13-r1: An open-source TCG Software Stack (TSS) v1.1 implementation
+app-crypt/ubuntu-keyring 2012.05.19: GnuPG archive keys of the Ubuntu archive
 app-crypt/xca 1.1.0 1.3.0 1.3.1 1.3.2: A GUI to OpenSSL, RSA public keys, certificates, signing requests and revokation lists
 app-crypt/xor-analyze 0.5: program for cryptanalyzing xor 'encryption' with variable key length
 app-crypt/yubikey-neo-manager 1.1.0 1.1.0-r1 1.2.1 1.2.1-r1 1.3.0 1.3.0-r1 1.4.0: Cross platform personalization tool for the YubiKey NEO
@@ -9457,7 +9460,7 @@ dev-util/d-feet 0.3.9 0.3.10: D-Feet is a powerful D-Bus debugger
 dev-util/dbus-test-runner 12.10.1: Run executables under a new DBus session for testing
 dev-util/ddd 3.3.12-r3 3.3.12-r4: Graphical front-end for command-line debuggers
 dev-util/debhelper 9.20150101 9.20151225 9.20160115: Collection of programs that can be used to automate common tasks in debian/rules
-dev-util/debootstrap 1.0.75 1.0.78: Debian/Ubuntu bootstrap scripts
+dev-util/debootstrap 1.0.75 1.0.78 1.0.78-r1: Debian/Ubuntu bootstrap scripts
 dev-util/debugedit 5.3.5-r1: standalone debugedit taken from rpm
 dev-util/dejagnu 1.4.4-r3 1.5: framework for testing other programs
 dev-util/desktop-file-utils 0.21 0.22: Command line utilities to work with desktop menu entries
