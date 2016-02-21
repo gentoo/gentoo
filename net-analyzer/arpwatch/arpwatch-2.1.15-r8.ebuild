@@ -22,7 +22,7 @@ IUSE="selinux"
 
 DEPEND="
 	net-libs/libpcap
-	sys-libs/ncurses
+	sys-libs/ncurses:*
 "
 
 RDEPEND="
