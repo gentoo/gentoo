@@ -10,7 +10,7 @@ inherit eutils toolchain-funcs
 
 SRC_URI="https://storage.googleapis.com/golang/go${PV}.src.tar.gz"
 # Upstream only supports go on amd64, arm and x86 architectures.
-KEYWORDS="-* amd64 ~arm ~x86 ~amd64-fbsd ~x86-fbsd ~x64-macos ~x86-macos ~x64-solaris"
+KEYWORDS="-* amd64 arm ~x86 ~amd64-fbsd ~x86-fbsd ~x64-macos ~x86-macos ~x64-solaris"
 
 DESCRIPTION="Version of go compiler used for bootstrapping"
 HOMEPAGE="http://www.golang.org"
