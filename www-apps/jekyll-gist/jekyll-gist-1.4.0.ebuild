@@ -22,7 +22,7 @@ IUSE=""
 
 ruby_add_rdepend ">=dev-ruby/octokit-4.2"
 ruby_add_bdepend "test? ( dev-ruby/webmock
-	>=www-apps/jekyll-3 )"
+	>=www-apps/jekyll-2 )"
 
 all_ruby_prepare() {
 	rm Rakefile || die
