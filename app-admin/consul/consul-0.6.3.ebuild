@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit git-r3 golang-base systemd user
+inherit golang-base systemd user
 
 GO_PN="github.com/hashicorp/consul"
 
@@ -153,8 +153,6 @@ src_install() {
 	newinitd "${FILESDIR}/consul.initd" "${PN}"
 	newconfd "${FILESDIR}/consul.confd" "${PN}"
 	systemd_dounit "${FILESDIR}/consul.service"
-
-	egit_clean "${WORKDIR}"/{pkg,src}
 
 	find "${WORKDIR}"/src/${GO_PN} -mindepth 1 -maxdepth 1 -type f -delete || die
 
