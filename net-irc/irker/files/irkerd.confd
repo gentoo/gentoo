@@ -6,14 +6,13 @@
 # Nick-Server password
 # IRKERD_PASSWORD=""
 
-# Log file, intended for debug purpose only, no logrotate will
-# handle this logfile
+# Log file, if none syslog is used (facility daemon)
 # IRKERD_LOGFILE=""
 
 # Debug Level (critical, error, warning, info, debug)
 # IRKERD_LOGLEVEL=""
 
-# To run an anonymous irkerd safely. It should not able able
+# To run an anonymous irkerd safely. It should not be able
 # to write to anywhere on your system
 # IRKERD_USER=""
 
