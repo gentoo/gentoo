@@ -2262,7 +2262,7 @@ app-text/htp 1.16-r1: An HTML preprocessor
 app-text/hunspell 1.3.3: Hunspell spell checker - an improved replacement for myspell in OOo
 app-text/hyperestraier 1.4.13: a full-text search system for communities
 app-text/info2html 2.0: Converts GNU .info files to HTML
-app-text/iso-codes 3.57 3.61 3.63 3.64: ISO language, territory, currency, script codes and their translations
+app-text/iso-codes 3.63 3.64 3.65: ISO language, territory, currency, script codes and their translations
 app-text/itex2mml 1.5.2: A LaTeX into XHTML/MathML converter
 app-text/jabref 2.10-r2 2.10-r4: Java GUI for managing BibTeX and other bibliographies
 app-text/jabref-bin 2.10 2.11_beta_rc2 2.11_beta_rc3 2.11_beta_rc3-r1 2.11_beta_rc4 2.11 2.11.1 3.1 3.2: Java GUI for managing BibTeX and other bibliographies
@@ -4370,7 +4370,7 @@ dev-lang/php 5.4.45 5.5.30 5.5.31 5.5.32 5.6.14 5.6.17 5.6.18 7.0.3: The PHP lan
 dev-lang/pocl 0.11 0.12: PortableCL: opensource implementation of the OpenCL standard
 dev-lang/polyml 5.4.1 5.5.0 5.5.1 5.5.2: Poly/ML is a full implementation of Standard ML
 dev-lang/python 2.7.10-r1 2.7.11-r2 3.3.5-r2 3.3.5-r7 3.4.3-r1 3.4.3-r7 3.5.0-r2 3.5.1-r2: An interpreted, interactive, object-oriented programming language
-dev-lang/python-exec 2.0.1-r1 2.0.2 2.1 2.2 2.2.1 2.3 2.3.2 9999: Python script wrapper
+dev-lang/python-exec 2.0.1-r1 2.0.2 2.1 2.2 2.2.1 2.3 2.3.2 2.4.1 9999: Python script wrapper
 dev-lang/qu-prolog 9.1 9.1-r1 9.5 9.6 9.7: Extended Prolog supporting quantifiers, object-variables and substitutions
 dev-lang/rakudo 2016.01.1: A compiler for the Perl 6 programming language
 dev-lang/rebol 9999: Relative Expression-Based Object Language
@@ -4415,7 +4415,7 @@ dev-libs/UTF8Strings 1.14.0 1.14.2: C++ library providing ability to work native
 dev-libs/ace 5.7.2 5.8.3: The Adaptive Communications Environment
 dev-libs/angelscript 2.30.2-r1: A flexible, cross-platform scripting library
 dev-libs/antlr-c 3.5.2: The ANTLR3 C Runtime
-dev-libs/appstream-glib 0.5.0 0.5.5 0.5.7: Provides GObjects and helper methods to read and write AppStream metadata
+dev-libs/appstream-glib 0.5.0 0.5.7 0.5.9: Provides GObjects and helper methods to read and write AppStream metadata
 dev-libs/apr 1.5.0-r2 1.5.1-r1 1.5.2: Apache Portable Runtime Library
 dev-libs/apr-util 1.5.2 1.5.3-r2 1.5.4 1.5.4-r1: Apache Portable Runtime Utility Library
 dev-libs/argtable 2.13: An ANSI C library for parsing GNU-style command-line options with minimal fuss
@@ -13114,7 +13114,7 @@ media-sound/sonata 1.6.2.1-r1: An elegant GTK+ music client for the Music Player
 media-sound/sonic-visualiser 1.9 2.3 2.4.1 2.5: Music audio files viewer and analiser
 media-sound/sooperlooper 1.6.17 1.6.18 1.7.3 1.7.3-r1: Live looping sampler with immediate loop recording
 media-sound/sound-juicer 3.16.1 3.18.1: CD ripper for GNOME
-media-sound/soundconverter 2.1.5 2.1.5-r1: A simple audiofile converter application for the GNOME environment
+media-sound/soundconverter 2.1.5-r1 2.1.6: A simple audiofile converter application for the GNOME environment
 media-sound/soundkonverter 2.1.2: Frontend to various audio converters
 media-sound/sox 14.4.1 14.4.2: The swiss army knife of sound processing programs
 media-sound/specimen 0.5.2_rc3-r1 0.5.2_rc3-r2: A Midi Controllable Audio Sampler
@@ -14853,7 +14853,7 @@ net-print/cups 2.0.3 2.0.4 2.1.2-r2 2.1.3 2.1.3-r1 9999: The Common Unix Printin
 net-print/cups-bjnp 1.1 1.2.1 2.0: CUPS backend for the canon printers using the proprietary USB over IP BJNP protocol
 net-print/cups-filters 1.0.71 1.5.0 1.6.0 1.8.1 1.8.1-r1 1.8.2 9999: Cups PDF filters
 net-print/cups-pdf 2.6.1 3.0_beta1: Provides a virtual printer for CUPS to produce PDF files
-net-print/cups-pk-helper 0.2.4-r1 0.2.5: PolicyKit helper to configure cups with fine-grained privileges
+net-print/cups-pk-helper 0.2.5 0.2.6: PolicyKit helper to configure cups with fine-grained privileges
 net-print/cups-windows 6.0-r1: CUPS PostScript Driver for Windows
 net-print/dymo-cups-drivers 1.4.0: Dymo SDK for LabelWriter/LabelManager printers
 net-print/epson-inkjet-printer-escpr 1.4.4 1.5.2 1.6.1: Epson Inkjet Printer Driver (ESC/P-R)
