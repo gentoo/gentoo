@@ -5951,14 +5951,14 @@ dev-perl/PDF-Create 1.60.0-r1: PDF::Create allows you to create PDF documents
 dev-perl/PDL 2.4.11: Perl Data Language for scientific computing
 dev-perl/PGPLOT 2.210.0: allow subroutines in the PGPLOT graphics library to be called from Perl
 dev-perl/PHP-Serialization 0.340.0-r1: Convert PHP's serialize() into the equivalent Perl structure, and vice versa
-dev-perl/POE 1.356-r1: A framework for creating multitasking programs in Perl
+dev-perl/POE 1.356-r1 1.367: A framework for creating multitasking programs in Perl
 dev-perl/POE-API-Peek 2.200.0-r1: Peek into the internals of a running POE env
 dev-perl/POE-Component-Client-DNS 1.53.0: Non-blocking, parallel DNS client
 dev-perl/POE-Component-Client-Keepalive 0.272.0: Manage connections, with keep-alive
 dev-perl/POE-Component-IKC 0.230.300 0.230.500: POE Inter-Kernel Communication
 dev-perl/POE-Component-PreforkDispatch 0.101.0-r1: Preforking task dispatcher
 dev-perl/POE-Component-Resolver 0.921.0: A non-blocking getaddrinfo() resolver
-dev-perl/POE-Test-Loops 1.353.0-r1: Reusable tests for POE::Loop authors
+dev-perl/POE-Test-Loops 1.353.0-r1 1.360: Reusable tests for POE::Loop authors
 dev-perl/POE-XS-Loop-EPoll 1.3.0: An XS implementation of POE::Loop, using Linux epoll(2)
 dev-perl/POE-XS-Loop-Poll 1.0.0-r1: An XS implementation of POE::Loop, using poll(2)
 dev-perl/POE-XS-Queue-Array 0.6.0-r1: An XS implementation of POE::Queue::Array
