@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -16,7 +16,7 @@ IUSE="gui"
 
 RDEPEND="dev-perl/URI
 	dev-perl/libwww-perl
-	>=dev-perl/ImageSize-2.9
+	>=dev-perl/Image-Size-2.900.0
 	>=media-libs/exiftool-6
 	gui? ( gnome-extra/zenity )"
 DEPEND=""
