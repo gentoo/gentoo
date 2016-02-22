@@ -279,12 +279,6 @@ www-apps/389-dsgw
 # Mask this liferea version because upstream released it broken
 =net-news/liferea-1.10.17
 
-# Justin Lecher <jlec@gentoo.org> (29 Dec 2015)
-# Fails to build and test runs
-# No reverse deps
-# #370021, #478614, #513964
-sci-libs/libbufr
-
 # Fabian Groffen <grobian@gentoo.org> (11 Dec 2015)
 # Release candidates for Exim 4.87
 =mail-mta/exim-4.87_rc2
