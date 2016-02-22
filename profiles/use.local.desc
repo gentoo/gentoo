@@ -660,6 +660,7 @@ app-emulation/qemu:xen - Enables support for Xen backends
 app-emulation/qemu:xfs - Support xfsctl() notification and syncing for XFS backed virtual disks.
 app-emulation/rkt:actool - Install the actool for ACI manipulation
 app-emulation/rkt:rkt_stage1_coreos - Download and use a prebuilt stage1.aci from CoreOS
+app-emulation/rkt:rkt_stage1_fly - Build stage1-fly.aci
 app-emulation/rkt:rkt_stage1_host - Assemble stage1.aci from host binaries
 app-emulation/rkt:rkt_stage1_src - Build the stage1.aci from source
 app-emulation/spice:smartcard - Enable smartcard remoting using app-emulation/libcacard
