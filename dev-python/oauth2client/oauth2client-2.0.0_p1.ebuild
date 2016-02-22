@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="Library for accessing resources protected by OAuth 2.0"
 HOMEPAGE="https://github.com/google/oauth2client"
-SRC_URI="https://github.com/google/oauth2client/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/google/oauth2client/archive/v${PV/_p/-post}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
