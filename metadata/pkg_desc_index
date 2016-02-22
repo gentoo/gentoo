@@ -5718,25 +5718,25 @@ dev-perl/LWP-Authen-Wsse 0.50.0-r1: Library for enabling X-WSSE authentication i
 dev-perl/LWP-MediaTypes 6.20.0-r1: Media types and mailcap processing
 dev-perl/LWP-Protocol-https 6.30.0-r1 6.60.0: Provide https support for LWP::UserAgent
 dev-perl/LWP-UserAgent-Cached 0.60.0: LWP::UserAgent with simple caching mechanism
-dev-perl/LWP-UserAgent-Determined 1.60.0-r1: A virtual browser that retries errors
-dev-perl/LWPx-ParanoidAgent 1.70.0-r1: Subclass of LWP::UserAgent that protects you from harm
+dev-perl/LWP-UserAgent-Determined 1.60.0-r1 1.70.0: A virtual browser that retries errors
+dev-perl/LWPx-ParanoidAgent 1.70.0-r1 1.100.0: Subclass of LWP::UserAgent that protects you from harm
 dev-perl/LaTeX-Driver 0.200.4: Perl encapsulation of invoking the Latex programs
 dev-perl/LaTeX-Encode 0.91.6: Encode characters for LaTeX formatting
 dev-perl/LaTeX-Table 1.0.6: Perl extension for the automatic generation of LaTeX tables
 dev-perl/Lab-Measurement 3.320.0 3.410.0 9999: Measurement control and automation with Perl
 dev-perl/Lchown 1.10.0-r1: Use the lchown(2) system call from Perl
-dev-perl/Lexical-Persistence 1.20.0-r1: Bind lexicals to persistent data
+dev-perl/Lexical-Persistence 1.20.0-r1 1.23.0: Bind lexicals to persistent data
 dev-perl/Lexical-SealRequireHints 0.9.0: Prevent leakage of lexical hints
 dev-perl/Lingua-EN-Inflect 1.895.0-r1 1.899.0: Perl module to pluralize English words
 dev-perl/Lingua-EN-NameCase 1.150.0-r1 1.190.0: Correctly case a person's name from UPERCASE or lowcase
 dev-perl/Lingua-EN-NameParse 1.310.0-r1 1.330.0: routines for manipulating a person's name
-dev-perl/Lingua-EN-Numbers-Ordinate 1.20.0-r1: Perl module for Lingua::EN::Numbers::Ordinate
-dev-perl/Lingua-PT-Stemmer 0.10.0-r1: Portuguese language stemming
+dev-perl/Lingua-EN-Numbers-Ordinate 1.20.0-r1 1.40.0: Convert cardinal numbers(3) to ordinal numbers(3rd)
+dev-perl/Lingua-PT-Stemmer 0.10.0-r1 0.20.0: Portuguese language stemming
 dev-perl/Lingua-Preferred 0.2.4-r1: Pick a language based on user's preferences
 dev-perl/Lingua-Stem 0.840.0-r1: Porter's stemming algorithm for 'generic' English
 dev-perl/Lingua-Stem-Fr 0.20.0-r1: Perl French Stemming
 dev-perl/Lingua-Stem-It 0.20.0-r1: Porter's stemming algorithm for Italian
-dev-perl/Lingua-Stem-Ru 0.10.0-r1: Porter's stemming algorithm for Russian (KOI8-R only)
+dev-perl/Lingua-Stem-Ru 0.10.0-r1 0.40.0: Porter's stemming algorithm for Russian (KOI8-R only)
 dev-perl/Lingua-Stem-Snowball-Da 1.10.0-r1: Porters stemming algorithm for Denmark
 dev-perl/Linux-DesktopFiles 0.80.0 0.90.0: Perl module to get and parse the Linux .desktop files
 dev-perl/Linux-Inotify2 1.220.0-r1: scalable directory/file change notification
@@ -5752,8 +5752,8 @@ dev-perl/Locale-PO 0.230.0 0.270.0: Perl module for manipulating .po entries fro
 dev-perl/Locale-gettext 1.50.0-r1: A Perl module for accessing the GNU locale utilities
 dev-perl/LockFile-Simple 0.208.0-r1: File locking module for Perl
 dev-perl/Log-Agent 0.307.0-r1 1.0.0 1.1.0: A general logging framework
-dev-perl/Log-Any 0.150.0 1.32.0: Bringing loggers and listeners together
-dev-perl/Log-Dispatch 2.410.0 2.450.0 2.510.0: Dispatches messages to multiple Log::Dispatch::* objects
+dev-perl/Log-Any 0.150.0 1.32.0 1.38.0: Bringing loggers and listeners together
+dev-perl/Log-Dispatch 2.410.0 2.450.0 2.510.0 2.540.0: Dispatches messages to one or more outputs
 dev-perl/Log-Log4perl 1.420.0-r1 1.460.0: Log4j implementation for Perl
 dev-perl/Log-TraceMessages 1.400.0-r1: Logging/debugging aid
 dev-perl/MARC-Charset 1.350.0-r1: convert MARC-8 encoded strings to UTF-8
@@ -6443,7 +6443,7 @@ dev-perl/librg-utils-perl 1.0.43: Parsers and format conversion utilities used b
 dev-perl/libvorbis-perl 0.50.0-r1: Ogg::Vorbis - Perl extension for Ogg Vorbis streams
 dev-perl/libwww-perl 6.50.0 6.150.0: A collection of Perl Modules for the WWW
 dev-perl/libxml-perl 0.80.0-r1: Collection of Perl modules for working with XML
-dev-perl/local-lib 2.0.14: create and use a local lib/ for perl modules with PERL5LIB
+dev-perl/local-lib 2.0.14 2.0.18: create and use a local lib/ for perl modules with PERL5LIB
 dev-perl/locale-maketext-fuzzy 0.110.0-r1: Maketext from already interpolated strings
 dev-perl/math-pari 2.10.806.50-r1 2.10.808: Perl interface to PARI
 dev-perl/maybe 0.20.200-r1: Use a Perl module and ignore error if can't be loaded
