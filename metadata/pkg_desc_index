@@ -15572,7 +15572,7 @@ sci-libs/cdd+ 077a: Another implementation of the double description method
 sci-libs/cddlib 094g: C implementation of the Double Description Method of Motzkin et al
 sci-libs/cdf 3.4.1 3.5.0.2: Common Data Format I/O library for multi-dimensional data sets
 sci-libs/ceres-solver 1.8.0 1.9.0: Nonlinear least-squares minimizer
-sci-libs/cfitsio 3.38 3.360: C and Fortran library for manipulating FITS files
+sci-libs/cfitsio 3.38-r1 3.360: C and Fortran library for manipulating FITS files
 sci-libs/cgcode 1.0-r2: Conjugate gradient Codes for large sparse linear systems
 sci-libs/cgnslib 3.2.1: The CFD General Notation System (CGNS) is a standard for CFD data
 sci-libs/chemkit 0.1 0.1-r1: Library for chemistry applications
