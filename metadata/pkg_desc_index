@@ -7631,6 +7631,7 @@ dev-python/pyogg 1.3-r2: Python bindings for the ogg library
 dev-python/pyopenal 0.1.6-r1: OpenAL library port for Python
 dev-python/pyopencl 2014.1 2015.1 2015.2.4 9999: Python wrapper for OpenCL
 dev-python/pyopengl 3.0.2-r1 3.1.0: Python OpenGL bindings
+dev-python/pyopengl_accelerate 3.1.0: Accelerate module for PyOpenGL
 dev-python/pyopenssl 0.14 0.15.1 0.15.1-r1: Python interface to the OpenSSL library
 dev-python/pyorbit 2.24.0-r1: ORBit2 bindings for Python
 dev-python/pyosd 0.2.14 0.2.14-r1: Python module for displaying text on your X display, like the 'On Screen Displays' used on TVs
