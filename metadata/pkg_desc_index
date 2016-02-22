@@ -14942,7 +14942,7 @@ net-voip/telepathy-gabble 0.18.3: A Jabber/XMPP connection manager, with handlin
 net-voip/telepathy-haze 0.8.0: Telepathy connection manager providing libpurple supported protocols
 net-voip/telepathy-rakia 0.8.0: A SIP connection manager for Telepathy based around the Sofia-SIP library
 net-voip/telepathy-salut 0.8.1: A link-local XMPP connection manager for Telepathy
-net-voip/vidyodesktop 3.3.0.027-r1 3.3.0.127: Enterprise video conferencing platform
+net-voip/vidyodesktop 3.3.0.027-r1 3.3.0.127 3.5.4.010: Enterprise video conferencing platform
 net-voip/yate 5.4.0-r1 5.5.0-r1 9999: The Yate AV Suite
 net-wireless/adm8211 20060111: IEEE 802.11 wireless LAN driver for adm8211 based cards
 net-wireless/aircrack-ng 1.2_rc1-r1 1.2_rc2 1.2_rc3 9999: WLAN tools for breaking 802.11 WEP/WPA keys
