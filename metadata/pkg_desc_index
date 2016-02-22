@@ -15140,7 +15140,7 @@ sci-astronomy/stellarium 0.12.4 0.13.3 0.14.0 0.14.2: 3D photo-realistic skies i
 sci-astronomy/stiff 2.1.3: Converts astronomical FITS images to the TIFF format
 sci-astronomy/swarp 2.19.1: Resample and coadd astronomical FITS images
 sci-astronomy/wcslib 4.25.1 5.14: Astronomical World Coordinate System transformations library
-sci-astronomy/wcstools 3.8.7: World Coordinate System library for astronomical FITS images
+sci-astronomy/wcstools 3.8.7 3.9.2: World Coordinate System library for astronomical FITS images
 sci-astronomy/xephem 3.7.5 3.7.6: Interactive tool for astronomical ephemeris and sky simulation
 sci-astronomy/xfitsview 2.2-r1: Viewer for astronomical images in FITS format
 sci-biology/ApE 2.0.7-r1: A Plasmid Editor
