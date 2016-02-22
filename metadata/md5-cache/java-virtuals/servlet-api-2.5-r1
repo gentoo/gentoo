@@ -9,5 +9,5 @@ LICENSE=public-domain
 RDEPEND=|| ( dev-java/tomcat-servlet-api:2.5 dev-java/resin-servlet-api:2.5 dev-java/glassfish-servlet-api:2.5 ) >=dev-java/java-config-2.2.0
 SLOT=2.5
 _eclass_exported_funcs=src_install:java-virtuals-2
-_eclasses_=eutils	9d81603248f2ba3ec59124320d123e5e	java-utils-2	51a42ff2f35cd75af735cd1626829b06	java-virtuals-2	c53e87cb867e7812d54bdf959c1164e3	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=eutils	9d81603248f2ba3ec59124320d123e5e	java-utils-2	4f0e83a2c108b9f3d74ecebf32e2f483	java-virtuals-2	c53e87cb867e7812d54bdf959c1164e3	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=2a8aa34bc73d6e8f3c3dec80d1d7f574

@@ -12,5 +12,5 @@ RESTRICT=test
 SLOT=0
 SRC_URI=mirror://sourceforge/csound/Csound6.02.tar.gz
 _eclass_exported_funcs=pkg_pretend:- pkg_preinst:java-pkg-opt-2 pkg_postinst:- pkg_setup:- src_prepare:- src_configure:- src_compile:cmake-utils src_test:- src_install:-
-_eclasses_=cmake-utils	c67ce9708a9c02be2d296cf547740e9c	eutils	9d81603248f2ba3ec59124320d123e5e	flag-o-matic	d270fa247153df66074f795fa42dba3e	java-pkg-opt-2	40db73f27fc6458ec2105812a4f261c7	java-utils-2	51a42ff2f35cd75af735cd1626829b06	multilib	3972ca401cf7dbb430df9995f5d8d580	python-single-r1	2ebea8fbab356d63110245129a67a6dd	python-utils-r1	2e6826f6a93ad2acf904eecf5b5fb6d2	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=cmake-utils	c67ce9708a9c02be2d296cf547740e9c	eutils	9d81603248f2ba3ec59124320d123e5e	flag-o-matic	d270fa247153df66074f795fa42dba3e	java-pkg-opt-2	40db73f27fc6458ec2105812a4f261c7	java-utils-2	4f0e83a2c108b9f3d74ecebf32e2f483	multilib	3972ca401cf7dbb430df9995f5d8d580	python-single-r1	2ebea8fbab356d63110245129a67a6dd	python-utils-r1	2e6826f6a93ad2acf904eecf5b5fb6d2	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=e5b6bebe1281032bf1b67509944d1113
