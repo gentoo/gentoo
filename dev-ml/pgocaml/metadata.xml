@@ -5,4 +5,7 @@
 			<email>ml@gentoo.org</email>
 			<name>Gentoo ML Project</name>
 		</maintainer>
+  <use>
+	<flag name="camlp4">Enable PG'Ocaml syntax extension.</flag>
+  </use>
 </pkgmetadata>
