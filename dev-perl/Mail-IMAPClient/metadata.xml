@@ -5,6 +5,12 @@
     <email>perl@gentoo.org</email>
     <name>Gentoo Perl Project</name>
   </maintainer>
+  <use>
+    <flag name="ntlm">Install support for NTLM Authentication</flag>
+    <flag name="md5">Install support for DIGEST-MD5 and CRAM-MD5 Authentication</flag>
+    <flag name="ssl">Install support for SSL Connections</flag>
+    <flag name="zlib">Install support for COMPRESS DEFLATE connections</flag>
+  </use>
   <upstream>
     <remote-id type="cpan">Mail-IMAPClient</remote-id>
     <remote-id type="cpan-module">Mail::IMAPClient</remote-id>
