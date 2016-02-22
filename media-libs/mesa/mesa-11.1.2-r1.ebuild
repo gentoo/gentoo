@@ -190,6 +190,8 @@ pkg_setup() {
 }
 
 src_prepare() {
+	epatch "${FILESDIR}"/${PN}-11.1.2-i965-fix-use-after-free.patch
+
 	[[ ${PV} == 9999 ]] && eautoreconf
 }
 
