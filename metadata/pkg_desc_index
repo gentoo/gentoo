@@ -15722,6 +15722,7 @@ sci-libs/orocos-bfl 0.8.0: Bayesian Filtering Library
 sci-libs/orocos_kdl 1.3.0 9999: Kinematics and Dynamics Library (KDL)
 sci-libs/parmetis 3.2.0: Parallel graph partitioner
 sci-libs/parmgridgen 1.0: Software for parallel (mpi) generating coarse grids
+sci-libs/pastix 5.2.2_p9: Parallel solver for very large sparse linear systems
 sci-libs/pcl 1.7.2 9999: 2D/3D image and point cloud processing
 sci-libs/pgplot 5.2.2-r6: FORTRAN/C device-independent scientific graphic library
 sci-libs/plotmm 0.1.2: Plot widget for GTKmm
