@@ -2,9 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="4"
+EAPI="6"
 
-inherit eutils flag-o-matic toolchain-funcs linux-mod
+inherit flag-o-matic linux-mod toolchain-funcs
 
 DESCRIPTION="A library for running svga graphics on the console"
 HOMEPAGE="http://www.svgalib.org/"
@@ -12,14 +12,25 @@ SRC_URI="http://www.arava.co.il/matan/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="-* x86"
+KEYWORDS="-* ~x86"
 IUSE="build +kernel-helper"
-
-DEPEND=""
-RDEPEND=""
 
 MODULE_NAMES="svgalib_helper(misc:${S}/kernel/svgalib_helper)"
 BUILD_TARGETS="default"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.9.25-linux_2.6.patch
+	"${FILESDIR}"/${PN}-1.9.19-pic.patch
+	"${FILESDIR}"/${PN}-1.9.25-build.patch
+	"${FILESDIR}"/${PN}-1.9.25-linux_2.6.28.patch
+	"${FILESDIR}"/${PN}-1.9.25-glibc210.patch
+	"${FILESDIR}"/${PN}-1.9.25-linux_2.6.36-r1.patch
+	"${FILESDIR}"/${PN}-1.9.25-fix_buffer.patch
+	"${FILESDIR}"/${PN}-1.9.25-vga_reset.patch
+	"${FILESDIR}"/${PN}-1.9.25-missing_include.patch
+	"${FILESDIR}"/${PN}-1.9.25-linux_3.4.patch
+	"${FILESDIR}"/${PN}-1.9.25-linux_3.9.patch
+)
 
 pkg_setup() {
 	linux-mod_pkg_setup
@@ -27,17 +38,7 @@ pkg_setup() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-1.9.25-linux_2.6.patch
-	epatch "${FILESDIR}"/${PN}-1.9.19-pic.patch #51698
-	epatch "${FILESDIR}"/${PN}-1.9.25-build.patch
-	epatch "${FILESDIR}"/${PN}-1.9.25-linux_2.6.28.patch
-	epatch "${FILESDIR}"/${PN}-1.9.25-glibc210.patch #274305
-	epatch "${FILESDIR}"/${PN}-1.9.25-linux_2.6.36-r1.patch
-	epatch "${FILESDIR}"/${PN}-1.9.25-fix_buffer.patch
-	epatch "${FILESDIR}"/${PN}-1.9.25-vga_reset.patch
-	epatch "${FILESDIR}"/${PN}-1.9.25-missing_include.patch
-	epatch "${FILESDIR}"/${PN}-1.9.25-linux_3.4.patch
-	epatch "${FILESDIR}"/${PN}-1.9.25-linux_3.9.patch #557052
+	default
 	sed -i -e '/linux\/smp_lock.h/d' kernel/svgalib_helper/main.c || die
 }
 
@@ -47,50 +48,47 @@ src_compile() {
 	export CC=$(tc-getCC)
 
 	# First build static
-	emake OPTIMIZE="${CFLAGS}" static || die "Failed to build static libraries!"
+	emake OPTIMIZE="${CFLAGS}" static
 	# Then build shared ...
-	emake OPTIMIZE="${CFLAGS}" shared || die "Failed to build shared libraries!"
+	emake OPTIMIZE="${CFLAGS}" shared
 	# Missing in some cases ...
 	ln -s libvga.so.${PV} sharedlib/libvga.so
 	# Build lrmi and tools ...
 	emake OPTIMIZE="${CFLAGS}" LDFLAGS+=" -L../sharedlib" \
-		textutils lrmi utils \
-		|| die "Failed to build libraries and utils!"
+		textutils lrmi utils
 	# Build the gl stuff tpp
-	emake OPTIMIZE="${CFLAGS}" -C gl || die "Failed to build gl!"
-	emake OPTIMIZE="${CFLAGS}" -C gl libvgagl.so.${PV} \
-		|| die "Failed to build libvgagl.so.${PV}!"
+	emake OPTIMIZE="${CFLAGS}" -C gl
+	emake OPTIMIZE="${CFLAGS}" -C gl libvgagl.so.${PV}
 	# Missing in some cases ...
 	ln -s libvgagl.so.${PV} sharedlib/libvgagl.so
-	emake OPTIMIZE="${CFLAGS}" -C src libvga.so.${PV} \
-		|| die "Failed to build libvga.so.${PV}!"
+	emake OPTIMIZE="${CFLAGS}" -C src libvga.so.${PV}
 	cp -pPR src/libvga.so.${PV} sharedlib/
 	# Build threeDKit ...
 	emake OPTIMIZE="${CFLAGS}" LDFLAGS+=" -L../sharedlib" \
-		-C threeDKit lib3dkit.a || die "Failed to build threeDKit!"
+		-C threeDKit lib3dkit.a
 	# Build demo's ...
 	emake OPTIMIZE="${CFLAGS} -I../gl" LDFLAGS+=" -L../sharedlib" \
-		demoprogs || die "Failed to build demoprogs!"
+		demoprogs
 
 	! use build && use kernel-helper && linux-mod_src_compile
 }
 
 src_install() {
-	local x=
+	local x
 
 	dodir /etc/svgalib /usr/{include,lib,bin,share/man}
 
 	emake \
 		TOPDIR="${D}" OPTIMIZE="${CFLAGS}" INSTALLMODULE="" \
-		install || die "Failed to install svgalib!"
+		install
 	! use build && use kernel-helper && linux-mod_src_install
 
 	insinto /usr/include
 	doins gl/vgagl.h
-	dolib.a staticlib/libvga.a || die "dolib.a libvga"
-	dolib.a gl/libvgagl.a || die "dolib.a libvgagl"
+	dolib.a staticlib/libvga.a
+	dolib.a gl/libvgagl.a
 	dolib.a threeDKit/lib3dkit.a
-	dolib.so gl/libvgagl.so.${PV} || die "dolib.so libvgagl.so"
+	dolib.so gl/libvgagl.so.${PV}
 	local abiver=$(sed -n '/^MAJOR_VER.*=/{s:.*=[ ]*::;p}' Makefile.cfg)
 	for x in lib3dkit libvga libvgagl ; do
 		dosym ${x}.so.${PV} /usr/lib/${x}.so
