@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -53,7 +53,7 @@ IUSE="a52 aalib alsa altivec atmo +audioqueue +avcodec
 	vlm vnc vorbis vpx wma-fixed +X x264 x265 +xcb xml xv zeroconf zvbi"
 
 RDEPEND="
-		!<media-video/ffmpeg-1.2:0
+		!>=media-video/ffmpeg-3.0:0
 		dev-libs/libgpg-error:0
 		net-dns/libidn:0
 		>=sys-libs/zlib-1.2.5.1-r2:0[minizip]
