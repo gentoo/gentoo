@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 inherit eutils
 
 DESCRIPTION="Debian/Ubuntu bootstrap scripts"
@@ -40,7 +40,13 @@ src_install() {
 
 pkg_postinst() {
 	if ! has_version ${CATEGORY}/${PN} && ! has_version app-crypt/gnupg; then
-		elog "To check Release files against a keyring"
-		elog " (--keyring=K), please install app-crypt/gnupg."
+		elog "To check Release files against a keyring (--keyring=K), please"
+		elog "install app-crypt/gnupg"
+	fi
+
+	if ! has_version app-crypt/debian-archive-keyring || ! has_version app-crypt/ubuntu-keyring; then
+		elog "To check Release files from Debian or Ubuntu, please install"
+		elog " app-crypt/debian-archive-keyring or"
+		elog " app-crypt/ubuntu-keyring as required"
 	fi
 }
