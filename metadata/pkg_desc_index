@@ -15398,7 +15398,6 @@ sci-chemistry/prody 1.6: Protein Dynamics Analysis
 sci-chemistry/propka 3.1_p140511: Prediction of the pKa values of ionizable groups in proteins and protein-ligand complexes
 sci-chemistry/psi 3.4.0-r2: Suite for ab initio quantum chemistry computing various molecular properties
 sci-chemistry/pymol 1.7.6.0 1.7.7.2: A Python-extensible molecular graphics system
-sci-chemistry/pymol-apbs-plugin 0_p15 0_p18 2.1_p24 2.1_p26 2.1_p26-r1: APBS plugin for pymol
 sci-chemistry/pymol-plugins-bni-tools 0.25.1 0.27: Gives Pymol additional functionalities and presets to the PyMOL GUI
 sci-chemistry/pymol-plugins-caver 2.1.2: Calculation of pathways from buried cavities to outside solvent in protein structures
 sci-chemistry/pymol-plugins-dssp 110430 110430-r1: DSSP Plugin for PyMOL
@@ -15656,7 +15655,6 @@ sci-libs/lapack-reference 3.1.1-r1 3.2.1-r1 3.2.1-r3 3.2.1-r4: FORTRAN reference
 sci-libs/ldl 2.0.4 2.1.0: Simple but educational LDL^T matrix factorization algorithm
 sci-libs/lemon 1.3-r2: C++ template static library of common data structures and algorithms
 sci-libs/levmar 2.6: Levenberg-Marquardt nonlinear least squares C library
-sci-libs/libbufr 000405: ECMWF BUFR library - includes both C and Fortran example utilities
 sci-libs/libccd 2.0 9999: Library for collision detection between two convex shapes
 sci-libs/libccp4 6.4.6: The CCP4 C and F77 subroutine library
 sci-libs/libcerf 1.3 1.4: library that provides an efficient and accurate implementation of complex error functions
@@ -17339,7 +17337,6 @@ virtual/python-enum34 1: A virtual for Python enum34 module
 virtual/python-funcsigs 0-r1: A Virtual for Python function signatures from PEP362
 virtual/python-futures 0: A virtual for the Python concurrent.futures module
 virtual/python-greenlet 1.0: A virtual for Python greenlet module
-virtual/python-imaging 2: Virtual for Python Imaging Library
 virtual/python-ipaddress 1.0: A virtual for Python ipaddress module
 virtual/python-pathlib 1.0: A virtual for Python pathlib module
 virtual/python-pmw 1: A virtual for pmw, for Python 2 & 3
