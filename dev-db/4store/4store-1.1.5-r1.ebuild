@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="2"
+EAPI="5"
 
 inherit eutils user
 
@@ -20,6 +20,7 @@ IUSE=""
 # < http://4store.org/trac/wiki/Dependencies
 DEPEND="media-libs/raptor
 		>=dev-libs/rasqal-0.9.18
+		dev-libs/glib
 		dev-libs/libxml2
 		dev-libs/libpcre
 		sys-libs/readline
