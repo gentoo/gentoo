@@ -1,12 +1,13 @@
-DEFINED_PHASES=configure install prepare unpack
-DEPEND=>=dev-libs/boost-1.51.0:= =dev-libs/libixion-0.9*:= sys-libs/zlib:= >=dev-util/mdds-0.11 >=dev-vcs/git-1.8.2.1 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEFINED_PHASES=configure install prepare setup unpack
+DEPEND=>=dev-libs/boost-1.51.0:= sys-libs/zlib:= python? ( python_single_target_python3_4? ( dev-lang/python:3.4 ) python_single_target_python3_5? ( dev-lang/python:3.5 ) >=dev-lang/python-exec-2:=[python_targets_python3_4(-)?,python_targets_python3_5(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python2_7(-),-python_single_target_python3_3(-),python_single_target_python3_4(+)?,python_single_target_python3_5(+)?] ) spreadsheet-model? ( =dev-libs/libixion-9999:= ) dev-util/mdds:1 >=dev-vcs/git-1.8.2.1 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=Standalone file import filter library for spreadsheet documents
-EAPI=5
+EAPI=6
 HOMEPAGE=https://gitlab.com/orcus/orcus/blob/master/README.md
-IUSE=static-libs
+IUSE=python +spreadsheet-model static-libs tools python_targets_python3_4 python_targets_python3_5 python_single_target_python3_4 python_single_target_python3_5
 LICENSE=MIT
-RDEPEND=>=dev-libs/boost-1.51.0:= =dev-libs/libixion-0.9*:= sys-libs/zlib:=
-SLOT=0/0.10
-_eclass_exported_funcs=src_unpack:git-r3 src_prepare:- src_configure:- src_install:-
-_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	9d81603248f2ba3ec59124320d123e5e	git-r3	ef66dfc3db09f327af21cf32f140fb2b	libtool	b75230758539a7da029e24afdb693960	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
-_md5_=f09bcc7857089c31d6cc2c0f6e6f5b42
+RDEPEND=>=dev-libs/boost-1.51.0:= sys-libs/zlib:= python? ( python_single_target_python3_4? ( dev-lang/python:3.4 ) python_single_target_python3_5? ( dev-lang/python:3.5 ) >=dev-lang/python-exec-2:=[python_targets_python3_4(-)?,python_targets_python3_5(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python2_7(-),-python_single_target_python3_3(-),python_single_target_python3_4(+)?,python_single_target_python3_5(+)?] ) spreadsheet-model? ( =dev-libs/libixion-9999:= )
+REQUIRED_USE=python? ( ^^ ( python_single_target_python3_4 python_single_target_python3_5 ) python_single_target_python3_4? ( python_targets_python3_4 ) python_single_target_python3_5? ( python_targets_python3_5 ) )
+SLOT=0/0.11
+_eclass_exported_funcs=pkg_setup:- src_unpack:git-r3 src_prepare:- src_configure:- src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	9d81603248f2ba3ec59124320d123e5e	git-r3	ef66dfc3db09f327af21cf32f140fb2b	libtool	b75230758539a7da029e24afdb693960	multilib	3972ca401cf7dbb430df9995f5d8d580	python-single-r1	2ebea8fbab356d63110245129a67a6dd	python-utils-r1	2e6826f6a93ad2acf904eecf5b5fb6d2	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_md5_=ae79b7fe7f25f4015a7f6acf467b7bfb

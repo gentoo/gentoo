@@ -1,7 +1,7 @@
-DEFINED_PHASES=compile configure install prepare unpack
+DEFINED_PHASES=configure install prepare
 DEPEND=dev-libs/icu:= dev-libs/librevenge media-libs/lcms:2 sys-libs/zlib dev-libs/boost sys-devel/libtool virtual/pkgconfig doc? ( app-doc/doxygen ) test? ( dev-util/cppunit )
 DESCRIPTION=Library parsing the Corel cdr documents
-EAPI=5
+EAPI=6
 HOMEPAGE=https://wiki.documentfoundation.org/DLP/Libraries/libcdr
 IUSE=doc static-libs test
 KEYWORDS=~amd64 ~arm ~hppa ~ppc64 ~x86
@@ -9,6 +9,6 @@ LICENSE=MPL-2.0
 RDEPEND=dev-libs/icu:= dev-libs/librevenge media-libs/lcms:2 sys-libs/zlib
 SLOT=0
 SRC_URI=http://dev-www.libreoffice.org/src/libcdr/libcdr-0.1.2.tar.xz
-_eclass_exported_funcs=src_unpack:base src_prepare:- src_configure:- src_compile:base src_install:-
-_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	9d81603248f2ba3ec59124320d123e5e	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
-_md5_=ff8abdbb4b66dddd799976e3ea3d16cc
+_eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
+_eclasses_=eutils	9d81603248f2ba3ec59124320d123e5e	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_md5_=51ffd0e916040bd377d1b0294f862153

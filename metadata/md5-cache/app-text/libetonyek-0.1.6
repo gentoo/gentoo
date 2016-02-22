@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install prepare pretend
+DEPEND=app-text/liblangtag dev-libs/librevenge dev-libs/libxml2 sys-libs/zlib dev-libs/boost dev-util/mdds:1 media-libs/glm sys-devel/libtool virtual/pkgconfig doc? ( app-doc/doxygen ) test? ( dev-util/cppunit )
+DESCRIPTION=Library parsing Apple Keynote presentations
+EAPI=6
+HOMEPAGE=https://wiki.documentfoundation.org/DLP/Libraries/libetonyek
+IUSE=doc static-libs test
+KEYWORDS=~amd64 ~arm ~x86
+LICENSE=|| ( GPL-2+ LGPL-2.1 MPL-1.1 )
+RDEPEND=app-text/liblangtag dev-libs/librevenge dev-libs/libxml2 sys-libs/zlib
+SLOT=0
+SRC_URI=http://dev-www.libreoffice.org/src/libetonyek/libetonyek-0.1.6.tar.xz
+_eclass_exported_funcs=pkg_pretend:- src_prepare:- src_configure:- src_install:-
+_eclasses_=eutils	9d81603248f2ba3ec59124320d123e5e	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_md5_=c0ff3fda065e2ee916c9eb3fef70a48d
