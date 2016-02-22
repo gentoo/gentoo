@@ -26,6 +26,7 @@ ret=0
 for e in "$@" ; do
 	set -- \
 	${AWK} \
+		-vECLASSDIR="${ECLASSDIR}" \
 		-vPORTDIR="${PORTDIR}" \
 		-f "${FILESDIR}"/eclass-to-manpage.awk \
 		${e}
