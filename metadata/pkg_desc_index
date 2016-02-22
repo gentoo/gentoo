@@ -5369,7 +5369,7 @@ dev-perl/Data-Dump 1.230.0: Pretty printing of data structures
 dev-perl/Data-Dump-Streamer 2.380.0 2.390.0: Accurately serialize a data structure as Perl code
 dev-perl/Data-DumpXML 1.60.0-r1: Dump arbitrary data structures as XML
 dev-perl/Data-Dumper-Concise 2.20.0-r1: Less indentation and newlines plus sub deparsing
-dev-perl/Data-FormValidator 4.810.0: Validates user input (usually from an HTML form) based on input profile
+dev-perl/Data-FormValidator 4.810.0-r1: Validates user input (usually from an HTML form) based on input profile
 dev-perl/Data-GUID 0.48.0: Simple interface for generating and using globally unique identifiers
 dev-perl/Data-HexDump 0.02-r1: Data::HexDump - A Simple Hexadecial Dumper
 dev-perl/Data-Hexify 1.0.0-r1: Perl extension for hexdumping arbitrary data
@@ -5696,9 +5696,9 @@ dev-perl/IPC-System-Simple 1.21-r1 1.250.0: Run commands simply, with detailed d
 dev-perl/IPTables-libiptc 0.520.0: Perl extension for iptables libiptc library
 dev-perl/Ima-DBI 0.350.0-r1: Add contextual fetches to DBI
 dev-perl/Image-Imlib2 2.30.0-r1: Interface to the Imlib2 image library
+dev-perl/Image-Info 1.340.0 1.360.0 1.380.0: The Perl Image-Info Module
 dev-perl/Image-Scale 0.80.0-r1 0.110.0: Fast, high-quality fixed-point image resizing
-dev-perl/ImageInfo 1.340.0 1.360.0 1.380.0: The Perl Image-Info Module
-dev-perl/ImageSize 3.232.0-r1 3.300.0: A library to extract height/width from images
+dev-perl/Image-Size 3.232.0-r1 3.300.0: A library to extract height/width from images
 dev-perl/Import-Into 1.2.0 1.2.4 1.2.5: Import packages into other packages
 dev-perl/Inline 0.500.0-r1 0.790.0 0.800.0: Write Perl subroutines in other languages
 dev-perl/Inline-C 0.740.0 0.760.0: C Language Support for Inline
@@ -5980,7 +5980,7 @@ dev-perl/Package-Stash-XS 0.260.0 0.280.0: Faster and more correct implementatio
 dev-perl/Package-Variant 1.1.2-r1: Parameterizable packages
 dev-perl/PadWalker 1.960.0-r1 2.100.0: play with other peoples' lexical variables
 dev-perl/Pango 1.224.0 1.224.0-r1: Layout and render international text
-dev-perl/Panotools-Script 0.280.0-r1: A perl module for reading, writing, and manipulating hugin script files
+dev-perl/Panotools-Script 0.280.0-r2: A perl module for reading, writing, and manipulating hugin script files
 dev-perl/ParaDNS 2.0.0-r1: a DNS lookup class for the Danga::Socket framework
 dev-perl/Parallel-ForkManager 1.20.0-r1: A simple parallel processing fork manager
 dev-perl/Parallel-Prefork 0.140.0-r1: A simple prefork server framework
@@ -6039,7 +6039,7 @@ dev-perl/Quota 1.700.0-r1: Quota - Perl interface to file system quotas
 dev-perl/REST-Client 249: A simple client for interacting with RESTful http/https resources
 dev-perl/RPC-XML 0.770.0-r1 0.780.0 0.790.0: An implementation of XML-RPC
 dev-perl/RRD-Simple 1.440.0-r1: Simple interface to create and store data in RRD files
-dev-perl/RTF-Writer 1.110.0-r1: RTF::Writer - for generating documents in Rich Text Format
+dev-perl/RTF-Writer 1.110.0-r2: RTF::Writer - for generating documents in Rich Text Format
 dev-perl/RadiusPerl 0.220.0-r1: Communicate with a Radius server from Perl
 dev-perl/Rcs 1.50.0-r1: Perl bindings for Revision Control System
 dev-perl/Readonly 1.30.0-r1 2.0.0: Facility for creating read-only scalars, arrays, hashes
@@ -11983,7 +11983,7 @@ media-gfx/kpovmodeler 1.1.3-r1: A modeling and composition program for creating 
 media-gfx/kuickshow 0.9.1-r2: KDE program to view images
 media-gfx/kxstitch 1.2.0 1.3.0: Program to create cross stitch patterns
 media-gfx/librecad 2.0.3 2.0.5 2.0.6 2.0.7 2.0.8 2.0.9 9999: Generic 2D CAD program
-media-gfx/llgal 0.13.17-r1: Command-line static web gallery generator
+media-gfx/llgal 0.13.17-r2: Command-line static web gallery generator
 media-gfx/luminance-hdr 2.3.0 2.4.0: Luminance HDR is a graphical user interface that provides a workflow for HDR imaging
 media-gfx/lximage-qt 0.2.0 0.3.0 0.4.0: LXImage Image Viewer - GPicView replacement
 media-gfx/mandelbulber 1.11 1.12.1 1.21.1: Tool to render 3D fractals
@@ -12636,7 +12636,7 @@ media-plugins/mediastreamer-bcg729 1.0.0 1.0.0-r1: Backported G729 implementatio
 media-plugins/mediastreamer-ilbc 2.0.3: mediastreamer plugin: add iLBC support
 media-plugins/mediastreamer-silk 0.0.1: SILK (skype codec) implementation for Linphone
 media-plugins/mediastreamer-x264 1.4.1 1.4.2 1.4.2-r1: mediastreamer plugin: add H264 support
-media-plugins/mythplugins 0.26.0_p20130922 0.27_p20140321 0.27.5_p20150627-r1 0.27.5_p20150627-r2: Official MythTV plugins
+media-plugins/mythplugins 0.26.0_p20130922-r1 0.27_p20140321-r1 0.27.5_p20150627-r3 0.27.5_p20150627-r4: Official MythTV plugins
 media-plugins/npapi-vlc 2.0.0 9999: Mozilla plugin based on VLC
 media-plugins/qmmp-plugin-pack 0.8.3 0.8.6 0.9.2 0.9.3 1.0.1 1.0.2: A set of extra plugins for Qmmp
 media-plugins/rev-plugins 0.3.1-r1 0.3.1-r2 0.7.1: REV LADSPA plugins package. A stereo reverb plugin based on the well-known greverb
@@ -17056,7 +17056,7 @@ sys-libs/lrmi 0.10-r1: library for calling real mode BIOS routines under Linux
 sys-libs/lwp 2.2 2.5 2.6: Light weight process library (used by Coda). This is NOT libwww-perl
 sys-libs/mars 1.0.1: Multicore Application Runtime System
 sys-libs/mtdev 1.1.4 1.1.5: Multitouch Protocol Translation Library
-sys-libs/musl 1.1.12 9999: Light, fast and simple C library focused on standards-conformance and safety
+sys-libs/musl 1.1.12 1.1.14 9999: Light, fast and simple C library focused on standards-conformance and safety
 sys-libs/ncurses 5.9-r3 5.9-r4 5.9-r5 5.9-r99 5.9-r101 6.0 6.0-r1: console display library
 sys-libs/newlib 1.18.0 1.19.0 1.20.0 2.0.0 2.1.0 2.2.0 2.2.0.20150423 2.3.0.20160104 9999: Newlib is a C library intended for use on embedded systems
 sys-libs/nss-usrfiles 2.18.1: NSS module to read passwd/group files from CoreOS /usr location
@@ -17432,7 +17432,7 @@ www-apache/mpm_itk 2.4.7_p4-r1: Run virtual hosts under separate users/groups
 www-apache/passenger 4.0.60 5.0.22 5.0.23 5.0.24: Passenger makes deployment of Ruby on Rails applications a breeze
 www-apache/pwauth 2.3.10: A Unix Web Authenticator
 www-apps/389-dsgw 1.1.10: 389 Directory Server Gateway Web Application
-www-apps/Apache-Gallery 1.0_rc3: Apache gallery for mod_perl
+www-apps/Apache-Gallery 1.0_rc3-r1: Apache gallery for mod_perl
 www-apps/agendav 1.2.6.2: multilanguage CalDAV web client
 www-apps/ampache 3.8.1: PHP-based tool for managing,updating and playing audio files via a web interface
 www-apps/b2evolution 4.1.7: Multilingual multiuser multi-blog engine
@@ -17496,7 +17496,7 @@ www-apps/liquid_feedback_frontend 2.2.2 2.2.7 3.0.6: Internet platforms for prop
 www-apps/lxr 0.9.8-r1: general purpose source code indexer and cross-referener with a web-based frontend
 www-apps/mantisbt 1.2.15-r1: PHP/MySQL/Web based bugtracking system
 www-apps/mediawiki 1.23.10 1.24.3 1.25.2: The MediaWiki wiki web application (as used on wikipedia.org)
-www-apps/metadot 6.1.6 6.4.5.4: Metadot is a CMS with file, page and link management, and collaboration features
+www-apps/metadot 6.1.6-r1 6.4.5.4-r1: Metadot is a CMS with file, page and link management, and collaboration features
 www-apps/mirmon 1.38-r4 2.10: Simple webapp to monitor the status of mirrors
 www-apps/mod_survey 3.2.5: XML-defined web questionnaires as a plug-in module using Apache
 www-apps/moinmoin 1.9.7-r1: Python WikiClone
