@@ -19,7 +19,7 @@ DESCRIPTION="A set of MATE themes, with sets for users with limited or low visio
 HOMEPAGE="http://mate-desktop.org"
 
 LICENSE="LGPL-2.1"
-SLOT="0"
+SLOT="0/${MATE_GTK_V}"
 KEYWORDS="~amd64 ~x86"
 
 S="${WORKDIR}/${PN}-gtk${MATE_GTK_V}-${PV}"
