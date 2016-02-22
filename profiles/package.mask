@@ -30,6 +30,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Eray Aslan <eras@gentoo.org> (22 Feb 2016)
+# Mask experimental software
+=mail-mta/postfix-3.2*
+
 # James Le Cuirot <chewi@gentoo.org> (21 Feb 2016)
 # No revdeps, no release since 2007, and upstream have even moved the
 # download to a hidden OldFiles directory in the parent SourceForge
