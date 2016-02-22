@@ -22,10 +22,10 @@ SLOT="0"
 IUSE="test"
 
 RDEPEND="
-	dev-python/setuptools[${PYTHON_USEDEP}]
 	=dev-python/snakeoil-9999[${PYTHON_USEDEP}]
 "
 DEPEND="${RDEPEND}
+	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
 		$(python_gen_cond_dep 'dev-python/mock[${PYTHON_USEDEP}]' python2_7)
 		dev-python/pytest[${PYTHON_USEDEP}]
