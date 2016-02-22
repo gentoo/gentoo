@@ -1,0 +1,13 @@
+prefix=@prefix@
+exec_prefix=@exec_prefix@
+libdir=@libdir@
+includedir=@includedir@
+
+Name: @PACKAGE_NAME@
+Description: World Coordinate System Library and Tools
+Version: @PACKAGE_VERSION@
+URL: http://tdc-www.harvard.edu/wcstools/
+Libs: -L${libdir} -lwcstools
+Libs.private: -lm
+Cflags: -I${includedir}/wcs
+
