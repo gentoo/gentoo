@@ -1,13 +1,12 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 
-# jruby fails tests, not investigated yet.
-USE_RUBY="ruby19 ruby20 ruby21"
+USE_RUBY="ruby20 ruby21 ruby22"
 
-RUBY_FAKEGEM_RECIPE_TEST="rspec"
+RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 RUBY_FAKEGEM_TASK_DOC=""
 RUBY_FAKEGEM_DOCDIR="doc"
 RUBY_FAKEGEM_EXTRADOC="README.md"
@@ -23,12 +22,7 @@ SLOT="0"
 IUSE=""
 
 ruby_add_bdepend "test? ( >=dev-ruby/rr-1.0 dev-ruby/activesupport )"
-ruby_add_rdepend ">=dev-ruby/polyglot-0.3.1"
-
-all_ruby_prepare() {
-	# Use a ruby18 compatible regexp, already fixed upstream.
-	sed -i -e 's/\[:\^space:\]/\^[:space:]/' spec/compiler/character_class_spec.rb || die
-}
+ruby_add_rdepend ">=dev-ruby/polyglot-0.3.1:0"
 
 all_ruby_install() {
 	all_fakegem_install
