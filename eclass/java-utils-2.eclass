@@ -262,7 +262,7 @@ java-pkg_addres() {
 	shift 2
 
 	pushd "${dir}" > /dev/null || die "pushd ${dir} failed"
-	find -L -type f ! -path "./target/*" ! -path "./sources.lst" ! -name "MANIFEST.MF" ! -regex ".*\.\(class\|jar\|java\)" "${@}" -print0 | xargs -0 jar uf "${jar}" || die "jar failed"
+	find -L -type f ! -path "./target/*" ! -path "./sources.lst" ! -name "MANIFEST.MF" ! -regex ".*\.\(class\|jar\|java\)" "${@}" -print0 | xargs -r0 jar uf "${jar}" || die "jar failed"
 	popd > /dev/null || die "popd failed"
 }
 
