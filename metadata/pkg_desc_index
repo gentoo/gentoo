@@ -2024,7 +2024,7 @@ app-officeext/ct2n 1.4.0-r1: Extension for converting text to numbers
 app-officeext/dmaths 3.4.9.0-r1: Mathematics Formula Editor Extension
 app-officeext/languagetool 2.5 2.7 2.9 3.1: Style and Grammar Checker for libreoffice
 app-officeext/ooo2gd 3.0.0-r1: Extension for export to Google docs, zoho and WebDAV
-app-officeext/ooofbtools 2.38 2.39: Extension for converting and processing eBooks in FictionBook2 format with validator
+app-officeext/ooofbtools 2.38 2.39 2.42: Extension for converting and processing eBooks in FictionBook2 format with validator
 app-officeext/sun-templates 1.0.0-r1: Collection of sun templates for various countries
 app-officeext/texmaths 0.37-r1 0.41: LaTeX Equation Editor for LibreOffice
 app-pda/barry 0.18.3: Sync, backup, program management, and charging for BlackBerry devices
@@ -11611,7 +11611,7 @@ mail-mta/msmtp 1.6.1 1.6.2 1.6.3: An SMTP client and SMTP plugin for mail user a
 mail-mta/netqmail 1.06 1.06-r1 1.06-r2 1.06-r3 1.06-r4: qmail -- a secure, reliable, efficient, simple message transfer agent
 mail-mta/nullmailer 1.13-r5: Simple relay-only local mail transport agent
 mail-mta/opensmtpd 5.7.3_p2 5.7.3_p2-r1: Lightweight but featured SMTP daemon from OpenBSD
-mail-mta/postfix 2.10.9 2.11.7 3.0.2 3.0.2-r1 3.0.2-r2 3.0.3 3.0.3-r1 3.0.4 3.1_pre20160214: A fast and secure drop-in replacement for sendmail
+mail-mta/postfix 2.10.9 2.11.7 3.0.2 3.0.2-r1 3.0.2-r2 3.0.3 3.0.3-r1 3.0.4 3.1_pre20160214 3.2_pre20160221: A fast and secure drop-in replacement for sendmail
 mail-mta/qmail-ldap 1.03-r8: qmail -- a secure, reliable, efficient, simple message transfer agent
 mail-mta/qpsmtpd 0.84-r2 0.95 9999: qpsmtpd is a flexible smtpd daemon written in Perl
 mail-mta/sendmail 8.14.9 8.14.9-r1: Widely-used Mail Transport Agent (MTA)

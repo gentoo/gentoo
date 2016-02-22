@@ -1,0 +1,15 @@
+DEFINED_PHASES=install postinst prepare prerm unpack
+DEPEND=office_implementation_libreoffice? ( || ( app-office/libreoffice app-office/libreoffice-bin ) ) office_implementation_openoffice? ( || ( app-office/openoffice app-office/openoffice-bin ) ) app-arch/unzip
+DESCRIPTION=Extension for converting and processing eBooks in FictionBook2 format with validator
+EAPI=5
+HOMEPAGE=https://sourceforge.net/projects/fbtools/
+IUSE=office_implementation_libreoffice office_implementation_openoffice
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=dev-libs/libxml2 office_implementation_libreoffice? ( || ( app-office/libreoffice app-office/libreoffice-bin ) ) office_implementation_openoffice? ( || ( app-office/openoffice app-office/openoffice-bin ) )
+REQUIRED_USE=|| ( office_implementation_libreoffice office_implementation_openoffice )
+SLOT=0
+SRC_URI=mirror://sourceforge/fbtools/files/release/OOoFBTools-2.42.zip
+_eclass_exported_funcs=pkg_prerm:office-ext-r1 pkg_postinst:office-ext-r1 src_unpack:office-ext-r1 src_prepare:- src_install:-
+_eclasses_=eutils	9d81603248f2ba3ec59124320d123e5e	multilib	3972ca401cf7dbb430df9995f5d8d580	office-ext-r1	60f5f222dd37820c823e1451bbd621cf	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_md5_=ea9748241a8257c75f985f3dd477aee5
