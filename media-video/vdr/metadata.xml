@@ -7,7 +7,7 @@
 	</maintainer>
 	<use>
 		<flag name="alternatechannel">Use alternate channel on record</flag>
-		<flag name="bidi">fribid support, for languages, written from right to left</flag>
+		<flag name="bidi">fribidi support, for languages, written from right to left</flag>
 		<flag name="ddepgentry">remove duplicate EPG entries</flag>
 		<flag name="dvlvidprefer">controls video-dir choice on recording</flag>
 		<flag name="graphtft">support for <pkg>media-plugins/vdr-grapftft</pkg>plugin up from vdr-graphtft-0.1.7</flag>
