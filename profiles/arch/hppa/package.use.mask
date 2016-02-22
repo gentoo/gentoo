@@ -4,7 +4,11 @@
 
 # DON'T TOUCH THIS FILE. Instead, file a bug and assign it to <hppa@gentoo.org>.
 
-# Mike Frysinger <vapier@gentoo.org> 21 Feb 2016
+# Justin Lecher <jlec@gentoo.org> (22 Feb 2016)
+# Missing test deps keyword #575366
+dev-cpp/eigen test
+
+# Mike Frysinger <vapier@gentoo.org> (21 Feb 2016)
 # Needs arch love for elementary. #575322
 media-libs/elementary javascript
 
@@ -13,7 +17,7 @@ media-libs/elementary javascript
 app-text/texlive-core luajittex
 dev-texlive/texlive-basic luajittex
 
-# Jeroen Roovers <jer@gentoo.org> (3 Jul 2015) 
+# Jeroen Roovers <jer@gentoo.org> (3 Jul 2015)
 # net-libs/nghttp2 fails to compile (bug #552898)
 net-libs/nghttp2 cxx
 
