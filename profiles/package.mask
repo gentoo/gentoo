@@ -30,6 +30,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Patrick Lauer <patrick@gentoo.org> (22 Feb 2016)
+# Inactive upstream, build failures, obsoleted by rakudo/perl6
+dev-lang/niecza
+dev-lang/niecza-bin
+
 # Eray Aslan <eras@gentoo.org> (22 Feb 2016)
 # Mask experimental software
 =mail-mta/postfix-3.2*
