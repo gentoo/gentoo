@@ -8089,7 +8089,7 @@ dev-python/w3lib 1.11.0: Python library of web-related functions
 dev-python/waitress 0.8.9: A pure-Python WSGI server
 dev-python/warlock 1.0.1 1.1.0: Python object model built on JSON schema and JSON patch
 dev-python/watchdog 0.8.1 0.8.3: Python API and shell utilities to monitor file system events
-dev-python/wcsaxes 0.3: Framework for plotting astronomical and geospatial data
+dev-python/wcsaxes 0.3 0.6: Framework for plotting astronomical and geospatial data
 dev-python/wcwidth 0.1.4 0.1.5 0.1.6: Measures number of Terminal column cells of wide-character codes
 dev-python/weasyprint 0.21-r1 0.22 0.23: Visual rendering engine for HTML and CSS that can export to PDF
 dev-python/webassets 0.10.1: Asset management for Python web development
@@ -11619,7 +11619,7 @@ mail-mta/sendmail 8.14.9 8.14.9-r1: Widely-used Mail Transport Agent (MTA)
 mail-mta/ssmtp 2.64-r2 2.64-r3: Extremely simple MTA to get mail off the system to a Mailhub
 mate-base/caja 1.8.1 1.8.2-r1 1.10.4: Caja file manager for the MATE desktop
 mate-base/libmatekbd 1.8.0 1.10.1: MATE keyboard configuration library
-mate-base/mate 1.8.0 1.10.0-r1: Meta ebuild for MATE, a traditional desktop environment
+mate-base/mate 1.8.0 1.10.0-r2: Meta ebuild for MATE, a traditional desktop environment
 mate-base/mate-applets 1.8.0-r1 1.8.1 1.10.4-r1: Applets for the MATE Desktop and Panel
 mate-base/mate-applets-meta 1.10: Meta package for MATE panel applets
 mate-base/mate-common 1.8.0 1.10.0: Common files for development of MATE packages
@@ -18599,7 +18599,8 @@ x11-themes/lush 0.1.0-r2: Lush KDE icon theme
 x11-themes/mate-backgrounds 1.8.0 1.10.0: A set of backgrounds packaged with the MATE desktop
 x11-themes/mate-icon-theme 1.8.0 1.10.1: MATE default icon themes
 x11-themes/mate-icon-theme-faenza 1.8.0 1.10.1: Faenza icon theme, that was adapted for MATE desktop
-x11-themes/mate-themes 1.8.0 1.8.1 1.10.5-r160 1.10.5-r180: A set of MATE themes, with sets for users with limited or low vision
+x11-themes/mate-themes 1.8.0 1.8.1 1.10.5-r161 1.10.5-r181: A set of MATE themes, with sets for users with limited or low vision
+x11-themes/mate-themes-meta 1.10: Meta package to facilitate easy use of x11-themes/mate-themes
 x11-themes/murrine-themes 0.98.0: Themes for the Murrine GTK+2 Cairo Engine
 x11-themes/nimbus 0.1.7-r1: The default OpenSolaris theme (GTK+ 2.x engine, icon- and metacity theme)
 x11-themes/nitrogen 3.3.3: A window decoration for KDE
