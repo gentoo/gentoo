@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -32,7 +32,7 @@ RDEPEND="
 	>=dev-perl/Unicode-String-2.07
 	>=dev-perl/Spreadsheet-WriteExcel-0.41
 	>=dev-perl/Date-Calc-5.3
-	>=dev-perl/ImageSize-2.991
+	>=dev-perl/Image-Size-2.991.0
 	>=dev-perl/Template-Toolkit-2.09
 	>=virtual/perl-Time-HiRes-1.48
 	>=virtual/perl-Test-Harness-2.28

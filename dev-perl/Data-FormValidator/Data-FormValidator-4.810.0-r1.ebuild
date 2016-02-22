@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -14,7 +14,7 @@ SLOT="0"
 KEYWORDS="amd64 ppc ppc64 x86"
 IUSE=""
 
-RDEPEND="dev-perl/ImageSize
+RDEPEND="dev-perl/Image-Size
 	>=dev-perl/Date-Calc-5.0
 	>=dev-perl/File-MMagic-1.17
 	>=dev-perl/MIME-Types-1.005

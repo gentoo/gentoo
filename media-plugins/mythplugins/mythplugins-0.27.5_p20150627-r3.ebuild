@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -111,7 +111,7 @@ DEPEND="!media-plugins/mytharchive
 		dev-perl/DateManip
 		dev-perl/DateTime-Format-ISO8601
 		>=dev-perl/DateTime-1
-		dev-perl/ImageSize
+		dev-perl/Image-Size
 		dev-perl/JSON
 		dev-perl/SOAP-Lite
 		dev-perl/XML-Simple

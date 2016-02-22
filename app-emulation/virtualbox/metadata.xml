@@ -5,10 +5,6 @@
     <email>polynomial-c@gentoo.org</email>
     <name>Lars Wendler</name>
   </maintainer>
-  <maintainer type="person">
-    <email>patrick@gentoo.org</email>
-    <name>Patrick Lauer</name>
-  </maintainer>
 <use>
 	<flag name="additions">Install Guest System Tools ISO</flag>
 	<flag name="extensions">Install extension module packages</flag>
