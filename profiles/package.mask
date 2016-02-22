@@ -279,12 +279,6 @@ www-apps/389-dsgw
 # Mask this liferea version because upstream released it broken
 =net-news/liferea-1.10.17
 
-# Justin Lecher <jlec@gentoo.org> (29 Dec 2015)
-# Fails to build and test runs
-# No reverse deps
-# #370021, #478614, #513964
-sci-libs/libbufr
-
 # Fabian Groffen <grobian@gentoo.org> (11 Dec 2015)
 # Release candidates for Exim 4.87
 =mail-mta/exim-4.87_rc2
@@ -309,28 +303,12 @@ sci-libs/libbufr
 dev-lang/php:5.4
 ~virtual/httpd-php-5.4
 
-# Justin Lecher <jlec@gentoo.org> (12 Nov 2015)
-# deprecated version of the plugin. 
-# sci-chemistry/pymol includes the newer version
-sci-chemistry/pymol-apbs-plugin
-
 # Brian Evans <grknight@gentoo.org> (11 Nov 2015)
 # Mask latest xdebug{,-client} beta versions
 # Upstream keeps changing the tarballs causing Manifest errors.
 # wrt bug 565234
 >=dev-php/xdebug-2.4.0_beta1
 >=dev-php/xdebug-client-2.4.0_beta1
-
-# Justin Lecher <jlec@gentoo.org> (10 Nov 2015)
-# Vulnerable package CVE-2014-{1932,1933}
-# Bug: 507982
-dev-python/imaging
-
-# Justin Lecher <jlec@gentoo.org> (10 Nov 2015)
-# Compatibility virtual for transition from
-# dev-python/imaging to dev-python/pillow
-# obsolete now #508266
-virtual/python-imaging
 
 # Michał Górny <mgorny@gentoo.org> (30 Oct 2015)
 # Uses unsafe ioctls that could result in data corruption. Upstream
