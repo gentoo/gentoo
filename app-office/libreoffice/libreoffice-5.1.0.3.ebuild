@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -9,7 +9,7 @@ QT_MINIMAL="4.7.4"
 KDE_SCM="git"
 CMAKE_REQUIRED="never"
 
-PYTHON_COMPAT=( python{2_7,3_4,3_5} )
+PYTHON_COMPAT=( python{3_4,3_5} )
 PYTHON_REQ_USE="threads,xml"
 
 # experimental ; release ; old
@@ -96,7 +96,8 @@ unset lo_xt
 LICENSE="|| ( LGPL-3 MPL-1.1 )"
 SLOT="0"
 [[ ${PV} == *9999* ]] || \
-KEYWORDS="~amd64 ~arm ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS=""
+# KEYWORDS="~amd64 ~arm ~x86 ~amd64-linux ~x86-linux"
 
 COMMON_DEPEND="
 	${PYTHON_DEPS}
@@ -105,16 +106,16 @@ COMMON_DEPEND="
 	>=app-text/hunspell-1.3.2-r3
 	app-text/mythes
 	>=app-text/libabw-0.1.0
-	>=app-text/libexttextcat-3.2
-	>=app-text/libebook-0.1.1
-	>=app-text/libetonyek-0.1.2
+	>=app-text/libexttextcat-3.4.4
+	>=app-text/libebook-0.1
+	>=app-text/libetonyek-0.1
 	app-text/liblangtag
 	>=app-text/libmspub-0.1.0
-	>=app-text/libmwaw-0.3.5
+	>=app-text/libmwaw-0.3.1
 	>=app-text/libodfgen-0.1.0
 	app-text/libwpd:0.10[tools]
 	app-text/libwpg:0.3
-	=app-text/libwps-0.4*
+	>=app-text/libwps-0.4
 	>=app-text/poppler-0.16:=[cxx]
 	>=dev-cpp/clucene-2.3.3.4-r2
 	=dev-cpp/libcmis-0.5*
@@ -123,7 +124,7 @@ COMMON_DEPEND="
 	dev-libs/expat
 	>=dev-libs/hyphen-2.7.1
 	>=dev-libs/icu-4.8.1.1:=
-	=dev-libs/liborcus-0.7*
+	=dev-libs/liborcus-0.9*
 	>=dev-libs/librevenge-0.0.1
 	>=dev-libs/nspr-4.8.8
 	>=dev-libs/nss-3.12.9
@@ -158,15 +159,21 @@ COMMON_DEPEND="
 	collada? ( >=media-libs/opencollada-1.2.2_p20150207 )
 	cups? ( net-print/cups )
 	dbus? ( >=dev-libs/dbus-glib-0.92 )
-	eds? ( gnome-extra/evolution-data-server )
+	eds? (
+		dev-libs/glib:2
+		gnome-extra/evolution-data-server
+	)
 	firebird? ( >=dev-db/firebird-2.5 )
 	gltf? ( media-libs/libgltf )
-	gnome? ( gnome-base/gconf:2 )
 	gtk? (
 		x11-libs/gdk-pixbuf[X]
 		>=x11-libs/gtk+-2.24:2
 	)
-	gtk3? ( >=x11-libs/gtk+-3.8:3 )
+	gtk3? (
+		dev-libs/glib:2
+		dev-libs/gobject-introspection
+		>=x11-libs/gtk+-3.8:3
+	)
 	gstreamer? (
 		media-libs/gstreamer:1.0
 		media-libs/gst-plugins-base:1.0
@@ -174,19 +181,9 @@ COMMON_DEPEND="
 	jemalloc? ( dev-libs/jemalloc )
 	libreoffice_extensions_scripting-beanshell? ( >=dev-java/bsh-2.0_beta4 )
 	libreoffice_extensions_scripting-javascript? ( dev-java/rhino:1.6 )
-	libreoffice_extensions_wiki-publisher? (
-		dev-java/commons-codec:0
-		dev-java/commons-httpclient:3
-		dev-java/commons-lang:2.1
-		dev-java/commons-logging:0
-	)
 	mysql? ( >=dev-db/mysql-connector-c++-1.1.0 )
 	postgres? ( >=dev-db/postgresql-9.0:*[kerberos] )
-	telepathy? (
-		dev-libs/glib:2
-		>=net-libs/telepathy-glib-0.18.0
-		>=x11-libs/gtk+-2.24:2
-	)
+	telepathy? ( >=net-libs/telepathy-glib-0.18.0 )
 "
 
 RDEPEND="${COMMON_DEPEND}
@@ -251,8 +248,8 @@ REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
 	bluetooth? ( dbus )
 	collada? ( gltf )
-	gnome? ( gtk )
 	eds? ( gnome )
+	gnome? ( gtk )
 	telepathy? ( gtk )
 	libreoffice_extensions_nlpsolver? ( java )
 	libreoffice_extensions_scripting-beanshell? ( java )
@@ -278,9 +275,9 @@ pkg_pretend() {
 		check-reqs_pkg_pretend
 
 		if [[ $(gcc-major-version) -lt 4 ]] || {
-			[[ $(gcc-major-version) -eq 4 && $(gcc-minor-version) -lt 6 ]]; }
+			[[ $(gcc-major-version) -eq 4 && $(gcc-minor-version) -lt 7 ]]; }
 		then
-			eerror "Compilation with gcc older than 4.6 is not supported"
+			eerror "Compilation with gcc older than 4.7 is not supported"
 			die "Too old gcc found."
 		fi
 	fi
@@ -377,7 +374,7 @@ src_configure() {
 
 	# optimization flags
 	export GMAKE_OPTIONS="${MAKEOPTS}"
-	# System python 2.7 enablement:
+	# System python enablement:
 	export PYTHON_CFLAGS=$(python_get_CFLAGS)
 	export PYTHON_LIBS=$(python_get_LIBS)
 
@@ -420,15 +417,6 @@ src_configure() {
 
 		use libreoffice_extensions_scripting-javascript && \
 			java_opts+=" --with-rhino-jar=$(java-pkg_getjar rhino-1.6 js.jar)"
-
-		if use libreoffice_extensions_wiki-publisher; then
-			java_opts+="
-				--with-commons-codec-jar=$(java-pkg_getjar commons-codec commons-codec.jar)
-				--with-commons-httpclient-jar=$(java-pkg_getjar commons-httpclient-3 commons-httpclient.jar)
-				--with-commons-lang-jar=$(java-pkg_getjar commons-lang-2.1 commons-lang.jar)
-				--with-commons-logging-jar=$(java-pkg_getjar commons-logging commons-logging.jar)
-			"
-		fi
 	fi
 
 	# system headers/libs/...: enforce using system packages
@@ -437,9 +425,6 @@ src_configure() {
 	# --enable-*-link: link to the library rather than just dlopen on runtime
 	# --enable-release-build: build the libreoffice as release
 	# --disable-fetch-external: prevent dowloading during compile phase
-	# --disable-gnome-vfs: old gnome virtual fs support
-	# --disable-kdeab: kde3 adressbook
-	# --disable-kde: kde3 support
 	# --disable-systray: quickstarter does not actually work at all so do not
 	#   promote it
 	# --enable-extension-integration: enable any extension integration support
@@ -466,11 +451,8 @@ src_configure() {
 		--disable-dependency-tracking \
 		--disable-epm \
 		--disable-fetch-external \
-		--disable-gnome-vfs \
 		--disable-gstreamer-0-10 \
 		--disable-report-builder \
-		--disable-kdeab \
-		--disable-kde \
 		--disable-online-update \
 		--disable-systray \
 		--with-alloc=$(use jemalloc && echo "jemalloc" || echo "system") \
@@ -499,9 +481,7 @@ src_configure() {
 		$(use_enable eds evolution2) \
 		$(use_enable firebird firebird-sdbc) \
 		$(use_enable gltf) \
-		$(use_enable gnome gconf) \
 		$(use_enable gnome gio) \
-		$(use_enable gnome lockdown) \
 		$(use_enable gstreamer gstreamer-1-0) \
 		$(use_enable gtk) \
 		$(use_enable gtk3) \

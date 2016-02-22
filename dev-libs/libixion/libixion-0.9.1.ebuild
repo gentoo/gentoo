@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -27,7 +27,7 @@ RDEPEND="
 	python? ( ${PYTHON_DEPS} )
 "
 DEPEND="${RDEPEND}
-	>=dev-util/mdds-0.12.0:=
+	>=dev-util/mdds-0.12.0:0=
 "
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
@@ -37,8 +37,9 @@ pkg_setup() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}/${PN}-0.9.1-typo.patch"
-	epatch "${FILESDIR}/${PN}-0.9.1-python-optional.patch"
+	epatch "${FILESDIR}/${PN}-0.9.1-typo.patch" \
+		"${FILESDIR}/${PN}-0.9.1-python-optional.patch" \
+		"${FILESDIR}/${PN}-0.9.1-python-symbol.patch"
 	eautoreconf
 }
 

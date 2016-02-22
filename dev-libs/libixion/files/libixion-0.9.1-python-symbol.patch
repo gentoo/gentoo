@@ -1,0 +1,13 @@
+diff --git a/src/python/Makefile.am b/src/python/Makefile.am
+index 0dfae54..094e0cf 100644
+--- a/src/python/Makefile.am
++++ b/src/python/Makefile.am
+@@ -10,7 +10,7 @@ ixion_la_SOURCES = \
+ 	sheet.hpp \
+ 	sheet.cpp
+ 
+-ixion_la_LDFLAGS = -module -avoid-version -export-symbols-regex initixion
++ixion_la_LDFLAGS = -module -avoid-version -export-symbols-regex PyInit_ixion
+ ixion_la_CPPFLAGS = -I$(top_srcdir)/include $(PYTHON_CFLAGS) $(MDDS_CFLAGS)
+ ixion_la_LIBADD = \
+ 	../libixion/libixion-@IXION_API_VERSION@.la \

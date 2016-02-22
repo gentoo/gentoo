@@ -1,12 +1,12 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 EGIT_REPO_URI="git://anongit.freedesktop.org/git/libreoffice/libetonyek"
-inherit base eutils
-[[ ${PV} == 9999 ]] && inherit autotools git-2
+inherit eutils
+[[ ${PV} == 9999 ]] && inherit autotools git-r3
 
 DESCRIPTION="Library parsing Apple Keynote presentations"
 HOMEPAGE="https://wiki.documentfoundation.org/DLP/Libraries/libetonyek"
@@ -19,13 +19,14 @@ KEYWORDS="~amd64 ~arm ~x86"
 IUSE="doc static-libs test"
 
 RDEPEND="
+	app-text/liblangtag
 	dev-libs/librevenge
 	dev-libs/libxml2
 	sys-libs/zlib
 "
 DEPEND="${RDEPEND}
-	>=dev-libs/boost-1.46
-	>=dev-util/mdds-0.12.1
+	dev-libs/boost
+	dev-util/mdds:1
 	media-libs/glm
 	sys-devel/libtool
 	virtual/pkgconfig
@@ -33,9 +34,18 @@ DEPEND="${RDEPEND}
 	test? ( dev-util/cppunit )
 "
 
+pkg_pretend() {
+	if [[ $(gcc-major-version) -lt 4 ]] || {
+		[[ $(gcc-major-version) -eq 4 && $(gcc-minor-version) -lt 8 ]]; }
+	then
+		eerror "Compilation with gcc older than 4.8 is not supported"
+		die "Too old gcc found."
+	fi
+}
+
 src_prepare() {
+	eapply_user
 	[[ -d m4 ]] || mkdir "m4"
-	base_src_prepare
 	[[ ${PV} == 9999 ]] && eautoreconf
 }
 
