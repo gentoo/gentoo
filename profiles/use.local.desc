@@ -8381,6 +8381,7 @@ x11-wm/xpra:clipboard - Enable clipboard support
 x11-wm/xpra:csc - Enable csc softscaler support
 x11-wm/xpra:dec_av - Enable dec_avcodec support
 x11-wm/xpra:dec_av2 - Enable dec_avcodec2 support
+x11-wm/xpra:lz4 - Enable support for lz4 compression
 x11-wm/xpra:rencode - Enable rencode support
 x11-wm/xpra:server - Build server-side code
 x11-wm/xpra:vpx - Enable vpx image format support
