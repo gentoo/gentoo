@@ -1,0 +1,47 @@
+From 1c145df858ba5ab539386692d9350909fb8f8c82 Mon Sep 17 00:00:00 2001
+From: Jason Ekstrand <jason.ekstrand@intel.com>
+Date: Wed, 10 Feb 2016 12:07:49 -0800
+Subject: [PATCH] nir/lower_vec_to_movs: Better report channels handled by
+ insert_mov
+
+This fixes two issues.  First, we had a use-after-free in the case where
+the instruction got deleted and we tried to return mov->dest.write_mask.
+Second, in the case where we are doing a self-mov of a register, we delete
+those channels that are moved to themselves from the write-mask.  This
+means that those channels aren't reported as being handled even though they
+are.  We now stash off the write-mask before remove unneeded channels so
+that they still get reported as handled.
+
+Bugzilla: https://bugs.freedesktop.org/show_bug.cgi?id=94073
+Reviewed-by: Matt Turner <mattst88@gmail.com>
+Cc: "11.0 11.1" <mesa-stable@lists.freedesktop.org>
+(cherry picked from commit 70dff4a55e767de8b9ce10f055b94ebb1f6a9755)
+---
+ src/glsl/nir/nir_lower_vec_to_movs.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/src/glsl/nir/nir_lower_vec_to_movs.c b/src/glsl/nir/nir_lower_vec_to_movs.c
+index 736a66c..0783596 100644
+--- a/src/glsl/nir/nir_lower_vec_to_movs.c
++++ b/src/glsl/nir/nir_lower_vec_to_movs.c
+@@ -83,6 +83,8 @@ insert_mov(nir_alu_instr *vec, unsigned start_idx, nir_shader *shader)
+       }
+    }
+ 
++   unsigned channels_handled = mov->dest.write_mask;
++
+    /* In some situations (if the vecN is involved in a phi-web), we can end
+     * up with a mov from a register to itself.  Some of those channels may end
+     * up doing nothing and there's no reason to have them as part of the mov.
+@@ -103,7 +105,7 @@ insert_mov(nir_alu_instr *vec, unsigned start_idx, nir_shader *shader)
+       ralloc_free(mov);
+    }
+ 
+-   return mov->dest.write_mask;
++   return channels_handled;
+ }
+ 
+ static bool
+-- 
+2.4.10
+
