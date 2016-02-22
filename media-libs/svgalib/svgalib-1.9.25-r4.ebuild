@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -37,6 +37,7 @@ src_prepare() {
 	epatch "${FILESDIR}"/${PN}-1.9.25-build2.patch
 	epatch "${FILESDIR}"/${PN}-1.9.25-qa.patch
 	epatch "${FILESDIR}"/${PN}-1.9.25-kernel3.4.patch
+	epatch "${FILESDIR}"/${PN}-1.9.25-linux3.9.patch
 	sed -i -e '/linux\/smp_lock.h/d' kernel/svgalib_helper/main.c || die
 }
 
