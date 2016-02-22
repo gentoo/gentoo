@@ -2764,7 +2764,7 @@ dev-cpp/cairomm 1.10.0-r1 1.12.0 1.12.0-r1: C++ bindings for the Cairo vector gr
 dev-cpp/clucene 2.3.3.4-r5: High-performance, full-featured text search engine based off of lucene in C++
 dev-cpp/commoncpp2 1.8.1-r1: C++ framework offering portable support for threading, sockets, file access, daemons, persistence, serial I/O, XML parsing, and system services
 dev-cpp/ctemplate 2.2 2.2_p129 2.3: A simple but powerful template language for C++
-dev-cpp/eigen 2.0.17 3.1.3 3.2.5 3.2.6 3.2.7 3.2.8: C++ template library for linear algebra
+dev-cpp/eigen 2.0.17 3.1.3 3.2.5 3.2.6 3.2.7 3.2.8-r1: C++ template library for linear algebra
 dev-cpp/gccxml 0.9.0_pre20120309 0.9.0_pre20131217: XML output extension to GCC
 dev-cpp/gconfmm 2.28.3 2.28.3-r1: C++ bindings for GConf
 dev-cpp/gflags 2.1.1-r1 2.1.2 9999: Google's C++ argument parsing library
@@ -8845,7 +8845,7 @@ dev-ruby/parser 2.3.0.4 2.3.0.6: A production-ready Ruby parser written in pure 
 dev-ruby/parslet 1.6.1 1.6.2 1.7.0 1.7.1: A small PEG based parser library
 dev-ruby/patron 0.4.18-r1 0.4.18-r2 0.4.20 0.5.0-r1: Patron is a Ruby HTTP client library based on libcurl
 dev-ruby/pcaprub 0.11.3-r2 0.12.0-r1 0.12.1: Libpcap bindings for ruby compat
-dev-ruby/pdf-core 0.5.0 0.5.1 0.6.0: Implements low level PDF features for Prawn
+dev-ruby/pdf-core 0.6.0 0.6.1: Implements low level PDF features for Prawn
 dev-ruby/pdf-inspector 1.1.0-r1 1.2.0 1.2.1: A tool for analyzing PDF output
 dev-ruby/pdf-reader 1.3.3: PDF parser conforming as much as possible to the PDF specification from Adobe
 dev-ruby/permutation 0.1.8-r1: Library to perform different operations with permutations of sequences (strings, arrays, etc.)
@@ -9073,7 +9073,7 @@ dev-ruby/toml 0.1.2: A sane configuration format
 dev-ruby/totoridipjp 0.1.0: A ruby binding to use totori.dip.jp Web API
 dev-ruby/transaction-simple 1.4.0.2-r1 1.4.0.2-r2: Provides transaction support at the object level
 dev-ruby/travis 1.8.2: Travis CI Client (CLI and Ruby library)
-dev-ruby/treetop 1.4.15-r1 1.5.3 1.6.3: Treetop is a language for describing languages
+dev-ruby/treetop 1.6.3 1.6.4: Treetop is a language for describing languages
 dev-ruby/trollop 1.16.2-r4 2.0 2.1.1 2.1.2: Trollop is a commandline option parser for Ruby
 dev-ruby/ttfunk 1.2.1 1.4.0: A TrueType font parser written in pure ruby
 dev-ruby/turbolinks 2.5.1 2.5.3: Makes following links in your web application faster
@@ -11611,7 +11611,7 @@ mail-mta/msmtp 1.6.1 1.6.2 1.6.3: An SMTP client and SMTP plugin for mail user a
 mail-mta/netqmail 1.06 1.06-r1 1.06-r2 1.06-r3 1.06-r4: qmail -- a secure, reliable, efficient, simple message transfer agent
 mail-mta/nullmailer 1.13-r5: Simple relay-only local mail transport agent
 mail-mta/opensmtpd 5.7.3_p2 5.7.3_p2-r1: Lightweight but featured SMTP daemon from OpenBSD
-mail-mta/postfix 2.10.9 2.11.7 3.0.2 3.0.2-r1 3.0.2-r2 3.0.3 3.0.3-r1 3.1_pre20160214: A fast and secure drop-in replacement for sendmail
+mail-mta/postfix 2.10.9 2.11.7 3.0.2 3.0.2-r1 3.0.2-r2 3.0.3 3.0.3-r1 3.0.4 3.1_pre20160214: A fast and secure drop-in replacement for sendmail
 mail-mta/qmail-ldap 1.03-r8: qmail -- a secure, reliable, efficient, simple message transfer agent
 mail-mta/qpsmtpd 0.84-r2 0.95 9999: qpsmtpd is a flexible smtpd daemon written in Perl
 mail-mta/sendmail 8.14.9 8.14.9-r1: Widely-used Mail Transport Agent (MTA)
