@@ -25,6 +25,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-format-security.patch
 	"${FILESDIR}"/${P}-getopt.patch
 	"${FILESDIR}"/${P}-implicit-declaration.patch
+	"${FILESDIR}"/${P}-fix-testsuite.patch
 	)
 
 src_prepare() {
