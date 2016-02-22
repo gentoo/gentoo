@@ -16541,7 +16541,7 @@ sys-block/buffer 1.19-r2: a tapedrive tool for speeding up reading from and writ
 sys-block/cec 14: Coraid Ethernet Console client
 sys-block/dellmgr 5.32-r1: Dell PERC 2/3/4 RAID controller management tool
 sys-block/devio 1.2: correctly read (or write) a region of a block device
-sys-block/di 4.35 4.38 4.40 4.41: Disk Information Utility
+sys-block/di 4.35 4.41 4.42: Disk Information Utility
 sys-block/disktype 9: Detect the content format of a disk or disk image
 sys-block/eject 2.1.5-r2: A command to eject a disc from the CD-ROM drive
 sys-block/eject-bsd 1.5: eject command for FreeBSD systems
