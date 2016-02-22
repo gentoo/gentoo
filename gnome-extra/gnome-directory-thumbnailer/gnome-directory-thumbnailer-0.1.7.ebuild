@@ -13,7 +13,7 @@ HOMEPAGE="https://wiki.gnome.org/Projects/GnomeDirectoryThumbnailer"
 LICENSE="LGPL-2.1+"
 SLOT="0"
 IUSE=""
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 RDEPEND="
 	>=dev-libs/glib-2.35:2

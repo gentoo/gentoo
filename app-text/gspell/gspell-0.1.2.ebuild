@@ -13,7 +13,7 @@ HOMEPAGE="https://wiki.gnome.org/Projects/gspell"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="+introspection vala"
 REQUIRED_IUSE="vala? ( introspection )"
 

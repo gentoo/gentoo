@@ -14,7 +14,7 @@ SRC_URI="http://download.gna.org/${PN}/$(get_version_component_range 1-2)/${P}.t
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="debug nls"
 # opengl would mix gtk+:2 and :3 which is not possible
 

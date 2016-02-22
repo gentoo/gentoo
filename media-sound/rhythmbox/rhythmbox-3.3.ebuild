@@ -26,7 +26,7 @@ REQUIRED_USE="
 "
 #	webkit? ( python )
 
-KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 
 # Tests failing for years without upstream caring at all
 # upstream bug #688745

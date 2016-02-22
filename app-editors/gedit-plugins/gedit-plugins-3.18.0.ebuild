@@ -15,7 +15,7 @@ DESCRIPTION="Official plugins for gedit"
 HOMEPAGE="https://wiki.gnome.org/Apps/Gedit/ShippedPlugins"
 
 LICENSE="GPL-2+"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 SLOT="0"
 
 IUSE_plugins="charmap git terminal vala zeitgeist"
