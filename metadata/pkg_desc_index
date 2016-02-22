@@ -10568,7 +10568,7 @@ games-rpg/gwiz 0.8: clone of old-school Wizardry(tm) games by SirTech
 games-rpg/kqlives 0.99: A console-style role playing game
 games-rpg/lure 1.1: Lure of the Temptress
 games-rpg/mana 0.6.1: A fully free and open source MMORPG game client
-games-rpg/manaplus 1.5.11.21 1.6.1.16: OpenSource 2D MMORPG client for Evol Online and The Mana World
+games-rpg/manaplus 1.5.11.21 1.6.1.16 9999: OpenSource 2D MMORPG client for Evol Online and The Mana World
 games-rpg/nwmouse 20090906.183839: Hardware mouse cursors for Neverwinter Nights
 games-rpg/nwmovies 20090223.080954: Play Neverwinter Nights movies inside the Linux client
 games-rpg/nwn 1.68-r5 1.68-r6 1.69-r1: role-playing game set in a huge medieval fantasy world of Dungeons and Dragons
@@ -12151,7 +12151,7 @@ media-libs/esdl 1.0.1 1.2: Erlang bindings for the SDL library
 media-libs/ethumb 1.7.8 1.7.9: Enlightenment thumbnailing library (meant to replace epsilon)
 media-libs/evas 1.7.8 1.7.9 1.7.10 9999: hardware-accelerated retained canvas API
 media-libs/exempi 2.2.0 2.2.1: Exempi is a port of the Adobe XMP SDK to work on UNIX
-media-libs/exiftool 9.98 10.00 10.07 10.09 10.10: Read and write meta information in image, audio and video files
+media-libs/exiftool 9.98 10.00 10.07 10.09 10.10 10.11: Read and write meta information in image, audio and video files
 media-libs/faac 1.28-r3 1.28-r4: Free MPEG-4 audio codecs by AudioCoding.com
 media-libs/faad2 2.7-r3: AAC audio decoding library
 media-libs/fdk-aac 0.1.1 0.1.2 0.1.3 0.1.4: Fraunhofer AAC codec library
