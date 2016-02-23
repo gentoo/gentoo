@@ -1,25 +1,28 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 MY_P=${PN}-${PV/_rc/rc}
 inherit eutils cmake-multilib multilib
 
 DESCRIPTION="Access a working SSH implementation by means of a library"
 HOMEPAGE="http://www.libssh.org/"
-SRC_URI="https://red.libssh.org/attachments/download/154/${MY_P}.tar.xz -> ${P}.tar.xz"
+SRC_URI="https://red.libssh.org/attachments/download/195/${MY_P}.tar.xz -> ${P}.tar.xz"
 
 LICENSE="LGPL-2.1"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
 SLOT="0/4" # subslot = soname major version
-IUSE="debug doc examples gcrypt gssapi pcap +sftp ssh1 server static-libs test zlib"
+IUSE="debug doc examples gcrypt gssapi libressl pcap +sftp ssh1 server static-libs test zlib"
 # Maintainer: check IUSE-defaults at DefineOptions.cmake
 
 RDEPEND="
 	zlib? ( >=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}] )
-	!gcrypt? ( >=dev-libs/openssl-1.0.1h-r2[${MULTILIB_USEDEP}] )
+	!gcrypt? (
+		!libressl? ( >=dev-libs/openssl-1.0.1h-r2:0[${MULTILIB_USEDEP}] )
+		libressl? ( dev-libs/libressl[${MULTILIB_USEDEP}] )
+	)
 	gcrypt? ( >=dev-libs/libgcrypt-1.5.3:0[${MULTILIB_USEDEP}] )
 	gssapi? ( >=virtual/krb5-0-r1[${MULTILIB_USEDEP}] )
 "
@@ -47,18 +50,18 @@ src_prepare() {
 
 multilib_src_configure() {
 	local mycmakeargs=(
-		$(cmake-utils_use_with debug DEBUG_CALLTRACE)
-		$(cmake-utils_use_with debug DEBUG_CRYPTO)
-		$(cmake-utils_use_with gcrypt)
-		$(cmake-utils_use_with gssapi)
-		$(cmake-utils_use_with pcap)
-		$(cmake-utils_use_with server)
-		$(cmake-utils_use_with sftp)
-		$(cmake-utils_use_with ssh1)
-		$(cmake-utils_use_with static-libs STATIC_LIB)
-		$(cmake-utils_use_with test STATIC_LIB)
-		$(cmake-utils_use_with test TESTING)
-		$(cmake-utils_use_with zlib)
+		-DWITH_DEBUG_CALLTRACE="$(usex debug)"
+		-DWITH_DEBUG_CRYPTO="$(usex debug)"
+		-DWITH_gcrypt="$(usex gcrypt)"
+		-DWITH_gssapi="$(usex gssapi)"
+		-DWITH_pcap="$(usex pcap)"
+		-DWITH_server="$(usex server)"
+		-DWITH_sftp="$(usex sftp)"
+		-DWITH_ssh1="$(usex ssh1)"
+		-DWITH_STATIC_LIB="$(usex static-libs)"
+		-DWITH_STATIC_LIB="$(usex test)"
+		-DWITH_TESTING="$(usex test)"
+		-DWITH_zlib="$(usex zlib)"
 	)
 
 	cmake-utils_src_configure
@@ -72,7 +75,10 @@ multilib_src_compile() {
 multilib_src_install() {
 	cmake-utils_src_install
 
-	multilib_is_native_abi && use doc && dohtml -r doc/html/.
+	if multilib_is_native_abi && use doc ; then
+		docinto html
+		dodoc -r doc/html/.
+	fi
 
 	use static-libs || rm -f "${D}"/usr/$(get_libdir)/libssh{,_threads}.a
 }
