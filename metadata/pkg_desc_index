@@ -5622,7 +5622,7 @@ dev-perl/HTML-Mason-PSGIHandler 0.530.0: PSGI handler for HTML::Mason
 dev-perl/HTML-Object 2.29-r2: A HTML development and delivery Perl Module
 dev-perl/HTML-Packer 2.0.0 2.20.0: Another HTML code cleaner
 dev-perl/HTML-Parser 3.710.0-r1 3.720.0: Parse <HEAD> section of HTML documents
-dev-perl/HTML-Quoted 0.30.0-r1 0.40.0: Extract structure of quoted HTML mail message
+dev-perl/HTML-Quoted 0.40.0: Extract structure of quoted HTML mail message
 dev-perl/HTML-RewriteAttributes 0.50.0-r1: Perl module for concise attribute rewriting
 dev-perl/HTML-Scrubber 0.150.0: Perl extension for scrubbing/sanitizing html
 dev-perl/HTML-SimpleParse 0.120.0-r1: A bare-bones HTML parser, similar to HTML::Parser, but with a couple important distinctions
@@ -5637,7 +5637,7 @@ dev-perl/HTML-Template 2.940.0 2.950.0: A Perl module to use HTML Templates
 dev-perl/HTML-Template-Expr 0.70.0-r1: HTML::Template extension adding expression support
 dev-perl/HTML-Template-JIT 0.50.0-r1: a just-in-time compiler for HTML::Template
 dev-perl/HTML-Template-Pro 0.951.0: Perl/XS module to use HTML Templates from CGI scripts
-dev-perl/HTML-TokeParser-Simple 3.150.0-r1 3.160.0-r1: A bare-bones HTML parser, similar to HTML::Parser, but with a couple important distinctions
+dev-perl/HTML-TokeParser-Simple 3.160.0-r1: Easy to use HTML::TokeParser interface
 dev-perl/HTML-Tree 4.200.0-r1 5.30.0-r1: A library to manage HTML-Tree in PERL
 dev-perl/HTTP-Body 1.190.0 1.220.0: HTTP Body Parser
 dev-perl/HTTP-BrowserDetect 1.500.0 1.770.0 2.40.0 2.80.0: Determine Web browser, version, and platform from an HTTP user agent string
