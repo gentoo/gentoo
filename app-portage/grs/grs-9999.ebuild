@@ -41,9 +41,9 @@ RDEPEND="
 	)"
 
 pkg_setup() {
+	local CONFIG_CHECK="~CGROUPS"
+	local ERROR_CGROUPS="WARNING: grsrun requires CONFIG_CGROUPS enabled in the kernel."
 	linux-info_pkg_setup
-	CONFIG_CHECK="~CGROUPS"
-	ERROR_CGROUPS="WARNING: grsrun requires CONFIG_CGROUPS enabled in the kernel."
 }
 
 src_install() {
