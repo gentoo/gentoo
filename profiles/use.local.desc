@@ -2406,6 +2406,7 @@ dev-python/spyder:numpy - Add support for dev-python/numpy
 dev-python/spyder:pep8 - Add support for dev-python/pep8
 dev-python/spyder:pyflakes - Add support for dev-python/pyflakes
 dev-python/spyder:pylint - Add support for dev-python/pylint
+dev-python/spyder:qtconsole - Add support for dev-python/qtconsole
 dev-python/spyder:rope - Add support for dev-python/rope
 dev-python/spyder:scipy - Add support for sci-libs/scipy
 dev-python/spyder:sphinx - Add support for dev-python/sphinx
