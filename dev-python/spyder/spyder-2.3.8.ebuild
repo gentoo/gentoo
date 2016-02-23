@@ -6,7 +6,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python{2_7,3_3,3_4,3_5} )
 
-inherit distutils-r1
+inherit eutils distutils-r1
 
 DESCRIPTION="Python IDE with matlab-like features"
 HOMEPAGE="https://github.com/spyder-ide/spyder"
