@@ -1,30 +1,33 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=5
 
-inherit eutils systemd toolchain-funcs user
+inherit eutils linux-info systemd toolchain-funcs user
 
 DESCRIPTION="DLNA/UPnP-AV compliant media server"
 HOMEPAGE="http://minidlna.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${PV}/${P}.tar.gz"
+SRC_URI="mirror://sourceforge/${PN}/${PV}/${P}.tar.gz
+	https://dev.gentoo.org/~xmw/${PN}-gentoo-artwork.patch.xz"
 
 LICENSE="BSD GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm x86"
+KEYWORDS="~amd64 ~arm ~x86"
 IUSE="netgear readynas"
 
-RDEPEND="dev-db/sqlite
+RDEPEND="dev-db/sqlite:3
 	media-libs/flac
 	media-libs/libexif
 	media-libs/libid3tag
 	media-libs/libogg
 	media-libs/libvorbis
 	virtual/ffmpeg
-	virtual/jpeg"
+	virtual/jpeg:0"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
+
+CONFIG_CHECK="~INOTIFY_USER"
 
 pkg_setup() {
 	local my_is_new="yes"
@@ -38,12 +41,16 @@ pkg_setup() {
 		# if user already exists, but /var/lib/minidlna is missing
 		# rely on ${D}/var/lib/minidlna created in src_install
 	fi
+
+	linux-info_pkg_setup
 }
 
 src_prepare() {
 	sed -e "/log_dir/s:/var/log:/var/log/${PN}:" \
 		-e "/db_dir/s:/var/cache/:/var/lib/:" \
 		-i ${PN}.conf || die
+
+	epatch "${WORKDIR}"/${PN}-gentoo-artwork.patch
 
 	epatch_user
 }
@@ -61,11 +68,14 @@ src_configure() {
 src_install() {
 	default
 
+	#bug 536532
+	dosym /usr/sbin/${PN}d /usr/bin/${PN}
+
 	insinto /etc
 	doins ${PN}.conf
 
 	newconfd "${FILESDIR}"/${PN}-1.0.25.confd ${PN}
-	newinitd "${FILESDIR}"/${PN}-1.1.2.initd ${PN}
+	newinitd "${FILESDIR}"/${PN}-1.1.5.initd ${PN}
 	systemd_newunit "${FILESDIR}"/${PN}-1.1.2.service ${PN}.service
 	echo "d /run/${PN} 0755 ${PN} ${PN} -" > "${T}"/${PN}.conf
 	systemd_dotmpfilesd "${T}"/${PN}.conf
