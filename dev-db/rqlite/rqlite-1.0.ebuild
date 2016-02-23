@@ -58,6 +58,17 @@ src_unpack() {
 	unpack_go_packages
 }
 
+src_compile() {
+	# Omit $(get_golibdir_gopath) from GOPATH, in order to avoid
+	# interference from installed rqlite sources.
+	GOPATH="${WORKDIR}/${P}" \
+		go install -v -work -x ${EGO_BUILD_FLAGS} "${EGO_PN}" || die
+}
+
+src_install() {
+	golang_install_pkgs
+}
+
 golang_install_pkgs() {
 	dobin bin/${PN}
 	insinto $(dirname "${EPREFIX}$(get_golibdir)/src/${EGO_PN%/*}")

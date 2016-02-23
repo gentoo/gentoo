@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="Python IDE with matlab-like features"
 HOMEPAGE="https://github.com/spyder-ide/spyder"
-SRC_URI="https://bitbucket.org/spyder-ide/spyderlib/downloads/spyder-2.3.8.zip"
+SRC_URI="https://bitbucket.org/${PN}-ide/${PN}lib/downloads/${P}.zip"
 
 LICENSE="MIT"
 SLOT="0"
@@ -36,7 +36,7 @@ DEPEND="${RDEPEND}
 	doc? ( >=dev-python/sphinx-0.6.0[${PYTHON_USEDEP}] )"
 
 # Courtesy of Arfrever
-PATCHES=( "${FILESDIR}"/${PN}-2.3.1-build.patch )
+PATCHES=( "${FILESDIR}"/${P}-build.patch )
 
 python_compile_all() {
 	if use doc; then
