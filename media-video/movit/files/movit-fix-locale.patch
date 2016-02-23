@@ -1,0 +1,16 @@
+--- a/init.cpp	2016-02-14 19:53:12.141197530 +0100
++++ b/init.cpp	2016-02-14 19:55:09.374196665 +0100
+@@ -388,7 +388,12 @@
+ 	// Now we have something on the form X.YY. We convert it to a float, and hope
+ 	// that if it's inexact (e.g. 1.30), atof() will round the same way the
+ 	// compiler will.
+-	float glsl_version = atof(glsl_version_str);
++	
++	std::istringstream locale_convert(glsl_version_str);
++	locale_convert.imbue(std::locale("C"));
++	double glsl_version;
++	locale_convert >> glsl_version;	
++	
+ 	free(glsl_version_str);
+ 
+ 	return glsl_version;
