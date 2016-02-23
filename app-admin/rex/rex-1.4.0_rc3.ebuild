@@ -5,7 +5,7 @@
 EAPI=5
 
 MODULE_AUTHOR=FERKI
-MODULE_A=Rex-1.3.3_02.tar.gz
+MODULE_A=Rex-1.3.3_03.tar.gz
 
 inherit perl-module
 
