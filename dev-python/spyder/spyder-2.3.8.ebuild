@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="Python IDE with matlab-like features"
 HOMEPAGE="https://github.com/spyder-ide/spyder"
-SRC_URI="https://bitbucket.org/spyder-ide/spyderlib/downloads/spyder-2.3.8.zip"
+SRC_URI="https://bitbucket.org/${PN}-ide/${PN}lib/downloads/${P}.zip"
 
 LICENSE="MIT"
 SLOT="0"
