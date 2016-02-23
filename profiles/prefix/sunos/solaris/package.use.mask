@@ -3,6 +3,11 @@
 # $Id$
 
 
+# Fabian Groffen <grobian@gentoo.org> (23 Feb 2016)
+# luajit doesn't compile due to relocation problems
+~app-text/texlive-core-2015 luajittex
+~dev-texlive/texlive-basic-2015 luajittex
+
 # Fabian Groffen <grobian@gentoo.org> (16 Jan 2016)
 # GNU attr isn't supported
 dev-libs/glib xattr
