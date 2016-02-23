@@ -48,7 +48,7 @@ https://bugs.gentoo.org/show_bug.cgi?id=561718
 -    CURSES_CHECKED="1"
 -fi
 +AS_IF([test "x$enable_ncurses" != "xno"], [
-+	PKG_CHECK_MODULES([NCURSES], [ncurses])
++	PKG_CHECK_MODULES([NCURSES], [ncurses], [AC_DEFINE([HAVE_LIBNCURSES], [1], [Define to 1 if you have the `ncurses' library (-lncurses).])])
  ])
 -fi
 -
@@ -79,4 +79,15 @@ https://bugs.gentoo.org/show_bug.cgi?id=561718
 +bwm_ng_LDADD = @NCURSES_LIBS@
  
  noinst_HEADERS = bwm-ng.h process.h output.h options.h help.h curses_tools.h types.h defines.h global_vars.h input/devstat.h input/libkstat.h input/netstat.h input/proc_net_dev.h input/sysctl.h input/ioservice.h input/libstatgrab.h input/proc_diskstats.h input/retrieve.h input/win32.h input/getifaddrs.h
+ 
+--- bwm-ng-0.6.1/src/defines.h
++++ bwm-ng-0.6.1/src/defines.h
+@@ -48,7 +48,7 @@
+ #define LIBSTATGRAB
+ #endif
+ 
+-#if HAVE_LIBCURSES || HAVE_LIBNCURSES
++#if defined(HAVE_LIBCURSES) || defined(HAVE_LIBNCURSES)
+ #define HAVE_CURSES
+ #endif
  
