@@ -1,17 +1,16 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI="5"
 
 # Does not work with py3 here
-# It might work with py:2.5 but I didn't test that
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="sqlite"
 
 inherit eutils linux-info python-single-r1 multiprocessing autotools toolchain-funcs
 
-CODENAME="Isengard"
+CODENAME="Krypton"
 case ${PV} in
 9999)
 	EGIT_REPO_URI="git://github.com/xbmc/xbmc.git"
@@ -34,9 +33,8 @@ HOMEPAGE="http://kodi.tv/ http://kodi.wiki/"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="airplay alsa avahi bluetooth bluray caps cec css dbus debug +fishbmc gles goom java joystick midi mysql nfs +opengl profile +projectm pulseaudio +rsxs rtmp +samba sftp +spectrum test +texturepacker udisks upnp upower +usb vaapi vdpau +waveform webserver +X"
+IUSE="airplay alsa avahi bluetooth bluray caps cec css dbus debug gles java joystick midi mysql nfs +opengl profile pulseaudio rtmp +samba sftp test +texturepacker udisks upnp upower +usb vaapi vdpau webserver +X"
 REQUIRED_USE="
-	rsxs? ( X )
 	udisks? ( dbus )
 	upower? ( dbus )
 "
@@ -47,7 +45,6 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	app-arch/zip
 	app-i18n/enca
 	airplay? ( app-pda/libplist )
-	dev-libs/boost
 	dev-libs/expat
 	dev-libs/fribidi
 	dev-libs/libcdio[-minimal]
@@ -65,22 +62,19 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	media-libs/flac
 	media-libs/fontconfig
 	media-libs/freetype
-	media-libs/jasper
 	media-libs/jbigkit
 	>=media-libs/libass-0.9.7
 	bluray? ( >=media-libs/libbluray-0.7.0 )
 	css? ( media-libs/libdvdcss )
 	media-libs/libmad
 	media-libs/libmodplug
-	media-libs/libmpeg2
 	media-libs/libogg
 	media-libs/libpng:0=
-	projectm? ( media-libs/libprojectm )
 	media-libs/libsamplerate
 	joystick? ( media-libs/libsdl2 )
 	>=media-libs/taglib-1.8
 	media-libs/libvorbis
-	media-libs/tiff:0=
+	media-sound/dcadec
 	pulseaudio? ( media-sound/pulseaudio )
 	media-sound/wavpack
 	>=media-video/ffmpeg-2.6:=[encode]
@@ -95,13 +89,11 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	dbus? ( sys-apps/dbus )
 	caps? ( sys-libs/libcap )
 	sys-libs/zlib
-	virtual/jpeg:0=
 	usb? ( virtual/libusb:1 )
 	mysql? ( virtual/mysql )
 	opengl? (
 		virtual/glu
 		virtual/opengl
-		>=media-libs/glew-1.5.6
 	)
 	gles? (
 		media-libs/mesa[gles2]
@@ -132,7 +124,8 @@ DEPEND="${COMMON_DEPEND}
 	dev-util/cmake
 	x86? ( dev-lang/nasm )
 	java? ( virtual/jre )
-	test? ( dev-cpp/gtest )"
+	test? ( dev-cpp/gtest )
+	virtual/pkgconfig"
 # Force java for latest git version to avoid having to hand maintain the
 # generated addons package.  #488118
 [[ ${PV} == "9999" ]] && DEPEND+=" virtual/jre"
@@ -218,29 +211,23 @@ src_configure() {
 		$(use_enable css dvdcss) \
 		$(use_enable dbus) \
 		$(use_enable debug) \
-		$(use_enable fishbmc) \
 		$(use_enable gles) \
-		$(use_enable goom) \
 		$(use_enable joystick) \
 		$(use_enable midi mid) \
 		$(use_enable mysql) \
 		$(use_enable nfs) \
 		$(use_enable opengl gl) \
 		$(use_enable profile profiling) \
-		$(use_enable projectm) \
 		$(use_enable pulseaudio pulse) \
-		$(use_enable rsxs) \
 		$(use_enable rtmp) \
 		$(use_enable samba) \
 		$(use_enable sftp ssh) \
-		$(use_enable spectrum) \
 		$(use_enable usb libusb) \
 		$(use_enable test gtest) \
 		$(use_enable texturepacker) \
 		$(use_enable upnp) \
 		$(use_enable vaapi) \
 		$(use_enable vdpau) \
-		$(use_enable waveform) \
 		$(use_enable webserver) \
 		$(use_enable X x11)
 }
@@ -251,30 +238,18 @@ src_compile() {
 
 src_install() {
 	default
-	rm "${ED}"/usr/share/doc/*/{LICENSE.GPL,copying.txt}*
+	rm "${ED}"/usr/share/doc/*/{LICENSE.GPL,copying.txt}* || die
 
 	domenu tools/Linux/kodi.desktop
 	newicon media/icon48x48.png kodi.png
-
-	# Remove optional addons (platform specific).
-	local disabled_addons=(
-		repository.pvr-{android,ios,osx{32,64},win32}.xbmc.org
-		visualization.dxspectrum
-		visualization.vortex
-	)
-	rm -rf "${disabled_addons[@]/#/${ED}/usr/share/kodi/addons/}"
 
 	# Remove fonconfig settings that are used only on MacOSX.
 	# Can't be patched upstream because they just find all files and install
 	# them into same structure like they have in git.
 	rm -rf "${ED}"/usr/share/kodi/system/players/dvdplayer/etc
 
-	# Replace bundled fonts with system ones
-	# teletext.ttf: unknown
-	# bold-caps.ttf: unknown
-	# roboto: roboto-bold, roboto-regular
-	# arial.ttf: font mashed from droid/roboto, not removed wrt bug#460514
-	rm -rf "${ED}"/usr/share/kodi/addons/skin.confluence/fonts/Roboto-*
+	# Replace bundled fonts with system ones.
+	rm "${ED}"/usr/share/kodi/addons/skin.confluence/fonts/Roboto-* || die
 	dosym /usr/share/fonts/roboto/Roboto-Regular.ttf \
 		/usr/share/kodi/addons/skin.confluence/fonts/Roboto-Regular.ttf
 	dosym /usr/share/fonts/roboto/Roboto-Bold.ttf \
