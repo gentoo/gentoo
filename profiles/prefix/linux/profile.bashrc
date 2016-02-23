@@ -11,7 +11,9 @@ get_libc_vers_min() {
 			| cut -d. -f2
 		return
 	elif [[ -x /lib/libc.so.6 || -x /lib64/libc.so.6 ]] ; then
-		/lib/libc.so.6 || lib64/libc.so.6 \
+		{
+			/lib/libc.so.6 || /lib64/libc.so.6
+		} 2>/dev/null \
 			| head -n1 \
 			| grep -o 'version 2\.[0-9]\+' \
 			| cut -d. -f2
