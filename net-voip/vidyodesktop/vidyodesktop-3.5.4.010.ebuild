@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -61,6 +61,7 @@ RDEPEND="
 	x11-libs/libXxf86vm
 	dev-qt/qtcore:4
 	dev-qt/qtgui:4
+	dev-qt/qtwebkit:4
 "
 
 src_install() {
