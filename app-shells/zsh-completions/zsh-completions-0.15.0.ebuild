@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -19,13 +19,6 @@ LICENSE="BSD"
 SLOT="0"
 
 RDEPEND="app-shells/zsh"
-
-src_prepare() {
-	# File collision with dev-python/pip
-	rm src/_pip || die
-	# File collision with app-emulation/docker
-	rm src/_docker || die
-}
 
 src_install() {
 	insinto /usr/share/zsh/site-functions
