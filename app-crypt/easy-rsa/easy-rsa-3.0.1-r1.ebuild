@@ -28,7 +28,7 @@ src_install() {
 	exeinto /usr/share/easy-rsa
 	doexe easyrsa
 	insinto /usr/share/easy-rsa
-	doins vars.example openssl-1.0.cnf x509-types
+	doins -r vars.example openssl-1.0.cnf x509-types
 	dodoc README.quickstart.md ChangeLog
 	dodoc -r doc
 	doenvd "${FILESDIR}/65easy-rsa" # config-protect easy-rsa
