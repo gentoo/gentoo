@@ -14,3 +14,4 @@ move dev-ml/custom_printf dev-ml/ppx_custom_printf
 move sci-mathematics/csdp sci-libs/coinor-csdp
 move dev-perl/ImageInfo dev-perl/Image-Info
 move dev-perl/ImageSize dev-perl/Image-Size
+move media-tv/xbmc media-tv/kodi
