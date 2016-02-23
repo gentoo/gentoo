@@ -11,17 +11,35 @@ MY_PV=${PV/_/}
 
 inherit toolchain-funcs
 
+BOOTSTRAP_DIST="https://dev.gentoo.org/~williamh/dist"
+SRC_URI="
+kernel_Darwin? (
+	x64-macos? ( ${BOOTSTRAP_DIST}/go-darwin-amd64-bootstrap.tbz )
+)
+kernel_FreeBSD? (
+amd64-fbsd? ( ${BOOTSTRAP_DIST}/go-freebsd-amd64-bootstrap.tbz )
+x86-fbsd? ( ${BOOTSTRAP_DIST}/go-freebsd-386-bootstrap.tbz )
+)
+kernel_linux? (
+	amd64? ( ${BOOTSTRAP_DIST}/go-linux-amd64-bootstrap.tbz )
+	arm? ( ${BOOTSTRAP_DIST}/go-linux-arm-bootstrap.tbz )
+	arm64? ( ${BOOTSTRAP_DIST}/go-linux-arm64-bootstrap.tbz )
+	ppc64? ( ${BOOTSTRAP_DIST}/go-linux-ppc64-bootstrap.tbz )
+	x86? ( ${BOOTSTRAP_DIST}/go-linux-386-bootstrap.tbz )
+)
+"
+
 if [[ ${PV} = 9999 ]]; then
 	EGIT_REPO_URI="git://github.com/golang/go.git"
 	inherit git-r3
 else
-	SRC_URI="https://storage.googleapis.com/golang/go${MY_PV}.src.tar.gz"
+	SRC_URI+="https://storage.googleapis.com/golang/go${MY_PV}.src.tar.gz"
 	# go-bootstrap-1.4 only supports go on amd64, arm and x86 architectures.
 	# Allowing other bootstrap options would enable arm64 and ppc64 builds.
 	case ${PV} in
 		*9999*|*_rc*) ;;
 		*)
-			KEYWORDS="-* ~amd64 ~arm ~x86 ~amd64-fbsd ~x86-fbsd ~x64-macos ~x86-macos"
+			KEYWORDS="-* ~amd64 ~arm ~x86 ~amd64-fbsd ~x86-fbsd ~x64-macos"
 			;;
 	esac
 fi
@@ -33,7 +51,7 @@ LICENSE="BSD"
 SLOT="0/${PV}"
 IUSE=""
 
-DEPEND=">=dev-lang/go-bootstrap-1.4.1"
+DEPEND=""
 RDEPEND="!<dev-go/go-tools-0_pre20150902"
 
 # These test data objects have writable/executable stacks.
@@ -114,9 +132,17 @@ pkg_pretend()
 	fi
 }
 
+src_unpack()
+{
+	if [[ ${PV} = 9999 ]]; then
+		git-r3_src_unpack
+	fi
+	default
+}
+
 src_compile()
 {
-	export GOROOT_BOOTSTRAP="${EPREFIX}"/usr/lib/go1.4
+	export GOROOT_BOOTSTRAP="${WORKDIR}"/go-$(go_os)-$(go_arch)-bootstrap
 	export GOROOT_FINAL="${EPREFIX}"/usr/lib/go
 	export GOROOT="$(pwd)"
 	export GOBIN="${GOROOT}/bin"
