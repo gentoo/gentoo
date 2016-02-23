@@ -8,7 +8,7 @@ MODULE_AUTHOR=OVID
 MODULE_VERSION=3.16
 inherit perl-module
 
-DESCRIPTION="A bare-bones HTML parser, similar to HTML::Parser, but with a couple important distinctions"
+DESCRIPTION="Easy to use HTML::TokeParser interface"
 
 SLOT="0"
 KEYWORDS="amd64 ia64 ppc ~ppc64 sparc x86 ~amd64-linux ~arm-linux ~x86-linux"
