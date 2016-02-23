@@ -29,6 +29,8 @@ DEPEND="${RDEPEND}
 	test? ( dev-python/nose[${PYTHON_USEDEP}] )
 "
 
+S="${WORKDIR}"/${P/_p/-post}
+
 # Needs network
 RESTRICT=test
 
