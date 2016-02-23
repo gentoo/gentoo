@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=5
-PYTHON_COMPAT=( python{2_7,3_3,3_4} )
+PYTHON_COMPAT=( python{2_7,3_3,3_4,3_5} )
 
 SCM=""
 if [ "${PV#9999}" != "${PV}" ] ; then
@@ -32,7 +32,7 @@ RDEPEND="
 	dev-python/sip[${PYTHON_USEDEP}]
 "
 DEPEND="${RDEPEND}"
-PATCHES=( "${FILESDIR}/py3.patch" )
+PATCHES=( "${FILESDIR}/py3.patch" "${FILESDIR}/libdir.patch" )
 
 if [ "${PV#9999}" != "${PV}" ] ; then
 	S=${WORKDIR}/${P}/python_orocos_kdl
