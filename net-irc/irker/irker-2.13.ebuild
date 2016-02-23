@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -27,7 +27,8 @@ src_prepare() {
 	epatch "${FILESDIR}/2.7-irkerhook-Remove-file-listing.patch"
 
 	# Prefix support
-	sed -i -e "/^ExecStart=/ s:=/:=${EROOT}:" irkerd.service
+	sed -i -e "/^ExecStart=/ s:=/:=${EROOT}:" irkerd.service \
+		|| die "sed failed"
 }
 
 src_install() {
