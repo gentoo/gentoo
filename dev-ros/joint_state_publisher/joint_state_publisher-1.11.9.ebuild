@@ -10,18 +10,14 @@ PYTHON_COMPAT=( python2_7 )
 
 inherit ros-catkin
 
-DESCRIPTION="Constructs a KDL tree from an XML robot representation in URDF"
+DESCRIPTION="Tool for setting and publishing joint state values for a given URDF"
 LICENSE="BSD"
 SLOT="0"
 IUSE=""
 
-RDEPEND="
-	dev-libs/boost:=
-	dev-ros/roscpp
-	dev-ros/rosconsole
-	dev-ros/urdf
-	sci-libs/orocos_kdl
-	dev-libs/tinyxml
+DEPEND=""
+RDEPEND="${DEPEND}
+	dev-ros/rospy[${PYTHON_USEDEP}]
+	dev-python/wxpython[${PYTHON_USEDEP}]
+	dev-ros/sensor_msgs[${PYTHON_USEDEP}]
 "
-DEPEND="${RDEPEND}
-	test? ( dev-ros/rostest[${PYTHON_USEDEP}] )"

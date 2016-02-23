@@ -6,22 +6,20 @@ EAPI=5
 ROS_REPO_URI="https://github.com/ros/robot_model"
 KEYWORDS="~amd64 ~arm"
 ROS_SUBDIR=${PN}
-PYTHON_COMPAT=( python2_7 )
 
 inherit ros-catkin
 
-DESCRIPTION="Constructs a KDL tree from an XML robot representation in URDF"
+DESCRIPTION="C++ parser for the Collada robot description format"
 LICENSE="BSD"
 SLOT="0"
 IUSE=""
 
 RDEPEND="
 	dev-libs/boost:=
+	dev-ros/urdf_parser_plugin
 	dev-ros/roscpp
-	dev-ros/rosconsole
-	dev-ros/urdf
-	sci-libs/orocos_kdl
-	dev-libs/tinyxml
+	dev-ros/class_loader
+	dev-libs/urdfdom_headers
+	dev-libs/collada-dom
 "
-DEPEND="${RDEPEND}
-	test? ( dev-ros/rostest[${PYTHON_USEDEP}] )"
+DEPEND="${RDEPEND}"
