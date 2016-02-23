@@ -39,7 +39,7 @@ else
 	case ${PV} in
 		*9999*|*_rc*) ;;
 		*)
-			KEYWORDS="-* ~amd64 ~arm ~x86 ~amd64-fbsd ~x86-fbsd ~x64-macos"
+			KEYWORDS="-* ~amd64"
 			;;
 	esac
 fi
