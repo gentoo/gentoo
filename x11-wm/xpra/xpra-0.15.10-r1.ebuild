@@ -67,7 +67,7 @@ RDEPEND="${COMMON_DEPEND}
 	x11-apps/xmodmap
 	cups? ( dev-python/pycups[${PYTHON_USEDEP}] )
 	lz4? ( dev-python/lz4[${PYTHON_USEDEP}] )
-	lzo? ( dev-python/python-lzo[${PYTHON_USEDEP}] )
+	lzo? ( >=dev-python/python-lzo-0.7.0[${PYTHON_USEDEP}] )
 	opengl? (
 		client? ( dev-python/pyopengl_accelerate[${PYTHON_USEDEP}] )
 	)
