@@ -14514,7 +14514,7 @@ net-misc/mico 2.3.13-r7 9999: A freely available and fully compliant implementat
 net-misc/midentd 2.3.1-r1: ident daemon with masquerading and fake replies support
 net-misc/mikutter 3.1.1 3.2.7 3.3.5 9999: Simple, powerful and moeful twitter client
 net-misc/mindterm 3.4: A Java SSH Client
-net-misc/minidlna 1.1.3 1.1.4 1.1.5: DLNA/UPnP-AV compliant media server
+net-misc/minidlna 1.1.4 1.1.5 1.1.5-r1: DLNA/UPnP-AV compliant media server
 net-misc/minissdpd 1.3.20150527 1.5.20160119: MiniSSDP Daemon
 net-misc/miniupnpd 1.10_pre20150721: MiniUPnP IGD Daemon
 net-misc/miredo 1.2.5-r2 1.2.6: Miredo is an open-source Teredo IPv6 tunneling software
