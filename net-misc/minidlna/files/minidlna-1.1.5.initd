@@ -1,0 +1,33 @@
+#!/sbin/openrc-run
+# Copyright 1999-2016 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+: ${CONFIG:=/etc/minidlna.conf}
+: ${M_USER:=minidlna}
+: ${M_GROUP:=minidlna}
+
+name="MiniDLNA"
+
+pidfile="/run/minidlna/minidlna.pid"
+command="/usr/sbin/minidlnad"
+command_args="-P $pidfile -f $CONFIG"
+start_stop_daemon_args="--user ${M_USER}:${M_GROUP}"
+
+required_files="$CONFIG"
+
+depend() {
+	need net
+}
+
+start_pre() {
+	if [ "$M_USER" = "root" ]; then
+		eerror "It's not a good idea to run minidlna as root!"
+	fi
+
+	if yesno "$RESCAN"; then
+		command_args="$command_args -R"
+	fi
+
+	checkpath -q -d -m 0750 -o "${M_USER}:${M_GROUP}" "$(dirname "$pidfile")"
+}
