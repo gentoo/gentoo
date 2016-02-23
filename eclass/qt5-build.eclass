@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -52,10 +52,15 @@ esac
 inherit eutils flag-o-matic toolchain-funcs versionator virtualx
 
 HOMEPAGE="https://www.qt.io/"
-LICENSE="|| ( LGPL-2.1 LGPL-3 ) FDL-1.3"
 
 QT5_MINOR_VERSION=$(get_version_component_range 2)
 readonly QT5_MINOR_VERSION
+
+if [[ ${QT5_MINOR_VERSION} -ge 7 ]]; then
+	LICENSE="|| ( GPL-2 GPL-3 LGPL-3 ) FDL-1.3"
+else
+	LICENSE="|| ( LGPL-2.1 LGPL-3 ) FDL-1.3"
+fi
 
 if [[ ${QT5_MINOR_VERSION} -ge 6 ]]; then
 	SLOT=5/$(get_version_component_range 1-2)
@@ -183,18 +188,18 @@ qt5-build_src_prepare() {
 		sed -i -e "/outpath\/qmake\".*\"\$MAKE\")/ s:): \
 			${MAKEOPTS} ${EXTRA_EMAKE} 'CC=$(tc-getCC)' 'CXX=$(tc-getCXX)' \
 			'QMAKE_CFLAGS=${CFLAGS}' 'QMAKE_CXXFLAGS=${CXXFLAGS}' 'QMAKE_LFLAGS=${LDFLAGS}'&:" \
-			-e '/"$CFG_RELEASE_QMAKE"/,/^\s\+fi$/ d' \
+			-e 's/\(setBootstrapVariable\s\+\|EXTRA_C\(XX\)\?FLAGS=.*\)QMAKE_C\(XX\)\?FLAGS_\(DEBUG\|RELEASE\).*/:/' \
 			configure || die "sed failed (respect env for qmake build)"
 		sed -i -e '/^CPPFLAGS\s*=/ s/-g //' \
 			qmake/Makefile.unix || die "sed failed (CPPFLAGS for qmake build)"
 
-		# Respect CXX in {bsymbolic_functions,fvisibility,precomp}.test
+		# Respect CXX in bsymbolic_functions, fvisibility, precomp, and a few other tests
 		sed -i -e "/^QMAKE_CONF_COMPILER=/ s:=.*:=\"$(tc-getCXX)\":" \
 			configure || die "sed failed (QMAKE_CONF_COMPILER)"
 
 		# Respect toolchain and flags in config.tests
 		find config.tests/unix -name '*.test' -type f -execdir \
-			sed -i -e '/bin\/qmake/ s/-nocache //' '{}' + || die
+			sed -i -re '/(bin\/qmake|QMAKE")/ s/-nocache //' '{}' + || die
 
 		# Don't add -O3 to CXXFLAGS (bug 549140)
 		sed -i -e '/CONFIG\s*+=/ s/optimize_full//' \
@@ -204,7 +209,7 @@ qt5-build_src_prepare() {
 		# compiler support for extended instruction sets (bug 552942)
 		if [[ ${QT5_MINOR_VERSION} -ge 5 ]]; then
 			find config.tests/common -name '*.pro' -type f -execdir \
-				sed -i -e '/else:QMAKE_CXXFLAGS\s*+=/ d' '{}' + || die
+				sed -i -e '/QMAKE_CXXFLAGS\s*+=/ d' '{}' + || die
 		fi
 	fi
 
@@ -272,7 +277,15 @@ qt5-build_src_install() {
 	if [[ ${PN} == qtcore ]]; then
 		pushd "${QT5_BUILD_DIR}" >/dev/null || die
 
-		set -- emake INSTALL_ROOT="${D}" install_{global_docs,mkspecs,qmake,syncqt}
+		local qmake_install_target=install_qmake
+		if [[ ${QT5_MINOR_VERSION} -ge 7 ]]; then
+			# qmake/qmake-aux.pro
+			qmake_install_target=sub-qmake-qmake-aux-pro-install_subtargets
+		fi
+
+		set -- emake INSTALL_ROOT="${D}" \
+			${qmake_install_target} \
+			install_{syncqt,mkspecs,global_docs}
 		einfo "Running $*"
 		"$@"
 
