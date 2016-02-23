@@ -33,8 +33,8 @@ DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	virtual/pkgconfig
 	doc? (
-		dev-python/matplotlib[${PYTHON_USEDEP}]
-		dev-python/sphinx[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep 'dev-python/matplotlib[${PYTHON_USEDEP}]' python2_7)
+		$(python_gen_cond_dep 'dev-python/sphinx[${PYTHON_USEDEP}]' python2_7)
 		media-gfx/graphviz
 	)
 	test? (
@@ -45,12 +45,18 @@ DEPEND="${RDEPEND}
 		sci-libs/scipy[${PYTHON_USEDEP}]
 	)"
 
+REQUIRED_USE="doc? ( || ( $(python_gen_useflags 'python2*') ) )"
+
 PATCHES=(
 	"${FILESDIR}/${PN}-1.0.4-system-six.patch"
 	"${FILESDIR}/${PN}-1.0.4-system-configobj.patch"
 	"${FILESDIR}/${PN}-1.1.1-fix-wcs.patch"
 	"${FILESDIR}/${PN}-1.1.1-mark-kown-failures.patch"
 )
+
+pkg_setup() {
+	use doc && DISTUTILS_ALL_SUBPHASE_IMPLS=( 'python2*' )
+}
 
 python_prepare_all() {
 	export mydistutilsargs="--offline"
@@ -60,17 +66,15 @@ python_prepare_all() {
 	rm -r cextern/{expat,erfa,cfitsio,wcslib} || die
 	sed -i -e '/auto_use/s/True/False/' setup.cfg || die
 	cat >> setup.cfg <<-EOF
-
 	[build]
 	use_system_libraries=1
 	EOF
-
 	distutils-r1_python_prepare_all
 }
 
 python_compile_all() {
 	if use doc; then
-		python_export_best
+		python_setup "python2*"
 		VARTEXFONTS="${T}"/fonts \
 			MPLCONFIGDIR="${BUILD_DIR}" \
 			PYTHONPATH="${BUILD_DIR}"/lib \
