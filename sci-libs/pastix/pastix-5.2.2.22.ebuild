@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 inherit eutils fortran-2 toolchain-funcs multilib
 
@@ -15,21 +15,22 @@ inherit eutils fortran-2 toolchain-funcs multilib
 # metis?
 
 # commit id: change every version
-CID=351ef60
+CID=
 # package id: change every version, see the link on inriaforge
-PID=33558
+PID=35070
 # leave empty if this is not a post release bug fix
-PPV=bugfix9_
+PPV=bugfix10_
 MYPN=pastix_release
 
 DESCRIPTION="Parallel solver for very large sparse linear systems"
 HOMEPAGE="http://pastix.gforge.inria.fr"
-SRC_URI="https://gforge.inria.fr/frs/download.php/${PID}/${MYPN}_${PPV}${CID}.tar.bz2"
+SRC_URI="https://gforge.inria.fr/frs/download.php/${PID}/${PN}_${PV}.tar.bz2"
 
 LICENSE="CeCILL-C"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
-IUSE="doc int64 mpi smp starpu static-libs"
+#IUSE="doc int64 mpi smp starpu static-libs"
+IUSE="doc int64 mpi starpu static-libs"
 
 RDEPEND="
 	sci-libs/scotch:0=[int64?,mpi?]
@@ -40,7 +41,7 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
-S="${WORKDIR}/${MYPN}_${CID}/src"
+S="${WORKDIR}/${PN}_${PV}/src"
 
 src_prepare() {
 	sed -e 's/^\(HOSTARCH\s*=\).*/\1 ${HOST}/' \
@@ -72,6 +73,7 @@ src_prepare() {
 		-e "s:^\s*\(SCOTCH_LIB\s*?=.*\)lib:\1$(get_libdir):" \
 		config/LINUX-GNU.in > config.in || die
 	sed -i -e 's/__SO_NAME__,$@/__SO_NAME__,$(notdir $@)/g' Makefile || die
+	default
 }
 
 src_configure() {
@@ -97,12 +99,12 @@ src_configure() {
 			config.in || die
 	fi
 
-	if ! use smp; then
-		sed \
-			-e '/VERSIONSMP.*_nosmp/s/#//' \
-			-e '/CCTYPES.*NOSMP/s/#//' \
-			-i config.in || die
-	fi
+#	if ! use smp; then
+#		sed \
+#			-e '/VERSIONSMP.*_nosmp/s/#//' \
+#			-e '/CCTYPES.*NOSMP/s/#//' \
+#			-i config.in || die
+#	fi
 
 	if use starpu; then
 		sed -i -e '/libstarpu/s/#//g' config.in || die
