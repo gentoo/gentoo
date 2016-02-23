@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -42,7 +42,7 @@ RDEPEND=">=dev-games/physfs-2[zip]
 		dev-qt/qtgui:4
 		dev-qt/qtopengl:4
 	)
-	!qt4? ( media-libs/libsdl[opengl,video] )"
+	!qt4? ( media-libs/libsdl[opengl,video,X] )"
 DEPEND="${RDEPEND}
 	app-arch/zip
 	virtual/pkgconfig
