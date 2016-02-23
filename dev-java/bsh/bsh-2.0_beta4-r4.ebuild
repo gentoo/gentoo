@@ -54,7 +54,7 @@ src_test() {
 }
 
 src_install() {
-	java-pkg_newjar dist/${P/_beta/b}.jar
+	java-pkg_newjar "dist/${MY_P}.jar" "${PN}.jar"
 
 	java-pkg_dolauncher bsh-console --main bsh.Console
 	java-pkg_dolauncher bsh-interpreter --main bsh.Interpreter
