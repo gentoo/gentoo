@@ -1,14 +1,14 @@
 DEFINED_PHASES=compile configure install prepare test
-DEPEND=dev-ros/xacro dev-ros/convex_decomposition dev-ros/ivcon test? ( dev-libs/urdfdom dev-cpp/gtest ) sys-devel/make >=dev-util/cmake-2.8.12 dev-util/catkin dev-python/empy
-DESCRIPTION=Description (mechanical, kinematic, visual, etc.) of the PR2 robot
+DEPEND=dev-libs/urdfdom_headers sys-devel/make >=dev-util/cmake-2.8.12 dev-util/catkin dev-python/empy
+DESCRIPTION=C++ base class for URDF parsers
 EAPI=5
-HOMEPAGE=http://wiki.ros.org/pr2_description
+HOMEPAGE=http://wiki.ros.org/urdf_parser_plugin
 IUSE=test
-KEYWORDS=~amd64
+KEYWORDS=~amd64 ~arm
 LICENSE=BSD
-RDEPEND=dev-ros/xacro dev-util/catkin dev-python/empy
+RDEPEND=dev-libs/urdfdom_headers dev-util/catkin dev-python/empy
 SLOT=0
-SRC_URI=https://github.com/pr2/pr2_common/archive/1.11.9.tar.gz -> pr2_common-1.11.9.tar.gz
+SRC_URI=https://github.com/ros/robot_model/archive/1.11.9.tar.gz -> robot_model-1.11.9.tar.gz
 _eclass_exported_funcs=src_prepare:ros-catkin src_configure:ros-catkin src_compile:ros-catkin src_test:ros-catkin src_install:ros-catkin
 _eclasses_=cmake-utils	c67ce9708a9c02be2d296cf547740e9c	eutils	9d81603248f2ba3ec59124320d123e5e	flag-o-matic	d270fa247153df66074f795fa42dba3e	multilib	3972ca401cf7dbb430df9995f5d8d580	ros-catkin	5bd0782bea06cf2dd93b07f40e0a5e09	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=4470f94ef18d8346f9cc93e5d7f968dd
+_md5_=b4b444d8b05192159e02fb4d83aa939a
