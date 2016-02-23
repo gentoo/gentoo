@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -25,6 +25,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-format-security.patch
 	"${FILESDIR}"/${P}-getopt.patch
 	"${FILESDIR}"/${P}-implicit-declaration.patch
+	"${FILESDIR}"/${P}-fix-testsuite.ebuild
 	)
 
 src_prepare() {
