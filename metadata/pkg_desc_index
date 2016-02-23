@@ -12405,7 +12405,7 @@ media-libs/opencollada 1.2.2_p20150207 9999: Stream based read/write library for
 media-libs/opencolorio 1.0.8 1.0.9 1.0.9-r1: A color management framework for visual effects and animation
 media-libs/opencore-amr 0.1.3-r1: Implementation of Adaptive Multi Rate Narrowband and Wideband speech codec
 media-libs/openctm 1.0.3: OpenCTM - the Open Compressed Triangle Mesh.
-media-libs/opencv 2.4.9 2.4.10 2.4.11 3.0.0 3.1.0-r1: A collection of algorithms and sample code for various computer vision problems
+media-libs/opencv 2.4.9 2.4.10 2.4.11 3.0.0 3.1.0-r1 3.1.0-r2: A collection of algorithms and sample code for various computer vision problems
 media-libs/openexr 1.7.0 2.0.1-r1 2.1.0 2.2.0: ILM's OpenEXR high dynamic-range image file format libraries
 media-libs/openexr_ctl 1.0.1-r1 1.0.1-r2: OpenEXR CTL libraries
 media-libs/opengl-apple 3 4 5: Links to Apple's OpenGL X11 implementation
@@ -16811,8 +16811,8 @@ sys-fs/arm-fdisk 3.0.6-r1: edit disk partitions on Acorn machines
 sys-fs/atari-fdisk 0.7.1.5.4: create and edit the partition table of a disk partitioned in Atari format
 sys-fs/aufs-headers 3.19_p20150323 3.19_p20150420 4.0_p20150420 4.0_p20151116: User space headers for aufs3
 sys-fs/aufs-util 3.19_p20150323 3.19_p20150420 4.0_p20150420 4.0_p20151116: Utilities are always necessary for aufs
-sys-fs/aufs3 3_p20150622 3_p20160219: An entirely re-designed and re-implemented Unionfs
-sys-fs/aufs4 0_pre20160219: An entirely re-designed and re-implemented Unionfs
+sys-fs/aufs3 3_p20150622 3_p20160219 3_p20160223: An entirely re-designed and re-implemented Unionfs
+sys-fs/aufs4 0_pre20160219 0_pre20160223: An entirely re-designed and re-implemented Unionfs
 sys-fs/autorun 3.17: auto cdrom mounter for the lazy user
 sys-fs/avfs 1.0.1 1.0.2 1.0.3: AVFS is a virtual filesystem that allows browsing of compressed files
 sys-fs/bashmount 3.2.0: A bash script that uses udisks to handle removable devices without dependencies on any GUI
@@ -16969,7 +16969,7 @@ sys-infiniband/perftest 1.4.0 2.0: OpenIB uverbs micro-benchmarks
 sys-infiniband/qperf 0.4.9: Measure RDMA and IP performance
 sys-infiniband/rds-tools 2.0.4-r2 2.0.4-r3: OpenIB userspace rds-tools
 sys-infiniband/srptools 0.0.4-r2 1.0.2: Tools for discovering and connecting to SRP CSI targets on InfiniBand fabrics
-sys-kernel/aufs-sources 3.18.27 4.0.9-r1 4.1.18 4.3.5-r1 4.4.2: Full sources including the Gentoo patchset for the 4.4 kernel tree and aufs4 support
+sys-kernel/aufs-sources 3.18.27 4.0.9-r1 4.1.18 4.3.5-r1 4.3.6 4.4.2: Full sources including the Gentoo patchset for the 4.4 kernel tree and aufs4 support
 sys-kernel/ck-sources 3.4.110 3.10.97 3.14.61 3.18.27 4.1.18 4.3.6: Con Kolivas' high performance patchset and Gentoo's genpatches for Linux 4.3
 sys-kernel/cryptodev 1.7: device that allows access to Linux kernel cryptographic drivers
 sys-kernel/dracut 034-r4 040-r3 041-r3 043-r2 044: Generic initramfs generation tool
