@@ -1,12 +1,12 @@
 DEFINED_PHASES=compile configure install prepare test unpack
-DEPEND=sci-libs/orocos_kdl dev-python/sip[python_targets_python2_7(-)?,python_targets_python3_3(-)?,python_targets_python3_4(-)?,-python_single_target_python2_7(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-)] >=dev-vcs/git-1.8.2.1 sys-devel/make >=dev-util/cmake-2.8.12
+DEPEND=sci-libs/orocos_kdl dev-python/sip[python_targets_python2_7(-)?,python_targets_python3_3(-)?,python_targets_python3_4(-)?,python_targets_python3_5(-)?,-python_single_target_python2_7(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-)] >=dev-vcs/git-1.8.2.1 sys-devel/make >=dev-util/cmake-2.8.12
 DESCRIPTION=Python bindings for KDL
 EAPI=5
 HOMEPAGE=http://www.orocos.org/kdl
-IUSE=python_targets_python2_7 python_targets_python3_3 python_targets_python3_4
+IUSE=python_targets_python2_7 python_targets_python3_3 python_targets_python3_4 python_targets_python3_5
 LICENSE=LGPL-2.1
-RDEPEND=sci-libs/orocos_kdl dev-python/sip[python_targets_python2_7(-)?,python_targets_python3_3(-)?,python_targets_python3_4(-)?,-python_single_target_python2_7(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-)]
+RDEPEND=sci-libs/orocos_kdl dev-python/sip[python_targets_python2_7(-)?,python_targets_python3_3(-)?,python_targets_python3_4(-)?,python_targets_python3_5(-)?,-python_single_target_python2_7(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-)]
 SLOT=0
 _eclass_exported_funcs=src_unpack:git-r3 src_prepare:cmake-utils src_configure:- src_compile:- src_test:- src_install:-
 _eclasses_=cmake-utils	c67ce9708a9c02be2d296cf547740e9c	eutils	9d81603248f2ba3ec59124320d123e5e	flag-o-matic	d270fa247153df66074f795fa42dba3e	git-r3	ef66dfc3db09f327af21cf32f140fb2b	multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	3972ca401cf7dbb430df9995f5d8d580	python-r1	0f6937650a475d673baa5d0c8c0b37b3	python-utils-r1	2e6826f6a93ad2acf904eecf5b5fb6d2	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=c9eea8aea9faabd5abd17590f184a7e4
+_md5_=a23ea715b4c9f61c97cc029b4dff4196
