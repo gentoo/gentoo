@@ -16395,7 +16395,7 @@ sys-apps/powerpc-utils 1.1.3.18-r2: PowerPC utilities including nvsetenv, and ad
 sys-apps/prctl 1.5: Tool to query and modify process behavior
 sys-apps/prefix-chain-utils 0.2-r5: Chained EPREFIX utilities and wrappers
 sys-apps/preload 0.6.4-r3: Adaptive readahead daemon
-sys-apps/progress 0.9: Coreutils Viewer: show progress for cp, rm, dd, and so forth
+sys-apps/progress 0.13: Coreutils Viewer: show progress for cp, rm, dd, and so forth
 sys-apps/proot 3.2.2-r1 4.0.1 4.0.3 5.0.0 5.1.0: User-space implementation of chroot, mount --bind, and binfmt_misc
 sys-apps/pv 1.6.0 1.6.0-r1: Pipe Viewer: a tool for monitoring the progress of data through a pipe
 sys-apps/pyrenamer 0.6.0-r2: Mass rename files
