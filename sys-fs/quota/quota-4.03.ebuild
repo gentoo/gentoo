@@ -48,6 +48,7 @@ src_prepare() {
 
 src_configure() {
 	econf \
+		--docdir="${EPREFIX}/usr/share/doc/${PF}" \
 		$(use_enable nls) \
 		$(use_enable ldap ldapmail) \
 		$(use_enable netlink) \
@@ -74,10 +75,10 @@ src_install() {
 	if use ldap ; then
 		insinto /etc/openldap/schema
 		insopts -m0644
-		doins ldap-scripts/quota.schema
+		doins "${FILESDIR}"/ldap-scripts/quota.schema
 
 		exeinto /usr/share/quota/ldap-scripts
-		doexe ldap-scripts/*.pl
-		doexe ldap-scripts/edquota_editor
+		doexe "${FILESDIR}"/ldap-scripts/*.pl
+		doexe "${FILESDIR}"/ldap-scripts/edquota_editor
 	fi
 }
