@@ -8257,10 +8257,10 @@ dev-ros/gazebo_plugins 2.5.1 9999: Robot-independent Gazebo plugins for sensors,
 dev-ros/gazebo_ros 2.5.1 9999: ROS plugins that offer message and service publishers for interfacing with gazebo
 dev-ros/gazebo_ros_control 2.5.1 9999: ROS control plugins for gazebo
 dev-ros/gencpp 0.5.3 9999: ROS C++ message definition and serialization generators
-dev-ros/geneus 2.2.4 2.2.5 9999: EusLisp ROS message and service generators
+dev-ros/geneus 2.2.5 9999: EusLisp ROS message and service generators
 dev-ros/genlisp 0.4.15 9999: Common-Lisp ROS message and service generators
 dev-ros/genmsg 0.5.6 9999: Python library for generating ROS message and service data structures for various languages
-dev-ros/genpy 0.5.5 0.5.6 0.5.7 9999: Python ROS message and service generators
+dev-ros/genpy 0.5.7 9999: Python ROS message and service generators
 dev-ros/geodesy 0.4.0 9999: Python and C++ interfaces for manipulating geodetic coordinates
 dev-ros/geographic_msgs 0.4.0 9999: ROS messages for Geographic Information Systems
 dev-ros/geometric_shapes 0.4.3 9999: Generic definitions of geometric shapes and bodies
