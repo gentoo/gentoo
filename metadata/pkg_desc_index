@@ -4390,7 +4390,7 @@ dev-lang/scala 2.9.3 2.10.2-r3 2.10.3-r2 2.10.4-r2 2.10.6 2.11.1-r2 2.11.2-r2 2.
 dev-lang/scala-bin 2.11.7: The Scala Programming Language
 dev-lang/smlnj 110.75: Standard ML of New Jersey compiler and libraries
 dev-lang/snobol 0.99.4 0.99.44 1.1 1.4.1: Phil Budne's port of Macro SNOBOL4 in C, for modern machines
-dev-lang/spidermonkey 1.7.0 1.7.0-r1 1.7.0-r2 1.7.0-r3 1.8.2.15-r2 1.8.5-r4 17.0.0-r4 24.2.0-r3: Stand-alone JavaScript C library
+dev-lang/spidermonkey 1.7.0-r3 1.8.5-r4 1.8.5-r5 17.0.0-r4 24.2.0-r3: Stand-alone JavaScript C library
 dev-lang/squirrel 2.2.4-r1 2.2.4-r2: A interpreted language mainly used for games
 dev-lang/srf 1.0-r1: The Simple Recursive Functions programming language
 dev-lang/swi-prolog 6.6.6 7.2.3-r1 7.3.16 7.3.17: free, small, and standard compliant Prolog compiler
@@ -14149,7 +14149,7 @@ net-libs/libsmi 0.4.8-r1 0.5.0: A Library to Access SMI MIB Information
 net-libs/libsoup 2.48.1 2.50.0 2.52.2: An HTTP library implementation in C
 net-libs/libsoup-gnome 2.48.1 2.50.0 2.52.2: GNOME plugin for libsoup
 net-libs/libsrtp 1.4.4-r1 1.4.4-r2 1.4.4_p20121108 1.4.4_p20121108-r1 1.5.2 1.5.2-r1: Open-source implementation of the Secure Real-time Transport Protocol (SRTP)
-net-libs/libssh 0.6.5 0.7.0-r1 0.7.1 0.7.2 9999: Access a working SSH implementation by means of a library
+net-libs/libssh 0.6.5 0.7.2 0.7.3 9999: Access a working SSH implementation by means of a library
 net-libs/libssh2 1.5.0 1.6.0 1.6.0-r1 9999: Library implementing the SSH2 protocol
 net-libs/libtelnet 0.21 9999: Simple RFC-complient TELNET implementation as a C library
 net-libs/libtirpc 0.1.10 0.2.4-r1 0.2.4-r2 0.2.5 0.3.1 1.0.1: Transport Independent RPC library (SunRPC replacement)

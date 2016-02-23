@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare setup test
+DEPEND=>=dev-libs/nspr-4.7.0 sys-libs/readline:0 x64-macos? ( dev-libs/jemalloc ) || ( >=dev-lang/python-2.7.5-r2:2.7[threads] ) app-arch/zip virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) ~sys-devel/autoconf-2.13 >=sys-devel/libtool-2.4
+DESCRIPTION=Stand-alone JavaScript C library
+EAPI=5
+HOMEPAGE=http://www.mozilla.org/js/spidermonkey/
+IUSE=debug minimal static-libs test
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~x64-macos
+LICENSE=NPL-1.1
+RDEPEND=>=dev-libs/nspr-4.7.0 sys-libs/readline:0 x64-macos? ( dev-libs/jemalloc )
+SLOT=0/mozjs185
+SRC_URI=https://ftp.mozilla.org/pub/mozilla.org/js/js185-1.0.0.tar.gz
+_eclass_exported_funcs=pkg_setup:- src_prepare:- src_configure:- src_compile:- src_test:- src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	9d81603248f2ba3ec59124320d123e5e	libtool	b75230758539a7da029e24afdb693960	multilib	3972ca401cf7dbb430df9995f5d8d580	pax-utils	ecf634cba91bb9591a8fdb6f6145f1bb	python-any-r1	8eb13cdf35f6e43c48107b911900b2cc	python-utils-r1	2e6826f6a93ad2acf904eecf5b5fb6d2	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=44b6ac57fc4a4027aca2c4c6c23154dc
