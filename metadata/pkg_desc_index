@@ -6731,7 +6731,7 @@ dev-python/Numdifftools 0.9.12 0.9.13 0.9.14: Solves automatic numerical differe
 dev-python/PyContracts 1.7.6 1.7.9: Declare constraints on function parameters and return values
 dev-python/PyECLib 1.0.7-r2: Messaging API for RPC and notifications over a number of different messaging transports
 dev-python/PyFoam 0.5.4-r2: Tool to analyze and plot the residual files of OpenFOAM computations
-dev-python/PyGithub 1.25.0 1.25.1 1.25.2: Python library to access the Github API v3
+dev-python/PyGithub 1.25.2: Python library to access the Github API v3
 dev-python/PyPDF2 1.24 1.25.1: Python library to work with pdf files
 dev-python/PyQt4 4.11.1 4.11.4: Python bindings for the Qt framework
 dev-python/PyQt5 5.5 5.5.1: Python bindings for the Qt framework
@@ -8051,7 +8051,7 @@ dev-python/twisted-pair 13.0.0-r1 13.2.0 14.0.0 14.0.1 14.0.2 15.1.0 15.2.1: Twi
 dev-python/twisted-runner 13.0.0-r1 13.2.0 14.0.0 14.0.1 14.0.2 15.1.0 15.2.1: Twisted Runner is a process management library and inetd replacement
 dev-python/twisted-web 12.3.0-r1 13.0.0-r1 13.2.0 14.0.0 14.0.1 14.0.2 15.1.0 15.2.1: Twisted web server, programmable in Python
 dev-python/twisted-words 13.0.0-r1 13.2.0 14.0.0 14.0.1 14.0.2 15.1.0 15.2.1: Twisted Words contains Instant Messaging implementations
-dev-python/twitter 1.14.3 1.15.0 1.16.0 1.17.0: An API and command-line toolset for Twitter (twitter.com)
+dev-python/twitter 1.17.0: An API and command-line toolset for Twitter (twitter.com)
 dev-python/twython 3.0.0 3.2.0 3.3.0: An easy (and up to date) way to access Twitter data with Python
 dev-python/txAMQP 0.6.2: Python library for communicating with AMQP peers using Twisted
 dev-python/txaio 1.0.0 2.2.0: a helper library for writing code unmodified on both Twisted and asyncio
