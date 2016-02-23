@@ -8869,7 +8869,7 @@ dev-ruby/priorityqueue 0.1.2: A fibonacci-heap priority-queue implementation
 dev-ruby/protected_attributes 1.1.3: Protect attributes from mass-assignment in ActiveRecord models
 dev-ruby/pry 0.9.12.6-r1 0.10.1 0.10.2 0.10.3: Pry is a powerful alternative to the standard IRB shell for Ruby
 dev-ruby/psych 2.0.15 2.0.16 2.0.17: A libyaml wrapper for Ruby
-dev-ruby/puppetdb-termini 3.0.1-r2 3.1.0: Library needed to connect puppet to puppetdb
+dev-ruby/puppetdb-termini 3.0.1-r2 3.1.0 3.2.3: Library needed to connect puppet to puppetdb
 dev-ruby/pusher-client 0.6.2: Client for consuming WebSockets from http://pusher.com
 dev-ruby/pygments_rb 0.6.2 0.6.3: Pygments syntax highlighting in ruby
 dev-ruby/qed 2.9.1 2.9.2: QED (Quality Ensured Demonstrations) is a TDD/BDD framework
@@ -13490,7 +13490,7 @@ net-analyzer/hydra 8.1: Advanced parallized login hacker
 net-analyzer/ibmonitor 1.4: Interactive bandwidth monitor
 net-analyzer/icinga 1.13.3-r1: Nagios Fork - Check daemon, CGIs, docs, IDOutils
 net-analyzer/icinga-web 1.9.1-r1 1.10.0 1.10.0-r1 1.10.1 1.11.2: Icinga Web - new Web Interface
-net-analyzer/icinga2 2.3.11 2.4.1-r4 9999: Distributed, general purpose, network monitoring engine
+net-analyzer/icinga2 2.3.11 2.4.1-r4 2.4.2 9999: Distributed, general purpose, network monitoring engine
 net-analyzer/ifmetric 0.3 0.3-r1: Linux tool for setting metrics of all IPv4 routes attached to a given network interface at once
 net-analyzer/ifstat 1.1-r2: Network interface bandwidth usage, with support for snmp targets
 net-analyzer/ifstatus 1.1.0-r1: A simple CLI program for displaying network statistics in real time
@@ -14509,7 +14509,7 @@ net-misc/logmein-hamachi 2.1.0.139: LogMeIn Hamachi VPN tunneling engine
 net-misc/mdidentd 1.04c: This is an identd with provides registering of idents
 net-misc/mediatomb 0.12.1-r7 0.12.1-r8 0.12.2_pre20150118 0.12.2_pre20150118-r1: MediaTomb is an open source UPnP MediaServer
 net-misc/megatools 1.9.95 1.9.96 1.9.97: Command line tools and C library for accessing Mega cloud storage
-net-misc/memcached 1.2.6-r1 1.2.8-r1 1.3.3-r5 1.4.17 1.4.17-r3 1.4.24: High-performance, distributed memory object caching system
+net-misc/memcached 1.2.6-r1 1.2.8-r1 1.3.3-r5 1.4.17 1.4.17-r3 1.4.24 1.4.25: High-performance, distributed memory object caching system
 net-misc/mico 2.3.13-r7 9999: A freely available and fully compliant implementation of the CORBA standard
 net-misc/midentd 2.3.1-r1: ident daemon with masquerading and fake replies support
 net-misc/mikutter 3.1.1 3.2.7 3.3.5 9999: Simple, powerful and moeful twitter client
@@ -14614,7 +14614,7 @@ net-misc/quickshare 1.0: A simple HTTP server with a GUI which allows for easy s
 net-misc/r8168 8.040.00 8.041.00-r1: r8168 driver for Realtek 8111/8168 PCI-E NICs
 net-misc/rabbitmq-server 3.2.4 3.3.4 3.5.4 3.5.7 3.6.0: RabbitMQ is a high-performance AMQP-compliant message broker written in Erlang
 net-misc/raccess 0.7: Remote Access Session is an systems security analyzer
-net-misc/radvd 1.9.8 1.15 2.10 2.11 2.11-r1: Linux IPv6 Router Advertisement Daemon
+net-misc/radvd 1.9.8 1.15 2.10 2.11 2.11-r1 2.12: Linux IPv6 Router Advertisement Daemon
 net-misc/rancid 2.3.8: Really Awesome New Cisco confIg Differ
 net-misc/rancid-git 2.3.8: Really Awesome New Cisco confIg Differ with git extensions and support for colorized emails!
 net-misc/rdate 1.4-r3 1.4-r4: use TCP or UDP to retrieve the current time of another machine
@@ -16588,7 +16588,7 @@ sys-block/smp_utils 0.97 0.98: Utilities for SAS management protocol (SMP)
 sys-block/spindown 0.4.0-r4: Spindown is a daemon that can spin down idle disks
 sys-block/tapecat 1.0.0: tapecat is a tape utility used to describe the physical content of a tape
 sys-block/targetcli 9999: The targetcli administration shell
-sys-block/tgt 1.0.19 1.0.22 1.0.24-r1 1.0.60: Linux SCSI target framework (tgt)
+sys-block/tgt 1.0.60 1.0.63: Linux SCSI target framework (tgt)
 sys-block/thin-provisioning-tools 0.2.8-r1 0.3.2-r1 0.4.0 0.4.1 0.5.3: A suite of tools for thin provisioning on Linux
 sys-block/tw_cli 9.2.1.1 9.3.0.2 9.3.0.3 9.3.0.4 9.4.0 9.4.0.1 9.4.1.2 9.4.2 9.5.0 9.5.0.1 9.5.1.1 9.5.2 9.5.3 10.1 10.2 10.2.2.1: 3ware SATA/PATA/SAS RAID controller Command Line Interface tool
 sys-block/vblade 19 20 21: vblade exports a block device using AoE
