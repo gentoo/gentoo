@@ -6,6 +6,11 @@
     <name>Gentoo 3D print</name>
     <url>https://wiki.gentoo.org/wiki/Project:3dprint</url>
     <description>Packages for 3d printing.</description>
+    <member>
+      <email>alexxy@gentoo.org</email>
+      <name>Alexey Shvetsov</name>
+      <role>Member</role>
+    </member>
     <member is-lead="1">
       <email>amynka@gentoo.org</email>
       <name>Amy Winston</name>

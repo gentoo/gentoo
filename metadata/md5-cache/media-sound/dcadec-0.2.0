@@ -1,0 +1,11 @@
+DEFINED_PHASES=configure install
+DESCRIPTION=DTS Coherent Acoustics decoder with support for HD extensions
+EAPI=5
+HOMEPAGE=https://github.com/foo86/dcadec
+KEYWORDS=~amd64 ~arm ~arm64 ~mips ~x86
+LICENSE=LGPL-2.1
+SLOT=0
+SRC_URI=https://github.com/foo86/dcadec/archive/v0.2.0.tar.gz -> dcadec-0.2.0.tar.gz
+_eclass_exported_funcs=src_configure:- src_install:-
+_eclasses_=multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_md5_=4dca87eaebd4a69892f0f8f06272432a

@@ -12872,6 +12872,7 @@ media-sound/darkice 1.2: A live audio streamer
 media-sound/darksnow 0.7.1: Streaming GTK+ Front-End based in Darkice Ice Streamer
 media-sound/daudio 0.3 0.3-r1: Distributed audio on the local network
 media-sound/dbmeasure 0.0.20100217: ALSA Volume Control Attenuation Measurement Tool
+media-sound/dcadec 0.2.0: DTS Coherent Acoustics decoder with support for HD extensions
 media-sound/dcaenc 2 2-r1 9999: DTS Coherent Acoustics audio encoder
 media-sound/dcd 0.95: A simple command-line based CD Player
 media-sound/declick 0.6.5: declick is a dynamic digital declicker for audio sample files
@@ -13209,7 +13210,7 @@ media-tv/gentoo-vdr-scripts 2.0.0 2.5 2.7 2.7.2 2.7.3: Scripts necessary for use
 media-tv/gtk-v4l 0.4: A control application for Video 4 Linux (based on C and GTK+)
 media-tv/ivtv-utils 1.4.1: IVTV utilities for Hauppauge PVR PCI cards
 media-tv/ivtvplayer 0.1.3-r1: Simple IVTV command line TV and radio player with support of LIRC
-media-tv/kodi 14.1 15.1 15.2 9999: Kodi is a free and open source media-player and entertainment hub
+media-tv/kodi 14.1 15.2 16.0 9999: Kodi is a free and open source media-player and entertainment hub
 media-tv/linuxtv-dvb-apps 1.1.1.20100223-r1: small utils for DVB to scan, zap, view signal strength, ...
 media-tv/linuxtv-dvb-firmware 2009.07.06-r1 2009.09.19: Firmware files needed for operation of some dvb-devices
 media-tv/me-tv 1.4.0.10: Me TV is a GTK desktop application for watching digital television
@@ -13225,7 +13226,6 @@ media-tv/v4l-dvb-saa716x 0.0.1_p20140322 0.0.1_p20141109 0.0.1_p20141109-r1 0.0.
 media-tv/v4l-utils 1.0.0 1.6.0 1.6.2: Separate utilities ebuild from upstream v4l-utils package
 media-tv/w_scan 20121111 20130331 20140118 20140727 20141122: Scan for DVB-C/DVB-T/DVB-S channels without prior knowledge of frequencies and modulations
 media-tv/wis-go7007 0.9.8-r3: Linux drivers for go7007 chipsets (Plextor ConvertX PVR)
-media-tv/xbmc 11.0 12.1-r1 12.2-r1 12.3 13.0_p2 13.1 13.2 13.2-r1 9999: Stub ebuild to migrate people to media-tv/kodi
 media-tv/xmltv 0.5.57 0.5.67: Set of utilities to manage TV listings stored in the XMLTV format
 media-video/2mandvd 1.8.5: The successor of ManDVD
 media-video/aacskeys 0.4.0c-r2 0.4.0e: Decrypt keys from an AACS source (HD DVD / Blu-Ray)

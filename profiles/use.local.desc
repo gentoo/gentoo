@@ -4591,21 +4591,6 @@ media-tv/tvheadend:timeshift - Enable TimeShift support
 media-tv/tvheadend:uriparser - Use dev-libs/uriparser
 media-tv/tvheadend:xmltv - Use media-tv/xmltv
 media-tv/v4l-dvb-saa716x:firmware - Install firmware
-media-tv/xbmc:airplay - enable AirPlay support
-media-tv/xbmc:bluray - Enable playback of Blu-ray filesystems
-media-tv/xbmc:cec - Enable support for HDMI-CEC devices via libcec
-media-tv/xbmc:fishbmc - Enable fishBMC visualization plugin
-media-tv/xbmc:gles - Enable support for GLES
-media-tv/xbmc:goom - Enable GOOM visualization plugin
-media-tv/xbmc:midi - Support MIDI files
-media-tv/xbmc:nfs - Enable NFS client support
-media-tv/xbmc:projectm - Enable projectM visualization plugin
-media-tv/xbmc:pvr - Enable MythTV support
-media-tv/xbmc:rsxs - Enable really slick X screensavers
-media-tv/xbmc:rtmp - Enable Real Time Messaging Protocol using librtmp
-media-tv/xbmc:sftp - Support browsing files over SFTP
-media-tv/xbmc:webserver - Enable internal webserver
-media-tv/xbmc:xrandr - Support X randr extension
 media-tv/xmltv:ar - Argentina tv listing grabber
 media-tv/xmltv:ch - Switzerland bluewin tv listing grabber
 media-tv/xmltv:ch_search - Grabber for Switzerland
