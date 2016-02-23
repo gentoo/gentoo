@@ -7,7 +7,7 @@ IUSE=test
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=dev-perl/DBI dev-perl/Devel-Caller dev-perl/Digest-HMAC dev-perl/Digest-SHA1 dev-perl/Expect dev-perl/Hash-Merge dev-perl/IO-String dev-perl/IO-Tty dev-perl/IPC-Shareable dev-perl/JSON-XS dev-perl/List-MoreUtils dev-perl/Net-OpenSSH dev-perl/Net-SFTP-Foreign dev-perl/Parallel-ForkManager dev-perl/Sort-Naturally dev-perl/String-Escape dev-perl/TermReadKey dev-perl/Test-Deep dev-perl/Text-Glob dev-perl/URI dev-perl/XML-LibXML dev-perl/XML-Simple dev-perl/libwww-perl dev-perl/yaml virtual/perl-Carp virtual/perl-Data-Dumper virtual/perl-Digest-MD5 virtual/perl-Exporter virtual/perl-File-Spec virtual/perl-MIME-Base64 virtual/perl-Scalar-List-Utils virtual/perl-Storable virtual/perl-Time-HiRes dev-lang/perl:=[-build(-)]
 SLOT=0
-SRC_URI=mirror://cpan/authors/id/F/FE/FERKI/Rex-1.3.3_02.tar.gz
+SRC_URI=mirror://cpan/authors/id/F/FE/FERKI/Rex-1.3.3_03.tar.gz
 _eclass_exported_funcs=src_unpack:perl-module src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
 _eclasses_=eutils	9d81603248f2ba3ec59124320d123e5e	multilib	3972ca401cf7dbb430df9995f5d8d580	multiprocessing	e32940a7b2a9992ad217eccddb84d548	perl-functions	15aff0b9cba2282790142295ceb6be0c	perl-module	b2108b3c85ac7a6a6a9b035b54f6813c	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	unpacker	1d149d9bda7723e740cfd28118f27813
-_md5_=9a3c7e371d04d221101203f24f967594
+_md5_=22f46fac6956261c7c39a322b422208f
