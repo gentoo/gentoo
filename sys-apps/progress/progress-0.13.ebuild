@@ -11,7 +11,7 @@ SRC_URI="${HOMEPAGE}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ppc ppc64 x86"
 
 RDEPEND="sys-libs/ncurses"
 DEPEND="
@@ -21,11 +21,9 @@ DEPEND="
 
 src_prepare() {
 	sed -i \
-		-e '/LDFLAGS/s:-lncurses:$(shell $(PKG_CONFIG) --libs ncurses):' \
-		-e 's:CFLAGS=-g:CFLAGS+=:' \
-		-e 's:gcc:$(CC):g' \
+		-e '/CFLAGS/s:-g ::' \
 		Makefile || die
-	tc-export CC PKG_CONFIG
+	tc-export CC
 }
 
 src_install() {
