@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare
+DEPEND=dev-lang/tcl:0= x11-libs/libXt:0 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Messaging system providing communication between programs
+EAPI=5
+HOMEPAGE=https://github.com/ericmandel/xpa
+IUSE=doc static-libs
+KEYWORDS=~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux
+LICENSE=LGPL-2.1
+RDEPEND=dev-lang/tcl:0= x11-libs/libXt:0
+SLOT=0/1
+SRC_URI=https://github.com/ericmandel/xpa/archive/v2.1.17.tar.gz -> xpa-2.1.17.tar.gz
+_eclass_exported_funcs=src_prepare:- src_configure:- src_compile:- src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	9d81603248f2ba3ec59124320d123e5e	libtool	b75230758539a7da029e24afdb693960	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_md5_=f5e11f3adb32ffd5f8fadf688b731399

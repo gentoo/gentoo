@@ -7548,7 +7548,7 @@ dev-python/pydiff 0.2: Diffs two Python files at the bytecode level
 dev-python/pydispatcher 2.0.3-r1 2.0.5: Multi-producer-multi-consumer signal dispatching mechanism
 dev-python/pydns 2.3.6-r1 3.1.0: Python DNS (Domain Name System) library
 dev-python/pyds 0.7.3-r1: Python Desktop Server
-dev-python/pyds9 1.7: Python interface to XPA to communicate with DS9
+dev-python/pyds9 1.7 1.8.1: Python interface to XPA to communicate with DS9
 dev-python/pydvdread 1.0-r1: A set of Python bindings for the libdvdread library
 dev-python/pyechonest 7.2.1 9.0.0: Python interface to The Echo Nest APIs
 dev-python/pyee 1.0.2: A port of node.js's EventEmitter to python
@@ -17963,7 +17963,7 @@ x11-libs/xcb-util-renderutil 0.3.9-r1: X C-language Bindings sample implementati
 x11-libs/xcb-util-wm 0.4.1-r1: X C-language Bindings sample implementations
 x11-libs/xforms 1.0.93_p1-r1: A graphical user interface toolkit for X
 x11-libs/xosd 2.2.14-r1 2.2.14-r2: Library for overlaying text in X-Windows X-On-Screen-Display plus binary for sending text from CLI
-x11-libs/xpa 2.1.15: Messaging system providing communication between programs
+x11-libs/xpa 2.1.15 2.1.17: Messaging system providing communication between programs
 x11-libs/xpyb 1.3.1-r2 1.3.1-r3: XCB-based Python bindings for the X Window System
 x11-libs/xtrans 1.3.3 1.3.4 1.3.5: X.Org xtrans library
 x11-libs/xvba-video 0.8.0-r3 9999: XVBA Backend for Video Acceleration (VA) API
