@@ -19,8 +19,9 @@ LICENSE="GPL-2"
 SLOT="0"
 IUSE=""
 
+# python-exec-2.4.2 for working -l option
 RDEPEND=">=app-admin/eselect-1.2.3
-	>=dev-lang/python-exec-2.3"
+	>=dev-lang/python-exec-2.4.2"
 
 src_prepare() {
 	[[ ${PV} == "99999999" ]] && eautoreconf
