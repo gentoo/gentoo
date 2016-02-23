@@ -2082,7 +2082,7 @@ app-portage/gentoopm 0.2.9 9999: A common interface to Gentoo package managers
 app-portage/getdelta 0.7.9-r2: dynamic deltup client
 app-portage/gpytage 0.3.0_rc1: GTK Utility to help manage Portage's user config files
 app-portage/gpyutils 0.1 0.1.2 0.1.3 0.1.4 9999: Utitilies for maintaining Python packages
-app-portage/grs 0.3 0.4 9999: Suite to build Gentoo Reference Systems
+app-portage/grs 0.3 0.4 0.5 9999: Suite to build Gentoo Reference Systems
 app-portage/gs-elpa 0.1.3 0.1.3-r1 9999: g-sorcery backend for elisp packages
 app-portage/gs-pypi 0.1 0.2 0.2.1 0.2.1-r1 9999: g-sorcery backend for pypi packages
 app-portage/install-mask 0.1.1 9999: Handle INSTALL_MASK setting in make.conf
