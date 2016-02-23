@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=5
-ROS_REPO_URI="https://github.com/WPI-RAIL/robot_pose_publisher"
+ROS_REPO_URI="https://github.com/GT-RAIL/robot_pose_publisher"
 KEYWORDS="~amd64 ~arm"
 
 inherit ros-catkin
