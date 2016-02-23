@@ -8357,7 +8357,7 @@ dev-ros/realtime_tools 1.9.1 9999: Set of tools that can be used from a hard rea
 dev-ros/resource_retriever 1.11.6 9999: Retrieves data from url-format files
 dev-ros/rgbd_launch 2.1.0 2.1.1 2.2.0 9999: Launch files to open an RGBD device
 dev-ros/robot_pose_ekf 1.13.0 1.13.1 9999: Estimate the 3D pose of a robot, based on (partial) pose measurements coming from different sources
-dev-ros/robot_pose_publisher 0.2.3 9999: A Simple Node to Publish the Robot's Position Relative to the Map using TFs
+dev-ros/robot_pose_publisher 0.2.4 9999: A Simple Node to Publish the Robot's Position Relative to the Map using TFs
 dev-ros/robot_state_publisher 1.10.4 1.12.0 9999: Package for publishing the state of a robot to tf
 dev-ros/rosapi 0.7.13 0.7.14 9999: Provides service calls for getting ros meta-information, like list of topics, services, params, etc.
 dev-ros/rosauth 0.1.7 9999: Server Side tools for Authorization and Authentication of ROS Clients
