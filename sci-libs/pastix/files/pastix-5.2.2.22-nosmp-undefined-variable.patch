@@ -1,0 +1,15 @@
+--- ./sopalin/src/updo.c.orig	2016-02-23 01:42:00.000000000 +0000
++++ ./sopalin/src/updo.c	2016-02-23 01:42:10.000000000 +0000
+@@ -940,8 +940,10 @@
+     i = TASK_CBLKNUM(i);
+ #    define END_LOOP(a) } SMP_END_LOOP(a)
+ #  else /* SMP_SOPALIN */
+-#    define START_LOOP for (i=0;i<SYMB_CBLKNBR;i++)
+-#    define END_LOOP
++#    define START_LOOP \
++    int bubnum  = me;                             \
++    for (i=0;i<SYMB_CBLKNBR;i++)
++#    define END_LOOP(a) a
+ #  endif
+ 
+   /* Xi=(Dii)-1Xi; */

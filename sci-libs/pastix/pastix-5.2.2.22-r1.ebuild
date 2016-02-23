@@ -4,7 +4,7 @@
 
 EAPI=6
 
-inherit eutils fortran-2 toolchain-funcs multilib
+inherit fortran-2 toolchain-funcs
 
 # TODO:
 # testing: emake examples?
@@ -14,13 +14,14 @@ inherit eutils fortran-2 toolchain-funcs multilib
 # static libs building without pic
 # metis?
 
-# commit id: change every version
-CID=
 # package id: change every version, see the link on inriaforge
 PID=35070
+# commit id: change every version
+#CID=351ef60
 # leave empty if this is not a post release bug fix
-PPV=bugfix10_
-MYPN=pastix_release
+#PPV=bugfix9_
+#MYPN=pastix_release
+#SRC_URI="https://gforge.inria.fr/frs/download.php/${PID}/${MYPN}_${PPV}${CID}.tar.bz2"
 
 DESCRIPTION="Parallel solver for very large sparse linear systems"
 HOMEPAGE="http://pastix.gforge.inria.fr"
@@ -29,8 +30,7 @@ SRC_URI="https://gforge.inria.fr/frs/download.php/${PID}/${PN}_${PV}.tar.bz2"
 LICENSE="CeCILL-C"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
-#IUSE="doc int64 mpi smp starpu static-libs"
-IUSE="doc int64 mpi starpu static-libs"
+IUSE="doc int64 mpi +smp starpu static-libs"
 
 RDEPEND="
 	sci-libs/scotch:0=[int64?,mpi?]
@@ -44,6 +44,8 @@ DEPEND="${RDEPEND}
 S="${WORKDIR}/${PN}_${PV}/src"
 
 src_prepare() {
+	default
+	epatch "${FILESDIR}"/${P}-nosmp-undefined-variable.patch
 	sed -e 's/^\(HOSTARCH\s*=\).*/\1 ${HOST}/' \
 		-e "s:^\(CCPROG\s*=\).*:\1 $(tc-getCC):" \
 		-e "s:^\(CFPROG\s*=\).*:\1 $(tc-getFC):" \
@@ -72,42 +74,39 @@ src_prepare() {
 		-e "s:^\s*\(SCOTCH_INC\s*?=.*\):\1/scotch:" \
 		-e "s:^\s*\(SCOTCH_LIB\s*?=.*\)lib:\1$(get_libdir):" \
 		config/LINUX-GNU.in > config.in || die
-	sed -i -e 's/__SO_NAME__,$@/__SO_NAME__,$(notdir $@)/g' Makefile || die
-	default
+	sed -e 's/__SO_NAME__,$@/__SO_NAME__,$(notdir $@)/g' -i Makefile || die
 }
 
 src_configure() {
 	if use amd64; then
-		sed -i \
-			-e 's/^\(VERSIONBIT\s*=\).*/\1 _64bit/' config.in || die
+		sed -e 's/^\(VERSIONBIT\s*=\).*/\1 _64bit/' \
+			-i config.in || die
 	fi
 
 	if use int64; then
-		sed -i \
-			-e '/VERSIONINT.*_int64/s/#//' \
-			-e '/CCTYPES.*INTSSIZE64/s/#//' config.in || die
+		sed -e '/VERSIONINT.*_int64/s/#//' \
+			-e '/CCTYPES.*INTSSIZE64/s/#//' \
+			-i config.in || die
 	fi
 
 	if ! use mpi; then
-		sed -i \
-			-e '/VERSIONMPI.*_nompi/s/#//' \
+		sed -e '/VERSIONMPI.*_nompi/s/#//' \
 			-e '/CCTYPES.*NOMPI/s/#//' \
 			-e '/MPCCPROG\s*= $(CCPROG)/s/#//' \
 			-e '/MCFPROG\s*= $(CFPROG)/s/#//' \
 			-e 's/-DDISTRIBUTED//' \
 			-e 's/-lptscotch/-lscotch/g' \
-			config.in || die
+			-i config.in || die
 	fi
 
-#	if ! use smp; then
-#		sed \
-#			-e '/VERSIONSMP.*_nosmp/s/#//' \
-#			-e '/CCTYPES.*NOSMP/s/#//' \
-#			-i config.in || die
-#	fi
+	if ! use smp; then
+		sed -e '/VERSIONSMP.*_nosmp/s/#//' \
+			-e '/CCTYPES.*NOSMP/s/#//' \
+			-i config.in || die
+	fi
 
 	if use starpu; then
-		sed -i -e '/libstarpu/s/#//g' config.in || die
+		sed -e '/libstarpu/s/#//g' -i config.in || die
 	fi
 }
 
@@ -115,10 +114,15 @@ src_compile() {
 	emake all drivers
 }
 
+src_test() {
+	# both test and tests targets are defined and do not work
+	echo
+}
+
 src_install() {
 	default
-	sed -i -e "s:${D}::g" "${ED}"/usr/bin/pastix-conf || die
+	sed -e "s:${D}::g" -i "${ED}"/usr/bin/pastix-conf || die
 	# quick and dirty (static libs should really be built without pic)
-	cd .. || die
+	cd .. || die
 	dodoc README.txt doc/refcard/refcard.pdf
 }
