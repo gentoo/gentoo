@@ -1546,6 +1546,7 @@ app-i18n/tagainijisho 1.0.2 1.0.3: Open-source Japanese dictionary and kanji loo
 app-i18n/tegaki-zinnia-japanese 0.3: Handwriting model data of Japanese
 app-i18n/tomoe 0.6.0-r1 0.6.0-r2: Japanese handwriting recognition engine
 app-i18n/transifex-client 0.10 0.11.1_beta: A command line interface for Transifex
+app-i18n/translate-shell 0.9.3: Online command-line translator
 app-i18n/uim 1.8.6-r1: Simple, secure and flexible input method library
 app-i18n/uim-tomoe-gtk 0.6.0: Japanese input method Tomoe IMEngine for uim
 app-i18n/unicode-data 6.0.0 6.1.0: Unicode data from unicode.org
@@ -3723,7 +3724,7 @@ dev-java/bndlib 2.1.0: A swiss army knife for OSGi
 dev-java/boilerpipe 1.2.0: Boilerplate Removal and Fulltext Extraction from HTML pages
 dev-java/browserlauncher2 1.3-r1: BrowserLauncher2 is a library that facilitates opening a browser from a Java application
 dev-java/bsf 2.4.0-r2: Bean Script Framework
-dev-java/bsh 2.0_beta4-r4: BeanShell: A small embeddable Java source interpreter
+dev-java/bsh 2.0_beta4-r4 2.0_beta6: A small embeddable Java source interpreter
 dev-java/byaccj 1.15-r1: A java extension of BSD YACC-compatible parser generator
 dev-java/bytecode 20081007: Biojava bytecode manipulation library
 dev-java/bytelist 1.0.10: JRuby support library
