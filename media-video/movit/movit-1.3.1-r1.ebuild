@@ -4,6 +4,8 @@
 
 EAPI=5
 
+inherit eutils
+
 # no sane way to use OpenGL from within tests?
 RESTRICT="test"
 
@@ -25,6 +27,10 @@ RDEPEND="media-libs/mesa
 	media-libs/libsdl2
 	"
 DEPEND="${RDEPEND}"
+
+src_prepare() {
+	epatch "${FILESDIR}/movit-fix-locale.patch"
+}
 
 src_compile() {
 	GTEST_DIR="${WORKDIR}/gtest-1.7.0" emake
