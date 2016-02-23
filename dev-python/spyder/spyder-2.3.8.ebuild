@@ -36,7 +36,7 @@ DEPEND="${RDEPEND}
 	doc? ( >=dev-python/sphinx-0.6.0[${PYTHON_USEDEP}] )"
 
 # Courtesy of Arfrever
-PATCHES=( "${FILESDIR}"/${PN}-2.3.1-build.patch )
+PATCHES=( "${FILESDIR}"/${P}-build.patch )
 
 python_compile_all() {
 	if use doc; then
