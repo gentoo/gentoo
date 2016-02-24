@@ -34,10 +34,10 @@ HOMEPAGE="http://kodi.tv/ http://kodi.wiki/"
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="airplay avahi bluetooth bluray caps cec css debug +fishbmc gles goom java joystick midi mysql nfs +opengl profile +projectm pulseaudio pvr +rsxs rtmp +samba sdl sftp test +texturepacker udisks upnp upower +usb vaapi vdpau webserver +X +xrandr"
-# gles/vaapi: http://trac.kodi.tv/ticket/10552
+# gles/vaapi: http://trac.kodi.tv/ticket/10552 #464306
 REQUIRED_USE="
 	gles? ( !vaapi )
-	!vaapi? ( !gles )
+	vaapi? ( !gles )
 	pvr? ( mysql )
 	rsxs? ( X )
 	xrandr? ( X )
