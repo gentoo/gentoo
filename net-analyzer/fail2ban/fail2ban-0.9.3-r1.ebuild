@@ -17,8 +17,10 @@ SLOT="0"
 KEYWORDS="amd64 arm hppa ~ppc ppc64 ~sparc x86 ~x86-fbsd"
 IUSE="selinux systemd"
 
+# TODO support ipfw and ipfilter
 RDEPEND="
 	kernel_linux? ( net-firewall/iptables )
+	kernel_FreeBSD? ( sys-freebsd/freebsd-pf )
 	net-misc/whois
 	virtual/logger
 	virtual/mta
