@@ -35,7 +35,7 @@ PATCHES=( "${FILESDIR}/${P}-osg340_fixes.patch" )
 
 src_configure() {
 	local mycmakeargs=(
-		-ENABLE_PKGUTIL=OFF
+		-DENABLE_PKGUTIL=ON
 		-DENABLE_RTI=OFF
 		-DENABLE_SOUND=ON
 		-DSIMGEAR_HEADLESS=OFF
