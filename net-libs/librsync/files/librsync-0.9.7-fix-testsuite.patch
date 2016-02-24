@@ -6,10 +6,10 @@ Last-Update: 2013-06-26
 +++ b/testsuite/Makefile.am
 @@ -29,7 +29,7 @@ isprefix_driver_LDADD = ../isprefix.o # XXX: should link replaced functions
  # failed.  Generally these tests should be ordered so that more basic
-  # tests are run first.
-   
-   -TESTS_ENVIRONMENT = $(SH) $(srcdir)/driver.sh
-   +TEST_LOG_COMPILER = $(SH) $(srcdir)/driver.sh
-    
-     TESTS = \
-      	signature.test mutate.test sources.test isprefix.test	\
+ # tests are run first.
+ 
+-TESTS_ENVIRONMENT = $(SH) $(srcdir)/driver.sh
++TEST_LOG_COMPILER = $(SH) $(srcdir)/driver.sh
+ 
+ TESTS = \
+ 	signature.test mutate.test sources.test isprefix.test	\
