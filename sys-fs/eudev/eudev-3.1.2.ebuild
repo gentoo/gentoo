@@ -1,11 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI="5"
 
 KV_min=2.6.39
-WANT_AUTOMAKE=1.13
 
 inherit autotools eutils linux-info multilib multilib-minimal user
 
