@@ -1,5 +1,5 @@
---- a/samba-4.4.0rc2/source3/wscript	2016-01-26 15:25:54.000000000 -0500
-+++ b/samba-4.4.0rc2/source3/wscript	2016-02-09 14:37:46.385279942 -0500
+--- samba-4.4.0rc2/source3/wscript
++++ samba-4.4.0rc2/source3/wscript
 @@ -870,7 +870,7 @@
          if conf.env.with_iconv:
              conf.DEFINE('HAVE_ICONV', 1)

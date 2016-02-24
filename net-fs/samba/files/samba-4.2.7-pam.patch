@@ -1,5 +1,5 @@
---- /tmp/samba-4.2.7/source3/wscript	2015-07-14 12:54:24.000000000 +0200
-+++ source3/wscript	2016-01-05 22:48:50.669250837 +0100
+--- samba-4.2.7/source3/wscript
++++ samba-4.2.7/source3/wscript
 @@ -853,11 +853,11 @@
          if not conf.CHECK_FUNCS_IN('iconv_open', 'iconv', headers='iconv.h'):
              conf.env.with_iconv = False

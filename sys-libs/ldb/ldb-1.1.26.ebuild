@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="threads"
 
@@ -20,7 +20,7 @@ IUSE="doc"
 RDEPEND="!elibc_FreeBSD? ( dev-libs/libbsd[${MULTILIB_USEDEP}] )
 	dev-libs/popt[${MULTILIB_USEDEP}]
 	>=sys-libs/talloc-2.1.5[python,${MULTILIB_USEDEP}]
-	>=sys-libs/tevent-0.9.26[python(+),${MULTILIB_USEDEP}]
+	>=sys-libs/tevent-0.9.27[python(+),${MULTILIB_USEDEP}]
 	>=sys-libs/tdb-1.3.8[python,${MULTILIB_USEDEP}]
 	net-nds/openldap
 	!!<net-fs/samba-3.6.0[ldb]
@@ -39,13 +39,16 @@ WAF_BINARY="${S}/buildtools/bin/waf"
 
 MULTILIB_WRAPPED_HEADERS=( /usr/include/pyldb.h )
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.1.24-optional-python.patch
+)
+
 pkg_setup() {
 	python-single-r1_pkg_setup
 }
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-optional-python.patch
-	epatch_user
+	default
 	multilib_copy_sources
 }
 
@@ -80,8 +83,9 @@ multilib_src_install() {
 	waf-utils_src_install
 
 	if multilib_is_native_abi && use doc; then
-		dohtml -r apidocs/html/*
 		doman  apidocs/man/man3/*.3
+		docinto html
+		dodoc -r apidocs/html/*
 	fi
 }
 

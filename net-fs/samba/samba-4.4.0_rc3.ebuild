@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE='threads(+),xml(+)'
 
@@ -15,7 +15,7 @@ SRC_PATH="stable"
 [[ ${PV} = *_rc* ]] && SRC_PATH="rc"
 
 SRC_URI="mirror://samba/${SRC_PATH}/${MY_P}.tar.gz
-	https://dev.gentoo.org/~axs/distfiles/samba-disable-python-patches-4.3.3.tar.xz"
+	https://dev.gentoo.org/~polynomial-c/samba-disable-python-patches-4.4.0_rc3.tar.xz"
 KEYWORDS="~amd64 ~hppa ~x86"
 [[ ${PV} = *_rc* ]] && KEYWORDS="~hppa"
 
@@ -25,7 +25,7 @@ LICENSE="GPL-3"
 
 SLOT="0"
 
-IUSE="acl addc addns ads aio avahi client cluster cups dmapi fam gnutls iprint
+IUSE="acl addc addns ads avahi client cluster cups dmapi fam gnutls iprint
 ldap pam quota selinux syslog +system-mitkrb5 systemd test winbind"
 
 MULTILIB_WRAPPED_HEADERS=(
@@ -51,7 +51,7 @@ CDEPEND="${PYTHON_DEPS}
 	>=net-libs/socket_wrapper-1.1.3[${MULTILIB_USEDEP}]
 	sys-apps/attr[${MULTILIB_USEDEP}]
 	sys-libs/libcap
-	>=sys-libs/ldb-1.1.24[${MULTILIB_USEDEP}]
+	>=sys-libs/ldb-1.1.25[${MULTILIB_USEDEP}]
 	sys-libs/ncurses:0=[${MULTILIB_USEDEP}]
 	>=sys-libs/nss_wrapper-1.0.3[${MULTILIB_USEDEP}]
 	>=sys-libs/talloc-2.1.3[python,${PYTHON_USEDEP},${MULTILIB_USEDEP}]
@@ -62,7 +62,6 @@ CDEPEND="${PYTHON_DEPS}
 	virtual/pam
 	acl? ( virtual/acl )
 	addns? ( net-dns/bind-tools[gssapi] )
-	aio? ( dev-libs/libaio )
 	cluster? ( !dev-db/ctdb )
 	cups? ( net-print/cups )
 	dmapi? ( sys-apps/dmapi )
@@ -88,7 +87,7 @@ S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-4.2.3-heimdal_compilefix.patch"
-	"${FILESDIR}/${PN}-4.2.7-pam.patch"
+	"${FILESDIR}/${PN}-4.4.0-pam.patch"
 )
 
 CONFDIR="${FILESDIR}/$(get_version_component_range 1-2)"
@@ -99,33 +98,17 @@ SHAREDMODS=""
 
 pkg_setup() {
 	python-single-r1_pkg_setup
-	if use aio ; then
-		if ! linux_config_exists || ! linux_chkconfig_present AIO; then
-			ewarn "You must enable AIO support in your kernel config, "
-			ewarn "to be able to support asynchronous I/O. "
-			ewarn "You can find it at"
-			ewarn
-			ewarn "General Support"
-			ewarn " Enable AIO support "
-			ewarn
-			ewarn "and recompile your kernel..."
-		fi
-	fi
 	if use cluster ; then
 		SHAREDMODS="${SHAREDMODS}idmap_rid,idmap_tdb2,idmap_ad"
 	fi
 }
 
 src_prepare() {
-	epatch ${PATCHES[@]}
+	default
 
 	# install the patches from tarball(s)
-	EPATCH_SUFFIX="patch" \
-	EPATCH_FORCE="yes" \
-	epatch "${WORKDIR}/patches"
+	eapply "${WORKDIR}/patches/"
 
-	# Allow user patches
-	epatch_user
 	multilib_copy_sources
 }
 
@@ -151,7 +134,6 @@ multilib_src_configure() {
 			$(use_with addns dnsupdate)
 			$(use_with ads)
 			$(usex ads '--with-shared-modules=idmap_ad' '')
-			$(use_with aio aio-support)
 			$(use_enable avahi)
 			$(use_with cluster cluster-support)
 			$(use_enable cups)
@@ -161,7 +143,6 @@ multilib_src_configure() {
 			$(use_enable iprint)
 			$(use_with ldap)
 			$(use_with pam)
-			$(use_with pam pam_smbpass)
 			$(usex pam "--with-pammodulesdir=/$(get_libdir)/security" '')
 			$(use_with quota quotas)
 			$(use_with syslog)
@@ -177,7 +158,6 @@ multilib_src_configure() {
 			--without-ad-dc
 			--without-dnsupdate
 			--without-ads
-			--without-aio-support
 			--disable-avahi
 			--without-cluster-support
 			--disable-cups
@@ -187,7 +167,6 @@ multilib_src_configure() {
 			--disable-iprint
 			$(use_with ldap)
 			--without-pam
-			--without-pam_smbpass
 			--without-quotas
 			--without-syslog
 			--without-systemd
