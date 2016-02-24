@@ -97,7 +97,6 @@ src_unpack() {
 
 src_prepare() {
 	epatch \
-		"${FILESDIR}"/${PN}-1.11.0-oldlibs.patch \
 		"${FILESDIR}"/${PN}-1.99.8-qtchooser.patch \
 		"${FILESDIR}"/${PN}-99999999-sse4_2.patch \
 		"${FILESDIR}"/${PN}-99999999-androiddump.patch
