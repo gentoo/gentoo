@@ -12807,7 +12807,7 @@ media-sound/SmarTagger 0.1-r1: Perl script for renaming and tagging mp3s
 media-sound/a2jmidid 8 8-r1: Daemon for exposing legacy ALSA sequencer applications in JACK MIDI system
 media-sound/aacgain 1.9: AACGain normalizes the volume of digital music files using the Replay Gain algorithm
 media-sound/aacplusenc 0.17.5: High-Efficiency AAC (AAC+) Encoder
-media-sound/abcde 2.5.4-r1 2.6 2.7: A command line CD encoder
+media-sound/abcde 2.5.4-r1 2.7 2.7.1: A command line CD encoder
 media-sound/abcm2ps 6.6.22 8.5.2 8.8.3 8.8.4: A program to convert abc files to Postscript files
 media-sound/abcmidi 2014.12.25 2015.02.22 2015.08.25: Programs for processing ABC music notation files
 media-sound/adplay 1.7: A console player for AdLib music
@@ -14064,7 +14064,7 @@ net-libs/iojs 2.3.3 2.3.4 2.4.0 2.5.0 3.0.0: An npm compatible platform original
 net-libs/jreen 1.2.0: Qt XMPP library
 net-libs/ldns 1.6.17 1.6.17-r1: a library with the aim to simplify DNS programming in C
 net-libs/liba53 9999: A5/3 Call encryption library
-net-libs/libaccounts-glib 1.18 1.19: Accounts SSO (Single Sign-On) management library for GLib applications
+net-libs/libaccounts-glib 1.19 1.21: Accounts SSO (Single Sign-On) management library for GLib applications
 net-libs/libasr 1.0.1 1.0.1.201505061057 1.0.2: Async Resolver Library from OpenBSD/OpenSMTPD
 net-libs/libasyncns 0.8-r3 0.8-r4: C library for executing name service queries asynchronously
 net-libs/libbitcoinconsensus 0.10.0 0.10.1 0.11.0 0.11.1 0.11.2 9999: Bitcoin Core consensus library
