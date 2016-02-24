@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -12,7 +12,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc64 ~x86"
 # Enable MP3 related flags by default
-IUSE="aac cdparanoia cdr flac +id3tag +lame musepack musicbrainz normalize opus replaygain speex vorbis"
+IUSE="aac cdparanoia cdr flac +id3tag +lame mac musepack musicbrainz normalize opus replaygain speex vorbis wavpack"
 
 # See `grep :: abcde-musicbrainz-tool` output for USE musicbrainz dependencies
 RDEPEND="media-sound/cd-discid
@@ -33,6 +33,10 @@ RDEPEND="media-sound/cd-discid
 		media-sound/id3v2
 		)
 	lame? ( media-sound/lame )
+	mac? (
+		media-sound/apetag
+		media-sound/mac
+		)
 	musepack? ( media-sound/musepack-tools )
 	musicbrainz? (
 		dev-perl/MusicBrainz-DiscID
@@ -47,16 +51,19 @@ RDEPEND="media-sound/cd-discid
 		lame? ( media-sound/mp3gain )
 		)
 	speex? ( media-libs/speex )
-	vorbis? ( media-sound/vorbis-tools )"
+	vorbis? ( media-sound/vorbis-tools )
+	wavpack? ( media-sound/wavpack )
+"
 
 src_prepare() {
-	sed -i -e 's:etc/abcde.co:etc/abcde/abcde.co:g' abcde || die
+	sed -i 's:etc/abcde.co:etc/abcde/abcde.co:g' abcde || die
+	sed -i -e '/^prefix/s/=/?=/' -e '/^sysconfdir/s/=/?=/' Makefile || die
 }
 
 src_install() {
-	emake DESTDIR="${D}" etcdir="${D}"etc/abcde install
+	emake DESTDIR="${D}" prefix="/usr" sysconfdir="/etc/abcde" install
 
-	dodoc changelog FAQ README TODO USEPIPES
+	dodoc changelog FAQ README
 
 	docinto examples
 	dodoc examples/*
