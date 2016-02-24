@@ -15803,7 +15803,7 @@ sci-mathematics/fann 2.1.0_beta-r1 2.2.0 9999: Fast Artificial Neural Network Li
 sci-mathematics/flint 2.3 2.4.3 2.4.4-r1 2.4.5 2.5.2: Fast Library for Number Theory
 sci-mathematics/form 4.1: Symbolic Manipulation System
 sci-mathematics/freemat 4.2: Environment for rapid engineering and scientific processing
-sci-mathematics/fricas 1.2.7-r1: FriCAS is a fork of Axiom computer algebra system
+sci-mathematics/fricas 1.2.7-r2: FriCAS is a fork of Axiom computer algebra system
 sci-mathematics/frobby 0.9.0-r1: Software system and project for computations with monomial ideals
 sci-mathematics/genius 1.0.17 1.0.19: Genius Mathematics Tool and the GEL Language
 sci-mathematics/geogebra 4.1.120.0: Mathematics software for geometry
