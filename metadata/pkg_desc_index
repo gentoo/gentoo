@@ -2958,7 +2958,7 @@ dev-dotnet/gtksourceview-sharp 2.24.0-r10: GtkSharp's gtksourceview module of th
 dev-dotnet/gudev-sharp 0.1: GUDEV API C# binding
 dev-dotnet/ikvm 0.46.0.1 0.46.0.2 7.1.4532.2: Java VM for .NET
 dev-dotnet/ikvm-bin 0.46.0.2 7.1.4532.2: Java VM for .NET
-dev-dotnet/libgdiplus 2.10.9 2.10.9-r1 2.10.9-r2 3.12 4.2-r1: Library for using System.Drawing with mono
+dev-dotnet/libgdiplus 2.10.9 2.10.9-r1 2.10.9-r2 3.12 4.2-r1 4.2-r2: Library for using System.Drawing with mono
 dev-dotnet/log4net 1.2.11: tool to help the programmer output log statements to a variety of output targets
 dev-dotnet/mono-addins 0.6.2 1.0-r1: A generic framework for creating extensible applications
 dev-dotnet/mono-nat 1.1.0: Mono.Nat is a C# library used for automatic port forwarding, using either uPnP or nat-pmp
