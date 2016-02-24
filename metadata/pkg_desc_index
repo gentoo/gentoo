@@ -7492,7 +7492,7 @@ dev-python/pxml 0.2.11-r1 0.2.12: A python library and command-line tool to pret
 dev-python/py 1.4.30 1.4.31: library with cross-python path, ini-parsing, io, code, log facilities
 dev-python/py-amqp 1.4.5 1.4.6 1.4.7 1.4.8 1.4.9: Low-level AMQP client for Python (fork of amqplib)
 dev-python/py-bcrypt 0.4: py-bcrypt is an implementation of the OpenBSD Blowfish password hashing algorithm
-dev-python/py-cpuinfo 0.1.8: Get CPU info with pure Python 2 & 3
+dev-python/py-cpuinfo 0.1.8 0.2.3: Get CPU info with pure Python 2 & 3
 dev-python/py-gfm 0.1.1: Github-Flavored Markdown for Python-Markdown
 dev-python/py-notify 0.3.1-r1: Tools for implementing the Observer programming pattern in Python
 dev-python/py-smbpasswd 1.0.1 1.0.1-r1: This module can generate both LANMAN and NT password hashes, suitable for use with Samba
@@ -8002,7 +8002,7 @@ dev-python/tempita 0.5.3 0.5.3-r1: A very small text templating language
 dev-python/tempora 1.4: Objects and routines pertaining to date and time
 dev-python/termcolor 1.1.0-r1: ANSII Color formatting for output in terminal
 dev-python/terminado 0.5 0.6: Terminals served to term.js using Tornado websockets
-dev-python/testfixtures 3.0.0 4.1.1 4.1.2 4.3.3 4.4.0 4.6.0 4.7.0: A collection of helpers and mock objects for unit tests and doc tests
+dev-python/testfixtures 3.0.0 4.1.1 4.1.2 4.3.3 4.4.0 4.6.0 4.7.0 4.9.1: A collection of helpers and mock objects for unit tests and doc tests
 dev-python/testify 0.5.7 0.7.2: A more pythonic replacement for the unittest module and nose
 dev-python/testpath 0.2 0.3: Test utilities for code working with files and commands
 dev-python/testrepository 0.0.18-r1 0.0.20: A repository of test results
