@@ -2,12 +2,6 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-# Tobias Klausmann <klausman@gentoo.org> (03 Oct 2015)
-# Hangs/spins-on-cpu with any program on alpha.
-# Upstream bug: https://sourceware.org/bugzilla/show_bug.cgi?id=19061
-# Gentoo bug: 562128
->=sys-devel/gdb-7.10
-
 # Alexey Shvetsov <alexxy@gentoo.org> (21 May 2012)
 # Need deps pecl-apc and pecl-uploadprogress bug #416897
 >=www-apps/drupal-7.14
