@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="person">
-    <email>pinkbyte@gentoo.org</email>
-    <name>Sergey Popov</name>
-  </maintainer>
+	<maintainer type="person">
+		<email>pinkbyte@gentoo.org</email>
+		<name>Sergey Popov</name>
+	</maintainer>
+	<upstream>
+		<maintainer type="person">
+			<email>anton.kochkov@gmail.com</email>
+			<name>Anton Kochkov</name>
+		</maintainer>
+		<remote-id type="github">XVilka/set_opacity</remote-id>
+	</upstream>
 </pkgmetadata>
