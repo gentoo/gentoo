@@ -16419,7 +16419,7 @@ sys-apps/s6-linux-utils 2.0.2.3: Set of tiny linux utilities
 sys-apps/s6-portable-utils 2.0.5.3: Set of tiny portable unix utilities
 sys-apps/salinfo 1.2: decode Itanium SAL records (e.g. various hardware errors)
 sys-apps/sandbox 2.6-r1 2.7 2.8 2.9 2.10-r1: sandbox'd LD_PRELOAD hack
-sys-apps/sdparm 1.07 1.08-r1 1.09: Utility to output and modify parameters on a SCSI device, like hdparm
+sys-apps/sdparm 1.07 1.09 1.10: Utility to output and modify parameters on a SCSI device, like hdparm
 sys-apps/secilc 9999: SELinux Common Intermediate Language (CIL) Compiler
 sys-apps/sed 4.2.1-r1 4.2.2: Super-useful stream editor
 sys-apps/servicelog 1.0.1 1.1.11 1.1.13: Provides utilities for logging service-related events
