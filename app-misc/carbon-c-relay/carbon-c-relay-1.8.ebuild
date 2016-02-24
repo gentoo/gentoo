@@ -23,9 +23,8 @@ pkg_preinst() {
 	enewuser carbon -1 -1 -1 carbon
 }
 
-src_prepare() {
+src_configure() {
 	tc-export CC
-	tc-has-openmp || export OPENMP_FLAGS=
 }
 
 src_install() {
