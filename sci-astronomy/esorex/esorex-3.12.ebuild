@@ -1,14 +1,10 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-AUTOTOOLS_AUTORECONF=1
-AUTOTOOLS_IN_SOURCE_BUILD=1
-AT_NO_RECURSIVE=1
-
-inherit autotools-utils
+inherit autotools
 
 DESCRIPTION="ESO Recipe Execution Tool to exec cpl scripts"
 HOMEPAGE="http://www.eso.org/sci/software/cpl/esorex.html"
@@ -25,17 +21,20 @@ RDEPEND="${DEPEND}"
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.9.6-use-shared-libs.patch
 	"${FILESDIR}"/${PN}-3.10-remove-private-ltdl.patch
-	"${FILESDIR}"/${PN}-3.10-fix-autotools.patch
 	"${FILESDIR}"/${PN}-3.10-generate-manpage.patch
 	"${FILESDIR}"/${PN}-3.10-remove-empty-configdir.patch
 	"${FILESDIR}"/${PN}-3.10-set-default-plugin-path.patch
-	"${FILESDIR}"/${PN}-3.10-cpl60_compat.patch
 )
 
 export CPLDIR="${EPREFIX}/usr"
 
+src_prepare() {
+	default
+	AT_NO_RECURSIVE=1 eautoreconf
+}
+
 src_install() {
-	autotools-utils_src_install
+	default
 	dodoc -r examples
 	docompress -x /usr/share/doc/${PF}/examples
 }
