@@ -16,25 +16,25 @@ KEYWORDS="~x86 ~amd64"
 IUSE="qt5"
 
 DEPEND="
-    qt5? (
-        dev-qt/qtprintsupport:5
-        dev-qt/qtwebkit:5
-        dev-qt/qtwidgets:5
-        dev-qt/qtconcurrent:5
-    )
-    !qt5? ( dev-qt/qtwebkit:4 )
+	qt5? (
+		dev-qt/qtprintsupport:5
+		dev-qt/qtwebkit:5
+		dev-qt/qtwidgets:5
+		dev-qt/qtconcurrent:5
+	)
+	!qt5? ( dev-qt/qtwebkit:4 )
 "
 RDEPEND="${DEPEND}"
 
 src_compile() {
-    if use qt5
-        then eqmake5 "PREFIX=/usr"
-        else eqmake4 "PREFIX=/usr"
-    fi
-
-    emake
+	if use qt5; then
+		eqmake5 "PREFIX=/usr"
+	else
+		eqmake4 "PREFIX=/usr"
+	fi
+	emake
 }
 
 src_install() {
-    emake INSTALL_ROOT="${D}" install
+	emake INSTALL_ROOT="${D}" install
 }
