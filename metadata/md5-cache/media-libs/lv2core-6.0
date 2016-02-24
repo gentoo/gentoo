@@ -9,5 +9,5 @@ RDEPEND=!<media-libs/slv2-0.4.2
 SLOT=0
 SRC_URI=http://lv2plug.in/spec/lv2core-6.0.tar.bz2
 _eclass_exported_funcs=pkg_setup:python-any-r1 src_configure:waf-utils src_compile:waf-utils src_install:waf-utils
-_eclasses_=eutils	9d81603248f2ba3ec59124320d123e5e	multilib	3972ca401cf7dbb430df9995f5d8d580	multiprocessing	e32940a7b2a9992ad217eccddb84d548	python-any-r1	8eb13cdf35f6e43c48107b911900b2cc	python-utils-r1	2e6826f6a93ad2acf904eecf5b5fb6d2	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	waf-utils	ad1dd5b59c523843eebd3a9934c509ca
+_eclasses_=eutils	9d81603248f2ba3ec59124320d123e5e	multilib	3972ca401cf7dbb430df9995f5d8d580	multiprocessing	e32940a7b2a9992ad217eccddb84d548	python-any-r1	8eb13cdf35f6e43c48107b911900b2cc	python-utils-r1	2e6826f6a93ad2acf904eecf5b5fb6d2	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	waf-utils	473bc16887ea072bd0b7b2adaa8e47e7
 _md5_=f9af748997909bf5bedf3274ba4668d7
