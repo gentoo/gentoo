@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install postinst prepare test unpack
+DEPEND=dev-db/sqlite:3 >=dev-games/openscenegraph-3.2.0[png] ~dev-games/simgear-9999 media-libs/openal media-libs/speex media-sound/gsm sys-libs/zlib x11-libs/libX11 dbus? ( >=sys-apps/dbus-1.6.18-r1 ) qt5? ( >=dev-qt/qtcore-5.4.1:5 >=dev-qt/qtgui-5.4.1:5 >=dev-qt/qtwidgets-5.4.1:5 ) udev? ( virtual/udev ) utils? ( media-libs/freeglut media-libs/libpng:0 virtual/opengl ) >=dev-libs/boost-1.44 >=media-libs/plib-1.8.5 sys-devel/make >=dev-util/cmake-2.8.12 >=dev-vcs/git-1.8.2.1
+DESCRIPTION=Open Source Flight Simulator
+EAPI=6
+HOMEPAGE=http://www.flightgear.org/
+IUSE=dbus debug examples qt5 test +udev +utils vim-syntax
+LICENSE=GPL-2
+RDEPEND=dev-db/sqlite:3 >=dev-games/openscenegraph-3.2.0[png] ~dev-games/simgear-9999 media-libs/openal media-libs/speex media-sound/gsm sys-libs/zlib x11-libs/libX11 dbus? ( >=sys-apps/dbus-1.6.18-r1 ) qt5? ( >=dev-qt/qtcore-5.4.1:5 >=dev-qt/qtgui-5.4.1:5 >=dev-qt/qtwidgets-5.4.1:5 ) udev? ( virtual/udev ) utils? ( media-libs/freeglut media-libs/libpng:0 virtual/opengl ) ~games-simulation/flightgear-data-9999
+SLOT=0
+_eclass_exported_funcs=pkg_postinst:- src_unpack:git-r3 src_prepare:cmake-utils src_configure:- src_compile:cmake-utils src_test:cmake-utils src_install:-
+_eclasses_=bash-completion-r1	acf715fa09463f043fbfdc1640f3fb85	cmake-utils	c67ce9708a9c02be2d296cf547740e9c	eutils	9d81603248f2ba3ec59124320d123e5e	flag-o-matic	d270fa247153df66074f795fa42dba3e	git-r3	ef66dfc3db09f327af21cf32f140fb2b	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=4599083bbe4dc8e5e8e6f76c6406151c
