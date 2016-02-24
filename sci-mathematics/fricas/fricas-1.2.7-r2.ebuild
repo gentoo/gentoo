@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 EAPI=5
@@ -13,32 +13,22 @@ KEYWORDS="~amd64 ~x86"
 
 # Supported lisps, number 0 is the default
 LISPS=( sbcl cmucl     gcl ecls   clisp clozurecl )
-# Version restrictions, . means no restrictions
-REST=( "<=dev-lisp/sbcl-1.3.0" . . . . . )
 # command name: . means just ${LISP}
 COMS=(  .    lisp      .   ecl    .     ccl       )
 
 IUSE="${LISPS[*]} X emacs gmp"
 RDEPEND="X? ( x11-libs/libXpm x11-libs/libICE )
 	emacs? ( virtual/emacs )
-	gmp? ( dev-libs/gmp )"
+	gmp? ( dev-libs/gmp:= )"
 
 # Generating lisp deps
 n=${#LISPS[*]}
 for ((n--; n > 0; n--)); do
 	LISP=${LISPS[$n]}
-	if [ "${REST[$n]}" = "." ]; then
-		DEP="dev-lisp/${LISP}"
-	else
-		DEP="${REST[$n]}"
-	fi
+	DEP="dev-lisp/${LISP}"
 	RDEPEND="${RDEPEND} ${LISP}? ( ${DEP}:= ) !${LISP}? ("
 done
-if [ "${REST[0]}" = "." ]; then
-	DEP="dev-lisp/${LISPS[0]}"
-else
-	DEP="${REST[0]}"
-fi
+DEP="dev-lisp/${LISPS[0]}"
 RDEPEND="${RDEPEND} ${DEP}:="
 n=${#LISPS[*]}
 for ((n--; n > 0; n--)); do
