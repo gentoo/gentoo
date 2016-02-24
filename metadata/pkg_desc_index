@@ -7227,7 +7227,7 @@ dev-python/jsonrpclib 0_pre20110820-r1 0_pre20150305 9999: python implementation
 dev-python/jsonschema 2.3.0 2.4.0 2.5.1-r2: An implementation of JSON-Schema validation for Python
 dev-python/jupyter 1.0.0: Jupyter metapackage. Install all the Jupyter components in one go
 dev-python/jupyter_client 4.1.1: Jupyter protocol implementation and client libraries
-dev-python/jupyter_console 4.0.3 4.1.0: A terminal-based console frontend for Jupyter kernels
+dev-python/jupyter_console 4.0.3 4.1.0 4.1.1: A terminal-based console frontend for Jupyter kernels
 dev-python/jupyter_core 4.0.6: Core common functionality of Jupyter projects
 dev-python/kaa-base 0.6.0-r1: Basic Framework for all Kaa Python Modules
 dev-python/kaa-display 0.1.0 0.1.0-r1: Python API providing Low level support for various displays, such as X11 or framebuffer
