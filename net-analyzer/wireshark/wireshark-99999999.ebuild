@@ -97,11 +97,10 @@ src_unpack() {
 
 src_prepare() {
 	epatch \
-		"${FILESDIR}"/${PN}-1.6.13-ldflags.patch \
 		"${FILESDIR}"/${PN}-1.11.0-oldlibs.patch \
-		"${FILESDIR}"/${PN}-99999999-pkgconfig.patch \
 		"${FILESDIR}"/${PN}-1.99.8-qtchooser.patch \
-		"${FILESDIR}"/${PN}-2.1.0-sse4_2.patch
+		"${FILESDIR}"/${PN}-99999999-sse4_2.patch \
+		"${FILESDIR}"/${PN}-99999999-androiddump.patch
 
 	epatch_user
 
@@ -155,7 +154,6 @@ src_configure() {
 	econf \
 		$(use androiddump && use pcap && echo --enable-androiddump-use-libpcap=yes) \
 		$(use_enable androiddump) \
-		$(use_enable ipv6) \
 		$(use_enable tfshark) \
 		$(use_with adns c-ares) \
 		$(use_with caps libcap) \
@@ -212,7 +210,6 @@ src_install() {
 	# install headers
 	local wsheader
 	for wsheader in \
-		color.h \
 		config.h \
 		epan/*.h \
 		epan/crypt/*.h \
