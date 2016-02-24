@@ -7,7 +7,7 @@ EAPI=5
 CATKIN_HAS_MESSAGES=yes
 ROS_REPO_URI="https://github.com/ros/ros_comm_msgs"
 KEYWORDS="~amd64 ~arm"
-PYTHON_COMPAT=( python{2_7,3_3,3_4} )
+PYTHON_COMPAT=( python{2_7,3_3,3_4,3_5} )
 ROS_SUBDIR=${PN}
 
 inherit ros-catkin
@@ -17,5 +17,5 @@ LICENSE="BSD"
 SLOT="0"
 IUSE=""
 
-RDEPEND="dev-ros/std_msgs[${PYTHON_USEDEP}]"
+RDEPEND=""
 DEPEND="${RDEPEND}"
