@@ -22,9 +22,8 @@ DEPEND="${RDEPEND}
 	app-arch/xz-utils
 "
 
-DOCS=( AUTHORS NEWS README THANKS )
+DOCS=( AUTHORS NEWS API-CHANGES THANKS )
 
 PATCHES=(
 	"${FILESDIR}/${PN}-0.11.2-headers.patch"
-	"${FILESDIR}/${P}-missing-extern.patch"
 )
