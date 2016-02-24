@@ -1,10 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python{2_7,3_4,3_5} )
 
 inherit distutils-r1
 
@@ -17,12 +17,11 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux"
 IUSE="doc test"
 
-DEPEND="
-	doc? ( dev-python/sphinx )"
+DEPEND="doc? ( dev-python/sphinx )"
 RDEPEND=""
 
 src_prepare() {
-	# don't install rst files
+	# don't install rst files by dfefault
 	sed -i -e "s:'doc/\*\.rst',::" setup.py || die
 	distutils-r1_src_prepare
 }
@@ -30,23 +29,23 @@ src_prepare() {
 src_compile() {
 	distutils-r1_src_compile
 	if use doc; then
-		PYTHONPATH=. emake -C src/ephem/doc html
+		PYTHONPATH=. emake -C ephem/doc html
 	fi
 }
 
 python_test() {
 	if [[ ${PYTHON_ABI} == "2.7" ]]; then
 		PYTHONPATH="$(ls -d ${BUILD_DIR}/lib*)" \
-			${EPYTHON} -m unittest discover -s src/ephem
+			${EPYTHON} -m unittest discover -s ephem
 	else
 		PYTHONPATH="$(ls -d ${BUILD_DIR}/lib*)" \
-			unit2 discover -s src/ephem
+			unit2 discover -s ephem
 	fi
 }
 
 src_install() {
+	use doc && HTML_DOCS=( ephem/doc/_build/html/. )
 	distutils-r1_src_install
-	use doc && dohtml -r src/ephem/doc/_build/html/*
 
 	delete_tests() {
 		rm -r "${D}$(python_get_sitedir)/ephem/tests" || die
