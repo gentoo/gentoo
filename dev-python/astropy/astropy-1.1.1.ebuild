@@ -35,7 +35,11 @@ DEPEND="${RDEPEND}
 	doc? (
 		$(python_gen_cond_dep 'dev-python/matplotlib[${PYTHON_USEDEP}]' python2_7)
 		$(python_gen_cond_dep 'dev-python/sphinx[${PYTHON_USEDEP}]' python2_7)
+		$(python_gen_cond_dep 'dev-libs/libxml2[${PYTHON_USEDEP}]' python2_7)
+		$(python_gen_cond_dep 'dev-python/pytest[${PYTHON_USEDEP}]' python2_7)
+		$(python_gen_cond_dep 'dev-python/h5py[${PYTHON_USEDEP}]' python2_7)
 		media-gfx/graphviz
+		$(python_gen_cond_dep 'sci-libs/scipy[${PYTHON_USEDEP}]'python2_7)
 	)
 	test? (
 		dev-libs/libxml2[${PYTHON_USEDEP}]
