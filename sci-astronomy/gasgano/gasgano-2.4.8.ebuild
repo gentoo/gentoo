@@ -1,8 +1,9 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=6
+
 inherit eutils java-pkg-2
 
 PDOC=VLT-PRO-ESO-19000-1932-V4
@@ -17,14 +18,15 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="doc"
 
-DEPEND=">=virtual/jdk-1.6"
+DEPEND=">=virtual/jdk-1.7"
 RDEPEND="
-	>=virtual/jre-1.6
+	>=virtual/jre-1.7
 	dev-java/gnu-regexp
 	dev-java/junit
 	dev-java/jal"
 
 src_prepare() {
+	default
 	sed -i \
 		-e "s:^BASE=\`pwd\`:BASE=${EPREFIX}/usr/share/${PN}:" \
 		-e 's:$BASE/share/:$BASE/lib/:g' \
