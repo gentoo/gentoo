@@ -8,7 +8,7 @@ inherit autotools eutils vcs-snapshot
 
 DESCRIPTION="Accounts SSO (Single Sign-On) management library for GLib applications"
 HOMEPAGE="https://01.org/gsso/"
-SRC_URI="https://gitlab.com/accounts-sso/libaccounts-glib/repository/archive.tar.gz?ref=VERSION_1.19 -> ${P}.tar.gz"
+SRC_URI="https://gitlab.com/accounts-sso/libaccounts-glib/repository/archive.tar.gz?ref=VERSION_${PV} -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
