@@ -3978,7 +3978,7 @@ dev-java/jexcelapi 2.6.8 2.6.8-r1 2.6.8-r2: A Java API to read, write, and modif
 dev-java/jffi 1.0.11-r1 1.2.9: An optimized Java interface to libffi
 dev-java/jflex 1.6.0-r2 1.6.1: JFlex is a lexical analyzer generator for Java
 dev-java/jformatstring 2.0.3: Compile time checking for Java format strings
-dev-java/jfreechart 1.0.19: JFreeChart is a free Java class library for generating charts
+dev-java/jfreechart 1.0.19 1.0.19-r1: JFreeChart is a free Java class library for generating charts
 dev-java/jfreesvg 2.1-r1 3.0: JFreeSVG is a fast, light-weight, vector graphics library for the Java platform
 dev-java/jgoodies-animation 1.2.0 1.2.0-r1: JGoodies Animation Library
 dev-java/jgoodies-binding 1.1.2 1.1.2-r1: A Java library to bind object properties with UI components
@@ -4247,7 +4247,7 @@ dev-java/toolbar 1.1.0-r1: An improved version of JToolBar
 dev-java/touchgraph-graphlayout 1.22-r1: TouchGraph provides a set of interfaces for graph visualization
 dev-java/treelayout 1.0.2: Efficiently create compact tree layouts in Java
 dev-java/trident 1.3: Java animation library
-dev-java/trove 2.1.0 3.0.2 3.0.2-r1: GNU Trove: High performance collections for Java
+dev-java/trove 2.1.0 3.0.2 3.0.2-r1 3.0.2-r2: GNU Trove: High performance collections for Java
 dev-java/txw2-runtime 20110809: TXW is a library that allows you to write XML documents
 dev-java/typesafe-config 1.2.1 1.3.0-r2: A library of arguably useful Java utilities
 dev-java/unkrig-nullanalysis 0_pre1644: Some classes to test for various null conditions
@@ -13292,7 +13292,7 @@ media-video/google2srt 0.5.6-r1: Convert subtitles from Google Video and YouTube
 media-video/gpac 0.5.0-r1 0.5.1_pre5456 0.5.2 9999: GPAC is an implementation of the MPEG-4 Systems standard developed from scratch in ANSI C
 media-video/griffith 0.13 0.13-r1: Movie collection manager
 media-video/gtk-recordmydesktop 0.3.8-r3: GTK+ interface for RecordMyDesktop
-media-video/guvcview 1.6.1 1.7.1 1.7.2 1.7.3 2.0.1: GTK+ UVC Viewer
+media-video/guvcview 1.6.1 1.7.1 1.7.2 1.7.3 2.0.1 2.0.3: GTK+ UVC Viewer
 media-video/gxine 0.5.907-r1 0.5.908: GTK+ Front-End for libxine
 media-video/h264enc 9.4.0 9.4.1 10.4.1: Script to encode H.264/AVC/MPEG-4 Part 10 formats
 media-video/handbrake 0.10.2-r1 9999: Open-source, GPL-licensed, multiplatform, multithreaded video transcoder
