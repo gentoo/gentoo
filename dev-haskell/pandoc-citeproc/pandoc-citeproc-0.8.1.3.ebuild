@@ -51,6 +51,10 @@ DEPEND="${RDEPEND}
 	embed_data_files? ( dev-haskell/hsb2hs )
 "
 
+src_prepare() {
+	epatch "${FILESDIR}"/${PN}-0.9-no-binutils.patch
+}
+
 src_configure() {
 	haskell-cabal_src_configure \
 		$(cabal_flag bibutils bibutils) \
