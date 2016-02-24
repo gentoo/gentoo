@@ -17,5 +17,5 @@ LICENSE="BSD"
 SLOT="0"
 IUSE=""
 
-RDEPEND="dev-ros/std_msgs[${PYTHON_USEDEP}]"
+RDEPEND=""
 DEPEND="${RDEPEND}"
