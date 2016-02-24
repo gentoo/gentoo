@@ -1,0 +1,10 @@
+--- a/extcap/Makefile.am
++++ b/extcap/Makefile.am
+@@ -46,6 +46,7 @@
+ 	../wiretap/libwiretap.la	\
+ 	../wsutil/libwsutil.la		\
+ 	@GLIB_LIBS@			\
++	@PCAP_LIBS@			\
+ 	@SOCKET_LIBS@
+ 
+ if ENABLE_STATIC
