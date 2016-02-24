@@ -33,7 +33,7 @@ REQUIRED_USE="systemd? ( !python_single_target_pypy )"
 
 DOCS=( ChangeLog DEVELOP README.md THANKS TODO doc/run-rootless.txt )
 
-src_prepare() {
+python_prepare_all() {
 	# Replace /var/run with /run, but not in the top source directory
 	find . -mindepth 2 -type f -exec \
 		sed -i -e 's|/var\(/run/fail2ban\)|\1|g' {} + || die
@@ -44,15 +44,15 @@ src_prepare() {
 		"${FILESDIR}"/${PN}-0.9.2-initd.patch \
 		"${FILESDIR}"/${PN}-0.9.2-logrotate.patch
 
-	distutils-r1_src_prepare
+	distutils-r1_python_prepare_all
 }
 
 python_test() {
 	"${PYTHON}" "bin/${PN}-testcases" || die "tests failed with ${EPYTHON}"
 }
 
-src_install() {
-	distutils-r1_src_install
+python_install_all() {
+	distutils-r1_python_install_all
 
 	rm -r "${D}"/usr/share/doc/${PN} "${D}"/run || die
 
