@@ -7,7 +7,7 @@ USE_RUBY="ruby20 ruby21"
 RUBY_FAKEGEM_RECIPE_DOC="rdoc"
 RUBY_FAKEGEM_RECIPE_TEST="rspec"
 
-inherit ruby-fakegem
+inherit bash-completion-r1 ruby-fakegem
 
 DESCRIPTION="Travis CI Client (CLI and Ruby library) "
 HOMEPAGE="https://github.com/travis-ci/travis.rb"
@@ -33,3 +33,9 @@ ruby_add_rdepend "
 	>dev-ruby/pusher-client-0.4
 	>=dev-ruby/typhoeus-0.6.8
 "
+
+all_ruby_install() {
+	all_fakegem_install
+
+	newbashcomp "assets/travis.sh" "travis"
+}
