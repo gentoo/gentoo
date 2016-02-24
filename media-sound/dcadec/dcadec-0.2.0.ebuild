@@ -4,7 +4,7 @@
 
 EAPI="5"
 
-inherit toolchain-funcs multilib
+inherit toolchain-funcs multilib multilib-minimal
 
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="git://github.com/foo86/dcadec.git"
@@ -20,18 +20,36 @@ HOMEPAGE="https://github.com/foo86/dcadec"
 LICENSE="LGPL-2.1"
 SLOT="0"
 IUSE=""
+DOCS=( CHANGELOG.md README.md )
 
-src_configure() {
-	tc-export AR CC
+src_prepare() {
 	sed -i \
-		-e "/^PREFIX /s:=.*:= ${EPREFIX}/usr:" \
-		-e "/^LIBDIR /s:/lib:/$(get_libdir):" \
 		-e '/^CFLAGS/s:-O3::' \
 		Makefile || die
 }
 
-src_install() {
-	default
+multilib_src_compile() {
+	# Build shared libs
+	echo 'CONFIG_SHARED=1' >> .config
+
+	local target=all
+	multilib_is_native_abi || target=lib
+	tc-export AR CC
+	PREFIX="${EPREFIX}/usr" LIBDIR="${EPREFIX}/usr/$(get_libdir)" \
+		emake -f "${S}/Makefile" ${target}
+}
+
+multilib_src_install() {
+	local target=install
+	multilib_is_native_abi || target=install-lib
+	PREFIX="${EPREFIX}/usr" \
+		LIBDIR="${EPREFIX}/usr/$(get_libdir)" \
+		emake -f "${S}/Makefile" DESTDIR="${D}" ${target}
+}
+
+multilib_src_install_all() {
 	# Rename the executable since it conflicts with libdca.
 	mv "${ED}"/usr/bin/dcadec{,-new} || die
+
+	einstalldocs
 }
