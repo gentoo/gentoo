@@ -38,6 +38,8 @@ src_prepare() {
 	# note: we cannot run autotools here as gcc depends on this package
 	elibtoolize
 
+	epatch "${FILESDIR}"/${PN}-6.1.0-noexecstack-detect.patch
+
 	# GMP uses the "ABI" env var during configure as does Gentoo (econf).
 	# So, to avoid patching the source constantly, wrap things up.
 	mv configure configure.wrapped || die
