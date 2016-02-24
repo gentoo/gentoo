@@ -15123,13 +15123,13 @@ sci-astronomy/casa-data 10013 99999: Data and tables for the CASA software
 sci-astronomy/casacore 1.5.0-r1: Core libraries for the Common Astronomy Software Applications
 sci-astronomy/cdsclient 3.7.2: Collection of scripts to access the CDS databases
 sci-astronomy/celestia 1.6.1-r1: OpenGL 3D space simulator
-sci-astronomy/cpl 6.3.1 6.4 6.4.1 6.4.2: ESO common pipeline library for astronomical data reduction
+sci-astronomy/cpl 6.4.2 6.6.1: ESO common pipeline library for astronomical data reduction
 sci-astronomy/ds9-bin 7.2 7.4: Data visualization application for astronomical FITS images
 sci-astronomy/erfa 1.0.1 1.1.0 1.2.0: Essential Routines for Fundamental Astronomy
-sci-astronomy/esorex 3.10-r2 3.10.2: ESO Recipe Execution Tool to exec cpl scripts
+sci-astronomy/esorex 3.10.2 3.12: ESO Recipe Execution Tool to exec cpl scripts
 sci-astronomy/funtools 1.4.4-r4: FITS library and utlities for astronomical images
 sci-astronomy/galaxy 2.2: Stellar simulation program
-sci-astronomy/gasgano 2.4.3-r2 2.4.5: ESO astronomical data file organizer
+sci-astronomy/gasgano 2.4.5 2.4.8: ESO astronomical data file organizer
 sci-astronomy/idlastro 20130501 20140125: Astronomical user routines for IDL
 sci-astronomy/kapteyn 2.3: Collection of python tools for astronomy
 sci-astronomy/predict 2.2.3-r1: Satellite tracking and orbital prediction
