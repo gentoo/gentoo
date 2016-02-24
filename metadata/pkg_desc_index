@@ -7659,7 +7659,7 @@ dev-python/pyquery 1.2.4 1.2.8 1.2.9 1.2.9-r1 1.2.11: A jQuery-like library for 
 dev-python/pyqwt 5.2.0-r1: Python bindings for the Qwt library
 dev-python/pyramid 1.5.1 1.5.2 1.5.4 1.5.7: A small open source Python web framework
 dev-python/pyrax 1.9.2 1.9.3 1.9.4: Python language bindings for OpenStack Clouds
-dev-python/pyregion 1.1.2 1.1.4: Python module to parse ds9 region file
+dev-python/pyregion 1.1.4: Python module to parse ds9 region file
 dev-python/pyrex 0.9.9-r1: A language for writing Python extension modules
 dev-python/pyrfc3339 0.2 1.0: Generates and parses RFC 3339 timestamps
 dev-python/pyringe 1.0.2: Debugger capable of attaching and injecting code
@@ -15135,7 +15135,7 @@ sci-astronomy/gasgano 2.4.5 2.4.8: ESO astronomical data file organizer
 sci-astronomy/idlastro 20130501 20140125: Astronomical user routines for IDL
 sci-astronomy/kapteyn 2.3: Collection of python tools for astronomy
 sci-astronomy/predict 2.2.3-r1: Satellite tracking and orbital prediction
-sci-astronomy/pyephem 3.7.5.1 3.7.5.2 3.7.5.3: Astronomical routines for the python programming language
+sci-astronomy/pyephem 3.7.5.3 3.7.6.0: Astronomical routines for the python programming language
 sci-astronomy/skycat 3.1.2-r1: ESO astronomical image visualizer with catalog access
 sci-astronomy/skychart 3.8.2450 3.10.2854: Planetarium for amauter astronomers
 sci-astronomy/sofa_c 20120301a: Library for algorithms for models in fundamental astronomy
