@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI="5"
-PYTHON_COMPAT=( python{2_7,3_3,3_4,3_5} )
+PYTHON_COMPAT=( python{2_7,3_3,3_4} )
 
 inherit flag-o-matic eutils python-single-r1
 
@@ -57,10 +57,9 @@ SRC_URI="${SRC_URI} ${PATCH_VER:+mirror://gentoo/${P}-patches-${PATCH_VER}.tar.x
 LICENSE="GPL-2 LGPL-2"
 SLOT="0"
 if [[ ${PV} != 9999* ]] ; then
-	# alpha #562128
-	KEYWORDS="-alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sparc x86 ~ppc-aix ~amd64-fbsd ~x86-fbsd ~x64-freebsd ~amd64-linux ~arm-linux ~x86-linux ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+	KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sparc x86 ~ppc-aix ~amd64-fbsd ~x86-fbsd ~x64-freebsd ~amd64-linux ~arm-linux ~x86-linux ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 fi
-IUSE="+client expat lzma multitarget nls +python +server test vanilla"
+IUSE="+client expat lzma multitarget nls +python +server test vanilla zlib"
 REQUIRED_USE="
 	python? ( ${PYTHON_REQUIRED_USE} )
 	|| ( client server )
@@ -73,7 +72,7 @@ RDEPEND="server? ( !dev-util/gdbserver )
 		expat? ( dev-libs/expat )
 		lzma? ( app-arch/xz-utils )
 		python? ( ${PYTHON_DEPS} )
-		sys-libs/zlib
+		zlib? ( sys-libs/zlib )
 	)"
 DEPEND="${RDEPEND}
 	app-arch/xz-utils
@@ -103,7 +102,6 @@ gdb_branding() {
 	else
 		printf "vanilla"
 	fi
-	[[ -n ${EGIT_COMMIT} ]] && printf " ${EGIT_COMMIT}"
 }
 
 src_configure() {
@@ -150,16 +148,13 @@ src_configure() {
 			# For gdb itself, it'll use the system version.
 			--disable-readline
 			--with-system-readline
-			# This only disables building in the zlib subdir.
-			# For gdb itself, it'll use the system version.
-			--without-zlib
-			--with-system-zlib
 			--with-separate-debug-dir="${EPREFIX}"/usr/lib/debug
 			$(use_with expat)
 			$(use_with lzma)
 			$(use_enable nls)
 			$(use multitarget && echo --enable-targets=all)
 			$(use_with python python "${EPYTHON}")
+			$(use_with zlib)
 		)
 	fi
 
@@ -175,14 +170,6 @@ src_install() {
 	default
 	use client && find "${ED}"/usr -name libiberty.a -delete
 	cd "${S}"
-
-	# Delete translations that conflict with binutils-libs. #528088
-	# Note: Should figure out how to store these in an internal gdb dir.
-	if use nls ; then
-		find "${ED}" \
-			-regextype posix-extended -regex '.*/(bfd|opcodes)[.]g?mo$' \
-			-delete
-	fi
 
 	# Don't install docs when building a cross-gdb
 	if [[ ${CTARGET} != ${CHOST} ]] ; then
