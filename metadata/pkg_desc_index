@@ -7478,7 +7478,7 @@ dev-python/processing 0.52-r1: Package for using processes, which mimics the thr
 dev-python/progress 1.2: Easy to use progress bars
 dev-python/progressbar 2.3-r1: Text progressbar library for python
 dev-python/promise 0.2.2-r1: Bytecode optimisation using staticness assertions
-dev-python/prompt_toolkit 0.45 0.46 0.47 0.48 0.50 0.52 0.53 0.54 0.57: Building powerful interactive command lines in Python
+dev-python/prompt_toolkit 0.45 0.46 0.47 0.48 0.50 0.52 0.53 0.54 0.57 0.58: Building powerful interactive command lines in Python
 dev-python/protorpc 0.10.0 0.11.1: Google Protocol RPC
 dev-python/pssi 1.0-r1: Python Simple Smartcard Interpreter
 dev-python/psutil 1.2.1 2.1.3 3.0.1 3.1.1 3.2.2 3.3.0 3.4.2 4.0.0: Retrieve information on running processes and system utilization
@@ -9463,7 +9463,7 @@ dev-util/d-feet 0.3.9 0.3.10: D-Feet is a powerful D-Bus debugger
 dev-util/dbus-test-runner 12.10.1: Run executables under a new DBus session for testing
 dev-util/ddd 3.3.12-r3 3.3.12-r4: Graphical front-end for command-line debuggers
 dev-util/debhelper 9.20150101 9.20151225 9.20160115: Collection of programs that can be used to automate common tasks in debian/rules
-dev-util/debootstrap 1.0.75 1.0.78-r1: Debian/Ubuntu bootstrap scripts
+dev-util/debootstrap 1.0.75 1.0.78-r1 1.0.79: Debian/Ubuntu bootstrap scripts
 dev-util/debugedit 5.3.5-r1: standalone debugedit taken from rpm
 dev-util/dejagnu 1.4.4-r3 1.5: framework for testing other programs
 dev-util/desktop-file-utils 0.21 0.22: Command line utilities to work with desktop menu entries
@@ -13019,7 +13019,7 @@ media-sound/mpd 0.19.10 0.19.11 0.19.12: The Music Player Daemon (mpd)
 media-sound/mpdas 0.4.0-r1 0.4.1: An AudioScrobbler client for MPD written in C++
 media-sound/mpdscribble 0.22: An MPD client that submits information to Audioscrobbler
 media-sound/mpfc 1.3.7-r1 1.3.8.1 1.3.8.1-r1 1.3.8.1-r2: Music Player For Console
-media-sound/mpg123 1.18.1 1.22.4 1.23.1: a realtime MPEG 1.0/2.0/2.5 audio player for layers 1, 2 and 3
+media-sound/mpg123 1.18.1 1.22.4 1.23.1 1.23.2: a realtime MPEG 1.0/2.0/2.5 audio player for layers 1, 2 and 3
 media-sound/mpg321 0.3.1-r1 0.3.2: A realtime MPEG 1.0/2.0/2.5 audio player for layers 1, 2 and 3
 media-sound/mplay 0.80: A Curses front-end for mplayer
 media-sound/mserv 0.35-r1: Jukebox-style music server
