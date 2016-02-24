@@ -1,8 +1,8 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="4"
+EAPI=5
 
 DESCRIPTION="Utility to output and modify parameters on a SCSI device, like hdparm"
 HOMEPAGE="http://sg.danny.cz/sg/sdparm.html"
@@ -14,7 +14,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86
 IUSE=""
 
 # Older releases contain a conflicting sas_disk_blink
-RDEPEND=">=sys-apps/sg3_utils-1.28"
+RDEPEND=">=sys-apps/sg3_utils-1.39"
 DEPEND="${RDEPEND}"
 
 DOCS=( AUTHORS ChangeLog CREDITS README notes.txt )
@@ -30,6 +30,6 @@ src_install() {
 	default
 
 	# These don't exist yet. Someone wanna copy hdparm's and make them work? :)
-	#newinitd ${FILESDIR}/sdparm-init-7 sdparm
-	#newconfd ${FILESDIR}/sdparm-conf.d.3 sdparm
+	#newinitd ${FILESDIR}/sdparm-init-1 sdparm
+	#newconfd ${FILESDIR}/sdparm-conf.d-1 sdparm
 }
