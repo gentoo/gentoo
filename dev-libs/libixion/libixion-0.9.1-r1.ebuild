@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 EGIT_REPO_URI="https://gitlab.com/ixion/ixion.git"
 
@@ -17,7 +17,7 @@ HOMEPAGE="https://gitlab.com/ixion/ixion"
 [[ ${PV} == 9999 ]] || SRC_URI="http://kohei.us/files/ixion/src/${P}.tar.xz"
 
 LICENSE="MIT"
-SLOT="0/0.10"
+SLOT="0/0.10" # based on SONAME of libixion.so
 [[ ${PV} == 9999 ]] || \
 KEYWORDS="~amd64 ~arm ~ppc ~x86"
 IUSE="python static-libs"
@@ -37,9 +37,11 @@ pkg_setup() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}/${PN}-0.9.1-typo.patch" \
-		"${FILESDIR}/${PN}-0.9.1-python-optional.patch" \
-		"${FILESDIR}/${PN}-0.9.1-python-symbol.patch"
+	eapply_user
+
+	eapply "${FILESDIR}/${PN}-0.9.1-typo.patch" \
+		"${FILESDIR}/${PN}-0.9.1-python-optional.patch"
+
 	eautoreconf
 }
 
