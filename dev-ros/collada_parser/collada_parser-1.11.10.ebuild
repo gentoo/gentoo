@@ -9,18 +9,17 @@ ROS_SUBDIR=${PN}
 
 inherit ros-catkin
 
-DESCRIPTION="Packages for modeling various aspects of robot information"
+DESCRIPTION="C++ parser for the Collada robot description format"
 LICENSE="BSD"
 SLOT="0"
 IUSE=""
 
 RDEPEND="
-	dev-ros/collada_parser
-	dev-ros/collada_urdf
-	dev-ros/joint_state_publisher
-	dev-ros/kdl_parser
-	dev-ros/kdl_parser_py
-	dev-ros/urdf
+	dev-libs/boost:=
 	dev-ros/urdf_parser_plugin
+	dev-ros/roscpp
+	dev-ros/class_loader
+	dev-libs/urdfdom_headers
+	dev-libs/collada-dom
 "
 DEPEND="${RDEPEND}"

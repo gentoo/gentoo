@@ -32,7 +32,7 @@ RDEPEND="
 	dev-python/sip[${PYTHON_USEDEP}]
 "
 DEPEND="${RDEPEND}"
-PATCHES=( "${FILESDIR}/py3.patch" "${FILESDIR}/libdir.patch" )
+PATCHES=( "${FILESDIR}/py3.patch" )
 
 if [ "${PV#9999}" != "${PV}" ] ; then
 	S=${WORKDIR}/${P}/python_orocos_kdl
