@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -13,7 +13,7 @@ HOMEPAGE="http://drupal.org/"
 SRC_URI="http://drupal.org/files/projects/${P}.tar.gz"
 
 LICENSE="GPL-2"
-KEYWORDS="~alpha ~amd64 ~ppc ~x86"
+KEYWORDS=""
 IUSE="+mysql postgres"
 
 RDEPEND="
