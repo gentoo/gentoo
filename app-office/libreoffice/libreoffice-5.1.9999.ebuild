@@ -257,6 +257,9 @@ REQUIRED_USE="
 "
 
 PATCHES=(
+	# submitted upstream
+	"${FILESDIR}/${PN}-5.1.0.3-isnan.patch"
+
 	# not upstreamable stuff
 	"${FILESDIR}/${PN}-4.4-system-pyuno.patch"
 )
