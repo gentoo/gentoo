@@ -103,7 +103,28 @@ pkg_preinst() {
 		done
 
 		if [[ ${old_pythons[@]} ]]; then
-			einfo "Keeping the following Python preference: ${old_pythons[*]}"
+			elog "You seem to have just upgraded into the new version of python-exec"
+			elog "that uses python-exec.conf for configuration. The ebuild has attempted"
+			elog "to convert your previous configuration to the new format, resulting"
+			elog "in the following preferences (most preferred version first):"
+			elog
+			for py in "${old_pythons[@]}"; do
+				elog "  ${py}"
+			done
+			elog
+			elog "Those interpreters will be preferred when running Python scripts or"
+			elog "calling wrapped Python executables (python, python2, pydoc...)."
+			elog "If none of the preferred interpreters are supported, python-exec will"
+			elog "fall back to the newest supported Python version."
+			elog
+			elog "Please note that due to the ambiguous character of the old settings,"
+			elog "you may want to modify the preference list yourself. In order to do so,"
+			elog "open the following file in your favorite editor:"
+			elog
+			elog "  ${EROOT}etc/python-exec/python-exec.conf"
+			elog
+			elog "For more information on the new configuration format, please read"
+			elog "the comment on top of the installed configuration file."
 
 			local IFS=$'\n'
 			echo "${old_pythons[*]}" \
