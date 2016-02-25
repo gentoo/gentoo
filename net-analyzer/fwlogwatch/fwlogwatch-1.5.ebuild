@@ -13,9 +13,10 @@ SRC_URI="${HOMEPAGE}sw/${P}.tar.bz2"
 KEYWORDS="~amd64 ~ppc ~sparc ~x86"
 LICENSE="GPL-1"
 SLOT="0"
-IUSE="nls zlib"
+IUSE="geoip nls zlib"
 
 RDEPEND="
+	geoip? ( dev-libs/geoip )
 	zlib? ( sys-libs/zlib )
 "
 DEPEND="
@@ -50,6 +51,11 @@ src_configure() {
 		sed -i Makefile -e '/^LIBS/ s|-lz||g' || die
 	else
 		append-cflags -DHAVE_ZLIB
+	fi
+
+	if use geoip; then
+		append-cflags -DHAVE_GEOIP
+		sed -i Makefile -e '/^LIBS/ s| #| -lGeoIP #|g' || die
 	fi
 
 	use nls && append-cflags -DHAVE_GETTEXT
