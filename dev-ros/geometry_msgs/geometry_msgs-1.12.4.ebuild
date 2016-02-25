@@ -12,7 +12,7 @@ CATKIN_MESSAGES_TRANSITIVE_DEPS="dev-ros/std_msgs"
 
 inherit ros-catkin
 
-DESCRIPTION="Standardized interface for the diagnostic and runtime monitoring systems in ROS"
+DESCRIPTION="Messages for common geometric primitives such as points, vectors, and poses"
 LICENSE="BSD"
 SLOT="0"
 IUSE=""

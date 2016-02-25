@@ -12,7 +12,7 @@ CATKIN_MESSAGES_TRANSITIVE_DEPS="dev-ros/std_msgs"
 
 inherit ros-catkin
 
-DESCRIPTION="Standardized interface for the diagnostic and runtime monitoring systems in ROS"
+DESCRIPTION="Common messages to interact with an action server and an action client"
 LICENSE="BSD"
 SLOT="0"
 IUSE=""
