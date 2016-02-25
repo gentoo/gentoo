@@ -18,17 +18,19 @@ SLOT="0"
 KEYWORDS=""
 IUSE="test"
 
-RDEPEND="
-	>=dev-python/packaging-15.3-r1[${PYTHON_USEDEP}]
-	>=dev-python/six-1.10.0[${PYTHON_USEDEP}]
-	"
+RDEPEND=""
+#	>=dev-python/packaging-16.4[${PYTHON_USEDEP}]
+#	>=dev-python/six-1.10.0[${PYTHON_USEDEP}]
+#	"
 DEPEND="${RDEPEND}
 	test? (
 		>=dev-python/pytest-2.8[${PYTHON_USEDEP}]
 		dev-python/mock[${PYTHON_USEDEP}]
 	)
 "
-PDEPEND=">=dev-python/certifi-2015.11.20[${PYTHON_USEDEP}]"
+#	>=dev-python/pyparsing-2.0.6[${PYTHON_USEDEP}]
+PDEPEND="
+	>=dev-python/certifi-2015.11.20[${PYTHON_USEDEP}]"
 
 # Force in-source build because build system modifies sources.
 DISTUTILS_IN_SOURCE_BUILD=1
@@ -36,7 +38,7 @@ DISTUTILS_IN_SOURCE_BUILD=1
 DOCS=( README.txt docs/{easy_install.txt,pkg_resources.txt,setuptools.txt} )
 
 python_prepare_all() {
-	rm -r ./pkg_resources/_vendor || die
+#	rm -r ./pkg_resources/_vendor || die
 	# disable tests requiring a network connection
 	rm setuptools/tests/test_packageindex.py || die
 
