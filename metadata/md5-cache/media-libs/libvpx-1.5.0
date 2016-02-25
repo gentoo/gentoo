@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install prepare test
-DEPEND=abi_x86_32? ( dev-lang/yasm ) abi_x86_64? ( dev-lang/yasm ) x86-fbsd? ( dev-lang/yasm ) amd64-fbsd? ( dev-lang/yasm ) doc? ( app-doc/doxygen dev-lang/php )
+DEPEND=abi_x86_32? ( dev-lang/yasm ) abi_x86_64? ( dev-lang/yasm ) abi_x86_x32? ( dev-lang/yasm ) x86-fbsd? ( dev-lang/yasm ) amd64-fbsd? ( dev-lang/yasm ) doc? ( app-doc/doxygen dev-lang/php )
 DESCRIPTION=WebM VP8 Codec SDK
 EAPI=5
 HOMEPAGE=http://www.webmproject.org
@@ -12,4 +12,4 @@ SLOT=0/3
 SRC_URI=http://storage.googleapis.com/downloads.webmproject.org/releases/webm/libvpx-1.5.0.tar.bz2 test? ( mirror://gentoo/libvpx-testdata-1.5.0.tar.bz2 )
 _eclass_exported_funcs=src_prepare:- src_configure:multilib-minimal src_compile:multilib-minimal src_test:multilib-minimal src_install:multilib-minimal
 _eclasses_=eutils	9d81603248f2ba3ec59124320d123e5e	multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	3972ca401cf7dbb430df9995f5d8d580	multilib-build	8fe2e81aeb36cdf8a6cc5f50443879cc	multilib-minimal	0224dee31c0f98405d572e14ad6dee65	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
-_md5_=172e8a3098215b9bd0e4a92b49f1a2e4
+_md5_=4fb2c92c6d990a7cca63d738cfb10018
