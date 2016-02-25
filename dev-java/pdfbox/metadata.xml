@@ -5,7 +5,8 @@
 		<email>java@gentoo.org</email>
 		<name>Java</name>
 	</maintainer>
+    <longdescription>The Apache PDFBox™ library is an open source Java tool for working with PDF documents. This project allows creation of new PDF documents, manipulation of existing documents and the ability to extract content from documents. Apache PDFBox also includes several command line utilities.</longdescription>
 	<upstream>
-		<remote-id type="sourceforge">pdfbox</remote-id>
+		<remote-id type="github">apache/pdfbox</remote-id>
 	</upstream>
 </pkgmetadata>
