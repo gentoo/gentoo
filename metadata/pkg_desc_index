@@ -482,7 +482,6 @@ app-cdr/recorder 1.4.5 1.4.5-r1: A simple GTK+ disc burner
 app-cdr/sync2cd 1.3 1.3-r1: An incremental archiving tool to CD/DVD
 app-cdr/tkdvd 4.0.9-r1: A Tcl/Tk GUI for writing DVDs and CDs
 app-cdr/uif2iso 0.1.7c: Converts MagicISO CD-images to iso
-app-cdr/webcdwriter 2.8.2-r2: Make CD-writer(s) available to all users in your network
 app-cdr/xbiso 0.6.1 0.6.1-r1 0.6.1-r2: Xbox xdvdfs ISO extraction utility
 app-cdr/xcdroast 0.98_alpha16 0.98_alpha16-r1: Lightweight cdrtools front-end for CD and DVD writing
 app-cdr/xdvdfs-tools 2.1-r1: Tools for manipulating Xbox ISO images
@@ -1372,7 +1371,6 @@ app-eselect/eselect-lapack 0.1: LAPACK module for eselect
 app-eselect/eselect-lcdfilter 1 2: Eselect module to choose Freetype infinality-enhanced LCD filtering settings
 app-eselect/eselect-lib-bin-symlink 0.1 0.1.1 9999: An eselect library to manage executable symlinks
 app-eselect/eselect-lua 1: Lua eselect module
-app-eselect/eselect-maven 0.2-r1 0.2-r3: Manages Maven symlinks
 app-eselect/eselect-mesa 0.0.10: Utility to change the Mesa OpenGL driver being used
 app-eselect/eselect-metasploit 0.16: eselect module for metasploit
 app-eselect/eselect-miniaudicle 1.0.1-r1: Manages the /usr/bin/miniAudicle symlink
