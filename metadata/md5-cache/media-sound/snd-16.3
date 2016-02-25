@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install prepare setup
+DEPEND=!<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Snd is a sound editor
+EAPI=6
+HOMEPAGE=http://ccrma.stanford.edu/software/snd/
+IUSE=alsa doc fftw gmp gsl gtk jack ladspa motif opengl oss portaudio pulseaudio readline ruby +s7
+KEYWORDS=~amd64 ~ppc ~x86 ~x86-interix ~amd64-linux ~x86-linux
+LICENSE=Snd BSD-2 HPND GPL-2+ LGPL-2.1+ LGPL-3+ ruby? ( free-noncomm ) s7? ( free-noncomm )
+RDEPEND=media-libs/audiofile alsa? ( media-libs/alsa-lib ) fftw? ( sci-libs/fftw ) gmp? ( dev-libs/gmp dev-libs/mpc dev-libs/mpfr ) gsl? ( sci-libs/gsl ) gtk? ( x11-libs/gtk+:3 x11-libs/pango x11-libs/cairo opengl? ( x11-libs/gtkglext ) ) jack? ( media-sound/jack-audio-connection-kit ) ladspa? ( media-libs/ladspa-sdk ) motif? ( >=x11-libs/motif-2.3:0 ) opengl? ( virtual/opengl ) portaudio? ( media-libs/portaudio ) pulseaudio? ( media-sound/pulseaudio ) readline? ( sys-libs/readline ) ruby? ( dev-lang/ruby )
+REQUIRED_USE=portaudio? ( !pulseaudio ) pulseaudio? ( !portaudio ) ^^ ( ( !ruby !s7 ) ( ruby !s7 ) ( !ruby s7 ) )
+SLOT=0
+SRC_URI=ftp://ccrma-ftp.stanford.edu/pub/Lisp/snd-16.3.tar.gz
+_eclass_exported_funcs=pkg_setup:- src_prepare:- src_configure:- src_compile:- src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	9d81603248f2ba3ec59124320d123e5e	flag-o-matic	d270fa247153df66074f795fa42dba3e	libtool	b75230758539a7da029e24afdb693960	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_md5_=fbe5cb41233023052ea2d7992c86a9e2

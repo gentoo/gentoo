@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile install preinst prepare setup test unpack
+DEPEND=dev-java/fontbox:1.8 dev-java/jempbox:1.8 dev-java/bcmail:1.45 dev-java/bcprov:1.45 >=dev-java/commons-logging-1.1.1:0 dev-java/icu4j:55 >=virtual/jdk-1.6 app-arch/unzip test? ( dev-java/junit:4 ) >=dev-java/java-config-2.2.0 source? ( app-arch/zip )
+DESCRIPTION=Java library and utilities for working with PDF documents
+EAPI=5
+HOMEPAGE=http://pdfbox.apache.org/
+IUSE=test elibc_FreeBSD doc source elibc_FreeBSD
+KEYWORDS=~amd64 ~ppc64 ~x86
+LICENSE=Apache-2.0
+RDEPEND=dev-java/fontbox:1.8 dev-java/jempbox:1.8 dev-java/bcmail:1.45 dev-java/bcprov:1.45 >=dev-java/commons-logging-1.1.1:0 dev-java/icu4j:55 >=virtual/jre-1.6 >=dev-java/java-config-2.2.0 source? ( app-arch/zip )
+RESTRICT=test
+SLOT=1.8
+SRC_URI=mirror://apache/pdfbox/1.8.11/pdfbox-1.8.11-src.zip http://repo2.maven.org/maven2/com/adobe/pdf/pcfi/2010.08.09/pcfi-2010.08.09.jar
+_eclass_exported_funcs=pkg_preinst:java-pkg-2 pkg_setup:java-pkg-2 src_unpack:- src_prepare:java-pkg-2 src_compile:- src_test:- src_install:-
+_eclasses_=eutils	9d81603248f2ba3ec59124320d123e5e	java-pkg-2	b02dc1e46b3648e467b5fbdf7857cf28	java-pkg-simple	bdf24e52707f01512ffea6d3aa05425b	java-utils-2	4f0e83a2c108b9f3d74ecebf32e2f483	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=49f373744039beec4cf97773eee9f0c5
