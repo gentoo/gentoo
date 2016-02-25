@@ -12478,7 +12478,7 @@ media-libs/spandsp 0.0.6_pre12-r1 0.0.6_pre21 0.0.6: SpanDSP is a library of DSP
 media-libs/speex 1.2_rc1-r2: Audio compression format designed for speech
 media-libs/sratom 0.4.4 0.4.6: Library for serialising LV2 atoms to/from RDF, particularly the Turtle syntax
 media-libs/stimg 0.1.0: Simple and tiny image loading library
-media-libs/stk 4.4.4-r1 4.5.0: Synthesis ToolKit in C++
+media-libs/stk 4.4.4-r1 4.5.0 4.5.1: Synthesis ToolKit in C++
 media-libs/stops 0.3.0 0.3.0-r1: Organ stops for aeolus by Fons Adriaensen <fons.adriaensen@skynet.be>
 media-libs/sublib 0.9: Subtitling library that allows for subtitle editing, conversion and synchronization
 media-libs/suil 0.8.0 0.8.2: Lightweight C library for loading and wrapping LV2 plugin UIs

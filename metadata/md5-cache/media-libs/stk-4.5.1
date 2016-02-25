@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=alsa? ( media-libs/alsa-lib ) jack? ( media-sound/jack-audio-connection-kit ) virtual/pkgconfig dev-lang/perl !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Synthesis ToolKit in C++
+EAPI=5
+HOMEPAGE=http://ccrma.stanford.edu/software/stk/
+IUSE=alsa debug doc jack oss static-libs
+KEYWORDS=~amd64 ~x86
+LICENSE=MIT
+RDEPEND=alsa? ( media-libs/alsa-lib ) jack? ( media-sound/jack-audio-connection-kit )
+SLOT=0
+SRC_URI=http://ccrma.stanford.edu/software/stk/release/stk-4.5.1.tar.gz
+_eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	9d81603248f2ba3ec59124320d123e5e	libtool	b75230758539a7da029e24afdb693960	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_md5_=01161c933664e8d33024b34ce632345d
