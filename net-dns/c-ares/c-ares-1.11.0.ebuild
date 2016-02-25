@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit eutils multilib-minimal
+inherit autotools eutils multilib-minimal
 
 DESCRIPTION="C library that resolves names asynchronously"
 HOMEPAGE="http://c-ares.haxx.se/"
@@ -22,6 +22,11 @@ DOCS=( AUTHORS CHANGES NEWS README.md RELEASE-NOTES TODO )
 MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/ares_build.h
 )
+
+src_prepare() {
+	epatch "${FILESDIR}"/remove-tests.patch
+	eautoreconf
+}
 
 multilib_src_configure() {
 	ECONF_SOURCE=${S} \

@@ -1,0 +1,14 @@
+diff -Naur c-ares-1.11.0.orig/configure.ac c-ares-1.11.0/configure.ac
+--- c-ares-1.11.0.orig/configure.ac	2016-02-19 09:09:13.000000000 +0000
++++ c-ares-1.11.0/configure.ac	2016-02-25 01:26:53.092956316 +0000
+@@ -877,10 +877,6 @@
+ 
+ XC_CHECK_BUILD_FLAGS
+ 
+-if test "x$cross_compiling" = "xno"; then
+-  AC_CONFIG_SUBDIRS([test])
+-fi
+-
+ AC_CONFIG_FILES([Makefile libcares.pc])
+ AC_OUTPUT
+ XC_AMEND_DISTCLEAN(['.'])
