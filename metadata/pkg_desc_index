@@ -5641,7 +5641,7 @@ dev-perl/HTML-Template-JIT 0.50.0-r1: a just-in-time compiler for HTML::Template
 dev-perl/HTML-Template-Pro 0.951.0: Perl/XS module to use HTML Templates from CGI scripts
 dev-perl/HTML-TokeParser-Simple 3.160.0-r1: Easy to use HTML::TokeParser interface
 dev-perl/HTML-Tree 4.200.0-r1 5.30.0-r1: A library to manage HTML-Tree in PERL
-dev-perl/HTTP-Body 1.190.0 1.220.0: HTTP Body Parser
+dev-perl/HTTP-Body 1.220.0: HTTP Body Parser
 dev-perl/HTTP-BrowserDetect 1.500.0 1.770.0 2.40.0 2.80.0: Determine Web browser, version, and platform from an HTTP user agent string
 dev-perl/HTTP-Cache-Transparent 1.100.0-r1: Cache the result of http get-requests persistently
 dev-perl/HTTP-Cookies 6.10.0: Storage of cookies
