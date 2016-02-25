@@ -21,5 +21,4 @@ RDEPEND=""
 DEPEND="${RDEPEND}
 	test? ( dev-cpp/gtest )
 "
-RDEPEND="${RDEPEND}
-	dev-libs/boost"
+RDEPEND="${RDEPEND}"
