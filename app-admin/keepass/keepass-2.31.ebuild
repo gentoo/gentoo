@@ -25,6 +25,9 @@ DEPEND="${COMMON_DEPEND}
 S=${WORKDIR}
 
 src_prepare() {
+	# Force text mode for >grep-2.21 (bug #574480)
+	epatch "${FILESDIR}/${PN}-2.31-force-text-grep.patch"
+
 	# Remove Windows-specific things
 	pushd Build > /dev/null || die
 	. PrepMonoDev.sh || die
