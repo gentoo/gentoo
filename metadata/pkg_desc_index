@@ -7454,7 +7454,7 @@ dev-python/piddle 1.0.15 1.0.15-r1: Cross-media, cross-platform 2D graphics pack
 dev-python/pika 0.9.14 0.10.0: Pure-Python implementation of the AMQP
 dev-python/pillow 2.8.1 2.8.2 2.9.0 3.0.0 3.0.0-r1 3.1.0 3.1.1: Python Imaging Library (fork)
 dev-python/pillowfight 0.2: Eases the transition from PIL to Pillow
-dev-python/pip 7.1.2 8.0.2-r1 8.0.2-r2: Installs python packages -- replacement for easy_install
+dev-python/pip 7.1.2 8.0.2-r1 8.0.2-r2 8.0.3: Installs python packages -- replacement for easy_install
 dev-python/pivy 0.5_alpha20110303-r1 9999: Coin3d binding for Python
 dev-python/pkgconfig 1.1.0: Interface Python with pkg-config
 dev-python/pkginfo 1.2.1: Provides an API for querying the distutils metadata written in a PKG-INFO file
