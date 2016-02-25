@@ -31,6 +31,7 @@ PATCHES=(
 	# from git master
 	"${FILESDIR}/${PN}-0.1.1-dereference-before-null-check.patch"
 	"${FILESDIR}/${PN}-0.1.1-do-not-let-AbiDocument_parse-throw.patch"
+	"${FILESDIR}/${PN}-0.1.1-boost-1.59.patch"
 )
 
 src_configure() {
