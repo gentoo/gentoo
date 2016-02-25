@@ -1,6 +1,27 @@
---- snd-12.6/configure.ac.orig
-+++ snd-12.6/configure.ac
-@@ -1468,7 +1468,7 @@
+Fix underlinking due to missing -ldl linking:
+* snd-xen.o:snd-xen.c:function g_dlinit_w: error: undefined reference to 'dlsym'
+* snd-xen.o:snd-xen.c:function g_dlinit_w: error: undefined reference to 'dlerror'
+https://bugs.gentoo.org/show_bug.cgi?id=540594
+
+Fix --as-needed issues due to linking flags in LDFLAGS
+
+--- snd-12.8/configure.ac
++++ snd-12.8/configure.ac
+@@ -172,6 +172,13 @@
+ #--------------------------------------------------------------------------------
+ 
+ LIBS=""
++AC_SEARCH_LIBS([dlopen], [dl dld], [], [
++	AC_MSG_ERROR([unable to find the dlopen() function])
++])
++LIBDL_LIBS="$LIBS"
++AC_SUBST([LIBDL_LIBS])
++
++LIBS=""
+ AC_CHECK_LIB(m,main)
+ AC_CHECK_LIB(c,main)
+ # AC_CHECK_LIB(dl,main)
+@@ -1469,7 +1476,7 @@
          LDSO_FLAGS="-shared"
          LIBS="$LIBS -lm"
  	if test "$ac_cv_header_dlfcn_h" = yes ; then 
@@ -9,16 +30,16 @@
  	fi 
  	if test "$GCC" = yes ; then
  	  SO_FLAGS="-fPIC $SO_FLAGS"
-@@ -1979,7 +1979,7 @@
+@@ -1980,7 +1987,7 @@
  if test "$ac_snd_have_extension_language" = yes ; then
    if test "$ac_snd_have_gui" = yes ; then
      if test "$ac_cv_header_pthread_h" = yes ; then
 -      LDFLAGS="$LDFLAGS -lpthread"
-+      LIBS="$LIBS -lpthread"
++      LIBS="$LIBS -pthread"
      fi
    fi
  fi
-@@ -1987,14 +1987,14 @@
+@@ -1988,14 +1995,14 @@
  if test "$ac_snd_have_extension_language" = no ; then
    if test "$ac_snd_have_gui" = no ; then
      if test "$ac_cv_header_dlfcn_h" = yes ; then
@@ -35,3 +56,22 @@
  fi
  
  
+--- snd-12.8/makefile.in
++++ snd-12.8/makefile.in
+@@ -20,6 +20,7 @@
+ LDFLAGS = @LDFLAGS@
+ 
+ LIBS = @LIBS@
++LIBDL_LIBS = @LIBDL_LIBS@
+ XEN_LIBS = @XEN_LIBS@
+ GTK_LIBS = @GTK_LIBS@
+ GTK_LD_LIBS = @GTK_LD_LIBS@
+@@ -96,7 +97,7 @@
+ main_target: @MAKE_TARGET@
+ 
+ snd: $(SNDLIB_HEADERS) $(SND_HEADERS) $(GX_HEADERS) $(S7_HEADERS) $(S7_O_FILES) $(SNDLIB_FILES) $(O_FILES) $(GX_FILES) $(GL_FILES)
+-	$(CC) $(LDFLAGS) $(CFLAGS) $(S7_O_FILES) $(SNDLIB_FILES) $(O_FILES) $(GX_FILES) $(GL_FILES) -o snd $(SNDLIB_LIB) $(XEN_LIBS) $(GTK_LIBS) $(GL_LIBS) $(MOTIF_LIBS) $(JACK_LIBS) $(AUDIO_LIB) $(FFTW_LIBS) $(GSL_LIBS) $(FAM_LIB) $(GMP_LIBS) $(LIBS)
++	$(CC) $(LDFLAGS) $(CFLAGS) $(S7_O_FILES) $(SNDLIB_FILES) $(O_FILES) $(GX_FILES) $(GL_FILES) -o snd $(SNDLIB_LIB) $(XEN_LIBS) $(GTK_LIBS) $(GL_LIBS) $(MOTIF_LIBS) $(JACK_LIBS) $(AUDIO_LIB) $(FFTW_LIBS) $(GSL_LIBS) $(FAM_LIB) $(GMP_LIBS) $(LIBDL_LIBS) $(LIBS)
+ 
+ xm: 	xen.h mus-config.h $(S7_HEADERS)
+ 	$(CC) -c xm.c -DUSE_SND=0 $(DEFS) $(SO_FLAGS) $(GTK_CFLAGS) $(CAIRO_CFLAGS) $(CFLAGS) $(XEN_CFLAGS) $(MOTIF_FLAGS) $(GSL_FLAGS) $(JACK_FLAGS) $(GL_FLAGS)
