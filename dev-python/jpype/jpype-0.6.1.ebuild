@@ -6,7 +6,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 python3_{3,4,5} )
 
-inherit distutils-r1 java-pkg-opt-2
+inherit java-pkg-2 distutils-r1
 
 DESCRIPTION="JPype is an effort to allow Python programs full access to Java class libraries"
 HOMEPAGE="https://github.com/originell/jpype"
@@ -22,10 +22,6 @@ S="${WORKDIR}/${P}"
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	>=virtual/jdk-1.6"
-
-pkg_setup() {
-	java-pkg_init
-}
 
 python_compile() {
 	if ! python_is_python3; then
