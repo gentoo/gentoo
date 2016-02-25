@@ -185,14 +185,6 @@ dev-java/sux4j
 =sys-devel/llvm-3.8.0*
 =sys-devel/clang-3.8.0*
 
-# James Le Cuirot <chewi@gentoo.org> (26 Jan 2016)
-# No new release since 2008. Removal in 30 days.
-app-cdr/webcdwriter
-
-# James Le Cuirot <chewi@gentoo.org> (26 Jan 2016)
-# Now part of eselect-java. Removal in 30 days.
-app-eselect/eselect-maven
-
 # Sergey Popov <pinkbyte@gentoo.org> (20 Jan 2016)
 # Mask new versions of Boost - they are known to cause breakages
 ~dev-util/boost-build-1.60.0
