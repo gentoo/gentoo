@@ -1,0 +1,13 @@
+Index: stk-4.5.0/configure.ac
+===================================================================
+--- stk-4.5.0.orig/configure.ac
++++ stk-4.5.0/configure.ac
+@@ -100,7 +100,7 @@ fi
+ CPPFLAGS="$CPPFLAGS $cppflag"
+ 
+ # For debugging and optimization ... overwrite default because it has both -g and -O2
+-CXXFLAGS="$cxxflag"
++CXXFLAGS="$CXXFLAGS $cxxflag"
+ 
+ # Check compiler and use -Wall if gnu.
+ if [test $GXX = "yes" ;] then
