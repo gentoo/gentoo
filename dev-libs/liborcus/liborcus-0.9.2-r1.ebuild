@@ -17,9 +17,8 @@ HOMEPAGE="https://gitlab.com/orcus/orcus/blob/master/README.md"
 LICENSE="MIT"
 SLOT="0/0.10" # based on SONAME of liborcus.so
 
-#[[ ${PV} == 9999 ]] || \
-#KEYWORDS="~amd64 ~arm ~ppc ~x86"
-KEYWORDS=""
+[[ ${PV} == 9999 ]] || \
+KEYWORDS="~amd64 ~arm ~ppc ~x86"
 
 IUSE="+spreadsheet-model static-libs tools"
 
