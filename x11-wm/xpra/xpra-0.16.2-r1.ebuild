@@ -1,11 +1,11 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 EAPI=5
 
 # PyCObject_Check and PyCObject_AsVoidPtr vanished with python 3.3, and setup.py not python3.2 compat
 PYTHON_COMPAT=( python2_7 )
-inherit distutils-r1 eutils flag-o-matic
+inherit distutils-r1 eutils flag-o-matic user
 
 DESCRIPTION="X Persistent Remote Apps (xpra) and Partitioning WM (parti) based on wimpiggy"
 HOMEPAGE="http://xpra.org/ http://xpra.org/src/"
@@ -77,6 +77,10 @@ RDEPEND="${COMMON_DEPEND}
 DEPEND="${COMMON_DEPEND}
 	virtual/pkgconfig
 	>=dev-python/cython-0.16[${PYTHON_USEDEP}]"
+
+pkg_postinst() {
+	enewgroup ${PN}
+}
 
 python_prepare_all() {
 	rm -rf rencode || die
