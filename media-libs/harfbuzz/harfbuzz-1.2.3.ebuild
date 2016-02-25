@@ -9,7 +9,7 @@ EGIT_REPO_URI="git://anongit.freedesktop.org/harfbuzz"
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit eutils libtool multilib-minimal python-any-r1
+inherit eutils libtool multilib-minimal python-any-r1 xdg-utils
 
 DESCRIPTION="An OpenType text shaping engine"
 HOMEPAGE="http://www.freedesktop.org/wiki/Software/HarfBuzz"
@@ -74,6 +74,7 @@ src_prepare() {
 }
 
 multilib_src_configure() {
+	xdg_environment_reset
 	ECONF_SOURCE="${S}" \
 	# harfbuzz-gobject only used for instrospection, bug #535852
 	econf \
