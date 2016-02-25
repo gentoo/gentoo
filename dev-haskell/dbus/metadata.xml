@@ -4,10 +4,6 @@
 	<maintainer type="project">
 		<email>haskell@gentoo.org</email>
 	</maintainer>
-	<maintainer type="project">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Proxy Maintainers</name>
-	</maintainer>
 	<longdescription>
 		D-Bus is a simple, message-based protocol for inter-process
 		communication, which allows applications to interact with other parts of
