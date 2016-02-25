@@ -6,7 +6,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python{2_7,3_3,3_4} )
 
-inherit eutils multilib python-r1 toolchain-funcs versionator
+inherit eutils multilib python-r1 toolchain-funcs versionator xdg-utils
 
 MY_PV=$(get_version_component_range 1-2)
 
@@ -33,6 +33,7 @@ src_prepare() {
 }
 
 src_configure() {
+	xdg_environment_reset
 	econf \
 		$(use_enable introspection) \
 		$(use_enable static-libs static)
