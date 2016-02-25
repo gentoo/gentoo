@@ -42,7 +42,7 @@ app-admin/389-ds-console 1.2.6-r1: Java based remote management console used for
 app-admin/abrt 2.0.12-r2: Automatic bug detection and reporting tool
 app-admin/amazon-ec2-init 20101127: Init script to setup Amazon EC2 instance parameters
 app-admin/analog 6.0-r4: A webserver log analyzer
-app-admin/ansible 1.9.4 2.0.0.1-r2 2.0.0.2 9999: Model-driven deployment, config management, and command execution framework
+app-admin/ansible 1.9.4 2.0.0.1-r2 2.0.0.2 2.0.1.0 9999: Model-driven deployment, config management, and command execution framework
 app-admin/apache-tools 2.2.31 2.4.16 2.4.18: Useful Apache tools - htdigest, htpasswd, ab, htdbm
 app-admin/apachetop 0.12.6-r1 0.12.6-r2: A realtime Apache log analyzer
 app-admin/apg 2.3.0b-r5: Another Password Generator
