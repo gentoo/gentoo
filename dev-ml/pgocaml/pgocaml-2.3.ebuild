@@ -19,7 +19,7 @@ IUSE="camlp4 doc"
 
 DEPEND="dev-ml/calendar:=
 	dev-ml/csv:=
-	dev-ml/pcre-ocaml:=
+	dev-ml/ocaml-re:=
 	camlp4? ( dev-ml/camlp4:= )"
 RDEPEND="${DEPEND}"
 
