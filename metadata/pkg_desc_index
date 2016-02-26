@@ -3092,7 +3092,7 @@ dev-go/go-crypto 0_pre20150808 0_pre20160126 9999: Go supplementary cryptography
 dev-go/go-eapache-queue 1.0.2 9999: Fast golang queue using ring-buffer
 dev-go/go-md2man 1.0.3: A utility to convert markdown to man pages
 dev-go/go-net 0_pre20150804 0_pre20160216 9999: Go supplementary network libraries
-dev-go/go-oauth2 0_pre20150701 0_pre20160220 9999: Go client implementation for OAuth 2.0 spec
+dev-go/go-oauth2 0_pre20150701 0_pre20160222 9999: Go client implementation for OAuth 2.0 spec
 dev-go/go-protobuf 0_pre20150809 0_pre20160216 9999: Go support for Google's protocol buffers
 dev-go/go-resiliency 1.0.0 9999: Resiliency patterns for golang
 dev-go/go-snappy 0_pre20150729 0_pre20160213 9999: The Snappy compression format in the Go programming language.
