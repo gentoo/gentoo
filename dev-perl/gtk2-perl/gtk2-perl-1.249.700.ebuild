@@ -29,5 +29,5 @@ DEPEND="${RDEPEND}
 "
 
 src_test(){
-	virtx perl-module_src_test || die Tests failed
+	virtx perl-module_src_test
 }
