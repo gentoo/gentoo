@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -17,6 +17,10 @@
 #
 
 #--- END OF EXAMPLES ---
+
+# Arfrever Frehtes Taifersar Arahesis <arfrever.fta@gmail.com> (26 Feb 2016)
+# KDE Frameworks 5 not yet stable.
+>=net-irc/kvirc-4.4_pre20150000000000 kde
 
 # Justin Lecher <jlec@gentoo.org> (27 Oct 2015)
 # No stable dev-python/PyQt5 for now
