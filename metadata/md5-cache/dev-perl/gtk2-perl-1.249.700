@@ -11,4 +11,4 @@ SLOT=0
 SRC_URI=mirror://cpan/authors/id/X/XA/XAOC/Gtk2-1.2497.tar.gz
 _eclass_exported_funcs=src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:- src_install:perl-module
 _eclasses_=multiprocessing	e32940a7b2a9992ad217eccddb84d548	perl-functions	15aff0b9cba2282790142295ceb6be0c	perl-module	b2108b3c85ac7a6a6a9b035b54f6813c	virtualx	86c9305a59b3e0459e7fbef3a5f30b96
-_md5_=0336f084155659030cc7cc624f8e668f
+_md5_=85da0b07790c8c5bec8a985f66288bfb
