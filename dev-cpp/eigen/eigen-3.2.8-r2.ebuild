@@ -76,10 +76,6 @@ src_prepare() {
 
 	sed -i -e "/Unknown build type/d" CMakeLists.txt || die
 
-	sed \
-		-e '/Cflags/s|:.*|: -I${CMAKE_INSTALL_PREFIX}/${INCLUDE_INSTALL_DIR}|g' \
-		-i eigen3.pc.in || die
-
 	cmake-utils_src_prepare
 }
 
