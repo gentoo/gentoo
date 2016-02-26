@@ -13,7 +13,7 @@ SRC_URI="http://ftp.daper.net/pub/soft/moc/unstable/${PN}-${MY_PV}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~ppc ~ppc64 ~sparc ~x86"
 IUSE="aac alsa +cache curl debug ffmpeg flac jack libsamplerate mad +magic modplug musepack
 	oss sid sndfile speex timidity tremor +unicode vorbis wavpack"
 

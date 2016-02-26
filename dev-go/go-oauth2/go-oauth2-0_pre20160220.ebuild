@@ -60,7 +60,7 @@ src_test() {
 }
 
 src_install() {
-	insinto /usr/lib/go
+	insinto "$(get_golibdir)"
 	insopts -m0644 -p # preserve timestamps for bug 551486
 	doins -r "${WORKDIR}"/{pkg,src}
 }

@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# Markus Meier <maekke@gentoo.org> (26 Feb 2016)
+# unmask scanner for net-print/hplip, bug #518456
+media-sound/moc timidity
+
 # Justin Lecher <jlec@gentoo.org> (22 Feb 2016)
 # Missing test deps keyword #575366
 dev-cpp/eigen test
