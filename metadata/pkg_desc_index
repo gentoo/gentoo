@@ -13274,7 +13274,7 @@ media-video/dvdauthor 0.7.1: Tools for generating DVD files to be played on stan
 media-video/dvdbackup 0.4.1 0.4.2: Backup content from DVD to hard disk
 media-video/dvdimagecmp 0.3-r1: Tool to compare a burned DVD with an image to check for errors
 media-video/dvdrip 0.98.11-r2 0.98.11-r3: dvd::rip is a graphical frontend for transcode
-media-video/dvdstyler 2.7.2 2.9.2 2.9.3 2.9.4 2.9.4-r1 2.9.5 2.9.6: A cross-platform free DVD authoring application
+media-video/dvdstyler 2.9.6-r1: A cross-platform free DVD authoring application
 media-video/dvgrab 3.5: Digital Video (DV) grabber for GNU/Linux
 media-video/emovix 0.9.0: Micro Linux distro to boot from a CD and play every video file localized in the CD root
 media-video/episoder 0.4.7: episoder is a tool to tell you when new episodes of your favourite TV shows are airing
