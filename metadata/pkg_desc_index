@@ -6480,7 +6480,7 @@ dev-perl/txt2html 2.520.100: Convert a plain text file to HTML
 dev-perl/wxperl 0.990.200-r1 0.991.700 0.992.700 0.992.700-r1: Perl bindings for wxGTK
 dev-perl/yaml 0.840.0-r1 0.900.0 1.140.0 1.150.0: YAML Ain't Markup Language (tm)
 dev-php/File_Iterator 1.3.1 1.3.4: FilterIterator implementation that filters files based on a list of suffixes
-dev-php/PEAR-Archive_Tar 1.3.15 1.4.0: Tar file management class
+dev-php/PEAR-Archive_Tar 1.3.15 1.4.0 1.4.2: Tar file management class
 dev-php/PEAR-Auth 1.6.4: Provides methods for creating an authentication system using PHP
 dev-php/PEAR-Auth_HTTP 2.1.6-r1 2.1.8: Create HTTP authentication systems similar to Apache's realm-based .htaccess mechanism
 dev-php/PEAR-Auth_SASL 1.0.6 1.0.6-r1: Abstraction of various SASL mechanism responses
