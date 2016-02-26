@@ -43,6 +43,9 @@ MULTILIB_CHOST_TOOLS=(
 )
 
 src_prepare() {
+	# See https://bugzilla.gnome.org/show_bug.cgi?id=756590
+	epatch "${FILESDIR}"/${PN}-2.32.3-fix-lowmem-uclibc.patch
+
 	# This will avoid polluting the pkg-config file with versioned libpng,
 	# which is causing problems with libpng14 -> libpng15 upgrade
 	# See upstream bug #667068
