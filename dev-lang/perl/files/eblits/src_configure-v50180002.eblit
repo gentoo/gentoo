@@ -107,6 +107,46 @@ eblit-perl-src_configure() {
 
 	myconf -Dnoextensions="${disabled_extensions}"
 
+	echo Configuring Perl as follows:
+	echo sh Configure \
+		-des \
+		-Duseshrplib \
+		-Darchname="${myarch}" \
+		-Dcc="$(tc-getCC)" \
+		-Doptimize="${CFLAGS}" \
+		-Dldflags="${LDFLAGS}" \
+		-Dprefix="${EPREFIX}"'/usr' \
+		-Dinstallprefix="${EPREFIX}"'/usr' \
+		-Dsiteprefix="${EPREFIX}"'/usr/local' \
+		-Dvendorprefix="${EPREFIX}"'/usr' \
+		-Dscriptdir="${EPREFIX}"'/usr/bin' \
+		-Dprivlib="${EPREFIX}${PRIV_LIB}" \
+		-Darchlib="${EPREFIX}${ARCH_LIB}" \
+		-Dsitelib="${EPREFIX}${SITE_LIB}" \
+		-Dsitearch="${EPREFIX}${SITE_ARCH}" \
+		-Dvendorlib="${EPREFIX}${VENDOR_LIB}" \
+		-Dvendorarch="${EPREFIX}${VENDOR_ARCH}" \
+		-Dman1dir="${EPREFIX}"/usr/share/man/man1 \
+		-Dman3dir="${EPREFIX}"/usr/share/man/man3 \
+		-Dsiteman1dir="${EPREFIX}"/usr/local/man/man1 \
+		-Dsiteman3dir="${EPREFIX}"/usr/local/man/man3 \
+		-Dvendorman1dir="${EPREFIX}"/usr/share/man/man1 \
+		-Dvendorman3dir="${EPREFIX}"/usr/share/man/man3 \
+		-Dman1ext='1' \
+		-Dman3ext='3pm' \
+		-Dlibperl="${LIBPERL}" \
+		-Dlocincpth="${EPREFIX}"'/usr/include ' \
+		-Dglibpth="${EPREFIX}/$(get_libdir) ${EPREFIX}/usr/$(get_libdir)"' ' \
+		-Duselargefiles \
+		-Dd_semctl_semun \
+		-Dcf_by='Gentoo' \
+		-Dmyhostname='localhost' \
+		-Dperladmin='root@localhost' \
+		-Dinstallusrbinperl='n' \
+		-Ud_csh \
+		-Uusenm \
+		"${myconf[@]}"
+
 	sh Configure \
 		-des \
 		-Duseshrplib \
