@@ -5,17 +5,22 @@
   <synopsis>Certain checks on untrusted certificates can be bypassed.</synopsis>
   <product type="ebuild">openssl</product>
   <announced>July 10, 2015</announced>
-  <revised>January 26, 2016: 2</revised>
+  <revised>February 26, 2016: 3</revised>
   <bug>554172</bug>
   <access>remote</access>
   <affected>
     <package name="dev-libs/openssl" auto="yes" arch="*">
       <unaffected range="ge">1.0.1p</unaffected>
-      <unaffected range="rge">0.9.8z_p7</unaffected>
       <unaffected range="rge">0.9.8z_p6</unaffected>
+      <unaffected range="rge">0.9.8z_p7</unaffected>
       <unaffected range="rge">0.9.8z_p8</unaffected>
       <unaffected range="rge">0.9.8z_p9</unaffected>
       <unaffected range="rge">0.9.8z_p10</unaffected>
+      <unaffected range="rge">0.9.8z_p11</unaffected>
+      <unaffected range="rge">0.9.8z_p12</unaffected>
+      <unaffected range="rge">0.9.8z_p13</unaffected>
+      <unaffected range="rge">0.9.8z_p14</unaffected>
+      <unaffected range="rge">0.9.8z_p15</unaffected>
       <vulnerable range="lt">1.0.1p</vulnerable>
     </package>
   </affected>
@@ -55,7 +60,7 @@
   <metadata tag="requester" timestamp="Wed, 08 Jul 2015 09:20:30 +0000">
     keytoaster
   </metadata>
-  <metadata tag="submitter" timestamp="Tue, 26 Jan 2016 20:16:52 +0000">
+  <metadata tag="submitter" timestamp="Fri, 26 Feb 2016 14:46:50 +0000">
     keytoaster
   </metadata>
 </glsa>
