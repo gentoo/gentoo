@@ -20,7 +20,7 @@ IUSE=""
 
 RESTRICT="test"
 
-DEPEND="dev-go/go-oauth2:="
+DEPEND=""
 RDEPEND=""
 
 STRIP_MASK="*.a"
