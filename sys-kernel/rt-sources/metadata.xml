@@ -2,22 +2,26 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>psomas@gentoo.org</email>
-		<name>Stratos Psomadakis</name>
+		<email>karl.j.linden@gmail.com</email>
+		<name>Karl Linden</name>
 	</maintainer>
 	<maintainer type="person">
 		<email>eric-f.garioud@wanadoo.fr</email>
 		<name>Eric F. GARIOUD</name>
 	</maintainer>
 	<maintainer type="project">
-	  <email>proxy-maint@gentoo.org</email>
-	  <name>Proxy Maintainers</name>
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>psomas@gentoo.org</email>
+		<name>Stratos Psomadakis</name>
 	</maintainer>
 	<longdescription>
 		Real-time patchset for the Linux Kernel
 	</longdescription>
 	<use>
-	  <flag name="deblob">Remove binary blobs from kernel sources to provide libre license compliance.</flag>
+		<flag name="deblob">Remove binary blobs from kernel sources to provide libre license compliance.</flag>
 	</use>
 	<upstream>
 		<remote-id type="cpe">cpe:/o:linux:linux_kernel</remote-id>
