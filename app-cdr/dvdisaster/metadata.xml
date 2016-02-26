@@ -1,7 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<upstream>
-		<remote-id type="sourceforge">dvdisaster</remote-id>
-	</upstream>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Gentoo Proxy Maintainers Project</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>gentoo@k8n.de</email>
+		<name>Daniel Kenzelmann</name>
+		<description>Proxied maintainer; set to assignee in all bugs</description>
+	</maintainer>
+	<use>
+		<flag name="debug">
+			Enable memory debugging.
+		</flag>
+	</use>
 </pkgmetadata>
