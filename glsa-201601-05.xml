@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">openssl</product>
   <announced>January 29, 2016</announced>
-  <revised>February 04, 2016: 2</revised>
+  <revised>February 26, 2016: 3</revised>
   <bug>572854</bug>
   <access>remote</access>
   <affected>
@@ -17,6 +17,14 @@
       <unaffected range="rge">1.0.1r</unaffected>
       <unaffected range="rge">1.0.1s</unaffected>
       <unaffected range="rge">1.0.1t</unaffected>
+      <unaffected range="rge">0.9.8z_p8</unaffected>
+      <unaffected range="rge">0.9.8z_p9</unaffected>
+      <unaffected range="rge">0.9.8z_p10</unaffected>
+      <unaffected range="rge">0.9.8z_p11</unaffected>
+      <unaffected range="rge">0.9.8z_p12</unaffected>
+      <unaffected range="rge">0.9.8z_p13</unaffected>
+      <unaffected range="rge">0.9.8z_p14</unaffected>
+      <unaffected range="rge">0.9.8z_p15</unaffected>
       <vulnerable range="lt">1.0.2f</vulnerable>
     </package>
   </affected>
@@ -29,6 +37,8 @@
   <description>
     <p>Multiple vulnerabilities have been discovered in OpenSSL. Please review
       the upstream advisory and CVE identifiers referenced below for details.
+      Note that the list includes CVE identifiers for an older OpenSSL Security
+      Advisory (3 Dec 2015) for which we have not issued a GLSA before.
     </p>
   </description>
   <impact type="normal">
@@ -50,6 +60,11 @@
     
   </resolution>
   <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1794">CVE-2015-1794</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-3193">CVE-2015-3193</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-3194">CVE-2015-3194</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-3195">CVE-2015-3195</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-3196">CVE-2015-3196</uri>
     <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-3197">CVE-2015-3197</uri>
     <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-0701">CVE-2016-0701</uri>
     <uri link="http://openssl.org/news/secadv/20160128.txt">OpenSSL Security
@@ -59,7 +74,7 @@
   <metadata tag="requester" timestamp="Fri, 29 Jan 2016 23:06:05 +0000">
     keytoaster
   </metadata>
-  <metadata tag="submitter" timestamp="Thu, 04 Feb 2016 09:45:29 +0000">
+  <metadata tag="submitter" timestamp="Fri, 26 Feb 2016 15:29:47 +0000">
     keytoaster
   </metadata>
 </glsa>
