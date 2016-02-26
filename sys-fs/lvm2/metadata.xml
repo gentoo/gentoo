@@ -10,6 +10,11 @@
 		<name>Alasdair Kergon</name>
 		<description>Upstream Maintainer (please CC on bugs)</description>
 	</maintainer>
+	<maintainer type="person">
+		<email>cardoe@gentoo.org</email>
+		<name>Doug Goldstein</name>
+		<description>Backup to Robin. Please CC on bugs.</description>
+	</maintainer>
 	<use>
 		<flag name="clvm">Allow users to build clustered lvm2</flag>
 		<flag name="cman">Cman support for clustered lvm</flag>
