@@ -4148,7 +4148,7 @@ dev-java/piccolo 1.04: A small, extremely fast XML parser for Java
 dev-java/piccolo2d 3.0-r1: A Structured 2D Graphics Framework
 dev-java/picocontainer 1.1-r1: Small footprint Dependency Injection container
 dev-java/plexus-classworlds 2.2.3: The class loader framework of the Plexus project
-dev-java/portletapi 1.0 2.0: Portlet API 2.0 developed by the Java Community Process JSR-286
+dev-java/portletapi 1.0 2.0 2.0-r1: Portlet API 2.0 developed by the Java Community Process JSR-286
 dev-java/prefuse 20071021_beta: UI toolkit for building highly interactive visualizations of structured and unstructured data
 dev-java/proguard 4.5 4.7 4.8 5.2.1: Free Java class file shrinker, optimizer, and obfuscator
 dev-java/qdox 1.6.3 1.12-r1 1.12.1-r1: Parser for extracting class/interface/method definitions
