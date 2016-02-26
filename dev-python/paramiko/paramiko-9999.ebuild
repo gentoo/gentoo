@@ -2,20 +2,21 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 PYTHON_COMPAT=( python2_7 python3_{3,4,5} )
 PYTHON_REQ_USE="threads(+)"
 
-inherit distutils-r1
+inherit distutils-r1 git-r3
 
 DESCRIPTION="SSH2 protocol library"
 HOMEPAGE="http://www.paramiko.org/ https://github.com/paramiko/paramiko/ https://pypi.python.org/pypi/paramiko/"
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
+SRC_URI=""
+EGIT_REPO_URI="https://github.com/paramiko/paramiko.git"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86 ~x86-fbsd ~x86-interix ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris"
+KEYWORDS=""
 IUSE="doc examples"
 
 RDEPEND="
@@ -28,17 +29,13 @@ DEPEND="${RDEPEND}
 # Required for testsuite
 DISTUTILS_IN_SOURCE_BUILD=1
 
-PATCHES=(
-	"${FILESDIR}"/${P}-install_requires.patch
-)
-
 python_test() {
 	"${PYTHON}" test.py --verbose || die "Tests fail with ${EPYTHON}"
 }
 
 python_install_all() {
 	use doc && local HTML_DOCS=( docs/. )
-	use examples && local EXAMPLES=( demos/. )
+	use examples && dodoc -r demos
 
 	distutils-r1_python_install_all
 }
