@@ -1,8 +1,8 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 inherit eutils versionator
 
@@ -24,10 +24,11 @@ RDEPEND="app-shells/tcsh"
 
 S="${WORKDIR}/${MYP}"
 
+PATCHES=( "${FILESDIR}/${PN}-makefile.patch" )
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-makefile.patch
+	default
 	# remove non standard "mantex" page
-	sed -i -e 's/aclient.tex//' configure || die
+	sed -e 's/aclient.tex//' -i configure || die
 }
 
 src_install() {
