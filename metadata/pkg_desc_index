@@ -6909,7 +6909,7 @@ dev-python/cssutils 0.9.10-r1 0.9.10-r2 1.0 1.0.1: A CSS Cascading Style Sheets 
 dev-python/ctypesgen 0_p72-r1: Python wrapper generator for ctypes
 dev-python/curtsies 0.1.18 0.1.23 0.2.3 0.2.4 0.2.6: Curses-like terminal wrapper, with colored strings
 dev-python/cvxopt 1.1.6-r2 1.1.8: Python package for convex optimization
-dev-python/cx_Freeze 4.3.1-r2 4.3.2 4.3.3: Create standalone executables from Python scripts
+dev-python/cx_Freeze 4.3.3 4.3.4: Create standalone executables from Python scripts
 dev-python/cycler 0.9.0 0.10.0: Composable style cycles
 dev-python/cython 0.22 0.23.2 0.23.3 0.23.4: A Python to C compiler
 dev-python/cytoolz 0.7.1 0.7.2-r2 0.7.3 0.7.4 0.7.5: Cython implementation of Toolz: High performance functional utilities
