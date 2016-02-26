@@ -16,5 +16,6 @@
   </upstream>
   <use>
     <flag name="data">Installs measures and data (pulls <pkg>sci-astronomy/casa-data</pkg>)</flag>
+    <flag name="c++11">Build casacore using the C++11 standard</flag>
   </use>
 </pkgmetadata>
