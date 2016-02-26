@@ -16,8 +16,10 @@ KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 s390 sh sparc x86 ~amd64-fbsd ~x86
 
 IUSE=""
 
-DEPEND="dev-texlive/texlive-langgerman"
-RDEPEND="${DEPEND}"
+RDEPEND="dev-texlive/texlive-langgerman"
+DEPEND="${RDEPEND}
+	virtual/texi2dvi
+"
 
 S="${WORKDIR}/${PN}"
 
