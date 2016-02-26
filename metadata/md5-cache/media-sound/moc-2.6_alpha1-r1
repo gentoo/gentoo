@@ -4,11 +4,11 @@ DESCRIPTION=Music On Console - ncurses interface for playing audio files
 EAPI=6
 HOMEPAGE=http://moc.daper.net
 IUSE=aac alsa +cache curl debug ffmpeg flac jack libsamplerate mad +magic modplug musepack oss sid sndfile speex timidity tremor +unicode vorbis wavpack
-KEYWORDS=~alpha ~amd64 ~ppc ~ppc64 ~sparc ~x86
+KEYWORDS=~alpha ~amd64 ~arm ~ppc ~ppc64 ~sparc ~x86
 LICENSE=GPL-2
 RDEPEND=>=dev-libs/libltdl-2:0 sys-libs/ncurses:0=[unicode?] aac? ( media-libs/faad2 ) alsa? ( media-libs/alsa-lib ) cache? ( >=sys-libs/db-4:* ) curl? ( net-misc/curl ) ffmpeg? ( virtual/ffmpeg ) flac? ( media-libs/flac ) jack? ( media-sound/jack-audio-connection-kit ) libsamplerate? ( media-libs/libsamplerate ) mad? ( media-libs/libmad sys-libs/zlib media-libs/libid3tag ) magic? ( sys-apps/file ) modplug? ( media-libs/libmodplug ) musepack? ( media-sound/musepack-tools media-libs/taglib ) sid? ( >=media-libs/libsidplay-2 ) sndfile? ( media-libs/libsndfile ) speex? ( media-libs/speex ) timidity? ( media-libs/libtimidity media-sound/timidity++ ) vorbis? ( media-libs/libogg tremor? ( media-libs/tremor ) !tremor? ( media-libs/libvorbis ) ) wavpack? ( media-sound/wavpack )
 SLOT=0
 SRC_URI=http://ftp.daper.net/pub/soft/moc/unstable/moc-2.6-alpha1.tar.xz
 _eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	9d81603248f2ba3ec59124320d123e5e	libtool	b75230758539a7da029e24afdb693960	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=c038c6b7e79b018094cb400e5bb751eb
+_md5_=3e503d242e32616a5a36c094f0c71453
