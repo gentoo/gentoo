@@ -8,4 +8,4 @@ RDEPEND=!app-text/zathura-pdf-poppler >=app-text/mupdf-1.7a:= >=app-text/zathura
 SLOT=0
 _eclass_exported_funcs=pkg_setup:- src_unpack:git-2 src_compile:- src_install:-
 _eclasses_=eutils	9d81603248f2ba3ec59124320d123e5e	git-2	df00117322129fb906bb0a53c3d6a020	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
-_md5_=23765e56414b82f03bc0e7d04d520603
+_md5_=17fc60d3e1e7b7b5f619fb412b612771
