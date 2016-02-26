@@ -15122,8 +15122,8 @@ ros-meta/vision_visp 0.8.0 0.9.1 9999: Virtual package providing ViSP related pa
 ros-meta/visualization_tutorials 0.9.2 9999: Metapackage referencing tutorials related to rviz and visualization
 ros-meta/viz 1.2.0 9999: Metapackage for ROS visualization packages
 sci-astronomy/aatm 0.4.3.1: Atmospheric Modelling for ALMA Observatory
-sci-astronomy/casa-data 10013 99999: Data and tables for the CASA software
-sci-astronomy/casacore 1.5.0-r1: Core libraries for the Common Astronomy Software Applications
+sci-astronomy/casa-data 99999 20160222: Data and tables for the CASA software
+sci-astronomy/casacore 2.0.3: Core libraries for the Common Astronomy Software Applications
 sci-astronomy/cdsclient 3.7.2: Collection of scripts to access the CDS databases
 sci-astronomy/celestia 1.6.1-r1: OpenGL 3D space simulator
 sci-astronomy/cpl 6.4.2 6.6.1: ESO common pipeline library for astronomical data reduction
