@@ -48,6 +48,5 @@ python_compile() {
 python_test() {
 	distutils_install_for_testing
 	cd "${TEST_DIR}" || die
-	virtx "${EPYTHON}" -c "import aplpy, sys;r = aplpy.test();sys.exit(r)" \
-		|| die "tests fail with ${EPYTHON}"
+	virtx "${EPYTHON}" -c "import aplpy, sys;r = aplpy.test();sys.exit(r)"
 }
