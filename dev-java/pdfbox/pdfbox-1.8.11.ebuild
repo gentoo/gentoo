@@ -16,7 +16,7 @@ SRC_URI="mirror://apache/${PN}/${PV}/${P}-src.zip
 	http://repo2.maven.org/maven2/com/adobe/pdf/pcfi/2010.08.09/${ADOBE_FILES}"
 LICENSE="Apache-2.0"
 SLOT="1.8"
-KEYWORDS="~amd64 ~ppc64 ~x86"
+KEYWORDS="amd64 ppc64 x86"
 IUSE="test"
 RESTRICT="test" # Explosive even when manually using unmodified build.xml.
 
