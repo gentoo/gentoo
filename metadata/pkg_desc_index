@@ -3885,7 +3885,7 @@ dev-java/icu4j 4.0.1.1 4.4.2 54.1.1 55.1: A set of Java libraries providing Unic
 dev-java/idm-console-framework 1.1.7: A Java Management Console framework used for remote server management
 dev-java/ini4j 0.5.1: Simple Java API Windows style .ini file handling
 dev-java/invokebinder 1.6: Provide a friendly DSL for binding method handles
-dev-java/iso-relax 20050331-r3: Interfaces useful for applications which support RELAX Core
+dev-java/iso-relax 20050331-r3 20050331-r4: Interfaces useful for applications which support RELAX Core
 dev-java/istack-commons-buildtools 2.22-r1: IStack Commons - Buildtools jar
 dev-java/istack-commons-runtime 2.22: IStack Commons - Runtime jar
 dev-java/istack-commons-soimp 2.22: IStack Commons - Soimp jar
@@ -3999,7 +3999,7 @@ dev-java/jisp 2.5.1-r3: Java Indexed Serialization Package: A small, embedded da
 dev-java/jlayer 1.0.1: MP3 decoder/player/converter library for Java
 dev-java/jlex 1.2.6-r1 1.2.6-r2: JLex: a lexical analyzer generator for Java
 dev-java/jlfgr 1.0-r1: Java(TM) Look and Feel Graphics Repository
-dev-java/jlibeps 0.1: A java development library which allows the creation of an EPS file from a Graphics2D
+dev-java/jlibeps 0.1-r1: Library to create EPS graphics from a Graphics2D
 dev-java/jline 1.0 2.12.1-r1: A Java library for handling console input
 dev-java/jmdns 3.4.1-r1: JmDNS is an implementation of multi-cast DNS in Java
 dev-java/jmf-bin 2.1.1e-r2: The Java Media Framework API (JMF)
