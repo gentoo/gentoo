@@ -279,7 +279,7 @@ app-arch/makeself 2.1.5-r2 2.2.0-r1: shell script that generates a self-extracti
 app-arch/mscompress 0.3-r1: Microsoft compress.exe/expand.exe compatible (de)compressor
 app-arch/mt-st 1.1 1.2: control magnetic tape drive operation
 app-arch/ncompress 4.2.4.4: Another uncompressor for compatibility
-app-arch/p7zip 9.20.1-r5 9.38.1-r2 9.38.1-r3 15.09 15.09-r1: Port of 7-Zip archiver for Unix
+app-arch/p7zip 9.20.1-r5 9.38.1-r2 9.38.1-r3 15.09 15.09-r2: Port of 7-Zip archiver for Unix
 app-arch/par 1.1: Parchive archive fixing tool
 app-arch/par2cmdline 0.6.3 0.6.11 0.6.12 0.6.13: A PAR-2.0 file verification and repair tool
 app-arch/pax 3.4.12.16 3.4.12.16-r1: pax (Portable Archive eXchange) is the POSIX standard archive tool
