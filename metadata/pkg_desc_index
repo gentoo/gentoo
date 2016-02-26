@@ -7314,7 +7314,7 @@ dev-python/minidb 2.0.1: Simple SQLite-based object store
 dev-python/minimock 1.2.8-r1: The simplest possible mock library
 dev-python/miniupnpc 1.8 1.9.20150917 1.9.20151008: Python bindings for UPnP client library
 dev-python/misaka 1.0.2: The Python binding for Sundown, a markdown parsing library
-dev-python/mistune 0.5.1 0.6-r1 0.7 0.7.1: The fastest markdown parser in pure Python
+dev-python/mistune 0.5.1 0.6-r1 0.7 0.7.1 0.7.2: The fastest markdown parser in pure Python
 dev-python/mkdocs 0.11.1-r1 0.12.2 0.14.0: Project documentation with Markdown.
 dev-python/mkdocs-bootstrap 0.1.1: Bootstrap theme for MkDocs
 dev-python/mkdocs-bootswatch 0.1.0: Bootswatch themes for MkDocs
@@ -16973,7 +16973,7 @@ sys-infiniband/perftest 1.4.0 2.0: OpenIB uverbs micro-benchmarks
 sys-infiniband/qperf 0.4.9: Measure RDMA and IP performance
 sys-infiniband/rds-tools 2.0.4-r2 2.0.4-r3: OpenIB userspace rds-tools
 sys-infiniband/srptools 0.0.4-r2 1.0.2: Tools for discovering and connecting to SRP CSI targets on InfiniBand fabrics
-sys-kernel/aufs-sources 3.18.27 4.0.9-r1 4.1.18 4.3.5-r1 4.3.6 4.4.2: Full sources including the Gentoo patchset for the 4.4 kernel tree and aufs4 support
+sys-kernel/aufs-sources 3.18.27 4.0.9-r1 4.1.18 4.3.5-r1 4.3.6 4.4.2 4.4.3: Full sources including the Gentoo patchset for the 4.4 kernel tree and aufs4 support
 sys-kernel/ck-sources 3.4.110 3.10.97 3.14.61 3.18.27 4.1.18 4.3.6: Con Kolivas' high performance patchset and Gentoo's genpatches for Linux 4.3
 sys-kernel/cryptodev 1.7: device that allows access to Linux kernel cryptographic drivers
 sys-kernel/dracut 034-r4 040-r3 041-r3 043-r2 044: Generic initramfs generation tool
