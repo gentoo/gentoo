@@ -409,10 +409,6 @@ dev-python/south
 # Potentially destructive to @world, bug #539746.
 =sys-apps/portage-2.2.16
 
-# Eray Aslan <eras@gentoo.org> (03 Feb 2015)
-# Mask experimental software
-=mail-mta/postfix-3.1*
-
 # Sergei Trofimovich <slyfox@gentoo.org> (29 Jan 2015)
 # Mask live ebuild
 =dev-util/radare2-9999
