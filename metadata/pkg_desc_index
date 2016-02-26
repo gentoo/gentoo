@@ -6915,7 +6915,7 @@ dev-python/cython 0.22 0.23.2 0.23.3 0.23.4: A Python to C compiler
 dev-python/cytoolz 0.7.1 0.7.2-r2 0.7.3 0.7.4 0.7.5: Cython implementation of Toolz: High performance functional utilities
 dev-python/d2to1 0.2.11 0.2.12 0.2.12_p1: Allows using distutils2-like setup.cfg files for a package metadata
 dev-python/dap 2.2.6.7-r1: Data Access Protocol client and server
-dev-python/datashape 0.4.2 0.4.4 0.4.5 0.4.6 0.4.7: Language defining a data description protocol
+dev-python/datashape 0.4.2 0.4.4 0.4.5 0.4.6 0.4.7 0.5.0: Language defining a data description protocol
 dev-python/dbus-python 1.2.0-r1: Python bindings for the D-Bus messagebus
 dev-python/dbutils 1.1-r1: Database connections for multi-threaded environments
 dev-python/ddt 1.0.0 1.0.1: A library to multiply test cases
@@ -6951,13 +6951,13 @@ dev-python/django-evolution 0.6.9 0.7.4 0.7.5: A Django application that will ru
 dev-python/django-extensions 1.5.6 1.5.7 1.5.9 1.6.1: Django Command Extensions
 dev-python/django-filer 0.9.12 1.0.4: File management application for django that makes handling of files and images
 dev-python/django-formtools 1.0: High-level abstractions for Django forms
-dev-python/django-grappelli 2.7.1: A jazzy skin for the Django Admin-Interface
-dev-python/django-haystack 2.2.0 2.3.1: Pluggable search for Django
+dev-python/django-grappelli 2.7.1 2.7.3: A jazzy skin for the Django Admin-Interface
+dev-python/django-haystack 2.2.0 2.3.1 2.4.1: Pluggable search for Django
 dev-python/django-international 0.0.3 0.0.6: Country and currency data for Django projects
 dev-python/django-ldap-groups 0.1.3-r1: A reusable application for the Django web framework
 dev-python/django-ldapdb 0.3.2 0.4.0: An LDAP database backend for Django
 dev-python/django-mptt 0.7.4: Utilities for implementing Modified Preorder Tree Traversal
-dev-python/django-nose 1.3 1.4 1.4.1 1.4.2: Django test runner that uses nose
+dev-python/django-nose 1.3 1.4 1.4.1 1.4.2 1.4.3: Django test runner that uses nose
 dev-python/django-oauth-plus 2.2.8: Support of OAuth 1.0a in Django using python-oauth2
 dev-python/django-openid-auth 0.5: A library that can be used to add OpenID support to Django applications
 dev-python/django-opensearch 0.2.4 0.2.5: A django reusable application to handle opensearch.xml
@@ -6965,17 +6965,17 @@ dev-python/django-openstack-auth 1.2.0 1.3.1: Django authentication backend for 
 dev-python/django-otp 0.2.7 0.3.4: Framework for adding two-factor authentication to Django using one-time passwords
 dev-python/django-otp-yubikey 0.2.0 0.3.3: django-otp plugin that verifies YubiKey OTP tokens
 dev-python/django-phonenumber-field 0.7.2 1.0.0: Django model and form field for normalised phone numbers using python-phonenumbers
-dev-python/django-picklefield 0.3.0 0.3.1: Implementation of a pickled object field for django
-dev-python/django-pipeline 1.3.26 1.5.4: An asset packaging library for Django
+dev-python/django-picklefield 0.3.0 0.3.1 0.3.2: Implementation of a pickled object field for django
+dev-python/django-pipeline 1.3.26 1.5.4 1.6.0: An asset packaging library for Django
 dev-python/django-piston 0.2.3-r1 9999: A mini-framework for Django for creating RESTful APIs
-dev-python/django-recaptcha 1.0.3 1.0.4: Django recaptcha form field/widget app
+dev-python/django-recaptcha 1.0.3 1.0.4 1.0.5: Django recaptcha form field/widget app
 dev-python/django-registration 0.8-r1 1.0: An extensible user-registration application for Django
 dev-python/django-sekizai 0.8.2 0.9.0: Django Template Blocks with extra functionality
 dev-python/django-select2 3.2.1 4.0.0 4.2.2 4.3.1 5.5.0: A Django integration of Select2
-dev-python/django-setuptest 0.1.6: Simple test suite enabling Django app testing via setup.py
+dev-python/django-setuptest 0.1.6 0.2.1: Simple test suite enabling Django app testing via setup.py
 dev-python/django-social-auth 0.7.28: An easy to setup social authentication/authorization mechanism for Django projects
 dev-python/django-tables2 1.1.0 1.1.1 1.1.2: Table/data-grid framework for Django
-dev-python/django-tagging 0.3.4 0.3.6 0.4: Generic tagging application for Django
+dev-python/django-tagging 0.3.4 0.3.6 0.4 0.4.1: Generic tagging application for Django
 dev-python/django-tastypie 0.9.15: A flexible and capable API layer for django utilising serialisers
 dev-python/django-tinymce 1.5.3: TinyMCE integration for Django
 dev-python/django-treebeard 3.0 4.0: Efficient tree implementations for Django 1.6+
