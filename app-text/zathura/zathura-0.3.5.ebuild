@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -37,9 +37,7 @@ DEPEND="${RDEPEND}
 	test? ( dev-libs/check )"
 
 pkg_setup() {
-	# TODO: Create ebuild for synctex and pass WITH_SYSTEM_SYNCTEX=1
 	myzathuraconf=(
-		WITH_SYSTEM_SYNCTEX=0
 		WITH_MAGIC=$(usex magic 1 0)
 		WITH_SQLITE=$(usex sqlite 1 0)
 		WITH_SYNCTEX=$(usex synctex 1 0)
@@ -50,10 +48,6 @@ pkg_setup() {
 		VERBOSE=1
 		DESTDIR="${D}"
 	)
-}
-
-src_prepare() {
-	epatch "${FILESDIR}"/${P}-synctex.patch
 }
 
 src_compile() {
