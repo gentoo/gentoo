@@ -16,11 +16,12 @@ EGIT_REPO_URI="https://github.com/tmux/tmux.git"
 LICENSE="ISC"
 SLOT="0"
 KEYWORDS=""
-IUSE="debug selinux vim-syntax"
+IUSE="debug selinux vim-syntax kernel_FreeBSD kernel_linux"
 
 CDEPEND="
 	>=dev-libs/libevent-2.0.10
-	sys-libs/libutempter
+	kernel_linux? ( sys-libs/libutempter )
+	kernel_FreeBSD? ( || ( >=sys-freebsd/freebsd-lib-9.0 sys-libs/libutempter ) )
 	sys-libs/ncurses:0="
 DEPEND="${CDEPEND}
 	virtual/pkgconfig"
