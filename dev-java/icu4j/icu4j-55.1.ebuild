@@ -14,7 +14,7 @@ SRC_URI="http://download.icu-project.org/files/${PN}/${PV}/${PN}-${PV//./_}.tgz"
 
 LICENSE="icu"
 SLOT="55"
-KEYWORDS="~amd64 ~ppc64 ~x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~x86-solaris"
+KEYWORDS="amd64 ppc64 x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~x86-solaris"
 IUSE=""
 
 # Beware of jdk version dependant code #361593
