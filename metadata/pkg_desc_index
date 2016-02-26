@@ -2285,7 +2285,7 @@ app-text/landslide 1.1.1 1.1.3: Landslide generates a slideshow using the slides
 app-text/lcdf-typetools 2.97 2.104 2.105: Font utilities for eg manipulating OTF
 app-text/letterize 1.3 1.4: Generate English-plausible alphabetic mnemonics for a phone number
 app-text/libabw 0.0.2 0.1.0 0.1.1: Library parsing abiword documents
-app-text/libebook 0.0.2 0.1.1 0.1.2: Library parsing various ebook formats
+app-text/libebook 0.0.2 0.1.1 0.1.2 0.1.2-r1: Library parsing various ebook formats
 app-text/libetonyek 0.0.3 0.1.1 0.1.2 0.1.3 0.1.6 9999: Library parsing Apple Keynote presentations
 app-text/libexttextcat 3.4.4: Library implementing N-gram-based text categorization
 app-text/libgxps 0.2.2 0.2.3.2: Library for handling and rendering XPS documents
