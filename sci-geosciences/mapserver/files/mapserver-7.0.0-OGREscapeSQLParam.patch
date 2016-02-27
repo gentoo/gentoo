@@ -1,0 +1,22 @@
+diff --git a/mapogr.cpp b/mapogr.cpp
+index 1708d1c..217239b 100755
+--- a/mapogr.cpp
++++ b/mapogr.cpp
+@@ -1311,6 +1311,8 @@ static int msOGRFileClose(layerObj *layer, msOGRFileInfo *psInfo )
+   return MS_SUCCESS;
+ }
+ 
++#endif
++
+ /************************************************************************/
+ /*                           msOGREscapeSQLParam                        */
+ /************************************************************************/
+@@ -1337,6 +1339,8 @@ static char *msOGREscapeSQLParam(layerObj *layer, const char *pszString)
+ #endif /* USE_OGR */
+ }
+ 
++#ifdef USE_OGR
++
+ /**********************************************************************
+  *                     msOGRTranslateMsExpressionToOGRSQL()
+  *
