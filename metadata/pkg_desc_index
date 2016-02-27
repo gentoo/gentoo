@@ -4362,7 +4362,7 @@ dev-lang/niecza 19 21 22 24 9999: A Perl 6 compiler targetting the CLR with an e
 dev-lang/niecza-bin 20 21 22 24: A Perl 6 compiler targetting the CLR with an experimental focus on optimizations
 dev-lang/nqc 3.1_p6: Not Quite C - C-like compiler for Lego Mindstorms
 dev-lang/nqp 2016.01 2016.02: Not Quite Perl, a Perl 6 bootstrapping compiler
-dev-lang/nwcc 0.8.2: Nils Weller's C Compiler
+dev-lang/nwcc 0.8.2 0.8.3: Nils Weller's C Compiler
 dev-lang/ocaml 3.12.1 4.02.3: Fast modern type-inferring functional programming language descended from the ML family
 dev-lang/open-cobol 1.1: an open-source COBOL compiler
 dev-lang/opendylan 2013.1-r1 2013.2 2014.1 9999: OpenDylan language runtime environment
