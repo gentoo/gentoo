@@ -15733,7 +15733,7 @@ sci-libs/plplot 5.10.0-r1 5.11.0-r1 5.11.1 5.11.1-r1: Multi-language scientific 
 sci-libs/primegen 0.97-r1 0.97-r2: Small, fast library to generate primes in order
 sci-libs/profnet 1.0.22: Neural network architecture for profacc
 sci-libs/profphd-utils 1.0.10 1.0.10-r1: Additional utils for profphd
-sci-libs/proj 4.8.0: Proj.4 cartographic projection software with updated NAD27 grids
+sci-libs/proj 4.8.0 4.9.2: Proj.4 cartographic projection software
 sci-libs/punc 1.5: Portable Understructure for Numerical Computing
 sci-libs/pycifrw 3.6.2 4.1.1: Reading and writing CIF (Crystallographic Information Format) files
 sci-libs/pymmlib 1.2.1: Toolkit and library for the analysis and manipulation of macromolecular structural models
