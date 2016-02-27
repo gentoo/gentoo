@@ -5,22 +5,50 @@
     <email>nimiux@gentoo.org</email>
     <name>Chema Alonso</name>
   </maintainer>
-  <longdescription>
-  Stumpwm is a tiling, keyboard driven X11 Window Manager written entirely in Common Lisp.
+  <longdescription lang="en">
+    Stumpwm is a tiling, keyboard driven X11 Window Manager written entirely in
+    Common Lisp.
 
-  If you're tired of flipping through themes like channel-surfing, and going from one perfect-except-for-just-one-thing
-  window manager to another even-more-broken-in-some-other-way then perhaps Stumpwm can help.
+    If you're tired of flipping through themes like channel-surfing, and going
+    from one perfect-except-for-just-one-thing window manager to another
+    even-more-broken-in-some-other-way then perhaps Stumpwm can help.
 
-  Stumpwm attempts to be customizable yet visually minimal. There are no window decorations, no icons, and no buttons.
-  It does have various hooks to attach your personal customizations, and variables to tweak.
+    Stumpwm attempts to be customizable yet visually minimal. There are no
+    window decorations, no icons, and no buttons.
+    It does have various hooks to attach your personal customizations, and
+    variables to tweak.
 
-    * Hack the good hack
-    * debug your good hack
-    * customize your window manager 
+      * Hack the good hack
+      * debug your good hack
+      * customize your window manager 
 
-  while it's running. That's right. With a 100% Common Lisp window manager there's no stopping the hacks. Just re-eval and GO!
+    while it's running. That's right. With a 100% Common Lisp window manager
+    there's no stopping the hacks. Just re-eval and GO!
+  </longdescription>
+  <longdescription lang="es">
+    Stumpwm es un gestor de ventanas estilo mosaico gestionado por teclado
+    escrito completamente en Common Lisp.
+
+	Si está cansado de cambiar de temas como navegación por canales y vagar
+	de un gestor de ventanas perfecto excepto por esa pequeña característica
+	a otro incluso más roto de alguna otra forma, entonces quizá Stumpwm
+	pueda ser de ayuda.
+
+	Stumpwm persigue ser personalizable a la vez que mínimo. No hay
+	decoración en las ventanas, ni iconos ni botones.
+	Dispone de varios enganches para realizar nuestras propias configuraciones
+	personales y variables que podemos ajustar a nuestras necesidades para:
+
+      * Cacharrear de forma correcta
+      * Depurar nuestro propio cacharreo
+	  * Personalizar nuestro gestor de ventanas
+
+	mientras está corriendo. Eso está bien. Con un gestor de ventanas escrito
+	al 100% en Common Lisp no hay forma de detener el cacharreo. ¡Simplemente
+	reevalúe y CONTINÚE!
   </longdescription>
   <use>
+    <flag name="contrib">Install contrib modules</flag>
     <flag name="doc">Include documentation</flag>
     <flag name="emacs">Add support for GNU Emacs</flag>
     <flag name="clisp">Use CLISP for the runtime</flag>
