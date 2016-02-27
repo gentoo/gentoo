@@ -11539,7 +11539,7 @@ mail-client/novell-groupwise-client 8.0.2.96933: Novell Groupwise Client for Lin
 mail-client/pinepgp 0.18.0-r1: Use GPG/PGP with Pine
 mail-client/roundcube 1.1.4 1.2_beta: A browser-based multilingual IMAP client with an application-like user interface
 mail-client/squirrelmail 1.4.23_pre20140426: Webmail for nuts!
-mail-client/sylpheed 3.4.2 3.4.3 3.4.3-r1: A lightweight email client and newsreader
+mail-client/sylpheed 3.4.2 3.4.3 3.4.3-r1 3.5.0: A lightweight email client and newsreader
 mail-client/thunderbird 24.8.0 31.8.0 38.5.0 38.6.0: Thunderbird Mail Client
 mail-client/thunderbird-bin 31.8.0 38.5.0 38.6.0: Thunderbird Mail Client
 mail-client/trojita 0.4.1 0.5 0.6 9999: A Qt IMAP e-mail client
