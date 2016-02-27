@@ -8,7 +8,7 @@ inherit autotools eutils
 
 MY_P=${P/_rc/RC}
 
-DESCRIPTION="Library for reading TIFF files with embedded tags for geographic (cartographic) information"
+DESCRIPTION="Library for reading TIFF files with embedded tags for geographic information"
 HOMEPAGE="http://geotiff.osgeo.org/"
 SRC_URI="http://download.osgeo.org/geotiff/${PN}/${MY_P}.tar.gz"
 
