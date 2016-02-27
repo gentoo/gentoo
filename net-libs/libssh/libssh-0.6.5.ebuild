@@ -9,8 +9,7 @@ inherit eutils cmake-multilib multilib
 
 DESCRIPTION="Access a working SSH implementation by means of a library"
 HOMEPAGE="http://www.libssh.org/"
-SRC_URI="https://red.libssh.org/attachments/download/121/${MY_P}.tar.xz -> ${P}.tar.xz
-	https://git.libssh.org/projects/libssh.git/patch/?id=6e0dee7845cea22f59bd353ef42b31cb67170030 -> ${PN}-0.6.5-compilefix.patch"
+SRC_URI="https://red.libssh.org/attachments/download/121/${MY_P}.tar.xz -> ${P}.tar.xz"
 
 LICENSE="LGPL-2.1"
 KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux"
@@ -35,7 +34,7 @@ S=${WORKDIR}/${MY_P}
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.5.0-tests.patch
-	"${DISTDIR}"/${P}-compilefix.patch
+	"${FILESDIR}"/${P}-compilefix.patch
 )
 
 src_prepare() {
