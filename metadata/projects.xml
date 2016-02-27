@@ -2037,6 +2037,11 @@
       <name>Anthony G. Basile</name>
       <role>Developer</role>
     </member>
+    <member>
+      <email>dilfridge@gentoo.org</email>
+      <name>Andreas K. Hüttel</name>
+      <role>Developer</role>
+    </member>
   </project>
   <project>
     <email>licenses@gentoo.org</email>
