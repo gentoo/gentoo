@@ -16575,7 +16575,7 @@ sys-block/nwutil 1.4 1.8: Netwinder hardware utilities
 sys-block/open-iscsi 2.0.872-r2 2.0.872-r3 2.0.873 2.0.873-r1: Open-iSCSI is a high performance, transport independent, multi-platform implementation of RFC3720
 sys-block/parted 2.4 3.1-r1 3.2 3.2-r1: Create, destroy, resize, check, copy partitions and file systems
 sys-block/partimage 0.6.8 0.6.9: Console-based application to efficiently save raw partition data to an image file
-sys-block/partitionmanager 1.1.1 1.2.1 2.0.0 2.0.1: KDE utility for management of partitions and file systems
+sys-block/partitionmanager 1.1.1 1.2.1 2.0.0 2.0.1 2.0.3: KDE utility for management of partitions and file systems
 sys-block/qla-fc-firmware 20071207-r1 20080423 20101015: QLogic Linux Fibre Channel HBA Firmware for ql2xxx cards
 sys-block/raid-check 20140719-r1: Script to do "scrubbing" on software RAID systems
 sys-block/rts5229 1.07-r6: PCIE RTS5229 card reader driver for Linux
