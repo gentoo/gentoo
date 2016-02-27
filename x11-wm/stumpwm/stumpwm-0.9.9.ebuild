@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -6,14 +6,14 @@ EAPI=5
 
 inherit common-lisp-3 eutils elisp-common autotools
 
-DESCRIPTION="Stumpwm is a tiling, keyboard driven X11 Window Manager written entirely in Common Lisp."
+DESCRIPTION="Stumpwm is a Window Manager written entirely in Common Lisp."
 HOMEPAGE="http://www.nongnu.org/stumpwm/"
 SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="doc emacs clisp ecl +sbcl"
+IUSE="contrib doc emacs clisp ecl +sbcl"
 
 RESTRICT="strip mirror"
 
@@ -29,6 +29,7 @@ DEPEND="${RDEPEND}
 		doc? ( virtual/texi2dvi )"
 
 SITEFILE=70${PN}-gentoo.el
+CONTRIBDIR="${CLSOURCEROOT}/${CLPACKAGE}/contrib"
 
 get_lisp() {
 	local lisp
@@ -48,20 +49,32 @@ do_doc() {
 	docinto examples ; dodoc sample-stumpwmrc.lisp
 }
 
+do_contrib() {
+	emake install-modules
+	rm -r "${D}${CONTRIBDIR}"/.git* || die
+}
+
 src_prepare() {
 	# Upstream didn't change the version before packaging
 	sed -i "${S}/${PN}.asd" -e 's/:version "0.9.8"/:version "0.9.9"/' || die
 	# Bug 534592. Does not build with asdf:oos, using require to load the package
 	sed -i "${S}/load-${PN}.lisp.in" -e "s/asdf:oos 'asdf:load-op/require/" || die
+	if use contrib ; then
+		# Fix contrib directory
+		sed -i -e "s|@CONTRIB_DIR@|@MODULE_DIR@|" make-image.lisp.in || die
+		sed -i -e "s|\~\/.${CLPACKAGE}\.d/modules|${D}${CONTRIBDIR}|" Makefile.in || die
+		sed -i -e "s|\${HOME}/\.${CLPACKAGE}\.d/modules|${CONTRIBDIR}|" configure.ac || die
+	fi
 	eautoreconf
 }
 
 src_configure() {
-	econf --with-lisp=$(get_lisp sbcl clisp ecl)
+	econf --with-lisp=$(get_lisp sbcl clisp ecl) --with-module-dir="${CLSOURCEROOT}/${CLPACKAGE}/contrib"
 }
 
 src_compile() {
 	emake -j1
+	echo "HOLa"
 }
 
 src_install() {
@@ -72,6 +85,7 @@ src_install() {
 	common-lisp-install-sources *.lisp
 	common-lisp-install-asdf ${PN}.asd
 	use doc && do_doc
+	use contrib && do_contrib
 }
 
 pkg_postinst() {
