@@ -72,7 +72,10 @@ src_prepare() {
 }
 
 src_configure() {
-	econf --with-lisp=$(get_lisp sbcl clisp ecl) --with-module-dir="${CLSOURCEROOT}/${CLPACKAGE}/contrib"
+	local moduleconfig
+
+	use contrib && moduleconfig="--with-module-dir=${CLSOURCEROOT}/${CLPACKAGE}/contrib"
+	econf --with-lisp=$(get_lisp sbcl clisp ecl) "${moduleconfig}"
 }
 
 src_compile() {
