@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=5
 
 inherit autotools eutils
 
@@ -14,11 +14,11 @@ SRC_URI="http://download.osgeo.org/geotiff/${PN}/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~mips ppc ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
+KEYWORDS="~amd64 ~arm ~mips ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
 IUSE="debug doc static-libs"
 
 RDEPEND="
-	virtual/jpeg
+	virtual/jpeg:=
 	>=media-libs/tiff-3.9.1:0
 	sci-libs/proj
 	sys-libs/zlib"
