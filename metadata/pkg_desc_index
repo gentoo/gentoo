@@ -7075,7 +7075,7 @@ dev-python/flask-restful 0.2.12 0.3.0 0.3.1 0.3.2 0.3.3 0.3.4 0.3.5: Simple fram
 dev-python/flask-restless 0.15.0 0.16.0 0.17.0: Flask extension for easy ReSTful API generation
 dev-python/flask-script 2.0.5: Flask support for writing external scripts
 dev-python/flask-security 1.7.4 1.7.5: Simple security for Flask apps
-dev-python/flask-socketio 0.6.0 1.1 2.0 2.1: Socket.IO integration for Flask applications.
+dev-python/flask-socketio 2.0 2.1: Socket.IO integration for Flask applications.
 dev-python/flask-sqlalchemy 0.16-r1 1.0 1.0-r1 2.0 2.1: SQLAlchemy support for Flask applications
 dev-python/flask-testing 0.4.1 0.4.2: Unit testing for Flask
 dev-python/flask-themes 0.1.3-r1: Infrastructure for theming support in Flask applications
@@ -7730,7 +7730,7 @@ dev-python/python-docs 2.7.8 2.7.10 3.2.5 3.3.2 3.3.4 3.3.5-r1 3.4.3: HTML docum
 dev-python/python-dsv 1.4.1-r1: Python module for importing and exporting DSV files
 dev-python/python-editor 0.4: Programmatically open an editor, capture the result.
 dev-python/python-efl 1.16.0 1.17.0: Python bindings for Enlightenment Fundation Libraries
-dev-python/python-engineio 0.8.1 0.8.6: Python implementation of the Engine.IO realtime server.
+dev-python/python-engineio 0.8.1 0.8.6 0.8.8: Python implementation of the Engine.IO realtime server.
 dev-python/python-etcd 0.3.2 0.3.3: A python client for etcd
 dev-python/python-evdev 0.4.3 0.4.5: Python library for evdev bindings
 dev-python/python-eventlib 0.2.1: Coroutine-based networking library
