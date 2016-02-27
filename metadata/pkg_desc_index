@@ -415,7 +415,7 @@ app-benchmarks/phoronix-test-suite 4.8.4 4.8.5: Phoronix's comprehensive, cross-
 app-benchmarks/piozone 1.0-r3: A hard-disk benchmarking tool
 app-benchmarks/pipebench 0.40 0.40-r1: Measures the speed of stdin/stdout communication
 app-benchmarks/ramspeed 3.5.0-r2: Benchmarking for memory and cache
-app-benchmarks/siege 3.0.6 3.1.0 3.1.3: A HTTP regression testing and benchmarking utility
+app-benchmarks/siege 3.0.6 3.1.0 3.1.3 3.1.4: A HTTP regression testing and benchmarking utility
 app-benchmarks/spew 1.0.8 1.0.8-r1: Measures I/O performance and/or generates I/O load
 app-benchmarks/stress 1.0.1 1.0.4 1.0.4-r1: Imposes stressful loads on different aspects of the system
 app-benchmarks/stress-ng 0.05.12: A tool to load and stress a computer system
@@ -4381,7 +4381,7 @@ dev-lang/qu-prolog 9.1 9.1-r1 9.5 9.6 9.7: Extended Prolog supporting quantifier
 dev-lang/rakudo 2016.01.1 2016.02: A compiler for the Perl 6 programming language
 dev-lang/rebol 9999: Relative Expression-Based Object Language
 dev-lang/rebol-bin 3_pre111: Relative Expression-Based Object Language
-dev-lang/regina-rexx 3.6-r2: Portable Rexx interpreter
+dev-lang/regina-rexx 3.6-r2 3.9.1: Portable Rexx interpreter
 dev-lang/rubinius 2.5.3 2.5.5: A re-implementation of the Ruby VM designed for speed
 dev-lang/ruby 2.0.0_p647-r1 2.0.0_p648 2.1.7 2.1.7-r1 2.1.8 2.2.2-r1 2.2.3 2.2.3-r1 2.2.3-r2 2.2.4 2.3.0: An object-oriented scripting language
 dev-lang/rust 1.2.0 1.3.0 1.5.0: Systems programming language from Mozilla
@@ -15513,7 +15513,7 @@ sci-geosciences/liblas 1.8.0: C/C++ library for manipulating the LAS LiDAR forma
 sci-geosciences/libtcd 2.2.5_p2 2.2.6 2.2.7: Library for reading and writing Tide Constituent Database (TCD) files
 sci-geosciences/mapnik 2.0.1 2.0.2 2.1.0 2.2.0: A Free Toolkit for developing mapping applications
 sci-geosciences/mapnik-world-boundaries 20090514: Mapnik World Boundaries
-sci-geosciences/mapserver 6.0.1-r2 6.0.1-r3: OpenSource development environment for constructing spatially enabled Internet-web applications
+sci-geosciences/mapserver 7.0.0: Development environment for building spatially enabled webapps
 sci-geosciences/mc2bsbh 0.0.9: MapCal to BSBchart Header Utility
 sci-geosciences/merkaartor 0.17.2 0.18.1-r2 9999: A Qt4 based map editor for the openstreetmap.org project
 sci-geosciences/mkgmap 1995: Tool to create garmin maps
@@ -17569,7 +17569,7 @@ www-client/midori 0.5.10 0.5.11: A lightweight web browser based on WebKitGTK+
 www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
 www-client/netsurf 3.2-r1 3.3-r1: a free, open source web browser
 www-client/opera 12.16_p1860-r1 35.0.2066.68 35.0.2066.82: A fast and secure web browser
-www-client/opera-beta 35.0.2066.35 36.0.2130.2: A fast and secure web browser
+www-client/opera-beta 35.0.2066.35 36.0.2130.2 36.0.2130.21: A fast and secure web browser
 www-client/opera-developer 36.0.2120.0 36.0.2129.0 37.0.2142.0: A fast and secure web browser
 www-client/otter 0.9.07 0.9.08 0.9.09 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
 www-client/phantomjs 1.9.8 2.0.0 2.0.0-r1: A headless WebKit scriptable with a JavaScript API
