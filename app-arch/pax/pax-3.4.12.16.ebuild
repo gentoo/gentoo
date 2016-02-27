@@ -25,6 +25,7 @@ S=${WORKDIR}/${MY_P}
 src_prepare() {
 	rpm_spec_epatch ../${PN}.spec
 	epatch "${FILESDIR}"/pax-3.4-x32.patch
+	epatch "${FILESDIR}"/pax-3.4-sysmacros.patch
 	sed -i configure.in -e 's|AM_CONFIG_HEADER|AC_CONFIG_HEADERS|g' || die
 	eautoreconf
 }
