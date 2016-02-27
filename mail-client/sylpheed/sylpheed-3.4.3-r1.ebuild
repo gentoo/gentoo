@@ -1,10 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI="5"
 
-inherit eutils
+inherit eutils multilib
 
 DESCRIPTION="A lightweight email client and newsreader"
 HOMEPAGE="http://sylpheed.sraoss.jp/"
@@ -44,6 +44,7 @@ src_configure() {
 		$(use_enable spell gtkspell) \
 		$(use_enable ssl) \
 		$(use_enable xface compface) \
+		--with-plugindir=/usr/$(get_libdir)/${PN}/plugins \
 		--with-manualdir=${htmldir}/manual \
 		--with-faqdir=${htmldir}/faq \
 		--disable-updatecheck
@@ -57,7 +58,7 @@ src_install() {
 	domenu *.desktop
 
 	cd plugin/attachment_tool
-	docinto plugin/attachment_tool
 	emake DESTDIR="${D}" install-plugin
+	docinto plugin/attachment_tool
 	dodoc README
 }
