@@ -29,7 +29,8 @@ DEPEND="${RDEPEND}
 		doc? ( virtual/texi2dvi )"
 
 SITEFILE=70${PN}-gentoo.el
-CONTRIBDIR="${CLSOURCEROOT}/${CLPACKAGE}/contrib"
+CLPKGDIR="${CLSOURCEROOT}/${CLPACKAGE}"
+CONTRIBDIR="${CLPKGDIR}/contrib"
 
 get_lisp() {
 	local lisp
@@ -55,10 +56,12 @@ do_contrib() {
 }
 
 src_prepare() {
+	# Fix ASDF dir
+	sed -i -e "/^STUMPWM_ASDF_DIR/s|\`pwd\`|${CLPKGDIR}|" configure.ac || die
 	# Upstream didn't change the version before packaging
-	sed -i "${S}/${PN}.asd" -e 's/:version "0.9.8"/:version "0.9.9"/' || die
+	sed -i -e 's/:version "0.9.8"/:version "0.9.9"/' "${PN}.asd" || die
 	# Bug 534592. Does not build with asdf:oos, using require to load the package
-	sed -i "${S}/load-${PN}.lisp.in" -e "s/asdf:oos 'asdf:load-op/require/" || die
+	sed -i "load-${PN}.lisp.in" -e "s/asdf:oos 'asdf:load-op/require/" || die
 	if use contrib ; then
 		# Fix contrib directory
 		sed -i -e "s|@CONTRIB_DIR@|@MODULE_DIR@|" make-image.lisp.in || die

@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -13,7 +13,7 @@ if [[ ${PV} == "9999" ]] ; then
 	inherit git-r3
 else
 	SRC_URI="https://github.com/jborg/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64"
+	KEYWORDS="~amd64 ~x86"
 fi
 
 DESCRIPTION="Attic is a deduplicating backup program written in Python."
@@ -29,5 +29,7 @@ RDEPEND="
 	libressl? ( dev-libs/libressl )
 	dev-python/llfuse[${PYTHON_USEDEP}]"
 
-DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
+DEPEND="
+	dev-python/setuptools[${PYTHON_USEDEP}]
+	dev-python/cython[${PYTHON_USEDEP}]
 	${RDEPEND}"
