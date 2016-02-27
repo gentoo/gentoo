@@ -18701,7 +18701,7 @@ x11-wm/sawfish 1.9.1-r2: Extensible window manager using a Lisp-based scripting 
 x11-wm/selectwm 0.4.1: window manager selector tool
 x11-wm/sithwm 1.2.3: Minimalist Window Manager for X
 x11-wm/spectrwm 2.6.2 2.7.2: Small dynamic tiling window manager for X11
-x11-wm/stumpwm 0.9.9 9999: Stumpwm is a tiling, keyboard driven X11 Window Manager written entirely in Common Lisp.
+x11-wm/stumpwm 0.9.9 9999: Stumpwm is a Window Manager written entirely in Common Lisp.
 x11-wm/subtle 0.11.3244 9999: A manual tiling window manager
 x11-wm/treewm 0.4.5 0.4.5-r1: WindowManager that arranges the windows in a tree (not in a list)
 x11-wm/twm 1.0.8 1.0.9: X.Org twm application

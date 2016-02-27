@@ -1,9 +1,9 @@
 DEFINED_PHASES=compile configure install postinst postrm prepare
 DEPEND=dev-lisp/cl-ppcre sbcl? ( >=dev-lisp/sbcl-1.0.32 ) sbcl? ( >=dev-lisp/clx-0.7.4 ) !sbcl? ( !clisp? ( !ecl? ( >=dev-lisp/sbcl-1.0.32 ) ) ) !sbcl? ( !clisp? ( ecl? ( >=dev-lisp/ecls-10.4.1 ) ) ) !sbcl? ( clisp? ( >=dev-lisp/clisp-2.44[X,new-clx] ) ) emacs? ( virtual/emacs app-emacs/slime ) sys-apps/texinfo doc? ( virtual/texi2dvi ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
-DESCRIPTION=Stumpwm is a tiling, keyboard driven X11 Window Manager written entirely in Common Lisp.
+DESCRIPTION=Stumpwm is a Window Manager written entirely in Common Lisp.
 EAPI=5
 HOMEPAGE=http://www.nongnu.org/stumpwm/
-IUSE=doc emacs clisp ecl +sbcl
+IUSE=contrib doc emacs clisp ecl +sbcl
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2
 PDEPEND=virtual/commonlisp
@@ -13,4 +13,4 @@ SLOT=0
 SRC_URI=https://github.com/stumpwm/stumpwm/archive/0.9.9.tar.gz -> stumpwm-0.9.9.tar.gz
 _eclass_exported_funcs=pkg_postrm:- pkg_postinst:- src_prepare:- src_configure:- src_compile:- src_install:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	common-lisp-3	732b3b6e2021a252e13158c86e4ea4d0	elisp-common	9f56c4e9bf1282dbfc2a5a09e1124e74	eutils	9d81603248f2ba3ec59124320d123e5e	libtool	b75230758539a7da029e24afdb693960	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
-_md5_=f765e54c810f693b867a2e57887e9b94
+_md5_=2d26699a6d82d9adc5ba2038ba97d9f0
