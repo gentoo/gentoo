@@ -1,13 +1,13 @@
 certificate version 0.1
-pusher EC917A6D 1456545033 +0900
+pusher EC917A6D 1456552697 +0900
 pushee git.gentoo.org:repo/gentoo.git
-nonce 1456545032-55679f9a6fecce220638
+nonce 1456552688-37ada62143ba85c2ce92
 
-2b331f0668cce868097c1224b354b8e1cfdbd219 76655b0deba4e94f8c31bbf215d3da5b17296552 refs/heads/master
+76655b0deba4e94f8c31bbf215d3da5b17296552 caea2e8a9f8fc65eda2bcae0429fc0afb50ab011 refs/heads/master
 -----BEGIN PGP SIGNATURE-----
 Version: GnuPG v2
 
-iEYEABECAAYFAlbRHQkACgkQL46suuyRem1xpwCgnB8C7eV2D9q1YXoPeGco+221
-my0An2+HGP1LAMpD/0uQBBfAJRZ997oJ
-=L3db
+iEYEABECAAYFAlbROvkACgkQL46suuyRem2g7wCfXn6veCgIr2ZVhWv/rgko95eD
+2K8Anikr1DfPKM8QZ0BXUXvljSdE30/L
+=D9r9
 -----END PGP SIGNATURE-----
