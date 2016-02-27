@@ -1561,7 +1561,7 @@
     <name>Gentoo Hardened</name>
     <url>https://wiki.gentoo.org/wiki/Project:Hardened</url>
     <description>Hardened Gentoo is a project which oversees the research, implementation, and maintenance of security oriented projects for Gentoo Linux.</description>
-    <subproject ref="musl@gentoo.org"/>
+    <subproject ref="gentoo-musl@lists.gentoo.org"/>
     <subproject ref="uclibc@gentoo.org"/>
     <subproject ref="integrity@gentoo.org"/>
     <subproject ref="rsbac@gentoo.org"/>
@@ -1608,7 +1608,7 @@
     </member>
   </project>
   <project>
-    <email>musl@gentoo.org</email>
+    <email>gentoo-musl@lists.gentoo.org</email>
     <name>Hardened musl</name>
     <url>https://wiki.gentoo.org/wiki/Project:Hardened_musl</url>
     <description>This subproject aims to port the hardened tool chain to musl based systems for a variety of architectures. The project treats musl as an alternative to glibc and uClibc, and not necessarily as "embedded".</description>
@@ -2025,6 +2025,17 @@
       <email>betelgeuse@gentoo.org</email>
       <name>Petteri Räty</name>
       <role>Lead</role>
+    </member>
+  </project>
+  <project>
+    <email>blueness@gentoo.org</email>
+    <name>LibreSSL</name>
+    <url>https://wiki.gentoo.org/wiki/Project:LibreSSL</url>
+    <description>LibreSSL is a fork of, and drop in replacement for OpenSSL.  Primary development is done in OpenBSD, but it is ported to Linux as well.  The LibreSSL project aims to bring support for this alternative SSL provider to Gentoo Linux.</description>
+    <member is-lead="1">
+      <email>blueness@gentoo.org</email>
+      <name>Anthony G. Basile</name>
+      <role>Developer</role>
     </member>
   </project>
   <project>
