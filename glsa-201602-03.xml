@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild"></product>
   <announced>February 27, 2016</announced>
-  <revised>February 27, 2016: 2</revised>
+  <revised>February 27, 2016: 3</revised>
   <bug>551144</bug>
   <bug>553818</bug>
   <access>remote</access>
@@ -34,7 +34,7 @@
     <p>There is no known work around at this time.</p>
   </workaround>
   <resolution>
-    <p>All libwmf users should upgrade to the latest version:
+    <p>All libwmf users should upgrade to the latest version:</p>
       <code>
         # emerge --sync
         # emerge --ask --oneshot --verbose "&gt;=media-libs/libwmf-0.2.8.4-r6"
@@ -57,5 +57,5 @@
     <metadata tag="requester" timestamp="Thu, 25 Feb 2016 06:44:07 +0000">
       BlueKnight
     </metadata>
-    <metadata tag="submitter" timestamp="Sat, 27 Feb 2016 01:51:39 +0000">b-man</metadata>
+    <metadata tag="submitter" timestamp="Sat, 27 Feb 2016 02:04:39 +0000">b-man</metadata>
   </glsa>
