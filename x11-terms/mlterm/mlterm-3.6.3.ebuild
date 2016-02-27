@@ -4,7 +4,7 @@
 
 EAPI="6"
 
-inherit autotools eutils
+inherit eutils
 
 DESCRIPTION="A multi-lingual terminal emulator"
 HOMEPAGE="http://mlterm.sourceforge.net/"
@@ -42,6 +42,8 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	nls? ( sys-devel/gettext )"
 
+DOCS=( doc/{en,ja} )
+
 src_prepare() {
 	# default config
 	sed -i \
@@ -49,8 +51,7 @@ src_prepare() {
 		-e "/ scrollbar_view_name =/ascrollbar_view_name = sample" \
 		etc/main
 
-	epatch_user
-	eautoconf
+	default
 }
 
 src_configure() {
@@ -101,7 +102,6 @@ src_test() {
 
 src_install () {
 	default
-	dodoc -r doc/{en,ja}
 	prune_libtool_files
 
 	docinto contrib/icon
