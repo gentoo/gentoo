@@ -33,6 +33,8 @@ do_doc() {
 }
 
 src_prepare() {
+	# Fix ASDF dir
+	sed -i -e "/^STUMPWM_ASDF_DIR/s|\`pwd\`|${CLPKGDIR}|" configure.ac || die
 	eautoreconf
 }
 
