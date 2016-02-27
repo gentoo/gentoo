@@ -3,7 +3,6 @@
 # $Id$
 
 EAPI="5"
-
 inherit eutils
 
 MY_P="gentoo-livecd-${PV}"
@@ -15,7 +14,6 @@ SRC_URI="mirror://gentoo/${PN}/${MY_P}-${MY_REV}.tar.bz2"
 SLOT=${PV}
 LICENSE="Artistic GPL-2 BitstreamVera"
 KEYWORDS="amd64 ~ppc x86"
-IUSE=""
 RESTRICT="binchecks strip"
 
 RDEPEND=">=media-gfx/splashutils-1.5.4[png]
@@ -23,14 +21,6 @@ RDEPEND=">=media-gfx/splashutils-1.5.4[png]
 DEPEND="${RDEPEND}"
 
 S="${WORKDIR}/${MY_P}"
-
-pkg_setup() {
-	if ! built_with_use media-gfx/splashutils mng
-	then
-		ewarn "MNG support is missing from splashutils.  You will not see the"
-		ewarn "service icons as services are starting."
-	fi
-}
 
 src_prepare() {
 	epatch "${FILESDIR}"/use-new-path-for-functions.sh.patch
