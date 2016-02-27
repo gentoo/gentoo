@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install prepare test unpack
-DEPEND=dev-python/setuptools[python_targets_python3_4(-)?,-python_single_target_python3_4(-)] dev-python/msgpack[python_targets_python3_4(-)?,-python_single_target_python3_4(-)] !libressl? ( dev-libs/openssl:0 ) libressl? ( dev-libs/libressl ) dev-python/llfuse[python_targets_python3_4(-)?,-python_single_target_python3_4(-)] python_targets_python3_4? ( dev-lang/python:3.4 ) >=dev-lang/python-exec-2:=[python_targets_python3_4(-)?,-python_single_target_python3_4(-)] >=dev-vcs/git-1.8.2.1
+DEPEND=dev-python/setuptools[python_targets_python3_4(-)?,-python_single_target_python3_4(-)] dev-python/cython[python_targets_python3_4(-)?,-python_single_target_python3_4(-)] dev-python/msgpack[python_targets_python3_4(-)?,-python_single_target_python3_4(-)] !libressl? ( dev-libs/openssl:0 ) libressl? ( dev-libs/libressl ) dev-python/llfuse[python_targets_python3_4(-)?,-python_single_target_python3_4(-)] python_targets_python3_4? ( dev-lang/python:3.4 ) >=dev-lang/python-exec-2:=[python_targets_python3_4(-)?,-python_single_target_python3_4(-)] >=dev-vcs/git-1.8.2.1
 DESCRIPTION=Attic is a deduplicating backup program written in Python.
 EAPI=5
 HOMEPAGE=https://attic-backup.org/
@@ -10,4 +10,4 @@ REQUIRED_USE=|| ( python_targets_python3_4 )
 SLOT=0
 _eclass_exported_funcs=src_unpack:git-r3 src_prepare:distutils-r1 src_configure:distutils-r1 src_compile:distutils-r1 src_test:distutils-r1 src_install:distutils-r1
 _eclasses_=distutils-r1	4e8ac1ba76ddacd8f7c0289aa586a34c	eutils	9d81603248f2ba3ec59124320d123e5e	git-r3	ef66dfc3db09f327af21cf32f140fb2b	multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	3972ca401cf7dbb430df9995f5d8d580	multiprocessing	e32940a7b2a9992ad217eccddb84d548	python-r1	0f6937650a475d673baa5d0c8c0b37b3	python-utils-r1	2e6826f6a93ad2acf904eecf5b5fb6d2	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
-_md5_=3489f9de375aaf43486b80d614c9e626
+_md5_=6a30869da0d5d7e2f88da649e65f52e0
