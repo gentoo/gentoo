@@ -7351,7 +7351,7 @@ dev-python/nautilus-python 1.1-r1 1.1-r2: Python bindings for the Nautilus file 
 dev-python/nbconvert 4.1.0: Converting Jupyter Notebooks
 dev-python/nbformat 4.0.1: Reference implementation of the Jupyter Notebook format
 dev-python/ndg-httpsclient 0.4.0: Provides enhanced HTTPS support for httplib and urllib2 using PyOpenSSL
-dev-python/neovim-python-client 0.0.37 0.0.38 0.1.0: Python client for Neovim
+dev-python/neovim-python-client 0.0.37 0.0.38 0.1.0 0.1.2: Python client for Neovim
 dev-python/netaddr 0.7.12 0.7.13 0.7.14 0.7.15 0.7.17 0.7.18: Network address representation and manipulation library
 dev-python/netcdf4-python 1.0.4 1.2.2: Python/numpy interface to the netCDF C library
 dev-python/netifaces 0.8-r2 0.10.4: Portable network interface information
