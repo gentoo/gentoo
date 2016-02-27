@@ -1,10 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
+EAPI="6"
 
-inherit autotools-utils eutils
+inherit autotools eutils
 
 DESCRIPTION="A multi-lingual terminal emulator"
 HOMEPAGE="http://mlterm.sourceforge.net/"
@@ -42,10 +42,6 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	nls? ( sys-devel/gettext )"
 
-DOCS=( ChangeLog README doc/{en,ja} )
-
-AUTOTOOLS_PRUNE_LIBTOOL_FILES="all"
-
 src_prepare() {
 	# default config
 	sed -i \
@@ -53,11 +49,13 @@ src_prepare() {
 		-e "/ scrollbar_view_name =/ascrollbar_view_name = sample" \
 		etc/main
 
-	autotools-utils_src_prepare
+	epatch_user
+	eautoconf
 }
 
 src_configure() {
-	local myeconfargs=(
+	local myconf=(
+		--disable-static
 		--with-type-engines=xcore$(usex xft ",xft" "")$(usex cairo ",cairo" "")
 		--enable-optimize-redrawing
 		--enable-vt52
@@ -78,11 +76,11 @@ src_configure() {
 	local scrollbars="sample,extra"
 	local tools="mlclient,mlcc,mlmenu,mlterm-zoom"
 	if use gtk; then
-		myeconfargs+=(--with-imagelib=gdk-pixbuf)
+		myconf+=(--with-imagelib=gdk-pixbuf)
 		if has_version x11-libs/gtk+:3; then
-			myeconfargs+=(--with-gtk=3.0)
+			myconf+=(--with-gtk=3.0)
 		else
-			myeconfargs+=(--with-gtk=2.0)
+			myconf+=(--with-gtk=2.0)
 		fi
 		scrollbars+=",pixmap_engine"
 		tools+=",mlconfig,mlimgloader"
@@ -90,11 +88,11 @@ src_configure() {
 	if use regis; then
 		tools+=",registobmp"
 	fi
-	myeconfargs+=(--with-scrollbars="${scrollbars}")
-	myeconfargs+=(--with-tools="${tools}")
+	myconf+=(--with-scrollbars="${scrollbars}")
+	myconf+=(--with-tools="${tools}")
 
 	addpredict /dev/ptmx
-	autotools-utils_src_configure
+	econf "${myconf[@]}"
 }
 
 src_test() {
@@ -102,14 +100,13 @@ src_test() {
 }
 
 src_install () {
-	autotools-utils_src_install
+	default
+	dodoc -r doc/{en,ja}
+	prune_libtool_files
+
 	docinto contrib/icon
 	dodoc contrib/icon/README
 
 	doicon contrib/icon/mlterm*
 	make_desktop_entry mlterm mlterm mlterm-icon "System;TerminalEmulator"
-}
-
-pkg_postinst() {
-	elog "The 'use_scrollbar' option was renamed to 'use_mdi'."
 }
