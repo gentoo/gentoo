@@ -1,10 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI="5"
 
-inherit bash-completion-r1
+inherit autotools bash-completion-r1 eutils
 
 DESCRIPTION="A lightweight, fast implementation of DEC SIXEL graphics codec"
 HOMEPAGE="https://github.com/saitoha/libsixel"
@@ -22,6 +22,11 @@ RDEPEND="curl? ( net-misc/curl )
 	png? ( media-libs/libpng:0 )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
+
+src_prepare() {
+	epatch "${FILESDIR}"/${PN}-gd.patch
+	eautoreconf
+}
 
 src_configure() {
 	econf \
