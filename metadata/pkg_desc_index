@@ -1298,7 +1298,7 @@ app-emulation/libguestfs 1.26.1 1.28.3 1.28.5 1.28.5-r1: Tools for accessing, in
 app-emulation/libguestfs-appliance 1.26.0-r1 1.28.1 1.28.1-r1: VM appliance disk image used in libguestfs package
 app-emulation/libspectrum 1.0.0 1.1.1: Spectrum emulation library
 app-emulation/libvirt 1.2.21-r2 1.3.0-r1 1.3.1 9999: C toolkit to manipulate virtual machines
-app-emulation/libvirt-glib 0.2.3 0.2.3-r1: GLib and GObject mappings for libvirt
+app-emulation/libvirt-glib 0.2.3: GLib and GObject mappings for libvirt
 app-emulation/libvirt-snmp 0.0.2-r2 0.0.3: Provides SNMP functionality for libvirt
 app-emulation/lxc 1.0.6-r1 1.0.7 1.0.8 1.1.0-r6 1.1.1-r1 1.1.2 1.1.2-r1 1.1.2-r2 1.1.3 1.1.4 1.1.5: LinuX Containers userspace utilities
 app-emulation/lxd 0.27 2.0.0_beta1 2.0.0_beta3: Fast, dense and secure container management
@@ -12183,7 +12183,7 @@ media-libs/ganv 1.4.2: A GTK+ widget for interactive graph-like environments
 media-libs/gavl 1.2.0 1.4.0 1.4.0-r1: library for handling uncompressed audio and video data
 media-libs/gd 2.0.35-r3 2.0.35-r4 2.1.1 2.1.1-r1: A graphics library for fast image creation
 media-libs/gegl 0.2.0-r2 0.3.0 0.3.2 0.3.4 9999: A graph based image processing framework
-media-libs/gexiv2 0.6.1 0.10.2 0.10.3: GObject-based wrapper around the Exiv2 library
+media-libs/gexiv2 0.10.2 0.10.3: GObject-based wrapper around the Exiv2 library
 media-libs/giblib 1.2.4 1.2.4-r1: a graphics library built on top of imlib2
 media-libs/giflib 4.1.6-r2 4.1.6-r3 4.2.3 4.2.3-r1 5.0.6 5.1.0 5.1.1 5.1.2: Library to handle, display and manipulate GIF images
 media-libs/glew 1.9.0 1.10.0-r1 1.10.0-r2 1.11.0 1.12.0 1.13.0: The OpenGL Extension Wrangler Library
@@ -12202,13 +12202,13 @@ media-libs/gst-plugins-base 0.10.36-r2 1.4.5 1.6.1 1.6.2 1.6.3: Basepack of plug
 media-libs/gst-plugins-good 0.10.31-r1 1.4.5 1.6.1 1.6.2 1.6.3: Basepack of plugins for GStreamer
 media-libs/gst-plugins-ugly 0.10.19-r1 1.4.5 1.6.1 1.6.2 1.6.3: Basepack of plugins for gstreamer
 media-libs/gst-rtsp-server 0.10.8-r1 1.4.5 1.6.2: A GStreamer based RTSP server
-media-libs/gstreamer 0.10.36-r2 1.4.5 1.6.1 1.6.2 1.6.3 1.6.3-r1: Open source multimedia framework
+media-libs/gstreamer 0.10.36-r2 1.4.5 1.6.3: Open source multimedia framework
 media-libs/gstreamer-editing-services 1.4.0 1.6.1 1.6.2: SDK for making video editors and more
 media-libs/guilib 1.2.1: a simple widget set for SDL
 media-libs/gupnp-dlna 0.10.3 0.10.4: Library providing DLNA-related functionality for MediaServers
 media-libs/hal-flash 0.2.0_rc1: A libhal stub library forwarding to UDisks for www-plugins/adobe-flash to play DRM content
 media-libs/hamlib 1.2.15.3-r1 3.0 3.0.1: Ham radio backend rig control libraries
-media-libs/harfbuzz 0.9.41 1.0.6 1.1.3 1.2.3 9999: An OpenType text shaping engine
+media-libs/harfbuzz 0.9.41 1.1.3 1.2.3 9999: An OpenType text shaping engine
 media-libs/herqq 1.0.0-r2: A software library for building UPnP devices
 media-libs/hupnp-ng 9999: A software library for building UPnP devices, fork of herqq
 media-libs/icc-profiles-basiccolor-printing2009 1.2.0: ICC profiles for printing/offset
@@ -16569,7 +16569,7 @@ sys-block/megactl 0.4.1-r1 0.4.1-r2: LSI MegaRAID control utility
 sys-block/megamgr 5.20-r2: LSI Logic MegaRAID Text User Interface management tool
 sys-block/megarc 1.11-r2: LSI Logic MegaRAID Text User Interface management tool
 sys-block/mpt-status 1.2.0-r1: Query tool to access the running configuration and status of LSI SCSI HBAs
-sys-block/ms-sys 2.4.0 2.5.1 2.5.2: A command-line program for writing Microsoft compatible boot records
+sys-block/ms-sys 2.4.0 2.5.2 2.5.3: A command-line program for writing Microsoft compatible boot records
 sys-block/mtx 1.2.18 1.3.12: Utilities for controlling SCSI media changers and tape drives
 sys-block/nbd 3.11 3.12.1 3.13: Userland client/server for kernel network block device
 sys-block/noflushd 2.7.3 2.7.4 2.7.5 2.8: A daemon to spin down your disks and force accesses to be cached
@@ -17039,7 +17039,7 @@ sys-libs/libkudzu 1.2.57.1: Red Hat Hardware detection tools
 sys-libs/libmath++ 0.0.4-r1: template based math library, written in C++, for symbolic and numeric calculus applications
 sys-libs/libnih 1.0.3-r3: Light-weight 'standard library' of C functions
 sys-libs/libomp 3.7.0 3.7.1: OpenMP runtime library for LLVM/clang compiler
-sys-libs/libosinfo 0.2.12 0.3.0 0.3.0-r1: GObject library for managing information about real and virtual OSes
+sys-libs/libosinfo 0.2.12 0.3.0: GObject library for managing information about real and virtual OSes
 sys-libs/libraw1394 2.0.8 2.1.0-r1 2.1.1: library that provides direct access to the IEEE 1394 bus
 sys-libs/librtas 1.3.6 1.3.8 1.3.13: A set of libraries for userspace access to RTAS on the PowerPC platform(s)
 sys-libs/libseccomp 2.1.1 2.2.0 2.2.3: high level interface to Linux seccomp filter
@@ -17840,7 +17840,7 @@ x11-libs/fltk 1.3.3-r3 1.3.9999: C++ user interface toolkit for X and OpenGL
 x11-libs/fox 1.6.49 1.6.50 1.7.49 1.7.53 1.7.54: C++ based Toolkit for developing Graphical User Interfaces easily and effectively
 x11-libs/fox-wrapper 2 3: wrapper for fox-config to manage multiple versions
 x11-libs/fxscintilla 3.3.5: A free source code editing component for the FOX-Toolkit
-x11-libs/gdk-pixbuf 2.32.1 2.32.2 2.32.3 2.32.3-r1: Image loading library for GTK+
+x11-libs/gdk-pixbuf 2.32.1 2.32.3: Image loading library for GTK+
 x11-libs/gksu 2.0.2-r1: A gtk+ frontend for libgksu
 x11-libs/gl2ps 1.3.8: OpenGL to PostScript printing library
 x11-libs/glamor 0.6.0 0.6.0-r1: OpenGL based 2D rendering acceleration library
@@ -17913,7 +17913,7 @@ x11-libs/libgksu 2.0.12-r2: A library for integration of su into applications
 x11-libs/libgxim 0.5.0: GObject-based XIM protocol library
 x11-libs/libiterm-mbt 0.5: Hacked version of libiterm -- Internationalized Terminal Emulator Library
 x11-libs/libkscreen 1.0.5_p20150822: KDE screen management library
-x11-libs/libnotify 0.7.6-r1 0.7.6-r2: A library for sending desktop notifications
+x11-libs/libnotify 0.7.6-r1 0.7.6-r3: A library for sending desktop notifications
 x11-libs/liboglappth 0.98 1.0.0: A library for creating portable OpenGL applications with easy-to-code scene setup and selection
 x11-libs/libpciaccess 0.13.3 0.13.4: Library providing generic access to the PCI bus and devices
 x11-libs/libproplist 0.10.1-r4: An library to mimic property list functionality from the GNUstep environment
