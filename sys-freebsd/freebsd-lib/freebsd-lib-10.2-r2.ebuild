@@ -214,6 +214,7 @@ src_prepare() {
 	cd "${S}"
 	if use userland_GNU; then
 		find . -name Makefile -exec sed -ibak 's/sed -i /sed -i/' {} \;
+		sed -i -e 's/-i ""/-i""/' "${S}/csu/Makefile.inc" || die
 	fi
 }
 
