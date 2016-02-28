@@ -16,7 +16,7 @@ SLOT="0"
 KEYWORDS="amd64 ~x86"
 IUSE="test"
 
-RDEPEND="${COMMON_DEPEND}
+RDEPEND="
 	>=dev-libs/gjs-1.43.3
 	>=dev-libs/glib-2.32:2
 	>=dev-libs/gobject-introspection-1.35.9:=
@@ -31,6 +31,11 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	test? ( dev-util/dogtail )
 "
+
+src_prepare() {
+	gnome2_src_prepare
+	vala_src_prepare
+}
 
 src_configure() {
 	gnome2_src_configure $(use_enable test dogtail)
