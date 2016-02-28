@@ -11,4 +11,4 @@ SLOT=0
 SRC_URI=mirror://freebsd/releases/i386/10.2-RELEASE/src.txz -> freebsd-src-10.2.tar.xz https://security.freebsd.org/patches/EN-15:17/libc.patch -> freebsd-lib-EN-1517-libc.patch https://security.freebsd.org/patches/EN-16:03/yplib.patch -> freebsd-lib-EN-1603-yplib.patch
 _eclass_exported_funcs=pkg_setup:- src_unpack:freebsd src_prepare:- src_compile:- src_install:-
 _eclasses_=bsdmk	2d20496ff432a0ca089345cf400e5c87	eutils	9d81603248f2ba3ec59124320d123e5e	flag-o-matic	d270fa247153df66074f795fa42dba3e	freebsd	f8e66e6d6da923be35831f93abf8742b	multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	3972ca401cf7dbb430df9995f5d8d580	multilib-build	8fe2e81aeb36cdf8a6cc5f50443879cc	portability	ff2a0005fbb7fa61f74e9fa5f3a0ecf4	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=16396c436ae0ec3dbe46249183d5ff81
+_md5_=f1e01f58224c1aa5e8a8f6fab91b2303
