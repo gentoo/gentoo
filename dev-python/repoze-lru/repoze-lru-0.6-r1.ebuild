@@ -17,7 +17,7 @@ SRC_URI="mirror://pypi/${P:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="repoze"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE=""
 
 S=${WORKDIR}/${MY_P}
