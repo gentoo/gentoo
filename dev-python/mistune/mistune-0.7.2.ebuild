@@ -20,6 +20,7 @@ IUSE="test"
 RDEPEND=""
 DEPEND="${RDEPEND}
 	dev-python/cython[$(python_gen_usedep 'python*')]
+	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? ( dev-python/nose[${PYTHON_USEDEP}] )
 "
 
