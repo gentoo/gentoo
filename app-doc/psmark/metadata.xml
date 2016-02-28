@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+<!-- maintainer-needed -->
 <longdescription>Command-line Postscript watermark tool; simple, but useful 
 for things like adding a watermark to outgoing or incoming faxes (eg, use 
 with the sendfax command from net-misc/hylafax).

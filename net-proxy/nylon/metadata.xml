@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+<!-- maintainer-needed -->
 <longdescription>nylon is a proxy server, developed on OpenBSD. It supports SOCKS version 4 and 5,
 as well as a mirror mode so that services can be mirrored directly.</longdescription>
 </pkgmetadata>

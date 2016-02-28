@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+	<!-- maintainer-needed -->
 	<longdescription>
  XNap provides a plugin enabled framework for peer-to-peer (P2P) applications and a client which is based on that framework. It is free software and licensed under the GNU Public License .
 

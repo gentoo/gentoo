@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+<!-- maintainer-needed -->
 <longdescription>3Proxy is really tiny cross-platform proxy servers set. It includes HTTP proxy with HTTPS and FTP support, 
 SOCKSv4/SOCKSv4.5/SOCKSv5 proxy, POP3 proxy, FTP proxy, TCP and UDP portmappers. You can use every proxy as a standalone program 
 (socks, proxy, tcppm, udppm, pop3p) or use combined program (3proxy). Combined proxy additionally supports features like 

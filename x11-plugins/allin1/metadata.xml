@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+	<!-- maintainer-needed -->
 	<longdescription>Allin1 is a little dock applet for FluxBox and similar window managers which monitors CPU load with a moving graph, memory and swap usage with histograms, battery and power status with histogram and icons, and ethernet/PPP interfaces with icons and histograms (linear or logaritmic).</longdescription>
 	<upstream>
 		<remote-id type="sourceforge">allinone</remote-id>

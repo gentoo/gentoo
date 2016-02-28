@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+	<!-- maintainer-needed -->
 	<use>
 		<flag name="judy">Build Judy-based (<pkg>dev-libs/judy</pkg>) plugin implementing fast "exact" and especially "lev" strategies</flag>
 		<flag name="minimal">Don't build server but dict client, dictzip and dictfmt only.</flag>

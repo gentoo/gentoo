@@ -42,7 +42,6 @@ RDEPEND="
 		app-arch/xz-utils
 		app-emulation/lxc[cgmanager,seccomp]
 		net-analyzer/openbsd-netcat
-		net-misc/bridge-utils
 		net-misc/rsync[xattr]
 		sys-apps/iproute2
 		virtual/acl
@@ -68,6 +67,10 @@ src_prepare() {
 	# Gentoo installs that with a renamed binary
 	epatch "${FILESDIR}/${P}-nc-binary-name.patch"
 
+	tmpgoroot="${T}/goroot"
+	mkdir -p "$tmpgoroot" || die "Failed to create temporary GOROOT"
+	cp -sR "$(get_golibdir_gopath)"/* "${tmpgoroot}" || die "Failed to copy files to temporary GOROOT"
+
 	# Warn on unhandled locale changes
 	l10n_find_plocales_changes po "" .po
 }
@@ -77,12 +80,13 @@ src_compile() {
 
 	cd "${S}/src/${EGO_PN}" || die "Failed to change to deep src dir"
 
+	tmpgoroot="${T}/goroot"
 	if use daemon; then
 		# Build binaries
-		GOPATH="${S}:$(get_golibdir_gopath)" emake
+		GOPATH="${S}:${tmpgoroot}" emake
 	else
 		# build client tool
-		GOPATH="${S}:$(get_golibdir_gopath)" emake client
+		GOPATH="${S}:${tmpgoroot}" emake client
 	fi
 
 	use nls && emake build-mo

@@ -1,5 +1,5 @@
---- Makefile.orig	2015-12-28 19:23:28.425122306 -0600
-+++ Makefile	2015-12-28 19:25:09.482123654 -0600
+--- Makefile.orig	2016-02-19 00:16:40.720102639 +0000
++++ Makefile	2016-02-19 00:18:10.886096473 +0000
 @@ -12,17 +12,11 @@
  
  .PHONY: default
@@ -7,14 +7,14 @@
 -	# Must run twice due to go get race
 -	-go get -t -v -d ./...
 -	-go get -t -v -d ./...
- 	go install -v ./...
- 	@echo "LXD built succesfuly"
+ 	go install -v $(DEBUG) ./...
+ 	@echo "LXD built successfully"
  
  .PHONY: client
  client:
 -	# Must run twice due to go get race
 -	-go get -t -v -d ./...
 -	-go get -t -v -d ./...
- 	go install -v ./lxc
- 	@echo "LXD client built succesfuly"
+ 	go install -v $(DEBUG) ./lxc
+ 	@echo "LXD client built successfully"
  

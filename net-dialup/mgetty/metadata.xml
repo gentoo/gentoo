@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+<!-- maintainer-needed -->
 <longdescription>Suite of programs that allows you to take full advantage of your voice/fax modem.
 mgetty is capable of handling data, fax and voice calls without interfering with outgoing calls.</longdescription>
 <use>

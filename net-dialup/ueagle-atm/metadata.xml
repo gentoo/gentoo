@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+	<!-- maintainer-needed -->
 	<longdescription>Firmware and configuration instructions for ADI 930/Eagle USB ADSL Modem driver
 available in kernels &gt;= 2.6.16.</longdescription>
 </pkgmetadata>

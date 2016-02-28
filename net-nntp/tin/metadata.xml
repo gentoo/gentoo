@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+<!-- maintainer-needed -->
 <use>
 <flag name="cancel-locks">Enable Cancel-Lock header functionality (also enables USE=evil)</flag>
 <flag name="evil">Let tin generate a message ID</flag>

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+	<!-- maintainer-needed -->
 	<longdescription>
 		cfv is a utility to both test and create .sfv, .csv, .crc,
 		.md5(sfv-like), md5sum, bsd md5, sha1sum, and .torrent files. These

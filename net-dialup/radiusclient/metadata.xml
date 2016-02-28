@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+	<!-- maintainer-needed -->
 	<longdescription>A library for writing RADIUS clients accompanied with several client utilities</longdescription>
 	<upstream>
 		<remote-id type="freshmeat">radiusclient</remote-id>

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+  <!-- maintainer-needed -->
   <longdescription>
 Dataproviders are small plugins for applications whose work is to push the 
 user’s activities as events in the Zeitgeist daemon. The work of dataproviders 

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+<!-- maintainer-needed -->
 <longdescription>The standard UUCP package of the Free Software Foundation.
 It provides everything you need to make a UUCP connection.</longdescription>
 </pkgmetadata>

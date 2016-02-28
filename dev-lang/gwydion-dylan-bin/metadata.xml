@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+<!-- maintainer-needed -->
 <longdescription lang="en">
 Dylan is an advanced, object-oriented, dynamic language which supports the rapid
 development of programs. When needed, the programmer can later optimize [his or

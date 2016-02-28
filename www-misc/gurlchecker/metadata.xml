@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+<!-- maintainer-needed -->
 <use>
 	<flag name="json">Enable support for parsing Google Chrome and derivatives bookmarks.</flag>
 	<flag name="sqlite">Enable support for parsing Firefox and derivatives bookmarks.</flag>

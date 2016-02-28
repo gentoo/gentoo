@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+<!-- maintainer-needed -->
 <longdescription>ChilliSpot is an open source captive portal or wireless
 LAN access point controller. It is used for authenticating users of a
 wireless LAN. It supports web based login which is today's standard for

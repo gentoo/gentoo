@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+	<!-- maintainer-needed -->
 	<longdescription>A set of scripts to work locally on Subversion checkouts using Mercurial</longdescription>
 	<upstream>
 		<remote-id type="pypi">hgsvn</remote-id>

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+<!-- maintainer-needed -->
 <longdescription lang="en">tinystats is a filter that reads tinydns logs and stores stats
 about query types and errors of your authoritative dns.</longdescription>
 </pkgmetadata>

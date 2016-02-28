@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+<!-- maintainer-needed -->
 <longdescription>
 SimpServer is the first lightweight instant messaging security gateway for Unix systems. Install SimpServer on a
 Unix system and configure IM clients on your local network, and conversations with Simp-equipped parties will be

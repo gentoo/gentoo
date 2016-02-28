@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+<!-- maintainer-needed -->
 <longdescription>
 		DeskMenu is a root menu program which is activated by clicking the root window. 
 		It is configured from a .deskmenurc file in your home directory. DeskMenu is 

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+	<!-- maintainer-needed -->
 	<longdescription>BFilter is a filtering web proxy. It was originally intended for removing banner ads only, but at some point 
 it has been extended to remove popups and webbugs. It can't be used as a general purpose filtering proxy 
 because it was never intended this way. 

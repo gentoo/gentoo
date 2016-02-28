@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+	<!-- maintainer-needed -->
 	<use>
 		<flag name="gtk3">Link against <pkg>x11-libs/gtk+:3</pkg> instead of
 			<pkg>x11-libs/gtk+:2</pkg></flag>

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+  <!-- maintainer-needed -->
   <longdescription lang="en">
     Recorder is a graphical frontend of cdrecord/cdrtools, cdrdao, mkisofs
     and growisofs. It aims to be simple and easy to use, free of large

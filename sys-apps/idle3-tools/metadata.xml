@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+	<!-- maintainer-needed -->
 	<longdescription lang="en">
 		Idle3-tools provides a linux/unix utility that can disable, get and set the value
 		of the infamous idle3 timer found on recent Western Digital Hard Disk Drives. It

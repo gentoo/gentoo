@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+<!-- maintainer-needed -->
 <longdescription lang="en">
 yaGTD incorporates major features from Allen's 'Getting Things Done' philosophy and 
 notion of urgency and importance preached by Stephen Covey 
