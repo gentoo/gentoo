@@ -10,11 +10,10 @@ if [[ ${PV} = *9999* ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="git://github.com/doxygen/doxygen.git"
 	SRC_URI=""
-	KEYWORDS=""
+	KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 sparc x86"
 else
-	SRC_URI="https://github.com/doxygen/doxygen/archive/Release_${PV//\./_}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="http://ftp.stack.nl/pub/users/dimitri/${P}.src.tar.gz"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x86-solaris"
-	S="${WORKDIR}/${PN}-Release_${PV//\./_}"
 fi
 SRC_URI+=" https://dev.gentoo.org/~xarthisius/distfiles/doxywizard.png"
 
@@ -105,7 +104,9 @@ src_prepare() {
 	# Call dot with -Teps instead of -Tps for EPS generation - bug #282150
 	sed -i -e '/addJob("ps"/ s/"ps"/"eps"/g' src/dot.cpp || die
 
-	epatch "${FILESDIR}"/${PN}-1.8.11-link_with_pthread.patch
+	epatch "${FILESDIR}"/${PN}-1.8.9.1-empty-line-sigsegv.patch #454348
+
+	epatch "${FILESDIR}"/${P}-link_with_pthread.patch
 
 	# fix pdf doc
 	sed -i.orig -e "s:g_kowal:g kowal:" \
