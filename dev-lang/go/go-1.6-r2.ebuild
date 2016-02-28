@@ -27,7 +27,7 @@ kernel_linux? (
 	ppc64? ( ${BOOTSTRAP_DIST}/go-linux-ppc64-bootstrap.tbz )
 	x86? ( ${BOOTSTRAP_DIST}/go-linux-386-bootstrap.tbz )
 )
-Kernel_SunOS? (
+kernel_SunOS? (
 	amd64? ( ${BOOTSTRAP_DIST}/go-solaris-amd64-bootstrap.tbz )
 )
 "
