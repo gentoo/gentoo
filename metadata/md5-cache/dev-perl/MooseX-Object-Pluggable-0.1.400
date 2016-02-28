@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=virtual/perl-Carp dev-perl/Module-Pluggable dev-perl/Module-Runtime dev-perl/Moose virtual/perl-Scalar-List-Utils dev-perl/Try-Tiny dev-perl/namespace-autoclean >=dev-perl/Module-Build-Tiny-0.39.0 test? ( virtual/perl-ExtUtils-MakeMaker virtual/perl-File-Spec dev-perl/Test-Fatal >=virtual/perl-Test-Simple-0.880.0 ) dev-lang/perl:=
+DESCRIPTION=Make your classes pluggable
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/MooseX-Object-Pluggable/
+IUSE=test
+KEYWORDS=~amd64 ~arm ~ppc ~x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=virtual/perl-Carp dev-perl/Module-Pluggable dev-perl/Module-Runtime dev-perl/Moose virtual/perl-Scalar-List-Utils dev-perl/Try-Tiny dev-perl/namespace-autoclean dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/E/ET/ETHER/MooseX-Object-Pluggable-0.0014.tar.gz
+_eclass_exported_funcs=src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
+_eclasses_=multiprocessing	e32940a7b2a9992ad217eccddb84d548	perl-functions	15aff0b9cba2282790142295ceb6be0c	perl-module	b2108b3c85ac7a6a6a9b035b54f6813c
+_md5_=820ccf07a7cb79e8ce42d3409554ba32

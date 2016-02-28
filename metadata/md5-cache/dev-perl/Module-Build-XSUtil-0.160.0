@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=>=dev-perl/Module-Build-0.400.500 dev-perl/Devel-CheckCompiler virtual/perl-Devel-PPPort virtual/perl-Exporter virtual/perl-ExtUtils-CBuilder virtual/perl-File-Path virtual/perl-XSLoader virtual/perl-parent test? ( dev-perl/Capture-Tiny dev-perl/Cwd-Guard dev-perl/File-Copy-Recursive virtual/perl-File-Spec virtual/perl-File-Temp >=virtual/perl-Test-Simple-0.980.0 ) dev-lang/perl:=
+DESCRIPTION=A Module::Build class for building XS modules
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/Module-Build-XSUtil/
+IUSE=test examples
+KEYWORDS=~amd64 ~hppa ~ppc ~x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=dev-perl/Devel-CheckCompiler virtual/perl-Devel-PPPort virtual/perl-Exporter virtual/perl-ExtUtils-CBuilder virtual/perl-File-Path virtual/perl-XSLoader virtual/perl-parent dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/H/HI/HIDEAKIO/Module-Build-XSUtil-0.16.tar.gz
+_eclass_exported_funcs=src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:-
+_eclasses_=multiprocessing	e32940a7b2a9992ad217eccddb84d548	perl-functions	15aff0b9cba2282790142295ceb6be0c	perl-module	b2108b3c85ac7a6a6a9b035b54f6813c
+_md5_=b625820386d63b23be29b1c90ce6669d

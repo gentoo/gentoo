@@ -2205,6 +2205,10 @@ dev-perl/GD:animgif - Enable animated gif support
 dev-perl/Graphics-ColorNames:recommended - Install recommended support modules
 dev-perl/HTML-Mason:modperl - Enable www-apache/mod_perl support
 dev-perl/Lab-Measurement:xpression - Install the Xpression measurement framework
+dev-perl/Mail-IMAPClient:md5 - Install support for DIGEST-MD5 and CRAM-MD5 Authentication
+dev-perl/Mail-IMAPClient:ntlm - Install support for NTLM Authentication
+dev-perl/Mail-IMAPClient:ssl - Install support for SSL Connections
+dev-perl/Mail-IMAPClient:zlib - Install support for COMPRESS DEFLATE connections
 dev-perl/Net-OpenSSH:sftp - Enable SFTP protocol support.
 dev-perl/Net-SSH2:gcrypt - Use libgcrypt instead of openssl
 dev-perl/PDL:badval - Enable bad values support

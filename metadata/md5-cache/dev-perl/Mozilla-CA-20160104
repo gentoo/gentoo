@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=virtual/perl-ExtUtils-MakeMaker dev-lang/perl:=
+DESCRIPTION=Mozilla's CA cert bundle in PEM format
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/Mozilla-CA/
+KEYWORDS=~alpha ~amd64 ~ppc ~ppc64 ~x86
+LICENSE=MPL-1.1
+RDEPEND=dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/A/AB/ABH/Mozilla-CA-20160104.tar.gz
+_eclass_exported_funcs=src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
+_eclasses_=multiprocessing	e32940a7b2a9992ad217eccddb84d548	perl-functions	15aff0b9cba2282790142295ceb6be0c	perl-module	b2108b3c85ac7a6a6a9b035b54f6813c
+_md5_=e4b9e89228da249cc6f353792cd3c71e

@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=>=virtual/perl-Math-BigInt-1.999.714 >=virtual/perl-XSLoader-0.20.0 >=dev-libs/gmp-4.0.0:0 virtual/perl-ExtUtils-MakeMaker test? ( >=virtual/perl-Test-Simple-0.470.0 ) dev-lang/perl:=
+DESCRIPTION=Use the GMP library for Math::BigInt routines
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/Math-BigInt-GMP/
+IUSE=test
+KEYWORDS=~alpha ~amd64 ~hppa ~ppc ~sparc ~x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=>=virtual/perl-Math-BigInt-1.999.714 >=virtual/perl-XSLoader-0.20.0 >=dev-libs/gmp-4.0.0:0 dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/P/PJ/PJACKLAM/Math-BigInt-GMP-1.49.tar.gz
+_eclass_exported_funcs=src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
+_eclasses_=multiprocessing	e32940a7b2a9992ad217eccddb84d548	perl-functions	15aff0b9cba2282790142295ceb6be0c	perl-module	b2108b3c85ac7a6a6a9b035b54f6813c
+_md5_=e4e4d92bc7b5bab73b0cd3f299a0a5b9
