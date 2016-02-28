@@ -32,6 +32,7 @@ REQUIRED_USE="^^ ( rkt_stage1_coreos rkt_stage1_host rkt_stage1_src )"
 
 DEPEND=">=dev-lang/go-1.4.1
 	app-arch/cpio
+	app-crypt/trousers
 	sys-fs/squashfs-tools
 	dev-perl/Capture-Tiny
 	rkt_stage1_src? (
