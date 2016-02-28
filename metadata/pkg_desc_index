@@ -5838,7 +5838,7 @@ dev-perl/MogileFS-Client-Async 0.030.0-r1: MogileFS Client using AnyEvent non-bl
 dev-perl/MogileFS-Network 0.060.0-r1: Network awareness and extensions for MogileFS::Server
 dev-perl/MogileFS-Utils 2.280.0-r1 2.290.0: Server for the MogileFS distributed file system
 dev-perl/Mon 0.110.0-r1: A Monitor Perl Module
-dev-perl/MongoDB 0.701.4 0.708.0.0 0.708.3.0: Official MongoDB Driver for Perl
+dev-perl/MongoDB 0.701.4 0.708.0.0 0.708.3.0 1.2.2: Official MongoDB Driver for Perl
 dev-perl/Monitoring-Plugin 0.380.0 0.390.0: Modules to streamline Nagios, Icinga, Shinken, etc. plugins
 dev-perl/Moo 1.4.2 2.0.0 2.0.2: Minimalist Object Orientation (with Moose compatiblity)
 dev-perl/MooX-HandlesVia 0.1.7 0.1.8: NativeTrait-like behavior for Moo
@@ -6196,7 +6196,7 @@ dev-perl/Test-MockTime 0.130.0 0.150.0: Replaces actual time with simulated time
 dev-perl/Test-Most 0.310.0-r1 0.340.0: Most commonly needed test functions and features
 dev-perl/Test-NoTabs 1.400.0: Check the presence of tabs in your project
 dev-perl/Test-NoWarnings 1.40.0-r2: Make sure you didn't emit any warnings while testing
-dev-perl/Test-Number-Delta 1.30.0-r1 1.40.0: Compare the difference between numbers against a given tolerance
+dev-perl/Test-Number-Delta 1.30.0-r1 1.40.0 1.60.0: Compare the difference between numbers against a given tolerance
 dev-perl/Test-Object 0.70.0-r1: Thoroughly testing objects via registered handlers
 dev-perl/Test-Output 1.30.0: Utilities to test STDOUT and STDERR messages
 dev-perl/Test-Perl-Critic 1.20.0-r1: Use Perl::Critic in test programs
@@ -6272,6 +6272,7 @@ dev-perl/Tie-ToObject 0.30.0-r1: Tie to an existing object
 dev-perl/Time-Duration 1.60.0-r1: Rounded or exact English expression of durations
 dev-perl/Time-Duration-Parse 0.60.0-r1: Parse string that represents time duration
 dev-perl/Time-Format 1.120.0: Easy-to-use date/time formatting
+dev-perl/Time-Moment 0.380.0: Represents a date and time of day with an offset from UTC
 dev-perl/Time-Out 0.110.0: Easily timeout long running operations
 dev-perl/Time-Piece-MySQL 0.60.0-r1: MySQL-specific functions for Time::Piece
 dev-perl/Time-Stopwatch 1.0.0: Use tied scalars as timers
@@ -6285,6 +6286,7 @@ dev-perl/Tree-DAG_Node 1.60.0-r1 1.240.0 1.270.0: (Super)class for representing 
 dev-perl/Tree-Simple 1.180.0-r1 1.250.0: A simple tree object
 dev-perl/Try-Tiny 0.220.0: Minimal try/catch with proper localization of source /home/mgorny/repos/gentoo/dev-perl/Try-Tiny/Try-Tiny-0.220.0.ebuild
 dev-perl/Type-Tiny 1.0.5: tiny, yet Moo(se)-compatible type constraint
+dev-perl/Type-Tiny-XS 0.12.0: provides an XS boost for some of Type::Tiny's built-in type constraints
 dev-perl/Types-Serialiser 1.0.0: simple data types for common serialisation formats
 dev-perl/UNIVERSAL-can 1.201.207.260-r1 1.201.401.240 1.201.403.280: Hack around people calling UNIVERSAL::can() as a function
 dev-perl/UNIVERSAL-isa 1.201.207.260-r1 1.201.506.140: Attempt to recover from people calling UNIVERSAL::isa as a function
@@ -9526,7 +9528,7 @@ dev-util/hxd 0.70.02-r1: Binary to hexadecimal converter
 dev-util/hxtools 20121125-r1: A collection of tools and scripts
 dev-util/icemon 20140102: Icemon is a KDE monitor program for use with Icecream compile clusters
 dev-util/icmake 7.21.01 7.22.00 7.22.01: Hybrid between a make utility and a shell scripting language
-dev-util/idea-ultimate 14.1.5.141.2735.5 15.0.3.143.1821.5 16.0.0.144.3143.6_pre: A complete toolset for web, mobile and enterprise development
+dev-util/idea-ultimate 14.1.5.141.2735.5 15.0.3.143.1821.5 15.0.4.143.2287.1 16.0.0.144.3143.6_pre: A complete toolset for web, mobile and enterprise development
 dev-util/idutils 4.2 4.5 4.6: Fast, high-capacity, identifier database tool
 dev-util/igprof 5.9.11: Ignominous Profiler for analysing application memory and performance characteristics
 dev-util/imediff2 1.1.2-r3: An interactive, user friendly 2-way merge tool in text mode
@@ -10750,7 +10752,7 @@ gnome-base/gnome-control-center 3.16.3 3.18.2: GNOME's main interface to configu
 gnome-base/gnome-core-apps 3.14.0 3.16.0 3.18.0: Sub-meta package for the core applications integrated with GNOME 3
 gnome-base/gnome-core-libs 3.14.0 3.16.0 3.18.0: Sub-meta package for the core libraries of GNOME 3
 gnome-base/gnome-desktop 2.32.1-r2 3.16.2 3.18.2: Libraries for the gnome desktop that are not part of the UI
-gnome-base/gnome-extra-apps 3.14.0-r1 3.16.0 3.18.0: Sub-meta package for the applications of GNOME 3
+gnome-base/gnome-extra-apps 3.16.0 3.18.0 3.18.0-r1: Sub-meta package for the applications of GNOME 3
 gnome-base/gnome-keyring 3.16.0-r1 3.18.3: Password and keyring managing daemon
 gnome-base/gnome-light 3.16.0 3.18.0: Meta package for GNOME-Light, merge this package to install
 gnome-base/gnome-menus 3.10.1-r1 3.13.3 3.13.3-r1: Library for the Desktop Menu fd.o specification
@@ -13841,7 +13843,7 @@ net-firewall/quicktables 2.3: a quick iptables script generator
 net-firewall/rtsp-conntrack 3.7: RTSP conntrack module for Netfilter
 net-firewall/sanewall 1.1.6-r1: iptables firewall generator (fork of firehol)
 net-firewall/shapecfg 36: configuration tool for setting traffic bandwidth parameters
-net-firewall/shorewall 4.6.10.1 4.6.13 4.6.13.1 5.0.2.1 5.0.4: A high-level tool for configuring Netfilter
+net-firewall/shorewall 4.6.10.1 5.0.2.1 5.0.4 5.0.5.1: A high-level tool for configuring Netfilter
 net-firewall/ufw 0.34_pre805-r2: A program used to manage a netfilter firewall
 net-firewall/ufw-frontends 0.3.2-r3: Provides graphical frontend to ufw
 net-firewall/xtables-addons 1.47.1 2.8 2.9 2.10: extensions not yet accepted in the main kernel/iptables (patch-o-matic(-ng) successor)
