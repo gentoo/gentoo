@@ -4,11 +4,11 @@ DESCRIPTION=Device mapper target autoconfig
 EAPI=4
 HOMEPAGE=http://christophe.varoqui.free.fr/
 IUSE=systemd
-KEYWORDS=~alpha amd64 ~arm ~ia64 ppc ppc64 ~sparc x86
+KEYWORDS=~alpha amd64 ~arm ~arm64 ~ia64 ppc ppc64 ~sparc x86
 LICENSE=GPL-2
 RDEPEND=>=sys-fs/lvm2-2.02.45 >=virtual/udev-171 dev-libs/libaio sys-libs/readline systemd? ( sys-apps/systemd )
 SLOT=0
 SRC_URI=http://christophe.varoqui.free.fr/multipath-tools/multipath-tools-0.5.0.tar.bz2
 _eclass_exported_funcs=pkg_postinst:- src_prepare:- src_compile:- src_install:-
 _eclasses_=eutils	9d81603248f2ba3ec59124320d123e5e	multilib	3972ca401cf7dbb430df9995f5d8d580	systemd	3165c885f3c71ffae7a867d931fb0e07	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	udev	73058269b3e70e34e084fa3981282338
-_md5_=e2d042e226daf470a65cbce3e6d216d8
+_md5_=a334832c59439e1e6848a21ecb1e06a6
