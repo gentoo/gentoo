@@ -4510,7 +4510,7 @@ dev-libs/gf-complete 0.0.0 2.0.0: A Comprehensive Open Source Library for Galois
 dev-libs/gf2x 1.0-r1 1.1: C/C++ routines for fast arithmetic in GF(2)[x]
 dev-libs/girara 0.2.2 0.2.3 0.2.4 0.2.5 9999: A library that implements a user interface that focuses on simplicity and minimalism
 dev-libs/gjs 1.44.0: Javascript bindings for GNOME
-dev-libs/glib 1.2.10-r6 2.42.2 2.44.1 2.44.1-r1 2.46.2 2.46.2-r1: The GLib library of C routines
+dev-libs/glib 1.2.10-r6 2.44.1-r1 2.46.2-r1 2.46.2-r2: The GLib library of C routines
 dev-libs/gmime 2.6.20 2.6.20-r1: Utilities for creating and parsing messages using MIME
 dev-libs/gmp 4.3.2-r1 5.1.3-r1 6.0.0a 6.1.0: Library for arithmetic on arbitrary precision integers, rational numbers, and floating-point numbers
 dev-libs/gnulib 2009.03.03.14.07.45-r1 2013.10.28.22.33.52 9999-r1: Gnulib is a library of common routines intended to be shared at the source level
@@ -4893,7 +4893,7 @@ dev-libs/wnn7sdk 20011017 20011017-r1: Library and headers for Wnn7 client
 dev-libs/xalan-c 1.11.0_pre1153059: XSLT processor for transforming XML into HTML, text, or other XML types
 dev-libs/xapian 1.2.19 1.2.22 1.3.4-r2: Xapian Probabilistic Information Retrieval library
 dev-libs/xapian-bindings 1.2.19 1.2.22 1.3.4: SWIG and JNI bindings for Xapian
-dev-libs/xerces-c 3.1.2: A validating XML parser written in a portable subset of C++
+dev-libs/xerces-c 3.1.2 3.1.3: A validating XML parser written in a portable subset of C++
 dev-libs/xml-security-c 1.7.3: Apache C++ XML security libraries
 dev-libs/xmlrpc-c 1.32.05-r1: A lightweigt RPC library based on XML and HTTP
 dev-libs/xmlrpc-epi 0.54.2: Epinions implementation of XML-RPC protocol in C
@@ -9239,7 +9239,7 @@ dev-tex/latex-calendar 3.1: LaTeX package used to create Calendars. Very flexibl
 dev-tex/latex2html 2008 2008-r1: convertor written in Perl that converts LATEX documents to HTML
 dev-tex/latex2rtf 2.2.1b 2.3.1 2.3.3 2.3.8: LaTeX to RTF converter
 dev-tex/latexdiff 0.5 1.0.4 1.1.0: Compare two latex files and mark up significant differences
-dev-tex/latexmk 435 441 443a: Perl script for automatically building LaTeX documents
+dev-tex/latexmk 435 441 443a 444: Perl script for automatically building LaTeX documents
 dev-tex/lazylist 1.0a: Lists in TeX's mouth - lambda-calculus and list-handling macros
 dev-tex/leaflet 20041222: LaTeX package used to create leaflet-type brochures
 dev-tex/lgrind 3.67-r3: A source pretty printer for LaTeX - styles to stylise your source and code examples
@@ -10772,7 +10772,7 @@ gnome-base/libgnomeprint 2.18.8-r1: Printer handling for Gnome
 gnome-base/libgnomeprintui 2.18.6-r1: User interface libraries for gnome print
 gnome-base/libgnomeui 2.24.5-r1: User Interface routines for Gnome
 gnome-base/libgtop 2.30.0 2.32.0: A library that provides top functionality to applications
-gnome-base/librsvg 2.40.11 2.40.12 2.40.13: Scalable Vector Graphics (SVG) rendering library
+gnome-base/librsvg 2.40.11 2.40.12 2.40.13 2.40.13-r1: Scalable Vector Graphics (SVG) rendering library
 gnome-base/nautilus 3.16.2 3.18.2 3.18.2-r1 3.18.3 3.18.4 3.18.5: A file manager for the GNOME desktop
 gnome-base/orbit 2.14.19-r4: ORBit2 is a high-performance CORBA ORB
 gnome-extra/activity-log-manager 0.9.7-r1: GUI which lets you easily control what gets logged by Zeitgeist
