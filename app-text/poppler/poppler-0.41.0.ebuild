@@ -32,7 +32,7 @@ COMMON_DEPEND="
 	cairo? (
 		dev-libs/glib:2
 		>=x11-libs/cairo-1.10.0
-		introspection? ( >=dev-libs/gobject-introspection-1.32.1 )
+		introspection? ( >=dev-libs/gobject-introspection-1.32.1:= )
 	)
 	curl? ( net-misc/curl )
 	jpeg? ( virtual/jpeg:0 )
