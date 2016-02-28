@@ -8254,10 +8254,10 @@ dev-ros/eigen_conversions 1.11.7 9999: Conversion functions between Eigen and KD
 dev-ros/eigen_stl_containers 0.1.4 9999: Provides a set of typedef's that allow using Eigen datatypes in STL containers
 dev-ros/fake_localization 1.13.0 1.13.1 9999: A ROS node that simply forwards odometry information
 dev-ros/filters 1.7.4 9999: Standardized interface for processing data as a sequence of filters
-dev-ros/gazebo_msgs 2.5.1 9999: Message and service data structures for interacting with Gazebo from ROS
-dev-ros/gazebo_plugins 2.5.1 9999: Robot-independent Gazebo plugins for sensors, motors and dynamic reconfigurable components
-dev-ros/gazebo_ros 2.5.1 9999: ROS plugins that offer message and service publishers for interfacing with gazebo
-dev-ros/gazebo_ros_control 2.5.1 9999: ROS control plugins for gazebo
+dev-ros/gazebo_msgs 2.5.1 2.5.2 9999: Message and service data structures for interacting with Gazebo from ROS
+dev-ros/gazebo_plugins 2.5.1 2.5.2 9999: Robot-independent Gazebo plugins for sensors, motors and dynamic reconfigurable components
+dev-ros/gazebo_ros 2.5.1 2.5.2 9999: ROS plugins that offer message and service publishers for interfacing with gazebo
+dev-ros/gazebo_ros_control 2.5.1 2.5.2 9999: ROS control plugins for gazebo
 dev-ros/gencpp 0.5.3 9999: ROS C++ message definition and serialization generators
 dev-ros/geneus 2.2.5 9999: EusLisp ROS message and service generators
 dev-ros/genlisp 0.4.15 9999: Common-Lisp ROS message and service generators
@@ -8362,7 +8362,7 @@ dev-ros/resource_retriever 1.11.6 9999: Retrieves data from url-format files
 dev-ros/rgbd_launch 2.1.0 2.1.1 2.2.0 9999: Launch files to open an RGBD device
 dev-ros/robot_pose_ekf 1.13.0 1.13.1 9999: Estimate the 3D pose of a robot, based on (partial) pose measurements coming from different sources
 dev-ros/robot_pose_publisher 0.2.4 9999: A Simple Node to Publish the Robot's Position Relative to the Map using TFs
-dev-ros/robot_state_publisher 1.10.4 1.12.0 9999: Package for publishing the state of a robot to tf
+dev-ros/robot_state_publisher 1.10.4 1.12.0 1.12.1 9999: Package for publishing the state of a robot to tf
 dev-ros/rosapi 0.7.13 0.7.14 9999: Provides service calls for getting ros meta-information, like list of topics, services, params, etc.
 dev-ros/rosauth 0.1.7 9999: Server Side tools for Authorization and Authentication of ROS Clients
 dev-ros/rosbag 1.11.14 1.11.15 1.11.16 9999: Set of tools for recording from and playing back to ROS topics
@@ -15083,7 +15083,7 @@ ros-meta/desktop_full 1.2.0 9999: Metapackage for ROS complete desktop install
 ros-meta/diagnostics 1.8.8 9999: Packages related to gathering, viewing, and analyzing diagnostics data from robots
 ros-meta/driver_common 1.6.8 9999: Classes and tools that are useful throughout the driver stacks
 ros-meta/executive_smach 2.0.0 9999: SMACH library and ROS SMACH integration packages
-ros-meta/gazebo_ros_pkgs 2.5.1 9999: Interface for using ROS with the gazebo simulator
+ros-meta/gazebo_ros_pkgs 2.5.1 2.5.2 9999: Interface for using ROS with the gazebo simulator
 ros-meta/geographic_info 0.4.0 9999: Geographic information metapackage
 ros-meta/geometry 1.11.7 9999: Common geometric calculations
 ros-meta/geometry_experimental 0.5.12 9999: The second generation Transform Library in ros
