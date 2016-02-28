@@ -1,23 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="person">
-    <email>whissi@whissi.de</email>
-    <name>Thomas D. (Whissi)</name>
-  </maintainer>
-  <maintainer type="project">
-    <email>netmon@gentoo.org</email>
-    <name>Gentoo network monitoring and analysis project</name>
-  </maintainer>
-  <maintainer type="project">
-    <email>proxy-maint@gentoo.org</email>
-    <name>Proxy Maintainers</name>
-  </maintainer>
-  <use>
-    <flag name="init">Adds the capability to place the firewall in a safe state prior to bringing up the network interfaces</flag>
-    <flag name="ipv4">Installs everything needed to create a full IPv4 firewall</flag>
-    <flag name="ipv6">Adds the capability to create a full IPv6 firewall (requires <pkg>net-firewall/shorewall[ipv4]</pkg>)</flag>
-    <flag name="lite4">Installs everything needed to just *run* an IPv4 compiled firewall script created with <pkg>net-firewall/shorewall[ipv4]</pkg></flag>
-    <flag name="lite6">Installs everything needed to just *run* an IPv6 compiled firewall script created with <pkg>net-firewall/shorewall[ipv6]</pkg></flag>
-  </use>
+	<maintainer type="person">
+		<email>whissi@whissi.de</email>
+		<name>Thomas D. (Whissi)</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>netmon@gentoo.org</email>
+		<name>Gentoo network monitoring and analysis project</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+		The Shoreline Firewall, more commonly known as "Shorewall", is high-level tool for configuring Netfilter.
+		You describe your firewall/gateway requirements using entries in a set of configuration files.
+		Shorewall reads those configuration files and with the help of the iptables, iptables-restore, ip and
+		tc utilities, Shorewall configures Netfilter and the Linux networking subsystem to match your requirements.
+		Shorewall can be used on a dedicated firewall system, a multi-function gateway/router/server or on a
+		standalone GNU/Linux system. Shorewall does not use Netfilter's ipchains compatibility mode and can thus
+		take advantage of Netfilter's connection state tracking capabilities.
+
+		Shorewall is not a daemon. Once Shorewall has configured the Linux networking subsystem, its job is complete and
+		there is no "Shorewall process" left running in your system. The /usr/sbin/shorewall program can be used at
+		any time to monitor the Netfilter firewall.
+	</longdescription>
+	<upstream>
+		<doc lang="en">http://shorewall.net/Documentation_Index.html</doc>
+		<remote-id type="sourceforge">shorewall</remote-id>
+	</upstream>
+	<use>
+		<flag name="init">Adds the capability to place the firewall in a safe state prior to bringing up the network interfaces</flag>
+		<flag name="ipv4">Installs everything needed to create a full IPv4 firewall</flag>
+		<flag name="ipv6">Adds the capability to create a full IPv6 firewall (requires <pkg>net-firewall/shorewall[ipv4]</pkg>)</flag>
+		<flag name="lite4">Installs everything needed to just *run* an IPv4 compiled firewall script created with <pkg>net-firewall/shorewall[ipv4]</pkg></flag>
+		<flag name="lite6">Installs everything needed to just *run* an IPv6 compiled firewall script created with <pkg>net-firewall/shorewall[ipv6]</pkg></flag>
+	</use>
 </pkgmetadata>
