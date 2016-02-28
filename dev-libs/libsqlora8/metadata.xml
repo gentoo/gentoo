@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+<!-- maintainer-needed -->
 <longdescription>
   libsqlora8 is simple C-library to access Oracle databases via the OCI
   interface. Makes simple programming tasks much easier than with plain OCI.

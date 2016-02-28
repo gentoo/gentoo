@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+	<!-- maintainer-needed -->
 	<longdescription>
 		Basenji is a volume indexing tool designed for easy and fast indexing of volume collections. It currently supports indexing of removable media such as CDs and USB sticks and stores them as volume objects in a database. After being stored in this database, volumes can be browsed and searched trough for specific files very quickly.
 	</longdescription>

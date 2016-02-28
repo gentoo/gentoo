@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+<!-- maintainer-needed -->
 <longdescription lang="en">
 clockspeed uses a hardware tick counter to compensate for a persistently fast or
 slow system clock. Given a few time measurements from a reliable source, it

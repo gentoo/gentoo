@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+	<!-- maintainer-needed -->
 	<longdescription lang="en">Gideon is a modern GUI builder for GTK+ toolkit. It is an advanced
 		IDE-embeddable RAD tool designed to fulfil l the needs of desktop
 		programmers who want to create multi-platform GTK+ based applications

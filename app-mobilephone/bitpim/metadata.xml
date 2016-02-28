@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+	<!-- maintainer-needed -->
 	<longdescription>
 		BitPim is a program that allows you to view and manipulate data on LG
 		VX4400/VX6000 and many Sanyo Sprint cell phones. This includes the

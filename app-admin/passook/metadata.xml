@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+<!-- maintainer-needed -->
 <longdescription>Passook is a perl script that generates passwords. You can
 	customize the security of the password generated.</longdescription>
 </pkgmetadata>

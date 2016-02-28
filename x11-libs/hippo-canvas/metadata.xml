@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+	<!-- maintainer-needed -->
 	<longdescription lang="en">
 	HippoCanvas is a generic user interface element that can draw Cairo graphics, respond to key and mouse events,
 	and lay out other widgets. It is currently used to implement a number of Sugar's custom widgets (toolbars,

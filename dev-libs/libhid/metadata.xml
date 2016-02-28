@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+<!-- maintainer-needed -->
 <longdescription lang="en">
 libhid provides a generic and flexible way to access and interact with USB
 HID devices, much like libusb does for plain USB devices. It is based on

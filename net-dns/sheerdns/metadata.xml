@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+  <!-- maintainer-needed -->
   <longdescription>
     SheerDNS was written to be a simple replacement master DNS server that can
     be used where atomic updates are required. Because it stores each record in

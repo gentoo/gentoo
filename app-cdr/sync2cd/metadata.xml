@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+<!-- maintainer-needed -->
 <longdescription>
 sync2cd is an incremental archiving tool. It allows backing up complete filesystem hierarchies to multiple backup 
 media (e.g. CD-R). Files are archived incrementally, i.e. only new or changed files are stored during an archive 

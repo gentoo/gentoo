@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+  <!-- maintainer-needed -->
   <longdescription>PPTP Client is a client for the proprietary Microsoft Point-to-Point Tunneling Protocol.</longdescription>
   <upstream>
     <remote-id type="sourceforge">pptpclient</remote-id>

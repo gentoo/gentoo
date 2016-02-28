@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+	<!-- maintainer-needed -->
 	<longdescription lang="en">
 		xmpppy is a Python library that is targeted to provide easy scripting with
 		Jabber. Similar projects are Twisted Words and jabber.py. This library was

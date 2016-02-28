@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+<!-- maintainer-needed -->
 <longdescription>Tkabber is a Free and Open Source client for the Jabber instant messaging system. It's writen in Tcl/Tk, and works on many platforms.</longdescription>
 <use>
 	<flag name="plugins">Enables installation the extra plugins</flag>

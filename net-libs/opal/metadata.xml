@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+  <!-- maintainer-needed -->
   <use>
     <flag name="capi">Enable CAPI support</flag>
     <flag name="celt">Enable CELT ultra-low delay audio codec</flag>

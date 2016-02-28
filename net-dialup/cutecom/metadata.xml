@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+  <!-- maintainer-needed -->
   <longdescription>CuteCom is a graphical serial terminal, like minicom. It is aimed mainly at hardware 
 developers or other people who need a terminal to talk to their devices.</longdescription>
   <upstream>

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+	<!-- maintainer-needed -->
 	<longdescription lang="en">
   Liblinebreak is an implementation of the line breaking algorithm as described
   in Unicode 5.1.0 Standard Annex 14, Revision 22. It breaks lines that contain

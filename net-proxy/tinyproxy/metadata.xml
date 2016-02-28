@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+<!-- maintainer-needed -->
 <longdescription>A lightweight HTTP/SSL proxy</longdescription>
 <use>
 	<flag name="filter-proxy">Enable filtering of domains/URLS</flag>

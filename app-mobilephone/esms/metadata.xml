@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+	<!-- maintainer-needed -->
 	<longdescription>A small console program to send SMS messages to Spanish cellular phones.</longdescription>
 	<upstream>
 		<remote-id type="sourceforge">esms</remote-id>

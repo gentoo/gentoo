@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+	<!-- maintainer-needed -->
 	<use>
 		<flag name="alias">Enable David Phillips aliasing</flag>
 		<flag name="status">Enable the STATUS opcode to check server status</flag>

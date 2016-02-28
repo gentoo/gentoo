@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+	<!-- maintainer-needed -->
 	<longdescription>log4shib is a library of C++ classes for flexible logging
 		to files, syslog, IDSA and other destinations. It is a forked version
 		of log4cpp especially adapted for the shibboleth framework

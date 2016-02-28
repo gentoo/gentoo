@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+	<!-- maintainer-needed -->
 	<longdescription lang="en">
 ck4up is a small command-line utility, writen in ruby, to watch http and ftp 
 sites for updates. ck4up scans through a configuration file, fetches the 
