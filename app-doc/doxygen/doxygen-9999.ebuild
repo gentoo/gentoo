@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -56,7 +56,7 @@ DEPEND="sys-apps/sed
 	${RDEPEND}"
 
 # src_test() defaults to make -C testing but there is no such directory (bug #504448)
-RESTRICT="mirror test"
+RESTRICT="test"
 EPATCH_SUFFIX="patch"
 
 get_langs() {
