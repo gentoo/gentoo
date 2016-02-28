@@ -28,7 +28,7 @@ kernel_linux? (
 	x86? ( ${BOOTSTRAP_DIST}/go-linux-386-bootstrap.tbz )
 )
 kernel_SunOS? (
-	amd64? ( ${BOOTSTRAP_DIST}/go-solaris-amd64-bootstrap.tbz )
+	x64-solaris? ( ${BOOTSTRAP_DIST}/go-solaris-amd64-bootstrap.tbz )
 )
 "
 
@@ -42,7 +42,7 @@ else
 	case ${PV} in
 		*9999*|*_rc*) ;;
 		*)
-			KEYWORDS="-* ~amd64 ~arm64 ~amd64-fbsd ~x86-fbsd ~x64-macos"
+			KEYWORDS="-* ~amd64 ~arm64 ~amd64-fbsd ~x86-fbsd ~x64-macos ~x64-solaris"
 			;;
 	esac
 fi
