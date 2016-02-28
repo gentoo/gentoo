@@ -15,19 +15,13 @@
 # waf-based packages much easier.
 # Its main features are support of common portage default settings.
 
-inherit eutils multilib toolchain-funcs multiprocessing
+[[ ${EAPI} == [45] ]] && inherit eutils
+inherit multilib toolchain-funcs multiprocessing
 
 case ${EAPI:-0} in
 	4|5|6) EXPORT_FUNCTIONS src_configure src_compile src_install ;;
 	*) die "EAPI=${EAPI} is not supported" ;;
 esac
-
-# Python with threads is required to run waf. We do not know which python slot
-# is being used as the system interpreter, so we are forced to block all
-# slots that have USE=-threads.
-DEPEND="${DEPEND}
-	dev-lang/python
-	!dev-lang/python[-threads]"
 
 # @ECLASS-VARIABLE: WAF_VERBOSE
 # @DESCRIPTION:
@@ -73,9 +67,9 @@ waf-utils_src_configure() {
 		fi
 	fi
 
-	[[ ${fail} ]] || die "Invalid use of ${ECLASS}"
+	[[ ${fail} ]] && die "Invalid use of waf-utils.eclass"
 
-	local libdir=""
+	local libdir=()
 
 	# @ECLASS-VARIABLE: WAF_BINARY
 	# @DESCRIPTION:
@@ -87,25 +81,16 @@ waf-utils_src_configure() {
 	# @DESCRIPTION:
 	# Variable specifying that you don't want to set the libdir for waf script.
 	# Some scripts does not allow setting it at all and die if they find it.
-	[[ -z ${NO_WAF_LIBDIR} ]] && libdir="--libdir=${EPREFIX}/usr/$(get_libdir)"
+	[[ -z ${NO_WAF_LIBDIR} ]] && libdir=(--libdir="${EPREFIX}/usr/$(get_libdir)")
 
 	tc-export AR CC CPP CXX RANLIB
-	echo "CCFLAGS=\"${CFLAGS}\" LINKFLAGS=\"${CFLAGS} ${LDFLAGS}\" \"${WAF_BINARY}\" --prefix=${EPREFIX}/usr ${libdir} $@ configure"
+	echo "CCFLAGS=\"${CFLAGS}\" LINKFLAGS=\"${CFLAGS} ${LDFLAGS}\" \"${WAF_BINARY}\" --prefix=${EPREFIX}/usr ${libdir[@]} $@ configure"
 
-	# This condition is required because waf takes even whitespace as function
-	# calls, awesome isn't it?
-	if [[ -z ${NO_WAF_LIBDIR} ]]; then
-		CCFLAGS="${CFLAGS}" LINKFLAGS="${CFLAGS} ${LDFLAGS}" "${WAF_BINARY}" \
-			"--prefix=${EPREFIX}/usr" \
-			"${libdir}" \
-			"$@" \
-			configure || die "configure failed"
-	else
-		CCFLAGS="${CFLAGS}" LINKFLAGS="${CFLAGS} ${LDFLAGS}" "${WAF_BINARY}" \
-			"--prefix=${EPREFIX}/usr" \
-			"$@" \
-			configure || die "configure failed"
-	fi
+	CCFLAGS="${CFLAGS}" LINKFLAGS="${CFLAGS} ${LDFLAGS}" "${WAF_BINARY}" \
+		"--prefix=${EPREFIX}/usr" \
+		"${libdir[@]}" \
+		"$@" \
+		configure || die "configure failed"
 }
 
 # @FUNCTION: waf-utils_src_compile
