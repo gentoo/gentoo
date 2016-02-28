@@ -2815,7 +2815,7 @@ dev-db/4store 1.1.5-r1: 4store is an efficient, scalable and stable RDF database
 dev-db/SchemaSync 0.9.2: MySQL Schema Versioning and Migration Utility
 dev-db/apgdiff 1.4 2.2.1 2.2.2 2.3 2.4: Another PostgreSQL Diff Tool is a simple PostgreSQL diff tool that is useful for schema upgrades
 dev-db/barman 1.4.0 1.4.1 1.5.0 1.5.1: Administration tool for disaster recovery of PostgreSQL servers
-dev-db/bucardo 5.1.1-r1 5.2.0 5.3.1: An asynchronous PostgreSQL replication system
+dev-db/bucardo 5.1.1-r1 5.2.0 5.3.1 5.4.1: An asynchronous PostgreSQL replication system
 dev-db/cdb 0.75-r3 0.75-r4: Fast, reliable, simple package for creating and reading constant databases
 dev-db/couchdb 1.6.1 1.6.1-r1 1.6.1-r2: Apache CouchDB is a distributed, fault-tolerant and schema-free document-oriented database.
 dev-db/cppdb 0.3.1-r1: An SQL connectivity library for platform and database independent connectivity
@@ -2890,12 +2890,12 @@ dev-db/percona-server 5.6.27.75.0 5.6.27.75.0-r1 5.6.27.76.0 5.6.28.76.1: An enh
 dev-db/percona-toolkit 2.2.7 2.2.11 2.2.15: essential command-line utilities for MySQL
 dev-db/pg_activity 1.2.0: Realtime PostgreSQL database server monitoring tool
 dev-db/pg_top 3.6.2-r1 3.7.0: 'top' for PostgreSQL
-dev-db/pgadmin3 1.18.1 1.20.0 1.20.0-r1 1.20.0-r2 1.22.0: wxWidgets GUI for PostgreSQL
+dev-db/pgadmin3 1.18.1 1.20.0 1.20.0-r1 1.20.0-r2 1.22.0 1.22.1: wxWidgets GUI for PostgreSQL
 dev-db/pgagent 3.3.0 3.4.0 3.4.0-r1: pgAgent is a job scheduler for PostgreSQL
 dev-db/pgbadger 6.2 6.4 7.0: pgBadger is a PostgreSQL log analyzer.
 dev-db/pgbouncer 1.5.4 1.5.4-r1 1.5.5 1.7.2: Lightweight connection pooler for PostgreSQL
 dev-db/pgmemcache 2.1.2 2.2.0 2.3.0: A PostgreSQL API based on libmemcached to interface with memcached
-dev-db/pgpool2 3.2.5 3.3.6 3.3.7 9999: Connection pool server for PostgreSQL
+dev-db/pgpool2 3.2.5 3.3.6 3.3.7 3.3.8 9999: Connection pool server for PostgreSQL
 dev-db/pgrouting 2.0.0: pgRouting extends PostGIS and PostgreSQL with geospatial routing functionality.
 dev-db/pgtap 0.93.0: Unit testing for PostgreSQL
 dev-db/pgxnclient 1.2-r1 1.2.1: PostgreSQL Extension Network Client
