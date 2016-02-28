@@ -146,7 +146,7 @@ COMMON_DEPEND="
 	net-nds/openldap
 	sci-mathematics/lpsolve
 	virtual/jpeg:0
-	>=x11-libs/cairo-1.10.0[X]
+	>=x11-libs/cairo-1.10.0[X,-xlib-xcb]
 	x11-libs/libXinerama
 	x11-libs/libXrandr
 	x11-libs/libXrender
