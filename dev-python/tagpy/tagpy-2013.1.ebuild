@@ -16,7 +16,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="examples"
 
-RDEPEND=">=dev-libs/boost-1.49.0[python]
+RDEPEND=">=dev-libs/boost-1.49.0[python${PYTHON_TARGETS}]
 	>=media-libs/taglib-1.7.2"
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]"
