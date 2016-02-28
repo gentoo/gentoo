@@ -11,5 +11,5 @@ RESTRICT=test
 SLOT=0
 SRC_URI=http://developer.download.nvidia.com/compute/cuda/7.5/Prod/local_installers/cuda_7.5.18_linux.run
 _eclass_exported_funcs=pkg_setup:- src_unpack:- src_prepare:- src_compile:- src_test:- src_install:-
-_eclasses_=cuda	0ecb926cd855df14e36328a247443e49	eutils	9d81603248f2ba3ec59124320d123e5e	flag-o-matic	d270fa247153df66074f795fa42dba3e	multilib	3972ca401cf7dbb430df9995f5d8d580	portability	3a50b3ec310b86914f98babecc8f89c6	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	unpacker	1d149d9bda7723e740cfd28118f27813	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=cuda	0ecb926cd855df14e36328a247443e49	eutils	9d81603248f2ba3ec59124320d123e5e	flag-o-matic	d270fa247153df66074f795fa42dba3e	multilib	3972ca401cf7dbb430df9995f5d8d580	portability	ff2a0005fbb7fa61f74e9fa5f3a0ecf4	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	unpacker	1d149d9bda7723e740cfd28118f27813	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=48fadb200fb3503de87eedf85731a303
