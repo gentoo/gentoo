@@ -108,7 +108,6 @@ libupnp
 zvbi
 ldap
 mysql
-postgres
 dvd
 fluidsynth
 gnomecd
