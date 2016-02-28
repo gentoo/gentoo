@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -32,7 +32,7 @@ REQUIRED_USE="
 	test? ( ${PYTHON_REQUIRED_USE} )
 "
 
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux"
 
 RDEPEND="
 	!<dev-util/gdbus-codegen-${PV}
@@ -76,19 +76,25 @@ PDEPEND="!<gnome-base/gvfs-1.6.4-r990
 # dconf is needed to be able to save settings, bug #498436
 # Earlier versions of gvfs do not work with glib
 
+MULTILIB_CHOST_TOOLS=(
+	/usr/bin/gio-querymodules
+)
+
 pkg_setup() {
 	if use kernel_linux ; then
 		CONFIG_CHECK="~INOTIFY_USER"
 		if use test; then
 			CONFIG_CHECK="~IPV6"
 			WARNING_IPV6="Your kernel needs IPV6 support for running some tests, skipping them."
-			export IPV6_DISABLED="yes"
 		fi
 		linux-info_pkg_setup
 	fi
 }
 
 src_prepare() {
+	# GDBusProxy: Fix a memory leak during initialization (from 2.46 branch)
+	epatch "${FILESDIR}"/${P}-memleak.patch
+
 	# Prevent build failure in stage3 where pkgconfig is not available, bug #481056
 	mv -f "${WORKDIR}"/pkg-config-*/pkg.m4 "${S}"/m4macros/ || die
 
@@ -98,9 +104,7 @@ src_prepare() {
 			ewarn "Some tests will be skipped due dev-util/desktop-file-utils not being present on your system,"
 			ewarn "think on installing it to get these tests run."
 			sed -i -e "/appinfo\/associations/d" gio/tests/appinfo.c || die
-			sed -i -e "/desktop-app-info\/default/d" gio/tests/desktop-app-info.c || die
-			sed -i -e "/desktop-app-info\/fallback/d" gio/tests/desktop-app-info.c || die
-			sed -i -e "/desktop-app-info\/lastused/d" gio/tests/desktop-app-info.c || die
+			sed -i -e "/g_test_add_func/d" gio/tests/desktop-app-info.c || die
 		fi
 
 		# gdesktopappinfo requires existing terminal (gnome-terminal or any
@@ -126,26 +130,26 @@ src_prepare() {
 		fi
 
 		# Some tests need ipv6, upstream bug #667468
-		if [[ -n "${IPV6_DISABLED}" ]]; then
+		# https://bugs.gentoo.org/show_bug.cgi?id=508752
+		if [[ ! -f /proc/net/if_net6 ]]; then
 			sed -i -e "/gdbus\/peer-to-peer/d" gio/tests/gdbus-peer.c || die
 			sed -i -e "/gdbus\/delayed-message-processing/d" gio/tests/gdbus-peer.c || die
 			sed -i -e "/gdbus\/nonce-tcp/d" gio/tests/gdbus-peer.c || die
 		fi
 
-		# thread test fails, upstream bug #679306
-		# FIXME: we need to check if it's still failing as upstream thinks something
-		# is wrong in our setups
-		#epatch "${FILESDIR}/${PN}-2.34.0-testsuite-skip-thread4.patch"
-
 		# This test is prone to fail, bug #504024, upstream bug #723719
 		sed -i -e '/gdbus-close-pending/d' gio/tests/Makefile.am || die
+
+		# https://bugzilla.gnome.org/show_bug.cgi?id=722604
+		sed -i -e "/timer\/stop/d" glib/tests/timer.c || die
+		sed -i -e "/timer\/basic/d" glib/tests/timer.c || die
 	else
 		# Don't build tests, also prevents extra deps, bug #512022
 		sed -i -e 's/ tests//' {.,gio,glib}/Makefile.am || die
 	fi
 
 	# gdbus-codegen is a separate package
-	epatch "${FILESDIR}/${PN}-2.40.0-external-gdbus-codegen.patch"
+	epatch "${FILESDIR}"/${PN}-2.40.0-external-gdbus-codegen.patch
 
 	# leave python shebang alone
 	sed -e '/${PYTHON}/d' \
@@ -219,11 +223,9 @@ multilib_src_configure() {
 }
 
 multilib_src_test() {
-	unset DBUS_SESSION_BUS_ADDRESS
 	export XDG_CONFIG_DIRS=/etc/xdg
 	export XDG_DATA_DIRS=/usr/local/share:/usr/share
 	export G_DBUS_COOKIE_SHA1_KEYRING_DIR="${T}/temp"
-	unset GSETTINGS_BACKEND # bug 352451
 	export LC_TIME=C # bug #411967
 	python_export_best
 
@@ -243,6 +245,7 @@ multilib_src_test() {
 
 multilib_src_install() {
 	gnome2_src_install completiondir="$(get_bashcompdir)"
+	keepdir /usr/$(get_libdir)/gio/modules
 }
 
 multilib_src_install_all() {
@@ -263,13 +266,53 @@ multilib_src_install_all() {
 	rm -rf "${ED}/usr/share/gdb/" "${ED}/usr/share/glib-2.0/gdb/"
 }
 
+pkg_preinst() {
+	gnome2_pkg_preinst
+
+	# Make gschemas.compiled belong to glib alone
+	local cache="usr/share/glib-2.0/schemas/gschemas.compiled"
+
+	if [[ -e ${EROOT}${cache} ]]; then
+		cp "${EROOT}"${cache} "${ED}"/${cache} || die
+	else
+		touch "${ED}"/${cache} || die
+	fi
+
+	multilib_pkg_preinst() {
+		# Make giomodule.cache belong to glib alone
+		local cache="usr/$(get_libdir)/gio/giomodule.cache"
+
+		if [[ -e ${EROOT}${cache} ]]; then
+			cp "${EROOT}"${cache} "${ED}"/${cache} || die
+		else
+			touch "${ED}"/${cache} || die
+		fi
+	}
+
+	multilib_foreach_abi multilib_pkg_preinst
+}
+
 pkg_postinst() {
+	# force (re)generation of gschemas.compiled
+	GNOME2_ECLASS_GLIB_SCHEMAS="force"
+
 	gnome2_pkg_postinst
-	if has_version '<x11-libs/gtk+-3.0.12:3'; then
-		# To have a clear upgrade path for gtk+-3.0.x users, have to resort to
-		# a warning instead of a blocker
-		ewarn
-		ewarn "Using <gtk+-3.0.12:3 with ${P} results in frequent crashes."
-		ewarn "You should upgrade to a newer version of gtk+:3 immediately."
+
+	multilib_pkg_postinst() {
+		gnome2_giomodule_cache_update \
+			|| die "Update GIO modules cache failed (for ${ABI})"
+	}
+	multilib_foreach_abi multilib_pkg_postinst
+}
+
+pkg_postrm() {
+	gnome2_pkg_postrm
+
+	if [[ -z ${REPLACED_BY_VERSION} ]]; then
+		multilib_pkg_postrm() {
+			rm -f "${EROOT}"usr/$(get_libdir)/gio/giomodule.cache
+		}
+		multilib_foreach_abi multilib_pkg_postrm
+		rm -f "${EROOT}"usr/share/glib-2.0/schemas/gschemas.compiled
 	fi
 }
