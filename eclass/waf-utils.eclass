@@ -69,7 +69,7 @@ waf-utils_src_configure() {
 
 	[[ ${fail} ]] && die "Invalid use of waf-utils.eclass"
 
-	local libdir=""
+	local libdir=()
 
 	# @ECLASS-VARIABLE: WAF_BINARY
 	# @DESCRIPTION:
@@ -81,25 +81,16 @@ waf-utils_src_configure() {
 	# @DESCRIPTION:
 	# Variable specifying that you don't want to set the libdir for waf script.
 	# Some scripts does not allow setting it at all and die if they find it.
-	[[ -z ${NO_WAF_LIBDIR} ]] && libdir="--libdir=${EPREFIX}/usr/$(get_libdir)"
+	[[ -z ${NO_WAF_LIBDIR} ]] && libdir=(--libdir="${EPREFIX}/usr/$(get_libdir)")
 
 	tc-export AR CC CPP CXX RANLIB
-	echo "CCFLAGS=\"${CFLAGS}\" LINKFLAGS=\"${CFLAGS} ${LDFLAGS}\" \"${WAF_BINARY}\" --prefix=${EPREFIX}/usr ${libdir} $@ configure"
+	echo "CCFLAGS=\"${CFLAGS}\" LINKFLAGS=\"${CFLAGS} ${LDFLAGS}\" \"${WAF_BINARY}\" --prefix=${EPREFIX}/usr ${libdir[@]} $@ configure"
 
-	# This condition is required because waf takes even whitespace as function
-	# calls, awesome isn't it?
-	if [[ -z ${NO_WAF_LIBDIR} ]]; then
-		CCFLAGS="${CFLAGS}" LINKFLAGS="${CFLAGS} ${LDFLAGS}" "${WAF_BINARY}" \
-			"--prefix=${EPREFIX}/usr" \
-			"${libdir}" \
-			"$@" \
-			configure || die "configure failed"
-	else
-		CCFLAGS="${CFLAGS}" LINKFLAGS="${CFLAGS} ${LDFLAGS}" "${WAF_BINARY}" \
-			"--prefix=${EPREFIX}/usr" \
-			"$@" \
-			configure || die "configure failed"
-	fi
+	CCFLAGS="${CFLAGS}" LINKFLAGS="${CFLAGS} ${LDFLAGS}" "${WAF_BINARY}" \
+		"--prefix=${EPREFIX}/usr" \
+		"${libdir[@]}" \
+		"$@" \
+		configure || die "configure failed"
 }
 
 # @FUNCTION: waf-utils_src_compile
