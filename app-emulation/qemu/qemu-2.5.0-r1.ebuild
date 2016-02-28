@@ -122,7 +122,10 @@ SOFTMMU_LIB_DEPEND="${COMMON_LIB_DEPEND}
 			media-libs/libsdl2[static-libs(+)]
 		)
 	)
-	seccomp? ( >=sys-libs/libseccomp-2.1.0[static-libs(+)] )
+	seccomp? (
+		arm64? ( >=sys-libs/libseccomp-2.2.3[static-libs(+)] )
+		>=sys-libs/libseccomp-2.1.0[static-libs(+)]
+	)
 	smartcard? ( >=app-emulation/libcacard-2.5.0[static-libs(+)] )
 	snappy? ( app-arch/snappy[static-libs(+)] )
 	spice? (

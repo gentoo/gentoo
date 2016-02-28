@@ -1,12 +1,14 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 
+inherit eutils
+
 DESCRIPTION="Count Lines of Code"
-HOMEPAGE="http://cloc.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.pl mirror://sourceforge/${PN}/${PN}.1.pod"
+HOMEPAGE="https://github.com/AlDanial/cloc"
+SRC_URI="https://github.com/AlDanial/${PN}/releases/download/v${PV}/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
@@ -21,15 +23,11 @@ RDEPEND="${DEPEND}
 	virtual/perl-File-Spec
 	virtual/perl-File-Temp"
 
-S=${WORKDIR}
-
-src_unpack() { :; }
-
-src_prepare() {
-	pod2man "${DISTDIR}"/${PN}.1.pod > ${PN}.1 || die
+src_compile() {
+	pod2man Unix/${PN}.1.pod > ${PN}.1 || die
 }
 
 src_install() {
 	doman ${PN}.1
-	newbin "${DISTDIR}"/${P}.pl ${PN}
+	dobin Unix/${PN}
 }
