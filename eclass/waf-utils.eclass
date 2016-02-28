@@ -73,7 +73,7 @@ waf-utils_src_configure() {
 		fi
 	fi
 
-	[[ ${fail} ]] || die "Invalid use of ${ECLASS}"
+	[[ ${fail} ]] && die "Invalid use of waf-utils.eclass"
 
 	local libdir=""
 
