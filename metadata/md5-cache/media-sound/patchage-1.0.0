@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install setup
-DEPEND=>=dev-cpp/glibmm-2.14:2 >=dev-cpp/gtkmm-2.11.12:2.4 >=dev-cpp/libglademm-2.6.0:2.4 dev-cpp/libgnomecanvasmm:2.6 >=media-libs/ganv-1.4.0 >=media-sound/jack-audio-connection-kit-0.120.0 alsa? ( media-libs/alsa-lib ) jack-dbus? ( dev-libs/dbus-glib sys-apps/dbus ) || ( >=dev-lang/python-2.7.5-r2:2.7[threads(+)] ) dev-libs/boost virtual/pkgconfig dev-lang/python !dev-lang/python[-threads]
+DEPEND=>=dev-cpp/glibmm-2.14:2 >=dev-cpp/gtkmm-2.11.12:2.4 >=dev-cpp/libglademm-2.6.0:2.4 dev-cpp/libgnomecanvasmm:2.6 >=media-libs/ganv-1.4.0 >=media-sound/jack-audio-connection-kit-0.120.0 alsa? ( media-libs/alsa-lib ) jack-dbus? ( dev-libs/dbus-glib sys-apps/dbus ) || ( >=dev-lang/python-2.7.5-r2:2.7[threads(+)] ) dev-libs/boost virtual/pkgconfig
 DESCRIPTION=Modular patch bay for JACK-based audio and MIDI systems
 EAPI=5
 HOMEPAGE=http://drobilla.net/software/patchage
@@ -10,5 +10,5 @@ RDEPEND=>=dev-cpp/glibmm-2.14:2 >=dev-cpp/gtkmm-2.11.12:2.4 >=dev-cpp/libglademm
 SLOT=0
 SRC_URI=http://download.drobilla.net/patchage-1.0.0.tar.bz2
 _eclass_exported_funcs=pkg_setup:python-any-r1 src_configure:- src_compile:waf-utils src_install:waf-utils
-_eclasses_=eutils	9d81603248f2ba3ec59124320d123e5e	multilib	3972ca401cf7dbb430df9995f5d8d580	multiprocessing	e32940a7b2a9992ad217eccddb84d548	python-any-r1	8eb13cdf35f6e43c48107b911900b2cc	python-utils-r1	2e6826f6a93ad2acf904eecf5b5fb6d2	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	waf-utils	133eb4044c1bbc4f2ec4c736968fcadf
+_eclasses_=eutils	9d81603248f2ba3ec59124320d123e5e	multilib	3972ca401cf7dbb430df9995f5d8d580	multiprocessing	e32940a7b2a9992ad217eccddb84d548	python-any-r1	8eb13cdf35f6e43c48107b911900b2cc	python-utils-r1	2e6826f6a93ad2acf904eecf5b5fb6d2	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	waf-utils	c21174962af5ca8091b66f58612797ce
 _md5_=8efbc80b2cee94387453b8c349ebcf78

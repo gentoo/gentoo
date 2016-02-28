@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install setup
-DEPEND=>=media-libs/lv2-1.6.0 >=media-libs/lilv-0.15.1 >=dev-libs/serd-0.14.0 >=dev-libs/sord-0.12.0 >=media-libs/suil-0.6.0 >=media-libs/sratom-0.4.0 >=media-sound/jack-audio-connection-kit-0.120.0 gtk? ( >=x11-libs/gtk+-3.0.0:3 ) gtk2? ( >=x11-libs/gtk+-2.18.0:2 ) gtkmm? ( >=dev-cpp/gtkmm-2.20.0:2.4 ) qt4? ( dev-qt/qtgui:4 ) || ( dev-lang/python:3.4[threads(+)] >=dev-lang/python-3.3.2-r2:3.3[threads(+)] >=dev-lang/python-2.7.5-r2:2.7[threads(+)] ) virtual/pkgconfig dev-lang/python !dev-lang/python[-threads]
+DEPEND=>=media-libs/lv2-1.6.0 >=media-libs/lilv-0.15.1 >=dev-libs/serd-0.14.0 >=dev-libs/sord-0.12.0 >=media-libs/suil-0.6.0 >=media-libs/sratom-0.4.0 >=media-sound/jack-audio-connection-kit-0.120.0 gtk? ( >=x11-libs/gtk+-3.0.0:3 ) gtk2? ( >=x11-libs/gtk+-2.18.0:2 ) gtkmm? ( >=dev-cpp/gtkmm-2.20.0:2.4 ) qt4? ( dev-qt/qtgui:4 ) || ( dev-lang/python:3.4[threads(+)] >=dev-lang/python-3.3.2-r2:3.3[threads(+)] >=dev-lang/python-2.7.5-r2:2.7[threads(+)] ) virtual/pkgconfig
 DESCRIPTION=Simple but fully featured LV2 host for Jack
 EAPI=4
 HOMEPAGE=http://drobilla.net/software/jalv/
@@ -10,5 +10,5 @@ RDEPEND=>=media-libs/lv2-1.6.0 >=media-libs/lilv-0.15.1 >=dev-libs/serd-0.14.0 >
 SLOT=0
 SRC_URI=http://download.drobilla.net/jalv-1.4.4.tar.bz2
 _eclass_exported_funcs=pkg_setup:python-any-r1 src_configure:- src_compile:waf-utils src_install:waf-utils
-_eclasses_=eutils	9d81603248f2ba3ec59124320d123e5e	multilib	3972ca401cf7dbb430df9995f5d8d580	multiprocessing	e32940a7b2a9992ad217eccddb84d548	python-any-r1	8eb13cdf35f6e43c48107b911900b2cc	python-utils-r1	2e6826f6a93ad2acf904eecf5b5fb6d2	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	waf-utils	133eb4044c1bbc4f2ec4c736968fcadf
+_eclasses_=eutils	9d81603248f2ba3ec59124320d123e5e	multilib	3972ca401cf7dbb430df9995f5d8d580	multiprocessing	e32940a7b2a9992ad217eccddb84d548	python-any-r1	8eb13cdf35f6e43c48107b911900b2cc	python-utils-r1	2e6826f6a93ad2acf904eecf5b5fb6d2	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	waf-utils	c21174962af5ca8091b66f58612797ce
 _md5_=65932d5a9de20a8c6dd9e333ac0aaa32
