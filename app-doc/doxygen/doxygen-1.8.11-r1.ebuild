@@ -33,7 +33,7 @@ done
 
 RDEPEND="app-text/ghostscript-gpl
 	dev-lang/perl
-	media-libs/libpng
+	media-libs/libpng:0=
 	virtual/libiconv
 	clang? ( sys-devel/clang )
 	dot? (
