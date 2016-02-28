@@ -2,17 +2,13 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>dabbott@gentoo.org</email>
-		<name>David Abbott</name>
-		<description>Maintainer. Assign bugs to him</description>
-	</maintainer>
-	<maintainer type="project">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Proxy Maintainers</name>
+		<email>rhill@gentoo.org</email>
+		<name>Ryan Hill</name>
+		<description>Maintainer</description>
 	</maintainer>
 	<longdescription>
 	Fast, free, validating XML editor.
-</longdescription>
+	</longdescription>
 	<use>
 		<flag name="guidexml">Install GuideXML templates to work with Gentoo
 	official docs</flag>
