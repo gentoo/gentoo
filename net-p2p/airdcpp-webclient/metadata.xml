@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>sautier.louis@gmail.com</email>
+		<name>Louis Sautier</name>
+		<description>Proxied maintainer; set to assignee in all bugs</description>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">airdcpp-web/airdcpp-webclient</remote-id>
+		<bugs-to>https://github.com/airdcpp-web/airdcpp-webclient/issues</bugs-to>
+	</upstream>
+	<longdescription lang="en">
+		AirDC++ Web Client is a cross-platform peer-to-peer file sharing client which allows sharing files with groups of people. 
+	</longdescription>
+	<use>
+		<flag name="webui">Enable the Web UI</flag>
+	</use>
+</pkgmetadata>
