@@ -14,7 +14,7 @@ S="${WORKDIR}/dogpile.cache-${PV}"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE="test"
 
 RDEPEND=">=dev-python/dogpile-core-0.4.1[${PYTHON_USEDEP}]"
