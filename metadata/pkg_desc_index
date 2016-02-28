@@ -1386,7 +1386,7 @@ app-eselect/eselect-pdftex 0.3: pdftex module for eselect
 app-eselect/eselect-php 0.7.1-r4 0.7.1-r7 0.8.2-r1 0.8.5 0.9.1: PHP eselect module
 app-eselect/eselect-pinentry 0.4 0.5 0.6 0.7: Manage /usr/bin/pinentry symlink
 app-eselect/eselect-postgresql 1.2.1: Utility to select the default PostgreSQL slot
-app-eselect/eselect-python 20111108 20131210 20140115 20140125 20151117-r2 20160222 99999999: Eselect module for management of multiple Python versions
+app-eselect/eselect-python 20111108 20140125-r1 20151117-r2 20160222 99999999: Eselect module for management of multiple Python versions
 app-eselect/eselect-qtgraphicssystem 1.1.1: Utility to change the active Qt Graphics System
 app-eselect/eselect-rails 0.18 0.19 0.20 0.21: Manages Ruby on Rails symlinks
 app-eselect/eselect-renpy 0.4 0.5 0.6: Manages renpy symlink
