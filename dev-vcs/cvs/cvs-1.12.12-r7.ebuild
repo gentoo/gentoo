@@ -37,6 +37,7 @@ src_prepare() {
 	epatch "${FILESDIR}"/${P}-cvs-gnulib-vasnprintf.patch
 	epatch "${FILESDIR}"/${P}-install-sh.patch
 	epatch "${FILESDIR}"/${P}-hash-nameclash.patch # for AIX
+	epatch "${FILESDIR}"/${P}-mktime-configure.patch #220040 #570208
 	elog "If you want any CVS server functionality, you MUST emerge with USE=server!"
 }
 
