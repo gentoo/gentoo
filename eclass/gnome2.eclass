@@ -91,6 +91,7 @@ gnome2_src_prepare() {
 	gnome2_disable_deprecation_warning
 
 	# Run libtoolize
+	# https://bugzilla.gnome.org/show_bug.cgi?id=655517
 	elibtoolize ${ELTCONF}
 }
 
