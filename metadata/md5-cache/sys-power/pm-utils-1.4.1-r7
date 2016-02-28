@@ -4,11 +4,11 @@ DESCRIPTION=Suspend and hibernation utilities
 EAPI=5
 HOMEPAGE=http://pm-utils.freedesktop.org/
 IUSE=alsa debug ntp video_cards_intel video_cards_radeon
-KEYWORDS=~alpha ~amd64 ~arm ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86
 LICENSE=GPL-2
 RDEPEND=!<app-laptop/laptop-mode-tools-1.55-r1 !sys-power/powermgmt-base[-pm-utils(+)] sys-apps/dbus >=sys-apps/util-linux-2.13 sys-power/pm-quirks alsa? ( media-sound/alsa-utils ) ntp? ( || ( net-misc/ntp net-misc/openntpd ) ) amd64? ( !video_cards_intel? ( sys-apps/vbetool ) ) x86? ( !video_cards_intel? ( sys-apps/vbetool ) ) video_cards_radeon? ( app-laptop/radeontool )
 SLOT=0
 SRC_URI=http://pm-utils.freedesktop.org/releases/pm-utils-1.4.1.tar.gz
 _eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
 _eclasses_=eutils	9d81603248f2ba3ec59124320d123e5e	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
-_md5_=53674b5f5fc5c5937e6989a2f3e6c1a4
+_md5_=9c7f65ef483de9e3dba25216a36a5948
