@@ -192,6 +192,10 @@ media-video/mpv doc-pdf
 # Missing keywords, bug #495250
 >=gnome-base/gnome-extra-apps-3.10 tracker
 
+# Yuri Konotopov <ykonotopov@gmail.com> (14 Feb 2016)
+# Missing keywords
+gnome-base/gnome-shell chrome
+
 # Pacho Ramos <pacho@gentoo.org> (11 Jan 2014)
 sys-kernel/dracut -dracut_modules_systemd
 

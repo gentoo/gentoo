@@ -6,6 +6,9 @@
 	<name>Gentoo GNOME Desktop</name>
 </maintainer>
 <use>
+	<flag name="chrome">Enable support for managing GNOME Shell extensions
+		with <pkg>www-client/google-chrome</pkg> browser and
+		derivatives</flag>
 	<flag name="i18n">Enable support for enhanced input methods through
 		<pkg>app-i18n/ibus</pkg></flag>
 	<flag name="openrc-force">Skip systemd dependency (#480336),

@@ -157,6 +157,10 @@ dev-util/dbus-test-runner test
 # Missing keywords, bug #495250
 >=gnome-base/gnome-extra-apps-3.10 tracker
 
+# Yuri Konotopov <ykonotopov@gmail.com> (14 Feb 2016)
+# Missing keywords
+gnome-base/gnome-shell chrome
+
 # Pacho Ramos <pacho@gentoo.org> (10 Feb 2014)
 # Missing keywords, bug #495254
 >=dev-libs/totem-pl-parser-3.10 quvi
