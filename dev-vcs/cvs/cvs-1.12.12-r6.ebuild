@@ -33,6 +33,7 @@ src_unpack() {
 	epatch "${FILESDIR}"/${P}-cvs-gnulib-vasnprintf.patch
 	epatch "${FILESDIR}"/${P}-install-sh.patch
 	epatch "${FILESDIR}"/${P}-mktime-x32.patch # 395641
+	epatch "${FILESDIR}"/${P}-mktime-configure.patch #220040 #570208
 	use server || elog "If you want any CVS server functionality, you MUST emerge with USE=server!"
 }
 
