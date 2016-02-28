@@ -140,9 +140,11 @@ src_compile() {
 	cmake-utils_src_compile
 
 	# generate html and pdf documents. errors here are not considered
-	# fatal, hence the ewarn message TeX's font caching in /var/cache/fonts
-	# causes sandbox warnings, so we allow it.
+	# fatal, hence the ewarn message.
+
 	if use doc; then
+		export VARTEXFONTS="${T}/fonts" # bug #564944
+
 		if ! use dot; then
 			sed -i -e "s/HAVE_DOT               = YES/HAVE_DOT    = NO/" \
 				{Doxyfile,doc/Doxyfile} \
