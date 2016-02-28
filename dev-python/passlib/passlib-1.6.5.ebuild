@@ -12,7 +12,7 @@ HOMEPAGE="https://bitbucket.org/ecollins/passlib/wiki/Home/"
 SRC_URI="mirror://pypi/p/${PN}/${P}.tar.gz"
 
 LICENSE="BSD-2"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 SLOT="0"
 IUSE="test doc"
 
