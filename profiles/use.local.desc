@@ -6342,6 +6342,7 @@ net-nntp/tin:etiquette - Enable the display off posting etiquettes
 net-nntp/tin:evil - Let tin generate a message ID
 net-nntp/tin:forgery - Cancel messages posted from a different account
 net-nntp/tin:gpg - Enable app-crypt/gpg support
+net-p2p/airdcpp-webclient:webui - Enable the Web UI
 net-p2p/amule:daemon - Enable amule daemon
 net-p2p/amule:remote - Enable remote controlling of the client
 net-p2p/amule:stats - Enable statistic reporting

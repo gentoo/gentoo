@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install postinst prepare test
+DEPEND=net-libs/nodejs dev-libs/geoip app-arch/bzip2 sys-libs/zlib dev-libs/openssl:0 dev-cpp/tbb virtual/libiconv net-libs/miniupnpc dev-libs/leveldb dev-cpp/websocketpp dev-libs/boost sys-devel/make >=dev-util/cmake-2.8.12
+DESCRIPTION=Cross-platform Direct Connect client
+EAPI=6
+HOMEPAGE=https://github.com/airdcpp-web/airdcpp-webclient
+IUSE=+webui
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+PDEPEND=webui? ( www-apps/airdcpp-webui )
+RDEPEND=dev-libs/geoip app-arch/bzip2 sys-libs/zlib dev-libs/openssl:0 dev-cpp/tbb virtual/libiconv net-libs/miniupnpc dev-libs/leveldb dev-cpp/websocketpp dev-libs/boost
+SLOT=0
+SRC_URI=https://github.com/airdcpp-web/airdcpp-webclient/archive/0.16.5.tar.gz -> airdcpp-webclient-0.16.5.tar.gz
+_eclass_exported_funcs=pkg_postinst:- src_prepare:cmake-utils src_configure:- src_compile:cmake-utils src_test:cmake-utils src_install:cmake-utils
+_eclasses_=cmake-utils	c67ce9708a9c02be2d296cf547740e9c	eutils	9d81603248f2ba3ec59124320d123e5e	flag-o-matic	d270fa247153df66074f795fa42dba3e	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=14d065ffc3cc8264066b12d405499464

@@ -12197,7 +12197,7 @@ media-libs/gmtk 1.0.8 1.0.9: GTK+ widget and function libraries for gnome-mplaye
 media-libs/gnonlin 0.10.17 1.4.0: Gnonlin is a set of GStreamer elements to ease the creation of non-linear multimedia editors
 media-libs/grilo 0.2.12 0.2.14 0.2.15: A framework for easy media discovery and browsing
 media-libs/gsound 1.0.1 1.0.2: Thin GObject wrapper around the libcanberra sound event library
-media-libs/gst-plugins-bad 0.10.23-r2 0.10.23-r3 1.4.5 1.6.2-r1 1.6.3: Less plugins for GStreamer
+media-libs/gst-plugins-bad 0.10.23-r2 0.10.23-r3 1.4.5 1.6.3: Less plugins for GStreamer
 media-libs/gst-plugins-base 0.10.36-r2 1.4.5 1.6.1 1.6.2 1.6.3: Basepack of plugins for gstreamer
 media-libs/gst-plugins-good 0.10.31-r1 1.4.5 1.6.1 1.6.2 1.6.3: Basepack of plugins for GStreamer
 media-libs/gst-plugins-ugly 0.10.19-r1 1.4.5 1.6.1 1.6.2 1.6.3: Basepack of plugins for gstreamer
@@ -12288,7 +12288,7 @@ media-libs/libggiwmh 0.3.2: Library for General Graphics Interface
 media-libs/libgig 3.3.0 4.0.0: a C++ library for loading Gigasampler files and DLS (Downloadable Sounds) Level 1/2 files
 media-libs/libgii 1.0.2-r1: Fast and safe graphics and drivers for about any graphics card to the Linux kernel (sometimes)
 media-libs/libgltf 0.0.1 0.0.2 9999: C++ Library for rendering OpenGL models stored in glTF format
-media-libs/libgphoto2 2.5.7 2.5.8 2.5.9: Library that implements support for numerous digital cameras
+media-libs/libgphoto2 2.5.8 2.5.9: Library that implements support for numerous digital cameras
 media-libs/libgpod 0.8.3: Shared library to access the contents of an iPod
 media-libs/libgroove 4.3.0: Streaming audio processing library.
 media-libs/libharu 2.3.0-r1: C/C++ library for PDF generation
@@ -14791,6 +14791,7 @@ net-nntp/suck 4.3.2: Grab news from a remote NNTP server and feed them to anothe
 net-nntp/tin 2.0.1-r1 2.2.1 2.3.1: A threaded NNTP and spool based UseNet newsreader
 net-nntp/ubh 2.5: The Usenet Binary Harvester
 net-nntp/xrn 9.02: A small and fast news reader for X
+net-p2p/airdcpp-webclient 0.16.5: Cross-platform Direct Connect client
 net-p2p/amule 2.3.1 2.3.1-r1: aMule, the all-platform eMule p2p client
 net-p2p/bitcoin-cli 0.10.2 0.11.0 0.11.1 0.11.2 9999: Command-line JSON-RPC client specifically designed for talking to Bitcoin Core Daemon
 net-p2p/bitcoin-qt 0.10.2 0.10.2-r1 0.11.0 0.11.1 0.11.2 9999: An end-user Qt GUI for the Bitcoin crypto-currency
@@ -17439,6 +17440,7 @@ www-apache/pwauth 2.3.10: A Unix Web Authenticator
 www-apps/389-dsgw 1.1.10: 389 Directory Server Gateway Web Application
 www-apps/Apache-Gallery 1.0_rc3-r1: Apache gallery for mod_perl
 www-apps/agendav 1.2.6.2: multilanguage CalDAV web client
+www-apps/airdcpp-webui 0.16.2: WEB interface for airdcpp-webclient
 www-apps/ampache 3.8.1: PHP-based tool for managing,updating and playing audio files via a web interface
 www-apps/b2evolution 4.1.7: Multilingual multiuser multi-blog engine
 www-apps/baikal 0.2.4 0.2.7 0.3.5: Lightweight CalDAV+CardDAV server
