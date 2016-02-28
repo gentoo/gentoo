@@ -9749,6 +9749,7 @@ dev-vcs/cvsps 2.1-r1 2.2_beta1 3.13-r1: Generates patchset information from a CV
 dev-vcs/cvsq 0.4.4: A tool that enables developers to work comfortably offline with CVS by queuing the commits
 dev-vcs/cvsspam 0.2.12: Utility to send colored HTML CVS-mails
 dev-vcs/cvsutils 0.2.5: A small bundle of utilities to work with CVS repositories
+dev-vcs/cvsync 2014.08.24.014706 9999: portable CVS repository synchronization utility
 dev-vcs/darcs 2.8.4 2.8.4-r3 2.8.4-r6 2.8.5-r3 2.8.5-r4 2.10.0-r1 2.10.1: a distributed, interactive, smart revision control system
 dev-vcs/easygit 1.6.5.5: Easy GIT is a wrapper for git, designed to make git easy to learn and use
 dev-vcs/fossil 1.34 20150119112900: Simple, high-reliability, source control management, and more

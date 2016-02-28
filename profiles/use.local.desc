@@ -2755,6 +2755,9 @@ dev-vcs/bzr-gtk:nautilus - Integrate with Nautilus file manager
 dev-vcs/cssc:valgrind - Enable usage of dev-util/valgrind in tests
 dev-vcs/cvs:server - Enable server support
 dev-vcs/cvs2svn:bazaar - Support for dev-vcs/bzr
+dev-vcs/cvsync:gcrypt - Use dev-libs/libgcrypt for hash functions.
+dev-vcs/cvsync:mhash - Use app-crypt/mhash for hash functions.
+dev-vcs/cvsync:openssl - Use dev-libs/openssl for hash functions.
 dev-vcs/darcs:color - Use ansi color escapes.
 dev-vcs/darcs:diff - Use 'lcs' for diff building.
 dev-vcs/darcs:http - Use the pure Haskell HTTP package for HTTP support.
