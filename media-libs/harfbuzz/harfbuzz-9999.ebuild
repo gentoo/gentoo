@@ -51,6 +51,8 @@ pkg_setup() {
 src_prepare() {
 	default
 
+	xdg_environment_reset
+
 	if [[ ${CHOST} == *-darwin* || ${CHOST} == *-solaris* ]] ; then
 		# on Darwin/Solaris we need to link with g++, like automake defaults
 		# to, but overridden by upstream because on Linux this is not
@@ -74,7 +76,6 @@ src_prepare() {
 }
 
 multilib_src_configure() {
-	xdg_environment_reset
 	ECONF_SOURCE="${S}" \
 	# harfbuzz-gobject only used for instrospection, bug #535852
 	econf \

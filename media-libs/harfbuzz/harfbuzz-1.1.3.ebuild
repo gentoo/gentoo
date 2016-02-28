@@ -9,7 +9,7 @@ EGIT_REPO_URI="git://anongit.freedesktop.org/harfbuzz"
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit eutils libtool multilib-minimal python-any-r1
+inherit eutils libtool multilib-minimal python-any-r1 xdg-utils
 
 DESCRIPTION="An OpenType text shaping engine"
 HOMEPAGE="http://www.freedesktop.org/wiki/Software/HarfBuzz"
@@ -49,6 +49,8 @@ pkg_setup() {
 }
 
 src_prepare() {
+	xdg_environment_reset
+
 	if [[ ${CHOST} == *-darwin* || ${CHOST} == *-solaris* ]] ; then
 		# on Darwin/Solaris we need to link with g++, like automake defaults
 		# to, but overridden by upstream because on Linux this is not
