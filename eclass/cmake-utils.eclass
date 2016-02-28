@@ -660,8 +660,19 @@ _ninjaopts_from_makeopts() {
 	while (( $# )); do
 		case $1 in
 			-j|-l)
-				ninjaopts+=( $1 $2 )
-				shift 2
+				if [[ $# -eq 1 || $2 == -* ]]; then
+					if [[ $1 == -j ]]; then
+						# absurdly high job limit
+						ninjaopts+=( $1 9999 )
+					else # -l
+						# remove load limit (like make does for -l)
+						ninjaopts+=( $1 0 )
+					fi
+					shift 1
+				else
+					ninjaopts+=( $1 $2 )
+					shift 2
+				fi
 				;;
 			-j*|-l*)
 				ninjaopts+=( $1 )
