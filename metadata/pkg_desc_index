@@ -9635,8 +9635,8 @@ dev-util/pmd 4.2.5: A Java source code analyzer
 dev-util/premake 3.7 4.3-r1: A makefile generation tool
 dev-util/pretrace 0.4: start dynamically linked applications under debugging environment
 dev-util/pscan 20000721-r1: A limited problem scanner for C source files
-dev-util/pycharm-community 3.4.1 4.0.6 4.5.4 5.0.2 5.0.3: Intelligent Python IDE with unique code assistance and analysis
-dev-util/pycharm-professional 3.4.1-r1 4.0.6-r1 4.5.4 5.0.2 5.0.3: Intelligent Python IDE with unique code assistance and analysis
+dev-util/pycharm-community 3.4.1 4.0.6 4.5.4 5.0.3 5.0.4: Intelligent Python IDE with unique code assistance and analysis
+dev-util/pycharm-professional 3.4.1-r1 4.0.6-r1 4.5.4 5.0.3 5.0.4: Intelligent Python IDE with unique code assistance and analysis
 dev-util/qbs 1.4.2 1.4.3 1.4.4: Qt Build Suite
 dev-util/qdevelop 0.28: A development environment entirely dedicated to Qt4
 dev-util/qfsm 0.53.0 0.54.0: A graphical tool for designing finite state machines
@@ -17032,6 +17032,7 @@ sys-libs/libcap-ng 0.7.7: POSIX 1003.1e capabilities
 sys-libs/libchipcard 5.0.2: Libchipcard is a library for easy access to chip cards via chip card readers (terminals)
 sys-libs/libcxx 3.7.0 3.7.1 9999: New implementation of the C++ standard library, targeting C++11
 sys-libs/libcxxrt 0.0_p20140322 0.0_p20150423 9999: C++ Runtime from PathScale, FreeBSD and NetBSD
+sys-libs/libedit 3.1_p20150325: Port of the NetBSD editline library
 sys-libs/libfaketime 0.9.6-r1: Report faked system time to programs
 sys-libs/libfreevec 1.0.4: Altivec enabled libc memory function
 sys-libs/libhugetlbfs 2.18 2.19 2.19-r1 2.20: easy hugepage access
