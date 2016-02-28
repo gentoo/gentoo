@@ -405,11 +405,11 @@ gen_libc_ldscript() {
 	#   $3 = source libssp_nonshared dir
 
 	# Clear the symlink.
-	rm -f "${D}/$2/libc.so" || die
+	rm -f "${DESTDIR}/$2/libc.so" || die
 
 	# Move the library if needed
 	if [ "$1" != "$2" ] ; then
-		mv "${D}/$2/libc.so.7" "${D}/$1/" || die
+		mv "${DESTDIR}/$2/libc.so.7" "${DESTDIR}/$1/" || die
 	fi
 
 	# Generate libc.so ldscript for inclusion of libssp_nonshared.a when linking
@@ -423,7 +423,7 @@ gen_libc_ldscript() {
 
 	# iconv symbol provided by libc_nonshared.a.
 	# http://svnweb.freebsd.org/base?view=revision&amp;revision=258283
-	cat > "${D}/$2/libc.so" <<-END_LDSCRIPT
+	cat > "${DESTDIR}/$2/libc.so" <<-END_LDSCRIPT
 /* GNU ld script
    SSP (-fstack-protector) requires __stack_chk_fail_local to be local.
    GCC invokes this symbol in a non-PIC way, which results in TEXTRELs if
@@ -528,13 +528,13 @@ do_install() {
 
 	if ! is_crosscompile ; then
 		if ! multilib_is_native_abi ; then
-			gen_libc_ldscript "usr/$(get_libdir)" "usr/$(get_libdir)" "usr/$(get_libdir)"
+			DESTDIR="${D}" gen_libc_ldscript "usr/$(get_libdir)" "usr/$(get_libdir)" "usr/$(get_libdir)"
 		else
 			dodir "$(get_libdir)"
-			gen_libc_ldscript "$(get_libdir)" "usr/$(get_libdir)" "usr/$(get_libdir)"
+			DESTDIR="${D}" gen_libc_ldscript "$(get_libdir)" "usr/$(get_libdir)" "usr/$(get_libdir)"
 		fi
 	else
-		CHOST=${CTARGET} gen_libc_ldscript "usr/${CTARGET}/usr/lib" "usr/${CTARGET}/usr/lib" "usr/${CTARGET}/usr/lib"
+		CHOST=${CTARGET} DESTDIR="${D}/usr/${CTARGET}/" gen_libc_ldscript "usr/lib" "usr/lib" "usr/lib"
 		# We're done for the cross libc here.
 		return 0
 	fi
