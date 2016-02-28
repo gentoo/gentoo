@@ -98,7 +98,7 @@ dlopen_lib() {
 # @USAGE:
 # @RETURN: system version of make
 # @DESCRIPTION:
-# Gets the name of the BSD-ish make command (pmake from NetBSD)
+# Gets the name of the BSD-ish make command (bmake from NetBSD)
 #
 # This will return make (provided by system packages) for BSD userlands,
 # or bsdmake for Darwin userlands and pmake for the rest of userlands,
@@ -112,7 +112,7 @@ get_bmake() {
 	elif [[ ${USERLAND} == "Darwin" ]]; then
 		echo bsdmake
 	else
-		echo pmake
+		echo bmake
 	fi
 }
 
