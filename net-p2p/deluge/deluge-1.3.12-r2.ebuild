@@ -64,8 +64,10 @@ _distutils-r1_create_setup_cfg() {
 
 python_install_all() {
 	distutils-r1_python_install_all
-	newinitd "${FILESDIR}"/deluged.init deluged
-	newconfd "${FILESDIR}"/deluged.conf deluged
+	newinitd "${FILESDIR}"/deluged.init-2 deluged
+	newconfd "${FILESDIR}"/deluged.conf-2 deluged
+	newinitd "${FILESDIR}"/deluge-web.init deluge-web
+	newconfd "${FILESDIR}"/deluge-web.conf deluge-web
 	systemd_dounit "${FILESDIR}"/deluged.service
 	systemd_dounit "${FILESDIR}"/deluge-web.service
 }

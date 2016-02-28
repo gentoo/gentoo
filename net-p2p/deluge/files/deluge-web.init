@@ -1,0 +1,54 @@
+#!/sbin/openrc-run
+# Copyright 1999-2013 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License, v2 or later
+# $Id$
+
+depend() {
+	need net
+}
+
+checkconfig() {
+	if [ "${DELUGE_WEB_USER}" = "" ] ; then
+		eerror "Please edit /etc/conf.d/deluge-web"
+		eerror "You have to specify a user to run deluge-web as, as we will not run it as root!"
+		eerror "Modify DELUGE_WEB_USER to your needs (you can also add a group, after a colon)"
+		return 1
+	fi
+	if ! getent passwd "${DELUGE_WEB_USER%:*}" >/dev/null ; then
+		eerror "Please edit /etc/conf.d/deluge-web"
+		eerror "Your user has to exist!"
+		return 1
+	fi
+	if [ "${DELUGE_WEB_USER%:*}" = "${DELUGE_WEB_USER}" ] ; then
+		return 0
+	else
+		if ! getent group "${DELUGE_WEB_USER#*:}" >/dev/null ; then
+			eerror "Please edit /etc/conf.d/deluge-web"
+			eerror "Your group has to exist too!"
+			return 1
+		fi
+	fi	
+	return 0
+}
+
+start() {
+	checkconfig || return $?
+	if [ "${DELUGE_WEB_HOME}" = "" ] ; then
+		DELUGE_WEB_USER_HOME=$(getent passwd "${DELUGE_WEB_USER%:*}" | cut -d ':' -f 6)
+	else
+		DELUGE_WEB_USER_HOME=${DELUGE_WEB_HOME}
+	fi
+	ebegin "Starting Deluge-Web"
+	start-stop-daemon --start --background --pidfile \
+	/run/deluge-web.pid  --make-pidfile \
+	--exec /usr/bin/deluge-web --user "${DELUGE_WEB_USER%:*}" \
+	-e HOME="${DELUGE_WEB_USER_HOME}" -- ${DELUGE_WEB_OPTS}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping Deluge-Web"
+	start-stop-daemon --stop --user "${DELUGE_WEB_USER%:*}" \
+	--pidfile /run/deluge-web.pid
+	eend $?
+}
