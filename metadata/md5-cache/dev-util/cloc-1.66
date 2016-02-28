@@ -1,13 +1,13 @@
-DEFINED_PHASES=install prepare unpack
+DEFINED_PHASES=compile install
 DEPEND=>=dev-lang/perl-5.6
 DESCRIPTION=Count Lines of Code
 EAPI=5
-HOMEPAGE=http://cloc.sourceforge.net/
-KEYWORDS=amd64 ppc ppc64 x86
+HOMEPAGE=https://github.com/AlDanial/cloc
+KEYWORDS=~amd64 ~ppc ~ppc64 ~x86
 LICENSE=GPL-2+
 RDEPEND=>=dev-lang/perl-5.6 dev-perl/Algorithm-Diff dev-perl/regexp-common virtual/perl-Digest-MD5 virtual/perl-Getopt-Long virtual/perl-File-Spec virtual/perl-File-Temp
 SLOT=0
-SRC_URI=mirror://sourceforge/cloc/cloc-1.64.pl mirror://sourceforge/cloc/cloc.1.pod
-_eclass_exported_funcs=src_unpack:- src_prepare:- src_install:-
+SRC_URI=https://github.com/AlDanial/cloc/releases/download/v1.66/cloc-1.66.tar.gz
+_eclass_exported_funcs=src_compile:- src_install:-
 _eclasses_=eutils	9d81603248f2ba3ec59124320d123e5e	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
-_md5_=5a59c2e022863ceeb8c787737b8bf834
+_md5_=9d0caa9a6078e259097757a910622e37
