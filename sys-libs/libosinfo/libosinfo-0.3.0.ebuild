@@ -35,6 +35,11 @@ DEPEND="${RDEPEND}
 	vala? ( $(vala_depend) )
 "
 
+src_prepare() {
+	gnome2_src_prepare
+	use vala && vala_src_prepare
+}
+
 src_configure() {
 	gnome2_src_configure \
 		--disable-static \
