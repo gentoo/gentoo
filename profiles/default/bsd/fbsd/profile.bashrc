@@ -2,12 +2,11 @@
 # Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
 # $Id$
 
-alias make=gmake
-alias patch=gpatch
-alias sed=gsed
-alias awk=gawk
-# findutils stuff
-type -P gfind > /dev/null && alias find=gfind
+type -P gmake  > /dev/null && alias make=gmake
+type -P gpath  > /dev/null && alias patch=gpatch
+type -P gsed   > /dev/null && alias sed=gsed
+type -P gaws   > /dev/null && alias awk=gawk
+type -P gfind  > /dev/null && alias find=gfind
 type -P gxargs > /dev/null && alias xargs=gxargs
 
 # Attempt to point the default SHELL used by configure scripts to bash.
