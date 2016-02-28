@@ -56,8 +56,6 @@ do_contrib() {
 }
 
 src_prepare() {
-	# Fix ASDF dir
-	sed -i -e "/^STUMPWM_ASDF_DIR/s|\`pwd\`|${CLPKGDIR}|" configure.ac || die
 	# Upstream didn't change the version before packaging
 	sed -i -e 's/:version "0.9.8"/:version "0.9.9"/' "${PN}.asd" || die
 	# Bug 534592. Does not build with asdf:oos, using require to load the package
@@ -74,7 +72,7 @@ src_prepare() {
 src_configure() {
 	local moduleconfig
 
-	use contrib && moduleconfig="--with-module-dir=${CLSOURCEROOT}/${CLPACKAGE}/contrib"
+	use contrib && moduleconfig="--with-module-dir=${CONTRIBDIR}/contrib"
 	econf --with-lisp=$(get_lisp sbcl clisp ecl) "${moduleconfig}"
 }
 
@@ -90,6 +88,9 @@ src_install() {
 
 	common-lisp-install-sources *.lisp
 	common-lisp-install-asdf ${PN}.asd
+	# Fix ASDF dir
+	sed -i -e "/(:directory/c\   (:directory \"${CLPKGDIR}\")" \
+		"${D}${CLPKGDIR}/load-stumpwm.lisp" || die
 	use doc && do_doc
 	use contrib && do_contrib
 }
