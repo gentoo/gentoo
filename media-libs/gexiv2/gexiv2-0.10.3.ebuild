@@ -4,7 +4,7 @@
 
 EAPI=5
 
-PYTHON_COMPAT=( python{2_7,3_3,3_4} )
+PYTHON_COMPAT=( python{2_7,3_3,3_4,3_5} )
 
 inherit eutils multilib python-r1 toolchain-funcs versionator xdg-utils
 
@@ -24,16 +24,16 @@ REQUIRED_USE="python? ( introspection ${PYTHON_REQUIRED_USE} )"
 RDEPEND="${PYTHON_DEPS}
 	>=dev-libs/glib-2.26.1:2
 	>=media-gfx/exiv2-0.21:0=
-	introspection? ( dev-libs/gobject-introspection )"
+	introspection? ( dev-libs/gobject-introspection:= )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 src_prepare() {
+	xdg_environment_reset
 	tc-export CXX
 }
 
 src_configure() {
-	xdg_environment_reset
 	econf \
 		$(use_enable introspection) \
 		$(use_enable static-libs static)
