@@ -659,12 +659,17 @@ _ninjaopts_from_makeopts() {
 	set -- ${MAKEOPTS}
 	while (( $# )); do
 		case $1 in
-			-j|-l|-k)
+			-j|-l)
 				ninjaopts+=( $1 $2 )
 				shift 2
 				;;
-			-j*|-l*|-k*)
+			-j*|-l*)
 				ninjaopts+=( $1 )
+				shift 1
+				;;
+			-k)
+				# -k 0 = any number of tasks can fail
+				ninjaopts+=( $1 0 )
 				shift 1
 				;;
 			*) shift ;;
