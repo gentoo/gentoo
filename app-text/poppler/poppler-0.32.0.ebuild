@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit cmake-utils toolchain-funcs
+inherit cmake-utils toolchain-funcs xdg-utils
 
 if [[ "${PV}" == "9999" ]] ; then
 	inherit git-r3
@@ -66,6 +66,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-0.28.1-fix-multilib-configuration.patch" )
 
 src_configure() {
+	xdg_environment_reset
 	local mycmakeargs=(
 		-DBUILD_GTK_TESTS=OFF
 		-DBUILD_QT4_TESTS=OFF
