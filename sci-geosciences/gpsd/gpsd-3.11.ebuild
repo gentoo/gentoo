@@ -37,7 +37,7 @@ REQUIRED_USE="X? ( python )
 	python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="X? ( dev-python/pygtk:2[${PYTHON_USEDEP}] )
-	ncurses? ( sys-libs/ncurses )
+	ncurses? ( sys-libs/ncurses:= )
 	bluetooth? ( net-wireless/bluez )
 	usb? ( virtual/libusb:1 )
 	dbus? (
