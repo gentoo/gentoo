@@ -30,6 +30,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Patrice Clement <monsieurp@gentoo.org> (29 Feb 2016)
+# Duplicate of dev-libs/libedit.
+# Masked for removal in 30 days.
+sys-libs/libedit
+
 # Patrick Lauer <patrick@gentoo.org> (22 Feb 2016)
 # Inactive upstream, build failures, obsoleted by rakudo/perl6
 dev-lang/niecza
