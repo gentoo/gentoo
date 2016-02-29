@@ -5701,9 +5701,9 @@ dev-perl/Image-Imlib2 2.30.0-r1: Interface to the Imlib2 image library
 dev-perl/Image-Info 1.360.0 1.380.0: The Perl Image-Info Module
 dev-perl/Image-Scale 0.110.0: Fast, high-quality fixed-point image resizing
 dev-perl/Image-Size 3.232.0-r1 3.300.0: A library to extract height/width from images
-dev-perl/Import-Into 1.2.0 1.2.4 1.2.5: Import packages into other packages
+dev-perl/Import-Into 1.2.0 1.2.5: Import packages into other packages
 dev-perl/Inline 0.500.0-r1 0.790.0 0.800.0: Write Perl subroutines in other languages
-dev-perl/Inline-C 0.740.0 0.760.0: C Language Support for Inline
+dev-perl/Inline-C 0.760.0: C Language Support for Inline
 dev-perl/Inline-Files 0.680.0-r1 0.690.0: Multiple virtual files in a single file
 dev-perl/Inline-Python 0.490.0-r1: Easy implementation of Python extensions
 dev-perl/JSON 2.590.0-r1 2.900.0: JSON (JavaScript Object Notation) encoder/decoder
@@ -6442,7 +6442,7 @@ dev-perl/gtk2-perl 1.247.0 1.249.500 1.249.700: Perl bindings for GTK2
 dev-perl/gtk2-spell 1.40.0-r1: Bindings for GtkSpell with Gtk2.x
 dev-perl/gtk2-trayicon 0.60.0-r1: Perl wrappers for the egg cup Gtk2::TrayIcon utilities
 dev-perl/gtk2-traymanager 0.50.0-r1: Perl bindings for EggTrayManager
-dev-perl/indirect 0.350.0 0.360.0: Lexically warn about using the indirect method call syntax
+dev-perl/indirect 0.360.0: Lexically warn about using the indirect method call syntax
 dev-perl/libintl-perl 1.200.0-r1 1.230.0 1.240.0: High-Level Interface to Uniforum Message Translation
 dev-perl/librg-utils-perl 1.0.43: Parsers and format conversion utilities used by (e.g.) profphd
 dev-perl/libvorbis-perl 0.50.0-r1: Ogg::Vorbis - Perl extension for Ogg Vorbis streams
