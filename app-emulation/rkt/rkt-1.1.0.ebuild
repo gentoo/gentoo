@@ -32,8 +32,8 @@ HOMEPAGE="https://github.com/coreos/rkt"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-IUSE="doc examples +rkt_stage1_coreos +rkt_stage1_fly rkt_stage1_kvm rkt_stage1_src +actool"
-REQUIRED_USE="|| ( rkt_stage1_coreos rkt_stage1_fly rkt_stage1_kvm rkt_stage1_src )"
+IUSE="doc examples +rkt_stage1_coreos +rkt_stage1_fly rkt_stage1_host rkt_stage1_kvm rkt_stage1_src +actool systemd"
+REQUIRED_USE="|| ( rkt_stage1_coreos rkt_stage1_fly rkt_stage1_host rkt_stage1_kvm rkt_stage1_src ) rkt_stage1_host? ( systemd )"
 
 DEPEND=">=dev-lang/go-1.4.1
 	app-arch/cpio
@@ -41,7 +41,11 @@ DEPEND=">=dev-lang/go-1.4.1
 	sys-fs/squashfs-tools
 	dev-perl/Capture-Tiny"
 
-RDEPEND="!app-emulation/rocket"
+RDEPEND="!app-emulation/rocket
+	systemd? (
+		>=sys-apps/systemd-222
+		app-shells/bash:0
+	)"
 
 BUILDDIR="build-${P}"
 STAGE1_DEFAULT_LOCATION="/usr/share/rkt/stage1.aci"
@@ -84,6 +88,12 @@ src_prepare() {
 	sed -e 's|wget .*|ln -s "$${DISTDIR}/linux-'${KVM_LINUX_VERSION}'.tar.xz" "$@"|' \
 		-i stage1/usr_from_kvm/kernel.mk || die
 
+	if use rkt_stage1_host; then
+		# Make systemdUnitsPath consistent with host
+		sed -e 's|\(systemdUnitsPath := \).*|\1"'$(systemd_get_systemunitdir)'"|' \
+			-i stage1/init/init.go || die
+	fi
+
 	autotools-utils_src_prepare
 }
 
@@ -93,11 +103,8 @@ src_configure() {
 		--with-stage1-default-location="${STAGE1_DEFAULT_LOCATION}"
 	)
 
-	# TODO:
-	#  - fix rkt_stage1_kvm to not download kernel sources with wget
-	#  - fix rkt_stage1_host to not fail during launch
-
 	# enable flavors (first is default)
+	use rkt_stage1_host && flavors+=",host"
 	use rkt_stage1_src && flavors+=",src"
 	use rkt_stage1_coreos && flavors+=",coreos"
 	use rkt_stage1_fly && flavors+=",fly"
@@ -148,7 +155,9 @@ src_install() {
 	doins "${S}/${BUILDDIR}/bin/"*.aci
 
 	# create symlink for default stage1 image path
-	if use rkt_stage1_src; then
+	if use rkt_stage1_host; then
+		dosym stage1-host.aci "${STAGE1_DEFAULT_LOCATION}"
+	elif use rkt_stage1_src; then
 		dosym stage1-src.aci "${STAGE1_DEFAULT_LOCATION}"
 	elif use rkt_stage1_coreos; then
 		dosym stage1-coreos.aci "${STAGE1_DEFAULT_LOCATION}"

@@ -7,7 +7,7 @@ EAPI=5
 MY_PN="lib${PN}"
 MY_P="${MY_PN}-${PV}"
 
-inherit multilib
+inherit multilib eutils
 
 DESCRIPTION="A complete Spatial DBMS in a nutshell built upon sqlite"
 HOMEPAGE="http://www.gaia-gis.it/gaia-sins/"
@@ -27,11 +27,16 @@ DEPEND="${RDEPEND}"
 
 S=${WORKDIR}/${MY_P}
 
+src_prepare() {
+	epatch "${FILESDIR}/${P}-validator.patch"
+}
+
 src_configure() {
 	econf \
 		--disable-static \
 		--enable-geocallbacks \
 		--enable-epsg \
+		--disable-examples \
 		$(use_enable geos) \
 		$(use_enable geos geosadvanced) \
 		$(use_enable iconv) \
