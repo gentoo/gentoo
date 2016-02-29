@@ -1312,7 +1312,7 @@ app-emulation/qemu 2.5.0-r1 9999: QEMU + Kernel-based Virtual Machine userland t
 app-emulation/qemu-guest-agent 2.3.0 2.3.1 2.4.0 2.5.0: QEMU Guest Agent (qemu-ga) for use when running inside a VM
 app-emulation/qtemu 1.0.5: A graphical user interface for QEMU written in Qt4
 app-emulation/rex-client 9999: Remote EXexcution agent
-app-emulation/rkt 0.8.0 1.0.0 9999: A CLI for running app containers, and an implementation of the App Container Spec.
+app-emulation/rkt 0.8.0 1.0.0 1.1.0 9999: A CLI for running app containers, and an implementation of the App Container Spec.
 app-emulation/runc 0.0.2 0.0.5: runc container cli tools
 app-emulation/simh 3.9.0-r1: a simulator for historical computers such as Vax, PDP-11 etc.)
 app-emulation/ski 1.3.2 1.3.2-r1: ia64 instruction set simulator
