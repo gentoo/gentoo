@@ -437,8 +437,8 @@ app-cdr/ccd2iso 0.3: Converts CloneCD images (popular under Windows) to ISOs
 app-cdr/cdck 0.7.0-r1: Measure the read time per sector on CD or DVD to check the quality
 app-cdr/cdcover 0.7.4-r1: cdcover allows the creation of inlay-sheets for jewel cd-cases
 app-cdr/cddetect 2.1: A tool for detecting the type of a CD/DVD without mounting it
-app-cdr/cdemu 2.1.1 3.0.0: Command-line tool for controlling cdemu-daemon
-app-cdr/cdemu-daemon 2.1.1 3.0.2: Daemon of the CDEmu optical media image mounting suite
+app-cdr/cdemu 3.0.0 3.0.1: Command-line tool for controlling cdemu-daemon
+app-cdr/cdemu-daemon 3.0.2 3.0.4: Daemon of the CDEmu optical media image mounting suite
 app-cdr/cdlabelgen 4.0.0 4.1.0: CD cover, tray card and envelope generator
 app-cdr/cdrdao 1.2.3-r1 1.2.3-r2 1.2.3-r3: Burn CDs in disk-at-once mode -- with optional GUI frontend
 app-cdr/cdrkit 1.1.11-r2: A set of tools for CD/DVD reading and recording, including cdrecord
@@ -456,7 +456,7 @@ app-cdr/dvdisaster 0.72.4 0.79.5: Tool for creating error correction data (ecc) 
 app-cdr/dvdshrink 2.6.1_p10: Scriptable DVD copy software
 app-cdr/extract-xiso 2.5 2.7.1: Tool for extracting and creating optimised Xbox ISO images
 app-cdr/gaffitter 0.6.0-r1: Genetic Algorithm File Fitter
-app-cdr/gcdemu 2.1.1 3.0.0: Gtk+ GUI for controlling cdemu-daemon
+app-cdr/gcdemu 3.0.0 3.0.1: Gtk+ GUI for controlling cdemu-daemon
 app-cdr/gnomebaker 0.6.4-r1: GnomeBaker is a GTK2/Gnome cd burning application
 app-cdr/graveman 0.3.12_p5-r2: Graphical frontend for cdrecord, mkisofs, readcd and sox using GTK+2
 app-cdr/gtkcdlabel 1.12 1.14-r1: a GUI frontend to cdlabelgen which is a program that can generate a variety of CD tray covers
@@ -4668,7 +4668,7 @@ dev-libs/libmelf 0.4.0 0.4.0-r1: libmelf is a library interface for manipulating
 dev-libs/libmemcache 1.4.0_rc2-r1: C API for memcached
 dev-libs/libmemcached 0.50 1.0.14 1.0.17-r3 1.0.17-r4 1.0.18 1.0.18-r1 1.0.18-r2 1.0.18-r3: a C client library to the memcached server
 dev-libs/libmimedir 0.5.1: Library for manipulating MIME directory profiles (RFC2425)
-dev-libs/libmirage 2.1.1 3.0.3: CD and DVD image access library
+dev-libs/libmirage 3.0.3 3.0.4: CD and DVD image access library
 dev-libs/libmix 2.05-r7: Programs Crypto/Network/Multipurpose Library
 dev-libs/libmodbus 3.0.6 3.1.1: Modbus library which supports RTU communication over a serial line or a TCP link
 dev-libs/libmoe 1.5.8-r2: multi octet character encoding handling library
