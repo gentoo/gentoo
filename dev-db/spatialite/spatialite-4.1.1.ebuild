@@ -36,7 +36,7 @@ src_configure() {
 		--disable-static \
 		--enable-geocallbacks \
 		--enable-epsg \
-		--disable-examples \ #broken in 4.1.1
+		--disable-examples \
 		$(use_enable geos) \
 		$(use_enable geos geosadvanced) \
 		$(use_enable iconv) \
