@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 if [[ ${PV} = *9999* ]]; then
 	EGIT_REPO_URI="
@@ -10,8 +10,6 @@ if [[ ${PV} = *9999* ]]; then
 		https://github.com/blogc/blogc.git"
 	inherit git-r3 autotools
 fi
-
-inherit eutils
 
 DESCRIPTION="A blog compiler"
 HOMEPAGE="http://blogc.org/"
@@ -21,24 +19,26 @@ KEYWORDS="~amd64 ~x86"
 if [[ ${PV} = *9999* ]]; then
 	SRC_URI=""
 	KEYWORDS=""
-	DEPEND="app-text/ronn"
+	RDEPEND="=dev-libs/squareball-9999"
+	DEPEND="${RDEPEND}
+		app-text/ronn"
+else
+	RDEPEND=">=dev-libs/squareball-0.1"
+	DEPEND="${RDEPEND}"
 fi
 
 LICENSE="BSD"
 SLOT="0"
 IUSE="test"
 
-RDEPEND=""
-
-# pkg-config is used only to find cmocka libraries
 DEPEND="${DEPEND}
+	virtual/pkgconfig
 	test? (
-		virtual/pkgconfig
 		dev-util/cmocka )"
 
 src_prepare() {
 	[[ ${PV} = *9999* ]] && eautoreconf
-	epatch_user
+	eapply_user
 	default
 }
 
@@ -52,5 +52,6 @@ src_configure() {
 	econf \
 		$(use_enable test tests) \
 		--disable-valgrind \
+		--with-squareball=system \
 		${myconf}
 }
