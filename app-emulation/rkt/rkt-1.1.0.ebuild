@@ -44,10 +44,10 @@ src_prepare() {
 	# disable git fetch of systemd
 	sed -e 's|^include makelib/git.mk$|_ := '\
 '$(shell set -ex; [ -d "$(UFS_SYSTEMD_SRCDIR)" ] \&\& exit 0; '\
-'[ ! -d "$${WORKDIR}/systemd-222" ] \&\& exit 0; '\
+'[ ! -d "$${WORKDIR}/systemd-'${PXE_SYSTEMD_VERSION#v}'" ] \&\& exit 0; '\
 'mkdir -p "$$( dirname "$(UFS_SYSTEMD_SRCDIR)")"; '\
-'mv "$${WORKDIR}/systemd-222" "$(UFS_SYSTEMD_SRCDIR)";)|' \
-		i stage1/usr_from_src/usr_from_src.mk || die
+'mv "$${WORKDIR}/systemd-'${PXE_SYSTEMD_VERSION#v}'" "$(UFS_SYSTEMD_SRCDIR)";)|' \
+		-i stage1/usr_from_src/usr_from_src.mk || die
 	autotools-utils_src_prepare
 }
 
