@@ -5132,7 +5132,7 @@ dev-perl/Algorithm-Diff 1.190.300: Compute intelligent differences between two f
 dev-perl/Algorithm-Munkres 0.80.0-r1: Munkres solution to classical Assignment problem
 dev-perl/Alien-SDL 1.446.0: building, finding and using SDL binaries
 dev-perl/Alien-wxWidgets 0.670.0: Building, finding and using wxWidgets binaries
-dev-perl/Any-Moose 0.210.0 0.260.0: Use Moose or Mouse modules (DEPRECATED)
+dev-perl/Any-Moose 0.210.0 0.260.0 0.260.0-r1: Use Moose or Mouse modules (DEPRECATED)
 dev-perl/AnyEvent 7.40.0-r1 7.80.0 7.110.0: Provides a uniform interface to various event loops
 dev-perl/AnyEvent-CacheDNS 0.80.0: Simple DNS resolver with caching
 dev-perl/AnyEvent-HTTP 2.220.0: Simple but non-blocking HTTP/HTTPS client
@@ -5330,7 +5330,7 @@ dev-perl/Crypt-OpenSSL-Random 0.40.0-r2: Crypt::OpenSSL::Random module for perl
 dev-perl/Crypt-PasswdMD5 1.400.0: Provides interoperable MD5-based crypt() functions
 dev-perl/Crypt-RC4 2.020.0-r1: Implements the RC4 encryption algorithm
 dev-perl/Crypt-RIPEMD160 0.50.0-r1: Crypt::RIPEMD160 module for perl
-dev-perl/Crypt-Random-Source 0.70.0-r1: Get weak or strong random data from pluggable sources
+dev-perl/Crypt-Random-Source 0.70.0-r1 0.110.0: Get weak or strong random data from pluggable sources
 dev-perl/Crypt-Rijndael 1.130.0: Crypt::CBC compliant Rijndael encryption module
 dev-perl/Crypt-SMIME 0.150.0-r1 0.160.0-r1: S/MIME message signing, verification, encryption and decryption
 dev-perl/Crypt-SSLeay 0.720.0-r1: OpenSSL support for LWP
@@ -5748,6 +5748,7 @@ dev-perl/Lirc-Client 1.540.0-r1 2.20.0: A client library for the Linux Infrared 
 dev-perl/List-AllUtils 0.30.0-r1 0.80.0 0.90.0: Combines List::Util and List::MoreUtils in one bite-sized package
 dev-perl/List-MoreUtils 0.330.0-r1 0.413.0: Provide the missing functionality from List::Util
 dev-perl/List-UtilsBy 0.100.0: Higher-order list utility functions
+dev-perl/Locale-Maketext-Fuzzy 0.110.0-r1: Maketext from already interpolated strings
 dev-perl/Locale-Maketext-Lexicon 0.960.0-r1 1.0.0: Use other catalog formats in Maketext
 dev-perl/Locale-Msgfmt 0.150.0-r1: Compile .po files to .mo files
 dev-perl/Locale-PO 0.230.0 0.270.0: Perl module for manipulating .po entries from GNU gettext
@@ -5884,8 +5885,8 @@ dev-perl/Net-DNS-Async 1.70.0-r1: Asynchronous DNS helper for high volume applic
 dev-perl/Net-DNS-Resolver-Programmable 0.3.0-r1: programmable DNS resolver class for offline emulation of DNS
 dev-perl/Net-DNS-SEC 0.220.0 1.20.0: DNSSEC extensions to Net::DNS
 dev-perl/Net-Daemon 0.480.0-r1: Abstract base class for portable servers
-dev-perl/Net-Domain-TLD 1.690.0-r1 1.730.0: Current list of available top level domain names including new ICANN additions and ccTLDs
-dev-perl/Net-FreeDB 0.80.0-r1: OOP interface to the FreeDB database
+dev-perl/Net-Domain-TLD 1.690.0-r1 1.730.0 1.740.0: Current top level domain names including new ICANN additions and ccTLDs
+dev-perl/Net-FreeDB 0.80.0-r1 0.100.0: OOP interface to the FreeDB database
 dev-perl/Net-Google-SafeBrowsing-Blocklist 1.40.0-r1: Query a Google SafeBrowsing table
 dev-perl/Net-Google-SafeBrowsing-UpdateRequest 1.60.0-r1: Update a Google SafeBrowsing table
 dev-perl/Net-HTTP 6.60.0: Low-level HTTP connection (client)
@@ -6448,7 +6449,6 @@ dev-perl/libvorbis-perl 0.50.0-r1: Ogg::Vorbis - Perl extension for Ogg Vorbis s
 dev-perl/libwww-perl 6.50.0 6.150.0: A collection of Perl Modules for the WWW
 dev-perl/libxml-perl 0.80.0-r1: Collection of Perl modules for working with XML
 dev-perl/local-lib 2.0.14 2.0.18: create and use a local lib/ for perl modules with PERL5LIB
-dev-perl/locale-maketext-fuzzy 0.110.0-r1: Maketext from already interpolated strings
 dev-perl/math-pari 2.10.806.50-r1 2.10.808: Perl interface to PARI
 dev-perl/maybe 0.20.200-r1: Use a Perl module and ignore error if can't be loaded
 dev-perl/mecab-perl 0.996: Perl binding for MeCab
@@ -17535,7 +17535,7 @@ www-apps/radicale 1.1.1: A simple CalDAV calendar server
 www-apps/redmine 2.6.9: Flexible project management web application using the Ruby on Rails framework
 www-apps/rocketwiki-lqfb 0.4: Small parser which translates a wiki dialect to HTML
 www-apps/roundup 1.4.20 1.4.21 1.5.0: Simple-to-use and -install issue-tracking system with command-line, web, and e-mail interfaces
-www-apps/rt 4.2.12: RT is an enterprise-grade ticketing system
+www-apps/rt 4.2.12-r1: RT is an enterprise-grade ticketing system
 www-apps/rutorrent 3.4-r1: ruTorrent is a front-end for the popular Bittorrent client rTorrent
 www-apps/scgi 1.14: A Python package for implementing SCGI servers
 www-apps/sitebar 3.3.9-r1 3.3.9-r2: The Bookmark Server for Personal and Team Use
