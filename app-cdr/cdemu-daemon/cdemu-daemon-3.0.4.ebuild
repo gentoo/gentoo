@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
+EAPI="6"
 
 CMAKE_MIN_VERSION="2.8.5"
 
@@ -13,13 +13,12 @@ HOMEPAGE="http://cdemu.org"
 SRC_URI="mirror://sourceforge/cdemu/${P}.tar.bz2"
 
 LICENSE="GPL-2+"
-SLOT="0/6" # subslot = CDEMU_DAEMON_INTERFACE_VERSION in CMakeLists.txt
-KEYWORDS="amd64 ~hppa x86"
+SLOT="0/7" # subslot = CDEMU_DAEMON_INTERFACE_VERSION_MAJOR in CMakeLists.txt
+KEYWORDS="~amd64 ~hppa ~x86"
 IUSE=""
 
 RDEPEND=">=dev-libs/glib-2.32:2
 	>=dev-libs/libmirage-${PV}:=
-	<dev-libs/libmirage-3
 	>=media-libs/libao-0.8.0:=
 	sys-apps/dbus
 	>=sys-fs/vhba-20130607"
