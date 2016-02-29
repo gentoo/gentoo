@@ -2170,7 +2170,7 @@ app-text/bibus 1.5.2-r2: Bibliographic and reference management software, integr
 app-text/bibutils 4.12: Interconverts between various bibliography formats using a common XML intermediate
 app-text/binfind 0.0.3: binfind searches files for a byte sequence specified on the command line
 app-text/blahtexml 0.9: TeX-to-MathML converter
-app-text/blogc 0.7.5 9999: A blog compiler
+app-text/blogc 0.7.6 9999: A blog compiler
 app-text/bogosort 0.4.2-r1: A file sorting program which uses the bogosort algorithm
 app-text/build-docbook-catalog 1.19.1 1.20: DocBook XML catalog auto-updater
 app-text/c2ps 4.0: Generates a beautified ps document from a source file (c/c++)
@@ -2543,7 +2543,7 @@ app-vim/notes 0.29 0.33: vim plugin: easy note taking in vim
 app-vim/ntp-syntax 20031001: vim plugin: ntp.conf syntax highlighting
 app-vim/omnicppcomplete 0.41: vim plugin: C/C++ omni-completion with ctags database
 app-vim/pam-syntax 20030818 20060424: vim plugin: PAM configuration syntax highlighting
-app-vim/pathogen 2.3 2.4: vim plugin: manage your runtimepath
+app-vim/pathogen 2.4: vim plugin: manage your runtimepath
 app-vim/pdv 1.0.1: vim plugin: PDV (phpDocumentor for Vim)
 app-vim/perl-support 4.8 4.14 5.1 5.2: vim plugin: Perl-IDE - Write and run Perl scripts using menus and hotkeys
 app-vim/pgn-syntax 1.0: vim plugin: PGN (chess Portable Game Notation) syntax highlighting
@@ -2577,7 +2577,7 @@ app-vim/surround 2.0 2.1: vim plugin: Delete/change/add parentheses/quotes/XML-t
 app-vim/syntastic 3.7.0 9999: vim plugin: syntax checking using external tools
 app-vim/tagbar 2.6.1: vim plugin: display tags of the current file ordered by scope
 app-vim/taglist 4.6: vim plugin: ctags-based source code browser
-app-vim/tcomment 3.07 3.08: vim plugin: an extensible and universal comment toggler
+app-vim/tcomment 3.08: vim plugin: an extensible and universal comment toggler
 app-vim/thlnk 1.2.1: vim plugin: linking in plaintext
 app-vim/tmpl 0.1: vim plugin: Syntax for Sam Tregar's HTML::Template
 app-vim/toggle 0.5: vim plugin: quickly toggle boolean-type keywords
@@ -2856,7 +2856,7 @@ dev-db/lmdb++ 0.9.14.0: C++11 wrapper for the LMDB database library
 dev-db/m17n-contrib 1.1.13 1.1.14: Contribution database for the m17n library
 dev-db/m17n-db 1.5.2 1.5.5 1.6.2-r1 1.6.3 1.6.4: Database for the m17n library
 dev-db/maatkit 7540-r1: essential command-line utilities for MySQL
-dev-db/mariadb 5.5.47 5.5.48 10.0.22 10.0.23 10.0.24 10.1.9 10.1.9-r1 10.1.10 10.1.11: An enhanced, drop-in replacement for MySQL
+dev-db/mariadb 5.5.47 5.5.48 10.0.22 10.0.23 10.0.24 10.1.9 10.1.9-r1 10.1.10 10.1.11 10.1.12: An enhanced, drop-in replacement for MySQL
 dev-db/mariadb-galera 10.0.22: An enhanced, drop-in replacement for MySQL with Galera Replication
 dev-db/maxscale 1.2.0: A content aware, plug-able MySQL proxy server
 dev-db/metakit 2.4.9.7-r2: Embedded database library
@@ -16827,7 +16827,7 @@ sys-fs/avfs 1.0.1 1.0.2 1.0.3: AVFS is a virtual filesystem that allows browsing
 sys-fs/bashmount 3.2.0: A bash script that uses udisks to handle removable devices without dependencies on any GUI
 sys-fs/bcache-tools 1.0.5 1.0.8 1.0.8_p20140220-r1 9999: Tools for bcachefs
 sys-fs/bedup 0.10.0 9999: Btrfs file de-duplication tool
-sys-fs/bindfs 1.12.6 1.13.0: FUSE filesystem for mounting a directory to another location and altering permissions
+sys-fs/bindfs 1.12.6 1.13.0 1.13.1: FUSE filesystem for mounting a directory to another location and altering permissions
 sys-fs/btrfs-progs 3.14.2 3.16.2 3.17.3 3.18.2 3.19.1 4.0 4.0.1 4.1 4.1.2 4.2 4.2.2 4.3.1 9999: Btrfs filesystem utilities
 sys-fs/cachefilesd 0.10.5-r4: Provides a caching directory on an already mounted filesystem
 sys-fs/clamfs 1.0.1-r1: A FUSE-based user-space file system with on-access anti-virus file scanning
