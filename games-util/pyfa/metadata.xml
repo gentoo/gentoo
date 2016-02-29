@@ -15,6 +15,6 @@ fits, etc.
     <flag name="graph">Enable support for graphs</flag>
   </use>
   <upstream>
-    <remote-id type="github">DarkFenX/Pyfa</remote-id>
+    <remote-id type="github">pyfa-org/Pyfa</remote-id>
   </upstream>
 </pkgmetadata>
