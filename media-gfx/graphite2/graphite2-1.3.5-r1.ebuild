@@ -74,7 +74,7 @@ multilib_src_configure() {
 
 	# fix perl linking
 	if multilib_is_native_abi && use perl; then
-		_cmake_check_build_dir init
+		# we rely on the fact that cmake-utils_src_configure sets BUILD_DIR
 		sed -i \
 			-e "s:@BUILD_DIR@:\"${BUILD_DIR}/src\":" \
 			"${S}"/contrib/perl/Build.PL || die
