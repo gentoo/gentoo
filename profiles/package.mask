@@ -232,10 +232,6 @@ www-apache/mod_auth_pgsql
 # Errorneously added. Is already in perl-core. Please uninstall.
 dev-perl/ExtUtils-Constant
 
-# Pacho Ramos <pacho@gentoo.org> (08 Jan 2016)
-# Doesn't work at all, bug #564106. Removal in a month.
-media-gfx/fr0st
-
 # Pacho Ramos <pacho@gentoo.org> (06 Jan 2016)
 # Unbuildable for a long time, bug #522916. Removal in a month.
 net-im/silc-server
