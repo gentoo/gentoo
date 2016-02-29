@@ -1,0 +1,26 @@
+X-Git-Url: http://code.x2go.org/gitweb?p=x2goserver.git;a=blobdiff_plain;f=x2goserver-xsession%2Fetc%2FXsession;h=7ad477ffc439ef0f7f0ccbbee40f55504a8f2dd6;hp=ab32a1062cdbec6b3ccbea29682d240f06046394;hb=7ae2669b596d3b84f0ba09552d5a8c0e653ce86d;hpb=1cc93d59f6bb2559b1c42daba26cf3b9b50f3e69
+
+diff --git a/x2goserver-xsession/etc/Xsession b/x2goserver-xsession/etc/Xsession
+index ab32a10..7ad477f 100755
+--- a/x2goserver-xsession/etc/Xsession
++++ b/x2goserver-xsession/etc/Xsession
+@@ -208,16 +208,16 @@ elif [ -f /etc/redhat-release ] || [ -f /etc/gentoo-release ] || [ -f /etc/SUSE-
+ 
+ 	# XCLIENTS_D=/etc/x2go/Xclients.d
+ 	#if [ -d "$XCLIENTS_D" -a -x "$XCLIENTS_D/Xclients.${XSESSION_EXEC}.sh" ]; then
+-	#	exec -l $SHELL -c "$CK_XINIT_SESSION $SSH_AGENT $XCLIENTS_D/Xclients.$1.sh"
++	#	exec /bin/bash -c "exec -l \"$SHELL\" -c \"$CK_XINIT_SESSION $SSH_AGENT $XCLIENTS_D/Xclients.$1.sh\""
+ 	#fi
+ 
+ 	# switchdesk support is also totally deprecated in RHEL, but we leave it here
+ 	# as a reminder, as well, in case we need it in the future for special setups...
+ 	#if [ -x "$SWITCHDESKPATH/Xclients.${XSESSION_EXEC}" ]; then
+-	#	exec -l "$SHELL" -c "$SWITCHDESKPATH/Xclients.${XSESSION_EXEC}";
++	#	exec /bin/bash -c "exec -l \"$SHELL\" -c \"$SWITCHDESKPATH/Xclients.${XSESSION_EXEC}\""
+ 	#fi
+ 
+-	exec $CK_XINIT_SESSION $SSH_AGENT /bin/sh -c "exec -l $SHELL -c \"$STARTUP\""
++	exec $CK_XINIT_SESSION $SSH_AGENT /bin/bash -c "exec -l \"$SHELL\" -c \"$STARTUP\""
+ fi
+ 
+ exit 0

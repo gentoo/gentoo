@@ -67,6 +67,7 @@ BIN_COMMON_DEPEND="
 	media-libs/glew:0/1.10
 	media-libs/harfbuzz:0/0.9.18[icu]
 	media-libs/libpng:0/16
+	>=sys-devel/gcc-4.9.0
 	>=sys-libs/glibc-2.21-r1
 	virtual/jpeg:62
 	kde? ( >=kde-base/kdelibs-4.14.8:4 >=dev-qt/qtcore-4.8.6-r2:4 >=dev-qt/qtgui-4.8.6-r4:4 )
