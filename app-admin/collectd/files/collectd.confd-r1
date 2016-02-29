@@ -1,0 +1,46 @@
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+# Nice value used to launch collectd, to change priority of the process. As
+# you usually we want to run it in background, a default of 5 is used.
+#
+#COLLECTD_NICELEVEL=5
+
+# Location of configuration file. Modify if you don't like the standard
+# one.
+#
+#COLLECTD_CONFIGFILE="/etc/collectd.conf"
+
+# File used to store the PID file. Usually you won't need to touch it.
+#
+#COLLECTD_PIDFILE="/run/collectd/collectd.pid"
+
+# User to run collectd as (default is collectd, change to root or give
+# collectd user appropriate privileges if you use one of the plugins that 
+# require it, as e.g. ping or iptables plugins)
+#
+#COLLECTD_USER="collectd"
+
+# The group is only important if you are using collectd's UNIX socket
+# in the default location (/run/collectd) because we will chown the
+# default location to COLLECTD_USER:COLLECTD_GROUP. The default value
+# is "collectd".
+#COLLECTD_GROUP="collectd"
+
+# You can use this configuration option to pass additional options to the
+# start-stop-daemon, see start-stop-daemon(8) for more details.
+# Per default we wait 1000ms after we have started the service to ensure
+# that the daemon is really up and running.
+#COLLECTD_SSDARGS="--wait 1000"
+
+# The termination timeout (start-stop-daemon parameter "retry") ensures
+# that the service will be terminated within a given time (25 + 5 seconds
+# per default) when you are stopping the service.
+#COLLECTD_TERMTIMEOUT="TERM/25/KILL/5"
+
+# Options to collectd
+# See collectd(8) for more details
+# Notes:
+# * Do not specify another PIDFILE but use the variable above to change the location
+# * Do not specify another CONFIGFILE but use the variable above to change the location
+#COLLECTD_OPTS=""
