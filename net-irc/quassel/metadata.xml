@@ -3,18 +3,11 @@
 <pkgmetadata>
 	<maintainer type="person">
 		<email>patrick@gentoo.org</email>
+		<name>Patrick Lauer</name>
 	</maintainer>
 	<maintainer type="person">
 		<email>johu@gentoo.org</email>
 		<name>Johannes Huber</name>
-	</maintainer>
-	<maintainer type="person">
-		<email>sputnick@quassel-irc.org</email>
-		<description>Upstream author, please CC on bugs</description>
-	</maintainer>
-	<maintainer type="project">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Proxy Maintainers</name>
 	</maintainer>
 	<use>
 		<flag name="monolithic">
