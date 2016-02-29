@@ -5662,7 +5662,7 @@ dev-perl/Hash-NoRef 0.30.0-r1: A HASH that store values without increasing the r
 dev-perl/Heap 0.800.0-r1: Heap - Perl extensions for keeping data partially sorted
 dev-perl/Hook-LexWrap 0.250.0: Lexically scoped subroutine wrappers
 dev-perl/IMAP-Admin 1.6.7-r1: Perl module for basic IMAP server administration
-dev-perl/IMAP-BodyStructure 1.10.0 1.30.0: IMAP4-compatible BODYSTRUCTURE and ENVELOPE parser
+dev-perl/IMAP-BodyStructure 1.30.0: IMAP4-compatible BODYSTRUCTURE and ENVELOPE parser
 dev-perl/IO-AIO 4.310.0 4.320.0 4.330.0: Asynchronous Input/Output
 dev-perl/IO-All 0.860.0: unified IO operations
 dev-perl/IO-BufferedSelect 1.0.0-r1: Perl module that implements a line-buffered select interface
@@ -5699,7 +5699,7 @@ dev-perl/IPTables-libiptc 0.520.0: Perl extension for iptables libiptc library
 dev-perl/Ima-DBI 0.350.0-r1: Add contextual fetches to DBI
 dev-perl/Image-Imlib2 2.30.0-r1: Interface to the Imlib2 image library
 dev-perl/Image-Info 1.360.0 1.380.0: The Perl Image-Info Module
-dev-perl/Image-Scale 0.80.0-r1 0.110.0: Fast, high-quality fixed-point image resizing
+dev-perl/Image-Scale 0.110.0: Fast, high-quality fixed-point image resizing
 dev-perl/Image-Size 3.232.0-r1 3.300.0: A library to extract height/width from images
 dev-perl/Import-Into 1.2.0 1.2.4 1.2.5: Import packages into other packages
 dev-perl/Inline 0.500.0-r1 0.790.0 0.800.0: Write Perl subroutines in other languages
