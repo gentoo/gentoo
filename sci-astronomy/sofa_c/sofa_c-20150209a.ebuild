@@ -1,10 +1,10 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-inherit eutils flag-o-matic multilib
+inherit toolchain-funcs
 
 YYYY=${PV:0:4}
 MMDD=${PV:4:4}
@@ -22,16 +22,18 @@ IUSE="doc"
 RDEPEND=""
 DEPEND=""
 
+PATCHES=( "${FILESDIR}/${PN}-makefile.patch" )
+
 S="${WORKDIR}/sofa/${MYPV}/c/src"
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-makefile.patch
+	default
 	sed -i -e "s:/lib:/$(get_libdir):" makefile || die
-	replace-flags -O? -O1
+	tc-export CC
 }
 
 src_install() {
-	emake DESTDIR="${ED}" -j1 install
+	emake DESTDIR="${ED}" install
 	cd ..
 	dodoc 00READ.ME
 	use doc && dodoc doc/*.lis doc/*.pdf
