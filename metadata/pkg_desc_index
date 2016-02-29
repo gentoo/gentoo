@@ -5649,10 +5649,10 @@ dev-perl/HTTP-DAV 0.470.0-r1 0.480.0: A WebDAV client library for Perl5
 dev-perl/HTTP-Daemon 6.10.0-r1: Base class for simple HTTP servers
 dev-perl/HTTP-Date 6.20.0-r1: Date conversion for HTTP date formats
 dev-perl/HTTP-Headers-Fast 0.200.0: Faster implementation of HTTP::Headers
-dev-perl/HTTP-Message 6.30.0-r1 6.40.0-r1 6.60.0-r1 6.110.0: Base class for Request/Response
+dev-perl/HTTP-Message 6.30.0-r1 6.110.0: Base class for Request/Response
 dev-perl/HTTP-Negotiate 6.10.0: HTTP content negotiation
 dev-perl/HTTP-Response-Encoding 0.60.0-r1: Adds encoding() to HTTP::Response
-dev-perl/HTTP-Server-Simple 0.440.0-r1 0.500.0 0.510.0: Lightweight HTTP Server
+dev-perl/HTTP-Server-Simple 0.440.0-r1 0.510.0: Lightweight HTTP Server
 dev-perl/HTTP-Server-Simple-Mason 0.140.0-r1: An abstract baseclass for a standalone mason server
 dev-perl/HTTPD-User-Manage 1.660.0-r1: Perl module for managing access control of web servers
 dev-perl/Hash-Merge 0.200.0: Merges arbitrarily deep hashes into a single hash
@@ -11920,7 +11920,7 @@ media-gfx/fontforge 20110222-r1 20120731 20120731-r1 20150430 20150612 20150612-
 media-gfx/fontypython 0.4.4-r1 0.4.4-r2 0.4.4-r3: Font preview application
 media-gfx/fotowall 0.9-r1 0.9-r2: Qt4 tool for creating wallpapers
 media-gfx/fotoxx 13.11.1 15.04.1 15.05: Program for improving image files made with a digital camera
-media-gfx/fr0st 1.4-r1: A fractal flame editor
+media-gfx/fr0st 1.4-r2: A fractal flame editor
 media-gfx/freecad 0.12.5284-r4 0.13.1830-r1 0.14.3702-r1 0.15.4671 9999: QT based Computer Aided Design application
 media-gfx/freepv 0.3.0-r4: Panorama viewer (Quicktime, PangeaVR, GLPanoView formats)
 media-gfx/freewrl 1.22.13-r4 2.3.3-r1 3.0.0 9999: VRML97 and X3D compliant browser, library, and web-browser plugin
@@ -17439,7 +17439,7 @@ www-apache/mod_xsendfile 1.0_beta1: Apache2 module that processes X-SENDFILE hea
 www-apache/modsec-flameeyes 20130216 99999999: Flameeyes's Ruleset for ModSecurity
 www-apache/modsecurity-crs 2.2.6-r1 2.2.7: Core Rule Set for ModSecurity
 www-apache/mpm_itk 2.4.7_p4-r1: Run virtual hosts under separate users/groups
-www-apache/passenger 4.0.60 5.0.22 5.0.23 5.0.24: Passenger makes deployment of Ruby on Rails applications a breeze
+www-apache/passenger 4.0.60 5.0.22 5.0.23 5.0.24 5.0.25: Passenger makes deployment of Ruby on Rails applications a breeze
 www-apache/pwauth 2.3.10: A Unix Web Authenticator
 www-apps/389-dsgw 1.1.10: 389 Directory Server Gateway Web Application
 www-apps/Apache-Gallery 1.0_rc3-r1: Apache gallery for mod_perl
