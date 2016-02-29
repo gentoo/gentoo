@@ -5648,7 +5648,7 @@ dev-perl/HTTP-Cookies 6.10.0: Storage of cookies
 dev-perl/HTTP-DAV 0.470.0-r1 0.480.0: A WebDAV client library for Perl5
 dev-perl/HTTP-Daemon 6.10.0-r1: Base class for simple HTTP servers
 dev-perl/HTTP-Date 6.20.0-r1: Date conversion for HTTP date formats
-dev-perl/HTTP-Headers-Fast 0.190.0 0.200.0: Faster implementation of HTTP::Headers
+dev-perl/HTTP-Headers-Fast 0.200.0: Faster implementation of HTTP::Headers
 dev-perl/HTTP-Message 6.30.0-r1 6.40.0-r1 6.60.0-r1 6.110.0: Base class for Request/Response
 dev-perl/HTTP-Negotiate 6.10.0: HTTP content negotiation
 dev-perl/HTTP-Response-Encoding 0.60.0-r1: Adds encoding() to HTTP::Response
@@ -15049,6 +15049,7 @@ perl-core/File-Temp 0.230.400-r1: File::Temp can be used to create and open temp
 perl-core/Getopt-Long 2.420.0: Advanced handling of command line options
 perl-core/HTTP-Tiny 0.43.0: A small, simple, correct HTTP/1.1 client
 perl-core/IO-Zlib 1.100.0: IO:: style interface to Compress::Zlib
+perl-core/JSON-PP 2.273.0: JSON::XS compatible pure-Perl module
 perl-core/Locale-Maketext-Simple 0.210.0-r1: Locale::Maketext::Simple - Simple interface to Locale::Maketext::Lexicon
 perl-core/MIME-Base64 3.140.0-r1: A base64/quoted-printable encoder/decoder Perl Modules
 perl-core/Math-BigInt 1.999.300 1.999.710 1.999.715: Arbitrary size floating point math package
@@ -15503,7 +15504,7 @@ sci-geosciences/gnome-maps 3.16.2 3.18.2: A map application for GNOME
 sci-geosciences/googleearth 7.1.2.2041: A 3D interface to the planet
 sci-geosciences/gpsbabel 1.4.3 1.4.4: GPS waypoints, tracks and routes converter
 sci-geosciences/gpscorrelate 1.6.1: Tool for adjusting EXIF tags of your photos with a recorded GPS trace
-sci-geosciences/gpsd 2.95-r1 2.96-r1 3.6 3.7 3.8 3.9 3.9-r1 3.10 3.11 3.13 3.15 9999: GPS daemon and library to support USB/serial GPS devices and various GPS/mapping clients
+sci-geosciences/gpsd 3.9-r1 3.10 3.11 3.15 9999: GPS daemon and library to support USB/serial GPS devices and various GPS/mapping clients
 sci-geosciences/gpx-viewer 0.4.0-r1: Simple program to visualize a gpx file
 sci-geosciences/gpxpy 0.8.6: python GPX parser
 sci-geosciences/grass 7.0.1-r5 7.0.2: A free GIS with raster and vector functionality, as well as 3D vizualization
