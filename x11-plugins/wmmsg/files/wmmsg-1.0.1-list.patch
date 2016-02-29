@@ -1,6 +1,6 @@
-diff -Naur src/wmgeneral.orig/list.c src/wmgeneral/list.c
---- src/wmgeneral.orig/list.c	2016-01-04 13:03:23.206828813 +0100
-+++ src/wmgeneral/list.c	2016-01-04 13:03:32.358832037 +0100
+diff -Naur wmmsg-1.0.1/src/wmgeneral.orig/list.c wmmsg-1.0.1/src/wmgeneral/list.c
+--- wmmsg-1.0.1/src/wmgeneral.orig/list.c	2016-01-04 13:03:23.206828813 +0100
++++ wmmsg-1.0.1/src/wmgeneral/list.c	2016-01-04 13:03:32.358832037 +0100
 @@ -38,7 +38,7 @@
  
  /* Return a cons cell produced from (head . tail) */
@@ -85,9 +85,9 @@ diff -Naur src/wmgeneral.orig/list.c src/wmgeneral/list.c
  {
    while (list)
      {
-diff -Naur src/wmgeneral.orig/list.h src/wmgeneral/list.h
---- src/wmgeneral.orig/list.h	2016-01-04 13:03:23.206828813 +0100
-+++ src/wmgeneral/list.h	2016-01-04 13:03:46.741837100 +0100
+diff -Naur wmmsg-1.0.1/src/wmgeneral.orig/list.h wmmsg-1.0.1/src/wmgeneral/list.h
+--- wmmsg-1.0.1/src/wmgeneral.orig/list.h	2016-01-04 13:03:23.206828813 +0100
++++ wmmsg-1.0.1/src/wmgeneral/list.h	2016-01-04 13:03:46.741837100 +0100
 @@ -29,12 +29,6 @@
  #ifndef __LIST_H_
  #define __LIST_H_
