@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -26,7 +26,8 @@ src_prepare() {
 	epatch \
 		"${FILESDIR}"/${P}-makefile.patch \
 		"${FILESDIR}"/${PN}-1.50_pre2-compare-file.patch \
-		"${FILESDIR}"/${PN}-1.50_pre2-typo.patch
+		"${FILESDIR}"/${PN}-1.50_pre2-typo.patch \
+		"${FILESDIR}"/${P}-fix-stdin-lvalue.patch
 
 	append-lfs-flags
 }
