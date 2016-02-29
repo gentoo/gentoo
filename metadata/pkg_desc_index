@@ -68,7 +68,7 @@ app-admin/chrpath 0.13-r2: chrpath can modify the rpath and runpath of ELF execu
 app-admin/clog 1.1.0: A colorized log tail utility
 app-admin/clsync 0.4.1: Live sync tool based on inotify, written in GNU C
 app-admin/clustershell 1.6 1.6-r1: Python framework for efficient cluster administration
-app-admin/collectd 5.4.1-r2 5.5.0: Collects system statistics and provides mechanisms to store the values
+app-admin/collectd 5.4.1-r2 5.5.0 5.5.1: Collects system statistics and provides mechanisms to store the values
 app-admin/conky 1.9.0-r3 1.10.1: An advanced, highly configurable system monitor for X
 app-admin/conkyforecast 2.24-r1: Conky weather forecast script with support for language files
 app-admin/conserver 8.1.18 8.1.18-r1: Serial Console Manager
@@ -10996,7 +10996,7 @@ kde-apps/kdeartwork-colorschemes 4.14.3 15.08.3: KDE extra colorschemes
 kde-apps/kdeartwork-desktopthemes 4.14.3 15.08.3: Additional KDE4 Plasma themes
 kde-apps/kdeartwork-emoticons 4.14.3 15.08.3: EmotIcons (icons for things like smilies :-) for kde
 kde-apps/kdeartwork-iconthemes 4.14.3 15.08.3: Icon themes for kde
-kde-apps/kdeartwork-kscreensaver 4.14.3 15.08.3: Extra screensavers for kde
+kde-apps/kdeartwork-kscreensaver 4.14.3 4.14.3-r1 15.08.3-r1: Extra screensavers for kde
 kde-apps/kdeartwork-meta 4.14.3 15.08.3-r1: kdeartwork - merge this to pull in all kdeartwork-derived packages
 kde-apps/kdeartwork-styles 4.14.3 15.08.3: Extra KWin styles and window decorations
 kde-apps/kdeartwork-wallpapers 4.14.3 15.08.3 15.08.3-r1: Wallpapers from kde
