@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
+EAPI="6"
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="sqlite,threads"
 
@@ -39,13 +39,16 @@ src_prepare() {
 	edos2unix config.py pyfa.py service/settings.py
 
 	# load gameDB and images from separate staticdata directory
-	epatch "${FILESDIR}/${PN}-1.15.1-staticdata.patch"
+	eapply "${FILESDIR}/${PN}-1.15.1-staticdata.patch"
 
 	# do not try to save exported html to python sitedir
-	epatch "${FILESDIR}/${PN}-1.1.8-html-export-path.patch"
+	eapply "${FILESDIR}/${PN}-1.1.8-html-export-path.patch"
 
 	# fix import path in the main script for systemwide installation
-	epatch "${FILESDIR}/${PN}-1.15.1-import-pyfa.patch"
+	eapply "${FILESDIR}/${PN}-1.15.1-import-pyfa.patch"
+
+	eapply_user
+
 	touch __init__.py
 
 	pyfa_make_configforced() {
