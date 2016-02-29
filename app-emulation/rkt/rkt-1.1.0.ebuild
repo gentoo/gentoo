@@ -47,9 +47,9 @@ BUILDDIR="build-${P}"
 STAGE1_DEFAULT_LOCATION="/usr/share/rkt/stage1.aci"
 
 src_unpack() {
-    local x
-    for x in ${A}; do
-        case ${x} in
+	local x
+	for x in ${A}; do
+		case ${x} in
 			*.img|linux-*) continue ;;
 			kvmtool-*)
 				mkdir kvmtool || die
@@ -59,8 +59,8 @@ src_unpack() {
 				;;
 			*)
 				unpack ${x}
-        esac
-    done
+		esac
+	done
 }
 
 src_prepare() {
