@@ -23,6 +23,7 @@ RDEPEND="
 	dev-cpp/tbb
 	virtual/libiconv
 	net-libs/miniupnpc
+	net-libs/libnatpmp
 	dev-libs/leveldb
 	dev-cpp/websocketpp
 	dev-libs/boost
