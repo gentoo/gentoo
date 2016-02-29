@@ -15504,7 +15504,7 @@ sci-geosciences/gnome-maps 3.16.2 3.18.2: A map application for GNOME
 sci-geosciences/googleearth 7.1.2.2041: A 3D interface to the planet
 sci-geosciences/gpsbabel 1.4.3 1.4.4: GPS waypoints, tracks and routes converter
 sci-geosciences/gpscorrelate 1.6.1: Tool for adjusting EXIF tags of your photos with a recorded GPS trace
-sci-geosciences/gpsd 3.9-r1 3.10 3.11 3.15 9999: GPS daemon and library to support USB/serial GPS devices and various GPS/mapping clients
+sci-geosciences/gpsd 3.9-r1 3.10 3.11 3.15 9999: GPS daemon and library for USB/serial GPS devices and GPS/mapping clients
 sci-geosciences/gpx-viewer 0.4.0-r1: Simple program to visualize a gpx file
 sci-geosciences/gpxpy 0.8.6: python GPX parser
 sci-geosciences/grass 7.0.1-r5 7.0.2: A free GIS with raster and vector functionality, as well as 3D vizualization
