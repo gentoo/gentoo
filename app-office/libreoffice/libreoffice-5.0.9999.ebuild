@@ -224,12 +224,10 @@ DEPEND="${COMMON_DEPEND}
 	>=dev-util/mdds-0.12.0:0=
 	media-libs/glm
 	net-misc/npapi-sdk
-	>=sys-apps/findutils-4.4.2
 	sys-devel/bison
-	sys-apps/coreutils
 	sys-devel/flex
 	sys-devel/gettext
-	>=sys-devel/make-3.82
+	!<sys-devel/make-3.82
 	sys-devel/ucpp
 	sys-libs/zlib
 	virtual/pkgconfig
