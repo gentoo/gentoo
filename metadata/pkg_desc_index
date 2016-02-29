@@ -18429,7 +18429,7 @@ x11-plugins/wmmon 1.0_beta2-r3 1.2_beta1: Dockable system resources monitor appl
 x11-plugins/wmmon+smp 1.0-r2: Dockapp CPU monitor resembling Xosview, support for smp
 x11-plugins/wmmp 0.10.0-r1: A Window Maker dock app client for Music Player Daemon(media-sound/mpd)
 x11-plugins/wmmp3 0.12: Mp3 player dock app for WindowMaker; frontend to mpg123
-x11-plugins/wmmsg 1.0.1 1.0.1-r1: universal visual notification dockapp
+x11-plugins/wmmsg 1.0.1 1.0.1-r1 1.0.1-r2: universal visual notification dockapp
 x11-plugins/wmnd 0.4.16 0.4.17: WindowMaker Network Devices (dockapp)
 x11-plugins/wmnet 1.06-r1: WMnet is a dock.app network monitor
 x11-plugins/wmnetload 1.3-r3 1.3-r4: Network interface monitor dockapp
