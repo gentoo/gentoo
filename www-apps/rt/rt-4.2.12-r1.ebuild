@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -101,7 +101,7 @@ DEPEND="
 	dev-perl/TimeDate
 	dev-perl/UNIVERSAL-require
 	dev-perl/libwww-perl
-	dev-perl/locale-maketext-fuzzy
+	dev-perl/Locale-Maketext-Fuzzy
 	dev-perl/net-server
 	dev-perl/regexp-common
 	dev-perl/text-template
