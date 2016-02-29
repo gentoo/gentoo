@@ -13,11 +13,17 @@ KEYWORDS="~amd64"
 
 PXE_VERSION="794.1.0"
 PXE_SYSTEMD_VERSION="v222"
+KVM_LINUX_VERSION="4.3.1"
+KVMTOOL_VERSION="3c8aec9e2b5066412390559629dabeb7816ee8f2"
 PXE_URI="http://alpha.release.core-os.net/amd64-usr/${PXE_VERSION}/coreos_production_pxe_image.cpio.gz"
 PXE_FILE="${PN}-pxe-${PXE_VERSION}.img"
 
 SRC_URI="https://github.com/coreos/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 rkt_stage1_coreos? ( $PXE_URI -> $PXE_FILE )
+rkt_stage1_kvm? (
+	https://kernel.googlesource.com/pub/scm/linux/kernel/git/will/kvmtool/+archive/${KVMTOOL_VERSION}.tar.gz -> kvmtool-${KVMTOOL_VERSION}.tar.gz
+	mirror://kernel/linux/kernel/v4.x/linux-${KVM_LINUX_VERSION}.tar.xz
+)
 rkt_stage1_src? ( https://github.com/systemd/systemd/archive/${PXE_SYSTEMD_VERSION}.tar.gz -> systemd-${PXE_SYSTEMD_VERSION#v}.tar.gz )"
 
 DESCRIPTION="A CLI for running app containers, and an implementation of the App
@@ -26,8 +32,8 @@ HOMEPAGE="https://github.com/coreos/rkt"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-IUSE="doc examples +rkt_stage1_coreos +rkt_stage1_fly rkt_stage1_src +actool"
-REQUIRED_USE="|| ( rkt_stage1_coreos rkt_stage1_fly rkt_stage1_src )"
+IUSE="doc examples +rkt_stage1_coreos +rkt_stage1_fly rkt_stage1_kvm rkt_stage1_src +actool"
+REQUIRED_USE="|| ( rkt_stage1_coreos rkt_stage1_fly rkt_stage1_kvm rkt_stage1_src )"
 
 DEPEND=">=dev-lang/go-1.4.1
 	app-arch/cpio
@@ -40,6 +46,23 @@ RDEPEND="!app-emulation/rocket"
 BUILDDIR="build-${P}"
 STAGE1_DEFAULT_LOCATION="/usr/share/rkt/stage1.aci"
 
+src_unpack() {
+    local x
+    for x in ${A}; do
+        case ${x} in
+			*.img|linux-*) continue ;;
+			kvmtool-*)
+				mkdir kvmtool || die
+				pushd kvmtool >/dev/null || die
+				unpack ${x}
+				popd >/dev/null || die
+				;;
+			*)
+				unpack ${x}
+        esac
+    done
+}
+
 src_prepare() {
 	# disable git fetch of systemd
 	sed -e 's|^include makelib/git.mk$|_ := '\
@@ -48,6 +71,19 @@ src_prepare() {
 'mkdir -p "$$( dirname "$(UFS_SYSTEMD_SRCDIR)")"; '\
 'mv "$${WORKDIR}/systemd-'${PXE_SYSTEMD_VERSION#v}'" "$(UFS_SYSTEMD_SRCDIR)";)|' \
 		-i stage1/usr_from_src/usr_from_src.mk || die
+
+	# disable git fetch of kvmtool
+	sed -e 's|^include makelib/git.mk$|_ := '\
+'$(shell set -ex; [ -d "$(LKVM_SRCDIR)" ] \&\& exit 0; '\
+'[ ! -d "$${WORKDIR}/kvmtool" ] \&\& exit 0; '\
+'mkdir -p "$$( dirname "$(LKVM_SRCDIR)")"; '\
+'mv "$${WORKDIR}/kvmtool" "$(LKVM_SRCDIR)";)|' \
+		-i stage1/usr_from_kvm/lkvm.mk || die
+
+	# disable fetch of kernel sources
+	sed -e 's|wget .*|ln -s "$${DISTDIR}/linux-'${KVM_LINUX_VERSION}'.tar.xz" "$@"|' \
+		-i stage1/usr_from_kvm/kernel.mk || die
+
 	autotools-utils_src_prepare
 }
 
@@ -65,6 +101,7 @@ src_configure() {
 	use rkt_stage1_src && flavors+=",src"
 	use rkt_stage1_coreos && flavors+=",coreos"
 	use rkt_stage1_fly && flavors+=",fly"
+	use rkt_stage1_kvm && flavors+=",kvm"
 	myeconfargs+=( --with-stage1-flavors="${flavors#,}" )
 
 	if use rkt_stage1_coreos; then
@@ -91,6 +128,14 @@ src_configure() {
 	autotools-utils_src_configure
 }
 
+src_compile() {
+	local arch=${ARCH}
+	case ${arch} in
+		amd64) arch=x86_64;;
+	esac
+	ARCH=${arch} autotools-utils_src_compile
+}
+
 src_install() {
 	dodoc README.md
 	use doc && dodoc -r Documentation
@@ -109,6 +154,8 @@ src_install() {
 		dosym stage1-coreos.aci "${STAGE1_DEFAULT_LOCATION}"
 	elif use rkt_stage1_fly; then
 		dosym stage1-fly.aci "${STAGE1_DEFAULT_LOCATION}"
+	elif use rkt_stage1_kvm; then
+		dosym stage1-kvm.aci "${STAGE1_DEFAULT_LOCATION}"
 	fi
 
 	systemd_dounit "${S}"/dist/init/systemd/${PN}-gc.service
