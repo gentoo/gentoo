@@ -26,6 +26,9 @@ SLOT="0"
 IUSE=""
 
 src_prepare() {
+	epatch "${FILESDIR}"/${P}-parallel-build.patch
+	epatch "${FILESDIR}"/${P}-includes.patch
+	epatch "${FILESDIR}"/${P}-sysmacros.patch
 	epatch_user
 	restore_config .config
 }

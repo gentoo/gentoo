@@ -1,0 +1,24 @@
+From 5e1c429eec977cd365f490137ca9dede0caef662 Mon Sep 17 00:00:00 2001
+From: Rob Landley <rob@landley.net>
+Date: Fri, 5 Feb 2016 15:13:24 -0600
+Subject: [PATCH] Debian unstable is even more pedantic than previous debian.
+
+---
+ scripts/mktags.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/scripts/mktags.c b/scripts/mktags.c
+index 3604260..9c23cf1 100644
+--- a/scripts/mktags.c
++++ b/scripts/mktags.c
+@@ -3,6 +3,7 @@
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>
++#include <ctype.h>
+ 
+ int main(int argc, char *argv[])
+ {
+-- 
+2.6.2
+
