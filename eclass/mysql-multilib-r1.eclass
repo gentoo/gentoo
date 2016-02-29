@@ -38,15 +38,21 @@ MYSQL_EXTRAS=""
 # @DESCRIPTION:
 # An array of CMake arguments added to native and non-native
 
-inherit eutils systemd flag-o-matic ${MYSQL_EXTRAS} mysql_fx versionator \
-	multilib prefix toolchain-funcs user cmake-utils multilib-minimal
+# Keeping eutils in EAPI=6 for emktemp in pkg_config
+
+inherit eutils systemd flag-o-matic ${MYSQL_EXTRAS} versionator \
+	prefix toolchain-funcs user cmake-utils multilib-minimal
+
+if [[ "${EAPI}x" == "5x" ]]; then
+	inherit multilib mysql_fx
+fi
 
 #
 # Supported EAPI versions and export functions
 #
 
 case "${EAPI:-0}" in
-	5) ;;
+	5|6) ;;
 	*) die "Unsupported EAPI: ${EAPI}" ;;
 esac
 
@@ -82,19 +88,18 @@ if [[ -z ${MYSQL_PV_MAJOR} ]] ; then MYSQL_PV_MAJOR="$(get_version_component_ran
 # depend on this variable.
 # In particular, the code below transforms a $PVR like "5.0.18-r3" in "5001803"
 # We also strip off upstream's trailing letter that they use to respin tarballs
-MYSQL_VERSION_ID=""
-tpv="${PV%[a-z]}"
-tpv=( ${tpv//[-._]/ } ) ; tpv[3]="${PVR:${#PV}}" ; tpv[3]="${tpv[3]##*-r}"
-for vatom in 0 1 2 3 ; do
-	# pad to length 2
-	tpv[${vatom}]="00${tpv[${vatom}]}"
-	MYSQL_VERSION_ID="${MYSQL_VERSION_ID}${tpv[${vatom}]:0-2}"
-done
-# strip leading "0" (otherwise it's considered an octal number by BASH)
-MYSQL_VERSION_ID=${MYSQL_VERSION_ID##"0"}
-
-# This eclass should only be used with at least mysql-5.5.35
-mysql_version_is_at_least "5.5.35" || die "This eclass should only be used with >=mysql-5.5.35"
+if [[ "${EAPI}x" == "5x" ]]; then
+	MYSQL_VERSION_ID=""
+	tpv="${PV%[a-z]}"
+	tpv=( ${tpv//[-._]/ } ) ; tpv[3]="${PVR:${#PV}}" ; tpv[3]="${tpv[3]##*-r}"
+	for vatom in 0 1 2 3 ; do
+		# pad to length 2
+		tpv[${vatom}]="00${tpv[${vatom}]}"
+		MYSQL_VERSION_ID="${MYSQL_VERSION_ID}${tpv[${vatom}]:0-2}"
+	done
+	# strip leading "0" (otherwise it's considered an octal number by BASH)
+	MYSQL_VERSION_ID=${MYSQL_VERSION_ID##"0"}
+fi
 
 # Work out the default SERVER_URI correctly
 if [[ -z ${SERVER_URI} ]]; then
@@ -223,7 +228,7 @@ mysql-multilib-r1_pkg_pretend() {
 	if [[ ${MERGE_TYPE} != binary ]] ; then
 		local GCC_MAJOR_SET=$(gcc-major-version)
 		local GCC_MINOR_SET=$(gcc-minor-version)
-		if use_if_iuse tokudb && [[ ${GCC_MAJOR_SET} -lt 4 || \
+		if in_iuse tokudb && use tokudb && [[ ${GCC_MAJOR_SET} -lt 4 || \
 			${GCC_MAJOR_SET} -eq 4 && ${GCC_MINOR_SET} -lt 7 ]] ; then
 			eerror "${PN} with tokudb needs to be built with gcc-4.7 or later."
 			eerror "Please use gcc-config to switch to gcc-4.7 or later version."
@@ -285,14 +290,16 @@ mysql-multilib-r1_src_prepare() {
 	if [[ ${MY_EXTRAS_VER} != none ]]; then
 
 		# Apply the patches for this MySQL version
-		EPATCH_SUFFIX="patch"
-		mkdir -p "${EPATCH_SOURCE}" || die "Unable to create epatch directory"
-		# Clean out old items
-		rm -f "${EPATCH_SOURCE}"/*
-		# Now link in right patches
-		mysql_mv_patches
-		# And apply
-		epatch
+		if [[ "${EAPI}x" == "5x" ]]; then
+			EPATCH_SUFFIX="patch"
+			mkdir -p "${EPATCH_SOURCE}" || die "Unable to create epatch directory"
+			# Clean out old items
+			rm -f "${EPATCH_SOURCE}"/*
+			# Now link in right patches
+			mysql_mv_patches
+			# And apply
+			epatch
+		fi
 	fi
 
 	# last -fPIC fixup, per bug #305873
@@ -332,7 +339,11 @@ mysql-multilib-r1_src_prepare() {
 		rm -r "${S}"/storage/mroonga/vendor/groonga || die "could not remove packaged groonga"
 	fi
 
-	epatch_user
+	if [[ "${EAPI}x" == "5x" ]] ; then
+		epatch_user
+	else
+		default
+	fi
 }
 
 # @FUNCTION: mysql-multilib-r1_src_configure
@@ -342,7 +353,7 @@ mysql-multilib-r1_src_configure() {
 	# Bug #114895, bug #110149
 	filter-flags "-O" "-O[01]"
 
-	append-cxxflags -felide-constructors -fno-rtti
+	append-cxxflags -felide-constructors
 
 	# bug #283926, with GCC4.4, this is required to get correct behavior.
 	append-flags -fno-strict-aliasing
@@ -388,7 +399,7 @@ multilib_src_configure() {
 		-DINSTALL_UNIX_ADDRDIR=${EPREFIX}/var/run/mysqld/mysqld.sock
 		-DWITH_DEFAULT_COMPILER_OPTIONS=0
 		-DWITH_DEFAULT_FEATURE_SET=0
-		-DINSTALL_SYSTEMD_UNITDIR="$(systemd_get_unitdir)"
+		-DINSTALL_SYSTEMD_UNITDIR="$(systemd_get_systemunitdir)"
 	)
 
 	if in_iuse systemd ; then
@@ -680,7 +691,7 @@ mysql-multilib-r1_pkg_postinst() {
 			fi
 		done
 
-		if use_if_iuse pam ; then
+		if in_iuse pam && use pam; then
 			einfo
 			elog "This install includes the PAM authentication plugin."
 			elog "To activate and configure the PAM plugin, please read:"
@@ -708,7 +719,7 @@ mysql-multilib-r1_pkg_postinst() {
 			einfo
 		fi
 
-		if use_if_iuse galera ; then
+		if in_iuse galera && use galera ; then
 			einfo
 			elog "Be sure to edit the my.cnf file to activate your cluster settings."
 			elog "This should be done after running \"emerge --config =${CATEGORY}/${PF}\""
@@ -1038,9 +1049,80 @@ mysql-multilib-r1_disable_test() {
 # and some check WITHOUT_. Also, this can easily extend to non-storage plugins.
 mysql-cmake_use_plugin() {
 	[[ -z $2 ]] && die "mysql-cmake_use_plugin <USE flag> <flag name>"
-	if use_if_iuse $1 ; then
+	if in_iuse $1 && use $1 ; then
 		echo "-DWITH_$2=1 -DPLUGIN_$2=YES"
 	else
 		echo "-DWITHOUT_$2=1 -DWITH_$2=0 -DPLUGIN_$2=NO"
 	fi
 }
+
+# @FUNCTION: mysql_init_vars
+# @DESCRIPTION:
+# void mysql_init_vars()
+# Initialize global variables
+# 2005-11-19 <vivo@gentoo.org>
+if [[ "${EAPI}x" != "5x" ]]; then
+
+mysql_init_vars() {
+	MY_SHAREDSTATEDIR=${MY_SHAREDSTATEDIR="${EPREFIX}/usr/share/mysql"}
+	MY_SYSCONFDIR=${MY_SYSCONFDIR="${EPREFIX}/etc/mysql"}
+	MY_LOCALSTATEDIR=${MY_LOCALSTATEDIR="${EPREFIX}/var/lib/mysql"}
+	MY_LOGDIR=${MY_LOGDIR="${EPREFIX}/var/log/mysql"}
+	MY_INCLUDEDIR=${MY_INCLUDEDIR="${EPREFIX}/usr/include/mysql"}
+	MY_LIBDIR=${MY_LIBDIR="${EPREFIX}/usr/$(get_libdir)/mysql"}
+
+	if [[ -z "${MY_DATADIR}" ]] ; then
+		MY_DATADIR=""
+		if [[ -f "${MY_SYSCONFDIR}/my.cnf" ]] ; then
+			MY_DATADIR=`"my_print_defaults" mysqld 2>/dev/null \
+				| sed -ne '/datadir/s|^--datadir=||p' \
+				| tail -n1`
+			if [[ -z "${MY_DATADIR}" ]] ; then
+				MY_DATADIR=`grep ^datadir "${MY_SYSCONFDIR}/my.cnf" \
+				| sed -e 's/.*=\s*//' \
+				| tail -n1`
+			fi
+		fi
+		if [[ -z "${MY_DATADIR}" ]] ; then
+			MY_DATADIR="${MY_LOCALSTATEDIR}"
+			einfo "Using default MY_DATADIR"
+		fi
+		elog "MySQL MY_DATADIR is ${MY_DATADIR}"
+
+		if [[ -z "${PREVIOUS_DATADIR}" ]] ; then
+			if [[ -e "${MY_DATADIR}" ]] ; then
+				# If you get this and you're wondering about it, see bug #207636
+				elog "MySQL datadir found in ${MY_DATADIR}"
+				elog "A new one will not be created."
+				PREVIOUS_DATADIR="yes"
+			else
+				PREVIOUS_DATADIR="no"
+			fi
+			export PREVIOUS_DATADIR
+		fi
+	else
+		if [[ ${EBUILD_PHASE} == "config" ]]; then
+			local new_MY_DATADIR
+			new_MY_DATADIR=`"my_print_defaults" mysqld 2>/dev/null \
+				| sed -ne '/datadir/s|^--datadir=||p' \
+				| tail -n1`
+
+			if [[ ( -n "${new_MY_DATADIR}" ) && ( "${new_MY_DATADIR}" != "${MY_DATADIR}" ) ]]; then
+				ewarn "MySQL MY_DATADIR has changed"
+				ewarn "from ${MY_DATADIR}"
+				ewarn "to ${new_MY_DATADIR}"
+				MY_DATADIR="${new_MY_DATADIR}"
+			fi
+		fi
+	fi
+
+	if [ "${MY_SOURCEDIR:-unset}" == "unset" ]; then
+		MY_SOURCEDIR=${SERVER_URI##*/}
+		MY_SOURCEDIR=${MY_SOURCEDIR%.tar*}
+	fi
+
+	export MY_SHAREDSTATEDIR MY_SYSCONFDIR
+	export MY_LIBDIR MY_LOCALSTATEDIR MY_LOGDIR
+	export MY_INCLUDEDIR MY_DATADIR MY_SOURCEDIR
+}
+fi
