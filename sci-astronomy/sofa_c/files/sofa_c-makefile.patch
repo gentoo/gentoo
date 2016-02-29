@@ -1,5 +1,5 @@
---- makefile.orig	2013-05-22 20:51:58.398491342 +0000
-+++ makefile	2013-05-22 21:05:52.055466710 +0000
+--- src/makefile.orig
++++ src/makefile
 @@ -49,7 +49,7 @@
  
  # Specify the installation home directory.
@@ -9,7 +9,7 @@
  
  # Specify the installation directory for the library.
  
-@@ -63,9 +63,10 @@
+@@ -63,9 +63,9 @@
  # of your preferred C compiler (CCOMPC) and compilation flags (CFLAGF
  # for functions, CFLAGX for executables) here.
  
@@ -17,17 +17,15 @@
 -CFLAGF = -c -pedantic -Wall -W -O
 -CFLAGX = -pedantic -Wall -W -O
 +CCOMPC = $(CC)
-+CFLAGF = -c -pedantic -Wall -W -fPIC $(CFLAGS)
-+CFLAGX = -pedantic -Wall -W $(CFLAGS)
-+
++CFLAGF = $(CPPFLAGS) -I. -c -fPIC $(CFLAGS)
++CFLAGX = $(CPPFLAGS) -I. $(CFLAGS)
  
  #----YOU SHOULDN'T HAVE TO MODIFY ANYTHING BELOW THIS LINE---------
  
-@@ -80,6 +81,12 @@
+@@ -80,6 +80,11 @@
  SOFA_LIB_NAME = libsofa_c.a
  SOFA_LIB = $(SOFA_LIB_DIR)$(SOFA_LIB_NAME)
  
-+ 
 +# Name the SOFA/C library in its source and target locations.
 +
 +SOFA_SHLIB_NAME = libsofa_c.so
@@ -36,7 +34,7 @@
  # Name the SOFA/C testbed in its source and target locations.
  
  SOFA_TEST_NAME = t_sofa_c.c
-@@ -88,7 +95,7 @@
+@@ -88,7 +93,7 @@
  # Name the SOFA/C includes in their source and target locations.
  
  SOFA_INC_NAMES = sofa.h sofam.h
@@ -44,8 +42,8 @@
 +SOFA_INC = $(SOFA_INC_NAMES:%=$(SOFA_INC_DIR)%)
  
  # The list of SOFA/C library object files.
- SOFA_OBS = iauA2af.o \
-@@ -285,29 +292,32 @@
+ 
+@@ -321,28 +326,31 @@
  #-----------------------------------------------------------------------
  
  # Build (but do not install) the library.
@@ -63,22 +61,21 @@
 +	cp $(SOFA_SHLIB_NAME).0.0 $(SOFA_LIB_DIR)
 +	ln -s $(SOFA_SHLIB_NAME).0.0 $(SOFA_SHLIB).0
 +	ln -s $(SOFA_SHLIB_NAME).0 $(SOFA_SHLIB)
++
  
  # Deinstall the library and header files.
- deinstall:
--	rm -f $(SOFA_LIB) $(SOFA_INC)
-+	rm -f $(SOFA_LIB) $(SOFA_SHLIB)* $(SOFA_INC)
+ uninstall:
+-	- $(RM) $(SOFA_LIB) $(SOFA_INC)
++	- $(RM) $(SOFA_LIB) $(SOFA_SHLIB)* $(SOFA_INC)
  
  # Test the build.
- check: $(SOFA_TEST_NAME) $(SOFA_INC_NAMES) $(SOFA_LIB_NAME)
+-check: $(SOFA_TEST_NAME) $(SOFA_INC_NAMES) $(SOFA_LIB_NAME)
 -	$(CCOMPC) $(CFLAGX) $(SOFA_TEST_NAME) $(SOFA_LIB_NAME) \
++check: $(SOFA_TEST_NAME) $(SOFA_INC_NAMES) $(SOFA_SHLIB_NAME)
 +	$(CCOMPC) $(CFLAGX) $(SOFA_TEST_NAME) $(SOFA_SHLIB_NAME).0.0 \
          -lm -o $(SOFA_TEST)
 -	./$(SOFA_TEST)
--	rm -f $(SOFA_TEST)
-+	ln -s $(SOFA_SHLIB_NAME).0.0 $(SOFA_SHLIB_NAME).0
-+	LD_LIBRARY_PATH="$(LD_LIBRARY_PATH):." ./$(SOFA_TEST)
-+	rm -f $(SOFA_TEST) $(SOFA_SHLIB_NAME).0
++	LD_LIBRARY_PATH="$${LD_LIBRARY_PATH}:." ./$(SOFA_TEST)
  
  # Test the installed library.
 -installcheck test: $(SOFA_TEST_NAME) $(SOFA_INC) $(SOFA_LIB)
@@ -86,27 +83,22 @@
  	$(CCOMPC) $(CFLAGX) $(SOFA_TEST_NAME) -I$(SOFA_INC_DIR) \
          -L$(SOFA_LIB_DIR) -lsofa_c -lm -o $(SOFA_TEST)
  	./$(SOFA_TEST)
-@@ -315,11 +325,11 @@
+@@ -353,7 +361,7 @@
  
- # Local clean up.
- clean realclean:
--	rm -f $(SOFA_OBS) $(SOFA_LIB_NAME)
-+	rm -f $(SOFA_OBS) $(SOFA_LIB_NAME) $(SOFA_SHLIB_NAME)
- 
- # Clean up and deinstall.
- distclean:
--	rm -f $(SOFA_OBS) $(SOFA_LIB_NAME) $(SOFA_INC) $(SOFA_LIB)
-+	rm -f $(SOFA_OBS) $(SOFA_LIB_NAME) $(SOFA_INC) $(SOFA_LIB) $(SOFA_SHLIB_NAME)
+ # Delete all generated binaries in the current directory.
+ realclean distclean : clean
+-	- $(RM) $(SOFA_LIB_NAME) $(SOFA_TEST)
++	- $(RM) $(SOFA_LIB_NAME) $(SOFA_SHLIB_NAME)* $(SOFA_TEST)
  
  # Create the installation directories if not already present.
  $(INSTALL_DIRS):
-@@ -329,6 +339,10 @@
+@@ -363,6 +371,10 @@
  $(SOFA_LIB_NAME): $(SOFA_OBS)
  	ar ru $(SOFA_LIB_NAME) $?
  
 +$(SOFA_SHLIB_NAME): $(SOFA_OBS)
-+	$(CC) $(LDFLAGS) -shared -Wl,-soname,$(SOFA_SHLIB_NAME).0 -lm -o $(SOFA_SHLIB_NAME).0.0 $? 
-+
++	$(CC) $(LDFLAGS) -shared -Wl,-soname,$(SOFA_SHLIB_NAME).0 -lm $? -o $(SOFA_SHLIB_NAME).0.0
++	ln -sfn $(SOFA_SHLIB_NAME).0.0 $(SOFA_SHLIB_NAME).0
 +
  # Install the header files.
  $(SOFA_INC) : $(INSTALL_DIRS) $(SOFA_INC_NAMES)
