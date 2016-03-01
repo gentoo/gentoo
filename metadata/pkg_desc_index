@@ -13734,7 +13734,7 @@ net-dialup/linux-atm 2.5.0 2.5.2: Tools for ATM
 net-dialup/lrzsz 0.12.20-r3: Communication package providing the X, Y, and ZMODEM file transfer protocols
 net-dialup/martian-modem 20100123-r1: ltmodem alternative driver providing support for Agere Systems winmodems
 net-dialup/mgetty 1.1.37-r1: fax and voice modem programs
-net-dialup/mingetty 1.08: A compact getty program for virtual consoles only
+net-dialup/mingetty 1.08 1.08-r1: A compact getty program for virtual consoles only
 net-dialup/minicom 2.6 2.7: Serial Communication Program
 net-dialup/moserial 3.0.9 3.0.10: A clean and friendly gtk-based serial terminal
 net-dialup/mwavem 2.0-r1 2.0-r2: User level application for IBM Mwave modem
@@ -13872,7 +13872,7 @@ net-ftp/atftp 0.7-r3 0.7-r5: Advanced TFTP implementation client/server
 net-ftp/axyftp 0.5.1-r2: GUI FTP client for X Window System (former WXftp)
 net-ftp/bareftp 0.3.9 0.3.10: Mono based file transfer client
 net-ftp/cmdftp 0.9.8: Light weight, yet robust command line FTP client with shell-like functions.
-net-ftp/filezilla 3.12.0.2 3.14.1 3.15.0.1 3.15.0.2: FTP client with lots of useful features and an intuitive interface
+net-ftp/filezilla 3.12.0.2 3.14.1 3.15.0.2 3.16.0: FTP client with lots of useful features and an intuitive interface
 net-ftp/frox 0.7.18-r4 0.7.18-r5: A transparent ftp proxy
 net-ftp/ftp 0.17-r7 0.17.23.0.2.1: Standard Linux FTP client
 net-ftp/ftpbase 0.01-r2: FTP layout package
@@ -16340,7 +16340,7 @@ sys-apps/kmod 20 21 22 9999: library and tools for managing linux kernel modules
 sys-apps/lcdsplash 0.3: splash Gentoo boot information on LCD's
 sys-apps/lcdtest 1.18: Displays test patterns to spot dead/hot pixels on LCD screens
 sys-apps/lcdutils 0.2: Cobalt RaQ/Qube LCD Writing and Button reading utilities
-sys-apps/less 478 479 481: Excellent text file viewer
+sys-apps/less 478 481 482: Excellent text file viewer
 sys-apps/likwid 3.1.3 4.0.1-r1: A performance-oriented tool suite for x86 multicore environments
 sys-apps/linux-misc-apps 3.6-r2 3.18: Misc tools bundled with kernel sources
 sys-apps/lkcdutils 4.1.1 6.2.0: Linux Kernel Crash Dumps (LKCD) Utilities
@@ -16473,7 +16473,7 @@ sys-apps/utempter 0.5.5.6: App that allows non-privileged apps to write utmp (lo
 sys-apps/util-linux 2.24.1-r3 2.24.2 2.25.2-r2 2.26.2 2.27 2.27.1 9999: Various useful Linux utilities
 sys-apps/v86d 0.1.10: A daemon to run x86 code in an emulated environment
 sys-apps/vbetool 1.1: Run real-mode video BIOS code to alter hardware state (i.e. reinitialize video card)
-sys-apps/watchdog 5.13-r1 5.14: A software watchdog and /dev/watchdog daemon
+sys-apps/watchdog 5.14 5.15: A software watchdog and /dev/watchdog daemon
 sys-apps/which 2.20-r1 2.21: Prints out location of specified executables that are in your path
 sys-apps/x86info 1.30: Dave Jones' handy, informative x86 CPU diagnostic utility
 sys-apps/xinetd 2.3.15-r2 2.3.15-r3: powerful replacement for inetd
