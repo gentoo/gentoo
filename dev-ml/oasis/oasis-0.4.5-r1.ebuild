@@ -19,7 +19,8 @@ SLOT="0/${PV}"
 KEYWORDS="~amd64"
 IUSE=""
 
-RDEPEND=">=dev-ml/ocaml-data-notation-0.0.11:="
+RDEPEND=">=dev-ml/ocaml-data-notation-0.0.11:=
+	dev-ml/ocamlbuild:=[ocamlopt]"
 DEPEND="${RDEPEND}
 	>=dev-ml/findlib-1.3.1
 	dev-ml/ocamlify

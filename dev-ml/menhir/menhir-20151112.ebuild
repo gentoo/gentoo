@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit findlib
+inherit findlib eutils
 
 DESCRIPTION="LR(1) parser generator for the OCaml language"
 HOMEPAGE="http://gallium.inria.fr/~fpottier/menhir/"
@@ -15,8 +15,13 @@ SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"
 IUSE="examples +ocamlopt"
 
-DEPEND=">=dev-lang/ocaml-4.02:=[ocamlopt?]"
-RDEPEND="${DEPEND}"
+RDEPEND=">=dev-lang/ocaml-4.02:=[ocamlopt?]"
+DEPEND="${RDEPEND}
+	dev-ml/ocamlbuild"
+
+src_prepare() {
+	epatch "${FILESDIR}/ocamlbuild.patch"
+}
 
 src_configure() {
 	if ! use ocamlopt ; then

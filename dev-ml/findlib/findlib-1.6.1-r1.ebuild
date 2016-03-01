@@ -24,7 +24,8 @@ ocamlfind_destdir="${EPREFIX}/usr/$(get_libdir)/ocaml"
 stublibs="${ocamlfind_destdir}/stublibs"
 
 src_prepare() {
-	epatch "${FILESDIR}/externalmeta.patch"
+	epatch "${FILESDIR}/externalmeta2.patch" \
+		"${FILESDIR}/quoting.patch"
 }
 
 src_configure() {

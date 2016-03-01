@@ -32,6 +32,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	dev-ml/findlib
+	dev-ml/ocamlbuild
 	test? ( dev-python/pyyaml[libyaml] )
 "
 # missing test data

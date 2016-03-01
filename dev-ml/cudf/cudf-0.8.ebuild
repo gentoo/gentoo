@@ -19,11 +19,12 @@ RDEPEND="
 	>=dev-lang/ocaml-3.12:=[ocamlopt?]
 	dev-ml/extlib:=
 	dev-libs/glib:2
-	|| ( dev-ml/camlp4:= <dev-lang/ocaml-4.02.0 )
+	dev-ml/camlp4:=
 "
 DEPEND="${RDEPEND}
 	test? ( dev-ml/ounit )
 	dev-ml/findlib
+	dev-ml/ocamlbuild
 	dev-lang/perl
 "
 

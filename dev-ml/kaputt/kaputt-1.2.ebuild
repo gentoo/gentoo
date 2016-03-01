@@ -15,8 +15,9 @@ SLOT="0/${PV}"
 KEYWORDS="~amd64"
 IUSE=""
 
-DEPEND=">=dev-lang/ocaml-3.11:=[ocamlopt]"
-RDEPEND="${DEPEND}"
+RDEPEND=">=dev-lang/ocaml-3.11:=[ocamlopt]"
+DEPEND="${RDEPEND}
+	|| ( dev-ml/ocamlbuild <dev-lang/ocaml-4.02.3-r1 )"
 
 src_configure() {
 	chmod +x configure
