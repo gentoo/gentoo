@@ -4,11 +4,11 @@
 
 EAPI=5
 
-inherit autotools base eutils
+inherit autotools eutils
 
 DESCRIPTION="Simple LaTeX editor for GTK+ users"
 HOMEPAGE="https://github.com/alexandervdm/gummi"
-SRC_URI="https://github.com/alexandervdm/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz" 
+SRC_URI="https://github.com/alexandervdm/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
