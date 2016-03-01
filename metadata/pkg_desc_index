@@ -5664,14 +5664,14 @@ dev-perl/Heap 0.800.0-r1: Heap - Perl extensions for keeping data partially sort
 dev-perl/Hook-LexWrap 0.250.0: Lexically scoped subroutine wrappers
 dev-perl/IMAP-Admin 1.6.7-r1: Perl module for basic IMAP server administration
 dev-perl/IMAP-BodyStructure 1.30.0: IMAP4-compatible BODYSTRUCTURE and ENVELOPE parser
-dev-perl/IO-AIO 4.310.0 4.320.0 4.330.0: Asynchronous Input/Output
+dev-perl/IO-AIO 4.310.0 4.330.0: Asynchronous Input/Output
 dev-perl/IO-All 0.860.0: unified IO operations
 dev-perl/IO-BufferedSelect 1.0.0-r1: Perl module that implements a line-buffered select interface
 dev-perl/IO-Capture 0.50.0-r1: Abstract Base Class to build modules to capture output
 dev-perl/IO-CaptureOutput 1.110.400: Capture STDOUT and STDERR from Perl code, subprocesses or XS
 dev-perl/IO-Digest 0.110.0-r2: IO::Digest - Calculate digests while reading or writing
 dev-perl/IO-Event 0.813.0: Tied Filehandles for Nonblocking IO with Object Callbacks
-dev-perl/IO-HTML 1.00.0 1.1.0: Open an HTML file with automatic charset detection
+dev-perl/IO-HTML 1.1.0: Open an HTML file with automatic charset detection
 dev-perl/IO-Interactive 0.0.6 1.21.0: Utilities for interactive I/O
 dev-perl/IO-Interface 1.60.0-r1 1.90.0: Perl extension for access to network card configuration information
 dev-perl/IO-LockedFile 0.230.0-r1: Supply object methods for locking files
@@ -10938,7 +10938,7 @@ kde-apps/analitza 4.14.3: KDE library for mathematical features
 kde-apps/ark 4.14.3-r1 15.08.3-r1 15.12.1 15.12.2: KDE Archiving tool
 kde-apps/artikulate 4.14.3: Language learning application that helps improving pronunciation skills
 kde-apps/attica 4.14.3 15.08.3: Open Collaboration Services provider management
-kde-apps/audiocd-kio 4.14.3 15.08.3 15.12.1: KDE kioslaves from the kdemultimedia package
+kde-apps/audiocd-kio 4.14.3 15.08.3 15.12.1 15.12.2: KDE kioslaves from the kdemultimedia package
 kde-apps/baloo-widgets 4.14.3 15.08.3: Widget library for baloo
 kde-apps/blinken 4.14.3: KDE version of the Simon Says game
 kde-apps/blogilo 4.4.2015.06 4.4.2016.01 4.14.8 4.14.10: KDE Blogging Client
@@ -10949,15 +10949,15 @@ kde-apps/cantor 4.14.3: KDE4 interface for doing mathematics and scientific comp
 kde-apps/cervisia 4.14.3 15.08.3: A KDE CVS frontend
 kde-apps/dolphin 4.14.3 4.14.3-r1 15.08.3: Plasma filemanager focusing on usability
 kde-apps/dolphin-plugins 4.14.3 15.08.3: Extra Dolphin plugins
-kde-apps/dragon 4.14.3 15.08.3 15.12.1: A simple video player
+kde-apps/dragon 4.14.3 15.08.3 15.12.1 15.12.2: A simple video player
 kde-apps/drkonqi 4.14.3 15.08.3: KDE crash handler, gives the user feedback if a program crashed
-kde-apps/ffmpegthumbs 4.14.3 15.08.3 15.12.1: FFmpeg based thumbnail generator for video files
+kde-apps/ffmpegthumbs 4.14.3 15.08.3 15.12.1 15.12.2: FFmpeg based thumbnail generator for video files
 kde-apps/filelight 4.14.3 15.08.3 15.12.1 15.12.2: Visualise disk usage with interactive map of concentric, segmented rings
 kde-apps/gpgmepp 4.14.10 15.08.3: C++ bindings for gpgme
 kde-apps/granatier 4.14.3 15.08.3: KDE Bomberman game
 kde-apps/gwenview 4.14.3 15.08.3-r1 15.12.1: KDE image viewer
 kde-apps/jovie 4.14.3 15.08.3 15.12.1: Jovie is a text to speech application
-kde-apps/juk 4.14.3 15.08.3 15.12.1: Jukebox and music manager for KDE
+kde-apps/juk 4.14.3 15.08.3 15.12.1 15.12.2: Jukebox and music manager for KDE
 kde-apps/kabcclient 4.4.2015.06 4.4.2016.01 4.14.8 4.14.10: A command line client for accessing the KDE addressbook
 kde-apps/kaccessible 4.14.3 15.08.3 15.12.1: Provides accessibility services like focus tracking
 kde-apps/kaccounts-integration 15.08.3-r1: Administer web accounts for the sites and services across the Plasma desktop
@@ -11017,10 +11017,10 @@ kde-apps/kdeedu-meta 4.14.3: KDE educational apps - merge this to pull in all kd
 kde-apps/kdegames-meta 4.14.3 15.08.3: kdegames - merge this to pull in all kdegames-derived packages
 kde-apps/kdegraphics-meta 4.14.3 15.08.3 15.12.1: kdegraphics - merge this to pull in all kdegraphics-derived packages
 kde-apps/kdegraphics-mobipocket 4.14.3 15.08.3 15.12.1: Library to support mobipocket ebooks
-kde-apps/kdemultimedia-meta 4.14.3 15.08.3-r1 15.12.1-r1: kdemultimedia - merge this to pull in all kdemultimedia-derived packages
+kde-apps/kdemultimedia-meta 4.14.3 15.08.3-r1 15.12.1-r1 15.12.2: kdemultimedia - merge this to pull in all kdemultimedia-derived packages
 kde-apps/kdenetwork-filesharing 4.14.3 15.08.3: kcontrol filesharing config module for SMB
 kde-apps/kdenetwork-meta 4.14.3 15.08.3-r1: kdenetwork - merge this to pull in all kdenetwork-derived packages
-kde-apps/kdenlive 0.9.8 0.9.10 15.08.3-r1 15.12.1: Non-linear video editing suite by KDE
+kde-apps/kdenlive 0.9.8 0.9.10 15.08.3-r1 15.12.1 15.12.2: Non-linear video editing suite by KDE
 kde-apps/kdepasswd 4.14.3 15.08.3: KDE GUI for passwd
 kde-apps/kdepim-common-libs 4.14.8 4.14.10: Common libraries for KDE PIM apps
 kde-apps/kdepim-icons 4.4.2015.06 4.4.2016.01 4.14.8 4.14.10: KDE PIM icons
@@ -11078,7 +11078,7 @@ kde-apps/kmahjongg 4.14.3 15.08.3: Mahjongg for KDE
 kde-apps/kmail 4.4.2015.06 4.4.2016.01 4.14.8 4.14.10: KMail is the email component of Kontact, the integrated personal information manager of KDE
 kde-apps/kmimetypefinder 4.14.3 15.08.3: KDE application to report the mimetype for a given file
 kde-apps/kmines 4.14.3 15.08.3: Classic mine sweeper game
-kde-apps/kmix 4.14.3 4.14.3-r1 15.08.3 15.12.1: Plasma mixer gui
+kde-apps/kmix 4.14.3 4.14.3-r1 15.08.3 15.12.1 15.12.2: Plasma mixer gui
 kde-apps/kmousetool 4.14.3 15.08.3 15.12.1: KDE program that clicks the mouse for you
 kde-apps/kmouth 4.14.3 15.08.3 15.12.1: Text-to-speech synthesizer front end
 kde-apps/kmplot 4.14.3: Mathematical function plotter for KDE
@@ -11115,7 +11115,7 @@ kde-apps/kreversi 4.14.3 15.08.3: KDE Board Game
 kde-apps/krfb 4.14.3 15.08.3: VNC-compatible server to share KDE desktops
 kde-apps/kruler 4.14.3 15.08.3 15.12.1: Screen ruler for Plasma
 kde-apps/ksaneplugin 4.14.3 15.08.3 15.12.1: SANE Plugin for KDE
-kde-apps/kscd 4.14.3 15.08.3 15.12.1: KDE CD player
+kde-apps/kscd 4.14.3 15.08.3 15.12.1 15.12.2: KDE CD player
 kde-apps/kshisen 4.14.3 15.08.3: A KDE game similiar to Mahjongg
 kde-apps/ksirk 4.14.3 15.08.3: KDE: Ksirk is a KDE port of the board game risk
 kde-apps/ksnakeduel 4.14.3 15.08.3: KDE Tron game
@@ -11145,8 +11145,8 @@ kde-apps/kwalletd 4.14.3-r2 15.08.3: KDE Password Server
 kde-apps/kwalletmanager 4.14.3 15.04.3 15.08.3-r1 15.12.1 15.12.2: KDE Wallet management tool
 kde-apps/kwordquiz 4.14.3: KDE: A powerful flashcard and vocabulary learning program
 kde-apps/kwrite 4.14.3 15.08.3: KDE simple text editor
-kde-apps/libkcddb 4.14.3 15.08.3 15.12.1: KDE library for CDDB
-kde-apps/libkcompactdisc 4.14.3 15.08.3 15.12.1: KDE library for playing & ripping CDs
+kde-apps/libkcddb 4.14.3 15.08.3 15.12.1 15.12.2: KDE library for CDDB
+kde-apps/libkcompactdisc 4.14.3 15.08.3 15.12.1 15.12.2: KDE library for playing & ripping CDs
 kde-apps/libkdcraw 4.14.3 4.14.3-r1 15.08.3 15.12.1: Digital camera raw image library wrapper
 kde-apps/libkdeedu 4.14.3: Common library for KDE educational apps
 kde-apps/libkdegames 4.14.3 4.14.3-r1 15.08.3-r1: Base library common to many KDE games
