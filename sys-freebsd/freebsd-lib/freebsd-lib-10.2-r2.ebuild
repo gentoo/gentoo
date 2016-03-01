@@ -197,7 +197,7 @@ src_prepare() {
 
 	if ! is_crosscompile ; then
 		if [[ ! -e "${WORKDIR}/sys" ]]; then
-			ln -s "/usr/src/sys" "${WORKDIR}/sys" || die "Couldn't make sys symlink!"
+			ln -s "${SYSROOT}/usr/src/sys" "${WORKDIR}/sys" || die "Couldn't make sys symlink!"
 		fi
 	else
 		sed -i.bak -e "s:/usr/include:/usr/${CTARGET}/usr/include:g" \
