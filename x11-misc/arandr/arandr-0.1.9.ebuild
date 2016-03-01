@@ -5,21 +5,23 @@
 EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
-
 inherit eutils distutils-r1
 
-DESCRIPTION="A simple visual frontend for XRandR 1.2/1.3"
+DESCRIPTION="Another XRandR GUI"
 HOMEPAGE="http://christian.amsuess.com/tools/arandr/"
 SRC_URI="http://christian.amsuess.com/tools/${PN}/files/${PN}_${PV}.orig.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
-RDEPEND=">=dev-python/pygtk-2[${PYTHON_USEDEP}]
-	x11-apps/xrandr"
-DEPEND=">=dev-python/docutils-0.6[${PYTHON_USEDEP}]"
+RDEPEND="
+	>=dev-python/pygtk-2[${PYTHON_USEDEP}]
+	x11-apps/xrandr
+"
+DEPEND="
+	>=dev-python/docutils-0.6[${PYTHON_USEDEP}]
+"
 
 src_prepare() {
 	local i p
@@ -34,5 +36,6 @@ src_prepare() {
 			fi
 		done
 	fi
+
 	distutils-r1_src_prepare
 }
