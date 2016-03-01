@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst preinst prepare setup unpack
+DEPEND=>=dev-games/physfs-1.0.0 dev-libs/libxml2 media-libs/libpng:0= media-libs/libsdl2[X,opengl?,video] media-libs/sdl2-gfx media-libs/sdl2-image[png] media-libs/sdl2-mixer[vorbis] media-libs/sdl2-net media-libs/sdl2-ttf net-misc/curl sys-libs/zlib x11-libs/libX11 x11-misc/xdg-utils x11-apps/xmessage media-fonts/dejavu media-fonts/wqy-microhei media-fonts/liberation-fonts media-fonts/mplus-outline-fonts nls? ( virtual/libintl ) opengl? ( virtual/opengl ) virtual/pkgconfig nls? ( sys-devel/gettext )
+DESCRIPTION=OpenSource 2D MMORPG client for Evol Online and The Mana World
+EAPI=5
+HOMEPAGE=http://manaplus.evolonline.org
+IUSE=nls opengl
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=>=dev-games/physfs-1.0.0 dev-libs/libxml2 media-libs/libpng:0= media-libs/libsdl2[X,opengl?,video] media-libs/sdl2-gfx media-libs/sdl2-image[png] media-libs/sdl2-mixer[vorbis] media-libs/sdl2-net media-libs/sdl2-ttf net-misc/curl sys-libs/zlib x11-libs/libX11 x11-misc/xdg-utils x11-apps/xmessage media-fonts/dejavu media-fonts/wqy-microhei media-fonts/liberation-fonts media-fonts/mplus-outline-fonts nls? ( virtual/libintl ) opengl? ( virtual/opengl ) games-misc/games-envd
+SLOT=0
+SRC_URI=http://download.evolonline.org/manaplus/download/1.6.2.27/manaplus-1.6.2.27.tar.xz
+_eclass_exported_funcs=pkg_preinst:games pkg_postinst:games pkg_setup:games src_unpack:base src_prepare:base src_configure:- src_compile:games src_install:-
+_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	9d81603248f2ba3ec59124320d123e5e	games	2cf0d67d765e6358b435ccda30c13ad8	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	user	906f3c8eb3a2350a4f1191a89baa3e46
+_md5_=c8605dc5434044f47cc44ea2e4ac47cb
