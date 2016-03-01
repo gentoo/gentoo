@@ -2385,9 +2385,9 @@
   </project>
   <project>
     <email>gmn@gentoo.org</email>
-    <name>Gentoo News</name>
+    <name>News</name>
     <url>https://wiki.gentoo.org/wiki/Project:News</url>
-    <description>Presenting news as it develops, the Gentoo News (GN) project is intended to give anyone interested in Gentoo a single-location for information on changes in the Gentoo universe.</description>
+    <description>Presenting news as it develops, the News project is intended to give anyone interested in Gentoo a single-location for information on changes in the Gentoo universe.</description>
     <member is-lead="1">
       <email>maffblaster@gentoo.org</email>
       <name>Matthew Marchese</name>
