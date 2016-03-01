@@ -9441,7 +9441,7 @@ dev-util/codeblocks 13.12 9999: The open source, cross platform, free C++ IDE
 dev-util/colm 0.12.0 0.13.0.3: COmputer Language Manipulation
 dev-util/colorgcc 1.3.2-r6 1.3.2-r7: Perl script to colorise the gcc output.
 dev-util/comparator 2.5 2.9 2.10: ESR's utility for making fast comparisons among large source trees
-dev-util/complexity 1.2 1.3: a tool designed for analyzing the complexity of C program functions
+dev-util/complexity 1.3 1.5: a tool designed for analyzing the complexity of C program functions
 dev-util/confix 2.3.5-r2 9999: Confix: A Build Tool on Top of GNU Automake
 dev-util/confix-wrapper 0: Wrapper to select either confix1.py or confix2.py
 dev-util/cppcheck 1.69-r1 1.70 1.71 1.72: static analyzer of C/C++ code
@@ -9474,7 +9474,7 @@ dev-util/dejagnu 1.4.4-r3 1.5: framework for testing other programs
 dev-util/desktop-file-utils 0.21 0.22: Command line utilities to work with desktop menu entries
 dev-util/deskzilla 1.7.1-r1: A desktop client for Mozilla's Bugzilla bug tracking system
 dev-util/devhelp 3.16.1 3.18.1: An API documentation browser for GNOME
-dev-util/dialog 1.2.20150528 1.2.20150920: tool to display dialog boxes from a shell
+dev-util/dialog 1.2.20150920 1.3.20160209: tool to display dialog boxes from a shell
 dev-util/diffball 1.0.1: Delta compression suite for using/generating binary patches
 dev-util/difffilter 0.3.1 0.3.3: Filter files out of unified diffs using POSIX extended regular expressions
 dev-util/diffstat 1.60 1.61: Display a histogram of diff changes
@@ -14735,7 +14735,7 @@ net-misc/x2goserver 4.0.1.12 4.0.1.18-r2 4.0.1.19 4.0.1.19-r1 4.0.1.19-r2: The X
 net-misc/xrdp 0.8.0-r1: An open source Remote Desktop Protocol server
 net-misc/yajhfc 0.5.2 0.5.7: Yet another Java HylaFAX Plus Client
 net-misc/yandex-disk 0.1.5.758_p1 0.1.5.870_p1 0.1.5.940_p1: CLI to access Yandex Disk file storage service
-net-misc/youtube-dl 2016.01.01 2016.02.22 2016.02.27 99999999: Download videos from YouTube.com (and more sites...)
+net-misc/youtube-dl 2016.01.01 2016.02.27 2016.03.01 99999999: Download videos from YouTube.com (and more sites...)
 net-misc/youtube-viewer 3.1.1 3.1.9 3.2.0 9999: A command line utility for viewing youtube-videos in Mplayer
 net-misc/ytalk 3.3.0: Multi-user replacement for UNIX talk
 net-misc/zssh 1.5c-r1: An ssh wrapper enabling zmodem up/download in ssh
