@@ -9,5 +9,5 @@ RDEPEND=>=dev-libs/glib-2.32:2 dev-libs/gobject-introspection:= dev-libs/libgee:
 SLOT=0
 SRC_URI=https://launchpad.net/granite/0.3/0.3/+download/granite-0.3.0.tar.gz
 _eclass_exported_funcs=pkg_preinst:- pkg_postrm:- pkg_postinst:- src_prepare:- src_configure:- src_compile:cmake-utils src_test:cmake-utils src_install:-
-_eclasses_=cmake-utils	c67ce9708a9c02be2d296cf547740e9c	eutils	9d81603248f2ba3ec59124320d123e5e	flag-o-matic	d270fa247153df66074f795fa42dba3e	gnome2-utils	d19e7813f27c8f982134d657889b13cf	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	vala	f946609697ad4b4b1d85b997f0c70204	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	xdg-utils	e2b2bd56125ce8cf59ce30c642b59d48
+_eclasses_=cmake-utils	fa44804882ff16943e9f71b544f56bc9	eutils	9d81603248f2ba3ec59124320d123e5e	flag-o-matic	d270fa247153df66074f795fa42dba3e	gnome2-utils	d19e7813f27c8f982134d657889b13cf	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	vala	f946609697ad4b4b1d85b997f0c70204	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	xdg-utils	e2b2bd56125ce8cf59ce30c642b59d48
 _md5_=4e3179b4954f38709acab9ee9a821491
