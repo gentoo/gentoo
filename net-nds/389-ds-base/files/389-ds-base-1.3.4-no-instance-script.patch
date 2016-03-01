@@ -1,0 +1,396 @@
+From 7b75e7a4c60637a86acf6c757f207550294279ef Mon Sep 17 00:00:00 2001
+From: William Brown <wibrown@redhat.com>
+Date: Wed, 28 Oct 2015 14:25:26 +1000
+Subject: [PATCH] Ticket 47840 - add configure option to disable instance
+ specific scripts https://fedorahosted.org/389/ticket/47840
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Bug Description:  Now that ​https://fedorahosted.org/389/ticket/528 is
+fixed, the next step is to allow building the server with the instance specific
+scripts disabled.
+
+Fix Description:  Instead of defining a configure option, we provide a new
+option in setup-ds.pl, slapd.InstScriptsEnabled, which defaults to false. All
+new installs of 389 will NOT install with a inst_dir nor the scripts that are in
+that directory.
+
+Additionally, this change fixes setup-ds.pl to correctly use the sbindir scripts
+to start/stop the server instance during installation.
+
+Finally, we add support for setup-ds.pl so that in --update if the inst_dir
+exists, scripts will be updated, but if it does not exist, no action is taken.
+
+In time, we will alter --update to *remove* the scripts within inst_dir during
+the update (We have no way of knowing if a customer has put custom scripts in
+inst_dir)
+
+Example:
+/opt/dirsrv/sbin/setup-ds.pl slapd.InstScriptsEnabled=false
+
+Author: wibrown
+
+Review by: nhosoi (Thanks!)
+---
+ ldap/admin/src/scripts/DSCreate.pm.in  | 204 +++++++++++++++++++--------------
+ ldap/admin/src/scripts/DSUpdate.pm.in  |  12 +-
+ ldap/admin/src/scripts/setup-ds.res.in |   1 +
+ 3 files changed, 124 insertions(+), 93 deletions(-)
+
+diff --git a/ldap/admin/src/scripts/DSCreate.pm.in b/ldap/admin/src/scripts/DSCreate.pm.in
+index 3ce5a73..6425be4 100644
+--- a/ldap/admin/src/scripts/DSCreate.pm.in
++++ b/ldap/admin/src/scripts/DSCreate.pm.in
+@@ -130,6 +130,15 @@ sub sanityCheckParams {
+         return @errs;
+     }
+ 
++    # We need to make sure this value is lowercase
++    $inf->{slapd}->{InstScriptsEnabled} = lc $inf->{slapd}->{InstScriptsEnabled};
++
++    if ("true" ne $inf->{slapd}->{InstScriptsEnabled} && "false" ne $inf->{slapd}->{InstScriptsEnabled}) {
++        debug(1, "InstScriptsEnabled is not a valid boolean");
++        return ('error_invalid_boolean', $inf->{slapd}->{InstScriptsEnabled});
++    }
++
++
+     return ();
+ }
+ 
+@@ -204,13 +213,17 @@ sub makeDSDirs {
+     my $mode = getMode($inf, 7);
+     my @errs;
+ 
++    my @dsdirs = qw(config_dir schema_dir log_dir lock_dir run_dir tmp_dir cert_dir db_dir ldif_dir bak_dir);
++    if ($inf->{slapd}->{InstScriptsEnabled} eq "true") {
++        @dsdirs = qw(inst_dir config_dir schema_dir log_dir lock_dir run_dir tmp_dir cert_dir db_dir ldif_dir bak_dir);
++    }
++
+     # These paths are owned by the SuiteSpotGroup
+     # This allows the admin server to run as a different,
+     # more privileged user than the directory server, but
+     # still allows the admin server to manage directory
+     # server files/dirs without being root
+-    for my $kw (qw(inst_dir config_dir schema_dir log_dir lock_dir run_dir tmp_dir
+-            cert_dir db_dir ldif_dir bak_dir)) {
++    for my $kw (@dsdirs) {
+         my $dir = $inf->{slapd}->{$kw};
+         @errs = makePaths($dir, $mode, $inf->{General}->{SuiteSpotUserID},
+                           $inf->{General}->{SuiteSpotGroup});
+@@ -262,56 +275,66 @@ sub createInstanceScripts {
+     my $myperl = "!$perlexec";
+     my $mydevnull = (-f "/dev/null" ? " /dev/null " : " NUL ");
+ 
+-    # determine initconfig_dir
+-    my $initconfig_dir = $inf->{slapd}->{initconfig_dir} || get_initconfigdir($inf->{General}->{prefix});
+-
+-    my %maptable = (
+-        "DS-ROOT" => $inf->{General}->{prefix},
+-        "SEP" => "/", # works on all platforms
+-        "SERVER-NAME" => $inf->{General}->{FullMachineName},
+-        "SERVER-PORT" => $inf->{slapd}->{ServerPort},
+-        "PERL-EXEC" => $myperl,
+-        "DEV-NULL" => $mydevnull,
+-        "ROOT-DN" => $inf->{slapd}->{RootDN},
+-        "LDIF-DIR" => $inf->{slapd}->{ldif_dir},
+-        "SERV-ID" => $inf->{slapd}->{ServerIdentifier},
+-        "BAK-DIR" => $inf->{slapd}->{bak_dir},
+-        "SERVER-DIR" => $inf->{General}->{ServerRoot},
+-        "CONFIG-DIR" => $inf->{slapd}->{config_dir},
+-        "INITCONFIG-DIR" => $initconfig_dir,
+-        "INST-DIR" => $inf->{slapd}->{inst_dir},
+-        "RUN-DIR" => $inf->{slapd}->{run_dir},
+-        "PRODUCT-NAME" => "slapd",
+-        "SERVERBIN-DIR" => $inf->{slapd}->{sbindir},
+-        "DB-DIR" => $inf->{slapd}->{db_dir}
+-    );
+-
+-    my $dir = "$inf->{General}->{prefix}@taskdir@";
+-    for my $file (glob("$dir/template-*")) {
+-        my $basename = $file;
+-        $basename =~ s/^.*template-//;
+-        my $destfile = "$inf->{slapd}->{inst_dir}/$basename";
+-
+-        next if ($skip and -f $destfile); # in skip mode, skip files that already exist
+-
+-        if (!open(SRC, "< $file")) {
+-            return ("error_opening_scripttmpl", $file, $!);
+-        }
+-        if (!open(DEST, "> $destfile")) {
+-            return ("error_opening_scripttmpl", $destfile, $!);
+-        }
+-        my $contents; # slurp entire file into memory
+-        read SRC, $contents, int(-s $file);
+-        close(SRC);
+-        while (my ($key, $val) = each %maptable) {
+-            $contents =~ s/\{\{$key\}\}/$val/g;
+-        }
+-        print DEST $contents;
+-        close(DEST);
+-        my @errs = changeOwnerMode($inf, 5, $destfile);
+-        if (@errs) {
+-            return @errs;
++    # If we have InstScriptsEnabled, we likely have setup.inf or the argument.
++    # However, during an upgrade, we need to know if we should upgrade the template files or not.
++    # For now, the easiest way is to check to if the directory exists, and if is does, we assume we want to upgrade / create the updated scripts.
++    if ($inf->{slapd}->{InstScriptsEnabled} eq "true" || -d $inf->{slapd}->{inst_dir} ) {
++        debug(1, "Creating or updating instance directory scripts\n");
++        # determine initconfig_dir
++        my $initconfig_dir = $inf->{slapd}->{initconfig_dir} || get_initconfigdir($inf->{General}->{prefix});
++
++        my %maptable = (
++            "DS-ROOT" => $inf->{General}->{prefix},
++            "SEP" => "/", # works on all platforms
++            "SERVER-NAME" => $inf->{General}->{FullMachineName},
++            "SERVER-PORT" => $inf->{slapd}->{ServerPort},
++            "PERL-EXEC" => $myperl,
++            "DEV-NULL" => $mydevnull,
++            "ROOT-DN" => $inf->{slapd}->{RootDN},
++            "LDIF-DIR" => $inf->{slapd}->{ldif_dir},
++            "SERV-ID" => $inf->{slapd}->{ServerIdentifier},
++            "BAK-DIR" => $inf->{slapd}->{bak_dir},
++            "SERVER-DIR" => $inf->{General}->{ServerRoot},
++            "CONFIG-DIR" => $inf->{slapd}->{config_dir},
++            "INITCONFIG-DIR" => $initconfig_dir,
++            "INST-DIR" => $inf->{slapd}->{inst_dir},
++            "RUN-DIR" => $inf->{slapd}->{run_dir},
++            "PRODUCT-NAME" => "slapd",
++            "SERVERBIN-DIR" => $inf->{slapd}->{sbindir},
++            "DB-DIR" => $inf->{slapd}->{db_dir}
++        );
++
++
++        my $dir = "$inf->{General}->{prefix}@taskdir@";
++        for my $file (glob("$dir/template-*")) {
++            my $basename = $file;
++            $basename =~ s/^.*template-//;
++            my $destfile = "$inf->{slapd}->{inst_dir}/$basename";
++            debug(1, "$destfile\n");
++
++            next if ($skip and -f $destfile); # in skip mode, skip files that already exist
++
++            if (!open(SRC, "< $file")) {
++                return ("error_opening_scripttmpl", $file, $!);
++            }
++            if (!open(DEST, "> $destfile")) {
++                return ("error_opening_scripttmpl", $destfile, $!);
++            }
++            my $contents; # slurp entire file into memory
++            read SRC, $contents, int(-s $file);
++            close(SRC);
++            while (my ($key, $val) = each %maptable) {
++                $contents =~ s/\{\{$key\}\}/$val/g;
++            }
++            print DEST $contents;
++            close(DEST);
++            my @errs = changeOwnerMode($inf, 5, $destfile);
++            if (@errs) {
++                return @errs;
++            }
+         }
++    } else {
++        debug(1, "No instance directory scripts will be updated or created\n");
+     }
+ 
+     return ();
+@@ -639,7 +662,7 @@ sub initDatabase {
+         return ();
+     }
+ 
+-    my $cmd = "$inf->{slapd}->{inst_dir}/ldif2db -n $inf->{slapd}->{ds_bename} -i \'$ldiffile\'";
++    my $cmd = "$inf->{slapd}->{sbindir}/ldif2db -Z $inf->{slapd}->{ServerIdentifier} -n $inf->{slapd}->{ds_bename} -i \'$ldiffile\'";
+     $? = 0; # clear error condition
+     my $output = `$cmd 2>&1`;
+     my $result = $?;
+@@ -662,7 +685,7 @@ sub startServer {
+     my @errs;
+     # get error log
+     my $errLog = "$inf->{slapd}->{log_dir}/errors";
+-    my $startcmd = "$inf->{slapd}->{inst_dir}/start-slapd";
++    my $startcmd = "$inf->{slapd}->{sbindir}/start-dirsrv $inf->{slapd}->{ServerIdentifier}";
+     if ("@systemdsystemunitdir@" and (getLogin() eq 'root')) {
+         $startcmd = "/bin/systemctl start @package_name@\@$inf->{slapd}->{ServerIdentifier}.service";
+     }
+@@ -875,6 +898,10 @@ sub setDefaults {
+                                                   "@datadir@",
+                                                   $inf->{General}->{prefix});
+ 
++    if (!defined($inf->{slapd}->{InstScriptsEnabled})) {
++        $inf->{slapd}->{InstScriptsEnabled} = "false";
++    }
++
+     if (!defined($inf->{slapd}->{inst_dir})) {
+         $inf->{slapd}->{inst_dir} = "$inf->{General}->{ServerRoot}/slapd-$servid";
+     }
+@@ -975,9 +1002,12 @@ sub updateSelinuxPolicy {
+             system("restorecon -R $localstatedir/lib/@PACKAGE_NAME@");
+         }
+ 
++        my @inst_dirs = qw(config_dir schema_dir log_dir lock_dir run_dir tmp_dir cert_dir db_dir ldif_dir bak_dir);
++        if ($inf->{slapd}->{InstScriptsEnabled} eq "true") {
++            @inst_dirs = qw(inst_dir config_dir schema_dir log_dir lock_dir run_dir tmp_dir cert_dir db_dir ldif_dir bak_dir);
++        }
+         # run restorecon on all instance directories we created
+-        for my $kw (qw(inst_dir config_dir schema_dir log_dir lock_dir run_dir tmp_dir
+-                cert_dir db_dir ldif_dir bak_dir)) {
++        for my $kw (@inst_dirs) {
+             my $dir = $inf->{slapd}->{$kw};
+             system("restorecon -R $dir");
+         }
+@@ -1231,14 +1261,14 @@ sub createDSInstance {
+ }
+ 
+ sub stopServer {
+-    my $instancedir = shift;
+-    my $prog = $instancedir . "/stop-slapd";
++    my $instance = shift;
++    my $prog = "@sbindir@/stop-dirsrv";
+     if (-x $prog) {
+         $? = 0;
+         # run the stop command
+-        my $output = `$prog 2>&1`;
++        my $output = `$prog $instance 2>&1`;
+         my $status = $?;
+-        debug(3, "stopping server $instancedir returns status $status: output $output\n");
++        debug(3, "stopping server $instance returns status $status: output $output\n");
+         if ($status) {
+             debug(1,"Warning: Could not stop directory server: status $status: output $output\n");
+             # if the server is not running, that's ok
+@@ -1254,7 +1284,7 @@ sub stopServer {
+         return;
+     }
+ 
+-    debug(1, "Successfully stopped server $instancedir\n");
++    debug(1, "Successfully stopped server $instance\n");
+     return 1;
+ }
+ 
+@@ -1331,23 +1361,16 @@ sub removeDSInstance {
+     $conn->close();
+ 
+     # stop the server
+-    my $instdir = "";
+-    if ($entry) {
+-        foreach my $path ( @{$entry->{"nsslapd-instancedir"}} )
+-        {
+-            if (!stopServer($path)) {
+-                if ($force) {
+-                    debug(1, "Warning: Could not stop directory server - Error: $! - forcing continue\n");
+-                } elsif ($! == ENOENT) { # stop script not found or server not running
+-                    debug(1, "Warning: Could not stop directory server: already removed or not running\n");
+-                    push @errs, [ 'error_stopping_server', $path, $! ];
+-                } else { # real error
+-                    debug(1, "Error: Could not stop directory server - aborting - use -f flag to force removal\n");
+-                    push @errs, [ 'error_stopping_server', $path, $! ];
+-                    return @errs;
+-                }
+-            }
+-            $instdir = $path;
++    if (!stopServer($inst)) {
++        if ($force) {
++            debug(1, "Warning: Could not stop directory server - Error: $! - forcing continue\n");
++        } elsif ($! == ENOENT) { # stop script not found or server not running
++            debug(1, "Warning: Could not stop directory server: already removed or not running\n");
++            push @errs, [ 'error_stopping_server', $inst, $! ];
++        } else { # real error
++            debug(1, "Error: Could not stop directory server - aborting - use -f flag to force removal\n");
++            push @errs, [ 'error_stopping_server', $inst, $! ];
++            return @errs;
+         }
+     }
+ 
+@@ -1363,18 +1386,25 @@ sub removeDSInstance {
+         push @errs, remove_tree($entry, "nsslapd-errorlog", $instname, 1);
+     }
+ 
+-    # instance dir
+-    if ( -d $instdir && $instdir =~ /$instname/ )
+-    {
+-        # clean up pid files (if any)
+-        remove_pidfile("STARTPIDFILE", $inst, $instdir, $instname, $rundir, $product_name);
+-        remove_pidfile("PIDFILE", $inst, $instdir, $instname, $rundir, $product_name);
+ 
+-        my $rc = rmtree($instdir);
+-        if ( 0 == $rc )
++    # instance dir
++    my $instdir = "";
++    if ($entry) {
++        foreach my $instdir ( @{$entry->{"nsslapd-instancedir"}} )
+         {
+-            push @errs, [ 'error_removing_path', $instdir, $! ];
+-            debug(1, "Warning: $instdir was not removed.  Error: $!\n");
++            if ( -d $instdir && $instdir =~ /$instname/ )
++            {
++                # clean up pid files (if any)
++                remove_pidfile("STARTPIDFILE", $inst, $instdir, $instname, $rundir, $product_name);
++                remove_pidfile("PIDFILE", $inst, $instdir, $instname, $rundir, $product_name);
++
++                my $rc = rmtree($instdir);
++                if ( 0 == $rc )
++                {
++                    push @errs, [ 'error_removing_path', $instdir, $! ];
++                    debug(1, "Warning: $instdir was not removed.  Error: $!\n");
++                }
++            }
+         }
+     }
+     # Finally, config dir
+diff --git a/ldap/admin/src/scripts/DSUpdate.pm.in b/ldap/admin/src/scripts/DSUpdate.pm.in
+index be1e67c..e84a9a9 100644
+--- a/ldap/admin/src/scripts/DSUpdate.pm.in
++++ b/ldap/admin/src/scripts/DSUpdate.pm.in
+@@ -226,10 +226,10 @@ sub updateDS {
+     for my $upd (@updates) {
+         my @localerrs;
+         if ($upd->{$PRE_STAGE}) {
+-            debug(1, "Running stage $PRE_STAGE update ", $upd->{path}, "\n");
++            debug(1, "Running updateDS stage $PRE_STAGE update ", $upd->{path}, "\n");
+             @localerrs = &{$upd->{$PRE_STAGE}}($inf, $setup->{configdir});
+         } elsif ($upd->{file}) {
+-            debug(1, "Running stage $PRE_STAGE update ", $upd->{path}, "\n");
++            debug(1, "Running updateDS stage $PRE_STAGE update ", $upd->{path}, "\n");
+             @localerrs = processUpdate($upd, $inf, $setup->{configdir}, $PRE_STAGE);
+         }
+         if (@localerrs) {
+@@ -276,10 +276,10 @@ sub updateDS {
+     for my $upd (@updates) {
+         my @localerrs;
+         if ($upd->{$POST_STAGE}) {
+-            debug(1, "Running stage $POST_STAGE update ", $upd->{path}, "\n");
++            debug(1, "Running updateDS stage $POST_STAGE update ", $upd->{path}, "\n");
+             @localerrs = &{$upd->{$POST_STAGE}}($inf, $setup->{configdir});
+         } elsif ($upd->{file}) {
+-            debug(1, "Running stage $POST_STAGE update ", $upd->{path}, "\n");
++            debug(1, "Running updateDS stage $POST_STAGE update ", $upd->{path}, "\n");
+             @localerrs = processUpdate($upd, $inf, $setup->{configdir}, $POST_STAGE);
+         }
+         if (@localerrs) {
+@@ -385,10 +385,10 @@ sub updateDSInstance {
+         for my $upd (@{$updates}) {
+             my @localerrs;
+             if ($upd->{$stage}) {
+-                debug(1, "Running stage $stage update ", $upd->{path}, "\n");
++                debug(1, "Running updateDSInstance stage $stage update ", $upd->{path}, "\n");
+                 @localerrs = &{$upd->{$stage}}($inf, $inst, $dseldif, $conn);
+             } elsif ($upd->{file}) {
+-                debug(1, "Running stage $stage update ", $upd->{path}, "\n");
++                debug(1, "Running updateDSInstance stage $stage update ", $upd->{path}, "\n");
+                 @localerrs = processUpdate($upd, $inf, $configdir, $stage,
+                                            $inst, $dseldif, $conn);
+             }
+diff --git a/ldap/admin/src/scripts/setup-ds.res.in b/ldap/admin/src/scripts/setup-ds.res.in
+index 7134e25..fa37567 100644
+--- a/ldap/admin/src/scripts/setup-ds.res.in
++++ b/ldap/admin/src/scripts/setup-ds.res.in
+@@ -116,6 +116,7 @@ error_creating_file = Could not create file '%s'.  Error: %s\n
+ error_copying_file = Could not copy file '%s' to '%s'.  Error: %s\n
+ error_enabling_feature = Could not enable the directory server feature '%s'.  Error: %s\n
+ error_importing_ldif = Could not import LDIF file '%s'.  Error: %s.  Output: %s\n
++error_invalid_boolean = Could not convert value '%s' to boolean. Valid values are true or false.\n
+ error_starting_server = Could not start the directory server using command '%s'.  The last line from the error log was '%s'.  Error: %s\n
+ error_stopping_server = Could not stop the directory server '%s'.  Error: %s\n
+ error_missing_userid = The SuiteSpotUserID is missing.  This must be set to valid user\n
+-- 
+2.4.3
+
