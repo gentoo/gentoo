@@ -20,6 +20,10 @@ RDEPEND=">=dev-lang/ocaml-3.10.2:=[ocamlopt?]
 		>=sys-libs/zlib-1.1.3"
 DEPEND="${RDEPEND}"
 
+src_prepare() {
+	epatch "${FILESDIR}/ocaml-4.03.patch"
+}
+
 src_compile() {
 	emake all
 	if use ocamlopt; then
