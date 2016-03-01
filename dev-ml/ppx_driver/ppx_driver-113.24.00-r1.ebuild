@@ -17,8 +17,8 @@ IUSE=""
 
 DEPEND="dev-ml/ppx_tools:=
 	dev-ml/ppx_core:=
+	dev-ml/ocamlbuild:=[ocamlopt?]
 	dev-ml/ppx_optcomp:="
-
 RDEPEND="${DEPEND}"
 DEPEND="${DEPEND} dev-ml/opam"
 
