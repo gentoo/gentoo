@@ -5,22 +5,22 @@
 EAPI=5
 
 WANT_AUTOMAKE="1.9"
-MY_P=${P/_alpha/.a}
-MY_P=${MY_P/_rc/.rc}
 
 inherit user eutils multilib flag-o-matic autotools
 
 DESCRIPTION="389 Directory Server (core librares and daemons )"
 HOMEPAGE="http://port389.org/"
-SRC_URI="http://directory.fedoraproject.org/sources/${MY_P}.tar.bz2"
+SRC_URI="http://directory.fedoraproject.org/sources/${P}.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="autobind auto-dn-suffix debug doc +pam-passthru +dna +ldapi +bitwise +presence kerberos selinux"
 
+# Pinned to db:4.8 as it is the current stable, can change to a later db version < 6 when they stabilize.
+# The --with-db-inc line in econf will need to be updated as well when changing db version.
 COMMON_DEPEND="
-	sys-libs/db:5.3
+	sys-libs/db:4.8
 	>=dev-libs/cyrus-sasl-2.1.19
 	>=net-analyzer/net-snmp-5.1.2
 	>=dev-libs/icu-3.4:=
@@ -46,8 +46,6 @@ RDEPEND="${COMMON_DEPEND}
 	virtual/perl-Time-Local
 	virtual/perl-MIME-Base64"
 
-S="${WORKDIR}/${MY_P}"
-
 pkg_setup() {
 	enewgroup dirsrv
 	enewuser dirsrv -1 -1 -1 dirsrv
@@ -55,10 +53,7 @@ pkg_setup() {
 
 src_prepare() {
 	#0001-Ticket-47840-add-configure-option-to-disable-instanc.patch
-	epatch "${FILESDIR}/${P}-no-instance-script.patch"
-
-	#0001-Ticket-48448-dirsrv-start-stop-fail-in-certain-shell.patch
-	epatch "${FILESDIR}/${P}-shell-corrections.patch"
+	epatch "${FILESDIR}/389-ds-base-1.3.4-no-instance-script.patch"
 
 	# as per 389 documentation, when 64bit, export USE_64
 	use amd64 && export USE_64=1
@@ -71,11 +66,9 @@ src_prepare() {
 }
 
 src_configure() {
-	local myconf=""
-
-	use auto-dn-suffix && myconf="${myconf} --enable-auto-dn-suffix"
-
-	# for 1.3.5.X, will add --enable-gcc-security
+	# for 1.3.5.X, will add --enable-gcc-security.
+	# auto-dn-suffix currently throws warning in configure script,
+	# see https://fedorahosted.org/389/ticket/48710
 	econf \
 		$(use_enable debug) \
 		$(use_enable pam-passthru) \
@@ -86,17 +79,14 @@ src_configure() {
 		$(use_enable presence) \
 		$(use_with kerberos) \
 		$(use_enable debug) \
+		$(use_enable auto-dn-suffix) \
 		--enable-maintainer-mode \
-		--enable-autobind \
 		--with-fhs \
 		--with-openldap \
-		--with-db-inc=/usr/include/${CHOST}/db5.3/ \
 		--sbindir=/usr/sbin \
 		--bindir=/usr/bin \
-		$myconf
+		--with-db-inc=/usr/include/db4.8
 
-		# This relies on bug https://fedorahosted.org/389/ticket/48447
-		#--without-initddir \
 }
 
 src_compile() {

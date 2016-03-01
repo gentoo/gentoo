@@ -42,10 +42,10 @@ DEPEND=">=dev-lang/go-1.4.1
 	dev-perl/Capture-Tiny"
 
 RDEPEND="!app-emulation/rocket
-	systemd? (
+	rkt_stage1_host? ( systemd? (
 		>=sys-apps/systemd-222
 		app-shells/bash:0
-	)"
+	) )"
 
 BUILDDIR="build-${P}"
 STAGE1_DEFAULT_LOCATION="/usr/share/rkt/stage1.aci"
