@@ -1,0 +1,12 @@
+diff -ru cryptography-1.2.2/src/_cffi_src/openssl/bio.py cryptography-1.2.2-fixed/src/_cffi_src/openssl/bio.py
+--- cryptography-1.2.2/src/_cffi_src/openssl/bio.py	2016-01-29 20:26:11.000000000 +0100
++++ cryptography-1.2.2-fixed/src/_cffi_src/openssl/bio.py	2016-03-01 20:32:25.172776288 +0100
+@@ -99,7 +99,7 @@
+ BIO *BIO_next(BIO *);
+ BIO *BIO_find_type(BIO *, int);
+ BIO_METHOD *BIO_s_mem(void);
+-BIO *BIO_new_mem_buf(void *, int);
++BIO *BIO_new_mem_buf(const void *, int);
+ BIO_METHOD *BIO_s_file(void);
+ BIO *BIO_new_file(const char *, const char *);
+ BIO *BIO_new_fp(FILE *, int);
