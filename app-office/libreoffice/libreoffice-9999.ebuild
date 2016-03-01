@@ -9,7 +9,7 @@ QT_MINIMAL="4.7.4"
 KDE_SCM="git"
 CMAKE_REQUIRED="never"
 
-PYTHON_COMPAT=( python{3_4,3_5} )
+PYTHON_COMPAT=( python{2_7,3_4,3_5} )
 PYTHON_REQ_USE="threads,xml"
 
 # experimental ; release ; old
