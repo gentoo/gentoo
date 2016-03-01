@@ -186,6 +186,19 @@ src_prepare() {
 	sed -e 's/LDFLAGS/RAW_LDFLAGS/g' \
 		-i "${S}/csu/i386-elf/Makefile" \
 		-i "${S}/csu/ia64/Makefile" || die
+
+	if install --version 2> /dev/null | grep -q GNU; then
+		sed -i.bak -e 's:${INSTALL} -C:${INSTALL}:' "${WORKDIR}/include/Makefile"
+	fi
+
+	# Try to fix sed calls for GNU sed. Do it only with GNU userland and force
+	# BSD's sed on BSD.
+	cd "${S}"
+	if [[ ${CBUILD:-${CHOST}} != *bsd* ]]; then
+		find . -name Makefile -exec sed -ibak 's/sed -i /sed -i/' {} \;
+		sed -i -e 's/-i ""/-i""/' "${S}/csu/Makefile.inc" || die
+	fi
+
 	if use build; then
 		cd "${WORKDIR}"
 		# This patch has to be applied on ${WORKDIR}/sys, so we do it here since it
@@ -203,18 +216,6 @@ src_prepare() {
 		sed -i.bak -e "s:/usr/include:/usr/${CTARGET}/usr/include:g" \
 			"${S}/libc/rpc/Makefile.inc" \
 			"${S}/libc/yp/Makefile.inc"
-	fi
-
-	if install --version 2> /dev/null | grep -q GNU; then
-		sed -i.bak -e 's:${INSTALL} -C:${INSTALL}:' "${WORKDIR}/include/Makefile"
-	fi
-
-	# Try to fix sed calls for GNU sed. Do it only with GNU userland and force
-	# BSD's sed on BSD.
-	cd "${S}"
-	if [[ ${CBUILD:-${CHOST}} != *bsd* ]]; then
-		find . -name Makefile -exec sed -ibak 's/sed -i /sed -i/' {} \;
-		sed -i -e 's/-i ""/-i""/' "${S}/csu/Makefile.inc" || die
 	fi
 }
 
