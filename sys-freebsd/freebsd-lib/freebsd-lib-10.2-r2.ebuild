@@ -328,6 +328,7 @@ do_bootstrap() {
 		CTARGET="${CHOST}" install_includes "/include_proper_${ABI}"
 		CFLAGS="${CFLAGS} -isystem ${WORKDIR}/include_proper_${ABI}"
 		CXXFLAGS="${CXXFLAGS} -isystem ${WORKDIR}/include_proper_${ABI}"
+		mymakeopts="${mymakeopts} RPCDIR=${WORKDIR}/include_proper_${ABI}/rpcsvc"
 	fi
 	bootstrap_csu
 	bootstrap_libssp_nonshared
