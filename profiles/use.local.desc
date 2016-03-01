@@ -190,7 +190,6 @@ app-admin/diradm:irixpasswd - Support for storing separate IRIX passwords
 app-admin/elektra:augeas - Enable plugin for reading and writing configuration files with help from Augeas
 app-admin/elektra:gcov - Enable coverage support
 app-admin/elektra:ini - Enable new, advanced ini support
-app-admin/elektra:keytometa - Enable keytometa support
 app-admin/elektra:simpleini - Enable simpleini support
 app-admin/elektra:uname - Enable uname information for the key database
 app-admin/elektra:yajl - Enable yajl support
