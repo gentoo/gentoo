@@ -12890,7 +12890,7 @@ media-sound/din 5.2.1: a software musical instrument and audio synthesizer
 media-sound/dir2ogg 0.11.6 0.11.8-r1: Converts mp3, m4a, wma, and wav files to Ogg Vorbis format
 media-sound/drumstick 0.5.0 1.0.0 1.0.1 1.0.2: Qt4/C++ wrapper for ALSA sequencer
 media-sound/dvda-author 10.06 10.06-r1: Author a DVD-Audio DVD
-media-sound/easytag 2.1.8 2.2.6 2.4.0 2.4.1: GTK+ utility for editing MP2, MP3, MP4, FLAC, Ogg and other media tags
+media-sound/easytag 2.1.8 2.2.6 2.4.1 2.4.2: GTK+ utility for editing MP2, MP3, MP4, FLAC, Ogg and other media tags
 media-sound/ecasound 2.6.0 2.9.0 2.9.1: a package for multitrack audio processing
 media-sound/edna 0.6: Greg Stein's python streaming audio server for desktop or LAN use
 media-sound/entagged-tageditor 0.35: Open-source audiofile tagger
@@ -13034,9 +13034,9 @@ media-sound/mplay 0.80: A Curses front-end for mplayer
 media-sound/mserv 0.35-r1: Jukebox-style music server
 media-sound/mt-daapd 0.2.4.2: A multi-threaded implementation of Apple's DAAP server
 media-sound/multimux 0.2.5.2: combines up to 8 audio mono wave ch. into one big multi ch. wave file
-media-sound/mumble 1.2.6 1.2.12 1.2.13: Mumble is an open source, low-latency, high quality voice chat software
+media-sound/mumble 1.2.6 1.2.13 1.2.14: Mumble is an open source, low-latency, high quality voice chat software
 media-sound/mup 5.7: Program for printing music scores
-media-sound/murmur 1.2.5 1.2.12 1.2.13: Mumble is an open source, low-latency, high quality voice chat software
+media-sound/murmur 1.2.5 1.2.13 1.2.14: Mumble is an open source, low-latency, high quality voice chat software
 media-sound/muse 0.9.2: Multiple Streaming Engine, an icecast source streamer
 media-sound/musepack-tools 465-r1: Musepack SV8 libraries and utilities
 media-sound/musescore 1.1 1.2 1.3 2.0.2 2.0.2-r1: WYSIWYG Music Score Typesetter

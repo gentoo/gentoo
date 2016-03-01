@@ -1,7 +1,7 @@
 DEFINED_PHASES=configure postinst postrm preinst prepare
-DEPEND=>=dev-libs/glib-2.38:2 media-libs/libcanberra[gtk3] >=x11-libs/gtk+-3.10:3 flac? ( >=media-libs/flac-1.3 ) mp3? ( >=media-libs/id3lib-3.8.3-r8 >=media-libs/libid3tag-0.15.1b-r4 ) mp4? ( >=media-libs/taglib-1.9.1[mp4] ) opus? ( >=media-libs/opus-1.1 >=media-libs/opusfile-0.4 ) speex? ( >=media-libs/speex-1.2_rc1 ) vorbis? ( >=media-libs/libogg-1.3.1 >=media-libs/libvorbis-1.3.4 ) wavpack? ( >=media-sound/wavpack-4.70 ) app-text/docbook-xml-dtd:4.4 app-text/yelp-tools dev-libs/libxml2 dev-libs/libxslt >=dev-util/intltool-0.50 >=sys-devel/gettext-0.18.3.2 virtual/pkgconfig !<dev-util/pkgconfig-0.27 test? ( >=dev-util/appdata-tools-0.1.7 >=dev-util/desktop-file-utils-0.22 ) app-arch/xz-utils >=sys-apps/sed-4
+DEPEND=>=dev-libs/glib-2.38:2 media-libs/libcanberra[gtk3] >=x11-libs/gtk+-3.10:3 flac? ( >=media-libs/flac-1.3 ) mp3? ( >=media-libs/id3lib-3.8.3-r8 >=media-libs/libid3tag-0.15.1b-r4 ) mp4? ( >=media-libs/taglib-1.9.1[mp4] ) opus? ( >=media-libs/opus-1.1 >=media-libs/opusfile-0.4 ) speex? ( >=media-libs/speex-1.2_rc1 ) vorbis? ( >=media-libs/libogg-1.3.1 >=media-libs/libvorbis-1.3.4 ) wavpack? ( >=media-sound/wavpack-4.70 ) app-text/docbook-xml-dtd:4.4 app-text/yelp-tools dev-libs/libxml2 dev-libs/libxslt >=dev-util/intltool-0.50 >=sys-devel/gettext-0.18.3.2 virtual/pkgconfig !<dev-util/pkgconfig-0.27 test? ( dev-libs/appstream-glib >=dev-util/desktop-file-utils-0.22 ) app-arch/xz-utils >=sys-apps/sed-4
 DESCRIPTION=GTK+ utility for editing MP2, MP3, MP4, FLAC, Ogg and other media tags
-EAPI=5
+EAPI=6
 HOMEPAGE=https://wiki.gnome.org/Apps/EasyTAG
 IUSE=flac mp3 mp4 opus speex test vorbis wavpack
 KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris
@@ -9,7 +9,7 @@ LICENSE=GPL-2 GPL-2+ LGPL-2 LGPL-2+ LGPL-2.1+
 RDEPEND=>=dev-libs/glib-2.38:2 media-libs/libcanberra[gtk3] >=x11-libs/gtk+-3.10:3 flac? ( >=media-libs/flac-1.3 ) mp3? ( >=media-libs/id3lib-3.8.3-r8 >=media-libs/libid3tag-0.15.1b-r4 ) mp4? ( >=media-libs/taglib-1.9.1[mp4] ) opus? ( >=media-libs/opus-1.1 >=media-libs/opusfile-0.4 ) speex? ( >=media-libs/speex-1.2_rc1 ) vorbis? ( >=media-libs/libogg-1.3.1 >=media-libs/libvorbis-1.3.4 ) wavpack? ( >=media-sound/wavpack-4.70 )
 REQUIRED_USE=opus? ( vorbis ) speex? ( vorbis )
 SLOT=0
-SRC_URI=mirror://gnome/sources/easytag/2.4/easytag-2.4.0.tar.xz
+SRC_URI=mirror://gnome/sources/easytag/2.4/easytag-2.4.2.tar.xz
 _eclass_exported_funcs=pkg_preinst:- pkg_postrm:- pkg_postinst:- src_prepare:- src_configure:-
 _eclasses_=eutils	9d81603248f2ba3ec59124320d123e5e	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	gnome.org	ad34f378a3d57a6f2f2b8b4aaca4543e	gnome2-utils	d19e7813f27c8f982134d657889b13cf	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	xdg-utils	e2b2bd56125ce8cf59ce30c642b59d48
-_md5_=796ef3120497b7dc8394ffc04a13ab17
+_md5_=6ff2b14e0413d2fd96503563b2f6062d
