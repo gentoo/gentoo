@@ -66,8 +66,6 @@ src_prepare() {
 }
 
 src_configure() {
-	local myconf=""
-
 	# for 1.3.5.X, will add --enable-gcc-security.
 	# auto-dn-suffix currently throws warning in configure script,
 	# see https://fedorahosted.org/389/ticket/48710
