@@ -91,7 +91,7 @@ COMMON_DEPEND="
 	collectd_plugins_nginx?			( net-misc/curl )
 	collectd_plugins_notify_desktop?	( x11-libs/libnotify )
 	collectd_plugins_notify_email?		( net-libs/libesmtp )
-	collectd_plugins_nut?			( sys-power/nut )
+	collectd_plugins_nut?			( >=sys-power/nut-2.7.2-r2 )
 	collectd_plugins_openldap?		( net-nds/openldap )
 	collectd_plugins_onewire?		( >=sys-fs/owfs-3.1 )
 	collectd_plugins_oracle?		( dev-db/oracle-instantclient-basic )
