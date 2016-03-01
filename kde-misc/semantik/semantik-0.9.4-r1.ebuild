@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -7,7 +7,7 @@ EAPI=5
 CMAKE_REQUIRED="never"
 NO_WAF_LIBDIR="true"
 PYTHON_COMPAT=( python2_7 )
-PYTHON_REQ_USE="xml"
+PYTHON_REQ_USE="threads(+),xml"
 inherit eutils python-single-r1 kde4-base waf-utils
 
 DESCRIPTION="Mindmapping-like tool for document generation"
