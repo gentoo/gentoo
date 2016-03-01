@@ -43,7 +43,7 @@ get_lisp() {
 do_doc() {
 	local pdffile="${PN}.pdf"
 
-	texi2pdf -o "${pdffile}" "${PN}.texi.in" && dodoc "${pdffile}" || die
+	texi2pdf -o "${pdffile}" "${PN}.texi" && dodoc "${pdffile}" || die
 	cp "${FILESDIR}/README.Gentoo" . && sed -i "s:@VERSION@:${PV}:" README.Gentoo || die
 	dodoc AUTHORS NEWS README.md README.Gentoo
 	doinfo "${PN}.info"
