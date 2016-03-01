@@ -1,0 +1,44 @@
+#!/sbin/openrc-run
+# Copyright 1999-2016 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+pidfile="/var/run/watchdog.pid"
+command="/usr/sbin/watchdog"
+command_args="${WATCHDOG_OPTS}"
+
+depend() {
+	need localmount
+	use logger
+}
+
+get_config() {
+	set -- ${WATCHDOG_OPTS}
+	while [ -n "$1" ] ; do
+		if [ "$1" = "-c" -o "$1" = "--config-file" ] ; then
+			echo $2
+			return
+		fi
+		shift
+	done
+	echo /etc/watchdog.conf
+}
+
+get_delay() {
+	# man this is fugly
+	sed -n \
+		-e '1{x;s:.*:10:;x}' \
+		-e 's:#.*::' \
+		-e 's:^[[:space:]]*::' \
+		-e '/^interval/{s:.*=::;h}' \
+		-e '${g;p}' \
+		$(get_config)
+}
+
+stop() {
+	ebegin "Stopping watchdog"
+	start-stop-daemon --stop \
+		--exec ${command} --pidfile ${pidfile} \
+		--retry $(get_delay)
+	eend $?
+}

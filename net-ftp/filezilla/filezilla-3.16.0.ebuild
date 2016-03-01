@@ -17,13 +17,13 @@ SRC_URI="mirror://sourceforge/${PN}/${MY_P}_src.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm ~x86"
 IUSE="dbus nls test"
 
 # pugixml 1.7 minimal dependency is for c++11 proper configuration
 RDEPEND=">=app-eselect/eselect-wxwidgets-0.7-r1
 	>=dev-db/sqlite-3.7
-	>=dev-libs/libfilezilla-0.3.0
+	>=dev-libs/libfilezilla-0.4.0
 	>=dev-libs/pugixml-1.7
 	net-dns/libidn
 	>=net-libs/gnutls-3.1.12

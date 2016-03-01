@@ -1,8 +1,8 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="4"
+EAPI=5
 
 inherit toolchain-funcs flag-o-matic systemd
 
@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 arm m68k ~mips ppc s390 sh ~sparc x86"
+KEYWORDS="~amd64 ~arm ~m68k ~mips ~ppc ~s390 ~sh ~sparc ~x86"
 IUSE="nfs"
 
 DEPEND="nfs? ( net-libs/libtirpc )"
@@ -33,6 +33,6 @@ src_install() {
 	dodoc examples/*
 
 	newconfd "${FILESDIR}"/${PN}-conf.d ${PN}
-	newinitd "${FILESDIR}"/${PN}-init.d ${PN}
+	newinitd "${FILESDIR}"/${PN}-init.d-r1 ${PN}
 	systemd_dounit "${FILESDIR}"/watchdog.service
 }
