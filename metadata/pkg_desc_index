@@ -4974,7 +4974,7 @@ dev-ml/camlbz2 0.6.0: OCaml bindings for libbz (AKA, bzip2)
 dev-ml/camldbm 1.0: OCaml binding to the NDBM/GDBM Unix databases
 dev-ml/camlidl 1.05-r1: CamlIDL is a stub code generator for using C/C++ libraries from O'Caml
 dev-ml/camlimages 4.0.1 4.1.1 4.1.2 4.2.1: An image manipulation library for ocaml
-dev-ml/camlp4 4.02.1_p3: System for writing extensible parsers for programming languages
+dev-ml/camlp4 4.02.1_p3 4.03_p1: System for writing extensible parsers for programming languages
 dev-ml/camlp5 6.14 6.15: A preprocessor-pretty-printer of ocaml
 dev-ml/camlpdf 2.1.1: OCaml library for reading, writing, and modifying PDF files
 dev-ml/camlzip 1.05: Compressed file access ML library (ZIP, GZIP and JAR)
@@ -7047,7 +7047,7 @@ dev-python/ets 4.4.1: Meta package for the Enthought Tool Suite
 dev-python/etsdevtools 4.0.2-r1: Enthought Tool Suite: Tools to support Python development
 dev-python/etsproxy 0.1.2-r1: Enthought Tool Suite: Proxy modules for backwards compatibility
 dev-python/eunuchs 20050320.1-r1: Missing manly parts of UNIX API for Python
-dev-python/eventlet 0.13.0 0.15.2 0.17.1 0.17.4 0.18.3: Highly concurrent networking library
+dev-python/eventlet 0.13.0 0.15.2 0.17.1 0.17.4 0.18.3 0.18.4: Highly concurrent networking library
 dev-python/execnet 1.2.0-r2 1.4.1: Rapid multi-Python deployment
 dev-python/expects 0.4.2 0.8.0_rc2 0.8.0_rc3 0.8.0_rc4: Expressive and extensible TDD/BDD assertion library for Python
 dev-python/extras 0.0.3: Useful extra bits for Python that should be in the standard library
@@ -7363,7 +7363,7 @@ dev-python/netcdf4-python 1.0.4 1.2.2: Python/numpy interface to the netCDF C li
 dev-python/netifaces 0.8-r2 0.10.4: Portable network interface information
 dev-python/netlib 0.10 0.10.1 0.11.1 0.11.2 0.12.0: Collection of network utility classes used by pathod and mitmproxy
 dev-python/networkx 1.9.1 1.10 1.10-r1 1.11: Python tools to manipulate graphs and complex networks
-dev-python/nevow 0.11.1 0.11.1-r1 0.12.0: A web templating framework that provides LivePage, an automatic AJAX toolkit
+dev-python/nevow 0.11.1 0.11.1-r1 0.12.0 0.13.0: A web templating framework that provides LivePage, an automatic AJAX toolkit
 dev-python/newt_syrup 0.1.2-r1: A Python framework for creating text-based applications
 dev-python/nltk 3.0.3 3.0.4: Natural Language Toolkit
 dev-python/nose 1.3.7-r1 9999: Unittest extension with automatic test suite discovery and easy test authoring
@@ -7773,7 +7773,7 @@ dev-python/python-nbxmpp 0.5.3: Python library to use Jabber/XMPP networks in a 
 dev-python/python-neutronclient 2.3.6 2.4.0 2.6.0 3.0.0 3.1.1: A client for the OpenStack Quantum API
 dev-python/python-novaclient 2.17.0 2.17.0-r1 2.20.0 2.23.2 2.25.0 2.27.0 2.30.1 2.30.2: A client for the OpenStack Nova API
 dev-python/python-nss 0.16.0: Python bindings for Network Security Services (NSS)
-dev-python/python-oembed 0.2.1-r1 0.2.2: A Python library that implements an OEmbed consumer
+dev-python/python-oembed 0.2.1-r1 0.2.2 0.2.4: A Python library that implements an OEmbed consumer
 dev-python/python-openid 2.2.5-r1: OpenID support for servers and consumers
 dev-python/python-openstackclient 1.0.4 1.6.0 1.7.1 1.7.2: A client for the OpenStack APIs
 dev-python/python-pam 0.1.4: A python interface to the PAM library on linux using ctypes
@@ -7850,7 +7850,7 @@ dev-python/rax-scheduled-images-python-novaclient-ext 0.2.1: Adds backup-schedul
 dev-python/rdflib 3.2.3-r1 4.1.2 4.2.0 4.2.1: RDF library containing a triple store and parser/serializer
 dev-python/readme 0.5.1 0.6.0: a library for rendering "readme" descriptions for Warehouse
 dev-python/recaptcha-client 1.0.6-r1: A plugin for reCAPTCHA and reCAPTCHA Mailhide
-dev-python/reconfigure 0.1.50 0.1.72: An ORM for config files
+dev-python/reconfigure 0.1.50 0.1.72 0.1.75: An ORM for config files
 dev-python/redis-py 2.7.4 2.9.1 2.10.1 2.10.3 2.10.5: Python client for Redis key-value store
 dev-python/rednose 0.4.1 0.4.3: coloured output for nosetests
 dev-python/regendoc 0.5 0.6.1: Check/update simple file/shell examples in documentation
@@ -8103,7 +8103,7 @@ dev-python/weasyprint 0.21-r1 0.22 0.23: Visual rendering engine for HTML and CS
 dev-python/webassets 0.10.1: Asset management for Python web development
 dev-python/webcolors 1.5: Color names and value formats defined by the HTML and CSS specifications
 dev-python/webencodings 0.4: Character encoding aliases for legacy web content
-dev-python/weberror 0.10.3-r1 0.11: Web Error handling and exception catching
+dev-python/weberror 0.10.3-r1 0.11 0.12: Web Error handling and exception catching
 dev-python/webhelpers 1.3-r1: Web Helpers
 dev-python/webob 1.4 1.4.1 1.5.0 1.5.1 1.6.0_alpha0: WSGI request and response object
 dev-python/webpy 0.37 0.37-r1: A small and simple web framework for Python
@@ -8126,7 +8126,7 @@ dev-python/wsgiintercept 0.9.0 0.9.1 0.10.0 0.10.2: WSGI application in place of
 dev-python/wsgilog 0.3-r1: Class for logging in WSGI-applications
 dev-python/wsgiproxy2 0.4.1 0.4.2: HTTP proxying tools for WSGI apps
 dev-python/wstools 0.4.3: WSDL parsing services package for Web Services for Python
-dev-python/wtf-peewee 0.2.3: Small python ORM
+dev-python/wtf-peewee 0.2.3 0.2.4: Small python ORM
 dev-python/wtforms 2.0.1 2.0.2 2.1: Flexible forms validation and rendering library for python web development
 dev-python/wxpython 2.8.12.1-r2 2.9.4.1-r2 3.0.0.0 3.0.1.1 3.0.2.0: A blending of the wxWindows C++ class library with Python
 dev-python/xcffib 0.3.4 0.4.0: A drop in replacement for xpyb, an XCB python binding
@@ -8135,10 +8135,10 @@ dev-python/xlrd 0.9.3 0.9.3-r1 0.9.4: Library for developers to extract data fro
 dev-python/xlsxwriter 0.7.8 0.8.4: Python module for creating Excel XLSX files
 dev-python/xlutils 1.5.2-r1: provides a collection of utilities for working with Excel files
 dev-python/xlwt 0.7.5 1.0.0: Python library to create spreadsheet files compatible with Excel
-dev-python/xmltodict 0.9.1 0.9.2: Makes working with XML feel like you are working with JSON
+dev-python/xmltodict 0.9.1 0.9.2 0.10.1: Makes working with XML feel like you are working with JSON
 dev-python/xmpppy 0.5.0_rc1-r2: Python library providing easy scripting with Jabber
 dev-python/xonsh 0.2.3 0.2.4 0.2.5 0.2.6: An exotic, usable shell
-dev-python/xvfbwrapper 0.2.2 0.2.4: Python wrapper for running a display inside X virtual framebuffer
+dev-python/xvfbwrapper 0.2.2 0.2.4 0.2.8: Python wrapper for running a display inside X virtual framebuffer
 dev-python/yappi 0.93: Yet Another Python Profiler
 dev-python/yapps 2.2.0 2.2.0-r1: An easy to use parser generator
 dev-python/yapsy 1.10.423 1.11.023 1.11.223: A fat-free DIY Python plugin management toolkit
@@ -17994,7 +17994,7 @@ x11-misc/alock 94 94-r1: locks the local X display until a password is entered
 x11-misc/andromeda 0.3: Qt4-based filemanager
 x11-misc/appmenu-qt 0.2.6: Application menu module for Qt
 x11-misc/apwal 0.4.5-r1: A simple application launcher and combined editor
-x11-misc/arandr 0.1.7.1 0.1.8: A simple visual frontend for XRandR 1.2/1.3
+x11-misc/arandr 0.1.7.1 0.1.8 0.1.9: Another XRandR GUI
 x11-misc/ardesia 1.0: Color, record and share free-hand annotations on screen and on network
 x11-misc/autocutsel 0.9.0 0.10.0: Synchronise the two copy/paste buffers mainly used by X applications
 x11-misc/basqet 0.2.0: Keep your notes, pictures, ideas, and information in Baskets
