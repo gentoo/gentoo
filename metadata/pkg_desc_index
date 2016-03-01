@@ -7295,7 +7295,7 @@ dev-python/maintboot 0.1.0: Run maintenance tasks outside the OS
 dev-python/mako 1.0.0 1.0.2 1.0.3: A Python templating language
 dev-python/mamba 0.8.4 0.8.5 0.8.6: ... testing tool ... Born under the banner of Behavior Driven Development
 dev-python/mando 0.3.2: Create Python CLI apps with little to no effort at all!
-dev-python/mantissa 0.7.0-r1 0.8.0 0.8.1 0.8.3: An extensible, multi-protocol, multi-user, interactive application server
+dev-python/mantissa 0.7.0-r1 0.8.0 0.8.1 0.8.3 0.8.4: An extensible, multi-protocol, multi-user, interactive application server
 dev-python/manuel 1.7.1 1.8.0: Manuel lets you build tested documentation
 dev-python/markdown 2.6.1 2.6.3 2.6.4 2.6.5: Python implementation of the markdown markup language
 dev-python/markdown2 2.2.1 2.2.3 2.3.0: Python Markdown language reimplementation
