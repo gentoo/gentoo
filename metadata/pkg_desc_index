@@ -8905,7 +8905,7 @@ dev-ruby/rb-gsl 1.16.0.6: Ruby interface to GNU Scientific Library
 dev-ruby/rb-inotify 0.9.5 0.9.5-r1 0.9.6 0.9.7: A thorough inotify wrapper for Ruby using FFI
 dev-ruby/rb-readline 0.5.1 0.5.2 0.5.3: Ruby implementation of the GNU readline C library
 dev-ruby/rb-readline-r7 0.5.2.0: Ruby implementation of the GNU readline C library forked by r7
-dev-ruby/rbpdf 1.18.6-r1 1.18.7 1.19.0: Ruby on Rails RBPDF plugin
+dev-ruby/rbpdf 1.19.0: Ruby on Rails RBPDF plugin
 dev-ruby/rbpdf-font 1.19.0: Font files for the Ruby on Rails RBPDF plugin
 dev-ruby/rbtree 0.4.2: Ruby/RBTree module
 dev-ruby/rcairo 1.14.1 1.14.1-r1 1.14.3: Ruby bindings for cairo
