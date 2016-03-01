@@ -41,7 +41,7 @@ RESTRICT="test"
 
 MULTILIB_WRAPPED_HEADERS=( /usr/include/elektra/kdbconfig.h )
 
-PATCHES=( "${FILESDIR}/${PN}"-0.8.11-conditional-glob-tests.patch )
+PATCHES=( "${FILESDIR}/${P}"-conditional-glob-tests.patch )
 
 src_prepare() {
 	cmake-utils_src_prepare
