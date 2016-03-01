@@ -187,12 +187,12 @@ index 278121e..e688e68 100644
  from blueman.Constants import *
  from blueman.Functions import have, dprint, mask_ip4_address
  from blueman.Lib import get_net_interfaces, get_net_address, get_net_netmask
-@@ -19,7 +20,7 @@ class Network(ServicePlugin):
+@@ -19,7 +19,8 @@ class Network(ServicePlugin):
  
          self.Builder = Gtk.Builder()
          self.Builder.set_translation_domain("blueman")
--        self.Builder.add_from_file(UI_PATH + "/services-network.ui")
-+        bind_textdomain_codeset("blueman", "UTF-8")        self.Builder.add_from_file(UI_PATH + "/services-network.ui")
++        bind_textdomain_codeset("blueman", "UTF-8")
+         self.Builder.add_from_file(UI_PATH + "/services-network.ui")
          self.widget = self.Builder.get_object("network")
  
          self.ignored_keys = []
