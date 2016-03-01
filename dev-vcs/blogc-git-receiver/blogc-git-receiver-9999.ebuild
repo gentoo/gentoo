@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 if [[ ${PV} = *9999* ]]; then
 	EGIT_REPO_URI="git://github.com/blogc/blogc-git-receiver.git
@@ -13,28 +13,29 @@ fi
 DESCRIPTION="A simple login shell/git hook to deploy blogc websites"
 HOMEPAGE="https://github.com/blogc/blogc-git-receiver"
 
-MY_PV="${PV/_/-}"
-MY_PV="${MY_PV/beta/beta.}"
-
-MY_P="${PN}-${MY_PV}"
-
-SRC_URI="https://github.com/blogc/${PN}/releases/download/v${MY_PV}/${MY_P}.tar.xz"
+SRC_URI="https://github.com/blogc/${PN}/releases/download/v${PV}/${P}.tar.xz"
 KEYWORDS="~amd64 ~x86"
 if [[ ${PV} = *9999* ]]; then
 	SRC_URI=""
 	KEYWORDS=""
+	DEPEND="=dev-libs/squareball-9999"
 else
-	S="${WORKDIR}/${MY_P}"
+	DEPEND=">=dev-libs/squareball-0.1"
 fi
 
 LICENSE="BSD"
 SLOT="0"
 IUSE=""
 
-RDEPEND="dev-vcs/git"
-DEPEND=""
+RDEPEND="${DEPEND}
+	dev-vcs/git"
 
 src_prepare() {
 	[[ ${PV} = *9999* ]] && eautoreconf
 	default
+}
+
+src_configure() {
+	econf \
+		--with-squareball=system
 }
