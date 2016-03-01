@@ -2385,7 +2385,7 @@
   </project>
   <project>
     <email>gmn@gentoo.org</email>
-    <name>News</name>
+    <name>News Project</name>
     <url>https://wiki.gentoo.org/wiki/Project:News</url>
     <description>Presenting news as it develops, the News project is intended to give anyone interested in Gentoo a single-location for information on changes in the Gentoo universe.</description>
     <member is-lead="1">
