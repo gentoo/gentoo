@@ -1,12 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
+EAPI=6
 
-QT_MINIMAL="4.6"
-
-inherit eutils multilib qt4-r2
+inherit eutils multilib qmake-utils
 
 MY_P="${PN}-${PV/_/~}"
 
@@ -80,11 +78,6 @@ src_configure() {
 			no-server \
 			no-update" \
 		DEFINES+="PLUGIN_PATH=/usr/$(get_libdir)/mumble"
-}
-
-src_compile() {
-	# parallel make workaround, bug #445960
-	emake -j1
 }
 
 src_install() {

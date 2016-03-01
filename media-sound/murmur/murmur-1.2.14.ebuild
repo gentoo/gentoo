@@ -1,12 +1,10 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
+EAPI=6
 
-QT_MINIMAL="4.6"
-
-inherit eutils qt4-r2 systemd user readme.gentoo
+inherit eutils qmake-utils systemd user readme.gentoo-r1
 
 MY_P="${PN/murmur/mumble}-${PV/_/~}"
 
@@ -19,7 +17,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~ia64 ~x86"
 IUSE="+dbus debug +ice pch zeroconf"
 
-RDEPEND=">=dev-libs/openssl-1.0.0b
+RDEPEND=">=dev-libs/openssl-1.0.0b:0=
 	>=dev-libs/protobuf-2.2.0
 	sys-apps/lsb-release
 	>=sys-libs/libcap-2.15
@@ -57,7 +55,7 @@ pkg_setup() {
 }
 
 src_prepare() {
-	qt4-r2_src_prepare
+	default
 
 	sed \
 		-e 's:mumble-server:murmur:g' \
@@ -76,11 +74,6 @@ src_configure() {
 
 	eqmake4 main.pro -recursive \
 		CONFIG+="${conf_add} no-client"
-}
-
-src_compile() {
-	# parallel make workaround, upstream bug #3190498
-	emake -j1
 }
 
 src_install() {

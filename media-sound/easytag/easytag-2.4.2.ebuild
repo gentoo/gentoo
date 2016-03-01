@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 inherit fdo-mime gnome.org gnome2-utils
 
 DESCRIPTION="GTK+ utility for editing MP2, MP3, MP4, FLAC, Ogg and other media tags"
@@ -44,13 +44,15 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	!<dev-util/pkgconfig-0.27
 	test? (
-		>=dev-util/appdata-tools-0.1.7
+		dev-libs/appstream-glib
 		>=dev-util/desktop-file-utils-0.22
 		)"
 
 DOCS=( AUTHORS ChangeLog HACKING NEWS README THANKS TODO )
 
 src_prepare() {
+	default
+
 	sed -i \
 		-e '/^DEPRECATED_CPPFLAGS="/d' \
 		-e '/warning_flags/s: -Werror=.*:":' \
