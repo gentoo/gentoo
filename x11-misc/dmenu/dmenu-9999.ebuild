@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 inherit eutils git-r3 savedconfig toolchain-funcs
 
 DESCRIPTION="a generic, highly customizable, and efficient menu for the X Window System"
@@ -34,6 +34,8 @@ src_prepare() {
 		Makefile || die
 
 	epatch "${FILESDIR}"/${P}-gentoo.patch
+
+	eapply_user
 
 	restore_config config.def.h
 }
