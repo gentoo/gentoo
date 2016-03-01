@@ -7819,7 +7819,7 @@ dev-python/pyutmp 0.2.1: Python UTMP wrapper for Un*x systems
 dev-python/pyuv 1.2.0: Python interface for libuv
 dev-python/pyvorbis 1.4-r4: Python bindings for the ogg.vorbis library
 dev-python/pyvtk 0.4.74: Tools for manipulating VTK files in Python
-dev-python/pywavelets 0.2.2-r1 0.3.0: Python module for discrete, stationary, and packet wavelet transforms
+dev-python/pywavelets 0.2.2-r1 0.3.0 0.4.0: Python module for discrete, stationary, and packet wavelet transforms
 dev-python/pywebdav 0.9.8-r1: WebDAV server written in Python
 dev-python/pywebkitgtk 1.1.8-r1: Python bindings for the WebKit GTK+ port
 dev-python/pyx 0.12.1-r1 0.13 0.14 0.14.1: Python package for the generation of encapsulated PostScript figures
@@ -7885,7 +7885,7 @@ dev-python/rootpy 0.7.1 0.8.0: Pythonic layer on top of the ROOT framework's PyR
 dev-python/rope 0.9.4-r1 0.10.2 0.10.3: Python refactoring library
 dev-python/ropeide 1.5.1-r2: Python refactoring IDE
 dev-python/ropemacs 0.7 0.8: Rope in Emacs
-dev-python/ropemode 0.2-r1: A helper for using rope refactoring library in IDEs
+dev-python/ropemode 0.2-r1 0.3: A helper for using rope refactoring library in IDEs
 dev-python/rosdistro 0.4.4 9999: Tools to work with catkinized rosdistro files
 dev-python/rospkg 1.0.38 9999: Standalone Python library for the ROS package system
 dev-python/routes 2.1-r1 2.2: A Python re-implementation of Rails routes system, mapping URL's to Controllers/Actions
@@ -8099,7 +8099,7 @@ dev-python/warlock 1.0.1 1.1.0: Python object model built on JSON schema and JSO
 dev-python/watchdog 0.8.1 0.8.3: Python API and shell utilities to monitor file system events
 dev-python/wcsaxes 0.3 0.6: Framework for plotting astronomical and geospatial data
 dev-python/wcwidth 0.1.4 0.1.5 0.1.6: Measures number of Terminal column cells of wide-character codes
-dev-python/weasyprint 0.21-r1 0.22 0.23: Visual rendering engine for HTML and CSS that can export to PDF
+dev-python/weasyprint 0.21-r1 0.22 0.23 0.26: Visual rendering engine for HTML and CSS that can export to PDF
 dev-python/webassets 0.10.1: Asset management for Python web development
 dev-python/webcolors 1.5: Color names and value formats defined by the HTML and CSS specifications
 dev-python/webencodings 0.4: Character encoding aliases for legacy web content
