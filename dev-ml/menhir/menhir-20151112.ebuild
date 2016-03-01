@@ -15,8 +15,9 @@ SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"
 IUSE="examples +ocamlopt"
 
-DEPEND=">=dev-lang/ocaml-4.02:=[ocamlopt?]"
-RDEPEND="${DEPEND}"
+RDEPEND=">=dev-lang/ocaml-4.02:=[ocamlopt?]"
+DEPEND="${RDEPEND}
+	dev-ml/ocamlbuild"
 
 src_configure() {
 	if ! use ocamlopt ; then
