@@ -1986,7 +1986,7 @@ app-office/kmymoney 4.7.2: Personal finance manager for KDE
 app-office/kraft 0.59: Software for operating a small business, creating documents such as invoices
 app-office/ledger 2.6.3-r1 3.1-r1 3.1.1: A double-entry accounting system with a command-line reporting interface
 app-office/libalkimia 4.3.2-r1: Library with common classes and functionality used by KDE finance applications
-app-office/libreoffice 5.0.3.2 5.0.5.2 5.0.9999 5.1.0.3 5.1.9999 9999: A full office productivity suite
+app-office/libreoffice 5.0.3.2 5.0.5.2 5.0.9999 5.1.0.3 5.1.1.3 5.1.9999 9999: A full office productivity suite
 app-office/libreoffice-bin 5.0.3.2 5.0.5.2: A full office productivity suite. Binary package
 app-office/libreoffice-bin-debug 5.0.3.2 5.0.5.2: LibreOffice, a full office productivity suite. Binary package, debug info
 app-office/libreoffice-l10n 5.0.3.2 5.0.5.2 5.1.0.3: Translations for the Libreoffice suite
@@ -5890,7 +5890,7 @@ dev-perl/Net-Domain-TLD 1.690.0-r1 1.730.0 1.740.0: Current top level domain nam
 dev-perl/Net-FreeDB 0.80.0-r1 0.100.0: OOP interface to the FreeDB database
 dev-perl/Net-Google-SafeBrowsing-Blocklist 1.40.0-r1: Query a Google SafeBrowsing table
 dev-perl/Net-Google-SafeBrowsing-UpdateRequest 1.60.0-r1: Update a Google SafeBrowsing table
-dev-perl/Net-HTTP 6.60.0: Low-level HTTP connection (client)
+dev-perl/Net-HTTP 6.60.0 6.90.0: Low-level HTTP connection (client)
 dev-perl/Net-IDN-Encode 2.201.0-r1 2.300.0: Internationalizing Domain Names in Applications (IDNA)
 dev-perl/Net-IMAP-Simple 1.220.100-r1 1.220.600: Perl extension for simple IMAP account handling
 dev-perl/Net-IMAP-Simple-SSL 1.300.0-r1: SSL support for Net::IMAP::Simple
@@ -6178,7 +6178,7 @@ dev-perl/Test-Command 0.80.0-r1: Test routines for external commands
 dev-perl/Test-Command-Simple 0.040.0 0.50.0: Test external commands (nearly) as easily as loaded modules
 dev-perl/Test-Deep 0.110.0-r2 0.115.0-r1 0.117.0: Test::Deep - Extremely flexible deep comparison
 dev-perl/Test-Dependencies 0.120.0: Ensure that your Makefile.PL specifies all module dependencies
-dev-perl/Test-Differences 0.610.0-r1 0.630.0: Test strings and data structures and show differences if not ok
+dev-perl/Test-Differences 0.610.0-r1 0.630.0 0.640.0: Test strings and data structures and show differences if not ok
 dev-perl/Test-DistManifest 1.12.0-r1 1.14.0: Author test that validates a package MANIFEST
 dev-perl/Test-Distribution 2.0.0-r1: perform tests on all modules of a distribution
 dev-perl/Test-EOL 1.600.0: Check the correct line endings in your project
@@ -6219,7 +6219,7 @@ dev-perl/Test-Trap 0.2.2-r1 0.3.0 0.3.2: Trap exit codes, exceptions, output, et
 dev-perl/Test-Unit-Lite 0.120.200-r1: Unit testing without external dependencies
 dev-perl/Test-UseAllModules 0.140.0-r1 0.170.0: do use_ok() for all the MANIFESTed modules
 dev-perl/Test-WWW-Mechanize 1.440.0-r1: Testing-specific WWW::Mechanize subclass
-dev-perl/Test-Warn 0.240.0-r1 0.300.0: Perl extension to test methods for warnings
+dev-perl/Test-Warn 0.240.0-r1 0.300.0-r1: Perl extension to test methods for warnings
 dev-perl/Test-Warnings 0.16.0: Test for warnings and the lack of them
 dev-perl/Test-Without-Module 0.170.0 0.180.0: Test fallback behaviour in absence of modules
 dev-perl/Test-YAML 1.50.0: Testing Module for YAML Implementations
@@ -6285,7 +6285,7 @@ dev-perl/TimeDate 2.300.0: A Date/Time Parsing Perl Module
 dev-perl/Tk-CursorControl 0.400.0-r1: Manipulate the mouse cursor programmatically
 dev-perl/Tk-JPEG-Lite 2.14.30-r1: lite JPEG loader for Tk::Photo
 dev-perl/Tk-TableMatrix 1.230.0-r1: Perl module for Tk-TableMatrix
-dev-perl/Tree-DAG_Node 1.60.0-r1 1.240.0 1.270.0: (Super)class for representing nodes in a tree
+dev-perl/Tree-DAG_Node 1.60.0-r1 1.240.0 1.270.0 1.290.0: (Super)class for representing nodes in a tree
 dev-perl/Tree-Simple 1.180.0-r1 1.250.0: A simple tree object
 dev-perl/Try-Tiny 0.220.0: Minimal try/catch with proper localization of source /home/mgorny/repos/gentoo/dev-perl/Try-Tiny/Try-Tiny-0.220.0.ebuild
 dev-perl/Type-Tiny 1.0.5: tiny, yet Moo(se)-compatible type constraint
