@@ -107,9 +107,9 @@ dlopen_lib() {
 # Note: the bsdmake for Darwin userland is with compatibility with MacOSX
 # default name.
 get_bmake() {
-	if [[ ${USERLAND} == *BSD ]]; then
+	if [[ ${CBUILD:-${CHOST}} == *bsd* ]]; then
 		echo make
-	elif [[ ${USERLAND} == "Darwin" ]]; then
+	elif [[ ${CBUILD:-${CHOST}} == *darwin* ]]; then
 		echo bsdmake
 	else
 		echo bmake
