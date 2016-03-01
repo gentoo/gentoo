@@ -212,7 +212,7 @@ src_prepare() {
 	# Try to fix sed calls for GNU sed. Do it only with GNU userland and force
 	# BSD's sed on BSD.
 	cd "${S}"
-	if use userland_GNU; then
+	if [[ ${CBUILD:-${CHOST}} != *bsd* ]]; then
 		find . -name Makefile -exec sed -ibak 's/sed -i /sed -i/' {} \;
 		sed -i -e 's/-i ""/-i""/' "${S}/csu/Makefile.inc" || die
 	fi
@@ -359,7 +359,7 @@ do_compile() {
 src_compile() {
 	# Does not work with GNU sed
 	# Force BSD's sed on BSD.
-	if use userland_BSD ; then
+	if [[ ${CBUILD:-${CHOST}} == *bsd* ]]; then
 		export ESED=/usr/bin/sed
 		unalias sed
 	fi
