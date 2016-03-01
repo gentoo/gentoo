@@ -6825,7 +6825,7 @@ dev-python/biplist 0.8 0.9 1.0.1: A binary plist parser/generator for Python
 dev-python/bitarray 0.8.1: efficient arrays of booleans -- C extension
 dev-python/bitstring 3.1.1: A pure Python module for creation and analysis of binary data
 dev-python/bjoern 1.3.2 1.4.2: A screamingly fast Python WSGI server written in C
-dev-python/blaze 0.7.1 0.8.0 0.8.2: Next generation Python numpy
+dev-python/blaze 0.7.1 0.8.0 0.8.2 0.9.1: Next generation Python numpy
 dev-python/bleach 1.4.1 1.4.2: an easy whitelist-based HTML-sanitizing tool
 dev-python/blessings 1.6: A thin, practical wrapper around terminal coloring, styling, and positioning
 dev-python/blinker 1.3 1.4: Fast, simple object-to-object and broadcast signaling
@@ -7315,7 +7315,7 @@ dev-python/micawber 0.3.2 0.3.3: A small library for extracting rich content fro
 dev-python/milk 0.5.1 0.5.3 0.6.1: Machine learning toolkit in Python
 dev-python/milksets 0.1.3-r1: Datasets in a common Pythonic interface to use with milk
 dev-python/mimeparse 0.1.4-r1 1.5.1: Basic functions for handling mime-types in python
-dev-python/mimerender 0.5.4 0.5.5: RESTful HTTP Content Negotiation for Flask, Bottle, web.py and webapp2
+dev-python/mimerender 0.5.4 0.5.5 0.6.0: RESTful HTTP Content Negotiation for Flask, Bottle, web.py and webapp2
 dev-python/minidb 2.0.1: Simple SQLite-based object store
 dev-python/minimock 1.2.8-r1: The simplest possible mock library
 dev-python/miniupnpc 1.8 1.9.20150917 1.9.20151008: Python bindings for UPnP client library
@@ -8094,7 +8094,7 @@ dev-python/visual 5.74 5.74-r1: Real-time 3D graphics library for Python
 dev-python/vobject 0.8.1c-r1: A full featured Python package for parsing and generating vCard and vCalendar files
 dev-python/vulture 0.8.1: find unused classes, functions and variables in your code
 dev-python/w3lib 1.11.0: Python library of web-related functions
-dev-python/waitress 0.8.9: A pure-Python WSGI server
+dev-python/waitress 0.8.9 0.8.10: A pure-Python WSGI server
 dev-python/warlock 1.0.1 1.1.0: Python object model built on JSON schema and JSON patch
 dev-python/watchdog 0.8.1 0.8.3: Python API and shell utilities to monitor file system events
 dev-python/wcsaxes 0.3 0.6: Framework for plotting astronomical and geospatial data
@@ -17639,7 +17639,7 @@ www-plugins/nspluginwrapper 1.4.4-r3: Netscape Plugin Wrapper - Load 32bit plugi
 www-plugins/pipelight 0.2.7.3 0.2.8 9999: Wine-based wrapper for running Windows plugins on POSIX systems
 www-servers/adsf 1.2.0: A Dead Simple Fileserver is a static file server that can launch in a directory
 www-servers/apache 2.2.31 2.4.16 2.4.18: The Apache Web Server
-www-servers/blogc-runserver 0.1 9999: A simple HTTP server to test blogc websites
+www-servers/blogc-runserver 0.1.1 9999: A simple HTTP server to test blogc websites
 www-servers/boa 0.94.14_rc21-r1 0.94.14_rc21-r2: A very small and very fast http daemon
 www-servers/bozohttpd 20140708 20140708-r1: bozohttpd is a small and secure http server
 www-servers/cherokee 1.2.104: An extremely fast and tiny web server
