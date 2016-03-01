@@ -35,7 +35,7 @@ EXTRACTONLY="
 "
 
 if [ "${CATEGORY#*cross-}" = "${CATEGORY}" ]; then
-	RDEPEND="ssl? ( dev-libs/openssl )
+	RDEPEND="ssl? ( dev-libs/openssl:0= )
 		hesiod? ( net-dns/hesiod )
 		kerberos? ( app-crypt/heimdal )
 		usb? ( !dev-libs/libusb )
