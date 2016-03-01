@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install prepare test unpack
-DEPEND=dev-ml/ppx_tools:= dev-ml/ppx_assert:= dev-ml/ppx_bench:= dev-ml/ppx_bin_prot:= dev-ml/ppx_compare:= dev-ml/ppx_custom_printf:= dev-ml/ppx_driver:= dev-ml/ppx_enumerate:= dev-ml/ppx_expect:= dev-ml/ppx_fail:= dev-ml/ppx_fields_conv:= dev-ml/ppx_here:= dev-ml/ppx_inline_test:= dev-ml/ppx_let:= dev-ml/ppx_pipebang:= dev-ml/ppx_sexp_conv:= dev-ml/ppx_sexp_message:= dev-ml/ppx_sexp_value:= dev-ml/ppx_type_conv:= dev-ml/ppx_typerep_conv:= dev-ml/ppx_variants_conv:= dev-ml/opam >=dev-ml/findlib-1.0.4-r1 >=dev-lang/ocaml-3.12:=[ocamlopt?]
+DEPEND=dev-ml/ppx_tools:= dev-ml/ppx_assert:= dev-ml/ppx_bench:= dev-ml/ppx_bin_prot:= dev-ml/ppx_compare:= dev-ml/ppx_custom_printf:= dev-ml/ppx_driver:= dev-ml/ppx_enumerate:= dev-ml/ppx_expect:= dev-ml/ppx_fail:= dev-ml/ppx_fields_conv:= dev-ml/ppx_here:= dev-ml/ppx_inline_test:= dev-ml/ppx_let:= dev-ml/ppx_pipebang:= dev-ml/ppx_sexp_conv:= dev-ml/ppx_sexp_message:= dev-ml/ppx_sexp_value:= dev-ml/ppx_type_conv:= dev-ml/ppx_typerep_conv:= dev-ml/ppx_variants_conv:= dev-ml/opam >=dev-ml/findlib-1.0.4-r1 >=dev-lang/ocaml-3.12:=[ocamlopt?] || ( dev-ml/ocamlbuild <dev-lang/ocaml-4.02.3-r1 )
 DESCRIPTION=Standard Jane Street ppx rewriters
 EAPI=5
 HOMEPAGE=http://www.janestreet.com/ocaml
@@ -10,5 +10,5 @@ RDEPEND=dev-ml/ppx_tools:= dev-ml/ppx_assert:= dev-ml/ppx_bench:= dev-ml/ppx_bin
 SLOT=0/113.24.00
 SRC_URI=http://ocaml.janestreet.com/ocaml-core/113.24/files/ppx_jane-113.24.00.tar.gz
 _eclass_exported_funcs=src_unpack:base src_prepare:base src_configure:- src_compile:- src_test:oasis src_install:-
-_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	9d81603248f2ba3ec59124320d123e5e	findlib	9909e5ca0f77ff5b693885a3d7aeadb7	multilib	3972ca401cf7dbb430df9995f5d8d580	oasis	dab31007fb098ff15db810bfe5001e64	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	9d81603248f2ba3ec59124320d123e5e	findlib	9909e5ca0f77ff5b693885a3d7aeadb7	multilib	3972ca401cf7dbb430df9995f5d8d580	oasis	cc6dfb8b0c04cedd9840ff2ec5e38539	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
 _md5_=a1251bff4b01d4ca0bbe331ee74585eb
