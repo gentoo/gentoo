@@ -5672,11 +5672,11 @@ dev-perl/IO-CaptureOutput 1.110.400: Capture STDOUT and STDERR from Perl code, s
 dev-perl/IO-Digest 0.110.0-r2: IO::Digest - Calculate digests while reading or writing
 dev-perl/IO-Event 0.813.0: Tied Filehandles for Nonblocking IO with Object Callbacks
 dev-perl/IO-HTML 1.1.0: Open an HTML file with automatic charset detection
-dev-perl/IO-Interactive 0.0.6 1.21.0: Utilities for interactive I/O
+dev-perl/IO-Interactive 1.21.0: Utilities for interactive I/O
 dev-perl/IO-Interface 1.60.0-r1 1.90.0: Perl extension for access to network card configuration information
 dev-perl/IO-LockedFile 0.230.0-r1: Supply object methods for locking files
 dev-perl/IO-Multiplex 1.130.0-r1 1.160.0: Manage IO on many file handles
-dev-perl/IO-Pager 0.310.0-r1 0.340.0 0.350.0: Select a pager, optionally pipe it output if destination is a TTY
+dev-perl/IO-Pager 0.310.0-r1 0.350.0: Select a pager, optionally pipe it output if destination is a TTY
 dev-perl/IO-Pipely 0.005.0: Portably create pipe() or pipe-like handles, one way or another
 dev-perl/IO-Prompt 0.997.3: Interactively prompt for user input
 dev-perl/IO-SessionData 1.30.0: Session data support module for SOAP::Lite
