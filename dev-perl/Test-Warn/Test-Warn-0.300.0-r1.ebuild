@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -15,11 +15,15 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~spa
 
 IUSE="test"
 
-RDEPEND=">=dev-perl/Sub-Uplevel-0.12
-	dev-perl/Tree-DAG_Node
-	virtual/perl-Test-Simple
-	virtual/perl-File-Spec"
-DEPEND="test? ( ${RDEPEND}
-		dev-perl/Test-Pod )"
+RDEPEND="
+	>=virtual/perl-Carp-1.220.0
+	>=dev-perl/Sub-Uplevel-0.12
+	>=virtual/perl-Test-Simple-0.880.0
+"
+DEPEND="${RDEPEND}
+	test? (
+		virtual/perl-File-Spec
+	)
+"
 
 SRC_TEST="do"
