@@ -77,6 +77,10 @@ PDEPEND="app-admin/python-updater"
 
 S=${WORKDIR}/pypy3-${PV}-src
 
+QA_PREBUILT="
+	usr/lib*/pypy3/pypy-c
+	usr/lib*/pypy3/libpypy-c.so"
+
 src_prepare() {
 	epatch "${FILESDIR}/4.0.0-gentoo-path.patch" \
 		"${FILESDIR}/1.9-distutils.unixccompiler.UnixCCompiler.runtime_library_dir_option.patch" \
