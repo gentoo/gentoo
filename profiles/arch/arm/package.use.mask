@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# Markus Meier <maekke@gentoo.org> (02 Mar 2016)
+# unkeyworded deps for bug #573324
+sci-mathematics/flint ntl
+
 # Markus Meier <maekke@gentoo.org> (26 Feb 2016)
 # unmask scanner for net-print/hplip, bug #518456
 media-sound/moc timidity

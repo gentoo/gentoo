@@ -50,6 +50,7 @@ DEPEND="${RDEPEND}
 	dev-qt/qttest:4
 	app-text/ronn
 	virtual/pkgconfig
+	x11-apps/mesa-progs
 	test? ( dev-libs/libxslt )
 "
 CMAKE_BUILD_TYPE=RelWithDebInfo

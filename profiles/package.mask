@@ -34,6 +34,7 @@
 # Breaks some of its rev deps, still in beta stage
 >=dev-lang/ocaml-4.03_beta
 >=dev-ml/camlp4-4.03
+>=dev-ml/ppx_tools-0.99.3_p20160217
 
 # Lars Wendler <polynomial-c@gentoo.org> (01 Mar 2016)
 # Arrow keys don't work (bug #576086).

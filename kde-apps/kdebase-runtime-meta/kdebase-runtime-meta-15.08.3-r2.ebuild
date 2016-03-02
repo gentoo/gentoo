@@ -2,13 +2,13 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 inherit kde5-meta-pkg
 
 DESCRIPTION="Merge this to pull in all kdebase-runtime-derived packages"
 KEYWORDS=" ~amd64 ~x86"
-IUSE="+oldwallet"
+IUSE="+oldwallet pam"
 
 RDEPEND="
 	$(add_kdeapps_dep kcmshell)
@@ -38,5 +38,8 @@ RDEPEND="
 	$(add_kdeapps_dep plasma-runtime)
 	$(add_kdeapps_dep renamedlg-plugins)
 	$(add_kdeapps_dep solid-runtime '-bluetooth')
-	oldwallet? ( $(add_kdeapps_dep kwalletd) )
+	oldwallet? (
+		$(add_kdeapps_dep kwalletd)
+		pam? ( kde-apps/kwalletd-pam:4 )
+	)
 "
