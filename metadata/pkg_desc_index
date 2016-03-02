@@ -4157,7 +4157,7 @@ dev-java/rat 0.11: Apache Rat is a release audit tool, focused on licenses.
 dev-java/reflectasm 1.11.0: High performance Java reflection
 dev-java/reflections 0.9.9: Java runtime metadata analysis
 dev-java/relaxng-datatype 1.0-r1: Interface between RELAX NG validators and datatype libraries
-dev-java/relaxngcc 1.12-r2 1.12-r3: RELAX NG Compiler Compiler
+dev-java/relaxngcc 1.12-r3: RELAX NG Compiler Compiler
 dev-java/resin-servlet-api 3.0.25 3.1.12 4.0.26 4.0.27 4.0.44 4.0.46: Resin Servlet API 3.0/JSP API 2.1 implementation
 dev-java/rhino 1.7.7-r1: An open-source implementation of JavaScript written in Java
 dev-java/rngom 20100718-r1: RNGOM is an open-source Java library for parsing RELAX NG grammars
@@ -4689,7 +4689,7 @@ dev-libs/liborcus 0.7.0 0.7.1 0.7.1-r1 0.9.2-r1 9999: Standalone file import fil
 dev-libs/libotf 0.9.13: Library for handling OpenType fonts (OTF)
 dev-libs/libowfat 0.29 0.30: reimplement libdjb - excellent libraries from Dan Bernstein
 dev-libs/libp11 0.2.8-r3: A library implementing a layer on top of PKCS#11 API to make using PKCS#11 implementations easier
-dev-libs/libparserutils 0.2.1-r1 0.2.3: library for building efficient parsers, written in C
+dev-libs/libparserutils 0.1.2 0.2.0-r1 0.2.1-r1 0.2.3: library for building efficient parsers, written in C
 dev-libs/libpcre 7.9-r1 8.35 8.36 8.37-r2 8.38: Perl-compatible regular expression library
 dev-libs/libpeas 1.14.0-r1 1.16.0: A GObject plugins library
 dev-libs/libpfm 4.4.0 4.6.0: Hardware-based performance monitoring interface for Linux
