@@ -15,7 +15,7 @@ SRC_URI="http://www.mathematik.uni-osnabrueck.de/${PN}/${MYP}/Normaliz${PV}.zip"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm ~x86"
 IUSE="doc extras openmp"
 
 RDEPEND="dev-libs/gmp[cxx]"
