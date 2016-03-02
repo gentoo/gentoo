@@ -2,18 +2,52 @@
 
 <xs:schema xmlns:xs='http://www.w3.org/2001/XMLSchema'>
 	<!-- top-level variants -->
-	<xs:element name='pkgmetadata' type='pkgMetadataType'/>
-	<xs:element name='catmetadata' type='catMetadataType'/>
+	<xs:element name='pkgmetadata' type='pkgMetadataType'>
+		<xs:unique name='longDescUniquityConstraint'>
+			<xs:selector xpath='longdescription'/>
+			<xs:field xpath='@lang'/>
+			<xs:field xpath='@restrict'/>
+		</xs:unique>
+		<xs:unique name='slotsUniquityConstraint'>
+			<xs:selector xpath='slots'/>
+			<xs:field xpath='@lang'/>
+		</xs:unique>
+		<xs:unique name='useUniquityConstraint'>
+			<xs:selector xpath='use'/>
+			<xs:field xpath='@lang'/>
+		</xs:unique>
+	</xs:element>
+	<xs:element name='catmetadata' type='catMetadataType'>
+		<xs:unique name='catLongDescUniquityConstraint'>
+			<xs:selector xpath='longdescription'/>
+			<xs:field xpath='@lang'/>
+		</xs:unique>
+	</xs:element>
 
 	<!-- global elements -->
 	<xs:complexType name='pkgMetadataType'>
 		<xs:choice minOccurs='0' maxOccurs='unbounded'>
 			<xs:element name='longdescription' type='longDescType'/>
-			<xs:element name='maintainer' type='maintainerType'/>
+			<xs:element name='maintainer' type='maintainerType'>
+				<xs:unique name='maintainerDescUniquityConstraint'>
+					<xs:selector xpath='description'/>
+					<xs:field xpath='@lang'/>
+				</xs:unique>
+			</xs:element>
 			<xs:element name='natural-name' type='xs:token'/>
 			<xs:element name='slots' type='slotsType'/>
-			<xs:element name='upstream' type='upstreamType'/>
-			<xs:element name='use' type='useType'/>
+			<xs:element name='upstream' type='upstreamType'>
+				<xs:unique name='upstreamDocUniquityConstraint'>
+					<xs:selector xpath='doc'/>
+					<xs:field xpath='@lang'/>
+				</xs:unique>
+			</xs:element>
+			<xs:element name='use' type='useType'>
+				<xs:unique name='flagUniquityConstraint'>
+					<xs:selector xpath='flag'/>
+					<xs:field xpath='@restrict'/>
+				</xs:unique>
+			</xs:element>
 		</xs:choice>
 	</xs:complexType>
 
@@ -26,7 +60,12 @@
 	<!-- the huge <upstream/> structure -->
 	<xs:complexType name='upstreamType'>
 		<xs:choice minOccurs='0' maxOccurs='unbounded'>
-			<xs:element name='maintainer' type='upstreamMaintainerType'/>
+			<xs:element name='maintainer' type='upstreamMaintainerType'>
+				<xs:unique name='upstreamMaintainerDescUniquityConstraint'>
+					<xs:selector xpath='description'/>
+					<xs:field xpath='@lang'/>
+				</xs:unique>
+			</xs:element>
 			<xs:element name='changelog' type='urlType'/>
 			<xs:element name='doc' type='upstreamDocType'/>
 			<xs:element name='bugs-to' type='urlType'/>
