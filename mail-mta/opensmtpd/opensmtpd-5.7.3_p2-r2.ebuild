@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -47,6 +47,7 @@ S=${WORKDIR}/${MY_P/_}
 src_prepare() {
 	# Use /run instead of /var/run
 	sed -i -e '/pidfile_path/s:_PATH_VARRUN:"/run/":' openbsd-compat/pidfile.c || die
+	use libressl && epatch "${FILESDIR}/${PN}-5.7.3p2-libressl-arc4random-circularity.patch"
 
 	epatch_user
 	eautoreconf
