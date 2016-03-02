@@ -45,13 +45,9 @@ esac
 
 # @ECLASS-VARIABLE: KDEBASE
 # @DESCRIPTION:
-# This gets set to a non-zero value when a package is considered a kde or
+# This gets set to a non-zero value when a package is considered a
 # kdevelop ebuild.
-if [[ ${CATEGORY} = kde-base ]]; then
-	KDEBASE=kde-base
-elif [[ ${CATEGORY} = kde-frameworks ]]; then
-	KDEBASE=kde-frameworks
-elif [[ ${KMNAME-${PN}} = kdevelop ]]; then
+if [[ ${KMNAME-${PN}} = kdevelop ]]; then
 	KDEBASE=kdevelop
 fi
 
@@ -156,7 +152,7 @@ add_frameworks_dep() {
 # @FUNCTION: add_plasma_dep
 # @USAGE: <package> [USE flags] [minimum version]
 # @DESCRIPTION:
-# Create proper dependency for kde-base/ dependencies.
+# Create proper dependency for kde-plasma/ dependencies.
 # This takes 1 to 4 arguments. The first being the package name, the optional
 # second is additional USE flags to append, and the optional third is the
 # version to use instead of the automatic version (use sparingly). In addition,
