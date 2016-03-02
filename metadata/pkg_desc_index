@@ -8122,7 +8122,7 @@ dev-python/workerpool 0.9.2-r1 0.9.4: Module for distributing jobs to a pool of 
 dev-python/wrapt 1.10.5 1.10.6 1.10.6-r1: Module for decorators, wrappers and monkey patching
 dev-python/ws4py 0.3.4 9999: WebSocket client and server library for Python 2 and 3 as well as PyPy
 dev-python/wsaccel 0.6.2: Accelerator for ws4py, AutobahnPython and tornado
-dev-python/wsgiintercept 0.9.0 0.9.1 0.10.0 0.10.2: WSGI application in place of a real URI for testing
+dev-python/wsgiintercept 0.9.0 0.9.1 0.10.0 0.10.2 1.1.2: WSGI application in place of a real URI for testing
 dev-python/wsgilog 0.3-r1: Class for logging in WSGI-applications
 dev-python/wsgiproxy2 0.4.1 0.4.2: HTTP proxying tools for WSGI apps
 dev-python/wstools 0.4.3: WSDL parsing services package for Web Services for Python
