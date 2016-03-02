@@ -65,7 +65,7 @@ java_prepare() {
 
 	cd lib || die
 	rm -v *.jar build/*.jar || die
-	use python && java-pkg_jar-from jython
+	use python && java-pkg_jar-from jython-2.7
 	use tcl && java-pkg_jar-from jacl
 }
 

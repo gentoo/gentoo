@@ -65,6 +65,6 @@ src_install() {
 	java-pkg_dolauncher "${PN}-console" --main bsh.Console
 	java-pkg_dolauncher "${PN}-interpreter" --main bsh.Interpreter
 
-	use doc && java-pkg_dohtml -r javadoc
+	use doc && java-pkg_dojavadoc javadoc
 	use source && java-pkg_dosrc src/bsh
 }
