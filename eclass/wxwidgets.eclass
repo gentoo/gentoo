@@ -26,36 +26,43 @@ if [[ -z ${_WXWIDGETS_ECLASS} ]]; then
 case ${EAPI} in
 	0|1|2|3|4|5)
 		inherit eutils flag-o-matic multilib
+
+		# This was used to set up a sane default for ebuilds so they could
+		# avoid calling need-wxwidgets if they didn't need a particular build.
+		# This was a bad idea for a couple different reasons, and because
+		# get_libdir() is now illegal in global scope in EAPI 6 we can't do it
+		# anymore.  All ebuilds must now use setup-wxwidgets and this code is
+		# only here for backwards compatability.
+		if [[ -z ${WX_CONFIG} ]]; then
+			if [[ -n ${WX_GTK_VER} ]]; then
+				for _wxtoolkit in mac gtk2 base; do
+					# newer versions don't have a seperate debug config
+					for _wxdebug in xxx release- debug-; do
+						_wxconf="${_wxtoolkit}-unicode-${_wxdebug/xxx/}${WX_GTK_VER}"
+
+						[[ -f ${EPREFIX}/usr/$(get_libdir)/wx/config/${_wxconf} ]] \
+							|| continue
+
+						WX_CONFIG="${EPREFIX}/usr/$(get_libdir)/wx/config/${_wxconf}"
+						WX_ECLASS_CONFIG="${WX_CONFIG}"
+						break
+					done
+					[[ -n ${WX_CONFIG} ]] && break
+				done
+				[[ -n ${WX_CONFIG} ]] && export WX_CONFIG WX_ECLASS_CONFIG
+			fi
+		fi
+		unset _wxtoolkit
+		unset _wxdebug
+		unset _wxconf
+		;;
+	6)
+		inherit flag-o-matic multilib
 		;;
 	*)
 		die "EAPI=${EAPI:-0} is not supported"
 		;;
 esac
-
-# We do this in global scope so ebuilds can get sane defaults just by
-# inheriting. Note: this will be going away once all ebuilds are using
-# setup-wxwidgets
-if [[ -z ${WX_CONFIG} ]]; then
-	if [[ -n ${WX_GTK_VER} ]]; then
-		for _wxtoolkit in mac gtk2 base; do
-			# newer versions don't have a seperate debug profile
-			for _wxdebug in xxx release- debug-; do
-				_wxconf="${_wxtoolkit}-unicode-${_wxdebug/xxx/}${WX_GTK_VER}"
-
-				[[ -f ${EPREFIX}/usr/$(get_libdir)/wx/config/${_wxconf} ]] || continue
-
-				WX_CONFIG="${EPREFIX}/usr/$(get_libdir)/wx/config/${_wxconf}"
-				WX_ECLASS_CONFIG="${WX_CONFIG}"
-				break
-			done
-			[[ -n ${WX_CONFIG} ]] && break
-		done
-		[[ -n ${WX_CONFIG} ]] && export WX_CONFIG WX_ECLASS_CONFIG
-	fi
-fi
-unset _wxtoolkit
-unset _wxdebug
-unset _wxconf
 
 # @FUNCTION:    setup-wxwidgets
 # @DESCRIPTION:
@@ -84,13 +91,13 @@ setup-wxwidgets() {
 		3.0-gtk3)
 			wxtoolkit=gtk3
 			if [[ -z ${WX_DISABLE_NDEBUG} ]]; then
-				use_if_iuse debug || append-cppflags -DNDEBUG
+				( in_iuse debug && use debug ) || append-cppflags -DNDEBUG
 			fi
 			;;
 		2.9|3.0)
 			wxtoolkit=gtk2
 			if [[ -z ${WX_DISABLE_NDEBUG} ]]; then
-				use_if_iuse debug || append-cppflags -DNDEBUG
+				( in_iuse debug && use debug ) || append-cppflags -DNDEBUG
 			fi
 			;;
 		2.8)
