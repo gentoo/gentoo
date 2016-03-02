@@ -19,7 +19,7 @@
 
 	<xs:complexType name='catMetadataType'>
 		<xs:choice minOccurs='0' maxOccurs='unbounded'>
-			<xs:element name='longdescription' type='longDescType'/>
+			<xs:element name='longdescription' type='catLongDescType'/>
 		</xs:choice>
 	</xs:complexType>
 
@@ -96,6 +96,14 @@
 		</xs:choice>
 		<xs:attribute name='lang' type='langAttrType' default='C'/>
 		<xs:attribute name='restrict' type='restrictAttrType'/>
+	</xs:complexType>
+
+	<xs:complexType name='catLongDescType' mixed='true'>
+		<xs:choice minOccurs='0' maxOccurs='unbounded'>
+			<xs:element name='pkg' type='pkgType'/>
+			<xs:element name='cat' type='catType'/>
+		</xs:choice>
+		<xs:attribute name='lang' type='langAttrType' default='C'/>
 	</xs:complexType>
 
 	<!-- slots -->
