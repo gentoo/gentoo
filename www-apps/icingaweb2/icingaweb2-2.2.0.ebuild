@@ -54,9 +54,9 @@ pkg_config() {
 }
 
 src_install() {
-	mkdir -p "${D}/usr/share/${PN}"
-	cp -R "${S}"/* "${D}/usr/share/${PN}"
-	chmod -R a+rX "${D}/usr/share/${PN}/public"
+	insinto "/usr/share/${PN}"
+	doins -r "${S}"/*
+	fperms -R a+rX "/usr/share/${PN}/public/"
 }
 
 pkg_postinst() {
