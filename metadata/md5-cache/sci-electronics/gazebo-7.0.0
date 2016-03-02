@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install prepare test unpack
-DEPEND=>=dev-libs/protobuf-2.3.0 virtual/opengl media-libs/openal net-misc/curl dev-libs/tinyxml dev-libs/tinyxml2 dev-libs/libtar dev-cpp/tbb >=dev-games/ogre-1.7.4 sci-libs/libccd libav? ( >=media-video/libav-9:0= ) !libav? ( >=media-video/ffmpeg-2.6:0= ) sci-libs/gts >=sci-physics/bullet-2.82 >=dev-libs/sdformat-4:= dev-qt/qtcore:4 dev-qt/qtgui:4 dev-qt/qtwebkit:4 dev-qt/qtxmlpatterns:4 dev-libs/boost:=[threads] sci-libs/gdal virtual/libusb:1 dev-libs/libspnav media-libs/freeimage sci-libs/hdf5:= sys-apps/util-linux media-gfx/graphviz >=sci-libs/ignition-math-2.3:2= net-libs/ignition-transport:= dev-qt/qttest:4 app-text/ronn virtual/pkgconfig test? ( dev-libs/libxslt ) sys-devel/make >=dev-util/cmake-2.8.12
+DEPEND=>=dev-libs/protobuf-2.3.0 virtual/opengl media-libs/openal net-misc/curl dev-libs/tinyxml dev-libs/tinyxml2 dev-libs/libtar dev-cpp/tbb >=dev-games/ogre-1.7.4 sci-libs/libccd libav? ( >=media-video/libav-9:0= ) !libav? ( >=media-video/ffmpeg-2.6:0= ) sci-libs/gts >=sci-physics/bullet-2.82 >=dev-libs/sdformat-4:= dev-qt/qtcore:4 dev-qt/qtgui:4 dev-qt/qtwebkit:4 dev-qt/qtxmlpatterns:4 dev-libs/boost:=[threads] sci-libs/gdal virtual/libusb:1 dev-libs/libspnav media-libs/freeimage sci-libs/hdf5:= sys-apps/util-linux media-gfx/graphviz >=sci-libs/ignition-math-2.3:2= net-libs/ignition-transport:= dev-qt/qttest:4 app-text/ronn virtual/pkgconfig x11-apps/mesa-progs test? ( dev-libs/libxslt ) sys-devel/make >=dev-util/cmake-2.8.12
 DESCRIPTION=A 3D multiple robot simulator with dynamics
 EAPI=5
 HOMEPAGE=http://gazebosim.org/
@@ -11,4 +11,4 @@ SLOT=0
 SRC_URI=http://osrf-distributions.s3.amazonaws.com/gazebo/releases/gazebo-7.0.0.tar.bz2
 _eclass_exported_funcs=src_unpack:vcs-snapshot src_prepare:cmake-utils src_configure:- src_compile:cmake-utils src_test:cmake-utils src_install:cmake-utils
 _eclasses_=cmake-utils	fa44804882ff16943e9f71b544f56bc9	eutils	9d81603248f2ba3ec59124320d123e5e	flag-o-matic	d270fa247153df66074f795fa42dba3e	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	vcs-snapshot	b45be87e7012be0af8424e8a5644da1d	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=d245979bfa72daf86277c520026b71ce
+_md5_=76189ea2f744c99735726b07d4d6e52a

@@ -1002,7 +1002,7 @@ app-editors/ee 1.4.6 1.5.2: An easy to use text editor. A subset of aee
 app-editors/efte 1.1-r1: A fast text editor supporting folding, syntax highlighting, etc.
 app-editors/elvis 2.2.0-r4: A vi/ex clone
 app-editors/emacs 18.59-r10 18.59-r11 23.4-r13 23.4-r14 24.4-r4 24.5 24.5-r1: The extensible, customizable, self-documenting real-time display editor
-app-editors/emacs-vcs 25.0.50_pre20151113 25.0.90 25.0.9999-r2 25.1.50_pre20160130 25.1.9999-r1: The extensible, customizable, self-documenting real-time display editor
+app-editors/emacs-vcs 25.0.50_pre20151113 25.0.90 25.0.92 25.0.9999-r2 25.1.50_pre20160130 25.1.9999-r1: The extensible, customizable, self-documenting real-time display editor
 app-editors/emact 2.56.0: EmACT, a fork of Conroy's MicroEmacs
 app-editors/ersatz-emacs 20060515: A very minimal imitation of the famous GNU Emacs editor
 app-editors/fb2edit 0.0.8 0.0.9: a WYSIWYG FictionBook (fb2) editor
@@ -4981,7 +4981,7 @@ dev-ml/camlzip 1.05: Compressed file access ML library (ZIP, GZIP and JAR)
 dev-ml/camomile 0.8.4 0.8.5: Camomile is a comprehensive Unicode library for ocaml
 dev-ml/cmdliner 0.9.8: Declarative definition of command line interfaces for OCaml
 dev-ml/comparelib 109.60.00 113.00.00: Camlp4 syntax extension that derives comparison functions from type representations
-dev-ml/core 113.24.00 113.24.01: Jane Street's alternative to the standard library
+dev-ml/core 113.24.00 113.24.01 113.24.02: Jane Street's alternative to the standard library
 dev-ml/core_bench 112.35.00 113.24.00: Micro-benchmarking library for OCaml
 dev-ml/core_extended 113.24.00: Jane Street's alternative to the standard library
 dev-ml/core_kernel 113.24.00: System-independent part of Core
@@ -5079,7 +5079,7 @@ dev-ml/ppx_bin_prot 113.24.00 113.24.01: Generation of bin_prot readers and writ
 dev-ml/ppx_compare 113.24.00: Generation of comparison functions from types
 dev-ml/ppx_core 113.24.00: Standard library for ppx rewriters
 dev-ml/ppx_custom_printf 113.24.00: Printf-style format-strings for user-defined string conversion
-dev-ml/ppx_deriving 3.0-r1 3.1: Type-driven code generation for OCaml
+dev-ml/ppx_deriving 3.0-r1 3.1 3.2: Type-driven code generation for OCaml
 dev-ml/ppx_driver 113.24.00-r1: Feature-full driver for OCaml AST transformers
 dev-ml/ppx_enumerate 113.24.00: Generate a list containing all values of a finite type
 dev-ml/ppx_expect 113.24.00: Cram like framework for OCaml
@@ -5094,7 +5094,7 @@ dev-ml/ppx_pipebang 113.24.00: A ppx rewriter that inlines reverse application o
 dev-ml/ppx_sexp_conv 113.24.00: Support Library for type-driven code generators
 dev-ml/ppx_sexp_message 113.24.00: A ppx rewriter for easy construction of s-expressions
 dev-ml/ppx_sexp_value 113.24.00: Standard library for ppx rewriters
-dev-ml/ppx_tools 0.99.2 0.99.3: Tools for authors of ppx rewriters
+dev-ml/ppx_tools 0.99.2 0.99.3 0.99.3_p20160217: Tools for authors of ppx rewriters
 dev-ml/ppx_type_conv 113.24.00: Support Library for type-driven code generators
 dev-ml/ppx_typerep_conv 113.24.00: Generation of runtime types from type declarations
 dev-ml/ppx_variants_conv 113.24.00: Generation of accessor and iteration functions for ocaml variant types
@@ -5120,7 +5120,7 @@ dev-ml/variantslib 109.15.00 109.15.02 113.24.00: OCaml variants as first class 
 dev-ml/xml-light 2.2-r1 2.2-r2 2.2-r3: Minimal Xml parser and printer for OCaml
 dev-ml/xmlm 1.1.1 1.2.0: Ocaml XML manipulation module
 dev-ml/xstr 0.2.1: Thread-safe implementation of string searching/matching/splitting
-dev-ml/yojson 1.3.0 1.3.1: JSON parsing and pretty-printing library for OCaml
+dev-ml/yojson 1.3.0 1.3.1 1.3.2: JSON parsing and pretty-printing library for OCaml
 dev-ml/zarith 1.4.1: Arithmetic and logic operations over arbitrary-precision integers
 dev-ml/zed 1.2 1.4: Zed is an abstract engine for text edition
 dev-perl/Ace 1.920.0-r1: Object-Oriented Access to ACEDB Databases
@@ -11010,7 +11010,7 @@ kde-apps/kdebase-kioslaves 4.14.3 15.08.3: KDE VFS framework - kioslaves present
 kde-apps/kdebase-menu 4.14.3 15.08.3: KDE Menu query tool
 kde-apps/kdebase-menu-icons 4.14.3 15.08.3: KDE menu icons
 kde-apps/kdebase-meta 4.14.3 4.14.3-r2 15.08.3-r2: Transitional package to pull in plasma-meta plus basic applications
-kde-apps/kdebase-runtime-meta 4.14.3 15.08.3-r1: Merge this to pull in all kdebase-runtime-derived packages
+kde-apps/kdebase-runtime-meta 4.14.3 15.08.3-r2: Merge this to pull in all kdebase-runtime-derived packages
 kde-apps/kdebugdialog 4.14.3 15.08.3: KDE: A dialog box for setting preferences for debug output
 kde-apps/kdebugsettings 15.12.1 15.12.2: Application to enable/disable qCDebug
 kde-apps/kdecore-meta 15.08.3-r1: kdecore - merge this to pull in the most basic applications
@@ -11143,6 +11143,7 @@ kde-apps/kuiserver 4.14.3 15.08.3: KDE: Progress Info UI server
 kde-apps/kurifilter-plugins 4.14.3 15.08.3: KDE: Plugins to manage filtering URIs
 kde-apps/kuser 4.14.3 15.08.3 15.12.1 15.12.2: KDE application that helps you manage system users
 kde-apps/kwalletd 4.14.3-r2 15.08.3: KDE Password Server
+kde-apps/kwalletd-pam 5.5.5: KWallet PAM module to not enter password again
 kde-apps/kwalletmanager 4.14.3 15.04.3 15.08.3-r1 15.12.1 15.12.2: KDE Wallet management tool
 kde-apps/kwordquiz 4.14.3: KDE: A powerful flashcard and vocabulary learning program
 kde-apps/kwrite 4.14.3 15.08.3: KDE simple text editor
@@ -11198,8 +11199,8 @@ kde-base/kcheckpass 4.11.19 4.11.22-r1: A simple password checker, used by any s
 kde-base/kcminit 4.11.19 4.11.22: KCMInit - runs startups initialization for Control Modules
 kde-base/kde-env 4.14.3: Environment setting required for all KDE4 apps to run
 kde-base/kdebase-cursors 4.11.19 4.11.22: oxygen cursors from kdebase
-kde-base/kdebase-pam 9: pam.d files used by several KDE components
-kde-base/kdebase-startkde 4.11.19 4.11.22: Startkde script, which starts a complete KDE session, and associated scripts
+kde-base/kdebase-pam 9 10: pam.d files used by several KDE components
+kde-base/kdebase-startkde 4.11.19 4.11.22 4.11.22-r1: Startkde script, which starts a complete KDE session, and associated scripts
 kde-base/kdebindings-meta 4.14.3: KDE bindings - merge this to pull in all kdebindings-derived packages
 kde-base/kdelibs 4.14.8 4.14.14 4.14.15-r1 4.14.16: KDE libraries needed by all KDE programs
 kde-base/kdeplasma-addons 4.14.3: Extra Plasma applets and engines
@@ -11456,7 +11457,7 @@ kde-plasma/oxygen 5.4.3 5.5.4 5.5.5: KDE window manager theme
 kde-plasma/oxygen-fonts 5.4.3: Desktop/GUI font family for integrated use with the KDE desktop
 kde-plasma/plasma-desktop 5.4.3 5.5.4 5.5.5: KDE Plasma desktop
 kde-plasma/plasma-mediacenter 5.4.3 5.5.4 5.5.5: Unified media experience for any device capable of running KDE
-kde-plasma/plasma-meta 5.4.3 5.5.4 5.5.5: Merge this to pull in all Plasma 5 packages
+kde-plasma/plasma-meta 5.4.3-r1 5.5.4 5.5.5: Merge this to pull in all Plasma 5 packages
 kde-plasma/plasma-nm 5.4.3 5.5.4 5.5.5: KDE Plasma applet for NetworkManager
 kde-plasma/plasma-pa 5.4.3 5.5.4 5.5.5: Plasma applet for audio volume management using PulseAudio
 kde-plasma/plasma-sdk 5.4.3 5.5.4 5.5.5: Useful applications for Plasma development
@@ -18154,7 +18155,7 @@ x11-misc/rofi 0.15.11 0.15.12: A window switcher, run dialog and dmenu replaceme
 x11-misc/rss-glx 0.9.1: Really Slick OpenGL Screensavers for XScreenSaver
 x11-misc/screen-message 0.23: Display a multi-line message large, fullscreen, black on white
 x11-misc/screengrab 1.0 1.2.1-r1: Qt application for getting screenshots
-x11-misc/sddm 0.13.0-r1: Simple Desktop Display Manager
+x11-misc/sddm 0.13.0-r1 0.13.0-r2: Simple Desktop Display Manager
 x11-misc/seetxt 0.72-r1: Clever, lightweight GUI text file and manual page viewer for X windows
 x11-misc/sent 0.2 9999: Simple plaintext presentation tool
 x11-misc/set_opacity 1.0 9999: Tool for set real compositing for windows through window's id, process' pid etc.
