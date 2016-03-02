@@ -43,7 +43,7 @@ EXPORT_FUNCTIONS pkg_pretend pkg_setup src_unpack src_prepare src_configure src_
 # @ECLASS-VARIABLE: KDE_BLOCK_SLOT4
 # @DESCRIPTION:
 # This variable is used when KDE_AUTODEPS is set.
-# If set to "true", add RDEPEND block on kde-{base,apps}/${PN}:4
+# If set to "true", add RDEPEND block on kde-apps/${PN}:4
 : ${KDE_BLOCK_SLOT4:=true}
 
 # @ECLASS-VARIABLE: KDE_DEBUG
@@ -145,7 +145,7 @@ case ${KDE_AUTODEPS} in
 
 		DEPEND+=" $(add_frameworks_dep extra-cmake-modules)"
 		RDEPEND+=" >=kde-frameworks/kf-env-3"
-		COMMONDEPEND+="	>=dev-qt/qtcore-${QT_MINIMAL}:5"
+		COMMONDEPEND+=" $(add_qt_dep qtcore)"
 
 		if [[ ${CATEGORY} = kde-frameworks || ${CATEGORY} = kde-plasma && ${PN} != polkit-kde-agent ]]; then
 			RDEPEND+="
@@ -197,7 +197,7 @@ case ${KDE_TEST} in
 	false)	;;
 	*)
 		IUSE+=" test"
-		DEPEND+=" test? ( >=dev-qt/qttest-${QT_MINIMAL}:5 )"
+		DEPEND+=" test? ( $(add_qt_dep qttest) )"
 		;;
 esac
 
