@@ -4585,7 +4585,7 @@ dev-libs/libclsync 0.4.1: Control and monitoring library for clsync
 dev-libs/libconfig 1.5: Libconfig is a simple library for manipulating structured configuration files
 dev-libs/libcoyotl 3.1.0-r2: A collection of portable C++ classes
 dev-libs/libcroco 0.6.8-r1 0.6.9 0.6.10 0.6.11: Generic Cascading Style Sheet (CSS) parsing and manipulation toolkit
-dev-libs/libcss 0.4.0 0.5.0-r1: CSS parser and selection engine, written in C
+dev-libs/libcss 0.5.0-r1 0.6.0: CSS parser and selection engine, written in C
 dev-libs/libdaemon 0.14-r1 0.14-r2: Simple library for creating daemon processes in C
 dev-libs/libdbh 5.0.19: a small library to create and manage 64-bit disk based hash tables
 dev-libs/libdbusmenu 12.10.2-r2: Library to pass menu structure across DBus
@@ -4678,8 +4678,8 @@ dev-libs/libmowgli-glib 0.1: GLib bridge for libmowgli-2 eventing
 dev-libs/libnatspec 0.2.6 0.2.6-r1: library to smooth charset/localization issues
 dev-libs/libnfc 1.4.2 1.5.0 1.5.1 1.5.1-r1 1.7.0-r1 1.7.1: Near Field Communications (NFC) library
 dev-libs/libnl 1.1.4 3.2.27 3.2.9999: A collection of libraries providing APIs to netlink protocol based Linux kernel interfaces
-dev-libs/libnsfb 0.1.2 0.1.3-r1: framebuffer abstraction library, written in C
-dev-libs/libnsutils 0.0.1-r1: base64 and time library, written in C
+dev-libs/libnsfb 0.1.3-r1 0.1.4: framebuffer abstraction library, written in C
+dev-libs/libnsutils 0.0.1-r1 0.0.2: base64 and time library, written in C
 dev-libs/libntru 0.4.1: C Implementation of NTRUEncrypt
 dev-libs/libofx 0.9.5 0.9.10: A library to support the Open Financial eXchange XML format
 dev-libs/liboil 0.3.17 0.3.17-r1 0.3.17-r2: Library of simple functions that are optimized for various CPUs
@@ -4689,7 +4689,7 @@ dev-libs/liborcus 0.7.0 0.7.1 0.7.1-r1 0.9.2-r1 9999: Standalone file import fil
 dev-libs/libotf 0.9.13: Library for handling OpenType fonts (OTF)
 dev-libs/libowfat 0.29 0.30: reimplement libdjb - excellent libraries from Dan Bernstein
 dev-libs/libp11 0.2.8-r3: A library implementing a layer on top of PKCS#11 API to make using PKCS#11 implementations easier
-dev-libs/libparserutils 0.1.2 0.2.0-r1 0.2.1-r1: library for building efficient parsers, written in C
+dev-libs/libparserutils 0.2.1-r1 0.2.3: library for building efficient parsers, written in C
 dev-libs/libpcre 7.9-r1 8.35 8.36 8.37-r2 8.38: Perl-compatible regular expression library
 dev-libs/libpeas 1.14.0-r1 1.16.0: A GObject plugins library
 dev-libs/libpfm 4.4.0 4.6.0: Hardware-based performance monitoring interface for Linux
@@ -4737,7 +4737,7 @@ dev-libs/libunistring 0.9.5 0.9.6: Library for manipulating Unicode strings and 
 dev-libs/libusb 1.0.9-r2 1.0.18 1.0.19-r1 1.0.20: Userspace access to USB devices
 dev-libs/libusb-compat 0.1.5-r2 0.1.5-r3: Userspace access to USB devices (libusb-0.1 compat wrapper)
 dev-libs/libusbhp 1.0.2: Usb Hotplug Library
-dev-libs/libutf8proc 1.1.6-r1: mapping tool for UTF-8 strings
+dev-libs/libutf8proc 1.1.6-r1 1.3.1: mapping tool for UTF-8 strings
 dev-libs/libuv 1.4.2 1.5.0 1.6.1 1.7.0 1.7.5 1.8.0: Cross-platform asychronous I/O
 dev-libs/libverto 0.2.5 0.2.5-r1 0.2.6: Main event loop abstraction library
 dev-libs/libvformat 1.13-r1 1.13-r2: Library to read and write vcard files
@@ -4745,7 +4745,7 @@ dev-libs/libvolume_id 0.81.0 0.81.1: Library to provide file system information
 dev-libs/libvterm 0.0_pre20151022: An abstract library implementation of a VT220/xterm/ECMA-48 terminal emulator
 dev-libs/libvterm-neovim 0.0_pre20150309 0.0_pre20150621: An abstract library implementation of a VT220/xterm/ECMA-48 terminal emulator
 dev-libs/libwacom 0.11 0.15 0.17 0.18: Library for identifying Wacom tablets and their model-specific features
-dev-libs/libwapcaplet 0.2.1-r1 0.2.2-r1: string internment library, written in C
+dev-libs/libwapcaplet 0.2.2-r1 0.3.0: string internment library, written in C
 dev-libs/libwbxml 0.11.2: Library and tools to parse, encode and handle WBXML documents
 dev-libs/libx86 1.1-r2 1.1-r3: A hardware-independent library for executing real-mode x86 code
 dev-libs/libx86emu 1.1: A library for emulating x86
@@ -4789,7 +4789,7 @@ dev-libs/nanomsg 0.5-r1 0.6 0.8: High-performance messaging interface for distri
 dev-libs/nettle 3.1.1 3.2: Low-level cryptographic library
 dev-libs/newt 0.52.15 0.52.18: Redhat's Newt windowing toolkit development files
 dev-libs/npth 1.1 1.2: New GNU Portable Threads Library
-dev-libs/nsgenbind 0.1.1 0.1.2-r1: generate javascript to dom bindings from w3c webidl files
+dev-libs/nsgenbind 0.1.2-r1 0.3: generate javascript to dom bindings from w3c webidl files
 dev-libs/nspr 4.10.8 4.10.10 4.10.10-r1 4.11 4.12: Netscape Portable Runtime
 dev-libs/nss 3.20 3.20.1 3.21-r2 3.22 3.22.2: Mozilla's Network Security Services library that implements PKI support
 dev-libs/ntl 5.5.2 6.1.0 9.3.0: High-performance and portable Number Theory C++ library
@@ -7039,7 +7039,7 @@ dev-python/enum34 1.0.4 1.1.2: Python 3.4 Enum backported
 dev-python/envisage 4.4.0: Enthought Tool Suite: Extensible application framework
 dev-python/envoy 0.0.3: Simple API for running external processes
 dev-python/enzyme 0.4.1 9999: Python video metadata parser
-dev-python/epsilon 0.6.0-r2 0.7.0 0.7.1: Epsilon is a Python utilities package, most famous for its Time class
+dev-python/epsilon 0.7.0 0.7.1: Epsilon is a Python utilities package, most famous for its Time class
 dev-python/epydoc 3.0.1-r2: Tool for generating API documentation for Python modules from docstrings
 dev-python/errorhandler 1.1.1-r2: Logging framework handler that tracks when messages above a certain level have been logged
 dev-python/et_xmlfile 1.0.0 1.0.1: An implementation of lxml.xmlfile for the standard library
@@ -12340,8 +12340,8 @@ media-libs/libmpris2client 0.1.0: An library to control MPRIS2 compatible player
 media-libs/libmtp 1.1.8 1.1.9 1.1.10 1.1.11 9999: An implementation of Microsoft's Media Transfer Protocol (MTP)
 media-libs/libmygpo-qt 1.0.7 1.0.7-r1 1.0.8 9999: Qt/C++ library wrapping the gpodder.net webservice
 media-libs/libnjb 2.2.6 2.2.7: a C library and API for communicating with the Creative Nomad JukeBox digital audio player
-media-libs/libnsbmp 0.1.1 0.1.2-r1: decoding library for BMP and ICO image file formats, written in C
-media-libs/libnsgif 0.1.1 0.1.2-r1: decoding library for the GIF image file format, written in C
+media-libs/libnsbmp 0.1.2-r1 0.1.3: decoding library for BMP and ICO image file formats, written in C
+media-libs/libnsgif 0.1.2-r1 0.1.3: decoding library for the GIF image file format, written in C
 media-libs/libnut 661: Library and tools to create NUT multimedia files
 media-libs/libofa 0.9.3-r1: Open Fingerprint Architecture
 media-libs/libogg 1.3.0 1.3.1 1.3.2: the Ogg media file format library
@@ -12378,7 +12378,7 @@ media-libs/libsndfile 1.0.26: A C library for reading and writing files containi
 media-libs/libsoundio 1.0.0 1.0.2: C99 library providing cross-platform audio input and output
 media-libs/libsoundtouch 1.7.1 1.8.0 1.8.0-r1 1.9.0 1.9.2: Audio processing library for changing tempo, pitch and playback rates
 media-libs/libsvg 0.1.4-r1: A parser for SVG content in files or buffers
-media-libs/libsvgtiny 0.1.2 0.1.3-r1: framebuffer abstraction library, written in C
+media-libs/libsvgtiny 0.1.3-r1 0.1.4: framebuffer abstraction library, written in C
 media-libs/libtaginfo 0.2.1: a library for reading media metadata
 media-libs/libtheora 1.1.1 1.1.1-r1: The Theora Video Compression Codec
 media-libs/libtiger 0.3.4: A rendering library for Kate streams using Pango and Cairo
@@ -14085,7 +14085,7 @@ net-libs/libbtbb 2015.09.2-r1 2015.10.1 9999: A library to decode Bluetooth base
 net-libs/libcapi 3.0.7-r1: CAPI library used by AVM products
 net-libs/libcrafter 0.3 9999: a high level library for C++ designed to make easier the creation and decoding of network packets
 net-libs/libdmapsharing 2.9.31 2.9.32: A library that implements the DMAP family of protocols
-net-libs/libdom 0.1.1 0.1.2-r1: implementation of the W3C DOM, written in C
+net-libs/libdom 0.1.2-r1 0.3.0: implementation of the W3C DOM, written in C
 net-libs/libeXosip 3.5.0 4.0.0: library that hides the complexity of using the SIP protocol for multimedia session establishement
 net-libs/libecap 0.2.0 1.0.0: API for implementing ICAP content analysis and adaptation
 net-libs/libesmtp 1.0.6 1.0.6-r1 1.0.6-r2: lib that implements the client side of the SMTP protocol
@@ -14100,7 +14100,7 @@ net-libs/libgsasl 1.8.0-r1: The GNU SASL library
 net-libs/libgssglue 0.4: exports a gssapi interface which calls other random gssapi libraries
 net-libs/libhackrf 2014.04.1 2014.08.1 2015.07.2 9999: library for communicating with HackRF SDR platform
 net-libs/libhtp 0.5.18: security-aware parser for the HTTP protocol and the related bits and pieces
-net-libs/libhubbub 0.3.0-r1 0.3.1-r1: HTML5 compliant parsing library, written in C
+net-libs/libhubbub 0.3.1-r1 0.3.3: HTML5 compliant parsing library, written in C
 net-libs/libident 0.32: A small library to interface to the Ident protocol server
 net-libs/libinfinity 0.5.4: An implementation of the Infinote protocol written in GObject-based C
 net-libs/libircclient 1.6-r2 1.8: Small but powerful library implementing the client-server IRC protocol
@@ -17581,7 +17581,7 @@ www-client/luakit 2012.09.13_p1-r1 9999: fast, small, webkit-gtk based micro-bro
 www-client/lynx 2.8.8_p2 2.8.9_pre4 2.8.9_pre6: An excellent console-based web browser with ssl support
 www-client/midori 0.5.10 0.5.11: A lightweight web browser based on WebKitGTK+
 www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
-www-client/netsurf 3.2-r1 3.3-r1: a free, open source web browser
+www-client/netsurf 3.3-r1 3.4: a free, open source web browser
 www-client/opera 12.16_p1860-r1 35.0.2066.68 35.0.2066.82: A fast and secure web browser
 www-client/opera-beta 35.0.2066.35 36.0.2130.2 36.0.2130.21: A fast and secure web browser
 www-client/opera-developer 36.0.2120.0 36.0.2129.0 37.0.2142.0: A fast and secure web browser
