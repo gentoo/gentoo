@@ -48,7 +48,7 @@ multilib_src_compile() {
 }
 
 multilib_src_test() {
-        emake -j1 test
+	emake -j1 test
 }
 
 multilib_src_install() {
