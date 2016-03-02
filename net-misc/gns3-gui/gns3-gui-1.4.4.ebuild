@@ -1,12 +1,12 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 PYTHON_COMPAT=( python{3_3,3_4} )
 
-inherit distutils-r1
+inherit distutils-r1 eutils
 
 DESCRIPTION="Graphical Network Simulator"
 HOMEPAGE="http://www.gns3.net/"
@@ -29,7 +29,7 @@ RDEPEND="
 	>=dev-python/requests-2.6.0[${PYTHON_USEDEP}]
 	>=dev-python/paramiko-1.15.1[${PYTHON_USEDEP}]
 	>=dev-python/psutil-3.0.0[${PYTHON_USEDEP}]
-	>=net-misc/gns3-converter-1.2.3[${PYTHON_USEDEP}]
+	>=net-misc/gns3-converter-1.3.0[${PYTHON_USEDEP}]
 	=net-misc/gns3-server-$PV[${PYTHON_USEDEP}]
 	qt4? (
 		dev-qt/qtgui:4[accessibility]
@@ -43,6 +43,11 @@ RDEPEND="
 	)
 "
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
+
+python_configure() {
+	# temporary fix until upstream releases 1.4.5 with proper setup.py
+	sed -i -e 's/gns3-net-converter/gns3-converter/' setup.py || die
+}
 
 python_install_all() {
 	distutils-r1_python_install_all
