@@ -7,7 +7,7 @@ EAPI=6
 inherit qmake-utils
 
 DESCRIPTION="Icon themes for smplayer"
-HOMEPAGE="http://smplayer.sourceforge.net/"
+HOMEPAGE="http://www.smplayer.eu/"
 SRC_URI="mirror://sourceforge/smplayer/${P}.tar.bz2"
 
 LICENSE="CC-BY-2.5 CC-BY-SA-2.5 CC-BY-SA-3.0 GPL-2 LGPL-3"
