@@ -45,6 +45,7 @@
 			<xs:element name='use' type='useType'>
 				<xs:unique name='flagUniquityConstraint'>
 					<xs:selector xpath='flag'/>
+					<xs:field xpath='@name'/>
 					<xs:field xpath='@restrict'/>
 				</xs:unique>
 			</xs:element>
