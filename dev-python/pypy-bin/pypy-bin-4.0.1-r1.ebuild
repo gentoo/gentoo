@@ -78,6 +78,10 @@ PDEPEND="app-admin/python-updater"
 
 S=${WORKDIR}/pypy-${PV}-src
 
+QA_PREBUILT="
+	usr/lib*/pypy/pypy-c
+	usr/lib*/pypy/libpypy-c.so"
+
 pkg_setup() {
 	if [[ ${MERGE_TYPE} != binary ]]; then
 		use doc && python-any-r1_pkg_setup
