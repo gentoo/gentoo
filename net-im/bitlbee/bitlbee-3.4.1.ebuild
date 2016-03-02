@@ -15,7 +15,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86 ~x86-fbsd"
 IUSE="debug gnutls ipv6 +xmpp libevent msn nss +oscar otr +plugins purple selinux
-	skype ssl test twitter +yahoo xinetd"
+	skype ssl test twitter +yahoo xinetd libressl"
 
 COMMON_DEPEND="
 	>=dev-libs/glib-2.16
@@ -25,7 +25,7 @@ COMMON_DEPEND="
 	gnutls? ( net-libs/gnutls )
 	!gnutls? (
 		nss? ( dev-libs/nss )
-		!nss? ( ssl? ( dev-libs/openssl:0 ) )
+		!nss? ( ssl? ( !libressl? ( dev-libs/openssl:0 ) libressl? ( dev-libs/libressl:= ) ) )
 	)
 	"
 DEPEND="${COMMON_DEPEND}
