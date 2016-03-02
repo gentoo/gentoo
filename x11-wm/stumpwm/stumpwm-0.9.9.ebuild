@@ -78,7 +78,6 @@ src_configure() {
 
 src_compile() {
 	emake -j1
-	echo "HOLa"
 }
 
 src_install() {
