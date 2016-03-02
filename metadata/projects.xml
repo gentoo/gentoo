@@ -1079,6 +1079,11 @@
       <role>PPC, newlib</role>
     </member>
     <member>
+      <email>maffblaster@gentoo.org</email>
+      <name>Matthew Marchese</name>
+      <role>ARM</role>
+    </member>
+    <member>
       <email>robbat2@gentoo.org</email>
       <name>Robin Johnson</name>
       <role>JTAG, dev-embedded</role>
