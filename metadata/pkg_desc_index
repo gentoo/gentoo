@@ -4887,7 +4887,7 @@ dev-libs/vanessa-logger 0.0.10: Generic logging layer that to log to syslog, an 
 dev-libs/vc 0.7.3 0.7.4 1.1.0: SIMD Vector Class Library for C++
 dev-libs/vdk 2.5.1: A Visual Development Kit for RAD
 dev-libs/vrb 0.3.0 0.5.1: Library for a virtual ring buffer
-dev-libs/wayland 1.6.1 1.7.0 1.8.1 1.9.0 1.10.0 9999: Wayland protocol libraries
+dev-libs/wayland 1.6.1 1.7.0 1.8.1 1.9.0 1.10.0-r1 9999: Wayland protocol libraries
 dev-libs/weston 1.6.1 1.7.0 1.8.0 1.9.0 9999: Wayland reference compositor
 dev-libs/wnn7sdk 20011017 20011017-r1: Library and headers for Wnn7 client
 dev-libs/xalan-c 1.11.0_pre1153059: XSLT processor for transforming XML into HTML, text, or other XML types
