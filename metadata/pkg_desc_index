@@ -8749,7 +8749,7 @@ dev-ruby/json 1.8.2-r1 1.8.3: A JSON implementation as a Ruby extension
 dev-ruby/jwt 1.5.2 1.5.3: A Ruby implementation of JSON Web Token draft 06
 dev-ruby/kirbybase 2.6.1-r1 2.6.1-r2: A simple Ruby DBMS that stores data in plaintext files
 dev-ruby/kissfft 0.0.1-r1 0.0.2: ruby interface to kissfft
-dev-ruby/kramdown 1.4.2 1.8.0 1.9.0: Yet-another-markdown-parser but fast, pure Ruby, using strict syntax definition
+dev-ruby/kramdown 1.4.2 1.8.0 1.9.0 1.10.0: Yet-another-markdown-parser but fast, pure Ruby, using strict syntax definition
 dev-ruby/launchy 2.4.3: Helper class for launching cross-platform applications
 dev-ruby/lemon 0.9.1: Lemon is a unit testing framework
 dev-ruby/letter_opener 1.4.0 1.4.1: Preview mail in the browser instead of sending
