@@ -7664,7 +7664,7 @@ dev-python/pyqtgraph 0.9.9 0.9.10: a pure-python scientific graphics and GUI lib
 dev-python/pyquery 1.2.4 1.2.8 1.2.9 1.2.9-r1 1.2.11: A jQuery-like library for python
 dev-python/pyqwt 5.2.0-r1: Python bindings for the Qwt library
 dev-python/pyramid 1.5.1 1.5.2 1.5.4 1.5.7: A small open source Python web framework
-dev-python/pyrax 1.9.2 1.9.3 1.9.4: Python language bindings for OpenStack Clouds
+dev-python/pyrax 1.9.2 1.9.3 1.9.4 1.9.7: Python language bindings for OpenStack Clouds
 dev-python/pyregion 1.1.4: Python module to parse ds9 region file
 dev-python/pyrex 0.9.9-r1: A language for writing Python extension modules
 dev-python/pyrfc3339 0.2 1.0: Generates and parses RFC 3339 timestamps
