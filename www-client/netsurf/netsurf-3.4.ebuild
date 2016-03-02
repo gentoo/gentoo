@@ -1,11 +1,11 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 
 NETSURF_COMPONENT_TYPE=binary
-NETSURF_BUILDSYSTEM=buildsystem-1.2
+NETSURF_BUILDSYSTEM=buildsystem-1.5
 inherit netsurf
 
 DESCRIPTION="a free, open source web browser"
@@ -26,37 +26,40 @@ REQUIRED_USE="|| ( fbcon gtk )
 	fbcon? ( ^^ ( fbcon_frontend_able fbcon_frontend_linux fbcon_frontend_sdl
 		fbcon_frontend_vnc fbcon_frontend_x ) )"
 
-RDEPEND="dev-libs/libxml2:2[${MULTILIB_USEDEP}]
+RDEPEND=">=dev-libs/libnsutils-0.0.2[${MULTILIB_USEDEP}]
+	>=dev-libs/libutf8proc-1.1.6-r1[${MULTILIB_USEDEP}]
+	dev-libs/libxml2:2[${MULTILIB_USEDEP}]
 	net-misc/curl[${MULTILIB_USEDEP}]
-	>=dev-libs/libcss-0.4.0[${MULTILIB_USEDEP}]
-	>=net-libs/libhubbub-0.3.0-r1[${MULTILIB_USEDEP}]
-	bmp? ( >=media-libs/libnsbmp-0.1.1[${MULTILIB_USEDEP}] )
-	fbcon? ( >=dev-libs/libnsfb-0.1.2[${MULTILIB_USEDEP}]
+	>=dev-libs/libcss-0.6.0[${MULTILIB_USEDEP}]
+	>=net-libs/libhubbub-0.3.1-r1[${MULTILIB_USEDEP}]
+	>=net-libs/libdom-0.3.0[${MULTILIB_USEDEP}]
+	bmp? ( >=media-libs/libnsbmp-0.1.2-r1[${MULTILIB_USEDEP}] )
+	fbcon? ( >=dev-libs/libnsfb-0.1.3-r1[${MULTILIB_USEDEP}]
 		truetype? ( media-fonts/dejavu
 			>=media-libs/freetype-2.5.0.1[${MULTILIB_USEDEP}] )
 	)
-	gif? ( >=media-libs/libnsgif-0.1.1[${MULTILIB_USEDEP}] )
+	gif? ( >=media-libs/libnsgif-0.1.2-r1[${MULTILIB_USEDEP}] )
 	gtk? ( >=dev-libs/glib-2.34.3:2[${MULTILIB_USEDEP}]
 		gnome-base/libglade:2.0[${MULTILIB_USEDEP}]
 		>=x11-libs/gtk+-2.24.23:2[${MULTILIB_USEDEP}] )
 	gstreamer? ( media-libs/gstreamer:0.10[${MULTILIB_USEDEP}] )
-	javascript? ( >=dev-libs/nsgenbind-0.1.1[${MULTILIB_USEDEP}]
+	javascript? ( >=dev-libs/nsgenbind-0.1.2-r1[${MULTILIB_USEDEP}]
 		dev-lang/spidermonkey:0= )
 	jpeg? ( >=virtual/jpeg-0-r2:0[${MULTILIB_USEDEP}] )
 	mng? ( >=media-libs/libmng-1.0.10-r2[${MULTILIB_USEDEP}] )
 	pdf-writer? ( media-libs/libharu[${MULTILIB_USEDEP}] )
 	png? ( >=media-libs/libpng-1.2.51:0[${MULTILIB_USEDEP}] )
-	svg? ( svgtiny? ( >=media-libs/libsvgtiny-0.1.2[${MULTILIB_USEDEP}] )
+	svg? ( svgtiny? ( >=media-libs/libsvgtiny-0.1.3-r1[${MULTILIB_USEDEP}] )
 		!svgtiny? ( gnome-base/librsvg:2[${MULTILIB_USEDEP}] ) )
 	webp? ( >=media-libs/libwebp-0.3.0[${MULTILIB_USEDEP}] )"
 DEPEND="${RDEPEND}
-	rosprite? ( >=media-libs/librosprite-0.1.1[${MULTILIB_USEDEP}] )"
+	dev-libs/check[${MULTILIB_USEDEP}]
+	rosprite? ( >=media-libs/librosprite-0.1.2-r1[${MULTILIB_USEDEP}] )"
 
 PATCHES=( "${FILESDIR}"/${P}-CFLAGS.patch
-	"${FILESDIR}"/${PN}-3.0-framebuffer-pkgconfig.patch
+	"${FILESDIR}"/${P}-framebuffer-pkgconfig.patch
 	"${FILESDIR}"/${P}-conditionally-include-image-headers.patch
-	"${FILESDIR}"/${P}-glibc2.20.patch
-	"${FILESDIR}"/${P}-pdf-writer.patch )
+	"${FILESDIR}"/${PN}-3.3-pdf-writer.patch )
 DOCS=( fb.modes README Docs/USING-Framebuffer
 	Docs/ideas/{cache,css-engine,render-library}.txt )
 
@@ -85,6 +88,7 @@ src_configure() {
 		NETSURF_USE_VIDEO=$(usex gstreamer YES NO)
 		NETSURF_USE_MOZJS=$(usex javascript YES NO)
 		NETSURF_USE_JS=NO
+		NETSURF_USE_DUKTAPE=NO
 		NETSURF_USE_HARU_PDF=$(usex pdf-writer YES NO)
 		NETSURF_USE_NSSVG=$(usex svg $(usex svgtiny YES NO) NO)
 		NETSURF_USE_RSVG=$(usex svg $(usex svgtiny NO YES) NO)
@@ -120,9 +124,16 @@ src_install() {
 		netsurf_makeconf=( "${netsurf_makeconf[@]/TARGET=*/TARGET=framebuffer}" )
 		netsurf_src_install
 		elog "framebuffer binary has been installed as netsurf-fb"
-		mv -v "${ED}"usr/bin/netsurf{,-fb} || die
-		make_desktop_entry "${EROOT}"usr/bin/netsurf-fb NetSurf-framebuffer netsurf "Network;WebBrowser"
-
+		pushd "${ED}"usr/bin >/dev/null || die
+		eshopts_push -s nullglob
+		# bug 552562
+		local binaries=(netsurf{,.*})
+		eshopts_pop
+		for f in "${binaries[@]}" ; do
+			mv -v $f ${f/netsurf/netsurf-fb} || die
+			make_desktop_entry "${EROOT}"usr/bin/${f/netsurf/netsurf-fb} NetSurf-framebuffer${f/netsurf} netsurf "Network;WebBrowser"
+		done
+		popd >/dev/null || die
 		elog "In order to setup the framebuffer console, netsurf needs an /etc/fb.modes"
 		elog "You can use an example from /usr/share/doc/${PF}/fb.modes.* (bug 427092)."
 		elog "Please make /dev/input/mice readable to the account using netsurf-fb."
@@ -132,8 +143,16 @@ src_install() {
 		netsurf_makeconf=( "${netsurf_makeconf[@]/TARGET=*/TARGET=gtk}" )
 		netsurf_src_install
 		elog "netsurf gtk version has been installed as netsurf-gtk"
-		mv -v "${ED}"/usr/bin/netsurf{,-gtk} || die
-		make_desktop_entry "${EROOT}"usr/bin/netsurf-gtk NetSurf-gtk netsurf "Network;WebBrowser"
+		pushd "${ED}"usr/bin >/dev/null || die
+		eshopts_push -s nullglob
+		# bug 552562
+		local binaries=(netsurf{,.*})
+		eshopts_pop
+		for f in "${binaries[@]}" ; do
+			mv -v $f ${f/netsurf/netsurf-gtk} || die
+			make_desktop_entry "${EROOT}"usr/bin/${f/netsurf/netsurf-gtk} NetSurf-gtk${f/netsurf} netsurf "Network;WebBrowser"
+		done
+		popd >/dev/null || die
 	fi
 
 	insinto /usr/share/pixmaps

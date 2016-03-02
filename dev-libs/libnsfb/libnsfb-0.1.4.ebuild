@@ -1,17 +1,17 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 
-NETSURF_BUILDSYSTEM=buildsystem-1.2
+NETSURF_BUILDSYSTEM=buildsystem-1.4
 inherit netsurf
 
 DESCRIPTION="framebuffer abstraction library, written in C"
 HOMEPAGE="http://www.netsurf-browser.org/projects/libnsfb/"
 
 LICENSE="MIT"
-SLOT="0"
+SLOT="0/${PV}"
 KEYWORDS="~amd64 ~arm"
 IUSE="sdl test vnc wayland xcb"
 
@@ -24,8 +24,7 @@ RDEPEND="sdl? ( >=media-libs/libsdl-1.2.15-r4[static-libs?,${MULTILIB_USEDEP}] )
 		>=x11-libs/xcb-util-keysyms-0.3.9-r1[static-libs?,${MULTILIB_USEDEP}] )"
 DEPEND="${RDEPEND}"
 
-PATCHES=( "${FILESDIR}"/${PN}-0.1.0-autodetect.patch
-	"${FILESDIR}"/${P}-glibc2.20.patch )
+PATCHES=( "${FILESDIR}"/${PN}-0.1.0-autodetect.patch )
 
 DOCS=( usage )
 

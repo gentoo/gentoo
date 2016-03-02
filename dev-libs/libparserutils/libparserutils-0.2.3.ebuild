@@ -4,13 +4,14 @@
 
 EAPI=5
 
+NETSURF_BUILDSYSTEM=buildsystem-1.5
 inherit flag-o-matic netsurf
 
 DESCRIPTION="library for building efficient parsers, written in C"
 HOMEPAGE="http://www.netsurf-browser.org/projects/libparserutils/"
 
 LICENSE="MIT"
-SLOT="0"
+SLOT="0/${PV}"
 KEYWORDS="~amd64 ~arm ~m68k-mint"
 IUSE="iconv test"
 
