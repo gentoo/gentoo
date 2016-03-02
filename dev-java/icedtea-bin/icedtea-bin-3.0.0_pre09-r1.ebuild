@@ -17,7 +17,7 @@ SRC_URI="doc? ( ${dist}/${PN}-doc-${TARBALL_VERSION}.tar.xz )
 for arch in amd64 arm ppc64 x86; do
 	SRC_URI+="
 		${arch}? (
-			${dist}/${PN}-core-${TARBALL_VERSION}-${arch}.tar.xz
+			${dist}/${PN}-core-${TARBALL_VERSION}-r1-${arch}.tar.xz
 			examples? ( ${dist}/${PN}-examples-${TARBALL_VERSION}-${arch}.tar.xz )
 		)"
 done
