@@ -5,6 +5,9 @@
 		<email>systemd@gentoo.org</email>
 		<name>Gentoo systemd team</name>
 	</maintainer>
+	<slots>
+		<subslots>Incremented for ABI breaks in libudev or libsystemd</subslots>
+	</slots>
 	<use>
 		<flag name="apparmor">Enable AppArmor support</flag>
 		<flag name="audit">Enable support for <pkg>sys-process/audit</pkg></flag>
