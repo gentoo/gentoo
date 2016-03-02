@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -97,7 +97,7 @@ CDEPEND="~dev-java/netbeans-harness-${PV}
 	dev-java/commons-lang:2.1
 	dev-java/commons-logging:0
 	dev-java/icu4j:4.4
-	dev-java/iso-relax:0
+	<=dev-java/iso-relax-20050331-r3:0
 	dev-java/jdbc-mysql:0
 	dev-java/jdbc-postgresql:0
 	>=dev-java/json-simple-1.1:0
