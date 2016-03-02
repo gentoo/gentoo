@@ -1,0 +1,80 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<xs:schema xmlns:xs='http://www.w3.org/2001/XMLSchema'>
+	<xs:element name='projects'>
+		<xs:complexType>
+			<xs:choice minOccurs='0' maxOccurs='unbounded'>
+				<xs:element name='project' type='projectType'/>
+			</xs:choice>
+		</xs:complexType>
+		<xs:key name='projectKey'>
+			<xs:selector xpath='project'/>
+			<xs:field xpath='email'/>
+		</xs:key>
+		<xs:keyref name='subprojectRef' refer='projectKey'>
+			<xs:selector xpath='project/subproject'/>
+			<xs:field xpath='@ref'/>
+		</xs:keyref>
+	</xs:element>
+
+	<xs:complexType name='projectType'>
+		<xs:sequence>
+			<xs:element name='email' type='emailType'
+				minOccurs='1' maxOccurs='1'/>
+			<xs:element name='name' type='xs:token'
+				minOccurs='0' maxOccurs='1'/>
+			<xs:element name='url' type='urlType'
+				minOccurs='0' maxOccurs='1'/>
+			<xs:element name='description' type='xs:token'
+				minOccurs='0' maxOccurs='1'/>
+			<xs:element name='subproject' type='subprojectType'
+				minOccurs='0' maxOccurs='unbounded'/>
+			<xs:element name='member' type='memberType'
+				minOccurs='0' maxOccurs='unbounded'/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name='subprojectType'>
+		<xs:attribute name='inherit-members' type='numericBoolType'/>
+		<xs:attribute name='ref' type='projectRefType'/>
+	</xs:complexType>
+
+	<xs:simpleType name='projectRefType'>
+		<xs:restriction base='emailType'>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:complexType name='memberType'>
+		<xs:all>
+			<xs:element name='email' type='emailType'
+				minOccurs='1' maxOccurs='1'/>
+			<xs:element name='name' type='xs:token'
+				minOccurs='0' maxOccurs='1'/>
+			<xs:element name='role' type='xs:token'
+				minOccurs='0' maxOccurs='1'/>
+		</xs:all>
+		<xs:attribute name='is-lead' type='numericBoolType'/>
+	</xs:complexType>
+
+	<!-- generic types -->
+	<xs:simpleType name='emailType'>
+		<xs:restriction base='xs:token'>
+			<!-- minimal safe regex -->
+			<xs:pattern value="[^@]+@[^.]+\..+"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name='urlType'>
+		<xs:restriction base='xs:token'>
+			<!-- TODO: something better? -->
+			<xs:pattern value="(mailto:[^@]+@[^.]+\..+|https?://.+)"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name='numericBoolType'>
+		<xs:restriction base='xs:integer'>
+			<xs:minInclusive value='0'/>
+			<xs:maxInclusive value='1'/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>
