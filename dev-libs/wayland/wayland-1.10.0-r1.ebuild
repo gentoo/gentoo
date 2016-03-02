@@ -40,8 +40,10 @@ DEPEND="${RDEPEND}
 	)
 	virtual/pkgconfig"
 
-# dtd validation configure patch is upstream and will be part of 1.11
-PATCHES=( "${FILESDIR}/${PV}-build-fix-configure-disable-dtd-validation.patch" )
+PATCHES=(
+	"${FILESDIR}/${PV}-build-fix-configure-disable-dtd-validation.patch"
+	"${FILESDIR}/${PV}-scanner-avoid-executable-stack.patch"
+)
 
 multilib_src_configure() {
 	local myeconfargs=(
