@@ -21,10 +21,19 @@ REQUIRED_USE="ecdsa? ( ssl )
 	python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="
-	dane? ( >=dev-libs/openssl-1.0.1h-r2:0[${MULTILIB_USEDEP}] )
-	ecdsa? ( >=dev-libs/openssl-1.0.1h-r2:0[-bindist,${MULTILIB_USEDEP}] )
-	gost? ( >=dev-libs/openssl-1.0.1h-r2:0[${MULTILIB_USEDEP}] )
 	python? ( ${PYTHON_DEPS} )
+	dane? (
+		!libressl? ( >=dev-libs/openssl-1.0.1h-r2:0[${MULTILIB_USEDEP}] )
+		libressl? ( dev-libs/libressl[${MULTILIB_USEDEP}] )
+	)
+	ecdsa? (
+		!libressl? ( >=dev-libs/openssl-1.0.1h-r2:0[-bindist,${MULTILIB_USEDEP}] )
+		libressl? ( dev-libs/libressl[${MULTILIB_USEDEP}] )
+	)
+	gost? (
+		!libressl? ( >=dev-libs/openssl-1.0.1h-r2:0[${MULTILIB_USEDEP}] )
+		libressl? ( dev-libs/libressl[${MULTILIB_USEDEP}] )
+	)
 	ssl? (
 		!libressl? ( >=dev-libs/openssl-1.0.1h-r2:0[${MULTILIB_USEDEP}] )
 		libressl? ( dev-libs/libressl[${MULTILIB_USEDEP}] )

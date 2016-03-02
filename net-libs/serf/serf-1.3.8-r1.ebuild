@@ -13,11 +13,11 @@ SRC_URI="https://serf.googlecode.com/svn/src_releases/${P}.tar.bz2"
 LICENSE="Apache-2.0"
 SLOT="1"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris"
-IUSE="kerberos static-libs"
+IUSE="kerberos static-libs libressl"
 
 RDEPEND="dev-libs/apr:1=
 	dev-libs/apr-util:1=
-	dev-libs/openssl:0=
+	!libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= )
 	sys-libs/zlib:0=
 	kerberos? ( virtual/krb5 )"
 DEPEND="${RDEPEND}

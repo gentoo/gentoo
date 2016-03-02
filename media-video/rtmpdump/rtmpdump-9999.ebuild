@@ -14,12 +14,12 @@ EGIT_REPO_URI="git://git.ffmpeg.org/rtmpdump"
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
 KEYWORDS=""
-IUSE="gnutls polarssl ssl"
+IUSE="gnutls polarssl ssl libressl"
 
 DEPEND="ssl? (
 		gnutls? ( >=net-libs/gnutls-2.12.23-r6[${MULTILIB_USEDEP}] )
 		polarssl? ( !gnutls? ( >=net-libs/polarssl-1.3.4[${MULTILIB_USEDEP}] ) )
-		!gnutls? ( !polarssl? ( >=dev-libs/openssl-1.0.1h-r2[${MULTILIB_USEDEP}] ) )
+		!gnutls? ( !polarssl? ( !libressl? ( >=dev-libs/openssl-1.0.1h-r2[${MULTILIB_USEDEP}] ) libressl? ( dev-libs/libressl ) ) )
 		>=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}]
 	)"
 RDEPEND="${DEPEND}"

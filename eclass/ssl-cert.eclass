@@ -23,11 +23,18 @@
 # Use flag to append dependency to.
 : ${SSL_CERT_USE:=ssl}
 
-if [[ "${SSL_CERT_MANDATORY}" == "0" ]]; then
-	DEPEND="${SSL_CERT_USE}? ( dev-libs/openssl )"
-	IUSE="${SSL_CERT_USE}"
-else
-	DEPEND="dev-libs/openssl"
+# @ECLASS-VARIABLE: SSL_DEPS_SKIP
+# @DESCRIPTION:
+# Set to non zero to skip adding to DEPEND and IUSE.
+: ${SSL_DEPS_SKIP:=0}
+
+if [[ "${SSL_DEPS_SKIP}" == "0" ]]; then
+	if [[ "${SSL_CERT_MANDATORY}" == "0" ]]; then
+		DEPEND="${SSL_CERT_USE}? ( dev-libs/openssl )"
+		IUSE="${SSL_CERT_USE}"
+	else
+		DEPEND="dev-libs/openssl"
+	fi
 fi
 
 # @FUNCTION: gen_cnf
