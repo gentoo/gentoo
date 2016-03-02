@@ -487,7 +487,7 @@ app-cdr/xcdroast 0.98_alpha16 0.98_alpha16-r1: Lightweight cdrtools front-end fo
 app-cdr/xdvdfs-tools 2.1-r1: Tools for manipulating Xbox ISO images
 app-cdr/xfburn 0.5.2 0.5.4: GTK+ based CD and DVD burning application
 app-crypt/WiRouterKeyRec 1.1.2: Recovery tool for wpa passphrase
-app-crypt/acme 0.1.0 0.4.0 9999: An implementation of the ACME protocol
+app-crypt/acme 0.1.0 0.4.1 9999: An implementation of the ACME protocol
 app-crypt/acr38u 1.7.11-r1 1.7.11-r3: Non CCID driver for ACR38 AC1038-based Smart Card Reader
 app-crypt/aescrypt 3.0.6b: Advanced file encryption using AES
 app-crypt/aespipe 2.3e 2.4c-r1 2.4d: Encrypts data from stdin to stdout
@@ -545,7 +545,7 @@ app-crypt/keybase 0.8.13 0.8.18 0.8.22 0.8.23 0.8.24 0.8.25 1.0.8.0 1.0.9.0 1.0.
 app-crypt/keylookup 2.2 2.2-r9999: A tool to fetch PGP keys from keyservers
 app-crypt/keynote 2.3-r3: The KeyNote Trust-Management System
 app-crypt/kstart 4.1: Modified versions of kinit for refreshing kerberos tickets automatically
-app-crypt/letsencrypt 0.4.0 9999: Let's encrypt client to automate deployment of X.509 certificates
+app-crypt/letsencrypt 0.4.1 9999: Let's encrypt client to automate deployment of X.509 certificates
 app-crypt/letsencrypt-apache 9999: Apache plugin for letsencrypt
 app-crypt/libscrypt 1.19 1.20: Shared library to impliment the scrypt algorithm. See http://www.tarsnap.com/scrypt.html.
 app-crypt/libsecret 0.18.3 0.18.4: GObject library for accessing the freedesktop.org Secret Service API
@@ -8727,7 +8727,7 @@ dev-ruby/http 0.6.3 0.6.3-r1 0.9.8 1.0.2: An easy-to-use client library for maki
 dev-ruby/http-cookie 1.0.2-r1: A ruby library to handle HTTP cookies
 dev-ruby/http-form_data 1.0.1: Utility-belt to build form data request bodies
 dev-ruby/http_parser_rb 0.6.0 0.6.0-r1: Simple callback-based HTTP request/response parser
-dev-ruby/httparty 0.13.4 0.13.5 0.13.7: Makes http fun! Also, makes consuming restful web services dead easy
+dev-ruby/httparty 0.13.7: Makes http fun! Also, makes consuming restful web services dead easy
 dev-ruby/httpauth 0.2.1: A library supporting the full HTTP Authentication protocol as specified in RFC 2617
 dev-ruby/httpclient 2.6.0.1 2.7.0.1 2.7.1: 'httpclient' gives something like the functionality of libwww-perl (LWP) in Ruby
 dev-ruby/i18n 0.6.9-r1 0.6.11 0.7.0 0.7.0-r1: Add Internationalization support to your Ruby application
@@ -8796,7 +8796,7 @@ dev-ruby/meterpreter_bins 0.0.22: Compiled binaries for Metasploit's Meterpreter
 dev-ruby/method_source 0.8.2-r3: Retrieve the source code for a method
 dev-ruby/mime-types 1.25.1 2.6.2 3.0: Provides a mailcap-like MIME Content-Type lookup for Ruby
 dev-ruby/mime-types-data 3.2015.1120 3.2016.0221: Registry for information about MIME media type definitions
-dev-ruby/mimemagic 0.3.0 0.3.1: Fast mime detection by extension or content
+dev-ruby/mimemagic 0.3.1: Fast mime detection by extension or content
 dev-ruby/mini_magick 4.3.6 4.4.0: Manipulate images with minimal use of memory
 dev-ruby/mini_shoulda 0.5.0-r1: A minimal shoulda DSL built on top of MiniTest::Spec
 dev-ruby/minitest 4.7.5-r1 4.7.5-r2 5.3.3-r1 5.5.1 5.8.3 5.8.4: minitest/unit is a small and fast replacement for ruby's huge and slow test/unit
@@ -8871,8 +8871,8 @@ dev-ruby/polyglot 0.3.5: Polyglot provides support for fully-custom DSLs
 dev-ruby/posix-spawn 0.3.9 0.3.10 0.3.11: The posix-spawn library aims to implement a subset of the Ruby 1.9 Process::spawn
 dev-ruby/postgres_ext 2.4.1: Adds native PostgreSQL data types to ActiveRecord and querying extensions for ActiveRecord and Arel
 dev-ruby/power_assert 0.2.6 0.2.7: Shows each value of variables and method calls in the expression
-dev-ruby/prawn 1.2.1-r2 1.3.0 2.0.1 2.0.2: Fast, Nimble PDF Generation For Ruby
-dev-ruby/prawn-table 0.2.1 0.2.2: Provides support for tables in Prawn
+dev-ruby/prawn 1.3.0 2.0.2 2.1.0: Fast, Nimble PDF Generation For Ruby
+dev-ruby/prawn-table 0.2.2: Provides support for tables in Prawn
 dev-ruby/priorityqueue 0.1.2: A fibonacci-heap priority-queue implementation
 dev-ruby/protected_attributes 1.1.3: Protect attributes from mass-assignment in ActiveRecord models
 dev-ruby/pry 0.9.12.6-r1 0.10.1 0.10.2 0.10.3: Pry is a powerful alternative to the standard IRB shell for Ruby
@@ -9547,7 +9547,7 @@ dev-util/itstool 2.0.2: Translation tool for XML documents that uses gettext fil
 dev-util/jarwizard 2.50: Takes the hassle out of creating executable JAR files for your Java programs
 dev-util/jay 1.1.1-r2: A LALR(1) parser generator: Berkeley yacc retargeted to C# and Java
 dev-util/jconfig 2.8-r3 2.8.5 2.9: jConfig is an extremely helpful utility, providing a simple API for the management of properties
-dev-util/jenkins-bin 1.642.2 1.650: Extensible continuous integration server
+dev-util/jenkins-bin 1.642.2 1.650 1.651: Extensible continuous integration server
 dev-util/jif 3.1_rc1: JIF is an IDE for the creation of text adventures based on Graham Nelson's Inform standard
 dev-util/kbuild 0.1.9998_pre20120806 0.1.9998_pre20131130 9999: A makefile framework for writing simple makefiles for complex tasks
 dev-util/kdbg 2.5.5: A graphical debugger interface
