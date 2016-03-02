@@ -1,13 +1,13 @@
 DEFINED_PHASES=configure install postinst prepare setup unpack
-DEPEND=>=dev-libs/glib-2.16 purple? ( net-im/pidgin ) libevent? ( dev-libs/libevent ) otr? ( >=net-libs/libotr-4 ) gnutls? ( net-libs/gnutls ) !gnutls? ( nss? ( dev-libs/nss ) !nss? ( ssl? ( dev-libs/openssl:0 ) ) ) dev-lang/python virtual/pkgconfig selinux? ( sec-policy/selinux-bitlbee ) test? ( dev-libs/check ) virtual/pkgconfig >=dev-vcs/git-1.8.2.1
+DEPEND=>=dev-libs/glib-2.16 purple? ( net-im/pidgin ) libevent? ( dev-libs/libevent ) otr? ( >=net-libs/libotr-4 ) gnutls? ( net-libs/gnutls ) !gnutls? ( nss? ( dev-libs/nss ) !nss? ( ssl? ( !libressl? ( dev-libs/openssl:0 ) libressl? ( dev-libs/libressl:= ) ) ) ) dev-lang/python virtual/pkgconfig selinux? ( sec-policy/selinux-bitlbee ) test? ( dev-libs/check ) virtual/pkgconfig >=dev-vcs/git-1.8.2.1
 DESCRIPTION=irc to IM gateway that support multiple IM protocols
 EAPI=5
 HOMEPAGE=http://www.bitlbee.org/
-IUSE=debug gnutls ipv6 +xmpp libevent msn nss +oscar otr +plugins purple selinux skype ssl test twitter +yahoo xinetd python_targets_python2_7
+IUSE=debug gnutls ipv6 +xmpp libevent msn nss +oscar otr +plugins purple selinux skype ssl test twitter +yahoo xinetd libressl python_targets_python2_7
 LICENSE=GPL-2
-RDEPEND=>=dev-libs/glib-2.16 purple? ( net-im/pidgin ) libevent? ( dev-libs/libevent ) otr? ( >=net-libs/libotr-4 ) gnutls? ( net-libs/gnutls ) !gnutls? ( nss? ( dev-libs/nss ) !nss? ( ssl? ( dev-libs/openssl:0 ) ) ) virtual/logger skype? ( dev-python/skype4py[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),python_single_target_python2_7(+)] net-im/skype ) xinetd? ( sys-apps/xinetd )
+RDEPEND=>=dev-libs/glib-2.16 purple? ( net-im/pidgin ) libevent? ( dev-libs/libevent ) otr? ( >=net-libs/libotr-4 ) gnutls? ( net-libs/gnutls ) !gnutls? ( nss? ( dev-libs/nss ) !nss? ( ssl? ( !libressl? ( dev-libs/openssl:0 ) libressl? ( dev-libs/libressl:= ) ) ) ) virtual/logger skype? ( dev-python/skype4py[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),python_single_target_python2_7(+)] net-im/skype ) xinetd? ( sys-apps/xinetd )
 REQUIRED_USE=|| ( purple xmpp msn oscar yahoo ) msn? ( || ( gnutls nss ssl ) ) xmpp? ( !nss )
 SLOT=0
 _eclass_exported_funcs=pkg_postinst:- pkg_setup:- src_unpack:git-r3 src_prepare:- src_configure:- src_install:-
 _eclasses_=eutils	9d81603248f2ba3ec59124320d123e5e	git-r3	ef66dfc3db09f327af21cf32f140fb2b	multilib	3972ca401cf7dbb430df9995f5d8d580	python-single-r1	2ebea8fbab356d63110245129a67a6dd	python-utils-r1	2e6826f6a93ad2acf904eecf5b5fb6d2	systemd	3165c885f3c71ffae7a867d931fb0e07	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	user	906f3c8eb3a2350a4f1191a89baa3e46
-_md5_=075bb8150bce01770fbee34f5b9d2b23
+_md5_=855d72ea6edb404bbea5a243a526ac29
