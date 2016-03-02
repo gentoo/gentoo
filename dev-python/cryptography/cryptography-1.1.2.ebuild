@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -42,6 +42,8 @@ DEPEND="${RDEPEND}
 	)"
 
 DOCS=( AUTHORS.rst CONTRIBUTING.rst README.rst )
+
+PATCHES=( "${FILESDIR}/${PN}-1.2.2-openssl-1.0.2g-mem_buf.patch" )
 
 python_test() {
 	py.test -v -v -x || die "Tests fail with ${EPYTHON}"
