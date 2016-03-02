@@ -23,7 +23,6 @@ inherit cmake-utils eutils flag-o-matic gnome2-utils kde5-functions versionator 
 
 if [[ ${KDE_BUILD_TYPE} = live ]]; then
 	case ${KDE_SCM} in
-		svn) inherit subversion ;;
 		git) inherit git-r3 ;;
 	esac
 fi
@@ -281,33 +280,6 @@ _calculate_live_repo() {
 	SRC_URI=""
 
 	case ${KDE_SCM} in
-		svn)
-			# @ECLASS-VARIABLE: ESVN_MIRROR
-			# @DESCRIPTION:
-			# This variable allows easy overriding of default kde mirror service
-			# (anonsvn) with anything else you might want to use.
-			ESVN_MIRROR=${ESVN_MIRROR:=svn://anonsvn.kde.org/home/kde}
-
-			local branch_prefix="trunk/KDE"
-
-			if [[ ${PV} == ??.??.49.9999 && ${CATEGORY} = kde-apps ]]; then
-				branch_prefix="branches/Applications/$(get_version_component_range 1-2)"
-			fi
-
-			if [[ ${PV} != 9999 && ${CATEGORY} = kde-plasma ]]; then
-				branch_prefix="branches/plasma/$(get_version_component_range 1-2)"
-			fi
-
-			local _kmname
-
-			if [[ -n ${KMNAME} ]]; then
-				_kmname=${KMNAME}
-			else
-				_kmname=${PN}
-			fi
-
-			ESVN_REPO_URI="${ESVN_MIRROR}/${branch_prefix}/${_kmname}"
-			;;
 		git)
 			# @ECLASS-VARIABLE: EGIT_MIRROR
 			# @DESCRIPTION:
@@ -378,9 +350,6 @@ kde5_src_unpack() {
 
 	if [[ ${KDE_BUILD_TYPE} = live ]]; then
 		case ${KDE_SCM} in
-			svn)
-				subversion_src_unpack
-				;;
 			git)
 				git-r3_src_unpack
 				;;

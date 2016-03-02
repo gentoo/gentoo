@@ -63,7 +63,7 @@ debug-print "${ECLASS}: ${KDEBASE} ebuild recognized"
 : ${KDE_SCM:=git}
 
 case ${KDE_SCM} in
-	svn|git) ;;
+	git) ;;
 	*) die "KDE_SCM: ${KDE_SCM} is not supported" ;;
 esac
 
