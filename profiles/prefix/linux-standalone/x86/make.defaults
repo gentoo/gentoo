@@ -4,4 +4,4 @@
 
 ARCH="x86"
 CHOST="i686-pc-linux-gnu"
-ACCEPT_KEYWORDS="~x86-linux"
+ACCEPT_KEYWORDS="~x86 ~x86-linux"

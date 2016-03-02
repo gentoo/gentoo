@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -18,7 +18,7 @@ IUSE="debug dnstap doc caps +fastparser idn systemd"
 RDEPEND="
 	>=net-libs/gnutls-3.0
 	>=dev-libs/jansson-2.3
-	dev-db/lmdb
+	>=dev-db/lmdb-0.9.15
 	>=dev-libs/userspace-rcu-0.5.4
 	caps? ( >=sys-libs/libcap-ng-0.6.4 )
 	dnstap? ( dev-libs/fstrm dev-libs/protobuf-c )
