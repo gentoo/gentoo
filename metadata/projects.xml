@@ -1849,10 +1849,10 @@
       <name>Jack Morgan</name>
       <role>Developer</role>
     </member>
-    <member is-lead="1">
+    <member>
       <email>johu@gentoo.org</email>
       <name>Johannes Huber</name>
-      <role>Lead</role>
+      <role>Developer</role>
     </member>
     <member>
       <email>kensington@gentoo.org</email>
