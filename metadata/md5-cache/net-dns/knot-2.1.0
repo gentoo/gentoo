@@ -1,14 +1,14 @@
 DEFINED_PHASES=compile configure install postinst prepare test
-DEPEND=>=net-libs/gnutls-3.0 >=dev-libs/jansson-2.3 dev-db/lmdb >=dev-libs/userspace-rcu-0.5.4 caps? ( >=sys-libs/libcap-ng-0.6.4 ) dnstap? ( dev-libs/fstrm dev-libs/protobuf-c ) idn? ( net-dns/libidn ) systemd? ( sys-apps/systemd ) virtual/pkgconfig doc? ( dev-python/sphinx app-text/texlive-core sys-apps/texinfo ) virtual/pkgconfig
+DEPEND=>=net-libs/gnutls-3.0 >=dev-libs/jansson-2.3 >=dev-db/lmdb-0.9.15 >=dev-libs/userspace-rcu-0.5.4 caps? ( >=sys-libs/libcap-ng-0.6.4 ) dnstap? ( dev-libs/fstrm dev-libs/protobuf-c ) idn? ( net-dns/libidn ) systemd? ( sys-apps/systemd ) virtual/pkgconfig doc? ( dev-python/sphinx app-text/texlive-core sys-apps/texinfo ) virtual/pkgconfig
 DESCRIPTION=High-performance authoritative-only DNS server
 EAPI=5
 HOMEPAGE=http://www.knot-dns.cz/
 IUSE=debug dnstap doc caps +fastparser idn systemd
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-3
-RDEPEND=>=net-libs/gnutls-3.0 >=dev-libs/jansson-2.3 dev-db/lmdb >=dev-libs/userspace-rcu-0.5.4 caps? ( >=sys-libs/libcap-ng-0.6.4 ) dnstap? ( dev-libs/fstrm dev-libs/protobuf-c ) idn? ( net-dns/libidn ) systemd? ( sys-apps/systemd )
+RDEPEND=>=net-libs/gnutls-3.0 >=dev-libs/jansson-2.3 >=dev-db/lmdb-0.9.15 >=dev-libs/userspace-rcu-0.5.4 caps? ( >=sys-libs/libcap-ng-0.6.4 ) dnstap? ( dev-libs/fstrm dev-libs/protobuf-c ) idn? ( net-dns/libidn ) systemd? ( sys-apps/systemd )
 SLOT=0
 SRC_URI=https://secure.nic.cz/files/knot-dns/knot-2.1.0.tar.xz
 _eclass_exported_funcs=pkg_postinst:- src_prepare:- src_configure:- src_compile:- src_test:- src_install:-
 _eclasses_=bash-completion-r1	acf715fa09463f043fbfdc1640f3fb85	eutils	9d81603248f2ba3ec59124320d123e5e	multilib	3972ca401cf7dbb430df9995f5d8d580	systemd	3165c885f3c71ffae7a867d931fb0e07	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	user	906f3c8eb3a2350a4f1191a89baa3e46
-_md5_=ecfd0a5fa6d203380b32cb196099772d
+_md5_=2eaa6a587096a88ed3239038dae19da0
