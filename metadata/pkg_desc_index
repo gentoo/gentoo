@@ -558,7 +558,7 @@ app-crypt/md5deep 4.3 4.4: Expanded md5sum program with recursive and comparison
 app-crypt/md6sum 1.0-r2: A C implementation of MD6
 app-crypt/mdcrack 1.2: A MD4/MD5/NTML hashes bruteforcer
 app-crypt/mhash 0.9.9.9-r1: library providing a uniform interface to a large number of hash algorithms
-app-crypt/mit-krb5 1.13.2-r2 1.13.2-r3 1.14: MIT Kerberos V
+app-crypt/mit-krb5 1.13.2-r2 1.13.2-r3 1.14 1.14.1: MIT Kerberos V
 app-crypt/mit-krb5-appl 1.0.3: Kerberized applications split from the main MIT Kerberos V distribution
 app-crypt/monkeysign 2.0.2-r1: A user-friendly commandline tool to sign OpenGPG keys
 app-crypt/monkeysphere 0.36-r1 0.36-r2 0.37: Leverage the OpenPGP web of trust for OpenSSH and Web authentication
@@ -7185,7 +7185,7 @@ dev-python/iniparse 0.4-r1: Better INI parser for Python
 dev-python/inotifyx 0.2.2: Python bindings to the Linux inotify file system event monitoring API
 dev-python/intelhex 2.0: Python library for Intel HEX files manipulations
 dev-python/into 0.1.3 0.2.1 0.2.2: Data migration utilities
-dev-python/ioflo 1.0.2 1.2.1: Automated Reasoning Engine and Flow Based Programming Framework
+dev-python/ioflo 1.0.2 1.2.1 1.5.0: Automated Reasoning Engine and Flow Based Programming Framework
 dev-python/ipaddr 2.1.10-r1 2.1.11: Python IP address manipulation library
 dev-python/ipaddress 1.0.14 1.0.15 1.0.16: IPv4/IPv6 manipulation library, backport of the ipaddress module
 dev-python/ipcalc 1.0.0 1.1.1 1.1.2 1.1.3: IP subnet calculator
@@ -7842,7 +7842,7 @@ dev-python/rackspace-monitoring 0.6.5: Client library for Rackspace Cloud Monito
 dev-python/rackspace-monitoring-cli 0.6.9 0.6.10: Command Line Utility for Rackspace Cloud Monitoring (MaaS)
 dev-python/rackspace-novaclient 1.4: A client for the OpenStack Nova API
 dev-python/radon 1.2 1.2.1 1.2.2: Code Metrics in Python
-dev-python/raet 0.3.8 0.6.1 0.6.3: Reliable Asynchronous Event Transport Protocol
+dev-python/raet 0.3.8 0.6.1 0.6.3 0.6.5: Reliable Asynchronous Event Transport Protocol
 dev-python/rarfile 2.6: Module for RAR archive reading
 dev-python/raven 5.2.0 5.3.0: Raven is a client for Sentry
 dev-python/rax-default-network-flags-python-novaclient-ext 0.1.3 0.1.3-r1 0.2.4 0.3.1: Disk Config extension for python-novaclient
