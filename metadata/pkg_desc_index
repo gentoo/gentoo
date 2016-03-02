@@ -15955,7 +15955,7 @@ sci-visualization/qtiplot 0.9.8.9-r2 0.9.8.9-r3 0.9.8.9-r4: Qt based clone of th
 sci-visualization/quickplot 0.10.6 0.10.8: A fast interactive 2D plotter
 sci-visualization/spectromatic 1.0-r2: Generates time-frequency analysis images from wav files
 sci-visualization/spyview 20111018 20130823: Interactive plotting program
-sci-visualization/veusz 1.11 1.23: Qt scientific plotting package with good Postscript output
+sci-visualization/veusz 1.11 1.23 1.23.2: Qt scientific plotting package with good Postscript output
 sci-visualization/visit 2.7.3 2.8.2 2.9.0: A software that delivers parallel interactive visualizations
 sci-visualization/xd3d 8.3.1: Scientific visualization tool
 sci-visualization/xds-viewer 0.6: Viewing X-ray diffraction and control images in the context of data processing by the XDS
@@ -18133,7 +18133,7 @@ x11-misc/pcmanfm-qt 0.7.0 0.8.0 0.9.0 0.10.0: Fast lightweight tabbed filemanage
 x11-misc/peksystray 0.2.1 0.4.0: A system tray dockapp for window managers supporting docking
 x11-misc/piedock 1.6.6: A little bit like the famous OS X dock but in shape of a pie menu
 x11-misc/ptbatterysystemtray 1.0.0_rc2: A simple battery monitor in the system tray
-x11-misc/py3status 2.8: py3status is an extensible i3status wrapper written in python
+x11-misc/py3status 2.9: py3status is an extensible i3status wrapper written in python
 x11-misc/pypanel 2.4-r1: A lightweight panel/taskbar for X11 window managers
 x11-misc/qcomicbook 0.9.0-r1: A viewer for comic book archives containing jpeg/png images
 x11-misc/qlipper 2.0.2: Lightweight and cross-platform clipboard history applet
