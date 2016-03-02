@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit multilib toolchain-funcs
+inherit multilib toolchain-funcs eutils
 
 DESCRIPTION="Lua binding for OpenSSL library to provide TLS/SSL communication"
 HOMEPAGE="https://github.com/brunoos/luasec http://www.inf.puc-rio.br/~brunoos/luasec/"
@@ -29,6 +29,7 @@ src_prepare() {
 		-e "s#^LUACPATH.*#LUACPATH=$(pkg-config --variable INSTALL_CMOD lua)#" Makefile || die
 	sed -i -e "s/-O2//" src/Makefile || die
 	lua src/options.lua -g /usr/include/openssl/ssl.h > src/options.h || die
+	epatch "${FILESDIR}/${PN}-0.5.1-compdefine.patch"
 }
 
 src_compile() {
