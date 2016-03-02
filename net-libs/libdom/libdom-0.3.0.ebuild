@@ -16,7 +16,7 @@ KEYWORDS="~amd64 ~arm ~m68k-mint"
 IUSE="expat test xml"
 
 RDEPEND=">=dev-libs/libparserutils-0.2.1-r1[static-libs?,${MULTILIB_USEDEP}]
-	>=dev-libs/libwapcaplet-0.2.2-r1[static-libs?,${MULTILIB_USEDEP}]
+	>=dev-libs/libwapcaplet-0.3.0[static-libs?,${MULTILIB_USEDEP}]
 	>=net-libs/libhubbub-0.3.1-r1[static-libs?,${MULTILIB_USEDEP}]
 	xml? (
 		expat? ( >=dev-libs/expat-2.1.0-r3[static-libs?,${MULTILIB_USEDEP}] )
