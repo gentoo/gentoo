@@ -75,6 +75,8 @@ src_compile() {
 
 src_install(){
 	cmake-utils_src_install
+	# conflict, bug #575726 (gone in version > 2.0.4)
+	mv "${ED}"usr/bin/show{,casa}table || die
 	if use doc; then
 		insinto /usr/share/doc/${PF}
 		doins -r doc/html
