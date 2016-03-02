@@ -9791,7 +9791,7 @@ dev-vcs/hgsvn 0.2.3-r1: A set of scripts to work locally on Subversion checkouts
 dev-vcs/hgview 1.9.0: A Mercurial interactive history viewer
 dev-vcs/hub 1.12.4 2.2.0-r1 2.2.2 2.2.3: Command-line wrapper for git that makes you better at GitHub
 dev-vcs/kdesvn 1.6.0-r1 1.7.0: A frontend to the subversion vcs
-dev-vcs/mercurial 3.3.2 3.3.3 3.4.2 3.5.2 3.6.3 3.7.1 9999: Scalable distributed SCM
+dev-vcs/mercurial 3.3.2 3.3.3 3.4.2 3.5.2 3.6.3 3.7.1 3.7.2 9999: Scalable distributed SCM
 dev-vcs/mercurial-server 1.1 1.2 9999: Mercurial authentication and authorization tools
 dev-vcs/monotone 1.0-r4: Monotone Distributed Version Control System
 dev-vcs/mr 1.20150503 1.20160123: Multiple Repository management tool
@@ -13833,7 +13833,7 @@ net-firewall/gshield 2.8-r3: iptables firewall configuration system
 net-firewall/ipkungfu 0.5.2-r1 0.6.1: A nice iptables firewall script
 net-firewall/ipsec-tools 0.8.2 0.8.2-r4: A port of KAME's IPsec utilities to the Linux-2.6 IPsec implementation
 net-firewall/ipset 6.15 6.16 6.16.1 6.17 6.19 6.20.1 6.21.1 6.24: IPset tool for iptables, successor to ippool
-net-firewall/ipt_netflow 2.1 2.1_p20160119: Netflow iptables module
+net-firewall/ipt_netflow 2.1 2.1_p20160119 2.2: Netflow iptables module
 net-firewall/iptables 1.4.17 1.4.21-r1 1.4.21-r2 1.4.21-r3 1.4.21-r4 1.6.0: Linux kernel (2.4+) firewall, NAT and packet mangling tools
 net-firewall/itval 1.2_p20121104: Iptables policy testing and validation tool
 net-firewall/lutelwall 0.99: IPTables firewall setup script
@@ -14661,7 +14661,7 @@ net-misc/smb4k 1.2.1: The advanced network neighborhood browser for KDE
 net-misc/smbc 1.2.2-r2: A text mode (ncurses) SMB network commander. Features: resume and UTF-8
 net-misc/snarf 7.0-r3: Small and fast CLI resource grabber with support for http, gopher, finger, and ftp protocols
 net-misc/sobby 0.4.8 0.4.8-r1: Standalone Obby server
-net-misc/socat 1.7.3.0 1.7.3.1 2.0.0_beta9 9999: Multipurpose relay (SOcket CAT)
+net-misc/socat 1.7.3.1 2.0.0_beta9 9999: Multipurpose relay (SOcket CAT)
 net-misc/sock 1.1: A shell interface to network sockets
 net-misc/socket 1.5: A shell-level interface to TCP sockets
 net-misc/sparkleshare 1.1.0: Git-based collaboration and file sharing tool
