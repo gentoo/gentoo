@@ -31,6 +31,8 @@ RDEPEND="${DEPEND}
 MKL_DIR=/opt/intel/${PN}/${PV}
 INTEL_LIC_DIR=/opt/intel/licenses
 
+CHECKREQS_DISK_BUILD=3500M
+
 QA_PREBUILT="opt/intel/${PN}/${PV}/*"
 
 get_fcomp() {
@@ -45,6 +47,7 @@ get_fcomp() {
 }
 
 pkg_setup() {
+	check-reqs_pkg_setup
 	fortran-2_pkg_setup
 	# Check the license
 	if [[ -z ${MKL_LICENSE} ]]; then
@@ -89,6 +92,8 @@ pkg_setup() {
 }
 
 src_prepare() {
+	check-reqs_src_prepare
+
 	cd l_${PN}_*_${PV}/install || die
 
 	cp ${MKL_LICENSE} "${WORKDIR}"/ || die
