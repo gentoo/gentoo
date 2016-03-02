@@ -16,17 +16,20 @@ SRC_URI="mirror://sourceforge/${PN}/${PN}-${MY_DATE}.zip"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~x86-fbsd"
+KEYWORDS="amd64 x86 ~x86-fbsd"
 IUSE=""
 
-RDEPEND=">=virtual/jre-1.6
-	dev-java/msv:0
+CDEPEND="dev-java/msv:0
 	dev-java/xsdlib:0
 	dev-java/ant-core:0
 	dev-java/iso-relax:0
 	dev-java/relaxng-datatype:0"
 
-DEPEND=">=virtual/jdk-1.6
+RDEPEND="${CDEPEND}
+	>=virtual/jre-1.6"
+
+DEPEND="${CDEPEND}
+	>=virtual/jdk-1.6
 	app-arch/unzip"
 
 S="${WORKDIR}/${PN}-${MY_DATE}"

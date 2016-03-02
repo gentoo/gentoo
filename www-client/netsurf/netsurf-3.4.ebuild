@@ -54,6 +54,7 @@ RDEPEND=">=dev-libs/libnsutils-0.0.2[${MULTILIB_USEDEP}]
 	webp? ( >=media-libs/libwebp-0.3.0[${MULTILIB_USEDEP}] )"
 DEPEND="${RDEPEND}
 	dev-libs/check[${MULTILIB_USEDEP}]
+	dev-perl/HTML-Parser
 	rosprite? ( >=media-libs/librosprite-0.1.2-r1[${MULTILIB_USEDEP}] )"
 
 PATCHES=( "${FILESDIR}"/${P}-CFLAGS.patch
