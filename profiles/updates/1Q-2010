@@ -26,9 +26,6 @@ move app-i18n/ibus-table-cantonhk app-i18n/ibus-table-cantonese
 move app-i18n/ibus-table-cns11643 app-i18n/ibus-table-code
 move app-i18n/ibus-table-rustrad app-i18n/ibus-table-cyrillic
 move app-i18n/ibus-table-translit app-i18n/ibus-table-cyrillic
-slotmove =app-doc/pms-2 0 2
-slotmove =app-doc/pms-3 0 3
-slotmove =app-doc/pms-3 2 3
 slotmove =app-doc/pms-99999999 0 live
 move sci-chemistry/psipred sci-biology/psipred
 move dev-util/gitg dev-vcs/gitg
