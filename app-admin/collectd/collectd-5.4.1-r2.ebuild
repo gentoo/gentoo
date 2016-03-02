@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -11,7 +11,7 @@ PYTHON_COMPAT=( python2_7 )
 
 inherit autotools base eutils java-pkg-opt-2 linux-info multilib perl-app python-single-r1 systemd user
 
-DESCRIPTION="A a daemon which collects system statistic and provides mechanisms to store the values"
+DESCRIPTION="Collects system statistics and provides mechanisms to store the values"
 
 HOMEPAGE="http://collectd.org"
 SRC_URI="${HOMEPAGE}/files/${P}.tar.bz2"
@@ -77,13 +77,13 @@ COMMON_DEPEND="
 	collectd_plugins_netlink?		( net-libs/libmnl )
 	collectd_plugins_nginx?			( net-misc/curl )
 	collectd_plugins_notify_desktop?	( x11-libs/libnotify )
-	collectd_plugins_notify_email?		( net-libs/libesmtp dev-libs/openssl )
-	collectd_plugins_nut?			( sys-power/nut )
+	collectd_plugins_notify_email?		( net-libs/libesmtp dev-libs/openssl:= )
+	collectd_plugins_nut?			( >=sys-power/nut-2.7.2-r2 )
 	collectd_plugins_onewire?		( sys-fs/owfs )
 	collectd_plugins_oracle?		( dev-db/oracle-instantclient-basic )
 	collectd_plugins_perl?			( dev-lang/perl:=[ithreads] )
 	collectd_plugins_ping?			( net-libs/liboping )
-	collectd_plugins_postgresql?		( dev-db/postgresql )
+	collectd_plugins_postgresql?		( dev-db/postgresql:= )
 	collectd_plugins_python?		( ${PYTHON_DEPS} )
 	collectd_plugins_routeros?		( net-libs/librouteros )
 	collectd_plugins_rrdcached?		( net-analyzer/rrdtool )
