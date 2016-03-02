@@ -3,6 +3,7 @@
 # $Id$
 
 EAPI="5"
+
 PYTHON_COMPAT=( python2_7 )
 
 inherit distutils-r1
@@ -37,6 +38,14 @@ PATCHES=(
 	"${FILESDIR}/${P}-use-friendy-version-checks.patch"
 	"${FILESDIR}/${PN}-3.37-drop-http_proxy-clearing.patch"
 )
+
+python_prepare_all() {
+	sed \
+		-e '/SocksiPy-branch/d' \
+		-i setup.py || die
+
+	distutils-r1_python_prepare_all
+}
 
 python_test() {
 	export BOTO_CONFIG=${FILESDIR}/dummy.boto
