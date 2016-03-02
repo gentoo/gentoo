@@ -1,0 +1,238 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<xs:schema xmlns:xs='http://www.w3.org/2001/XMLSchema'>
+	<!-- top-level variants -->
+	<xs:element name='pkgmetadata' type='pkgMetadataType'/>
+	<xs:element name='catmetadata' type='catMetadataType'/>
+
+	<!-- global elements -->
+	<xs:complexType name='pkgMetadataType'>
+		<xs:choice minOccurs='0' maxOccurs='unbounded'>
+			<xs:element name='longdescription' type='longDescType'/>
+			<xs:element name='maintainer' type='maintainerType'/>
+			<xs:element name='natural-name' type='xs:token'/>
+			<xs:element name='slots' type='slotsType'/>
+			<xs:element name='upstream' type='upstreamType'/>
+			<xs:element name='use' type='useType'/>
+		</xs:choice>
+	</xs:complexType>
+
+	<xs:complexType name='catMetadataType'>
+		<xs:choice minOccurs='0' maxOccurs='unbounded'>
+			<xs:element name='longdescription' type='longDescType'/>
+		</xs:choice>
+	</xs:complexType>
+
+	<!-- the huge <upstream/> structure -->
+	<xs:complexType name='upstreamType'>
+		<xs:choice minOccurs='0' maxOccurs='unbounded'>
+			<xs:element name='maintainer' type='upstreamMaintainerType'/>
+			<xs:element name='changelog' type='urlType'/>
+			<xs:element name='doc' type='upstreamDocType'/>
+			<xs:element name='bugs-to' type='urlType'/>
+			<xs:element name='remote-id' type='upstreamRemoteIdType'/>
+		</xs:choice>
+	</xs:complexType>
+
+	<!-- maintainer in two variants -->
+	<xs:complexType name='maintainerType'>
+		<xs:all>
+			<xs:element name='email' type='emailType'
+				minOccurs='1'/>
+			<xs:element name='name' type='xs:token'
+				minOccurs='0'/>
+			<xs:element name='description' type='maintainerDescType'
+				minOccurs='0'/>
+		</xs:all>
+		<xs:attribute name='type' type='maintainerTypeAttrType'
+			use='required'/>
+		<xs:attribute name='restrict' type='restrictAttrType'/>
+	</xs:complexType>
+
+	<xs:simpleType name='maintainerTypeAttrType'>
+		<xs:restriction base='xs:token'>
+			<xs:enumeration value='person'/>
+			<xs:enumeration value='project'/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:complexType name='upstreamMaintainerType'>
+		<xs:all>
+			<xs:element name='email' type='emailType'
+				minOccurs='1'/>
+			<xs:element name='name' type='xs:token'
+				minOccurs='0'/>
+			<xs:element name='description' type='xs:token'
+				minOccurs='0'/>
+		</xs:all>
+		<xs:attribute name='type' type='maintainerTypeAttrType'/>
+		<xs:attribute name='status' type='upstreamMaintainerStatusAttrType'
+			default='unknown'/>
+	</xs:complexType>
+
+	<xs:simpleType name='upstreamMaintainerStatusAttrType'>
+		<xs:restriction base='xs:token'>
+			<xs:enumeration value='active'/>
+			<xs:enumeration value='inactive'/>
+			<xs:enumeration value='unknown'/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:complexType name='maintainerDescType'>
+		<xs:simpleContent>
+			<xs:extension base="xs:token">
+				<xs:attribute name='lang' type='langAttrType' default='C'/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+
+	<!-- long description -->
+	<xs:complexType name='longDescType' mixed='true'>
+		<xs:choice minOccurs='0' maxOccurs='unbounded'>
+			<xs:element name='pkg' type='pkgType'/>
+			<!-- XXX: do we allow <cat/> in pkgmetadata, and the other
+				 way around? -->
+			<xs:element name='cat' type='catType'/>
+		</xs:choice>
+		<xs:attribute name='lang' type='langAttrType' default='C'/>
+		<xs:attribute name='restrict' type='restrictAttrType'/>
+	</xs:complexType>
+
+	<!-- slots -->
+	<xs:complexType name='slotsType'>
+		<!-- TODO: any order? -->
+		<xs:sequence>
+			<xs:element name='slot' type='slotType'
+				minOccurs='0' maxOccurs='unbounded'/>
+			<xs:element name='subslots' type='xs:token'
+				minOccurs='0' maxOccurs='1'/>
+		</xs:sequence>
+		<xs:attribute name='lang' type='langAttrType' default='C'/>
+	</xs:complexType>
+
+	<xs:complexType name='slotType'>
+		<xs:simpleContent>
+			<xs:extension base="xs:token">
+				<xs:attribute name='name' type='slotNameAttrType'
+					use='required'/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+
+	<xs:simpleType name='slotNameAttrType'>
+		<xs:restriction base='xs:token'>
+			<!-- PMS 3.1.3 Slot Names -->
+			<xs:pattern value="[A-Za-z0-9_][A-Za-z0-9+_.-]*"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<!-- use flags -->
+	<xs:complexType name='useType'>
+		<xs:choice minOccurs='0' maxOccurs='unbounded'>
+			<xs:element name='flag' type='flagType'/>
+		</xs:choice>
+		<xs:attribute name='lang' type='langAttrType' default='C'/>
+	</xs:complexType>
+
+	<xs:complexType name='flagType' mixed='true'>
+		<xs:choice minOccurs='0' maxOccurs='unbounded'>
+			<xs:element name='cat' type='catType'/>
+			<xs:element name='pkg' type='pkgType'/>
+		</xs:choice>
+		<xs:attribute name='name' type='flagNameAttrType'
+			use='required'/>
+		<xs:attribute name='restrict' type='restrictAttrType'/>
+	</xs:complexType>
+
+	<xs:simpleType name='flagNameAttrType'>
+		<xs:restriction base='xs:token'>
+			<!-- PMS 3.1.4 USE Flag Names -->
+			<xs:pattern value="[A-Za-z0-9][A-Za-z0-9+_@-]*"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<!-- upstream-specific types -->
+	<xs:complexType name='upstreamDocType'>
+		<xs:simpleContent>
+			<xs:extension base="urlType">
+				<xs:attribute name='lang' type='langAttrType' default='C'/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+
+	<xs:complexType name='upstreamRemoteIdType'>
+		<xs:simpleContent>
+			<xs:extension base="xs:token">
+				<xs:attribute name='type' type='upstreamRemoteIdTypeAttrType'
+					use='required'/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+
+	<xs:simpleType name='upstreamRemoteIdTypeAttrType'>
+		<xs:restriction base='xs:token'>
+			<xs:enumeration value='bitbucket'/>
+			<xs:enumeration value='cpan'/>
+			<xs:enumeration value='cpan-module'/>
+			<xs:enumeration value='cpe'/>
+			<xs:enumeration value='cran'/>
+			<xs:enumeration value='ctan'/>
+			<xs:enumeration value='freecode'/>
+			<xs:enumeration value='freshmeat'/>
+			<xs:enumeration value='github'/>
+			<xs:enumeration value='gitlab'/>
+			<xs:enumeration value='gitorious'/>
+			<xs:enumeration value='google-code'/>
+			<xs:enumeration value='launchpad'/>
+			<xs:enumeration value='pear'/>
+			<xs:enumeration value='pecl'/>
+			<xs:enumeration value='pypi'/>
+			<xs:enumeration value='rubyforge'/>
+			<xs:enumeration value='rubygems'/>
+			<xs:enumeration value='sourceforge'/>
+			<xs:enumeration value='sourceforge-jp'/>
+			<xs:enumeration value='vim'/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<!-- creepy mixed-text types -->
+	<xs:simpleType name='catType'>
+		<xs:restriction base='xs:token'>
+			<!-- PMS 3.1.1 Category Names -->
+			<xs:pattern value="[A-Za-z0-9_][A-Za-z0-9+_.-]*"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name='pkgType'>
+		<xs:restriction base='xs:token'>
+			<!-- PMS 3.1.1 Category Names + 3.1.2 Package Names -->
+			<!-- note: this does not enforce the 'anything matching
+				 the version syntax' requirement -->
+			<xs:pattern
+				value="[A-Za-z0-9_][A-Za-z0-9+_.-]*/[A-Za-z0-9_][A-Za-z0-9+_-]*"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<!-- common attributes -->
+	<xs:simpleType name='langAttrType'>
+		<xs:restriction base='xs:token'/>
+	</xs:simpleType>
+
+	<xs:simpleType name='restrictAttrType'>
+		<xs:restriction base='xs:token'/>
+	</xs:simpleType>
+
+	<!-- generic types -->
+	<xs:simpleType name='emailType'>
+		<xs:restriction base='xs:token'>
+			<!-- minimal safe regex -->
+			<xs:pattern value="[^@]+@[^.]+\..+"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name='urlType'>
+		<xs:restriction base='xs:token'>
+			<!-- TODO: something better? -->
+			<xs:pattern value="(mailto:[^@]+@[^.]+\..+|https?://.+)"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>
