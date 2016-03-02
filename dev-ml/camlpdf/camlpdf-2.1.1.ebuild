@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit findlib
+inherit findlib eutils
 
 DESCRIPTION="OCaml library for reading, writing, and modifying PDF files"
 HOMEPAGE="https://github.com/johnwhitington/camlpdf/"
@@ -18,6 +18,10 @@ IUSE="doc examples"
 
 RDEPEND="dev-lang/ocaml:="
 DEPEND="${RDEPEND}"
+
+src_prepare() {
+	epatch "${FILESDIR}/ocaml43.patch"
+}
 
 src_compile() {
 	# parallel make bugs
