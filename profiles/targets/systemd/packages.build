@@ -1,0 +1,7 @@
+# Copyright 1999-2014 Gentoo Foundation.
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+# Nothing pulls in systemd as a dependency for stage1,
+# so we need to list it here.
+sys-apps/systemd
