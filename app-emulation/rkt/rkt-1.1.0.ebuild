@@ -23,6 +23,7 @@ rkt_stage1_coreos? ( $PXE_URI -> $PXE_FILE )
 rkt_stage1_kvm? (
 	https://kernel.googlesource.com/pub/scm/linux/kernel/git/will/kvmtool/+archive/${KVMTOOL_VERSION}.tar.gz -> kvmtool-${KVMTOOL_VERSION}.tar.gz
 	mirror://kernel/linux/kernel/v4.x/linux-${KVM_LINUX_VERSION}.tar.xz
+	${PXE_URI} -> ${PXE_FILE}
 )
 rkt_stage1_src? ( https://github.com/systemd/systemd/archive/${PXE_SYSTEMD_VERSION}.tar.gz -> systemd-${PXE_SYSTEMD_VERSION#v}.tar.gz )"
 
@@ -69,20 +70,25 @@ src_unpack() {
 
 src_prepare() {
 	# disable git fetch of systemd
-	sed -e 's|^include makelib/git.mk$|_ := '\
-'$(shell set -ex; [ -d "$(UFS_SYSTEMD_SRCDIR)" ] \&\& exit 0; '\
-'[ ! -d "$${WORKDIR}/systemd-'${PXE_SYSTEMD_VERSION#v}'" ] \&\& exit 0; '\
-'mkdir -p "$$( dirname "$(UFS_SYSTEMD_SRCDIR)")"; '\
-'mv "$${WORKDIR}/systemd-'${PXE_SYSTEMD_VERSION#v}'" "$(UFS_SYSTEMD_SRCDIR)";)|' \
-		-i stage1/usr_from_src/usr_from_src.mk || die
+	sed -e 's|^include makelib/git.mk$|'\
+'ifneq ($(wildcard $(RKT_STAGE1_SYSTEMD_SRC)),)\n\n'\
+'get_systemd_sources: $(UFS_SYSTEMDDIR)\n'\
+'\tmv "$(RKT_STAGE1_SYSTEMD_SRC)" "$(UFS_SYSTEMD_SRCDIR)"\n\n'\
+'$(UFS_SYSTEMD_CONFIGURE): get_systemd_sources\n\n'\
+'else\n'\
+'\t\0\n'\
+'endif|' -i stage1/usr_from_src/usr_from_src.mk || die
 
 	# disable git fetch of kvmtool
-	sed -e 's|^include makelib/git.mk$|_ := '\
-'$(shell set -ex; [ -d "$(LKVM_SRCDIR)" ] \&\& exit 0; '\
-'[ ! -d "$${WORKDIR}/kvmtool" ] \&\& exit 0; '\
-'mkdir -p "$$( dirname "$(LKVM_SRCDIR)")"; '\
-'mv "$${WORKDIR}/kvmtool" "$(LKVM_SRCDIR)";)|' \
-		-i stage1/usr_from_kvm/lkvm.mk || die
+	sed -e 's|^include makelib/git.mk$|'\
+'ifneq ($(wildcard $(shell echo "$${WORKDIR}/kvmtool")),)\n\n'\
+'get_lkvm_sources: $(LKVM_TMPDIR)\n'\
+'\tmv "$${WORKDIR}/kvmtool" "$(_LKVM_SRCDIR)"\n\n'\
+'_LKVM_SRCDIR := $(LKVM_SRCDIR)\n\n'\
+'$(LKVM_PATCH_STAMP): get_lkvm_sources\n\n'\
+'else\n'\
+'\t\0\n'\
+'endif|' -i stage1/usr_from_kvm/lkvm.mk || die
 
 	# disable fetch of kernel sources
 	sed -e 's|wget .*|ln -s "$${DISTDIR}/linux-'${KVM_LINUX_VERSION}'.tar.xz" "$@"|' \
@@ -111,7 +117,14 @@ src_configure() {
 	use rkt_stage1_kvm && flavors+=",kvm"
 	myeconfargs+=( --with-stage1-flavors="${flavors#,}" )
 
-	if use rkt_stage1_coreos; then
+	if use rkt_stage1_src; then
+		myeconfargs+=(
+			--with-stage1-systemd-version=${PXE_SYSTEMD_VERSION}
+			--with-stage1-systemd-src="${WORKDIR}/systemd-${PXE_SYSTEMD_VERSION#v}"
+		)
+	fi
+
+	if use rkt_stage1_coreos || use rkt_stage1_kvm; then
 		myeconfargs+=(
 			--with-coreos-local-pxe-image-path="${DISTDIR}/${PXE_FILE}"
 			--with-coreos-local-pxe-image-systemd-version="${PXE_SYSTEMD_VERSION}"
