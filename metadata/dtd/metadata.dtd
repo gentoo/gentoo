@@ -1,5 +1,3 @@
-<!ELEMENT packages ( pkgmetadata* )>
-
 <!-- Metadata for a category -->
 <!ELEMENT catmetadata ( (longdescription)* )>
 <!ATTLIST catmetadata pkgname CDATA "">
@@ -11,8 +9,8 @@
   <!-- One tag for each maintainer of a package, multiple allowed-->
   <!ELEMENT maintainer ( email, (description| name)* )>
   <!-- type attribute determines whether the maintainer is a person or a project.
-	 Unknown is added to handle <maintainer/>s in <upstream/>s. Using it (or no
-	 explicit type) for Gentoo maintainers is prohibited. -->
+    Unknown is added to handle <maintainer/>s in <upstream/>s. Using it (or no
+    explicit type) for Gentoo maintainers is prohibited. -->
   <!ATTLIST maintainer type (person|project|unknown) "unknown">
 
   <!-- Natural name for package, example: LibreOffice (for app-office/libreoffice) -->
@@ -30,29 +28,6 @@
     <!-- The meaning of sub-SLOTs for the whole package -->
     <!ELEMENT subslots (#PCDATA)* >
 
-  <!-- The changelog of the package-->
-  <!-- Please note that #PCDATA is mentioned only for the upstream changelog
-    element, where the content is a URL. This is due to limitations of the DTD -->
-  <!ELEMENT changelog (#PCDATA|change)* >
-    <!-- The changelog contains various "changes"-->
-    <!ELEMENT change (date,(developer|version|description|file|contributor|bug)*) >
-      <!ELEMENT date (#PCDATA) >
-        <!-- The date of the change, in "YYYY-MM-DD" format -->
-      <!ELEMENT developer (name?,email) >
-        <!-- The developer that made the change. The email is required, name
-	   is optional-->
-      <!ELEMENT version (#PCDATA) >
-        <!--version of the packages involved (one tag per version)-->
-      <!ELEMENT file (#PCDATA) ><!-- one tag per file touched -->
-      <!ELEMENT contributor (name?,email?) >
-        <!-- A reference to a user that helped in causing this change. 
-          There should at least be a name or email address included. 
-          Email is preferred -->
-      <!ELEMENT bug (#PCDATA) >
-        <!-- bug-id of a bug fixed by this change, multiple allowed. The 
-          format of this is a number or alias for a bug. NOT including a 
-          # character -->
-
   <!-- description of what this USE flag does for this package -->
   <!ELEMENT use (flag)* >
     <!ELEMENT flag (#PCDATA|pkg|cat)* >
@@ -66,6 +41,8 @@
       the usage of the status attribute is nevertheless _only_ allowed
       in the upstream maintainer element. -->
     <!ATTLIST maintainer status (active|inactive|unknown) "unknown" >
+    <!-- URL where the upstream changelog can be found -->
+    <!ELEMENT changelog (#PCDATA)>
     <!-- URL where the location of the upstream documentation can be found -->
     <!ELEMENT doc (#PCDATA)>
       <!ATTLIST doc lang CDATA "C" >
