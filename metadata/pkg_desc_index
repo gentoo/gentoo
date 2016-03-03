@@ -4357,7 +4357,7 @@ dev-lang/mono-basic 2.10: Visual Basic .NET Runtime and Class Libraries
 dev-lang/mozart 1.4.0-r3: Advanced development platform for intelligent, distributed applications
 dev-lang/mozart-stdlib 1.4.0-r1: The Mozart Standard Library
 dev-lang/mujs 0_p20150202: lightweight Javascript interpreter
-dev-lang/nasm 2.11.08: groovy little assembler
+dev-lang/nasm 2.11.08 2.12: groovy little assembler
 dev-lang/niecza 19 21 22 24 9999: A Perl 6 compiler targetting the CLR with an experimental focus on optimizations
 dev-lang/niecza-bin 20 21 22 24: A Perl 6 compiler targetting the CLR with an experimental focus on optimizations
 dev-lang/nqc 3.1_p6: Not Quite C - C-like compiler for Lego Mindstorms
@@ -8693,7 +8693,7 @@ dev-ruby/flog 4.3.2: Flog reports the most tortured code in an easy to read pain
 dev-ruby/forgery 0.6.0: Easy and customizable generation of forged data
 dev-ruby/fuubar 2.0.0: Instafailing RSpec progress bar formatter
 dev-ruby/fxruby 1.6.29 1.6.29-r1: Ruby language binding to the FOX GUI toolkit
-dev-ruby/gettext_i18n_rails 1.3.1 1.3.2 1.4.0: FastGettext / Rails integration
+dev-ruby/gettext_i18n_rails 1.4.0 1.5.0: FastGettext / Rails integration
 dev-ruby/gh 0.14.0: multi-layer client for the github api v3
 dev-ruby/gherkin 2.12.0-r2 2.12.0-r3 2.12.2: Fast Gherkin lexer and parser based on Ragel
 dev-ruby/gherkin3 3.1.2: Fast Gherkin lexer and parser
@@ -8711,7 +8711,7 @@ dev-ruby/hashie 2.1.2 2.1.2-r1 3.4.2 3.4.3: Hashie is a small collection of tool
 dev-ruby/hashr 0.0.22 1.0.0 2.0.0: Simple Hash extension to make working with nested hashes easier and less error-prone
 dev-ruby/heredoc_unindent 1.2.0: Removes leading whitespace from Ruby heredocs
 dev-ruby/hiera 1.3.4 1.3.4-r1 2.0.0 3.0.1-r1 3.0.5 3.0.6: A simple pluggable Hierarchical Database
-dev-ruby/hiera-eyaml 2.0.6 2.0.7 2.0.8: Encrypted YAML backend for hiera
+dev-ruby/hiera-eyaml 2.0.8: Encrypted YAML backend for hiera
 dev-ruby/hiera-eyaml-gpg 0.4 0.5 0.6: A GPG backend for hiera-eyaml
 dev-ruby/hiera-eyaml-plaintext 0.6: A plaintext backend for hiera-eyaml
 dev-ruby/highline 1.7.6 1.7.7 1.7.8: Highline is a high-level command-line IO library for ruby
