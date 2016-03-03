@@ -14,7 +14,7 @@ SRC_URI="https://tarballs.openstack.org/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="+sqlite memcached mongo mysql postgres ldap test"
 REQUIRED_USE="|| ( mysql postgres sqlite )"
 
@@ -66,6 +66,7 @@ DEPEND="
 		<=dev-python/tempest-lib-0.11.0[${PYTHON_USEDEP}]
 		>=dev-python/requests-2.5.2[${PYTHON_USEDEP}]
 		!~dev-python/requests-2.8.0[${PYTHON_USEDEP}]
+		!~dev-python/requests-2.9.0[${PYTHON_USEDEP}]
 		<=dev-python/requests-2.8.1[${PYTHON_USEDEP}]
 		>=dev-python/reno-0.1.1[${PYTHON_USEDEP}]
 	)"
@@ -137,6 +138,9 @@ RDEPEND="
 	>=dev-python/oslo-log-1.8.0[${PYTHON_USEDEP}]
 	<=dev-python/oslo-log-2.1.0[${PYTHON_USEDEP}]
 	>=dev-python/oslo-middleware-2.8.0[${PYTHON_USEDEP}]
+	!~dev-python/oslo-middleware-3.0.0[${PYTHON_USEDEP}]
+	!~dev-python/oslo-middleware-3.1.0[${PYTHON_USEDEP}]
+	!~dev-python/oslo-middleware-3.2.0[${PYTHON_USEDEP}]
 	<=dev-python/oslo-middleware-3.3.0[${PYTHON_USEDEP}]
 	>=dev-python/oslo-policy-0.5.0[${PYTHON_USEDEP}]
 	<=dev-python/oslo-policy-1.1.0[${PYTHON_USEDEP}]

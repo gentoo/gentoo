@@ -52,7 +52,7 @@ src_prepare() {
 src_configure() {
 	local mycmakeargs=(
 		-DENABLE_PAM=$(usex pam)
-		-DNO_SYSTEMD=$(usex systemd)
+		-DNO_SYSTEMD=$(usex '!systemd')
 		-DBUILD_MAN_PAGES=ON
 		-DDBUS_CONFIG_FILENAME="org.freedesktop.sddm.conf"
 		)
