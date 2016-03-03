@@ -19,31 +19,31 @@ inherit kde4-base java-pkg-opt-2 python-single-r1 pax-utils prefix versionator
 DESCRIPTION="A full office productivity suite. Binary package"
 HOMEPAGE="http://www.libreoffice.org"
 SRC_URI_AMD64="
-	${BASE_AMD64_URI}libreoffice-${PVR}.tar.xz
+	${BASE_AMD64_URI}libreoffice-${PV}.tar.xz
 	kde? (
-		!java? ( ${BASE_AMD64_URI}libreoffice-kde-${PVR}.xd3 )
-		java? ( ${BASE_AMD64_URI}libreoffice-kde-java-${PVR}.xd3 )
+		!java? ( ${BASE_AMD64_URI}libreoffice-kde-${PV}.xd3 )
+		java? ( ${BASE_AMD64_URI}libreoffice-kde-java-${PV}.xd3 )
 	)
 	gnome? (
-		!java? ( ${BASE_AMD64_URI}libreoffice-gnome-${PVR}.xd3 )
-		java? ( ${BASE_AMD64_URI}libreoffice-gnome-java-${PVR}.xd3 )
+		!java? ( ${BASE_AMD64_URI}libreoffice-gnome-${PV}.xd3 )
+		java? ( ${BASE_AMD64_URI}libreoffice-gnome-java-${PV}.xd3 )
 	)
 	!kde? ( !gnome? (
-		java? ( ${BASE_AMD64_URI}libreoffice-java-${PVR}.xd3 )
+		java? ( ${BASE_AMD64_URI}libreoffice-java-${PV}.xd3 )
 	) )
 "
 SRC_URI_X86="
-	${BASE_X86_URI}libreoffice-${PVR}.tar.xz
+	${BASE_X86_URI}libreoffice-${PV}.tar.xz
 	kde? (
-		!java? ( ${BASE_X86_URI}libreoffice-kde-${PVR}.xd3 )
-		java? ( ${BASE_X86_URI}libreoffice-kde-java-${PVR}.xd3 )
+		!java? ( ${BASE_X86_URI}libreoffice-kde-${PV}.xd3 )
+		java? ( ${BASE_X86_URI}libreoffice-kde-java-${PV}.xd3 )
 	)
 	gnome? (
-		!java? ( ${BASE_X86_URI}libreoffice-gnome-${PVR}.xd3 )
-		java? ( ${BASE_X86_URI}libreoffice-gnome-java-${PVR}.xd3 )
+		!java? ( ${BASE_X86_URI}libreoffice-gnome-${PV}.xd3 )
+		java? ( ${BASE_X86_URI}libreoffice-gnome-java-${PV}.xd3 )
 	)
 	!kde? ( !gnome? (
-		java? ( ${BASE_X86_URI}libreoffice-java-${PVR}.xd3 )
+		java? ( ${BASE_X86_URI}libreoffice-java-${PV}.xd3 )
 	) )
 "
 
@@ -63,7 +63,7 @@ BIN_COMMON_DEPEND="
 	app-text/poppler:0/51
 	dev-libs/boost:0/1.56.0
 	dev-libs/icu:0/55
-	=media-gfx/graphite2-1.2*
+	>=media-gfx/graphite2-1.2.0
 	media-libs/glew:0/1.10
 	media-libs/harfbuzz:0/0.9.18[icu]
 	media-libs/libpng:0/16
@@ -182,8 +182,8 @@ pkg_setup() {
 }
 
 src_unpack() {
-	einfo "Uncompressing distfile ${ARCH}-${BASE_PACKAGENAME}-libreoffice-${PVR}.tar.xz"
-	xz -cd "${DISTDIR}/${ARCH}-${BASE_PACKAGENAME}-libreoffice-${PVR}.tar.xz" > "${WORKDIR}/${ARCH}-${BASE_PACKAGENAME}-libreoffice-${PVR}.tar" || die
+	einfo "Uncompressing distfile ${ARCH}-${BASE_PACKAGENAME}-libreoffice-${PV}.tar.xz"
+	xz -cd "${DISTDIR}/${ARCH}-${BASE_PACKAGENAME}-libreoffice-${PV}.tar.xz" > "${WORKDIR}/${ARCH}-${BASE_PACKAGENAME}-libreoffice-${PV}.tar" || die
 
 	local patchname
 	use kde && patchname="-kde"
@@ -191,13 +191,13 @@ src_unpack() {
 	use java && patchname="${patchname}-java"
 
 	if [ -n "${patchname}" ]; then
-		einfo "Patching distfile ${ARCH}-${BASE_PACKAGENAME}-libreoffice-${PVR}.tar using ${ARCH}-${BASE_PACKAGENAME}-libreoffice${patchname}-${PVR}.xd3"
-		xdelta3 -d -s "${WORKDIR}/${ARCH}-${BASE_PACKAGENAME}-libreoffice-${PVR}.tar" "${DISTDIR}/${ARCH}-${BASE_PACKAGENAME}-libreoffice${patchname}-${PVR}.xd3" "${WORKDIR}/tmpdist.tar" || die
-		mv "${WORKDIR}/tmpdist.tar" "${WORKDIR}/${ARCH}-${BASE_PACKAGENAME}-libreoffice-${PVR}.tar" || die
+		einfo "Patching distfile ${ARCH}-${BASE_PACKAGENAME}-libreoffice-${PV}.tar using ${ARCH}-${BASE_PACKAGENAME}-libreoffice${patchname}-${PV}.xd3"
+		xdelta3 -d -s "${WORKDIR}/${ARCH}-${BASE_PACKAGENAME}-libreoffice-${PV}.tar" "${DISTDIR}/${ARCH}-${BASE_PACKAGENAME}-libreoffice${patchname}-${PV}.xd3" "${WORKDIR}/tmpdist.tar" || die
+		mv "${WORKDIR}/tmpdist.tar" "${WORKDIR}/${ARCH}-${BASE_PACKAGENAME}-libreoffice-${PV}.tar" || die
 	fi
 
-	einfo "Unpacking new ${ARCH}-${BASE_PACKAGENAME}-libreoffice-${PVR}.tar"
-	unpack "./${ARCH}-${BASE_PACKAGENAME}-libreoffice-${PVR}.tar"
+	einfo "Unpacking new ${ARCH}-${BASE_PACKAGENAME}-libreoffice-${PV}.tar"
+	unpack "./${ARCH}-${BASE_PACKAGENAME}-libreoffice-${PV}.tar"
 }
 
 src_prepare() {
