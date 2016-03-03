@@ -20,7 +20,7 @@ RDEPEND="dev-lang/ocaml:="
 DEPEND="${RDEPEND}"
 
 src_prepare() {
-	epatch "${FILESDIR}/ocaml43.patch"
+	has_version '>=dev-lang/ocaml-4.03.0_beta1' && epatch "${FILESDIR}/ocaml43.patch"
 }
 
 src_compile() {
