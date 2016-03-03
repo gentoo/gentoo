@@ -10,7 +10,7 @@ DESCRIPTION="Binary plugins from Google Chrome for use in Chromium"
 HOMEPAGE="https://www.google.com/chrome"
 
 case ${PV} in
-	*_alpha*|9999*)
+	*_alpha*)
 		SLOT="unstable"
 		CHROMEDIR="opt/google/chrome-${SLOT}"
 		MY_PV=${PV/_alpha/-}
@@ -33,17 +33,12 @@ esac
 MY_PN="google-chrome-${SLOT}"
 MY_P="${MY_PN}_${MY_PV}"
 
-if [[ ${PV} != 9999* ]]; then
 SRC_URI="
 	amd64? (
 		https://dl.google.com/linux/chrome/deb/pool/main/g/${MY_PN}/${MY_P}_amd64.deb
 	)
-	x86? (
-		https://dl.google.com/linux/chrome/deb/pool/main/g/${MY_PN}/${MY_P}_i386.deb
-	)
 "
-KEYWORDS="amd64 x86"
-fi
+KEYWORDS="-* ~amd64"
 
 LICENSE="google-chrome"
 IUSE="+flash +widevine"
@@ -61,15 +56,6 @@ QA_PREBUILT="*"
 pkg_nofetch() {
 	eerror "Please wait 24 hours and sync your portage tree before reporting fetch failures."
 }
-
-if [[ ${PV} == 9999* ]]; then
-src_unpack() {
-	local base="https://dl.google.com/linux/direct"
-	local debarch=${ARCH/x86/i386}
-	wget -O google-chrome.deb "${base}/google-chrome-${SLOT}_current_${debarch}.deb" || die
-	unpack_deb ./google-chrome.deb
-}
-fi
 
 src_install() {
 	local version flapper
