@@ -1,13 +1,13 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 
 # latest gentoo apache files
-GENTOO_PATCHSTAMP="20140731"
+GENTOO_PATCHSTAMP="20160303"
 GENTOO_DEVELOPER="polynomial-c"
-GENTOO_PATCHNAME="gentoo-apache-2.4.10-r1"
+GENTOO_PATCHNAME="gentoo-apache-2.4.18-r1"
 
 # IUSE/USE_EXPAND magic
 IUSE_MPMS_FORK="peruser prefork"
@@ -35,10 +35,10 @@ IUSE_MODULES="access_compat actions alias asis auth_basic auth_digest
 authn_alias authn_anon authn_core authn_dbd authn_dbm authn_file authz_core
 authz_dbd authz_dbm authz_groupfile authz_host authz_owner authz_user autoindex
 cache cache_disk cern_meta charset_lite cgi cgid dav dav_fs dav_lock dbd deflate
-dir dumpio env expires ext_filter file_cache filter headers ident imagemap
+dir dumpio env expires ext_filter file_cache filter headers http2 ident imagemap
 include info lbmethod_byrequests lbmethod_bytraffic lbmethod_bybusyness
 lbmethod_heartbeat log_config log_forensic logio macro mime mime_magic negotiation
-proxy proxy_ajp proxy_balancer proxy_connect proxy_ftp proxy_http proxy_scgi
+proxy proxy_ajp proxy_balancer proxy_connect proxy_ftp proxy_html proxy_http proxy_scgi
 proxy_fcgi  proxy_wstunnel rewrite ratelimit remoteip reqtimeout setenvif
 slotmem_shm speling socache_shmcb status substitute unique_id userdir usertrack
 unixd version vhost_alias"
@@ -70,6 +70,7 @@ MODULE_DEPENDS="
 	proxy_balancer:slotmem_shm
 	proxy_connect:proxy
 	proxy_ftp:proxy
+	proxy_html:proxy
 	proxy_http:proxy
 	proxy_scgi:proxy
 	proxy_fcgi:proxy
@@ -87,6 +88,7 @@ MODULE_DEFINES="
 	dav_fs:DAV
 	dav_lock:DAV
 	file_cache:CACHE
+	http2:HTTP2
 	info:INFO
 	ldap:LDAP
 	proxy:PROXY
@@ -94,6 +96,7 @@ MODULE_DEFINES="
 	proxy_balancer:PROXY
 	proxy_connect:PROXY
 	proxy_ftp:PROXY
+	proxy_html:PROXY
 	proxy_http:PROXY
 	proxy_fcgi:PROXY
 	proxy_scgi:PROXY
@@ -123,11 +126,10 @@ HOMEPAGE="http://httpd.apache.org/"
 LICENSE="Apache-2.0 Apache-1.1"
 SLOT="2"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~amd64-linux ~x64-macos ~x86-macos ~m68k-mint ~sparc64-solaris ~x64-solaris"
-IUSE="alpn"
-REQUIRED_USE="alpn? ( ssl )"
 
-DEPEND+="alpn? ( >=dev-libs/openssl-1.0.2:0= )"
-RDEPEND+="alpn? ( >=dev-libs/openssl-1.0.2:0= )"
+DEPEND+="apache2_modules_http2? ( >=net-libs/nghttp2-1.2.1 )"
+
+REQUIRED_USE="apache2_modules_http2? ( ssl )"
 
 pkg_setup() {
 	# dependend critical modules which are not allowed in global scope due
@@ -135,11 +137,6 @@ pkg_setup() {
 	use ssl && MODULE_CRITICAL+=" socache_shmcb"
 	use doc && MODULE_CRITICAL+=" alias negotiation setenvif"
 	apache-2_pkg_setup
-}
-
-src_prepare() {
-	use alpn && epatch "${FILESDIR}"/${PN}-2.4.12-alpn.patch #471512
-	apache-2_src_prepare
 }
 
 src_configure() {
@@ -193,6 +190,10 @@ src_install() {
 	systemd_dotmpfilesd "${FILESDIR}/apache.conf"
 	#insinto /etc/apache2/modules.d
 	#doins "${FILESDIR}/00_systemd.conf"
+
+	# Install http2 module config
+	insinto /etc/apache2/modules.d
+	doins "${FILESDIR}"/41_mod_http2.conf
 }
 
 pkg_postinst()
