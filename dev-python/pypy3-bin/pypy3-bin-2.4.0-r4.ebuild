@@ -82,13 +82,20 @@ QA_PREBUILT="
 	usr/lib*/pypy3/libpypy-c.so"
 
 src_prepare() {
-	epatch "${FILESDIR}/4.0.0-gentoo-path.patch" \
-		"${FILESDIR}/1.9-distutils.unixccompiler.UnixCCompiler.runtime_library_dir_option.patch" \
-		"${FILESDIR}/2.4.0-ncurses6.patch"
+	epatch \
+		"${FILESDIR}/4.0.0-gentoo-path.patch" \
+		"${FILESDIR}/1.9-distutils.unixccompiler.UnixCCompiler.runtime_library_dir_option.patch"
+	epatch "${FILESDIR}/2.4.0-ncurses6.patch"
+	epatch "${FILESDIR}"/pypy3-2.4.0-libressl.patch
 
 	sed -e "s^@EPREFIX@^${EPREFIX}^" \
 		-e "s^@libdir@^$(get_libdir)^" \
 		-i lib-python/3/distutils/command/install.py || die
+
+	# apply CPython stdlib patches
+	pushd lib-python/3 > /dev/null || die
+	epatch "${FILESDIR}"/2.4.0-21_all_distutils_c++.patch
+	popd > /dev/null || die
 
 	epatch_user
 }
