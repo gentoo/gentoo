@@ -55,13 +55,13 @@ IUSE="doc gdbm +jit +shadowstack sqlite cpu_flags_x86_sse2 test tk"
 
 # yep, world would be easier if people started filling subslots...
 RDEPEND="
-	app-arch/bzip2:0
-	dev-libs/expat:0
-	dev-libs/libffi:0
-	dev-libs/openssl:0[-bindist]
-	sys-libs/glibc:2.2
+	app-arch/bzip2:0=
+	dev-libs/expat:0=
+	dev-libs/libffi:0=
+	dev-libs/openssl:0=[-bindist]
+	sys-libs/glibc:2.2=
 	sys-libs/ncurses:0/6
-	sys-libs/zlib:0
+	sys-libs/zlib:0=
 	gdbm? ( sys-libs/gdbm:0= )
 	sqlite? ( dev-db/sqlite:3= )
 	tk? (
@@ -69,11 +69,11 @@ RDEPEND="
 		dev-tcltk/tix:0=
 	)
 	!dev-python/pypy:0"
-DEPEND="app-arch/lzip
+DEPEND="${RDEPEND}
+	app-arch/lzip
 	app-arch/xz-utils
 	doc? ( ${PYTHON_DEPS}
-		dev-python/sphinx )
-	test? ( ${RDEPEND} )"
+		dev-python/sphinx )"
 PDEPEND="app-admin/python-updater"
 
 S=${WORKDIR}/pypy-${PV}-src
