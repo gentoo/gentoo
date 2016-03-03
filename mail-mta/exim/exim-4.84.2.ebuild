@@ -9,7 +9,7 @@ inherit eutils toolchain-funcs multilib pam systemd
 IUSE="dcc +dkim dlfunc dmarc +dnsdb doc dovecot-sasl dsn exiscan-acl gnutls ipv6 ldap lmtp maildir mbx mysql nis pam perl pkcs11 postgres +prdr proxy radius redis sasl selinux spf sqlite srs ssl syslog tcpd tpda X"
 REQUIRED_USE="spf? ( exiscan-acl ) srs? ( exiscan-acl ) dmarc? ( spf dkim ) pkcs11? ( gnutls )"
 
-COMM_URI="ftp://ftp.exim.org/pub/exim/exim4$([[ ${PV} == *_rc* ]] && echo /test)"
+COMM_URI="ftp://ftp.exim.org/pub/exim/exim4/old"
 
 DESCRIPTION="A highly configurable, drop-in replacement for sendmail"
 SRC_URI="${COMM_URI}/${P//rc/RC}.tar.bz2
@@ -344,7 +344,7 @@ src_configure() {
 	# Transport post-delivery actions
 	if use tpda; then
 		cat >> Makefile <<- EOC
-			EXPERIMENTAL_EVENT=yes
+			EXPERIMENTAL_TPDA=yes
 		EOC
 	fi
 
@@ -464,7 +464,7 @@ src_install () {
 	insinto /etc/logrotate.d
 	newins "${FILESDIR}/exim.logrotate" exim
 
-	newinitd "${FILESDIR}"/exim.rc9 exim
+	newinitd "${FILESDIR}"/exim.rc8 exim
 	newconfd "${FILESDIR}"/exim.confd exim
 
 	systemd_dounit "${FILESDIR}"/{exim.service,exim.socket,exim-submission.socket}
@@ -493,7 +493,7 @@ pkg_postinst() {
 		einfo "configure DMARC, for usage see the documentation at "
 		einfo "experimental-spec.txt."
 	fi
-	use tpda && einfo "TPDA/EVENT support is experimental"
+	use tpda && einfo "TPDA support is experimental"
 	use proxy && einfo "proxy support is experimental"
 	if use dsn ; then
 		einfo "Starting from Exim 4.83, DSN support comes from upstream."
