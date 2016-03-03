@@ -18708,7 +18708,7 @@ x11-wm/mutter 3.16.4 3.18.2 3.18.2-r1: GNOME 3 compositing window manager based 
 x11-wm/notion 3_p2013030200 3_p2015061300-r1 9999: Notion is a tiling, tabbed window manager for the X window system
 x11-wm/openbox 3.5.2-r1 3.6 3.6.1 9999: A standards compliant, fast, light-weight, extensible window manager
 x11-wm/oroborus 2.0.20: Small and fast window manager
-x11-wm/page 1.9.6-r4: A mouse friendly tiling window manager
+x11-wm/page 1.9.6-r4 1.9.6-r5: A mouse friendly tiling window manager
 x11-wm/pekwm 0.1.17-r1: A lightweight window manager initially based on aewm++
 x11-wm/plwm 2.7_rc1-r1: Python classes for, and an implementation of, a window manager
 x11-wm/qtile 0.10.1 0.10.2 9999: A full-featured, hackable tiling window manager written in Python
