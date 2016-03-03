@@ -34,6 +34,7 @@ src_prepare() {
 	local variable
 
 	epatch "${FILESDIR}/${PN}-remove-bashisms.patch"
+	epatch "${FILESDIR}/${PN}-flagparser.patch"
 	epatch_user
 
 	# Disable renaming as it is stupind thing to do
