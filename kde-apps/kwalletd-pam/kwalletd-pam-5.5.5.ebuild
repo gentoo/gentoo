@@ -26,7 +26,7 @@ RDEPEND="${DEPEND}
 
 S="${WORKDIR}/${MY_PN}-${PV}"
 
-PATCHES=( "${FILESDIR}/${P}-coverity.patch" )
+PATCHES=( "${FILESDIR}/${PN}-5.5.4-coverity.patch" )
 
 src_configure() {
 	local mycmakeargs=(
