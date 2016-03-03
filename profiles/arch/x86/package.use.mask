@@ -5,6 +5,10 @@
 # This file requires >=portage-2.1.1
 
 # Mike Gilbert <floppym@gentoo.org> (03 Mar 2016)
+# google-chrome dropped x86 support
+app-admin/lastpass chrome
+
+# Mike Gilbert <floppym@gentoo.org> (03 Mar 2016)
 # chrome-binary-plugins dropped x86 support
 www-client/chromium widevine
 
