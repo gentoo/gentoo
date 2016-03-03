@@ -15147,16 +15147,20 @@ sci-astronomy/galaxy 2.2: Stellar simulation program
 sci-astronomy/gasgano 2.4.5 2.4.8: ESO astronomical data file organizer
 sci-astronomy/idlastro 20160225: Astronomical user routines for IDL
 sci-astronomy/kapteyn 2.3: Collection of python tools for astronomy
+sci-astronomy/missfits 2.8.0: Performs basic maintenance and packaging tasks on FITS files
 sci-astronomy/predict 2.2.3-r1: Satellite tracking and orbital prediction
 sci-astronomy/pyephem 3.7.5.3 3.7.6.0: Astronomical routines for the python programming language
 sci-astronomy/skycat 3.1.2-r1: ESO astronomical image visualizer with catalog access
 sci-astronomy/skychart 3.8.2450 3.10.2854: Planetarium for amauter astronomers
+sci-astronomy/skymaker 3.10.5: Program that simulates astronomical images
 sci-astronomy/sofa_c 20150209a: Library for algorithms for models in fundamental astronomy
 sci-astronomy/stellarium 0.12.4 0.13.3 0.14.0 0.14.2: 3D photo-realistic skies in real time
 sci-astronomy/stiff 2.4.0: Converts astronomical FITS images to the TIFF format
+sci-astronomy/stuff 1.26.0: Tool for automatic generation of astronomical catalogs
 sci-astronomy/swarp 2.38.0: Resample and coadd astronomical FITS images
 sci-astronomy/wcslib 4.25.1 5.14: Astronomical World Coordinate System transformations library
 sci-astronomy/wcstools 3.8.7 3.9.2: World Coordinate System library for astronomical FITS images
+sci-astronomy/weightwatcher 1.12: Combine weight maps and polygon for astronomical images weighting
 sci-astronomy/xephem 3.7.5 3.7.6 3.7.7: Interactive tool for astronomical ephemeris and sky simulation
 sci-astronomy/xfitsview 2.2-r1: Viewer for astronomical images in FITS format
 sci-biology/ApE 2.0.7-r1: A Plasmid Editor
