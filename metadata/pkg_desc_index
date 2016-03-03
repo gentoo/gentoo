@@ -43,7 +43,7 @@ app-admin/abrt 2.0.12-r2: Automatic bug detection and reporting tool
 app-admin/amazon-ec2-init 20101127: Init script to setup Amazon EC2 instance parameters
 app-admin/analog 6.0-r4: A webserver log analyzer
 app-admin/ansible 1.9.4 2.0.0.1-r2 2.0.0.2 2.0.1.0 9999: Model-driven deployment, config management, and command execution framework
-app-admin/apache-tools 2.2.31 2.4.16 2.4.18: Useful Apache tools - htdigest, htpasswd, ab, htdbm
+app-admin/apache-tools 2.2.31 2.4.18: Useful Apache tools - htdigest, htpasswd, ab, htdbm
 app-admin/apachetop 0.12.6-r1 0.12.6-r2: A realtime Apache log analyzer
 app-admin/apg 2.3.0b-r5: Another Password Generator
 app-admin/augeas 0.10.0-r2 1.1.0 1.3.0: A library for changing configuration files
@@ -4080,7 +4080,7 @@ dev-java/lzmajio 0.95-r1: Implementations of LzmaInputStream/LzmaOutputStream in
 dev-java/matrix-toolkits-java 0.9.12: BLAS and LAPACK-derived matrix data structures and linear algebra methods
 dev-java/maven-bin 1.1-r3 2.0.11-r2 2.2.1-r2 3.0.4-r1 3.1.1 3.2.5 3.3.3-r1 3.3.9: Project Management and Comprehension Tool for Java
 dev-java/mchange-commons 0.2.10: a library of arguably useful Java utilities
-dev-java/mersennetwister 0_pre23765: Modified MersenneTwister java port for Freenet
+dev-java/mersennetwister 0_pre23765 0_pre23765-r1: Modified MersenneTwister java port for Freenet
 dev-java/metadata-extractor 2.8.1: Access the metadata in digital images and video via a simple Java API
 dev-java/metainf-services 1.6: Generates META-INF/services files automatically
 dev-java/microba 0.4.4: Swing components for date operations and palettes
@@ -4165,7 +4165,7 @@ dev-java/rxtx 2.2_pre2 2.2_pre2-r1: Native lib providing serial and parallel com
 dev-java/saaj 1.3.19-r1: SOAP with Attachments API for Java
 dev-java/sablecc 3.2 3.7: Java based compiler / parser generator
 dev-java/sablecc-anttask 1.1.0-r1: Ant task for sablecc
-dev-java/sac 1.3-r1: SAC is a standard interface for CSS parser
+dev-java/sac 1.3-r1 1.3-r2: SAC is a standard interface for CSS parser
 dev-java/sat4j-core 2.2.0 2.3.1-r1: Lightweight constraint programming with a SAT solver
 dev-java/sat4j-pseudo 2.2.0 2.3.1: Pseudo Boolean solvers
 dev-java/sax 2.2.1-r2: Simple API for XML, originally a Java-only API. It was the first widely adopted API for XML in Java
@@ -17642,7 +17642,7 @@ www-plugins/mozplugger 2.1.6: Streaming media plugin for Mozilla, based on netsc
 www-plugins/nspluginwrapper 1.4.4-r3: Netscape Plugin Wrapper - Load 32bit plugins on 64bit browser
 www-plugins/pipelight 0.2.7.3 0.2.8 9999: Wine-based wrapper for running Windows plugins on POSIX systems
 www-servers/adsf 1.2.0: A Dead Simple Fileserver is a static file server that can launch in a directory
-www-servers/apache 2.2.31 2.4.16 2.4.18: The Apache Web Server
+www-servers/apache 2.2.31 2.4.18 2.4.18-r1: The Apache Web Server
 www-servers/blogc-runserver 0.1.1 9999: A simple HTTP server to test blogc websites
 www-servers/boa 0.94.14_rc21-r1 0.94.14_rc21-r2: A very small and very fast http daemon
 www-servers/bozohttpd 20140708 20140708-r1: bozohttpd is a small and secure http server
