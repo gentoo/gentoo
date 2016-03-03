@@ -2915,7 +2915,7 @@ dev-db/spatialite 2.4.0_rc4 3.0.1 4.1.1: A complete Spatial DBMS in a nutshell b
 dev-db/spatialite-tools 3.1.0: A complete Spatial DBMS in a nutshell built upon sqlite
 dev-db/sqlcipher 3.3.0: Full Database Encryption for SQLite
 dev-db/sqldeveloper 3.2.20.09.87 4.0.2.15.21 4.1.1.19.59 4.1.3.20.78 4.1.3.20.78-r1: Oracle SQL Developer is a graphical tool for database development
-dev-db/sqlite 3.8.10.1 3.8.10.2 3.8.11.1 3.9.1 3.9.2 3.10.0 3.10.2: A SQL Database Engine in a C Library
+dev-db/sqlite 3.8.10.1 3.8.10.2 3.8.11.1 3.9.1 3.9.2 3.10.0 3.10.2 3.11.0: A SQL Database Engine in a C Library
 dev-db/sqlitebrowser 3.7.0-r1 3.8.0: SQLite Database Browser
 dev-db/sqliteman 1.2.2-r1: Powerful GUI manager for the Sqlite3 database
 dev-db/sqliteodbc 0.96 0.99: ODBC driver to access local SQLite database files
@@ -17011,7 +17011,7 @@ sys-kernel/raspberrypi-sources 3.10.1_pre-r20130719 3.10.9999 3.12.9999 3.14.999
 sys-kernel/rsbac-sources 3.14.28: RSBAC kernel sources (kernel series 3.14)
 sys-kernel/rt-sources 3.14.58_p59 3.14.61_p62 3.18.25_p23 3.18.27_p25 4.1.15_p17 4.4.1_p6 4.4.2_p7: Full Linux 4.4 kernel sources with the CONFIG_PREEMPT_RT patch
 sys-kernel/spl 0.6.0_rc13-r2 0.6.0_rc14-r3 0.6.1-r3 0.6.2-r5 0.6.3-r1 0.6.4.2 0.6.5.2 0.6.5.3 0.6.5.3-r1 0.6.5.4 0.6.5.4-r1 9999: The Solaris Porting Layer is a Linux kernel module which provides many of the Solaris kernel APIs
-sys-kernel/tuxonice-sources 3.4.110 3.10.93 3.10.94 3.10.95 3.10.98 3.12.50 3.12.52 3.12.52-r1 3.12.55 3.14.57 3.14.58 3.14.59 3.14.62 3.18.24 3.18.25 3.18.25-r1 3.18.27 4.1.13 4.1.15 4.1.16 4.1.18 4.2.6 4.2.8 4.3.0 4.3.3 4.3.4 4.3.6 4.4.0 4.4.0-r1 4.4.3: TuxOnIce + Gentoo patchset sources
+sys-kernel/tuxonice-sources 3.4.110 3.10.98 3.12.55 3.14.62 3.18.27 4.1.18 4.2.8 4.3.6 4.4.3: TuxOnIce + Gentoo patchset sources
 sys-kernel/vanilla-sources 3.2.78 3.4.110 3.10.98 3.12.55 3.14.62 3.18.27 4.1.18 4.3.6 4.4.3: Full sources for the Linux kernel
 sys-kernel/xbox-sources 2.6.16.26: Full sources for the Xbox Linux kernel
 sys-kernel/zen-sources 3.8.9999 3.9.9999 3.10.9999 3.11.9999 3.12.9999 3.13.9999: The Zen Kernel Live Sources
@@ -17574,8 +17574,8 @@ www-client/epiphany 3.16.3 3.18.3 3.18.4: GNOME webbrowser based on Webkit
 www-client/fetch 1.0-r1: Fetch is a simple, fast, and flexible HTTP download tool built on the HTTP Fetcher library
 www-client/firefox 38.5.0 38.6.1 44.0.2: Firefox Web Browser
 www-client/firefox-bin 38.6.1 44.0.2: Firefox Web Browser
-www-client/google-chrome 48.0.2564.116_p1: The web browser from Google
-www-client/google-chrome-beta 49.0.2623.63_p1: The web browser from Google
+www-client/google-chrome 49.0.2623.75_p1: The web browser from Google
+www-client/google-chrome-beta 49.0.2623.75_p1: The web browser from Google
 www-client/google-chrome-unstable 50.0.2657.0_p1: The web browser from Google
 www-client/httrack 3.48.21-r1 3.48.21-r2: HTTrack Website Copier, Open Source Offline Browser
 www-client/jd 2.8.5_p120826: gtk2 based 2ch browser written in C++
@@ -17632,7 +17632,7 @@ www-misc/wsmake 0.6.4: Website Pre-processor
 www-misc/xxv 1.6.1-r1: WWW Admin for the VDR (Video Disk Recorder)
 www-misc/zoneminder 1.27.0 1.28.0 1.28.1: ZoneMinder allows you to capture, analyse, record and monitor any cameras attached to your system
 www-plugins/adobe-flash 11.2.202.569: Adobe Flash Player
-www-plugins/chrome-binary-plugins 48.0.2564.116_p1 49.0.2623.63_beta1 50.0.2657.0_alpha1: Binary plugins from Google Chrome for use in Chromium
+www-plugins/chrome-binary-plugins 49.0.2623.75_beta1 49.0.2623.75_p1 50.0.2657.0_alpha1: Binary plugins from Google Chrome for use in Chromium
 www-plugins/freshplayerplugin 0.3.1-r2 0.3.2 0.3.3 0.3.3-r1 0.3.3-r2 0.3.4 0.3.4-r1: PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers
 www-plugins/gecko-mediaplayer 1.0.8 1.0.9: A browser plugin that uses GNOME MPlayer
 www-plugins/gnash 0.8.10_p20131019 0.8.10_p20150316: GNU Flash movie player that supports many SWF v7,8,9 features
