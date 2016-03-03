@@ -23,6 +23,7 @@ RDEPEND="
 	virtual/perl-Math-BigInt
 	virtual/perl-Time-Local
 	dev-perl/XML-Simple
+	!<dev-perl/Net-OpenID-Consumer-1.30.99
 "
 DEPEND="${RDEPEND}
 	virtual/perl-ExtUtils-MakeMaker
