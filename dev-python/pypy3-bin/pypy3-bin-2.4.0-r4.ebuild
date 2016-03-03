@@ -86,6 +86,10 @@ src_prepare() {
 		"${FILESDIR}/1.9-distutils.unixccompiler.UnixCCompiler.runtime_library_dir_option.patch" \
 		"${FILESDIR}/2.4.0-ncurses6.patch"
 
+	sed -e "s^@EPREFIX@^${EPREFIX}^" \
+		-e "s^@libdir@^$(get_libdir)^" \
+		-i lib-python/3/distutils/command/install.py || die
+
 	epatch_user
 }
 
