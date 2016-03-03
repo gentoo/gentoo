@@ -6,8 +6,7 @@ EAPI=5
 
 inherit eutils bash-completion-r1
 
-MY_P=${P/_/-}
-S="${WORKDIR}"/${MY_P}
+MY_P="${P/_/-}"
 
 DESCRIPTION="Linux-VServer admin utilities"
 HOMEPAGE="http://www.nongnu.org/util-vserver/"
@@ -19,15 +18,19 @@ KEYWORDS="~alpha amd64 ~sparc x86"
 
 IUSE=""
 
-CDEPEND="dev-libs/beecrypt
+CDEPEND="
+	dev-libs/beecrypt
 	net-firewall/iptables
 	net-misc/vconfig
 	sys-apps/iproute2"
 
-DEPEND=">dev-libs/dietlibc-0.33
-	${CDEPEND}"
+DEPEND="
+	${CDEPEND}
+	>dev-libs/dietlibc-0.33"
 
 RDEPEND="${CDEPEND}"
+
+S="${WORKDIR}/${MY_P}"
 
 pkg_setup() {
 	if [[ -z "${VDIRBASE}" ]]; then
@@ -45,14 +48,19 @@ pkg_setup() {
 
 src_test() {
 	# do not use $D from portage by accident (#297982)
-	sed -i -e 's/^\$D //' "${S}"/src/testsuite/vunify-test.sh
+	sed -i -e 's/^\$D //' "${S}"/src/testsuite/vunify-test.sh || die
+
 	default
 }
 
 src_configure() {
-	econf --with-vrootdir=${VDIRBASE} \
-		--with-initscripts=gentoo \
+	local myeconf=(
+		--with-vrootdir="${VDIRBASE}"
+		--with-initscripts=gentoo
 		--localstatedir=/var
+	)
+
+	econf "${myeconf[@]}"
 }
 
 src_compile() {
@@ -78,11 +86,11 @@ pkg_postinst() {
 	# Create VDIRBASE in postinst, so it is (a) not unmerged and (b) also
 	# present when merging.
 
-	mkdir -p "${VDIRBASE}"
-	setattr --barrier "${VDIRBASE}"
+	mkdir -p "${VDIRBASE}" || die
+	setattr --barrier "${VDIRBASE}" || die
 
-	rm /etc/vservers/.defaults/vdirbase
-	ln -sf "${VDIRBASE}" /etc/vservers/.defaults/vdirbase
+	rm /etc/vservers/.defaults/vdirbase || die
+	ln -sf "${VDIRBASE}" /etc/vservers/.defaults/vdirbase || die
 
 	elog
 	elog "You have to run the vprocunhide command after every reboot"
