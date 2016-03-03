@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -18,7 +18,6 @@ DEPEND=""
 RDEPEND="|| ( net-misc/miniupnpd net-libs/miniupnpc )"
 
 src_prepare() {
-	epatch "${FILESDIR}/${PN}-1.2-respect-CC.patch"
 	epatch "${FILESDIR}/${PN}-1.2-remove-initd.patch"
 }
 
