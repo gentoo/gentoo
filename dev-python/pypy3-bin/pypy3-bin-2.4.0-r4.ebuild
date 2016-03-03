@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -6,39 +6,39 @@ EAPI=5
 
 # some random parts need python 2...
 PYTHON_COMPAT=( python2_7 pypy )
-inherit eutils multilib pax-utils python-any-r1 versionator
+inherit eutils multilib pax-utils python-any-r1 unpacker versionator
 
-BINHOST="https://dev.gentoo.org/~mgorny/dist/pypy-bin/${PV}"
+BINHOST="https://dev.gentoo.org/~mgorny/dist/pypy-bin/${PV}-nossl2"
 
 DESCRIPTION="A fast, compliant alternative implementation of Python 3 (binary package)"
 HOMEPAGE="http://pypy.org/"
 SRC_URI="https://bitbucket.org/pypy/pypy/downloads/pypy3-${PV}-src.tar.bz2
 	amd64? (
 		jit? ( shadowstack? (
-			${BINHOST}/${P}-amd64+bzip2+jit+ncurses+shadowstack.tar.xz
+			${BINHOST}/${P}-nossl2-amd64+bzip2+jit+ncurses+shadowstack.tar.lz
 		) )
 		jit? ( !shadowstack? (
-			${BINHOST}/${P}-amd64+bzip2+jit+ncurses.tar.xz
+			${BINHOST}/${P}-nossl2-amd64+bzip2+jit+ncurses.tar.lz
 		) )
 		!jit? ( !shadowstack? (
-			${BINHOST}/${P}-amd64+bzip2+ncurses.tar.xz
+			${BINHOST}/${P}-nossl2-amd64+bzip2+ncurses.tar.lz
 		) )
 	)
 	x86? (
 		cpu_flags_x86_sse2? (
 			jit? ( shadowstack? (
-				${BINHOST}/${P}-x86+bzip2+jit+ncurses+shadowstack+sse2.tar.xz
+				${BINHOST}/${P}-nossl2-x86+bzip2+jit+ncurses+shadowstack+sse2.tar.lz
 			) )
 			jit? ( !shadowstack? (
-				${BINHOST}/${P}-x86+bzip2+jit+ncurses+sse2.tar.xz
+				${BINHOST}/${P}-nossl2-x86+bzip2+jit+ncurses+sse2.tar.lz
 			) )
 			!jit? ( !shadowstack? (
-				${BINHOST}/${P}-x86+bzip2+ncurses+sse2.tar.xz
+				${BINHOST}/${P}-nossl2-x86+bzip2+ncurses+sse2.tar.lz
 			) )
 		)
 		!cpu_flags_x86_sse2? (
 			!jit? ( !shadowstack? (
-				${BINHOST}/${P}-x86+bzip2+ncurses.tar.xz
+				${BINHOST}/${P}-nossl2-x86+bzip2+ncurses.tar.lz
 			) )
 		)
 	)"
@@ -54,13 +54,13 @@ IUSE="gdbm +jit +shadowstack sqlite cpu_flags_x86_sse2 test tk"
 
 # yep, world would be easier if people started filling subslots...
 RDEPEND="
-	app-arch/bzip2:0
-	dev-libs/expat:0
-	dev-libs/libffi:0
-	dev-libs/openssl:0
-	sys-libs/glibc:2.2
-	=sys-libs/ncurses-5*:0
-	sys-libs/zlib:0
+	app-arch/bzip2:0=
+	dev-libs/expat:0=
+	dev-libs/libffi:0=
+	dev-libs/openssl:0=
+	sys-libs/glibc:2.2=
+	sys-libs/ncurses:0/6
+	sys-libs/zlib:0=
 	gdbm? ( sys-libs/gdbm:0= )
 	sqlite? ( dev-db/sqlite:3= )
 	tk? (
@@ -68,18 +68,34 @@ RDEPEND="
 		dev-tcltk/tix:0=
 	)
 	!dev-python/pypy3:0"
-DEPEND="app-arch/xz-utils
-	test? ( ${RDEPEND}
-		${PYTHON_DEPS} )"
+DEPEND="${RDEPEND}
+	app-arch/lzip
+	test? ( ${PYTHON_DEPS} )"
 #	doc? ( ${PYTHON_DEPS}
 #		dev-python/sphinx )
 PDEPEND="app-admin/python-updater"
 
 S=${WORKDIR}/pypy3-${PV}-src
 
+QA_PREBUILT="
+	usr/lib*/pypy3/pypy-c
+	usr/lib*/pypy3/libpypy-c.so"
+
 src_prepare() {
-	epatch "${FILESDIR}/1.9-scripts-location.patch" \
+	epatch \
+		"${FILESDIR}/4.0.0-gentoo-path.patch" \
 		"${FILESDIR}/1.9-distutils.unixccompiler.UnixCCompiler.runtime_library_dir_option.patch"
+	epatch "${FILESDIR}/2.4.0-ncurses6.patch"
+	epatch "${FILESDIR}"/pypy3-2.4.0-libressl.patch
+
+	sed -e "s^@EPREFIX@^${EPREFIX}^" \
+		-e "s^@libdir@^$(get_libdir)^" \
+		-i lib-python/3/distutils/command/install.py || die
+
+	# apply CPython stdlib patches
+	pushd lib-python/3 > /dev/null || die
+	epatch "${FILESDIR}"/2.4.0-21_all_distutils_c++.patch
+	popd > /dev/null || die
 
 	epatch_user
 }

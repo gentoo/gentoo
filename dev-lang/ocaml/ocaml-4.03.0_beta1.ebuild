@@ -91,6 +91,14 @@ src_compile() {
 	fi
 }
 
+src_test() {
+	if use ocamlopt ; then
+		emake -j1 tests
+	else
+		ewarn "${PN} testsuite requires ocamlopt useflag"
+	fi
+}
+
 src_install() {
 	emake BINDIR="${ED}"/usr/bin \
 		LIBDIR="${ED}"/usr/$(get_libdir)/ocaml \

@@ -9,22 +9,24 @@ PYTHON_COMPAT=( python2_7 pypy )
 EHG_PROJECT="pypy"
 EHG_REPO_URI="https://bitbucket.org/pypy/pypy"
 EHG_REVISION="py3k"
-inherit check-reqs eutils mercurial multilib multiprocessing pax-utils python-any-r1 toolchain-funcs versionator
+inherit check-reqs eutils mercurial multilib multiprocessing pax-utils \
+	python-any-r1 toolchain-funcs versionator
 
-DESCRIPTION="A fast, compliant alternative implementation of the Python language"
+DESCRIPTION="A fast, compliant alternative implementation of Python 3"
 HOMEPAGE="http://pypy.org/"
 SRC_URI=""
 
 LICENSE="MIT"
 SLOT="0/$(get_version_component_range 1-2 ${PV})"
 KEYWORDS=""
-IUSE="bzip2 gdbm +jit low-memory ncurses sandbox +shadowstack sqlite cpu_flags_x86_sse2 test tk"
+IUSE="bzip2 gdbm +jit libressl low-memory ncurses sandbox +shadowstack sqlite cpu_flags_x86_sse2 tk"
 
 RDEPEND=">=sys-libs/zlib-1.1.3:0=
 	virtual/libffi:0=
 	virtual/libintl:0=
 	dev-libs/expat:0=
-	dev-libs/openssl:0=[-bindist]
+	!libressl? ( dev-libs/openssl:0= )
+	libressl? ( dev-libs/libressl:= )
 	bzip2? ( app-arch/bzip2:0= )
 	gdbm? ( sys-libs/gdbm:0= )
 	ncurses? ( sys-libs/ncurses:0= )

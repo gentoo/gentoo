@@ -4,39 +4,39 @@
 
 EAPI=5
 
+# pypy3 needs to be built using python 2
 PYTHON_COMPAT=( python2_7 pypy )
-inherit check-reqs eutils multilib multiprocessing pax-utils python-any-r1 toolchain-funcs versionator
+inherit check-reqs eutils multilib multiprocessing pax-utils \
+	python-any-r1 toolchain-funcs versionator
 
-CPY_PATCHSET_VERSION="2.7.10-0"
-
-DESCRIPTION="A fast, compliant alternative implementation of the Python language"
+DESCRIPTION="A fast, compliant alternative implementation of Python 3"
 HOMEPAGE="http://pypy.org/"
-SRC_URI="https://bitbucket.org/pypy/pypy/downloads/${P}-src.tar.bz2
-	https://dev.gentoo.org/~floppym/python/python-gentoo-patches-${CPY_PATCHSET_VERSION}.tar.xz"
+SRC_URI="https://bitbucket.org/pypy/pypy/downloads/${P}-src.tar.bz2"
 
 LICENSE="MIT"
 SLOT="0/$(get_version_component_range 1-2 ${PV})"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
-IUSE="bzip2 doc gdbm +jit low-memory ncurses sandbox +shadowstack sqlite cpu_flags_x86_sse2 test tk"
+IUSE="bzip2 gdbm +jit libressl low-memory ncurses sandbox +shadowstack sqlite cpu_flags_x86_sse2 tk"
 
 RDEPEND=">=sys-libs/zlib-1.1.3:0=
 	virtual/libffi:0=
 	virtual/libintl:0=
 	dev-libs/expat:0=
-	dev-libs/openssl:0=[-bindist]
+	!libressl? ( dev-libs/openssl:0= )
+	libressl? ( dev-libs/libressl:= )
 	bzip2? ( app-arch/bzip2:0= )
 	gdbm? ( sys-libs/gdbm:0= )
-	ncurses? ( sys-libs/ncurses:0= )
+	ncurses? ( >=sys-libs/ncurses-6.0:0= )
 	sqlite? ( dev-db/sqlite:3= )
 	tk? (
 		dev-lang/tk:0=
 		dev-tcltk/tix:0=
 	)
-	!dev-python/pypy-bin:0"
+	!dev-python/pypy3-bin:0"
 DEPEND="${RDEPEND}
-	doc? ( dev-python/sphinx )
-	${PYTHON_DEPS}
-	test? ( dev-python/pytest )"
+	low-memory? ( virtual/pypy:0 )
+	!low-memory? ( ${PYTHON_DEPS} )"
+#	doc? ( dev-python/sphinx )
 PDEPEND="app-admin/python-updater"
 
 S="${WORKDIR}/${P}-src"
@@ -44,16 +44,6 @@ S="${WORKDIR}/${P}-src"
 pkg_pretend() {
 	if [[ ${MERGE_TYPE} != binary ]]; then
 		if use low-memory; then
-			if ! python_is_installed pypy; then
-				eerror "USE=low-memory requires a (possibly old) version of dev-python/pypy"
-				eerror "or dev-python/pypy-bin being installed. Please install it using e.g.:"
-				eerror
-				eerror "  $ emerge -1v dev-python/pypy-bin"
-				eerror
-				eerror "before attempting to build dev-python/pypy[low-memory]."
-				die "dev-python/pypy-bin (or dev-python/pypy) needs to be installed for USE=low-memory"
-			fi
-
 			CHECKREQS_MEMORY="1750M"
 			use amd64 && CHECKREQS_MEMORY="3500M"
 		else
@@ -69,15 +59,15 @@ pkg_setup() {
 	if [[ ${MERGE_TYPE} != binary ]]; then
 		pkg_pretend
 
-		if python_is_installed pypy; then
-			if [[ ! ${EPYTHON} || ${EPYTHON} == pypy ]] || use low-memory; then
-				einfo "Using already-installed PyPy to perform the translation."
-				local EPYTHON=pypy
-			else
-				einfo "Using ${EPYTHON} to perform the translation. Please note that upstream"
-				einfo "recommends using PyPy for that. If you wish to do so, please unset"
-				einfo "the EPYTHON variable."
-			fi
+		# unset to allow forcing pypy below :)
+		use low-memory && local EPYTHON=
+		if python_is_installed pypy && [[ ! ${EPYTHON} || ${EPYTHON} == pypy ]]; then
+			einfo "Using PyPy to perform the translation."
+			local EPYTHON=pypy
+		else
+			einfo "Using ${EPYTHON:-python2} to perform the translation. Please note that upstream"
+			einfo "recommends using PyPy for that. If you wish to do so, please install"
+			einfo "virtual/pypy and ensure that EPYTHON variable is unset."
 		fi
 
 		python-any-r1_pkg_setup
@@ -85,19 +75,21 @@ pkg_setup() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}/4.0.0-gentoo-path.patch" \
+	epatch \
+		"${FILESDIR}"/${P}-gcc-4.9.patch \
+		"${FILESDIR}/4.0.0-gentoo-path.patch" \
 		"${FILESDIR}/1.9-distutils.unixccompiler.UnixCCompiler.runtime_library_dir_option.patch" \
-		"${FILESDIR}"/2.5.0-shared-lib.patch	# 517002
+		"${FILESDIR}"/2.3.1-shared-lib.patch	# 517002
+	epatch "${FILESDIR}/2.4.0-ncurses6.patch"
+	epatch "${FILESDIR}"/${PN}-2.4.0-libressl.patch
 
 	sed -e "s^@EPREFIX@^${EPREFIX}^" \
 		-e "s^@libdir@^$(get_libdir)^" \
-		-i lib-python/2.7/distutils/command/install.py || die
+		-i lib-python/3/distutils/command/install.py || die
 
 	# apply CPython stdlib patches
-	pushd lib-python/2.7 > /dev/null || die
-	epatch "${FILESDIR}"/2.5.0_all_distutils_cxx.patch \
-		"${WORKDIR}"/patches/22_all_turkish_locale.patch \
-		"${WORKDIR}"/patches/62_all_xml.use_pyxml.patch
+	pushd lib-python/3 > /dev/null || die
+	epatch "${FILESDIR}"/2.4.0-21_all_distutils_c++.patch
 	popd > /dev/null || die
 
 	epatch_user
@@ -164,7 +156,11 @@ src_compile() {
 	echo -e "\033[1m${@}\033[0m"
 	"${@}" || die "compile error"
 
-	use doc && emake -C pypy/doc/ html
+	# Exception occurred:
+	#  File "/tmp/1/pypy3-2.4.0-src/pypy/config/makerestdoc.py", line 199, in config_role
+	#    assert txt.check()
+	# AssertionError
+	#use doc && emake -C pypy/doc/ html
 	pax-mark m "${ED%/}${INSDESTTREE}/pypy-c"
 }
 
@@ -172,35 +168,37 @@ src_test() {
 	# (unset)
 	local -x PYTHONDONTWRITEBYTECODE
 
-	./pypy-c ./pypy/test_all.py --pypy=./pypy-c lib-python || die
+	# Test runner requires Python 2 too. However, it spawns PyPy3
+	# internally so that we end up testing the correct interpreter.
+	"${PYTHON}" ./pypy/test_all.py --pypy=./pypy-c lib-python || die
 }
 
 src_install() {
 	einfo "Installing PyPy ..."
-	insinto "/usr/$(get_libdir)/pypy"
+	insinto "/usr/$(get_libdir)/pypy3"
 	doins -r include lib_pypy lib-python pypy-c libpypy-c.so
 	fperms a+x ${INSDESTTREE}/pypy-c ${INSDESTTREE}/libpypy-c.so
 	pax-mark m "${ED%/}${INSDESTTREE}/pypy-c" "${ED%/}${INSDESTTREE}/libpypy-c.so"
-	dosym ../$(get_libdir)/pypy/pypy-c /usr/bin/pypy
+	dosym ../$(get_libdir)/pypy3/pypy-c /usr/bin/pypy3
 	dodoc README.rst
 
 	if ! use gdbm; then
 		rm -r "${ED%/}${INSDESTTREE}"/lib_pypy/gdbm.py \
-			"${ED%/}${INSDESTTREE}"/lib-python/*2.7/test/test_gdbm.py || die
+			"${ED%/}${INSDESTTREE}"/lib-python/*3/test/test_gdbm.py || die
 	fi
 	if ! use sqlite; then
-		rm -r "${ED%/}${INSDESTTREE}"/lib-python/*2.7/sqlite3 \
+		rm -r "${ED%/}${INSDESTTREE}"/lib-python/*3/sqlite3 \
 			"${ED%/}${INSDESTTREE}"/lib_pypy/_sqlite3.py \
-			"${ED%/}${INSDESTTREE}"/lib-python/*2.7/test/test_sqlite.py || die
+			"${ED%/}${INSDESTTREE}"/lib-python/*3/test/test_sqlite.py || die
 	fi
 	if ! use tk; then
-		rm -r "${ED%/}${INSDESTTREE}"/lib-python/*2.7/{idlelib,lib-tk} \
+		rm -r "${ED%/}${INSDESTTREE}"/lib-python/*3/{idlelib,tkinter} \
 			"${ED%/}${INSDESTTREE}"/lib_pypy/_tkinter \
-			"${ED%/}${INSDESTTREE}"/lib-python/*2.7/test/test_{tcl,tk,ttk*}.py || die
+			"${ED%/}${INSDESTTREE}"/lib-python/*3/test/test_{tcl,tk,ttk*}.py || die
 	fi
 
 	# Install docs
-	use doc && dohtml -r pypy/doc/_build/html/
+	#use doc && dohtml -r pypy/doc/_build/html/
 
 	einfo "Generating caches and byte-compiling ..."
 
@@ -208,8 +206,8 @@ src_install() {
 	local -x LD_LIBRARY_PATH="${ED%/}${INSDESTTREE}"
 	# we can't use eclass function since PyPy is dumb and always gives
 	# paths relative to the interpreter
-	local PYTHON_SITEDIR=${EPREFIX}/usr/$(get_libdir)/pypy/site-packages
-	python_export pypy EPYTHON
+	local PYTHON_SITEDIR=${EPREFIX}/usr/$(get_libdir)/pypy3/site-packages
+	python_export pypy3 EPYTHON
 
 	echo "EPYTHON='${EPYTHON}'" > epython.py || die
 	python_domodule epython.py
@@ -218,30 +216,21 @@ src_install() {
 	"${PYTHON}" -c "import lib2to3.pygram, lib2to3.patcomp; lib2to3.patcomp.PatternCompiler()" \
 		|| die "Generation of Grammar and PatternGrammar pickles failed"
 
-	# Generate cffi modules
+	# Generate cffi cache
 	# Please keep in sync with pypy/tool/release/package.py!
-#cffi_build_scripts = {
-#    "sqlite3": "_sqlite3_build.py",
-#    "audioop": "_audioop_build.py",
-#    "tk": "_tkinter/tklib_build.py",
-#    "curses": "_curses_build.py" if sys.platform != "win32" else None,
-#    "syslog": "_syslog_build.py" if sys.platform != "win32" else None,
-#    "gdbm": "_gdbm_build.py"  if sys.platform != "win32" else None,
-#    "pwdgrp": "_pwdgrp_build.py" if sys.platform != "win32" else None,
-	cffi_targets=( audioop syslog pwdgrp )
-	use gdbm && cffi_targets+=( gdbm )
-	use ncurses && cffi_targets+=( curses )
-	use sqlite && cffi_targets+=( sqlite3 )
-	use tk && cffi_targets+=( tkinter/tklib )
-
-	local t
-	# all modules except tkinter output to .
-	# tkinter outputs to the correct dir ...
-	cd "${ED%/}${INSDESTTREE}"/lib_pypy || die
-	for t in "${cffi_targets[@]}"; do
-		# tkinter doesn't work via -m
-		"${PYTHON}" "_${t}_build.py" || die "Failed to build CFFI bindings for ${t}"
-	done
+	"${PYTHON}" -c "import syslog" || die "Failed to import syslog (cffi)"
+	if use gdbm; then
+		"${PYTHON}" -c "import _gdbm" || die "Failed to import gdbm (cffi)"
+	fi
+	if use ncurses; then
+		"${PYTHON}" -c "import _curses" || die "Failed to import _curses (cffi)"
+	fi
+	if use sqlite; then
+		"${PYTHON}" -c "import _sqlite3" || die "Failed to import _sqlite3 (cffi)"
+	fi
+	if use tk; then
+		"${PYTHON}" -c "import _tkinter" || die "Failed to import _tkinter (cffi)"
+	fi
 
 	# Cleanup temporary objects
 	find "${ED%/}${INSDESTTREE}" -name "_cffi_*.[co]" -delete || die
