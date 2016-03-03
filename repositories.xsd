@@ -1,0 +1,126 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<xs:schema xmlns:xs='http://www.w3.org/2001/XMLSchema'>
+	<xs:element name='repositories'>
+		<xs:complexType>
+			<xs:choice minOccurs='0' maxOccurs='unbounded'>
+				<xs:element name='repo' type='repoType'/>
+			</xs:choice>
+			<xs:attribute name='version' fixed='1.0' use='required'/>
+		</xs:complexType>
+		<xs:key name='repoKey'>
+			<xs:selector xpath='repo'/>
+			<xs:field xpath='name'/>
+		</xs:key>
+	</xs:element>
+
+	<xs:complexType name='repoType'>
+		<xs:choice minOccurs='0' maxOccurs='unbounded'>
+			<xs:element name='name' type='repoNameType'/>
+			<xs:element name='description' type='descriptionType'/>
+			<xs:element name='longdescription' type='descriptionType'/>
+			<xs:element name='homepage' type='urlType'/>
+			<xs:element name='owner' type='ownerType'/>
+			<xs:element name='source' type='sourceType'/>
+			<xs:element name='feed' type='urlType'/>
+		</xs:choice>
+		<xs:attribute name='priority' type='xs:integer'/>
+		<xs:attribute name='quality' type='repoQualityAttrType'
+			use='required'/>
+		<xs:attribute name='status' type='repoStatusAttrType'
+			use='required'/>
+	</xs:complexType>
+
+	<xs:simpleType name='repoNameType'>
+		<xs:restriction base='xs:token'>
+			<!-- PMS 3.1.5 Repository Name -->
+			<!-- note: this doesn't enforce 'not look like a version'
+				 rule -->
+			<xs:pattern value='[A-Za-z0-9_][A-Za-z0-9_-]*'/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:complexType name='descriptionType'>
+		<xs:simpleContent>
+			<xs:extension base='xs:token'>
+				<xs:attribute name='lang' type='langAttrType' default='C'/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+
+	<xs:complexType name='ownerType'>
+		<xs:all>
+			<xs:element name='email' type='emailType'
+				minOccurs='1' maxOccurs='1'/>
+			<xs:element name='name' type='xs:token'
+				minOccurs='0' maxOccurs='1'/>
+		</xs:all>
+		<xs:attribute name='type' type='ownerTypeAttrType'/>
+	</xs:complexType>
+
+	<xs:complexType name='sourceType'>
+		<xs:simpleContent>
+			<xs:extension base='urlType'>
+				<xs:attribute name='type' type='sourceTypeAttrType'
+					use='required'/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+
+	<!-- attributes -->
+	<xs:simpleType name='langAttrType'>
+		<xs:restriction base='xs:token'/>
+	</xs:simpleType>
+	
+	<xs:simpleType name='repoQualityAttrType'>
+		<xs:restriction base='xs:token'>
+			<xs:enumeration value='core'/>
+			<xs:enumeration value='stable'/>
+			<xs:enumeration value='testing'/>
+			<xs:enumeration value='experimental'/>
+			<xs:enumeration value='graveyard'/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name='repoStatusAttrType'>
+		<xs:restriction base='xs:token'>
+			<xs:enumeration value='official'/>
+			<xs:enumeration value='unofficial'/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name='ownerTypeAttrType'>
+		<xs:restriction base='xs:token'>
+			<xs:enumeration value='person'/>
+			<xs:enumeration value='project'/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name='sourceTypeAttrType'>
+		<xs:restriction base='xs:token'>
+			<xs:enumeration value='bzr'/>
+			<xs:enumeration value='cvs'/>
+			<xs:enumeration value='darcs'/>
+			<xs:enumeration value='git'/>
+			<xs:enumeration value='mercurial'/>
+			<xs:enumeration value='rsync'/>
+			<xs:enumeration value='svn'/>
+			<xs:enumeration value='tar'/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<!-- generic types -->
+	<xs:simpleType name='emailType'>
+		<xs:restriction base='xs:token'>
+			<!-- minimal safe regex -->
+			<xs:pattern value="[^@]+@[^.]+\..+"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name='urlType'>
+		<xs:restriction base='xs:token'>
+			<!-- TODO: something better? -->
+			<xs:pattern value="[^:]+:.+"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>
