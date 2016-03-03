@@ -4,7 +4,7 @@
 
 EAPI=5
 
-USE_RUBY="ruby20 ruby21"
+USE_RUBY="ruby20 ruby21 ruby22"
 
 RUBY_FAKEGEM_TASK_DOC=""
 RUBY_FAKEGEM_EXTRADOC="CHANGELOG Readme.md"
@@ -22,7 +22,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-ruby_add_bdepend "test? ( dev-ruby/activerecord dev-ruby/protected_attributes dev-ruby/bundler )"
+ruby_add_bdepend "test? ( dev-ruby/activerecord dev-ruby/bundler )"
 
 all_ruby_prepare() {
 	rm Gemfile.lock || die
