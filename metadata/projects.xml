@@ -911,7 +911,6 @@
     <name>Documentation Project</name>
     <url>https://wiki.gentoo.org/wiki/Project:Documentation</url>
     <description>The Gentoo Documentation Project (GDP) is responsible for the creation and maintenance of all general Gentoo documentation.</description>
-    <subproject ref="gentoo-doc@gentoo.org"/>
     <member>
       <email>jkt@gentoo.org</email>
       <name>Jan Kundrát</name>
@@ -4169,42 +4168,6 @@
     <member is-lead="1">
       <email>vapier@gentoo.org</email>
       <name>Mike Frysinger</name>
-    </member>
-  </project>
-  <project>
-    <email>gentoo-doc@gentoo.org</email>
-    <name>Documentation Translation Project</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Translation</url>
-    <description>As Gentoo continues to grow, international documentation will be key to communicating with our diverse user base. The translators will make sure that all Gentoo documentation is translated in a timely fashion.</description>
-    <member>
-      <email>ago@gentoo.org</email>
-      <name>Agostino Sarubbo</name>
-      <role>Italian translations</role>
-    </member>
-    <member>
-      <email>blueboar2@gmail.com</email>
-      <name>Vladimir Romanov</name>
-      <role>Russian translations</role>
-    </member>
-    <member>
-      <email>jaaf@gentoo.org</email>
-      <name>José Fournier</name>
-      <role>French translations</role>
-    </member>
-    <member>
-      <email>jkt@gentoo.org</email>
-      <name>Jan Kundrát</name>
-      <role>Czech translations</role>
-    </member>
-    <member>
-      <email>keytoaster@gentoo.org</email>
-      <name>Tobias Heinlein</name>
-      <role>German translations</role>
-    </member>
-    <member>
-      <email>nimiux@gentoo.org</email>
-      <name>Chema Alonso</name>
-      <role>Spanish translations</role>
     </member>
   </project>
   <project>
