@@ -14,11 +14,11 @@ SRC_URI="https://github.com/${MY_FORK}/${PN}/archive/${PV}-${MY_FORK}.tar.gz -> 
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
+IUSE="libressl"
 
 # Depend on -bindist since sslscan unconditionally requires elliptic
 # curve support, bug 491102
-DEPEND="dev-libs/openssl:0[-bindist]"
+DEPEND="!libressl? ( dev-libs/openssl:0[-bindist] ) libressl? ( dev-libs/libressl )"
 RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${P}-${MY_FORK}"
