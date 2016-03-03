@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+	<email>sci-astronomy@gentoo.org</email>
+	<name>Gentoo Astronomy Project</name>
+</maintainer>
+<longdescription lang="en">
+  MissFITS is a program that performs basic maintenance and packaging
+  tasks on FITS files using an optimised FITS library. MissFITS can:
+    * add/edit/remove FITS header keywords
+    * split/join Multi-Extension-FITS (MEF) files
+    * unpile/pile FITS data-cubes
+    * create/check/update FITS checksums, using R. Seaman’s protocol.
+</longdescription>
+</pkgmetadata>
