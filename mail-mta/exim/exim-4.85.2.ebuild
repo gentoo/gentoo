@@ -6,10 +6,10 @@ EAPI="5"
 
 inherit eutils toolchain-funcs multilib pam systemd
 
-IUSE="dcc +dkim dlfunc dmarc +dnsdb doc dovecot-sasl dsn exiscan-acl gnutls ipv6 ldap libressl lmtp maildir mbx mysql nis pam perl pkcs11 postgres +prdr proxy radius redis sasl selinux spf sqlite srs ssl syslog tcpd tpda X"
+IUSE="dcc +dkim dlfunc dmarc +dnsdb doc dovecot-sasl dsn exiscan-acl gnutls ipv6 ldap lmtp maildir mbx mysql nis pam perl pkcs11 postgres +prdr proxy radius redis sasl selinux spf sqlite srs ssl syslog tcpd tpda X"
 REQUIRED_USE="spf? ( exiscan-acl ) srs? ( exiscan-acl ) dmarc? ( spf dkim ) pkcs11? ( gnutls )"
 
-COMM_URI="ftp://ftp.exim.org/pub/exim/exim4$([[ ${PV} == *_rc* ]] && echo /test)"
+COMM_URI="ftp://ftp.exim.org/pub/exim/exim4/old"
 
 DESCRIPTION="A highly configurable, drop-in replacement for sendmail"
 SRC_URI="${COMM_URI}/${P//rc/RC}.tar.bz2
@@ -19,7 +19,7 @@ HOMEPAGE="http://www.exim.org/"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~hppa ~ppc64 ~x86"
+KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~x86-solaris"
 
 COMMON_DEPEND=">=sys-apps/sed-4.0.5
 	>=sys-libs/db-3.2
@@ -27,10 +27,7 @@ COMMON_DEPEND=">=sys-apps/sed-4.0.5
 	perl? ( dev-lang/perl:= )
 	pam? ( virtual/pam )
 	tcpd? ( sys-apps/tcp-wrappers )
-	ssl? (
-		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( dev-libs/libressl:= )
-	)
+	ssl? ( dev-libs/openssl )
 	gnutls? ( net-libs/gnutls[pkcs11?]
 			  dev-libs/libtasn1 )
 	ldap? ( >=net-nds/openldap-2.0.7 )
@@ -48,7 +45,7 @@ COMMON_DEPEND=">=sys-apps/sed-4.0.5
 		x11-libs/libXaw
 	)
 	sqlite? ( dev-db/sqlite )
-	radius? ( net-dialup/freeradius-client )
+	radius? ( net-dialup/radiusclient )
 	virtual/libiconv
 	"
 	# added X check for #57206
@@ -83,7 +80,7 @@ src_prepare() {
 	epatch "${FILESDIR}"/exim-4.69-r1.27021.patch
 	epatch "${FILESDIR}"/exim-4.74-radius-db-ENV-clash.patch # 287426
 	epatch "${FILESDIR}"/exim-4.82-makefile-freebsd.patch # 235785
-	epatch "${FILESDIR}"/exim-4.87-as-needed-ldflags.patch # 352265, 391279
+	epatch "${FILESDIR}"/exim-4.77-as-needed-ldflags.patch # 352265, 391279
 	epatch "${FILESDIR}"/exim-4.76-crosscompile.patch # 266591
 
 	if use maildir ; then
@@ -403,8 +400,8 @@ src_configure() {
 	if use radius; then
 		cat >> Makefile <<- EOC
 			RADIUS_CONFIG_FILE=${EPREFIX}/etc/radiusclient/radiusclient.conf
-			RADIUS_LIB_TYPE=RADIUSCLIENTNEW
-			AUTH_LIBS += -lfreeradius-client
+			RADIUS_LIB_TYPE=RADIUSCLIENT
+			AUTH_LIBS += -lradiusclient
 		EOC
 	fi
 }
