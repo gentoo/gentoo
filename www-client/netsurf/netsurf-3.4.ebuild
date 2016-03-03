@@ -17,14 +17,15 @@ SRC_URI="http://download.netsurf-browser.org/netsurf/releases/source/${P}-src.ta
 LICENSE="GPL-2 MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm"
-IUSE="+bmp fbcon truetype +gif gstreamer gtk javascript +jpeg +mng pdf-writer
-	+png +rosprite +svg +svgtiny +webp fbcon_frontend_able fbcon_frontend_linux
-	fbcon_frontend_sdl fbcon_frontend_vnc fbcon_frontend_x"
+IUSE="+bmp +duktape fbcon truetype +gif gstreamer gtk +javascript +jpeg +mng
+	pdf-writer +png +rosprite +svg +svgtiny +webp fbcon_frontend_able
+	fbcon_frontend_linux fbcon_frontend_sdl fbcon_frontend_vnc fbcon_frontend_x"
 
 REQUIRED_USE="|| ( fbcon gtk )
-	amd64? ( abi_x86_32? ( !javascript ) )
+	amd64? ( abi_x86_32? ( javascript? ( duktape ) ) )
 	fbcon? ( ^^ ( fbcon_frontend_able fbcon_frontend_linux fbcon_frontend_sdl
-		fbcon_frontend_vnc fbcon_frontend_x ) )"
+		fbcon_frontend_vnc fbcon_frontend_x ) )
+	duktape? ( javascript )"
 
 RDEPEND=">=dev-libs/libnsutils-0.0.2[${MULTILIB_USEDEP}]
 	>=dev-libs/libutf8proc-1.1.6-r1[${MULTILIB_USEDEP}]
@@ -43,8 +44,8 @@ RDEPEND=">=dev-libs/libnsutils-0.0.2[${MULTILIB_USEDEP}]
 		gnome-base/libglade:2.0[${MULTILIB_USEDEP}]
 		>=x11-libs/gtk+-2.24.23:2[${MULTILIB_USEDEP}] )
 	gstreamer? ( media-libs/gstreamer:0.10[${MULTILIB_USEDEP}] )
-	javascript? ( >=dev-libs/nsgenbind-0.1.2-r1[${MULTILIB_USEDEP}]
-		dev-lang/spidermonkey:0= )
+	javascript? ( >=dev-libs/nsgenbind-0.3[${MULTILIB_USEDEP}]
+		!duktape? ( dev-lang/spidermonkey:0= ) )
 	jpeg? ( >=virtual/jpeg-0-r2:0[${MULTILIB_USEDEP}] )
 	mng? ( >=media-libs/libmng-1.0.10-r2[${MULTILIB_USEDEP}] )
 	pdf-writer? ( media-libs/libharu[${MULTILIB_USEDEP}] )
@@ -87,9 +88,9 @@ src_configure() {
 		NETSURF_USE_MNG=$(usex mng YES NO)
 		NETSURF_USE_WEBP=$(usex webp YES NO)
 		NETSURF_USE_VIDEO=$(usex gstreamer YES NO)
-		NETSURF_USE_MOZJS=$(usex javascript YES NO)
+		NETSURF_USE_MOZJS=$(usex javascript $(usex duktape NO YES) NO)
 		NETSURF_USE_JS=NO
-		NETSURF_USE_DUKTAPE=NO
+		NETSURF_USE_DUKTAPE=$(usex javascript $(usex duktape YES NO) NO)
 		NETSURF_USE_HARU_PDF=$(usex pdf-writer YES NO)
 		NETSURF_USE_NSSVG=$(usex svg $(usex svgtiny YES NO) NO)
 		NETSURF_USE_RSVG=$(usex svg $(usex svgtiny NO YES) NO)
