@@ -38,7 +38,6 @@ RDEPEND="sys-apps/pciutils
 	libcloud? ( >=dev-python/libcloud-0.14.0[${PYTHON_USEDEP}] )
 	mako? ( dev-python/mako[${PYTHON_USEDEP}] )
 	ldap? ( dev-python/python-ldap[${PYTHON_USEDEP}] )
-	openssl? ( dev-python/pyopenssl[${PYTHON_USEDEP}] )
 	libvirt? ( dev-python/libvirt-python[${PYTHON_USEDEP}] )
 	openssl? (
 		dev-libs/openssl:*[-bindist]
