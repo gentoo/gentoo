@@ -83,6 +83,10 @@ src_prepare() {
 	epatch "${FILESDIR}/2.4.0-ncurses6.patch"
 	epatch "${FILESDIR}"/${PN}-2.4.0-libressl.patch
 
+	sed -e "s^@EPREFIX@^${EPREFIX}^" \
+		-e "s^@libdir@^$(get_libdir)^" \
+		-i lib-python/3/distutils/command/install.py || die
+
 	epatch_user
 }
 
