@@ -1,0 +1,12 @@
+DEFINED_PHASES=install postinst pretend
+DESCRIPTION=Full-featured EDA product for altera devices
+EAPI=6
+HOMEPAGE=https://www.altera.com/products/design-software/fpga-design/quartus-prime/overview.html
+LICENSE=Quartus-prime-megacore
+RDEPEND=media-libs/libpng:1.2[abi_x86_32] x11-libs/libXft[abi_x86_32] app-arch/bzip2[abi_x86_32] sys-libs/zlib[abi_x86_32] sys-libs/glibc[multilib]
+RESTRICT=fetch bindist
+SLOT=0
+SRC_URI=Quartus-lite-15.1.0.185-linux.tar https://github.com/brendanhoran/gentoo-custom/raw/master/files/libfreetype.so.6
+_eclass_exported_funcs=pkg_pretend:- pkg_postinst:- src_install:-
+_eclasses_=eutils	9d81603248f2ba3ec59124320d123e5e	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_md5_=001e8a52fc771fc94910eb7c4298d106

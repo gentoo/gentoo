@@ -15490,7 +15490,7 @@ sci-electronics/plcedit 2.2.1: Qt4 notepad for PLC programming
 sci-electronics/puff 20100127: microwave CAD software
 sci-electronics/pulseview 0.2.0-r1 9999: Qt based logic analyzer GUI for sigrok
 sci-electronics/qelectrotech 0.30 0.50 9999: Qt5 application to design electric diagrams
-sci-electronics/quartus-prime-lite 15.1.0.185: Full-featured EDA product for altera devices
+sci-electronics/quartus-prime-lite 15.1.0.185 15.1.0.185-r1: Full-featured EDA product for altera devices
 sci-electronics/qucs 0.0.17.130503: Quite Universal Circuit Simulator in Qt4
 sci-electronics/sigrok-cli 0.5.0 9999: Command-line client for the sigrok logic analyzer software
 sci-electronics/spice 3.5.5-r1: general-purpose circuit simulation program
