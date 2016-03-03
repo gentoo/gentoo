@@ -34,7 +34,7 @@ PATCHES=(
 
 COMMON_DEPEND="
 	mroonga? ( app-text/groonga-normalizer-mysql )
-	kerberos? ( virtual/krb5 )
+	kerberos? ( virtual/krb5[${MULTILIB_USEDEP}] )
 	systemd? ( sys-apps/systemd:= )
 	!bindist? ( >=sys-libs/readline-4.1:0=	)
 	server? (
