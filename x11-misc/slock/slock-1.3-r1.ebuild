@@ -16,9 +16,11 @@ KEYWORDS="~amd64 ~hppa ~x86 ~x86-fbsd"
 RDEPEND="
 	x11-libs/libX11
 	x11-libs/libXext
+	x11-libs/libXrandr
 "
 DEPEND="
 	${RDEPEND}
+	x11-proto/randrproto
 	x11-proto/xproto
 "
 
