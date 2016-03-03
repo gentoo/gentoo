@@ -271,8 +271,7 @@ www-apps/389-dsgw
 
 # Fabian Groffen <grobian@gentoo.org> (11 Dec 2015)
 # Release candidates for Exim 4.87
-=mail-mta/exim-4.87_rc2
-=mail-mta/exim-4.87_rc3
+=mail-mta/exim-4.87_rc5
 
 # Pawel Hajdan, Jr. <phajdan.jr@gentoo.org> (07 Dec 2015)
 # Dev channel releases are only for people who are developers or want more
