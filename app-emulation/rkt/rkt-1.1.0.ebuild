@@ -82,9 +82,9 @@ src_prepare() {
 	# disable git fetch of kvmtool
 	sed -e 's|^include makelib/git.mk$|'\
 'ifneq ($(wildcard $(shell echo "$${WORKDIR}/kvmtool")),)\n\n'\
+'$(call forward-vars, get_lkvm_sources, LKVM_SRCDIR)\n'\
 'get_lkvm_sources: $(LKVM_TMPDIR)\n'\
-'\tmv "$${WORKDIR}/kvmtool" "$(_LKVM_SRCDIR)"\n\n'\
-'_LKVM_SRCDIR := $(LKVM_SRCDIR)\n\n'\
+'\tmv "$${WORKDIR}/kvmtool" "$(LKVM_SRCDIR)"\n\n'\
 '$(LKVM_PATCH_STAMP): get_lkvm_sources\n\n'\
 'else\n'\
 '\t\0\n'\
