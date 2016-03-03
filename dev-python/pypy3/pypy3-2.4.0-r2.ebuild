@@ -50,9 +50,9 @@ pkg_pretend() {
 			CHECKREQS_MEMORY="3G"
 			use amd64 && CHECKREQS_MEMORY="6G"
 		fi
-	fi
 
-	check-reqs_pkg_pretend
+		check-reqs_pkg_pretend
+	fi
 }
 
 pkg_setup() {
@@ -86,6 +86,11 @@ src_prepare() {
 	sed -e "s^@EPREFIX@^${EPREFIX}^" \
 		-e "s^@libdir@^$(get_libdir)^" \
 		-i lib-python/3/distutils/command/install.py || die
+
+	# apply CPython stdlib patches
+	pushd lib-python/3 > /dev/null || die
+	epatch "${FILESDIR}"/2.4.0-21_all_distutils_c++.patch
+	popd > /dev/null || die
 
 	epatch_user
 }
