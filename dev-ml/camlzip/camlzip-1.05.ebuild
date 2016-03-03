@@ -21,7 +21,7 @@ RDEPEND=">=dev-lang/ocaml-3.10.2:=[ocamlopt?]
 DEPEND="${RDEPEND}"
 
 src_prepare() {
-	epatch "${FILESDIR}/ocaml-4.03.patch"
+	has_version '>=dev-lang/ocaml-4.03.0_beta1' && epatch "${FILESDIR}/ocaml-4.03.patch"
 }
 
 src_compile() {
