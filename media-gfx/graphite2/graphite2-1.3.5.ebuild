@@ -39,6 +39,9 @@ PATCHES=(
 	"${FILESDIR}/${PN}-1.3.5-includes-libs-perl.patch"
 )
 
+# tests fail, especially on multilib systems, fixed in 1.3.5-r1 but needs additional dependencies
+RESTRICT=test
+
 pkg_setup() {
 	use perl && perl_set_version
 	use test && python-any-r1_pkg_setup
