@@ -5014,7 +5014,7 @@ dev-ml/labltk 8.06.0: OCaml interface to the Tcl/Tk GUI framework
 dev-ml/lambda-term 1.9: A cross-platform library for manipulating the terminal
 dev-ml/lwt 2.4.3 2.5.1: Cooperative light-weight thread library for OCaml
 dev-ml/macaque 0.7.2 0.7.4: DSL for SQL Queries in Caml
-dev-ml/menhir 20151112: LR(1) parser generator for the OCaml language
+dev-ml/menhir 20151112 20160303: LR(1) parser generator for the OCaml language
 dev-ml/mirage-profile 0.5 0.6 0.6.1: Collect profiling information
 dev-ml/mongo 0.67.2: An ocaml driver for mongodb
 dev-ml/oasis 0.4.5-r1: OASIS is a tool to integrate a configure, build and install system in OCaml project
@@ -5110,7 +5110,7 @@ dev-ml/typerep 113.24.00: Library for creating runtime representation of OCaml t
 dev-ml/typerep_extended 113.24.00: Runtime types for OCaml (Extended)
 dev-ml/tyxml 3.5.0 3.6.0: A libary to build xml trees typechecked by OCaml
 dev-ml/ulex 1.1: A lexer generator for unicode
-dev-ml/utop 1.11 1.16 1.18 1.18.1: A new toplevel for OCaml with completion and colorization
+dev-ml/utop 1.11 1.16 1.18 1.18.1 1.18.2: A new toplevel for OCaml with completion and colorization
 dev-ml/uuidm 0.9.5: OCaml module implementing 128 bits universally unique identifiers
 dev-ml/uutf 0.9.4: Non-blocking streaming Unicode codec for OCaml
 dev-ml/variantslib 109.15.00 109.15.02 113.24.00: OCaml variants as first class values
