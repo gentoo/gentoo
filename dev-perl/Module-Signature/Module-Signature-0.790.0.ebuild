@@ -34,7 +34,7 @@ RDEPEND="
 	dev-perl/Crypt-Primes
 	dev-perl/Crypt-DES_EDE3
 	dev-perl/Crypt-DSA
-	dev-perl/crypt-rsa
+	dev-perl/Crypt-RSA
 	dev-perl/Convert-ASN1
 	dev-perl/convert-pem
 	dev-perl/Crypt-OpenPGP
