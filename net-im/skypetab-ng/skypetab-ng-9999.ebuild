@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=5
 
 if [[ ${PV} = *9999* ]]; then
 	EGIT_REPO_URI="git://github.com/kekekeks/skypetab-ng.git"
@@ -38,5 +38,5 @@ pkg_setup() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-isdigit.patch
+	epatch "${FILESDIR}"/${PN}-0.5.2_p20150201-isdigit.patch
 }
