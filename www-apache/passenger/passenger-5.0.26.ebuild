@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -25,7 +25,7 @@ ruby_add_rdepend "
 # libev is bundled but with adapations that do not seem to be accepted
 # upstream, so we must use the bundled version :-(
 CDEPEND="
-	>=dev-libs/libuv-1.5.0
+	>=dev-libs/libuv-1.8.0
 	net-misc/curl[ssl]
 	www-servers/apache[apache2_modules_unixd(+)]"
 
