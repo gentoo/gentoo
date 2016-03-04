@@ -28,7 +28,7 @@ DEPEND="
 	>=dev-perl/convert-pem-0.05
 	dev-perl/Crypt-Blowfish
 	dev-perl/Crypt-DES
-	dev-perl/crypt-idea
+	dev-perl/Crypt-IDEA
 	dev-perl/Crypt-OpenSSL-RSA
 	dev-perl/crypt-rsa
 	dev-perl/digest-bubblebabble"
