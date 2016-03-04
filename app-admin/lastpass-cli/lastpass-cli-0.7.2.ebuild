@@ -23,7 +23,10 @@ RDEPEND="
 	dev-libs/libxml2
 	pinentry? ( app-crypt/pinentry )
 "
-DEPEND="${RDEPEND} app-text/asciidoc"
+DEPEND="${RDEPEND}
+	app-text/asciidoc
+	virtual/pkgconfig
+"
 
 src_prepare() {
 	tc-export CC
