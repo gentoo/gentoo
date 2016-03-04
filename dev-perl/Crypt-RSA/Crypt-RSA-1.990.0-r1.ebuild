@@ -19,7 +19,7 @@ DEPEND="dev-perl/class-loader
 	dev-perl/convert-ascii-armour
 	dev-perl/Crypt-CBC
 	dev-perl/Crypt-Primes
-	dev-perl/crypt-random
+	dev-perl/Crypt-Random
 	dev-perl/data-buffer
 	dev-perl/digest-md2
 	virtual/perl-Digest-MD5
