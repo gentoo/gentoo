@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -18,7 +18,7 @@ IUSE=""
 RDEPEND="
 	dev-perl/Class-ErrorHandler
 	dev-perl/Convert-ASN1
-	dev-perl/crypt-des-ede3
+	dev-perl/Crypt-DES_EDE3
 	virtual/perl-Digest-MD5
 	virtual/perl-MIME-Base64
 "
