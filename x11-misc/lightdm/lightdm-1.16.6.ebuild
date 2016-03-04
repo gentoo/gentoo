@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -13,7 +13,7 @@ SRC_URI="https://launchpad.net/${PN}/${TRUNK_VERSION}/${PV}/+download/${P}.tar.x
 
 LICENSE="GPL-3 LGPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~x86"
 IUSE="audit +gtk +introspection kde qt4 qt5 +gnome"
 REQUIRED_USE="|| ( gtk kde )"
 
