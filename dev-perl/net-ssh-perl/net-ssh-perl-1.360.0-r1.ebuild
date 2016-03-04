@@ -23,7 +23,7 @@ DEPEND="
 	>=dev-perl/Digest-SHA1-2.10
 	dev-perl/Digest-HMAC
 	dev-perl/Crypt-DH
-	>=dev-perl/crypt-dsa-0.11
+	>=dev-perl/Crypt-DSA-0.110.0
 	virtual/perl-MIME-Base64
 	>=dev-perl/convert-pem-0.05
 	dev-perl/Crypt-Blowfish
