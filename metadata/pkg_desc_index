@@ -7616,7 +7616,7 @@ dev-python/pymad 0.6 0.6-r1: Python wrapper for libmad MP3 decoding in python
 dev-python/pymdstat 0.4.2: Python library to parse Linux /proc/mdstat
 dev-python/pymediainfo 1.4.0 2.0: A wrapper around the mediainfo command
 dev-python/pymetar 0.19-r1: Downloads, decodes and provides access to the weather report for a given station ID
-dev-python/pyminuit 1.2.1: Minuit numerical function minimization in Python
+dev-python/pyminuit 1.2.1 1.2.1-r1: Minuit numerical function minimization in Python
 dev-python/pyml 0.7.13.2-r1 0.7.13.3: Python machine learning package
 dev-python/pymongo 2.6.3 2.7.2 2.8.1 2.9 3.0.3 3.1 3.2: Python driver for MongoDB
 dev-python/pymountboot 0.2.1 0.2.2 9999: Python extension module to (re)mount /boot
@@ -15957,7 +15957,7 @@ sci-visualization/qtiplot 0.9.8.9-r2 0.9.8.9-r3 0.9.8.9-r4: Qt based clone of th
 sci-visualization/quickplot 0.10.6 0.10.8: A fast interactive 2D plotter
 sci-visualization/spectromatic 1.0-r2: Generates time-frequency analysis images from wav files
 sci-visualization/spyview 20111018 20130823: Interactive plotting program
-sci-visualization/veusz 1.11 1.23 1.23.2: Qt scientific plotting package with good Postscript output
+sci-visualization/veusz 1.11 1.23 1.23.2 1.23.2-r1: Qt scientific plotting package with good Postscript output
 sci-visualization/visit 2.7.3 2.8.2 2.9.0: A software that delivers parallel interactive visualizations
 sci-visualization/xd3d 8.3.1: Scientific visualization tool
 sci-visualization/xds-viewer 0.6: Viewing X-ray diffraction and control images in the context of data processing by the XDS
