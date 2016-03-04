@@ -30,6 +30,25 @@
 
 #--- END OF EXAMPLES ---
 
+# Mike Gilbert <floppym@gentoo.org> (03 Mar 2016)
+# Dev channel releases are only for people who are developers or want more
+# experimental features and accept a more unstable release.
+>=www-client/chromium-50
+
+# Alexis Ballier <aballier@gentoo.org> (01 Mar 2016)
+# Breaks some of its rev deps, still in beta stage
+>=dev-lang/ocaml-4.03_beta
+>=dev-ml/camlp4-4.03
+>=dev-ml/ppx_tools-0.99.3_p20160217
+
+# Lars Wendler <polynomial-c@gentoo.org> (01 Mar 2016)
+# Arrow keys don't work (bug #576086).
+=sys-apps/less-482
+
+# James Le Cuirot <chewi@gentoo.org> (29 Feb 2016)
+# Dead upstream and doesn't build with Java 8. Removal in 30 days.
+sci-biology/readseq
+
 # Patrice Clement <monsieurp@gentoo.org> (29 Feb 2016)
 # Duplicate of dev-libs/libedit.
 # Masked for removal in 30 days.
@@ -174,17 +193,6 @@ dev-java/jcs
 # care anymore, last release was in 2012. Zero reverse deps.
 dev-python/PyQtMobility
 
-# James Le Cuirot <chewi@gentoo.org> (03 Feb 2016)
-# Built into Java since 1.5. Ancient and doesn't build with
-# Java 8. Removal in 30 days. See bug #544038.
-dev-java/concurrent-util
-
-# James Le Cuirot <chewi@gentoo.org> (03 Feb 2016)
-# Old, unused, broken on Java 7 and up. These are still alive upstream
-# but bumping is likely non-trivial. Removal in 30 days.
-dev-java/dsiutils
-dev-java/sux4j
-
 # Bernard Cafarelli <voyageur@gentoo.org> (27 Jan 2016)
 # New llvm version, masked for testing
 =sys-devel/llvm-3.8.0*
@@ -232,10 +240,6 @@ www-apache/mod_auth_pgsql
 # Errorneously added. Is already in perl-core. Please uninstall.
 dev-perl/ExtUtils-Constant
 
-# Pacho Ramos <pacho@gentoo.org> (08 Jan 2016)
-# Doesn't work at all, bug #564106. Removal in a month.
-media-gfx/fr0st
-
 # Pacho Ramos <pacho@gentoo.org> (06 Jan 2016)
 # Unbuildable for a long time, bug #522916. Removal in a month.
 net-im/silc-server
@@ -261,13 +265,7 @@ www-apps/389-dsgw
 
 # Fabian Groffen <grobian@gentoo.org> (11 Dec 2015)
 # Release candidates for Exim 4.87
-=mail-mta/exim-4.87_rc2
-=mail-mta/exim-4.87_rc3
-
-# Pawel Hajdan, Jr. <phajdan.jr@gentoo.org> (07 Dec 2015)
-# Dev channel releases are only for people who are developers or want more
-# experimental features and accept a more unstable release.
->=www-client/chromium-49
+=mail-mta/exim-4.87_rc5
 
 # Anthony G. Basile <blueness@gentoo.org> (06 Dec 2015)
 # Masked until we deal with SSLv3, bug #567554

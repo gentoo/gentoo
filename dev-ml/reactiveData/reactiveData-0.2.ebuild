@@ -18,6 +18,7 @@ RDEPEND=">=dev-lang/ocaml-3.12:=[ocamlopt?]
 DEPEND="${RDEPEND}
 	dev-ml/findlib
 	dev-ml/opam
+	dev-ml/ocamlbuild
 "
 
 src_compile() {

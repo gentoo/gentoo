@@ -148,6 +148,8 @@ src_prepare() {
 	sed \
 		-e "s:aufs.ko usr/include/linux/aufs_type.h:aufs.ko:g" \
 		-i Makefile || die
+
+	eapply_user
 }
 
 src_compile() {

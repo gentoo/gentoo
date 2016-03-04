@@ -13,7 +13,7 @@ inherit eutils l10n qt4-r2
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
 
 DESCRIPTION="Great Qt4 GUI front-end for mplayer"
-HOMEPAGE="http://smplayer.sourceforge.net/"
+HOMEPAGE="http://www.smplayer.eu/"
 LICENSE="GPL-2 BSD"
 SLOT="0"
 KEYWORDS="~alpha amd64 ~arm hppa ~ppc ~ppc64 x86 ~x86-fbsd ~amd64-linux"

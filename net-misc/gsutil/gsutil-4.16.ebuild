@@ -3,6 +3,7 @@
 # $Id$
 
 EAPI="5"
+
 PYTHON_COMPAT=( python2_7 )
 
 inherit distutils-r1
@@ -38,6 +39,14 @@ DOCS=( README.md CHANGES.md )
 PATCHES=(
 	"${FILESDIR}"/${PN}-4.16-use-friendy-version-checks.patch
 )
+
+python_prepare_all() {
+	sed \
+		-e '/SocksiPy-branch/d' \
+		-i setup.py || die
+
+	distutils-r1_python_prepare_all
+}
 
 python_test() {
 	export BOTO_CONFIG=${FILESDIR}/dummy.boto

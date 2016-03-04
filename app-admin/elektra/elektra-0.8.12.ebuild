@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -6,7 +6,7 @@ EAPI=5
 
 inherit cmake-multilib eutils java-pkg-opt-2
 
-DESCRIPTION="Universal and secure framework to store config parameters in a hierarchical key-value pair mechanism"
+DESCRIPTION="Framework to store config parameters in hierarchical key-value pairs"
 HOMEPAGE="http://freedesktop.org/wiki/Software/Elektra"
 SRC_URI="ftp://ftp.markus-raab.org/${PN}/releases/${P}.tar.gz"
 

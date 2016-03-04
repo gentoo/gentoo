@@ -1,0 +1,43 @@
+#!/sbin/openrc-run
+# Copyright 1999-2016 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+command="/usr/bin/transmission-daemon"
+extra_started_commands="reload"
+description="Transmission is a fast, easy and free bittorrent client"
+description_start="Start transmission-daemon server and web interface"
+description_stop="Stop transmission-daemon server and web interface"
+description_reload="Reload transmission-daemon settings"
+
+rundir=${rundir:-/var/run/transmission}
+pidfile=${pidfile:-${rundir}/transmission.pid}
+config_dir=${config_dir:-/var/lib/transmission/config}
+download_dir=${download_dir:-/var/lib/transmission/downloads}
+logfile=${logfile:-/var/log/transmission/transmission.log}
+runas_user=${runas_user:-transmission:transmission}
+
+retry="TERM/45/QUIT/15"
+
+start_pre() {
+	command_args="
+		--config-dir ${config_dir}
+		--download-dir ${download_dir}
+		--pid-file ${pidfile}
+		${TRANSMISSION_OPTIONS}
+	"
+	command_user="${runas_user}"
+
+	checkpath -d -o ${runas_user} "${rundir}" /var/lib/transmission "${config_dir}" "${download_dir}" || return
+
+	if [ "${logfile}" != syslog ]; then
+		checkpath -d -o ${runas_user} /var/log/transmission || return
+		command_args="${command_args} --logfile ${logfile}"
+	fi
+}
+
+reload() {
+	ebegin "Reloading ${RC_SVCNAME}"
+	start-stop-daemon --signal HUP --exec "${command}" --pidfile "${pidfile}"
+	eend $?
+}

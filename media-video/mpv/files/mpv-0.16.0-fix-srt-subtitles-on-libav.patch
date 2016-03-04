@@ -1,0 +1,29 @@
+commit 041c9f1782cbed4abf7793f4e72b8b29b2fd9b1b
+Author: wm4 <wm4@nowhere>
+Date:   Mon Feb 29 18:20:27 2016 +0100
+
+    lavc_conv: fix Libav srt subtitles
+    
+    Use the mp_lavc_set_extradata() function instead of setting up the
+    extradata manually. This takes care of the corner case when
+    extradata_len is 0.
+    
+    This apparently fixes #2888.
+
+diff --git a/sub/lavc_conv.c b/sub/lavc_conv.c
+index 3dd6097..7303020 100644
+--- a/sub/lavc_conv.c
++++ b/sub/lavc_conv.c
+@@ -79,11 +79,8 @@ struct lavc_conv *lavc_conv_create(struct mp_log *log, const char *codec_name,
+     avctx = avcodec_alloc_context3(codec);
+     if (!avctx)
+         goto error;
+-    avctx->extradata_size = extradata_len;
+-    avctx->extradata = av_malloc(extradata_len);
+-    if (!avctx->extradata)
++    if (mp_lavc_set_extradata(avctx, extradata, extradata_len) < 0)
+         goto error;
+-    memcpy(avctx->extradata, extradata, extradata_len);
+     if (strcmp(codec_name, "eia_608") == 0)
+         av_dict_set(&opts, "real_time", "1", 0);
+     if (avcodec_open2(avctx, codec, &opts) < 0)

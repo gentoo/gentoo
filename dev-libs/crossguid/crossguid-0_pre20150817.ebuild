@@ -27,6 +27,8 @@ IUSE=""
 DEPEND="sys-apps/util-linux"
 RDEPEND="${DEPEND}"
 
+RESTRICT="test" #575544
+
 e() { echo "$@"; "$@"; }
 
 src_compile() {

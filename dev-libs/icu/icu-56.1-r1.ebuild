@@ -14,7 +14,7 @@ LICENSE="BSD"
 
 SLOT="0/56.C++11"
 
-KEYWORDS=""
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd"
 IUSE="debug doc examples static-libs"
 
 DEPEND="
@@ -34,6 +34,7 @@ src_prepare() {
 	local variable
 
 	epatch "${FILESDIR}/${PN}-remove-bashisms.patch"
+	epatch "${FILESDIR}/${PN}-flagparser.patch"
 	epatch_user
 
 	# Disable renaming as it is stupind thing to do

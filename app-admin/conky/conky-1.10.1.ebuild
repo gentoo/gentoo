@@ -69,7 +69,7 @@ DEPEND="
 
 CONFIG_CHECK=~IPV6
 
-DOCS=( README TODO ChangeLog NEWS AUTHORS )
+DOCS=( README.md TODO ChangeLog NEWS AUTHORS )
 
 pkg_setup() {
 	use ipv6 && linux-info_pkg_setup

@@ -1,0 +1,11 @@
+--- src/shapefiles/validator.c	2013-06-29 08:53:15.000000000 +0200
++++ src/shapefiles/validatornew.c	2016-02-29 18:38:11.879981893 +0100
+@@ -3510,7 +3510,7 @@
+ 
+ /* silencing stupid compiler warnings */
+     if (sqlite == NULL || table == NULL || geom == NULL ||
+-	||report_path == NULL || n_rows == NULL || n_invalids == NULL)
++	report_path == NULL || n_rows == NULL || n_invalids == NULL)
+ 	table = NULL;
+ 
+     if (err_msg == NULL)

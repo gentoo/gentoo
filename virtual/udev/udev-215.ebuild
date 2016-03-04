@@ -15,5 +15,5 @@ IUSE="systemd"
 
 DEPEND=""
 RDEPEND="
-	!systemd? ( || ( >=sys-fs/udev-208-r1 >=sys-fs/eudev-1.3 ) )
+	!systemd? ( || ( >=sys-fs/eudev-1.3 >=sys-fs/udev-208-r1 ) )
 	systemd? ( >=sys-apps/systemd-208:0 )"

@@ -23,6 +23,7 @@ rkt_stage1_coreos? ( $PXE_URI -> $PXE_FILE )
 rkt_stage1_kvm? (
 	https://kernel.googlesource.com/pub/scm/linux/kernel/git/will/kvmtool/+archive/${KVMTOOL_VERSION}.tar.gz -> kvmtool-${KVMTOOL_VERSION}.tar.gz
 	mirror://kernel/linux/kernel/v4.x/linux-${KVM_LINUX_VERSION}.tar.xz
+	${PXE_URI} -> ${PXE_FILE}
 )
 rkt_stage1_src? ( https://github.com/systemd/systemd/archive/${PXE_SYSTEMD_VERSION}.tar.gz -> systemd-${PXE_SYSTEMD_VERSION#v}.tar.gz )"
 
@@ -32,8 +33,8 @@ HOMEPAGE="https://github.com/coreos/rkt"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-IUSE="doc examples +rkt_stage1_coreos +rkt_stage1_fly rkt_stage1_kvm rkt_stage1_src +actool"
-REQUIRED_USE="|| ( rkt_stage1_coreos rkt_stage1_fly rkt_stage1_kvm rkt_stage1_src )"
+IUSE="doc examples +rkt_stage1_coreos +rkt_stage1_fly rkt_stage1_host rkt_stage1_kvm rkt_stage1_src +actool systemd"
+REQUIRED_USE="|| ( rkt_stage1_coreos rkt_stage1_fly rkt_stage1_host rkt_stage1_kvm rkt_stage1_src ) rkt_stage1_host? ( systemd )"
 
 DEPEND=">=dev-lang/go-1.4.1
 	app-arch/cpio
@@ -41,15 +42,19 @@ DEPEND=">=dev-lang/go-1.4.1
 	sys-fs/squashfs-tools
 	dev-perl/Capture-Tiny"
 
-RDEPEND="!app-emulation/rocket"
+RDEPEND="!app-emulation/rocket
+	rkt_stage1_host? ( systemd? (
+		>=sys-apps/systemd-222
+		app-shells/bash:0
+	) )"
 
 BUILDDIR="build-${P}"
 STAGE1_DEFAULT_LOCATION="/usr/share/rkt/stage1.aci"
 
 src_unpack() {
-    local x
-    for x in ${A}; do
-        case ${x} in
+	local x
+	for x in ${A}; do
+		case ${x} in
 			*.img|linux-*) continue ;;
 			kvmtool-*)
 				mkdir kvmtool || die
@@ -59,30 +64,41 @@ src_unpack() {
 				;;
 			*)
 				unpack ${x}
-        esac
-    done
+		esac
+	done
 }
 
 src_prepare() {
 	# disable git fetch of systemd
-	sed -e 's|^include makelib/git.mk$|_ := '\
-'$(shell set -ex; [ -d "$(UFS_SYSTEMD_SRCDIR)" ] \&\& exit 0; '\
-'[ ! -d "$${WORKDIR}/systemd-'${PXE_SYSTEMD_VERSION#v}'" ] \&\& exit 0; '\
-'mkdir -p "$$( dirname "$(UFS_SYSTEMD_SRCDIR)")"; '\
-'mv "$${WORKDIR}/systemd-'${PXE_SYSTEMD_VERSION#v}'" "$(UFS_SYSTEMD_SRCDIR)";)|' \
-		-i stage1/usr_from_src/usr_from_src.mk || die
+	sed -e 's|^include makelib/git.mk$|'\
+'ifneq ($(wildcard $(RKT_STAGE1_SYSTEMD_SRC)),)\n\n'\
+'get_systemd_sources: $(UFS_SYSTEMDDIR)\n'\
+'\tmv "$(RKT_STAGE1_SYSTEMD_SRC)" "$(UFS_SYSTEMD_SRCDIR)"\n\n'\
+'$(UFS_SYSTEMD_CONFIGURE): get_systemd_sources\n\n'\
+'else\n'\
+'\t\0\n'\
+'endif|' -i stage1/usr_from_src/usr_from_src.mk || die
 
 	# disable git fetch of kvmtool
-	sed -e 's|^include makelib/git.mk$|_ := '\
-'$(shell set -ex; [ -d "$(LKVM_SRCDIR)" ] \&\& exit 0; '\
-'[ ! -d "$${WORKDIR}/kvmtool" ] \&\& exit 0; '\
-'mkdir -p "$$( dirname "$(LKVM_SRCDIR)")"; '\
-'mv "$${WORKDIR}/kvmtool" "$(LKVM_SRCDIR)";)|' \
-		-i stage1/usr_from_kvm/lkvm.mk || die
+	sed -e 's|^include makelib/git.mk$|'\
+'ifneq ($(wildcard $(shell echo "$${WORKDIR}/kvmtool")),)\n\n'\
+'$(call forward-vars, get_lkvm_sources, LKVM_SRCDIR)\n'\
+'get_lkvm_sources: $(LKVM_TMPDIR)\n'\
+'\tmv "$${WORKDIR}/kvmtool" "$(LKVM_SRCDIR)"\n\n'\
+'$(LKVM_PATCH_STAMP): get_lkvm_sources\n\n'\
+'else\n'\
+'\t\0\n'\
+'endif|' -i stage1/usr_from_kvm/lkvm.mk || die
 
 	# disable fetch of kernel sources
 	sed -e 's|wget .*|ln -s "$${DISTDIR}/linux-'${KVM_LINUX_VERSION}'.tar.xz" "$@"|' \
 		-i stage1/usr_from_kvm/kernel.mk || die
+
+	if use rkt_stage1_host; then
+		# Make systemdUnitsPath consistent with host
+		sed -e 's|\(systemdUnitsPath := \).*|\1"'$(systemd_get_systemunitdir)'"|' \
+			-i stage1/init/init.go || die
+	fi
 
 	autotools-utils_src_prepare
 }
@@ -93,18 +109,22 @@ src_configure() {
 		--with-stage1-default-location="${STAGE1_DEFAULT_LOCATION}"
 	)
 
-	# TODO:
-	#  - fix rkt_stage1_kvm to not download kernel sources with wget
-	#  - fix rkt_stage1_host to not fail during launch
-
 	# enable flavors (first is default)
+	use rkt_stage1_host && flavors+=",host"
 	use rkt_stage1_src && flavors+=",src"
 	use rkt_stage1_coreos && flavors+=",coreos"
 	use rkt_stage1_fly && flavors+=",fly"
 	use rkt_stage1_kvm && flavors+=",kvm"
 	myeconfargs+=( --with-stage1-flavors="${flavors#,}" )
 
-	if use rkt_stage1_coreos; then
+	if use rkt_stage1_src; then
+		myeconfargs+=(
+			--with-stage1-systemd-version=${PXE_SYSTEMD_VERSION}
+			--with-stage1-systemd-src="${WORKDIR}/systemd-${PXE_SYSTEMD_VERSION#v}"
+		)
+	fi
+
+	if use rkt_stage1_coreos || use rkt_stage1_kvm; then
 		myeconfargs+=(
 			--with-coreos-local-pxe-image-path="${DISTDIR}/${PXE_FILE}"
 			--with-coreos-local-pxe-image-systemd-version="${PXE_SYSTEMD_VERSION}"
@@ -148,7 +168,9 @@ src_install() {
 	doins "${S}/${BUILDDIR}/bin/"*.aci
 
 	# create symlink for default stage1 image path
-	if use rkt_stage1_src; then
+	if use rkt_stage1_host; then
+		dosym stage1-host.aci "${STAGE1_DEFAULT_LOCATION}"
+	elif use rkt_stage1_src; then
 		dosym stage1-src.aci "${STAGE1_DEFAULT_LOCATION}"
 	elif use rkt_stage1_coreos; then
 		dosym stage1-coreos.aci "${STAGE1_DEFAULT_LOCATION}"

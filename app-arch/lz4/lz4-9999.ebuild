@@ -47,6 +47,10 @@ multilib_src_compile() {
 	touch lib/liblz4
 }
 
+multilib_src_test() {
+	emake -j1 test
+}
+
 multilib_src_install() {
 	emake install DESTDIR="${D}" \
 		PREFIX="${EPREFIX}/usr" \

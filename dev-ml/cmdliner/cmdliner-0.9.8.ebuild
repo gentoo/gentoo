@@ -15,8 +15,9 @@ SLOT="0/${PV}"
 KEYWORDS="~amd64"
 IUSE="doc +ocamlopt"
 
-DEPEND=">=dev-lang/ocaml-4:=[ocamlopt?]"
-RDEPEND="${DEPEND}"
+RDEPEND=">=dev-lang/ocaml-4:=[ocamlopt?]"
+DEPEND="${RDEPEND}
+	dev-ml/ocamlbuild"
 
 src_compile() {
 	ocaml pkg/build.ml \

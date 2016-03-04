@@ -29,4 +29,4 @@ RDEPEND=">=dev-python/PyQt4-4.9.6-r2[${PYTHON_USEDEP},svg]
 	>=dev-python/sip-4.14.2-r1:0[${PYTHON_USEDEP}]
 	>=dev-python/lxml-3.0.1[${PYTHON_USEDEP}]"
 
-DOCS=(changelog HACKING NEWS README THANKS TODO)
+DOCS=(changelog HACKING NEWS THANKS TODO)

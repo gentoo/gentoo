@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -27,6 +27,9 @@ kernel_linux? (
 	ppc64? ( ${BOOTSTRAP_DIST}/go-linux-ppc64-bootstrap.tbz )
 	x86? ( ${BOOTSTRAP_DIST}/go-linux-386-bootstrap.tbz )
 )
+kernel_SunOS? (
+	x64-solaris? ( ${BOOTSTRAP_DIST}/go-solaris-amd64-bootstrap.tbz )
+)
 "
 
 if [[ ${PV} = 9999 ]]; then
@@ -39,7 +42,7 @@ else
 	case ${PV} in
 		*9999*|*_rc*) ;;
 		*)
-			KEYWORDS="-* ~amd64 ~arm ~x86 ~amd64-fbsd ~x86-fbsd ~x64-macos"
+			KEYWORDS="-* ~amd64 ~arm64 ~ppc64 ~amd64-fbsd ~x86-fbsd ~x64-macos ~x64-solaris"
 			;;
 	esac
 fi

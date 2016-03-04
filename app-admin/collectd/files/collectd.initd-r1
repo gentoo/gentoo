@@ -1,0 +1,79 @@
+#!/sbin/openrc-run
+# Copyright 1999-2016 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+COLLECTD_CONFIGFILE=${COLLECTD_CONFIGFILE:-"/etc/collectd.conf"}
+COLLECTD_PIDFILE=${COLLECTD_PIDFILE:-"/run/collectd/collectd.pid"}
+COLLECTD_NICELEVEL=${COLLECTD_NICELEVEL:-5}
+COLLECTD_USER=${COLLECTD_USER:-"collectd"}
+COLLECTD_GROUP=${COLLECTD_GROUP:-"collectd"}
+COLLECTD_SSDARGS=${COLLECTD_SSDARGS:-"--wait 1000"}
+COLLECTD_TERMTIMEOUT=${COLLECTD_TERMTIMEOUT:-"TERM/25/KILL/5"}
+COLLECTD_OPTS=${COLLECTD_OPTS:-""}
+
+command="/usr/sbin/collectd"
+command_args="${COLLECTD_OPTS} -C \"${COLLECTD_CONFIGFILE}\" -P \"${COLLECTD_PIDFILE}\""
+start_stop_daemon_args="${COLLECTD_SSDARGS} --nice ${COLLECTD_NICELEVEL} --user ${COLLECTD_USER}:${COLLECTD_GROUP}"
+pidfile="${COLLECTD_PIDFILE}"
+retry="${COLLECTD_TERMTIMEOUT}"
+
+extra_commands="configtest"
+description_configtest="Run collectd's internal config check."
+
+required_files="\"${COLLECTD_CONFIGFILE}\""
+
+depend() {
+	use dns
+}
+
+_checkconfig() {
+	if [ $(eval sed '/^$\|^#/d' \"${COLLECTD_CONFIGFILE}\" | grep --count 'LoadPlugin[[:space:]]\+oracle') -ge 1 ] ; then
+		if [ -e /etc/env.d/50oracle-instantclient-basic ] ; then
+			. /etc/env.d/50oracle-instantclient-basic
+			export ORACLE_HOME
+			export TNS_ADMIN
+		else
+			ewarn "Unable to set Oracle environment, Oracle plugin wont work"
+		fi
+	fi
+
+	local test_command="${command} -t -C \"${COLLECTD_CONFIGFILE}\""
+
+	eval ${test_command} 1>/dev/null 2>&1
+	ret=$?
+	if [ $ret -ne 0 ]; then
+		eerror "${SVCNAME} has detected an error in your configuration:"
+		eval ${test_command}
+	fi
+
+	return $ret
+}
+
+configtest() {
+	ebegin "Checking ${SVCNAME} configuration"
+	_checkconfig
+	eend $?
+}
+
+start_pre() {
+	if [ "${RC_CMD}" != "restart" ]; then
+		configtest || return 1
+	fi
+
+	checkpath --directory --mode 0770 --owner ${COLLECTD_USER}:${COLLECTD_GROUP} "$(dirname "${COLLECTD_PIDFILE}")"
+}
+
+stop_pre() {
+	if [ "${RC_CMD}" = "restart" ]; then
+		configtest || return 1
+	fi
+}
+
+stop_post() {
+	if [ -f "${COLLECTD_PIDFILE}" ]; then
+		vebegin "Removing stale PID file"
+		rm --force "${COLLECTD_PIDFILE}"
+		veend $?
+	fi
+}

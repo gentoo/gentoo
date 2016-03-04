@@ -13,11 +13,11 @@ HOMEPAGE="http://irssi.org/"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="ipv6 +perl selinux ssl socks5 +proxy"
+IUSE="ipv6 +perl selinux ssl socks5 +proxy libressl"
 
 CDEPEND="sys-libs/ncurses
 	>=dev-libs/glib-2.6.0
-	ssl? ( dev-libs/openssl:= )
+	ssl? ( !libressl? ( dev-libs/openssl:= ) libressl? ( dev-libs/libressl:= ) )
 	perl? ( dev-lang/perl )
 	socks5? ( >=net-proxy/dante-1.1.18 )"
 DEPEND="${CDEPEND}

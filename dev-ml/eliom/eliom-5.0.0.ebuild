@@ -28,6 +28,7 @@ RDEPEND=">=dev-lang/ocaml-4.00:=[ocamlopt?]
 	dev-ml/calendar:=
 	ppx? ( >=dev-ml/ppx_tools-0.99.3:= )"
 DEPEND="${RDEPEND}
+	dev-ml/ocamlbuild
 	dev-ml/opam"
 
 src_compile() {

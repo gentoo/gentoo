@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>sautier.louis@gmail.com</email>
+		<name>Louis Sautier</name>
+		<description>Proxied maintainer; set to assignee in all bugs</description>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">amichaelt/BDSup2SubPlusPlus</remote-id>
+		<bugs-to>https://github.com/amichaelt/BDSup2SubPlusPlus/issues</bugs-to>
+	</upstream>
+	<longdescription lang="en">
+		BDSup2Sub++ (c) 2012 is a port of the original BDSup2Sub (c) 2009 by 0xdeadbeef and incorporating enhancements from Miklos Juhasz. It is a subtitle conversion tool for image based stream formats with scaling capabilities and some other nice features.
+	</longdescription>
+</pkgmetadata>

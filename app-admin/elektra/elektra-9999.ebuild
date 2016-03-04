@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -6,12 +6,12 @@ EAPI=5
 
 inherit cmake-multilib eutils java-pkg-opt-2 git-r3
 
-DESCRIPTION="Universal and secure framework to store config parameters in a hierarchical key-value pair mechanism"
+DESCRIPTION="Framework to store config parameters in hierarchical key-value pairs"
 HOMEPAGE="http://freedesktop.org/wiki/Software/Elektra"
 EGIT_REPO_URI="git://github.com/ElektraInitiative/libelektra.git"
 
 LICENSE="BSD"
-SLOT="0"
+SLOT="0/${PV}"
 KEYWORDS=""
 PLUGIN_IUSE="augeas iconv ini java simpleini syslog systemd tcl +uname xml yajl";
 IUSE="dbus doc qt5 static-libs test ${PLUGIN_IUSE}"
@@ -41,7 +41,7 @@ RESTRICT="test"
 
 MULTILIB_WRAPPED_HEADERS=( /usr/include/elektra/kdbconfig.h )
 
-PATCHES=( "${FILESDIR}/${PN}"-0.8.11-conditional-glob-tests.patch )
+PATCHES=( "${FILESDIR}/${PN}"-0.8.15-conditional-glob-tests.patch )
 
 src_prepare() {
 	cmake-utils_src_prepare

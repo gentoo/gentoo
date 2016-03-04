@@ -39,7 +39,7 @@ RDEPEND="ldap? ( net-nds/openldap[${MULTILIB_USEDEP}] )
 			app-misc/ca-certificates
 		)
 		curl_ssl_openssl? (
-			dev-libs/openssl:0[static-libs?,${MULTILIB_USEDEP}]
+			dev-libs/openssl:0=[static-libs?,${MULTILIB_USEDEP}]
 		)
 		curl_ssl_nss? (
 			dev-libs/nss:0[${MULTILIB_USEDEP}]

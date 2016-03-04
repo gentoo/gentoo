@@ -15,7 +15,7 @@ SLOT="0/${PV}"
 KEYWORDS="~amd64"
 IUSE="+ocamlopt doc +deriving +ppx +ppx-deriving +react +xml X"
 
-DEPEND="
+RDEPEND="
 	>=dev-lang/ocaml-3.12:=[ocamlopt?,X?]
 	>=dev-ml/lwt-2.4.4:=
 	react? ( dev-ml/react:=  dev-ml/reactiveData:= )
@@ -28,7 +28,8 @@ DEPEND="
 	dev-ml/camlp4:=
 	dev-ml/cppo:=
 	deriving? ( >=dev-ml/deriving-0.6:= )"
-RDEPEND="${DEPEND}"
+DEPEND="${RDEPEND}
+	dev-ml/ocamlbuild"
 
 src_configure() {
 	printf "\n\n" >> Makefile.conf

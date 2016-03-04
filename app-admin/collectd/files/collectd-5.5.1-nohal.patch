@@ -1,0 +1,35 @@
+[PATCH 3/3] Remove libhal dependency
+
+X-Gentoo-Bug: 353839
+X-Gentoo-Bug-URL: https://bugs.gentoo.org/show_bug.cgi?id=353839
+---
+ configure.ac | 13 +------------
+ 1 file changed, 1 insertion(+), 12 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 1c85964..cf38159 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -1500,18 +1500,7 @@ AC_CHECK_LIB(resolv, res_search,
+ AM_CONDITIONAL(BUILD_WITH_LIBRESOLV, test "x$with_libresolv" = "xyes")
+ 
+ dnl Check for HAL (hardware abstraction library)
+-with_libhal="yes"
+-AC_CHECK_LIB(hal,libhal_device_property_exists,
+-	     [AC_DEFINE(HAVE_LIBHAL, 1, [Define to 1 if you have 'hal' library])],
+-	     [with_libhal="no"])
+-if test "x$with_libhal" = "xyes"; then
+-	if test "x$PKG_CONFIG" != "x"; then
+-		BUILD_WITH_LIBHAL_CFLAGS="`$PKG_CONFIG --cflags hal`"
+-		BUILD_WITH_LIBHAL_LIBS="`$PKG_CONFIG --libs hal`"
+-		AC_SUBST(BUILD_WITH_LIBHAL_CFLAGS)
+-		AC_SUBST(BUILD_WITH_LIBHAL_LIBS)
+-	fi
+-fi
++with_libhal="no"
+ 
+ # --with-libpthread {{{
+ AC_ARG_WITH(libpthread, [AS_HELP_STRING([--with-libpthread=@<:@=PREFIX@:>@], [Path to libpthread.])],
+-- 
+2.7.1
+

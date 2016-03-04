@@ -15,7 +15,7 @@ SRC_URI="http://cs.anu.edu.au/~bdm/${PN}/${PN}${MY_PV}.tar.gz"
 
 LICENSE="nauty"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64 ~arm x86"
 IUSE=""
 
 S="${WORKDIR}/${PN}${MY_PV}"

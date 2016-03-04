@@ -19,6 +19,7 @@
 	<flag name="rosprite">RISC OS Sprite bitmap image support (media-libs/librosprite)</flag>
 	<flag name="svgtiny">SVG image support via media-libs/svgatiny instead of gnome-base/librsvg</flag>
 	<flag name="webp">WebP image support (media-libs/libwebp)</flag>
+	<flag name="duktape">Use duktape.org javascript engine</flag>
 </use>
 <longdescription lang="en">
 NetSurf is a free, open source web browser. It is written in C, has its own layout and rendering engine entirely written from scratch. It is small and capable of handling many of the web standards in use today.

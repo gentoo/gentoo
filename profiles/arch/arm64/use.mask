@@ -148,7 +148,6 @@ gts
 anthy
 ace
 csharp
-gtk
 qt4
 qt5
 R
@@ -156,7 +155,6 @@ sdl
 slang
 tk
 vim-syntax
-X
 
 # 2006/02/05 - Donnie Berkholz <dberkholz@gentoo.org>
 # Modular X: mask for architectures on which they aren't available

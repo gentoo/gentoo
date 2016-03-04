@@ -3,9 +3,9 @@
 # $Id$
 
 type -P gmake  > /dev/null && alias make=gmake
-type -P gpath  > /dev/null && alias patch=gpatch
+type -P gpatch > /dev/null && alias patch=gpatch
 type -P gsed   > /dev/null && alias sed=gsed
-type -P gaws   > /dev/null && alias awk=gawk
+type -P gawk   > /dev/null && alias awk=gawk
 type -P gfind  > /dev/null && alias find=gfind
 type -P gxargs > /dev/null && alias xargs=gxargs
 

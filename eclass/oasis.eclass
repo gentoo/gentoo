@@ -62,7 +62,8 @@ IUSE="+ocamlopt"
 [ -n "${OASIS_BUILD_DOCS}" ] && IUSE="${IUSE} doc"
 [ -n "${OASIS_BUILD_TESTS}" ] && IUSE="${IUSE} test"
 
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	|| ( dev-ml/ocamlbuild <dev-lang/ocaml-4.02.3-r1 )"
 
 # @FUNCTION: oasis_use_enable
 # @USAGE: < useflag > < variable >

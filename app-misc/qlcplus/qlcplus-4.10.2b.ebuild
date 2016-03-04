@@ -33,7 +33,7 @@ RDEPEND="dev-libs/glib:2
 	qt5? ( dev-qt/qtcore:5
 		dev-qt/qtgui:5
 		dev-qt/qtmultimedia:5[widgets]
-		dev-qt/qtnetwork
+		dev-qt/qtnetwork:5
 		dev-qt/qtscript:5
 		dev-qt/qttest:5
 		dev-qt/qtwidgets:5 )"

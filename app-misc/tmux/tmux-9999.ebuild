@@ -10,7 +10,8 @@ inherit autotools-utils git-r3 bash-completion-r1 flag-o-matic versionator
 
 DESCRIPTION="Terminal multiplexer"
 HOMEPAGE="http://tmux.github.io/"
-SRC_URI=""
+SRC_URI="https://raw.githubusercontent.com/przepompownia/tmux-bash-completion/678a27616b70c649c6701cae9cd8c92b58cc051b/completions/tmux -> tmux-bash-completion-678a27616b70c649c6701cae9cd8c92b58cc051b
+vim-syntax? ( https://raw.githubusercontent.com/keith/tmux.vim/95f6126c187667cc7f9c573c45c3b356cf69f4ca/syntax/tmux.vim -> tmux.vim-95f6126c187667cc7f9c573c45c3b356cf69f4ca )"
 EGIT_REPO_URI="https://github.com/tmux/tmux.git"
 
 LICENSE="ISC"
@@ -61,14 +62,14 @@ src_configure() {
 src_install() {
 	autotools-utils_src_install
 
-	newbashcomp examples/bash_completion_tmux.sh ${PN}
+	newbashcomp "${DISTDIR}/tmux-bash-completion-678a27616b70c649c6701cae9cd8c92b58cc051b" ${PN}
 
 	docinto examples
-	dodoc examples/*.conf
+	dodoc example_tmux.conf
 
 	if use vim-syntax; then
 		insinto /usr/share/vim/vimfiles/syntax
-		doins examples/tmux.vim
+		newins "${DISTDIR}/tmux.vim-95f6126c187667cc7f9c573c45c3b356cf69f4ca" tmux.vim
 
 		insinto /usr/share/vim/vimfiles/ftdetect
 		doins "${FILESDIR}"/tmux.vim

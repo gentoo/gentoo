@@ -246,6 +246,11 @@ src_configure() {
 	[[ ${CTARGET} == powerpc64-* || ${CTARGET} == x86_64-* ]] && \
 		export CC="${CC:-$(tc-getCC)} -m64"
 
+	# Clang on OSX defaults to c99 mode, while GCC defaults to gnu89
+	# (C90 + extensions).  This makes Clang barf on GCC's sources, so
+	# work around that.  Bugs #491098, #574736
+	export CC="${CC:-$(tc-getCC)} -std=gnu89"
+
 	mkdir -p "${WORKDIR}"/build
 	cd "${WORKDIR}"/build
 	einfo "Configuring GCC with: ${myconf//--/\n\t--}"

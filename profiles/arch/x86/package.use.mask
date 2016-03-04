@@ -1,8 +1,16 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 # This file requires >=portage-2.1.1
+
+# Mike Gilbert <floppym@gentoo.org> (03 Mar 2016)
+# google-chrome dropped x86 support
+app-admin/lastpass chrome
+
+# Mike Gilbert <floppym@gentoo.org> (03 Mar 2016)
+# chrome-binary-plugins dropped x86 support
+www-client/chromium widevine
 
 # Ian Delaney <idella4@gentoo.org> (28 Dec 2015)
 # proxy maintainer excludes dep uchardet from the build

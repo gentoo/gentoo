@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -8,7 +8,7 @@ MODULE_AUTHOR=ALEXP
 MODULE_VERSION=1.73
 inherit perl-module
 
-DESCRIPTION="Current list of available top level domain names including new ICANN additions and ccTLDs"
+DESCRIPTION="Current top level domain names including new ICANN additions and ccTLDs"
 
 SLOT="0"
 KEYWORDS="~amd64 ~hppa ~mips ~ppc ~ppc64 ~x86"

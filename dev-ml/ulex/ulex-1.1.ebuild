@@ -15,9 +15,10 @@ SLOT="0/${PV}"
 KEYWORDS="amd64 ppc x86"
 IUSE="+ocamlopt"
 
-DEPEND=">=dev-lang/ocaml-3.10.2:=[ocamlopt?]
-	|| ( dev-ml/camlp4:= <dev-lang/ocaml-4.02.0 )"
-RDEPEND="${DEPEND}"
+RDEPEND=">=dev-lang/ocaml-3.10.2:=[ocamlopt?]
+	dev-ml/camlp4:="
+DEPEND="${RDEPEND}
+	|| ( dev-ml/ocamlbuild <dev-lang/ocaml-4.02.3-r1 )"
 
 src_compile() {
 	emake all

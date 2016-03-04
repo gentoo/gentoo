@@ -1,0 +1,40 @@
+fix from upstream for flaky parallel builds
+
+From e17fbf19c4b48d763041761052e98c2b4ee95487 Mon Sep 17 00:00:00 2001
+From: Rob Landley <rob@landley.net>
+Date: Fri, 26 Feb 2016 00:22:15 -0600
+Subject: [PATCH] Switch to $! for make.sh process enumeration.
+
+---
+ scripts/make.sh | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/scripts/make.sh b/scripts/make.sh
+index 84dda34..c73a03d 100755
+--- a/scripts/make.sh
++++ b/scripts/make.sh
+@@ -264,17 +264,17 @@ do
+   LFILES="$LFILES $OUT"
+   [ "$OUT" -nt "$i" ] && continue
+   do_loudly $BUILD -c $i -o $OUT &
++  PENDING="$PENDING $!"
+ 
+   # ratelimit to $CPUS many parallel jobs, detecting errors
+ 
+   while true
+   do
+-    PENDING="$(echo $PENDING $(jobs -rp) | tr ' ' '\n' | sort -u)"
+-    [ $(echo -n "$PENDING" | wc -l) -lt "$CPUS" ] && break;
++    [ $(echo "$PENDING" | wc -w) -lt "$CPUS" ] && break;
+ 
+-    wait $(echo "$PENDING" | head -n 1)
++    wait $(echo "$PENDING" | awk '{print $1}')
+     DONE=$(($DONE+$?))
+-    PENDING="$(echo "$PENDING" | tail -n +2)"
++    PENDING="$(echo "$PENDING" | sed 's/^ *[0-9]*//')"
+   done
+   [ $DONE -ne 0 ] && break
+ done
+-- 
+2.6.2
+

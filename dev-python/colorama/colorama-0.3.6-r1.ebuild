@@ -22,6 +22,11 @@ IUSE="examples"
 PATCHES=( "${FILESDIR}"/${P}.patch )
 
 python_install_all() {
-	use examples && local EXAMPLES=( demos/. )
 	distutils-r1_python_install_all
+
+	if use examples; then
+		insinto /usr/share/doc/${PF}/examples
+		doins -r demos/.
+		docompress -x /usr/share/doc/${PF}/examples
+	fi
 }

@@ -7,9 +7,5 @@
   </maintainer>
   <upstream>
     <remote-id type="pypi">zeroconf</remote-id>
-    <maintainer status="unknown">
-      <email>UNKNOWN</email>
-      <name>Paul Scott-Murphy, William McBrine, Jakub Stasiak</name>
-    </maintainer>
   </upstream>
 </pkgmetadata>

@@ -8,7 +8,7 @@ inherit autotools eutils multilib toolchain-funcs
 
 DESCRIPTION="highly optimized and portable routines for integer based number theoretic applications"
 HOMEPAGE="https://github.com/libtom/libtommath"
-SRC_URI="https://github.com/libtom/libtommath/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/libtom/libtommath/releases/download/v${PV}/ltm-${PV}.tar.xz"
 
 LICENSE="WTFPL-2"
 SLOT="0"

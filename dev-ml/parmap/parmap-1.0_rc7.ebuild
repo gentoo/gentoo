@@ -19,6 +19,7 @@ IUSE="+ocamlopt"
 RDEPEND=">=dev-lang/ocaml-3.12:=[ocamlopt?]"
 DEPEND="${RDEPEND}
 	dev-ml/findlib
+	dev-ml/ocamlbuild
 	dev-ml/ocaml-autoconf"
 S="${WORKDIR}/${PN}-${MY_PV}"
 
