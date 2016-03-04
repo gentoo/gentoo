@@ -18,7 +18,7 @@ DEPEND="dev-perl/class-loader
 	dev-perl/Crypt-Blowfish
 	dev-perl/convert-ascii-armour
 	dev-perl/Crypt-CBC
-	dev-perl/crypt-primes
+	dev-perl/Crypt-Primes
 	dev-perl/crypt-random
 	dev-perl/data-buffer
 	dev-perl/digest-md2
