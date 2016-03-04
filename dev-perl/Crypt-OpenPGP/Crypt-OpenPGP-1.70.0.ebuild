@@ -32,7 +32,7 @@ RDEPEND="
 	dev-perl/libwww-perl
 	dev-perl/URI
 	dev-perl/Crypt-DSA
-	dev-perl/crypt-rsa
+	dev-perl/Crypt-RSA
 	dev-perl/File-HomeDir
 
 	dev-perl/crypt-idea
