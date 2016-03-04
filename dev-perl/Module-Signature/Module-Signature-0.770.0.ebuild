@@ -32,7 +32,7 @@ RDEPEND="
 	dev-perl/Crypt-Random
 	dev-perl/Crypt-Primes
 	dev-perl/Crypt-DES_EDE3
-	dev-perl/crypt-dsa
+	dev-perl/Crypt-DSA
 	dev-perl/crypt-rsa
 	dev-perl/Convert-ASN1
 	dev-perl/convert-pem
