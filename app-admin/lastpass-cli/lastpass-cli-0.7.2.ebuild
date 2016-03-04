@@ -11,7 +11,7 @@ SRC_URI="https://github.com/lastpass/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 HOMEPAGE="https://github.com/lastpass/lastpass-cli"
 
 SLOT="0"
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 KEYWORDS="~amd64 ~x86"
 IUSE="libressl X +pinentry"
 
