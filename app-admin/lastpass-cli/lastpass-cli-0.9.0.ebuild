@@ -1,15 +1,17 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
+
+inherit toolchain-funcs
 
 DESCRIPTION="Interfaces with LastPass.com from the command line."
-SRC_URI="https://github.com/lastpass/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 HOMEPAGE="https://github.com/lastpass/lastpass-cli"
+SRC_URI="https://github.com/lastpass/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 SLOT="0"
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 KEYWORDS="~amd64 ~x86"
 IUSE="libressl X +pinentry"
 
@@ -21,10 +23,16 @@ RDEPEND="
 	dev-libs/libxml2
 	pinentry? ( app-crypt/pinentry )
 "
-DEPEND="${RDEPEND} app-text/asciidoc"
+DEPEND="${RDEPEND}
+	app-text/asciidoc
+	virtual/pkgconfig
+"
 
 src_prepare() {
-	sed -i 's/install -s/install/' Makefile || die "Could not remove stripping"
+	# Do not include headers from /usr/local/include
+	sed -i -e 's:-I/usr/local/include::' Makefile || die
+	default
+	tc-export CC
 }
 
 src_compile() {
