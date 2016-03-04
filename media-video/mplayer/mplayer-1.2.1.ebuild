@@ -17,8 +17,8 @@ ftp gif ggi gsm +iconv ipv6 jack joystick jpeg jpeg2k kernel_linux ladspa
 +libass libcaca libmpeg2 lirc live lzo mad md5sum +cpu_flags_x86_mmx cpu_flags_x86_mmxext mng mp3 nas
 +network nut openal opengl +osdmenu oss png pnm pulseaudio pvr
 radio rar rtc rtmp samba selinux +shm sdl speex cpu_flags_x86_sse cpu_flags_x86_sse2 cpu_flags_x86_ssse3
-tga theora tremor +truetype toolame twolame +unicode v4l vdpau vidix
-vorbis +X x264 xanim xinerama +xscreensaver +xv xvid xvmc zoran"
+tga theora tremor +truetype toolame twolame +unicode v4l vcd vdpau vidix
+vorbis +X x264 xanim xinerama +xscreensaver +xv xvid xvmc yuv4mpeg zoran"
 
 VIDEO_CARDS="s3virge mga tdfx"
 for x in ${VIDEO_CARDS}; do
@@ -299,7 +299,7 @@ src_configure() {
 		$(use_enable network networking)
 		$(use_enable joystick)
 	"
-	uses="bl bluray enca ftp rtc" # nemesi <- not working with in-tree ebuild
+	uses="bl bluray enca ftp rtc vcd" # nemesi <- not working with in-tree ebuild
 	myconf+=" --disable-nemesi" # nemesi automagic disable
 	for i in ${uses}; do
 		use ${i} || myconf+=" --disable-${i}"
@@ -422,7 +422,7 @@ src_configure() {
 	################
 	# Video Output #
 	################
-	uses="directfb md5sum sdl"
+	uses="directfb md5sum sdl yuv4mpeg"
 	for i in ${uses}; do
 		use ${i} || myconf+=" --disable-${i}"
 	done
