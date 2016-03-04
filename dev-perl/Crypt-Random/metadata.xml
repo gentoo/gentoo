@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Crypt-Random</remote-id>
+    <remote-id type="cpan-module">Crypt::Random</remote-id>
+    <remote-id type="cpan-module">Crypt::Random::Generator</remote-id>
+    <remote-id type="cpan-module">Crypt::Random::Provider::File</remote-id>
+    <remote-id type="cpan-module">Crypt::Random::Provider::devrandom</remote-id>
+    <remote-id type="cpan-module">Crypt::Random::Provider::devurandom</remote-id>
+    <remote-id type="cpan-module">Crypt::Random::Provider::egd</remote-id>
+    <remote-id type="cpan-module">Crypt::Random::Provider::rand</remote-id>
+  </upstream>
+</pkgmetadata>
