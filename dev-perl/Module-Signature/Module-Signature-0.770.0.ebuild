@@ -29,7 +29,7 @@ RDEPEND="
 	dev-perl/data-buffer
 	dev-perl/digest-md2
 	>=dev-perl/math-pari-2.010603
-	dev-perl/crypt-random
+	dev-perl/Crypt-Random
 	dev-perl/crypt-primes
 	dev-perl/crypt-des-ede3
 	dev-perl/crypt-dsa
