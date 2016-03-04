@@ -31,7 +31,7 @@ RDEPEND="
 	dev-perl/digest-md2
 	>=dev-perl/math-pari-2.010603
 	dev-perl/Crypt-Random
-	dev-perl/crypt-primes
+	dev-perl/Crypt-Primes
 	dev-perl/crypt-des-ede3
 	dev-perl/crypt-dsa
 	dev-perl/crypt-rsa
