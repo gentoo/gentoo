@@ -4802,9 +4802,11 @@ media-video/mplayer:tga - Enables Targa video output
 media-video/mplayer:toolame - Enable toolame MPEG-2 encoding
 media-video/mplayer:tremor - Enable internal support for Vorbis
 media-video/mplayer:twolame - Enable twolame MPEG-2 encoding
+media-video/mplayer:vcd - Enables VCD support
 media-video/mplayer:vidix - Support for vidix video output
 media-video/mplayer:xanim - Enables support for xanim based codecs
 media-video/mplayer:xvmc - Enables X-Video Motion Compensation support
+media-video/mplayer:yuv4mpeg - Enables yuv4mpeg video output
 media-video/mplayer:zoran - Enables ZR360[56]7/ZR36060 video output
 media-video/mpv:archive - Enable support for various archive formats via app-arch/libarchive
 media-video/mpv:bluray - Enable playback of Blu-ray filesystems
