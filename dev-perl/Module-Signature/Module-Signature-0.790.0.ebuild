@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -20,7 +20,7 @@ RDEPEND="
 	virtual/perl-MIME-Base64
 	dev-perl/PAR-Dist
 	virtual/perl-IO-Compress
-	dev-perl/crypt-cbc
+	dev-perl/Crypt-CBC
 	dev-perl/Crypt-DES
 	dev-perl/Crypt-Blowfish
 	dev-perl/Crypt-RIPEMD160
