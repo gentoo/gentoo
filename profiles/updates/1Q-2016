@@ -18,3 +18,4 @@ move media-tv/xbmc media-tv/kodi
 move dev-perl/locale-maketext-fuzzy dev-perl/Locale-Maketext-Fuzzy
 move dev-perl/crypt-cbc dev-perl/Crypt-CBC
 move dev-perl/crypt-des-ede3 dev-perl/Crypt-DES_EDE3
+move dev-perl/crypt-dh dev-perl/Crypt-DH
