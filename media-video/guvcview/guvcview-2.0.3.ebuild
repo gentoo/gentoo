@@ -35,6 +35,7 @@ DEPEND="${RDEPEND}
 	dev-util/intltool
 	sys-devel/gettext
 	virtual/os-headers
+	sys-devel/autoconf-archive
 	virtual/pkgconfig"
 
 S=${WORKDIR}/${MY_P}
