@@ -18,6 +18,6 @@ RDEPEND="
 	dev-libs/gmp
 	dev-perl/Math-BigInt-GMP
 	>=virtual/perl-Math-BigInt-1.60
-	dev-perl/crypt-random
+	dev-perl/Crypt-Random
 "
 DEPEND="${RDEPEND}"
