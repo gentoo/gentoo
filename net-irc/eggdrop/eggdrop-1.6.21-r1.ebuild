@@ -72,7 +72,7 @@ src_compile() {
 		target="debug"
 	fi
 
-	emake ${target}
+	emake -j1 ${target} # fixes #533490
 }
 
 src_install() {
