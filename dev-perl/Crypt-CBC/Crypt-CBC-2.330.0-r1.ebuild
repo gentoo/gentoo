@@ -20,7 +20,7 @@ DEPEND="${RDEPEND}
 	test? (
 		dev-perl/Crypt-Blowfish
 		dev-perl/Crypt-DES
-		dev-perl/crypt-idea
+		dev-perl/Crypt-IDEA
 	)"
 #		dev-perl/Crypt-Rijndael"
 
