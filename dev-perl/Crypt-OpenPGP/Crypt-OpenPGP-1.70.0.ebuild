@@ -38,7 +38,7 @@ RDEPEND="
 	dev-perl/Crypt-IDEA
 	virtual/perl-Digest-MD5
 
-	dev-perl/crypt-des-ede3
+	dev-perl/Crypt-DES_EDE3
 	dev-perl/Digest-SHA1
 
 	dev-perl/Crypt-Rijndael
