@@ -12,7 +12,7 @@ inherit chromium eutils multilib unpacker toolchain-funcs
 
 DESCRIPTION="A new browser for our friends"
 HOMEPAGE="http://vivaldi.com/"
-VIVALDI_BASE_URI="${HOMEPAGE}download/snapshot/${PN}-snapshot_${PV/_p/-}_"
+VIVALDI_BASE_URI="${HOMEPAGE}download/stable/${PN}-beta_${PV/_p/-}_"
 SRC_URI="
 	amd64? ( ${VIVALDI_BASE_URI}amd64.deb -> ${P}-amd64.deb )
 	x86? ( ${VIVALDI_BASE_URI}i386.deb -> ${P}-i386.deb )
@@ -59,7 +59,7 @@ RDEPEND="
 
 QA_PREBUILT="*"
 S=${WORKDIR}
-VIVALDI_HOME="opt/${PN}-snapshot"
+VIVALDI_HOME="opt/${PN}-beta"
 
 src_unpack() {
 	unpack_deb ${A}
@@ -68,19 +68,19 @@ src_unpack() {
 src_prepare() {
 	sed -i \
 		-e "s|@LIBDIR@|$(get_libdir)|g" \
-		opt/vivaldi-snapshot/vivaldi-snapshot || die
+		opt/vivaldi-beta/vivaldi-beta || die
 
 	sed -i \
-		-e 's|vivaldi-snapshot|vivaldi|g' \
-		usr/share/applications/${PN}-snapshot.desktop \
-		usr/share/xfce4/helpers/${PN}-snapshot.desktop || die
+		-e 's|vivaldi-beta|vivaldi|g' \
+		usr/share/applications/${PN}-beta.desktop \
+		usr/share/xfce4/helpers/${PN}-beta.desktop || die
 
-	mv usr/share/doc/${PN}-snapshot usr/share/doc/${PF} || die
+	mv usr/share/doc/${PN}-beta usr/share/doc/${PF} || die
 
 	rm \
 		_gpgbuilder \
-		etc/cron.daily/${PN}-snapshot \
-		usr/bin/${PN}-snapshot \
+		etc/cron.daily/${PN}-beta \
+		usr/bin/${PN}-beta \
 		|| die
 	rmdir \
 		etc/cron.daily/ \
@@ -103,7 +103,7 @@ src_prepare() {
 
 src_install() {
 	mv * "${D}" || die
-	dosym /${VIVALDI_HOME}/${PN}-snapshot /usr/bin/${PN}
+	dosym /${VIVALDI_HOME}/${PN}-beta /usr/bin/${PN}
 
 	fperms 4711 /${VIVALDI_HOME}/${PN}-sandbox
 }
