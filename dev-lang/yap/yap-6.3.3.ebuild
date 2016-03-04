@@ -6,7 +6,7 @@ EAPI=5
 
 inherit eutils flag-o-matic java-pkg-opt-2 multilib
 
-PATCHSET_VER="5"
+PATCHSET_VER="6"
 
 DESCRIPTION="YAP is a high-performance Prolog compiler"
 HOMEPAGE="http://www.dcc.fc.up.pt/~vsc/Yap/"
