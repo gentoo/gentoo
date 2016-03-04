@@ -30,6 +30,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Aaron Bauman <bman@gentoo.org> (05 Mar 2016)
+# Per security bug #399563 these packages are vulnerable
+# and unmaintained.  Removal in 30 days.
+www-apps/horde-imp
+www-apps/horde-dimp
+
 # Mike Gilbert <floppym@gentoo.org> (03 Mar 2016)
 # Dev channel releases are only for people who are developers or want more
 # experimental features and accept a more unstable release.
