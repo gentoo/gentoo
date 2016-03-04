@@ -16,6 +16,12 @@
 		<name>Proxy Maintainers</name>
 		<description>please CC on bugs</description>
 	</maintainer>
+	<use>
+	  <flag name="auto-completion">
+	    Enable command-line autocompletion using
+	    <pkg>dev-libs/libtecla</pkg>.
+	  </flag>
+	</use>
 	<upstream>
 		<remote-id type="sourceforge">filebench</remote-id>
 	</upstream>
