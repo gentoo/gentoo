@@ -18,7 +18,7 @@ SRC_URI="https://commondatastorage.googleapis.com/chromium-browser-official/${P}
 
 LICENSE="BSD hotwording? ( no-source-code )"
 SLOT="0"
-KEYWORDS="amd64 ~arm x86"
+KEYWORDS="amd64 ~arm ~arm64 x86"
 IUSE="cups gn gnome gnome-keyring gtk3 +hangouts hidpi hotwording kerberos neon pic +proprietary-codecs pulseaudio selinux +system-ffmpeg +tcmalloc widevine"
 RESTRICT="!system-ffmpeg? ( proprietary-codecs? ( bindist ) )"
 
@@ -460,6 +460,9 @@ src_configure() {
 	elif [[ $myarch = x86 ]] ; then
 		target_arch=ia32
 		ffmpeg_target_arch=ia32
+	elif [[ $myarch = arm64 ]] ; then
+		target_arch=arm64
+		ffmpeg_target_arch=arm64
 	elif [[ $myarch = arm ]] ; then
 		target_arch=arm
 		ffmpeg_target_arch=$(usex neon arm-neon arm)
