@@ -16,7 +16,7 @@ KEYWORDS="~amd64 ~ppc ~s390 ~x86"
 IUSE="X developer +extended-keys gtk +magic vim vim-syntax"
 
 DEPEND="
-	>=sys-libs/ncurses-5.9-r99:5
+	>=sys-libs/ncurses-5.9-r3:0
 	magic? ( sys-apps/file )
 	gtk? ( x11-libs/gtk+:2 )
 	X? ( x11-libs/libX11 )
