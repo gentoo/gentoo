@@ -15,7 +15,7 @@ KEYWORDS="alpha amd64 hppa ~mips ~ppc sparc x86 ~amd64-linux ~x86-linux ~ppc-mac
 IUSE=""
 
 RDEPEND="dev-perl/math-pari
-	dev-perl/crypt-random"
+	dev-perl/Crypt-Random"
 DEPEND="${RDEPEND}"
 
 SRC_TEST="do"
