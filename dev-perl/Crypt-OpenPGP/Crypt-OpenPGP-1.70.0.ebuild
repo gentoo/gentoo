@@ -35,7 +35,7 @@ RDEPEND="
 	dev-perl/Crypt-RSA
 	dev-perl/File-HomeDir
 
-	dev-perl/crypt-idea
+	dev-perl/Crypt-IDEA
 	virtual/perl-Digest-MD5
 
 	dev-perl/crypt-des-ede3
