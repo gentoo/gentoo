@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -35,6 +35,7 @@ RDEPEND="${DEPEND}"
 S=${WORKDIR}/${MY_P}
 
 src_prepare()  {
+	epatch "${FILESDIR}/${P}-fix-gcc5-remove-inline.patch" # bug 571004
 	if use vanilla; then
 		rm -f "${WORKDIR}"/patch/[1-6]*.patch || die
 	fi
