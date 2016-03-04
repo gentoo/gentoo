@@ -22,3 +22,4 @@ move dev-perl/crypt-dh dev-perl/Crypt-DH
 move dev-perl/crypt-dsa dev-perl/Crypt-DSA
 move dev-perl/crypt-idea dev-perl/Crypt-IDEA
 move dev-perl/crypt-random dev-perl/Crypt-Random
+move dev-perl/crypt-primes dev-perl/Crypt-Primes
