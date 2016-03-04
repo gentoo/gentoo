@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=5
 
 if [[ ${PV} = *9999* ]]; then
 	EGIT_REPO_URI="git://github.com/kekekeks/skypetab-ng.git"
@@ -16,7 +16,7 @@ inherit eutils qt4-r2 multilib ${UNPACKER_ECLASS}
 
 if [[ -z ${LIVE_EBUILD} ]]; then
 	KEYWORDS="-* ~x86 ~amd64"
-	SRC_URI="https://github.com/kekekeks/${PN}/tarball/v${PV} -> ${P}.tar.gz"
+	SRC_URI="https://dev.gentoo.org/~slyfox/distfiles/${P}.tar.bz2"
 fi
 
 DESCRIPTION="An LD_PRELOAD wrapper that adds tabs to Skype for Linux"
