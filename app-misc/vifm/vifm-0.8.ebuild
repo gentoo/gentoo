@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -16,7 +16,7 @@ KEYWORDS="amd64 ppc ~s390 x86"
 IUSE="X developer +extended-keys gtk +magic vim vim-syntax"
 
 DEPEND="
-	>=sys-libs/ncurses-5.7-r7
+	>=sys-libs/ncurses-5.7-r7:0
 	magic? ( sys-apps/file )
 	gtk? ( x11-libs/gtk+:2 )
 	X? ( x11-libs/libX11 )
