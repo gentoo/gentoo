@@ -167,6 +167,7 @@ x86             default/linux/x86/13.0/desktop/kde/systemd      stable
 x86             default/linux/x86/13.0/desktop/plasma           stable
 x86             default/linux/x86/13.0/desktop/plasma/systemd   stable
 x86             default/linux/x86/13.0/developer                stable
+x86		default/linux/x86/13.0/systemd			stable
 
 # Gentoo/FreeBSD Profiles
 amd64-fbsd	default/bsd/fbsd/amd64/9.1			dev
