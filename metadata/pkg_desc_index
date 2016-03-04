@@ -123,7 +123,7 @@ app-admin/keepassx 0.4.3 0.4.4 2.0 2.0.1 2.0.2: Qt password manager compatible w
 app-admin/killproc 2.13-r1: killproc and assorted tools for boot scripts
 app-admin/kpcli 2.7 2.8 3.0: A command line interface to KeePass database files
 app-admin/lastpass 3.2.16: Online password manager and form filler that makes web browsing easier and more secure
-app-admin/lastpass-cli 0.6.0 0.6.1 0.7.1 0.7.2 0.8.0-r1 0.8.1: Interfaces with LastPass.com from the command line.
+app-admin/lastpass-cli 0.6.1 0.7.2 0.8.1 0.9.0: Interfaces with LastPass.com from the command line.
 app-admin/lib_users 0.9: Checks /proc for libraries being mapped but marked as deleted
 app-admin/lnav 0.6.1 0.6.2 0.7.0 0.7.1: A curses-based tool for viewing and analyzing log files
 app-admin/localepurge 0.5.4-r2: Script to recover diskspace wasted for unneeded locale files and localized man pages
@@ -692,14 +692,14 @@ app-dicts/myspell-af 20080701: Afrikaans dictionaries for myspell/hunspell
 app-dicts/myspell-bg 4.3: Bulgarian dictionaries for myspell/hunspell
 app-dicts/myspell-ca 2.3.0: Catalan dictionaries for myspell/hunspell
 app-dicts/myspell-cs 20110224: Czech dictionaries for myspell/hunspell
-app-dicts/myspell-cy 20060316: Welsh dictionaries for myspell/hunspell
+app-dicts/myspell-cy 2013.07.08 20060316: Welsh dictionaries for myspell/hunspell
 app-dicts/myspell-da 2.1: Danish dictionaries for myspell/hunspell
 app-dicts/myspell-de 2013.12.06 2015.12.28: German dictionaries for myspell/hunspell
 app-dicts/myspell-de-alt 20120929: German (traditional orthography) dictionaries for myspell/hunspell
 app-dicts/myspell-el 0.8: Greek dictionaries for myspell/hunspell
 app-dicts/myspell-en 2016.02.01 20081002 20151201: English dictionaries for myspell/hunspell
 app-dicts/myspell-eo 1.0: Esperanto dictionaries for myspell/hunspell
-app-dicts/myspell-es 0.6: Spanish dictionaries for myspell/hunspell
+app-dicts/myspell-es 0.6 0.7: Spanish dictionaries for myspell/hunspell
 app-dicts/myspell-et 20030606: Estonian dictionaries for myspell/hunspell
 app-dicts/myspell-fo 0.4.2: Faroese dictionaries for myspell/hunspell
 app-dicts/myspell-fr 4.5-r1: French dictionaries for myspell/hunspell
