@@ -37,8 +37,7 @@ src_configure() {
 src_install() {
 	default
 
-	dodoc README*
-	dohtml -r doc/*
+	dodoc README
 
 	insinto /etc; insopts -m600; doins monitrc
 	newinitd "${FILESDIR}"/monit.initd-5.0-r1 monit
