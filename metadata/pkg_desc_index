@@ -1885,7 +1885,7 @@ app-misc/subsurface 3.1.1 4.2 9999: An open source dive log program
 app-misc/supercat 0.5.5-r1: A text file colorizer using powerful regular expressions
 app-misc/symlinks 1.4 1.4-r2: Scans for and fixes broken or messy symlinks
 app-misc/tablix 0.3.5-r1: Tablix is a powerful free software kernel for solving general timetabling problems
-app-misc/task 2.4.4 2.5.0: Taskwarrior is a command-line todo list manager
+app-misc/task 2.4.4 2.5.0 2.5.1: Taskwarrior is a command-line todo list manager
 app-misc/taskd 1.1.0-r1: the server part of Taskwarrior, a command-line todo list manager
 app-misc/tasque 0.1.11 0.1.12: Simple task management app (TODO list) for the Linux Desktop
 app-misc/tdfsb 0.0.10 0.0.10-r1: SDL based graphical file browser
@@ -2916,7 +2916,7 @@ dev-db/spatialite 2.4.0_rc4 3.0.1 4.1.1: A complete Spatial DBMS in a nutshell b
 dev-db/spatialite-tools 3.1.0: A complete Spatial DBMS in a nutshell built upon sqlite
 dev-db/sqlcipher 3.3.0: Full Database Encryption for SQLite
 dev-db/sqldeveloper 3.2.20.09.87 4.0.2.15.21 4.1.1.19.59 4.1.3.20.78 4.1.3.20.78-r1: Oracle SQL Developer is a graphical tool for database development
-dev-db/sqlite 3.8.10.1 3.8.10.2 3.8.11.1 3.9.1 3.9.2 3.10.0 3.10.2 3.11.0: A SQL Database Engine in a C Library
+dev-db/sqlite 3.8.10.1 3.8.10.2 3.8.11.1 3.9.1 3.9.2 3.10.0 3.10.2 3.11.0 3.11.1: A SQL Database Engine in a C Library
 dev-db/sqlitebrowser 3.7.0-r1 3.8.0: SQLite Database Browser
 dev-db/sqliteman 1.2.2-r1: Powerful GUI manager for the Sqlite3 database
 dev-db/sqliteodbc 0.96 0.99: ODBC driver to access local SQLite database files
@@ -9629,7 +9629,7 @@ dev-util/perf 3.8-r1 3.12 3.13.1-r1 3.15.5 4.1.5-r1: Userland tools for Linux Pe
 dev-util/pida 0.6.2-r1: Gtk and/or Vim-based Python Integrated Development Application
 dev-util/pkgcheck 0.5 0.5.1 9999: pkgcore-based QA utility
 dev-util/pkgconf 0.9.11 0.9.12 9999: pkg-config compatible replacement with no dependencies other than ANSI C89
-dev-util/pkgconfig 0.28-r2 0.28-r3 0.29 9999: Package config system that manages compile/link flags
+dev-util/pkgconfig 0.28-r2 0.28-r3 0.29 0.29.1 9999: Package config system that manages compile/link flags
 dev-util/pkgconfig-openbsd 20130507-r1: A perl based version of pkg-config from OpenBSD
 dev-util/plan9port 20140306 20140306-r1 20140306-r2: Port of many Plan 9 programs and libraries
 dev-util/pmd 4.2.5: A Java source code analyzer
