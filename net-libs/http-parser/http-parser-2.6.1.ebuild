@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -12,7 +12,7 @@ SRC_URI="https://github.com/nodejs/http-parser/archive/v${PV}.tar.gz -> ${P}.tar
 
 LICENSE="MIT"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~arm ~ppc ~x86 ~x64-macos ~x64-solaris"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~x86 ~x64-macos ~x64-solaris"
 IUSE="static-libs"
 
 # https://github.com/nodejs/http-parser/pull/272
