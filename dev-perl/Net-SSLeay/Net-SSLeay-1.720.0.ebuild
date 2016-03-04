@@ -39,9 +39,19 @@ src_prepare() {
 		-e "/\$opts->{optimize} = '-O2 -g';/d" \
 		-e "s,\"\$prefix/lib\",\"\$prefix/$(get_libdir)\"," \
 		inc/Module/Install/PRIVATE/Net/SSLeay.pm || die
+
+	local my_test_control
+	my_test_control=${DIST_TEST_OVERRIDE:-${DIST_TEST:-do parallel}}
+
 	if use test; then
 		perl_rm_files 't/local/01_pod.t' 't/local/02_pod_coverage.t' 't/local/kwalitee.t'
 	fi
+	if use test && has network ${my_test_control} ; then
+		eapply "${FILESDIR}/${DIST_VERSION}-config-nettest-yes.patch"
+	else
+		eapply "${FILESDIR}/${DIST_VERSION}-config-nettest-no.patch"
+	fi
+
 	perl-module_src_prepare
 }
 src_install() {
