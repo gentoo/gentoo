@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=6
 
 inherit eutils
 
@@ -27,15 +27,17 @@ DEPEND="
 	sys-apps/gentoo-functions
 	!vanilla? (
 		mysql? ( virtual/mysql )
-		postgres? ( dev-db/postgresql[server] )
-		ssl? ( dev-libs/openssl )
+		postgres? ( dev-db/postgresql:*[server] )
+		ssl? ( dev-libs/openssl:0= )
 	)"
 RDEPEND="${DEPEND}"
 
 S=${WORKDIR}/${MY_P}
 
 src_prepare()  {
-	epatch "${FILESDIR}/${P}-fix-gcc5-remove-inline.patch" # bug 571004
+	# fix bug 571004 and a QA warning
+	epatch "${FILESDIR}/${P}-fix-gcc5-remove-inline.patch" \
+		"${FILESDIR}/${P}-fix-memset.patch"
 	if use vanilla; then
 		rm -f "${WORKDIR}"/patch/[1-6]*.patch || die
 	fi
@@ -46,6 +48,7 @@ src_prepare()  {
 	sed -i \
 		-e '/\$(LD)/s/-o/$(CFLAGS) $(LDFLAGS) &/' \
 		src/mod/*.mod/Makefile* src/Makefile.in || die
+	default
 }
 
 src_configure() {
@@ -98,7 +101,7 @@ src_install() {
 		src/mod/mystats.mod/tools/mystats.{conf,sql} \
 		src/mod/pgstats.mod/tools/{pgstats.conf,setup.sql}
 
-	dohtml doc/html/*.html
+	dodoc -r doc/html
 
 	dobin "${FILESDIR}"/eggdrop-installer
 	doman doc/man1/eggdrop.1
