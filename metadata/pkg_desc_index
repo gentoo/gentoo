@@ -4097,7 +4097,7 @@ dev-java/myfaces-api 2.2.8: Apache MyFaces API - Core package
 dev-java/myfaces-builder-annotations 1.0.9: Apache MyFaces API - Builder annotations package
 dev-java/nachocalendar 0.23: Flexible Calendar component to the Java Platform
 dev-java/nailgun 0.7.1-r1: a client, protocol, and server for running Java apps without incurring the JVM startup overhead
-dev-java/nanoxml 2.2.3-r2: NanoXML is a small non-validating parser for Java.
+dev-java/nanoxml 2.2.3-r2 2.2.3-r3: NanoXML is a small non-validating parser for Java
 dev-java/nekohtml 1.9.18-r1: A simple HTML scanner and tag balancer using standard XML interfaces
 dev-java/netbeans-apisupport 8.0.2 8.1: Netbeans API Support Cluster
 dev-java/netbeans-cnd 8.0.2 8.1: Netbeans CND Cluster
