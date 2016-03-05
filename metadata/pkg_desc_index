@@ -5355,8 +5355,8 @@ dev-perl/Curses 1.320.0 1.330.0: Curses interface modules for Perl
 dev-perl/Curses-UI 0.960.900-r1: Perl UI framework based on the curses library
 dev-perl/CursesWidgets 1.997.0-r1: Provide high level APIs for rapid user interface design on the console in Perl
 dev-perl/Cwd-Guard 0.40.0: Temporary changing working directory (chdir)
-dev-perl/DBD-Pg 2.19.3-r1 3.4.2 3.5.3: PostgreSQL database driver for the DBI module
-dev-perl/DBD-SQLite 1.350.0-r1 1.480.0: Self Contained RDBMS in a DBI Driver
+dev-perl/DBD-Pg 3.4.2 3.5.3: PostgreSQL database driver for the DBI module
+dev-perl/DBD-SQLite 1.480.0: Self Contained RDBMS in a DBI Driver
 dev-perl/DBD-mysql 4.32.0-r1: The Perl DBD:mysql Module
 dev-perl/DBI 1.634.0: Database independent interface for Perl
 dev-perl/DBI-Shell 11.950.0-r1: Interactive command shell for the DBI
@@ -5405,7 +5405,7 @@ dev-perl/Data-Utilities 0.40.0-r1: Merge nested Perl data structures
 dev-perl/Data-Validate-Domain 0.110.0: Domain and host name validation
 dev-perl/Data-Validate-IP 0.240.0: Lightweight IPv4 and IPv6 validation module
 dev-perl/Data-Visitor 0.300.0-r1: Visitor style traversal of Perl data structures
-dev-perl/Date-Calc 6.300.0-r1 6.400.0: Gregorian calendar date calculations
+dev-perl/Date-Calc 6.400.0: Gregorian calendar date calculations
 dev-perl/Date-Extract 0.40.0: Extract probable dates from strings
 dev-perl/Date-ICal 2.678.0-r1: ICal format date base module for Perl
 dev-perl/Date-Leapyear 1.720.0-r1: Simple Perl module that tracks Gregorian leap years
@@ -5698,7 +5698,7 @@ dev-perl/IO-Stty 0.30.0: Change and print terminal line settings
 dev-perl/IO-Tee 0.640.0-r1: Multiplex output to multiple output handles
 dev-perl/IO-Tty 1.120.0: IO::Tty and IO::Pty modules for Perl
 dev-perl/IO-Util 1.500.0-r1: A selection of general-utility IO function
-dev-perl/IO-stringy 2.110.0-r1 2.111.0: A Perl module for I/O on in-core objects like strings and arrays
+dev-perl/IO-stringy 2.111.0: A Perl module for I/O on in-core objects like strings and arrays
 dev-perl/IP-Anonymous 0.40.0-r1: Perl port of Crypto-PAn to provide anonymous IP addresses
 dev-perl/IPC-Run 0.940.0: system() and background procs w/ piping, redirs, ptys
 dev-perl/IPC-Run3 0.45.0-r1 0.48.0: Run a subprocess in batch mode (a la system)
