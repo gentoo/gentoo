@@ -1,10 +1,9 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 
-MY_PN=Crypt-CBC
 MODULE_AUTHOR=LDS
 MODULE_VERSION=2.33
 inherit perl-module
@@ -21,7 +20,7 @@ DEPEND="${RDEPEND}
 	test? (
 		dev-perl/Crypt-Blowfish
 		dev-perl/Crypt-DES
-		dev-perl/crypt-idea
+		dev-perl/Crypt-IDEA
 	)"
 #		dev-perl/Crypt-Rijndael"
 

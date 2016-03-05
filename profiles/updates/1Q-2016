@@ -16,3 +16,11 @@ move dev-perl/ImageInfo dev-perl/Image-Info
 move dev-perl/ImageSize dev-perl/Image-Size
 move media-tv/xbmc media-tv/kodi
 move dev-perl/locale-maketext-fuzzy dev-perl/Locale-Maketext-Fuzzy
+move dev-perl/crypt-cbc dev-perl/Crypt-CBC
+move dev-perl/crypt-des-ede3 dev-perl/Crypt-DES_EDE3
+move dev-perl/crypt-dh dev-perl/Crypt-DH
+move dev-perl/crypt-dsa dev-perl/Crypt-DSA
+move dev-perl/crypt-idea dev-perl/Crypt-IDEA
+move dev-perl/crypt-random dev-perl/Crypt-Random
+move dev-perl/crypt-primes dev-perl/Crypt-Primes
+move dev-perl/crypt-rsa dev-perl/Crypt-RSA

@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -19,7 +19,7 @@ RDEPEND="
 	virtual/perl-MIME-Base64
 	dev-perl/PAR-Dist
 	virtual/perl-IO-Compress
-	dev-perl/crypt-cbc
+	dev-perl/Crypt-CBC
 	dev-perl/Crypt-DES
 	dev-perl/Crypt-Blowfish
 	dev-perl/Crypt-RIPEMD160
@@ -29,11 +29,11 @@ RDEPEND="
 	dev-perl/data-buffer
 	dev-perl/digest-md2
 	>=dev-perl/math-pari-2.010603
-	dev-perl/crypt-random
-	dev-perl/crypt-primes
-	dev-perl/crypt-des-ede3
-	dev-perl/crypt-dsa
-	dev-perl/crypt-rsa
+	dev-perl/Crypt-Random
+	dev-perl/Crypt-Primes
+	dev-perl/Crypt-DES_EDE3
+	dev-perl/Crypt-DSA
+	dev-perl/Crypt-RSA
 	dev-perl/Convert-ASN1
 	dev-perl/convert-pem
 	dev-perl/Crypt-OpenPGP

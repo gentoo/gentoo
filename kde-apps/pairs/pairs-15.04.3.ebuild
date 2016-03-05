@@ -9,7 +9,7 @@ inherit kde4-base
 
 DESCRIPTION="KDE memory and pairs game"
 HOMEPAGE="https://edu.kde.org/applications/miscellaneous/pairs"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="debug"
 
 DEPEND=""
