@@ -9,7 +9,7 @@ inherit kde4-base
 
 DESCRIPTION="KDE: A dialer and front-end to pppd"
 HOMEPAGE="https://www.kde.org/applications/internet/kppp"
-KEYWORDS=" ~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="debug"
 
 RDEPEND="
