@@ -4742,7 +4742,7 @@ dev-libs/libuv 1.4.2 1.5.0 1.6.1 1.7.0 1.7.5 1.8.0: Cross-platform asychronous I
 dev-libs/libverto 0.2.5 0.2.5-r1 0.2.6: Main event loop abstraction library
 dev-libs/libvformat 1.13-r1 1.13-r2: Library to read and write vcard files
 dev-libs/libvolume_id 0.81.0 0.81.1: Library to provide file system information
-dev-libs/libvterm 0.0_pre20151022: An abstract library implementation of a VT220/xterm/ECMA-48 terminal emulator
+dev-libs/libvterm 0.0_pre20151022 0.0_pre20160305: An abstract library implementation of a VT220/xterm/ECMA-48 terminal emulator
 dev-libs/libvterm-neovim 0.0_pre20150309 0.0_pre20150621: An abstract library implementation of a VT220/xterm/ECMA-48 terminal emulator
 dev-libs/libwacom 0.11 0.15 0.17 0.18: Library for identifying Wacom tablets and their model-specific features
 dev-libs/libwapcaplet 0.2.2-r1 0.3.0: string internment library, written in C
@@ -18526,7 +18526,7 @@ x11-terms/mate-terminal 1.8.0 1.8.1 1.10.2: The MATE Terminal
 x11-terms/mlterm 3.4.5 3.6.0 3.6.3: A multi-lingual terminal emulator
 x11-terms/mrxvt 0.5.4: Multi-tabbed rxvt clone with XFT, transparent background and CJK support
 x11-terms/multi-aterm 0.2.1-r1: Terminal emulator with transparency support as well as rxvt backwards compatibility with tab support
-x11-terms/pangoterm 0.0_pre20150323 0.0_pre20150913 0.0_pre20151022: A GTK/Pango-based terminal that uses libvterm to provide terminal emulation
+x11-terms/pangoterm 0.0_pre20150323 0.0_pre20150913 0.0_pre20151022 0.0_pre20160305: A GTK/Pango-based terminal that uses libvterm to provide terminal emulation
 x11-terms/qterminal 0.6.0: Qt-based multitab terminal emulator
 x11-terms/root-tail 1.2-r3: Terminal to display (multiple) log files on the root window
 x11-terms/roxterm 2.6.3 2.6.5 2.9.3-r1 3.1.5: A terminal emulator designed to integrate with the ROX environment
