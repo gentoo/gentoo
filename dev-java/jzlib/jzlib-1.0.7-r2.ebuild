@@ -21,7 +21,7 @@ RDEPEND="
 	>=virtual/jre-1.6"
 
 DEPEND="
-	app-arch/unzip
+	source? ( app-arch/zip )
 	>=virtual/jdk-1.6"
 
 S="${WORKDIR}/${P}"
