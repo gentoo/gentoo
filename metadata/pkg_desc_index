@@ -5642,11 +5642,11 @@ dev-perl/HTML-SimpleParse 0.120.0-r1: A bare-bones HTML parser, similar to HTML:
 dev-perl/HTML-Strip 1.60.0-r1 2.90.0: Extension for stripping HTML markup from text
 dev-perl/HTML-Table 2.08a-r1: produces HTML tables
 dev-perl/HTML-TableContentParser 0.130.0: Parse the content of tables in HTML
-dev-perl/HTML-TableExtract 2.110.0-r1 2.130.0: The Perl Table-Extract Module
-dev-perl/HTML-TableParser 0.380.0-r1 0.400.0: Extract data from an HTML table
+dev-perl/HTML-TableExtract 2.130.0: The Perl Table-Extract Module
+dev-perl/HTML-TableParser 0.400.0: Extract data from an HTML table
 dev-perl/HTML-TagFilter 1.30.0: A fine-grained html-filter, xss-blocker and mailto-obfuscator
 dev-perl/HTML-Tagset 3.200.0-r1: Data tables useful in parsing HTML
-dev-perl/HTML-Template 2.940.0 2.950.0: A Perl module to use HTML Templates
+dev-perl/HTML-Template 2.950.0: A Perl module to use HTML Templates
 dev-perl/HTML-Template-Expr 0.70.0-r1: HTML::Template extension adding expression support
 dev-perl/HTML-Template-JIT 0.50.0-r1: a just-in-time compiler for HTML::Template
 dev-perl/HTML-Template-Pro 0.951.0: Perl/XS module to use HTML Templates from CGI scripts
@@ -5656,14 +5656,14 @@ dev-perl/HTTP-Body 1.220.0: HTTP Body Parser
 dev-perl/HTTP-BrowserDetect 1.500.0 1.770.0 2.40.0 2.80.0: Determine Web browser, version, and platform from an HTTP user agent string
 dev-perl/HTTP-Cache-Transparent 1.100.0-r1: Cache the result of http get-requests persistently
 dev-perl/HTTP-Cookies 6.10.0: Storage of cookies
-dev-perl/HTTP-DAV 0.470.0-r1 0.480.0: A WebDAV client library for Perl5
+dev-perl/HTTP-DAV 0.480.0: A WebDAV client library for Perl5
 dev-perl/HTTP-Daemon 6.10.0-r1: Base class for simple HTTP servers
 dev-perl/HTTP-Date 6.20.0-r1: Date conversion for HTTP date formats
 dev-perl/HTTP-Headers-Fast 0.200.0: Faster implementation of HTTP::Headers
 dev-perl/HTTP-Message 6.30.0-r1 6.110.0: Base class for Request/Response
 dev-perl/HTTP-Negotiate 6.10.0: HTTP content negotiation
 dev-perl/HTTP-Response-Encoding 0.60.0-r1: Adds encoding() to HTTP::Response
-dev-perl/HTTP-Server-Simple 0.440.0-r1 0.510.0: Lightweight HTTP Server
+dev-perl/HTTP-Server-Simple 0.510.0: Lightweight HTTP Server
 dev-perl/HTTP-Server-Simple-Mason 0.140.0-r1: An abstract baseclass for a standalone mason server
 dev-perl/HTTPD-User-Manage 1.660.0-r1: Perl module for managing access control of web servers
 dev-perl/Hash-Merge 0.200.0: Merges arbitrarily deep hashes into a single hash
@@ -5685,8 +5685,8 @@ dev-perl/IO-HTML 1.1.0: Open an HTML file with automatic charset detection
 dev-perl/IO-Interactive 1.21.0: Utilities for interactive I/O
 dev-perl/IO-Interface 1.60.0-r1 1.90.0: Perl extension for access to network card configuration information
 dev-perl/IO-LockedFile 0.230.0-r1: Supply object methods for locking files
-dev-perl/IO-Multiplex 1.130.0-r1 1.160.0: Manage IO on many file handles
-dev-perl/IO-Pager 0.310.0-r1 0.350.0: Select a pager, optionally pipe it output if destination is a TTY
+dev-perl/IO-Multiplex 1.160.0: Manage IO on many file handles
+dev-perl/IO-Pager 0.350.0: Select a pager, optionally pipe it output if destination is a TTY
 dev-perl/IO-Pipely 0.005.0: Portably create pipe() or pipe-like handles, one way or another
 dev-perl/IO-Prompt 0.997.3: Interactively prompt for user input
 dev-perl/IO-SessionData 1.30.0: Session data support module for SOAP::Lite
@@ -5700,7 +5700,7 @@ dev-perl/IO-Tty 1.120.0: IO::Tty and IO::Pty modules for Perl
 dev-perl/IO-Util 1.500.0-r1: A selection of general-utility IO function
 dev-perl/IO-stringy 2.110.0-r1 2.111.0: A Perl module for I/O on in-core objects like strings and arrays
 dev-perl/IP-Anonymous 0.40.0-r1: Perl port of Crypto-PAn to provide anonymous IP addresses
-dev-perl/IPC-Run 0.920.0-r1 0.940.0: system() and background procs w/ piping, redirs, ptys
+dev-perl/IPC-Run 0.940.0: system() and background procs w/ piping, redirs, ptys
 dev-perl/IPC-Run3 0.45.0-r1 0.48.0: Run a subprocess in batch mode (a la system)
 dev-perl/IPC-ShareLite 0.170.0-r1: IPC::ShareLite module for perl
 dev-perl/IPC-Shareable 0.610.0-r1: Share Perl variables between processes
@@ -5709,13 +5709,13 @@ dev-perl/IPC-System-Simple 1.21-r1 1.250.0: Run commands simply, with detailed d
 dev-perl/IPTables-libiptc 0.520.0: Perl extension for iptables libiptc library
 dev-perl/Ima-DBI 0.350.0-r1: Add contextual fetches to DBI
 dev-perl/Image-Imlib2 2.30.0-r1: Interface to the Imlib2 image library
-dev-perl/Image-Info 1.360.0 1.380.0: The Perl Image-Info Module
+dev-perl/Image-Info 1.380.0: The Perl Image-Info Module
 dev-perl/Image-Scale 0.110.0: Fast, high-quality fixed-point image resizing
-dev-perl/Image-Size 3.232.0-r1 3.300.0: A library to extract height/width from images
-dev-perl/Import-Into 1.2.0 1.2.5: Import packages into other packages
-dev-perl/Inline 0.500.0-r1 0.790.0 0.800.0: Write Perl subroutines in other languages
+dev-perl/Image-Size 3.300.0: A library to extract height/width from images
+dev-perl/Import-Into 1.2.5: Import packages into other packages
+dev-perl/Inline 0.500.0-r1 0.800.0: Write Perl subroutines in other languages
 dev-perl/Inline-C 0.760.0: C Language Support for Inline
-dev-perl/Inline-Files 0.680.0-r1 0.690.0: Multiple virtual files in a single file
+dev-perl/Inline-Files 0.690.0: Multiple virtual files in a single file
 dev-perl/Inline-Python 0.490.0-r1: Easy implementation of Python extensions
 dev-perl/JSON 2.590.0-r1 2.900.0: JSON (JavaScript Object Notation) encoder/decoder
 dev-perl/JSON-Any 1.380.0 1.390.0: Wrapper Class for the various JSON classes (DEPRECATED)
