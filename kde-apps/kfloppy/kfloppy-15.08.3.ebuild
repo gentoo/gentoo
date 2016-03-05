@@ -12,5 +12,5 @@ HOMEPAGE="
 	https://www.kde.org/applications/utilities/kfloppy/
 	https://utils.kde.org/projects/kfloppy/
 "
-KEYWORDS=" ~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="debug"
