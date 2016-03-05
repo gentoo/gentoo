@@ -4256,7 +4256,7 @@ dev-java/velocity 1.7 1.7-r1 1.7-r2: Java framework for easy creation/rendering 
 dev-java/velocity-dvsl 1.0: Declarative Velocity Style Language.
 dev-java/vldocking 3.0.5: Docking solution for Java Swing
 dev-java/werken-xpath 0.9.4_beta-r4: W3C XPath-Rec implementation for DOM4J
-dev-java/ws-commons-util 1.0.1 1.0.1-r1: Utility classes that allow high performance XML processing based on SAX
+dev-java/ws-commons-util 1.0.1-r1: Utility classes that allow high performance XML processing based on SAX
 dev-java/wsdl4j 1.6.2: Web Services Description Language for Java Toolkit (WSDL4J)
 dev-java/wstx 3.2.9-r1: Woodstox is a high-performance validating namespace-aware XML-processor
 dev-java/xalan 2.7.2: Apache's XSLT processor for transforming XML documents into HTML, text, or other XML document types
