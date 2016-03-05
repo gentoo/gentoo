@@ -7,5 +7,5 @@ EAPI=5
 inherit kde4-base
 
 DESCRIPTION="Library to support mobipocket ebooks"
-KEYWORDS=" ~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="debug"
