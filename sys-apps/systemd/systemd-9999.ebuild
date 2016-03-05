@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/systemd/systemd.git"
@@ -12,7 +12,7 @@ else
 	KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 fi
 
-inherit autotools bash-completion-r1 linux-info multilib \
+inherit autotools bash-completion-r1 linux-info \
 	multilib-minimal pam systemd toolchain-funcs udev user
 
 DESCRIPTION="System and service manager for Linux"
@@ -144,9 +144,15 @@ src_unpack() {
 src_prepare() {
 	# Bug 463376
 	sed -i -e 's/GROUP="dialout"/GROUP="uucp"/' rules/*.rules || die
-	epatch "${FILESDIR}/218-Dont-enable-audit-by-default.patch"
-	epatch "${FILESDIR}/228-noclean-tmp.patch"
-	epatch_user
+
+	local PATCHES=(
+		"${FILESDIR}/218-Dont-enable-audit-by-default.patch"
+		"${FILESDIR}/228-noclean-tmp.patch"
+	)
+	[[ -d "${WORKDIR}"/patches ]] && PATCHES+=( "${WORKDIR}"/patches )
+
+	default
+
 	eautoreconf
 }
 
