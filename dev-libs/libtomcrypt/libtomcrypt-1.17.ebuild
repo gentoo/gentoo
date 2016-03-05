@@ -22,4 +22,5 @@ RDEPEND=""
 src_install() {
 	# avoid PDF regen
 	emake NODOCS=1 DESTDIR="${D}" install
+	cp doc/crypt.pdf "${D}/usr/share/doc/libtomcrypt/pdf"
 }
