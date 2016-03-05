@@ -8,4 +8,4 @@ RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/libtom/libtomcrypt/releases/download/1.17/crypt-1.17.tar.bz2
 _eclass_exported_funcs=src_install:-
-_md5_=b82b18a45da266b2932391af12a40236
+_md5_=a2c5efa99b0f82814a9b00e8cc6b10af
