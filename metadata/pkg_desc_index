@@ -3854,7 +3854,7 @@ dev-java/gnu-crypto 2.0.1-r2 2.0.1-r3: GNU Crypto cryptographic primitives for J
 dev-java/gnu-hylafax 1.0.3-r2: Java API designed to implement the client protocol portion of the hfaxd server
 dev-java/gnu-jaf 1.1.1: GNU implementation of the JavaBeans Activation Framework
 dev-java/gnu-javamail 1.0-r2: GNU implementation of the Javamail API
-dev-java/gnu-regexp 1.1.4-r2: GNU regular expression package for Java
+dev-java/gnu-regexp 1.1.4-r2 1.1.4-r3: GNU regular expression package for Java
 dev-java/groovy 1.7.5 1.8.5-r1 2.4.5: A multi-faceted language for the Java platform
 dev-java/gson 2.3.1: Java library to convert JSON to Java objects and vice-versa
 dev-java/guava 07 13.0.1 13.0.1-r3 14.0.1 15.0 16.0.1 17.0 18.0: A collection of Google's core Java libraries
@@ -4048,13 +4048,13 @@ dev-java/jstun 0.7.3: Java-based STUN implementation
 dev-java/jta 1.0.1-r1 1.1: The Java Transaction API
 dev-java/jtds 1.2.5-r1 1.3.1: jTDS - SQL Server and Sybase JDBC driver
 dev-java/jtidy 0_pre20010801-r1 1.0: Tidy is a Java port of HTML Tidy , a HTML syntax checker and pretty printer
-dev-java/jtreemap 1.1.0: Java, open-source library for treemapping
+dev-java/jtreemap 1.1.0 1.1.0-r1: Java, open-source library for treemapping
 dev-java/juel 2.1.0 2.1.0-r1: JUEL is an implementation of the Unified Expression Language (EL), a part of JSP 2.1 (JSR-245)
 dev-java/jump 0.5: JUMP Ultimate Math Package (JUMP) is a Java-based extensible high-precision math package
 dev-java/jung 1.7.6 1.7.6-r1: The Java Universal Network/Graph Framework
 dev-java/junit 3.8.2-r1 4.10 4.11 4.12-r1: Simple framework to write repeatable tests
 dev-java/junit-addons 1.4-r1: JUnit-addons is a collection of helper classes for JUnit
-dev-java/junitperf 1.9.1-r1: Simple framework to write repeatable tests
+dev-java/junitperf 1.9.1-r1 1.9.1-r2: Simple framework to write repeatable tests
 dev-java/junrar 0.6: Unrar java implementation
 dev-java/jupidator 0.6.0: Jupidator is a library/tool in Java for automatic updating of applications
 dev-java/jusb 0.4.4-r1: jUSB provides a Free Software Java API for USB
@@ -4163,10 +4163,10 @@ dev-java/resin-servlet-api 3.0.25 3.1.12 4.0.26 4.0.27 4.0.44 4.0.46: Resin Serv
 dev-java/rhino 1.7.7-r1: An open-source implementation of JavaScript written in Java
 dev-java/rngom 20100718-r1: RNGOM is an open-source Java library for parsing RELAX NG grammars
 dev-java/rome 0.9-r2: Open source Atom/RSS Java utilities that make it easy to work in Java with most syndication formats
-dev-java/rundoc 0.11: A Ant helper task for keeping documentation in source files
+dev-java/rundoc 0.11 0.11-r1: an Apache ANT optional task that extracts snippets of code from text files
 dev-java/rxtx 2.2_pre2 2.2_pre2-r1: Native lib providing serial and parallel communication for Java
 dev-java/saaj 1.3.19-r1: SOAP with Attachments API for Java
-dev-java/sablecc 3.2 3.7: Java based compiler / parser generator
+dev-java/sablecc 3.7: Java based compiler / parser generator
 dev-java/sablecc-anttask 1.1.0-r1: Ant task for sablecc
 dev-java/sac 1.3-r1 1.3-r2: SAC is a standard interface for CSS parser
 dev-java/sat4j-core 2.2.0 2.3.1-r1: Lightweight constraint programming with a SAT solver
@@ -4190,7 +4190,7 @@ dev-java/slf4j-simple 1.7.7: Simple Logging Facade for Java
 dev-java/smack 2.2.1: An Open Source XMPP (Jabber) client library for instant messaging and presence
 dev-java/snakeyaml 1.16: A YAML 1.1 parser and emitter for Java 5
 dev-java/snappy 1.0.3_rc3 1.1.0.1: Snappy compressor/decompressor for Java
-dev-java/snip 0.11: an Apache ANT optional task that extracts snippets of code from text files
+dev-java/snip 0.11 0.11-r1: an Apache ANT optional task that extracts snippets of code from text files
 dev-java/soylatte-jdk-bin 1.0.3 7: Landon Fuller's OpenJDK 7 for Mac OS X 10.5/PPC
 dev-java/spice-jndikit 1.2: JNDI Kit is a toolkit designed to help with the construction of JNDI providers
 dev-java/spin 1.5-r1: Transparent threading solution for non-freezing Swing applications
@@ -17007,7 +17007,7 @@ sys-kernel/linux-firmware 20150206 20150320 20150812 20151207 99999999: Linux fi
 sys-kernel/linux-headers 2.4.33.3 2.4.36 3.18 3.19 4.0 4.1 4.2 4.3 4.4: Linux system headers
 sys-kernel/mips-sources 4.2.8 4.3.3: Linux-Mips GIT sources for MIPS-based machines, dated 20151126
 sys-kernel/openvz-sources 2.6.32.108.5 2.6.32.108.8 2.6.32.111.12 2.6.32.112.15 2.6.32.113.11: Kernel sources with OpenVZ patchset
-sys-kernel/pf-sources 2.6.31_p9 2.6.32_p16 2.6.33_p4 2.6.34_p7 2.6.35_p11 2.6.36_p6 2.6.37_p6 2.6.38_p8 2.6.39_p4 3.0.7-r2 3.1.6-r2 3.2.7 3.3.6 3.4.6 3.5.4 3.6.12 3.7.5 3.8.2 3.9.5 3.10.1 3.11.4 3.12.4 3.13.3 3.14_p4 3.15_p5 3.16_p4 3.17_p4 3.19_p1 4.0_p6 4.1_p1 4.2_p3: Linux kernel fork with new features, including the -ck patchset (BFS), BFQ, TuxOnIce and UKSM
+sys-kernel/pf-sources 2.6.31_p9 2.6.32_p16 2.6.33_p4 2.6.34_p7 2.6.35_p11 2.6.36_p6 2.6.37_p6 2.6.38_p8 2.6.39_p4 3.0.7-r2 3.1.6-r2 3.2.7 3.3.6 3.4.6 3.5.4 3.6.12 3.7.5 3.8.2 3.9.5 3.10.1 3.11.4 3.12.4 3.13.3 3.14_p4 3.15_p5 3.16_p4 3.17_p4 3.19_p1 4.0_p6 4.1_p1 4.2_p3 4.4_p5: Linux kernel fork with new features, including the -ck patchset (BFS), BFQ, TuxOnIce and UKSM
 sys-kernel/raspberrypi-image 4.0.4_pre-r20150523 4.1.17_pre-r20160209 4.1.17_p20160209 4.4.1_pre-r20160209: Raspberry PI precompiled kernel and modules
 sys-kernel/raspberrypi-sources 3.10.1_pre-r20130719 3.10.9999 3.12.9999 3.14.9999 3.18.9999 4.1.9999 4.4.9999: Raspberry PI kernel sources
 sys-kernel/rsbac-sources 3.14.28: RSBAC kernel sources (kernel series 3.14)
