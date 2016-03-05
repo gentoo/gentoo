@@ -1858,7 +1858,7 @@ app-misc/reptyr 0.6.2: A utility to attach a running program to a new terminal
 app-misc/resolve-march-native 0.9: Resolve GCC flag -march=native
 app-misc/rioutil 1.5.0-r2: Command line tool for transfering mp3s to and from a Rio 600, 800, Rio Riot, and Nike PSA/Play
 app-misc/rl 0.2.7: Randomize lines from text files or stdin
-app-misc/rlwrap 0.37 0.41 0.42: GNU readline wrapper
+app-misc/rlwrap 0.42: GNU readline wrapper
 app-misc/roadnav 0.19-r1: Roadnav is a street map application with routing and GPS support
 app-misc/rox-filer 2.11: ROX-Filer a drag and drop spatial file manager
 app-misc/run-mailcap 3.39_p1 3.52_p1: Execute programs via entries in the mailcap file
@@ -9487,7 +9487,7 @@ dev-util/diffuse 0.4.6 0.4.7-r1 0.4.8: A graphical tool to compare and merge tex
 dev-util/dirdiff 2.1-r2: A tool for differing and merging directories
 dev-util/dissembler 0.9: polymorphs bytecode to a printable ASCII string
 dev-util/dmake 4.12.2: Improved make
-dev-util/dogtail 0.9.0-r2: GUI test tool and automation framework using accessibility framework
+dev-util/dogtail 0.9.0-r2 0.9.9: GUI test tool and automation framework using accessibility framework
 dev-util/dropwatch 1.4-r1: A utility to interface to the kernel to monitor for dropped network packets
 dev-util/duma 2.5.13 2.5.15-r1: DUMA (Detect Unintended Memory Access) is a memory debugging library
 dev-util/dwarves 1.10_p20140618 9999: pahole (Poke-a-Hole) and other DWARF2 utilities
