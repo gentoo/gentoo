@@ -1,0 +1,64 @@
+From 069a17e22a73ecff686b650ba158a292cc508cb5 Mon Sep 17 00:00:00 2001
+From: Gilles Dartiguelongue <eva@gentoo.org>
+Date: Sat, 5 Mar 2016 19:38:08 +0100
+Subject: [PATCH] Load resources from well-known location
+
+Using __file__ does not work with Gentoo's dev-python/python-exec
+wrapping. Better use hard-coded paths.
+
+Also adds support for prefix.
+---
+ sniff/sniff | 26 +++++++++-----------------
+ 1 file changed, 9 insertions(+), 17 deletions(-)
+
+diff --git a/sniff/sniff b/sniff/sniff
+index a83a1c2..ff43f38 100755
+--- a/sniff/sniff
++++ b/sniff/sniff
+@@ -47,22 +47,18 @@ class SniffApp(object):
+         if os.path.exists('sniff.ui'):
+             self.builder.add_from_file('sniff.ui')
+         else:
+-            import os
+-            path = os.path.abspath(
+-                os.path.join(__file__, os.path.pardir, os.path.pardir))
+-            if path == '/':  # in case the path is /bin/sniff
+-                path = '/usr'
+-            self.builder.add_from_file(path + '/share/dogtail/glade/sniff.ui')
++            self.builder.add_from_file(os.path.join(
++                @EPREFIX_USR@,
++                'share/dogtail/glade/sniff.ui')
++            )
+         self.app = self.builder.get_object(self.appName)
+         try:
+             self.app.set_icon_from_file('../icons/dogtail-head.svg')
+         except Exception:
+-            import os
+-            path = os.path.abspath(
+-                os.path.join(__file__, os.path.pardir, os.path.pardir))
+-            if path is '/':
+-                path = '/usr'
+-            self.app.set_icon_from_file(os.path.join(path, 'share/icons/hicolor/scalable/apps/dogtail-head.svg'))
++            self.app.set_icon_from_file(os.path.join(
++                @EPREFIX_USR@,
++                'share/icons/hicolor/scalable/apps/dogtail-head.svg')
++            )
+         self.setUpWidgets()
+         self.connectSignals()
+         self.app.show_all()
+@@ -650,11 +646,7 @@ def loadIcon(iconName):
+         pixbuf = GdkPixbuf.Pixbuf.new_from_file('icons/' + iconName)
+     except GObject.GError:
+         import os
+-        path = os.path.abspath(
+-            os.path.join(__file__, os.path.pardir, os.path.pardir))
+-        if path == '/':
+-                path = '/usr'
+-        iconName = os.path.join(path, 'share/dogtail/icons/', iconName)
++        iconName = os.path.join(@EPREFIX_USR@, 'share/dogtail/icons/', iconName)
+         pixbuf = GdkPixbuf.Pixbuf.new_from_file(iconName)
+     return pixbuf
+ 
+-- 
+2.7.2
+
