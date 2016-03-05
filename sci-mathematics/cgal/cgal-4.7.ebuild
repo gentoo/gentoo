@@ -2,28 +2,25 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-CMAKE_BUILD_TYPE=Release
-
-inherit multilib cmake-utils
+inherit cmake-utils
 
 MY_P=CGAL-${PV}
-PID=34900
-DPID=34904
 
 DESCRIPTION="C++ library for geometric algorithms and data structures"
-HOMEPAGE="http://www.cgal.org/ https://gforge.inria.fr/projects/cgal/"
+HOMEPAGE="http://www.cgal.org/"
 SRC_URI="
-	http://gforge.inria.fr/frs/download.php/${PID}/${MY_P}.tar.xz
-	doc? ( http://gforge.inria.fr/frs/download.php/${DPID}/${MY_P}-doc_html.tar.xz -> ${MY_P}-doc_html-1.tar.xz )"
+	https://github.com/CGAL/cgal/releases/download/releases%2F${MY_P}/${MY_P}.tar.xz -> ${P}.tar.xz
+	doc? ( https://github.com/CGAL/cgal/releases/download/releases%2F${MY_P}/${MY_P}-doc_html.tar.xz -> ${P}-doc_html-1.tar.xz )"
 
 LICENSE="LGPL-3 GPL-3 Boost-1.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
-IUSE="doc examples +gmp mpfi qt4"
+IUSE="doc examples +gmp mpfi ntl qt5"
 
 RDEPEND="
+	>=dev-cpp/eigen-3.1
 	dev-libs/boost:=
 	dev-libs/mpfr:0
 	sys-libs/zlib
@@ -31,19 +28,23 @@ RDEPEND="
 	virtual/glu
 	virtual/opengl
 	gmp? ( dev-libs/gmp[cxx] )
-	qt4? (
-		dev-qt/qtgui:4
-		dev-qt/qtopengl:4
-		dev-qt/qtsvg:4
+	qt5? (
+		dev-qt/qtcore:5
+		dev-qt/qtgui:5
+		dev-qt/qtopengl:5
+		dev-qt/qtsvg:5
+		dev-qt/qtwidgets:5
 	)
-	mpfi? ( sci-libs/mpfi )"
+	mpfi? ( sci-libs/mpfi )
+	ntl? ( dev-libs/ntl )"
 DEPEND="${RDEPEND}
 	app-arch/xz-utils
 	virtual/pkgconfig"
 
 S="${WORKDIR}/${MY_P}"
-
-DOCS="AUTHORS CHANGES* README"
+PATCHES=(
+	"${FILESDIR}/${P}-fix-buildsystem.patch"
+)
 
 src_prepare() {
 	cmake-utils_src_prepare
@@ -57,19 +58,24 @@ src_configure() {
 		-DCGAL_INSTALL_LIB_DIR=$(get_libdir)
 		-DWITH_CGAL_Qt3=OFF
 		-DWITH_LEDA=OFF
-		$(cmake-utils_use_with gmp)
-		$(cmake-utils_use_with gmp GMPXX)
-		$(cmake-utils_use_with qt4 CGAL_Qt4)
-		$(cmake-utils_use_with mpfi)
+		-DWITH_Eigen3=ON
+		-DWITH_ZLIB=ON
+		-DWITH_GMP="$(usex gmp)"
+		-DWITH_GMPXX="$(usex gmp)"
+		-DWITH_CGAL_Qt5="$(usex qt5)"
+		-DWITH_MPFI="$(usex mpfi)"
+		-DWITH_NTL="$(usex ntl)"
 	)
 	cmake-utils_src_configure
 }
 
 src_install() {
-	use doc && HTML_DOCS=( "${WORKDIR}"/doc_html/. )
 	cmake-utils_src_install
 	if use examples; then
-		insinto /usr/share/doc/${PF}
-		doins -r examples demo
+		dodoc -r examples demo
+	fi
+	if use doc; then
+		docinto html/
+		dodoc -r "${WORKDIR}"/doc_html/*
 	fi
 }
