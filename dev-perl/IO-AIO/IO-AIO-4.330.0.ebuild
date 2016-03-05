@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="Asynchronous Input/Output"
 
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc ~x86"
 IUSE=""
 # Tests trigger stack overflow in sandbox code, see bug 553918
 RESTRICT="test"
