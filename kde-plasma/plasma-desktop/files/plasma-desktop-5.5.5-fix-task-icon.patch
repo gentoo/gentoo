@@ -1,0 +1,49 @@
+From: David Rosca <nowrep@gmail.com>
+Date: Fri, 19 Feb 2016 15:20:00 +0000
+Subject: TaskManager: Don't use Plasma theme icons in task icon
+X-Git-Tag: v5.5.95
+X-Git-Url: http://quickgit.kde.org/?p=plasma-desktop.git&a=commitdiff&h=310cffc34156b094c0c68d5002ecd2d2936ac546
+---
+TaskManager: Don't use Plasma theme icons in task icon
+
+Summary:
+Also disable animation for icon in tooltip (normal Plasma tooltips
+no longer have animated icon too).
+
+BUG: 359387
+
+Reviewers: #plasma, hein
+
+Reviewed By: hein
+
+Subscribers: plasma-devel
+
+Projects: #plasma
+
+Differential Revision: https://phabricator.kde.org/D991
+---
+
+
+--- a/applets/taskmanager/package/contents/ui/Task.qml
++++ b/applets/taskmanager/package/contents/ui/Task.qml
+@@ -293,6 +293,7 @@
+ 
+             active: task.containsMouse || task.showingContextMenu
+             enabled: true
++            usesPlasmaTheme: false
+ 
+             source: model.DecorationRole
+ 
+
+--- a/applets/taskmanager/package/contents/ui/ToolTipDelegate.qml
++++ b/applets/taskmanager/package/contents/ui/ToolTipDelegate.qml
+@@ -334,6 +334,8 @@
+                 x: _s
+                 width: units.iconSizes.desktop
+                 height: width
++                animated: false
++                usesPlasmaTheme: false
+                 source: icon
+             }
+         }
+
