@@ -25,7 +25,8 @@ RDEPEND="
 
 DEPEND="
 	${CDEPEND}
-	>=virtual/jdk-1.6"
+	>=virtual/jdk-1.6
+	source? ( app-arch/zip )"
 
 S="${WORKDIR}/${P}"
 
