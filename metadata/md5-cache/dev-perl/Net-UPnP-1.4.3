@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=virtual/perl-version dev-perl/Module-Build test? ( virtual/perl-Test-Simple ) dev-lang/perl:=
+DESCRIPTION=Perl extension for UPnP
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/Net-UPnP/
+IUSE=examples test
+KEYWORDS=~amd64 ~ppc ~x86 ~x86-solaris
+LICENSE=BSD
+RDEPEND=virtual/perl-version dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/S/SK/SKONNO/Net-UPnP-1.4.3.tar.gz
+_eclass_exported_funcs=src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:-
+_eclasses_=multiprocessing	e32940a7b2a9992ad217eccddb84d548	perl-functions	15aff0b9cba2282790142295ceb6be0c	perl-module	b2108b3c85ac7a6a6a9b035b54f6813c
+_md5_=0ecd344df3c4a3900d8d971a5665d9a7

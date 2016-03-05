@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=>=virtual/perl-libnet-1.70.300 virtual/perl-ExtUtils-MakeMaker dev-lang/perl:=
+DESCRIPTION=interact with TELNET port or other TCP ports in Perl
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/Net-Telnet/
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~ppc-aix ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=>=virtual/perl-libnet-1.70.300 dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/J/JR/JROGERS/Net-Telnet-3.04.tar.gz
+_eclass_exported_funcs=src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
+_eclasses_=multiprocessing	e32940a7b2a9992ad217eccddb84d548	perl-functions	15aff0b9cba2282790142295ceb6be0c	perl-module	b2108b3c85ac7a6a6a9b035b54f6813c
+_md5_=43715f5c0eb4bcbdd2855f66bf78b0e4
