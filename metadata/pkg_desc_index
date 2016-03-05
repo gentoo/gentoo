@@ -4620,7 +4620,7 @@ dev-libs/libgaminggear 0.10.1 0.11.1: Provides functionality for gaming input de
 dev-libs/libgcrypt 1.5.4-r1 1.5.4-r2 1.5.4-r101 1.5.5 1.6.3-r4 1.6.3-r5 1.6.4 1.6.5: General purpose crypto library based on the code used in GnuPG
 dev-libs/libgdata 0.17.3 0.17.4 0.17.4-r1: GLib-based library for accessing online service APIs using the GData protocol
 dev-libs/libgee 0.6.7 0.6.8 0.14.0 0.16.1 0.18.0: GObject-based interfaces and classes for commonly used data structures
-dev-libs/libgit2 0.20.0-r1 0.21.5 0.22.3 0.23.2-r1 0.23.3 0.23.4 9999: A linkable library for Git
+dev-libs/libgit2 0.20.0-r1 0.21.5 0.22.3 0.23.2-r1 0.23.3 0.23.4 0.24.0 9999: A linkable library for Git
 dev-libs/libgit2-glib 0.22.8 0.23.8 0.23.10: Git library for GLib
 dev-libs/libgpg-error 1.13 1.18 1.19 1.20 1.21: Contains error handling functions used by GnuPG software
 dev-libs/libgringotts 1.2.1: Needed by Gringotts
@@ -14685,7 +14685,7 @@ net-misc/suite3270 3.3.15_p9 3.4_p9 3.4_p10: Complete 3270 access package
 net-misc/switzerland 0.1.0: Network Testing Tool
 net-misc/sx 1.2 2.0: Skylable SX - a distributed object-storage software for data clusters
 net-misc/taptap 1.0: A program to link two /dev/net/tun to form virtual ethernet
-net-misc/taylor-uucp 1.07-r2: Taylor UUCP
+net-misc/taylor-uucp 1.07-r2 1.07-r3: Taylor UUCP
 net-misc/tcpsound 0.3.1-r1: Play sounds in response to network traffic
 net-misc/teamviewer 9.0.32150 10.0.41499-r1 11.0.53191 11.0.53191-r1: All-In-One Solution for Remote Access and Support over the Internet
 net-misc/telnet-bsd 1.2-r1: Telnet and telnetd ported from OpenBSD with IPv6 support
