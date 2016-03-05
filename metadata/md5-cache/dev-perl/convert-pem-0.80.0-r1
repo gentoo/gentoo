@@ -1,13 +1,13 @@
 DEFINED_PHASES=compile configure install prepare test unpack
-DEPEND=dev-perl/Class-ErrorHandler dev-perl/Convert-ASN1 dev-perl/crypt-des-ede3 virtual/perl-Digest-MD5 virtual/perl-MIME-Base64 dev-lang/perl:=[-build(-)]
+DEPEND=dev-perl/Class-ErrorHandler dev-perl/Convert-ASN1 dev-perl/Crypt-DES_EDE3 virtual/perl-Digest-MD5 virtual/perl-MIME-Base64 dev-lang/perl:=[-build(-)]
 DESCRIPTION=Read/write encrypted ASN.1 PEM files
 EAPI=5
 HOMEPAGE=http://search.cpan.org/dist/Convert-PEM/
 KEYWORDS=alpha amd64 hppa ~mips ~ppc ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris
 LICENSE=|| ( Artistic GPL-1+ )
-RDEPEND=dev-perl/Class-ErrorHandler dev-perl/Convert-ASN1 dev-perl/crypt-des-ede3 virtual/perl-Digest-MD5 virtual/perl-MIME-Base64 dev-lang/perl:=[-build(-)]
+RDEPEND=dev-perl/Class-ErrorHandler dev-perl/Convert-ASN1 dev-perl/Crypt-DES_EDE3 virtual/perl-Digest-MD5 virtual/perl-MIME-Base64 dev-lang/perl:=[-build(-)]
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/B/BT/BTROTT/Convert-PEM-0.08.tar.gz
 _eclass_exported_funcs=src_unpack:perl-module src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
 _eclasses_=eutils	9d81603248f2ba3ec59124320d123e5e	multilib	3972ca401cf7dbb430df9995f5d8d580	multiprocessing	e32940a7b2a9992ad217eccddb84d548	perl-functions	15aff0b9cba2282790142295ceb6be0c	perl-module	b2108b3c85ac7a6a6a9b035b54f6813c	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	unpacker	1d149d9bda7723e740cfd28118f27813
-_md5_=edd7513bdff22f7afcd930c7607c4b68
+_md5_=dd920db06cfadaa7cb7dc09681632502

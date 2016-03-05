@@ -1,14 +1,14 @@
 DEFINED_PHASES=compile configure install prepare test unpack
-DEPEND=virtual/perl-MIME-Base64 dev-perl/PAR-Dist virtual/perl-IO-Compress dev-perl/crypt-cbc dev-perl/Crypt-DES dev-perl/Crypt-Blowfish dev-perl/Crypt-RIPEMD160 dev-perl/class-loader dev-perl/tie-encryptedhash dev-perl/convert-ascii-armour dev-perl/data-buffer dev-perl/digest-md2 >=dev-perl/math-pari-2.010603 dev-perl/crypt-random dev-perl/crypt-primes dev-perl/crypt-des-ede3 dev-perl/crypt-dsa dev-perl/crypt-rsa dev-perl/Convert-ASN1 dev-perl/convert-pem dev-perl/Crypt-OpenPGP app-crypt/gnupg test? ( dev-perl/IPC-Run ) dev-lang/perl:=[-build(-)]
+DEPEND=virtual/perl-MIME-Base64 dev-perl/PAR-Dist virtual/perl-IO-Compress dev-perl/Crypt-CBC dev-perl/Crypt-DES dev-perl/Crypt-Blowfish dev-perl/Crypt-RIPEMD160 dev-perl/class-loader dev-perl/tie-encryptedhash dev-perl/convert-ascii-armour dev-perl/data-buffer dev-perl/digest-md2 >=dev-perl/math-pari-2.010603 dev-perl/Crypt-Random dev-perl/Crypt-Primes dev-perl/Crypt-DES_EDE3 dev-perl/Crypt-DSA dev-perl/Crypt-RSA dev-perl/Convert-ASN1 dev-perl/convert-pem dev-perl/Crypt-OpenPGP app-crypt/gnupg test? ( dev-perl/IPC-Run ) dev-lang/perl:=[-build(-)]
 DESCRIPTION=Module signature file manipulation
 EAPI=5
 HOMEPAGE=http://search.cpan.org/dist/Module-Signature/
 IUSE=test
 KEYWORDS=amd64 x86 ~x86-solaris
 LICENSE=CC0-1.0
-RDEPEND=virtual/perl-MIME-Base64 dev-perl/PAR-Dist virtual/perl-IO-Compress dev-perl/crypt-cbc dev-perl/Crypt-DES dev-perl/Crypt-Blowfish dev-perl/Crypt-RIPEMD160 dev-perl/class-loader dev-perl/tie-encryptedhash dev-perl/convert-ascii-armour dev-perl/data-buffer dev-perl/digest-md2 >=dev-perl/math-pari-2.010603 dev-perl/crypt-random dev-perl/crypt-primes dev-perl/crypt-des-ede3 dev-perl/crypt-dsa dev-perl/crypt-rsa dev-perl/Convert-ASN1 dev-perl/convert-pem dev-perl/Crypt-OpenPGP app-crypt/gnupg dev-lang/perl:=[-build(-)]
+RDEPEND=virtual/perl-MIME-Base64 dev-perl/PAR-Dist virtual/perl-IO-Compress dev-perl/Crypt-CBC dev-perl/Crypt-DES dev-perl/Crypt-Blowfish dev-perl/Crypt-RIPEMD160 dev-perl/class-loader dev-perl/tie-encryptedhash dev-perl/convert-ascii-armour dev-perl/data-buffer dev-perl/digest-md2 >=dev-perl/math-pari-2.010603 dev-perl/Crypt-Random dev-perl/Crypt-Primes dev-perl/Crypt-DES_EDE3 dev-perl/Crypt-DSA dev-perl/Crypt-RSA dev-perl/Convert-ASN1 dev-perl/convert-pem dev-perl/Crypt-OpenPGP app-crypt/gnupg dev-lang/perl:=[-build(-)]
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/A/AU/AUDREYT/Module-Signature-0.77.tar.gz
 _eclass_exported_funcs=src_unpack:perl-module src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:- src_install:perl-module
 _eclasses_=eutils	9d81603248f2ba3ec59124320d123e5e	multilib	3972ca401cf7dbb430df9995f5d8d580	multiprocessing	e32940a7b2a9992ad217eccddb84d548	perl-functions	15aff0b9cba2282790142295ceb6be0c	perl-module	b2108b3c85ac7a6a6a9b035b54f6813c	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	unpacker	1d149d9bda7723e740cfd28118f27813
-_md5_=5985fc87405c197176f8dc205a198866
+_md5_=0aeca2aaeab40947ced76b78305795f2
