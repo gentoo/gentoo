@@ -24,7 +24,7 @@ KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="doc examples +gmp mpfi qt4"
 
 RDEPEND="
-	dev-libs/boost
+	dev-libs/boost:=
 	dev-libs/mpfr:0
 	sys-libs/zlib
 	x11-libs/libX11
