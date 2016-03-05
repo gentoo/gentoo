@@ -11,7 +11,7 @@ inherit kde4-meta
 
 DESCRIPTION="KDE PIM icons"
 IUSE=""
-KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 
 DEPEND="$(add_kdeapps_dep kdepimlibs 'akonadi(+)')"
 RDEPEND=""
