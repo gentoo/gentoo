@@ -3089,6 +3089,7 @@ dev-games/wfmath 1.0.1 1.0.2: Worldforge math library
 dev-go/bee 1.4.1_p20160125: A tool for helping develop with beego app framework
 dev-go/beego 1.6.0_p20160126: High-performance web framework for Go
 dev-go/blackfriday 1.2_p20150720 9999: a markdown processor implemented in Go
+dev-go/cli 20160227: A small package for building command line apps in Go
 dev-go/go-colortext 0_pre20150720: Change the console foreground and background colors
 dev-go/go-crypto 0_pre20150808 0_pre20160126 9999: Go supplementary cryptography libraries
 dev-go/go-eapache-queue 1.0.2 9999: Fast golang queue using ring-buffer
@@ -4170,7 +4171,7 @@ dev-java/sablecc-anttask 1.1.0-r1: Ant task for sablecc
 dev-java/sac 1.3-r1 1.3-r2: SAC is a standard interface for CSS parser
 dev-java/sat4j-core 2.2.0 2.3.1-r1: Lightweight constraint programming with a SAT solver
 dev-java/sat4j-pseudo 2.2.0 2.3.1: Pseudo Boolean solvers
-dev-java/sax 2.2.1-r2: Simple API for XML, originally a Java-only API. It was the first widely adopted API for XML in Java
+dev-java/sax 2.2.1-r2 2.2.1-r3: SAX: Simple API for XML in Java
 dev-java/saxon 6.5.5 6.5.5-r1 9.2.0.6 9.2.0.6-r1: A XSLT and XQuery Processor
 dev-java/saxpath 1.0-r2: A Simple API for XPath
 dev-java/sblim-cim-client 2.2.1 2.2.1-r1: A WBEM services client that includes an IETF RFC 2614 compliant SLP client for CIM service discovery
@@ -4985,7 +4986,7 @@ dev-ml/core_bench 112.35.00 113.24.00: Micro-benchmarking library for OCaml
 dev-ml/core_extended 113.24.00: Jane Street's alternative to the standard library
 dev-ml/core_kernel 113.24.00: System-independent part of Core
 dev-ml/core_profiler 113.24.00: Jane Street's profiling library
-dev-ml/cppo 1.3.1: An equivalent of the C preprocessor for OCaml programs
+dev-ml/cppo 1.3.1-r1: An equivalent of the C preprocessor for OCaml programs
 dev-ml/cryptokit 1.10: Cryptographic primitives library for Objective Caml
 dev-ml/csv 1.4.2: A pure OCaml library to read and write CSV files
 dev-ml/cudf 0.8: Library to parse, pretty print, and evaluate CUDF documents
@@ -5052,7 +5053,7 @@ dev-ml/ocamlgraph 0.99b 1.8.5 1.8.6: O'Caml Graph library
 dev-ml/ocamlgsl 0.6.0: OCaml bindings for the GSL library
 dev-ml/ocamlify 0.0.2: OCamlify allows to create OCaml source code by including whole file into OCaml string or string list
 dev-ml/ocamlmod 0.0.8: Generate OCaml modules from source files
-dev-ml/ocamlnet 3.7.7 4.0.4: Modules for OCaml application-level Internet protocols
+dev-ml/ocamlnet 3.7.7 4.0.4 4.1.1: Modules for OCaml application-level Internet protocols
 dev-ml/ocamlpam 1.1: OCamlPAM - an OCaml library for PAM
 dev-ml/ocamlsdl 0.9.1: OCaml SDL Bindings
 dev-ml/ocamlweb 1.38-r1 1.39: O'Caml literate programming tool
@@ -5097,7 +5098,7 @@ dev-ml/ppx_tools 0.99.2 0.99.3 0.99.3_p20160217: Tools for authors of ppx rewrit
 dev-ml/ppx_type_conv 113.24.00: Support Library for type-driven code generators
 dev-ml/ppx_typerep_conv 113.24.00: Generation of runtime types from type declarations
 dev-ml/ppx_variants_conv 113.24.00: Generation of accessor and iteration functions for ocaml variant types
-dev-ml/pxp 1.2.4 1.2.7: validating XML parser library for O'Caml
+dev-ml/pxp 1.2.4 1.2.7 1.2.8: validating XML parser library for O'Caml
 dev-ml/qcheck 0.4.0.1: QuickCheck inspired property-based testing for OCaml
 dev-ml/re2 113.24.00: OCaml bindings for RE2
 dev-ml/react 0.9.4 1.2.0: OCaml module for functional reactive programming
@@ -9530,7 +9531,7 @@ dev-util/hxd 0.70.02-r1: Binary to hexadecimal converter
 dev-util/hxtools 20121125-r1: A collection of tools and scripts
 dev-util/icemon 20140102: Icemon is a KDE monitor program for use with Icecream compile clusters
 dev-util/icmake 7.21.01 7.22.00 7.22.01: Hybrid between a make utility and a shell scripting language
-dev-util/idea-ultimate 14.1.5.141.2735.5 15.0.3.143.1821.5 15.0.4.143.2287.1 16.0.0.144.3143.6_pre: A complete toolset for web, mobile and enterprise development
+dev-util/idea-ultimate 14.1.5.141.2735.5 14.1.5.141.3056.5 15.0.3.143.1821.5 15.0.4.143.2287.1 16.0.0.144.3143.6_pre 16.0.0.145.184.1_pre: A complete toolset for web, mobile and enterprise development
 dev-util/idutils 4.2 4.5 4.6: Fast, high-capacity, identifier database tool
 dev-util/igprof 5.9.11: Ignominous Profiler for analysing application memory and performance characteristics
 dev-util/imediff2 1.1.2-r3: An interactive, user friendly 2-way merge tool in text mode
@@ -11796,7 +11797,7 @@ media-fonts/mplus-outline-fonts 0_pre055 0_pre056 0_pre059 0_pre060: M+ Japanese
 media-fonts/nanum 3.0: The Nanum Korean fonts distributed by Naver
 media-fonts/nanumfont 2.0 2.0-r1: Korean monospace font distributed by NHN
 media-fonts/nepali-fonts 1-r1: a collection of fonts for Nepali users
-media-fonts/noto 2014.11 2015.04: Google's font family that aims to support all the world's languages
+media-fonts/noto 2014.11 2015.04 20160305: Google's font family that aims to support all the world's languages
 media-fonts/nunito 1.0: A well balanced Sans Serif with rounded terminals
 media-fonts/nuosu-sil 2.1.1: Unicode font for the standardized Yi script
 media-fonts/ohsnap 1.8.0: The ohsnap / osnap monospace font (based on Artwiz Snap)
