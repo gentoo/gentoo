@@ -47,7 +47,7 @@ RDEPEND="${COMMON_DEPEND}
 
 src_prepare() {
 	eapply_user
-	[[ ${PV} == 9999 ]] && eautoreconf
+	eautoreconf
 }
 
 src_configure() {
