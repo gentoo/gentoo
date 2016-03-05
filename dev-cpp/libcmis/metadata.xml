@@ -9,6 +9,6 @@
 		<flag name="man">Build and install man pages.</flag>
 	</use>
 	<upstream>
-		<remote-id type="sourceforge">libcmis</remote-id>
+		<remote-id type="github">tdf/libcmis</remote-id>
 	</upstream>
 </pkgmetadata>
