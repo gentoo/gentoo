@@ -14,7 +14,7 @@ SRC_URI="ftp://ftp.gnu.org/old-gnu/emacs/${P}.tar.gz
 
 LICENSE="GPL-1+ GPL-2+ BSD" #HPND
 SLOT="18"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="abi_x86_x32"
 
 RDEPEND=">=app-eselect/eselect-emacs-1.16
