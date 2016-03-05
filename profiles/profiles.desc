@@ -259,15 +259,21 @@ x86-macos		prefix/darwin/macos/10.7/x86			exp
 x64-macos		prefix/darwin/macos/10.7/x64			exp
 x86-macos		prefix/darwin/macos/10.8/x86			exp
 x64-macos		prefix/darwin/macos/10.8/x64			exp
+x86-macos		prefix/darwin/macos/10.9/x86			exp
+x64-macos		prefix/darwin/macos/10.9/x64			exp
+x86-macos		prefix/darwin/macos/10.10/x86			exp
+x64-macos		prefix/darwin/macos/10.10/x64			exp
+x86-macos		prefix/darwin/macos/10.11/x86			exp
+x64-macos		prefix/darwin/macos/10.11/x64			exp
 
 # Solaris Profiles
 sparc-solaris		prefix/sunos/solaris/5.9/sparc			exp
 sparc-solaris		prefix/sunos/solaris/5.10/sparc			exp
-sparc64-solaris		prefix/sunos/solaris/5.10/sparc64 		exp
+sparc64-solaris		prefix/sunos/solaris/5.10/sparc64		exp
 x86-solaris		prefix/sunos/solaris/5.10/x86			exp
 x64-solaris		prefix/sunos/solaris/5.10/x64			exp
 sparc-solaris		prefix/sunos/solaris/5.11/sparc			exp
-sparc64-solaris		prefix/sunos/solaris/5.11/sparc64 		exp
+sparc64-solaris		prefix/sunos/solaris/5.11/sparc64		exp
 x86-solaris		prefix/sunos/solaris/5.11/x86			exp
 x64-solaris		prefix/sunos/solaris/5.11/x64			exp
 
@@ -283,7 +289,7 @@ x86-interix		prefix/windows/interix/6.0/x86			exp
 x86-interix		prefix/windows/interix/6.1/x86			exp
 
 # Windows Profiles
-x86-winnt		prefix/windows/winnt/3.5/x86 			exp
+x86-winnt		prefix/windows/winnt/3.5/x86			exp
 x86-winnt		prefix/windows/winnt/5.2/x86			exp
 x86-winnt		prefix/windows/winnt/6.0/x86			exp
 x86-winnt		prefix/windows/winnt/6.1/x86			exp
