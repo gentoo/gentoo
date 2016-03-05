@@ -16,9 +16,9 @@ KEYWORDS="~amd64"
 
 IUSE="examples"
 
-RDEPEND=">=dev-lang/ocaml-3.12:="
-DEPEND="${RDEPEND}
-	dev-ml/ocamlbuild"
+RDEPEND=">=dev-lang/ocaml-3.12:=
+	dev-ml/ocamlbuild:="
+DEPEND="${RDEPEND}"
 
 src_install() {
 	findlib_src_preinst
