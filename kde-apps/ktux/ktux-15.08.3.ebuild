@@ -8,7 +8,7 @@ inherit kde4-base
 
 DESCRIPTION="KDE: screensaver featuring the Space-Faring Tux"
 HOMEPAGE+=" https://userbase.kde.org/KTux"
-KEYWORDS=" ~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="debug"
 
 # libkworkspace - only as a stub to provide KDE4Workspace config
