@@ -32,6 +32,7 @@ src_install() {
 	if use doc ; then
 		docinto doc
 		dodoc -r doc/*
+		dosym "/usr/share/doc/${PF}/doc/" "${TEXMF}/doc/latex/beamer"
 	fi
 
 	use examples && dodoc -r examples solutions
