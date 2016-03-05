@@ -139,7 +139,6 @@ src_configure() {
 	fi
 
 	local mycmakeargs=(
-		"-DDOLPHIN_WC_REVISION=${PV}"
 		"-DCMAKE_INSTALL_PREFIX=${GAMES_PREFIX}"
 		"-Dprefix=${GAMES_PREFIX}"
 		"-Ddatadir=${GAMES_DATADIR}/${PN}"
