@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=5
-inherit eutils flag-o-matic toolchain-funcs
+inherit autotools eutils flag-o-matic toolchain-funcs
 
 DESCRIPTION="Multipurpose relay (SOcket CAT)"
 HOMEPAGE="http://www.dest-unreach.org/socat/"
@@ -31,6 +31,9 @@ DOCS=(
 
 src_prepare() {
 	epatch "${FILESDIR}"/${PN}-1.7.3.0-filan-build.patch
+	epatch "${FILESDIR}"/${PN}-1.7.3.1-stddef_h.patch
+
+	eautoreconf
 }
 
 src_configure() {

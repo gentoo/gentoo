@@ -31,6 +31,11 @@
 #--- END OF EXAMPLES ---
 
 # Aaron Bauman <bman@gentoo.org> (05 Mar 2016)
+# Per security bug #491372 this package is vulnerable
+# and unmaintained.  Removal in 30 days.
+net-mail/perdition
+
+# Aaron Bauman <bman@gentoo.org> (05 Mar 2016)
 # Per security bug #448826 this package is vulnerable
 # and unmaintained.  Removal in 30 days.
 www-apps/dragonflycms
