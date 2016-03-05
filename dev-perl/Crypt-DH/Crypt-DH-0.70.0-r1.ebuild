@@ -1,10 +1,9 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 
-MY_PN=Crypt-DH
 MODULE_AUTHOR=MITHALDU
 MODULE_VERSION=0.07
 inherit perl-module
@@ -19,6 +18,6 @@ RDEPEND="
 	dev-libs/gmp
 	dev-perl/Math-BigInt-GMP
 	>=virtual/perl-Math-BigInt-1.60
-	dev-perl/crypt-random
+	dev-perl/Crypt-Random
 "
 DEPEND="${RDEPEND}"
