@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<!-- maintainer-needed -->
+<longdescription lang="en">
+	A perl/Curses front end for Taskwarrior (<pkg>app-misc/task</pkg>) that
+	provides a fullscreen terminal window with modes and commands
+	modeled after the vi editor.
+</longdescription>
+</pkgmetadata>
