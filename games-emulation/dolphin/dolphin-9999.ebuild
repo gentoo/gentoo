@@ -173,7 +173,8 @@ src_install() {
 		dodoc -r docs/ActionReplay docs/DSP docs/WiiMote
 	fi
 
-	doicon Installer/dolphin-emu.xpm
+	doicon -s 48 Installer/dolphin-emu.png
+	doicon -s scalable Installer/dolphin-emu.svg
 	make_desktop_entry "dolphin-emu" "Dolphin Emulator" "dolphin-emu" "Game;Emulator;"
 
 	prepgamesdirs
