@@ -1,0 +1,43 @@
+From 1ee93bf9d0d8a143f5faf9d1310d768d1de4ece4 Mon Sep 17 00:00:00 2001
+From: Gilles Dartiguelongue <eva@gentoo.org>
+Date: Sat, 5 Mar 2016 20:32:17 +0100
+Subject: [PATCH] Do not use USER as it can be unset.
+
+Use LOGNAME first as recommended by python documentation, then try alternatives.
+
+Also, use tempfile to respect environment variables changing tmpdir.
+
+Upstream: https://fedorahosted.org/dogtail/ticket/46
+Debian: http://bugs.debian.org/743500
+---
+ dogtail/config.py | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/dogtail/config.py b/dogtail/config.py
+index 80f08bf..1b6ac15 100644
+--- a/dogtail/config.py
++++ b/dogtail/config.py
+@@ -3,6 +3,8 @@ from __future__ import absolute_import, division, print_function, unicode_litera
+ import locale
+ import os
++import pwd
+ import sys
++import tempfile
+ 
+ """
+ The configuration module.
+@@ -12,7 +13,10 @@ __author__ = "Zack Cerza <zcerza@redhat.com>, David Malcolm <dmalcolm@redhat.com
+ 
+ def _userTmpDir(baseName):
+     # i.e. /tmp/dogtail-foo
+-    return '-'.join(('/'.join(('/tmp', baseName)), os.environ['USER']))
++    return '-'.join((
++        '/'.join((tempfile.gettempdir(), baseName)),
++        os.getenv('LOGNAME', os.getenv('USER', pwd.getpwuid(os.getuid())[0]))
++    ))
+ 
+ 
+ class _Config(object):
+-- 
+2.7.2
+
