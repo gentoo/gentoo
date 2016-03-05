@@ -24,5 +24,6 @@ DEPEND="${RDEPEND}
 	app-text/scrollkeeper
 	>=app-text/gnome-doc-utils-0.3.2
 	>=dev-util/intltool-0.35
+	dev-util/itstool
 	virtual/pkgconfig
 "
