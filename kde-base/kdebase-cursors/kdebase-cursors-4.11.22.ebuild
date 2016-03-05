@@ -10,4 +10,4 @@ inherit kde4-meta
 
 DESCRIPTION="oxygen cursors from kdebase"
 IUSE=""
-KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
