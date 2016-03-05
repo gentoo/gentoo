@@ -70,7 +70,7 @@ RDEPEND="${COMMON_DEPEND}
 	!sys-fs/udev"
 
 # sys-apps/dbus: the daemon only (+ build-time lib dep for tests)
-PDEPEND=">=sys-apps/dbus-1.6.8-r1:0[systemd]
+PDEPEND=">=sys-apps/dbus-1.8.8:0[systemd]
 	>=sys-apps/hwids-20150417[udev]
 	>=sys-fs/udev-init-scripts-25
 	policykit? ( sys-auth/polkit )
@@ -302,12 +302,6 @@ multilib_src_install() {
 
 		emake "${mymakeopts[@]}"
 	fi
-
-	# install compat pkg-config files
-	# Change dbus to >=sys-apps/dbus-1.8.8 if/when this is dropped.
-	local pcfiles=( src/compat-libs/libsystemd-{daemon,id128,journal,login}.pc )
-	emake "${mymakeopts[@]}" install-pkgconfiglibDATA \
-		pkgconfiglib_DATA="${pcfiles[*]}"
 }
 
 multilib_src_install_all() {
