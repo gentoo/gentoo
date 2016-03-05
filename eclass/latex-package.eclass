@@ -71,6 +71,13 @@ TEXMF="/usr/share/texmf-site"
 # DESCRIPTION above)
 SUPPLIER="misc"
 
+# @ECLASS-VARIABLE: LATEX_DOC_ARGUMENTS
+# @DESCRIPTION:
+# When compiling documentation (.tex/.dtx), this variable will be passed
+# to pdflatex as additional argument (e.g. -shell-escape). This variable
+# must be set after inherit, as it gets automatically cleared otherwise.
+LATEX_DOC_ARGUMENTS=""
+
 # Kept for backwards compatibility
 latex-package_has_tetex_3() {
 	case ${EAPI:-0} in
@@ -128,8 +135,8 @@ latex-package_src_doinstall() {
 					for i in `find . -maxdepth 1 -type f -name "*.${1}"`
 					do
 						einfo "Making documentation: $i"
-						if pdflatex --interaction=batchmode $i &> /dev/null ; then
-							pdflatex --interaction=batchmode $i &> /dev/null || die
+						if pdflatex ${LATEX_DOC_ARGUMENTS} --interaction=batchmode $i &> /dev/null ; then
+							pdflatex ${LATEX_DOC_ARGUMENTS} --interaction=batchmode $i &> /dev/null || die
 						else
 							einfo "pdflatex failed, trying texi2dvi"
 							texi2dvi -q -c --language=latex $i &> /dev/null || die

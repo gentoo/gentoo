@@ -12,7 +12,7 @@ inherit perl-module
 DESCRIPTION="Select a pager, optionally pipe it output if destination is a TTY"
 
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris"
+KEYWORDS="amd64 ppc ~ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris"
 IUSE="test"
 PERL_RM_FILES=(
 	"t.pl"	# Useless test-only file gets installed to SITE otherwise

@@ -17,8 +17,9 @@ KEYWORDS="~amd64 ~ppc64 ~x86 ~amd64-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64
 
 RDEPEND="
 	>=virtual/jre-1.6"
+
 DEPEND="
-	app-arch/unzip
-	>=virtual/jdk-1.6"
+	>=virtual/jdk-1.6
+	source? ( app-arch/zip )"
 
 JAVA_ENCODING="ISO-8859-1"
