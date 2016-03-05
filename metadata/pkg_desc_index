@@ -7273,7 +7273,7 @@ dev-python/line_profiler 1.0 9999: Line-by-line profiler
 dev-python/linecache2 1.0.0: Backports of the linecache module
 dev-python/livereload 2.3.2 2.4.0 2.4.1: Python LiveReload is an awesome tool for web developers
 dev-python/llfuse 0.40 0.41 0.42.1 0.43-r1: Python bindings for the low-level FUSE API
-dev-python/llvmlite 0.2.1 0.2.2 0.5.0 0.6.0 0.8.0: Python wrapper around the llvm C++ library
+dev-python/llvmlite 0.2.1 0.2.2 0.5.0 0.6.0 0.8.0 0.9.0: Python wrapper around the llvm C++ library
 dev-python/llvmmath 0.1.2: LLVM math library for Python
 dev-python/llvmpy 0.12.2 0.12.3 0.12.4 0.12.5 0.12.6 0.12.7: Python wrapper around the llvm C++ library
 dev-python/lockfile 0.11.0-r1 0.12.2: Platform-independent file locking module
@@ -7375,7 +7375,7 @@ dev-python/nosehtmloutput 0.0.4-r1 0.0.5: Nose plugin to produce test results in
 dev-python/nosexcover 1.0.10: Extends nose.plugins.cover to add Cobertura-style XML reports
 dev-python/notebook 4.0.6 4.1.0: Jupyter Interactive Notebook
 dev-python/notify-python 0.1.1-r3: Python bindings for libnotify
-dev-python/numba 0.18.2 0.19.2 0.20.0 0.22.1 0.23.1: NumPy aware dynamic Python compiler using LLVM
+dev-python/numba 0.18.2 0.19.2 0.20.0 0.22.1 0.23.1 0.24.0: NumPy aware dynamic Python compiler using LLVM
 dev-python/numdisplay 1.6.0-r1: Python package for interactively displaying FITS arrays
 dev-python/numexpr 2.4.3 2.4.4 2.4.6 2.5: Fast numerical array expression evaluator for Python and NumPy
 dev-python/numpy 1.8.2 1.9.2 1.9.3 1.10.1-r1 1.10.2-r2 1.10.4 9999: Fast array and numerical python library
@@ -7701,7 +7701,7 @@ dev-python/pytest-capturelog 0.7: py.test plugin to capture log messages
 dev-python/pytest-catchlog 1.1 1.2.0 1.2.1 1.2.2: py.test plugin to catch log messages, fork of pytest-capturelog
 dev-python/pytest-cov 1.6 1.8.1 2.1.0 2.2.0 2.2.1: py.test plugin for coverage reporting
 dev-python/pytest-django 2.8.0 2.9.1: A Django plugin for py.test
-dev-python/pytest-httpbin 0.2.0: Easily test your HTTP library against a local copy of httpbin
+dev-python/pytest-httpbin 0.2.0 0.2.3: Easily test your HTTP library against a local copy of httpbin
 dev-python/pytest-localserver 0.3.4 0.3.5: Py.test plugin to test server connections locally
 dev-python/pytest-pythonpath 0.7: pytest plugin for adding to the PYTHONPATH from command line or configs
 dev-python/pytest-raisesregexp 2.0: Simple pytest plugin to look for regex in Exceptions
@@ -8125,7 +8125,7 @@ dev-python/wsgiintercept 0.9.0 0.9.1 0.10.0 0.10.2 1.1.2: WSGI application in pl
 dev-python/wsgilog 0.3-r1: Class for logging in WSGI-applications
 dev-python/wsgiproxy2 0.4.1 0.4.2: HTTP proxying tools for WSGI apps
 dev-python/wstools 0.4.3: WSDL parsing services package for Web Services for Python
-dev-python/wtf-peewee 0.2.3 0.2.4: Small python ORM
+dev-python/wtf-peewee 0.2.3 0.2.4 0.2.5: Small python ORM
 dev-python/wtforms 2.0.1 2.0.2 2.1: Flexible forms validation and rendering library for python web development
 dev-python/wxpython 2.8.12.1-r2 2.9.4.1-r2 3.0.0.0 3.0.1.1 3.0.2.0: A blending of the wxWindows C++ class library with Python
 dev-python/xcffib 0.3.4 0.4.0: A drop in replacement for xpyb, an XCB python binding
@@ -16946,7 +16946,7 @@ sys-fs/udev 216 217 218 219 220-r3 222 224 224-r1 224-r2 225 228 229 9999: Linux
 sys-fs/udev-init-scripts 27 29 30 9999: udev startup scripts for openrc
 sys-fs/udftools 1.0.0b-r9 1.0.0b-r10: Ben Fennema's tools for packet writing and the UDF filesystem
 sys-fs/udiskie 0.6.2 0.6.4 1.1.1: An automatic disk mounting service using udisks
-sys-fs/udisks 1.0.5-r1 2.1.4 2.1.6: Daemon providing interfaces to work with storage devices
+sys-fs/udisks 1.0.5-r1 2.1.4 2.1.6 2.1.7: Daemon providing interfaces to work with storage devices
 sys-fs/udisks-glue 1.3.5: A tool to associate udisks events to user-defined actions
 sys-fs/ufsutils 8.2_p3: FFS/UFS/UFS2 filesystem utilities from FreeBSD
 sys-fs/unionfs-fuse 1.0 9999: Self-syncing tree-merging file system based on FUSE
