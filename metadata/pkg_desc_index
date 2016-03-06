@@ -8570,7 +8570,7 @@ dev-ruby/backports 3.6.7 3.6.8: Backports of Ruby features for older Ruby
 dev-ruby/bacon 1.2.0-r2: Small RSpec clone weighing less than 350 LoC
 dev-ruby/barby 0.6.2 0.6.2-r1: Ruby barcode generator that doesn't rely on 3rd party libraries
 dev-ruby/bcat 0.6.2-r1 0.6.2-r2: A pipe to browser utility for use at the shell and within editors like Vim or Emacs
-dev-ruby/bcrypt-ruby 3.1.9 3.1.10: An easy way to keep your users' passwords secure
+dev-ruby/bcrypt-ruby 3.1.9 3.1.10 3.1.11: An easy way to keep your users' passwords secure
 dev-ruby/best_in_place 3.0.3 3.1.0: In-place editor helper for Rails 3
 dev-ruby/binding_of_caller 0.7.2: Retrieve the binding of a method's caller
 dev-ruby/bitescript 0.0.9: BiteScript is a Ruby DSL for generating Java bytecode and classes
@@ -8841,7 +8841,7 @@ dev-ruby/nokogiri-diff 0.2.0-r1 0.2.0-r2: Calculate the differences (added or re
 dev-ruby/nokogumbo 1.4.1 1.4.6 1.4.7: A Nokogiri interface to the Gumbo HTML5 parser
 dev-ruby/notify 0.5.2-r1: A function to notify on cross platform
 dev-ruby/ntlm-http 0.1.1-r1 0.1.1-r2: Ruby/NTLM HTTP provides NTLM authentication over http
-dev-ruby/oauth 0.4.7-r2: A RubyGem for implementing both OAuth clients and servers
+dev-ruby/oauth 0.4.7-r2 0.5.1: A RubyGem for implementing both OAuth clients and servers
 dev-ruby/oauth2 1.0.0 1.1.0: Wrapper for the OAuth 2.0 protocol with a similar style to the OAuth gem
 dev-ruby/octokit 4.2.0 4.3.0: Ruby toolkit for the Github API
 dev-ruby/omniauth 1.2.2-r1 1.3.1: A generalized Rack framework for multiple-provider authentication
