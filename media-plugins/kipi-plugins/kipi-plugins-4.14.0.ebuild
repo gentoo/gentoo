@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -56,7 +56,7 @@ COMMONDEPEND="
 		media-libs/phonon[qt4]
 		x11-libs/libXrandr
 	)
-	redeyes? ( >=media-libs/opencv-3.0.0[contrib] )
+	redeyes? ( >=media-libs/opencv-3.0.0:=[contrib] )
 	scanner? (
 		$(add_kdeapps_dep libksane)
 		media-gfx/sane-backends
