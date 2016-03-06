@@ -1,10 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 
-USE_RUBY="ruby19 ruby20"
+USE_RUBY="ruby20"
 
 RUBY_FAKEGEM_RECIPE_TEST="rspec"
 RUBY_FAKEGEM_RECIPE_DOC="yard"
@@ -12,7 +12,7 @@ RUBY_FAKEGEM_EXTRADOC="ChangeLog.md README.md"
 
 inherit ruby-fakegem
 
-DESCRIPTION="Calculate the differences (added or removed nodes) between two XML/HTML documents"
+DESCRIPTION="Calculate the differences between two XML/HTML documents"
 HOMEPAGE="https://github.com/postmodern/nokogiri-diff"
 LICENSE="MIT"
 
