@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -17,8 +17,8 @@ KEYWORDS="~alpha ~amd64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 IUSE=""
 
 DEPEND="
-	sys-libs/ncurses
-	sys-libs/readline"
+	sys-libs/ncurses:0=
+	sys-libs/readline:0="
 RDEPEND="${DEPEND}"
 
 src_prepare() {
@@ -36,7 +36,7 @@ src_compile() {
 		LDFLAGS="${LDFLAGS}" \
 		CALCPAGER="${PAGER}" \
 		USE_READLINE="-DUSE_READLINE" \
-		READLINE_LIB="-lreadline -lhistory -lncurses -L${S}/custom -lcustcalc" \
+		READLINE_LIB="-lreadline -lhistory -lncurses -L\"${S}\"/custom -lcustcalc" \
 		all
 }
 
