@@ -27,7 +27,7 @@ RDEPEND="app-portage/gentoolkit[${PYTHON_USEDEP}]
 		dev-libs/libgamin[python,${PYTHON_USEDEP}]
 		dev-python/lxml[${PYTHON_USEDEP}]
 		dev-python/nose[${PYTHON_USEDEP}]
-		virtual/fam )"
+		!kernel_linux? ( virtual/fam ) )"
 
 python_compile_all() {
 	if use doc; then
