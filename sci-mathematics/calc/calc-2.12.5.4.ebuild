@@ -1,10 +1,10 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-inherit eutils multilib toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="Arbitrary precision C-like arithmetic system"
 HOMEPAGE="http://www.isthe.com/chongo/tech/comp/calc/"
@@ -16,14 +16,18 @@ KEYWORDS="~alpha ~amd64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 
 IUSE=""
 
-DEPEND="
-	sys-libs/ncurses
-	sys-libs/readline"
-RDEPEND="${DEPEND}"
+RDEPEND="
+	sys-libs/ncurses:0=
+	sys-libs/readline:0="
+DEPEND="${RDEPEND}
+	virtual/pkgconfig"
+
+PATCHES=(
+	"${FILESDIR}/${P}-as-needed.patch"
+)
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-2.12.4.13-prefix.patch\
-		"${FILESDIR}"/2.12.4.0-ldflags.patch
+	default
 	ln -sf libcustcalc.so.${PV} custom/libcustcalc.so || die
 	sed -i -e "/DIR/s:/usr:${EPREFIX}/usr:g" Makefile || die
 }
@@ -36,7 +40,7 @@ src_compile() {
 		LDFLAGS="${LDFLAGS}" \
 		CALCPAGER="${PAGER}" \
 		USE_READLINE="-DUSE_READLINE" \
-		READLINE_LIB="-lreadline -lhistory -lncurses -L${S}/custom -lcustcalc" \
+		READLINE_LIB="-lreadline -lhistory $(pkg-config --libs ncurses) -L\"${S}\"/custom -lcustcalc" \
 		all
 }
 
