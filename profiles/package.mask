@@ -193,17 +193,6 @@ dev-java/jsr93
 net-libs/iojs
 
 # James Le Cuirot <chewi@gentoo.org> (07 Feb 2016)
-# BioJava depends on commons-dbcp:0, which requires Java 6. Even the
-# latest "legacy" version 1.9.1 does so and no one wants to do the
-# difficult bump to 4.1.0. Mauve depends on BioJava but being a very
-# outdated live SVN ebuild, it probably doesn't work anyway. This goes
-# for Mauve Aligner too. Removal in 30 days. See bug #556470.
-sci-biology/biojava
-sci-biology/mauve
-sci-biology/mauvealigner
-dev-java/bytecode
-
-# James Le Cuirot <chewi@gentoo.org> (07 Feb 2016)
 # Masked until 2.0 final arrives, which hopefully won't depend on
 # commons-dbcp:0 as that requires Java 6. Note that the 2.0 in the
 # tree should have actually been 2.0_beta1. There are no revdeps.
