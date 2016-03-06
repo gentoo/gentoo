@@ -1707,7 +1707,7 @@ app-misc/cw 1.0.16-r3: A non-intrusive real-time ANSI color wrapper for common u
 app-misc/cwiid 20110107-r2: Library, input driver, and utilities for the Nintendo Wiimote
 app-misc/dailystrips 1.0.28-r2: dailystrips automatically downloads your favorite online comics from the web
 app-misc/datefudge 1.17: A program (and preload library) to fake system date
-app-misc/dateutils 0.3.3 0.3.4: command line date and time utilities
+app-misc/dateutils 0.3.3 0.3.4 0.3.5: command line date and time utilities
 app-misc/datovka 3.0.3 3.0.3-r1: GUI to access Czech eGov "Datove schranky"
 app-misc/ddate 0.2.1: Perpetual date converter from gregorian to poee calendar
 app-misc/ddccontrol 0.4.2_p20140105-r1: DDCControl allows control of monitor parameters via DDC
@@ -11887,7 +11887,7 @@ media-gfx/cellwriter 1.3.4 1.3.5: Grid-entry natural handwriting input panel
 media-gfx/colorhug-client 0.2.7 0.2.8: Client tools for the ColorHug display colorimeter
 media-gfx/comix 4.0.4-r1: A GTK image viewer specifically designed to handle comic books
 media-gfx/converseen 0.6.4 0.6.8: Batch image converter and resizer based on ImageMagick
-media-gfx/cptutils 1.54 1.59 1.61: A number of utilities for the manipulation of color gradient files
+media-gfx/cptutils 1.61 1.62: A number of utilities for the manipulation of color gradient files
 media-gfx/cropgui 0.1.1-r3 0.2 9999: GUI for lossless cropping of jpeg images
 media-gfx/crwinfo 0.2: Canon raw image (CRW) information and thumbnail extractor
 media-gfx/cthumb 4.2: Create a statical HTML Image gallery with captions for each image
@@ -11953,7 +11953,7 @@ media-gfx/gphoto2 2.5.6 2.5.8 2.5.9: Free, redistributable digital camera softwa
 media-gfx/gphotofs 0.5: FUSE file system for interfacing with digital cameras using gphoto2
 media-gfx/gpicview 0.2.4: A Simple and Fast Image Viewer for X
 media-gfx/gqview 2.1.5-r1: A GTK-based image browser
-media-gfx/graphicsmagick 1.3.18 1.3.19 1.3.20-r1: Collection of tools and libraries for many image formats
+media-gfx/graphicsmagick 1.3.18 1.3.19 1.3.20-r1 1.3.23: Collection of tools and libraries for many image formats
 media-gfx/graphite2 1.2.1 1.2.4-r1 1.3.5 1.3.5-r1: Library providing rendering capabilities for complex non-Roman writing systems
 media-gfx/graphviz 2.26.3-r4 2.38.0-r1: Open Source Graph Visualization Software
 media-gfx/greycstoration 2.9-r1: Image regularization algorithm for denoising, inpainting and resizing
