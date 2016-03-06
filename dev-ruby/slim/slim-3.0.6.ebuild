@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -12,7 +12,7 @@ RUBY_FAKEGEM_TASK_DOC="yard"
 
 inherit ruby-fakegem
 
-DESCRIPTION="A template language whose goal is reduce the syntax to the essential parts without becoming cryptic"
+DESCRIPTION="A template language aiming to reduce the syntax to the essential parts"
 HOMEPAGE="http://slim-lang.com/"
 LICENSE="MIT"
 
