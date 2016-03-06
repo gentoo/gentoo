@@ -8,5 +8,5 @@ KMNAME="kde-workspace"
 inherit kde4-meta
 
 DESCRIPTION="KDE: Utility to launch applications with special window properties"
-KEYWORDS="amd64 ~arm ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm ~ppc ~ppc64 x86 ~amd64-linux ~x86-linux"
 IUSE="debug"
