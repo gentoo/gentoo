@@ -6961,19 +6961,8 @@ sci-mathematics/gmp-ecm:custom-tune - Improve performance of some operations by 
 sci-mathematics/gmp-ecm:gwnum - Use GWNum lib where possible
 sci-mathematics/gretl:R - Enable support for dev-lang/R
 sci-mathematics/gsl-shell:fox - Build a x11-libs/fox GUI
-sci-mathematics/isabelle:CCL - CCL (Classical Computational Logic)
-sci-mathematics/isabelle:CTT - CTT (Constructive Type Theory) is an extensional version of Martin-Löf's Type Theory.
-sci-mathematics/isabelle:Cube - Cube (The Lambda Cube)
-sci-mathematics/isabelle:FOL - FOL (Many-sorted First-Order Logic) provides basic classical and intuitionistic first-order logic. It is polymorphic.
-sci-mathematics/isabelle:FOLP - FOLP (FOL with Proof Terms)
-sci-mathematics/isabelle:HOL - (Higher-Order Logic) is a version of classical higher-order logic resembling that of the HOL System.
-sci-mathematics/isabelle:LCF - LCF (Logic of Computable Functions)
-sci-mathematics/isabelle:Pure - Pure is the basis for all object-logics.
-sci-mathematics/isabelle:Sequents - Sequents (first-order, modal and linear logics)
-sci-mathematics/isabelle:ZF - ZF (Set Theory) offers a formulation of Zermelo-Fraenkel set theory on top of FOL.
 sci-mathematics/isabelle:graphbrowsing - Generate theory browsing information, including HTML documents that show a theory's definition, the theorems proved in its ML file and the relationship with its ancestors and descendants.
 sci-mathematics/isabelle:ledit - Use ledit for the isabelle tty line editor
-sci-mathematics/isabelle:pide - Build Isabelle/jEdit Prover IDE (PIDE).
 sci-mathematics/isabelle:proofgeneral - Add support for the app-emacs/proofgeneral proof assistant front end.
 sci-mathematics/isabelle:readline - Use readline (rlwrap) for the isabelle tty line editor
 sci-mathematics/kodkodi:isabelle - Add integration support for the Isabelle/HOL theorem prover.
