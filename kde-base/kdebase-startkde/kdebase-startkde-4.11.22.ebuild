@@ -9,7 +9,7 @@ KMNOMODULE="true"
 inherit kde4-meta prefix
 
 DESCRIPTION="Startkde script, which starts a complete KDE session, and associated scripts"
-KEYWORDS="amd64 ~arm ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm ~ppc ~ppc64 x86 ~amd64-linux ~x86-linux"
 IUSE="+wallpapers"
 
 # The KDE apps called from the startkde script.
