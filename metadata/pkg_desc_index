@@ -13405,7 +13405,7 @@ media-video/tovid 0.34 0.34_p20120123 0.35.2: A collection of DVD authoring tool
 media-video/transcode 1.1.7-r1 1.1.7-r2 1.1.7-r3: A suite of utilities for transcoding video and audio codecs in different containers
 media-video/tsmuxer 1.10.6-r1 2.6.11: Utility to create and demux TS and M2TS files
 media-video/ttcut 0.19.6-r3: Tool for cutting MPEG files especially for removing commercials
-media-video/ushare 1.1a-r5 1.1a-r6: uShare is a UPnP (TM) A/V & DLNA Media Server
+media-video/ushare 1.1a-r5 1.1a-r6 1.1a-r7: uShare is a UPnP (TM) A/V & DLNA Media Server
 media-video/v4l2loopback 0.4.0 0.4.1 0.6.1 0.6.3 0.6.3-r1 0.8.0: v4l2 loopback device which output is it's own input
 media-video/vamps 0.99.2 0.99.2-r1: Very fast requantisizing tool for backup DVDs
 media-video/vcdgear 1.76-r2: extract MPEG streams from CD images, convert VCD files to MPEG, correct MPEG errors, and more
