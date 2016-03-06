@@ -14,4 +14,4 @@ SLOT="0"
 KEYWORDS="amd64 ~mips ~ppc x86"
 IUSE=""
 
-RDEPEND=">=dev-perl/net-ssh-perl-1.25"
+RDEPEND=">=dev-perl/Net-SSH-Perl-1.25"
