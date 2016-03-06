@@ -27,6 +27,7 @@ projectm pulseaudio qsui scrobbler sndfile stereo tray udisks +vorbis wavpack"
 
 RDEPEND="media-libs/taglib
 	dev-qt/qtgui:4
+	dev-qt/qdbusviewer:4
 	alsa? ( media-libs/alsa-lib )
 	bs2b? ( media-libs/libbs2b )
 	cdda? ( dev-libs/libcdio-paranoia )
