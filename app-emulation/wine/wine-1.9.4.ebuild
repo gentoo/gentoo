@@ -23,7 +23,7 @@ else
 fi
 
 GV="2.44"
-MV="4.6.0"
+MV="4.5.6"
 STAGING_P="wine-staging-${PV}"
 STAGING_DIR="${WORKDIR}/${STAGING_P}"
 WINE_GENTOO="wine-gentoo-2015.03.07"
@@ -231,7 +231,7 @@ src_prepare() {
 	local md5="$(md5sum server/protocol.def)"
 	local PATCHES=(
 		"${FILESDIR}"/${PN}-1.5.26-winegcc.patch #260726
-		"${FILESDIR}"/${PN}-1.9.5-multilib-portage.patch #395615
+		"${FILESDIR}"/${PN}-1.4_rc2-multilib-portage.patch #395615
 		"${FILESDIR}"/${PN}-1.7.12-osmesa-check.patch #429386
 		"${FILESDIR}"/${PN}-1.6-memset-O3.patch #480508
 	)
