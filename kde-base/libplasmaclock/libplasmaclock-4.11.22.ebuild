@@ -9,7 +9,7 @@ KMMODULE="libs/plasmaclock"
 inherit kde4-meta
 
 DESCRIPTION="Libraries for KDE Plasma's clocks"
-KEYWORDS="amd64 ~arm ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm ~ppc ~ppc64 x86 ~amd64-linux ~x86-linux"
 IUSE="debug +kdepim"
 
 DEPEND="
