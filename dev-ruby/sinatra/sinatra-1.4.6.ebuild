@@ -1,9 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
-USE_RUBY="ruby19 ruby20"
+USE_RUBY="ruby20"
 
 # no documentation is generable, it needs hanna, which is broken
 RUBY_FAKEGEM_TASK_DOC=""
@@ -12,7 +12,7 @@ RUBY_FAKEGEM_EXTRADOC="README.md AUTHORS.md CHANGES"
 
 inherit ruby-fakegem
 
-DESCRIPTION="Sinatra is a DSL for quickly creating web applications in Ruby with minimal effort"
+DESCRIPTION="A DSL for quickly creating web applications in Ruby with minimal effort"
 HOMEPAGE="http://www.sinatrarb.com/"
 
 LICENSE="MIT"
