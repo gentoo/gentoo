@@ -18,7 +18,7 @@ RDEPEND="
 	!<kde-apps/kde-l10n-${PV}
 "
 
-KEYWORDS="amd64 ~arm ~ppc ~ppc64 ~x86 ~x86-fbsd ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm ~ppc ~ppc64 x86 ~x86-fbsd ~amd64-linux ~x86-linux"
 IUSE="minimal"
 
 REMOVE_DIRS="${FILESDIR}/${PN}-15.07.90-remove-dirs"

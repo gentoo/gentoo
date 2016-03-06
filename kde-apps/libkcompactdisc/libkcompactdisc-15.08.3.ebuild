@@ -7,7 +7,7 @@ EAPI=5
 inherit kde4-base
 
 DESCRIPTION="KDE library for playing & ripping CDs"
-KEYWORDS=" amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="alsa debug"
 
 src_configure() {
