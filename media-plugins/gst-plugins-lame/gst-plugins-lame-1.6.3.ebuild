@@ -7,7 +7,7 @@ GST_ORG_MODULE=gst-plugins-ugly
 
 inherit gstreamer
 
-KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd ~x86-fbsd"
+KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc x86 ~amd64-fbsd ~x86-fbsd"
 IUSE=""
 
 RDEPEND=">=media-sound/lame-3.99.5-r1[${MULTILIB_USEDEP}]"

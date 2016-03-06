@@ -9,7 +9,7 @@ inherit gstreamer
 
 DESCRIPTION="MPEG-DASH plugin"
 
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 RDEPEND=">=dev-libs/libxml2-2.9.1-r4[${MULTILIB_USEDEP}]"

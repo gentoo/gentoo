@@ -8,7 +8,7 @@ GST_ORG_MODULE=gst-plugins-bad
 inherit gstreamer
 
 DESCRIPTION="GStreamer plugin for MPEG-1/2 video encoding"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 RDEPEND=">=media-video/mjpegtools-2.1.0-r1[${MULTILIB_USEDEP}]"
