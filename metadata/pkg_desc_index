@@ -8764,9 +8764,9 @@ dev-ruby/litc 1.0.3-r1: A tiny ruby module for Amazon EC2 intance metadata
 dev-ruby/little-plugger 1.1.3-r2 1.1.4: Module that provides Gem based plugin management
 dev-ruby/locale 2.1.0-r1 2.1.0-r2 2.1.1 2.1.2: A pure ruby library which provides basic APIs for localization
 dev-ruby/lockfile 2.1.3: A ruby library for creating NFS safe lockfiles
-dev-ruby/log4r 1.1.10-r1 1.1.10-r2: A comprehensive and flexible logging library written in Ruby for use in Ruby programs
+dev-ruby/log4r 1.1.10-r1 1.1.10-r2: A comprehensive and flexible logging library written in Ruby
 dev-ruby/log_buddy 0.7.0: Log statements along with their name easily
-dev-ruby/logging 1.8.2 2.0.0: Flexible logging library for use in Ruby programs based on the design of Java's log4j library
+dev-ruby/logging 2.0.0: Flexible logging library based on the design of Java's log4j library
 dev-ruby/logue 1.0.2-r1 1.0.2-r2: A module that adds logging/trace functionality
 dev-ruby/loofah 2.0.3: Library for manipulating and transforming HTML/XML documents and fragments.
 dev-ruby/loquacious 1.9.1-r2: Descriptive configuration files for Ruby written in Ruby
@@ -8837,7 +8837,7 @@ dev-ruby/network_interface 0.0.1-r1: network_interface layer from metasploit pca
 dev-ruby/niceogiri 1.1.2: Some wrappers around and helpers for XML manipulation using Nokogiri
 dev-ruby/nio4r 1.1.1 1.2.0 1.2.1: A high performance selector API for monitoring IO objects
 dev-ruby/nokogiri 1.6.4.1 1.6.6.2 1.6.6.4 1.6.7.1 1.6.7.2: Nokogiri is an HTML, XML, SAX, and Reader parser
-dev-ruby/nokogiri-diff 0.2.0-r1 0.2.0-r2: Calculate the differences (added or removed nodes) between two XML/HTML documents
+dev-ruby/nokogiri-diff 0.2.0-r1 0.2.0-r2: Calculate the differences between two XML/HTML documents
 dev-ruby/nokogumbo 1.4.1 1.4.6 1.4.7: A Nokogiri interface to the Gumbo HTML5 parser
 dev-ruby/notify 0.5.2-r1: A function to notify on cross platform
 dev-ruby/ntlm-http 0.1.1-r1 0.1.1-r2: Ruby/NTLM HTTP provides NTLM authentication over http
@@ -8860,7 +8860,7 @@ dev-ruby/pcaprub 0.11.3-r2 0.12.0-r1 0.12.1: Libpcap bindings for ruby compat
 dev-ruby/pdf-core 0.6.0 0.6.1: Implements low level PDF features for Prawn
 dev-ruby/pdf-inspector 1.1.0-r1 1.2.0 1.2.1: A tool for analyzing PDF output
 dev-ruby/pdf-reader 1.3.3 1.4.0: PDF parser conforming as much as possible to the PDF specification from Adobe
-dev-ruby/permutation 0.1.8-r1: Library to perform different operations with permutations of sequences (strings, arrays, etc.)
+dev-ruby/permutation 0.1.8-r1: Library performing operations with permutations of sequences (strings, arrays)
 dev-ruby/pg 0.17.1 0.17.1-r1 0.18.2 0.18.3 0.18.4: Ruby extension library providing an API to PostgreSQL
 dev-ruby/pg_array_parser 0.0.9-r1: Simple library to parse PostgreSQL arrays into a array of strings
 dev-ruby/pkg-config 1.1.6 1.1.7: A pkg-config implementation by Ruby
@@ -8870,7 +8870,7 @@ dev-ruby/png 1.2.0-r2 1.2.1: An almost pure-Ruby Portable Network Graphics (PNG)
 dev-ruby/podcast 0.0.4-r2: A pure Ruby library for generating podcasts from mp3 files
 dev-ruby/poltergeist 1.6.0 1.7.0: A PhantomJS driver for Capybara
 dev-ruby/polyglot 0.3.5: Polyglot provides support for fully-custom DSLs
-dev-ruby/posix-spawn 0.3.9 0.3.10 0.3.11: The posix-spawn library aims to implement a subset of the Ruby 1.9 Process::spawn
+dev-ruby/posix-spawn 0.3.11: Library that implements a subset of the Ruby 1.9 Process::spawn
 dev-ruby/postgres_ext 2.4.1: Adds native PostgreSQL data types to ActiveRecord and querying extensions for ActiveRecord and Arel
 dev-ruby/power_assert 0.2.6 0.2.7: Shows each value of variables and method calls in the expression
 dev-ruby/prawn 1.3.0 2.0.2 2.1.0: Fast, Nimble PDF Generation For Ruby
@@ -8926,7 +8926,7 @@ dev-ruby/request_store 1.0.5 1.2.0 1.2.1 1.3.0: Per-request global storage for R
 dev-ruby/rest-client 1.8.0 1.8.0-r1: Simple Simple HTTP and REST client for Ruby
 dev-ruby/rev 0.3.2-r1: Rev is an event library for Ruby, built on the libev event library
 dev-ruby/rexical 1.0.5-r3: Rexical is a lexical scanner generator
-dev-ruby/rgen 0.6.6 0.7.0 0.8.0: Ruby Modelling and Generator Framework
+dev-ruby/rgen 0.6.6 0.8.0: Ruby Modelling and Generator Framework
 dev-ruby/riel 1.2.0-r1 1.2.0-r2: This library extends the core Ruby libraries
 dev-ruby/right_http_connection 1.3.0 1.3.0-r1 1.5.0: RightScale's robust HTTP/S connection module
 dev-ruby/rinku 1.7.3: A Ruby library that does autolinking
@@ -8935,9 +8935,9 @@ dev-ruby/rjb 1.5.3 1.5.4: Rjb is a Ruby-Java software bridge
 dev-ruby/rkelly-remix 0.0.6 0.0.7: RKelly Remix is a fork of the RKelly JavaScript parser
 dev-ruby/rmagick 2.13.4 2.15.4: An interface between Ruby and the ImageMagick(TM) image processing library
 dev-ruby/robots 0.10.1-r2: A simple Ruby library to parse robots.txt
-dev-ruby/rouge 1.9.0 1.9.1 1.10.1: Yet-another-markdown-parser but fast, pure Ruby, using a strict syntax definition
+dev-ruby/rouge 1.10.1: Yet-another-markdown-parser using a strict syntax definition in pure Ruby
 dev-ruby/rqrcode 0.9.0 0.10.1: Library for encoding QR Codes
-dev-ruby/rr 1.1.2 1.1.2-r1: A double framework that features a rich selection of double techniques and a terse syntax
+dev-ruby/rr 1.1.2 1.1.2-r1: A double framework featuring a selection of double techniques and a terse syntax
 dev-ruby/rrdtool-bindings 1.4.8 1.4.8-r2 1.4.9 1.5.3 1.5.4 1.5.5: Ruby bindings for rrdtool
 dev-ruby/rspec 1.3.2-r1 1.3.2-r2 2.14.1 2.14.1-r1 2.99.0 3.2.0 3.3.0 3.4.0: A Behaviour Driven Development (BDD) framework for Ruby
 dev-ruby/rspec-collection_matchers 1.1.2: A Behaviour Driven Development (BDD) framework for Ruby
@@ -9012,14 +9012,14 @@ dev-ruby/rubytest 0.7.0 0.8.1: Ruby Test is a universal test harness for Ruby
 dev-ruby/rubytest-cli 0.2.0: Rubytest CLI is a command-line interface for Rubytest
 dev-ruby/rubytter 1.5.1: Rubytter is a simple twitter library
 dev-ruby/rubyzip 0.9.9-r1 0.9.9-r2 1.1.7 1.1.7-r1: A ruby library for reading and writing zip files
-dev-ruby/safe_yaml 1.0.4 1.0.4-r1 1.0.4-r2: Parse YAML safely, without that pesky arbitrary object deserialization vulnerability
+dev-ruby/safe_yaml 1.0.4 1.0.4-r2: Parse YAML safely, alternative implementation of YAML.load
 dev-ruby/samuel 0.3.3-r1 0.3.3-r2: An automatic logger for HTTP requests in Ruby
 dev-ruby/sanitize 2.0.6-r1 2.1.0 4.0.0-r1 4.0.1: Sanitize is a whitelist-based HTML sanitizer
 dev-ruby/sass 3.2.19-r1 3.2.19-r2 3.3.14 3.3.14-r1 3.4.15 3.4.19 3.4.20 3.4.21: An extension of CSS3, adding nested rules, variables, mixins, and more
 dev-ruby/sass-rails 3.2.6 4.0.5 5.0.3 5.0.4 5.0.4-r1: Official Ruby-on-Rails Integration with Sass
 dev-ruby/sawyer 0.7.0: Secret User Agent of HTTP
 dev-ruby/sdoc 0.3.20 0.4.1: rdoc generator html with javascript search index
-dev-ruby/seed-fu 2.2.0 2.3.3 2.3.4 2.3.5: Advanced seed data handling for Rails, combining the best practices of several methods together
+dev-ruby/seed-fu 2.3.5: Advanced seed data handling for Rails
 dev-ruby/selenium-webdriver 2.47.1 2.50.0 2.51.0 2.52.0: This gem provides Ruby bindings for WebDriver
 dev-ruby/semantic_puppet 0.1.1: Library of useful tools for working with Semantic Versions and module dependencies.
 dev-ruby/serialport 1.3.0 1.3.1: a library for serial port (rs232) access in ruby
