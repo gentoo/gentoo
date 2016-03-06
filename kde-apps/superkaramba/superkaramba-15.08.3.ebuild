@@ -10,7 +10,7 @@ inherit python-single-r1 kde4-base
 DESCRIPTION="A tool to create interactive applets for the KDE desktop"
 HOMEPAGE="https://www.kde.org/applications/utilities/superkaramba
 https://utils.kde.org/projects/superkaramba"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="debug python"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
