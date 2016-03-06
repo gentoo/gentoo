@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -21,6 +21,7 @@ REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="
 	>=dev-libs/libgit2-0.23.0:=
+	<dev-libs/libgit2-0.24
 	>=dev-libs/glib-2.44.0:2
 	>=dev-libs/gobject-introspection-0.10.1:=
 	python? (
