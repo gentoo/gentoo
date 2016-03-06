@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -42,7 +42,7 @@ CDEPEND="
 	media-libs/liblqr
 	>=media-libs/libpgf-6.12.27
 	media-libs/libpng:0=
-	>=media-libs/opencv-3.0.0[contrib]
+	>=media-libs/opencv-3.0.0:=[contrib]
 	media-libs/phonon[qt4]
 	>=media-libs/tiff-3.8.2:0
 	virtual/jpeg:0
