@@ -1,9 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
-USE_RUBY="ruby19 ruby20 ruby21"
+USE_RUBY="ruby20 ruby21"
 
 RUBY_FAKEGEM_TASK_DOC="doc"
 RAKE_FAKEGEM_DOCDIR="doc"
@@ -11,7 +11,7 @@ RUBY_FAKEGEM_EXTRADOC="History.txt README.md"
 
 inherit ruby-fakegem
 
-DESCRIPTION="Flexible logging library for use in Ruby programs based on the design of Java's log4j library"
+DESCRIPTION="Flexible logging library based on the design of Java's log4j library"
 HOMEPAGE="http://rubygems.org/gems/logging"
 
 LICENSE="MIT"
