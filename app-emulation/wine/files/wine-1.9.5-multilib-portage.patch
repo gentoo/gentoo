@@ -1,0 +1,22 @@
+--- configure.ac.orig	2016-03-05 20:53:50.574628728 -0500
++++ configure.ac	2016-03-05 20:57:54.945617833 -0500
+@@ -141,6 +141,9 @@
+     then
+       CC="$CC -m32"
+       CXX="$CXX -m32"
++      CFLAGS="$CFLAGS -m32"
++      LDFLAGS="$LDFLAGS -m32"
++      CXXFLAGS="$CXXFLAGS -m32"
+       AC_MSG_CHECKING([whether $CC works])
+       AC_LINK_IFELSE([AC_LANG_PROGRAM()],AC_MSG_RESULT([yes]),
+                      [AC_MSG_RESULT([no])
+@@ -160,6 +163,9 @@
+       fi
+       CC="$CC -m64"
+       CXX="$CXX -m64"
++      CFLAGS="$CFLAGS -m64"
++      LDFLAGS="$LDFLAGS -m64"
++      CXXFLAGS="$CXXFLAGS -m64"
+       host_cpu="x86_64"
+       notice_platform="64-bit "
+       AC_SUBST(TARGETFLAGS,"-m64")
