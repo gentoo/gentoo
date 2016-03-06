@@ -12,7 +12,7 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Polari"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~arm"
+KEYWORDS="~amd64 ~arm ~x86"
 IUSE=""
 
 COMMON_DEPEND="
