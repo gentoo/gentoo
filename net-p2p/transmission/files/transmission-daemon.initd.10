@@ -20,20 +20,27 @@ runas_user=${runas_user:-transmission:transmission}
 retry="TERM/45/QUIT/15"
 
 start_pre() {
-	command_args="
-		--config-dir ${config_dir}
-		--download-dir ${download_dir}
-		--pid-file ${pidfile}
-		${TRANSMISSION_OPTIONS}
-	"
+	command_args="--config-dir ${config_dir} --pid-file ${pidfile}"
 	command_user="${runas_user}"
 
-	checkpath -d -o ${runas_user} "${rundir}" /var/lib/transmission "${config_dir}" "${download_dir}" || return
+	# Call mkdir -p in case parent dirs are missing
+	mkdir -p "${rundir}" "${config_dir}" "${download_dir}"
+
+	# Call checkpath to fixup permissions
+	checkpath -d -o "${runas_user}" "${rundir}" "${config_dir}" "${download_dir}" || return
+
+	if [ ! -e "${config_dir}/settings.json" ]; then
+		# Only set download dir if settings don't exist
+		# https://bugs.gentoo.org/576640
+		command_args="${command_args} --download-dir ${download_dir}"
+	fi
 
 	if [ "${logfile}" != syslog ]; then
-		checkpath -d -o ${runas_user} /var/log/transmission || return
+		checkpath -d -o "${runas_user}" /var/log/transmission || return
 		command_args="${command_args} --logfile ${logfile}"
 	fi
+
+	command_args="${command_args} ${TRANSMISSION_OPTIONS}"
 }
 
 reload() {
