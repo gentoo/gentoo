@@ -18,7 +18,7 @@ RUBY_FAKEGEM_EXTRAINSTALL="locale po"
 
 inherit ruby-fakegem
 
-DESCRIPTION="Ruby GetText Package is Native Language Support Library and Tools modeled after GNU gettext package"
+DESCRIPTION="Native Language Support Library and Tools modeled after GNU gettext package"
 HOMEPAGE="http://ruby-gettext.github.io/"
 
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
