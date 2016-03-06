@@ -2376,7 +2376,7 @@ app-text/rhyme 0.9-r1: Console based Rhyming Dictionary
 app-text/rman 3.2-r1: PolyGlotMan man page translator AKA RosettaMan
 app-text/rnv 1.7.11 1.7.11-r1: A lightweight Relax NG Compact Syntax validator
 app-text/robodoc 4.99.36: Automating Software Documentation
-app-text/ronn 0.7.3-r2 0.7.3-r3: Converts simple, human readable textfiles to roff for terminal display, and to HTML
+app-text/ronn 0.7.3-r2 0.7.3-r3: Converts simple, human readable textfiles to roff for terminal display, and HTML
 app-text/rpl 1.5.5 1.5.5-r1: Intelligent recursive search/replace utility
 app-text/rtf2html 0.2.0-r1: RTF to HTML converter
 app-text/sablotron 1.0.3: An XSLT Parser in C++
@@ -8815,7 +8815,7 @@ dev-ruby/multi_json 1.9.3 1.10.1 1.11.0 1.11.1 1.11.2: A gem to provide swappabl
 dev-ruby/multi_test 0.1.1 0.1.2: A uniform interface for Ruby testing libraries
 dev-ruby/multi_xml 0.5.4-r1 0.5.4-r2 0.5.5: A generic swappable back-end for XML parsing
 dev-ruby/multipart-post 2.0.0-r1: Adds a streamy multipart form post capability to Net::HTTP
-dev-ruby/mustache 0.99.5 0.99.5-r1 1.0.1 1.0.2: Mustache is a framework-agnostic way to render logic-free views
+dev-ruby/mustache 0.99.5 1.0.2: Mustache is a framework-agnostic way to render logic-free views
 dev-ruby/mysql2 0.3.20 0.4.2 0.4.3: A modern, simple and very fast Mysql library for Ruby - binding to libmysql
 dev-ruby/nagios 0.0.4-r1: Nagios-rb is a compact framework for writing Nagios plugins
 dev-ruby/nagios_analyzer 0.0.5-r1: A simple parser for Nagios status files
@@ -8842,7 +8842,7 @@ dev-ruby/nokogumbo 1.4.1 1.4.6 1.4.7: A Nokogiri interface to the Gumbo HTML5 pa
 dev-ruby/notify 0.5.2-r1: A function to notify on cross platform
 dev-ruby/ntlm-http 0.1.1-r1 0.1.1-r2: Ruby/NTLM HTTP provides NTLM authentication over http
 dev-ruby/oauth 0.4.7-r2 0.5.1: A RubyGem for implementing both OAuth clients and servers
-dev-ruby/oauth2 1.0.0 1.1.0: Wrapper for the OAuth 2.0 protocol with a similar style to the OAuth gem
+dev-ruby/oauth2 1.1.0: Wrapper for the OAuth 2.0 protocol with a similar style to the OAuth gem
 dev-ruby/octokit 4.2.0 4.3.0: Ruby toolkit for the Github API
 dev-ruby/omniauth 1.2.2-r1 1.3.1: A generalized Rack framework for multiple-provider authentication
 dev-ruby/open4 1.3.3 1.3.4: Open3::popen3 with exit status
@@ -8941,7 +8941,7 @@ dev-ruby/rr 1.1.2 1.1.2-r1: A double framework featuring a selection of double t
 dev-ruby/rrdtool-bindings 1.4.8 1.4.8-r2 1.4.9 1.5.3 1.5.4 1.5.5: Ruby bindings for rrdtool
 dev-ruby/rspec 1.3.2-r1 1.3.2-r2 2.14.1 2.14.1-r1 2.99.0 3.3.0 3.4.0: A Behaviour Driven Development (BDD) framework for Ruby
 dev-ruby/rspec-collection_matchers 1.1.2: A Behaviour Driven Development (BDD) framework for Ruby
-dev-ruby/rspec-core 2.14.8-r2 2.14.8-r4 2.99.2-r1 3.3.2 3.3.2-r1 3.4.2 3.4.3: A Behaviour Driven Development (BDD) framework for Ruby
+dev-ruby/rspec-core 2.14.8-r2 2.14.8-r4 2.99.2-r1 3.3.2 3.3.2-r1 3.4.3: A Behaviour Driven Development (BDD) framework for Ruby
 dev-ruby/rspec-expectations 2.14.5 2.14.5-r1 2.99.2 3.3.1 3.4.0: A Behaviour Driven Development (BDD) framework for Ruby
 dev-ruby/rspec-its 1.1.0 1.2.0: A Behaviour Driven Development (BDD) framework for Ruby
 dev-ruby/rspec-mocks 2.14.6 2.14.6-r1 2.99.2 3.3.2 3.4.0 3.4.1: A Behaviour Driven Development (BDD) framework for Ruby
