@@ -18,7 +18,7 @@ IUSE="targrey"
 
 DEPEND=""
 RDEPEND=">=dev-lang/perl-5.6.0
-		dev-perl/net-server
+		dev-perl/Net-Server
 		dev-perl/IO-Multiplex
 		dev-perl/BerkeleyDB
 		dev-perl/Net-DNS
