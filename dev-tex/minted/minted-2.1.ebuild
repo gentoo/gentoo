@@ -13,7 +13,7 @@ SRC_URI="https://github.com/gpoore/minted/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 SLOT="0"
 LICENSE="BSD"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
-IUSE=""
+IUSE="doc"
 
 DEPEND="app-arch/unzip"
 RDEPEND="
