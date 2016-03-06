@@ -13,7 +13,7 @@ SRC_URI="http://www.skarnet.org/software/${PN}/${P}.tar.gz"
 LICENSE="ISC"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="static"
+IUSE="static static-libs"
 
 DEPEND=">=sys-devel/make-4.0
 	static? (
@@ -42,8 +42,8 @@ src_configure()
 {
 	econf \
 		$(use_enable !static shared) \
+		$(use_enable static-libs static) \
 		$(use_enable static allstatic) \
-		$(use_enable static) \
 		--bindir=/bin \
 		--sbindir=/sbin \
 		--dynlibdir=/$(get_libdir) \
