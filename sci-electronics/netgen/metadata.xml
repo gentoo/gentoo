@@ -16,6 +16,6 @@
     </maintainer>
     <changelog>http://www.opencircuitdesign.com/netgen/history.html</changelog>
     <doc lang="en">http://www.opencircuitdesign.com/netgen/reference.html</doc>
-    <bugs-to>tim@opencircuitdesign.com</bugs-to>
+    <bugs-to>mailto:tim@opencircuitdesign.com</bugs-to>
   </upstream>
 </pkgmetadata>
