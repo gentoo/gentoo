@@ -70,25 +70,27 @@ src_unpack() {
 
 src_prepare() {
 	# disable git fetch of systemd
-	sed -e 's|^include makelib/git.mk$|'\
+	sed -e 's~^include makelib/git.mk$~'\
 'ifneq ($(wildcard $(RKT_STAGE1_SYSTEMD_SRC)),)\n\n'\
-'get_systemd_sources: $(UFS_SYSTEMDDIR)\n'\
+'get_systemd_sources: | $(UFS_SYSTEMDDIR)\n'\
 '\tmv "$(RKT_STAGE1_SYSTEMD_SRC)" "$(UFS_SYSTEMD_SRCDIR)"\n\n'\
 '$(UFS_SYSTEMD_CONFIGURE): get_systemd_sources\n\n'\
+'else ifneq ($(wildcard $(UFS_SYSTEMD_SRCDIR)),)\n\n'\
 'else\n'\
 '\t\0\n'\
-'endif|' -i stage1/usr_from_src/usr_from_src.mk || die
+'endif~' -i stage1/usr_from_src/usr_from_src.mk || die
 
 	# disable git fetch of kvmtool
-	sed -e 's|^include makelib/git.mk$|'\
+	sed -e 's~^include makelib/git.mk$~'\
 'ifneq ($(wildcard $(shell echo "$${WORKDIR}/kvmtool")),)\n\n'\
 '$(call forward-vars, get_lkvm_sources, LKVM_SRCDIR)\n'\
-'get_lkvm_sources: $(LKVM_TMPDIR)\n'\
+'get_lkvm_sources: | $(LKVM_TMPDIR)\n'\
 '\tmv "$${WORKDIR}/kvmtool" "$(LKVM_SRCDIR)"\n\n'\
 '$(LKVM_PATCH_STAMP): get_lkvm_sources\n\n'\
+'else ifneq ($(wildcard $(LKVM_SRCDIR)),)\n\n'\
 'else\n'\
 '\t\0\n'\
-'endif|' -i stage1/usr_from_kvm/lkvm.mk || die
+'endif~' -i stage1/usr_from_kvm/lkvm.mk || die
 
 	# disable fetch of kernel sources
 	sed -e 's|wget .*|ln -s "$${DISTDIR}/linux-'${KVM_LINUX_VERSION}'.tar.xz" "$@"|' \
