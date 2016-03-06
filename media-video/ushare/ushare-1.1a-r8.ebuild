@@ -30,7 +30,7 @@ src_prepare() {
 
 src_configure() {
 	local myconf
-	myconf="--prefix=/usr --sysconfdir=/etc --disable-strip"
+	myconf="--prefix=/usr --sysconfdir=/etc --disable-strip --disable-dlna"
 	# nls can only be disabled, on by default.
 	use nls || myconf="${myconf} --disable-nls"
 
