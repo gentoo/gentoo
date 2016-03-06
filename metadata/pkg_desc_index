@@ -353,7 +353,7 @@ app-backup/dirvish 1.2.1: Dirvish is a fast, disk based, rotating network backup
 app-backup/duplicity 0.6.22 0.6.23-r1 0.6.24 0.6.25 0.6.26: Secure backup system using gnupg to encrypt data
 app-backup/duply 1.9.2 1.10 1.10.1 1.11 1.11.1 1.11.2: A shell frontend for duplicity
 app-backup/flexbackup 1.2.1-r12: Flexible backup script using perl
-app-backup/fsarchiver 0.6.19: Flexible filesystem archiver for backup and deployment tool
+app-backup/fsarchiver 0.6.19 0.6.21: Flexible filesystem archiver for backup and deployment tool
 app-backup/furball 0.5: A handy backup script utilizing tar
 app-backup/hdup 2.0.14: Hdup is backup program using tar, find, gzip/bzip2, mcrypt and ssh
 app-backup/holland 1.0.10: Holland Core Plugins
@@ -3875,8 +3875,8 @@ dev-java/htmlparser 1.4-r1: Implementation of the HTML5 parsing algorithm in Jav
 dev-java/htmlparser-org 1.6: Java library used to parse HTML (from htmlparser.org)
 dev-java/httpcomponents-client 4.5: A low level toolset of Java components focused on HTTP and associated protocols
 dev-java/httpcomponents-core 4.4.1-r1: A low level toolset of Java components focused on HTTP and associated protocols
-dev-java/ibm-jdk-bin 1.6.0.9_p1 1.6.0.9_p2 1.6.0.9_p2-r1: IBM Java SE Development Kit
-dev-java/ibm-jre-bin 1.6.0.9_p1 1.6.0.9_p2 1.6.0.9_p2-r1: IBM Java SE Runtime Environment
+dev-java/ibm-jdk-bin 1.6.0.9_p2 1.6.0.9_p2-r1: IBM Java SE Development Kit
+dev-java/ibm-jre-bin 1.6.0.9_p2 1.6.0.9_p2-r1: IBM Java SE Runtime Environment
 dev-java/ical4j 1.0.5: a Java library for handling iCalendar data streams
 dev-java/icedtea 6.1.13.9-r2 7.2.6.4-r1: A harness to build OpenJDK using Free Software build tools and dependencies
 dev-java/icedtea-bin 3.0.0_pre09-r1 6.1.13.9 7.2.6.4: A Gentoo-made binary build of the IcedTea JDK
