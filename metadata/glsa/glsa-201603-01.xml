@@ -43,8 +43,9 @@
     <p>All GIMP users should upgrade to the latest version:
       <code>
         # emerge --sync
-        # emerge --ask --oneshot --verbose "&gt;=media-gfx/gimp-2.8.0”
+        # emerge --ask --oneshot --verbose "&gt;=media-gfx/gimp-2.8.0"
       </code>
+     </p>
     </resolution>
     <references>
       <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-4245">
