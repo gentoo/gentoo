@@ -102,7 +102,7 @@ DEPEND="
 	dev-perl/UNIVERSAL-require
 	dev-perl/libwww-perl
 	dev-perl/Locale-Maketext-Fuzzy
-	dev-perl/net-server
+	dev-perl/Net-Server
 	dev-perl/regexp-common
 	dev-perl/text-template
 	dev-perl/text-wrapper
