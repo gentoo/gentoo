@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer>
+		<email>mrueg@gentoo.org</email>
+		<name>Manuel Rüger</name>
+	</maintainer>
+	<use>
+		<flag name="minimal">Avoid collision with <pkg>app-misc/pwsafe</pkg></flag>
+		<flag name="yubikey">Enable support for Yubikey</flag>
+		<flag name="xml">Enable XML import support</flag>
+	</use>
+</pkgmetadata>
