@@ -4,7 +4,7 @@ DESCRIPTION=Qt-based image viewer
 EAPI=5
 HOMEPAGE=http://www.nomacs.org/
 IUSE=opencv qt5 raw tiff webp zip
-KEYWORDS=~amd64 ~amd64-linux
+KEYWORDS=amd64 ~amd64-linux
 LICENSE=GPL-3
 RDEPEND=>=media-gfx/exiv2-0.25:= qt5? ( dev-qt/qtconcurrent:5 dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtprintsupport:5 dev-qt/qtwidgets:5 opencv? ( media-libs/opencv:=[qt5] ) zip? ( dev-libs/quazip[qt5] ) ) !qt5? ( dev-qt/qtcore:4 dev-qt/qtgui:4 opencv? ( >=media-libs/opencv-2.4:=[qt4] ) zip? ( dev-libs/quazip[qt4] ) ) raw? ( >=media-libs/libraw-0.14:= ) tiff? ( media-libs/tiff:0 ) webp? ( >=media-libs/libwebp-0.3.1:= )
 REQUIRED_USE=raw? ( opencv ) tiff? ( opencv )
@@ -12,4 +12,4 @@ SLOT=0
 SRC_URI=mirror://sourceforge/nomacs/nomacs-2.4.6-source.tar.bz2
 _eclass_exported_funcs=pkg_postrm:- pkg_postinst:- src_prepare:cmake-utils src_configure:- src_compile:cmake-utils src_test:cmake-utils src_install:cmake-utils
 _eclasses_=cmake-utils	fa44804882ff16943e9f71b544f56bc9	eutils	9d81603248f2ba3ec59124320d123e5e	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	flag-o-matic	d270fa247153df66074f795fa42dba3e	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=31688f96af7bdc57600e3776640fde1c
+_md5_=a58d1a7a9d745cb0e030ab5865b6f6ca
