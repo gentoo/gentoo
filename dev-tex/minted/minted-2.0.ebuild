@@ -23,6 +23,7 @@ RDEPEND="
 S="${WORKDIR}"/${P}/source
 
 src_install() {
+	LATEX_DOC_ARGUMENTS='-shell-escape'
 	latex-package_src_install
 	dodoc "${S}"/../*md
 }
