@@ -8555,7 +8555,7 @@ dev-ruby/archive-tar-minitar 0.5.4-r1 0.5.4-r2: Provides POSIX tarchive manageme
 dev-ruby/arel 3.0.3 4.0.2 5.0.1.20140414130214 6.0.2 6.0.3 7.0.0: Arel is a Relational Algebra for Ruby
 dev-ruby/arel-helpers 2.1.1 2.2.0: Tools to help construct database queries
 dev-ruby/ascii85 1.0.2-r2: Methods for encoding/decoding Adobe's binary-to-text encoding of the same name
-dev-ruby/asciidoctor 1.5.2 1.5.3 1.5.4: Processor for converting AsciiDoc into HTML 5, DocBook 4.5 and other formats
+dev-ruby/asciidoctor 1.5.4: Processor for converting AsciiDoc into HTML 5, DocBook 4.5 and other formats
 dev-ruby/asciimath 1.0.2: A pure Ruby AsciiMath parsing and conversion library
 dev-ruby/ast 2.2.0: A library for working with abstract syntax trees
 dev-ruby/astrolabe 1.3.0 1.3.1: An object-oriented AST extension for Parser
@@ -8602,7 +8602,7 @@ dev-ruby/celluloid-supervision 0.20.5: Provides a simple and natural way to buil
 dev-ruby/certificate_authority 0.1.6: Managing the core functions outlined in RFC-3280 for PKI
 dev-ruby/charlock_holmes 0.7.3: Character encoding detecting library for Ruby using ICU
 dev-ruby/childlabor 0.0.3-r1: A scripting framework that replaces rake and sake
-dev-ruby/childprocess 0.5.3 0.5.8 0.5.9: Solution for controlling external programs running in the background
+dev-ruby/childprocess 0.5.3 0.5.9: Solution for controlling external programs running in the background
 dev-ruby/chronic 0.10.2: Chronic is a natural language date/time parser written in pure Ruby
 dev-ruby/chunky_png 1.3.5: Pure Ruby library that can read and write PNG images
 dev-ruby/classifier 1.3.4: Module to allow Bayesian and other types of classifications
@@ -9015,7 +9015,7 @@ dev-ruby/rubyzip 0.9.9-r1 0.9.9-r2 1.1.7 1.1.7-r1: A ruby library for reading an
 dev-ruby/safe_yaml 1.0.4 1.0.4-r2: Parse YAML safely, alternative implementation of YAML.load
 dev-ruby/samuel 0.3.3-r1 0.3.3-r2: An automatic logger for HTTP requests in Ruby
 dev-ruby/sanitize 2.0.6-r1 2.1.0 4.0.0-r1 4.0.1: Sanitize is a whitelist-based HTML sanitizer
-dev-ruby/sass 3.2.19-r1 3.2.19-r2 3.3.14 3.3.14-r1 3.4.15 3.4.19 3.4.20 3.4.21: An extension of CSS3, adding nested rules, variables, mixins, and more
+dev-ruby/sass 3.2.19-r1 3.2.19-r2 3.3.14-r1 3.4.15 3.4.21: An extension of CSS3, adding nested rules, variables, mixins, and more
 dev-ruby/sass-rails 3.2.6 4.0.5 5.0.3 5.0.4 5.0.4-r1: Official Ruby-on-Rails Integration with Sass
 dev-ruby/sawyer 0.7.0: Secret User Agent of HTTP
 dev-ruby/sdoc 0.3.20 0.4.1: rdoc generator html with javascript search index
@@ -18695,7 +18695,7 @@ x11-wm/echinus 0.4.9: A window manager for X in the spirit of dwm
 x11-wm/emerald 0.8.8: Emerald Window Decorator
 x11-wm/enlightenment 0.16.9999 0.17.9999 0.18.8 0.19.10 0.19.12 0.20.1 0.20.2 0.20.5 1.0.11 1.0.17: Enlightenment Window Manager (e16)
 x11-wm/evilwm 1.0.1 1.1.0 1.1.1: A minimalist, no frills window manager for X
-x11-wm/fluxbox 1.3.2 1.3.5 1.3.5-r1 1.3.6-r1 1.3.7 1.3.7-r1 1.3.7-r2 9999: Fluxbox is an X11 window manager featuring tabs and an iconbar
+x11-wm/fluxbox 1.3.6-r1 1.3.7-r2 9999: Fluxbox is an X11 window manager featuring tabs and an iconbar
 x11-wm/fvwm 2.6.5-r1: An extremely powerful ICCCM-compliant multiple virtual desktop window manager
 x11-wm/goomwwm 1.0.0: Get out of my way, Window Manager!
 x11-wm/herbstluftwm 0.6.2-r1 9999: A manual tiling window manager for X
