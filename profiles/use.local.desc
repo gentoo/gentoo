@@ -3888,6 +3888,7 @@ media-libs/avidemux-plugins:faad - Enable AAC audio decoding library support via
 media-libs/avidemux-plugins:fribidi - Enable unicode bidirectional algorithm support via dev-libs/fribidi.
 media-libs/avidemux-plugins:twolame - Enable TwoLAME support via media-sound/twolame, an optimised MPEG Audio Layer 2 (MP2) encoder.
 media-libs/avidemux-plugins:vpx - Enable WebM VP8 Codec SDK support via media-libs/libvpx.
+media-libs/babl:cpu_flags_x86_f16c - Take advantage of CPU feature f16c
 media-libs/cal3d:16bit-indices - Enables use of 16bit indices
 media-libs/chromaprint:tools - Build and install fpcalc and fpcollect tools
 media-libs/clutter:egl - Enable EGL backend.
