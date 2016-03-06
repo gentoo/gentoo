@@ -20,7 +20,7 @@ SRC_URI="http://ftp.edgewall.com/pub/trac/${MY_P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86 ~x86-fbsd"
+KEYWORDS="amd64 ~ppc ~ppc64 ~x86 ~x86-fbsd"
 IUSE="cgi fastcgi i18n +highlight +restructuredtext mysql postgres +sqlite subversion test"
 REQUIRED_USE="|| ( mysql postgres sqlite )"
 
