@@ -9,7 +9,7 @@ inherit kde4-base
 
 DESCRIPTION="Jovie is a text to speech application"
 HOMEPAGE="https://www.kde.org/applications/utilities/jovie/"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="debug"
 
 DEPEND="
