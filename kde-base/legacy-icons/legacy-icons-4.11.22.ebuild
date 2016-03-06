@@ -9,7 +9,7 @@ inherit kde4-base
 DESCRIPTION="KDE legacy icons"
 SRC_URI="mirror://kde/stable/applications/15.08.0/src/kde-workspace-4.11.22.tar.xz"
 
-KEYWORDS="amd64 ~arm ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm ~ppc ~ppc64 x86 ~amd64-linux ~x86-linux"
 IUSE=""
 
 DEPEND=""
