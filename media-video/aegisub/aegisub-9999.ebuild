@@ -55,11 +55,10 @@ REQUIRED_USE="
 	|| ( alsa openal oss portaudio pulseaudio )
 "
 
-# aegisub also bundles luabins (https://github.com/agladysh/luabins).
+# aegisub bundles luabins (https://github.com/agladysh/luabins).
 # Unfortunately, luabins upstream is dead since 2011.
 # Thus unbundling luabins is not worth the effort.
 PATCHES=(
-	"${FILESDIR}/${P}-unbundle-luajit.patch"
 	"${FILESDIR}/${PN}-3.2.2-r1-respect-user-compiler-flags.patch"
 )
 
@@ -87,6 +86,7 @@ src_configure() {
 	use openal && export agi_cv_with_openal="yes"
 	local myeconfargs=(
 		--disable-update-checker
+		--with-system-luajit
 		$(use_enable debug)
 		$(use_with alsa)
 		$(use_with ffmpeg ffms2)
