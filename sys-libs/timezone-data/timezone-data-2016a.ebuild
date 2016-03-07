@@ -37,6 +37,7 @@ _emake() {
 src_compile() {
 	local LDLIBS
 	tc-export CC
+	append-lfs-flags #471102
 	if use elibc_FreeBSD || use elibc_Darwin ; then
 		append-cppflags -DSTD_INSPIRED #138251
 	fi
