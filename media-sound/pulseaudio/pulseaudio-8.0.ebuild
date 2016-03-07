@@ -52,7 +52,7 @@ RDEPEND="
 	alsa? ( >=media-libs/alsa-lib-1.0.19 )
 	glib? ( >=dev-libs/glib-2.4.0:2[${MULTILIB_USEDEP}] )
 	zeroconf? ( >=net-dns/avahi-0.6.12[dbus] )
-	jack? ( >=media-sound/jack-audio-connection-kit-0.117 )
+	jack? ( virtual/jack )
 	tcpd? ( sys-apps/tcp-wrappers[${MULTILIB_USEDEP}] )
 	lirc? ( app-misc/lirc )
 	dbus? ( >=sys-apps/dbus-1.0.0[${MULTILIB_USEDEP}] )
