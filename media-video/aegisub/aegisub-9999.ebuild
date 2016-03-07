@@ -24,7 +24,7 @@ IUSE="alsa debug +ffmpeg +fftw openal oss portaudio pulseaudio spell +uchardet"
 # However, most of these minimal versions date back to 2006-2012 yy.
 # Such version specifiers are meaningless nowadays, so they are omitted.
 RDEPEND="
-	>=dev-lang/luajit-2.0.4:2[lua52compat]
+	dev-lang/luajit:2[lua52compat]
 	dev-libs/boost:=[icu,nls,threads]
 	dev-libs/icu:=
 	media-libs/fontconfig
