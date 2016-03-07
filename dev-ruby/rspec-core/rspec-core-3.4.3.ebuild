@@ -39,7 +39,6 @@ ruby_add_bdepend "test? (
 		>=dev-ruby/coderay-1.0.9
 		dev-ruby/syntax
 		>=dev-ruby/thread_order-1.1.0
-		>=dev-ruby/zentest-4.6.2
 		>=dev-ruby/rspec-expectations-3.3.0:3
 		>=dev-ruby/rspec-mocks-2.99.0:3
 	)"

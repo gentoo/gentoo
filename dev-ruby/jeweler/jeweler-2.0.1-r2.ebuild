@@ -1,9 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
-USE_RUBY="ruby19 ruby20 ruby21"
+USE_RUBY="ruby20 ruby21"
 
 RUBY_FAKEGEM_TASK_DOC="-Ilib yard"
 RUBY_FAKEGEM_DOCDIR="doc"
@@ -17,7 +17,7 @@ RUBY_FAKEGEM_GEMSPEC="jeweler.gemspec"
 
 inherit ruby-fakegem
 
-DESCRIPTION="Rake tasks for managing gems and versioning and a generator for creating a new project"
+DESCRIPTION="Rake tasks to manage gems, versioning and generate new projects"
 HOMEPAGE="https://wiki.github.com/technicalpickles/jeweler"
 
 LICENSE="MIT"

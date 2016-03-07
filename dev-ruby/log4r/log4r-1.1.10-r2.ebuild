@@ -1,9 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
-USE_RUBY="ruby19 ruby20 ruby21 ruby22"
+USE_RUBY="ruby20 ruby21 ruby22"
 
 RUBY_FAKEGEM_TASK_DOC=""
 
@@ -14,7 +14,7 @@ RUBY_FAKEGEM_DOCDIR="doc"
 
 inherit ruby-fakegem
 
-DESCRIPTION="A comprehensive and flexible logging library written in Ruby for use in Ruby programs"
+DESCRIPTION="A comprehensive and flexible logging library written in Ruby"
 HOMEPAGE="http://log4r.sourceforge.net/"
 IUSE=""
 

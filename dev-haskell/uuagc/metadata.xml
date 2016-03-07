@@ -7,11 +7,9 @@
 	</maintainer>
 	<use>
 		<flag name="bootstrap_external">Use an external uuagc executable for bootstrapping.</flag>
+		<flag name="with-loag">Use <pkg>dev-haskell/minisat</pkg> external SAT-solver to schedule all Linear Ordered AGs.</flag>
 	</use>
 	<longdescription>
 		Generates Haskell files from an attribute grammar specification
 	</longdescription>
-	<use>
-		<flag name="with-loag">Use <pkg>dev-haskell/minisat</pkg> external SAT-solver to schedule all Linear Ordered AGs.</flag>
-	</use>
 </pkgmetadata>

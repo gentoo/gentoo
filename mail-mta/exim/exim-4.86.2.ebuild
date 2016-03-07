@@ -87,7 +87,7 @@ src_prepare() {
 	epatch "${FILESDIR}"/exim-4.76-crosscompile.patch # 266591
 	epatch "${FILESDIR}"/exim-4.86-radius-type-fix.patch
 	epatch "${FILESDIR}"/exim-4.86-radius-include.patch
-	epatch "${FILESDIR}"/exim-4.86-TMPDIR.patch # 63420
+	epatch "${FILESDIR}"/exim-4.86.2-TMPDIR.patch # 63420
 
 	if use maildir ; then
 		epatch "${FILESDIR}"/exim-4.20-maildir.patch
@@ -514,6 +514,11 @@ pkg_postinst() {
 		einfo "DSN support is an experimental feature.  If you used DSN"
 		einfo "support prior to 4.83, make sure to remove all dsn_process"
 		einfo "switches from your routers, see https://bugs.gentoo.org/511818"
+	fi
+	if use perl ; then
+		einfo "For CVE-2016-1531, Exim introduced keep_environment and"
+		einfo "add_environment flags.  You might want to set them, see:"
+		einfo "https://lists.exim.org/lurker/message/20160302.191005.a72d8433.en.html"
 	fi
 	einfo "Exim maintains some db files under its spool directory that need"
 	einfo "cleaning from time to time.  (${EROOT}var/spool/exim/db)"

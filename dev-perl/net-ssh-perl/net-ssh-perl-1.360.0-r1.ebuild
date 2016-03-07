@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -22,15 +22,15 @@ DEPEND="
 	>=dev-perl/math-pari-2.001804
 	>=dev-perl/Digest-SHA1-2.10
 	dev-perl/Digest-HMAC
-	dev-perl/crypt-dh
-	>=dev-perl/crypt-dsa-0.11
+	dev-perl/Crypt-DH
+	>=dev-perl/Crypt-DSA-0.110.0
 	virtual/perl-MIME-Base64
 	>=dev-perl/convert-pem-0.05
 	dev-perl/Crypt-Blowfish
 	dev-perl/Crypt-DES
-	dev-perl/crypt-idea
+	dev-perl/Crypt-IDEA
 	dev-perl/Crypt-OpenSSL-RSA
-	dev-perl/crypt-rsa
+	dev-perl/Crypt-RSA
 	dev-perl/digest-bubblebabble"
 RDEPEND="${DEPEND}"
 

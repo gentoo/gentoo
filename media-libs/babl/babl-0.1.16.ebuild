@@ -20,7 +20,7 @@ HOMEPAGE="http://www.gegl.org/babl/"
 
 LICENSE="LGPL-3"
 SLOT="0"
-IUSE="altivec cpu_flags_x86_sse cpu_flags_x86_sse2 cpu_flags_x86_mmx"
+IUSE="altivec cpu_flags_x86_sse cpu_flags_x86_sse2 cpu_flags_x86_mmx cpu_flags_x86_f16c"
 
 RDEPEND=""
 DEPEND="${RDEPEND}
@@ -43,6 +43,7 @@ src_configure() {
 		--disable-static \
 		--disable-maintainer-mode \
 		$(use_enable altivec) \
+		$(use_enable cpu_flags_x86_f16c f16c) \
 		$(use_enable cpu_flags_x86_mmx mmx) \
 		$(use_enable cpu_flags_x86_sse sse) \
 		$(use_enable cpu_flags_x86_sse sse2)

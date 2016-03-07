@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+<maintainer type="project">
+	<email>base-system@gentoo.org</email>
+	<name>Gentoo Base System</name>
+</maintainer>
 <maintainer type="person">
 	<email>flameeyes@gentoo.org</email>
 </maintainer>
@@ -9,10 +13,6 @@
 </maintainer>
 <maintainer type="person">
 	<email>floppym@gentoo.org</email>
-</maintainer>
-<maintainer type="project">
-	<email>base-system@gentoo.org</email>
-	<name>Gentoo Base System</name>
 </maintainer>
 <use>
 	<flag name="net">Install the oui.txt and iab.txt databases</flag>

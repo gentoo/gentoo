@@ -24,6 +24,8 @@ DEPEND="${RDEPEND}"
 
 S="${WORKDIR}/${MY_PN}-${PV}/src"
 
+PATCHES=( "${FILESDIR}/${P}-hidden-config.patch" )
+
 src_configure() {
 	eqmake4 ${PN}.pro
 }

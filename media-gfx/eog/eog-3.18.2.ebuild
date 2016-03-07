@@ -16,7 +16,7 @@ SLOT="1"
 IUSE="+exif +introspection +jpeg lcms +svg tiff xmp"
 REQUIRED_USE="exif? ( jpeg )"
 
-KEYWORDS="~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
+KEYWORDS="~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc x86 ~x86-fbsd"
 
 RDEPEND="
 	>=dev-libs/glib-2.38:2[dbus]

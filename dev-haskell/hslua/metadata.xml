@@ -6,6 +6,7 @@
 		<name>Gentoo Haskell</name>
 	</maintainer>
 	<use>
+		<flag name="apicheck">Compile Lua with -DLUA_USE_APICHECK..</flag>
 		<flag name="system-lua">Use the system-wide lua instead of the bundled copy.</flag>
 	</use>
 	<longdescription>
@@ -15,8 +16,4 @@
 		The package is standalone: full Lua interpreter version 5.1.4
 		is distributed in this package as well.
 	</longdescription>
-	<use>
-		<flag name="system-lua">Use the system-wide lua instead of the bundled copy.</flag>
-		<flag name="apicheck">Compile Lua with -DLUA_USE_APICHECK..</flag>
-	</use>
 </pkgmetadata>

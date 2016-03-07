@@ -12,6 +12,6 @@
   </maintainer>
   <longdescription>Compression library programmed in C to perform very good, but slow, deflate or zlib compression.</longdescription>
   <upstream>
-    <remote-id type="github">Hello71/zopfli</remote-id>
+    <remote-id type="github">google/zopfli</remote-id>
   </upstream>
 </pkgmetadata>

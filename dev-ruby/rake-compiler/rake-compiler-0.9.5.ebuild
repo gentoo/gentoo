@@ -24,7 +24,7 @@ IUSE=""
 
 ruby_add_rdepend "dev-ruby/rake"
 
-ruby_add_bdepend "test? ( dev-ruby/rspec:3 )"
+ruby_add_bdepend "test? ( dev-ruby/rspec:2 )"
 
 USE_RUBY="ruby19 ruby20" ruby_add_bdepend "test? ( dev-util/cucumber )"
 

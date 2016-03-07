@@ -9,7 +9,7 @@ inherit qt5-build
 DESCRIPTION="Graphical tool that lets you introspect D-Bus objects and messages"
 
 if [[ ${QT5_BUILD_TYPE} == release ]]; then
-	KEYWORDS="~amd64 ~arm ~hppa ~ppc64 ~x86"
+	KEYWORDS="amd64 ~arm ~hppa ~ppc64 ~x86"
 fi
 
 IUSE=""

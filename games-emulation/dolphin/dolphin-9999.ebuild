@@ -139,7 +139,6 @@ src_configure() {
 	fi
 
 	local mycmakeargs=(
-		"-DDOLPHIN_WC_REVISION=${PV}"
 		"-DCMAKE_INSTALL_PREFIX=${GAMES_PREFIX}"
 		"-Dprefix=${GAMES_PREFIX}"
 		"-Ddatadir=${GAMES_DATADIR}/${PN}"
@@ -174,7 +173,8 @@ src_install() {
 		dodoc -r docs/ActionReplay docs/DSP docs/WiiMote
 	fi
 
-	doicon Installer/dolphin-emu.xpm
+	doicon -s 48 Installer/dolphin-emu.png
+	doicon -s scalable Installer/dolphin-emu.svg
 	make_desktop_entry "dolphin-emu" "Dolphin Emulator" "dolphin-emu" "Game;Emulator;"
 
 	prepgamesdirs

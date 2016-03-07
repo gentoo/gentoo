@@ -1,10 +1,10 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 
-USE_RUBY="ruby19 ruby20"
+USE_RUBY="ruby20"
 
 RUBY_FAKEGEM_NAME=ZenTest
 
@@ -14,7 +14,7 @@ RUBY_FAKEGEM_EXTRADOC="README.txt History.txt example.txt example1.rb example2.r
 
 inherit ruby-fakegem
 
-DESCRIPTION="ZenTest provides tools to support testing: zentest, unit_diff, autotest, multiruby, and Test::Rails"
+DESCRIPTION="Testing tools: zentest, unit_diff, autotest, multiruby, and Test::Rails"
 HOMEPAGE="https://github.com/seattlerb/zentest"
 LICENSE="Ruby"
 

@@ -17,7 +17,7 @@ if [[ ${PV} == "9999" ]]; then
 	KEYWORDS=""
 else
 	SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
-	KEYWORDS="amd64 ~x86"
+	KEYWORDS="amd64 x86"
 	MY_LANGS="ar bs ca cs da de el en_GB es et fi fr ga gl hu ia it ja lt mr nb nds nl pl pt pt_BR ro sk sv tr ug uk zh_CN zh_TW"
 fi
 

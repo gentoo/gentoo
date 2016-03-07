@@ -11,7 +11,7 @@ inherit flag-o-matic gnome2
 DESCRIPTION="C++ bindings for gtksourceview"
 HOMEPAGE="https://wiki.gnome.org/Projects/GtkSourceView"
 
-KEYWORDS="amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc x86"
 IUSE="doc"
 SLOT="2.0"
 LICENSE="LGPL-2.1"

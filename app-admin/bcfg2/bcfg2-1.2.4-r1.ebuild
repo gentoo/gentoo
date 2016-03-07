@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -27,7 +27,7 @@ RDEPEND="app-portage/gentoolkit[${PYTHON_USEDEP}]
 		dev-libs/libgamin[python,${PYTHON_USEDEP}]
 		dev-python/lxml[${PYTHON_USEDEP}]
 		dev-python/nose[${PYTHON_USEDEP}]
-		virtual/fam )"
+		!kernel_linux? ( virtual/fam ) )"
 
 python_compile_all() {
 	if use doc; then

@@ -14,12 +14,10 @@
 </longdescription>
   <use>
     <flag name="sourceview">
-    Enable support for <pkg>x11-libs/gtksourceview</pkg>
-  </flag>
-  </use>
-  <use>
+      Enable support for <pkg>x11-libs/gtksourceview</pkg>
+    </flag>
     <flag name="fits">
-    Enable FITS image import via <pkg>sci-libs/cfitsio</pkg>
-  </flag>
+      Enable FITS image import via <pkg>sci-libs/cfitsio</pkg>
+    </flag>
   </use>
 </pkgmetadata>

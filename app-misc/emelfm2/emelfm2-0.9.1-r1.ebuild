@@ -11,7 +11,7 @@ SRC_URI="http://emelfm2.net/rel/${P}.tar.bz2"
 
 LICENSE="GPL-3 LGPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="amd64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="acl ansi gimp gtk3 kernel_linux nls policykit spell udisks"
 
 EMELFM2_LINGUAS=( de fr ja pl ru zh_CN )
