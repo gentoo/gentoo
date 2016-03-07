@@ -1,9 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
-inherit eutils multilib systemd toolchain-funcs user
+EAPI=6
+inherit multilib systemd toolchain-funcs user
 
 DESCRIPTION="The X2Go server"
 HOMEPAGE="http://www.x2go.org"
@@ -21,16 +21,23 @@ RDEPEND="dev-perl/Capture-Tiny
 	dev-perl/Config-Simple
 	dev-perl/File-BaseDir
 	dev-perl/File-ReadBackwards
+	dev-perl/File-Which
 	media-fonts/font-cursor-misc
 	media-fonts/font-misc-misc[nls]
 	>=net-misc/nx-3.5.0.25
 	net-misc/openssh
+	>=sys-apps/iproute2-4.3.0
 	x11-apps/xauth
 	x11-apps/xhost
 	x11-apps/xwininfo
 	fuse? ( sys-fs/sshfs-fuse )
 	postgres? ( dev-perl/DBD-Pg )
 	sqlite? ( dev-perl/DBD-SQLite )"
+
+PATCHES=(
+	"${FILESDIR}"/${P}-use_bash_in_Xsession.patch
+	"${FILESDIR}"/${P}-remove_sshfs_cipher.patch
+	)
 
 pkg_setup() {
 	# Force the group creation, #479650
@@ -41,12 +48,6 @@ pkg_setup() {
 }
 
 src_prepare() {
-	# Bug #524350
-	epatch "${FILESDIR}"/${P}-prevent_bash_failures_xsession.patch
-	epatch "${FILESDIR}"/${P}-fix_local_desktop_sharing.patch
-	# Bug #524350
-	epatch "${FILESDIR}"/${P}-use_printf.patch
-
 	# Do not install Xresources symlink (#521126)
 	sed -e '\#$(INSTALL_SYMLINK) /etc/X11/Xresources# s/^/#/' -i x2goserver-xsession/Makefile || die "Xresources symlink sed failed"
 	# Multilib clean
@@ -55,6 +56,8 @@ src_prepare() {
 	sed -e "s/build-indep: build_man2html/build-indep:/" -i Makefile */Makefile || die "man2html sed failed"
 	# Use nxagent directly
 	sed -i -e "/NX_TEMP=/s/x2goagent/nxagent/" x2goserver/bin/x2gostartagent || die "sed failed"
+
+	default
 }
 
 src_compile() {
