@@ -30,6 +30,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Ian Stakenvicius <axs@gentoo.org> (06 Mar 2016)
+# Mask old versions of thunderbird as they are no longer supported,
+# but we keep them in the repo for now in case there is a need
+# for them for upgrading old user profiles, etc.
+~mail-client/thunderbird-24.8.0
+~mail-client/thunderbird-31.8.0
+
 # Aaron Bauman <bman@gentoo.org> (05 Mar 2016)
 # Per security bug #491372 this package is vulnerable
 # and unmaintained.  Removal in 30 days.
@@ -167,11 +174,6 @@ media-libs/gluon
 # and nothing depends on it.
 # Masked for removal in 30 days.  See bug 573326
 dev-python/simplegui
-
-# Ian Stakenviciuus <axs@gentoo.org> (09 Feb 2016)
-# Mask until members of the project can test and unmask
-=net-fs/samba-4.4*
-=sys-libs/ldb-1.1.25
 
 # Patrice Clement <monsieurp@gentoo.org> (09 Feb 2016)
 # Old, ancient, deprecated, obsolete.. so many adjectives could describe these
@@ -366,12 +368,6 @@ dev-libs/iniparser:4
 # Version bump is a WIP, see bug #524242
 # It works (except USE=vamp) but is not up to Gentoo standards yet
 =media-sound/audacity-2.1.1
-
-# Ian Stakenvicius <axs@gentoo.org> (16 Jul 2015)
-# Mask thunerbird-24.x as it is no longer supported, but
-# it remains in the tree for now in case there is a need
-# for it for upgrading old user profiles, etc.
-~mail-client/thunderbird-24.8.0
 
 # Patrick Lauer <patrick@gentoo.org> (1 Jul 2015)
 # Wrong version #553670
