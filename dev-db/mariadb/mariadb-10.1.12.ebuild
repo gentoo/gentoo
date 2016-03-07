@@ -79,6 +79,8 @@ src_configure(){
 	local MYSQL_CMAKE_NATIVE_DEFINES=(
 			-DWITH_JEMALLOC=$(usex jemalloc system)
 			-DWITH_PCRE=system
+	)
+	local MYSQL_CMAKE_EXTRA_DEFINES=(
 			-DPLUGIN_AUTH_GSSAPI_CLIENT=$(usex kerberos YES NO)
 	)
 	if use server ; then

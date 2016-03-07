@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -12,7 +12,7 @@ RUBY_FAKEGEM_RECIPE_TEST="none"
 
 inherit ruby-fakegem
 
-DESCRIPTION="Parse YAML safely, without that pesky arbitrary object deserialization vulnerability"
+DESCRIPTION="Parse YAML safely, alternative implementation of YAML.load"
 HOMEPAGE="https://dtao.github.com/safe_yaml"
 
 LICENSE="MIT"

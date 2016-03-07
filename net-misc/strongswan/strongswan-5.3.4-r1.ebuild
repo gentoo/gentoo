@@ -35,7 +35,7 @@ COMMON_DEPEND="!net-misc/openswan
 	sqlite? ( >=dev-db/sqlite-3.3.1 )
 	networkmanager? ( net-misc/networkmanager )
 	pam? ( sys-libs/pam )
-	strongswan_plugins_unbound? ( net-dns/unbound )"
+	strongswan_plugins_unbound? ( net-dns/unbound net-libs/ldns )"
 DEPEND="${COMMON_DEPEND}
 	virtual/linux-sources
 	sys-kernel/linux-headers"

@@ -7,7 +7,7 @@ EAPI=5
 inherit autotools eutils multilib toolchain-funcs
 
 DESCRIPTION="highly optimized and portable routines for integer based number theoretic applications"
-HOMEPAGE="https://github.com/libtom/libtommath"
+HOMEPAGE="http://www.libtom.org/"
 SRC_URI="https://github.com/libtom/libtommath/releases/download/v${PV}/ltm-${PV}.tar.xz"
 
 LICENSE="WTFPL-2"

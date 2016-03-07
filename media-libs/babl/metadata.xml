@@ -4,4 +4,7 @@
 	<maintainer type="person">
 		<email>sping@gentoo.org</email>
 	</maintainer>
+	<use>
+		<flag name='cpu_flags_x86_f16c'>Take advantage of CPU feature f16c</flag>
+	</use>
 </pkgmetadata>

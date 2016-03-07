@@ -20,6 +20,7 @@
     <remote-id type="cpan-module">Net::Twitter::Role::API::Search::Trends</remote-id>
     <remote-id type="cpan-module">Net::Twitter::Role::API::TwitterVision</remote-id>
     <remote-id type="cpan-module">Net::Twitter::Role::API::Upload</remote-id>
+    <remote-id type="cpan-module">Net::Twitter::Role::AppAuth</remote-id>
     <remote-id type="cpan-module">Net::Twitter::Role::AutoCursor</remote-id>
     <remote-id type="cpan-module">Net::Twitter::Role::InflateObjects</remote-id>
     <remote-id type="cpan-module">Net::Twitter::Role::Legacy</remote-id>

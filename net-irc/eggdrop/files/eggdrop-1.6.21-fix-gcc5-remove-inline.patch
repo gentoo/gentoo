@@ -1,0 +1,52 @@
+diff --git a/src/net.c b/src/net.c
+index 68c245c..e48fb76 100644
+--- a/src/net.c
++++ b/src/net.c
+@@ -564,7 +564,7 @@ int open_address_listen(IP addr, int *port)
+ /* Returns a socket number for a listening socket that will accept any
+  * connection -- port # is returned in port
+  */
+-inline int open_listen(int *port)
++int open_listen(int *port)
+ {
+   return open_address_listen(myip[0] ? getmyip() : INADDR_ANY, port);
+ }
+diff --git a/src/proto.h b/src/proto.h
+index 117347e..e80e30b 100644
+--- a/src/proto.h
++++ b/src/proto.h
+@@ -271,7 +271,7 @@ int getsock(int);
+ void killsock(int);
+ void killtclsock(int);
+ int answer(int, char *, unsigned long *, unsigned short *, int);
+-inline int open_listen(int *);
++int open_listen(int *);
+ int open_address_listen(IP addr, int *);
+ int open_telnet(char *, int);
+ int open_telnet_dcc(int, char *, char *);
+diff --git a/src/tclhash.c b/src/tclhash.c
+index 822f920..7281ceb 100644
+--- a/src/tclhash.c
++++ b/src/tclhash.c
+@@ -109,7 +109,7 @@ static inline void tcl_bind_list_delete(tcl_bind_list_t *tl)
+   nfree(tl);
+ }
+ 
+-inline void garbage_collect_tclhash(void)
++void garbage_collect_tclhash(void)
+ {
+   tcl_bind_list_t *tl, *tl_next, *tl_prev;
+   tcl_bind_mask_t *tm, *tm_next, *tm_prev;
+diff --git a/src/tclhash.h b/src/tclhash.h
+index 4069014..3bd85a7 100644
+--- a/src/tclhash.h
++++ b/src/tclhash.h
+@@ -75,7 +75,7 @@ typedef struct tcl_bind_list_b {
+ 
+ #ifndef MAKING_MODS
+ 
+-inline void garbage_collect_tclhash(void);
++void garbage_collect_tclhash(void);
+ 
+ void init_bind(void);
+ void kill_bind(void);

@@ -20,3 +20,8 @@ IUSE=""
 
 ruby_add_rdepend "<dev-ruby/faraday-0.10
 	<dev-ruby/addressable-2.5"
+
+all_ruby_prepare() {
+	# Avoid tests that require network acces
+	sed -i -e '/test_blank_response_doesnt_raise/,/^    end/ s:^:#:' test/agent_test.rb || die
+}

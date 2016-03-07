@@ -8,7 +8,7 @@ GST_ORG_MODULE="gst-plugins-good"
 inherit gstreamer
 
 DESCRIPTION="GStreamer encoder/decoder/tagger for FLAC"
-KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd"
+KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc x86 ~amd64-fbsd ~x86-fbsd"
 IUSE=""
 
 RDEPEND=">=media-libs/flac-1.2.1-r5[${MULTILIB_USEDEP}]"

@@ -30,6 +30,39 @@
 
 #--- END OF EXAMPLES ---
 
+# Ian Stakenvicius <axs@gentoo.org> (06 Mar 2016)
+# Mask old versions of thunderbird as they are no longer supported,
+# but we keep them in the repo for now in case there is a need
+# for them for upgrading old user profiles, etc.
+~mail-client/thunderbird-24.8.0
+~mail-client/thunderbird-31.8.0
+
+# Aaron Bauman <bman@gentoo.org> (05 Mar 2016)
+# Per security bug #491372 this package is vulnerable
+# and unmaintained.  Removal in 30 days.
+net-mail/perdition
+
+# Aaron Bauman <bman@gentoo.org> (05 Mar 2016)
+# Per security bug #448826 this package is vulnerable
+# and unmaintained.  Removal in 30 days.
+www-apps/dragonflycms
+
+# Aaron Bauman <bman@gentoo.org> (05 Mar 2016)
+# Per security bug #392325 this package is vulnerable
+# and unmaintained.  Removal in 30 days.
+dev-libs/clearsilver
+
+# Aaron Bauman <bman@gentoo.org> (05 Mar 2016)
+# Per security bug #466782 this package is vulnerable
+# and unmaintained.  Removal in 30 days.
+media-sound/xmp
+
+# Aaron Bauman <bman@gentoo.org> (05 Mar 2016)
+# Per security bug #399563 these packages are vulnerable
+# and unmaintained.  Removal in 30 days.
+www-apps/horde-imp
+www-apps/horde-dimp
+
 # Mike Gilbert <floppym@gentoo.org> (03 Mar 2016)
 # Dev channel releases are only for people who are developers or want more
 # experimental features and accept a more unstable release.
@@ -142,11 +175,6 @@ media-libs/gluon
 # Masked for removal in 30 days.  See bug 573326
 dev-python/simplegui
 
-# Ian Stakenviciuus <axs@gentoo.org> (09 Feb 2016)
-# Mask until members of the project can test and unmask
-=net-fs/samba-4.4*
-=sys-libs/ldb-1.1.25
-
 # Patrice Clement <monsieurp@gentoo.org> (09 Feb 2016)
 # Old, ancient, deprecated, obsolete.. so many adjectives could describe these
 # ebuilds. Let's just say it's about time to kiss them goodbye.
@@ -165,17 +193,6 @@ dev-java/jsr93
 # (or newer) as quick as possible to avoid any security-related issues.
 # Masked for removal in 30 days. See bug 573870.
 net-libs/iojs
-
-# James Le Cuirot <chewi@gentoo.org> (07 Feb 2016)
-# BioJava depends on commons-dbcp:0, which requires Java 6. Even the
-# latest "legacy" version 1.9.1 does so and no one wants to do the
-# difficult bump to 4.1.0. Mauve depends on BioJava but being a very
-# outdated live SVN ebuild, it probably doesn't work anyway. This goes
-# for Mauve Aligner too. Removal in 30 days. See bug #556470.
-sci-biology/biojava
-sci-biology/mauve
-sci-biology/mauvealigner
-dev-java/bytecode
 
 # James Le Cuirot <chewi@gentoo.org> (07 Feb 2016)
 # Masked until 2.0 final arrives, which hopefully won't depend on
@@ -329,9 +346,9 @@ www-apache/mod_h2
 >=net-fs/samba-4.3.0
 
 # Lars Wendler <polynomial-c@gentoo.org> (20 Aug 2015)
-# Masked for testing
-=net-misc/iputils-20150815
-=net-misc/iputils-20150815-r1
+# Release is not from original upstream but from a fork. Masked as requested by
+# vapier
+~net-misc/iputils-20150815
 
 # Sebastian Pipping <sping@gentoo.org> (8 Aug 2015)
 # Upcoming, too young to go into testing unmasked
@@ -351,12 +368,6 @@ dev-libs/iniparser:4
 # Version bump is a WIP, see bug #524242
 # It works (except USE=vamp) but is not up to Gentoo standards yet
 =media-sound/audacity-2.1.1
-
-# Ian Stakenvicius <axs@gentoo.org> (16 Jul 2015)
-# Mask thunerbird-24.x as it is no longer supported, but
-# it remains in the tree for now in case there is a need
-# for it for upgrading old user profiles, etc.
-~mail-client/thunderbird-24.8.0
 
 # Patrick Lauer <patrick@gentoo.org> (1 Jul 2015)
 # Wrong version #553670

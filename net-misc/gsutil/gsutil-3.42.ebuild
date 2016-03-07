@@ -40,11 +40,10 @@ PATCHES=(
 )
 
 python_prepare_all() {
+	distutils-r1_python_prepare_all
 	sed \
 		-e '/SocksiPy-branch/d' \
 		-i setup.py || die
-
-	distutils-r1_python_prepare_all
 }
 
 python_test() {

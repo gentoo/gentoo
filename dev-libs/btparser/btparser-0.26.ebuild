@@ -15,7 +15,7 @@ SRC_URI="https://github.com/abrt/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0/2"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 IUSE="static-libs"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"

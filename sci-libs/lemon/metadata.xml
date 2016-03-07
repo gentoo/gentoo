@@ -17,13 +17,10 @@
   networks.
 </longdescription>
 <use>
-  <flag name="coin">Enable the <pkg>coinor-clp</pkg> and
-  <pkg>coinor-cbc</pkg> graph algorithms</flag>
+  <flag name="coin">Enable the <pkg>sci-libs/coinor-clp</pkg> and
+  <pkg>sci-libs/coinor-cbc</pkg> graph algorithms</flag>
   <flag name="glpk">Enable GNU Linear Programming Kit
   <pkg>sci-mathematics/glpk</pkg> support</flag>
   <flag name="tools">Build additional tools</flag>
-  <flag name="coin">Enable the <pkg>coinor-clp</pkg> and
-  <pkg>coinor-cbc</pkg> graph algorithms
-  </flag>
 </use>
 </pkgmetadata>

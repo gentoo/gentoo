@@ -23,6 +23,6 @@
     </maintainer>
     <changelog>http://www.opencircuitdesign.com/magic/release.html</changelog>
     <doc lang="en">http://www.opencircuitdesign.com/magic/magic_docs.html</doc>
-    <bugs-to>tim@opencircuitdesign.com</bugs-to>
+    <bugs-to>mailto:tim@opencircuitdesign.com</bugs-to>
   </upstream>
 </pkgmetadata>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>nerdboy@gentoo.org</email>
+	</maintainer>
+	<longdescription lang="en">
+		This is the only useable open source BUFR library (from ECMWF) 
+		and comes with a few example tools (some of which are built
+		and installed).
+	</longdescription>
+	<use>
+		<flag name="lto">
+			Use gold linker and -flto (requires existing env setup)
+		</flag>
+	</use>
+</pkgmetadata>

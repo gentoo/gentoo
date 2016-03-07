@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="Import packages into other packages"
 
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86 ~ppc-aix ~x86-solaris"
+KEYWORDS="amd64 ~ppc x86 ~ppc-aix ~x86-solaris"
 IUSE="test"
 
 RDEPEND="
