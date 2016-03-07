@@ -8,16 +8,17 @@ AUTOTOOLS_AUTORECONF=1
 AUTOTOOLS_IN_SOURCE_BUILD=1
 PLOCALES="ar bg ca cs da de el es eu fa fi fr_FR gl hu id it ja ko nl pl pt_BR pt_PT ru sr_RS@latin sr_RS uk_UA vi zh_CN zh_TW"
 WX_GTK_VER="3.0"
+COMMIT_ID="26fea0e123246b4f122beb54559c8dcd82925071"
 
-inherit autotools-utils fdo-mime flag-o-matic gnome2-utils l10n wxwidgets git-2
+inherit autotools-utils fdo-mime flag-o-matic gnome2-utils l10n wxwidgets vcs-snapshot
 
 DESCRIPTION="Advanced subtitle editor"
 HOMEPAGE="http://www.aegisub.org/"
-EGIT_REPO_URI="git://github.com/Aegisub/Aegisub.git"
+SRC_URI="https://github.com/Aegisub/Aegisub/archive/${COMMIT_ID}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="alsa debug +ffmpeg +fftw openal oss portaudio pulseaudio spell +uchardet"
 
 # configure.ac specifies minimal versions for some of the dependencies below.
@@ -59,8 +60,8 @@ REQUIRED_USE="
 # Unfortunately, luabins upstream is dead since 2011.
 # Thus unbundling luabins is not worth the effort.
 PATCHES=(
-	"${FILESDIR}/${PN}-3.2.2_p20160306-fix-luajit-unbundling.patch"
-	"${FILESDIR}/${PN}-3.2.2_p20160306-respect-user-compiler-flags.patch"
+	"${FILESDIR}/${P}-fix-luajit-unbundling.patch"
+	"${FILESDIR}/${P}-respect-user-compiler-flags.patch"
 )
 
 pkg_pretend() {
