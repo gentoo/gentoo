@@ -224,6 +224,8 @@ src_install() {
 	newinitd "${FILESDIR}"/${PN}2.init ${PN}
 
 	systemd_newuserunit systemd/${PN}.service ${PN}.service
+	sed -i '/WantedBy=/c WantedBy=default.target' \
+		"${ED}"/usr/lib/systemd/user/mpd.service || die "sed failed"
 
 	if use unicode; then
 		sed -i -e 's:^#filesystem_charset.*$:filesystem_charset "UTF-8":' \

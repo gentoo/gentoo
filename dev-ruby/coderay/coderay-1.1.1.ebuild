@@ -4,7 +4,7 @@
 
 EAPI=5
 
-USE_RUBY="ruby20 ruby21 ruby22"
+USE_RUBY="ruby20 ruby21 ruby22 ruby23"
 
 # The test target also contains test:exe but that requires
 # shoulda-context which we do not have packaged yet.
@@ -26,10 +26,10 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE=""
 
-# Redcloth is optional but automagically tested, so we add this
-# dependency to ensure that we get at least a version that works: bug
-# 330621.
-ruby_add_bdepend "test? ( >=dev-ruby/redcloth-4.2.2 )"
+# Redcloth is an optional but automagically tested dependency. This
+# requires redcloth-4.2.2. We don't depend on this version to make
+# bootstrapping rspec with new versions easier, since redcloth depends
+# on rake-compiler.
 
 all_ruby_prepare() {
 	sed -i -e "/[Bb]undler/d" Rakefile || die
