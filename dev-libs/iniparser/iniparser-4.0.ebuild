@@ -57,7 +57,7 @@ src_test() {
 }
 
 src_install() {
-	newlib.a lib${PN}.a lib${PN}${SLOT}.a
+	use static-libs && newlib.a lib${PN}.a lib${PN}${SLOT}.a
 	_newlib_so_with_symlinks lib${PN}.so lib${PN}${SLOT} 1 0 0
 
 	insinto /usr/include/${PN}${SLOT}
