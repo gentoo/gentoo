@@ -8575,7 +8575,7 @@ dev-ruby/best_in_place 3.0.3 3.1.0: In-place editor helper for Rails 3
 dev-ruby/binding_of_caller 0.7.2: Retrieve the binding of a method's caller
 dev-ruby/bitescript 0.0.9: BiteScript is a Ruby DSL for generating Java bytecode and classes
 dev-ruby/blankslate 2.1.2.4 3.1.3: Base class with almost all of the methods from Object and Kernel being removed
-dev-ruby/bluecloth 2.2.0-r1 2.2.0-r2: A Ruby implementation of Markdown
+dev-ruby/bluecloth 2.2.0-r1 2.2.0-r2 2.2.0-r3: A Ruby implementation of Markdown
 dev-ruby/bones 3.8.1-r1 3.8.3: Tool that creates new Ruby projects from a code skeleton
 dev-ruby/bouncy-castle-java 1.5.0146.1 1.5.0147: A gem redistribution of 'Legion of the Bouncy Castle Java cryptography APIs'
 dev-ruby/bourne 1.6.0: Extends mocha to allow tracking and querying of stub and mock invocations
@@ -15152,7 +15152,10 @@ sci-astronomy/idlastro 20160225: Astronomical user routines for IDL
 sci-astronomy/kapteyn 2.3: Collection of python tools for astronomy
 sci-astronomy/missfits 2.8.0: Performs basic maintenance and packaging tasks on FITS files
 sci-astronomy/predict 2.2.3-r1: Satellite tracking and orbital prediction
+sci-astronomy/psfex 3.17.1: Extracts models of the Point Spread Function from FITS images
 sci-astronomy/pyephem 3.7.5.3 3.7.6.0: Astronomical routines for the python programming language
+sci-astronomy/scamp 2.0.4: Astrometric and photometric solutions for astronomical images
+sci-astronomy/sextractor 2.19.5: Extract catalogs of sources from astronomical FITS images
 sci-astronomy/skycat 3.1.2-r1: ESO astronomical image visualizer with catalog access
 sci-astronomy/skychart 3.8.2450 3.10.2854: Planetarium for amauter astronomers
 sci-astronomy/skymaker 3.10.5: Program that simulates astronomical images
@@ -15574,6 +15577,7 @@ sci-libs/amd 2.3.1: Library to order a sparse matrix prior to Cholesky factoriza
 sci-libs/armadillo 3.4.4 3.6.2 4.650.4 5.600.2 6.100.1 6.200.3: Streamlined C++ linear algebra library
 sci-libs/arpack 3.1.3-r1 3.1.5: Arnoldi package library to solve large scale eigenvalue problems
 sci-libs/arprec 2.2.16 2.2.17: Arbitrary precision float arithmetics and functions
+sci-libs/atlas 3.10.2: Automatically Tuned Linear Algebra Software
 sci-libs/avogadrolibs 0.7.2-r1 0.8.0: Advanced molecule editor and visualizer 2 - libraries
 sci-libs/beagle 3.0.3: Open BEAGLE, a versatile EC/GA/GP framework
 sci-libs/blas-reference 20070226 20070226-r2 20070226-r3 20070226-r4: Basic Linear Algebra Subprograms F77 reference implementations
