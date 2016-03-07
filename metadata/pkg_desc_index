@@ -9175,7 +9175,7 @@ dev-tcltk/tcl-mccp 0.6: mccp extension to TCL
 dev-tcltk/tcl3d 0.4.0: Tcl bindings to OpenGL and other 3D libraries
 dev-tcltk/tcllib 1.15-r2 1.16: Tcl Standard Library
 dev-tcltk/tclperl 3.2-r1: Perl package for Tcl
-dev-tcltk/tclpython 4.1-r4: Python package for Tcl
+dev-tcltk/tclpython 4.1-r4 4.1-r5: Python package for Tcl
 dev-tcltk/tclreadline 2.1.0-r4: Readline extension to TCL
 dev-tcltk/tclx 8.4.1: A set of extensions to TCL
 dev-tcltk/tclxml 3.2-r2: Pure Tcl implementation of an XML parser
@@ -17588,9 +17588,9 @@ www-client/lynx 2.8.8_p2 2.8.9_pre4 2.8.9_pre6: An excellent console-based web b
 www-client/midori 0.5.10 0.5.11: A lightweight web browser based on WebKitGTK+
 www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
 www-client/netsurf 3.3-r1 3.4: a free, open source web browser
-www-client/opera 12.16_p1860-r1 35.0.2066.68 35.0.2066.82: A fast and secure web browser
-www-client/opera-beta 35.0.2066.35 36.0.2130.2 36.0.2130.21: A fast and secure web browser
-www-client/opera-developer 36.0.2120.0 36.0.2129.0 37.0.2142.0: A fast and secure web browser
+www-client/opera 12.16_p1860-r1 35.0.2066.82 35.0.2066.92: A fast and secure web browser
+www-client/opera-beta 36.0.2130.21 36.0.2130.26: A fast and secure web browser
+www-client/opera-developer 37.0.2142.0 37.0.2157.0: A fast and secure web browser
 www-client/otter 0.9.07 0.9.08 0.9.09 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
 www-client/phantomjs 1.9.8 2.0.0 2.0.0-r1: A headless WebKit scriptable with a JavaScript API
 www-client/pybugz 0.11.1 0.12.1 9999: Command line interface to (Gentoo) Bugzilla
