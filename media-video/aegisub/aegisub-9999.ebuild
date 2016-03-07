@@ -21,12 +21,12 @@ KEYWORDS=""
 IUSE="alsa debug +ffmpeg +fftw openal oss portaudio pulseaudio spell +uchardet"
 
 # configure.ac specifies minimal versions for some of the dependencies below.
-# However, most of these minimal versions date back to 2006-2010 yy.
+# However, most of these minimal versions date back to 2006-2012 yy.
 # Such version specifiers are meaningless nowadays, so they are omitted.
 RDEPEND="
 	>=dev-lang/luajit-2.0.4:2[lua52compat]
-	>=dev-libs/boost-1.50.0:=[icu,nls,threads]
-	>=dev-libs/icu-4.8.1.1:=
+	dev-libs/boost:=[icu,nls,threads]
+	dev-libs/icu:=
 	>=x11-libs/wxGTK-3.0.0:${WX_GTK_VER}[X,opengl,debug?]
 	media-libs/fontconfig
 	media-libs/freetype
@@ -39,7 +39,7 @@ RDEPEND="
 	portaudio? ( =media-libs/portaudio-19* )
 	pulseaudio? ( media-sound/pulseaudio )
 
-	ffmpeg? ( >=media-libs/ffmpegsource-2.16:= )
+	ffmpeg? ( media-libs/ffmpegsource:= )
 	fftw? ( >=sci-libs/fftw-3.3:= )
 
 	spell? ( app-text/hunspell )
