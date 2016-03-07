@@ -29,7 +29,7 @@ RDEPEND="
 	dev-libs/icu:=
 	media-libs/fontconfig
 	media-libs/freetype
-	media-libs/libass[fontconfig]
+	media-libs/libass:=[fontconfig]
 	virtual/libiconv
 	virtual/opengl
 	x11-libs/wxGTK:${WX_GTK_VER}[X,opengl,debug?]
