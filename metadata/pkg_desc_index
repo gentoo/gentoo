@@ -4783,7 +4783,7 @@ dev-libs/mongo-c-driver 0.7.1-r1 0.8.1-r1 0.98.2 1.1.2-r1 1.1.10: A high-perform
 dev-libs/mongo-cxx-driver 0.0.2.6.7-r1 1.0.0 1.0.5: C++ Driver for MongoDB
 dev-libs/mozldap 6.0.6-r2 6.0.7: Mozilla LDAP C SDK
 dev-libs/mpc 1.0.1 1.0.2 1.0.2-r1 1.0.3: A library for multiprecision complex arithmetic with exact rounding
-dev-libs/mpfr 2.4.2_p3-r1 3.1.2_p10 3.1.3_p4: library for multiple-precision floating-point computations with exact rounding
+dev-libs/mpfr 2.4.2_p3-r1 3.1.3_p4 3.1.4: library for multiple-precision floating-point computations with exact rounding
 dev-libs/mps 1.106.2 1.110.0 1.111.0 1.114.0: Ravenbrook Memory Pool System
 dev-libs/msgpack 0.5.9 1.0.0 1.0.1 1.1.0: MessagePack is a binary-based efficient data interchange format
 dev-libs/nanomsg 0.5-r1 0.6 0.8: High-performance messaging interface for distributed applications
