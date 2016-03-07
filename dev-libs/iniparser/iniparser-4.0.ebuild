@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit eutils multilib toolchain-funcs
+inherit eutils multilib toolchain-funcs flag-o-matic
 
 DESCRIPTION="A free stand-alone ini file parsing library"
 HOMEPAGE="https://github.com/ndevilla/iniparser"
@@ -38,6 +38,10 @@ _newlib_so_with_symlinks() {
 src_prepare() {
 	epatch "${PATCHES[@]}"
 	rm -R html || die
+}
+
+src_configure() {
+	append-lfs-flags
 }
 
 src_compile() {
