@@ -4,7 +4,7 @@
 
 EAPI="5"
 
-inherit eutils multilib toolchain-funcs multilib-minimal
+inherit eutils multilib toolchain-funcs multilib-minimal flag-o-matic
 
 DESCRIPTION="Various utilities dealing with the PCI bus"
 HOMEPAGE="http://mj.ucw.cz/sw/pciutils/ https://git.kernel.org/?p=utils/pciutils/pciutils.git"
@@ -50,6 +50,10 @@ src_prepare() {
 	fi
 
 	multilib_copy_sources
+}
+
+multilib_src_configure() {
+	append-lfs-flags #471102
 }
 
 pemake() {

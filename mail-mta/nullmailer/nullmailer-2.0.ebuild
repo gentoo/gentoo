@@ -7,11 +7,11 @@ EAPI=6
 inherit autotools eutils flag-o-matic multilib systemd user
 
 DESCRIPTION="Simple relay-only local mail transport agent"
-HOMEPAGE="http://untroubled.org/nullmailer/"
+HOMEPAGE="http://untroubled.org/nullmailer/ https://github.com/bruceg/nullmailer"
 SRC_URI="http://untroubled.org/${PN}/archive/${P}.tar.gz"
 
-SLOT="0"
 LICENSE="GPL-2"
+SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="ssl"
 
@@ -56,12 +56,14 @@ src_prepare() {
 }
 
 src_configure() {
+	# https://github.com/bruceg/nullmailer/pull/31/commits
+	append-lfs-flags #471102
 	econf \
 		--localstatedir=/var \
 		$(use_enable ssl tls)
 }
 
-src_install () {
+src_install() {
 	default
 
 	# A small bit of sample config
