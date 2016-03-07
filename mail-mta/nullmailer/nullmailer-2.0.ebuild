@@ -10,8 +10,8 @@ DESCRIPTION="Simple relay-only local mail transport agent"
 HOMEPAGE="http://untroubled.org/nullmailer/"
 SRC_URI="http://untroubled.org/${PN}/archive/${P}.tar.gz"
 
-SLOT="0"
 LICENSE="GPL-2"
+SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="ssl"
 
@@ -61,7 +61,7 @@ src_configure() {
 		$(use_enable ssl tls)
 }
 
-src_install () {
+src_install() {
 	default
 
 	# A small bit of sample config
