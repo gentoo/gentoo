@@ -2,16 +2,16 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
-inherit eutils fdo-mime flag-o-matic java-pkg-opt-2 linux-info multilib pax-utils python-single-r1 qt4-r2 toolchain-funcs udev
+inherit eutils fdo-mime flag-o-matic java-pkg-opt-2 linux-info multilib pax-utils python-single-r1 toolchain-funcs udev
 
 MY_PV="${PV/beta/BETA}"
 MY_PV="${MY_PV/rc/RC}"
 MY_P=VirtualBox-${MY_PV}
 SRC_URI="http://download.virtualbox.org/virtualbox/${MY_PV}/${MY_P}.tar.bz2
-	https://dev.gentoo.org/~polynomial-c/${PN}/patchsets/${PN}-5.0.2-patches-01.tar.xz"
+	https://dev.gentoo.org/~polynomial-c/${PN}/patchsets/${PN}-5.0.16-patches-01.tar.xz"
 S="${WORKDIR}/${MY_P}"
 
 DESCRIPTION="Family of powerful x86 virtualization products for enterprise as well as home use"
@@ -27,38 +27,38 @@ RDEPEND="!app-emulation/virtualbox-bin
 	dev-libs/libIDL
 	>=dev-libs/libxslt-1.1.19
 	net-misc/curl
-	!libressl? ( dev-libs/openssl:0= )
-	libressl? ( dev-libs/libressl:= )
 	dev-libs/libxml2
 	media-libs/libpng:0=
 	media-libs/libvpx:0=
 	sys-libs/zlib
 	!headless? (
+		media-libs/libsdl:0[X,video]
+		x11-libs/libX11
+		x11-libs/libXcursor
+		x11-libs/libXext
+		x11-libs/libXmu
+		x11-libs/libXt
+		opengl? ( virtual/opengl media-libs/freeglut )
 		qt4? (
 			dev-qt/qtgui:4
 			dev-qt/qtcore:4
 			opengl? ( dev-qt/qtopengl:4 )
 			x11-libs/libXinerama
 		)
-		opengl? ( virtual/opengl media-libs/freeglut )
-		x11-libs/libX11
-		x11-libs/libXcursor
-		x11-libs/libXext
-		x11-libs/libXmu
-		x11-libs/libXt
-		media-libs/libsdl:0[X,video]
 	)
-
 	java? ( >=virtual/jre-1.6:= )
+	libressl? ( dev-libs/libressl:= )
+	!libressl? ( dev-libs/openssl:0= )
 	udev? ( >=virtual/udev-171 )
 	vnc? ( >=net-libs/libvncserver-0.9.9 )"
 DEPEND="${RDEPEND}
 	>=dev-util/kbuild-0.1.9998_pre20131130
 	>=dev-lang/yasm-0.6.2
 	sys-devel/bin86
-	sys-power/iasl
-	pam? ( sys-libs/pam )
 	sys-libs/libcap
+	sys-power/iasl
+	virtual/pkgconfig
+	alsa? ( >=media-libs/alsa-lib-1.0.13 )
 	doc? (
 		dev-texlive/texlive-basic
 		dev-texlive/texlive-latex
@@ -67,10 +67,9 @@ DEPEND="${RDEPEND}
 		dev-texlive/texlive-fontsrecommended
 		dev-texlive/texlive-fontsextra
 	)
-	java? ( >=virtual/jre-1.6:= )
-	virtual/pkgconfig
-	alsa? ( >=media-libs/alsa-lib-1.0.13 )
 	!headless? ( x11-libs/libXinerama )
+	java? ( >=virtual/jre-1.6:= )
+	pam? ( sys-libs/pam )
 	pulseaudio? ( media-sound/pulseaudio )
 	vboxwebsrv? ( net-libs/gsoap[-gnutls(-)] )
 	${PYTHON_DEPS}"
@@ -101,9 +100,6 @@ QA_TEXTRELS_x86="usr/lib/virtualbox-ose/VBoxGuestPropSvc.so
 	usr/lib/virtualbox/components/VBoxREM.so
 	usr/lib/virtualbox/components/VBoxVMM.so
 	usr/lib/virtualbox/VBoxREM32.so
-	usr/lib/virtualbox/VBoxPython2_4.so
-	usr/lib/virtualbox/VBoxPython2_5.so
-	usr/lib/virtualbox/VBoxPython2_6.so
 	usr/lib/virtualbox/VBoxPython2_7.so
 	usr/lib/virtualbox/VBoxXPCOMC.so
 	usr/lib/virtualbox/VBoxOGLhostcrutil.so
@@ -112,9 +108,7 @@ QA_TEXTRELS_x86="usr/lib/virtualbox-ose/VBoxGuestPropSvc.so
 
 REQUIRED_USE="
 	java? ( sdk )
-	python? (
-		( sdk )
-	)
+	python? ( sdk )
 	vboxwebsrv? ( java )
 	${PYTHON_REQUIRED_USE}
 "
@@ -138,11 +132,15 @@ pkg_setup() {
 	fi
 	java-pkg-opt-2_pkg_setup
 	python-single-r1_pkg_setup
+
+	tc-ld-disable-gold #bug 488176
+	tc-export CC CXX LD AR RANLIB
+	export HOST_CC="$(tc-getBUILD_CC)"
 }
 
 src_prepare() {
 	# Remove shipped binaries (kBuild,yasm), see bug #232775
-	rm -rf kBuild/bin tools
+	rm -r kBuild/bin tools || die
 
 	# Disable things unused or split into separate ebuilds
 	sed -e "s@MY_LIBDIR@$(get_libdir)@" \
@@ -151,6 +149,10 @@ src_prepare() {
 	# Respect LDFLAGS
 	sed -e "s@_LDFLAGS\.${ARCH}*.*=@& ${LDFLAGS}@g" \
 		-i Config.kmk src/libs/xpcom18a4/Config.kmk || die
+
+	# Do not use hard-coded ld (related to bug #488176)
+	sed -e '/QUIET)ld /s@ld @$(LD) @' \
+		-i src/VBox/Devices/PC/ipxe/Makefile.kmk || die
 
 	# Use PAM only when pam USE flag is enbaled (bug #376531)
 	if ! use pam ; then
@@ -168,34 +170,31 @@ src_prepare() {
 	fi
 
 	if ! gcc-specs-pie ; then
-		EPATCH_EXCLUDE="050_${PN}-5.0.2-nopie.patch"
+		rm "${WORKDIR}/patches/050_${PN}-5.0.2-nopie.patch" || die
 	fi
 
-	EPATCH_EXCLUDE="007_virtualbox-4.3.16-gsoap2813.patch" \
-	EPATCH_SUFFIX="patch" \
-	EPATCH_FORCE="yes" \
-	epatch "${WORKDIR}/patches"
+	eapply "${WORKDIR}/patches"
 
-	epatch_user
+	eapply_user
 }
 
 src_configure() {
 	local myconf
-	use alsa       || myconf+=" --disable-alsa"
-	use doc        || myconf+=" --disable-docs"
-	use java       || myconf+=" --disable-java"
-	use opengl     || myconf+=" --disable-opengl"
-	use pulseaudio || myconf+=" --disable-pulse"
-	use python     || myconf+=" --disable-python"
-	use vboxwebsrv && myconf+=" --enable-webservice"
-	use vnc        && myconf+=" --enable-vnc"
+	use alsa       || myconf+=( --disable-alsa )
+	use doc        || myconf+=( --disable-docs )
+	use java       || myconf+=( --disable-java )
+	use opengl     || myconf+=( --disable-opengl )
+	use pulseaudio || myconf+=( --disable-pulse )
+	use python     || myconf+=( --disable-python )
+	use vboxwebsrv && myconf+=( --enable-webservice )
+	use vnc        && myconf+=( --enable-vnc )
 	if ! use headless ; then
-		use qt4 || myconf+=" --disable-qt4"
+		use qt4 || myconf+=( --disable-qt4 )
 	else
-		myconf+=" --build-headless --disable-opengl"
+		myconf+=( --build-headless --disable-opengl )
 	fi
 	if use amd64 && ! has_multilib_profile ; then
-		myconf+=" --disable-vmmraw"
+		myconf+=( --disable-vmmraw )
 	fi
 	# not an autoconf script
 	./configure \
@@ -204,12 +203,12 @@ src_configure() {
 		--disable-kmods \
 		--disable-dbus \
 		--disable-devmapper \
-		${myconf} \
+		${myconf[@]} \
 		|| die "configure failed"
 }
 
 src_compile() {
-	source ./env.sh
+	source ./env.sh || die
 
 	# Force kBuild to respect C[XX]FLAGS and MAKEOPTS (bug #178529)
 	# and strip all flags
@@ -232,6 +231,22 @@ src_compile() {
 src_install() {
 	cd "${S}"/out/linux.${ARCH}/release/bin || die
 
+	local vbox_inst_path="/usr/$(get_libdir)/${PN}"
+
+	vbox_inst() {
+		local binary="${1}"
+		local perms="${2:-0750}"
+		local path="${3:-${vbox_inst_path}}"
+
+		[[ -n "${binary}" ]] || die "vbox_inst: No binray given!"
+		[[ ${perms} =~ ^[[:digit:]]+{4}$ ]] || die "vbox_inst: perms must consist of four digits."
+
+		insinto ${path}
+		doins ${binary}
+		fowners root:vboxusers ${path}/${binary}
+		fperms ${perms} ${path}/${binary}
+	}
+
 	# Create configuration files
 	insinto /etc/vbox
 	newins "${FILESDIR}/${PN}-4-config" vbox.cfg
@@ -242,10 +257,10 @@ src_install() {
 		"${D}"/etc/vbox/vbox.cfg || die "vbox.cfg sed failed"
 
 	# Symlink binaries to the shipped wrapper
-	exeinto /usr/$(get_libdir)/${PN}
+	exeinto ${vbox_inst_path}
 	newexe "${FILESDIR}/${PN}-ose-3-wrapper" "VBox"
-	fowners root:vboxusers /usr/$(get_libdir)/${PN}/VBox
-	fperms 0750 /usr/$(get_libdir)/${PN}/VBox
+	fowners root:vboxusers ${vbox_inst_path}/VBox
+	fperms 0750 ${vbox_inst_path}/VBox
 
 	dosym /usr/$(get_libdir)/${PN}/VBox /usr/bin/VBoxManage
 	dosym /usr/$(get_libdir)/${PN}/VBox /usr/bin/VBoxVRDP
@@ -253,7 +268,7 @@ src_install() {
 	dosym /usr/$(get_libdir)/${PN}/VBoxTunctl /usr/bin/VBoxTunctl
 
 	# Install binaries and libraries
-	insinto /usr/$(get_libdir)/${PN}
+	insinto ${vbox_inst_path}
 	doins -r components
 
 	if use sdk ; then
@@ -261,60 +276,49 @@ src_install() {
 	fi
 
 	if use vboxwebsrv ; then
-		doins vboxwebsrv
-		fowners root:vboxusers /usr/$(get_libdir)/${PN}/vboxwebsrv
-		fperms 0750 /usr/$(get_libdir)/${PN}/vboxwebsrv
-		dosym /usr/$(get_libdir)/${PN}/VBox /usr/bin/vboxwebsrv
+		vbox_inst vboxwebsrv
+		dosym ${vbox_inst_path}/VBox /usr/bin/vboxwebsrv
 		newinitd "${FILESDIR}"/vboxwebsrv-initd vboxwebsrv
 		newconfd "${FILESDIR}"/vboxwebsrv-confd vboxwebsrv
 	fi
 
+	# *.rc files for x86_64 are only available on multilib systems
 	local rcfiles="*.rc"
 	if use amd64 && ! has_multilib_profile ; then
 		rcfiles=""
 	fi
 
 	for each in VBox{Manage,SVC,XPCOMIPCD,Tunctl,ExtPackHelperApp} *so *r0 ${rcfiles} ; do
-		doins ${each}
-		fowners root:vboxusers /usr/$(get_libdir)/${PN}/${each}
-		fperms 0750 /usr/$(get_libdir)/${PN}/${each}
+		vbox_inst ${each}
 	done
 
-	# VBoxNetAdpCtl and VBoxNetDHCP binaries need to be suid root in any case..
+	# VBoxNetAdpCtl and VBoxNetDHCP binaries need to be suid root in any case.
 	for each in VBoxNet{AdpCtl,DHCP,NAT} ; do
-		doins ${each}
-		fowners root:vboxusers /usr/$(get_libdir)/${PN}/${each}
-		fperms 4750 /usr/$(get_libdir)/${PN}/${each}
+		vbox_inst ${each} 4750
 	done
 
 	# VBoxSVC and VBoxManage need to be pax-marked (bug #403453)
 	# VBoxXPCOMIPCD (bug #524202)
 	for each in VBox{Manage,SVC,XPCOMIPCD} ; do
-		pax-mark -m "${D}"/usr/$(get_libdir)/${PN}/${each}
+		pax-mark -m "${D}"${vbox_inst_path}/${each}
 	done
 
 	if ! use headless ; then
-		doins VBoxSDL
-		fowners root:vboxusers /usr/$(get_libdir)/${PN}/VBoxSDL
-		fperms 4750 /usr/$(get_libdir)/${PN}/VBoxSDL
-		pax-mark -m "${D}"/usr/$(get_libdir)/${PN}/VBoxSDL
+		vbox_inst VBoxSDL 4750
+		pax-mark -m "${D}"${vbox_inst_path}/VBoxSDL
 
 		if use opengl && use qt4 ; then
-			doins VBoxTestOGL
-			fowners root:vboxusers /usr/$(get_libdir)/${PN}/VBoxTestOGL
-			fperms 0750 /usr/$(get_libdir)/${PN}/VBoxTestOGL
-			pax-mark -m "${D}"/usr/$(get_libdir)/${PN}/VBoxTestOGL
+			vbox_inst VBoxTestOGL
+			pax-mark -m "${D}"${vbox_inst_path}/VBoxTestOGL
 		fi
 
-		dosym /usr/$(get_libdir)/${PN}/VBox /usr/bin/VBoxSDL
+		dosym ${vbox_inst_path}/VBox /usr/bin/VBoxSDL
 
 		if use qt4 ; then
-			doins VirtualBox
-			fowners root:vboxusers /usr/$(get_libdir)/${PN}/VirtualBox
-			fperms 4750 /usr/$(get_libdir)/${PN}/VirtualBox
-			pax-mark -m "${D}"/usr/$(get_libdir)/${PN}/VirtualBox
+			vbox_inst VirtualBox 4750
+			pax-mark -m "${D}"${vbox_inst_path}/VirtualBox
 
-			dosym /usr/$(get_libdir)/${PN}/VBox /usr/bin/VirtualBox
+			dosym ${vbox_inst_path}/VBox /usr/bin/VirtualBox
 
 			newmenu "${FILESDIR}"/${PN}-ose.desktop-2 ${PN}.desktop
 		fi
@@ -328,17 +332,15 @@ src_install() {
 		popd &>/dev/null || die
 	fi
 
-	doins VBoxHeadless
-	fowners root:vboxusers /usr/$(get_libdir)/${PN}/VBoxHeadless
-	fperms 4750 /usr/$(get_libdir)/${PN}/VBoxHeadless
-	pax-mark -m "${D}"/usr/$(get_libdir)/${PN}/VBoxHeadless
+	vbox_inst VBoxHeadless 4750
+	pax-mark -m "${D}"${vbox_inst_path}/VBoxHeadless
 
-	insinto /usr/$(get_libdir)/${PN}
+	insinto ${vbox_inst_path}
 	# Install EFI Firmware files (bug #320757)
 	pushd "${S}"/src/VBox/Devices/EFI/FirmwareBin &>/dev/null || die
 	for fwfile in VBoxEFI{32,64}.fd ; do
 		doins ${fwfile}
-		fowners root:vboxusers /usr/$(get_libdir)/${PN}/${fwfile}
+		fowners root:vboxusers ${vbox_inst_path}/${fwfile}
 	done
 	popd &>/dev/null || die
 
@@ -361,15 +363,15 @@ src_install() {
 	fi
 
 	# VRDPAuth only works with this (bug #351949)
-	dosym VBoxAuth.so  /usr/$(get_libdir)/${PN}/VRDPAuth.so
+	dosym VBoxAuth.so  ${vbox_inst_path}/VRDPAuth.so
 
 	# set an env-variable for 3rd party tools
-	echo -n "VBOX_APP_HOME=/usr/$(get_libdir)/${PN}" > "${T}/90virtualbox"
+	echo -n "VBOX_APP_HOME=${vbox_inst_path}" > "${T}/90virtualbox"
 	doenvd "${T}/90virtualbox"
 
 	if use java ; then
-		java-pkg_regjar "${D}/usr/$(get_libdir)/${PN}/sdk/bindings/xpcom/java/vboxjxpcom.jar"
-		java-pkg_regso "${D}/usr/$(get_libdir)/${PN}/libvboxjxpcom.so"
+		java-pkg_regjar "${D}${vbox_inst_path}/sdk/bindings/xpcom/java/vboxjxpcom.jar"
+		java-pkg_regso "${D}${vbox_inst_path}/libvboxjxpcom.so"
 	fi
 }
 
