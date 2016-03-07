@@ -11368,7 +11368,7 @@ kde-misc/kim4 0.9.5: A Dolphin and Konqueror service menu for ImageMagick
 kde-misc/kimtoy 1.8 1.91: An input method frontend for Plasma
 kde-misc/kio-ftps 0.2: KDE ftps KIO slave
 kde-misc/kio-locate 0.5.3: Locate KIO slave for KDE
-kde-misc/kio-mtp 0.75_p20131020 0.75_p20141221: MTP KIO-Client for KDE
+kde-misc/kio-mtp 0.75_p20141221 0.75_p20150403: MTP KIO-Client for KDE
 kde-misc/kio-slp 0_p20120621: Service Location Protocol component for KIO
 kde-misc/kio_gopher 0.1.4: Gopher Kioslave for Konqueror
 kde-misc/kolor-manager 1.0.1 1.0.2: KControl module for Oyranos CMS cross desktop settings
