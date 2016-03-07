@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -27,7 +27,7 @@ RDEPEND="virtual/cron
 	dev-perl/Sys-MemInfo"
 
 src_prepare() {
-	epatch "${FILESDIR}/${P}-openssh-hpn.patch"
+	epatch "${FILESDIR}"/${PN}-7.4.2-openssh-hpn.patch
 }
 
 src_install() {
@@ -38,14 +38,8 @@ src_install() {
 	dodir /usr/share/logwatch/default.conf/services
 	dodir /usr/share/logwatch/default.conf/html
 	keepdir /etc/logwatch
-	keepdir /var/cache/logwatch
 
 	newsbin scripts/logwatch.pl logwatch.pl
-
-	for i in scripts/logfiles/* ; do
-		exeinto /usr/share/logwatch/$i
-		doexe $i/*
-	done
 
 	exeinto /usr/share/logwatch/lib
 	doexe lib/*.pm
@@ -74,6 +68,11 @@ src_install() {
 
 	doman logwatch.8
 	dodoc README HOWTO-Customize-LogWatch
+
+	# Do last due to insopts modification.
+	insinto /usr/share/logwatch/scripts/logfiles
+	insopts -m755
+	doins -r scripts/logfiles/*
 }
 
 pkg_postinst() {
