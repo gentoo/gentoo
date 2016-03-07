@@ -1,0 +1,26 @@
+From 367886e1c49238d1a02721f849564d77a163465b Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Mon, 7 Mar 2016 14:52:22 -0500
+Subject: [PATCH] fuser: include sysmacros.h for makedev
+
+BSD/Linux define makedev in the sysmacros.h header.  Include it directly
+instead of relying on types.h pulling it in for us.
+---
+ src/fuser.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/fuser.c b/src/fuser.c
+index da94d22..380046f 100644
+--- a/src/fuser.c
++++ b/src/fuser.c
+@@ -36,6 +36,7 @@
+ #include <sys/types.h>
+ #include <sys/stat.h>
+ #include <sys/socket.h>
++#include <sys/sysmacros.h>
+ #include <sys/wait.h>
+ #include <arpa/inet.h>
+ #include <netinet/in.h>
+-- 
+2.6.2
+
