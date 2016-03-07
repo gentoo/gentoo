@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -11,7 +11,7 @@ inherit eutils python scons-utils toolchain-funcs
 
 DESCRIPTION="A Free Toolkit for developing mapping applications"
 HOMEPAGE="http://www.mapnik.org/"
-SRC_URI="https://github.com/downloads/${PN}/${PN}/${MY_P}.tar.bz2"
+SRC_URI="mirror://github/${PN}/${PN}/${MY_P}.tar.bz2"
 
 LICENSE="LGPL-3"
 SLOT="0"

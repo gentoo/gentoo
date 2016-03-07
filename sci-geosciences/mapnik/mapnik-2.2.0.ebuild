@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -24,9 +24,9 @@ RDEPEND="
 	sys-libs/zlib
 	media-libs/freetype
 	dev-libs/libxml2
-	media-libs/libpng
-	media-libs/tiff
-	virtual/jpeg
+	media-libs/libpng:0=
+	media-libs/tiff:0=
+	virtual/jpeg:0=
 	media-libs/libwebp
 	sci-libs/proj
 	media-fonts/dejavu
@@ -37,7 +37,7 @@ RDEPEND="
 		dev-cpp/cairomm
 		python? ( dev-python/pycairo[${PYTHON_USEDEP}] )
 	)
-	postgres? ( >=dev-db/postgresql-8.3 )
+	postgres? ( >=dev-db/postgresql-8.3:* )
 	gdal? ( sci-libs/gdal )
 	sqlite? ( dev-db/sqlite:3 )
 	python_single_target_python3_3? ( >=dev-libs/boost-1.53[${PYTHON_USEDEP}] )
