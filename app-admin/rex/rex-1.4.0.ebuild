@@ -5,14 +5,14 @@
 EAPI=5
 
 MODULE_AUTHOR=FERKI
-MODULE_A=Rex-1.3.3_03.tar.gz
+MODULE_A=Rex-${PV}.tar.gz
 
 inherit perl-module
 
 DESCRIPTION="(R)?ex is a small script to ease the execution of remote commands"
 
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="test"
 
 RDEPEND="
@@ -61,4 +61,4 @@ DEPEND="
 
 SRC_TEST="do"
 
-S="${WORKDIR}/${MODULE_A/.tar.gz/}"
+S="${WORKDIR}/Rex-${PV}"
