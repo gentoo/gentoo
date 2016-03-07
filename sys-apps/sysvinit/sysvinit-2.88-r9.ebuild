@@ -33,6 +33,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-makefile.patch" #319197
 	"${FILESDIR}/${P}-selinux.patch" #326697
 	"${FILESDIR}/${P}-shutdown-h.patch" #449354
+	"${FILESDIR}/${PN}-2.88-sysmacros.patch"
 )
 
 src_prepare() {
