@@ -1,14 +1,14 @@
 DEFINED_PHASES=compile configure install prepare test
-DEPEND=dev-qt/qtcore:4 dev-qt/qtgui:4[accessibility] >=media-libs/libsamplerate-0.1.8 >=media-libs/libsndfile-1.0.11 sci-libs/fftw:3.0 sys-libs/zlib >=x11-libs/fltk-1.3.0_rc3:1 alsa? ( media-libs/alsa-lib ) fluidsynth? ( media-sound/fluidsynth ) jack? ( >=media-sound/jack-audio-connection-kit-0.99.0 ) ogg? ( media-libs/libvorbis media-libs/libogg ) portaudio? ( >=media-libs/portaudio-19_pre ) pulseaudio? ( media-sound/pulseaudio ) sdl? ( media-libs/libsdl >=media-libs/sdl-sound-1.0.1 ) stk? ( media-libs/stk ) vst? ( app-emulation/wine ) >=dev-util/cmake-2.4.5 sys-devel/make >=dev-util/cmake-2.8.12
+DEPEND=dev-qt/qtcore:4 dev-qt/qtgui:4[accessibility] >=media-libs/libsamplerate-0.1.8 >=media-libs/libsndfile-1.0.11 sci-libs/fftw:3.0 sys-libs/zlib >=x11-libs/fltk-1.3.0_rc3:1 alsa? ( media-libs/alsa-lib ) fluidsynth? ( media-sound/fluidsynth ) jack? ( virtual/jack ) ogg? ( media-libs/libvorbis media-libs/libogg ) portaudio? ( >=media-libs/portaudio-19_pre ) pulseaudio? ( media-sound/pulseaudio ) sdl? ( media-libs/libsdl >=media-libs/sdl-sound-1.0.1 ) stk? ( media-libs/stk ) vst? ( app-emulation/wine ) >=dev-util/cmake-2.4.5 sys-devel/make >=dev-util/cmake-2.8.12
 DESCRIPTION=Free alternative to popular programs such as Fruityloops, Cubase and Logic
 EAPI=5
 HOMEPAGE=http://lmms.sourceforge.net/
 IUSE=alsa debug fluidsynth jack ogg portaudio pulseaudio sdl stk vst
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2 LGPL-2
-RDEPEND=dev-qt/qtcore:4 dev-qt/qtgui:4[accessibility] >=media-libs/libsamplerate-0.1.8 >=media-libs/libsndfile-1.0.11 sci-libs/fftw:3.0 sys-libs/zlib >=x11-libs/fltk-1.3.0_rc3:1 alsa? ( media-libs/alsa-lib ) fluidsynth? ( media-sound/fluidsynth ) jack? ( >=media-sound/jack-audio-connection-kit-0.99.0 ) ogg? ( media-libs/libvorbis media-libs/libogg ) portaudio? ( >=media-libs/portaudio-19_pre ) pulseaudio? ( media-sound/pulseaudio ) sdl? ( media-libs/libsdl >=media-libs/sdl-sound-1.0.1 ) stk? ( media-libs/stk ) vst? ( app-emulation/wine ) media-plugins/swh-plugins media-plugins/caps-plugins media-plugins/tap-plugins media-libs/ladspa-cmt
+RDEPEND=dev-qt/qtcore:4 dev-qt/qtgui:4[accessibility] >=media-libs/libsamplerate-0.1.8 >=media-libs/libsndfile-1.0.11 sci-libs/fftw:3.0 sys-libs/zlib >=x11-libs/fltk-1.3.0_rc3:1 alsa? ( media-libs/alsa-lib ) fluidsynth? ( media-sound/fluidsynth ) jack? ( virtual/jack ) ogg? ( media-libs/libvorbis media-libs/libogg ) portaudio? ( >=media-libs/portaudio-19_pre ) pulseaudio? ( media-sound/pulseaudio ) sdl? ( media-libs/libsdl >=media-libs/sdl-sound-1.0.1 ) stk? ( media-libs/stk ) vst? ( app-emulation/wine ) media-plugins/swh-plugins media-plugins/caps-plugins media-plugins/tap-plugins media-libs/ladspa-cmt
 SLOT=0
 SRC_URI=https://github.com/LMMS/lmms/archive/v1.1.3.tar.gz -> lmms-1.1.3.tar.gz
 _eclass_exported_funcs=src_prepare:cmake-utils src_configure:- src_compile:cmake-utils src_test:cmake-utils src_install:cmake-utils
 _eclasses_=cmake-utils	fa44804882ff16943e9f71b544f56bc9	eutils	9d81603248f2ba3ec59124320d123e5e	flag-o-matic	d270fa247153df66074f795fa42dba3e	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=0f89770216df4dc295a312c72959c913
+_md5_=2360af8ef43451561a30c07695acfb2f
