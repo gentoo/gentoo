@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -11,7 +11,7 @@ if [[ ${PV} = 9999* ]]; then
 	inherit git-r3
 else
 	patchset=
-	SRC_URI="https://github.com/systemd/systemd/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/systemd/systemd/archive/v${PV}.tar.gz -> systemd-${PV}.tar.gz"
 	if [[ -n "${patchset}" ]]; then
 		SRC_URI+="
 			https://dev.gentoo.org/~ssuominen/${P}-patches-${patchset}.tar.xz

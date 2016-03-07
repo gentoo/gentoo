@@ -18,7 +18,7 @@ KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 ~sh sparc x86 ~amd64-fbsd ~amd64-l
 IUSE="alsa +cxx debug jack oss static-libs"
 
 RDEPEND="alsa? ( >=media-libs/alsa-lib-1.0.27.2[${MULTILIB_USEDEP}] )
-	jack? ( >=media-sound/jack-audio-connection-kit-0.121.3-r1[${MULTILIB_USEDEP}] )
+	jack? ( virtual/jack[${MULTILIB_USEDEP}] )
 	abi_x86_32? ( !<=app-emulation/emul-linux-x86-soundlibs-20130224-r8
 					!app-emulation/emul-linux-x86-soundlibs[-abi_x86_32(-)] )"
 DEPEND="${RDEPEND}

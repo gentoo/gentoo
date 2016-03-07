@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit eutils multilib toolchain-funcs
+inherit eutils multilib toolchain-funcs flag-o-matic
 
 DESCRIPTION="A free stand-alone ini file parsing library"
 HOMEPAGE="https://github.com/ndevilla/iniparser"
@@ -40,12 +40,24 @@ src_prepare() {
 	rm -R html || die
 }
 
+src_configure() {
+	append-lfs-flags
+}
+
+_emake() {
+	emake CC="$(tc-getCC)" AR="$(tc-getAR)" V=1 "$@"
+}
+
 src_compile() {
-	emake CC="$(tc-getCC)" V=1
+	_emake
+}
+
+src_test() {
+	_emake -C test
 }
 
 src_install() {
-	newlib.a lib${PN}.a lib${PN}${SLOT}.a
+	use static-libs && newlib.a lib${PN}.a lib${PN}${SLOT}.a
 	_newlib_so_with_symlinks lib${PN}.so lib${PN}${SLOT} 1 0 0
 
 	insinto /usr/include/${PN}${SLOT}
@@ -64,8 +76,4 @@ src_install() {
 	fi
 
 	dodoc "${DOCS[@]}"
-}
-
-src_test() {
-	emake -C test CC="$(tc-getCC)" V=1
 }

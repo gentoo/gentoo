@@ -25,7 +25,7 @@ RDEPEND="dev-qt/qtcore:4
 	>=x11-libs/fltk-1.3.0_rc3:1
 	alsa? ( media-libs/alsa-lib )
 	fluidsynth? ( media-sound/fluidsynth )
-	jack? ( >=media-sound/jack-audio-connection-kit-0.99.0 )
+	jack? ( virtual/jack )
 	ogg? ( media-libs/libvorbis
 		media-libs/libogg )
 	portaudio? ( >=media-libs/portaudio-19_pre )
