@@ -1,0 +1,21 @@
+X-Git-Url: http://code.x2go.org/gitweb?p=x2goserver.git;a=blobdiff_plain;f=x2goserver%2Fbin%2Fx2gomountdirs;h=f39d19975c6806ea115921aa0e1949e3dfa44c7d;hp=f0b497edd252481792ebc6e5e73d79158bc4a14c;hb=86a0e421c3da850045459af855a33f646828dd68;hpb=7ae2669b596d3b84f0ba09552d5a8c0e653ce86d
+
+diff --git a/x2goserver/bin/x2gomountdirs b/x2goserver/bin/x2gomountdirs
+index f0b497e..f39d199 100755
+--- a/x2goserver/bin/x2gomountdirs
++++ b/x2goserver/bin/x2gomountdirs
+@@ -304,12 +304,12 @@ for (my $i=0;$i<@dirs;$i++)
+ 		{
+ 			syslog('debug', "SSH host key has arrived: $key.ident");
+ 		}
+-		$msg = "timeout 30 sshfs $code_conv -o idmap=user,uid=`id -u`,gid=`id -g`,$umaskstr,ServerAliveInterval=300,Cipher=blowfish,IdentityFile=$key,UserKnownHostsFile=$key.ident \"$user\"\@$host:\"@dirs[$i]\" \"$mntpath\" -p $port";
++		$msg = "timeout 30 sshfs $code_conv -o idmap=user,uid=`id -u`,gid=`id -g`,$umaskstr,ServerAliveInterval=300,IdentityFile=$key,UserKnownHostsFile=$key.ident \"$user\"\@$host:\"@dirs[$i]\" \"$mntpath\" -p $port";
+ 		syslog('debug', "executing: $msg");
+ 		print "inserted, $msg\n";
+ 
+ 		# FIXME: this system call should be converted to a multi-argument system call while pertaining the redirect of stderr to the mounts.log file
+-		if (system("timeout 30 sshfs $code_conv -o idmap=user,uid=`id -u`,gid=`id -g`,$umaskstr,ServerAliveInterval=300,Cipher=blowfish,IdentityFile=$key,UserKnownHostsFile=$key.ident \"$user\"\@$host:\"@dirs[$i]\" \"$mntpath\" -p $port 1>>$sessiondir/sshfs-mounts.log 2>&1")==0)
++		if (system("timeout 30 sshfs $code_conv -o idmap=user,uid=`id -u`,gid=`id -g`,$umaskstr,ServerAliveInterval=300,IdentityFile=$key,UserKnownHostsFile=$key.ident \"$user\"\@$host:\"@dirs[$i]\" \"$mntpath\" -p $port 1>>$sessiondir/sshfs-mounts.log 2>&1")==0)
+ 		{
+ 			print "mount @dirs[$i] ok\n";
+ 			syslog('notice', "successfully mounted $user\@$host:$port@dirs[$i] to $mntpath");
