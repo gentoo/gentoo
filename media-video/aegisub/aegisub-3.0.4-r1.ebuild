@@ -41,7 +41,7 @@ RDEPEND="
 	ffmpeg? ( media-libs/ffmpegsource:= )
 	fftw? ( >=sci-libs/fftw-3.3:= )
 
-	libass? ( media-libs/libass[fontconfig] )
+	libass? ( media-libs/libass:=[fontconfig] )
 	lua? ( =dev-lang/lua-5.1*:= )
 	spell? ( app-text/hunspell )
 "
