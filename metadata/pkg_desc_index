@@ -10094,7 +10094,7 @@ games-board/pioneers 15.3: A clone of the popular board game The Settlers of Cat
 games-board/pokerth 1.1.1 1.1.1-r1: Texas Hold'em poker game
 games-board/polyglot 1.4.70b-r1: Protocol adapter to run UCI chess engines under xboard
 games-board/pouetchess 0.2.0-r1: 3D and open source chess game
-games-board/pychess 0.10.1-r2 0.12.2: A chess client for Gnome
+games-board/pychess 0.10.1-r2 0.12.2 0.12.3: A chess client for Gnome
 games-board/pysolfc 2.0-r3: An exciting collection of more than 1000 solitaire card games
 games-board/qcheckers 20091230: Qt4 based checkers game
 games-board/qgo 1.5.4_p20100322: An ancient boardgame, very common in Japan, China and Korea
@@ -18517,7 +18517,7 @@ x11-proto/xproto 7.0.27 7.0.28: X.Org xproto protocol headers
 x11-terms/aterm 1.0.1-r2: A terminal emulator with transparency support as well as rxvt backwards compatibility
 x11-terms/eterm 0.9.5 0.9.6 9999: A vt102 terminal emulator for X
 x11-terms/evilvte 0.5.1 0.5.2_pre1: VTE based, super lightweight terminal emulator
-x11-terms/gnome-terminal 3.16.2-r2 3.18.2: The Gnome Terminal
+x11-terms/gnome-terminal 3.16.2-r2 3.18.2 3.18.3: The Gnome Terminal
 x11-terms/guake 0.5.0 0.8.3 0.8.4 9999: Drop-down terminal for GTK+ desktops
 x11-terms/hanterm 3.1.6-r2 3.1.6-r4: Hanterm -- Korean terminal
 x11-terms/kterm 6.2.0-r5: Japanese Kanji X Terminal
