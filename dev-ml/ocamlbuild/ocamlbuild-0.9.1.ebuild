@@ -16,7 +16,9 @@ KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-fb
 IUSE="+ocamlopt"
 
 DEPEND=">=dev-lang/ocaml-4.02.3-r1:=[ocamlopt?]"
-RDEPEND="${DEPEND}"
+RDEPEND="${DEPEND}
+	!<dev-ml/findlib-1.6.1-r1
+"
 
 src_prepare() {
 	epatch "${FILESDIR}/installbin.patch"
