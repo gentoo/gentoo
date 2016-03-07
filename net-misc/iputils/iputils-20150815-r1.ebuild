@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -7,7 +7,7 @@
 # building stages, and when the jade/sgml packages are broken (which
 # seems to be more common than would be nice).
 
-EAPI="4"
+EAPI=5
 
 inherit flag-o-matic eutils toolchain-funcs fcaps
 if [[ ${PV} == "99999999" ]] ; then
@@ -58,8 +58,8 @@ S=${WORKDIR}/${PN}-s${PV}
 
 PATCHES=(
 	"${FILESDIR}/021109-uclibc-no-ether_ntohost.patch"
-	"${FILESDIR}/${PN}-20150815-ping_default_ipv4.patch"
-	"${FILESDIR}/${PN}-20150815-ping6_crypto.patch"
+	"${FILESDIR}/${PN}-20150815-defines_and_libs.patch"
+	"${FILESDIR}/${PN}-20150815-handle_single_protocol_system.patch"
 )
 
 src_prepare() {
