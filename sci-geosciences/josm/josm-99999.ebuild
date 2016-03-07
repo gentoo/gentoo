@@ -25,8 +25,6 @@ KEYWORDS="~amd64 ~x86"
 DEPEND=">=virtual/jdk-1.7"
 RDEPEND=">=virtual/jre-1.7"
 
-S="${WORKDIR}/${P}"
-
 IUSE=""
 
 src_prepare() {
