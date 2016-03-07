@@ -21,6 +21,7 @@ IUSE="examples"
 RDEPEND=">=dev-lang/ocaml-4.02.0:=
 	>=dev-ml/async_kernel-${PV}:=
 	>=dev-ml/async_unix-${PV}:=
+	>=dev-ml/async_extra-${PV}:=
 	dev-ml/bin-prot:=
 	dev-ml/core:=
 	dev-ml/fieldslib:=
