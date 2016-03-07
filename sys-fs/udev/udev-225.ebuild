@@ -11,7 +11,7 @@ if [[ ${PV} = 9999* ]]; then
 	inherit git-r3
 else
 	patchset=
-	SRC_URI="https://github.com/systemd/systemd/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/systemd/systemd/archive/v${PV}.tar.gz -> systemd-${PV}.tar.gz"
 	if [[ -n "${patchset}" ]]; then
 		SRC_URI+="
 			https://dev.gentoo.org/~ssuominen/${P}-patches-${patchset}.tar.xz
