@@ -8561,7 +8561,7 @@ dev-ruby/ast 2.2.0: A library for working with abstract syntax trees
 dev-ruby/astrolabe 1.3.0 1.3.1: An object-oriented AST extension for Parser
 dev-ruby/async_sinatra 1.2.0 1.2.1: Asynchronous response API for Sinatra and Thin
 dev-ruby/atomic 1.1.16 1.1.99: An atomic reference implementation for JRuby, Rubinius, and MRI
-dev-ruby/awesome_print 1.2.0-r2 1.6.1: Ruby library that pretty prints Ruby objects in full color with proper indentation
+dev-ruby/awesome_print 1.6.1: Library to pretty print Ruby objects in full color with proper indentation
 dev-ruby/aws-s3 0.6.3: Client library for Amazon's Simple Storage Service's REST API
 dev-ruby/aws-sdk 1.66.0 2.2.5 2.2.18: Official SDK for Amazon Web Services
 dev-ruby/aws-sdk-core 2.2.5 2.2.18: Official SDK for Amazon Web Services
@@ -8569,12 +8569,12 @@ dev-ruby/aws-sdk-resources 2.2.5 2.2.18: Official SDK for Amazon Web Services
 dev-ruby/backports 3.6.7 3.6.8: Backports of Ruby features for older Ruby
 dev-ruby/bacon 1.2.0-r2: Small RSpec clone weighing less than 350 LoC
 dev-ruby/barby 0.6.2 0.6.2-r1: Ruby barcode generator that doesn't rely on 3rd party libraries
-dev-ruby/bcat 0.6.2-r1 0.6.2-r2: A pipe to browser utility for use at the shell and within editors like Vim or Emacs
+dev-ruby/bcat 0.6.2-r1 0.6.2-r2: Pipe to browser utility for use at the shell and within editors
 dev-ruby/bcrypt-ruby 3.1.9 3.1.10 3.1.11: An easy way to keep your users' passwords secure
 dev-ruby/best_in_place 3.0.3 3.1.0: In-place editor helper for Rails 3
 dev-ruby/binding_of_caller 0.7.2: Retrieve the binding of a method's caller
 dev-ruby/bitescript 0.0.9: BiteScript is a Ruby DSL for generating Java bytecode and classes
-dev-ruby/blankslate 2.1.2.4 3.1.2 3.1.3: A base class where almost all of the methods from Object and Kernel have been removed
+dev-ruby/blankslate 2.1.2.4 3.1.3: Base class with almost all of the methods from Object and Kernel being removed
 dev-ruby/bluecloth 2.2.0-r1 2.2.0-r2: A Ruby implementation of Markdown
 dev-ruby/bones 3.8.1-r1 3.8.3: Tool that creates new Ruby projects from a code skeleton
 dev-ruby/bouncy-castle-java 1.5.0146.1 1.5.0147: A gem redistribution of 'Legion of the Bouncy Castle Java cryptography APIs'
@@ -8706,11 +8706,11 @@ dev-ruby/gnuplot 2.6.2-r2: Gnuplot drawing library - Ruby Bindings
 dev-ruby/gpgme 2.0.10 2.0.11 2.0.12: Ruby language binding for GnuPG Made Easy
 dev-ruby/gruff 0.6.0: Beautiful graphs for one or multiple datasets
 dev-ruby/haml 4.0.6 4.0.6-r1 4.0.7: A ruby web page templating engine
-dev-ruby/hashdiff 0.2.2 0.2.3 0.3.0: Simple Hash extension to make working with nested hashes easier
+dev-ruby/hashdiff 0.3.0: Simple Hash extension to make working with nested hashes easier
 dev-ruby/hashery 2.1.1: The Hashery is a tight collection of Hash-like classes
 dev-ruby/hashicorp-checkpoint 0.1.4: Internal HashiCorp service to check version information
 dev-ruby/hashie 2.1.2 2.1.2-r1 3.4.2 3.4.3: Hashie is a small collection of tools that make hashes more powerful
-dev-ruby/hashr 0.0.22 1.0.0 2.0.0: Simple Hash extension to make working with nested hashes easier and less error-prone
+dev-ruby/hashr 0.0.22 1.0.0 2.0.0: Simple Hash extension to make working with nested hashes easier
 dev-ruby/heredoc_unindent 1.2.0: Removes leading whitespace from Ruby heredocs
 dev-ruby/hiera 1.3.4 1.3.4-r1 2.0.0 3.0.1-r1 3.0.5 3.0.6: A simple pluggable Hierarchical Database
 dev-ruby/hiera-eyaml 2.0.8: Encrypted YAML backend for hiera
@@ -8730,7 +8730,7 @@ dev-ruby/http-cookie 1.0.2-r1: A ruby library to handle HTTP cookies
 dev-ruby/http-form_data 1.0.1: Utility-belt to build form data request bodies
 dev-ruby/http_parser_rb 0.6.0 0.6.0-r1: Simple callback-based HTTP request/response parser
 dev-ruby/httparty 0.13.7: Makes http fun! Also, makes consuming restful web services dead easy
-dev-ruby/httpauth 0.2.1: A library supporting the full HTTP Authentication protocol as specified in RFC 2617
+dev-ruby/httpauth 0.2.1: Library implementing the full HTTP Authentication protocol (RFC 2617)
 dev-ruby/httpclient 2.6.0.1 2.7.0.1 2.7.1: 'httpclient' gives something like the functionality of libwww-perl (LWP) in Ruby
 dev-ruby/i18n 0.6.9-r1 0.6.11 0.7.0 0.7.0-r1: Add Internationalization support to your Ruby application
 dev-ruby/imagesize 0.1.1_p20100902 0.1.1_p20100902-r1: Measure image size (GIF, PNG, JPEG, etc)
@@ -9088,14 +9088,14 @@ dev-ruby/travis 1.8.2-r1: Travis CI Client (CLI and Ruby library)
 dev-ruby/treetop 1.6.3 1.6.4 1.6.5: Treetop is a language for describing languages
 dev-ruby/trollop 1.16.2-r4 2.0 2.1.1 2.1.2: Trollop is a commandline option parser for Ruby
 dev-ruby/ttfunk 1.2.1 1.4.0: A TrueType font parser written in pure ruby
-dev-ruby/turbolinks 2.5.1 2.5.3: Makes following links in your web application faster
+dev-ruby/turbolinks 2.5.3: Makes following links in your web application faster
 dev-ruby/twitter 5.13.0 5.14.0 5.15.0 5.16.0: Ruby wrapper around the Twitter API
 dev-ruby/twitter-text 1.13.3 1.13.4: Text handling for Twitter
 dev-ruby/typed-array 0.1.2-r1: Gem provides enforced-type functionality to Arrays
 dev-ruby/typhoeus 0.7.3 0.8.0 1.0.1: Runs HTTP requests in parallel while cleanly encapsulating handling logic
 dev-ruby/tzinfo 0.3.43 0.3.43-r1 0.3.44 1.2.2: Daylight-savings aware timezone library
 dev-ruby/uconv 0.6.1-r1 0.6.1-r2: A module to convert ISO/IEC 10646 (Unicode) string and Japanese strings
-dev-ruby/uglifier 2.7.0 2.7.1 2.7.2: Ruby wrapper for UglifyJS JavaScript compressor
+dev-ruby/uglifier 2.7.2: Ruby wrapper for UglifyJS JavaScript compressor
 dev-ruby/ultraviolet 1.0.1: A syntax highlighting engine based on Textpow
 dev-ruby/unf 0.1.4: A wrapper library to bring Unicode Normalization Form support to Ruby/JRuby
 dev-ruby/unf_ext 0.0.7.1 0.0.7.2: Unicode Normalization Form support library for CRuby
