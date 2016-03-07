@@ -27,12 +27,12 @@ RDEPEND="
 	>=dev-lang/luajit-2.0.4:2[lua52compat]
 	dev-libs/boost:=[icu,nls,threads]
 	dev-libs/icu:=
-	>=x11-libs/wxGTK-3.0.0:${WX_GTK_VER}[X,opengl,debug?]
 	media-libs/fontconfig
 	media-libs/freetype
 	media-libs/libass[fontconfig]
 	virtual/libiconv
 	virtual/opengl
+	x11-libs/wxGTK:${WX_GTK_VER}[X,opengl,debug?]
 
 	alsa? ( media-libs/alsa-lib )
 	openal? ( media-libs/openal )
