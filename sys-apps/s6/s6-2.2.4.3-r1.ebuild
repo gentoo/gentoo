@@ -1,10 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
-
-inherit multilib
+EAPI=6
 
 DESCRIPTION="skarnet.org's small and secure supervision software suite"
 HOMEPAGE="http://www.skarnet.org/software/s6/"
@@ -32,10 +30,15 @@ RDEPEND="
 	)
 	"
 
+DOCS=("examples/")
+HTML_DOCS=("doc/.")
+
 src_prepare()
 {
 	# Remove QA warning about LDFLAGS addition
 	sed -i "s~tryldflag LDFLAGS_AUTO -Wl,--hash-style=both~:~" "${S}/configure" || die
+
+	eapply_user
 }
 
 src_configure()
@@ -52,16 +55,4 @@ src_configure()
 		--sysdepdir=/usr/$(get_libdir)/${PN} \
 		--with-dynlib=/$(get_libdir) \
 		--with-sysdeps=/usr/$(get_libdir)/skalibs
-}
-
-src_compile()
-{
-	emake DESTDIR="${D}"
-}
-
-src_install()
-{
-	default
-	dodoc -r examples
-	dohtml -r doc/*
 }
