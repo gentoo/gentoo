@@ -60,7 +60,6 @@ REQUIRED_USE="
 # Thus unbundling luabins is not worth the effort.
 PATCHES=(
 	"${FILESDIR}/${P}-unbundle-luajit.patch"
-	"${FILESDIR}/${P}-add-missing-pthread-flags.patch"
 	"${FILESDIR}/${PN}-3.2.2-r1-respect-user-compiler-flags.patch"
 )
 
