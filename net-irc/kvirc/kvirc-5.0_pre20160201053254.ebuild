@@ -31,7 +31,7 @@ fi
 
 LICENSE="kvirc"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="audiofile +dbus dcc_video +dcc_voice debug doc gsm +ipc ipv6 kde +nls oss +perl +phonon profile +python spell +ssl theora +transparency webkit"
 
 RDEPEND="dev-qt/qtcore:5
