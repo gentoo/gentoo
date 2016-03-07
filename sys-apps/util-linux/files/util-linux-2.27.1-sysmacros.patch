@@ -1,0 +1,278 @@
+From 71cd37a19acef366ff12f322c78c711559764e13 Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Mon, 7 Mar 2016 16:42:05 -0500
+Subject: [PATCH] include sysmacros.h where used
+
+BSD/Linux systems stick major/minor/makedev in sysmacros.h.  Newer Linux
+libraries have been moving away from including sysmacros.h implicitly via
+sys/types.h, so include it directly.
+
+Signed-off-by: Mike Frysinger <vapier@gentoo.org>
+---
+
+diff --git a/lib/ismounted.c b/lib/ismounted.c
+index f83be65..9b0e447 100644
+--- a/lib/ismounted.c
++++ b/lib/ismounted.c
+@@ -18,6 +18,7 @@
+ #include <sys/stat.h>
+ #include <ctype.h>
+ #include <sys/param.h>
++#include <sys/sysmacros.h>
+ #ifdef __APPLE__
+ #include <sys/ucred.h>
+ #include <sys/mount.h>
+diff --git a/lib/sysfs.c b/lib/sysfs.c
+index 9e973a4..4b46459 100644
+--- a/lib/sysfs.c
++++ b/lib/sysfs.c
+@@ -7,6 +7,7 @@
+  * Written by Karel Zak <kzak@redhat.com>
+  */
+ #include <ctype.h>
++#include <sys/sysmacros.h>
+ 
+ #include "c.h"
+ #include "at.h"
+diff --git a/login-utils/sulogin-consoles.c b/login-utils/sulogin-consoles.c
+index fe8eab1..56f5336 100644
+--- a/login-utils/sulogin-consoles.c
++++ b/login-utils/sulogin-consoles.c
+@@ -27,6 +27,7 @@
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>
++#include <sys/sysmacros.h>
+ #include <sys/types.h>
+ #include <sys/stat.h>
+ #include <sys/ioctl.h>
+diff --git a/libblkid/src/devname.c b/libblkid/src/devname.c
+index dbbe5b5..d583800 100644
+--- a/libblkid/src/devname.c
++++ b/libblkid/src/devname.c
+@@ -25,6 +25,7 @@
+ #ifdef HAVE_SYS_TYPES_H
+ #include <sys/types.h>
+ #endif
++#include <sys/sysmacros.h>
+ #include <dirent.h>
+ #ifdef HAVE_SYS_STAT_H
+ #include <sys/stat.h>
+diff --git a/libblkid/src/devno.c b/libblkid/src/devno.c
+index 58fbce5..4b8f3db 100644
+--- a/libblkid/src/devno.c
++++ b/libblkid/src/devno.c
+@@ -31,6 +31,7 @@
+ #endif
+ #include <fcntl.h>
+ #include <inttypes.h>
++#include <sys/sysmacros.h>
+ 
+ #include "blkidP.h"
+ #include "pathnames.h"
+diff --git a/libmount/src/tab_parse.c b/libmount/src/tab_parse.c
+index cee7008..29b4428 100644
+--- a/libmount/src/tab_parse.c
++++ b/libmount/src/tab_parse.c
+@@ -16,6 +16,7 @@
+ #include <limits.h>
+ #include <dirent.h>
+ #include <fcntl.h>
++#include <sys/sysmacros.h>
+ 
+ #include "at.h"
+ #include "mangle.h"
+diff --git a/misc-utils/findmnt.c b/misc-utils/findmnt.c
+index f72be14..e14119b 100644
+--- a/misc-utils/findmnt.c
++++ b/misc-utils/findmnt.c
+@@ -31,6 +31,7 @@
+ #include <assert.h>
+ #include <poll.h>
+ #include <sys/statvfs.h>
++#include <sys/sysmacros.h>
+ #include <sys/types.h>
+ #ifdef HAVE_LIBUDEV
+ # include <libudev.h>
+diff --git a/misc-utils/lsblk.c b/misc-utils/lsblk.c
+index c9a39b3..6010167 100644
+--- a/misc-utils/lsblk.c
++++ b/misc-utils/lsblk.c
+@@ -26,6 +26,7 @@
+ #include <stdlib.h>
+ #include <unistd.h>
+ #include <stdint.h>
++#include <sys/sysmacros.h>
+ #include <sys/types.h>
+ #include <sys/stat.h>
+ #include <dirent.h>
+diff --git a/misc-utils/lslocks.c b/misc-utils/lslocks.c
+index a47c1d0..7689964 100644
+--- a/misc-utils/lslocks.c
++++ b/misc-utils/lslocks.c
+@@ -30,6 +30,7 @@
+ #include <dirent.h>
+ #include <unistd.h>
+ #include <sys/stat.h>
++#include <sys/sysmacros.h>
+ #include <sys/types.h>
+ 
+ #include <libmount.h>
+diff --git a/disk-utils/fsck.c b/disk-utils/fsck.c
+index 6f9e78b..2b7e712 100644
+--- a/disk-utils/fsck.c
++++ b/disk-utils/fsck.c
+@@ -30,6 +30,7 @@
+ #include <sys/types.h>
+ #include <sys/wait.h>
+ #include <sys/stat.h>
++#include <sys/sysmacros.h>
+ #include <sys/file.h>
+ #include <fcntl.h>
+ #include <limits.h>
+diff --git a/disk-utils/partx.c b/disk-utils/partx.c
+index 50bd6a4..955166b 100644
+--- a/disk-utils/partx.c
++++ b/disk-utils/partx.c
+@@ -19,6 +19,7 @@
+ #include <unistd.h>
+ #include <assert.h>
+ #include <dirent.h>
++#include <sys/sysmacros.h>
+ 
+ #include <blkid.h>
+ #include <libsmartcols.h>
+diff --git a/disk-utils/sfdisk.c b/disk-utils/sfdisk.c
+index 81371eb..9c1aacb 100644
+--- a/disk-utils/sfdisk.c
++++ b/disk-utils/sfdisk.c
+@@ -29,6 +29,7 @@
+ #include <errno.h>
+ #include <getopt.h>
+ #include <sys/stat.h>
++#include <sys/sysmacros.h>
+ #include <assert.h>
+ #include <fcntl.h>
+ #include <libsmartcols.h>
+diff --git a/libblkid/src/evaluate.c b/libblkid/src/evaluate.c
+index ffbe097..3d9a76b 100644
+--- a/libblkid/src/evaluate.c
++++ b/libblkid/src/evaluate.c
+@@ -12,6 +12,7 @@
+ #include <unistd.h>
+ #include <fcntl.h>
+ #include <ctype.h>
++#include <sys/sysmacros.h>
+ #include <sys/types.h>
+ #ifdef HAVE_SYS_STAT_H
+ #include <sys/stat.h>
+diff --git a/libblkid/src/partitions/partitions.c b/libblkid/src/partitions/partitions.c
+index c8e0bfe..4ba5411 100644
+--- a/libblkid/src/partitions/partitions.c
++++ b/libblkid/src/partitions/partitions.c
+@@ -15,6 +15,7 @@
+ #include <ctype.h>
+ #include <sys/types.h>
+ #include <sys/stat.h>
++#include <sys/sysmacros.h>
+ #include <errno.h>
+ #include <stdint.h>
+ #include <inttypes.h>
+diff --git a/libblkid/src/topology/dm.c b/libblkid/src/topology/dm.c
+index e061632..993161c 100644
+--- a/libblkid/src/topology/dm.c
++++ b/libblkid/src/topology/dm.c
+@@ -17,6 +17,7 @@
+ #include <string.h>
+ #include <sys/stat.h>
+ #include <sys/types.h>
++#include <sys/sysmacros.h>
+ #include <unistd.h>
+ 
+ #include "topology.h"
+diff --git a/libblkid/src/topology/evms.c b/libblkid/src/topology/evms.c
+index 7a4fd55..b59b97b 100644
+--- a/libblkid/src/topology/evms.c
++++ b/libblkid/src/topology/evms.c
+@@ -18,6 +18,7 @@
+ #include <sys/ioctl.h>
+ #include <sys/stat.h>
+ #include <sys/types.h>
++#include <sys/sysmacros.h>
+ #include <unistd.h>
+ 
+ #include "topology.h"
+diff --git a/libblkid/src/topology/lvm.c b/libblkid/src/topology/lvm.c
+index bd079d4..2ade0c2 100644
+--- a/libblkid/src/topology/lvm.c
++++ b/libblkid/src/topology/lvm.c
+@@ -17,6 +17,7 @@
+ #include <string.h>
+ #include <sys/stat.h>
+ #include <sys/types.h>
++#include <sys/sysmacros.h>
+ #include <unistd.h>
+ 
+ #include "topology.h"
+diff --git a/libblkid/src/topology/md.c b/libblkid/src/topology/md.c
+index 5eba947..388f996 100644
+--- a/libblkid/src/topology/md.c
++++ b/libblkid/src/topology/md.c
+@@ -18,6 +18,7 @@
+ #include <sys/ioctl.h>
+ #include <sys/stat.h>
+ #include <sys/types.h>
++#include <sys/sysmacros.h>
+ #include <unistd.h>
+ 
+ #include "topology.h"
+diff --git a/libmount/python/fs.c b/libmount/python/fs.c
+index 0789d37..651a7c5 100644
+--- a/libmount/python/fs.c
++++ b/libmount/python/fs.c
+@@ -27,6 +27,7 @@
+ 
+ #include "pylibmount.h"
+ #include <errno.h>
++#include <sys/sysmacros.h>
+ 
+ #define Fs_HELP "Fs(source=None, root=None, target=None, fstype=None, options=None, attributes=None, freq=0, passno=0)"
+ 
+diff --git a/libmount/src/fs.c b/libmount/src/fs.c
+index 2bab7d6..ab3155d 100644
+--- a/libmount/src/fs.c
++++ b/libmount/src/fs.c
+@@ -14,6 +14,7 @@
+ #include <ctype.h>
+ #include <blkid.h>
+ #include <stddef.h>
++#include <sys/sysmacros.h>
+ 
+ #include "mountP.h"
+ #include "strutils.h"
+diff --git a/sys-utils/losetup.c b/sys-utils/losetup.c
+index 1d57ab3..90a42b6 100644
+--- a/sys-utils/losetup.c
++++ b/sys-utils/losetup.c
+@@ -12,6 +12,7 @@
+ #include <unistd.h>
+ #include <sys/ioctl.h>
+ #include <sys/stat.h>
++#include <sys/sysmacros.h>
+ #include <inttypes.h>
+ #include <getopt.h>
+ 
+diff --git a/sys-utils/mountpoint.c b/sys-utils/mountpoint.c
+index ad9c1da..64d0a7e 100644
+--- a/sys-utils/mountpoint.c
++++ b/sys-utils/mountpoint.c
+@@ -31,6 +31,7 @@
+ #include <unistd.h>
+ #include <sys/types.h>
+ #include <sys/stat.h>
++#include <sys/sysmacros.h>
+ 
+ #include <libmount.h>
+ 
+-- 
+2.6.2

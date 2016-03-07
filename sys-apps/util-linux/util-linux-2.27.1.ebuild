@@ -72,6 +72,7 @@ src_prepare() {
 		po/update-potfiles
 		eautoreconf
 	fi
+	epatch "${FILESDIR}"/${P}-sysmacros.patch
 	elibtoolize
 }
 
