@@ -15,9 +15,10 @@ SLOT="0/${PV}"
 KEYWORDS="~amd64"
 IUSE=""
 
-DEPEND=">=dev-ml/pgocaml-2.1:=
+RDEPEND=">=dev-ml/pgocaml-2.1:=
 	dev-ml/camlp4:="
-RDEPEND="${DEPEND}"
+DEPEND="${RDEPEND}
+	dev-ml/oasis"
 DOCS=( Changelog README.md )
 OASIS_SETUP_COMMAND="./setup.exe"
 
