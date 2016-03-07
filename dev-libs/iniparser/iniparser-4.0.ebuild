@@ -44,8 +44,16 @@ src_configure() {
 	append-lfs-flags
 }
 
+_emake() {
+	emake CC="$(tc-getCC)" AR="$(tc-getAR)" V=1 "$@"
+}
+
 src_compile() {
-	emake CC="$(tc-getCC)" V=1
+	_emake
+}
+
+src_test() {
+	_emake -C test
 }
 
 src_install() {
@@ -68,8 +76,4 @@ src_install() {
 	fi
 
 	dodoc "${DOCS[@]}"
-}
-
-src_test() {
-	emake -C test CC="$(tc-getCC)" V=1
 }
