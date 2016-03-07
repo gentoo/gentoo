@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+  <email>sci-astronomy@gentoo.org</email>
+  <name>Gentoo Astronomy Project</name>
+</maintainer>
+<longdescription lang="en">
+  PSFEx  (“PSF Extractor”) extracts models of the Point Spread
+  Function (PSF) from FITS images processed with <pkg>sci-libs/sextractor</pkg>, and
+  measures the quality of images. The generated PSF models can be used
+  for model-fitting photometry or morphological analyses.
+</longdescription>
+<use>
+  <flag name="plplot">Build with <pkg>sci-libs/plplot</pkg> to allow diagnostic plots during processing</flag>
+</use>
+</pkgmetadata>
