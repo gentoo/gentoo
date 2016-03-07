@@ -147,7 +147,7 @@ app-admin/metalog 3-r1: A highly configurable replacement for syslogd/klogd
 app-admin/mktwpol 0.2.4 0.2.5: Bash scripts to install tripwire and generate tripwire policy files
 app-admin/mms-agent 3.7.0.212_p1: MongoDB MMS agents
 app-admin/mongo-tools 3.0.8 3.0.9 3.2.3: A high-performance, open source, schema-free document-oriented database
-app-admin/monit 5.15 5.16.1 5.17: a utility for monitoring and managing daemons or similar programs running on a Unix system
+app-admin/monit 5.15 5.16.1 5.17 5.17.1: a utility for monitoring and managing daemons or similar programs running on a Unix system
 app-admin/multilog-watch 1.12: Watches a multilog file for irregularities
 app-admin/newsyslog 1.1: a highly configurable program for managing and archiving log files
 app-admin/ngxtop 0.0.2-r1 0.0.3_pre141201: real-time metrics for nginx server (and others)
@@ -13672,7 +13672,7 @@ net-analyzer/squid-graph 3.2-r1: Squid logfile analyzer and traffic grapher
 net-analyzer/squidsites 1.01-r2: A tool that parses Squid access log file and generates a report of the most visited sites
 net-analyzer/squidview 0.80: Interactive console program to analyse squid logs
 net-analyzer/ssldump 0.9-r2: An SSLv3/TLS network protocol analyzer
-net-analyzer/sslscan 1.11.3: Fast SSL configuration scanner
+net-analyzer/sslscan 1.11.3 1.11.4: Fast SSL configuration scanner
 net-analyzer/sslsniff 0.8-r2: MITM all SSL connections on a LAN and dynamically generates certs
 net-analyzer/ssmping 0.9.1: Tool for testing multicast connectivity
 net-analyzer/suricata 2.0.11: High performance Network IDS, IPS and Network Security Monitoring engine
