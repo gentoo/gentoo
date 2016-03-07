@@ -1,0 +1,28 @@
+From ba739daf98450fe725569724eefc64a2afdeb909 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Pavel=20=C5=A0imerda?= <psimerda@redhat.com>
+Date: Thu, 20 Aug 2015 16:16:14 +0200
+Subject: [PATCH] ping: fix defines and libs in Makefile
+
+---
+ Makefile | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 9b0b70f..4eea516 100644
+--- a/Makefile
++++ b/Makefile
+@@ -153,10 +153,10 @@ DEF_clockdiff = $(DEF_CAP)
+ LIB_clockdiff = $(LIB_CAP)
+ 
+ # ping / ping6
+-DEF_ping_common = $(DEF_CAP) $(DEF_IDN)
+-DEF_ping6_common = $(DEF_CAP) $(DEF_IDN)
+-DEF_ping  = $(DEF_CAP) $(DEF_IDN) $(DEF_WITHOUT_IFADDRS)
+-LIB_ping  = $(LIB_CAP) $(LIB_IDN) $(LIB_RESOLV)
++DEF_ping = $(DEF_CAP) $(DEF_IDN) $(DEF_CRYPTO) $(DEF_WITHOUT_IFADDRS)
++DEF_ping_common = $(DEF_ping)
++DEF_ping6_common = $(DEF_ping)
++LIB_ping = $(LIB_CAP) $(LIB_IDN) $(LIB_CRYPTO) $(LIB_RESOLV)
+ 
+ ping: ping_common.o ping6_common.o
+ ping.o ping_common.o ping6_common.o: ping.h in6_flowlabel.h
