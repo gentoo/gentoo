@@ -3800,7 +3800,7 @@ dev-java/edtftpj 2.0.4: FTP client library written in Java
 dev-java/ehcache 1.2.4-r3 1.2.4-r4: Ehcache is a pure Java, fully-featured, in-process cache
 dev-java/emma 2.0.5312-r2: a free Java code coverage tool
 dev-java/fastinfoset 1.2.11: Fast Infoset specifies a standardized binary encoding for the XML Information Sets
-dev-java/fastutil 5.1.3 6.5.4: Provides faster type-specific maps, sets and lists with a small memory footprint
+dev-java/fastutil 5.1.3 6.5.4 7.0.10: Provides faster type-specific maps, sets and lists with a small memory footprint
 dev-java/fec 1.0.4-r2: Forward Error Correction library in Java
 dev-java/felix-bundlerepository 1.6.6: Felix Bundle Repository
 dev-java/felix-gogo-command 0.12.0: Felix Gogo Command
@@ -16998,7 +16998,7 @@ sys-kernel/dracut 034-r4 040-r3 041-r3 043-r2 044: Generic initramfs generation 
 sys-kernel/genkernel 3.4.45.1 3.4.48 3.4.49.2 3.4.50 3.4.51.4 3.4.52.2 3.4.52.3 3.4.52.4 3.5.0.0 9999: Gentoo automatic kernel building scripts
 sys-kernel/genkernel-next 35 55 60 63: Gentoo automatic kernel building scripts, reloaded
 sys-kernel/gentoo-sources 3.4.110 3.4.9999 3.10.95 3.10.96 3.10.97 3.10.98 3.10.99 3.12.52-r1 3.12.53 3.12.54 3.12.55 3.12.9999 3.14.58-r1 3.14.59 3.14.60 3.14.61 3.14.62 3.14.63 3.18.25-r1 3.18.26 3.18.27 3.18.28 4.0.4 4.0.9 4.1.12 4.1.15-r1 4.1.16 4.1.17 4.1.18 4.1.19 4.3.3-r1 4.3.4 4.3.5 4.3.6 4.4.0-r1 4.4.1 4.4.2 4.4.3 4.4.4: Full sources including the Gentoo patchset for the 4.4 kernel tree
-sys-kernel/git-sources 4.5_rc1 4.5_rc2 4.5_rc3 4.5_rc4 4.5_rc5 4.5_rc6: The very latest -git version of the Linux kernel
+sys-kernel/git-sources 4.5_rc1 4.5_rc2 4.5_rc3 4.5_rc4 4.5_rc5 4.5_rc6 4.5_rc7: The very latest -git version of the Linux kernel
 sys-kernel/hardened-sources 4.1.7-r1 4.3.3-r4 4.4.2 4.4.3 4.4.3-r1 4.4.4: Hardened kernel sources (kernel series 4.4)
 sys-kernel/kccmp 0.3: A simple tool for comparing two linux kernel .config files
 sys-kernel/kergen 0.1.1 0.1.3: Kernel config generator
