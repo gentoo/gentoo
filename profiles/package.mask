@@ -30,6 +30,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Aaron Bauman <bman@gentoo.org> (05 Mar 2016)
+# Pending completion of 9 security bugs against
+# this package.  Multiple vulnerabilities and no
+# updates from maintainers. Removal in 30 days.
+www-apps/mantisbt
+
 # Ian Stakenvicius <axs@gentoo.org> (06 Mar 2016)
 # Mask old versions of thunderbird as they are no longer supported,
 # but we keep them in the repo for now in case there is a need
