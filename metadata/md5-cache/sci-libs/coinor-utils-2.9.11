@@ -1,14 +1,14 @@
 DEFINED_PHASES=compile configure install prepare test
-DEPEND=sys-libs/readline bzip2? ( app-arch/bzip2 ) blas? ( virtual/blas ) glpk? ( sci-mathematics/glpk:= ) lapack? ( virtual/lapack ) zlib? ( sys-libs/zlib ) virtual/pkgconfig doc? ( app-doc/doxygen[dot] ) test? ( sci-libs/coinor-sample )
+DEPEND=sys-libs/readline:0= bzip2? ( app-arch/bzip2 ) blas? ( virtual/blas ) glpk? ( sci-mathematics/glpk:= ) lapack? ( virtual/lapack ) zlib? ( sys-libs/zlib ) virtual/pkgconfig doc? ( app-doc/doxygen[dot] ) test? ( sci-libs/coinor-sample )
 DESCRIPTION=COIN-OR Matrix, Vector and other utility classes
 EAPI=5
 HOMEPAGE=https://projects.coin-or.org/CoinUtils/
 IUSE=bzip2 doc glpk blas lapack static-libs test zlib
 KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
 LICENSE=EPL-1.0
-RDEPEND=sys-libs/readline bzip2? ( app-arch/bzip2 ) blas? ( virtual/blas ) glpk? ( sci-mathematics/glpk:= ) lapack? ( virtual/lapack ) zlib? ( sys-libs/zlib )
+RDEPEND=sys-libs/readline:0= bzip2? ( app-arch/bzip2 ) blas? ( virtual/blas ) glpk? ( sci-mathematics/glpk:= ) lapack? ( virtual/lapack ) zlib? ( sys-libs/zlib )
 SLOT=0/3
 SRC_URI=http://www.coin-or.org/download/source/CoinUtils/CoinUtils-2.9.11.tgz
 _eclass_exported_funcs=src_prepare:- src_configure:- src_compile:- src_test:autotools-utils src_install:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	autotools-utils	419811142edf3516b0d0cf1a254d93cb	eutils	9d81603248f2ba3ec59124320d123e5e	libtool	b75230758539a7da029e24afdb693960	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
-_md5_=22fbffc2fa5fd0e61a9999a16cc3b0a3
+_md5_=876d2bf7bf6e3788bdea643f8beac730
