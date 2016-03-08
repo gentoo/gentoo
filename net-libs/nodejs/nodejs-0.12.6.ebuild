@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -26,8 +26,7 @@ RDEPEND="icu? ( dev-libs/icu )
 	ssl? ( dev-libs/openssl:0=[-bindist] )
 	>=net-libs/http-parser-2.3
 	>=dev-libs/libuv-1.4.2"
-DEPEND="${RDEPEND}
-	!!net-libs/iojs"
+DEPEND="${RDEPEND}"
 
 S="${WORKDIR}/node-v${PV}"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
