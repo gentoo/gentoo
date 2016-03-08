@@ -1,0 +1,181 @@
+Fixes builds with without pango/cairo
+
+https://github.com/i3/i3/pull/2243
+https://bugs.gentoo.org/show_bug.cgi?id=576664
+
+--- a/include/libi3.h
++++ b/include/libi3.h
+@@ -20,7 +20,7 @@
+ #if PANGO_SUPPORT
+ #include <pango/pango.h>
+ #endif
+-#ifdef CAIRO_SUPPORT
++#if CAIRO_SUPPORT
+ #include <cairo/cairo-xcb.h>
+ #endif
+ 
+@@ -518,7 +518,7 @@ typedef struct placeholder_t {
+  */
+ char *format_placeholders(char *format, placeholder_t *placeholders, int num);
+ 
+-#ifdef CAIRO_SUPPORT
++#if CAIRO_SUPPORT
+ /* We need to flush cairo surfaces twice to avoid an assertion bug. See #1989
+  * and https://bugs.freedesktop.org/show_bug.cgi?id=92455. */
+ #define CAIRO_SURFACE_FLUSH(surface)  \
+@@ -542,7 +542,7 @@ typedef struct surface_t {
+     int width;
+     int height;
+ 
+-#ifdef CAIRO_SUPPORT
++#if CAIRO_SUPPORT
+     /* A cairo surface representing the drawable. */
+     cairo_surface_t *surface;
+ 
+--- a/libi3/draw_util.c
++++ b/libi3/draw_util.c
+@@ -11,7 +11,7 @@
+ #include <string.h>
+ #include <xcb/xcb.h>
+ #include <xcb/xcb_aux.h>
+-#ifdef CAIRO_SUPPORT
++#if CAIRO_SUPPORT
+ #include <cairo/cairo-xcb.h>
+ #endif
+ 
+@@ -50,7 +50,7 @@ void draw_util_surface_init(xcb_connection_t *conn, surface_t *surface, xcb_draw
+         ELOG("Could not create graphical context. Error code: %d. Please report this bug.\n", error->error_code);
+     }
+ 
+-#ifdef CAIRO_SUPPORT
++#if CAIRO_SUPPORT
+     surface->surface = cairo_xcb_surface_create(conn, surface->id, surface->visual_type, width, height);
+     surface->cr = cairo_create(surface->surface);
+ #endif
+@@ -62,7 +62,7 @@ void draw_util_surface_init(xcb_connection_t *conn, surface_t *surface, xcb_draw
+  */
+ void draw_util_surface_free(xcb_connection_t *conn, surface_t *surface) {
+     xcb_free_gc(conn, surface->gc);
+-#ifdef CAIRO_SUPPORT
++#if CAIRO_SUPPORT
+     cairo_surface_destroy(surface->surface);
+     cairo_destroy(surface->cr);
+ 
+@@ -81,7 +81,7 @@ void draw_util_surface_free(xcb_connection_t *conn, surface_t *surface) {
+ void draw_util_surface_set_size(surface_t *surface, int width, int height) {
+     surface->width = width;
+     surface->height = height;
+-#ifdef CAIRO_SUPPORT
++#if CAIRO_SUPPORT
+     cairo_xcb_surface_set_size(surface->surface, width, height);
+ #endif
+ }
+@@ -121,7 +121,7 @@ color_t draw_util_hex_to_color(const char *color) {
+ static void draw_util_set_source_color(xcb_connection_t *conn, surface_t *surface, color_t color) {
+     RETURN_UNLESS_SURFACE_INITIALIZED(surface);
+ 
+-#ifdef CAIRO_SUPPORT
++#if CAIRO_SUPPORT
+     cairo_set_source_rgba(surface->cr, color.red, color.green, color.blue, color.alpha);
+ #else
+     uint32_t colorpixel = color.colorpixel;
+@@ -139,7 +139,7 @@ static void draw_util_set_source_color(xcb_connection_t *conn, surface_t *surfac
+ void draw_util_text(i3String *text, surface_t *surface, color_t fg_color, color_t bg_color, int x, int y, int max_width) {
+     RETURN_UNLESS_SURFACE_INITIALIZED(surface);
+ 
+-#ifdef CAIRO_SUPPORT
++#if CAIRO_SUPPORT
+     /* Flush any changes before we draw the text as this might use XCB directly. */
+     CAIRO_SURFACE_FLUSH(surface->surface);
+ #endif
+@@ -147,7 +147,7 @@ void draw_util_text(i3String *text, surface_t *surface, color_t fg_color, color_
+     set_font_colors(surface->gc, fg_color, bg_color);
+     draw_text(text, surface->id, surface->gc, surface->visual_type, x, y, max_width);
+ 
+-#ifdef CAIRO_SUPPORT
++#if CAIRO_SUPPORT
+     /* Notify cairo that we (possibly) used another way to draw on the surface. */
+     cairo_surface_mark_dirty(surface->surface);
+ #endif
+@@ -162,7 +162,7 @@ void draw_util_text(i3String *text, surface_t *surface, color_t fg_color, color_
+ void draw_util_rectangle(xcb_connection_t *conn, surface_t *surface, color_t color, double x, double y, double w, double h) {
+     RETURN_UNLESS_SURFACE_INITIALIZED(surface);
+ 
+-#ifdef CAIRO_SUPPORT
++#if CAIRO_SUPPORT
+     cairo_save(surface->cr);
+ 
+     /* Using the SOURCE operator will copy both color and alpha information directly
+@@ -194,7 +194,7 @@ void draw_util_rectangle(xcb_connection_t *conn, surface_t *surface, color_t col
+ void draw_util_clear_surface(xcb_connection_t *conn, surface_t *surface, color_t color) {
+     RETURN_UNLESS_SURFACE_INITIALIZED(surface);
+ 
+-#ifdef CAIRO_SUPPORT
++#if CAIRO_SUPPORT
+     cairo_save(surface->cr);
+ 
+     /* Using the SOURCE operator will copy both color and alpha information directly
+@@ -227,7 +227,7 @@ void draw_util_copy_surface(xcb_connection_t *conn, surface_t *src, surface_t *d
+     RETURN_UNLESS_SURFACE_INITIALIZED(src);
+     RETURN_UNLESS_SURFACE_INITIALIZED(dest);
+ 
+-#ifdef CAIRO_SUPPORT
++#if CAIRO_SUPPORT
+     cairo_save(dest->cr);
+ 
+     /* Using the SOURCE operator will copy both color and alpha information directly
+--- a/libi3/font.c
++++ b/libi3/font.c
+@@ -397,9 +397,11 @@ static void draw_text_xcb(const xcb_char2b_t *text, size_t text_len, xcb_drawabl
+ void draw_text(i3String *text, xcb_drawable_t drawable, xcb_gcontext_t gc,
+                xcb_visualtype_t *visual, int x, int y, int max_width) {
+     assert(savedFont != NULL);
++#if PANGO_SUPPORT
+     if (visual == NULL) {
+         visual = root_visual_type;
+     }
++#endif
+ 
+     switch (savedFont->type) {
+         case FONT_TYPE_NONE:
+--- a/src/floating.c
++++ b/src/floating.c
+@@ -11,6 +11,10 @@
+  */
+ #include "all.h"
+ 
++#ifndef MAX
++#define MAX(x, y) ((x) > (y) ? (x) : (y))
++#endif
++
+ /*
+  * Calculates sum of heights and sum of widths of all currently active outputs
+  *
+--- a/src/util.c
++++ b/src/util.c
+@@ -341,10 +341,12 @@ char *pango_escape_markup(char *input) {
+     if (!font_is_pango())
+         return input;
+ 
++#if PANGO_SUPPORT
+     char *escaped = g_markup_escape_text(input, -1);
+     FREE(input);
+ 
+     return escaped;
++#endif
+ }
+ 
+ /*
+--- a/src/x.c
++++ b/src/x.c
+@@ -12,6 +12,10 @@
+  */
+ #include "all.h"
+ 
++#ifndef MAX
++#define MAX(x, y) ((x) > (y) ? (x) : (y))
++#endif
++
+ xcb_window_t ewmh_window;
+ 
+ /* Stores the X11 window ID of the currently focused window */

@@ -13,7 +13,8 @@ SRC_URI="http://i3wm.org/downloads/${P}.tar.bz2"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
-IUSE="+pango"
+IUSE="+cairo +pango"
+REQUIRED_USE="pango? ( cairo )"
 
 CDEPEND="dev-libs/libev
 	dev-libs/libpcre
@@ -25,9 +26,11 @@ CDEPEND="dev-libs/libev
 	x11-libs/xcb-util-cursor
 	x11-libs/xcb-util-keysyms
 	x11-libs/xcb-util-wm
+	cairo? (
+		>=x11-libs/cairo-1.14.4[X,xcb]
+	)
 	pango? (
 		>=x11-libs/pango-1.30.0[X]
-		>=x11-libs/cairo-1.12.2[X,xcb]
 	)"
 DEPEND="${CDEPEND}
 	virtual/pkgconfig"
@@ -39,8 +42,18 @@ RDEPEND="${CDEPEND}
 DOCS=( RELEASE-NOTES-${PV} )
 
 src_prepare() {
+	epatch "${FILESDIR}"/${P}-pango.patch
+
 	if ! use pango; then
-		sed -i common.mk -e '/PANGO/d' || die
+		sed -e '/^PANGO_.*pangocairo/d' \
+		    -e '/PANGO_SUPPORT/ s/1/0/g' \
+			-i common.mk || die
+	fi
+
+	if ! use cairo; then
+		sed -e '/^PANGO_.*cairo/d' \
+		    -e '/CAIRO_SUPPORT/ s/1/0/g' \
+			-i common.mk || die
 	fi
 
 	cat <<- EOF > "${T}"/i3wm
