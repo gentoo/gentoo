@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -24,8 +24,7 @@ RDEPEND="icu? ( >=dev-libs/icu-55:= )
 	>=dev-libs/openssl-1.0.2d:0=[-bindist]
 	sys-libs/zlib
 "
-DEPEND="${RDEPEND}
-	!!net-libs/iojs"
+DEPEND="${RDEPEND}"
 
 S="${WORKDIR}/node-v${PV}"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
