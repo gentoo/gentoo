@@ -3095,6 +3095,7 @@ dev-go/cli 0_pre20160306: A small package for building command line apps in Go
 dev-go/go-colortext 0_pre20150720: Change the console foreground and background colors
 dev-go/go-crypto 0_pre20150808 0_pre20160126 9999: Go supplementary cryptography libraries
 dev-go/go-eapache-queue 1.0.2 9999: Fast golang queue using ring-buffer
+dev-go/go-gitlab-client 0_pre20160305: A simple gitlab api client written in Go
 dev-go/go-md2man 1.0.3: A utility to convert markdown to man pages
 dev-go/go-net 0_pre20150804 0_pre20160216 9999: Go supplementary network libraries
 dev-go/go-oauth2 0_pre20150701 0_pre20160222 9999: Go client implementation for OAuth 2.0 spec
@@ -8562,7 +8563,7 @@ dev-ruby/asciidoctor 1.5.4: Processor for converting AsciiDoc into HTML 5, DocBo
 dev-ruby/asciimath 1.0.2: A pure Ruby AsciiMath parsing and conversion library
 dev-ruby/ast 2.2.0: A library for working with abstract syntax trees
 dev-ruby/astrolabe 1.3.0 1.3.1: An object-oriented AST extension for Parser
-dev-ruby/async_sinatra 1.2.0 1.2.1: Asynchronous response API for Sinatra and Thin
+dev-ruby/async_sinatra 1.2.1: Asynchronous response API for Sinatra and Thin
 dev-ruby/atomic 1.1.16 1.1.99: An atomic reference implementation for JRuby, Rubinius, and MRI
 dev-ruby/awesome_print 1.6.1: Library to pretty print Ruby objects in full color with proper indentation
 dev-ruby/aws-s3 0.6.3: Client library for Amazon's Simple Storage Service's REST API
@@ -8585,11 +8586,11 @@ dev-ruby/bourne 1.6.0: Extends mocha to allow tracking and querying of stub and 
 dev-ruby/brass 1.2.1: BRASS is a very basic assertions framework for Ruby
 dev-ruby/bsearch 1.5.0-r1 1.5.0-r2: A binary search library for Ruby
 dev-ruby/bson 1.12.0 3.2.4 3.2.6: A Ruby BSON implementation for MongoDB. (Includes binary C-based extension.)
-dev-ruby/buftok 0.2.0 0.2.0-r1: Statefully split input data by a specifiable token
+dev-ruby/buftok 0.2.0-r1: Statefully split input data by a specifiable token
 dev-ruby/builder 3.0.4-r1 3.0.4-r2 3.1.4 3.2.2 3.2.2-r1: A builder to facilitate programatic generation of XML markup
 dev-ruby/bundler 1.8.9 1.9.10 1.10.6 1.11.2: An easy way to vendor gem dependencies
 dev-ruby/bundler-audit 0.4.0: Provides patch-level verification for Bundled apps
-dev-ruby/bunny 2.0.1 2.2.1 2.2.2 2.3.0: Another synchronous Ruby AMQP client
+dev-ruby/bunny 2.3.0: Another synchronous Ruby AMQP client
 dev-ruby/calendar_date_select 2.1.2: A popular and flexible JavaScript DatePicker for RubyOnRails
 dev-ruby/camping 2.1.532: A small web framework modeled after Ruby on Rails
 dev-ruby/capistrano 2.15.5-r1 2.15.5-r2 3.3.5 3.4.0: A distributed application deployment system
@@ -13361,7 +13362,6 @@ media-video/noad 0.7.3 0.7.3-r1 0.8.6 0.8.6-r1: Mark commercial breaks in VDR re
 media-video/nvidia-settings 340.58 340.58-r1 355.11 358.16: NVIDIA Linux X11 Settings Utility
 media-video/nvidia_video_sdk 6.0.1: NVIDIA Video Codec SDK
 media-video/ogmrip 1.0.1: Graphical frontend and libraries for ripping DVDs and encoding to AVI/OGM/MKV/MP4
-media-video/omxplayer 0_p20160217 9999: Command line media player for the Raspberry Pi
 media-video/openshot 1.4.3: Free, open-source, non-linear video editor to create and edit videos and movies
 media-video/oxine 0.7.1-r1: OSD frontend for Xine
 media-video/parole 0.5.4 0.6.1 0.7.0 0.8.0-r1 0.8.1: a simple media player based on the GStreamer framework for the Xfce4 desktop
@@ -13375,6 +13375,7 @@ media-video/pymp 1.1: a lean, flexible frontend to mplayer written in python
 media-video/qgifer 0.2.1 0.2.1-r1 0.2.1-r2: A video-based animated GIF creator
 media-video/qt-recordmydesktop 0.3.8-r2: Qt4 interface for RecordMyDesktop
 media-video/qx11grab 0.4.10-r1 0.4.12: X11 desktop video grabber tray
+media-video/raspberrypi-omxplayer 0_p20160217 9999: Command line media player for the Raspberry Pi
 media-video/recmpeg 1.0.5: Simple libfame-based video encoder which compresses raw video sequences to MPEG video
 media-video/recordmydesktop 0.3.8.1-r4: A desktop session recorder producing Ogg video/audio files
 media-video/replex 0.1.4 0.1.6.8: REPLEX remuxes MPEG-2 transport streams into program streams
