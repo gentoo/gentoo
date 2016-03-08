@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -15,8 +15,8 @@ HOMEPAGE="http://www.openfoam.org"
 SRC_URI="http://downloads.sourceforge.net/foam/${MY_P}.tgz"
 
 LICENSE="GPL-2"
-SLOT="2.2"
-KEYWORDS="amd64 x86"
+SLOT="2.3"
+KEYWORDS="~amd64 ~x86"
 IUSE="doc examples opendx src paraview"
 
 RDEPEND="!=sci-libs/openfoam-bin-${MY_PV}*
