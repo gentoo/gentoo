@@ -1,0 +1,25 @@
+agen5/test/format.test: export AUTOGEN_DNE_DATE explicitly. DASH does
+not export when the assignment is on the same line as a shell function
+invocation.
+
+This is a backport of part of upstreams' commit 89f12c15.
+
+See: https://bugs.gentoo.org/show_bug.cgi?id=576674
+
+--- a/agen5/test/format.test
++++ b/agen5/test/format.test
+@@ -79,12 +79,12 @@
+ </script>
+ _EOF_
+ 
+-AUTOGEN_DNE_DATE=false \
++export AUTOGEN_DNE_DATE=false
+     run_ag x ${testname}.def || failure autogen failed
+ cmp -s ${testname}.base ${testname}.test || \
+    failure "`diff ${testname}.base ${testname}.test`"
+ 
+-AUTOGEN_DNE_DATE=true \
++AUTOGEN_DNE_DATE=true
+     run_ag x ${testname}.def || failure autogen failed
+ dte=`sed -n 's/.*It has been AutoGen-ed *//p' ${testname}.test`
+ test "X${dte}" = "X" && \

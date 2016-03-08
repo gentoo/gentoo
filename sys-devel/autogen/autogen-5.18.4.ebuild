@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -21,6 +21,7 @@ DEPEND="${RDEPEND}"
 
 src_prepare() {
 	epatch "${FILESDIR}"/${PN}-5.18.4-tmp-log.patch #563352
+	epatch "${FILESDIR}"/${PN}-5.18.4_fix_format.test_for_dash.patch #576674
 }
 
 src_configure() {
