@@ -9778,7 +9778,7 @@ dev-vcs/git-num 2.0.1: Quickly reference files in Git using numbers
 dev-vcs/git-pimp 0.8: Code review or pull requests as patch email series
 dev-vcs/git-sh 1.1 1.3: A customized bash environment suitable for git work
 dev-vcs/git-tools 2015_p20151225-r2 2015_p20160201: Assorted git-related scripts
-dev-vcs/gitg 3.16.1 3.18.0: git repository viewer for GNOME
+dev-vcs/gitg 3.16.1 3.18.0 3.18.0-r1: git repository viewer for GNOME
 dev-vcs/github-pages-publish 0.1.2: A script that commits files from a directory to Github Pages
 dev-vcs/gitinspector 0.3.1 0.3.2 0.4.2: Statistical analysis tool for git repositories
 dev-vcs/gitolite 2.3.1-r1 3.6 3.6.1 3.6.2 3.6.2-r1 3.6.3 3.6.4 3.6.4-r1 3.6.5 9999: Highly flexible server for git directory version tracker
