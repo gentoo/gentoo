@@ -2,10 +2,10 @@ http://devel.aegisub.org/ticket/1899
 http://devel.aegisub.org/ticket/1900
 
 diff --git a/configure.ac b/configure.ac
-index be657b0..de8184f 100644
+index 1649efc..2f4470b 100644
 --- a/configure.ac
 +++ b/configure.ac
-@@ -139,20 +139,17 @@ CC="$PTHREAD_CC"
+@@ -133,20 +133,17 @@ AS_IF([test x$build_darwin != xyes], [
  AC_ARG_ENABLE(compiler-flags, AS_HELP_STRING([--disable-compiler-flags],[Disable *all* additional compiler flags. [no]]))
 
  AS_IF([test x$enable_compiler_flags != xno], [
@@ -32,10 +32,10 @@ index be657b0..de8184f 100644
  ])
 
 diff --git a/src/Makefile b/src/Makefile
-index 60d7101..1f7b2bc 100644
+index 0ee6c84..cad213b 100644
 --- a/src/Makefile
 +++ b/src/Makefile
-@@ -182,14 +182,13 @@ endif
+@@ -188,14 +188,13 @@ endif
  #####################
  # SOURCE-LEVEL CFLAGS
  #####################
@@ -50,4 +50,4 @@ index 60d7101..1f7b2bc 100644
 +$(d)subtitles_provider_libass.o_FLAGS   := $(CFLAGS_LIBASS)
  $(d)text_file_reader.o_FLAGS            := -D_X86_
  $(d)video_provider_manager.o_FLAGS      := $(CFLAGS_FFMS2)
- $(d)auto4_lua.o_FLAGS                   := -I$(TOP)vendor/luajit/include
+ $(d)auto4_lua.o_FLAGS                   := $(CFLAGS_LUA)
