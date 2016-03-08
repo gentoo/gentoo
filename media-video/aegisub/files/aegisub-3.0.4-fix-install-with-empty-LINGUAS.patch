@@ -1,6 +1,6 @@
-Upstream always installs all available localization files. We workaround it by
-sed'ing out unneeded languages from PO variable in aegisub/po/Makefile file.
-This can lead to an empty PO definition and in this case install target fails.
+Upstream always installs all available localization files. We workaround this
+by sed'ing out the unused languages from PO variable in `aegisub/po/Makefile'.
+This can result in an empty PO definition, in which case install target fails.
 Thus a simple guard is introduced to prevent this fail.
 
 diff --git a/aegisub/po/Makefile b/aegisub/po/Makefile

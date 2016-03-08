@@ -24,7 +24,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="alsa debug +ffmpeg +fftw +libass lua openal oss portaudio pulseaudio spell"
 
 # configure.ac specifies minimal versions for some of the dependencies below.
-# However, most of these minimal versions date back to 2006-2010 yy.
+# However, most of these minimal versions date back to 2006-2012 yy.
 # Such version specifiers are meaningless nowadays, so they are omitted.
 RDEPEND="
 	>=x11-libs/wxGTK-2.9.3:${WX_GTK_VER}[X,opengl,debug?]
@@ -38,10 +38,10 @@ RDEPEND="
 	portaudio? ( =media-libs/portaudio-19* )
 	pulseaudio? ( media-sound/pulseaudio )
 
-	ffmpeg? ( >=media-libs/ffmpegsource-2.16:= )
+	ffmpeg? ( media-libs/ffmpegsource:= )
 	fftw? ( >=sci-libs/fftw-3.3:= )
 
-	libass? ( media-libs/libass[fontconfig] )
+	libass? ( media-libs/libass:=[fontconfig] )
 	lua? ( =dev-lang/lua-5.1*:= )
 	spell? ( app-text/hunspell )
 "

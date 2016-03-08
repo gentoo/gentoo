@@ -21,25 +21,25 @@ KEYWORDS=""
 IUSE="alsa debug +ffmpeg +fftw openal oss portaudio pulseaudio spell +uchardet"
 
 # configure.ac specifies minimal versions for some of the dependencies below.
-# However, most of these minimal versions date back to 2006-2010 yy.
+# However, most of these minimal versions date back to 2006-2012 yy.
 # Such version specifiers are meaningless nowadays, so they are omitted.
 RDEPEND="
-	>=dev-lang/luajit-2.0.4:2[lua52compat]
-	>=dev-libs/boost-1.50.0:=[icu,nls,threads]
-	>=dev-libs/icu-4.8.1.1:=
-	>=x11-libs/wxGTK-3.0.0:${WX_GTK_VER}[X,opengl,debug?]
+	dev-lang/luajit:2[lua52compat]
+	dev-libs/boost:=[icu,nls,threads]
+	dev-libs/icu:=
 	media-libs/fontconfig
 	media-libs/freetype
-	media-libs/libass[fontconfig]
+	media-libs/libass:=[fontconfig]
 	virtual/libiconv
 	virtual/opengl
+	x11-libs/wxGTK:${WX_GTK_VER}[X,opengl,debug?]
 
 	alsa? ( media-libs/alsa-lib )
 	openal? ( media-libs/openal )
 	portaudio? ( =media-libs/portaudio-19* )
 	pulseaudio? ( media-sound/pulseaudio )
 
-	ffmpeg? ( >=media-libs/ffmpegsource-2.16:= )
+	ffmpeg? ( media-libs/ffmpegsource:= )
 	fftw? ( >=sci-libs/fftw-3.3:= )
 
 	spell? ( app-text/hunspell )
@@ -55,13 +55,12 @@ REQUIRED_USE="
 	|| ( alsa openal oss portaudio pulseaudio )
 "
 
-# aegisub also bundles luabins (https://github.com/agladysh/luabins).
+# aegisub bundles luabins (https://github.com/agladysh/luabins).
 # Unfortunately, luabins upstream is dead since 2011.
 # Thus unbundling luabins is not worth the effort.
 PATCHES=(
-	"${FILESDIR}/${P}-unbundle-luajit.patch"
-	"${FILESDIR}/${P}-add-missing-pthread-flags.patch"
-	"${FILESDIR}/${PN}-3.2.2-r1-respect-user-compiler-flags.patch"
+	"${FILESDIR}/${PN}-3.2.2_p20160306-fix-luajit-unbundling.patch"
+	"${FILESDIR}/${PN}-3.2.2_p20160306-respect-user-compiler-flags.patch"
 )
 
 pkg_pretend() {
@@ -88,6 +87,7 @@ src_configure() {
 	use openal && export agi_cv_with_openal="yes"
 	local myeconfargs=(
 		--disable-update-checker
+		--with-system-luajit
 		$(use_enable debug)
 		$(use_with alsa)
 		$(use_with ffmpeg ffms2)
