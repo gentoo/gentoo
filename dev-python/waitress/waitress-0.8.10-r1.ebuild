@@ -10,8 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="A pure-Python WSGI server"
 HOMEPAGE="http://docs.pylonsproject.org/projects/waitress/en/latest/ https://pypi.python.org/pypi/waitress/ https://github.com/Pylons/waitress"
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz \
-		doc? ( https://dev.gentoo.org/~idella4/pylons_sphinx_theme.tar.gz )"
+SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
@@ -22,18 +21,14 @@ RDEPEND=""
 DEPEND="${RDEPEND}
 	app-arch/unzip
 	dev-python/setuptools[${PYTHON_USEDEP}]
+	doc? ( dev-python/pylons-sphinx-themes[${PYTHON_USEDEP}] )
 	test? ( dev-python/nose[${PYTHON_USEDEP}] )"
 
-python_prepare_all() {
+src_prepare() {
 	if use doc; then
-		local PATCHES=( "${FILESDIR}"/${P}-doc.patch )
-		mv "${WORKDIR}"/_themes ./docs/ || die
+		sed -i -e "s/^version = .*/version = \'${PV}\'/" docs/conf.py || die
 	fi
-
-	# Fix generation of documentation with Waitress not installed. Bug #525384
-	sed -e "s/^version = pkg_resources.get_distribution('waitress').version$/version = '${PV}'/" -i docs/conf.py
-
-	distutils-r1_python_prepare_all
+	distutils-r1_src_prepare
 }
 
 python_compile_all() {
