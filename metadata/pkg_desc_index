@@ -3091,7 +3091,7 @@ dev-games/wfmath 1.0.1 1.0.2: Worldforge math library
 dev-go/bee 1.4.1_p20160125: A tool for helping develop with beego app framework
 dev-go/beego 1.6.0_p20160126: High-performance web framework for Go
 dev-go/blackfriday 1.2_p20150720 9999: a markdown processor implemented in Go
-dev-go/cli 20160227: A small package for building command line apps in Go
+dev-go/cli 0_pre20160306: A small package for building command line apps in Go
 dev-go/go-colortext 0_pre20150720: Change the console foreground and background colors
 dev-go/go-crypto 0_pre20150808 0_pre20160126 9999: Go supplementary cryptography libraries
 dev-go/go-eapache-queue 1.0.2 9999: Fast golang queue using ring-buffer
@@ -13817,6 +13817,7 @@ net-dns/pdns-ldap-backend 0.2: Fork of the official but unmaintained LDAP backen
 net-dns/pdns-recursor 3.6.4 3.7.3: The PowerDNS Recursor
 net-dns/pdnsd 1.2.9a-r1: Proxy DNS server with permanent caching
 net-dns/rbldnsd 0.997a-r2 0.998: DNS server designed to serve blacklist zones
+net-dns/resolv_wrapper 1.1.3: A wrapper for DNS name resolving or DNS faking
 net-dns/resolvconf-symlink 0: Make /etc/resolv.conf a symlink to a runtime-writable location
 net-dns/sheerdns 1.0.3: Sheerdns is a small, simple, fast master only DNS server
 net-dns/tinystats 1.1: A tinydns logging helper app
@@ -13873,7 +13874,7 @@ net-fs/nfstest 1.0.2: Tools for testing either the NFS client or the NFS server
 net-fs/openafs 1.6.12-r1 1.6.14 1.6.16: The OpenAFS distributed file system
 net-fs/openafs-kernel 1.6.12-r1 1.6.14 1.6.16: The OpenAFS distributed file system kernel module
 net-fs/openafs-legacy 0.1: Legacy path symlinks to access FHS-compliant OpenAFS installation
-net-fs/samba 3.5.21 3.5.22 3.6.25 4.2.8 4.3.5 4.4.0_rc3: Samba Suite Version 4
+net-fs/samba 3.5.21 3.5.22 3.6.25 4.2.8 4.2.9 4.3.5 4.3.6 4.4.0_rc3 4.4.0_rc4: Samba Suite Version 4
 net-fs/smbnetfs 0.5.3b 0.6.0 0.6.0-r1: FUSE filesystem for SMB shares
 net-fs/smbtad 1.2.6: Data receiver of the SMB Traffic Analyzer project
 net-fs/smbtatools 1.2.6: Tools for configuration and query of SMB Traffic Analyzer
@@ -17102,9 +17103,9 @@ sys-libs/rvm 1.12 1.16 1.17: Recoverable Virtual Memory (used by Coda)
 sys-libs/slang 2.2.4 2.2.4-r1 2.3.0: A multi-platform programmer's library designed to allow a developer to create robust software
 sys-libs/suacomp 0.6.13 0.6.14 9999: library wrapping the interix lib-c to make it less buggy
 sys-libs/system-config-base 1-r1: system-config-* layout package
-sys-libs/talloc 2.1.0-r1 2.1.4 2.1.5 2.1.5-r1: Samba talloc library
+sys-libs/talloc 2.1.5 2.1.5-r1 2.1.6: Samba talloc library
 sys-libs/tdb 1.3.0-r1 1.3.7 1.3.8: A simple database API
-sys-libs/tevent 0.9.26 0.9.27: Samba tevent library
+sys-libs/tevent 0.9.26 0.9.27 0.9.28: Samba tevent library
 sys-libs/timezone-data 2015f 2015g 2016a: Timezone data (/usr/share/zoneinfo) and utilities (tzselect/zic/zdump)
 sys-libs/uclibc 0.9.33.2-r15 0.9.33.9999 9999: C library for developing embedded Linux systems
 sys-libs/uid_wrapper 1.1.0 1.1.1 1.2.0: A wrapper to fake privilege separation
