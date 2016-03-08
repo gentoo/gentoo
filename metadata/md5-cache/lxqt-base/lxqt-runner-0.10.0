@@ -3,11 +3,11 @@ DEPEND=dev-libs/glib:2 >=dev-libs/libqtxdg-1.0.0 dev-qt/qtcore:5 dev-qt/qtdbus:5
 DESCRIPTION=LXQt quick launcher
 EAPI=5
 HOMEPAGE=http://lxqt.org/
-KEYWORDS=~amd64 ~x86
+KEYWORDS=~amd64 ~arm ~arm64 ~x86
 LICENSE=GPL-2 LGPL-2.1+
 RDEPEND=dev-libs/glib:2 >=dev-libs/libqtxdg-1.0.0 dev-qt/qtcore:5 dev-qt/qtdbus:5 dev-qt/qtscript:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 dev-qt/qtx11extras:5 dev-qt/qtxml:5 kde-frameworks/kwindowsystem:5 >=lxde-base/menu-cache-0.5.1 ~lxqt-base/liblxqt-0.10.0 ~lxqt-base/lxqt-globalkeys-0.10.0
 SLOT=0
 SRC_URI=https://downloads.lxqt.org/lxqt/0.10.0/lxqt-runner-0.10.0.tar.xz
 _eclass_exported_funcs=src_prepare:cmake-utils src_configure:cmake-utils src_compile:cmake-utils src_test:cmake-utils src_install:-
 _eclasses_=cmake-utils	fa44804882ff16943e9f71b544f56bc9	eutils	9d81603248f2ba3ec59124320d123e5e	flag-o-matic	d270fa247153df66074f795fa42dba3e	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=14dd1649c52e55ae73e80d2334988b00
+_md5_=e0c01619c0d53368add67285a7346c64
