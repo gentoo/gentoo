@@ -149,7 +149,6 @@ anthy
 ace
 csharp
 qt4
-qt5
 R
 sdl
 slang
