@@ -1965,7 +1965,7 @@ app-mobilephone/yaps 0.96-r5: Yet Another Pager Software (optional with CAPI sup
 app-office/QtBitcoinTrader 1.10.01 9999: Mt.Gox and BTC-e Bitcoin Trading Client
 app-office/abiword 3.0.1: Fully featured yet light and fast cross platform word processor
 app-office/abiword-docs 3.0.0-r1 3.0.1: Fully featured yet light and fast cross platform word processor documentation
-app-office/akonadi-server 1.13.0-r2: The server part of Akonadi
+app-office/akonadi-server 1.13.0-r2 1.13.1_pre20160203-r1: The server part of Akonadi
 app-office/borg 1.7.4-r3: Calendar and task tracker, written in Java
 app-office/calcurse 4.0.0: a text-based calendar and scheduling application
 app-office/calligra 2.8.5 2.8.7 2.9.6 2.9.7 2.9.10 2.9.11 9999: KDE Office Suite
