@@ -229,6 +229,7 @@ RDEPEND="
 	)"
 
 PATCHES=(
+	"${PV}-CVE-2016-2140.patch"
 )
 
 pkg_setup() {
