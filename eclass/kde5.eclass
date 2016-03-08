@@ -79,6 +79,8 @@ fi
 # If set to "false", do nothing.
 # Otherwise, add "+handbook" to IUSE, add the appropriate dependency, and
 # generate and install KDE handbook.
+# If set to "optional", config with -DCMAKE_DISABLE_FIND_PACKAGE_KF5DocTools=ON
+# when USE=!handbook. In case package requires KF5KDELibs4Support, see next:
 # If set to "forceoptional", remove a KF5DocTools dependency from the root
 # CMakeLists.txt in addition to the above.
 : ${KDE_HANDBOOK:=false}
@@ -92,6 +94,8 @@ fi
 # @DESCRIPTION:
 # If set to "false", do nothing.
 # For any other value, add test to IUSE and add a dependency on dev-qt/qttest:5.
+# If set to "optional", configure with -DCMAKE_DISABLE_FIND_PACKAGE_Qt5Test=ON
+# when USE=!test.
 # If set to "forceoptional", remove a Qt5Test dependency from the root
 # CMakeLists.txt in addition to the above.
 if [[ ${CATEGORY} = kde-frameworks ]]; then
@@ -460,6 +464,14 @@ kde5_src_configure() {
 
 	if ! use_if_iuse test ; then
 		cmakeargs+=( -DBUILD_TESTING=OFF )
+
+		if [[ ${KDE_TEST} = optional ]] ; then
+			cmakeargs+=( -DCMAKE_DISABLE_FIND_PACKAGE_Qt5Test=ON )
+		fi
+	fi
+
+	if ! use_if_iuse handbook && [[ ${KDE_HANDBOOK} = optional ]] ; then
+		cmakeargs+=( -DCMAKE_DISABLE_FIND_PACKAGE_KF5DocTools=ON )
 	fi
 
 	# install mkspecs in the same directory as qt stuff
