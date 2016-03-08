@@ -12,7 +12,7 @@ LS_OPEN_FILES="${LS_OPEN_FILES:-16384}"
 LS_HEAP_SIZE="${LS_HEAP_SIZE:-500m}"
 
 command="/opt/logstash/bin/logstash"
-command_args="agent --config ${LS_CONFDIR}/*.conf --log ${LS_LOGFILE} ${LS_OPTS}"
+command_args="agent --config ${LS_CONFDIR}/{*}.conf --log ${LS_LOGFILE} ${LS_OPTS}"
 extra_commands="checkconfig"
 command_background="true"
 start_stop_daemon_args="--nicelevel ${LS_NICE} \
