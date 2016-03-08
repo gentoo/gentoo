@@ -4,7 +4,7 @@
 
 EAPI="4"
 
-inherit eutils toolchain-funcs
+inherit eutils toolchain-funcs systemd
 
 MY_PV=${PV//_p/-}
 MY_P=${PN}-${MY_PV}-3
@@ -43,5 +43,7 @@ src_install() {
 	rm -f "${ED}"/usr/bin/atop*-${MY_PV}
 	newinitd "${FILESDIR}"/${PN}.rc-r1 ${PN}
 	newinitd "${FILESDIR}"/atopacct.rc atopacct
+	systemd_dounit "${FILESDIR}"/${PN}.service
+	systemd_dounit "${FILESDIR}"/atopacct.service
 	dodoc atop.cronsysv AUTHOR ChangeLog README
 }
