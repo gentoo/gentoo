@@ -16,7 +16,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 DEPEND="dev-qt/qtcore:4
 	dev-qt/qtgui:4
-	dev-db/sqlite:3"
+	<dev-db/sqlite-3.11:3"
 RDEPEND="${DEPEND}"
 
 pkg_linguas=( ar cs de es fa_IR fi_FI fr hu id it nb nl pl pt ru sv th tr vi )
