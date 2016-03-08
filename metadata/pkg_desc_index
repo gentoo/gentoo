@@ -10097,7 +10097,7 @@ games-board/pioneers 15.3: A clone of the popular board game The Settlers of Cat
 games-board/pokerth 1.1.1 1.1.1-r1: Texas Hold'em poker game
 games-board/polyglot 1.4.70b-r1: Protocol adapter to run UCI chess engines under xboard
 games-board/pouetchess 0.2.0-r1: 3D and open source chess game
-games-board/pychess 0.10.1-r2 0.12.2 0.12.3: A chess client for Gnome
+games-board/pychess 0.10.1-r2 0.12.3: A chess client for Gnome
 games-board/pysolfc 2.0-r3: An exciting collection of more than 1000 solitaire card games
 games-board/qcheckers 20091230: Qt4 based checkers game
 games-board/qgo 1.5.4_p20100322: An ancient boardgame, very common in Japan, China and Korea
@@ -10586,7 +10586,7 @@ games-rpg/gwiz 0.8: clone of old-school Wizardry(tm) games by SirTech
 games-rpg/kqlives 0.99: A console-style role playing game
 games-rpg/lure 1.1: Lure of the Temptress
 games-rpg/mana 0.6.1: A fully free and open source MMORPG game client
-games-rpg/manaplus 1.5.11.21 1.6.1.16 1.6.2.27 9999: OpenSource 2D MMORPG client for Evol Online and The Mana World
+games-rpg/manaplus 1.5.11.21 1.6.2.27 9999: OpenSource 2D MMORPG client for Evol Online and The Mana World
 games-rpg/nwmouse 20090906.183839: Hardware mouse cursors for Neverwinter Nights
 games-rpg/nwmovies 20090223.080954: Play Neverwinter Nights movies inside the Linux client
 games-rpg/nwn 1.68-r5 1.68-r6 1.69-r1: role-playing game set in a huge medieval fantasy world of Dungeons and Dragons
