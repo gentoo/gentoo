@@ -27,10 +27,10 @@ RDEPEND="dev-libs/libpcre
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
-S="${WORKDIR}/popcornmix-${PN}-${GIT_COMMIT}"
+S="${WORKDIR}/popcornmix-omxplayer-${GIT_COMMIT}"
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-9999-Makefile.patch \
+	epatch "${FILESDIR}"/Makefile-0_p20160217.patch \
 		"${FILESDIR}"/fonts-path.patch
 
 	cat > Makefile.include << EOF
@@ -41,10 +41,10 @@ EOF
 }
 
 src_compile() {
-	emake ${PN}.bin
+	emake omxplayer.bin
 }
 
 src_install() {
-	dobin ${PN} ${PN}.bin
+	dobin omxplayer omxplayer.bin
 	dodoc README.md
 }
