@@ -42,7 +42,6 @@ RDEPEND="
 		app-arch/xz-utils
 		app-emulation/lxc[cgmanager,seccomp]
 		net-analyzer/openbsd-netcat
-		net-misc/bridge-utils
 		net-misc/rsync[xattr]
 		sys-apps/iproute2
 		virtual/acl
@@ -67,9 +66,6 @@ src_prepare() {
 	# Upstream requires the openbsd flavor of netcat (with -U), but
 	# Gentoo installs that with a renamed binary
 	epatch "${FILESDIR}/${P}-nc-binary-name.patch"
-
-	# see https://github.com/lxc/lxd/pull/1562
-	epatch "${FILESDIR}/${P}-disregard-dev-subdirs.patch"
 
 	tmpgoroot="${T}/goroot"
 	mkdir -p "$tmpgoroot" || die "Failed to create temporary GOROOT"
