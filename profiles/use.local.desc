@@ -5667,9 +5667,6 @@ net-libs/h323plus:aec - Enable acoustic echo cancellation
 net-libs/h323plus:sound - Enable audio codecs
 net-libs/h323plus:video - Enable video codecs
 net-libs/iax:snomhack - Use slower memset for SNOM phoneem
-net-libs/iojs:bundled-libs - Use bundled libs instead of system libs
-net-libs/iojs:npm - Enable NPM package manager
-net-libs/iojs:snapshot - Enable snapshot creation for faster startup
 net-libs/ldns:dane - Enable DNS-based Authentication of Named Entities (DANE) support
 net-libs/ldns:ecdsa - Enable ECDSA support
 net-libs/ldns:gost - Enable GOST support

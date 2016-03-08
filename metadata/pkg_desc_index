@@ -3936,13 +3936,8 @@ dev-java/javassist 2.6-r2 3.18.2: Javassist makes Java bytecode manipulation sim
 dev-java/javatoolkit 0.3.0-r9: Collection of Gentoo-specific tools for Java
 dev-java/javax-inject 1-r2: Dependency injection for Java (JSR-330)
 dev-java/javolution 4.0.2-r1 6.0.0: Java Solution for Real-Time and Embedded Systems
-dev-java/jax-ws 2.0.1-r1: Reference implementation of the Java API for XML Web Services
-dev-java/jax-ws-api 2.0: JAXWS 2.0 API Final Release
-dev-java/jaxb 2.1.2-r1: Reference implementation of the JAXB specification
 dev-java/jaxen 1.1.1 1.1.4-r1 1.1.6: A Java XPath Engine
 dev-java/jaxme 0.5.2-r2: An open source implementation of JAXB, the specification for Java/XML binding
-dev-java/jaxp 1.4-r1: The Java API for XML Processing (JAXP)
-dev-java/jaxr 1.0.6-r2: Java API for XML Registries
 dev-java/jazzy 0.5.2-r1: Java Spell Check API
 dev-java/jbitcollider-core 0.8: Core classes of jBitcollider: org.bitpedia.collider.core
 dev-java/jboss-logging 3.1.4: JBoss logging framework
@@ -4043,7 +4038,6 @@ dev-java/jsr305 3.0.1: Annotations for Software Defect Detection in Java
 dev-java/jsr311-api 1.1.1: JAX-RS: Java API for RESTful Web Services
 dev-java/jsr322 1.5: Java EE Connector Architecture
 dev-java/jsr67 1.3: SAAJ 1.3 (AKA JSR-67 MR3) API
-dev-java/jsr93 1.0-r2: Java API for XML Registries (JAXR) - API
 dev-java/jss 4.3.2: Network Security Services for Java (JSS)
 dev-java/jssc 2.8.0: Apache MyFaces API - Core package
 dev-java/jstun 0.7.3: Java-based STUN implementation
@@ -10929,7 +10923,6 @@ java-virtuals/ejb-api 0: Virtual for Enterprise JavaBeans API (javax.ejb)
 java-virtuals/interceptor-api 0: Virtual for Interceptor API (javax.interceptor)
 java-virtuals/jaf 1.1-r1: Virtual for JavaBeans Activation Framework (JAF)
 java-virtuals/javamail 1.0-r4: Virtual for javamail implementations
-java-virtuals/jaxp-virtual 1.4-r1: Virtual for Java API for XML Processing (JAXP)
 java-virtuals/jdk-with-com-sun 20111111-r3: Virtual ebuilds that require internal com.sun classes from a JDK
 java-virtuals/jms 1.1: Virtual for Java Message Service (JMS) API
 java-virtuals/jmx 1.0-r4: Virtual for Java Management Extensions (JMX)
@@ -14080,7 +14073,6 @@ net-libs/http-parser 2.3 2.4.1 2.4.2 2.5.0 2.6.1: Http request/response parser f
 net-libs/hubbub 0.1.2 0.1.2-r1: HTML5 compliant parsing library, written in C
 net-libs/iax 0.2.2 0.2.2-r1 0.2.2-r3: IAX (Inter Asterisk eXchange) Library
 net-libs/ignition-transport 0.7.0 0.9.0-r1 1.0.1: Combines ZeroMQ with Protobufs to create a fast and efficient message passing system
-net-libs/iojs 2.3.3 2.3.4 2.4.0 2.5.0 3.0.0: An npm compatible platform originally based on node.js
 net-libs/jreen 1.2.0: Qt XMPP library
 net-libs/ldns 1.6.17 1.6.17-r1: a library with the aim to simplify DNS programming in C
 net-libs/liba53 9999: A5/3 Call encryption library
