@@ -1,11 +1,11 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 PYTHON_COMPAT=( python2_7 )
 
-inherit autotools eutils linux-info flag-o-matic python-any-r1 readme.gentoo systemd virtualx user multilib-minimal
+inherit autotools eutils linux-info flag-o-matic python-any-r1 readme.gentoo-r1 systemd virtualx user multilib-minimal
 
 DESCRIPTION="A message bus system, a simple way for applications to talk to each other"
 HOMEPAGE="http://dbus.freedesktop.org/"
@@ -15,6 +15,8 @@ LICENSE="|| ( AFL-2.1 GPL-2 )"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~x64-freebsd ~x86-freebsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x86-solaris"
 IUSE="debug doc selinux static-libs systemd test X"
+
+RESTRICT="test"
 
 CDEPEND="
 	>=dev-libs/expat-2
@@ -37,7 +39,7 @@ DEPEND="${CDEPEND}
 	virtual/pkgconfig
 	doc? ( app-doc/doxygen )
 	test? (
-		>=dev-libs/glib-2.24:2
+		>=dev-libs/glib-2.36:2
 		${PYTHON_DEPS}
 		)
 "
@@ -72,7 +74,7 @@ src_prepare() {
 		-e '/"dispatch"/d' \
 		bus/test-main.c || die
 
-	epatch_user
+	eapply_user
 
 	# required for asneeded patch but also for bug 263909, cross-compile so
 	# don't remove eautoreconf
@@ -104,18 +106,20 @@ multilib_src_configure() {
 		--disable-checks
 		$(use_enable selinux)
 		$(use_enable selinux libaudit)
+		--disable-apparmor
 		$(use_enable kernel_linux inotify)
 		$(use_enable kernel_FreeBSD kqueue)
 		$(use_enable systemd)
+		$(use_enable systemd user-session)
 		--disable-embedded-tests
 		--disable-modular-tests
 		$(use_enable debug stats)
 		--with-session-socket-dir="${EPREFIX}"/tmp
 		--with-system-pid-file="${EPREFIX}"/var/run/dbus.pid
 		--with-system-socket="${EPREFIX}"/var/run/dbus/system_bus_socket
+		--with-systemdsystemunitdir="$(systemd_get_systemunitdir)"
 		--with-dbus-user=messagebus
 		$(use_with X x)
-		"$(systemd_with_unitdir)"
 		)
 
 	if [[ ${CHOST} == *-darwin* ]]; then
@@ -196,7 +200,7 @@ multilib_src_install() {
 }
 
 multilib_src_install_all() {
-	newinitd "${FILESDIR}"/dbus.initd dbus
+	newinitd "${FILESDIR}"/dbus.initd-r1 dbus
 
 	if use X; then
 		# dbus X session script (#77504)
