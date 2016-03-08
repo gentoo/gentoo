@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=dev-libs/libpcre media-fonts/freefont || ( media-libs/raspberrypi-userland media-libs/raspberrypi-userland-bin ) sys-apps/dbus sys-apps/fbset virtual/ffmpeg x11-apps/xrefresh x11-apps/xset virtual/pkgconfig
+DESCRIPTION=Command line media player for the Raspberry Pi
+EAPI=5
+HOMEPAGE=https://github.com/popcornmix/omxplayer
+KEYWORDS=~arm
+LICENSE=GPL-2
+RDEPEND=dev-libs/libpcre media-fonts/freefont || ( media-libs/raspberrypi-userland media-libs/raspberrypi-userland-bin ) sys-apps/dbus sys-apps/fbset virtual/ffmpeg x11-apps/xrefresh x11-apps/xset
+SLOT=0
+SRC_URI=https://github.com/popcornmix/omxplayer/tarball/15a490b -> omxplayer-0_p20160217.tar.gz
+_eclass_exported_funcs=src_prepare:- src_compile:- src_install:-
+_eclasses_=eutils	9d81603248f2ba3ec59124320d123e5e	flag-o-matic	d270fa247153df66074f795fa42dba3e	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_md5_=6767d3802a7fa444ec732d3bd1b21ad1

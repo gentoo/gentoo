@@ -11895,7 +11895,7 @@ media-gfx/cropgui 0.1.1-r3 0.2 9999: GUI for lossless cropping of jpeg images
 media-gfx/crwinfo 0.2: Canon raw image (CRW) information and thumbnail extractor
 media-gfx/cthumb 4.2: Create a statical HTML Image gallery with captions for each image
 media-gfx/cutycapt 0_p20120409: Qt WebKit Web Page Rendering Capture Utility
-media-gfx/darktable 1.6.9 2.0.0 2.0.1 9999: A virtual lighttable and darkroom for photographers
+media-gfx/darktable 1.6.9 2.0.1 2.0.2 9999: A virtual lighttable and darkroom for photographers
 media-gfx/dawn 3.90b: 3D geometrical postscript renderer
 media-gfx/dcraw 9.24.4 9.25.0 9.26.0: Converts the native (RAW) format of various digital cameras into netpbm portable pixmap (.ppm) image
 media-gfx/digikam 4.4.0-r1 4.12.0 4.14.0: Digital photo management application for KDE
@@ -13361,6 +13361,7 @@ media-video/noad 0.7.3 0.7.3-r1 0.8.6 0.8.6-r1: Mark commercial breaks in VDR re
 media-video/nvidia-settings 340.58 340.58-r1 355.11 358.16: NVIDIA Linux X11 Settings Utility
 media-video/nvidia_video_sdk 6.0.1: NVIDIA Video Codec SDK
 media-video/ogmrip 1.0.1: Graphical frontend and libraries for ripping DVDs and encoding to AVI/OGM/MKV/MP4
+media-video/omxplayer 0_p20160217 9999: Command line media player for the Raspberry Pi
 media-video/openshot 1.4.3: Free, open-source, non-linear video editor to create and edit videos and movies
 media-video/oxine 0.7.1-r1: OSD frontend for Xine
 media-video/parole 0.5.4 0.6.1 0.7.0 0.8.0-r1 0.8.1: a simple media player based on the GStreamer framework for the Xfce4 desktop
@@ -18547,7 +18548,7 @@ x11-terms/terra 9999: Terminal emulator with split-screen support
 x11-terms/tilda 0.9.6: A drop down terminal, similar to the consoles found in first person shooters
 x11-terms/valaterm 0.6: A lightweight vala based terminal
 x11-terms/xfce4-terminal 0.6.3: A terminal emulator for the Xfce desktop environment
-x11-terms/xterm 314 320 321 322: Terminal Emulator for X Windows
+x11-terms/xterm 314 320 322 323: Terminal Emulator for X Windows
 x11-terms/xvt 2.1-r3: A tiny vt100 terminal emulator for X
 x11-terms/yeahconsole 0.3.4-r1: yeahconsole turns an xterm or rxvt-unicode into a game-like console
 x11-themes/Tulliana 2.0: Tulliana icon set for KDE
