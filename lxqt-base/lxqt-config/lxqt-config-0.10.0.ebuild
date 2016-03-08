@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -30,7 +30,7 @@ DEPEND="
 	dev-qt/qtx11extras:5
 	dev-qt/qtxml:5
 	kde-frameworks/kwindowsystem:5
-	kde-plasma/libkscreen
+	kde-plasma/libkscreen:5=
 	~lxqt-base/liblxqt-${PV}
 	sys-libs/zlib
 	x11-libs/libICE
