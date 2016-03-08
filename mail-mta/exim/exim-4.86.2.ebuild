@@ -515,13 +515,11 @@ pkg_postinst() {
 		einfo "support prior to 4.83, make sure to remove all dsn_process"
 		einfo "switches from your routers, see https://bugs.gentoo.org/511818"
 	fi
-	if use perl ; then
-		einfo "For CVE-2016-1531, Exim introduced keep_environment and"
-		einfo "add_environment flags.  You might want to set them, see:"
-		einfo "https://lists.exim.org/lurker/message/20160302.191005.a72d8433.en.html"
-	fi
 	einfo "Exim maintains some db files under its spool directory that need"
 	einfo "cleaning from time to time.  (${EROOT}var/spool/exim/db)"
 	einfo "Please use the exim_tidydb tool as documented in the Exim manual:"
 	einfo "http://www.exim.org/exim-html-current/doc/html/spec_html/ch-exim_utilities.html#SECThindatmai"
+	einfo "For CVE-2016-1531, Exim introduced keep_environment and"
+	einfo "add_environment flags.  You might want to set them, see:"
+	einfo "https://lists.exim.org/lurker/message/20160302.191005.a72d8433.en.html"
 }
