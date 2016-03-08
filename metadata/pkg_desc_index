@@ -4875,6 +4875,7 @@ dev-libs/ucl 1.03-r1: the UCL Compression Library
 dev-libs/ucommon 6.0.3 6.1.10 6.3.1 6.5.2 6.5.7: Portable C++ runtime for threads and sockets
 dev-libs/udis86 1.7-r2 1.7.2: Disassembler library for the x86/-64 architecture sets
 dev-libs/unibilium 1.1.2 1.1.4: A very basic terminfo library
+dev-libs/unittest++ 1.6.0: A lightweight unit testing framework for C++
 dev-libs/urdfdom 0.3.0 0.4.1 9999: URDF (U-Robot Description Format) library
 dev-libs/urdfdom_headers 0.3.0 0.4.0 0.4.1 9999: URDF (U-Robot Description Format) headers
 dev-libs/uriparser 0.7.9 0.8.0 0.8.1 0.8.2 0.8.3 0.8.4: Uriparser is a strictly RFC 3986 compliant URI parsing library in C
