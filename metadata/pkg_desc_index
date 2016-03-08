@@ -13791,7 +13791,7 @@ net-dns/dnstop 20121017 20140915: Displays various tables of DNS traffic on your
 net-dns/dnswalk 2.0.2: dnswalk is a DNS database debugger
 net-dns/ez-ipupdate 3.0.11.13.3_beta8-r2: Dynamic DNS client for lots of dynamic dns services
 net-dns/fpdns 0.10.0_pre20130404-r1: Fingerprinting DNS servers
-net-dns/hash-slinger 2.6-r1: Various tools to generate special DNS records like SSHFP, TLSA, OPENPGPKEY, IPSECKEY
+net-dns/hash-slinger 2.6-r1 2.7: Various tools to generate special DNS records like SSHFP, TLSA, OPENPGPKEY, IPSECKEY
 net-dns/hesinfo 3.1.0: A simple command-line interface to the net-dns/hesiod service library
 net-dns/hesiod 3.1.0: Use DNS functionality to provide access to databases of information that changes infrequently
 net-dns/idnkit 1.0-r2: Toolkit for Internationalized Domain Names (IDN)
@@ -18687,7 +18687,7 @@ x11-wm/aewm 1.3.12: A minimalistic X11 window manager
 x11-wm/aewm++ 1.1.5-r2: A window manager with more modern features than aewm but with the same look and feel
 x11-wm/afterstep 2.2.9 2.2.12: A feature rich NeXTish window manager
 x11-wm/amiwm 0.21_p2: Windowmanager ala Amiga(R) Workbench(R)
-x11-wm/awesome 3.4.15 3.5.6-r1 3.5.6-r2 3.5.7 3.5.8: A dynamic floating and tiling window manager
+x11-wm/awesome 3.4.15 3.5.6-r1 3.5.6-r2 3.5.7 3.5.8 3.5.9: A dynamic floating and tiling window manager
 x11-wm/blackbox 0.70.1-r1: A small, fast, full-featured window manager for X
 x11-wm/bspwm 0.8.8-r1 0.8.9 0.9: Tiling window manager based on binary space partitioning
 x11-wm/compiz 0.8.8-r3: OpenGL window and compositing manager
