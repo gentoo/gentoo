@@ -516,4 +516,7 @@ pkg_postinst() {
 	einfo "cleaning from time to time.  (${EROOT}var/spool/exim/db)"
 	einfo "Please use the exim_tidydb tool as documented in the Exim manual:"
 	einfo "http://www.exim.org/exim-html-current/doc/html/spec_html/ch-exim_utilities.html#SECThindatmai"
+	einfo "For CVE-2016-1531, Exim introduced keep_environment and"
+	einfo "add_environment flags.  You might want to set them, see:"
+	einfo "https://lists.exim.org/lurker/message/20160302.191005.a72d8433.en.html"
 }
