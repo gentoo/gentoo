@@ -15,7 +15,7 @@ HOMEPAGE="http://www.openfoam.org"
 SRC_URI="http://downloads.sourceforge.net/foam/${MY_P}.tgz"
 
 LICENSE="GPL-2"
-SLOT="2.2"
+SLOT="2.4"
 KEYWORDS="~amd64 ~x86"
 IUSE="doc examples opendx src paraview"
 
