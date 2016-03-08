@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="threads"
@@ -33,12 +33,24 @@ DEPEND="${RDEPEND}
 
 WAF_BINARY="${S}/buildtools/bin/waf"
 
+RESTRICT="test"
+
 MULTILIB_WRAPPED_HEADERS=(
 	# python goes only for native
 	/usr/include/pytalloc.h
 )
 
+pkg_setup() {
+	# try to turn off distcc and ccache for people that have a problem with it
+	export DISTCC_DISABLE=1
+	export CCACHE_DISABLE=1
+
+	python-single-r1_pkg_setup
+}
+
 src_prepare() {
+	default
+
 	# what would you expect of waf? i won't even waste time trying.
 	multilib_copy_sources
 }
