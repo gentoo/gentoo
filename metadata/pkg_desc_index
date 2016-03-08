@@ -13245,7 +13245,7 @@ media-video/2mandvd 1.8.5: The successor of ManDVD
 media-video/aacskeys 0.4.0c-r2 0.4.0e: Decrypt keys from an AACS source (HD DVD / Blu-Ray)
 media-video/abby 0.4.8: GUI front-end for cclive and clive video extraction utilities
 media-video/acidrip 0.14-r4: A gtk-perl mplayer/mencoder frontend for ripping DVDs
-media-video/aegisub 3.0.4-r1 3.2.2 3.2.2-r1 9999: Advanced subtitle editor
+media-video/aegisub 3.0.4-r1 3.2.2 3.2.2_p20160306 9999: Advanced subtitle editor
 media-video/alevt 1.6.2: Teletext viewer for X11
 media-video/aravis 0.1.14 0.1.15 9999: Library for video acquisition using Genicam cameras
 media-video/arista 0.9.7: An easy to use multimedia transcoder for the GNOME Desktop
@@ -14863,7 +14863,7 @@ net-p2p/soulseek-qt 20131106-r1: Official binary Qt SoulSeek client
 net-p2p/syncthing 0.12.19 0.12.20: Open Source Continuous File Synchronization
 net-p2p/syrep 0.9: A generic file repository synchronization tool
 net-p2p/torrentinfo 1.8.6: A torrent file parser
-net-p2p/transmission 2.84-r4 2.84-r5 2.90-r1: A Fast, Easy and Free BitTorrent client
+net-p2p/transmission 2.84-r4 2.84-r5 2.90-r1 2.92: A Fast, Easy and Free BitTorrent client
 net-p2p/transmission-remote-cli 1.7.0 1.7.1: Ncurses interface for the Transmission BitTorrent client
 net-p2p/transmission-remote-gtk 1.0 1.1.1: GTK+ client for management of the Transmission BitTorrent client, over HTTP RPC
 net-p2p/tribler 6.0.3 6.3.3-r1: Bittorrent client that does not require a website to discover content
