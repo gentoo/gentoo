@@ -7616,6 +7616,7 @@ dev-python/pylibpcap 0.6.4 0.6.4-r1: Python interface to libpcap
 dev-python/pylint 1.4.4 1.4.5 1.5.1 1.5.2 1.5.3 1.5.4: Python code static checker
 dev-python/pylirc 0.0.5-r1: lirc module for Python
 dev-python/pylons 1.0.1-r1 1.0.2: Pylons Web Framework
+dev-python/pylons-sphinx-themes 0.3.1: Pylons Sphinx themes for documentation styling
 dev-python/pylzma 0.4.4-r1 0.4.5 0.4.6 0.4.8: Python bindings for the LZMA compression library
 dev-python/pymad 0.6 0.6-r1: Python wrapper for libmad MP3 decoding in python
 dev-python/pymdstat 0.4.2: Python library to parse Linux /proc/mdstat
@@ -8096,7 +8097,7 @@ dev-python/visual 5.74 5.74-r1: Real-time 3D graphics library for Python
 dev-python/vobject 0.8.1c-r1: A full featured Python package for parsing and generating vCard and vCalendar files
 dev-python/vulture 0.8.1: find unused classes, functions and variables in your code
 dev-python/w3lib 1.11.0 1.13.0: Python library of web-related functions
-dev-python/waitress 0.8.9 0.8.10: A pure-Python WSGI server
+dev-python/waitress 0.8.9 0.8.10-r1: A pure-Python WSGI server
 dev-python/warlock 1.0.1 1.1.0 1.2.0: Python object model built on JSON schema and JSON patch
 dev-python/watchdog 0.8.1 0.8.3: Python API and shell utilities to monitor file system events
 dev-python/wcsaxes 0.3 0.6: Framework for plotting astronomical and geospatial data
