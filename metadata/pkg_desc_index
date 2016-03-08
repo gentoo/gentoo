@@ -2204,7 +2204,7 @@ app-text/diction 1.13: Diction and style checkers for english and german texts
 app-text/diffpdf 2.1.3: Program that textually or visually compares two PDF files
 app-text/ding 1.7: Tk based dictionary (German-English) (incl. dictionary itself)
 app-text/discount 2.1.6-r1 2.1.8a-r1: An implementation of John Gruber's Markdown text to html language written in C
-app-text/djview 4.9 4.10 4.10.3 4.10.5: Portable DjVu viewer using Qt4
+app-text/djview 4.9 4.10 4.10.3 4.10.5 4.10.6: Portable DjVu viewer using Qt4
 app-text/djvu 3.5.25.3 3.5.27: DjVu viewers, encoders and utilities
 app-text/djvusmooth 0.2.14: Graphical editor for DjVu documents
 app-text/docbook-dsssl-stylesheets 1.79: DSSSL Stylesheets for DocBook
@@ -14148,7 +14148,7 @@ net-libs/libosip 3.6.0 4.0.0: a simple way to support the Session Initiation Pro
 net-libs/libosmo-abis 9999: Osmocom library for A-bis interface
 net-libs/libosmo-dsp 0.3 9999: A library with SDR DSP primitives
 net-libs/libosmocore 0.6.6 0.8.0 9999: Utility functions for OsmocomBB, OpenBSC and related projects
-net-libs/libotr 3.2.1 4.1.0: (OTR) Messaging allows you to have private conversations over instant messaging
+net-libs/libotr 3.2.1 4.1.0 4.1.1: (OTR) Messaging allows you to have private conversations over instant messaging
 net-libs/libpcap 1.7.4 9999: A system-independent library for user-level network packet capture
 net-libs/libpcapnav 0.8: Libpcap wrapper library to navigate to arbitrary packets in a tcpdump trace file
 net-libs/libpri 1.4.12-r2 1.4.13 1.4.14 1.4.15: Primary Rate ISDN (PRI) library
@@ -16751,7 +16751,7 @@ sys-devel/binutils-apple 3.1.2 3.2 3.2.6 4.2 4.2-r1 4.3 4.3-r1 5.1 6.1 6.3: Darw
 sys-devel/binutils-config 4-r2 4-r3 4-r4 5-r2: Utility to change the binutils version being used
 sys-devel/binutils-hppa64 2.19.1 2.20.1 2.21.1-r1 2.22 2.23.1 2.23.2 2.24 2.25 2.25.1: binutils package for building 64bit kernels on HPPA
 sys-devel/bison 1.875d 2.4.3 2.7.1 3.0.3-r1 3.0.4 3.0.4-r1: A general-purpose (yacc-compatible) parser generator
-sys-devel/bmake 20140214 20151010 20151220: NetBSD's portable make
+sys-devel/bmake 20140214 20151010 20151220 20160220: NetBSD's portable make
 sys-devel/boost-m4 0.4 0.4-r1: Another set of autoconf macros for compiling against boost
 sys-devel/byfl 1.4 9999: Compiler-based Application Analysis
 sys-devel/clang 3.3-r100 3.4.2-r100 3.5.0-r100 3.5.2-r100 3.6.2-r100 3.7.0-r100 3.7.1-r100 3.8.0_rc2-r100 9999-r100: C language family frontend for LLVM (meta-ebuild)
@@ -18355,7 +18355,7 @@ x11-plugins/pidgin-mbpurple 0.3.0-r2: Libpurple (Pidgin) plug-in supporting micr
 x11-plugins/pidgin-mpris 0.2.6: Gets current song from MPRIS-aware media players
 x11-plugins/pidgin-musictracker 0.4.22: A Pidgin now playing plugin to publicise the songs you are listening to in your status message
 x11-plugins/pidgin-opensteamworks 1.4 1.6.1: Steam protocol plugin for pidgin
-x11-plugins/pidgin-otr 3.2.1 4.0.1 4.0.1-r1: (OTR) Messaging allows you to have private conversations over instant messaging
+x11-plugins/pidgin-otr 3.2.1 4.0.1 4.0.1-r1 4.0.2: (OTR) Messaging allows you to have private conversations over instant messaging
 x11-plugins/pidgin-privacy-please 0.7.1: pidgin plugin to stop spammers from annoying you
 x11-plugins/pidgin-rhythmbox 2.0: automatically update your pidgin profile with current info from Rhythmbox
 x11-plugins/pidgin-sipe 1.18.0-r1 1.20.1: Pidgin Plug-in SIPE (Sip Exchange Protocol)
