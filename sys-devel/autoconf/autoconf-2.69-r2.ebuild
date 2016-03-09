@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -37,12 +37,3 @@ fi
 src_prepare()   { eblit-run src_prepare   ; }
 src_configure() { eblit-run src_configure ; }
 src_install()   { eblit-run src_install   ; }
-
-eblit-src_prepare-pre() {
-	# Avoid the "dirty" suffix in the git version by generating it
-	# before we run later stages which might modify source files.
-	local ver=$(./build-aux/git-version-gen .tarball-version)
-	echo "${ver}" > .tarball-version
-
-	autoreconf -f -i || die
-}
