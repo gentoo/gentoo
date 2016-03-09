@@ -1,9 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
-PYTHON_COMPAT=( python{2_7,3_3,3_4} )
+PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="ssl"
 
 inherit python-single-r1 eutils
@@ -27,7 +27,8 @@ src_prepare() {
 	epatch "${FILESDIR}/2.7-irkerhook-Remove-file-listing.patch"
 
 	# Prefix support
-	sed -i -e "/^ExecStart=/ s:=/:=${EROOT}:" irkerd.service
+	sed -i -e "/^ExecStart=/ s:=/:=${EROOT}:" irkerd.service \
+		|| die "sed failed"
 }
 
 src_install() {

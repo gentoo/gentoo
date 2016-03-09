@@ -7,8 +7,6 @@
 
 : ${IRKERD_NICK:=}
 : ${IRKERD_PASSWORD:=}
-: ${IRKERD_LOGFILE:=/var/log/${RC_SVCNAME}.log}
-: ${IRKERD_LOGLEVEL:=0}
 : ${IRKERD_USER:=nobody}
 
 depend() {
@@ -16,12 +14,7 @@ depend() {
 }
 
 start () {
-	if [[ ${IRKERD_LOGLEVEL} ]] ; then
-		IRKERD_OPTS="${IRKERD_OPTS} -d ${IRKERD_LOGLEVEL}"
-
-		ewarn "IRKERD_LOGLEVEL is intended to be used for debugging purpose only"
-		ewarn "No logrotate can handle ${IRKERD_LOGFILE}"
-
+	if [[ ${IRKERD_LOGFILE} ]] ; then
 		checkpath -f \
 			-o "${IRKERD_USER}" \
 			"${IRKERD_LOGFILE}" \
@@ -32,6 +25,7 @@ start () {
 		die "IRKERD_USER is mandatory"
 	fi
 
+	[[ -n "${IRKERD_LOGLEVEL}" ]] && IRKERD_OPTS="${IRKERD_OPTS} -d ${IRKERD_LOGLEVEL}"
 	[[ -n "${IRKERD_LOGFILE}"  ]] && IRKERD_OPTS="${IRKERD_OPTS} -l ${IRKERD_LOGFILE}"
 	[[ -n "${IRKERD_NICK}"     ]] && IRKERD_OPTS="${IRKERD_OPTS} -n ${IRKERD_NICK}"
 	[[ -n "${IRKERD_PASSWORD}" ]] && IRKERD_OPTS="${IRKERD_OPTS} -p ${IRKERD_PASSWORD}"
