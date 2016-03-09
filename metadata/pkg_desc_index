@@ -11432,7 +11432,7 @@ kde-misc/takeoff 1.0: A tablet desktop style app launcher
 kde-misc/tellico 2.3.10 2.3.11: A collection manager for the KDE environment
 kde-misc/wacomtablet 2.1.0: KControl module for Wacom tablets
 kde-misc/wicd-client-kde 0.3.1-r1: Wicd client built on the KDE Development Platform
-kde-misc/yakuake 2.9.9-r3: A quake-style terminal emulator based on KDE konsole technology
+kde-misc/yakuake 2.9.9-r3 3.0.2: Quake-style terminal emulator based on konsole
 kde-misc/yawp 0.4.5: Yet Another Weather Plasmoid
 kde-misc/zanshin 0.2.1-r1 0.2.2 0.3.0 0.3.1: Todo management application for KDE
 kde-plasma/bluedevil 5.4.3 5.5.4 5.5.5: Bluetooth stack for KDE
