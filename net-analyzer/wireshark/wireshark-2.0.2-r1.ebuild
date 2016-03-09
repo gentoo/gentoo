@@ -3,24 +3,26 @@
 # $Id$
 
 EAPI=5
-inherit autotools eutils fcaps flag-o-matic git-r3 multilib qmake-utils qt4-r2 user
+inherit autotools eutils fcaps flag-o-matic multilib qmake-utils qt4-r2 user
 
 DESCRIPTION="A network protocol analyzer formerly known as ethereal"
 HOMEPAGE="http://www.wireshark.org/"
-EGIT_REPO_URI="https://code.wireshark.org/review/wireshark"
+SRC_URI="${HOMEPAGE}download/src/all-versions/${P/_/}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0/${PV}"
-KEYWORDS=""
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
 IUSE="
-	adns androiddump +caps cpu_flags_x86_sse4_2 crypt doc doc-pdf geoip +gtk3
-	ipv6 kerberos lua +netlink +pcap portaudio +qt4 qt5 sbc selinux smi ssl
-	tfshark zlib
+	adns androiddump +caps crypt doc doc-pdf geoip +gtk3 ipv6 kerberos lua
+	+netlink +pcap portaudio +qt4 qt5 selinux sbc smi tfshark
+	cpu_flags_x86_sse4_2 ssl zlib
 "
 REQUIRED_USE="
 	ssl? ( crypt )
 	?? ( qt4 qt5 )
 "
+
+S=${WORKDIR}/${P/_/}
 
 GTK_COMMON_DEPEND="
 	x11-libs/gdk-pixbuf
@@ -91,15 +93,14 @@ pkg_setup() {
 	enewgroup wireshark
 }
 
-src_unpack() {
-	git-r3_src_unpack
-}
-
 src_prepare() {
 	epatch \
+		"${FILESDIR}"/${PN}-1.6.13-ldflags.patch \
+		"${FILESDIR}"/${PN}-1.11.0-oldlibs.patch \
+		"${FILESDIR}"/${PN}-99999999-pkgconfig.patch \
 		"${FILESDIR}"/${PN}-1.99.8-qtchooser.patch \
-		"${FILESDIR}"/${PN}-99999999-sse4_2.patch \
-		"${FILESDIR}"/${PN}-99999999-androiddump.patch
+		"${FILESDIR}"/${PN}-2.0.0-androiddump-pcap.patch \
+		"${FILESDIR}"/${PN}-2.1.0-sse4_2.patch
 
 	epatch_user
 
@@ -129,7 +130,13 @@ src_configure() {
 		myconf+=( "--disable-wireshark" )
 	fi
 
-	use qt4 && export QT_MIN_VERSION=4.6.0
+	if ! use qt4 && ! use qt5; then
+		myconf+=( "--with-qt=no" )
+	fi
+
+	if use qt4; then
+		export QT_MIN_VERSION=4.6.0
+	fi
 
 	if use qt5; then
 		export QT_MIN_VERSION=5.3.0
@@ -140,19 +147,12 @@ src_configure() {
 	use doc || export ac_cv_prog_HAVE_DOXYGEN=false
 	use doc-pdf || export ac_cv_prog_HAVE_FOP=false
 
-	if use qt4; then
-		myconf+=" --with-qt=4"
-	elif use qt5; then
-		myconf+=" --with-qt=5"
-	else
-		myconf+=" --with-qt=no"
-	fi
-
 	# dumpcap requires libcap
 	# --disable-profile-build bugs #215806, #292991, #479602
 	econf \
 		$(use androiddump && use pcap && echo --enable-androiddump-use-libpcap=yes) \
 		$(use_enable androiddump) \
+		$(use_enable ipv6) \
 		$(use_enable tfshark) \
 		$(use_with adns c-ares) \
 		$(use_with caps libcap) \
@@ -164,6 +164,8 @@ src_configure() {
 		$(use_with pcap dumpcap-group wireshark) \
 		$(use_with pcap) \
 		$(use_with portaudio) \
+		$(usex qt4 --with-qt=4 '') \
+		$(usex qt5 --with-qt=5 '') \
 		$(usex qt4 MOC=$(qt4_get_bindir)/moc '') \
 		$(usex qt4 RCC=$(qt4_get_bindir)/rcc '') \
 		$(usex qt4 UIC=$(qt4_get_bindir)/uic '') \
@@ -194,6 +196,7 @@ src_compile() {
 
 src_install() {
 	default
+
 	if use doc; then
 		dohtml -r docbook/{release-notes.html,ws{d,u}g_html{,_chunked}}
 		if use doc-pdf; then
@@ -209,6 +212,7 @@ src_install() {
 	# install headers
 	local wsheader
 	for wsheader in \
+		color.h \
 		config.h \
 		epan/*.h \
 		epan/crypt/*.h \
