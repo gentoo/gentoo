@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -13,7 +13,7 @@ RUBY_FAKEGEM_TASK_TEST=""
 inherit bash-completion-r1 ruby-fakegem
 
 DESCRIPTION="Make-like scripting in Ruby"
-HOMEPAGE="https://github.com/jimweirich/rake"
+HOMEPAGE="https://github.com/ruby/rake"
 
 LICENSE="MIT"
 SLOT="0"
@@ -22,7 +22,7 @@ IUSE="doc"
 
 DEPEND+=" app-arch/gzip"
 
-ruby_add_bdepend "test? ( >=dev-ruby/minitest-5.4 )"
+ruby_add_bdepend "test? ( >=dev-ruby/minitest-5.8 )"
 
 all_ruby_compile() {
 	if use doc; then
@@ -31,7 +31,7 @@ all_ruby_compile() {
 }
 
 each_ruby_test() {
-	${RUBY} -Ilib:test:. -e 'gem "minitest", "~>5.4"; require "minitest/autorun"; Dir["test/test_*.rb"].each{|f| require f}' || die
+	${RUBY} -Ilib:test:. -e 'gem "minitest", "~>5.8"; require "minitest/autorun"; Dir["test/test_*.rb"].each{|f| require f}' || die
 }
 
 all_ruby_install() {
