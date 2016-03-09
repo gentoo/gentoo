@@ -35,6 +35,12 @@ RDEPEND=">=x11-libs/gtk+-2.24:2
 		>=sys-apps/dbus-1:0
 	)
 	gksu? ( x11-libs/gksu )
+	image-converter? (
+		|| (
+			media-gfx/imagemagick
+			media-gfx/graphicsmagick[imagemagick]
+		)
+	)
 	pidgin? ( >=dev-libs/dbus-glib-0.60:0 )
 	upnp? ( >=net-libs/gupnp-0.13:0= )"
 
