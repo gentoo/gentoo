@@ -4,7 +4,7 @@ EAPI=6
 HOMEPAGE=https://bugs.gentoo.org/show_bug.cgi?id=524922#c12
 KEYWORDS=~x86 ~amd64
 LICENSE=metapackage
-RDEPEND=>=dev-db/oracle-instantclient-12[jdbc]
+RDEPEND=>=dev-db/oracle-instantclient-basic-12 >=dev-db/oracle-instantclient-12[jdbc]
 SLOT=0
 _eclass_exported_funcs=-
-_md5_=8a965bcf9d8099b8342e6d6aa55c0872
+_md5_=1aa3982cae99ad7231f47b71375ef1ca

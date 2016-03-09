@@ -2891,7 +2891,7 @@ dev-db/oracle-instantclient-basic 10.2.0.3-r1 11.2.0.2 11.2.0.3 11.2.0.4 12: Tra
 dev-db/oracle-instantclient-jdbc 10.2.0.3 11.2.0.2 11.2.0.3 11.2.0.4 12: Transition package moving to single dev-db/oracle-instantclient package
 dev-db/oracle-instantclient-odbc 11.2.0.2-r1 11.2.0.3 11.2.0.4 12: Transition package moving to single dev-db/oracle-instantclient package
 dev-db/oracle-instantclient-sqlplus 10.2.0.3 11.2.0.2 11.2.0.3 11.2.0.3-r1 11.2.0.4 12: Transition package moving to single dev-db/oracle-instantclient package
-dev-db/percona-server 5.6.27.75.0 5.6.27.75.0-r1 5.6.27.76.0 5.6.28.76.1: An enhanced, drop-in replacement for MySQL from the Percona team
+dev-db/percona-server 5.6.28.76.1 5.6.29.76.2: An enhanced, drop-in replacement for MySQL from the Percona team
 dev-db/percona-toolkit 2.2.7 2.2.11 2.2.15: essential command-line utilities for MySQL
 dev-db/pg_activity 1.2.0: Realtime PostgreSQL database server monitoring tool
 dev-db/pg_top 3.6.2-r1 3.7.0: 'top' for PostgreSQL
@@ -16741,7 +16741,7 @@ sys-cluster/torque 2.5.13 4.1.7 4.2.9-r4: Resource manager and queuing system ba
 sys-cluster/util-vserver 0.30.216_pre3025 0.30.216_pre3062 0.30.216_pre3120: Linux-VServer admin utilities
 sys-cluster/vzctl 4.9.1 4.9.4: OpenVZ ConTainers control utility
 sys-cluster/wulfware 2.6.0: Applications to monitor on a beowulf- or GRID-style clusters
-sys-devel/autoconf 2.13 2.59-r7 2.61-r2 2.62-r1 2.63-r1 2.64 2.65-r1 2.67 2.68 2.69 2.69-r1 9999: Used to create autoconfiguration files
+sys-devel/autoconf 2.13 2.59-r7 2.61-r2 2.62-r1 2.63-r1 2.64 2.65-r1 2.67 2.68 2.69 2.69-r1 2.69-r2 9999: Used to create autoconfiguration files
 sys-devel/autoconf-archive 2015.02.04 2015.02.24 2015.09.25: GNU Autoconf Macro Archive
 sys-devel/autoconf-wrapper 13: wrapper for autoconf to manage multiple autoconf versions
 sys-devel/autogen 5.15 5.17.3 5.17.4 5.18.1 5.18.2 5.18.4: Program and text file generation
