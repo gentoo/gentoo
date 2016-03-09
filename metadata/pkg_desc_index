@@ -14557,7 +14557,7 @@ net-misc/netkit-rusers 0.17-r1: Netkit - rup rpc.rusersd rusers
 net-misc/netkit-rwall 0.17-r1: Netkit - rwall
 net-misc/netkit-rwho 0.17-r4: Netkit - ruptime/rwho/rwhod
 net-misc/netkit-talk 0.17-r5: Netkit - talkd
-net-misc/netkit-telnetd 0.17-r10: Standard Linux telnet client and server
+net-misc/netkit-telnetd 0.17-r10 0.17-r11: Standard Linux telnet client and server
 net-misc/netkit-timed 0.17-r9: Netkit - timed
 net-misc/netpipe 1.0.0_beta2 1.0.0_beta2-r1: tool to reliably distribute binary data using UDP broadcasting techniques
 net-misc/netpipes 4.2-r2: a package to manipulate BSD TCP/IP stream sockets
