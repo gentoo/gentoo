@@ -39,6 +39,7 @@ COMMON_DEPEND="
 	gold? ( >=sys-devel/binutils-2.22:*[cxx] )
 	libedit? ( dev-libs/libedit:0=[${MULTILIB_USEDEP}] )
 	libffi? ( >=virtual/libffi-3.0.13-r1:0=[${MULTILIB_USEDEP}] )
+	lldb? ( dev-python/six[${PYTHON_USEDEP}] )
 	ncurses? ( >=sys-libs/ncurses-5.9-r3:0=[${MULTILIB_USEDEP}] )
 	ocaml? (
 		>=dev-lang/ocaml-4.00.0:0=
@@ -216,6 +217,8 @@ src_prepare() {
 		# https://llvm.org/bugs/show_bug.cgi?id=18841
 		sed -e 's/add_subdirectory(readline)/#&/' \
 			-i tools/lldb/scripts/Python/modules/CMakeLists.txt || die
+		# Do not install bundled six module
+		epatch "${FILESDIR}"/${PN}-3.8-lldb_six.patch
 	fi
 
 	# User patches
