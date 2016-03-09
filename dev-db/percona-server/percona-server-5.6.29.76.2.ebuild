@@ -1,9 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
-MY_EXTRAS_VER="20151105-2051Z"
+EAPI="6"
+MY_EXTRAS_VER="20160307-1854Z"
 SUBSLOT="18"
 PYTHON_COMPAT=( python2_7 )
 inherit python-any-r1 mysql-multilib-r1
@@ -29,6 +29,19 @@ DEPEND="${COMMON_DEPEND}
 RDEPEND="${COMMON_DEPEND}"
 
 REQUIRED_USE="tokudb? ( jemalloc ) tokudb-backup-plugin? ( tokudb )"
+
+MY_PATCH_DIR="${WORKDIR}/mysql-extras-${MY_EXTRAS_VER}"
+
+PATCHES=(
+	"${MY_PATCH_DIR}"/01050_all_mysql_config_cleanup-5.6.patch
+	"${MY_PATCH_DIR}"/02040_all_embedded-library-shared-5.5.10.patch
+	"${MY_PATCH_DIR}"/20001_all_fix-minimal-build-cmake-mysql-5.6.20.patch
+	"${MY_PATCH_DIR}"/20006_all_cmake_elib-percona-5.6.29.patch
+	"${MY_PATCH_DIR}"/20007_all_cmake-debug-werror-5.6.22.patch
+	"${MY_PATCH_DIR}"/20008_all_mysql-tzinfo-symlink.patch
+	"${MY_PATCH_DIR}"/20009_all_mysql_myodbc_symbol_fix-5.6.patch
+	"${MY_PATCH_DIR}"/20018_all_percona-server-5.6.25-without-clientlibs-tools.patch
+)
 
 # Please do not add a naive src_unpack to this ebuild
 # If you want to add a single patch, copy the ebuild to an overlay

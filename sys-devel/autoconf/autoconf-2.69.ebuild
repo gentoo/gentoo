@@ -20,13 +20,12 @@ DESCRIPTION="Used to create autoconfiguration files"
 HOMEPAGE="https://www.gnu.org/software/autoconf/autoconf.html"
 
 LICENSE="GPL-3"
-SLOT=$(usex multislot "${PV}" "2.5")
-IUSE="emacs multislot"
+SLOT="2.5"
+IUSE="emacs"
 
 DEPEND=">=sys-devel/m4-1.4.16
 	>=dev-lang/perl-5.6"
 RDEPEND="${DEPEND}
-	multislot? ( !~sys-devel/${P}:0 )
 	>=sys-devel/autoconf-wrapper-13"
 PDEPEND="emacs? ( app-emacs/autoconf-mode )"
 

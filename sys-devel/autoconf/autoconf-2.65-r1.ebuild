@@ -18,7 +18,7 @@ IUSE=""
 DEPEND=">=sys-devel/m4-1.4.6
 	dev-lang/perl"
 RDEPEND="${DEPEND}
-	!~sys-devel/${P}:0
+	!~sys-devel/${P}:2.5
 	>=sys-devel/autoconf-wrapper-13"
 
 PATCHES=(

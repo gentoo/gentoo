@@ -14,4 +14,7 @@ KEYWORDS="~x86 ~amd64"
 IUSE=""
 
 DEPEND=""
-RDEPEND=">=dev-db/oracle-instantclient-12[sqlplus]"
+RDEPEND="
+	>=dev-db/oracle-instantclient-basic-12
+	>=dev-db/oracle-instantclient-12[sqlplus]
+"
