@@ -163,6 +163,9 @@ pkg_postinst() {
 		einfo "gnome-base/orbit and net-misc/curl emerged."
 		einfo
 	fi
+	einfo "For HTML5 video you need media-video/ffmpeg installed.  Please note"
+	einfo "that gstreamer:0.10 will also be used, if available."
+
 	# Drop requirement of curl not built with nss as it's not necessary anymore
 	#if has_version 'net-misc/curl[nss]'; then
 	#	einfo
