@@ -12,12 +12,12 @@ inherit check-reqs cmake-utils eutils flag-o-matic multilib \
 
 DESCRIPTION="Low Level Virtual Machine"
 HOMEPAGE="http://llvm.org/"
-SRC_URI="http://llvm.org/pre-releases/${PV/_rc*}/${PV/3.8.0_}/${P/_}.src.tar.xz
-	clang? ( http://llvm.org/pre-releases/${PV/_rc*}/${PV/3.8.0_}/compiler-rt-${PV/_}.src.tar.xz
-		http://llvm.org/pre-releases/${PV/_rc*}/${PV/3.8.0_}/cfe-${PV/_}.src.tar.xz
-		http://llvm.org/pre-releases/${PV/_rc*}/${PV/3.8.0_}/clang-tools-extra-${PV/_}.src.tar.xz )
-	lldb? ( http://llvm.org/pre-releases/${PV/_rc*}/${PV/3.8.0_}/lldb-${PV/_}.src.tar.xz )
-	!doc? ( http://dev.gentoo.org/~voyageur/distfiles/${P/_rc*}-manpages.tar.bz2 )"
+SRC_URI="http://llvm.org/releases/${PV}/${P}.src.tar.xz
+	clang? ( http://llvm.org/releases/${PV}/compiler-rt-${PV}.src.tar.xz
+		http://llvm.org/releases/${PV}/cfe-${PV}.src.tar.xz
+		http://llvm.org/releases/${PV}/clang-tools-extra-${PV}.src.tar.xz )
+	lldb? ( http://llvm.org/releases/${PV}/lldb-${PV}.src.tar.xz )
+	!doc? ( http://dev.gentoo.org/~voyageur/distfiles/${PN}-3.8.0-manpages.tar.bz2 )"
 
 LICENSE="UoI-NCSA"
 SLOT="0/${PV}"
@@ -428,7 +428,7 @@ multilib_src_install() {
 
 	if multilib_is_native_abi; then
 		# Install man pages.
-		use doc || doman "${WORKDIR}"/${P/_rc*}-manpages/*.1
+		use doc || doman "${WORKDIR}"/${PN}-3.8.0-manpages/*.1
 
 		# Symlink the gold plugin.
 		if use gold; then
