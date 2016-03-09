@@ -75,7 +75,7 @@
     <flag name="ipv6">
       Add support for IPv6 in munin-node. IPv6 support for the master
       is always enabled, but the node requires a newer version of
-    <pkg>dev-perl/net-server</pkg>, capable of listening to IPv6
+    <pkg>dev-perl/Net-Server</pkg>, capable of listening to IPv6
       sockets.
     </flag>
     <flag name="syslog">

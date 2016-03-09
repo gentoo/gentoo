@@ -24,3 +24,6 @@ move dev-perl/crypt-idea dev-perl/Crypt-IDEA
 move dev-perl/crypt-random dev-perl/Crypt-Random
 move dev-perl/crypt-primes dev-perl/Crypt-Primes
 move dev-perl/crypt-rsa dev-perl/Crypt-RSA
+move dev-perl/net-server dev-perl/Net-Server
+move dev-perl/net-sftp dev-perl/Net-SFTP
+move dev-perl/net-ssh-perl dev-perl/Net-SSH-Perl

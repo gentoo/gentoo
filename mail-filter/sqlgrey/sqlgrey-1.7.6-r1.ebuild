@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -12,7 +12,7 @@ SLOT="0"
 IUSE="mysql postgres sqlite"
 RDEPEND="dev-lang/perl
 	dev-perl/DBI
-	dev-perl/net-server
+	dev-perl/Net-Server
 	dev-perl/Date-Calc
 	virtual/mailx
 	postgres? ( dev-perl/DBD-Pg )

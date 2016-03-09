@@ -4,7 +4,6 @@
 
 EAPI=5
 
-MY_PN=Net-SSH-Perl
 MODULE_AUTHOR=SCHWIGON
 MODULE_VERSION=1.36
 inherit perl-module

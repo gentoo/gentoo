@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -16,7 +16,7 @@ KEYWORDS="amd64 x86"
 IUSE=""
 
 DEPEND="dev-perl/Mail-DKIM
-		>=dev-perl/net-server-2.7.0
+		>=dev-perl/Net-Server-2.7.0
 		dev-perl/Error
 		dev-perl/MIME-tools"
 RDEPEND="${DEPEND}"

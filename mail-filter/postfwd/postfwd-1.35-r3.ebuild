@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -19,7 +19,7 @@ DEPEND=""
 RDEPEND=">=dev-lang/perl-5.16.3
 	virtual/perl-Sys-Syslog
 	dev-perl/Net-DNS
-	dev-perl/net-server
+	dev-perl/Net-Server
 "
 
 pkg_setup() {

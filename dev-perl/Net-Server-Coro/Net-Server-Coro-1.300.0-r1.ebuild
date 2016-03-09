@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -18,7 +18,7 @@ IUSE="ssl"
 RDEPEND="
 	dev-perl/Coro
 	dev-perl/AnyEvent
-	>=dev-perl/net-server-2
+	>=dev-perl/Net-Server-2
 	ssl? (
 		dev-perl/Net-SSLeay
 	)

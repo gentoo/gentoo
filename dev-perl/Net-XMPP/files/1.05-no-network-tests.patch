@@ -1,0 +1,28 @@
+diff -Naur Net-XMPP-1.05/t/gtalk.t Net-XMPP-1.05b/t/gtalk.t
+--- Net-XMPP-1.05/t/gtalk.t	2014-12-22 21:28:51.000000000 +0000
++++ Net-XMPP-1.05b/t/gtalk.t	2016-03-06 07:14:13.313580716 +0000
+@@ -2,7 +2,12 @@
+ use warnings;
+ 
+ use Test::More;
+-
++# https://github.com/dap/Net-XMPP/issues/11
++BEGIN {
++  if ($ENV{NO_NETWORK_TESTING}) {
++    Test::More->import(skip_all => "NO_NETWORK_TESTS set");
++  }
++}
+ ######################## XML::Stream mocking starts
+ #{
+ #   package XML::Stream;
+diff -Naur Net-XMPP-1.05/t/lib/Net/XMPP/Test/Utils.pm Net-XMPP-1.05b/t/lib/Net/XMPP/Test/Utils.pm
+--- Net-XMPP-1.05/t/lib/Net/XMPP/Test/Utils.pm	2014-12-22 21:28:51.000000000 +0000
++++ Net-XMPP-1.05b/t/lib/Net/XMPP/Test/Utils.pm	2016-03-06 06:59:57.227261659 +0000
+@@ -23,6 +23,7 @@
+ }
+ 
+ sub conn_is_available {
++	return if $ENV{NO_NETWORK_TESTING};
+ 	return online();
+ }
+ 
