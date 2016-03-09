@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci-astronomy@gentoo.org</email>
+    <name>Gentoo Astronomy Project</name>
+  </maintainer>
+  <longdescription lang="en">
+  astLib is a set of Python modules that provides some tools for
+  research astronomers. It can be used for simple plots, statistics,
+  common calculations, coordinate conversions, and manipulating FITS
+  images with World Coordinate System (WCS) information through
+  PyWCSTools - a simple wrapping of WCSTools by Doug Mink. PyWCSTools
+  is distributed (and developed) as part of astLib.
+  In Gentoo, PyWCSTools is using the stock library instead of the
+  bundled one.
+</longdescription>
+  <upstream>
+    <remote-id type="sourceforge">astlib</remote-id>
+  </upstream>
+</pkgmetadata>
