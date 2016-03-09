@@ -1,0 +1,11 @@
+[Unit]
+Description=Deluge BitTorrent client
+Documentation=man:deluged
+After=network.target local-fs.target
+Wants=local-fs.target
+
+[Service]
+ExecStart=/usr/bin/deluged -d -c ${DELUGED_HOME} ${DELUGED_OPTS}
+
+[Install]
+WantedBy=multi-user.target
