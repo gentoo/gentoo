@@ -4319,7 +4319,7 @@ dev-lang/ghc 7.4.2 7.6.3-r1 7.8.3 7.8.4 7.10.2 7.10.2-r1: The Glasgow Haskell Co
 dev-lang/gnat-gcc 3.4.6 4.1.2 4.2.3 4.3.5 4.3.6 4.3.6-r1 4.4.7 4.4.7-r1 4.5.4 4.5.4-r1 4.6.4 4.6.4-r1: GNAT Ada Compiler - gcc version
 dev-lang/gnat-gpl 3.4.5.2005 3.4.6.2006-r1 4.1.3.2007 4.1.3.2008-r2: GNAT Ada Compiler - AdaCore GPL version
 dev-lang/gnu-smalltalk 3.2.4: GNU Smalltalk
-dev-lang/go 1.4.2 1.5.3 1.6 1.6-r1 1.6-r2 9999: A concurrent garbage collected and typesafe programming language
+dev-lang/go 1.5.3 1.6 1.6-r1 1.6-r2 9999: A concurrent garbage collected and typesafe programming language
 dev-lang/go-bootstrap 1.4.3: Version of go compiler used for bootstrapping
 dev-lang/gprolog 1.4.4: GNU Prolog is a native Prolog compiler with constraint solving over finite domains (FD)
 dev-lang/gwydion-dylan-bin 2.4.0-r1: The Dylan Programming Language Compiler
@@ -6782,11 +6782,15 @@ dev-python/arrayterator 1.0.1-r1: A buffered iterator for reading big arrays in 
 dev-python/asciitable 0.8.0-r1: An extensible ASCII table reader
 dev-python/asset 0.6.1-r1 0.6.2 0.6.3 0.6.4 0.6.10: A package resource and symbol loading helper library
 dev-python/assets 0.1.1-r1: Cache-friendly asset management via content-hash-naming
+dev-python/astlib 0.8.0: Python astronomy modules for image and coordinate manipulation
 dev-python/astng 0.24.3: Abstract Syntax Tree for logilab packages
 dev-python/astor 0.3 0.4 0.4.1 0.5: Read/rewrite/write Python ASTs
 dev-python/astroid 1.3.8 1.4.1 1.4.2 1.4.3 1.4.4: Abstract Syntax Tree for logilab packages
+dev-python/astroml 0.3: Python Machine Learning library for astronomy
+dev-python/astroml-addons 0.2.2: Performance add-ons for the astroML package
 dev-python/astropy 1.0.6 1.1.1: Core functionality for performing astrophysics with Python
 dev-python/astropy-helpers 1.0.6 1.1.1: Helpers for Astropy and Affiliated packages
+dev-python/astroquery 0.3.1: Collection of packages to access online astronomical resources
 dev-python/async 0.6.2: Async Framework
 dev-python/asyncio 3.4.2 3.4.3: reference implementation of PEP 3156
 dev-python/atom 0.3.10: Memory efficient Python objects
@@ -7242,7 +7246,7 @@ dev-python/kaa-metadata 0.7.7-r1: Powerful media metadata parser for media files
 dev-python/kazoo 1.3.1 2.0 2.2.1: A high-level Python library that makes it easier to use Apache Zookeeper
 dev-python/keepassx 0.0.3 0.1.0: Python API and CLI for KeePassX
 dev-python/keyczar 0.71c 0.715: Toolkit for safe and simple cryptography
-dev-python/keyring 1.0 1.5 1.5-r1 1.6.1 3.1 3.3 3.7 4.0 8.2 8.3 8.4: Provides access to the system keyring service
+dev-python/keyring 1.0 1.5 1.5-r1 1.6.1 3.1 3.3 3.7 4.0 8.2 8.3 8.4 8.4.1: Provides access to the system keyring service
 dev-python/keyrings_alt 1.1: Alternate keyring implementations
 dev-python/keystonemiddleware 1.5.0 1.5.2 2.2.0 2.3.1-r1 2.3.2-r1 2.3.3: A middleware for the OpenStack Keystone API
 dev-python/kid 0.9.6-r1: A simple and Pythonic XML template language
@@ -15767,7 +15771,7 @@ sci-libs/rtabmap 0.10.5 0.10.10 9999: Real-Time Appearance-Based Mapping (RGB-D 
 sci-libs/scalapack 2.0.2: Subset of LAPACK routines redesigned for heterogenous (MPI) computing
 sci-libs/scikits 0.1-r1: Common files for python scikits
 sci-libs/scikits_image 0.9.3 0.10.0 0.10.1 0.11.3: Image processing routines for SciPy
-sci-libs/scikits_learn 0.17: Python modules for machine learning and data mining
+sci-libs/scikits_learn 0.17 0.17.1: Python modules for machine learning and data mining
 sci-libs/scikits_optimization 0.3: Python module for numerical optimization
 sci-libs/scikits_timeseries 0.91.3-r1: SciPy module for manipulating, reporting, and plotting time series
 sci-libs/scipy 0.15.1 0.16.0 0.16.1 0.17.0 9999: Scientific algorithms library for Python
