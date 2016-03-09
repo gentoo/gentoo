@@ -13993,7 +13993,7 @@ net-irc/ircii 20110228 20111115: An IRC and ICB client that runs under most UNIX
 net-irc/ircmap 0.99: Scripts to treate diagrams of IRC networks using the LINKS command
 net-irc/ircservices 5.1.24: ChanServ, NickServ, and MemoServ with support for several IRC daemons
 net-irc/ircstats 1.1-r1: IRCStats tries to be a log analyzer for Linux similar to mIRCStats
-net-irc/irker 1.19 1.20 2.9 2.11 2.12 2.13 2.15: Submission tools for IRC notifications
+net-irc/irker 2.9 2.11 2.12 2.13 2.15 2.16: Submission tools for IRC notifications
 net-irc/iroffer-dinoex 3.29: IRC fileserver using DCC
 net-irc/irssi 0.8.17 9999: A modular textUI IRC client with IPv6 support
 net-irc/irssi-otr 1.0.0-r1: Off-The-Record messaging (OTR) for irssi
@@ -16713,7 +16713,7 @@ sys-cluster/mpich2 1.5: A high performance and portable MPI implementation
 sys-cluster/mvapich2 1.6: MVAPICH2 MPI-over-infiniband package auto-configured for OpenIB
 sys-cluster/native-mpi 0: Use native OS MPI in prefix environment
 sys-cluster/neutron 7.0.1 7.0.2 7.0.3 2015.2.9999: A virtual network service for Openstack
-sys-cluster/nova 12.0.1-r1 12.0.2-r1 2015.2.9999: Cloud computing fabric controller (main part of an IaaS system) in Python
+sys-cluster/nova 12.0.2-r1 2015.2.9999: Cloud computing fabric controller (main part of an IaaS system) in Python
 sys-cluster/ocfs 1.0.14: The Oracle Cluster Filesystem
 sys-cluster/onesis 2.0.2: Diskless computing made easy
 sys-cluster/open-mx 1.5.4: Open-MX - Myrinet Express over Generic Ethernet Hardware
