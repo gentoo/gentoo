@@ -1,7 +1,7 @@
 # /etc/conf.d/deluged
 # Change this to the user you want to run deluged as.
 # You may specify a group too, after a colon
-DELUGED_USER=""
+DELUGED_USER="deluge:deluge"
 # DELUGED_UMASK="0002"
-# DELUGED_OPTS="-p 58846"
-# DELUGED_HOME=""
+DELUGED_OPTS="-p 58846"
+DELUGED_HOME="/var/lib/deluge"
