@@ -5002,7 +5002,7 @@ net-analyzer/munin:dhcpd - Install dev-perl/Net-IP, dev-perl/HTTP-Date and net-m
 net-analyzer/munin:doc - Build and install a local copy of the HTML documentation for the whole software. This requires dev-python/sphinx to process the documentation sources.
 net-analyzer/munin:http - Install dev-perl/libwww-perl required for monitoring HTTP-based services such as Apache and nginx. Disabling the flag does not remove any plugin file.
 net-analyzer/munin:ipmi - Install sys-apps/ipmitool required for monitoring IPMI sensors. Disabling the flag does not remove any plugin file.
-net-analyzer/munin:ipv6 - Add support for IPv6 in munin-node. IPv6 support for the master is always enabled, but the node requires a newer version of dev-perl/net-server, capable of listening to IPv6 sockets.
+net-analyzer/munin:ipv6 - Add support for IPv6 in munin-node. IPv6 support for the master is always enabled, but the node requires a newer version of dev-perl/Net-Server, capable of listening to IPv6 sockets.
 net-analyzer/munin:irc - Install the packages required for monitoring IRC. Disabling the flag does not remove any plugin files.
 net-analyzer/munin:java - Build the Java-based plugins to monitor JMX-compatible applications. Disabling the flag removes the jmx monitoring plugins.
 net-analyzer/munin:memcached - Install the packages required for memcached monitoring. Disabling the flag does not remove any plugin files.

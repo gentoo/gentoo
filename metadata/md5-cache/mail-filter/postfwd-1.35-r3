@@ -6,9 +6,9 @@ HOMEPAGE=http://www.postfwd.org/
 IUSE=+tools
 KEYWORDS=~amd64 ~x86
 LICENSE=BSD
-RDEPEND=>=dev-lang/perl-5.16.3 virtual/perl-Sys-Syslog dev-perl/Net-DNS dev-perl/net-server
+RDEPEND=>=dev-lang/perl-5.16.3 virtual/perl-Sys-Syslog dev-perl/Net-DNS dev-perl/Net-Server
 SLOT=0
 SRC_URI=http://www.postfwd.org/postfwd-1.35.tar.gz
 _eclass_exported_funcs=pkg_postinst:- pkg_setup:- src_install:-
 _eclasses_=eutils	9d81603248f2ba3ec59124320d123e5e	multilib	3972ca401cf7dbb430df9995f5d8d580	systemd	3165c885f3c71ffae7a867d931fb0e07	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	user	906f3c8eb3a2350a4f1191a89baa3e46
-_md5_=e130082d630ff60606dd0e2ebbc2028f
+_md5_=a0ca4e072865196a036c55f5c861a795
