@@ -20,7 +20,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 SENDTO="cdr gajim +mail pidgin upnp"
-IUSE="image-converter +open-terminal share +wallpaper ${SENDTO}"
+IUSE="gksu image-converter +open-terminal share +wallpaper ${SENDTO}"
 
 RDEPEND=">=x11-libs/gtk+-2.24:2
 	>=dev-libs/glib-2.36:2
@@ -33,6 +33,13 @@ RDEPEND=">=x11-libs/gtk+-2.24:2
 		net-im/gajim:0
 		>=dev-libs/dbus-glib-0.60:0
 		>=sys-apps/dbus-1:0
+	)
+	gksu? ( x11-libs/gksu )
+	image-converter? (
+		|| (
+			media-gfx/imagemagick
+			media-gfx/graphicsmagick[imagemagick]
+		)
 	)
 	pidgin? ( >=dev-libs/dbus-glib-0.60:0 )
 	upnp? ( >=net-libs/gupnp-0.13:0= )"
@@ -63,7 +70,7 @@ src_configure() {
 	fi
 
 	gnome2_src_configure ${MY_CONF} \
-		--disable-gksu \
+		$(use_enable gksu) \
 		$(use_enable image-converter) \
 		$(use_enable open-terminal) \
 		$(use_enable share) \
