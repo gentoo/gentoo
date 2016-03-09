@@ -10,7 +10,6 @@
     <name>MySQL</name>
   </maintainer>
 <use>
-  <flag name="client-libs">Build the libmysqlclient libraries</flag>
   <flag name="embedded">Build embedded server (libmysqld)</flag>
   <flag name="extraengine">Add support for alternative storage engines (Archive, CSV, Blackhole, Federated(X), Partition)</flag>
   <flag name="jemalloc">Use <pkg>dev-libs/jemalloc</pkg> for allocations.</flag>
@@ -23,7 +22,6 @@
   <flag name="test">Install upstream testsuites for end use.</flag>
   <flag name="tokudb">Add support for TokuDB storage engine</flag>
   <flag name="tokudb-backup-plugin">Builds the TokuDB backup plugin</flag>
-  <flag name="tools">Build the command line tools (mysql, mysqldump, mysqladmin, etc)</flag>
   <flag name="yassl">Enable SSL connections and crypto functions using the bundled yaSSL</flag>
 </use>
 </pkgmetadata>
