@@ -17,8 +17,10 @@ SLOT="0"
 KEYWORDS="amd64 arm hppa ~ppc ppc64 ~sparc x86 ~x86-fbsd"
 IUSE="selinux systemd"
 
+# TODO support ipfw and ipfilter
 RDEPEND="
 	kernel_linux? ( net-firewall/iptables )
+	kernel_FreeBSD? ( sys-freebsd/freebsd-pf )
 	net-misc/whois
 	virtual/logger
 	virtual/mta
@@ -33,9 +35,10 @@ REQUIRED_USE="systemd? ( !python_single_target_pypy )"
 
 DOCS=( ChangeLog DEVELOP README.md THANKS TODO doc/run-rootless.txt )
 
-src_prepare() {
+python_prepare_all() {
 	# Replace /var/run with /run, but not in the top source directory
-	sed -i -e 's|/var\(/run/fail2ban\)|\1|g' $( find . -mindepth 2 -type f ) || die
+	find . -mindepth 2 -type f -exec \
+		sed -i -e 's|/var\(/run/fail2ban\)|\1|g' {} + || die
 
 	# Fix bashisms and do not direct useful output to /dev/null (bug #536320)
 	# Remove global logrotate settings (bug #549856)
@@ -43,17 +46,17 @@ src_prepare() {
 		"${FILESDIR}"/${PN}-0.9.2-initd.patch \
 		"${FILESDIR}"/${PN}-0.9.2-logrotate.patch
 
-	distutils-r1_src_prepare
+	distutils-r1_python_prepare_all
 }
 
 python_test() {
-	${EPYTHON} bin/${PN}-testcases
+	"${PYTHON}" "bin/${PN}-testcases" || die "tests failed with ${EPYTHON}"
 }
 
-src_install() {
-	distutils-r1_src_install
+python_install_all() {
+	distutils-r1_python_install_all
 
-	rm -rf "${D}"/usr/share/doc/${PN} "${D}"/run
+	rm -r "${D}"/usr/share/doc/${PN} "${D}"/run || die
 
 	# not FILESDIR
 	newconfd files/gentoo-confd ${PN}
@@ -96,7 +99,6 @@ pkg_postinst() {
 			elog "If you want to use ${PN}'s persistent database, then reinstall"
 			elog "dev-lang/python with USE=sqlite"
 		fi
-
 		if has_version sys-apps/systemd[-python]; then
 			elog "If you want to track logins through sys-apps/systemd's"
 			elog "journal backend, then reinstall sys-apps/systemd with USE=python"
