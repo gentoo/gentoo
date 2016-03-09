@@ -1,5 +1,5 @@
---- Modules/FindPythonInterp.cmake.orig	2015-01-06 11:50:03.376357898 +0100
-+++ Modules/FindPythonInterp.cmake	2015-01-06 12:25:48.614989290 +0100
+--- a/Modules/FindPythonInterp.cmake
++++ b/Modules/FindPythonInterp.cmake
 @@ -75,6 +75,11 @@
  else()
      set(_PYTHON_FIND_OTHER_VERSIONS ${_PYTHON3_VERSIONS} ${_PYTHON2_VERSIONS} ${_PYTHON1_VERSIONS})

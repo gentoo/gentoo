@@ -1,8 +1,8 @@
 Do not detect Xcode and set -isysroot for its SDK, since that messes up
 our toolchain, and hence makes any compilation fail, bug #445308
 
---- Modules/Platform/Darwin-Initialize.cmake
-+++ Modules/Platform/Darwin-Initialize.cmake
+--- a/Modules/Platform/Darwin-Initialize.cmake
++++ b/Modules/Platform/Darwin-Initialize.cmake
 @@ -1,16 +1,16 @@
  # Ask xcode-select where to find /Developer or fall back to ancient location.
 -execute_process(COMMAND xcode-select -print-path

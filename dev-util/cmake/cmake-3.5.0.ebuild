@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 CMAKE_REMOVE_MODULES="no"
 inherit bash-completion-r1 elisp-common toolchain-funcs eutils versionator cmake-utils virtualx
@@ -145,7 +145,7 @@ src_configure() {
 		-DCMAKE_DATA_DIR=/share/${PN}
 		-DSPHINX_MAN=$(usex doc)
 		-DSPHINX_HTML=$(usex doc)
-		$(cmake-utils_use_build ncurses CursesDialog)
+		-DBUILD_CursesDialog="$(usex ncurses)"
 	)
 
 	if use qt4 || use qt5 ; then
@@ -164,7 +164,7 @@ src_compile() {
 }
 
 src_test() {
-	VIRTUALX_COMMAND="cmake_src_test" virtualmake
+	virtx cmake_src_test
 }
 
 src_install() {

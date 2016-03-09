@@ -1,5 +1,5 @@
---- Modules/FindBLAS.cmake
-+++ Modules/FindBLAS.cmake
+--- a/Modules/FindBLAS.cmake
++++ b/Modules/FindBLAS.cmake
 @@ -4,6 +4,10 @@
  #
  # Find BLAS library
