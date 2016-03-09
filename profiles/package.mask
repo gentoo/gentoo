@@ -187,12 +187,6 @@ dev-java/jcs
 # Mask live ebuild
 =net-im/mcabber-9999
 
-# Davide Pesavento <pesa@gentoo.org> (06 Feb 2016)
-# Masked for removal in 30 days. Doesn't build against recent PyQt4
-# versions, bug 527572, not trivial to fix. Upstream doesn't seem to
-# care anymore, last release was in 2012. Zero reverse deps.
-dev-python/PyQtMobility
-
 # Bernard Cafarelli <voyageur@gentoo.org> (27 Jan 2016)
 # New llvm version, masked for testing
 =sys-devel/llvm-3.8.0*
