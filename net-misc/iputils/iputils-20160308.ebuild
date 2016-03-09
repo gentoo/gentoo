@@ -6,6 +6,8 @@
 # them in a tarball on our mirrors.  This avoids ugly issues while
 # building stages, and when the jade/sgml packages are broken (which
 # seems to be more common than would be nice).
+# Required packages for doc generation:
+# app-text/docbook-sgml-utils
 
 EAPI=5
 
@@ -58,8 +60,6 @@ S=${WORKDIR}/${PN}-s${PV}
 
 PATCHES=(
 	"${FILESDIR}/021109-uclibc-no-ether_ntohost.patch"
-	"${FILESDIR}/${PN}-20150815-defines_and_libs.patch"
-	"${FILESDIR}/${PN}-20150815-handle_single_protocol_system.patch"
 )
 
 src_prepare() {
