@@ -9,7 +9,7 @@ fi
 
 inherit golang-build
 
-KEYWORDS=""
+KEYWORDS="~amd64"
 DESCRIPTION="Replicated SQLite using the Raft consensus protocol "
 EGO_PN="github.com/otoolep/rqlite/..."
 HOMEPAGE="https://${EGO_PN%/*} http://www.philipotoole.com/replicating-sqlite-using-raft-consensus"
@@ -18,8 +18,8 @@ SLOT="0/${PVR}"
 IUSE=""
 RESTRICT="test"
 EGIT_REPO_URI="https://github.com/otoolep/rqlite.git"
-#EGIT_COMMIT="f65218201d46804e52459301b1e6c8a3af2c21ad"
-SRC_URI="
+EGIT_COMMIT="f65218201d46804e52459301b1e6c8a3af2c21ad"
+SRC_URI="https://${EGO_PN%/*}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz
 	https://github.com/armon/go-metrics/archive/345426c77237ece5dab0e1605c3e4b35c3f54757.tar.gz -> go-metrics-345426c77237ece5dab0e1605c3e4b35c3f54757.tar.gz
 	https://github.com/boltdb/bolt/archive/2f846c3551b76d7710f159be840d66c3d064abbe.tar.gz -> bolt-2f846c3551b76d7710f159be840d66c3d064abbe.tar.gz
 	https://github.com/hashicorp/go-msgpack/archive/fa3f63826f7c23912c15263591e65d54d080b458.tar.gz -> go-msgpack-fa3f63826f7c23912c15263591e65d54d080b458.tar.gz
