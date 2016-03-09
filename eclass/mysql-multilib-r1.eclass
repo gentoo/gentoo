@@ -212,7 +212,8 @@ DEPEND="${DEPEND}
 # For other stuff to bring us in
 # dev-perl/DBD-mysql is needed by some scripts installed by MySQL
 PDEPEND="${PDEPEND} perl? ( >=dev-perl/DBD-mysql-2.9004 )
-	 ~virtual/mysql-${MYSQL_PV_MAJOR}"
+	 ~virtual/mysql-${MYSQL_PV_MAJOR}[embedded=,static=,static-libs=]
+	 virtual/libmysqlclient:${SLOT}[${MULTILIB_USEDEP},static-libs=]"
 
 # my_config.h includes ABI specific data
 MULTILIB_WRAPPED_HEADERS=( /usr/include/mysql/my_config.h /usr/include/mysql/private/embedded_priv.h )
