@@ -1371,6 +1371,11 @@ dev-db/mysql-cluster:systemtap - Build support for profiling and tracing using d
 dev-db/mysql-cluster:test - Install upstream testsuites for end use.
 dev-db/mysql-cluster:yassl - Enable SSL connections and crypto functions using the bundled yaSSL
 dev-db/mysql-connector-c++:gcov - Build coverage support
+dev-db/oracle-instantclient:jdbc - Support for XA, Internationalization, and RowSet operations under JDBC.
+dev-db/oracle-instantclient:odbc - Libraries for enabling ODBC applications.
+dev-db/oracle-instantclient:sdk - Header files and an example makefile for developing Oracle applications.
+dev-db/oracle-instantclient:sqlplus - Libraries and executable for running SQL*Plus.
+dev-db/oracle-instantclient:tools - Workload Replay Client.
 dev-db/percona-server:client-libs - Build the libmysqlclient libraries
 dev-db/percona-server:embedded - Build embedded server (libmysqld)
 dev-db/percona-server:extraengine - Add support for alternative storage engines (Archive, CSV, Blackhole, Federated(X), Partition)
