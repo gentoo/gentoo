@@ -1,17 +1,13 @@
 certificate version 0.1
-pusher 9191A5F193491BB8 1457516196 +0000
-pushee git+ssh://git.gentoo.org/repo/gentoo
-nonce 1457516987-aaee32ad105f04d1e7e1
+pusher 0x160F534A 1457517479 +0100
+pushee git+ssh://git.gentoo.org/repo/gentoo.git
+nonce 1457517479-68440914ed14c2ef980b
 
-7fe36e945ae7d9e88a9ddeb6f9245ab4a856f86c e27b5dd99def04681a7e50a27d005eeac00b8295 refs/heads/master
+e27b5dd99def04681a7e50a27d005eeac00b8295 0e496e42627c9d636e01a6486904b4ac861f24e7 refs/heads/master
 -----BEGIN PGP SIGNATURE-----
 Version: GnuPG v2
 
-iQEcBAABCAAGBQJW3+6kAAoJEJGRpfGTSRu4epUH/2ilg0LXpxw7o181GFfSnUIj
-SiI7u7U37bVtKX7WqGHN1Anwe6g5xxgX77QhzUyVTHecO6wdJ/9+wm2c3gSQHuPj
-USSn3T4D+1urKpBeQUbYik6ZTokjjzwqmXO4yH4PqdLaXA28WH/iCpHNiy4qrsPx
-xBCTwdRDt3yflTD2laZTz5GSwDhno2cSog1hoWxzL7AZWEURF0ZehFtVALWe7ObT
-HaNZjZVn7uxzqh8suYlv64+vJHz2NbvQq481my6mCovppb/XYDbp8jS0hVmbSGxD
-P3j0VoRhjStY9/F5L+eZDIWYzUK/t9OueAgOd64YsThVcjKnrsZEeq5buMAs+9c=
-=ifiS
+iEYEABECAAYFAlbf86cACgkQvFcC4BYPU0qp9ACgv900BY0fOCUfJaLXA8c1746c
+YQQAnjb4qDjfxipLfwVPjW5kYPFFiP7p
+=Bttl
 -----END PGP SIGNATURE-----
