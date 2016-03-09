@@ -11650,7 +11650,7 @@ mate-base/mate-panel 1.8.0 1.8.1-r1 1.10.1: The MATE panel
 mate-base/mate-session-manager 1.8.1-r1 1.10.3: MATE session manager
 mate-base/mate-settings-daemon 1.8.1 1.8.2 1.10.3: MATE Settings Daemon
 mate-extra/caja-dropbox 1.8.0 1.10.1: Store, Sync and Share Files Online
-mate-extra/caja-extensions 1.8.0 1.10.1: Several Caja extensions
+mate-extra/caja-extensions 1.8.0 1.10.1-r2: Several Caja extensions
 mate-extra/mate-calc 1.8.0: A calculator application for MATE
 mate-extra/mate-dialogs 1.8.0: Display MATE dialogs from the commandline and shell scripts
 mate-extra/mate-indicator-applet 1.10.0: MATE indicator applet
