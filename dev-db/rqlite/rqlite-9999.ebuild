@@ -18,14 +18,14 @@ SLOT="0/${PVR}"
 IUSE=""
 RESTRICT="test"
 EGIT_REPO_URI="https://github.com/otoolep/rqlite.git"
-#EGIT_COMMIT="57e7b2b1aef8de4b6d9a78a49de2fd25c3820556"
+#EGIT_COMMIT="f65218201d46804e52459301b1e6c8a3af2c21ad"
 SRC_URI="
 	https://github.com/armon/go-metrics/archive/345426c77237ece5dab0e1605c3e4b35c3f54757.tar.gz -> go-metrics-345426c77237ece5dab0e1605c3e4b35c3f54757.tar.gz
 	https://github.com/boltdb/bolt/archive/2f846c3551b76d7710f159be840d66c3d064abbe.tar.gz -> bolt-2f846c3551b76d7710f159be840d66c3d064abbe.tar.gz
 	https://github.com/hashicorp/go-msgpack/archive/fa3f63826f7c23912c15263591e65d54d080b458.tar.gz -> go-msgpack-fa3f63826f7c23912c15263591e65d54d080b458.tar.gz
 	https://github.com/hashicorp/raft/archive/057b893fd996696719e98b6c44649ea14968c811.tar.gz -> hashicorp-raft-057b893fd996696719e98b6c44649ea14968c811.tar.gz
 	https://github.com/hashicorp/raft-boltdb/archive/d1e82c1ec3f15ee991f7cc7ffd5b67ff6f5bbaee.tar.gz -> hashicorp-boltdb-d1e82c1ec3f15ee991f7cc7ffd5b67ff6f5bbaee.tar.gz
-	https://github.com/mattn/go-sqlite3/archive/c5aee9649735e8dadac55eb968ccebd9fa29a881.tar.gz -> go-sqlite3-1.1.0_p20160131.tar.gz"
+	https://github.com/mattn/go-sqlite3/archive/10876d7dac65f02064c03d7372a2f1dfb90043fe.tar.gz -> go-sqlite3-1.1.0_p20160307.tar.gz"
 
 get_archive_go_package() {
 	local archive=${1} uri x
