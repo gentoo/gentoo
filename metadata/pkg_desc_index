@@ -4430,7 +4430,7 @@ dev-libs/bglibs 1.041 1.104 1.106 1.106-r1: Bruce Guenters Libraries Collection
 dev-libs/bitset 2.8.3 2.8.4-r1: A compressed bitset with supporting data structures and algorithms
 dev-libs/blitz 0.10 0.10-r1: High-performance C++ numeric library
 dev-libs/boehm-gc 6.8 7.1-r1 7.2d 7.2d-r1 7.2e 7.4.0 7.4.2: The Boehm-Demers-Weiser conservative garbage collector
-dev-libs/boost 1.56.0-r1 1.58.0-r1 1.59.0 1.60.0: Boost Libraries for C++
+dev-libs/boost 1.55.0-r2 1.56.0-r1 1.57.0 1.58.0-r1 1.59.0 1.60.0: Boost Libraries for C++
 dev-libs/boost-numpy 0_pre20131206 9999: Boost.Python interface for NumPy
 dev-libs/botan 1.10.5 1.10.10 1.10.12 1.11.4 1.11.8 1.11.20 1.11.20-r1 1.11.25 1.11.28: A C++ crypto library
 dev-libs/btparse 0.33 0.35: A C library to parse Bibtex files
@@ -4696,7 +4696,7 @@ dev-libs/libpqxx 4.0.1: C++ client API for PostgreSQL. The standard front-end fo
 dev-libs/libproccpuinfo 0.0.8: Architecture independent C API for reading /proc/cpuinfo
 dev-libs/libpthread-stubs 0.1 0.3 0.3-r1: Pthread functions stubs for platforms missing them
 dev-libs/libpwquality 1.2.4 1.3.0: Library for password quality checking and generating random passwords
-dev-libs/libqtxdg 0.5.3 1.1.0 1.2.0 1.3.0: A Qt implementation of XDG standards
+dev-libs/libqtxdg 1.3.0: A Qt implementation of XDG standards
 dev-libs/libqzeitgeist 0.8.0: Qt interface to the Zeitgeist event tracking system
 dev-libs/librelp 1.2.7-r1 1.2.9: An easy to use library for the RELP protocol
 dev-libs/librep 0.92.2.1 0.92.3 0.92.5: Shared library implementing a Lisp dialect
@@ -9407,7 +9407,7 @@ dev-util/bitcoin-tx 0.10.0 0.10.1 0.11.0 0.11.1 0.11.2 9999: Command-line Bitcoi
 dev-util/bless 0.6.0-r2: GTK# Hex Editor
 dev-util/bluej 3.1.1: An integrated Java environment for introductory teaching
 dev-util/bnfc 2.7.1 2.8: A compiler front-end generator
-dev-util/boost-build 1.56.0 1.58.0 1.59.0 1.60.0: A system for large project software construction, simple to use and powerful
+dev-util/boost-build 1.55.0 1.55.0-r1 1.56.0 1.57.0 1.58.0 1.59.0 1.60.0: A system for large project software construction, simple to use and powerful
 dev-util/bsdiff 4.3-r3: bsdiff: Binary Differencer using a suffix alg
 dev-util/btyacc 3.0-r2: Backtracking YACC - modified from Berkeley YACC
 dev-util/build 0.3.9: A massively-parallel software build system implemented on top of GNU make
@@ -11486,24 +11486,24 @@ lxde-base/lxshortcut 0.1.2: LXDE tool to edit desktop entry files
 lxde-base/lxtask 0.1.4 0.1.4-r1 0.1.5 0.1.6: LXDE Task manager
 lxde-base/lxterminal 0.1.11 0.2.0: Lightweight vte-based tabbed terminal emulator for LXDE
 lxde-base/menu-cache 0.3.3 0.4.1 0.5.1 1.0.0 1.0.0-r1 1.0.1: Library to create and utilize caches to speed up freedesktop application menus
-lxqt-base/liblxqt 0.7.0 0.8.0 0.9.0 0.10.0: Common base library for the LXQt desktop environment
-lxqt-base/liblxqt-mount 0.7.0 0.8.0 0.9.0: LXQt library for removable media and devices
-lxqt-base/libsysstat 0.1.0 0.2.0 0.3.0 0.3.1: A Qt-based interface to system statistics
-lxqt-base/lxqt-about 0.7.0 0.8.0 0.9.0 0.10.0: LXQt about dialog
-lxqt-base/lxqt-admin 0.8.0 0.9.0 0.10.0: LXQt system administration tool
-lxqt-base/lxqt-common 0.7.0 0.8.0 0.9.0 0.9.1 0.10.0: LXQt common resources
-lxqt-base/lxqt-config 0.7.0-r1 0.8.0 0.9.0 0.10.0: LXQt system configuration control center
+lxqt-base/liblxqt 0.10.0: Common base library for the LXQt desktop environment
+lxqt-base/liblxqt-mount 0.9.0: LXQt library for removable media and devices
+lxqt-base/libsysstat 0.3.1: A Qt-based interface to system statistics
+lxqt-base/lxqt-about 0.10.0: LXQt about dialog
+lxqt-base/lxqt-admin 0.10.0: LXQt system administration tool
+lxqt-base/lxqt-common 0.10.0: LXQt common resources
+lxqt-base/lxqt-config 0.10.0: LXQt system configuration control center
 lxqt-base/lxqt-config-randr 0.7.0: LXQt monitor configuration
-lxqt-base/lxqt-globalkeys 0.7.0 0.8.0 0.9.0 0.10.0: Daemon and library for global keyboard shortcuts registration
-lxqt-base/lxqt-meta 0.7.0-r1 0.8.0 0.9.0 0.9.0-r1 0.9.0-r2 0.10.0: Meta ebuild for LXQt, the Lightweight Desktop Environment
-lxqt-base/lxqt-notificationd 0.7.0 0.8.0 0.9.0 0.9.0-r1 0.10.0: LXQt notification daemon and library
-lxqt-base/lxqt-openssh-askpass 0.7.0 0.8.0 0.9.0 0.10.0: LXQt OpenSSH user password prompt tool
-lxqt-base/lxqt-panel 0.7.0-r1 0.8.0 0.9.0 0.10.0 0.10.0-r1: LXQt desktop panel and plugins
-lxqt-base/lxqt-policykit 0.7.0-r1 0.8.0 0.9.0 0.10.0: LXQt PolKit authentication agent
-lxqt-base/lxqt-powermanagement 0.7.0 0.8.0 0.9.0 0.10.0: LXQt daemon for power management and auto-suspend
-lxqt-base/lxqt-qtplugin 0.7.0 0.8.0 0.9.0 0.10.0: LXQt system integration plugin for Qt
-lxqt-base/lxqt-runner 0.7.0-r1 0.8.0 0.9.0 0.10.0: LXQt quick launcher
-lxqt-base/lxqt-session 0.7.0-r1 0.8.0 0.9.0-r1 0.10.0: LXQT session manager
+lxqt-base/lxqt-globalkeys 0.10.0: Daemon and library for global keyboard shortcuts registration
+lxqt-base/lxqt-meta 0.10.0: Meta ebuild for LXQt, the Lightweight Desktop Environment
+lxqt-base/lxqt-notificationd 0.10.0: LXQt notification daemon and library
+lxqt-base/lxqt-openssh-askpass 0.10.0: LXQt OpenSSH user password prompt tool
+lxqt-base/lxqt-panel 0.10.0 0.10.0-r1: LXQt desktop panel and plugins
+lxqt-base/lxqt-policykit 0.10.0: LXQt PolKit authentication agent
+lxqt-base/lxqt-powermanagement 0.10.0: LXQt daemon for power management and auto-suspend
+lxqt-base/lxqt-qtplugin 0.10.0: LXQt system integration plugin for Qt
+lxqt-base/lxqt-runner 0.10.0: LXQt quick launcher
+lxqt-base/lxqt-session 0.10.0: LXQT session manager
 lxqt-base/lxqt-sudo 0.10.0: LXQt GUI frontend for sudo
 mail-client/alot 0.3.6 0.3.7-r1: Experimental terminal UI for net-mail/notmuch written in Python
 mail-client/alpine 2.00-r5 2.00-r6: alpine is an easy to use text-based based mail and news client
@@ -11991,14 +11991,14 @@ media-gfx/kflickr 0.9.1_p1: KDE flickr.com image uploading program
 media-gfx/kgrab 0.1.1: KDE screen grabbing utility
 media-gfx/kgraphviewer 2.2.0: KDE graphviz dot graph file viewer
 media-gfx/kiconedit 4.4.0: KDE Icon Editor
-media-gfx/kphotoalbum 4.5 4.7: KDE Photo Album is a tool for indexing, searching, and viewing images
+media-gfx/kphotoalbum 4.5 4.7.1: KDE Photo Album is a tool for indexing, searching, and viewing images
 media-gfx/kpovmodeler 1.1.3-r1: A modeling and composition program for creating POV-Ray(TM) scenes
 media-gfx/kuickshow 0.9.1-r2: KDE program to view images
 media-gfx/kxstitch 1.2.0 1.3.0: Program to create cross stitch patterns
 media-gfx/librecad 2.0.3 2.0.5 2.0.6 2.0.7 2.0.8 2.0.9 9999: Generic 2D CAD program
 media-gfx/llgal 0.13.17-r2: Command-line static web gallery generator
 media-gfx/luminance-hdr 2.3.0 2.4.0: Luminance HDR is a graphical user interface that provides a workflow for HDR imaging
-media-gfx/lximage-qt 0.2.0 0.3.0 0.4.0: LXImage Image Viewer - GPicView replacement
+media-gfx/lximage-qt 0.4.0: LXImage Image Viewer - GPicView replacement
 media-gfx/mandelbulber 1.11 1.12.1 1.21.1: Tool to render 3D fractals
 media-gfx/mcomix 1.00-r1 1.01 1.2.1: A fork of comix, a GTK image viewer for comic book archives
 media-gfx/meshlab 1.3.2 1.3.3: A mesh processing system
@@ -17926,7 +17926,7 @@ x11-libs/libdmx 1.1.3: X.Org dmx library
 x11-libs/libdockapp 0.6.1 0.6.4 0.7.0 0.7.1 0.7.2: Window Maker Dock Applet Library
 x11-libs/libdrm 2.4.59 2.4.65 2.4.66 2.4.67 9999: X.Org libdrm library
 x11-libs/libfakekey 0.1-r1 0.1-r2: Helper library for the x11-misc/matchbox-keyboard package
-x11-libs/libfm 0.1.17-r1 1.1.4 1.2.2.1 1.2.3 1.2.3-r1 9999: A library for file management
+x11-libs/libfm 1.2.3-r1 9999: A library for file management
 x11-libs/libfm-extra 1.2.3: A library for file management
 x11-libs/libfontenc 1.1.2 1.1.3: X.Org fontenc library
 x11-libs/libgksu 2.0.12-r2: A library for integration of su into applications
@@ -18125,7 +18125,7 @@ x11-misc/notify-osd 0.9.34: Canonical's on-screen-display notification agent
 x11-misc/nts 82: Note Taking made Simple, an intuitive note taking application
 x11-misc/numlockx 1.2: Turns on numlock in X
 x11-misc/obconf 2.0.3_p20111019 2.0.4 9999: ObConf is a tool for configuring the Openbox window manager
-x11-misc/obconf-qt 0.1.0 0.9.0_p20150729: Openbox window manager configuration tool
+x11-misc/obconf-qt 0.9.0_p20150729: Openbox window manager configuration tool
 x11-misc/obmenu 1.0 1.0-r1: Menu editor designed for openbox
 x11-misc/obmenu-generator 0.61 0.66: A fast pipe/static menu generator for the Openbox Window Manager
 x11-misc/obtheme 2013.2.20.2: A gui theme editor for openbox
@@ -18138,7 +18138,7 @@ x11-misc/outwiker 1.8.0: The tree notes organizer
 x11-misc/parcellite 1.1.9: A lightweight GTK+ based clipboard manager
 x11-misc/pathfinder 1.6.36 1.7.45 1.7.47 1.7.49: File manager based on the FOX Toolkit
 x11-misc/pcmanfm 0.9.10 1.1.2 1.2.2 1.2.3 9999: Fast lightweight tabbed filemanager
-x11-misc/pcmanfm-qt 0.7.0 0.8.0 0.9.0 0.10.0: Fast lightweight tabbed filemanager (Qt port)
+x11-misc/pcmanfm-qt 0.10.0: Fast lightweight tabbed filemanager (Qt port)
 x11-misc/peksystray 0.2.1 0.4.0: A system tray dockapp for window managers supporting docking
 x11-misc/piedock 1.6.6: A little bit like the famous OS X dock but in shape of a pie menu
 x11-misc/ptbatterysystemtray 1.0.0_rc2: A simple battery monitor in the system tray
