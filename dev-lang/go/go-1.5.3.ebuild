@@ -16,7 +16,7 @@ else
 	SRC_URI="https://storage.googleapis.com/golang/go${PV}.src.tar.gz"
 	# go-bootstrap-1.4 only supports go on amd64, arm and x86 architectures.
 	# Allowing other bootstrap options would enable arm64 and ppc64 builds.
-	KEYWORDS="-* amd64 arm ~x86 ~amd64-fbsd ~x86-fbsd ~x64-macos ~x86-macos ~x64-solaris"
+	KEYWORDS="-* amd64 arm x86 ~amd64-fbsd ~x86-fbsd ~x64-macos ~x86-macos ~x64-solaris"
 fi
 
 DESCRIPTION="A concurrent garbage collected and typesafe programming language"
