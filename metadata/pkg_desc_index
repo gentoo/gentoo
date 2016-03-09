@@ -9438,7 +9438,7 @@ dev-util/checkstyle 5.5-r1: Development tool to help write Java code that adhere
 dev-util/cligh 0.1_p20120630 0.2 9999: Command-line interface to GitHub
 dev-util/clion 1.2.4.143.1186: A complete toolset for C and C++ development
 dev-util/cloc 1.64 1.66: Count Lines of Code
-dev-util/cmake 2.8.12.2-r1 3.2.2 3.3.1-r1 3.3.2-r1 3.4.2 3.4.3: Cross platform Make
+dev-util/cmake 2.8.12.2-r1 3.2.2 3.3.1-r1 3.3.2-r1 3.4.3 3.5.0: Cross platform Make
 dev-util/cmake-fedora 0.8.1 1.3.0: cmake modules that provides helper macros and targets for linux, especially fedora developers
 dev-util/cmdtest 0.16 0.18: black box tests Unix command line tools
 dev-util/cmocka 0.3.1 0.3.1-r1 0.4.1 1.0.1: A unit testing framework for C
@@ -14736,7 +14736,7 @@ net-misc/wget 1.16.3-r1 1.16.3-r2 1.17.1 1.17.1-r1: Network utility to retrieve 
 net-misc/whatmask 1.2-r1: little C program to compute different subnet mask notations
 net-misc/whatportis 0.2 0.3 0.4 0.5 0.6: A command to search port names and numbers
 net-misc/whois 5.0.25 5.0.26 5.1.5 5.2.10 5.2.11: improved Whois Client
-net-misc/wicd 1.7.3 1.7.3-r2: A lightweight wired and wireless network manager for Linux
+net-misc/wicd 1.7.3 1.7.3-r2 1.7.4: A lightweight wired and wireless network manager for Linux
 net-misc/wol 0.7.1-r1: Wake up hardware that is Magic Packet compliant
 net-misc/wput 0.6.1: A tiny, wget-alike program, that is designed to upload files/whole directories to remote ftp-servers
 net-misc/x11-ssh-askpass 1.2.4.1-r1: X11-based passphrase dialog for use with OpenSSH
@@ -17253,7 +17253,7 @@ virtual/mda 0: Virtual for Message Delivery Agents
 virtual/modutils 0: Virtual for utilities to manage Linux kernel modules
 virtual/mpi 2.0-r3: Virtual for Message Passing Interface (MPI) v2.0 implementation
 virtual/mta 0 1: Virtual for Message Transfer Agents
-virtual/mysql 5.5-r1 5.6-r2 5.6-r5 5.6-r6 5.6-r7: Virtual for MySQL database server
+virtual/mysql 5.5-r1 5.6-r2 5.6-r5 5.6-r6 5.6-r7 5.6-r8: Virtual for MySQL database server
 virtual/notification-daemon 0: Virtual for notification daemon dbus service
 virtual/ooo 0: Virtual for OpenOffice.org/LibreOffice
 virtual/opencl 0 0-r2 0-r3 0-r4: Virtual for OpenCL implementations
