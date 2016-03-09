@@ -2293,18 +2293,6 @@ dev-python/PyQt5:websockets - Build bindings for the QtWebSockets module
 dev-python/PyQt5:widgets - Build bindings for the QtWidgets module
 dev-python/PyQt5:x11extras - Build bindings for the QtX11Extras module
 dev-python/PyQt5:xmlpatterns - Build bindings for the QtXmlPatterns module
-dev-python/PyQtMobility:contacts - Build bindings for the QtContacts module
-dev-python/PyQtMobility:feedback - Build bindings for the QtFeedback module
-dev-python/PyQtMobility:gallery - Build bindings for the QtGallery module
-dev-python/PyQtMobility:location - Build bindings for the QtLocation module
-dev-python/PyQtMobility:messaging - Build bindings for the QtMessaging module
-dev-python/PyQtMobility:multimedia - Build bindings for the QtMultimediaKit module
-dev-python/PyQtMobility:organizer - Build bindings for the QtOrganizer module
-dev-python/PyQtMobility:publishsubscribe - Build bindings for the QtPublishSubscribe module
-dev-python/PyQtMobility:sensors - Build bindings for the QtSensors module
-dev-python/PyQtMobility:serviceframework - Build bindings for the QtServiceFramework module
-dev-python/PyQtMobility:systeminfo - Build bindings for the QtSystemInfo module
-dev-python/PyQtMobility:versit - Build bindings for the QtVersit module
 dev-python/amqplib:extras - Install extra tools to generate initial Python mod from an AMQP XML file
 dev-python/anyvc:bazaar - Add support for Bazaar
 dev-python/anyvc:mercurial - Add support for Mercurial

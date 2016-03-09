@@ -6741,7 +6741,6 @@ dev-python/PyGithub 1.25.2: Python library to access the Github API v3
 dev-python/PyPDF2 1.24 1.25.1: Python library to work with pdf files
 dev-python/PyQt4 4.11.1 4.11.4: Python bindings for the Qt framework
 dev-python/PyQt5 5.5 5.5.1: Python bindings for the Qt framework
-dev-python/PyQtMobility 1.0.1: Python bindings for Nokia's QtMobility libraries
 dev-python/PyRSS2Gen 1.0.0-r1 1.1: RSS feed generator written in Python
 dev-python/PySocks 1.5.6: SOCKS client module
 dev-python/PyZilla 0.1.0-r1: Python wrapper for the BugZilla XML-RPC API
