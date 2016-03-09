@@ -3,8 +3,8 @@ known by CPAN DBD::Oracle (bug#165834).
 This provides absolute paths for headers and libraries.
 
 Paranoia drops those REMOVE lines.
---- sdk/demo/demo.mk
-+++ sdk/demo/demo.mk
+--- instantclient_12_1/sdk/demo/demo.mk
++++ instantclient_12_1/sdk/demo/demo.mk
 @@ -28,8 +28,9 @@
  CC=/opt/SunProd/SUNWspro6.1/bin/CC
  cc=/opt/SunProd/SUNWspro6.1/bin/cc
