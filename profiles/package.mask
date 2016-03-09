@@ -30,6 +30,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Michael Palimaka <kensington@gentoo.org> (09 Mar 2016)
+# Dead upstream. Doesn't work with new Twitter API.
+# Masked for removal in 30 days. Bug 575156
+net-im/qwit
+
 # Aaron Bauman <bman@gentoo.org> (05 Mar 2016)
 # Pending completion of 9 security bugs against
 # this package.  Multiple vulnerabilities and no
