@@ -24,6 +24,10 @@ IUSE="alsa debug +ffmpeg +fftw openal oss portaudio pulseaudio spell +uchardet"
 # configure.ac specifies minimal versions for some of the dependencies below.
 # However, most of these minimal versions date back to 2006-2012 yy.
 # Such version specifiers are meaningless nowadays, so they are omitted.
+#
+# aegisub bundles luabins (https://github.com/agladysh/luabins).
+# Unfortunately, luabins upstream is practically dead since 2010.
+# Thus unbundling luabins is not worth the effort.
 RDEPEND="
 	dev-lang/luajit:2[lua52compat]
 	dev-libs/boost:=[icu,nls,threads]
@@ -56,9 +60,6 @@ REQUIRED_USE="
 	|| ( alsa openal oss portaudio pulseaudio )
 "
 
-# aegisub bundles luabins (https://github.com/agladysh/luabins).
-# Unfortunately, luabins upstream is dead since 2011.
-# Thus unbundling luabins is not worth the effort.
 PATCHES=(
 	"${FILESDIR}/${P}-fix-luajit-unbundling.patch"
 	"${FILESDIR}/${P}-respect-user-compiler-flags.patch"
