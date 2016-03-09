@@ -14206,7 +14206,7 @@ net-libs/qmf 4.0.3: The Qt Messaging Framework
 net-libs/qtweetlib 0.5 9999: Qt based Twitter library
 net-libs/qxmpp 0.7.4 0.7.5 0.7.6 0.7.6-r1 0.8.0 0.8.2 9999: A cross-platform C++ XMPP client library based on the Qt framework
 net-libs/rabbitmq-c 0.3.0 0.5.0: RabbitMQ C client
-net-libs/rb_libtorrent 0.16.17 0.16.17-r2 0.16.19 1.0.4 1.0.5 1.0.6 1.0.7 1.0.8: C++ BitTorrent implementation focusing on efficiency and scalability
+net-libs/rb_libtorrent 0.16.17 0.16.17-r2 0.16.19 1.0.7 1.0.8 1.0.9: C++ BitTorrent implementation focusing on efficiency and scalability
 net-libs/rest 0.7.92-r1 0.7.92-r2 0.7.93: Helper library for RESTful services
 net-libs/ripe-atlas-sagan 1.1.8: A parsing library for RIPE Atlas result strings
 net-libs/roadrunner 0.9.1: RoadRunner library provides API for using Blocks Extensible Exchange Protocol
@@ -16947,7 +16947,7 @@ sys-fs/static-dev 0.1: A skeleton, statically managed /dev
 sys-fs/sysfsutils 2.1.0: System Utilities Based on Sysfs
 sys-fs/traydevice 1.6.2-r1: A little desktop application displaying systray icon for UDisks
 sys-fs/treesize 0.54.1: A disk consumption analyzing tool
-sys-fs/udev 216 217 218 219 220-r3 222 224 224-r1 224-r2 225 228 229 229-r1 229-r2 9999: Linux dynamic and persistent device naming support (aka userspace devfs)
+sys-fs/udev 216 225 228 229-r2 9999: Linux dynamic and persistent device naming support (aka userspace devfs)
 sys-fs/udev-init-scripts 27 29 30 9999: udev startup scripts for openrc
 sys-fs/udftools 1.0.0b-r9 1.0.0b-r10: Ben Fennema's tools for packet writing and the UDF filesystem
 sys-fs/udiskie 0.6.2 0.6.4 1.1.1: An automatic disk mounting service using udisks
