@@ -72,14 +72,15 @@ pkg_pretend() {
 }
 
 src_prepare() {
-	cp /usr/share/gettext/config.rpath . || die
-
 	remove_locale() {
 		rm "po/${1}.po" || die
 	}
 
 	l10n_find_plocales_changes 'po' '' '.po'
 	l10n_for_each_disabled_locale_do remove_locale
+
+	# See http://devel.aegisub.org/ticket/1914
+	config_rpath_update "${S}/config.rpath"
 
 	autotools-utils_src_prepare
 }
