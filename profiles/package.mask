@@ -31,6 +31,11 @@
 #--- END OF EXAMPLES ---
 
 # Michael Palimaka <kensington@gentoo.org> (09 Mar 2016)
+# Deprecated by upstream. No further releases. Unused.
+lxqt-base/liblxqt-mount
+lxqt-base/lxqt-config-randr
+
+# Michael Palimaka <kensington@gentoo.org> (09 Mar 2016)
 # Dead upstream. Doesn't work with new Twitter API.
 # Masked for removal in 30 days. Bug 575156
 net-im/qwit
