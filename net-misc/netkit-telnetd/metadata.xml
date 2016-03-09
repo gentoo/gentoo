@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!-- maintainer-needed -->
+	<maintainer type="person">
+		<email>paolo.pedroni@iol.it</email>
+		<name>Paolo Pedroni</name>
+		<description>Proxied Maintainer, assign bugs to him</description>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Gentoo Proxy Maintainers Project</name>
+	</maintainer>
 	<longdescription>The telnetd program is a server which supports the DARPA telnet interactive communication protocol.</longdescription>
 	<upstream>
 		<remote-id type="launchpad">netkit-telnet</remote-id>
