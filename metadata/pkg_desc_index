@@ -59,7 +59,7 @@ app-admin/calamares 1.1.2-r1: Distribution-independent installer framework
 app-admin/cancd 0.1.0-r3: the CA NetConsole Daemon, a daemon to receive output from the Linux netconsole driver
 app-admin/ccze 0.2.1-r3: A flexible and fast logfile colorizer
 app-admin/cdist 3.1.9 3.1.13: A usable configuration management system
-app-admin/cgmanager 0.36-r1 0.37 0.39: Control Group manager daemon
+app-admin/cgmanager 0.39 0.41: Control Group manager daemon
 app-admin/checkrestart 0.47-r3: the sysadmin's rolling upgrade tool
 app-admin/checksec 1.7.2 1.7.3 1.7.4: Tool to check properties of executables (e.g. ASLR/PIE, RELRO, PaX, Canaries)
 app-admin/chroot_safe 1.4: a tool to chroot any dynamically linked application in a safe and sane manner
