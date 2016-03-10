@@ -48,6 +48,8 @@ pkg_pretend() {
 
 src_prepare() {
 	epatch "${FILESDIR}"/${P}-cmake.patch
+	epatch "${FILESDIR}"/${P}-cmake-3.5.patch
+	cmake-utils_src_prepare
 }
 
 src_configure() {

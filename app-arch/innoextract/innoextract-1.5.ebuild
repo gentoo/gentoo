@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit cmake-utils
+inherit eutils cmake-utils
 
 DESCRIPTION="A tool to unpack installers created by Inno Setup"
 HOMEPAGE="http://constexpr.org/innoextract/"
@@ -22,6 +22,11 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 DOCS=( README.md CHANGELOG )
+
+src_prepare() {
+	epatch "${FILESDIR}"/${PN}-1.4-cmake-3.5.patch
+	cmake-utils_src_prepare
+}
 
 src_configure() {
 	local mycmakeargs=(
