@@ -1,0 +1,31 @@
+From c7dcc18b23e6bfeff8c37f542b37b081bc422f9b Mon Sep 17 00:00:00 2001
+From: Louis Sautier <sautier.louis@gmail.com>
+Date: Tue, 15 Mar 2016 00:35:16 +0100
+Subject: [PATCH] Exit tests with the return value from RunAllTests()
+
+---
+ tests/tests.cpp | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/tests/tests.cpp b/tests/tests.cpp
+index 5265959..2321513 100644
+--- a/tests/tests.cpp
++++ b/tests/tests.cpp
+@@ -33,14 +33,15 @@ using namespace UnitTest;
+ 
+ int main()
+ {
++	int exit_code = 0;
+ 	cout << "----------------------------" << endl;
+ 	cout << "     RUNNING ALL TESTS" << endl;
+ 	cout << "----------------------------" << endl;
+ 
+ 	// Run all unit tests
+-	RunAllTests();
++	exit_code = RunAllTests();
+ 
+ 	cout << "----------------------------" << endl;
+ 
+-	return 0;
++	return exit_code;
+ }
