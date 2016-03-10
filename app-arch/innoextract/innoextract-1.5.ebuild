@@ -23,8 +23,12 @@ DEPEND="${RDEPEND}"
 
 DOCS=( README.md CHANGELOG )
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.4-cmake-3.5.patch
+)
+
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-1.4-cmake-3.5.patch
+	epatch "${PATCHES[@]}"
 	cmake-utils_src_prepare
 }
 

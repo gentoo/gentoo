@@ -34,6 +34,11 @@ DEPEND="${RDEPEND}
 
 DOCS=( README.md CHANGELOG )
 
+PATCHES=(
+	"${FILESDIR}"/${P}-cmake.patch
+	"${FILESDIR}"/${P}-cmake-3.5.patch
+)
+
 pkg_pretend() {
 	if [[ ${MERGE_TYPE} != binary ]]; then
 		# not sure about minimum clang req
@@ -47,8 +52,7 @@ pkg_pretend() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-cmake.patch
-	epatch "${FILESDIR}"/${P}-cmake-3.5.patch
+	epatch "${PATCHES[@]}"
 	cmake-utils_src_prepare
 }
 
