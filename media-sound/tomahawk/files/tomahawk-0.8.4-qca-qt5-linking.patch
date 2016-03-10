@@ -1,0 +1,70 @@
+From 4fa69d9607b95bf74dd86a151b8f77113f04f205 Mon Sep 17 00:00:00 2001
+From: Dominik Schmidt <domme@tomahawk-player.org>
+Date: Thu, 29 Jan 2015 06:11:36 +0100
+Subject: [PATCH] Link against correct qca library with Qt5
+
+---
+ CMakeLists.txt                      | 10 +++++++++-
+ src/accounts/hatchet/CMakeLists.txt |  1 -
+ src/libtomahawk/CMakeLists.txt      |  5 +----
+ 3 files changed, 10 insertions(+), 6 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 6db3741..65eebb1 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -325,7 +325,15 @@ macro_log_feature(GNUTLS_FOUND "GnuTLS"
+     "http://gnutls.org/" TRUE ""
+     "GnuTLS is needed for serving the Playdar/HTTP API via TLS")
+ 
+-macro_optional_find_package(QCA2)
++if( TOMAHAWK_QT5 )
++  macro_optional_find_package(Qca-qt5)
++  if(Qca-qt5_DIR)
++      set(QCA2_FOUND ON CACHE BOOL "QCA2 was found")
++      set(QCA2_LIBRARIES "qca-qt5" CACHE STRING "QCA2 Qt5 target")
++  endif()
++else()
++  macro_optional_find_package(QCA2)
++endif()
+ macro_log_feature(QCA2_FOUND "QCA2" "Provides encryption and signing functions necessary for some resolvers and accounts" "http://delta.affinix.com/qca/" TRUE "" "")
+ 
+ if( TOMAHAWK_QT5 )
+diff --git a/src/accounts/hatchet/CMakeLists.txt b/src/accounts/hatchet/CMakeLists.txt
+index eb082ff..86ebee4 100644
+--- a/src/accounts/hatchet/CMakeLists.txt
++++ b/src/accounts/hatchet/CMakeLists.txt
+@@ -13,7 +13,6 @@ endif()
+ include( ${TOMAHAWK_USE_FILE} )
+ 
+ find_package(OpenSSL REQUIRED)
+-find_package(QCA2 REQUIRED)
+ find_package(websocketpp 0.2.99 REQUIRED)
+ 
+ include_directories(
+diff --git a/src/libtomahawk/CMakeLists.txt b/src/libtomahawk/CMakeLists.txt
+index 238670e..1e07325 100644
+--- a/src/libtomahawk/CMakeLists.txt
++++ b/src/libtomahawk/CMakeLists.txt
+@@ -402,10 +402,6 @@ include_directories(
+     ${QTKEYCHAIN_INCLUDE_DIRS}
+ )
+ 
+-IF(QCA2_FOUND)
+-    INCLUDE_DIRECTORIES( ${QCA2_INCLUDE_DIR} )
+-ENDIF(QCA2_FOUND)
+-
+ IF(LIBATTICA_FOUND)
+     SET( libGuiSources ${libGuiSources} AtticaManager.cpp )
+     INCLUDE_DIRECTORIES( ${LIBATTICA_INCLUDE_DIR} )
+@@ -491,6 +487,7 @@ IF(APPLE)
+ ENDIF()
+ 
+ IF(QCA2_FOUND)
++    INCLUDE_DIRECTORIES( ${QCA2_INCLUDE_DIR} )
+     LIST(APPEND LINK_LIBRARIES ${QCA2_LIBRARIES} )
+ ENDIF(QCA2_FOUND)
+ 
+-- 
+1.8.3.2
+

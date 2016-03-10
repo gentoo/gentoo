@@ -77,6 +77,7 @@ DOCS=( AUTHORS ChangeLog README.md )
 PATCHES=(
 	"${FILESDIR}/${P}-qt55.patch"
 	"${FILESDIR}/${P}-taglib-1.10.patch"
+	"${FILESDIR}/${P}-qca-qt5-linking.patch"
 )
 
 src_configure() {
