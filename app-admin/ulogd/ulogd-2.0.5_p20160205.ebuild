@@ -5,15 +5,13 @@
 EAPI=5
 
 AUTOTOOLS_AUTORECONF=1
+COMMIT_ID="a82d9cfe03679b82ab4d9586c93ad377e9e27149"
 
-inherit autotools-utils eutils flag-o-matic linux-info readme.gentoo-r1 systemd user
+inherit autotools-utils eutils flag-o-matic linux-info readme.gentoo-r1 systemd user vcs-snapshot
 
 DESCRIPTION="A userspace logging daemon for netfilter/iptables related logging"
 HOMEPAGE="https://netfilter.org/projects/ulogd/index.html"
-SRC_URI="
-	https://www.netfilter.org/projects/${PN}/files/${P}.tar.bz2
-	ftp://ftp.netfilter.org/pub/${PN}/${P}.tar.bz2
-"
+SRC_URI="https://git.netfilter.org/${PN}2/snapshot/${COMMIT_ID}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -46,11 +44,9 @@ DEPEND="${RDEPEND}
 
 DOCS=( AUTHORS README TODO )
 
-PATCHES=( "${FILESDIR}/${P}-remove-db-automagic.patch" )
-
 DOC_CONTENTS="
 	You must have at least one logging stack enabled to make ulogd work.
-	Please edit example configuration located at /etc/ulogd.conf
+	Please edit the example configuration located at /etc/ulogd.conf.
 "
 
 pkg_setup() {
@@ -60,21 +56,16 @@ pkg_setup() {
 	linux-info_pkg_setup
 
 	if kernel_is lt 2 6 14; then
-		die "ulogd requires kernel newer than 2.6.14"
-	fi
-
-	if kernel_is lt 2 6 18; then
-		ewarn "You are using kernel older than 2.6.18"
-		ewarn "Some ulogd features may be unavailable"
+		die "${PN} requires a kernel >= 2.6.14."
 	fi
 
 	if use nfacct && kernel_is lt 3 3 0; then
-		ewarn "NFACCT input plugin requires kernel newer than 3.3.0"
+		ewarn "NFACCT input plugin requires a kernel >= 3.3."
 	fi
 
-	if use ulog && kernel_is gt 3 17 0; then
-		ewarn "ULOG target was removed since 3.17.0 kernel release"
-		ewarn "Consider enabling NFACCT, NFCT or NFLOG support"
+	if use ulog && kernel_is ge 3 17 0; then
+		ewarn "ULOG target has been removed in the 3.17 kernel release."
+		ewarn "Consider enabling NFACCT, NFCT, or NFLOG support instead."
 	fi
 }
 
@@ -82,7 +73,7 @@ src_prepare() {
 	# - make all logs to be kept in a single dir /var/log/ulogd
 	# - place sockets in /run instead of /tmp
 	sed -i \
-		-e 's%var/log%var/log/ulogd%g' \
+		-e "s%var/log%var/log/${PN}%g" \
 		-e 's%tmp%run%g' \
 		ulogd.conf.in || die
 
