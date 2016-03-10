@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="xml"
@@ -23,9 +23,3 @@ RDEPEND="dev-python/python-dateutil[${PYTHON_USEDEP}]
 	dev-python/python-magic[${PYTHON_USEDEP}]"
 
 S="$WORKDIR/${P/_/-}"
-
-python_install_all() {
-	# setup/py doesn't intereact well with the eclass
-	distutils-r1_python_install_all
-#	rm -rf "${D}"usr/share/doc/packages || die
-}
