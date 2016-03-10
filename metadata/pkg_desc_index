@@ -10910,7 +10910,7 @@ gnustep-base/gnustep-back-cairo 0.22.0 0.23.0 0.24.0 0.24.0-r1 0.24.1: Cairo bac
 gnustep-base/gnustep-back-xlib 0.22.0 0.23.0 0.24.0 0.24.1: Default X11 back-end component for the GNUstep GUI Library
 gnustep-base/gnustep-base 1.24.6-r1 1.24.7 1.24.8 1.24.8-r1: A library of general-purpose, non-graphical Objective C objects
 gnustep-base/gnustep-gui 0.22.0 0.23.0 0.23.1 0.24.0 0.24.1: Library of GUI classes written in Obj-C
-gnustep-base/gnustep-make 2.6.2 2.6.6 2.6.7: GNUstep Makefile Package
+gnustep-base/gnustep-make 2.6.2 2.6.6 2.6.7 2.6.7-r1: GNUstep Makefile Package
 gnustep-base/gnustep-updater 0.2 0.3: Helper tool to upgrade Gentoo GNUstep installations
 gnustep-base/libobjc2 1.8 1.8.1: GNUstep Objective-C runtime
 gnustep-base/mknfonts 0.5-r1: A tool to create .nfont packages for use with gnustep-back-art
