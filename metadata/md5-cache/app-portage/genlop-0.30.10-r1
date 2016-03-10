@@ -1,13 +1,13 @@
 DEFINED_PHASES=compile configure install prepare unpack
-DEPEND=dev-lang/perl dev-perl/DateManip dev-perl/libwww-perl
+DEPEND=dev-lang/perl dev-perl/Date-Manip dev-perl/libwww-perl
 DESCRIPTION=A nice emerge.log parser
 EAPI=5
 HOMEPAGE=https://www.gentoo.org/proj/en/perl
 KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd
 LICENSE=GPL-2
-RDEPEND=dev-lang/perl dev-perl/DateManip dev-perl/libwww-perl
+RDEPEND=dev-lang/perl dev-perl/Date-Manip dev-perl/libwww-perl
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~dilfridge/distfiles/genlop-0.30.10.tar.gz
 _eclass_exported_funcs=src_unpack:base src_prepare:base src_configure:base src_compile:base src_install:-
 _eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	bash-completion-r1	acf715fa09463f043fbfdc1640f3fb85	eutils	9d81603248f2ba3ec59124320d123e5e	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
-_md5_=8202177aade05bfdf8d803e10775d6a6
+_md5_=4d7d8f4a53b2ac464eed18baea108ec5
