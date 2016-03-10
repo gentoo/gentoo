@@ -57,5 +57,6 @@ src_configure()
 		--datadir=/etc \
 		--sysdepdir=/usr/$(get_libdir)/${PN} \
 		--with-dynlib=/$(get_libdir) \
-		--with-sysdeps=/usr/$(get_libdir)/skalibs
+		--with-sysdeps=/usr/$(get_libdir)/skalibs \
+		--livedir="${S6RC_LIVEDIR:-/run/s6-rc}"
 }
