@@ -82,7 +82,9 @@ src_install() {
 
 	newconfd "${FILESDIR}/buildmaster.confd" buildmaster
 	newinitd "${FILESDIR}/buildmaster.initd" buildmaster
-	systemd_dounit "${FILESDIR}"/${PN}.service
+	systemd_dounit "${FILESDIR}/buildmaster.target"
+	systemd_newunit "${FILESDIR}/buildmaster_at.service" "buildmaster@.service"
+	systemd_install_serviced "${FILESDIR}/buildmaster_at.service.conf" "buildmaster@.service"
 
 	readme.gentoo_create_doc
 }
