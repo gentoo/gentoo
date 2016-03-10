@@ -131,11 +131,6 @@ pkg_pretend() {
 		ewarn "OSD and subtitles won't be available."
 	fi
 
-	if use openal; then
-		ewarn "You have enabled the openal audio output. Be warned that"
-		ewarn "this output is considered experimental by upstream."
-	fi
-
 	if use libav; then
 		elog "You have enabled media-video/libav instead of media-video/ffmpeg."
 		elog "Upstream recommends media-video/ffmpeg, as some functionality"
