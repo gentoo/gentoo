@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -19,7 +19,7 @@ DEPEND="dev-db/sqlite:3
 	ewf? ( app-forensics/libewf )
 	aff? ( app-forensics/afflib )"
 RDEPEND="${DEPEND}
-	dev-perl/DateManip"
+	dev-perl/Date-Manip"
 
 DOCS=( NEWS.txt README.txt )
 
