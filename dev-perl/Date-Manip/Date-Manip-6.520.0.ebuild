@@ -4,7 +4,6 @@
 
 EAPI=6
 
-DIST_NAME=Date-Manip
 DIST_AUTHOR=SBECK
 DIST_VERSION=6.52
 inherit perl-module

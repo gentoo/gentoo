@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -17,7 +17,7 @@ IUSE=""
 
 RDEPEND="
 	x11-libs/wxGTK:${WX_GTK_VER}
-	>=dev-perl/wxperl-0.97.01"
+	>=dev-perl/Wx-0.97.01"
 DEPEND="${RDEPEND}"
 
 #SRC_TEST=do

@@ -68,7 +68,7 @@ DEPEND="!media-plugins/mytharchive
 		dev-python/pycurl:=
 	)
 	mythweather? (
-		dev-perl/DateManip
+		dev-perl/Date-Manip
 		dev-perl/DateTime-Format-ISO8601
 		>=dev-perl/DateTime-1
 		dev-perl/Image-Size

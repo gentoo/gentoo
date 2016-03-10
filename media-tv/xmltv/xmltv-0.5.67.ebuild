@@ -35,7 +35,7 @@ se_tvzon tr uk_atlas uk_bleb uk_rt uk_tvguide tv_check tv_combiner tv_pick_cgi"
 RDEPEND=">=dev-perl/libwww-perl-5.65
 	>=dev-perl/XML-Parser-2.34
 	>=dev-perl/XML-Twig-3.10
-	>=dev-perl/DateManip-5.42
+	>=dev-perl/Date-Manip-5.42
 	>=dev-perl/XML-Writer-0.6
 	virtual/perl-Memoize
 	virtual/perl-Storable

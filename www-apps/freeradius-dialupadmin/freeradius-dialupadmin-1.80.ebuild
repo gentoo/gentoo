@@ -1,4 +1,4 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -16,7 +16,7 @@ LICENSE="GPL-2"
 DEPEND="sys-apps/findutils
 	sys-apps/sed"
 RDEPEND="dev-lang/php
-	dev-perl/DateManip
+	dev-perl/Date-Manip
 	>=net-dialup/freeradius-${MY_FREERADIUS_PV}"
 
 S="${WORKDIR}/freeradius-server-${MY_FREERADIUS_PV}/dialup_admin"

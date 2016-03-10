@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -34,7 +34,7 @@ za nl in il"
 RDEPEND=">=dev-perl/libwww-perl-5.65
 	>=dev-perl/XML-Parser-2.34
 	>=dev-perl/XML-Twig-3.10
-	>=dev-perl/DateManip-5.42
+	>=dev-perl/Date-Manip-5.42
 	>=dev-perl/XML-Writer-0.6
 	virtual/perl-Memoize
 	virtual/perl-Storable

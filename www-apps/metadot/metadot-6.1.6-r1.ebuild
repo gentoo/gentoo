@@ -40,7 +40,7 @@ RDEPEND="
 	dev-perl/XML-Simple
 	dev-perl/Text-CSV_XS
 	dev-perl/Archive-Zip
-	dev-perl/DateManip
+	dev-perl/Date-Manip
 "
 
 LICENSE="GPL-2"

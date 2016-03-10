@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -15,7 +15,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="mysql postgres sqlite"
 
-DEPEND="dev-perl/DateManip
+DEPEND="dev-perl/Date-Manip
 	dev-perl/Statistics-Descriptive
 	dev-perl/Finance-YahooQuote
 	dev-perl/libwww-perl

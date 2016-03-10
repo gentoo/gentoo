@@ -1,10 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 
-inherit cmake-utils
+inherit eutils cmake-utils
 
 DESCRIPTION="A tool to unpack installers created by Inno Setup"
 HOMEPAGE="http://constexpr.org/innoextract/"
@@ -22,6 +22,15 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 DOCS=( README.md CHANGELOG )
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.4-cmake-3.5.patch
+)
+
+src_prepare() {
+	epatch "${PATCHES[@]}"
+	cmake-utils_src_prepare
+}
 
 src_configure() {
 	local mycmakeargs=(

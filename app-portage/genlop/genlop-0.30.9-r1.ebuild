@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -16,7 +16,7 @@ KEYWORDS="alpha amd64 arm hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~amd6
 IUSE=""
 
 DEPEND="dev-lang/perl
-	 dev-perl/DateManip
+	 dev-perl/Date-Manip
 	 dev-perl/libwww-perl"
 RDEPEND="${DEPEND}"
 

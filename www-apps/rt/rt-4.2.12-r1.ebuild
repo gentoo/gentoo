@@ -63,7 +63,7 @@ DEPEND="
 	dev-perl/DBD-SQLite
 	dev-perl/Data-GUID
 	dev-perl/Data-ICal
-	dev-perl/DateManip
+	dev-perl/Date-Manip
 	dev-perl/Devel-GlobalDestruction
 	dev-perl/Email-Address
 	dev-perl/Email-Address-List
