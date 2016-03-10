@@ -5,7 +5,4 @@
 	<email>base-system@gentoo.org</email>
 	<name>Gentoo Base System</name>
 </maintainer>
-<use>
-	<flag name="multislot">Allow for multiple versions to be installed at once</flag>
-</use>
 </pkgmetadata>
