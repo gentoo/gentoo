@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -21,7 +21,7 @@ RDEPEND="virtual/cron
 	virtual/mailx
 	dev-lang/perl
 	dev-perl/Date-Calc
-	dev-perl/DateManip
+	dev-perl/Date-Manip
 	dev-perl/Tie-IxHash
 	dev-perl/Sys-CPU
 	dev-perl/Sys-MemInfo"

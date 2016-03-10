@@ -21,7 +21,7 @@ RDEPEND="virtual/cron
 	virtual/mailx
 	dev-lang/perl
 	dev-perl/Date-Calc
-	dev-perl/DateManip
+	dev-perl/Date-Manip
 	dev-perl/Tie-IxHash
 	dev-perl/Sys-CPU
 	dev-perl/Sys-MemInfo"
