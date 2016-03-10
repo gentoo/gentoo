@@ -125,11 +125,6 @@ pkg_pretend() {
 	if [[ ${MERGE_TYPE} != "binary" ]] && ! tc-has-tls && use vaapi && use egl; then
 		die "Your compiler lacks C++11 TLS support. Use GCC>=4.8.0 or Clang>=3.3."
 	fi
-
-	if ! use libass; then
-		ewarn "You have disabled the libass support."
-		ewarn "OSD and subtitles won't be available."
-	fi
 }
 
 src_prepare() {
