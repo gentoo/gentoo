@@ -22,7 +22,8 @@ case ${EAPI} in
 	0|1|2|3|4)
 		die "EAPI=${EAPI} not supported"
 		;;
-	5|6)
+	5)
+		# not needed for EAPI6 and above
 		inherit multilib
 		;;
 esac

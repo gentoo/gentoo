@@ -39,6 +39,10 @@ src_prepare() {
 		&& myopengl=opengl \
 		|| myopengl=pure
 
+	epatch \
+		"${FILESDIR}"/${P}-tempdir.patch \
+		"${FILESDIR}"/${P}-warning.patch
+
 	cat <<-EOF > config.state
 	CHOICE_debug_VALUE='nodebug'
 	CHOICE_graphics_VALUE='${myopengl}'
