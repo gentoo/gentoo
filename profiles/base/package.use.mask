@@ -302,10 +302,6 @@ net-libs/ortp zrtp
 # Masked until dev-libs/extra-cmake-modules is in tree.
 dev-libs/libattica qt5
 
-# Johannes Huber <johu@gentoo.org> (12 Sep 2014)
-# Segmentation fault, needs further investigation.
-media-sound/tomahawk qt5
-
 # Michał Górny <mgorny@gentoo.org> (06 Sep 2014)
 # Mask the removed/deprecated flags for old ebuilds that do not use
 # the python-r1 eclass.
