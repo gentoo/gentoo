@@ -43,7 +43,7 @@ RDEPEND="
 	>=dev-perl/XML-Simple-2.08
 	dev-perl/XML-Dumper
 	dev-perl/Archive-Zip
-	dev-perl/DateManip
+	dev-perl/Date-Manip
 	dev-perl/Text-CSV_XS
 	dev-perl/HTML-Tree
 	dev-perl/HTML-Format
