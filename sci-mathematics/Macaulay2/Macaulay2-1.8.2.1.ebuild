@@ -19,7 +19,7 @@ SRC_URI="
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm ~x86"
 IUSE="debug emacs +optimization"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
