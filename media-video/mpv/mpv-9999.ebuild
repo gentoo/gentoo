@@ -136,12 +136,6 @@ pkg_pretend() {
 		ewarn "this output is considered experimental by upstream."
 	fi
 
-	if use sdl; then
-		ewarn "You have enabled the sdl video and audio outputs. Note that"
-		ewarn "upstream provides these outputs for compatibility reasons only."
-		ewarn "You probably don't need them under the normal circumstances."
-	fi
-
 	if use libav; then
 		elog "You have enabled media-video/libav instead of media-video/ffmpeg."
 		elog "Upstream recommends media-video/ffmpeg, as some functionality"
