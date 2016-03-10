@@ -130,11 +130,6 @@ pkg_pretend() {
 		ewarn "You have disabled the libass support."
 		ewarn "OSD and subtitles won't be available."
 	fi
-
-	einfo "mpv optionally supports many different audio and video formats."
-	einfo "You will need to enable support for the desired formats in your"
-	einfo "libavcodec/libavformat provider:"
-	einfo "    media-video/ffmpeg or media-video/libav"
 }
 
 src_prepare() {
