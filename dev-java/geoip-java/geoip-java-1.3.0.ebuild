@@ -15,7 +15,7 @@ HOMEPAGE="https://github.com/maxmind"
 SRC_URI="https://github.com/maxmind/${MY_PN}/archive/v${PV}.zip -> ${P}.zip"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 RDEPEND=">=virtual/jre-1.6"
