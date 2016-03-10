@@ -1,0 +1,23 @@
+commit 5c2026336419805202fbf7a817b2960b0584ce5d
+Author: wm4 <wm4@nowhere>
+Date:   Thu Mar 3 15:30:28 2016 +0100
+
+    vo_opengl: wayland: don't destroy NULL wl_egl_window
+    
+    The wayland client API crashes intentionally when trying to free NULL
+    objects. (Thanks.)
+
+diff --git a/video/out/opengl/context_wayland.c b/video/out/opengl/context_wayland.c
+index 63a1453..a100073 100644
+--- a/video/out/opengl/context_wayland.c
++++ b/video/out/opengl/context_wayland.c
+@@ -183,7 +183,8 @@ static void waylandgl_uninit(MPGLContext *ctx)
+
+     if (wl->egl_context.egl.ctx) {
+         eglReleaseThread();
+-        wl_egl_window_destroy(wl->egl_context.egl_window);
++        if (wl->egl_context.egl_window)
++            wl_egl_window_destroy(wl->egl_context.egl_window);
+         eglDestroySurface(wl->egl_context.egl.dpy, wl->egl_context.egl_surface);
+         eglMakeCurrent(wl->egl_context.egl.dpy, NULL, NULL, EGL_NO_CONTEXT);
+         eglDestroyContext(wl->egl_context.egl.dpy, wl->egl_context.egl.ctx);
