@@ -21,7 +21,12 @@ else
 	S="${WORKDIR}/raspberrypi-userland-${GIT_COMMIT}"
 fi
 
-IUSE="examples"
+RDEPEND="!media-libs/raspberrypi-userland-bin
+	wayland? ( dev-libs/wayland )"
+DEPEND="${RDEPEND}
+	wayland? ( virtual/pkgconfig )"
+
+IUSE="examples wayland"
 LICENSE="BSD"
 SLOT="0"
 
@@ -42,15 +47,21 @@ src_unpack() {
 src_prepare() {
 	# init script for Debian, not useful on Gentoo
 	sed -i "/DESTINATION \/etc\/init.d/,+2d" interface/vmcs_host/linux/vcfiled/CMakeLists.txt || die
+
+	# wayland egl support
+	epatch "${FILESDIR}"/next-resource-handle.patch \
+		"${FILESDIR}"/wayland-wsys.patch
 }
 
 src_install() {
 	cmake-utils_src_install
 
+	# provide OpenGL ES v1 according to https://github.com/raspberrypi/firmware/issues/78
+	dosym libGLESv2.so /opt/vc/lib/libGLESv1_CM.so
+
 	doenvd "${FILESDIR}"/04${PN}
 
-	dodir /etc/udev/rules.d
-	insinto /etc/udev/rules.d
+	insinto /lib/udev/rules.d
 	doins "${FILESDIR}"/92-local-vchiq-permissions.rules
 
 	# enable dynamic switching of the GL implementation
@@ -59,6 +70,16 @@ src_install() {
 
 	# tell eselect opengl that we do not have libGL
 	touch "${ED}"/opt/vc/.gles-only
+
+	insinto /opt/vc/lib/pkgconfig
+	doins "${FILESDIR}"/bcm_host.pc
+	doins "${FILESDIR}"/egl.pc
+	doins "${FILESDIR}"/glesv2.pc
+	if use wayland; then
+	# Missing wayland-egl version from the patch; claim 9.0 (a mesa version) for now, so gst-plugins-bad wayland-egl check is happy
+		sed -i -e 's/Version:  /Version: 9.0/' "${ED}"/opt/vc/lib/pkgconfig/wayland-egl.pc
+		doins "${ED}"/opt/vc/lib/pkgconfig/wayland-egl.pc # Maybe move?
+	fi
 
 	# some #include instructions are wrong so we need to fix them
 	einfo "Fixing #include \"vcos_platform_types.h\""
