@@ -1,0 +1,36 @@
+commit a6f8a6977ec59d314b617780c60e374b585ebaca
+Author: wm4 <wm4@nowhere>
+Date:   Thu Mar 3 15:30:55 2016 +0100
+
+    demux_timeline: set correct seekable flags
+    
+    Tricky misleading crap.
+    
+    Fixes #2898.
+
+diff --git a/demux/demux.h b/demux/demux.h
+index e882e90..2c1e3a2 100644
+--- a/demux/demux.h
++++ b/demux/demux.h
+@@ -174,7 +174,7 @@ typedef struct demuxer {
+     int64_t filepos;  // input stream current pos.
+     char *filename;  // same as stream->url
+     bool seekable;
+-    bool partially_seekable; // implies seekable=true
++    bool partially_seekable; // true if _maybe_ seekable; implies seekable=true
+     double start_time;
+     // File format allows PTS resets (even if the current file is without)
+     bool ts_resets_possible;
+diff --git a/demux/demux_timeline.c b/demux/demux_timeline.c
+index 0c6c398..92cf1e6 100644
+--- a/demux/demux_timeline.c
++++ b/demux/demux_timeline.c
+@@ -344,7 +344,7 @@ static int d_open(struct demuxer *demuxer, enum demux_check check)
+     print_timeline(demuxer);
+
+     demuxer->seekable = true;
+-    demuxer->partially_seekable = true;
++    demuxer->partially_seekable = false;
+
+     demuxer->filetype = meta->filetype ? meta->filetype : meta->desc->name;
+

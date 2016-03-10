@@ -33,6 +33,7 @@
 		<flag name="enca">Enable subtitles charset discovery via <pkg>app-i18n/enca</pkg></flag>
 		<flag name="gbm">Enable Graphics Buffer Manager based EGL video output</flag>
 		<flag name="jpeg">Enable support for saving screenshots in JPEG format</flag>
+		<flag name="libass">Enable OSD (On Screen Display) and subtitles support via <pkg>media-libs/libass</pkg></flag>
 		<flag name="libguess">Enable subtitles charset discovery via <pkg>app-i18n/libguess</pkg></flag>
 		<flag name="libmpv">Build mpv shared library</flag>
 		<flag name="lua">Enable Lua scripting, OSC (On Screen Controller) GUI and <pkg>net-misc/youtube-dl</pkg> hook-script</flag>
@@ -40,7 +41,8 @@
 		<flag name="pvr">Enable Video4Linux2 MPEG PVR</flag>
 		<flag name="raspberry-pi">Enable support for the Raspberry Pi</flag>
 		<flag name="rubberband">Enable high quality pitch correction via <pkg>media-libs/rubberband</pkg></flag>
-		<flag name="sdl">Enable <pkg>media-libs/libsdl2</pkg> based video and audio outputs</flag>
+		<flag name="sdl">Enable <pkg>media-libs/libsdl2</pkg> based video and audio outputs
+			(Note: these outputs exist for compatibility reasons only, avoid if possible)</flag>
 		<flag name="uchardet">Enable subtitles charset discovery via <pkg>dev-libs/uchardet</pkg></flag>
 		<flag name="vf-dlopen">Install additional video filters to be used with -vf dlopen</flag>
 	</use>
