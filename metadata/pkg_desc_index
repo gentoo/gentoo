@@ -12455,7 +12455,7 @@ media-libs/quarter 1.0.0-r1: A glue between Nokia Qt4 and Coin3D
 media-libs/quesoglc 0.7.2: A free implementation of the OpenGL Character Renderer (GLC)
 media-libs/quvi 0.2.19 0.4.2 0.9.4 0.9.5: A command line tool for parsing video download links
 media-libs/raptor 2.0.9 2.0.14: The RDF Parser Toolkit
-media-libs/raspberrypi-userland 0_pre20130705-r1 0_pre20140117 0_pre20140830 0_pre20150921 0_pre20160305 9999: Raspberry Pi userspace tools and libraries
+media-libs/raspberrypi-userland 0_pre20130705-r1 0_pre20140117 0_pre20140830 0_pre20150921 0_pre20160305-r1 9999: Raspberry Pi userspace tools and libraries
 media-libs/raspberrypi-userland-bin 1.20160209: Raspberry Pi userspace tools and libraries
 media-libs/raul 0.8.0 0.8.0-r1: C++ utility library primarily aimed at audio/musical applications
 media-libs/resid 0.16_p2: C++ library to emulate the C64 SID chip
