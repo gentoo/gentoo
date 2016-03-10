@@ -82,6 +82,12 @@ src_prepare() {
 	l10n_for_each_disabled_locale_do remove_locale
 
 	autotools-utils_src_prepare
+
+	cat <<- EOF > "${S}/build/git_version.h" || die
+		#define BUILD_GIT_VERSION_NUMBER 8880
+		#define BUILD_GIT_VERSION_STRING "${PV}"
+		#define TAGGED_RELEASE 0
+	EOF
 }
 
 src_configure() {
