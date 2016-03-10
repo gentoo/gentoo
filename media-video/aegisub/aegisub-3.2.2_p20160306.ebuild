@@ -83,6 +83,12 @@ src_prepare() {
 	config_rpath_update "${S}/config.rpath"
 
 	autotools-utils_src_prepare
+
+	cat <<- EOF > "${S}/build/git_version.h" || die
+		#define BUILD_GIT_VERSION_NUMBER 8880
+		#define BUILD_GIT_VERSION_STRING "${PV}"
+		#define TAGGED_RELEASE 0
+	EOF
 }
 
 src_configure() {
