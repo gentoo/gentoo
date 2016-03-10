@@ -15,7 +15,7 @@ SRC_URI="http://www.dcc.fc.up.pt/~vsc/Yap/${P}.tar.gz
 
 LICENSE="Artistic LGPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc ~x86"
 IUSE="R debug doc examples gmp java mpi mysql odbc readline static threads"
 
 RDEPEND="sys-libs/zlib
