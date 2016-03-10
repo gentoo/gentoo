@@ -118,7 +118,7 @@ app-admin/ide-smart 1.4-r1: A tool to read SMART information from harddiscs
 app-admin/integrit 4.0 4.1-r1: file integrity verification program
 app-admin/jinit 0.1.12-r1: An alternative to sysvinit which supports the need(8) concept
 app-admin/kedpm 0.4.0-r2: Ked Password Manager helps to manage large amounts of passwords and related information
-app-admin/keepass 2.30 2.31: A free, open source, light-weight and easy-to-use password manager
+app-admin/keepass 2.30 2.31 2.32: A free, open source, light-weight and easy-to-use password manager
 app-admin/keepassx 0.4.3 0.4.4 2.0 2.0.1 2.0.2: Qt password manager compatible with its Win32 and Pocket PC versions
 app-admin/killproc 2.13-r1: killproc and assorted tools for boot scripts
 app-admin/kpcli 2.7 2.8 3.0: A command line interface to KeePass database files
@@ -14198,7 +14198,7 @@ net-libs/netembryo 0.1.1: a network abstraction library
 net-libs/netwib 5.39.0: Library of Ethernet, IP, UDP, TCP, ICMP, ARP and RARP protocols
 net-libs/nfqueue-bindings 0.5: High-level language bindings for libnetfilter_queue
 net-libs/nghttp2 1.6.0 1.7.0 1.7.1 1.8.0 9999: HTTP/2 C Library
-net-libs/nodejs 0.12.6 0.12.7 4.1.1 4.2.2 5.0.0 5.3.0 5.4.1 5.6.0-r1 5.7.1: A JavaScript runtime built on Chrome's V8 JavaScript engine
+net-libs/nodejs 0.12.6 0.12.7 0.12.10 4.1.1 4.2.2 4.4.0 5.0.0 5.3.0 5.4.1 5.6.0-r1 5.7.1 5.8.0: A JavaScript runtime built on Chrome's V8 JavaScript engine
 net-libs/obby 0.4.8 0.4.8-r1: Library for collaborative text editing
 net-libs/onion 0.7 9999: C library to create simple HTTP servers and Web Applications
 net-libs/opal 3.10.11 3.12.4: C++ class library normalising numerous telephony protocols
