@@ -55,6 +55,9 @@ RESTRICT="test"
 #	distutils-r1_python_prepare_all
 #}
 
+DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
+RDEPEND="${DEPEND}"
+
 python_install_all() {
 	local DOCS=( AUTHORS.txt docs/*.rst )
 	distutils-r1_python_install_all
