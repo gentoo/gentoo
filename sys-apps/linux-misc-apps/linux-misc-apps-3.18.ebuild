@@ -166,4 +166,8 @@ pkg_postinst() {
 	echo
 	elog "The cpupower utility is maintained separately at sys-power/cpupower"
 	elog "The usbip utility is maintained separately at net-misc/usbip"
+	elog "The hpfall tool has been renamed by upstream to freefall; update your config if needed"
+	if find /etc/runlevels/ -name hpfall ; then
+		ewarn "You must change hpfall to freefall in your runlevels!"
+	fi
 }
