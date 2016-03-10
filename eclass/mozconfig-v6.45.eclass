@@ -22,7 +22,7 @@ case ${EAPI} in
 	0|1|2|3|4)
 		die "EAPI=${EAPI} not supported"
 		;;
-	5)
+	5|6)
 		inherit multilib
 		;;
 esac
@@ -84,7 +84,7 @@ RDEPEND=">=app-text/hunspell-1.2
 	>=x11-libs/gtk+-2.18:2
 	x11-libs/gdk-pixbuf
 	>=x11-libs/pango-1.22.0
-	>=media-libs/libpng-1.6.17:0=[apng]
+	>=media-libs/libpng-1.6.19:0=[apng]
 	>=media-libs/mesa-10.2:*
 	media-libs/fontconfig
 	>=media-libs/freetype-2.4.10
