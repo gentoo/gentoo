@@ -131,12 +131,6 @@ pkg_pretend() {
 		ewarn "OSD and subtitles won't be available."
 	fi
 
-	if use libav; then
-		elog "You have enabled media-video/libav instead of media-video/ffmpeg."
-		elog "Upstream recommends media-video/ffmpeg, as some functionality"
-		elog "is not provided by media-video/libav."
-	fi
-
 	einfo "mpv optionally supports many different audio and video formats."
 	einfo "You will need to enable support for the desired formats in your"
 	einfo "libavcodec/libavformat provider:"
