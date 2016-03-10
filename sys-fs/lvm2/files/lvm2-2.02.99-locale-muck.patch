@@ -1,5 +1,5 @@
---- make.tmpl.in
-+++ make.tmpl.in
+--- LVM2/make.tmpl.in
++++ LVM2/make.tmpl.in
 @@ -395,7 +395,7 @@
  	( cat $(srcdir)/.exported_symbols; \
  	  if test x$(EXPORTED_HEADER) != x; then \
