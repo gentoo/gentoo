@@ -40,6 +40,9 @@ src_prepare() {
 	# g++-5 fix, https://bugzilla.gnome.org/show_bug.cgi?id=754698
 	epatch "${FILESDIR}"/${PN}-0.139-get_pan_home.patch
 
+	# Fix crash at startup: bug #570108
+	epatch "${FILESDIR}"/${PN}-0.139-r1-fix_crash_at_PanTreeStore.patch
+
 	# upstream release was in 2012 - users may want to apply patches
 	epatch_user
 }
