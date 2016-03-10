@@ -47,9 +47,7 @@ src_prepare() {
 }
 
 src_configure() {
-	if use python_targets_python3_3 ;then
-		boost_py3="--with-boost-python=3.3"
-	elif use python_targets_python3_4 ;then
+	if use python_targets_python3_4 ;then
 		boost_py3="--with-boost-python=3.4"
 	elif use python_targets_python3_5 ;then
 		boost_py3="--with-boost-python=3.5"
