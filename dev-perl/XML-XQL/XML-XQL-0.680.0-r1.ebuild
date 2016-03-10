@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -18,5 +18,5 @@ RDEPEND=">=dev-perl/libxml-perl-0.07-r1
 	>=dev-perl/XML-DOM-1.39-r1
 	>=dev-perl/Parse-Yapp-1.05
 	dev-perl/libwww-perl
-	>=dev-perl/DateManip-5.40-r1"
+	>=dev-perl/Date-Manip-5.40-r1"
 DEPEND="${RDEPEND}"
