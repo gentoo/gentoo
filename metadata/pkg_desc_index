@@ -2014,7 +2014,7 @@ app-office/qchartdiary 0.6.4.1-r2: Free Qt4 diary/agenda application
 app-office/rubrica 2.1.6-r1: A contact database for Gnome
 app-office/sc 7.16-r1: sc is a free curses-based spreadsheet program that uses key bindings similar to vi and less
 app-office/scribus 1.4.5 1.4.6 1.5.0-r1 9999: Desktop publishing (DTP) and layout program
-app-office/skrooge 1.12.5 2.2.0: Personal finances manager, aiming at being simple and intuitive
+app-office/skrooge 1.12.5 2.3.0: Personal finances manager, aiming at being simple and intuitive
 app-office/taskcoach 1.3.18 1.3.27 1.3.29 1.3.32 1.3.32-r1 1.3.40 1.4.2: Simple personal tasks and todo lists manager
 app-office/tedia2sql 1.2.12: Convert database ERD designed in Dia into SQL DDL scripts
 app-office/texmacs 1.0.7.21 1.99.1 1.99.2 1.99.2-r1: Wysiwyg text processor with high-quality maths
