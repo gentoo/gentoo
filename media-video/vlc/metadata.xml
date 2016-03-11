@@ -33,6 +33,7 @@
 		<flag name="gme">Enables support for <pkg>media-libs/game-music-emu</pkg> for playing various video game music formats.</flag>
 		<flag name="gnome">Adds support for GNOME's filesystem abstraction layer, <pkg>gnome-base/gnome-vfs</pkg>. This flag is not GUI-related.</flag>
 		<flag name="growl">Enables growl notification support (over UDP for remote access and native on OSX)</flag>
+		<flag name="gstreamer">Enables GStreamer based decoding support (currently supports only video decoding)</flag>
 		<flag name="httpd">Enables a web based interface for vlc.</flag>
 		<flag name="kate">Adds support for Ogg Kate subtitles via libkate.</flag>
 		<flag name="libtar">Uses libtar instead of the built-in tar reader for reading custom skins.</flag>
@@ -76,6 +77,7 @@
 		<flag name="X">Enables support for, e.g., fullscreen mode via the X Window System. By itself, this flag does not build a graphical interface.</flag>
 		<flag name="xcb">Support the X C-language Binding, a replacement for Xlib; !!! you will need this option to be able to integrate video in the Qt interface, see bug #500678.</flag>
 		<flag name="x265">Support X265 Encoder.</flag>
+		<flag name="zeroconf">Enables support for zero-configuration networking via avahi.</flag>
 		<flag name="zvbi">Enables support for teletext subtitles via the zvbi library.</flag>
 	</use>
 </pkgmetadata>
