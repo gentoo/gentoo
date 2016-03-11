@@ -26,6 +26,15 @@ PATCHES=(
 	"${FILESDIR}"/1.9.0-mapping.patch
 )
 
+if [[ ${PV} != 1.10.0 ]]; then
+	# There is no longer a circular dep with setuptools, so please do the following
+	# Drop 1.10.0-no-setuptools.patch
+	# Add a dependency on dev-python/setuptools[${PYTHON_USEDEP}]
+	# Remove pkg_preinst
+	# Thanks! - Mike Gilbert (floppym)
+	die "Please read the ebuild for notes on this version bump"
+fi
+
 python_prepare_all() {
 	# https://bitbucket.org/gutworth/six/issues/139/
 	sed \
