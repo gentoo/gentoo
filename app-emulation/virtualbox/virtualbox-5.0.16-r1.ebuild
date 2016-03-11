@@ -343,10 +343,6 @@ src_install() {
 		popd &>/dev/null || die
 	fi
 
-	if use java ; then
-		java-pkg_regjar "${D}${vbox_inst_path}/sdk/bindings/xpcom/java/vboxjxpcom.jar"
-		java-pkg_regso "${D}${vbox_inst_path}/libvboxjxpcom.so"
-	fi
 
 	if use lvm ; then
 		vbox_inst VBoxVolInfo 4750
@@ -356,6 +352,11 @@ src_install() {
 	if use sdk ; then
 		insinto ${vbox_inst_path}
 		doins -r sdk
+
+		if use java ; then
+			java-pkg_regjar "${D}${vbox_inst_path}/sdk/bindings/xpcom/java/vboxjxpcom.jar"
+			java-pkg_regso "${D}${vbox_inst_path}/libvboxjxpcom.so"
+		fi
 	fi
 
 	if use udev ; then
