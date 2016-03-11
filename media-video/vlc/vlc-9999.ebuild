@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
+EAPI="6"
 
 SCM=""
 if [ "${PV%9999}" != "${PV}" ] ; then
@@ -41,10 +41,10 @@ fi
 IUSE="a52 aalib alsa altivec +audioqueue +avcodec
 	+avformat bidi bluray cddb chromaprint chromecast dbus dc1394 debug
 	directfb directx dts dvb +dvbpsi dvd dxva2 elibc_glibc +encode faad fdk
-	fluidsynth +ffmpeg flac fontconfig +gcrypt gme gnutls httpd
+	fluidsynth +ffmpeg flac fontconfig +gcrypt gme gnutls gstreamer httpd
 	ieee1394 jack jpeg kate kde libass libav libcaca libnotify
 	+libsamplerate libtiger linsys libtar lirc live lua
-	macosx-dialog-provider macosx-eyetv macosx-notifications macosx-quartztext macosx-qtkit
+	macosx-eyetv macosx-notifications macosx-quartztext macosx-qtkit
 	matroska media-library cpu_flags_x86_mmx modplug mp3 mpeg mtp musepack
 	ncurses neon ogg omxil opencv opengl optimisememory opus
 	png +postproc projectm pulseaudio +qt4 qt5 rdp rtsp run-as-root samba
@@ -89,6 +89,7 @@ RDEPEND="
 		gcrypt? ( >=dev-libs/libgcrypt-1.2.0:0= )
 		gme? ( media-libs/game-music-emu:0 )
 		gnutls? ( >=net-libs/gnutls-3.0.20:0 )
+		gstreamer? ( >=media-libs/gst-plugins-base-1.4.5:1.0 )
 		ieee1394? ( >=sys-libs/libraw1394-2.0.1:0 >=sys-libs/libavc1394-0.5.3:0 )
 		jack? ( >=media-sound/jack-audio-connection-kit-0.99.0-r1:0 )
 		jpeg? ( virtual/jpeg:0 )
@@ -249,6 +250,8 @@ src_prepare() {
 	# We are not in a real git checkout due to the absence of a .git directory.
 	touch src/revision.txt || die
 
+	default
+
 	# Fix build system mistake.
 	epatch "${FILESDIR}"/${PN}-2.1.0-fix-libtremor-libs.patch
 
@@ -262,8 +265,6 @@ src_prepare() {
 	if ! use dbus ; then
 		sed -i 's/ --started-from-file//' share/vlc.desktop.in || die
 	fi
-
-	epatch_user
 
 	eautoreconf
 
@@ -343,6 +344,7 @@ src_configure() {
 		$(use_enable gcrypt libgcrypt) \
 		$(use_enable gme) \
 		$(use_enable gnutls) \
+		$(use_enable gstreamer gst-decode) \
 		$(use_enable httpd) \
 		$(use_enable ieee1394 dv1394) \
 		$(use_enable jack) \
@@ -359,7 +361,6 @@ src_configure() {
 		$(use_enable lirc) \
 		$(use_enable live live555) \
 		$(use_enable lua) \
-		$(use_enable macosx-dialog-provider) \
 		$(use_enable macosx-eyetv) \
 		$(use_enable macosx-notifications osx-notifications) \
 		$(use_enable macosx-qtkit) \
@@ -422,7 +423,7 @@ src_configure() {
 		$(use_enable xml libxml2) \
 		$(use_enable xv xvideo) \
 		$(use_enable x265) \
-		$(use_enable zeroconf bonjour) \
+		$(use_enable zeroconf avahi) \
 		$(use_enable zvbi) $(use_enable !zvbi telx) \
 		--disable-asdcp \
 		--disable-coverage \
