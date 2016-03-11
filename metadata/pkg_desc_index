@@ -4670,7 +4670,7 @@ dev-libs/libmemcached 0.50 1.0.14 1.0.17-r3 1.0.17-r4 1.0.18 1.0.18-r1 1.0.18-r2
 dev-libs/libmimedir 0.5.1: Library for manipulating MIME directory profiles (RFC2425)
 dev-libs/libmirage 3.0.3 3.0.4: CD and DVD image access library
 dev-libs/libmix 2.05-r7: Programs Crypto/Network/Multipurpose Library
-dev-libs/libmodbus 3.0.6 3.1.1: Modbus library which supports RTU communication over a serial line or a TCP link
+dev-libs/libmodbus 3.0.6 3.1.1 3.1.2: Modbus library which supports RTU communication over a serial line or a TCP link
 dev-libs/libmoe 1.5.8-r2: multi octet character encoding handling library
 dev-libs/libmongo-client 0.1.7: The alternative C driver for MongoDB
 dev-libs/libmowgli 1.0.0 2.0.0 9999: Useful set of performance and usability-oriented extensions to C
@@ -7515,7 +7515,7 @@ dev-python/py-smbpasswd 1.0.1 1.0.1-r1: This module can generate both LANMAN and
 dev-python/py-xmlrpc 0.8.8.3-r1 0.9: Fast XML-RPC implementation for Python
 dev-python/py2neo 2.0.8: A simple and pragmatic library which accesses the Neo4j graph database
 dev-python/py2play 0.1.10-r1: A Peer To Peer network game engine
-dev-python/pyClamd 0.3.10: python interface to Clamd (Clamav daemon)
+dev-python/pyClamd 0.3.10 0.3.17: python interface to Clamd (Clamav daemon)
 dev-python/pyGPG 0.1 0.2 9999: A python interface wrapper for gnupg's gpg command
 dev-python/pyPdf 1.13-r1: Python library to work with pdf files
 dev-python/pyacoustid 1.0.0-r1: Python module for Chromaprint acoustic fingerprinting and the Acoustid API
