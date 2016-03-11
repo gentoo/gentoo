@@ -388,7 +388,7 @@ app-backup/snapper 0.2.8 9999: Command-line program for btrfs and ext4 snapshot 
 app-backup/spideroak-bin 5.1.8-r2 5.2.0 6.0.1: An easy, secure and consolidated free online backup, storage, access and sharing system
 app-backup/tarsnap 1.0.35: Online backups for the truly paranoid
 app-backup/tob 0.26-r2: A general driver for making and maintaining backups
-app-backup/tsm 6.2.2.0-r2 6.2.5.4 6.3.0.5-r2 6.3.2.4 6.4.0.0-r1 6.4.2.3 7.1.0.0-r1 7.1.2.0 7.1.2.3 7.1.3.1: Tivoli Storage Manager (TSM) Backup/Archive (B/A) Client and API
+app-backup/tsm 6.2.2.0-r2 6.2.5.4 6.3.0.5-r2 6.3.2.4 6.4.0.0-r1 6.4.2.3 7.1.0.0-r1 7.1.2.0 7.1.2.3 7.1.3.1 7.1.3.1-r1: Tivoli Storage Manager (TSM) Backup/Archive (B/A) Client and API
 app-backup/vzdump 1.2: A utility to make consistent snapshots of running OpenVZ containers
 app-benchmarks/acovea 5.1.1 5.1.1-r1: Analysis of Compiler Options via Evolutionary Algorithm
 app-benchmarks/acovea-gtk 1.0.1: Analysis of Compiler Options via Evolutionary Algorithm GUI
@@ -4240,7 +4240,7 @@ dev-java/tomcat-jstl-compat 1.2.5-r1: JSP Standard Tag Library (JSTL) - Compat j
 dev-java/tomcat-jstl-el 1.2.5-r1: JSP Standard Tag Library (JSTL) - EL jar
 dev-java/tomcat-jstl-impl 1.2.5-r1: JSP Standard Tag Library (JSTL) - Implementation jar
 dev-java/tomcat-jstl-spec 1.2.5-r1: JSP Standard Tag Library (JSTL) - Specification jar
-dev-java/tomcat-native 1.2.4: Native APR library for Tomcat
+dev-java/tomcat-native 1.2.4 1.2.5: Native APR library for Tomcat
 dev-java/tomcat-servlet-api 3 4.1.36 5.5.27-r1 5.5.34 6.0.44-r1 6.0.45 7.0.59 7.0.67 7.0.68 8.0.30 8.0.32 9.0.0_alpha3: Tomcat's Servlet API 4.0/JSP API 2.3 implementation
 dev-java/toolbar 1.1.0-r1 1.1.0-r2: An improved version of JToolBar
 dev-java/touchgraph-graphlayout 1.22-r1: TouchGraph provides a set of interfaces for graph visualization
@@ -16606,7 +16606,7 @@ sys-block/nwutil 1.4 1.8: Netwinder hardware utilities
 sys-block/open-iscsi 2.0.872-r2 2.0.872-r3 2.0.873 2.0.873-r1: Open-iSCSI is a high performance, transport independent, multi-platform implementation of RFC3720
 sys-block/parted 2.4 3.1-r1 3.2 3.2-r1: Create, destroy, resize, check, copy partitions and file systems
 sys-block/partimage 0.6.8 0.6.9: Console-based application to efficiently save raw partition data to an image file
-sys-block/partitionmanager 1.1.1 1.2.1 2.0.0 2.0.1 2.0.3: KDE utility for management of partitions and file systems
+sys-block/partitionmanager 1.1.1 1.2.1 2.0.0 2.0.1 2.0.3 2.1.0: KDE utility for management of partitions and file systems
 sys-block/qla-fc-firmware 20071207-r1 20080423 20101015: QLogic Linux Fibre Channel HBA Firmware for ql2xxx cards
 sys-block/raid-check 20140719-r1: Script to do "scrubbing" on software RAID systems
 sys-block/rts5229 1.07-r6: PCIE RTS5229 card reader driver for Linux
@@ -17020,7 +17020,7 @@ sys-kernel/linux-firmware 20150206 20150320 20150812 20151207 20160223 99999999:
 sys-kernel/linux-headers 2.4.33.3 2.4.36 3.18 3.19 4.0 4.1 4.2 4.3 4.4: Linux system headers
 sys-kernel/mips-sources 4.2.8 4.3.3: Linux-Mips GIT sources for MIPS-based machines, dated 20151126
 sys-kernel/openvz-sources 2.6.32.108.5 2.6.32.108.8 2.6.32.111.12 2.6.32.112.15 2.6.32.113.11: Kernel sources with OpenVZ patchset
-sys-kernel/pf-sources 2.6.31_p9 2.6.32_p16 2.6.33_p4 2.6.34_p7 2.6.35_p11 2.6.36_p6 2.6.37_p6 2.6.38_p8 2.6.39_p4 3.0.7-r2 3.1.6-r2 3.2.7 3.3.6 3.4.6 3.5.4 3.6.12 3.7.5 3.8.2 3.9.5 3.10.1 3.11.4 3.12.4 3.13.3 3.14_p4 3.15_p5 3.16_p4 3.17_p4 3.19_p1 4.0_p6 4.1_p1 4.2_p3 4.3_p4 4.4_p5: Linux kernel fork with new features, including the -ck patchset (BFS), BFQ, TuxOnIce and UKSM
+sys-kernel/pf-sources 2.6.31_p9 2.6.32_p16 2.6.33_p4 2.6.34_p7 2.6.35_p11 2.6.36_p6 2.6.37_p6 2.6.38_p8 2.6.39_p4 3.0.7-r2 3.1.6-r2 3.2.7 3.3.6 3.4.6 3.5.4 3.6.12 3.7.5 3.8.2 3.9.5 3.10.1 3.11.4 3.12.4 3.13.3 3.14_p4 3.15_p5 3.16_p4 3.17_p4 3.19_p1 4.0_p6 4.1_p1 4.2_p3 4.3_p4 4.4_p6: Linux kernel fork with new features, including the -ck patchset (BFS), BFQ, TuxOnIce and UKSM
 sys-kernel/raspberrypi-image 4.0.4_pre-r20150523 4.1.17_pre-r20160209 4.1.17_p20160209 4.4.1_pre-r20160209: Raspberry PI precompiled kernel and modules
 sys-kernel/raspberrypi-sources 3.10.1_pre-r20130719 3.10.9999 3.12.9999 3.14.9999 3.18.9999 4.1.9999 4.4.9999: Raspberry PI kernel sources
 sys-kernel/rsbac-sources 3.14.28: RSBAC kernel sources (kernel series 3.14)
@@ -17045,7 +17045,7 @@ sys-libs/glibc 2.17 2.18-r1 2.19-r1 2.20-r2 2.21-r1 2.21-r2 2.22-r1 2.22-r2 2.23
 sys-libs/gpm 1.20.7-r2: Console-based mouse driver
 sys-libs/gwenhywfar 4.3.3 4.12.0_beta 4.13.1: A multi-platform helper library for other libraries
 sys-libs/itx-bind 0.1-r2: the bind library for interix
-sys-libs/kpmcore 2.0.0 2.0.1: Library for managing partitions
+sys-libs/kpmcore 2.0.0 2.0.1 2.1.0: Library for managing partitions
 sys-libs/ldb 1.1.24 1.1.25 1.1.26: An LDAP-like embedded database
 sys-libs/lib-compat 1.4.2-r1: Compatibility C++ and libc5 and libc6 libraries for very old programs
 sys-libs/lib-compat-loki 0.2-r1: Compatibility libc6 libraries for Loki games
