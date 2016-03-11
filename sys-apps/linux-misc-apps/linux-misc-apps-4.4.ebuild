@@ -53,13 +53,16 @@ S="${WORKDIR}/linux-${LINUX_VER}"
 TARGETS_SIMPLE=(
 	Documentation/accounting/getdelays.c
 	Documentation/laptops/dslm.c
-	Documentation/laptops/freefall.c
 	Documentation/networking/timestamping/timestamping.c
 	Documentation/watchdog/src/watchdog-simple.c
 	tools/cgroup/cgroup_event_listener.c
-	tools/lguest/lguest.c
+	tools/laptop/freefall/freefall.c
 	tools/vm/slabinfo.c
 	usr/gen_init_cpio.c
+	# Broken:
+	#tools/lguest/lguest.c # fails to compile
+	#tools/vm/page-types.c # page-types.c:(.text+0xe2b): undefined reference to `debugfs__mount', not defined anywhere
+	#tools/net/bpf_jit_disasm.c # /usr/include/x86_64-pc-linux-gnu/bfd.h:35:2: error: #error config.h must be included before this header
 )
 # tools/vm/page-types.c - broken, header path issue
 # tools/hv/hv_kvp_daemon.c - broken in 3.7 by missing linux/hyperv.h userspace
@@ -70,8 +73,12 @@ TARGETS_SIMPLE=(
 TARGET_MAKE_SIMPLE=(
 	Documentation/misc-devices/mei:mei-amt-version
 	tools/firewire:nosy-dump
-	tools/power/x86/turbostat:turbostat:../../../../turbostat
+	tools/iio:generic_buffer
+	tools/iio:iio_event_monitor
+	tools/iio:lsiio
+	tools/power/x86/turbostat:turbostat
 	tools/power/x86/x86_energy_perf_policy:x86_energy_perf_policy
+	tools/thermal/tmon:tmon
 )
 # tools/perf - covered by dev-utils/perf
 # tools/usb - testcases only
@@ -126,6 +133,7 @@ src_compile() {
 	#touch Module.symvers
 
 	# Now we can start building
+	append-cflags -I./tools/lib
 	for s in ${TARGETS_SIMPLE[@]} ; do
 		dir=$(dirname $s) src=$(basename $s) bin=${src%.c}
 		einfo "Building $s => $bin"
@@ -157,6 +165,8 @@ src_install() {
 		dosbin ${dir}/${binfile}
 	done
 
+	mv -f "${D}"/usr/sbin/{,iio_}generic_buffer
+
 	newconfd "${FILESDIR}"/freefall.confd freefall
 	newinitd "${FILESDIR}"/freefall.initd freefall
 	prune_libtool_files
@@ -166,6 +176,7 @@ pkg_postinst() {
 	echo
 	elog "The cpupower utility is maintained separately at sys-power/cpupower"
 	elog "The usbip utility is maintained separately at net-misc/usbip"
+	elog "The lguest utility no longer builds, and has been dropped."
 	elog "The hpfall tool has been renamed by upstream to freefall; update your config if needed"
 	if find /etc/runlevels/ -name hpfall ; then
 		ewarn "You must change hpfall to freefall in your runlevels!"
