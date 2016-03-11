@@ -4,4 +4,7 @@
 <maintainer type="person">
   <email>robbat2@gentoo.org</email>
 </maintainer>
+<use>
+  <flag name="usbip">Include USB/IP binaries to replace <pkg>net-misc/usbip</pkg></flag>
+</use>
 </pkgmetadata>
