@@ -4,9 +4,9 @@
 
 EAPI=6
 
-MY_PN="${PN/-/}"
+MY_PN="${PN/-/}-avh"
 COMP_PN="${PN}-completion"
-COMP_PV="0.5.1"
+COMP_PV="0.5.2"
 COMP_P="${COMP_PN}-${COMP_PV}"
 inherit bash-completion-r1
 

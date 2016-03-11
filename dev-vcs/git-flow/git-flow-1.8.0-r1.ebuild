@@ -10,7 +10,7 @@ COMP_PV="0.5.1"
 COMP_P="${COMP_PN}-${COMP_PV}"
 inherit eutils bash-completion-r1
 
-DESCRIPTION="Git extensions to provide high-level repository operations for Vincent Driessen's branching model"
+DESCRIPTION="Git extensions to provide high-level repository operations"
 HOMEPAGE="https://github.com/petervanderdoes/gitflow"
 SRC_URI="https://github.com/petervanderdoes/${MY_PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
 https://github.com/petervanderdoes/${COMP_PN}/archive/${COMP_PV}.tar.gz -> ${COMP_P}.tar.gz"
