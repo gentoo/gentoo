@@ -3,11 +3,12 @@ DEPEND=app-arch/unzip virtual/latex-base >=sys-apps/texinfo-4.2-r5
 DESCRIPTION=LaTeX package for source code syntax highlighting
 EAPI=5
 HOMEPAGE=https://github.com/gpoore/minted
+IUSE=doc
 KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
 LICENSE=BSD
 RDEPEND=dev-texlive/texlive-latexextra dev-python/pygments virtual/latex-base
 SLOT=0
 SRC_URI=https://github.com/gpoore/minted/archive/v2.1.tar.gz -> minted-2.1.tar.gz
-_eclass_exported_funcs=pkg_postrm:latex-package pkg_postinst:latex-package src_unpack:base src_prepare:base src_configure:base src_compile:latex-package src_install:-
+_eclass_exported_funcs=pkg_postrm:latex-package pkg_postinst:latex-package src_unpack:base src_prepare:- src_configure:base src_compile:latex-package src_install:-
 _eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	9d81603248f2ba3ec59124320d123e5e	latex-package	d75dd1e3099f9f8c35469a877b3fe082	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
-_md5_=a651d30f70ab871fbeb57bb08043ae50
+_md5_=12659bf73fe213b8767b8c7342f104c4
