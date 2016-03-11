@@ -6858,7 +6858,7 @@ dev-python/cachetools 1.1.0 1.1.5: Extensible memoizing collections and decorato
 dev-python/cairocffi 0.7.2: CFFI-based drop-in replacement for Pycairo
 dev-python/cangjie 1.1 1.2: The Python bindings to libcangjie
 dev-python/capturer 2.1 2.1.1: Easily capture stdout/stderr of the current process and subprocesses
-dev-python/carbon 0.9.12-r1 0.9.13 0.9.14: Backend data caching and persistence daemon for Graphite
+dev-python/carbon 0.9.12-r1 0.9.13 0.9.14 0.9.15: Backend data caching and persistence daemon for Graphite
 dev-python/carrot 0.10.7-r1: AMQP Messaging Framework for Python
 dev-python/cassandra-driver 2.7.2: DataStax python driver for Apache Cassandra
 dev-python/castellan 0.2.1: Generic Key Manager interface for OpenStack
