@@ -223,7 +223,6 @@ src_prepare() {
 		"${FILESDIR}"/${PN}-1.2.17-fix_paths_for_apparmor.patch \
 		"${FILESDIR}"/${P}-avoid_deprecated_pc_file.patch
 
-
 	[[ -n ${BACKPORTS} ]] &&
 		EPATCH_FORCE=yes EPATCH_SUFFIX="patch" \
 			EPATCH_SOURCE="${WORKDIR}/patches" epatch
