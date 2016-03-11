@@ -30,6 +30,16 @@
 
 #--- END OF EXAMPLES ---
 
+# Michael Palimaka <kensington@gentoo.org> (11 Mar 2016)
+# Fails to build. Use version included in dev-texlive/texlive-science instead.
+# Masked for removal in 30 days. Bug 573780.
+dev-tex/xymtex
+
+# Michael Palimaka <kensington@gentoo.org> (11 Mar 2016)
+# Fails to build. Use version included in dev-texlive/texlive-latexextra instead.
+# Masked for removal in 30 days. Bug 574032.
+dev-tex/fundus
+
 # Alexandre Rostovtsev <tetromino@gentoo.org> (10 Mar 2016)
 # Masking until we figure out what to do about bug #576930
 =gnome-base/gnome-extra-apps-3.18.0-r2
