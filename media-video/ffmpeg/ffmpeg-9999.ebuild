@@ -370,7 +370,7 @@ multilib_src_configure() {
 	# We need to do this so that features of that CPU will be better used
 	# If they contain an unknown CPU it will not hurt since ffmpeg's configure
 	# will just ignore it.
-	for i in $(get-flag mcpu) $(get-flag march) $(get-flag mtune) ; do
+	for i in $(get-flag mcpu) $(get-flag march) ; do
 		[[ ${i} = native ]] && i="host" # bug #273421
 		myconf+=( --cpu=${i} )
 		break
