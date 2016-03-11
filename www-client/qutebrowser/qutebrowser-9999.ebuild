@@ -1,17 +1,17 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
-PYTHON_COMPAT=( python3_4 )
+PYTHON_COMPAT=( python{3_4,3_5} )
 
-inherit distutils-r1 eutils fdo-mime
+inherit gnome2-utils distutils-r1 eutils fdo-mime
 
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://github.com/The-Compiler/qutebrowser.git"
 	inherit git-r3
 else
-	SRC_URI="https://github.com/The-Compiler/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/The-Compiler/${PN}/releases/download/v${PV}/${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
 fi
 
@@ -31,6 +31,7 @@ RDEPEND="${COMMON_DEPEND}
 	>=dev-python/pygments-2.0.2[${PYTHON_USEDEP}]
 	>=dev-python/pypeg2-2.15.1[${PYTHON_USEDEP}]
 	dev-python/PyQt5[${PYTHON_USEDEP},gui,network,printsupport,webkit,widgets]
+	dev-python/sip[${PYTHON_USEDEP}]
 	>=dev-python/pyyaml-3.11[${PYTHON_USEDEP}]
 	gstreamer? ( dev-qt/qtwebkit:5[gstreamer] )
 "
@@ -54,15 +55,21 @@ python_install_all() {
 	dodoc {CHANGELOG,CONTRIBUTING,FAQ,README}.asciidoc
 
 	domenu ${PN}.desktop
-	doicon icons/${PN}.svg
+	doicon -s scalable icons/${PN}.svg
 
 	distutils-r1_python_install_all
 }
 
+pkg_preinst() {
+	gnome2_icon_savelist
+}
+
 pkg_postinst() {
 	fdo-mime_desktop_database_update
+	gnome2_icon_cache_update
 }
 
 pkg_postrm() {
 	fdo-mime_desktop_database_update
+	gnome2_icon_cache_update
 }
