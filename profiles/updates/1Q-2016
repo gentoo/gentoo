@@ -29,3 +29,4 @@ move dev-perl/net-sftp dev-perl/Net-SFTP
 move dev-perl/net-ssh-perl dev-perl/Net-SSH-Perl
 move dev-perl/DateManip dev-perl/Date-Manip
 move dev-perl/wxperl dev-perl/Wx
+slotmove sys-devel/binutils 0 2.25.1
