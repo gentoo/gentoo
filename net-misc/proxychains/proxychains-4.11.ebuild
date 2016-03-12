@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -11,16 +11,16 @@ MY_P=${MY_PN}-${PV}
 
 DESCRIPTION="force any tcp connections to flow through a proxy (or proxy chain)"
 HOMEPAGE="https://github.com/rofl0r/proxychains-ng/"
-SRC_URI="https://github.com/rofl0r/${MY_PN}/archive/v${PV}.tar.gz -> ${MY_P}.tar.gz"
+SRC_URI="https://github.com/rofl0r/${MY_PN}/releases/download/v${PV}/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ppc ~sparc x86"
+KEYWORDS="~amd64 ~ppc ~sparc ~x86"
 
 S=${WORKDIR}/${MY_P}
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-makefile.patch
+	epatch "${FILESDIR}"/${PN}-4.10-makefile.patch
 	sed -i "s/^\(LDSO_SUFFIX\).*/\1 = so.${PV}/" Makefile || die
 	tc-export CC
 }
