@@ -15,6 +15,7 @@ PATCHES=(
 	"${FILESDIR}"/8-stable/50-rsyslog-8.15.0-imtcp-tls-basic-vg-test-workaround.patch
 	"${FILESDIR}"/8-stable/50-rsyslog-8.15.0-imfile-readmode2-vg-test-workaround.patch
 	"${FILESDIR}"/8-stable/50-rsyslog-8.16.0-fix-queue-engine-issue-262.patch
+	"${FILESDIR}"/8-stable/50-rsyslog-8.16.0-fix-leap-year-handling.patch
 )
 
 if [[ ${PV} == "9999" ]]; then
