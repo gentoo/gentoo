@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201603-10">
+  <title>QtGui: Multiple vulnerabilities </title>
+  <synopsis>Multiple vulnerabilities have been found in QtGui allowing remote
+    attackers to execute arbitrary code or cause Denial of Service.
+  </synopsis>
+  <product type="ebuild"></product>
+  <announced>March 12, 2016</announced>
+  <revised>March 12, 2016: 2</revised>
+  <bug>546174</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-qt/qtgui" auto="yes" arch="*">
+      <unaffected range="ge">5.4.1-r1</unaffected>
+      <unaffected range="rge">4.8.6-r4</unaffected>
+      <unaffected range="rge">4.8.7</unaffected>
+      <vulnerable range="lt">5.4.1-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>QtGui is the GUI module and platform plugins for the Qt framework</p>
+  </background>
+  <description>
+    <p>Multiple buffer overflow vulnerabilities have been discovered in QtGui. 
+      It is possible for remote attackers to construct specially crafted BMP,
+      ICO, or GIF images that lead to buffer overflows. After successfully
+      overflowing the buffer the remote attacker can then cause a Denial of
+      Service or execute arbitrary code.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could possibly execute arbitrary code or cause Denial
+      of Service.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known work around at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All QtGui 4.8 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-qt/qtgui-4.8.6-r4"
+    </code>
+    
+    <p>All QtGui 5.4 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-qt/qtgui-5.4.1-r1"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1858">CVE-2015-1858</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1859">CVE-2015-1859</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1860">CVE-2015-1860</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 31 Dec 2015 05:00:23 +0000">
+    BlueKnight
+  </metadata>
+  <metadata tag="submitter" timestamp="Sat, 12 Mar 2016 12:25:16 +0000">b-man</metadata>
+</glsa>
