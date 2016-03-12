@@ -1,9 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
-USE_RUBY="ruby19 ruby20 ruby21"
+USE_RUBY="ruby20 ruby21 ruby22"
 
 RUBY_FAKEGEM_TASK_DOC=""
 
@@ -16,15 +16,15 @@ HOMEPAGE="https://github.com/rails/sprockets-rails"
 SRC_URI="https://github.com/rails/sprockets-rails/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
-SLOT="$(get_version_component_range 1-2)"
+SLOT="$(get_version_component_range 1)"
 KEYWORDS="~amd64 ~arm ~x86"
 
 IUSE="test"
 
 ruby_add_rdepend "
-	>=dev-ruby/actionpack-3.0:*
-	>=dev-ruby/activesupport-3.0:*
-	>=dev-ruby/sprockets-2.8:* <dev-ruby/sprockets-4:*"
+	>=dev-ruby/actionpack-4.0:*
+	>=dev-ruby/activesupport-4.0:*
+	dev-ruby/sprockets:3"
 
 ruby_add_bdepend "
 	test? (
