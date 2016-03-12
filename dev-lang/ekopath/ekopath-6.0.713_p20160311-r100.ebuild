@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit versionator multilib pax-utils
+inherit pax-utils versionator
 
 MY_PV=$(get_version_component_range 1-3)
 MY_P=${PN}-${MY_PV}
