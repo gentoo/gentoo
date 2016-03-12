@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -16,7 +16,7 @@ IUSE="tk mysql"
 S="${WORKDIR}/mh"
 
 RDEPEND="dev-lang/perl
-	tk? ( dev-perl/perl-tk
+	tk? ( dev-perl/Tk
 		dev-perl/Tk-CursorControl )
 	mysql? ( dev-perl/DBD-mysql )
 	|| ( app-accessibility/festival
