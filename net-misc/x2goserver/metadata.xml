@@ -7,6 +7,6 @@
 	</maintainer>
 	<longdescription>The X2Go server</longdescription>
 	<use>
-		<flag name="fuse">Use <pkg>sys-fs/sshfs-fuse</pkg> to allow shared folders</flag>
+		<flag name="fuse">Use <pkg>sys-fs/sshfs</pkg> to allow shared folders</flag>
 	</use>
 </pkgmetadata>
