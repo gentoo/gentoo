@@ -16,7 +16,7 @@ KEYWORDS="amd64 ppc x86"
 # This warrants USE examples
 IUSE=""
 
-DEPEND="dev-perl/perl-tk
+DEPEND="dev-perl/Tk
 	dev-perl/Date-Manip
 	dev-perl/HTML-Parser
 	dev-perl/Finance-YahooQuote
