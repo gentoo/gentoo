@@ -11805,7 +11805,7 @@ media-fonts/monafont 2.90-r2: Japanese bitmap and TrueType fonts suitable for br
 media-fonts/monoid 0.60 0.61: Open source coding font
 media-fonts/montecarlo 0: monospace font, created by programmers, for programmers
 media-fonts/mplus-fonts 2.2.4: M+ Japanese bitmap fonts
-media-fonts/mplus-outline-fonts 0_pre055 0_pre056 0_pre059 0_pre060: M+ Japanese outline fonts
+media-fonts/mplus-outline-fonts 0_pre059 0_pre060: M+ Japanese outline fonts
 media-fonts/nanum 3.0: The Nanum Korean fonts distributed by Naver
 media-fonts/nanumfont 2.0 2.0-r1: Korean monospace font distributed by NHN
 media-fonts/nepali-fonts 1-r1: a collection of fonts for Nepali users
@@ -14619,7 +14619,7 @@ net-misc/polly 0.93.11 0.93.12: twitter client designed for multiple columns of 
 net-misc/portfwd 0.29: Port Forwarding Daemon
 net-misc/portspoof 1.1 1.3 9999: return SYN+ACK for every port connection attempt
 net-misc/pps-tools 0.0.20110710 0.0.20120407: User-space tools for LinuxPPS
-net-misc/proxychains 4.8.1 4.10: force any tcp connections to flow through a proxy (or proxy chain)
+net-misc/proxychains 4.10 4.11: force any tcp connections to flow through a proxy (or proxy chain)
 net-misc/proxytunnel 1.9.1-r1: Connect stdin and stdout to a server somewhere on the network, through a standard HTTPS proxy
 net-misc/ps3mediaserver 1.82.0 1.90.0 1.90.1: DLNA compliant UPNP server for streaming media to Playstation 3
 net-misc/pssh 2.3.1-r1: PSSH provides parallel versions of OpenSSH and related tools
@@ -14951,7 +14951,7 @@ net-proxy/squid 3.5.6 3.5.7 3.5.8 3.5.9 3.5.10 3.5.11 3.5.12 3.5.14 3.5.15: A fu
 net-proxy/squidclamav 6.8 6.10: HTTP Antivirus for Squid based on ClamAv and ICAP
 net-proxy/squidguard 1.4-r4 1.5_beta-r1: Combined filter, redirector and access controller plugin for Squid
 net-proxy/squirm 1.26-r1: A redirector for Squid
-net-proxy/sshuttle 0.61-r3 0.73 0.75 0.76: Transparent proxy server that works as a poor man's VPN using ssh
+net-proxy/sshuttle 0.61-r3 0.73 0.75 0.76 0.77.2: Transparent proxy server that works as a poor man's VPN using ssh
 net-proxy/tayga 0.9.2: out-of-kernel stateless NAT64 implementation based on TUN
 net-proxy/tinyproxy 1.8.3-r3: A lightweight HTTP/SSL proxy
 net-proxy/torsocks 1.2-r2 2.1.0: Use most socks-friendly applications with Tor
@@ -16397,7 +16397,7 @@ sys-apps/miscfiles 1.4.2-r1 1.5 1.5-r1: Miscellaneous files
 sys-apps/mlocate 0.26-r1: Merging locate is an utility to index and quickly search for files
 sys-apps/modutils 2.4.27-r1: Standard kernel module utilities for linux-2.4 and older
 sys-apps/more 2.12r: Primitive text file viewer
-sys-apps/moreutils 0.50 0.51 0.52 0.53 0.54 0.55 0.56 0.57: a growing collection of the unix tools that nobody thought to write thirty years ago
+sys-apps/moreutils 0.50 0.51 0.52 0.53 0.54 0.55 0.56 0.57 0.58: a growing collection of the unix tools that nobody thought to write thirty years ago
 sys-apps/most 5.0.0a-r1: Paging program that displays, one windowful at a time, the contents of a file
 sys-apps/mount-gtk 1.4.2: GTK+ based UDisks2 frontend
 sys-apps/mouseemu 0.12 0.15: Emulates scrollwheel, right- & left-click for one-button mice/touchpads
@@ -17177,7 +17177,7 @@ sys-process/minit 0.9.1 0.10: a small yet feature-complete init
 sys-process/nmon 15g 15h: Nigel's performance MONitor for CPU, memory, network, disks, etc...
 sys-process/numactl 2.0.9 2.0.10-r2 2.0.11: Utilities and libraries for NUMA systems
 sys-process/numad 0.5 0.5-r1 0.5-r2 9999: The NUMA daemon that manages application locality
-sys-process/parallel 20150522 20150622 20150822 20151222: A shell tool for executing jobs in parallel locally or on remote machines
+sys-process/parallel 20150522 20150622 20150822 20151222 20160222: A shell tool for executing jobs in parallel locally or on remote machines
 sys-process/pidof-bsd 20050501-r4: pidof(1) utility for *BSD
 sys-process/pkill-darwin 1.0: pgrep(1) and pkill(1) for Darwin
 sys-process/prll 0.6.2: A utility for parallelizing execution of shell functions
