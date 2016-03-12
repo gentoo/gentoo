@@ -1,0 +1,36 @@
+# $Id$
+
+# System user
+user = mogile
+# These are set inside the Gentoo conf.d/mogilefsd
+#pidfile = /var/run/mogile/mogilefsd.pid
+#daemonize = 1
+
+# Database settings
+db_dsn	= DBI:mysql:mogilefs
+db_user	= mogile
+# You must insert your password here!
+db_pass	= __PASSWORD__
+
+# Network settings
+#conf_port = 7001
+#listen = 10.0.0.1:7001, 
+
+# Storage
+#mog_root = /mnt/mogilefs
+
+# Plugins
+#plugins = ...
+
+# Tuning knobs
+#query_jobs = 20
+#delete_jobs = 1
+#replicate_jobs = 1
+#monitor_jobs = 1
+#reaper_jobs = 1
+#min_free_space = 100
+#max_disk_age = 5
+#node_timeout = 2
+#old_repl_compat = 1
+#default_mindevcount = 2
+#no_unreachable_tracking = 1
