@@ -1,13 +1,13 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 inherit elisp
 
 DESCRIPTION="Extension for nxml-mode with Gentoo-specific schemas"
-HOMEPAGE="https://dev.gentoo.org/~flameeyes/nxml-gentoo-schemas/"
+HOMEPAGE="https://gitweb.gentoo.org/proj/nxml-gentoo-schemas.git/"
 SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.tar.xz"
 
 LICENSE="HPND"

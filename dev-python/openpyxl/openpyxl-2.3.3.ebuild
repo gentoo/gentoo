@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -17,7 +17,10 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86 ~amd64-linux ~x86-linux"
 IUSE="test"
 
-RDEPEND="dev-python/jdcal[${PYTHON_USEDEP}]"
+RDEPEND="
+	dev-python/jdcal[${PYTHON_USEDEP}]
+	dev-python/et_xmlfile[${PYTHON_USEDEP}]
+"
 DEPEND="
 	test? (
 		${RDEPEND}
