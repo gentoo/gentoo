@@ -1,0 +1,30 @@
+From e451b03e8c21ad23cb1abfd6dd68b6d1e8188121 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Caol=C3=A1n=20McNamara?= <caolanm@redhat.com>
+Date: Mon, 7 Mar 2016 13:19:55 +0000
+Subject: gtktiledviewer needs gtk3 not gtk2
+
+Change-Id: Iede2008139cb570ff65202762e92f6694548a065
+
+diff --git a/Repository.mk b/Repository.mk
+index e9cd89a..423d58b 100644
+--- a/Repository.mk
++++ b/Repository.mk
+@@ -68,13 +68,13 @@ $(eval $(call gb_Helper_register_executables,NONE, \
+         svptest \
+         svpclient \
+         pixelctl ) \
+-	$(if $(and $(ENABLE_GTK), $(filter LINUX %BSD SOLARIS,$(OS))), tilebench) \
++	$(if $(and $(ENABLE_GTK3), $(filter LINUX %BSD SOLARIS,$(OS))), tilebench) \
+ 	$(if $(filter LINUX MACOSX SOLARIS WNT %BSD,$(OS)),icontest \
+ 	    outdevgrind) \
+ 	vcldemo \
+ 	tiledrendering \
+     mtfdemo \
+-	$(if $(and $(ENABLE_GTK), $(filter LINUX %BSD SOLARIS,$(OS))), gtktiledviewer) \
++	$(if $(and $(ENABLE_GTK3), $(filter LINUX %BSD SOLARIS,$(OS))), gtktiledviewer) \
+ ))
+ 
+ $(eval $(call gb_Helper_register_executables_for_install,SDK,sdk, \
+-- 
+cgit v0.10.2
+
