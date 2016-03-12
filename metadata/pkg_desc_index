@@ -3418,7 +3418,7 @@ dev-haskell/maccatcher 2.1.5: Obtain the host MAC address on *NIX and Windows
 dev-haskell/markdown-unlit 0.2.0.1: Literate Haskell support for Markdown
 dev-haskell/math-functions 0.1.3.0 0.1.5.2: Special functions and Chebyshev polynomials
 dev-haskell/memory 0.7 0.10: memory and related abstraction stuff
-dev-haskell/mersenne-random-pure64 0.2.0.3 0.2.0.4: Generate high quality pseudorandom numbers purely using a Mersenne Twister
+dev-haskell/mersenne-random-pure64 0.2.0.5: Generate high quality pseudorandom numbers purely using a Mersenne Twister
 dev-haskell/mime-mail 0.4.2.1 0.4.4.1 0.4.5.2 0.4.6 0.4.6.2 0.4.8.2 0.4.9 0.4.11: Compose MIME email messages
 dev-haskell/mime-types 0.1.0.3 0.1.0.4 0.1.0.5 0.1.0.6: Basic mime-type handling types and functions
 dev-haskell/minisat 0.1.2: A Haskell bundle of the Minisat SAT solver
@@ -16470,7 +16470,7 @@ sys-apps/stroke 0.1.3: A powerful tool to change file timestamps (including ctim
 sys-apps/superiotool 6637 99999999: util to detect Super I/O chips and functionality
 sys-apps/syscriptor 1.5.15: display misc information about your hardware
 sys-apps/syslog-notify 0.2: Notifications for syslog entries via libnotify
-sys-apps/systemd 218-r5 226-r2 228-r1 229 9999: System and service manager for Linux
+sys-apps/systemd 218-r5 226-r2 228-r1 229 229-r100 9999: System and service manager for Linux
 sys-apps/systemd-readahead 216: Split of readahead systemd implementation
 sys-apps/systemd-sysv-utils 208 212 215 216 217: sysvinit compatibility symlinks and manpages
 sys-apps/sysvinit 2.88-r7 2.88-r9: /sbin/init - parent of all processes
