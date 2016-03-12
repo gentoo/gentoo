@@ -6,7 +6,6 @@
 		<name>Gentoo KDE Project</name>
 	</maintainer>
 	<use>
-		<flag name="processui">Enables the Interface to view process libs.</flag>
 		<flag name="detailedmemory">Enable display of detailed memory information using <pkg>dev-qt/qtwebkit</pkg>.</flag>
 	</use>
 </pkgmetadata>
