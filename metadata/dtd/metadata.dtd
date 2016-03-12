@@ -81,9 +81,10 @@
   <!ATTLIST longdescription restrict CDATA #IMPLIED >
   <!ATTLIST flag restrict CDATA #IMPLIED >
 
-
-
 <!-- standard parts -->
-<!ELEMENT email (#PCDATA) ><!-- an email address -->
-<!ELEMENT name (#PCDATA) ><!-- the name of a person (maintainer, contributor)-->
-<!ELEMENT description (#PCDATA) ><!-- A description of a maintainer or change-->
+<!-- an email address -->
+<!ELEMENT email (#PCDATA) >
+<!-- the name of a person (maintainer, contributor) -->
+<!ELEMENT name (#PCDATA) >
+<!-- A description of a maintainer or change -->
+<!ELEMENT description (#PCDATA) >
