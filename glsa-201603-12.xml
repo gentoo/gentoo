@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201603-12">
+  <title>FlightGear, SimGear: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in FlightGear and SimGear
+    allowing remote attackers to cause Denial of Service and possibly execute
+    arbitrary code.
+  </synopsis>
+  <product type="ebuild">flightgear, simgear</product>
+  <announced>March 12, 2016</announced>
+  <revised>March 12, 2016: 1</revised>
+  <bug>426502</bug>
+  <bug>468106</bug>
+  <access>remote</access>
+  <affected>
+    <package name="games-simulation/flightgear" auto="yes" arch="*">
+      <unaffected range="ge">3.4.0</unaffected>
+      <vulnerable range="lt">3.4.0</vulnerable>
+    </package>
+    <package name="games-simulation/simgear" auto="yes" arch="*">
+      <unaffected range="ge">3.4.0</unaffected>
+      <vulnerable range="lt">3.4.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>FlightGear is an open-source flight simulator.  It supports a variety of
+      popular platforms (Windows, Mac, Linux, etc.) and is developed by skilled
+      volunteers from around the world.  Source code for the entire project is
+      available and licensed under the GNU General Public License.
+    </p>
+    
+    <p>SimGear is a set of open-source libraries designed to be used as
+      building blocks for quickly assembling 3d simulations, games, and
+      visualization applications.
+    </p>
+  </background>
+  <description>
+    <p>Multiple format string vulnerabilities in FlightGear and SimGear allow
+      user-assisted remote attackers to cause a denial of service and possibly
+      execute arbitrary code via format string specifiers in certain data chunk
+      values in an aircraft xml model.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Remote attackers could possibly execute arbitrary code or cause Denial
+      of Service.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Flightgear users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=games-simulation/flightgear-3.4.0"
+    </code>
+    
+    <p>All Simgear users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=games-simulation/simgear-3.4.0"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2090">CVE-2012-2090</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2091">CVE-2012-2091</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 16 May 2015 06:03:32 +0000">
+    pinkbyte
+  </metadata>
+  <metadata tag="submitter" timestamp="Sat, 12 Mar 2016 23:11:04 +0000">b-man</metadata>
+</glsa>
