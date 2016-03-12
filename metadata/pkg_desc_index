@@ -9184,7 +9184,7 @@ dev-tcltk/tcl-mccp 0.6: mccp extension to TCL
 dev-tcltk/tcl3d 0.4.0: Tcl bindings to OpenGL and other 3D libraries
 dev-tcltk/tcllib 1.15-r2 1.16: Tcl Standard Library
 dev-tcltk/tclperl 3.2-r1: Perl package for Tcl
-dev-tcltk/tclpython 4.1-r4 4.1-r5 4.1-r6: Python package for Tcl
+dev-tcltk/tclpython 4.1-r4 4.1-r6: Python package for Tcl
 dev-tcltk/tclreadline 2.1.0-r4: Readline extension to TCL
 dev-tcltk/tclx 8.4.1: A set of extensions to TCL
 dev-tcltk/tclxml 3.2-r2: Pure Tcl implementation of an XML parser
