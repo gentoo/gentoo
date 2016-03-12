@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -12,7 +12,7 @@ MY_PN="CouchDB"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Python library for working with CouchDB"
-HOMEPAGE="https://code.google.com/p/couchdb-python/ https://pypi.python.org/pypi/CouchDB"
+HOMEPAGE="https://github.com/djc/couchdb-python https://pypi.python.org/pypi/CouchDB"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="BSD"
@@ -20,9 +20,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="doc"
 
-DEPEND="
-	dev-python/setuptools[${PYTHON_USEDEP}]
-	dev-python/sphinx[${PYTHON_USEDEP}]"
+DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
+	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )"
 
 S=${WORKDIR}/${MY_P}
 
@@ -31,10 +30,8 @@ S=${WORKDIR}/${MY_P}
 # instance.
 RESTRICT=test
 
-PATCHES=( "${FILESDIR}/${PV}-exec-compat.patch" )
-
 python_compile_all() {
-	esetup.py build_sphinx
+	use doc && esetup.py build_sphinx
 }
 
 python_test() {
