@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -38,11 +38,6 @@ python_prepare_all() {
 python_install_all() {
 	distutils-r1_python_install_all
 
-	# Create cache directory for revdep-rebuild
-	keepdir /var/cache/revdep-rebuild
-	use prefix || fowners root:0 /var/cache/revdep-rebuild
-	fperms 0700 /var/cache/revdep-rebuild
-
 	# remove on Gentoo Prefix platforms where it's broken anyway
 	if use prefix; then
 		elog "The revdep-rebuild command is removed, the preserve-libs"
@@ -55,6 +50,10 @@ python_install_all() {
 }
 
 pkg_postinst() {
+	# Create cache directory for revdep-rebuild
+	mkdir -p -m 0755 "${EROOT%/}"/var/cache
+	mkdir -p -m 0700 "${EROOT%/}"/var/cache/revdep-rebuild
+
 	# Only show the elog information on a new install
 	if [[ ! ${REPLACING_VERSIONS} ]]; then
 		elog
