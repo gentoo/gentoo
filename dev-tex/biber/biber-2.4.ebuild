@@ -22,6 +22,7 @@ RDEPEND=">=dev-lang/perl-5.16
 	dev-perl/Business-ISBN
 	dev-perl/Business-ISMN
 	dev-perl/Business-ISSN
+	dev-perl/Class-Accessor
 	dev-perl/Data-Compare
 	dev-perl/Data-Dump
 	dev-perl/Data-Uniqid
