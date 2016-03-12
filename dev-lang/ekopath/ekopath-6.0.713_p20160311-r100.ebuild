@@ -27,9 +27,7 @@ RDEPEND=""
 
 RESTRICT="bindist mirror"
 
-QA_PREBUILT="
-	opt/${MY_P}/lib/${MY_PV}/x8664/*
-	opt/${MY_P}/bin/*"
+QA_PREBUILT="opt/${MY_P}/*"
 
 S="${WORKDIR}"
 
