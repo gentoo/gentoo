@@ -1190,7 +1190,7 @@ app-emacs/muse 3.20: Muse-mode is similar to EmacsWikiMode, but more focused on 
 app-emacs/nagios-mode 0.3: Major mode for editing Nagios configuration files
 app-emacs/navi2ch 1.8.3-r1 1.8.4: A navigator for the Japanese textboard 2ch
 app-emacs/nxml-docbook5-schemas 20080922: Add support for DocBook 5 schemas to NXML
-app-emacs/nxml-gentoo-schemas 20111129 20150428 20160125: Extension for nxml-mode with Gentoo-specific schemas
+app-emacs/nxml-gentoo-schemas 20160125 20160312: Extension for nxml-mode with Gentoo-specific schemas
 app-emacs/nxml-libvirt-schemas 0.9.7 1.2.1: Extension for nxml-mode with libvirt schemas
 app-emacs/nxml-svg-schemas 1.1.20081123: Extension for nxml-mode with SVG 1.1 schemas
 app-emacs/ocaml-mode 3.12.1 3.12.1-r1 4.00.1: Emacs mode for OCaml
@@ -4233,7 +4233,7 @@ dev-java/swt 3.5.2 3.7.1 3.7.2 3.7.2-r1 3.8.2 3.8.2-r1 4.2 4.2-r1 4.2-r2: GTK ba
 dev-java/tablelayout 1.0: Layout manager that makes creating user interfaces fast and easy
 dev-java/tagsoup 1.2.1: A SAX-compliant parser written in Java
 dev-java/tapestry 3.0.4-r2: Dynamic, robust, highly scalable web framework in Java
-dev-java/telnetd 2.0: A telnet daemon for use in java applications
+dev-java/telnetd 2.0 2.0-r1: A telnet daemon for use in Java applications
 dev-java/testng 6.9.10: Testing framework inspired by JUnit and NUnit with new features
 dev-java/texhyphj 1.1: Re-implementation of Franklin Mark Liang's hyphenation algorithm in Java
 dev-java/tijmp 0.8: Java Memory Profiler for java 1.6+
@@ -6869,7 +6869,7 @@ dev-python/cddb-py 1.4-r1: CDDB Module for Python
 dev-python/celementtree 1.0.5-r2: The cElementTree module is a C implementation of the ElementTree API
 dev-python/celery 3.1.17 3.1.18 3.1.18-r1 3.1.19 3.1.20: Asynchronous task queue/job queue based on distributed message passing
 dev-python/cement 2.0.2 2.6.2: CLI Application Framework for Python
-dev-python/certifi 2015.9.6.2 2015.11.20 2015.11.20.1: Python package for providing Mozilla's CA Bundle
+dev-python/certifi 2015.9.6.2 2015.11.20 2015.11.20.1 2016.2.28: Python package for providing Mozilla's CA Bundle
 dev-python/cffi 1.2.1 1.4.2 1.5.0 1.5.2: Foreign Function Interface for Python calling C code
 dev-python/cfgio 0.1.2: Python library for reading and writing configuration file formats found on a *nix systems
 dev-python/cfgparse 1.3-r1: Config File parser for Python
@@ -7400,7 +7400,7 @@ dev-python/oct2py 1.3.0-r1 3.3.3: Python to GNU Octave bridge
 dev-python/odfpy 0.9.6-r1 1.3.1 1.3.2: Python API and tools to manipulate OpenDocument files
 dev-python/odo 0.3.2 0.3.3 0.4.0 0.4.2: Data migration in python
 dev-python/oosuite 0.45 0.50: OpenOpt suite of Python modules for numerical optimization
-dev-python/openpyxl 2.2.3 2.2.4 2.2.6 2.3.0 9999: Pure python reader and writer of Excel OpenXML files
+dev-python/openpyxl 2.2.3 2.3.0 2.3.3 9999: Pure python reader and writer of Excel OpenXML files
 dev-python/openstack-nose-plugin 0.11-r2: openstack run_tests.py style output for nosetests
 dev-python/optcomplete 1.2-r1: Shell completion self-generator for Python
 dev-python/ordereddict 1.1: A drop-in substitute for Py2.7's new collections.OrderedDict that works in Python 2.4-2.6.
@@ -7591,7 +7591,7 @@ dev-python/pygene 0.2.1-r1: Simple python genetic algorithms programming library
 dev-python/pygeocoder 1.2.5: Python wrapper for Google Geocoding API V3
 dev-python/pygit2 0.20.3 0.21.4-r1 0.22.1 0.23.0 0.23.3: Python bindings for libgit2
 dev-python/pyglet 1.1.4-r2 1.2.2 1.2.3 1.2.4: Cross-platform windowing and multimedia library for Python
-dev-python/pygments 2.0.2-r2 2.1 2.1.1: Pygments is a syntax highlighting package written in Python
+dev-python/pygments 2.0.2-r2 2.1 2.1.1 2.1.3: Pygments is a syntax highlighting package written in Python
 dev-python/pygobject 2.28.6-r55 3.14.0 3.16.2 3.18.2: GLib's GObject library bindings for Python
 dev-python/pygoocanvas 0.14.1-r1: GooCanvas python bindings
 dev-python/pygooglevoice 0.5-r2: Python Bindings for the Google Voice API
