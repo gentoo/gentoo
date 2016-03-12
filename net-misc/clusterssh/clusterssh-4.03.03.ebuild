@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -26,7 +26,7 @@ RDEPEND="
 	dev-perl/Test-Trap
 	dev-perl/Test-DistManifest
 	dev-perl/Try-Tiny
-	dev-perl/perl-tk
+	dev-perl/Tk
 	dev-perl/Config-Simple
 	dev-perl/X11-Protocol
 	dev-perl/XML-Simple
