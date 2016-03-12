@@ -4,7 +4,7 @@
 
 EAPI=5
 
-USE_RUBY="ruby20 ruby21 ruby22"
+USE_RUBY="ruby20 ruby21 ruby22 ruby23"
 
 RUBY_FAKEGEM_RECIPE_TEST="rspec"
 RUBY_FAKEGEM_TASK_DOC="yard"
@@ -27,12 +27,25 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE=""
 
-ruby_add_bdepend "doc? ( || ( dev-ruby/maruku dev-ruby/rdiscount dev-ruby/bluecloth dev-ruby/kramdown ) )
-	test? ( dev-ruby/rack )"
+ruby_add_bdepend "doc? ( || ( dev-ruby/maruku dev-ruby/rdiscount dev-ruby/bluecloth dev-ruby/kramdown ) )"
 
 USE_RUBY="ruby20 ruby21" ruby_add_bdepend "test? ( >=dev-ruby/ruby-gettext-2.3.8 )"
 
 all_ruby_prepare() {
 	sed -i -e '/[Bb]undler/ s:^:#:' spec/spec_helper.rb || die
-	sed -i -e "s/require 'bundler'; rescue LoadError//" spec/cli/server_spec.rb || die
+
+	# Avoid specs that make assumptions on load ordering that are not
+	# true for us. This may be related to how we install in Gentoo. This
+	# also drops a test requirement on dev-ruby/rack.
+	rm -f spec/cli/server_spec.rb || die
+}
+
+each_ruby_prepare() {
+	case ${RUBY} in
+		*ruby23)
+			# Avoid possible brittle test
+			# https://github.com/lsegal/yard/issues/927
+			sed -i -e '/should find lone comments/,/^    end/ s:^:#:' spec/parser/ruby/ruby_parser_spec.rb || die
+			;;
+	esac
 }
