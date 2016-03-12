@@ -26,6 +26,9 @@
 			used. You need this enabled on the server, but you might want to
 			disable it on the client.
 		</flag>
+		<flag name="snorenotify">
+			Support for snore notification framework.
+		</flag>
 		<flag name="webkit">
 			Use qt-webkit rendering engine for showing URL thumbnails and
 			for other things that need web browser integration.
