@@ -4492,7 +4492,7 @@ dev-libs/elfutils 0.163 0.164 0.165: Libraries/utilities to handle ELF objects (
 dev-libs/embryo 1.7.10 9999: load and control programs compiled in embryo language (small/pawn variant)
 dev-libs/engine_pkcs11 0.1.8 0.1.8-r1: engine_pkcs11 is an implementation of an engine for OpenSSL
 dev-libs/eventlog 0.2.12: Support library for syslog-ng
-dev-libs/expat 2.1.0-r5: Stream-oriented XML parser library
+dev-libs/expat 2.1.0-r5 2.1.1: Stream-oriented XML parser library
 dev-libs/fampp2 6.0.1 7.0.1 7.0.1-r1: C++ wrapper for fam
 dev-libs/faxpp 0.4: Small, fast and conformant XML pull parser written in C with an API that can return UTF-8 or UTF-16 strings
 dev-libs/fcgi 2.4.1_pre0910052249-r2: FastCGI Developer's Kit
