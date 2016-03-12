@@ -23,7 +23,6 @@ inherit cmake-utils eutils flag-o-matic gnome2-utils kde5-functions versionator 
 
 if [[ ${KDE_BUILD_TYPE} = live ]]; then
 	case ${KDE_SCM} in
-		svn) inherit subversion ;;
 		git) inherit git-r3 ;;
 	esac
 fi
@@ -44,7 +43,7 @@ EXPORT_FUNCTIONS pkg_pretend pkg_setup src_unpack src_prepare src_configure src_
 # @ECLASS-VARIABLE: KDE_BLOCK_SLOT4
 # @DESCRIPTION:
 # This variable is used when KDE_AUTODEPS is set.
-# If set to "true", add RDEPEND block on kde-{base,apps}/${PN}:4
+# If set to "true", add RDEPEND block on kde-apps/${PN}:4
 : ${KDE_BLOCK_SLOT4:=true}
 
 # @ECLASS-VARIABLE: KDE_DEBUG
@@ -80,6 +79,8 @@ fi
 # If set to "false", do nothing.
 # Otherwise, add "+handbook" to IUSE, add the appropriate dependency, and
 # generate and install KDE handbook.
+# If set to "optional", config with -DCMAKE_DISABLE_FIND_PACKAGE_KF5DocTools=ON
+# when USE=!handbook. In case package requires KF5KDELibs4Support, see next:
 # If set to "forceoptional", remove a KF5DocTools dependency from the root
 # CMakeLists.txt in addition to the above.
 : ${KDE_HANDBOOK:=false}
@@ -93,6 +94,8 @@ fi
 # @DESCRIPTION:
 # If set to "false", do nothing.
 # For any other value, add test to IUSE and add a dependency on dev-qt/qttest:5.
+# If set to "optional", configure with -DCMAKE_DISABLE_FIND_PACKAGE_Qt5Test=ON
+# when USE=!test.
 # If set to "forceoptional", remove a Qt5Test dependency from the root
 # CMakeLists.txt in addition to the above.
 if [[ ${CATEGORY} = kde-frameworks ]]; then
@@ -146,7 +149,7 @@ case ${KDE_AUTODEPS} in
 
 		DEPEND+=" $(add_frameworks_dep extra-cmake-modules)"
 		RDEPEND+=" >=kde-frameworks/kf-env-3"
-		COMMONDEPEND+="	>=dev-qt/qtcore-${QT_MINIMAL}:5"
+		COMMONDEPEND+=" $(add_qt_dep qtcore)"
 
 		if [[ ${CATEGORY} = kde-frameworks || ${CATEGORY} = kde-plasma && ${PN} != polkit-kde-agent ]]; then
 			RDEPEND+="
@@ -198,7 +201,7 @@ case ${KDE_TEST} in
 	false)	;;
 	*)
 		IUSE+=" test"
-		DEPEND+=" test? ( >=dev-qt/qttest-${QT_MINIMAL}:5 )"
+		DEPEND+=" test? ( $(add_qt_dep qttest) )"
 		;;
 esac
 
@@ -281,33 +284,6 @@ _calculate_live_repo() {
 	SRC_URI=""
 
 	case ${KDE_SCM} in
-		svn)
-			# @ECLASS-VARIABLE: ESVN_MIRROR
-			# @DESCRIPTION:
-			# This variable allows easy overriding of default kde mirror service
-			# (anonsvn) with anything else you might want to use.
-			ESVN_MIRROR=${ESVN_MIRROR:=svn://anonsvn.kde.org/home/kde}
-
-			local branch_prefix="trunk/KDE"
-
-			if [[ ${PV} == ??.??.49.9999 && ${CATEGORY} = kde-apps ]]; then
-				branch_prefix="branches/Applications/$(get_version_component_range 1-2)"
-			fi
-
-			if [[ ${PV} != 9999 && ${CATEGORY} = kde-plasma ]]; then
-				branch_prefix="branches/plasma/$(get_version_component_range 1-2)"
-			fi
-
-			local _kmname
-
-			if [[ -n ${KMNAME} ]]; then
-				_kmname=${KMNAME}
-			else
-				_kmname=${PN}
-			fi
-
-			ESVN_REPO_URI="${ESVN_MIRROR}/${branch_prefix}/${_kmname}"
-			;;
 		git)
 			# @ECLASS-VARIABLE: EGIT_MIRROR
 			# @DESCRIPTION:
@@ -378,9 +354,6 @@ kde5_src_unpack() {
 
 	if [[ ${KDE_BUILD_TYPE} = live ]]; then
 		case ${KDE_SCM} in
-			svn)
-				subversion_src_unpack
-				;;
 			git)
 				git-r3_src_unpack
 				;;
@@ -418,13 +391,13 @@ kde5_src_prepare() {
 		if [[ -d po ]] ; then
 			pushd po > /dev/null || die
 			for lang in *; do
-				if ! has ${lang} ${LINGUAS} ; then
-					if [[ ${lang} != CMakeLists.txt ]] ; then
-						rm -rf ${lang}
-					fi
+				if [[ -d ${lang} ]] && ! has ${lang} ${LINGUAS} ; then
+					rm -r ${lang} || die
 					if [[ -e CMakeLists.txt ]] ; then
 						cmake_comment_add_subdirectory ${lang}
 					fi
+				elif ! has ${lang/.po/} ${LINGUAS} ; then
+					rm ${lang} || die
 				fi
 			done
 			popd > /dev/null || die
@@ -491,6 +464,14 @@ kde5_src_configure() {
 
 	if ! use_if_iuse test ; then
 		cmakeargs+=( -DBUILD_TESTING=OFF )
+
+		if [[ ${KDE_TEST} = optional ]] ; then
+			cmakeargs+=( -DCMAKE_DISABLE_FIND_PACKAGE_Qt5Test=ON )
+		fi
+	fi
+
+	if ! use_if_iuse handbook && [[ ${KDE_HANDBOOK} = optional ]] ; then
+		cmakeargs+=( -DCMAKE_DISABLE_FIND_PACKAGE_KF5DocTools=ON )
 	fi
 
 	# install mkspecs in the same directory as qt stuff

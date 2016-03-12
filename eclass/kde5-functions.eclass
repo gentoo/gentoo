@@ -45,13 +45,9 @@ esac
 
 # @ECLASS-VARIABLE: KDEBASE
 # @DESCRIPTION:
-# This gets set to a non-zero value when a package is considered a kde or
+# This gets set to a non-zero value when a package is considered a
 # kdevelop ebuild.
-if [[ ${CATEGORY} = kde-base ]]; then
-	KDEBASE=kde-base
-elif [[ ${CATEGORY} = kde-frameworks ]]; then
-	KDEBASE=kde-frameworks
-elif [[ ${KMNAME-${PN}} = kdevelop ]]; then
+if [[ ${KMNAME-${PN}} = kdevelop ]]; then
 	KDEBASE=kdevelop
 fi
 
@@ -63,7 +59,7 @@ debug-print "${ECLASS}: ${KDEBASE} ebuild recognized"
 : ${KDE_SCM:=git}
 
 case ${KDE_SCM} in
-	svn|git) ;;
+	git) ;;
 	*) die "KDE_SCM: ${KDE_SCM} is not supported" ;;
 esac
 
@@ -156,7 +152,7 @@ add_frameworks_dep() {
 # @FUNCTION: add_plasma_dep
 # @USAGE: <package> [USE flags] [minimum version]
 # @DESCRIPTION:
-# Create proper dependency for kde-base/ dependencies.
+# Create proper dependency for kde-plasma/ dependencies.
 # This takes 1 to 4 arguments. The first being the package name, the optional
 # second is additional USE flags to append, and the optional third is the
 # version to use instead of the automatic version (use sparingly). In addition,
@@ -264,7 +260,7 @@ punt_bogus_dep() {
 	local prefix=${1}
 	local dep=${2}
 
-	pcregrep -Mni "(?s)find_package\s*\(\s*${prefix}.[^)]*?${dep}.*?\)" CMakeLists.txt > "${T}/bogus${dep}"
+	pcregrep -Mni "(?s)find_package\s*\(\s*${prefix}[^)]*?${dep}.*?\)" CMakeLists.txt > "${T}/bogus${dep}"
 
 	# pcregrep returns non-zero on no matches/error
 	if [[ $? != 0 ]] ; then
@@ -278,7 +274,7 @@ punt_bogus_dep() {
 	sed -e "${first},${last}s/${dep}//" -i CMakeLists.txt || die
 
 	if [[ ${length} = 1 ]] ; then
-		sed -e "/find_package\s*(\s*${prefix}\s*REQUIRED\s*COMPONENTS\s*)/I d" -i CMakeLists.txt || die
+		sed -e "/find_package\s*(\s*${prefix}\s*\(REQUIRED\)*\s*\(COMPONENTS\)*\s*)/I d" -i CMakeLists.txt || die
 	fi
 }
 

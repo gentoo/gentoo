@@ -195,11 +195,6 @@ media-video/stk11xx
 >=media-video/ffmpeg-3.0
 >=media-video/mplayer-1.3.0
 
-# Michael Palimaka <kensington@gentoo.org> (12 Feb 2016)
-# Fails to build. No revdeps. Masked for removal in 30 days.
-# Bug 574432
-media-libs/gluon
-
 # Aaron W. Swenson <titanofold@gentoo.org> (11 Feb 2016)
 # Susceptible to security issues and other bugs. Removal pending
 # stabilization of 9.5.1, 9.4.6, 9.3.11, 9.2.15, and 9.1.20.
