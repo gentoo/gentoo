@@ -31,3 +31,4 @@ move dev-perl/DateManip dev-perl/Date-Manip
 move dev-perl/wxperl dev-perl/Wx
 slotmove sys-devel/binutils 0 2.25.1
 move sys-fs/sshfs-fuse sys-fs/sshfs
+move dev-perl/perl-tk dev-perl/Tk
