@@ -5760,7 +5760,7 @@ dev-perl/Linux-Inotify2 1.220.0-r1: scalable directory/file change notification
 dev-perl/Linux-Pid 0.40.0-r1: Interface to Linux getpp?id functions
 dev-perl/Linux-Smaps 0.130.0: Perl interface to /proc/PID/smaps
 dev-perl/Lirc-Client 1.540.0-r1 2.20.0: A client library for the Linux Infrared Remote Control (LIRC)
-dev-perl/List-AllUtils 0.30.0-r1 0.80.0 0.90.0: Combines List::Util and List::MoreUtils in one bite-sized package
+dev-perl/List-AllUtils 0.90.0: Combines List::Util and List::MoreUtils in one bite-sized package
 dev-perl/List-MoreUtils 0.330.0-r1 0.413.0: Provide the missing functionality from List::Util
 dev-perl/List-UtilsBy 0.100.0: Higher-order list utility functions
 dev-perl/Locale-Maketext-Fuzzy 0.110.0-r1: Maketext from already interpolated strings
@@ -5769,9 +5769,9 @@ dev-perl/Locale-Msgfmt 0.150.0-r1: Compile .po files to .mo files
 dev-perl/Locale-PO 0.230.0 0.270.0: Perl module for manipulating .po entries from GNU gettext
 dev-perl/Locale-gettext 1.50.0-r1: A Perl module for accessing the GNU locale utilities
 dev-perl/LockFile-Simple 0.208.0-r1: File locking module for Perl
-dev-perl/Log-Agent 0.307.0-r1 1.0.0 1.1.0: A general logging framework
-dev-perl/Log-Any 0.150.0 1.32.0 1.38.0: Bringing loggers and listeners together
-dev-perl/Log-Dispatch 2.410.0 2.450.0 2.510.0 2.540.0: Dispatches messages to one or more outputs
+dev-perl/Log-Agent 0.307.0-r1 1.1.0: A general logging framework
+dev-perl/Log-Any 0.150.0 1.38.0: Bringing loggers and listeners together
+dev-perl/Log-Dispatch 2.410.0 2.540.0: Dispatches messages to one or more outputs
 dev-perl/Log-Log4perl 1.420.0-r1 1.460.0: Log4j implementation for Perl
 dev-perl/Log-TraceMessages 1.400.0-r1: Logging/debugging aid
 dev-perl/MARC-Charset 1.350.0-r1: convert MARC-8 encoded strings to UTF-8
