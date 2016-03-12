@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 inherit pax-utils versionator
 
@@ -36,7 +36,7 @@ src_unpack() {
 	chmod +x "${S}/${INSTALLER}" || die
 }
 
-src_prepare() {
+src_configure() {
 	cat > 99${PN} <<-EOF || die
 		PATH=${EROOT%/}/opt/${PN}/bin
 		ROOTPATH=${EROOT%/}/opt/${PN}/bin
