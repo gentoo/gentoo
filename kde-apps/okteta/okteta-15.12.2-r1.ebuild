@@ -5,7 +5,7 @@
 EAPI=6
 
 KDE_HANDBOOK="forceoptional"
-KDE_TEST="forceoptional"
+KDE_TEST="optional"
 inherit kde5
 
 DESCRIPTION="KDE hexeditor"
