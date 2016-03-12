@@ -30,6 +30,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (12 Mar 2016)
+# Masked for testing.
+=dev-python/pypy-5.0.0
+=dev-python/pypy-bin-5.0.0
+=virtual/pypy-5.0.0
+
 # Michael Palimaka <kensington@gentoo.org> (11 Mar 2016)
 # Fails to build. Use version included in dev-texlive/texlive-science instead.
 # Masked for removal in 30 days. Bug 573780.
