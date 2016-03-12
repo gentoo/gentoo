@@ -1,8 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+  <longdescription lang="en">
+    The Computational Fluid Dynamics General Notation System (CGNS) provides a
+    general, portable, and extensible standard for the storage and retrieval of
+    computational fluid dynamics (CFD) analysisdata. It consists of a collection
+    of conventions, and free and open software implementing those conventions. It
+    is self-descriptive, machine-independent, well-documented, and administered by
+    an international steering committee.
+  </longdescription>
   <use>
     <flag name="legacy">Enable or disable building legacy code (3.0 compatible)</flag>
+    <flag name="tools">Build tools for </flag>
   </use>
   <maintainer type="person">
     <email>slis@gentoo.org</email>
@@ -12,6 +21,6 @@
     <name>Gentoo Science Project</name>
   </maintainer>
   <upstream>
-    <remote-id type="sourceforge">cgns</remote-id>
+    <remote-id type="github">CGNS/CGNS</remote-id>
   </upstream>
 </pkgmetadata>
