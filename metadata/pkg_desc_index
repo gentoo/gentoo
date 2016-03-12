@@ -4934,7 +4934,7 @@ dev-lua/busted 2.0_rc11_p0: Elegant Lua unit testing
 dev-lua/dkjson 2.5: David Kolf's JSON module for Lua
 dev-lua/lanes 3.10.0: lightweight, native, lazy evaluating multithreading library
 dev-lua/lgi 0.6.2 0.6.2-r1 0.7.2 0.9.0: Lua bindings using gobject-introspection
-dev-lua/lpeg 0.12 0.12.1 0.12.2: Parsing Expression Grammars for Lua
+dev-lua/lpeg 0.12 0.12.1 0.12.2 1.0.0: Parsing Expression Grammars for Lua
 dev-lua/lua-cjson 2.1.0: A fast JSON encoding/parsing module for Lua
 dev-lua/lua-openssl 0.4.1-r1: OpenSSL binding for Lua
 dev-lua/lua-term 0.3: Terminal functions for Lua
