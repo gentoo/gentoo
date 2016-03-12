@@ -30,6 +30,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Mike Gilbert <floppym@gentoo.org> (12 Mar 2016)
+# Masked for testing.
+=sys-apps/systemd-229-r100
+
 # Michał Górny <mgorny@gentoo.org> (12 Mar 2016)
 # Masked for testing.
 =dev-python/pypy-5.0.0
