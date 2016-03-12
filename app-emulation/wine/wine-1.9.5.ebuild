@@ -50,7 +50,6 @@ IUSE="+abi_x86_32 +abi_x86_64 +alsa capi cups custom-cflags dos elibc_glibc +fon
 REQUIRED_USE="|| ( abi_x86_32 abi_x86_64 )
 	test? ( abi_x86_32 )
 	elibc_glibc? ( threads )
-	mono? ( abi_x86_32 )
 	pipelight? ( staging )
 	s3tc? ( staging )
 	vaapi? ( staging )
