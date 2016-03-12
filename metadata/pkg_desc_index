@@ -186,7 +186,7 @@ app-admin/recursos 2.0: Script to create html and text report about your system
 app-admin/reportmagic 2.21: Makes usable statistics from your web site log file analysis
 app-admin/restart_services 0.13.0-r1 0.13.1: Tool to manage OpenRC services that need to be restarted
 app-admin/rex 1.3.3 1.4.0-r1: (R)?ex is a small script to ease the execution of remote commands
-app-admin/rsyslog 8.13.0 8.16.0: An enhanced multi-threaded syslogd with database support and more
+app-admin/rsyslog 8.13.0 8.16.0-r1: An enhanced multi-threaded syslogd with database support and more
 app-admin/sagan 0.2.3 1.0.0_rc3: Sagan is a multi-threaded, real time system and event log monitoring system
 app-admin/sagan-rules 20130430 20140617 99999999: Rules for Sagan log analyzer
 app-admin/salt 2015.5.8 2015.5.9 2015.8.3 2015.8.5 2015.8.7 9999: Salt is a remote execution and configuration manager
@@ -16200,6 +16200,7 @@ sec-policy/selinux-subsonic 2.20141203-r8 2.20141203-r9 2.20141203-r10 2.2015120
 sec-policy/selinux-sudo 2.20141203-r1 2.20141203-r2 2.20141203-r3 2.20141203-r4 2.20141203-r5 2.20141203-r6 2.20141203-r7 2.20141203-r8 2.20141203-r9 2.20141203-r10 2.20151208-r1 2.20151208-r2 9999: SELinux policy for sudo
 sec-policy/selinux-sxid 2.20141203-r1 2.20141203-r2 2.20141203-r3 2.20141203-r4 2.20141203-r5 2.20141203-r6 2.20141203-r7 2.20141203-r8 2.20141203-r9 2.20141203-r10 2.20151208-r1 2.20151208-r2 9999: SELinux policy for sxid
 sec-policy/selinux-sysstat 2.20141203-r1 2.20141203-r2 2.20141203-r3 2.20141203-r4 2.20141203-r5 2.20141203-r6 2.20141203-r7 2.20141203-r8 2.20141203-r9 2.20141203-r10 2.20151208-r1 2.20151208-r2 9999: SELinux policy for sysstat
+sec-policy/selinux-systemd 9999: SELinux policy for systemd
 sec-policy/selinux-tboot 9999: SELinux policy for tboot
 sec-policy/selinux-tcpd 2.20141203-r1 2.20141203-r2 2.20141203-r3 2.20141203-r4 2.20141203-r5 2.20141203-r6 2.20141203-r7 2.20141203-r8 2.20141203-r9 2.20141203-r10 2.20151208-r1 2.20151208-r2 9999: SELinux policy for tcpd
 sec-policy/selinux-tcsd 2.20141203-r1 2.20141203-r2 2.20141203-r3 2.20141203-r4 2.20141203-r5 2.20141203-r6 2.20141203-r7 2.20141203-r8 2.20141203-r9 2.20141203-r10 2.20151208-r1 2.20151208-r2 9999: SELinux policy for tcsd
