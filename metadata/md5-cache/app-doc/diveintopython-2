@@ -1,11 +1,12 @@
 DEFINED_PHASES=install prepare
-DESCRIPTION='Dive Into Python' by Mark Pilgrim - Python 2.x book
+DESCRIPTION='Dive Into Python' by Mark Pilgrim - Python 2
 EAPI=6
 HOMEPAGE=http://www.diveintopython.net/
+IUSE=pdf
 KEYWORDS=~amd64 ~ppc64 ~ppc ~x86
 LICENSE=FDL-1.1
 SLOT=2
-SRC_URI=http://www.diveintopython.net/download/diveintopython-html-5.4.zip -> diveintopython-2.zip
+SRC_URI=http://www.diveintopython.net/download/diveintopython-html-5.4.zip -> diveintopython-2.zip pdf? ( http://www.diveintopython.net/download/diveintopython-pdf-5.4.zip -> diveintopython-2-pdf.zip )
 _eclass_exported_funcs=src_prepare:- src_install:-
 _eclasses_=eutils	9d81603248f2ba3ec59124320d123e5e	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
-_md5_=bdcb929ff57866d3b73b6cdcdc695795
+_md5_=cc8532c23f92aca2ed6966958485ae29
