@@ -18,12 +18,12 @@ HOMEPAGE="http://www.pathscale.com/ekopath-compiler-suite"
 SRC_URI="http://c591116.r16.cf2.rackcdn.com/${PN}/nightly/Linux/${INSTALLER}"
 
 LICENSE="all-rights-reserved"
-SLOT="0"
+SLOT="0/${MY_PV}"
 KEYWORDS="~amd64"
 IUSE=""
 
 DEPEND="!!app-arch/rpm"
-RDEPEND=""
+RDEPEND="!dev-lang/ekopath:${MY_PV}"
 
 RESTRICT="bindist mirror"
 
