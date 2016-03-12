@@ -19,14 +19,15 @@ HOMEPAGE="https://gitlab.com/orcus/orcus/blob/master/README.md"
 LICENSE="MIT"
 SLOT="0/0.11" # based on SONAME of liborcus.so
 [[ ${PV} == 9999 ]] || \
-KEYWORDS="~amd64 ~arm ~ppc ~x86"
+KEYWORDS=""
+# KEYWORDS="~amd64 ~arm ~ppc ~x86"
 IUSE="python +spreadsheet-model static-libs tools"
 
 RDEPEND="
 	>=dev-libs/boost-1.51.0:=
 	sys-libs/zlib:=
 	python? ( ${PYTHON_DEPS} )
-	spreadsheet-model? ( >=dev-libs/libixion-0.11:= )
+	spreadsheet-model? ( >=dev-libs/libixion-0.11.0:= )
 "
 DEPEND="${RDEPEND}
 	dev-util/mdds:1
