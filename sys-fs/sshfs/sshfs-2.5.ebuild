@@ -4,9 +4,12 @@
 
 EAPI="4"
 
+MY_PN=sshfs-fuse
+MY_P=${MY_PN}-${PV}
+
 DESCRIPTION="Fuse-filesystem utilizing the sftp service"
 HOMEPAGE="https://github.com/libfuse/sshfs"
-SRC_URI="https://github.com/libfuse/sshfs/releases/download/sshfs-${PV//./_}/${P}.tar.gz"
+SRC_URI="https://github.com/libfuse/sshfs/releases/download/sshfs-${PV//./_}/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 KEYWORDS="amd64 arm hppa ~ppc ~ppc64 x86 ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux"
@@ -18,6 +21,8 @@ RDEPEND="${CDEPEND}
 	>=net-misc/openssh-4.3"
 DEPEND="${CDEPEND}
 	virtual/pkgconfig"
+
+S=${WORKDIR}/${MY_P}
 
 DOCS=( README NEWS ChangeLog AUTHORS FAQ.txt )
 
