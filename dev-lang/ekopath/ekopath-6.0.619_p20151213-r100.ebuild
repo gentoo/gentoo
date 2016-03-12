@@ -1,12 +1,13 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-inherit versionator multilib pax-utils
+inherit pax-utils versionator
 
 MY_PV=$(get_version_component_range 1-3)
+MY_P=${PN}-${MY_PV}
 DATE=$(get_version_component_range 4)
 DATE=${DATE#p}
 DATE=${DATE:0:4}-${DATE:4:2}-${DATE:6}
@@ -17,18 +18,16 @@ HOMEPAGE="http://www.pathscale.com/ekopath-compiler-suite"
 SRC_URI="http://c591116.r16.cf2.rackcdn.com/${PN}/nightly/Linux/${INSTALLER}"
 
 LICENSE="all-rights-reserved"
-SLOT="0"
+SLOT="0/${MY_PV}"
 KEYWORDS="~amd64"
 IUSE=""
 
 DEPEND="!!app-arch/rpm"
-RDEPEND=""
+RDEPEND="!dev-lang/ekopath:${MY_PV}"
 
 RESTRICT="bindist mirror"
 
-QA_PREBUILT="
-	opt/${PN}/lib/${MY_PV}/x8664/*
-	opt/${PN}/bin/*"
+QA_PREBUILT="opt/${MY_P}/*"
 
 S="${WORKDIR}"
 
@@ -37,7 +36,7 @@ src_unpack() {
 	chmod +x "${S}/${INSTALLER}" || die
 }
 
-src_prepare() {
+src_configure() {
 	cat > 99${PN} <<-EOF || die
 		PATH=${EROOT%/}/opt/${PN}/bin
 		ROOTPATH=${EROOT%/}/opt/${PN}/bin
@@ -54,12 +53,12 @@ src_install() {
 	fi
 
 	./"${INSTALLER}" \
-		--prefix "${ED%/}/opt/${PN}" \
+		--prefix "${ED%/}/opt/${MY_P}" \
 		--mode unattended || die
 
-	if [[ ! -d ${ED%/}/opt/${PN}/lib/${MY_PV} ]]; then
+	if [[ ! -d ${ED%/}/opt/${MY_P}/lib/${MY_PV} ]]; then
 		local guess
-		cd "${ED%/}/opt/${PN}/lib" && guess=( * )
+		cd "${ED%/}/opt/${MY_P}/lib" && guess=( * )
 
 		if [[ ${guess[@]} ]]; then
 			die "Incorrect release version in PV, guessing it should be: ${guess[*]}"
@@ -67,8 +66,9 @@ src_install() {
 			die "No libdir installed"
 		fi
 	fi
-	[[ -x ${ED%}/opt/${PN}/bin/pathcc ]] || die "No pathcc executable was installed, your hardware is unsupported most likely"
+	[[ -x ${ED%}/opt/${MY_P}/bin/pathcc ]] || die "No pathcc executable was installed, your hardware is unsupported most likely"
 
-	rm -r "${ED}/opt/${PN}"/uninstall* || die
+	rm -r "${ED}/opt/${MY_P}"/uninstall* || die
+	dosym ${MY_P} /opt/${PN}
 	doenvd 99${PN}
 }
