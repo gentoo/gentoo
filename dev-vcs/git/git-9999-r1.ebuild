@@ -57,6 +57,7 @@ CDEPEND="
 RDEPEND="${CDEPEND}
 	gpg? ( app-crypt/gnupg )
 	mediawiki? (
+		dev-perl/DateTime-Format-ISO8601
 		dev-perl/HTML-Tree
 		dev-perl/MediaWiki-API
 	)
