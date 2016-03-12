@@ -7253,7 +7253,7 @@ dev-python/kaa-metadata 0.7.7-r1: Powerful media metadata parser for media files
 dev-python/kazoo 1.3.1 2.0 2.2.1: A high-level Python library that makes it easier to use Apache Zookeeper
 dev-python/keepassx 0.0.3 0.1.0: Python API and CLI for KeePassX
 dev-python/keyczar 0.71c 0.715: Toolkit for safe and simple cryptography
-dev-python/keyring 1.0 1.5 1.5-r1 1.6.1 3.1 3.3 3.7 4.0 8.2 8.3 8.4 8.4.1: Provides access to the system keyring service
+dev-python/keyring 1.0 1.5 1.5-r1 1.6.1 3.1 3.3 3.7 4.0 8.2 8.3 8.4 8.4.1 8.5: Provides access to the system keyring service
 dev-python/keyrings_alt 1.1: Alternate keyring implementations
 dev-python/keystonemiddleware 1.5.0 1.5.2 2.2.0 2.3.1-r1 2.3.2-r1 2.3.3: A middleware for the OpenStack Keystone API
 dev-python/kid 0.9.6-r1: A simple and Pythonic XML template language
