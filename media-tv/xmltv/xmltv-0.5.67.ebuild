@@ -76,7 +76,7 @@ DEPEND="${RDEPEND}
 	uk_bleb? ( dev-perl/IO-stringy dev-perl/Archive-Zip )
 	uk_rt? ( dev-perl/DateTime-TimeZone dev-perl/XML-LibXML dev-perl/IO-stringy dev-perl/HTTP-Cache-Transparent dev-perl/DateTime >=dev-perl/HTML-Parser-3.34 )
 	uk_tvguide? ( dev-perl/URI dev-perl/HTTP-Cache-Transparent dev-perl/DateTime dev-perl/TimeDate )
-	tv_check? ( dev-perl/perl-tk dev-perl/Tk-TableMatrix )
+	tv_check? ( dev-perl/Tk dev-perl/Tk-TableMatrix )
 	tv_combiner? ( dev-perl/XML-LibXML )
 "
 

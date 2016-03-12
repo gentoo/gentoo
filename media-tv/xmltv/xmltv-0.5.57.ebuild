@@ -66,7 +66,7 @@ DEPEND="${RDEPEND}
 	ee? ( dev-perl/IO-stringy )
 	re? ( dev-perl/Lingua-EN-Numbers-Ordinate )
 	tv_combiner? ( dev-perl/XML-LibXML )
-	tv_check? ( dev-perl/perl-tk dev-perl/Tk-TableMatrix )
+	tv_check? ( dev-perl/Tk dev-perl/Tk-TableMatrix )
 	tv_pick_cgi? ( dev-perl/CGI dev-perl/Lingua-EN-Numbers-Ordinate )
 	na_dtv? ( >=dev-perl/WWW-Mechanize-1.02 dev-perl/TimeDate dev-perl/IO-stringy dev-perl/XML-LibXML )
 	"
