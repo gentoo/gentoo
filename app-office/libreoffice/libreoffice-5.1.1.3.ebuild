@@ -96,8 +96,7 @@ unset lo_xt
 LICENSE="|| ( LGPL-3 MPL-1.1 )"
 SLOT="0"
 [[ ${PV} == *9999* ]] || \
-KEYWORDS=""
-# KEYWORDS="~amd64 ~arm ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~arm ~x86 ~amd64-linux ~x86-linux"
 
 COMMON_DEPEND="
 	${PYTHON_DEPS}
@@ -258,6 +257,9 @@ REQUIRED_USE="
 PATCHES=(
 	# submitted upstream
 	"${FILESDIR}/${PN}-5.1.0.3-isnan.patch"
+
+	# taken from 5.1 branch
+	"${FILESDIR}/${PN}-5.1.1.3-gtk3.patch" # Gentoo bug 575732
 
 	# not upstreamable stuff
 	"${FILESDIR}/${PN}-4.4-system-pyuno.patch"
