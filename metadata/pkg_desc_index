@@ -13247,7 +13247,7 @@ media-tv/tvmovie2vdr 0.5.13: load the program guide from tvmovie and others to v
 media-tv/tvnamer 2.3: Automatic TV episode file renamer, data from thetvdb.com
 media-tv/v4l-dvb-saa716x 0.0.1_p20140322 0.0.1_p20141109 0.0.1_p20141109-r1 0.0.1_p20141109-r2: driver for saa716x based dvb cards like Technotrend S2-6400 or Technisat Skystar 2 eXpress HD
 media-tv/v4l-utils 1.0.0 1.6.0 1.6.2: Separate utilities ebuild from upstream v4l-utils package
-media-tv/w_scan 20121111 20130331 20140118 20140727 20141122: Scan for DVB-C/DVB-T/DVB-S channels without prior knowledge of frequencies and modulations
+media-tv/w_scan 20141122: Scan for DVB-C/DVB-T/DVB-S channels without prior knowledge of frequencies and modulations
 media-tv/wis-go7007 0.9.8-r3: Linux drivers for go7007 chipsets (Plextor ConvertX PVR)
 media-tv/xmltv 0.5.57 0.5.67: Set of utilities to manage TV listings stored in the XMLTV format
 media-video/2mandvd 1.8.5: The successor of ManDVD
