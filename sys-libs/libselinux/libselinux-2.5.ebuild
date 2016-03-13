@@ -11,23 +11,14 @@ inherit multilib python-r1 toolchain-funcs eutils multilib-minimal
 
 MY_P="${P//_/-}"
 SEPOL_VER="${PV}"
-MY_RELEASEDATE="20150202"
 
 DESCRIPTION="SELinux userland library"
 HOMEPAGE="https://github.com/SELinuxProject/selinux/wiki"
-
-if [[ ${PV} == 9999 ]] ; then
-	inherit git-r3
-	EGIT_REPO_URI="https://github.com/SELinuxProject/selinux.git"
-	S="${WORKDIR}/${MY_P}/${PN}"
-else
-	SRC_URI="https://raw.githubusercontent.com/wiki/SELinuxProject/selinux/files/releases/${MY_RELEASEDATE}/${MY_P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~mips ~x86"
-	S="${WORKDIR}/${MY_P}"
-fi
+SRC_URI="https://raw.githubusercontent.com/wiki/SELinuxProject/selinux/files/releases/20160223/${MY_P}.tar.gz"
 
 LICENSE="public-domain"
 SLOT="0"
+KEYWORDS="~amd64 ~arm ~arm64 ~mips ~x86"
 
 IUSE="python ruby static-libs ruby_targets_ruby20 ruby_targets_ruby21 ruby_targets_ruby22 ruby_targets_ruby23"
 
@@ -44,12 +35,11 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	python? ( >=dev-lang/swig-2.0.9 )"
 
+S="${WORKDIR}/${MY_P}"
+
 src_prepare() {
-	if [[ ${PV} != 9999 ]] ; then
-		# If needed for live builds, place them in /etc/portage/patches
-		epatch "${FILESDIR}/0005-use-ruby-include-with-rubylibver.patch"
-		epatch "${FILESDIR}/0007-build-related-fixes-bug-500674-for-2.5.patch"
-	fi
+	epatch "${FILESDIR}/0005-use-ruby-include-with-rubylibver.patch"
+	epatch "${FILESDIR}/0007-build-related-fixes-bug-500674-for-2.5.patch"
 
 	epatch_user
 
