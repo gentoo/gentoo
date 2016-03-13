@@ -397,7 +397,9 @@ kde5_src_prepare() {
 						cmake_comment_add_subdirectory ${lang}
 					fi
 				elif ! has ${lang/.po/} ${LINGUAS} ; then
-					rm ${lang} || die
+					if [[ ${lang} != CMakeLists.txt ]] ; then
+						rm ${lang} || die
+					fi
 				fi
 			done
 			popd > /dev/null || die

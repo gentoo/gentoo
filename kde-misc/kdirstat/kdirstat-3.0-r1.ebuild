@@ -1,9 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
+KDE_HANDBOOK="forceoptional"
 inherit kde5
 
 DESCRIPTION="Nice KDE replacement to the du command"
@@ -11,11 +12,10 @@ HOMEPAGE="https://bitbucket.org/jeromerobert/k4dirstat/"
 SRC_URI="https://bitbucket.org/jeromerobert/k4dirstat/get/k4dirstat-${PV}.tar.bz2"
 
 LICENSE="GPL-2"
-SLOT="5"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-RDEPEND="
+COMMON_DEPEND="
 	$(add_frameworks_dep kconfig)
 	$(add_frameworks_dep kconfigwidgets)
 	$(add_frameworks_dep kcoreaddons)
@@ -26,14 +26,15 @@ RDEPEND="
 	$(add_frameworks_dep kjobwidgets)
 	$(add_frameworks_dep kwidgetsaddons)
 	$(add_frameworks_dep kxmlgui)
-	dev-qt/qtgui:5
-	dev-qt/qtwidgets:5
+	$(add_qt_dep qtgui)
+	$(add_qt_dep qtwidgets)
 	sys-libs/zlib
-	!kde-misc/kdirstat:4
 "
-DEPEND="${RDEPEND}
-	$(add_frameworks_dep kdoctools)
+DEPEND="${COMMON_DEPEND}
 	sys-devel/gettext
+"
+RDEPEND="${COMMON_DEPEND}
+	!kde-misc/kdirstat:4
 "
 
 DOCS=( AUTHORS CREDITS TODO )
