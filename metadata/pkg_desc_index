@@ -2029,7 +2029,7 @@ app-officeext/ct2n 1.4.0-r1: Extension for converting text to numbers
 app-officeext/dmaths 3.4.9.0-r1: Mathematics Formula Editor Extension
 app-officeext/languagetool 2.5 2.7 2.9 3.1: Style and Grammar Checker for libreoffice
 app-officeext/ooo2gd 3.0.0-r1: Extension for export to Google docs, zoho and WebDAV
-app-officeext/ooofbtools 2.38 2.39 2.42: Extension for converting and processing eBooks in FictionBook2 format with validator
+app-officeext/ooofbtools 2.38 2.39 2.42: OpenOffice extension for the FictionBook2 format with validation
 app-officeext/sun-templates 1.0.0-r1: Collection of sun templates for various countries
 app-officeext/texmaths 0.37-r1 0.41: LaTeX Equation Editor for LibreOffice
 app-pda/barry 0.18.3: Sync, backup, program management, and charging for BlackBerry devices
@@ -2133,9 +2133,9 @@ app-shells/pdmenu 1.3.4: A simple console menu program
 app-shells/pdsh 2.18-r1 2.26: A high-performance, parallel remote shell utility
 app-shells/posh 0.12 0.12.6: Reimplementation of Bourne shell based on pdksh
 app-shells/psh 1.8.1-r1 1.8.1-r2: Combines the interactive nature of a Unix shell with the power of Perl
-app-shells/push 1.5 1.5-r1 1.6 1.8: A POSIX shell function to treat a variable like an array, quoting args
+app-shells/push 1.6 1.8: A POSIX shell function to treat a variable like an array, quoting args
 app-shells/rc 1.7.4: A reimplementation of the Plan 9 shell
-app-shells/rrs 1.70 1.70-r1: Reverse Remote Shell
+app-shells/rrs 1.70-r1: Reverse Remote Shell
 app-shells/rssh 2.3.4 2.3.4_p3: Restricted shell for SSHd
 app-shells/rust-zshcomp 1_beta20150411: Rust zsh completions
 app-shells/sash 3.8: A small (static) UNIX Shell
@@ -2144,7 +2144,7 @@ app-shells/scsh-install-lib 1.3.0: Installation tool for the Scheme Untergrund L
 app-shells/shish 0.7_pre3-r1: The diet shell
 app-shells/smrsh 8.15.2: Sendmail restricted shell, for use with MTAs other than Sendmail
 app-shells/soapbox 0.3.1-r2: A preload (sandbox) library to restrict filesystem writes
-app-shells/squirrelsh 1.2.3-r1 1.2.6 1.2.7: An advanced, cross-platform object oriented scripting shell based on the squirrel scripting language
+app-shells/squirrelsh 1.2.7: Cross-platform object-oriented scripting shell using the squirrel language
 app-shells/tcsh 6.17-r1 6.17.06 6.18.01 6.18.01-r2 6.18.01-r3 6.18.01-r4: Enhanced version of the Berkeley C shell (csh)
 app-shells/thefuck 3.5: Magnificent app which corrects your previous console command
 app-shells/z 1.9: Change directory command that learns visited paths
@@ -9519,7 +9519,7 @@ dev-util/ftjam 2.5.3_rc2-r1: Jam is a powerful alternative to make. FTJam is a 1
 dev-util/ftnchek 3.3.1-r1: Static analyzer a la 'lint' for Fortran 77
 dev-util/fuzz 0.6: Stress-tests programs by giving them random input
 dev-util/gdbus-codegen 2.44.1 2.46.2: GDBus code and documentation generator
-dev-util/geany 1.24.1 1.25 1.26: GTK+ based fast and lightweight IDE
+dev-util/geany 1.24.1 1.25 1.26 1.27: GTK+ based fast and lightweight IDE
 dev-util/geany-plugins 1.23 1.24-r1 1.25 1.26: A collection of different plugins for Geany
 dev-util/gengetopt 2.22.6: A tool to write command line option parsing code for C programs
 dev-util/ghh 9999: a tool to track the history and make backups of your home directory
