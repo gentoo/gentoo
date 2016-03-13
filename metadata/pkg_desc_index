@@ -9117,9 +9117,9 @@ dev-ruby/vlad 2.6.5: Pragmatic application deployment automation, without mercy
 dev-ruby/warden 1.2.3 1.2.4 1.2.5 1.2.6: General Rack Authentication Framework
 dev-ruby/watch 0.1.0: A dirt simple mechanism to tell if files have changed
 dev-ruby/weakling 0.0.4: weakling: a collection of weakref utilities for Ruby
-dev-ruby/web-console 2.2.1-r1: A debugging tool for your Ruby on Rails applications
+dev-ruby/web-console 2.2.1-r1 2.3.0: A debugging tool for your Ruby on Rails applications
 dev-ruby/webmock 1.19.0 1.20.3 1.22.6 1.24.1 1.24.2: Allows stubbing HTTP requests and setting expectations on HTTP requests
-dev-ruby/webrobots 0.1.1-r1 0.1.1-r2: A library to help write robots.txt compliant web robots
+dev-ruby/webrobots 0.1.1-r1 0.1.1-r2 0.1.2: A library to help write robots.txt compliant web robots
 dev-ruby/websocket 1.1.1 1.2.2: Universal Ruby library to handle WebSocket protocol
 dev-ruby/websocket-driver 0.3.4 0.6.2 0.6.3: A complete implementation of the WebSocket protocols
 dev-ruby/websocket-extensions 0.1.2: Generic extension manager for WebSocket connections
