@@ -5,4 +5,7 @@
 		<email>kde@gentoo.org</email>
 		<name>Gentoo KDE Project</name>
 	</maintainer>
+	<use>
+		<flag name="plasmate">IDE for writing Plasma/KWin components (themes, plasmoids, runners, data engines)</flag>
+	</use>
 </pkgmetadata>

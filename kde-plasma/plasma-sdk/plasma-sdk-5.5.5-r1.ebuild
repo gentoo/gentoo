@@ -4,17 +4,18 @@
 
 EAPI=6
 
-KDE_TEST="true"
+KDE_TEST="optional"
 VIRTUALX_REQUIRED="test"
 inherit kde5
 
 DESCRIPTION="Useful applications for Plasma development"
 KEYWORDS="~amd64 ~arm ~x86"
-IUSE=""
+IUSE="plasmate"
 
 DEPEND="
 	$(add_frameworks_dep karchive)
 	$(add_frameworks_dep kcompletion)
+	$(add_frameworks_dep kconfig)
 	$(add_frameworks_dep kconfigwidgets)
 	$(add_frameworks_dep kcoreaddons)
 	$(add_frameworks_dep kdbusaddons)
@@ -22,6 +23,7 @@ DEPEND="
 	$(add_frameworks_dep ki18n)
 	$(add_frameworks_dep kiconthemes)
 	$(add_frameworks_dep kio)
+	$(add_frameworks_dep kitemmodels)
 	$(add_frameworks_dep kpackage)
 	$(add_frameworks_dep kservice)
 	$(add_frameworks_dep ktexteditor)
@@ -32,9 +34,30 @@ DEPEND="
 	$(add_qt_dep qtgui)
 	$(add_qt_dep qtwidgets)
 	$(add_qt_dep qtxml)
+	plasmate? (
+		$(add_frameworks_dep kdelibs4support)
+		$(add_frameworks_dep knewstuff)
+		$(add_frameworks_dep kparts)
+		$(add_kdeapps_dep kdevplatform)
+		$(add_qt_dep qtwebkit)
+	)
 "
 RDEPEND="${DEPEND}
 	!dev-util/plasmate
 "
 
-PATCHES=( "${FILESDIR}/${PN}-5.3.2-remove-qtwebkit.patch" )
+PATCHES=(
+	"${FILESDIR}/${PN}-5.5.5-kdevplatform-lookup.patch" # 5.6 branch
+	"${FILESDIR}/${PN}-5.5.5-qtwebkit-optional.patch" # git master
+	"${FILESDIR}/${PN}-5.5.5-dependencies.patch" # RR pending
+)
+
+src_configure() {
+	local mycmakeargs=(
+		$(cmake-utils_use_find_package plasmate KDevPlatform)
+		$(cmake-utils_use_find_package plasmate Qt5WebKit)
+		$(cmake-utils_use_find_package plasmate Qt5WebKitWidgets)
+	)
+
+	kde5_src_configure
+}
