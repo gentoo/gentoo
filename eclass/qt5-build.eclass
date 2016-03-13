@@ -148,6 +148,7 @@ qt5-build_src_unpack() {
 		fi
 	fi
 
+	# bug 307861
 	if [[ ${PN} == qtwebengine || ${PN} == qtwebkit ]]; then
 		eshopts_push -s extglob
 		if is-flagq '-g?(gdb)?([1-9])'; then
@@ -155,7 +156,6 @@ qt5-build_src_unpack() {
 			ewarn "You have enabled debug info (probably have -g or -ggdb in your CFLAGS/CXXFLAGS)."
 			ewarn "You may experience really long compilation times and/or increased memory usage."
 			ewarn "If compilation fails, please try removing -g/-ggdb before reporting a bug."
-			ewarn "For more info check out https://bugs.gentoo.org/307861"
 			ewarn
 		fi
 		eshopts_pop
