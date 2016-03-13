@@ -25,6 +25,11 @@ DEPEND="test? ( ${RDEPEND}
 	dev-python/pytest[${PYTHON_USEDEP}] )
 	dev-python/setuptools[${PYTHON_USEDEP}]"
 
+src_prepare() {
+	sed -i -e "/import pip/s/^/#/" -e "/pip.__version__/,+3 s/^/#/" setup.py || die
+	distutils-r1_src_prepare
+}
+
 python_test() {
 	py.test || die
 }
