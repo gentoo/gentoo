@@ -8568,7 +8568,7 @@ dev-ruby/ascii85 1.0.2-r2: Methods for encoding/decoding Adobe's binary-to-text 
 dev-ruby/asciidoctor 1.5.4: Processor for converting AsciiDoc into HTML 5, DocBook 4.5 and other formats
 dev-ruby/asciimath 1.0.2: A pure Ruby AsciiMath parsing and conversion library
 dev-ruby/ast 2.2.0: A library for working with abstract syntax trees
-dev-ruby/astrolabe 1.3.0 1.3.1: An object-oriented AST extension for Parser
+dev-ruby/astrolabe 1.3.1: An object-oriented AST extension for Parser
 dev-ruby/async_sinatra 1.2.1: Asynchronous response API for Sinatra and Thin
 dev-ruby/atomic 1.1.16 1.1.99: An atomic reference implementation for JRuby, Rubinius, and MRI
 dev-ruby/awesome_print 1.6.1: Library to pretty print Ruby objects in full color with proper indentation
@@ -8677,7 +8677,7 @@ dev-ruby/ethon 0.7.4 0.8.0-r1 0.8.1: Very lightweight libcurl wrapper
 dev-ruby/evented-spec 0.9.0: A set of helpers to help you test your asynchronous code
 dev-ruby/eventmachine 1.0.3-r1 1.0.8 1.0.9.1: EventMachine is a fast, simple event-processing library for Ruby programs
 dev-ruby/execjs 1.4.0 2.2.2 2.5.2 2.6.0: ExecJS lets you run JavaScript code from Ruby
-dev-ruby/exifr 1.2.3.1 1.2.4: A library to read EXIF info from JPEG and TIFF images
+dev-ruby/exifr 1.2.4: A library to read EXIF info from JPEG and TIFF images
 dev-ruby/expression_parser 0.9.0_p20130518: A math parser
 dev-ruby/extlib 0.9.16-r1: Support library for DataMapper and Merb
 dev-ruby/facets 2.9.3: Facets is the premier collection of extension methods for Ruby
