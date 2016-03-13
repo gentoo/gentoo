@@ -8,26 +8,17 @@ PYTHON_COMPAT=( python2_7 python3_3 python3_4 )
 inherit multilib python-r1 toolchain-funcs eutils multilib-minimal
 
 MY_P="${P//_/-}"
-MY_RELEASEDATE="20160223"
 
 SEPOL_VER="${PV}"
 SELNX_VER="${PV}"
 
 DESCRIPTION="SELinux kernel and policy management library"
 HOMEPAGE="https://github.com/SELinuxProject/selinux/wiki"
-
-if [[ ${PV} == 9999 ]] ; then
-	inherit git-r3
-	EGIT_REPO_URI="https://github.com/SELinuxProject/selinux.git"
-	S="${WORKDIR}/${MY_P}/${PN}"
-else
-	SRC_URI="https://raw.githubusercontent.com/wiki/SELinuxProject/selinux/files/releases/${MY_RELEASEDATE}/${MY_P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~mips ~x86"
-	S="${WORKDIR}/${MY_P}"
-fi
+SRC_URI="https://raw.githubusercontent.com/wiki/SELinuxProject/selinux/files/releases/20160223/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
+KEYWORDS="~amd64 ~arm ~arm64 ~mips ~x86"
 IUSE="python"
 
 RDEPEND=">=sys-libs/libsepol-${SEPOL_VER}[${MULTILIB_USEDEP}]
@@ -47,6 +38,8 @@ DEPEND="${RDEPEND}
 # tests are not meant to be run outside of the
 # full SELinux userland repo
 RESTRICT="test"
+
+S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
 	echo "# Set this to true to save the linked policy." >> "${S}/src/semanage.conf"
@@ -72,10 +65,6 @@ src_prepare() {
 	echo "# decompression of modules in the module store." >> "${S}/src/semanage.conf"
 	echo "bzip-small=true" >> "${S}/src/semanage.conf"
 
-	if [[ ${PV} != 9999 ]] ; then
-		# If wanted for live builds, please use /etc/portage/patches
-		epatch "${FILESDIR}/0001-libsemanage-do-not-copy-contexts-in-semanage_migrate.patch"
-	fi
 	epatch "${FILESDIR}"/${PN}-2.4-build-paths.patch
 
 	epatch_user
