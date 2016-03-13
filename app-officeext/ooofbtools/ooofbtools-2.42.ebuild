@@ -12,7 +12,7 @@ OFFICE_EXTENSIONS=(
 
 inherit office-ext-r1
 
-DESCRIPTION="Extension for converting and processing eBooks in FictionBook2 format with validator"
+DESCRIPTION="OpenOffice extension for the FictionBook2 format with validation"
 HOMEPAGE="https://sourceforge.net/projects/fbtools/"
 SRC_URI="mirror://sourceforge/fbtools/files/release/${MY_PN}-${PV}.zip"
 
