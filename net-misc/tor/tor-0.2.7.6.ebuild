@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -20,11 +20,12 @@ KEYWORDS="amd64 arm ~mips ppc ppc64 ~sparc x86 ~ppc-macos"
 IUSE="-bufferevents libressl scrypt seccomp selinux stats systemd tor-hardening transparent-proxy test web"
 
 DEPEND="
+	app-text/asciidoc
+	dev-libs/libevent
+	sys-libs/zlib
+	bufferevents? ( dev-libs/libevent[ssl] )
 	!libressl? ( dev-libs/openssl:0=[-bindist] )
 	libressl? ( dev-libs/libressl:= )
-	sys-libs/zlib
-	dev-libs/libevent
-	bufferevents? ( dev-libs/libevent[ssl] )
 	scrypt? ( app-crypt/libscrypt )
 	seccomp? ( sys-libs/libseccomp )
 	systemd? ( sys-apps/systemd )"
