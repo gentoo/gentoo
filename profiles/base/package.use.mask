@@ -5,6 +5,10 @@
 # This file requires >=portage-2.1.1
 # New entries go on top.
 
+# Requires unreleased dependency
+# kde-apps/kdevplatform:5
+kde-plasma/plasma-sdk plasmate
+
 # James Le Cuirot <chewi@gentoo.org> (2 Jan 2016)
 # Incorrectly depends on gjdoc, which is going to be
 # last-rited. Doesn't actually install the javadocs in this ebuild
