@@ -1,18 +1,18 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 
-inherit multilib
+inherit multilib-build
 
 if [ ${PV} == "9999" ] ; then
-	inherit git-2
+	inherit git-r3
 	EGIT_REPO_URI="https://bitbucket.org/mmueller2012/${PN}.git"
 else
 	inherit vcs-snapshot
 	SRC_URI="https://bitbucket.org/mmueller2012/${PN}/get/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64"
+	KEYWORDS="~amd64 ~x86"
 fi
 
 DESCRIPTION="Wine-based wrapper for running Windows plugins on POSIX systems"
@@ -20,19 +20,31 @@ HOMEPAGE="https://launchpad.net/pipelight"
 
 LICENSE="|| ( GPL-2+ LGPL-2.1+ MPL-1.1 )"
 SLOT="0"
-KEYWORDS=""
-IUSE=""
+IUSE="+abi_x86_32 abi_x86_64"
 
-DEPEND="app-emulation/wine[X,abi_x86_32,pipelight]"
+DEPEND="app-emulation/wine[X,${MULTILIB_USEDEP},pipelight]"
 RDEPEND="${DEPEND}
 	app-arch/cabextract
-	gnome-extra/zenity"
+	app-crypt/gnupg
+	media-fonts/corefonts
+	|| (
+		gnome-extra/zenity
+		kde-apps/kdialog
+	)"
 
-QA_FLAGS_IGNORED="usr/share/pipelight/pluginloader.exe
-	usr/share/pipelight/winecheck.exe"
+QA_FLAGS_IGNORED="usr/share/pipelight/pluginloader{,64}.exe
+	usr/share/pipelight/winecheck{,64}.exe"
 
 src_configure() {
-	econf --wine-path="${EPREFIX}/usr/bin/wine"
+	local myconf=( --wine-path="${EPREFIX}/usr/bin/wine" )
+	if use abi_x86_64; then
+		myconf+=(
+			--with-win64
+			--win64-cxx=wineg++
+			--wine64-path="${EPREFIX}/usr/bin/wine64"
+		)
+	fi
+	econf "${myconf[@]}"
 }
 
 src_install() {
