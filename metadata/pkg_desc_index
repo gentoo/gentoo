@@ -7925,7 +7925,7 @@ dev-python/seaborn 0.5.1 0.6.0 0.7.0: Statistical data visualization
 dev-python/selenium 2.46.0 2.47.1 2.49.0: Python language binding for Selenium Remote Control
 dev-python/semantic_version 2.4.1 2.4.2: Python library providing a few tools handling SemVer in Python.
 dev-python/send2trash 1.3.0: Sends files to the Trash (or Recycle Bin)
-dev-python/sepolgen 1.2.1-r1 1.2.2 9999: SELinux policy generation library
+dev-python/sepolgen 1.2.1-r1 1.2.2 1.2.3 9999: SELinux policy generation library
 dev-python/serpent 1.7 1.9 1.10 1.11 1.12: A simple serialization library based on ast.literal_eval
 dev-python/service_identity 14.0.0 16.0.0: Service identity verification for pyOpenSSL
 dev-python/setproctitle 1.1.8 1.1.9: Allow customization of the process title
@@ -13333,7 +13333,7 @@ media-video/kffmpegthumbnailer 1.1.0-r3: KDE thumbnailer based on ffmpegthumbnai
 media-video/kino 1.3.4: Kino is a non-linear DV editor for GNU/Linux
 media-video/kmplayer 0.11.3d-r3: Video player plugin for Konqueror and basic MPlayer frontend
 media-video/kplayer 0.7.2-r1: KPlayer is a KDE media player based on mplayer
-media-video/libav 9.14 9.17 11.3 11.3-r1 11.4 11.9999 9999: Complete solution to record, convert and stream audio and video
+media-video/libav 9.14 9.17 11.3 11.3-r1 11.4 11.6 11.9999 9999: Complete solution to record, convert and stream audio and video
 media-video/lives 1.4.6: LiVES is a Video Editing System
 media-video/loopy 0.5.3: Simple video player for KDE
 media-video/lsdvd 0.17: Utility for getting info out of DVDs
@@ -16267,7 +16267,7 @@ sys-apps/busybox 1.21.0 1.23.1 1.23.1-r1 1.23.2 1.24.1 9999: Utilities for rescu
 sys-apps/byld 1.0.3: build a Linux distribution on a single floppy
 sys-apps/cciss_vol_status 1.03 1.09 1.09-r1 1.10 1.11: Shows status of logical drives attached to HP SmartArray controllers
 sys-apps/ccs-tools 1.8.3_p20130214: TOMOYO Linux tools
-sys-apps/checkpolicy 2.2 2.3 2.4 9999: SELinux policy compiler
+sys-apps/checkpolicy 2.2 2.3 2.4 2.5 9999: SELinux policy compiler
 sys-apps/checkservice 1.2.0: Check the status of services running on local/remote machines
 sys-apps/chname 1.0-r1: Run a command with a new system hostname
 sys-apps/cinit 0.2.1: a fast, small and simple init with support for profiles
@@ -16426,7 +16426,7 @@ sys-apps/pcsc-tools 1.4.22 1.4.23 1.4.24 1.4.25: PC/SC Architecture smartcard to
 sys-apps/pkgcore 0.9.1 0.9.2 9999: pkgcore package manager
 sys-apps/pmount 0.9.99_alpha-r3 0.9.99_alpha-r5: Policy based mounter that gives the ability to mount removable devices as a user
 sys-apps/pmount-gui 0_pre20130806: A simple graphical frontend for pmount
-sys-apps/policycoreutils 2.2.5-r4 2.3-r3 2.4 2.4-r1 2.4-r2 9999: SELinux core utilities
+sys-apps/policycoreutils 2.2.5-r4 2.3-r3 2.4 2.4-r1 2.4-r2 2.5 9999: SELinux core utilities
 sys-apps/portage 2.2.8-r2 2.2.20.1 2.2.24 2.2.26 2.2.27 2.2.28 9999: Portage is the package management and distribution system for Gentoo
 sys-apps/powerpc-utils 1.1.3.18-r2: PowerPC utilities including nvsetenv, and additional OldWorld apps
 sys-apps/prctl 1.5: Tool to query and modify process behavior
@@ -16457,7 +16457,7 @@ sys-apps/s6-portable-utils 2.0.5.3: Set of tiny portable unix utilities
 sys-apps/salinfo 1.2: decode Itanium SAL records (e.g. various hardware errors)
 sys-apps/sandbox 2.6-r1 2.7 2.8 2.9 2.10-r1: sandbox'd LD_PRELOAD hack
 sys-apps/sdparm 1.07 1.09 1.10: Utility to output and modify parameters on a SCSI device, like hdparm
-sys-apps/secilc 9999: SELinux Common Intermediate Language (CIL) Compiler
+sys-apps/secilc 2.5 9999: SELinux Common Intermediate Language (CIL) Compiler
 sys-apps/sed 4.2.1-r1 4.2.2: Super-useful stream editor
 sys-apps/servicelog 1.0.1 1.1.11 1.1.13: Provides utilities for logging service-related events
 sys-apps/setserial 2.17-r4: Configure your serial ports with it
@@ -17076,9 +17076,9 @@ sys-libs/libosinfo 0.2.12 0.3.0: GObject library for managing information about 
 sys-libs/libraw1394 2.0.8 2.1.0-r1 2.1.1: library that provides direct access to the IEEE 1394 bus
 sys-libs/librtas 1.3.6 1.3.8 1.3.13: A set of libraries for userspace access to RTAS on the PowerPC platform(s)
 sys-libs/libseccomp 2.1.1 2.2.0 2.2.3 2.3.0: high level interface to Linux seccomp filter
-sys-libs/libselinux 2.2.2-r5 2.3-r2 2.4 9999: SELinux userland library
-sys-libs/libsemanage 2.2-r2 2.3-r4 2.4-r1 2.4-r2 9999: SELinux kernel and policy management library
-sys-libs/libsepol 2.2 2.3 2.4 9999: SELinux binary policy representation library
+sys-libs/libselinux 2.2.2-r5 2.3-r2 2.4 2.5 9999: SELinux userland library
+sys-libs/libsemanage 2.2-r2 2.3-r4 2.4-r1 2.4-r2 2.5 9999: SELinux kernel and policy management library
+sys-libs/libsepol 2.2 2.3 2.4 2.5 9999: SELinux binary policy representation library
 sys-libs/libservicelog 1.0.1 1.1.11 1.1.15: Provides a library for logging service-related events
 sys-libs/libsmbios 2.2.28: Provide access to (SM)BIOS information
 sys-libs/libspe2 2.2.80_p95-r1 2.3.0_p135: A wrapper library to adapt the JSRE SPU usage model to SPUFS
