@@ -15,7 +15,8 @@ KEYWORDS="~amd64 ~x86"
 
 IUSE=""
 
-DEPEND="dev-lang/ruby"
+DEPEND="dev-lang/ruby
+        dev-ruby/rubygems"
 RDEPEND="app-eselect/eselect-opencl"
 
 src_prepare() {
