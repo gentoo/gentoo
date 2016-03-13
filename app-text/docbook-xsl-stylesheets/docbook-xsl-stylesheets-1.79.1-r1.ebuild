@@ -1,8 +1,12 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
+
+USE_RUBY="ruby20 ruby21 ruby22 ruby23"
+
+inherit ruby-single
 
 DOCBOOKDIR="/usr/share/sgml/${PN/-//}"
 MY_PN="${PN%-stylesheets}"
@@ -18,13 +22,24 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~s
 IUSE="ruby"
 
 RDEPEND=">=app-text/build-docbook-catalog-1.1
-ruby? ( || ( dev-lang/ruby:2.0 dev-lang/ruby:2.1 dev-lang/ruby:2.2 ) )"
-DEPEND=""
+	ruby? ( ${RUBY_DEPS} )"
 
 S="${WORKDIR}/${MY_P}"
 
 # Makefile is broken since 1.76.0
 RESTRICT=test
+
+src_prepare() {
+	# Delete the unnecessary Java-related stuff and other tools as they
+	# bloat the stage3 tarballs massively. See bug #575818.
+	rm -rv extensions/ tools/ || die
+	find \( -name build.xml -o -name build.properties \) \
+		 -printf "removed %p\n" -delete || die
+
+	if ! use ruby; then
+	   rm -rv epub/ || die
+	fi
+}
 
 # The makefile runs tests, not builds.
 src_compile() { :; }
@@ -42,8 +57,8 @@ src_install() {
 	doins VERSION VERSION.xsl
 
 	local i
-	for i in $(find . -maxdepth 1 -mindepth 1 -type d -exec basename {} \;); do
-		[[ "$i" == "epub" ]] && ! use ruby && continue
+	for i in */; do
+		i=${i%/}
 
 		cd "${S}"/${i}
 		for doc in ChangeLog README; do
