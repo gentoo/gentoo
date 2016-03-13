@@ -1,0 +1,13 @@
+DEFINED_PHASES=install prepare
+DEPEND=>=media-libs/imlib2-1.0.3 >=media-libs/giblib-1.2.3 || ( media-libs/imlib2[gif] media-libs/imlib2[jpeg] media-libs/imlib2[png] )
+DESCRIPTION=Screen capture utility using imlib2 library
+EAPI=5
+HOMEPAGE=http://scrot.sourcearchive.com/
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ppc ~ppc64 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd
+LICENSE=feh LGPL-2+
+RDEPEND=>=media-libs/imlib2-1.0.3 >=media-libs/giblib-1.2.3 || ( media-libs/imlib2[gif] media-libs/imlib2[jpeg] media-libs/imlib2[png] )
+SLOT=0
+SRC_URI=http://scrot.sourcearchive.com/downloads/0.8-13/scrot_0.8.orig.tar.gz http://scrot.sourcearchive.com/downloads/0.8-13/scrot_0.8-13.debian.tar.gz
+_eclass_exported_funcs=src_prepare:- src_install:-
+_eclasses_=bash-completion-r1	acf715fa09463f043fbfdc1640f3fb85	eutils	9d81603248f2ba3ec59124320d123e5e	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_md5_=c9d1baf6cfc9ef10cfc764f6a811af36
