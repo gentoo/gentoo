@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -6,8 +6,7 @@ EAPI="4"
 
 inherit eutils multilib toolchain-funcs
 
-DESCRIPTION="An advanced, cross-platform object oriented scripting shell based
-on the squirrel scripting language"
+DESCRIPTION="Cross-platform object-oriented scripting shell using the squirrel language"
 HOMEPAGE="http://squirrelsh.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${P}-src.tar.bz2"
 
