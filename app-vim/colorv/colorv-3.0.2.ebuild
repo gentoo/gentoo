@@ -7,7 +7,7 @@ EAPI="5"
 inherit vim-plugin
 
 DESCRIPTION="vim plugin: a color tool for vim"
-HOMEPAGE="http://www.vim.org/scripts/script.php?script_id=3597"
+HOMEPAGE="http://www.vim.org/scripts/script.php?script_id=3597 https://github.com/Rykka/colorv.vim/"
 LICENSE="MIT"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
