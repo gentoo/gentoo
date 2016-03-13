@@ -1,11 +1,11 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 inherit eutils toolchain-funcs
 
-DESCRIPTION="Manage xkb features such as MouseKeys, AccessX, StickyKeys, BounceKeys and SlowKeys"
+DESCRIPTION="User preference utility for XKB extensions for X"
 HOMEPAGE="http://www.math.missouri.edu/~stephen/software/"
 SRC_URI="http://www.math.missouri.edu/~stephen/software/xkbset/${P}.tar.gz"
 
