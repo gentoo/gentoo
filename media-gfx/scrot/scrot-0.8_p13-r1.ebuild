@@ -32,7 +32,7 @@ src_prepare() {
 
 src_install() {
 	emake DESTDIR="${D}" install
-	rm -r "${D}"/usr/doc
+	rm -r "${D}"/usr/doc || die
 	dodoc AUTHORS ChangeLog
 
 	newbashcomp "${FILESDIR}"/${PN}.bash-completion ${PN}
