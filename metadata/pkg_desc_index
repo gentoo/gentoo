@@ -2576,7 +2576,7 @@ app-vim/session 2.10.1 2.12: vim plugin: extended session management for vim
 app-vim/showmarks 2.2: vim plugin: show location marks visually
 app-vim/sleuth 1.0 1.1: vim plugin: heuristically set buffer options
 app-vim/slimv 0.9.12-r1: vim plugin: aid Lisp development by providing a SLIME-like Lisp and Clojure REPL
-app-vim/snipmate 0.83: vim plugin: TextMate-style snippets
+app-vim/snipmate 0.83 0.87: vim plugin: TextMate-style snippets
 app-vim/splice 1.0.1: vim plugin: resolve conflicts during three-way merges
 app-vim/sudoedit 0.20 0.21: vim plugin: edit files using sudo or su
 app-vim/supertab 2.1: vim plugin: enhanced Tab key functionality
