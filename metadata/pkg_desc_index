@@ -18122,7 +18122,7 @@ x11-misc/lineak-xosdplugin 0.9.0-r1: Xosd plugin for LINEAK
 x11-misc/lineakd 0.9.0-r1: Linux support for Easy Access and Internet Keyboards
 x11-misc/lndir 1.0.3: create a shadow directory of symbolic links to another directory tree
 x11-misc/lsw 0.3: list window names
-x11-misc/lxmed 20110717 20120515: freedesktop.org specification compatible menu editor
+x11-misc/lxmed 20120515: freedesktop.org specification compatible menu editor
 x11-misc/macopix 1.7.4: MaCoPiX (Mascot Constructive Pilot for X) is a desktop mascot application on UNIX / X Window system
 x11-misc/magick-rotation 1.6.2-r2: Application that rotates tablet pc's screen automatically, depending on orientation
 x11-misc/makedepend 1.0.5: create dependencies in makefiles
