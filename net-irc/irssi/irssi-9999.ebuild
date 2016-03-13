@@ -13,7 +13,7 @@ HOMEPAGE="http://irssi.org/"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="ipv6 +perl selinux ssl socks5 +proxy libressl"
+IUSE="+perl selinux ssl socks5 +proxy libressl"
 
 CDEPEND="sys-libs/ncurses:0=
 	>=dev-libs/glib-2.6.0
@@ -55,8 +55,7 @@ src_configure() {
 		$(use_with proxy) \
 		$(use_with perl) \
 		$(use_with socks5 socks) \
-		$(use_enable ssl) \
-		$(use_enable ipv6)
+		$(use_enable ssl)
 }
 
 src_install() {
