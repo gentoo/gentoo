@@ -11,8 +11,8 @@ inherit linux-info xorg-2
 DESCRIPTION="X.Org driver for Intel cards"
 
 KEYWORDS="~amd64 ~x86 ~amd64-fbsd -x86-fbsd"
-IUSE="debug dri3 +sna +udev uxa xvmc"
-COMMIT_ID="636b52913cac10e691834a699cff10fb94d395fa"
+IUSE="debug +dri3 +sna +udev uxa xvmc"
+COMMIT_ID="5489402ca1fe17d5b4d20e4dcdc6ac8e6e415b0b"
 SRC_URI="http://cgit.freedesktop.org/xorg/driver/xf86-video-intel/snapshot/${COMMIT_ID}.tar.xz -> ${P}.tar.xz"
 
 S=${WORKDIR}/${COMMIT_ID}
