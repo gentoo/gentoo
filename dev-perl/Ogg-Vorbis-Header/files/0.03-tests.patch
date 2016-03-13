@@ -1,0 +1,37 @@
+diff --git a/Ogg-Vorbis-Header-0.03/MANIFEST b/Ogg-Vorbis-Header-0.03b/MANIFEST
+index 2a8649d..dc3369a 100644
+--- a/Ogg-Vorbis-Header-0.03/MANIFEST
++++ b/Ogg-Vorbis-Header-0.03b/MANIFEST
+@@ -3,7 +3,7 @@ Header.pm
+ Makefile.PL
+ MANIFEST
+ README
+-test.pl
++t/test.t
+ test.ogg
+ test.ogg.bak
+ LICENSE.GPL
+diff --git a/Ogg-Vorbis-Header-0.03/test.pl b/Ogg-Vorbis-Header-0.03b/t/test.t
+similarity index 92%
+rename from Ogg-Vorbis-Header-0.03/test.pl
+rename to Ogg-Vorbis-Header-0.03b/t/test.t
+index 8731290..7d7d0de 100644
+--- a/Ogg-Vorbis-Header-0.03/test.pl
++++ b/Ogg-Vorbis-Header-0.03b/t/test.t
+@@ -25,7 +25,7 @@ ok($ogg->load);
+ # Try all the routines
+ ok($ogg->info->{"rate"} == 44100);
+ ok($ogg->comment_tags);
+-ok(@{$ogg->comment("artist")}->[0] == "Dan");
++ok([$ogg->comment("artist")]->[0] eq "Dan");
+ ok($ogg->add_comments("moog", "bog"));
+ ok($ogg->edit_comment("moog", "bug"));
+ ok($ogg->delete_comment("artist"));
+@@ -36,6 +36,6 @@ ok($ogg->clear_comments);
+ 
+ # See if full load works
+ ok(my $ogg = Ogg::Vorbis::Header->load("test.ogg.2"));
+-ok(@{$ogg->comment("moog")}->[0] == "bug");
++ok([$ogg->comment("moog")]->[0] eq "bug");
+ 
+ unlink("test.ogg.2");

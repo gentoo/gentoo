@@ -21,6 +21,10 @@ RDEPEND="
 	media-libs/libvorbis
 "
 DEPEND="${RDEPEND}"
-
+PATCHES=(
+	# https://rt.cpan.org/Public/Bug/Display.html?id=104869
+	# + relocate to t/ to avoid installation
+	"${FILESDIR}/${MODULE_VERSION}-tests.patch"
+)
 SRC_TEST="do"
 MAKEOPTS="${MAKEOPTS} -j1"
