@@ -1,0 +1,32 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -24,7 +24,18 @@
+ # where to look first for cmake modules, before ${CMAKE_ROOT}/Modules/ is checked
+ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${ECM_MODULE_PATH} ${ECM_KDE_MODULE_DIR})
+ 
+-find_package(Qt5 REQUIRED NO_MODULE COMPONENTS Core DBus Gui Qml Quick Svg WebKit WebKitWidgets Widgets Xml)
++find_package(Qt5 REQUIRED NO_MODULE COMPONENTS Core DBus Gui Qml Quick Svg Widgets Xml)
++
++find_package(Qt5WebKit ${QT_MIN_VERSION} CONFIG)
++set_package_properties(Qt5WebKit PROPERTIES
++         PURPOSE "Required for plasmate"
++         TYPE OPTIONAL
++         )
++find_package(Qt5WebKitWidgets ${QT_MIN_VERSION} CONFIG)
++set_package_properties(Qt5WebKitWidgets PROPERTIES
++         PURPOSE "Required for plasmate"
++         TYPE OPTIONAL
++         )
+ 
+ find_package(Qt5Test ${QT_MIN_VERSION} CONFIG QUIET)
+ set_package_properties(Qt5Test PROPERTIES
+@@ -78,7 +89,7 @@
+ add_subdirectory(themeexplorer)
+ #add_subdirectory(remote-widgets-browser)
+ #add_subdirectory(wallpaperviewer)
+-if (KDevPlatform_FOUND)
++if (KDevPlatform_FOUND AND Qt5WebKit_FOUND AND Qt5WebKitWidgets_FOUND)
+     add_subdirectory(plasmate)
+ endif()
+ 
+
