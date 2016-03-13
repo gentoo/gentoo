@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 )
 
 inherit distutils-r1
 
-DESCRIPTION="System tray application for Google Voice, GMail, Google Calendar, Google Reader, and Google Wave"
+DESCRIPTION="System tray application for Google Voice, GMail, Calendar, Reader, and Wave"
 HOMEPAGE="http://googsystray.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
@@ -17,5 +17,5 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-DEPEND=" >=dev-python/pygtk-2.14[${PYTHON_USEDEP}]"
+DEPEND=">=dev-python/pygtk-2.14[${PYTHON_USEDEP}]"
 RDEPEND="${DEPEND}"

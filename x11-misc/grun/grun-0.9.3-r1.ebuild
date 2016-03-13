@@ -1,11 +1,11 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 inherit eutils
 
-DESCRIPTION="gRun is a GTK based Run dialog that closely resembles the Windows Run dialog, just like xexec"
+DESCRIPTION="A GTK based Run dialog resembling the Windows Run dialog, just like xexec"
 HOMEPAGE="https://github.com/lrgc/grun"
 SRC_URI="https://grun.googlecode.com/files/${P}.tar.gz"
 
