@@ -10,4 +10,4 @@ SLOT=0
 SRC_URI=http://scrot.sourcearchive.com/downloads/0.8-13/scrot_0.8.orig.tar.gz http://scrot.sourcearchive.com/downloads/0.8-13/scrot_0.8-13.debian.tar.gz
 _eclass_exported_funcs=src_prepare:- src_install:-
 _eclasses_=bash-completion-r1	acf715fa09463f043fbfdc1640f3fb85	eutils	9d81603248f2ba3ec59124320d123e5e	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
-_md5_=c9d1baf6cfc9ef10cfc764f6a811af36
+_md5_=8617c976cca86673d1d5b74286119cf9
