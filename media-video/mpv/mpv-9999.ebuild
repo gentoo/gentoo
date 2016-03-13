@@ -28,11 +28,11 @@ DOCS+=( README.md )
 # See Copyright in source tarball and bug #506946. Waf is BSD, libmpv is ISC.
 LICENSE="GPL-2+ BSD ISC"
 SLOT="0"
-IUSE="+alsa archive bluray cdda +cli doc drm dvb +dvd +egl +enca encode gbm
-	+iconv jack jpeg lcms +libass libav libcaca libguess libmpv lua luajit
-	openal +opengl oss pulseaudio raspberry-pi rubberband samba -sdl selinux
-	test uchardet v4l vaapi vdpau vf-dlopen wayland +X xinerama +xscreensaver
-	+xv zsh-completion"
+IUSE="aqua +alsa archive bluray cdda +cli coreaudio doc drm dvb +dvd +egl +enca
+	encode gbm +iconv jack jpeg lcms +libass libav libcaca libguess libmpv lua
+	luajit openal +opengl oss pulseaudio raspberry-pi rubberband samba -sdl
+	selinux test uchardet v4l vaapi vdpau vf-dlopen wayland +X xinerama
+	+xscreensaver +xv zsh-completion"
 
 REQUIRED_USE="
 	|| ( cli libmpv )
@@ -187,10 +187,10 @@ src_configure() {
 		$(use_enable openal)
 		--disable-opensles
 		$(use_enable alsa)
-		--disable-coreaudio
+		$(use_enable coreaudio)
 
 		# Video outputs
-		--disable-cocoa
+		$(use_enable aqua cocoa)
 		$(use_enable drm)
 		$(use_enable gbm)
 		$(use_enable wayland)
@@ -200,6 +200,7 @@ src_configure() {
 		$(use_enable xv)
 		$(use_enable xinerama)
 		$(use_enable X xrandr)
+		$(usex opengl "$(use_enable aqua gl-cocoa)" '--disable-gl-cocoa')
 		$(usex opengl "$(use_enable X gl-x11)" '--disable-gl-x11')
 		$(usex egl "$(use_enable X egl-x11)" '--disable-egl-x11')
 		$(usex egl "$(use_enable gbm egl-drm)" '--disable-egl-drm')
@@ -217,6 +218,7 @@ src_configure() {
 		$(use_enable opengl desktop-gl)
 
 		# HWaccels
+		# Automagic Video Toolbox HW acceleration. See Gentoo bug 577332.
 		$(use_enable vaapi vaapi-hwaccel)
 		# Automagic VDPAU HW acceleration. See Gentoo bug 558870.
 
@@ -226,6 +228,9 @@ src_configure() {
 		$(use_enable v4l libv4l2)
 		$(use_enable v4l audio-input)
 		$(use_enable dvb dvbin)
+
+		# OS-specific features
+		--disable-apple-remote
 	)
 
 	if use vaapi && use X; then
