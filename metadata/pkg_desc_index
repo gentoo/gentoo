@@ -17680,6 +17680,7 @@ www-servers/ocsigenserver 2.5-r2 2.6: Ocaml-powered webserver and framework for 
 www-servers/pathod 0.10 0.11.1 0.12.0: A collection of pathological tools for testing and torturing HTTP clients and servers
 www-servers/pound 2.6 2.7d 2.7f 2.7f-r1: A http/https reverse-proxy and load-balancer
 www-servers/pshs 0.2.6 0.3 0.3-r1 9999: Pretty small HTTP server -- a command-line tool to share files
+www-servers/puma 3.1.0: a simple, fast, threaded, and highly concurrent HTTP 1.1 server for Ruby/Rack
 www-servers/resin 4.0.46: A fast Servlet and JSP engine
 www-servers/servefile 0.4.4: Serve a single file via HTTP
 www-servers/spawn-fcgi 1.6.3-r1 1.6.3-r2 1.6.4: A FCGI spawner for lighttpd and cherokee and other webservers
