@@ -11,7 +11,7 @@ HOMEPAGE="http://sabre.io/baikal/"
 SRC_URI="https://github.com/fruux/Baikal/releases/download/${PV}/${P}.zip"
 
 LICENSE="GPL-3"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm"
 IUSE="+mysql sqlite"
 REQUIRED_USE="|| ( mysql sqlite )"
 
