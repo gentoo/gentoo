@@ -9803,7 +9803,7 @@ dev-vcs/hg-git 0.7.0 0.8.2 0.8.3 0.8.4 0.8.5: push to and pull from a Git reposi
 dev-vcs/hgsubversion 1.4 1.8.2 1.8.3 1.8.5 9999: hgsubversion is a Mercurial extension for working with Subversion repositories
 dev-vcs/hgsvn 0.2.3-r1: A set of scripts to work locally on Subversion checkouts using Mercurial
 dev-vcs/hgview 1.9.0: A Mercurial interactive history viewer
-dev-vcs/hub 1.12.4 2.2.0-r1 2.2.2 2.2.3: Command-line wrapper for git that makes you better at GitHub
+dev-vcs/hub 2.2.0-r1 2.2.2 2.2.3 2.2.3-r1: Command-line wrapper for git that makes you better at GitHub
 dev-vcs/kdesvn 1.6.0-r1 1.7.0: A frontend to the subversion vcs
 dev-vcs/mercurial 3.3.2 3.3.3 3.4.2 3.5.2 3.6.3 3.7.1 3.7.2 9999: Scalable distributed SCM
 dev-vcs/mercurial-server 1.1 1.2 9999: Mercurial authentication and authorization tools
@@ -17660,7 +17660,7 @@ www-plugins/kpartsplugin 20120723-r2: Plugin using KDE's KParts technology to em
 www-plugins/lightspark 0.7.2_p20150318: High performance flash player
 www-plugins/mozplugger 2.1.6: Streaming media plugin for Mozilla, based on netscape-plugger
 www-plugins/nspluginwrapper 1.4.4-r3: Netscape Plugin Wrapper - Load 32bit plugins on 64bit browser
-www-plugins/pipelight 0.2.7.3 0.2.8 9999: Wine-based wrapper for running Windows plugins on POSIX systems
+www-plugins/pipelight 0.2.8.2 9999: Wine-based wrapper for running Windows plugins on POSIX systems
 www-servers/adsf 1.2.0: A Dead Simple Fileserver is a static file server that can launch in a directory
 www-servers/apache 2.2.31 2.4.18 2.4.18-r1: The Apache Web Server
 www-servers/blogc-runserver 0.1.1 9999: A simple HTTP server to test blogc websites
