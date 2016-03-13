@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 PYTHON_COMPAT=( python{3_3,3_4} )
 inherit kde5 python-r1
@@ -26,8 +26,10 @@ DEPEND="${PYTHON_DEPS}
 	>=dev-cpp/yaml-cpp-0.5.1
 	>=dev-libs/boost-1.55:=[${PYTHON_USEDEP}]
 	$(add_frameworks_dep kconfig)
-	$(add_frameworks_dep ki18n)
 	$(add_frameworks_dep kcoreaddons)
+	$(add_frameworks_dep ki18n)
+	$(add_frameworks_dep kparts)
+	$(add_frameworks_dep kservice)
 	$(add_frameworks_dep solid)
 	dev-qt/linguist-tools:5
 	dev-qt/qtdbus:5
@@ -38,6 +40,7 @@ DEPEND="${PYTHON_DEPS}
 	sys-apps/dbus
 	sys-apps/dmidecode
 	sys-auth/polkit-qt[qt5]
+	>=sys-libs/kpmcore-2.1.0
 "
 
 RDEPEND="${DEPEND}
@@ -61,6 +64,8 @@ src_prepare() {
 	       PYTHON_INCLUDE_PATH="$(python_get_library_path)"\
 	       PYTHON_CFLAGS="$(python_get_CFLAGS)"\
 	       PYTHON_LIBS="$(python_get_LIBS)"
+
+	eapply_user
 }
 
 src_configure() {
