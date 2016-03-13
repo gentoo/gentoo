@@ -7239,7 +7239,7 @@ dev-python/json-tools 0.3.3 0.4.0: A set of tools to manipulate JSON: diff, patc
 dev-python/jsonfield 1.0.3: Reusable Django field that allows you to store validated JSON in your model
 dev-python/jsonmerge 1.1.0: Merge a series of JSON documents.
 dev-python/jsonpatch 1.9 1.11 1.13: Apply JSON-Patches according to http://tools.ietf.org/html/draft-pbryan-json-patch-04
-dev-python/jsonpickle 0.8.0 0.9.1 0.9.2: Python library for serializing any arbitrary object graph into JSON
+dev-python/jsonpickle 0.8.0 0.9.1 0.9.2 0.9.3: Python library for serializing any arbitrary object graph into JSON
 dev-python/jsonpointer 1.7 1.9 1.10: Identify specific nodes in a JSON document (according to draft 08)
 dev-python/jsonrpclib 0_pre20110820-r1 0_pre20150305 9999: python implementation of the JSON-RPC spec (1.0 and 2.0)
 dev-python/jsonschema 2.3.0 2.4.0 2.5.1-r2: An implementation of JSON-Schema validation for Python
@@ -7255,7 +7255,7 @@ dev-python/kazoo 1.3.1 2.0 2.2.1: A high-level Python library that makes it easi
 dev-python/keepassx 0.0.3 0.1.0: Python API and CLI for KeePassX
 dev-python/keyczar 0.71c 0.715: Toolkit for safe and simple cryptography
 dev-python/keyring 1.0 1.5 1.5-r1 1.6.1 3.1 3.3 3.7 4.0 8.2 8.3 8.4 8.4.1 8.5: Provides access to the system keyring service
-dev-python/keyrings_alt 1.1: Alternate keyring implementations
+dev-python/keyrings_alt 1.1 1.1.1: Alternate keyring implementations
 dev-python/keystonemiddleware 1.5.0 1.5.2 2.2.0 2.3.1-r1 2.3.2-r1 2.3.3: A middleware for the OpenStack Keystone API
 dev-python/kid 0.9.6-r1: A simple and Pythonic XML template language
 dev-python/kivy-garden 0.1.1: Kivys Garden tool to manage flowers
@@ -9279,12 +9279,12 @@ dev-tex/rail 1.2_p1: Offers syntax/railroad diagrams
 dev-tex/rcsinfo 1.9: A LaTeX module to acces RCS/CVS version info
 dev-tex/revtex 4 4.1_p2-r1: LaTeX2e macros for journals of the American Physical Society and the American Institute of Physics
 dev-tex/rubber 1.1_p20090819 1.4: A LaTeX wrapper for automatically building documents
-dev-tex/serienbrief 0.2.4 0.2.5: Easy creation of form letters written in LaTeX
+dev-tex/serienbrief 0.2.5: Easy creation of form letters written in LaTeX
 dev-tex/sketch 0.3.7: Produces drawings of two- or three-dimensional solid objects and scenes for TeX
 dev-tex/slatex 20090928: SLaTeX is a Scheme program that allows you to write Scheme code in your (La)TeX source
 dev-tex/style-check 0.14: Parses latex-formatted text in search of forbidden phrases
 dev-tex/svninfo 0.7.4: A LaTeX module to access SVN version info
-dev-tex/tex4ht 20090611_p1038-r1 20090611_p1038-r2 20090611_p1038-r3: Converts (La)TeX to (X)HTML, XML and OO.org
+dev-tex/tex4ht 20090611_p1038-r2 20090611_p1038-r3: Converts (La)TeX to (X)HTML, XML and OO.org
 dev-tex/texamator 1.7.5: A program aimed at helping you making your exercise sheets
 dev-tex/texmfind 2010.1: Locate the ebuild providing a certain texmf file through regexp
 dev-tex/texpower 0.2: A bundle of style and class files for creating dynamic online presentations
@@ -12429,7 +12429,7 @@ media-libs/opencollada 1.2.2_p20150207 9999: Stream based read/write library for
 media-libs/opencolorio 1.0.8 1.0.9 1.0.9-r1: A color management framework for visual effects and animation
 media-libs/opencore-amr 0.1.3-r1: Implementation of Adaptive Multi Rate Narrowband and Wideband speech codec
 media-libs/openctm 1.0.3: OpenCTM - the Open Compressed Triangle Mesh.
-media-libs/opencv 2.4.9 2.4.10 2.4.11 3.0.0 3.1.0-r1 3.1.0-r2: A collection of algorithms and sample code for various computer vision problems
+media-libs/opencv 2.4.9 2.4.10 2.4.11 2.4.12 3.0.0 3.1.0-r1 3.1.0-r2: A collection of algorithms and sample code for various computer vision problems
 media-libs/openexr 1.7.0 2.0.1-r1 2.1.0 2.2.0: ILM's OpenEXR high dynamic-range image file format libraries
 media-libs/openexr_ctl 1.0.1-r1 1.0.1-r2: OpenEXR CTL libraries
 media-libs/opengl-apple 3 4 5: Links to Apple's OpenGL X11 implementation
@@ -17824,7 +17824,7 @@ x11-drivers/xf86-video-geode 2.11.17 2.11.18: AMD Geode GX2 and LX video driver
 x11-drivers/xf86-video-glint 1.2.7 1.2.8 1.2.8-r1: GLINT/Permedia video driver
 x11-drivers/xf86-video-i128 1.3.5 1.3.6 1.3.6-r1: Number 9 I128 video driver
 x11-drivers/xf86-video-i740 1.3.5: Intel i740 video driver
-x11-drivers/xf86-video-intel 2.9.1 2.21.15 2.99.917-r2 2.99.917_p20160218 2.99.917_p20160224: X.Org driver for Intel cards
+x11-drivers/xf86-video-intel 2.9.1 2.21.15 2.99.917-r2 2.99.917_p20160224 2.99.917_p20160313: X.Org driver for Intel cards
 x11-drivers/xf86-video-ivtv 1.1.2 1.1.2-r1 1.1.2-r2: X.Org driver for TV-out on ivtvdev cards
 x11-drivers/xf86-video-mach64 6.9.5: ATI Mach64 video driver
 x11-drivers/xf86-video-mga 1.6.2 1.6.3 1.6.4: Matrox video driver
