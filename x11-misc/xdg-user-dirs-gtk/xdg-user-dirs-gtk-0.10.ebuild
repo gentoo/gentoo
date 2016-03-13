@@ -1,11 +1,11 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 inherit gnome.org readme.gentoo
 
-DESCRIPTION="xdg-user-dirs-gtk integrates xdg-user-dirs into the Gnome desktop and Gtk+ applications"
+DESCRIPTION="Integrates xdg-user-dirs into the Gnome desktop and Gtk+ applications"
 HOMEPAGE="http://www.freedesktop.org/wiki/Software/xdg-user-dirs"
 
 LICENSE="GPL-2"
