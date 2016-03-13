@@ -31,6 +31,7 @@ src_configure() {
 }
 
 src_install() {
-	default
-	rm -r "${ED%/}/usr/$(get_libdir)" || die
+	emake -C ppd DESTDIR="${D}" install
+	emake -C src DESTDIR="${D}" install
+	einstalldocs
 }
