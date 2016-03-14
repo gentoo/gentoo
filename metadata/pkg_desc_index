@@ -955,7 +955,7 @@ app-doc/devmanual 0_pre20141116 9999: The Gentoo Development Guide
 app-doc/diveintopython 2 3: 'Dive Into Python' by Mark Pilgrim - Python 3
 app-doc/doxygen 1.8.10-r1 1.8.11-r1 9999: Documentation system for most programming languages
 app-doc/edox-data 0.16.8.0.2: The Enlightenment online help
-app-doc/elisp-manual 18.1.03 19.2.4.2 20.2.5 21.2.8-r2 22.2.9 23.4 24.4 24.5: The GNU Emacs Lisp Reference Manual
+app-doc/elisp-manual 18.1.03 19.2.4.2 20.2.5 21.2.8-r2 22.2.9 23.4 24.5: The GNU Emacs Lisp Reference Manual
 app-doc/geant-docs 4.9.6 4.10.0 4.10.1 4.10.2: User documentation for Geant4 physics simulation toolkit
 app-doc/gimp-help 2.6.1: GNU Image Manipulation Program help files
 app-doc/gnucash-docs 2.6.9 2.6.11: Documentation package for GnuCash
@@ -1119,7 +1119,7 @@ app-emacs/doctest-mode 0.4: An Emacs major mode for editing Python source
 app-emacs/doxymacs 1.8.0-r3: Doxygen editing minor mode
 app-emacs/dropdown-list 20120329: Drop-down menu interface
 app-emacs/dts-mode 0.1.0_pre20141014: Emacs major mode for devicetree sources
-app-emacs/ebuild-mode 1.28 1.29: Emacs modes for editing ebuilds and other Gentoo specific files
+app-emacs/ebuild-mode 1.29: Emacs modes for editing ebuilds and other Gentoo specific files
 app-emacs/ecb 2.41_pre20140215-r1: Source code browser for Emacs
 app-emacs/edb 1.31: EDB, The Emacs Database
 app-emacs/edit-list 0.3: Edit a single list
@@ -15017,7 +15017,7 @@ net-wireless/hostapd 2.4-r2 2.4-r3 2.5: IEEE 802.11 wireless LAN Host AP daemon
 net-wireless/inspectrum 0.1.1 9999: a tool for analysing captured signals from software-defined radio receivers
 net-wireless/irda-utils 0.9.18-r4 0.9.18-r5: IrDA management and handling utilities
 net-wireless/iw 3.17 4.0 4.3: nl80211-based configuration utility for wireless devices using the mac80211 kernel stack
-net-wireless/kismet 2013.03.1-r2 9999: IEEE 802.11 wireless LAN sniffer
+net-wireless/kismet 2013.03.1-r2 2016.01.1 9999: IEEE 802.11 wireless LAN sniffer
 net-wireless/kismet-ubertooth 2015.09.2 2015.10.1 9999: Provides basic bluetooth support in kismet
 net-wireless/lorcon 0.0_p20150109 9999: A generic library for injecting 802.11 frames
 net-wireless/lorcon-old 9999: A generic library for injecting 802.11 frames
