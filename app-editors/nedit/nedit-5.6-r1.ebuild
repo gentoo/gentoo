@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -30,7 +30,8 @@ src_prepare() {
 	epatch \
 		"${FILESDIR}"/${P}-format.patch \
 		"${FILESDIR}"/${P}-ldflags.patch \
-		"${FILESDIR}"/${P}-40_Pointer_to_Integer.patch
+		"${FILESDIR}"/${P}-40_Pointer_to_Integer.patch \
+		"${FILESDIR}"/${P}-security.patch
 	sed \
 		-e "s:bin/:${EPREFIX}/bin/:g" \
 		-i Makefile source/preferences.c source/help_data.h source/nedit.c Xlt/Makefile || die
@@ -64,7 +65,7 @@ src_install() {
 	newbin source/nc neditc
 
 	make_desktop_entry "${PN}"
-	doicon "${FILESDIR}/${PN}.svg"
+	doicon "${FILESDIR}/${PN}.png"
 
 	newman doc/nedit.man nedit.1
 	newman doc/nc.man neditc.1
