@@ -62,7 +62,7 @@ src_install() {
 	fperms 700 /var/lib/i2pd/
 	dodir "/etc/${PN}"
 	insinto "/etc/${PN}"
-	doins "${FILESDIR}/${PN}.conf"
+	doins "${S}/debian/${PN}.conf"
 	doins "${FILESDIR}/tunnels.cfg"
 	doins "${S}/debian/subscriptions.txt"
 	fowners "${I2PD_USER}:${I2PD_GROUP}" "/etc/${PN}/${PN}.conf"
@@ -73,7 +73,7 @@ src_install() {
 	systemd_newunit "${FILESDIR}/${PN}-2.5.0.service" "${PN}.service"
 	doenvd "${FILESDIR}/99${PN}"
 	insinto /etc/logrotate.d
-	newins "${FILESDIR}/${PN}.logrotate" "${PN}"
+	newins "${FILESDIR}/${PN}-2.5.0.logrotate" "${PN}"
 }
 
 pkg_setup() {
