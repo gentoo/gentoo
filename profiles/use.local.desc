@@ -3992,6 +3992,7 @@ media-libs/libsdl2:tslib - Build with tslib support for touchscreen devices
 media-libs/libsdl2:video - Control video support (disable at your own risk)
 media-libs/libvisio:tools - Build conversion tools
 media-libs/libvpx:postproc - Enable additional post processing filters
+media-libs/libvpx:svc - Enable spatial-svc support (experimental)
 media-libs/libwebp:experimental - Build with -DWEBP_EXPERIMENTAL_FEATURES
 media-libs/libwebp:swap-16bit-csp - Enable byte swapping for 16 bit colorspace
 media-libs/libyami:capi - Add a C API interface, in addition to the C++.
