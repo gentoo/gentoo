@@ -127,6 +127,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-set-correct-seekable-flags.patch"
 	"${FILESDIR}/${P}-fix-bitrate-calculation.patch"
 	"${FILESDIR}/${P}-fix-coverart-decoding.patch"
+	"${FILESDIR}/${P}-add-missing-audio-reconfig-events.patch"
 )
 
 pkg_pretend() {
