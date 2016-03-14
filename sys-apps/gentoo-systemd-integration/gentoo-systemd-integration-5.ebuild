@@ -9,7 +9,7 @@ if [[ ${PV} == 9999 ]]; then
 	inherit autotools git-r3
 else
 	SRC_URI="https://dev.gentoo.org/~floppym/dist/${P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 fi
 
 inherit systemd
