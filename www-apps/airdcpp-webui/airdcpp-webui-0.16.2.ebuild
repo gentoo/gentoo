@@ -13,8 +13,7 @@ LICENSE="MIT"
 SLOT="0"
 IUSE=""
 
-DEPEND=""
-RDEPEND="net-p2p/airdcpp-webclient"
+RDEPEND="=net-p2p/airdcpp-webclient-${PV%.*}*"
 
 S="${WORKDIR}/package"
 
