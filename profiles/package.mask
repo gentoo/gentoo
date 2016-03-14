@@ -30,6 +30,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Patrice Clement <monsieurp@gentoo.org> (14 Mar 2016)
+# No activity nor release since 2010. Does not compile with Java 8.
+# Masked for removal. See bug 577368.
+dev-vcs/statsvn
+dev-vcs/statcvs
+
 # Mike Gilbert <floppym@gentoo.org> (12 Mar 2016)
 # Masked for testing.
 =sys-apps/systemd-229-r100
