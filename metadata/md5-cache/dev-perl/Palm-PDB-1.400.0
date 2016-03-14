@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=!<dev-perl/Palm-1.14.0 virtual/perl-ExtUtils-MakeMaker test? ( virtual/perl-Test-Simple ) dev-lang/perl:=
+DESCRIPTION=Parse Palm database files
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/Palm-PDB/
+IUSE=test examples
+KEYWORDS=~amd64 ~x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=!<dev-perl/Palm-1.14.0 dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/C/CJ/CJM/Palm-PDB-1.400.tar.gz
+_eclass_exported_funcs=src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:-
+_eclasses_=multiprocessing	e32940a7b2a9992ad217eccddb84d548	perl-functions	15aff0b9cba2282790142295ceb6be0c	perl-module	b2108b3c85ac7a6a6a9b035b54f6813c
+_md5_=ecc09302def8e22847ef20a57c7cd18b

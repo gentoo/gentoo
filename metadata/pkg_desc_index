@@ -5857,6 +5857,7 @@ dev-perl/Module-Versions-Report 1.60.0-r1: Report versions of all modules in mem
 dev-perl/MogileFS-Client 1.170.0-r1: Client library for the MogileFS distributed file system
 dev-perl/MogileFS-Client-Async 0.030.0-r1: MogileFS Client using AnyEvent non-blocking IO
 dev-perl/MogileFS-Network 0.060.0-r1: Network awareness and extensions for MogileFS::Server
+dev-perl/MogileFS-Server 2.700.0-r2: Server for the MogileFS distributed file system
 dev-perl/MogileFS-Utils 2.280.0-r1 2.290.0: Server for the MogileFS distributed file system
 dev-perl/Mon 0.110.0-r1: A Monitor Perl Module
 dev-perl/MongoDB 0.701.4 0.708.0.0 0.708.3.0 1.2.2: Official MongoDB Driver for Perl
@@ -5970,12 +5971,13 @@ dev-perl/OLE-StorageLite 0.190.0-r1: Simple Class for OLE document interface
 dev-perl/OOTools 2.300.0-r1: Pragma to implement lvalue accessors with options
 dev-perl/ORLite 1.980.0-r1: Extremely light weight SQLite-specific ORM
 dev-perl/ORLite-Migrate 1.100.0-r1: Extremely light weight SQLite-specific schema migration
-dev-perl/Object-Enum 0.72.0-r1: Replacement for if ($foo eq 'bar')
+dev-perl/Object-Enum 0.72.0-r1 0.75.0: Replacement for if ($foo eq 'bar')
 dev-perl/Object-MultiType 0.50.0: Perl Objects as Hash, Array, Scalar, Code and Glob at the same time
 dev-perl/Object-Realize-Later 0.180.0-r1 0.190.0: Delayed creation of objects
+dev-perl/Ogg-Vorbis-Header 0.30.0-r1: This module presents an object-oriented interface to Ogg Vorbis Comments and Information
 dev-perl/Ogg-Vorbis-Header-PurePerl 1.0.0-r1: Object-oriented interface to Ogg Vorbis information and comment fields
 dev-perl/Olson-Abbreviations 0.40.0: Globally unique timezones abbreviation handling
-dev-perl/OpenGL 0.670.3: Perl interface providing graphics display using OpenGL
+dev-perl/OpenGL 0.670.3 0.670.400: Perl interface providing graphics display using OpenGL
 dev-perl/PAR 1.5.0-r1 1.7.0-r1: Perl Archive Toolkit
 dev-perl/PAR-Dist 0.490.0-r1: Create and manipulate PAR distributions
 dev-perl/PBKDF2-Tiny 0.5.0: Minimalist PBKDF2 (RFC 2898) with HMAC-SHA1 or HMAC-SHA2
@@ -6003,11 +6005,13 @@ dev-perl/PPIx-EditorTools 0.170.0 0.180.0 0.190.0: Utility methods and base clas
 dev-perl/PPIx-Regexp 0.31.0 0.33.0: Represent a regular expression of some sort
 dev-perl/PPIx-Utilities 1.1.0-r1: Extensions to PPI
 dev-perl/Package-DeprecationManager 0.130.0-r1 0.150.0: Manage deprecation warnings for your distribution
-dev-perl/Package-Stash 0.360.0-r1: Routines for manipulating stashes
+dev-perl/Package-Stash 0.360.0-r1 0.370.0: Routines for manipulating stashes
 dev-perl/Package-Stash-XS 0.260.0 0.280.0: Faster and more correct implementation of the Package::Stash API
-dev-perl/Package-Variant 1.1.2-r1: Parameterizable packages
-dev-perl/PadWalker 1.960.0-r1 2.100.0: play with other peoples' lexical variables
-dev-perl/Pango 1.224.0 1.224.0-r1: Layout and render international text
+dev-perl/Package-Variant 1.1.2-r1 1.3.2: Parameterizable packages
+dev-perl/PadWalker 1.960.0-r1 2.100.0 2.200.0: play with other peoples' lexical variables
+dev-perl/Palm 1.12.0-r1 1.400.0: Read & write Palm OS databases (both PDB and PRC)
+dev-perl/Palm-PDB 1.400.0: Parse Palm database files
+dev-perl/Pango 1.224.0 1.224.0-r1 1.227.0: Layout and render international text
 dev-perl/Panotools-Script 0.280.0-r2: A perl module for reading, writing, and manipulating hugin script files
 dev-perl/ParaDNS 2.0.0-r1: a DNS lookup class for the Danga::Socket framework
 dev-perl/Parallel-ForkManager 1.20.0-r1: A simple parallel processing fork manager
@@ -6305,6 +6309,7 @@ dev-perl/Time-Stopwatch 1.0.0: Use tied scalars as timers
 dev-perl/Time-TAI64 2.110.0-r1: Time manipulation in the TAI64* formats
 dev-perl/Time-modules 2011.51.700-r1 2013.91.200: A Date/Time Parsing Perl Module
 dev-perl/TimeDate 2.300.0: A Date/Time Parsing Perl Module
+dev-perl/Tk 804.32.0-r1 804.33.0: A Perl Module for Tk
 dev-perl/Tk-CursorControl 0.400.0-r1: Manipulate the mouse cursor programmatically
 dev-perl/Tk-JPEG-Lite 2.14.30-r1: lite JPEG loader for Tk::Photo
 dev-perl/Tk-TableMatrix 1.230.0-r1: Perl module for Tk-TableMatrix
@@ -6471,15 +6476,11 @@ dev-perl/math-pari 2.10.806.50-r1 2.10.808: Perl interface to PARI
 dev-perl/maybe 0.20.200-r1: Use a Perl module and ignore error if can't be loaded
 dev-perl/mecab-perl 0.996: Perl binding for MeCab
 dev-perl/mime-construct 1.900.0-r1: construct and optionally mail MIME messages
-dev-perl/mogilefs-server 2.700.0-r2: Server for the MogileFS distributed file system
 dev-perl/namespace-autoclean 0.130.0-r1 0.240.0 0.280.0: Keep imports out of your namespace
 dev-perl/namespace-clean 0.210.0-r1 0.250.0 0.260.0: Keep imports and functions out of your namespace
-dev-perl/ogg-vorbis-header 0.30.0-r1: This module presents an object-oriented interface to Ogg Vorbis Comments and Information
-dev-perl/p5-Palm 1.12.0-r1: Perl Module for Palm Pilots
 dev-perl/pcsc-perl 1.4.13-r1 1.4.14: A Perl Module for PC/SC SmartCard access
 dev-perl/perl-ldap 0.630.0 0.650.0: A collection of perl modules which provide an object-oriented interface to LDAP servers
 dev-perl/perl-mozldap 1.5.2 1.5.3: Mozilla PerLDAP
-dev-perl/perl-tk 804.32.0-r1 804.33.0: A Perl Module for Tk
 dev-perl/perltidy 20130922.0.0 20140711.0.0: Perl script indenter and beautifier
 dev-perl/prefork 1.40.0-r1: Optimized module loading for forking or non-forking processes
 dev-perl/regexp-common 2013031301.0.0: Provide commonly requested regular expressions
@@ -10780,7 +10781,7 @@ gnome-base/gnome-menus 3.10.1-r1 3.13.3 3.13.3-r1: Library for the Desktop Menu 
 gnome-base/gnome-mime-data 2.18.0: MIME data for Gnome
 gnome-base/gnome-session 3.16.0 3.18.1.2: Gnome session manager
 gnome-base/gnome-settings-daemon 3.16.3 3.18.2: Gnome Settings Daemon
-gnome-base/gnome-shell 3.16.4 3.18.3 3.18.4: Provides core UI functions for the GNOME 3 desktop
+gnome-base/gnome-shell 3.16.4 3.18.3 3.18.4 3.18.4-r1: Provides core UI functions for the GNOME 3 desktop
 gnome-base/gnome-vfs 2.24.4-r2 2.24.4-r3 2.24.4-r4: Gnome Virtual Filesystem
 gnome-base/gsettings-desktop-schemas 3.16.1 3.18.1: Collection of GSettings schemas for GNOME desktop
 gnome-base/gvfs 1.24.2-r1 1.26.2-r1 1.26.3: Virtual filesystem implementation for gio
@@ -17020,7 +17021,7 @@ sys-kernel/cryptodev 1.7: device that allows access to Linux kernel cryptographi
 sys-kernel/dracut 034-r4 040-r3 041-r3 043-r2 044: Generic initramfs generation tool
 sys-kernel/genkernel 3.4.45.1 3.4.48 3.4.49.2 3.4.50 3.4.51.4 3.4.52.2 3.4.52.3 3.4.52.4 3.5.0.0 9999: Gentoo automatic kernel building scripts
 sys-kernel/genkernel-next 35 55 60 63: Gentoo automatic kernel building scripts, reloaded
-sys-kernel/gentoo-sources 3.4.110 3.4.9999 3.10.95 3.10.96 3.10.97 3.10.98 3.10.99 3.10.100 3.12.52-r1 3.12.53 3.12.54 3.12.55 3.12.56 3.12.9999 3.14.58-r1 3.14.59 3.14.60 3.14.61 3.14.62 3.14.63 3.18.25-r1 3.18.26 3.18.27 3.18.28 4.0.4 4.0.9 4.1.12 4.1.15-r1 4.1.16 4.1.17 4.1.18 4.1.19 4.4.0-r1 4.4.1 4.4.2 4.4.4 4.4.5 4.5.0: Full sources including the Gentoo patchset for the 4.5 kernel tree
+sys-kernel/gentoo-sources 3.4.110 3.4.9999 3.10.95 3.10.96 3.10.97 3.10.98 3.10.99 3.10.100 3.12.52-r1 3.12.53 3.12.54 3.12.55 3.12.56 3.12.9999 3.14.58-r1 3.14.59 3.14.60 3.14.61 3.14.62 3.14.63 3.14.64 3.18.25-r1 3.18.26 3.18.27 3.18.28 4.0.4 4.0.9 4.1.12 4.1.15-r1 4.1.16 4.1.17 4.1.18 4.1.19 4.4.0-r1 4.4.1 4.4.2 4.4.4 4.4.5 4.5.0: Full sources including the Gentoo patchset for the 4.5 kernel tree
 sys-kernel/git-sources 4.5_rc1 4.5_rc2 4.5_rc3 4.5_rc4 4.5_rc5 4.5_rc6 4.5_rc7: The very latest -git version of the Linux kernel
 sys-kernel/hardened-sources 4.1.7-r1 4.3.3-r4 4.4.2 4.4.3 4.4.3-r1 4.4.4 4.4.5 4.4.5-r1: Hardened kernel sources (kernel series 4.4)
 sys-kernel/kccmp 0.3: A simple tool for comparing two linux kernel .config files

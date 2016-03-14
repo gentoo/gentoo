@@ -1,14 +1,14 @@
 DEFINED_PHASES=compile install unpack
-DEPEND=media-libs/libdvdread media-video/lsdvd X? ( dev-perl/perl-tk dev-perl/Tk-JPEG-Lite virtual/cdrtools >=media-video/dvdauthor-0.6.5 >=app-cdr/dvd+rw-tools-5.13.4.7.4 )
+DEPEND=media-libs/libdvdread media-video/lsdvd X? ( dev-perl/Tk dev-perl/Tk-JPEG-Lite virtual/cdrtools >=media-video/dvdauthor-0.6.5 >=app-cdr/dvd+rw-tools-5.13.4.7.4 )
 DESCRIPTION=fast tool to backup Video DVDs 'on the fly'
 EAPI=0
 HOMEPAGE=http://www.badabum.de/streamdvd.html
 IUSE=X
 KEYWORDS=~x86 ~ppc ~amd64
 LICENSE=GPL-2
-RDEPEND=media-libs/libdvdread media-video/lsdvd X? ( dev-perl/perl-tk dev-perl/Tk-JPEG-Lite virtual/cdrtools >=media-video/dvdauthor-0.6.5 >=app-cdr/dvd+rw-tools-5.13.4.7.4 )
+RDEPEND=media-libs/libdvdread media-video/lsdvd X? ( dev-perl/Tk dev-perl/Tk-JPEG-Lite virtual/cdrtools >=media-video/dvdauthor-0.6.5 >=app-cdr/dvd+rw-tools-5.13.4.7.4 )
 SLOT=0
 SRC_URI=http://www.badabum.de/down/streamdvd-0.4.tar.gz
 _eclass_exported_funcs=src_unpack:- src_compile:- src_install:-
 _eclasses_=eutils	9d81603248f2ba3ec59124320d123e5e	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
-_md5_=9e1b4433bea94015b6437bb8548e81bc
+_md5_=e449e475a55443571416ee6bce2ac4da

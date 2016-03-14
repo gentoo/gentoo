@@ -6,9 +6,9 @@ HOMEPAGE=http://www.fvwm.org/
 IUSE=bidi debug doc gtk2-perl netpbm nls perl png readline rplay stroke svg tk truetype +vanilla xinerama lock
 KEYWORDS=~alpha amd64 ~arm ~ia64 ppc ~ppc64 ~sparc x86 ~x86-fbsd
 LICENSE=GPL-2 FVWM
-RDEPEND=sys-libs/zlib x11-libs/libICE x11-libs/libSM x11-libs/libX11 x11-libs/libXau x11-libs/libxcb x11-libs/libXcursor x11-libs/libXdmcp x11-libs/libXext x11-libs/libXfixes x11-libs/libXpm x11-libs/libXrandr x11-libs/libXrender bidi? ( dev-libs/fribidi ) png? ( media-libs/libpng:0= ) readline? ( sys-libs/ncurses:0= sys-libs/readline:0= ) stroke? ( dev-libs/libstroke ) svg? ( gnome-base/librsvg ) truetype? ( media-libs/fontconfig x11-libs/libXft ) xinerama? ( x11-proto/xineramaproto x11-libs/libXinerama ) dev-lang/perl gtk2-perl? ( dev-perl/gtk2-perl ) perl? ( tk? ( dev-lang/tk dev-perl/perl-tk >=dev-perl/X11-Protocol-0.56 ) ) rplay? ( media-sound/rplay ) lock? ( x11-misc/xlockmore ) userland_GNU? ( sys-apps/debianutils ) !x86-fbsd? ( netpbm? ( media-libs/netpbm ) )
+RDEPEND=sys-libs/zlib x11-libs/libICE x11-libs/libSM x11-libs/libX11 x11-libs/libXau x11-libs/libxcb x11-libs/libXcursor x11-libs/libXdmcp x11-libs/libXext x11-libs/libXfixes x11-libs/libXpm x11-libs/libXrandr x11-libs/libXrender bidi? ( dev-libs/fribidi ) png? ( media-libs/libpng:0= ) readline? ( sys-libs/ncurses:0= sys-libs/readline:0= ) stroke? ( dev-libs/libstroke ) svg? ( gnome-base/librsvg ) truetype? ( media-libs/fontconfig x11-libs/libXft ) xinerama? ( x11-proto/xineramaproto x11-libs/libXinerama ) dev-lang/perl gtk2-perl? ( dev-perl/gtk2-perl ) perl? ( tk? ( dev-lang/tk dev-perl/Tk >=dev-perl/X11-Protocol-0.56 ) ) rplay? ( media-sound/rplay ) lock? ( x11-misc/xlockmore ) userland_GNU? ( sys-apps/debianutils ) !x86-fbsd? ( netpbm? ( media-libs/netpbm ) )
 SLOT=0
 SRC_URI=ftp://ftp.fvwm.org/pub/fvwm/version-2/fvwm-2.6.5.tar.bz2
 _eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	9d81603248f2ba3ec59124320d123e5e	flag-o-matic	d270fa247153df66074f795fa42dba3e	libtool	b75230758539a7da029e24afdb693960	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
-_md5_=55797e81198ecfab212213b72100b097
+_md5_=c2572d0c0cd5ebbb0c658fd05b272467

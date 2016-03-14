@@ -1,5 +1,5 @@
 DEFINED_PHASES=install postinst
-DEPEND=userland_GNU? ( sys-apps/coreutils ) >=dev-perl/perl-tk-804.27.0 userland_GNU? ( app-arch/sharutils )
+DEPEND=userland_GNU? ( sys-apps/coreutils ) >=dev-perl/Tk-804.27.0 userland_GNU? ( app-arch/sharutils )
 DESCRIPTION=A GUI front-end to dd/dc3dd
 EAPI=4
 HOMEPAGE=http://air-imager.sourceforge.net/
@@ -10,4 +10,4 @@ RDEPEND=userland_GNU? ( sys-apps/coreutils ) app-arch/mt-st net-analyzer/netcat 
 SLOT=0
 SRC_URI=mirror://sourceforge/air-imager/air-2.0.0.tar.gz
 _eclass_exported_funcs=pkg_postinst:- src_install:-
-_md5_=3e00e3a0db7259d14a86d4da016a5273
+_md5_=3ce097b8c2e3f0d2839640ebda9805aa

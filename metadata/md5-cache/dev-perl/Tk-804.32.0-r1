@@ -1,13 +1,13 @@
 DEFINED_PHASES=compile configure install prepare test unpack
-DEPEND=media-libs/freetype >=media-libs/libpng-1.4:0 virtual/jpeg x11-libs/libX11 x11-libs/libXft dev-lang/perl:=[-build(-)]
+DEPEND=media-libs/freetype >=media-libs/libpng-1.4 virtual/jpeg x11-libs/libX11 x11-libs/libXft dev-lang/perl:=[-build(-)]
 DESCRIPTION=A Perl Module for Tk
 EAPI=5
 HOMEPAGE=http://search.cpan.org/dist/Tk/
 KEYWORDS=alpha amd64 arm hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~x86-freebsd ~x86-interix ~amd64-linux ~x86-linux ~sparc-solaris ~x86-solaris
 LICENSE=|| ( Artistic GPL-1+ ) BSD
-RDEPEND=media-libs/freetype >=media-libs/libpng-1.4:0 virtual/jpeg x11-libs/libX11 x11-libs/libXft dev-lang/perl:=[-build(-)]
+RDEPEND=media-libs/freetype >=media-libs/libpng-1.4 virtual/jpeg x11-libs/libX11 x11-libs/libXft dev-lang/perl:=[-build(-)]
 SLOT=0
-SRC_URI=mirror://cpan/authors/id/S/SR/SREZIC/Tk-804.033.tar.gz
+SRC_URI=mirror://cpan/authors/id/S/SR/SREZIC/Tk-804.032.tar.gz
 _eclass_exported_funcs=src_unpack:perl-module src_prepare:- src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
 _eclasses_=eutils	9d81603248f2ba3ec59124320d123e5e	multilib	3972ca401cf7dbb430df9995f5d8d580	multiprocessing	e32940a7b2a9992ad217eccddb84d548	perl-functions	15aff0b9cba2282790142295ceb6be0c	perl-module	b2108b3c85ac7a6a6a9b035b54f6813c	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	unpacker	1d149d9bda7723e740cfd28118f27813
-_md5_=8129b317a96c35f32acd7cbc63012765
+_md5_=e1492e08d80450c197eb52c7824ca723
