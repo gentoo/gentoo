@@ -1,0 +1,32 @@
+From 3f2209970cca8d9b2b977be3eab7587f72f65fbb Mon Sep 17 00:00:00 2001
+From: Bas Couwenberg <sebastic@xs4all.nl>
+Date: Sun, 1 Nov 2015 16:26:15 +0100
+Subject: [PATCH] Fix gpsdata handling for gpsd >= 3.12 (libgps22 |
+ GPSD_API_MAJOR_VERSION 6) #76
+
+---
+ src/GPS/qgpsdevice.cpp | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/src/GPS/qgpsdevice.cpp b/src/GPS/qgpsdevice.cpp
+index 04889f6..b0c146a 100644
+--- a/src/GPS/qgpsdevice.cpp
++++ b/src/GPS/qgpsdevice.cpp
+@@ -1056,10 +1056,17 @@ void QGPSDDevice::onDataAvailable()
+         satArray[i][0] = satArray[i][1] = satArray[i][2] = 0;
+     for (int i=0; i<num_sat; ++i)
+     {
++#if GPSD_API_MAJOR_VERSION > 5
++        int id = gpsdata->skyview[i].PRN;
++        satArray[id][0] = gpsdata->skyview[i].elevation;
++        satArray[id][1] = gpsdata->skyview[i].azimuth;
++        satArray[id][2] = gpsdata->skyview[i].ss;
++#else
+         int id = gpsdata->PRN[i];
+         satArray[id][0] = gpsdata->elevation[i];
+         satArray[id][1] = gpsdata->azimuth[i];
+         satArray[id][2] = gpsdata->ss[i];
++#endif
+     }
+     setNumSatellites(num_sat);
+ 
