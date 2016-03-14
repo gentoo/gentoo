@@ -62,7 +62,7 @@ src_install() {
 	fperms 700 /var/lib/i2pd/
 	dodir "/etc/${PN}"
 	insinto "/etc/${PN}"
-	doins "${FILESDIR}/${PN}.conf"
+	doins "${S}/debian/${PN}.conf"
 	doins "${FILESDIR}/tunnels.cfg"
 	doins "${S}/debian/subscriptions.txt"
 	fowners "${I2PD_USER}:${I2PD_GROUP}" "/etc/${PN}/${PN}.conf"
