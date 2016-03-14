@@ -2,23 +2,24 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 GENTOO_DEPEND_ON_PERL=no
 PYTHON_COMPAT=( python2_7 python3_{3,4} )
 
-inherit autotools flag-o-matic eutils toolchain-funcs multilib perl-app gnome2 python-single-r1
+inherit autotools flag-o-matic eutils toolchain-funcs multilib perl-module python-single-r1
 
 DESCRIPTION="GTK Instant Messenger client"
 HOMEPAGE="http://pidgin.im/"
 SRC_URI="
 	mirror://sourceforge/${PN}/${P}.tar.bz2
-	https://dev.gentoo.org/~polynomial-c/${PN}-eds-3.6.patch.bz2"
+	https://dev.gentoo.org/~polynomial-c/${PN}-eds-3.6.patch.bz2
+	https://gist.githubusercontent.com/imcleod/77f38d11af11b2413ada/raw/46e9d6cb4d2f839832dad2d697bb141a88028e04/pidgin-irc-join-sleep.patch -> ${PN}-2.10.9-irc_join_sleep.patch"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-freebsd ~amd64-linux ~x86-linux ~x86-macos"
-IUSE="dbus debug doc eds gadu gnutls +gstreamer +gtk idn meanwhile mxit"
+IUSE="dbus debug doc eds gadu gnutls +gstreamer +gtk idn meanwhile mxit pie"
 IUSE+=" networkmanager nls perl silc tcl tk spell sasl ncurses"
 IUSE+=" groupwise prediction python +xscreensaver zephyr zeroconf" # mono"
 IUSE+=" aqua"
@@ -120,6 +121,15 @@ DYNAMIC_PRPLS="irc,jabber,oscar,yahoo,simple,msn,myspace"
 #	x11-plugins/pidgin-sendscreenshot
 #	x11-plugins/pidgimpd
 
+PATCHES=(
+	"${FILESDIR}/${PN}-2.10.0-gold.patch"
+	"${WORKDIR}/${PN}-eds-3.6.patch"
+	"${FILESDIR}/${PN}-2.10.9-fix-gtkmedia.patch"
+	"${FILESDIR}/${PN}-2.10.10-eds-3.6-configure.ac.patch"
+	"${FILESDIR}/${PN}-2.10.11-tinfo.patch"
+	"${DISTDIR}/${PN}-2.10.9-irc_join_sleep.patch" # 577286
+)
+
 pkg_setup() {
 	if ! use gtk && ! use ncurses ; then
 		elog "You did not pick the ncurses or gtk use flags, only libpurple"
@@ -140,13 +150,7 @@ pkg_setup() {
 }
 
 src_prepare() {
-	epatch \
-		"${FILESDIR}"/${PN}-2.10.0-gold.patch \
-		"${WORKDIR}"/${PN}-eds-3.6.patch \
-		"${FILESDIR}"/${PN}-2.10.9-fix-gtkmedia.patch \
-		"${FILESDIR}"/${PN}-2.10.10-eds-3.6-configure.ac.patch \
-		"${FILESDIR}"/${PN}-2.10.11-tinfo.patch
-	epatch_user
+	default
 
 	eautoreconf
 }
@@ -155,6 +159,7 @@ src_configure() {
 	# Stabilize things, for your own good
 	strip-flags
 	replace-flags -O? -O2
+	use pie && CFLAGS="${CFLAGS} -fPIE -pie"
 
 	local myconf
 
@@ -221,7 +226,11 @@ src_configure() {
 }
 
 src_install() {
-	gnome2_src_install
+	# mimicking gnome2_src_install as that one is banned for >=EAPI-6 (*sigh*)
+	export GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL="1"
+	emake DESTDIR="${D}" install
+	unset GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL
+
 	if use gtk; then
 		# Fix tray pathes for kde-3.5, e16 (x11-wm/enlightenment) and other
 		# implementations that are not complient with new hicolor theme yet, #323355
@@ -243,7 +252,7 @@ src_install() {
 		python_optimize
 	fi
 
-	dodoc finch/plugins/pietray.py
+	dodoc ${DOCS} finch/plugins/pietray.py
 	docompress -x /usr/share/doc/${PF}/pietray.py
 
 	prune_libtool_files --all
