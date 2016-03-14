@@ -13863,7 +13863,7 @@ net-firewall/rtsp-conntrack 3.7: RTSP conntrack module for Netfilter
 net-firewall/sanewall 1.1.6-r1: iptables firewall generator (fork of firehol)
 net-firewall/shapecfg 36: configuration tool for setting traffic bandwidth parameters
 net-firewall/shorewall 4.6.10.1 5.0.2.1 5.0.4 5.0.5.1: A high-level tool for configuring Netfilter
-net-firewall/ufw 0.34_pre805-r2: A program used to manage a netfilter firewall
+net-firewall/ufw 0.34_pre805-r2 0.35: A program used to manage a netfilter firewall
 net-firewall/ufw-frontends 0.3.2-r3: Provides graphical frontend to ufw
 net-firewall/xtables-addons 1.47.1 2.8 2.9 2.10: extensions not yet accepted in the main kernel/iptables (patch-o-matic(-ng) successor)
 net-fs/autofs 5.0.7-r4 5.0.7-r5 5.0.10 5.1.0-r1 5.1.1 5.1.1-r1: Kernel based automounter
