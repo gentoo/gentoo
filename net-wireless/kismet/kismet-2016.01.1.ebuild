@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit eutils multilib user
+inherit autotools eutils multilib user
 
 MY_P=${P/\./-}
 MY_P=${MY_P/./-R}
@@ -51,7 +51,9 @@ RDEPEND="${CDEPEND}
 "
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-tinfo.patch
+	#aclocal-1.15: error: configure.ac:4: file 'm4/ax_pthread.m4' does not exist
+	#epatch "${FILESDIR}"/${P}-tinfo.patch
+	#eautoreconf
 
 	sed -i -e "s:^\(logtemplate\)=\(.*\):\1=/tmp/\2:" \
 		conf/kismet.conf.in
