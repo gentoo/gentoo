@@ -1,0 +1,179 @@
+diff -Naur ufw-0.31.orig/doc/ufw-framework.8 ufw-0.31/doc/ufw-framework.8
+--- ufw-0.31.orig/doc/ufw-framework.8	2012-03-10 00:07:11.000000000 +0100
++++ ufw-0.31/doc/ufw-framework.8	2012-03-12 16:55:50.680992962 +0100
+@@ -18,7 +18,7 @@
+ parameters and configuration of IPv6. The framework consists of the following
+ files:
+ .TP
+-#STATE_PREFIX#/ufw\-init
++#SHARE_DIR#/ufw\-init
+ initialization script
+ .TP
+ #CONFIG_PREFIX#/ufw/before[6].rules
+@@ -41,7 +41,7 @@
+ 
+ .SH "BOOT INITIALIZATION"
+ .PP
+-\fBufw\fR is started on boot with #STATE_PREFIX#/ufw\-init. This script is a
++\fBufw\fR is started on boot with #SHARE_DIR#/ufw\-init. This script is a
+ standard SysV style initscript used by the \fBufw\fR command and should not be
+ modified. It supports the following arguments:
+ .TP
+diff -Naur ufw-0.31.orig/README ufw-0.31/README
+--- ufw-0.31.orig/README	2012-03-10 00:07:11.000000000 +0100
++++ ufw-0.31/README	2012-03-12 16:55:50.681993089 +0100
+@@ -58,7 +58,7 @@
+ on your needs, this can be as simple as adding the following to a startup
+ script (eg rc.local for systems that use it):
+ 
+-# /lib/ufw/ufw-init start
++# /usr/share/ufw/ufw-init start
+ 
+ For systems that use SysV initscripts, an example script is provided in
+ doc/initscript.example. See doc/upstart.example for an Upstart example. Consult
+@@ -72,9 +72,9 @@
+ /etc/defaults/ufw 		high level configuration
+ /etc/ufw/before[6].rules 	rules evaluated before UI added rules
+ /etc/ufw/after[6].rules 	rules evaluated after UI added rules
+-/lib/ufw/user[6].rules		UI added rules (not to be modified)
++/etc/ufw/user/user[6].rules		UI added rules (not to be modified)
+ /etc/ufw/sysctl.conf 		kernel network tunables
+-/lib/ufw/ufw-init		start script
++/usr/share/ufw/ufw-init		start script
+ 
+ 
+ Usage
+@@ -149,7 +149,7 @@
+ that the primary chains don't move around other non-ufw rules and chains. To
+ completely flush the built-in chains with this configuration, you can use:
+ 
+-# /lib/ufw/ufw-init flush-all
++# /usr/share/ufw/ufw-init flush-all
+ 
+ Alternately, ufw may also take full control of the firewall by setting
+ MANAGE_BUILTINS=yes in /etc/defaults/ufw. This will flush all the built-in
+@@ -247,7 +247,7 @@
+ 
+ Remote Management
+ -----------------
+-On /lib/ufw/ufw-init start and 'ufw enable' the chains are flushed, so
++On /usr/share/ufw/ufw-init start and 'ufw enable' the chains are flushed, so
+ ssh may drop. This is needed so ufw is in a consistent state. Once the ufw is
+ 'enabled' it will insert rules into the existing chains, and therefore not
+ flush the chains (but will when modifying a rule or changing the default
+@@ -290,7 +290,7 @@
+ 
+ Distributions
+ -------------
+-While it certainly ok to use /lib/ufw/ufw-init as the initscript for
++While it certainly ok to use /usr/share/ufw/ufw-init as the initscript for
+ ufw, this script is meant to be used by ufw itself, and therefore not
+ particularly user friendly. See doc/initscript.example for a simple
+ implementation that can be adapted to your distribution.
+diff -Naur ufw-0.31.orig/setup.py ufw-0.31/setup.py
+--- ufw-0.31.orig/setup.py	2012-03-10 00:07:11.000000000 +0100
++++ ufw-0.31/setup.py	2012-03-12 16:55:50.682993216 +0100
+@@ -54,7 +54,8 @@
+             return
+ 
+         real_confdir = os.path.join('/etc')
+-        real_statedir = os.path.join('/lib', 'ufw')
++        # real_statedir = os.path.join('/lib', 'ufw')
++        real_statedir = os.path.join('/etc', 'ufw', 'user')
+         real_prefix = self.prefix
+         if self.home != None:
+             real_confdir = self.home + real_confdir
+@@ -116,7 +117,7 @@
+         self.copy_file('doc/ufw.8', manpage)
+         self.copy_file('doc/ufw-framework.8', manpage_f)
+ 
+-        # Install state files and helper scripts
++        # Install state files
+         statedir = real_statedir
+         if self.root != None:
+             statedir = self.root + real_statedir
+@@ -127,8 +128,14 @@
+         self.copy_file('conf/user.rules', user_rules)
+         self.copy_file('conf/user6.rules', user6_rules)
+ 
+-        init_helper = os.path.join(statedir, 'ufw-init')
+-        init_helper_functions = os.path.join(statedir, 'ufw-init-functions')
++        # Install helper scripts
++        sharedir = real_sharedir
++        if self.root != None:
++            sharedir = self.root + real_sharedir
++        self.mkpath(sharedir)
++
++        init_helper = os.path.join(sharedir, 'ufw-init')
++        init_helper_functions = os.path.join(sharedir, 'ufw-init-functions')
+         self.copy_file('src/ufw-init', init_helper)
+         self.copy_file('src/ufw-init-functions', init_helper_functions)
+ 
+@@ -199,13 +206,18 @@
+ 
+             subprocess.call(["sed",
+                              "-i",
++                             "s%#SHARE_DIR#%" + real_sharedir + "%g",
++                             f])
++
++            subprocess.call(["sed",
++                             "-i",
+                              "s%#VERSION#%" + ufw_version + "%g",
+                              f])
+ 
+         # Install pristine copies of rules files
+-        sharedir = real_sharedir
+-        if self.root != None:
+-            sharedir = self.root + real_sharedir
++        #sharedir = real_sharedir
++        #if self.root != None:
++        #    sharedir = self.root + real_sharedir
+         rulesdir = os.path.join(sharedir, 'iptables')
+         self.mkpath(rulesdir)
+         for file in [ before_rules, after_rules, \
+diff -Naur ufw-0.31.orig/src/backend_iptables.py ufw-0.31/src/backend_iptables.py
+--- ufw-0.31.orig/src/backend_iptables.py	2012-03-10 00:07:11.000000000 +0100
++++ ufw-0.31/src/backend_iptables.py	2012-03-12 16:58:36.879115890 +0100
+@@ -38,6 +38,7 @@
+         files = {}
+         config_dir = _findpath(ufw.common.config_dir, datadir)
+         state_dir = _findpath(ufw.common.state_dir, datadir)
++        share_dir = _findpath(ufw.common.share_dir, datadir)
+
+         files['rules'] = os.path.join(config_dir, 'ufw/user.rules')
+         files['before_rules'] = os.ppath.join(config_dir, 'ufw/before.rules')
+@@ -45,7 +46,7 @@
+         files['rules6'] = os.path.join(state_dir, 'user6.rules')
+         files['before6_rules'] = os.path.join(config_dir, 'ufw/before6.rules')
+         files['after6_rules'] = os.path.join(config_dir, 'ufw/after6.rules')
+-        files['init'] = os.path.join(_findpath(state_dir, rootdir), 'ufw-init')
++        files['init'] = os.path.join(_findpath(share_dir, rootdir), 'ufw-init')
+ 
+         ufw.backend.UFWBackend.__init__(self, "iptables", dryrun, files)
+ 
+diff -Naur ufw-0.31.orig/src/ufw-init ufw-0.31/src/ufw-init
+--- ufw-0.31.orig/src/ufw-init	2012-03-10 00:07:11.000000000 +0100
++++ ufw-0.31/src/ufw-init	2012-03-12 16:55:50.687993851 +0100
+@@ -18,10 +18,10 @@
+ #
+ set -e
+ 
+-if [ -s "${rootdir}#STATE_PREFIX#/ufw-init-functions" ]; then
+-    . "${rootdir}#STATE_PREFIX#/ufw-init-functions"
++if [ -s "${rootdir}#SHARE_DIR#/ufw-init-functions" ]; then
++    . "${rootdir}#SHARE_DIR#/ufw-init-functions"
+ else
+-    echo "Could not find ${rootdir}#STATE_PREFIX#/ufw-init-functions (aborting)"
++    echo "Could not find ${rootdir}#SHARE_DIR#/ufw-init-functions (aborting)"
+     exit 1
+ fi
+ 
+@@ -56,7 +56,7 @@
+     flush_builtins || exit "$?"
+     ;;
+ *)
+-    echo "Usage: #STATE_PREFIX#/ufw-init {start|stop|restart|force-reload|force-stop|flush-all|status}"
++    echo "Usage: #SHARE_DIR#/ufw-init {start|stop|restart|force-reload|force-stop|flush-all|status}"
+     exit 1
+     ;;
+ esac
