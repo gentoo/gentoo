@@ -2,6 +2,20 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# Thomas D. <whissi@whissi.de> (19 Mar 2016), on behalf of
+# Ian Delaney <idella4@gentoo.org> (19 Mar 2016)
+# for the proxy-maintainers project
+# Unkeyworded deps, bug #564274
+app-admin/collectd collectd_plugins_gmond
+app-admin/collectd collectd_plugins_ipmi
+app-admin/collectd collectd_plugins_modbus
+app-admin/collectd collectd_plugins_oracle
+app-admin/collectd collectd_plugins_routeros
+app-admin/collectd collectd_plugins_sigrok
+app-admin/collectd collectd_plugins_tokyotyrant
+app-admin/collectd collectd_plugins_varnish
+app-admin/collectd collectd_plugins_virt
+
 # Markus Meier <maekke@gentoo.org> (02 Mar 2016)
 # unkeyworded deps for bug #573324
 sci-mathematics/flint ntl
