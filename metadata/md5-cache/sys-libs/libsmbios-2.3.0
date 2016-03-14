@@ -1,14 +1,14 @@
 DEFINED_PHASES=configure install prepare setup
 DEPEND=dev-libs/libxml2 sys-libs/zlib nls? ( virtual/libintl ) python? ( >=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),python_single_target_python2_7(+)] ) virtual/pkgconfig doc? ( app-doc/doxygen ) graphviz? ( media-gfx/graphviz ) nls? ( sys-devel/gettext ) test? ( >=dev-util/cppunit-1.9.6 ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=Provide access to (SM)BIOS information
-EAPI=5
+EAPI=6
 HOMEPAGE=http://linux.dell.com/libsmbios/main/index.html
 IUSE=doc graphviz nls python static-libs test python_targets_python2_7
-KEYWORDS=amd64 ia64 x86
+KEYWORDS=~amd64 ~ia64 ~x86
 LICENSE=GPL-2 OSL-2.0
 RDEPEND=dev-libs/libxml2 sys-libs/zlib nls? ( virtual/libintl ) python? ( >=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),python_single_target_python2_7(+)] )
 SLOT=0
-SRC_URI=http://linux.dell.com/libsmbios/download/libsmbios/libsmbios-2.2.28/libsmbios-2.2.28.tar.bz2 http://linux.dell.com/libsmbios/download/libsmbios/old/libsmbios-2.2.28/libsmbios-2.2.28.tar.bz2
+SRC_URI=http://linux.dell.com/libsmbios/download/libsmbios/libsmbios-2.3.0/libsmbios-2.3.0.tar.xz http://linux.dell.com/libsmbios/download/libsmbios/old/libsmbios-2.3.0/libsmbios-2.3.0.tar.xz
 _eclass_exported_funcs=pkg_setup:- src_prepare:- src_configure:- src_install:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	9d81603248f2ba3ec59124320d123e5e	flag-o-matic	d270fa247153df66074f795fa42dba3e	libtool	b75230758539a7da029e24afdb693960	multilib	3972ca401cf7dbb430df9995f5d8d580	python-single-r1	2ebea8fbab356d63110245129a67a6dd	python-utils-r1	2e6826f6a93ad2acf904eecf5b5fb6d2	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
-_md5_=32820217ec1633bc6cf236eefe8b985d
+_md5_=6a25977d6b0b3a59c7c5740e1b940542
