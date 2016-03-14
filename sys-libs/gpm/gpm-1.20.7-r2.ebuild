@@ -29,6 +29,7 @@ DEPEND=">=sys-libs/ncurses-5.9-r3[${MULTILIB_USEDEP}]
 	virtual/yacc"
 
 src_prepare() {
+	epatch "${FILESDIR}"/${P}-sysmacros.patch
 	# fix ABI values
 	sed -i \
 		-e '/^abi_lev=/s:=.*:=1:' \
