@@ -8256,7 +8256,7 @@ dev-ros/controller_manager_tests 0.9.3 0.10.0 9999: Tests for the controller man
 dev-ros/convex_decomposition 0.1.10 9999: Convex Decomposition Tool for Robot Model
 dev-ros/costmap_2d 1.13.0 1.13.1 9999: Creates a 2D costmap from sensor data
 dev-ros/cpp_common 0.5.6 0.5.7 9999: C++ code for doing things that are not necessarily ROS related
-dev-ros/cv_bridge 1.11.8 1.11.9 1.11.10 1.11.11 9999: Converts between ROS Image messages and OpenCV images
+dev-ros/cv_bridge 1.11.8 1.11.9 1.11.10 1.11.11 1.11.12 9999: Converts between ROS Image messages and OpenCV images
 dev-ros/depth_image_proc 1.12.14 1.12.15 9999: Nodelets for processing depth images such as those produced by OpenNI camera
 dev-ros/depthimage_to_laserscan 1.0.7-r1 9999: Converts a depth image to a laser scan for use with navigation and localization
 dev-ros/diagnostic_aggregator 1.8.8 1.8.9 9999: Aggregates ROS diagnostics
@@ -8279,7 +8279,7 @@ dev-ros/gencpp 0.5.3 9999: ROS C++ message definition and serialization generato
 dev-ros/geneus 2.2.5 9999: EusLisp ROS message and service generators
 dev-ros/genlisp 0.4.15 9999: Common-Lisp ROS message and service generators
 dev-ros/genmsg 0.5.6 0.5.7 9999: Python library for generating ROS message and service data structures for various languages
-dev-ros/genpy 0.5.7 9999: Python ROS message and service generators
+dev-ros/genpy 0.5.7 0.5.8 9999: Python ROS message and service generators
 dev-ros/geodesy 0.4.0 9999: Python and C++ interfaces for manipulating geodetic coordinates
 dev-ros/geographic_msgs 0.4.0 9999: ROS messages for Geographic Information Systems
 dev-ros/geometric_shapes 0.4.3 0.4.4 9999: Generic definitions of geometric shapes and bodies
@@ -8302,7 +8302,7 @@ dev-ros/hector_pose_estimation_core 0.2.0 0.2.1 9999: Extended Kalman Filter (EK
 dev-ros/hector_slam_launch 0.3.3 0.3.4 9999: Launch files for launching hector_slam with different robot systems/setups/postprocessing scenarios
 dev-ros/hector_trajectory_server 0.3.3 0.3.4 9999: Keeps track of tf trajectories and makes this data accessible via a service and topic
 dev-ros/image_cb_detector 0.10.13 9999: Extracts checkerboard corners from ROS images
-dev-ros/image_geometry 1.11.8 1.11.9 1.11.10 1.11.11 9999: C++ and Python libraries for interpreting images geometrically
+dev-ros/image_geometry 1.11.8 1.11.9 1.11.10 1.11.11 1.11.12 9999: C++ and Python libraries for interpreting images geometrically
 dev-ros/image_proc 1.12.14 1.12.15 9999: Single image rectification and color processing
 dev-ros/image_rotate 1.12.14 1.12.15 9999: Rotates an image stream minimizing the angle between an arbitrary vector and the camera frame
 dev-ros/image_transport 1.11.7 1.11.8 1.11.9 1.11.10 9999: Transparent support for transporting images in low-bandwidth compressed formats
@@ -8332,11 +8332,11 @@ dev-ros/mavlink-gbp-release 2015.10.10 2015.12.12: MAVLink message marshaling li
 dev-ros/mavros 0.16.3-r1 0.16.4 0.16.5 0.16.6 0.17.0 9999: MAVLink extendable communication node for ROS
 dev-ros/mavros_extras 0.15.0 0.16.0 0.16.1 0.16.2 0.16.3 0.16.4 0.16.5 0.16.6 0.17.0 9999: Extra nodes and plugins for mavros
 dev-ros/mavros_msgs 0.15.0 0.16.0 0.16.1 0.16.2 0.16.3 0.16.4 0.16.5 0.16.6 0.17.0 9999: Messages for MAVROS
-dev-ros/message_filters 1.11.14 1.11.15 1.11.16 9999: Set of message filters which take in messages and may output those messages at a later time
+dev-ros/message_filters 1.11.14 1.11.15 1.11.16 1.11.17 9999: Set of message filters which take in messages and may output those messages at a later time
 dev-ros/message_generation 0.3.0 9999: Build-time dependencies for generating language bindings of messages
 dev-ros/message_runtime 0.4.12 9999: Package modeling the run-time dependencies for language bindings of messages
 dev-ros/message_to_tf 0.2.0 0.2.1 9999: Translates pose information from different kind of common_msgs message types to tf
-dev-ros/mk 1.12.3 1.12.5 9999: A collection of .mk include files for building ROS architectural elements
+dev-ros/mk 1.12.3 1.12.5 1.13.1 9999: A collection of .mk include files for building ROS architectural elements
 dev-ros/monocam_settler 0.10.13 9999: Listens on a ImageFeatures topic, and waits for the data to settle
 dev-ros/move_base 1.13.0 1.13.1 9999: Given a goal in the world, will attempt to reach it with a mobile base
 dev-ros/move_base_msgs 1.13.0 9999: Holds the action description and relevant messages for the move_base package
@@ -8351,8 +8351,8 @@ dev-ros/nodelet_tutorial_math 0.1.8 9999: Nodelet tutorial
 dev-ros/object_recognition_msgs 0.4.1 9999: ROS message and the actionlib definition used in object_recognition_core
 dev-ros/octomap_msgs 0.3.2 9999: Messages and serializations / conversion for the OctoMap library
 dev-ros/octomap_ros 0.4.0-r1 9999: Conversion functions between ROS / PCL and OctoMap's native types
-dev-ros/opencv_apps 1.11.8 1.11.9 1.11.10 1.11.11 9999: OpenCV applications for ROS
-dev-ros/opencv_tests 1.11.8 1.11.9 1.11.10 1.11.11 9999: Tests for ROS OpenCV integration
+dev-ros/opencv_apps 1.11.8 1.11.9 1.11.10 1.11.11 1.11.12 9999: OpenCV applications for ROS
+dev-ros/opencv_tests 1.11.8 1.11.9 1.11.10 1.11.11 1.11.12 9999: Tests for ROS OpenCV integration
 dev-ros/openni2_camera 0.2.5 9999: ROS drivers for the Asus Xtion and Primesense Devices
 dev-ros/openni2_launch 0.2.2 9999: Launch files to start the openni2_camera drivers using rgbd_launch
 dev-ros/openslam_gmapping 0.1.1 9999: ROS-ified version of gmapping SLAM
@@ -8382,37 +8382,37 @@ dev-ros/robot_pose_publisher 0.2.4 9999: A Simple Node to Publish the Robot's Po
 dev-ros/robot_state_publisher 1.10.4 1.12.0 1.12.1 9999: Package for publishing the state of a robot to tf
 dev-ros/rosapi 0.7.13 0.7.14 9999: Provides service calls for getting ros meta-information, like list of topics, services, params, etc.
 dev-ros/rosauth 0.1.7 9999: Server Side tools for Authorization and Authentication of ROS Clients
-dev-ros/rosbag 1.11.14 1.11.15 1.11.16 9999: Set of tools for recording from and playing back to ROS topics
-dev-ros/rosbag_storage 1.11.14 1.11.15 1.11.16 9999: Set of tools for recording from and playing back ROS message
-dev-ros/rosbash 1.12.3 1.12.5 9999: Assorted shell commands for using ros with bash
-dev-ros/rosboost_cfg 1.12.3 1.12.5 9999: Tool for determining cflags/lflags/etc. of boost on your system
+dev-ros/rosbag 1.11.14 1.11.15 1.11.16 1.11.17 9999: Set of tools for recording from and playing back to ROS topics
+dev-ros/rosbag_storage 1.11.14 1.11.15 1.11.16 1.11.17 9999: Set of tools for recording from and playing back ROS message
+dev-ros/rosbash 1.12.3 1.12.5 1.13.1 9999: Assorted shell commands for using ros with bash
+dev-ros/rosboost_cfg 1.12.3 1.12.5 1.13.1 9999: Tool for determining cflags/lflags/etc. of boost on your system
 dev-ros/rosbridge_library 0.7.13 0.7.14 9999: Core rosbridge package repsonsible for interpreting JSON and performing the appropriate ROS action
 dev-ros/rosbridge_server 0.7.13-r2 0.7.14 9999: A WebSocket interface to rosbridge
-dev-ros/rosbuild 1.12.3 1.12.5 9999: Scripts for managing the CMake-based build system for ROS
-dev-ros/rosclean 1.12.3 1.12.5 9999: Cleanup filesystem resources (e.g. log files)
-dev-ros/rosconsole 1.11.14 1.11.15 1.11.16 9999: ROS console output library
+dev-ros/rosbuild 1.12.3 1.12.5 1.13.1 9999: Scripts for managing the CMake-based build system for ROS
+dev-ros/rosclean 1.12.3 1.12.5 1.13.1 9999: Cleanup filesystem resources (e.g. log files)
+dev-ros/rosconsole 1.11.14 1.11.15 1.11.16 1.11.17 9999: ROS console output library
 dev-ros/rosconsole_bridge 0.4.2 9999: Connects console_bridge-based logging to rosconsole-based logging
-dev-ros/roscpp 1.11.14 1.11.15 1.11.16 9999: C++ implementation of ROS
+dev-ros/roscpp 1.11.14 1.11.15 1.11.16 1.11.17 9999: C++ implementation of ROS
 dev-ros/roscpp_serialization 0.5.6 0.5.7 9999: Code for serialization
 dev-ros/roscpp_traits 0.5.6 0.5.7 9999: Message traits code
 dev-ros/roscpp_tutorials 0.6.1 9999: Attempts to show the features of ROS step-by-step, including using messages, servers, parameters
-dev-ros/roscreate 1.12.3 1.12.5 9999: Tool that assists in the creation of ROS filesystem resources
-dev-ros/rosgraph 1.11.14 1.11.15 1.11.16 9999: Prints information about the ROS Computation Graph
+dev-ros/roscreate 1.12.3 1.12.5 1.13.1 9999: Tool that assists in the creation of ROS filesystem resources
+dev-ros/rosgraph 1.11.14 1.11.15 1.11.16 1.11.17 9999: Prints information about the ROS Computation Graph
 dev-ros/rosgraph_msgs 1.11.1 9999: Messages relating to ROS comm
-dev-ros/roslang 1.12.3 1.12.5 9999: Common package for all ROS client libraries
-dev-ros/roslaunch 1.11.16-r1 9999: Tool for easily launching multiple ROS nodes
-dev-ros/roslib 1.12.3 1.12.5 9999: Base dependencies and support libraries for ROS
+dev-ros/roslang 1.12.3 1.12.5 1.13.1 9999: Common package for all ROS client libraries
+dev-ros/roslaunch 1.11.16-r1 1.11.17 9999: Tool for easily launching multiple ROS nodes
+dev-ros/roslib 1.12.3 1.12.5 1.13.1 9999: Base dependencies and support libraries for ROS
 dev-ros/roslint 0.10.0 9999: Performs static checking of Python or C++ source code for errors and standards compliance
 dev-ros/roslisp 1.9.19 9999: Lisp client library for ROS
-dev-ros/roslz4 1.11.14 1.11.15 1.11.16 9999: Python and C++ implementation of the LZ4 streaming format
-dev-ros/rosmake 1.12.3 1.12.5 9999: ROS dependency aware build tool
-dev-ros/rosmaster 1.11.14 1.11.15 1.11.16 9999: ROS Master implementation
-dev-ros/rosmsg 1.11.14 1.11.15 1.11.16 9999: Command-line tools for displaying information about message and services
-dev-ros/rosnode 1.11.14 1.11.15 1.11.16 9999: Command-line tool for displaying debug information about ROS nodes
-dev-ros/rosout 1.11.14 1.11.15 1.11.16 9999: System-wide logging mechanism for messages sent to the /rosout topic
+dev-ros/roslz4 1.11.14 1.11.15 1.11.16 1.11.17 9999: Python and C++ implementation of the LZ4 streaming format
+dev-ros/rosmake 1.12.3 1.12.5 1.13.1 9999: ROS dependency aware build tool
+dev-ros/rosmaster 1.11.14 1.11.15 1.11.16 1.11.17 9999: ROS Master implementation
+dev-ros/rosmsg 1.11.14 1.11.15 1.11.16 1.11.17 9999: Command-line tools for displaying information about message and services
+dev-ros/rosnode 1.11.14 1.11.15 1.11.16 1.11.17 9999: Command-line tool for displaying debug information about ROS nodes
+dev-ros/rosout 1.11.14 1.11.15 1.11.16 1.11.17 9999: System-wide logging mechanism for messages sent to the /rosout topic
 dev-ros/rospack 2.2.5 9999: Retrieves information about ROS packages available on the filesystem
-dev-ros/rosparam 1.11.14 1.11.15 1.11.16 9999: Command-line tool for getting and setting ROS Parameters on the parameter server
-dev-ros/rospy 1.11.14 1.11.15 1.11.16 9999: Python client library for ROS
+dev-ros/rosparam 1.11.14 1.11.15 1.11.16 1.11.17 9999: Command-line tool for getting and setting ROS Parameters on the parameter server
+dev-ros/rospy 1.11.14 1.11.15 1.11.16 1.11.17 9999: Python client library for ROS
 dev-ros/rospy_tutorials 0.6.1 9999: Attempts to show the features of ROS step-by-step, including using messages, servers, parameters
 dev-ros/rosserial_arduino 0.7.1 9999: Libraries and examples for ROSserial usage on Arduino/AVR Platforms
 dev-ros/rosserial_client 0.7.1 9999: Generalized client side source for rosserial
@@ -8422,12 +8422,12 @@ dev-ros/rosserial_python 0.7.1 9999: A Python-based implementation of the ROS se
 dev-ros/rosserial_server 0.7.1 9999: C++ implementation of the rosserial server side
 dev-ros/rosserial_windows 0.7.1 9999: Libraries and examples for ROSserial usage on Windows Platforms
 dev-ros/rosserial_xbee 0.7.1 9999: Tools to do point to multipoint communication between rosserial nodes connected to an xbee
-dev-ros/rosservice 1.11.14 1.11.15 1.11.16 9999: Command-line tool for listing and querying ROS Services
-dev-ros/rostest 1.11.14 1.11.15 1.11.16 9999: Integration test suite based on roslaunch that is compatible with xUnit frameworks
+dev-ros/rosservice 1.11.14 1.11.15 1.11.16 1.11.17 9999: Command-line tool for listing and querying ROS Services
+dev-ros/rostest 1.11.14 1.11.15 1.11.16 1.11.17 9999: Integration test suite based on roslaunch that is compatible with xUnit frameworks
 dev-ros/rostime 0.5.6 0.5.7 9999: Time and Duration implementations for C++ libraries
-dev-ros/rostopic 1.11.14 1.11.15 1.11.16 9999: Command-line tool for displaying debug information about ROS Topics
-dev-ros/rosunit 1.12.3 1.12.5 9999: Unit-testing package for ROS
-dev-ros/roswtf 1.11.14 1.11.15 1.11.16 9999: Tool for diagnosing issues with a running ROS system
+dev-ros/rostopic 1.11.14 1.11.15 1.11.16 1.11.17 9999: Command-line tool for displaying debug information about ROS Topics
+dev-ros/rosunit 1.12.3 1.12.5 1.13.1 9999: Unit-testing package for ROS
+dev-ros/roswtf 1.11.14 1.11.15 1.11.16 1.11.17 9999: Tool for diagnosing issues with a running ROS system
 dev-ros/rotate_recovery 1.13.0 1.13.1 9999: Recovery behavior that attempts to clear space by performing a 360 degree rotation of the robot
 dev-ros/rqt_action 0.3.12 0.3.13 9999: Introspect all available ROS action (from actionlib) types
 dev-ros/rqt_bag 0.3.12 0.3.13 9999: GUI plugin for displaying and replaying ROS bag files
@@ -8442,24 +8442,24 @@ dev-ros/rqt_gui_py 0.2.14 9999: Enables GUI plugins to use the Python client lib
 dev-ros/rqt_image_view 0.3.12 0.3.13 9999: GUI plugin for displaying images using image_transport
 dev-ros/rqt_launch 0.3.12 0.3.13 9999: Easy view of .launch files
 dev-ros/rqt_logger_level 0.3.12 0.3.13 9999: GUI plugin for configuring the logger level of ROS nodes
-dev-ros/rqt_moveit 0.4.2 9999: Assists monitoring tasks for MoveIt! motion planner
+dev-ros/rqt_moveit 0.4.2 0.4.3 9999: Assists monitoring tasks for MoveIt! motion planner
 dev-ros/rqt_msg 0.3.12 0.3.13 9999: Python GUI plugin for introspecting available ROS message types
-dev-ros/rqt_nav_view 0.4.2 9999: Provides a gui for viewing navigation maps and paths
+dev-ros/rqt_nav_view 0.4.2 0.4.3 9999: Provides a gui for viewing navigation maps and paths
 dev-ros/rqt_plot 0.3.12 0.3.13 9999: GUI plugin visualizing numeric values in a 2D plot
-dev-ros/rqt_pose_view 0.4.2 9999: GUI plugin for visualizing 3D poses
+dev-ros/rqt_pose_view 0.4.2 0.4.3 9999: GUI plugin for visualizing 3D poses
 dev-ros/rqt_publisher 0.3.12 0.3.13 9999: GUI plugin for publishing arbitrary messages with fixed or computed field values
 dev-ros/rqt_py_common 0.3.12 0.3.13 9999: Common functionality for rqt plugins written in Python
 dev-ros/rqt_py_console 0.3.12 0.3.13 9999: Python GUI plugin providing an interactive Python console
 dev-ros/rqt_reconfigure 0.3.12 0.3.13 9999: Provides the way to view and edit the parameters that are accessible via dynamic_reconfigure
-dev-ros/rqt_robot_dashboard 0.4.2 9999: Infrastructure for building robot dashboard plugins in rqt
-dev-ros/rqt_robot_monitor 0.4.2 9999: Displays diagnostics_agg topics messages that are published by diagnostic_aggregator
-dev-ros/rqt_robot_steering 0.4.2 9999: GUI plugin for steering a robot using Twist messages
-dev-ros/rqt_runtime_monitor 0.4.2 9999: GUI plugin viewing DiagnosticsArray messages
-dev-ros/rqt_rviz 0.4.2 9999: GUI plugin embedding RViz
+dev-ros/rqt_robot_dashboard 0.4.2 0.4.3 9999: Infrastructure for building robot dashboard plugins in rqt
+dev-ros/rqt_robot_monitor 0.4.2 0.4.3 9999: Displays diagnostics_agg topics messages that are published by diagnostic_aggregator
+dev-ros/rqt_robot_steering 0.4.2 0.4.3 9999: GUI plugin for steering a robot using Twist messages
+dev-ros/rqt_runtime_monitor 0.4.2 0.4.3 9999: GUI plugin viewing DiagnosticsArray messages
+dev-ros/rqt_rviz 0.4.2 0.4.3 9999: GUI plugin embedding RViz
 dev-ros/rqt_service_caller 0.3.12 0.3.13 9999: GUI plugin for calling arbitrary services
 dev-ros/rqt_shell 0.3.12 0.3.13 9999: GUI plugin providing an interactive shell
 dev-ros/rqt_srv 0.3.12 0.3.13 9999: GUI plugin for introspecting available ROS message types
-dev-ros/rqt_tf_tree 0.4.2 9999: GUI plugin for visualizing the ROS TF frame tree
+dev-ros/rqt_tf_tree 0.4.2 0.4.3 9999: GUI plugin for visualizing the ROS TF frame tree
 dev-ros/rqt_top 0.3.12 0.3.13 9999: RQT plugin for monitoring ROS processes
 dev-ros/rqt_topic 0.3.12 0.3.13 9999: GUI plugin for displaying debug information about ROS topics
 dev-ros/rqt_web 0.3.12 0.3.13 9999: Simple web content viewer for rqt
@@ -8485,16 +8485,16 @@ dev-ros/test_bond 1.7.16 9999: Tests for bond, bondpy and bondcpp
 dev-ros/test_diagnostic_aggregator 1.8.8 1.8.9 9999: diagnostic_aggregator tests
 dev-ros/test_nodelet 1.9.3 9999: Nodelet unit tests
 dev-ros/test_nodelet_topic_tools 1.9.3 9999: Nodelet topic tools unit tests
-dev-ros/test_rosbag 1.11.14 1.11.15 1.11.16 9999: Unit tests for rosbag
-dev-ros/test_rosbag_storage 1.11.14 1.11.15 1.11.16 9999: Unit tests for rosbag_storage
-dev-ros/test_roscpp 1.11.14 1.11.15 1.11.16 9999: Unit tests for roscpp
-dev-ros/test_rosgraph 1.11.14 1.11.15 1.11.16 9999: Unit tests for rosgraph
-dev-ros/test_roslaunch 1.11.16-r1 9999: Unit tests for roslaunch
-dev-ros/test_roslib_comm 1.11.14 1.11.15 1.11.16 9999: Unit tests for roslib
-dev-ros/test_rosmaster 1.11.14 1.11.15 1.11.16 9999: Unit tests for rosmaster
-dev-ros/test_rosparam 1.11.14 1.11.15 1.11.16 9999: Unit tests for rosparam
-dev-ros/test_rospy 1.11.14 1.11.15 1.11.16 9999: Unit tests for rospy
-dev-ros/test_rosservice 1.11.14 1.11.15 1.11.16 9999: Unit tests for rospy
+dev-ros/test_rosbag 1.11.14 1.11.15 1.11.16 1.11.17 9999: Unit tests for rosbag
+dev-ros/test_rosbag_storage 1.11.14 1.11.15 1.11.16 1.11.17 9999: Unit tests for rosbag_storage
+dev-ros/test_roscpp 1.11.14 1.11.15 1.11.16 1.11.17 9999: Unit tests for roscpp
+dev-ros/test_rosgraph 1.11.14 1.11.15 1.11.16 1.11.17 9999: Unit tests for rosgraph
+dev-ros/test_roslaunch 1.11.16-r1 1.11.17 9999: Unit tests for roslaunch
+dev-ros/test_roslib_comm 1.11.14 1.11.15 1.11.16 1.11.17 9999: Unit tests for roslib
+dev-ros/test_rosmaster 1.11.14 1.11.15 1.11.16 1.11.17 9999: Unit tests for rosmaster
+dev-ros/test_rosparam 1.11.14 1.11.15 1.11.16 1.11.17 9999: Unit tests for rosparam
+dev-ros/test_rospy 1.11.14 1.11.15 1.11.16 1.11.17 9999: Unit tests for rospy
+dev-ros/test_rosservice 1.11.14 1.11.15 1.11.16 1.11.17 9999: Unit tests for rospy
 dev-ros/test_tf2 0.5.12-r1 0.5.13 9999: TF2 unit tests
 dev-ros/tf 1.11.7 1.11.8 9999: Maintains the relationship between coordinate frames in a tree structure buffered in time
 dev-ros/tf2 0.5.12 0.5.13 9999: The second generation Transform Library in ROS
@@ -8509,7 +8509,7 @@ dev-ros/tf2_tools 0.5.12 0.5.13 9999: TF2 tools
 dev-ros/tf_conversions 1.11.7 1.11.8 9999: Conversion functions to convert common tf datatypes into identical datatypes used by other libraries
 dev-ros/theora_image_transport 1.9.2 1.9.3 9999: Plugin to image_transport for transparently sending an image stream encoded with the Theora codec
 dev-ros/timestamp_tools 1.6.8 9999: Classes to help timestamp hardware events
-dev-ros/topic_tools 1.11.14 1.11.15 1.11.16 9999: Tools for directing, throttling and selecting ROS topics
+dev-ros/topic_tools 1.11.14 1.11.15 1.11.16 1.11.17 9999: Tools for directing, throttling and selecting ROS topics
 dev-ros/trajectory_msgs 1.12.3 1.12.4 9999: Messages for defining robot trajectories
 dev-ros/transmission_interface 0.9.3 0.10.0 9999: Transmission Interface
 dev-ros/turtle_actionlib 0.1.8 9999: Demonstrates how to write an action server and client with the turtlesim
@@ -8532,7 +8532,7 @@ dev-ros/visualization_marker_tutorials 0.9.2 9999: Visualization marker tutorial
 dev-ros/visualization_msgs 1.12.3 1.12.4 9999: Messages used by higher level packages that deal in visualization-specific data.
 dev-ros/voxel_grid 1.13.0 1.13.1 9999: Implementation of an efficient 3D voxel grid
 dev-ros/xacro 1.10.6 9999: XML macro language
-dev-ros/xmlrpcpp 1.11.14 1.11.15-r1 1.11.16-r1 9999: C++ implementation of the XML-RPC protocol
+dev-ros/xmlrpcpp 1.11.14 1.11.15-r1 1.11.16-r1 1.11.17 9999: C++ implementation of the XML-RPC protocol
 dev-ruby/GeoRuby 2.2.1-r2 2.5.2: Ruby data holder for OGC Simple Features
 dev-ruby/RubyInline 3.12.3 3.12.4: Allows to embed C/C++ in Ruby code
 dev-ruby/abstract 1.0.0-r2 1.0.0-r3: Library which enable you to define abstract method in Ruby
@@ -12651,6 +12651,7 @@ media-plugins/hexter 1.0.2 1.0.3: Yamaha DX7 modeling DSSI plugin
 media-plugins/imlib2_loaders 1.4.7 9999: image loader plugins for Imlib 2
 media-plugins/ir_lv2 1.3 1.3.2: LV2 convolver plugin especially for creating reverb effects
 media-plugins/kipi-plugins 4.4.0 4.12.0 4.14.0: Plugins for the KDE Image Plugin Interface
+media-plugins/kodi-pvr-hts 16_p20160220 16.9999: Tvheadend Live TV and Radio PVR client addon for Kodi
 media-plugins/ladspa-bs2b 0.9.1: LADSPA plugin for bs2b headphone filter
 media-plugins/libvisual-plugins 0.4.0-r3: collection of visualization plugins for use with the libvisual framework
 media-plugins/libvisual-projectm 2.0.1 2.1.0: A libvisual graphical music visualization plugin similar to milkdrop
@@ -15127,9 +15128,9 @@ ros-meta/pr2_common 1.11.9 1.11.10 1.11.11 1.11.13 1.11.14 9999: URDF descriptio
 ros-meta/qt_gui_core 0.2.29 9999: Integration of the ROS package system and ROS-specific plugins for a Qt-based GUI
 ros-meta/robot 1.2.0 9999: Metapackage which extends ros_base and includes ROS libaries for any robot hardware
 ros-meta/robot_model 1.11.8 1.11.9 1.11.10 9999: Packages for modeling various aspects of robot information
-ros-meta/ros 1.12.3 1.12.5 9999: ROS packaging system
+ros-meta/ros 1.12.3 1.12.5 1.13.1 9999: ROS packaging system
 ros-meta/ros_base 1.2.0 9999: Metapackage which extends ros_core and includes other basic non-robot tools
-ros-meta/ros_comm 1.11.14 1.11.15 1.11.16 9999: ROS communications-related packages
+ros-meta/ros_comm 1.11.14 1.11.15 1.11.16 1.11.17 9999: ROS communications-related packages
 ros-meta/ros_control 0.9.3 0.10.0 9999: Controller interfaces, controller managers, transmissions, hardware_interfaces, control_toolbox
 ros-meta/ros_core 1.2.0 9999: Metapackage to aggregate the packages required to use core ROS concepts
 ros-meta/ros_tutorials 0.6.1 9999: Demonstrates various features of ROS, as well as support packages which help demonstrate them
@@ -15138,11 +15139,11 @@ ros-meta/roscpp_core 0.5.6 0.5.7 9999: Underlying data libraries for roscpp mess
 ros-meta/rosserial 0.7.1 9999: Metapackage for core of rosserial
 ros-meta/rqt 0.2.14 9999: Qt-based framework for GUI development for ROS
 ros-meta/rqt_common_plugins 0.3.12 0.3.13 9999: ROS backend graphical tools suite that can be used on/off of robot runtime
-ros-meta/rqt_robot_plugins 0.4.2 9999: Metapackage of rqt plugins that are particularly used with robots during its operation
+ros-meta/rqt_robot_plugins 0.4.2 0.4.3 9999: Metapackage of rqt plugins that are particularly used with robots during its operation
 ros-meta/simulators 1.2.0 9999: Metapackage for ROS simulation packages
 ros-meta/slam_gmapping 1.3.8 9999: ROS wrapper for OpenSlam's Gmapping
 ros-meta/unique_identifier 1.0.5 9999: ROS messages and interfaces for universally unique identifiers
-ros-meta/vision_opencv 1.11.8 1.11.9-r1 1.11.10 1.11.11 9999: Converts between ROS Image messages and OpenCV images
+ros-meta/vision_opencv 1.11.8 1.11.9-r1 1.11.10 1.11.11 1.11.12 9999: Converts between ROS Image messages and OpenCV images
 ros-meta/vision_visp 0.8.0 0.9.1 9999: Virtual package providing ViSP related packages
 ros-meta/visualization_tutorials 0.9.2 9999: Metapackage referencing tutorials related to rviz and visualization
 ros-meta/viz 1.2.0 9999: Metapackage for ROS visualization packages
