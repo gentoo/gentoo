@@ -15551,7 +15551,7 @@ sci-geosciences/mapnik 2.0.1 2.0.2 2.1.0 2.2.0: A Free Toolkit for developing ma
 sci-geosciences/mapnik-world-boundaries 20090514: Mapnik World Boundaries
 sci-geosciences/mapserver 7.0.0: Development environment for building spatially enabled webapps
 sci-geosciences/mc2bsbh 0.0.9: MapCal to BSBchart Header Utility
-sci-geosciences/merkaartor 0.17.2 0.18.1-r2 9999: A Qt4 based map editor for the openstreetmap.org project
+sci-geosciences/merkaartor 0.17.2 0.18.1-r2 0.18.2 9999: A Qt4 based map editor for the openstreetmap.org project
 sci-geosciences/mkgmap 1995: Tool to create garmin maps
 sci-geosciences/mtkbabel 0.8.2 0.8.3.1: MTKBabel is a Perl program to operate the i-Blue 747 GPS data logger
 sci-geosciences/opencpn 3.0.2 3.2.2 4.0.0 4.0.0-r1: a free, open source software for marine navigation
