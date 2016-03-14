@@ -14,7 +14,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm ~x86"
 IUSE="htmlreport pcre qt4"
 
 RDEPEND="htmlreport? ( dev-python/pygments[${PYTHON_USEDEP}] )
