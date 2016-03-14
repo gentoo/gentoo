@@ -17085,7 +17085,7 @@ sys-libs/libselinux 2.2.2-r5 2.3-r2 2.4 2.5 9999: SELinux userland library
 sys-libs/libsemanage 2.2-r2 2.3-r4 2.4-r1 2.4-r2 2.5 9999: SELinux kernel and policy management library
 sys-libs/libsepol 2.2 2.3 2.4 2.5 9999: SELinux binary policy representation library
 sys-libs/libservicelog 1.0.1 1.1.11 1.1.15: Provides a library for logging service-related events
-sys-libs/libsmbios 2.2.28 2.3.0: Provide access to (SM)BIOS information
+sys-libs/libsmbios 2.2.28 2.3.0-r1: Provide access to (SM)BIOS information
 sys-libs/libspe2 2.2.80_p95-r1 2.3.0_p135: A wrapper library to adapt the JSRE SPU usage model to SPUFS
 sys-libs/libstatgrab 0.17 0.91: A tool to provide access to statistics about the system on which it's run
 sys-libs/libstdc++-v3 3.3.6 3.3.6-r1: Compatibility package for running binaries linked against a pre gcc 3.4 libstdc++
