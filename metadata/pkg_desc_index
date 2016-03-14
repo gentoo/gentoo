@@ -7898,7 +7898,7 @@ dev-python/rope 0.9.4-r1 0.10.2 0.10.3: Python refactoring library
 dev-python/ropeide 1.5.1-r2: Python refactoring IDE
 dev-python/ropemacs 0.7 0.8: Rope in Emacs
 dev-python/ropemode 0.2-r1 0.3: A helper for using rope refactoring library in IDEs
-dev-python/rosdistro 0.4.4 9999: Tools to work with catkinized rosdistro files
+dev-python/rosdistro 0.4.4 0.4.5 9999: Tools to work with catkinized rosdistro files
 dev-python/rospkg 1.0.38 9999: Standalone Python library for the ROS package system
 dev-python/routes 2.1-r1 2.2: A Python re-implementation of Rails routes system, mapping URL's to Controllers/Actions
 dev-python/rply 0.7.3 0.7.4: Pure python parser generator that also works with RPython
@@ -8240,7 +8240,7 @@ dev-ros/camera_calibration 1.12.14 1.12.15 9999: Calibration of monocular or ste
 dev-ros/camera_calibration_parsers 1.11.7 1.11.8 1.11.9 1.11.10 9999: Routines for reading and writing camera calibration parameters
 dev-ros/camera_info_manager 1.11.7 1.11.8 1.11.9 1.11.10 9999: C++ interface for camera calibration information
 dev-ros/carrot_planner 1.13.0 1.13.1 9999: Attempts to find a legal place to put a carrot for the robot to follow
-dev-ros/class_loader 0.3.2 9999: ROS-independent package for loading plugins
+dev-ros/class_loader 0.3.2 0.3.3 9999: ROS-independent package for loading plugins
 dev-ros/clear_costmap_recovery 1.13.0 1.13.1 9999: Recovery behavior that attempts to clear space by reverting the costmaps to the static map
 dev-ros/cmake_modules 0.4.0 9999: CMake Modules which are not distributed with CMake but are commonly used by ROS packages
 dev-ros/collada_parser 1.11.8 1.11.9 1.11.10 9999: C++ parser for the Collada robot description format
@@ -8410,7 +8410,7 @@ dev-ros/rosmaster 1.11.14 1.11.15 1.11.16 1.11.17 9999: ROS Master implementatio
 dev-ros/rosmsg 1.11.14 1.11.15 1.11.16 1.11.17 9999: Command-line tools for displaying information about message and services
 dev-ros/rosnode 1.11.14 1.11.15 1.11.16 1.11.17 9999: Command-line tool for displaying debug information about ROS nodes
 dev-ros/rosout 1.11.14 1.11.15 1.11.16 1.11.17 9999: System-wide logging mechanism for messages sent to the /rosout topic
-dev-ros/rospack 2.2.5 9999: Retrieves information about ROS packages available on the filesystem
+dev-ros/rospack 2.2.5 2.2.6 9999: Retrieves information about ROS packages available on the filesystem
 dev-ros/rosparam 1.11.14 1.11.15 1.11.16 1.11.17 9999: Command-line tool for getting and setting ROS Parameters on the parameter server
 dev-ros/rospy 1.11.14 1.11.15 1.11.16 1.11.17 9999: Python client library for ROS
 dev-ros/rospy_tutorials 0.6.1 9999: Attempts to show the features of ROS step-by-step, including using messages, servers, parameters
@@ -8477,7 +8477,7 @@ dev-ros/smach_ros 2.0.0 9999: Extensions for the SMACH library to integrate it t
 dev-ros/smclib 1.7.16 9999: The State Machine Compiler (SMC) converts the description of a state machine into source code
 dev-ros/sound_play 0.2.7 0.2.8 0.2.9 0.2.10 0.2.11 0.2.12 9999: ROS node that translates commands on a ROS topic (robotsound) into sounds
 dev-ros/stage_ros 1.7.5 9999: ROS specific hooks and tools for the Stage simulator
-dev-ros/std_msgs 0.5.9 9999: Standard ROS Messages
+dev-ros/std_msgs 0.5.9 0.5.10 9999: Standard ROS Messages
 dev-ros/std_srvs 1.11.1 9999: Messages relating to ROS comm
 dev-ros/stereo_image_proc 1.12.14 1.12.15 9999: Stereo and single image rectification and disparity processing
 dev-ros/stereo_msgs 1.12.3 1.12.4 9999: Messages specific to stereo processing, such as disparity images
