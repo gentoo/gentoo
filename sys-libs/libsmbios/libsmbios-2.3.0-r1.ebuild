@@ -43,6 +43,9 @@ src_prepare() {
 
 	>pkg/py-compile
 
+	# Don't build yum-plugin - we don't need it
+	sed '/yum-plugin/d' -i Makefile.am || die
+
 	eautoreconf
 }
 
@@ -61,14 +64,12 @@ src_configure() {
 src_install() {
 	emake install DESTDIR="${D}"
 
-	rm -r "${D}etc/yum" || die
-	rm -r "${D}usr/lib/yum-plugins" || die
 	if ! use python ; then
-		rmdir "${D}libsmbios_c" "${D}usr/share/smbios-utils" || die
-		rm -r "${D}etc" || die
+		rmdir "${ED%/}/libsmbios_c" "${ED%/}/usr/share/smbios-utils" || die
+		rm -r "${ED%/}/etc" || die
 	else
 		local python_scriptroot="/usr/sbin"
-		python_doscript "${D}"/usr/sbin/smbios-{lcd-brightness,passwd,rbu-bios-update,sys-info,token-ctl,wakeup-ctl,wireless-ctl}
+		python_doscript "${ED%/}"/usr/sbin/smbios-{{keyboard,thermal,token,wakeup,wireless}-ctl,lcd-brightness,passwd,rbu-bios-update,sys-info}
 	fi
 
 	insinto /usr/include/
