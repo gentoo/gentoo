@@ -11,7 +11,7 @@ SRC_URI="http://www.tomenet.eu/downloads/${P}.tar.bz2"
 
 LICENSE="Moria"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="dedicated server +sound X"
 
 RDEPEND="sys-libs/ncurses:0
