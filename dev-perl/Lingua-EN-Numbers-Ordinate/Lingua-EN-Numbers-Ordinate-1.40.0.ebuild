@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="Convert cardinal numbers(3) to ordinal numbers(3rd)"
 
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~sparc ~x86"
+KEYWORDS="alpha amd64 ia64 ppc sparc x86"
 IUSE="test"
 
 RDEPEND="

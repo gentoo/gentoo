@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="Porter's stemming algorithm for Russian (KOI8-R only)"
 
 SLOT="0"
-KEYWORDS="~amd64 ~ia64 ~ppc ~sparc ~x86"
+KEYWORDS="amd64 ia64 ~ppc sparc x86"
 IUSE="test"
 RDEPEND="
 	virtual/perl-Carp
