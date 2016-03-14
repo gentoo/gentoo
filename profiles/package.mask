@@ -30,6 +30,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Hans de Graaff <graaff@gentoo.org> (14 Mar 2016)
+# Not compatible with ruby21+, no reverse dependencies.
+dev-ruby/extlib
+
 # Patrice Clement <monsieurp@gentoo.org> (14 Mar 2016)
 # No activity nor release since 2010. Does not compile with Java 8.
 # Masked for removal. See bug 577368.
