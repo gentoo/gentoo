@@ -12242,6 +12242,7 @@ media-libs/jbig2dec 0.11-r1: A decoder implementation of the JBIG2 image compres
 media-libs/jbig2enc 0.28-r1: JBIG2 Encoder and libs
 media-libs/jbigkit 2.1: data compression algorithm for bi-level high-resolution images
 media-libs/jpeg 6b-r12 8d-r1 8d-r2 9a 9b: Library to load, handle and manipulate images in the JPEG format
+media-libs/kodi-platform 16_p20150805 16.9999: Kodi platform support library
 media-libs/kvazaar 0.7.1 0.7.2 0.8.2 0.8.3 9999: An open-source HEVC encoder
 media-libs/ladspa-cmt 1.16-r4: CMT (computer music toolkit) LADSPA library plugins
 media-libs/ladspa-sdk 1.13-r1 1.13-r2: The Linux Audio Developer's Simple Plugin API
