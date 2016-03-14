@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/triplea/${PN}_${MY_PV}_source_code_only.zip"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE=""
 RESTRICT="test" # Needs X11 maybe use virtualx.eclass
 
