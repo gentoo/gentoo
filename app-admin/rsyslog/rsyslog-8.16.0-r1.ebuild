@@ -134,7 +134,6 @@ src_prepare() {
 	default
 
 	eautoreconf
-	elibtoolize --patch-only
 }
 
 src_configure() {
