@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit eutils multilib user
+inherit autotools eutils multilib user
 
 MY_P=${P/\./-}
 MY_P=${MY_P/./-R}
