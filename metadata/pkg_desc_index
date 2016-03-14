@@ -9015,7 +9015,7 @@ dev-ruby/ruby-yadis 0.3.4-r2: A ruby library for performing Yadis service discov
 dev-ruby/ruby2ruby 2.1.4 2.2.0 2.3.0: Generates readable ruby from ParseTree
 dev-ruby/ruby_gntp 0.3.4: Ruby library for GNTP(Growl Notification Transport Protocol)
 dev-ruby/ruby_parser 3.6.6 3.7.2 3.7.3 3.8.1: A ruby parser written in pure ruby
-dev-ruby/rubygems 2.2.5-r1 2.5.1 2.5.2 2.6.1: Centralized Ruby extension management system
+dev-ruby/rubygems 2.2.5-r1 2.5.1 2.5.2 2.6.1 2.6.2: Centralized Ruby extension management system
 dev-ruby/rubyntlm 0.5.3 0.6.0: Ruby/NTLM provides message creator and parser for the NTLM authentication.
 dev-ruby/rubypants 0.2.0-r4 0.2.0-r5: A Ruby port of the SmartyPants PHP library
 dev-ruby/rubytest 0.7.0 0.8.1: Ruby Test is a universal test harness for Ruby
