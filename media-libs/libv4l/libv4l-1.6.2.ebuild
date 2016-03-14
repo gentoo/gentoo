@@ -36,6 +36,10 @@ pkg_setup() {
 	linux-info_pkg_setup
 }
 
+src_prepare() {
+	epatch "${FILESDIR}"/${P}-sysmacros.patch
+}
+
 multilib_src_configure() {
 	# Hard disable the flags that apply only to the utils.
 	ECONF_SOURCE=${S} \
