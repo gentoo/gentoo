@@ -52,6 +52,7 @@ RDEPEND="${CDEPEND}
 
 src_prepare() {
 	epatch "${FILESDIR}"/${P}-tinfo.patch
+	eautoreconf
 
 	sed -i -e "s:^\(logtemplate\)=\(.*\):\1=/tmp/\2:" \
 		conf/kismet.conf.in
