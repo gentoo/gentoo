@@ -34,7 +34,7 @@ CDEPEND="net-wireless/wireless-tools
 			)
 	pcre? ( dev-libs/libpcre )
 	suid? ( sys-libs/libcap )
-	client? ( sys-libs/ncurses )
+	client? ( sys-libs/ncurses:= )
 	!arm? ( speech? ( app-accessibility/flite ) )
 	ruby? ( dev-lang/ruby:* )
 	plugin-btscan? ( net-wireless/bluez )
