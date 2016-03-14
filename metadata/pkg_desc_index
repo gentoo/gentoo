@@ -16512,6 +16512,7 @@ sys-auth/consolekit 0.4.6 1.0.0-r1 1.0.1 9999: Framework for defining and tracki
 sys-auth/fingerprint-gui 1.07: Use Fingerprint Devices with Linux
 sys-auth/fprint_demo 0.4: a simple GTK+ application to demonstrate and test libfprint's capabilities
 sys-auth/fprintd 0.2.0-r1 0.4.1 0.5.0 0.5.1 0.6.0: D-Bus service to access fingerprint readers
+sys-auth/google-authenticator 1.01_pre20160307231538 9999: PAM Module for two step verification via mobile platform
 sys-auth/icmpdn 0.4: ICMP Domain Name utilities & NSS backend
 sys-auth/keystone 8.0.1-r1 8.1.0 2015.2.9999: The Openstack authentication, authorization, and service catalog
 sys-auth/libfprint 0.4.0 0.5.0-r1 0.5.1-r1 0.6.0-r2: library to add support for consumer fingerprint readers
