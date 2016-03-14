@@ -9,7 +9,8 @@ inherit eutils python-single-r1 flag-o-matic autotools
 
 DESCRIPTION="Provide access to (SM)BIOS information"
 HOMEPAGE="http://linux.dell.com/libsmbios/main/index.html"
-SRC_URI="http://linux.dell.com/libsmbios/download/libsmbios/${P}/${P}.tar.bz2"
+SRC_URI="http://linux.dell.com/libsmbios/download/libsmbios/${P}/${P}.tar.bz2
+	http://linux.dell.com/libsmbios/download/libsmbios/old/${P}/${P}.tar.bz2"
 
 LICENSE="GPL-2 OSL-2.0"
 SLOT="0"
