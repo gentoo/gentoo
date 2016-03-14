@@ -28,8 +28,6 @@ RDEPEND="${DEPEND}"
 
 src_prepare() {
 	if [[ ${PV} == "9999" ]] ; then
-		# Avoid building demos/tests all the time.
-		sed -i '/^noinst_PROGRAMS/s:^noinst:check:' configure.ac || die
 		eautoreconf
 	fi
 }
