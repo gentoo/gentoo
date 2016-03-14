@@ -2147,7 +2147,7 @@ app-shells/smrsh 8.15.2: Sendmail restricted shell, for use with MTAs other than
 app-shells/soapbox 0.3.1-r2: A preload (sandbox) library to restrict filesystem writes
 app-shells/squirrelsh 1.2.7: Cross-platform object-oriented scripting shell using the squirrel language
 app-shells/tcsh 6.17-r1 6.17.06 6.18.01 6.18.01-r2 6.18.01-r3 6.18.01-r4: Enhanced version of the Berkeley C shell (csh)
-app-shells/thefuck 3.5: Magnificent app which corrects your previous console command
+app-shells/thefuck 3.6: Magnificent app which corrects your previous console command
 app-shells/z 1.9: Change directory command that learns visited paths
 app-shells/zsh 5.0.5 5.0.7-r1 5.0.7-r2 5.0.8 5.1.1 5.2 9999: UNIX Shell similar to the Korn shell
 app-shells/zsh-completions 0.16.0 0.17.0 9999: Additional completion definitions for Zsh
@@ -2414,7 +2414,7 @@ app-text/tkinfo 2.8: Info Browser in TK
 app-text/tkman 2.2-r1: TkMan man and info page browser
 app-text/tofrodos 1.7.12a: text file conversion utility that converts ASCII files between the MSDOS format and the Unix format
 app-text/tokyodystopia 0.9.15: A fulltext search engine for Tokyo Cabinet
-app-text/trang 20091111 20151127: Multi-format schema converter based on RELAX NG
+app-text/trang 20151127: Multi-format schema converter based on RELAX NG
 app-text/tree 1.7.0: Lists directories recursively, and produces an indented listing of files
 app-text/ttf2pk2 1.5_p20120701 1.5_p20130530 2.0_p20140525 2.0_p20150521: Freetype 2 based TrueType font to TeX's PK format converter
 app-text/ttf2pt1 3.4.4-r1: True Type Font to Postscript Type 1 Converter
@@ -3865,7 +3865,7 @@ dev-java/gnu-regexp 1.1.4-r2 1.1.4-r3: GNU regular expression package for Java
 dev-java/groovy 1.7.5 1.8.5-r1 2.4.5: A multi-faceted language for the Java platform
 dev-java/gson 2.3.1: Java library to convert JSON to Java objects and vice-versa
 dev-java/guava 07 13.0.1 13.0.1-r3 14.0.1 15.0 16.0.1 17.0 18.0: A collection of Google's core Java libraries
-dev-java/guice 2.0-r1 4.0: Guice is a lightweight dependency injection framework for Java 5 and above
+dev-java/guice 4.0: Guice is a lightweight dependency injection framework for Java 5 and above
 dev-java/hamcrest-core 1.1 1.3: Core library of matchers for building test expressions
 dev-java/hamcrest-generator 1.1 1.3-r1: Code generator for Hamcrest's library of matchers for building test expressions
 dev-java/hamcrest-integration 1.3: Integration library of hamcrest
@@ -8916,7 +8916,7 @@ dev-ruby/rails-observers 0.1.2: Rails Observers
 dev-ruby/rails_autolink 1.1.6: This is an extraction of the auto_link method from rails
 dev-ruby/railties 3.2.22.1 3.2.22.2 4.0.13 4.1.14.1 4.1.14.2 4.1.15 4.2.5.1 4.2.5.2 4.2.6: Tools for creating, working with, and running Rails applications
 dev-ruby/rainbow 1.1.4 1.1.4-r1 2.0.0 2.0.0-r1 2.1.0: Colorize printed text on ANSI terminals
-dev-ruby/rake 0.9.6-r1 10.5.0 11.1.0: Make-like scripting in Ruby
+dev-ruby/rake 0.9.6-r1 10.5.0 11.1.0 11.1.1: Make-like scripting in Ruby
 dev-ruby/rake-compiler 0.9.2 0.9.2-r1 0.9.5 0.9.6: Provide a standard and simplified way to build and package Ruby extensions
 dev-ruby/rake-remote_task 2.3.0: Extends Rake with remote task goodness
 dev-ruby/rash 0.4.0-r2: Rash is an extension to Hashie
