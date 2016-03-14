@@ -1,20 +1,20 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 PYTHON_COMPAT=( python2_7 )
 
-inherit eutils python-single-r1 flag-o-matic autotools
+inherit autotools eutils flag-o-matic python-single-r1
 
 DESCRIPTION="Provide access to (SM)BIOS information"
 HOMEPAGE="http://linux.dell.com/libsmbios/main/index.html"
-SRC_URI="http://linux.dell.com/libsmbios/download/libsmbios/${P}/${P}.tar.bz2
-	http://linux.dell.com/libsmbios/download/libsmbios/old/${P}/${P}.tar.bz2"
+SRC_URI="http://linux.dell.com/libsmbios/download/libsmbios/${P}/${P}.tar.xz
+	http://linux.dell.com/libsmbios/download/libsmbios/old/${P}/${P}.tar.xz"
 
 LICENSE="GPL-2 OSL-2.0"
 SLOT="0"
-KEYWORDS="amd64 ia64 x86"
+KEYWORDS="~amd64 ~ia64 ~x86"
 IUSE="doc graphviz nls python static-libs test"
 
 RDEPEND="dev-libs/libxml2
@@ -28,20 +28,20 @@ DEPEND="${RDEPEND}
 	nls? ( sys-devel/gettext )
 	test? ( >=dev-util/cppunit-1.9.6 )"
 
+PATCHES=(
+	"${FILESDIR}/${PN}-fix-pie.patch"
+	"${FILESDIR}/${PN}-2.2.28-cppunit-tests.patch"
+	"${FILESDIR}/${PN}-2.3.0-doxygen_target.patch"
+)
+
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
 }
 
 src_prepare() {
-	epatch \
-		"${FILESDIR}"/${PN}-2.2.28-gcc46.patch \
-		"${FILESDIR}"/${PN}-fix-pie.patch \
-		"${FILESDIR}"/${PN}-2.2.28-cppunit-tests.patch
+	default
 
 	>pkg/py-compile
-
-	# dist-lzma was removed from automake-1.12 (bug #422779)
-	sed 's@dist-lzma@dist-xz@' -i "${S}"/configure.ac || die
 
 	eautoreconf
 }
@@ -61,11 +61,11 @@ src_configure() {
 src_install() {
 	emake install DESTDIR="${D}"
 
-	rm -rf "${D}etc/yum"
-	rm -rf "${D}usr/lib/yum-plugins"
+	rm -r "${D}etc/yum" || die
+	rm -r "${D}usr/lib/yum-plugins" || die
 	if ! use python ; then
-		rmdir "${D}libsmbios_c" "${D}usr/share/smbios-utils"
-		rm -rf "${D}etc"
+		rmdir "${D}libsmbios_c" "${D}usr/share/smbios-utils" || die
+		rm -r "${D}etc" || die
 	else
 		local python_scriptroot="/usr/sbin"
 		python_doscript "${D}"/usr/sbin/smbios-{lcd-brightness,passwd,rbu-bios-update,sys-info,token-ctl,wakeup-ctl,wireless-ctl}
