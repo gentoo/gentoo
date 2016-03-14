@@ -29,7 +29,8 @@ src_prepare() {
 	#respecting LDFLAGS, bug #208189
 	epatch \
 		"${FILESDIR}"/nedit-5.5_p20090914-ldflags.patch \
-		"${FILESDIR}"/${P}-40_Pointer_to_Integer.patch
+		"${FILESDIR}"/${P}-40_Pointer_to_Integer.patch \
+		"${FILESDIR}"/${P}-security.patch
 
 	sed \
 		-e "s:bin/:${EPREFIX}/bin/:g" \

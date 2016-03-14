@@ -30,7 +30,8 @@ src_prepare() {
 	epatch \
 		"${FILESDIR}"/${P}-format.patch \
 		"${FILESDIR}"/${P}-ldflags.patch \
-		"${FILESDIR}"/${P}-40_Pointer_to_Integer.patch
+		"${FILESDIR}"/${P}-40_Pointer_to_Integer.patch \
+		"${FILESDIR}"/${P}-security.patch
 	sed \
 		-e "s:bin/:${EPREFIX}/bin/:g" \
 		-i Makefile source/preferences.c source/help_data.h source/nedit.c Xlt/Makefile || die
