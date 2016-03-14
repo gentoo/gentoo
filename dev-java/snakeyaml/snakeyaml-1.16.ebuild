@@ -13,7 +13,7 @@ HOMEPAGE="https://bitbucket.org/asomov/snakeyaml"
 SRC_URI="https://bitbucket.org/asomov/${PN}/get/v${PV}.tar.bz2 -> ${P}.tar.bz2"
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="test"
 
 DEPEND=">=virtual/jdk-1.6
