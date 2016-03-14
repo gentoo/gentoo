@@ -1,0 +1,29 @@
+From 021cecbce289f1d9c68a156d5b8dd204a73bc715 Mon Sep 17 00:00:00 2001
+From: Christophe Fergeau <cfergeau@redhat.com>
+Date: Sun, 20 Dec 2015 20:51:52 +0100
+Subject: [PATCH] NetworkAgent: Fix double-unref in get_secrets_keyring_cb()
+
+In get_secrets_keyring_cb, we own a ref on the 'attributes' hash table
+from secret_item_get_attributes), and a ref on the 'secret' object (from
+secret_item_get_secret(), but in the SHELL_KEYRING_SK_TAG case, we unref
+these once before breaking out of the loop, and the second time after
+breaking out of the loop.
+
+https://bugzilla.gnome.org/show_bug.cgi?id=759708
+---
+ src/shell-network-agent.c | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/src/shell-network-agent.c b/src/shell-network-agent.c
+index 5d99167..da0f7e5 100644
+--- a/src/shell-network-agent.c
++++ b/src/shell-network-agent.c
+@@ -314,8 +314,6 @@ get_secrets_keyring_cb (GObject            *source,
+ 
+               secrets_found = TRUE;
+ 
+-              g_hash_table_unref (attributes);
+-              secret_value_unref (secret);
+               break;
+             }
+         }
