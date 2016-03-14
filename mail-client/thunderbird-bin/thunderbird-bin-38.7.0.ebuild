@@ -4,7 +4,7 @@
 
 EAPI="5"
 MOZ_ESR="0"
-MOZ_LIGHTNING_VER="4.0.2"
+MOZ_LIGHTNING_VER="4.0.7"
 
 # Can be updated using scripts/get_langs.sh from mozilla overlay
 MOZ_LANGS=(ar ast be bg bn-BD br ca cs cy da de el en en-GB en-US es-AR
@@ -32,12 +32,15 @@ DESCRIPTION="Thunderbird Mail Client"
 SRC_URI="${SRC_URI}
 	amd64? ( ${MOZ_HTTP_URI}/${MOZ_PV}/linux-x86_64/en-US/${MOZ_P}.tar.bz2 -> ${PN}_x86_64-${PV}.tar.bz2 )
 	x86? ( ${MOZ_HTTP_URI}/${MOZ_PV}/linux-i686/en-US/${MOZ_P}.tar.bz2 -> ${PN}_i686-${PV}.tar.bz2 )
-	${MOZ_HTTP_URI/${MOZ_PN}/calendar/lightning}/${MOZ_LIGHTNING_VER}/linux/lightning.xpi -> lightning-${MOZ_LIGHTNING_VER}.xpi
+	https://dev.gentoo.org/~axs/distfiles/lightning-${MOZ_LIGHTNING_VER}.tar.xz
 "
+# the below only works when upstream releases the xpi with all locales bundled
+#	${MOZ_HTTP_URI/${MOZ_PN}/calendar/lightning}/${MOZ_LIGHTNING_VER}/linux/lightning.xpi -> lightning-${MOZ_LIGHTNING_VER}.xpi
+
 HOMEPAGE="http://www.mozilla.com/thunderbird"
 RESTRICT="strip mirror"
 
-KEYWORDS="-* amd64 ~x86"
+KEYWORDS="-* amd64 x86"
 SLOT="0"
 LICENSE="MPL-2.0 GPL-2 LGPL-2.1"
 IUSE="+crashreporter selinux"
@@ -81,7 +84,7 @@ src_unpack() {
 
 	# Unpack language packs
 	mozlinguas_src_unpack
-	xpi_unpack lightning-${MOZ_LIGHTNING_VER}.xpi
+	#xpi_unpack lightning-${MOZ_LIGHTNING_VER}.xpi
 }
 
 src_install() {
