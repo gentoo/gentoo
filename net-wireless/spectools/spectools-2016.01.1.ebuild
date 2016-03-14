@@ -39,7 +39,6 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 # Upstream has still not migrated to the libusb-1 line.
-# Maemo: Add hildon and bbus
 
 src_prepare() {
 	epatch "${FILESDIR}"/${PN}-2011.08.1_p20140618-tinfo.patch
