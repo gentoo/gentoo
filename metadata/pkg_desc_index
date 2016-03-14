@@ -14971,7 +14971,7 @@ net-voip/homer 0.25-r1 9999: Homer Conferencing (short: Homer) is a free SIP sof
 net-voip/linphone 3.5.2 3.6.1: Video softphone based on the SIP protocol
 net-voip/openmcu 2.2.5: Simple Multi Conference Unit using H.323
 net-voip/telepathy-gabble 0.18.3: A Jabber/XMPP connection manager, with handling of single and multi user chats and voice calls
-net-voip/telepathy-haze 0.8.0: Telepathy connection manager providing libpurple supported protocols
+net-voip/telepathy-haze 0.8.0 0.8.0-r1: Telepathy connection manager providing libpurple supported protocols
 net-voip/telepathy-rakia 0.8.0: A SIP connection manager for Telepathy based around the Sofia-SIP library
 net-voip/telepathy-salut 0.8.1: A link-local XMPP connection manager for Telepathy
 net-voip/vidyodesktop 3.3.0.027-r1 3.3.0.127 3.5.4.010: Enterprise video conferencing platform
