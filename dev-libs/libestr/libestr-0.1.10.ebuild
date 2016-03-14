@@ -1,10 +1,10 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-inherit eutils
+inherit autotools
 
 DESCRIPTION="Library for some string essentials"
 HOMEPAGE="http://libestr.adiscon.com/"
@@ -13,16 +13,29 @@ SRC_URI="http://libestr.adiscon.com/files/download/${P}.tar.gz"
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~hppa ~x86"
-IUSE="debug static-libs"
+IUSE="debug static-libs test"
 
 DEPEND=""
 RDEPEND="${DEPEND}"
 
-src_configure()	{
-	econf $(use_enable debug) $(use_enable static-libs static)
+src_prepare() {
+	default
+
+	eautoreconf
+}
+
+src_configure() {
+	local myeconfargs=(
+		$(use_enable debug)
+		$(use_enable static-libs static)
+		$(use_enable test testbench)
+	)
+
+	econf "${myeconfargs[@]}"
 }
 
 src_install() {
 	default
-	prune_libtool_files
+
+	find "${ED}"usr/lib* -name '*.la' -delete || die
 }
