@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -21,7 +21,7 @@ IUSE="tk"
 
 DEPEND="net-dialup/ppp
 	dev-lang/perl
-	tk? ( dev-perl/perl-tk )"
+	tk? ( dev-perl/Tk )"
 RDEPEND="${DEPEND}
 	sys-apps/iproute2"
 

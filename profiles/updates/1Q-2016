@@ -31,3 +31,7 @@ move dev-perl/DateManip dev-perl/Date-Manip
 move dev-perl/wxperl dev-perl/Wx
 slotmove sys-devel/binutils 0 2.25.1
 move sys-fs/sshfs-fuse sys-fs/sshfs
+move dev-perl/perl-tk dev-perl/Tk
+move dev-perl/mogilefs-server dev-perl/MogileFS-Server
+move dev-perl/ogg-vorbis-header dev-perl/Ogg-Vorbis-Header
+move dev-perl/p5-Palm dev-perl/Palm

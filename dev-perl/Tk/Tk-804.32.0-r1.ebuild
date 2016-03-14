@@ -1,12 +1,11 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 
-MY_PN=Tk
 MODULE_AUTHOR=SREZIC
-MODULE_VERSION=804.033
+MODULE_VERSION=804.032
 inherit multilib perl-module
 
 DESCRIPTION="A Perl Module for Tk"
@@ -18,7 +17,7 @@ IUSE=""
 
 DEPEND="
 	media-libs/freetype
-	>=media-libs/libpng-1.4:0
+	>=media-libs/libpng-1.4
 	virtual/jpeg
 	x11-libs/libX11
 	x11-libs/libXft"
@@ -27,7 +26,9 @@ RDEPEND="${DEPEND}"
 # No test running here, requires an X server, and fails lots anyway.
 SRC_TEST="skip"
 PATCHES=(
-	"${FILESDIR}"/${P}-xorg.patch
+	"${FILESDIR}"/${PN}-804.31.0-xorg.patch
+	"${FILESDIR}"/freetype_location.patch
+	"${FILESDIR}"/mainwindow_segfaults.patch
 	)
 
 src_prepare() {

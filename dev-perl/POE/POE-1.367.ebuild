@@ -32,7 +32,7 @@ RDEPEND="
 		>=dev-perl/Socket6-0.14
 	)
 	tk? (
-		>=dev-perl/perl-tk-800.027
+		>=dev-perl/Tk-800.027
 	)
 	libwww? (
 		>=dev-perl/libwww-perl-5.79

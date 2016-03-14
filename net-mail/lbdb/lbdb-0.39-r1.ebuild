@@ -21,7 +21,7 @@ DEPEND="dev-libs/libvformat
 	abook? ( app-misc/abook )
 	crypt? ( app-crypt/gnupg )"
 RDEPEND="${DEPEND}
-	pda? ( dev-perl/p5-Palm )
+	pda? ( dev-perl/Palm )
 	ldap? ( dev-perl/perl-ldap )"
 # Bug 570726
 REQUIRED_USE="!nis"

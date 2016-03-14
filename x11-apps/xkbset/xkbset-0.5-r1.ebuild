@@ -22,7 +22,7 @@ DEPEND="
 "
 RDEPEND="
 	${CDEPEND}
-	tk? ( dev-perl/perl-tk )
+	tk? ( dev-perl/Tk )
 "
 
 src_prepare() {

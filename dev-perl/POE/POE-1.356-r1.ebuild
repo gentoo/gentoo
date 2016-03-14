@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -31,7 +31,7 @@ RDEPEND="
 		>=dev-perl/Socket6-0.14
 	)
 	tk? (
-		>=dev-perl/perl-tk-800.027
+		>=dev-perl/Tk-800.027
 	)
 	libwww? (
 		>=dev-perl/libwww-perl-5.79
