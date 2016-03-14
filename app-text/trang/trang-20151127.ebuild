@@ -13,7 +13,7 @@ HOMEPAGE="http://thaiopensource.com/relaxng/trang.html"
 SRC_URI="https://github.com/relaxng/jing-trang/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 COMMON_DEP="
 	dev-java/xerces:2
