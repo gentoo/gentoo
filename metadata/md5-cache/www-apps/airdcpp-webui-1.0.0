@@ -4,8 +4,8 @@ EAPI=6
 HOMEPAGE=https://www.npmjs.com/package/airdcpp-webui
 KEYWORDS=~amd64 ~x86
 LICENSE=MIT
-RDEPEND==net-p2p/airdcpp-webclient-0.16*
+RDEPEND==net-p2p/airdcpp-webclient-1.0*
 SLOT=0
-SRC_URI=https://registry.npmjs.org/airdcpp-webui/-/airdcpp-webui-0.16.2.tgz
+SRC_URI=https://registry.npmjs.org/airdcpp-webui/-/airdcpp-webui-1.0.0.tgz
 _eclass_exported_funcs=src_install:-
 _md5_=613fa7e5ff1f7a07d0852b3a3f068a22
