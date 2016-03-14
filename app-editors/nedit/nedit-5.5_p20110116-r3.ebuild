@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -7,8 +7,8 @@ EAPI=5
 inherit eutils toolchain-funcs
 
 DESCRIPTION="Multi-purpose text editor for the X Window System"
-HOMEPAGE="http://sourceforge.net/projects/nedit"
-SRC_URI="http://downloads.sourceforge.net/project/${PN}/${PN}-source/${P}a-src.tar.gz"
+HOMEPAGE="http://nedit.org/"
+SRC_URI="mirror://gentoo/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -23,14 +23,14 @@ DEPEND="${RDEPEND}
 	|| ( dev-util/yacc sys-devel/bison )
 	dev-lang/perl"
 
-S="${WORKDIR}/${PN}-5.6"
+S="${WORKDIR}/${PN}"
 
 src_prepare() {
 	#respecting LDFLAGS, bug #208189
 	epatch \
-		"${FILESDIR}"/${P}-format.patch \
-		"${FILESDIR}"/${P}-ldflags.patch \
+		"${FILESDIR}"/nedit-5.5_p20090914-ldflags.patch \
 		"${FILESDIR}"/${P}-40_Pointer_to_Integer.patch
+
 	sed \
 		-e "s:bin/:${EPREFIX}/bin/:g" \
 		-i Makefile source/preferences.c source/help_data.h source/nedit.c Xlt/Makefile || die
@@ -47,6 +47,8 @@ src_prepare() {
 	epatch_user
 }
 
+src_configure() { :; }
+
 src_compile() {
 	case "${CHOST}" in
 		*-darwin*)
@@ -56,7 +58,7 @@ src_compile() {
 			emake CC="$(tc-getCC)" AR="$(tc-getAR)" linux
 			;;
 	esac
-	emake VERSION="NEdit ${PV}" -C doc all
+	emake VERSION="NEdit ${PV}" -j1 -C doc all
 }
 
 src_install() {
@@ -64,7 +66,7 @@ src_install() {
 	newbin source/nc neditc
 
 	make_desktop_entry "${PN}"
-	doicon "${FILESDIR}/${PN}.svg"
+	doicon "${FILESDIR}/${PN}.png"
 
 	newman doc/nedit.man nedit.1
 	newman doc/nc.man neditc.1
