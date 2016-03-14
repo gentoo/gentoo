@@ -176,9 +176,8 @@ wine_build_environment_check() {
 	# bug #574044
 	if use abi_x86_64 && [[ $(gcc-major-version) = 5 && $(gcc-minor-version) = 3 ]]; then
 		einfo "Checking for gcc-5-3 stack realignment compiler bug ..."
-		$(tc-getCC) -O2 "${FILESDIR}"/pr69140.c -o "${T}"/pr69140 || die
-		# Run in subshell to prevent "Aborted" message
-		if ! ( "${T}"/69140 || false ) >/dev/null 2>&1; then
+		# Compile in subshell to prevent "Aborted" message
+		if ! ( $(tc-getCC) -O2 -mincoming-stack-boundary=3 "${FILESDIR}"/pr69140.c -o "${T}"/pr69140 || false ) >/dev/null 2>&1; then
 			eerror "Wine cannot be built with this version of gcc-5.3"
 			eerror "due to compiler bugs; please re-emerge the latest gcc-5.3.x ebuild,"
 			eerror "or use gcc-config to select a different compiler version."
