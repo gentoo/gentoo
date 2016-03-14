@@ -27,7 +27,7 @@ HOMEPAGE="http://www.webmproject.org"
 
 LICENSE="BSD"
 SLOT="0/3"
-IUSE="cpu_flags_x86_avx cpu_flags_x86_avx2 doc cpu_flags_x86_mmx postproc cpu_flags_x86_sse cpu_flags_x86_sse2 cpu_flags_x86_sse3 cpu_flags_x86_ssse3 cpu_flags_x86_sse4_1 static-libs test +threads"
+IUSE="cpu_flags_x86_avx cpu_flags_x86_avx2 doc cpu_flags_x86_mmx postproc cpu_flags_x86_sse cpu_flags_x86_sse2 cpu_flags_x86_sse3 cpu_flags_x86_ssse3 cpu_flags_x86_sse4_1 static-libs svc test +threads"
 
 RDEPEND="abi_x86_32? ( !app-emulation/emul-linux-x86-medialibs[-abi_x86_32(-)] )"
 DEPEND="abi_x86_32? ( dev-lang/yasm )
@@ -100,6 +100,7 @@ multilib_src_configure() {
 		$(use_enable cpu_flags_x86_sse3 sse3) \
 		$(use_enable cpu_flags_x86_sse4_1 sse4_1) \
 		$(use_enable cpu_flags_x86_ssse3 ssse3) \
+		$(use_enable svc experimental) $(use_enable svc spatial-svc) \
 		$(use_enable static-libs static) \
 		$(use_enable test unit-tests) \
 		$(use_enable threads multithread) \
