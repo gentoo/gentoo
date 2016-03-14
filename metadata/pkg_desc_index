@@ -5608,7 +5608,7 @@ dev-perl/Geography-Countries 2009041301.0.0-r1: 2-letter, 3-letter, and numerica
 dev-perl/Getopt-ArgvFile 1.110.0-r1: This module is a simple supplement to other option handling modules
 dev-perl/Getopt-GUI-Long 0.930.0-r1: Auto-GUI extending Getopt::Long
 dev-perl/Getopt-Long-Descriptive 0.97.0 0.99.0: Getopt::Long with usage text
-dev-perl/Getopt-Mixed 1.110.0-r1 1.120.0: Getopt::Mixed is used for parsing mixed options
+dev-perl/Getopt-Mixed 1.120.0: Getopt::Mixed is used for parsing mixed options
 dev-perl/Getopt-Tabular 0.3: Table-driven argument parsing with help text
 dev-perl/GnuPG-Interface 0.460.0-r1 0.520.0-r1: Perl module interface to interacting with GnuPG
 dev-perl/Goo-Canvas 0.60.0-r1: Perl interface to the GooCanvas
@@ -5667,7 +5667,7 @@ dev-perl/HTTP-DAV 0.480.0: A WebDAV client library for Perl5
 dev-perl/HTTP-Daemon 6.10.0-r1: Base class for simple HTTP servers
 dev-perl/HTTP-Date 6.20.0-r1: Date conversion for HTTP date formats
 dev-perl/HTTP-Headers-Fast 0.200.0: Faster implementation of HTTP::Headers
-dev-perl/HTTP-Message 6.30.0-r1 6.110.0: Base class for Request/Response
+dev-perl/HTTP-Message 6.110.0: Base class for Request/Response
 dev-perl/HTTP-Negotiate 6.10.0: HTTP content negotiation
 dev-perl/HTTP-Response-Encoding 0.60.0-r1: Adds encoding() to HTTP::Response
 dev-perl/HTTP-Server-Simple 0.510.0: Lightweight HTTP Server
@@ -5698,7 +5698,7 @@ dev-perl/IO-Pipely 0.005.0: Portably create pipe() or pipe-like handles, one way
 dev-perl/IO-Prompt 0.997.3: Interactively prompt for user input
 dev-perl/IO-SessionData 1.30.0: Session data support module for SOAP::Lite
 dev-perl/IO-Socket-INET6 2.720.0: Work with IO sockets in ipv6
-dev-perl/IO-Socket-SSL 2.12.0 2.24.0: Nearly transparent SSL encapsulation for IO::Socket::INET
+dev-perl/IO-Socket-SSL 2.24.0: Nearly transparent SSL encapsulation for IO::Socket::INET
 dev-perl/IO-Socket-Timeout 0.320.0: IO::Socket with read/write timeout
 dev-perl/IO-String 1.80.0-r1: IO::File interface for in-core strings
 dev-perl/IO-Stty 0.30.0: Change and print terminal line settings
@@ -5708,11 +5708,11 @@ dev-perl/IO-Util 1.500.0-r1: A selection of general-utility IO function
 dev-perl/IO-stringy 2.111.0: A Perl module for I/O on in-core objects like strings and arrays
 dev-perl/IP-Anonymous 0.40.0-r1: Perl port of Crypto-PAn to provide anonymous IP addresses
 dev-perl/IPC-Run 0.940.0: system() and background procs w/ piping, redirs, ptys
-dev-perl/IPC-Run3 0.45.0-r1 0.48.0: Run a subprocess in batch mode (a la system)
+dev-perl/IPC-Run3 0.48.0: Run a subprocess in batch mode (a la system)
 dev-perl/IPC-ShareLite 0.170.0-r1: IPC::ShareLite module for perl
 dev-perl/IPC-Shareable 0.610.0-r1: Share Perl variables between processes
 dev-perl/IPC-Signal 1.0.0-r1: Translate signal names to/from numbers
-dev-perl/IPC-System-Simple 1.21-r1 1.250.0: Run commands simply, with detailed diagnostics
+dev-perl/IPC-System-Simple 1.250.0: Run commands simply, with detailed diagnostics
 dev-perl/IPTables-libiptc 0.520.0: Perl extension for iptables libiptc library
 dev-perl/Ima-DBI 0.350.0-r1: Add contextual fetches to DBI
 dev-perl/Image-Imlib2 2.30.0-r1: Interface to the Imlib2 image library
@@ -5724,7 +5724,7 @@ dev-perl/Inline 0.500.0-r1 0.800.0: Write Perl subroutines in other languages
 dev-perl/Inline-C 0.760.0: C Language Support for Inline
 dev-perl/Inline-Files 0.690.0: Multiple virtual files in a single file
 dev-perl/Inline-Python 0.490.0-r1: Easy implementation of Python extensions
-dev-perl/JSON 2.590.0-r1 2.900.0: JSON (JavaScript Object Notation) encoder/decoder
+dev-perl/JSON 2.900.0: JSON (JavaScript Object Notation) encoder/decoder
 dev-perl/JSON-Any 1.390.0: Wrapper Class for the various JSON classes (DEPRECATED)
 dev-perl/JSON-MaybeXS 1.3.5: Use Cpanel::JSON::XS with a fallback to JSON::XS and JSON::PP
 dev-perl/JSON-RPC 0.960.0-r1 1.60.0: JSON RPC 2.0 Server Implementation
@@ -5748,33 +5748,33 @@ dev-perl/Lab-Measurement 3.320.0 3.410.0 9999: Measurement control and automatio
 dev-perl/Lchown 1.10.0-r1: Use the lchown(2) system call from Perl
 dev-perl/Lexical-Persistence 1.23.0: Bind lexicals to persistent data
 dev-perl/Lexical-SealRequireHints 0.9.0: Prevent leakage of lexical hints
-dev-perl/Lingua-EN-Inflect 1.895.0-r1 1.899.0: Perl module to pluralize English words
+dev-perl/Lingua-EN-Inflect 1.899.0: Perl module to pluralize English words
 dev-perl/Lingua-EN-NameCase 1.190.0: Correctly case a person's name from UPERCASE or lowcase
-dev-perl/Lingua-EN-NameParse 1.310.0-r1 1.330.0: routines for manipulating a person's name
-dev-perl/Lingua-EN-Numbers-Ordinate 1.20.0-r1 1.40.0: Convert cardinal numbers(3) to ordinal numbers(3rd)
-dev-perl/Lingua-PT-Stemmer 0.10.0-r1 0.20.0: Portuguese language stemming
+dev-perl/Lingua-EN-NameParse 1.330.0: routines for manipulating a person's name
+dev-perl/Lingua-EN-Numbers-Ordinate 1.40.0: Convert cardinal numbers(3) to ordinal numbers(3rd)
+dev-perl/Lingua-PT-Stemmer 0.20.0: Portuguese language stemming
 dev-perl/Lingua-Preferred 0.2.4-r1: Pick a language based on user's preferences
 dev-perl/Lingua-Stem 0.840.0-r1: Porter's stemming algorithm for 'generic' English
 dev-perl/Lingua-Stem-Fr 0.20.0-r1: Perl French Stemming
 dev-perl/Lingua-Stem-It 0.20.0-r1: Porter's stemming algorithm for Italian
-dev-perl/Lingua-Stem-Ru 0.10.0-r1 0.40.0: Porter's stemming algorithm for Russian (KOI8-R only)
+dev-perl/Lingua-Stem-Ru 0.40.0: Porter's stemming algorithm for Russian (KOI8-R only)
 dev-perl/Lingua-Stem-Snowball-Da 1.10.0-r1: Porters stemming algorithm for Denmark
-dev-perl/Linux-DesktopFiles 0.80.0 0.90.0: Perl module to get and parse the Linux .desktop files
+dev-perl/Linux-DesktopFiles 0.90.0: Perl module to get and parse the Linux .desktop files
 dev-perl/Linux-Inotify2 1.220.0-r1: scalable directory/file change notification
 dev-perl/Linux-Pid 0.40.0-r1: Interface to Linux getpp?id functions
 dev-perl/Linux-Smaps 0.130.0: Perl interface to /proc/PID/smaps
-dev-perl/Lirc-Client 1.540.0-r1 2.20.0: A client library for the Linux Infrared Remote Control (LIRC)
+dev-perl/Lirc-Client 2.20.0: A client library for the Linux Infrared Remote Control (LIRC)
 dev-perl/List-AllUtils 0.90.0: Combines List::Util and List::MoreUtils in one bite-sized package
 dev-perl/List-MoreUtils 0.330.0-r1 0.413.0: Provide the missing functionality from List::Util
 dev-perl/List-UtilsBy 0.100.0: Higher-order list utility functions
 dev-perl/Locale-Maketext-Fuzzy 0.110.0-r1: Maketext from already interpolated strings
-dev-perl/Locale-Maketext-Lexicon 0.960.0-r1 1.0.0: Use other catalog formats in Maketext
+dev-perl/Locale-Maketext-Lexicon 1.0.0: Use other catalog formats in Maketext
 dev-perl/Locale-Msgfmt 0.150.0-r1: Compile .po files to .mo files
-dev-perl/Locale-PO 0.230.0 0.270.0: Perl module for manipulating .po entries from GNU gettext
+dev-perl/Locale-PO 0.270.0: Perl module for manipulating .po entries from GNU gettext
 dev-perl/Locale-gettext 1.50.0-r1: A Perl module for accessing the GNU locale utilities
 dev-perl/LockFile-Simple 0.208.0-r1: File locking module for Perl
-dev-perl/Log-Agent 0.307.0-r1 1.1.0: A general logging framework
-dev-perl/Log-Any 0.150.0 1.38.0: Bringing loggers and listeners together
+dev-perl/Log-Agent 1.1.0: A general logging framework
+dev-perl/Log-Any 1.38.0: Bringing loggers and listeners together
 dev-perl/Log-Dispatch 2.410.0 2.540.0: Dispatches messages to one or more outputs
 dev-perl/Log-Log4perl 1.420.0-r1 1.460.0: Log4j implementation for Perl
 dev-perl/Log-TraceMessages 1.400.0-r1: Logging/debugging aid
@@ -6464,7 +6464,7 @@ dev-perl/indirect 0.360.0: Lexically warn about using the indirect method call s
 dev-perl/libintl-perl 1.200.0-r1 1.240.0: High-Level Interface to Uniforum Message Translation
 dev-perl/librg-utils-perl 1.0.43: Parsers and format conversion utilities used by (e.g.) profphd
 dev-perl/libvorbis-perl 0.50.0-r1: Ogg::Vorbis - Perl extension for Ogg Vorbis streams
-dev-perl/libwww-perl 6.50.0 6.150.0: A collection of Perl Modules for the WWW
+dev-perl/libwww-perl 6.150.0: A collection of Perl Modules for the WWW
 dev-perl/libxml-perl 0.80.0-r1: Collection of Perl modules for working with XML
 dev-perl/local-lib 2.0.14 2.0.18: create and use a local lib/ for perl modules with PERL5LIB
 dev-perl/math-pari 2.10.806.50-r1 2.10.808: Perl interface to PARI
@@ -14808,7 +14808,7 @@ net-nntp/leafnode 1.11.8 1.11.10 1.11.11: A USENET software package designed for
 net-nntp/newspost 2.1.1-r3: A usenet binary autoposter for unix
 net-nntp/nzb 0.3: A binary news grabber
 net-nntp/nzbget 14.1 14.2 15.0 16.4: A command-line based binary newsgrapper supporting .nzb files
-net-nntp/pan 0.139 0.139-r1: A newsreader for GNOME
+net-nntp/pan 0.139 0.139-r1 0.139-r2: A newsreader for GNOME
 net-nntp/sabnzbd 0.7.16 0.7.17 0.7.18 0.7.19 0.7.20: Binary newsgrabber with web-interface
 net-nntp/slrn 1.0.2: A s-lang based newsreader
 net-nntp/slrnconf 0.8.4: slrnconf is a graphical configuration utility for the newsreader slrn
