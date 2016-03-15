@@ -123,6 +123,7 @@ SOFTMMU_LIB_DEPEND="${COMMON_LIB_DEPEND}
 		)
 	)
 	seccomp? (
+		arm? ( >=sys-libs/libseccomp-2.2.3[static-libs(+)] )
 		arm64? ( >=sys-libs/libseccomp-2.2.3[static-libs(+)] )
 		>=sys-libs/libseccomp-2.1.0[static-libs(+)]
 	)
