@@ -2766,7 +2766,7 @@ dev-ada/charles 20050913: Posix bindings for Ada
 dev-ada/glade 2006.0: An implementation of the Distributed Systems Annex for the GNAT compiler
 dev-cpp/ETL 0.04.15: ETL is a multi-platform class and template library
 dev-cpp/antlr-cpp 2.7.7: The ANTLR 2 C++ Runtime
-dev-cpp/asio 1.4.5 1.4.8-r1: Asynchronous Network Library
+dev-cpp/asio 1.4.5 1.4.8-r1 1.10.6: Asynchronous Network Library
 dev-cpp/atkmm 2.22.7-r1 2.24.1 2.24.2: C++ interface for the ATK library
 dev-cpp/cairomm 1.10.0-r1 1.12.0 1.12.0-r1: C++ bindings for the Cairo vector graphics library
 dev-cpp/clucene 2.3.3.4-r5: High-performance, full-featured text search engine based off of lucene in C++
