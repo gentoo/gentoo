@@ -29,7 +29,7 @@ RDEPEND="dev-perl/Capture-Tiny
 	x11-apps/xauth
 	x11-apps/xhost
 	x11-apps/xwininfo
-	fuse? ( sys-fs/sshfs-fuse )
+	fuse? ( sys-fs/sshfs )
 	postgres? ( dev-perl/DBD-Pg )
 	sqlite? ( dev-perl/DBD-SQLite )"
 

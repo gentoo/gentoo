@@ -1,0 +1,15 @@
+Fix build failure caused by underlinking.
+
+Gentoo-bug: 369697
+
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -57,6 +57,8 @@
+     #IF(ALSA_FOUND)
+         ADD_DEFINITIONS(-D__LINUX_ALSASEQ__)
+         LINK_LIBRARIES (asound)
++        LINK_LIBRARIES (GL)
++        LINK_LIBRARIES (pthread)
+     #ELSE(ALSA_FOUND)
+     #    MESSAGE(FATAL_ERROR "Please install the 'libasound2-dev' package and then try again")
+     #ENDIF(ALSA_FOUND)

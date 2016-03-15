@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="Encoding and decoding of UTF-8 encoding form"
 
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~hppa ~ppc ~x86"
+KEYWORDS="amd64 ~arm ~hppa ppc x86"
 IUSE="test"
 
 RDEPEND="

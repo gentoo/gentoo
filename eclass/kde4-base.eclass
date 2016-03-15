@@ -465,6 +465,9 @@ _calculate_src_uri() {
 				4.14.16)
 					# Part of 15.12.1 actually, sigh. Not stable for next release!
 					SRC_URI="mirror://kde/stable/applications/15.12.1/src/${_kmname_pv}.tar.xz" ;;
+				4.14.17)
+					# Part of 15.12.2 actually, sigh. Not stable for next release!
+					SRC_URI="mirror://kde/stable/applications/15.12.2/src/${_kmname_pv}.tar.xz" ;;
 				15.04.3)
 					# Files moved to Attic
 					SRC_URI="mirror://kde/Attic/applications/15.04.3/src/${_kmname_pv}.tar.xz" ;;
@@ -480,6 +483,7 @@ _calculate_src_uri() {
 		kdevelop|kdevelop-php*|kdevplatform)
 			case ${KDEVELOP_VERSION} in
 				4.[123].[6-9]*) SRC_URI="mirror://kde/unstable/kdevelop/${KDEVELOP_VERSION}/src/${P}.tar.xz" ;;
+				4.7.3) SRC_URI="mirror://kde/stable/kdevelop/${KDEVELOP_VERSION}/src/${P}.tar.bz2" ;;
 				*) SRC_URI="mirror://kde/stable/kdevelop/${KDEVELOP_VERSION}/src/${P}.tar.xz" ;;
 			esac
 			;;

@@ -29,3 +29,15 @@ move dev-perl/net-sftp dev-perl/Net-SFTP
 move dev-perl/net-ssh-perl dev-perl/Net-SSH-Perl
 move dev-perl/DateManip dev-perl/Date-Manip
 move dev-perl/wxperl dev-perl/Wx
+slotmove sys-devel/binutils 0 2.25.1
+move sys-fs/sshfs-fuse sys-fs/sshfs
+move dev-perl/perl-tk dev-perl/Tk
+move dev-perl/mogilefs-server dev-perl/MogileFS-Server
+move dev-perl/ogg-vorbis-header dev-perl/Ogg-Vorbis-Header
+move dev-perl/p5-Palm dev-perl/Palm
+slotmove sys-devel/gcc 4.5 4.5.4
+slotmove sys-devel/gcc 4.6 4.6.4
+slotmove sys-devel/gcc 4.7 4.7.4
+slotmove sys-devel/gcc 4.8 4.8.5
+slotmove sys-devel/gcc 4.9 4.9.3
+slotmove sys-devel/gcc 5 5.3.0

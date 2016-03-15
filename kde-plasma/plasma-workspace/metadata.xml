@@ -6,10 +6,8 @@
 		<name>Gentoo KDE Project</name>
 	</maintainer>
 	<use>
-		<flag name="drkonqi">Enables DrKonqi, the KDE crash handler</flag>
 		<flag name="geolocation">Enables dataengine providing location information</flag>
 		<flag name="prison">Enable support for barcodes/QRcodes</flag>
 		<flag name="qalculate">Enable Qalculate runner using <pkg>sci-libs/libqalculate</pkg></flag>
-		<flag name="systemmonitor">Enables the system monitor dialog for the Plasma workspace</flag>
 	</use>
 </pkgmetadata>

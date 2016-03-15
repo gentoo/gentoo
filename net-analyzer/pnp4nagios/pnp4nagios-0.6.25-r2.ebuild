@@ -13,7 +13,7 @@ SRC_URI="mirror://sourceforge/${PN}/PNP-0.6/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 IUSE=""
-KEYWORDS="~amd64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="amd64 ~ppc ~ppc64 ~sparc ~x86"
 
 # A lot of things (sync mode, for one) are broken with nagios-4.x.
 DEPEND="

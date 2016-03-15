@@ -1,0 +1,28 @@
+From 57f1ff3981e2c1f9297f35a90e74dd12025a6fe9 Mon Sep 17 00:00:00 2001
+From: Christoph Junghans <ottxor@gentoo.org>
+Date: Fri, 4 Mar 2016 19:18:16 -0700
+Subject: [PATCH] bashcomp: try to load git comp first (fix #592)
+
+---
+ etc/hub.bash_completion.sh | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/etc/hub.bash_completion.sh b/etc/hub.bash_completion.sh
+index f0b4f76..bd84d32 100755
+--- a/etc/hub.bash_completion.sh
++++ b/etc/hub.bash_completion.sh
+@@ -1,6 +1,11 @@
+ # hub tab-completion script for bash.
+ # This script complements the completion script that ships with git.
+ 
++# If there is no git tab completion, but we have the _completion loader try to load it
++if ! declare -F _git > /dev/null && declare -F _completion_loader > /dev/null; then
++  _completion_loader git
++fi
++
+ # Check that git tab completion is available
+ if declare -F _git > /dev/null; then
+   # Duplicate and rename the 'list_all_commands' function
+-- 
+2.4.10
+

@@ -52,11 +52,11 @@ S="${WORKDIR}/linux-${LINUX_VER}"
 # No make install, and ideally build with with the root Makefile
 TARGETS_SIMPLE=(
 	Documentation/accounting/getdelays.c
-	tools/cgroup/cgroup_event_listener.c
 	Documentation/laptops/dslm.c
 	Documentation/laptops/freefall.c
 	Documentation/networking/timestamping/timestamping.c
 	Documentation/watchdog/src/watchdog-simple.c
+	tools/cgroup/cgroup_event_listener.c
 	tools/lguest/lguest.c
 	tools/vm/slabinfo.c
 	usr/gen_init_cpio.c
@@ -68,10 +68,10 @@ TARGETS_SIMPLE=(
 
 # These have a broken make install, no DESTDIR
 TARGET_MAKE_SIMPLE=(
+	Documentation/misc-devices/mei:mei-amt-version
 	tools/firewire:nosy-dump
 	tools/power/x86/turbostat:turbostat:../../../../turbostat
 	tools/power/x86/x86_energy_perf_policy:x86_energy_perf_policy
-	Documentation/misc-devices/mei:mei-amt-version
 )
 # tools/perf - covered by dev-utils/perf
 # tools/usb - testcases only

@@ -18,6 +18,8 @@
 		AirDC++ Web Client is a cross-platform peer-to-peer file sharing client which allows sharing files with groups of people. 
 	</longdescription>
 	<use>
+		<flag name="nat-pmp">Enable support for the NAT-PMP protocol</flag>
+		<flag name="tbb">Enable support of the TBB library to improve performance</flag>
 		<flag name="webui">Enable the Web UI</flag>
 	</use>
 </pkgmetadata>

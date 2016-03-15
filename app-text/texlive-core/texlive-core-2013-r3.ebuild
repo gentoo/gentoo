@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -115,7 +115,7 @@ RDEPEND="${COMMON_DEPEND}
 	>=dev-tex/bibtexu-3.71_p20130530
 	virtual/perl-Getopt-Long
 	xetex? ( >=app-text/xdvipdfmx-0.7.9_p20130530 )
-	tk? ( dev-perl/perl-tk )"
+	tk? ( dev-perl/Tk )"
 
 # texdoc needs luatex.
 PDEPEND=">=dev-tex/luatex-0.76"

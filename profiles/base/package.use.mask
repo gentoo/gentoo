@@ -5,6 +5,15 @@
 # This file requires >=portage-2.1.1
 # New entries go on top.
 
+# James Le Cuirot <chewi@gentoo.org> (14 Mar 2016)
+# jtds:1.2 needs removing because it depends on Java 6. Unfortunately
+# we can't stabilise the latest sqldeveloper yet because of Java 8.
+<dev-db/sqldeveloper-4.1.3.20.78-r1 mssql sybase
+
+# Requires unreleased dependency
+# kde-apps/kdevplatform:5
+kde-plasma/plasma-sdk plasmate
+
 # James Le Cuirot <chewi@gentoo.org> (2 Jan 2016)
 # Incorrectly depends on gjdoc, which is going to be
 # last-rited. Doesn't actually install the javadocs in this ebuild

@@ -5,12 +5,13 @@
     <email>python@gentoo.org</email>
     <name>Python</name>
   </maintainer>
-  <longdescription>APSW provides an SQLite 3 wrapper that provides the thinnest layer over SQLite 3 possible.
-Everything you can do from the C API to SQLite 3, you can do from Python. 
-Although APSW looks vaguely similar to the DBAPI, it is not compliant with that API and instead
-works the way SQLite 3 does.</longdescription>
+  <longdescription>
+    APSW provides an SQLite 3 wrapper that provides the thinnest layer over SQLite 3 possible.
+    Everything you can do from the C API to SQLite 3, you can do from Python.
+    Although APSW looks vaguely similar to the DBAPI, it is not compliant with that API and instead
+    works the way SQLite 3 does.
+  </longdescription>
   <upstream>
-    <remote-id type="google-code">apsw</remote-id>
     <remote-id type="github">rogerbinns/apsw</remote-id>
   </upstream>
 </pkgmetadata>

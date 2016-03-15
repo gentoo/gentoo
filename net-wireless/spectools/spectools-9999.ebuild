@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -17,7 +17,7 @@ if [[ ${PV} == "9999" ]] ; then
 		inherit git-r3
 		KEYWORDS=""
 else
-		SRC_URI="http://www.kismetwireless.net/code/${MY_P}.tar.gz"
+		SRC_URI="http://www.kismetwireless.net/code/${MY_P}.tar.xz"
 		KEYWORDS="~amd64 ~arm ~ppc ~x86"
 fi
 
@@ -31,7 +31,11 @@ IUSE="debug +ncurses +gtk"
 RDEPEND="
 	virtual/libusb:0
 	ncurses? ( sys-libs/ncurses:0= )
-	gtk? ( x11-libs/gtk+:2 )"
+	gtk? ( x11-libs/gtk+:2
+		x11-libs/cairo
+		x11-libs/gdk-pixbuf
+		x11-libs/pango
+		dev-libs/glib:= )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 # Upstream has still not migrated to the libusb-1 line.

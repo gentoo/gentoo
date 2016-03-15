@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 python3_3 python3_4 )
 inherit multilib python-r1 toolchain-funcs eutils multilib-minimal
 
 MY_P="${P//_/-}"
-MY_RELEASEDATE="20150202"
+MY_RELEASEDATE="20160223"
 
 SEPOL_VER="${PV}"
 SELNX_VER="${PV}"
@@ -21,7 +21,7 @@ if [[ ${PV} == 9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/SELinuxProject/selinux.git"
 	S="${WORKDIR}/${MY_P}/${PN}"
 else
-	SRC_URI="https://raw.githubusercontent.com/wiki/SELinuxProject/selinux/files/releases/20150202/${MY_P}.tar.gz"
+	SRC_URI="https://raw.githubusercontent.com/wiki/SELinuxProject/selinux/files/releases/${MY_RELEASEDATE}/${MY_P}.tar.gz"
 	KEYWORDS="~amd64 ~arm ~arm64 ~mips ~x86"
 	S="${WORKDIR}/${MY_P}"
 fi

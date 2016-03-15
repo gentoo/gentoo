@@ -5,7 +5,11 @@
 		<email>johu@gentoo.org</email>
 		<name>Johannes Huber</name>
 	</maintainer>
+	<longdescription>
+		Git extensions to provide high-level repository operations for Vincent
+		Driessen's branching model.
+	</longdescription>
 	<upstream>
-		<remote-id type="github">petervanderdoes/gitflow</remote-id>
+		<remote-id type="github">petervanderdoes/gitflow-avh</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -3,6 +3,7 @@
 # $Id$
 
 EAPI=5
+
 JAVA_PKG_IUSE="doc source"
 
 inherit java-pkg-2 java-pkg-simple versionator
@@ -18,7 +19,7 @@ HOMEPAGE="http://www.groovy-lang.org/"
 SRC_URI="https://github.com/apache/incubator-${PN}/archive/${MY_P}.zip -> ${P}.zip"
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 ~ppc64 ~x86"
+KEYWORDS="amd64 ppc64 x86"
 IUSE=""
 
 CDEPEND="
@@ -26,16 +27,16 @@ CDEPEND="
 	dev-java/xstream:0
 	dev-java/commons-cli:1
 	>=dev-java/asm-5.0.3:4
-	>=dev-java/antlr-2.7.7-r7:0
-"
+	>=dev-java/antlr-2.7.7-r7:0"
 
 RDEPEND="
 	${CDEPEND}
 	>=virtual/jre-1.6"
+
 DEPEND="
 	${CDEPEND}
 	>=virtual/jdk-1.6
-	app-arch/unzip"
+	source? ( app-arch/zip )"
 
 JAVA_GENTOO_CLASSPATH="
 	asm-4

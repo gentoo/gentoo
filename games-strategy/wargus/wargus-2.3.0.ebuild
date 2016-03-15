@@ -11,7 +11,7 @@ SRC_URI="https://launchpad.net/${PN}/trunk/2.3/+download/${PN}_${PV}.orig.tar.gz
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 RDEPEND="=games-engines/stratagus-${PV}*[theora]

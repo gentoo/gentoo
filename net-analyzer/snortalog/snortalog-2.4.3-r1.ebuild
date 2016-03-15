@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -21,7 +21,7 @@ RDEPEND="
 	dev-perl/HTML-HTMLDoc
 	virtual/perl-DB_File
 	virtual/perl-Getopt-Long
-	tk? ( dev-perl/perl-tk dev-perl/GDGraph )
+	tk? ( dev-perl/Tk dev-perl/GDGraph )
 "
 
 S=${WORKDIR}

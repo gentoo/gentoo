@@ -2,9 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>wraeth@wraeth.id.au</email>
+		<email>wraeth@gentoo.org</email>
 		<name>Sam Jorna</name>
-		<description>Proxy - Maintainer. Assign bugs to him</description>
 	</maintainer>
 	<maintainer type="person">
                 <email>sveyret@gmail.com</email>

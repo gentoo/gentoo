@@ -12,7 +12,7 @@ SRC_URI="http://hostap.epitest.fi/releases/${P}.tar.gz"
 
 LICENSE="|| ( GPL-2 BSD )"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~mips ~ppc ~x86"
+KEYWORDS="amd64 ~arm ~mips ~ppc x86"
 IUSE="ipv6 logwatch netlink sqlite +ssl +wps +crda"
 
 DEPEND="ssl? ( dev-libs/openssl[-bindist] )

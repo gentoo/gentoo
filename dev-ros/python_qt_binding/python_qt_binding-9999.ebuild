@@ -17,6 +17,6 @@ IUSE=""
 
 RDEPEND="
 	dev-python/pyside[${PYTHON_USEDEP}]
-	dev-python/PyQt4[${PYTHON_USEDEP}]
+	dev-python/PyQt4[X,${PYTHON_USEDEP}]
 "
 DEPEND="${RDEPEND}"

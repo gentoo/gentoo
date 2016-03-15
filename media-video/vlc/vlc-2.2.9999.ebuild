@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -42,7 +42,7 @@ IUSE="a52 aalib alsa altivec atmo +audioqueue avahi +avcodec
 	+avformat bidi bluray cdda cddb chromaprint dbus dc1394 debug
 	directfb directx dts dvb +dvbpsi dvd dxva2 elibc_glibc +encode faad fdk
 	fluidsynth +ffmpeg flac fontconfig +gcrypt gme gnome gnutls
-	growl httpd ieee1394 jack jpeg kate kde libass libav libcaca libnotify
+	growl gstreamer httpd ieee1394 jack jpeg kate kde libass libav libcaca libnotify
 	+libsamplerate libtiger linsys libtar lirc live lua
 	macosx-dialog-provider macosx-eyetv macosx-quartztext macosx-qtkit
 	matroska media-library cpu_flags_x86_mmx modplug mp3 mpeg
@@ -90,6 +90,7 @@ RDEPEND="
 		gme? ( media-libs/game-music-emu:0 )
 		gnome? ( gnome-base/gnome-vfs:2 dev-libs/glib:2 )
 		gnutls? ( >=net-libs/gnutls-3.0.20:0 )
+		gstreamer? ( >=media-libs/gst-plugins-base-1.4.5:1.0 )
 		ieee1394? ( >=sys-libs/libraw1394-2.0.1:0 >=sys-libs/libavc1394-0.5.3:0 )
 		jack? ( >=media-sound/jack-audio-connection-kit-0.99.0-r1:0 )
 		jpeg? ( virtual/jpeg:0 )
@@ -255,6 +256,9 @@ src_prepare() {
 	# Fix up broken audio when skipping using a fixed reversed bisected commit.
 	epatch "${FILESDIR}"/${PN}-2.1.0-TomWij-bisected-PA-broken-underflow.patch
 
+	# Allow QT5.5 since Gentoo has a patched QTwidgets
+	epatch "${FILESDIR}"/${PN}-2.2.2-qt5widgets.patch
+
 	# Don't use --started-from-file when not using dbus.
 	if ! use dbus ; then
 		sed -i 's/ --started-from-file//' share/vlc.desktop.in || die
@@ -344,6 +348,7 @@ src_configure() {
 		$(use_enable gnome gnomevfs) \
 		$(use_enable gnutls) \
 		$(use_enable growl) \
+		$(use_enable gstreamer gst-decode) \
 		$(use_enable httpd) \
 		$(use_enable ieee1394 dv1394) \
 		$(use_enable jack) \

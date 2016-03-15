@@ -92,15 +92,12 @@ IUSE="cxx multislot multitarget nls static-libs test vanilla"
 if version_is_at_least 2.19 ; then
 	IUSE+=" zlib"
 fi
-if ! version_is_at_least 2.25 || [[ ${BTYPE} != "rel" ]] || is_cross || use multislot ; then
-	SLOT="${BVER}"
-else
-	SLOT="0"
-fi
+SLOT="${BVER}"
 
 RDEPEND=">=sys-devel/binutils-config-3"
 in_iuse zlib && RDEPEND+=" zlib? ( sys-libs/zlib )"
 DEPEND="${RDEPEND}
+	!multislot? ( !<${CATEGORY}/${P} )
 	test? ( dev-util/dejagnu )
 	nls? ( sys-devel/gettext )
 	sys-devel/flex

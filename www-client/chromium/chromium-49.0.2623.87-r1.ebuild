@@ -121,12 +121,12 @@ DEPEND+=" $(python_gen_any_dep '
 	dev-python/simplejson[${PYTHON_USEDEP}]
 ')"
 python_check_deps() {
-	has_version "dev-python/beautifulsoup:python-2[${PYTHON_USEDEP}]" && \
-		has_version "dev-python/beautifulsoup:4[${PYTHON_USEDEP}]" && \
-		has_version "dev-python/html5lib[${PYTHON_USEDEP}]" && \
-		has_version "dev-python/jinja[${PYTHON_USEDEP}]" && \
-		has_version "dev-python/ply[${PYTHON_USEDEP}]" && \
-		has_version "dev-python/simplejson[${PYTHON_USEDEP}]"
+	has_version --host-root "dev-python/beautifulsoup:python-2[${PYTHON_USEDEP}]" &&
+	has_version --host-root "dev-python/beautifulsoup:4[${PYTHON_USEDEP}]" &&
+	has_version --host-root "dev-python/html5lib[${PYTHON_USEDEP}]" &&
+	has_version --host-root "dev-python/jinja[${PYTHON_USEDEP}]" &&
+	has_version --host-root "dev-python/ply[${PYTHON_USEDEP}]" &&
+	has_version --host-root "dev-python/simplejson[${PYTHON_USEDEP}]"
 }
 
 if ! has chromium_pkg_die ${EBUILD_DEATH_HOOKS}; then

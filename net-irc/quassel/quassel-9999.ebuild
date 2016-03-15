@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -16,7 +16,8 @@ HOMEPAGE="http://quassel-irc.org/"
 LICENSE="GPL-3"
 KEYWORDS=""
 SLOT="0"
-IUSE="ayatana crypt dbus debug kde monolithic phonon postgres qt5 +server +ssl syslog webkit X"
+IUSE="ayatana crypt dbus debug kde monolithic phonon postgres qt5 +server
+snorenotify +ssl syslog webkit X"
 
 SERVER_RDEPEND="
 	qt5? (
@@ -53,6 +54,7 @@ GUI_RDEPEND="
 			kde-frameworks/sonnet:5
 		)
 		phonon? ( media-libs/phonon[qt5] )
+		snorenotify? ( >=x11-libs/snorenotify-0.7.0 )
 		webkit? ( dev-qt/qtwebkit:5 )
 	)
 	!qt5? (
@@ -63,7 +65,7 @@ GUI_RDEPEND="
 			dev-qt/qtdbus:4
 			kde? (
 				kde-base/kdelibs:4
-				kde-frameworks/oxygen-icons
+				kde-frameworks/oxygen-icons:*
 				ayatana? ( kde-misc/plasma-widget-message-indicator )
 			)
 		)
@@ -106,6 +108,7 @@ REQUIRED_USE="
 	phonon? ( || ( X monolithic ) )
 	postgres? ( || ( server monolithic ) )
 	qt5? ( !ayatana )
+	snorenotify? ( qt5 || ( X monolithic ) )
 	syslog? ( || ( server monolithic ) )
 	webkit? ( || ( X monolithic ) )
 "
@@ -134,6 +137,7 @@ src_configure() {
 		$(cmake-utils_use_find_package phonon Phonon4Qt5)
 		$(cmake-utils_use_use qt5)
 		$(cmake-utils_use_want server CORE)
+		$(cmake-utils_use_find_package snorenotify LibsnoreQt5)
 		$(cmake-utils_use_with webkit)
 		$(cmake-utils_use_want X QTCLIENT)
 		-DEMBED_DATA=OFF

@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -26,8 +26,11 @@ RDEPEND="${DEPEND}"
 
 DOCS="ReleaseNote.txt ../README.txt"
 
-PATCHES=( "${FILESDIR}"/${P}-cmake.patch
-	"${FILESDIR}"/${P}-gcc47.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-cmake.patch
+	"${FILESDIR}"/${P}-gcc47.patch
+	"${FILESDIR}"/${P}-underlinking.patch
+)
 
 S=${WORKDIR}/${MY_P}/src
 

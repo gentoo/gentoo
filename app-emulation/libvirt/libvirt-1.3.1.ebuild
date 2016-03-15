@@ -24,7 +24,7 @@ else
 	SRC_URI+=" ${BACKPORTS:+
 		https://dev.gentoo.org/~cardoe/distfiles/${P}-${BACKPORTS}.tar.xz
 		https://dev.gentoo.org/~tamiko/distfiles/${P}-${BACKPORTS}.tar.xz}"
-	KEYWORDS="amd64 ~x86"
+	KEYWORDS="amd64 x86"
 	SLOT="0/${PV}"
 fi
 
@@ -220,7 +220,8 @@ src_prepare() {
 	epatch \
 		"${FILESDIR}"/${PN}-1.3.0-do_not_use_sysconf.patch \
 		"${FILESDIR}"/${PN}-1.2.16-fix_paths_in_libvirt-guests_sh.patch \
-		"${FILESDIR}"/${P}-fix_paths_for_apparmor.patch
+		"${FILESDIR}"/${P}-fix_paths_for_apparmor.patch \
+		"${FILESDIR}"/${PN}-1.2.21-avoid_deprecated_pc_file.patch
 
 	[[ -n ${BACKPORTS} ]] &&
 		EPATCH_FORCE=yes EPATCH_SUFFIX="patch" \

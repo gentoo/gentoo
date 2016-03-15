@@ -200,6 +200,7 @@ multilib_src_configure() {
 		$(use_enable dbus) \
 		$(use_enable debug) \
 		$(use_enable debug debug-guards) \
+		$(use_enable debug debug-printfs) \
 		$(multilib_native_use_with java) \
 		$(use_enable kerberos gssapi) \
 		$(multilib_native_use_enable pam) \

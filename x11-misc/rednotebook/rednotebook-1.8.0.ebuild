@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 )
 
 inherit eutils distutils-r1
 
-DESCRIPTION="A graphical journal with calendar, templates, tags, keyword searching, and export functionality"
+DESCRIPTION="Graphical journal with calendar, templates, tags and keyword searching"
 HOMEPAGE="http://rednotebook.sourceforge.net"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 

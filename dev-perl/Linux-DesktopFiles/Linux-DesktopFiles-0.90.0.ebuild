@@ -12,7 +12,7 @@ DESCRIPTION="Perl module to get and parse the Linux .desktop files"
 
 LICENSE="|| ( Artistic GPL-1 GPL-2 GPL-3 )"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 RDEPEND=">=dev-lang/perl-5.14.0[gdbm]"
 DEPEND="dev-perl/Module-Build"

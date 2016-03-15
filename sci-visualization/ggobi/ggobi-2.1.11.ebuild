@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -13,7 +13,7 @@ SRC_URI="mirror://debian/pool/main/g/${PN}/${PN}_${PV}.orig.tar.bz2"
 
 LICENSE="CPL-1.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
 IUSE="doc minimal nls"
 
 RDEPEND="
@@ -31,7 +31,8 @@ src_prepare() {
 	epatch \
 		"${FILESDIR}"/${PN}-2.1.8-plugindir.patch \
 		"${FILESDIR}"/${PN}-2.1.9-as-needed.patch \
-		"${FILESDIR}"/${PN}-2.1.10-desktop.patch
+		"${FILESDIR}"/${PN}-2.1.10-desktop.patch \
+		"${FILESDIR}"/${PN}-2.1.11-Wformat-security.patch
 	# need the ${S} for recursivity lookup
 	AT_M4DIR="${S}"/m4 eautoreconf
 }

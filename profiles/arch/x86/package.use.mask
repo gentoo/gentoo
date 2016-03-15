@@ -167,6 +167,7 @@ gnustep-base/gnustep-make -libobjc2
 
 # Doug Goldstein <cardoe@gentoo.org> (17 Jan 2012)
 # The SPICE server is only supported on 64-bit platforms and not on 32-bit
+# https://lists.freedesktop.org/archives/spice-devel/2015-September/021846.html
 app-emulation/qemu	spice
 
 # Alexandre Rostovtsev <tetromino@gentoo.org> (09 Jan 2012)

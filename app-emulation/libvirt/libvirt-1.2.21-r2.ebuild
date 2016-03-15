@@ -220,7 +220,8 @@ src_prepare() {
 	epatch \
 		"${FILESDIR}"/${PN}-1.2.9-do_not_use_sysconf.patch \
 		"${FILESDIR}"/${PN}-1.2.16-fix_paths_in_libvirt-guests_sh.patch \
-		"${FILESDIR}"/${PN}-1.2.17-fix_paths_for_apparmor.patch
+		"${FILESDIR}"/${PN}-1.2.17-fix_paths_for_apparmor.patch \
+		"${FILESDIR}"/${P}-avoid_deprecated_pc_file.patch
 
 	[[ -n ${BACKPORTS} ]] &&
 		EPATCH_FORCE=yes EPATCH_SUFFIX="patch" \

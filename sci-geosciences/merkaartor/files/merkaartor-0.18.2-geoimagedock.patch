@@ -1,0 +1,34 @@
+diff --git a/src/Docks/GeoImageDock.cpp b/src/Docks/GeoImageDock.cpp
+index c05d09f..5cd3a98 100644
+--- a/src/Docks/GeoImageDock.cpp
++++ b/src/Docks/GeoImageDock.cpp
+@@ -458,7 +458,7 @@ void GeoImageDock::loadImages(QStringList fileNames)
+ 
+     Exiv2::Image::AutoPtr image;
+     Exiv2::ExifData exifData;
+-    bool positionValid = FALSE;
++    bool positionValid = false;
+ 
+     Layer *theLayer;
+     if (photoLayer == NULL) {
+@@ -894,7 +894,7 @@ Coord GeoImageDock::getGeoDataFromImage(const QString & file)
+     double lat = 0.0, lon = 0.0;
+     Exiv2::Image::AutoPtr image;
+     Exiv2::ExifData exifData;
+-    bool positionValid = FALSE;
++    bool positionValid = false;
+ 
+     if (!QFile::exists(file)) {
+         return pos;
+diff --git a/src/Docks/GeoImageDock.h b/src/Docks/GeoImageDock.h
+index ab7bbf6..3153219 100644
+--- a/src/Docks/GeoImageDock.h
++++ b/src/Docks/GeoImageDock.h
+@@ -9,6 +9,7 @@
+ #include <QtWidgets/QShortcut>
+ #include <exiv2/image.hpp>
+ #include <exiv2/exif.hpp>
++#include <QDrag>
+ 
+ class ImageView;
+ 

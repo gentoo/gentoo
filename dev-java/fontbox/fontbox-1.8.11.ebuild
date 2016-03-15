@@ -16,7 +16,7 @@ HOMEPAGE="http://pdfbox.apache.org/"
 SRC_URI="mirror://apache/${MY_PN}/${PV}/${MY_P}-src.zip"
 LICENSE="Apache-2.0"
 SLOT="1.8"
-KEYWORDS="~amd64 ~ppc64 ~x86"
+KEYWORDS="amd64 ppc64 x86"
 IUSE="test"
 
 CDEPEND=">=dev-java/commons-logging-1.1.1:0"

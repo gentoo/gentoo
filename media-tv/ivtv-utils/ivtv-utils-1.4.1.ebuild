@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -22,7 +22,7 @@ RDEPEND="${DEPEND}
 		dev-perl/Video-ivtv
 		dev-perl/Config-IniFiles
 		virtual/perl-Getopt-Long
-		dev-perl/perl-tk
+		dev-perl/Tk
 		)"
 
 src_prepare() {

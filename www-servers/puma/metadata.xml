@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>ruby@gentoo.org</email>
+		<name>Gentoo Ruby Project</name>
+	</maintainer>
+	<longdescription>
+    Puma is a simple, fast, threaded, and highly concurrent HTTP 1.1
+    server for Ruby/Rack applications. Puma is intended for use in
+    both development and production environments. In order to get the
+    best throughput, it is highly recommended that you use a Ruby
+    implementation with real threads like Rubinius or JRuby.
+  </longdescription>
+	<upstream>
+		<remote-id type="github">puma/puma</remote-id>
+	</upstream>
+</pkgmetadata>

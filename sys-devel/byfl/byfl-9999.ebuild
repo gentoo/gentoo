@@ -31,7 +31,7 @@ IUSE="hdf5 static-libs sqlite"
 RDEPEND="
 	>=sys-devel/clang-${LLVM_VERSION}
 	>=sys-devel/llvm-${LLVM_VERSION}
-	sys-devel/binutils:0
+	sys-devel/binutils:*
 	dev-lang/perl:=
 	dev-perl/Switch
 	hdf5? ( sci-libs/hdf5[cxx] )

@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/mp3splt/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="amd64 ~hppa ~ppc ~ppc64 ~sparc x86"
 IUSE="audacious doc gnome gstreamer nls"
 
 RDEPEND="~media-libs/libmp3splt-0.9.2

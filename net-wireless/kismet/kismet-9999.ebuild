@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -16,7 +16,7 @@ if [[ ${PV} == "9999" ]] ; then
 	inherit git-2
 	KEYWORDS=""
 else
-	SRC_URI="http://www.kismetwireless.net/code/${MY_P}.tar.gz"
+	SRC_URI="http://www.kismetwireless.net/code/${MY_P}.tar.xz"
 	KEYWORDS="~amd64 ~arm ~ppc ~x86"
 fi
 
@@ -34,7 +34,7 @@ CDEPEND="net-wireless/wireless-tools
 			)
 	pcre? ( dev-libs/libpcre )
 	suid? ( sys-libs/libcap )
-	client? ( sys-libs/ncurses )
+	client? ( sys-libs/ncurses:= )
 	!arm? ( speech? ( app-accessibility/flite ) )
 	ruby? ( dev-lang/ruby:* )
 	plugin-btscan? ( net-wireless/bluez )
