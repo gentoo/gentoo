@@ -9,7 +9,7 @@ HOMEPAGE="http://www.vanhemert.co.uk/disc-cover.html"
 SRC_URI="http://www.vanhemert.co.uk/files/${P}.tar.gz"
 
 LICENSE="GPL-2"
-KEYWORDS="amd64 ~ppc ~sparc ~x86"
+KEYWORDS="amd64 ~ppc ~sparc x86"
 IUSE=""
 SLOT="0"
 
