@@ -3,10 +3,11 @@ DEPEND=sys-devel/make >=dev-util/cmake-2.8.12
 DESCRIPTION=A lightweight unit testing framework for C++
 EAPI=6
 HOMEPAGE=https://unittest-cpp.github.io/
+IUSE=test
 KEYWORDS=~amd64 ~x86
 LICENSE=MIT
 SLOT=0
 SRC_URI=https://github.com/unittest-cpp/unittest-cpp/archive/v1.6.0.tar.gz -> unittest++-1.6.0.tar.gz
-_eclass_exported_funcs=src_prepare:cmake-utils src_configure:cmake-utils src_compile:cmake-utils src_test:cmake-utils src_install:cmake-utils
+_eclass_exported_funcs=src_prepare:- src_configure:cmake-utils src_compile:cmake-utils src_test:- src_install:cmake-utils
 _eclasses_=cmake-utils	fa44804882ff16943e9f71b544f56bc9	eutils	9d81603248f2ba3ec59124320d123e5e	flag-o-matic	d270fa247153df66074f795fa42dba3e	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=ae2571b3296f7659b8df29d7e355fef4
+_md5_=a78e2363cdaf2addb195f144c82029f3
