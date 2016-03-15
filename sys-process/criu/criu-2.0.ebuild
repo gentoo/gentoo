@@ -18,6 +18,7 @@ KEYWORDS="~amd64 ~arm ~arm64"
 IUSE="python setproctitle"
 
 RDEPEND="dev-libs/protobuf-c
+	dev-libs/libnl:3
 	python? ( ${PYTHON_DEPS} )
 	setproctitle? ( dev-libs/libbsd )"
 DEPEND="${RDEPEND}
