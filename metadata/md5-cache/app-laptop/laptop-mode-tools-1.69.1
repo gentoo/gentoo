@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install postinst prepare
+DEPEND=virtual/pkgconfig virtual/pkgconfig
+DESCRIPTION=Linux kernel laptop_mode user-space utilities
+EAPI=5
+HOMEPAGE=https://github.com/rickysarraf/laptop-mode-tools/wiki
+IUSE=+acpi apm bluetooth scsi
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-2
+RDEPEND=net-wireless/wireless-tools sys-apps/iproute2 sys-apps/ethtool sys-apps/hdparm sys-apps/which acpi? ( sys-power/acpid ) apm? ( sys-apps/apmd ) bluetooth? ( net-wireless/bluez:= ) scsi? ( sys-apps/sdparm )
+SLOT=0
+SRC_URI=https://github.com/rickysarraf/laptop-mode-tools/releases/download/1.69.1/laptop-mode-tools_1.69.1.tar.gz
+_eclass_exported_funcs=pkg_postinst:- src_prepare:- src_compile:- src_install:-
+_eclasses_=eutils	9d81603248f2ba3ec59124320d123e5e	multilib	3972ca401cf7dbb430df9995f5d8d580	systemd	3165c885f3c71ffae7a867d931fb0e07	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	udev	73058269b3e70e34e084fa3981282338
+_md5_=1cacae3cdc074062bf946799bff92e54
