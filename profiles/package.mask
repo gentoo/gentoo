@@ -30,6 +30,35 @@
 
 #--- END OF EXAMPLES ---
 
+# James Le Cuirot <chewi@gentoo.org> (14 Mar 2016)
+# Bye bye Java 6! If you really still need it then gnu_andrew will
+# continue to maintain icedtea:6 in java-overlay but it is not
+# supported by Java team at all. IBM's JVM is still alive but
+# downloads are behind a registration wall and Java team does not wish
+# to support it. haubi may provide IBM updates though probably only
+# for ppc-aix. Removal in 30 days.
+dev-java/apple-jdk-bin
+dev-java/hp-jdk-bin
+dev-java/ibm-jdk-bin:1.6
+dev-java/ibm-jre-bin:1.6
+dev-java/icedtea-bin:6
+<dev-java/icedtea-6.1.13.10:6
+dev-java/soylatte-jdk-bin
+virtual/jdk:1.6
+virtual/jre:1.6
+
+# James Le Cuirot <chewi@gentoo.org> (14 Mar 2016)
+# Our old ebuilds require Java 6/7 and are most likely
+# vulnerable. Upstream has a new version targeting Java 8 but no
+# response from dotnet team. I am leaving ikvm-bin alone but only
+# because it doesn't require Java. Removal in 30 days.
+dev-dotnet/ikvm
+
+# James Le Cuirot <chewi@gentoo.org> (14 Mar 2016)
+# Requires Java 6. No stable releases since 2003 and no longer
+# required by bt747. Removal in 30 days.
+dev-java/jcharts
+
 # Hans de Graaff <graaff@gentoo.org> (14 Mar 2016)
 # Not compatible with ruby21+, no reverse dependencies.
 dev-ruby/extlib
