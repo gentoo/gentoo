@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1 fdo-mime
 
 DESCRIPTION="Audio tag editor"
-HOMEPAGE="http://puddletag.sourceforge.net/"
+HOMEPAGE="http://docs.puddletag.net/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2 GPL-3"
