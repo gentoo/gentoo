@@ -1,14 +1,12 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 
-#WANT_AUTOMAKE="1.11"
+WX_GTK_VER=3.0
 
-AUTOTOOLS_AUTORECONF=true
-
-inherit autotools-utils eutils flag-o-matic systemd user versionator wxwidgets
+inherit autotools flag-o-matic systemd user versionator wxwidgets
 
 MY_PV=$(get_version_component_range 1-2)
 
@@ -40,7 +38,7 @@ RDEPEND="
 		virtual/jpeg:0=
 		x11-libs/gtk+:2
 		>=x11-libs/libnotify-0.7
-		x11-libs/wxGTK:3.0[X,opengl,webkit]
+		x11-libs/wxGTK:${WX_GTK_VER}[X,opengl,webkit]
 	)
 "
 DEPEND="${RDEPEND}
@@ -51,41 +49,29 @@ DEPEND="${RDEPEND}
 
 S="${WORKDIR}/${PN}-client_release-${MY_PV}-${PV}"
 
-AUTOTOOLS_IN_SOURCE_BUILD=1
-
 src_prepare() {
 	# prevent bad changes in compile flags, bug 286701
 	sed -i -e "s:BOINC_SET_COMPILE_FLAGS::" configure.ac || die "sed failed"
 
-	autotools-utils_src_prepare
+	eautoreconf
+
+	use X && need-wxwidgets unicode
 }
 
 src_configure() {
-	local myeconfargs=(
-		--disable-server
-		--enable-client
-		--enable-dynamic-client-linkage
-		--disable-static
-		--enable-unicode
-		--with-ssl
-		$(use_with X x)
-		$(use_enable X manager)
-	)
-
-	# look for wxGTK
-	if use X; then
-		WX_GTK_VER="3.0"
-		need-wxwidgets unicode
-		myeconfargs+=(--with-wx-config="${WX_CONFIG}")
-	else
-		myeconfargs+=(--without-wxdir)
-	fi
-
-	autotools-utils_src_configure
+	econf --disable-server \
+		--enable-client \
+		--enable-dynamic-client-linkage \
+		--disable-static \
+		--enable-unicode \
+		--with-ssl \
+		$(use_with X x) \
+		$(use_enable X manager) \
+		$(usex X --with-wx-config="${WX_CONFIG}" --without-wxdir)
 }
 
 src_install() {
-	autotools-utils_src_install
+	default
 
 	keepdir /var/lib/${PN}
 
@@ -95,7 +81,7 @@ src_install() {
 	fi
 
 	# cleanup cruft
-	rm -rf "${ED}"/etc
+	rm -rf "${ED}"/etc || die "rm failed"
 
 	newinitd "${FILESDIR}"/${PN}.init ${PN}
 	newconfd "${FILESDIR}"/${PN}.conf ${PN}
