@@ -12360,7 +12360,7 @@ media-libs/libmpris2client 0.1.0: An library to control MPRIS2 compatible player
 media-libs/libmtp 1.1.8 1.1.9 1.1.10 1.1.11 9999: An implementation of Microsoft's Media Transfer Protocol (MTP)
 media-libs/libmygpo-qt 1.0.7 1.0.7-r1 1.0.8 9999: Qt/C++ library wrapping the gpodder.net webservice
 media-libs/libnjb 2.2.6 2.2.7: a C library and API for communicating with the Creative Nomad JukeBox digital audio player
-media-libs/libnsbmp 0.1.2-r1 0.1.3: decoding library for BMP and ICO image file formats, written in C
+media-libs/libnsbmp 0.1.2-r1 0.1.3-r1: decoding library for BMP and ICO image file formats, written in C
 media-libs/libnsgif 0.1.2-r1 0.1.3: decoding library for the GIF image file format, written in C
 media-libs/libnut 661: Library and tools to create NUT multimedia files
 media-libs/libofa 0.9.3-r1: Open Fingerprint Architecture
