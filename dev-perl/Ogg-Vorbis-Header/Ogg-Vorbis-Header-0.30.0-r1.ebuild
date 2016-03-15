@@ -8,7 +8,7 @@ MODULE_AUTHOR=DBP
 MODULE_VERSION=0.03
 inherit perl-module
 
-DESCRIPTION="This module presents an object-oriented interface to Ogg Vorbis Comments and Information"
+DESCRIPTION="An object-oriented interface to Ogg Vorbis information and comment fields"
 
 SLOT="0"
 LICENSE="|| ( GPL-2 GPL-3 ) LGPL-2" # GPL-2+
