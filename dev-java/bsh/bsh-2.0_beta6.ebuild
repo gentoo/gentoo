@@ -19,7 +19,7 @@ SRC_URI="https://github.com/${MY_PN}/${MY_PN}/archive/${MY_PV}${MY_BETA}.zip -> 
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="amd64 ~ppc64 ~x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~x86-macos"
+KEYWORDS="amd64 ppc64 x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~x86-macos"
 IUSE=""
 
 CDEPEND="
@@ -33,10 +33,8 @@ RDEPEND="
 
 DEPEND="
 	${CDEPEND}
-	test? (
-		dev-java/ant-junit:0
-	)
-	app-arch/unzip
+	test? ( dev-java/ant-junit:0 )
+	source? ( app-arch/zip )
 	>=virtual/jdk-1.6"
 
 S="${WORKDIR}/${MY_PN}-${MY_PV}${MY_BETA}"
