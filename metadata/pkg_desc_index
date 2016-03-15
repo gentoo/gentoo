@@ -4831,7 +4831,7 @@ dev-libs/purpose 1.0: Library for providing abstractions to get the developer's 
 dev-libs/qcodeedit 2.2.3 2.2.3-r2: Qt-Framework for code editing
 dev-libs/qcustomplot 1.3.2: Qt C++ widget for plotting and data visualization
 dev-libs/qjson 0.8.1-r1: A library for mapping JSON data to QVariant objects
-dev-libs/qoauth 1.0.1: A Qt-based library for OAuth support
+dev-libs/qoauth 1.0.1 2.0.1_pre20160315: Qt-based library for OAuth support
 dev-libs/qof 0.8.8-r1: A Query Object Framework
 dev-libs/qqwing 1.3.3 1.3.4: Sudoku puzzle generator and solver
 dev-libs/qrosscore 0.3.1 9999: KDE-free version of Kross (core libraries and Qt Script backend)
@@ -7096,7 +7096,7 @@ dev-python/flask-openid 1.2.3 1.2.4 1.2.5: OpenID support for Flask
 dev-python/flask-peewee 0.6.5 0.6.6 0.6.7: Flask integration layer for the Peewee ORM
 dev-python/flask-principal 0.4.0: Identity management for flask
 dev-python/flask-pymongo 0.3.0 0.3.1: PyMongo support for Flask
-dev-python/flask-restful 0.2.12 0.3.0 0.3.1 0.3.2 0.3.3 0.3.4 0.3.5: Simple framework for creating REST APIs
+dev-python/flask-restful 0.2.12 0.3.0 0.3.1 0.3.2 0.3.3 0.3.4 0.3.5 0.3.5-r1: Simple framework for creating REST APIs
 dev-python/flask-restless 0.15.0 0.16.0 0.17.0: Flask extension for easy ReSTful API generation
 dev-python/flask-script 2.0.5: Flask support for writing external scripts
 dev-python/flask-security 1.7.4 1.7.5: Simple security for Flask apps
