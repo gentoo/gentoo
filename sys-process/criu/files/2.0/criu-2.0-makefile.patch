@@ -1,0 +1,34 @@
+diff --git a/Makefile.install b/Makefile.install
+index 6fcf25e..0d12ff9 100644
+--- a/Makefile.install
++++ b/Makefile.install
+@@ -5,13 +5,12 @@ PREFIX		?= /usr/local
+ SBINDIR		?= $(PREFIX)/sbin
+ MANDIR		?= $(PREFIX)/share/man
+ SYSTEMDUNITDIR	?= $(PREFIX)/lib/systemd/system/
+-LOGROTATEDIR	?= $(PREFIX)/etc/logrotate.d/
+-LIBDIR		?= $(PREFIX)/lib
++LOGROTATEDIR	?= $(SYSCONFDIR)/etc/logrotate.d/
+ INCLUDEDIR	?= $(PREFIX)/include/criu
+ 
+ #
+ # For recent Debian/Ubuntu with multiarch support.
+-DEB_HOST_MULTIARCH ?= $(shell dpkg-architecture -qDEB_HOST_MULTIARCH 2>/dev/null)
++DEB_HOST_MULTIARCH ?=
+ ifneq "$(DEB_HOST_MULTIARCH)" ""
+         LIBDIR			?= $(PREFIX)/lib/$(DEB_HOST_MULTIARCH)
+ else
+diff --git a/scripts/nmk/scripts/build.mk b/scripts/nmk/scripts/build.mk
+index 10a5d44..6b20569 100644
+--- a/scripts/nmk/scripts/build.mk
++++ b/scripts/nmk/scripts/build.mk
+@@ -43,7 +43,9 @@ builtin-name	:= $(strip $(builtin-name))
+ 
+ #
+ # Link flags.
++ld_filter_flags = -Wl,-O1 -Wl,--as-needed
+ ld_flags	:= $(strip $(LDFLAGS) $(ldflags-y))
++ld_flags	:= $(filter-out $(ld_filter_flags),$(ld_flags))
+ 
+ #
+ # Prepare targets.
