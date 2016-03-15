@@ -2959,7 +2959,7 @@
     <email>proxy-maint@gentoo.org</email>
     <name>Proxy Maintainers</name>
     <url>https://wiki.gentoo.org/wiki/Project:Proxy_Maintainers</url>
-    <description>Proxy maintainers is a group of developers initially maintaining abandoned packages on behalf of Gentoo users. Activity of members now extends to maintaining established packages relinquished by developers.</description>
+    <description>Proxy Maintainers facilitates high quality user contributions and works to enhance user-developer cooperation in maintaining packages.</description>
     <member>
       <email>amynka@gentoo.org</email>
       <name>Amy Winston</name>
@@ -2978,7 +2978,7 @@
     <member is-lead="1">
       <email>idella4@gentoo.org</email>
       <name>Ian Delaney</name>
-      <role>Member</role>
+      <role>Lead</role>
     </member>
     <member>
       <email>kensington@gentoo.org</email>
@@ -3028,87 +3028,6 @@
     <member>
       <email>wraeth@gentoo.org</email>
       <name>Sam Jorna</name>
-      <role>Member</role>
-    </member>
-    <member>
-      <email>xmw@gentoo.org</email>
-      <name>Michael Weber</name>
-      <role>Member</role>
-    </member>
-    <member>
-      <email>yngwin@gentoo.org</email>
-      <name>Ben de Groot</name>
-      <role>Member</role>
-    </member>
-    <member>
-      <email>zlogene@gentoo.org</email>
-      <name>Mikle Kolyada</name>
-      <role>Member</role>
-    </member>
-  </project>
-  <project>
-    <email>proxy-maint@gentoo.org</email>
-    <name>Proxy Maintainers</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Proxy_Maintainers/NewHome</url>
-    <description>Proxy Maintainers facilitates high quality user contributions and works to enhance user-developer cooperation in maintaining packages.</description>
-    <member>
-      <email>amynka@gentoo.org</email>
-      <name>Amy Winston</name>
-      <role>Member</role>
-    </member>
-    <member>
-      <email>bman@gentoo.org</email>
-      <name>Aaron Bauman</name>
-      <role>Member</role>
-    </member>
-    <member>
-      <email>dlan@gentoo.org</email>
-      <name>Yixun Lan</name>
-      <role>Member</role>
-    </member>
-    <member is-lead="1">
-      <email>idella4@gentoo.org</email>
-      <name>Ian Delaney</name>
-      <role>Member</role>
-    </member>
-    <member>
-      <email>k_f@gentoo.org</email>
-      <name>Kristian Fiskerstrand</name>
-      <role>Member</role>
-    </member>
-    <member>
-      <email>maksbotan@gentoo.org</email>
-      <name>Maxim Koltsov</name>
-      <role>Member</role>
-    </member>
-    <member>
-      <email>monsieurp@gentoo.org</email>
-      <name>Patrice Clement</name>
-      <role>Member</role>
-    </member>
-    <member>
-      <email>mrueg@gentoo.org</email>
-      <name>Manuel Rüger</name>
-      <role>Member</role>
-    </member>
-    <member>
-      <email>NP-Hardass@gentoo.org</email>
-      <name>NP-Hardass</name>
-      <role>Member</role>
-    </member>
-    <member>
-      <email>perfinion@gentoo.org</email>
-      <name>Jason Zaman</name>
-      <role>Member</role>
-    </member>
-    <member>
-      <email>tamiko@gentoo.org</email>
-      <name>Matthias Maier</name>
-      <role>Member</role>
-    </member>
-    <member>
-      <email>titanofold@gentoo.org</email>
-      <name>Aaron W. Swenson</name>
       <role>Member</role>
     </member>
     <member>
@@ -3371,7 +3290,6 @@
     <subproject ref="bug-wranglers@gentoo.org"/>
     <subproject ref="devmanual@gentoo.org"/>
     <subproject ref="pms-bugs@gentoo.org"/>
-    <subproject ref="proxy-maint@gentoo.org"/>
     <subproject ref="proxy-maint@gentoo.org"/>
     <subproject ref="treecleaner@gentoo.org"/>
     <member>
