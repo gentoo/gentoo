@@ -388,7 +388,7 @@ app-backup/snapper 0.2.8 9999: Command-line program for btrfs and ext4 snapshot 
 app-backup/spideroak-bin 5.1.8-r2 5.2.0 6.0.1: An easy, secure and consolidated free online backup, storage, access and sharing system
 app-backup/tarsnap 1.0.35: Online backups for the truly paranoid
 app-backup/tob 0.26-r2: A general driver for making and maintaining backups
-app-backup/tsm 6.2.2.0-r2 6.2.5.4 6.3.0.5-r2 6.3.2.4 6.4.0.0-r1 6.4.2.3 7.1.0.0-r1 7.1.2.0 7.1.2.3 7.1.3.1 7.1.3.1-r1: Tivoli Storage Manager (TSM) Backup/Archive (B/A) Client and API
+app-backup/tsm 7.1.0.0-r1 7.1.2.0 7.1.2.3 7.1.3.1 7.1.3.1-r1: Tivoli Storage Manager (TSM) Backup/Archive (B/A) Client and API
 app-backup/vzdump 1.2: A utility to make consistent snapshots of running OpenVZ containers
 app-benchmarks/acovea 5.1.1 5.1.1-r1: Analysis of Compiler Options via Evolutionary Algorithm
 app-benchmarks/acovea-gtk 1.0.1: Analysis of Compiler Options via Evolutionary Algorithm GUI
@@ -3758,7 +3758,7 @@ dev-java/commons-collections 3.2.1-r1: Jakarta-Commons Collections Component
 dev-java/commons-compress 1.8.1-r1 1.10: Commons Compress defines an API for working with ar, cpio, tar, zip, gzip and bzip2 files
 dev-java/commons-configuration 1.6-r2: Generic interface for reading configuration data from a variety of sources
 dev-java/commons-daemon 1.0.7 1.0.9 1.0.15: Tools to allow Java programs to run as UNIX daemons
-dev-java/commons-dbcp 1.4-r2 2.1: Jakarta component providing database connection pooling API
+dev-java/commons-dbcp 2.1: Jakarta component providing database connection pooling API
 dev-java/commons-dbutils 1.6: A small set of classes designed to make working with JDBC easier
 dev-java/commons-digester 1.8.1-r2 2.1-r1 3.2-r2: Reads XML configuration files to provide initialization of various Java objects within the system
 dev-java/commons-discovery 0.4: Commons Discovery: Service Discovery component
@@ -3889,11 +3889,11 @@ dev-java/icedtea 6.1.13.9-r2 7.2.6.4-r1: A harness to build OpenJDK using Free S
 dev-java/icedtea-bin 3.0.0_pre09-r1 6.1.13.9 7.2.6.4: A Gentoo-made binary build of the IcedTea JDK
 dev-java/icedtea-sound 1.0.1: Plugins for javax.sound
 dev-java/icedtea-web 1.5.1-r1 1.6.1-r1: FOSS Java browser plugin and Web Start implementation
-dev-java/icu4j 4.0.1.1 4.4.2 54.1.1 55.1: A set of Java libraries providing Unicode and Globalization support
+dev-java/icu4j 54.1.1 55.1: A set of Java libraries providing Unicode and Globalization support
 dev-java/idm-console-framework 1.1.7: A Java Management Console framework used for remote server management
 dev-java/ini4j 0.5.1: Simple Java API Windows style .ini file handling
 dev-java/invokebinder 1.6: Provide a friendly DSL for binding method handles
-dev-java/iso-relax 20050331-r3 20050331-r4: Interfaces useful for applications which support RELAX Core
+dev-java/iso-relax 20050331-r4: Interfaces useful for applications which support RELAX Core
 dev-java/istack-commons-buildtools 2.22-r1: IStack Commons - Buildtools jar
 dev-java/istack-commons-runtime 2.22: IStack Commons - Runtime jar
 dev-java/istack-commons-soimp 2.22: IStack Commons - Soimp jar
@@ -4049,7 +4049,7 @@ dev-java/jss 4.3.2: Network Security Services for Java (JSS)
 dev-java/jssc 2.8.0: Apache MyFaces API - Core package
 dev-java/jstun 0.7.3: Java-based STUN implementation
 dev-java/jta 1.0.1-r1 1.1: The Java Transaction API
-dev-java/jtds 1.2.5-r1 1.3.1: jTDS - SQL Server and Sybase JDBC driver
+dev-java/jtds 1.3.1: jTDS - SQL Server and Sybase JDBC driver
 dev-java/jtidy 1.0: Java port of HTML Tidy, an HTML syntax checker and pretty printer
 dev-java/jtreemap 1.1.0 1.1.0-r1: Java, open-source library for treemapping
 dev-java/juel 2.1.0 2.1.0-r1 2.1.0-r2: Implementation of the Unified Expression Language (EL) - JSR-245
@@ -4113,7 +4113,7 @@ dev-java/netbeans-ergonomics 8.0.2 8.1: Netbeans Ergonomics Cluster
 dev-java/netbeans-extide 8.0.2 8.1: Netbeans ExtIDE Cluster
 dev-java/netbeans-groovy 8.0.2 8.1: Netbeans Groovy Cluster
 dev-java/netbeans-harness 8.0.2 8.1: Netbeans Harness
-dev-java/netbeans-ide 8.0.2 8.0.2-r2 8.1-r2: Netbeans IDE Cluster
+dev-java/netbeans-ide 8.0.2-r2 8.1-r2: Netbeans IDE Cluster
 dev-java/netbeans-java 8.0.2-r4 8.1-r2: Netbeans Java Cluster
 dev-java/netbeans-javacard 8.0.2 8.1: Netbeans JavaCard Cluster
 dev-java/netbeans-javadoc 8.0.2 8.1: Netbeans JavaDocs
@@ -4147,7 +4147,7 @@ dev-java/osgi-foundation 1.2.0-r1: OSGi R4 Foundation EE by Apache Felix
 dev-java/osgi-obr 1.0.2: OSGi Service OBR by Apache
 dev-java/pat 1.5.3-r1: Regular Expressions in Java
 dev-java/pdf-renderer 0.9.1 1.0.5: a 100% Java PDF renderer and viewer
-dev-java/pdfbox 1.8.8 1.8.11: Java library and utilities for working with PDF documents
+dev-java/pdfbox 1.8.11: Java library and utilities for working with PDF documents
 dev-java/piccolo 1.04: A small, extremely fast XML parser for Java
 dev-java/piccolo2d 3.0-r1: A Structured 2D Graphics Framework
 dev-java/picocontainer 1.1-r1: Small footprint Dependency Injection container
@@ -4705,6 +4705,7 @@ dev-libs/libpthread-stubs 0.1 0.3 0.3-r1: Pthread functions stubs for platforms 
 dev-libs/libpwquality 1.2.4 1.3.0: Library for password quality checking and generating random passwords
 dev-libs/libqtxdg 1.3.0: A Qt implementation of XDG standards
 dev-libs/libqzeitgeist 0.8.0: Qt interface to the Zeitgeist event tracking system
+dev-libs/librdkafka 0.9.0.99: Apache Kafka C/C++ client library
 dev-libs/librelp 1.2.7-r1 1.2.9: An easy to use library for the RELP protocol
 dev-libs/librep 0.92.2.1 0.92.3 0.92.5: Shared library implementing a Lisp dialect
 dev-libs/libreport 2.0.13-r1: Generic library for reporting software bugs
@@ -15521,7 +15522,7 @@ sci-electronics/voacapl 0.5.8 0.6.4 0.6.5 0.6.7: HF propagation prediction tool
 sci-electronics/xcircuit 3.7.48 3.7.49 3.7.50 3.8.39 3.8.40 3.8.77: Circuit drawing and schematic capture program
 sci-electronics/xnec2c 2.8 3.0 3.1 3.2 3.3 3.4: A GTK+ graphical interactive version of nec2c
 sci-electronics/xoscope 2.0 2.1: Soundcard Oscilloscope for X
-sci-geosciences/bt747 2.0.3 2.1.3: MTK GPS Datalogger Device Control
+sci-geosciences/bt747 2.1.3: MTK GPS Datalogger Device Control
 sci-geosciences/cdat-lite 6.0_rc2: Large suite of open source tools for the management and analysis of climate data
 sci-geosciences/congen 1.6.2: A package for generating the speeds, equilibrium arguments, and node factors of tidal constituents
 sci-geosciences/foxtrotgps 1.1.0 1.1.1: Easy to use, fast and lightweight mapping application (fork of tangogps)
@@ -17023,7 +17024,7 @@ sys-kernel/genkernel 3.4.45.1 3.4.48 3.4.49.2 3.4.50 3.4.51.4 3.4.52.2 3.4.52.3 
 sys-kernel/genkernel-next 35 55 60 63: Gentoo automatic kernel building scripts, reloaded
 sys-kernel/gentoo-sources 3.4.110 3.4.9999 3.10.95 3.10.96 3.10.97 3.10.98 3.10.99 3.10.100 3.12.52-r1 3.12.53 3.12.54 3.12.55 3.12.56 3.12.9999 3.14.58-r1 3.14.59 3.14.60 3.14.61 3.14.62 3.14.63 3.14.64 3.18.25-r1 3.18.26 3.18.27 3.18.28 4.0.4 4.0.9 4.1.12 4.1.15-r1 4.1.16 4.1.17 4.1.18 4.1.19 4.4.0-r1 4.4.1 4.4.2 4.4.4 4.4.5 4.5.0: Full sources including the Gentoo patchset for the 4.5 kernel tree
 sys-kernel/git-sources 4.5_rc1 4.5_rc2 4.5_rc3 4.5_rc4 4.5_rc5 4.5_rc6 4.5_rc7: The very latest -git version of the Linux kernel
-sys-kernel/hardened-sources 4.1.7-r1 4.3.3-r4 4.4.2 4.4.3 4.4.3-r1 4.4.4 4.4.5 4.4.5-r1: Hardened kernel sources (kernel series 4.4)
+sys-kernel/hardened-sources 4.1.7-r1 4.3.3-r4 4.4.2 4.4.3 4.4.3-r1 4.4.4 4.4.5 4.4.5-r1 4.4.5-r2: Hardened kernel sources (kernel series 4.4)
 sys-kernel/kccmp 0.3: A simple tool for comparing two linux kernel .config files
 sys-kernel/kergen 0.1.1 0.1.3: Kernel config generator
 sys-kernel/linux-docs 3.4.104 3.10.58 3.12.30 3.14.22 4.1.12 4.2.5 4.3: Developer documentation generated from the Linux kernel
