@@ -1,0 +1,15 @@
+DEFINED_PHASES=configure install prepare setup
+DEPEND=!static? ( >=sys-apps/util-linux-2.17.2 readline? ( sys-libs/readline:0= ) !readline? ( libedit? ( dev-libs/libedit ) ) ) !<sys-fs/xfsdump-3 static? ( >=sys-apps/util-linux-2.17.2[static-libs(+)] readline? ( sys-libs/readline:0=[static-libs(+)] ) !readline? ( libedit? ( dev-libs/libedit[static-libs(+)] ) ) readline? ( sys-libs/ncurses:0=[static-libs] ) ) nls? ( sys-devel/gettext )
+DESCRIPTION=xfs filesystem utilities
+EAPI=5
+HOMEPAGE=http://oss.sgi.com/projects/xfs/
+IUSE=libedit nls readline static static-libs
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86
+LICENSE=LGPL-2.1
+RDEPEND=!static? ( >=sys-apps/util-linux-2.17.2 readline? ( sys-libs/readline:0= ) !readline? ( libedit? ( dev-libs/libedit ) ) ) !<sys-fs/xfsdump-3
+REQUIRED_USE=static? ( static-libs )
+SLOT=0
+SRC_URI=ftp://oss.sgi.com/projects/xfs/cmd_tars/xfsprogs-4.5.0.tar.gz ftp://oss.sgi.com/projects/xfs/previous/cmd_tars/xfsprogs-4.5.0.tar.gz
+_eclass_exported_funcs=pkg_setup:- src_prepare:- src_configure:- src_install:-
+_eclasses_=eutils	9d81603248f2ba3ec59124320d123e5e	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_md5_=8eefbaa5ff819827fc0e2f84bc6f239c

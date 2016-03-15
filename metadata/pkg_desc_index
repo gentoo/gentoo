@@ -3734,7 +3734,7 @@ dev-java/bndlib 2.1.0: A swiss army knife for OSGi
 dev-java/boilerpipe 1.2.0: Boilerplate Removal and Fulltext Extraction from HTML pages
 dev-java/browserlauncher2 1.3-r1: BrowserLauncher2 is a library that facilitates opening a browser from a Java application
 dev-java/bsf 2.4.0-r2: Bean Script Framework
-dev-java/bsh 2.0_beta4-r4 2.0_beta6: A small embeddable Java source interpreter
+dev-java/bsh 2.0_beta6: A small embeddable Java source interpreter
 dev-java/byaccj 1.15-r1: A java extension of BSD YACC-compatible parser generator
 dev-java/bytelist 1.0.10: JRuby support library
 dev-java/c3p0 0.9.5.1: JDBC drivers with JNDI-bindable DataSources
@@ -14250,7 +14250,7 @@ net-libs/udns 0.4: Async-capable DNS stub resolver library
 net-libs/uhttpmock 0.4.0 0.5.0: HTTP web service mocking library
 net-libs/vanessa-mcast 1.0.0: Multicast Helper Library
 net-libs/vanessa-socket 0.0.12 0.0.13: Simplifies TCP/IP socket operations
-net-libs/webkit-gtk 2.4.9 2.4.9-r200 2.8.5 2.10.4-r1 2.10.7: Open source web browser engine
+net-libs/webkit-gtk 2.4.9 2.4.9-r200 2.8.5 2.10.4-r1 2.10.7 2.10.8: Open source web browser engine
 net-libs/wt 3.3.4: C++ library for developing interactive web applications
 net-libs/wvstreams 4.6.1-r2 4.6.1-r3: A network programming library in C++
 net-libs/xrootd 3.3.6 4.1.1: Extended ROOT remote file server
@@ -16365,7 +16365,7 @@ sys-apps/inxi 2.2.14 2.2.19: A newer, better system information script for irc, 
 sys-apps/iotools 1.4 1.5: Simple commands to access hardware device registers
 sys-apps/ipmitool 1.8.11 1.8.11-r1 1.8.14 1.8.14-r1: Utility for controlling IPMI enabled devices.
 sys-apps/ipmiutil 2.7.7 2.8.2 2.8.5 2.9.3: IPMI Management Utilities
-sys-apps/iproute2 2.6.38 3.3.0 3.8.0 3.17.0 3.19.0 4.0.0-r2 4.1.1 4.2.0 4.3.0 4.4.0 9999: kernel routing and traffic control utilities
+sys-apps/iproute2 2.6.38 3.3.0 3.8.0 3.17.0 3.19.0 4.0.0-r2 4.1.1 4.2.0 4.3.0 4.4.0 4.5.0 9999: kernel routing and traffic control utilities
 sys-apps/irqbalance 0.56 1.0.4 1.0.5-r1 1.0.6 1.0.7 1.0.7-r1 1.0.9 1.0.9-r1: Distribute hardware interrupts across processors on a multiprocessor system
 sys-apps/isapnptools 1.27: Tools for configuring ISA PnP devices
 sys-apps/iucode_tool 1.3 1.5: tool to manipulate Intel X86 and X86-64 processor microcode update collections
@@ -16982,7 +16982,7 @@ sys-fs/vhba 20130607 20140928: Virtual (SCSI) Host Bus Adapter kernel module for
 sys-fs/vzquota 3.1: OpenVZ VPS disk quota utility
 sys-fs/wpflash 0: flash the firmware on a Webpal
 sys-fs/xfsdump 3.1.3 3.1.5 3.1.6: xfs dump/restore utilities
-sys-fs/xfsprogs 3.1.10 3.1.11-r1 3.2.4 4.2.0 4.3.0: xfs filesystem utilities
+sys-fs/xfsprogs 3.1.10 3.1.11-r1 3.2.4 4.2.0 4.3.0 4.5.0: xfs filesystem utilities
 sys-fs/yaffs-utils 9999: tools for generating YAFFS images
 sys-fs/yaffs2-utils 9999: tools for generating YAFFS images
 sys-fs/yaffs2utils 0.2.9: tools for generating YAFFS images
