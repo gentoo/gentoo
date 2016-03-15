@@ -4,7 +4,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python{3_3,3_4} )
+PYTHON_COMPAT=( python{3_4,3_5} )
 inherit kde5 python-r1
 
 DESCRIPTION="Distribution-independent installer framework"
