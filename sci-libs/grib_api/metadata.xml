@@ -15,5 +15,6 @@
 <use>
   <flag name="jasper">Use <pkg>media-libs/jasper</pkg> instead of
   <pkg>media-libs/openjpeg</pkg> for JPEG 2000 support</flag>
+  <flag name="aec">Build with Adaptive Entropy Coding compression, needs <pkg>sci-libs/libaec</pkg></flag>
 </use>
 </pkgmetadata>
