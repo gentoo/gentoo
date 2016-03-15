@@ -69,7 +69,7 @@ src_test() {
 }
 
 install_crit() {
-	"${PYTHON:-python}" ../scripts/crit-setup.py install --root=${D} --prefix="${EPREFIX}/usr/"
+	"${PYTHON:-python}" ../scripts/crit-setup.py install --root="${D}" --prefix="${EPREFIX}/usr/"
 }
 
 src_install() {
