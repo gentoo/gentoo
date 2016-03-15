@@ -4,7 +4,7 @@ DESCRIPTION=Python Imaging Library (fork)
 EAPI=5
 HOMEPAGE=https://github.com/python-imaging/Pillow https://pypi.python.org/pypi/Pillow
 IUSE=doc examples jpeg jpeg2k lcms test tiff tk truetype webp zlib python_targets_pypy python_targets_python2_7 python_targets_python3_3 python_targets_python3_4 python_targets_python3_5 test
-KEYWORDS=alpha amd64 arm hppa ~ia64 ~ppc ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x86-solaris
+KEYWORDS=alpha amd64 arm hppa ~ia64 ~ppc ppc64 ~sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x86-solaris
 LICENSE=HPND
 RDEPEND=jpeg? ( virtual/jpeg:0 ) jpeg2k? ( media-libs/openjpeg:2= ) lcms? ( media-libs/lcms:2= ) tiff? ( media-libs/tiff:0= ) truetype? ( media-libs/freetype:2= ) webp? ( media-libs/libwebp:0= ) zlib? ( sys-libs/zlib:0= ) python_targets_pypy? ( virtual/pypy:0=[tk?,threads(+)] ) python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7[tk?,threads(+)] ) python_targets_python3_3? ( >=dev-lang/python-3.3.2-r2:3.3[tk?,threads(+)] ) python_targets_python3_4? ( dev-lang/python:3.4[tk?,threads(+)] ) python_targets_python3_5? ( dev-lang/python:3.5[tk?,threads(+)] ) >=dev-lang/python-exec-2:=[python_targets_pypy(-)?,python_targets_python2_7(-)?,python_targets_python3_3(-)?,python_targets_python3_4(-)?,python_targets_python3_5(-)?,-python_single_target_pypy(-),-python_single_target_python2_7(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-)]
 REQUIRED_USE=test? ( jpeg tiff ) || ( python_targets_pypy python_targets_python2_7 python_targets_python3_3 python_targets_python3_4 python_targets_python3_5 )
@@ -12,4 +12,4 @@ SLOT=0
 SRC_URI=mirror://pypi/P/Pillow/Pillow-3.1.1.zip
 _eclass_exported_funcs=src_prepare:distutils-r1 src_configure:distutils-r1 src_compile:distutils-r1 src_test:distutils-r1 src_install:distutils-r1
 _eclasses_=distutils-r1	4e8ac1ba76ddacd8f7c0289aa586a34c	eutils	9d81603248f2ba3ec59124320d123e5e	multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	3972ca401cf7dbb430df9995f5d8d580	multiprocessing	e32940a7b2a9992ad217eccddb84d548	python-r1	0f6937650a475d673baa5d0c8c0b37b3	python-utils-r1	2e6826f6a93ad2acf904eecf5b5fb6d2	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	virtualx	86c9305a59b3e0459e7fbef3a5f30b96
-_md5_=f5a83193f375d2a3aecb6ff314d9154b
+_md5_=bb0458f800a7d9de1c4f76b556f035c3

@@ -123,7 +123,7 @@ app-admin/keepassx 0.4.3 0.4.4 2.0 2.0.1 2.0.2: Qt password manager compatible w
 app-admin/killproc 2.13-r1: killproc and assorted tools for boot scripts
 app-admin/kpcli 2.7 2.8 3.0: A command line interface to KeePass database files
 app-admin/lastpass 3.2.16: Online password manager and form filler that makes web browsing easier and more secure
-app-admin/lastpass-cli 0.6.1 0.7.2 0.8.1 0.9.0: Interfaces with LastPass.com from the command line.
+app-admin/lastpass-cli 0.8.1 0.9.0: Interfaces with LastPass.com from the command line.
 app-admin/lib_users 0.9: Checks /proc for libraries being mapped but marked as deleted
 app-admin/lnav 0.6.1 0.6.2 0.7.0 0.7.1: A curses-based tool for viewing and analyzing log files
 app-admin/localepurge 0.5.4-r2: Script to recover diskspace wasted for unneeded locale files and localized man pages
@@ -15042,7 +15042,7 @@ net-wireless/orinoco-fwutils 0.1 0.3: ORiNOCO IEEE 802.11 wireless LAN firmware 
 net-wireless/orinoco-usb 9999: ORiNOCO IEEE 802.11 wireless LAN driver
 net-wireless/osmobts 9999: Osmocom BTS-Side code (Abis, scheduling)
 net-wireless/osmocom-bb 9999: OsmocomBB MS-side GSM Protocol stack (L1, L2, L3) excluding firmware
-net-wireless/portapack-firmware 20150904: Firmware and scripts for controlling the Portapack from Sharebrained
+net-wireless/portapack-firmware 20150904 20160222: Firmware and scripts for controlling the Portapack from Sharebrained
 net-wireless/pyrit 0.4.0-r1: GPU-accelerated attack against WPA-PSK authentication
 net-wireless/python-wifi 0.5.0-r1 0.5.0-r3: Provides r/w access to a wireless network card's capabilities using the Linux Wireless Extensions
 net-wireless/reaver 1.4-r3: Brute force attack against Wifi Protected Setup
