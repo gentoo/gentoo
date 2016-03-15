@@ -1,30 +1,39 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
-inherit autotools base eutils git-r3
+EAPI=6
 
-EGIT_REPO_URI="https://github.com/alexandervdm/gummi"
+inherit autotools eutils
 
 DESCRIPTION="Simple LaTeX editor for GTK+ users"
-HOMEPAGE="http://gummi.midnightcoding.org"
+HOMEPAGE="https://github.com/alexandervdm/gummi"
+
+if [[ ${PV} == "9999" ]] ; then
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/alexandervdm/gummi.git"
+	KEYWORDS=""
+else
+	SRC_URI="https://github.com/alexandervdm/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+	KEYWORDS="~amd64 ~x86"
+fi
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS=""
 IUSE=""
 
 LANGS="ar ca cs da de el es fr hu it nl pl pt pt_BR ro ru sv zh_CN zh_TW"
 
 for X in ${LANGS} ; do
-	IUSE="${IUSE} linguas_${X}"
+	IUSE="${IUSE} +linguas_${X}"
 done
 
-RDEPEND=">=dev-libs/glib-2.16:2
+RDEPEND="
+	dev-libs/glib:2
 	dev-texlive/texlive-latex
 	dev-texlive/texlive-latexextra
-	>=x11-libs/gtk+-2.16:2"
+	x11-libs/gtk+:2"
+
 DEPEND="${RDEPEND}
 	app-text/gtkspell:2
 	app-text/poppler[cairo]
