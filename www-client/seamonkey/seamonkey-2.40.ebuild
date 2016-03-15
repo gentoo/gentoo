@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 WANT_AUTOCONF="2.1"
 
 # This list can be updated with scripts/get_langs.sh from the mozilla overlay
@@ -30,14 +30,14 @@ MOZCONFIG_OPTIONAL_WIFI=1
 MOZCONFIG_OPTIONAL_JIT="enabled"
 inherit check-reqs flag-o-matic toolchain-funcs eutils mozconfig-v6.42 multilib pax-utils fdo-mime autotools mozextension nsplugins mozlinguas
 
-PATCHFF="firefox-42.0-patches-0.3"
+PATCHFF="firefox-42.0-patches-0.4"
 PATCH="${PN}-2.33-patches-01"
 EMVER="1.8.2"
 
 DESCRIPTION="Seamonkey Web Browser"
 HOMEPAGE="http://www.seamonkey-project.org"
 
-#[[ ${PV} != *_pre* ]] && \
+[[ ${PV} != *_pre* ]] && \
 KEYWORDS="~alpha ~amd64 ~arm ~ppc ~ppc64 ~x86"
 
 SLOT="0"
@@ -48,6 +48,7 @@ SRC_URI="${SRC_URI}
 	${MOZ_HTTP_URI}/source/${MY_MOZ_P}.source.tar.xz -> ${P}.source.tar.xz
 	https://dev.gentoo.org/~anarchy/mozilla/patchsets/${PATCHFF}.tar.xz
 	https://dev.gentoo.org/~axs/mozilla/patchsets/${PATCHFF}.tar.xz
+	https://dev.gentoo.org/~polynomial-c/mozilla/patchsets/${PATCHFF}.tar.xz
 	https://dev.gentoo.org/~polynomial-c/mozilla/patchsets/${PATCH}.tar.xz
 	https://dev.gentoo.org/~polynomial-c/mozilla/mozilla-graphite2-1.3.5-upgrade_patches.tar.xz
 	crypt? ( https://www.enigmail.net/download/source/enigmail-${EMVER}.tar.gz )"
@@ -106,31 +107,19 @@ src_unpack() {
 
 src_prepare() {
 	# Apply our patches
-	EPATCH_EXCLUDE="2001_ldap_respect_cflags.patch" \
-	EPATCH_SUFFIX="patch" \
-	EPATCH_FORCE="yes" \
-	epatch "${WORKDIR}/seamonkey"
+	rm "${WORKDIR}/seamonkey/2001_ldap_respect_cflags.patch" || die
+	eapply -p0 "${WORKDIR}/seamonkey"
 
 	# browser patches go here
 	pushd "${S}"/mozilla &>/dev/null || die
-	EPATCH_EXCLUDE="2000-firefox_gentoo_install_dirs.patch
-			8002_jemalloc_configure_unbashify.patch
-			8011_bug1194520-freetype261_until_moz43.patch" \
-	EPATCH_SUFFIX="patch" \
-	EPATCH_FORCE="yes" \
-	epatch "${WORKDIR}/firefox"
+	rm "${WORKDIR}/firefox/2000-firefox_gentoo_install_dirs.patch" \
+		"${WORKDIR}/firefox/8002_jemalloc_configure_unbashify.patch" \
+		"${WORKDIR}/firefox/8011_bug1194520-freetype261_until_moz43.patch" \
+		|| die
+	eapply "${WORKDIR}/firefox"
 
 	# graphite2 fixes (bug #574968)
-	EPATCH_EXCLUDE="0001-mozilla-graphite2-1.3.0.patch
-			0002-mozilla-graphite2-1.3.2.patch
-			0003-mozilla-graphite2-gr_nobidi-flag.patch
-			0004-mozilla-graphite2-1.3.3.patch
-			0005-mozilla-graphite2-1.3.4.patch
-			0006-mozilla-graphite2-post-1.3.4-bugfixes.patch
-			0007-mozilla-graphite2-always_call_ReleaseGrFace.patch" \
-	EPATCH_SUFFIX="patch" \
-	EPATCH_FORCE="yes" \
-	epatch "${WORKDIR}/mozilla-graphite2"
+	eapply "${WORKDIR}/mozilla-graphite2/0008-mozilla-graphite2-1.3.5.patch"
 	popd &>/dev/null || die
 
 	# Shell scripts sometimes contain DOS line endings; bug 391889
@@ -141,7 +130,7 @@ src_prepare() {
 	done
 
 	# Allow user to apply any additional patches without modifing ebuild
-	epatch_user
+	eapply_user
 
 	local ms="${S}/mozilla"
 
