@@ -17,21 +17,19 @@ KEYWORDS="~amd64 ~ppc64 ~x86"
 SLOT="0"
 IUSE=""
 
-# missing from tarball
-RESTRICT="test"
-
-COMMON_DEP="
-	dev-java/jsr305:0"
-RDEPEND="${COMMON_DEP}
-	>=virtual/jre-1.7"
-DEPEND="${COMMON_DEP}
-	>=virtual/jdk-1.7
-	dev-java/ant-apache-bsf:0
+CDEPEND="
+	dev-java/bsh:0
+	dev-java/jsr305:0
 	dev-java/ant-contrib:0
-	dev-java/bsh[bsf]
-	test? (
-		dev-java/ant-junit:0
-	)"
+	dev-java/ant-apache-bsf:0"
+
+RDEPEND="
+	${CDEPEND}
+	>=virtual/jre-1.7"
+
+DEPEND="
+	${CDEPEND}
+	>=virtual/jdk-1.7"
 
 S="${WORKDIR}/jEdit"
 
@@ -41,6 +39,11 @@ java_prepare() {
 	mkdir -p lib/{ant-contrib,compile,default-plugins,scripting} || die
 
 	epatch "${FILESDIR}"/${P}-build-xml.patch
+
+	java-ant_xml-rewrite -f "${S}/build.xml" -c \
+		-e javadoc \
+		-a failonerror \
+		-v no || die
 }
 
 JAVA_ANT_REWRITE_CLASSPATH="true"
@@ -61,12 +64,13 @@ src_test() {
 
 src_install () {
 	dodir ${JEDIT_HOME}
+
 	cp -R build/${PN}.jar jars doc keymaps macros modes properties startup \
 		"${D}${JEDIT_HOME}" || die
 
-	java-pkg_regjar ${JEDIT_HOME}/${PN}.jar
+	java-pkg_regjar "${JEDIT_HOME}/${PN}.jar"
 
-	java-pkg_dolauncher ${PN} --main org.gjt.sp.jedit.jEdit
+	java-pkg_dolauncher "${PN}" --main org.gjt.sp.jedit.jEdit
 
 	use doc && java-pkg_dojavadoc build/classes/javadoc/api
 
