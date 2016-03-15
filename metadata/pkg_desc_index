@@ -9571,14 +9571,14 @@ dev-util/jenkins-bin 1.642.2 1.652 1.653: Extensible continuous integration serv
 dev-util/jif 3.1_rc1: JIF is an IDE for the creation of text adventures based on Graham Nelson's Inform standard
 dev-util/kbuild 0.1.9998_pre20120806 0.1.9998_pre20131130 9999: A makefile framework for writing simple makefiles for complex tasks
 dev-util/kdbg 2.5.5: A graphical debugger interface
-dev-util/kdevelop 4.7.2: Integrated Development Environment, supporting KDE/Qt, C/C++ and much more
+dev-util/kdevelop 4.7.2 4.7.3: Integrated Development Environment, supporting KDE/Qt, C/C++ and much more
 dev-util/kdevelop-pg-qt 1.0.0-r2 1.1.0: A LL(1) parser generator used mainly by KDevelop language plugins
-dev-util/kdevelop-php 1.7.2: PHP plugin for KDevelop 4
-dev-util/kdevelop-php-docs 1.7.2: PHP documentation plugin for KDevelop 4
-dev-util/kdevelop-python 1.7.2: Python plugin for KDevelop 4
+dev-util/kdevelop-php 1.7.2 1.7.3: PHP plugin for KDevelop 4
+dev-util/kdevelop-php-docs 1.7.2 1.7.3: PHP documentation plugin for KDevelop 4
+dev-util/kdevelop-python 1.7.2 1.7.3: Python plugin for KDevelop 4
 dev-util/kdevelop-qmake 1.7.0: qmake plugin for KDevelop 4
 dev-util/kdevelop-qmljs 1.7.0: QML and javascript plugin for KDevelop 4
-dev-util/kdevplatform 1.7.2-r1: KDE development support libraries and apps
+dev-util/kdevplatform 1.7.2-r1 1.7.3: KDE development support libraries and apps
 dev-util/kdoc 2.0_alpha54: C++ and IDL Source Documentation System
 dev-util/kelbt 0.15: A backtracking LR parser by the author of Ragel
 dev-util/ketchup 0.9.8 1.0 1.1_beta3 9999: tool for updating or switching between versions of the Linux kernel source
