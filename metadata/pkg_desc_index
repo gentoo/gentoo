@@ -6775,7 +6775,7 @@ dev-python/alembic 0.7.7 0.8.2 0.8.4 0.8.5: database migrations tool, written by
 dev-python/algopy 0.5.1 0.5.2 0.5.3: Taylor Arithmetic Computation and Algorithmic Differentiation
 dev-python/amodem 1.12.0 1.13: Transmit data between two computers using audio
 dev-python/amqplib 0.6.1-r1 1.0.2-r1: Python client for the Advanced Message Queuing Procotol (AMQP)
-dev-python/aniso8601 0.82 0.83 0.90 0.92 1.0.0 1.1.0: A library for parsing ISO 8601 strings
+dev-python/aniso8601 0.82 0.83 0.90 0.92 1.0.0 1.1.0 1.1.0-r1: A library for parsing ISO 8601 strings
 dev-python/ansi2html 1.0.7 1.1.0 1.1.1: Convert text with ANSI color codes to HTML
 dev-python/ansicolor 0.2.1 0.2.4: Produce ansi color output and colored highlighting and diffing
 dev-python/anyjson 0.3.3-r1: Wraps the best available JSON implementation available in a common interface
@@ -16685,7 +16685,7 @@ sys-boot/yaboot-static 1.3.14-r1 1.3.16-r1 1.3.17-r1: Static yaboot ppc boot loa
 sys-cluster/ampi 0_pre20140616: MPI library for algorithmic differentiation
 sys-cluster/c3 4.0.1: The Cluster Command and Control (C3) tool suite
 sys-cluster/ccs 2.03.09: cluster configuration system to manage the cluster config file
-sys-cluster/ceph 0.80.10-r1 0.94.5 9.2.0 10.0.0 9999: Ceph distributed filesystem
+sys-cluster/ceph 0.80.10-r1 0.94.5 0.94.6 9.2.0 9.2.1 10.0.0 10.0.2 9999: Ceph distributed filesystem
 sys-cluster/charm 6.5.1-r1 6.5.1-r2 6.5.1-r3 6.6.0 6.6.0-r1 6.6.1: Message-passing parallel language and runtime system
 sys-cluster/charmdebug 6.2.0-r1: A debugger for Charm++ applications
 sys-cluster/cinder 7.0.1 2015.2.9999: Cinder is the OpenStack Block storage service, a spin out of nova-volumes
@@ -17164,7 +17164,7 @@ sys-process/at 3.1.16 3.1.16-r1 3.1.18: Queues jobs for later execution
 sys-process/atop 1.27_p3 2.0.2 2.1 2.2: Resource-specific view of processes
 sys-process/audit 1.7.18 2.0.5 2.1.3-r1 2.2.2-r2 2.2.2-r3 2.4.1 2.4.1-r1 2.4.3 2.4.3-r1: Userspace utilities for storing and processing auditing records
 sys-process/bcron 0.09 0.09-r2 0.10: A new cron system designed with secure operations in mind by Bruce Guenter
-sys-process/criu 1.6.1 1.7.2 1.8: utility to checkpoint/restore a process tree
+sys-process/criu 1.6.1 1.7.2 1.8 2.0: utility to checkpoint/restore a process tree
 sys-process/cronbase 0.3.7-r1: base for all cron ebuilds
 sys-process/cronie 1.5.0 1.5.0-r1: Cronie is a standard UNIX daemon cron based on the original vixie-cron
 sys-process/cronutils 1.5 1.9: Utilities to assist running batch processing jobs
