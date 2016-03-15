@@ -1,4 +1,4 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -16,7 +16,7 @@ SRC_URI="ftp://files.tnc-clan.de/TOCrossfire/client/TOCrossfire_beta_${PV}_full.
 
 # See Help/EULA.txt
 LICENSE="free-noncomm"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="dedicated opengl"
 
 src_unpack() {

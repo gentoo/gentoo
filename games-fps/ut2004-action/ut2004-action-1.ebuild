@@ -1,4 +1,4 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -15,7 +15,7 @@ HOMEPAGE="http://www.moddb.com/mods/action-unreal-tournament/addons/action-unrea
 SRC_URI="https://ut.rushbase.net/beyondunreal/mods/aut-r1-msuc.zip"
 
 LICENSE="freedist"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="dedicated opengl"
 
 src_unpack() {
