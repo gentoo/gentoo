@@ -4,7 +4,7 @@
 
 EAPI=5
 
-NETSURF_BUILDSYSTEM=buildsystem-1.3
+NETSURF_BUILDSYSTEM=buildsystem-1.4
 inherit netsurf
 
 DESCRIPTION="decoding library for BMP and ICO image file formats, written in C"
