@@ -13004,7 +13004,7 @@ media-sound/kmidimon 0.7.5: A MIDI monitor for ALSA sequencer
 media-sound/konvertible 1.0.1: A program to convert audio formats with FFmpeg
 media-sound/kradio 4.0.8: kradio is a radio tuner application for KDE
 media-sound/kstreamripper 0.7.100-r2: Program for ripping internet radios
-media-sound/kwave 0.8.10 0.8.12 0.8.99: A sound editor for KDE that can edit many types of audio files
+media-sound/kwave 0.8.10 0.8.12 0.8.99 0.9.1-r1: A sound editor built on KDE Frameworks 5 that can edit many types of audio files
 media-sound/lame 3.99.5-r1: LAME Ain't an MP3 Encoder
 media-sound/lash 0.5.4-r1 0.5.4-r2: LASH Audio Session Handler
 media-sound/lastfm-desktop 2.1.35 2.1.36: The official Last.fm desktop application suite
