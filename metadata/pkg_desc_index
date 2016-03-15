@@ -4293,7 +4293,7 @@ dev-java/xz-java 1.5: Implementation of xz data compression in pure java
 dev-java/yanfs 1.0: Yet Another NFS - a Java NFS library
 dev-java/zemberek 2.1.1: Zemberek NLP library
 dev-java/zeus-jscl 1.08 1.64: Zeus Java Swing Components Library
-dev-lang/R 3.2.2 3.2.3: Language and environment for statistical computing and graphics
+dev-lang/R 3.2.2 3.2.3 3.2.4: Language and environment for statistical computing and graphics
 dev-lang/ats 0.2.9: ATS Programming Language
 dev-lang/bas 2.4: An interpreter for the classic dialect of the programming language BASIC
 dev-lang/bashforth 0.58a: String-threaded Forth interpreter in Bash
@@ -16712,7 +16712,7 @@ sys-cluster/fake 1.1.10: Fake has been designed to switch in backup servers on a
 sys-cluster/feedbackd-agent 0.4: system for dynamic feedback of server loads in a Linux Virtual Server (LVS)-based cluster
 sys-cluster/feedbackd-master 0.4: Linux Virtual Server (LVS) addon for dynamic server health feedback
 sys-cluster/fence-agents 3.1.5-r1 3.1.5-r2: Cluster Fencing Agents
-sys-cluster/galera 25.3.10 25.3.12 25.3.13: Synchronous multi-master replication engine that provides the wsrep API
+sys-cluster/galera 25.3.10 25.3.12 25.3.13 25.3.14: Synchronous multi-master replication engine that provides the wsrep API
 sys-cluster/ganglia 3.5.0 3.5.0-r1 3.6.0-r1 3.7.1 3.7.1-r1: A scalable distributed monitoring system for clusters and grids
 sys-cluster/ganglia-web 3.5.8-r1 3.5.10-r1: Web frontend for sys-cluster/ganglia
 sys-cluster/gearmand 0.34-r1: Generic framework to farm out work to other machines
