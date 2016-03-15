@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="JSON::XS - JSON serialising/deserialising, done correctly and fast"
 
 SLOT="0"
-KEYWORDS="amd64 ~arm ~ppc ~ppc64 ~x86 ~x64-macos ~x86-solaris"
+KEYWORDS="amd64 ~arm ~ppc ~ppc64 x86 ~x64-macos ~x86-solaris"
 IUSE="test"
 
 RDEPEND="
