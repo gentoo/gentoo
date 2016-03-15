@@ -1010,7 +1010,7 @@ app-editors/emact 2.56.0: EmACT, a fork of Conroy's MicroEmacs
 app-editors/ersatz-emacs 20060515: A very minimal imitation of the famous GNU Emacs editor
 app-editors/fb2edit 0.0.9: a WYSIWYG FictionBook (fb2) editor
 app-editors/fe 1.8 1.9: A small and easy to use folding editor
-app-editors/focuswriter 1.5.3 1.5.4 1.5.5: A fullscreen and distraction-free word processor
+app-editors/focuswriter 1.5.5: A fullscreen and distraction-free word processor
 app-editors/fte 20051115-r3 20110708: Lightweight text-mode editor
 app-editors/gedit 3.16.4 3.18.2 3.18.3: A text editor for the GNOME desktop
 app-editors/gedit-plugins 3.16.0 3.18.0: Official plugins for gedit
@@ -11942,7 +11942,7 @@ media-gfx/flam3 3.0.1 9999: Tools and a library for creating fractal flames
 media-gfx/fondu 20060102-r1: Utilities for converting between and manipulating mac fonts and unix fonts
 media-gfx/fontforge 20110222-r1 20120731 20120731-r1 20150430 20150612 20150612-r1 20150824: postscript font editor and converter
 media-gfx/fontypython 0.4.4-r1 0.4.4-r2 0.4.4-r3: Font preview application
-media-gfx/fotowall 0.9-r1 0.9-r2: Qt4 tool for creating wallpapers
+media-gfx/fotowall 0.9-r2: Qt4 tool for creating wallpapers
 media-gfx/fotoxx 13.11.1 15.04.1 15.05: Program for improving image files made with a digital camera
 media-gfx/fr0st 1.4-r2: A fractal flame editor
 media-gfx/freecad 0.12.5284-r4 0.13.1830-r1 0.14.3702-r1 0.15.4671 9999: QT based Computer Aided Design application
