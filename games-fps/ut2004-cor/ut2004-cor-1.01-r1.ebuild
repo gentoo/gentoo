@@ -1,4 +1,4 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -15,7 +15,7 @@ SRC_URI="https://ut.rushbase.net/beyondunreal/mods/cor_beta_v1.0.zip
 	https://ut.rushbase.net/beyondunreal/mods/cor_patch_b1_to_b101.zip"
 
 LICENSE="freedist"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="dedicated opengl"
 
 src_prepare() {
