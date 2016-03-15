@@ -1017,7 +1017,7 @@ app-editors/gedit-plugins 3.16.0 3.18.0: Official plugins for gedit
 app-editors/ghex 3.10.1 3.18.0: GNOME hexadecimal editor
 app-editors/ghostwriter 1.2.5: A cross-platform, aesthetic, distraction-free Markdown editor
 app-editors/gobby 0.4.13 0.4.13-r1 0.4.94: GTK-based collaborative editor
-app-editors/gummi 0.6.5 0.6.6 9999: Simple LaTeX editor for GTK+ users
+app-editors/gummi 0.6.6 9999: Simple LaTeX editor for GTK+ users
 app-editors/gvim 7.4.769 7.4.1089 7.4.1229 7.4.1342 9999: GUI version of the Vim text editor
 app-editors/hexcurse 1.55: ncurses based hex editor
 app-editors/hexedit 1.2.13: View and edit files in hex or ASCII
@@ -15872,6 +15872,7 @@ sci-mathematics/kodkod 1.5.2: a constraint solver for relational logic
 sci-mathematics/kodkodi 1.5.2: A text front-end for the Kodkod Java library
 sci-mathematics/lpsolve 5.5.2.0: Mixed Integer Linear Programming (MILP) solver
 sci-mathematics/lybniz 1.3.2: A function plotter program written in PyGTK
+sci-mathematics/mathmod 4.1: Plot parametric and implicit surfaces
 sci-mathematics/mathomatic 15.8.5 16.0.1 16.0.5: Automatic algebraic manipulator
 sci-mathematics/maxima 5.34.1 5.37.3-r4: Free computer algebra environment based on Macsyma
 sci-mathematics/minisat 2.1.0 2.2.0-r3: Small yet efficient SAT solver with reference paper
