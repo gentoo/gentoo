@@ -2,11 +2,11 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
+EAPI=6
 
 inherit eutils flag-o-matic multilib toolchain-funcs multilib-minimal
 
-NSPR_VER="4.10.8"
+NSPR_VER="4.12"
 RTM_NAME="NSS_${PV//./_}_RTM"
 # Rev of https://git.fedorahosted.org/cgit/nss-pem.git
 PEM_GIT_REV="015ae754dd9f6fbcd7e52030ec9732eb27fc06a8"
@@ -14,7 +14,7 @@ PEM_P="${PN}-pem-20140125"
 
 DESCRIPTION="Mozilla's Network Security Services library that implements PKI support"
 HOMEPAGE="http://www.mozilla.org/projects/security/pki/nss/"
-SRC_URI="http://archive.mozilla.org/pub/mozilla.org/security/nss/releases/${RTM_NAME}/src/${P}.tar.gz
+SRC_URI="https://archive.mozilla.org/pub/security/nss/releases/${RTM_NAME}/src/${P}.tar.gz
 	cacert? ( https://dev.gentoo.org/~anarchy/patches/${PN}-3.14.1-add_spi+cacerts_ca_certs.patch )
 	nss-pem? ( https://dev.gentoo.org/~anarchy/dist/${PEM_P}.tar.bz2 )"
 
@@ -42,6 +42,13 @@ MULTILIB_CHOST_TOOLS=(
 	/usr/bin/nss-config
 )
 
+PATCHES=(
+	# Custom changes for gentoo
+	"${FILESDIR}/${PN}-3.21-gentoo-fixups.patch"
+	"${FILESDIR}/${PN}-3.21-gentoo-fixup-warnings.patch"
+	"${FILESDIR}/${PN}-3.23-hppa-byte_order.patch"
+)
+
 src_unpack() {
 	unpack ${A}
 	if use nss-pem ; then
@@ -50,17 +57,19 @@ src_unpack() {
 }
 
 src_prepare() {
-	# Custom changes for gentoo
-	epatch "${FILESDIR}/${PN}-3.21-gentoo-fixups.patch"
-	epatch "${FILESDIR}/${PN}-3.21-gentoo-fixup-warnings.patch"
-	epatch "${FILESDIR}/${PN}-3.21-hppa-byte_order.patch"
+	if use nss-pem ; then
+		PATCHES+=(
+			"${FILESDIR}/${PN}-3.21-enable-pem.patch"
+			"${FILESDIR}/${PN}-3.21-pem-werror.patch"
+		)
+	fi
+
+	default
 
 	if use cacert ; then
-		epatch "${DISTDIR}/${PN}-3.14.1-add_spi+cacerts_ca_certs.patch"
-		epatch "${FILESDIR}/${PN}-3.21-cacert-class3.patch" #521462
+			eapply -p4 "${DISTDIR}/${PN}-3.14.1-add_spi+cacerts_ca_certs.patch"
+			eapply "${FILESDIR}/${PN}-3.21-cacert-class3.patch" #521462
 	fi
-	use nss-pem && epatch "${FILESDIR}/${PN}-3.21-enable-pem.patch" \
-		"${FILESDIR}/${PN}-3.21-pem-werror.patch"
 
 	pushd coreconf >/dev/null || die
 	# hack nspr paths

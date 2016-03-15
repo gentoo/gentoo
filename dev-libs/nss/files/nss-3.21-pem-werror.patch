@@ -1,6 +1,5 @@
-diff -up ./nss/lib/ckfw/pem/ckpem.h.compile_Werror ./nss/lib/ckfw/pem/ckpem.h
---- ./nss/lib/ckfw/pem/ckpem.h.compile_Werror	2014-01-23 06:28:18.000000000 -0800
-+++ ./nss/lib/ckfw/pem/ckpem.h	2015-11-13 12:07:29.219887390 -0800
+--- nss/lib/ckfw/pem/ckpem.h
++++ nss/lib/ckfw/pem/ckpem.h
 @@ -233,6 +233,9 @@ struct pemLOWKEYPrivateKeyStr {
  };
  typedef struct pemLOWKEYPrivateKeyStr pemLOWKEYPrivateKey;
@@ -11,9 +10,8 @@ diff -up ./nss/lib/ckfw/pem/ckpem.h.compile_Werror ./nss/lib/ckfw/pem/ckpem.h
  SECStatus ReadDERFromFile(SECItem ***derlist, char *filename, PRBool ascii, int *cipher, char **ivstring, PRBool certsonly);
  const NSSItem * pem_FetchAttribute ( pemInternalObject *io, CK_ATTRIBUTE_TYPE type);
  void pem_PopulateModulusExponent(pemInternalObject *io);
-diff -up ./nss/lib/ckfw/pem/pinst.c.compile_Werror ./nss/lib/ckfw/pem/pinst.c
---- ./nss/lib/ckfw/pem/pinst.c.compile_Werror	2014-01-23 06:28:18.000000000 -0800
-+++ ./nss/lib/ckfw/pem/pinst.c	2015-11-13 12:07:29.219887390 -0800
+--- nss/lib/ckfw/pem/pinst.c
++++ nss/lib/ckfw/pem/pinst.c
 @@ -472,7 +472,9 @@ AddCertificate(char *certfile, char *key
      char *ivstring = NULL;
      int cipher;
@@ -37,9 +35,8 @@ diff -up ./nss/lib/ckfw/pem/pinst.c.compile_Werror ./nss/lib/ckfw/pem/pinst.c
                                  &ivstring, PR_FALSE);
              if (kobjs < 1) {
                  error = CKR_GENERAL_ERROR;
-diff -up ./nss/lib/ckfw/pem/pobject.c.compile_Werror ./nss/lib/ckfw/pem/pobject.c
---- ./nss/lib/ckfw/pem/pobject.c.compile_Werror	2014-01-23 06:28:18.000000000 -0800
-+++ ./nss/lib/ckfw/pem/pobject.c	2015-11-13 12:07:29.220887368 -0800
+--- nss/lib/ckfw/pem/pobject.c
++++ nss/lib/ckfw/pem/pobject.c
 @@ -630,6 +630,11 @@ pem_DestroyInternalObject
          if (io->u.key.ivstring)
              free(io->u.key.ivstring);
@@ -85,9 +82,8 @@ diff -up ./nss/lib/ckfw/pem/pobject.c.compile_Werror ./nss/lib/ckfw/pem/pobject.
          if (nobjs < 1)
              goto loser;
  
-diff -up ./nss/lib/ckfw/pem/rsawrapr.c.compile_Werror ./nss/lib/ckfw/pem/rsawrapr.c
---- ./nss/lib/ckfw/pem/rsawrapr.c.compile_Werror	2014-01-23 06:28:18.000000000 -0800
-+++ ./nss/lib/ckfw/pem/rsawrapr.c	2015-11-13 12:07:29.220887368 -0800
+--- nss/lib/ckfw/pem/rsawrapr.c
++++ nss/lib/ckfw/pem/rsawrapr.c
 @@ -93,6 +93,8 @@ pem_PublicModulusLen(NSSLOWKEYPublicKey
      return 0;
  }
@@ -105,9 +101,8 @@ diff -up ./nss/lib/ckfw/pem/rsawrapr.c.compile_Werror ./nss/lib/ckfw/pem/rsawrap
  
  /*
   * Format one block of data for public/private key encryption using
-diff -up ./nss/lib/ckfw/pem/util.c.compile_Werror ./nss/lib/ckfw/pem/util.c
---- ./nss/lib/ckfw/pem/util.c.compile_Werror	2014-01-23 06:28:18.000000000 -0800
-+++ ./nss/lib/ckfw/pem/util.c	2015-11-13 12:22:52.282196306 -0800
+--- nss/lib/ckfw/pem/util.c
++++ nss/lib/ckfw/pem/util.c
 @@ -131,7 +131,8 @@ static SECStatus FileToItem(SECItem * ds
      return SECFailure;
  }
