@@ -5465,6 +5465,8 @@ net-im/psi:xscreensaver - Use X screensaver protocol extension to monitor idle/a
 net-im/psimedia:demo - build simple test application for the PsiMedia system
 net-im/pyaim-t:webinterface - Install dependencies needed for the web interface
 net-im/pyicq-t:webinterface - Install dependencies needed for the web interface
+net-im/qtox:X - Adds support for X11
+net-im/qtox:gtk - Adds support for GTK and Status Notifier tray backends
 net-im/qutim:antiboss - Enable support for the antiboss plugin
 net-im/qutim:aspell - Enable spellchecking using app-text/aspell
 net-im/qutim:awn - Enable integration with gnome-extra/avant-window-navigator
