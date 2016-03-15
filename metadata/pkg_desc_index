@@ -9291,7 +9291,7 @@ dev-tex/sketch 0.3.7: Produces drawings of two- or three-dimensional solid objec
 dev-tex/slatex 20090928: SLaTeX is a Scheme program that allows you to write Scheme code in your (La)TeX source
 dev-tex/style-check 0.14: Parses latex-formatted text in search of forbidden phrases
 dev-tex/svninfo 0.7.4: A LaTeX module to access SVN version info
-dev-tex/tex4ht 20090611_p1038-r2 20090611_p1038-r3: Converts (La)TeX to (X)HTML, XML and OO.org
+dev-tex/tex4ht 20090611_p1038-r2 20090611_p1038-r3 20090611_p1038-r4: Converts (La)TeX to (X)HTML, XML and OO.org
 dev-tex/texamator 1.7.5: A program aimed at helping you making your exercise sheets
 dev-tex/texmfind 2010.1: Locate the ebuild providing a certain texmf file through regexp
 dev-tex/texpower 0.2: A bundle of style and class files for creating dynamic online presentations
