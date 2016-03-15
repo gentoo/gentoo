@@ -16,7 +16,7 @@ else
 fi
 
 DESCRIPTION="A keyboard-driven, vim-like browser based on PyQt5 and QtWebKit"
-HOMEPAGE="https://github.com/The-Compiler/qutebrowser"
+HOMEPAGE="http://www.qutebrowser.org/ https://github.com/The-Compiler/qutebrowser"
 
 LICENSE="GPL-3"
 SLOT="0"
