@@ -12403,7 +12403,7 @@ media-libs/libtiger 0.3.4: A rendering library for Kate streams using Pango and 
 media-libs/libtimidity 0.1.0-r2: MIDI to WAVE converter library
 media-libs/libtxc_dxtn 1.0.1 1.0.1-r1: Helper library for S3TC texture (de)compression
 media-libs/libuninameslist 20091231: Library of unicode annotation data
-media-libs/libv4l 0.8.9 0.9.5 0.9.5-r1 1.0.0 1.2.1 1.6.0 1.6.0-r1 1.6.2: Separate libraries ebuild from upstream v4l-utils package
+media-libs/libv4l 1.6.2: Separate libraries ebuild from upstream v4l-utils package
 media-libs/libvisio 0.0.30 0.1.1 0.1.5 9999: Library parsing the visio documents
 media-libs/libvisual 0.4.0-r3: Libvisual is an abstraction library that comes between applications and audio visualisation plugins
 media-libs/libvorbis 1.3.3 1.3.3-r1 1.3.4 1.3.5: The Ogg Vorbis sound file format library
@@ -13869,7 +13869,7 @@ net-firewall/quicktables 2.3: a quick iptables script generator
 net-firewall/rtsp-conntrack 3.7: RTSP conntrack module for Netfilter
 net-firewall/sanewall 1.1.6-r1: iptables firewall generator (fork of firehol)
 net-firewall/shapecfg 36: configuration tool for setting traffic bandwidth parameters
-net-firewall/shorewall 4.6.10.1 5.0.2.1 5.0.4 5.0.5.1: A high-level tool for configuring Netfilter
+net-firewall/shorewall 5.0.2.1 5.0.4 5.0.6.1: A high-level tool for configuring Netfilter
 net-firewall/ufw 0.34_pre805-r2 0.35: A program used to manage a netfilter firewall
 net-firewall/ufw-frontends 0.3.2-r3: Provides graphical frontend to ufw
 net-firewall/xtables-addons 1.47.1 2.8 2.9 2.10: extensions not yet accepted in the main kernel/iptables (patch-o-matic(-ng) successor)
@@ -17165,7 +17165,7 @@ sys-process/atop 1.27_p3 2.0.2 2.1 2.2: Resource-specific view of processes
 sys-process/audit 1.7.18 2.0.5 2.1.3-r1 2.2.2-r2 2.2.2-r3 2.4.1 2.4.1-r1 2.4.3 2.4.3-r1: Userspace utilities for storing and processing auditing records
 sys-process/bcron 0.09 0.09-r2 0.10: A new cron system designed with secure operations in mind by Bruce Guenter
 sys-process/criu 1.6.1 1.7.2 1.8: utility to checkpoint/restore a process tree
-sys-process/cronbase 0.3.3 0.3.4 0.3.5-r1 0.3.6 0.3.7-r1: base for all cron ebuilds
+sys-process/cronbase 0.3.7-r1: base for all cron ebuilds
 sys-process/cronie 1.5.0 1.5.0-r1: Cronie is a standard UNIX daemon cron based on the original vixie-cron
 sys-process/cronutils 1.5 1.9: Utilities to assist running batch processing jobs
 sys-process/daemontools 0.76-r7: Collection of tools for managing UNIX services
