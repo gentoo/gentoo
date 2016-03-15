@@ -13,7 +13,7 @@ SRC_URI="http://killa.net/infosec/otpCalc/otpCalc-${PV}.tar.gz
 
 LICENSE="GPL-2+" # bundled crypto functions are not used
 SLOT="0"
-KEYWORDS="~alpha amd64 ~ppc ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~ppc ~sparc x86"
 
 RDEPEND="x11-libs/gtk+:2
 	dev-libs/openssl:0"
