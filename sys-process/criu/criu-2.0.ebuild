@@ -39,6 +39,7 @@ src_prepare() {
 	epatch "${FILESDIR}"/${PV}/${P}-flags.patch
 	epatch "${FILESDIR}"/${PV}/${P}-makefile.patch
 	epatch "${FILESDIR}"/${PV}/${P}-automagic-libbsd.patch
+	epatch "${FILESDIR}"/${PV}/${P}-sysroot.patch
 }
 
 criu_arch() {
