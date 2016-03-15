@@ -19,6 +19,7 @@
 		<flag name="atavia">Support for VIA VT6421A SATA controllers</flag>
 		<flag name="bitbang_spi">Bitbanging SPI infrastructure</flag>
 		<flag name="buspirate_spi">Enable Bus Pirate SPI programmer</flag>
+		<flag name="ch341a_spi">Enable WCH CH341A SPI programmer</flag>
 		<flag name="dediprog">Dediprog SF100 support</flag>
 		<flag name="drkaiser">Enable Dr. Kaiser programmer</flag>
 		<flag name="dummy">Enable dummy tracing</flag>
