@@ -5,7 +5,12 @@
     <email>sci@gentoo.org</email>
     <name>Gentoo Science Project</name>
   </maintainer>
-  <longdescription lang="en">
+  <maintainer type="person">
+    <email>yamakuzure@gmx.net</email>
+    <name>Sven Eden</name>
+    <description>Proxied maintainer; set to assignee in all bugs</description>
+  </maintainer>
+<longdescription lang="en">
   BOINC (Berkeley Open Infrastructure for Network Computing) is a software
   platform for distributed computing using volunteered computer resources.
 </longdescription>
@@ -13,7 +18,7 @@
     <flag name="cuda">
   Use nvidia cuda toolkit for speeding up computations.
   NOTE: works only for subset of nvidia graphic cards so make sure your card
-  is supported before opening bug about it.
+  is supported before opening a bug about it.
   </flag>
   </use>
   <upstream>
