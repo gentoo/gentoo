@@ -8273,7 +8273,7 @@ dev-ros/diagnostic_msgs 1.12.3 1.12.4 9999: Standardized interface for the diagn
 dev-ros/diagnostic_updater 1.8.8 1.8.9 9999: Tools for updating diagnostics
 dev-ros/driver_base 1.6.8 9999: Framework for writing drivers that helps with runtime reconfiguration, diagnostics and self-test
 dev-ros/dwa_local_planner 1.13.0 1.13.1 9999: Dynamic Window Approach to local robot navigation on a plane
-dev-ros/dynamic_reconfigure 1.5.39 9999: Provides a means to change node parameters at any time without having to restart the node
+dev-ros/dynamic_reconfigure 1.5.39 1.5.41 9999: Provides a means to change node parameters at any time without having to restart the node
 dev-ros/eigen_conversions 1.11.7 1.11.8 9999: Conversion functions between Eigen and KDL and Eigen and geometry_msgs
 dev-ros/eigen_stl_containers 0.1.4 9999: Provides a set of typedef's that allow using Eigen datatypes in STL containers
 dev-ros/fake_localization 1.13.0 1.13.1 9999: A ROS node that simply forwards odometry information
@@ -8405,7 +8405,7 @@ dev-ros/roscpp_traits 0.5.6 0.5.7 9999: Message traits code
 dev-ros/roscpp_tutorials 0.6.1 9999: Attempts to show the features of ROS step-by-step, including using messages, servers, parameters
 dev-ros/roscreate 1.12.3 1.12.5 1.13.1 9999: Tool that assists in the creation of ROS filesystem resources
 dev-ros/rosgraph 1.11.14 1.11.15 1.11.16 1.11.17 9999: Prints information about the ROS Computation Graph
-dev-ros/rosgraph_msgs 1.11.1 9999: Messages relating to ROS comm
+dev-ros/rosgraph_msgs 1.11.1 1.11.2 9999: Messages relating to ROS comm
 dev-ros/roslang 1.12.3 1.12.5 1.13.1 9999: Common package for all ROS client libraries
 dev-ros/roslaunch 1.11.16-r1 1.11.17 9999: Tool for easily launching multiple ROS nodes
 dev-ros/roslib 1.12.3 1.12.5 1.13.1 9999: Base dependencies and support libraries for ROS
@@ -8485,7 +8485,7 @@ dev-ros/smclib 1.7.16 9999: The State Machine Compiler (SMC) converts the descri
 dev-ros/sound_play 0.2.7 0.2.8 0.2.9 0.2.10 0.2.11 0.2.12 9999: ROS node that translates commands on a ROS topic (robotsound) into sounds
 dev-ros/stage_ros 1.7.5 9999: ROS specific hooks and tools for the Stage simulator
 dev-ros/std_msgs 0.5.9 0.5.10 9999: Standard ROS Messages
-dev-ros/std_srvs 1.11.1 9999: Messages relating to ROS comm
+dev-ros/std_srvs 1.11.1 1.11.2 9999: Messages relating to ROS comm
 dev-ros/stereo_image_proc 1.12.14 1.12.15 9999: Stereo and single image rectification and disparity processing
 dev-ros/stereo_msgs 1.12.3 1.12.4 9999: Messages specific to stereo processing, such as disparity images
 dev-ros/test_bond 1.7.16 9999: Tests for bond, bondpy and bondcpp
