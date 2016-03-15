@@ -1544,7 +1544,7 @@ app-i18n/skkfep 0.87-r1: A SKK-like Japanese input method for console
 app-i18n/skkserv 9.6-r3: Dictionary server for the SKK Japanese-input software
 app-i18n/sunpinyin 2.0.3-r1 2.0.4_pre20130108: A Statistical Language Model based Chinese input method library
 app-i18n/sunpinyin-data 20121025 20130220: Data sets for Sunpinyin
-app-i18n/tagainijisho 1.0.2 1.0.3: Open-source Japanese dictionary and kanji lookup tool
+app-i18n/tagainijisho 1.0.3-r1: Open-source Japanese dictionary and kanji lookup tool
 app-i18n/tegaki-zinnia-japanese 0.3: Handwriting model data of Japanese
 app-i18n/tomoe 0.6.0-r1 0.6.0-r2: Japanese handwriting recognition engine
 app-i18n/transifex-client 0.10 0.11.1_beta: A command line interface for Transifex
