@@ -108,7 +108,7 @@ app-admin/gkrellm 2.3.5-r3 2.3.6_rc1 2.3.6_rc1-r1: Single process stack of vario
 app-admin/glance 11.0.1-r1 2015.2.9999: Services for discovering, registering, and retrieving VM images
 app-admin/gnome-system-log 3.9.90: System log viewer for GNOME
 app-admin/grubconfig 1.28-r1: Simple Tool to configure Grub-Bootloader
-app-admin/gtkdiskfree 2.0.1-r1: Graphical tool to show free disk space
+app-admin/gtkdiskfree 2.0.1-r1 2.0.2: Graphical tool to show free disk space like df
 app-admin/hardening-check 2.5 2.6 2.7: Report the hardening characterists of a set of binaries
 app-admin/hardinfo 0.5.2_pre20130823: A system information and benchmark tool for Linux systems
 app-admin/haskell-updater 1.2.9 1.2.10: Rebuild Haskell dependencies in Gentoo
