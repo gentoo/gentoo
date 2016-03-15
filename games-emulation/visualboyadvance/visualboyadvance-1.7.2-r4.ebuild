@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/vba/VisualBoyAdvance-src-${PV}.tar.gz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~ppc ~x86 ~x86-fbsd"
+KEYWORDS="amd64 ~ppc x86 ~x86-fbsd"
 IUSE="gtk cpu_flags_x86_mmx nls"
 
 RDEPEND="media-libs/libpng:0
