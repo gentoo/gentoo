@@ -23,6 +23,7 @@ src_prepare() {
 	# Linux compiler flags only include -O2 and are incremental
 	sed -i '/FLAGS/s:-O2::' Makefile.m4
 
+	epatch "${FILESDIR}"/${PN}-7.0-sysmacros.patch
 	# Fix compilation when DFORTIFY_SOURCE=2
 	# https://bugs.gentoo.org/257360
 	# https://bugzilla.redhat.com/show_bug.cgi?id=426068
