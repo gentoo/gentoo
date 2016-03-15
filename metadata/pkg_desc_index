@@ -3862,7 +3862,7 @@ dev-java/gnu-hylafax 1.0.3-r2: Java API designed to implement the client protoco
 dev-java/gnu-jaf 1.1.1: GNU implementation of the JavaBeans Activation Framework
 dev-java/gnu-javamail 1.0-r2: GNU implementation of the Javamail API
 dev-java/gnu-regexp 1.1.4-r2 1.1.4-r3: GNU regular expression package for Java
-dev-java/groovy 1.7.5 1.8.5-r1 2.4.5: A multi-faceted language for the Java platform
+dev-java/groovy 2.4.5: A multi-faceted language for the Java platform
 dev-java/gson 2.3.1: Java library to convert JSON to Java objects and vice-versa
 dev-java/guava 07 13.0.1 13.0.1-r3 14.0.1 15.0 16.0.1 17.0 18.0: A collection of Google's core Java libraries
 dev-java/guice 4.0: Guice is a lightweight dependency injection framework for Java 5 and above
@@ -4614,6 +4614,7 @@ dev-libs/libexecinfo 1.1: A library for inspecting program's backtrace
 dev-libs/libexplain 1.4: Library which may be used to explain Unix and Linux system call errors
 dev-libs/libezV24 0.1.1: library that provides an easy API to Linux serial ports
 dev-libs/libf2c 20110801-r4 20130927: Library that converts FORTRAN to C source
+dev-libs/libfastjson 0.99.2: Fork of the json-c library, which is optimized for liblognorm processing
 dev-libs/libffi 3.0.13-r1 3.1-r3 3.2 3.2.1: a portable, high level programming interface to various calling conventions
 dev-libs/libfilezilla 0.3.1 0.4.0.1: C++ library offering some basic functionality for platform-independent programs
 dev-libs/libflatarray 0.1.1: Struct of arrays library with object oriented interface for C++
@@ -16671,7 +16672,7 @@ sys-boot/quik 2.1.6: OldWorld PowerMac Bootloader
 sys-boot/raincoat 0.5 0.11: Flash the Xbox boot chip
 sys-boot/raspberrypi-firmware 1_pre20130807 1.20160209 9999: Raspberry PI boot loader and firmware
 sys-boot/raspberrypi-mkimage 0_p20120201: Raspberry Pi kernel mangling tool mkimage/imagetool-uncompressed.py
-sys-boot/refind 0.9.0-r1 0.9.2 0.10.0: The rEFInd UEFI Boot Manager by Rod Smith
+sys-boot/refind 0.9.0-r1 0.9.2 0.10.0 0.10.2: The rEFInd UEFI Boot Manager by Rod Smith
 sys-boot/sgibootcd 0.12: Creates burnable CD images for SGI LiveCDs
 sys-boot/shlilo-lantank 20040408: bootloader for the SuperH Lantank
 sys-boot/silo 1.4.14_p20100228 1.4.14_p20120226 1.4.14_p20120819: SPARC/UltraSPARC Improved Loader, a boot loader for sparc
