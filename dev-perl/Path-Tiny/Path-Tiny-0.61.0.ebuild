@@ -12,7 +12,7 @@ DESCRIPTION="File path utility"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~hppa ~ppc ~x86"
+KEYWORDS="amd64 ~arm ~hppa ppc x86"
 IUSE="test"
 
 RDEPEND="

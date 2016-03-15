@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="Add test failures if warnings are caught"
 
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~ppc ~x86"
+KEYWORDS="amd64 ~hppa ppc x86"
 IUSE="test"
 LICENSE="Apache-2.0"
 

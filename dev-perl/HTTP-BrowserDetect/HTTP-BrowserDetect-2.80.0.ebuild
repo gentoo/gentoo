@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="Determine Web browser, version, and platform from an HTTP user agent string"
 
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~mips ~ppc ~x86"
+KEYWORDS="amd64 ~hppa ~mips ppc x86"
 IUSE="test"
 
 RDEPEND="
