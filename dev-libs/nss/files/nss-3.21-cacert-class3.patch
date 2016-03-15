@@ -1,6 +1,5 @@
-diff -urN a/nss/lib/ckfw/builtins/certdata.txt b/nss/lib/ckfw/builtins/certdata.txt
---- a/nss/lib/ckfw/builtins/certdata.txt	2015-11-15 09:25:06.142786072 -0600
-+++ b/nss/lib/ckfw/builtins/certdata.txt	2015-11-15 09:36:02.976756787 -0600
+--- nss/lib/ckfw/builtins/certdata.txt
++++ nss/lib/ckfw/builtins/certdata.txt
 @@ -30351,3 +30351,200 @@
  CKA_TRUST_EMAIL_PROTECTION CK_TRUST CKT_NSS_TRUSTED_DELEGATOR
  CKA_TRUST_CODE_SIGNING CK_TRUST CKT_NSS_TRUSTED_DELEGATOR
