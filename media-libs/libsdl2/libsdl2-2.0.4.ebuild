@@ -24,7 +24,7 @@ REQUIRED_USE="
 	nas? ( sound )
 	opengl? ( video )
 	pulseaudio? ( sound )
-	wayland ( gles )
+	wayland? ( gles )
 	xinerama? ( X )
 	xscreensaver? ( X )"
 
