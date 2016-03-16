@@ -94,7 +94,7 @@
 	<xs:complexType name='upstreamMaintainerType'>
 		<xs:all>
 			<xs:element name='email' type='emailType'
-				minOccurs='1'/>
+				minOccurs='0'/>
 			<xs:element name='name' type='xs:token'
 				minOccurs='0'/>
 		</xs:all>
