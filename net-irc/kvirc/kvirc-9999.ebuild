@@ -86,6 +86,8 @@ pkg_setup() {
 }
 
 src_prepare() {
+	cmake-utils_src_prepare
+
 	if [[ "${PV}" == "9999" ]]; then
 		KVIRC_GIT_REVISION="$(git show -s --format=%H)"
 		KVIRC_GIT_SOURCES_DATE="$(git show -s --format=%cd --date=short)"
