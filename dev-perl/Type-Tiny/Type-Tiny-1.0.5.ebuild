@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="tiny, yet Moo(se)-compatible type constraint"
 
 SLOT="0"
-KEYWORDS="amd64 ~hppa ~ppc x86"
+KEYWORDS="amd64 ~hppa ppc x86"
 IUSE="test"
 
 RDEPEND="
