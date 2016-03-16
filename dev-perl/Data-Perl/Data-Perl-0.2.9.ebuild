@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="Base classes wrapping fundamental Perl data types"
 
 SLOT="0"
-KEYWORDS="amd64 ~hppa ~ppc x86 ~ppc-macos"
+KEYWORDS="amd64 ~hppa ppc x86 ~ppc-macos"
 IUSE="test"
 
 RDEPEND="
