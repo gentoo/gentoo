@@ -12893,7 +12893,7 @@ media-sound/cdtool 2.1.8-r1: collection of command-line utilities to control cdr
 media-sound/chordii 4.3 4.5.1: A guitar music typesetter
 media-sound/christine 0.7.0: A simple gstreamer based media player
 media-sound/chuck 1.2.1.2 1.3.5.1: Strongly-timed, concurrent, and on-the-fly audio programming language
-media-sound/clementine 1.2.2 1.2.3 1.3_rc1 9999: A modern music player and library organizer based on Amarok 1.4 and Qt4
+media-sound/clementine 1.2.2 1.2.3 1.3_rc1 1.3_rc1-r1 9999: A modern music player and library organizer based on Amarok 1.4 and Qt4
 media-sound/cmix 1.6: command line audio mixer
 media-sound/cmus 2.5.0-r1 2.6.0 2.7.1: A ncurses based music player with plugin support for many formats
 media-sound/cmusfm 0.2.5: Last.fm scrobbler for cmus music player
