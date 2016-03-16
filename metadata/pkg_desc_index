@@ -7130,6 +7130,7 @@ dev-python/functest 0.8.8-r1: Functest is a test tool/framework for testing in P
 dev-python/functools32 3.2.3: Backport of the functools module from Python 3
 dev-python/fuse-python 0.2.1-r1: Python FUSE bindings
 dev-python/fusil 1.5: Fusil the fuzzer is a Python library used to write fuzzing programs
+dev-python/future 0.15.2: Easy, clean, reliable Python 2/3 compatibility
 dev-python/futures 2.2.0 3.0.2 3.0.3 3.0.4 3.0.5: Backport of the concurrent.futures package from Python 3.2
 dev-python/futurist 0.4.0: Useful additions to futures, from the future
 dev-python/gconf-python 2.28.1-r1: Python bindings for the GConf library
@@ -17034,7 +17035,7 @@ sys-kernel/cryptodev 1.7: device that allows access to Linux kernel cryptographi
 sys-kernel/dracut 034-r4 040-r3 041-r3 043-r2 044: Generic initramfs generation tool
 sys-kernel/genkernel 3.4.45.1 3.4.48 3.4.49.2 3.4.50 3.4.51.4 3.4.52.2 3.4.52.3 3.4.52.4 3.5.0.0 9999: Gentoo automatic kernel building scripts
 sys-kernel/genkernel-next 35 55 60 63: Gentoo automatic kernel building scripts, reloaded
-sys-kernel/gentoo-sources 3.4.110 3.4.9999 3.10.95 3.10.96 3.10.97 3.10.98 3.10.99 3.10.100 3.12.52-r1 3.12.53 3.12.54 3.12.55 3.12.56 3.12.9999 3.14.58-r1 3.14.59 3.14.60 3.14.61 3.14.62 3.14.63 3.14.64 3.18.25-r1 3.18.26 3.18.27 3.18.28 4.0.4 4.0.9 4.1.12 4.1.15-r1 4.1.16 4.1.17 4.1.18 4.1.19 4.4.0-r1 4.4.1 4.4.2 4.4.4 4.4.5 4.5.0: Full sources including the Gentoo patchset for the 4.5 kernel tree
+sys-kernel/gentoo-sources 3.4.110 3.4.9999 3.10.95 3.10.96 3.10.97 3.10.98 3.10.99 3.10.100 3.10.101 3.12.52-r1 3.12.53 3.12.54 3.12.55 3.12.56 3.12.9999 3.14.58-r1 3.14.59 3.14.60 3.14.61 3.14.62 3.14.63 3.14.64 3.18.25-r1 3.18.26 3.18.27 3.18.28 4.0.4 4.0.9 4.1.12 4.1.15-r1 4.1.16 4.1.17 4.1.18 4.1.19 4.4.0-r1 4.4.1 4.4.2 4.4.4 4.4.5 4.5.0: Full sources including the Gentoo patchset for the 4.5 kernel tree
 sys-kernel/git-sources 4.5_rc1 4.5_rc2 4.5_rc3 4.5_rc4 4.5_rc5 4.5_rc6 4.5_rc7: The very latest -git version of the Linux kernel
 sys-kernel/hardened-sources 4.1.7-r1 4.3.3-r4 4.4.2 4.4.3 4.4.3-r1 4.4.4 4.4.5 4.4.5-r1 4.4.5-r2: Hardened kernel sources (kernel series 4.4)
 sys-kernel/kccmp 0.3: A simple tool for comparing two linux kernel .config files
@@ -17614,7 +17615,7 @@ www-client/fetch 1.0-r1: Fetch is a simple, fast, and flexible HTTP download too
 www-client/firefox 38.5.0 38.6.1 38.7.0 44.0.2 45.0: Firefox Web Browser
 www-client/firefox-bin 38.7.0 45.0: Firefox Web Browser
 www-client/google-chrome 49.0.2623.87_p1: The web browser from Google
-www-client/google-chrome-beta 50.0.2661.26_p1: The web browser from Google
+www-client/google-chrome-beta 50.0.2661.37_p1: The web browser from Google
 www-client/google-chrome-unstable 51.0.2679.0_p1: The web browser from Google
 www-client/httrack 3.48.21-r1 3.48.21-r2: HTTrack Website Copier, Open Source Offline Browser
 www-client/jd 2.8.5_p120826: gtk2 based 2ch browser written in C++
@@ -17671,7 +17672,7 @@ www-misc/wsmake 0.6.4: Website Pre-processor
 www-misc/xxv 1.6.1-r1: WWW Admin for the VDR (Video Disk Recorder)
 www-misc/zoneminder 1.27.0 1.28.0 1.28.1: ZoneMinder allows you to capture, analyse, record and monitor any cameras attached to your system
 www-plugins/adobe-flash 11.2.202.577: Adobe Flash Player
-www-plugins/chrome-binary-plugins 49.0.2623.87_p1 50.0.2661.26_beta1 51.0.2679.0_alpha1: Binary plugins from Google Chrome for use in Chromium
+www-plugins/chrome-binary-plugins 49.0.2623.87_p1 50.0.2661.37_beta1 51.0.2679.0_alpha1: Binary plugins from Google Chrome for use in Chromium
 www-plugins/freshplayerplugin 0.3.1-r2 0.3.2 0.3.3 0.3.3-r1 0.3.3-r2 0.3.4 0.3.4-r1: PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers
 www-plugins/gecko-mediaplayer 1.0.8 1.0.9: A browser plugin that uses GNOME MPlayer
 www-plugins/gnash 0.8.10_p20131019 0.8.10_p20150316: GNU Flash movie player that supports many SWF v7,8,9 features
