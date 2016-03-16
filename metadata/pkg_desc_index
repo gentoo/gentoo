@@ -4465,7 +4465,7 @@ dev-libs/cryptlib 3.4.0-r1: Powerful security toolkit for adding encryption to s
 dev-libs/crypto++ 5.6.2-r2: C++ class library of cryptographic schemes
 dev-libs/cvector 1.0.3-r1 1.0.3.1: An ANSI C implementation of dynamic arrays to provide a crude approximation to the C++ vector class
 dev-libs/cxxtools 1.4.8 2.2.1: Collection of general purpose C++-classes
-dev-libs/cyberjack 3.99.5_p03-r1 3.99.5_p08: REINER SCT cyberJack pinpad/e-com USB user space driver library
+dev-libs/cyberjack 3.99.5_p03-r1 3.99.5_p09: REINER SCT cyberJack pinpad/e-com USB user space driver library
 dev-libs/cygwin 1.5.25.15: Linux-like environment for Windows
 dev-libs/cyrus-imap-dev 2.4.16 2.4.17 2.4.17-r1: Developer support for the Cyrus IMAP Server
 dev-libs/cyrus-sasl 2.1.26-r9 2.1.26-r10: The Cyrus SASL (Simple Authentication and Security Layer)
@@ -13382,7 +13382,7 @@ media-video/noad 0.7.3 0.7.3-r1 0.8.6 0.8.6-r1: Mark commercial breaks in VDR re
 media-video/nvidia-settings 340.58 340.58-r1 355.11 358.16: NVIDIA Linux X11 Settings Utility
 media-video/nvidia_video_sdk 6.0.1: NVIDIA Video Codec SDK
 media-video/ogmrip 1.0.1: Graphical frontend and libraries for ripping DVDs and encoding to AVI/OGM/MKV/MP4
-media-video/openshot 1.4.3: Free, open-source, non-linear video editor to create and edit videos and movies
+media-video/openshot 1.4.3 2.0.6: Free, open-source, non-linear video editor to create and edit videos and movies
 media-video/oxine 0.7.1-r1: OSD frontend for Xine
 media-video/parole 0.5.4 0.6.1 0.7.0 0.8.0-r1 0.8.1: a simple media player based on the GStreamer framework for the Xfce4 desktop
 media-video/pgcedit 0.8.6: DVD IFO and Menu editor
