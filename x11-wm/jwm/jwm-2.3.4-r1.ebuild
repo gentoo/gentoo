@@ -52,6 +52,9 @@ src_install() {
 
 	make_wrapper "${PN}" "/usr/bin/${PN}" "" "" "/etc/X11/Sessions"
 
+	insinto "/usr/share/xsessions"
+	doins "${FILESDIR}"/jwm.desktop
+
 	dodoc README.md example.jwmrc ChangeLog
 }
 
