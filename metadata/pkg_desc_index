@@ -8277,7 +8277,7 @@ dev-ros/diagnostic_msgs 1.12.3 1.12.4 9999: Standardized interface for the diagn
 dev-ros/diagnostic_updater 1.8.8 1.8.9 9999: Tools for updating diagnostics
 dev-ros/driver_base 1.6.8 9999: Framework for writing drivers that helps with runtime reconfiguration, diagnostics and self-test
 dev-ros/dwa_local_planner 1.13.0 1.13.1 9999: Dynamic Window Approach to local robot navigation on a plane
-dev-ros/dynamic_reconfigure 1.5.39 1.5.41 9999: Provides a means to change node parameters at any time without having to restart the node
+dev-ros/dynamic_reconfigure 1.5.39 1.5.41 1.5.42 9999: Provides a means to change node parameters at any time without having to restart the node
 dev-ros/eigen_conversions 1.11.7 1.11.8 9999: Conversion functions between Eigen and KDL and Eigen and geometry_msgs
 dev-ros/eigen_stl_containers 0.1.4 9999: Provides a set of typedef's that allow using Eigen datatypes in STL containers
 dev-ros/fake_localization 1.13.0 1.13.1 9999: A ROS node that simply forwards odometry information
