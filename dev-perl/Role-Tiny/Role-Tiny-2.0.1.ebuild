@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="Roles. Like a nouvelle cuisine portion size slice of Moose"
 
 SLOT="0"
-KEYWORDS="amd64 ~arm ~hppa ~ppc x86 ~ppc-macos ~x86-solaris"
+KEYWORDS="amd64 ~arm ~hppa ppc x86 ~ppc-macos ~x86-solaris"
 IUSE="test"
 
 RDEPEND="
