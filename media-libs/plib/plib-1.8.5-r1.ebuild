@@ -11,7 +11,7 @@ SRC_URI="http://plib.sourceforge.net/dist/${P}.tar.gz"
 
 LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 hppa ~ppc ~sparc x86"
+KEYWORDS="alpha amd64 hppa ppc ~sparc x86"
 
 DEPEND="virtual/opengl"
 RDEPEND=${DEPEND}
