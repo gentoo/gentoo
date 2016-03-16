@@ -13,7 +13,7 @@ SRC_URI="http://get.bitlbee.org/src/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~ppc ~ppc64 x86 ~x86-fbsd"
+KEYWORDS="amd64 ppc ~ppc64 x86 ~x86-fbsd"
 IUSE="debug gnutls ipv6 +xmpp libevent msn nss +oscar otr +plugins purple selinux
 	skype ssl test twitter +yahoo xinetd libressl"
 
