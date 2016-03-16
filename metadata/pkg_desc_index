@@ -3093,7 +3093,7 @@ dev-games/simgear 3.4.0 2016.1.1 9999: Development library for simulation games
 dev-games/t4k-common 0.1.1: A library of code shared between tuxmath and tuxtype
 dev-games/tiled 0.12.3 0.14.2 0.15.0 0.15.1 0.15.2: A general purpose tile map editor
 dev-games/vamos 0.7.1: an automotive simulation framework
-dev-games/wfmath 1.0.1 1.0.2: Worldforge math library
+dev-games/wfmath 1.0.2: Worldforge math library
 dev-go/bee 1.4.1_p20160125: A tool for helping develop with beego app framework
 dev-go/beego 1.6.0_p20160126: High-performance web framework for Go
 dev-go/blackfriday 1.2_p20150720 9999: a markdown processor implemented in Go
@@ -10346,7 +10346,7 @@ games-fps/xonotic 0.8.1: Fork of Nexuiz, Deathmatch FPS based on DarkPlaces, an 
 games-kids/childsplay 0.90.2-r1: A suite of educational games for young children
 games-kids/crayon-physics 55: 2D physics puzzle/sandbox game with drawing
 games-kids/cubetest 0.9.4: A program to train your spatial insight
-games-kids/gcompris 14.12 15.02 15.10: full featured educational application for children from 2 to 10
+games-kids/gcompris 14.12 15.10: full featured educational application for children from 2 to 10
 games-kids/gmult 8.0: Multiplication Puzzle is a simple GTK+ 2 game that emulates the multiplication game found in Emacs
 games-kids/lletters 0.1.95-r2: Game that helps young kids learn their letters and numbers
 games-kids/memonix 1.6: Brain teasers, puzzle and memory games for kid's in one pack
@@ -10570,7 +10570,7 @@ games-roguelike/rogue 5.4.4: The original graphical adventure game that spawned 
 games-roguelike/scourge 0.21.1: A graphical rogue-like adventure game
 games-roguelike/stone-soup 0.14.2-r1 0.16.2: Dungeon Crawl Stone Soup is a role-playing roguelike game of exploration and treasure-hunting in dungeons
 games-roguelike/tome 2.3.5: save the world from Morgoth and battle evil (or become evil ;])
-games-roguelike/tomenet 4.6.0 4.6.1a: A MMORPG based on the works of J.R.R. Tolkien
+games-roguelike/tomenet 4.6.1a: A MMORPG based on the works of J.R.R. Tolkien
 games-roguelike/wrogue 0.8.0b: Gothic science fantasy roguelike game
 games-roguelike/zangband 2.7.4c: An enhanced version of the Roguelike game Angband
 games-rpg/a-bird-story 20141106: Indie adventure short of a boy's memories, dream, and imagination
@@ -10685,7 +10685,7 @@ games-strategy/dominions2 2.16: Dominions 2: The Ascension Wars is an epic turn-
 games-strategy/dopewars 1.5.12-r2: Re-Write of the game Drug Wars
 games-strategy/dunelegacy 0.96.3: Updated clone of Westood Studios' Dune2
 games-strategy/endless-sky 0.8.11 0.8.11-r1: Space exploration, trading & combat in the tradition of Terminal Velocity
-games-strategy/freeciv 2.5.1 2.5.3: multiplayer strategy game (Civilization Clone)
+games-strategy/freeciv 2.5.3: multiplayer strategy game (Civilization Clone)
 games-strategy/freecol 0.11.5: An open source clone of the game Colonization
 games-strategy/freeorion 0.4.5_pre 0.4.5: A free turn-based space empire and galactic conquest game
 games-strategy/freesynd 0.7.1: A cross-platform reimplementation of engine for the classic Bullfrog game, Syndicate
@@ -10719,7 +10719,7 @@ games-strategy/seven-kingdoms 2.14.4 2.14.5: Seven Kingdoms: Ancient Adversaries
 games-strategy/smac 6.0a: Linux port of the popular strategy game from Firaxis
 games-strategy/spaz 1.605: Space Pirates and Zombies
 games-strategy/tornado 1.4: Clone of a C64 game - destroy the opponent's house
-games-strategy/triplea 1.8.0.5 1.8.0.9: An open source clone of the popular Axis and Allies boardgame
+games-strategy/triplea 1.8.0.9: An open source clone of the popular Axis and Allies boardgame
 games-strategy/ufo-ai 2.4: UFO: Alien Invasion - X-COM inspired strategy game
 games-strategy/uqm 0.7.0-r2 0.7.0-r3: The Ur-Quan Masters: Port of Star Control 2
 games-strategy/wargus 2.2.7 2.3.0: Warcraft II for the Stratagus game engine
