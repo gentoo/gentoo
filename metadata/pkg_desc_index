@@ -78,7 +78,7 @@ app-admin/consul-replicate 0.2.0: Consul cross-DC KV replication daemon
 app-admin/consul-template 0.9.0-r1 0.12.2 9999: Generic template rendering and notifications with Consul
 app-admin/cpulimit 1.8 2.2: Limits the CPU usage of a process
 app-admin/cronolog 1.6.2-r3 1.6.2-r4: Cronolog apache logfile rotator
-app-admin/denyhosts 2.9 3.0: DenyHosts is a utility to help sys admins thwart ssh hackers
+app-admin/denyhosts 2.9 3.0 3.0-r1: DenyHosts is a utility to help sys admins thwart ssh hackers
 app-admin/diamond 4.0-r1 9999: Python daemon that collects and publishes system metrics
 app-admin/dio 1.5.2: dio - Device I/O monitoring tool
 app-admin/diradm 2.9.7.1: diradm is a nearly complete nss/shadow suite for managing POSIX users/groups/data in LDAP
@@ -5196,7 +5196,7 @@ dev-perl/AutoXS-Header 1.20.0-r1: Container for the AutoXS header files
 dev-perl/B-Hooks-EndOfScope 0.120.0-r1 0.150.0: Execute code after a scope finished compilation
 dev-perl/B-Hooks-OP-Check 0.190.0-r1: Wrap OP check callbacks
 dev-perl/B-Hooks-Parser 0.160.0: Interface to perls parser variables
-dev-perl/B-Keywords 1.130.0-r1 1.140.0 1.150.0: Lists of reserved barewords and symbol names
+dev-perl/B-Keywords 1.140.0 1.150.0: Lists of reserved barewords and symbol names
 dev-perl/B-OPCheck 0.300.0: PL_check hacks using Perl callbacks
 dev-perl/B-Utils 0.270.0: Helper functions for op tree manipulation
 dev-perl/BSD-Resource 1.290.800: Perl module for BSD process resource limit and priority functions
@@ -5589,7 +5589,7 @@ dev-perl/Filesys-DiskSpace 0.50.0-r1: Perl df
 dev-perl/Filesys-Notify-Simple 0.120.0: Simple and dumb file system watcher
 dev-perl/Filesys-SmbClient 3.200.0-r1: Provide Perl API for libsmbclient.so
 dev-perl/Filter 1.490.0 1.540.0 1.550.0: Interface for creation of Perl Filters
-dev-perl/Finance-Quote 1.180.0 1.370.0 1.380.0: Get stock and mutual fund quotes from various exchanges
+dev-perl/Finance-Quote 1.370.0 1.380.0: Get stock and mutual fund quotes from various exchanges
 dev-perl/Finance-YahooQuote 0.250.0: Get stock quotes from Yahoo! Finance
 dev-perl/Font-AFM 1.200.0-r1: Parse Adobe Font Metric files
 dev-perl/Font-TTF 1.20.0-r1: module for compiling and altering fonts
@@ -5619,7 +5619,7 @@ dev-perl/Getopt-Tabular 0.3: Table-driven argument parsing with help text
 dev-perl/GnuPG-Interface 0.460.0-r1 0.520.0-r1: Perl module interface to interacting with GnuPG
 dev-perl/Goo-Canvas 0.60.0-r1: Perl interface to the GooCanvas
 dev-perl/Graph 0.970.400: Data structure and ops for directed graphs
-dev-perl/GraphViz 2.140.0 2.190.0 2.200.0: GraphViz - Interface to the GraphViz graphing tool
+dev-perl/GraphViz 2.190.0 2.200.0: GraphViz - Interface to the GraphViz graphing tool
 dev-perl/Graphics-ColorNames 2.110.0-r1: Defines RGB values for common color names
 dev-perl/Graphics-ColorNames-WWW 1.130.0: WWW color names and equivalent RGB values
 dev-perl/Graphics-ColorObject 0.5.0-r1: convert between color spaces
@@ -5687,7 +5687,7 @@ dev-perl/Heap 0.800.0-r1: Heap - Perl extensions for keeping data partially sort
 dev-perl/Hook-LexWrap 0.250.0: Lexically scoped subroutine wrappers
 dev-perl/IMAP-Admin 1.6.7-r1: Perl module for basic IMAP server administration
 dev-perl/IMAP-BodyStructure 1.30.0: IMAP4-compatible BODYSTRUCTURE and ENVELOPE parser
-dev-perl/IO-AIO 4.310.0 4.330.0: Asynchronous Input/Output
+dev-perl/IO-AIO 4.330.0: Asynchronous Input/Output
 dev-perl/IO-All 0.860.0: unified IO operations
 dev-perl/IO-BufferedSelect 1.0.0-r1: Perl module that implements a line-buffered select interface
 dev-perl/IO-Capture 0.50.0-r1: Abstract Base Class to build modules to capture output
@@ -5734,7 +5734,7 @@ dev-perl/JSON 2.900.0: JSON (JavaScript Object Notation) encoder/decoder
 dev-perl/JSON-Any 1.390.0: Wrapper Class for the various JSON classes (DEPRECATED)
 dev-perl/JSON-MaybeXS 1.3.5: Use Cpanel::JSON::XS with a fallback to JSON::XS and JSON::PP
 dev-perl/JSON-RPC 0.960.0-r1 1.60.0: JSON RPC 2.0 Server Implementation
-dev-perl/JSON-XS 2.340.0-r1 3.10.0: JSON::XS - JSON serialising/deserialising, done correctly and fast
+dev-perl/JSON-XS 3.10.0: JSON::XS - JSON serialising/deserialising, done correctly and fast
 dev-perl/JSON-XS-VersionOneAndTwo 0.310.0-r1: Support versions 1 and 2 of JSON::XS
 dev-perl/JavaScript-Minifier 1.140.0: Perl extension for minifying JavaScript code
 dev-perl/JavaScript-Packer 2.0.0: Perl version of Dean Edward's Packer.js
@@ -5781,7 +5781,7 @@ dev-perl/Locale-gettext 1.50.0-r1: A Perl module for accessing the GNU locale ut
 dev-perl/LockFile-Simple 0.208.0-r1: File locking module for Perl
 dev-perl/Log-Agent 1.1.0: A general logging framework
 dev-perl/Log-Any 1.38.0: Bringing loggers and listeners together
-dev-perl/Log-Dispatch 2.410.0 2.540.0: Dispatches messages to one or more outputs
+dev-perl/Log-Dispatch 2.540.0: Dispatches messages to one or more outputs
 dev-perl/Log-Log4perl 1.420.0-r1 1.460.0: Log4j implementation for Perl
 dev-perl/Log-TraceMessages 1.400.0-r1: Logging/debugging aid
 dev-perl/MARC-Charset 1.350.0-r1: convert MARC-8 encoded strings to UTF-8
@@ -5897,7 +5897,7 @@ dev-perl/MooseX-Types-Path-Tiny 0.2.0 0.11.0: Path::Tiny types and coercions for
 dev-perl/MooseX-Types-Stringlike 0.1.0 0.3.0: Moose type constraints for strings or string-like objects
 dev-perl/Mouse 0.970.0-r1 2.4.1 2.4.5: Moose minus the antlers
 dev-perl/MouseX-Types 0.60.0: Organize your Mouse types in libraries
-dev-perl/Mozilla-CA 20130114 20150826 20160104: Mozilla's CA cert bundle in PEM format
+dev-perl/Mozilla-CA 20150826 20160104: Mozilla's CA cert bundle in PEM format
 dev-perl/MusicBrainz-DiscID 0.30.0-r1: Perl interface for the MusicBrainz libdiscid library
 dev-perl/Nagios-Plugin 0.360.0-r1: A family of perl modules to streamline writing Nagios plugins
 dev-perl/Net-ARP 1.0.9: Perl extension for creating ARP packets
@@ -6005,7 +6005,7 @@ dev-perl/POE-XS-Loop-EPoll 1.3.0: An XS implementation of POE::Loop, using Linux
 dev-perl/POE-XS-Loop-Poll 1.0.0-r1: An XS implementation of POE::Loop, using poll(2)
 dev-perl/POE-XS-Queue-Array 0.6.0-r1: An XS implementation of POE::Queue::Array
 dev-perl/POSIX-strftime-Compiler 0.400.0: GNU C library compatible strftime for loggers and servers
-dev-perl/PPI 1.215.0-r1 1.220: Parse, Analyze and Manipulate Perl (without perl)
+dev-perl/PPI 1.220: Parse, Analyze and Manipulate Perl (without perl)
 dev-perl/PPI-PowerToys 0.140.0: A handy collection of small PPI-based utilities
 dev-perl/PPIx-EditorTools 0.170.0 0.180.0 0.190.0: Utility methods and base class for manipulating Perl via PPI
 dev-perl/PPIx-Regexp 0.31.0 0.33.0: Represent a regular expression of some sort
@@ -6014,7 +6014,7 @@ dev-perl/Package-DeprecationManager 0.130.0-r1 0.150.0: Manage deprecation warni
 dev-perl/Package-Stash 0.360.0-r1 0.370.0: Routines for manipulating stashes
 dev-perl/Package-Stash-XS 0.260.0 0.280.0: Faster and more correct implementation of the Package::Stash API
 dev-perl/Package-Variant 1.1.2-r1 1.3.2: Parameterizable packages
-dev-perl/PadWalker 1.960.0-r1 2.100.0 2.200.0: play with other peoples' lexical variables
+dev-perl/PadWalker 2.100.0 2.200.0: play with other peoples' lexical variables
 dev-perl/Palm 1.12.0-r1 1.400.0: Read & write Palm OS databases (both PDB and PRC)
 dev-perl/Palm-PDB 1.400.0: Parse Palm database files
 dev-perl/Pango 1.224.0 1.224.0-r1 1.227.0: Layout and render international text
@@ -9784,7 +9784,7 @@ dev-vcs/darcs 2.8.4 2.8.4-r3 2.8.4-r6 2.8.5-r3 2.8.5-r4 2.10.0-r1 2.10.1: a dist
 dev-vcs/easygit 1.6.5.5: Easy GIT is a wrapper for git, designed to make git easy to learn and use
 dev-vcs/fossil 1.34 20150119112900: Simple, high-reliability, source control management, and more
 dev-vcs/giggle 0.7-r1: GTK+ Frontend for GIT
-dev-vcs/git 2.4.10 2.5.4 2.6.5 2.7.1 2.7.2 2.7.3 9999 9999-r1 9999-r2 9999-r3: GIT - the stupid content tracker, the revision control system heavily used by the Linux kernel team
+dev-vcs/git 2.4.10 2.5.4 2.6.5 2.7.1 2.7.2 2.7.3 2.7.3-r1 9999 9999-r1 9999-r2 9999-r3: GIT - the stupid content tracker, the revision control system heavily used by the Linux kernel team
 dev-vcs/git-annex 5.20150731 5.20151218 6.20160126: manage files with git, without checking their contents into git
 dev-vcs/git-bz 0.12.04.26 0.12.12.15 9999: Bugzilla subcommand for git
 dev-vcs/git-bzr-ng 0_pre20120130 0_pre20120822: Git subcommand providing a bidirectional bridge to Bazaar repositories
