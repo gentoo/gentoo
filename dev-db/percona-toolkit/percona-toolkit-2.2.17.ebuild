@@ -37,6 +37,7 @@ DEPEND="${COMMON_DEPEND}
 
 src_prepare() {
 	# Bug #501904 - CVE-2014-2029
+	# sed -i -e '/^=item --\[no\]version-check/,/^default: yes/{/^default: yes/d}' bin/*
 	eapply -p2 "${FILESDIR}"/${PN}-2.2.7-no-versioncheck.patch
 	eapply -p1 "${FILESDIR}"/${PN}-2.2.17-fix-package-name.patch
 
