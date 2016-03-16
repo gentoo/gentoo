@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -6,7 +6,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python{2_7,3_3,3_4} )
 
-inherit autotools eutils fdo-mime python-single-r1
+inherit eutils fdo-mime python-single-r1
 
 DESCRIPTION="postscript font editor and converter"
 HOMEPAGE="http://fontforge.github.io/"
@@ -63,6 +63,7 @@ pkg_setup() {
 }
 
 src_prepare() {
+	epatch "${FILESDIR}"/fontforge-dummy-spiro.patch
 	epatch_user
 }
 

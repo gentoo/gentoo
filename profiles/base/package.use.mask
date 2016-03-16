@@ -293,14 +293,6 @@ dev-libs/DirectFB swfdec
 # Masked since skype isn't stable
 net-im/bitlbee skype
 
-# Sergey Popov <pinkbyte@gentoo.org> (01 Oct 2014)
-# Mask multislot USE flag for packages, where it breaks
-# metadata cache consistency.
-# See bugs #507808, #507810 and #507814
-sys-devel/autoconf	multislot
-sys-devel/binutils	multislot
-sys-devel/gcc		multislot
-
 # Michał Górny <mgorny@gentoo.org> (15 Sep 2014)
 # Unsuccessful version bump of net-libs/libzrtpcpp, seems to cause
 # undefined references few layers deeper. Need further investigation,

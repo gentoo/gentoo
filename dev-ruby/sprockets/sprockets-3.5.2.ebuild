@@ -18,7 +18,7 @@ SRC_URI="https://github.com/rails/sprockets/archive/v${PV}.tar.gz -> ${P}-git.tg
 
 LICENSE="MIT"
 SLOT="$(get_version_component_range 1)"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm"
 
 IUSE=""
 

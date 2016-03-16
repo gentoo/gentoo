@@ -15,7 +15,7 @@ SRC_URI="http://lv2plug.in/spec/${P}.tar.bz2"
 
 LICENSE="LGPL-2.1 MIT"
 SLOT="0"
-KEYWORDS="amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc x86"
 IUSE=""
 
 DEPEND="${PYTHON_DEPS}"

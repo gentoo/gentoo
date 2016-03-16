@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="person">
+  <email>grozin@gentoo.org</email>
+  <name>Andrey Grozin</name>
+</maintainer>
+<maintainer type="project">
+  <email>sci-mathematics@gentoo.org</email>
+  <name>Gentoo Mathematics Project</name>
+</maintainer>
+<longdescription lang="en">
+  MathMod is a mathematical modeling software that visualize and animate
+  implicit and parametric surfaces.
+  MathMod supports: 3D and 4D plotting and animation, OBJ output file format,
+  Textue and pigmentation support, Noise and Turbulence effects support,
+  Large set of scripted examples.
+</longdescription>
+<upstream>
+  <remote-id type="sourceforge">mathmod</remote-id>
+</upstream>
+</pkgmetadata>

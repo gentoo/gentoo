@@ -36,6 +36,8 @@ RDEPEND="
 	selinux? ( sec-policy/selinux-irc )
 	perl? ( !net-im/silc-client )"
 
+RESTRICT="test"
+
 S=${WORKDIR}/${MY_P}
 
 src_prepare() {

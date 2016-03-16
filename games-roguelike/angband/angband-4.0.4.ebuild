@@ -13,7 +13,7 @@ SRC_URI="http://rephial.org/downloads/${MAJOR_PV}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc x86"
 IUSE="ncurses sdl +sound X"
 
 RDEPEND="X? ( x11-libs/libX11 )

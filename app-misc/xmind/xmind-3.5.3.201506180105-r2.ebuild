@@ -15,7 +15,7 @@ SRC_URI="http://dl2.xmind.net/xmind-downloads/${MY_P}.zip
 	https://dev.gentoo.org/~creffett/distfiles/xmind-icons.tar.xz"
 LICENSE="EPL-1.0 LGPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 RDEPEND="

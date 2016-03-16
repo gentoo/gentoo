@@ -14,7 +14,7 @@ SRC_URI="amd64? ( ${SRC_BASE}${MY_P}-29_amd64.deb )
 	x86? ( ${SRC_BASE}${MY_P}-9_i386.deb )"
 LICENSE="Spotify"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="gnome pax_kernel pulseaudio"
 RESTRICT="mirror strip"
 
