@@ -61,12 +61,7 @@
 	<!-- the huge <upstream/> structure -->
 	<xs:complexType name='upstreamType'>
 		<xs:choice minOccurs='0' maxOccurs='unbounded'>
-			<xs:element name='maintainer' type='upstreamMaintainerType'>
-				<xs:unique name='upstreamMaintainerDescUniquityConstraint'>
-					<xs:selector xpath='description'/>
-					<xs:field xpath='@lang'/>
-				</xs:unique>
-			</xs:element>
+			<xs:element name='maintainer' type='upstreamMaintainerType'/>
 			<xs:element name='changelog' type='urlType'/>
 			<xs:element name='doc' type='upstreamDocType'/>
 			<xs:element name='bugs-to' type='urlType'/>
@@ -102,10 +97,7 @@
 				minOccurs='1'/>
 			<xs:element name='name' type='xs:token'
 				minOccurs='0'/>
-			<xs:element name='description' type='xs:token'
-				minOccurs='0'/>
 		</xs:all>
-		<xs:attribute name='type' type='maintainerTypeAttrType'/>
 		<xs:attribute name='status' type='upstreamMaintainerStatusAttrType'
 			default='unknown'/>
 	</xs:complexType>
