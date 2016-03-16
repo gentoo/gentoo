@@ -17,17 +17,13 @@ SRC_URI="http://support.reiner-sct.de/downloads/LINUX/V${MY_PV}/${MY_P}.tar.bz2"
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="fox static-libs threads +udev +usb"
+IUSE="static-libs threads +udev +usb"
 
 # FIXME:
 # xml is actually optional but the code is still used anyway. We'll have to wait
 # until upstream fixed it.
 COMMON_DEPEND="sys-apps/pcsc-lite
-	usb? ( virtual/libusb:1 )
-	fox? (
-		>=x11-libs/fox-1.6:=
-		dev-libs/libxml2
-		)"
+	usb? ( virtual/libusb:1 )"
 RDEPEND="${COMMON_DEPEND}
 	udev? ( virtual/udev )"
 DEPEND="${COMMON_DEPEND}
@@ -36,7 +32,7 @@ DEPEND="${COMMON_DEPEND}
 #S=${WORKDIR}/${MY_P2}
 S=${WORKDIR}/${MY_P}
 
-DOCS="ChangeLog NEWS doc/README.txt"
+DOCS="debian/changelog doc/README.txt"
 
 pkg_setup() {
 	CONFIG_CHECK="~USB_SERIAL_CYBERJACK"
@@ -44,7 +40,6 @@ pkg_setup() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}/${P}-install.patch"
 	epatch "${FILESDIR}/${P}-manpages.patch"
 	epatch "${FILESDIR}/${P}-returnvalue.patch"
 	eautoreconf
@@ -58,8 +53,6 @@ src_configure() {
 		$(use_enable static-libs static) \
 		$(use_enable usb nonserial) \
 		$(use_enable threads) \
-		$(use_enable fox xml2) \
-		$(use_enable fox) \
 		--with-usbdropdir="$($(tc-getPKG_CONFIG) libpcsclite --variable=usbdropdir)"
 }
 
