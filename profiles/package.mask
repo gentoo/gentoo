@@ -165,7 +165,7 @@ www-apps/horde-turba
 # Breaks some of its rev deps, still in beta stage
 >=dev-lang/ocaml-4.03_beta
 >=dev-ml/camlp4-4.03
->=dev-ml/ppx_tools-0.99.3_p20160217
+>=dev-ml/ppx_tools-4.03
 
 # James Le Cuirot <chewi@gentoo.org> (29 Feb 2016)
 # Dead upstream and doesn't build with Java 8. Removal in 30 days.
