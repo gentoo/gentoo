@@ -2942,7 +2942,7 @@ dev-db/vsqlite++ 0.3.13-r1: VSQLite++ - A welldesigned and portable SQLite3 Wrap
 dev-db/wxsqlite3 3.0.6.1-r1 3.2.1-r1: C++ wrapper around the public domain SQLite 3.x database
 dev-db/xbase 3.1.2: xbase (i.e. dBase, FoxPro, etc.) compatible C++ class library
 dev-db/xbsql 0.11-r2: An SQL Wrapper for the XBase library
-dev-db/xtrabackup-bin 2.1.9 2.2.5 2.2.12: MySQL hot backup software that performs non-blocking backups for InnoDB and XtraDB databases
+dev-db/xtrabackup-bin 2.2.5 2.4.1: MySQL hot backup software. non-blocking backups for InnoDB/XtraDB databases
 dev-dotnet/art-sharp 2.24.2: GtkSharp's art module of the gnome-sharp tarball
 dev-dotnet/atk-sharp 2.12.10: GtkSharp's atk module of the gtk-sharp tarball
 dev-dotnet/dbus-sharp 0.7.0-r1 0.7.0-r2 0.8.1: D-Bus for .NET
