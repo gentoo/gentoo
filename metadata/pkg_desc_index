@@ -5980,15 +5980,15 @@ dev-perl/ORLite-Migrate 1.100.0-r1: Extremely light weight SQLite-specific schem
 dev-perl/Object-Enum 0.72.0-r1 0.75.0: Replacement for if ($foo eq 'bar')
 dev-perl/Object-MultiType 0.50.0: Perl Objects as Hash, Array, Scalar, Code and Glob at the same time
 dev-perl/Object-Realize-Later 0.180.0-r1 0.190.0: Delayed creation of objects
-dev-perl/Ogg-Vorbis-Header 0.30.0-r1: This module presents an object-oriented interface to Ogg Vorbis Comments and Information
+dev-perl/Ogg-Vorbis-Header 0.30.0-r1: An object-oriented interface to Ogg Vorbis information and comment fields
 dev-perl/Ogg-Vorbis-Header-PurePerl 1.0.0-r1: Object-oriented interface to Ogg Vorbis information and comment fields
 dev-perl/Olson-Abbreviations 0.40.0: Globally unique timezones abbreviation handling
 dev-perl/OpenGL 0.670.3 0.670.400: Perl interface providing graphics display using OpenGL
-dev-perl/PAR 1.5.0-r1 1.7.0-r1: Perl Archive Toolkit
+dev-perl/PAR 1.5.0-r1 1.7.0-r1 1.10.0: Perl Archive Toolkit
 dev-perl/PAR-Dist 0.490.0-r1: Create and manipulate PAR distributions
 dev-perl/PBKDF2-Tiny 0.5.0: Minimalist PBKDF2 (RFC 2898) with HMAC-SHA1 or HMAC-SHA2
-dev-perl/PBS-Client 0.100.0-r1: Perl interface to submit jobs to PBS (Portable Batch System)
-dev-perl/PDF-API2 2.20.0: Facilitates the creation and modification of PDF files
+dev-perl/PBS-Client 0.100.0-r1 0.110.0: Perl interface to submit jobs to PBS (Portable Batch System)
+dev-perl/PDF-API2 2.20.0 2.27.0: Facilitates the creation and modification of PDF files
 dev-perl/PDF-Create 1.60.0-r1: PDF::Create allows you to create PDF documents
 dev-perl/PDL 2.4.11: Perl Data Language for scientific computing
 dev-perl/PGPLOT 2.210.0: allow subroutines in the PGPLOT graphics library to be called from Perl
@@ -6020,20 +6020,20 @@ dev-perl/Palm-PDB 1.400.0: Parse Palm database files
 dev-perl/Pango 1.224.0 1.224.0-r1 1.227.0: Layout and render international text
 dev-perl/Panotools-Script 0.280.0-r2: A perl module for reading, writing, and manipulating hugin script files
 dev-perl/ParaDNS 2.0.0-r1: a DNS lookup class for the Danga::Socket framework
-dev-perl/Parallel-ForkManager 1.20.0-r1: A simple parallel processing fork manager
-dev-perl/Parallel-Prefork 0.140.0-r1: A simple prefork server framework
+dev-perl/Parallel-ForkManager 1.20.0-r1 1.170.0: A simple parallel processing fork manager
+dev-perl/Parallel-Prefork 0.140.0-r1 0.180.0: A simple prefork server framework
 dev-perl/Params-Classify 0.13.0-r1: Argument type classification
 dev-perl/Params-Util 1.60.0-r1: Utility functions to aid in parameter checking
-dev-perl/Params-Validate 1.70.0-r1 1.80.0 1.210.0: Flexible system for validation of method/function call parameters
-dev-perl/Parse-ErrorString-Perl 0.190.0-r1: Parse error messages from the perl interpreter
+dev-perl/Params-Validate 1.70.0-r1 1.80.0 1.210.0 1.220.0: Flexible system for validation of method/function call parameters
+dev-perl/Parse-ErrorString-Perl 0.190.0-r1 0.220.0: Parse error messages from the perl interpreter
 dev-perl/Parse-ExuberantCTags 1.20.0-r1: Efficiently parse exuberant ctags files
-dev-perl/Parse-RecDescent 1.967.9-r1: Parse::RecDescent - generate recursive-descent parsers
+dev-perl/Parse-RecDescent 1.967.9-r1 1.967.13: Generate Recursive-Descent Parsers
 dev-perl/Parse-Syslog 1.100.0-r1: Parse::Syslog - Parse Unix syslog files
 dev-perl/Parse-Yapp 1.50.0-r1: Compiles yacc-like LALR grammars to generate Perl OO parser modules
 dev-perl/Passwd-Linux 1.200.0-r1: Perl module for manipulating the passwd and shadow files
 dev-perl/PatchReader 0.9.6-r1: Module for reading diff-compatible patch files
-dev-perl/Path-Class 0.350.0: Cross-platform path specification manipulation
-dev-perl/Path-Tiny 0.44.0 0.61.0: File path utility
+dev-perl/Path-Class 0.350.0 0.360.0: Cross-platform path specification manipulation
+dev-perl/Path-Tiny 0.44.0 0.61.0 0.84.0: File path utility
 dev-perl/Pegex 0.600.0: Acmeist PEG Parser Framework
 dev-perl/Period 1.240.0-r1 1.250.0: Time period Perl module
 dev-perl/Perl-Critic 1.118.0-r1 1.123: Critique Perl source code for best-practices
@@ -6123,6 +6123,7 @@ dev-perl/Set-Object 1.310.0 1.350.0: set of objects and strings
 dev-perl/Shell 0.720.0: Shell - run shell commands transparently within perl
 dev-perl/Shell-EnvImporter 1.70.0-r1 1.70.0-r2: Import environment variable changes from external commands or shell scripts
 dev-perl/ShipIt 0.600.0: Software Release Tool
+dev-perl/Signal-Mask 0.8.0: Signal masks made easy
 dev-perl/Snowball-Norwegian 1.200.0-r1: Porters stemming algorithm for Norwegian
 dev-perl/Snowball-Swedish 1.200.0-r1: Porters stemming algorithm for Swedish
 dev-perl/Socket-GetAddrInfo 0.220.0: Address-family independent name resolving functions
@@ -6228,6 +6229,7 @@ dev-perl/Test-Memory-Cycle 1.40.0-r1: Check for memory leaks and circular memory
 dev-perl/Test-Mock-LWP-Dispatch 0.60.0: Mocks LWP::UserAgent and dispatches your requests/responses
 dev-perl/Test-MockModule 0.50.0-r2: Override subroutines in a module for unit testing
 dev-perl/Test-MockObject 1.201.203.10-r1 1.201.505.270: Perl extension for emulating troublesome interfaces
+dev-perl/Test-MockRandom 1.10.0: Replaces random number generation with non-random number generation
 dev-perl/Test-MockTime 0.130.0 0.150.0: Replaces actual time with simulated time
 dev-perl/Test-Most 0.310.0-r1 0.340.0: Most commonly needed test functions and features
 dev-perl/Test-NoTabs 1.400.0: Check the presence of tabs in your project
@@ -6290,6 +6292,7 @@ dev-perl/Text-WikiFormat 0.800.0-r1 0.810.0: Translate Wiki formatted text into 
 dev-perl/Text-WrapI18N 0.60.0-r1: Internationalized substitute of Text::Wrap
 dev-perl/Text-vFile-asData 0.80.0: Perl module to parse vFile formatted files into data structures
 dev-perl/TheSchwartz 1.120.0: Reliable job queue
+dev-perl/Thread-SigMask 0.4.0: Thread specific signal masks
 dev-perl/Throwable 0.200.11: A role for classes that can be thrown
 dev-perl/Tie-Array-Sorted 1.410.0-r1: An array which is kept sorted
 dev-perl/Tie-CPHash 1.60.0 2.0.0: Case preserving but case insensitive hash table

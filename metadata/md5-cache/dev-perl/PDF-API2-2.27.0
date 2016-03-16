@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=>=virtual/perl-IO-Compress-1.0.0 dev-perl/Font-TTF virtual/perl-ExtUtils-MakeMaker dev-lang/perl:=
+DESCRIPTION=Facilitates the creation and modification of PDF files
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/PDF-API2/
+IUSE=examples
+KEYWORDS=~amd64 ~ppc ~ppc64 ~x86
+LICENSE=LGPL-2.1
+RDEPEND=>=virtual/perl-IO-Compress-1.0.0 dev-perl/Font-TTF dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/S/SS/SSIMMS/PDF-API2-2.027.tar.gz
+_eclass_exported_funcs=src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:- src_install:-
+_eclasses_=multiprocessing	e32940a7b2a9992ad217eccddb84d548	perl-functions	15aff0b9cba2282790142295ceb6be0c	perl-module	b2108b3c85ac7a6a6a9b035b54f6813c
+_md5_=b33eba8dca0d8b57eea9ab91b68cc29c

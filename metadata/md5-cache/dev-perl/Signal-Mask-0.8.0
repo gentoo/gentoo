@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=!minimal? ( dev-perl/Thread-SigMask ) virtual/perl-Carp dev-perl/IPC-Signal >=virtual/perl-ExtUtils-MakeMaker-6.300.0 test? ( virtual/perl-File-Spec virtual/perl-IO virtual/perl-Test-Simple ) dev-lang/perl:=
+DESCRIPTION=Signal masks made easy
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/Signal-Mask/
+IUSE=minimal test
+KEYWORDS=~amd64 ~x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=!minimal? ( dev-perl/Thread-SigMask ) virtual/perl-Carp dev-perl/IPC-Signal dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/L/LE/LEONT/Signal-Mask-0.008.tar.gz
+_eclass_exported_funcs=src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:- src_install:perl-module
+_eclasses_=multiprocessing	e32940a7b2a9992ad217eccddb84d548	perl-functions	15aff0b9cba2282790142295ceb6be0c	perl-module	b2108b3c85ac7a6a6a9b035b54f6813c
+_md5_=b96468f5e53ea8e99d3a8184d68f5675
