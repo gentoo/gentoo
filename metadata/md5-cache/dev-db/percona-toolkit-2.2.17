@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-perl/DBI dev-perl/DBD-mysql virtual/perl-Time-HiRes virtual/perl-ExtUtils-MakeMaker dev-lang/perl:=
+DESCRIPTION=Advanced command-line tools to perform a variety of MySQL and system tasks
+EAPI=6
+HOMEPAGE=https://www.percona.com/software/mysql-tools/percona-toolkit
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
+LICENSE=|| ( GPL-2 Artistic )
+RDEPEND=dev-perl/DBI dev-perl/DBD-mysql virtual/perl-Time-HiRes dev-perl/JSON dev-perl/libwww-perl dev-perl/Role-Tiny virtual/perl-File-Path virtual/perl-Getopt-Long virtual/perl-Time-Local virtual/perl-Digest-MD5 virtual/perl-IO-Compress virtual/perl-File-Temp virtual/perl-File-Spec virtual/perl-Scalar-List-Utils dev-perl/TermReadKey dev-lang/perl:=
+SLOT=0
+SRC_URI=https://www.percona.com/downloads/percona-toolkit/2.2.17/tarball/percona-toolkit-2.2.17.tar.gz
+_eclass_exported_funcs=src_prepare:- src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
+_eclasses_=multiprocessing	e32940a7b2a9992ad217eccddb84d548	perl-functions	15aff0b9cba2282790142295ceb6be0c	perl-module	b2108b3c85ac7a6a6a9b035b54f6813c
+_md5_=5acb6cf66fddeae905c155e95eb9d99d

@@ -1,13 +1,13 @@
 DEFINED_PHASES=compile install
-DEPEND=>=dev-lang/ocaml-4.02:= >=dev-ml/findlib-1.0.4-r1
+DEPEND=>=dev-lang/ocaml-4.03.0_beta:= >=dev-ml/findlib-1.0.4-r1
 DESCRIPTION=Tools for authors of ppx rewriters
 EAPI=5
 HOMEPAGE=https://github.com/alainfrisch/ppx_tools
 KEYWORDS=~amd64
 LICENSE=MIT
-RDEPEND=>=dev-lang/ocaml-4.02:=
-SLOT=0/0.99.3
-SRC_URI=http://github.com/diml/ppx_tools/archive/ppx_tools_0.99.3.tar.gz
+RDEPEND=>=dev-lang/ocaml-4.03.0_beta:=
+SLOT=0/4.03.0
+SRC_URI=https://github.com/alainfrisch/ppx_tools/archive/v4.03.0.tar.gz -> ppx_tools-4.03.0.tar.gz
 _eclass_exported_funcs=src_compile:- src_install:-
 _eclasses_=findlib	9909e5ca0f77ff5b693885a3d7aeadb7
-_md5_=a588825bd0191536f68a914b273ad141
+_md5_=8983b325f66f8443f670c06144aafef5
