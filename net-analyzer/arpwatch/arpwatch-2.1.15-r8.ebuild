@@ -17,7 +17,7 @@ SRC_URI="
 
 LICENSE="BSD GPL-2"
 SLOT="0"
-KEYWORDS="amd64 hppa ~ppc ~sparc x86 ~x86-fbsd"
+KEYWORDS="amd64 hppa ppc ~sparc x86 ~x86-fbsd"
 IUSE="selinux"
 
 DEPEND="
