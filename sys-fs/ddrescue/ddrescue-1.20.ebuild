@@ -12,7 +12,7 @@ SRC_URI="mirror://gnu/${PN}/${P}.tar.lz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~ia64 ~ppc ~sparc x86 ~amd64-linux"
+KEYWORDS="amd64 ~arm ~ia64 ppc ~sparc x86 ~amd64-linux"
 IUSE="static"
 
 DEPEND="$(unpacker_src_uri_depends)"

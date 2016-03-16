@@ -2,27 +2,22 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 if [[ "${PV}" != "9999" ]]; then
-	MODULE_VERSION=3.32
-	MODULE_AUTHOR="AKHUETTEL"
+	DIST_VERSION=3.500
+	DIST_AUTHOR="AKHUETTEL"
 	KEYWORDS="~amd64 ~x86"
 	inherit perl-module
 else
 	EGIT_REPO_URI="https://github.com/lab-measurement/lab-measurement.git"
 	EGIT_BRANCH="master"
-	EGIT_SOURCEDIR=${S}
-	KEYWORDS=""
 	S=${WORKDIR}/${P}/Measurement
-	inherit perl-module git-2
+	inherit perl-module git-r3
 fi
 
 DESCRIPTION="Measurement control and automation with Perl"
 HOMEPAGE="http://www.labmeasurement.de/"
-
-# this is perl's license, whatever it means
-LICENSE="|| ( Artistic GPL-2 )"
 
 SLOT="0"
 IUSE="debug +xpression"
@@ -33,6 +28,7 @@ RDEPEND="
 	dev-perl/Exception-Class
 	dev-perl/Hook-LexWrap
 	dev-perl/List-MoreUtils
+	dev-perl/Term-ANSIScreen
 	dev-perl/TermReadKey
 	dev-perl/TeX-Encode
 	dev-perl/XML-Generator
