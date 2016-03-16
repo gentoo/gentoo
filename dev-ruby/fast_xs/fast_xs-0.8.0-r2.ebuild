@@ -18,7 +18,7 @@ HOMEPAGE="https://github.com/brianmario/fast_xs"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm hppa ~ia64 ~ppc ~ppc64 ~sparc x86 ~x86-fbsd ~x86-solaris"
+KEYWORDS="~alpha amd64 ~arm hppa ~ia64 ppc ~ppc64 ~sparc x86 ~x86-fbsd ~x86-solaris"
 IUSE=""
 
 ruby_add_bdepend "test? (
