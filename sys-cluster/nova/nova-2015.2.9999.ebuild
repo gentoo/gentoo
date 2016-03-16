@@ -211,7 +211,7 @@ RDEPEND="
 	app-emulation/libvirt[iscsi?]
 	novncproxy? ( www-apps/novnc )
 	sys-apps/iproute2
-	openvswitch? ( <=net-misc/openvswitch-2.4.0 )
+	openvswitch? ( <=net-misc/openvswitch-2.5.9999 )
 	rabbitmq? ( net-misc/rabbitmq-server )
 	memcached? ( net-misc/memcached
 	<=dev-python/python-memcached-1.57 )
