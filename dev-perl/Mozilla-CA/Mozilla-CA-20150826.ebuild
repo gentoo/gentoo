@@ -11,7 +11,7 @@ DESCRIPTION="Mozilla's CA cert bundle in PEM format"
 
 LICENSE="MPL-1.1"
 SLOT="0"
-KEYWORDS="alpha amd64 ~ppc ~ppc64 x86"
+KEYWORDS="alpha amd64 ppc ~ppc64 x86"
 IUSE=""
 
 RDEPEND=""
