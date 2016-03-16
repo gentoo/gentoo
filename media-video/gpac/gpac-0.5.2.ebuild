@@ -10,7 +10,7 @@ if [[ ${PV} == *9999 ]] ; then
 	KEYWORDS=""
 else
 	SRC_URI="https://github.com/gpac/gpac/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~alpha amd64 ~ppc ~ppc64 ~sparc x86 ~x86-fbsd"
+	KEYWORDS="~alpha amd64 ppc ~ppc64 ~sparc x86 ~x86-fbsd"
 fi
 
 inherit eutils flag-o-matic multilib toolchain-funcs ${SCM}

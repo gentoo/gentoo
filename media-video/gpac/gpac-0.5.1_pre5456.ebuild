@@ -7,7 +7,7 @@ EAPI=4
 if [[ ${PV} == *9999 ]] ; then
 	SCM="subversion"
 	ESVN_REPO_URI="svn://svn.code.sf.net/p/gpac/code/trunk/gpac"
-	KEYWORDS="alpha sparc x86"
+	KEYWORDS="alpha ppc sparc x86"
 else
 	if [[ ${PV%_p*} != ${PV} ]] ; then
 		SRC_URI="https://dev.gentoo.org/~lu_zero/${PN}/${P}.tar.xz"
