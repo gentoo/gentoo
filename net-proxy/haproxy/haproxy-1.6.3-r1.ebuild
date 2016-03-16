@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -14,7 +14,7 @@ SRC_URI="http://haproxy.1wt.eu/download/$(get_version_component_range 1-2)/src/$
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~amd64 ~arm ~ppc ~x86"
 IUSE="+crypt doc examples net_ns +pcre pcre-jit ssl tools vim-syntax +zlib" # lua
 
 DEPEND="pcre? ( dev-libs/libpcre
@@ -125,9 +125,8 @@ src_install() {
 	fi
 
 	if use tools ; then
-		for contrib in halog iprange ; do
-			dobin contrib/${contrib}/${contrib}
-		done
+		dobin contrib/halog/halog
+		newbin contrib/iprange/iprange haproxy_iprange
 	fi
 
 	if use net_ns && use doc; then
