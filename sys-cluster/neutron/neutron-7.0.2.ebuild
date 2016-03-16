@@ -181,7 +181,7 @@ RDEPEND="
 	net-firewall/ipset
 	net-firewall/iptables
 	net-firewall/ebtables
-	openvswitch? ( <=net-misc/openvswitch-2.4.0 )
+	openvswitch? ( <=net-misc/openvswitch-2.5.9999 )
 	ipv6? ( net-misc/radvd )
 	dhcp? ( net-dns/dnsmasq[dhcp-tools] )"
 
