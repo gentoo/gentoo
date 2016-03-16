@@ -1,6 +1,6 @@
 DEFINED_PHASES=install postinst postrm prepare unpack
 DEPEND=|| ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 ) >=dev-vcs/git-1.8.2.1
-DESCRIPTION=vim plugin: shows a git diff summary in the sign column and stages/reverts individual hunks
+DESCRIPTION=vim plugin: shows a git diff in the sign column and stages/reverts hunks
 EAPI=5
 HOMEPAGE=https://github.com/airblade/vim-gitgutter/
 LICENSE=MIT
@@ -8,4 +8,4 @@ RDEPEND=|| ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
 SLOT=0
 _eclass_exported_funcs=pkg_postrm:vim-plugin pkg_postinst:vim-plugin src_unpack:git-r3 src_prepare:- src_install:vim-plugin
 _eclasses_=eutils	9d81603248f2ba3ec59124320d123e5e	git-r3	ef66dfc3db09f327af21cf32f140fb2b	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	vim-doc	1b0813c9dadf2431c96854a8d46f5eaf	vim-plugin	1bbfc3364a7588372fb4c21734f0cd96
-_md5_=614cd05ec37f7c92552456e186c2dae9
+_md5_=cf92f93aa2fc6dcdd1aa1b46efd4fd78
