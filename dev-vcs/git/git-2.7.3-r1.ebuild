@@ -11,8 +11,9 @@ PYTHON_COMPAT=( python2_7 )
 [[ ${PV} == *9999 ]] && SCM="git-2"
 EGIT_REPO_URI="git://git.kernel.org/pub/scm/git/git.git"
 EGIT_MASTER=pu
+PLOCALES="bg ca de fr is it ko pt_PT ru sv vi zh_CN"
 
-inherit toolchain-funcs eutils elisp-common perl-module bash-completion-r1 python-single-r1 systemd ${SCM}
+inherit toolchain-funcs eutils elisp-common l10n perl-module bash-completion-r1 python-single-r1 systemd ${SCM}
 
 MY_PV="${PV/_rc/.rc}"
 MY_P="${PN}-${MY_PV}"
@@ -539,6 +540,14 @@ src_install() {
 	fi
 
 	perl_delete_localpod
+
+	# Remove disabled linguas
+	# we could remove sources in src_prepare, but install does not
+	# handle missing locale dir well
+	rm_loc() {
+		rm -r "${ED}/usr/share/locale/${1}" || die
+	}
+	l10n_for_each_disabled_locale_do rm_loc
 }
 
 src_test() {
