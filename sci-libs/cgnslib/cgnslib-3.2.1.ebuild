@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -22,7 +22,7 @@ IUSE="fortran hdf5 legacy mpi szip zlib"
 
 DEPEND="
 	hdf5? ( >=sci-libs/hdf5-1.8[mpi=] )
-	szip? ( sci-libs/szip )
+	szip? ( virtual/szip )
 	zlib? ( sys-libs/zlib )"
 RDEPEND="${DEPEND}"
 
