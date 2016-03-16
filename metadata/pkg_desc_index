@@ -3585,7 +3585,7 @@ dev-haskell/temporary 1.1.2.3 1.1.2.4 1.2.0.1 1.2.0.3: Portable temporary file a
 dev-haskell/temporary-rc 1.2.0.3: Portable temporary file and directory support for Windows and Unix, based on code from Cabal
 dev-haskell/tensor 1.0.0.1: Tensor data types
 dev-haskell/terminal-size 0.3.2 0.3.2.1: Get terminal window height and width
-dev-haskell/terminfo 0.3.2.3 0.3.2.5 0.4.0.0 0.4.0.1: Haskell bindings to the terminfo library
+dev-haskell/terminfo 0.3.2.3 0.3.2.5 0.4.0.0 0.4.0.1 0.4.0.2: Haskell bindings to the terminfo library
 dev-haskell/test-framework 0.2.4 0.4.2.0 0.5 0.6 0.6.1 0.8 0.8.0.3 0.8.1.0 0.8.1.1: Framework for running and organising tests, with HUnit and QuickCheck support
 dev-haskell/test-framework-hunit 0.2.4 0.2.6 0.2.7 0.3.0 0.3.0.1 0.3.0.2: HUnit support for the test-framework package
 dev-haskell/test-framework-quickcheck2 0.3.0.2 0.3.0.3-r2: QuickCheck2 support for the test-framework package
