@@ -121,7 +121,7 @@
 	<xs:complexType name='maintainerDescType'>
 		<xs:simpleContent>
 			<xs:extension base="xs:token">
-				<xs:attribute name='lang' type='langAttrType' default='C'/>
+				<xs:attribute name='lang' type='langAttrType' default='en'/>
 			</xs:extension>
 		</xs:simpleContent>
 	</xs:complexType>
@@ -134,7 +134,7 @@
 				 way around? -->
 			<xs:element name='cat' type='catType'/>
 		</xs:choice>
-		<xs:attribute name='lang' type='langAttrType' default='C'/>
+		<xs:attribute name='lang' type='langAttrType' default='en'/>
 		<xs:attribute name='restrict' type='restrictAttrType'/>
 	</xs:complexType>
 
@@ -143,7 +143,7 @@
 			<xs:element name='pkg' type='pkgType'/>
 			<xs:element name='cat' type='catType'/>
 		</xs:choice>
-		<xs:attribute name='lang' type='langAttrType' default='C'/>
+		<xs:attribute name='lang' type='langAttrType' default='en'/>
 	</xs:complexType>
 
 	<!-- slots -->
@@ -155,7 +155,7 @@
 			<xs:element name='subslots' type='xs:token'
 				minOccurs='0' maxOccurs='1'/>
 		</xs:sequence>
-		<xs:attribute name='lang' type='langAttrType' default='C'/>
+		<xs:attribute name='lang' type='langAttrType' default='en'/>
 	</xs:complexType>
 
 	<xs:complexType name='slotType'>
@@ -179,7 +179,7 @@
 		<xs:choice minOccurs='0' maxOccurs='unbounded'>
 			<xs:element name='flag' type='flagType'/>
 		</xs:choice>
-		<xs:attribute name='lang' type='langAttrType' default='C'/>
+		<xs:attribute name='lang' type='langAttrType' default='en'/>
 	</xs:complexType>
 
 	<xs:complexType name='flagType' mixed='true'>
@@ -203,7 +203,7 @@
 	<xs:complexType name='upstreamDocType'>
 		<xs:simpleContent>
 			<xs:extension base="urlType">
-				<xs:attribute name='lang' type='langAttrType' default='C'/>
+				<xs:attribute name='lang' type='langAttrType' default='en'/>
 			</xs:extension>
 		</xs:simpleContent>
 	</xs:complexType>
