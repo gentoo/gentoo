@@ -30,7 +30,7 @@ RDEPEND=">=dev-libs/libevent-2.0.10:=
 		>=x11-libs/gtk+-3.4:3=
 		ayatana? ( >=dev-libs/libappindicator-0.4.90:3= )
 		)
-	systemd? ( sys-apps/systemd:= )
+	systemd? ( >=sys-apps/systemd-209:= )
 	qt4? (
 		dev-qt/qtcore:4
 		dev-qt/qtgui:4
@@ -56,6 +56,10 @@ REQUIRED_USE="ayatana? ( gtk ) ?? ( qt4 qt5 )"
 
 DOCS="AUTHORS NEWS qt/README.txt"
 
+PATCHES=(
+	"${FILESDIR}"/libsystemd.patch
+)
+
 src_prepare() {
 	sed -i -e '/CFLAGS/s:-ggdb3::' configure.ac || die
 
@@ -68,7 +72,7 @@ src_prepare() {
 	# http://trac.transmissionbt.com/ticket/4324
 	sed -i -e 's|noinst\(_PROGRAMS = $(TESTS)\)|check\1|' libtransmission/Makefile.am || die
 
-	eapply_user
+	default
 	eautoreconf
 }
 
