@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=5
-USE_RUBY="ruby20 ruby21"
+USE_RUBY="ruby20 ruby21 ruby22"
 
 RUBY_FAKEGEM_RECIPE_DOC="rdoc"
 RUBY_FAKEGEM_DOC_DIR="doc"
@@ -16,17 +16,19 @@ GITHUB_PROJECT="${PN}"
 inherit ruby-fakegem
 
 DESCRIPTION="Sass-based Stylesheet Framework"
-HOMEPAGE="http://compass-style.org/"
+HOMEPAGE="http://compass-style.org/ https://github.com/premailer/css_parser/"
 LICENSE="MIT"
 
 SRC_URI="https://github.com/${GITHUB_USER}/${GITHUB_PROJECT}/archive/v${PV}.tar.gz -> ${GITHUB_PROJECT}-${PV}.tar.gz"
 
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64"
 IUSE="doc test"
 
 ruby_add_rdepend "dev-ruby/addressable
 	virtual/ruby-ssl"
+
+ruby_add_bdepend "test? ( dev-ruby/maxitest )"
 
 all_ruby_prepare() {
 	# get rid of bundler usage
