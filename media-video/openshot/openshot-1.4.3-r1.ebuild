@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -27,8 +27,8 @@ RDEPEND="
 	dev-python/pillow[${PYTHON_USEDEP}]
 	>=media-libs/mlt-0.8.2[ffmpeg,frei0r,gtk,melt,python,sdl,xml]
 	ffmpeg? (
-		libav? ( media-video/libav:=[encode,sdl,x264,mp3,theora] )
-		!libav? ( media-video/ffmpeg:0=[encode,sdl,x264,mp3,theora] )
+		libav? ( media-video/libav:=[encode,sdl,x264,mp3,theora,vpx] )
+		!libav? ( media-video/ffmpeg:0=[encode,sdl,x264,mp3,theora,vpx] )
 	)
 	python? (
 		dev-python/httplib2[${PYTHON_USEDEP}]
