@@ -1457,7 +1457,7 @@ app-i18n/fcitx-sunpinyin 0.4.0 0.4.1: Sunpinyin module for fcitx
 app-i18n/fcitx-table-extra 0.3.3 0.3.6 0.3.7: Extra tables for Fcitx, including Boshiamy, Zhengma, Cangjie and Quick
 app-i18n/fcitx-unikey 0.2.0 0.2.4 0.2.5: Vietnamese Unikey module for Fcitx
 app-i18n/freewnn 1.1.1_alpha21-r1 1.1.1_alpha22: Network-Extensible Kana-to-Kanji Conversion System
-app-i18n/ibus 1.5.5 1.5.8-r1 1.5.9-r1 1.5.10 1.5.11 1.5.12: Intelligent Input Bus for Linux / Unix OS
+app-i18n/ibus 1.5.5 1.5.8-r1 1.5.9-r1 1.5.10 1.5.11 1.5.12 1.5.13: Intelligent Input Bus for Linux / Unix OS
 app-i18n/ibus-anthy 1.2.7-r1 1.5.4: Japanese input method Anthy IMEngine for IBus Framework
 app-i18n/ibus-cangjie 2.1 2.2 2.3 2.4: The IBus engine for users of the Cangjie and Quick input methods
 app-i18n/ibus-chewing 1.4.7: The Chewing IMEngine for IBus Framework
