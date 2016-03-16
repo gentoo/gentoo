@@ -4,11 +4,11 @@ DESCRIPTION=Convert arbitrary Perl Modules' versions into normalised Gentoo vers
 EAPI=6
 HOMEPAGE=http://search.cpan.org/dist/Gentoo-PerlMod-Version/
 IUSE=test
-KEYWORDS=alpha amd64 arm ~ia64 ~mips ~ppc ~ppc64 ~sparc x86
+KEYWORDS=alpha amd64 arm ~ia64 ~mips ppc ~ppc64 ~sparc x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=virtual/perl-Carp virtual/perl-Data-Dumper dev-perl/Sub-Exporter-Progressive >=virtual/perl-version-0.770.0 dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/K/KE/KENTNL/Gentoo-PerlMod-Version-0.8.0.tar.gz
 _eclass_exported_funcs=src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
 _eclasses_=multiprocessing	e32940a7b2a9992ad217eccddb84d548	perl-functions	15aff0b9cba2282790142295ceb6be0c	perl-module	b2108b3c85ac7a6a6a9b035b54f6813c
-_md5_=f9b083a78c199a3387209ac54541ed43
+_md5_=f6769a8e4d2f1fa90abbdd817617d0c8

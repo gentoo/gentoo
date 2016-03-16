@@ -4,7 +4,7 @@ DESCRIPTION=a man replacement that utilizes berkdb instead of flat files
 EAPI=4
 HOMEPAGE=http://www.nongnu.org/man-db/
 IUSE=berkdb +gdbm +manpager nls selinux static-libs zlib
-KEYWORDS=alpha amd64 arm arm64 hppa ~ia64 m68k ~mips ~ppc ppc64 s390 sh ~sparc x86 ~arm-linux ~x86-linux
+KEYWORDS=alpha amd64 arm arm64 hppa ~ia64 m68k ~mips ppc ppc64 s390 sh ~sparc x86 ~arm-linux ~x86-linux
 LICENSE=GPL-3
 PDEPEND=manpager? ( app-text/manpager )
 RDEPEND=>=dev-libs/libpipeline-1.4.0 berkdb? ( sys-libs/db ) gdbm? ( sys-libs/gdbm ) !berkdb? ( !gdbm? ( sys-libs/gdbm ) ) sys-apps/groff zlib? ( sys-libs/zlib ) !sys-apps/man selinux? ( sec-policy/selinux-mandb )
@@ -12,4 +12,4 @@ SLOT=0
 SRC_URI=mirror://nongnu/man-db/man-db-2.7.5.tar.xz
 _eclass_exported_funcs=pkg_preinst:- pkg_postinst:- pkg_setup:- src_configure:- src_install:-
 _eclasses_=eutils	9d81603248f2ba3ec59124320d123e5e	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	user	906f3c8eb3a2350a4f1191a89baa3e46	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=84040637ee3964fe99c01ba74516f238
+_md5_=b660426ed3a06ca67fd3564148750558

@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst prepare test
+DEPEND=dev-perl/Class-ISA dev-perl/Clone dev-perl/Exception-Class dev-perl/Hook-LexWrap dev-perl/List-MoreUtils dev-perl/Term-ANSIScreen dev-perl/TermReadKey dev-perl/TeX-Encode dev-perl/XML-Generator dev-perl/XML-DOM dev-perl/XML-Twig dev-perl/encoding-warnings dev-perl/yaml dev-perl/Switch sci-visualization/gnuplot virtual/perl-Data-Dumper virtual/perl-Encode virtual/perl-Time-HiRes !dev-perl/Lab-Instrument !dev-perl/Lab-Tools debug? ( dev-lang/perl[ithreads] dev-perl/Wx ) xpression? ( dev-perl/Wx ) dev-perl/Module-Build dev-lang/perl:=
+DESCRIPTION=Measurement control and automation with Perl
+EAPI=6
+HOMEPAGE=http://www.labmeasurement.de/
+IUSE=debug +xpression
+KEYWORDS=~amd64 ~x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=dev-perl/Class-ISA dev-perl/Clone dev-perl/Exception-Class dev-perl/Hook-LexWrap dev-perl/List-MoreUtils dev-perl/Term-ANSIScreen dev-perl/TermReadKey dev-perl/TeX-Encode dev-perl/XML-Generator dev-perl/XML-DOM dev-perl/XML-Twig dev-perl/encoding-warnings dev-perl/yaml dev-perl/Switch sci-visualization/gnuplot virtual/perl-Data-Dumper virtual/perl-Encode virtual/perl-Time-HiRes !dev-perl/Lab-Instrument !dev-perl/Lab-Tools debug? ( dev-lang/perl[ithreads] dev-perl/Wx ) xpression? ( dev-perl/Wx ) dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/A/AK/AKHUETTEL/Lab-Measurement-3.500.tar.gz
+_eclass_exported_funcs=pkg_postinst:- src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
+_eclasses_=multiprocessing	e32940a7b2a9992ad217eccddb84d548	perl-functions	15aff0b9cba2282790142295ceb6be0c	perl-module	b2108b3c85ac7a6a6a9b035b54f6813c
+_md5_=f231bd4e4fdf7c5d794ce6dcccb702b5

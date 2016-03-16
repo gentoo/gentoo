@@ -4,11 +4,11 @@ DESCRIPTION=conf-update is a ncurses-based config management utility
 EAPI=5
 HOMEPAGE=https://gitweb.gentoo.org/proj/conf-update.git/
 IUSE=colordiff libressl
-KEYWORDS=amd64 ~ppc x86
+KEYWORDS=amd64 ppc x86
 LICENSE=GPL-2
 RDEPEND=>=dev-libs/glib-2.6 sys-libs/ncurses:0 !libressl? ( dev-libs/openssl:0 ) libressl? ( dev-libs/libressl ) colordiff? ( app-misc/colordiff )
 SLOT=0
 SRC_URI=https://gitweb.gentoo.org/proj/conf-update.git/snapshot/conf-update-1.0.3.tar.bz2
 _eclass_exported_funcs=src_prepare:- src_compile:-
 _eclasses_=eutils	9d81603248f2ba3ec59124320d123e5e	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
-_md5_=4bc4aa31e74e839480648082f02c971b
+_md5_=0e4dc66e254e74ccf378b59b80106a23

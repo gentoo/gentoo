@@ -4,11 +4,11 @@ DESCRIPTION=A package of programs that fit together to form a morse code tutor p
 EAPI=5
 HOMEPAGE=http://unixcw.sourceforge.net
 IUSE=alsa ncurses pulseaudio suid qt5
-KEYWORDS=alpha amd64 ~ppc x86
+KEYWORDS=alpha amd64 ppc x86
 LICENSE=GPL-2
 RDEPEND=ncurses? ( sys-libs/ncurses:= ) qt5? ( dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 ) alsa? ( media-libs/alsa-lib ) pulseaudio? ( media-sound/pulseaudio )
 SLOT=0
 SRC_URI=mirror://sourceforge/unixcw/unixcw-3.5.0.tar.gz
 _eclass_exported_funcs=pkg_postinst:- src_prepare:- src_configure:- src_install:-
 _eclasses_=eutils	9d81603248f2ba3ec59124320d123e5e	flag-o-matic	d270fa247153df66074f795fa42dba3e	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
-_md5_=77c43f77312f5a8f6dee8e29e7bcad65
+_md5_=079afde9f3b8a7e5c2887700f1086239
