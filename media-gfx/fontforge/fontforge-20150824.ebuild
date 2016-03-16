@@ -6,7 +6,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python{2_7,3_3,3_4} )
 
-inherit autotools eutils fdo-mime python-single-r1
+inherit eutils fdo-mime python-single-r1
 
 DESCRIPTION="postscript font editor and converter"
 HOMEPAGE="http://fontforge.github.io/"
