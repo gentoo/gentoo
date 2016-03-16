@@ -9046,7 +9046,7 @@ dev-ruby/session 3.1.2 3.2.0: A set of classes to drive external programs via pi
 dev-ruby/settingslogic 2.0.9: A simple configuration / settings solution that uses an ERB enabled YAML file
 dev-ruby/sexp_processor 4.4.4 4.6.0 4.6.1 4.7.0: Processor for s-expressions created as part of the ParseTree project
 dev-ruby/sfl 2.2-r1: Library providing spawn() which is almost perfectly compatible with ruby 1.9's
-dev-ruby/shorturl 1.0.0-r1 1.0.0-r2: A very simple library to use URL shortening services such as TinyURL or RubyURL
+dev-ruby/shorturl 1.0.0-r2: A very simple library to use URL shortening services such as TinyURL or RubyURL
 dev-ruby/shotgun 0.9-r1 0.9.1: Forking implementation of rackup
 dev-ruby/shoulda 2.11.3-r2 3.5.0-r2: Making tests easy on the fingers and eyes
 dev-ruby/shoulda-context 1.1.6 1.2.1: Context framework extracted from Shoulda
@@ -9073,7 +9073,7 @@ dev-ruby/sqlite3 1.3.10 1.3.10-r1 1.3.11: An extension library to access a SQLit
 dev-ruby/sshkit 1.8.1 1.9.0: SSHKit makes it easy to write structured, testable SSH commands in Ruby
 dev-ruby/stamp 0.5.0-r1 0.6.0: Date and time formatting for humans
 dev-ruby/state_machine 1.2.0: Adds support for creating state machines for attributes on any Ruby class
-dev-ruby/stomp 1.3.2 1.3.4 1.3.5: Ruby bindings for the stomp messaging protocol
+dev-ruby/stomp 1.3.4 1.3.5: Ruby bindings for the stomp messaging protocol
 dev-ruby/stringex 2.5.2 2.6.0: Extensions for Ruby's String class
 dev-ruby/subexec 0.2.3-r1: Subexec spawns an external command with a timeout
 dev-ruby/syntax 1.2.0-r1: Syntax highlighting for sourcecode and HTML
@@ -12815,7 +12815,7 @@ media-plugins/vdr-zaphistory 0.9.6: VDR Plugin: Shows the least recently used ch
 media-plugins/vdr-zappilot 0.0.5 0.0.5-r1: VDR Plugin: browse fast the EPG information without being forced to switch to a channel
 media-plugins/xbmc-addon-xvdr 9999: XBMC addon: add VDR (http://www.tvdr.de/) as a TV/PVR Backend
 media-plugins/xsynth-dssi 0.9.2 0.9.4: A software synthesizer plugin for the DSSI Soft Synth Interface
-media-radio/KochMorse 0.99.6 0.99.6-r1: Morse-tutor for Linux using the Koch-method
+media-radio/KochMorse 0.99.6-r1: Morse-tutor for Linux using the Koch-method
 media-radio/adifmerg 31-r1: A small conversion and check utility for ADIF files
 media-radio/ax25-apps 0.0.8_rc4: Basic AX.25 (Amateur Radio) user tools, additional daemons
 media-radio/ax25-tools 0.0.10_rc4: Basic AX.25 (Amateur Radio) administrative tools and daemons
@@ -16315,7 +16315,7 @@ sys-apps/elfix 0.8.4 0.9.0-r1 0.9.2 9999: A suite of tools to work with ELF obje
 sys-apps/entropy 254: Entropy Package Manager foundation library
 sys-apps/entropy-server 254: Entropy Package Manager server-side tools
 sys-apps/epoch 1.0_rc1 1.0_rc2 1.0 1.0.1 1.1.1 1.2.0 1.2.1 1.2.2 9999: An init system, a /sbin/init replacement; designed for simplicity
-sys-apps/etckeeper 1.11-r1 1.18.1 1.18.3: A collection of tools to let /etc be stored in a repository
+sys-apps/etckeeper 1.18.1 1.18.3: A collection of tools to let /etc be stored in a repository
 sys-apps/ethtool 2.6.39 3.0 3.4.2 3.8 3.10 3.12.1 3.13 3.14 3.15 3.16 3.18 4.0 4.2 4.5: Utility for examining and tuning ethernet-based network interfaces
 sys-apps/fakechroot 2.17.2: Provide a faked chroot environment without requiring root privileges
 sys-apps/fakeroot 1.18.4 1.19 1.20 1.20.2: A fake root environment by means of LD_PRELOAD and SysV IPC (or TCP) trickery
