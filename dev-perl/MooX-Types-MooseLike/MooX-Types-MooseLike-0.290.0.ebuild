@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="Some Moosish types and a type builder"
 
 SLOT="0"
-KEYWORDS="amd64 ~hppa ~ppc x86"
+KEYWORDS="amd64 ~hppa ppc x86"
 IUSE="test"
 
 RDEPEND="
