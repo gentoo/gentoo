@@ -4895,7 +4895,7 @@ dev-libs/uulib 0.5.20 0.5.20-r1: Library that supports Base64 (MIME), uuencode, 
 dev-libs/vala-common 0.28.1 0.30.0 0.30.1: Build infrastructure for packages that use Vala
 dev-libs/vanessa-adt 0.0.6 0.0.9: Provides Abstract Data Types (ADTs) Includes queue, dynamic array, hash and key value ADT
 dev-libs/vanessa-logger 0.0.10: Generic logging layer that to log to syslog, an open file handle or a file name
-dev-libs/vc 0.7.3 0.7.4 1.1.0: SIMD Vector Class Library for C++
+dev-libs/vc 0.7.3 0.7.4 1.1.0 1.2.0: SIMD Vector Class Library for C++
 dev-libs/vdk 2.5.1: A Visual Development Kit for RAD
 dev-libs/vrb 0.3.0 0.5.1: Library for a virtual ring buffer
 dev-libs/wayland 1.6.1 1.7.0 1.8.1 1.9.0 1.10.0-r1 9999: Wayland protocol libraries
