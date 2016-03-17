@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -15,6 +15,7 @@ IUSE="test"
 RDEPEND="virtual/perl-Carp
 	dev-perl/Class-Tiny
 	>=virtual/perl-Exporter-5.570.0
+	dev-perl/File-Copy-Recursive
 	>=dev-perl/File-ShareDir-1.0.0
 	>=dev-perl/Path-Tiny-0.18.0
 	dev-perl/Scope-Guard
