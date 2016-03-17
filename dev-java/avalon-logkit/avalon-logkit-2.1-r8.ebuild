@@ -48,6 +48,7 @@ java_prepare() {
 }
 
 JAVA_ANT_REWRITE_CLASSPATH="yes"
+JAVA_ANT_ENCODING="UTF-8"
 
 EANT_GENTOO_CLASSPATH="oracle-javamail,jms,log4j,servlet-api-3.0"
 
