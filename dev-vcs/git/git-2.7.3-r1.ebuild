@@ -123,7 +123,7 @@ PATCHES=(
 
 	# Bug #493306, where FreeBSD 10.x merged libiconv into its libc.
 	"${FILESDIR}"/git-2.5.1-freebsd-10.x-no-iconv.patch
-	
+
 	# http://www.openwall.com/lists/oss-security/2016/03/16/9
 	# 2.7.3 did not actually contain the fix, it only went into master.
 	"${DISTDIR}"/git-2.7.3-00-9831e92bfa833ee9c0ce464bbc2f941ae6c2698d-lose-name-path.patch
