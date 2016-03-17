@@ -13148,7 +13148,7 @@ media-sound/ripperx 2.7.3: a GTK program to rip CD audio tracks and encode them 
 media-sound/rosegarden 13.04 13.10-r1 14.02 14.12: MIDI and audio sequencer and notation editor
 media-sound/rplay 3.3.2-r1: Play sounds on remote Unix systems, without sending audio data over the network
 media-sound/saydate 0.3.0: A Linux shell program that talks the date and system uptime
-media-sound/schismtracker 20110101 20120105: a free reimplementation of Impulse Tracker, a program used to create high quality music
+media-sound/schismtracker 20120105: Free implementation of Impulse Tracker, a tool used to create high quality music
 media-sound/scmpc 0.4.1: a client for MPD which submits your tracks to last.fm
 media-sound/seq24 0.9.2-r1 0.9.3: Seq24 is a loop based MIDI sequencer with focus on live performances
 media-sound/setmixer 19941227_p1: A commandline mixer
@@ -13177,7 +13177,7 @@ media-sound/sox 14.4.1 14.4.2: The swiss army knife of sound processing programs
 media-sound/specimen 0.5.2_rc3-r1 0.5.2_rc3-r2: A Midi Controllable Audio Sampler
 media-sound/spek 0.8.3 0.8.3-r1: Analyse your audio files by showing their spectrogram
 media-sound/splay 0.9.5.2 0.9.5.2-r2: An audio player, primarily for the console
-media-sound/split2flac 0.1_pre20111110-r2 113_p20131017 114 115 9999: sh script to split one big APE/FLAC/WV/WAV audio image with CUE sheet into tracks
+media-sound/split2flac 115 9999: sh script to split an APE/FLAC/WV/WAV audio image with CUE sheet into tracks
 media-sound/spotify 1.0.19.106-r1 1.0.24.104: Spotify is a social music platform
 media-sound/squeezeslave 1.1_p365 1.1_p381: A lightweight streaming audio player for Logitech Media Server
 media-sound/streamripper 1.64.6: Extracts and records individual MP3 file tracks from shoutcast streams
@@ -13219,7 +13219,7 @@ media-sound/vitunes 2.3: A curses media indexer and player for vi users
 media-sound/vkeybd 0.1.18d: A virtual MIDI keyboard for X
 media-sound/vlevel 0.5-r1: Dynamic compressor to amplify quiet parts of music
 media-sound/vlorb 1.2: a high quality Audio CD to audio file encoder
-media-sound/vmpk 0.5.1 0.6.0 0.6.1: Virtual MIDI Piano Keyboard
+media-sound/vmpk 0.6.1: Virtual MIDI Piano Keyboard
 media-sound/volti 0.2.3-r1: GTK+ application for controlling audio volume from system tray/notification area
 media-sound/volumeicon 0.4.6 0.5.0 0.5.1: A lightweight volume control that sits in your systray
 media-sound/volwheel 0.2.8-r1: A volume control trayicon with mouse wheel support
@@ -16444,7 +16444,7 @@ sys-apps/pcmciautils 018_p8 018_p8-r1: PCMCIA userspace utilities for Linux
 sys-apps/pcsc-lite 1.8.12-r1 1.8.13 1.8.13-r1 1.8.14: PC/SC Architecture smartcard middleware library
 sys-apps/pcsc-slb-rf72-drv 1.1.0-r1 1.1.0-r2: Schlumberger Reflex 72 Serial Smartcard Reader
 sys-apps/pcsc-tools 1.4.22 1.4.23 1.4.24 1.4.25: PC/SC Architecture smartcard tools
-sys-apps/pkgcore 0.9.1 0.9.2 9999: pkgcore package manager
+sys-apps/pkgcore 0.9.1 0.9.2 9999: a framework for package management
 sys-apps/pmount 0.9.99_alpha-r3 0.9.99_alpha-r5: Policy based mounter that gives the ability to mount removable devices as a user
 sys-apps/pmount-gui 0_pre20130806: A simple graphical frontend for pmount
 sys-apps/policycoreutils 2.2.5-r4 2.3-r3 2.4 2.4-r1 2.4-r2 2.5 9999: SELinux core utilities
@@ -17582,7 +17582,7 @@ www-apps/polarblog 1.11.1: PolarBlog is an open source embedded weblog solution
 www-apps/postfixadmin 2.3.8: Web Based Management tool for Postfix style virtual domains and users
 www-apps/pyblosxom 1.4.3: PyBlosxom is a lightweight weblog system
 www-apps/radicale 1.1.1: A simple CalDAV calendar server
-www-apps/redmine 2.6.9: Flexible project management web application using the Ruby on Rails framework
+www-apps/redmine 2.6.9 2.6.10: Flexible project management web application using the Ruby on Rails framework
 www-apps/rocketwiki-lqfb 0.4: Small parser which translates a wiki dialect to HTML
 www-apps/roundup 1.4.20 1.4.21 1.5.0: Simple-to-use and -install issue-tracking system with command-line, web, and e-mail interfaces
 www-apps/rt 4.2.12-r1: RT is an enterprise-grade ticketing system
