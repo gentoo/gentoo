@@ -1,10 +1,10 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-inherit eutils libtool autotools-multilib
+inherit eutils libtool multilib-minimal
 
 DESCRIPTION="Library to handle, display and manipulate GIF images"
 HOMEPAGE="http://sourceforge.net/projects/giflib/"
@@ -12,8 +12,7 @@ SRC_URI="mirror://sourceforge/giflib/${P}.tar.bz2"
 
 LICENSE="MIT"
 SLOT="0/7"
-# Needs testing first.
-#KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
 IUSE="static-libs"
 
 RDEPEND="
@@ -24,10 +23,11 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 src_prepare() {
+	default
 	elibtoolize
 }
 
-src_configure() {
+multilib_src_configure() {
 	local myeconfargs=(
 		# No need for xmlto as they ship generated files.
 		ac_cv_prog_have_xmlto=no
@@ -35,16 +35,20 @@ src_configure() {
 		$(use_enable static-libs static)
 	)
 
-	autotools-multilib_src_configure
+	ECONF_SOURCE="${S}" \
+	econf "${myeconfargs[@]}"
 }
 
-src_install() {
-	autotools-multilib_src_install
+multilib_src_install() {
+	default
 
 	# for static libs the .la file is required if built with +X
 	use static-libs || prune_libtool_files --all
+}
 
+multilib_src_install_all() {
 	doman doc/*.1
-	dodoc doc/*.txt
-	dohtml -r doc
+	dodoc AUTHORS BUGS ChangeLog NEWS README TODO doc/*.txt
+	docinto html
+	dodoc -r doc/whatsinagif
 }

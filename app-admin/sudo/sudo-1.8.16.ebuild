@@ -5,10 +5,6 @@
 EAPI=6
 
 inherit eutils pam multilib libtool
-if [[ ${PV} == "9999" ]] ; then
-	EHG_REPO_URI="http://www.sudo.ws/repos/sudo"
-	inherit mercurial
-fi
 
 MY_P=${P/_/}
 MY_P=${MY_P/beta/b}
@@ -20,16 +16,14 @@ esac
 
 DESCRIPTION="Allows users or groups to run commands as other users"
 HOMEPAGE="http://www.sudo.ws/"
-if [[ ${PV} != "9999" ]] ; then
-	SRC_URI="http://www.sudo.ws/sudo/dist/${uri_prefix}${MY_P}.tar.gz
-		ftp://ftp.sudo.ws/pub/sudo/${uri_prefix}${MY_P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~x64-freebsd ~sparc-solaris"
-fi
+SRC_URI="http://www.sudo.ws/sudo/dist/${uri_prefix}${MY_P}.tar.gz
+	ftp://ftp.sudo.ws/pub/sudo/${uri_prefix}${MY_P}.tar.gz"
 
 # Basic license is ISC-style as-is, some files are released under
 # 3-clause BSD license
 LICENSE="ISC BSD"
 SLOT="0"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~x64-freebsd ~sparc-solaris"
 IUSE="ldap nls pam offensive selinux skey +sendmail"
 
 DEPEND="pam? ( virtual/pam )
@@ -135,7 +129,7 @@ src_install() {
 	default
 
 	if use ldap ; then
-		dodoc README.LDAP doc/schema.OpenLDAP
+		dodoc README.LDAP
 		dosbin plugins/sudoers/sudoers2ldif
 
 		cat <<-EOF > "${T}"/ldap.conf.sudo
@@ -144,12 +138,15 @@ src_install() {
 
 		# supported directives: host, port, ssl, ldap_version
 		# uri, binddn, bindpw, sudoers_base, sudoers_debug
-		# tls_{checkpeer,cacertfile,cacertdir,randfile,ciphers,cert,key
+		# tls_{checkpeer,cacertfile,cacertdir,randfile,ciphers,cert,key}
 		EOF
 
 		insinto /etc
 		doins "${T}"/ldap.conf.sudo
 		fperms 0440 /etc/ldap.conf.sudo
+
+		insinto /etc/openldap/schema
+		newins doc/schema.OpenLDAP sudo.schema
 	fi
 
 	pamd_mimic system-auth sudo auth account session

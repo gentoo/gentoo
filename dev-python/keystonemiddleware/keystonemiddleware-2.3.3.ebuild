@@ -69,7 +69,6 @@ RDEPEND="
 	>=dev-python/webob-1.2.3[${PYTHON_USEDEP}]"
 
 PATCHES=(
-	"${FILESDIR}/CVE-2015-7546_2.3.2.patch"
 )
 
 python_prepare_all() {
