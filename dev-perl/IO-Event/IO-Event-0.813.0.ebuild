@@ -12,7 +12,7 @@ inherit perl-module
 DESCRIPTION="Tied Filehandles for Nonblocking IO with Object Callbacks"
 
 SLOT="0"
-KEYWORDS="alpha amd64 ~ia64 ppc ~ppc64 ~sparc x86"
+KEYWORDS="alpha amd64 ~ia64 ppc ppc64 ~sparc x86"
 IUSE=""
 
 RDEPEND="

@@ -11,7 +11,6 @@
 	<use>
 		<flag name="espeak">Enable text to speech synthesizer using espeak
 			 engine</flag>
-		<flag name="gucharmap">Enable gucharmap dictionary plugin</flag>
 		<flag name="pronounce">Install WyabdcRealPeopleTTS package (it is just
 			 many .wav files) to make StarDict pronounce English words</flag>
 		<flag name="qqwry">Enable QQWry plugin, which provides information (in

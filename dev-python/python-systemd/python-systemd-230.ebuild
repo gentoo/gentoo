@@ -13,7 +13,7 @@ SRC_URI="https://github.com/systemd/python-systemd/archive/v${PV}.tar.gz -> ${P}
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="amd64 ~arm ppc ~ppc64 sparc x86"
+KEYWORDS="amd64 ~arm ppc ppc64 sparc x86"
 IUSE=""
 
 DEPEND="sys-apps/systemd"
