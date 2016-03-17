@@ -694,12 +694,12 @@ app-dicts/myspell-af 20080701: Afrikaans dictionaries for myspell/hunspell
 app-dicts/myspell-bg 4.3: Bulgarian dictionaries for myspell/hunspell
 app-dicts/myspell-ca 2.3.0: Catalan dictionaries for myspell/hunspell
 app-dicts/myspell-cs 20110224: Czech dictionaries for myspell/hunspell
-app-dicts/myspell-cy 2013.07.08 20060316: Welsh dictionaries for myspell/hunspell
+app-dicts/myspell-cy 20060316 20130708: Welsh dictionaries for myspell/hunspell
 app-dicts/myspell-da 2.1: Danish dictionaries for myspell/hunspell
 app-dicts/myspell-de 2013.12.06 2015.12.28: German dictionaries for myspell/hunspell
 app-dicts/myspell-de-alt 20120929: German (traditional orthography) dictionaries for myspell/hunspell
 app-dicts/myspell-el 0.8: Greek dictionaries for myspell/hunspell
-app-dicts/myspell-en 2016.02.01 20081002 20151201: English dictionaries for myspell/hunspell
+app-dicts/myspell-en 20081002 20151201 20160201: English dictionaries for myspell/hunspell
 app-dicts/myspell-eo 1.0: Esperanto dictionaries for myspell/hunspell
 app-dicts/myspell-es 0.6 0.7: Spanish dictionaries for myspell/hunspell
 app-dicts/myspell-et 20030606: Estonian dictionaries for myspell/hunspell
@@ -17980,8 +17980,8 @@ x11-libs/libsvg-cairo 0.1.6: Render SVG content using cairo
 x11-libs/libtinynotify 0.2.1 9999: A lightweight implementation of Desktop Notification Spec
 x11-libs/libtinynotify-cli 1.2.1 9999: Common CLI routines for tinynotify-send & sw-notify-send
 x11-libs/libtinynotify-systemwide 0.0.2 0.1 9999: A system-wide notifications module for libtinynotify
-x11-libs/libva 1.3.1 1.4.0 1.4.1 1.5.0 1.5.1 1.6.0 1.6.1 1.6.2 9999: Video Acceleration (VA) API for Linux
-x11-libs/libva-intel-driver 1.3.0 1.4.1 1.5.0 1.5.1 1.6.0 1.6.1 1.6.2 9999: HW video decode support for Intel integrated graphics
+x11-libs/libva 1.3.1 1.4.0 1.4.1 1.5.0 1.5.1 1.6.0 1.6.1 1.6.2 1.7.0 9999: Video Acceleration (VA) API for Linux
+x11-libs/libva-intel-driver 1.3.0 1.4.1 1.5.0 1.5.1 1.6.0 1.6.1 1.6.2 1.7.0 9999: HW video decode support for Intel integrated graphics
 x11-libs/libva-vdpau-driver 0.7.4-r2 0.7.4-r3 9999: VDPAU Backend for Video Acceleration (VA) API
 x11-libs/libvdpau 1.1.1: VDPAU wrapper and trace libraries
 x11-libs/libview 0.6.6-r2: VMware's Incredibly Exciting Widgets
