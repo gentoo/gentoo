@@ -30,6 +30,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Michael Palimaka <kensington@gentoo.org> (17 Mar 2016)
+# Dead upstream. Doesn't work with new Twitter API.
+# Masked for removal in 30 days.
+net-im/qtwitter
+
 # James Le Cuirot <chewi@gentoo.org> (14 Mar 2016)
 # Bye bye Java 6! If you really still need it then gnu_andrew will
 # continue to maintain icedtea:6 in java-overlay but it is not
