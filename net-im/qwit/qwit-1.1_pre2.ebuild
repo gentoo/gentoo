@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -21,7 +21,7 @@ DOCS="AUTHORS"
 
 DEPEND="dev-qt/qtgui:4"
 RDEPEND="${DEPEND}
-	dev-libs/qoauth"
+	dev-libs/qoauth:0"
 
 S=${WORKDIR}/${MY_P}
 
