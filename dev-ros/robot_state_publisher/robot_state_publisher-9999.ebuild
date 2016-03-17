@@ -25,6 +25,7 @@ RDEPEND="
 	dev-ros/tf2_kdl
 	dev-ros/kdl_conversions
 	dev-ros/sensor_msgs
+	dev-ros/tf
 "
 DEPEND="${RDEPEND}
 	dev-ros/rostest[${PYTHON_USEDEP}]
