@@ -15,7 +15,7 @@ else
 	SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 fi
 
-DESCRIPTION="pkgcore package manager"
+DESCRIPTION="a framework for package management"
 HOMEPAGE="https://github.com/pkgcore/pkgcore"
 
 LICENSE="|| ( BSD GPL-2 )"
