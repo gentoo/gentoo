@@ -34,7 +34,7 @@ REQUIRED_USE="
 
 RDEPEND="
 	>=app-eselect/eselect-vi-1.1
-	>=sys-libs/ncurses-5.2-r2:=
+	>=sys-libs/ncurses-5.2-r2:0=
 	nls? ( virtual/libintl )
 	acl? ( kernel_linux? ( sys-apps/acl ) )
 	cscope? ( dev-util/cscope )
@@ -271,19 +271,7 @@ src_test() {
 	# Don't let vim talk to X
 	unset DISPLAY
 
-	# We've got to call make test from within testdir, since the Makefiles
-	# don't pass through our VIMPROG argument
-	cd "${S}"/src/testdir
-
-	# Test 49 won't work inside a portage environment
-	einfo "Test 49 isn't sandbox-friendly, so it will be skipped."
-	sed -i 's~test49.out~~g' Makefile
-
-	# We don't want to rebuild vim before running the tests
-	sed -i 's,: \$(VIMPROG),: ,' Makefile
-
-	# Don't try to do the additional GUI test
-	emake -j1 VIMPROG=../vim nongui
+	emake -j1 -C src/testdir nongui
 }
 
 # Make convenience symlinks, hopefully without stepping on toes.  Some
