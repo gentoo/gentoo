@@ -14,6 +14,7 @@
 	<name>Gentoo Printing Project</name>
 </maintainer>
 <use>
+	<flag name="nss">Enable signatures handling with <pkg>dev-libs/nss</pkg></flag>
 	<flag name="utils">Install command-line PDF converters and various utilities.</flag>
 </use>
 <slots>
