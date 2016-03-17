@@ -24,6 +24,7 @@ KEYWORDS="~amd64 ~x86"
 RDEPEND="
 	dev-python/PyQt5[webkit,${PYTHON_USEDEP}]
 	media-libs/libopenshot[${PYTHON_USEDEP}]
+	dev-python/httplib2[${PYTHON_USEDEP}]
 "
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
