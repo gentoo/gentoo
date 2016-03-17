@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="Only use Sub::Exporter if you need it"
 
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ~ia64 ppc ~ppc64 ~sparc x86 ~ppc-aix ~x86-fbsd ~amd64-linux ~x86-linux ~x64-macos ~x86-solaris"
+KEYWORDS="alpha amd64 arm hppa ~ia64 ppc ppc64 ~sparc x86 ~ppc-aix ~x86-fbsd ~amd64-linux ~x86-linux ~x64-macos ~x86-solaris"
 IUSE=""
 
 RDEPEND="
