@@ -36,19 +36,12 @@
 # net-fs/libnfs lacks alpha keyword, bug #551576
 gnome-base/gvfs nfs
 
-# Tobias Klausmann <klausman@gentoo.org> (29 Jul 2015)
-# Mask webkit so the dep can stay ~alpha forever
->=x11-libs/wxGTK-3.0.2.0-r1 webkit
-
 # Pacho Ramos <pacho@gentoo.org> (02 Jul 2014)
 # Mask due Gnome3 not going to be stabilized on this arch
-dev-util/geany-plugins devhelp markdown webkit
+dev-util/geany-plugins devhelp markdown
 >=gnome-base/gnome-desktop-2.32.1-r2 license-docs
 gnome-base/gvfs google
-mail-client/balsa webkit
-media-gfx/gimp webkit
 media-plugins/gst-plugins-meta modplug
 >=x11-libs/gtk+-3.12.2 cloudprint
-net-libs/libproxy webkit
 >=net-libs/webkit-gtk-2.4 geoloc
 x11-libs/gksu gnome
