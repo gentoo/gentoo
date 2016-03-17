@@ -18108,7 +18108,7 @@ x11-misc/googsystray 1.3.1-r1: System tray application for Google Voice, GMail, 
 x11-misc/gpaste 3.14 3.16.2.1: Clipboard management system
 x11-misc/grabc 1.1-r1: determine the color string in hex (or RGB components) by clicking on a pixel on the screen
 x11-misc/gromit 20041213-r1: GRaphics Over MIscellaneous Things, a presentation helper
-x11-misc/grsync 1.2.4 1.2.5: A gtk frontend to rsync
+x11-misc/grsync 1.2.4 1.2.5 1.2.6: A gtk frontend to rsync
 x11-misc/grub2-theme-preview 1.1 1.2 1.2.1 1.3.0 1.3.1: Preview a GRUB 2.x theme using KVM/QEMU
 x11-misc/grun 0.9.3-r1: A GTK based Run dialog resembling the Windows Run dialog, just like xexec
 x11-misc/gtk2fontsel 0.1: A font selection tool similar to xfontsel
