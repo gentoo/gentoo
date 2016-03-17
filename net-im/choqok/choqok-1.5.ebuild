@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -27,7 +27,7 @@ IUSE="ayatana debug telepathy"
 RDEPEND="
 	dev-libs/libattica
 	dev-libs/qjson
-	>=dev-libs/qoauth-1.0.1
+	>=dev-libs/qoauth-1.0.1:0
 	ayatana? ( dev-libs/libindicate-qt )
 	telepathy? ( net-libs/telepathy-qt[qt4] )
 "
