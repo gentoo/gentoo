@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -20,7 +20,7 @@ DEPEND="x11-libs/libX11
 	>=dev-qt/qtcore-4.5:4
 	>=dev-qt/qtgui-4.5:4
 	>=dev-qt/qtdbus-4.5:4
-	>=dev-libs/qoauth-1.0"
+	>=dev-libs/qoauth-1.0:0"
 RDEPEND="${DEPEND}"
 
 DOCS="README CHANGELOG"
