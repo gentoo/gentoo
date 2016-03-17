@@ -4,11 +4,11 @@ DESCRIPTION=Objective CAML interface for Gtk+2
 EAPI=5
 HOMEPAGE=http://lablgtk.forge.ocamlcore.org/
 IUSE=debug examples glade gnomecanvas sourceview +ocamlopt opengl spell svg
-KEYWORDS=alpha amd64 ia64 ppc ~ppc64 sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux
+KEYWORDS=alpha amd64 ia64 ppc ppc64 sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux
 LICENSE=LGPL-2.1-with-linking-exception examples? ( lablgtk-examples )
 RDEPEND=>=x11-libs/gtk+-2.10:2 >=dev-lang/ocaml-3.10:=[ocamlopt?] svg? ( >=gnome-base/librsvg-2.2:2 ) glade? ( >=gnome-base/libglade-2.0.1 ) gnomecanvas? ( >=gnome-base/libgnomecanvas-2.2 ) opengl? ( >=dev-ml/lablgl-0.98:= >=x11-libs/gtkglarea-1.9:2 ) spell? ( app-text/gtkspell:2 ) sourceview? ( x11-libs/gtksourceview:2.0 ) || ( dev-ml/camlp4:= <dev-lang/ocaml-4.02.0 )
 SLOT=2/2.18.3
 SRC_URI=https://forge.ocamlcore.org/frs/download.php/1479/lablgtk-2.18.3.tar.gz
 _eclass_exported_funcs=pkg_postinst:- src_configure:- src_compile:- src_install:-
 _eclasses_=findlib	9909e5ca0f77ff5b693885a3d7aeadb7	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
-_md5_=ef6496b872772e6c5d9dd5f5778039c7
+_md5_=c78fd73ba32081a61edb069d7dbc787e

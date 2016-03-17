@@ -2397,7 +2397,7 @@ app-text/sigil 0.8.7-r1 0.9.3: Sigil is a multi-platform WYSIWYG ebook editor fo
 app-text/silvercity 0.9.7 0.9.7-r1: A lexical analyser for many languages
 app-text/sloccount 2.26-r3: Tools for counting Source Lines of Code (SLOC) for a large number of languages
 app-text/spellutils 0.7: spellutils includes 'newsbody' (useful for spellchecking in mails, etc.)
-app-text/stardict 3.0.6 3.0.6-r2: A international dictionary supporting fuzzy and glob style matching
+app-text/stardict 3.0.6-r2: A international dictionary supporting fuzzy and glob style matching
 app-text/sword 1.6.2 1.7.2 1.7.3 1.7.4: Library for Bible reading software
 app-text/sword-modules 1: A collection of modules for the SWORD project
 app-text/t1utils 1.39: Type 1 Font utilities
@@ -12471,7 +12471,7 @@ media-libs/prison 1.1.1: QRCode and data matrix barcode library
 media-libs/pymemphis 0.2.1: Python bindings for the libmemphis library
 media-libs/qhull 2012.1-r1 2012.1-r3 2012.1-r4: Geometry library
 media-libs/qimageblitz 0.0.6-r1: A graphical effect and filter library for KDE4
-media-libs/qt-gstreamer 1.2.0 1.2.0-r1: QtGStreamer provides C++ bindings for GStreamer with a Qt-style API
+media-libs/qt-gstreamer 1.2.0-r1: QtGStreamer provides C++ bindings for GStreamer with a Qt-style API
 media-libs/quarter 1.0.0-r1: A glue between Nokia Qt4 and Coin3D
 media-libs/quesoglc 0.7.2: A free implementation of the OpenGL Character Renderer (GLC)
 media-libs/quvi 0.2.19 0.4.2 0.9.4 0.9.5: A command line tool for parsing video download links
