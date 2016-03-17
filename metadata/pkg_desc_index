@@ -9654,7 +9654,7 @@ dev-util/oprofile 0.9.9-r1 0.9.9-r2 1.0.0-r2 1.1.0-r1: A transparent low-overhea
 dev-util/osc 0.148.2 0.152.0 9999: Command line tool for Open Build Service
 dev-util/osdt 1.1.5: tools for Open Source software distribution
 dev-util/par 00.05.01: par manipulates PalmOS database files
-dev-util/patchelf 0.8: Small utility to modify the dynamic linker and RPATH of ELF executables
+dev-util/patchelf 0.8 0.9: Small utility to modify the dynamic linker and RPATH of ELF executables
 dev-util/patchutils 0.3.3: A collection of tools that operate on patch files
 dev-util/peg 0.1.9 0.1.13 0.1.15 0.1.15-r1: Recursive-descent parser generators for C
 dev-util/perf 3.8-r1 3.12 3.13.1-r1 3.15.5 4.1.5-r1 4.4.4: Userland tools for Linux Performance Counters
