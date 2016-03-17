@@ -7312,7 +7312,7 @@ dev-python/logutils 0.3.3: The logutils package provides a set of handlers for t
 dev-python/louie 1.1 1.1-r1: Signal dispatching mechanism for Python
 dev-python/lp_solve 5.5.2.0-r1: Python wrappers for lpsolve linear programming library
 dev-python/lupy 0.2.1-r2: Lupy is a is a full-text indexer and search engine written in Python
-dev-python/lxml 3.4.4 3.5.0: A Pythonic binding for the libxml2 and libxslt libraries
+dev-python/lxml 3.4.4 3.5.0 3.6.0: A Pythonic binding for the libxml2 and libxslt libraries
 dev-python/lz4 0.6.1 0.7.0: LZ4 Bindings for Python
 dev-python/m2crypto 0.22.3-r4 0.22.3-r5 0.23.0: M2Crypto: A Python crypto and SSL toolkit
 dev-python/m2secret 0.1.1-r1: Encryption and decryption module and CLI utility
