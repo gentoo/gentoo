@@ -44,8 +44,8 @@ AUTOTOOLS_AUTORECONF="yes"
 
 pkg_setup() {
 	ebegin "Creating varnish user and group"
-	enewgroup varnish 40
-	enewuser varnish 40 -1 /var/lib/varnish varnish
+	enewgroup varnish
+	enewuser varnish -1 -1 /var/lib/varnish varnish
 	eend $?
 }
 
@@ -74,7 +74,7 @@ src_install() {
 	newinitd "${FILESDIR}"/varnishlog.initd varnishlog
 	newconfd "${FILESDIR}"/varnishlog.confd varnishlog
 
-	newinitd "${FILESDIR}"/varnishncsa.initd-r1 varnishncsa
+	newinitd "${FILESDIR}"/varnishncsa.initd varnishncsa
 	newconfd "${FILESDIR}"/varnishncsa.confd varnishncsa
 
 	newinitd "${FILESDIR}"/varnishd.initd-r4 varnishd
