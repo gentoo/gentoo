@@ -1,12 +1,13 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 
-USE_RUBY="ruby19 ruby20 ruby21 ruby22"
+# ruby20 crashes in test suite
+USE_RUBY="ruby21 ruby22 ruby23"
 
-RUBY_FAKEGEM_TASK_DOC="yard"
+RUBY_FAKEGEM_RECIPE_DOC="rdoc"
 RUBY_FAKEGEM_DOCDIR="rdoc"
 RUBY_FAKEGEM_EXTRADOC="docs/*.md README.md"
 
@@ -25,8 +26,7 @@ DEPEND="${DEPEND}
 RDEPEND="${RDEPEND}
 	dev-libs/openssl:0"
 
-ruby_add_bdepend "doc? ( dev-ruby/yard )
-	test? ( dev-ruby/test-unit:2 )"
+ruby_add_bdepend "test? ( dev-ruby/test-unit:2 )"
 
 all_ruby_prepare() {
 	# Remove package tasks to avoid dependency on rake-compiler.
