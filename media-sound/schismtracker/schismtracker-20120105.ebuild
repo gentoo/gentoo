@@ -1,11 +1,11 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=4
 inherit eutils
 
-DESCRIPTION="a free reimplementation of Impulse Tracker, a program used to create high quality music"
+DESCRIPTION="Free implementation of Impulse Tracker, a tool used to create high quality music"
 HOMEPAGE="http://eval.sovietrussia.org//wiki/Schism_Tracker"
 SRC_URI="http://${PN}.org/dl/${P}.tar.bz2"
 
