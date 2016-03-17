@@ -18222,7 +18222,7 @@ x11-misc/sunflower 0.2_alpha59: Small and highly customizable twin-panel file ma
 x11-misc/superswitcher 0.6: A more feature-full replacement of the Alt-Tab window switching behavior
 x11-misc/sux 1.0-r4: "su" wrapper which transfers X credentials
 x11-misc/sw-notify-send 1.2.1 9999: A system-wide variant of tinynotify-send
-x11-misc/sxhkd 0.5.3 0.5.4 0.5.5: Simple X hotkey daemon
+x11-misc/sxhkd 0.5.3 0.5.4 0.5.5 0.5.6: Simple X hotkey daemon
 x11-misc/synergy 1.6.3 1.7.4 1.7.5 1.7.5-r1: Lets you easily share a single mouse and keyboard between multiple computers
 x11-misc/tabbed 0.6: Simple generic tabbed fronted to xembed aware applications
 x11-misc/tint2 0.11-r2 0.12.3: tint2 is a lightweight panel/taskbar for Linux.
@@ -18724,7 +18724,7 @@ x11-wm/afterstep 2.2.9 2.2.12: A feature rich NeXTish window manager
 x11-wm/amiwm 0.21_p2: Windowmanager ala Amiga(R) Workbench(R)
 x11-wm/awesome 3.4.15 3.5.6-r1 3.5.6-r2 3.5.7 3.5.8 3.5.9: A dynamic floating and tiling window manager
 x11-wm/blackbox 0.70.1-r1: A small, fast, full-featured window manager for X
-x11-wm/bspwm 0.8.8-r1 0.8.9 0.9: Tiling window manager based on binary space partitioning
+x11-wm/bspwm 0.8.8-r1 0.8.9 0.9 0.9.1: Tiling window manager based on binary space partitioning
 x11-wm/compiz 0.8.8-r3: OpenGL window and compositing manager
 x11-wm/compiz-fusion 0.8.8: Compiz Fusion (meta)
 x11-wm/ctwm 3.7 3.8a-r1 3.8.2: A clean, light window manager
