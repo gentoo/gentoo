@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=6
-inherit autotools fdo-mime gnome2-utils qmake-utils systemd user
+inherit autotools fdo-mime flag-o-matic gnome2-utils qmake-utils systemd user
 
 DESCRIPTION="A Fast, Easy and Free BitTorrent client"
 HOMEPAGE="http://www.transmissionbt.com/"
@@ -78,6 +78,9 @@ src_prepare() {
 
 src_configure() {
 	export ac_cv_header_xfs_xfs_h=$(usex xfs)
+
+	# https://bugs.gentoo.org/577528
+	append-cppflags -D_LARGEFILE64_SOURCE=1
 
 	econf \
 		--enable-external-natpmp \
