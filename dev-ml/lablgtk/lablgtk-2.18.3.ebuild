@@ -28,7 +28,7 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 SLOT="2/${PV}"
-KEYWORDS="alpha amd64 ia64 ppc ~ppc64 sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux"
+KEYWORDS="alpha amd64 ia64 ppc ppc64 sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux"
 
 src_configure() {
 	econf $(use_enable debug) \
