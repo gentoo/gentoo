@@ -1,0 +1,54 @@
+commit a7b7bdf1b1a10ef819227ffae0dea2fd9da5baa9
+Author: Andreas Sturmlechner <andreas.sturmlechner@gmail.com>
+Date:   Wed Mar 16 20:01:43 2016 +0100
+
+    Remove unused deps
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index ad51784..872b96a 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -6,22 +6,15 @@ set (QT_MIN_VERSION "5.3.0")
+ find_package(ECM 1.7.0 REQUIRED CONFIG)
+ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${ECM_MODULE_PATH} ${ECM_KDE_MODULE_DIR})
+ 
+-find_package(Qt5 ${QT_MIN_VERSION} REQUIRED NO_MODULE COMPONENTS Widgets Qml Quick QuickWidgets Svg Test)
+-find_package(KF5 REQUIRED COMPONENTS 
+-    CoreAddons 
+-    Config 
+-    ItemModels 
+-    DBusAddons 
+-    Declarative
+-    I18n 
+-    ConfigWidgets 
+-    ItemViews 
+-    IconThemes 
+-    Completion 
++find_package(Qt5 ${QT_MIN_VERSION} REQUIRED NO_MODULE COMPONENTS Widgets Qml Quick QuickWidgets Svg)
++find_package(KF5 REQUIRED COMPONENTS
++    CoreAddons
++    Config
++    I18n
++    ConfigWidgets
++    Completion
+     XmlGui
+     DNSSD
+-    KIO
+-    NotifyConfig
+     KDELibs4Support
+     DocTools
+ )
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 85cdf5c..5e83068 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -39,8 +39,7 @@ ecm_add_app_icon(kwin4_SRCS ICONS ${ICONS_SRCS})
+ 
+ add_executable(kfourinline ${kwin4_SRCS})
+ 
+-target_link_libraries(kfourinline 
+-   KF5::KIOCore
++target_link_libraries(kfourinline
+    KF5::DNSSD
+    KF5::KDELibs4Support
+    KF5KDEGames
