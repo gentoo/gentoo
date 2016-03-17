@@ -69,7 +69,7 @@ pkg_postinst() {
 src_prepare() {
 	# don't die on Darwin users
 	if [[ ${CHOST} == *-darwin* ]] ; then
-		sed -i -e 's/libGL\.so/libGL.dylib/' opengl.eselect || die
+		sed -i -e 's/libGL\.so/libGL.dylib/' opengl.eselect-${PV} || die
 	fi
 }
 
