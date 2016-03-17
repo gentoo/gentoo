@@ -4,6 +4,8 @@
 
 EAPI=6
 
+MY_PV="${PV:0:4}.${PV:4:2}.${PV:6:2}"
+
 MYSPELL_DICT=(
 	"en_AU.aff"
 	"en_AU.dic"
@@ -30,7 +32,7 @@ inherit myspell-r2
 
 DESCRIPTION="English dictionaries for myspell/hunspell"
 HOMEPAGE="http://extensions.libreoffice.org/extension-center/english-dictionaries"
-SRC_URI="http://extensions.libreoffice.org/extension-center/english-dictionaries/releases/${PV}/dict-en.oxt -> dict-en-${PV}.oxt"
+SRC_URI="http://extensions.libreoffice.org/extension-center/english-dictionaries/releases/${MY_PV}/dict-en.oxt -> dict-en-${PV}.oxt"
 
 LICENSE="GPL-2 LGPL-2.1 Princeton myspell-en_CA-KevinAtkinson"
 SLOT="0"
