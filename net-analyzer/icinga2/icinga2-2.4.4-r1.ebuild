@@ -3,16 +3,15 @@
 # $Id$
 
 EAPI=5
-inherit cmake-utils depend.apache eutils git-2 systemd toolchain-funcs user
+inherit cmake-utils depend.apache eutils systemd toolchain-funcs user
 
 DESCRIPTION="Distributed, general purpose, network monitoring engine"
 HOMEPAGE="http://icinga.org/icinga2"
-EGIT_REPO_URI="https://github.com/Icinga/icinga2.git"
-EGIT_BRANCH="master"
+SRC_URI="https://github.com/Icinga/icinga2/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="+mysql postgres classicui console lto mail minimal nano-syntax +plugins studio +vim-syntax"
 
 CDEPEND="
