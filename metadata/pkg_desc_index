@@ -15029,7 +15029,7 @@ net-wireless/hackrf-tools 2015.07.2-r1 9999: tools for communicating with HackRF
 net-wireless/hidclient 20120728: Use your machine as a bluetooh keyboard/mouse
 net-wireless/horst 4.2 9999: Small 802.11 wireless LAN analyzer
 net-wireless/hostap-utils 0.4.7-r1: Utilities for Intersil Prism2/2.5/3 based IEEE 802.11b wireless LAN products
-net-wireless/hostapd 2.4-r2 2.4-r3 2.5: IEEE 802.11 wireless LAN Host AP daemon
+net-wireless/hostapd 2.5: IEEE 802.11 wireless LAN Host AP daemon
 net-wireless/inspectrum 0.1.1 9999: a tool for analysing captured signals from software-defined radio receivers
 net-wireless/irda-utils 0.9.18-r4 0.9.18-r5: IrDA management and handling utilities
 net-wireless/iw 3.17 4.0 4.3: nl80211-based configuration utility for wireless devices using the mac80211 kernel stack
@@ -15067,7 +15067,7 @@ net-wireless/wepdecrypt 0.8-r2: Enhanced version of WepAttack a tool for breakin
 net-wireless/wifi-radar 2.0.8-r2: WiFi Radar is a Python/PyGTK2 utility for managing WiFi profiles
 net-wireless/wireless-regdb 20130213 20141118 20150925 20151022 20160208: Binary regulatory database for CRDA
 net-wireless/wireless-tools 30_pre9: A collection of tools to configure IEEE 802.11 wireless LAN cards
-net-wireless/wpa_supplicant 2.4-r3 2.5-r1: IEEE 802.1X/WPA supplicant for secure wireless transfers
+net-wireless/wpa_supplicant 2.5-r1: IEEE 802.1X/WPA supplicant for secure wireless transfers
 net-wireless/yatebts 4.0.0-r3 5.0.0 9999: The Yate GSM base station
 perl-core/CPAN-Meta 2.143.240 2.150.1: The distribution metadata for a CPAN dist
 perl-core/CPAN-Meta-Requirements 2.125.0-r1: A set of version requirements for a CPAN dist
