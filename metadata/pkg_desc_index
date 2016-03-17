@@ -7647,7 +7647,7 @@ dev-python/pymediainfo 1.4.0 2.0: A wrapper around the mediainfo command
 dev-python/pymetar 0.19-r1: Downloads, decodes and provides access to the weather report for a given station ID
 dev-python/pyminuit 1.2.1 1.2.1-r1: Minuit numerical function minimization in Python
 dev-python/pyml 0.7.13.2-r1 0.7.13.3: Python machine learning package
-dev-python/pymongo 2.6.3 2.7.2 2.8.1 2.9 3.0.3 3.1 3.2 3.2.1: Python driver for MongoDB
+dev-python/pymongo 2.6.3 2.7.2 2.8.1 2.9 2.9.3 3.0.3 3.1 3.2 3.2.1 3.2.2: Python driver for MongoDB
 dev-python/pymountboot 0.2.1 0.2.2 9999: Python extension module to (re)mount /boot
 dev-python/pympler 0.4.1 0.4.2: Memory profiling for Python applications
 dev-python/pymssql 1.0.2-r1: Simple MSSQL python extension module
