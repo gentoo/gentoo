@@ -5384,6 +5384,7 @@ dev-perl/DBIx-ContextualFetch 1.30.0-r1: Add contextual fetches to DBI
 dev-perl/DBIx-DBSchema 0.400.0-r1 0.440.0 0.450.0: Database-independent schema objects
 dev-perl/DBIx-Migration 0.70.0: Seamless DB schema up- and downgrades
 dev-perl/DBIx-Safe 1.2.5: Safer access to your database through a DBI database handle
+dev-perl/DBIx-Simple 1.350.0-r1: Very complete easy-to-use OO interface to DBI
 dev-perl/DB_File-Lock 0.50.0-r1: Locking with flock wrapper for DB_File
 dev-perl/Daemon-Generic 0.840.0: Framework to provide start/stop/reload for a daemon
 dev-perl/Danga-Socket 1.610.0-r1: A non-blocking socket object; uses epoll()
@@ -5806,6 +5807,7 @@ dev-perl/Mail-Box 2.109.0-r1 2.118.0: Mail folder manager and MUA backend
 dev-perl/Mail-Builder 2.80.0-r1 2.90.0: Easily create plaintext/html e-mail messages with attachments and inline images
 dev-perl/Mail-Builder-Simple 0.160.0-r1: Send UTF-8 HTML and text email using templates
 dev-perl/Mail-DKIM 0.400.0: Mail::DKIM - Signs/verifies Internet mail using DKIM message signatures
+dev-perl/Mail-DMARC 1.201.509.80: Perl implementation of DMARC
 dev-perl/Mail-DomainKeys 1.0.0-r1: A perl implementation of DomainKeys
 dev-perl/Mail-IMAPClient 3.350.0 3.370.0 3.380.0: IMAP client module for Perl
 dev-perl/Mail-ListDetector 1.40.0-r1: Perl extension for detecting mailing list messages
@@ -6219,7 +6221,7 @@ dev-perl/Test-EOL 1.600.0: Check the correct line endings in your project
 dev-perl/Test-Exception 0.320.0-r1 0.380.0 0.400.0: Test functions for exception based code
 dev-perl/Test-FailWarnings 0.8.0: Add test failures if warnings are caught
 dev-perl/Test-Fatal 0.10.0-r1: Incredibly simple helpers for testing code with exceptions
-dev-perl/Test-File-ShareDir 1.1.1: Create a Fake ShareDir for your modules for testing.
+dev-perl/Test-File-ShareDir 1.1.1-r1: Create a Fake ShareDir for your modules for testing.
 dev-perl/Test-Inline 2.212.0-r1 2.213.0-r1: Inline test suite support for Perl
 dev-perl/Test-Inter 1.30.0-r1: Framework for more readable interactive test scripts
 dev-perl/Test-LeakTrace 0.150.0: Traces memory leaks
@@ -13161,7 +13163,7 @@ media-sound/shoutcast-server-bin 1.9.8-r1: SHOUTcast is a streaming audio system
 media-sound/shoutcast-trans-bin 0.4.0-r1: A transcoder that provides a source for shoutcast-server-bin to stream from
 media-sound/sidplay 2.0.9: C64 SID player
 media-sound/sidplayfp 0.3.3 1.1.0 1.4.0: A sidplay2 fork with resid-fp
-media-sound/skype-call-recorder 0.8: Records Skype calls to MP3/Ogg/WAV files
+media-sound/skype-call-recorder 0.8 0.11: Records Skype calls to MP3/Ogg/WAV files
 media-sound/smixer 1.0.4: command-line tool for setting and viewing mixer settings
 media-sound/snd 12.8 16.3: Snd is a sound editor
 media-sound/sndfile-tools 1.03 1.03-r1: A small collection of programs that use libsndfile
