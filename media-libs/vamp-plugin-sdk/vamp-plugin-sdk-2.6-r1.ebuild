@@ -12,7 +12,7 @@ SRC_URI="https://code.soundsoftware.ac.uk/attachments/download/1514/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="alpha amd64 ~arm ~hppa ~mips ppc ~ppc64 x86"
+KEYWORDS="alpha amd64 ~arm ~hppa ~mips ppc ppc64 x86"
 IUSE="doc static-libs"
 
 RDEPEND="media-libs/libsndfile"
