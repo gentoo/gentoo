@@ -7,7 +7,7 @@ EAPI=5
 inherit common-lisp-3 eutils elisp-common autotools
 
 DESCRIPTION="Stumpwm is a Window Manager written entirely in Common Lisp."
-HOMEPAGE="http://www.nongnu.org/stumpwm/"
+HOMEPAGE="https://stumpwm.github.io/"
 SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
