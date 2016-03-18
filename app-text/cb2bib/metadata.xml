@@ -6,6 +6,6 @@
 		<name>Gentoo Qt Project</name>
 	</maintainer>
 	<upstream>
-		<bugs-to>webmaster@molspaces.com</bugs-to>
+		<bugs-to>mailto:webmaster@molspaces.com</bugs-to>
 	</upstream>
 </pkgmetadata>
