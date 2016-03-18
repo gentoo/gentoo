@@ -1,10 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 PYTHON_COMPAT=( python2_7 )
-USE_RUBY="ruby22 ruby21 ruby20 ruby19"
+USE_RUBY="ruby23 ruby22 ruby21 ruby20"
 DISTUTILS_OPTIONAL=1
 WANT_AUTOMAKE="none"
 GENTOO_DEPEND_ON_PERL="no"
@@ -117,7 +117,7 @@ pkg_setup() {
 	if use ruby ; then
 		local rbslot
 		RB_VER=""
-		for rbslot in $(sed 's@\([[:digit:]]\+\)\([[:digit:]]\)@\1.\2@' <<< ${USE_RUBY/ruby}) ; do
+		for rbslot in $(sed 's@\([[:digit:]]\+\)\([[:digit:]]\)@\1.\2@g' <<< ${USE_RUBY//ruby}) ; do
 			if has_version dev-lang/ruby:${rbslot} ;  then
 				RB_VER="${rbslot/.}"
 				break
