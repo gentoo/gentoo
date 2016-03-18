@@ -4322,7 +4322,7 @@ dev-lang/falcon 0.9.6.8: An open source general purpose untyped language written
 dev-lang/ferite 1.1.17-r1: A clean, lightweight, object oriented scripting language
 dev-lang/fpc 2.6.4 3.0.0: Free Pascal Compiler
 dev-lang/fsharp 3.1.1.31 4.0.0.4: The F# Compiler
-dev-lang/gdl 0.9.5-r1 0.9.5-r2: GNU Data Language
+dev-lang/gdl 0.9.5-r1 0.9.5-r2 0.9.6: GNU Data Language
 dev-lang/gforth 0.7.3: GNU Forth is a fast and portable implementation of the ANSI Forth language
 dev-lang/ghc 7.4.2 7.6.3-r1 7.8.3 7.8.4 7.10.2 7.10.2-r1 7.10.3: The Glasgow Haskell Compiler
 dev-lang/gnat-gcc 3.4.6 4.1.2 4.2.3 4.3.5 4.3.6 4.3.6-r1 4.4.7 4.4.7-r1 4.5.4 4.5.4-r1 4.6.4 4.6.4-r1: GNAT Ada Compiler - gcc version
@@ -6811,9 +6811,10 @@ dev-python/astor 0.3 0.4 0.4.1 0.5: Read/rewrite/write Python ASTs
 dev-python/astroid 1.3.8 1.4.1 1.4.2 1.4.3 1.4.4: Abstract Syntax Tree for logilab packages
 dev-python/astroml 0.3: Python Machine Learning library for astronomy
 dev-python/astroml-addons 0.2.2: Performance add-ons for the astroML package
-dev-python/astropy 1.0.6 1.1.1: Core functionality for performing astrophysics with Python
-dev-python/astropy-helpers 1.0.6 1.1.1: Helpers for Astropy and Affiliated packages
+dev-python/astropy 1.0.6 1.1.1 1.1.2: Core functionality for performing astrophysics with Python
+dev-python/astropy-helpers 1.0.6 1.1.1 1.1.2: Helpers for Astropy and Affiliated packages
 dev-python/astroquery 0.3.1: Collection of packages to access online astronomical resources
+dev-python/astroscrappy 1.0.3: Optimized cosmic ray annihilation astropy python module
 dev-python/async 0.6.2: Async Framework
 dev-python/asyncio 3.4.2 3.4.3: reference implementation of PEP 3156
 dev-python/atom 0.3.10: Memory efficient Python objects
@@ -6881,6 +6882,7 @@ dev-python/cassandra-driver 2.7.2: DataStax python driver for Apache Cassandra
 dev-python/castellan 0.2.1: Generic Key Manager interface for OpenStack
 dev-python/casuarius 1.1: Cython wrapper for the Cassowary incremental constraint solver
 dev-python/catkin_pkg 0.2.10 9999: Standalone Python library for the catkin package system
+dev-python/ccdproc 0.3.3 1.0.1: Astropy affiliated package for reducing optical/IR CCD data
 dev-python/cddb-py 1.4-r1: CDDB Module for Python
 dev-python/celementtree 1.0.5-r2: The cElementTree module is a C implementation of the ElementTree API
 dev-python/celery 3.1.17 3.1.18 3.1.18-r1 3.1.19 3.1.20: Asynchronous task queue/job queue based on distributed message passing
@@ -6909,7 +6911,7 @@ dev-python/cliff 1.8.0 1.10.1 1.12.0 1.13.0 1.14.0: Command Line Interface Formu
 dev-python/cliff-tablib 1.1: Formatter extensions of JSON, YAML, and HTML output in programs created by the cliff framework
 dev-python/clint 0.3.1-r1 0.4.1 0.5.1: Python Command-line Application Tools
 dev-python/cloudlib 0.4.0 0.5.0: Cloud middleware for in application use.
-dev-python/cloudpickle 0.1.1: Extended pickling support for Python objects
+dev-python/cloudpickle 0.1.1 0.2.1: Extended pickling support for Python objects
 dev-python/cmd2 0.6.7 0.6.8: Extra features for standard library's cmd module
 dev-python/codetools 4.2.0: Enthought Tool Suite: Code analysis and execution tools
 dev-python/colander 1.0 1.2: A simple schema-based serialization and deserialization library
@@ -6947,6 +6949,7 @@ dev-python/cython 0.22 0.23.2 0.23.3 0.23.4: A Python to C compiler
 dev-python/cytoolz 0.7.1 0.7.2-r2 0.7.3 0.7.4 0.7.5: Cython implementation of Toolz: High performance functional utilities
 dev-python/d2to1 0.2.11 0.2.12 0.2.12_p1: Allows using distutils2-like setup.cfg files for a package metadata
 dev-python/dap 2.2.6.7-r1: Data Access Protocol client and server
+dev-python/dask 0.8.1: Task scheduling and blocked algorithms for parallel processing
 dev-python/datashape 0.4.2 0.4.4 0.4.5 0.4.6 0.4.7 0.5.0 0.5.1: Language defining a data description protocol
 dev-python/dbus-python 1.2.0-r1: Python bindings for the D-Bus messagebus
 dev-python/dbutils 1.1-r1: Database connections for multi-threaded environments
@@ -7135,6 +7138,7 @@ dev-python/fusil 1.5: Fusil the fuzzer is a Python library used to write fuzzing
 dev-python/future 0.15.2: Easy, clean, reliable Python 2/3 compatibility
 dev-python/futures 2.2.0 3.0.2 3.0.3 3.0.4 3.0.5: Backport of the concurrent.futures package from Python 3.2
 dev-python/futurist 0.4.0: Useful additions to futures, from the future
+dev-python/gammapy 0.3: Python package for gamma-ray astronomy
 dev-python/gconf-python 2.28.1-r1: Python bindings for the GConf library
 dev-python/gcs-oauth2-boto-plugin 1.7 1.8 1.8-r1 1.9: OAuth 2.0 plugin for Google Cloud Storage credentials in the Boto library
 dev-python/gdata 2.0.14 2.0.17-r1 2.0.18: Python client library for Google data APIs
@@ -7304,6 +7308,7 @@ dev-python/llfuse 0.40 0.41 0.42.1 0.43-r1 1.0: Python bindings for the low-leve
 dev-python/llvmlite 0.2.1 0.2.2 0.5.0 0.6.0 0.8.0 0.9.0: Python wrapper around the llvm C++ library
 dev-python/llvmmath 0.1.2: LLVM math library for Python
 dev-python/llvmpy 0.12.2 0.12.3 0.12.4 0.12.5 0.12.6 0.12.7: Python wrapper around the llvm C++ library
+dev-python/locket 0.2.0: File-based locks for Python
 dev-python/lockfile 0.11.0-r1 0.12.2: Platform-independent file locking module
 dev-python/locustio 0.7.3: A python utility for doing easy, distributed load testing of a web site
 dev-python/log4py 1.3-r1: A python logging module similar to log4j
@@ -7456,6 +7461,7 @@ dev-python/parse 1.6.4: parse() is the opposite of format()
 dev-python/parse-type 0.3.4: Simplifies to build parse types based on the parse module
 dev-python/parsedatetime 1.5 2.1: Parse human-readable date/time strings
 dev-python/parsley 1.2 1.3: A Pattern-Matching Language Based on OMeta and Python
+dev-python/partd 0.3.2: Appendable key-value storage
 dev-python/passlib 1.6.1-r1 1.6.2 1.6.5 1.6.5-r1: Password hashing framework supporting over 20 schemes
 dev-python/passwordmeter 0.1.7-r1 0.1.8: A password strength measuring library
 dev-python/paste 1.7.5.1-r1 1.7.5.1-r2 2.0.2: Tools for using a Web Server Gateway Interface stack
@@ -7480,6 +7486,7 @@ dev-python/pgasync 2.01-r1: An asynchronous API to PostgreSQL for twisted
 dev-python/pgmagick 0.5.10 0.5.11 0.6: Yet another boost.python based wrapper for GraphicsMagick
 dev-python/pgpdump 1.5: PGP packet parser library
 dev-python/phonenumbers 7.2.3 7.2.6: Python port of Google's libphonenumber
+dev-python/photutils 0.2.1: Python package for image astronomical photometry
 dev-python/pickleshare 0.5 0.6: A small 'shelve' like datastore with concurrency support
 dev-python/pid 2.0.1: Pidfile featuring stale detection and file-locking
 dev-python/piddle 1.0.15 1.0.15-r1: Cross-media, cross-platform 2D graphics package
@@ -7541,7 +7548,7 @@ dev-python/pyalsa 1.0.26-r1 1.0.29: Python bindings for ALSA library
 dev-python/pyalsaaudio 0.7-r2 0.8.2: A Python wrapper for the ALSA API
 dev-python/pyamazon 0.65: A Python wrapper for the Amazon web API
 dev-python/pyamf 0.8.0: Action Message Format (AMF) support for Python
-dev-python/pyamg 2.1.0 2.2.1: Algebraic multigrid solvers in Python
+dev-python/pyamg 2.1.0 2.2.1 3.0.2: Algebraic multigrid solvers in Python
 dev-python/pyao 0.82-r3: Python bindings for the libao library
 dev-python/pyasn1 0.1.7 0.1.8 0.1.9: ASN.1 library for Python
 dev-python/pyasn1-modules 0.0.5-r1 0.0.6 0.0.7 0.0.8: pyasn1 modules
@@ -7891,6 +7898,7 @@ dev-python/reportlab 2.6 3.1.44-r2 3.2.0-r1: Tools for generating printable PDF 
 dev-python/repoze-lru 0.6-r1: A tiny LRU cache implementation and decorator
 dev-python/repoze-sphinx-autointerface 0.7.1: Sphinx extension: auto-generates API docs from Zope interfaces
 dev-python/repoze-who 2.2: repoze.who is an identification and authentication framework for WSGI.
+dev-python/reproject 0.2: Reproject astronomical images with Python
 dev-python/requests 2.7.0 2.8.0 2.8.1 2.9.1-r2: HTTP library for human beings
 dev-python/requests-cache 0.4.9 0.4.10: Persistent cache for requests library
 dev-python/requests-mock 0.5.1 0.6.0 0.7.0: Mock out responses from the requests package
@@ -7985,6 +7993,7 @@ dev-python/south 1.0: Intelligent schema migrations for Django apps
 dev-python/soya 0.14-r1: A high-level 3D engine for Python, designed with games in mind
 dev-python/sparql-wrapper 1.6.0 1.6.4 1.7.6: Wrapper around a SPARQL service
 dev-python/speaklater 1.3-r1: Lazy strings for Python
+dev-python/specutils 0.1: Python package for astronomy spectral operations
 dev-python/sphinx 1.1.3-r7 1.2.2 1.2.3 1.3.1-r1 1.3.3 1.3.4 1.3.5: Python documentation generator
 dev-python/sphinx-better-theme 0.1.5: A nice-looking, customizable theme for Sphinx
 dev-python/sphinx-bootstrap-theme 0.4.5 0.4.6 0.4.7: Sphinx theme integrates the Bootstrap CSS / JavaScript framework
@@ -15630,7 +15639,7 @@ sci-libs/cdf 3.4.1 3.5.0.2: Common Data Format I/O library for multi-dimensional
 sci-libs/ceres-solver 1.8.0 1.9.0: Nonlinear least-squares minimizer
 sci-libs/cfitsio 3.38-r1 3.360: C and Fortran library for manipulating FITS files
 sci-libs/cgcode 1.0-r2: Conjugate gradient Codes for large sparse linear systems
-sci-libs/cgnslib 3.2.1: The CFD General Notation System (CGNS) is a standard for CFD data
+sci-libs/cgnslib 3.2.1 3.3.0: CFD General Notation System standard library
 sci-libs/chemkit 0.1 0.1-r1: Library for chemistry applications
 sci-libs/cholmod 2.1.2: Sparse Cholesky factorization and update/downdate library
 sci-libs/cifparse-obj 7.025-r1: Provides an object-oriented application interface to information in mmCIF format
@@ -15689,10 +15698,10 @@ sci-libs/geos 3.4.1-r1 3.4.2-r1 3.5.0: Geometry engine library for Geographic In
 sci-libs/gerris 20120731 20130531 20131206: Gerris Flow Solver
 sci-libs/getdata 0.8.5 0.9.0 0.9.0-r1: Reference implementation of the Dirfile, format for time-ordered binary data
 sci-libs/gpp4 1.3.1: A standalone, drop-in replacement for the CCP4 library
-sci-libs/grib_api 1.9.16 1.11.0: Library for decoding WMO FM-92 GRIB messages
+sci-libs/grib_api 1.11.0 1.14.5: Library for encoding and decoding WMO FM-92 GRIB messages
 sci-libs/gsl 1.14 1.16 2.1: The GNU Scientific Library
 sci-libs/gts 20121130: GNU Triangulated Surface Library
-sci-libs/hdf 4.2.8 4.2.9: General purpose library and format for storing scientific data
+sci-libs/hdf 4.2.8 4.2.9 4.2.11: General purpose library and format for storing scientific data
 sci-libs/hdf5 1.8.14-r1 1.8.15_p1: General purpose library and file format for storing scientific data
 sci-libs/htslib 1.0 1.1 1.2.1: C library for high-throughput sequencing data formats
 sci-libs/hypre 2.9.0b: Parallel matrix preconditioners library
@@ -15711,6 +15720,7 @@ sci-libs/lapack-reference 3.1.1-r1 3.2.1-r1 3.2.1-r3 3.2.1-r4: FORTRAN reference
 sci-libs/ldl 2.0.4 2.1.0: Simple but educational LDL^T matrix factorization algorithm
 sci-libs/lemon 1.3-r2: C++ template static library of common data structures and algorithms
 sci-libs/levmar 2.6: Levenberg-Marquardt nonlinear least squares C library
+sci-libs/libaec 0.3.2: Adaptive Entropy Coding library
 sci-libs/libbufr 000405: ECMWF BUFR library - includes both C and Fortran example utilities
 sci-libs/libccd 2.0 9999: Library for collision detection between two convex shapes
 sci-libs/libccp4 6.4.6: The CCP4 C and F77 subroutine library
@@ -15799,7 +15809,7 @@ sci-libs/rosetta-fragments 3.1-r1: Fragment library for rosetta
 sci-libs/rtabmap 0.10.5 0.10.10 9999: Real-Time Appearance-Based Mapping (RGB-D Graph SLAM)
 sci-libs/scalapack 2.0.2: Subset of LAPACK routines redesigned for heterogenous (MPI) computing
 sci-libs/scikits 0.1-r1: Common files for python scikits
-sci-libs/scikits_image 0.9.3 0.10.0 0.10.1 0.11.3: Image processing routines for SciPy
+sci-libs/scikits_image 0.9.3 0.10.0 0.10.1 0.11.3 0.12.3: Image processing routines for SciPy
 sci-libs/scikits_learn 0.17 0.17.1: Python modules for machine learning and data mining
 sci-libs/scikits_optimization 0.3: Python module for numerical optimization
 sci-libs/scikits_timeseries 0.91.3-r1: SciPy module for manipulating, reporting, and plotting time series
@@ -15816,7 +15826,7 @@ sci-libs/starparse 1.0-r1: Library for parsing NMR star files (peak-list format)
 sci-libs/suitesparse 4.0.2 4.2.1: Meta package for a suite of sparse matrix tools
 sci-libs/suitesparseconfig 4.2.1: Common configurations for all packages in suitesparse
 sci-libs/superlu 4.3-r1: Sparse LU factorization library
-sci-libs/szip 2.1 2.1-r1: Extended-Rice lossless compression algorithm implementation
+sci-libs/szip 2.1 2.1-r2: Extended-Rice lossless compression algorithm implementation
 sci-libs/ta-lib 0.4.0: Technical Analysis Library for analyzing financial markets trends
 sci-libs/tamu_anova 0.2.1: ANOVA Extensions to the GNU Scientific Library
 sci-libs/taucs 2.2: C library of sparse linear solvers
@@ -17415,6 +17425,7 @@ virtual/service-manager 0: Virtual for various service managers
 virtual/shadow 0: Virtual for user account management utilities
 virtual/skkserv 0: Virtual for SKK server
 virtual/ssh 0: Virtual for SSH client and server
+virtual/szip 2.1: Virtual for szip compression drop-in replacements
 virtual/tex-base 0: Virtual for basic TeX binaries (tex, kpathsea)
 virtual/texi2dvi 0: Virtual for texi2dvi (and texi2pdf)
 virtual/ttf-fonts 1: Virtual for Serif/Sans/Monospace font packages

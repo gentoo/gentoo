@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare setup test
+DEPEND=hdf5? ( sci-libs/hdf5:=[mpi=,szip=] ) tools? ( dev-lang/tcl:= dev-lang/tk:= x11-libs/libXmu:= virtual/glu virtual/opengl ) sys-devel/make >=dev-util/cmake-2.8.12 fortran? ( virtual/fortran )
+DESCRIPTION=CFD General Notation System standard library
+EAPI=6
+HOMEPAGE=http://www.cgns.org/
+IUSE=doc examples fortran hdf5 legacy mpi static-libs szip test tools
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
+LICENSE=ZLIB
+RDEPEND=hdf5? ( sci-libs/hdf5:=[mpi=,szip=] ) tools? ( dev-lang/tcl:= dev-lang/tk:= x11-libs/libXmu:= virtual/glu virtual/opengl ) fortran? ( virtual/fortran )
+SLOT=0/3
+SRC_URI=https://github.com/CGNS/CGNS/archive/v3.3.0.tar.gz -> cgnslib-3.3.0.tar.gz
+_eclass_exported_funcs=pkg_setup:- src_prepare:- src_configure:- src_compile:- src_test:cmake-utils src_install:-
+_eclasses_=cmake-utils	e79d341200cba811b41cc0728403c48d	eutils	9d81603248f2ba3ec59124320d123e5e	flag-o-matic	d270fa247153df66074f795fa42dba3e	fortran-2	8200fc942c3b3c1fc75d4d5bfd0ba7a2	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=7183c9e2d57f19d55c4a6dc2f03f65ac
