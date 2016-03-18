@@ -58,7 +58,6 @@
 	<flag name="ups_drivers_blazer_usb">Driver for Megatec/Q1 protocol USB based UPS equipment</flag>
 	<flag name="ups_drivers_richcomm_usb">Driver UPS equipment using Richcomm dry-contact to USB solution</flag>
 	<flag name="ups_drivers_riello_usb">Driver for Riello UPS Protocol UPS equipment via USB</flag>
-	<flag name="ups_drivers_nutdrv_qx">Driver for Q* protocol serial and USB based UPS equipment</flag>
 	<flag name="ups_drivers_netxml-ups">Driver for Eaton / MGE Network Management Card / Proxy (XML/HTTP Protocol) equipment</flag>
 	<flag name="ups_drivers_snmp-ups">Multi-MIB Driver for SNMP UPS equipment</flag>
 	<flag name="ups_drivers_nut-ipmipsu">Driver for IPMI Power Supply Units (PSU)</flag>
