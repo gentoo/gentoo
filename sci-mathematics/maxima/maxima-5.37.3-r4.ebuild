@@ -147,7 +147,15 @@ src_configure() {
 
 src_compile() {
 	emake
-	use emacs && elisp-compile interfaces/emacs/{emaxima,imaxima}/*.el
+	if use emacs; then
+		pushd interfaces/emacs/emaxima > /dev/null
+		elisp-compile *.el
+		popd > /dev/null
+		pushd interfaces/emacs/imaxima > /dev/null
+		BYTECOMPFLAGS="-L . -L ../emaxima"
+		elisp-compile *.el
+		popd > /dev/null
+	fi
 }
 
 src_install() {

@@ -456,18 +456,15 @@ _calculate_src_uri() {
 				4.14.10)
 					# Part of 15.04.3 actually, sigh. Not stable for next release!
 					SRC_URI="mirror://kde/Attic/applications/15.04.3/src/${_kmname_pv}.tar.xz" ;;
-				4.14.14)
-					# Part of 15.08.3 actually, sigh. Not stable for next release!
-					SRC_URI="mirror://kde/stable/applications/15.08.3/src/${_kmname_pv}.tar.xz" ;;
-				4.14.15)
-					# Part of 15.12.0 actually, sigh. Not stable for next release!
-					SRC_URI="mirror://kde/stable/applications/15.12.0/src/${_kmname_pv}.tar.xz" ;;
 				4.14.16)
 					# Part of 15.12.1 actually, sigh. Not stable for next release!
 					SRC_URI="mirror://kde/stable/applications/15.12.1/src/${_kmname_pv}.tar.xz" ;;
 				4.14.17)
 					# Part of 15.12.2 actually, sigh. Not stable for next release!
 					SRC_URI="mirror://kde/stable/applications/15.12.2/src/${_kmname_pv}.tar.xz" ;;
+				4.14.18)
+					# Part of 15.12.3 actually, sigh. Not stable for next release!
+					SRC_URI="mirror://kde/stable/applications/15.12.3/src/${_kmname_pv}.tar.xz" ;;
 				15.04.3)
 					# Files moved to Attic
 					SRC_URI="mirror://kde/Attic/applications/15.04.3/src/${_kmname_pv}.tar.xz" ;;
