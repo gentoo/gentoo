@@ -10,11 +10,13 @@ ES_VERSION="2.2.1"
 
 inherit distutils-r1
 
+RESTRICT="test" # fails to start in chroot envs, unreliable
+
 MY_PN=${PN/-py/}
 
 DESCRIPTION="official Python low-level client for Elasticsearch"
 HOMEPAGE="http://elasticsearch-py.rtfd.org/"
-SRC_URI="mirror://pypi/${PN:0:1}/${MY_PN}/${MY_PN}-${PV}.tar.gz
+SRC_URI="https://github.com/elasticsearch/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
 		test? ( https://download.elasticsearch.org/elasticsearch/release/org/elasticsearch/distribution/tar/elasticsearch/${ES_VERSION}/elasticsearch-${ES_VERSION}.tar.gz )"
 
 LICENSE="Apache-2.0"
@@ -36,8 +38,6 @@ DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 		dev-python/pretty-yaml[${PYTHON_USEDEP}]
 		dev-python/nosexcover[${PYTHON_USEDEP}]
 		|| ( virtual/jre:1.8 virtual/jre:1.7 ) )"
-
-S="${WORKDIR}/${MY_PN}-${PV}"
 
 python_test() {
 	ES="${WORKDIR}/elasticsearch-${ES_VERSION}"
