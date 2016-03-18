@@ -20,6 +20,10 @@
 			<xs:selector xpath='slots'/>
 			<xs:field xpath='@lang'/>
 		</xs:unique>
+		<xs:unique name='upstreamSingleConstraint'>
+			<xs:selector xpath='upstream'/>
+			<xs:field xpath='@fake-only-once'/>
+		</xs:unique>
 		<xs:unique name='useUniquityConstraint'>
 			<xs:selector xpath='use'/>
 			<xs:field xpath='@lang'/>
@@ -50,6 +54,20 @@
 				</xs:unique>
 			</xs:element>
 			<xs:element name='upstream' type='upstreamType'>
+				<xs:unique name='bugsToSingleConstraint'>
+					<xs:selector xpath='bugs-to'/>
+					<xs:field xpath='@fake-only-once'/>
+				</xs:unique>
+				<xs:unique name='changelogSingleConstraint'>
+					<xs:selector xpath='changelog'/>
+					<xs:field xpath='@fake-only-once'/>
+				</xs:unique>
+				<!-- prevent accidentally repeating the same remote -->
+				<xs:unique name='upstreamRemoteIdRepetitionConstraint'>
+					<xs:selector xpath='remote-id'/>
+					<xs:field xpath='@type'/>
+					<xs:field xpath='.'/>
+				</xs:unique>
 				<xs:unique name='upstreamDocUniquityConstraint'>
 					<xs:selector xpath='doc'/>
 					<xs:field xpath='@lang'/>
@@ -74,12 +92,19 @@
 	<!-- the huge <upstream/> structure -->
 	<xs:complexType name='upstreamType'>
 		<xs:choice minOccurs='0' maxOccurs='unbounded'>
-			<xs:element name='maintainer' type='upstreamMaintainerType'/>
-			<xs:element name='changelog' type='urlType'/>
+			<xs:element name='maintainer' type='upstreamMaintainerType'>
+				<xs:unique name='upstreamMaintainerUniquityConstraint'>
+					<xs:selector xpath='maintainer'/>
+					<xs:field xpath='name'/>
+				</xs:unique>
+			</xs:element>
+			<xs:element name='changelog' type='urlOnceType'/>
 			<xs:element name='doc' type='upstreamDocType'/>
-			<xs:element name='bugs-to' type='urlType'/>
+			<xs:element name='bugs-to' type='urlOnceType'/>
 			<xs:element name='remote-id' type='upstreamRemoteIdType'/>
 		</xs:choice>
+		<xs:attribute name='fake-only-once'
+			fixed='there can be at most one &lt;upstream/&gt; element'/>
 	</xs:complexType>
 
 	<!-- maintainer in two variants -->
@@ -514,4 +539,13 @@
 			<xs:pattern value="(mailto:[^@]+@[^.]+\..+|https?://.+)"/>
 		</xs:restriction>
 	</xs:simpleType>
+
+	<xs:complexType name='urlOnceType'>
+		<xs:simpleContent>
+			<xs:extension base="urlType">
+				<xs:attribute name='fake-only-once'
+					fixed='there can be at most one element of this type'/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
 </xs:schema>
