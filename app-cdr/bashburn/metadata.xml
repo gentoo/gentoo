@@ -10,7 +10,7 @@
 		with broad format support including WAV, MP3, Vorbis, and FLAC.
 	</longdescription>
 	<upstream>
-		<maintainer status="inactive" type="person">
+		<maintainer status="inactive">
 			<email>anders.linden@gmail.com</email>
 			<name>Anders Lindén</name>
 		</maintainer>
