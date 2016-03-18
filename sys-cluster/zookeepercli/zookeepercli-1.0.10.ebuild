@@ -55,7 +55,6 @@ src_compile() {
 		go install -v -work -x ${EGO_BUILD_FLAGS} "${EGO_PN}" || die
 }
 
-
 src_install() {
 	dodoc README.md
 	golang_install_pkgs
