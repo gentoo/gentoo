@@ -5,7 +5,7 @@
 		<email>cjk@gentoo.org</email>
 		<name>Cjk</name>
 	</maintainer>
-	<longdescription lang="EN">
+	<longdescription lang="en">
 		The Smart Common Input Method (SCIM) input pad is a tool used to
 		input special characters, in an easy way. You select the text
 		zone you wish to write in, and just click on the wanted character
@@ -16,7 +16,7 @@
 		elements, etc. You may also add new characters (see
 		documentation).
 	</longdescription>
-	<longdescription lang="FR">
+	<longdescription lang="fr">
 		L'outils SCIM (Smart Common Input Method, "méthode commune et
 		intelligente de saisie de caractères", en français) Input Pad
 		("tableau d'entrée de caractère", en français), est utilisé pour
