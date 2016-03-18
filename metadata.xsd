@@ -3,6 +3,9 @@
 <xs:schema xmlns:xs='http://www.w3.org/2001/XMLSchema'>
 	<!-- top-level variants -->
 	<xs:element name='pkgmetadata' type='pkgMetadataType'>
+		<!-- note: restrict uniquity rules are simplified
+			 the spec says: one for each matched package
+			 we can only do: one for each restrict rule -->
 		<xs:unique name='longDescUniquityConstraint'>
 			<xs:selector xpath='longdescription'/>
 			<xs:field xpath='@lang'/>
