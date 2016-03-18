@@ -17,15 +17,15 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="doc test"
 
-RDEPEND=""
+RDEPEND="dev-python/locket[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
-	  dev-python/locket[${PYTHON_USEDEP}]
+	  dev-python/blosc[${PYTHON_USEDEP}]
 	  dev-python/numpy[${PYTHON_USEDEP}]
 	  dev-python/pandas[${PYTHON_USEDEP}]
-	  dev-python/pyzmq[${PYTHON_USEDEP}]
 	  dev-python/pytest[${PYTHON_USEDEP}]
+	  dev-python/pyzmq[${PYTHON_USEDEP}]
 	  dev-python/toolz[${PYTHON_USEDEP}] )"
 
 python_test() {
