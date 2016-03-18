@@ -1,0 +1,91 @@
+--- photofilmstrip-2.1.0-orig/photofilmstrip/core/__init__.py
++++ photofilmstrip-2.1.0/photofilmstrip/core/__init__.py
+@@ -22,47 +22,47 @@
+ # WA: py2exe and PIL
+ import os
+ if os.name == "nt":
+-    import Image
++    import PIL.Image as Image
+ 
+-    import ArgImagePlugin
+-    import BmpImagePlugin
+-    import BufrStubImagePlugin
+-    import CurImagePlugin
+-    import DcxImagePlugin
+-    import EpsImagePlugin
+-    import FitsStubImagePlugin
+-    import FliImagePlugin
+-    import FpxImagePlugin
+-    import GbrImagePlugin
+-    import GifImagePlugin
+-    import GribStubImagePlugin
+-    import Hdf5StubImagePlugin
+-    import IcnsImagePlugin
+-    import IcoImagePlugin
+-    import ImImagePlugin
+-    import ImtImagePlugin
+-    import IptcImagePlugin
+-    import JpegImagePlugin
+-    import McIdasImagePlugin
+-    import MicImagePlugin
+-    import MpegImagePlugin
+-    import MspImagePlugin
+-    import PalmImagePlugin
+-    import PcdImagePlugin
+-    import PcxImagePlugin
+-    import PdfImagePlugin
+-    import PixarImagePlugin
+-    import PngImagePlugin
+-    import PpmImagePlugin
+-    import PsdImagePlugin
+-    import SgiImagePlugin
+-    import SpiderImagePlugin
+-    import SunImagePlugin
+-    import TgaImagePlugin
+-    import TiffImagePlugin
+-    import WmfImagePlugin
+-    import XbmImagePlugin
+-    import XpmImagePlugin
+-    import XVThumbImagePlugin
++    import PIL.ArgImagePlugin as ArgImagePlugin
++    import PIL.BmpImagePlugin as BmpImagePlugin
++    import PIL.BufrStubImagePlugin as BufrStubImagePlugin
++    import PIL.CurImagePlugin as CurImagePlugin
++    import PIL.DcxImagePlugin as DcxImagePlugin
++    import PIL.EpsImagePlugin as EpsImagePlugin
++    import PIL.FitsStubImagePlugin as FitsStubImagePlugin
++    import PIL.FliImagePlugin as FliImagePlugin
++    import PIL.FpxImagePlugin as FpxImagePlugin
++    import PIL.GbrImagePlugin as GbrImagePlugin
++    import PIL.GifImagePlugin as GifImagePlugin
++    import PIL.GribStubImagePlugin as GribStubImagePlugin
++    import PIL.Hdf5StubImagePlugin as Hdf5StubImagePlugin
++    import PIL.IcnsImagePlugin as IcnsImagePlugin
++    import PIL.IcoImagePlugin as IcoImagePlugin
++    import PIL.ImImagePlugin as ImImagePlugin
++    import PIL.ImtImagePlugin as ImtImagePlugin
++    import PIL.IptcImagePlugin as IptcImagePlugin
++    import PIL.JpegImagePlugin as JpegImagePlugin
++    import PIL.McIdasImagePlugin as McIdasImagePlugin
++    import PIL.MicImagePlugin as MicImagePlugin
++    import PIL.MpegImagePlugin as MpegImagePlugin
++    import PIL.MspImagePlugin as MspImagePlugin
++    import PIL.PalmImagePlugin as PalmImagePlugin
++    import PIL.PcdImagePlugin as PcdImagePlugin
++    import PIL.PcxImagePlugin as PcxImagePlugin
++    import PIL.PdfImagePlugin as PdfImagePlugin
++    import PIL.PixarImagePlugin as PixarImagePlugin
++    import PIL.PngImagePlugin as PngImagePlugin
++    import PIL.PpmImagePlugin as PpmImagePlugin
++    import PIL.PsdImagePlugin as PsdImagePlugin
++    import PIL.SgiImagePlugin as SgiImagePlugin
++    import PIL.SpiderImagePlugin as SpiderImagePlugin
++    import PIL.SunImagePlugin as SunImagePlugin
++    import PIL.TgaImagePlugin as TgaImagePlugin
++    import PIL.TiffImagePlugin as TiffImagePlugin
++    import PIL.WmfImagePlugin as WmfImagePlugin
++    import PIL.XbmImagePlugin as XbmImagePlugin
++    import PIL.XpmImagePlugin as XpmImagePlugin
++    import PIL.XVThumbImagePlugin as XVThumbImagePlugin
+     Image._initialized=2
+ # WA: end
