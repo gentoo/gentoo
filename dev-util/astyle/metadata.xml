@@ -11,7 +11,7 @@
 		standards in projects.
 	</longdescription>
 	<upstream>
-		<maintainer status="active" type="person">
+		<maintainer status="active">
 			<email>jimp03@email.com</email>
 			<name>Jim Pattee</name>
 		</maintainer>
