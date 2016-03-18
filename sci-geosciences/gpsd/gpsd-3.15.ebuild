@@ -79,6 +79,8 @@ src_prepare() {
 		-e 's:\<STAGING_PREFIX\>:SYSROOT:g' \
 		SConstruct || die
 
+	sed -e 's:libusb.h:libusb-1.0/libusb.h:' -i driver_garmin.c || die
+
 	use python && distutils-r1_src_prepare
 }
 
