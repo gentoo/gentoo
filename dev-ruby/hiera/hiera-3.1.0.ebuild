@@ -23,7 +23,8 @@ KEYWORDS="~amd64 ~hppa ~x86"
 
 ruby_add_bdepend "test? ( dev-ruby/mocha )"
 
-ruby_add_rdepend "dev-ruby/json"
+ruby_add_rdepend "dev-ruby/json
+	dev-ruby/deep_merge"
 
 all_ruby_prepare() {
 	# Our json package is either the compiled version or the pure
