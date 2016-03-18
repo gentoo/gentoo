@@ -15,23 +15,27 @@
 			<xs:selector xpath='project/subproject'/>
 			<xs:field xpath='@ref'/>
 		</xs:keyref>
+		<!-- define additional keys to enforce exactly one element
+			 of each kind -->
+		<xs:key name='projectNameKey'>
+			<xs:selector xpath='project'/>
+			<xs:field xpath='name'/>
+		</xs:key>
+		<xs:key name='projectURLKey'>
+			<xs:selector xpath='project'/>
+			<xs:field xpath='url'/>
+		</xs:key>
 	</xs:element>
 
 	<xs:complexType name='projectType'>
-		<xs:sequence>
-			<xs:element name='email' type='emailType'
-				minOccurs='1' maxOccurs='1'/>
-			<xs:element name='name' type='xs:token'
-				minOccurs='0' maxOccurs='1'/>
-			<xs:element name='url' type='urlType'
-				minOccurs='0' maxOccurs='1'/>
-			<xs:element name='description' type='xs:token'
-				minOccurs='0' maxOccurs='1'/>
-			<xs:element name='subproject' type='subprojectType'
-				minOccurs='0' maxOccurs='unbounded'/>
-			<xs:element name='member' type='memberType'
-				minOccurs='0' maxOccurs='unbounded'/>
-		</xs:sequence>
+		<xs:choice minOccurs='0' maxOccurs='unbounded'>
+			<xs:element name='email' type='emailType'/>
+			<xs:element name='name' type='xs:token'/>
+			<xs:element name='url' type='urlType'/>
+			<xs:element name='description' type='xs:token'/>
+			<xs:element name='subproject' type='subprojectType'/>
+			<xs:element name='member' type='memberType'/>
+		</xs:choice>
 	</xs:complexType>
 
 	<xs:complexType name='subprojectType'>
