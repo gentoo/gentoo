@@ -1,0 +1,12 @@
+DEFINED_PHASES=-
+DESCRIPTION=kdenetwork - merge this to pull in all kdenetwork-derived packages
+EAPI=6
+HOMEPAGE=https://www.kde.org/
+IUSE=ppp
+KEYWORDS=~amd64 ~x86
+LICENSE=metapackage
+RDEPEND=>=kde-apps/kdenetwork-filesharing-15.12.3 >=kde-apps/kget-15.12.3 >=kde-apps/kopete-15.12.3 >=kde-apps/krdc-15.12.3 >=kde-apps/krfb-15.12.3 >=kde-apps/zeroconf-ioslave-15.12.3 ppp? ( >=kde-apps/kppp-15.12.3 ) !kde-apps/kdenetwork-meta:4
+SLOT=5
+_eclass_exported_funcs=-
+_eclasses_=eutils	9d81603248f2ba3ec59124320d123e5e	kde5-functions	c78b2a13dad8f022aca8819145f2b525	kde5-meta-pkg	c6e74f0a7a02a16639c5a863fe7df50c	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=db7cd1c8883d53c205ef12a3f452f10f
