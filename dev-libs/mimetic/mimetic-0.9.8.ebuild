@@ -10,7 +10,7 @@ SRC_URI="http://www.codesink.org/download/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE="doc examples"
 
 DEPEND="doc? ( app-doc/doxygen )"
