@@ -46,7 +46,6 @@
 					<xs:field xpath='@lang'/>
 				</xs:unique>
 			</xs:element>
-			<xs:element name='natural-name' type='xs:token'/>
 			<xs:element name='slots' type='slotsType'>
 				<xs:unique name='slotUniquityConstraint'>
 					<xs:selector xpath='slot'/>
