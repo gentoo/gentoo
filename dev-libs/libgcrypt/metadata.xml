@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer restrict="dev-libs/libgcrypt:11" type="project">
-		<email>multilib@gentoo.org</email>
-		<name>gx86-multilib project</name>
-		<description>Maintaining the binary compatibility slot.</description>
-	</maintainer>
-<maintainer type="project">
+	<maintainer type="project">
 		<email>crypto@gentoo.org</email>
 		<name>Crypto</name>
 	</maintainer>
