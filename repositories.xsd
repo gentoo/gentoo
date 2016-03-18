@@ -20,6 +20,10 @@
 			<xs:selector xpath='longdescription'/>
 			<xs:field xpath='@lang'/>
 		</xs:unique>
+		<xs:unique name='homepageSingleConstraint'>
+			<xs:selector xpath='homepage'/>
+			<xs:field xpath='@fake-only-once'/>
+		</xs:unique>
 	</xs:element>
 
 	<xs:complexType name='repoType'>
@@ -27,7 +31,7 @@
 			<xs:element name='name' type='repoNameType'/>
 			<xs:element name='description' type='descriptionType'/>
 			<xs:element name='longdescription' type='descriptionType'/>
-			<xs:element name='homepage' type='urlType'/>
+			<xs:element name='homepage' type='urlOnceType'/>
 			<xs:element name='owner' type='ownerType'/>
 			<xs:element name='source' type='sourceType'/>
 			<xs:element name='feed' type='urlType'/>
@@ -131,4 +135,13 @@
 			<xs:pattern value="[^:]+:.+"/>
 		</xs:restriction>
 	</xs:simpleType>
+
+	<xs:complexType name='urlOnceType'>
+		<xs:simpleContent>
+			<xs:extension base="urlType">
+				<xs:attribute name='fake-only-once'
+					fixed='there can be at most one element of this type'/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
 </xs:schema>
