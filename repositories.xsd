@@ -12,6 +12,14 @@
 			<xs:selector xpath='repo'/>
 			<xs:field xpath='name'/>
 		</xs:key>
+		<xs:unique name='descUniquityConstraint'>
+			<xs:selector xpath='description'/>
+			<xs:field xpath='@lang'/>
+		</xs:unique>
+		<xs:unique name='longDescUniquityConstraint'>
+			<xs:selector xpath='longdescription'/>
+			<xs:field xpath='@lang'/>
+		</xs:unique>
 	</xs:element>
 
 	<xs:complexType name='repoType'>
