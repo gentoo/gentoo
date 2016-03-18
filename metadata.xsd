@@ -130,8 +130,6 @@
 	<xs:complexType name='longDescType' mixed='true'>
 		<xs:choice minOccurs='0' maxOccurs='unbounded'>
 			<xs:element name='pkg' type='pkgType'/>
-			<!-- XXX: do we allow <cat/> in pkgmetadata, and the other
-				 way around? -->
 			<xs:element name='cat' type='catType'/>
 		</xs:choice>
 		<xs:attribute name='lang' type='langAttrType' default='en'/>
