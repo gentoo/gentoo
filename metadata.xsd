@@ -146,13 +146,26 @@
 
 	<!-- slots -->
 	<xs:complexType name='slotsType'>
-		<!-- TODO: any order? -->
-		<xs:sequence>
-			<xs:element name='slot' type='slotType'
-				minOccurs='0' maxOccurs='unbounded'/>
-			<xs:element name='subslots' type='xs:token'
-				minOccurs='0' maxOccurs='1'/>
-		</xs:sequence>
+		<!-- the crazy magic below is to cover any order possible
+			 in a deterministic way -->
+		<xs:choice>
+			<xs:sequence>
+				<xs:element name='slot' type='slotType'
+					minOccurs='1' maxOccurs='unbounded'/>
+				<xs:sequence minOccurs='0' maxOccurs='1'>
+					<xs:element name='subslots' type='xs:token'
+						minOccurs='1' maxOccurs='1'/>
+					<xs:element name='slot' type='slotType'
+						minOccurs='0' maxOccurs='unbounded'/>
+				</xs:sequence>
+			</xs:sequence>
+			<xs:sequence>
+				<xs:element name='subslots' type='xs:token'
+					minOccurs='1' maxOccurs='1'/>
+				<xs:element name='slot' type='slotType'
+					minOccurs='0' maxOccurs='unbounded'/>
+			</xs:sequence>
+		</xs:choice>
 		<xs:attribute name='lang' type='langAttrType' default='en'/>
 	</xs:complexType>
 
