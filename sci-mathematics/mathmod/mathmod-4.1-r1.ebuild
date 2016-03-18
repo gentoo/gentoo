@@ -25,6 +25,8 @@ src_configure() {
 src_install() {
 	exeinto /usr/bin
 	doexe MathMod
+	insinto /usr/share/${P}
+	doins mathmodconfig.js mathmodcollection.js advancedmodels.js
 	newicon -s 16 icon/catenoid_mini_16x16.png catenoid.png
 	newicon -s 32 icon/catenoid_mini_32x32.png catenoid.png
 	newicon -s 64 icon/catenoid_mini_64x64.png catenoid.png
