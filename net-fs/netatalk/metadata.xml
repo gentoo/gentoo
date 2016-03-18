@@ -6,9 +6,6 @@
     <flag name="pgp">
 			Add support pgp authentication module
 		</flag>
-    <flag name="pgp">
-			Add support pgp authentication module
-		</flag>
     <flag name="quota">
 			Add support for user quota on various filesystems.
 		</flag>
