@@ -862,21 +862,6 @@
     </member>
   </project>
   <project>
-    <email>desktop-misc@gentoo.org</email>
-    <name>Gentoo Desktop Utilities Project</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Desktop-util</url>
-    <description>The Desktop Utilities project manages a wide variety of small utilities and dockapps for the Gentoo Desktop.</description>
-    <member>
-      <email>ssuominen@gentoo.org</email>
-      <name>Samuli Suominen</name>
-      <role>Developer</role>
-    </member>
-    <member>
-      <email>xarthisius@gentoo.org</email>
-      <name>Kacper Kowalik</name>
-    </member>
-  </project>
-  <project>
     <email>devmanual@gentoo.org</email>
     <name>Devmanual</name>
     <url>https://wiki.gentoo.org/wiki/Project:Devmanual</url>
