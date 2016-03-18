@@ -8,6 +8,11 @@
 			<xs:field xpath='@lang'/>
 			<xs:field xpath='@restrict'/>
 		</xs:unique>
+		<xs:unique name='maintainerUniquityConstraint'>
+			<xs:selector xpath='maintainer'/>
+			<xs:field xpath='email'/>
+			<xs:field xpath='@restrict'/>
+		</xs:unique>
 		<xs:unique name='slotsUniquityConstraint'>
 			<xs:selector xpath='slots'/>
 			<xs:field xpath='@lang'/>
