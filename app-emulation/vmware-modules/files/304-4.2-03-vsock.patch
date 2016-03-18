@@ -1,0 +1,14 @@
+diff -rupN vsock-only/linux/af_vsock.c vsock-only.new/linux/af_vsock.c
+--- vsock-only/linux/af_vsock.c	2016-03-16 21:38:01.401045589 -0400
++++ vsock-only.new/linux/af_vsock.c	2016-03-16 21:39:32.529046799 -0400
+@@ -2836,7 +2836,9 @@ __VSockVmciCreate(struct net *net,
+     * network namespace, and the option to zero the sock was dropped.
+     *
+     */
+-#if LINUX_VERSION_CODE < KERNEL_VERSION(2, 6, 12)
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 2, 0)
++   sk = sk_alloc(net, vsockVmciFamilyOps.family, priority, &vsockVmciProto, 1);
++#elif LINUX_VERSION_CODE < KERNEL_VERSION(2, 6, 12)
+    sk = sk_alloc(vsockVmciFamilyOps.family, priority,
+                  vsockVmciProto.slab_obj_size, vsockVmciProto.slab);
+ #elif LINUX_VERSION_CODE < KERNEL_VERSION(2, 6, 24)

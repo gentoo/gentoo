@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -14,32 +14,88 @@ MY_P="${MY_PN}-${MY_PV}-${PV_BUILD}"
 
 SYSTEMD_UNITS_TAG="gentoo-01"
 
-DESCRIPTION="Emulate a complete PC on your PC without the usual performance overhead of most emulators"
+DESCRIPTION="Emulate a complete PC without the performance overhead of most emulators"
 HOMEPAGE="http://www.vmware.com/products/workstation/"
 BASE_URI="https://softwareupdate.vmware.com/cds/vmw-desktop/ws/${MY_PV}/${PV_BUILD}/linux/core/"
 SRC_URI="
 	amd64? ( ${BASE_URI}${MY_P}.x86_64.bundle.tar )
-	https://github.com/akhuettel/systemd-vmware/archive/${SYSTEMD_UNITS_TAG}.tar.gz
+	https://github.com/akhuettel/systemd-vmware/archive/${SYSTEMD_UNITS_TAG}.tar.gz -> vmware-systemd-${SYSTEMD_UNITS_TAG}.tgz
 	"
 LICENSE="vmware GPL-2"
 SLOT="0"
 KEYWORDS="-* ~amd64"
-IUSE="cups doc ovftool server vix vmware-tools"
-RESTRICT="mirror strip"
+IUSE="cups bundled-libs doc ovftool server vix vmware-tools"
+RESTRICT="mirror strip preserve-libs"
+
+BUNDLED_LIBS_DIR=/opt/vmware/lib/vmware/lib
+
+BUNDLED_LIBS="
+	libXau.so.6
+	libXcomposite.so.1
+	libXcursor.so.1
+	libXdamage.so.1
+	libXdmcp.so.6
+	libXfixes.so.3
+	libXft.so.2
+	libXinerama.so.1
+	libXrandr.so.2
+	libXrender.so.1
+	libaio.so.1
+	libatk-1.0.so.0
+	libatkmm-1.6.so.1
+	libatspi.so.0
+	libcairo.so.2
+	libcairomm-1.0.so.1
+	libcurl.so.4
+	libdbus-1.so.3
+	libfontconfig.so.1
+	libfreetype.so.6
+	libfuse.so.2
+	libgailutil.so.18
+	libgdk-x11-2.0.so.0
+	libgcrypt.so.11
+	libgdk_pixbuf-2.0.so.0
+	libgdkmm-2.4.so.1
+	libgio-2.0.so.0
+	libgiomm-2.4.so.1
+"
+
+BUNDLED_LIB_DEPENDS="
+	x11-libs/libXau
+	x11-libs/libXcomposite
+	x11-libs/libXcursor
+	x11-libs/libXdamage
+	x11-libs/libXdmcp
+	x11-libs/libXfixes
+	x11-libs/libXft
+	x11-libs/libXinerama
+	x11-libs/libXrandr
+	x11-libs/libXrender
+	dev-libs/libaio
+	dev-libs/atk
+	dev-cpp/atkmm
+	app-accessibility/at-spi2-core
+	x11-libs/cairo
+	dev-cpp/cairomm
+	net-misc/curl
+	media-libs/fontconfig
+	media-libs/freetype
+	sys-fs/fuse
+	x11-libs/gtk+:2
+	=dev-libs/libgcrypt-1.5*
+	x11-libs/gdk-pixbuf:2
+	dev-cpp/gtkmm:2.4
+	dev-libs/glib:2
+	dev-cpp/glibmm:2
+"
 
 # vmware-workstation should not use virtual/libc as this is a
 # precompiled binary package thats linked to glibc.
-RDEPEND="dev-cpp/cairomm
-	dev-cpp/glibmm:2
-	dev-cpp/gtkmm:2.4
+RDEPEND="
 	dev-cpp/libgnomecanvasmm
 	dev-cpp/pangomm
-	dev-libs/atk
-	dev-libs/glib:2
 	dev-libs/icu
 	dev-libs/expat
-	dev-libs/libaio
-	=dev-libs/libgcrypt-1.5*
 	dev-libs/libsigc++:2
 	dev-libs/libxml2
 	dev-libs/openssl:0.9.8
@@ -48,43 +104,30 @@ RDEPEND="dev-cpp/cairomm
 	gnome-base/libgtop:2
 	gnome-base/librsvg:2
 	gnome-base/orbit
-	media-libs/fontconfig
-	media-libs/freetype
 	media-libs/libart_lgpl
 	media-libs/libpng:1.2
 	media-libs/libpng
 	media-libs/tiff:3
-	net-misc/curl
 	cups? ( net-print/cups )
 	sys-devel/gcc
-	sys-fs/fuse
 	sys-libs/glibc
 	sys-libs/zlib
-	x11-libs/cairo
-	x11-libs/gtk+:2
 	x11-libs/libgksu
 	x11-libs/libICE
 	x11-libs/libSM
 	x11-libs/libX11
-	x11-libs/libXau
 	x11-libs/libxcb
-	x11-libs/libXcomposite
-	x11-libs/libXcursor
-	x11-libs/libXdamage
-	x11-libs/libXdmcp
 	x11-libs/libXext
-	x11-libs/libXfixes
-	x11-libs/libXft
 	x11-libs/libXi
-	x11-libs/libXinerama
-	x11-libs/libXrandr
-	x11-libs/libXrender
 	x11-libs/libXtst
 	x11-libs/pango
 	x11-libs/pangox-compat
 	x11-libs/startup-notification
 	x11-themes/hicolor-icon-theme
-	!app-emulation/vmware-player"
+	!app-emulation/vmware-player
+	!bundled-libs? ( ${BUNDLED_LIB_DEPENDS} )
+	sys-apps/dbus
+"
 PDEPEND="~app-emulation/vmware-modules-304.${PV_MINOR}
 	vmware-tools? ( app-emulation/vmware-tools )"
 
@@ -95,7 +138,7 @@ VM_HOSTD_USER="root"
 
 QA_PREBUILT="/opt/*"
 
-QA_WX_LOAD="opt/vmware/lib/vmware/tools-upgraders/vmware-tools-upgrader-32 opt/vmware/lib/vmware/bin/vmware-vmx-stats opt/vmware/lib/vmware/bin/vmware-vmx-debug opt/vmware/lib/vmware/bin/vmware-vmx"
+QA_WX_LOAD="/opt/vmware/lib/vmware/tools-upgraders/vmware-tools-upgrader-32 /opt/vmware/lib/vmware/bin/vmware-vmx-stats /opt/vmware/lib/vmware/bin/vmware-vmx-debug /opt/vmware/lib/vmware/bin/vmware-vmx"
 
 src_unpack() {
 	default
@@ -127,6 +170,13 @@ src_unpack() {
 	fi
 }
 
+clean_bundled_libs() {
+	einfo Removing bundled libraries
+	for libname in ${BUNDLED_LIBS} ; do
+		rm -rv "${S}"/lib/lib/${libname} || die "Failed removing bundled ${libname}"
+	done
+}
+
 src_prepare() {
 	rm -f  bin/vmware-modconfig
 	rm -rf lib/modules/binary
@@ -139,14 +189,17 @@ src_prepare() {
 
 	find "${S}" -name '*.a' -delete
 
-#	clean_bundled_libs
+	if ! use bundled-libs ; then
+		clean_bundled_libs
+	fi
 
 	DOC_CONTENTS="
 /etc/env.d is updated during ${PN} installation. Please run:\n
 env-update && source /etc/profile\n
 Before you can use vmware workstation, you must configure a default network setup.
 You can do this by running 'emerge --config ${PN}'.\n
-To be able to run ${PN} your user must be in the vmware group.
+To be able to run ${PN} your user must be in the vmware group.\n
+You MUST set USE=bundled-libs if you are running gcc-5, otherwise vmware will not start.
 "
 }
 
@@ -316,6 +369,9 @@ src_install() {
 		PATH='${VM_INSTALL_DIR}/bin'
 		ROOTPATH='${VM_INSTALL_DIR}/bin'
 	EOF
+
+	use bundled-libs && echo 'VMWARE_USE_SHIPPED_LIBS=1' >> "${envd}"
+
 	doenvd "${envd}"
 
 	# create the configuration
