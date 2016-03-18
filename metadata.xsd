@@ -49,7 +49,12 @@
 					<xs:field xpath='@name'/>
 				</xs:unique>
 			</xs:element>
-			<xs:element name='upstream' type='upstreamType'/>
+			<xs:element name='upstream' type='upstreamType'>
+				<xs:unique name='upstreamDocUniquityConstraint'>
+					<xs:selector xpath='doc'/>
+					<xs:field xpath='@lang'/>
+				</xs:unique>
+			</xs:element>
 			<xs:element name='use' type='useType'>
 				<xs:unique name='flagUniquityConstraint'>
 					<xs:selector xpath='flag'/>
