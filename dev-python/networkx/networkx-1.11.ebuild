@@ -4,9 +4,9 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python{2_7,3_3,3_4} )
+PYTHON_COMPAT=( python{2_7,3_3,3_4,3_5} )
 
-inherit distutils-r1
+inherit distutils-r1 virtualx
 
 DESCRIPTION="Python tools to manipulate graphs and complex networks"
 HOMEPAGE="http://networkx.github.io/ https://github.com/networkx/networkx"
@@ -21,7 +21,7 @@ REQUIRED_USE="doc? ( || ( $(python_gen_useflags 'python2*') ) )"
 
 COMMON_DEPEND="
 	dev-python/matplotlib[${PYTHON_USEDEP}]
-		sci-libs/scipy[${PYTHON_USEDEP}]"
+	sci-libs/scipy[${PYTHON_USEDEP}]"
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	doc? (
@@ -65,7 +65,7 @@ python_compile_all() {
 }
 
 python_test() {
-	nosetests -vv || die
+	virtx nosetests -vv || die
 }
 
 python_install_all() {

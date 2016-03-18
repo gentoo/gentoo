@@ -6,13 +6,11 @@
 		<name>Gentoo Qt Project</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="google-code">screengrab-qt</remote-id>
-		<remote-id type="github">DOOMer/screengrab</remote-id>
-	</upstream>
-	<upstream>
 		<maintainer status="active">
 			<email>doomer3d@gmail.com</email>
 			<name>Artem Galichkin</name>
 		</maintainer>
+		<remote-id type="google-code">screengrab-qt</remote-id>
+		<remote-id type="github">DOOMer/screengrab</remote-id>
 	</upstream>
 </pkgmetadata>

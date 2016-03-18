@@ -16,13 +16,9 @@
       Enable single instance support using
       <pkg>dev-libs/libunique</pkg>.
     </flag>
-	</use>
-	<use>
 		<flag name="mecab">
 	  Enable <pkg>app-text/mecab</pkg> support
 	</flag>
-	</use>
-	<use>
 		<flag name="hunspell">
 	  Enable <pkg>app-text/hunspell</pkg> spellchecking and morphological analysis
 	</flag>

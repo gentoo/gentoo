@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>cluster@gentoo.org</email>
+    <name>Gentoo Cluster Project</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>python@gentoo.org</email>
+    <name>Python</name>
+  </maintainer>
+  <longdescription lang="en">
+    Partd stores key-value pairs. Values are raw bytes. We append on old values.
+    Partd excels at shuffling operations.
+  </longdescription>
+  <upstream>
+    <remote-id type="pypi">partd</remote-id>
+  </upstream>
+</pkgmetadata>

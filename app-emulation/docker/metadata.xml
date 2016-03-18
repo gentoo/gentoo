@@ -8,7 +8,7 @@
 		scale, in production, on VMs, bare metal, OpenStack clusters, public
 		clouds and more.
 	</longdescription>
-	<maintainer status="active" type="person">
+	<maintainer type="person">
 		<email>admwiggin@gmail.com</email>
 		<name>Tianon</name>
 	</maintainer>

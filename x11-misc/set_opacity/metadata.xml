@@ -6,7 +6,7 @@
 		<name>Sergey Popov</name>
 	</maintainer>
 	<upstream>
-		<maintainer type="person">
+		<maintainer>
 			<email>anton.kochkov@gmail.com</email>
 			<name>Anton Kochkov</name>
 		</maintainer>

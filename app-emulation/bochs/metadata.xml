@@ -6,7 +6,6 @@
 	</maintainer>
 	<use>
 		<flag name="3dnow">Enable support for emulating 3DNow! instructions (incomplete)</flag>
-		<flag name="debugger">Enable the bochs debugger</flag>
 		<flag name="avx">Enable support for emulating Advanced Vector Extensions (AVX)</flag>
 		<flag name="debugger">Enable debugger (slows down emulation)</flag>
 		<flag name="gdb">Enable support for the remote GDB stub</flag>

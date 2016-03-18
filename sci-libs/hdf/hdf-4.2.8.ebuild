@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -22,7 +22,7 @@ IUSE="fortran szip static-libs"
 RDEPEND="
 	sys-libs/zlib
 	virtual/jpeg
-	szip? ( >=sci-libs/szip-2 )"
+	szip? ( virtual/szip )"
 DEPEND="${RDEPEND}"
 
 S=${WORKDIR}/${MYP}

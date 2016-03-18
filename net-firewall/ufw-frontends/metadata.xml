@@ -18,8 +18,6 @@
 	</upstream>
 	<use>
 		<flag name="policykit">Use pkexec to gain root privileges</flag>
-	</use>
-	<use>
 		<flag name="kde">Use kdesu to gain root privileges (note: the flag has lower priority than "policykit")</flag>
 	</use>
 </pkgmetadata>

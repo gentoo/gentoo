@@ -6,7 +6,7 @@
     <name>Gentoo XEmacs project</name>
   </maintainer>
   <upstream>
-    <maintainer type="project" status="active">
+    <maintainer status="active">
       <email>emacs@gentoo.org</email>
       <name>Gentoo Emacs project</name>
     </maintainer>

@@ -6,7 +6,6 @@
 		<name>Python</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="pypi">pxml</remote-id>
-		<remote-id type="github">metagriffin/pxml</remote-id>
+		<remote-id type="pypi">doctest-ignore-unicode</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -18,7 +18,6 @@
   <longdescription lang="en">A simple image, PDF and postscript file annotator.</longdescription>
   <upstream>
     <maintainer status="active">
-      <email/>
       <name>Steven Sproat</name>
     </maintainer>
     <remote-id type="google-code">http://whyteboard.org/</remote-id>

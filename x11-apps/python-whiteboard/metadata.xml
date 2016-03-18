@@ -20,7 +20,6 @@
 	</longdescription>
 	<upstream>
 		<maintainer status="active">
-			<email/>
 			<name>Pietro Pilloli</name>
 		</maintainer>
 		<changelog>https://github.com/pnegre/python-whiteboard/commits/master</changelog>

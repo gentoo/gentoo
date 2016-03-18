@@ -10,8 +10,7 @@
 		<flag name="tint2conf">Build/Install tint2conf as well</flag>
 	</use>
 	<longdescription lang="en">tint2 is a simple panel/taskbar intentionally made for 
-		<pkg>
-			openbox</pkg>3, but should also work with other window managers.
+		<pkg>x11-wm/openbox</pkg>3, but should also work with other window managers.
 		It's based on ttm code https://code.google.com/p/ttm/.
 		The goal is to keep a clean and unintrusive look with code lightweight and compliance with freedesktop specifications.</longdescription>
 	<upstream>

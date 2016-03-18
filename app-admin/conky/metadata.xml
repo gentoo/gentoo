@@ -9,7 +9,6 @@
 		<maintainer>
 			<email>brenden@rty.ca</email>
 			<name>Brenden Matthews</name>
-			<description>Upstream author</description>
 		</maintainer>
 		<remote-id type="sourceforge">conky</remote-id>
 		<remote-id type="github">brndnmtthws/conky</remote-id>

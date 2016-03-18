@@ -1,4 +1,4 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -14,6 +14,7 @@ KEYWORDS="alpha amd64 hppa ia64 ppc ppc64 sparc x86"
 
 IUSE=""
 DEPEND=""
+RDEPEND="!sci-libs/libaec"
 
 src_install() {
 	emake DESTDIR="${D}" install || die "emake install failed"
