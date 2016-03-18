@@ -3,9 +3,9 @@
 <pkgmetadata>
 	<!-- maintainer-needed -->
 	<longdescription lang="en">
-  The <pkg>libmaa</pkg> library provides many low-level data structures which
+  The libmaa library provides many low-level data structures which
   are helpful for writing compilers, including hash tables, sets, lists,
-  debugging support, and memory management. Although <pkg>libmaa</pkg> was
+  debugging support, and memory management. Although libmaa was
   designed and implemented as a foundation for the KHEPERA Transformation
   System, the data structures are generally applicable to a wide range of
   programming problems. The memory management routines are especially helpful
