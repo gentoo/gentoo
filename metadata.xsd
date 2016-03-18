@@ -200,7 +200,8 @@
 		</xs:choice>
 		<xs:attribute name='name' type='flagNameAttrType'
 			use='required'/>
-		<xs:attribute name='restrict' type='restrictAttrType'/>
+		<xs:attribute name='restrict' type='restrictAttrType'
+			default=''/>
 	</xs:complexType>
 
 	<xs:simpleType name='flagNameAttrType'>
@@ -490,7 +491,7 @@
 			<!-- note: 'pure' package atom is technically valid too
 				 but not really meaningful -->
 			<xs:pattern
-				value="([&lt;&gt;]=?|[=~])[A-Za-z0-9_][A-Za-z0-9+_.-]*/[A-Za-z0-9_][A-Za-z0-9+_-]*-[0-9]+(\.[0-9]+)*[a-z]?((_alpha|_beta|_pre|_rc|_p)[0-9]*)*(-r[0-9]+)?\*?"/>
+				value="(([&lt;&gt;]=?|[=~])[A-Za-z0-9_][A-Za-z0-9+_.-]*/[A-Za-z0-9_][A-Za-z0-9+_-]*-[0-9]+(\.[0-9]+)*[a-z]?((_alpha|_beta|_pre|_rc|_p)[0-9]*)*(-r[0-9]+)?\*?)?"/>
 		</xs:restriction>
 	</xs:simpleType>
 
