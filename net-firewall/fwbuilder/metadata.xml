@@ -1,8 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!-- maintainer-needed -->
-	<upstream>
-		<remote-id type="sourceforge">fwbuilder</remote-id>
-	</upstream>
+        <maintainer type="project">
+			<email>proxy-maint@gentoo.org</email>
+			<name>Gentoo Proxy Maintainers Project</name>
+		</maintainer>
+		<maintainer type="person">
+			<email>bman@gentoo.org</email>
+			<name>Aaron Bauman</name>
+		</maintainer>
+		<maintainer type="person">
+			<email>kevin.bauman80@gmail.com</email>
+			<name>Kevin Bauman</name>
+			<description>Proxied maintainer; set to assignee in all bugs</description>
+		</maintainer>
 </pkgmetadata>
