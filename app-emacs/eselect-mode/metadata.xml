@@ -6,7 +6,7 @@
   <name>Gentoo GNU Emacs project</name>
 </maintainer>
 <upstream>
-  <maintainer type="project" status="active">
+  <maintainer status="active">
     <email>eselect@gentoo.org</email>
     <name>eselect configuration and management tool</name>
   </maintainer>
