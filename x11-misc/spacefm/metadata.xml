@@ -6,7 +6,7 @@
 		<name>Daniel Campbell</name>
 	</maintainer>
 	<upstream>
-		<maintainer status="active" type="person">
+		<maintainer status="active">
 			<email>ignorantguru@users.sourceforge.net</email>
 		</maintainer>
 		<changelog>https://ignorantguru.github.com/spacefm/news.html</changelog>
