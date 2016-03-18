@@ -1,8 +1,8 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 inherit toolchain-funcs flag-o-matic unpacker
 
@@ -10,9 +10,9 @@ DESCRIPTION="Copy data from one file or block device to another with read-error 
 HOMEPAGE="https://www.gnu.org/software/ddrescue/ddrescue.html"
 SRC_URI="mirror://gnu/${PN}/${P}.tar.lz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~ia64 ppc ~sparc x86 ~amd64-linux"
+KEYWORDS="~amd64 ~arm ~ia64 ~ppc ~sparc ~x86 ~amd64-linux"
 IUSE="static"
 
 DEPEND="$(unpacker_src_uri_depends)"
@@ -24,6 +24,7 @@ src_configure() {
 	# not a normal configure script
 	econf \
 		--prefix="${EPREFIX}"/usr \
+		--enable-linux \
 		CC="$(tc-getCC)" \
 		CXX="$(tc-getCXX)" \
 		CPPFLAGS="${CPPFLAGS}" \
