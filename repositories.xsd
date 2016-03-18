@@ -51,7 +51,7 @@
 	<xs:complexType name='descriptionType'>
 		<xs:simpleContent>
 			<xs:extension base='xs:token'>
-				<xs:attribute name='lang' type='langAttrType' default='C'/>
+				<xs:attribute name='lang' type='langAttrType' default='en'/>
 			</xs:extension>
 		</xs:simpleContent>
 	</xs:complexType>
