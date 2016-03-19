@@ -18,8 +18,9 @@ SLOT="0"
 IUSE=""
 
 RDEPEND="
-	dev-qt/qtcore:4
-	dev-qt/qtgui:4
+	dev-qt/qtcore:5
+	dev-qt/qtgui:5
+	dev-qt/qtwidgets:5
 	dev-libs/boost:=[threads]
 	dev-ros/rosconsole
 	dev-ros/roscpp
