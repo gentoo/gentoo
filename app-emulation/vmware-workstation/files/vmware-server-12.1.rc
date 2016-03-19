@@ -1,0 +1,55 @@
+#!/sbin/runscript
+# Copyright 1999-2013 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+depend() {
+	need localmount vmware
+	use net
+}
+
+checkconfig() {
+	# Check if certificates exist.  If not, we need to generate them, ala sshd.
+	if [ ! -e @@ETCDIR@@/ssl/rui.key -o ! -e @@ETCDIR@@/ssl/rui.crt ]; then
+		mkdir -p @@ETCDIR@@/ssl
+		openssl req -x509 -days 365 -newkey rsa:2048 -keyout @@ETCDIR@@/ssl/rui.key -out @@ETCDIR@@/ssl/rui.crt -config @@ETCDIR@@/ssl/hostd.ssl.config
+		chmod -R 600 @@ETCDIR@@/ssl
+	fi
+}
+
+start() {
+	checkconfig
+
+	ebegin Starting VMware Authentication Daemon
+	start-stop-daemon --start \
+	  --exec @@PREFIX@@/sbin/vmware-authdlauncher
+	eend $?
+	ebegin Starting VMware Workstation Server
+	start-stop-daemon --start \
+	  --pidfile /var/run/vmware/vmware-hostd.PID \
+	  --exec @@BINDIR@@/vmware-hostd \
+	  -- -a -d @@ETCDIR@@/hostd/config.xml
+
+	eend $?
+}
+
+stop() {
+	ebegin "Shutdown VMs in the AutoStart Sequence"
+	local HOHO_ADMIN="$(@@BINDIR@@/vmware-wssc-adminTool "@@ETCDIR@@/hostd/authorization.xml" 2>/dev/null)"
+
+	if [ "x" != "x${HOHO_ADMIN}" ]; then
+		@@BINDIR@@/vmware-vim-cmd -U "${HOHO_ADMIN}" hostsvc/autostartmanager/autostop
+	fi
+	eend $?
+
+	ebegin Stopping VMware Workstation Server
+	start-stop-daemon --stop \
+	  --pidfile /var/run/vmware/vmware-hostd.PID \
+	  --exec @@BINDIR@@/vmware-hostd 
+	eend $?
+	ebegin Stopping VMware Authentication Daemon
+	#start-stop-daemon --stop \
+	#  --exec @@PREFIX@@/sbin/vmware-authdlauncher
+	killall @@PREFIX@@/sbin/vmware-authdlauncher
+	eend $?
+}

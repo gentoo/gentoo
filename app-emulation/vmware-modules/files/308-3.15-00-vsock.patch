@@ -1,0 +1,46 @@
+removing the no longer existing second parameter to sk_data_ready
+doesn't seem it ever served a purpose.
+
+diff -rupN vsock-only/linux/notify.c vsock-only.new/linux/notify.c
+--- vsock-only/linux/notify.c	2013-11-05 23:33:27.000000000 -0500
++++ vsock-only.new/linux/notify.c	2014-10-05 23:46:47.943304728 -0400
+@@ -515,8 +515,11 @@ VSockVmciHandleWrote(struct sock *sk,
+    vsk = vsock_sk(sk);
+    PKT_FIELD(vsk, sentWaitingRead) = FALSE;
+ #endif
+-
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(3, 15, 0)
++   sk->sk_data_ready(sk);
++#else
+    sk->sk_data_ready(sk, 0);
++#endif
+ }
+ 
+ 
+diff -rupN vsock-only/linux/notifyQState.c vsock-only.new/linux/notifyQState.c
+--- vsock-only/linux/notifyQState.c	2013-11-05 23:33:27.000000000 -0500
++++ vsock-only.new/linux/notifyQState.c	2014-10-05 23:46:33.231303931 -0400
+@@ -164,7 +164,11 @@ VSockVmciHandleWrote(struct sock *sk,
+                      struct sockaddr_vm *dst,    // IN: unused
+                      struct sockaddr_vm *src)    // IN: unused
+ {
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(3, 15, 0)
++   sk->sk_data_ready(sk);
++#else
+    sk->sk_data_ready(sk, 0);
++#endif
+ }
+ 
+ 
+@@ -566,7 +570,11 @@ VSockVmciNotifyPktRecvPostDequeue(struct
+       }
+ 
+       /* See the comment in VSockVmciNotifyPktSendPostEnqueue */
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(3, 15, 0)
++      sk->sk_data_ready(sk);
++#else
+       sk->sk_data_ready(sk, 0);
++#endif
+    }
+ 
+    return err;
