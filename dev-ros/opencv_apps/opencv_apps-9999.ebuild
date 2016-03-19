@@ -8,6 +8,7 @@ KEYWORDS="~amd64 ~arm"
 PYTHON_COMPAT=( python2_7 )
 ROS_SUBDIR=${PN}
 CATKIN_HAS_MESSAGES=yes
+CATKIN_MESSAGES_TRANSITIVE_DEPS="dev-ros/std_msgs"
 
 inherit ros-catkin
 
