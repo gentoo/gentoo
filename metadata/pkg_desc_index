@@ -2912,7 +2912,7 @@ dev-db/pgpool2 3.2.5 3.3.6 3.3.7 3.3.8 9999: Connection pool server for PostgreS
 dev-db/pgrouting 2.0.0: pgRouting extends PostGIS and PostgreSQL with geospatial routing functionality.
 dev-db/pgtap 0.93.0: Unit testing for PostgreSQL
 dev-db/pgxnclient 1.2-r1 1.2.1: PostgreSQL Extension Network Client
-dev-db/phpmyadmin 4.0.10.14 4.4.15.4 4.5.3.1 4.5.4.1: Web-based administration for MySQL database in PHP
+dev-db/phpmyadmin 4.0.10.14 4.0.10.15 4.4.15.4 4.4.15.5 4.5.4.1 4.5.5.1 4.6.0_rc1: Web-based administration for MySQL database in PHP
 dev-db/phppgadmin 5.1 9999: Web-based administration for Postgres database in php
 dev-db/postgis 2.0.3 2.0.6 2.1.1 2.1.8 2.2.0 2.2.1 9999: Geographic Objects for PostgreSQL
 dev-db/postgresql 9.0.23-r1 9.1.19-r1 9.1.20 9.2.14-r1 9.2.15 9.3.10-r1 9.3.10-r2 9.3.11 9.4.5-r1 9.4.5-r2 9.4.6 9.5.1 9999: PostgreSQL RDBMS
@@ -12393,7 +12393,7 @@ media-libs/libopendaap 0.4.0: A library which enables applications to discover a
 media-libs/libopenraw 0.0.9: A decoding library for RAW image formats
 media-libs/libopenshot 0.1.0: Video editing library used by OpenShot
 media-libs/libopenshot-audio 0.0.6: Audio library used by OpenShot
-media-libs/libpagemaker 0.0.2 9999: C++ Library that parses the file format of Aldus/Adobe PageMaker documents.
+media-libs/libpagemaker 0.0.2 0.0.3 9999: C++ Library that parses the file format of Aldus/Adobe PageMaker documents.
 media-libs/libpano13 2.9.18 2.9.19: Helmut Dersch's panorama toolbox library
 media-libs/libpgf 6.11.32 6.12.27: Library to load, handle and manipulate images in the PGF format
 media-libs/libpng 1.2.56 1.5.26 1.6.19 1.6.20 1.6.21: Portable Network Graphics library
@@ -16546,7 +16546,7 @@ sys-apps/xmbmon 2.0.5-r1: Mother Board Monitor Program for X Window System
 sys-apps/yum 3.4.3_p20130218 3.4.3_p20130218-r1: automatic updater and package installer/remover for rpm systems
 sys-apps/zorroutils 0.04: Zorro bus utility for Amigas running 2.1 and later kernels
 sys-auth/bioapi 1.2.3-r2 1.2.4: Framework for biometric-based authentication
-sys-auth/consolekit 0.4.6 1.0.0-r1 1.0.1 9999: Framework for defining and tracking users, login sessions and seats
+sys-auth/consolekit 0.4.6 1.0.0-r1 1.0.1 1.1.0 9999: Framework for defining and tracking users, login sessions and seats
 sys-auth/fingerprint-gui 1.07: Use Fingerprint Devices with Linux
 sys-auth/fprint_demo 0.4: a simple GTK+ application to demonstrate and test libfprint's capabilities
 sys-auth/fprintd 0.2.0-r1 0.4.1 0.5.0 0.5.1 0.6.0: D-Bus service to access fingerprint readers
@@ -17159,7 +17159,7 @@ sys-libs/uid_wrapper 1.1.1 1.2.0 1.2.1: A wrapper to fake privilege separation
 sys-libs/zlib 1.2.8-r1: Standard (de)compression library
 sys-power/acpi 1.6 1.7: Displays information about ACPI devices
 sys-power/acpi_call 1.1.0 1.1.0-r1 9999: A kernel module that enables you to call ACPI methods
-sys-power/acpid 2.0.23 2.0.25 2.0.26: Daemon for Advanced Configuration and Power Interface
+sys-power/acpid 2.0.23 2.0.25 2.0.26 2.0.27: Daemon for Advanced Configuration and Power Interface
 sys-power/acpitool 0.5.1-r1: A small command line application, intended to be a replacement for the apm tool
 sys-power/apcupsd 3.14.8-r2 3.14.12-r1 3.14.13: APC UPS daemon with integrated tcp/ip remote shutdown
 sys-power/athcool 0.3.12: small utility to toggle Powersaving mode for AMD Athlon/Duron processors
