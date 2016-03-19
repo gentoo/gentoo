@@ -207,7 +207,7 @@ app-admin/syslog-ng 3.4.8 3.6.2 3.6.4 3.7.2: syslog replacement with advanced fi
 app-admin/syslog-summary 1.14-r1: Summarizes the contents of a syslog log file
 app-admin/syslogread 0.92-r1: Syslog message handling tools
 app-admin/sysrqd 14: daemon providing access to the kernel sysrq functions via network
-app-admin/sysstat 11.0.2 11.0.8 11.2.0 11.2.1.1 11.3.1: System performance tools for Linux
+app-admin/sysstat 11.0.2 11.0.8 11.2.1.1 11.2.2 11.3.2: System performance tools for Linux
 app-admin/system-config-printer 1.4.8: GNOME frontend for a Red Hat's printer administration tool
 app-admin/system-tools-backends 2.10.2: Tools aimed to make easy the administration of UNIX systems
 app-admin/systemrescuecd-x86 4.4.1 4.5.0 4.5.1 4.5.2 4.5.3 4.5.4 4.6.0 4.6.1 4.7.0 4.7.1: The .iso image of SystemRescueCD rescue disk, x86 (+ amd64) variant
@@ -9485,7 +9485,7 @@ dev-util/codeblocks 13.12 9999: The open source, cross platform, free C++ IDE
 dev-util/colm 0.12.0 0.13.0.3: COmputer Language Manipulation
 dev-util/colorgcc 1.3.2-r6 1.3.2-r7: Perl script to colorise the gcc output.
 dev-util/comparator 2.5 2.9 2.10: ESR's utility for making fast comparisons among large source trees
-dev-util/complexity 1.3 1.5: a tool designed for analyzing the complexity of C program functions
+dev-util/complexity 1.5 1.10: a tool designed for analyzing the complexity of C program functions
 dev-util/confix 2.3.5-r2 9999: Confix: A Build Tool on Top of GNU Automake
 dev-util/confix-wrapper 0: Wrapper to select either confix1.py or confix2.py
 dev-util/cppcheck 1.69-r1 1.70 1.71 1.72: static analyzer of C/C++ code
@@ -11951,7 +11951,7 @@ media-gfx/exact-image 0.8.1-r1: A fast, modern and generic image processing libr
 media-gfx/exif 0.6.21: Small CLI util to show EXIF infos hidden in JPEG files
 media-gfx/exiftags 1.01: Extracts JPEG EXIF headers from digital camera photos
 media-gfx/exiv2 0.24-r1 0.25-r1 0.25-r2: EXIF, IPTC and XMP metadata C++ library and command line utility
-media-gfx/farbfeld 1 9999: farbfeld simple image format tools
+media-gfx/farbfeld 1 2 9999: farbfeld simple image format tools
 media-gfx/fbgrab 1.0-r2 1.3: Framebuffer screenshot utility
 media-gfx/fbida 2.09-r4 2.10 2.10-r1: Image viewers for the framebuffer console (fbi) and X11 (ida)
 media-gfx/fblogo 0.5.2: Creates images to substitute Linux boot logo
@@ -13640,7 +13640,7 @@ net-analyzer/ngrep 1.45-r3: A grep for network layers
 net-analyzer/nikto 1.36 2.1.5: Web Server vulnerability scanner
 net-analyzer/nipper 0.12.0: Router configuration security analysis tool
 net-analyzer/nload 0.7.4: console application which monitors network traffic and bandwidth usage in real time
-net-analyzer/nmap 6.47-r1 6.47-r3 7.00 7.01 9999: A utility for network discovery and security auditing
+net-analyzer/nmap 6.47-r1 6.47-r3 7.00 7.01 7.10 9999: A utility for network discovery and security auditing
 net-analyzer/nmapsi 0.4.1: A Qt4 frontend to nmap
 net-analyzer/nmbscan 1.2.5: netbios scanner
 net-analyzer/nodebrain 0.9.03 0.9.04: Monitor and do event correlation
@@ -13692,7 +13692,7 @@ net-analyzer/scanlogd 2.2.7: a port scan detection tool
 net-analyzer/scanssh 2.1: network scanner that gathers info on SSH protocols and versions
 net-analyzer/scapy 2.2.0-r2 2.3.0 2.3.1: A Python interactive packet manipulation program for mastering the network
 net-analyzer/scli 0.4.0-r1: SNMP Command Line Interface
-net-analyzer/sec 2.7.6-r1 2.7.7 2.7.8: Simple Event Correlator
+net-analyzer/sec 2.7.6-r1 2.7.8 2.7.9: Simple Event Correlator
 net-analyzer/sflowtool 3.32 3.33 3.34 3.35: sflowtool is a utility for collecting and processing sFlow data
 net-analyzer/sguil-client 0.8.0 0.9.0: GUI Console for sguil Network Security Monitoring
 net-analyzer/sguil-sensor 0.8.0 0.9.0: Sensor part of sguil Network Security Monitoring
@@ -14393,7 +14393,7 @@ net-misc/aget 0.4.1-r1: multithreaded HTTP download accelerator
 net-misc/aggregate 1.6: Take a list of prefixes and perform two optimisations to reduce the length of the prefix list
 net-misc/aggregate-flim 1.0.2: aggregate is a tool for aggregating CIDR networks
 net-misc/aiccu 2007.01.15-r5: AICCU Client to configure an IPv6 tunnel to SixXS
-net-misc/apt-cacher-ng 0.8.8 0.8.9 0.9.0: Yet another implementation of an HTTP proxy for Debian/Ubuntu software packages written in C++
+net-misc/apt-cacher-ng 0.9.0 0.9.1: Yet another implementation of an HTTP proxy for Debian/Ubuntu software packages written in C++
 net-misc/apt-proxy 1.3.0: Caching proxy for the Debian package system
 net-misc/aria2 1.15.2 1.16.3 1.16.5 1.18.0 1.18.5 1.18.7 1.18.9 1.19.0 1.19.2: A download utility with segmented downloading with BitTorrent support
 net-misc/arm 1.4.5.0-r2 1.4.5.0_p20140714-r2: A ncurses-based status monitor for Tor relays
@@ -14786,7 +14786,7 @@ net-misc/x2goserver 4.0.1.19 4.0.1.19-r2 4.0.1.19-r3: The X2Go server
 net-misc/xrdp 0.8.0-r1: An open source Remote Desktop Protocol server
 net-misc/yajhfc 0.5.2 0.5.7: Yet another Java HylaFAX Plus Client
 net-misc/yandex-disk 0.1.5.758_p1 0.1.5.870_p1 0.1.5.940_p1: CLI to access Yandex Disk file storage service
-net-misc/youtube-dl 2016.01.01 2016.02.27 2016.03.01 99999999: Download videos from YouTube.com (and more sites...)
+net-misc/youtube-dl 2016.01.01 2016.03.01 2016.03.18 99999999: Download videos from YouTube.com (and more sites...)
 net-misc/youtube-viewer 3.1.9 3.2.0 9999: A command line utility for viewing youtube-videos in Mplayer
 net-misc/ytalk 3.3.0: Multi-user replacement for UNIX talk
 net-misc/zssh 1.5c-r1: An ssh wrapper enabling zmodem up/download in ssh
@@ -17642,9 +17642,9 @@ www-client/lynx 2.8.8_p2 2.8.9_pre4 2.8.9_pre6: An excellent console-based web b
 www-client/midori 0.5.10 0.5.11: A lightweight web browser based on WebKitGTK+
 www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
 www-client/netsurf 3.3-r1 3.4: a free, open source web browser
-www-client/opera 12.16_p1860-r1 35.0.2066.82 35.0.2066.92: A fast and secure web browser
+www-client/opera 12.16_p1860-r1 35.0.2066.82 35.0.2066.92 36.0.2130.32: A fast and secure web browser
 www-client/opera-beta 36.0.2130.21 36.0.2130.26 36.0.2130.29: A fast and secure web browser
-www-client/opera-developer 37.0.2157.0 37.0.2163.0: A fast and secure web browser
+www-client/opera-developer 37.0.2163.0 37.0.2171.0: A fast and secure web browser
 www-client/otter 0.9.07 0.9.08 0.9.09 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
 www-client/phantomjs 1.9.8 2.0.0 2.0.0-r1: A headless WebKit scriptable with a JavaScript API
 www-client/pybugz 0.11.1 0.12.1 9999: Command line interface to (Gentoo) Bugzilla
@@ -17660,7 +17660,7 @@ www-client/surfraw 2.2.9-r1: A fast unix command line interface to WWW
 www-client/uget 1.8.0 1.10.3 1.10.3-r1 1.10.4 9999: Download manager using gtk+ and libcurl
 www-client/vimb 2.9 2.11: a fast, lightweight, vim-like browser based on webkit
 www-client/vimprobable2 1.4.0 1.4.2 1.4.2-r1 9999: A minimal web browser that behaves like the Vimperator plugin for Firefox
-www-client/vivaldi 1.0.420.4_p1 1.0.422.8_p1: A new browser for our friends
+www-client/vivaldi 1.0.420.4_p1 1.0.422.8_p1 1.0.425.3_p1: A new browser for our friends
 www-client/w3m 0.5.3-r5: Text based WWW browser, supports tables and frames
 www-client/w3mir 1.0.10-r2: w3mir is a all purpose HTTP copying and mirroring tool
 www-client/w3mmee 0.3.2_p24-r7: A variant of w3m with support for multiple character encodings
