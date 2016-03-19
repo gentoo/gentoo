@@ -7131,6 +7131,13 @@ sys-apps/dbus:systemd - Build with sys-apps/systemd at_console support
 sys-apps/dmtcp:fast - Enable experimental performance options such as mmap allocator.
 sys-apps/dmtcp:trace - Enable ptrace support (only valid with debug enabled).
 sys-apps/dstat:wifi - Enable wireless network functions
+sys-apps/duc:X - Use X11 for the GUI instead of OpenGL. This is the recommended option
+sys-apps/duc:cairo - Build support for exporting to PNG and PDF with x11-libs/cairo
+sys-apps/duc:gui - Build support for a graphical client
+sys-apps/duc:leveldb - Use dev-libs/leveldb as the backend
+sys-apps/duc:ncurses - Build support for the ncurses client
+sys-apps/duc:sqlite - Use dev-db/sqlite:3 as the backend
+sys-apps/duc:tokyocabinet - Use dev-db/tokyocabinet as the backend
 sys-apps/elfix:ptpax - Enable PT_PAX_FLAGS support.
 sys-apps/elfix:xtpax - Enable XATTR_PAX_FLAGS support.
 sys-apps/entropy-server:matter - Pull in app-admin/matter
