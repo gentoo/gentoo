@@ -11,7 +11,7 @@ PYTHON_COMPAT=( python{2_7,3_3,3_4} )
 inherit ros-catkin
 
 DESCRIPTION="Infrastructure for an integrated graphical user interface based on Qt"
-LICENSE="BSD LGPL-2.1 GPL-2"
+LICENSE="BSD"
 SLOT="0"
 IUSE=""
 
