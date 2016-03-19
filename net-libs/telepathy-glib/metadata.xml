@@ -5,7 +5,4 @@
 		<email>gnome@gentoo.org</email>
 		<name>Gentoo GNOME Desktop</name>
 	</maintainer>
-	<use>
-		<flag name="vala">Enable bindings for <pkg>dev-lang/vala</pkg></flag>
-	</use>
 </pkgmetadata>

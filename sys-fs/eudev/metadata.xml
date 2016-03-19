@@ -7,8 +7,6 @@
   <use>
     <flag name="gudev">enable libudev gobject interface</flag>
     <flag name="hwdb">read vendor/device string database and add it to udev database</flag>
-    <flag name="introspection">Use <pkg>dev-libs/gobject-introspection</pkg>
-  	for introspection</flag>
     <flag name="keymap">map custom hardware's multimedia keys</flag>
     <flag name="kmod">enable module loading through libkmod</flag>
     <flag name="modutils">enable module loading support - use modutils calls if kmod not enabled</flag>

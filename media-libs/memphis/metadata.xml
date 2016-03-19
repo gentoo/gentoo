@@ -5,8 +5,4 @@
     <email>sci-geosciences@gentoo.org</email>
     <name>Gentoo Geosciences Project</name>
   </maintainer>
-  <use>
-    <flag name="introspection">Use dev-libs/gobject-introspection for introspection</flag>
-    <flag name="vala">Add support for Vala</flag>
-  </use>
 </pkgmetadata>

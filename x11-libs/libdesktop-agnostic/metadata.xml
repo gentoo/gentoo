@@ -8,7 +8,6 @@
   <use>
     <flag name="gconf">Enable GConf as configuration backend</flag>
     <flag name="glade">Install the Glade catalog for the desktop-agnotstic GTK widgets.</flag>
-    <flag name="introspection">Use dev-libs/gobject-introspection for introspection</flag>
   </use>
   <upstream>
     <remote-id type="launchpad">libdesktop-agnostic</remote-id>

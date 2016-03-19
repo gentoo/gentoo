@@ -8,7 +8,6 @@
 	<use>
 		<flag name="gtk" restrict="&gt;=dev-libs/libdbusmenu-12.10.2-r2">Enable support for GTK+2</flag>
 		<flag name="gtk3">Enable support for GTK+3</flag>
-		<flag name="introspection">Use <pkg>dev-libs/gobject-introspection</pkg> for introspection</flag>
 	</use>
 	<upstream>
 		<remote-id type="launchpad">dbusmenu</remote-id>
