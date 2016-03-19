@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 inherit multilib eutils flag-o-matic pax-utils
 
 #same order as http://www.sbcl.org/platform-table.html
@@ -94,22 +94,24 @@ src_unpack() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}"/gentoo-fix_install_man.patch
+	eapply "${FILESDIR}"/gentoo-fix_install_man.patch
 	# bug #468482
-	epatch "${FILESDIR}"/concurrency-test-1.2.6.patch
+	eapply "${FILESDIR}"/concurrency-test-1.2.6.patch
 	# bugs #486552, #527666, #517004
-	epatch "${FILESDIR}"/bsd-sockets-test-1.2.11.patch
+	eapply "${FILESDIR}"/bsd-sockets-test-1.2.11.patch
 	# bugs #560276, #561018
-	epatch "${FILESDIR}"/sb-posix-test-1.2.15.patch
+	eapply "${FILESDIR}"/sb-posix-test-1.2.15.patch
 
-	epatch "${FILESDIR}"/${PN}-1.2.11-solaris.patch
-	epatch "${FILESDIR}"/${PN}-1.2.13-verbose-build.patch
+	eapply "${FILESDIR}"/${PN}-1.2.11-solaris.patch
+	eapply "${FILESDIR}"/${PN}-1.2.13-verbose-build.patch
 
 	# To make the hardened compiler NOT compile with -fPIE -pie
 	if gcc-specs-pie ; then
 		einfo "Disabling PIE..."
-		epatch "${FILESDIR}"/${PN}-1.1.17-gentoo-fix_nopie_for_hardened_toolchain.patch
+		eapply "${FILESDIR}"/${PN}-1.1.17-gentoo-fix_nopie_for_hardened_toolchain.patch
 	fi
+
+	eapply_user
 
 	# bug #526194
 	sed -e "s@CFLAGS =.*\$@CFLAGS = ${CFLAGS} -g -Wall -Wsign-compare@" \
@@ -215,11 +217,15 @@ src_install() {
 	find "${ED}" -empty -type d -exec rmdir -v {} +
 
 	if use doc; then
-		dohtml -r doc/manual/
+		docinto html
+		dodoc -r doc/manual/
+		dodoc -r doc/internals/sbcl-internals
+
 		doinfo doc/manual/*.info*
-		dohtml -r doc/internals/sbcl-internals
 		doinfo doc/internals/sbcl-internals.info
-		docinto internals-notes && dodoc doc/internals-notes/*
+
+		docinto internals-notes
+		dodoc doc/internals-notes/*
 	else
 		rm -Rv "${ED}/usr/share/doc/${PF}" || die
 	fi
