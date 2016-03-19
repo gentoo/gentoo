@@ -8,4 +8,7 @@
 	<upstream>
 		<remote-id type="sourceforge">ebook-tools</remote-id>
 	</upstream>
+	<use>
+		<flag name="lit2epub">Install lit2epub script</flag>
+	</use>
 </pkgmetadata>
