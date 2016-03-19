@@ -4,16 +4,17 @@
 
 EAPI=5
 
-EGIT_REPO_URI="https://github.com/bitcoin/secp256k1.git"
-inherit git-2 autotools eutils
+inherit autotools eutils
 
 MyPN=secp256k1
 DESCRIPTION="Optimized C library for EC operations on curve secp256k1"
 HOMEPAGE="https://github.com/bitcoin/${MyPN}"
+COMMITHASH="6c527eceee7f5105c33c98dfae24ffeffd71f7cf"
+SRC_URI="https://github.com/bitcoin/${MyPN}/archive/${COMMITHASH}.tar.gz -> ${MyPN}-v${PV}.tgz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~arm ~arm64 ~mips ~ppc ~x86 ~amd64-linux ~x86-linux"
 IUSE="asm doc ecdh endomorphism experimental gmp +recovery schnorr test"
 
 REQUIRED_USE="
@@ -29,6 +30,8 @@ DEPEND="${RDEPEND}
 	test? ( dev-libs/openssl:0 )
 "
 
+S="${WORKDIR}/${MyPN}-${COMMITHASH}"
+
 src_prepare() {
 	eautoreconf
 }
@@ -36,7 +39,6 @@ src_prepare() {
 src_configure() {
 	econf \
 		--disable-benchmark \
-		$(use_enable experimental) \
 		$(use_enable test tests) \
 		$(use_enable ecdh module-ecdh) \
 		$(use_enable endomorphism)  \
