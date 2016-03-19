@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -13,7 +13,7 @@ IUSE=""
 
 DEPEND="app-arch/tar"
 RDEPEND="dev-perl/Time-modules
-	dev-perl/Period
+	dev-perl/Time-Period
 	>=net-misc/rsync-2.5.7"
 
 src_compile() {

@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -12,7 +12,7 @@ DESCRIPTION="Hollywood tactical shooter based on the ioquake3 engine"
 HOMEPAGE="http://www.urbanterror.info/home/"
 SRC_URI="http://up.barbatos.fr/urt/${FULL_P}.zip
 	https://github.com/Barbatos/ioq3-for-UrbanTerror-4/archive/release-${ENGINE_PV}.tar.gz -> ${PN}-${ENGINE_PV}.tar.gz
-	http://upload.wikimedia.org/wikipedia/en/5/56/Urbanterror.svg -> ${PN}.svg"
+	https://upload.wikimedia.org/wikipedia/commons/5/56/Urbanterror.svg -> ${PN}.svg"
 
 # fetch updates
 if [[ ${FULL_P#*full} != ${PV#*.} ]] ; then

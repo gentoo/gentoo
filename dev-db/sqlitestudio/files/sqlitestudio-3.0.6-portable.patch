@@ -1,0 +1,11 @@
+--- a/SQLiteStudio3/sqlitestudio/sqlitestudio.pro	2015-11-24 20:09:29.000000000 +0100
++++ b/SQLiteStudio3/sqlitestudio/sqlitestudio.pro	2016-01-20 15:04:46.700926391 +0100
+@@ -25,7 +25,7 @@
+ 
+ CONFIG   += c++11
+ QMAKE_CXXFLAGS += -pedantic
+-linux|portable {
++portable {
+     QMAKE_LFLAGS += -Wl,-rpath,./lib
+ }
+ 
