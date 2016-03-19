@@ -20,6 +20,7 @@ KEYWORDS="~amd64 ~hppa ~ppc ~ppc64 ~x86"
 CDEPEND="
 	>=sys-devel/gcc-4.8:*
 	>=dev-libs/boost-1.54[nls]
+	>=dev-libs/leatherman-0.4.2
 	>=dev-cpp/yaml-cpp-0.5.1
 	dev-libs/openssl:*
 	sys-apps/util-linux
@@ -31,7 +32,6 @@ RDEPEND+=" ${CDEPEND}"
 DEPEND+=" test? ( ${CDEPEND} )"
 
 src_prepare() {
-	sed -i 's/\-Werror\ //g' "vendor/leatherman/cmake/cflags.cmake" || die
 	# Remove the code that installs facter.rb to the wrong directory.
 	sed -i 's/if(RUBY_VENDORDIR)/if(False)/g' lib/CMakeLists.txt || die
 	sed -i '/RUBY_VENDORDIR/d' lib/CMakeLists.txt || die
