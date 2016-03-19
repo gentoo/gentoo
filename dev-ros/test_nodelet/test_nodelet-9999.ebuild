@@ -23,5 +23,6 @@ DEPEND="${RDEPEND}
 		dev-ros/rostest
 		dev-libs/boost
 		dev-cpp/gtest
+		dev-ros/rosbash
 	)
 "
