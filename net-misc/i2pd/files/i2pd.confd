@@ -1,9 +1,0 @@
-I2PD_USER="${I2PD_USER:-i2pd}"
-I2PD_GROUP="${I2PD_GROUP:-i2pd}"
-I2PD_LOG="/var/log/i2pd.log"
-I2PD_PID="/var/run/i2pd.pid"
-I2PD_CFGDIR="/etc/i2pd/"
-# Options to i2pd
-I2PDOPTIONS="--conf=${I2PD_CFGDIR}i2pd.conf --tunconf=${I2PD_CFGDIR}tunnels.cfg"
-# for debugging purposes
-#I2PDOPTIONS="--conf=${I2PD_CFGDIR}i2pd.conf --tunconf=${I2PD_CFGDIR}tunnels.cfg --log=file --logfile=${I2PD_LOG}"
