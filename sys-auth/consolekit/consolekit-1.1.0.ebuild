@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 inherit eutils linux-info pam
 
 MY_PN=ConsoleKit2
@@ -64,7 +64,7 @@ pkg_setup() {
 src_prepare() {
 	sed -i -e '/SystemdService/d' data/org.freedesktop.ConsoleKit.service.in || die
 
-	epatch_user
+	default
 }
 
 src_configure() {

@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 inherit autotools eutils git-r3 linux-info pam
 
 MY_PN=ConsoleKit2
@@ -67,7 +67,7 @@ src_unpack() {
 src_prepare() {
 	sed -i -e '/SystemdService/d' data/org.freedesktop.ConsoleKit.service.in || die
 
-	epatch_user
+	default
 	eautoreconf
 }
 
