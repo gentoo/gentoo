@@ -12,7 +12,7 @@ PV_MODULES="308.$(get_version_component_range 2-3)"
 PV_BUILD=$(get_version_component_range 4)
 MY_P="${MY_PN}-${MY_PV}-${PV_BUILD}"
 
-SYSTEMD_UNITS_TAG="gentoo-01"
+SYSTEMD_UNITS_TAG="gentoo-02"
 
 DESCRIPTION="Emulate a complete PC without the performance overhead of most emulators"
 HOMEPAGE="http://www.vmware.com/products/workstation/"
@@ -22,7 +22,7 @@ SRC_URI="
 	https://github.com/akhuettel/systemd-vmware/archive/${SYSTEMD_UNITS_TAG}.tar.gz -> vmware-systemd-${SYSTEMD_UNITS_TAG}.tgz
 	"
 
-LICENSE="vmware GPL-2"
+LICENSE="vmware GPL-2 GPL-3"
 SLOT="0"
 KEYWORDS="-* ~amd64"
 IUSE="bundled-libs cups doc ovftool server vix +vmware-tools"
