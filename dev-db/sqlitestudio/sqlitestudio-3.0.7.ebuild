@@ -105,13 +105,13 @@ src_configure() {
 }
 
 src_compile() {
-	cd "${core_build_dir}"		&& emake
-	cd "${plugins_build_dir}"	&& emake
+	cd "${core_build_dir}"		|| die && emake
+	cd "${plugins_build_dir}"	|| die && emake
 }
 
 src_install() {
-	cd "${core_build_dir}"		&& emake INSTALL_ROOT="${ED}" install
-	cd "${plugins_build_dir}"	&& emake INSTALL_ROOT="${ED}" install
+	cd "${core_build_dir}"		|| die && emake INSTALL_ROOT="${ED}" install
+	cd "${plugins_build_dir}"	|| die && emake INSTALL_ROOT="${ED}" install
 
 	dodoc "${core_src_dir}/docs/sqlitestudio3_docs.cfg"
 	doicon -s scalable "${core_src_dir}/guiSQLiteStudio/img/${PN}.svg"
