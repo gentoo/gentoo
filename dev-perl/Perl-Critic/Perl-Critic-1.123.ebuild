@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -19,7 +19,7 @@ RDEPEND=">=dev-perl/Module-Pluggable-3.1
 	>=dev-perl/Email-Address-1.88.9
 	dev-perl/List-MoreUtils
 	dev-perl/IO-String
-	dev-perl/perltidy
+	dev-perl/Perl-Tidy
 	>=dev-perl/PPI-1.220
 	dev-perl/PPIx-Utilities
 	>=dev-perl/PPIx-Regexp-0.27.0

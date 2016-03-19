@@ -42,7 +42,7 @@ RDEPEND="
 	>=virtual/perl-Term-ANSIColor-2.20.0
 	>=virtual/perl-Test-Simple-0.920.0
 	>=virtual/perl-Text-ParseWords-3
-	dev-perl/perltidy
+	dev-perl/Perl-Tidy
 	>=virtual/perl-version-0.770.0
 	emacs? ( virtual/emacs )
 "
