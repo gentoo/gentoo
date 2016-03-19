@@ -4,14 +4,14 @@
 
 EAPI=6
 
-EGIT_REPO_URI="git://git.code.sf.net/p/libcmis/code"
+EGIT_REPO_URI="https://github.com/tdf/libcmis.git"
 [[ ${PV} == 9999 ]] && SCM_ECLASS="git-r3"
 inherit eutils alternatives autotools ${SCM_ECLASS}
 unset SCM_ECLASS
 
 DESCRIPTION="C++ client library for the CMIS interface"
-HOMEPAGE="https://sourceforge.net/projects/libcmis/"
-[[ ${PV} == 9999 ]] || SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+HOMEPAGE="https://github.com/tdf/libcmis"
+[[ ${PV} == 9999 ]] || SRC_URI="https://github.com/tdf/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="|| ( GPL-2 LGPL-2 MPL-1.1 )"
 SLOT="0.5"

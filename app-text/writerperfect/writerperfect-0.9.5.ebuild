@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 DESCRIPTION="Various formats to Open document format converter"
 HOMEPAGE="http://libwpd.sf.net"
@@ -10,7 +10,7 @@ SRC_URI="mirror://sourceforge/libwpd/${P}.tar.xz"
 
 LICENSE="|| ( LGPL-2.1 MPL-2.0 )"
 SLOT="0"
-# KEYWORDS="~amd64 ~x86 ~x86-linux ~x86-solaris"
+KEYWORDS="~amd64 ~x86 ~x86-linux ~x86-solaris"
 IUSE="abiword +cdr debug ebook freehand gsf keynote +mspub +mwaw pagemaker +visio +wpd +wpg +wps"
 
 # FIXME: libepubgen, libeot, librvngabw
