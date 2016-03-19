@@ -8,6 +8,7 @@
 	<upstream>
 		<remote-id type="cpan">Perl-Critic-Deprecated</remote-id>
 		<remote-id type="cpan-module">Perl::Critic::Deprecated</remote-id>
+		<remote-id type="cpan-module">Perl::Critic::Policy::Miscellanea::RequireRcsKeywords</remote-id>
 		<remote-id type="cpan-module">Perl::Critic::Policy::NamingConventions::ProhibitMixedCaseSubs</remote-id>
 		<remote-id type="cpan-module">Perl::Critic::Policy::NamingConventions::ProhibitMixedCaseVars</remote-id>
 		<remote-id type="cpan-module">Perl::Critic::Utils::PPIRegexp</remote-id>
