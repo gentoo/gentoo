@@ -1,0 +1,24 @@
+#!/sbin/openrc-run
+# Copyright 2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+description="Real-time monitor and web admin for Celery distributed task queue"
+pidfile=${pidfile:-"/run/${SVCNAME}/${SVCNAME}.pid"}
+user=${SVCNAME}
+group=${SVCNAME}
+
+command="/usr/bin/${SVCNAME}"
+command_background="true"
+start_stop_daemon_args="--user ${user} --group ${group} \
+	--stdout /var/log/${SVCNAME}/${SVCNAME}.log \
+	--stderr /var/log/${SVCNAME}/${SVCNAME}.log"
+
+depend() {
+	need net
+	after net
+}
+
+start_pre() {
+	checkpath -d -m 0755 -o "${user}":"${group}" "${pidfile%/*}"
+}
