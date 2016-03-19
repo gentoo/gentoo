@@ -443,9 +443,9 @@ src_install() {
 		PATH='${VM_INSTALL_DIR}/bin'
 		ROOTPATH='${VM_INSTALL_DIR}/bin'
 	EOF
-	doenvd "${envd}"
-
 	use bundled-libs && echo 'VMWARE_USE_SHIPPED_LIBS=1' >> "${envd}"
+
+	doenvd "${envd}"
 
 	# create the configuration
 	dodir /etc/vmware
