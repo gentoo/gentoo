@@ -2355,7 +2355,7 @@ app-text/pep 2.8-r1: General purpose filter and file cleaning program
 app-text/pinfo 0.6.10-r5: Hypertext info and man viewer based on (n)curses
 app-text/po4a 0.45-r1 0.45-r2: Tools for helping translation of documentation
 app-text/podofo 0.9.2 0.9.3: PoDoFo is a C++ library to work with the PDF file format
-app-text/poppler 0.32.0 0.38.0 0.40.0-r1 0.41.0 0.42.0 9999: PDF rendering library based on the xpdf-3.0 code base
+app-text/poppler 0.32.0 0.38.0 0.41.0 0.42.0 9999: PDF rendering library based on the xpdf-3.0 code base
 app-text/poppler-data 0.4.7: Data files for poppler to support uncommon encodings without xpdfrc
 app-text/ps2eps 1.68: Generate Encapsulated Postscript Format (EPS,EPSF) files from one-page Postscript documents
 app-text/ps2pkm 1.5_p20120701 1.5_p20130530 1.5_p20140525 1.7_p20150521: Tool that converts a PostScript type1 font into a corresponding TeX PK font
