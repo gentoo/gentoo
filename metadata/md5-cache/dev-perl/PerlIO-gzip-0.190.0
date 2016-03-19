@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=sys-libs/zlib dev-lang/perl:=
+DESCRIPTION=PerlIO layer to gzip/gunzip
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/PerlIO-gzip/
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=sys-libs/zlib virtual/perl-ExtUtils-MakeMaker dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/N/NW/NWCLARK/PerlIO-gzip-0.19.tar.gz
+_eclass_exported_funcs=src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
+_eclasses_=multiprocessing	e32940a7b2a9992ad217eccddb84d548	perl-functions	15aff0b9cba2282790142295ceb6be0c	perl-module	b2108b3c85ac7a6a6a9b035b54f6813c
+_md5_=535e6525db7dedc223b21751f3f3521f

@@ -2932,6 +2932,7 @@ dev-db/sqlite 3.8.10.1 3.8.10.2 3.8.11.1 3.9.1 3.9.2 3.10.0 3.10.2 3.11.0 3.11.1
 dev-db/sqlitebrowser 3.7.0-r1 3.8.0: SQLite Database Browser
 dev-db/sqliteman 1.2.2-r1: Powerful GUI manager for the Sqlite3 database
 dev-db/sqliteodbc 0.96 0.99: ODBC driver to access local SQLite database files
+dev-db/sqlitestudio 3.0.7: SQLiteStudio3 is a powerful cross-platform SQLite database manager
 dev-db/textsearch_ja 9.0.0: Integrated Full-Text-Search for Japanese language using morphological analyze
 dev-db/tinycdb 0.77-r2: TinyCDB is a very fast and simple package for creating and reading constant data bases
 dev-db/tokumx 1.5.0 1.5.0-r1 2.0.1: An open source, high-performance distribution of MongoDB
@@ -5994,7 +5995,7 @@ dev-perl/PAR-Dist 0.490.0-r1: Create and manipulate PAR distributions
 dev-perl/PBKDF2-Tiny 0.5.0: Minimalist PBKDF2 (RFC 2898) with HMAC-SHA1 or HMAC-SHA2
 dev-perl/PBS-Client 0.100.0-r1 0.110.0: Perl interface to submit jobs to PBS (Portable Batch System)
 dev-perl/PDF-API2 2.20.0 2.27.0: Facilitates the creation and modification of PDF files
-dev-perl/PDF-Create 1.60.0-r1: PDF::Create allows you to create PDF documents
+dev-perl/PDF-Create 1.60.0-r1 1.290.0: Create PDF documents in Perl
 dev-perl/PDL 2.4.11: Perl Data Language for scientific computing
 dev-perl/PGPLOT 2.210.0: allow subroutines in the PGPLOT graphics library to be called from Perl
 dev-perl/PHP-Serialization 0.340.0-r1: Convert PHP's serialize() into the equivalent Perl structure, and vice versa
@@ -6036,22 +6037,23 @@ dev-perl/Parse-RecDescent 1.967.9-r1 1.967.13: Generate Recursive-Descent Parser
 dev-perl/Parse-Syslog 1.100.0-r1: Parse::Syslog - Parse Unix syslog files
 dev-perl/Parse-Yapp 1.50.0-r1: Compiles yacc-like LALR grammars to generate Perl OO parser modules
 dev-perl/Passwd-Linux 1.200.0-r1: Perl module for manipulating the passwd and shadow files
+dev-perl/Passwd-Unix 0.710.0: access to standard unix passwd files
 dev-perl/PatchReader 0.9.6-r1: Module for reading diff-compatible patch files
 dev-perl/Path-Class 0.350.0 0.360.0: Cross-platform path specification manipulation
 dev-perl/Path-Tiny 0.44.0 0.61.0 0.84.0: File path utility
 dev-perl/Pegex 0.600.0: Acmeist PEG Parser Framework
-dev-perl/Period 1.240.0-r1 1.250.0: Time period Perl module
-dev-perl/Perl-Critic 1.118.0-r1 1.123: Critique Perl source code for best-practices
-dev-perl/Perl-Critic-Deprecated 1.108.0: Perl::Critic policies which have been superseded by others
+dev-perl/Perl-Critic 1.118.0-r1 1.123 1.126.0: Critique Perl source code for best-practices
+dev-perl/Perl-Critic-Deprecated 1.108.0 1.119.0: Perl::Critic policies which have been superseded by others
 dev-perl/Perl-Critic-Dynamic 0.50.0-r1: Base class for dynamic Policies
 dev-perl/Perl-Critic-Nits 1.0.0-r1: policies of nits I like to pick
 dev-perl/Perl-Critic-Policy-Dynamic-NoIndirect 0.60.0-r1: Perl::Critic policy against indirect method calls
-dev-perl/Perl-Tags 0.280.0-r1 0.280.0-r2: Generate (possibly exuberant) Ctags style tags for Perl sourcecode
+dev-perl/Perl-Tags 0.280.0-r1 0.280.0-r2 0.320.0: Generate (possibly exuberant) Ctags style tags for Perl sourcecode
+dev-perl/Perl-Tidy 20130922.0.0 20140711.0.0 20160302.0.0: Perl script indenter and beautifier
 dev-perl/Perl-Unsafe-Signals 0.30.0: Allow unsafe handling of signals in selected blocks
 dev-perl/Perl6-Junction 1.600.0: Perl6 style Junction operators in Perl5
 dev-perl/PerlIO-Layers 0.10.0 0.11.0: Querying your filehandle's capabilities
 dev-perl/PerlIO-eol 0.140.0-r1: PerlIO::eol - PerlIO layer for normalizing line endings
-dev-perl/PerlIO-gzip 0.180.0-r1: PerlIO::Gzip - PerlIO layer to gzip/gunzip
+dev-perl/PerlIO-gzip 0.180.0-r1 0.190.0: PerlIO layer to gzip/gunzip
 dev-perl/PerlIO-via-Timeout 0.290.0 0.320.0: PerlIO layer that adds read & write timeout to a handle
 dev-perl/PerlIO-via-dynamic 0.140.0-r1: PerlIO::via::dynamic - dynamic PerlIO layers
 dev-perl/PerlIO-via-symlink 0.50.0-r1: PerlIO::via::symlink - PerlIO layer for symlinks
@@ -6158,6 +6160,7 @@ dev-perl/String-Format 1.170.0-r1: sprintf-like string formatting capabilities w
 dev-perl/String-RewritePrefix 0.6.0-r1: Rewrite strings based on a set of known prefixes
 dev-perl/String-ShellQuote 1.40.0-r1: Quote strings for passing through the shell
 dev-perl/String-Tokenizer 0.50.0-r1: A simple string tokenizer
+dev-perl/Struct-Compare 1.0.1: Recursive diff for perl structures
 dev-perl/Sub-Exporter 0.986.0 0.987.0: A sophisticated exporter for custom-built routines
 dev-perl/Sub-Exporter-ForMethods 0.100.52: Helper routines for using Sub::Exporter to build methods
 dev-perl/Sub-Exporter-Progressive 0.1.11: Only use Sub::Exporter if you need it
@@ -6318,6 +6321,7 @@ dev-perl/Time-Duration-Parse 0.60.0-r1: Parse string that represents time durati
 dev-perl/Time-Format 1.120.0: Easy-to-use date/time formatting
 dev-perl/Time-Moment 0.380.0: Represents a date and time of day with an offset from UTC
 dev-perl/Time-Out 0.110.0: Easily timeout long running operations
+dev-perl/Time-Period 1.240.0-r1 1.250.0: Time period Perl module
 dev-perl/Time-Piece-MySQL 0.60.0-r1: MySQL-specific functions for Time::Piece
 dev-perl/Time-Stopwatch 1.0.0: Use tied scalars as timers
 dev-perl/Time-TAI64 2.110.0-r1: Time manipulation in the TAI64* formats
@@ -6495,7 +6499,6 @@ dev-perl/namespace-clean 0.210.0-r1 0.250.0 0.260.0: Keep imports and functions 
 dev-perl/pcsc-perl 1.4.13-r1 1.4.14: A Perl Module for PC/SC SmartCard access
 dev-perl/perl-ldap 0.630.0 0.650.0: A collection of perl modules which provide an object-oriented interface to LDAP servers
 dev-perl/perl-mozldap 1.5.2 1.5.3: Mozilla PerLDAP
-dev-perl/perltidy 20130922.0.0 20140711.0.0: Perl script indenter and beautifier
 dev-perl/prefork 1.40.0-r1: Optimized module loading for forking or non-forking processes
 dev-perl/regexp-common 2013031301.0.0: Provide commonly requested regular expressions
 dev-perl/rename 1.800.0-r1 1.900.0: A filename renaming utility based on perl regular expression
@@ -16493,6 +16496,7 @@ sys-apps/s390-tools 1.17.0 1.23.1: User space utilities for the zSeries (s390) L
 sys-apps/s6 2.1.3.0 2.2.4.3: skarnet.org's small and secure supervision software suite
 sys-apps/s6-linux-utils 2.0.2.3: Set of tiny linux utilities
 sys-apps/s6-portable-utils 2.0.5.3: Set of tiny portable unix utilities
+sys-apps/s6-rc 0.0.2.1: Service manager for the s6 supervision suite
 sys-apps/salinfo 1.2: decode Itanium SAL records (e.g. various hardware errors)
 sys-apps/sandbox 2.6-r1 2.7 2.8 2.9 2.10-r1: sandbox'd LD_PRELOAD hack
 sys-apps/sdparm 1.07 1.09 1.10: Utility to output and modify parameters on a SCSI device, like hdparm
@@ -17054,7 +17058,7 @@ sys-kernel/cryptodev 1.7: device that allows access to Linux kernel cryptographi
 sys-kernel/dracut 034-r4 040-r3 041-r3 043-r2 044: Generic initramfs generation tool
 sys-kernel/genkernel 3.4.45.1 3.4.48 3.4.49.2 3.4.50 3.4.51.4 3.4.52.2 3.4.52.3 3.4.52.4 3.5.0.0 9999: Gentoo automatic kernel building scripts
 sys-kernel/genkernel-next 35 55 60 63: Gentoo automatic kernel building scripts, reloaded
-sys-kernel/gentoo-sources 3.4.110 3.4.9999 3.10.95 3.10.96 3.10.97 3.10.98 3.10.99 3.10.100 3.10.101 3.12.52-r1 3.12.57 3.12.9999 3.14.58-r1 3.14.59 3.14.60 3.14.61 3.14.62 3.14.63 3.14.64 3.14.65 3.18.25-r1 3.18.26 3.18.27 3.18.28 3.18.29 4.0.4 4.0.9 4.1.12 4.1.15-r1 4.1.16 4.1.17 4.1.18 4.1.19 4.1.20 4.4.0-r1 4.4.1 4.4.2 4.4.4 4.4.5 4.4.6 4.5.0: Full sources including the Gentoo patchset for the 4.5 kernel tree
+sys-kernel/gentoo-sources 3.4.110 3.4.9999 3.10.95 3.10.96 3.10.97 3.10.98 3.10.99 3.10.100 3.10.101 3.12.52-r1 3.12.57 3.12.9999 3.14.58-r1 3.14.65 3.18.25-r1 3.18.26 3.18.27 3.18.28 3.18.29 4.0.4 4.0.9 4.1.12 4.1.15-r1 4.1.16 4.1.17 4.1.18 4.1.19 4.1.20 4.4.0-r1 4.4.1 4.4.2 4.4.4 4.4.5 4.4.6 4.5.0: Full sources including the Gentoo patchset for the 4.5 kernel tree
 sys-kernel/git-sources 4.5_rc1 4.5_rc2 4.5_rc3 4.5_rc4 4.5_rc5 4.5_rc6 4.5_rc7: The very latest -git version of the Linux kernel
 sys-kernel/hardened-sources 4.1.7-r1 4.3.3-r4 4.4.2 4.4.3 4.4.3-r1 4.4.4 4.4.5 4.4.5-r1 4.4.5-r2: Hardened kernel sources (kernel series 4.4)
 sys-kernel/kccmp 0.3: A simple tool for comparing two linux kernel .config files

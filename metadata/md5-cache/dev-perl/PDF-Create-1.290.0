@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=virtual/perl-Carp virtual/perl-Data-Dumper virtual/perl-Scalar-List-Utils virtual/perl-ExtUtils-MakeMaker test? ( >=dev-perl/Test-LeakTrace-0.140.0 >=virtual/perl-Test-Simple-1.0.0 ) dev-lang/perl:=
+DESCRIPTION=Create PDF documents in Perl
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/PDF-Create/
+IUSE=test examples
+KEYWORDS=~alpha ~amd64 ~ia64 ~ppc ~sparc ~x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=virtual/perl-Carp virtual/perl-Data-Dumper virtual/perl-Scalar-List-Utils dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/M/MA/MANWAR/PDF-Create-1.29.tar.gz
+_eclass_exported_funcs=src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:- src_install:-
+_eclasses_=multiprocessing	e32940a7b2a9992ad217eccddb84d548	perl-functions	15aff0b9cba2282790142295ceb6be0c	perl-module	b2108b3c85ac7a6a6a9b035b54f6813c
+_md5_=7faf8e65cf99856b2276d67a51b749dc
