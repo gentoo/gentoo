@@ -19,8 +19,6 @@
 			usbredir acl helper</flag>
     <flag name="usbredir">Use <pkg>sys-apps/usbredir</pkg> to redirect USB
 			devices to another machine over TCP</flag>
-    <flag name="vala">Generate <pkg>dev-lang/vala</pkg> bindings using
-			vapigen and regenerate .vala files using valac</flag>
     <flag name="webdav">Support for folder-sharing between guest and client
 		using <pkg>net-libs/phodav</pkg></flag>
   </use>

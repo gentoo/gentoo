@@ -7,7 +7,6 @@
 	<use>
 		<flag name="cryptsetup">Enable <pkg>sys-fs/cryptsetup</pkg> support</flag>
 		<flag name="gptfdisk">Pull in <pkg>sys-apps/gptfdisk</pkg> for sgdisk command as used by partitioning functionality</flag>
-		<flag name="introspection">Use <pkg>dev-libs/gobject-introspection</pkg> for introspection</flag>
 		<flag name="remote-access">Control whether connections from other clients over LAN are allowed</flag>
 		<flag name="systemd">Support <pkg>sys-apps/systemd</pkg>'s logind</flag>
 	</use>

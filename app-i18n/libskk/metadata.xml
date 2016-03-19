@@ -5,9 +5,6 @@
     <email>cjk@gentoo.org</email>
     <name>Cjk</name>
   </maintainer>
-  <use>
-    <flag name="introspection">Use <pkg>dev-libs/gobject-introspection</pkg> for introspection</flag>
-  </use>
   <upstream>
     <remote-id type="github">ueno/libskk</remote-id>
   </upstream>
