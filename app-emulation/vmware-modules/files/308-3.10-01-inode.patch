@@ -1,0 +1,94 @@
+Minor change the API, now it just gets passed flags instead of a pointer to the nameidata
+Properly initializes UID/GID with repsect to namespaces
+Some changes the readlink/setlink APIs
+--- a/vmblock-only/linux/inode.c	2015-02-07 03:11:55.000000000 +0300
++++ c/vmblock-only/linux/inode.c	2015-02-24 03:58:06.039605762 +0300
+@@ -35,9 +35,15 @@
+ 
+ 
+ /* Inode operations */
+-static struct dentry *InodeOpLookup(struct inode *dir,
+-                                    struct dentry *dentry, struct nameidata *nd);
++
++#if LINUX_VERSION_CODE < KERNEL_VERSION(3, 10, 0)
++static struct dentry *InodeOpLookup(struct inode *dir, struct dentry *dentry, struct nameidata *nd);
+ static int InodeOpReadlink(struct dentry *dentry, char __user *buffer, int buflen);
++#else
++static struct dentry *InodeOpLookup(struct inode *, struct dentry *, unsigned int);
++static int InodeOpReadlink(struct dentry *, char __user *, int);
++#endif
++
+ #if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 13)
+ static void *InodeOpFollowlink(struct dentry *dentry, struct nameidata *nd);
+ #else
+@@ -49,12 +55,15 @@
+    .lookup = InodeOpLookup,
+ };
+ 
++#if LINUX_VERSION_CODE < KERNEL_VERSION(3, 13, 0)
+ static struct inode_operations LinkInodeOps = {
++#else
++struct inode_operations LinkInodeOps = {
++#endif
+    .readlink    = InodeOpReadlink,
+    .follow_link = InodeOpFollowlink,
+ };
+ 
+-
+ /*
+  *----------------------------------------------------------------------------
+  *
+@@ -75,7 +84,11 @@
+ static struct dentry *
+ InodeOpLookup(struct inode *dir,      // IN: parent directory's inode
+               struct dentry *dentry,  // IN: dentry to lookup
+-              struct nameidata *nd)   // IN: lookup intent and information
++#if LINUX_VERSION_CODE < KERNEL_VERSION(3, 10, 0)
++	      struct nameidata *nd)   // IN: lookup intent and information
++#else
++              unsigned int flags)
++#endif
+ {
+    char *filename;
+    struct inode *inode;
+@@ -135,7 +148,12 @@
+    inode->i_size = INODE_TO_IINFO(inode)->nameLen;
+    inode->i_version = 1;
+    inode->i_atime = inode->i_mtime = inode->i_ctime = CURRENT_TIME;
++#if LINUX_VERSION_CODE < KERNEL_VERSION(3, 10, 0)
+    inode->i_uid = inode->i_gid = 0;
++#else
++   inode->i_gid = make_kgid(current_user_ns(), 0);
++   inode->i_uid = make_kuid(current_user_ns(), 0);
++#endif
+    inode->i_op = &LinkInodeOps;
+ 
+    d_add(dentry, inode);
+@@ -177,7 +195,12 @@
+       return -EINVAL;
+    }
+ 
+-   return vfs_readlink(dentry, buffer, buflen, iinfo->name);
++#if LINUX_VERSION_CODE <= KERNEL_VERSION(3, 14, 99)
++	return vfs_readlink(dentry, buffer, buflen, iinfo->name);
++#else
++       return readlink_copy(buffer, buflen, iinfo->name);
++#endif
++
+ }
+ 
+ 
+@@ -221,7 +244,7 @@
+       goto out;
+    }
+ 
+-   ret = vfs_follow_link(nd, iinfo->name);
++   nd_set_link(nd, iinfo->name);
+ 
+ out:
+ #if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 13)
+@@ -230,3 +253,4 @@
+    return ret;
+ #endif
+ }
++

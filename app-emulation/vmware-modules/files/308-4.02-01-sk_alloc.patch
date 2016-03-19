@@ -1,0 +1,22 @@
+--- vmnet-only/vmnetInt.h	2015-05-28 01:46:53.023206897 +0200
++++ vmnet-only/vmnetInt.h.new	2015-05-28 01:47:07.911207730 +0200
+@@ -79,7 +79,7 @@
+ extern struct proto vmnet_proto;
+ #ifdef VMW_NETDEV_HAS_NET
+ #   define compat_sk_alloc(_bri, _pri) sk_alloc(&init_net, \
+-                                                PF_NETLINK, _pri, &vmnet_proto)
++                                                PF_NETLINK, _pri, &vmnet_proto, 0)
+ #else
+ #   define compat_sk_alloc(_bri, _pri) sk_alloc(PF_NETLINK, _pri, &vmnet_proto, 1)
+ #endif
+--- vsock-only/linux/af_vsock.c	2015-05-28 01:50:03.553217551 +0200
++++ vsock-only/linux/af_vsock.c.new	2015-05-28 01:54:55.248233862 +0200
+@@ -2829,7 +2829,7 @@
+ #elif LINUX_VERSION_CODE < KERNEL_VERSION(2, 6, 24)
+    sk = sk_alloc(vsockVmciFamilyOps.family, priority, &vsockVmciProto, 1);
+ #else
+-   sk = sk_alloc(net, vsockVmciFamilyOps.family, priority, &vsockVmciProto);
++   sk = sk_alloc(net, vsockVmciFamilyOps.family, priority, &vsockVmciProto, 0);
+ #endif
+    if (!sk) {
+       return NULL;

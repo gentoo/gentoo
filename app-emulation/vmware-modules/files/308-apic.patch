@@ -1,0 +1,12 @@
+diff --git a/vmmon-only/linux/hostif.c b/vmmon-only/linux/hostif.c
+index f1f4b10..c43242f 100644
+--- a/vmmon-only/linux/hostif.c
++++ b/vmmon-only/linux/hostif.c
+@@ -55,6 +55,7 @@
+ #include <linux/kthread.h>
+ #include <linux/wait.h>
+ 
++#include <asm/apic.h>
+ 
+ #include "vmware.h"
+ #include "x86apic.h"

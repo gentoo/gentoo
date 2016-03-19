@@ -1,0 +1,25 @@
+Some parts of the iovec API were replaced by the similar message API. Refactoring the code to use that.
+diff -rupN vsock-only.old/linux/af_vsock.c vsock-only/linux/af_vsock.c
+--- vsock-only.old/linux/af_vsock.c     2015-05-06 20:41:47.684046762 -0400
++++ vsock-only/linux/af_vsock.c 2015-05-06 20:52:15.245080779 -0400
+@@ -4629,7 +4629,7 @@ VSockVmciStreamSendmsg(struct kiocb *kio
+        * able to send.
+        */
+ 
+-      written = vmci_qpair_enquev(vsk->qpair, msg->msg_iov,
++      written = vmci_qpair_enquev(vsk->qpair, &msg->msg_iter.iov,
+                                   len - totalWritten, 0);
+       if (written < 0) {
+          err = -ENOMEM;
+@@ -4874,9 +4874,9 @@ VSockVmciStreamRecvmsg(struct kiocb *kio
+          }
+ 
+          if (flags & MSG_PEEK) {
+-            read = vmci_qpair_peekv(vsk->qpair, msg->msg_iov, len - copied, 0);
++            read = vmci_qpair_peekv(vsk->qpair, &msg->msg_iter.iov, len - copied, 0);
+          } else {
+-            read = vmci_qpair_dequev(vsk->qpair, msg->msg_iov, len - copied, 0);
++            read = vmci_qpair_dequev(vsk->qpair, &msg->msg_iter.iov, len - copied, 0);
+          }
+ 
+          if (read < 0) {
