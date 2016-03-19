@@ -12,10 +12,10 @@ index 66f106c..5f0a3b1 100644
      if test "x${newinclpath}" != "x"; then
        eval "$1=\"\$$1\"' -I${newinclpath}'"
 diff --git a/configure.ac b/configure.ac
-index 37fe47e..14e5c34 100644
+index 939dfea..6c9acb3 100644
 --- a/configure.ac
 +++ b/configure.ac
-@@ -170,6 +170,18 @@ AC_ARG_WITH([utils],
+@@ -200,6 +200,18 @@ AC_ARG_WITH([utils],
    [build_bitcoin_utils=$withval],
    [build_bitcoin_utils=yes])
  
@@ -34,7 +34,7 @@ index 37fe47e..14e5c34 100644
  AC_ARG_WITH([libs],
    [AS_HELP_STRING([--with-libs],
    [build libraries (default=yes)])],
-@@ -488,14 +500,65 @@ if test x$use_reduce_exports = xyes; then
+@@ -531,14 +543,65 @@ if test x$use_reduce_exports = xyes; then
    [AC_MSG_ERROR([Cannot set default symbol visibility. Use --disable-reduce-exports.])])
  fi
  
@@ -101,16 +101,16 @@ index 37fe47e..14e5c34 100644
  if test x$enable_wallet != xno; then
      dnl Check for libdb_cxx only if wallet enabled
      BITCOIN_FIND_BDB48
-@@ -515,7 +578,7 @@ BITCOIN_QT_INIT
+@@ -558,7 +621,7 @@ BITCOIN_QT_INIT
  dnl sets $bitcoin_enable_qt, $bitcoin_enable_qt_test, $bitcoin_enable_qt_dbus
- BITCOIN_QT_CONFIGURE([$use_pkgconfig], [qt4])
+ BITCOIN_QT_CONFIGURE([$use_pkgconfig], [qt5])
  
 -if test x$build_bitcoin_utils$build_bitcoind$bitcoin_enable_qt$use_tests = xnononono; then
 +if test x$build_bitcoin_cli$build_bitcoin_tx$build_bitcoind$bitcoin_enable_qt$use_tests = xnonononono; then
      use_boost=no
  else
      use_boost=yes
-@@ -701,9 +764,13 @@ AC_MSG_CHECKING([whether to build bitcoind])
+@@ -848,9 +911,13 @@ AC_MSG_CHECKING([whether to build bitcoind])
  AM_CONDITIONAL([BUILD_BITCOIND], [test x$build_bitcoind = xyes])
  AC_MSG_RESULT($build_bitcoind)
  
@@ -127,7 +127,7 @@ index 37fe47e..14e5c34 100644
  
  AC_MSG_CHECKING([whether to build libraries])
  AM_CONDITIONAL([BUILD_BITCOIN_LIBS], [test x$build_bitcoin_libs = xyes])
-@@ -826,7 +893,7 @@ else
+@@ -975,7 +1042,7 @@ else
    AC_MSG_RESULT([no])
  fi
  
@@ -136,34 +136,54 @@ index 37fe47e..14e5c34 100644
    AC_MSG_ERROR([No targets! Please specify at least one of: --with-utils --with-libs --with-daemon --with-gui or --enable-tests])
  fi
  
-@@ -895,8 +962,10 @@ PKGCONFIG_LIBDIR_TEMP="$PKG_CONFIG_LIBDIR"
- unset PKG_CONFIG_LIBDIR
- PKG_CONFIG_LIBDIR="$PKGCONFIG_LIBDIR_TEMP"
+@@ -1062,8 +1129,10 @@ if test x$system_univalue = xno; then
+   AC_CONFIG_SUBDIRS([src/univalue])
+ fi
  
 +if test x$system_libsecp256k1 = xno; then
- ac_configure_args="${ac_configure_args} --disable-shared --with-pic --with-bignum=no"
+ ac_configure_args="${ac_configure_args} --disable-shared --with-pic --with-bignum=no --enable-module-recovery"
  AC_CONFIG_SUBDIRS([src/secp256k1])
 +fi
  
  AC_OUTPUT
  
-diff --git a/qa/pull-tester/rpc-tests.sh b/qa/pull-tester/rpc-tests.sh
-index 9b31865..5bb187c 100755
---- a/qa/pull-tester/rpc-tests.sh
-+++ b/qa/pull-tester/rpc-tests.sh
-@@ -57,7 +57,7 @@ testScriptsExt=(
- extArg="-extended"
- passOn=${@#$extArg}
+diff --git a/qa/pull-tester/rpc-tests.py b/qa/pull-tester/rpc-tests.py
+index 7649c11..978419b 100755
+--- a/qa/pull-tester/rpc-tests.py
++++ b/qa/pull-tester/rpc-tests.py
+@@ -36,8 +36,8 @@ if not vars().has_key('ENABLE_WALLET'):
+     ENABLE_WALLET=0
+ if not vars().has_key('ENABLE_BITCOIND'):
+     ENABLE_BITCOIND=0
+-if not vars().has_key('ENABLE_UTILS'):
+-    ENABLE_UTILS=0
++if not vars().has_key('ENABLE_CLI'):
++    ENABLE_CLI=0
+ if not vars().has_key('ENABLE_ZMQ'):
+     ENABLE_ZMQ=0
  
--if [ "x${ENABLE_BITCOIND}${ENABLE_UTILS}${ENABLE_WALLET}" = "x111" ]; then
-+if [ "x${ENABLE_BITCOIND}${ENABLE_CLI}${ENABLE_WALLET}" = "x111" ]; then
-     for (( i = 0; i < ${#testScripts[@]}; i++ ))
-     do
-         if [ -z "$1" ] || [ "${1:0:1}" == "-" ] || [ "$1" == "${testScripts[$i]}" ] || [ "$1.py" == "${testScripts[$i]}" ]
-diff --git a/qa/pull-tester/tests-config.sh.in b/qa/pull-tester/tests-config.sh.in
-index 10f4d33..e0e407d 100755
---- a/qa/pull-tester/tests-config.sh.in
-+++ b/qa/pull-tester/tests-config.sh.in
+@@ -141,7 +141,7 @@ def runtests():
+         coverage = RPCCoverage()
+         print("Initializing coverage directory at %s\n" % coverage.dir)
+ 
+-    if(ENABLE_WALLET == 1 and ENABLE_UTILS == 1 and ENABLE_BITCOIND == 1):
++    if(ENABLE_WALLET == 1 and ENABLE_CLI == 1 and ENABLE_BITCOIND == 1):
+         rpcTestDir = buildDir + '/qa/rpc-tests/'
+         run_extended = '-extended' in opts
+         cov_flag = coverage.flag if coverage else ''
+@@ -187,7 +187,7 @@ def runtests():
+             coverage.cleanup()
+ 
+     else:
+-        print "No rpc tests to run. Wallet, utils, and bitcoind must all be enabled"
++        print "No rpc tests to run. Wallet, cli, and bitcoind must all be enabled"
+ 
+ 
+ class RPCCoverage(object):
+diff --git a/qa/pull-tester/tests_config.py.in b/qa/pull-tester/tests_config.py.in
+index 937b423..71a917c 100644
+--- a/qa/pull-tester/tests_config.py.in
++++ b/qa/pull-tester/tests_config.py.in
 @@ -8,7 +8,7 @@ EXEEXT="@EXEEXT@"
  
  # These will turn into comments if they were disabled when configuring.
@@ -171,31 +191,24 @@ index 10f4d33..e0e407d 100755
 -@BUILD_BITCOIN_UTILS_TRUE@ENABLE_UTILS=1
 +@BUILD_BITCOIN_CLI_TRUE@ENABLE_CLI=1
  @BUILD_BITCOIND_TRUE@ENABLE_BITCOIND=1
+ @ENABLE_ZMQ_TRUE@ENABLE_ZMQ=1
  
- REAL_BITCOIND="$BUILDDIR/src/bitcoind${EXEEXT}"
 diff --git a/src/Makefile.am b/src/Makefile.am
-index 1c2f770..4d60ddf 100644
+index fa7a78f..cc2f2ca 100644
 --- a/src/Makefile.am
 +++ b/src/Makefile.am
-@@ -1,4 +1,6 @@
-+if EMBEDDED_LIBSECP256K1
- DIST_SUBDIRS = secp256k1
-+endif
- AM_LDFLAGS = $(PTHREAD_CFLAGS) $(LIBTOOL_LDFLAGS)
- 
- 
-@@ -20,7 +22,7 @@ endif
+@@ -31,7 +31,7 @@ endif
  BITCOIN_CONFIG_INCLUDES=-I$(builddir)/config
  BITCOIN_INCLUDES=-I$(builddir) -I$(builddir)/obj $(BOOST_CPPFLAGS) $(LEVELDB_CPPFLAGS) $(CRYPTO_CFLAGS) $(SSL_CFLAGS)
  
 -BITCOIN_INCLUDES += -I$(srcdir)/secp256k1/include
 +BITCOIN_INCLUDES += $(libsecp256k1_CFLAGS)
+ BITCOIN_INCLUDES += $(UNIVALUE_CFLAGS)
  
  LIBBITCOIN_SERVER=libbitcoin_server.a
- LIBBITCOIN_WALLET=libbitcoin_wallet.a
-@@ -30,10 +32,16 @@ LIBBITCOIN_UTIL=libbitcoin_util.a
+@@ -42,10 +42,16 @@ LIBBITCOIN_CLI=libbitcoin_cli.a
+ LIBBITCOIN_UTIL=libbitcoin_util.a
  LIBBITCOIN_CRYPTO=crypto/libbitcoin_crypto.a
- LIBBITCOIN_UNIVALUE=univalue/libbitcoin_univalue.a
  LIBBITCOINQT=qt/libbitcoinqt.a
 +if EMBEDDED_LIBSECP256K1
  LIBSECP256K1=secp256k1/libsecp256k1.la
@@ -210,7 +223,7 @@ index 1c2f770..4d60ddf 100644
  
  # Make is not made aware of per-object dependencies to avoid limiting building parallelization
  # But to build the less dependent modules first, we manually select their order here:
-@@ -63,8 +71,11 @@ if BUILD_BITCOIND
+@@ -79,8 +85,11 @@ if BUILD_BITCOIND
    bin_PROGRAMS += bitcoind
  endif
  
@@ -223,21 +236,18 @@ index 1c2f770..4d60ddf 100644
 +  bin_PROGRAMS += bitcoin-tx
  endif
  
- .PHONY: FORCE
+ .PHONY: FORCE check-symbols check-security
 diff --git a/src/Makefile.test.include b/src/Makefile.test.include
-index 0997148..14b4deb 100644
+index 6ef6a69..1b6e759 100644
 --- a/src/Makefile.test.include
 +++ b/src/Makefile.test.include
-@@ -111,10 +111,12 @@ bitcoin_test_check: $(TEST_BINARY) FORCE
- bitcoin_test_clean : FORCE
- 	rm -f $(CLEAN_BITCOIN_TEST) $(test_test_bitcoin_OBJECTS) $(TEST_BINARY)
- 
-+if EMBEDDED_LIBSECP256K1
+@@ -127,7 +127,9 @@ bitcoin_test_clean : FORCE
  check-local:
  	@echo "Running test/bitcoin-util-test.py..."
  	$(AM_V_at)srcdir=$(srcdir) PYTHONPATH=$(builddir)/test $(srcdir)/test/bitcoin-util-test.py
++if EMBEDDED_LIBSECP256K1
  	$(AM_V_at)$(MAKE) $(AM_MAKEFLAGS) -C secp256k1 check
 +endif
- 
- %.json.h: %.json
- 	@$(MKDIR_P) $(@D)
+ if EMBEDDED_UNIVALUE
+ 	$(AM_V_at)$(MAKE) $(AM_MAKEFLAGS) -C univalue check
+ endif
