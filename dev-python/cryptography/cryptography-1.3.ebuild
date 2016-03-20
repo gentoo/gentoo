@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI="5"
 
 PYTHON_COMPAT=( python2_7 python3_{3,4,5} pypy )
 PYTHON_REQ_USE="threads(+)"
@@ -19,7 +19,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~s
 IUSE="libressl test"
 
 RDEPEND="
-	!libressl? ( dev-libs/openssl:0 )
+	!libressl? ( dev-libs/openssl:0= )
 	libressl? ( dev-libs/libressl )
 	$(python_gen_cond_dep '>=dev-python/cffi-1.4.1:=[${PYTHON_USEDEP}]' 'python*')
 	$(python_gen_cond_dep 'dev-python/enum34[${PYTHON_USEDEP}]' python2_7 python3_3 pypy)
