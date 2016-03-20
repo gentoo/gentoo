@@ -152,7 +152,6 @@ RDEPEND="
 	media-libs/libpng:0
 	media-libs/libvorbis
 	media-libs/mesa
-	media-sound/pulseaudio
 	net-dns/libidn
 	net-libs/gnutls
 	net-print/cups
