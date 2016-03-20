@@ -9,10 +9,6 @@
 		<email>luke-jr+gentoobugs@utopios.org</email>
 		<name>Luke Dashjr</name>
 	</maintainer>
-	<maintainer type="project">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Proxy Maintainers</name>
-	</maintainer>
 	<use>
 		<flag name="1stclassmsg">Enable first-class Bitcoin message tools</flag>
 		<flag name="bitcoin_policy_cltv">Check LockTime Verify policy: Your node will recognise and assist OP_CHECKLOCKTIMEVERIFY (BIP65) transactions</flag>
@@ -20,8 +16,11 @@
 		<flag name="bitcoin_policy_dcmp">Data Carrier Multi-Push policy: Your node will assist transactions with multiple pushes in their data carrier (if any)</flag>
 		<flag name="bitcoin_policy_rbf">Replace By Fee policy: Your node will preferentially mine and relay transactions paying the highest fee, regardless of receive order</flag>
 		<flag name="bitcoin_policy_spamfilter">Enhanced spam filter policy: Notorious spammers will not be assisted by your node</flag>
+		<flag name="http">Enable support for the JSON-RPC and REST HTTP server (builtin net-p2p/bitcoind)</flag>
+		<flag name="libevent">Use dev-libs/libevent</flag>
 		<flag name="ljr">Enable Luke Dashjr's patches</flag>
 		<flag name="qrcode">Enable generation of QR Codes for receiving payments</flag>
+		<flag name="tor">Enable automatic configuration of a Tor hidden service</flag>
 		<flag name="upnp">Enable Universal Plug and Play</flag>
 		<flag name="wallet">Enable wallet support</flag>
 		<flag name="xt">Enable Mike Hearn's Bitcoin XT patches</flag>
