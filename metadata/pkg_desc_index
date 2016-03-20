@@ -11023,7 +11023,7 @@ kde-apps/kbounce 4.14.3 15.08.3 15.12.3: KDE Bounce Ball Game
 kde-apps/kbreakout 4.14.3 15.08.3 15.12.3: A Breakout-like game for KDE
 kde-apps/kbruch 4.14.3: KDE Educational: Learn calculating with fractions
 kde-apps/kcachegrind 4.14.3 15.08.3 15.12.2 15.12.3: KDE Frontend for Cachegrind
-kde-apps/kcalc 4.14.3 15.08.3-r1 15.12.2 15.12.3: KDE calculator
+kde-apps/kcalc 4.14.3 15.08.3-r1 15.12.2 15.12.3 15.12.3-r1: KDE calculator
 kde-apps/kcharselect 4.14.3 15.08.3 15.12.2 15.12.3: KDE character selection utility
 kde-apps/kcmshell 4.14.3 15.08.3: Utility to host KDE control modules independently of SystemSettings
 kde-apps/kcolorchooser 4.14.3 15.08.3 15.12.3: KDE color selector/editor
