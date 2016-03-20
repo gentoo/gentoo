@@ -104,7 +104,7 @@ COMMON="
 		dev-python/urlgrabber
 	)
 	theora? ( media-libs/libtheora:= media-libs/libogg:= )
-	vaapi? ( x11-libs/libva:= )
+	vaapi? ( x11-libs/libva:=[opengl] )
 	vdpau? ( x11-libs/libvdpau:= )
 	vorbis? ( >=media-libs/libvorbis-1.0:= media-libs/libogg:= )
 	xml? ( >=dev-libs/libxml2-2.6.0:= )
