@@ -1,0 +1,23 @@
+commit 456205fc98f4eb2762c11fac2abedf618e0deb8f
+Author: Andreas Sturmlechner <andreas.sturmlechner@gmail.com>
+Date:   Fri Mar 25 13:38:55 2016 +0100
+
+    Make plasmoids optional
+    
+    They are not useable in a Plasma-5 workspace.
+    
+    REVIEW: 127491
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index f4ab27b..93ae845 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -50,7 +50,7 @@ endif (OPENBABEL2_FOUND AND Avogadro_FOUND AND EIGEN3_FOUND)
+ add_subdirectory(doc)
+ add_subdirectory(src)
+ add_subdirectory(data)
+-add_subdirectory(plasmoid)
++macro_optional_add_subdirectory(plasmoid)
+ add_subdirectory(libscience)
+ add_subdirectory(qml)
+ 
