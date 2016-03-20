@@ -1684,10 +1684,12 @@ toolchain_src_install() {
 			ln -sf ${CTARGET}-${x} ${CTARGET}-${x}-${GCC_CONFIG_VER}
 		fi
 	done
-	# Clear out the main go binaries as we don't want to clobber dev-lang/go
+	# Rename the main go binaries as we don't want to clobber dev-lang/go
 	# when gcc-config runs. #567806
 	if tc_version_is_at_least 5 && is_go ; then
-		rm -f go gofmt
+		for x in go gofmt; do
+			mv ${x} ${x}-${GCCMAJOR} || die
+		done
 	fi
 
 	# Now do the fun stripping stuff
