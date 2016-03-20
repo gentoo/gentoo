@@ -70,11 +70,14 @@ MyP="${MyPN}-${MyPV}"
 DOCS="${DOCS} doc/README.md doc/release-notes.md"
 OPENSSL_DEPEND="dev-libs/openssl:0[-bindist]"
 WALLET_DEPEND="sys-libs/db:$(db_ver_to_slot "${DB_VER}")[cxx]"
+LIBEVENT_DEPEND=""
+UNIVALUE_DEPEND=""
+BITCOINCORE_LJR_NAME=ljr
 [ -n "${BITCOINCORE_LJR_PV}" ] || BITCOINCORE_LJR_PV="${PV}"
 
 case "${PV}" in
 0.10*)
-	BITCOINCORE_SERIES="0.10.x"
+	BITCOINCORE_MINOR=10
 	LIBSECP256K1_DEPEND="=dev-libs/libsecp256k1-0.0.0_pre20141212"
 	case "${PVR}" in
 	0.10.2)
@@ -89,7 +92,7 @@ case "${PV}" in
 	BITCOINCORE_XT_DIFF="047a89831760ff124740fe9f58411d57ee087078...d4084b62c42c38bfe302d712b98909ab26ecce2f"
 	;;
 0.11*)
-	BITCOINCORE_SERIES="0.11.x"
+	BITCOINCORE_MINOR=11
 	LIBSECP256K1_DEPEND="=dev-libs/libsecp256k1-0.0.0_pre20150423"
 	# RBF is bundled with ljr patchset since 0.11.1
 	if [ "${PVR}" = "0.11.0" ]; then
@@ -97,21 +100,55 @@ case "${PV}" in
 		BITCOINCORE_RBF_PATCHFILE="${MyPN}-rbf-v0.11.0rc3.patch"
 	fi
 	;;
+0.12*)
+	BITCOINCORE_MINOR=12
+	IUSE="${IUSE} libressl"
+	OPENSSL_DEPEND="!libressl? ( dev-libs/openssl:0[-bindist] ) libressl? ( dev-libs/libressl )"
+	if in_bcc_iuse libevent; then
+		LIBEVENT_DEPEND="libevent? ( dev-libs/libevent )"
+	else
+		LIBEVENT_DEPEND="dev-libs/libevent"
+	fi
+	LIBSECP256K1_DEPEND="=dev-libs/libsecp256k1-0.0.0_pre20151118[recovery]"
+	UNIVALUE_DEPEND="dev-libs/univalue"
+	BITCOINCORE_LJR_NAME=knots
+	if in_bcc_policy spamfilter; then
+		REQUIRED_USE="${REQUIRED_USE} bitcoin_policy_spamfilter? ( ljr )"
+	fi
+	;;
 9999*)
+	BITCOINCORE_MINOR=9999
 	BITCOINCORE_SERIES="9999"
+	LIBEVENT_DEPEND="dev-libs/libevent"
 	LIBSECP256K1_DEPEND=">dev-libs/libsecp256k1-0.0.0_pre20150422"
+	UNIVALUE_DEPEND="dev-libs/univalue"
 	;;
 *)
 	die "Unrecognised version"
 	;;
 esac
 
-LJR_PV() { echo "${BITCOINCORE_LJR_PV}.${1}${BITCOINCORE_LJR_DATE}"; }
+[ -n "${BITCOINCORE_SERIES}" ] || BITCOINCORE_SERIES="0.${BITCOINCORE_MINOR}.x"
+
+LJR_PV() {
+	local testsfx=
+	if [ -n "${BITCOINCORE_LJR_PREV}" ]; then
+		if [ "$1" = "dir" ]; then
+			testsfx="/test/${BITCOINCORE_LJR_PREV}"
+		else
+			testsfx=".${BITCOINCORE_LJR_PREV}"
+		fi
+	fi
+	echo "${BITCOINCORE_LJR_PV}.${BITCOINCORE_LJR_NAME}${BITCOINCORE_LJR_DATE}${testsfx}"
+}
 LJR_PATCHDIR="${MyPN}-$(LJR_PV ljr).patches"
 LJR_PATCH() { echo "${WORKDIR}/${LJR_PATCHDIR}/${MyPN}-$(LJR_PV ljr).$@.patch"; }
 LJR_PATCH_DESC="http://luke.dashjr.org/programs/${MyPN}/files/${MyPN}d/luke-jr/${BITCOINCORE_SERIES}/$(LJR_PV ljr)/${MyPN}-$(LJR_PV ljr).desc.txt"
+if [ "$BITCOINCORE_MINOR" -ge 12 ]; then
+	LJR_PATCH_DESC="http://bitcoinknots.org/files/${BITCOINCORE_SERIES}/$(LJR_PV dir)/${MyPN}-$(LJR_PV).desc.txt"
+fi
 
-HOMEPAGE="https://github.com/bitcoin/bitcoin"
+HOMEPAGE="http://bitcoincore.org/"
 
 if [ -z "$BITCOINCORE_COMMITHASH" ]; then
 	EGIT_PROJECT='bitcoin'
@@ -119,7 +156,10 @@ if [ -z "$BITCOINCORE_COMMITHASH" ]; then
 else
 	SRC_URI="https://github.com/${MyPN}/${MyPN}/archive/${BITCOINCORE_COMMITHASH}.tar.gz -> ${MyPN}-v${PV}${BITCOINCORE_SRC_SUFFIX}.tgz"
 	if [ -z "${BITCOINCORE_NO_SYSLIBS}" ]; then
-		SRC_URI="${SRC_URI} http://luke.dashjr.org/programs/${MyPN}/files/${MyPN}d/luke-jr/${BITCOINCORE_SERIES}/$(LJR_PV ljr)/${LJR_PATCHDIR}.txz -> ${LJR_PATCHDIR}.tar.xz"
+		SRC_URI="${SRC_URI} http://bitcoinknots.org/files/${BITCOINCORE_SERIES}/$(LJR_PV dir)/${LJR_PATCHDIR}.txz -> ${LJR_PATCHDIR}.tar.xz"
+	fi
+	if in_bcc_iuse addrindex; then
+		SRC_URI="${SRC_URI} addrindex? ( https://github.com/btcdrak/bitcoin/compare/${BITCOINCORE_ADDRINDEX_DIFF}.diff -> ${BITCOINCORE_ADDRINDEX_PATCHFILE} )"
 	fi
 	if in_bcc_iuse xt; then
 		BITCOINXT_PATCHFILE="${MyPN}xt-v${PV}.patch"
@@ -152,11 +192,17 @@ fi
 BITCOINCORE_COMMON_DEPEND="
 	${OPENSSL_DEPEND}
 "
+if ! has libevent ${BITCOINCORE_NO_DEPEND}; then
+	BITCOINCORE_COMMON_DEPEND="${BITCOINCORE_COMMON_DEPEND} ${LIBEVENT_DEPEND}"
+fi
 if [ "${BITCOINCORE_NEED_LIBSECP256K1}" = "1" ]; then
 	BITCOINCORE_COMMON_DEPEND="${BITCOINCORE_COMMON_DEPEND} $LIBSECP256K1_DEPEND"
 fi
-if [ "${PN}" != "libbitcoinconsensus" ]; then
-	BITCOINCORE_COMMON_DEPEND="${BITCOINCORE_COMMON_DEPEND} >=dev-libs/boost-1.52.0[threads(+)]"
+if [ "${PN}" != "libbitcoinconsensus" ] && ! use_if_iuse test; then
+	BITCOINCORE_COMMON_DEPEND="${BITCOINCORE_COMMON_DEPEND}
+		${UNIVALUE_DEPEND}
+		>=dev-libs/boost-1.52.0[threads(+)]
+	"
 fi
 bitcoincore_common_depend_use() {
 	in_bcc_iuse "$1" || return
@@ -173,8 +219,12 @@ DEPEND="${DEPEND} ${BITCOINCORE_COMMON_DEPEND}
 if [ "${BITCOINCORE_NEED_LEVELDB}" = "1" ]; then
 	RDEPEND="${RDEPEND} virtual/bitcoin-leveldb"
 fi
-if in_bcc_iuse ljr && [ "$BITCOINCORE_SERIES" = "0.10.x" ]; then
-	DEPEND="${DEPEND} ljr? ( dev-vcs/git )"
+if in_bcc_iuse ljr; then
+	if [ "$BITCOINCORE_SERIES" = "0.10.x" ]; then
+		DEPEND="${DEPEND} ljr? ( dev-vcs/git )"
+	elif [ "${BITCOINCORE_LJR_NAME}" = "knots" ]; then
+		DEPEND="${DEPEND} ljr? ( dev-lang/perl )"
+	fi
 fi
 
 bitcoincore_policymsg() {
@@ -190,9 +240,12 @@ bitcoincore_policymsg() {
 
 bitcoincore_pkg_pretend() {
 	bitcoincore_policymsg_flag=false
-	if use_if_iuse ljr || use_if_iuse 1stclassmsg || use_if_iuse xt || use_if_iuse zeromq; then
+	if use_if_iuse ljr || use_if_iuse 1stclassmsg || use_if_iuse addrindex || use_if_iuse xt || { use_if_iuse zeromq && [ "${BITCOINCORE_MINOR}" -lt 12 ]; }; then
 		einfo "Extra functionality improvements to Bitcoin Core are enabled."
 		bitcoincore_policymsg_flag=true
+		if use_if_iuse addrindex addrindex; then
+			einfo "Please be aware that the addrindex functionality is known to be unreliable."
+		fi
 	fi
 	bitcoincore_policymsg cltv \
 		"CLTV policy is enabled: Your node will recognise and assist OP_CHECKLOCKTIMEVERIFY (BIP65) transactions." \
@@ -212,6 +265,37 @@ bitcoincore_pkg_pretend() {
 	$bitcoincore_policymsg_flag && einfo "For more information on any of the above, see ${LJR_PATCH_DESC}"
 }
 
+bitcoincore_git_apply() {
+	local patchfile="$1"
+	einfo "Applying ${patchfile##*/} ..."
+	git apply --whitespace=nowarn "${patchfile}" || die
+}
+
+bitcoincore_predelete_patch() {
+	local patchfile="$1"
+	mkdir -p "${WORKDIR}/pdp"
+	local tmpfile="${WORKDIR}/pdp/${patchfile##*/}"
+	perl -ne '
+		newline:
+		if (m[(^diff .* b/(.*)$)]) {
+			$a = "$1\n";
+			$f = $2;
+			$_ = <>;
+			if (m[^deleted file]) {
+				unlink($f) || die;
+				while (!m[^diff ]) {
+					$_ = <>
+				}
+				goto newline
+			} else {
+				print($a)
+			}
+		}
+		print
+	' <"${patchfile}" >"${tmpfile}" || die
+	epatch "${tmpfile}"
+}
+
 bitcoincore_prepare() {
 	local mypolicy
 	if [ -n "${BITCOINCORE_NO_SYSLIBS}" ]; then
@@ -222,11 +306,13 @@ bitcoincore_prepare() {
 		epatch "$(LJR_PATCH syslibs)"
 	fi
 	if use_if_iuse ljr; then
-		if [ "${BITCOINCORE_SERIES}" = "0.10.x" ]; then
+		if [ "${BITCOINCORE_LJR_NAME}" = "knots" ]; then
+			epatch "$(LJR_PATCH f)"
+			bitcoincore_predelete_patch "$(LJR_PATCH branding)"
+			epatch "$(LJR_PATCH ts)"
+		elif [ "${BITCOINCORE_SERIES}" = "0.10.x" ]; then
 			# Regular epatch won't work with binary files
-			local patchfile="$(LJR_PATCH ljrF)"
-			einfo "Applying ${patchfile##*/} ..."
-			git apply --whitespace=nowarn "${patchfile}" || die
+			bitcoincore_git_apply "$(LJR_PATCH ljrF)"
 		else
 			epatch "$(LJR_PATCH ljrF)"
 		fi
@@ -234,12 +320,30 @@ bitcoincore_prepare() {
 	if use_if_iuse 1stclassmsg; then
 		epatch "$(LJR_PATCH 1stclassmsg)"
 	fi
+	if use_if_iuse addrindex; then
+		epatch "${DISTDIR}/${BITCOINCORE_ADDRINDEX_PATCHFILE}"
+	fi
 	if use_if_iuse xt; then
 		epatch "${DISTDIR}/${BITCOINXT_PATCHFILE}"
 	fi
-	use_if_iuse zeromq && epatch "$(LJR_PATCH zeromq)"
+	{ use_if_iuse zeromq && [ "${BITCOINCORE_MINOR}" -lt 12 ]; } && epatch "$(LJR_PATCH zeromq)"
 	for mypolicy in ${BITCOINCORE_POLICY_PATCHES}; do
 		mypolicy="${mypolicy#[-+]}"
+
+		if [ "${BITCOINCORE_MINOR}" -ge 12 ]; then
+			case "${mypolicy}" in
+			rbf)
+				use bitcoin_policy_rbf || sed -i 's/\(DEFAULT_ENABLE_REPLACEMENT = \)true/\1false/' src/main.h
+				;;
+			spamfilter)
+				use bitcoin_policy_spamfilter || sed -i 's/\(DEFAULT_SPAMFILTER = \)true/\1false/' src/main.h
+				;;
+			*)
+				die "Unknown policy ${mypolicy}"
+			esac
+			continue
+		fi
+
 		use bitcoin_policy_${mypolicy} || continue
 		case "${mypolicy}" in
 		rbf)
@@ -284,19 +388,29 @@ bitcoincore_conf() {
 	else
 		my_econf="${my_econf} --disable-wallet"
 	fi
+	if ! use_if_iuse zeromq; then
+		# NOTE: Older (pre-0.12) patches would disable ZMQ if --enable-zmq was passed
+		my_econf="${my_econf} --disable-zmq"
+	fi
 	if [ -z "${BITCOINCORE_NO_SYSLIBS}" ]; then
 		my_econf="${my_econf} --disable-util-cli --disable-util-tx"
 	else
 		my_econf="${my_econf} --without-utils"
+	fi
+	# Knots 0.12.0 errors if --with-libevent used for bitcoin{d,-cli}, so only disable it when not wanted
+	if has libevent ${BITCOINCORE_NO_DEPEND} || { in_bcc_iuse libevent && ! use libevent; }; then
+		my_econf="${my_econf} --without-libevent"
 	fi
 	if [ "${BITCOINCORE_NEED_LEVELDB}" = "1" ]; then
 		# Passing --with-system-leveldb fails if leveldb is not installed, so only use it for targets that use LevelDB
 		my_econf="${my_econf} --with-system-leveldb"
 	fi
 	econf \
+		--disable-bench  \
 		--disable-ccache \
 		--disable-static \
 		--with-system-libsecp256k1  \
+		--with-system-univalue  \
 		--without-libs    \
 		--without-daemon  \
 		--without-gui     \

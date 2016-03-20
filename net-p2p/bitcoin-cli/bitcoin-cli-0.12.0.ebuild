@@ -4,23 +4,19 @@
 
 EAPI=5
 
-BITCOINCORE_COMMITHASH="16f45600c8c372a738ffef544292864256382601"
-BITCOINCORE_SRC_SUFFIX="-r1"
-BITCOINCORE_LJR_PV="0.10.1"
-BITCOINCORE_LJR_DATE="20150428"
-BITCOINCORE_IUSE=""
+BITCOINCORE_COMMITHASH="188ca9c305d3dd0fb462b9d6a44048b1d99a05f3"
+BITCOINCORE_LJR_DATE="20160226"
+BITCOINCORE_LJR_PREV="rc1"
+BITCOINCORE_IUSE="ljr"
 inherit bash-completion-r1 bitcoincore
 
 DESCRIPTION="Command-line client specifically designed for talking to Bitcoin Core Daemon"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~x86 ~amd64-linux ~x86-linux"
-SRC_URI="${SRC_URI}
-	https://raw.githubusercontent.com/bitcoin/bitcoin/v0.11.0rc3/contrib/debian/manpages/bitcoin-cli.1 -> bitcoin-cli-manpage-v0.11.0rc3.1"
 
 src_prepare() {
-	sed -i 's/have bitcoind &&//;s/^\(complete -F _bitcoind \)bitcoind \(bitcoin-cli\)$/\1\2/' contrib/bitcoind.bash-completion
-	cp "${DISTDIR}/bitcoin-cli-manpage-v0.11.0rc3.1" contrib/debian/manpages/bitcoin-cli.1
+	sed -i 's/have bitcoind &&//;s/^\(complete -F _bitcoind \)bitcoind \(bitcoin-cli\)$/\1\2/' contrib/bitcoind.bash-completion || die
 	bitcoincore_src_prepare
 }
 
