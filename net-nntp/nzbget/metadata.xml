@@ -12,5 +12,6 @@
 	<upstream>
 		<remote-id type="sourceforge">nzbget</remote-id>
 		<remote-id type="github">nzbget/nzbget</remote-id>
+		<bugs-to>https://github.com/nzbget/nzbget/issues</bugs-to>
 	</upstream>
 </pkgmetadata>
