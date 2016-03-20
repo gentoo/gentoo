@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -8,9 +8,7 @@ PYTHON_COMPAT=( python{2_7,3_3,3_4,3_5} pypy )
 inherit distutils-r1
 
 #if LIVE
-EGIT_REPO_URI="git://anongit.gentoo.org/proj/${PN}.git
-	https://anongit.gentoo.org/git/proj/${PN}.git
-	https://bitbucket.org/mgorny/${PN}.git"
+EGIT_REPO_URI="https://bitbucket.org/mgorny/${PN}.git"
 inherit git-r3
 #endif
 
