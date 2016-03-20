@@ -5,6 +5,12 @@
 # This file requires >=portage-2.1.1
 # New entries go on top.
 
+# Lars Wendler <polynomial-c@gentoo.org> (20 Mar 2016)
+# Need vulnerable libotr version (see bug #576914).
+net-im/centerim otr
+=net-im/climm-0.7.1 otr
+net-im/qutim otr
+
 # James Le Cuirot <chewi@gentoo.org> (14 Mar 2016)
 # jtds:1.2 needs removing because it depends on Java 6. Unfortunately
 # we can't stabilise the latest sqldeveloper yet because of Java 8.
