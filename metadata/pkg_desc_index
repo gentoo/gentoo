@@ -224,7 +224,7 @@ app-admin/verynice 1.1-r2: A tool for dynamically adjusting the nice-level of pr
 app-admin/watchfolder 0.3.3: Watches directories and processes files, similar to the watchfolder option of Acrobat Distiller
 app-admin/webalizer 2.23.05 2.23.08: Webserver log file analyzer
 app-admin/webapp-config 1.52-r1 1.53-r2 1.54-r1 9999: Gentoo's installer for web-based applications
-app-admin/webmin 1.770 1.780: A web-based Unix systems administration interface
+app-admin/webmin 1.791: A web-based Unix systems administration interface
 app-admin/whowatch 1.8.5: interactive who-like program that displays information about users currently logged on in real time
 app-admin/xstow 1.0.1: replacement for GNU stow with extensions
 app-admin/xtail 2.1 2.1-r1: Tail multiple logfiles at once, even if rotated
