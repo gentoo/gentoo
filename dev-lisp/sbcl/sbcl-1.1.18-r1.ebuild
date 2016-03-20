@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -6,18 +6,11 @@ EAPI=5
 inherit multilib eutils flag-o-matic pax-utils
 
 #same order as http://www.sbcl.org/platform-table.html
-BV_X86=1.2.7
-BV_AMD64=1.2.15
-BV_PPC=1.2.7
+BV_X86=1.0.58
+BV_AMD64=1.1.18
+BV_PPC=1.0.28
 BV_SPARC=1.0.28
 BV_ALPHA=1.0.28
-BV_ARM=1.2.7
-BV_PPC_MACOS=1.0.47
-BV_X86_MACOS=1.1.6
-BV_X64_MACOS=1.1.8
-BV_SPARC_SOLARIS=1.0.23
-BV_X86_SOLARIS=1.2.7
-BV_X64_SOLARIS=1.2.7
 
 DESCRIPTION="Steel Bank Common Lisp (SBCL) is an implementation of ANSI Common Lisp"
 HOMEPAGE="http://sbcl.sourceforge.net/"
@@ -26,26 +19,19 @@ SRC_URI="mirror://sourceforge/sbcl/${P}-source.tar.bz2
 	amd64? ( mirror://sourceforge/sbcl/${PN}-${BV_AMD64}-x86-64-linux-binary.tar.bz2 )
 	ppc? ( mirror://sourceforge/sbcl/${PN}-${BV_PPC}-powerpc-linux-binary.tar.bz2 )
 	sparc? ( mirror://sourceforge/sbcl/${PN}-${BV_SPARC}-sparc-linux-binary.tar.bz2 )
-	alpha? ( mirror://sourceforge/sbcl/${PN}-${BV_ALPHA}-alpha-linux-binary.tar.bz2 )
-	arm? ( mirror://sourceforge/sbcl/${PN}-${BV_ARM}-armhf-linux-binary.tar.bz2 )
-	ppc-macos? ( mirror://sourceforge/sbcl/${PN}-${BV_PPC_MACOS}-powerpc-darwin-binary.tar.bz2 )
-	x86-macos? ( mirror://sourceforge/sbcl/${PN}-${BV_X86_MACOS}-x86-darwin-binary.tar.bz2 )
-	x64-macos? ( mirror://sourceforge/sbcl/${PN}-${BV_X64_MACOS}-x86-64-darwin-binary.tar.bz2 )
-	sparc-solaris? ( mirror://sourceforge/sbcl/${PN}-${BV_SPARC_SOLARIS}-sparc-solaris-binary.tar.bz2 )
-	x86-solaris? ( mirror://sourceforge/sbcl/${PN}-${BV_X86_SOLARIS}-x86-solaris-binary.tar.bz2 )
-	x64-solaris? ( mirror://sourceforge/sbcl/${PN}-${BV_X64_SOLARIS}-x86-64-solaris-binary.tar.bz2 )"
+	alpha? ( mirror://sourceforge/sbcl/${PN}-${BV_ALPHA}-alpha-linux-binary.tar.bz2 )"
 
 LICENSE="MIT"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~ppc ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos ~x86-solaris"
+KEYWORDS="~amd64 ~ppc ~sparc ~x86"
 IUSE="debug doc source +threads +unicode pax_kernel zlib"
 
-CDEPEND=">=dev-lisp/asdf-3.1:="
+CDEPEND="=dev-lisp/asdf-3.0*:="
 DEPEND="${CDEPEND}
 		doc? ( sys-apps/texinfo >=media-gfx/graphviz-2.26.0 )
 		pax_kernel? ( sys-apps/paxctl sys-apps/elfix )"
 RDEPEND="${CDEPEND}
-		!prefix? ( elibc_glibc? ( >=sys-libs/glibc-2.6 ) )"
+		elibc_glibc? ( >=sys-libs/glibc-2.6 )"
 
 # Disable warnings about executable stacks, as this won't be fixed soon by upstream
 QA_EXECSTACK="usr/bin/sbcl"
@@ -88,21 +74,19 @@ sbcl_apply_features() {
 
 src_unpack() {
 	unpack ${A}
-	mv sbcl-*-* sbcl-binary || die
+	mv sbcl-*-linux sbcl-binary || die
 	cd "${S}"
 }
 
 src_prepare() {
 	epatch "${FILESDIR}"/gentoo-fix_install_man.patch
+	epatch "${FILESDIR}"/gentoo-fix_linux-os-c.patch
 	# bug #468482
-	epatch "${FILESDIR}"/concurrency-test-1.2.6.patch
-	# bugs #486552, #527666, #517004
-	epatch "${FILESDIR}"/bsd-sockets-test-1.2.11.patch
-	# bugs #560276, #561018
-	epatch "${FILESDIR}"/sb-posix-test-1.2.15.patch
-
-	epatch "${FILESDIR}"/${PN}-1.2.11-solaris.patch
-	epatch "${FILESDIR}"/${PN}-1.2.13-verbose-build.patch
+	epatch "${FILESDIR}"/concurrency-test.patch
+	# bug #486552
+	epatch "${FILESDIR}"/bsd-sockets-test.patch
+	# bug #577514
+	epatch "${FILESDIR}"/sbcl-1.1.18-graphiz-2.38.patch
 
 	# To make the hardened compiler NOT compile with -fPIE -pie
 	if gcc-specs-pie ; then
@@ -111,14 +95,11 @@ src_prepare() {
 	fi
 
 	# bug #526194
-	sed -e "s@CFLAGS =.*\$@CFLAGS = ${CFLAGS} -g -Wall -Wsign-compare@" \
-		-e "s@LINKFLAGS =.*\$@LINKFLAGS = ${LDFLAGS} -g@" \
+	sed -e "s@CFLAGS =@CFLAGS = ${CFLAGS}@" \
+		-e "s@LINKFLAGS =@LINKFLAGS = ${LDFLAGS}@" \
 		-i src/runtime/GNUmakefile || die
 
-	sed -e "s@SBCL_PREFIX=\"/usr/local\"@SBCL_PREFIX=\"${EPREFIX}/usr\"@" \
-		-i make-config.sh || die
-
-	cp "${EPREFIX}"/usr/share/common-lisp/source/asdf/build/asdf.lisp contrib/asdf/ || die
+	cp /usr/share/common-lisp/source/asdf/build/asdf.lisp contrib/asdf/ || die
 
 	use source && sed 's%"$(BUILD_ROOT)%$(MODULE).lisp "$(BUILD_ROOT)%' -i contrib/vanilla-module.mk
 
@@ -127,9 +108,11 @@ src_prepare() {
 	sed "s,^time ,," -i make.sh || die
 	sed "s,/lib,/$(get_libdir),g" -i install.sh || die
 	# #define SBCL_HOME ...
-	sed "s,/usr/local/lib,${EPREFIX}/usr/$(get_libdir),g" -i src/runtime/runtime.c || die
-	# change location of /etc/sbclrc ...
-	sed  "s,/etc/sbclrc,${EPREFIX}/etc/sbclrc,g" -i src/code/toplevel.lisp || die
+	sed "s,/usr/local/lib,/usr/$(get_libdir),g" -i src/runtime/runtime.c || die
+
+	# Avoid sandbox violation, bug #572478
+	sed -i -e "/(sb-posix:rmdir /s%\"/\"%\"${WORKDIR}\"%" \
+		contrib/sb-posix/posix-tests.lisp || die
 
 	find . -type f -name .cvsignore -delete
 }
@@ -153,13 +136,13 @@ src_compile() {
 		pax-mark -mr "${bindir}"/src/runtime/sbcl
 
 		# Hack to disable PaX on second GENESIS stage
-		sed -i -e '/^[ \t]*echo \/\/doing warm init - compilation phase$/a\    paxmark.sh -mr \.\/src\/runtime\/sbcl' \
+		sed -i -e '/^echo \/\/doing warm init - compilation phase$/a\paxmark.sh -mr \.\/src\/runtime\/sbcl' \
 			"${S}"/make-target-2.sh || die "Cannot disable PaX on second GENESIS runtime"
 	fi
 
 	# clear the environment to get rid of non-ASCII strings, see bug 174702
 	# set HOME for paludis
-	env - HOME="${T}" PATH="${PATH}" \
+	env - HOME="${T}" \
 		CC="$(tc-getCC)" AS="$(tc-getAS)" LD="$(tc-getLD)" \
 		CPPFLAGS="${CPPFLAGS}" CFLAGS="${CFLAGS}" ASFLAGS="${ASFLAGS}" LDFLAGS="${LDFLAGS}" \
 		GNUMAKE=make ./make.sh \
@@ -168,11 +151,11 @@ src_compile() {
 
 	# need to set HOME because libpango(used by graphviz) complains about it
 	if use doc; then
-		env - HOME="${T}" PATH="${PATH}" \
+		env - HOME="${T}" \
 			CL_SOURCE_REGISTRY="(:source-registry :ignore-inherited-configuration)" \
 			ASDF_OUTPUT_TRANSLATIONS="(:output-translations :ignore-inherited-configuration)" \
 			make -C doc/manual info html || die "Cannot build manual"
-		env - HOME="${T}" PATH="${PATH}" \
+		env - HOME="${T}" \
 			CL_SOURCE_REGISTRY="(:source-registry :ignore-inherited-configuration)" \
 			ASDF_OUTPUT_TRANSLATIONS="(:output-translations :ignore-inherited-configuration)" \
 			make -C doc/internals info html || die "Cannot build internal docs"
@@ -190,28 +173,25 @@ src_test() {
 src_install() {
 	# install system-wide initfile
 	dodir /etc/
-	sed 's/^X//' > "${ED}"/etc/sbclrc <<-EOF
+	sed 's/^X//' > "${D}"/etc/sbclrc <<-EOF
 	;;; The following is required if you want source location functions to
 	;;; work in SLIME, for example.
 	X
 	(setf (logical-pathname-translations "SYS")
-	X      '(("SYS:SRC;**;*.*.*" #p"${EPREFIX}/usr/$(get_libdir)/sbcl/src/**/*.*")
-	X        ("SYS:CONTRIB;**;*.*.*" #p"${EPREFIX}/usr/$(get_libdir)/sbcl/**/*.*")))
+	X      '(("SYS:SRC;**;*.*.*" #p"/usr/$(get_libdir)/sbcl/src/**/*.*")
+	X        ("SYS:CONTRIB;**;*.*.*" #p"/usr/$(get_libdir)/sbcl/**/*.*")))
 	X
 	;;; Setup ASDF2
-	(load "${EPREFIX}/etc/common-lisp/gentoo-init.lisp")
+	(load "/etc/common-lisp/gentoo-init.lisp")
 	EOF
 
 	# Install documentation
 	unset SBCL_HOME
-	INSTALL_ROOT="${ED}/usr" LIB_DIR="${EPREFIX}/usr/$(get_libdir)" DOC_DIR="${ED}/usr/share/doc/${PF}" \
+	INSTALL_ROOT="${D}/usr" LIB_DIR="/usr/$(get_libdir)" DOC_DIR="${D}/usr/share/doc/${PF}" \
 		sh install.sh || die "install.sh failed"
 
-	# bug #517008
-	pax-mark -mr "${D}"/usr/bin/sbcl
-
 	# rm empty directories lest paludis complain about this
-	find "${ED}" -empty -type d -exec rmdir -v {} +
+	find "${D}" -empty -type d -exec rmdir -v {} +
 
 	if use doc; then
 		dohtml -r doc/manual/
@@ -220,7 +200,7 @@ src_install() {
 		doinfo doc/internals/sbcl-internals.info
 		docinto internals-notes && dodoc doc/internals-notes/*
 	else
-		rm -Rv "${ED}/usr/share/doc/${PF}" || die
+		rm -Rv "${D}/usr/share/doc/${PF}" || die
 	fi
 
 	dodoc BUGS CREDITS INSTALL NEWS OPTIMIZATIONS PRINCIPLES README TLA TODO
@@ -228,11 +208,11 @@ src_install() {
 	# install the SBCL source
 	if use source; then
 		./clean.sh
-		cp -av src "${ED}/usr/$(get_libdir)/sbcl/" || die
+		cp -av src "${D}/usr/$(get_libdir)/sbcl/" || die
 	fi
 
 	# necessary for running newly-saved images
-	echo "SBCL_HOME=${EPREFIX}/usr/$(get_libdir)/${PN}" > "${ENVD}"
-	echo "SBCL_SOURCE_ROOT=${EPREFIX}/usr/$(get_libdir)/${PN}/src" >> "${ENVD}"
+	echo "SBCL_HOME=/usr/$(get_libdir)/${PN}" > "${ENVD}"
+	echo "SBCL_SOURCE_ROOT=/usr/$(get_libdir)/${PN}/src" >> "${ENVD}"
 	doenvd "${ENVD}"
 }
