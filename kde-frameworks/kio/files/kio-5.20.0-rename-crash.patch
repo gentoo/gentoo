@@ -1,0 +1,54 @@
+From a5f62007c294220c13bb080287035aeab77ae640 Mon Sep 17 00:00:00 2001
+From: Emmanuel Pescosta <emmanuelpescosta099@gmail.com>
+Date: Thu, 17 Mar 2016 10:28:09 +0100
+Subject: [PATCH] Fix crash in rename dialog
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+
+ResizePanels must only be called in case of overwrite, all other cases violate
+the preconditions.
+
+BUG: 360488
+---
+ src/widgets/renamedialog.cpp | 11 ++++++++++-
+ 1 file changed, 10 insertions(+), 1 deletion(-)
+
+diff --git a/src/widgets/renamedialog.cpp b/src/widgets/renamedialog.cpp
+index 2d456c7..cb3c0fb 100644
+--- a/src/widgets/renamedialog.cpp
++++ b/src/widgets/renamedialog.cpp
+@@ -105,6 +105,8 @@ public:
+         m_destPendingPreview = false;
+         m_srcPreview = 0;
+         m_destPreview = 0;
++        m_srcArea = Q_NULLPTR;
++        m_destArea = Q_NULLPTR;
+     }
+ 
+     void setRenameBoxText(const QString &fileName)
+@@ -385,7 +387,9 @@ RenameDialog::RenameDialog(QWidget *parent, const QString &_caption,
+ 
+ #if 1 // without kfilemetadata
+     // don't wait for kfilemetadata, but wait until the layouting is done
+-    QMetaObject::invokeMethod(this, "resizePanels", Qt::QueuedConnection);
++    if (_options & RenameDialog_Overwrite) {
++        QMetaObject::invokeMethod(this, "resizePanels", Qt::QueuedConnection);
++    }
+ #endif
+ }
+ 
+@@ -584,6 +588,11 @@ void RenameDialog::showDestPreview(const KFileItem &fileitem, const QPixmap &pix
+ 
+ void RenameDialog::resizePanels()
+ {
++    Q_ASSERT(d->m_srcArea != Q_NULLPTR);
++    Q_ASSERT(d->m_destArea != Q_NULLPTR);
++    Q_ASSERT(d->m_srcPreview != Q_NULLPTR);
++    Q_ASSERT(d->m_destPreview != Q_NULLPTR);
++
+     // using QDesktopWidget geometry as Kephal isn't accessible here in kdelibs
+     const QSize screenSize = QApplication::desktop()->availableGeometry(this).size();
+     QSize halfSize = d->m_srcArea->widget()->sizeHint().expandedTo(d->m_destArea->widget()->sizeHint());
+-- 
+2.7.3
+
