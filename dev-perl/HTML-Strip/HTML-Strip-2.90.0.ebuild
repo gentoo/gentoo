@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="Extension for stripping HTML markup from text"
 
 SLOT="0"
-KEYWORDS="amd64 ~ia64 ~ppc ppc64 sparc x86"
+KEYWORDS="amd64 ia64 ~ppc ppc64 sparc x86"
 IUSE="test"
 
 RDEPEND="
