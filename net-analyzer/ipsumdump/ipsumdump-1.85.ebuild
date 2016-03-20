@@ -10,7 +10,7 @@ SRC_URI="http://read.seas.harvard.edu/~kohler/ipsumdump/${P}.tar.gz"
 
 LICENSE="the-Click-license"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE="+ipv6 +nanotimestamp"
 
 RDEPEND="net-libs/libpcap"
