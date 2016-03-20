@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -19,6 +19,7 @@ KEYWORDS="~amd64 ~x86"
 # NOTE: The ssl flag auto added by ssl-cert eclass is not used actually
 # because openssl is forced by dev-perl/Net-SSLeay
 IUSE="minimal +ssl mysql postgres ldap"
+REQUIRED_USE="minimal? ( !mysql !postgres !ldap )"
 
 # All the required perl modules can be found easily using (in Webmin's root src dir):
 # find . -name cpan_modules.pl -exec grep "::" {} \;
@@ -93,7 +94,7 @@ src_install() {
 
 	# Copy our own setup script to installation folder
 	insinto /usr/libexec/webmin
-	newins "${FILESDIR}"/gentoo-setup gentoo-setup.sh
+	newins "${FILESDIR}"/gentoo-setup-${PV} gentoo-setup.sh
 	fperms 0744 /usr/libexec/webmin/gentoo-setup.sh
 
 	# This is here if we ever want in future ebuilds to add some specific
@@ -287,11 +288,12 @@ pkg_config(){
 	export real_os_type='Gentoo Linux'
 	export real_os_version='Any version'
 	# Forcing 'ssl', 'no_ssl2', 'no_ssl3', 'ssl_redirect', 'no_sslcompression',
-	# 'no_tls1' and 'no_tls1_1' for tightening security
+	# 'ssl_honorcipherorder', 'no_tls1' and 'no_tls1_1' for tightening security
 	export ssl=1
 	export no_ssl2=1
 	export no_ssl3=1
 	export ssl_redirect=1
+	export ssl_honorcipherorder=1
 	export no_sslcompression=1
 	export no_tls1=1
 	export no_tls1_1=1
