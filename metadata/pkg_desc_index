@@ -11554,7 +11554,7 @@ mail-client/alot 0.3.6 0.3.7-r1: Experimental terminal UI for net-mail/notmuch w
 mail-client/alpine 2.00-r5 2.00-r6: alpine is an easy to use text-based based mail and news client
 mail-client/balsa 2.4.14 2.5.2 2.5.2-r1: Email client for GNOME
 mail-client/biabam 0.9.7: Biabam is a small commandline tool for sending mail attachments
-mail-client/claws-mail 3.9.0 3.13.1 3.13.2: An email client (and news reader) based on GTK+
+mail-client/claws-mail 3.13.2: An email client (and news reader) based on GTK+
 mail-client/claws-mail-acpi-notifier 1.0.28: This plugin enables mail notification via LEDs on some laptops
 mail-client/claws-mail-address_keeper 1.0.7: Plugin for Claws to collect all recipients in an address book folder
 mail-client/claws-mail-archive 0.6.13: Plugin for Claws to add archiving features
@@ -14195,7 +14195,7 @@ net-libs/libosip 3.6.0 4.0.0: a simple way to support the Session Initiation Pro
 net-libs/libosmo-abis 9999: Osmocom library for A-bis interface
 net-libs/libosmo-dsp 0.3 9999: A library with SDR DSP primitives
 net-libs/libosmocore 0.6.6 0.8.0 9999: Utility functions for OsmocomBB, OpenBSC and related projects
-net-libs/libotr 3.2.1 4.1.0 4.1.1: (OTR) Messaging allows you to have private conversations over instant messaging
+net-libs/libotr 4.1.1: (OTR) Messaging allows you to have private conversations over instant messaging
 net-libs/libpcap 1.7.4 9999: A system-independent library for user-level network packet capture
 net-libs/libpcapnav 0.8: Libpcap wrapper library to navigate to arbitrary packets in a tcpdump trace file
 net-libs/libpri 1.4.12-r2 1.4.13 1.4.14 1.4.15: Primary Rate ISDN (PRI) library
@@ -14212,7 +14212,7 @@ net-libs/libsmi 0.4.8-r1 0.5.0: A Library to Access SMI MIB Information
 net-libs/libsoup 2.48.1 2.50.0 2.52.2: An HTTP library implementation in C
 net-libs/libsoup-gnome 2.48.1 2.50.0 2.52.2: GNOME plugin for libsoup
 net-libs/libsrtp 1.4.4-r1 1.4.4-r2 1.4.4_p20121108 1.4.4_p20121108-r1 1.5.2 1.5.2-r1: Open-source implementation of the Secure Real-time Transport Protocol (SRTP)
-net-libs/libssh 0.6.5 0.7.2 0.7.3 9999: Access a working SSH implementation by means of a library
+net-libs/libssh 0.7.3 9999: Access a working SSH implementation by means of a library
 net-libs/libssh2 1.5.0 1.6.0 1.6.0-r1 1.7.0 9999: Library implementing the SSH2 protocol
 net-libs/libtelnet 0.21 9999: Simple RFC-complient TELNET implementation as a C library
 net-libs/libtirpc 0.1.10 0.2.4-r1 0.2.4-r2 0.2.5 0.3.1 1.0.1: Transport Independent RPC library (SunRPC replacement)
@@ -18407,7 +18407,7 @@ x11-plugins/pidgin-mbpurple 0.3.0-r2: Libpurple (Pidgin) plug-in supporting micr
 x11-plugins/pidgin-mpris 0.2.6: Gets current song from MPRIS-aware media players
 x11-plugins/pidgin-musictracker 0.4.22: A Pidgin now playing plugin to publicise the songs you are listening to in your status message
 x11-plugins/pidgin-opensteamworks 1.4 1.6.1: Steam protocol plugin for pidgin
-x11-plugins/pidgin-otr 3.2.1 4.0.1 4.0.1-r1 4.0.2: (OTR) Messaging allows you to have private conversations over instant messaging
+x11-plugins/pidgin-otr 4.0.2: (OTR) Messaging allows you to have private conversations over instant messaging
 x11-plugins/pidgin-privacy-please 0.7.1: pidgin plugin to stop spammers from annoying you
 x11-plugins/pidgin-rhythmbox 2.0: automatically update your pidgin profile with current info from Rhythmbox
 x11-plugins/pidgin-sipe 1.18.0-r1 1.20.1: Pidgin Plug-in SIPE (Sip Exchange Protocol)
