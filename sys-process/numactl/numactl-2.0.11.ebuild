@@ -13,7 +13,7 @@ SRC_URI="ftp://oss.sgi.com/www/projects/libnuma/download/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 # ARM lacks the __NR_migrate_pages syscall.
-KEYWORDS="amd64 -arm ~ia64 ~mips ppc ppc64 x86 ~amd64-linux"
+KEYWORDS="amd64 -arm ia64 ~mips ppc ppc64 x86 ~amd64-linux"
 IUSE=""
 
 ECONF_SOURCE=${S}
