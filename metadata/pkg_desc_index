@@ -4939,7 +4939,7 @@ dev-lisp/flexi-streams 1.0.15: Flexible bivalent streams for Common Lisp
 dev-lisp/gcl 2.6.10 2.6.11 2.6.12: GNU Common Lisp
 dev-lisp/gentoo-init 0.1 1.0: Simple ASDF2 configuration for Gentoo Common Lisp ports
 dev-lisp/hyperspec 7.0 7.0-r1: Common Lisp ANSI-standard Hyperspec
-dev-lisp/sbcl 1.1.18 1.2.13 1.2.14 1.2.15 1.2.16 1.3.0 1.3.2 1.3.3: Steel Bank Common Lisp (SBCL) is an implementation of ANSI Common Lisp
+dev-lisp/sbcl 1.1.18 1.1.18-r1 1.3.0 1.3.3: Steel Bank Common Lisp (SBCL) is an implementation of ANSI Common Lisp
 dev-lisp/trivial-gray-streams 9999 20081102: A thin compatibility layer between Gray Stream Common Lisp implementations
 dev-lisp/uiop 3.0.3 3.1.4 3.1.5 3.1.6: UIOP is a portability layer spun off ASDF3
 dev-lua/LuaBitOp 1.0.1-r1 1.0.2 1.0.2-r1: Bit Operations Library for the Lua Programming Language
@@ -16494,6 +16494,7 @@ sys-apps/roccat-tools 3.4.0 3.5.0 3.5.0-r1 3.6.1 3.7.0: Utility for advanced con
 sys-apps/rsbac-admin 1.4.9: Rule Set Based Access Control (RSBAC) Admin Tools
 sys-apps/s390-tools 1.17.0 1.23.1: User space utilities for the zSeries (s390) Linux kernel and device drivers
 sys-apps/s6 2.1.3.0 2.2.4.3: skarnet.org's small and secure supervision software suite
+sys-apps/s6-linux-init 0.0.1.4: Generates an init binary for s6-based init systems
 sys-apps/s6-linux-utils 2.0.2.3: Set of tiny linux utilities
 sys-apps/s6-portable-utils 2.0.5.3: Set of tiny portable unix utilities
 sys-apps/s6-rc 0.0.2.1: Service manager for the s6 supervision suite
