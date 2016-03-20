@@ -1,9 +1,0 @@
---- FreeCAD-0.12.5284/src/CMakeLists.txt
-+++ FreeCAD-0.12.5284/src/CMakeLists.txt
-@@ -1,6 +1,5 @@
- 
- add_subdirectory(Build)
--add_subdirectory(3rdParty)
- add_subdirectory(Base)
- add_subdirectory(App)
- add_subdirectory(Main)
