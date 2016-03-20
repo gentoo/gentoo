@@ -13,11 +13,10 @@
     <use>
         <flag name="broccoli">Enable the Bro Client Communication Library</flag>
         <flag name="broctl">An interactive shell for managing Bro installations</flag>
-        <flag name="broker">Bro's (new) Messaging Library</flag>
+        <flag name="broker">Bro's new Messaging Library (experimental)</flag>
         <flag name="geoip">Enable support for Maxmind's GeoIP library</flag>
         <flag name="ipv6">Support for mobile IPv6</flag>
         <flag name="jemalloc">Support for the Jemalloc allocator</flag>
-        <flag name="mta">Enable Bro to send e-mails</flag>
         <flag name="python">Enable Python bindings</flag>
         <flag name="ruby">Enable Ruby bindings (deprecated)</flag>
         <flag name="tcmalloc">Enable Google's Performance Analysis Tools</flag>
