@@ -13,21 +13,21 @@ SRC_URI="https://www.bro.org/downloads/release/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64"
-IUSE="+broccoli +broctl broker curl debug geoip ipv6 jemalloc mta +python -ruby tcmalloc static-libs +tools"
+KEYWORDS="~amd64 ~x86"
+IUSE="+broccoli +broctl -broker curl debug geoip ipv6 jemalloc +python -ruby tcmalloc static-libs +tools"
 
 RDEPEND="app-shells/bash:0
 	dev-libs/openssl:0
 	net-analyzer/ipsumdump
-	ipv6? ( net-analyzer/ipsumdump[ipv6] )
 	net-dns/bind-tools
 	net-libs/libpcap
 	sys-libs/zlib
 	broker? ( =dev-libs/actor-framework-0.13.2* )
+	broctl? ( virtual/mta )
 	curl? ( net-misc/curl )
 	geoip? ( dev-libs/geoip )
+	ipv6? ( net-analyzer/ipsumdump[ipv6] )
 	jemalloc? ( dev-libs/jemalloc )
-	mta? ( virtual/mta )
 	python? ( ${PYTHON_DEPS} )
 	ruby? ( >=dev-lang/ruby-1.8:= )
 	tcmalloc? ( dev-util/google-perftools )"
