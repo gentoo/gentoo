@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit autotools eutils toolchain-funcs udev
+inherit autotools eutils flag-o-matic toolchain-funcs udev
 
 MY_PN=${PN}
 MY_PV=${PV/\./-}
@@ -44,6 +44,9 @@ src_prepare() {
 	epatch "${FILESDIR}"/${PN}-2011.08.1_p20140618-tinfo.patch
 	mv configure.{in,ac} || die
 	eautoreconf
+
+	# fix bug 577466 by restoring pre-GCC5 inline semantics
+	append-cflags -std=gnu89
 }
 
 # Please note that upstream removed the --with-gtk-version option
