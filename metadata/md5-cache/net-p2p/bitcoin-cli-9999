@@ -1,12 +1,12 @@
 DEFINED_PHASES=configure install prepare test unpack
-DEPEND=!<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 dev-vcs/git dev-libs/openssl:0[-bindist] >=dev-libs/boost-1.52.0[threads(+)] >=app-shells/bash-4.1 sys-apps/sed
-DESCRIPTION=Command-line JSON-RPC client specifically designed for talking to Bitcoin Core Daemon
+DEPEND=!<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 dev-vcs/git dev-libs/openssl:0[-bindist] dev-libs/libevent dev-libs/univalue >=dev-libs/boost-1.52.0[threads(+)] >=app-shells/bash-4.1 sys-apps/sed
+DESCRIPTION=Command-line client specifically designed for talking to Bitcoin Core Daemon
 EAPI=5
-HOMEPAGE=https://github.com/bitcoin/bitcoin
+HOMEPAGE=http://bitcoincore.org/
 IUSE=
 LICENSE=MIT
-RDEPEND=dev-libs/openssl:0[-bindist] >=dev-libs/boost-1.52.0[threads(+)]
+RDEPEND=dev-libs/openssl:0[-bindist] dev-libs/libevent dev-libs/univalue >=dev-libs/boost-1.52.0[threads(+)]
 SLOT=0
 _eclass_exported_funcs=src_unpack:git-2 src_prepare:- src_configure:- src_test:bitcoincore src_install:bitcoincore
-_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	bitcoincore	0e75b2c5641e07fcaea145ca163cc877	db-use	a4966c7f4f7df444ead1212848c13cc9	eutils	9d81603248f2ba3ec59124320d123e5e	git-2	df00117322129fb906bb0a53c3d6a020	libtool	b75230758539a7da029e24afdb693960	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=74373b93b9e733b79871e24044b19b83
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	bitcoincore	e0bdb90bdc2e46035fcd3abddf0340bc	db-use	a4966c7f4f7df444ead1212848c13cc9	eutils	9d81603248f2ba3ec59124320d123e5e	git-2	df00117322129fb906bb0a53c3d6a020	libtool	b75230758539a7da029e24afdb693960	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=e38177d77ba4bd3b17fe0faa57c1eee0

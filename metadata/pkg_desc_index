@@ -451,7 +451,7 @@ app-cdr/cuecue 0.2.2-r1: Cuecue is a suite to convert .cue + [.ogg|.flac|.wav|.m
 app-cdr/cuegen 1.2.0: CUEgen is a FLAC-compatible cuesheet generator for Linux
 app-cdr/cuetools 1.3.1 1.3.1-r2 1.4.1: Utilities to manipulate and convert cue and toc files
 app-cdr/daa2iso 0.1.7e: Program for converting the DAA and GBI files to ISO
-app-cdr/disc-cover 1.5.6 1.5.6-r1: Creates CD-Covers via LaTeX by fetching cd-info from freedb.org or local file
+app-cdr/disc-cover 1.5.6-r1: Creates CD-Covers via LaTeX by fetching cd-info from freedb.org or local file
 app-cdr/dvd+rw-tools 7.1-r1: A set of tools for DVD+RW/-RW drives
 app-cdr/dvd95 1.6_p0: DVD95 is a Gnome application to convert DVD9 to DVD5
 app-cdr/dvdisaster 0.72.4 0.79.5: Tool for creating error correction data (ecc) for optical media (DVD, CD, BD)
@@ -4722,7 +4722,7 @@ dev-libs/librevenge 0.0.1 0.0.2 0.0.3 0.0.4 9999: A helper library for REVerse E
 dev-libs/libroadnav 0.19: A library capable of plotting streetmaps and providing driving directions for US addresses
 dev-libs/librra 0.16: Implements the RRA protocol, for syncing pre WM-2005 PIM data, and files for all versions
 dev-libs/librtfcomp 1.2: Library for handling compressed RTF documents
-dev-libs/libsecp256k1 0.0.0_pre20141212 0.0.0_pre20150423 9999: Optimized C library for EC operations on curve secp256k1
+dev-libs/libsecp256k1 0.0.0_pre20141212 0.0.0_pre20150423 0.0.0_pre20151118 9999: Optimized C library for EC operations on curve secp256k1
 dev-libs/libserialport 0.1.0 9999: Cross platform serial port access library
 dev-libs/libsigc++ 1.2.7 2.4.1 2.6.2: Typesafe callback system for standard C++
 dev-libs/libsigsegv 2.10: library for handling page faults in user mode
@@ -4888,6 +4888,7 @@ dev-libs/ucommon 6.0.3 6.1.10 6.3.1 6.5.2 6.5.7: Portable C++ runtime for thread
 dev-libs/udis86 1.7-r2 1.7.2: Disassembler library for the x86/-64 architecture sets
 dev-libs/unibilium 1.1.2 1.1.4: A very basic terminfo library
 dev-libs/unittest++ 1.6.0: A lightweight unit testing framework for C++
+dev-libs/univalue 1.0.2: C++ universal value object and JSON library
 dev-libs/urdfdom 0.3.0 0.4.1 9999: URDF (U-Robot Description Format) library
 dev-libs/urdfdom_headers 0.3.0 0.4.0 0.4.1 9999: URDF (U-Robot Description Format) headers
 dev-libs/uriparser 0.7.9 0.8.0 0.8.1 0.8.2 0.8.3 0.8.4: Uriparser is a strictly RFC 3986 compliant URI parsing library in C
@@ -9449,7 +9450,7 @@ dev-util/bdelta 0.3.1 9999: Binary Delta - Efficient difference algorithm and fo
 dev-util/beediff 1.9: A graphical user interface for comparing and merging files
 dev-util/biew 6.1.0-r3: A portable viewer of binary files, hexadecimal and disassembler modes
 dev-util/bin_replace_string 0.2: A tool to edit C strings in compiled binaries
-dev-util/bitcoin-tx 0.10.0 0.10.1 0.11.0 0.11.1 0.11.2 9999: Command-line Bitcoin transaction tool
+dev-util/bitcoin-tx 0.10.0 0.10.1 0.11.0 0.11.1 0.11.2 0.12.0 9999: Command-line Bitcoin transaction tool
 dev-util/bless 0.6.0-r2: GTK# Hex Editor
 dev-util/bluej 3.1.1: An integrated Java environment for introductory teaching
 dev-util/bnfc 2.7.1 2.8: A compiler front-end generator
@@ -9756,7 +9757,6 @@ dev-util/usb-robot 0.2.0: USB Reverse engineering tools
 dev-util/valgrind 3.10.1 3.11.0: An open-source memory debugger for GNU/Linux
 dev-util/valkyrie 2.0.0: Graphical front-end to the Valgrind suite of tools
 dev-util/vbindiff 3.0_beta1 3.0_beta4: Visual binary diff utility
-dev-util/vdkbuilder 2.4.0 2.5.0: The Visual Development Kit used for VDK Builder
 dev-util/visual-regexp 3.0-r1 3.1: Type the regexp and visualize it on a sample of your choice
 dev-util/visualvm 1.3.8-r1: Integrates commandline JDK tools and profiling capabilites
 dev-util/vmtouch 1.0.2: Virtual Memory Toucher, portable file system cache diagnostics and control
@@ -10839,7 +10839,6 @@ gnome-extra/cinnamon-session 2.6.3 2.8.2: Cinnamon session manager
 gnome-extra/cinnamon-settings-daemon 2.6.3 2.8.2-r1 2.8.3: Cinnamon's settings daemon
 gnome-extra/cinnamon-translations 2.6.3 2.8.2 2.8.3: Translation data for Cinnamon
 gnome-extra/cjs 2.6.2 2.8.0: Linux Mint's fork of gjs for Cinnamon
-gnome-extra/connman-gnome 0.7: Provides a daemon for managing internet connections
 gnome-extra/docky 2.2.0 2.2.1.1: Elegant, powerful, clean dock
 gnome-extra/eiciel 0.9.11 0.9.11-r1: ACL editor for GNOME, with Nautilus extension
 gnome-extra/evolution-data-server 3.16.5 3.18.4 3.18.5: Evolution groupware backend
@@ -13283,7 +13282,6 @@ media-tv/tvnamer 2.3: Automatic TV episode file renamer, data from thetvdb.com
 media-tv/v4l-dvb-saa716x 0.0.1_p20140322 0.0.1_p20141109 0.0.1_p20141109-r1 0.0.1_p20141109-r2: driver for saa716x based dvb cards like Technotrend S2-6400 or Technisat Skystar 2 eXpress HD
 media-tv/v4l-utils 1.0.0 1.6.0 1.6.2: Separate utilities ebuild from upstream v4l-utils package
 media-tv/w_scan 20141122: Scan for DVB-C/DVB-T/DVB-S channels without prior knowledge of frequencies and modulations
-media-tv/wis-go7007 0.9.8-r3: Linux drivers for go7007 chipsets (Plextor ConvertX PVR)
 media-tv/xmltv 0.5.57 0.5.67: Set of utilities to manage TV listings stored in the XMLTV format
 media-video/2mandvd 1.8.5: The successor of ManDVD
 media-video/aacskeys 0.4.0c-r2 0.4.0e: Decrypt keys from an AACS source (HD DVD / Blu-Ray)
@@ -13428,7 +13426,6 @@ media-video/smtube 15.11.0 15.11.0-r1 15.11.0-r2 16.1.0 16.3.0: YouTube Browser 
 media-video/snappy 1.0 1.0-r1: A simple media player written using GStreamer and Clutter
 media-video/sonic-snap 1.7: Webcam app for sn9c10x based camera controllers (with optional MPEG4 support)
 media-video/sswf 1.8.2-r1 1.8.4-r1: A C++ Library and a script language tool to create Flash (SWF) movies up to version 8
-media-video/stk11xx 2.1.0_p104 9999: A driver for Syntek webcams often found in Asus notebooks
 media-video/streamdvd 0.4-r1: fast tool to backup Video DVDs 'on the fly'
 media-video/sub2srt 0.5.3: Tool to convert several subtitle formats into subviewer srt
 media-video/subcheck 0.78.2: Subcheck checks srt subtitle files for errors
@@ -14129,7 +14126,7 @@ net-libs/liba53 9999: A5/3 Call encryption library
 net-libs/libaccounts-glib 1.19 1.21-r2: Accounts SSO (Single Sign-On) management library for GLib applications
 net-libs/libasr 1.0.1 1.0.1.201505061057 1.0.2: Async Resolver Library from OpenBSD/OpenSMTPD
 net-libs/libasyncns 0.8-r3 0.8-r4: C library for executing name service queries asynchronously
-net-libs/libbitcoinconsensus 0.10.0 0.10.1 0.11.0 0.11.1 0.11.2 9999: Bitcoin Core consensus library
+net-libs/libbitcoinconsensus 0.10.0 0.10.1 0.11.0 0.11.1 0.11.2 0.12.0 9999: Bitcoin Core consensus library
 net-libs/libblkmaker 0.3.2 0.4.2 0.4.3 0.5.0 0.5.1 0.5.2: C implementation of getblocktemplate (BIP 22)
 net-libs/libbluedevil 2.1: Qt wrapper for bluez used in the KDE bluetooth stack
 net-libs/libbtbb 2015.09.2-r1 2015.10.1 9999: A library to decode Bluetooth baseband packets
@@ -14851,9 +14848,9 @@ net-nntp/ubh 2.5: The Usenet Binary Harvester
 net-nntp/xrn 9.02: A small and fast news reader for X
 net-p2p/airdcpp-webclient 0.16.5 1.0.0 1.0.1: Cross-platform Direct Connect client
 net-p2p/amule 2.3.1 2.3.1-r1: aMule, the all-platform eMule p2p client
-net-p2p/bitcoin-cli 0.10.2 0.11.0 0.11.1 0.11.2 9999: Command-line JSON-RPC client specifically designed for talking to Bitcoin Core Daemon
-net-p2p/bitcoin-qt 0.10.2 0.10.2-r1 0.11.0 0.11.1 0.11.2 9999: An end-user Qt GUI for the Bitcoin crypto-currency
-net-p2p/bitcoind 0.10.2 0.10.2-r1 0.11.0 0.11.1 0.11.2 9999: Original Bitcoin crypto-currency wallet for automated services
+net-p2p/bitcoin-cli 0.10.2 0.11.0 0.11.1 0.11.2 0.12.0 9999: Command-line client specifically designed for talking to Bitcoin Core Daemon
+net-p2p/bitcoin-qt 0.10.2 0.10.2-r1 0.11.0 0.11.1 0.11.2 0.12.0 9999: An end-user Qt GUI for the Bitcoin crypto-currency
+net-p2p/bitcoind 0.10.2 0.10.2-r1 0.11.0 0.11.1 0.11.2 0.12.0 9999: Original Bitcoin crypto-currency wallet for automated services
 net-p2p/bitcoinxt-qt 0.11.0d: BitcoinXT crypto-currency GUI wallet
 net-p2p/bitcoinxtd 0.11.0d: BitcoinXT crypto-currency wallet for automated services
 net-p2p/bitflu 1.50 1.51 1.52: BitTorrent client, written in Perl and is designed to run as a daemon
@@ -14871,12 +14868,6 @@ net-p2p/ed2k_hash 0.4.0-r1: Tool for generating eDonkey2000 links
 net-p2p/eiskaltdcpp 2.2.9 9999: Qt based client for DirectConnect and ADC protocols, based on DC++ library
 net-p2p/fms 0.3.73 0.3.75: A spam-resistant message board application for Freenet
 net-p2p/freenet 0.7.5_p1470: An encrypted network without censorship
-net-p2p/gift 0.11.8.1-r1: A OpenFT, Gnutella and FastTrack p2p network daemon
-net-p2p/gift-ares 0.3.0-r1: Ares Plugin for giFT
-net-p2p/gift-fasttrack 0.8.9-r1: FastTrack Plugin for giFT
-net-p2p/gift-gnutella 0.0.11: The giFT Gnutella plugin
-net-p2p/gift-openft 0.2.1.6: The giFT OpenFT plugin
-net-p2p/giftcurs 0.6.2: A ncurses frontend to the giFT daemon
 net-p2p/gnut 0.4.28-r1: Text-mode gnutella client
 net-p2p/gtk-gnutella 1.1.8 1.1.9: A GTK+ Gnutella client
 net-p2p/gtorrentviewer 0.2b: A GTK2-based viewer and editor for BitTorrent meta files
@@ -16108,7 +16099,6 @@ sec-policy/selinux-fprintd 2.20141203-r1 2.20141203-r2 2.20141203-r3 2.20141203-
 sec-policy/selinux-ftp 2.20141203-r1 2.20141203-r2 2.20141203-r3 2.20141203-r4 2.20141203-r5 2.20141203-r6 2.20141203-r7 2.20141203-r8 2.20141203-r9 2.20141203-r10 2.20151208-r1 2.20151208-r2 9999: SELinux policy for ftp
 sec-policy/selinux-games 2.20141203-r1 2.20141203-r2 2.20141203-r3 2.20141203-r4 2.20141203-r5 2.20141203-r6 2.20141203-r7 2.20141203-r8 2.20141203-r9 2.20141203-r10 2.20151208-r1 2.20151208-r2 9999: SELinux policy for games
 sec-policy/selinux-gatekeeper 2.20141203-r1 2.20141203-r2 2.20141203-r3 2.20141203-r4 2.20141203-r5 2.20141203-r6 2.20141203-r7 2.20141203-r8 2.20141203-r9 2.20141203-r10 2.20151208-r1 2.20151208-r2 9999: SELinux policy for gatekeeper
-sec-policy/selinux-gift 2.20141203-r1 2.20141203-r2 2.20141203-r3 2.20141203-r4 2.20141203-r5 2.20141203-r6 2.20141203-r7 2.20141203-r8 2.20141203-r9 2.20141203-r10 2.20151208-r1 2.20151208-r2 9999: SELinux policy for gift
 sec-policy/selinux-git 2.20141203-r5 2.20141203-r6 2.20141203-r7 2.20141203-r8 2.20141203-r9 2.20141203-r10 2.20151208-r1 2.20151208-r2 9999: SELinux policy for git
 sec-policy/selinux-gitosis 2.20141203-r1 2.20141203-r2 2.20141203-r3 2.20141203-r4 2.20141203-r5 2.20141203-r6 2.20141203-r7 2.20141203-r8 2.20141203-r9 2.20141203-r10 2.20151208-r1 2.20151208-r2 9999: SELinux policy for gitosis
 sec-policy/selinux-gnome 2.20141203-r1 2.20141203-r2 2.20141203-r3 2.20141203-r4 2.20141203-r5 2.20141203-r6 2.20141203-r7 2.20141203-r8 2.20141203-r9 2.20141203-r10 2.20151208-r1 2.20151208-r2 9999: SELinux policy for gnome
