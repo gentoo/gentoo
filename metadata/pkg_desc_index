@@ -401,7 +401,7 @@ app-benchmarks/contest 0.61 0.61-r1: Test system responsiveness to compare diffe
 app-benchmarks/cpuburn 1.4a 1.4a-r1: Designed to heavily load CPU chips [testing purposes]
 app-benchmarks/dbench 4.0: Popular filesystem benchmark
 app-benchmarks/expedite 1.7.10: Performance and correctness test suite for Evas
-app-benchmarks/filebench 1.4.9.1: Filebench - A Model Based File System Workload Generator
+app-benchmarks/filebench 1.4.9.1-r1: Filebench - A Model Based File System Workload Generator
 app-benchmarks/forkbomb 1.4: Controlled fork() bomber for testing heavy system load
 app-benchmarks/gtkperf 0.40-r1: Application designed to test GTK+ performance
 app-benchmarks/httperf 0.9.0-r2: A tool from HP for measuring web server performance
