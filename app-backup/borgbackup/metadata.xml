@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>blueness@gentoo.org</email>
+		<name>Anthony G. Basile</name>
+	</maintainer>
+	<use>
+		<flag name="fuse">Mount archive as a FUSE filesystem.</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">borgbackup/borg</remote-id>
+	</upstream>
+</pkgmetadata>
