@@ -4965,11 +4965,10 @@ net-analyzer/barnyard2:gre - Enable GRE support
 net-analyzer/barnyard2:mpls - Enable support for mpls networks
 net-analyzer/bro:broccoli - Enable the Bro Client Communication Library
 net-analyzer/bro:broctl - An interactive shell for managing Bro installations
-net-analyzer/bro:broker - Bro's (new) Messaging Library
+net-analyzer/bro:broker - Bro's new Messaging Library (experimental)
 net-analyzer/bro:geoip - Enable support for Maxmind's GeoIP library
 net-analyzer/bro:ipv6 - Support for mobile IPv6
 net-analyzer/bro:jemalloc - Support for the Jemalloc allocator
-net-analyzer/bro:mta - Enable Bro to send e-mails
 net-analyzer/bro:python - Enable Python bindings
 net-analyzer/bro:ruby - Enable Ruby bindings (deprecated)
 net-analyzer/bro:tcmalloc - Enable Google's Performance Analysis Tools
