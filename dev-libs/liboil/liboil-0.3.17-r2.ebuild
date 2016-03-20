@@ -42,6 +42,9 @@ src_configure() {
 	filter-flags -O?
 	append-flags -O2
 
+	# For use with Clang, which is the only compiler on OSX, bug #576646
+	[[ ${CHOST} == *-darwin* ]] && append-flags -fheinous-gnu-extensions
+
 	autotools-multilib_src_configure
 }
 
