@@ -25,7 +25,7 @@ LICENSE="vmware GPL-2"
 SLOT="0"
 KEYWORDS="-* ~amd64"
 IUSE="cups bundled-libs doc ovftool server vix vmware-tools"
-RESTRICT="mirror strip preserve-libs"
+RESTRICT="mirror strip"
 
 BUNDLED_LIBS_DIR=/opt/vmware/lib/vmware/lib
 
