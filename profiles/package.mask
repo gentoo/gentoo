@@ -73,7 +73,7 @@ www-apps/coppermine
 
 # Aaron Bauman <bman@gentoo.org> (19 Mar 2016)
 # Multiple unpatched security vulnerabilities
-# per bug #523040. Masked for removal in 30 days.
+# per bug #532040. Masked for removal in 30 days.
 dev-libs/matrixssl
 
 # Michael Palimaka <kensington@gentoo.org> (17 Mar 2016)
