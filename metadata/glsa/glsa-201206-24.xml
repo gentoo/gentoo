@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">apache tomcat</product>
   <announced>June 24, 2012</announced>
-  <revised>December 10, 2015: 2</revised>
+  <revised>March 20, 2016: 3</revised>
   <bug>272566</bug>
   <bug>273662</bug>
   <bug>303719</bug>
@@ -25,6 +25,10 @@
       <unaffected range="rge">6.0.35</unaffected>
       <unaffected range="ge">7.0.23</unaffected>
       <unaffected range="rge">6.0.44</unaffected>
+      <unaffected range="rge">6.0.45</unaffected>
+      <unaffected range="rge">6.0.46</unaffected>
+      <unaffected range="rge">6.0.47</unaffected>
+      <unaffected range="rge">6.0.48</unaffected>
       <vulnerable range="lt">7.0.23</vulnerable>
     </package>
   </affected>
@@ -100,7 +104,7 @@
     <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0022">CVE-2012-0022</uri>
   </references>
   <metadata tag="requester" timestamp="Fri, 07 Oct 2011 23:38:00 +0000">craig</metadata>
-  <metadata tag="submitter" timestamp="Thu, 10 Dec 2015 17:20:24 +0000">
+  <metadata tag="submitter" timestamp="Sun, 20 Mar 2016 14:15:43 +0000">
     keytoaster
   </metadata>
 </glsa>
