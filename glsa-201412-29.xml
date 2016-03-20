@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">tomcat</product>
   <announced>December 15, 2014</announced>
-  <revised>December 15, 2014: 1</revised>
+  <revised>March 20, 2016: 2</revised>
   <bug>442014</bug>
   <bug>469434</bug>
   <bug>500600</bug>
@@ -19,6 +19,13 @@
     <package name="www-servers/tomcat" auto="yes" arch="*">
       <unaffected range="ge">7.0.56</unaffected>
       <unaffected range="rge">6.0.41</unaffected>
+      <unaffected range="rge">6.0.42</unaffected>
+      <unaffected range="rge">6.0.43</unaffected>
+      <unaffected range="rge">6.0.44</unaffected>
+      <unaffected range="rge">6.0.45</unaffected>
+      <unaffected range="rge">6.0.46</unaffected>
+      <unaffected range="rge">6.0.47</unaffected>
+      <unaffected range="rge">6.0.48</unaffected>
       <vulnerable range="lt">7.0.56</vulnerable>
     </package>
   </affected>
@@ -76,5 +83,5 @@
     <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0119">CVE-2014-0119</uri>
   </references>
   <metadata tag="requester" timestamp="Sun, 16 Dec 2012 22:03:30 +0000">craig</metadata>
-  <metadata tag="submitter" timestamp="Mon, 15 Dec 2014 00:11:47 +0000">ackle</metadata>
+  <metadata tag="submitter" timestamp="Sun, 20 Mar 2016 14:13:30 +0000">ackle</metadata>
 </glsa>
