@@ -18,7 +18,8 @@ IUSE="examples"
 RDEPEND="x11-libs/libXtst
 	x11-libs/libX11
 	x11-libs/libXinerama"
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	x11-libs/libxkbcommon"
 
 # The test wants to manualy start Xvfb, wont use VirtualX and it tries
 # to run a full gnome-session. For such a tiny application i consider
