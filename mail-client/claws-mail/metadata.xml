@@ -19,9 +19,6 @@
 		reporting to various services</flag>
 		<flag name="bogofilter">Build <pkg>mail-filter/bogofilter</pkg>
 			plugin</flag>
-		<flag name="dillo">Enables support for inline HTTP email viewing with a
-			plugin (which depends on the <pkg>www-client/dillo</pkg> 
-			browser)</flag>
 		<flag name="libcanberra">Enable sound notification in connection
 		with USE=notification</flag>
 		<flag name="libindicate">Enable notification through
