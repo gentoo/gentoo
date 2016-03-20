@@ -12003,7 +12003,7 @@ media-gfx/gthumb 3.4.0 3.4.1: Image viewer and browser for Gnome
 media-gfx/gtkam 0.2.0: A frontend for gPhoto 2
 media-gfx/gtkimageview 1.6.4: A simple image viewer widget for GTK
 media-gfx/hp2xx 3.4.4 3.4.4-r1: Versatile tool to convert Hewlett-Packard's HP-GL plotter language into other graphics formats
-media-gfx/hugin 2015.0.0-r1 2016.0.0_rc2 9999: GUI for the creation & processing of panoramic images
+media-gfx/hugin 2015.0.0-r1 2016.0.0 9999: GUI for the creation & processing of panoramic images
 media-gfx/icc_examin 0.54 0.55 0.55-r1 9999: Viewer for ICC and CGATS profiles, argylls gamut vrml visualisations and GPU gamma tables
 media-gfx/icon-slicer 0.3: utility for generating icon themes and libXcursor cursor themes
 media-gfx/icoutils 0.31.0: A set of programs for extracting and converting images in icon and cursor files (.ico, .cur)
