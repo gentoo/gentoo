@@ -4,7 +4,7 @@ DESCRIPTION=XCB-based Python bindings for the X Window System
 EAPI=5
 HOMEPAGE=http://xcb.freedesktop.org/
 IUSE=selinux static-libs python_targets_python2_7
-KEYWORDS=alpha amd64 arm hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd
+KEYWORDS=alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd
 LICENSE=MIT
 RDEPEND=>=x11-libs/libxcb-1.7 >=x11-proto/xcb-proto-1.7.1[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
 REQUIRED_USE=|| ( python_targets_python2_7 )
@@ -12,4 +12,4 @@ SLOT=0
 SRC_URI=http://xcb.freedesktop.org/dist/xpyb-1.3.1.tar.bz2
 _eclass_exported_funcs=pkg_postrm:xorg-2 pkg_postinst:xorg-2 pkg_setup:- src_unpack:xorg-2 src_prepare:xorg-2 src_configure:- src_compile:- src_test:autotools-utils src_install:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	autotools-utils	419811142edf3516b0d0cf1a254d93cb	eutils	9d81603248f2ba3ec59124320d123e5e	flag-o-matic	d270fa247153df66074f795fa42dba3e	libtool	b75230758539a7da029e24afdb693960	multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	3972ca401cf7dbb430df9995f5d8d580	python-r1	0f6937650a475d673baa5d0c8c0b37b3	python-utils-r1	2e6826f6a93ad2acf904eecf5b5fb6d2	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	xorg-2	b41f09eee8d441f780b7413dba7e120b
-_md5_=5bdd27a622e8313a503dacee330becf1
+_md5_=3512321961fdea23a20865bdc1527d2c
