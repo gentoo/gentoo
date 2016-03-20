@@ -1,0 +1,22 @@
+From: Göktürk Yüksek <gokturk@binghamton.edu>
+Subject: [PATCH] Fix automagic dependency on libtecla
+
+Replace the unconditional AC_CHECK_LIB logic with AC_ARG_WITH to
+eliminate the automagic dependency on libtecla.
+
+--- a/configure.ac
++++ b/configure.ac
+@@ -164,8 +164,11 @@
+ AC_CHECK_LIB([kstat], [kstat_open])
+ # Use libtecla for autocompletion if it is available. If it
+ # is, then conditionally compile auto_comp.c (see Makefile.am)
+-AC_CHECK_LIB([tecla], [cpl_add_completion])
+-AM_CONDITIONAL(AUTOCOMP_LIBTECLA, test "$ac_cv_lib_tecla_cpl_add_completion" = yes)
++AC_ARG_WITH([libtecla], AS_HELP_STRING([--with-libtecla], [Build with libtecla for autocompletion support (default: test)]))
++AS_IF([test "x$with_libtecla" != "xno"], [
++	AC_CHECK_LIB([tecla], [cpl_add_completion])
++])
++AM_CONDITIONAL([AUTOCOMP_LIBTECLA], [test "x$ac_cv_lib_tecla_cpl_add_completion" = "xyes"])
+ # Check that librt is installed and supports async IO. First line
+ # allows to add librt to the linkers path, second one checks
+ # if aio_wait() is in it, third one checks if aio_waitn() is there (usually
