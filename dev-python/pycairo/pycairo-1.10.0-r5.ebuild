@@ -133,8 +133,10 @@ src_install() {
 		# calling them .bundle, it also has no idea what it should do to create
 		# proper ones (dylibs)
 		fix_darwin_install_names() {
-			local x="$(python_get_sitedir)/cairo/_cairo.bundle"
-			install_name_tool -id "${x}" "${ED}${x}"
+			local suffix=$("${PYTHON}" -c 'import sysconfig; print(sysconfig.get_config_var("EXT_SUFFIX"))')
+			[[ -z ${suffix} || ${suffix} == "None" ]] && suffix=".bundle"
+			local x="$(python_get_sitedir)/cairo/_cairo${suffix}"
+			install_name_tool -id "${x}" "${D}${x}"
 		}
 		python_foreach_impl fix_darwin_install_names
 	fi
