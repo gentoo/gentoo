@@ -6,7 +6,8 @@
 # New entries go on top.
 
 # Lars Wendler <polynomial-c@gentoo.org> (20 Mar 2016)
-# Requires vulnerable libotr version (see bug #576914).
+# Need vulnerable libotr version (see bug #576914).
+net-im/centerim otr
 =net-im/climm-0.7.1 otr
 
 # James Le Cuirot <chewi@gentoo.org> (14 Mar 2016)
