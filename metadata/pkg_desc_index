@@ -5555,7 +5555,7 @@ dev-perl/File-DirWalk 0.400.0-r1: File::DirWalk - walk through a directory tree 
 dev-perl/File-Find-Rule 0.330.0-r1 0.340.0: Alternative interface to File::Find
 dev-perl/File-Find-Rule-Perl 1.130.0: Common rules for searching for Perl things
 dev-perl/File-Flat 1.40.0-r1: Implements a flat filesystem
-dev-perl/File-Flock 2008.10.0-r1 2014.10.0: flock() wrapper. Auto-create locks
+dev-perl/File-Flock 2014.10.0: flock() wrapper. Auto-create locks
 dev-perl/File-Grep 0.020.0-r1: Find matches to a pattern in a series of files and related functions
 dev-perl/File-HomeDir 1.0.0-r1: Get home directory for self or other user
 dev-perl/File-KeePass 2.30.0: Interface to KeePass V1 and V2 database files
@@ -5569,7 +5569,7 @@ dev-perl/File-Next 1.120.0-r1: File::Next is an iterator-based module for findin
 dev-perl/File-Path-Expand 1.20.0-r1: Expand filenames
 dev-perl/File-ReadBackwards 1.50.0-r1: The Perl File-ReadBackwards Module
 dev-perl/File-Remove 1.520.0-r1 1.550.0: Remove files and directories
-dev-perl/File-RsyncP 0.700.0 0.740.0: An rsync perl module
+dev-perl/File-RsyncP 0.740.0: An rsync perl module
 dev-perl/File-Scan-ClamAV 1.910.0-r1 1.930.0: Connect to a local Clam Anti-Virus clamd service and send commands
 dev-perl/File-SearchPath 0.60.0-r1: Search for a file in an environment variable path
 dev-perl/File-ShareDir 1.30.0-r1: Locate per-dist and per-module shared files
@@ -5594,7 +5594,7 @@ dev-perl/Filesys-Df 0.920.0-r1: Disk free based on Filesys::Statvfs
 dev-perl/Filesys-DiskSpace 0.50.0-r1: Perl df
 dev-perl/Filesys-Notify-Simple 0.120.0: Simple and dumb file system watcher
 dev-perl/Filesys-SmbClient 3.200.0-r1: Provide Perl API for libsmbclient.so
-dev-perl/Filter 1.490.0 1.540.0 1.550.0: Interface for creation of Perl Filters
+dev-perl/Filter 1.540.0 1.550.0: Interface for creation of Perl Filters
 dev-perl/Finance-Quote 1.370.0 1.380.0: Get stock and mutual fund quotes from various exchanges
 dev-perl/Finance-YahooQuote 0.250.0: Get stock quotes from Yahoo! Finance
 dev-perl/Font-AFM 1.200.0-r1: Parse Adobe Font Metric files
@@ -5614,7 +5614,7 @@ dev-perl/GStreamer-Interfaces 0.60.0-r1: Perl interface to the GStreamer Interfa
 dev-perl/Gearman 1.120.0: Gearman distributed job system, client and worker libraries
 dev-perl/Gearman-Client-Async 0.940.0-r1: Asynchronous client module for Gearman for Danga::Socket applications
 dev-perl/Gearman-Server 1.120.0: Gearman distributed job system - worker/client connector
-dev-perl/Gentoo-PerlMod-Version 0.6.0-r1 0.7.0 0.8.0: Convert arbitrary Perl Modules' versions into normalised Gentoo versions
+dev-perl/Gentoo-PerlMod-Version 0.8.0: Convert arbitrary Perl Modules' versions into normalised Gentoo versions
 dev-perl/Geo-IP 1.450.0: Look up country by IP Address
 dev-perl/Geography-Countries 2009041301.0.0-r1: 2-letter, 3-letter, and numerical codes for countries
 dev-perl/Getopt-ArgvFile 1.110.0-r1: This module is a simple supplement to other option handling modules
@@ -5658,7 +5658,7 @@ dev-perl/HTML-Quoted 0.40.0: Extract structure of quoted HTML mail message
 dev-perl/HTML-RewriteAttributes 0.50.0-r1: Perl module for concise attribute rewriting
 dev-perl/HTML-Scrubber 0.150.0: Perl extension for scrubbing/sanitizing html
 dev-perl/HTML-SimpleParse 0.120.0-r1: A bare-bones HTML parser, similar to HTML::Parser, but with a couple important distinctions
-dev-perl/HTML-Strip 1.60.0-r1 2.90.0: Extension for stripping HTML markup from text
+dev-perl/HTML-Strip 2.90.0: Extension for stripping HTML markup from text
 dev-perl/HTML-Table 2.08a-r1: produces HTML tables
 dev-perl/HTML-TableContentParser 0.130.0: Parse the content of tables in HTML
 dev-perl/HTML-TableExtract 2.130.0: The Perl Table-Extract Module
@@ -6252,7 +6252,7 @@ dev-perl/Test-Pod-Coverage 1.80.0-r1: Check for pod coverage in your distributio
 dev-perl/Test-Portability-Files 0.60.0-r1: Check file names portability
 dev-perl/Test-Requires 0.60.0-r1 0.80.0: Checks to see if the module can be loaded
 dev-perl/Test-Script 1.70.0-r1: Cross-platform basic tests for scripts
-dev-perl/Test-SharedFork 0.210.0-r1 0.290.0 0.330.0: fork test
+dev-perl/Test-SharedFork 0.210.0-r1 0.330.0: fork test
 dev-perl/Test-Spec 0.470.0 0.510.0: Write tests in a declarative specification style
 dev-perl/Test-SubCalls 1.90.0-r1: Track the number of times subs are called
 dev-perl/Test-TCP 2.60.0 2.130.0: Testing TCP program
