@@ -3725,6 +3725,11 @@
     <url>https://wiki.gentoo.org/wiki/Project:Scheme</url>
     <description>The Gentoo Scheme Project handles Scheme related packages in the Gentoo package tree.</description>
     <member>
+      <email>amynka@gentoo.org</email>
+      <name>Amy Winston</name>
+      <role>Member</role>
+    </member>
+    <member>
       <email>pchrist@gentoo.org</email>
       <name>Panagiotis Christopoulos</name>
       <role>Developer (General maintainer)</role>
