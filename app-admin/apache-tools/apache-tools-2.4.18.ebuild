@@ -22,7 +22,7 @@ RDEPEND=">=dev-libs/apr-1.5.0:1
 	kernel_linux? ( sys-apps/util-linux )
 	ssl? (
 		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( dev-libs/libressl:= )
+		libressl? ( dev-libs/libressl:0= )
 	)"
 
 DEPEND="${RDEPEND}
