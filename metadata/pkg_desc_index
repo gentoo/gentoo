@@ -11120,7 +11120,7 @@ kde-apps/klines 4.14.3 15.08.3 15.12.3: A little KDE game about balls and how to
 kde-apps/klinkstatus 4.14.3: KDE web development - link validity checker
 kde-apps/kmag 4.14.3 15.08.3 15.12.3: KDE screen magnifier
 kde-apps/kmahjongg 4.14.3 15.08.3 15.12.3: Mahjongg for KDE
-kde-apps/kmail 4.4.2015.06 4.4.2016.01 4.14.8 4.14.10: KMail is the email component of Kontact, the integrated personal information manager of KDE
+kde-apps/kmail 4.4.2015.06 4.4.2016.01 4.14.8 4.14.10: Email component of Kontact, the integrated personal information manager of KDE
 kde-apps/kmimetypefinder 4.14.3 15.08.3: KDE application to report the mimetype for a given file
 kde-apps/kmines 4.14.3 15.08.3 15.12.3-r1: Classic mine sweeper game
 kde-apps/kmix 4.14.3 4.14.3-r1 15.08.3 15.12.2 15.12.3: Plasma mixer gui
