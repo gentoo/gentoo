@@ -1,0 +1,54 @@
+commit 8d78f61538826337a040b4d954daa17d15d4044e
+Author: Andreas Sturmlechner <andreas.sturmlechner@gmail.com>
+Date:   Mon Mar 21 19:50:27 2016 +0100
+
+    Fix build with missing ALSA
+    
+    REVIEW: 127451
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index e2bf812..3964b6d 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -14,7 +14,10 @@ if (CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
+ endif()
+ 
+ find_package(Alsa)
+-alsa_configure_file(${CMAKE_CURRENT_BINARY_DIR}/config-alsa.h)
++if(ALSA_FOUND)
++    alsa_configure_file(${CMAKE_CURRENT_BINARY_DIR}/config-alsa.h)
++    add_definitions(-DHAVE_LIBASOUND2)
++endif(ALSA_FOUND)
+ 
+ include_directories(${KDE4_INCLUDES})
+ include_directories(${CMAKE_CURRENT_BINARY_DIR} ${CMAKE_CURRENT_SOURCE_DIR})
+diff --git a/wmlib/audio/audio.c b/wmlib/audio/audio.c
+index 7101d23..09e817f 100644
+--- a/wmlib/audio/audio.c
++++ b/wmlib/audio/audio.c
+@@ -19,7 +19,9 @@
+ #include "audio.h"
+ #include "../include/wm_config.h"
+ 
++#ifdef HAVE_LIBASOUND2
+ #include <config-alsa.h>
++#endif
+ #include <string.h>
+ 
+ struct audio_oops *setup_phonon(const char *dev, const char *ctl);
+diff --git a/wmlib/audio/audio_alsa.c b/wmlib/audio/audio_alsa.c
+index de5dbe1..7c14671 100644
+--- a/wmlib/audio/audio_alsa.c
++++ b/wmlib/audio/audio_alsa.c
+@@ -26,9 +26,9 @@
+ #include "../include/wm_struct.h"
+ #include "../include/wm_config.h"
+ 
+-#include <config-alsa.h>
++#ifdef HAVE_LIBASOUND2
+ 
+-#if defined(HAVE_LIBASOUND2)
++#include <config-alsa.h>
+ 
+ #ifdef HAVE_ALSA_ASOUNDLIB_H
+ #	include <alsa/asoundlib.h>
