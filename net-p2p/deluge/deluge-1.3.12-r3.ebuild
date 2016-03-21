@@ -50,6 +50,7 @@ RDEPEND=">=net-libs/rb_libtorrent-0.14.9[python]
 python_prepare_all() {
 	local PATCHES=(
 		"${FILESDIR}"/${PN}-1.3.5-disable_libtorrent_internal_copy.patch
+		"${FILESDIR}"/${PN}-1.3.12-fix_scheduler_plugin.patch
 	)
 
 	distutils-r1_python_prepare_all
