@@ -1,11 +1,12 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
-PYTHON_DEPEND="powertop? *"
+EAPI=5
 
-inherit linux-info python toolchain-funcs
+PYTHON_COMPAT=( python{3_3,3_4,3_5} )
+
+inherit linux-info python-r1 toolchain-funcs
 
 DESCRIPTION="report file access events from all running processes"
 HOMEPAGE="https://launchpad.net/fatrace"
@@ -16,22 +17,13 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="powertop"
 
-RDEPEND="powertop? ( =sys-power/powertop-1.13 )"
-DEPEND=""
+RDEPEND="powertop? ( ${PYTHON_DEPS} )"
+DEPEND="${RDEPEND}"
+REQUIRED_USE="powertop? ( ${PYTHON_REQUIRED_USE} )"
 
 CONFIG_CHECK="~FANOTIFY"
 
-pkg_setup() {
-	linux-info_pkg_setup
-	python_pkg_setup
-}
-
 src_prepare() {
-	if use powertop ; then
-		sed -e "s/powertop-1.13/powertop/g" \
-			-i power-usage-report || die
-	fi
-
 	tc-export CC
 }
 
