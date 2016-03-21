@@ -26,8 +26,8 @@ IUSE="libressl +fuse"
 RDEPEND="
 	app-arch/lz4
 	dev-python/msgpack[${PYTHON_USEDEP}]
-	!libressl? ( dev-libs/openssl:0 )
-	libressl? ( dev-libs/libressl )
+	!libressl? ( dev-libs/openssl:0= )
+	libressl? ( dev-libs/libressl:0= )
 	fuse? ( dev-python/llfuse[${PYTHON_USEDEP}] )
 "
 
