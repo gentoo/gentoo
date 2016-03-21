@@ -440,6 +440,9 @@ unpacker_src_uri_depends() {
 		case ${uri} in
 		*.cpio.*|*.cpio)
 			d="app-arch/cpio" ;;
+		*.deb)
+			# platforms like AIX don't have a good ar
+			d="kernel_AIX? ( app-arch/deb2targz )" ;;
 		*.rar|*.RAR)
 			d="app-arch/unrar" ;;
 		*.7z)

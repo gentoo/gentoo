@@ -63,10 +63,7 @@ ${PRECOMPILED} || IUSE+=" +cacert"
 
 DEPEND=""
 if ${PRECOMPILED} ; then
-	# platforms like AIX don't have a good ar
-	DEPEND+="
-		kernel_AIX? ( app-arch/deb2targz )
-		!<sys-apps/portage-2.1.10.41"
+	DEPEND+=" !<sys-apps/portage-2.1.10.41"
 fi
 # c_rehash: we run `c_rehash`; newer version for alt-cert-paths #552540
 # debianutils: we run `run-parts`
