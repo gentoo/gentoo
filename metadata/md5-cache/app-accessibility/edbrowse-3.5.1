@@ -1,14 +1,14 @@
 DEFINED_PHASES=compile install prepare
-DEPEND=>=dev-lang/spidermonkey-24.0:24 >=sys-libs/readline-6.0 >=net-misc/curl-7.36.0 >=dev-libs/libpcre-7.8 !libressl? ( dev-libs/openssl:0 ) libressl? ( dev-libs/libressl ) odbc? ( dev-db/unixODBC ) virtual/pkgconfig app-arch/unzip
+DEPEND=>=dev-lang/spidermonkey-24.0:24 >=sys-libs/readline-6.0 >=net-misc/curl-7.36.0 >=dev-libs/libpcre-7.8 !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) odbc? ( dev-db/unixODBC ) virtual/pkgconfig app-arch/unzip
 DESCRIPTION=editor, browser, and mail client using the /bin/ed interface
 EAPI=5
 HOMEPAGE=http://the-brannons.com/edbrowse/
 IUSE=libressl linguas_fr odbc
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2
-RDEPEND=>=dev-lang/spidermonkey-24.0:24 >=sys-libs/readline-6.0 >=net-misc/curl-7.36.0 >=dev-libs/libpcre-7.8 !libressl? ( dev-libs/openssl:0 ) libressl? ( dev-libs/libressl ) odbc? ( dev-db/unixODBC )
+RDEPEND=>=dev-lang/spidermonkey-24.0:24 >=sys-libs/readline-6.0 >=net-misc/curl-7.36.0 >=dev-libs/libpcre-7.8 !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) odbc? ( dev-db/unixODBC )
 SLOT=0
 SRC_URI=http://the-brannons.com/edbrowse/edbrowse-3.5.1.zip
 _eclass_exported_funcs=src_prepare:- src_compile:- src_install:-
 _eclasses_=eutils	9d81603248f2ba3ec59124320d123e5e	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
-_md5_=6a07ec316cf69218c082f6108ae63b86
+_md5_=bdbd4767693e0e7bf1304ab778eabb77
