@@ -31,7 +31,7 @@ RDEPEND="
 	tcpd? ( >=sys-apps/tcp-wrappers-7.6 )
 	dev-libs/libpcre
 	!libressl? ( dev-libs/openssl:0= )
-	libressl? ( dev-libs/libressl:= )
+	libressl? ( dev-libs/libressl:0= )
 	>=dev-libs/eventlog-0.2.12
 	>=dev-libs/glib-2.10.1:2"
 DEPEND="${RDEPEND}

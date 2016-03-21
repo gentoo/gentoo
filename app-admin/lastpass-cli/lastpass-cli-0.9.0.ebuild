@@ -17,8 +17,8 @@ IUSE="libressl X +pinentry"
 
 RDEPEND="
 	X? ( || ( x11-misc/xclip x11-misc/xsel ) )
-	!libressl? ( dev-libs/openssl:0 )
-	libressl? ( dev-libs/libressl )
+	!libressl? ( dev-libs/openssl:0= )
+	libressl? ( dev-libs/libressl:0= )
 	net-misc/curl
 	dev-libs/libxml2
 	pinentry? ( app-crypt/pinentry )

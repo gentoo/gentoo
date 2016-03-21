@@ -16,8 +16,8 @@ KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="kerberos libressl pam ssl tcpd debug"
 
 DEPEND="ssl? (
-		!libressl? ( dev-libs/openssl:0 )
-		libressl? ( dev-libs/libressl )
+		!libressl? ( dev-libs/openssl:0= )
+		libressl? ( dev-libs/libressl:0= )
 	)
 	pam? ( virtual/pam )
 	tcpd? ( sys-apps/tcp-wrappers )
