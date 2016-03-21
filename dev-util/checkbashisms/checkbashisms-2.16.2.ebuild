@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -18,6 +18,9 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
+# Requires python packages to check tools we don't need anyway
+RESTRICT="test"
+
 RDEPEND="dev-lang/perl
 	virtual/perl-Getopt-Long
 	!<dev-util/rpmdevtools-8.3-r1"
@@ -25,8 +28,7 @@ RDEPEND="dev-lang/perl
 S="${WORKDIR}/${MY_P}/scripts"
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-printf-b.patch
-	epatch "${FILESDIR}"/${P}-command-vV.patch
+	epatch "${FILESDIR}"/${PN}-2.15.9-command-vV.patch
 }
 
 src_compile() { :; }
