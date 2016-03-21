@@ -25,8 +25,8 @@
 # - If people want to add/remove certs, tell them to file w/mozilla:
 #   https://bugzilla.mozilla.org/enter_bug.cgi?product=NSS&component=CA%20Certificates&version=trunk
 
-EAPI="4"
-PYTHON_COMPAT=( python{2_7,3_3,3_4} )
+EAPI="5"
+PYTHON_COMPAT=( python{2_7,3_3,3_4,3_5} )
 
 inherit eutils python-any-r1
 
@@ -63,15 +63,12 @@ ${PRECOMPILED} || IUSE+=" +cacert"
 
 DEPEND=""
 if ${PRECOMPILED} ; then
-	# platforms like AIX don't have a good ar
-	DEPEND+="
-		kernel_AIX? ( app-arch/deb2targz )
-		!<sys-apps/portage-2.1.10.41"
+	DEPEND+=" !<sys-apps/portage-2.1.10.41"
 fi
-# c_rehash: we run `c_rehash`; newer version for alt-cert-paths #552540
+# c_rehash: we run `c_rehash`
 # debianutils: we run `run-parts`
 RDEPEND="${DEPEND}
-	>=app-misc/c_rehash-1.7-r1
+	app-misc/c_rehash
 	sys-apps/debianutils"
 
 if ! ${PRECOMPILED}; then
@@ -89,8 +86,6 @@ pkg_setup() {
 
 src_unpack() {
 	${PRECOMPILED} || default
-
-	mv ${PN}-*/ ${PN} || die
 
 	# Do all the work in the image subdir to avoid conflicting with source
 	# dirs in $WORKDIR.  Need to perform everything in the offset #381937
@@ -119,9 +114,6 @@ src_prepare() {
 		-e '/="$ROOT/s:ROOT:ROOT'"${EPREFIX}"':' \
 		-e '/RELPATH="\.\./s:"$:'"${relp}"'":' \
 		usr/sbin/update-ca-certificates || die
-
-	cd "${S}"
-	epatch "${FILESDIR}"/${PN}-20150426-nss-certdata2pem-py3.patch #548374
 }
 
 src_compile() {
@@ -182,7 +174,7 @@ pkg_postinst() {
 		ewarn "Broken symlink for a certificate at $c"
 		badcerts=1
 	done
-	if [ $badcerts -eq 1 ]; then
+	if [ ${badcerts} -eq 1 ]; then
 		ewarn "Removing the following broken symlinks:"
 		ewarn "$(find -L "${EROOT}"/etc/ssl/certs/ -type l -printf '%p -> %l\n' -delete)"
 	fi

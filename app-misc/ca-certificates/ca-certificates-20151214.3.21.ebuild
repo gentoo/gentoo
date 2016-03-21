@@ -57,16 +57,13 @@ fi
 
 LICENSE="MPL-1.1"
 SLOT="0"
-KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86 ~ppc-aix ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~x64-freebsd ~x86-freebsd ~hppa-hpux ~ia64-hpux ~x86-interix ~amd64-linux ~arm-linux ~ia64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris ~x86-winnt"
+KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~ppc-aix ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~x64-freebsd ~x86-freebsd ~hppa-hpux ~ia64-hpux ~x86-interix ~amd64-linux ~arm-linux ~ia64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris ~x86-winnt"
 IUSE=""
 ${PRECOMPILED} || IUSE+=" +cacert"
 
 DEPEND=""
 if ${PRECOMPILED} ; then
-	# platforms like AIX don't have a good ar
-	DEPEND+="
-		kernel_AIX? ( app-arch/deb2targz )
-		!<sys-apps/portage-2.1.10.41"
+	DEPEND+=" !<sys-apps/portage-2.1.10.41"
 fi
 # c_rehash: we run `c_rehash`; newer version for alt-cert-paths #552540
 # debianutils: we run `run-parts`
