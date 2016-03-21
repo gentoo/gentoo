@@ -15,7 +15,6 @@ dev-db/mysql
 dev-db/mariadb
 -->
 <use>
-  <flag name="client-libs">Build the libmysqlclient libraries</flag>
   <flag name="cluster">Add support for NDB clustering (deprecated)</flag>
   <flag name="community">Enables the community features from upstream.</flag>
   <flag name="embedded">Build embedded server (libmysqld)</flag>
@@ -39,7 +38,6 @@ dev-db/mariadb
   <flag name="sst-rsync">Add tools needed to support the rsync SST method</flag>
   <flag name="sst-xtrabackup">Add tools needed to support the xtrabackup and xtrabackup-v2 SST methods</flag>
   <flag name="systemtap">Build support for profiling and tracing using <pkg>dev-util/systemtap</pkg></flag>
-  <flag name="tools">Build the command line tools (mysql, mysqldump, mysqladmin, etc)</flag>
   <flag name="test">Install upstream testsuites for end use.</flag>
   <flag name="tokudb">Add support for TokuDB storage engine</flag>
   <flag name="yassl">Enable SSL connections and crypto functions using the bundled yaSSL</flag>
