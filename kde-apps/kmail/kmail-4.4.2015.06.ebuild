@@ -67,9 +67,9 @@ pkg_postinst() {
 		elog "For groupware functionality, please install kde-apps/kdepim-kresources:${SLOT}"
 		echo
 	fi
-	if ! has_version kde-base/kleopatra:${SLOT}; then
+	if ! has_version kde-apps/kleopatra:${SLOT}; then
 		echo
-		elog "For certificate management and the gnupg log viewer, please install kde-base/kleopatra:${SLOT}"
+		elog "For certificate management and the gnupg log viewer, please install kde-apps/kleopatra:${SLOT}"
 		echo
 	fi
 }
