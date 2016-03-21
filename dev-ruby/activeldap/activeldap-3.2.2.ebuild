@@ -12,7 +12,7 @@ RUBY_FAKEGEM_EXTRAINSTALL="po"
 inherit ruby-fakegem
 
 MY_P="${P/ruby-/}"
-DESCRIPTION="Ruby/ActiveLDAP provides an activerecord inspired object oriented interface to LDAP"
+DESCRIPTION="ActiveLDAP provides an activerecord inspired object oriented interface to LDAP"
 HOMEPAGE="https://github.com/activeldap/activeldap"
 
 LICENSE="GPL-2"
