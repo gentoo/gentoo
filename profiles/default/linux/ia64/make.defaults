@@ -1,0 +1,7 @@
+# Copyright 1999-2016 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+# Disable as-needed by default until #541828 is fixed.
+# (The as-needed flag is added in default/linux/.)
+LDFLAGS="-Wl,-O1"
