@@ -22,5 +22,6 @@
       <name>Nicolas Dade</name>
     </maintainer>
     <remote-id type="sourceforge">pwsafe</remote-id>
+    <remote-id type="github">nsd20463/pwsafe</remote-id>
   </upstream>
 </pkgmetadata>
