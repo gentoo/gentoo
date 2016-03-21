@@ -18,8 +18,8 @@ IUSE="libressl ssl static +tools"
 DEPEND="sys-devel/automake
 	sys-devel/autoconf
 	ssl? (
-		!libressl? ( dev-libs/openssl:0 )
-		libressl? ( dev-libs/libressl )
+		!libressl? ( dev-libs/openssl:0= )
+		libressl? ( dev-libs/libressl:0= )
 	)"
 RDEPEND="virtual/cron
 	virtual/mta
