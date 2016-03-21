@@ -27,8 +27,6 @@ DEPEND="${RDEPEND}
 	  dev-python/sphinx_rtd_theme[${PYTHON_USEDEP}] )
 	test? ( dev-python/pytest[${PYTHON_USEDEP}] )"
 
-REQUIRED_USE="doc? ( || ( $(python_gen_useflags 'python2*') ) )"
-
 PATCHES=(
 	"${FILESDIR}/${PN}-0.6-disable_mpltest.patch"
 	"${FILESDIR}/${PN}-0.6-disable_numpy_warnings_test.patch"
