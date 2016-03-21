@@ -4920,7 +4920,7 @@ dev-libs/xmlwrapp 0.7.1 0.7.1-r1: modern style C++ library that provides a simpl
 dev-libs/xplc 0.3.13-r1: cross platform lightweight components library for C++
 dev-libs/xqilla 2.2.4 2.3.0: An XQuery and XPath 2 library and command line utility written in C++
 dev-libs/xxl 1.0.1 1.0.1-r1: C/C++ library that provides exception handling and asset management
-dev-libs/yajl 1.0.11 1.0.11-r1 2.0.3 2.0.4-r1 2.0.4-r2 2.0.4-r3: Small event-driven (SAX-style) JSON parser
+dev-libs/yajl 1.0.11 1.0.11-r1 1.0.12 2.0.4-r3 2.1.0: Small event-driven (SAX-style) JSON parser
 dev-libs/yaz 3.0.50 3.0.53 4.2.30 4.2.51: C/C++ programmer's toolkit supporting the development of Z39.50v3 clients and servers
 dev-libs/zookeeper-c 3.4.8: C client interface to Zookeeper server
 dev-libs/zthread 2.3.2-r1 2.3.2-r2 2.3.2-r3: platform-independent multi-threading and synchronization library for C++
@@ -8744,17 +8744,17 @@ dev-ruby/gettext_i18n_rails 1.4.0 1.5.0: FastGettext / Rails integration
 dev-ruby/gh 0.14.0: multi-layer client for the github api v3
 dev-ruby/gherkin 2.12.0-r2 2.12.0-r3 2.12.2 3.2.0: Fast Gherkin lexer and parser
 dev-ruby/gherkin3 3.1.2: Fast Gherkin lexer and parser
-dev-ruby/git 1.2.9.1 1.2.9.1-r1 1.3.0: Library for using Git in Ruby
+dev-ruby/git 1.2.9.1 1.3.0: Library for using Git in Ruby
 dev-ruby/github_api 0.11.3 0.11.3-r1 0.12.4: A Ruby wrapper for the GitHub REST API v3
-dev-ruby/globalid 0.3.3 0.3.5 0.3.6: Reference models by URI
+dev-ruby/globalid 0.3.6: Reference models by URI
 dev-ruby/gnuplot 2.6.2-r2: Gnuplot drawing library - Ruby Bindings
-dev-ruby/gpgme 2.0.10 2.0.11 2.0.12: Ruby language binding for GnuPG Made Easy
+dev-ruby/gpgme 2.0.12: Ruby language binding for GnuPG Made Easy
 dev-ruby/gruff 0.6.0: Beautiful graphs for one or multiple datasets
 dev-ruby/haml 4.0.6 4.0.6-r1 4.0.7: A ruby web page templating engine
 dev-ruby/hashdiff 0.3.0: Simple Hash extension to make working with nested hashes easier
 dev-ruby/hashery 2.1.1: The Hashery is a tight collection of Hash-like classes
 dev-ruby/hashicorp-checkpoint 0.1.4: Internal HashiCorp service to check version information
-dev-ruby/hashie 2.1.2 2.1.2-r1 3.4.2 3.4.3: Hashie is a small collection of tools that make hashes more powerful
+dev-ruby/hashie 2.1.2 2.1.2-r1 3.4.3: Hashie is a small collection of tools that make hashes more powerful
 dev-ruby/hashr 0.0.22 1.0.0 2.0.0: Simple Hash extension to make working with nested hashes easier
 dev-ruby/heredoc_unindent 1.2.0: Removes leading whitespace from Ruby heredocs
 dev-ruby/hiera 1.3.4 1.3.4-r1 2.0.0 3.0.1-r1 3.0.5 3.0.6 3.1.0: A simple pluggable Hierarchical Database
@@ -13899,7 +13899,7 @@ net-firewall/quicktables 2.3: a quick iptables script generator
 net-firewall/rtsp-conntrack 3.7: RTSP conntrack module for Netfilter
 net-firewall/sanewall 1.1.6-r1: iptables firewall generator (fork of firehol)
 net-firewall/shapecfg 36: configuration tool for setting traffic bandwidth parameters
-net-firewall/shorewall 5.0.2.1 5.0.4 5.0.6.1: A high-level tool for configuring Netfilter
+net-firewall/shorewall 5.0.4 5.0.6.2: A high-level tool for configuring Netfilter
 net-firewall/ufw 0.34_pre805-r2 0.35: A program used to manage a netfilter firewall
 net-firewall/ufw-frontends 0.3.2-r3: Provides graphical frontend to ufw
 net-firewall/xtables-addons 1.47.1 2.8 2.9 2.10: extensions not yet accepted in the main kernel/iptables (patch-o-matic(-ng) successor)
