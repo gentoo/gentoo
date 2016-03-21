@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -9,7 +9,7 @@ EAPI="4"
 inherit eutils
 #inherit git-2
 
-DESCRIPTION="Racket is a general-purpose programming language with strong support for domain-specific languages"
+DESCRIPTION="General purpose, multi-paradigm programming language in the Lisp-Scheme family."
 HOMEPAGE="http://racket-lang.org/"
 SRC_URI="http://download.racket-lang.org/installers/${PV}/${PN}/${P}-src-unix.tgz"
 #SRC_URI="http://pre.racket-lang.org/installers/plt-${PV}-src-unix.tgz"
