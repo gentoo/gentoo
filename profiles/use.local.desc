@@ -1160,6 +1160,7 @@ app-text/docbook-sgml-utils:jadetex - Add support for app-text/jadetex (for proc
 app-text/docbook-xsl-ns-stylesheets:ruby - Install the Ruby-based dbtoepub script; requires an interpreter compatible with app-eselect/eselect-ruby.
 app-text/docbook-xsl-stylesheets:ruby - Install the Ruby-based dbtoepub script; requires an interpreter compatible with app-eselect/eselect-ruby.
 app-text/dvipng:t1lib - Enable support for T1lib font rendering (media-libs/t1lib)
+app-text/ebook-tools:lit2epub - Install lit2epub script
 app-text/enchant:aspell - Adds support for app-text/aspell spell checker
 app-text/enchant:hunspell - Adds support for app-text/hunspell spell checker
 app-text/enchant:zemberek - Adds support for app-text/zemberek-server spell checker server
