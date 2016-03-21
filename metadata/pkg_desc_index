@@ -42,7 +42,7 @@ app-admin/389-ds-console 1.2.6-r1: Java based remote management console used for
 app-admin/abrt 2.0.12-r2: Automatic bug detection and reporting tool
 app-admin/amazon-ec2-init 20101127: Init script to setup Amazon EC2 instance parameters
 app-admin/analog 6.0-r4: A webserver log analyzer
-app-admin/ansible 1.9.4 2.0.0.1-r2 2.0.0.2 2.0.1.0 9999: Model-driven deployment, config management, and command execution framework
+app-admin/ansible 1.9.4 1.9.5 2.0.0.1-r2 2.0.0.2 2.0.1.0 9999: Model-driven deployment, config management, and command execution framework
 app-admin/apache-tools 2.2.31 2.4.18: Useful Apache tools - htdigest, htpasswd, ab, htdbm
 app-admin/apachetop 0.12.6-r1 0.12.6-r2: A realtime Apache log analyzer
 app-admin/apg 2.3.0b-r5: Another Password Generator
@@ -7068,6 +7068,7 @@ dev-python/elementtree 1.2.6-r3: A light-weight XML object model for Python
 dev-python/elib-intl 0_pre20110711: Enhanced internationalization (I18N) services for your Python modules and applications
 dev-python/eliot 0.4.0: Logging as Storytelling
 dev-python/embedly 0.4.3-r1 0.5.0: Python Library for Embedly
+dev-python/emcee 2.1.0: Python ensemble sampling toolkit for affine-invariant MCMC
 dev-python/empy 3.3-r1 3.3.2: A powerful and robust templating system for Python
 dev-python/enable 4.4.1 4.5.1: Enthought Tool Suite: Drawing and interaction packages
 dev-python/enaml 0.6.8-r1 0.9.8: Enthought Tool Suite: framework for writing declarative interfaces
@@ -7392,6 +7393,7 @@ dev-python/mysql-connector-python 2.0.3 2.1.1 2.1.3: Python client library for M
 dev-python/mysql-python 1.2.3-r1 1.2.5 1.2.5-r1: Python interface to MySQL
 dev-python/mysqlclient 1.3.6 1.3.7: Fork of MySQL-python
 dev-python/nagiosplugin 1.2.3 1.2.4: A class library for writing nagios-compatible plugins
+dev-python/naima 0.7.1: Python package for gamma-ray astronomy
 dev-python/natgrid 0.2.1-r2: Matplotlib toolkit for gridding irreguraly spaced data
 dev-python/natsort 3.4.0 4.0.3 4.0.4: Natural sorting for Python
 dev-python/nautilus-python 1.1-r1 1.1-r2: Python bindings for the Nautilus file manager
@@ -8144,7 +8146,7 @@ dev-python/w3lib 1.11.0 1.13.0: Python library of web-related functions
 dev-python/waitress 0.8.9 0.8.10-r1: A pure-Python WSGI server
 dev-python/warlock 1.0.1 1.1.0 1.2.0: Python object model built on JSON schema and JSON patch
 dev-python/watchdog 0.8.1 0.8.3: Python API and shell utilities to monitor file system events
-dev-python/wcsaxes 0.3 0.6: Framework for plotting astronomical and geospatial data
+dev-python/wcsaxes 0.6: Framework for plotting astronomical and geospatial data
 dev-python/wcwidth 0.1.4 0.1.5 0.1.6: Measures number of Terminal column cells of wide-character codes
 dev-python/weasyprint 0.21-r1 0.22 0.23 0.26: Visual rendering engine for HTML and CSS that can export to PDF
 dev-python/webassets 0.10.1: Asset management for Python web development
@@ -15708,7 +15710,8 @@ sci-libs/hdf 4.2.8 4.2.9 4.2.11: General purpose library and format for storing 
 sci-libs/hdf5 1.8.14-r1 1.8.15_p1: General purpose library and file format for storing scientific data
 sci-libs/htslib 1.0 1.1 1.2.1: C library for high-throughput sequencing data formats
 sci-libs/hypre 2.9.0b: Parallel matrix preconditioners library
-sci-libs/idlmarkwardt 20121110 20130418: Craig Markwardt IDL procedures (MPFIT, CMSVLIB, etc)
+sci-libs/idlcoyote 20160321: GDL library from D. Fannings IDL courses
+sci-libs/idlmarkwardt 20130418: Craig Markwardt IDL procedures (MPFIT, CMSVLIB, etc)
 sci-libs/ignition-math 1.0.0 2.2.2 2.3.0: A small, fast, and high performance math library for robot applications
 sci-libs/inchi 1.04: A program and library for generating standard and non-standard InChI and InChIKeys
 sci-libs/indilib 0.9.9 1.0.0 1.1.0: INDI Astronomical Control Protocol library
@@ -17053,7 +17056,7 @@ sys-kernel/cryptodev 1.7: device that allows access to Linux kernel cryptographi
 sys-kernel/dracut 034-r4 040-r3 041-r3 043-r2 044: Generic initramfs generation tool
 sys-kernel/genkernel 3.4.45.1 3.4.48 3.4.49.2 3.4.50 3.4.51.4 3.4.52.2 3.4.52.3 3.4.52.4 3.5.0.0 9999: Gentoo automatic kernel building scripts
 sys-kernel/genkernel-next 35 55 60 63: Gentoo automatic kernel building scripts, reloaded
-sys-kernel/gentoo-sources 3.4.110 3.4.9999 3.10.95 3.10.96 3.10.97 3.10.98 3.10.99 3.10.100 3.10.101 3.12.52-r1 3.12.57 3.12.9999 3.14.58-r1 3.14.65 3.18.25-r1 3.18.26 3.18.27 3.18.28 3.18.29 4.0.4 4.0.9 4.1.12 4.1.15-r1 4.1.20 4.4.6 4.5.0: Full sources including the Gentoo patchset for the 4.5 kernel tree
+sys-kernel/gentoo-sources 3.4.110 3.4.111 3.4.9999 3.10.95 3.10.96 3.10.97 3.10.98 3.10.99 3.10.100 3.10.101 3.12.52-r1 3.12.57 3.12.9999 3.14.58-r1 3.14.65 3.18.25-r1 3.18.26 3.18.27 3.18.28 3.18.29 4.0.4 4.0.9 4.1.12 4.1.15-r1 4.1.20 4.4.6 4.5.0: Full sources including the Gentoo patchset for the 4.5 kernel tree
 sys-kernel/git-sources 4.5_rc1 4.5_rc2 4.5_rc3 4.5_rc4 4.5_rc5 4.5_rc6 4.5_rc7: The very latest -git version of the Linux kernel
 sys-kernel/hardened-sources 4.1.7-r1 4.3.3-r4 4.4.2 4.4.3 4.4.3-r1 4.4.4 4.4.5 4.4.5-r1 4.4.5-r2: Hardened kernel sources (kernel series 4.4)
 sys-kernel/kccmp 0.3: A simple tool for comparing two linux kernel .config files
