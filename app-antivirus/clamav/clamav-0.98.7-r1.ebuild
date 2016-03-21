@@ -22,8 +22,8 @@ CDEPEND="bzip2? ( app-arch/bzip2 )
 	milter? ( || ( mail-filter/libmilter mail-mta/sendmail ) )
 	dev-libs/libtommath
 	>=sys-libs/zlib-1.2.2
-	!libressl? ( dev-libs/openssl:0 )
-	libressl? ( dev-libs/libressl )
+	!libressl? ( dev-libs/openssl:0= )
+	libressl? ( dev-libs/libressl:0= )
 	sys-devel/libtool"
 # openssl is now *required* see this link as to why
 # http://blog.clamav.net/2014/02/introducing-openssl-as-dependency-to.html
