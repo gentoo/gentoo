@@ -20,8 +20,8 @@ RDEPEND=">=sys-fs/e2fsprogs-1.27
 	>=app-arch/bzip2-1.0.2
 	>=sys-libs/zlib-1.1.4
 	ermt? (
-		!libressl? ( dev-libs/openssl:0 )
-		libressl? ( dev-libs/libressl )
+		!libressl? ( dev-libs/openssl:0= )
+		libressl? ( dev-libs/libressl:0= )
 	)
 	readline? (
 		sys-libs/readline:0=

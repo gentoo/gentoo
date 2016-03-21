@@ -15,8 +15,8 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~s
 IUSE="acl +bzip2 +e2fsprogs expat +iconv kernel_linux libressl +lzma lzo nettle static-libs xattr +zlib"
 
 RDEPEND="
-	!libressl? ( dev-libs/openssl:0[${MULTILIB_USEDEP}] )
-	libressl? ( dev-libs/libressl[${MULTILIB_USEDEP}] )
+	!libressl? ( dev-libs/openssl:0=[${MULTILIB_USEDEP}] )
+	libressl? ( dev-libs/libressl:0=[${MULTILIB_USEDEP}] )
 	acl? ( virtual/acl[${MULTILIB_USEDEP}] )
 	bzip2? ( app-arch/bzip2[${MULTILIB_USEDEP}] )
 	expat? ( dev-libs/expat[${MULTILIB_USEDEP}] )
