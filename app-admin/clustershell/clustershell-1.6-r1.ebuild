@@ -20,8 +20,8 @@ KEYWORDS="~amd64 ~x86"
 IUSE="doc libressl"
 
 RDEPEND="
-	!libressl? ( dev-libs/openssl:0 )
-	libressl? ( dev-libs/libressl )"
+	!libressl? ( dev-libs/openssl:0= )
+	libressl? ( dev-libs/libressl:0= )"
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 
 src_install() {
