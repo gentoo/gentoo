@@ -9543,7 +9543,7 @@ dev-util/egypt 1.10: devilishly simple tool for creating call graphs of C progra
 dev-util/elfkickers 3.0-r1 3.0-r2 3.0a: collection of programs to manipulate ELF files: sstrip, rebind, elfls, elftoc
 dev-util/emilpro 3-r2 9999: a graphical disassembler for a large number of instruction sets
 dev-util/eric 4.5.25-r1 5.5.2: A full featured Python IDE using PyQt4 and QScintilla
-dev-util/fatrace 0.4 0.5 0.9 0.10: report file access events from all running processes
+dev-util/fatrace 0.9 0.10 0.11: report file access events from all running processes
 dev-util/febootstrap 2.11: Fedora bootstrap scripts
 dev-util/fhist 1.16 1.19 1.21: File history and comparison tools
 dev-util/filepp 1.6.0 1.8.0: a generic file preprocessor with a CPP-like syntax
