@@ -1,14 +1,14 @@
 DEFINED_PHASES=compile install prepare
-DEPEND=X? ( || ( x11-misc/xclip x11-misc/xsel ) ) !libressl? ( dev-libs/openssl:0 ) libressl? ( dev-libs/libressl ) net-misc/curl dev-libs/libxml2 pinentry? ( app-crypt/pinentry ) app-text/asciidoc virtual/pkgconfig
+DEPEND=X? ( || ( x11-misc/xclip x11-misc/xsel ) ) !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) net-misc/curl dev-libs/libxml2 pinentry? ( app-crypt/pinentry ) app-text/asciidoc virtual/pkgconfig
 DESCRIPTION=Interfaces with LastPass.com from the command line.
 EAPI=6
 HOMEPAGE=https://github.com/lastpass/lastpass-cli
 IUSE=libressl X +pinentry
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2+
-RDEPEND=X? ( || ( x11-misc/xclip x11-misc/xsel ) ) !libressl? ( dev-libs/openssl:0 ) libressl? ( dev-libs/libressl ) net-misc/curl dev-libs/libxml2 pinentry? ( app-crypt/pinentry )
+RDEPEND=X? ( || ( x11-misc/xclip x11-misc/xsel ) ) !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) net-misc/curl dev-libs/libxml2 pinentry? ( app-crypt/pinentry )
 SLOT=0
 SRC_URI=https://github.com/lastpass/lastpass-cli/archive/v0.9.0.tar.gz -> lastpass-cli-0.9.0.tar.gz
 _eclass_exported_funcs=src_prepare:- src_compile:- src_install:-
 _eclasses_=multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
-_md5_=8f3aa13571fac7c8a51611dc55eb2f50
+_md5_=9f21e7e7aa22123d0fc1e917f852d015
