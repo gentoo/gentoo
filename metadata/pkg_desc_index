@@ -14123,7 +14123,7 @@ net-libs/http-parser 2.3 2.4.1 2.4.2 2.5.0 2.6.1 2.6.2: Http request/response pa
 net-libs/hubbub 0.1.2 0.1.2-r1: HTML5 compliant parsing library, written in C
 net-libs/iax 0.2.2 0.2.2-r1 0.2.2-r3: IAX (Inter Asterisk eXchange) Library
 net-libs/ignition-transport 0.7.0 0.9.0-r1 1.0.1 1.1.0: Combines ZeroMQ with Protobufs to create a fast and efficient message passing system
-net-libs/jreen 1.2.0: Qt XMPP library
+net-libs/jreen 1.2.0 1.2.1: Qt XMPP library
 net-libs/ldns 1.6.17 1.6.17-r1: a library with the aim to simplify DNS programming in C
 net-libs/liba53 9999: A5/3 Call encryption library
 net-libs/libaccounts-glib 1.19 1.21-r2: Accounts SSO (Single Sign-On) management library for GLib applications
