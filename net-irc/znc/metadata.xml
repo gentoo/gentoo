@@ -1,11 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="person">
-	<email>wired@gentoo.org</email>
-	<name>Alex Alexander</name>
-</maintainer>
-<use>
-	<flag name="daemon">Allow znc to run as a system-wide service. Installs an init script and creates a znc user:group.</flag>
-</use>
+	<maintainer type="person">
+		<email>wired@gentoo.org</email>
+		<name>Alex Alexander</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>sautier.louis@gmail.com</email>
+		<name>Louis Sautier</name>
+		<description>Proxied maintainer; set to assignee in all bugs</description>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<use>
+		<flag name="daemon">Allow znc to run as a system-wide service. Installs an init script and creates a znc user:group.</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">znc/znc</remote-id>
+		<bugs-to>https://github.com/znc/znc/issues</bugs-to>
+	</upstream>
 </pkgmetadata>

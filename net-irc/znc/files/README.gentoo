@@ -1,0 +1,22 @@
+To run znc as a user, run 'znc --makeconf' to create a configuration file.
+
+If znc was compiled with the 'daemon' use flag, you may run
+    emerge --config znc
+to configure it.
+
+To generate a new SSL certificate, run:
+    znc --system-wide-config-as znc --makepem -d /var/lib/znc
+as root.
+
+If migrating from a user-based install, you can copy the existing
+configuration files:
+     mkdir /var/lib/znc
+     mv /home/$USER/.znc/* /var/lib/znc
+     rm -rf /home/$USER/.znc
+     chown -R znc:znc /var/lib/znc
+You may also adjust the location of the files and the user running znc
+in /etc/conf.d/znc instead.
+
+To run as a daemon, please make sure that your configuration contains
+    PidFile = /run/znc/znc.pid
+or that the PidFile value matches the one in /etc/conf.d/znc.
