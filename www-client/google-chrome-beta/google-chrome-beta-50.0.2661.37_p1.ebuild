@@ -33,8 +33,6 @@ KEYWORDS="-* ~amd64"
 IUSE="+plugins"
 RESTRICT="bindist mirror strip"
 
-REQUIRED_USE="abi_x86_64"
-
 DEPEND=""
 RDEPEND="
 	app-arch/bzip2
