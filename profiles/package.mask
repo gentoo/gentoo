@@ -70,7 +70,7 @@ x11-libs/libview
 # Aaron Bauman <bman@gentoo.org> (19 Mar 2016)
 # Unpatched security vulnerability per bug #512356.
 # Masked for removal in 30 days.
-app-forensics/chkrootkit
+=app-forensics/chkrootkit-0.49
 
 # Aaron Bauman <bman@gentoo.org> (19 Mar 2016)
 # Unpatched security vulnerability per bug #529712.
