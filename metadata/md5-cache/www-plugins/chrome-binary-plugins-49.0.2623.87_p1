@@ -10,5 +10,5 @@ RESTRICT=bindist mirror strip
 SLOT=stable
 SRC_URI=amd64? ( https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stable/google-chrome-stable_49.0.2623.87-1_amd64.deb )
 _eclass_exported_funcs=src_unpack:unpacker src_install:-
-_eclasses_=multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	unpacker	1d149d9bda7723e740cfd28118f27813
+_eclasses_=multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	unpacker	45d07319df5f40ee6af58418b0f930be
 _md5_=663952affa526a33b23e5148f756d55f

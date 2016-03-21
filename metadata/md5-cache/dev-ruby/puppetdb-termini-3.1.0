@@ -7,5 +7,5 @@ LICENSE=Apache-2.0
 SLOT=0
 SRC_URI=http://apt.puppetlabs.com/pool/wheezy/PC1/p/puppetdb/puppetdb-termini_3.1.0-1puppetlabs1_all.deb
 _eclass_exported_funcs=src_unpack:unpacker src_install:-
-_eclasses_=unpacker	1d149d9bda7723e740cfd28118f27813
+_eclasses_=unpacker	45d07319df5f40ee6af58418b0f930be
 _md5_=aac44f34c2e7ad00dcf292487ca75ab4

@@ -10,5 +10,5 @@ RESTRICT=bindist fetch strip
 SLOT=0
 SRC_URI=install-crossover-pro-6.0.0.sh
 _eclass_exported_funcs=pkg_postinst:- src_unpack:- src_install:-
-_eclasses_=unpacker	1d149d9bda7723e740cfd28118f27813
+_eclasses_=unpacker	45d07319df5f40ee6af58418b0f930be
 _md5_=97fcab2bb05f44b3258ea0a51d6903c1

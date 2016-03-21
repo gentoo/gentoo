@@ -1684,8 +1684,8 @@ app-misc/boxes 1.1.2-r1: Draw any kind of boxes around your text
 app-misc/brewtarget 2.0.2 2.1.0: Application to create and manage beer recipes
 app-misc/btail 0.3: Bayesian logfile filter
 app-misc/byobu 5.94: A set of profiles for the GNU Screen console window manager (app-misc/screen)
-app-misc/c_rehash 1.7-r1: c_rehash script from OpenSSL
-app-misc/ca-certificates 20140927.3.17.2 20141019.3.17.4 20141019.3.19 20141019.3.19-r1 20150426.3.20 20150426.3.20-r1 20151214.3.21 20160104.3.21: Common CA Certificates PEM files
+app-misc/c_rehash 1.0.2g_p8 1.7-r1: c_rehash script from OpenSSL
+app-misc/ca-certificates 20151214.3.21 20160104.3.21 20160104.3.23: Common CA Certificates PEM files
 app-misc/cadubi 1.3: CADUBI is an application that allows you to draw ASCII-Art images
 app-misc/calendar 0.9.1: Standard unix calendar program for Linux, ported from OpenBSD
 app-misc/carbon-c-relay 1.7 1.8 1.10: Enhanced C version of Carbon relay, aggregator and rewriter
@@ -7163,7 +7163,7 @@ dev-python/ghp-import 0.4.1 0.4.1-r1: Copy your docs directly to the gh-pages br
 dev-python/git-python 0.3.6 1.0.0 1.0.1 1.0.2: Library used to interact with Git repositories
 dev-python/git-review 1.24 1.25.0: Tool to submit code to Gerrit
 dev-python/gitdb 0.6.3 0.6.4: GitDB is a pure-Python git object database
-dev-python/glance_store 0.1.10 0.4.0 0.5.0 0.6.0 0.9.1: A connection pool for python-ldap
+dev-python/glance_store 0.1.10 0.4.0 0.5.0 0.6.0 0.9.1 0.9.2: A connection pool for python-ldap
 dev-python/globre 0.1.2-r1 0.1.3: A glob matching library, providing an interface similar to the 're' module
 dev-python/gmpy 2.0.4 2.0.6 2.0.7: Python bindings for GMP, MPC, MPFR and MPIR libraries
 dev-python/gnome-keyring-python 2.32.0-r1: Python bindings for the interfacing with the GNOME keyring
@@ -12248,7 +12248,7 @@ media-libs/gmtk 1.0.8 1.0.9: GTK+ widget and function libraries for gnome-mplaye
 media-libs/gnonlin 0.10.17 1.4.0: Gnonlin is a set of GStreamer elements to ease the creation of non-linear multimedia editors
 media-libs/grilo 0.2.12 0.2.14 0.2.15: A framework for easy media discovery and browsing
 media-libs/gsound 1.0.1 1.0.2: Thin GObject wrapper around the libcanberra sound event library
-media-libs/gst-plugins-bad 0.10.23-r2 0.10.23-r3 1.4.5 1.6.3: Less plugins for GStreamer
+media-libs/gst-plugins-bad 0.10.23-r3 1.4.5 1.6.3: Less plugins for GStreamer
 media-libs/gst-plugins-base 0.10.36-r2 1.4.5 1.6.1 1.6.2 1.6.3: Basepack of plugins for gstreamer
 media-libs/gst-plugins-good 0.10.31-r1 1.4.5 1.6.1 1.6.2 1.6.3: Basepack of plugins for GStreamer
 media-libs/gst-plugins-ugly 0.10.19-r1 1.4.5 1.6.1 1.6.2 1.6.3: Basepack of plugins for gstreamer
