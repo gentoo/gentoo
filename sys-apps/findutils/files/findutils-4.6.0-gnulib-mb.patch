@@ -18,16 +18,14 @@ otherwise we always get:
  m4/mbrtowc.m4 | 2 +-
  2 files changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/m4/mbrtowc.m4 b/m4/mbrtowc.m4
-index deb9f06..be2e9d6 100644
 --- a/configure
-+++ configure
++++ b/configure
 @@ -569,7 +569,7 @@ changequote([,])dnl
             int
             main (void)
             {
 -             return ! mbrtowc (&wc, "", 0, &mbs) == (size_t) -2;
-+             return ! mbrtowc (&wc, "", 0, &mbs) == (size_t) -2;
++             return mbrtowc (&wc, "", 0, &mbs) != (size_t) -2;
             }
  _ACEOF
  if ac_fn_c_try_run "$LINENO"; then :
