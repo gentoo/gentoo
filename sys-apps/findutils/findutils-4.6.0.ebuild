@@ -34,7 +34,9 @@ src_prepare() {
 
 	# Newer C libraries omit this include from sys/types.h.
 	# https://lists.gnu.org/archive/html/bug-gnulib/2016-03/msg00018.html
-	sed -i '1i#include <sys/sysmacros.h>' gl/lib/mountlist.c || die
+	sed -i \
+		'/include.*config.h/a#ifdef MAJOR_IN_SYSMACROS\n#include <sys/sysmacros.h>\n#endif\n' \
+		gl/lib/mountlist.c || die
 
 	epatch "${FILESDIR}"/${P}-gnulib-mb.patch #576818
 }

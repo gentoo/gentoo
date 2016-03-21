@@ -25,8 +25,8 @@ IUSE="libressl"
 
 RDEPEND="
 	dev-python/msgpack[${PYTHON_USEDEP}]
-	!libressl? ( dev-libs/openssl:0 )
-	libressl? ( dev-libs/libressl )
+	!libressl? ( dev-libs/openssl:0= )
+	libressl? ( dev-libs/libressl:0= )
 	dev-python/llfuse[${PYTHON_USEDEP}]"
 
 DEPEND="
