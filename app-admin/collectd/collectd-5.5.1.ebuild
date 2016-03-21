@@ -418,7 +418,7 @@ src_install() {
 	systemd_dounit "contrib/${PN}.service"
 
 	insinto /etc/logrotate.d
-	newins "${FILESDIR}/logrotate" collectd
+	newins "${FILESDIR}/${PN}.logrotate" ${PN}
 
 	sed -i -e 's:^.*PIDFile     "/var/run/collectd.pid":PIDFile     "/run/collectd/collectd.pid":' "${ED}"etc/collectd.conf || die
 	sed -i -e 's:^#	SocketFile "/var/run/collectd-unixsock":#	SocketFile "/run/collectd/collectd.socket":' "${ED}"etc/collectd.conf || die
