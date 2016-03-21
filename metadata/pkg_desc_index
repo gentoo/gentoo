@@ -73,7 +73,7 @@ app-admin/conky 1.9.0-r3 1.10.1: An advanced, highly configurable system monitor
 app-admin/conkyforecast 2.24-r1: Conky weather forecast script with support for language files
 app-admin/conserver 8.1.18 8.1.18-r1: Serial Console Manager
 app-admin/consolehm 1.31: Console based hardware monitor for FreeBSD
-app-admin/consul 0.5.2-r2 0.6.3-r1 9999: A tool for service discovery, monitoring and configuration
+app-admin/consul 0.5.2-r2 0.6.3-r1 0.6.4 9999: A tool for service discovery, monitoring and configuration
 app-admin/consul-replicate 0.2.0: Consul cross-DC KV replication daemon
 app-admin/consul-template 0.9.0-r1 0.12.2 9999: Generic template rendering and notifications with Consul
 app-admin/cpulimit 1.8 2.2: Limits the CPU usage of a process
@@ -1412,7 +1412,7 @@ app-forensics/afl 1.80b 1.96b 2.07b: american fuzzy lop - compile-time instrumen
 app-forensics/aide 0.14.2 0.15.1: AIDE (Advanced Intrusion Detection Environment) is a replacement for Tripwire
 app-forensics/air 2.0.0-r1: A GUI front-end to dd/dc3dd
 app-forensics/autopsy 2.24-r1: A graphical interface to the digital forensic analysis tools in The Sleuth Kit
-app-forensics/chkrootkit 0.49: Tool to locally check for signs of a rootkit
+app-forensics/chkrootkit 0.49 0.50: Tool to locally check for signs of a rootkit
 app-forensics/cmospwd 5.1: CmosPwd decrypts password stored in cmos used to access BIOS SETUP
 app-forensics/examiner 0.5-r2: Application that utilizes the objdump command to disassemble and comment foreign executable binaries
 app-forensics/foremost 0.69 1.5.7-r1 1.5.7-r2: A console program to recover files based on their headers and footers
@@ -13121,7 +13121,7 @@ media-sound/pms 0.42 0.42-r1 9999: Practical Music Search: an open source ncurse
 media-sound/pnmixer 0.6_pre20111213 0.6 9999: Volume mixer for the system tray
 media-sound/poc 0.4.1: mp3 and ogg streamer (include mp3cue and mp3cut)
 media-sound/podcatcher 3.1.6: Podcast client for the command-line written in Ruby
-media-sound/podget 0.7.9 0.7.10: A simple podcast aggregator
+media-sound/podget 0.7.9 0.7.12: A simple podcast aggregator
 media-sound/podracer 1.4: A simple podcast aggregator, designed for cron
 media-sound/positron 1.1: Synchronization manager for the Neuros Audio Computer (www.neurosaudio.com) portable music player
 media-sound/potamus 0.12 14 16: a lightweight audio player with a simple interface and an emphasis on high audio quality
@@ -17053,7 +17053,7 @@ sys-kernel/cryptodev 1.7: device that allows access to Linux kernel cryptographi
 sys-kernel/dracut 034-r4 040-r3 041-r3 043-r2 044: Generic initramfs generation tool
 sys-kernel/genkernel 3.4.45.1 3.4.48 3.4.49.2 3.4.50 3.4.51.4 3.4.52.2 3.4.52.3 3.4.52.4 3.5.0.0 9999: Gentoo automatic kernel building scripts
 sys-kernel/genkernel-next 35 55 60 63: Gentoo automatic kernel building scripts, reloaded
-sys-kernel/gentoo-sources 3.4.110 3.4.9999 3.10.95 3.10.96 3.10.97 3.10.98 3.10.99 3.10.100 3.10.101 3.12.52-r1 3.12.57 3.12.9999 3.14.58-r1 3.14.65 3.18.25-r1 3.18.26 3.18.27 3.18.28 3.18.29 4.0.4 4.0.9 4.1.12 4.1.20 4.4.6 4.5.0: Full sources including the Gentoo patchset for the 4.5 kernel tree
+sys-kernel/gentoo-sources 3.4.110 3.4.9999 3.10.95 3.10.96 3.10.97 3.10.98 3.10.99 3.10.100 3.10.101 3.12.52-r1 3.12.57 3.12.9999 3.14.58-r1 3.14.65 3.18.25-r1 3.18.26 3.18.27 3.18.28 3.18.29 4.0.4 4.0.9 4.1.12 4.1.15-r1 4.1.20 4.4.6 4.5.0: Full sources including the Gentoo patchset for the 4.5 kernel tree
 sys-kernel/git-sources 4.5_rc1 4.5_rc2 4.5_rc3 4.5_rc4 4.5_rc5 4.5_rc6 4.5_rc7: The very latest -git version of the Linux kernel
 sys-kernel/hardened-sources 4.1.7-r1 4.3.3-r4 4.4.2 4.4.3 4.4.3-r1 4.4.4 4.4.5 4.4.5-r1 4.4.5-r2: Hardened kernel sources (kernel series 4.4)
 sys-kernel/kccmp 0.3: A simple tool for comparing two linux kernel .config files
