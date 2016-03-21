@@ -8873,7 +8873,7 @@ dev-ruby/net-http-persistent 2.9.4 2.9.4-r2: Manages persistent connections usin
 dev-ruby/net-http-pipeline 1.0.1: An HTTP/1.1 pipelining implementation atop Net::HTTP
 dev-ruby/net-scp 1.1.2-r1 1.2.1: A pure Ruby implementation of the SCP client protocol
 dev-ruby/net-sftp 2.1.2-r1 2.1.2-r2: SFTP in pure Ruby
-dev-ruby/net-ssh 2.8.0 2.9.2 2.10.0 3.0.1 3.0.2: Non-interactive SSH processing in pure Ruby
+dev-ruby/net-ssh 2.8.0 2.10.0 3.0.2 3.1.0: Non-interactive SSH processing in pure Ruby
 dev-ruby/net-ssh-gateway 1.2.0 1.2.0-r1: A simple library to assist in enabling tunneled Net::SSH connections
 dev-ruby/net-ssh-multi 1.2.0-r1 1.2.1: A library for controlling multiple Net::SSH connections via a single interface
 dev-ruby/net-telnet 0.1.1-r1: Provides telnet client functionality
@@ -17447,7 +17447,6 @@ www-apache/mod_auth_imap2 2.2.0: An Apache2 module to provide authentication via
 www-apache/mod_auth_kerb 5.3 5.4-r2: An Apache authentication module using Kerberos
 www-apache/mod_auth_mysql 3.0.0-r3: Basic authentication for Apache using a MySQL database
 www-apache/mod_auth_nufw 2.2.2: A NuFW authentication module for Apache
-www-apache/mod_auth_pgsql 2.0.3-r1 2.0.3-r2: This module allows user authentication against information stored in a PostgreSQL database
 www-apache/mod_auth_radius 1.5.8: Radius authentication for Apache
 www-apache/mod_auth_tkt 2.1.0-r1: Apache module for cookie based authentication
 www-apache/mod_auth_token 1.0.6_beta: Token based URI access module for Apache2
