@@ -67,7 +67,6 @@
 		<flag name="collectd_plugins_ipvs">Build the IPVS input plugin (collects statistics from Linux IP Virtual Server)</flag>
 		<flag name="collectd_plugins_irq">Build the irq input plugin (collects the number of times each interrupt has been handled by the operating system)</flag>
 		<flag name="collectd_plugins_java">Build the java input plugin (embeds a JVM into collectd for writing plugins)</flag>
-		<flag name="collectd_plugins_libvirt">Build the (lib)virt input plugin (collects statistics about virtualized guests on a system)</flag>
 		<flag name="collectd_plugins_load">Build the load input plugin (collects the system load)</flag>
 		<flag name="collectd_plugins_logfile">Build the logfile output plugin (receives log messages from collectd and writes them to a text file)</flag>
 		<flag name="collectd_plugins_log_logstash">Build the Logstash output plugin (writes collectd logs and events as Logstash JSON formatted events)</flag>
