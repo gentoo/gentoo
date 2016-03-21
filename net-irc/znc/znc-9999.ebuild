@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -16,7 +16,7 @@ SRC_URI=""
 KEYWORDS=""
 
 HOMEPAGE="http://znc.in"
-LICENSE="GPL-2"
+LICENSE="Apache-2.0"
 SLOT="0"
 IUSE="daemon debug ipv6 libressl perl python ssl sasl tcl"
 
