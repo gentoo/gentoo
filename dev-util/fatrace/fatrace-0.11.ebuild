@@ -23,6 +23,10 @@ REQUIRED_USE="powertop? ( ${PYTHON_REQUIRED_USE} )"
 
 CONFIG_CHECK="~FANOTIFY"
 
+pkg_setup() {
+	use powertop && python-single-r1_pkg_setup
+}
+
 src_prepare() {
 	tc-export CC
 }
