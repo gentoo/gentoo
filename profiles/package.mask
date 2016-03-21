@@ -30,6 +30,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Aaron Bauman <bman@gentoo.org> (19 Mar 2016)
+# Unpatched security vulnerability per bug #261182.
+# Masked for removal in 30 days.
+media-sound/shoutcast-server-bin
+media-sound/shoutcast-trans-bin
+
 # Lars Wendler <polynomial-c@gentoo.org> (20 Mar 2016)
 # Don't work with latest claws-mail package. Most plugins are now part of
 # claws-mail sources and can be en-/disabled via USE flags.
