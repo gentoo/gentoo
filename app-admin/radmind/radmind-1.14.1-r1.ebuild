@@ -16,8 +16,8 @@ KEYWORDS="~amd64 ~x86"
 IUSE="libressl"
 
 DEPEND="
-	!libressl? ( dev-libs/openssl:0 )
-	libressl? ( dev-libs/libressl )"
+	!libressl? ( dev-libs/openssl:0= )
+	libressl? ( dev-libs/libressl:0= )"
 RDEPEND="${DEPEND}"
 
 src_prepare() {
