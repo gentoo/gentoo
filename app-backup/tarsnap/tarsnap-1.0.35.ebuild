@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=5
 
 DESCRIPTION="Online backups for the truly paranoid"
 HOMEPAGE="http://www.tarsnap.com/"
@@ -11,9 +11,11 @@ SRC_URI="https://www.tarsnap.com/download/${PN}-autoconf-${PV}.tgz"
 LICENSE="tarsnap"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="acl bzip2 lzma cpu_flags_x86_sse2 xattr"
+IUSE="acl bzip2 libressl lzma cpu_flags_x86_sse2 xattr"
 
-RDEPEND="dev-libs/openssl:0
+RDEPEND="
+	!libressl? ( dev-libs/openssl:0= )
+	libressl? ( dev-libs/libressl:0= )
 	sys-libs/e2fsprogs-libs
 	sys-libs/zlib
 	acl? ( sys-apps/acl )

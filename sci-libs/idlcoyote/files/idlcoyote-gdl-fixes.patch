@@ -1,0 +1,13 @@
+Author: Ole Streicher <olebole@debian.org>
+Description: Various small patches to fix things under GDL
+--- a/convert_to_type.pro
++++ b/convert_to_type.pro
+@@ -122,7 +122,7 @@
+          (type EQ 8): Message, 'Unable to convert input to STRUCTURE data type.'
+          (type EQ 10): Message, 'Unable to convert input to POINTER data type.'
+          (type EQ 11): Message, 'Unable to convert input to OBJECT data type.'
+-         (type GT 15): Message, 'Unable to convert undefined data type: ', StrTrim(theType) + '.'
++         (type GT 15): Message, 'Unable to convert undefined data type: ' + StrTrim(theType) + '.'
+          ELSE:
+       ENDCASE
+    ENDELSE

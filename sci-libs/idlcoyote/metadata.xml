@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+  <email>sci@gentoo.org</email>
+  <name>Gentoo Science Project</name>
+</maintainer>
+<longdescription lang="en">
+ The Coyote Library evolved from work David Fanning was doing teaching
+ IDL courses and answering IDL questions on the IDL newsgroup. It is
+ meant to be a well-documented library that demonstrates how to write
+ solid IDL/GDL programs that are easy to maintain and extend.
+</longdescription>
+</pkgmetadata>

@@ -38,7 +38,7 @@ python_compile_all() {
 		VARTEXFONTS="${T}"/fonts \
 			MPLCONFIGDIR="${BUILD_DIR}" \
 			PYTHONPATH="${BUILD_DIR}"/lib \
-			esetup.py build_sphinx
+			esetup.py build_sphinx --no-intersphinx
 	fi
 }
 
@@ -47,6 +47,6 @@ python_test() {
 }
 
 python_install_all() {
-	use doc && local HTML_DOCS=( docs/_build/html/ )
+	use doc && local HTML_DOCS=( docs/_build/html/. )
 	distutils-r1_python_install_all
 }
