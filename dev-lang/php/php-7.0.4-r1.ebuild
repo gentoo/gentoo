@@ -68,7 +68,7 @@ IUSE="${IUSE} bcmath berkdb bzip2 calendar cdb cjk
 	enchant exif frontbase +fileinfo +filter firebird
 	flatfile ftp gd gdbm gmp +hash +iconv imap inifile
 	intl iodbc ipv6 +json kerberos ldap ldap-sasl libedit libressl
-	mhash mysql mysqli nls
+	mhash mssql mysql mysqli nls
 	oci8-instant-client odbc +opcache pcntl pdo +phar +posix postgres qdbm
 	readline recode selinux +session sharedmem
 	+simplexml snmp soap sockets spell sqlite ssl
@@ -118,6 +118,7 @@ DEPEND="${DEPEND}
 	ldap? ( >=net-nds/openldap-1.2.11 )
 	ldap-sasl? ( dev-libs/cyrus-sasl >=net-nds/openldap-1.2.11 )
 	libedit? ( || ( sys-freebsd/freebsd-lib dev-libs/libedit ) )
+	mssql? ( dev-db/freetds[mssql] )
 	nls? ( sys-devel/gettext )
 	oci8-instant-client? ( dev-db/oracle-instantclient-basic )
 	odbc? ( >=dev-db/unixODBC-1.8.13 )
@@ -468,6 +469,7 @@ src_configure() {
 	# PDO support
 	if use pdo ; then
 		our_conf+=(
+			$(use_with mssql pdo-dblib "${EPREFIX}/usr")
 			$(use_with mysql pdo-mysql "${mysqllib}")
 			$(use_with postgres pdo-pgsql)
 			$(use_with sqlite pdo-sqlite "${EPREFIX}/usr")
