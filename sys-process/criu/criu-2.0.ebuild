@@ -56,6 +56,7 @@ src_compile() {
 		CC="$(tc-getCC)" \
 		LD="$(tc-getLD)" \
 		OBJCOPY="$(tc-getOBJCOPY)" \
+		LIBDIR="${EPREFIX}/usr/$(get_libdir)" \
 		ARCH="$(criu_arch)" \
 		V=1 WERROR=0 DEBUG=0 \
 		SETPROCTITLE=$(usex setproctitle) \
@@ -80,6 +81,7 @@ src_install() {
 		PREFIX="${EPREFIX}"/usr \
 		LOGROTATEDIR="${EPREFIX}"/etc/logrotate.d \
 		DESTDIR="${D}" \
+		LIBDIR="${EPREFIX}/usr/$(get_libdir)" \
 		install
 
 	dodoc CREDITS README.md
