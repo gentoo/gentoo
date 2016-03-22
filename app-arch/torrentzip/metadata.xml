@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!-- maintainer-needed -->
+	<maintainer type="person">
+		<email>alex.miller@gmx.de</email>
+		<name>Alexander Miller</name>
+		<description>Proxied maintainer</description>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+
 	<longdescription>
 		TorrentZip is a replacement for MameZip. The goal of the program is to 
 		use standard values when creating zips to create identical files over 
