@@ -101,3 +101,35 @@ pkg_postinst() {
 		elog "your old config and the new code."
 	fi
 }
+
+pkg_config() {
+	local buildmaster_path="/var/lib/buildmaster"
+    einfo "This will prepare a new buildmaster instance in ${buildmaster_path}."
+	einfo "Press Control-C to abort."
+
+    einfo "Enter the name for the new instance: "
+    read instance_name
+    [[ -z "${instance_name}" ]] && die "Invalid instance name"
+
+    local instance_path="${buildmaster_path}/${instance_name}"
+    if [[ -e "${instance_path}" ]]; then
+        eerror "The instance with the specified name already exists:"
+        eerror "${instance_path}"
+        die "Instance already exists"
+    fi
+
+	local buildbot="/usr/bin/buildbot"
+	if [[ ! -d "${buildmaster_path}" ]]; then
+		mkdir --parents "${buildmaster_path}" || die "Unable to create directory ${buildmaster_path}"
+	fi
+	"${buildbot}" create-master "${instance_path}" &>/dev/null || die "Creating instance failed"
+	chown --recursive buildbot "${instance_path}" || die "Setting permissions for instance failed"
+	mv "${instance_path}/master.cfg.sample" "${instance_path}/master.cfg" \
+		|| die "Moving sample configuration failed"
+	ln --symbolic --relative "/etc/init.d/buildmaster" "/etc/init.d/buildmaster.${instance_name}" \
+		|| die "Unable to create link to init file"
+
+    einfo "Successfully created a buildmaster instance at ${instance_path}."
+    einfo "To change the default settings edit the master.cfg file in this directory."
+}
+
