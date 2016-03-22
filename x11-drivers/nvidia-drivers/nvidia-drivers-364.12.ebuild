@@ -29,7 +29,7 @@ KEYWORDS="-* ~amd64 ~x86 ~amd64-fbsd ~x86-fbsd"
 RESTRICT="bindist mirror"
 EMULTILIB_PKG="true"
 
-IUSE="acpi compat +driver gtk3 kernel_FreeBSD kernel_linux +kms multilib pax_kernel static-libs +tools uvm +X"
+IUSE="acpi compat +driver gtk3 kernel_FreeBSD kernel_linux +kms multilib pax_kernel static-libs +tools uvm wayland +X"
 REQUIRED_USE="
 	tools? ( X )
 	static-libs? ( tools )
@@ -66,6 +66,7 @@ RDEPEND="
 	${COMMON}
 	acpi? ( sys-power/acpid )
 	tools? ( !media-video/nvidia-settings )
+	wayland? ( dev-libs/wayland )
 	X? (
 		<x11-base/xorg-server-1.18.99:=
 		>=x11-libs/libvdpau-0.3-r1
@@ -443,7 +444,7 @@ src_install-libs() {
 			"libvdpau_nvidia.so.${NV_SOVER}"
 		)
 
-		if use X && has_multilib_profile && [[ ${ABI} == "amd64" ]];
+		if use wayland && has_multilib_profile && [[ ${ABI} == "amd64" ]];
 		then
 			NV_GLX_LIBRARIES+=(
 				"libnvidia-egl-wayland.so.${NV_SOVER}"
