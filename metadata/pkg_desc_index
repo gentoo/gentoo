@@ -4976,11 +4976,11 @@ dev-lua/penlight 1.3.2: Lua utility libraries loosely based on the Python standa
 dev-lua/say 1.3_p1: Lua String Hashing/Indexing Library
 dev-lua/toluapp 1.0.93: A tool to integrate C/C++ code with Lua
 dev-ml/ANSITerminal 0.6.5: Module which offers basic control of ANSI compliant terminals
-dev-ml/async 113.24.00: Jane Street Capital's asynchronous execution library
-dev-ml/async_extra 113.24.00: Jane Street Capital's asynchronous execution library (extra)
-dev-ml/async_kernel 113.24.00: Jane Street Capital's asynchronous execution library (core)
-dev-ml/async_rpc_kernel 113.24.00: Platform-independent core of Async RPC library
-dev-ml/async_unix 113.24.00: Jane Street Capital's asynchronous execution library (unix)
+dev-ml/async 113.24.00 113.33.00: Jane Street Capital's asynchronous execution library
+dev-ml/async_extra 113.24.00 113.33.00: Jane Street Capital's asynchronous execution library (extra)
+dev-ml/async_kernel 113.24.00 113.33.00: Jane Street Capital's asynchronous execution library (core)
+dev-ml/async_rpc_kernel 113.24.00 113.33.00: Platform-independent core of Async RPC library
+dev-ml/async_unix 113.24.00 113.33.00: Jane Street Capital's asynchronous execution library (unix)
 dev-ml/batteries 2.4.0: The community-maintained foundation library for your OCaml projects
 dev-ml/bignum 113.24.00: Core-flavoured wrapper around zarith's arbitrary-precision rationals
 dev-ml/bin-prot 113.24.00: A binary protocol generator
@@ -5000,11 +5000,11 @@ dev-ml/camlzip 1.05: Compressed file access ML library (ZIP, GZIP and JAR)
 dev-ml/camomile 0.8.4 0.8.5: Camomile is a comprehensive Unicode library for ocaml
 dev-ml/cmdliner 0.9.8: Declarative definition of command line interfaces for OCaml
 dev-ml/comparelib 109.60.00 113.00.00: Camlp4 syntax extension that derives comparison functions from type representations
-dev-ml/core 113.24.00 113.24.01 113.24.02: Jane Street's alternative to the standard library
-dev-ml/core_bench 112.35.00 113.24.00: Micro-benchmarking library for OCaml
-dev-ml/core_extended 113.24.00: Jane Street's alternative to the standard library
-dev-ml/core_kernel 113.24.00: System-independent part of Core
-dev-ml/core_profiler 113.24.00: Jane Street's profiling library
+dev-ml/core 113.24.00 113.24.01 113.24.02 113.33.00: Jane Street's alternative to the standard library
+dev-ml/core_bench 112.35.00 113.24.00 113.33.00: Micro-benchmarking library for OCaml
+dev-ml/core_extended 113.24.00 113.33.00: Jane Street's alternative to the standard library
+dev-ml/core_kernel 113.24.00 113.33.00: System-independent part of Core
+dev-ml/core_profiler 113.24.00 113.33.00: Jane Street's profiling library
 dev-ml/cppo 1.3.1-r1: An equivalent of the C preprocessor for OCaml programs
 dev-ml/cryptokit 1.10: Cryptographic primitives library for Objective Caml
 dev-ml/csv 1.4.2: A pure OCaml library to read and write CSV files
@@ -5025,7 +5025,8 @@ dev-ml/gd4o 1.0_alpha5: OCaml interface to the GD graphics library
 dev-ml/gsl-ocaml 1.19.1: OCaml bindings for the GSL library (successor of dev-ml/ocamlgsl)
 dev-ml/herelib 112.35.00: Syntax extension for inserting the current location
 dev-ml/iTeML 2.0.1: Inline (Unit) Tests for OCaml
-dev-ml/incremental 113.24.00: Library for incremental computations
+dev-ml/incremental 113.24.00 113.33.00: Library for incremental computations
+dev-ml/incremental_kernel 113.33.00: Library for incremental computations depending only on Core_kernel
 dev-ml/io-page 1.5.1 1.6.0: IO memory page library for Mirage backends
 dev-ml/js_of_ocaml 2.7: A compiler from OCaml bytecode to javascript
 dev-ml/jsonm 0.9.1: Non-blocking streaming JSON codec for OCaml
@@ -5124,6 +5125,7 @@ dev-ml/re2 113.24.00 113.33.00: OCaml bindings for RE2
 dev-ml/react 0.9.4 1.2.0: OCaml module for functional reactive programming
 dev-ml/reactiveData 0.2: Functional reactive programming with incremental changes in data structures
 dev-ml/res 4.0.3 4.0.4 4.0.6 4.0.7: Resizable Array and Buffer modules for O'Caml
+dev-ml/result 1.2: Compat result type
 dev-ml/sexplib 112.35.00 113.00.00 113.24.00 113.33.00: Library for automated conversion of OCaml-values to and from S-expressions
 dev-ml/stringext 1.4.0-r1: Extra string functions for OCaml
 dev-ml/textutils 112.17.00 113.24.00 113.33.00: Text output utilities
