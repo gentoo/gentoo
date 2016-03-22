@@ -540,7 +540,9 @@ src_install() {
 	# we could remove sources in src_prepare, but install does not
 	# handle missing locale dir well
 	rm_loc() {
-		rm -r "${ED}/usr/share/locale/${1}" || die
+		if [[ -e "${ED}/usr/share/locale/${1}" ]]; then
+			rm -r "${ED}/usr/share/locale/${1}" || die
+		fi
 	}
 	l10n_for_each_disabled_locale_do rm_loc
 }
