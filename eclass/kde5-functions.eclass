@@ -17,7 +17,7 @@ inherit toolchain-funcs versionator
 
 # @ECLASS-VARIABLE: EAPI
 # @DESCRIPTION:
-# Currently EAPI 5 is supported.
+# Currently EAPI 5 and 6 is supported.
 case ${EAPI} in
 	5|6) ;;
 	*) die "EAPI=${EAPI:-0} is not supported" ;;
