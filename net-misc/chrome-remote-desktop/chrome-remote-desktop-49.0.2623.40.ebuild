@@ -29,7 +29,7 @@ SRC_URI="amd64? ( ${BASE_URI}_amd64.deb )
 
 LICENSE="google-chrome"
 SLOT="0"
-KEYWORDS="-* ~amd64 ~x86"
+KEYWORDS="-* amd64 x86"
 IUSE=""
 
 # All the libs this package links against.
