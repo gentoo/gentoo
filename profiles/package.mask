@@ -247,17 +247,6 @@ dev-lang/niecza-bin
 # Mask experimental software
 =mail-mta/postfix-3.2*
 
-# James Le Cuirot <chewi@gentoo.org> (21 Feb 2016)
-# No revdeps, no release since 2007, and upstream have even moved the
-# download to a hidden OldFiles directory in the parent SourceForge
-# project. Removal in 30 days.
-dev-java/xsd2jibx
-
-# James Le Cuirot <chewi@gentoo.org> (19 Feb 2016)
-# Upstream EOL is December 2016. We would rather focus on other things
-# than support it until then. Removal in 30 days.
-www-servers/tomcat:6
-
 # Yixun Lan <dlan@gentoo.org> (16 Feb 2016)
 # Mask early development version, leave only upstream stable version
 >=sys-cluster/ceph-10
