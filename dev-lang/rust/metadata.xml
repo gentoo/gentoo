@@ -2,15 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="person">
-    <email>jauhien@gentoo.org</email>
-    <name>Jauhien Piatlicki</name>
-  </maintainer>
-  <maintainer type="person">
-    <email>williamh@gentoo.org</email>
-    <name>William Hubbs</name>
-  </maintainer>
-  <maintainer type="person">
-    <email>cynede@gentoo.org</email>
+    <email>rust@gentoo.org</email>
+    <name>Rust Project</name>
   </maintainer>
   <use>
     <flag name="clang">Use <pkg>sys-devel/clang</pkg> for building</flag>
