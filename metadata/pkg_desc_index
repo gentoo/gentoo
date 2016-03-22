@@ -3784,7 +3784,7 @@ dev-java/commons-logging 1.2: The Jakarta-Commons Logging package is an ultra-th
 dev-java/commons-math 2.1-r1 3.2: Lightweight, self-contained mathematics and statistics components
 dev-java/commons-net 1.4.1-r1 3.2: The purpose of the library is to provide fundamental protocol access, not higher-level abstractions
 dev-java/commons-pool 1.6 2.2: Provides general purpose object pooling API
-dev-java/commons-primitives 1.0-r2: The Jakarta-Commons Primitives Component
+dev-java/commons-primitives 1.0-r2 1.0-r3: The Jakarta-Commons Primitives Component
 dev-java/commons-validator 1.4.0 1.4.1: Commons component to validate user input, or data input
 dev-java/commons-vfs 1.0 2.0-r1: A single API for accessing various different file systems
 dev-java/constantine 0.7-r1: Provides Java values for common platform C constants
@@ -4199,7 +4199,7 @@ dev-java/slf4j-simple 1.7.7: Simple Logging Facade for Java
 dev-java/smack 2.2.1: An Open Source XMPP (Jabber) client library for instant messaging and presence
 dev-java/snakeyaml 1.16: A YAML 1.1 parser and emitter for Java 5
 dev-java/snappy 1.0.3_rc3 1.1.0.1: Snappy compressor/decompressor for Java
-dev-java/snip 0.11 0.11-r1: an Apache ANT optional task that extracts snippets of code from text files
+dev-java/snip 0.11-r1: an Apache ANT optional task that extracts snippets of code from text files
 dev-java/soylatte-jdk-bin 1.0.3 7: Landon Fuller's OpenJDK 7 for Mac OS X 10.5/PPC
 dev-java/spice-jndikit 1.2 1.4: JNDI Kit is a toolkit designed to help with the construction of JNDI providers
 dev-java/spin 1.5-r1: Transparent threading solution for non-freezing Swing applications
