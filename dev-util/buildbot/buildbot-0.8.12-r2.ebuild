@@ -46,11 +46,8 @@ pkg_setup() {
 
 	DOC_CONTENTS="The \"buildbot\" user and the \"buildmaster\" init script has been added
 		to support starting buildbot through Gentoo's init system. To use this,
-		set up your build master following the documentation, make sure the
-		resulting directories are owned by the \"buildbot\" user and point
-		\"${EROOT}etc/conf.d/buildmaster\" at the right location. The scripts can
-		run as a different user if desired. If you need to run more than one
-		build master, just copy the scripts."
+		execute \"emerge --config =${CATEGORY}/${PF}\" to create a new instance.
+		The scripts can	run as a different user if desired."
 }
 
 src_compile() {
@@ -93,6 +90,20 @@ pkg_postinst() {
 	readme.gentoo_print_elog
 
 	if [[ -n ${REPLACING_VERSIONS} ]]; then
+		ewarn
+		ewarn "Starting with buildbot-0.8.12-r2, more than one instance of buildmaster"
+		ewarn "can be run simultaneously. Note that \"BASEDIR\" in the buildbot configuration file"
+		ewarn "is now the common base directory for all instances. If you are migrating from an older"
+		ewarn "version, make sure that you copy the current contents of \"BASEDIR\" to a subdirectory."
+		ewarn "The name of the subdirectory corresponds to the name of the buildmaster instance."
+		ewarn "In order to start the service running OpenRC-based systems need to link to the init file:"
+		ewarn "    ln --symbolic --relative /etc/init.d/buildmaster /etc/init.d/buildmaster.myinstance"
+		ewarn "    rc-update add buildmaster.myinstance default"
+		ewarn "    /etc/init.d/buildmaster.myinstance start"
+		ewarn "Systems using systemd can do the following:"
+		ewarn "    systemctl enable buildmaster@myinstance.service"
+		ewarn "    systemctl enable buildmaster.target"
+		ewarn "    systemctl start buildmaster.target"
 		elog
 		elog "Upstream recommends the following when upgrading:"
 		elog "Each time you install a new version of Buildbot, you should run the"
@@ -100,23 +111,26 @@ pkg_postinst() {
 		elog "This will add files and fix (or at least detect) incompatibilities between"
 		elog "your old config and the new code."
 	fi
+	elog
+	elog "In order to create a new instance of buildmaster, execute:"
+	elog "    emerge --config =${CATEGORY}/${PF}"
 }
 
 pkg_config() {
 	local buildmaster_path="/var/lib/buildmaster"
-    einfo "This will prepare a new buildmaster instance in ${buildmaster_path}."
+	einfo "This will prepare a new buildmaster instance in ${buildmaster_path}."
 	einfo "Press Control-C to abort."
 
-    einfo "Enter the name for the new instance: "
-    read instance_name
-    [[ -z "${instance_name}" ]] && die "Invalid instance name"
+	einfo "Enter the name for the new instance: "
+	read instance_name
+	[[ -z "${instance_name}" ]] && die "Invalid instance name"
 
-    local instance_path="${buildmaster_path}/${instance_name}"
-    if [[ -e "${instance_path}" ]]; then
-        eerror "The instance with the specified name already exists:"
-        eerror "${instance_path}"
-        die "Instance already exists"
-    fi
+	local instance_path="${buildmaster_path}/${instance_name}"
+	if [[ -e "${instance_path}" ]]; then
+		eerror "The instance with the specified name already exists:"
+		eerror "${instance_path}"
+		die "Instance already exists"
+	fi
 
 	local buildbot="/usr/bin/buildbot"
 	if [[ ! -d "${buildmaster_path}" ]]; then
@@ -129,7 +143,6 @@ pkg_config() {
 	ln --symbolic --relative "/etc/init.d/buildmaster" "/etc/init.d/buildmaster.${instance_name}" \
 		|| die "Unable to create link to init file"
 
-    einfo "Successfully created a buildmaster instance at ${instance_path}."
-    einfo "To change the default settings edit the master.cfg file in this directory."
+	einfo "Successfully created a buildmaster instance at ${instance_path}."
+	einfo "To change the default settings edit the master.cfg file in this directory."
 }
-
