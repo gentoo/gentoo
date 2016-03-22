@@ -3096,7 +3096,7 @@ dev-games/ps2-packer 0.4.4: another ELF packer for the PS2
 dev-games/quake4-sdk 1.4.2: Quake4 SDK
 dev-games/simgear 3.4.0 2016.1.1 9999: Development library for simulation games
 dev-games/t4k-common 0.1.1: A library of code shared between tuxmath and tuxtype
-dev-games/tiled 0.12.3 0.14.2 0.15.0 0.15.1 0.15.2: A general purpose tile map editor
+dev-games/tiled 0.15.2: A general purpose tile map editor
 dev-games/vamos 0.7.1: an automotive simulation framework
 dev-games/wfmath 1.0.2: Worldforge math library
 dev-go/bee 1.4.1_p20160125: A tool for helping develop with beego app framework
@@ -18059,7 +18059,7 @@ x11-misc/Xorgautoconfig 0.2.4-r1: Xorgautconfig generates xorg.conf files for PP
 x11-misc/accessx 0951-r1: Interface to the XKEYBOARD extension in X11
 x11-misc/afbinit 1.0.1-r7: loads the microcode for Elite3D framebuffers to use X
 x11-misc/alacarte 3.10.0 3.11.91: Simple GNOME menu editor
-x11-misc/albert 0.7.7 0.8.0 0.8.1 0.8.2: Desktop agnostic launcher
+x11-misc/albert 0.8.2: Desktop agnostic launcher
 x11-misc/alock 94 94-r1: locks the local X display until a password is entered
 x11-misc/andromeda 0.3: Qt4-based filemanager
 x11-misc/appmenu-qt 0.2.6: Application menu module for Qt
