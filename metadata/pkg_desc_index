@@ -16972,7 +16972,7 @@ sys-fs/mtpfs 1.0 1.1 1.1-r1 1.1-r2 1.1-r3: A FUSE filesystem providing access to
 sys-fs/multipath-tools 0.5.0-r1: Device mapper target autoconfig
 sys-fs/ncdu 1.11: NCurses Disk Usage
 sys-fs/nilfs-utils 2.1.5-r1 2.1.6 2.2.2: A New Implementation of a Log-structured File System for Linux
-sys-fs/ntfs3g 2014.2.15 2014.2.15-r1 2015.3.14: Open source read-write NTFS driver that runs under FUSE
+sys-fs/ntfs3g 2014.2.15 2014.2.15-r1 2015.3.14 2016.2.22: Open source read-write NTFS driver that runs under FUSE
 sys-fs/obexfs 0.11 0.12: FUSE filesystem interface for ObexFTP
 sys-fs/ocfs2-tools 1.8.2-r1: Support programs for the Oracle Cluster Filesystem 2
 sys-fs/owfs 2.7_p21-r4 3.1_p1: Access 1-Wire devices like a filesystem
