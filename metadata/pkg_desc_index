@@ -5045,7 +5045,7 @@ dev-ml/ocaml-autoconf 1.1: autoconf macros to support configuration of OCaml pro
 dev-ml/ocaml-base64 2.0.0: Library for radix-64 representation (de)coding
 dev-ml/ocaml-cairo 0.5: OCaml Binding to Cairo
 dev-ml/ocaml-cstruct 1.7.1 1.8.0 1.9.0: Map OCaml arrays onto C-like structs
-dev-ml/ocaml-ctypes 0.4.1-r1 0.4.2: Library for binding to C libraries using pure OCaml
+dev-ml/ocaml-ctypes 0.4.1-r1 0.4.2 0.5.0: Library for binding to C libraries using pure OCaml
 dev-ml/ocaml-data-notation 0.0.11: This project uses type-conv to dump OCaml data structure using OCaml data notation
 dev-ml/ocaml-dns 0.15.3 0.16.0 0.18.0: A pure OCaml implementation of the DNS protocol
 dev-ml/ocaml-doc 3.12: Ocaml reference manual (html)
@@ -5107,30 +5107,30 @@ dev-ml/ppx_fail 113.24.00: Add location to calls to failwiths
 dev-ml/ppx_fields_conv 113.24.00: Generation of accessor and iteration functions for ocaml records
 dev-ml/ppx_here 113.24.00: Expands [%here] into its location
 dev-ml/ppx_inline_test 113.24.00: Syntax extension for writing in-line tests in ocaml code
-dev-ml/ppx_jane 113.24.00 113.24.01: Standard Jane Street ppx rewriters
-dev-ml/ppx_let 113.24.00: Monadic let-bindings
-dev-ml/ppx_optcomp 113.24.00: Optional compilation for OCaml
-dev-ml/ppx_pipebang 113.24.00: A ppx rewriter that inlines reverse application operators |> and |!
-dev-ml/ppx_sexp_conv 113.24.00: Support Library for type-driven code generators
-dev-ml/ppx_sexp_message 113.24.00: A ppx rewriter for easy construction of s-expressions
-dev-ml/ppx_sexp_value 113.24.00: Standard library for ppx rewriters
+dev-ml/ppx_jane 113.24.00 113.24.01 113.33.00: Standard Jane Street ppx rewriters
+dev-ml/ppx_let 113.24.00 113.33.00: Monadic let-bindings
+dev-ml/ppx_optcomp 113.24.00 113.33.00: Optional compilation for OCaml
+dev-ml/ppx_pipebang 113.24.00 113.33.00: A ppx rewriter that inlines reverse application operators |> and |!
+dev-ml/ppx_sexp_conv 113.24.00 113.33.00: Support Library for type-driven code generators
+dev-ml/ppx_sexp_message 113.24.00 113.33.00: A ppx rewriter for easy construction of s-expressions
+dev-ml/ppx_sexp_value 113.24.00 113.33.00: Standard library for ppx rewriters
 dev-ml/ppx_tools 4.02.3 4.03.0: Tools for authors of ppx rewriters
-dev-ml/ppx_type_conv 113.24.00: Support Library for type-driven code generators
-dev-ml/ppx_typerep_conv 113.24.00: Generation of runtime types from type declarations
-dev-ml/ppx_variants_conv 113.24.00: Generation of accessor and iteration functions for ocaml variant types
+dev-ml/ppx_type_conv 113.24.00 113.33.00: Support Library for type-driven code generators
+dev-ml/ppx_typerep_conv 113.24.00 113.33.00: Generation of runtime types from type declarations
+dev-ml/ppx_variants_conv 113.24.00 113.33.00: Generation of accessor and iteration functions for ocaml variant types
 dev-ml/pxp 1.2.4 1.2.7 1.2.8: validating XML parser library for O'Caml
 dev-ml/qcheck 0.4.0.1: QuickCheck inspired property-based testing for OCaml
-dev-ml/re2 113.24.00: OCaml bindings for RE2
+dev-ml/re2 113.24.00 113.33.00: OCaml bindings for RE2
 dev-ml/react 0.9.4 1.2.0: OCaml module for functional reactive programming
 dev-ml/reactiveData 0.2: Functional reactive programming with incremental changes in data structures
 dev-ml/res 4.0.3 4.0.4 4.0.6 4.0.7: Resizable Array and Buffer modules for O'Caml
-dev-ml/sexplib 112.35.00 113.00.00 113.24.00: Library for automated conversion of OCaml-values to and from S-expressions
+dev-ml/sexplib 112.35.00 113.00.00 113.24.00 113.33.00: Library for automated conversion of OCaml-values to and from S-expressions
 dev-ml/stringext 1.4.0-r1: Extra string functions for OCaml
-dev-ml/textutils 112.17.00 113.24.00: Text output utilities
+dev-ml/textutils 112.17.00 113.24.00 113.33.00: Text output utilities
 dev-ml/type-conv 112.01.02 113.00.00 113.00.02: Mini library required for some other preprocessing libraries
 dev-ml/typehashlib 109.15.02: Syntax extension for deriving 'typehash' functions automatically
 dev-ml/typerep 113.24.00: Library for creating runtime representation of OCaml types
-dev-ml/typerep_extended 113.24.00: Runtime types for OCaml (Extended)
+dev-ml/typerep_extended 113.24.00 113.33.00: Runtime types for OCaml (Extended)
 dev-ml/tyxml 3.5.0 3.6.0: A libary to build xml trees typechecked by OCaml
 dev-ml/ulex 1.1: A lexer generator for unicode
 dev-ml/utop 1.11 1.16 1.18 1.18.1 1.18.2: A new toplevel for OCaml with completion and colorization
