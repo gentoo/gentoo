@@ -18,8 +18,8 @@ SRC_URI="mirror://sourceforge/bacula/${MY_P}.tar.gz"
 
 LICENSE="AGPL-3"
 SLOT="0"
-KEYWORDS=" ~amd64 ~ppc ~sparc ~x86"
-IUSE="acl bacula-clientonly bacula-nodir bacula-nosd examples ipv6 logwatch mysql postgres python qt4 readline +sqlite ssl static tcpd vim-syntax X"
+KEYWORDS="~amd64 ~ppc ~sparc ~x86"
+IUSE="acl bacula-clientonly bacula-nodir bacula-nosd examples ipv6 libressl logwatch mysql postgres python qt4 readline +sqlite ssl static tcpd vim-syntax X"
 
 DEPEND="
 	dev-libs/gmp:0
@@ -41,14 +41,20 @@ DEPEND="
 		sys-libs/zlib[static-libs]
 		dev-libs/lzo[static-libs]
 		sys-libs/ncurses:=[static-libs]
-		ssl? ( dev-libs/openssl:0[static-libs] )
+		ssl? (
+			!libressl? ( dev-libs/openssl:0=[static-libs] )
+			libressl? ( dev-libs/libressl:0=[static-libs] )
+		)
 	)
 	!static? (
 		acl? ( virtual/acl )
 		sys-libs/zlib
 		dev-libs/lzo
 		sys-libs/ncurses:=
-		ssl? ( dev-libs/openssl:0 )
+		ssl? (
+			!libressl? ( dev-libs/openssl:0= )
+			libressl? ( dev-libs/libressl:0= )
+		)
 	)
 	python? ( ${PYTHON_DEPS} )
 	"
