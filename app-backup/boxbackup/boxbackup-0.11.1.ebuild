@@ -1,8 +1,8 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="2"
+EAPI="5"
 
 inherit eutils user
 
@@ -13,10 +13,11 @@ SRC_URI="http://boxbackup.org/svn/box/packages/${P/_/}.tgz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="amd64 x86 ~ppc-macos ~x86-macos"
-IUSE="client-only"
+IUSE="client-only libressl"
 DEPEND="sys-libs/zlib
-	sys-libs/db
-	>=dev-libs/openssl-0.9.7
+	sys-libs/db:=
+	!libressl? ( dev-libs/openssl:0= )
+	libressl? ( dev-libs/libressl:0= )
 	>=dev-lang/perl-5.6"
 RDEPEND="${DEPEND}
 	virtual/mta"
