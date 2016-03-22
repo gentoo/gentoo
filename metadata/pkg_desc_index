@@ -9087,7 +9087,7 @@ dev-ruby/simplecov-html 0.10.0: Generates a HTML report of your SimpleCov ruby c
 dev-ruby/sinatra 1.4.6 1.4.7: A DSL for quickly creating web applications in Ruby with minimal effort
 dev-ruby/six 0.2.0: An ultra lite authorization library
 dev-ruby/slim 2.1.0 3.0.6: A template language aiming to reduce the syntax to the essential parts
-dev-ruby/slop 3.6.0 4.1.0 4.2.0 4.2.1: A simple option parser with an easy to remember syntax and friendly API
+dev-ruby/slop 3.6.0 4.2.1 4.3.0: A simple option parser with an easy to remember syntax and friendly API
 dev-ruby/snmplib 1.2.0 1.2.0-r1: SNMP library implemented in pure Ruby
 dev-ruby/source_map 3.0.1: Provides an API for parsing, and an API for generating source maps in ruby
 dev-ruby/sparklines 0.5.2-r4 0.5.2-r5 0.5.2-r6: Create sparklines, small graphs to be used inline in texts
