@@ -17,7 +17,7 @@ EGIT_REPO_URI="git://git.racket-lang.org/plt.git"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm ~x86"
 IUSE="doc +futures +jit minimal +places +threads +X"
 REQUIRED_USE="futures? ( jit )"
 
