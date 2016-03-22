@@ -14,10 +14,11 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2
 LICENSE="AGPL-3"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="acl afs ipv6 nls tcpd xattr"
+IUSE="acl afs ipv6 libressl nls tcpd xattr"
 
 DEPEND="
-	dev-libs/openssl:0
+	!libressl? ( dev-libs/openssl:0= )
+	libressl? ( dev-libs/libressl:0= )
 	dev-libs/uthash
 	sys-libs/libcap
 	<net-libs/librsync-2.0
