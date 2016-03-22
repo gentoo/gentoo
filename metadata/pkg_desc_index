@@ -5754,8 +5754,8 @@ dev-perl/LWP-MediaTypes 6.20.0-r1: Media types and mailcap processing
 dev-perl/LWP-Online 1.80.0-r2: Does your process have access to the web
 dev-perl/LWP-Protocol-https 6.30.0-r1 6.60.0: Provide https support for LWP::UserAgent
 dev-perl/LWP-UserAgent-Cached 0.60.0: LWP::UserAgent with simple caching mechanism
-dev-perl/LWP-UserAgent-Determined 1.60.0-r1 1.70.0: A virtual browser that retries errors
-dev-perl/LWPx-ParanoidAgent 1.70.0-r1 1.100.0: Subclass of LWP::UserAgent that protects you from harm
+dev-perl/LWP-UserAgent-Determined 1.70.0: A virtual browser that retries errors
+dev-perl/LWPx-ParanoidAgent 1.100.0: Subclass of LWP::UserAgent that protects you from harm
 dev-perl/LaTeX-Driver 0.200.4: Perl encapsulation of invoking the Latex programs
 dev-perl/LaTeX-Encode 0.91.6: Encode characters for LaTeX formatting
 dev-perl/LaTeX-Table 1.0.6: Perl extension for the automatic generation of LaTeX tables
@@ -5791,7 +5791,7 @@ dev-perl/LockFile-Simple 0.208.0-r1: File locking module for Perl
 dev-perl/Log-Agent 1.1.0: A general logging framework
 dev-perl/Log-Any 1.38.0: Bringing loggers and listeners together
 dev-perl/Log-Dispatch 2.540.0: Dispatches messages to one or more outputs
-dev-perl/Log-Log4perl 1.420.0-r1 1.460.0: Log4j implementation for Perl
+dev-perl/Log-Log4perl 1.420.0-r1 1.460.0 1.470.0: Log4j implementation for Perl
 dev-perl/Log-TraceMessages 1.400.0-r1: Logging/debugging aid
 dev-perl/MARC-Charset 1.350.0-r1: convert MARC-8 encoded strings to UTF-8
 dev-perl/MARC-Record 2.0.5 2.0.6: Perl extension for handling MARC records
@@ -5810,7 +5810,7 @@ dev-perl/MP3-Tag 1.130.0-r1: Tag - Module for reading tags of mp3 files
 dev-perl/MP4-Info 1.130.0: Fetch info from MPEG-4 files (.mp4, .m4a, .m4p, .3gp)
 dev-perl/MRO-Compat 0.120.0-r1: Lets you build groups of accessors
 dev-perl/Mac-Pasteboard 0.3.0: Manipulate Mac OS X clipboards/pasteboards
-dev-perl/Mail-Audit 2.227.0-r1 2.228.0: Mail sorting/delivery module for Perl
+dev-perl/Mail-Audit 2.227.0-r1 2.228.0-r1: Mail sorting/delivery module for Perl
 dev-perl/Mail-Box 2.109.0-r1 2.118.0: Mail folder manager and MUA backend
 dev-perl/Mail-Builder 2.80.0-r1 2.90.0: Easily create plaintext/html e-mail messages with attachments and inline images
 dev-perl/Mail-Builder-Simple 0.160.0-r1: Send UTF-8 HTML and text email using templates
