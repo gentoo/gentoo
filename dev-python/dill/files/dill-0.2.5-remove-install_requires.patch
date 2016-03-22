@@ -1,0 +1,28 @@
+From 9b32a0be077d5295a42fec7cb17810fa3e8aca45 Mon Sep 17 00:00:00 2001
+From: Josue Ortega <josueortega@debian.org.gt>
+Date: Sun, 1 Nov 2015 13:11:04 -0600
+Subject: Removes install_requires in order to avoid automatic package
+
+---
+ setup.py | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/setup.py b/setup.py
+index 1ee6dcf..dd90af5 100644
+--- a/setup.py
++++ b/setup.py
+@@ -277,10 +277,10 @@ if has_setuptools:
+       install_requires = ['pyreadline%s'],
+ """ % (pyreadline_version)
+     # verrrry unlikely that this is still relevant
+-    elif hex(sys.hexversion) < '0x20500f0':
+-        setup_code += """
+-      install_requires = ['ctypes%s'],
+-""" % (ctypes_version)
++#    elif hex(sys.hexversion) < '0x20500f0':
++#        setup_code += """
++#      install_requires = ['ctypes%s'],
++#""" % (ctypes_version)
+ 
+ # add the scripts, and close 'setup' call
+ #setup_code += """    
