@@ -203,7 +203,7 @@ app-admin/supervisor 3.1.3 3.2.1 3.2.2: A system for controlling process state u
 app-admin/swatch 3.2.3-r2: Perl-based system log watcher
 app-admin/sxid 4.2-r1: suid, sgid file and directory checking
 app-admin/sysklogd 1.5.1: Standard log daemons
-app-admin/syslog-ng 3.4.8 3.6.2 3.6.4 3.7.2: syslog replacement with advanced filtering features
+app-admin/syslog-ng 3.4.8 3.6.2 3.6.4 3.7.2 3.7.3: syslog replacement with advanced filtering features
 app-admin/syslog-summary 1.14-r1: Summarizes the contents of a syslog log file
 app-admin/syslogread 0.92-r1: Syslog message handling tools
 app-admin/sysrqd 14: daemon providing access to the kernel sysrq functions via network
@@ -10147,7 +10147,7 @@ games-board/pychess 0.10.1-r2 0.12.3: A chess client for Gnome
 games-board/pysolfc 2.0-r3: An exciting collection of more than 1000 solitaire card games
 games-board/qcheckers 20091230: Qt4 based checkers game
 games-board/qgo 1.5.4_p20100322: An ancient boardgame, very common in Japan, China and Korea
-games-board/scid 4.5.2 4.6.2: a free chess database application
+games-board/scid 4.6.2: a free chess database application
 games-board/simsu 1.2.3: A basic sudoku game
 games-board/sirius 0.8.0: A program for playing the game of othello/reversi
 games-board/sjeng 11.2-r1: Console based chess interface
