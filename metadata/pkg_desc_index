@@ -11196,7 +11196,7 @@ kde-apps/kwalletmanager 4.14.3 15.04.3 15.08.3-r1 15.12.2 15.12.3: KDE Wallet ma
 kde-apps/kwordquiz 4.14.3: KDE: A powerful flashcard and vocabulary learning program
 kde-apps/kwrite 4.14.3 15.08.3 15.12.2 15.12.3: KDE simple text editor
 kde-apps/libkcddb 4.14.3 15.08.3 15.12.2 15.12.3: KDE library for CDDB
-kde-apps/libkcompactdisc 4.14.3 15.08.3 15.12.2 15.12.3: KDE library for playing & ripping CDs
+kde-apps/libkcompactdisc 4.14.3 15.08.3 15.08.3-r1 15.12.2 15.12.3-r1: KDE library for playing & ripping CDs
 kde-apps/libkdcraw 4.14.3 4.14.3-r1 15.08.3 15.12.2 15.12.3: Digital camera raw image library wrapper
 kde-apps/libkdeedu 4.14.3: Common library for KDE educational apps
 kde-apps/libkdegames 4.14.3 4.14.3-r1 15.08.3-r1 15.12.3: Base library common to many KDE games
