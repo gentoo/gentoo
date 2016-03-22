@@ -6754,8 +6754,8 @@ dev-php/suhosin 0.9.38: Suhosin is an advanced protection system for PHP install
 dev-php/tcpdf 5.9.149 6.0.096: TCPDF is a FLOSS PHP class for generating PDF documents
 dev-php/twig 1.20.0: PHP templating engine with syntax similar to Django
 dev-php/xcache 3.0.4 3.1.2 3.2.0: A fast and stable PHP opcode cacher
-dev-php/xdebug 2.2.6 2.2.7 2.3.1 2.3.3 2.4.0_beta1 2.4.0_rc2 2.4.0_rc4: A PHP debugging and profiling extension
-dev-php/xdebug-client 2.2.2 2.2.3 2.2.5 2.2.6 2.2.7 2.3.1 2.3.3 2.4.0_beta1 2.4.0_rc2 2.4.0_rc4: Xdebug client for the Common Debugger Protocol (DBGP)
+dev-php/xdebug 2.2.6 2.2.7 2.3.1 2.3.3 2.4.0: A PHP debugging and profiling extension
+dev-php/xdebug-client 2.2.2 2.2.3 2.2.5 2.2.6 2.2.7 2.3.1 2.3.3 2.4.0: Xdebug client for the Common Debugger Protocol (DBGP)
 dev-php/xhprof 0.9.4: A Hierarchical Profiler for PHP
 dev-python/3to2 1.1.1: Tool to refactor valid 3.x syntax into valid 2.x syntax
 dev-python/APScheduler 3.0.1: In-process task scheduler with Cron-like capabilities

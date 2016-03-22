@@ -4,11 +4,11 @@ DESCRIPTION=A JSON implementation in C
 EAPI=5
 HOMEPAGE=https://github.com/json-c/json-c/wiki
 IUSE=doc static-libs abi_x86_32 abi_x86_64 abi_x86_x32 abi_mips_n32 abi_mips_n64 abi_mips_o32 abi_ppc_32 abi_ppc_64 abi_s390_32 abi_s390_64
-KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~amd64-linux ~x86-linux ~ppc-macos
+KEYWORDS=~alpha amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~amd64-linux ~x86-linux ~ppc-macos
 LICENSE=MIT
 RDEPEND=abi_x86_32? ( !<=app-emulation/emul-linux-x86-baselibs-20140406-r3 !app-emulation/emul-linux-x86-baselibs[-abi_x86_32(-)] )
 SLOT=0/0
 SRC_URI=https://s3.amazonaws.com/json-c_releases/releases/json-c-0.12.tar.gz
 _eclass_exported_funcs=src_prepare:- src_configure:autotools-multilib src_compile:autotools-multilib src_test:- src_install:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	autotools-multilib	77afca16a6cb82823eed6366a10e7f75	autotools-utils	419811142edf3516b0d0cf1a254d93cb	eutils	9d81603248f2ba3ec59124320d123e5e	libtool	b75230758539a7da029e24afdb693960	multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	3972ca401cf7dbb430df9995f5d8d580	multilib-build	8fe2e81aeb36cdf8a6cc5f50443879cc	multilib-minimal	0224dee31c0f98405d572e14ad6dee65	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
-_md5_=51b15aa0eb684934e0e2eb2dcc0e2352
+_md5_=d864c2cfaa0b98dcd91a84e0894d99e1
