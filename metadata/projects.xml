@@ -3579,6 +3579,28 @@
     </member>
   </project>
   <project>
+    <email>rust@gentoo.org</email>
+    <name>Gentoo Rust Project</name>
+    <url>https://wiki.gentoo.org/wiki/Project:Rust</url>
+    <description>The Gentoo Rust Project maintains the Rust toolchain and its related packages.</description>
+    <member>
+      <email>cardoe@gentoo.org</email>
+      <name>Doug Goldstein</name>
+    </member>
+    <member>
+      <email>cynede@gentoo.org</email>
+      <name>Heather Cynede</name>
+    </member>
+    <member>
+      <email>jauhien@gentoo.org</email>
+      <name>Jauhien Piatlicki</name>
+    </member>
+    <member>
+      <email>williamh@gentoo.org</email>
+      <name>William Hubbs</name>
+    </member>
+  </project>
+  <project>
     <email>s390@gentoo.org</email>
     <name>Gentoo Linux s390 Development</name>
     <url>https://wiki.gentoo.org/wiki/Project:S390</url>
