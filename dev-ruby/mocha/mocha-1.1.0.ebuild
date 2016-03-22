@@ -14,7 +14,7 @@ RUBY_FAKEGEM_EXTRAINSTALL="init.rb"
 
 inherit ruby-fakegem
 
-DESCRIPTION="A Ruby library for mocking and stubbing using a syntax like that of JMock, and SchMock"
+DESCRIPTION="Mocking and stubbing using a syntax like that of JMock and SchMock"
 HOMEPAGE="http://gofreerange.com/mocha/docs/"
 
 LICENSE="MIT"

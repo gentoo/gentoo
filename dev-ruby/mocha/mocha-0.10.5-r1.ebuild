@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -15,7 +15,7 @@ RUBY_FAKEGEM_EXTRAINSTALL="init.rb"
 
 inherit ruby-fakegem
 
-DESCRIPTION="A Ruby library for mocking and stubbing using a syntax like that of JMock, and SchMock"
+DESCRIPTION="Mocking and stubbing using a syntax like that of JMock and SchMock"
 HOMEPAGE="http://mocha.rubyforge.org/"
 
 LICENSE="MIT"
