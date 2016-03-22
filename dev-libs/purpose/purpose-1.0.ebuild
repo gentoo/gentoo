@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -11,7 +11,7 @@ DESCRIPTION="Library for providing abstractions to get the developer's purposes 
 SRC_URI="mirror://kde/stable/${PN}/${P}.tar.xz"
 
 LICENSE="LGPL-2.1+"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm"
 IUSE=""
 
 DEPEND="
