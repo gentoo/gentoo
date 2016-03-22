@@ -6972,6 +6972,7 @@ dev-python/demjson 2.2.2 2.2.3 2.2.4: encoder, decoder, and lint/validator for J
 dev-python/dexml 0.5.1: Dead-simple Object-XML mapper for Python
 dev-python/dicttoxml 1.5.6 1.6.6: Converts a Python dictionary or other ata type to a valid XML string
 dev-python/diff-match-patch 20121119: Diff, match and patch algorithms for plain text
+dev-python/dill 0.2.5: Serialize all of python (almost)
 dev-python/dingus 0.3.4-r1: A record-then-assert mocking library
 dev-python/discogs-client 2.0.2 2.2.0 2.2.1: Official Python API client for Discogs
 dev-python/disqus-python 0.4.2: Python client library for accessing the disqus.com API
@@ -7167,6 +7168,7 @@ dev-python/git-review 1.24 1.25.0: Tool to submit code to Gerrit
 dev-python/gitdb 0.6.3 0.6.4: GitDB is a pure-Python git object database
 dev-python/glance_store 0.1.10 0.4.0 0.5.0 0.6.0 0.9.1 0.9.2: A connection pool for python-ldap
 dev-python/globre 0.1.2-r1 0.1.3: A glob matching library, providing an interface similar to the 're' module
+dev-python/glueviz 0.7.0: Python library to explore relationships within and among related datasets
 dev-python/gmpy 2.0.4 2.0.6 2.0.7: Python bindings for GMP, MPC, MPFR and MPIR libraries
 dev-python/gnome-keyring-python 2.32.0-r1: Python bindings for the interfacing with the GNOME keyring
 dev-python/gnome-python-base 2.28.1-r1: Provides the base files for the gnome-python bindings
@@ -7512,6 +7514,7 @@ dev-python/pkginfo 1.2.1: Provides an API for querying the distutils metadata wr
 dev-python/pkipplib 0.07-r1: Pkipplib is a Python module which parses IPP requests
 dev-python/placefinder 0.3: Yahoo! BOSS PlaceFinder Python Client
 dev-python/platinfo 0.15.0-r1: Determines and returns consistent names for platforms
+dev-python/plotly 1.9.6: Browser-based graphing library for Python
 dev-python/pluggy 0.3.1: plugin and hook calling mechanisms for python
 dev-python/plumbum 1.5.0 1.6.0: A library for shell script-like programs in python
 dev-python/ply 3.4-r1 3.6-r1 3.8: Python Lex-Yacc library
@@ -15120,7 +15123,7 @@ perl-core/Pod-Simple 3.280.0: Framework for parsing Pod
 perl-core/Sys-Syslog 0.330.0-r1: Provides same functionality as BSD syslog
 perl-core/Term-ANSIColor 4.20.0: Color screen output using ANSI escape sequences
 perl-core/Test 1.260.0: Utilities for writing test scripts
-perl-core/Test-Simple 1.1.14: Basic utilities for writing tests
+perl-core/Test-Simple 1.1.14-r1: Basic utilities for writing tests
 perl-core/Text-Balanced 2.20.0-r1: Extract balanced-delimiter substrings
 perl-core/Text-ParseWords 3.290.0: Parse strings containing shell-style quoting
 perl-core/Text-Tabs+Wrap 2013.52.300-r1: Expand/unexpand tabs per unix expand and line wrapping
@@ -15184,7 +15187,7 @@ ros-meta/vision_visp 0.8.0 0.9.1 9999: Virtual package providing ViSP related pa
 ros-meta/visualization_tutorials 0.9.2 9999: Metapackage referencing tutorials related to rviz and visualization
 ros-meta/viz 1.2.0 9999: Metapackage for ROS visualization packages
 sci-astronomy/aatm 0.6: Atmospheric Modelling for ALMA Observatory
-sci-astronomy/astrometry 0.67: Automated astrometric calibration programs and service
+sci-astronomy/astrometry 0.67-r1: Automated astrometric calibration programs and service
 sci-astronomy/casa-data 99999 20160222: Data and tables for the CASA software
 sci-astronomy/casacore 2.0.3: Core libraries for the Common Astronomy Software Applications
 sci-astronomy/cdsclient 3.8.1: Collection of scripts to access the CDS databases
@@ -15942,6 +15945,7 @@ sci-mathematics/yafu 1.34.3 9999: Yet another factoring utility
 sci-misc/ViSP-images 2.10.0 3.0.0: ViSP images data set
 sci-misc/apertium 3.2.0: Shallow-transfer machine Translation engine and toolbox
 sci-misc/boinc 7.2.0 7.2.0-r1 7.4.42-r1 7.6.31: The Berkeley Open Infrastructure for Network Computing
+sci-misc/fitscut 1.4.4: Extract cutouts from FITS image files
 sci-misc/fitsverify 4.17: FITS file format checker
 sci-misc/flashdot 1.1.4 1.1.4-r1: Generator for psychophysical experiments
 sci-misc/gato 1.1.2: Graph Animation Toolbox
