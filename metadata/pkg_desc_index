@@ -307,7 +307,7 @@ app-arch/tardelta 1.0.1: Generate a tarball of differences between two tarballs
 app-arch/tardy 1.28: A tar post-processor
 app-arch/tarsync 0.2.1-r1: Delta compression suite for using/generating binary patches
 app-arch/threadzip 1.2-r1: threaded compressor logic for zlib/lzma
-app-arch/torrentzip 0.2-r2 0.2-r3: Create identical zip archives over multiple systems
+app-arch/torrentzip 0.2-r4 0.9: Create identical zip archives over multiple systems
 app-arch/unace 2.5-r3 2.5-r4: ACE unarchiver
 app-arch/unadf 0.7.9b 0.7.12: Extract files from Amiga adf disk images
 app-arch/unar 1.1 1.2 1.5 1.6 1.8.1: unpacker for various archiving formats, e.g. rar v3
@@ -4982,8 +4982,8 @@ dev-ml/async_kernel 113.24.00 113.33.00: Jane Street Capital's asynchronous exec
 dev-ml/async_rpc_kernel 113.24.00 113.33.00: Platform-independent core of Async RPC library
 dev-ml/async_unix 113.24.00 113.33.00: Jane Street Capital's asynchronous execution library (unix)
 dev-ml/batteries 2.4.0: The community-maintained foundation library for your OCaml projects
-dev-ml/bignum 113.24.00: Core-flavoured wrapper around zarith's arbitrary-precision rationals
-dev-ml/bin-prot 113.24.00: A binary protocol generator
+dev-ml/bignum 113.24.00 113.33.00: Core-flavoured wrapper around zarith's arbitrary-precision rationals
+dev-ml/bin-prot 113.24.00 113.33.00: A binary protocol generator
 dev-ml/biniou 1.0.9: A binary data serialization format inspired by JSON for OCaml
 dev-ml/bolt 1.4: Logging tool for the Objective Caml language
 dev-ml/bson 0.89.3: An ocaml implementation for bson
@@ -17072,7 +17072,7 @@ sys-kernel/pf-sources 2.6.31_p9 2.6.32_p16 2.6.33_p4 2.6.34_p7 2.6.35_p11 2.6.36
 sys-kernel/raspberrypi-image 4.1.17_p20160209 4.1.19_p20160309: Raspberry PI boot loader and firmware
 sys-kernel/raspberrypi-sources 3.10.1_pre-r20130719 3.10.9999 3.12.9999 3.14.9999 3.18.9999 4.1.9999 4.4.9999: Raspberry PI kernel sources
 sys-kernel/rsbac-sources 3.14.28: RSBAC kernel sources (kernel series 3.14)
-sys-kernel/rt-sources 3.14.58_p59 3.14.61_p62 3.18.25_p23 3.18.27_p25 4.1.15_p17 4.4.1_p6 4.4.2_p7: Full Linux 4.4 kernel sources with the CONFIG_PREEMPT_RT patch
+sys-kernel/rt-sources 3.14.58_p59 3.14.61_p62 3.14.64_p67 3.18.25_p23 3.18.27_p25 3.18.28_p28 4.1.15_p17 4.1.19_p22 4.4.1_p6 4.4.2_p7 4.4.4_p11: Full Linux 4.4 kernel sources with the CONFIG_PREEMPT_RT patch
 sys-kernel/spl 0.6.0_rc13-r2 0.6.0_rc14-r3 0.6.1-r3 0.6.2-r5 0.6.3-r1 0.6.4.2 0.6.5.2 0.6.5.3 0.6.5.3-r1 0.6.5.4 0.6.5.4-r1 9999: The Solaris Porting Layer is a Linux kernel module which provides many of the Solaris kernel APIs
 sys-kernel/tuxonice-sources 3.4.110 3.10.98 3.10.100 3.12.55 3.12.56 3.14.62 3.14.64 3.18.27 3.18.28 4.1.18 4.1.19 4.2.8 4.3.6 4.4.3 4.4.5: TuxOnIce + Gentoo patchset sources
 sys-kernel/vanilla-sources 3.2.78 3.4.110 3.10.101 3.12.57 3.14.65 3.18.29 4.1.20 4.4.6 4.5.0: Full sources for the Linux kernel
