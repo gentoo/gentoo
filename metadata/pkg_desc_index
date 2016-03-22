@@ -2340,7 +2340,7 @@ app-text/paperwork 0.2.5 0.3.0.1: a personal document manager for scanned docume
 app-text/paps 0.6.8-r1: Unicode-aware text to PostScript converter
 app-text/par 1.52: a paragraph reformatter, vaguely similar to fmt, but better
 app-text/passivetex 1.25: A namespace-aware XML parser written in Tex
-app-text/pastebinit 1.4.1: A software that lets you send anything you want directly to a pastebin from the command line.
+app-text/pastebinit 1.4.1 1.5: A software that lets you send anything you want directly to a pastebin
 app-text/pdf2djvu 0.9.3 0.9.4: A tool to create DjVu files from PDF files
 app-text/pdf2html 1.4: Converts pdf files to html files
 app-text/pdf2oo 20090715: Converts pdf files to odf
@@ -13079,7 +13079,7 @@ media-sound/mp3unicode 1.2.1: Commandline utility to convert ID3 tags in mp3 fil
 media-sound/mp3wrap 0.5: Command-line utility that wraps quickly two or more mp3 files in one single large playable mp3
 media-sound/mpc 0.25 0.26 0.27: A commandline client for Music Player Daemon (media-sound/mpd)
 media-sound/mpck 0.15: Checks MP3s for errors
-media-sound/mpd 0.19.10 0.19.11 0.19.12: The Music Player Daemon (mpd)
+media-sound/mpd 0.19.10 0.19.11 0.19.12 0.19.14: The Music Player Daemon (mpd)
 media-sound/mpdas 0.4.0-r1 0.4.1: An AudioScrobbler client for MPD written in C++
 media-sound/mpdscribble 0.22: An MPD client that submits information to Audioscrobbler
 media-sound/mpfc 1.3.7-r1 1.3.8.1 1.3.8.1-r1 1.3.8.1-r2: Music Player For Console
