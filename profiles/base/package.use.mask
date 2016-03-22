@@ -5,6 +5,10 @@
 # This file requires >=portage-2.1.1
 # New entries go on top.
 
+# Maciej Mrozowski <reavertm@gmail.com> (23 Mar 2016)
+# Experimental cairo-qt backend (see bug #568000).
+app-text/poppler cairo-qt
+
 # Lars Wendler <polynomial-c@gentoo.org> (20 Mar 2016)
 # Need vulnerable libotr version (see bug #576914).
 net-im/centerim otr
