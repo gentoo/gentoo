@@ -85,6 +85,7 @@ ap_make() {
 		DOC_INSTALL_DIR="${ED}usr/share/doc/${PF}" \
 		EXAMPLE_INSTALL_DIR="${ED}usr/share/doc/${PF}/examples" \
 		PY_BASE_INSTALL_DIR="${ED}$(python_get_sitedir)/astrometry" \
+		PY_BASE_LINK_DIR="../$(python_get_sitedir | sed -e 's|/usr/||')/astrometry" \
 		FINAL_DIR="${EPREFIX}usr" \
 		DATA_FINAL_DIR="${EPREFIX}usr/share/astrometry" \
 		$@
