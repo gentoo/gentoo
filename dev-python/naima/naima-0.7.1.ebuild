@@ -21,7 +21,7 @@ DOCS=( README.rst )
 RDEPEND="
 	dev-python/astropy[${PYTHON_USEDEP}]
 	dev-python/emcee[${PYTHON_USEDEP}]
-	dev-python/numpy[${PYTHON_USEDEP}]"
+	>=dev-python/numpy-1.10[${PYTHON_USEDEP}]"
 
 DEPEND="${RDEPEND}
 	dev-python/astropy-helpers[${PYTHON_USEDEP}]
