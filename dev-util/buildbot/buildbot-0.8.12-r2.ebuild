@@ -91,10 +91,13 @@ src_install() {
 
 pkg_postinst() {
 	readme.gentoo_print_elog
-	elog
-	elog "Upstream recommends the following when upgrading:"
-	elog "Each time you install a new version of Buildbot, you should run the"
-	elog "\"buildbot upgrade-master\" command on each of your pre-existing build masters."
-	elog "This will add files and fix (or at least detect) incompatibilities between"
-	elog "your old config and the new code."
+
+	if [[ -n ${REPLACING_VERSIONS} ]]; then
+		elog
+		elog "Upstream recommends the following when upgrading:"
+		elog "Each time you install a new version of Buildbot, you should run the"
+		elog "\"buildbot upgrade-master\" command on each of your pre-existing build masters."
+		elog "This will add files and fix (or at least detect) incompatibilities between"
+		elog "your old config and the new code."
+	fi
 }
