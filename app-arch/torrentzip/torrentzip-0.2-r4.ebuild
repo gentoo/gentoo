@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
+EAPI="6"
 
 inherit eutils autotools
 
@@ -12,7 +12,7 @@ HOMEPAGE="https://sourceforge.net/projects/trrntzip"
 MY_PN="trrntzip"
 MY_P="${MY_PN}_v${PV/.}"
 
-SRC_URI="mirror://sourceforge/trrntzip/${MY_P}_src.tar.gz -> ${P}.tar.gz"
+SRC_URI="mirror://sourceforge/trrntzip/${MY_P}_src.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
@@ -22,11 +22,12 @@ RDEPEND="$DEPEND"
 
 S="${WORKDIR}/${MY_PN}"
 DOCS=(README AUTHORS)
+PATCHES=("${FILESDIR}/${P}-fix-perms.patch")
 
 src_prepare() {
-	export CPPFLAGS+=" -DOF\\(args\\)=args"
+	default
 
-	epatch_user
+	export CPPFLAGS+=" -DOF\\(args\\)=args"
 
 	eautoreconf
 }

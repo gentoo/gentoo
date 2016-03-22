@@ -1,0 +1,11 @@
+--- a/src/trrntzip.c
++++ b/src/trrntzip.c
+@@ -782,7 +782,7 @@
+
+           if (strstr (szTmpBuf, ".zip\0") && !(istat.st_mode & S_IWUSR))
+           {            
+-            chmod (direntp->d_name, S_IWUSR);
++            chmod (direntp->d_name, S_IWUSR | S_IRUSR);
+             mig.cEncounteredZips++;
+
+             if (!mig.fProcessLog)
