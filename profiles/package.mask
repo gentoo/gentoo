@@ -31,6 +31,11 @@
 #--- END OF EXAMPLES ---
 
 # Aaron Bauman <bman@gentoo.org> (19 Mar 2016)
+# Unpatched security vulnerability per bug #521892.
+# Masked for removal in 30 days.
+net-irc/srvx
+
+# Aaron Bauman <bman@gentoo.org> (19 Mar 2016)
 # Unpatched security vulnerability per bug #261182.
 # Masked for removal in 30 days.
 media-sound/shoutcast-server-bin
