@@ -45,7 +45,7 @@ src_install() {
 	php-ext-source-r2_addtoinifiles "xdebug.default_enable" '"1"'
 	php-ext-source-r2_addtoinifiles "xdebug.extended_info" '"1"'
 	php-ext-source-r2_addtoinifiles "xdebug.manual_url" '"http://www.php.net"'
-	php-ext-source-r2_addtoinifiles "xdebug.max_nesting_level" '"100"'
+	php-ext-source-r2_addtoinifiles "xdebug.max_nesting_level" '"256"'
 	php-ext-source-r2_addtoinifiles "xdebug.show_error_trace" '"0"'
 	php-ext-source-r2_addtoinifiles "xdebug.show_exception_trace" '"0"'
 	php-ext-source-r2_addtoinifiles "xdebug.show_local_vars" '"0"'
