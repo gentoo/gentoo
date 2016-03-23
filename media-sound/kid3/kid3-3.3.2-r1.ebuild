@@ -49,7 +49,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 
-PATCHES=( "${FILESDIR}/${PN}-3.2.1-libdir.patch" )
+PATCHES=( "${FILESDIR}/${PN}-3.3.2-libdir.patch" )
 
 src_configure() {
 	local mycmakeargs=(
