@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -32,7 +32,7 @@ RDEPEND="ldap? ( net-nds/openldap[${MULTILIB_USEDEP}] )
 			app-misc/ca-certificates
 		)
 		curl_ssl_libressl? (
-			dev-libs/libressl[static-libs?,${MULTILIB_USEDEP}]
+			dev-libs/libressl:0=[static-libs?,${MULTILIB_USEDEP}]
 		)
 		curl_ssl_mbedtls? (
 			net-libs/mbedtls:0=[${MULTILIB_USEDEP}]
