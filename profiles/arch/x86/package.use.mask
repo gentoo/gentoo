@@ -4,6 +4,10 @@
 
 # This file requires >=portage-2.1.1
 
+# Rick Farina <zerochaos@gentoo.org> (23 Mar 2016)
+# rspec:3 is not keyworded for x86 at this time
+=dev-ruby/bundler-audit-0.5.0 test
+
 # Mike Gilbert <floppym@gentoo.org> (03 Mar 2016)
 # google-chrome dropped x86 support
 app-admin/lastpass chrome
