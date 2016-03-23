@@ -6,7 +6,7 @@ EAPI=5
 
 GENTOO_DEPEND_ON_PERL=no
 
-inherit base eutils perl-module autotools systemd
+inherit eutils perl-module autotools systemd
 
 if [[ "${PV}" == "9999" ]] ; then
 	inherit bzr
@@ -48,7 +48,6 @@ DEPEND="${RDEPEND}
 "
 
 src_prepare() {
-	base_src_prepare
 	epatch "${FILESDIR}/${P}-allow-disable-ghostscript.patch"
 	sed -e "s/AM_CONFIG_HEADER/AC_CONFIG_HEADERS/" -i configure.ac || die
 	eautoreconf
