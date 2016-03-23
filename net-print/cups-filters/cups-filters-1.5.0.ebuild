@@ -6,7 +6,7 @@ EAPI=5
 
 GENTOO_DEPEND_ON_PERL=no
 
-inherit eutils perl-module autotools systemd
+inherit eutils perl-module systemd
 
 if [[ "${PV}" == "9999" ]] ; then
 	inherit bzr
@@ -46,11 +46,6 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	dev-util/gdbus-codegen
 "
-
-src_prepare() {
-	sed -e "s/AM_CONFIG_HEADER/AC_CONFIG_HEADERS/" -i configure.ac || die
-	eautoreconf
-}
 
 src_configure() {
 	econf \

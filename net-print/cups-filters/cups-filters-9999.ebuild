@@ -48,7 +48,6 @@ DEPEND="${RDEPEND}
 "
 
 src_prepare() {
-	sed -e "s/AM_CONFIG_HEADER/AC_CONFIG_HEADERS/" -i configure.ac || die
 	eautoreconf
 }
 
