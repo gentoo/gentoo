@@ -1,20 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="project">
-    <email>cjk@gentoo.org</email>
-    <name>Cjk</name>
-  </maintainer>
-  <use>
-    <flag name="autostart">Enable xdg-compatible autostart of fcitx</flag>
-    <flag name="enchant">Use <pkg>app-text/enchant</pkg> for text prediction</flag>
-    <flag name="introspection">Enable GObject Introspection</flag>
-    <flag name="gtk">Install GTK2 IM module</flag>
-    <flag name="gtk3">Install GTK3 IM module</flag>
-    <flag name="opencc">Enable OpenCC for Chinese Transform</flag>
-    <flag name="pango">Enable support for <pkg>x11-libs/pango</pkg></flag>
-    <flag name="qt4">Install Qt4 IM module</flag>
-    <flag name="snooper">Enable Key Snooper for GTK app</flag>
-    <flag name="table">Enable Table IM</flag>
-  </use>
+	<maintainer type="person">
+		<email>arfrever.fta@gmail.com</email>
+		<name>Arfrever Frehtes Taifersar Arahesis</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>cjk@gentoo.org</email>
+		<name>Cjk</name>
+	</maintainer>
+	<use>
+		<flag name="autostart">Enable xdg-compatible autostart of fcitx</flag>
+		<flag name="enchant">Use <pkg>app-text/enchant</pkg> for text prediction</flag>
+		<flag name="introspection">Enable GObject Introspection</flag>
+		<flag name="gtk">Install GTK2 IM module</flag>
+		<flag name="gtk3">Install GTK3 IM module</flag>
+		<flag name="opencc">Enable OpenCC for Chinese Transform</flag>
+		<flag name="pango">Enable support for <pkg>x11-libs/pango</pkg></flag>
+		<flag name="qt4">Install Qt4 IM module</flag>
+		<flag name="snooper">Enable Key Snooper for GTK app</flag>
+		<flag name="table">Enable Table IM</flag>
+	</use>
 </pkgmetadata>

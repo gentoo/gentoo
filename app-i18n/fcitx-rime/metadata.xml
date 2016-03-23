@@ -1,16 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="person">
-    <email>dlan@gentoo.org</email>
-    <name>Yixun Lan</name>
-  </maintainer>
-  <maintainer type="project">
-    <email>cjk@gentoo.org</email>
-    <name>Cjk</name>
-  </maintainer>
-  <upstream>
-    <bugs-to>https://code.google.com/p/rimeime/issues/list</bugs-to>
-    <remote-id type="google-code">rimeime</remote-id>
-  </upstream>
+	<maintainer type="person">
+		<email>arfrever.fta@gmail.com</email>
+		<name>Arfrever Frehtes Taifersar Arahesis</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>dlan@gentoo.org</email>
+		<name>Yixun Lan</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>cjk@gentoo.org</email>
+		<name>Cjk</name>
+	</maintainer>
+	<upstream>
+		<bugs-to>https://code.google.com/p/rimeime/issues/list</bugs-to>
+		<remote-id type="google-code">rimeime</remote-id>
+	</upstream>
 </pkgmetadata>
