@@ -21,7 +21,7 @@ HOMEPAGE="http://www.linuxfoundation.org/collaborate/workgroups/openprinting/pdf
 
 LICENSE="MIT GPL-2"
 SLOT="0"
-IUSE="dbus +foomatic jpeg perl png static-libs tiff zeroconf"
+IUSE="dbus +foomatic jpeg ldap perl png static-libs tiff zeroconf"
 
 RDEPEND="
 	>=app-text/ghostscript-gpl-9.09[cups]
@@ -37,6 +37,7 @@ RDEPEND="
 	dbus? ( sys-apps/dbus )
 	foomatic? ( !net-print/foomatic-filters )
 	jpeg? ( virtual/jpeg:0 )
+	ldap? ( net-nds/openldap )
 	perl? ( dev-lang/perl:= )
 	png? ( media-libs/libpng:0= )
 	tiff? ( media-libs/tiff:0 )
@@ -58,6 +59,7 @@ src_configure() {
 		$(use_enable dbus) \
 		$(use_enable zeroconf avahi) \
 		$(use_enable static-libs static) \
+		$(use_enable ldap) \
 		--with-fontdir="fonts/conf.avail" \
 		--with-pdftops=pdftops \
 		--enable-imagefilters \
