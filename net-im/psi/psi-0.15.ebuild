@@ -35,7 +35,7 @@ RDEPEND="
 	xscreensaver? ( x11-libs/libXScrnSaver )
 "
 DEPEND="${RDEPEND}
-	sys-devel/qconf
+	sys-devel/qconf[qt4(+)]
 	doc? ( app-doc/doxygen )
 "
 PDEPEND="
