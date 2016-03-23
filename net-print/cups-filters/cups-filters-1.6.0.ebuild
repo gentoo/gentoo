@@ -27,6 +27,7 @@ RDEPEND="
 	>=app-text/ghostscript-gpl-9.09
 	app-text/poppler:=[cxx,jpeg?,lcms,tiff?,xpdf-headers(+)]
 	>=app-text/qpdf-3.0.2:=
+	dev-libs/glib:2
 	media-libs/fontconfig
 	media-libs/freetype:2
 	media-libs/lcms:2
