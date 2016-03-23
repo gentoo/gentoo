@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 PYTHON_COMPAT=( python{2_7,3_4,3_5} )
 
@@ -17,8 +17,6 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
-# https://github.com/jaraco/jaraco.functools/issues/3
-RESTRICT="test"
 
 RDEPEND="dev-python/six[${PYTHON_USEDEP}]
 	$(python_gen_cond_dep 'dev-python/backports-functools-lru-cache[${PYTHON_USEDEP}]' python2_7)
@@ -29,6 +27,7 @@ DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 		${RDEPEND}
 		>=dev-python/pytest-2.8[${PYTHON_USEDEP}]
 		dev-python/pytest-runner[${PYTHON_USEDEP}]
+		dev-python/backports-unittest-mock[${PYTHON_USEDEP}]
 	)
 "
 
