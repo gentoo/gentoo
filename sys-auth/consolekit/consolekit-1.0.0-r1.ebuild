@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -11,7 +11,7 @@ MY_P=${MY_PN}-${PV}
 DESCRIPTION="Framework for defining and tracking users, login sessions and seats"
 HOMEPAGE="https://github.com/ConsoleKit2/ConsoleKit2 http://www.freedesktop.org/wiki/Software/ConsoleKit"
 SRC_URI="https://github.com/${MY_PN}/${MY_PN}/releases/download/${PV}/${MY_P}.tar.bz2
-	mirror://debian/pool/main/${PN:0:1}/${PN}/${PN}_0.4.6-4.debian.tar.gz" # for logrotate file"
+	https://launchpad.net/debian/+archive/primary/+files/${PN}_0.4.6-4.debian.tar.gz" # for logrotate file
 
 LICENSE="GPL-2"
 SLOT="0"
