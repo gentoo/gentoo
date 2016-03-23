@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 CMAKE_MIN_VERSION="3.0"
 
 PYTHON_COMPAT=( python3_4 python3_5 )
@@ -22,7 +22,7 @@ IUSE=""
 
 RDEPEND="
 	app-text/hunspell
-	dev-libs/boost[threads,${PYTHON_USEDEP}]
+	dev-libs/boost[threads]
 	dev-libs/libpcre[pcre16]
 	dev-libs/xerces-c[icu]
 	dev-python/chardet[${PYTHON_USEDEP}]
@@ -60,7 +60,9 @@ DOCS=( ChangeLog.txt README.md )
 src_prepare() {
 	# sigil tries to copy non-needed qt libs for deb package, safe to ignore this completely
 	sed -e '/set( QT_LIBS/d' -i src/CMakeLists.txt || die "sed failed"
+	eapply "${FILESDIR}/sigil-0.9.4-proper-gumbo-install.patch"
 
+	eapply_user
 	cmake-utils_src_prepare
 }
 
@@ -68,6 +70,7 @@ src_configure() {
 	local mycmakeargs=(
 		-DUSE_SYSTEM_LIBS=1
 		-DSYSTEM_LIBS_REQUIRED=1
+		-DLIBDIR="$(get_libdir)"
 	)
 	cmake-utils_src_configure
 }
