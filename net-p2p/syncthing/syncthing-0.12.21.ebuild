@@ -39,7 +39,7 @@ src_test() {
 
 src_install() {
 	cd src/${EGO_PN}
-	doman man/*.[157] || die
+	doman man/*.[157]
 	dobin bin/*
 	dodoc README.md AUTHORS CONTRIBUTING.md
 	systemd_dounit "${S}"/src/${EGO_PN}/etc/linux-systemd/system/${PN}@.service \
