@@ -64,6 +64,7 @@ src_configure() {
 		$(use_enable foomatic) \
 		$(use_enable ldap) \
 		$(use_enable postscript ghostscript) \
+		$(use_enable postscript ijs) \
 		--with-fontdir="fonts/conf.avail" \
 		--with-pdftops=pdftops \
 		--enable-imagefilters \
