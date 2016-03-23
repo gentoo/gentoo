@@ -16843,7 +16843,7 @@ sys-devel/parity 1.2.4 1.2.5 1.2.6 9999: An Interix to native Win32 Cross-Compil
 sys-devel/patch 2.7.3 2.7.4 2.7.5: Utility to apply diffs to files
 sys-devel/pmake 1.111.3.1 1.111.3.3: BSD build tool to create programs in parallel. Debian's version of NetBSD's make
 sys-devel/prelink 20130503 20130503-r1: Modifies ELFs to avoid runtime symbol resolutions resulting in faster load times
-sys-devel/qconf 1.5_pre717-r1: ./configure like generator for qmake-based projects
+sys-devel/qconf 1.5_pre717-r1 2.0: ./configure like generator for qmake-based projects
 sys-devel/remake 3.81.0.2 3.81.0.3 3.82.0.4 3.82.0.9 4.1.1.1: patched version of GNU make that adds improved error reporting, tracing, and a debugger
 sys-devel/smatch 1.57 1.57-r1 1.59 9999: static analysis tool for C
 sys-devel/sparse 0.4.3 0.4.4 0.5.0 9999: C semantic parser
