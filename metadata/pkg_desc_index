@@ -10274,7 +10274,7 @@ games-fps/duke3d-demodata 1.3: Duke Nukem 3D 1.3d shareware data
 games-fps/eduke32 20131119.4169: Port of Duke Nukem 3D for SDL
 games-fps/enemy-territory 2.60b-r1: standalone multi-player game based on Return to Castle Wolfenstein
 games-fps/enemy-territory-etpro 3.2.6-r1: Enemy Territory ETPro - Minor additions to Enemy Territory to make it more fun
-games-fps/enemy-territory-omnibot 0.82 0.83.1: Enemy Territory Omnibot - Bots for Ennemy Territory
+games-fps/enemy-territory-omnibot 0.82 0.83.1 0.85: Enemy Territory Omnibot - Bots for Ennemy Territory
 games-fps/enemy-territory-truecombat 0.49b: Enemy Territory True Combat - a team-based realism modification
 games-fps/etqw-bin 1.5-r1: Enemy Territory: Quake Wars
 games-fps/etqw-data 1.0: Enemy Territory: Quake Wars data files
