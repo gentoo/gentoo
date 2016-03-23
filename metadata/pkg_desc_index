@@ -8691,7 +8691,7 @@ dev-ruby/curb 0.8.8: Ruby-language bindings for libcurl
 dev-ruby/d3_rails 3.5.10 3.5.11 3.5.16: Ruby on Rails integration for the Javascript Data Visualization Framework, D3
 dev-ruby/daemon_controller 1.2.0-r1: Library to start and stop specific daemons programmatically in a robust manner
 dev-ruby/daemons 1.2.3: Wrap existing ruby scripts to be run as a daemon
-dev-ruby/dalli 2.7.4 2.7.5 2.7.6: A high performance pure Ruby client for accessing memcached servers
+dev-ruby/dalli 2.7.4 2.7.6: A high performance pure Ruby client for accessing memcached servers
 dev-ruby/database_cleaner 1.4.1 1.5.0 1.5.1: Strategies for cleaning databases
 dev-ruby/date_validator 0.8.0 0.8.1 0.9.0: Simple, ORM agnostic, Ruby 1.9 compatible date validator for Rails 3
 dev-ruby/dbf 2.0.8 2.0.13 3.0.3 3.0.4 3.0.5: a small fast library for reading dBase, xBase, Clipper and FoxPro database files
@@ -8829,7 +8829,7 @@ dev-ruby/map 6.5.5 6.6.0: A string/symbol indifferent ordered hash that works in
 dev-ruby/maruku 0.7.2 0.7.2-r1: A Markdown-superset interpreter written in Ruby
 dev-ruby/mash 0.1.1-r2: Mash is an extended Hash that gives simple pseudo-object functionality
 dev-ruby/matchy 0.5.2-r1: RSpec-esque matchers for use in Test::Unit
-dev-ruby/maxitest 1.5.4 1.5.5 1.5.6: Minitest + all the features you always wanted
+dev-ruby/maxitest 1.5.6: Minitest + all the features you always wanted
 dev-ruby/mecab-ruby 0.996 0.996-r1: Ruby binding for MeCab
 dev-ruby/mechanize 2.7.3 2.7.3-r1 2.7.4: A Ruby library used for automating interaction with websites
 dev-ruby/memcache-client 1.8.5-r1 1.8.5-r2: A ruby library for accessing memcached
@@ -14930,7 +14930,7 @@ net-print/cndrvcups-common-lb 2.90 3.10: Common files for Canon drivers
 net-print/cndrvcups-lb 2.90 3.00: Canon UFR II / LIPSLX Printer Driver for Linux
 net-print/cups 2.0.3 2.0.4 2.1.2-r2 2.1.3 2.1.3-r1 9999: The Common Unix Printing System
 net-print/cups-bjnp 1.1 1.2.1 2.0: CUPS backend for the canon printers using the proprietary USB over IP BJNP protocol
-net-print/cups-filters 1.0.71 1.5.0 1.6.0 1.8.1 1.8.1-r1 1.8.2 9999: Cups PDF filters
+net-print/cups-filters 1.5.0 1.6.0 1.8.1 1.8.1-r1 1.8.2 1.8.2-r1 9999: Cups PDF filters
 net-print/cups-pdf 2.6.1 3.0_beta1: Provides a virtual printer for CUPS to produce PDF files
 net-print/cups-pk-helper 0.2.5 0.2.6: PolicyKit helper to configure cups with fine-grained privileges
 net-print/cups-windows 6.0-r1: CUPS PostScript Driver for Windows
