@@ -50,7 +50,7 @@ python_test() {
 python_install_all() {
 	distutils-r1_python_install_all
 
-	rm -r "${D}"/usr/share/doc/${PN} "${D}"/run || die
+	rm -rf "${D}"/usr/share/doc/${PN} "${D}"/run || die
 
 	# not FILESDIR
 	newconfd files/gentoo-confd ${PN}
