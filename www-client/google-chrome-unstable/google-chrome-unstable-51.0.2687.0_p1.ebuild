@@ -2,13 +2,13 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
+EAPI="6"
 
 CHROMIUM_LANGS="am ar bg bn ca cs da de el en_GB es es_LA et fa fi fil fr gu he
 	hi hr hu id it ja kn ko lt lv ml mr ms nb nl pl pt_BR pt_PT ro ru sk sl sr
 	sv sw ta te th tr uk vi zh_CN zh_TW fake_bidi"
 
-inherit readme.gentoo-r1 chromium eutils multilib pax-utils unpacker
+inherit readme.gentoo-r1 chromium eutils pax-utils unpacker
 
 DESCRIPTION="The web browser from Google"
 HOMEPAGE="https://www.google.com/chrome"
@@ -21,11 +21,7 @@ fi
 
 MY_P="${MY_PN}_${PV/_p/-}"
 
-SRC_URI="
-	amd64? (
-		https://dl.google.com/linux/chrome/deb/pool/main/g/${MY_PN}/${MY_P}_amd64.deb
-	)
-"
+SRC_URI="https://dl.google.com/linux/chrome/deb/pool/main/g/${MY_PN}/${MY_P}_amd64.deb"
 
 LICENSE="google-chrome"
 SLOT="0"
@@ -101,6 +97,11 @@ pkg_nofetch() {
 	eerror "Please wait 24 hours and sync your tree before reporting a bug for google-chrome fetch failures."
 }
 
+pkg_pretend() {
+	# Protect against people using autounmask overzealously
+	use amd64 || die "google-chrome only works on amd64"
+}
+
 pkg_setup() {
 	chromium_suid_sandbox_check_kernel_config
 }
@@ -135,20 +136,8 @@ src_install() {
 	readme.gentoo_create_doc
 }
 
-any_cpu_missing_flag() {
-	local value=$1
-	grep '^flags' /proc/cpuinfo | grep -qv "$value"
-}
-
 pkg_preinst() {
 	chromium_pkg_preinst
-	if any_cpu_missing_flag sse2; then
-		ewarn "The bundled PepperFlash plugin requires a CPU that supports the"
-		ewarn "SSE2 instruction set, and at least one of your CPUs does not"
-		ewarn "support this feature. Disabling PepperFlash."
-		sed -e "/^exec/ i set -- --disable-bundled-ppapi-flash \"\$@\"" \
-			-i "${ED}${CHROME_HOME}/google-chrome" || die
-	fi
 }
 
 pkg_postinst() {
