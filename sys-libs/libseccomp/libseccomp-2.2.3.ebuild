@@ -14,7 +14,7 @@ SRC_URI="https://github.com/seccomp/libseccomp/releases/download/v${PV}/${P}.tar
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="-* amd64 ~arm ~arm64 ~mips x86"
+KEYWORDS="-* amd64 arm arm64 ~mips x86"
 IUSE="static-libs"
 
 # We need newer kernel headers; we don't keep strict control of the exact
