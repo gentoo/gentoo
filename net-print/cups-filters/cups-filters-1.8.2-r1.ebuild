@@ -6,7 +6,7 @@ EAPI=5
 
 GENTOO_DEPEND_ON_PERL=no
 
-inherit eutils perl-module systemd
+inherit eutils perl-module autotools systemd
 
 if [[ "${PV}" == "9999" ]] ; then
 	inherit bzr
@@ -46,6 +46,12 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	dev-util/gdbus-codegen
 "
+
+src_prepare() {
+	epatch "${FILESDIR}"/${P}-disable-ijs.patch #574992
+	epatch "${FILESDIR}"/${P}-gstoraster.patch
+	eautoreconf
+}
 
 src_configure() {
 	econf \
