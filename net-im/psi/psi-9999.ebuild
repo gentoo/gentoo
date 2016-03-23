@@ -49,7 +49,7 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	extras? (
 		${SUBVERSION_DEPEND}
-		sys-devel/qconf
+		sys-devel/qconf[qt4(+)]
 	)
 	doc? ( app-doc/doxygen )
 	virtual/pkgconfig
