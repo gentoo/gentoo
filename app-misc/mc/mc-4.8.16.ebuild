@@ -46,6 +46,8 @@ PATCHES=(
 	"${FILESDIR}/${PN}-4.8.15-ebuild_syntax_EAPI-6.patch"
 )
 
+S=${WORKDIR}/${MY_P}
+
 src_prepare() {
 	[[ -n ${LIVE_EBUILD} ]] && ./autogen.sh
 
@@ -53,8 +55,6 @@ src_prepare() {
 
 	eautoreconf
 }
-
-S=${WORKDIR}/${MY_P}
 
 src_configure() {
 	local myscreen=ncurses
