@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -16,7 +16,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="4"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="acoustid flac kde mp3 mp4 +phonon +taglib vorbis"
 
 REQUIRED_USE="flac? ( vorbis )"
@@ -24,6 +24,7 @@ REQUIRED_USE="flac? ( vorbis )"
 RDEPEND="
 	dev-qt/qtcore:4
 	dev-qt/qtdbus:4
+	dev-qt/qtdeclarative:4
 	dev-qt/qtgui:4
 	sys-libs/readline:0
 	acoustid? (
@@ -47,6 +48,8 @@ RDEPEND="
 	)
 "
 DEPEND="${RDEPEND}"
+
+PATCHES=( "${FILESDIR}/${PN}-3.3.2-libdir.patch" )
 
 src_configure() {
 	local mycmakeargs=(
