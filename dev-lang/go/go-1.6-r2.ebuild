@@ -18,14 +18,14 @@ kernel_Darwin? (
 )
 kernel_FreeBSD? (
 amd64-fbsd? ( ${BOOTSTRAP_DIST}/go-freebsd-amd64-bootstrap.tbz )
-x86-fbsd? ( ${BOOTSTRAP_DIST}/go-freebsd-386-bootstrap.tbz )
+x86-fbsd? ( ${BOOTSTRAP_DIST}/go-freebsd-386-bootstrap-1.tbz )
 )
 kernel_linux? (
 	amd64? ( ${BOOTSTRAP_DIST}/go-linux-amd64-bootstrap.tbz )
 	arm? ( ${BOOTSTRAP_DIST}/go-linux-arm-bootstrap.tbz )
 	arm64? ( ${BOOTSTRAP_DIST}/go-linux-arm64-bootstrap.tbz )
 	ppc64? ( ${BOOTSTRAP_DIST}/go-linux-ppc64-bootstrap.tbz )
-	x86? ( ${BOOTSTRAP_DIST}/go-linux-386-bootstrap.tbz )
+	x86? ( ${BOOTSTRAP_DIST}/go-linux-386-bootstrap-1.tbz )
 )
 kernel_SunOS? (
 	x64-solaris? ( ${BOOTSTRAP_DIST}/go-solaris-amd64-bootstrap.tbz )
