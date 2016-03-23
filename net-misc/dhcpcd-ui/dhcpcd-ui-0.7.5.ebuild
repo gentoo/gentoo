@@ -1,10 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-inherit eutils systemd
+inherit eutils qmake-utils systemd
 
 DESCRIPTION="Desktop notification and configuration for dhcpcd"
 HOMEPAGE="http://roy.marples.name/projects/dhcpcd-ui/"
@@ -33,8 +33,11 @@ DEPEND="${DEPEND}
 
 RDEPEND=">=net-misc/dhcpcd-6.4.4"
 
-src_prepare() {
-	epatch_user
+pkg_setup() {
+	if use qt4 ; then
+		# This is required in case a user still has qt3 installed
+		export QTDIR="$(qt4_get_bindir)"
+	fi
 }
 
 src_configure() {
