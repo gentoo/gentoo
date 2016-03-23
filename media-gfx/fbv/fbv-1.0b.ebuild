@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -11,7 +11,7 @@ SRC_URI="http://s-tech.elsat.net.pl/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 arm ~ppc ppc64 sh x86"
+KEYWORDS="~amd64 arm ~arm64 ~ppc ppc64 sh x86"
 IUSE="gif jpeg png"
 
 RDEPEND="gif? ( media-libs/giflib )
