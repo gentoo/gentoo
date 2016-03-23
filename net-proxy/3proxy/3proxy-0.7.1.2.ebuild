@@ -27,17 +27,15 @@ src_install() {
 	dobin 3proxy
 	for x in proxy socks ftppr pop3p tcppm udppm mycrypt dighosts countersutil ; do
 		newbin ${x} ${PN}-${x}
-		[[ -f ${S}/man/${x}.8 ]] && newman "${S}"/man/${x}.8 ${PN}-${x}.8
+		[[ -f "${S}"/man/${x}.8 ]] && newman "${S}"/man/${x}.8 ${PN}-${x}.8
 	done
 	cd ..
 
-	doman "${S}"/man/3proxy*.[38]
+	doman man/3proxy*.[38]
 
-	cd "${S}"
 	dodoc Readme
-	dohtml -r doc/html/*
+	docinto html
+	dodoc -r doc/html/*
 	docinto cfg
-	dodoc cfg/*.{txt,sample}
-	docinto cfg/sql
-	dodoc cfg/sql/*.{cfg,sql}
+	dodoc -r cfg/*
 }
