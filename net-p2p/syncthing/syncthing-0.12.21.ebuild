@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 EGO_PN="github.com/syncthing/syncthing"
 EGIT_COMMIT=v${PV}
@@ -32,19 +32,18 @@ src_compile() {
 	go run build.go -version "v${PV}" -no-upgrade || die "build failed"
 }
 
-# go test: -race is only supported on amd64 platforms
-# https://github.com/syncthing/syncthing/issues/2765
-#src_test() {
-#	cd src/${EGO_PN}
-#	go run build.go test || die "test failed"
-#}
+src_test() {
+	cd src/${EGO_PN}
+	go run build.go test || die "test failed"
+}
 
 src_install() {
 	cd src/${EGO_PN}
-	doman man/*.[157] || die
+	doman man/*.[157]
 	dobin bin/*
 	dodoc README.md AUTHORS CONTRIBUTING.md
-	systemd_dounit "${S}"/src/${EGO_PN}/etc/linux-systemd/system/${PN}@.service
+	systemd_dounit "${S}"/src/${EGO_PN}/etc/linux-systemd/system/${PN}@.service \
+		"${S}"/src/${EGO_PN}/etc/linux-systemd/system/${PN}-resume.service
 	systemd_douserunit "${S}"/src/${EGO_PN}/etc/linux-systemd/user/${PN}.service
 	newconfd "${FILESDIR}/${PN}.confd" ${PN}
 	newinitd "${FILESDIR}/${PN}.initd" ${PN}
