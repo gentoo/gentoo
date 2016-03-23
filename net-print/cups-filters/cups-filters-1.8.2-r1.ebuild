@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -6,26 +6,25 @@ EAPI=5
 
 GENTOO_DEPEND_ON_PERL=no
 
-inherit base eutils perl-module autotools systemd
+inherit eutils perl-module autotools systemd
 
 if [[ "${PV}" == "9999" ]] ; then
 	inherit bzr
 	EBZR_REPO_URI="http://bzr.linuxfoundation.org/openprinting/cups-filters"
-	KEYWORDS="alpha amd64 arm hppa ia64 ppc64 sparc x86"
 else
 	SRC_URI="http://www.openprinting.org/download/${PN}/${P}.tar.xz"
-	KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 ~s390 sparc x86 ~amd64-fbsd ~m68k-mint"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-fbsd ~m68k-mint"
 fi
 DESCRIPTION="Cups PDF filters"
 HOMEPAGE="http://www.linuxfoundation.org/collaborate/workgroups/openprinting/pdfasstandardprintjobformat"
 
 LICENSE="MIT GPL-2"
 SLOT="0"
-IUSE="dbus +foomatic jpeg perl png static-libs tiff zeroconf"
+IUSE="dbus +foomatic jpeg ldap perl png +postscript static-libs tiff zeroconf"
 
 RDEPEND="
-	>=app-text/ghostscript-gpl-9.09
-	<app-text/poppler-0.35.0:=[cxx,jpeg?,lcms,tiff?,xpdf-headers(+)]
+	postscript? ( >=app-text/ghostscript-gpl-9.09[cups] )
+	>=app-text/poppler-0.32:=[cxx,jpeg?,lcms,tiff?,utils,xpdf-headers(+)]
 	>=app-text/qpdf-3.0.2:=
 	dev-libs/glib:2
 	media-libs/fontconfig
@@ -38,27 +37,33 @@ RDEPEND="
 	dbus? ( sys-apps/dbus )
 	foomatic? ( !net-print/foomatic-filters )
 	jpeg? ( virtual/jpeg:0 )
+	ldap? ( net-nds/openldap )
 	perl? ( dev-lang/perl:= )
 	png? ( media-libs/libpng:0= )
 	tiff? ( media-libs/tiff:0 )
 	zeroconf? ( net-dns/avahi[dbus] )
 "
-DEPEND="${RDEPEND}"
-
-PATCHES=( "${FILESDIR}/${PN}-1.0.71-poppler0340.patch" )
+DEPEND="${RDEPEND}
+	dev-util/gdbus-codegen
+"
 
 src_prepare() {
-	base_src_prepare
-	sed -e "s/AM_CONFIG_HEADER/AC_CONFIG_HEADERS/" -i configure.ac || die
+	epatch "${FILESDIR}"/${P}-disable-ijs.patch #574992
+	epatch "${FILESDIR}"/${P}-gstoraster.patch
 	eautoreconf
 }
 
 src_configure() {
 	econf \
 		--docdir="${EPREFIX}/usr/share/doc/${PF}" \
+		--localstatedir="${EPREFIX}"/var \
+		--with-cups-rundir="${EPREFIX}"/run/cups \
 		$(use_enable dbus) \
 		$(use_enable zeroconf avahi) \
 		$(use_enable static-libs static) \
+		$(use_enable foomatic) \
+		$(use_enable ldap) \
+		$(use_enable postscript ghostscript) \
 		--with-fontdir="fonts/conf.avail" \
 		--with-pdftops=pdftops \
 		--enable-imagefilters \
@@ -66,7 +71,7 @@ src_configure() {
 		$(use_with png) \
 		$(use_with tiff) \
 		--with-rcdir=no \
- 		--with-browseremoteprotocols=DNSSD,CUPS \
+		--with-browseremoteprotocols=DNSSD,CUPS \
 		--without-php
 }
 
@@ -91,9 +96,11 @@ src_install() {
 		popd > /dev/null
 	fi
 
-	# workaround: some printer drivers still require pstoraster and pstopxl, bug #383831
-	dosym /usr/libexec/cups/filter/gstoraster /usr/libexec/cups/filter/pstoraster
-	dosym /usr/libexec/cups/filter/gstopxl /usr/libexec/cups/filter/pstopxl
+	if use postscript; then
+		# workaround: some printer drivers still require pstoraster and pstopxl, bug #383831
+		dosym gstoraster /usr/libexec/cups/filter/pstoraster
+		dosym gstopxl /usr/libexec/cups/filter/pstopxl
+	fi
 
 	prune_libtool_files --all
 
@@ -102,13 +109,6 @@ src_install() {
 	if ! use zeroconf ; then
 		sed -i -e 's:need cupsd avahi-daemon:need cupsd:g' "${T}"/cups-browsed || die
 		sed -i -e 's:cups\.service avahi-daemon\.service:cups.service:g' "${S}"/utils/cups-browsed.service || die
-	fi
-
-	if ! use foomatic ; then
-		# this needs an upstream solution / configure switch
-		rm -v "${ED}/usr/bin/foomatic-rip" || die
-		rm -v "${ED}/usr/libexec/cups/filter/foomatic-rip" || die
-		rm -v "${ED}/usr/share/man/man1/foomatic-rip.1" || die
 	fi
 
 	doinitd "${T}"/cups-browsed
