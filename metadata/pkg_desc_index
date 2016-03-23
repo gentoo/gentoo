@@ -13086,7 +13086,7 @@ media-sound/mpd 0.19.10 0.19.11 0.19.12 0.19.14: The Music Player Daemon (mpd)
 media-sound/mpdas 0.4.0-r1 0.4.1: An AudioScrobbler client for MPD written in C++
 media-sound/mpdscribble 0.22: An MPD client that submits information to Audioscrobbler
 media-sound/mpfc 1.3.7-r1 1.3.8.1 1.3.8.1-r1 1.3.8.1-r2: Music Player For Console
-media-sound/mpg123 1.18.1 1.22.4 1.23.1 1.23.2: a realtime MPEG 1.0/2.0/2.5 audio player for layers 1, 2 and 3
+media-sound/mpg123 1.18.1 1.22.4 1.23.2 1.23.3: a realtime MPEG 1.0/2.0/2.5 audio player for layers 1, 2 and 3
 media-sound/mpg321 0.3.1-r1 0.3.2: A realtime MPEG 1.0/2.0/2.5 audio player for layers 1, 2 and 3
 media-sound/mplay 0.80: A Curses front-end for mplayer
 media-sound/mserv 0.35-r1: Jukebox-style music server
@@ -14460,7 +14460,7 @@ net-misc/connman-gtk 1.0: GTK GUI for Connman
 net-misc/connman-ui 9999: A full-featured GTK based trayicon UI for ConnMan
 net-misc/corkscrew 2.0: a tool for tunneling SSH through HTTP proxies
 net-misc/csync 0.50.0: lightweight file synchronizer utility
-net-misc/curl 7.43.0 7.45.0 7.46.0 7.46.0-r1 7.47.1: A Client that groks URLs
+net-misc/curl 7.43.0 7.45.0 7.46.0 7.46.0-r1 7.47.1 7.48.0: A Client that groks URLs
 net-misc/dahdi 2.10.0.1 2.10.0.1-r1 2.10.1 2.10.2-r2: Kernel modules for Digium compatible hardware (formerly known as Zaptel)
 net-misc/dahdi-tools 2.6.2 2.8.0 2.9.0.1 2.10.0 2.10.1 2.10.2: Userspace tools to configure the kernel modules from net-misc/dahdi
 net-misc/datapipe 1.0-r1: bind a local port and connect it to a remote socket
