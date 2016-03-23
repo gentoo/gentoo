@@ -13,7 +13,7 @@
 if [[ ! ${_MOZCORECONF_V3} ]]; then
 
 PYTHON_COMPAT=( python2_7 )
-PYTHON_REQ_USE='threads,sqlite'
+PYTHON_REQ_USE='ncurses,sqlite,ssl,threads'
 
 inherit multilib flag-o-matic python-any-r1 versionator
 
