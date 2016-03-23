@@ -129,7 +129,7 @@ multilib_src_configure() {
 	# So start with all ssl providers off until proven otherwise
 	local myconf=()
 	myconf+=( --without-axtls --without-gnutls --without-mbedtls --without-nss --without-polarssl --without-ssl --without-winssl )
-	myconf+=( --with-ca-bundle="${EPREFIX}"/etc/ssl/certs/ca-certificates.crt )
+	myconf+=( --without-ca-fallback --with-ca-bundle="${EPREFIX}"/etc/ssl/certs/ca-certificates.crt  )
 	if use ssl ; then
 		if use curl_ssl_axtls; then
 			einfo "SSL provided by axtls"
@@ -221,6 +221,7 @@ multilib_src_configure() {
 	if ! multilib_is_native_abi; then
 		# avoid building the client
 		sed -i -e '/SUBDIRS/s:src::' Makefile || die
+		sed -i -e '/SUBDIRS/s:scripts::' Makefile || die
 	fi
 }
 
