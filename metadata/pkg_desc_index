@@ -13768,7 +13768,7 @@ net-analyzer/yersinia 0.7.3: A layer 2 attack framework
 net-analyzer/zabbix 2.2.5 2.2.9 2.2.11 2.4.5 2.4.7: ZABBIX is software for monitoring of your applications, network and servers
 net-analyzer/zmap 1.1.1 1.1.2 1.2.0 1.2.1 9999: Fast network scanner designed for Internet-wide network surveys
 net-analyzer/zniper 1.0-r1: Displays and kill active TCP connections seen by the selected interface
-net-dialup/accel-ppp 1.8.0-r1 1.10.0: High performance PPTP, PPPoE and L2TP server
+net-dialup/accel-ppp 1.10.1: High performance PPTP, PPPoE and L2TP server
 net-dialup/capi4k-utils 20050718-r6: CAPI4Linux Utils
 net-dialup/capidivert 0.0.2: CAPI based utility to control ISDN diversion facilities
 net-dialup/capifwd 0.6.3-r1: A daemon forwarding CAPI messages to capi20proxy clients

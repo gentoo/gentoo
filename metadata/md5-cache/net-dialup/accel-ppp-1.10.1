@@ -1,7 +1,7 @@
 DEFINED_PHASES=compile configure install postinst postrm preinst prepare setup test
 DEPEND=postgres? ( dev-db/postgresql:* ) snmp? ( net-analyzer/net-snmp ) dev-libs/libpcre dev-libs/openssl:0 valgrind? ( dev-util/valgrind ) sys-devel/make >=dev-util/cmake-2.8.12 kernel_linux? ( virtual/modutils ) sys-apps/sed kernel_linux? ( virtual/linux-sources )
 DESCRIPTION=High performance PPTP, PPPoE and L2TP server
-EAPI=5
+EAPI=6
 HOMEPAGE=http://accel-ppp.sourceforge.net/
 IUSE=debug doc ipoe postgres radius shaper snmp valgrind kernel_linux
 KEYWORDS=~amd64 ~x86
@@ -10,7 +10,7 @@ PDEPEND=net-dialup/ppp-scripts
 RDEPEND=postgres? ( dev-db/postgresql:* ) snmp? ( net-analyzer/net-snmp ) dev-libs/libpcre dev-libs/openssl:0 kernel_linux? ( virtual/modutils )
 REQUIRED_USE=valgrind? ( debug )
 SLOT=0
-SRC_URI=mirror://sourceforge/accel-ppp/accel-ppp-1.10.0.tar.bz2
+SRC_URI=mirror://sourceforge/accel-ppp/accel-ppp-1.10.1.tar.bz2
 _eclass_exported_funcs=pkg_preinst:linux-mod pkg_postrm:linux-mod pkg_postinst:linux-mod pkg_setup:- src_prepare:- src_configure:- src_compile:- src_test:cmake-utils src_install:-
 _eclasses_=cmake-utils	e79d341200cba811b41cc0728403c48d	eutils	9d81603248f2ba3ec59124320d123e5e	flag-o-matic	d270fa247153df66074f795fa42dba3e	linux-info	fd1e29abbb02cbc49f1a14299846e9c4	linux-mod	4755518412586c2fd655ff6e55780bcb	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=0fc00cac5c3877b8cf9d83c13c0d2447
+_md5_=eae2f34b1a5006d4b7c11e63d719a475
