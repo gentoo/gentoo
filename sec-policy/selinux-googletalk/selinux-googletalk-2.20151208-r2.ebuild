@@ -11,5 +11,5 @@ inherit selinux-policy-2
 DESCRIPTION="SELinux policy for googletalk"
 
 if [[ ${PV} != 9999* ]] ; then
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 x86"
 fi
