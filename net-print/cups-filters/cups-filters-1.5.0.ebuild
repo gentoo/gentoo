@@ -25,7 +25,7 @@ IUSE="dbus +foomatic jpeg ldap perl png static-libs tiff zeroconf"
 
 RDEPEND="
 	>=app-text/ghostscript-gpl-9.09
-	app-text/poppler:=[cxx,jpeg?,lcms,tiff?,xpdf-headers(+)]
+	>=app-text/poppler-0.32:=[cxx,jpeg?,lcms,tiff?,xpdf-headers(+)]
 	>=app-text/qpdf-3.0.2:=
 	dev-libs/glib:2
 	media-libs/fontconfig
