@@ -14964,7 +14964,7 @@ net-print/pykota 1.26: Flexible print quota and accounting package for use with 
 net-print/splix 2.0.0_p20111206 2.0.0_p20130826: A set of CUPS printer drivers for SPL (Samsung Printer Language) printers
 net-print/sshlpr 1: ssh-lpr backend for cups -- print to remote systems over ssh
 net-print/xerox-drivers 0_p20080123: PPD files of XEROX printers (CopyCentre, DocuPrint, Phaser, WorkCentre) for CUPS printing system
-net-proxy/3proxy 0.5.3k 0.6.1: really tiny cross-platform proxy servers set
+net-proxy/3proxy 0.5.3k 0.6.1 0.7.1.2 0.7.1.4 0.8.6: A really tiny cross-platform proxy servers set
 net-proxy/adzapper 20110915-r2: Redirector for squid that intercepts advertising, page counters and some web bugs
 net-proxy/bfilter 1.1.4-r2 1.1.4-r3: Ad-filtering web proxy featuring an effective heuristic ad-detection algorithm
 net-proxy/c-icap 0.2.6: C Implementation of an ICAP server
