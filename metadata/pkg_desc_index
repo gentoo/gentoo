@@ -16936,7 +16936,7 @@ sys-fs/exfat-utils 1.0.1 1.1.1 1.2.1 1.2.2 1.2.3: exFAT filesystem utilities
 sys-fs/ext3grep 0.10.2: Recover deleted files on an ext3 file system
 sys-fs/ext4magic 0.3.2: Linux admin tool, can help to recover deleted or overwritten files on ext3 and ext4 filesystems
 sys-fs/extundelete 0.2.0-r1 0.2.0-r2 0.2.4: A utility to undelete files from an ext3 or ext4 partition
-sys-fs/f2fs-tools 1.4.1 1.5.0 1.6.0: Tools for Flash-Friendly File System (F2FS)
+sys-fs/f2fs-tools 1.4.1 1.5.0 1.6.0 1.6.1: Tools for Flash-Friendly File System (F2FS)
 sys-fs/fatsort 1.3: Sorts files on FAT16/32 partitions, ideal for basic audio players
 sys-fs/fur 0.5: A RAPI (SynCE) based FUSE module
 sys-fs/fuse 2.9.4 2.9.5: An interface for filesystems implemented in userspace
