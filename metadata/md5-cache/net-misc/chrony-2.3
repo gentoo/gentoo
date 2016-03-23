@@ -4,7 +4,7 @@ DESCRIPTION=NTP client and server programs
 EAPI=5
 HOMEPAGE=http://chrony.tuxfamily.org/
 IUSE=caps +cmdmon ipv6 libedit +ntp +phc +pps readline +refclock +rtc selinux +adns
-KEYWORDS=~amd64 ~arm ~hppa ~mips ~ppc ~ppc64 ~sparc ~x86
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~mips ~ppc ~ppc64 ~sparc ~x86
 LICENSE=GPL-2
 RDEPEND=caps? ( sys-libs/libcap ) libedit? ( dev-libs/libedit ) readline? ( >=sys-libs/readline-4.1-r4:= ) selinux? ( sec-policy/selinux-chronyd )
 REQUIRED_USE=?? ( libedit readline )
@@ -13,4 +13,4 @@ SLOT=0
 SRC_URI=http://download.tuxfamily.org/chrony/chrony-2.3.tar.gz
 _eclass_exported_funcs=src_prepare:- src_configure:- src_compile:- src_install:-
 _eclasses_=eutils	9d81603248f2ba3ec59124320d123e5e	multilib	3972ca401cf7dbb430df9995f5d8d580	systemd	3165c885f3c71ffae7a867d931fb0e07	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
-_md5_=ff874d4bc82803aa0e242bbac94fc589
+_md5_=80149d30174dee939056e1b11cd5d743
