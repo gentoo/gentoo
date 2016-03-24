@@ -50,6 +50,7 @@ DEPEND="${RDEPEND}
 src_prepare() {
 	epatch "${FILESDIR}"/${P}-disable-ijs.patch #574992
 	epatch "${FILESDIR}"/${P}-gstoraster.patch
+	epatch "${FILESDIR}"/${P}-configure-PKG_CONFIG.patch
 	eautoreconf
 }
 
