@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="A SNMP Perl Module"
 
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~ia64 ~mips ~sparc ~x86 ~ppc-aix ~sparc-solaris ~x86-solaris"
+KEYWORDS="~amd64 ~arm ~hppa ~ia64 ~mips ~sparc ~x86 ~ppc-aix ~sparc-solaris ~x86-solaris"
 # Package warrants IUSE examples
 IUSE="examples test minimal"
 
