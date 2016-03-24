@@ -17,7 +17,7 @@ KEYWORDS="~amd64 ~x86"
 
 DESCRIPTION="Stripped down version of APC supporting only user cache"
 LICENSE="PHP-3.01"
-SLOT="7"
+SLOT="5"
 IUSE="+mmap"
 
 DEPEND=""
@@ -46,13 +46,13 @@ src_configure() {
 src_install() {
 	php-ext-pecl-r2_src_install
 
-	insinto "${PHP_EXT_SHARED_DIR}"
+	insinto "${PHP_EXT_SHARED_DIR}5"
 	doins apc.php
 }
 
 pkg_postinst() {
 	elog "The apc.php file shipped with this release of pecl-apcu was"
-	elog "installed into ${PHP_EXT_SHARED_DIR}/."
+	elog "installed into ${PHP_EXT_SHARED_DIR}5/."
 	elog
 	elog "If you depend on the apc_* functions,"
 	elog "please install dev-php/pecl-apcu_bc as this extension no longer"
