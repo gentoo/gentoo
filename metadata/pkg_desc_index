@@ -13860,7 +13860,7 @@ net-dns/namecoind 0.3.72 0.3.80: A P2P network based domain name system
 net-dns/ndu 0.4-r4: DNS serial number incrementer and reverse zone builder
 net-dns/nsd 3.2.18 3.2.20 4.1.0 4.1.7: An authoritative only, high performance, open source name server
 net-dns/odsclient 1.03-r1: Client for the Open Domain Server's dynamic dns
-net-dns/opendnssec 1.3.17 1.3.18 1.4.7 1.4.8.2: An open-source turn-key solution for DNSSEC
+net-dns/opendnssec 1.3.18-r1 1.4.7 1.4.8.2: An open-source turn-key solution for DNSSEC
 net-dns/openresolv 3.6.1 3.6.2 3.7.0 3.7.2: A framework for managing DNS information
 net-dns/pdns 3.4.7 3.4.8: The PowerDNS Daemon
 net-dns/pdns-ldap-backend 0.2: Fork of the official but unmaintained LDAP backend
