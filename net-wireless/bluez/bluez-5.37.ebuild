@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -13,7 +13,7 @@ SRC_URI="mirror://kernel/linux/bluetooth/${P}.tar.xz"
 
 LICENSE="GPL-2+ LGPL-2.1+"
 SLOT="0/3"
-KEYWORDS="amd64 arm hppa ~mips ~ppc ppc64 ~x86"
+KEYWORDS="amd64 arm ~arm64 hppa ~mips ~ppc ppc64 ~x86"
 IUSE="cups doc debug extra-tools +obex +readline selinux systemd test test-programs +udev"
 REQUIRED_USE="test? ( ${PYTHON_REQUIRED_USE} ) test-programs? ( ${PYTHON_REQUIRED_USE} )"
 
