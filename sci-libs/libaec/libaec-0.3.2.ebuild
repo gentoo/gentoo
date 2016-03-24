@@ -12,7 +12,7 @@ DESCRIPTION="Adaptive Entropy Coding library"
 HOMEPAGE="https://www.dkrz.de/redmine/projects/aec"
 SRC_URI="https://www.dkrz.de/redmine/attachments/download/${PID}/${P}.tar.gz"
 
-LICENSE="LIBAEC"
+LICENSE="BSD-2"
 SLOT="0/2"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="static-libs +szip"
