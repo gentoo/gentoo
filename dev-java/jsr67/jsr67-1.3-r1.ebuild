@@ -17,7 +17,7 @@ SRC_URI="https://repo1.maven.org/maven2/com/sun/xml/messaging/${MY_PN%%-*}/${MY_
 
 LICENSE="sun-jsr67"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 RDEPEND="
