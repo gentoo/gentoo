@@ -5,6 +5,10 @@
 # This file requires >=portage-2.1.1
 # New entries go on top.
 
+# Pawel Hajdan jr <phajdan.jr@gentoo.org> (25 Mar 2016)
+# System ffmpeg build is broken in recent chromium (bug #576372).
+>=www-client/chromium-50.0.2657.0 system-ffmpeg
+
 # Maciej Mrozowski <reavertm@gmail.com> (23 Mar 2016)
 # Experimental cairo-qt backend (see bug #568000).
 app-text/poppler cairo-qt
