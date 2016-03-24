@@ -9835,7 +9835,7 @@ dev-vcs/gitinspector 0.3.1 0.3.2 0.4.2: Statistical analysis tool for git reposi
 dev-vcs/gitolite 2.3.1-r1 3.6 3.6.1 3.6.2 3.6.2-r1 3.6.3 3.6.4 3.6.4-r1 3.6.5 9999: Highly flexible server for git directory version tracker
 dev-vcs/gitolite-gentoo 2.3.1-r1 2.3.3-r1 3.5.3.1 3.6.1 3.6.1-r1 3.6.2.1 3.6.2.2 3.6.2.3 3.6.2.4 3.6.3 3.6.3.2 3.6.4 3.6.4.1 3.6.4.1-r1 3.6.5 9999: Highly flexible server for git directory version tracker, Gentoo fork
 dev-vcs/gitsh 0.10: An interactive shell for git
-dev-vcs/gitstats 0_pre131024 9999: Statistics generator for git
+dev-vcs/gitstats 0_pre131024 0_pre20151223 9999: Statistics generator for git
 dev-vcs/gti 9999: A silly git launcher, basically. Inspired by sl
 dev-vcs/guilt 0.32 0.34: A series of bash scripts which add a quilt-like interface to git
 dev-vcs/hg-fast-export 20140328 20140706 20150816: mercurial to git converter using git-fast-import
