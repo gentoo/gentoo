@@ -46,6 +46,9 @@ src_prepare() {
 	# add X.Org vendor string to aliases for virtual bindings
 	echo -e '"The X.Org Foundation"\t\t\t\t\tpc' >>bindings/xmbind.alias
 
+	# remove header file which shouldn't be in the tarball #578168
+	rm lib/Xm/Xm.h || die
+
 	AT_M4DIR=. eautoreconf
 
 	# get around some LANG problems in make (#15119)
