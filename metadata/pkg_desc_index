@@ -10939,7 +10939,7 @@ gnustep-apps/price 1.2.0 1.3.0: Precision Raster Image Convolution Engine
 gnustep-apps/projectcenter 0.6.1 0.6.2: An IDE for GNUstep
 gnustep-apps/remotedesk 0.1: GNUstep remote windows access tool
 gnustep-apps/simpleagenda 0.42.2 0.43: a simple calendar and agenda application
-gnustep-apps/sogo 2.3.2 3.0.1 3.0.2: Groupware server built around OpenGroupware.org and the SOPE application server
+gnustep-apps/sogo 2.3.2 3.0.2: Groupware server built around OpenGroupware.org and the SOPE application server
 gnustep-apps/stepulator 1.0-r2: A Reverse Polish Notation calculator
 gnustep-apps/sudoku 0.7: Sudoku generator for GNUstep
 gnustep-apps/systempreferences 1.0.2 1.1.0 1.2.0: System Preferences is a clone of Apple OS X' System Preferences
