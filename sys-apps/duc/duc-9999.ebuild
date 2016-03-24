@@ -4,9 +4,7 @@
 
 EAPI=5
 
-AUTOTOOLS_AUTORECONF="true"
-AUTOTOOLS_IN_SOURCE_BUILD="true"
-inherit autotools-utils
+inherit autotools
 
 if [[ "${PV}" == "9999" ]]; then
 	inherit git-r3
@@ -37,7 +35,7 @@ DEPEND="
 			x11-libs/libX11
 			x11-libs/pango[X]
 		)
-		!X? ( virtual/opengl )
+		!X? ( >=media-libs/glfw-3.0 )
 	)
 	leveldb? ( dev-libs/leveldb )
 	ncurses? ( sys-libs/ncurses:= )
@@ -57,14 +55,13 @@ src_unpack() {
 src_prepare() {
 	sed -i -e "/ldconfig/d" -e "/install-exec-hook/d" Makefile.am || die
 
-	autotools-utils_src_prepare
+	default
+
+	eautoreconf
 }
 
 src_configure() {
-	local myconf=(
-		--disable-static
-		$(use_with ncurses ui)
-	)
+	local myconf=( $(use_enable ncurses ui) )
 
 	if use tokyocabinet; then
 		myconf+=( --with-db-backend=tokyocabinet )
@@ -83,8 +80,8 @@ src_configure() {
 		myconf+=( --disable-x11 --enable-opengl $(use_enable cairo) )
 	else
 		# No GUI
-		myconf+=( $(use_enable cairo) )
+		myconf+=( $(use_enable cairo) --disable-x11 --disable-opengl )
 	fi
 
-	autotools-utils_src_configure
+	econf ${myconf[@]}
 }
