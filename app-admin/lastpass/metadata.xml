@@ -22,5 +22,6 @@
     <flag name="firefox">Support for <pkg>www-client/firefox</pkg></flag>
     <flag name="chromium">Support for <pkg>www-client/chromium</pkg></flag>
     <flag name="chrome">Support for <pkg>www-client/chrome</pkg></flag>
+    <flag name="opera">Support for <pkg>www-client/opera</pkg></flag>
   </use>
 </pkgmetadata>
