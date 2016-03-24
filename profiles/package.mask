@@ -30,6 +30,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Michael Palimaka <kensington@gentoo.org> (24 Mar 2016)
+# Requires old llvm. Dead upstream.
+# Masked for removal in 30 days. Bug #571216.
+dev-python/llvmpy
+dev-python/llvmmath
+dev-python/pykit
+
 # José María Alonso <nimiux@gentoo.org> (24 Mar 2016)
 # Fails to build dev-lisp/sbcl-1.3.3 #563812
 =dev-lisp/asdf-3.1.7
