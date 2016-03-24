@@ -4359,7 +4359,7 @@ dev-lang/mercury 11.01 11.07 11.07.1 11.07.2 13.05 13.05.1 13.05.2: Mercury is a
 dev-lang/mercury-extras 11.01 11.07 11.07.1 11.07.2 13.05 13.05.1 13.05.2: Additional libraries and tools that are not part of the Mercury standard library
 dev-lang/mlton 20130715: Standard ML optimizing compiler and libraries
 dev-lang/mmix 20131017: Donald Knuth's MMIX Assembler and Simulator
-dev-lang/moarvm 2016.01-r1 2016.02 9999: A 6model-based VM for NQP and Rakudo Perl 6
+dev-lang/moarvm 2016.01-r1 2016.02 2016.03 9999: A 6model-based VM for NQP and Rakudo Perl 6
 dev-lang/mono 2.10.9-r2 3.12.1 4.0.5.1 4.2.1.124 4.2.2.10 4.2.2.10-r1 4.2.2.30: Mono runtime and class libraries, a C# compiler/interpreter
 dev-lang/mono-basic 2.10: Visual Basic .NET Runtime and Class Libraries
 dev-lang/mozart 1.4.0-r3: Advanced development platform for intelligent, distributed applications
@@ -4369,7 +4369,7 @@ dev-lang/nasm 2.11.08 2.12: groovy little assembler
 dev-lang/niecza 19 21 22 24 9999: A Perl 6 compiler targetting the CLR with an experimental focus on optimizations
 dev-lang/niecza-bin 20 21 22 24: A Perl 6 compiler targetting the CLR with an experimental focus on optimizations
 dev-lang/nqc 3.1_p6: Not Quite C - C-like compiler for Lego Mindstorms
-dev-lang/nqp 2016.01 2016.02: Not Quite Perl, a Perl 6 bootstrapping compiler
+dev-lang/nqp 2016.01 2016.02 2016.03: Not Quite Perl, a Perl 6 bootstrapping compiler
 dev-lang/nwcc 0.8.2 0.8.3: Nils Weller's C Compiler
 dev-lang/ocaml 3.12.1 4.02.3 4.02.3-r1 4.03.0_beta1: Fast modern type-inferring functional programming language descended from the ML family
 dev-lang/open-cobol 1.1: an open-source COBOL compiler
@@ -4386,7 +4386,7 @@ dev-lang/polyml 5.4.1 5.5.0 5.5.1 5.5.2: Poly/ML is a full implementation of Sta
 dev-lang/python 2.7.10-r1 2.7.11-r2 3.3.5-r2 3.3.5-r7 3.4.3-r1 3.4.3-r7 3.5.0-r2 3.5.1-r2: An interpreted, interactive, object-oriented programming language
 dev-lang/python-exec 2.0.1-r1 2.0.2 2.1 2.4.3 9999: Python script wrapper
 dev-lang/qu-prolog 9.1 9.1-r1 9.5 9.6 9.7: Extended Prolog supporting quantifiers, object-variables and substitutions
-dev-lang/rakudo 2016.01.1 2016.02: A compiler for the Perl 6 programming language
+dev-lang/rakudo 2016.01.1 2016.02 2016.03: A compiler for the Perl 6 programming language
 dev-lang/rebol 9999: Relative Expression-Based Object Language
 dev-lang/rebol-bin 3_pre111: Relative Expression-Based Object Language
 dev-lang/regina-rexx 3.6-r2 3.9.1: Portable Rexx interpreter
@@ -4579,7 +4579,7 @@ dev-libs/libb64 1.2: Fast Base64 encoding/decoding routines
 dev-libs/libbase58 0.1.0 0.1.1: C implementation of Bitcoin's base58 encoding
 dev-libs/libbegemot 1.11: begemot utility function library
 dev-libs/libbrahe 1.1.0-r1: A Heterogenous C Library of Numeric Functions
-dev-libs/libbsd 0.7.0 0.8.2: An library to provide useful functions commonly found on BSD systems
+dev-libs/libbsd 0.8.2: An library to provide useful functions commonly found on BSD systems
 dev-libs/libbson 0.98.0 1.1.2 1.1.10: A BSON utility library
 dev-libs/libbulletml 0.0.6: A Library of Bullet Markup Language
 dev-libs/libburn 1.3.8 1.4.2 1.4.2_p01: Open-source library for reading, mastering and writing optical discs
@@ -4628,7 +4628,7 @@ dev-libs/libflatarray 0.1.1: Struct of arrays library with object oriented inter
 dev-libs/libg15 1.2.7-r1 9999: The libg15 library gives low-level access to the Logitech G15 keyboard
 dev-libs/libg15render 1.2-r2 9999: Small library for display text and graphics on a Logitech G15 keyboard
 dev-libs/libgamin 0.1.10-r4 0.1.10-r5: Library providing the FAM File Alteration Monitor API
-dev-libs/libgaminggear 0.10.1 0.11.1: Provides functionality for gaming input devices
+dev-libs/libgaminggear 0.11.1 0.11.2: Provides functionality for gaming input devices
 dev-libs/libgcrypt 1.5.4-r1 1.5.4-r2 1.5.4-r101 1.5.5 1.6.3-r4 1.6.3-r5 1.6.4 1.6.5: General purpose crypto library based on the code used in GnuPG
 dev-libs/libgdata 0.17.3 0.17.4 0.17.4-r1: GLib-based library for accessing online service APIs using the GData protocol
 dev-libs/libgee 0.6.7 0.6.8 0.14.0 0.16.1 0.18.0: GObject-based interfaces and classes for commonly used data structures
@@ -9575,7 +9575,7 @@ dev-util/gprof2dot 0_p20130517: Converts profiling output to dot graphs
 dev-util/gquilt 0.25-r1: A Python/GTK wrapper for quilt
 dev-util/gtk-builder-convert 2.24.28 2.24.29: Converts Glade files to GtkBuilder XML format
 dev-util/gtk-doc 1.21 1.24: GTK+ Documentation Generator
-dev-util/gtk-doc-am 1.21 1.24: Automake files from gtk-doc
+dev-util/gtk-doc-am 1.21 1.24 1.25: Automake files from gtk-doc
 dev-util/gtk-update-icon-cache 3.16.7 3.18.4: GTK update icon cache
 dev-util/heaptrack 9999: A fast heap memory profiler
 dev-util/howdoi 1.1.7: A code search tool
@@ -13155,7 +13155,7 @@ media-sound/qtagconvert 2.0.0-r2: Qt4 tag editor for mp3 files
 media-sound/qtagger 1.0.1 1.0.1-r1 1.0.1-r2: Simple Qt4 ID3v2 tag editor
 media-sound/qtgain 0.9.5: A simple frontend to mp3gain, vorbisgain and metaflac
 media-sound/qtmpc 0.6.1: Qt MPD client with a tree view music library interface
-media-sound/qtractor 0.7.0-r1 0.7.1-r1 0.7.2 0.7.3 0.7.4: Qtractor is an Audio/MIDI multi-track sequencer
+media-sound/qtractor 0.7.4 0.7.5: Qtractor is an Audio/MIDI multi-track sequencer
 media-sound/qtscrobbler 0.10: Updates a last.fm profile using information from a supported portable music player
 media-sound/quark 3.21 3.24: Quark is the Anti-GUI Music Player with a cool Docklet!
 media-sound/quimup 1.3.2 1.4.0: A Qt4 client for the music player daemon (MPD) written in C++
@@ -13267,7 +13267,7 @@ media-sound/xmp 3.5.0: Extended Module Player
 media-sound/xnoise 0.2.21 9999: A media player for Gtk+ with a slick GUI, great speed and lots of features
 media-sound/xwax 1.5: Digital vinyl emulation software
 media-sound/yoshimi 1.3.2 1.3.5.2 1.3.8.2-r1: A software synthesizer based on ZynAddSubFX
-media-sound/zynaddsubfx 2.4.3 2.5.0 2.5.1 2.5.2: ZynAddSubFX is an opensource software synthesizer
+media-sound/zynaddsubfx 2.4.3 2.5.0 2.5.1 2.5.2 2.5.4: ZynAddSubFX is an opensource software synthesizer
 media-tv/channeleditor 1.9.2.1-r1: Editor for VDR channels.conf
 media-tv/dvbstream 0.7_pre20080516: simple command line tools for DVB cards. Includes a RTP multicast stream server
 media-tv/dvbstreamer 1.1-r1 2.0.0_rc1: DVB over UDP streaming solution
@@ -16493,7 +16493,7 @@ sys-apps/rescan-scsi-bus 1.29 1.56 1.57 1.57-r1: Script to rescan the SCSI bus w
 sys-apps/restartd 0.2.2: A daemon for checking your running and not running processes
 sys-apps/rkflashtool 5.1: Tool for flashing Rockchip devices
 sys-apps/rng-tools 4-r7 5 5-r1 5-r2: Daemon to use hardware random number generators
-sys-apps/roccat-tools 3.4.0 3.5.0 3.5.0-r1 3.6.1 3.7.0: Utility for advanced configuration of Roccat devices
+sys-apps/roccat-tools 3.7.0 3.9.0: Utility for advanced configuration of Roccat devices
 sys-apps/rsbac-admin 1.4.9: Rule Set Based Access Control (RSBAC) Admin Tools
 sys-apps/s390-tools 1.17.0 1.23.1: User space utilities for the zSeries (s390) Linux kernel and device drivers
 sys-apps/s6 2.1.3.0 2.2.4.3: skarnet.org's small and secure supervision software suite
