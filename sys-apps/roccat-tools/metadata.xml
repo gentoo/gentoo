@@ -12,8 +12,6 @@
 	</maintainer>
 	<use>
 		<flag name="lua">Build support for Lua scripting for RyosMKPro ripple effects</flag>
-		<flag name="lua51">Build support for Lua scripting for RyosMKPro ripple effects - support lua 5.1</flag>
-		<flag name="lua52">Build support for Lua scripting for RyosMKPro ripple effects - support lua 5.2</flag>
 	</use>
 	<upstream>
 		<remote-id type="sourceforge">roccat</remote-id>
