@@ -26,7 +26,7 @@ KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-m
 IUSE=""
 
 ruby_add_rdepend "
-	>=dev-ruby/mime-types-1.16 <dev-ruby/mime-types-3"
+	>=dev-ruby/mime-types-1.16:* <dev-ruby/mime-types-3:*"
 
 all_ruby_prepare() {
 	rm Gemfile || die
