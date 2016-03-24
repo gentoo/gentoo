@@ -17,6 +17,7 @@ IUSE_INPUT_DEVICES="
 	input_devices_roccat_arvo
 	input_devices_roccat_isku
 	input_devices_roccat_iskufx
+	input_devices_roccat_kiro
 	input_devices_roccat_kone
 	input_devices_roccat_koneplus
 	input_devices_roccat_konepure
@@ -25,11 +26,13 @@ IUSE_INPUT_DEVICES="
 	input_devices_roccat_konextd
 	input_devices_roccat_konextdoptical
 	input_devices_roccat_kovaplus
+	input_devices_roccat_kova2016
 	input_devices_roccat_lua
+	input_devices_roccat_nyth
 	input_devices_roccat_pyra
-	input_devices_roccat_savu
 	input_devices_roccat_ryosmk
 	input_devices_roccat_ryostkl
+	input_devices_roccat_savu
 	input_devices_roccat_tyon
 "
 IUSE="${IUSE_INPUT_DEVICES} lua"
@@ -38,7 +41,7 @@ REQUIRED_USE="
 "
 
 RDEPEND="
-	=dev-libs/libgaminggear-0.10*
+	=dev-libs/libgaminggear-0.11*
 	x11-libs/gtk+:2
 	x11-libs/libnotify
 	media-libs/libcanberra
