@@ -8824,7 +8824,7 @@ dev-ruby/loquacious 1.9.1-r2: Descriptive configuration files for Ruby written i
 dev-ruby/lumberjack 1.0.9 1.0.10: A simple, powerful, and very fast logging utility
 dev-ruby/mab 0.0.3: Markup as Ruby
 dev-ruby/magic 0.2.9: Ruby FFI bindings to libmagic
-dev-ruby/mail 2.5.4 2.6.2 2.6.3: An email handling library
+dev-ruby/mail 2.5.4 2.6.3 2.6.4: An email handling library
 dev-ruby/map 6.5.5 6.6.0: A string/symbol indifferent ordered hash that works in all rubies
 dev-ruby/maruku 0.7.2 0.7.2-r1: A Markdown-superset interpreter written in Ruby
 dev-ruby/mash 0.1.1-r2: Mash is an extended Hash that gives simple pseudo-object functionality
@@ -8862,7 +8862,7 @@ dev-ruby/moneta 0.8.0: A unified interface to key/value stores
 dev-ruby/mongo 1.12.0 2.0.6: A Ruby driver for MongoDB
 dev-ruby/mongoid 2.8.1: ODM (Object Document Mapper) Framework for MongoDB
 dev-ruby/msgpack 0.7.1 0.7.4: Binary-based efficient data interchange format for ruby binding
-dev-ruby/multi_json 1.9.3 1.10.1 1.11.0 1.11.1 1.11.2: A gem to provide swappable JSON backends
+dev-ruby/multi_json 1.9.3 1.11.2: A gem to provide swappable JSON backends
 dev-ruby/multi_test 0.1.1 0.1.2: A uniform interface for Ruby testing libraries
 dev-ruby/multi_xml 0.5.4-r1 0.5.4-r2 0.5.5: A generic swappable back-end for XML parsing
 dev-ruby/multipart-post 2.0.0-r1: Adds a streamy multipart form post capability to Net::HTTP
@@ -8872,8 +8872,8 @@ dev-ruby/nagios 0.0.4-r1: Nagios-rb is a compact framework for writing Nagios pl
 dev-ruby/nagios_analyzer 0.0.5-r1: A simple parser for Nagios status files
 dev-ruby/nanotest 0.9.4.1: Extremely mynymal test framework
 dev-ruby/narray 0.6.0.8-r1 0.6.1.1 0.6.1.2: Numerical N-dimensional Array class
-dev-ruby/naught 1.0.0 1.1.0: A toolkit for building Null Objects in Ruby
-dev-ruby/nenv 0.2.0 0.3.0: Convenient wrapper for Ruby's ENV
+dev-ruby/naught 1.1.0: A toolkit for building Null Objects in Ruby
+dev-ruby/nenv 0.3.0: Convenient wrapper for Ruby's ENV
 dev-ruby/net-http-digest_auth 1.4-r1 1.4-r2: An implementation of RFC 2617 - Digest Access Authentication
 dev-ruby/net-http-persistent 2.9.4 2.9.4-r2: Manages persistent connections using Net::HTTP plus a speed fix for Ruby 1.8
 dev-ruby/net-http-pipeline 1.0.1: An HTTP/1.1 pipelining implementation atop Net::HTTP
