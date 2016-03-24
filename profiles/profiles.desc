@@ -67,6 +67,7 @@ arm             default/linux/arm/13.0/armv7a/developer         dev
 # ARM64 Profiles
 arm64           default/linux/arm64/13.0                        exp
 arm64           default/linux/arm64/13.0/desktop                exp
+arm64           default/linux/arm64/13.0/desktop/systemd        exp
 arm64           default/linux/arm64/13.0/developer              exp
 arm64           default/linux/arm64/13.0/systemd                exp
 
