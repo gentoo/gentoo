@@ -1,7 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <!-- maintainer-needed -->
+	<maintainer type="person">
+		<email>gokturk@binghamton.edu</email>
+		<name>Göktürk Yüksek</name>
+		<description>Proxied Maintainer; assign all bugs to him</description>
+	</maintainer>
+	<maintainer type="person">
+		<email>amadio@gentoo.org</email>
+		<name>Guilherme Amadio</name>
+		<description>Proxy Maintainer; CC on all bugs</description>
+	</maintainer>
+	<maintainer type="person">
+		<email>NP-Hardass@gentoo.org</email>
+		<name>NP-Hardass</name>
+		<description>Proxy Maintainer; CC on all bugs</description>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
   <upstream>
     <remote-id type="sourceforge">gitstats</remote-id>
   </upstream>
