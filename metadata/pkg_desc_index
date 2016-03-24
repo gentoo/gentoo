@@ -14446,7 +14446,7 @@ net-misc/cgminer 4.7.0 4.8.0 4.9.0 4.9.1 4.9.2: Bitcoin CPU/GPU/FPGA/ASIC miner 
 net-misc/cgterm 1.6: Connect to C64 telnet BBS's with the correct colours and font
 net-misc/charm 1.9.1 1.9.2-r1: A text based livejournal client
 net-misc/chrome-remote-desktop 47.0.2526.18 49.0.2623.40: access remote computers via Chrome!
-net-misc/chrony 2.2 2.2.1 2.3 9999: NTP client and server programs
+net-misc/chrony 2.2.1 2.3 9999: NTP client and server programs
 net-misc/clamz 0.4 0.5: Command-line downloader for the Amazon.com MP3 music store
 net-misc/clipgrab 3.4.9-r1 3.4.11 3.5.6: Download from various internet video services like Youtube etc.
 net-misc/clockspeed 0.62-r6: A simple Network Time Protocol (NTP) client
@@ -17128,7 +17128,7 @@ sys-libs/libseccomp 2.2.3 2.3.0: high level interface to Linux seccomp filter
 sys-libs/libselinux 2.2.2-r5 2.3-r2 2.4 2.5 9999: SELinux userland library
 sys-libs/libsemanage 2.2-r2 2.3-r4 2.4-r1 2.4-r2 2.5 9999: SELinux kernel and policy management library
 sys-libs/libsepol 2.2 2.3 2.4 2.5 9999: SELinux binary policy representation library
-sys-libs/libservicelog 1.0.1 1.1.11 1.1.15: Provides a library for logging service-related events
+sys-libs/libservicelog 1.0.1 1.1.11 1.1.15 1.1.16: Provides a library for logging service-related events
 sys-libs/libsmbios 2.2.28 2.3.0-r1: Provide access to (SM)BIOS information
 sys-libs/libspe2 2.2.80_p95-r1 2.3.0_p135: A wrapper library to adapt the JSRE SPU usage model to SPUFS
 sys-libs/libstatgrab 0.17 0.91: A tool to provide access to statistics about the system on which it's run

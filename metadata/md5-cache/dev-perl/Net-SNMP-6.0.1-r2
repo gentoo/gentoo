@@ -4,11 +4,11 @@ DESCRIPTION=A SNMP Perl Module
 EAPI=6
 HOMEPAGE=http://search.cpan.org/dist/Net-SNMP/
 IUSE=examples test minimal
-KEYWORDS=~amd64 ~hppa ~ia64 ~mips ~sparc ~x86 ~ppc-aix ~sparc-solaris ~x86-solaris
+KEYWORDS=~amd64 ~arm ~hppa ~ia64 ~mips ~sparc ~x86 ~ppc-aix ~sparc-solaris ~x86-solaris
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=!minimal? ( >=dev-perl/Crypt-DES-2.30.0 >=dev-perl/Crypt-Rijndael-1.20.0 >=dev-perl/Digest-HMAC-1.0 >=virtual/perl-Digest-MD5-2.110.0 >=dev-perl/Digest-SHA1-1.20.0 >=dev-perl/Socket6-0.230.0 ) virtual/perl-Carp virtual/perl-Exporter virtual/perl-IO virtual/perl-Math-BigInt dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/D/DT/DTOWN/Net-SNMP-v6.0.1.tar.gz
 _eclass_exported_funcs=src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:-
 _eclasses_=multiprocessing	e32940a7b2a9992ad217eccddb84d548	perl-functions	15aff0b9cba2282790142295ceb6be0c	perl-module	b2108b3c85ac7a6a6a9b035b54f6813c
-_md5_=f8ad6c35a671fb0188048eef109aee43
+_md5_=68926d4571b20bf6905f8047c07a943b

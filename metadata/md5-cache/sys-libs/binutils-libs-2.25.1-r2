@@ -4,11 +4,11 @@ DESCRIPTION=Core binutils libraries (libbfd, libopcodes, libiberty) for external
 EAPI=5
 HOMEPAGE=https://sourceware.org/binutils/
 IUSE=64-bit-bfd multitarget nls static-libs zlib abi_x86_32 abi_x86_64 abi_x86_x32 abi_mips_n32 abi_mips_n64 abi_mips_o32 abi_ppc_32 abi_ppc_64 abi_s390_32 abi_s390_64
-KEYWORDS=~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd -sparc-fbsd ~x86-fbsd ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
+KEYWORDS=~alpha amd64 arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd -sparc-fbsd ~x86-fbsd ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
 LICENSE=|| ( GPL-3 LGPL-3 )
 RDEPEND=zlib? ( sys-libs/zlib[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_ppc_32(-)?,abi_ppc_64(-)?,abi_s390_32(-)?,abi_s390_64(-)?] ) >=sys-devel/binutils-config-5 nls? ( !<sys-devel/gdb-7.10-r1[nls] )
 SLOT=0/2.25.1
 SRC_URI=mirror://gnu/binutils/binutils-2.25.1.tar.bz2 mirror://gentoo/binutils-2.25.1-patches-1.1.tar.xz
 _eclass_exported_funcs=src_prepare:- src_configure:multilib-minimal src_compile:multilib-minimal src_test:multilib-minimal src_install:multilib-minimal
 _eclasses_=eutils	9d81603248f2ba3ec59124320d123e5e	multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	3972ca401cf7dbb430df9995f5d8d580	multilib-build	8fe2e81aeb36cdf8a6cc5f50443879cc	multilib-minimal	0224dee31c0f98405d572e14ad6dee65	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
-_md5_=66fbe8693e6988f830c64b187d6059aa
+_md5_=8a1176768c4e5872b9d0129e4146b290
