@@ -31,6 +31,11 @@
 #--- END OF EXAMPLES ---
 
 # Michael Palimaka <kensington@gentoo.org> (24 Mar 2016)
+# Doesn't run. Unmaintained. Bug #304865.
+# Masked for removal in 30 days.
+app-cdr/qmultirecord
+
+# Michael Palimaka <kensington@gentoo.org> (24 Mar 2016)
 # Fails to build. Bug #368953.
 # Masked for removal in 30 days.
 net-p2p/hx
