@@ -17,7 +17,7 @@ KEYWORDS="~amd64 ~x86"
 
 DESCRIPTION="Stripped down version of APC supporting only user cache"
 LICENSE="PHP-3.01"
-SLOT="0"
+SLOT="7"
 IUSE="+mmap"
 
 DEPEND=""
