@@ -1315,6 +1315,7 @@ app-emulation/playonlinux 4.2.4 4.2.6 4.2.8: Set of scripts to easily install an
 app-emulation/q4wine 1.0-r3 1.1_p2-r1 1.2_p2: Qt4 GUI configuration tool for Wine
 app-emulation/qemu 2.5.0-r1 2.5.0-r2 9999: QEMU + Kernel-based Virtual Machine userland tools
 app-emulation/qemu-guest-agent 2.3.0 2.3.1 2.4.0 2.5.0: QEMU Guest Agent (qemu-ga) for use when running inside a VM
+app-emulation/qemu-init-scripts 0.3.0: Kvm and qemu init scripts
 app-emulation/qtemu 1.0.5: A graphical user interface for QEMU written in Qt4
 app-emulation/rex-client 9999: Remote EXexcution agent
 app-emulation/rkt 0.8.0 1.0.0 1.1.0 9999: A CLI for running app containers, and an implementation of the App Container Spec.
@@ -15720,7 +15721,7 @@ sci-libs/idlmarkwardt 20130418: Craig Markwardt IDL procedures (MPFIT, CMSVLIB, 
 sci-libs/ignition-math 1.0.0 2.2.2 2.3.0: A small, fast, and high performance math library for robot applications
 sci-libs/inchi 1.04: A program and library for generating standard and non-standard InChI and InChIKeys
 sci-libs/indilib 0.9.9 1.0.0 1.1.0: INDI Astronomical Control Protocol library
-sci-libs/io_lib 1.10.1 1.11.2.1 1.12.5 1.13.2: General purpose trace and experiment file reading/writing interface
+sci-libs/io_lib 1.10.1 1.11.2.1 1.12.5 1.13.2 1.14.7: General purpose trace and experiment file reading/writing interface
 sci-libs/ipopt 3.11.7 3.11.8: Interior-Point Optimizer for large-scale nonlinear optimization
 sci-libs/ipp 7.1.0.079 7.1.1.117 7.1.1.146 7.1.1.192 8.0.1.080 8.2.0.090 8.2.1.164 8.2.2.187: Intel Integrated Performance Primitive library for multimedia and data processing
 sci-libs/itpp 4.3.1-r1: C++ library of mathematical, signal processing and communication
