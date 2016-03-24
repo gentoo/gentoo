@@ -30,6 +30,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Michael Palimaka <kensington@gentoo.org> (24 Mar 2016)
+# Fails to build. Bug #368953.
+# Masked for removal in 30 days.
+net-p2p/hx
+
 # Aaron Bauman <bman@gentoo.org> (19 Mar 2016)
 # Unpatched security vulnerability per bug #521892.
 # Masked for removal in 30 days.
