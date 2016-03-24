@@ -4670,7 +4670,7 @@ dev-libs/libmacaroons 0.2.0-r1 0.3.0: Hyperdex macaroons support library
 dev-libs/libmail 0.3-r3: A mail handling library
 dev-libs/libmal 0.44.1: convenience library of the functions malsync distribution
 dev-libs/libmateweather 1.8.0 1.10.0: MATE library to access weather information from online services
-dev-libs/libmaxminddb 1.1.2 1.1.4: C library for the MaxMind DB file format
+dev-libs/libmaxminddb 1.1.2 1.1.4 1.1.5 1.2.0: C library for the MaxMind DB file format
 dev-libs/libmba 0.9.1-r3: A library of generic C modules
 dev-libs/libmcal 0.7-r5 0.7-r6: Modular Calendar Access Library
 dev-libs/libmcrypt 2.5.8-r2 2.5.8-r3: libmcrypt is a library that provides uniform interface to access several encryption algorithms
@@ -9525,7 +9525,7 @@ dev-util/d-feet 0.3.9 0.3.10: D-Feet is a powerful D-Bus debugger
 dev-util/dbus-test-runner 12.10.1: Run executables under a new DBus session for testing
 dev-util/ddd 3.3.12-r3 3.3.12-r4: Graphical front-end for command-line debuggers
 dev-util/debhelper 9.20150101 9.20151225 9.20160115 9.20160313: Collection of programs that can be used to automate common tasks in debian/rules
-dev-util/debootstrap 1.0.75 1.0.78-r1 1.0.79: Debian/Ubuntu bootstrap scripts
+dev-util/debootstrap 1.0.75 1.0.78-r1 1.0.79 1.0.80: Debian/Ubuntu bootstrap scripts
 dev-util/debugedit 5.3.5-r1: standalone debugedit taken from rpm
 dev-util/dejagnu 1.4.4-r3 1.5: framework for testing other programs
 dev-util/desktop-file-utils 0.21 0.22: Command line utilities to work with desktop menu entries
@@ -13652,7 +13652,7 @@ net-analyzer/ngrep 1.45-r3: A grep for network layers
 net-analyzer/nikto 1.36 2.1.5: Web Server vulnerability scanner
 net-analyzer/nipper 0.12.0: Router configuration security analysis tool
 net-analyzer/nload 0.7.4: console application which monitors network traffic and bandwidth usage in real time
-net-analyzer/nmap 6.47-r1 6.47-r3 7.00 7.01 7.10 9999: A utility for network discovery and security auditing
+net-analyzer/nmap 6.47-r1 6.47-r3 7.00 7.01 7.10 7.11 9999: A utility for network discovery and security auditing
 net-analyzer/nmapsi 0.4.1: A Qt4 frontend to nmap
 net-analyzer/nmbscan 1.2.5: netbios scanner
 net-analyzer/nodebrain 0.9.03 0.9.04: Monitor and do event correlation
