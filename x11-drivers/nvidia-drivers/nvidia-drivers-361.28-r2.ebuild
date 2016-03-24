@@ -171,7 +171,7 @@ src_prepare() {
 		ewarn "Using PAX patches is not supported. You will be asked to"
 		ewarn "use a standard kernel should you have issues. Should you"
 		ewarn "need support with these patches, contact the PaX team."
-		epatch "${FILESDIR}"/${PN}-355.06-pax.patch
+		epatch "${FILESDIR}"/${PN}-361.28-pax.patch
 	fi
 
 	# Allow user patches so they can support RC kernels and whatever else
