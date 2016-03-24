@@ -9574,7 +9574,7 @@ dev-util/gperf 3.0.4: A perfect hash function generator
 dev-util/gprof2dot 0_p20130517: Converts profiling output to dot graphs
 dev-util/gquilt 0.25-r1: A Python/GTK wrapper for quilt
 dev-util/gtk-builder-convert 2.24.28 2.24.29: Converts Glade files to GtkBuilder XML format
-dev-util/gtk-doc 1.21 1.24: GTK+ Documentation Generator
+dev-util/gtk-doc 1.21 1.24 1.25: GTK+ Documentation Generator
 dev-util/gtk-doc-am 1.21 1.24 1.25: Automake files from gtk-doc
 dev-util/gtk-update-icon-cache 3.16.7 3.18.4: GTK update icon cache
 dev-util/heaptrack 9999: A fast heap memory profiler
@@ -14738,7 +14738,7 @@ net-misc/ssvnc 1.0.28 1.0.29: VNC viewer that adds encryption security to VNC co
 net-misc/stargazer 2.408: Billing system for small home and office networks
 net-misc/stone 2.3e-r1: A simple TCP/IP packet repeater
 net-misc/streamtuner 0.99.99-r5: Stream directory browser for browsing internet radio streams
-net-misc/strongswan 5.3.4 5.3.4-r1: IPsec-based VPN solution focused on security and ease of use, supporting IKEv1/IKEv2 and MOBIKE
+net-misc/strongswan 5.3.4 5.4.0: IPsec-based VPN solution focused on security and ease of use, supporting IKEv1/IKEv2 and MOBIKE
 net-misc/stunnel 5.24 5.29 5.30: TLS/SSL - Port Wrapper
 net-misc/stuntman 1.2.6 1.2.6-r1 1.2.7: STUNTMAN is an open source implementation of the STUN protocol
 net-misc/suite3270 3.3.15_p9 3.4_p9 3.4_p10: Complete 3270 access package
