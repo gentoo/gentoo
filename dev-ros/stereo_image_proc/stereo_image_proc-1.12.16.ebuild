@@ -10,24 +10,21 @@ ROS_SUBDIR=${PN}
 
 inherit ros-catkin
 
-DESCRIPTION="Simple viewer for ROS image topics"
+DESCRIPTION="Stereo and single image rectification and disparity processing"
 LICENSE="BSD"
 SLOT="0"
 IUSE=""
 
 RDEPEND="
-	dev-libs/boost:=[threads]
-	media-libs/opencv
-	x11-libs/gtk+:2
-	dev-ros/camera_calibration_parsers
-	>=dev-ros/cv_bridge-1.11.10
+	dev-ros/cv_bridge
+	dev-ros/dynamic_reconfigure
+	dev-ros/image_geometry
+	dev-ros/image_proc
 	dev-ros/image_transport
 	dev-ros/message_filters
 	dev-ros/nodelet
-	dev-ros/rosconsole
-	dev-ros/roscpp
-	dev-ros/stereo_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-ros/sensor_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
-	dev-ros/std_srvs[${CATKIN_MESSAGES_CXX_USEDEP}]
+	dev-ros/stereo_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
+	media-libs/opencv
 "
 DEPEND="${RDEPEND}"

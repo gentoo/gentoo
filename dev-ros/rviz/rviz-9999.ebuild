@@ -13,17 +13,24 @@ inherit ros-catkin
 DESCRIPTION="3D visualization tool for ROS"
 LICENSE="BSD"
 SLOT="0"
-IUSE=""
+IUSE="qt5"
 
 RDEPEND="
 	dev-libs/boost:=[threads]
 	media-libs/assimp
 	dev-games/ogre
 	virtual/opengl
-	dev-qt/qtgui:4
-	dev-qt/qtopengl:4
-	dev-qt/qtcore:4
-	dev-qt/qtsvg:4
+	qt5? (
+		dev-qt/qtwidgets:5
+		dev-qt/qtcore:5
+		dev-qt/qtopengl:5
+	)
+	!qt5? (
+		dev-qt/qtgui:4
+		dev-qt/qtopengl:4
+		dev-qt/qtcore:4
+		dev-qt/qtsvg:4
+	)
 	dev-cpp/eigen:3
 	dev-cpp/yaml-cpp
 
@@ -59,3 +66,8 @@ DEPEND="${RDEPEND}
 		dev-ros/rostest[${PYTHON_USEDEP}]
 		dev-cpp/gtest
 	)"
+
+src_configure() {
+	local mycatkincmakeargs=( "-DUseQt5=$(usex qt5 ON OFF)" )
+	ros-catkin_src_configure
+}

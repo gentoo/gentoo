@@ -10,24 +10,19 @@ ROS_SUBDIR=${PN}
 
 inherit ros-catkin
 
-DESCRIPTION="Simple viewer for ROS image topics"
+DESCRIPTION="Rotates an image stream minimizing the angle between an arbitrary vector and the camera frame"
 LICENSE="BSD"
 SLOT="0"
 IUSE=""
 
 RDEPEND="
-	dev-libs/boost:=[threads]
-	media-libs/opencv
-	x11-libs/gtk+:2
-	dev-ros/camera_calibration_parsers
-	>=dev-ros/cv_bridge-1.11.10
+	dev-ros/cv_bridge
+	dev-ros/dynamic_reconfigure
+	dev-ros/eigen_conversions
 	dev-ros/image_transport
-	dev-ros/message_filters
 	dev-ros/nodelet
-	dev-ros/rosconsole
 	dev-ros/roscpp
-	dev-ros/stereo_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
-	dev-ros/sensor_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
-	dev-ros/std_srvs[${CATKIN_MESSAGES_CXX_USEDEP}]
+	dev-ros/tf2
+	dev-ros/tf2_geometry_msgs
 "
 DEPEND="${RDEPEND}"
