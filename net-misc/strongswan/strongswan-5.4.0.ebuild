@@ -97,8 +97,6 @@ pkg_setup() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}/0001-sigwaitinfo-may-fail-with-EINTR-if-an-unblocked-sign.patch"
-
 	epatch_user
 }
 
