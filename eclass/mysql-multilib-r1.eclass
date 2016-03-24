@@ -401,6 +401,7 @@ multilib_src_configure() {
 		-DWITH_DEFAULT_COMPILER_OPTIONS=0
 		-DWITH_DEFAULT_FEATURE_SET=0
 		-DINSTALL_SYSTEMD_UNITDIR="$(systemd_get_systemunitdir)"
+		-DENABLE_STATIC_LIBS=$(usex static-libs)
 	)
 
 	if in_iuse systemd ; then
