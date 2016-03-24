@@ -31,7 +31,6 @@ IUSE="contrib debug java kernel_Darwin kernel_FreeBSD kernel_linux perl selinux 
 # pf:            Requires BSD packet filter
 # pinba:         Requires MySQL Pinba engine (http://pinba.org/)
 # tape:          Requires libkstat (Solaris only)
-# write_kafka:   Requires librdkafka
 # write_mongodb: https://github.com/collectd/collectd/issues/492
 # xmms:          Requires libxmms (v1)
 COLLECTD_IMPOSSIBLE_PLUGINS="apple_sensors aquaero mic netapp pf pinba tape write_kafka write_mongodb xmms"
@@ -48,7 +47,7 @@ COLLECTD_TESTED_PLUGINS="amqp aggregation apache apcups ascent battery bind ceph
 	routeros rrdcached rrdtool sensors serial sigrok smart snmp statsd swap syslog
 	table tail tail_csv target_notification target_replace target_scale target_set
 	tcpconns teamspeak2 ted thermal threshold tokyotyrant turbostat unixsock uptime
-	users uuid varnish virt vmem vserver wireless write_graphite write_http
+	users uuid varnish virt vmem vserver wireless write_graphite write_http write_kafka
 	write_log write_redis write_riemann write_sensu write_tsdb zfs_arc zookeeper"
 
 COLLECTD_DISABLED_PLUGINS="${COLLECTD_IMPOSSIBLE_PLUGINS}"
@@ -111,6 +110,7 @@ COMMON_DEPEND="
 	collectd_plugins_varnish?		( www-servers/varnish )
 	collectd_plugins_virt?			( app-emulation/libvirt dev-libs/libxml2:= )
 	collectd_plugins_write_http?		( net-misc/curl )
+	collectd_plugins_write_kafka?		( >=dev-libs/librdkafka-0.9.0.99:= )
 	collectd_plugins_write_redis?		( dev-libs/hiredis:= )
 	collectd_plugins_write_riemann?		( dev-libs/protobuf-c )
 
@@ -138,8 +138,8 @@ REQUIRED_USE="
 	collectd_plugins_python?		( ${PYTHON_REQUIRED_USE} )"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-4.10.3"-werror.patch
-	"${FILESDIR}/${PN}-5.5.1"-{libocci,lt,nohal}.patch
+	"${FILESDIR}"/${PN}-4.10.3-werror.patch
+	"${FILESDIR}"/${PN}-5.5.1-{libocci,lt,nohal}.patch
 )
 
 # @FUNCTION: collectd_plugin_kernel_linux
@@ -418,7 +418,7 @@ src_install() {
 	systemd_dounit "contrib/${PN}.service"
 
 	insinto /etc/logrotate.d
-	newins "${FILESDIR}/logrotate" collectd
+	newins "${FILESDIR}/${PN}.logrotate" ${PN}
 
 	sed -i -e 's:^.*PIDFile     "/var/run/collectd.pid":PIDFile     "/run/collectd/collectd.pid":' "${ED}"etc/collectd.conf || die
 	sed -i -e 's:^#	SocketFile "/var/run/collectd-unixsock":#	SocketFile "/run/collectd/collectd.socket":' "${ED}"etc/collectd.conf || die

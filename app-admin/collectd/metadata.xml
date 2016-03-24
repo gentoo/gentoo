@@ -67,7 +67,6 @@
 		<flag name="collectd_plugins_ipvs">Build the IPVS input plugin (collects statistics from Linux IP Virtual Server)</flag>
 		<flag name="collectd_plugins_irq">Build the irq input plugin (collects the number of times each interrupt has been handled by the operating system)</flag>
 		<flag name="collectd_plugins_java">Build the java input plugin (embeds a JVM into collectd for writing plugins)</flag>
-		<flag name="collectd_plugins_libvirt">Build the (lib)virt input plugin (collects statistics about virtualized guests on a system)</flag>
 		<flag name="collectd_plugins_load">Build the load input plugin (collects the system load)</flag>
 		<flag name="collectd_plugins_logfile">Build the logfile output plugin (receives log messages from collectd and writes them to a text file)</flag>
 		<flag name="collectd_plugins_log_logstash">Build the Logstash output plugin (writes collectd logs and events as Logstash JSON formatted events)</flag>
@@ -144,6 +143,7 @@
 		<flag name="collectd_plugins_wireless">Build the wireless input plugin (collects signal quality, signal power and signal-to-noise ratio for wireless LAN cards)</flag>
 		<flag name="collectd_plugins_write_graphite">Build the write_graphite output plugin (stores values in Carbon, the storage layer of Graphite)</flag>
 		<flag name="collectd_plugins_write_http">Build the write_http output plugin (sends metrics to a web-server using HTTP POST requests)</flag>
+		<flag name="collectd_plugins_write_kafka">Build the Kafka output plugin (sends metrics to Apache Kafka)</flag>
 		<flag name="collectd_plugins_write_log">Build the write_log output plugin (writes metrics to a file)</flag>
 		<flag name="collectd_plugins_write_mongodb">Build the MongoDB output plugin (writes metrics to a MongoDB)</flag>
 		<flag name="collectd_plugins_write_redis">Build the Redis output plugin (stores values in Redis)</flag>

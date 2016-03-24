@@ -2,7 +2,7 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>powerman@powerman.name</email>
+		<email>powerman-asdf@yandex.ru</email>
 		<name>Alex Efros</name>
 		<description>Proxy maintainer. Assign bugs to him please.</description>
 	</maintainer>
