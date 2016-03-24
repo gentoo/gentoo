@@ -10,15 +10,16 @@
 		<name>Cjk</name>
 	</maintainer>
 	<use>
-		<flag name="autostart">Enable xdg-compatible autostart of fcitx</flag>
-		<flag name="enchant">Use <pkg>app-text/enchant</pkg> for text prediction</flag>
-		<flag name="introspection">Enable GObject Introspection</flag>
-		<flag name="gtk">Install GTK2 IM module</flag>
-		<flag name="gtk3">Install GTK3 IM module</flag>
-		<flag name="opencc">Enable OpenCC for Chinese Transform</flag>
+		<flag name="autostart">Enable XDG-compatible autostart of Fcitx</flag>
+		<flag name="enchant">Enable Enchant backend (using <pkg>app-text/enchant</pkg>) for spelling hinting</flag>
+		<flag name="introspection">Enable support for GObject Introspection</flag>
+		<flag name="gtk">Install input method module for GTK+ 2</flag>
+		<flag name="gtk2">Install input method module for GTK+ 2</flag>
+		<flag name="gtk3">Install input method module for GTK+ 3</flag>
+		<flag name="opencc">Enable OpenCC engine (using <pkg>app-i18n/opencc</pkg>) for converter between Simplified Chinese and Traditional Chinese</flag>
 		<flag name="pango">Enable support for <pkg>x11-libs/pango</pkg></flag>
-		<flag name="qt4">Install Qt4 IM module</flag>
-		<flag name="snooper">Enable Key Snooper for GTK app</flag>
-		<flag name="table">Enable Table IM</flag>
+		<flag name="qt4">Install input method module for Qt 4</flag>
+		<flag name="snooper">Enable key snooper for GTK+ applications</flag>
+		<flag name="table">Install table input methods for Simplified Chinese</flag>
 	</use>
 </pkgmetadata>

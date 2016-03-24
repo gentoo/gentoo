@@ -43,3 +43,4 @@ slotmove sys-devel/gcc 4.9 4.9.3
 slotmove sys-devel/gcc 5 5.3.0
 move dev-perl/Period dev-perl/Time-Period
 move dev-perl/perltidy dev-perl/Perl-Tidy
+slotmove app-i18n/kcm-fcitx 0 4
