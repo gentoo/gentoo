@@ -145,7 +145,6 @@
 		<flag name="collectd_plugins_write_http">Build the write_http output plugin (sends metrics to a web-server using HTTP POST requests)</flag>
 		<flag name="collectd_plugins_write_kafka">Build the Kafka output plugin (sends metrics to Apache Kafka)</flag>
 		<flag name="collectd_plugins_write_log">Build the write_log output plugin (writes metrics to a file)</flag>
-		<flag name="collectd_plugins_write_mongodb">Build the MongoDB output plugin (writes metrics to a MongoDB)</flag>
 		<flag name="collectd_plugins_write_redis">Build the Redis output plugin (stores values in Redis)</flag>
 		<flag name="collectd_plugins_write_riemann">Build the Riemann output plugin (stores values in Riemann, a stream processing and monitoring system)</flag>
 		<flag name="collectd_plugins_write_sensu">Build the Sensu output plugin (sends metrics to Sensu Core, an open-source monitoring project)</flag>
