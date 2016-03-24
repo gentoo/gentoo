@@ -145,7 +145,7 @@ LJR_PATCHDIR="${MyPN}-$(LJR_PV ljr).patches"
 LJR_PATCH() { echo "${WORKDIR}/${LJR_PATCHDIR}/${MyPN}-$(LJR_PV ljr).$@.patch"; }
 LJR_PATCH_DESC="http://luke.dashjr.org/programs/${MyPN}/files/${MyPN}d/luke-jr/${BITCOINCORE_SERIES}/$(LJR_PV ljr)/${MyPN}-$(LJR_PV ljr).desc.txt"
 if [ "$BITCOINCORE_MINOR" -ge 12 ]; then
-	LJR_PATCH_DESC="http://bitcoinknots.org/files/${BITCOINCORE_SERIES}/$(LJR_PV dir)/${MyPN}-$(LJR_PV).desc.txt"
+	LJR_PATCH_DESC="http://bitcoinknots.org/files/${BITCOINCORE_SERIES}/$(LJR_PV dir)/${MyPN}-$(LJR_PV).desc.html"
 fi
 
 HOMEPAGE="http://bitcoincore.org/"
