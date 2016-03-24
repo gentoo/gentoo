@@ -9,7 +9,7 @@ inherit qt5-build
 DESCRIPTION="Tool to query Qt path information"
 
 if [[ ${QT5_BUILD_TYPE} == release ]]; then
-	KEYWORDS="amd64 ~arm ~hppa ~ppc64 ~x86"
+	KEYWORDS="amd64 arm ~hppa ~ppc64 ~x86"
 fi
 
 IUSE=""
