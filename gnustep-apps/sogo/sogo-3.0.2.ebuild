@@ -27,7 +27,7 @@ RDEPEND="
 	)
 "
 DEPEND="${RDEPEND}
-	>=gnustep-base/gnustep-make-2.6.2"
+	>=gnustep-base/gnustep-make-2.6.3"
 
 pkg_pretend() {
 	if use ssl && use gnutls && use libressl ; then
