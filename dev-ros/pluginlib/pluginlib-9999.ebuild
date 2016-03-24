@@ -11,7 +11,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit ros-catkin
 
 DESCRIPTION="Provides tools for writing and dynamically loading plugins using the ROS build infrastructure"
-LICENSE="BSD Boost-1.0"
+LICENSE="BSD"
 SLOT="0"
 IUSE=""
 
