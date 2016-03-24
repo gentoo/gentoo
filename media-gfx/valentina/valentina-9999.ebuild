@@ -14,7 +14,7 @@ EHG_REVISION="develop"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS=""
 IUSE="gnome"
 
 # en_IN not supported in Gentoo so not added here
