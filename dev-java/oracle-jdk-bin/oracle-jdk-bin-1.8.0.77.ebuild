@@ -12,11 +12,11 @@ JCE_URI="http://www.oracle.com/technetwork/java/javase/downloads/jce8-download-2
 
 # This is a list of archs supported by this update.
 # Currently arm comes and goes.
-AT_AVAILABLE=( arm arm64 )
+AT_AVAILABLE=( amd64 arm arm64 x86 x64-solaris sparc64-solaris x64-macos )
 
 # Sometimes some or all of the demos are missing, this is to not have to rewrite half
 # the ebuild when it happens.
-DEMOS_AVAILABLE=( arm arm64 )
+DEMOS_AVAILABLE=( amd64 arm arm64 x86 x64-solaris sparc64-solaris x64-macos )
 
 if [[ "$(get_version_component_range 4)" == 0 ]] ; then
 	S_PV="$(get_version_component_range 1-3)"
@@ -60,7 +60,7 @@ SRC_URI+=" jce? ( ${JCE_FILE} )"
 
 LICENSE="Oracle-BCLA-JavaSE examples? ( BSD )"
 SLOT="1.8"
-KEYWORDS="~arm ~arm64"
+KEYWORDS="~amd64 ~arm ~arm64 ~x86 ~amd64-linux ~x86-linux ~x64-macos ~sparc64-solaris ~x64-solaris"
 IUSE="alsa cups derby doc examples +fontconfig headless-awt javafx jce nsplugin pax_kernel selinux source"
 REQUIRED_USE="javafx? ( alsa fontconfig )"
 
@@ -169,6 +169,7 @@ src_unpack() {
 		zcat jdk1${MY_PV%u*}0${update}.pkg/Payload | cpio -idv
 		mv Contents/Home "${WORKDIR}"/jdk${MY_PV}
 		popd > /dev/null
+		use jce && unpack "${JCE_FILE}"
 	else
 		default
 	fi
@@ -328,10 +329,7 @@ src_install() {
 		# Fix miscellaneous install_name issues.
 		pushd "${ddest}"/jre/lib > /dev/null || die
 		local lib needed nlib npath
-		for lib in \
-			decora_sse glass jfx{media,webkit} \
-			javafx_{font,font_t2k,iio} prism_{common,es2,sw} \
-		; do
+		for lib in decora_sse glass prism_{common,es2,sw} ; do
 			lib=lib${lib}.dylib
 			einfo "Fixing self-reference of ${lib}"
 			install_name_tool \
@@ -345,7 +343,7 @@ src_install() {
 		for nlib in jdk1{5,6} ; do
 			install_name_tool -change \
 				/usr/lib/libgcc_s_ppc64.1.dylib \
-				$($(tc-getCC) -print-file-name=libgcc_s_ppc64.1.dylib) \
+				/usr/lib/libSystem.B.dylib \
 				"${ddest}"/lib/visualvm/profiler/lib/deployed/${nlib}/mac/libprofilerinterface.jnilib
 			install_name_tool -id \
 				"${EPREFIX}${dest}"/lib/visualvm/profiler/lib/deployed/${nlib}/mac/libprofilerinterface.jnilib \
