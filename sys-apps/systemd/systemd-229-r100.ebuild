@@ -323,9 +323,6 @@ multilib_src_install_all() {
 		rm "${D}"/usr/share/man/man1/init.1 || die
 	fi
 
-	# Disable storing coredumps in journald, bug #433457
-	mv "${D}"/usr/lib/sysctl.d/50-coredump.conf{,.disabled} || die
-
 	# Preserve empty dirs in /etc & /var, bug #437008
 	keepdir /etc/binfmt.d /etc/modules-load.d /etc/tmpfiles.d \
 		/etc/systemd/ntp-units.d /etc/systemd/user /var/lib/systemd \
