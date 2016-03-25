@@ -93,7 +93,7 @@ RDEPEND="
 		<=dev-python/python-ldap-2.4.20[$(python_gen_usedep 'python2_7')]
 		~dev-python/ldappool-1.0[$(python_gen_usedep 'python2_7')]
 	)
-	www-servers/uwsgi[${PYTHON_USEDEP}]"
+	www-servers/uwsgi[python,${PYTHON_USEDEP}]"
 
 #PATCHES=(
 #)
