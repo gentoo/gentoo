@@ -23,7 +23,7 @@ IUSE="daemon debug ipv6 libressl perl python ssl sasl tcl"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="
-	dev-libs/icu
+	dev-libs/icu:=
 	sys-libs/zlib
 	perl? ( >=dev-lang/perl-5.10 )
 	python? ( ${PYTHON_DEPS} )

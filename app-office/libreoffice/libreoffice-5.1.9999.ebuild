@@ -263,7 +263,12 @@ PATCHES=(
 )
 
 CHECKREQS_MEMORY="512M"
-if [[ ${MERGE_TYPE} != binary ]] ; then CHECKREQS_DISK_BUILD="6G" ; fi
+
+if [[ ${MERGE_TYPE} != binary ]] && is-flagq "-g*" && ! is-flagq "-g*0" ; then
+	CHECKREQS_DISK_BUILD="22G"
+elif [[ ${MERGE_TYPE} != binary ]] ; then
+	CHECKREQS_DISK_BUILD="6G"
+fi
 
 pkg_pretend() {
 	local pgslot
