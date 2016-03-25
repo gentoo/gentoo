@@ -108,6 +108,8 @@ python_prepare_all() {
 	sed -i '/^hacking/d' test-requirements.txt || die
 	mkdir -p ${PN}/tests/tmp/ || die
 	cp etc/keystone-paste.ini ${PN}/tests/tmp/ || die
+	sed -i 's|/usr/local|/usr|g' httpd/keystone-uwsgi-* || die
+	sed -i 's|python|python27|g' httpd/keystone-uwsgi-* || die
 	distutils-r1_python_prepare_all
 }
 
@@ -123,8 +125,6 @@ python_test() {
 
 python_install() {
 	distutils-r1_python_install
-	newconfd "${FILESDIR}/keystone.confd" keystone
-	newinitd "${FILESDIR}/keystone.initd" keystone
 
 	diropts -m 0750
 	keepdir /etc/keystone /var/log/keystone
