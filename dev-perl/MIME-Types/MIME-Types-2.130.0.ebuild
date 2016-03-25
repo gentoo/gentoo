@@ -2,16 +2,24 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-MODULE_AUTHOR=MARKOV
-MODULE_VERSION=2.09
+DIST_AUTHOR=MARKOV
+DIST_VERSION=2.13
 inherit perl-module
 
 DESCRIPTION="Definition of MIME types"
 
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~sparc-solaris ~x86-solaris"
-IUSE=""
+IUSE="test"
 
-SRC_TEST="do"
+# uses List::Util
+RDEPEND="
+	virtual/perl-File-Spec
+	virtual/perl-Scalar-List-Utils
+"
+DEPEND="${RDEPEND}
+	virtual/perl-ExtUtils-MakeMaker
+	test? ( >=virtual/perl-Test-Simple-0.470.0 )
+"

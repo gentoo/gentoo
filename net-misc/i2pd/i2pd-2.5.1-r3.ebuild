@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 inherit eutils systemd user cmake-utils
 
 DESCRIPTION="A C++ daemon for accessing the I2P anonymous network"
@@ -22,7 +22,7 @@ RDEPEND="!static? ( >=dev-libs/boost-1.46[threads]
 DEPEND="${RDEPEND}
 	static? ( >=dev-libs/boost-1.46[static-libs,threads]
 		dev-libs/crypto++[static-libs]
-		!libressl? ( dev-libs/openssl:0[static-libs] )
+		!libressl? ( dev-libs/openssl:0[-bindist,static-libs] )
 		libressl? ( dev-libs/libressl[static-libs] )
 		upnp? ( net-libs/miniupnpc[static-libs] ) )
 	i2p-hardening? ( >=sys-devel/gcc-4.7 )
@@ -34,7 +34,9 @@ I2PD_GROUP="${I2PD_GROUP:-i2pd}"
 CMAKE_USE_DIR="${S}/build"
 
 src_prepare() {
-	epatch "${FILESDIR}/i2pd-2.5.0-fix_installed_components.patch"
+	eapply "${FILESDIR}/${P}-fix_installed_components.patch"
+	eapply "${FILESDIR}/${P}-disable_ipv6_in_i2pd_conf.patch"
+	eapply_user
 }
 
 src_configure() {
@@ -63,17 +65,21 @@ src_install() {
 	dodir "/etc/${PN}"
 	insinto "/etc/${PN}"
 	doins "${S}/debian/${PN}.conf"
-	doins "${FILESDIR}/tunnels.cfg"
 	doins "${S}/debian/subscriptions.txt"
-	fowners "${I2PD_USER}:${I2PD_GROUP}" "/etc/${PN}/${PN}.conf"
-	fperms 600 "/etc/${PN}/${PN}.conf"
+	doins "${FILESDIR}/tunnels.cfg"
 	dodir /usr/share/i2pd
-	newconfd "${FILESDIR}/${PN}-2.5.0.confd" "${PN}"
-	newinitd "${FILESDIR}/${PN}-2.5.0.initd" "${PN}"
-	systemd_newunit "${FILESDIR}/${PN}-2.5.0.service" "${PN}.service"
+	newconfd "${FILESDIR}/${PN}-2.5.1.confd" "${PN}"
+	newinitd "${FILESDIR}/${PN}-2.5.1.initd" "${PN}"
+	systemd_newunit "${FILESDIR}/${PN}-2.5.1.service" "${PN}.service"
 	doenvd "${FILESDIR}/99${PN}"
 	insinto /etc/logrotate.d
 	newins "${FILESDIR}/${PN}-2.5.0.logrotate" "${PN}"
+	fowners "${I2PD_USER}:${I2PD_GROUP}" "/etc/${PN}/${PN}.conf" \
+		"/etc/${PN}/subscriptions.txt" \
+		"/etc/${PN}/tunnels.cfg"
+	fperms 600 "/etc/${PN}/${PN}.conf" \
+		"/etc/${PN}/subscriptions.txt" \
+		"/etc/${PN}/tunnels.cfg"
 }
 
 pkg_setup() {
