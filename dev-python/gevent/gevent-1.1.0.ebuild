@@ -1,10 +1,13 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 
-PYTHON_COMPAT=( python2_7 python3_{3,4,5} pypy pypy3 )
+# Note: pypy3 not supported
+# Note: py3.5 preliminary support
+# http://www.gevent.org/whatsnew_1_1.html#broader-platform-support
+PYTHON_COMPAT=( python2_7 python3_{3,4,5} pypy )
 PYTHON_REQ_USE="ssl(+),threads(+)"
 
 inherit distutils-r1 flag-o-matic
@@ -24,7 +27,7 @@ IUSE="doc examples"
 RDEPEND="
 	dev-libs/libev
 	>=net-dns/c-ares-1.10
-	>=dev-python/greenlet-0.3.2
+	>=dev-python/greenlet-0.4.9
 	virtual/python-greenlet[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
