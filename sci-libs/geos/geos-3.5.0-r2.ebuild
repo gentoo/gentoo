@@ -44,10 +44,21 @@ pkg_setup() {
 	use python && python-single-r1_pkg_setup
 }
 
-src_prepare() {
+# Call default here to override the php-ext-source-r2_src_unpack
+src_unpack() {
 	default
+}
+
+src_prepare() {
+	epatch "${PATCHES[@]}"
 	eautoreconf
 	echo "#!${EPREFIX}/bin/bash" > py-compile
+	if use php; then
+		local php_slot
+		for php_slot in $(php_get_slots); do
+			cp -a "${S}" "${WORKDIR}/${php_slot}" || die
+		done
+	fi
 }
 
 src_configure() {
@@ -55,23 +66,40 @@ src_configure() {
 	local PHP_CONFIG
 	local php_libdir="${EROOT}usr/$(get_libdir)"
 
+	econf \
+		$(use_enable python) \
+		$(use_enable ruby) \
+		--disable-php \
+		$(use_enable static-libs static)
+
 	if use php; then
 		local php_slot
 		for php_slot in $(php_get_slots); do
 			PHP_CONFIG="${php_libdir}/${php_slot}/bin/php-config"
 			[[ -e "${PHP_CONFIG}" ]] && export PHP_CONFIG
+			pushd "${WORKDIR}/${php_slot}" > /dev/null || die
+			econf \
+				--disable-python \
+				--disable-ruby \
+				--enable-php \
+				--disable-static
+			popd > /dev/null || die
 		done
 	fi
-
-	econf \
-		$(use_enable python) \
-		$(use_enable ruby) \
-		$(use_enable php) \
-		$(use_enable static-libs static)
 }
 
 src_compile() {
 	emake
+	if use php; then
+		local php_slot
+		for php_slot in $(php_get_slots); do
+			pushd "${WORKDIR}/${php_slot}/php" > /dev/null || die
+			rm -r ../capi || die
+			ln -sfr "${S}/capi" ../capi
+			emake
+			popd > /dev/null || die
+		done
+	fi
 
 	use doc && emake -C "${S}/doc" doxygen-html
 }
@@ -84,9 +112,15 @@ src_install() {
 
 	if use php; then
 		local php_slot
-		local libpath="lib/extensions/no-debug-non-zts-20131226/geos.so"
+		local libpath
+		local php_libdir="${EROOT}usr/$(get_libdir)"
 
 		for php_slot in $(php_get_slots); do
+			pushd "${WORKDIR}/${php_slot}/php" > /dev/null || die
+			emake DESTDIR="${D}" install
+			popd > /dev/null || die
+			# The libpath will vary by slot as the extension-dir is tied to the API date
+			libpath="lib/extensions/$(${php_libdir}/${php_slot}/bin/php-config --extension-dir | grep -o '[^/]*$')/geos.so"
 			local lib="${D}/usr/$(get_libdir)/${php_slot}/${libpath}"
 			if [[ -e "${lib}" ]]; then
 				chrpath -d ${lib} || die "Failed cleaning RPATH on '${lib}'"
