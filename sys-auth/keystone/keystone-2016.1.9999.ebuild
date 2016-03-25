@@ -16,7 +16,7 @@ EGIT_BRANCH="stable/mitaka"
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS=""
-IUSE="+sqlite memcached mongo mysql postgres ldap test"
+IUSE="+sqlite ldap memcached mongo mysql postgres test"
 REQUIRED_USE="|| ( mysql postgres sqlite )"
 
 CDEPEND=">=dev-python/pbr-1.6[${PYTHON_USEDEP}]"
@@ -79,7 +79,20 @@ RDEPEND="
 	<dev-python/jsonschema-3.0.0[${PYTHON_USEDEP}]
 	~dev-python/pycadf-1.1.0[${PYTHON_USEDEP}]
 	!~dev-python/pycadf-2.0.0[${PYTHON_USEDEP}]
-	>=dev-python/msgpack-0.4.0[${PYTHON_USEDEP}]"
+	>=dev-python/msgpack-0.4.0[${PYTHON_USEDEP}]
+	memcached? (
+		>=dev-python/python-memcached-1.48[${PYTHON_USEDEP}]
+		<=dev-python/python-memcached-1.57[${PYTHON_USEDEP}]
+	)
+	mongo? (
+		>=dev-python/pymongo-2.6.3[${PYTHON_USEDEP}]
+		<dev-python/pymongo-3.2[${PYTHON_USEDEP}]
+	)
+	ldap? (
+		>=dev-python/python-ldap-2.4[$(python_gen_usedep 'python2_7')]
+		<=dev-python/python-ldap-2.4.20[$(python_gen_usedep 'python2_7')]
+		~dev-python/ldappool-1.0[$(python_gen_usedep 'python2_7')]
+	)"
 
 #PATCHES=(
 #)
