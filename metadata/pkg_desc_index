@@ -1313,7 +1313,7 @@ app-emulation/openstack-guest-agents-unix 1.39.0 1.39.0-r1 1.39.0-r2 1.39.1: Ope
 app-emulation/phpvirtualbox 4.1.11 4.2.7 4.3.0 5.0.3: Web-based administration for VirtualBox in PHP
 app-emulation/playonlinux 4.2.4 4.2.6 4.2.8: Set of scripts to easily install and use Windows games and software
 app-emulation/q4wine 1.0-r3 1.1_p2-r1 1.2_p2: Qt4 GUI configuration tool for Wine
-app-emulation/qemu 2.5.0-r1 2.5.0-r2 9999: QEMU + Kernel-based Virtual Machine userland tools
+app-emulation/qemu 2.5.0-r2 9999: QEMU + Kernel-based Virtual Machine userland tools
 app-emulation/qemu-guest-agent 2.3.0 2.3.1 2.4.0 2.5.0: QEMU Guest Agent (qemu-ga) for use when running inside a VM
 app-emulation/qemu-init-scripts 0.3.0: Kvm and qemu init scripts
 app-emulation/qtemu 1.0.5: A graphical user interface for QEMU written in Qt4
@@ -9635,7 +9635,7 @@ dev-util/lttng-ust 2.6.5 2.7.1: Linux Trace Toolkit - UST library
 dev-util/makeheaders 0_p4: simple utility that will automatically generate header files
 dev-util/makepp 1.18 1.40.1a 1.50_pre110621 2.0-r1 2.0.98.4 2.0.98.5: GNU make replacement
 dev-util/mdds 0.10.3 0.11.2-r1 0.12.0 0.12.1 1.1.0 9999: A collection of multi-dimensional data structure and indexing algorithm
-dev-util/meld 3.14.1 3.14.2: A graphical diff and merge tool
+dev-util/meld 3.14.2: A graphical diff and merge tool
 dev-util/memprof 0.6.2-r1: Profiling and leak detection tool
 dev-util/metro 1.5.1: release metatool used for creating Gentoo and Funtoo releases
 dev-util/min-cscope 16.1.0: Interactively examine a C program
