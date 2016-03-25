@@ -4411,7 +4411,7 @@ dev-lang/tinycobol 0.65.9: COBOL for linux
 dev-lang/tk 8.5.17 8.5.17-r100 8.6.4-r1 8.6.5: Tk Widget Set
 dev-lang/tuprolog 2.4.0_rc5 2.7.2 2.9.0 2.9.2: tuProlog is a light-weight Prolog for Internet applications and infrastructures
 dev-lang/ucblogo 5.5 5.5-r1: a reflective, functional programming language
-dev-lang/vala 0.22.1 0.26.2 0.28.1 0.30.1: Compiler for the GObject type system
+dev-lang/vala 0.22.1 0.26.2 0.28.1 0.30.1 0.32.0: Compiler for the GObject type system
 dev-lang/whitespace 0.3 0.4: Whitespace, an esoteric programming language
 dev-lang/xsb 3.3.6 3.3.7 3.5.0 3.6.0: XSB is a logic programming and deductive database system
 dev-lang/yap 6.2.2 6.3.2 6.3.3: YAP is a high-performance Prolog compiler
@@ -4898,7 +4898,7 @@ dev-libs/ustr 1.0.4-r5 1.0.4-r7 1.0.4-r8: Low-overhead managed string library fo
 dev-libs/utfcpp 2.3.4: A simple, portable and lightweight generic library for handling UTF-8 encoded strings.
 dev-libs/uthash 1.9.7 1.9.9: An easy-to-use hash implementation for C programmers
 dev-libs/uulib 0.5.20 0.5.20-r1: Library that supports Base64 (MIME), uuencode, xxencode and binhex coding
-dev-libs/vala-common 0.28.1 0.30.0 0.30.1: Build infrastructure for packages that use Vala
+dev-libs/vala-common 0.28.1 0.30.0 0.30.1 0.32.0: Build infrastructure for packages that use Vala
 dev-libs/vanessa-adt 0.0.6 0.0.9: Provides Abstract Data Types (ADTs) Includes queue, dynamic array, hash and key value ADT
 dev-libs/vanessa-logger 0.0.10: Generic logging layer that to log to syslog, an open file handle or a file name
 dev-libs/vc 0.7.3 0.7.4 1.1.0 1.2.0: SIMD Vector Class Library for C++
