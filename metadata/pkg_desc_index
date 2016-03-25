@@ -5794,7 +5794,7 @@ dev-perl/Log-Dispatch 2.540.0: Dispatches messages to one or more outputs
 dev-perl/Log-Log4perl 1.420.0-r1 1.460.0 1.470.0: Log4j implementation for Perl
 dev-perl/Log-TraceMessages 1.400.0-r1: Logging/debugging aid
 dev-perl/MARC-Charset 1.350.0-r1: convert MARC-8 encoded strings to UTF-8
-dev-perl/MARC-Record 2.0.5 2.0.6: Perl extension for handling MARC records
+dev-perl/MARC-Record 2.0.6: Perl extension for handling MARC records
 dev-perl/MARC-XML 1.0.3: A subclass of MARC.pm to provide XML support
 dev-perl/MD5 2.30.0-r1: The Perl MD5 Module
 dev-perl/MIME-Base32 1.20.0: Base32 encoder / decoder
@@ -5829,7 +5829,7 @@ dev-perl/Mail-Sender 0.8.22-r1 0.8.23: Module for sending mails with attachments
 dev-perl/Mail-Sendmail 0.790.0-r1: Simple platform independent mailer
 dev-perl/Mail-SpamAssassin-Plugin-GoogleSafeBrowsing 1.30.0-r1: SpamAssassin plugin to score mail based on Google blocklists
 dev-perl/MailTools 2.120.0-r1 2.140.0: Manipulation of electronic mail addresses
-dev-perl/Math-Base-Convert 0.80.0 0.110.0: Very fast base to base conversion
+dev-perl/Math-Base-Convert 0.110.0: Very fast base to base conversion
 dev-perl/Math-Base36 0.120.0-r1 0.140.0: Encoding and decoding of base36 strings
 dev-perl/Math-Bezier 0.10.0-r1: Solution of Bezier Curves
 dev-perl/Math-BigInt-GMP 1.380.0 1.460.0 1.470.0 1.490.0: Use the GMP library for Math::BigInt routines
@@ -6769,7 +6769,7 @@ dev-python/GridDataFormats 0.2.2 0.2.5: Reading and writing of data on regular g
 dev-python/Kivy 1.9.0-r1: A software library for rapid development of hardware-accelerated multitouch applications
 dev-python/Numdifftools 0.9.12 0.9.13 0.9.14: Solves automatic numerical differentiation problems in one or more variables
 dev-python/PyContracts 1.7.6 1.7.9: Declare constraints on function parameters and return values
-dev-python/PyECLib 1.0.7-r2: Messaging API for RPC and notifications over a number of different messaging transports
+dev-python/PyECLib 1.0.7-r2 1.2.0: Messaging API for RPC and notifications over a number of different messaging transports
 dev-python/PyFoam 0.5.4-r2: Tool to analyze and plot the residual files of OpenFOAM computations
 dev-python/PyGithub 1.25.2: Python library to access the Github API v3
 dev-python/PyPDF2 1.24 1.25.1: Python library to work with pdf files
@@ -9697,8 +9697,8 @@ dev-util/pmd 4.2.5: A Java source code analyzer
 dev-util/premake 3.7 4.3-r1: A makefile generation tool
 dev-util/pretrace 0.4: start dynamically linked applications under debugging environment
 dev-util/pscan 20000721-r1: A limited problem scanner for C source files
-dev-util/pycharm-community 3.4.1 4.0.6 4.5.4 5.0.3 5.0.4 2016.1: Intelligent Python IDE with unique code assistance and analysis
-dev-util/pycharm-professional 3.4.1-r1 4.0.6-r1 4.5.4 5.0.3 5.0.4 2016.1: Intelligent Python IDE with unique code assistance and analysis
+dev-util/pycharm-community 3.4.1 4.0.6 4.5.4 5.0.3 5.0.4 2016.1-r1: Intelligent Python IDE with unique code assistance and analysis
+dev-util/pycharm-professional 3.4.1-r1 4.0.6-r1 4.5.4 5.0.3 5.0.4 2016.1-r1: Intelligent Python IDE with unique code assistance and analysis
 dev-util/qbs 1.4.2 1.4.3 1.4.4: Qt Build Suite
 dev-util/qdevelop 0.28: A development environment entirely dedicated to Qt4
 dev-util/qfsm 0.53.0 0.54.0: A graphical tool for designing finite state machines
@@ -16800,7 +16800,7 @@ sys-cluster/resource-agents 1.0.4-r1 1.0.4-r2 3.9.4 3.9.5 3.9.6: Resources pack 
 sys-cluster/rgmanager 2.03.09 2.03.09-r1 3.1.5: Clustered resource group manager
 sys-cluster/rgmanager-agents 3.9.2: Resource Manager Agents
 sys-cluster/slurm 2.6.3: SLURM: A Highly Scalable Resource Manager
-sys-cluster/swift 2.5.0-r2: A highly available, distributed, and eventually consistent object/blob store
+sys-cluster/swift 2.5.0-r2 2.7.0: A highly available, distributed, and eventually consistent object/blob store
 sys-cluster/torque 2.5.13 4.1.7 4.2.9-r4: Resource manager and queuing system based on OpenPBS
 sys-cluster/util-vserver 0.30.216_pre3025 0.30.216_pre3062 0.30.216_pre3120: Linux-VServer admin utilities
 sys-cluster/vzctl 4.9.1 4.9.4: OpenVZ ConTainers control utility
