@@ -8,7 +8,4 @@
     <email>desktop-misc@gentoo.org</email>
     <name>Gentoo Desktop Miscellaneous Project</name>
   </maintainer>
-  <use>
-  <flag name="xft">Enable unofficial <pkg>x11-libs/libXft</pkg> support</flag>
-  </use>
 </pkgmetadata>
