@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="Charset Informations for MIME"
 
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE="linguas_ja linguas_zh"
 PATCHES=(
 	"${FILESDIR}/${DIST_VERSION}-makefilepl.patch"
