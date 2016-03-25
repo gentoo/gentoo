@@ -7150,7 +7150,7 @@ dev-python/fuse-python 0.2.1-r1: Python FUSE bindings
 dev-python/fusil 1.5: Fusil the fuzzer is a Python library used to write fuzzing programs
 dev-python/future 0.15.2: Easy, clean, reliable Python 2/3 compatibility
 dev-python/futures 2.2.0 3.0.2 3.0.3 3.0.4 3.0.5: Backport of the concurrent.futures package from Python 3.2
-dev-python/futurist 0.4.0: Useful additions to futures, from the future
+dev-python/futurist 0.4.0 0.13.0: Useful additions to futures, from the future
 dev-python/gammapy 0.3: Python package for gamma-ray astronomy
 dev-python/gconf-python 2.28.1-r1: Python bindings for the GConf library
 dev-python/gcs-oauth2-boto-plugin 1.7 1.8 1.8-r1 1.9: OAuth 2.0 plugin for Google Cloud Storage credentials in the Boto library
@@ -7454,7 +7454,7 @@ dev-python/oslo-context 0.1.0 0.1.0-r1 0.2.0 0.3.0 0.6.0: Helpers to maintain us
 dev-python/oslo-db 1.0.2 1.4.1 1.7.1 1.7.2 1.8.0 1.9.0 2.6.0 4.6.0: OpenStack Common DB Code
 dev-python/oslo-i18n 1.3.1 1.4.0 1.5.0 1.6.0 2.6.0 2.7.0 3.4.0: Oslo i18n library
 dev-python/oslo-log 0.3.0 1.0.0 1.1.0 1.10.0 3.2.0: OpenStack logging config library provides standardized configuration for all openstack projects.
-dev-python/oslo-messaging 1.4.1 1.5.1 1.7.0 1.8.0 1.8.2 1.8.3 1.9.0 1.10.0 2.4.0: Messaging API for RPC and notifications over a number of different messaging transports
+dev-python/oslo-messaging 1.4.1 1.5.1 1.7.0 1.8.0 1.8.2 1.8.3 1.9.0 1.10.0 2.4.0 4.5.1: Messaging API for RPC and notifications over a number of different messaging transports
 dev-python/oslo-middleware 0.4.0 0.5.0 1.0.0 1.1.0 1.2.0 1.3.0 2.8.0 3.7.0: Library includes components to be injected into wsgi pipelines to intercept request/response flows.
 dev-python/oslo-policy 0.3.2 0.11.0 0.12.0: The Oslo Policy library provides support for RBAC policy enforcement across all OpenStack services.
 dev-python/oslo-reports 0.5.0 0.6.0: generified reports for openstack
@@ -7507,6 +7507,7 @@ dev-python/pickleshare 0.5 0.6: A small 'shelve' like datastore with concurrency
 dev-python/pid 2.0.1: Pidfile featuring stale detection and file-locking
 dev-python/piddle 1.0.15 1.0.15-r1: Cross-media, cross-platform 2D graphics package
 dev-python/pika 0.9.14 0.10.0: Pure-Python implementation of the AMQP
+dev-python/pika-pool 0.1.3: A connection pool for pika.
 dev-python/pillow 2.8.1 2.8.2 2.9.0 3.0.0 3.0.0-r1 3.1.0 3.1.1: Python Imaging Library (fork)
 dev-python/pillowfight 0.2: Eases the transition from PIL to Pillow
 dev-python/pip 7.1.2 8.0.2-r1 8.0.2-r2 8.0.3 8.1.1: Installs python packages -- replacement for easy_install
