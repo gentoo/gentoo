@@ -159,7 +159,8 @@ RDEPEND="
 		>=dev-python/python-ldap-2.4[$(python_gen_usedep 'python2_7')]
 		<=dev-python/python-ldap-2.4.20[$(python_gen_usedep 'python2_7')]
 		~dev-python/ldappool-1.0[$(python_gen_usedep 'python2_7')]
-	)"
+	)
+	www-servers/uwsgi[${PYTHON_USEDEP}]"
 
 PATCHES=(
 )
@@ -200,7 +201,7 @@ python_install() {
 	doins etc/default_catalog.templates etc/policy.json
 	doins etc/policy.v3cloudsample.json etc/keystone-paste.ini
 	insinto /etc/keystone/httpd
-	doins httpd/keystone.py httpd/wsgi-keystone.conf
+	doins httpd/*
 
 	fowners keystone:keystone /etc/keystone /var/log/keystone
 }
