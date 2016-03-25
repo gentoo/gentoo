@@ -7526,6 +7526,7 @@ dev-python/plyvel 0.9: Python interface to LevelDB
 dev-python/pmw 1.3.3-r2 2.0.0-r2 2.0.1: Toolkit for building high-level compound widgets in Python using the Tkinter module
 dev-python/polib 1.0.4: A library to manipulate gettext files (.po and .mo files)
 dev-python/polygon 2.0.4 2.0.6 3.0.7: Python package to handle polygonal shapes in 2D
+dev-python/positional 1.0.1: A decorator which enforces only some args may be passed positionally.
 dev-python/posix_ipc 0.9.8: POSIX IPC primitives (semaphores, shared memory and message queues) for Python
 dev-python/potr 1.0.1: Pure Python OTR implementation
 dev-python/pp 1.6.4-r1: Parallel and distributed programming for Python
