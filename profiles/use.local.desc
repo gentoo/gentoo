@@ -8204,7 +8204,6 @@ x11-misc/colord:extra-print-profiles - Generate extra print profiles. Warning: s
 x11-misc/colord:gusb - Enable dev-libs/libgusb support, needed for colorimeter drivers
 x11-misc/compton:drm - Enable VSync with DRM_IOCTL_WAIT_VBLANK
 x11-misc/compton:opengl - Enable VSync with SGI_swap_control OpenGL extension
-x11-misc/dmenu:xft - Enable unofficial x11-libs/libXft support
 x11-misc/dunst:dunstify - Experimental replacement for notify-send.
 x11-misc/etm:ical - Enable export of ical format files by depending on dev-python/icalendar
 x11-misc/fbpager:xrender - Enable transparency support via x11-libs/libXrender

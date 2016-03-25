@@ -14680,7 +14680,7 @@ net-misc/pump 0.8.24-r4: This is the DHCP/BOOTP client written by RedHat
 net-misc/putty 0.66 0.67 9999: A Free Telnet/SSH Client
 net-misc/pycnb 0.0.4-r1: Access cnb.cz daily rates with the comfort of your command line
 net-misc/pyhoca-cli 0.5.0.2-r1 0.5.0.3: X2Go command line client
-net-misc/pyhoca-gui 0.5.0.4-r1 0.5.0.5: X2Go graphical client applet
+net-misc/pyhoca-gui 0.5.0.4-r1 0.5.0.5 0.5.0.6: X2Go graphical client applet
 net-misc/pymazon 0.9-r1 0.9.1: Downloader for the Amazon.com MP3 music store
 net-misc/python-x2go 0.5.0.3 0.5.0.4: X2Go client-side Python API
 net-misc/pytvshows 0.2-r1 0.2-r2: downloads torrents for TV shows from RSS feeds provided by ezrss.it
@@ -14799,7 +14799,7 @@ net-misc/wol 0.7.1-r1: Wake up hardware that is Magic Packet compliant
 net-misc/wput 0.6.1: A tiny, wget-alike program, that is designed to upload files/whole directories to remote ftp-servers
 net-misc/x11-ssh-askpass 1.2.4.1-r1: X11-based passphrase dialog for use with OpenSSH
 net-misc/x11rdp 0.8.0.1.9.5: A X11 server for RDP clients (used by xrdp)
-net-misc/x2goclient 4.0.3.2 4.0.4.0 4.0.5.0: The X2Go Qt client
+net-misc/x2goclient 4.0.3.2 4.0.4.0 4.0.5.0 4.0.5.1: The X2Go Qt client
 net-misc/x2goserver 4.0.1.19 4.0.1.19-r2 4.0.1.19-r3: The X2Go server
 net-misc/xrdp 0.8.0-r1: An open source Remote Desktop Protocol server
 net-misc/yajhfc 0.5.2 0.5.7: Yet another Java HylaFAX Plus Client
