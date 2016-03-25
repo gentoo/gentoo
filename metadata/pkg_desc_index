@@ -261,7 +261,7 @@ app-arch/gcab 0.6: Library and tool for working with Microsoft Cabinet (CAB) fil
 app-arch/gtk-splitter 2.2.1-r1: Split files into smaller pieces and combine them back together
 app-arch/gzip 1.4 1.5 1.6: Standard GNU compressor
 app-arch/hardlink 0.2.0 0.3.0: A tool which replaces copies of a file with hardlinks
-app-arch/innoextract 1.4 1.5: A tool to unpack installers created by Inno Setup
+app-arch/innoextract 1.4 1.5 1.6: A tool to unpack installers created by Inno Setup
 app-arch/ipkg-utils 1.7.050831-r2: Tools for working with the ipkg binary package format
 app-arch/lbzip2 2.3-r1 2.5: Parallel bzip2 utility
 app-arch/lcab 1.0_beta12: CAB file creation tool
