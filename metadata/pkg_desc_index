@@ -8804,7 +8804,7 @@ dev-ruby/jquery-ui-rails 3.0.1 4.2.1 5.0.3 5.0.5: The jQuery UI assets for the R
 dev-ruby/jruby-openssl 0.7.7: A Ruby SSL library that works with JRuby
 dev-ruby/jsobfu 0.2.1 0.2.1-r1 0.3.0 0.3.0-r1: A Javascript code obfuscator
 dev-ruby/json 1.8.2-r1 1.8.3: A JSON implementation as a Ruby extension
-dev-ruby/jwt 1.5.2 1.5.3: A Ruby implementation of JSON Web Token draft 06
+dev-ruby/jwt 1.5.3 1.5.4: A Ruby implementation of JSON Web Token draft 06
 dev-ruby/kirbybase 2.6.1-r1 2.6.1-r2: A simple Ruby DBMS that stores data in plaintext files
 dev-ruby/kissfft 0.0.1-r1 0.0.2: ruby interface to kissfft
 dev-ruby/kramdown 1.4.2 1.10.0: Yet-another-markdown-parser but fast, pure Ruby, using strict syntax definition
@@ -8908,7 +8908,7 @@ dev-ruby/org-ruby 0.9.9 0.9.12: Ruby routines for parsing org-mode files
 dev-ruby/origin 1.1.0 2.1.1 2.2.0: Origin is a simple DSL for generating MongoDB selectors and options
 dev-ruby/ox 2.2.4 2.3.0: A fast XML parser and Object marshaller
 dev-ruby/packetfu 1.1.9-r1 1.1.10-r2 1.1.11-r1: A mid-level packet manipulation library
-dev-ruby/paint 1.0.0 1.0.1: Terminal painter
+dev-ruby/paint 1.0.1: Terminal painter
 dev-ruby/parser 2.3.0.4 2.3.0.6: A production-ready Ruby parser written in pure Ruby
 dev-ruby/parslet 1.6.1 1.6.2 1.7.0 1.7.1: A small PEG based parser library
 dev-ruby/patron 0.4.18-r1 0.4.18-r2 0.4.20 0.5.0-r1 0.5.1: Patron is a Ruby HTTP client library based on libcurl
