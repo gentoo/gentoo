@@ -5830,20 +5830,20 @@ dev-perl/Mail-Sendmail 0.790.0-r1: Simple platform independent mailer
 dev-perl/Mail-SpamAssassin-Plugin-GoogleSafeBrowsing 1.30.0-r1: SpamAssassin plugin to score mail based on Google blocklists
 dev-perl/MailTools 2.120.0-r1 2.140.0: Manipulation of electronic mail addresses
 dev-perl/Math-Base-Convert 0.110.0: Very fast base to base conversion
-dev-perl/Math-Base36 0.120.0-r1 0.140.0: Encoding and decoding of base36 strings
+dev-perl/Math-Base36 0.140.0: Encoding and decoding of base36 strings
 dev-perl/Math-Bezier 0.10.0-r1: Solution of Bezier Curves
-dev-perl/Math-BigInt-GMP 1.380.0 1.460.0 1.470.0 1.490.0: Use the GMP library for Math::BigInt routines
+dev-perl/Math-BigInt-GMP 1.380.0 1.490.0: Use the GMP library for Math::BigInt routines
 dev-perl/Math-Calc-Units 1.70.0-r1: Human-readable unit-aware calculator
 dev-perl/Math-Derivative 0.10.0-r1 0.40.0: 1st and 2nd order differentiation of data
 dev-perl/Math-GMP 2.60.0-r1 2.110.0: High speed arbitrary size integer math
-dev-perl/Math-ModInt 0.7.0 0.11.0: modular integer arithmetic
+dev-perl/Math-ModInt 0.11.0: modular integer arithmetic
 dev-perl/Math-NumberCruncher 5.0.0: Collection of useful math-related functions
 dev-perl/Math-Random 0.710.0-r1 0.720.0: Random Number Generators
 dev-perl/Math-Random-ISAAC 1.4.0-r1: Perl interface to the ISAAC PRNG algorithm
 dev-perl/Math-Random-ISAAC-XS 1.4.0-r1: C implementation of the ISAAC PRNG algorithm
 dev-perl/Math-Random-MT 1.170.0: The Mersenne Twister PRNG
 dev-perl/Math-Random-Secure 0.60.0-r1: Cryptographically-secure, cross-platform replacement for rand()
-dev-perl/Math-Round 0.60.0-r1 0.70.0: Perl extension for rounding numbers
+dev-perl/Math-Round 0.70.0: Perl extension for rounding numbers
 dev-perl/Math-Spline 0.10.0-r1 0.20.0: Cubic Spline Interpolation of data
 dev-perl/Math-Vec 1.10.0-r1: Vectors for perl
 dev-perl/Math-VecStat 0.80.0-r1: Some basic numeric stats on vectors
