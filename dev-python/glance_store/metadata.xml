@@ -10,7 +10,7 @@
 		<name>Openstack</name>
 	</maintainer>
 	<longdescription lang="en">
-	A simple connector pool for python-ldap.
+		Glance's stores library
 	</longdescription>
 	<upstream>
 		<remote-id type="pypi">glance_store</remote-id>
