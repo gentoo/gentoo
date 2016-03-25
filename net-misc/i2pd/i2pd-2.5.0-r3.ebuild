@@ -34,7 +34,7 @@ I2PD_GROUP="${I2PD_GROUP:-i2pd}"
 CMAKE_USE_DIR="${S}/build"
 
 src_prepare() {
-	epatch "${FILESDIR}/i2pd-2.4.0-fix_installed_components.patch"
+	epatch "${FILESDIR}/i2pd-2.5.0-fix_installed_components.patch"
 }
 
 src_configure() {
