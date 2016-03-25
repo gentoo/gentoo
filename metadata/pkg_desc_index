@@ -2874,7 +2874,7 @@ dev-db/mariadb 5.5.47 5.5.48 10.0.23 10.0.24 10.1.10 10.1.11 10.1.12: An enhance
 dev-db/mariadb-galera 10.0.22: An enhanced, drop-in replacement for MySQL with Galera Replication
 dev-db/maxscale 1.2.0: A content aware, plug-able MySQL proxy server
 dev-db/metakit 2.4.9.7-r2: Embedded database library
-dev-db/mongodb 2.6.8 2.6.11 3.0.8 3.0.9 3.0.10 3.2.3 3.2.4: A high-performance, open source, schema-free document-oriented database
+dev-db/mongodb 2.6.8 2.6.11 2.6.12 3.0.8 3.0.9 3.0.10 3.2.3 3.2.4: A high-performance, open source, schema-free document-oriented database
 dev-db/mtop 0.6.6-r3: Mysql top monitors a MySQL server
 dev-db/mycli 1.4.0 1.5.2 1.5.2-r1 9999: CLI for MySQL Database with auto-completion and syntax highlighting
 dev-db/mydumper 0.6.2: A high-performance multi-threaded backup (and restore) toolset for MySQL and Drizzle
