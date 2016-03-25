@@ -1,0 +1,14 @@
+DEFINED_PHASES=install unpack
+DEPEND=!!app-arch/rpm
+DESCRIPTION=PathScale EKOPath Compiler Suite
+EAPI=6
+HOMEPAGE=http://www.pathscale.com/ekopath-compiler-suite
+KEYWORDS=~amd64
+LICENSE=all-rights-reserved
+RDEPEND=!dev-lang/ekopath:0/6.0.728
+RESTRICT=bindist mirror
+SLOT=6.0.728
+SRC_URI=http://c591116.r16.cf2.rackcdn.com/ekopath/nightly/Linux/ekopath-2016-03-24-installer.run
+_eclass_exported_funcs=src_unpack:- src_install:-
+_eclasses_=eutils	9d81603248f2ba3ec59124320d123e5e	multilib	3972ca401cf7dbb430df9995f5d8d580	pax-utils	ecf634cba91bb9591a8fdb6f6145f1bb	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=f8dbc62511d10306f7c45fe7c9def22e
