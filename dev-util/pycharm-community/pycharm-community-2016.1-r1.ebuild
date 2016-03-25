@@ -15,7 +15,7 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE=""
 
-RDEPEND=">=virtual/jre-1.6"
+RDEPEND=">=virtual/jre-1.8"
 DEPEND=""
 
 RESTRICT="mirror strip"

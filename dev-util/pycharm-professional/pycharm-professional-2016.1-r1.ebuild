@@ -15,7 +15,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-RDEPEND=">=virtual/jre-1.6
+RDEPEND=">=virtual/jre-1.8
 	 dev-python/pip"
 DEPEND=""
 
