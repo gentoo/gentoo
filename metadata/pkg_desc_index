@@ -6964,7 +6964,7 @@ dev-python/datashape 0.4.2 0.4.4 0.4.5 0.4.6 0.4.7 0.5.0 0.5.1: Language definin
 dev-python/dbus-python 1.2.0-r1: Python bindings for the D-Bus messagebus
 dev-python/dbutils 1.1-r1: Database connections for multi-threaded environments
 dev-python/ddt 1.0.0 1.0.1: A library to multiply test cases
-dev-python/debtcollector 0.7.0 0.10.0: Python deprecation patterns and strategies that collect technical debt
+dev-python/debtcollector 0.7.0 0.10.0 1.3.0: Python deprecation patterns and strategies that collect technical debt
 dev-python/decorator 4.0.2 4.0.4 4.0.6 4.0.9: Simplifies the usage of decorators for the average programmer
 dev-python/decoratortools 1.8-r1: Class, function, and metaclass decorators
 dev-python/deform 0.9.8 0.9.9: Another form generation library
@@ -7375,7 +7375,7 @@ dev-python/mock 1.0.1-r2 1.3.0-r2: Rolling backport of unittest.mock for all Pyt
 dev-python/mocker 1.1.1-r1: Platform for Python test doubles: mocks, stubs, fakes, and dummies
 dev-python/mockldap 0.2.3 0.2.5 0.2.6: A simple mock implementation of python-ldap
 dev-python/mongoengine 0.8.3: A Python Object-Document-Mapper for working with MongoDB
-dev-python/monotonic 0.2 0.3 0.4 0.5: An implementation of time.monotonic() for Python 2 & < 3.3
+dev-python/monotonic 0.2 0.3 0.4 0.5 1.0: An implementation of time.monotonic() for Python 2 & < 3.3
 dev-python/morbid 0.8.7.3 0.8.7.3-r1: A Twisted-based publish/subscribe messaging server that uses the STOMP protocol
 dev-python/more-itertools 2.2 2.2-r1: More routines for operating on iterables, beyond itertools
 dev-python/moto 0.3.8 0.4.3 0.4.8 0.4.21 0.4.22: Mock library for boto
@@ -7448,10 +7448,10 @@ dev-python/os-networksv2-python-novaclient-ext 0.21 0.21-r1 0.25: Adds network e
 dev-python/os-testr 0.3.0: A testr wrapper to provide functionality for OpenStack projects
 dev-python/os-virtual-interfacesv2-python-novaclient-ext 0.15 0.19: Adds Virtual Interfaces support to python-novaclient
 dev-python/oslo-concurrency 1.8.0 1.8.1 1.8.2 2.5.0: library for running multi-thread, multi-process applications
-dev-python/oslo-config 1.9.3 2.3.0 2.4.0: Oslo Configuration API
+dev-python/oslo-config 1.9.3 2.3.0 2.4.0 3.9.0: Oslo Configuration API
 dev-python/oslo-context 0.1.0 0.1.0-r1 0.2.0 0.3.0 0.6.0: Helpers to maintain useful information about a request context
 dev-python/oslo-db 1.0.2 1.4.1 1.7.1 1.7.2 1.8.0 1.9.0 2.6.0: OpenStack Common DB Code
-dev-python/oslo-i18n 1.3.1 1.4.0 1.5.0 1.6.0 2.6.0 2.7.0: Oslo i18n library
+dev-python/oslo-i18n 1.3.1 1.4.0 1.5.0 1.6.0 2.6.0 2.7.0 3.4.0: Oslo i18n library
 dev-python/oslo-log 0.3.0 1.0.0 1.1.0 1.10.0: OpenStack logging config library
 dev-python/oslo-messaging 1.4.1 1.5.1 1.7.0 1.8.0 1.8.2 1.8.3 1.9.0 1.10.0 2.4.0: Messaging API for RPC and notifications over a number of different messaging transports
 dev-python/oslo-middleware 0.4.0 0.5.0 1.0.0 1.1.0 1.2.0 1.3.0 2.8.0: Library includes components to be injected into wsgi pipelines to intercept request/response flows.
@@ -7461,7 +7461,7 @@ dev-python/oslo-rootwrap 1.2.0 1.3.0 1.6.0 2.3.0 2.4.0: The Oslo Rootwrap allows
 dev-python/oslo-serialization 1.3.0 1.3.0-r1 1.4.0 1.5.0 1.9.0 1.11.0: Oslo Serialization library
 dev-python/oslo-service 0.9.0: Library for running OpenStack services
 dev-python/oslo-sphinx 2.2.0-r1 2.5.0 3.0.0: OpenStack Sphinx Extensions and Theme
-dev-python/oslo-utils 1.0.0 1.1.0 1.2.1 1.3.0 1.4.0 1.5.0 2.4.0: Oslo Utility library
+dev-python/oslo-utils 1.0.0 1.1.0 1.2.1 1.3.0 1.4.0 1.5.0 2.4.0 3.7.0: Oslo Utility library
 dev-python/oslo-versionedobjects 0.10.0 0.11.0: The oslo.versionedobjects library provides a generic versioned object model that is RPC-friendly.
 dev-python/oslo-vmware 0.11.2 1.21.0: Oslo VMware library for OpenStack projects
 dev-python/oslotest 1.3.0 1.5.0 1.5.1 1.6.0 1.10.0 1.12.0: Oslo test framework
@@ -18100,7 +18100,7 @@ x11-misc/denu 2.3.2-r1: A menu generation program for fluxbox, waimea, openbox, 
 x11-misc/devilspie 0.22: A Window Matching utility similar to Sawfish's Matched Windows feature
 x11-misc/devilspie2 0.36 0.37 0.39: Devilspie like window matching utility, using LUA for scripting
 x11-misc/dex 0.6 0.7: DesktopEntry eXecution - tool to manage and launch autostart entries
-x11-misc/dmenu 4.5-r3 4.5-r4 4.6 9999: a generic, highly customizable, and efficient menu for the X Window System
+x11-misc/dmenu 4.6 9999: a generic, highly customizable, and efficient menu for the X Window System
 x11-misc/dockmanager 0.1.0-r1: dock-independent helper scripts
 x11-misc/driconf 0.9.1-r1: driconf is a GTK+2 GUI configurator for DRI
 x11-misc/dsx 0.1: command line selection of your X desktop environment
