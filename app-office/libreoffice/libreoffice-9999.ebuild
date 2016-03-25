@@ -59,7 +59,7 @@ unset DEV_URI
 # These are bundles that can't be removed for now due to huge patchsets.
 # If you want them gone, patches are welcome.
 ADDONS_SRC=(
-	"${ADDONS_URI}/17e8eb9a4ec4139b7689d139be4da133-xmlsec1-1.2.16.tar.gz" # modifies source code
+	"${ADDONS_URI}/d37daeccb841e5a457b9476d613a6012-xmlsec1-1.2.17.tar.gz" # modifies source code
 	"collada? ( ${ADDONS_URI}/4b87018f7fff1d054939d19920b751a0-collada2gltf-master-cb1d97788a.tar.bz2 )"
 	"java? ( ${ADDONS_URI}/17410483b5b5f267aa18b7e00b65e6e0-hsqldb_1_8_0.zip )"
 	# no release for 8 years, should we package it?
