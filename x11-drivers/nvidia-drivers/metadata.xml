@@ -2,7 +2,10 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 <maintainer type="person">
-  <email>jer@gentoo.org</email>
+ <email>jer@gentoo.org</email>
+</maintainer>
+<maintainer type="project" restrict="pax_kernel? ( sys-kernel/hardened-sources )">
+ <email>hardened@gentoo.org</email>
 </maintainer>
 <longdescription>
 Nvidia provides different branches of its drivers for different batches of its
