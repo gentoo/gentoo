@@ -2,11 +2,11 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python2_7 python3_4 python3_5 )
 
-inherit distutils-r1 git-2 user
+inherit distutils-r1 git-r3 user
 
 DESCRIPTION="The Openstack authentication, authorization, and service catalog"
 HOMEPAGE="https://launchpad.net/keystone"
@@ -81,8 +81,8 @@ RDEPEND="
 	!~dev-python/pycadf-2.0.0[${PYTHON_USEDEP}]
 	>=dev-python/msgpack-0.4.0[${PYTHON_USEDEP}]"
 
-PATCHES=(
-)
+#PATCHES=(
+#)
 
 pkg_setup() {
 	enewgroup keystone
@@ -122,7 +122,7 @@ python_install() {
 	insinto /etc/keystone/httpd
 	doins httpd/keystone.py httpd/wsgi-keystone.conf
 
-	fowners keystone:keystone /etc/keystone /var/log/keystone
+	fowners keystone:keystone /etc/keystone /etc/keystone/httpd /var/log/keystone
 }
 
 pkg_postinst() {
