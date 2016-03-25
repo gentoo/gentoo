@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=6
+EAPI=5
 inherit eutils systemd user cmake-utils
 
 DESCRIPTION="A C++ daemon for accessing the I2P anonymous network"
@@ -34,9 +34,7 @@ I2PD_GROUP="${I2PD_GROUP:-i2pd}"
 CMAKE_USE_DIR="${S}/build"
 
 src_prepare() {
-	eapply "${FILESDIR}/${P}-fix_installed_components.patch"
-	eapply "${FILESDIR}/${P}-disable_ipv6_in_i2pd_conf.patch"
-	eapply_user
+	epatch "${FILESDIR}/i2pd-2.5.0-fix_installed_components.patch"
 }
 
 src_configure() {
@@ -65,19 +63,17 @@ src_install() {
 	dodir "/etc/${PN}"
 	insinto "/etc/${PN}"
 	doins "${S}/debian/${PN}.conf"
-	doins "${S}/debian/subscriptions.txt"
 	doins "${FILESDIR}/tunnels.cfg"
+	doins "${S}/debian/subscriptions.txt"
+	fowners "${I2PD_USER}:${I2PD_GROUP}" "/etc/${PN}/${PN}.conf"
+	fperms 600 "/etc/${PN}/${PN}.conf"
 	dodir /usr/share/i2pd
-	newconfd "${FILESDIR}/${PN}-2.5.1.confd" "${PN}"
-	newinitd "${FILESDIR}/${PN}-2.5.1.initd" "${PN}"
-	systemd_newunit "${FILESDIR}/${PN}-2.5.1.service" "${PN}.service"
+	newconfd "${FILESDIR}/${PN}-2.5.0.confd" "${PN}"
+	newinitd "${FILESDIR}/${PN}-2.5.0.initd" "${PN}"
+	systemd_newunit "${FILESDIR}/${PN}-2.5.0.service" "${PN}.service"
 	doenvd "${FILESDIR}/99${PN}"
 	insinto /etc/logrotate.d
 	newins "${FILESDIR}/${PN}-2.5.0.logrotate" "${PN}"
-	fowners "${I2PD_USER}:${I2PD_GROUP}" "/etc/${PN}/${PN}.conf" \
-		"/etc/${PN}/subscriptions.txt" \
-		"/etc/${PN}/tunnels.cfg"
-	fperms 600 "/etc/${PN}/"*
 }
 
 pkg_setup() {
