@@ -10,18 +10,27 @@ DESCRIPTION="canonical libwebsockets.org websocket library"
 HOMEPAGE="https://libwebsockets.org/"
 SRC_URI="https://github.com/warmcat/libwebsockets/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="LGPL2"
+LICENSE="LGPL2.1"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="static-libs"
+IUSE="+ssl +zlib static-libs ipv6 +server -client"
 
-DEPEND="
-	dev-util/cmake
-	dev-libs/openssl
+RDEPEND="
+	ssl?  ( dev-libs/openssl:0 )
+	zlib? ( sys-libs/zlib )
 	"
-RDEPEND=""
+DEPEND="${RDEPEND}"
 
-src_install() {
-	 cmake-utils_src_install
-	 use static-libs || rm -f "${D}"/usr/lib*/lib*.a || die
+src_configure() {
+	local mycmakeargs=(
+	-DLWS_WITH_STATIC=$(usex static-libs)
+	-DLWS_LINK_TESTAPPS_DYNAMIC=$(usex !static-libs)
+	-DLWS_WITH_SSL=$(usex ssl)
+	-DLWS_WITHOUT_CLIENT=$(usex !client)
+	-DLWS_WITHOUT_SERVER=$(usex !server)
+	-DLWS_WITH_HTTP2=OFF # issue #473
+	-DLWS_IPV6=$(usex ipv6)
+	)
+
+	cmake-utils_src_configure
 }
