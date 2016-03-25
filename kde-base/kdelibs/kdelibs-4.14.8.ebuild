@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -113,6 +113,7 @@ PDEPEND="
 	handbook? (
 		|| (
 			$(add_kdebase_dep khelpcenter '' 4.14.3)
+			kde-apps/khelpcenter:5
 			kde-plasma/khelpcenter:5[compat(+)]
 		)
 	)
