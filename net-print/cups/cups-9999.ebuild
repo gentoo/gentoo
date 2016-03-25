@@ -288,7 +288,7 @@ multilib_src_install_all() {
 	keepdir /usr/libexec/cups/driver /usr/share/cups/{model,profiles} \
 		/var/log/cups /var/spool/cups/tmp
 
-	keepdir /etc/cups/{interfaces,ppd,ssl}
+	keepdir /etc/cups/{ppd,ssl}
 
 	use X || rm -r "${ED}"/usr/share/applications
 
