@@ -1,0 +1,11 @@
+DEFINED_PHASES=-
+DESCRIPTION=KDE educational apps - merge this to pull in all kdeedu-derived packages
+EAPI=6
+HOMEPAGE=https://edu.kde.org
+KEYWORDS=~amd64 ~x86
+LICENSE=metapackage
+RDEPEND=>=kde-apps/analitza-15.12.3 >=kde-apps/artikulate-15.12.3 >=kde-apps/blinken-15.12.3 >=kde-apps/cantor-15.12.3 >=kde-apps/kalgebra-15.12.3 >=kde-apps/kalzium-15.12.3 >=kde-apps/kanagram-15.12.3 >=kde-apps/kbruch-15.12.3 >=kde-apps/kdeedu-data-15.12.3 >=kde-apps/kgeography-15.12.3 >=kde-apps/khangman-15.12.3 >=kde-apps/kig-15.12.3 >=kde-apps/kiten-15.12.3 >=kde-apps/klettres-15.12.3 >=kde-apps/kmplot-15.12.3 >=kde-apps/kqtquickcharts-15.12.3 >=kde-apps/kstars-15.12.3 >=kde-apps/ktouch-15.12.3 >=kde-apps/kturtle-15.12.3 >=kde-apps/kwordquiz-15.12.3 >=kde-apps/libkeduvocdocument-15.12.3 >=kde-apps/marble-15.12.3 >=kde-apps/parley-15.12.3 >=kde-apps/rocs-15.12.3 >=kde-apps/step-15.12.3 !kde-apps/kdeedu-meta:4
+SLOT=5
+_eclass_exported_funcs=-
+_eclasses_=eutils	9d81603248f2ba3ec59124320d123e5e	kde5-functions	d990f9ccc19050947d06f18846186f7a	kde5-meta-pkg	c6e74f0a7a02a16639c5a863fe7df50c	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=28e04b2b824b23f2670e32addac8b17c
