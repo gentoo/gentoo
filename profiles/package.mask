@@ -30,6 +30,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Pawel Hajdan jr <phajdan.jr@gentoo.org> (25 Mar 2016)
+# Dev channel releases are only for people who are developers or want more
+# experimental features and accept a more unstable release.
+>=www-client/chromium-51
+
 # Michael Palimaka <kensington@gentoo.org> (24 Mar 2016)
 # Requires old llvm. Dead upstream.
 # Masked for removal in 30 days. Bug #571216.
@@ -239,11 +244,6 @@ www-apps/horde-nag
 www-apps/horde-passwd
 www-apps/horde-pear
 www-apps/horde-turba
-
-# Mike Gilbert <floppym@gentoo.org> (03 Mar 2016)
-# Dev channel releases are only for people who are developers or want more
-# experimental features and accept a more unstable release.
->=www-client/chromium-50
 
 # Alexis Ballier <aballier@gentoo.org> (01 Mar 2016)
 # Breaks some of its rev deps, still in beta stage
