@@ -20,6 +20,7 @@ IUSE=""
 
 RDEPEND="
 	>=sci-geosciences/opencpn-4.0.0
+	<sci-geosciences/opencpn-4.2.0
 	sys-devel/gettext
 	x11-libs/wxGTK:${WX_GTK_VER}
 "
