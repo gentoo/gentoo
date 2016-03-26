@@ -21,6 +21,7 @@
 </maintainer>
 <longdescription>I2P is an anonymous network, exposing a simple layer that applications can use to anonymously and securely send messages to each other.</longdescription>
 <use>
-<flag name="nls">Adds Native Language Support using GNU gettext.</flag>
+	<flag name="ecdsa">Enables additional checks to make sure a setup is available that is capable of using I2Ps ECDSA provisions. I2P will work without it, but you will likely see warnings.</flag>
+	<flag name="nls">Adds Native Language Support using GNU gettext.</flag>
 </use>
 </pkgmetadata>
