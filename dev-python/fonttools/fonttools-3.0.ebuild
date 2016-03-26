@@ -15,7 +15,7 @@ SRC_URI="https://github.com/behdad/fonttools/archive/${PV}.tar.gz -> ${P}.tar.gz
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 hppa ~ia64 ~ppc ppc64 ~x86"
 IUSE=""
 
 DEPEND=">=dev-python/numpy-1.0.2[${PYTHON_USEDEP}]"
