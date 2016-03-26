@@ -39,5 +39,5 @@ JAVA_GENTOO_CLASSPATH="xerces-2,jakarta-regexp-1.3"
 
 java_prepare() {
 	java-pkg_clean
-	epatch "${FILESDIR}"/${PV}*.patch
+	epatch "${FILESDIR}"/${P}-java7-enum.patch
 }
