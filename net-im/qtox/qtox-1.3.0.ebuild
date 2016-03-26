@@ -74,6 +74,11 @@ src_configure() {
 
 src_install() {
 	dobin "${S}/qtox"
+	# install all png icons
+	local ICONS=(16 22 24 32 36 48 64 72 96 128 192 256 512)
+	for i in "${ICONS[@]}"; do
+		newicon -s "${i}" "${S}/img/icons/qtox-${i}x${i}.png" "qtox.png"
+	done
 	doicon -s scalable "${S}/img/icons/qtox.svg"
 	domenu "${S}/qTox.desktop"
 }
