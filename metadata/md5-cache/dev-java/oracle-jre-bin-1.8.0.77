@@ -4,7 +4,7 @@ DESCRIPTION=Oracle's Java SE Runtime Environment
 EAPI=5
 HOMEPAGE=http://www.oracle.com/technetwork/java/javase/
 IUSE=alsa cups +fontconfig headless-awt javafx jce nsplugin pax_kernel selinux
-KEYWORDS=~amd64 ~x86
+KEYWORDS=amd64 x86
 LICENSE=Oracle-BCLA-JavaSE
 RDEPEND=!x64-macos? ( !headless-awt? ( x11-libs/libX11 x11-libs/libXext x11-libs/libXi x11-libs/libXrender x11-libs/libXtst ) javafx? ( dev-libs/glib:2 dev-libs/libxml2:2 dev-libs/libxslt media-libs/freetype:2 x11-libs/cairo x11-libs/gtk+:2 x11-libs/libX11 x11-libs/libXtst x11-libs/libXxf86vm x11-libs/pango virtual/opengl ) ) alsa? ( media-libs/alsa-lib ) cups? ( net-print/cups ) fontconfig? ( media-libs/fontconfig:1.0 ) !prefix? ( sys-libs/glibc:* ) selinux? ( sec-policy/selinux-java ) >=dev-java/java-config-2.2.0 app-eselect/eselect-java
 RESTRICT=fetch preserve-libs strip
@@ -12,4 +12,4 @@ SLOT=1.8
 SRC_URI=amd64? ( jre-8u77-linux-x64.tar.gz ) x86? ( jre-8u77-linux-i586.tar.gz ) jce? ( jce_policy-8.zip )
 _eclass_exported_funcs=pkg_prerm:java-vm-2 pkg_postrm:java-vm-2 pkg_postinst:java-vm-2 pkg_setup:java-vm-2 src_unpack:- src_prepare:- src_install:-
 _eclasses_=eutils	9d81603248f2ba3ec59124320d123e5e	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	java-vm-2	ba3b22a014a6ebc7b43b7e1bba90b9e1	multilib	3972ca401cf7dbb430df9995f5d8d580	pax-utils	ecf634cba91bb9591a8fdb6f6145f1bb	prefix	e7f2b9c6e57342e5d25eac22fce23062	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=7d5cbeba99c2c21d682919c2f30d4982
+_md5_=8a01a9ae3025c27c4762aeaf2e857cdb
