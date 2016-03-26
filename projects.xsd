@@ -4,7 +4,12 @@
 	<xs:element name='projects'>
 		<xs:complexType>
 			<xs:choice minOccurs='0' maxOccurs='unbounded'>
-				<xs:element name='project' type='projectType'/>
+				<xs:element name='project' type='projectType'>
+					<xs:unique name='descUniquityConstraint'>
+						<xs:selector xpath='description'/>
+						<xs:field xpath='@fake-only-once'/>
+					</xs:unique>
+				</xs:element>
 			</xs:choice>
 		</xs:complexType>
 		<xs:key name='projectKey'>
@@ -32,10 +37,19 @@
 			<xs:element name='email' type='emailType'/>
 			<xs:element name='name' type='xs:token'/>
 			<xs:element name='url' type='urlType'/>
-			<xs:element name='description' type='xs:token'/>
+			<xs:element name='description' type='descriptionType'/>
 			<xs:element name='subproject' type='subprojectType'/>
 			<xs:element name='member' type='memberType'/>
 		</xs:choice>
+	</xs:complexType>
+
+	<xs:complexType name='descriptionType'>
+		<xs:simpleContent>
+			<xs:extension base='xs:token'>
+				<xs:attribute name='fake-only-once'
+					fixed='there can be at most one &lt;description/&gt; element'/>
+			</xs:extension>
+		</xs:simpleContent>
 	</xs:complexType>
 
 	<xs:complexType name='subprojectType'>
