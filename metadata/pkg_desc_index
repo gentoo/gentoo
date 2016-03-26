@@ -2528,6 +2528,7 @@ app-vim/genutils 2.5: vim plugin: library with various useful functions
 app-vim/gist 7.1 7.2: vim plugin: interact with gists (gist.github.com)
 app-vim/git-patch-tags 0.2: vim plugin: add git patch tags as used in linux kernel development
 app-vim/gitgutter 20141101 20160316 99999999: vim plugin: shows a git diff in the sign column and stages/reverts hunks
+app-vim/gitlog 5.1.0: vim plugin: git log and diff plugin for vim
 app-vim/gitolite-syntax 20111225 20130306: vim plugin: gitolite syntax highlighting
 app-vim/gitv 1.3 9999: vim plugin: gitk for vim
 app-vim/gnupg 2.5: vim plugin: transparent editing of gpg encrypted files
@@ -2604,6 +2605,7 @@ app-vim/vim-addon-mw-utils 20121105: vim plugin: interpret a file by function an
 app-vim/vim-latex 1.8.23.20130116 1.8.23.20141116: vim plugin: a comprehensive set of tools to view, edit and compile LaTeX documents
 app-vim/vim-misc 1.17.1 1.17.6: vim plugin: miscellaneous auto-load scripts
 app-vim/vim-r 1.0 1.2.6: vim plugin: integrate vim with R
+app-vim/vim-rest-console 2.3.0: vim plugin: a REST console for vim
 app-vim/vim-spell-cs 20061021: vim spell files: Czech (cs)
 app-vim/vim-spell-da 20060116: vim spell files: Danish (da)
 app-vim/vim-spell-de 20051008 20080213: vim spell files: German (de)
@@ -4251,7 +4253,7 @@ dev-java/tomcat-jstl-el 1.2.5-r1: JSP Standard Tag Library (JSTL) - EL jar
 dev-java/tomcat-jstl-impl 1.2.5-r1: JSP Standard Tag Library (JSTL) - Implementation jar
 dev-java/tomcat-jstl-spec 1.2.5-r1: JSP Standard Tag Library (JSTL) - Specification jar
 dev-java/tomcat-native 1.2.4 1.2.5: Native APR library for Tomcat
-dev-java/tomcat-servlet-api 3 4.1.36 5.5.27-r1 5.5.34 6.0.44-r1 6.0.45 7.0.67 7.0.68 8.0.32 9.0.0_alpha4: Tomcat's Servlet API 4.0/JSP API 2.3 implementation
+dev-java/tomcat-servlet-api 3 4.1.36 5.5.27-r1 5.5.34 6.0.44-r1 6.0.45 7.0.67 7.0.68 8.0.32 8.0.33 9.0.0_alpha4: Tomcat's Servlet API 4.0/JSP API 2.3 implementation
 dev-java/toolbar 1.1.0-r1 1.1.0-r2: An improved version of JToolBar
 dev-java/touchgraph-graphlayout 1.22-r1: TouchGraph provides a set of interfaces for graph visualization
 dev-java/treelayout 1.0.2: Efficiently create compact tree layouts in Java
@@ -4312,7 +4314,7 @@ dev-lang/clojure 1.5.1 1.6.0 1.7.0: Clojure is a dynamic programming language th
 dev-lang/closure-compiler-bin 20120305 20121212 20130227 20130411 20150126: JavaScript optimizing compiler
 dev-lang/coffee-script 1.9.3-r1 1.10.0: A little language that compiles into javascript
 dev-lang/confluence 0.10.6: Functional programming language for reactive system design (digital logic, hard-real-time software)
-dev-lang/crystal 0.7.7 0.8.0 0.11.1 0.12.0 0.13.0: The Crystal Programming Language
+dev-lang/crystal 0.11.1 0.12.0 0.13.0 0.14.2: The Crystal Programming Language
 dev-lang/dmd-bin 1.016 2.008-r1: Digital Mars D Compiler
 dev-lang/ekopath 6.0.619_p20151213-r1 6.0.619_p20151213-r100 6.0.637_p20151231-r1 6.0.637_p20151231-r100 6.0.661_p20160124-r1 6.0.661_p20160124-r100 6.0.705_p20160303-r1 6.0.705_p20160303-r100 6.0.713_p20160311-r1 6.0.713_p20160311-r100 6.0.720_p20160316-r1 6.0.720_p20160316-r100 6.0.728_p20160324-r1 6.0.728_p20160324-r100: PathScale EKOPath Compiler Suite
 dev-lang/elixir 1.0.5 1.1.1 1.2.3: Elixir programming language
@@ -9306,7 +9308,7 @@ dev-tex/isotope 20040401: Typeset isotopes correctly in LaTeX documents
 dev-tex/ivritex 1.1.2: Hebrew support for TeX
 dev-tex/latex-beamer 3.33 3.36: LaTeX class for creating presentations using a video projector
 dev-tex/latex-calendar 3.1: LaTeX package used to create Calendars. Very flexible and robust
-dev-tex/latex2html 2008 2008-r1: convertor written in Perl that converts LATEX documents to HTML
+dev-tex/latex2html 2008 2008-r1 2015: Convertor written in Perl that converts LATEX documents to HTML
 dev-tex/latex2rtf 2.2.1b 2.3.1 2.3.3 2.3.8: LaTeX to RTF converter
 dev-tex/latexdiff 0.5 1.0.4 1.1.0: Compare two latex files and mark up significant differences
 dev-tex/latexmk 435 441 443a 444: Perl script for automatically building LaTeX documents
@@ -11267,7 +11269,7 @@ kde-base/kdebase-pam 9 10: pam.d files used by several KDE components
 kde-base/kdebase-startkde 4.11.19 4.11.22 4.11.22-r1: Startkde script, which starts a complete KDE session, and associated scripts
 kde-base/kdebindings-meta 4.14.3: KDE bindings - merge this to pull in all kdebindings-derived packages
 kde-base/kdelibs 4.14.8 4.14.16 4.14.18: KDE libraries needed by all KDE programs
-kde-base/kdeplasma-addons 4.14.3: Extra Plasma applets and engines
+kde-base/kdeplasma-addons 4.14.3 4.14.3-r1: Extra Plasma applets and engines
 kde-base/kdm 4.11.19 4.11.22: KDE login manager, similar to xdm and gdm
 kde-base/kephal 4.11.19 4.11.22: Allows handling of multihead systems via the XRandR extension
 kde-base/kfilemetadata 4.14.3: A library for extracting file metadata
@@ -11418,7 +11420,7 @@ kde-misc/kcometen4 1.0.8: OpenGL KDE4 screensaver
 kde-misc/kde-gtk-config 2.2.1: KDE systemsettings kcm to set GTK application look&feel
 kde-misc/kdeconnect 0.8 0.8-r1: Adds communication between KDE and your smartphone
 kde-misc/kdesudo 3.4.2.4-r1: A frontend for sudo. Unlike kdesu, it uses directly sudo as backend
-kde-misc/kdiff3 0.9.97-r2 0.9.98 0.9.98-r1: Qt/KDE based frontend to diff3
+kde-misc/kdiff3 0.9.98 0.9.98-r1: Qt/KDE based frontend to diff3
 kde-misc/kdirstat 2.7.5 3.0-r1: Nice KDE replacement to the du command
 kde-misc/kdmthemegenerator 0.8: Generates kdm theme from your current plasma theme and wallpaper
 kde-misc/kepas 0.9.3: A zeroconf KDE4 filetransfer tool
@@ -13775,7 +13777,7 @@ net-analyzer/vnstat 1.13 1.15: Console-based network traffic monitor that keeps 
 net-analyzer/w3af 1.1-r1 1.5: Web Application Attack and Audit Framework
 net-analyzer/wapiti 2.3.0 9999: Web-application vulnerability scanner
 net-analyzer/webfuzzer 0.2.0-r1: Poor man's web vulnerability scanner
-net-analyzer/wireshark 2.0.1 2.0.2 2.0.2-r1 99999999: A network protocol analyzer formerly known as ethereal
+net-analyzer/wireshark 2.0.2 2.0.2-r1 99999999: A network protocol analyzer formerly known as ethereal
 net-analyzer/xnetload 1.11.3-r1: displays a count and a graph of the traffic over a specified network connection
 net-analyzer/xprobe 0.3: Active OS fingerprinting tool - this is Xprobe2
 net-analyzer/yersinia 0.7.3: A layer 2 attack framework
@@ -14056,7 +14058,7 @@ net-irc/epic5 1.1.10-r1: Epic5 IRC Client
 net-irc/hexchat 2.10.2 2.10.2-r1 9999: Graphical IRC client based on XChat
 net-irc/ii 1.6 1.7: A minimalist FIFO and filesystem-based IRC client
 net-irc/iip 1.2: Proxy server for encrypted anonymous IRC-like network
-net-irc/inspircd 2.0.20: Inspire IRCd - The Stable, High-Performance Modular IRCd
+net-irc/inspircd 2.0.20 2.0.21: Inspire IRCd - The Stable, High-Performance Modular IRCd
 net-irc/irc-client 2.10.3_p7: A simplistic RFC compliant IRC client
 net-irc/irc-server 2.11.1_p1-r2: RFC compliant IRC server
 net-irc/ircii 20110228 20111115: An IRC and ICB client that runs under most UNIX platforms
@@ -14234,8 +14236,8 @@ net-libs/libsmi 0.4.8-r1 0.5.0: A Library to Access SMI MIB Information
 net-libs/libsoup 2.48.1 2.50.0 2.52.2: An HTTP library implementation in C
 net-libs/libsoup-gnome 2.48.1 2.50.0 2.52.2: GNOME plugin for libsoup
 net-libs/libsrtp 1.4.4-r1 1.4.4-r2 1.4.4_p20121108 1.4.4_p20121108-r1 1.5.2 1.5.2-r1: Open-source implementation of the Secure Real-time Transport Protocol (SRTP)
-net-libs/libssh 0.7.3 9999: Access a working SSH implementation by means of a library
-net-libs/libssh2 1.5.0 1.6.0 1.6.0-r1 1.7.0 9999: Library implementing the SSH2 protocol
+net-libs/libssh 0.7.3 0.7.3-r1 9999: Access a working SSH implementation by means of a library
+net-libs/libssh2 1.7.0 9999: Library implementing the SSH2 protocol
 net-libs/libtelnet 0.21 9999: Simple RFC-complient TELNET implementation as a C library
 net-libs/libtirpc 0.1.10 0.2.4-r1 0.2.4-r2 0.2.5 0.3.1 1.0.1: Transport Independent RPC library (SunRPC replacement)
 net-libs/libtorrent 0.13.3 0.13.4 0.13.6: BitTorrent library written in C++ for *nix
@@ -16794,7 +16796,7 @@ sys-cluster/onesis 2.0.2: Diskless computing made easy
 sys-cluster/open-mx 1.5.4: Open-MX - Myrinet Express over Generic Ethernet Hardware
 sys-cluster/openais 1.1.4-r1: Open Application Interface Specification cluster framework
 sys-cluster/openmpi 1.4.3 1.4.5 1.6.5-r1 1.7.5-r1 1.8.4-r4 1.8.7-r1 1.8.8 1.10.0 1.10.2: A high-performance message passing library (MPI)
-sys-cluster/openstack-meta 2015.2.9999: A openstack meta-package for installing the various openstack pieces
+sys-cluster/openstack-meta 2015.2.9999 2016.1.9999: A openstack meta-package for installing the various openstack pieces
 sys-cluster/osc-mpiexec 0.83: replacement for mpirun, integrates MPI with PBS
 sys-cluster/pacemaker 1.1.12-r2 1.1.14: Pacemaker CRM
 sys-cluster/pbs-python 4.3.3-r1: Python bindings to the Torque C API
@@ -16846,7 +16848,7 @@ sys-devel/gettext 0.19.4 0.19.6-r1 0.19.7: GNU locale utilities
 sys-devel/gnuconfig 20150308 20150727 20151214 99999999: Updated config.sub and config.guess file from GNU
 sys-devel/heirloom-devtools 070527-r1 999999: Original UNIX development tools
 sys-devel/icecream 0.9.7-r1 1.0.0-r1: icecc is a program for distributed compiling of C(++) code across several machines; based on distcc
-sys-devel/kgcc64 3.4.6 4.1.2 4.2.4 4.3.5 4.4.5 4.4.6 4.5.3 4.5.4 4.6.3 4.6.4 4.7.3 4.7.4 4.8.1 4.8.2 4.8.3 4.8.5 4.9.1 4.9.2 4.9.3: 64bit kernel compiler
+sys-devel/kgcc64 3.4.6 4.1.2 4.2.4 4.3.5 4.4.5 4.4.6 4.5.3 4.5.4 4.6.3 4.6.4 4.7.3 4.7.4 4.8.1 4.8.2 4.8.3 4.8.5 4.9.1 4.9.2 4.9.3 5.3.0: 64bit kernel compiler
 sys-devel/libtool 2.4.2-r1 2.4.4 2.4.5 2.4.6 2.4.6-r1 2.4.6-r2 9999: A shared library tool for developers
 sys-devel/llvm 3.3-r3 3.4.2 3.5.0 3.5.2 3.6.2 3.7.0-r2 3.7.0-r3 3.7.0-r4 3.7.0-r5 3.7.1 3.8.0 9999: Low Level Virtual Machine
 sys-devel/m4 1.4.16 1.4.17: GNU macro processor
@@ -17749,7 +17751,7 @@ www-servers/servefile 0.4.4: Serve a single file via HTTP
 www-servers/spawn-fcgi 1.6.3-r1 1.6.3-r2 1.6.4: A FCGI spawner for lighttpd and cherokee and other webservers
 www-servers/thin 1.6.4-r1: A fast and very simple Ruby web server
 www-servers/thttpd 2.26.4-r3 2.27.0 9999: Fork of thttpd, a small, fast, multiplexing webserver
-www-servers/tomcat 7.0.67 7.0.68-r1 8.0.32-r1 9.0.0_alpha4: Tomcat Servlet-4.0/JSP-2.3 Container
+www-servers/tomcat 7.0.67 7.0.68-r1 8.0.32-r1 8.0.33 9.0.0_alpha4: Tomcat Servlet-4.0/JSP-2.3 Container
 www-servers/tornado 4.2.1 4.3: Python web framework and asynchronous networking library
 www-servers/uwsgi 2.0.9 2.0.11.2-r1 2.0.12: uWSGI server for Python web applications
 www-servers/varnish 3.0.7 4.0.3 4.1.0 4.1.2: Varnish is a state-of-the-art, high-performance HTTP accelerator
@@ -18052,7 +18054,7 @@ x11-libs/qwtplot3d 0.2.7-r2: Qt4/OpenGL-based 3D widget library for C++
 x11-libs/qwtpolar 0.1.0-r1 1.0.0 1.1.0 1.1.1: Library for displaying values on a polar coordinate system
 x11-libs/rep-gtk 0.90.8.1: A GTK+/libglade/GNOME language binding for the librep Lisp environment
 x11-libs/scw 0.4.7: A GTK+ widget set specifically designed for chat programs
-x11-libs/snorenotify 0.6.0 0.7.0: Multi platform Qt notification framework
+x11-libs/snorenotify 0.7.0: Multi platform Qt notification framework
 x11-libs/startup-notification 0.12 0.12-r1: Application startup notification and feedback library
 x11-libs/tslib 1.0-r3: Touchscreen Access Library
 x11-libs/vte 0.28.2-r207 0.36.5 0.40.2 0.42.3 0.42.4: Library providing a virtual terminal emulator widget

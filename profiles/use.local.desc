@@ -3348,6 +3348,7 @@ kde-base/kdebase-startkde:wallpapers - Install the KDE wallpapers
 kde-base/kdelibs:opengl - Enable OpenGL support for Plasma (GLApplet)
 kde-base/kdeplasma-addons:attica - Enable support for dev-libs/libattica
 kde-base/kdeplasma-addons:desktopglobe - Enable Desktop Globe wallpaper using kde-base/marble
+kde-base/kdeplasma-addons:eigen - Build Mandelbrot wallpaper plugin using dev-cpp/eigen:2
 kde-base/kdeplasma-addons:fcitx - Use fcitx input method via app-i18n/fcitx
 kde-base/kdeplasma-addons:ibus - Use ibus input method via app-i18n/ibus
 kde-base/kdeplasma-addons:json - Enable JSON support via dev-libs/qjson
