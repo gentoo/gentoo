@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# Johannes Huber <johu@gentoo.org> (26 Mar 2016)
+# Unkeyworded dependency x11-libs/snorenotify
+net-irc/quassel snorenotify
+
 # Rick Farina <zerochaos@gentoo.org> (23 Mar 2016)
 # rspec:3 is not keyworded for x86 at this time
 =dev-ruby/bundler-audit-0.5.0 test
