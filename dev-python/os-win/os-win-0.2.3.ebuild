@@ -26,7 +26,7 @@ RDEPEND="
 	>=dev-python/oslo-concurrency-3.5.0[${PYTHON_USEDEP}]
 	>=dev-python/oslo-config-3.7.0[${PYTHON_USEDEP}]
 	>=dev-python/oslo-log-1.14.0[${PYTHON_USEDEP}]
-	>=dev-python/oslo-utils-3.5.0[${PYTHON_USEDEP}] 
+	>=dev-python/oslo-utils-3.5.0[${PYTHON_USEDEP}]
 	>=dev-python/oslo-i18n-2.1.0[${PYTHON_USEDEP}]
 	>=dev-python/oslo-service-1.0.0[${PYTHON_USEDEP}]"
 
