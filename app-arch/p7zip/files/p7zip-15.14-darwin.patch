@@ -1,0 +1,13 @@
+Darwin has wchar_h and wctypes_h.
+
+--- CPP/myWindows/config.h
++++ CPP/myWindows/config.h
+@@ -5,7 +5,7 @@
+   #define FILESYSTEM_IS_CASE_SENSITIVE 1
+ #endif
+ 
+-  #if !defined(ENV_MACOSX) && !defined(ENV_BEOS)
++  #if !defined(ENV_BEOS)
+ 
+     /* <wchar.h> */
+     /* ENV_HAVE_WCHAR__H and not ENV_HAVE_WCHAR_H to avoid warning with wxWidgets */
