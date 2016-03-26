@@ -1,15 +1,16 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
+BASHCOMP_P=bashcomp-2.0.2
 inherit versionator
 
 DESCRIPTION="Programmable Completion for bash"
-HOMEPAGE="http://bash-completion.alioth.debian.org/"
-SRC_URI="http://bash-completion.alioth.debian.org/files/${P}.tar.bz2
-	https://dev.gentoo.org/~mgorny/dist/bashcomp2-pre1.tar.gz"
+HOMEPAGE="https://github.com/scop/bash-completion"
+SRC_URI="https://github.com/scop/bash-completion/releases/download/${PV}/${P}.tar.xz
+	https://bitbucket.org/mgorny/bashcomp2/downloads/${BASHCOMP_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -19,23 +20,30 @@ IUSE=""
 RDEPEND=">=app-shells/bash-4.3_p30-r1
 	sys-apps/miscfiles
 	!app-eselect/eselect-bashcomp"
+DEPEND="app-arch/xz-utils"
 PDEPEND=">=app-shells/gentoo-bashcomp-20140911"
 
 # Remove unwanted completions.
 STRIP_COMPLETIONS=(
-	# Included in util-linux, bug #468544
-	cal dmesg eject hd hexdump hwclock ionice look ncal renice rtcwake
-
 	# Slackware package stuff, quite generic names cause collisions
 	# (e.g. with sys-apps/pacman)
 	explodepkg installpkg makepkg pkgtool removepkg upgradepkg
 
 	# Debian/Red Hat network stuff
 	ifdown ifup ifstatus
+
+	# Installed in app-editors/vim-core
+	xxd
+
+	# Now-dead symlinks to deprecated completions
+	hd ncal
 )
 
 src_prepare() {
-	epatch "${WORKDIR}"/bashcomp2-pre1/*.patch
+	eapply "${WORKDIR}/${BASHCOMP_P}/${PN}"-2.1_p*.patch
+	# Bug 543100
+	eapply "${FILESDIR}/${PN}-2.1-escape-characters.patch"
+	eapply_user
 }
 
 src_test() { :; } # Skip testsuite because of interactive shell wrt #477066
@@ -44,27 +52,21 @@ src_install() {
 	# work-around race conditions, bug #526996
 	mkdir -p "${ED}"/usr/share/bash-completion/{completions,helpers} || die
 
-	emake DESTDIR="${D}" profiledir=/etc/bash/bashrc.d install
+	emake DESTDIR="${D}" profiledir="${EPREFIX}"/etc/bash/bashrc.d install
 
-	# use the copies from >=sys-apps/util-linux-2.23 wrt #468544 -> hd and ncal
-	# becomes dead symlinks as a result
 	local file
 	for file in "${STRIP_COMPLETIONS[@]}"; do
 		rm "${ED}"/usr/share/bash-completion/completions/${file} || die
 	done
+	# remove deprecated completions (moved to other packages)
+	rm "${ED}"/usr/share/bash-completion/completions/_* || die
 
-	# use the copy from app-editors/vim-core:
-	rm "${ED}"/usr/share/bash-completion/completions/xxd || die
-
-	# use the copy from net-misc/networkmanager:
-	rm "${ED}"/usr/share/bash-completion/completions/nmcli || die
-
-	dodoc AUTHORS CHANGES README
+	dodoc AUTHORS CHANGES CONTRIBUTING.md README.md
 
 	# install the eselect module
 	insinto /usr/share/eselect/modules
-	doins "${WORKDIR}"/bashcomp2-pre1/bashcomp.eselect
-	doman "${WORKDIR}"/bashcomp2-pre1/bashcomp.eselect.5
+	doins "${WORKDIR}/${BASHCOMP_P}/bashcomp.eselect"
+	doman "${WORKDIR}/${BASHCOMP_P}/bashcomp.eselect.5"
 }
 
 pkg_postinst() {

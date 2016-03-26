@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="Cubic Spline Interpolation of data"
 
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="test"
 
 RDEPEND="

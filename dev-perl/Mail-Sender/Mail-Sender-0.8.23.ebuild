@@ -12,7 +12,7 @@ DESCRIPTION="Module for sending mails with attachments through an SMTP server"
 
 LICENSE="Mail-Sender"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc x86"
 IUSE=""
 
 RDEPEND="virtual/perl-MIME-Base64"
