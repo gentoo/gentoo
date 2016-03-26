@@ -14,17 +14,15 @@ SRC_URI="ftp://ftp.jclark.com/pub/xml/${PN}.zip -> ${P}.zip"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 RDEPEND="
 	>=virtual/jre-1.6"
 
 DEPEND="
-	>=virtual/jdk-1.6
-	app-arch/unzip"
-
-S="${WORKDIR}"
+	source? ( app-arch/zip )
+	>=virtual/jdk-1.6"
 
 PATCHES=(
 	"${FILESDIR}/${P}-fix-jdk-1.7-enum.patch"
