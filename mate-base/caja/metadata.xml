@@ -9,8 +9,6 @@
 		<flag name="mate">Install <pkg>x11-themes/mate-icon-theme</pkg> which 
 		is needed when this package is used in the MATE desktop 
 		environment.</flag>
-		<flag name="unique">Enable single instance support using 
-		<pkg>dev-libs/libunique</pkg>.</flag>
 	</use>
     <upstream>
         <remote-id type="github">mate-desktop/caja</remote-id>
