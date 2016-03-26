@@ -16,7 +16,7 @@ SRC_URI="http://pkgs.fedoraproject.org/repo/pkgs/nanoxml/${MY_P}.tar.gz/357c7136
 
 LICENSE="ZLIB"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
+KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
 IUSE=""
 
 CDEPEND="dev-java/sax:0"
@@ -27,6 +27,7 @@ DEPEND="
 
 RDEPEND="
 	${CDEPEND}
+	source? ( app-arch/zip )
 	>=virtual/jre-1.6"
 
 S="${WORKDIR}/${MY_P}"
