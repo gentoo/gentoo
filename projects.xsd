@@ -66,7 +66,7 @@
 				minOccurs='1' maxOccurs='1'/>
 			<xs:element name='name' type='xs:token'
 				minOccurs='0' maxOccurs='1'/>
-			<xs:element name='role' type='xs:token'
+			<xs:element name='role' type='descriptionType'
 				minOccurs='0' maxOccurs='1'/>
 		</xs:all>
 		<xs:attribute name='is-lead' type='numericBoolType'/>
