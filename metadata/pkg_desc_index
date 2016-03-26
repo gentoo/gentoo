@@ -2170,7 +2170,7 @@ app-text/apvlv 0.1.5 0.1.5-r1: Alf's PDF Viewer Like Vim
 app-text/asa 1.1 1.1-r1: ASA Carriage control conversion for ouput by Fortran programs
 app-text/asciidoc 8.6.9-r1 8.6.9-r2 8.6.9-r3 9999: AsciiDoc is a plain text human readable/writable document format
 app-text/aspell 0.60.6.1-r1 0.60.6.1-r2: A spell checker replacement for ispell
-app-text/atril 1.8.0 1.8.1 1.10.3-r1: Atril document viewer for MATE
+app-text/atril 1.8.0 1.8.1 1.10.3-r2: Atril document viewer for MATE
 app-text/bact 0.13: Boosting Algorithm for Classification of Trees
 app-text/barcode 0.98-r1: barcode generator
 app-text/bdf2psf 1.104 1.113: Converter to generate console fonts from BDF source fonts
@@ -16739,7 +16739,7 @@ sys-cluster/ccs 2.03.09: cluster configuration system to manage the cluster conf
 sys-cluster/ceph 0.80.10-r1 0.94.5 0.94.6 9.2.0 9.2.1 10.0.0 10.0.2 9999: Ceph distributed filesystem
 sys-cluster/charm 6.5.1-r1 6.5.1-r2 6.5.1-r3 6.6.0 6.6.0-r1 6.6.1: Message-passing parallel language and runtime system
 sys-cluster/charmdebug 6.2.0-r1: A debugger for Charm++ applications
-sys-cluster/cinder 7.0.1 2015.2.9999: Cinder is the OpenStack Block storage service, a spin out of nova-volumes
+sys-cluster/cinder 7.0.1 2015.2.9999 2016.1.9999: Cinder is the OpenStack Block storage service, a spin out of nova-volumes
 sys-cluster/classads 1.0.10: Condor's classified advertisement language
 sys-cluster/cluster-glue 1.0.9-r1 1.0.10 1.0.11 1.0.12: Library pack for Heartbeat / Pacemaker
 sys-cluster/cman 3.1.5 3.1.5-r1 3.2.0: Cluster Manager
