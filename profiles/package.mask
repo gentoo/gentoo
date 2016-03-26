@@ -159,7 +159,8 @@ dev-vcs/statsvn
 dev-vcs/statcvs
 
 # Mike Gilbert <floppym@gentoo.org> (12 Mar 2016)
-# Masked for testing.
+# Drops libsystemd-{daemon,id128,journal,login}.pc.
+# Bug: https://bugs.gentoo.org/577158
 =sys-apps/systemd-229-r100
 
 # Michał Górny <mgorny@gentoo.org> (12 Mar 2016)
