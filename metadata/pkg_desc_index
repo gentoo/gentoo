@@ -4292,7 +4292,7 @@ dev-java/xmlstreambuffer 1.5.3: A stream-based representation of an XML infoset 
 dev-java/xmlunit 1.6: XMLUnit extends JUnit and NUnit to enable unit testing of XML
 dev-java/xmpcore 5.1.2: Java library based on the Adobe C++ XMPCore library with a similar API
 dev-java/xom 1.2.10: A new XML object model
-dev-java/xp 0.5-r2 0.5-r3: XP is an XML 1.0 parser written in Java
+dev-java/xp 0.5-r3: XP is an XML 1.0 parser written in Java
 dev-java/xpp2 2.1.10-r2: A streaming pull XML parser used to quickly process input elements
 dev-java/xpp3 1.1.4c-r1 1.1.4c-r2: An implementation of XMLPULL V1 API
 dev-java/xsdlib 20090415: Sun XML Datatypes Library
