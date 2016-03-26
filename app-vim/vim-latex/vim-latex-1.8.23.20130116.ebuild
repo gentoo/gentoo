@@ -19,7 +19,8 @@ KEYWORDS="alpha amd64 ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-maco
 IUSE="html python"
 
 RDEPEND="|| ( app-editors/vim[python?] app-editors/gvim[python?] )
-	virtual/latex-base"
+	virtual/latex-base
+	!app-vim/vimtex"
 
 S=${WORKDIR}/${MY_P}
 
