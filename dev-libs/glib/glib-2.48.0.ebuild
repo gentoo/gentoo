@@ -125,9 +125,14 @@ src_prepare() {
 	# gdbus-codegen is a separate package
 	epatch "${FILESDIR}"/${PN}-2.40.0-external-gdbus-codegen.patch
 
-	# leave python shebang alone
-	# sed -e '/${PYTHON}/d' \
-	# 	-i glib/Makefile.{am,in} || die
+	# missing from 2.48.0 tarball, should be fixed in 2.48.1; bug #578238
+	cp "${FILESDIR}"/${P}-gobject.stp.in gobject/gobject.stp.in || die
+
+	# Leave python shebang alone - handled by python_replicate_script
+	# We could call python_setup and give configure a valid --with-python
+	# arg, but that would mean a build dep on python when USE=utils.
+	sed -e '/${PYTHON}/d' \
+		-i glib/Makefile.{am,in} || die
 
 	epatch_user
 
