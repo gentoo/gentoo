@@ -4147,7 +4147,7 @@ dev-java/offo-hyphenation 2.0: Hyphenation patterns for Apache Fop
 dev-java/ognl 3.0.8: Object-Graph Navigation Language: get/set properties of objects
 dev-java/opencsv 2.3: A very simple csv (comma-separated values) parser library for Java
 dev-java/oracle-javamail 1.5.2 1.5.5: A Java-based framework to build multiplatform mail and messaging applications
-dev-java/oracle-jdk-bin 1.7.0.80 1.8.0.74 1.8.0.77: Oracle's Java SE Development Kit
+dev-java/oracle-jdk-bin 1.7.0.80 1.8.0.77: Oracle's Java SE Development Kit
 dev-java/oracle-jre-bin 1.7.0.80 1.8.0.74 1.8.0.77: Oracle's Java SE Runtime Environment
 dev-java/oscache 2.0.2-r3: OSCache is a widely used, high performance J2EE caching framework
 dev-java/osgi-compendium 4.3.1: OSGi Service Platform Compendium API (Companion Code)
@@ -11462,7 +11462,7 @@ kde-misc/miniplayer 2.5-r1: Multimedia player plasmoid
 kde-misc/networkmanagement 0.9.0.12: KDE frontend for NetworkManager
 kde-misc/nightmode 0.3-r1: kwin plugin that makes the entire screen darker
 kde-misc/nvdevmon 0.1.2: A device monitor for NVIDIA cards
-kde-misc/openofficeorg-thumbnail 1.0.0-r2: KDE thumbnail-plugin that generates thumbnails for ODF files
+kde-misc/openofficeorg-thumbnail 1.0.0-r2 1.0.0-r500: KDE thumbnail-plugin that generates thumbnails for ODF files
 kde-misc/plasma-applet-daisy 0.0.4.26-r1: Simple application launcher for KDE 4's plasma desktop
 kde-misc/plasma-applet-redshift-control 1.0.15: Plasma 5 applet for controlling redshift
 kde-misc/plasma-emergelog 0.0.2-r1: KDE4 plasmoid for monitoring emerge progress
