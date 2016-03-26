@@ -87,7 +87,7 @@ src_configure() {
 		$(use_enable dbus) \
 		$(use_enable djvu) \
 		$(use_enable dvi) \
-		$(use_with epub webkit) \
+		$(use_enable epub) \
 		$(use_with gnome-keyring keyring) \
 		$(use_enable introspection) \
 		$(use_enable caja) \
