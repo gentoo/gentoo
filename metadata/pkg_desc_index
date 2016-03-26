@@ -1901,7 +1901,7 @@ app-misc/tdl 1.5.2-r2: Command line To Do List manager
 app-misc/terminal-colors 2.0 2.1 2.2: A tool to display color charts for 8, 16, 88, and 256 color terminals
 app-misc/timestamp 1.1: A text filtering pipe that marks each line with a timestamp
 app-misc/tkpasman 2.2b: A useful and reliable personal password manager, written in Tcl/Tk
-app-misc/tmate 2.2.0: Instant terminal sharing
+app-misc/tmate 2.2.0-r1: Instant terminal sharing
 app-misc/tmux 2.1 9999: Terminal multiplexer
 app-misc/tmux-mem-cpu-load 2.2.1-r1 9999: CPU, RAM memory, and load monitor for use with tmux
 app-misc/toilet 0.3: The Other Implementations letters. Figlet replacement
@@ -4077,7 +4077,7 @@ dev-java/jvmstat 3.0: Monitoring APIs and tools for monitoring the performance o
 dev-java/jvyaml 0.2.1-r1: Java YAML parser and emitter
 dev-java/jvyamlb 0.2.5: JvYAMLb, YAML processor extracted from JRuby
 dev-java/jython 2.7.0: An implementation of Python written in Java
-dev-java/jzlib 1.0.7-r1 1.0.7-r2 1.1.1 1.1.3: JZlib is a re-implementation of zlib in pure Java
+dev-java/jzlib 1.0.7-r2 1.1.1 1.1.3: JZlib is a re-implementation of zlib in pure Java
 dev-java/kryo 2.24.0: Fast, efficient Java serialization and cloning
 dev-java/kunststoff 2.0.2-r1: Kunststoff Look&Feel
 dev-java/kxml 2.3.0: Small XML pull parser for constrained environments such as Applets, Personal Java or MIDP devices
@@ -14069,7 +14069,7 @@ net-irc/ircservices 5.1.24: ChanServ, NickServ, and MemoServ with support for se
 net-irc/ircstats 1.1-r1: IRCStats tries to be a log analyzer for Linux similar to mIRCStats
 net-irc/irker 2.9 2.11 2.12 2.13 2.15 2.16: Submission tools for IRC notifications
 net-irc/iroffer-dinoex 3.29: IRC fileserver using DCC
-net-irc/irssi 0.8.17 0.8.18 9999: A modular textUI IRC client with IPv6 support
+net-irc/irssi 0.8.17 0.8.18 0.8.19 9999: A modular textUI IRC client with IPv6 support
 net-irc/irssi-otr 1.0.0-r1: Off-The-Record messaging (OTR) for irssi
 net-irc/irssi-xmpp 0.52: An irssi plugin providing Jabber/XMPP support
 net-irc/irssistats 0.75: Generates HTML IRC stats based on irssi logs
