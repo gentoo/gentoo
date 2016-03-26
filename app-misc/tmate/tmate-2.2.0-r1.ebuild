@@ -23,6 +23,7 @@ SRC_URI="https://github.com/tmate-io/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
 
 RDEPEND="
 	sys-libs/zlib[static-libs?]
+	sys-libs/libutempter[static-libs?]
 	dev-libs/openssl[static-libs?]
 	dev-libs/libevent[static-libs?]
 	dev-libs/msgpack[static-libs?]
