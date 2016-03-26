@@ -10,7 +10,7 @@ if [[ "${PV}" == 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/Icinga/icingaweb2-module-pnp.git"
 else
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 ~x86"
 	MY_PN="icingaweb2-module-pnp"
 	SRC_URI="https://codeload.github.com/Icinga/${MY_PN}/tar.gz/v${PV} -> ${P}.tar.gz"
 	S="${WORKDIR}/${MY_PN}-${PV}"
