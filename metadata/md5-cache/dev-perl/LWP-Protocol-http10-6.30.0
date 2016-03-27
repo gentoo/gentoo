@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=>=dev-perl/HTTP-Message-6.0.0 virtual/perl-IO >=dev-perl/libwww-perl-6.0.0 virtual/perl-ExtUtils-MakeMaker dev-lang/perl:=
+DESCRIPTION=Legacy HTTP/1.0 support for LWP
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/LWP-Protocol-http10/
+KEYWORDS=~amd64 ~x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=>=dev-perl/HTTP-Message-6.0.0 virtual/perl-IO >=dev-perl/libwww-perl-6.0.0 dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/G/GA/GAAS/LWP-Protocol-http10-6.03.tar.gz
+_eclass_exported_funcs=src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
+_eclasses_=multiprocessing	e32940a7b2a9992ad217eccddb84d548	perl-functions	15aff0b9cba2282790142295ceb6be0c	perl-module	b2108b3c85ac7a6a6a9b035b54f6813c
+_md5_=fbacce5bf95c7c059bf36a2ffdabc792

@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=>=dev-perl/HTTP-Server-Simple-0.420.0 >=virtual/perl-ExtUtils-MakeMaker-6.300.0 dev-lang/perl:=
+DESCRIPTION=PSGI handler for HTTP::Server::Simple
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/HTTP-Server-Simple-PSGI/
+KEYWORDS=~amd64 ~x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=>=dev-perl/HTTP-Server-Simple-0.420.0 dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/M/MI/MIYAGAWA/HTTP-Server-Simple-PSGI-0.16.tar.gz
+_eclass_exported_funcs=src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:- src_install:perl-module
+_eclasses_=multiprocessing	e32940a7b2a9992ad217eccddb84d548	perl-functions	15aff0b9cba2282790142295ceb6be0c	perl-module	b2108b3c85ac7a6a6a9b035b54f6813c
+_md5_=79efaa19517244584169e38109b72283
