@@ -13,7 +13,7 @@ HOMEPAGE="http://samtools.sourceforge.net/"
 SRC_URI="https://github.com/samtools/samtools/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
-SLOT="legacy"
+SLOT="0.1-legacy"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux ~x64-macos"
 IUSE="examples"
 

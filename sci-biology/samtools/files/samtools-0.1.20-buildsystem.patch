@@ -75,15 +75,15 @@
  .PHONY:all-recur lib-recur clean-recur cleanlocal-recur install-recur
  
 -lib:libbam.a
-+lib:libbam-legacy.a
++lib:libbam-0.1-legacy.a
  
 -libbam.a:$(LOBJS)
-+libbam-legacy.a:$(LOBJS)
++libbam-0.1-legacy.a:$(LOBJS)
  		$(AR) -csru $@ $(LOBJS)
  
  samtools:lib-recur $(AOBJS)
 -		$(CC) $(CFLAGS) -o $@ $(AOBJS) $(LDFLAGS) libbam.a -Lbcftools -lbcf $(LIBPATH) $(LIBCURSES) -lm -lz -lpthread
-+		$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $(AOBJS) libbam-legacy.a -Lbcftools -lbcf $(LIBPATH) $(LIBCURSES) -lm -lz -lpthread
++		$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $(AOBJS) -L. -lbam-0.1-legacy -Lbcftools -lbcf $(LIBPATH) $(LIBCURSES) -lm -lz -lpthread
  
  razip:razip.o razf.o $(KNETFILE_O)
 -		$(CC) $(CFLAGS) -o $@ $^ -lz
@@ -105,21 +105,21 @@
  
 -libbam.1.dylib-local:$(LOBJS)
 -		libtool -dynamic $(LOBJS) -o libbam.1.dylib -lc -lz
-+libbam-legacy.1.dylib-local:$(LOBJS)
-+		libtool -dynamic $(LOBJS) -o libbam-legacy.1.dylib -lc -lz
++libbam-0.1-legacy.1.dylib-local:$(LOBJS)
++		libtool -dynamic $(LOBJS) -o libbam-0.1-legacy.1.dylib -lc -lz
  
 -libbam.so.1-local:$(LOBJS)
 -		$(CC) -shared -Wl,-soname,libbam.so -o libbam.so.1 $(LOBJS) -lc -lz
-+libbam-legacy.so.1-local:$(LOBJS)
-+		$(CC) $(LDFLAGS) -shared -Wl,-soname,libbam-legacy.so -o libbam-legacy.so.1 $(LOBJS) -lc -lz -lm -lpthread
++libbam-0.1-legacy.so.1-local:$(LOBJS)
++		$(CC) $(LDFLAGS) -shared -Wl,-soname,libbam-0.1-legacy.so -o libbam-0.1-legacy.so.1 $(LOBJS) -lc -lz -lm -lpthread
  
  dylib:
  		@$(MAKE) cleanlocal; \
  		case `uname` in \
 -			Linux) $(MAKE) CFLAGS="$(CFLAGS) -fPIC" libbam.so.1-local;; \
 -			Darwin) $(MAKE) CFLAGS="$(CFLAGS) -fPIC" libbam.1.dylib-local;; \
-+			Linux) $(MAKE) CFLAGS="$(CFLAGS) -fPIC" libbam-legacy.so.1-local;; \
-+			Darwin) $(MAKE) CFLAGS="$(CFLAGS) -fPIC" libbam-legacy.1.dylib-local;; \
++			Linux) $(MAKE) CFLAGS="$(CFLAGS) -fPIC" libbam-0.1-legacy.so.1-local;; \
++			Darwin) $(MAKE) CFLAGS="$(CFLAGS) -fPIC" libbam-0.1-legacy.1.dylib-local;; \
  			*) echo 'Unknown OS';; \
  		esac
  
@@ -162,7 +162,7 @@
  
  bamcheck:bamcheck.o
 -		$(CC) $(CFLAGS) -o $@ bamcheck.o -L.. -lm -lbam -lpthread -lz
-+		$(CC) $(CFLAGS) $(LDFLAGS) -o $@ bamcheck.o -L.. -lm -lbam-legacy -lpthread -lz
++		$(CC) $(CFLAGS) $(LDFLAGS) -o $@ bamcheck.o -L.. -lm -lbam-0.1-legacy -lpthread -lz
  
  bamcheck.o:bamcheck.c ../faidx.h ../khash.h ../sam.h ../razf.h
  		$(CC) $(CFLAGS) -c -I.. -o $@ bamcheck.c
