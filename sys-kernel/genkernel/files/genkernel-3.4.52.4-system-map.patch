@@ -1,0 +1,38 @@
+From 4fb8318037a8ea12f54b7c711d702b432113f233 Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Sun, 27 Mar 2016 02:04:41 -0400
+Subject: [PATCH] adjust System.map die check for #570822
+
+Builds with newer genkernel have been failing in catalyst like so:
+* ERROR: Could not copy System.map from kerncache for the kernel package!
+
+The code that added it seems to have been meant to check the minkernpackage/
+subdir where the file was renamed instead of the current subdir.  Change the
+check to simplify verify the mv didn't fail instead of duplicating the file
+name entirely.
+
+Signed-off-by: Mike Frysinger <vapier@gentoo.org>
+---
+ gen_package.sh | 5 +----
+ 1 file changed, 1 insertion(+), 4 deletions(-)
+
+diff --git a/gen_package.sh b/gen_package.sh
+index 9dd166b..b08ff03 100755
+--- a/gen_package.sh
++++ b/gen_package.sh
+@@ -45,11 +45,8 @@ gen_minkernpackage() {
+ 	if [ "${KERNCACHE}" != "" ]
+ 	then
+ 		/bin/tar -xj -C ${TEMP}/minkernpackage -f ${KERNCACHE} System.map-${ARCH}-${KV}
+-		mv minkernpackage/{System.map-${ARCH}-${KV},System.map-${KNAME}-${ARCH}-${KV}}
+-		if [ ! -f System.map-${KNAME}-${ARCH}-${KV} ]
+-		then
++		mv minkernpackage/{System.map-${ARCH}-${KV},System.map-${KNAME}-${ARCH}-${KV}} ||
+ 			gen_die 'Could not copy System.map from kerncache for the kernel package!'
+-		fi
+ 	else
+ 		cp "${KERNEL_OUTPUTDIR}/System.map" "${TEMP}/minkernpackage/System.map-${KNAME}-${ARCH}-${KV}" || gen_die 'Could not copy System.map for the kernel package!';
+ 	fi
+-- 
+2.7.4
+
