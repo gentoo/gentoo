@@ -8774,6 +8774,7 @@ dev-ruby/gnuplot 2.6.2-r2: Gnuplot drawing library - Ruby Bindings
 dev-ruby/gpgme 2.0.12: Ruby language binding for GnuPG Made Easy
 dev-ruby/gruff 0.6.0: Beautiful graphs for one or multiple datasets
 dev-ruby/haml 4.0.6 4.0.6-r1 4.0.7: A ruby web page templating engine
+dev-ruby/haml-rails 0.9.0: Provides Haml generators for Rails 4
 dev-ruby/hashdiff 0.3.0: Simple Hash extension to make working with nested hashes easier
 dev-ruby/hashery 2.1.1: The Hashery is a tight collection of Hash-like classes
 dev-ruby/hashicorp-checkpoint 0.1.4: Internal HashiCorp service to check version information
@@ -9002,6 +9003,7 @@ dev-ruby/ritex 1.0.1: Converts expressions from WebTeX into MathML
 dev-ruby/rjb 1.5.3 1.5.4: Rjb is a Ruby-Java software bridge
 dev-ruby/rkelly-remix 0.0.6 0.0.7: RKelly Remix is a fork of the RKelly JavaScript parser
 dev-ruby/rmagick 2.13.4 2.15.4: An interface between Ruby and the ImageMagick(TM) image processing library
+dev-ruby/roadie 3.1.1: Making HTML emails comfortable for the Rails rockstars
 dev-ruby/robots 0.10.1-r2: A simple Ruby library to parse robots.txt
 dev-ruby/rouge 1.10.1: Yet-another-markdown-parser using a strict syntax definition in pure Ruby
 dev-ruby/rqrcode 0.9.0 0.10.1: Library for encoding QR Codes
@@ -11467,7 +11469,7 @@ kde-misc/nightmode 0.3-r1: kwin plugin that makes the entire screen darker
 kde-misc/nvdevmon 0.1.2: A device monitor for NVIDIA cards
 kde-misc/openofficeorg-thumbnail 1.0.0-r2 1.0.0-r500: KDE thumbnail-plugin that generates thumbnails for ODF files
 kde-misc/plasma-applet-daisy 0.0.4.26-r1: Simple application launcher for KDE 4's plasma desktop
-kde-misc/plasma-applet-redshift-control 1.0.15: Plasma 5 applet for controlling redshift
+kde-misc/plasma-applet-redshift-control 1.0.17: Plasma 5 applet for controlling redshift
 kde-misc/plasma-emergelog 0.0.2-r1: KDE4 plasmoid for monitoring emerge progress
 kde-misc/plasma-lionmail 0_p20121020: A Plasma widget displaying new and important email
 kde-misc/plasma-mpd-nowplaying 0.3: Plasmoid attached to MPD displaying currently played item
@@ -17629,7 +17631,7 @@ www-apps/polarblog 1.11.1: PolarBlog is an open source embedded weblog solution
 www-apps/postfixadmin 2.3.8: Web Based Management tool for Postfix style virtual domains and users
 www-apps/pyblosxom 1.4.3: PyBlosxom is a lightweight weblog system
 www-apps/radicale 1.1.1: A simple CalDAV calendar server
-www-apps/redmine 2.6.9 2.6.10: Flexible project management web application using the Ruby on Rails framework
+www-apps/redmine 2.6.10: Flexible project management web application using the Ruby on Rails framework
 www-apps/rocketwiki-lqfb 0.4: Small parser which translates a wiki dialect to HTML
 www-apps/roundup 1.4.20 1.4.21 1.5.0: Simple-to-use and -install issue-tracking system with command-line, web, and e-mail interfaces
 www-apps/rt 4.2.12-r1: RT is an enterprise-grade ticketing system
