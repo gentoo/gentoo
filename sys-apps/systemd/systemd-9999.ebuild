@@ -436,7 +436,6 @@ pkg_postinst() {
 	newusergroup systemd-network
 	newusergroup systemd-resolve
 	newusergroup systemd-timesync
-	use http && newusergroup systemd-journal-gateway
 
 	systemd_update_catalog
 
