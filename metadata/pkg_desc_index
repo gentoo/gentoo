@@ -7472,7 +7472,7 @@ dev-python/oslo-sphinx 2.2.0-r1 2.5.0 3.0.0: OpenStack Sphinx Extensions and The
 dev-python/oslo-utils 1.0.0 1.1.0 1.2.1 1.3.0 1.4.0 1.5.0 2.4.0 3.7.0: Oslo Utility library
 dev-python/oslo-versionedobjects 0.10.0 0.11.0 1.7.0: The oslo.versionedobjects library provides a generic versioned object model that is RPC-friendly.
 dev-python/oslo-vmware 0.11.2 1.21.0: Oslo VMware library for OpenStack projects
-dev-python/oslotest 1.3.0 1.5.0 1.5.1 1.6.0 1.10.0 1.12.0: Oslo test framework
+dev-python/oslotest 1.3.0 1.5.0 1.5.1 1.6.0 1.10.0 1.12.0 2.3.0: Oslo test framework
 dev-python/osprofiler 0.3.0 1.2.0: OpenStack Profiler Library
 dev-python/ovs 2.4.0: OVS bindings for python.
 dev-python/pSQL 1.2.0 1.2.1: MySQL abstraction layer for python
@@ -7833,7 +7833,7 @@ dev-python/python-msrplib 0.18.0: Client library for MSRP protocol and its relay
 dev-python/python-musicbrainz 0.7.4-r1: Python Bindings for the MusicBrainz XML Web Service
 dev-python/python-musicbrainz-ngs 0.4 0.5: Python bindings for the MusicBrainz NGS and the Cover Art Archive webservices
 dev-python/python-nbxmpp 0.5.3: Python library to use Jabber/XMPP networks in a non-blocking way
-dev-python/python-neutronclient 2.3.6 2.4.0 2.6.0 3.0.0 3.1.1: A client for the OpenStack Quantum API
+dev-python/python-neutronclient 2.3.6 2.4.0 2.6.0 3.0.0 3.1.1 4.1.1: A client for the OpenStack Quantum API
 dev-python/python-novaclient 2.17.0 2.17.0-r1 2.20.0 2.23.2 2.25.0 2.27.0 2.30.1 2.30.2 3.3.0: A client for the OpenStack Nova API
 dev-python/python-nss 0.16.0: Python bindings for Network Security Services (NSS)
 dev-python/python-oembed 0.2.1-r1 0.2.2 0.2.4: A Python library that implements an OEmbed consumer
