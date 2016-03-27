@@ -2,35 +2,36 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit eutils multilib python-r1 toolchain-funcs
+inherit eutils python-r1 toolchain-funcs
 
 DESCRIPTION="Utilities for analysing and manipulating the SAM/BAM alignment formats"
 HOMEPAGE="http://samtools.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
+SRC_URI="https://github.com/samtools/samtools/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
-SLOT="0"
+SLOT="legacy"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux ~x64-macos"
 IUSE="examples"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-CDEPEND="sys-libs/ncurses:0="
-RDEPEND="${CDEPEND}
-	dev-lang/lua
+RDEPEND="sys-libs/ncurses:0=
+	dev-lang/lua:0
 	dev-lang/perl"
-DEPEND="${CDEPEND}
+DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
+PATCHES=(
+	"${FILESDIR}/${P}-buildsystem.patch"
+)
+
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-buildsystem.patch
-
+	default
 	sed -i 's~/software/bin/python~/usr/bin/env python~' "${S}"/misc/varfilter.py || die
-
 	tc-export CC AR
 }
 
@@ -42,20 +43,22 @@ src_compile() {
 
 src_install() {
 	dobin samtools $(find bcftools misc -type f -executable)
+	mv "${ED}"/usr/{bin,${PN}-${SLOT}} || die
+	mkdir "${ED}"/usr/bin || die
+	mv "${ED}"/usr/{${PN}-${SLOT},bin/} || die
 
-	python_replicate_script "${ED}"/usr/bin/varfilter.py
+	mv "${ED}"/usr/bin/${PN}-${SLOT}/varfilter{,-${SLOT}}.py || die
+	python_replicate_script "${ED}"/usr/bin/${PN}-${SLOT}/varfilter-${SLOT}.py
 
-	dolib.so libbam$(get_libname 1)
-	dosym libbam$(get_libname 1) /usr/$(get_libdir)/libbam$(get_libname)
+	dolib.so libbam-${SLOT}$(get_libname 1)
+	dosym libbam-${SLOT}$(get_libname 1) /usr/$(get_libdir)/libbam-${SLOT}$(get_libname)
 
-	insinto /usr/include/bam
+	insinto /usr/include/bam-${SLOT}
 	doins *.h
 
-	doman ${PN}.1
+	mv ${PN}{,-${SLOT}}.1 || die
+	doman ${PN}-${SLOT}.1
 	dodoc AUTHORS NEWS
 
-	if use examples; then
-		insinto /usr/share/${PN}
-		doins -r examples
-	fi
+	use examples && dodoc -r examples
 }
