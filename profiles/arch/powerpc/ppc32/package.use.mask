@@ -4,6 +4,14 @@
 
 # This file requires >=portage-2.1.1
 
+# Michael Palimaka <kensington@gentoo.org> (27 Mar 2016)
+# Requires unkeyworded dev-qt/qtwebkit
+dev-qt/designer webkit
+
+# Michael Palimaka <kensington@gentoo.org> (27 Mar 2016)
+# Requires unkeyworded dev-qt/qtmultimedia:5[widgets]
+sci-astronomy/stellarium sound
+
 # James Le Cuirot <chewi@gentoo.org) (30 Jan 2016)
 # scrollview requires Java, which is unsupported on ppc.
 app-text/tesseract scrollview
