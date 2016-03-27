@@ -7042,7 +7042,7 @@ dev-python/djangocms-snippet 1.5: Snippet plugin for django CMS
 dev-python/djangocms-teaser 0.1: Teaser plugin for django CMS
 dev-python/djangocms-text-ckeditor 2.6.0 2.8.1: Text Plugin for django CMS with CKEditor support
 dev-python/djangocms-video 0.1: Video plugin for django CMS
-dev-python/dnspython 1.12.0-r200 1.12.0-r300: DNS toolkit for Python
+dev-python/dnspython 1.12.0-r200 1.12.0-r300 1.12.0-r301: DNS toolkit for Python
 dev-python/doc8 0.6.0: Style checker for Sphinx (or other) RST documentation
 dev-python/docker-py 1.2.2 1.3.1 1.4.0 1.5.0 1.7.0 1.7.2: Python client for Docker
 dev-python/dockerpty 0.3.3 0.3.4 0.4.1: Python library to use the pseudo-tty of a docker container
@@ -15010,7 +15010,7 @@ net-proxy/polipo 1.1.1 1.1.1-r1 1.1.1-r2 9999: A caching web proxy
 net-proxy/privoxy 3.0.24: A web proxy with advanced filtering capabilities for enhancing privacy
 net-proxy/ratproxy 1.58: A semi-automated, largely passive web application security audit tool
 net-proxy/rejik 3.2.10: A squid redirector used for blocking unwanted content
-net-proxy/shadowsocks-libev 2.2.3 2.4.3 2.4.3-r1: A lightweight secured scoks5 proxy for embedded devices and low end boxes
+net-proxy/shadowsocks-libev 2.4.3-r2 2.4.5: A lightweight secured scoks5 proxy for embedded devices and low end boxes
 net-proxy/squid 3.5.6 3.5.7 3.5.8 3.5.9 3.5.10 3.5.11 3.5.12 3.5.14 3.5.15: A full-featured web proxy cache
 net-proxy/squidclamav 6.8 6.10: HTTP Antivirus for Squid based on ClamAv and ICAP
 net-proxy/squidguard 1.4-r4 1.5_beta-r1: Combined filter, redirector and access controller plugin for Squid
