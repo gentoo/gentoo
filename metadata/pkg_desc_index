@@ -3896,8 +3896,8 @@ dev-java/httpcomponents-core 4.4.1-r1: A low level toolset of Java components fo
 dev-java/ibm-jdk-bin 1.6.0.9_p2 1.6.0.9_p2-r1: IBM Java SE Development Kit
 dev-java/ibm-jre-bin 1.6.0.9_p2 1.6.0.9_p2-r1: IBM Java SE Runtime Environment
 dev-java/ical4j 1.0.5: a Java library for handling iCalendar data streams
-dev-java/icedtea 6.1.13.9-r2 7.2.6.4-r1: A harness to build OpenJDK using Free Software build tools and dependencies
-dev-java/icedtea-bin 3.0.0_pre09-r1 6.1.13.9 7.2.6.4: A Gentoo-made binary build of the IcedTea JDK
+dev-java/icedtea 6.1.13.9-r2 7.2.6.5-r1: A harness to build OpenJDK using Free Software build tools and dependencies
+dev-java/icedtea-bin 3.0.0_pre09-r1 6.1.13.9 7.2.6.4 7.2.6.5: A Gentoo-made binary build of the IcedTea JDK
 dev-java/icedtea-sound 1.0.1: Plugins for javax.sound
 dev-java/icedtea-web 1.5.1-r1 1.6.1-r1: FOSS Java browser plugin and Web Start implementation
 dev-java/icu4j 54.1.1 55.1: A set of Java libraries providing Unicode and Globalization support
@@ -17298,9 +17298,9 @@ virtual/httpd-php 5.4-r1 5.5 5.6 7.0: Virtual to provide PHP-enabled webservers
 virtual/imap-c-client 0 1: Virtual for IMAP c-client
 virtual/inetd 0: Virtual for the internet super-server daemon
 virtual/jack 0: Virtual for JACK Audio Connection Kit
-virtual/jdk 1.6.0-r2 1.7.0 1.7.0-r1 1.8.0-r2: Virtual for Java Development Kit (JDK)
+virtual/jdk 1.6.0-r2 1.7.0-r1 1.8.0-r2: Virtual for Java Development Kit (JDK)
 virtual/jpeg 0-r2 62: A virtual for the libjpeg.so.62 ABI for binary-only programs
-virtual/jre 1.6.0-r1 1.7.0 1.7.0-r1 1.8.0-r1: Virtual for Java Runtime Environment (JRE)
+virtual/jre 1.6.0-r1 1.7.0-r1 1.8.0-r1: Virtual for Java Runtime Environment (JRE)
 virtual/krb5 0 0-r1: Virtual for Kerberos V implementation
 virtual/lapack 3.0 3.1: Virtual for Linear Algebra Package FORTRAN 77 (LAPACK) implementation
 virtual/latex-base 1.0: Virtual for basic LaTeX binaries
