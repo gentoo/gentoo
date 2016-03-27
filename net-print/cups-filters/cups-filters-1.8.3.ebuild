@@ -50,12 +50,15 @@ DEPEND="${RDEPEND}
 src_configure() {
 	econf \
 		--docdir="${EPREFIX}/usr/share/doc/${PF}" \
+		--localstatedir="${EPREFIX}"/var \
+		--with-cups-rundir="${EPREFIX}"/run/cups \
 		$(use_enable dbus) \
 		$(use_enable zeroconf avahi) \
 		$(use_enable static-libs static) \
 		$(use_enable foomatic) \
 		$(use_enable ldap) \
 		$(use_enable postscript ghostscript) \
+		$(use_enable postscript ijs) \
 		--with-fontdir="fonts/conf.avail" \
 		--with-pdftops=pdftops \
 		--enable-imagefilters \
@@ -96,7 +99,7 @@ src_install() {
 
 	prune_libtool_files --all
 
-	cp "${FILESDIR}"/cups-browsed.init.d "${T}"/cups-browsed || die
+	cp "${FILESDIR}"/cups-browsed.init.d-r1 "${T}"/cups-browsed || die
 
 	if ! use zeroconf ; then
 		sed -i -e 's:need cupsd avahi-daemon:need cupsd:g' "${T}"/cups-browsed || die
