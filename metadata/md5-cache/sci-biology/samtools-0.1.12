@@ -1,5 +1,5 @@
 DEFINED_PHASES=install prepare
-DESCRIPTION=Utilities for SAM (Sequence Alignment/Map), a format for large nucleotide sequence alignments
+DESCRIPTION=Utilities for analysing and manipulating the SAM/BAM alignment formats
 EAPI=2
 HOMEPAGE=http://samtools.sourceforge.net/
 KEYWORDS=amd64 x86 ~amd64-linux ~x86-linux
@@ -7,4 +7,4 @@ LICENSE=MIT
 SLOT=0
 SRC_URI=mirror://sourceforge/samtools/samtools-0.1.12a.tar.bz2
 _eclass_exported_funcs=src_prepare:- src_install:-
-_md5_=30a24a945c21ffa130dd42bbfa79b8a7
+_md5_=dbd13692bde5f1bc8aca3971e257d35e
