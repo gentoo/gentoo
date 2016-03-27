@@ -62,3 +62,9 @@ src_install() {
 
 	use examples && dodoc -r examples
 }
+
+pkg_postinst() {
+	elog "This version of samtools should *not* be your first choice for working"
+	elog "with NGS data. It is installed solely for programs requiring it."
+	elog "It is recommended that you use >=sci-biology/samtools-1.2."
+}
