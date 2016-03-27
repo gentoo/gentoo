@@ -1,10 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 
-inherit eutils
+inherit eutils systemd
 
 DESCRIPTION="A lightweight secured scoks5 proxy for embedded devices and low end boxes"
 HOMEPAGE="https://github.com/shadowsocks/shadowsocks-libev"
@@ -19,6 +19,7 @@ IUSE="debug +openssl polarssl"
 
 DEPEND="openssl? ( dev-libs/openssl:= )
 	polarssl? ( net-libs/polarssl )
+	<sys-kernel/linux-headers-4.5
 	"
 RDEPEND="${DEPEND}"
 
@@ -34,16 +35,26 @@ src_install() {
 	default
 	prune_libtool_files --all
 
-	insinto "/etc/"
+	dodir "/etc/${PN}"
+	insinto "/etc/${PN}"
 	newins "${FILESDIR}/shadowsocks.json" shadowsocks.json
 
 	newinitd "${FILESDIR}/shadowsocks.initd" shadowsocks
 	dosym /etc/init.d/shadowsocks /etc/init.d/shadowsocks.server
 	dosym /etc/init.d/shadowsocks /etc/init.d/shadowsocks.client
+	dosym /etc/init.d/shadowsocks /etc/init.d/shadowsocks.redir
+	dosym /etc/init.d/shadowsocks /etc/init.d/shadowsocks.tunnel
+
+	systemd_newunit "${FILESDIR}/${PN}-local_at.service" "${PN}-local@.service"
+	systemd_newunit "${FILESDIR}/${PN}-server_at.service" "${PN}-server@.service"
+	systemd_newunit "${FILESDIR}/${PN}-redir_at.service" "${PN}-redir@.service"
+	systemd_newunit "${FILESDIR}/${PN}-tunnel_at.service" "${PN}-tunnel@.service"
 }
 
 pkg_setup() {
-	elog "You need to choose to run as server or client mode"
+	elog "You need to choose the mode"
 	elog "  server: rc-update add shadowsocks.server default"
 	elog "  client: rc-update add shadowsocks.client default"
+	elog "  redir:  rc-update add shadowsocks.redir default"
+	elog "  tunnel: rc-update add shadowsocks.tunnel default"
 }
