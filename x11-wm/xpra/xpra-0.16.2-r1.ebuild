@@ -122,7 +122,7 @@ python_configure_all() {
 		--without-PIC
 		--without-debug )
 
-	# see https://www.xpra.org/trac/ticket/1080 
+	# see https://www.xpra.org/trac/ticket/1080
 	# and http://trac.cython.org/ticket/395
 	append-cflags -fno-strict-aliasing
 }

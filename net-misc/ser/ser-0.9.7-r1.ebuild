@@ -19,7 +19,7 @@ SRC_URI="
 	 mirror://gentoo/silomail-${SILOMAIL_PV}-${PN}-${MODULES_PV}.tar.gz
 	 mirror://gentoo/ethz-${ETHZ_PV}-${PN}-${MODULES_PV}.tar.gz
 	 ldap? (
-	 	mirror://gentoo/ldap-${LDAP_PV}-${PN}-${MODULES_PV}.tar.gz
+		mirror://gentoo/ldap-${LDAP_PV}-${PN}-${MODULES_PV}.tar.gz
 		mirror://gentoo/ldaps-${LDAPS_PV}-${PN}-${MODULES_PV}.tar.gz
 		)"
 
