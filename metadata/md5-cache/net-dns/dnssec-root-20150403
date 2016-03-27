@@ -9,4 +9,4 @@ LICENSE=public-domain
 SLOT=0
 SRC_URI=http://data.iana.org/root-anchors/root-anchors.xml -> root-anchors-20100715.xml http://data.iana.org/root-anchors/Kjqmt7v.csr -> Kjqmt7v-20100715.csr test? ( http://data.iana.org/root-anchors/Kjqmt7v.crt -> Kjqmt7v-20150504.crt http://data.iana.org/root-anchors/root-anchors.p7s -> root-anchors-20150504.p7s http://data.iana.org/root-anchors/root-anchors.asc -> root-anchors-20100715.asc http://data.iana.org/root-anchors/icannbundle.pem -> icannbundle-20150504.pem http://data.iana.org/root-anchors/icann.pgp -> icann-20110715.pgp )
 _eclass_exported_funcs=src_unpack:- src_prepare:- src_compile:- src_test:- src_install:-
-_md5_=61e880db488d1289bb7f66ab3d59d421
+_md5_=f65f447e6167edcb54b934901f117fc5

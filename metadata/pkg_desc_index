@@ -1571,7 +1571,7 @@ app-laptop/hdaps-gl 0.0.5: OpenGL visualization for HDAPS data
 app-laptop/hdapsd 20141203: IBM ThinkPad Hard Drive Active Protection System (HDAPS) daemon
 app-laptop/i8kutils 1.33-r1 1.42: Dell Inspiron and Latitude utilities
 app-laptop/ibam 0.5.2-r3: Intelligent Battery Monitor
-app-laptop/laptop-mode-tools 1.66 1.67 1.68 1.68.1 1.69 1.69.1: Linux kernel laptop_mode user-space utilities
+app-laptop/laptop-mode-tools 1.66 1.69.2: Linux kernel laptop_mode user-space utilities
 app-laptop/lphdisk 0.9.1-r2: utility for preparing a hibernation partition for APM Suspend-To-Disk
 app-laptop/nvidiabl 0.83 0.87: Linux driver for setting the backlight brightness on laptops using NVIDIA GPU
 app-laptop/pbbuttonsd 0.8.1-r3 0.8.1-r4: Handles power management and special keys on laptops
@@ -5860,7 +5860,7 @@ dev-perl/Module-Build-Tiny 0.39.0: A tiny replacement for Module::Build
 dev-perl/Module-Build-XSUtil 0.140.0 0.160.0: A Module::Build class for building XS modules
 dev-perl/Module-Find 0.110.0-r1 0.130.0: Find and use installed modules in a (sub)category
 dev-perl/Module-Implementation 0.60.0-r1 0.90.0: Loads one of several alternate underlying implementations for a module
-dev-perl/Module-Info 0.350.0-r1 0.370.0 0.370.0-r1: Information about Perl modules
+dev-perl/Module-Info 0.350.0-r1 0.370.0-r1: Information about Perl modules
 dev-perl/Module-Install 1.60.0-r1 1.140.0 1.160.0: Standalone, extensible Perl module installer
 dev-perl/Module-Install-AuthorTests 0.2.0: Designate tests only run by module authors
 dev-perl/Module-Locate 1.760.0-r1 1.790.0 1.800.0: Locate modules in the same fashion as require and use
