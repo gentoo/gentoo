@@ -2920,7 +2920,7 @@ dev-db/pgtap 0.93.0: Unit testing for PostgreSQL
 dev-db/pgxnclient 1.2-r1 1.2.1: PostgreSQL Extension Network Client
 dev-db/phpmyadmin 4.0.10.15 4.4.15.5 4.5.4.1 4.5.5.1 4.6.0_rc1: Web-based administration for MySQL database in PHP
 dev-db/phppgadmin 5.1 9999: Web-based administration for Postgres database in php
-dev-db/postgis 2.0.3 2.0.6 2.1.1 2.1.8 2.2.0 2.2.1 9999: Geographic Objects for PostgreSQL
+dev-db/postgis 2.0.3 2.0.6 2.1.1 2.1.8 2.2.0 2.2.1 2.2.2 9999: Geographic Objects for PostgreSQL
 dev-db/postgresql 9.0.23-r1 9.1.19-r1 9.1.20 9.2.14-r1 9.2.15 9.3.10-r1 9.3.10-r2 9.3.11 9.4.5-r1 9.4.5-r2 9.4.6 9.5.1 9999: PostgreSQL RDBMS
 dev-db/psqlodbc 09.01.0200 09.02.0100 09.03.0210: Official ODBC driver for PostgreSQL
 dev-db/qdbm 1.8.78-r1: Quick Database Manager
@@ -2930,8 +2930,8 @@ dev-db/repmgr 3.0.1: PostgreSQL Replication Manager
 dev-db/rqlite 1.0 2.0_pre20160308 9999: Replicated SQLite using the Raft consensus protocol
 dev-db/slony1 2.1.3 2.1.4 2.2.0 2.2.1 2.2.2 2.2.3 2.2.4: A replication system for the PostgreSQL Database Management System
 dev-db/soci 3.2.2 3.2.3: A db access library for C++ that makes the illusion of embedding SQL queries in the regular C++ code
-dev-db/spatialite 2.4.0_rc4 3.0.1 4.1.1: A complete Spatial DBMS in a nutshell built upon sqlite
-dev-db/spatialite-tools 3.1.0: A complete Spatial DBMS in a nutshell built upon sqlite
+dev-db/spatialite 2.4.0_rc4 3.0.1 4.1.1 4.3.0: A complete Spatial DBMS in a nutshell built upon sqlite
+dev-db/spatialite-tools 3.1.0 4.3.0: A complete Spatial DBMS in a nutshell built upon sqlite
 dev-db/sqlcipher 3.3.0: Full Database Encryption for SQLite
 dev-db/sqldeveloper 3.2.20.09.87 4.0.2.15.21 4.1.1.19.59 4.1.3.20.78 4.1.3.20.78-r1: Oracle SQL Developer is a graphical tool for database development
 dev-db/sqlite 3.8.10.1 3.8.10.2 3.8.11.1 3.9.1 3.9.2 3.10.0 3.10.2 3.11.0 3.11.1: A SQL Database Engine in a C Library
@@ -4513,7 +4513,7 @@ dev-libs/fddl 20111124: Free Decision Diagram Library
 dev-libs/ferrisloki 3.0.13 3.0.13-r1: Loki C++ library from Modern C++ Design
 dev-libs/ffcall 1.10 1.10-r2 1.10-r5: foreign function call libraries
 dev-libs/folks 0.11.1 0.11.2: Library for aggregating people from multiple sources
-dev-libs/freexl 1.0.1: Simple XLS data extraction library
+dev-libs/freexl 1.0.1 1.0.2: Simple XLS data extraction library
 dev-libs/fribidi 0.19.5-r1 0.19.6 0.19.7: A free implementation of the unicode bidirectional algorithm
 dev-libs/fstrm 0.2.0-r1: Frame Streams implementation in C
 dev-libs/g-wrap 1.9.11 1.9.13 1.9.14: A tool for exporting C libraries into Scheme
@@ -15575,10 +15575,10 @@ sci-electronics/voacapl 0.5.8 0.6.4 0.6.5 0.6.7: HF propagation prediction tool
 sci-electronics/xcircuit 3.7.48 3.7.49 3.7.50 3.8.39 3.8.40 3.8.77: Circuit drawing and schematic capture program
 sci-electronics/xnec2c 2.8 3.0 3.1 3.2 3.3 3.4: A GTK+ graphical interactive version of nec2c
 sci-electronics/xoscope 2.0 2.1: Soundcard Oscilloscope for X
-sci-geosciences/bt747 2.1.3: MTK GPS Datalogger Device Control
+sci-geosciences/bt747 2.1.3 2.1.7: MTK GPS Datalogger Device Control
 sci-geosciences/cdat-lite 6.0_rc2: Large suite of open source tools for the management and analysis of climate data
 sci-geosciences/congen 1.6.2: A package for generating the speeds, equilibrium arguments, and node factors of tidal constituents
-sci-geosciences/foxtrotgps 1.1.0 1.1.1: Easy to use, fast and lightweight mapping application (fork of tangogps)
+sci-geosciences/foxtrotgps 1.1.0 1.1.1 1.2.0: Easy to use, fast and lightweight mapping application (fork of tangogps)
 sci-geosciences/gdal-grass 2.0.0-r1: GDAL plugin to access GRASS data
 sci-geosciences/gebabbel 0.4: QT-Frontend to load and convert gps tracks with gpsbabel
 sci-geosciences/geocode-glib 3.16.2 3.18.0 3.18.1: GLib geocoding library that uses the Yahoo! Place Finder service
@@ -15588,7 +15588,7 @@ sci-geosciences/gnome-maps 3.16.2 3.18.2: A map application for GNOME
 sci-geosciences/googleearth 7.1.4.1529: A 3D interface to the planet
 sci-geosciences/gpsbabel 1.4.3 1.4.4: GPS waypoints, tracks and routes converter
 sci-geosciences/gpscorrelate 1.6.1: Tool for adjusting EXIF tags of your photos with a recorded GPS trace
-sci-geosciences/gpsd 3.9-r1 3.10 3.11 3.15 9999: GPS daemon and library for USB/serial GPS devices and GPS/mapping clients
+sci-geosciences/gpsd 3.9-r1 3.10 3.11 3.15 3.16 9999: GPS daemon and library for USB/serial GPS devices and GPS/mapping clients
 sci-geosciences/gpx-viewer 0.4.0-r1: Simple program to visualize a gpx file
 sci-geosciences/gpxpy 0.8.6: python GPX parser
 sci-geosciences/grass 7.0.1-r5 7.0.2 7.0.3: A free GIS with raster and vector functionality, as well as 3D vizualization
@@ -15603,7 +15603,7 @@ sci-geosciences/liblas 1.8.0: C/C++ library for manipulating the LAS LiDAR forma
 sci-geosciences/libtcd 2.2.5_p2 2.2.6 2.2.7: Library for reading and writing Tide Constituent Database (TCD) files
 sci-geosciences/mapnik 2.0.1 2.0.2 2.1.0 2.2.0: A Free Toolkit for developing mapping applications
 sci-geosciences/mapnik-world-boundaries 20090514: Mapnik World Boundaries
-sci-geosciences/mapserver 7.0.0: Development environment for building spatially enabled webapps
+sci-geosciences/mapserver 7.0.0 7.0.1: Development environment for building spatially enabled webapps
 sci-geosciences/mc2bsbh 0.0.9: MapCal to BSBchart Header Utility
 sci-geosciences/merkaartor 0.17.2 0.18.1-r2 0.18.2 9999: A Qt4 based map editor for the openstreetmap.org project
 sci-geosciences/mkgmap 1995: Tool to create garmin maps
@@ -15622,13 +15622,13 @@ sci-geosciences/opencpn-plugin-wmm 1.0-r1: World Magnetic Model Plugin for OpenC
 sci-geosciences/osgearth 2.6 2.7: Dynamic map generation toolkit for OpenSceneGraph
 sci-geosciences/osm-gps-map 0.7.3: A gtk+ viewer for OpenStreetMap files
 sci-geosciences/osm2mp 0.80: Converts openstreetmap data to mp format (used e. g. by mkgmap)
-sci-geosciences/osm2pgsql 0.84.0 0.86.0 0.87.0 0.87.1 0.88.1 99999999: Converts OSM planet.osm data to a PostgreSQL/PostGIS database
+sci-geosciences/osm2pgsql 0.84.0 0.86.0 0.87.0 0.87.1 0.88.1 0.90.0 99999999: Converts OSM planet.osm data to a PostgreSQL/PostGIS database
 sci-geosciences/osmosis 0.35.1: Commandline tool to process openstreetmap data
 sci-geosciences/qgis 1.8.0 2.12.1 2.12.2: User friendly Geographic Information System
 sci-geosciences/qlandkartegt 1.7.6-r2 1.7.7 1.8.0 1.8.1: View and upload map files, track and waypoint data to your Garmin GPS device
 sci-geosciences/qlandkartegt-garmindev 0.3.4: Garmin drivers for qlandkartegt
 sci-geosciences/qmapshack 1.3.0 1.5.1: GPS mapping utility
-sci-geosciences/readosm 1.0.0: A complete Spatial DBMS in a nutshell built upon sqlite
+sci-geosciences/readosm 1.0.0 1.0.0e: A complete Spatial DBMS in a nutshell built upon sqlite
 sci-geosciences/routino 3.0_p1: Routing application based on openstreetmap data
 sci-geosciences/seawater 2.0.1 3.3.2 3.3.3 3.3.4: Python version of the SEAWATER 3.2 MATLAB toolkit for calculating the properties of sea water
 sci-geosciences/swmm 5.0.022: Storm Water Management Model - SWMM, hydrology, hydraulics, and water quality model
@@ -15759,7 +15759,7 @@ sci-libs/libcerf 1.3 1.4: library that provides an efficient and accurate implem
 sci-libs/libcmatrix 3.11.0: lite version of pNMRsim
 sci-libs/libcore 2.1.1-r1: Robust numerical and geometric computation library
 sci-libs/libctl 3.1 3.2: Guile-based library for scientific simulations
-sci-libs/libdap 3.11.3: Implementation of a C++ SDK for DAP 2.0 and 3.2
+sci-libs/libdap 3.11.3 3.17.0: Implementation of a C++ SDK for DAP 2.0 and 3.2
 sci-libs/libexcelformat 101016: reading, writing, and editing of XLS (BIFF8 format) files using C++
 sci-libs/libgenome 1.3-r1 9999: Library for sci-biology/mauve
 sci-libs/libgeodecomp 0.3.1: An auto-parallelizing library to speed up computer simulations
