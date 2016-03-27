@@ -1,10 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI="5"
 
-PYTHON_COMPAT=( python3_3 python3_4 )
+PYTHON_COMPAT=( python3_4 )
 
 inherit distutils-r1
 
@@ -17,11 +17,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="doc examples test"
 
-CDEPEND="
-	dev-python/chardet[${PYTHON_USEDEP}]
-	virtual/python-asyncio[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep 'dev-python/enum34[${PYTHON_USEDEP}]' 'python3_3')
-"
+CDEPEND="dev-python/chardet[${PYTHON_USEDEP}]"
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	dev-python/cython[${PYTHON_USEDEP}]
@@ -33,7 +29,8 @@ DEPEND="
 	)
 	test? (
 		${CDEPEND}
-		dev-python/nose[${PYTHON_USEDEP}]
+		dev-python/pytest[${PYTHON_USEDEP}]
+		dev-python/pytest-raisesregexp[${PYTHON_USEDEP}]
 		www-servers/gunicorn[${PYTHON_USEDEP}]
 	)
 "
@@ -44,7 +41,7 @@ python_compile_all() {
 }
 
 python_test() {
-	PYTHONPATH="$(PWD):${PYTHONPATH}" nosetests tests/ || die "Tests failed under ${EPYTHON}"
+	PYTHONPATH="$(PWD):${PYTHONPATH}" ${PYTHON} -m pytest tests/ || die "Tests failed under ${EPYTHON}"
 }
 
 python_install_all() {
