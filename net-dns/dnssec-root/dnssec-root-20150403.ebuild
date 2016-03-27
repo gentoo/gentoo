@@ -10,7 +10,7 @@ DATE_ISSUE1=20100715 # Original root-anchor creation date
 DATE_ISSUE2=20110715 # ICANN PGP key updated
 DATE_ISSUE3=20150504 # Subordinate CAs updated
 ICANN_PGP_FINGERPRINT='2FBB91BCAAEE0ABE1F8031C7D1AFBCE00F6C91D2'
-# The naming of the files really needs some improvement upstream: 
+# The naming of the files really needs some improvement upstream:
 # root-anchors.p7s despite it's name, is mostly the the same data as
 # icannbundle.pem
 SRC_URI="http://data.iana.org/root-anchors/root-anchors.xml -> root-anchors-${DATE_ISSUE1}.xml
