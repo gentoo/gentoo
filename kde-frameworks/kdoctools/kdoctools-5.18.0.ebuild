@@ -8,7 +8,7 @@ inherit kde5
 
 DESCRIPTION="Tools to generate documentation in various formats from DocBook files"
 LICENSE="MIT"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm ~x86"
 IUSE=""
 
 RDEPEND="
