@@ -65,7 +65,7 @@ src_prepare() {
 		nzbget.conf > nzbgetd.conf || die
 
 	# Don't install a duplicate README which causes make install to fail
-	# https://github.com/nzbget/nzbget/issues/135 
+	# https://github.com/nzbget/nzbget/issues/135
 	sed -i "\|^\tlib/par2/README|d" Makefile.am || die
 
 	eautoreconf
