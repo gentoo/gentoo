@@ -13500,7 +13500,7 @@ media-video/xine-ui 0.99.7 0.99.8 0.99.9: Xine movie player
 media-video/xvattr 1.3-r3: X11 XVideo Querying/Setting Tool from Ogle project
 media-video/xvid4conf 1.12: GTK2-configuration dialog for xvid4
 media-video/xvideoservicethief 2.4.1-r2: Download (and convert) videos from various Web Video Services
-net-analyzer/2ping 3.0.1 3.1.0 3.2.0: A bi-directional ping utility
+net-analyzer/2ping 3.2.0 3.2.1: A bi-directional ping utility
 net-analyzer/aimsniff 0.9d: Utility for monitoring and archiving AOL Instant Messenger messages across a network
 net-analyzer/alive 2.0.1 2.0.2: a periodic ping program
 net-analyzer/amap 5.4: A network scanning tool for pentesters
