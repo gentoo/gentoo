@@ -1,37 +1,43 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
+EAPI=5
 PYTHON_COMPAT=( python2_7 )
 
 inherit eutils multilib user python-single-r1 systemd
 
+if [[ ${PV} == "9999" ]]; then
+	EGIT_REPO_URI="https://github.com/bitlbee/bitlbee.git"
+	inherit git-r3
+else
+	SRC_URI="http://get.bitlbee.org/src/${P}.tar.gz"
+	KEYWORDS="~amd64 ~ppc ~ppc64 ~x86 ~x86-fbsd"
+fi
+
 DESCRIPTION="irc to IM gateway that support multiple IM protocols"
 HOMEPAGE="http://www.bitlbee.org/"
-SRC_URI="http://get.bitlbee.org/src/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ppc ~ppc64 x86 ~x86-fbsd"
 IUSE="debug gnutls ipv6 +xmpp libevent msn nss +oscar otr +plugins purple selinux
-skype ssl test twitter +yahoo xinetd"
+	skype ssl test twitter +yahoo xinetd libressl"
 
 COMMON_DEPEND="
-	>=dev-libs/glib-2.14
+	>=dev-libs/glib-2.16
 	purple? ( net-im/pidgin )
-	libevent? ( dev-libs/libevent )
+	libevent? ( dev-libs/libevent:= )
 	otr? ( >=net-libs/libotr-4 )
-	gnutls? ( net-libs/gnutls )
+	gnutls? ( net-libs/gnutls:= )
 	!gnutls? (
 		nss? ( dev-libs/nss )
-		!nss? ( ssl? ( dev-libs/openssl ) )
+		!nss? ( ssl? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:= ) ) )
 	)
 	"
 DEPEND="${COMMON_DEPEND}
+	dev-lang/python
 	virtual/pkgconfig
 	selinux? ( sec-policy/selinux-bitlbee )
-	skype? ( app-text/asciidoc )
 	test? ( dev-libs/check )"
 
 RDEPEND="${COMMON_DEPEND}
@@ -76,7 +82,8 @@ src_prepare() {
 
 	use skype && python_fix_shebang protocols/skype/skyped.py
 
-	epatch "${FILESDIR}"/${PN}-3.2.1-configure.patch
+	[[ ${PV} != "9999" ]] && epatch "${FILESDIR}"/${PN}-3.2.1-configure.patch
+	epatch_user
 }
 
 src_configure() {
@@ -125,10 +132,11 @@ src_configure() {
 
 	# NOTE: bitlbee's configure script is not an autotool creation,
 	# so that is why we don't use econf.
-	./configure --prefix=/usr --datadir=/usr/share/bitlbee \
+	./configure \
+		--prefix=/usr --datadir=/usr/share/bitlbee \
 		--etcdir=/etc/bitlbee --plugindir=/usr/$(get_libdir)/bitlbee \
 		--systemdsystemunitdir=$(systemd_get_unitdir) \
-		--strip=0 ${myconf} || die "econf failed"
+		--doc=1 --strip=0 ${myconf} || die "econf failed"
 
 	sed -i \
 		-e "/^EFLAGS/s:=:&${LDFLAGS} :" \
@@ -143,15 +151,11 @@ src_install() {
 	fowners bitlbee:bitlbee /var/lib/bitlbee
 
 	dodoc doc/{AUTHORS,CHANGES,CREDITS,FAQ,README}
-	dodoc doc/user-guide/user-guide.txt
-	dohtml doc/user-guide/*.html
 
 	if use skype ; then
 		newdoc protocols/skype/NEWS NEWS-skype
 		newdoc protocols/skype/README README-skype
 	fi
-
-	doman doc/bitlbee.8 doc/bitlbee.conf.5
 
 	if use xinetd ; then
 		insinto /etc/xinetd.d
@@ -162,8 +166,7 @@ src_install() {
 	newconfd "${FILESDIR}"/bitlbee.confd-r1 bitlbee
 
 	exeinto /usr/share/bitlbee
-	cd utils
-	doexe convert_purple.py bitlbee-ctl.pl
+	doexe utils/{convert_purple.py,bitlbee-ctl.pl}
 }
 
 pkg_postinst() {
@@ -171,12 +174,14 @@ pkg_postinst() {
 	[[ -d "${ROOT}"/var/run/bitlbee ]] &&
 		chown -R bitlbee:bitlbee "${ROOT}"/var/run/bitlbee
 
-	einfo
-	elog "The bitlbee init script will now attempt to stop all processes owned by the"
-	elog "bitlbee user, including per-client forks."
-	elog
-	elog "Tell the init script not to touch anything besides the main bitlbee process"
-	elog "by changing the BITLBEE_STOP_ALL variable in"
-	elog "	/etc/conf.d/bitlbee"
-	einfo
+	if [[ -z ${REPLACING_VERSIONS} ]]; then
+		einfo
+		elog "The bitlbee init script will now attempt to stop all processes owned by the"
+		elog "bitlbee user, including per-client forks."
+		elog
+		elog "Tell the init script not to touch anything besides the main bitlbee process"
+		elog "by changing the BITLBEE_STOP_ALL variable in"
+		elog "	/etc/conf.d/bitlbee"
+		einfo
+	fi
 }

@@ -26,12 +26,12 @@ IUSE="debug gnutls ipv6 +xmpp libevent msn nss +oscar otr +plugins purple selinu
 COMMON_DEPEND="
 	>=dev-libs/glib-2.16
 	purple? ( net-im/pidgin )
-	libevent? ( dev-libs/libevent )
+	libevent? ( dev-libs/libevent:= )
 	otr? ( >=net-libs/libotr-4 )
-	gnutls? ( net-libs/gnutls )
+	gnutls? ( net-libs/gnutls:= )
 	!gnutls? (
 		nss? ( dev-libs/nss )
-		!nss? ( ssl? ( !libressl? ( dev-libs/openssl:0 ) libressl? ( dev-libs/libressl:= ) ) )
+		!nss? ( ssl? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:= ) ) )
 	)
 	"
 DEPEND="${COMMON_DEPEND}
@@ -173,4 +173,15 @@ pkg_postinst() {
 	chown -R bitlbee:bitlbee "${ROOT}"/var/lib/bitlbee
 	[[ -d "${ROOT}"/var/run/bitlbee ]] &&
 		chown -R bitlbee:bitlbee "${ROOT}"/var/run/bitlbee
+
+	if [[ -z ${REPLACING_VERSIONS} ]]; then
+		einfo
+		elog "The bitlbee init script will now attempt to stop all processes owned by the"
+		elog "bitlbee user, including per-client forks."
+		elog
+		elog "Tell the init script not to touch anything besides the main bitlbee process"
+		elog "by changing the BITLBEE_STOP_ALL variable in"
+		elog "	/etc/conf.d/bitlbee"
+		einfo
+	fi
 }
