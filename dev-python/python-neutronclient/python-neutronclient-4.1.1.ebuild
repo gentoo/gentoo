@@ -2,8 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
-PYTHON_COMPAT=( python2_7 python3_3 python3_4 )
+EAPI=6
+PYTHON_COMPAT=( python2_7 python3_3 python3_4 python3_5 )
 
 inherit distutils-r1
 
@@ -13,28 +13,28 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~arm64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="doc test"
 REQUIRED_USE="test? ( doc )"
 
-CDEPEND="
-	>=dev-python/pbr-1.6[${PYTHON_USEDEP}]
-	<dev-python/pbr-2.0[${PYTHON_USEDEP}]"
+CDEPEND=">=dev-python/pbr-1.6[${PYTHON_USEDEP}]"
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 	${CDEPEND}
 	test? (
-		>=dev-python/cliff-tablib-1.0[${PYTHON_USEDEP}]
 		>=dev-python/coverage-3.6[${PYTHON_USEDEP}]
 		>=dev-python/fixtures-1.3.1[${PYTHON_USEDEP}]
 		>=dev-python/mox3-0.7.0[${PYTHON_USEDEP}]
 		>=dev-python/mock-1.2[${PYTHON_USEDEP}]
 		>=dev-python/oslo-sphinx-2.5.0[${PYTHON_USEDEP}]
+		!~dev-python/oslo-sphinx-3.4.0[${PYTHON_USEDEP}]
 		>=dev-python/oslotest-1.10.0[${PYTHON_USEDEP}]
 		>=dev-python/subunit-0.0.18[${PYTHON_USEDEP}]
-		>=dev-python/requests-mock-0.6.0[${PYTHON_USEDEP}]
+		>=dev-python/reno-0.1.1[${PYTHON_USEDEP}]
+		>=dev-python/requests-mock-0.7.0[${PYTHON_USEDEP}]
 		>=dev-python/testrepository-0.0.18[${PYTHON_USEDEP}]
 		>=dev-python/testtools-1.4.0[${PYTHON_USEDEP}]
-		>=dev-python/tempest-lib-0.8.0[${PYTHON_USEDEP}]
+		>=dev-python/testscenarios-0.4[${PYTHON_USEDEP}]
+		>=dev-python/tempest-lib-0.14.0[${PYTHON_USEDEP}]
 	)
 	doc? (
 		>=dev-python/sphinx-1.1.2[${PYTHON_USEDEP}]
@@ -44,18 +44,19 @@ DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 
 RDEPEND="
 	${CDEPEND}
-	>=dev-python/cliff-1.14.0[${PYTHON_USEDEP}]
+	>=dev-python/cliff-1.15.0[${PYTHON_USEDEP}]
+	!~dev-python/cliff-1.16.0[${PYTHON_USEDEP}]
+	>=dev-python/debtcollector-1.2.0[${PYTHON_USEDEP}]
 	>=dev-python/iso8601-0.1.9[${PYTHON_USEDEP}]
 	>=dev-python/netaddr-0.7.12[${PYTHON_USEDEP}]
 	!~dev-python/netaddr-0.7.16[${PYTHON_USEDEP}]
-	>=dev-python/oslo-i18n-1.5.0[${PYTHON_USEDEP}]
-	>=dev-python/oslo-serialization-1.4.0[${PYTHON_USEDEP}]
-	>=dev-python/oslo-utils-2.0.0[${PYTHON_USEDEP}]
-	!~dev-python/oslo-utils-2.6.0[${PYTHON_USEDEP}]
-	>=dev-python/requests-2.5.2[${PYTHON_USEDEP}]
-	!~dev-python/requests-2.8.0[${PYTHON_USEDEP}]
-	>=dev-python/python-keystoneclient-1.6.0[${PYTHON_USEDEP}]
-	!~dev-python/python-keystoneclient-1.8.0[${PYTHON_USEDEP}]
+	>=dev-python/oslo-i18n-2.1.0[${PYTHON_USEDEP}]
+	>=dev-python/oslo-serialization-1.10.0[${PYTHON_USEDEP}]
+	>=dev-python/oslo-utils-3.5.0[${PYTHON_USEDEP}]
+	>=dev-python/os-client-config-1.13.1[${PYTHON_USEDEP}]
+	>=dev-python/keystoneauth-2.1.0[${PYTHON_USEDEP}]
+	>=dev-python/requests-2.8.1[${PYTHON_USEDEP}]
+	!~dev-python/requests-2.9.0[${PYTHON_USEDEP}]
 	>=dev-python/simplejson-2.2.0[${PYTHON_USEDEP}]
 	>=dev-python/six-1.9.0[${PYTHON_USEDEP}]
 	>=dev-python/Babel-1.3[${PYTHON_USEDEP}]"
