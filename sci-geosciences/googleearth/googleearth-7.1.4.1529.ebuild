@@ -51,7 +51,7 @@ RDEPEND="
 		sci-libs/gdal
 		sci-libs/proj
 	)"
-DEPEND="dev-util/patchelf"
+DEPEND="~dev-util/patchelf-0.8"
 
 S=${WORKDIR}/opt/google/earth/free
 
