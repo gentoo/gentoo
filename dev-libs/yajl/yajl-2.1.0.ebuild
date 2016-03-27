@@ -23,7 +23,7 @@ src_prepare() {
 
 src_test() {
 	run_test() {
-		cd "${BUILD_DIR}"/test
+		cd "${BUILD_DIR}"/test/parsing
 		./run_tests.sh ./yajl_test || die
 	}
 	multilib_parallel_foreach_abi run_test
