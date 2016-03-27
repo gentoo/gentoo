@@ -5807,7 +5807,7 @@ dev-perl/MIME-EncWords 1.12.6-r1 1.14.3: Deal with RFC 2047 encoded words (impro
 dev-perl/MIME-Lite 3.30.0: Low-calorie MIME generator
 dev-perl/MIME-Types 2.120.0 2.130.0: Definition of MIME types
 dev-perl/MIME-tools 5.507.0: A Perl module for parsing and creating MIME entities
-dev-perl/MLDBM 2.40.0-r1 2.50.0: A multidimensional/tied hash Perl Module
+dev-perl/MLDBM 2.50.0: A multidimensional/tied hash Perl Module
 dev-perl/MLDBM-Sync 0.300.0-r1: Safe concurrent access to MLDBM databases
 dev-perl/MP3-Info 1.240.0-r1: A Perl module to manipulate/fetch info from MP3 files
 dev-perl/MP3-Tag 1.130.0-r1: Tag - Module for reading tags of mp3 files
@@ -5855,11 +5855,11 @@ dev-perl/MediaWiki-API 0.410.0: A OO interface to the Mediawiki API
 dev-perl/Mo 0.390.0: Perl Micro Object framework
 dev-perl/Modem-Vgetty 0.30.0-r1: Interface to voice modems using vgetty
 dev-perl/Modern-Perl 1.201.501.270: enable all of the features of Modern Perl with one import
-dev-perl/Module-Build 0.420.500 0.421.400 0.421.600: Build and install Perl modules
+dev-perl/Module-Build 0.420.500 0.421.600: Build and install Perl modules
 dev-perl/Module-Build-Tiny 0.39.0: A tiny replacement for Module::Build
-dev-perl/Module-Build-XSUtil 0.140.0 0.160.0: A Module::Build class for building XS modules
-dev-perl/Module-Find 0.110.0-r1 0.130.0: Find and use installed modules in a (sub)category
-dev-perl/Module-Implementation 0.60.0-r1 0.90.0: Loads one of several alternate underlying implementations for a module
+dev-perl/Module-Build-XSUtil 0.160.0: A Module::Build class for building XS modules
+dev-perl/Module-Find 0.130.0: Find and use installed modules in a (sub)category
+dev-perl/Module-Implementation 0.90.0: Loads one of several alternate underlying implementations for a module
 dev-perl/Module-Info 0.350.0-r1 0.370.0-r1: Information about Perl modules
 dev-perl/Module-Install 1.60.0-r1 1.140.0 1.160.0: Standalone, extensible Perl module installer
 dev-perl/Module-Install-AuthorTests 0.2.0: Designate tests only run by module authors
