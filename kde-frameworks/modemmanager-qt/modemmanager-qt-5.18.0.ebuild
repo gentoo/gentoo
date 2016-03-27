@@ -8,7 +8,7 @@ inherit kde5
 
 DESCRIPTION="ModemManager bindings for Qt"
 LICENSE="LGPL-2"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm ~x86"
 IUSE=""
 
 RDEPEND="

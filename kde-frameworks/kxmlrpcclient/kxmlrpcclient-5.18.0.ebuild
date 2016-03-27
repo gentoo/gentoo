@@ -10,7 +10,7 @@ inherit kde5
 
 DESCRIPTION="Framework providing client-side support for the XML-RPC protocol"
 LICENSE="BSD-2"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm ~x86"
 IUSE=""
 
 RDEPEND="
