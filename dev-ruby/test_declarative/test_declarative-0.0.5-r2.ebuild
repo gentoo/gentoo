@@ -4,8 +4,8 @@
 
 EAPI=5
 
-# ruby22: fails due to minitest incompatabilities.
-USE_RUBY="ruby20 ruby21 ruby22"
+# ruby22, ruby23: fails due to minitest incompatabilities.
+USE_RUBY="ruby20 ruby21 ruby22 ruby23"
 
 RUBY_FAKEGEM_TASK_TEST=""
 RUBY_FAKEGEM_TASK_DOC=""
@@ -26,8 +26,8 @@ IUSE=""
 
 each_ruby_test() {
 	case ${RUBY} in
-		*ruby22)
-			einfo "Tests do not work with ruby22"
+		*ruby22|*ruby23)
+			einfo "Tests do not work with ${RUBY}"
 			;;
 		*)
 			${RUBY} test/test_declarative_test.rb || die "Tests failed."
