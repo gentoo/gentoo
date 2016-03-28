@@ -5,6 +5,7 @@
 EAPI=5
 ROS_REPO_URI="https://github.com/ros/resource_retriever"
 KEYWORDS="~amd64 ~arm"
+PYTHON_COMPAT=( python2_7 )
 
 inherit ros-catkin
 
@@ -15,7 +16,8 @@ IUSE=""
 
 RDEPEND="
 	dev-ros/rosconsole
-	dev-ros/roslib
+	dev-ros/roslib[${PYTHON_USEDEP}]
+	dev-python/urlgrabber[${PYTHON_USEDEP}]
 	net-misc/curl
 "
 DEPEND="${RDEPEND}
