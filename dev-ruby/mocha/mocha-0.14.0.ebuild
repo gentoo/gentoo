@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=5
-USE_RUBY="ruby19 ruby20 ruby21 ruby22"
+USE_RUBY="ruby20 ruby21 ruby22 ruby23"
 
 RUBY_FAKEGEM_TASK_TEST="test:units"
 
@@ -25,7 +25,7 @@ IUSE=""
 
 ruby_add_bdepend "
 	doc? ( dev-ruby/yard )
-	test? ( >=dev-ruby/test-unit-2.5.1-r1 dev-ruby/introspection )"
+	test? ( dev-ruby/yard >=dev-ruby/test-unit-2.5.1-r1 dev-ruby/introspection )"
 
 ruby_add_rdepend "dev-ruby/metaclass" #metaclass ~> 0.0.1
 
