@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -13,7 +13,7 @@ if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://github.com/SimonKagstrom/emilpro"
 	inherit git-r3
 	KEYWORDS=""
-	SRC_URI="mirror://gnu/binutils/binutils-2.23.2.tar.bz2"
+	SRC_URI="!system-binutils? ( mirror://gnu/binutils/binutils-2.23.2.tar.bz2 )"
 else
 	SRC_URI="http://www.emilpro.com/${P}.tar.gz
 		!system-binutils? ( mirror://gnu/binutils/binutils-2.23.2.tar.bz2 )"
@@ -33,7 +33,7 @@ DEPEND="|| ( dev-libs/elfutils dev-libs/libelf )
 	dev-cpp/cairomm
 	dev-libs/libsigc++:2
 	dev-libs/glib:2
-	system-binutils? ( >=sys-devel/binutils-2.25.1-r1:*[multitarget] )
+	system-binutils? ( >=sys-libs/binutils-libs-2.25.1-r1:=[multitarget] )
 	net-misc/curl"
 # automagic dep
 # dev-util/capstone
