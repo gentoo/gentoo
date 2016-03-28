@@ -17580,7 +17580,7 @@ www-apps/dspam-web 3.10.1: Web based administration and user controls for dspam
 www-apps/egroupware 1.8.004.20120613: Web-based GroupWare suite
 www-apps/eyeos 2.5: AJAX web-based desktop environment
 www-apps/freeradius-dialupadmin 1.70.3 1.80: Web administration interface of freeradius server
-www-apps/gitit 0.10.3.1-r3 0.10.6.1-r4 0.10.6.2 0.11 0.11.1 0.12.0.1-r1: Wiki using happstack, git or darcs, and pandoc
+www-apps/gitit 0.12.1.1: Wiki using happstack, git or darcs, and pandoc
 www-apps/gnopaste 0.5.5: gnopaste is a nopaste script based on PHP with MySQL
 www-apps/groupoffice 3.7.52 4.0.47 4.0.97 4.0.144 4.1.7: Group-Office is a powerful modular Intranet application framework
 www-apps/guacamole 0.9.0 0.9.2 0.9.3 0.9.7 0.9.8 0.9.9: Guacamole is a html5 vnc client as servlet
