@@ -1,13 +1,13 @@
 DEFINED_PHASES=compile configure install prepare test unpack
-DEPEND=|| ( dev-libs/elfutils dev-libs/libelf ) dev-cpp/gtkmm:3.0 dev-cpp/gtksourceviewmm:3.0 dev-cpp/libxmlpp:2.6 dev-cpp/glibmm dev-cpp/pangomm dev-cpp/cairomm dev-libs/libsigc++:2 dev-libs/glib:2 system-binutils? ( >=sys-devel/binutils-2.25.1-r1:*[multitarget] ) net-misc/curl sys-devel/make >=dev-util/cmake-2.8.12 >=dev-vcs/git-1.8.2.1
+DEPEND=|| ( dev-libs/elfutils dev-libs/libelf ) dev-cpp/gtkmm:3.0 dev-cpp/gtksourceviewmm:3.0 dev-cpp/libxmlpp:2.6 dev-cpp/glibmm dev-cpp/pangomm dev-cpp/cairomm dev-libs/libsigc++:2 dev-libs/glib:2 system-binutils? ( >=sys-libs/binutils-libs-2.25.1-r1:=[multitarget] ) net-misc/curl sys-devel/make >=dev-util/cmake-2.8.12 >=dev-vcs/git-1.8.2.1
 DESCRIPTION=a graphical disassembler for a large number of instruction sets
 EAPI=5
 HOMEPAGE=http://www.emilpro.com/
 IUSE=+system-binutils
 LICENSE=GPL-2
-RDEPEND=|| ( dev-libs/elfutils dev-libs/libelf ) dev-cpp/gtkmm:3.0 dev-cpp/gtksourceviewmm:3.0 dev-cpp/libxmlpp:2.6 dev-cpp/glibmm dev-cpp/pangomm dev-cpp/cairomm dev-libs/libsigc++:2 dev-libs/glib:2 system-binutils? ( >=sys-devel/binutils-2.25.1-r1:*[multitarget] ) net-misc/curl
+RDEPEND=|| ( dev-libs/elfutils dev-libs/libelf ) dev-cpp/gtkmm:3.0 dev-cpp/gtksourceviewmm:3.0 dev-cpp/libxmlpp:2.6 dev-cpp/glibmm dev-cpp/pangomm dev-cpp/cairomm dev-libs/libsigc++:2 dev-libs/glib:2 system-binutils? ( >=sys-libs/binutils-libs-2.25.1-r1:=[multitarget] ) net-misc/curl
 SLOT=0
-SRC_URI=mirror://gnu/binutils/binutils-2.23.2.tar.bz2
+SRC_URI=!system-binutils? ( mirror://gnu/binutils/binutils-2.23.2.tar.bz2 )
 _eclass_exported_funcs=src_unpack:git-r3 src_prepare:- src_configure:cmake-utils src_compile:- src_test:cmake-utils src_install:-
 _eclasses_=cmake-utils	e79d341200cba811b41cc0728403c48d	eutils	9d81603248f2ba3ec59124320d123e5e	flag-o-matic	d270fa247153df66074f795fa42dba3e	git-r3	ef66dfc3db09f327af21cf32f140fb2b	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=7d690fdff2960f9766b92059f0f89138
+_md5_=dc2095f6b42f918388d4e9ab2388697a
