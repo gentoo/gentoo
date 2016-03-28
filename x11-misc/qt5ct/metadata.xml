@@ -1,7 +1,14 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="project">
-    <email>qt@gentoo.org</email>
-  </maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Gentoo Proxy Maintainers</name>
+		<description>Proxy-maintainer; add or CC for bugs</description>
+	</maintainer>
+	<maintainer type="person">
+		<email>emailmandar@gmail.com</email>
+		<name>Mandar Joshi</name>
+		<description>Proxy-maintainer; add or CC for bugs</description>
+	</maintainer>
 </pkgmetadata>

@@ -3,24 +3,27 @@
 # $Id$
 # Gentoo-Bug: https://bugs.gentoo.org/show_bug.cgi?id=577840
 
-EAPI=5
-inherit qt5-build
+EAPI=6
+inherit qmake-utils
 
 DESCRIPTION="This program allows users to configure Qt5 settings"
 HOMEPAGE="http://qt5ct.sourceforge.net/"
 SRC_URI="mirror://sourceforge/qt5ct/${P}.tar.bz2"
-S="${WORKDIR}/${P}"
 
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64"
-DEPEND=">=dev-qt/qtcore-5.4.2
-	>=dev-qt/qtxml-5.4.2
-	>=dev-qt/linguist-tools-5.4.2
-	>=dev-qt/qtgui-5.4.2
-	>=dev-qt/qtwidgets-5.4.2"
-
 RDEPEND=">=dev-qt/qtcore-5.4.2
 	>=dev-qt/qtxml-5.4.2
 	>=dev-qt/qtgui-5.4.2
 	>=dev-qt/qtwidgets-5.4.2"
+DEPEND="${RDEPEND}
+	>=dev-qt/linguist-tools-5.4.2"
+
+src_configure() {
+	eqmake5 ${PN}.pro
+}
+
+src_install() {
+	emake INSTALL_ROOT="${ED}" install
+}
