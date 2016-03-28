@@ -48,7 +48,7 @@ RDEPEND="${DEPEND}
 	!systemd? (
 		sys-auth/polkit-pkla-compat
 		|| (
-			( >=sys-auth/consolekit-1.0.1 >=sys-power/upower-0.9.23 )
+			( >=sys-auth/consolekit-1.0.1[pm-utils] >=sys-power/upower-0.9.23 )
 			sys-power/upower-pm-utils
 		)
 	)
