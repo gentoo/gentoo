@@ -16,7 +16,7 @@ if [[ ${PV} == *9999* ]]; then
 	inherit git-2
 else
 	SRC_URI="http://wiki.qemu.org/download/${MY_P}.tar.bz2"
-	KEYWORDS="~amd64 ~ppc ~ppc64 ~x86 ~x86-fbsd"
+	KEYWORDS="amd64 ~ppc ~ppc64 x86 ~x86-fbsd"
 fi
 
 DESCRIPTION="QEMU Guest Agent (qemu-ga) for use when running inside a VM"
