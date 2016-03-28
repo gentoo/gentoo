@@ -6802,7 +6802,7 @@ dev-python/addons 0.7: Dynamically extend other objects (formerly ObjectRoles)
 dev-python/adns-python 1.2.1-r1: Python bindings for ADNS
 dev-python/adodb-py 2.20-r1: Active Data Objects Data Base library for Python
 dev-python/aioeventlet 0.4 0.5.1: asyncio event loop scheduling callbacks in eventlet
-dev-python/aiohttp 0.19.0 0.20.2 0.21.4: http client/server for asyncio
+dev-python/aiohttp 0.19.0 0.20.2 0.21.4 0.21.5: http client/server for asyncio
 dev-python/alabaster 0.7.6 0.7.7: A configurable sidebar-enabled Sphinx theme
 dev-python/aldryn-bootstrap3 0.5.1: django CMS plugins for bootstrap3 markup
 dev-python/alembic 0.7.7 0.8.2 0.8.4 0.8.5: database migrations tool, written by the author of SQLAlchemy
@@ -8076,7 +8076,7 @@ dev-python/suds 0.4-r1 0.6 0.6-r1: Lightweight SOAP client (Jurko's fork) (py3 s
 dev-python/sudsds 1.0.1-r1: Lightweight SOAP client - Czech NIC labs fork
 dev-python/sure 1.2.3 1.2.5 1.2.5-r1 1.2.24: Utility belt for automated testing in python for python
 dev-python/symboltype 1.0: Gives access to the peak.util.symbols module
-dev-python/sympy 0.7.6.1 0.7.6.1-r1 1.0: Computer Algebra System in pure Python
+dev-python/sympy 0.7.6.1-r1 1.0-r1: Computer Algebra System in pure Python
 dev-python/tablib 0.9.11 0.10.0 0.11.1 0.11.2: A format-agnostic tabular dataset library written in Python
 dev-python/tabulate 0.7.2 0.7.3 0.7.5: Pretty-print tabular data
 dev-python/tagpy 0.94.8-r1 2013.1: Python Bindings for TagLib
