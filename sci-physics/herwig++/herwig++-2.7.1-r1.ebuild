@@ -28,12 +28,15 @@ RDEPEND="
 	<=sci-physics/looptools-2.8:0=
 	~sci-physics/thepeg-1.9.2:0=
 	fastjet? ( sci-physics/fastjet:0= )"
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	>=sys-devel/boost-m4-0.4_p20160328"
 
 S="${WORKDIR}/${MYP}"
 
 src_prepare() {
 	epatch "${FILESDIR}"/${PN}-2.6.3-looptools.patch
+	# fixes bug 570458, which is due to an outdated bundled boost.m4
+	rm m4/boost.m4 || die
 	find -name 'Makefile.am' -exec \
 		sed -i -e '1ipkgdatadir=$(datadir)/herwig++' {} \; || die
 	autotools-utils_src_prepare
