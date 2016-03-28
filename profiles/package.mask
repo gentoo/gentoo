@@ -30,6 +30,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Mike Frysinger <vapier@gentoo.org (28 Mar 2016)
+# Tons-o-bugs and no actual testing by new author. #578490
+dev-libs/libtomcrypt
+
 # Anthony G. Basile <blueness@gentoo.org> (27 Mar 2016)
 # Fails to build, bug #578348
 x11-wm/lumina
