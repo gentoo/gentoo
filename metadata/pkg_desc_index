@@ -11144,7 +11144,7 @@ kde-apps/kigo 4.14.3 15.08.3 15.12.3: Go game by KDE
 kde-apps/killbots 4.14.3 15.12.3: Kill the bots or they kill you!
 kde-apps/kimagemapeditor 4.14.3 15.08.3: KDE web development - image map editor
 kde-apps/kimgio 4.14.3 15.08.3: KDE WebP image format plugin
-kde-apps/kio-extras 15.12.3: KIO plugins present a filesystem-like view of arbitrary data
+kde-apps/kio-extras 15.08.3 15.12.3: KIO plugins present a filesystem-like view of arbitrary data
 kde-apps/kioclient 4.14.3 15.08.3: Command-line tool for network-transparent operations
 kde-apps/kiriki 4.14.3 15.12.3: An addictive and fun dice game
 kde-apps/kiten 4.14.3 15.12.3: KDE Japanese dictionary and reference
