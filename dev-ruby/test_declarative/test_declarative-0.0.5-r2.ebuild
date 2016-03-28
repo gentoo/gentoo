@@ -1,11 +1,11 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 
-# ruby22: fails due to minitest incompatabilities.
-USE_RUBY="ruby19 ruby20 ruby21 ruby22"
+# ruby22, ruby23: fails due to minitest incompatabilities.
+USE_RUBY="ruby20 ruby21 ruby22 ruby23"
 
 RUBY_FAKEGEM_TASK_TEST=""
 RUBY_FAKEGEM_TASK_DOC=""
@@ -26,8 +26,8 @@ IUSE=""
 
 each_ruby_test() {
 	case ${RUBY} in
-		*ruby22)
-			einfo "Tests do not work with ruby22"
+		*ruby22|*ruby23)
+			einfo "Tests do not work with ${RUBY}"
 			;;
 		*)
 			${RUBY} test/test_declarative_test.rb || die "Tests failed."
