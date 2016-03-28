@@ -61,7 +61,7 @@ RDEPEND="
 python_prepare_all() {
 	sed -i '/^hacking/d' test-requirements.txt || die
 	# clients aren't actually needed
-	sed -o '/\-client/d' test-requirements.txt || die
+	sed -i '/\-client/d' test-requirements.txt || die
 	distutils-r1_python_prepare_all
 }
 
