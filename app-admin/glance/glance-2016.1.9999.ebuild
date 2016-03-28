@@ -53,7 +53,6 @@ RDEPEND="
 	>=dev-python/pycrypto-2.6[${PYTHON_USEDEP}]
 	>=dev-python/oslo-config-3.7.0[${PYTHON_USEDEP}]
 	>=dev-python/oslo-concurrency-3.5.0[${PYTHON_USEDEP}]
-	<=dev-python/oslo-concurrency-3.1.0[${PYTHON_USEDEP}]
 	>=dev-python/oslo-context-0.2.0[${PYTHON_USEDEP}]
 	>=dev-python/oslo-service-1.0.0[${PYTHON_USEDEP}]
 	>=dev-python/oslo-utils-3.5.0[${PYTHON_USEDEP}]
