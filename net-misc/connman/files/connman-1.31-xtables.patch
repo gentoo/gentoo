@@ -30,9 +30,14 @@
  #define CHAIN_PREFIX "connman-"
 --- /dev/null	2016-03-18 06:21:16.372989086 -0700
 +++ connman-1.31/include/connman_xtables.h	2016-03-22 21:32:21.349504786 -0700
-@@ -0,0 +1,14 @@
+@@ -0,0 +1,20 @@
 +#ifndef CONNMAN_XTABLES_H
 +#define CONNMAN_XTABLES_H
++
++#include <linux/version.h>
++#if LINUX_VERSION_CODE < KERNEL_VERSION(4, 5, 0)
++#include <xtables.h>
++#else
 +#ifdef __USE_MISC
 +#define GENTOO_USE_MISC __USE_MISC
 +#undef __USE_MISC
@@ -43,5 +48,6 @@
 +#ifdef GENTOO_USE_MISC
 +#define __USE_MISC GENTOO_USE_MISC
 +#undef GENTOO_USE_MISC
++#endif
 +#endif
 +#endif
