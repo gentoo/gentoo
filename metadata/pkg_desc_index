@@ -8894,7 +8894,7 @@ dev-ruby/multi_json 1.9.3 1.11.2: A gem to provide swappable JSON backends
 dev-ruby/multi_test 0.1.1 0.1.2: A uniform interface for Ruby testing libraries
 dev-ruby/multi_xml 0.5.4-r1 0.5.4-r2 0.5.5: A generic swappable back-end for XML parsing
 dev-ruby/multipart-post 2.0.0-r1: Adds a streamy multipart form post capability to Net::HTTP
-dev-ruby/mustache 0.99.5 1.0.2: Mustache is a framework-agnostic way to render logic-free views
+dev-ruby/mustache 0.99.5 1.0.2 1.0.3: Mustache is a framework-agnostic way to render logic-free views
 dev-ruby/mysql2 0.3.20 0.4.2 0.4.3: A modern, simple and very fast Mysql library for Ruby - binding to libmysql
 dev-ruby/nagios 0.0.4-r1: Nagios-rb is a compact framework for writing Nagios plugins
 dev-ruby/nagios_analyzer 0.0.5-r1: A simple parser for Nagios status files
@@ -8907,7 +8907,7 @@ dev-ruby/net-http-persistent 2.9.4 2.9.4-r2: Manages persistent connections usin
 dev-ruby/net-http-pipeline 1.0.1: An HTTP/1.1 pipelining implementation atop Net::HTTP
 dev-ruby/net-scp 1.1.2-r1 1.2.1: A pure Ruby implementation of the SCP client protocol
 dev-ruby/net-sftp 2.1.2-r1 2.1.2-r2: SFTP in pure Ruby
-dev-ruby/net-ssh 2.8.0 2.10.0 3.0.2 3.1.0: Non-interactive SSH processing in pure Ruby
+dev-ruby/net-ssh 2.8.0 2.10.0 3.0.2 3.1.1: Non-interactive SSH processing in pure Ruby
 dev-ruby/net-ssh-gateway 1.2.0 1.2.0-r1: A simple library to assist in enabling tunneled Net::SSH connections
 dev-ruby/net-ssh-multi 1.2.0-r1 1.2.1: A library for controlling multiple Net::SSH connections via a single interface
 dev-ruby/net-telnet 0.1.1-r1: Provides telnet client functionality
