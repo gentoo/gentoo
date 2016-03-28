@@ -29,7 +29,7 @@
 *app-arch/gzip
 *app-arch/tar
 *app-arch/xz-utils
-*app-shells/bash
+*app-shells/bash:0
 #*dev-lang/perl
 #*dev-lang/python
 *net-misc/iputils

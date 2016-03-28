@@ -1,5 +1,5 @@
---- tools/lldb/cmake/LLDBDependencies.cmake	2015/09/16 20:13:53	247841
-+++ tools/lldb/cmake/LLDBDependencies.cmake	2015/09/16 20:14:01	247842
+--- a/tools/lldb/cmake/LLDBDependencies.cmake	2015/09/16 20:13:53	247841
++++ b/tools/lldb/cmake/LLDBDependencies.cmake	2015/09/16 20:14:01	247842
 @@ -141,6 +141,9 @@
    endif()
    if (NOT LLDB_DISABLE_CURSES)

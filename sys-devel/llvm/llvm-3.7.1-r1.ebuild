@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 : ${CMAKE_MAKEFILE_GENERATOR:=ninja}
 PYTHON_COMPAT=( python2_7 )
@@ -111,18 +111,6 @@ pkg_pretend() {
 
 	local CHECKREQS_DISK_BUILD=${build_size}M
 	check-reqs_pkg_pretend
-
-	if [[ ${MERGE_TYPE} != binary ]]; then
-		echo 'int main() {return 0;}' > "${T}"/test.cxx || die
-		ebegin "Trying to build a C++11 test program"
-		if ! $(tc-getCXX) -std=c++11 -o /dev/null "${T}"/test.cxx; then
-			eerror "LLVM-${PV} requires C++11-capable C++ compiler. Your current compiler"
-			eerror "does not seem to support -std=c++11 option. Please upgrade your compiler"
-			eerror "to gcc-4.7 or an equivalent version supporting C++11."
-			die "Currently active compiler does not support -std=c++11"
-		fi
-		eend ${?}
-	fi
 }
 
 pkg_setup() {
@@ -151,21 +139,21 @@ src_prepare() {
 	# Make ocaml warnings non-fatal, bug #537308
 	sed -e "/RUN/s/-warn-error A//" -i test/Bindings/OCaml/*ml  || die
 	# Fix libdir for ocaml bindings install, bug #559134
-	epatch "${FILESDIR}"/cmake/${PN}-3.7.0-ocaml-multilib.patch
+	eapply "${FILESDIR}"/cmake/${PN}-3.7.0-ocaml-multilib.patch
 	# Do not build/install ocaml docs with USE=-doc, bug #562008
-	epatch "${FILESDIR}"/cmake/${PN}-3.7.0-ocaml-build_doc.patch
+	eapply "${FILESDIR}"/cmake/${PN}-3.7.0-ocaml-build_doc.patch
 
 	# Make it possible to override Sphinx HTML install dirs
 	# https://llvm.org/bugs/show_bug.cgi?id=23780
-	epatch "${FILESDIR}"/cmake/0002-cmake-Support-overriding-Sphinx-HTML-doc-install-dir.patch
+	eapply "${FILESDIR}"/cmake/0002-cmake-Support-overriding-Sphinx-HTML-doc-install-dir.patch
 
 	# Prevent race conditions with parallel Sphinx runs
 	# https://llvm.org/bugs/show_bug.cgi?id=23781
-	epatch "${FILESDIR}"/cmake/0003-cmake-Add-an-ordering-dep-between-HTML-man-Sphinx-ta.patch
+	eapply "${FILESDIR}"/cmake/0003-cmake-Add-an-ordering-dep-between-HTML-man-Sphinx-ta.patch
 
 	# Prevent installing libgtest
 	# https://llvm.org/bugs/show_bug.cgi?id=18341
-	epatch "${FILESDIR}"/cmake/0004-cmake-Do-not-install-libgtest.patch
+	eapply "${FILESDIR}"/cmake/0004-cmake-Do-not-install-libgtest.patch
 
 	# Fix llvm-config for shared linking, sane flags and return values
 	# in order:
@@ -175,24 +163,24 @@ src_prepare() {
 	# - backported r260343 that fixes cross-compilation
 	# combination of backported upstream r252532 with our patch
 	# https://bugs.gentoo.org/show_bug.cgi?id=565358
-	epatch "${FILESDIR}"/llvm-3.7.1-llvm-config-0.patch
-	epatch "${FILESDIR}"/llvm-3.7.1-llvm-config-1.patch
-	epatch "${FILESDIR}"/llvm-3.7.1-llvm-config-2.patch
-	epatch "${FILESDIR}"/llvm-3.7.1-llvm-config-3.patch
+	eapply "${FILESDIR}"/llvm-3.7.1-llvm-config-0.patch
+	eapply "${FILESDIR}"/llvm-3.7.1-llvm-config-1.patch
+	eapply "${FILESDIR}"/llvm-3.7.1-llvm-config-2.patch
+	eapply "${FILESDIR}"/llvm-3.7.1-llvm-config-3.patch
 
 	# Fix msan with newer kernels, #569894
-	epatch "${FILESDIR}"/llvm-3.7-msan-fix.patch
+	eapply "${FILESDIR}"/llvm-3.7-msan-fix.patch
 
 	# disable use of SDK on OSX, bug #568758
 	sed -i -e 's/xcrun/false/' utils/lit/lit/util.py || die
 
 	if use clang; then
 		# Automatically select active system GCC's libraries, bugs #406163 and #417913
-		epatch "${FILESDIR}"/clang-3.5-gentoo-runtime-gcc-detection-v3.patch
+		eapply "${FILESDIR}"/clang-3.5-gentoo-runtime-gcc-detection-v3.patch
 
-		epatch "${FILESDIR}"/clang-3.6-gentoo-install.patch
+		eapply "${FILESDIR}"/clang-3.6-gentoo-install.patch
 
-		epatch "${FILESDIR}"/clang-3.4-darwin_prefix-include-paths.patch
+		eapply "${FILESDIR}"/clang-3.4-darwin_prefix-include-paths.patch
 		eprefixify tools/clang/lib/Frontend/InitHeaderSearch.cpp
 
 		sed -i -e "s^@EPREFIX@^${EPREFIX}^" \
@@ -200,22 +188,22 @@ src_prepare() {
 
 		# Install clang runtime into /usr/lib/clang
 		# https://llvm.org/bugs/show_bug.cgi?id=23792
-		epatch "${FILESDIR}"/cmake/clang-0001-Install-clang-runtime-into-usr-lib-without-suffix.patch
-		epatch "${FILESDIR}"/cmake/compiler-rt-0001-cmake-Install-compiler-rt-into-usr-lib-without-suffi.patch
+		eapply "${FILESDIR}"/cmake/clang-0001-Install-clang-runtime-into-usr-lib-without-suffix.patch
+		eapply "${FILESDIR}"/cmake/compiler-rt-0001-cmake-Install-compiler-rt-into-usr-lib-without-suffi.patch
 
 		# Do not force -march flags on arm platforms
 		# https://bugs.gentoo.org/show_bug.cgi?id=562706
-		epatch "${FILESDIR}"/cmake/${PN}-3.7.0-compiler_rt_arm_march_flags.patch
+		eapply "${FILESDIR}"/cmake/${PN}-3.7.0-compiler_rt_arm_march_flags.patch
 
 		# Make it possible to override CLANG_LIBDIR_SUFFIX
 		# (that is used only to find LLVMgold.so)
 		# https://llvm.org/bugs/show_bug.cgi?id=23793
-		epatch "${FILESDIR}"/cmake/clang-0002-cmake-Make-CLANG_LIBDIR_SUFFIX-overridable.patch
+		eapply "${FILESDIR}"/cmake/clang-0002-cmake-Make-CLANG_LIBDIR_SUFFIX-overridable.patch
 
 		pushd projects/compiler-rt >/dev/null || die
 
 		# Fix msan with newer kernels, compiler-rt part, #569894
-		epatch "${FILESDIR}"/compiler-rt-3.7-msan-fix.patch
+		eapply "${FILESDIR}"/compiler-rt-3.7-msan-fix.patch
 
 		# Fix WX sections, bug #421527
 		find lib/builtins -type f -name '*.S' -exec sed \
@@ -232,17 +220,17 @@ src_prepare() {
 			-i tools/lldb/scripts/Python/modules/CMakeLists.txt || die
 
 		# Fix Python paths, bugs #562436 and #562438
-		epatch "${FILESDIR}"/${PN}-3.7-lldb_python.patch
+		eapply "${FILESDIR}"/${PN}-3.7-lldb_python.patch
 		sed -e "s/GENTOO_LIBDIR/$(get_libdir)/" \
 			-i tools/lldb/scripts/Python/finishSwigPythonLLDB.py || die
 
 		# Fix build with ncurses[tinfo], #560474
 		# http://llvm.org/viewvc/llvm-project?view=revision&revision=247842
-		epatch "${FILESDIR}"/cmake/${PN}-3.7.0-lldb_tinfo.patch
+		eapply "${FILESDIR}"/cmake/${PN}-3.7.0-lldb_tinfo.patch
 	fi
 
 	# User patches
-	epatch_user
+	eapply_user
 
 	python_setup
 

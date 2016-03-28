@@ -165,6 +165,10 @@ src_prepare() {
 	# https://bugs.gentoo.org/show_bug.cgi?id=565358
 	eapply "${FILESDIR}"/llvm-3.9-llvm-config.patch
 
+	# Restore SOVERSIONs for shared libraries
+	# https://bugs.gentoo.org/show_bug.cgi?id=578392
+	eapply "${FILESDIR}"/llvm-3.8-soversion.patch
+
 	# disable use of SDK on OSX, bug #568758
 	sed -i -e 's/xcrun/false/' utils/lit/lit/util.py || die
 
@@ -223,7 +227,7 @@ multilib_src_configure() {
 	local mycmakeargs=(
 		-DLLVM_LIBDIR_SUFFIX=${libdir#lib}
 
-		-DLLVM_LINK_LLVM_DYLIB=ON
+		-DBUILD_SHARED_LIBS=ON
 		-DLLVM_ENABLE_TIMESTAMPS=OFF
 		-DLLVM_TARGETS_TO_BUILD="${targets}"
 		-DLLVM_BUILD_TESTS=$(usex test)
