@@ -16012,7 +16012,7 @@ sci-physics/herwig++ 2.7.1-r1: High-Energy Physics event generator
 sci-physics/hoomd-blue 1.0.2: a general-purpose particle simulation toolkit
 sci-physics/jaxodraw 2.0.1-r1: Java program for drawing Feynman diagrams
 sci-physics/lammps 20150210 20150515 20150515-r1 20150810 20150904 20150909 20150911 20150924 20151005 20151022 20151023 20151026 20151031 20151106 20151120 20151207 20151208 20151209 20151211 20160115 20160122: Large-scale Atomic/Molecular Massively Parallel Simulator
-sci-physics/lhapdf 5.9.1 6.1.5 6.1.6: Les Houches Parton Density Function unified library
+sci-physics/lhapdf 5.9.1 6.1.6: Les Houches Parton Density Function unified library
 sci-physics/lightspeed 1.2a-r1: OpenGL interactive relativistic simulator
 sci-physics/looptools 2.8 2.12: Tools for evaluation of scalar and tensor one-loop integrals
 sci-physics/meep 1.1.1 1.2: Simulation software to model electromagnetic systems
