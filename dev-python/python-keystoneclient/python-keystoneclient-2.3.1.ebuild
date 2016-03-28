@@ -54,15 +54,7 @@ PATCHES=(
 )
 
 python_prepare_all() {
-	use doc && esetup.py build_sphinx
 	sed -i '/^argparse/d' requirements.txt || die
 	sed -i '/^hacking/d' test-requirements.txt || die
 	distutils-r1_python_prepare_all
-}
-
-python_install_all() {
-	use doc && local HTML_DOCS=( doc/build/html/. )
-	use examples && local EXAMPLES=( examples/. )
-
-	distutils-r1_python_install_all
 }
