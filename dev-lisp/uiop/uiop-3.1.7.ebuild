@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit eutils
+inherit common-lisp-3
 
 DESCRIPTION="UIOP is a portability layer spun off ASDF3"
 HOMEPAGE="http://common-lisp.net/project/asdf/"
@@ -20,9 +20,9 @@ RDEPEND="~dev-lisp/asdf-${PV}"
 S="${WORKDIR}/${PN}"
 
 src_install() {
-	insinto /usr/share/common-lisp/source/${PN}
-	doins -r contrib *.lisp ../version.lisp-expr uiop.asd asdf-driver.asd
-	dodir /usr/share/common-lisp/systems
-	dosym /usr/share/common-lisp/source/${PN}/uiop.asd /usr/share/common-lisp/systems/uiop.asd
-	dosym /usr/share/common-lisp/source/${PN}/asdf-driver.asd /usr/share/common-lisp/systems/asdf-driver.asd
+	insinto "${CLSOURCEROOT}/${PN}"
+	doins -r contrib *.lisp ../version.lisp-expr "${PN}.asd" asdf-driver.asd
+	dodir "${CLSYSTEMROOT}"
+	dosym "${CLSOURCEROOT}/${PN}/${PN}.asd" "${CLSYSTEMROOT}/${PN}.asd"
+	dosym "${CLSOURCEROOT}/${PN}/asdf-driver.asd" "${CLSYSTEMROOT}/asdf-driver.asd"
 }
