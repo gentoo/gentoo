@@ -14169,7 +14169,7 @@ net-libs/libaccounts-glib 1.21-r2: Accounts SSO (Single Sign-On) management libr
 net-libs/libasr 1.0.1 1.0.1.201505061057 1.0.2: Async Resolver Library from OpenBSD/OpenSMTPD
 net-libs/libasyncns 0.8-r3 0.8-r4: C library for executing name service queries asynchronously
 net-libs/libbitcoinconsensus 0.10.0 0.10.1 0.11.0 0.11.1 0.11.2 0.12.0 9999: Bitcoin Core consensus library
-net-libs/libblkmaker 0.3.2 0.4.2 0.4.3 0.5.0 0.5.1 0.5.2: C implementation of getblocktemplate (BIP 22)
+net-libs/libblkmaker 0.3.2 0.4.2 0.4.3 0.5.0 0.5.1 0.5.2 0.5.3: C implementation of getblocktemplate (BIP 22)
 net-libs/libbluedevil 2.1: Qt wrapper for bluez used in the KDE bluetooth stack
 net-libs/libbtbb 2015.09.2-r1 2015.10.1 9999: A library to decode Bluetooth baseband packets
 net-libs/libcapi 3.0.7-r1: CAPI library used by AVM products
@@ -14458,7 +14458,7 @@ net-misc/badvpn 1.999.123-r3 1.999.126 1.999.127 1.999.128 1.999.129 1.999.130: 
 net-misc/balance 3.54-r1: TCP Load Balancing Port Forwarder
 net-misc/batctl 2013.4.0 2014.2.0: BATMAN advanced control and management tool
 net-misc/batman-adv 2013.4.0 2014.2.0: Better approach to mobile Ad-Hoc networking on layer 2 kernel module
-net-misc/bfgminer 3.10.5 3.10.10 4.10.3 4.10.4 5.3.0 5.4.0 5.4.1: Modular Bitcoin ASIC/FPGA/GPU/CPU miner in C
+net-misc/bfgminer 3.10.5 3.10.10 4.10.3 4.10.4 5.3.0 5.4.0 5.4.1 5.4.2: Modular Bitcoin ASIC/FPGA/GPU/CPU miner in C
 net-misc/bgpq 1.0.9.9: Generate access-lists for Cisco/Juniper routers
 net-misc/bgpq3 0.1.21 0.1.22: Generate access-lists for Cisco/Juniper routers, successor of bgpq
 net-misc/bird 1.3.9 1.4.3 1.4.4 1.4.5 1.5.0: A routing daemon implementing OSPF, RIPv2 & BGP for IPv4 or IPv6
