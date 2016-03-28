@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -7,7 +7,8 @@ inherit cmake-utils eutils virtualx toolchain-funcs
 
 DESCRIPTION="A interactive post-processing tool for scanned pages"
 HOMEPAGE="http://scantailor.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz
+	https://dev.gentoo.org/~soap/distfiles/${P}-boost-join-moc.patch"
 
 LICENSE="GPL-2 GPL-3 public-domain"
 SLOT="0"
@@ -23,6 +24,12 @@ RDEPEND=">=media-libs/libpng-1.2.43
 	opengl? ( dev-qt/qtopengl:4 )"
 DEPEND="${RDEPEND}
 	dev-libs/boost"
+
+src_prepare() {
+	epatch -p1 \
+		"${DISTDIR}/${P}-boost-join-moc.patch" \
+		"${FILESDIR}/${P}-boost-lambda-namespace.patch"
+}
 
 src_configure() {
 	tc-export CXX
