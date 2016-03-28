@@ -8,7 +8,6 @@
 	<use>
 		<flag name="bufferevents">Use libevent's buffered IO implementation (unstable, buggy)</flag>
 		<flag name="stats">Enable tracking of how much of each kind of resource we download</flag>
-		<flag name="nat-pmp">Enable NAT Port Mapping Protocol</flag>
 		<flag name="scrypt">Use <pkg>app-crypt/libscrypt</pkg> for the scrypt algorithm</flag>
 		<flag name="tor-hardening">Compile tor with hardening on vanilla compilers/linkers</flag>
 		<flag name="transparent-proxy">Enable transparent proxying</flag>
