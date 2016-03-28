@@ -10,6 +10,7 @@ inherit distutils-r1
 DESCRIPTION="This package contains tools for authenticating to an OpenStack-based cloud."
 HOMEPAGE="https://github.com/openstack/keystoneauth"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}1/${PN}1-${PV}.tar.gz"
+S="${WORKDIR}/${PN}1-${PV}"
 
 LICENSE="Apache-2.0"
 SLOT="0"
