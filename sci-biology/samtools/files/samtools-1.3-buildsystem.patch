@@ -1,0 +1,174 @@
+--- samtools-1.3/Makefile
++++ samtools-1.3/Makefile
+@@ -21,11 +21,12 @@
+ # FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+ # DEALINGS IN THE SOFTWARE.
+ 
+-CC       = gcc
+-CPPFLAGS =
+-CFLAGS   = -g -Wall -O2
+-LDFLAGS  =
+-LIBS     =
++CC       ?= gcc
++CPPFLAGS +=
++CFLAGS   ?= -g -Wall -O2
++LDFLAGS  +=
++LIBS     +=
++BAMLIB   ?= libbam.a
+ 
+ DFLAGS=     -D_FILE_OFFSET_BITS=64 -D_LARGEFILE64_SOURCE
+ LOBJS=      bam_aux.o bam.o bam_import.o sam.o \
+@@ -42,6 +43,7 @@
+ prefix      = /usr/local
+ exec_prefix = $(prefix)
+ bindir      = $(exec_prefix)/bin
++libdir     ?= $(exec_prefix)/lib
+ datarootdir = $(prefix)/share
+ mandir      = $(datarootdir)/man
+ man1dir     = $(mandir)/man1
+@@ -129,67 +131,74 @@
+ .c.o:
+ 	$(CC) $(CFLAGS) $(ALL_CPPFLAGS) -c -o $@ $<
+ 
++$(LOBJS):
++	$(CC) $(CFLAGS) $(CPPFLAGS) -fPIC -c -o $@ $<
+ 
+-lib:libbam.a
++lib:libbam.a libbam.so.1.0
+ 
+ libbam.a:$(LOBJS)
+ 	$(AR) -csru $@ $(LOBJS)
+ 
+-samtools: $(AOBJS) libbam.a $(HTSLIB)
+-	$(CC) -pthread $(ALL_LDFLAGS) -o $@ $(AOBJS) libbam.a $(HTSLIB_LIB) $(CURSES_LIB) -lm $(ALL_LIBS)
++libbam.so.1.0:$(LOBJS)
++	$(CC) $(LDFLAGS) -shared -Wl,--soname,$@ -o $@ $(LOBJS) $(HTSLIB) -lz
++	ln -sf $@ libbam.so.1
++	ln -sf $@ libbam.so
++
++samtools: $(AOBJS) lib
++	$(CC) -pthread $(LDFLAGS) -o $@ $(AOBJS) $(BAMLIB) $(HTSLIB) $(LDLIBS) $(LIBCURSES) -lm -lz
+ 
+ bam_h = bam.h $(htslib_bgzf_h) $(htslib_sam_h)
+ bam2bcf_h = bam2bcf.h $(htslib_vcf_h) errmod.h
+ bam_lpileup_h = bam_lpileup.h $(htslib_sam_h)
+ bam_plbuf_h = bam_plbuf.h $(htslib_sam_h)
+-bam_tview_h = bam_tview.h $(htslib_hts_h) $(htslib_sam_h) $(htslib_faidx_h) $(bam2bcf_h) $(htslib_khash_h) $(bam_lpileup_h)
++bam_tview_h = bam_tview.h $(htslib_hts_h) $(htslib_sam_h) $(htslib_faidx_h) $(bam2bcf_h) $(bam_lpileup_h)
+ sam_h = sam.h $(htslib_sam_h) $(bam_h)
+ sam_opts_h = sam_opts.h $(htslib_hts_h)
+-sample_h = sample.h $(htslib_kstring_h)
++sample_h = sample.h
+ 
+ bam.o: bam.c $(bam_h) $(htslib_kstring_h) sam_header.h
+-bam2bcf.o: bam2bcf.c $(htslib_sam_h) $(htslib_kstring_h) $(htslib_kfunc_h) $(bam2bcf_h) errmod.h
++bam2bcf.o: bam2bcf.c $(htslib_sam_h) $(bam2bcf_h) errmod.h
+ bam2bcf_indel.o: bam2bcf_indel.c $(htslib_sam_h) $(bam2bcf_h) kprobaln.h $(htslib_khash_h) $(htslib_ksort_h)
+ bam2depth.o: bam2depth.c $(htslib_sam_h) samtools.h $(sam_opts_h)
+ bam_addrprg.o: bam_addrprg.c $(htslib_sam_h) $(htslib_kstring_h) samtools.h $(sam_opts_h)
+ bam_aux.o: bam_aux.c $(bam_h)
+ bam_cat.o: bam_cat.c $(htslib_bgzf_h) $(htslib_sam_h) $(htslib_cram_h) $(htslib_khash_h)
+ bam_color.o: bam_color.c $(bam_h)
+-bam_import.o: bam_import.c $(htslib_kstring_h) $(bam_h) $(htslib_kseq_h)
+-bam_index.o: bam_index.c $(htslib_hts_h) $(htslib_sam_h) $(htslib_khash_h) samtools.h
+-bam_lpileup.o: bam_lpileup.c $(bam_plbuf_h) $(bam_lpileup_h) $(htslib_ksort_h)
++bam_import.o: bam_import.c $(bam_h)
++bam_index.o: bam_index.c $(htslib_hts_h) $(htslib_sam_h)
++bam_lpileup.o: bam_lpileup.c $(bam_plbuf_h) $(bam_lpileup_h)
+ bam_mate.o: bam_mate.c $(sam_opts_h) $(htslib_kstring_h) $(htslib_sam_h)
+ bam_md.o: bam_md.c $(htslib_faidx_h) $(htslib_sam_h) $(htslib_kstring_h) kprobaln.h $(sam_opts_h)
+ bam_plbuf.o: bam_plbuf.c $(htslib_hts_h) $(htslib_sam_h) $(bam_plbuf_h)
+-bam_plcmd.o: bam_plcmd.c $(htslib_sam_h) $(htslib_faidx_h) $(htslib_kstring_h) $(htslib_khash_str2int_h) sam_header.h samtools.h $(sam_opts_h) $(bam2bcf_h) $(sample_h)
++bam_plcmd.o: bam_plcmd.c $(htslib_sam_h) $(htslib_faidx_h) sam_header.h samtools.h $(bam2bcf_h) $(sample_h)
+ bam_quickcheck.o: bam_quickcheck.c $(htslib_hts_h) $(htslib_sam_h) $(htslib_bgzf_h)
+ bam_reheader.o: bam_reheader.c $(htslib_bgzf_h) $(htslib_sam_h) $(htslib_hfile_h) $(htslib_cram_h) samtools.h
+-bam_rmdup.o: bam_rmdup.c $(htslib_sam_h) $(sam_opts_h) $(bam_h) $(htslib_khash_h)
+-bam_rmdupse.o: bam_rmdupse.c $(bam_h) $(htslib_sam_h) $(htslib_khash_h) $(htslib_klist_h)
+-bam_sort.o: bam_sort.c $(htslib_ksort_h) $(htslib_khash_h) $(htslib_klist_h) $(htslib_kstring_h) $(htslib_sam_h) $(sam_opts_h)
++bam_rmdup.o: bam_rmdup.c $(sam_h)
++bam_rmdupse.o: bam_rmdupse.c $(sam_h)
++bam_sort.o: bam_sort.c  $(htslib_sam_h)
+ bam_split.o: bam_split.c $(htslib_sam_h) $(htslib_khash_h) $(htslib_kstring_h) $(sam_opts_h)
+ bam_stat.o: bam_stat.c $(htslib_sam_h) samtools.h
+ bam_tview.o: bam_tview.c $(bam_tview_h) $(htslib_faidx_h) $(htslib_sam_h) $(htslib_bgzf_h) $(sam_opts_h)
+ bam_tview_curses.o: bam_tview_curses.c config.h $(bam_tview_h)
+ bam_tview_html.o: bam_tview_html.c $(bam_tview_h)
+ bam_flags.o: bam_flags.c $(htslib_sam_h)
+-bamshuf.o: bamshuf.c $(htslib_sam_h) $(htslib_hts_h) $(htslib_ksort_h) samtools.h $(sam_opts_h)
++bamshuf.o: bamshuf.c $(htslib_sam_h) samtools.h
+ bamtk.o: bamtk.c $(htslib_hts_h) samtools.h version.h
+-bedcov.o: bedcov.c $(htslib_kstring_h) $(htslib_sam_h) $(sam_opts_h) $(htslib_kseq_h)
+-bedidx.o: bedidx.c $(htslib_ksort_h) $(htslib_kseq_h) $(htslib_khash_h)
++bedcov.o: bedcov.c $(htslib_sam_h)
++bedidx.o: bedidx.c
+ cut_target.o: cut_target.c $(htslib_sam_h) errmod.h $(htslib_faidx_h) $(sam_opts_h)
+ dict.o: dict.c $(htslib_kseq_h) $(htslib_hts_h)
+-errmod.o: errmod.c errmod.h $(htslib_ksort_h)
++errmod.o: errmod.c errmod.h
+ kprobaln.o: kprobaln.c kprobaln.h
+ padding.o: padding.c $(htslib_kstring_h) $(htslib_sam_h) $(htslib_faidx_h) sam_header.h $(sam_opts_h)
+-phase.o: phase.c $(htslib_sam_h) errmod.h $(sam_opts_h) $(htslib_kseq_h) $(htslib_khash_h) $(htslib_ksort_h)
++phase.o: phase.c $(htslib_sam_h) errmod.h
+ sam.o: sam.c $(htslib_faidx_h) $(sam_h)
+-sam_header.o: sam_header.c sam_header.h $(htslib_khash_h)
++sam_header.o: sam_header.c sam_header.h
+ sam_opts.o: sam_opts.c $(sam_opts_h)
+-sam_view.o: sam_view.c $(htslib_sam_h) $(htslib_faidx_h) $(htslib_kstring_h) $(htslib_khash_h) samtools.h $(sam_opts_h)
+-sample.o: sample.c $(sample_h) $(htslib_khash_h)
+-stats_isize.o: stats_isize.c stats_isize.h $(htslib_khash_h)
+-stats.o: stats.c $(htslib_faidx_h) $(htslib_sam_h) $(htslib_hts_h) sam_header.h $(htslib_khash_str2int_h) samtools.h $(htslib_khash_h) $(htslib_kstring_h) stats_isize.h $(sam_opts_h)
++sam_view.o: sam_view.c $(htslib_sam_h) $(htslib_faidx_h) samtools.h
++sample.o: sample.c $(sample_h)
++stats_isize.o: stats_isize.c stats_isize.h
++stats.o: stats.c $(sam_h) sam_header.h samtools.h stats_isize.h $(htslib_faidx_h)
+ 
+ 
+ # test programs
+@@ -197,8 +206,8 @@
+ # For tests that might use it, set $REF_PATH explicitly to use only reference
+ # areas within the test suite (or set it to ':' to use no reference areas).
+ # (regression.sh sets $REF_PATH to a subdirectory itself.)
+-check test: samtools $(BGZIP) $(BUILT_TEST_PROGRAMS)
+-	REF_PATH=: test/test.pl --exec bgzip=$(BGZIP)
++check test: samtools $(BUILT_TEST_PROGRAMS)
++	REF_PATH=: test/test.pl --exec bgzip=bgzip
+ 	test/merge/test_bam_translate test/merge/test_bam_translate.tmp
+ 	test/merge/test_rtrans_build
+ 	test/merge/test_trans_tbl_init
+@@ -210,28 +219,28 @@
+ 	test/split/test_parse_args
+ 
+ 
+-test/merge/test_bam_translate: test/merge/test_bam_translate.o test/test.o sam_opts.o $(HTSLIB)
++test/merge/test_bam_translate: test/merge/test_bam_translate.o test/test.o
+ 	$(CC) -pthread $(ALL_LDFLAGS) -o $@ test/merge/test_bam_translate.o test/test.o sam_opts.o $(HTSLIB_LIB) $(ALL_LIBS)
+ 
+-test/merge/test_rtrans_build: test/merge/test_rtrans_build.o sam_opts.o $(HTSLIB)
++test/merge/test_rtrans_build: test/merge/test_rtrans_build.o
+ 	$(CC) -pthread $(ALL_LDFLAGS) -o $@ test/merge/test_rtrans_build.o sam_opts.o $(HTSLIB_LIB) $(ALL_LIBS)
+ 
+-test/merge/test_trans_tbl_init: test/merge/test_trans_tbl_init.o sam_opts.o $(HTSLIB)
++test/merge/test_trans_tbl_init: test/merge/test_trans_tbl_init.o
+ 	$(CC) -pthread $(ALL_LDFLAGS) -o $@ test/merge/test_trans_tbl_init.o sam_opts.o $(HTSLIB_LIB) $(ALL_LIBS)
+ 
+-test/split/test_count_rg: test/split/test_count_rg.o test/test.o sam_opts.o $(HTSLIB)
++test/split/test_count_rg: test/split/test_count_rg.o test/test.o
+ 	$(CC) -pthread $(ALL_LDFLAGS) -o $@ test/split/test_count_rg.o test/test.o sam_opts.o $(HTSLIB_LIB) $(ALL_LIBS)
+ 
+-test/split/test_expand_format_string: test/split/test_expand_format_string.o test/test.o sam_opts.o $(HTSLIB)
++test/split/test_expand_format_string: test/split/test_expand_format_string.o test/test.o
+ 	$(CC) -pthread $(ALL_LDFLAGS) -o $@ test/split/test_expand_format_string.o test/test.o sam_opts.o $(HTSLIB_LIB) $(ALL_LIBS)
+ 
+-test/split/test_filter_header_rg: test/split/test_filter_header_rg.o test/test.o sam_opts.o $(HTSLIB)
++test/split/test_filter_header_rg: test/split/test_filter_header_rg.o test/test.o
+ 	$(CC) -pthread $(ALL_LDFLAGS) -o $@ test/split/test_filter_header_rg.o test/test.o sam_opts.o $(HTSLIB_LIB) $(ALL_LIBS)
+ 
+-test/split/test_parse_args: test/split/test_parse_args.o test/test.o sam_opts.o $(HTSLIB)
++test/split/test_parse_args: test/split/test_parse_args.o test/test.o
+ 	$(CC) -pthread $(ALL_LDFLAGS) -o $@ test/split/test_parse_args.o test/test.o sam_opts.o $(HTSLIB_LIB) $(ALL_LIBS)
+ 
+-test/vcf-miniview: test/vcf-miniview.o $(HTSLIB)
++test/vcf-miniview: test/vcf-miniview.o
+ 	$(CC) -pthread $(ALL_LDFLAGS) -o $@ test/vcf-miniview.o $(HTSLIB_LIB) $(ALL_LIBS)
+ 
+ test_test_h = test/test.h $(htslib_sam_h)
