@@ -25,7 +25,7 @@ DEPEND="
 	sys-libs/zlib
 	bufferevents? ( dev-libs/libevent[ssl] )
 	!libressl? ( dev-libs/openssl:0=[-bindist] )
-	libressl? ( dev-libs/libressl:= )
+	libressl? ( dev-libs/libressl:0= )
 	scrypt? ( app-crypt/libscrypt )
 	seccomp? ( sys-libs/libseccomp )
 	systemd? ( sys-apps/systemd )"
