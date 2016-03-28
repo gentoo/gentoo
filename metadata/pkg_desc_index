@@ -259,7 +259,7 @@ app-arch/freeze 2.5.0-r1: Freeze/unfreeze compression program
 app-arch/funzix 1.0: unpacker for the bogus ZIX format
 app-arch/gcab 0.6: Library and tool for working with Microsoft Cabinet (CAB) files
 app-arch/gtk-splitter 2.2.1-r1: Split files into smaller pieces and combine them back together
-app-arch/gzip 1.4 1.5 1.6: Standard GNU compressor
+app-arch/gzip 1.6 1.7: Standard GNU compressor
 app-arch/hardlink 0.2.0 0.3.0: A tool which replaces copies of a file with hardlinks
 app-arch/innoextract 1.4 1.5 1.6: A tool to unpack installers created by Inno Setup
 app-arch/ipkg-utils 1.7.050831-r2: Tools for working with the ipkg binary package format
@@ -18208,7 +18208,7 @@ x11-misc/lxmed 20120515: freedesktop.org specification compatible menu editor
 x11-misc/macopix 1.7.4: MaCoPiX (Mascot Constructive Pilot for X) is a desktop mascot application on UNIX / X Window system
 x11-misc/magick-rotation 1.6.2-r2: Application that rotates tablet pc's screen automatically, depending on orientation
 x11-misc/makedepend 1.0.5: create dependencies in makefiles
-x11-misc/matchbox-keyboard 0.1: Matchbox-keyboard is an on screen 'virtual' or 'software' keyboard
+x11-misc/matchbox-keyboard 0.1 0.1-r1: Matchbox-keyboard is an on screen 'virtual' or 'software' keyboard
 x11-misc/mate-notification-daemon 1.8.1 1.10.2: MATE Notification daemon
 x11-misc/menulibre 13.01.4 13.01.4-r1 13.04.17: An advanced menu editor that provides modern features in a clean, easy-to-use interface
 x11-misc/menumaker 0.99.7: Utility that scans through the system and generates a menu of installed programs
