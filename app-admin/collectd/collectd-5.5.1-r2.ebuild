@@ -16,7 +16,7 @@ SRC_URI="${HOMEPAGE}/files/${P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="contrib debug java kernel_Darwin kernel_FreeBSD kernel_linux perl selinux static-libs"
+IUSE="contrib debug java kernel_Darwin kernel_FreeBSD kernel_linux perl selinux static-libs udev"
 
 # The plugin lists have to follow here since they extend IUSE
 
@@ -65,6 +65,7 @@ COMMON_DEPEND="
 	dev-libs/libgcrypt:=
 	sys-devel/libtool
 	perl?					( dev-lang/perl:=[ithreads] )
+	udev?					( virtual/udev )
 	collectd_plugins_amqp?			( net-libs/rabbitmq-c )
 	collectd_plugins_apache?		( net-misc/curl )
 	collectd_plugins_ascent?		( net-misc/curl dev-libs/libxml2 )
@@ -74,7 +75,6 @@ COMMON_DEPEND="
 	collectd_plugins_curl_json?		( net-misc/curl dev-libs/yajl )
 	collectd_plugins_curl_xml?		( net-misc/curl dev-libs/libxml2:= )
 	collectd_plugins_dbi?			( dev-db/libdbi )
-	collectd_plugins_disk?			( virtual/udev )
 	collectd_plugins_dns?			( net-libs/libpcap )
 	collectd_plugins_genericjmx?		( virtual/jre:= dev-java/java-config-wrapper )
 	collectd_plugins_gmond?			( sys-cluster/ganglia )
@@ -104,7 +104,7 @@ COMMON_DEPEND="
 	collectd_plugins_rrdtool?		( net-analyzer/rrdtool )
 	collectd_plugins_sensors?		( sys-apps/lm_sensors )
 	collectd_plugins_sigrok?		( sci-libs/libsigrok )
-	collectd_plugins_smart?			( virtual/udev dev-libs/libatasmart )
+	collectd_plugins_smart?			( dev-libs/libatasmart )
 	collectd_plugins_snmp?			( net-analyzer/net-snmp )
 	collectd_plugins_tokyotyrant?		( net-misc/tokyotyrant )
 	collectd_plugins_varnish?		( www-servers/varnish )
@@ -123,8 +123,12 @@ COMMON_DEPEND="
 		collectd_plugins_users?		( sys-libs/libstatgrab:= )
 	)"
 
+# Enforcing <=sys-kernel/linux-headers-4.4 due to #577846
 DEPEND="${COMMON_DEPEND}
+	collectd_plugins_cgroups?		( sys-fs/xfsprogs )
+	collectd_plugins_df?			( sys-fs/xfsprogs )
 	collectd_plugins_genericjmx?		( >=virtual/jdk-1.6 )
+	collectd_plugins_iptables?		( <=sys-kernel/linux-headers-4.4 )
 	collectd_plugins_java?			( >=virtual/jdk-1.6 )
 	virtual/pkgconfig"
 
@@ -135,11 +139,12 @@ RDEPEND="${COMMON_DEPEND}
 REQUIRED_USE="
 	collectd_plugins_genericjmx?		( java )
 	collectd_plugins_java?			( java )
-	collectd_plugins_python?		( ${PYTHON_REQUIRED_USE} )"
+	collectd_plugins_python?		( ${PYTHON_REQUIRED_USE} )
+	collectd_plugins_smart			( udev )"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-4.10.3-werror.patch
-	"${FILESDIR}"/${PN}-5.5.1-{libocci,lt,nohal}.patch
+	"${FILESDIR}"/${PN}-5.5.1-{libocci,lt,nohal,issue-1637}.patch
 )
 
 # @FUNCTION: collectd_plugin_kernel_linux
@@ -315,6 +320,14 @@ src_configure() {
 
 	# Do we debug?
 	local myconf="$(use_enable debug)"
+
+	# udev support?
+	# Required for smart plugin via REQUIRED_USE; Optional for disk plugin
+	if use udev; then
+		myconf+=" --with-libudev"
+	else
+		myconf+=" --without-libudev"
+	fi
 
 	local plugin
 
