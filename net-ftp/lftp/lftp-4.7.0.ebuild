@@ -11,7 +11,7 @@ SRC_URI="${HOMEPAGE}ftp/${P}.tar.xz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~s390 sparc x86 ~sparc-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~sparc-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x86-solaris"
 
 IUSE="convert-mozilla-cookies +gnutls idn ipv6 nls openssl socks5 +ssl verify-file"
 LFTP_LINGUAS=( cs de es fr it ja ko pl pt_BR ru uk zh_CN zh_HK zh_TW )
@@ -22,8 +22,8 @@ REQUIRED_USE="
 "
 
 RDEPEND="
-	>=sys-libs/ncurses-5.1
-	>=sys-libs/readline-5.1
+	>=sys-libs/ncurses-5.1:=
+	>=sys-libs/readline-5.1:=
 	dev-libs/expat
 	sys-libs/zlib
 	convert-mozilla-cookies? ( dev-perl/DBI )
@@ -34,7 +34,7 @@ RDEPEND="
 	)
 	ssl? (
 		gnutls? ( >=net-libs/gnutls-1.2.3 )
-		openssl? ( >=dev-libs/openssl-0.9.6 )
+		openssl? ( dev-libs/openssl:0 )
 	)
 	verify-file? (
 		dev-perl/string-crc32
@@ -59,7 +59,7 @@ src_prepare() {
 	epatch \
 		"${FILESDIR}"/${PN}-4.0.2.91-lafile.patch \
 		"${FILESDIR}"/${PN}-4.5.5-am_config_header.patch \
-		"${FILESDIR}"/${PN}-4.6.3a-autopoint.patch
+		"${FILESDIR}"/${PN}-4.7.0-gettext.patch
 
 	eautoreconf
 	elibtoolize # for Darwin bundles
