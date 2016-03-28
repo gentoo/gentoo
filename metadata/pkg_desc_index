@@ -2104,7 +2104,7 @@ app-portage/overlint 0.5.2 0.5.3: Simple tool for static analysis of overlays
 app-portage/perl-info 0.16: Tool to gather relevant perl data useful for bugreports; 'emerge --info' for perl
 app-portage/pfl 2.4-r4: Searchable online file/package database for Gentoo
 app-portage/pms-test-suite 0.2 9999: A test suite for Package Manager PMS compliance
-app-portage/portage-utils 0.56 0.60 0.61 0.62: small and fast portage helper tools written in C
+app-portage/portage-utils 0.56 0.60 0.61 0.62 0.63: small and fast portage helper tools written in C
 app-portage/porthole 0.6.1-r1 0.6.1-r2 0.6.1-r3 0.6.1-r4: A GTK+-based frontend to Portage
 app-portage/porticron 0.7_p20140126: cron script to sync portage and send update mails to root
 app-portage/portpeek 2.0.25 2.1.9 2.1.18 2.1.19 2.1.20: A helper program for maintaining the package.keyword and package.unmask files
