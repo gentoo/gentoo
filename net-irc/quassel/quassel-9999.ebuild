@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 inherit cmake-utils eutils pax-utils systemd user versionator
 
@@ -130,16 +130,16 @@ src_configure() {
 		$(cmake-utils_use_find_package crypt QCA2-QT5)
 		$(cmake-utils_use_find_package dbus dbusmenu-qt)
 		$(cmake-utils_use_find_package dbus dbusmenu-qt5)
-		$(cmake-utils_use_with kde)
-		$(cmake-utils_use_with !kde OXYGEN)
-		$(cmake-utils_use_want monolithic MONO)
-		$(cmake-utils_use_find_package phonon)
+		-DWITH_KDE=$(usex kde)
+		-DWITH_OXYGEN=$(usex !kde)
+		-DWANT_MONO=$(usex monolithic)
+		$(cmake-utils_use_find_package phonon Phonon)
 		$(cmake-utils_use_find_package phonon Phonon4Qt5)
-		$(cmake-utils_use_use qt5)
-		$(cmake-utils_use_want server CORE)
+		-DUSE_QT5=$(usex qt5)
+		-DWANT_CORE=$(usex server)
 		$(cmake-utils_use_find_package snorenotify LibsnoreQt5)
-		$(cmake-utils_use_with webkit)
-		$(cmake-utils_use_want X QTCLIENT)
+		-DWITH_WEBKIT=$(usex webkit)
+		-DWANT_QTCLIENT=$(usex X)
 		-DEMBED_DATA=OFF
 		-DCMAKE_SKIP_RPATH=ON
 	)
