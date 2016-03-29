@@ -21,7 +21,7 @@ CDEPEND=">=dev-python/pbr-1.8[${PYTHON_USEDEP}]"
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	${CDEPEND}
-	test? ( >=dev-python/oslo-config-2.3.0[${PYTHON_USEDEP}] )
+	test? ( >=dev-python/oslo-config-3.7.0[${PYTHON_USEDEP}] )
 	>=dev-python/oslo-sphinx-2.5.0[${PYTHON_USEDEP}]
 	>=dev-python/sphinx-1.1.2[${PYTHON_USEDEP}]
 	!~dev-python/sphinx-1.2.0[${PYTHON_USEDEP}]
