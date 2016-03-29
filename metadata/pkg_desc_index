@@ -266,7 +266,7 @@ app-arch/ipkg-utils 1.7.050831-r2: Tools for working with the ipkg binary packag
 app-arch/lbzip2 2.3-r1 2.5: Parallel bzip2 utility
 app-arch/lcab 1.0_beta12: CAB file creation tool
 app-arch/lha 114i-r7 114i-r8: Utility for creating and opening lzh archives
-app-arch/libarchive 3.1.2-r1 3.1.2-r2 3.1.2-r3: BSD tar command
+app-arch/libarchive 3.1.2-r1 3.1.2-r2 3.1.2-r3 3.1.2-r4: BSD tar command
 app-arch/libpar2 0.4: A library for par2, extracted from par2cmdline
 app-arch/libzpaq 6.41 6.49 6.53 7.04: Library to compress files in the ZPAQ format
 app-arch/lrzip 0.614 0.616 0.621: Long Range ZIP or Lzma RZIP optimized for compressing large files
