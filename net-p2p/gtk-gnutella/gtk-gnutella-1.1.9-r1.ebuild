@@ -27,6 +27,8 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 src_prepare() {
+	epatch "${FILESDIR}/${P}-load-symbols.patch"
+
 	strip-linguas -i po
 
 	echo "# Gentoo-selected LINGUAS" > po/LINGUAS

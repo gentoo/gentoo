@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -20,5 +20,5 @@ SITEFILE="50${PN}-gentoo.el"
 ELISP_TEXINFO="../Documentation/*.texi"
 DOCS="../README.md ../Documentation/AUTHORS.md ../Documentation/${PV}.txt"
 
-DEPEND=">=app-emacs/dash-2.12.1"
+DEPEND=">=app-emacs/dash-2.12.1 >=app-emacs/with-editor-2.5.0"
 RDEPEND="${DEPEND} >=dev-vcs/git-1.9.4"
