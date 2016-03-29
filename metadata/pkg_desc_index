@@ -1172,7 +1172,7 @@ app-emacs/limit 1.14.10_pre200811252332: Library about Internet Message, for IT 
 app-emacs/lookup 1.4.1: An interface to search CD-ROM books and network dictionaries
 app-emacs/lua-mode 20130419: An Emacs major mode for editing Lua scripts
 app-emacs/lyskom-elisp-client 0.48_p20131231: Elisp client for the LysKOM conference system
-app-emacs/magit 1.2.2 2.2.2-r2 2.3.1 2.4.0 2.4.1 2.5.0: A Git porcelain inside Emacs
+app-emacs/magit 1.2.2 2.4.1 2.5.0 2.6.0: A Git porcelain inside Emacs
 app-emacs/mailcrypt 3.5.9: Provides a simple interface to public key cryptography with OpenPGP
 app-emacs/markdown-mode 1.8.1-r1 2.0: Major mode for editing Markdown-formatted text files
 app-emacs/matlab 3.3.2_pre20130829: Major modes for MATLAB .m and .tlc files
@@ -14914,7 +14914,7 @@ net-p2p/eiskaltdcpp 2.2.9 9999: Qt based client for DirectConnect and ADC protoc
 net-p2p/fms 0.3.73 0.3.75: A spam-resistant message board application for Freenet
 net-p2p/freenet 0.7.5_p1470: An encrypted network without censorship
 net-p2p/gnut 0.4.28-r1: Text-mode gnutella client
-net-p2p/gtk-gnutella 1.1.8 1.1.9: A GTK+ Gnutella client
+net-p2p/gtk-gnutella 1.1.8 1.1.9-r1: A GTK+ Gnutella client
 net-p2p/gtorrentviewer 0.2b: A GTK2-based viewer and editor for BitTorrent meta files
 net-p2p/hx 0.4.11: This is a Hotline 1.5+ compatible *nix Hotline Client in CLI. It supports IRC compatibility
 net-p2p/i2p 0.9.24-r2 0.9.25-r1: A privacy-centric, anonymous network.
