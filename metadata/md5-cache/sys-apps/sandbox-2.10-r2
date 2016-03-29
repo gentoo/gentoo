@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst preinst prepare test
+DEPEND=app-arch/xz-utils >=app-misc/pax-utils-0.1.19
+DESCRIPTION=sandbox'd LD_PRELOAD hack
+EAPI=5
+HOMEPAGE=https://www.gentoo.org/proj/en/portage/sandbox/
+IUSE=abi_x86_32 abi_x86_64 abi_x86_x32 abi_mips_n32 abi_mips_n64 abi_mips_o32 abi_ppc_32 abi_ppc_64 abi_s390_32 abi_s390_64
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~sparc-fbsd ~x86-fbsd
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=mirror://gentoo/sandbox-2.10.tar.xz https://dev.gentoo.org/~vapier/dist/sandbox-2.10.tar.xz
+_eclass_exported_funcs=pkg_preinst:- pkg_postinst:- src_prepare:- src_configure:multilib-minimal src_compile:multilib-minimal src_test:multilib-minimal src_install:multilib-minimal
+_eclasses_=eutils	9d81603248f2ba3ec59124320d123e5e	flag-o-matic	d270fa247153df66074f795fa42dba3e	multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	3972ca401cf7dbb430df9995f5d8d580	multilib-build	8fe2e81aeb36cdf8a6cc5f50443879cc	multilib-minimal	0224dee31c0f98405d572e14ad6dee65	multiprocessing	e32940a7b2a9992ad217eccddb84d548	pax-utils	ecf634cba91bb9591a8fdb6f6145f1bb	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_md5_=263b1a756401e080649e356b3800ba81
