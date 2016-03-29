@@ -48,6 +48,7 @@ RDEPEND="${CDEPEND}
 
 EANT_BUILD_TARGET="pkg"
 EANT_GENTOO_CLASSPATH="java-service-wrapper,jrobin,slf4j-api,tomcat-jstl-impl,tomcat-jstl-spec,bcprov-1.50"
+JAVA_ANT_ENCODING="UTF-8"
 
 I2P_ROOT='/usr/share/i2p'
 I2P_CONFIG_HOME='/var/lib/i2p'

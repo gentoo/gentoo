@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -18,8 +18,8 @@ KEYWORDS="~amd64 ~x86"
 IUSE="nls"
 
 # dev-java/ant-core is automatically added due to java-ant-2.eclass
-CDEPEND="dev-java/jrobin:0
-	dev-java/bcprov:1.50
+CDEPEND="dev-java/bcprov:1.50
+	dev-java/jrobin:0
 	dev-java/slf4j-api:0
 	dev-java/tomcat-jstl-impl:0
 	dev-java/tomcat-jstl-spec:0
@@ -29,19 +29,33 @@ DEPEND="${CDEPEND}
 	dev-java/eclipse-ecj:*
 	dev-libs/gmp:*
 	nls? ( sys-devel/gettext )
-	>=virtual/jdk-1.6"
+	>=virtual/jdk-1.7"
 
 RDEPEND="${CDEPEND}
-	>=virtual/jre-1.6"
+	|| (
+		dev-java/icedtea:7[-sunec]
+		dev-java/icedtea:8[-sunec]
+		dev-java/icedtea:7[nss,-sunec]
+		dev-java/icedtea-bin:7[nss]
+		dev-java/icedtea-bin:7
+		dev-java/icedtea-bin:8
+		dev-java/oracle-jre-bin
+		dev-java/oracle-jdk-bin
+	)"
 
 EANT_BUILD_TARGET="pkg"
 EANT_GENTOO_CLASSPATH="java-service-wrapper,jrobin,slf4j-api,tomcat-jstl-impl,tomcat-jstl-spec,bcprov-1.50"
+JAVA_ANT_ENCODING="UTF-8"
+
+I2P_ROOT='/usr/share/i2p'
+I2P_CONFIG_HOME='/var/lib/i2p'
+I2P_CONFIG_DIR="${I2P_HOME}/.i2p"
 
 pkg_setup() {
 	java-pkg-2_pkg_setup
 
 	enewgroup i2p
-	enewuser i2p -1 -1 /var/lib/i2p i2p -m
+	enewuser i2p -1 -1 "${I2P_CONFIG_HOME}" i2p -m
 }
 
 src_unpack() {
@@ -58,25 +72,32 @@ src_prepare() {
 	if ! use nls; then
 		echo "require.gettext=false" >> override.properties
 	fi
-
-	#epatch "${FILESDIR}/${P}_fix-encoding.patch"
 }
 
 src_install() {
 	# Cd into pkg-temp.
 	cd "${S}/pkg-temp" || die
 
-	# Apply patch.
-	epatch "${FILESDIR}/${P}_fix-paths.patch"
+	# add libs
+	epatch "${FILESDIR}/${P}_add-libs.patch"
 
-	# Using ${D} here results in an error. Docs say use $ROOT
-	i2p_home="${ROOT}/usr/share/i2p"
+	# avoid auto starting browser
+	sed -i 's|clientApp.4.startOnLoad=true|clientApp.4.startOnLoad=false|' \
+		clients.config || die
+
+	# replace paths as the installer would
+	sed -i "s|%INSTALL_PATH|${I2P_ROOT}|" \
+		eepget i2prouter runplain.sh  || die
+	sed -i "s|\$INSTALL_PATH|${I2P_ROOT}|" wrapper.config || die
+	sed -i "s|%SYSTEM_java_io_tmpdir|${I2P_CONFIG_DIR}|" \
+		i2prouter runplain.sh || die
+	sed -i "s|%USER_HOME|${I2P_CONFIG_HOME}|" i2prouter || die
 
 	# This is ugly, but to satisfy all non-system .jar dependencies, jetty and
 	# systray4j would need to be packaged. The former would be too large a task
 	# for an unseasoned developer and systray4j hasn't been touched in over 10
 	# years. This seems to be the most pragmatic solution
-	java-pkg_jarinto "${i2p_home}/lib"
+	java-pkg_jarinto "${I2P_ROOT}/lib"
 	for i in BOB commons-el commons-logging i2p i2psnark i2ptunnel \
 		jasper-compiler jasper-runtime javax.servlet jbigi jetty* mstreaming org.mortbay.* router* \
 		sam standard streaming systray systray4j; do
@@ -84,13 +105,13 @@ src_install() {
 	done
 
 	# Set up symlinks for binaries
-	dosym /usr/bin/wrapper ${i2p_home}/i2psvc
-	dosym ${i2p_home}/i2prouter /usr/bin/i2prouter
-	dosym ${i2p_home}/eepget /usr/bin/eepget
+	dosym /usr/bin/wrapper "${I2P_ROOT}/i2psvc"
+	dosym "${I2P_ROOT}/i2prouter" /usr/bin/i2prouter
+	dosym "${I2P_ROOT}/eepget" /usr/bin/eepget
 
 	# Install main files and basic documentation
-	exeinto ${i2p_home}
-	insinto ${i2p_home}
+	exeinto "${I2P_ROOT}"
+	insinto "${I2P_ROOT}"
 	doins blocklist.txt hosts.txt *.config
 	doexe eepget i2prouter runplain.sh
 	dodoc history.txt INSTALL-headless.txt LICENSE.txt
@@ -106,17 +127,26 @@ src_install() {
 	systemd_newunit "${FILESDIR}"/i2p.service i2p.service
 
 	# setup user
-	dodir /var/lib/i2p/.i2p
-	fowners -R i2p:i2p /var/lib/i2p/.i2p
+	dodir "${I2P_CONFIG_DIR}"
+	fowners -R i2p:i2p "${I2P_CONFIG_DIR}"
 }
 
 pkg_postinst() {
 	elog "Custom configuration belongs in /var/lib/i2p/.i2p/ to avoid being overwritten."
 	elog "I2P can be configured through the web interface at http://localhost:7657/index.jsp"
 
-	ewarn 'Currently, the i2p team do not enforce to use ECDSA keys. But it is more and'
+	ewarn 'Currently, the i2p team does not enforce to use ECDSA keys. But it is more and'
 	ewarn 'more pushed. To help the network, you are recommended to have either:'
 	ewarn '  dev-java/icedtea[-sunec,nss]'
+	ewarn '  dev-java/icedtea-bin[nss]'
+	ewarn '  dev-java/icedtea[-sunec] and bouncycastle (bcprov)'
+	ewarn '  dev-java/icedtea-bin and bouncycastle (bcprov)'
 	ewarn '  dev-java/oracle-jre-bin'
 	ewarn '  dev-java/oracle-jdk-bin'
+	ewarn 'Alternatively you can just use Ed25519 keys - which is a stronger algorithm anyways.'
+	ewarn
+	ewarn "This is purely a run-time issue. You're free to build i2p with any JDK, as long as"
+	ewarn 'the JVM you run it with is one of the above listed and from the same or a newer generation'
+	ewarn 'as the one you built with.'
+
 }
