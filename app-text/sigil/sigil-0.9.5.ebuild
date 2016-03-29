@@ -9,11 +9,11 @@ PYTHON_COMPAT=( python3_4 python3_5 )
 
 inherit eutils cmake-utils python-single-r1
 
-MY_PN="Sigil"
+my_pn="Sigil"
 
 DESCRIPTION="Sigil is a multi-platform WYSIWYG ebook editor for ePub format"
 HOMEPAGE="http://sigil-ebook.com/"
-SRC_URI="https://github.com/Sigil-Ebook/${MY_PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/Sigil-Ebook/${my_pn}/releases/download/${PV}/${my_pn}-${PV}-Code.zip"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -51,7 +51,7 @@ DEPEND="${RDEPEND}
 	>=dev-qt/linguist-tools-5.4:5
 "
 
-S="${WORKDIR}/${MY_PN}-${PV}"
+S="${WORKDIR}"
 
 DOCS=( ChangeLog.txt README.md )
 
@@ -71,4 +71,19 @@ src_configure() {
 		-DLIBDIR="$(get_libdir)"
 	)
 	cmake-utils_src_configure
+}
+
+pkg_postinst() {
+	elog "From Sigil's release notes:"
+	elog "When you fire up Sigil for the very first time:"
+	elog "navigate to the new General Preferences and select the default"
+	elog "epub version you plan to work with (epub 2 or epub3) so that new"
+	elog "empty ebooks start with the correct code."
+	elog "if you plan to work with epub3 epubs, you should change your"
+	elog "PreserveEntities setting to use ONLY NUMERIC entities."
+	elog ""
+	elog "For example use & # 1 6 0 ; for non-breaking spaces and etc."
+	elog ""
+	elog "We strongly recommend enabling Mend On Open in your settings"
+	elog "for best performance with Sigil."
 }
