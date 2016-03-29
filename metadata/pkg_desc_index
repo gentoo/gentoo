@@ -7303,8 +7303,8 @@ dev-python/keepassx 0.0.3 0.1.0: Python API and CLI for KeePassX
 dev-python/keyczar 0.71c 0.715: Toolkit for safe and simple cryptography
 dev-python/keyring 1.0 1.5 1.5-r1 1.6.1 3.1 3.3 3.7 4.0 8.2 8.3 8.4 8.4.1 8.5: Provides access to the system keyring service
 dev-python/keyrings_alt 1.1 1.1.1: Alternate keyring implementations
-dev-python/keystoneauth 2.3.0: This package contains tools for authenticating to an OpenStack-based cloud.
-dev-python/keystonemiddleware 1.5.0 1.5.2 2.2.0 2.3.1-r1 2.3.2-r1 2.3.3 4.3.0: A middleware for the OpenStack Keystone API
+dev-python/keystoneauth 2.4.0: This package contains tools for authenticating to an OpenStack-based cloud.
+dev-python/keystonemiddleware 1.5.0 1.5.2 2.2.0 2.3.1-r1 2.3.2-r1 2.3.3 4.4.0: A middleware for the OpenStack Keystone API
 dev-python/kid 0.9.6-r1: A simple and Pythonic XML template language
 dev-python/kivy-garden 0.1.1: Kivys Garden tool to manage flowers
 dev-python/kiwi 1.9.39.2 1.9.40: Kiwi is a pure Python framework and set of enhanced PyGTK widgets
@@ -7458,13 +7458,13 @@ dev-python/openstack-nose-plugin 0.11-r2: openstack run_tests.py style output fo
 dev-python/openstacksdk 0.8.2: A collection of libraries for building applications to work with OpenStack.
 dev-python/optcomplete 1.2-r1: Shell completion self-generator for Python
 dev-python/ordereddict 1.1: A drop-in substitute for Py2.7's new collections.OrderedDict that works in Python 2.4-2.6.
-dev-python/os-brick 0.5.0 1.1.0: OpenStack Cinder brick library for managing local volume attaches
+dev-python/os-brick 0.5.0 1.2.0: OpenStack Cinder brick library for managing local volume attaches
 dev-python/os-client-config 1.6.1 1.6.3 1.16.0: OpenStack Client Configuation Library
 dev-python/os-diskconfig-python-novaclient-ext 0.1.1 0.1.1-r1 0.1.2 9999: Disk Config extension for python-novaclient
 dev-python/os-networksv2-python-novaclient-ext 0.21 0.21-r1 0.25: Adds network extension support to python-novaclient
 dev-python/os-testr 0.3.0 0.6.0: A testr wrapper to provide functionality for OpenStack projects
 dev-python/os-virtual-interfacesv2-python-novaclient-ext 0.15 0.19: Adds Virtual Interfaces support to python-novaclient
-dev-python/os-win 0.2.3: Windows / Hyper-V library for OpenStack projects.
+dev-python/os-win 0.4.0: Windows / Hyper-V library for OpenStack projects.
 dev-python/oslo-cache 1.5.0: Oslo Caching around dogpile.cache
 dev-python/oslo-concurrency 1.8.0 1.8.1 1.8.2 2.5.0 3.6.0: library for running multi-thread, multi-process applications
 dev-python/oslo-config 1.9.3 2.3.0 2.4.0 3.9.0: Oslo Configuration API
@@ -16807,7 +16807,7 @@ sys-cluster/mpich 3.0.4 3.1.3 3.1.4 3.2: A high performance and portable MPI imp
 sys-cluster/mpich2 1.5: A high performance and portable MPI implementation
 sys-cluster/mvapich2 1.6: MVAPICH2 MPI-over-infiniband package auto-configured for OpenIB
 sys-cluster/native-mpi 0: Use native OS MPI in prefix environment
-sys-cluster/neutron 7.0.1 7.0.2 7.0.3 2015.2.9999 2016.1.9999: A virtual network service for Openstack
+sys-cluster/neutron 7.0.1 7.0.2 7.0.3 7.0.4 2015.2.9999 2016.1.9999: A virtual network service for Openstack
 sys-cluster/nova 12.0.2-r1 2015.2.9999 2016.1.9999: Cloud computing fabric controller (main part of an IaaS system) in Python
 sys-cluster/ocfs 1.0.14: The Oracle Cluster Filesystem
 sys-cluster/onesis 2.0.2: Diskless computing made easy
