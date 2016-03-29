@@ -2396,7 +2396,7 @@ app-text/searchmonkey 0.8.1 2.0.0: Powerful text searches using regular expressi
 app-text/sgml-common 0.6.3-r5: Base ISO character entities and utilities for SGML
 app-text/sgmltools-lite 3.0.3-r14: Python interface to SGML software in a DocBook/OpenJade env
 app-text/sgrep 1.94a: Use structural criteria to grep and index text, SGML, XML and HTML and filter text streams
-app-text/sigil 0.8.7-r1 0.9.4: Sigil is a multi-platform WYSIWYG ebook editor for ePub format
+app-text/sigil 0.8.7-r1 0.9.4 0.9.5: Sigil is a multi-platform WYSIWYG ebook editor for ePub format
 app-text/silvercity 0.9.7 0.9.7-r1: A lexical analyser for many languages
 app-text/sloccount 2.26-r3: Tools for counting Source Lines of Code (SLOC) for a large number of languages
 app-text/spellutils 0.7: spellutils includes 'newsbody' (useful for spellchecking in mails, etc.)
