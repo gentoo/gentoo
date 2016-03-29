@@ -15,7 +15,7 @@ SLOT="0"
 KEYWORDS=""
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-1.95-toolchain.patch
+	epatch "${FILESDIR}"/${PN}-9999-toolchain.patch
 	sed -i lib/common.h -e '/^#define PALOVERSION/{s|".*"|"'${PV}'"|g}' || die
 }
 
