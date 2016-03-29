@@ -1,0 +1,31 @@
+From 8645df4344f22228862efb3c212e6aa7ec2c6d45 Mon Sep 17 00:00:00 2001
+From: Raphael Manfredi <Raphael_Manfredi@pobox.com>
+Date: Tue, 29 Mar 2016 21:16:48 +0200
+Subject: [PATCH] symbols_load_from(): must release write lock after falling
+ back to pre-computed.
+
+---
+ src/lib/symbols.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/src/lib/symbols.c b/src/lib/symbols.c
+index 9b2e080..69796f6 100644
+--- a/src/lib/symbols.c
++++ b/src/lib/symbols.c
+@@ -1448,7 +1448,7 @@ symbols_load_from(symbols_t *st, const char *exe, const  char *lpath)
+ 		}
+ 
+ 		if (st->garbage)
+-			return;			/* Already went through the "done" part */
++			goto unlock;		/* Already went through the "done" part */
+ 
+ 		/* FALL THROUGH */
+ 	}
+@@ -1474,6 +1474,7 @@ symbols_load_from(symbols_t *st, const char *exe, const  char *lpath)
+ 	if (!retried && !st->indirect && st->garbage)
+ 		goto use_pre_computed;
+ 
++unlock:
+ 	SYMBOLS_WRITE_UNLOCK(st);
+ }
+ 
