@@ -1,0 +1,28 @@
+commit 829fb30934c455de5fc8d92512561d237c58fb35
+Author: Andreas Sturmlechner <andreas.sturmlechner@gmail.com>
+Date:   Mon Nov 23 21:34:24 2015 +0100
+
+    [phonon] Do not set RPATH
+    
+    REVIEW: 126210
+
+diff --git a/phonon/platform_kde/CMakeLists.txt b/phonon/platform_kde/CMakeLists.txt
+index 281425f..20ec8f9 100644
+--- a/phonon/platform_kde/CMakeLists.txt
++++ b/phonon/platform_kde/CMakeLists.txt
+@@ -9,15 +9,6 @@ target_link_libraries(kde ${PHONON_LIBRARY} KF5::I18n KF5::KIOWidgets KF5::Notif
+ 
+ kcoreaddons_desktop_to_json(kde phononbackend.desktop)
+ 
+-if(NOT WIN32)
+-   set_target_properties(kde PROPERTIES
+-                             INSTALL_RPATH_USE_LINK_PATH TRUE
+-                             SKIP_BUILD_RPATH TRUE
+-                             BUILD_WITH_INSTALL_RPATH TRUE
+-                             INSTALL_RPATH ${KDE_INSTALL_LIBDIR}
+-   )
+-endif()
+-
+ install(TARGETS kde DESTINATION ${KDE_INSTALL_PLUGINDIR}/phonon_platform)
+ install(FILES phonon.notifyrc DESTINATION ${KDE_INSTALL_KNOTIFY5RCDIR})
+ install(FILES phononbackend.desktop DESTINATION ${KDE_INSTALL_KSERVICETYPES5DIR})
