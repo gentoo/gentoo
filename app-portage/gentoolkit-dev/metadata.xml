@@ -5,6 +5,10 @@
     <email>tools-portage@gentoo.org</email>
     <name>Gentoo Portage tools team</name>
   </maintainer>
+  <maintainer type="person">
+    <email>vapier@gentoo.org</email>
+    <description>Only ekeyword related bugs</description>
+  </maintainer>
   <longdescription>
 		Gentoolkit-dev is a collection of developer tools for the Gentoo distribution.
 	</longdescription>
