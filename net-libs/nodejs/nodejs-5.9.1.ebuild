@@ -20,13 +20,12 @@ IUSE="cpu_flags_x86_sse2 debug doc icu +npm +snapshot +ssl test"
 
 RDEPEND="icu? ( >=dev-libs/icu-56:= )
 	npm? ( ${PYTHON_DEPS} )
-	>=net-libs/http-parser-2.6.1:=
+	>=net-libs/http-parser-2.6.2:=
 	>=dev-libs/libuv-1.8.0:=
-	>=dev-libs/openssl-1.0.2f:0=[-bindist]
+	>=dev-libs/openssl-1.0.2g:0=[-bindist]
 	sys-libs/zlib"
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
-	!!net-libs/iojs
 	test? ( net-misc/curl )"
 
 S="${WORKDIR}/node-v${PV}"
