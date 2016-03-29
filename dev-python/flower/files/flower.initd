@@ -8,7 +8,7 @@ pidfile=${pidfile:-"/run/${SVCNAME}/${SVCNAME}.pid"}
 user=${SVCNAME}
 group=${SVCNAME}
 
-command="/usr/bin/${SVCNAME}"
+command="/usr/libexec/${SVCNAME}/${SVCNAME}"
 command_background="true"
 start_stop_daemon_args="--user ${user} --group ${group} \
 	--stdout /var/log/${SVCNAME}/${SVCNAME}.log \
