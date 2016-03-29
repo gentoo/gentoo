@@ -44,6 +44,8 @@ src_install() {
 	systemd_dounit "${FILESDIR}/${PN}.service"
 	keepdir /var/log/${PN}
 	fowners ${PN}:${PN} /var/log/${PN}
+	insinto /etc/logrotate.d
+	newins "${FILESDIR}/${PN}.logrotated" "${PN}"
 }
 
 python_install() {
