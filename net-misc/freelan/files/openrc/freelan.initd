@@ -1,0 +1,13 @@
+#!/sbin/runscript
+# Copyright 1999-2016 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+command="/usr/bin/freelan"
+command_args="-s -p /var/run/freelan.pid"
+pidfile="/var/run/freelan.pid"
+
+depend() {
+	need net
+	use logger
+}

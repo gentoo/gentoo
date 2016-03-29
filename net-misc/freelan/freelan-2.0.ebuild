@@ -55,4 +55,6 @@ src_compile() {
 src_install() {
 	DESTDIR="${D}" escons --mode=release prefix="${EPREFIX:-/}" bin_prefix="/usr" install
 	dodoc CONTRIBUTING.md README.md
+
+	newinitd "${FILESDIR}/openrc/freelan.initd" freelan
 }
