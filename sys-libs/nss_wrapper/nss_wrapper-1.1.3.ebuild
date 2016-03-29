@@ -11,7 +11,7 @@ HOMEPAGE="https://cwrap.org/nss_wrapper.html"
 SRC_URI="https://ftp.samba.org/pub/cwrap/${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~x86"
+KEYWORDS="amd64 ~hppa x86"
 IUSE="test"
 
 DEPEND=""
