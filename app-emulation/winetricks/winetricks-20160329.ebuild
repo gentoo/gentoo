@@ -39,7 +39,7 @@ RDEPEND="app-arch/cabextract
 	kde? ( kde-apps/kdialog )
 	rar? ( app-arch/unrar )"
 
-# Uses non-standard "Wine" category, which is provided by app-emulation/wine; #451552
+# Uses a non-standard "Wine" category, which is provided by app-emulation/wine; #451552
 QA_DESKTOP_FILE="usr/share/applications/winetricks.desktop"
 
 # Tests require network access and run Wine, which is unreliable from a portage environment.
