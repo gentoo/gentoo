@@ -46,6 +46,10 @@ src_install() {
 	fowners ${PN}:${PN} /var/log/${PN}
 }
 
+python_install() {
+	distutils-r1_python_install --install-scripts "${EPREFIX}/usr/libexec/flower"
+}
+
 python_test() {
 	esetup.py test || die
 }

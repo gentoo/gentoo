@@ -27,7 +27,7 @@ RDEPEND="
 	>=dev-python/alembic-0.8.0[${PYTHON_USEDEP}]
 	>=dev-python/Babel-1.3[${PYTHON_USEDEP}]
 	>=dev-python/oslo-i18n-2.1.0[${PYTHON_USEDEP}]
-	>=dev-python/oslo-config-3.4.0[${PYTHON_USEDEP}]
+	>=dev-python/oslo-config-3.7.0[${PYTHON_USEDEP}]
 	>=dev-python/oslo-context-0.2.0[${PYTHON_USEDEP}]
 	>=dev-python/oslo-utils-3.5.0[${PYTHON_USEDEP}]
 	sqlite? (

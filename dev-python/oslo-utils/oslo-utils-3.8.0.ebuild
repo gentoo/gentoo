@@ -35,7 +35,7 @@ DEPEND="
 		>=dev-python/oslotest-1.10.0[${PYTHON_USEDEP}]
 		>=dev-python/coverage-3.6.0[${PYTHON_USEDEP}]
 		>=dev-python/mock-1.2[${PYTHON_USEDEP}]
-		>=dev-python/oslo-config-3.4.0[${PYTHON_USEDEP}]
+		>=dev-python/oslo-config-3.7.0[${PYTHON_USEDEP}]
 	)
 	doc? (
 		>=dev-python/oslo-sphinx-2.5.0[${PYTHON_USEDEP}]

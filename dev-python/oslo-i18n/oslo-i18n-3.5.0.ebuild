@@ -28,7 +28,7 @@ DEPEND="
 		${CDEPEND}
 		>=dev-python/mock-1.2[${PYTHON_USEDEP}]
 		>=dev-python/coverage-3.6[${PYTHON_USEDEP}]
-		>=dev-python/oslo-config-3.4.0[${PYTHON_USEDEP}]
+		>=dev-python/oslo-config-3.7.0[${PYTHON_USEDEP}]
 	)
 	doc? (
 		${CDEPEND}
