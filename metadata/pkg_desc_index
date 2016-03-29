@@ -14916,7 +14916,7 @@ net-p2p/gnut 0.4.28-r1: Text-mode gnutella client
 net-p2p/gtk-gnutella 1.1.8 1.1.9: A GTK+ Gnutella client
 net-p2p/gtorrentviewer 0.2b: A GTK2-based viewer and editor for BitTorrent meta files
 net-p2p/hx 0.4.11: This is a Hotline 1.5+ compatible *nix Hotline Client in CLI. It supports IRC compatibility
-net-p2p/i2p 0.9.22 0.9.22-r1 0.9.23 0.9.24 0.9.24-r1 0.9.25: A privacy-centric, anonymous network.
+net-p2p/i2p 0.9.24-r2 0.9.25-r1: A privacy-centric, anonymous network.
 net-p2p/kmldonkey 2.0.7: Provides integration for the MLDonkey P2P software and KDE 4
 net-p2p/ktorrent 4.3.1-r1: A BitTorrent program for KDE
 net-p2p/litecoin-qt 0.10.2.2-r3: P2P Internet currency based on Bitcoin but easier to mine
