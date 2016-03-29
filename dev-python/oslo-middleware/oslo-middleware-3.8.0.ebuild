@@ -37,10 +37,10 @@ DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 RDEPEND="
 	${CDEPEND}
 	>=dev-python/Babel-1.3[${PYTHON_USEDEP}]
-	>=dev-python/oslo-config-3.4.0[${PYTHON_USEDEP}]
+	>=dev-python/oslo-config-3.7.0[${PYTHON_USEDEP}]
 	>=dev-python/oslo-context-0.2.0[${PYTHON_USEDEP}]
 	>=dev-python/oslo-i18n-2.1.0[${PYTHON_USEDEP}]
-	>=dev-python/oslo-utils-3.4.0[${PYTHON_USEDEP}]
+	>=dev-python/oslo-utils-3.5.0[${PYTHON_USEDEP}]
 	>=dev-python/six-1.9.0[${PYTHON_USEDEP}]
 	>=dev-python/stevedore-1.5.0[${PYTHON_USEDEP}]
 	>=dev-python/webob-1.2.3[${PYTHON_USEDEP}]
