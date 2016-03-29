@@ -16610,7 +16610,7 @@ sys-auth/openpam 20140912: Open source PAM library
 sys-auth/otpcalc 0.97-r6 0.97-r8: A One Time Password and S/Key calculator for X
 sys-auth/pam-afs-session 1.3 1.5 1.6: OpenAFS PAM Module
 sys-auth/pam-csync 0.42.0-r1: PAM module to provide roaming home directories for a user session
-sys-auth/pam-pgsql 0.7.3 0.7.3.1: pam_pgsql is a module for pam to authenticate users with PostgreSQL
+sys-auth/pam-pgsql 0.7.3 0.7.3.1 0.7.3.2: pam module to authenticate users via PostgreSQL
 sys-auth/pam-script 1.1.6 1.1.7: PAM module for executing scripts during authorization, password changes, and sessions
 sys-auth/pam_abl 0.4.1 0.5.0 0.6.0: PAM module for blacklisting of hosts and users on repeated failed authentication attempts
 sys-auth/pam_bioapi 0.4.0 0.4.0-r1: PAM interface to bioapi package
