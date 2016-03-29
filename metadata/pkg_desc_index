@@ -11231,7 +11231,7 @@ kde-apps/kwrite 4.14.3 15.12.3: KDE simple text editor
 kde-apps/libkcddb 4.14.3 15.08.3 15.12.3: KDE library for CDDB
 kde-apps/libkcompactdisc 4.14.3 15.08.3 15.08.3-r1 15.12.3-r1: KDE library for playing & ripping CDs
 kde-apps/libkdcraw 4.14.3 4.14.3-r1 15.08.3 15.12.3: Digital camera raw image library wrapper
-kde-apps/libkdeedu 4.14.3: Common library for KDE educational apps
+kde-apps/libkdeedu 4.14.3 15.12.3: Common library for KDE educational apps
 kde-apps/libkdegames 4.14.3 4.14.3-r1 15.12.3: Base library common to many KDE games
 kde-apps/libkdepim 4.4.2015.06 4.4.2016.01: Common library for KDE PIM apps (noakonadi branch)
 kde-apps/libkeduvocdocument 15.12.3: Library for reading/writing KVTML
@@ -14027,7 +14027,7 @@ net-im/ktp-send-file 0.9.0: KDE Telepathy file manager plugin to send files to c
 net-im/ktp-text-ui 0.9.0: KDE Telepathy text chat window
 net-im/librvp 0.9.6 0.9.7: An RVP (Microsoft Exchange Instant Messaging) plugin for Pidgin
 net-im/licq 1.8.2: ICQ Client with v8 support
-net-im/mcabber 0.10.2_p20131025 0.10.2_p20131025-r1 0.10.3 1.0.0 1.0.1 9999: A small Jabber console client with various features, like MUC, SSL, PGP
+net-im/mcabber 0.10.2_p20131025 0.10.2_p20131025-r1 0.10.3 1.0.0 1.0.1 1.0.2 9999: A small Jabber console client with various features, like MUC, SSL, PGP
 net-im/minbif 1.0.5-r1: an IRC gateway to IM networks
 net-im/mu-conference 0.7 0.8-r1 0.8.81: Multi-User Chat for jabberd
 net-im/openfire 3.10.0 3.10.1 3.10.2 3.10.3 4.0.0 4.0.1 4.0.2: Openfire (formerly wildfire) real time collaboration (RTC) server
