@@ -13,5 +13,6 @@
 	<upstream>
 		<remote-id type="pypi">minidb</remote-id>
 		<remote-id type="github">thp/minidb</remote-id>
+		<bugs-to>https://github.com/thp/minidb/issues</bugs-to>
 	</upstream>
 </pkgmetadata>
