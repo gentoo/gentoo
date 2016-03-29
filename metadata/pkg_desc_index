@@ -9929,7 +9929,7 @@ games-action/descent2-data 1.0: Data files for Descent 2
 games-action/descent2-demodata 1.0: Demo data files for Descent 2
 games-action/descent3 1.4.0b-r2: Descent 3 - 3-Dimensional indoor/outdoor spaceship combat
 games-action/descent3-demo 1.4.0a: Indoor/outdoor 3D combat with evil robotic mining spacecraft
-games-action/extreme-tuxracer 0.6.0: High speed arctic racing game based on Tux Racer
+games-action/extreme-tuxracer 0.6.0 0.7.1: High speed arctic racing game based on Tux Racer
 games-action/fakk2 1.02: Heavy Metal: FAKK2 - 3D third-person action shooter based on the Heavy Metal comics/movies
 games-action/formido 1.0.1: A shooting game in the spirit of Phobia games
 games-action/garden 1.0.8-r1 1.0.9: Multiplatform vertical shoot-em-up with non-traditional elements
