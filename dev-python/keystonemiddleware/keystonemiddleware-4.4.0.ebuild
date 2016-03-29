@@ -45,11 +45,11 @@ DEPEND="
 RDEPEND="
 	${CDEPEND}
 	>=dev-python/keystoneauth-2.1.0[${PYTHON_USEDEP}]
-	>=dev-python/oslo-config-3.4.0[${PYTHON_USEDEP}]
+	>=dev-python/oslo-config-3.7.0[${PYTHON_USEDEP}]
 	>=dev-python/oslo-context-0.2.0[${PYTHON_USEDEP}]
 	>=dev-python/oslo-i18n-2.1.0[${PYTHON_USEDEP}]
 	>=dev-python/oslo-serialization-1.10.0[${PYTHON_USEDEP}]
-	>=dev-python/oslo-utils-3.4.0[${PYTHON_USEDEP}]
+	>=dev-python/oslo-utils-3.5.0[${PYTHON_USEDEP}]
 	>=dev-python/positional-1.0.1[${PYTHON_USEDEP}]
 	>=dev-python/pycadf-1.1.0[${PYTHON_USEDEP}]
 	!~dev-python/pycadf-2.0.0[${PYTHON_USEDEP}]

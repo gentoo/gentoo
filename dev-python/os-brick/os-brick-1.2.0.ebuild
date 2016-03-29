@@ -24,7 +24,7 @@ RDEPEND="
 	${CDEPEND}
 	>=dev-python/Babel-1.3[${PYTHON_USEDEP}]
 	>=dev-python/eventlet-0.18.4[${PYTHON_USEDEP}]
-	>=dev-python/oslo-concurrency-2.3.0[${PYTHON_USEDEP}]
+	>=dev-python/oslo-concurrency-3.5.0[${PYTHON_USEDEP}]
 	>=dev-python/oslo-log-1.14.0[${PYTHON_USEDEP}]
 	>=dev-python/oslo-serialization-1.10.0[${PYTHON_USEDEP}]
 	>=dev-python/oslo-i18n-2.1.0[${PYTHON_USEDEP}]
