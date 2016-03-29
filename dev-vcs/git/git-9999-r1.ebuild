@@ -2,17 +2,25 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 GENTOO_DEPEND_ON_PERL=no
 
 # bug #329479: git-remote-testgit is not multiple-version aware
 PYTHON_COMPAT=( python2_7 )
-[[ ${PV} == *9999 ]] && SCM="git-2"
+[[ ${PV} == *9999 ]] && SCM="git-r3"
+# Please ensure that all _four_ 9999 ebuilds get updated; they track the 4 upstream branches.
+# See https://git-scm.com/docs/gitworkflows#_graduation
+# In order of stability:
+# 9999-r0: maint
+# 9999-r1: master
+# 9999-r2: next
+# 9999-r3: pu
 EGIT_REPO_URI="git://git.kernel.org/pub/scm/git/git.git"
-EGIT_MASTER=maint
+EGIT_BRANCH=master
+PLOCALES="bg ca de fr is it ko pt_PT ru sv vi zh_CN"
 
-inherit toolchain-funcs eutils elisp-common perl-module bash-completion-r1 python-single-r1 systemd ${SCM}
+inherit toolchain-funcs eutils elisp-common l10n perl-module bash-completion-r1 python-single-r1 systemd ${SCM}
 
 MY_PV="${PV/_rc/.rc}"
 MY_P="${PN}-${MY_PV}"
@@ -38,15 +46,16 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="+blksha1 +curl cgi doc emacs gnome-keyring +gpg gtk highlight +iconv mediawiki mediawiki-experimental +nls +pcre +perl +python ppcsha1 tk +threads +webdav xinetd cvs subversion test"
+IUSE="+blksha1 +curl cgi doc emacs gnome-keyring +gpg gtk highlight +iconv libressl mediawiki mediawiki-experimental +nls +pcre +perl +python ppcsha1 tk +threads +webdav xinetd cvs subversion test"
 
 # Common to both DEPEND and RDEPEND
 CDEPEND="
-	dev-libs/openssl:0
+	!libressl? ( dev-libs/openssl:0= )
+	libressl? ( dev-libs/libressl:= )
 	sys-libs/zlib
 	pcre? ( dev-libs/libpcre )
 	perl? ( dev-lang/perl:=[-build(-)] )
-	tk? ( dev-lang/tk:0 )
+	tk? ( dev-lang/tk:0= )
 	curl? (
 		net-misc/curl
 		webdav? ( dev-libs/expat )
@@ -80,7 +89,6 @@ RDEPEND="${CDEPEND}
 #   .xml/docbook  --(docbook2texi.pl)--> .texi
 #   .texi         --(makeinfo)---------> .info
 DEPEND="${CDEPEND}
-	app-arch/cpio
 	doc? (
 		app-text/asciidoc
 		app-text/docbook2X
@@ -110,6 +118,20 @@ REQUIRED_USE="
 	python? ( ${PYTHON_REQUIRED_USE} )
 "
 
+PATCHES=(
+	# bug #350330 - automagic CVS when we don't want it is bad.
+	"${FILESDIR}"/git-2.2.2-optional-cvs.patch
+
+	# install mediawiki perl modules also in vendor_dir
+	# hack, needs better upstream solution
+	"${FILESDIR}"/git-1.8.5-mw-vendor.patch
+
+	"${FILESDIR}"/git-2.2.0-svn-fe-linking.patch
+
+	# Bug #493306, where FreeBSD 10.x merged libiconv into its libc.
+	"${FILESDIR}"/git-2.5.1-freebsd-10.x-no-iconv.patch
+)
+
 pkg_setup() {
 	if use subversion && has_version "dev-vcs/subversion[dso]"; then
 		ewarn "Per Gentoo bugs #223747, #238586, when subversion is built"
@@ -127,24 +149,24 @@ exportmakeopts() {
 	local myopts
 
 	if use blksha1 ; then
-		myopts="${myopts} BLK_SHA1=YesPlease"
+		myopts+=" BLK_SHA1=YesPlease"
 	elif use ppcsha1 ; then
-		myopts="${myopts} PPC_SHA1=YesPlease"
+		myopts+=" PPC_SHA1=YesPlease"
 	fi
 
 	if use curl ; then
-		use webdav || myopts="${myopts} NO_EXPAT=YesPlease"
+		use webdav || myopts+=" NO_EXPAT=YesPlease"
 	else
-		myopts="${myopts} NO_CURL=YesPlease"
+		myopts+=" NO_CURL=YesPlease"
 	fi
 
 	# broken assumptions, because of broken build system ...
-	myopts="${myopts} NO_FINK=YesPlease NO_DARWIN_PORTS=YesPlease"
-	myopts="${myopts} INSTALL=install TAR=tar"
-	myopts="${myopts} SHELL_PATH=${EPREFIX}/bin/sh"
-	myopts="${myopts} SANE_TOOL_PATH="
-	myopts="${myopts} OLD_ICONV="
-	myopts="${myopts} NO_EXTERNAL_GREP="
+	myopts+=" NO_FINK=YesPlease NO_DARWIN_PORTS=YesPlease"
+	myopts+=" INSTALL=install TAR=tar"
+	myopts+=" SHELL_PATH=${EPREFIX}/bin/sh"
+	myopts+=" SANE_TOOL_PATH="
+	myopts+=" OLD_ICONV="
+	myopts+=" NO_EXTERNAL_GREP="
 
 	# For svn-fe
 	extlibs="-lz -lssl ${S}/xdiff/lib.a $(usex threads -lpthread '')"
@@ -153,53 +175,55 @@ exportmakeopts() {
 	sed -i -e '/\/usr\/local/s/BASIC_/#BASIC_/' Makefile
 
 	use iconv \
-		|| myopts="${myopts} NO_ICONV=YesPlease"
+		|| myopts+=" NO_ICONV=YesPlease"
 	use nls \
-		|| myopts="${myopts} NO_GETTEXT=YesPlease"
+		|| myopts+=" NO_GETTEXT=YesPlease"
 	use tk \
-		|| myopts="${myopts} NO_TCLTK=YesPlease"
+		|| myopts+=" NO_TCLTK=YesPlease"
 	use pcre \
-		&& myopts="${myopts} USE_LIBPCRE=yes" \
-		&& extlibs="${extlibs} -lpcre"
+		&& myopts+=" USE_LIBPCRE=yes" \
+		&& extlibs+=" -lpcre"
 	use perl \
-		&& myopts="${myopts} INSTALLDIRS=vendor" \
-		|| myopts="${myopts} NO_PERL=YesPlease"
+		&& myopts+=" INSTALLDIRS=vendor" \
+		|| myopts+=" NO_PERL=YesPlease"
 	use python \
-		|| myopts="${myopts} NO_PYTHON=YesPlease"
+		|| myopts+=" NO_PYTHON=YesPlease"
 	use subversion \
-		|| myopts="${myopts} NO_SVN_TESTS=YesPlease"
+		|| myopts+=" NO_SVN_TESTS=YesPlease"
 	use threads \
-		&& myopts="${myopts} THREADED_DELTA_SEARCH=YesPlease" \
-		|| myopts="${myopts} NO_PTHREADS=YesPlease"
+		&& myopts+=" THREADED_DELTA_SEARCH=YesPlease" \
+		|| myopts+=" NO_PTHREADS=YesPlease"
 	use cvs \
-		|| myopts="${myopts} NO_CVS=YesPlease"
+		|| myopts+=" NO_CVS=YesPlease"
 # Disabled until ~m68k-mint can be keyworded again
 #	if [[ ${CHOST} == *-mint* ]] ; then
-#		myopts="${myopts} NO_MMAP=YesPlease"
-#		myopts="${myopts} NO_IPV6=YesPlease"
-#		myopts="${myopts} NO_STRLCPY=YesPlease"
-#		myopts="${myopts} NO_MEMMEM=YesPlease"
-#		myopts="${myopts} NO_MKDTEMP=YesPlease"
-#		myopts="${myopts} NO_MKSTEMPS=YesPlease"
+#		myopts+=" NO_MMAP=YesPlease"
+#		myopts+=" NO_IPV6=YesPlease"
+#		myopts+=" NO_STRLCPY=YesPlease"
+#		myopts+=" NO_MEMMEM=YesPlease"
+#		myopts+=" NO_MKDTEMP=YesPlease"
+#		myopts+=" NO_MKSTEMPS=YesPlease"
 #	fi
 	if [[ ${CHOST} == ia64-*-hpux* ]]; then
-		myopts="${myopts} NO_NSEC=YesPlease"
+		myopts+=" NO_NSEC=YesPlease"
 	fi
 	if [[ ${CHOST} == *-*-aix* ]]; then
-		myopts="${myopts} NO_FNMATCH_CASEFOLD=YesPlease"
+		myopts+=" NO_FNMATCH_CASEFOLD=YesPlease"
 	fi
 	if [[ ${CHOST} == *-solaris* ]]; then
-		myopts="${myopts} NEEDS_LIBICONV=YesPlease"
+		myopts+=" NEEDS_LIBICONV=YesPlease"
+		myopts+=" HAVE_CLOCK_MONOTONIC=1"
+		myopts+=" HAVE_GETDELIM=1"
 	fi
 
 	has_version '>=app-text/asciidoc-8.0' \
-		&& myopts="${myopts} ASCIIDOC8=YesPlease"
-	myopts="${myopts} ASCIIDOC_NO_ROFF=YesPlease"
+		&& myopts+=" ASCIIDOC8=YesPlease"
+	myopts+=" ASCIIDOC_NO_ROFF=YesPlease"
 
 	# Bug 290465:
 	# builtin-fetch-pack.c:816: error: 'struct stat' has no member named 'st_mtim'
 	[[ "${CHOST}" == *-uclibc* ]] && \
-		myopts="${myopts} NO_NSEC=YesPlease"
+		myopts+=" NO_NSEC=YesPlease"
 
 	export MY_MAKEOPTS="${myopts}"
 	export EXTLIBS="${extlibs}"
@@ -215,7 +239,7 @@ src_unpack() {
 			unpack ${PN}-htmldocs-${DOC_VER}.tar.${SRC_URI_SUFFIX}
 		cd "${S}"
 	else
-		git-2_src_unpack
+		git-r3_src_unpack
 		cd "${S}"
 		#cp "${FILESDIR}"/GIT-VERSION-GEN .
 	fi
@@ -223,24 +247,17 @@ src_unpack() {
 }
 
 src_prepare() {
-	# bug #350330 - automagic CVS when we don't want it is bad.
-	epatch "${FILESDIR}"/git-2.2.2-optional-cvs.patch
-
-	# install mediawiki perl modules also in vendor_dir
-	# hack, needs better upstream solution
-	epatch "${FILESDIR}"/git-1.8.5-mw-vendor.patch
-
 	# add experimental patches to improve mediawiki support
 	# see patches for origin
 	if use mediawiki-experimental ; then
-		epatch "${FILESDIR}"/git-2.7.0-mediawiki-namespaces.patch
-		epatch "${FILESDIR}"/git-2.7.0-mediawiki-subpages.patch
-		epatch "${FILESDIR}"/git-2.7.0-mediawiki-500pages.patch
+		PATCHES+=(
+			"${FILESDIR}"/git-2.7.0-mediawiki-namespaces.patch
+			"${FILESDIR}"/git-2.7.0-mediawiki-subpages.patch
+			"${FILESDIR}"/git-2.7.0-mediawiki-500pages.patch
+		)
 	fi
 
-	epatch "${FILESDIR}"/git-2.2.0-svn-fe-linking.patch
-
-	epatch_user
+	default
 
 	sed -i \
 		-e 's:^\(CFLAGS[[:space:]]*=\).*$:\1 $(OPTCFLAGS) -Wall:' \
@@ -308,8 +325,8 @@ src_compile() {
 
 	if use perl && use cgi ; then
 		git_emake \
-			gitweb/gitweb.cgi \
-			|| die "emake gitweb/gitweb.cgi failed"
+			gitweb \
+			|| die "emake gitweb (cgi) failed"
 	fi
 
 	if [[ ${CHOST} == *-darwin* ]]; then
@@ -374,13 +391,15 @@ src_install() {
 	# manpages may exist in either OR both of these directories.
 	find man?/*.[157] >/dev/null 2>&1 && doman man?/*.[157]
 	find Documentation/*.[157] >/dev/null 2>&1 && doman Documentation/*.[157]
-
-	dodoc README Documentation/{SubmittingPatches,CodingGuidelines}
+	dodoc README* Documentation/{SubmittingPatches,CodingGuidelines}
 	use doc && dodir /usr/share/doc/${PF}/html
 	for d in / /howto/ /technical/ ; do
 		docinto ${d}
 		dodoc Documentation${d}*.txt
-		use doc && dohtml -p ${d} Documentation${d}*.html
+		if use doc ; then
+			docinto ${d}/html
+			dodoc Documentation${d}*.html
+		fi
 	done
 	docinto /
 	# Upstream does not ship this pre-built :-(
@@ -453,7 +472,11 @@ src_install() {
 		cd "${S}"/contrib/svn-fe
 		dobin svn-fe
 		dodoc svn-fe.txt
-		use doc && doman svn-fe.1 && dohtml svn-fe.html
+		if use doc ; then
+			doman svn-fe.1
+			docinto html
+			dodoc svn-fe.html
+		fi
 		cd "${S}"
 	fi
 
@@ -521,6 +544,16 @@ src_install() {
 	fi
 
 	perl_delete_localpod
+
+	# Remove disabled linguas
+	# we could remove sources in src_prepare, but install does not
+	# handle missing locale dir well
+	rm_loc() {
+		if [[ -e "${ED}/usr/share/locale/${1}" ]]; then
+			rm -r "${ED}/usr/share/locale/${1}" || die
+		fi
+	}
+	l10n_for_each_disabled_locale_do rm_loc
 }
 
 src_test() {
