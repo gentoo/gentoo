@@ -1,0 +1,70 @@
+From 33184bf69813087bf1885b0993685f9d03320c69 Mon Sep 17 00:00:00 2001
+From: Dmitri Smirnov <dmitrism@microsoft.com>
+Date: Mon, 29 Feb 2016 14:30:19 -0800
+Subject: [PATCH] Fix stack corruption and uninitialized var warning
+
+Stack corruption happens in x64 bit
+
+This resolves #347.
+---
+ src/arena.c      |  2 +-
+ test/unit/hash.c | 13 +++++++------
+ 2 files changed, 8 insertions(+), 7 deletions(-)
+
+diff --git a/src/arena.c b/src/arena.c
+index 99e20fd..965c0fe 100644
+--- a/src/arena.c
++++ b/src/arena.c
+@@ -2423,7 +2423,7 @@ arena_malloc_large(tsd_t *tsd, arena_t *arena, szind_t binind, bool zero)
+ 	uintptr_t random_offset;
+ 	arena_run_t *run;
+ 	arena_chunk_map_misc_t *miscelm;
+-	UNUSED bool idump;
++	UNUSED bool idump JEMALLOC_CC_SILENCE_INIT(false);
+ 
+ 	/* Large allocation. */
+ 	usize = index2size(binind);
+diff --git a/test/unit/hash.c b/test/unit/hash.c
+index f50ba81..010c9d7 100644
+--- a/test/unit/hash.c
++++ b/test/unit/hash.c
+@@ -64,14 +64,15 @@ static void
+ hash_variant_verify_key(hash_variant_t variant, uint8_t *key)
+ {
+ 	const int hashbytes = hash_variant_bits(variant) / 8;
+-	VARIABLE_ARRAY(uint8_t, hashes, hashbytes * 256);
++	const int hashes_size = hashbytes * 256;
++	VARIABLE_ARRAY(uint8_t, hashes, hashes_size);
+ 	VARIABLE_ARRAY(uint8_t, final, hashbytes);
+ 	unsigned i;
+ 	uint32_t computed, expected;
+ 
+ 	memset(key, 0, KEY_SIZE);
+-	memset(hashes, 0, sizeof(hashes));
+-	memset(final, 0, sizeof(final));
++	memset(hashes, 0, hashes_size);
++	memset(final, 0, hashbytes);
+ 
+ 	/*
+ 	 * Hash keys of the form {0}, {0,1}, {0,1,2}, ..., {0,1,...,255} as the
+@@ -102,17 +103,17 @@ hash_variant_verify_key(hash_variant_t variant, uint8_t *key)
+ 	/* Hash the result array. */
+ 	switch (variant) {
+ 	case hash_variant_x86_32: {
+-		uint32_t out = hash_x86_32(hashes, hashbytes*256, 0);
++		uint32_t out = hash_x86_32(hashes, hashes_size, 0);
+ 		memcpy(final, &out, sizeof(out));
+ 		break;
+ 	} case hash_variant_x86_128: {
+ 		uint64_t out[2];
+-		hash_x86_128(hashes, hashbytes*256, 0, out);
++		hash_x86_128(hashes, hashes_size, 0, out);
+ 		memcpy(final, out, sizeof(out));
+ 		break;
+ 	} case hash_variant_x64_128: {
+ 		uint64_t out[2];
+-		hash_x64_128(hashes, hashbytes*256, 0, out);
++		hash_x64_128(hashes, hashes_size, 0, out);
+ 		memcpy(final, out, sizeof(out));
+ 		break;
+ 	} default: not_reached();
