@@ -1,6 +1,6 @@
-diff -Naur emilpro-3/CMakeLists.txt emilpro-3-nobinutils/CMakeLists.txt
---- emilpro-3/CMakeLists.txt	2013-12-28 04:22:34.000000000 -0500
-+++ emilpro-3-nobinutils/CMakeLists.txt	2014-03-18 14:59:17.983479920 -0400
+diff -Naur emilpro-3-orig/CMakeLists.txt emilpro-3/CMakeLists.txt
+--- emilpro-3-orig/CMakeLists.txt	2016-03-29 13:19:47.035441401 -0400
++++ emilpro-3/CMakeLists.txt	2016-03-29 13:18:36.650443067 -0400
 @@ -11,7 +11,6 @@
  set (BASE_DIR ${CMAKE_CURRENT_SOURCE_DIR})
  
@@ -34,3 +34,15 @@ diff -Naur emilpro-3/CMakeLists.txt emilpro-3-nobinutils/CMakeLists.txt
  
  set (BASE_LIBS
  	${LIBELF_LIBRARIES}
+diff -Naur emilpro-3-orig/src/namemangler.cc emilpro-3/src/namemangler.cc
+--- emilpro-3-orig/src/namemangler.cc	2016-03-29 13:17:23.957444786 -0400
++++ emilpro-3/src/namemangler.cc	2016-03-29 13:18:57.306442578 -0400
+@@ -1,7 +1,7 @@
+ #include <namemangler.hh>
+ 
+ #include <bfd.h>
+-#include <demangle.h>
++#include <libiberty/demangle.h>
+ 
+ using namespace emilpro;
+ 
