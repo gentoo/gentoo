@@ -1,0 +1,81 @@
+commit d782a42eaeecdce9b4377a7b41dc60b9fecca31c
+Author: Julien Kauffmann <julien.kauffmann@freelan.org>
+Date:   Sat May 9 19:30:11 2015 -0400
+
+    Added support for a different binary prefix
+
+diff --git a/Makefile b/Makefile
+index 20b5ea1..b009d2c 100644
+--- a/Makefile
++++ b/Makefile
+@@ -1,15 +1,16 @@
+ PRODUCT_NAME:=freelan
+ PRODUCT_VERSION:=$(shell cat VERSION | tr -d '\r\n')
+-PRODUCT_PREFIX=/usr
++PRODUCT_BIN_PREFIX=/usr
++PRODUCT_PREFIX=/
+ 
+ default: build
+ 
+ build:
+-	FREELAN_NO_GIT=1 FREELAN_NO_GIT_VERSION=${PRODUCT_VERSION} scons --mode=release apps prefix=${PRODUCT_PREFIX}
++	FREELAN_NO_GIT=1 FREELAN_NO_GIT_VERSION=${PRODUCT_VERSION} scons --mode=release apps prefix=${PRODUCT_PREFIX} bin_prefix=${PRODUCT_BIN_PREFIX}
+ 
+ install:
+ 	# Install the files to $(DESTDIR) (defaults to /)
+-	FREELAN_NO_GIT=1 FREELAN_NO_GIT_VERSION=${PRODUCT_VERSION} DESTDIR=$(DESTDIR) scons --mode=release install prefix=${PRODUCT_PREFIX}
++	FREELAN_NO_GIT=1 FREELAN_NO_GIT_VERSION=${PRODUCT_VERSION} DESTDIR=$(DESTDIR) scons --mode=release install prefix=${PRODUCT_PREFIX} bin_prefix=${PRODUCT_BIN_PREFIX}
+ 
+ package:
+ 	git archive HEAD --prefix=${PRODUCT_NAME}-${PRODUCT_VERSION}/ | gzip > ${PRODUCT_NAME}-${PRODUCT_VERSION}.tar.gz
+diff --git a/SConstruct b/SConstruct
+index 32a9915..bc68b71 100644
+--- a/SConstruct
++++ b/SConstruct
+@@ -28,7 +28,7 @@ class FreelanEnvironment(Environment):
+     A freelan specific environment class.
+     """
+ 
+-    def __init__(self, mode, prefix, **kwargs):
++    def __init__(self, mode, prefix, bin_prefix=None, **kwargs):
+         """
+         Initialize the environment.
+ 
+@@ -66,14 +66,19 @@ class FreelanEnvironment(Environment):
+ 
+         self.mode = mode
+         self.prefix = prefix
++        self.bin_prefix = bin_prefix if bin_prefix else prefix
+         self.destdir = self['ENV'].get('DESTDIR', '')
+ 
+         if self.destdir:
+             self.install_prefix = os.path.normpath(
+                 os.path.abspath(self.destdir),
+             ) + self.prefix
++            self.bin_install_prefix = os.path.normpath(
++                os.path.abspath(self.destdir),
++            ) + self.bin_prefix
+         else:
+             self.install_prefix = self.prefix
++            self.bin_install_prefix = self.bin_prefix
+ 
+         if os.path.basename(self['CXX']) == 'clang++':
+             self.Append(CXXFLAGS=['-Qunused-arguments'])
+@@ -147,10 +152,15 @@ class FreelanEnvironment(Environment):
+ mode = GetOption('mode')
+ prefix = os.path.normpath(os.path.abspath(ARGUMENTS.get('prefix', './install')))
+ 
++if 'bin_prefix' in ARGUMENTS:
++    bin_prefix = os.path.normpath(os.path.abspath(ARGUMENTS['bin_prefix']))
++else:
++    bin_prefix = None
++
+ if mode in ('all', 'release'):
+-    env = FreelanEnvironment(mode='release', prefix=prefix)
++    env = FreelanEnvironment(mode='release', prefix=prefix, bin_prefix=bin_prefix)
+     libraries, includes, apps, samples, configurations = SConscript('SConscript', exports='env', variant_dir=os.path.join('build', env.mode))
+-    install = env.Install(os.path.join(env.install_prefix, 'bin'), apps)
++    install = env.Install(os.path.join(env.bin_install_prefix, 'bin'), apps)
+     install.extend(env.Install(os.path.join(env.install_prefix, 'etc', 'freelan'), configurations))
+ 
+     Alias('install', install)
