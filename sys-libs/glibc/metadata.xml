@@ -9,6 +9,7 @@
  <flag name="debug">When USE=hardened, allow fortify/stack violations to dump core (SIGABRT) and not kill self (SIGKILL)</flag>
  <flag name="gd">build memusage and memusagestat tools</flag>
  <flag name="nscd">Build, and enable support for, the Name Service Cache Daemon</flag>
+ <flag name="rpc">Enable obsolete RPC/NIS layers (disabling is experimental -- see bug 381391)</flag>
  <flag name="suid">Make internal pt_chown helper setuid -- not needed if using Linux and have /dev/pts mounted with gid=5</flag>
  <flag name="systemtap">enable systemtap static probe points</flag>
 </use>

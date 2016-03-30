@@ -113,7 +113,7 @@ glibc_do_configure() {
 		--with-bugurl=http://bugs.gentoo.org/
 		--with-pkgversion="$(glibc_banner)"
 		$(use_multiarch || echo --disable-multi-arch)
-		--enable-obsolete-rpc
+		$(in_iuse rpc && use_enable rpc obsolete-rpc || echo --enable-obsolete-rpc)
 		$(in_iuse systemtap && use_enable systemtap)
 		$(in_iuse nscd && use_enable nscd)
 		${EXTRA_ECONF}
@@ -123,6 +123,10 @@ glibc_do_configure() {
 	if version_is_at_least 2.23 ; then
 		myconf+=( $(use_enable vanilla timezone-tools) )
 	fi
+
+	# These libs don't have configure flags.
+	ac_cv_lib_audit_audit_log_user_avc_message=$(in_iuse audit && usex audit || echo no)
+	ac_cv_lib_cap_cap_init=$(in_iuse caps && usex caps || echo no)
 
 	# There is no configure option for this and we need to export it
 	# since the glibc build will re-run configure on itself
@@ -204,6 +208,9 @@ toolchain-glibc_headers_configure() {
 		libc_cv_z_relro=yes
 		libc_mips_abi=${ABI}
 		libc_mips_float=$([[ $(tc-is-softfloat) == "yes" ]] && echo soft || echo hard)
+		# These libs don't have configure flags.
+		ac_cv_lib_audit_audit_log_user_avc_message=no
+		ac_cv_lib_cap_cap_init=no
 	)
 	einfo "Forcing cached settings:"
 	for v in "${vars[@]}" ; do

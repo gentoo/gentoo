@@ -30,7 +30,7 @@ GCC_BOOTSTRAP_VER="4.7.3-r1"
 PATCH_VER=""                                   # Gentoo patchset
 : ${NPTL_KERN_VER:="2.6.32"}                   # min kernel version nptl requires
 
-IUSE="debug gd hardened multilib nscd selinux systemtap profile suid vanilla crosscompile_opts_headers-only"
+IUSE="audit caps debug gd hardened multilib nscd +rpc selinux systemtap profile suid vanilla crosscompile_opts_headers-only"
 
 # Here's how the cross-compile logic breaks down ...
 #  CTARGET - machine that will target the binaries
@@ -64,13 +64,21 @@ SLOT="2.2"
 
 # General: We need a new-enough binutils/gcc to match upstream baseline.
 # arch: we need to make sure our binutils/gcc supports TLS.
-DEPEND=">=app-misc/pax-utils-0.1.10
-	!<sys-apps/sandbox-1.6
-	!<sys-apps/portage-2.1.2
-	selinux? ( sys-libs/libselinux )"
-RDEPEND="!sys-kernel/ps3-sources
-	sys-apps/gentoo-functions
+COMMON_DEPEND="
+	nscd? ( selinux? (
+		audit? ( sys-process/audit )
+		caps? ( sys-libs/libcap )
+	) )
+	suid? ( caps? ( sys-libs/libcap ) )
 	selinux? ( sys-libs/libselinux )
+"
+DEPEND="${COMMON_DEPEND}
+	>=app-misc/pax-utils-0.1.10
+	!<sys-apps/sandbox-1.6
+	!<sys-apps/portage-2.1.2"
+RDEPEND="${COMMON_DEPEND}
+	!sys-kernel/ps3-sources
+	sys-apps/gentoo-functions
 	!sys-libs/nss-db"
 
 if [[ ${CATEGORY} == cross-* ]] ; then
