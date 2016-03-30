@@ -38,10 +38,6 @@
 # Tons-o-bugs and no actual testing by new author. #578490
 dev-libs/libtomcrypt
 
-# Anthony G. Basile <blueness@gentoo.org> (27 Mar 2016)
-# Fails to build, bug #578348
-x11-wm/lumina
-
 # Pawel Hajdan jr <phajdan.jr@gentoo.org> (25 Mar 2016)
 # Dev channel releases are only for people who are developers or want more
 # experimental features and accept a more unstable release.
