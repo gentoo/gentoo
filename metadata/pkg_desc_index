@@ -8759,7 +8759,7 @@ dev-ruby/faraday_middleware-multi_json 0.0.6: Response JSON parser using MultiJs
 dev-ruby/fast-stemmer 1.0.2-r2: Simple wrapper around multithreaded Porter stemming algorithm
 dev-ruby/fast_gettext 1.0.0: GetText but 3.5x faster, 560x less memory, clean namespace and threadsave!
 dev-ruby/fast_xs 0.8.0-r1 0.8.0-r2: fast_xs text escaping library ruby bindings
-dev-ruby/fattr 2.2.2: fattr.rb is a "fatter attr" for ruby
+dev-ruby/fattr 2.2.2 2.3.0: fattr.rb is a "fatter attr" for ruby
 dev-ruby/fcgi 0.9.2.1 0.9.2.1-r1: FastCGI library for Ruby
 dev-ruby/ferret 0.11.8.6: A ruby indexing/searching library
 dev-ruby/ffaker 2.1.0: Faster Faker, generates dummy data
@@ -8932,7 +8932,7 @@ dev-ruby/origin 1.1.0 2.1.1 2.2.0: Origin is a simple DSL for generating MongoDB
 dev-ruby/ox 2.2.4 2.3.0: A fast XML parser and Object marshaller
 dev-ruby/packetfu 1.1.9-r1 1.1.10-r2 1.1.11-r1: A mid-level packet manipulation library
 dev-ruby/paint 1.0.1: Terminal painter
-dev-ruby/parser 2.3.0.4 2.3.0.6: A production-ready Ruby parser written in pure Ruby
+dev-ruby/parser 2.3.0.4 2.3.0.6 2.3.0.7: A production-ready Ruby parser written in pure Ruby
 dev-ruby/parslet 1.7.1: A small PEG based parser library
 dev-ruby/patron 0.4.18-r1 0.4.18-r2 0.4.20 0.5.0-r1 0.5.1: Patron is a Ruby HTTP client library based on libcurl
 dev-ruby/pcaprub 0.11.3-r2 0.12.0-r1 0.12.1: Libpcap bindings for ruby compat
@@ -16539,7 +16539,7 @@ sys-apps/s6-linux-utils 2.0.2.3: Set of tiny linux utilities
 sys-apps/s6-portable-utils 2.0.5.3: Set of tiny portable unix utilities
 sys-apps/s6-rc 0.0.2.1: Service manager for the s6 supervision suite
 sys-apps/salinfo 1.2: decode Itanium SAL records (e.g. various hardware errors)
-sys-apps/sandbox 2.6-r1 2.7 2.8 2.9 2.10-r1 2.10-r2 2.11-r1: sandbox'd LD_PRELOAD hack
+sys-apps/sandbox 2.6-r1 2.7 2.8 2.9 2.10-r1 2.10-r2 2.11-r2: sandbox'd LD_PRELOAD hack
 sys-apps/sdparm 1.07 1.09 1.10: Utility to output and modify parameters on a SCSI device, like hdparm
 sys-apps/secilc 2.5 9999: SELinux Common Intermediate Language (CIL) Compiler
 sys-apps/sed 4.2.1-r1 4.2.2: Super-useful stream editor
