@@ -22,7 +22,7 @@ KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86 ~x86-fbsd ~amd64-linux ~x86-linux"
 IUSE="minimal"
 
 REMOVE_DIRS="${FILESDIR}/${PN}-15.11.90-remove-dirs"
-REMOVE_MSGS="${FILESDIR}/${PN}-15.08.3-r1-remove-messages"
+REMOVE_MSGS="${FILESDIR}/${PN}-15.12.3-remove-messages"
 
 LV="4.14.3"
 LEGACY_LANGS="ar bg bs ca ca@valencia cs da de el en_GB es et eu fa fi fr ga gl
