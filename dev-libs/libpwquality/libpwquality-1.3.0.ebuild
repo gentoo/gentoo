@@ -5,7 +5,7 @@
 EAPI="5"
 PYTHON_COMPAT=( python{2_7,3_3,3_4} )
 
-inherit eutils multilib pam python-r1 toolchain-funcs
+inherit eutils multilib pam python-r1 sep-usr
 
 DESCRIPTION="Library for password quality checking and generating random passwords"
 HOMEPAGE="https://fedorahosted.org/libpwquality/"
@@ -17,7 +17,7 @@ KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 s390 sh sparc x86"
 IUSE="pam python static-libs"
 
 RDEPEND="
-	>=sys-libs/cracklib-2.8:=
+	>=sys-libs/cracklib-2.8:=[sep-usr?]
 	pam? ( virtual/pam )
 	python? ( ${PYTHON_DEPS} )
 "
@@ -38,7 +38,6 @@ src_configure() {
 	configuring() {
 		local sitedir
 		econf \
-			--libdir="${EPREFIX}/$(get_libdir)" \
 			$(use_enable pam) \
 			--with-securedir="${EPREFIX}/$(getpam_mod_dir)" \
 			$(use_enable python python-bindings) \
@@ -58,12 +57,7 @@ src_test() {
 
 src_install() {
 	if_use_python_python_foreach_impl default
-	if use static-libs; then
-		# Do not install static libs in /lib
-		mkdir -p "${ED}usr/$(get_libdir)"
-		mv "${ED}$(get_libdir)/libpwquality.a" "${ED}/usr/$(get_libdir)/" || die
-		gen_usr_ldscript libpwquality.so
-	fi
+	gen_usr_ldscript -a pwquality
 	prune_libtool_files --modules
 }
 
