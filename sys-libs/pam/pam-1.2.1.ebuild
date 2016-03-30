@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit libtool multilib multilib-minimal eutils pam toolchain-funcs flag-o-matic db-use
+inherit libtool multilib multilib-minimal eutils pam toolchain-funcs flag-o-matic db-use sep-usr
 
 MY_PN="Linux-PAM"
 MY_P="${MY_PN}-${PV}"
@@ -136,7 +136,7 @@ multilib_src_install() {
 		sepermitlockdir="${EPREFIX}/run/sepermit"
 
 	local prefix
-	if multilib_is_native_abi; then
+	if use sep-usr; then
 		prefix=
 		gen_usr_ldscript -a pam pamc pam_misc
 	else
