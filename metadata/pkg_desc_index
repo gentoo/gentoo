@@ -14769,7 +14769,7 @@ net-misc/spread 4.1.0 4.3.0: Distributed network messaging system
 net-misc/ssh-askpass-fullscreen 1.0-r1: A small SSH Askpass replacement written with GTK2
 net-misc/ssh-chain 20131217: ssh via a chain of intermediary hosts
 net-misc/sshpass 1.05: Tool for noninteractively performing password authentication with ssh
-net-misc/sslh 1.17: Port multiplexer - accept both HTTPS and SSH connections on the same port
+net-misc/sslh 1.17 1.18: Port multiplexer - accept both HTTPS and SSH connections on the same port
 net-misc/sslwrap 2.0.6-r2: TSL/SSL - Port Wrapper
 net-misc/sstp-client 1.0.9-r1 1.0.9-r2 1.0.10: A client implementation of Secure Socket Tunneling Protocol (SSTP)
 net-misc/ssvnc 1.0.28 1.0.29: VNC viewer that adds encryption security to VNC connections
