@@ -7,7 +7,7 @@
 
 EAPI="4"
 
-inherit eutils multilib toolchain-funcs libtool multilib-minimal
+inherit eutils multilib libtool multilib-minimal sep-usr
 
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="http://git.tukaani.org/xz.git"
