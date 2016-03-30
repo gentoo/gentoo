@@ -17692,7 +17692,7 @@ www-client/lynx 2.8.8_p2 2.8.9_pre4 2.8.9_pre6: An excellent console-based web b
 www-client/midori 0.5.10 0.5.11: A lightweight web browser based on WebKitGTK+
 www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
 www-client/netsurf 3.3-r1 3.4: a free, open source web browser
-www-client/opera 12.16_p1860-r1 35.0.2066.82 35.0.2066.92 36.0.2130.32: A fast and secure web browser
+www-client/opera 12.16_p1860-r1 36.0.2130.32 36.0.2130.46: A fast and secure web browser
 www-client/opera-beta 36.0.2130.21 36.0.2130.26 36.0.2130.29: A fast and secure web browser
 www-client/opera-developer 37.0.2163.0 37.0.2171.0: A fast and secure web browser
 www-client/otter 0.9.07 0.9.08 0.9.09 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
@@ -17710,7 +17710,7 @@ www-client/surfraw 2.2.9-r1: A fast unix command line interface to WWW
 www-client/uget 1.8.0 1.10.3 1.10.3-r1 1.10.4 9999: Download manager using gtk+ and libcurl
 www-client/vimb 2.9 2.11: a fast, lightweight, vim-like browser based on webkit
 www-client/vimprobable2 1.4.0 1.4.2 1.4.2-r1 9999: A minimal web browser that behaves like the Vimperator plugin for Firefox
-www-client/vivaldi 1.0.425.3_p1 1.0.430.3_p1: A new browser for our friends
+www-client/vivaldi 1.0.430.3_p1 1.0.435.5_p1: A new browser for our friends
 www-client/w3m 0.5.3-r5: Text based WWW browser, supports tables and frames
 www-client/w3mir 1.0.10-r2: w3mir is a all purpose HTTP copying and mirroring tool
 www-client/w3mmee 0.3.2_p24-r7: A variant of w3m with support for multiple character encodings
