@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -23,6 +23,13 @@ DEPEND="${DEPEND}
 	app-arch/xz-utils
 "
 
+PATCHES=(
+	# Fedora patches
+	"${FILESDIR}/${P}-polkit.patch"
+	"${FILESDIR}/${P}-gettime.patch"
+	"${FILESDIR}/${P}-controlgroup.patch"
+)
+
 pkg_pretend() {
 	if use kernel_linux; then
 		CONFIG_CHECK="~!RT_GROUP_SCHED"
@@ -39,15 +46,13 @@ pkg_setup() {
 }
 
 src_prepare() {
-	# Fedora patches
-	epatch "${FILESDIR}"/${P}-polkit.patch
-	epatch "${FILESDIR}"/${P}-gettime.patch
-	epatch "${FILESDIR}"/${P}-controlgroup.patch
+	default
 	eautoreconf
 }
 
 src_configure() {
-	econf $(systemd_with_unitdir)
+	econf \
+		--with-systemdsystemunitdir="$(systemd_get_systemunitdir)"
 }
 
 src_install() {
