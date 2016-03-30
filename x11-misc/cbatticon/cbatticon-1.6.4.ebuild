@@ -3,8 +3,7 @@
 # $Id$
 
 EAPI=5
-
-inherit toolchain-funcs
+inherit eutils toolchain-funcs
 
 DESCRIPTION="A lightweight and fast battery icon that sits in your system tray"
 HOMEPAGE="https://github.com/ColinJones/cbatticon"
@@ -25,6 +24,10 @@ DEPEND="
 	virtual/pkgconfig
 "
 
+src_prepare() {
+	strip-linguas -i .
+}
+
 src_compile() {
 	tc-export CC
 	emake \
@@ -35,5 +38,11 @@ src_compile() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" V=1 VERSION="${PF}" install
+	emake \
+		DESTDIR="${D}" \
+		LANGUAGES="${LINGUAS}" \
+		V=1 VERSION="${PF}" \
+		install
+
+	dodoc Changelog
 }
