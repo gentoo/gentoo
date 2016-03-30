@@ -4,7 +4,7 @@
 
 EAPI="4"
 
-inherit eutils toolchain-funcs multilib-minimal
+inherit eutils multilib-minimal sep-usr
 
 DESCRIPTION="Extended attributes tools"
 HOMEPAGE="http://savannah.nongnu.org/projects/attr"
