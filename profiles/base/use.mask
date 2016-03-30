@@ -396,3 +396,6 @@ openrc-force
 # sys-libs/libapparmor
 apparmor
 
+# Mike Frysinger <vapier@gentoo.org> (30 Mar 2016)
+# Most systems do not support a sep-/usr partition.
+sep-usr

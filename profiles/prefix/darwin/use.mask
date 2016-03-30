@@ -43,3 +43,7 @@ v4l
 
 # introspection is far from working on OSX
 introspection
+
+# Mike Frysinger <vapier@gentoo.org> (30 Mar 2016)
+# Allow people to opt-in to a sep-/usr partition.
+-sep-usr

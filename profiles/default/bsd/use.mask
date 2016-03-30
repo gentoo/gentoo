@@ -77,3 +77,7 @@ sane_backends_qcam
 # Diego E. Pettenò <flameeyes@gentoo.org> (19 oct 2010)
 # unmasking flags that only apply to FreeBSD
 -kqueue
+
+# Mike Frysinger <vapier@gentoo.org> (30 Mar 2016)
+# Allow people to opt-in to a sep-/usr partition.
+-sep-usr

@@ -17,3 +17,7 @@ x264
 # Samuli Suominen <ssuominen@gentoo.org> (19 Apr 2013)
 # Linux specific module loading/unloading support
 -kmod
+
+# Mike Frysinger <vapier@gentoo.org> (30 Mar 2016)
+# Allow people to opt-in to a sep-/usr partition.
+-sep-usr
