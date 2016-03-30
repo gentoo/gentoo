@@ -5,7 +5,7 @@
 EAPI=4
 AUTOTOOLS_AUTO_DEPEND="no"
 
-inherit autotools toolchain-funcs multilib multilib-minimal
+inherit autotools toolchain-funcs multilib multilib-minimal sep-usr
 
 DESCRIPTION="Standard (de)compression library"
 HOMEPAGE="http://www.zlib.net/"
