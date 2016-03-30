@@ -14,7 +14,7 @@ SRC_URI="http://www.martiansoftware.com/lab/${PN}/${P}-src.zip -> ${P}.zip"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc64 ~x86 ~amd64-linux ~x86-linux ~sparc-solaris ~x86-solaris"
+KEYWORDS="amd64 ppc64 x86 ~amd64-linux ~x86-linux ~sparc-solaris ~x86-solaris"
 IUSE=""
 
 CDEPEND="dev-java/ant-core:0"
