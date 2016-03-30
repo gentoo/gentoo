@@ -62,7 +62,7 @@ multilib_src_install() {
 		install
 
 	dosym libgpm.so.1 /usr/$(get_libdir)/libgpm.so
-	multilib_is_native_abi && gen_usr_ldscript -a gpm
+	gen_usr_ldscript -a gpm
 }
 
 multilib_src_install_all() {

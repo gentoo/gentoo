@@ -74,7 +74,7 @@ multilib_src_test() {
 
 multilib_src_install() {
 	default
-	multilib_is_native_abi && gen_usr_ldscript -a keyutils
+	gen_usr_ldscript -a keyutils
 }
 
 multilib_src_install_all() {

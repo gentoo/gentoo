@@ -43,7 +43,7 @@ multilib_src_install() {
 	default
 
 	# libtirpc replaces rpc support in glibc, so we need it in /
-	multilib_is_native_abi && gen_usr_ldscript -a tirpc
+	gen_usr_ldscript -a tirpc
 }
 
 multilib_src_install_all() {

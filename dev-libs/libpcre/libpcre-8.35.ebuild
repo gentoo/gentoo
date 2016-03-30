@@ -79,7 +79,7 @@ multilib_src_install() {
 		DESTDIR="${D}" \
 		$(multilib_is_native_abi || echo "bin_PROGRAMS= dist_html_DATA=") \
 		install
-	multilib_is_native_abi && gen_usr_ldscript -a pcre
+	gen_usr_ldscript -a pcre
 }
 
 multilib_src_install_all() {
