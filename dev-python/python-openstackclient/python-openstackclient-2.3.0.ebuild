@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -14,8 +14,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~x86 ~amd64-linux ~x86-linux"
-IUSE="doc test"
-REQUIRED_USE="test? ( doc )"
+IUSE="test"
 
 CDEPEND=">=dev-python/pbr-1.6[${PYTHON_USEDEP}]"
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
@@ -42,11 +41,12 @@ RDEPEND="
 	>=dev-python/cliff-1.15.0[${PYTHON_USEDEP}]
 	!~dev-python/cliff-1.16.0[${PYTHON_USEDEP}]
 	>=dev-python/keystoneauth-2.1.0[${PYTHON_USEDEP}]
-	>=dev-python/openstacksdk-0.7.4[${PYTHON_USEDEP}]
+	>=dev-python/openstacksdk-0.8.1[${PYTHON_USEDEP}]
 	>=dev-python/os-client-config-1.13.1[${PYTHON_USEDEP}]
+	>=dev-python/oslo-config-3.7.0[${PYTHON_USEDEP}]
 	>=dev-python/oslo-i18n-2.1.0[${PYTHON_USEDEP}]
 	>=dev-python/oslo-utils-3.5.0[${PYTHON_USEDEP}]
-	>=dev-python/python-glanceclient-1.2.0[${PYTHON_USEDEP}]
+	>=dev-python/python-glanceclient-2.0.0[${PYTHON_USEDEP}]
 	>=dev-python/python-keystoneclient-1.6.0[${PYTHON_USEDEP}]
 	!~dev-python/python-keystoneclient-1.8.0[${PYTHON_USEDEP}]
 	!~dev-python/python-keystoneclient-2.1.0[${PYTHON_USEDEP}]
@@ -65,16 +65,11 @@ python_prepare_all() {
 	distutils-r1_python_prepare_all
 }
 
-python_compile_all() {
-	use doc && esetup.py build_sphinx
-}
-
 python_test() {
 	testr init
 	testr run || die "testsuite failed under python2.7"
 }
 
 python_install_all() {
-	use doc && local HTML_DOCS=( doc/build/html/. )
 	distutils-r1_python_install_all
 }
