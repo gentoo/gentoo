@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="1st and 2nd order differentiation of data"
 
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="test"
 PERL_RM_FILES=(
 	"t/manifest.t"

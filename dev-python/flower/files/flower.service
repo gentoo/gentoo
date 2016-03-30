@@ -7,7 +7,7 @@ After=network-online.target
 User=flower
 PrivateDevices=Yes
 Environment=_FLOWER_OPTS="--conf=/etc/flower/config.py"
-ExecStart=/usr/bin/flower $_FLOWER_OPTS
+ExecStart=/usr/libexec/flower/flower $_FLOWER_OPTS
 
 [Install]
 WantedBy=multi-user.target

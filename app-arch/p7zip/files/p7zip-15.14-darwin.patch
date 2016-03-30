@@ -1,4 +1,5 @@
 Darwin has wchar_h and wctypes_h.
+El Capitan needs <sys/types.h> for ino_t.
 
 --- CPP/myWindows/config.h
 +++ CPP/myWindows/config.h
@@ -11,3 +12,14 @@ Darwin has wchar_h and wctypes_h.
  
      /* <wchar.h> */
      /* ENV_HAVE_WCHAR__H and not ENV_HAVE_WCHAR_H to avoid warning with wxWidgets */
+--- CPP/myWindows/StdAfx.h
++++ CPP/myWindows/StdAfx.h
+@@ -32,7 +32,7 @@
+ #include <errno.h>
+ #include <math.h>
+ 
+-#ifdef __NETWARE__
++#if defined(__NETWARE__) || defined(__MACH__)
+ #include <sys/types.h>
+ #endif
+ 

@@ -30,6 +30,18 @@
 
 #--- END OF EXAMPLES ---
 
+# Patrick Lauer (30 Mar 2015)
+# Segfaults when creating directories #578582
+=sys-apps/sandbox-2.11*
+
+# Mike Frysinger <vapier@gentoo.org (28 Mar 2016)
+# Tons-o-bugs and no actual testing by new author. #578490
+dev-libs/libtomcrypt
+
+# Anthony G. Basile <blueness@gentoo.org> (27 Mar 2016)
+# Fails to build, bug #578348
+x11-wm/lumina
+
 # Pawel Hajdan jr <phajdan.jr@gentoo.org> (25 Mar 2016)
 # Dev channel releases are only for people who are developers or want more
 # experimental features and accept a more unstable release.
@@ -159,14 +171,9 @@ dev-vcs/statsvn
 dev-vcs/statcvs
 
 # Mike Gilbert <floppym@gentoo.org> (12 Mar 2016)
-# Masked for testing.
+# Drops libsystemd-{daemon,id128,journal,login}.pc.
+# Bug: https://bugs.gentoo.org/577158
 =sys-apps/systemd-229-r100
-
-# Michał Górny <mgorny@gentoo.org> (12 Mar 2016)
-# Masked for testing.
-=dev-python/pypy-5.0.0
-=dev-python/pypy-bin-5.0.0
-=virtual/pypy-5.0.0
 
 # Michael Palimaka <kensington@gentoo.org> (11 Mar 2016)
 # Fails to build. Use version included in dev-texlive/texlive-science instead.

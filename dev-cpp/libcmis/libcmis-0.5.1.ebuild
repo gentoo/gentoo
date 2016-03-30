@@ -29,6 +29,7 @@ COMMON_DEPEND="
 "
 DEPEND="${COMMON_DEPEND}
 	virtual/pkgconfig
+	>=sys-devel/boost-m4-0.4_p20160328
 	man? (
 		app-text/docbook2X
 		dev-libs/libxslt
@@ -46,13 +47,15 @@ RDEPEND="${COMMON_DEPEND}
 "
 
 src_prepare() {
-	eapply_user
+	default
+	# fixes bug 569614, which is due to an outdated bundled boost.m4
+	rm m4/boost.m4 || die
+
 	eautoreconf
 }
 
 src_configure() {
 	econf \
-		--docdir="${EPREFIX}"/usr/share/doc/${PF} \
 		--program-suffix=-${SLOT} \
 		--disable-werror \
 		$(use_with man) \

@@ -1,5 +1,5 @@
---- tools/clang/lib/Frontend/InitHeaderSearch.cpp
-+++ tools/clang/lib/Frontend/InitHeaderSearch.cpp
+--- a/tools/clang/lib/Frontend/InitHeaderSearch.cpp
++++ b/tools/clang/lib/Frontend/InitHeaderSearch.cpp
 @@ -233,6 +233,7 @@
      case llvm::Triple::Bitrig:
        break;

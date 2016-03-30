@@ -4,7 +4,8 @@
 
 EAPI="5"
 
-PYTHON_COMPAT=( python2_7 )	# Doesn't yet support py3
+# Python 3: https://github.com/google/google-apputils/issues/9
+PYTHON_COMPAT=( python2_7 )
 
 inherit distutils-r1
 

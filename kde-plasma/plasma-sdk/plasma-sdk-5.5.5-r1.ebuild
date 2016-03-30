@@ -38,8 +38,8 @@ DEPEND="
 		$(add_frameworks_dep kdelibs4support)
 		$(add_frameworks_dep knewstuff)
 		$(add_frameworks_dep kparts)
-		$(add_kdeapps_dep kdevplatform)
 		$(add_qt_dep qtwebkit)
+		dev-util/kdevplatform:5
 	)
 "
 RDEPEND="${DEPEND}

@@ -2,7 +2,7 @@
 ## These ATOMS are printed with a standard 'emerge info' in
 ## portage as of 2.0.51-r5. Do not overcrowd the output please.
 ##
-app-shells/bash
+app-shells/bash:0
 sys-devel/autoconf
 sys-devel/automake
 sys-kernel/linux-headers

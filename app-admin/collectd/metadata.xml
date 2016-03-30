@@ -154,5 +154,6 @@
 		<flag name="contrib">Install user-contributed files in the doc directory</flag>
 		<flag name="filecaps">When set collectd daemon will have set required capabilities to run most plugins even if run as unprivileged user</flag>
 		<flag name="java">Must be set (workaround for java-pkg-opt-2 eclass limitation) when you want java or genericjmx plugin</flag>
+		<flag name="udev">Enable optional udev usage in disk plugin; Required for smart plugin</flag>
 	</use>
 </pkgmetadata>

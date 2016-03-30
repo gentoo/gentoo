@@ -1,0 +1,206 @@
+--- samtools-0.1.20/bcftools/Makefile
++++ samtools-0.1.20/bcftools/Makefile
+@@ -1,6 +1,6 @@
+-CC=			gcc
+-CFLAGS=		-g -Wall -O2 #-m64 #-arch ppc
+-DFLAGS=		-D_FILE_OFFSET_BITS=64 -D_USE_KNETFILE
++CC?=		gcc
++CFLAGS?=	-g -Wall -O2 #-m64 #-arch ppc
++CPPFLAGS+=	-D_FILE_OFFSET_BITS=64 -D_USE_KNETFILE
+ LOBJS=		bcf.o vcf.o bcfutils.o prob1.o em.o kfunc.o kmin.o index.o fet.o mut.o bcf2qcall.o
+ OMISC=		..
+ AOBJS=		call1.o main.o $(OMISC)/kstring.o $(OMISC)/bgzf.o $(OMISC)/knetfile.o $(OMISC)/bedidx.o
+@@ -11,14 +11,14 @@
+ .SUFFIXES:.c .o
+ 
+ .c.o:
+-		$(CC) -c $(CFLAGS) $(DFLAGS) -I.. $(INCLUDES) $< -o $@
++		$(CC) -c $(CFLAGS) $(CPPFLAGS) -I.. $(INCLUDES) $< -o $@
+ 
+ all-recur lib-recur clean-recur cleanlocal-recur install-recur:
+ 		@target=`echo $@ | sed s/-recur//`; \
+ 		wdir=`pwd`; \
+ 		list='$(SUBDIRS)'; for subdir in $$list; do \
+ 			cd $$subdir; \
+-			$(MAKE) CC="$(CC)" DFLAGS="$(DFLAGS)" CFLAGS="$(CFLAGS)" \
++			$(MAKE) CC="$(CC)" CPPFLAGS="$(CPPFLAGS)" CFLAGS="$(CFLAGS)" \
+ 				INCLUDES="$(INCLUDES)" LIBPATH="$(LIBPATH)" $$target || exit 1; \
+ 			cd $$wdir; \
+ 		done;
+@@ -31,7 +31,7 @@
+ 		$(AR) -csru $@ $(LOBJS)
+ 
+ bcftools:lib $(AOBJS)
+-		$(CC) $(CFLAGS) -o $@ $(AOBJS) -L. $(LIBPATH) -lbcf -lm -lz -lpthread
++		$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $(AOBJS) -L. $(LIBPATH) -lbcf -lm -lz -lpthread
+ 
+ bcf.o:bcf.h
+ vcf.o:bcf.h
+--- samtools-0.1.20/Makefile
++++ samtools-0.1.20/Makefile
+@@ -4,10 +4,10 @@
+ #   make git-stamp
+ VERSION=
+ 
+-CC=			gcc
+-CFLAGS=		-g -Wall $(VERSION) -O2
+-#LDFLAGS=		-Wl,-rpath,\$$ORIGIN/../lib
+-DFLAGS=		-D_FILE_OFFSET_BITS=64 -D_LARGEFILE64_SOURCE -D_USE_KNETFILE -D_CURSES_LIB=1
++CC?=		gcc
++CFLAGS?=	-g -Wall $(VERSION) -O2
++#LDFLAGS+=	-Wl,-rpath,\$$ORIGIN/../lib
++CPPFLAGS+=	-D_FILE_OFFSET_BITS=64 -D_LARGEFILE64_SOURCE -D_USE_KNETFILE -D_CURSES_LIB=1
+ KNETFILE_O=	knetfile.o
+ LOBJS=		bgzf.o kstring.o bam_aux.o bam.o bam_import.o sam.o bam_index.o	\
+ 			bam_pileup.o bam_lpileup.o bam_md.o razf.o faidx.o bedidx.o \
+@@ -28,14 +28,14 @@
+ .PHONY: all lib
+ 
+ .c.o:
+-		$(CC) -c $(CFLAGS) $(DFLAGS) $(INCLUDES) $< -o $@
++		$(CC) -c $(CFLAGS) $(CPPFLAGS) $(INCLUDES) $< -o $@
+ 
+ all-recur lib-recur clean-recur cleanlocal-recur install-recur:
+ 		@target=`echo $@ | sed s/-recur//`; \
+ 		wdir=`pwd`; \
+ 		list='$(SUBDIRS)'; for subdir in $$list; do \
+ 			cd $$subdir; \
+-			$(MAKE) CC="$(CC)" DFLAGS="$(DFLAGS)" CFLAGS="$(CFLAGS)" \
++			$(MAKE) CC="$(CC)" CPPFLAGS="$(CPPFLAGS)" CFLAGS="$(CFLAGS)" \
+ 				INCLUDES="$(INCLUDES)" LIBPATH="$(LIBPATH)" $$target || exit 1; \
+ 			cd $$wdir; \
+ 		done;
+@@ -48,22 +48,22 @@
+ .PHONY:all lib clean cleanlocal
+ .PHONY:all-recur lib-recur clean-recur cleanlocal-recur install-recur
+ 
+-lib:libbam.a
++lib:libbam-0.1-legacy.a
+ 
+-libbam.a:$(LOBJS)
++libbam-0.1-legacy.a:$(LOBJS)
+ 		$(AR) -csru $@ $(LOBJS)
+ 
+ samtools:lib-recur $(AOBJS)
+-		$(CC) $(CFLAGS) -o $@ $(AOBJS) $(LDFLAGS) libbam.a -Lbcftools -lbcf $(LIBPATH) $(LIBCURSES) -lm -lz -lpthread
++		$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $(AOBJS) -L. -lbam-0.1-legacy -Lbcftools -lbcf $(LIBPATH) $(LIBCURSES) -lm -lz -lpthread
+ 
+ razip:razip.o razf.o $(KNETFILE_O)
+-		$(CC) $(CFLAGS) -o $@ $^ -lz
++		$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^ -lz
+ 
+ bgzip:bgzip.o bgzf.o $(KNETFILE_O)
+-		$(CC) $(CFLAGS) -o $@ $^ -lz -lpthread
++		$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^ -lz -lpthread
+ 
+ bgzf.o:bgzf.c bgzf.h
+-		$(CC) -c $(CFLAGS) $(DFLAGS) -DBGZF_CACHE $(INCLUDES) bgzf.c -o $@
++		$(CC) -c $(CFLAGS) $(CPPFLAGS) -DBGZF_CACHE $(INCLUDES) bgzf.c -o $@
+ 
+ razip.o:razf.h
+ bam.o:bam.h razf.h bam_endian.h kstring.h sam_header.h
+@@ -90,17 +90,17 @@
+ faidx_main.o:faidx.h razf.h
+ 
+ 
+-libbam.1.dylib-local:$(LOBJS)
+-		libtool -dynamic $(LOBJS) -o libbam.1.dylib -lc -lz
++libbam-0.1-legacy.1.dylib-local:$(LOBJS)
++		libtool -dynamic $(LOBJS) -o libbam-0.1-legacy.1.dylib -lc -lz
+ 
+-libbam.so.1-local:$(LOBJS)
+-		$(CC) -shared -Wl,-soname,libbam.so -o libbam.so.1 $(LOBJS) -lc -lz
++libbam-0.1-legacy.so.1-local:$(LOBJS)
++		$(CC) $(LDFLAGS) -shared -Wl,-soname,libbam-0.1-legacy.so -o libbam-0.1-legacy.so.1 $(LOBJS) -lc -lz -lm -lpthread
+ 
+ dylib:
+ 		@$(MAKE) cleanlocal; \
+ 		case `uname` in \
+-			Linux) $(MAKE) CFLAGS="$(CFLAGS) -fPIC" libbam.so.1-local;; \
+-			Darwin) $(MAKE) CFLAGS="$(CFLAGS) -fPIC" libbam.1.dylib-local;; \
++			Linux) $(MAKE) CFLAGS="$(CFLAGS) -fPIC" libbam-0.1-legacy.so.1-local;; \
++			Darwin) $(MAKE) CFLAGS="$(CFLAGS) -fPIC" libbam-0.1-legacy.1.dylib-local;; \
+ 			*) echo 'Unknown OS';; \
+ 		esac
+ 
+--- samtools-0.1.20/misc/Makefile
++++ samtools-0.1.20/misc/Makefile
+@@ -1,8 +1,8 @@
+-CC=			gcc
+-CXX=		g++
+-CFLAGS=		-g -Wall -O2 #-m64 #-arch ppc
+-CXXFLAGS=	$(CFLAGS)
+-DFLAGS=		-D_FILE_OFFSET_BITS=64
++CC?=		gcc
++CXX?=		g++
++CFLAGS?=	-g -Wall -O2 #-m64 #-arch ppc
++CXXFLAGS?=	$(CFLAGS)
++CPPFLAGS+=	-D_FILE_OFFSET_BITS=64
+ OBJS=		
+ PROG=		md5sum-lite md5fa maq2sam-short maq2sam-long ace2sam wgsim bamcheck
+ INCLUDES=	-I..
+@@ -11,7 +11,7 @@
+ .SUFFIXES:.c .o
+ 
+ .c.o:
+-		$(CC) -c $(CFLAGS) $(DFLAGS) $(INCLUDES) $< -o $@
++		$(CC) -c $(CFLAGS) $(CPPFLAGS) $(INCLUDES) $< -o $@
+ 
+ all:$(PROG)
+ 
+@@ -20,7 +20,7 @@
+ 		wdir=`pwd`; \
+ 		list='$(SUBDIRS)'; for subdir in $$list; do \
+ 			cd $$subdir; \
+-			$(MAKE) CC="$(CC)" DFLAGS="$(DFLAGS)" CFLAGS="$(CFLAGS)" \
++			$(MAKE) CC="$(CC)" CPPFLAGS="$(CPPFLAGS)" CFLAGS="$(CFLAGS)" \
+ 				INCLUDES="$(INCLUDES)" $$target || exit 1; \
+ 			cd $$wdir; \
+ 		done;
+@@ -28,31 +28,31 @@
+ lib:
+ 
+ bamcheck:bamcheck.o
+-		$(CC) $(CFLAGS) -o $@ bamcheck.o -L.. -lm -lbam -lpthread -lz
++		$(CC) $(CFLAGS) $(LDFLAGS) -o $@ bamcheck.o -L.. -lm -lbam-0.1-legacy -lpthread -lz
+ 
+ bamcheck.o:bamcheck.c ../faidx.h ../khash.h ../sam.h ../razf.h
+ 		$(CC) $(CFLAGS) -c -I.. -o $@ bamcheck.c
+ 
+ ace2sam:ace2sam.o
+-		$(CC) $(CFLAGS) -o $@ ace2sam.o -lz
++		$(CC) $(CFLAGS) $(LDFLAGS) -o $@ ace2sam.o -lz
+ 
+ wgsim:wgsim.o
+-		$(CC) $(CFLAGS) -o $@ wgsim.o -lm -lz
++		$(CC) $(CFLAGS) $(LDFLAGS) -o $@ wgsim.o -lm -lz
+ 
+ md5fa:md5.o md5fa.o md5.h ../kseq.h
+-		$(CC) $(CFLAGS) -o $@ md5.o md5fa.o -lz
++		$(CC) $(CFLAGS) $(LDFLAGS) -o $@ md5.o md5fa.o -lz
+ 
+ md5sum-lite:md5sum-lite.o
+-		$(CC) $(CFLAGS) -o $@ md5sum-lite.o
++		$(CC) $(CFLAGS) $(LDFLAGS) -o $@ md5sum-lite.o
+ 
+ md5sum-lite.o:md5.c md5.h
+ 		$(CC) -c $(CFLAGS) -DMD5SUM_MAIN -o $@ md5.c
+ 
+ maq2sam-short:maq2sam.c
+-		$(CC) $(CFLAGS) -o $@ maq2sam.c -lz
++		$(CC) $(CFLAGS) $(LDFLAGS) -o $@ maq2sam.c -lz
+ 
+ maq2sam-long:maq2sam.c
+-		$(CC) $(CFLAGS) -DMAQ_LONGREADS -o $@ maq2sam.c -lz
++		$(CC) $(CFLAGS) -DMAQ_LONGREADS $(LDFLAGS) -o $@ maq2sam.c -lz
+ 
+ md5fa.o:md5.h md5fa.c
+ 		$(CC) $(CFLAGS) -c -I.. -o $@ md5fa.c
+--- samtools-0.1.20/misc/varfilter.py
++++ samtools-0.1.20/misc/varfilter.py
+@@ -1,4 +1,4 @@
+-#!/software/bin/python
++#!/usr/bin/env python
+ 
+ # Author: lh3, converted to python and modified to add -C option by Aylwyn Scally
+ #

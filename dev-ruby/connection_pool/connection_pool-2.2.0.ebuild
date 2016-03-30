@@ -24,4 +24,5 @@ ruby_add_bdepend "test? ( >=dev-ruby/minitest-5 )"
 all_ruby_prepare() {
 	sed -i -e '/git ls-files/d' connection_pool.gemspec || die
 	sed -i -e '/bundler/d' Rakefile || die
+	sed -i -e "s/gem 'minitest'/gem 'minitest', '~> 5.0'/" test/helper.rb || die
 }

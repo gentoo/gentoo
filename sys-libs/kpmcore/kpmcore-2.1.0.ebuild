@@ -20,9 +20,9 @@ CDEPEND="
 	$(add_frameworks_dep kiconthemes)
 	$(add_frameworks_dep kio)
 	$(add_frameworks_dep kservice)
+	$(add_qt_dep qtgui)
+	$(add_qt_dep qtwidgets)
 	dev-libs/libatasmart
-	dev-qt/qtgui:5
-	dev-qt/qtwidgets:5
 	sys-apps/util-linux
 	>=sys-block/parted-3
 "

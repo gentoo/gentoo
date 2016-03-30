@@ -4,6 +4,8 @@
 
 EAPI=6
 
+# Python 3 is in testing, but is waiting for the next release:
+# https://github.com/gflags/python-gflags/issues/17
 PYTHON_COMPAT=( python2_7 pypy )
 
 inherit distutils-r1

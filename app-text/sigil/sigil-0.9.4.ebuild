@@ -46,8 +46,6 @@ RDEPEND="
 	sys-libs/zlib[minizip]
 "
 DEPEND="${RDEPEND}
-	dev-python/lxml[${PYTHON_USEDEP}]
-	dev-python/six[${PYTHON_USEDEP}]
 	>=sys-devel/gcc-4.8
 	virtual/pkgconfig
 	>=dev-qt/linguist-tools-5.4:5

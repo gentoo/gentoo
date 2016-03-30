@@ -9,7 +9,7 @@ inherit kde5
 
 DESCRIPTION="Framework for converting text emoticons to graphical representations"
 LICENSE="LGPL-2.1+"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm ~x86"
 IUSE=""
 
 RDEPEND="

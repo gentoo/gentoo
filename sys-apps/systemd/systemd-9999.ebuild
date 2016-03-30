@@ -66,6 +66,7 @@ COMMON_DEPEND=">=sys-apps/util-linux-2.27.1:0=[${MULTILIB_USEDEP}]
 # laptop-mode-tools: https://github.com/systemd/systemd/issues/2684
 RDEPEND="${COMMON_DEPEND}
 	>=sys-apps/baselayout-2.2
+	selinux? ( sec-policy/selinux-systemd )
 	!sys-auth/nss-myhostname
 	!sys-fs/eudev
 	!sys-fs/udev
@@ -435,7 +436,6 @@ pkg_postinst() {
 	newusergroup systemd-network
 	newusergroup systemd-resolve
 	newusergroup systemd-timesync
-	use http && newusergroup systemd-journal-gateway
 
 	systemd_update_catalog
 

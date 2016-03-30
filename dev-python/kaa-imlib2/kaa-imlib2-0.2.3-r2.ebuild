@@ -13,7 +13,7 @@ SRC_URI="mirror://sourceforge/freevo/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc ~x86"
 IUSE=""
 
 DEPEND=">=dev-python/kaa-base-0.3.0[${PYTHON_USEDEP}]

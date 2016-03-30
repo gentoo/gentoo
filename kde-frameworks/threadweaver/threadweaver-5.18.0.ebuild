@@ -8,7 +8,7 @@ inherit kde5
 
 DESCRIPTION="Framework for managing threads using job and queue-based interfaces"
 LICENSE="LGPL-2+"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm ~x86"
 IUSE=""
 
 src_prepare() {

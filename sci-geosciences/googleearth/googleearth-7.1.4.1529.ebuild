@@ -88,6 +88,7 @@ src_unpack() {
 }
 
 src_prepare() {
+
 	# we have no ld-lsb.so.3 symlink
 	# thanks to Nathan Phillip Brink <ohnobinki@ohnopublishing.net> for suggesting patchelf
 	einfo "running patchelf"
@@ -98,9 +99,12 @@ src_prepare() {
 	for x in * ; do
 		# Use \x7fELF header to separate ELF executables and libraries
 		[[ -f ${x} && $(od -t x1 -N 4 "${x}") == *"7f 45 4c 46"* ]] || continue
+		fperms u+w "${x}"
 		patchelf --set-rpath '$ORIGIN' "${x}" ||
 			die "patchelf failed on ${x}"
 	done
+	# prepare file permissions so that >patchelf-0.8 can work on the files
+	fperms u+w plugins/*.so plugins/imageformats/*.so
 	for x in plugins/*.so ; do
 		[[ -f ${x} ]] || continue
 		patchelf --set-rpath '$ORIGIN/..' "${x}" ||
