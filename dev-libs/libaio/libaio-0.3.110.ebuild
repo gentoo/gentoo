@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit eutils multilib-minimal toolchain-funcs flag-o-matic
+inherit eutils multilib-minimal toolchain-funcs flag-o-matic sep-usr
 
 DESCRIPTION="Asynchronous input/output library that uses the kernels native interface"
 HOMEPAGE="https://git.fedorahosted.org/cgit/libaio.git/  http://lse.sourceforge.net/io/aio.html"
