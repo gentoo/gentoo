@@ -14,17 +14,15 @@ MY_PN="idea"
 if [[ "$(get_version_component_range 7)x" = "prex" ]]
 then
 	# upstream EAP
-	KEYWORDS="~amd64 ~x86"
-	SRC_URI="custom-jdk? ( http://download.jetbrains.com/idea/${MY_PN}IU-${PV_STRING}.tar.gz )
-			!custom-jdk? ( http://download.jetbrains.com/idea/${MY_PN}IU-${PV_STRING}-no-jdk.tar.gz )"
+	KEYWORDS=""
 else
 	# upstream stable
-	KEYWORDS="amd64 x86"
-	SRC_URI="http://download.jetbrains.com/idea/${MY_PN}IU-${MY_PV}.tar.gz -> ${MY_PN}IU-${PV_STRING}.tar.gz"
+	KEYWORDS="~amd64 ~x86"
 fi
 
 DESCRIPTION="A complete toolset for web, mobile and enterprise development"
-HOMEPAGE="http://www.jetbrains.com/idea"
+HOMEPAGE="https://www.jetbrains.com/idea"
+SRC_URI="https://download.jetbrains.com/idea/${MY_PN}IU-${MY_PV}.tar.gz -> ${MY_PN}IU-${PV_STRING}.tar.gz"
 
 LICENSE="IDEA
 	|| ( IDEA_Academic IDEA_Classroom IDEA_OpenSource IDEA_Personal )"
@@ -51,6 +49,11 @@ src_prepare() {
 	fi
 	if ! use x86; then
 		rm -r plugins/tfsIntegration/lib/native/linux/x86 || die
+	fi
+	if ! use custom-jdk; then
+		if [[ -d jre ]]; then
+			rm -r jre || die
+		fi
 	fi
 	rm -r plugins/tfsIntegration/lib/native/solaris || die
 	rm -r plugins/tfsIntegration/lib/native/hpux || die
