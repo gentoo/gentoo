@@ -4,7 +4,7 @@
 
 EAPI="5"
 
-inherit eutils multilib libtool flag-o-matic toolchain-funcs multilib-minimal
+inherit eutils multilib libtool flag-o-matic toolchain-funcs multilib-minimal sep-usr
 
 DESCRIPTION="Perl-compatible regular expression library"
 HOMEPAGE="http://www.pcre.org/"
@@ -24,10 +24,10 @@ IUSE="bzip2 +cxx +jit libedit pcre16 pcre32 +readline +recursion-limit static-li
 REQUIRED_USE="readline? ( !libedit )
 	libedit? ( !readline )"
 
-RDEPEND="bzip2? ( app-arch/bzip2 )
-	zlib? ( sys-libs/zlib )
-	libedit? ( dev-libs/libedit )
-	readline? ( sys-libs/readline:0= )"
+RDEPEND="bzip2? ( app-arch/bzip2[sep-usr?] )
+	zlib? ( sys-libs/zlib[sep-usr?] )
+	libedit? ( dev-libs/libedit[sep-usr?] )
+	readline? ( sys-libs/readline:0=[sep-usr?] )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 RDEPEND="${RDEPEND}
