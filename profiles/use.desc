@@ -299,6 +299,7 @@ seamonkey - Add support for the Seamonkey web-browser
 seccomp - Enable seccomp (secure computing mode) to perform system call filtering at runtime to increase security of programs
 selinux - !!internal use only!! Security Enhanced Linux support, this must be set by the selinux profile or breakage will occur
 semantic-desktop - Cross-KDE support for semantic search and information retrieval
+sep-usr - Install some critical files into / instead of /usr (for when /usr is a separate mount point)
 session - Add persistent session support
 sharedmem - Add support for shared memory use
 shorten - Add support for the shorten audio compressor
