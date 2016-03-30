@@ -6,7 +6,7 @@ EAPI="5"
 PYTHON_COMPAT=( python2_7 )
 DISTUTILS_OPTIONAL=1
 
-inherit eutils distutils-r1 libtool multilib-minimal toolchain-funcs
+inherit eutils distutils-r1 libtool multilib-minimal sep-usr
 
 MY_P=${P/_}
 DESCRIPTION="Password Checking Library"
@@ -18,7 +18,7 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd ~x86-interix ~amd64-linux ~ia64-linux ~x86-linux ~ppc-macos ~x86-macos ~m68k-mint"
 IUSE="nls python static-libs test zlib"
 
-RDEPEND="zlib? ( >=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}] )"
+RDEPEND="zlib? ( >=sys-libs/zlib-1.2.8-r1[sep-usr?,${MULTILIB_USEDEP}] )"
 DEPEND="${RDEPEND}
 	python? (
 		dev-python/setuptools[${PYTHON_USEDEP}]
