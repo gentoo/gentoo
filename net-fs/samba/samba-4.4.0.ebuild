@@ -190,6 +190,11 @@ multilib_src_install() {
 			doins examples/LDAP/samba.schema
 		fi
 
+		# create symlink for cups (bug #552310)
+		if use cups ; then
+			dosym /usr/bin/smbspool /usr/libexec/cups/backend/smb
+		fi
+
 		# install example config file
 		insinto /etc/samba
 		doins examples/smb.conf.default
