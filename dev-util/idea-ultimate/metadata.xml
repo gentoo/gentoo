@@ -2,22 +2,22 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 <maintainer type="person">
-		<email>gert@gepe-biljarts.be</email>
-		<name>Gert Pellin</name>
-		<description>Proxy maintainer. Assign bugs to him.</description>
-	</maintainer>
-	<maintainer type="person">
-		<email>tomboy64@sina.cn</email>
-		<description>Proxied co-maintainer</description>
-	</maintainer>		
+	<email>gert@gepe-biljarts.be</email>
+	<name>Gert Pellin</name>
+	<description>Proxy maintainer. Assign bugs to him.</description>
+</maintainer>
+<maintainer type="person">
+	<email>tomboy64@sina.cn</email>
+	<description>Proxied co-maintainer</description>
+</maintainer>		
 <maintainer type="project">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Proxy Maintainers</name>
-	</maintainer>		
+	<email>proxy-maint@gentoo.org</email>
+	<name>Proxy Maintainers</name>
+</maintainer>		
 <longdescription lang="en">
-Excel at enterprise, mobile and web development with Java, Scala and Groovy, with all the latest modern technologies and frameworks available out of the box.
+	Excel at enterprise, mobile and web development with Java, Scala and Groovy, with all the latest modern technologies and frameworks available out of the box.
 </longdescription>
-	<use>
-		<flag name="custom-jdk">Install and use IntelliJ's custom JRE.</flag>
-	</use>
+<use>
+	<flag name="custom-jdk">Install and use IntelliJ's custom JRE.</flag>
+</use>
 </pkgmetadata>
