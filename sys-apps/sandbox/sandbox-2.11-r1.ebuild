@@ -32,6 +32,7 @@ sandbox_death_notice() {
 }
 
 src_prepare() {
+	epatch "${FILESDIR}"/${P}-exec-hash.patch #578524
 	epatch_user
 }
 
