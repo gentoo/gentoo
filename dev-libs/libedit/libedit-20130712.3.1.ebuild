@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit eutils toolchain-funcs versionator base multilib-minimal
+inherit eutils toolchain-funcs versionator base multilib-minimal sep-usr
 
 MY_PV=$(get_major_version)-$(get_after_major_version)
 MY_P=${PN}-${MY_PV}
@@ -18,7 +18,7 @@ SLOT="0"
 KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~x86-freebsd ~amd64-linux ~ia64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
 IUSE="static-libs"
 
-DEPEND=">=sys-libs/ncurses-5.9-r3[static-libs?,${MULTILIB_USEDEP}]
+DEPEND=">=sys-libs/ncurses-5.9-r3[sep-usr?,static-libs?,${MULTILIB_USEDEP}]
 	!<=sys-freebsd/freebsd-lib-6.2_rc1"
 
 RDEPEND=${DEPEND}
