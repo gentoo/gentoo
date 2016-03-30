@@ -30,6 +30,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Patrick Lauer (30 Mar 2015)
+# Segfaults when creating directories #578582
+=sys-apps/sandbox-2.11*
+
 # Mike Frysinger <vapier@gentoo.org (28 Mar 2016)
 # Tons-o-bugs and no actual testing by new author. #578490
 dev-libs/libtomcrypt
