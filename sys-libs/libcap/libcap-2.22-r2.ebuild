@@ -55,7 +55,7 @@ multilib_src_install() {
 	# no configure, needs explicit install line #444724#c3
 	emake install DESTDIR="${ED}"
 
-	multilib_is_native_abi && gen_usr_ldscript -a cap
+	gen_usr_ldscript -a cap
 
 	rm -rf "${ED}"/usr/$(get_libdir)/security
 	if multilib_is_native_abi && use pam; then

@@ -180,7 +180,7 @@ multilib_src_install() {
 	fi
 
 	# Move libncurses{,w} into /lib
-	multilib_is_native_abi && gen_usr_ldscript -a \
+	gen_usr_ldscript -a \
 		ncurses \
 		$(usex unicode 'ncursesw' '') \
 		$(use tinfo && usex unicode 'tinfow' '') \
