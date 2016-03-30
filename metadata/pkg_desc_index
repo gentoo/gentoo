@@ -1353,7 +1353,7 @@ app-emulation/vmware-workstation 9.0.3.1410761 10.0.6.2700073-r1 11.1.2.2780323-
 app-emulation/vov 2.0.0: vov (Vov's Obsessive Von-Neumann) is a tool that emulates the behavior of a Von-Neumann machine
 app-emulation/vpcs 0.6: Simulate up to 9 PCs in place of VMware boxes in a Dynamips network
 app-emulation/wine 1.6.2 1.6.2-r1 1.7.3-r1 1.7.4-r1 1.7.8-r1 1.7.9-r1 1.7.10-r1 1.7.11-r1 1.7.12-r1 1.7.13-r1 1.7.14-r1 1.7.15-r1 1.7.16-r1 1.7.17-r1 1.7.18-r1 1.7.19-r2 1.7.20-r1 1.7.21-r1 1.7.22-r1 1.7.28-r1 1.7.29-r1 1.7.33-r1 1.7.34 1.7.35 1.7.36 1.7.37 1.7.38-r1 1.7.39-r1 1.7.40-r1 1.7.41 1.7.42 1.7.43 1.7.44 1.7.45 1.7.46 1.7.47 1.7.50 1.7.51 1.7.52 1.7.53 1.7.54-r1 1.7.55 1.8 1.9.4 1.9.5 9999: Free implementation of Windows(tm) on Unix
-app-emulation/winetricks 20160109 99999999: Easy way to install DLLs needed to work around problems in Wine
+app-emulation/winetricks 20160329 99999999: Easy way to install DLLs needed to work around problems in Wine
 app-emulation/x48 0.6.4: HP48 Calculator Emulator
 app-emulation/xe-guest-utilities 5.6.0_p595 6.1.0_p1033 6.2.0_p1120: XenServer Virtual Machine Tools
 app-emulation/xen 4.5.2-r5 4.6.0-r9 4.6.1: The Xen virtual machine monitor
@@ -5919,22 +5919,22 @@ dev-perl/MooseX-Types-JSON 1.0.0: JSON datatype for Moose
 dev-perl/MooseX-Types-Path-Class 0.80.0: A Path::Class type library for Moose
 dev-perl/MooseX-Types-Path-Tiny 0.11.0: Path::Tiny types and coercions for Moose
 dev-perl/MooseX-Types-Stringlike 0.3.0: Moose type constraints for strings or string-like objects
-dev-perl/Mouse 0.970.0-r1 2.4.1 2.4.5: Moose minus the antlers
+dev-perl/Mouse 0.970.0-r1 2.4.5: Moose minus the antlers
 dev-perl/MouseX-Types 0.60.0: Organize your Mouse types in libraries
 dev-perl/Mozilla-CA 20150826 20160104: Mozilla's CA cert bundle in PEM format
 dev-perl/MusicBrainz-DiscID 0.30.0-r1: Perl interface for the MusicBrainz libdiscid library
 dev-perl/Nagios-Plugin 0.360.0-r1: A family of perl modules to streamline writing Nagios plugins
 dev-perl/Net-ARP 1.0.9: Perl extension for creating ARP packets
 dev-perl/Net-Amazon 0.620.0: Framework for accessing amazon.com via SOAP and XML/HTTP
-dev-perl/Net-Amazon-S3 0.590.0 0.800.0: Framework for accessing the Amazon S3 Simple Storage Service
+dev-perl/Net-Amazon-S3 0.800.0: Framework for accessing the Amazon S3 Simple Storage Service
 dev-perl/Net-CIDR 0.170.0-r1 0.180.0: Manipulate netblock lists in CIDR notation
 dev-perl/Net-CIDR-Lite 0.210.0: Perl extension for merging IPv4 or IPv6 CIDR addresses
 dev-perl/Net-CUPS 0.610.0-r2: CUPS C API Interface
 dev-perl/Net-DBus 1.0.0-r1 1.1.0: Perl extension for the DBus message system
-dev-perl/Net-DNS 0.740.0 0.810.0 1.40.0: Perl Net::DNS - Perl DNS Resolver Module
+dev-perl/Net-DNS 0.740.0 1.40.0: Perl Net::DNS - Perl DNS Resolver Module
 dev-perl/Net-DNS-Async 1.70.0-r1: Asynchronous DNS helper for high volume applications
 dev-perl/Net-DNS-Resolver-Programmable 0.3.0-r1: programmable DNS resolver class for offline emulation of DNS
-dev-perl/Net-DNS-SEC 0.220.0 1.20.0: DNSSEC extensions to Net::DNS
+dev-perl/Net-DNS-SEC 1.20.0: DNSSEC extensions to Net::DNS
 dev-perl/Net-Daemon 0.480.0-r1: Abstract base class for portable servers
 dev-perl/Net-Domain-TLD 1.690.0-r1 1.730.0 1.740.0: Current top level domain names including new ICANN additions and ccTLDs
 dev-perl/Net-FreeDB 0.80.0-r1 0.100.0: OOP interface to the FreeDB database
@@ -6513,8 +6513,8 @@ dev-perl/math-pari 2.10.806.50-r1 2.10.808: Perl interface to PARI
 dev-perl/maybe 0.20.200-r1: Use a Perl module and ignore error if can't be loaded
 dev-perl/mecab-perl 0.996: Perl binding for MeCab
 dev-perl/mime-construct 1.900.0-r1: construct and optionally mail MIME messages
-dev-perl/namespace-autoclean 0.130.0-r1 0.240.0 0.280.0: Keep imports out of your namespace
-dev-perl/namespace-clean 0.210.0-r1 0.250.0 0.260.0: Keep imports and functions out of your namespace
+dev-perl/namespace-autoclean 0.130.0-r1 0.280.0: Keep imports out of your namespace
+dev-perl/namespace-clean 0.210.0-r1 0.260.0: Keep imports and functions out of your namespace
 dev-perl/pcsc-perl 1.4.13-r1 1.4.14: A Perl Module for PC/SC SmartCard access
 dev-perl/perl-ldap 0.630.0 0.650.0: A collection of perl modules which provide an object-oriented interface to LDAP servers
 dev-perl/perl-mozldap 1.5.2 1.5.3: Mozilla PerLDAP
@@ -15627,16 +15627,20 @@ sci-geosciences/mc2bsbh 0.0.9: MapCal to BSBchart Header Utility
 sci-geosciences/merkaartor 0.17.2 0.18.1-r2 0.18.2 9999: A Qt4 based map editor for the openstreetmap.org project
 sci-geosciences/mkgmap 1995: Tool to create garmin maps
 sci-geosciences/mtkbabel 0.8.2 0.8.3.1: MTKBabel is a Perl program to operate the i-Blue 747 GPS data logger
-sci-geosciences/opencpn 3.0.2 3.2.2 4.0.0 4.0.0-r1: a free, open source software for marine navigation
-sci-geosciences/opencpn-plugin-br24radar 1.1-r1: Navico (Simrad, Lowrance) Broadband BR24/3G/4G Radar Plugin for OpenCPN
-sci-geosciences/opencpn-plugin-climatology 1.0-r1: Climatology Plugin for OpenCPN (includes CL-DATA)
-sci-geosciences/opencpn-plugin-launcher 1.0-r1: Launcher Plugin for OpenCPN
-sci-geosciences/opencpn-plugin-logbookkonni 1.2018-r1: Logbook Plugin for OpenCPN
-sci-geosciences/opencpn-plugin-objsearch 0.5.1-r1: Chart Object Search Plugin for OpenCPN
-sci-geosciences/opencpn-plugin-ocpndebugger 1.0-r1: NMEA-data and plugin-API Debugger Plugin for OpenCPN
-sci-geosciences/opencpn-plugin-statusbar 0.5-r1: Statusbar Plugin for OpenCPN
-sci-geosciences/opencpn-plugin-weather_routing 1.2: Weather Routing Plugin for OpenCPN
-sci-geosciences/opencpn-plugin-weatherfax 1.3-r1: Weatherfax Plugin for OpenCPN
+sci-geosciences/opencpn 3.2.2 4.0.0-r1 4.2.0: a free, open source software for marine navigation
+sci-geosciences/opencpn-plugin-br24radar 1.1-r1 1.31 9999: Navico (Simrad, Lowrance) Broadband BR24/3G/4G Radar Plugin for OpenCPN
+sci-geosciences/opencpn-plugin-climatology 1.0-r1 9999: Climatology Plugin for OpenCPN (includes CL-DATA)
+sci-geosciences/opencpn-plugin-iacfleet 0.8 9999: IAC Fleetcode Plugin for OpenCPN
+sci-geosciences/opencpn-plugin-launcher 1.0-r1 1.1 9999: Launcher Plugin for OpenCPN
+sci-geosciences/opencpn-plugin-logbookkonni 1.2018-r1 1.3002 9999: Logbook Plugin for OpenCPN
+sci-geosciences/opencpn-plugin-objsearch 0.5.1-r1 0.7 9999: Chart Object Search Plugin for OpenCPN
+sci-geosciences/opencpn-plugin-ocpn_draw 1.0.12 9999: Draw Plugin for OpenCPN
+sci-geosciences/opencpn-plugin-ocpndebugger 1.0-r1 1.2 9999: NMEA-data and plugin-API Debugger Plugin for OpenCPN
+sci-geosciences/opencpn-plugin-otcurrent 1.2 9999: IAC Fleetcode Plugin for OpenCPN
+sci-geosciences/opencpn-plugin-squiddio 0.7 9999: Squiddio Plugin for OpenCPN
+sci-geosciences/opencpn-plugin-statusbar 0.5-r1 9999: Statusbar Plugin for OpenCPN
+sci-geosciences/opencpn-plugin-weather_routing 1.2 9999: Weather Routing Plugin for OpenCPN
+sci-geosciences/opencpn-plugin-weatherfax 1.3-r1 9999: Weatherfax Plugin for OpenCPN
 sci-geosciences/opencpn-plugin-wmm 1.0-r1: World Magnetic Model Plugin for OpenCPN
 sci-geosciences/osgearth 2.6 2.7: Dynamic map generation toolkit for OpenSceneGraph
 sci-geosciences/osm-gps-map 0.7.3: A gtk+ viewer for OpenStreetMap files
