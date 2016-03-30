@@ -9,12 +9,11 @@ DESCRIPTION="Image viewers for the framebuffer console (fbi) and X11 (ida)"
 HOMEPAGE="http://www.kraxel.org/blog/linux/fbida/"
 SRC_URI="
 	http://www.kraxel.org/releases/${PN}/${P}.tar.gz
-	https://dev.gentoo.org/~jer/${P}-jpeg-9a.patch.bz2
 	mirror://gentoo/ida.png.bz2
 "
 LICENSE="GPL-2 IJG"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ppc ppc64 ~sh sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc ~ppc64 ~sh ~sparc ~x86"
 IUSE="curl fbcon +gif lirc pdf +png scanner +tiff X +webp"
 REQUIRED_USE="
 	pdf? ( tiff )
@@ -28,10 +27,10 @@ RDEPEND="
 	curl? ( net-misc/curl )
 	gif? ( media-libs/giflib:= )
 	lirc? ( app-misc/lirc )
-	png? ( media-libs/libpng )
+	png? ( media-libs/libpng:* )
 	scanner? ( media-gfx/sane-backends )
-	tiff? ( media-libs/tiff )
-	virtual/jpeg
+	tiff? ( media-libs/tiff:* )
+	virtual/jpeg:*
 	virtual/ttf-fonts
 	webp? ( media-libs/libwebp )
 	X? (
@@ -49,24 +48,15 @@ DEPEND="
 "
 
 src_prepare() {
-	epatch "${FILESDIR}"/ida-desktop.patch
-	epatch "${FILESDIR}"/${P}-make.patch
-	epatch "${FILESDIR}"/${P}-giflib.patch
-
-	pushd jpeg/ >/dev/null
-	epatch -p2 "${WORKDIR}"/${P}-jpeg-9a.patch
-	popd >/dev/null
-
-	sed -i \
-		-e 's:DGifOpenFileName,ungif:DGifOpenFileName,gif:' \
-		-e 's:-lungif:-lgif:' \
-		"${S}"/GNUmakefile || die
-
-	if [[ $(gcc-major-version) -lt 4 ]]; then
-		sed	 -i-e 's:-Wno-pointer-sign::' "${S}"/GNUmakefile || die
-	fi
+	epatch \
+		"${FILESDIR}"/ida-desktop.patch \
+		"${FILESDIR}"/${PN}-2.10-giflib-4.2.patch \
+		"${FILESDIR}"/${PN}-2.10-fprintf-format.patch
 
 	tc-export CC CPP
+
+	# upstream omission?
+	echo ${PV} > VERSION
 }
 
 src_configure() {
