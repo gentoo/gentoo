@@ -1,0 +1,42 @@
+From: jzmaddock <john@johnmaddock.co.uk>
+Date: Tue, 21 Jul 2015 18:54:48 +0100
+Subject: [PATCH] Remove deprecated type_traits usage.
+
+---
+ include/boost/graph/adjacency_matrix.hpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/include/boost/graph/adjacency_matrix.hpp b/include/boost/graph/adjacency_matrix.hpp
+index b1078d9..ade7351 100644
+--- a/boost/graph/adjacency_matrix.hpp
++++ b/boost/graph/adjacency_matrix.hpp
+@@ -443,7 +443,7 @@ namespace boost {
+     // graph type. Instead, use directedS, which also provides the
+     // functionality required for a Bidirectional Graph (in_edges,
+     // in_degree, etc.).
+-    BOOST_STATIC_ASSERT(type_traits::ice_not<(is_same<Directed, bidirectionalS>::value)>::value);
++    BOOST_STATIC_ASSERT(!(is_same<Directed, bidirectionalS>::value));
+ 
+     typedef typename mpl::if_<is_directed,
+                                     bidirectional_tag, undirected_tag>::type
+From: Vladimir Prus <vladimir.prus@gmail.com>
+Date: Mon, 7 Dec 2015 13:55:07 +0300
+Subject: [PATCH] Add missing include of <list>.
+
+Thanks to Amit Prakash Ambasta for the report.
+---
+ include/boost/graph/r_c_shortest_paths.hpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/include/boost/graph/r_c_shortest_paths.hpp b/include/boost/graph/r_c_shortest_paths.hpp
+index afa50cf..7e490fc 100644
+--- a/boost/graph/r_c_shortest_paths.hpp
++++ b/boost/graph/r_c_shortest_paths.hpp
+@@ -11,6 +11,7 @@
+ #include <map>
+ #include <queue>
+ #include <vector>
++#include <list>
+ 
+ #include <boost/graph/graph_traits.hpp>
+ #include <boost/graph/iteration_macros.hpp>
