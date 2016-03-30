@@ -6,7 +6,7 @@
 
 EAPI="5"
 
-inherit eutils toolchain-funcs multilib-minimal multiprocessing
+inherit eutils toolchain-funcs multilib-minimal multiprocessing sep-usr
 
 MY_PV=${PV:0:3}
 MY_P=${PN}-${MY_PV}
@@ -20,7 +20,7 @@ SLOT="5/5"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
 IUSE="gpm tinfo unicode"
 
-DEPEND="gpm? ( sys-libs/gpm[${MULTILIB_USEDEP}] )"
+DEPEND="gpm? ( sys-libs/gpm[${MULTILIB_USEDEP},sep-usr?] )"
 # Block the ncurses-5 that installs the same lib. #557472
 RDEPEND="${DEPEND}
 	!<sys-libs/ncurses-6:0"

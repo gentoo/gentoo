@@ -4,7 +4,7 @@
 
 EAPI="5"
 
-inherit eutils flag-o-matic toolchain-funcs multilib-minimal
+inherit eutils flag-o-matic toolchain-funcs multilib-minimal sep-usr
 
 MY_PV=${PV:0:3}
 PV_SNAP=${PV:4}
@@ -19,7 +19,7 @@ SLOT="0/5"
 KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~m68k ~mips ppc ppc64 s390 ~sh sparc x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
 IUSE="ada +cxx debug doc gpm minimal profile static-libs tinfo trace unicode"
 
-DEPEND="gpm? ( sys-libs/gpm )"
+DEPEND="gpm? ( sys-libs/gpm[sep-usr?] )"
 #	berkdb? ( sys-libs/db )"
 # Block the older ncurses that installed all files w/SLOT=5. #557472
 RDEPEND="${DEPEND}
