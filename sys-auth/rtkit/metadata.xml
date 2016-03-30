@@ -6,8 +6,8 @@
 		<name>Gentoo Proxy Maintainers Project</name>
 	</maintainer>
 	<maintainer type="person">
-		<email>author@somedomain.com</email>
-		<name>A. U. Thor</name>
+		<email>Marek.Szuba@cern.ch</email>
+		<name>Marek Szuba</name>
 		<description>Proxied maintainer; set to assignee in all bugs</description>
 	</maintainer>
 	<longdescription lang="en">
