@@ -113,7 +113,7 @@ glibc_do_configure() {
 		--with-bugurl=http://bugs.gentoo.org/
 		--with-pkgversion="$(glibc_banner)"
 		$(use_multiarch || echo --disable-multi-arch)
-		--enable-obsolete-rpc
+		$(in_iuse rpc && use_enable rpc obsolete-rpc || echo --enable-obsolete-rpc)
 		$(in_iuse systemtap && use_enable systemtap)
 		$(in_iuse nscd && use_enable nscd)
 		${EXTRA_ECONF}
