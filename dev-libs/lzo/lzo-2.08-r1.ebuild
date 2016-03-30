@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit eutils multilib-minimal toolchain-funcs
+inherit eutils multilib-minimal sep-usr
 
 DESCRIPTION="An extremely fast compression and decompression library"
 HOMEPAGE="http://www.oberhumer.com/opensource/lzo/"
