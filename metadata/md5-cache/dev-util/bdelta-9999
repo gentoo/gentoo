@@ -6,5 +6,5 @@ HOMEPAGE=http://bdelta.org
 LICENSE=MPL-2.0
 SLOT=0
 _eclass_exported_funcs=src_unpack:git-2 src_compile:- src_install:-
-_eclasses_=git-2	df00117322129fb906bb0a53c3d6a020	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=git-2	df00117322129fb906bb0a53c3d6a020	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
 _md5_=084c29e5df7f5dd10155499a32886425

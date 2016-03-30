@@ -9,5 +9,5 @@ RDEPEND=sys-libs/glibc[nscd(+)]
 SLOT=0
 SRC_URI=http://busybox.net/~vda/unscd/nscd-0.52.c
 _eclass_exported_funcs=src_unpack:- src_compile:- src_install:-
-_eclasses_=multilib	3972ca401cf7dbb430df9995f5d8d580	systemd	3165c885f3c71ffae7a867d931fb0e07	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=multilib	3972ca401cf7dbb430df9995f5d8d580	systemd	3165c885f3c71ffae7a867d931fb0e07	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
 _md5_=690e0b54954e8f904ec1f2b117fceeb4

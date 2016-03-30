@@ -10,5 +10,5 @@ RDEPEND=x11-libs/libX11 x11-libs/libXt x11-libs/libXaw x11-libs/libXext
 SLOT=0
 SRC_URI=http://oldhome.schmorp.de/marc/data/xcb-2.4.tar.gz
 _eclass_exported_funcs=src_compile:- src_install:-
-_eclasses_=multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
 _md5_=6e044a44e0980c0a4b8939462848c72b

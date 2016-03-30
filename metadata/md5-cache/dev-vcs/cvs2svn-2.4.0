@@ -10,5 +10,5 @@ RDEPEND=>=dev-vcs/subversion-1.0.9 bazaar? ( >=dev-vcs/bzr-1.13 ) git? ( >=dev-v
 SLOT=0
 SRC_URI=http://cvs2svn.tigris.org/files/documents/1462/49237/cvs2svn-2.4.0.tar.gz
 _eclass_exported_funcs=pkg_postrm:distutils pkg_postinst:- pkg_setup:python src_prepare:- src_compile:- src_test:- src_install:-
-_eclasses_=distutils	ad9e4720eb3e69090dd968b152fc611b	multilib	3972ca401cf7dbb430df9995f5d8d580	python	efc1c55fc44c5b7272fc2ffba73c3e6f	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=distutils	ad9e4720eb3e69090dd968b152fc611b	multilib	3972ca401cf7dbb430df9995f5d8d580	python	efc1c55fc44c5b7272fc2ffba73c3e6f	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
 _md5_=192dc8df83224469cf5dbe58c9af6b30

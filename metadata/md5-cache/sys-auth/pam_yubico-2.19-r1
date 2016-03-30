@@ -10,5 +10,5 @@ RDEPEND=virtual/pam sys-auth/libyubikey >=sys-auth/ykclient-2.12 >=sys-auth/ykpe
 SLOT=0
 SRC_URI=http://opensource.yubico.com/yubico-pam/releases/pam_yubico-2.19.tar.gz
 _eclass_exported_funcs=src_configure:- src_install:-
-_eclasses_=multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
 _md5_=ba8972b9469f7ae0a07465df06c1ce6a

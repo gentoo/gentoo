@@ -10,5 +10,5 @@ RDEPEND=>=app-text/t1utils-1.25 || ( media-gfx/potrace >=media-gfx/autotrace-0.3
 SLOT=1
 SRC_URI=http://lilypond.org/download/sources/mftrace/mftrace-1.2.18.tar.gz
 _eclass_exported_funcs=pkg_postrm:- pkg_postinst:- pkg_setup:- src_configure:- src_compile:- src_install:-
-_eclasses_=multilib	3972ca401cf7dbb430df9995f5d8d580	python	efc1c55fc44c5b7272fc2ffba73c3e6f	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=multilib	3972ca401cf7dbb430df9995f5d8d580	python	efc1c55fc44c5b7272fc2ffba73c3e6f	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
 _md5_=4f7098dae7086ab388d530da06f09637

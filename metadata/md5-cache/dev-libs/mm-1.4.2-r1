@@ -7,5 +7,5 @@ LICENSE=mm
 SLOT=1.2
 SRC_URI=ftp://ftp.ossp.org/pkg/lib/mm/mm-1.4.2.tar.gz
 _eclass_exported_funcs=pkg_postinst:- src_prepare:- src_test:- src_install:-
-_eclasses_=multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
 _md5_=7979756351b8b696306e039162c20994

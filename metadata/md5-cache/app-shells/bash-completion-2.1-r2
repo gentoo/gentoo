@@ -9,5 +9,5 @@ RDEPEND=|| ( app-eselect/eselect-bashcomp <app-admin/eselect-1.3.7 ) || ( >=app-
 SLOT=0
 SRC_URI=http://bash-completion.alioth.debian.org/files/bash-completion-2.1.tar.bz2
 _eclass_exported_funcs=pkg_postinst:- src_prepare:- src_configure:- src_compile:- src_install:-
-_eclasses_=bash-completion-r1	acf715fa09463f043fbfdc1640f3fb85	multilib	3972ca401cf7dbb430df9995f5d8d580	prefix	e7f2b9c6e57342e5d25eac22fce23062	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=bash-completion-r1	acf715fa09463f043fbfdc1640f3fb85	multilib	3972ca401cf7dbb430df9995f5d8d580	prefix	e7f2b9c6e57342e5d25eac22fce23062	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
 _md5_=c715a8133f9e5ec19726d916122f24b6

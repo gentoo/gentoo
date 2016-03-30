@@ -10,5 +10,5 @@ RDEPEND=app-admin/eselect apache2? ( www-servers/apache[apache2_modules_dir] ) a
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~olemarkus/eselect-php/eselect-php-0.7.1.bz2
 _eclass_exported_funcs=pkg_setup:depend.apache src_install:-
-_eclasses_=depend.apache	e3c541cb90838388f81620d630c28f41	multilib	3972ca401cf7dbb430df9995f5d8d580	systemd	3165c885f3c71ffae7a867d931fb0e07	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_eclasses_=depend.apache	e3c541cb90838388f81620d630c28f41	multilib	3972ca401cf7dbb430df9995f5d8d580	systemd	3165c885f3c71ffae7a867d931fb0e07	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
 _md5_=7de42cc2c37ad99e7f0ac0e66c4b8e58
