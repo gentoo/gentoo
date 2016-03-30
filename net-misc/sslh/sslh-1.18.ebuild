@@ -1,19 +1,19 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 MY_P="${PN}-v${PV}"
-inherit toolchain-funcs eutils
+inherit toolchain-funcs
 
 DESCRIPTION="Port multiplexer - accept both HTTPS and SSH connections on the same port"
 HOMEPAGE="http://www.rutschle.net/tech/sslh.shtml"
-SRC_URI="http://www.rutschle.net/tech/${MY_P}.tar.gz"
+SRC_URI="http://www.rutschle.net/tech/${PN}/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~m68k ~mips ~s390 ~sh x86"
+KEYWORDS="~amd64 ~arm ~m68k ~mips ~s390 ~sh ~x86"
 IUSE="caps tcpd"
 
 RDEPEND="caps? ( sys-libs/libcap )
@@ -26,9 +26,7 @@ RESTRICT="test"
 
 S=${WORKDIR}/${MY_P}
 
-src_prepare() {
-	epatch "${FILESDIR}"/${P}-version-deps.patch
-}
+PATCHES=( "${FILESDIR}/${PN}-1.17-version-deps.patch" )
 
 src_compile() {
 	emake \
