@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit eutils multilib multilib-minimal toolchain-funcs pam
+inherit eutils multilib multilib-minimal toolchain-funcs pam sep-usr
 
 DESCRIPTION="POSIX 1003.1e capabilities"
 HOMEPAGE="http://www.friedhoff.org/posixfilecaps.html"
@@ -16,7 +16,7 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~arm-linux ~ia64-linux ~x86-linux"
 IUSE="pam static-libs"
 
-RDEPEND=">=sys-apps/attr-2.4.47-r1[${MULTILIB_USEDEP}]
+RDEPEND=">=sys-apps/attr-2.4.47-r1[${MULTILIB_USEDEP},sep-usr?]
 	pam? ( virtual/pam )"
 DEPEND="${RDEPEND}
 	sys-kernel/linux-headers"
