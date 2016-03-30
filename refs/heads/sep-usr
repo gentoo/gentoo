@@ -1,0 +1,23 @@
+certificate version 0.1
+pusher 0xC9975267 1459381926 -0400
+pushee ssh://git.gentoo.org/repo/gentoo.git
+nonce 1459381927-51a2c40d33a0ffa7b682
+
+0000000000000000000000000000000000000000 fc357e4232bc39131741ba96c54d98f6ef38d56a refs/heads/sep-usr
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
+
+iQIcBAABCAAGBQJW/GanAAoJEDklo9vJl1JnLRgQAKSDuXYEl07XKdSmF3oJi/mN
+UzcvnorwcEn+Ponp5/8rIjHCg2mPNi+QbC8ld9rziv3fjrcy1/5qzicTSEgsbUFb
+sOMqkYh2JTZHrxdoFKdOWO/q77ztdfaoPeRJZdgzaLD5KSCtB+BZhry452iQgfIP
+ZVGX64qoKnNCCQTiTuS8gLgPfFGcSPeAzjbbAlWRsDIhgrfJZW8CmfTJD3WUkO9A
+byinQrnnWi6WgrMiatP0euerWmFumrM8tVoFPoO/mjdrE3IEMBzFcNCi96BbypUx
+N/6iZO858jzNb17rmk423np05UBuaLfzAwkk3vKog0B940cUd3UeVrys/TBO2Ovb
+e9HHLFlQs5sOmrxsFFkwjZbCstia8SLydV8VUJczdVDpUkpOtZ3uQai6hXT+klpd
+mC1/cXXRZqaENSxj3/O3Ba5HO77GHgmHhzyg2KwOhLYPLgRF3sqmDjXLLHms54vu
+uP7UC7nNQfCWcF+9V/Yuq67Jd98wivwvqczm1nt4+ShyjP+U5qJFWpvTAb9FMPRQ
+BFhffdflfgK9htazTyLEHeQlr+JjZ+SmJPl/vwnrJArT7cmd21XgOevVNtwaRXUX
+IAr+Gd2D0nT3zx6BIZzBUiiapBrkbeQpoBiTnxowcy90ScR/RXHdsanJKzrFSw9/
+Hk2ijna3/OLSoT0ftyd2
+=kIFd
+-----END PGP SIGNATURE-----
