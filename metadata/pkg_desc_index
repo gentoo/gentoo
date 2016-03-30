@@ -3872,7 +3872,7 @@ dev-java/gnu-crypto 2.0.1-r2 2.0.1-r3: GNU Crypto cryptographic primitives for J
 dev-java/gnu-hylafax 1.0.3-r2: Java API designed to implement the client protocol portion of the hfaxd server
 dev-java/gnu-jaf 1.1.1: GNU implementation of the JavaBeans Activation Framework
 dev-java/gnu-javamail 1.0-r2: GNU implementation of the Javamail API
-dev-java/gnu-regexp 1.1.4-r2 1.1.4-r3: GNU regular expression package for Java
+dev-java/gnu-regexp 1.1.4-r3: GNU regular expression package for Java
 dev-java/groovy 2.4.5: A multi-faceted language for the Java platform
 dev-java/gson 2.3.1: Java library to convert JSON to Java objects and vice-versa
 dev-java/guava 07 13.0.1 13.0.1-r3 14.0.1 15.0 16.0.1 17.0 18.0: A collection of Google's core Java libraries
@@ -4177,12 +4177,12 @@ dev-java/resin-servlet-api 3.0.25 3.1.12 4.0.26 4.0.27 4.0.44 4.0.46: Resin Serv
 dev-java/rhino 1.7.7-r1: An open-source implementation of JavaScript written in Java
 dev-java/rngom 20100718-r1: RNGOM is an open-source Java library for parsing RELAX NG grammars
 dev-java/rome 0.9-r2: Open source Atom/RSS Java utilities that make it easy to work in Java with most syndication formats
-dev-java/rundoc 0.11 0.11-r1: an Apache ANT optional task that extracts snippets of code from text files
+dev-java/rundoc 0.11-r1: an Apache ANT optional task that extracts snippets of code from text files
 dev-java/rxtx 2.2_pre2 2.2_pre2-r1: Native lib providing serial and parallel communication for Java
 dev-java/saaj 1.3.19-r1: SOAP with Attachments API for Java
 dev-java/sablecc 3.7: Java based compiler / parser generator
 dev-java/sablecc-anttask 1.1.0-r1: Ant task for sablecc
-dev-java/sac 1.3-r1 1.3-r2: SAC is a standard interface for CSS parser
+dev-java/sac 1.3-r2: SAC is a standard interface for CSS parser
 dev-java/sat4j-core 2.2.0 2.3.1-r1: Lightweight constraint programming with a SAT solver
 dev-java/sat4j-pseudo 2.2.0 2.3.1: Pseudo Boolean solvers
 dev-java/sax 2.2.1-r2 2.2.1-r3: SAX: Simple API for XML in Java
@@ -4194,7 +4194,7 @@ dev-java/sbt-bin 0.12.4 0.13.6 0.13.7 0.13.8 0.13.9: sbt, a build tool for Scala
 dev-java/servletapi 2.2-r3 2.3-r3 2.4-r5: Servlet API 2.4 from jakarta.apache.org
 dev-java/shared-objects 1.4-r3 1.4-r4: A Java Class implementing a core factory for maximal sharing of arbitrary objects
 dev-java/simplyhtml 0.13.1-r1: Text processing application based on HTML and CSS files
-dev-java/sjsxp 1.0.1 1.0.1-r1 1.0.1-r2: The Sun Java Streaming XML Parser (SJSXP) is an efficient implementation of the StAX API
+dev-java/sjsxp 1.0.1 1.0.1-r1 1.0.1-r2 1.0.1-r3: Sun Java Streaming XML Parser
 dev-java/skinlf 6.7-r1: Skin Look and Feel - Skinning Engine for the Swing toolkit
 dev-java/slf4j-api 1.7.7: Simple Logging Facade for Java
 dev-java/slf4j-ext 1.7.5 1.7.7: Simple Logging Facade for Java
