@@ -4,11 +4,11 @@
 
 EAPI=5
 
-inherit eutils flag-o-matic autotools
+inherit eutils flag-o-matic autotools versionator
 
 DESCRIPTION="Extra tables, filters, and various other addons for OpenSMTPD"
 HOMEPAGE="https://github.com/OpenSMTPD/OpenSMTPD-extras"
-SRC_URI="https://www.opensmtpd.org/archives/${P}.tar.gz"
+SRC_URI="https://www.opensmtpd.org/archives/${PN}-$(get_version_component_range 4-).tar.gz"
 
 LICENSE="ISC BSD BSD-1 BSD-2 BSD-4"
 SLOT="0"
@@ -47,7 +47,7 @@ MY_COMPONENTS="
 	table-sqlite
 	table-stub
 "
-IUSE="${MY_COMPONENTS} luajit"
+IUSE="${MY_COMPONENTS} libressl luajit"
 
 # Deps:
 # mysql needs -lmysqlclient
@@ -63,20 +63,23 @@ IUSE="${MY_COMPONENTS} luajit"
 
 DEPEND="mail-mta/opensmtpd
 	dev-libs/libevent
-	dev-libs/openssl:0
+	!libressl? ( dev-libs/openssl:0 )
+	libressl? ( dev-libs/libressl )
 	filter-python? ( dev-lang/python:2.7 )
 	filter-perl? ( dev-lang/perl )
-	filter-lua? ( luajit? ( dev-lang/luajit ) !luajit? ( dev-lang/lua ) )
+	filter-lua? ( luajit? ( dev-lang/luajit:2 ) !luajit? ( dev-lang/lua:* ) )
 	filter-dnsbl? ( net-libs/libasr )
 	table-sqlite? ( dev-db/sqlite:3 )
 	table-mysql? ( virtual/mysql )
-	table-postgres? ( dev-db/postgresql )
+	table-postgres? ( dev-db/postgresql:* )
 	table-redis? ( dev-libs/hiredis )
 	table-python? ( dev-lang/python:2.7 )
 	scheduler-python? ( dev-lang/python:2.7 )
 	queue-python? ( dev-lang/python:2.7 )
 "
 RDEPEND="${DEPEND}"
+
+S=${WORKDIR}/${PN}-$(get_version_component_range 4-)
 
 src_prepare() {
 	eautoreconf
