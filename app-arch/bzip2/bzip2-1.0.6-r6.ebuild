@@ -7,7 +7,7 @@
 
 EAPI=4
 
-inherit eutils toolchain-funcs multilib multilib-minimal
+inherit eutils toolchain-funcs multilib multilib-minimal sep-usr
 
 DESCRIPTION="A high-quality data compressor used extensively by Gentoo Linux"
 HOMEPAGE="http://www.bzip.org/"
