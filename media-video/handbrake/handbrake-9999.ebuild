@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
+EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
@@ -13,8 +13,9 @@ if [[ ${PV} = *9999* ]]; then
 	inherit git-r3
 	KEYWORDS=""
 else
-	SRC_URI="http://handbrake.fr/rotation.php?file=HandBrake-${PV}.tar.bz2 -> ${P}.tar.bz2"
-	S="${WORKDIR}/HandBrake-${PV}"
+	MY_P="HandBrake-${PV}"
+	SRC_URI="http://handbrake.fr/rotation.php?file=${MY_P}.tar.bz2 -> ${P}.tar.bz2"
+	S="${WORKDIR}/${MY_P}"
 	KEYWORDS="~amd64 ~x86"
 fi
 
@@ -73,27 +74,29 @@ DEPEND="${RDEPEND}
 	dev-util/intltool
 	sys-devel/automake"
 
+PATCHES=(
+	# Remove libdvdnav duplication and call it on the original instead.
+	# It may work this way; if not, we should try to mimic the duplication.
+	"${FILESDIR}/${PN}-9999-remove-dvdnav-dup.patch"
+
+	# Remove faac dependency; TODO: figure out if we need to do this at all.
+	"${FILESDIR}/${PN}-9999-remove-faac-dependency.patch"
+
+	# Fix missing x265 link flag
+	"${FILESDIR}/${PN}-9999-fix-missing-x265-link-flag.patch"
+)
+
 pkg_setup() {
 	python-any-r1_pkg_setup
 }
 
 src_prepare() {
-	epatch_user
-
 	# Get rid of leftover bundled library build definitions,
 	sed -i 's:.*\(/contrib\|contrib/\).*::g' \
 		"${S}"/make/include/main.defs \
 		|| die "Contrib removal failed."
 
-	# Remove libdvdnav duplication and call it on the original instead.
-	# It may work this way; if not, we should try to mimic the duplication.
-	epatch "${FILESDIR}"/${PN}-9999-remove-dvdnav-dup.patch
-
-	# Remove faac dependency; TODO: figure out if we need to do this at all.
-	epatch "${FILESDIR}"/${PN}-9999-remove-faac-dependency.patch
-
-	# Fix missing x265 link flag
-	epatch "${FILESDIR}"/${PN}-9999-fix-missing-x265-link-flag.patch
+	default
 
 	cd "${S}/gtk"
 	# Don't run autogen.sh.
