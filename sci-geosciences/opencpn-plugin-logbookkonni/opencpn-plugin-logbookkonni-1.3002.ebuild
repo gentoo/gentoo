@@ -41,7 +41,7 @@ src_prepare() {
 	need-wxwidgets unicode
 	cmake-utils_src_prepare
 }
-      
+
 src_install() {
 	# install layouts as zip
 	cmake-utils_src_install
@@ -60,4 +60,3 @@ pkg_postinst() {
 	elog "click the install button and choose the above mentioned zip file"
 	elog ""
 }
-
