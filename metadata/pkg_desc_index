@@ -4015,7 +4015,7 @@ dev-java/jinklevel 0.1: Java binding for libinklevel
 dev-java/jinput 2.0.6-r1: An implementation of an API for game controller discovery and polled input
 dev-java/jisp 2.5.1-r3: Java Indexed Serialization Package: A small, embedded database engine written in Pure Java
 dev-java/jlayer 1.0.1: MP3 decoder/player/converter library for Java
-dev-java/jlex 1.2.6-r1 1.2.6-r2: JLex: a lexical analyzer generator for Java
+dev-java/jlex 1.2.6-r2: JLex: a lexical analyzer generator for Java
 dev-java/jlfgr 1.0-r1 1.0-r2: Java(TM) Look and Feel Graphics Repository
 dev-java/jlibeps 0.1-r1: Library to create EPS graphics from a Graphics2D
 dev-java/jline 1.0 2.12.1-r1: A Java library for handling console input
@@ -15636,7 +15636,7 @@ sci-geosciences/opencpn-plugin-logbookkonni 1.2018-r1 1.3002 9999: Logbook Plugi
 sci-geosciences/opencpn-plugin-objsearch 0.5.1-r1 0.7 9999: Chart Object Search Plugin for OpenCPN
 sci-geosciences/opencpn-plugin-ocpn_draw 1.0.12 9999: Draw Plugin for OpenCPN
 sci-geosciences/opencpn-plugin-ocpndebugger 1.0-r1 1.2 9999: NMEA-data and plugin-API Debugger Plugin for OpenCPN
-sci-geosciences/opencpn-plugin-otcurrent 1.2 9999: IAC Fleetcode Plugin for OpenCPN
+sci-geosciences/opencpn-plugin-otcurrent 1.2 9999: OTCurrent Plugin for OpenCPN
 sci-geosciences/opencpn-plugin-squiddio 0.7 9999: Squiddio Plugin for OpenCPN
 sci-geosciences/opencpn-plugin-statusbar 0.5-r1 9999: Statusbar Plugin for OpenCPN
 sci-geosciences/opencpn-plugin-weather_routing 1.2 9999: Weather Routing Plugin for OpenCPN
