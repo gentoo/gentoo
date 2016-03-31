@@ -5936,13 +5936,13 @@ dev-perl/Net-DNS-Async 1.70.0-r1: Asynchronous DNS helper for high volume applic
 dev-perl/Net-DNS-Resolver-Programmable 0.3.0-r1: programmable DNS resolver class for offline emulation of DNS
 dev-perl/Net-DNS-SEC 1.20.0: DNSSEC extensions to Net::DNS
 dev-perl/Net-Daemon 0.480.0-r1: Abstract base class for portable servers
-dev-perl/Net-Domain-TLD 1.690.0-r1 1.730.0 1.740.0: Current top level domain names including new ICANN additions and ccTLDs
+dev-perl/Net-Domain-TLD 1.690.0-r1 1.740.0: Current top level domain names including new ICANN additions and ccTLDs
 dev-perl/Net-FreeDB 0.80.0-r1 0.100.0: OOP interface to the FreeDB database
 dev-perl/Net-Google-SafeBrowsing-Blocklist 1.40.0-r1: Query a Google SafeBrowsing table
 dev-perl/Net-Google-SafeBrowsing-UpdateRequest 1.60.0-r1: Update a Google SafeBrowsing table
 dev-perl/Net-HTTP 6.60.0 6.90.0: Low-level HTTP connection (client)
-dev-perl/Net-IDN-Encode 2.201.0-r1 2.300.0: Internationalizing Domain Names in Applications (IDNA)
-dev-perl/Net-IMAP-Simple 1.220.100-r1 1.220.600: Perl extension for simple IMAP account handling
+dev-perl/Net-IDN-Encode 2.300.0: Internationalizing Domain Names in Applications (IDNA)
+dev-perl/Net-IMAP-Simple 1.220.600: Perl extension for simple IMAP account handling
 dev-perl/Net-IMAP-Simple-SSL 1.300.0-r1: SSL support for Net::IMAP::Simple
 dev-perl/Net-IP 1.260.0-r1: Perl extension for manipulating IPv4/IPv6 addresses
 dev-perl/Net-IP-Minimal 0.60.0: Minimal functions from Net::IP
@@ -5953,12 +5953,12 @@ dev-perl/Net-Ident 1.230.0-r1 1.240.0: lookup the username on the remote end of 
 dev-perl/Net-Jabber 2.0.0-r1: Jabber Perl library
 dev-perl/Net-Kismet 0.04-r1: Module for writing perl Kismet clients
 dev-perl/Net-LDAP-Server 0.430.0: LDAP server side protocol handling
-dev-perl/Net-LDAPapi 3.0.3-r2 3.0.4: Perl5 Module Supporting LDAP API
+dev-perl/Net-LDAPapi 3.0.4: Perl5 Module Supporting LDAP API
 dev-perl/Net-LibIDN 0.120.0-r1: Perl bindings for GNU Libidn
-dev-perl/Net-Netmask 1.901.600-r1 1.902.100 1.902.200: Parse, manipulate and lookup IP network blocks
+dev-perl/Net-Netmask 1.901.600-r1 1.902.200: Parse, manipulate and lookup IP network blocks
 dev-perl/Net-OAuth 0.280.0-r1: OAuth protocol support
 dev-perl/Net-OpenID-Common 1.200.0: Libraries shared between Net::OpenID::Consumer and Net::OpenID::Server
-dev-perl/Net-OpenID-Consumer 1.30.0-r1 1.180.0: Library for consumers of OpenID identities
+dev-perl/Net-OpenID-Consumer 1.180.0: Library for consumers of OpenID identities
 dev-perl/Net-OpenSSH 0.600.0 0.700.0: Net::OpenSSH, Perl wrapper for OpenSSH secure shell client
 dev-perl/Net-Patricia 1.210.0-r1 1.220.0: Patricia Trie perl module for fast IP address lookups
 dev-perl/Net-Pcap 0.170.0-r1: Perl Net::Pcap - Perl binding to the LBL pcap
@@ -5967,7 +5967,7 @@ dev-perl/Net-RBLClient 0.500.0-r1: Net::RBLClient - Queries multiple Realtime Bl
 dev-perl/Net-RawIP 0.250.0-r1: Perl Net::RawIP - Raw IP packets manipulation Module
 dev-perl/Net-SFTP 0.100.0-r1: Secure File Transfer Protocol client
 dev-perl/Net-SFTP-Foreign 1.750.0-r1 1.810.0: SSH File Transfer Protocol client
-dev-perl/Net-SMTP-SSL 1.10.0-r1 1.30.0: SSL support for Net::SMTP
+dev-perl/Net-SMTP-SSL 1.30.0: SSL support for Net::SMTP
 dev-perl/Net-SMTP-TLS 0.120.0-r2: A SMTP client supporting TLS and AUTH
 dev-perl/Net-SMTP-TLS-ButMaintained 0.240.0-r1: An SMTP client supporting TLS and AUTH
 dev-perl/Net-SMTPS 0.30.0-r1 0.40.0: SSL/STARTTLS support for Net::SMTP
