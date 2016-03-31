@@ -1,8 +1,8 @@
 Written by: Peter Foley <pefoley2@pefoley.com>
 Gentoo Bug: #552792
 
---- test/module.defs.bak	2015-06-21 13:19:40.626249439 -0400
-+++ test/module.defs	2015-06-21 13:19:54.919757726 -0400
+--- a/test/module.defs
++++ b/test/module.defs
 @@ -25,6 +25,7 @@
  
  ifeq (1,$(FEATURE.x265))
