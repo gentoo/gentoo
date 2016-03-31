@@ -434,7 +434,7 @@ app-cdr/bashburn 3.1.0: A shell script for burning optical media
 app-cdr/bchunk 1.2.0-r1: Converts bin/cue CD-images to iso+wav/cdr
 app-cdr/bin2iso 19b-r2: converts RAW format (.bin/.cue) files to ISO/WAV format
 app-cdr/brasero 3.12.1 3.12.1-r1: CD/DVD burning application for the GNOME desktop
-app-cdr/burn-cd 1.7.4 1.8.0-r1: Smart console frontend for virtual/cdrtools and dvd+rw-tools
+app-cdr/burn-cd 1.7.4 1.8.0-r1 1.8.1: Smart console frontend for the cdrkit/cdrtools & dvd+rw-tools
 app-cdr/burncdda 1.8.0: Console app for copying burning audio cds
 app-cdr/burncenter 3.2.1: A Perl module and a collection of easy-to-use text based interfaces to the UNIX CD burning tools
 app-cdr/ccd2iso 0.3: Converts CloneCD images (popular under Windows) to ISOs
