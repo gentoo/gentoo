@@ -1,0 +1,41 @@
+--- configure.in.orig	2016-03-31 04:15:45.913917791 -0400
++++ configure.in	2016-03-31 04:16:23.447607551 -0400
+@@ -236,20 +236,12 @@
+            AC_DEFINE(PROCESSOR_INTEL, 1, [Define if you have an x86 processor])
+            ALIGNLONGS=0
+ 	   proc_i386=true
+-		CFLAGS="$CFLAGS -O3 -fstrength-reduce -frerun-loop-opt -Wall -Wno-unused -funroll-loops \
+-                    -ffast-math -falign-functions=2 -falign-jumps=2 -fexpensive-optimizations \
+-                    -falign-loops=2 -fschedule-insns2 -malign-double -fomit-frame-pointer -g \
+-		    -fno-strict-aliasing -pipe -mtune=$target_cpu -DCPU=$target_cpu"
+            ;;
+      x86_64)
+ 	   AC_MSG_RESULT(Turning on x86_64 processor optimisations)
+            AC_DEFINE(PROCESSOR_ADM64, 1, [Define if you have an x86_64 processor])
+            ALIGNLONGS=0
+ 	   proc_x64=true
+-		CFLAGS="$CFLAGS -O3 -fstrength-reduce -frerun-loop-opt -Wall -Wno-unused -funroll-loops \
+-                    -ffast-math  -fexpensive-optimizations \
+-                     -malign-double -fomit-frame-pointer -g \
+-		    -fno-strict-aliasing -pipe -DCPU=$target_cpu"
+            ;;
+     sparc*) AC_MSG_RESULT(Turning on sparc processor optimisations)
+            AC_DEFINE(PROCESSOR_SPARC, 1, [Define if you have a sparc processor])
+@@ -258,8 +250,6 @@
+ 	   if test $target_cpu = sparc64 && test $CC_MAJOR -ge 3 ; then
+ 		CFLAGS="$CFLAGS -mcpu=v9"
+ 	   fi
+-	   CFLAGS="$CFLAGS -O3 -Wall -Wno-unused -funroll-loops \
+-                    -ffast-math -fomit-frame-pointer -g"
+            ;;
+     arm)   AC_MSG_RESULT(Turning on arm processor optimisations)
+            AC_DEFINE(PROCESSOR_ARM, 1, [Define if you have an ARM processor])
+@@ -273,8 +263,6 @@
+     *)     AC_MSG_RESULT(Processor type unknown - Use generic optimisations)
+            ALIGNLONGS=1
+            optimum=no
+-	   CFLAGS="$CFLAGS -O3 -Wall -Wno-unused -funroll-loops \
+-                    -ffast-math -g"
+            ;;
+   esac
+ 

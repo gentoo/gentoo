@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -7,11 +7,11 @@ inherit autotools multilib user
 
 DESCRIPTION="The de facto standard for intrusion detection/prevention"
 HOMEPAGE="http://www.snort.org/"
-SRC_URI="http://snort.org/downloads/2911 -> ${P}.tar.gz"
+SRC_URI="https://www.snort.org/downloads/${PN}/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~mips ~ppc ~ppc64 ~sparc ~x86"
-IUSE="static +zlib +gre +mpls +targetbased +ppm +perfprofiling
+IUSE="static +gre +mpls +targetbased +ppm +perfprofiling
 +non-ether-decoders control-socket file-inspect high-availability
 shared-rep side-channel sourcefire linux-smp-stats inline-init-failopen
 +threads debug +active-response +normalizer reload-error-restart
@@ -21,7 +21,7 @@ DEPEND=">=net-libs/libpcap-1.3.0
 	>=net-libs/daq-2.0.2
 	>=dev-libs/libpcre-8.33
 	dev-libs/libdnet
-	zlib? ( sys-libs/zlib )"
+	sys-libs/zlib"
 
 RDEPEND="${DEPEND}
 	selinux? ( sec-policy/selinux-snort )"
@@ -46,7 +46,7 @@ src_prepare() {
 		|| die "sed for sf_engine failed"
 
 	# Multilib fix for the curent set of dynamic-preprocessors
-	for i in file ftptelnet smtp ssh dns ssl dcerpc2 sdf imap pop rzb_saac sip reputation gtp modbus dnp3; do
+	for i in file ftptelnet smtp ssh dns ssl dcerpc2 sdf imap pop sip reputation gtp modbus dnp3; do
 		sed -i -e 's|${exec_prefix}/lib|${exec_prefix}/'$(get_libdir)'|g' \
 			"${WORKDIR}/${P}/src/dynamic-preprocessors/$i/Makefile.am" \
 			|| die "sed for $i failed."
@@ -62,7 +62,6 @@ src_configure() {
 		$(use_enable !static shared) \
 		$(use_enable static) \
 		$(use_enable static so-with-static-lib) \
-		$(use_enable zlib) \
 		$(use_enable gre) \
 		$(use_enable mpls) \
 		$(use_enable targetbased) \
@@ -93,8 +92,7 @@ src_configure() {
 		--disable-profile \
 		--disable-ppm-test \
 		--disable-intel-soft-cpm \
-		--disable-static-daq \
-		--disable-rzb-saac
+		--disable-static-daq
 }
 
 src_install() {
