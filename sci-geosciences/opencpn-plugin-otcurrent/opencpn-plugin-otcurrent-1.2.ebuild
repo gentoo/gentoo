@@ -19,7 +19,7 @@ else
 	S="${WORKDIR}/${MY_PN}-${PV}"
 fi
 
-DESCRIPTION="IAC Fleetcode Plugin for OpenCPN"
+DESCRIPTION="OTCurrent Plugin for OpenCPN"
 HOMEPAGE="https://github.com/Rasbats/otcurrent_pi"
 
 LICENSE="GPL-2+"
