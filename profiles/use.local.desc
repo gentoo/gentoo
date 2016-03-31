@@ -3055,6 +3055,8 @@ games-puzzle/jag:editor - Install level editor
 games-puzzle/nightsky:bundled-libs - Use the upstream provided bundled libraries.
 games-puzzle/numptyphysics:user-levels - Install some fun user-created levels
 games-puzzle/pingus:music - Enable playing of background music
+games-puzzle/sgt-puzzles:gtk3 - Use x11-libs/gtk+:3 instead of x11-libs/gtk+:2
+games-puzzle/sgt-puzzles:icons - Use Gentoo packaged icons instead of bundled icons
 games-puzzle/tiny-and-big:bundled-libs - Use the upstream provided bundled libraries.
 games-puzzle/xlogical:alt_gfx - Use alternate graphics which are closer to the original Amiga version
 games-roguelike/FTL:bundled-libs - Use bundled libraries.
