@@ -241,7 +241,7 @@ app-arch/arj 3.10.22-r5 3.10.22-r6: Utility for opening arj archives
 app-arch/atool 0.39.0: a script for managing file archives of various types
 app-arch/bloscpack 0.5.0 0.6.0: Command line interface for Blosc compression
 app-arch/bsdsfv 1.18-r1: all-in-one SFV checksum utility
-app-arch/bzip2 1.0.6 1.0.6-r1 1.0.6-r2 1.0.6-r3 1.0.6-r4 1.0.6-r6 1.0.6-r7: A high-quality data compressor used extensively by Gentoo Linux
+app-arch/bzip2 1.0.6-r6 1.0.6-r7: A high-quality data compressor used extensively by Gentoo Linux
 app-arch/cabextract 1.6: Extracts files from Microsoft cabinet archive files
 app-arch/cfv 1.18.2 1.18.3-r1: Utility to test and create .sfv, .csv, .crc and md5sum files
 app-arch/cksfv 1.3.12 1.3.13 1.3.14: SFV checksum utility (simple file verification)
@@ -328,7 +328,7 @@ app-arch/vimball 0.5.1 9999: a command-line vimball archive extractor
 app-arch/xar 1.5.2-r1 1.5.2-r2: An easily extensible archive format
 app-arch/xarchiver 0.5.4: a GTK+ based and advanced archive manager that can be used with Thunar
 app-arch/xdms 1.3.2: xDMS - Amiga DMS disk image decompressor
-app-arch/xz-utils 5.0.8 5.2.0 5.2.1-r1 5.2.2 9999: utils for managing LZMA compressed files
+app-arch/xz-utils 5.2.2 9999: utils for managing LZMA compressed files
 app-arch/zip 2.32-r1 3.0 3.0-r1 3.0-r2 3.0-r3: Info ZIP (encryption support)
 app-arch/zoo 2.10-r4: Manipulate archives of files in compressed form
 app-arch/zopfli 1.0.0 1.0.0_p20140705 1.0.0_p20141006 1.0.1: Very good, but slow, deflate or zlib compression
@@ -4615,7 +4615,7 @@ dev-libs/libdshconfig 0.20.12 0.20.13: Library for parsing dsh.style configurati
 dev-libs/libdynd 0.6.5 0.6.6: C++ dynamic multi-dimensionnal array library with Python exposure
 dev-libs/libe 0.9.0 0.10.1 0.11.0: Hyperdex libe support library
 dev-libs/libebml 1.2.1 1.2.2 1.3.0 1.3.1 1.3.3: Extensible binary format library (kinda like XML)
-dev-libs/libedit 20120311.3.0-r1 20130611.3.1-r1 20130712.3.1: BSD replacement for libreadline
+dev-libs/libedit 20130712.3.1: BSD replacement for libreadline
 dev-libs/libee 0.3.2-r1 0.3.2-r2 0.4.1: An Event Expression Library inspired by CEE
 dev-libs/libelf 0.8.13-r1 0.8.13-r2: A ELF object file access library
 dev-libs/liberasurecode 1.0.7 1.0.8 1.0.8-r1: Erasure Code API library written in C with pluggable Erasure Code backends.
@@ -4708,7 +4708,7 @@ dev-libs/libotf 0.9.13: Library for handling OpenType fonts (OTF)
 dev-libs/libowfat 0.29 0.30: reimplement libdjb - excellent libraries from Dan Bernstein
 dev-libs/libp11 0.2.8-r3: A library implementing a layer on top of PKCS#11 API to make using PKCS#11 implementations easier
 dev-libs/libparserutils 0.1.2 0.2.0-r1 0.2.1-r1 0.2.3: library for building efficient parsers, written in C
-dev-libs/libpcre 7.9-r1 8.35 8.36 8.37-r2 8.38: Perl-compatible regular expression library
+dev-libs/libpcre 7.9-r1 8.38: Perl-compatible regular expression library
 dev-libs/libpeas 1.14.0-r1 1.16.0: A GObject plugins library
 dev-libs/libpfm 4.4.0 4.6.0: Hardware-based performance monitoring interface for Linux
 dev-libs/libpipeline 1.2.5 1.3.1 1.4.0 1.4.1: a pipeline manipulation library
@@ -4717,7 +4717,7 @@ dev-libs/libpo6 0.6.0 0.7.0 0.8.0: Hyperdex libpo6 support library
 dev-libs/libpqxx 4.0.1: C++ client API for PostgreSQL. The standard front-end for writing C++ programs that use PostgreSQL
 dev-libs/libproccpuinfo 0.0.8: Architecture independent C API for reading /proc/cpuinfo
 dev-libs/libpthread-stubs 0.1 0.3 0.3-r1: Pthread functions stubs for platforms missing them
-dev-libs/libpwquality 1.2.4 1.3.0: Library for password quality checking and generating random passwords
+dev-libs/libpwquality 1.3.0: Library for password quality checking and generating random passwords
 dev-libs/libqtxdg 1.3.0: A Qt implementation of XDG standards
 dev-libs/libqzeitgeist 0.8.0: Qt interface to the Zeitgeist event tracking system
 dev-libs/librdkafka 0.9.0.99: Apache Kafka C/C++ client library
@@ -16331,7 +16331,7 @@ sec-policy/selinux-zabbix 2.20141203-r1 2.20141203-r2 2.20141203-r3 2.20141203-r
 sys-apps/9base 6-r1: A port of various original Plan 9 tools for Unix, based on plan9port
 sys-apps/accountsservice 0.6.39 0.6.40: D-Bus interfaces for querying and manipulating user account information
 sys-apps/ack 2.14: ack is a tool like grep, aimed at programmers with large trees of heterogeneous source code
-sys-apps/acl 2.2.49 2.2.49-r1 2.2.51 2.2.52 2.2.52-r1: access control list utilities, libraries and headers
+sys-apps/acl 2.2.52-r1: access control list utilities, libraries and headers
 sys-apps/adjtime 0.4-r2: A perl script to adjust the clock tick of the hardware clock on the system board
 sys-apps/agedu 20151213: A utility for tracking down wasted disk space
 sys-apps/aix-miscutils 0.1.1671: Miscellaneous helpers for AIX (currently just ldd)
@@ -16340,7 +16340,7 @@ sys-apps/apparmor 2.8.3 2.8.4 2.10: Userspace utils and init scripts for the App
 sys-apps/apparmor-utils 2.8.3 2.8.4 2.10: Additional userspace utils to assist with AppArmor profile management
 sys-apps/apply-default-acl 0.0.4: Apply default POSIX ACLs to files and directories
 sys-apps/arrayprobe 2.0-r2: CLI utility that reports the status of a HP (Compaq) array controller (both IDA & CCISS supported)
-sys-apps/attr 2.4.46-r2 2.4.47-r1 2.4.47-r2: Extended attributes tools
+sys-apps/attr 2.4.47-r2: Extended attributes tools
 sys-apps/audio-entropyd 2.0.3-r1: Audio-entropyd generates entropy-data for the /dev/random device
 sys-apps/baobab 3.16.1 3.18.1: Disk usage browser for GNOME
 sys-apps/bar 1.11.1: Console Progress Bar
@@ -16450,8 +16450,8 @@ sys-apps/isapnptools 1.27: Tools for configuring ISA PnP devices
 sys-apps/iucode_tool 1.3 1.5: tool to manipulate Intel X86 and X86-64 processor microcode update collections
 sys-apps/kbd 1.15.5-r1 2.0.1 2.0.1-r1 2.0.2 2.0.3 9999: Keyboard and console utilities
 sys-apps/kexec-tools 2.0.4-r2 2.0.9-r2 2.0.12 9999: Load another kernel from the currently executing Linux kernel
-sys-apps/keyutils 1.5.5 1.5.8 1.5.9 1.5.9-r1: Linux Key Management Utilities
-sys-apps/kmod 20 21 22 9999: library and tools for managing linux kernel modules
+sys-apps/keyutils 1.5.9-r1: Linux Key Management Utilities
+sys-apps/kmod 21 22 9999: library and tools for managing linux kernel modules
 sys-apps/lcdsplash 0.3: splash Gentoo boot information on LCD's
 sys-apps/lcdtest 1.18: Displays test patterns to spot dead/hot pixels on LCD screens
 sys-apps/lcdutils 0.2: Cobalt RaQ/Qube LCD Writing and Button reading utilities
@@ -17148,7 +17148,7 @@ sys-libs/libaal 1.0.5 1.0.5-r1 1.0.6: library required by reiser4progs
 sys-libs/libacpi 0.2: A general purpose library for ACPI
 sys-libs/libapparmor 2.8.3 2.8.4 2.10: Library to support AppArmor userspace utilities
 sys-libs/libavc1394 0.5.3 0.5.4 0.5.4-r1: library for the 1394 Trade Association AV/C (Audio/Video Control) Digital Interface Command Set
-sys-libs/libcap 2.22-r2 2.24-r2 2.25: POSIX 1003.1e capabilities
+sys-libs/libcap 2.24-r2 2.25: POSIX 1003.1e capabilities
 sys-libs/libcap-ng 0.7.7: POSIX 1003.1e capabilities
 sys-libs/libchipcard 5.0.2: Libchipcard is a library for easy access to chip cards via chip card readers (terminals)
 sys-libs/libcxx 3.7.0 3.7.1 3.8.0 9999: New implementation of the C++ standard library, targeting C++11
@@ -17195,7 +17195,7 @@ sys-libs/nss_wrapper 1.1.2 1.1.3: A wrapper for the user, group and hosts NSS AP
 sys-libs/ntdb 1.0-r1: A not-so trivial keyword/data database system
 sys-libs/openhpi 2.12.0 3.0.0: Open source implementation of the Service Availability Forum (SAF) Hardware Platform Interface (HPI)
 sys-libs/openipmi 1.3.18 1.4.12 1.4.14 1.4.28 2.0.11 2.0.16 2.0.16-r1 2.0.18 2.0.18-r1: Library interface to IPMI
-sys-libs/pam 1.1.5 1.1.6-r2 1.1.8 1.1.8-r1 1.1.8-r2 1.1.8-r3 1.2.0 1.2.1 1.2.1-r1: Linux-PAM (Pluggable Authentication Modules)
+sys-libs/pam 1.2.1 1.2.1-r1: Linux-PAM (Pluggable Authentication Modules)
 sys-libs/pwdb 0.62: Password database
 sys-libs/readline 4.3_p5 5.2_p14 6.2_p5-r1 6.3_p8-r1 6.3_p8-r2 7.0_rc1: Another cute console display library
 sys-libs/rvm 1.12 1.16 1.17: Recoverable Virtual Memory (used by Coda)
