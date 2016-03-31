@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 # no support for python3_2 or above yet wrt #471326
 PYTHON_COMPAT=( python2_7 )
@@ -15,7 +15,7 @@ SRC_URI="mirror://alsaproject/lib/${P}.tar.bz2"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~sh sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux"
 IUSE="alisp debug doc elibc_uclibc python"
 
 RDEPEND="python? ( ${PYTHON_DEPS} )
@@ -36,7 +36,7 @@ src_prepare() {
 	find . -name Makefile.am -exec sed -i -e '/CFLAGS/s:-g -O2::' {} + || die
 	# https://bugs.gentoo.org/509886
 	use elibc_uclibc && { sed -i -e 's:oldapi queue_timer:queue_timer:' test/Makefile.am || die; }
-	epatch_user
+	default
 	eautoreconf
 }
 
@@ -76,12 +76,14 @@ multilib_src_compile() {
 multilib_src_install() {
 	emake DESTDIR="${D}" install
 	if multilib_is_native_abi && use doc; then
-		dohtml -r doc/doxygen/html/.
+		docinto html
+		dodoc -r doc/doxygen/html/.
 	fi
 }
 
 multilib_src_install_all() {
 	prune_libtool_files --all
 	find "${ED}"/usr/$(get_libdir)/alsa-lib -name '*.a' -exec rm -f {} +
+	docinto ""
 	dodoc ChangeLog doc/asoundrc.txt NOTES TODO
 }

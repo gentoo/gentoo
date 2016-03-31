@@ -1,9 +1,9 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
-inherit autotools eutils flag-o-matic multilib
+EAPI=6
+inherit autotools eutils flag-o-matic multilib multilib-minimal
 
 DESCRIPTION="ALSA extra plugins"
 HOMEPAGE="http://www.alsa-project.org/"
@@ -11,25 +11,30 @@ SRC_URI="mirror://alsaproject/plugins/${P}.tar.bz2"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 ~sh sparc x86 ~amd64-linux"
-IUSE="debug ffmpeg jack libsamplerate pulseaudio speex"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sh ~sparc ~x86 ~amd64-linux"
+IUSE="debug ffmpeg jack libav libsamplerate pulseaudio speex"
 
-RDEPEND=">=media-libs/alsa-lib-${PV}:=
-	ffmpeg? ( virtual/ffmpeg )
-	jack? ( >=media-sound/jack-audio-connection-kit-0.98 )
-	libsamplerate? ( media-libs/libsamplerate:= )
-	pulseaudio? ( media-sound/pulseaudio )
-	speex? ( media-libs/speex:= )"
+RDEPEND="
+	>=media-libs/alsa-lib-${PV}:=[${MULTILIB_USEDEP}]
+	ffmpeg? (
+		libav? ( media-video/libav:= )
+		!libav? ( media-video/ffmpeg:0= )
+	)
+	jack? ( >=media-sound/jack-audio-connection-kit-0.121.3-r1[${MULTILIB_USEDEP}] )
+	libsamplerate? ( >=media-libs/libsamplerate-0.1.8-r1:=[${MULTILIB_USEDEP}] )
+	pulseaudio? ( >=media-sound/pulseaudio-2.1-r1[${MULTILIB_USEDEP}] )
+	speex? ( >=media-libs/speex-1.2_rc1-r1:=[${MULTILIB_USEDEP}] )
+"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
-src_prepare() {
-	epatch \
-		"${FILESDIR}"/${PN}-1.0.19-missing-avutil.patch \
-		"${FILESDIR}"/${PN}-1.0.23-automagic.patch \
-		"${FILESDIR}"/${P}-{ffmpeg,ffmpeg-version-check}.patch
+PATCHES=(
+	"${FILESDIR}/${PN}-1.0.23-automagic.patch"
+	"${FILESDIR}/${PN}-1.0.28-libav10.patch"
+)
 
-	epatch_user
+src_prepare() {
+	default
 
 	# For some reasons the polyp/pulse plugin does fail with alsaplayer with a
 	# failed assert. As the code works just fine with asserts disabled, for now
@@ -41,12 +46,13 @@ src_prepare() {
 	eautoreconf
 }
 
-src_configure() {
+multilib_src_configure() {
 	use debug || append-cppflags -DNDEBUG
 
 	local myspeex=no
 	use speex && myspeex=lib
 
+	ECONF_SOURCE=${S} \
 	econf \
 		$(use_enable ffmpeg avcodec) \
 		$(use_enable jack) \
@@ -55,10 +61,10 @@ src_configure() {
 		--with-speex=${myspeex}
 }
 
-src_install() {
-	emake DESTDIR="${D}" install
+multilib_src_install_all() {
+	einstalldocs
 
-	cd doc
+	cd doc || die
 	dodoc upmix.txt vdownmix.txt README-pcm-oss
 	use jack && dodoc README-jack
 	use libsamplerate && dodoc samplerate.txt
