@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=5
-inherit eutils flag-o-matic games
+inherit eutils games
 
 DESCRIPTION="Block-clearing puzzle game"
 HOMEPAGE="http://wizznic.org/"
@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/wizznic/Wizznic_src_build_${PV}.tar.bz2"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="media-libs/libsdl[sound,joystick,opengl,video]
@@ -26,14 +26,8 @@ src_prepare() {
 	sed \
 		-e '/^\(CC\|LD\|STRIP\)/d' \
 		-e 's/(LD)/(CC)/g' \
-		-e '/man1/s/1/6/g' \
 		-e '/CFLAGS.*=/d' \
 		Makefile.linux > Makefile || die
-	mv doc/wizznic.1 doc/wizznic.6 || die
-	sed -i \
-		-e '/Dt WIZZNIC/s/1/6/' \
-		doc/wizznic.6 || die
-	append-cflags -std=gnu89 # build with gcc5 (bug #574100)
 }
 
 src_compile() {

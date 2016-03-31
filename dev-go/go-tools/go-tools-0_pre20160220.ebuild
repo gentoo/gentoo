@@ -33,14 +33,10 @@ src_prepare() {
 	sed -e 's:TestWeb(:_\0:' \
 		-e 's:TestWebIndex(:_\0:' \
 		-i src/${go_src}/cmd/godoc/godoc_test.go || die
-	sed -e 's:TestGuru(:_\0:' \
-		-i src/${go_src}/cmd/guru/guru_test.go || die
 	sed -e 's:TestVet(:_\0:' \
 		-e 's:TestDivergentPackagesExamples(:_\0:' \
 		-e 's:TestIncompleteExamples(:_\0:' \
 		-i src/${go_src}/cmd/vet/vet_test.go || die
-	sed -e 's:TestImport(:_\0:' \
-		-i src/${go_src}/go/gcimporter/gcimporter_test.go || die
 	sed -e 's:TestImportStdLib(:_\0:' \
 		-i src/${go_src}/go/gcimporter15/gcimporter_test.go || die
 	sed -e 's:TestImportStdLib(:_\0:' \
@@ -50,21 +46,17 @@ src_prepare() {
 	sed -e 's:TestStdlib(:_\0:' \
 		-i src/${go_src}/go/ssa/stdlib_test.go || die
 	sed -e 's:TestGorootTest(:_\0:' \
-		-e 's:TestFoo(:_\0:' \
 		-e 's:TestTestmainPackage(:_\0:' \
 		-i src/${go_src}/go/ssa/interp/interp_test.go || die
 	sed -e 's:TestBar(:_\0:' \
 		-e 's:TestFoo(:_\0:' \
 		-i src/${go_src}/go/ssa/interp/testdata/a_test.go || die
-	sed -e 's:TestCheck(:_\0:' \
-		-i src/${go_src}/go/types/check_test.go || die
 	sed -e 's:TestStdlib(:_\0:' \
 		-e 's:TestStdFixed(:_\0:' \
 		-e 's:TestStdKen(:_\0:' \
 		-i src/${go_src}/go/types/stdlib_test.go || die
-	sed -e 's:TestRepoRootForImportPath(:_\0:' \
-		-i src/${go_src}/go/vcs/vcs_test.go || die
-	sed -e 's:TestFindImportInternal(:_\0:' \
+	sed -e 's:TestFindImportVendor(:_\0:' \
+		-e 's:TestProcessVendor(:_\0:' \
 		-i src/${go_src}/imports/fix_test.go || die
 
 	# Add favicon to the godoc web interface (bug 551030)
