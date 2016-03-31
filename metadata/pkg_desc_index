@@ -3103,7 +3103,7 @@ dev-games/ps2-packer 0.4.4: another ELF packer for the PS2
 dev-games/quake4-sdk 1.4.2: Quake4 SDK
 dev-games/simgear 3.4.0 2016.1.1 9999: Development library for simulation games
 dev-games/t4k-common 0.1.1: A library of code shared between tuxmath and tuxtype
-dev-games/tiled 0.15.2: A general purpose tile map editor
+dev-games/tiled 0.15.2 0.16.0: A general purpose tile map editor
 dev-games/vamos 0.7.1: an automotive simulation framework
 dev-games/wfmath 1.0.2: Worldforge math library
 dev-go/bee 1.4.1_p20160125: A tool for helping develop with beego app framework
@@ -6970,7 +6970,7 @@ dev-python/curtsies 0.1.18 0.1.23 0.2.3 0.2.4 0.2.6: Curses-like terminal wrappe
 dev-python/cvxopt 1.1.6-r2 1.1.8: Python package for convex optimization
 dev-python/cx_Freeze 4.3.3 4.3.4: Create standalone executables from Python scripts
 dev-python/cycler 0.9.0 0.10.0: Composable style cycles
-dev-python/cython 0.22 0.23.2 0.23.3 0.23.4 0.23.4-r1: A Python to C compiler
+dev-python/cython 0.22 0.23.2 0.23.3 0.23.4 0.23.4-r1 0.23.5: A Python to C compiler
 dev-python/cytoolz 0.7.1 0.7.2-r2 0.7.3 0.7.4 0.7.5: Cython implementation of Toolz: High performance functional utilities
 dev-python/d2to1 0.2.11 0.2.12 0.2.12_p1: Allows using distutils2-like setup.cfg files for a package metadata
 dev-python/dap 2.2.6.7-r1: Data Access Protocol client and server
