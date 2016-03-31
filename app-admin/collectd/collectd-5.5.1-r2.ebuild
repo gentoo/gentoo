@@ -140,7 +140,7 @@ REQUIRED_USE="
 	collectd_plugins_genericjmx?		( java )
 	collectd_plugins_java?			( java )
 	collectd_plugins_python?		( ${PYTHON_REQUIRED_USE} )
-	collectd_plugins_smart			( udev )"
+	collectd_plugins_smart?			( udev )"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-4.10.3-werror.patch
