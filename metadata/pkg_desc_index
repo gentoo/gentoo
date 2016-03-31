@@ -13399,7 +13399,7 @@ media-video/gtk-recordmydesktop 0.3.8-r3: GTK+ interface for RecordMyDesktop
 media-video/guvcview 1.6.1 1.7.1 1.7.2 1.7.3 2.0.1 2.0.3: GTK+ UVC Viewer
 media-video/gxine 0.5.907-r1 0.5.908: GTK+ Front-End for libxine
 media-video/h264enc 10.4.1 10.4.7: Script to encode H.264/AVC/MPEG-4 Part 10 formats
-media-video/handbrake 0.10.2-r1 9999: Open-source, GPL-licensed, multiplatform, multithreaded video transcoder
+media-video/handbrake 0.10.2-r1 0.10.5 9999: Open-source, GPL-licensed, multiplatform, multithreaded video transcoder
 media-video/harvid 0.8.0: HTTP Ardour Video Daemon
 media-video/hasciicam 1.1.1 1.1.2: A webcam software displaying ascii art using aalib
 media-video/imagination 3.0 3.0-r1: Simple DVD slideshow maker
@@ -17681,7 +17681,7 @@ www-client/dooble 1.55: A Secure and Open Source Web Browser
 www-client/dwb 2014.03.07-r1 9999: Dynamic web browser based on WebKit and GTK+
 www-client/elinks 0.12_pre6-r1 0.12_pre6-r2 9999: Advanced and well-established text-mode web browser
 www-client/epiphany 3.16.3 3.18.3 3.18.4: GNOME webbrowser based on Webkit
-www-client/fetch 1.0-r1: Fetch is a simple, fast, and flexible HTTP download tool built on the HTTP Fetcher library
+www-client/fetch 1.0-r1 1.0-r2: HTTP download tool built atop the HTTP fetcher library
 www-client/firefox 38.7.0 38.7.1 45.0.1: Firefox Web Browser
 www-client/firefox-bin 38.7.1 45.0.1: Firefox Web Browser
 www-client/google-chrome 49.0.2623.110_p1: The web browser from Google
