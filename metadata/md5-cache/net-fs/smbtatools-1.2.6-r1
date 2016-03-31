@@ -1,14 +1,14 @@
 DEFINED_PHASES=compile configure install prepare test
-DEPEND=dev-db/libdbi >=dev-db/sqlite-3.7.0:3 net-fs/samba net-misc/curl sys-libs/ncurses sys-libs/talloc x11-libs/cairo x11-libs/pango dev-qt/qtgui:4 sys-devel/make >=dev-util/cmake-2.8.12
+DEPEND=dev-db/libdbi >=dev-db/sqlite-3.7.0:3 net-fs/samba net-misc/curl sys-libs/ncurses:0= sys-libs/talloc x11-libs/cairo x11-libs/pango dev-qt/qtgui:4 virtual/pkgconfig sys-devel/make >=dev-util/cmake-2.8.12
 DESCRIPTION=Tools for configuration and query of SMB Traffic Analyzer
-EAPI=4
+EAPI=6
 HOMEPAGE=https://github.com/hhetter/smbtatools
 IUSE=debug
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-3
-RDEPEND=dev-db/libdbi >=dev-db/sqlite-3.7.0:3 net-fs/samba net-misc/curl sys-libs/ncurses sys-libs/talloc x11-libs/cairo x11-libs/pango dev-qt/qtgui:4 net-fs/smbtad
+RDEPEND=dev-db/libdbi >=dev-db/sqlite-3.7.0:3 net-fs/samba net-misc/curl sys-libs/ncurses:0= sys-libs/talloc x11-libs/cairo x11-libs/pango dev-qt/qtgui:4 net-fs/smbtad
 SLOT=0
 SRC_URI=http://morelias.org/smbta/smbtatools-1.2.6.tar.bz2
 _eclass_exported_funcs=src_prepare:cmake-utils src_configure:- src_compile:cmake-utils src_test:cmake-utils src_install:cmake-utils
 _eclasses_=cmake-utils	e79d341200cba811b41cc0728403c48d	eutils	9d81603248f2ba3ec59124320d123e5e	flag-o-matic	d270fa247153df66074f795fa42dba3e	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=06860f8d4327b06ce0fb864c80d2b38f
+_md5_=ff2c672b3dbee38042a7a93bdc3b0f9b
