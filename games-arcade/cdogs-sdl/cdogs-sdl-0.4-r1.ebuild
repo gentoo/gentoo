@@ -1,9 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
-inherit eutils games
+inherit eutils flag-o-matic games
 
 CDOGS_DATA="cdogs-data-2007-07-06"
 DESCRIPTION="A port of the old DOS arcade game C-Dogs"
@@ -32,10 +32,9 @@ src_prepare() {
 		-e "/^CF_OPT/d" \
 		-e "/^CC/d" \
 		Makefile || die
-	sed -i \
-		-e "/\bopen(/s/)/, 0666)/" \
-		files.c || die
+	sed -i -e "/\bopen(/s/)/, 0666)/" files.c || die
 	epatch "${FILESDIR}"/${P}-64bit.patch
+	append-cflags -std=gnu89 # build with gcc5 (bug #571112)
 }
 
 src_compile() {
