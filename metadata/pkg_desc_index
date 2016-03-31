@@ -10605,7 +10605,7 @@ games-puzzle/torrent 0.8.2: Match rising tiles to score as many points as possib
 games-puzzle/triptych-demo 0: fast-paced tetris-like puzzler
 games-puzzle/twindistress 1.1.0: Match and remove all of the blocks before time runs out
 games-puzzle/wakkabox 1.1.0: A simple block-pushing game
-games-puzzle/wizznic 306: Block-clearing puzzle game
+games-puzzle/wizznic 306 369: Block-clearing puzzle game
 games-puzzle/wmpuzzle 0.5.2: wmpuzzle provides a 4x4 puzzle on a 64x64 mini window
 games-puzzle/world-of-goo 1.41-r1: A puzzle game with a strong emphasis on physics
 games-puzzle/world-of-goo-demo 1.41-r1: A puzzle game with a strong emphasis on physics
