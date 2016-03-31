@@ -5,4 +5,8 @@
  <email>vapier@gentoo.org</email>
  <description>feel free to update</description>
 </maintainer>
+<maintainer type="person">
+	<email>chainsaw@gentoo.org</email>
+	<name>Tony Vroon</name>
+</maintainer>
 </pkgmetadata>
