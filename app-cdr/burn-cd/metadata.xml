@@ -4,7 +4,7 @@
 <maintainer type="person">
 	<email>canutethegreat@gmail.com</email>
 	<name>Ronald Farrer</name>
-	<description>Proxy-maintainer; ADD or CC him for bugs</description>
+	<description>Proxy-maintainer; set to assignee on bugs</description>
 </maintainer>
 <maintainer type="project">
 	<email>proxy-maint@gentoo.org</email>
