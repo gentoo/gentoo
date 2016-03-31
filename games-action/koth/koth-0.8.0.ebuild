@@ -1,9 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
-inherit eutils games
+inherit eutils flag-o-matic games
 
 DESCRIPTION="Multiplayer, networked game of little tanks with really big weapons"
 HOMEPAGE="http://www.nongnu.org/koth/"
@@ -23,6 +23,7 @@ src_prepare() {
 	epatch "${FILESDIR}"/${P}-gcc-3.4.patch
 	sed -i "s:/etc/koth:${GAMES_SYSCONFDIR}:" cfgfile.h || die
 	sed -i 's:(uint16):(uint16_t):' gfx.c gfx.h || die
+	append-cflags -std=gnu89 # build with gcc5 (bug #570730)
 }
 
 src_install() {
