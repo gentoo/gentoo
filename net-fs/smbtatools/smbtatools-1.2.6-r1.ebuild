@@ -1,8 +1,8 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=6
 
 inherit cmake-utils
 
@@ -15,27 +15,32 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="debug"
 
-DEPEND="
+RDEPEND="
 	dev-db/libdbi
 	>=dev-db/sqlite-3.7.0:3
 	net-fs/samba
 	net-misc/curl
-	sys-libs/ncurses
+	sys-libs/ncurses:0=
 	sys-libs/talloc
 	x11-libs/cairo
 	x11-libs/pango
 	dev-qt/qtgui:4
-
 "
-RDEPEND="${DEPEND}
+DEPEND="${RDEPEND}
+	virtual/pkgconfig
+"
+RDEPEND+="
 	net-fs/smbtad
 "
 
 DOCS="doc/smbta-guide.html doc/gfx/*.png"
+PATCHES=( "${FILESDIR}"/${P}-fix-cmake.patch )
 
 src_configure() {
 	local mycmakeargs=(
-		$(cmake-utils_use debug)
+		-Ddebug=$(usex debug)
+		-DLIBSMBCLIENT_LIBRARIES="$(pkg-config --libs smbclient)"
+		-DLIBSMBCLIENT_INCLUDE_DIRS="$(pkg-config --variable includedir smbclient)"
 	)
 
 	cmake-utils_src_configure
