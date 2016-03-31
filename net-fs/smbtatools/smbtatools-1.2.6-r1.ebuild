@@ -4,7 +4,7 @@
 
 EAPI=6
 
-inherit cmake-utils
+inherit toolchain-funcs cmake-utils
 
 DESCRIPTION="Tools for configuration and query of SMB Traffic Analyzer"
 HOMEPAGE="https://github.com/hhetter/smbtatools"
@@ -37,10 +37,11 @@ DOCS="doc/smbta-guide.html doc/gfx/*.png"
 PATCHES=( "${FILESDIR}"/${P}-fix-cmake.patch )
 
 src_configure() {
+	local PKG_CONFIG=$(tc-getPKG_CONFIG)
 	local mycmakeargs=(
 		-Ddebug=$(usex debug)
-		-DLIBSMBCLIENT_LIBRARIES="$(pkg-config --libs smbclient)"
-		-DLIBSMBCLIENT_INCLUDE_DIRS="$(pkg-config --variable includedir smbclient)"
+		-DLIBSMBCLIENT_LIBRARIES="$(${PKG_CONFIG} --libs smbclient)"
+		-DLIBSMBCLIENT_INCLUDE_DIRS="$(${PKG_CONFIG} --variable includedir smbclient)"
 	)
 
 	cmake-utils_src_configure

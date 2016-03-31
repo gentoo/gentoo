@@ -14,7 +14,7 @@ SRC_URI="https://github.com/JodaOrg/${PN}/releases/download/v${PV}/${P}-dist.tar
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~x86-solaris"
+KEYWORDS="amd64 x86 ppc64 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~x86-solaris"
 
 RESTRICT="test"
 
