@@ -22,10 +22,11 @@ mirror://gentoo/${MY_P}-f2fs-tools.tar.gz"
 LICENSE="Apache-2.0 BSD-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~arm-linux ~x86-linux"
-IUSE=""
+IUSE="libressl"
 
 RDEPEND="sys-libs/zlib:=
-	dev-libs/openssl:0=
+	!libressl? ( dev-libs/openssl:0= )
+	libressl? ( dev-libs/libressl:0= )
 	dev-libs/libpcre"
 DEPEND="${RDEPEND}"
 
