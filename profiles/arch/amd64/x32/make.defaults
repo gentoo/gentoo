@@ -6,8 +6,6 @@ DEFAULT_ABI="x32"
 ABI="x32"
 MULTILIB_ABIS="amd64 x86 x32"
 
-FEATURES="collision-protect multilib-strict"
-
 SYMLINK_LIB="no"
 
 # Michał Górny <mgorny@gentoo.org> (01 Jul 2014)
