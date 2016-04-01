@@ -332,7 +332,7 @@ media-gfx/pstoedit emf
 net-misc/openconnect java
 dev-util/oprofile java
 =dev-db/qdbm-1.8.78-r1 java
-=dev-libs/beecrypt-4.2.1 java
+dev-libs/beecrypt java
 dev-libs/cyrus-sasl java
 =dev-libs/xapian-bindings-1.2.12 java
 =dev-libs/xapian-bindings-1.2.12-r1 java
