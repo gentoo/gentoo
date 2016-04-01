@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst preinst prepare setup unpack
+DEPEND=media-libs/libsdl[sound,video] sys-libs/zlib app-arch/bzip2 media-libs/libpng:0 media-libs/sdl-mixer app-arch/unzip
+DESCRIPTION=A free Transport Tycoon clone
+EAPI=5
+HOMEPAGE=http://www.simutrans.com/
+KEYWORDS=-* ~amd64 ~x86
+LICENSE=Artistic
+RDEPEND=media-libs/libsdl[sound,video] sys-libs/zlib app-arch/bzip2 media-libs/libpng:0 media-libs/sdl-mixer games-misc/games-envd
+SLOT=0
+SRC_URI=mirror://sourceforge/simutrans/simutrans-src-120-1-3.zip mirror://sourceforge/simutrans/simupak64-120-1-2.zip
+_eclass_exported_funcs=pkg_preinst:games pkg_postinst:games pkg_setup:games src_unpack:base src_prepare:- src_configure:games src_compile:games src_install:-
+_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	9d81603248f2ba3ec59124320d123e5e	flag-o-matic	d270fa247153df66074f795fa42dba3e	games	2cf0d67d765e6358b435ccda30c13ad8	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	user	906f3c8eb3a2350a4f1191a89baa3e46
+_md5_=7aa9a0d678ebf5fd50705651a35fabdb
