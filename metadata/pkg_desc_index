@@ -14264,7 +14264,7 @@ net-libs/libtirpc 0.1.10 0.2.4-r1 0.2.4-r2 0.2.5 0.3.1 1.0.1: Transport Independ
 net-libs/libtorrent 0.13.3 0.13.4 0.13.6: BitTorrent library written in C++ for *nix
 net-libs/libtrace 3.0.21 3.0.22: A library and tools for trace processing
 net-libs/libupnp 1.6.18 1.6.18-r1 1.6.19: An Portable Open Source UPnP Development Kit
-net-libs/libvncserver 0.9.10-r3 0.9.10-r4: library for creating vnc servers
+net-libs/libvncserver 0.9.10-r3 0.9.10-r4 0.9.10_p20160127: library for creating vnc servers
 net-libs/libwebsockets 1.4 1.6.0: C/C++ websockets library
 net-libs/libwhisker 2.5-r1: Perl module geared to HTTP testing
 net-libs/libyahoo2 1.0.1: interface to the new Yahoo! Messenger protocol
