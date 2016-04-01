@@ -1,0 +1,44 @@
+From fe425d0fbfe32101a5bb232a65a19785e2ef687f Mon Sep 17 00:00:00 2001
+From: Michael Palimaka <kensington@gentoo.org>
+Date: Fri, 1 Apr 2016 05:17:40 +1100
+Subject: [PATCH] Fix build when KHotKeysDBusInterface is disabled/missing.
+
+Summary:
+By testing the variable itself (rather than its contents) we avoid a failure
+when KHotKeysDBusInterface is disabled or missing as KHotKeysDBusInterface_FOUND
+will not be defined.
+
+Reviewers: #plasma, graesslin
+
+Reviewed By: #plasma, graesslin
+
+Differential Revision: https://phabricator.kde.org/D1278
+---
+ CMakeLists.txt | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index c615d9f..a2e43ae 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -43,7 +43,7 @@ set(kmenueditcommon_STAT_SRCS preferencesdlg.cpp klinespellchecking.cpp basictab
+ ########### next target ###############
+ qt5_add_dbus_adaptor( kmenueditcommon_STAT_SRCS org.kde.kmenuedit.xml kmenuedit.h KMenuEdit)
+ 
+-if(NOT WIN32 AND ${KHotKeysDBusInterface_FOUND})
++if(NOT WIN32 AND KHotKeysDBusInterface_FOUND)
+ qt5_add_dbus_interface(
+     kmenueditcommon_STAT_SRCS
+     ${KHOTKEYS_DBUS_INTERFACE}
+@@ -82,7 +82,7 @@ install(TARGETS kmenuedit ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})
+ install( PROGRAMS org.kde.kmenuedit.desktop  DESTINATION  ${KDE_INSTALL_APPDIR} )
+ install( FILES kmenueditui.rc  DESTINATION  ${KDE_INSTALL_KXMLGUI5DIR}/kmenuedit )
+ 
+-if(NOT WIN32 AND ${KHotKeysDBusInterface_FOUND})
++if(NOT WIN32 AND KHotKeysDBusInterface_FOUND)
+ add_dependencies(kdeinit_kmenuedit kded_khotkeys)
+ endif()
+ 
+-- 
+2.7.3
+

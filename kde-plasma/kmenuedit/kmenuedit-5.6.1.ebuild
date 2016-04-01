@@ -36,6 +36,8 @@ RDEPEND="${DEPEND}
 	!kde-base/kmenuedit:4
 "
 
+PATCHES=( "${FILESDIR}/${PN}-5.5.5-hotkeys.patch" )
+
 src_configure() {
 	local mycmakeargs=(
 		$(cmake-utils_use_find_package hotkeys KHotKeysDBusInterface)
