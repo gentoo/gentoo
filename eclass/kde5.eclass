@@ -152,9 +152,15 @@ case ${KDE_AUTODEPS} in
 		COMMONDEPEND+=" $(add_qt_dep qtcore)"
 
 		if [[ ${CATEGORY} = kde-frameworks || ${CATEGORY} = kde-plasma && ${PN} != polkit-kde-agent ]]; then
+			local blocked_version=15.08.0-r1
+
+			if [[ ${CATEGORY} = kde-plasma && $(get_version_component_range 2) -ge 6 ]]; then
+				blocked_version=15.12.3-r1
+			fi
+
 			RDEPEND+="
 				!kde-apps/kde4-l10n[-minimal(-)]
-				!<kde-apps/kde4-l10n-15.08.0-r1
+				!<kde-apps/kde4-l10n-${blocked_version}
 			"
 		fi
 
