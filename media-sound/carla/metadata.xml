@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>suhr@i2pmail.org</email>
+    <name>Сухарик</name>
+    <description>Proxied maintainer</description>
+  </maintainer>
+  <maintainer type="project">
+    <email>proaudio@gentoo.org</email>
+    <name>Gentoo ProAudio Project</name>
+  </maintainer>
+  <longdescription>
+    Catia is a JACK Patchbay, with some neat features like A2J bridge support and JACK Transport.
+    It's supposed to be as simple as possible so it can work nicely on non-Linux platforms. 
+  </longdescription>
+</pkgmetadata>
