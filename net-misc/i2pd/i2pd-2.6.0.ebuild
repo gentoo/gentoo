@@ -66,20 +66,20 @@ src_install() {
 	insinto "/etc/${PN}"
 	doins "${S}/debian/${PN}.conf"
 	doins "${S}/debian/subscriptions.txt"
-	doins "${FILESDIR}/tunnels.cfg"
+	doins "${S}/debian/tunnels.conf"
 	dodir /usr/share/i2pd
-	newconfd "${FILESDIR}/${PN}-2.5.1.confd" "${PN}"
+	newconfd "${FILESDIR}/${PN}-2.6.0.confd" "${PN}"
 	newinitd "${FILESDIR}/${PN}-2.5.1.initd" "${PN}"
-	systemd_newunit "${FILESDIR}/${PN}-2.5.1.service" "${PN}.service"
+	systemd_newunit "${FILESDIR}/${PN}-2.6.0.service" "${PN}.service"
 	doenvd "${FILESDIR}/99${PN}"
 	insinto /etc/logrotate.d
 	newins "${FILESDIR}/${PN}-2.5.0.logrotate" "${PN}"
 	fowners "${I2PD_USER}:${I2PD_GROUP}" "/etc/${PN}/${PN}.conf" \
 		"/etc/${PN}/subscriptions.txt" \
-		"/etc/${PN}/tunnels.cfg"
+		"/etc/${PN}/tunnels.conf"
 	fperms 600 "/etc/${PN}/${PN}.conf" \
 		"/etc/${PN}/subscriptions.txt" \
-		"/etc/${PN}/tunnels.cfg"
+		"/etc/${PN}/tunnels.conf"
 }
 
 pkg_setup() {
