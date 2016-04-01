@@ -1,0 +1,31 @@
+diff -r -u a/build/CMakeLists.txt b/build/CMakeLists.txt
+--- a/build/CMakeLists.txt	2016-03-31 13:12:21.000000000 +0000
++++ b/build/CMakeLists.txt	2016-03-31 20:12:10.403042336 +0000
+@@ -360,10 +360,6 @@
+   endif ()
+ endif ()
+ 
+-install(FILES ../LICENSE
+-  DESTINATION .
+-  COMPONENT Runtime
+-  )
+ # Take a copy on Appveyor
+ install(FILES "C:/projects/openssl-$ENV{OPENSSL}/LICENSE"
+   DESTINATION .
+@@ -373,7 +369,6 @@
+   )
+ 
+ file(GLOB_RECURSE I2PD_SOURCES "../*.cpp" "../build" "../Win32" "../Makefile*")
+-install(FILES ${I2PD_SOURCES} DESTINATION src/ COMPONENT Source)
+ # install(DIRECTORY ../ DESTINATION src/
+ #   # OPTIONAL
+ #   COMPONENT Source FILES_MATCHING
+@@ -382,7 +377,7 @@
+ #   )
+ 
+ file(GLOB I2PD_HEADERS "../*.h")
+-install(FILES ${I2PD_HEADERS} DESTINATION src/ COMPONENT Headers)
++install(FILES ${I2PD_HEADERS} DESTINATION "include/${PROJECT_NAME}" COMPONENT Headers)
+ # install(DIRECTORY ../ DESTINATION src/
+ #   # OPTIONAL
+ #   COMPONENT Headers FILES_MATCHING
