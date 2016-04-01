@@ -14,14 +14,18 @@ SRC_URI="http://toolbar.tigris.org/files/documents/869/25285/toolbar-${PV}-src.z
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
-DEPEND=">=virtual/jdk-1.6"
-RDEPEND=">=virtual/jre-1.6"
+RDEPEND="
+	>=virtual/jre-1.6"
+
+DEPEND="
+	>=virtual/jdk-1.6
+	source? ( app-arch/zip )"
 
 JAVA_SRC_DIR="src"
 
 java_prepare() {
-	rm -rf test || die
+	rm -rv test || die
 }
