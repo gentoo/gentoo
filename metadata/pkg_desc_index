@@ -4042,7 +4042,7 @@ dev-java/jrexx 1.1.1-r1 1.1.1-r2: API for textual pattern matching based on the 
 dev-java/jrobin 1.6.0-r1: JRobin is a 100% pure Java alternative to RRDTool
 dev-java/jrrd 1.0.1-r1: Java Interface to Tobias Oetiker's RRDtool
 dev-java/jruby 1.7.12: Java-based Ruby interpreter implementation
-dev-java/jsap 2.1 2.1-r1 2.1-r2: Java Simple Arguments Parser (JSAP)
+dev-java/jsap 2.1-r2: Java Simple Arguments Parser (JSAP)
 dev-java/jsch 0.1.52: JSch is a pure Java implementation of SSH2
 dev-java/json 20150729: Java implementation of the JavaScript Object Notation
 dev-java/json-simple 1.1: Simple Java toolkit for JSON
@@ -4258,7 +4258,7 @@ dev-java/tomcat-jstl-impl 1.2.5-r1: JSP Standard Tag Library (JSTL) - Implementa
 dev-java/tomcat-jstl-spec 1.2.5-r1: JSP Standard Tag Library (JSTL) - Specification jar
 dev-java/tomcat-native 1.2.4 1.2.5: Native APR library for Tomcat
 dev-java/tomcat-servlet-api 3 4.1.36 5.5.27-r1 5.5.34 6.0.44-r1 6.0.45 7.0.67 7.0.68 8.0.32 8.0.33 9.0.0_alpha4: Tomcat's Servlet API 4.0/JSP API 2.3 implementation
-dev-java/toolbar 1.1.0-r1 1.1.0-r2: An improved version of JToolBar
+dev-java/toolbar 1.1.0-r2: An improved version of JToolBar
 dev-java/touchgraph-graphlayout 1.22-r1: TouchGraph provides a set of interfaces for graph visualization
 dev-java/treelayout 1.0.2: Efficiently create compact tree layouts in Java
 dev-java/trident 1.3: Java animation library
@@ -10661,7 +10661,7 @@ games-rpg/gwiz 0.8: clone of old-school Wizardry(tm) games by SirTech
 games-rpg/kqlives 0.99: A console-style role playing game
 games-rpg/lure 1.1: Lure of the Temptress
 games-rpg/mana 0.6.1: A fully free and open source MMORPG game client
-games-rpg/manaplus 1.5.11.21 1.6.2.27 9999: OpenSource 2D MMORPG client for Evol Online and The Mana World
+games-rpg/manaplus 1.5.11.21 1.6.2.27 1.6.3.26 9999: OpenSource 2D MMORPG client for Evol Online and The Mana World
 games-rpg/nwmouse 20090906.183839: Hardware mouse cursors for Neverwinter Nights
 games-rpg/nwmovies 20090223.080954: Play Neverwinter Nights movies inside the Linux client
 games-rpg/nwn 1.68-r5 1.68-r6 1.69-r1: role-playing game set in a huge medieval fantasy world of Dungeons and Dragons
