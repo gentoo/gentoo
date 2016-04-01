@@ -69,7 +69,7 @@ src_install() {
 	doins "${S}/debian/tunnels.conf"
 	dodir /usr/share/i2pd
 	newconfd "${FILESDIR}/${PN}-2.6.0.confd" "${PN}"
-	newinitd "${FILESDIR}/${PN}-2.5.1.initd" "${PN}"
+	newinitd "${FILESDIR}/${PN}-2.6.0.initd" "${PN}"
 	systemd_newunit "${FILESDIR}/${PN}-2.6.0.service" "${PN}.service"
 	doenvd "${FILESDIR}/99${PN}"
 	insinto /etc/logrotate.d
