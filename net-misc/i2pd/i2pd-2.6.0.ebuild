@@ -35,7 +35,6 @@ CMAKE_USE_DIR="${S}/build"
 
 src_prepare() {
 	eapply "${FILESDIR}/${PN}-2.5.1-fix_installed_components.patch"
-	eapply "${FILESDIR}/${PN}-2.5.1-disable_ipv6_in_i2pd_conf.patch"
 	eapply_user
 }
 
@@ -64,7 +63,7 @@ src_install() {
 	fperms 700 /var/lib/i2pd/
 	dodir "/etc/${PN}"
 	insinto "/etc/${PN}"
-	doins "${S}/debian/${PN}.conf"
+	doins "${S}/docs/${PN}.conf"
 	doins "${S}/debian/subscriptions.txt"
 	doins "${S}/debian/tunnels.conf"
 	dodir /usr/share/i2pd
