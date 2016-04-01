@@ -4464,7 +4464,6 @@ dev-libs/cgilib 0.7: a simple and lightweight interface to the Common Gateway In
 dev-libs/check 0.9.8-r1 0.9.11 0.9.12 0.9.13 0.9.13-r1 0.10.0: A unit test framework for C
 dev-libs/chmlib 0.40-r1: Library for MS CHM (compressed html) file format
 dev-libs/cityhash 1.0.3 1.1.0 1.1.1: Google's CityHash family of hash functions
-dev-libs/clearsilver 0.10.5-r2 0.10.5-r3: Clearsilver is a fast, powerful, and language-neutral HTML template system
 dev-libs/cloog 0.18.0 0.18.1 0.18.3 0.18.4 9999: A loop generator for scanning polyhedra
 dev-libs/collada-dom 2.4.0 2.4.3_pre20150112 9999: COLLADA Document Object Model (DOM) C++ Library
 dev-libs/confuse 2.7 2.8: a configuration file parser library
@@ -13300,7 +13299,6 @@ media-sound/xfmpc 0.2.2: Music Player Daemon (MPD) client for the Xfce desktop e
 media-sound/xineadump 0.1-r1: Utility for Xine decoding support in transKode
 media-sound/xmms2 0.8-r2: X(cross)platform Music Multiplexing System. The new generation of the XMMS player
 media-sound/xmms2-scrobbler 0.4.0: XMMS2 AudioScrobbler client
-media-sound/xmp 3.5.0: Extended Module Player
 media-sound/xnoise 0.2.21 9999: A media player for Gtk+ with a slick GUI, great speed and lots of features
 media-sound/xwax 1.5: Digital vinyl emulation software
 media-sound/yoshimi 1.3.2 1.3.5.2 1.3.8.2-r1: A software synthesizer based on ZynAddSubFX
@@ -14387,7 +14385,6 @@ net-mail/nmzmail 1.1: Fast mail searching for mutt using namazu
 net-mail/notmuch 0.18.2 0.19-r1 0.20.2 0.21: Thread-based e-mail indexer, supporting quick search and tagging
 net-mail/offlineimap 6.5.5 6.5.6 6.5.7: Powerful IMAP/Maildir synchronization and reader support
 net-mail/peephole 1.5: A daemon that polls your POP servers, checking if there are messages from specific people
-net-mail/perdition 1.18: modular and fully featured POP3 and IMAP4 proxy
 net-mail/pflogsumm 1.1.5: Pflogsumm is a log analyzer for Postfix logs
 net-mail/pfqueue 0.5.6: pfqueue is an ncurses console-based tool for managing Postfix queued messages
 net-mail/pop-before-smtp 1.42: a simple daemon to allow email relay control based on successful POP or IMAP logins
@@ -17594,21 +17591,6 @@ www-apps/gnopaste 0.5.5: gnopaste is a nopaste script based on PHP with MySQL
 www-apps/groupoffice 3.7.52 4.0.47 4.0.97 4.0.144 4.1.7: Group-Office is a powerful modular Intranet application framework
 www-apps/guacamole 0.9.0 0.9.2 0.9.3 0.9.7 0.9.8 0.9.9: Guacamole is a html5 vnc client as servlet
 www-apps/hiawatha-monitor 1.0 1.2 1.3: Monitoring application for www-servers/hiawatha
-www-apps/horde 3.3.9 3.3.11: Horde Application Framework
-www-apps/horde-chora 2.0.2: Chora is the Horde CVS viewer
-www-apps/horde-dimp 1.1.5: Horde DIMP is a alternate presentation view of IMP using AJAX-ish technologies
-www-apps/horde-gollem 1.1.2: Horde Gollem provides a web-based File Manager
-www-apps/horde-hermes 1.0.1: A time-tracking application for Horde
-www-apps/horde-imp 4.3.8 4.3.9: Horde IMP provides webmail access to IMAP/POP3 mailboxes
-www-apps/horde-ingo 1.1.2 1.2.3 1.2.5: e-mail filter rules manager for Horde IMP
-www-apps/horde-jeta 1.0: Java SSH interface for Horde
-www-apps/horde-kronolith 2.1.8 2.3.4 2.3.5: Kronolith is the Horde calendar application
-www-apps/horde-mimp 1.0.1 1.1.2 1.1.3: Horde MIMP provides minimalist webmail access suitable for mobile devices
-www-apps/horde-mnemo 2.2.3 2.2.4: Mnemo is the Horde note manager
-www-apps/horde-nag 2.3.4 2.3.6: Nag is the Horde multiuser task list manager
-www-apps/horde-passwd 3.1.3: Horde Passwd is the Horde password changing application
-www-apps/horde-pear 1.3-r3: Meta package for the PEAR packages required by Horde
-www-apps/horde-turba 2.3.4 2.3.5: Turba is the Horde address book / contact management program
 www-apps/icingaweb2 2.1.0 2.1.2 2.2.0 9999: Icinga Web 2 - Frontend for icinga2
 www-apps/icingaweb2-module-pnp4nagios 1.0.1 9999: Icinga Web 2 plugin for pnp4nagios
 www-apps/ikiwiki 3.20140227 3.20140916 3.20150107: A wiki compiler

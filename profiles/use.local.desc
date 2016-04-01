@@ -4578,7 +4578,6 @@ media-sound/xmms2:server - Build xmms2 player daemon (otherwise only clients are
 media-sound/xmms2:sid - Support for C64 SID
 media-sound/xmms2:vocoder - Phase vocoder effect plugin
 media-sound/xmms2:xml - Enable support for various XML based playlists and sources: RSS, XSPF
-media-sound/xmp:audacious - Enable audacious support
 media-sound/xnoise:lastfm - Enable support for lastfm cover art fetching and scrobbling
 media-sound/xnoise:lyrics - Enable support for lyrics fetching
 media-sound/xwax:alsa - Adds support for ALSA audio input/output.
@@ -7890,7 +7889,6 @@ www-apps/egroupware:jpgraph - Add dev-php/jpgraph support
 www-apps/gitit:network-uri - Get Network.URI from the network-uri package.
 www-apps/gitit:plugins - enables optional plugin runtime loader
 www-apps/guacamole:noauth - enable support for leaving out any authentication on the webinterface
-www-apps/horde-passwd:clearpasswd - Enables cleartext password storage in the vpopmail files
 www-apps/icingaweb2:nginx - Adds support for nginx
 www-apps/ikiwiki:extras - Installs additional modules used by ikiwiki plugins
 www-apps/nikola:assets - Support web asset management through dev-python/assets
