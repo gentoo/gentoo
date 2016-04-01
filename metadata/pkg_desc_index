@@ -14559,7 +14559,7 @@ net-misc/httptunnel 3.3-r2: httptunnel can create IP tunnels through firewalls/p
 net-misc/httptype 1.3.9-r1: Returns the http host software of a website
 net-misc/htun 0.9.6: Project to tunnel IP traffic over HTTP
 net-misc/hylafaxplus 5.5.4-r1 5.5.5: Enterprise client-server fax package for class 1 and 2 fax modems
-net-misc/i2pd 2.5.0-r4 2.5.1-r3: A C++ daemon for accessing the I2P anonymous network
+net-misc/i2pd 2.5.0-r4 2.5.1-r3 2.6.0: A C++ daemon for accessing the I2P anonymous network
 net-misc/iaxmodem 1.2.0 1.3.0: Software modem that uses an IAX channel instead of a traditional phone line
 net-misc/icaclient 12.1.0 13.2.0.322243 13.2.1.328635 13.3.0.344519: ICA Client for Citrix Presentation servers
 net-misc/icecast 2.4.2 2.4.3: An opensource alternative to shoutcast that supports mp3, ogg (vorbis/theora) and aac streaming
@@ -16944,7 +16944,7 @@ sys-fs/bashmount 3.2.0: A bash script that uses udisks to handle removable devic
 sys-fs/bcache-tools 1.0.5 1.0.8 1.0.8_p20140220-r1 9999: Tools for bcachefs
 sys-fs/bedup 0.10.0 9999: Btrfs file de-duplication tool
 sys-fs/bindfs 1.12.6 1.13.0 1.13.1: FUSE filesystem for mounting a directory to another location and altering permissions
-sys-fs/btrfs-progs 3.14.2 3.16.2 3.17.3 3.18.2 3.19.1 4.0 4.0.1 4.1 4.1.2 4.2 4.2.2 4.3.1 4.4.1 9999: Btrfs filesystem utilities
+sys-fs/btrfs-progs 3.14.2 3.16.2 3.17.3 3.18.2 3.19.1 4.0 4.0.1 4.1 4.1.2 4.2 4.2.2 4.3.1 4.4.1 4.5.1 9999: Btrfs filesystem utilities
 sys-fs/cachefilesd 0.10.5-r4: Provides a caching directory on an already mounted filesystem
 sys-fs/clamfs 1.0.1-r1: A FUSE-based user-space file system with on-access anti-virus file scanning
 sys-fs/cloudfuse 1.0: A FUSE filesystem for Rackspace's Cloud Files
