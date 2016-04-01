@@ -208,46 +208,6 @@ www-apps/mantisbt
 ~mail-client/thunderbird-24.8.0
 ~mail-client/thunderbird-31.8.0
 
-# Aaron Bauman <bman@gentoo.org> (05 Mar 2016)
-# Per security bug #491372 this package is vulnerable
-# and unmaintained.  Removal in 30 days.
-net-mail/perdition
-
-# Aaron Bauman <bman@gentoo.org> (05 Mar 2016)
-# Per security bug #448826 this package is vulnerable
-# and unmaintained.  Removal in 30 days.
-www-apps/dragonflycms
-
-# Aaron Bauman <bman@gentoo.org> (05 Mar 2016)
-# Per security bug #392325 this package is vulnerable
-# and unmaintained.  Removal in 30 days.
-dev-libs/clearsilver
-
-# Aaron Bauman <bman@gentoo.org> (05 Mar 2016)
-# Per security bug #466782 this package is vulnerable
-# and unmaintained.  Removal in 30 days.
-media-sound/xmp
-
-# Aaron Bauman <bman@gentoo.org> (05 Mar 2016)
-# Per security bug #399563, #489946, #489948, and
-# #490422 these packages are vulnerable
-# and unmaintained.  Removal in 30 days.
-www-apps/horde
-www-apps/horde-chora
-www-apps/horde-dimp
-www-apps/horde-gollem
-www-apps/horde-hermes
-www-apps/horde-imp
-www-apps/horde-ingo
-www-apps/horde-jeta
-www-apps/horde-kronolith
-www-apps/horde-mimp
-www-apps/horde-mnemo
-www-apps/horde-nag
-www-apps/horde-passwd
-www-apps/horde-pear
-www-apps/horde-turba
-
 # Alexis Ballier <aballier@gentoo.org> (01 Mar 2016)
 # Breaks some of its rev deps, still in beta stage
 >=dev-lang/ocaml-4.03_beta
@@ -662,9 +622,7 @@ dev-java/ibm-jdk-bin:1.5
 # Needs to be further tested and revised by both Java and Ruby herds.
 >=dev-java/jruby-1.7.12
 dev-ruby/bitescript
-dev-ruby/bouncy-castle-java
 dev-ruby/duby
-dev-ruby/jruby-openssl
 dev-ruby/weakling
 
 # Matti Bickel <mabi@gentoo.org> (22 Apr 2014)
