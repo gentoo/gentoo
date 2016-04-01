@@ -10207,7 +10207,7 @@ games-emulation/dolphin 4.0-r2 4.0.2-r7 5.0 9999: Gamecube and Wii game emulator
 games-emulation/dosbox 0.74 9999: DOS emulator
 games-emulation/emutos 0.9.3 0.9.4: a single-user single-tasking operating system for 32 bit Atari computer emulators
 games-emulation/fakenes 0.5.8-r2: portable, Open Source NES emulator which is written mostly in C
-games-emulation/fbzx 2.10.0: A Sinclair Spectrum emulator, designed to work at full screen using the FrameBuffer
+games-emulation/fbzx 2.10.0 3.0.0: A Sinclair Spectrum emulator, designed to work at full screen using the FrameBuffer
 games-emulation/fceux 2.2.2-r1: A portable Famicom/NES emulator, an evolution of the original FCE Ultra
 games-emulation/gambatte 0.5.0_p20131102: An accuracy-focused Gameboy / Gameboy Color emulator
 games-emulation/gcube 0.4-r1: Gamecube emulator
