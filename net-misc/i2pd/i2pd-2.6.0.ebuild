@@ -35,6 +35,7 @@ CMAKE_USE_DIR="${S}/build"
 
 src_prepare() {
 	eapply "${FILESDIR}/${PN}-2.5.1-fix_installed_components.patch"
+	eapply "${FILESDIR}/${PN}-2.6.0-fix_incomplete_hosts.patch"
 	eapply_user
 }
 
