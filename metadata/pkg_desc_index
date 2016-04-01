@@ -3341,7 +3341,7 @@ dev-haskell/happy 1.18.10 1.19.3 1.19.4 1.19.5: Happy is a parser generator for 
 dev-haskell/harp 0.4 0.4-r1 0.4.1: HaRP allows pattern-matching with regular expressions
 dev-haskell/hashable 1.2.1.0 1.2.4.0: A class for types that can be converted to a hash value
 dev-haskell/hashed-storage 0.5.9 0.5.10 0.5.11: Hashed file storage support code
-dev-haskell/hashtables 1.1.2.1 1.2.0.1 1.2.0.2 1.2.1.0: Mutable hash tables in the ST monad
+dev-haskell/hashtables 1.1.2.1 1.2.1.0: Mutable hash tables in the ST monad
 dev-haskell/haskeline 0.6.4.6-r1 0.6.4.7-r1 0.7.1.2 0.7.1.3 0.7.2.1: A command-line interface for user input, written in Haskell
 dev-haskell/haskell-lexer 1.0-r1: A fully compliant Haskell 98 lexer
 dev-haskell/haskell-platform 2012.4.0.0 2013.2.0.0-r2 2014.2.0.0: The Haskell Platform
