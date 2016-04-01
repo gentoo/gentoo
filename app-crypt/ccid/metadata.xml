@@ -6,6 +6,7 @@
 		<name>Crypto</name>
 	</maintainer>
 	<use>
+		<flag name="kobil-midentity">Build and install Kobil_mIDentity_switch tool</flag>
 		<flag name="twinserial">Enable twinserial reader</flag>
 	</use>
 </pkgmetadata>
