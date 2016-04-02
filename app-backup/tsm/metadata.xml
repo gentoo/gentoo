@@ -7,10 +7,6 @@
 		<description>Assign bugs to him</description>
 	</maintainer>
 	<maintainer type="person">
-		<email>pacho@gentoo.org</email>
-		<description>Proxy maintainer, CC him in bugs.</description>
-	</maintainer>
-	<maintainer type="person">
 		<email>dilfridge@gentoo.org</email>
 		<description>Proxy maintainer, CC him in bugs.</description>
 	</maintainer>
