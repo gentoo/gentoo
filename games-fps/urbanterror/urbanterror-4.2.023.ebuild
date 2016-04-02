@@ -81,7 +81,9 @@ src_unpack() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-${ENGINE_PV}-build.patch
+	epatch \
+		"${FILESDIR}"/${PN}-${ENGINE_PV}-build.patch \
+		"${FILESDIR}"/${PN}-${ENGINE_PV}-nocurl.patch
 }
 
 src_compile() {
