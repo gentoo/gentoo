@@ -1,0 +1,42 @@
+--- FreeDoko_0.7.14.orig/src/Makefile
++++ FreeDoko_0.7.14/src/Makefile
+@@ -241,15 +241,7 @@
+ # compile FreeDoko
+ $(PROGRAM) : show_settings objects $(DIRECTORIES)
+ 	@echo 'compiling $(PROGRAM)...'
+-# Gentoo users do want to see the real compile line.
+-# So remove the next five lines (the echo lines)
+-# and remove the '@' in the line after.
+-	@echo '$(CXX) $(CXXFLAGS)'
+-	@echo '        $$(OBJECTS)'
+-	@echo '        $(INCLUDE_ALL)'
+-	@echo '        $(LIBS_ALL)'
+-	@echo '        -o $@'
+-	@$(CXX) $(CXXFLAGS) \
++	$(CXX) $(CXXFLAGS) \
+ 	  $(OBJECTS_ALL:%.o=$(FREEDOKO_WORKING_DIRECTORY)/%.o) \
+ 	  $(INCLUDE_ALL) \
+ 	  $(LIBS_ALL) \
+--- FreeDoko_0.7.14.orig/src/Makefile.os
++++ FreeDoko_0.7.14/src/Makefile.os
+@@ -1,6 +1,5 @@
+ include $(DEPTH)/../Makefile.os
+ 
+-include $(DEPTH)/Makefile.local
+ include $(DEPTH)/Makefile.modules
+ 
+ ifeq ($(OPERATING_SYSTEM), Linux)
+--- FreeDoko_0.7.14.orig/src/Makefile.rules
++++ FreeDoko_0.7.14/src/Makefile.rules
+@@ -80,10 +80,8 @@
+ 		  $(DEPTH)/Makefile.modules \
+ 		  $(DEPTH)/Makefile.local \
+ 		  $(DEPTH)/Makefile.os
+-# Gentoo users do want to see the real compile line.
+-# So remove the next line and remove the '@' in the line after.
+ 	@echo $(CXX) -c $(SUBDIR)/$<
+-	@$(CXX) $(CPPFLAGS) $(CXXFLAGS) $(INCLUDE) $(DEPGEN_FLAGS) -o $@ -c $<
++	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $(INCLUDE) $(DEPGEN_FLAGS) -o $@ -c $<
+ 
+ 
+ -include $(OBJECTS:%.o=$(TARGET_DIR_LOCAL)%.d)
