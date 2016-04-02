@@ -1,0 +1,31 @@
+From 21317bf0bb90f16d591aec580fe70d58cb43e65e Mon Sep 17 00:00:00 2001
+From: Balint Reczey <balint@balintreczey.hu>
+Date: Sun, 21 Feb 2016 23:06:28 +0100
+Subject: [PATCH] Install pkg-config and .cmake files in arch-specific libdirs
+
+They contain arch-specific strings thus they can't be in
+architecture-independent dirs. This would prevent co-installing
+i386 and amd64 versions for example, since the files would differ.
+---
+ CMakeLists.txt | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index a577410..6b5586f 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -74,12 +74,12 @@ install(FILES src/util/atomic.h
+ IF(NOT WIN32)
+   configure_file(p8-platform.pc.in p8-platform.pc @ONLY)
+   install(FILES ${CMAKE_BINARY_DIR}/p8-platform.pc
+-          DESTINATION ${CMAKE_INSTALL_LIBDIR_NOARCH}/pkgconfig)
++          DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig)
+ ENDIF(NOT WIN32)
+ 
+ # config mode
+ configure_file (p8-platform-config.cmake.in
+                 p8-platform-config.cmake @ONLY)
+ install(FILES ${CMAKE_BINARY_DIR}/p8-platform-config.cmake
+-        DESTINATION ${CMAKE_INSTALL_LIBDIR_NOARCH}/p8-platform)
++        DESTINATION ${CMAKE_INSTALL_LIBDIR}/p8-platform)
+ 
