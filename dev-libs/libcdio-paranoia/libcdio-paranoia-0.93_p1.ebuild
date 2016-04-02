@@ -7,7 +7,7 @@ MY_P=${PN}-10.2+${PV/_p/+}
 
 AUTOTOOLS_AUTORECONF=yes
 
-inherit eutils autotools-multilib
+inherit eutils autotools-multilib flag-o-matic
 
 DESCRIPTION="an advanced CDDA reader with error correction"
 HOMEPAGE="https://www.gnu.org/software/libcdio/"
@@ -38,6 +38,8 @@ DOCS=( AUTHORS ChangeLog NEWS README THANKS )
 src_prepare() {
 	sed -i -e 's:AM_CONFIG_HEADER:AC_CONFIG_HEADERS:' configure.ac || die #466410
 	autotools-multilib_src_prepare
+
+	[[ ${CC} == *clang* ]] && append-flags -std=gnu89
 }
 
 src_configure() {
@@ -48,6 +50,8 @@ src_configure() {
 		--disable-cpp-progs
 		--with-cd-paranoia-name=libcdio-paranoia
 	)
+	# Darwin linker doesn't get this
+	[[ ${CHOST} == *-darwin* ]] && myeconfargs+=( --without-versioned-libs )
 	autotools-multilib_src_configure
 }
 
