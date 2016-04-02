@@ -24,7 +24,6 @@
 	<flag name="scim">Enable Smart Common Input Method</flag>
 	<flag name="tga">Enable Tga image loader</flag>
 	<flag name="tslib">Enable <pkg>x11-libs/tslib</pkg> for touchscreen events</flag>
-	<flag name="v4l2">Enable Video4Linux2 support</flag>
 	<flag name="valgrind">Enable usage of <pkg>dev-util/valgrind</pkg> in debug</flag>
 	<flag name="webp">Enable WebP image loader</flag>
 	<flag name="xim">Enable X Input Method</flag>
