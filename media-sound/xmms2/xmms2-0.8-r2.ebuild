@@ -70,7 +70,8 @@ RDEPEND="server? (
 DEPEND="${RDEPEND}
 	dev-lang/python
 	python? ( dev-python/pyrex )
-	perl? ( dev-perl/Module-Build )
+	perl? ( dev-perl/Module-Build
+		virtual/perl-Module-Metadata )
 	virtual/pkgconfig
 	test? ( dev-util/cunit )
 	"
@@ -105,7 +106,7 @@ pkg_setup() {
 src_prepare() {
 	./waf # inflate waf
 	cd .waf* || die
-	epatch "${FILESDIR}/${PN}"-0.8DrO_o-waflib-fix-perl.patch
+	epatch "${FILESDIR}/${PN}"-0.8DrO_o-waflib-fix-perl.patch #578778
 	cd "${S}"
 	epatch "${FILESDIR}/${P}"-ffmpeg-0.11.patch #443256
 	epatch "${FILESDIR}/${P}"-libav-9-p2.patch #443256
