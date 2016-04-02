@@ -1,7 +1,7 @@
 DEFINED_PHASES=compile configure install prepare test
 DEPEND=sys-devel/make >=dev-util/cmake-2.8.12
 DESCRIPTION=XML output extension to GCC
-EAPI=5
+EAPI=6
 HOMEPAGE=http://www.gccxml.org/
 KEYWORDS=~amd64 ~arm ~mips ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos
 LICENSE=BSD
@@ -9,4 +9,4 @@ SLOT=0
 SRC_URI=https://dev.gentoo.org/~pinkbyte/distfiles/snapshots/gccxml-0.9.0_pre20131217.tar.xz
 _eclass_exported_funcs=src_prepare:- src_configure:- src_compile:cmake-utils src_test:cmake-utils src_install:cmake-utils
 _eclasses_=cmake-utils	422bbd1bee2557490177a34dbe0a662b	eutils	9d81603248f2ba3ec59124320d123e5e	flag-o-matic	d270fa247153df66074f795fa42dba3e	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=78208d20ff7d37342205a58f05ba5281
+_md5_=8d6b1763822979144dd56ac37151fa39
