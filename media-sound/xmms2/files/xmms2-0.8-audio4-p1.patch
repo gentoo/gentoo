@@ -1,0 +1,123 @@
+commit 8831bc77d705c03b3f8081de0520dd10afa85c69
+Author: Uli Franke <cls@nebadje.org>
+Date:   Tue Jan 17 23:23:46 2012 +0100
+
+    BUG(2509): Avoid unaligned reads in avcodec xform.
+
+diff --git a/src/plugins/avcodec/avcodec.c b/src/plugins/avcodec/avcodec.c
+index fe58fc5..1b4a659 100644
+--- a/src/plugins/avcodec/avcodec.c
++++ b/src/plugins/avcodec/avcodec.c
+@@ -36,6 +36,9 @@ typedef struct {
+ 	guint buffer_size;
+ 	gboolean no_demuxer;
+ 
++	gchar *read_out_buffer;
++	gint read_out_buffer_size;
++
+ 	guint channels;
+ 	guint samplerate;
+ 	xmms_sample_format_t sampleformat;
+@@ -107,6 +110,7 @@ xmms_avcodec_destroy (xmms_xform_t *xform)
+ 
+ 	avcodec_close (data->codecctx);
+ 	av_free (data->codecctx);
++	av_free (data->read_out_buffer);
+ 
+ 	g_string_free (data->outbuf, TRUE);
+ 	g_free (data->buffer);
+@@ -132,6 +136,9 @@ xmms_avcodec_init (xmms_xform_t *xform)
+ 	data->buffer_size = AVCODEC_BUFFER_SIZE;
+ 	data->codecctx = NULL;
+ 
++	data->read_out_buffer = av_malloc (AVCODEC_MAX_AUDIO_FRAME_SIZE);
++	data->read_out_buffer_size = AVCODEC_MAX_AUDIO_FRAME_SIZE;
++
+ 	xmms_xform_private_data_set (xform, data);
+ 
+ 	avcodec_init ();
+@@ -196,7 +203,7 @@ xmms_avcodec_init (xmms_xform_t *xform)
+ 		} else {
+ 			/* A demuxer plugin forgot to give decoder config? */
+ 			xmms_log_error ("Decoder config data not found!");
+-			return FALSE;
++			goto err;
+ 		}
+ 	}
+ 
+@@ -220,7 +227,7 @@ xmms_avcodec_init (xmms_xform_t *xform)
+ 
+ 		/* some codecs need to have something read before they set
+ 		 * the samplerate and channels correctly, unfortunately... */
+-		if ((ret = xmms_avcodec_read (xform, buf, 42, &error)) > 0) {
++		if ((ret = xmms_avcodec_read (xform, buf, sizeof (buf), &error)) > 0) {
+ 			g_string_insert_len (data->outbuf, 0, buf, ret);
+ 		} else {
+ 			XMMS_DBG ("First read failed, codec is not working...");
+@@ -251,6 +258,9 @@ err:
+ 	if (data->codecctx) {
+ 		av_free (data->codecctx);
+ 	}
++	if (data->read_out_buffer) {
++		av_free (data->read_out_buffer);
++	}
+ 	g_string_free (data->outbuf, TRUE);
+ 	g_free (data->extradata);
+ 	g_free (data);
+@@ -263,8 +273,7 @@ xmms_avcodec_read (xmms_xform_t *xform, xmms_sample_t *buf, gint len,
+                    xmms_error_t *error)
+ {
+ 	xmms_avcodec_data_t *data;
+-	char outbuf[AVCODEC_MAX_AUDIO_FRAME_SIZE];
+-	gint outbufsize, bytes_read = 0;
++	gint bytes_read = 0;
+ 	guint size;
+ 
+ 	data = xmms_xform_private_data_get (xform);
+@@ -330,9 +339,9 @@ xmms_avcodec_read (xmms_xform_t *xform, xmms_sample_t *buf, gint len,
+ 		packet.data = data->buffer;
+ 		packet.size = data->buffer_length;
+ 
+-		outbufsize = sizeof (outbuf);
+-		bytes_read = avcodec_decode_audio3 (data->codecctx, (short *) outbuf,
+-		                                    &outbufsize, &packet);
++		data->read_out_buffer_size = AVCODEC_MAX_AUDIO_FRAME_SIZE;
++		bytes_read = avcodec_decode_audio3 (data->codecctx, (short *) data->read_out_buffer,
++		                                    &data->read_out_buffer_size, &packet);
+ 
+ 		/* The DTS decoder of ffmpeg is buggy and always returns
+ 		 * the input buffer length, get frame length from header */
+@@ -354,8 +363,8 @@ xmms_avcodec_read (xmms_xform_t *xform, xmms_sample_t *buf, gint len,
+ 
+ 		data->buffer_length -= bytes_read;
+ 
+-		if (outbufsize > 0) {
+-			g_string_append_len (data->outbuf, outbuf, outbufsize);
++		if (data->read_out_buffer_size > 0) {
++			g_string_append_len (data->outbuf, data->read_out_buffer, data->read_out_buffer_size);
+ 		}
+ 
+ 		size = MIN (data->outbuf->len, len);
+@@ -371,8 +380,7 @@ static gint64
+ xmms_avcodec_seek (xmms_xform_t *xform, gint64 samples, xmms_xform_seek_mode_t whence, xmms_error_t *err)
+ {
+ 	xmms_avcodec_data_t *data;
+-	char outbuf[AVCODEC_MAX_AUDIO_FRAME_SIZE];
+-	gint outbufsize, bytes_read = 0;
++	gint bytes_read = 0;
+ 	gint64 ret = -1;
+ 
+ 	g_return_val_if_fail (xform, -1);
+@@ -396,9 +404,9 @@ xmms_avcodec_seek (xmms_xform_t *xform, gint64 samples, xmms_xform_seek_mode_t w
+ 		packet.data = data->buffer;
+ 		packet.size = data->buffer_length;
+ 
+-		outbufsize = sizeof (outbuf);
+-		bytes_read = avcodec_decode_audio3 (data->codecctx, (short *) outbuf,
+-		                                    &outbufsize, &packet);
++		data->read_out_buffer_size = AVCODEC_MAX_AUDIO_FRAME_SIZE;
++		bytes_read = avcodec_decode_audio3 (data->codecctx, (short *) data->read_out_buffer,
++		                                    &data->read_out_buffer_size, &packet);
+ 
+ 		if (bytes_read < 0 || bytes_read > data->buffer_length) {
+ 			XMMS_DBG ("Error decoding data!");

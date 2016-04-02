@@ -1,0 +1,147 @@
+commit f460440b3f2a9db1a9deef3faf7dae6e626dd7b5
+Author: Erik Massop <e.massop@hccnet.nl>
+Date:   Sun Dec 22 23:34:12 2013 +0100
+
+    OTHER: Require avcodec_decode_audio4
+    
+    This was introduced in versions 53.40.0 (ffmpeg) and 53.25.0 (libav) of
+    avcodec. Hence we drop compatibility for earlier versions.
+
+diff --git a/src/plugins/avcodec/avcodec.c b/src/plugins/avcodec/avcodec.c
+index 023833d..6d0b667 100644
+--- a/src/plugins/avcodec/avcodec.c
++++ b/src/plugins/avcodec/avcodec.c
+@@ -154,7 +154,6 @@ xmms_avcodec_init (xmms_xform_t *xform)
+ 
+ 	xmms_xform_private_data_set (xform, data);
+ 
+-	avcodec_init ();
+ 	avcodec_register_all ();
+ 
+ 	mimetype = xmms_xform_indata_get_str (xform,
+@@ -225,7 +224,7 @@ xmms_avcodec_init (xmms_xform_t *xform)
+ 	data->codecctx->sample_rate = data->samplerate;
+ 	data->codecctx->channels = data->channels;
+ 	data->codecctx->bit_rate = data->bitrate;
+-	CONTEXT_BPS (data->codecctx) = data->samplebits;
++	data->codecctx->bits_per_coded_sample = data->samplebits;
+ 	data->codecctx->block_align = data->block_align;
+ 	data->codecctx->extradata = data->extradata;
+ 	data->codecctx->extradata_size = data->extradata_size;
+diff --git a/src/plugins/avcodec/avcodec_compat.h b/src/plugins/avcodec/avcodec_compat.h
+index e74b3f8..b50fa4b 100644
+--- a/src/plugins/avcodec/avcodec_compat.h
++++ b/src/plugins/avcodec/avcodec_compat.h
+@@ -21,69 +21,6 @@
+ # include "avcodec.h"
+ #endif
+ 
+-/* Map avcodec_decode_audio2 into the deprecated version
+- * avcodec_decode_audio in versions earlier than 51.28 */
+-#if LIBAVCODEC_VERSION_INT < 0x331c00
+-# define avcodec_decode_audio2 avcodec_decode_audio
+-#endif
+-
+-/* Handle API change that happened in libavcodec 52.00 */
+-#if LIBAVCODEC_VERSION_INT < 0x340000
+-# define CONTEXT_BPS(codecctx) (codecctx)->bits_per_sample
+-#else
+-# define CONTEXT_BPS(codecctx) (codecctx)->bits_per_coded_sample
+-#endif
+-
+-/* Before 52.23 AVPacket was defined in avformat.h which we
+- * do not want to depend on, so we define part of it manually
+- * on versions smaller than 52.23 (this makes me cry) */
+-#if LIBAVCODEC_VERSION_INT < 0x341700
+-typedef struct AVPacket {
+-        uint8_t *data;
+-        int size;
+-} AVPacket;
+-#endif
+-
+-/* Same thing as above for av_init_packet and version 52.25 */
+-#if LIBAVCODEC_VERSION_INT < 0x341900
+-# define av_init_packet(pkt) do { \
+-    (pkt)->data = NULL; \
+-    (pkt)->size = 0; \
+-  } while(0)
+-#endif
+-
+-/* Map avcodec_decode_audio3 into the deprecated version
+- * avcodec_decode_audio2 in versions earlier than 52.26 */
+-#if LIBAVCODEC_VERSION_INT < 0x341a00
+-# define avcodec_decode_audio3(avctx, samples, frame_size_ptr, avpkt) \
+-    avcodec_decode_audio2(avctx, samples, frame_size_ptr, \
+-                          (avpkt)->data, (avpkt)->size)
+-#endif
+-
+-/* Handle API change that happened in libavcodec 52.64 */
+-#if LIBAVCODEC_VERSION_INT < 0x344000
+-# define AVMEDIA_TYPE_AUDIO CODEC_TYPE_AUDIO
+-#endif
+-
+-/* Calling avcodec_init is not necessary after 53.04 (ffmpeg 0.9) */
+-#if LIBAVCODEC_VERSION_INT >= 0x350400
+-# define avcodec_init()
+-#endif
+-
+-/* Map avcodec_alloc_context3 into the deprecated version
+- * avcodec_alloc_context in versions earlier than 53.04 (ffmpeg 0.9) */
+-#if LIBAVCODEC_VERSION_INT < 0x350400
+-# define avcodec_alloc_context3(codec) \
+-    avcodec_alloc_context()
+-#endif
+-
+-/* Map avcodec_open2 into the deprecated version
+- * avcodec_open in versions earlier than 53.04 (ffmpeg 0.9) */
+-#if LIBAVCODEC_VERSION_INT < 0x350400
+-# define avcodec_open2(avctx, codec, options) \
+-    avcodec_open(avctx, codec)
+-#endif
+-
+ /* Map avcodec_free_frame to av_freep if the former doesn't exist.
+  * (This is in versions earlier than 54.28.0 (libav) or 54.59.100 (ffmpeg)) */
+ #if ! HAVE_AVCODEC_FREE_FRAME
+diff --git a/src/plugins/avcodec/wscript b/src/plugins/avcodec/wscript
+index d367816..00b182b 100644
+--- a/src/plugins/avcodec/wscript
++++ b/src/plugins/avcodec/wscript
+@@ -1,6 +1,24 @@
+ from waftools.plugin import plugin
+ 
+ ## Code fragments for configuration
++avcodec_decode_audio4_fragment = """
++#ifdef HAVE_LIBAVCODEC_AVCODEC_H
++# include "libavcodec/avcodec.h"
++#else
++# include "avcodec.h"
++#endif
++int main(void) {
++    AVCodecContext *ctx;
++    AVFrame *frame;
++    int got_frame;
++    AVPacket *pkt;
++
++    avcodec_decode_audio4 (ctx, frame, &got_frame, pkt);
++
++    return 0;
++}
++"""
++
+ avcodec_free_frame_fragment = """
+ #ifdef HAVE_LIBAVCODEC_AVCODEC_H
+ # include "libavcodec/avcodec.h"
+@@ -22,6 +40,13 @@ def plugin_configure(conf):
+     conf.check_cc(header_name="avcodec.h", uselib="avcodec", type="cshlib", mandatory=False)
+     conf.check_cc(header_name="libavcodec/avcodec.h", uselib="avcodec", type="cshlib", mandatory=False)
+ 
++    # mandatory function avcodec_decode_audio4 available since
++    # * ffmpeg: commit e4de716, lavc 53.40.0, release 0.9
++    # * libav: commit 0eea212, lavc 53.25.0, release 0.8
++    conf.check_cc(fragment=avcodec_decode_audio4_fragment, uselib="avcodec",
++                  uselib_store="avcodec_decode_audio4",
++                  msg="Checking for function avcodec_decode_audio4", mandatory=True)
++
+     # non-mandatory function avcodec_free_frame since
+     # * ffmpeg: commit 46a3595, lavc 54.59.100, release 1.0
+     # * libav: commit a42aada, lavc 54.28.0, release 9
