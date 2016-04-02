@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install prepare test
-DEPEND=python_targets_pypy? ( virtual/pypy:0=[threads(+)] ) python_targets_pypy3? ( virtual/pypy3:0=[threads(+)] ) python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7[threads(+)] ) python_targets_python3_3? ( >=dev-lang/python-3.3.2-r2:3.3[threads(+)] ) python_targets_python3_4? ( dev-lang/python:3.4[threads(+)] ) python_targets_python3_5? ( dev-lang/python:3.5[threads(+)] ) >=dev-lang/python-exec-2:=[python_targets_pypy(-)?,python_targets_pypy3(-)?,python_targets_python2_7(-)?,python_targets_python3_3(-)?,python_targets_python3_4(-)?,python_targets_python3_5(-)?,-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python2_7(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-)]
+DEPEND=app-arch/unzip python_targets_pypy? ( virtual/pypy:0=[threads(+)] ) python_targets_pypy3? ( virtual/pypy3:0=[threads(+)] ) python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7[threads(+)] ) python_targets_python3_3? ( >=dev-lang/python-3.3.2-r2:3.3[threads(+)] ) python_targets_python3_4? ( dev-lang/python:3.4[threads(+)] ) python_targets_python3_5? ( dev-lang/python:3.5[threads(+)] ) >=dev-lang/python-exec-2:=[python_targets_pypy(-)?,python_targets_pypy3(-)?,python_targets_python2_7(-)?,python_targets_python3_3(-)?,python_targets_python3_4(-)?,python_targets_python3_5(-)?,-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python2_7(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-)]
 DESCRIPTION=Distribution utilities
 EAPI=5
 HOMEPAGE=https://pypi.python.org/pypi/distlib https://bitbucket.org/vinay.sajip/distlib https://github.com/vsajip/distlib
@@ -12,4 +12,4 @@ SLOT=0
 SRC_URI=mirror://pypi/d/distlib/distlib-0.2.2.zip
 _eclass_exported_funcs=src_prepare:distutils-r1 src_configure:distutils-r1 src_compile:distutils-r1 src_test:distutils-r1 src_install:distutils-r1
 _eclasses_=distutils-r1	4e8ac1ba76ddacd8f7c0289aa586a34c	eutils	9d81603248f2ba3ec59124320d123e5e	multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	3972ca401cf7dbb430df9995f5d8d580	multiprocessing	e32940a7b2a9992ad217eccddb84d548	python-r1	0f6937650a475d673baa5d0c8c0b37b3	python-utils-r1	2e6826f6a93ad2acf904eecf5b5fb6d2	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
-_md5_=0e760b7fc16950f2d7fc4e0615cbc32b
+_md5_=620889bc07dbd2f6762c586fc8dab2fc
