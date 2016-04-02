@@ -1,0 +1,14 @@
+diff --git a/daemons/daemon-util.in b/daemons/daemon-util.in
+index 7636fc9..aec5c92 100644
+--- a/daemons/daemon-util.in
++++ b/daemons/daemon-util.in
+@@ -102,6 +102,9 @@ _daemon_usergroup() {
+     rapi)
+       echo "@GNTRAPIUSER@:@GNTRAPIGROUP@"
+       ;;
++    kvmd)
++      echo "@GNTDAEMONSUSER@:@GNTDAEMONSGROUP@"
++	;;
+     noded)
+       echo "@GNTNODEDUSER@:@GNTNODEDGROUP@"
+       ;;

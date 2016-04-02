@@ -37,10 +37,6 @@ REQUIRED_USE="|| ( kvm xen lxc ) test? ( ipv6 ) ${PYTHON_REQUIRED_USE}"
 USER_PREFIX="${GANETI_USER_PREFIX:-"gnt-"}"
 GROUP_PREFIX="${GANETI_GROUP_PREFIX:-"${USER_PREFIX}"}"
 
-DOC_DEPEND="dev-python/sphinx[${PYTHON_USEDEP}]
-	media-fonts/urw-fonts
-	media-gfx/graphviz"
-
 DEPEND="
 	dev-libs/openssl:0
 	dev-python/paramiko[${PYTHON_USEDEP}]
@@ -137,6 +133,9 @@ RDEPEND="${DEPEND}
 	!app-emulation/ganeti-htools"
 DEPEND+="sys-devel/m4
 	app-text/pandoc
+	dev-python/sphinx[${PYTHON_USEDEP}]
+	media-fonts/urw-fonts
+	media-gfx/graphviz
 	>=dev-haskell/test-framework-0.6:0=
 	<dev-haskell/test-framework-0.9:0=
 	>=dev-haskell/test-framework-hunit-0.2.7:0=
@@ -154,7 +153,6 @@ DEPEND+="sys-devel/m4
 		sys-apps/fakeroot
 		net-misc/socat
 		dev-util/shelltestrunner
-		${DOC_DEPEND}
 	)"
 
 PATCHES=(
@@ -174,6 +172,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-2.15-python-mock.patch"
 	"${FILESDIR}/${PN}-2.15.2-remove-sandbox-failing-tests.patch"
 	"${FILESDIR}/${PN}-2.15-noded-must-run-as-root.patch"
+	"${FILESDIR}/${PN}-2.15-kvmd-run-as-daemon-user.patch"
 )
 
 REQUIRED_USE="kvm? ( || ( amd64 x86 ) )"
