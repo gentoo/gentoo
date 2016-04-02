@@ -13,8 +13,8 @@ HOMEPAGE="https://wiki.gnome.org/Projects/Librest"
 
 LICENSE="LGPL-2.1"
 SLOT="0.7"
-IUSE="+gnome +introspection test"
-KEYWORDS="~alpha amd64 ~arm hppa ~ia64 ~ppc ~ppc64 ~sparc x86"
+IUSE="+introspection test"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 
 # Coverage testing should not be enabled
 RDEPEND="
@@ -22,8 +22,7 @@ RDEPEND="
 	>=dev-libs/glib-2.24:2[${MULTILIB_USEDEP}]
 	dev-libs/libxml2:2[${MULTILIB_USEDEP}]
 	net-libs/libsoup:2.4[${MULTILIB_USEDEP}]
-	gnome? ( >=net-libs/libsoup-gnome-2.25.1:2.4[${MULTILIB_USEDEP}] )
-	introspection? ( >=dev-libs/gobject-introspection-0.6.7 )
+	introspection? ( >=dev-libs/gobject-introspection-0.6.7:= )
 "
 DEPEND="${RDEPEND}
 	>=dev-util/gtk-doc-am-1.13
@@ -32,23 +31,15 @@ DEPEND="${RDEPEND}
 	test? ( sys-apps/dbus[${MULTILIB_USEDEP}] )
 "
 
-src_prepare() {
-	# fixed in 0.7.93
-	epatch "${FILESDIR}/${P}-oauth-missing-include.patch" #542264
-	epatch "${FILESDIR}/${P}-xml-parser-missing-break.patch"
-	# https://bugzilla.gnome.org/show_bug.cgi?id=745694
-	epatch "${FILESDIR}/${P}-tests-GError-pointers.patch"
-
-	gnome2_src_prepare
-}
-
 multilib_src_configure() {
+	# gnome support only adds dependency on obsolete libsoup-gnome
+	# https://bugzilla.gnome.org/show_bug.cgi?id=758166
 	ECONF_SOURCE=${S} \
 	gnome2_src_configure \
 		--disable-static \
 		--disable-gcov \
+		--without-gnome \
 		--with-ca-certificates="${EPREFIX}"/etc/ssl/certs/ca-certificates.crt \
-		$(use_with gnome) \
 		$(multilib_native_use_enable introspection)
 
 	if multilib_is_native_abi; then
@@ -61,5 +52,10 @@ multilib_src_test() {
 	Xemake check
 }
 
-multilib_src_compile() { gnome2_src_compile; }
-multilib_src_install() { gnome2_src_install; }
+multilib_src_compile() {
+	gnome2_src_compile
+}
+
+multilib_src_install() {
+	gnome2_src_install
+}
