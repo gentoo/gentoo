@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -6,8 +6,8 @@ EAPI=5
 inherit cmake-utils
 
 DESCRIPTION="Qt terminal emulator widget"
-HOMEPAGE="https://github.com/qterminal/qtermwidget"
-SRC_URI="https://github.com/qterminal/${PN}/releases/download/${PV}/${P}.tar.xz"
+HOMEPAGE="https://github.com/lxde/qtermwidget"
+SRC_URI="https://github.com/lxde/${PN}/releases/download/${PV}/${P}.tar.xz"
 
 LICENSE="GPL-2+"
 SLOT="0"
