@@ -17,13 +17,14 @@ SLOT="0"
 IUSE=""
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-KEYWORDS="~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 
 # Newer pygobject needed due upstream bug #723951
 COMMON_DEPEND="
 	${PYTHON_DEPS}
-	>=gnome-base/gsettings-desktop-schemas-3.4
+	dev-libs/glib:2[dbus]
 	>=dev-python/pygobject-3.10.2:3[${PYTHON_USEDEP}]
+	>=gnome-base/gsettings-desktop-schemas-3.4
 "
 # g-s-d, gnome-desktop, gnome-shell etc. needed at runtime for the gsettings schemas
 RDEPEND="${COMMON_DEPEND}
@@ -48,6 +49,9 @@ src_prepare() {
 
 	# Prevent problems setting WM preferences, upstream bug #706834
 	epatch "${FILESDIR}/${PN}-3.8.1-wm-preferences.patch"
+
+	# Stop relying on libsoup-gnome (from 'master')
+	epatch "${FILESDIR}/${PN}-3.18.1-libsoup.patch"
 
 	gnome2_src_prepare
 	python_copy_sources
