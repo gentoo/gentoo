@@ -20,14 +20,10 @@ LICENSE="sun-bcla-jmi"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~x86-fbsd"
 
-CDEPEND="dev-java/ant-core:0"
-
 RDEPEND="
-	${CDEPEND}
 	>=virtual/jre-1.6"
 
 DEPEND="
-	${CDEPEND}
 	>=virtual/jdk-1.6
 	source? ( app-arch/zip )"
 
