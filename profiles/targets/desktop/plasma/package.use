@@ -17,6 +17,9 @@ media-libs/gd fontconfig
 # Required by kde-apps/libkexiv2
 media-gfx/exiv2 xmp
 
+# Required by kde-apps/okteta
+dev-qt/qtscript scripttools
+
 # Required by kde-base/pykde4
 dev-python/PyQt4 script sql webkit
 
