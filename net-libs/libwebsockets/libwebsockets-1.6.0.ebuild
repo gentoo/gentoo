@@ -14,7 +14,7 @@ S="${S}-${MY_TAG}"
 
 LICENSE="libwebsockets"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="dev-util/cmake"
