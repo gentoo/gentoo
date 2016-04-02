@@ -10001,7 +10001,7 @@ games-arcade/cdogs-sdl 0.4-r1: A port of the old DOS arcade game C-Dogs
 games-arcade/ceferino 0.97.8: Super-Pang clone (destroy bouncing balloons with your grapnel)
 games-arcade/circuslinux 1.0.3: clone of the Atari 2600 game "Circus Atari"
 games-arcade/cob 0.9: Cruising on Broadway: a painting-type game
-games-arcade/commandergenius 1.8.0.0: Open Source Commander Keen clone (needs original game files)
+games-arcade/commandergenius 1.8.0.0 1.8.3: Open Source Commander Keen clone (needs original game files)
 games-arcade/conveysdl 1.3: Guide the blob along the conveyer belt collecting the red blobs
 games-arcade/cosmosmash 1.4.7: A space rock shooting video game
 games-arcade/crack-attack 1.1.14-r1: Addictive OpenGL-based block game
