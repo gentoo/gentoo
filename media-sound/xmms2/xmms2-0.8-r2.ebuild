@@ -8,7 +8,7 @@ inherit eutils python toolchain-funcs
 
 MY_P="${P}DrO_o"
 
-DESCRIPTION="X(cross)platform Music Multiplexing System. The new generation of the XMMS player"
+DESCRIPTION="X(cross)platform Music Multiplexing System. Next generation of the XMMS player"
 HOMEPAGE="http://xmms2.org/wiki/Main_Page"
 SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.bz2"
 LICENSE="GPL-2 LGPL-2.1"
