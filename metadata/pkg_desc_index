@@ -18038,7 +18038,7 @@ x11-libs/pango 1.36.8 1.36.8-r1 1.38.1: Internationalized text layout and render
 x11-libs/pangox-compat 0.0.2 0.0.2-r1: PangoX compatibility library
 x11-libs/pixman 0.32.8 0.33.4 0.33.6 0.34.0 9999: Low-level pixel manipulation routines
 x11-libs/qscintilla 2.8.4-r1 2.9 2.9.1: A Qt port of Neil Hodgson's Scintilla C++ editor class
-x11-libs/qtermwidget 0.6.0: Qt terminal emulator widget
+x11-libs/qtermwidget 0.6.0 0.6.0-r1: Qt terminal emulator widget
 x11-libs/qtscriptgenerator 0.2.0: Tool for generating Qt bindings for Qt Script
 x11-libs/qwt 5.2.3-r2 6.1.0 6.1.2-r1: 2D plotting library for Qt4 and Qt5
 x11-libs/qwtplot3d 0.2.7-r2: Qt4/OpenGL-based 3D widget library for C++
