@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst postrm setup
+DEPEND=dev-libs/boost:= doc? ( app-doc/doxygen[dot] ) emacs? ( virtual/emacs )
+DESCRIPTION=A comprehensive software framework for quantitative finance
+EAPI=6
+HOMEPAGE=http://quantlib.org/
+IUSE=debug doc emacs examples openmp static-libs
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD
+RDEPEND=dev-libs/boost:=
+SLOT=0
+SRC_URI=mirror://sourceforge/quantlib/QuantLib-1.7.1.tar.gz
+_eclass_exported_funcs=pkg_postrm:- pkg_postinst:- pkg_setup:- src_configure:- src_compile:- src_install:-
+_eclasses_=elisp-common	9f56c4e9bf1282dbfc2a5a09e1124e74	eutils	9d81603248f2ba3ec59124320d123e5e	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=7dd842860a057d756bfcb98b9739f0c7
