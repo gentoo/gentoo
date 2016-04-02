@@ -8,7 +8,6 @@
 <use>
 	<flag name="caps">build setpriv helper (run programs with diff capabilities)</flag>
 	<flag name="cramfs">build mkfs/fsck helpers for cramfs filesystems</flag>
-	<flag name="cytune">build cytune for Cyclades-Z multiport serial cards</flag>
 	<flag name="fdformat">build fdformat (floppy disk format)</flag>
 	<flag name="kill">build the kill program</flag>
 	<flag name="pam">build runuser helper</flag>
