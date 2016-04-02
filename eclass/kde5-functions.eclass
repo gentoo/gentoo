@@ -35,7 +35,7 @@ esac
 
 # @ECLASS-VARIABLE: KDE_APPS_MINIMAL
 # @DESCRIPTION:
-# Minimal KDE Applicaions version to require for the package.
+# Minimal KDE Applications version to require for the package.
 : ${KDE_APPS_MINIMAL:=14.12.0}
 
 # @ECLASS-VARIABLE: KDE_GCC_MINIMAL

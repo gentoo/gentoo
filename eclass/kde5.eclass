@@ -152,9 +152,15 @@ case ${KDE_AUTODEPS} in
 		COMMONDEPEND+=" $(add_qt_dep qtcore)"
 
 		if [[ ${CATEGORY} = kde-frameworks || ${CATEGORY} = kde-plasma && ${PN} != polkit-kde-agent ]]; then
+			local blocked_version=15.08.0-r1
+
+			if [[ ${CATEGORY} = kde-plasma && $(get_version_component_range 2) -ge 6 ]]; then
+				blocked_version=15.12.3-r1
+			fi
+
 			RDEPEND+="
 				!kde-apps/kde4-l10n[-minimal(-)]
-				!<kde-apps/kde4-l10n-15.08.0-r1
+				!<kde-apps/kde4-l10n-${blocked_version}
 			"
 		fi
 
@@ -387,24 +393,24 @@ kde5_src_prepare() {
 
 	# enable only the requested translations
 	# when required
-	if [[ ${KDE_BUILD_TYPE} = release ]] ; then
-		if [[ -d po ]] ; then
-			pushd po > /dev/null || die
-			for lang in *; do
-				if [[ -d ${lang} ]] && ! has ${lang} ${LINGUAS} ; then
-					rm -r ${lang} || die
-					if [[ -e CMakeLists.txt ]] ; then
-						cmake_comment_add_subdirectory ${lang}
-					fi
-				elif ! has ${lang/.po/} ${LINGUAS} ; then
-					if [[ ${lang} != CMakeLists.txt ]] ; then
-						rm ${lang} || die
-					fi
+	if [[ -d po ]] ; then
+		pushd po > /dev/null || die
+		for lang in *; do
+			if [[ -d ${lang} ]] && ! has ${lang} ${LINGUAS} ; then
+				rm -r ${lang} || die
+				if [[ -e CMakeLists.txt ]] ; then
+					cmake_comment_add_subdirectory ${lang}
 				fi
-			done
-			popd > /dev/null || die
-		fi
+			elif ! has ${lang/.po/} ${LINGUAS} ; then
+				if [[ ${lang} != CMakeLists.txt ]] ; then
+					rm ${lang} || die
+				fi
+			fi
+		done
+		popd > /dev/null || die
+	fi
 
+	if [[ ${KDE_BUILD_TYPE} = release ]] ; then
 		if [[ ${KDE_HANDBOOK} != false && -d ${KDE_DOC_DIR} && ${CATEGORY} != kde-apps ]] ; then
 			pushd ${KDE_DOC_DIR} > /dev/null || die
 			for lang in *; do
@@ -414,12 +420,10 @@ kde5_src_prepare() {
 			done
 			popd > /dev/null || die
 		fi
-	else
-		rm -rf po
 	fi
 
 	# in frameworks, tests = manual tests so never build them
-	if [[ ${CATEGORY} = kde-frameworks ]]; then
+	if [[ ${CATEGORY} = kde-frameworks ]] && [[ ${PN} != extra-cmake-modules ]]; then
 		cmake_comment_add_subdirectory tests
 	fi
 

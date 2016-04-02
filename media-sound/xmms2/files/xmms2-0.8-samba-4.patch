@@ -1,0 +1,30 @@
+commit 86ea5e2d2ac2d8c8c1aee484e8c264440fafcb6a
+Author: Daniel P. Chokola <dan.chokola@gmail.com>
+Date:   Wed Jan 1 14:57:35 2014 -0500
+
+    BUG(2573): Samba 4.0 uses pkg-config. Find libsmbclient.h properly.
+
+diff --git a/src/plugins/samba/wscript b/src/plugins/samba/wscript
+index 8398169..77d7cda 100644
+--- a/src/plugins/samba/wscript
++++ b/src/plugins/samba/wscript
+@@ -1,8 +1,17 @@
+ from waftools.plugin import plugin
++from waflib import Errors
+ 
+ def plugin_configure(conf):
+-    conf.check_cc(header_name="libsmbclient.h")
+-    conf.check(lib="smbclient", uselib_store="smbclient")
++    try:
++        conf.check_cfg(package="smbclient", uselib_store="smbclient",
++                       args="--cflags --libs")
++    except Errors.ConfigurationError:
++        conf.check_cc(header_name="libsmbclient.h",
++                      uselib="smbclient",
++                      type="cshlib")
++        conf.check(lib="smbclient", uselib_store="smbclient",
++                   uselib="smbclient",
++                   type="cshlib")
+ 
+ configure, build = plugin("samba", configure=plugin_configure,
+         libs=["smbclient"])
