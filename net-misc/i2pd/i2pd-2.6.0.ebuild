@@ -55,7 +55,6 @@ src_configure() {
 src_install() {
 	cmake-utils_src_install
 	dodoc README.md
-	doman "${FILESDIR}/${PN}.1"
 	keepdir /var/lib/i2pd/
 	insinto "/var/lib/i2pd"
 	doins -r "${S}/contrib/certificates"
