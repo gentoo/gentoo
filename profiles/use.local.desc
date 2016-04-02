@@ -1957,9 +1957,6 @@ dev-libs/cyrus-sasl:srp - Enable SRP authentication
 dev-libs/cyrus-sasl:urandom - Use /dev/urandom instead of /dev/random
 dev-libs/dbus-c++:ecore - Use Ecore integration
 dev-libs/dbus-c++:glib - Use glib integration
-dev-libs/e_dbus:bluetooth - Enable interfacing with net-wireless/bluez DBus API
-dev-libs/e_dbus:ofono - Enable interfacing with net-misc/ofono DBus API
-dev-libs/e_dbus:test-binaries - Enable building of test binaries for enabled features
 dev-libs/efl:bmp - Enable WBMP image loader
 dev-libs/efl:drm - Enable DRM engine
 dev-libs/efl:eet - Enable Eet image loader

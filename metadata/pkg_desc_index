@@ -3075,7 +3075,6 @@ dev-games/cardpics 0.4: set of free cards sets
 dev-games/cegui 0.6.2b 0.8.4: Crazy Eddie's GUI System
 dev-games/clanlib 0.8.1 2.3.7: multi-platform game development library
 dev-games/crystalspace 2.0-r1: Portable 3D Game Development Kit written in C++
-dev-games/etrophy 0.5.1: Library for managing scores, trophies and unlockables,stores them and provides views to display them
 dev-games/flatzebra 0.1.6: A generic game engine for 2D double-buffering animation
 dev-games/flinker 1.72: GBA cart writing utility by Jeff Frohwein
 dev-games/goatee 0.3.0: A monadic take on a 2,500-year-old board game - library
@@ -4492,7 +4491,6 @@ dev-libs/djb 0.5.2: Library created from code by Dan Bernstein
 dev-libs/dmalloc 5.5.2-r4 5.5.2-r6: A Debug Malloc Library
 dev-libs/dotconf 1.3: dot.conf configuration file parser
 dev-libs/double-conversion 2.0.1: Binary-decimal and decimal-binary routines forIEEE doubles
-dev-libs/e_dbus 1.7.10 9999: Enlightenment's (Ecore) integration to DBus
 dev-libs/eb 4.4.1-r1: EB is a C library and utilities for accessing CD-ROM books
 dev-libs/efl 1.12.2 1.15.2 1.16.1 1.17.0 9999: Enlightenment Foundation Libraries all-in-one package
 dev-libs/elfio 1.0.3: ELF (Executable and Linkable Format) reader and producer implemented as a C++ library
@@ -18380,7 +18378,6 @@ x11-plugins/compiz-plugins-main 0.8.8: Compiz Fusion Window Decorator Plugins
 x11-plugins/compiz-plugins-unsupported 0.8.8: Compiz Fusion Window Decorator Unsupported Plugins
 x11-plugins/cputnik 0.2.0: cputnik is a simple cpu monitor dockapp
 x11-plugins/docker 1.5 1.5-r1: Openbox app which acts as a system tray for KDE and GNOME2
-x11-plugins/echievements 2: Show enlightenment echievements
 x11-plugins/epplets 0.12 0.14: Base files for Enlightenment epplets and some epplets
 x11-plugins/fsviewer 0.2.6 0.2.6-r1: A file system viewer for Window Maker
 x11-plugins/gkrellaclock 0.3.4: Nice analog clock for GKrellM2
