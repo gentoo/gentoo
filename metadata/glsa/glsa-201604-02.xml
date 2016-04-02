@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201604-02">
+  <title>Xalan-Java: Arbitrary code execution</title>
+  <synopsis>Insufficient constraints in Apache's Xalan-Java might allow remote
+    attackers to execute arbitrary code and load arbitrary classes.
+  </synopsis>
+  <product type="ebuild">xalan-java</product>
+  <announced>April 02, 2016</announced>
+  <revised>April 02, 2016: 1</revised>
+  <bug>505602</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-java/xalan" auto="yes" arch="*">
+      <unaffected range="ge">2.7.2</unaffected>
+      <vulnerable range="lt">2.7.2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Xalan-Java is an XSLT processor for transforming XML documents into
+      HTML, text, or other XML document types.
+    </p>
+  </background>
+  <description>
+    <p>The TransformerFactory in Apache Xalan-Java does not properly restrict
+      access to certain properties when FEATURE_SECURE_PROCESSING is enabled.
+      This can also be exploited via a Java property that is bound to the XSLT
+      1.0 system-property function.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could inject specially crafted XSLT properties
+      resulting in the execution of arbitrary code with the privileges of the
+      process.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known work around at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Xalan-Java users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-java/xalan-2.7.2"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-0107">CVE-2014-0107</uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 04 Mar 2016 11:55:40 +0000">b-man</metadata>
+  <metadata tag="submitter" timestamp="Sat, 02 Apr 2016 19:42:25 +0000">b-man</metadata>
+</glsa>
