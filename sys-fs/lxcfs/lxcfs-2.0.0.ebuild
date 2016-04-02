@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit eutils systemd vcs-snapshot
+inherit eutils systemd vcs-snapshot versionator
 DESCRIPTION="FUSE filesystem for LXC"
 HOMEPAGE="https://linuxcontainers.org/lxcfs/introduction/"
 LICENSE="Apache-2.0"
@@ -17,7 +17,9 @@ if [[ ${PV} == "9999" ]] ; then
 	SRC_URI=""
 	KEYWORDS=""
 else
-	SRC_URI="https://github.com/lxc/lxcfs/archive/${P}.tar.gz"
+	# e.g. upstream is 2.0.0.beta2, we want 2.0.0_beta2
+	UPSTREAM_PV=$(replace_version_separator 3 '.' )
+	SRC_URI="https://github.com/lxc/lxcfs/archive/${PN}-${UPSTREAM_PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64"
 fi
 
@@ -28,6 +30,7 @@ fi
 RDEPEND="
 	dev-libs/glib:2
 	sys-fs/fuse
+	virtual/pam
 "
 DEPEND="
 	sys-apps/help2man
@@ -52,5 +55,5 @@ src_install() {
 	default
 	dodir /var/lib/lxcfs
 	newinitd "${FILESDIR}"/${P}.initd lxcfs
-	systemd_newunit "${FILESDIR}/${P}.service" lxcfs.service
+	systemd_dounit config/init/systemd/lxcfs.service
 }
