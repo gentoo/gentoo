@@ -8102,7 +8102,7 @@ dev-python/tox 1.8.0 1.8.1 1.9.0 1.9.2 2.3.1: virtualenv-based automation of tes
 dev-python/tpg 3.2.2-r1: Toy Parser Generator for Python
 dev-python/traceback2 1.4.0: Backports of the traceback module
 dev-python/tracing 0.7-r1 0.8: Debug log/trace messages
-dev-python/traitlets 4.0.0 4.1.0: A configuration system for Python applications
+dev-python/traitlets 4.0.0 4.1.0 4.2.1: A configuration system for Python applications
 dev-python/traits 4.5.0: Enthought Tool Suite: Explicitly typed attributes for Python
 dev-python/traitsui 4.4.0 4.5.1: Enthought Tool Suite: Traits-capable user interfaces
 dev-python/translate-toolkit 1.12.0: Toolkit to convert between many translation formats
@@ -15977,7 +15977,7 @@ sci-misc/gato 1.1.2: Graph Animation Toolbox
 sci-misc/gt-itm 19961004-r1: Routines to generate and analyze graphs using different models for internetwork topology
 sci-misc/h5utils 1.12.1-r2: Utilities for visualization and conversion of HDF5 files
 sci-misc/lttoolbox 3.1.0 3.2.0: Toolbox for lexical processing, morphological analysis and generation of words
-sci-misc/mendeleydesktop 1.15.3: Research management tool for desktop and web
+sci-misc/mendeleydesktop 1.16.1: Research management tool for desktop and web
 sci-misc/nco 3.9.9 4.5.1-r2: Command line utilities for operating on netCDF files
 sci-misc/ncview 2.1.1 2.1.2: X-based viewer for netCDF files
 sci-misc/netlogo-bin 3.0.2 4.0.4 5.0.3-r1: Cross-platform multi-agent programmable modeling environment
