@@ -5869,7 +5869,7 @@ dev-perl/Module-Refresh 0.170.0-r1: Refresh %INC files when updated on disk
 dev-perl/Module-Runtime 0.14.0: Runtime module handling
 dev-perl/Module-Runtime-Conflicts 0.2.0: Provide information on conflicts for Module::Runtime
 dev-perl/Module-ScanDeps 1.200.0: Recursively scan Perl code for dependencies
-dev-perl/Module-Signature 0.770.0 0.790.0: Module signature file manipulation
+dev-perl/Module-Signature 0.790.0: Module signature file manipulation
 dev-perl/Module-Starter 1.600.0-r1 1.710.0: A simple starter kit for any module
 dev-perl/Module-Util 1.90.0: Module name tools and transformations
 dev-perl/Module-Versions-Report 1.60.0-r1: Report versions of all modules in memory
@@ -5882,7 +5882,7 @@ dev-perl/Mon 0.110.0-r1: A Monitor Perl Module
 dev-perl/MongoDB 0.708.3.0 1.2.2: Official MongoDB Driver for Perl
 dev-perl/Monitoring-Plugin 0.390.0: Modules to streamline Nagios, Icinga, Shinken, etc. plugins
 dev-perl/Moo 2.0.2: Minimalist Object Orientation (with Moose compatiblity)
-dev-perl/MooX-HandlesVia 0.1.7 0.1.8: NativeTrait-like behavior for Moo
+dev-perl/MooX-HandlesVia 0.1.8: NativeTrait-like behavior for Moo
 dev-perl/MooX-Types-MooseLike 0.290.0: Some Moosish types and a type builder
 dev-perl/MooX-Types-MooseLike-Numeric 1.20.0: Moo types for numbers
 dev-perl/MooX-late 0.15.0: Easily translate Moose code to Moo
@@ -5910,26 +5910,26 @@ dev-perl/MooseX-Types-Path-Tiny 0.11.0: Path::Tiny types and coercions for Moose
 dev-perl/MooseX-Types-Stringlike 0.3.0: Moose type constraints for strings or string-like objects
 dev-perl/Mouse 0.970.0-r1 2.4.5: Moose minus the antlers
 dev-perl/MouseX-Types 0.60.0: Organize your Mouse types in libraries
-dev-perl/Mozilla-CA 20150826 20160104: Mozilla's CA cert bundle in PEM format
+dev-perl/Mozilla-CA 20160104: Mozilla's CA cert bundle in PEM format
 dev-perl/MusicBrainz-DiscID 0.30.0-r1: Perl interface for the MusicBrainz libdiscid library
 dev-perl/Nagios-Plugin 0.360.0-r1: A family of perl modules to streamline writing Nagios plugins
 dev-perl/Net-ARP 1.0.9: Perl extension for creating ARP packets
 dev-perl/Net-Amazon 0.620.0: Framework for accessing amazon.com via SOAP and XML/HTTP
 dev-perl/Net-Amazon-S3 0.800.0: Framework for accessing the Amazon S3 Simple Storage Service
-dev-perl/Net-CIDR 0.170.0-r1 0.180.0: Manipulate netblock lists in CIDR notation
+dev-perl/Net-CIDR 0.180.0: Manipulate netblock lists in CIDR notation
 dev-perl/Net-CIDR-Lite 0.210.0: Perl extension for merging IPv4 or IPv6 CIDR addresses
 dev-perl/Net-CUPS 0.610.0-r2: CUPS C API Interface
 dev-perl/Net-DBus 1.0.0-r1 1.1.0: Perl extension for the DBus message system
-dev-perl/Net-DNS 0.740.0 1.40.0: Perl Net::DNS - Perl DNS Resolver Module
+dev-perl/Net-DNS 1.40.0: Perl Net::DNS - Perl DNS Resolver Module
 dev-perl/Net-DNS-Async 1.70.0-r1: Asynchronous DNS helper for high volume applications
 dev-perl/Net-DNS-Resolver-Programmable 0.3.0-r1: programmable DNS resolver class for offline emulation of DNS
 dev-perl/Net-DNS-SEC 1.20.0: DNSSEC extensions to Net::DNS
 dev-perl/Net-Daemon 0.480.0-r1: Abstract base class for portable servers
-dev-perl/Net-Domain-TLD 1.690.0-r1 1.740.0: Current top level domain names including new ICANN additions and ccTLDs
+dev-perl/Net-Domain-TLD 1.740.0: Current top level domain names including new ICANN additions and ccTLDs
 dev-perl/Net-FreeDB 0.80.0-r1 0.100.0: OOP interface to the FreeDB database
 dev-perl/Net-Google-SafeBrowsing-Blocklist 1.40.0-r1: Query a Google SafeBrowsing table
 dev-perl/Net-Google-SafeBrowsing-UpdateRequest 1.60.0-r1: Update a Google SafeBrowsing table
-dev-perl/Net-HTTP 6.60.0 6.90.0: Low-level HTTP connection (client)
+dev-perl/Net-HTTP 6.90.0: Low-level HTTP connection (client)
 dev-perl/Net-IDN-Encode 2.300.0: Internationalizing Domain Names in Applications (IDNA)
 dev-perl/Net-IMAP-Simple 1.220.600: Perl extension for simple IMAP account handling
 dev-perl/Net-IMAP-Simple-SSL 1.300.0-r1: SSL support for Net::IMAP::Simple
@@ -5938,13 +5938,13 @@ dev-perl/Net-IP-Minimal 0.60.0: Minimal functions from Net::IP
 dev-perl/Net-IPv4Addr 0.100.0: Perl extension for manipulating IPv4 addresses
 dev-perl/Net-IRC 0.790.0-r1: Perl IRC module
 dev-perl/Net-IRR 0.80.0-r1: Internet Route Registry daemon (IRRd) client
-dev-perl/Net-Ident 1.230.0-r1 1.240.0: lookup the username on the remote end of a TCP/IP connection
+dev-perl/Net-Ident 1.240.0: lookup the username on the remote end of a TCP/IP connection
 dev-perl/Net-Jabber 2.0.0-r1: Jabber Perl library
 dev-perl/Net-Kismet 0.04-r1: Module for writing perl Kismet clients
 dev-perl/Net-LDAP-Server 0.430.0: LDAP server side protocol handling
 dev-perl/Net-LDAPapi 3.0.4: Perl5 Module Supporting LDAP API
 dev-perl/Net-LibIDN 0.120.0-r1: Perl bindings for GNU Libidn
-dev-perl/Net-Netmask 1.901.600-r1 1.902.200: Parse, manipulate and lookup IP network blocks
+dev-perl/Net-Netmask 1.902.200: Parse, manipulate and lookup IP network blocks
 dev-perl/Net-OAuth 0.280.0-r1: OAuth protocol support
 dev-perl/Net-OpenID-Common 1.200.0: Libraries shared between Net::OpenID::Consumer and Net::OpenID::Server
 dev-perl/Net-OpenID-Consumer 1.180.0: Library for consumers of OpenID identities
@@ -5955,7 +5955,7 @@ dev-perl/Net-PcapUtils 0.10.0-r1: Perl Net::PcapUtils - Net::Pcap library utils
 dev-perl/Net-RBLClient 0.500.0-r1: Net::RBLClient - Queries multiple Realtime Blackhole Lists in parallel
 dev-perl/Net-RawIP 0.250.0-r1: Perl Net::RawIP - Raw IP packets manipulation Module
 dev-perl/Net-SFTP 0.100.0-r1: Secure File Transfer Protocol client
-dev-perl/Net-SFTP-Foreign 1.750.0-r1 1.810.0: SSH File Transfer Protocol client
+dev-perl/Net-SFTP-Foreign 1.810.0: SSH File Transfer Protocol client
 dev-perl/Net-SMTP-SSL 1.30.0: SSL support for Net::SMTP
 dev-perl/Net-SMTP-TLS 0.120.0-r2: A SMTP client supporting TLS and AUTH
 dev-perl/Net-SMTP-TLS-ButMaintained 0.240.0-r1: An SMTP client supporting TLS and AUTH
@@ -5967,9 +5967,9 @@ dev-perl/Net-SSH-AuthorizedKeysFile 0.170.0: Read and modify ssh's authorized_ke
 dev-perl/Net-SSH-Perl 1.360.0-r1 1.420.0: Perl client Interface to SSH
 dev-perl/Net-SSH2 0.580.0: Support for the SSH 2 protocol via libssh2
 dev-perl/Net-SSLeay 1.650.0-r1 1.650.0-r2 1.720.0: Perl extension for using OpenSSL
-dev-perl/Net-Server 2.7.0-r1 2.8.0: Extensible, general Perl server engine
+dev-perl/Net-Server 2.8.0: Extensible, general Perl server engine
 dev-perl/Net-Server-Coro 1.300.0-r1: A co-operative multithreaded server using Coro
-dev-perl/Net-Server-Mail 0.210.0-r1 0.230.0: Class to easily create a mail server
+dev-perl/Net-Server-Mail 0.230.0: Class to easily create a mail server
 dev-perl/Net-Subnet 1.30.0: Fast IP-in-subnet matcher for IPv4 and IPv6, CIDR or mask
 dev-perl/Net-Telnet 3.30.0-r1 3.40.0: interact with TELNET port or other TCP ports in Perl
 dev-perl/Net-Telnet-Cisco 1.100.0-r1: Automate telnet sessions w/ routers&switches
@@ -13281,7 +13281,7 @@ media-sound/wildmidi 0.2.3.5 0.3.6 0.3.7 0.3.8: Midi processing library and a mi
 media-sound/wmsound-data 1.0.0: A bunch of sounds for WindowMaker Sound Server
 media-sound/xfmpc 0.2.2: Music Player Daemon (MPD) client for the Xfce desktop environment
 media-sound/xineadump 0.1-r1: Utility for Xine decoding support in transKode
-media-sound/xmms2 0.8-r2: X(cross)platform Music Multiplexing System. Next generation of the XMMS player
+media-sound/xmms2 0.8-r2 0.8-r3: X(cross)platform Music Multiplexing System. Next generation of the XMMS player
 media-sound/xmms2-scrobbler 0.4.0: XMMS2 AudioScrobbler client
 media-sound/xnoise 0.2.21 9999: A media player for Gtk+ with a slick GUI, great speed and lots of features
 media-sound/xwax 1.5: Digital vinyl emulation software
@@ -15655,14 +15655,14 @@ sci-libs/arprec 2.2.16 2.2.17: Arbitrary precision float arithmetics and functio
 sci-libs/atlas 3.10.2: Automatically Tuned Linear Algebra Software
 sci-libs/avogadrolibs 0.7.2-r1 0.8.0: Advanced molecule editor and visualizer 2 - libraries
 sci-libs/beagle 3.0.3: Open BEAGLE, a versatile EC/GA/GP framework
-sci-libs/blas-reference 20070226 20070226-r2 20070226-r3 20070226-r4: Basic Linear Algebra Subprograms F77 reference implementations
+sci-libs/blas-reference 20070226-r4: Basic Linear Algebra Subprograms F77 reference implementations
 sci-libs/bliss 0.72: A Tool for Computing Automorphism Groups and Canonical Labelings of Graphs
 sci-libs/bmrblib 1.0.3: API abstracting the BioMagResBank (BMRB) NMR-STAR format (http://www.bmrb.wisc.edu/)
 sci-libs/btf 1.1.3 1.2.0: Algorithm for matrix permutation into block triangular form
 sci-libs/buddy 2.2 2.4: Binary Decision Diagram Package
 sci-libs/camd 2.3.1: Library to order a sparse matrix prior to Cholesky factorization
 sci-libs/cbflib 0.9.3.3: Library providing a simple mechanism for accessing CBF files and imgCIF files
-sci-libs/cblas-reference 20030223-r4 20030223-r5 20030223-r6: C wrapper interface to the F77 reference BLAS implementation
+sci-libs/cblas-reference 20030223-r6: C wrapper interface to the F77 reference BLAS implementation
 sci-libs/ccfits 2.4: C++ interface for cfitsio
 sci-libs/ccolamd 2.8.0: Constrained Column approximate minimum degree ordering algorithm
 sci-libs/ccpn-data 2.3.1_p140425 2.4.0_p140425 2.4.1 2.4.2: The Collaborative Computing Project for NMR - Data
@@ -15751,7 +15751,7 @@ sci-libs/itpp 4.3.1-r1: C++ library of mathematical, signal processing and commu
 sci-libs/jama 1.2.5: Java-like matrix C++ templates
 sci-libs/jmol-acme 1.0: Portions of the Acme collection required for jMol
 sci-libs/klu 1.2.1: Sparse LU factorization for circuit simulation
-sci-libs/lapack-reference 3.1.1-r1 3.2.1-r1 3.2.1-r3 3.2.1-r4: FORTRAN reference implementation of LAPACK Linear Algebra PACKage
+sci-libs/lapack-reference 3.2.1-r4: FORTRAN reference implementation of LAPACK Linear Algebra PACKage
 sci-libs/ldl 2.0.4 2.1.0: Simple but educational LDL^T matrix factorization algorithm
 sci-libs/lemon 1.3-r2: C++ template static library of common data structures and algorithms
 sci-libs/levmar 2.6: Levenberg-Marquardt nonlinear least squares C library
