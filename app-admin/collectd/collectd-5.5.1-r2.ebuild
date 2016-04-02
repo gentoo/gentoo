@@ -63,7 +63,7 @@ unset plugin
 
 COMMON_DEPEND="
 	dev-libs/libgcrypt:=
-	sys-devel/libtool
+	dev-libs/libltdl:0=
 	perl?					( dev-lang/perl:=[ithreads] )
 	udev?					( virtual/udev )
 	collectd_plugins_amqp?			( net-libs/rabbitmq-c )
