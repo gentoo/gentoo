@@ -402,7 +402,6 @@ app-benchmarks/bootchart2 0.14.7-r1: Performance analysis and visualization of t
 app-benchmarks/contest 0.61 0.61-r1: Test system responsiveness to compare different kernels
 app-benchmarks/cpuburn 1.4a 1.4a-r1: Designed to heavily load CPU chips [testing purposes]
 app-benchmarks/dbench 4.0: Popular filesystem benchmark
-app-benchmarks/expedite 1.7.10: Performance and correctness test suite for Evas
 app-benchmarks/filebench 1.4.9.1-r1: Filebench - A Model Based File System Workload Generator
 app-benchmarks/forkbomb 1.4: Controlled fork() bomber for testing heavy system load
 app-benchmarks/gtkperf 0.40-r1: Application designed to test GTK+ performance
@@ -2545,6 +2544,7 @@ app-vim/l9 1.1: vim plugin: library for vim scripts
 app-vim/locateopen 1.3: vim plugin: open a file without supplying a path
 app-vim/lustyexplorer 4.1 4.3: vim plugin: dynamic filesystem and buffer explorer
 app-vim/matrix 1.10: vim plugin: Screensaver inspired by the Matrix
+app-vim/merginal 1.6.0: fugitive extension to manage and merge git branches
 app-vim/minibufexpl 6.4.3 6.4.4 6.5.2: vim plugin: easily switch between buffers
 app-vim/multiplesearch 1.3: vim plugin: allows multiple highlighted searches
 app-vim/multvals 3.10: vim plugin: library for helping with arrays
@@ -4494,16 +4494,9 @@ dev-libs/dotconf 1.3: dot.conf configuration file parser
 dev-libs/double-conversion 2.0.1: Binary-decimal and decimal-binary routines forIEEE doubles
 dev-libs/e_dbus 1.7.10 9999: Enlightenment's (Ecore) integration to DBus
 dev-libs/eb 4.4.1-r1: EB is a C library and utilities for accessing CD-ROM books
-dev-libs/ecore 1.7.10 1.7.10-r1 9999: Enlightenment's core event abstraction layer and OS abstraction layer
-dev-libs/eet 1.7.8 1.7.9 1.7.10 1.7.10-r1 9999: E file chunk reading/writing library
-dev-libs/eeze 1.7.8 1.7.9 1.7.10 9999: library to simplify the use of devices
 dev-libs/efl 1.12.2 1.15.2 1.16.1 1.17.0 9999: Enlightenment Foundation Libraries all-in-one package
-dev-libs/efreet 1.7.10 9999: library for handling of freedesktop.org specs (desktop/icon/theme/etc...)
-dev-libs/eina 1.7.9 1.7.10 9999: Enlightenment's data types library (list, hash, etc) in C
-dev-libs/eio 1.7.8 1.7.9 1.7.10 9999: Enlightenment's integration to IO
 dev-libs/elfio 1.0.3: ELF (Executable and Linkable Format) reader and producer implemented as a C++ library
 dev-libs/elfutils 0.163 0.164 0.165: Libraries/utilities to handle ELF objects (drop in replacement for libelf)
-dev-libs/embryo 1.7.10 9999: load and control programs compiled in embryo language (small/pawn variant)
 dev-libs/engine_pkcs11 0.1.8 0.1.8-r1: engine_pkcs11 is an implementation of an engine for OpenSSL
 dev-libs/eventlog 0.2.12: Support library for syslog-ng
 dev-libs/expat 2.1.0-r5 2.1.1: Stream-oriented XML parser library
@@ -7810,7 +7803,7 @@ dev-python/python-djvulibre 0.3.9: Set of Python bindings for the DjVuLibre libr
 dev-python/python-docs 2.7.8 2.7.10 3.2.5 3.3.2 3.3.4 3.3.5-r1 3.4.3: HTML documentation for Python
 dev-python/python-dsv 1.4.1-r1: Python module for importing and exporting DSV files
 dev-python/python-editor 0.4: Programmatically open an editor, capture the result.
-dev-python/python-efl 1.16.0 1.17.0: Python bindings for Enlightenment Fundation Libraries
+dev-python/python-efl 1.17.0: Python bindings for Enlightenment Fundation Libraries
 dev-python/python-engineio 0.8.1 0.8.6 0.8.8: Python implementation of the Engine.IO realtime server.
 dev-python/python-etcd 0.3.2 0.3.3: A python client for etcd
 dev-python/python-evdev 0.4.3 0.4.5: Python library for evdev bindings
@@ -12242,14 +12235,10 @@ media-libs/ctl 1.4.1: AMPAS' Color Transformation Language
 media-libs/devil 1.7.8-r2: DevIL image library
 media-libs/dssi 1.1.1: Plugin API for software instruments with user interfaces
 media-libs/dumb 0.9.3-r3: IT/XM/S3M/MOD player library with click removal and IT filters
-media-libs/edje 1.7.8 1.7.9 1.7.10 9999: graphical layout and animation library
 media-libs/elementary 1.12.2 1.15.2 1.16.1 1.17.0 9999: Basic widget set, based on EFL for mobile touch-screen devices
 media-libs/embree 2.8.0: Collection of high-performance ray tracing kernels
 media-libs/emfengine 0.8: Native vector graphics file format on Windows
-media-libs/emotion 1.7.8 1.7.9 1.7.10 9999: video libraries for e17
 media-libs/esdl 1.0.1 1.2: Erlang bindings for the SDL library
-media-libs/ethumb 1.7.8 1.7.9: Enlightenment thumbnailing library (meant to replace epsilon)
-media-libs/evas 1.7.8 1.7.9 1.7.10 9999: hardware-accelerated retained canvas API
 media-libs/exempi 2.2.0 2.2.1: Exempi is a port of the Adobe XMP SDK to work on UNIX
 media-libs/exiftool 10.10 10.11 10.12 10.13: Read and write meta information in image, audio and video files
 media-libs/faac 1.28-r3 1.28-r4: Free MPEG-4 audio codecs by AudioCoding.com
@@ -12309,7 +12298,7 @@ media-libs/icclib 2.14: Library for reading and writing ICC color profile files
 media-libs/id3lib 3.8.3-r8: Id3 library for C/C++
 media-libs/ilmbase 1.0.2 2.0.1-r1 2.1.0 2.2.0: OpenEXR ILM Base libraries
 media-libs/imlib 1.9.15-r4: Image loading and rendering library
-media-libs/imlib2 1.4.6-r2 1.4.7 9999: Version 2 of an advanced replacement library for libraries like libXpm
+media-libs/imlib2 1.4.7 1.4.8 9999: Version 2 of an advanced replacement library for libraries like libXpm
 media-libs/iulib 0.3 0.4 0.4-r1: easy-to-use image and video I/O functions
 media-libs/jasper 1.900.1-r9: software-based implementation of the codec specified in the JPEG-2000 Part-1 standard
 media-libs/jbig2dec 0.11-r1: A decoder implementation of the JBIG2 image compression format
@@ -12724,7 +12713,7 @@ media-plugins/gst-plugins-ximagesrc 0.10.31-r1 0.10.31-r2 1.4.5 1.6.1 1.6.2 1.6.
 media-plugins/gst-plugins-xvid 0.10.23-r1: GStreamer plugin for XviD (MPEG-4) video encoding/decoding support
 media-plugins/gst-plugins-xvideo 0.10.36-r1: plugin for gstreamer
 media-plugins/hexter 1.0.2 1.0.3: Yamaha DX7 modeling DSSI plugin
-media-plugins/imlib2_loaders 1.4.7 9999: image loader plugins for Imlib 2
+media-plugins/imlib2_loaders 1.4.7 1.4.8 9999: image loader plugins for Imlib 2
 media-plugins/ir_lv2 1.3 1.3.2: LV2 convolver plugin especially for creating reverb effects
 media-plugins/kipi-plugins 4.4.0 4.12.0 4.14.0: Plugins for the KDE Image Plugin Interface
 media-plugins/kodi-pvr-hts 16_p20160220 16.9999: Tvheadend Live TV and Radio PVR client addon for Kodi
@@ -16582,7 +16571,7 @@ sys-apps/usbredir 0.7 0.7.1 9999: A simple TCP daemon and set of libraries for t
 sys-apps/usbutils 007 008 008-r1: USB enumeration utilities
 sys-apps/usermode-utilities 20070815-r3: Tools for use with Usermode Linux virtual machines
 sys-apps/utempter 0.5.5.6: App that allows non-privileged apps to write utmp (login) info
-sys-apps/util-linux 2.24.1-r3 2.24.2 2.25.2-r2 2.26.2 2.27 2.27.1 9999: Various useful Linux utilities
+sys-apps/util-linux 2.26.2 2.27.1 9999: Various useful Linux utilities
 sys-apps/v86d 0.1.10: A daemon to run x86 code in an emulated environment
 sys-apps/vbetool 1.1: Run real-mode video BIOS code to alter hardware state (i.e. reinitialize video card)
 sys-apps/watchdog 5.14 5.15: A software watchdog and /dev/watchdog daemon
@@ -18780,7 +18769,7 @@ x11-wm/cwm 5.1 5.1_p20130728 5.5 5.6 9999: OpenBSD fork of calmwm, a clean and l
 x11-wm/dwm 6.0 6.1: a dynamic window manager for X11
 x11-wm/echinus 0.4.9: A window manager for X in the spirit of dwm
 x11-wm/emerald 0.8.8: Emerald Window Decorator
-x11-wm/enlightenment 0.16.9999 0.17.9999 0.18.8 0.19.10 0.19.12 0.20.1 0.20.2 0.20.5 1.0.11 1.0.17: Enlightenment Window Manager (e16)
+x11-wm/enlightenment 0.16.9999 0.17.9999 0.19.12 0.20.1 0.20.2 0.20.5 0.20.6 1.0.17: Enlightenment Window Manager (e16)
 x11-wm/evilwm 1.0.1 1.1.0 1.1.1: A minimalist, no frills window manager for X
 x11-wm/fluxbox 1.3.6-r1 1.3.7-r2 9999: Fluxbox is an X11 window manager featuring tabs and an iconbar
 x11-wm/fvwm 2.6.5-r1: An extremely powerful ICCCM-compliant multiple virtual desktop window manager

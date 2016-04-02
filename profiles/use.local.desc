@@ -1960,15 +1960,6 @@ dev-libs/dbus-c++:glib - Use glib integration
 dev-libs/e_dbus:bluetooth - Enable interfacing with net-wireless/bluez DBus API
 dev-libs/e_dbus:ofono - Enable interfacing with net-misc/ofono DBus API
 dev-libs/e_dbus:test-binaries - Enable building of test binaries for enabled features
-dev-libs/ecore:ares - Enables support for asynchronous DNS using the net-dns/c-ares library
-dev-libs/ecore:evas - Provides easy to use canvas by gluing media-libs/evas and various input/output systems
-dev-libs/ecore:gles - Add gles support to the ecore-evas-wayland module
-dev-libs/ecore:glib - Enable dev-libs/glib eventloop support
-dev-libs/ecore:inotify - Enable support for inotify
-dev-libs/ecore:tslib - Build with tslib support for touchscreen devices
-dev-libs/ecore:wayland - Add support for dev-libs/wayland
-dev-libs/ecore:xprint - Enable X11 Xprint support
-dev-libs/eeze:utilities - Install some test utilities for mount/umount support in eeze
 dev-libs/efl:bmp - Enable WBMP image loader
 dev-libs/efl:drm - Enable DRM engine
 dev-libs/efl:eet - Enable Eet image loader
@@ -1990,13 +1981,6 @@ dev-libs/efl:tslib - Enable x11-libs/tslib for touchscreen events
 dev-libs/efl:valgrind - Enable usage of dev-util/valgrind in debug
 dev-libs/efl:webp - Enable WebP image loader
 dev-libs/efl:xim - Enable X Input Method
-dev-libs/eina:default-mempool - By default use system's allocator (pass-through) instead of custom choice for Eina's own data structures
-dev-libs/eina:mempool-buddy - Compile 'buddy' memory pool allocation
-dev-libs/eina:mempool-chained-pool - Compile 'chained-pool' memory pool allocation
-dev-libs/eina:mempool-fixed-bitmap - Compile 'fixed-bitmap' memory pool allocation
-dev-libs/eina:mempool-one-big - Compile 'one-big' memory pool allocation
-dev-libs/eina:mempool-pass-through - Compile 'pass-through' (system's malloc) memory pool allocation
-dev-libs/eina:valgrind - Compile in valgrind hints for smoother integration
 dev-libs/elfutils:lzma - Support automatic decompression of LZMA-compressed files and kernel images
 dev-libs/elfutils:threads - Build the libraries with thread safe support
 dev-libs/elfutils:utils - Install command-line utilities (all the eu-* programs)
@@ -3928,24 +3912,13 @@ media-libs/cogl:pango - Build cogl-pango library for x11-libs/pango integration
 media-libs/coin:simage - Texture loading via media-libs/simage library
 media-libs/devil:allegro - Add support for Allegro
 media-libs/devil:nvtt - Add support for dev-util/nvidia-texture-tools
-media-libs/edje:cache - Enable caching
 media-libs/elementary:quicklaunch - Enable quick-launch support
 media-libs/embree:imagemagick - Enables BMP, GIF, PNG, TGA, TIFF image codecs.
 media-libs/embree:ispc - Enables support for the Intel SPMD Program Compiler.
 media-libs/embree:jpeg - Enables JPEG image codecs.
 media-libs/embree:openexr - Enables OpenEXR image codecs.
 media-libs/embree:png - Enables PNG image codecs.
-media-libs/emotion:vlc - Enable support for the media-video/vlc player backend
 media-libs/esdl:image - Enable image support
-media-libs/ethumb:emotion - Add support for media-libs/emotion
-media-libs/evas:bmp - Support windows bitmap (bmp) image loader
-media-libs/evas:eet - Support dev-libs/eet
-media-libs/evas:gles - Enable gles flavor of gl instead of standard
-media-libs/evas:ico - Support windows icon (ico) image loader
-media-libs/evas:ppm - Support PPM image loader
-media-libs/evas:psd - Support PSD image loader
-media-libs/evas:tga - Support tga image loader
-media-libs/evas:wayland - Add support for dev-libs/wayland
 media-libs/faad2:digitalradio - Digital Radio Mondiale (warning: disables other decoders)
 media-libs/flickcurl:raptor - Use media-libs/raptor for proper RDF serializing
 media-libs/fontconfig-infinality:nyx - Additional style using croscorefonts
@@ -7303,7 +7276,6 @@ sys-apps/usb_modeswitch:jimtcl - Use dev-lang/jimtcl instead of dev-lang/tcl for
 sys-apps/usermode-utilities:fuse - Build tools (currently umlmount) needing fuse
 sys-apps/util-linux:caps - build setpriv helper (run programs with diff capabilities)
 sys-apps/util-linux:cramfs - build mkfs/fsck helpers for cramfs filesystems
-sys-apps/util-linux:cytune - build cytune for Cyclades-Z multiport serial cards
 sys-apps/util-linux:fdformat - build fdformat (floppy disk format)
 sys-apps/util-linux:kill - build the kill program
 sys-apps/util-linux:pam - build runuser helper
