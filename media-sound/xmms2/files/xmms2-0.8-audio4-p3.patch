@@ -1,0 +1,388 @@
+commit 4d0682030e20a8ed218f4ff924554f93d276d9ee
+Author: Anthony Garcia <lagg@lavabit.com>
+Date:   Thu Apr 22 16:59:37 2010 -0700
+
+    OTHER: Cleanup
+    
+    Re-enabled nellymoser (ffmpeg appears to be okay with it now)
+    
+    Fixed possible infinite loop in the code that handles the data (if any)
+    between the header and tag data.
+
+diff --git a/src/plugins/avcodec/avcodec.c b/src/plugins/avcodec/avcodec.c
+index 6c9fea8..5554056 100644
+--- a/src/plugins/avcodec/avcodec.c
++++ b/src/plugins/avcodec/avcodec.c
+@@ -90,7 +90,7 @@ xmms_avcodec_plugin_setup (xmms_xform_plugin_t *xform_plugin)
+ 	xmms_magic_add ("A/52 (AC-3) header", "audio/x-ffmpeg-ac3",
+ 	                "0 beshort 0x0b77", NULL);
+ 	xmms_magic_add ("DTS header", "audio/x-ffmpeg-dca",
+-	                "0 belong 0x7ffe8001", NULL); 
++	                "0 belong 0x7ffe8001", NULL);
+ 
+ 	xmms_xform_plugin_indata_add (xform_plugin,
+ 	                              XMMS_STREAM_TYPE_MIMETYPE,
+@@ -197,7 +197,8 @@ xmms_avcodec_init (xmms_xform_t *xform)
+ 		    !strcmp (data->codec_id, "adpcm_swf") ||
+ 		    !strcmp (data->codec_id, "pcm_s16le") ||
+ 		    !strcmp (data->codec_id, "ac3") ||
+-		    !strcmp (data->codec_id, "dca")) {
++		    !strcmp (data->codec_id, "dca") ||
++		    !strcmp (data->codec_id, "nellymoser")) {
+ 			/* number 1024 taken from libavformat raw.c RAW_PACKET_SIZE */
+ 			data->extradata = g_malloc0 (1024);
+ 			data->extradata_size = 1024;
+diff --git a/src/plugins/flv/flv.c b/src/plugins/flv/flv.c
+index 440010c..266fea6 100644
+--- a/src/plugins/flv/flv.c
++++ b/src/plugins/flv/flv.c
+@@ -25,29 +25,41 @@
+  * and other info, then data
+  */
+ #define FLV_TAG_SIZE 11
+-/* random constant */
+ #define FLV_CHUNK_SIZE 4096
+ 
+-/* let libavcodec take care of swapping sample bytes */
+-static const gchar *mime_pcm_s16le = "audio/x-ffmpeg-pcm_s16le";
+-static const gchar *fmt_mime[11] = {
+-	/* Supported when samples are 8 bit
+-	 * (otherwise there's no way of knowing endianness)
+-	 */
+-	"audio/pcm",
+-	"audio/x-ffmpeg-adpcm_swf",
+-	"audio/mpeg",
+-	/* if bps is 8 bit u8
+-	 * if bps is 16 bit sle16
+-	 */
+-	"audio/pcm",
+-	/* libavcodec can't handle nelly without dying yet */
+-	/*"audio/x-ffmpeg-nellymoser",
+-	"audio/x-ffmpeg-nellymoser",
+-	"audio/x-ffmpeg-nellymoser",*/
+-	"", "", "",
+-	"", "", "",
+-	"audio/aac"
++typedef enum {
++	/* Only u8 bit samples since
++	   there's no way to determine endianness
++	*/
++	CODEC_PCM_HOST,
++	CODEC_ADPCM,
++	CODEC_MP3,
++	/* 8 bps: unsigned
++	   16 bps: signed
++	*/
++	CODEC_PCM_LE,
++	CODEC_NELLYMOSER_16K,
++	CODEC_NELLYMOSER_8K,
++	/* Uses the sample rate in
++	   the tag as normal
++	*/
++	CODEC_NELLYMOSER,
++	CODEC_AAC = 10
++} xmms_flv_codec_id;
++
++struct xmms_flv_codec_table {
++	xmms_flv_codec_id id;
++	const gchar *mime;
++} static flv_codecs[] = {
++	{CODEC_PCM_HOST, "audio/pcm"},
++	{CODEC_ADPCM, "audio/x-ffmpeg-adpcm_swf"},
++	{CODEC_MP3, "audio/mpeg"},
++	/* Will be audio/x-ffmpeg-pcm_s16le if bps is 16 */
++	{CODEC_PCM_LE, "audio/pcm"},
++	{CODEC_NELLYMOSER_16K, "audio/x-ffmpeg-nellymoser"},
++	{CODEC_NELLYMOSER_8K, "audio/x-ffmpeg-nellymoser"},
++	{CODEC_NELLYMOSER, "audio/x-ffmpeg-nellymoser"},
++	{CODEC_AAC, "audio/aac"}
+ };
+ 
+ typedef struct {
+@@ -111,23 +123,26 @@ static gboolean
+ xmms_flv_init (xmms_xform_t *xform)
+ {
+ 	xmms_sample_format_t bps;
+-	gint readret;
++	gint readret, i;
+ 	guint8 channels, flags, format;
+-	guint8 header[FLV_TAG_SIZE + 5];
+-	const gchar *mime;
++	guint8 header[FLV_TAG_SIZE + 1];
+ 	guint32 dataoffset, samplerate;
+ 	xmms_error_t err;
+ 	xmms_flv_data_t *flvdata;
++	struct xmms_flv_codec_table *codec = NULL;
++
++	flvdata = g_new0 (xmms_flv_data_t, 1);
++	xmms_xform_private_data_set (xform, flvdata);
+ 
+ 	readret = xmms_xform_read (xform, header, FLV_HDR_SIZE, &err);
+ 	if (readret != FLV_HDR_SIZE) {
+ 		xmms_log_error ("Header read error");
+-		return FALSE;
++		goto init_err;
+ 	}
+ 
+ 	if ((header[4] & HAS_AUDIO) != HAS_AUDIO) {
+ 		xmms_log_error ("FLV has no audio stream");
+-		return FALSE;
++		goto init_err;
+ 	}
+ 
+ 	dataoffset = get_be32 (&header[5]) - FLV_HDR_SIZE;
+@@ -140,7 +155,7 @@ xmms_flv_init (xmms_xform_t *xform)
+ 		                           dataoffset : FLV_HDR_SIZE, &err);
+ 		if (readret <= 0) {
+ 			xmms_log_error ("Error reading header:tag body gap");
+-			return FALSE;
++			goto init_err;
+ 		}
+ 
+ 		dataoffset -= readret;
+@@ -148,86 +163,99 @@ xmms_flv_init (xmms_xform_t *xform)
+ 
+ 	if (next_audio_tag (xform) <= 0) {
+ 		xmms_log_error ("Can't find first audio tag");
+-		return FALSE;
++		goto init_err;
+ 	}
+ 
+-	if (xmms_xform_peek (xform, header, FLV_TAG_SIZE + 5, &err) < FLV_TAG_SIZE + 5) {
++	if (xmms_xform_read (xform, header, FLV_TAG_SIZE + 1, &err) < FLV_TAG_SIZE + 1) {
+ 		xmms_log_error ("Can't read first audio tag");
+-		return FALSE;
++		goto init_err;
+ 	}
+ 
+-	flags = header[FLV_TAG_SIZE + 4];
++	flags = header[11];
+ 	XMMS_DBG ("Audio flags: %X", flags);
+ 
+-	switch (flags&12) {
+-		case 0: samplerate = 5512; break;
+-		case 4: samplerate = 11025; break;
+-		case 8: samplerate = 22050; break;
+-		case 12: samplerate = 44100; break;
+-		default: samplerate = 8000; break;
++	format = flags >> 4;
++	for (i = 0; i < G_N_ELEMENTS (flv_codecs); i++) {
++		if (flv_codecs[i].id == format) {
++			codec = &flv_codecs[i];
++			break;
++		}
+ 	}
+ 
+-	if (flags&2) {
+-		bps = XMMS_SAMPLE_FORMAT_S16;
++	if (flags & 1) {
++		channels = 2;
+ 	} else {
+-		bps = XMMS_SAMPLE_FORMAT_U8;
++		channels = 1;
+ 	}
+ 
+-	if (flags&1) {
+-		channels = 2;
++	if (flags & 2) {
++		bps = XMMS_SAMPLE_FORMAT_S16;
+ 	} else {
+-		channels = 1;
++		bps = XMMS_SAMPLE_FORMAT_U8;
+ 	}
+ 
+-	format = flags >> 4;
+-	mime = (format <= 10)? fmt_mime[format] : NULL;
+-	switch (format) {
+-		case 0:
+-			/* If the flv has an HE PCM audio stream, the
+-			 * samples must be unsigned and 8 bits long
+-			 */
+-			if (bps != XMMS_SAMPLE_FORMAT_U8) {
+-				xmms_log_error ("Only u8 HE PCM is supported");
+-				return FALSE;
+-			}
+-			break;
+-		case 3:
+-			if (bps == XMMS_SAMPLE_FORMAT_S16) {
+-				mime = mime_pcm_s16le;
+-			}
+-			break;
++	switch ((flags & 12) >> 2) {
++		case 0: samplerate = 5512; break;
++		case 1: samplerate = 11025; break;
++		case 2: samplerate = 22050; break;
++		case 3: samplerate = 44100; break;
++		default: samplerate = 8000; break;
+ 	}
+ 
+-	if (mime && *mime) {
+-		flvdata = g_new0 (xmms_flv_data_t, 1);
++	if (codec) {
++		switch (codec->id) {
++			case CODEC_PCM_HOST:
++				if (bps != XMMS_SAMPLE_FORMAT_U8) {
++					xmms_log_error ("Only u8 HE PCM is supported");
++					goto init_err;
++				}
++				break;
++			case CODEC_PCM_LE:
++				if (bps == XMMS_SAMPLE_FORMAT_S16) {
++					codec->mime = "audio/x-ffmpeg-pcm_s16le";
++				}
++				break;
++			case CODEC_NELLYMOSER_16K:
++				samplerate = 16000;
++				break;
++			case CODEC_NELLYMOSER_8K:
++				samplerate = 8000;
++				break;
++			default:
++				break;
++		}
++
+ 		flvdata->format = format;
++		flvdata->last_datasize = get_be24 (&header[1]) - 1;
+ 
+ 		XMMS_DBG ("Rate: %d, bps: %d, channels: %d", samplerate,
+ 		          bps, channels);
+ 
+-		xmms_xform_private_data_set (xform, flvdata);
+ 		xmms_xform_outdata_type_add (xform,
+ 		                             XMMS_STREAM_TYPE_MIMETYPE,
+-					     mime,
+-					     XMMS_STREAM_TYPE_FMT_SAMPLERATE,
+-					     samplerate,
+-					     XMMS_STREAM_TYPE_FMT_FORMAT,
+-					     bps,
+-					     XMMS_STREAM_TYPE_FMT_CHANNELS,
+-					     channels,
+-					     XMMS_STREAM_TYPE_END);
++		                             codec->mime,
++		                             XMMS_STREAM_TYPE_FMT_SAMPLERATE,
++		                             samplerate,
++		                             XMMS_STREAM_TYPE_FMT_FORMAT,
++		                             bps,
++		                             XMMS_STREAM_TYPE_FMT_CHANNELS,
++		                             channels,
++		                             XMMS_STREAM_TYPE_END);
+ 		return TRUE;
+ 	} else {
+ 		xmms_log_error ("Unsupported audio format");
+-		return FALSE;
+ 	}
++
++init_err:
++	g_free (flvdata);
++	return FALSE;
+ }
+ 
+ static gint
+ xmms_flv_read (xmms_xform_t *xform, xmms_sample_t *buf, gint len, xmms_error_t *err)
+ {
+-	gint ret = 0, thismuch = FLV_TAG_SIZE + 5;
+-	guint8 header[FLV_TAG_SIZE + 6], gap = 1;
++	gint ret = 0, thismuch = FLV_TAG_SIZE + 1;
++	guint8 header[FLV_TAG_SIZE + 1];
+ 	xmms_flv_data_t *data = NULL;
+ 
+ 	data = xmms_xform_private_data_get (xform);
+@@ -236,12 +264,8 @@ xmms_flv_read (xmms_xform_t *xform, xmms_sample_t *buf, gint len, xmms_error_t *
+ 		xmms_xform_auxdata_barrier (xform);
+ 		ret = next_audio_tag (xform);
+ 		if (ret > 0) {
+-			if (data->format == 10) {
+-				thismuch++;
+-				gap++;
+-			}
+ 			if (xmms_xform_read (xform, header, thismuch, err) == thismuch) {
+-				data->last_datasize = get_be24 (&header[5]) - gap;
++				data->last_datasize = get_be24 (&header[1]) - 1;
+ 			} else {
+ 				xmms_log_error ("Need %d bytes", thismuch);
+ 				return -1;
+@@ -280,40 +304,51 @@ xmms_flv_destroy (xmms_xform_t *xform)
+ static gint
+ next_audio_tag (xmms_xform_t *xform)
+ {
+-	guint8 header[FLV_TAG_SIZE + 4];
++	guint8 header[FLV_TAG_SIZE];
+ 	guint8 dumb[FLV_CHUNK_SIZE];
+ 	gint ret = 0;
+ 	xmms_error_t err;
+-	guint32 datasize = 0;
++	xmms_flv_data_t *data;
++
++	data = xmms_xform_private_data_get (xform);
+ 
+ 	do {
+-		/* there's a last 4 bytes at the end of an FLV giving the final
+-		 * tag's size, this isn't an error
+-		 */
+-		ret = xmms_xform_peek (xform, header, FLV_TAG_SIZE + 4, &err);
+-		if ((ret < FLV_TAG_SIZE) && (ret > -1)) {
+-			ret = 0;
+-			break;
+-		} else if (ret == -1) {
+-			xmms_log_error ("%s", xmms_error_message_get (&err));
+-			break;
+-		}
++		/* If > 0 assume we're in the middle of a tag's data */
++		if (!data->last_datasize) {
++			/* There are 4 bytes before an actual tag giving
++			   the previous tag's size. The first size in an
++			   flv is always 0.
++			*/
++			if (xmms_xform_read (xform, header, 4, &err) != 4) {
++				xmms_log_error ("Couldn't read last tag size");
++				return -1;
++			}
+ 
+-		if (header[4] == 8) {
+-			/* woo audio tag! */
+-			break;
+-		}
++			ret = xmms_xform_peek (xform, header, FLV_TAG_SIZE, &err);
++			if ((ret < FLV_TAG_SIZE) && (ret > -1)) {
++				return 0;
++			} else if (ret == -1) {
++				xmms_log_error ("%s", xmms_error_message_get (&err));
++				return ret;
++			}
++
++			if (header[0] == 8) {
++				/* woo audio tag! */
++				break;
++			}
+ 
+-		ret = xmms_xform_read (xform, header, FLV_TAG_SIZE + 4, &err);
+-		if (ret <= 0) { return ret; }
++			if ((ret = xmms_xform_read (xform, header, FLV_TAG_SIZE, &err)) <= 0) {
++				return ret;
++			}
+ 
+-		datasize = get_be24 (&header[5]);
++			data->last_datasize = get_be24 (&header[1]);
++		}
+ 
+-		while (datasize) {
++		while (data->last_datasize) {
+ 			ret = xmms_xform_read (xform, dumb,
+-			                         (datasize < FLV_CHUNK_SIZE) ?
+-			                         datasize : FLV_CHUNK_SIZE,
+-			                         &err);
++			                       (data->last_datasize < FLV_CHUNK_SIZE) ?
++			                       data->last_datasize : FLV_CHUNK_SIZE,
++			                       &err);
+ 			if (ret == 0) {
+ 				xmms_log_error ("Data field short!");
+ 				break;
+@@ -323,7 +358,7 @@ next_audio_tag (xmms_xform_t *xform)
+ 				break;
+ 			}
+ 
+-			datasize -= ret;
++			data->last_datasize -= ret;
+ 		}
+ 
+ 	} while (ret);

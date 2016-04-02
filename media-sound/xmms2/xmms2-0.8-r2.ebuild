@@ -116,6 +116,13 @@ src_prepare() {
 	epatch "${FILESDIR}/${P}"-ffmpeg2.patch #536232
 	epatch "${FILESDIR}/${P}"-cpython.patch
 	epatch "${FILESDIR}/${P}"-modpug.patch #536046
+	epatch "${FILESDIR}/${P}"-audio4-p1.patch
+	epatch "${FILESDIR}/${P}"-audio4-p2.patch
+	epatch "${FILESDIR}/${P}"-audio4-p3.patch
+	epatch "${FILESDIR}/${P}"-audio4-p4.patch
+	epatch "${FILESDIR}/${P}"-audio4-p5.patch
+	epatch "${FILESDIR}/${P}"-audio4-p6.patch
+	epatch "${FILESDIR}/${P}"-audio4-p7.patch
 
 	if has_version dev-libs/libcdio-paranoia; then
 		sed -i -e 's:cdio/cdda.h:cdio/paranoia/cdda.h:' src/plugins/cdda/cdda.c || die
