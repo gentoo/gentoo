@@ -18,7 +18,7 @@ LICENSE="QPL-1.0 LGPL-2"
 # so here we go with the subslot.
 SLOT="0/${PV}"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux"
-IUSE="emacs latex ncurses +ocamlopt X xemacs"
+IUSE="emacs flambda latex ncurses +ocamlopt X xemacs"
 
 RDEPEND="
 	ncurses? ( sys-libs/ncurses:0= )
@@ -60,6 +60,7 @@ src_configure() {
 
 	use ncurses || myconf="${myconf} -no-curses"
 	use X || myconf="${myconf} -no-graph"
+	use flambda && myconf="${myconf} -flambda"
 
 	# ocaml uses a home-brewn configure script, preventing it to use econf.
 	RAW_LDFLAGS="$(raw-ldflags)" ./configure \
