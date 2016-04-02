@@ -13,7 +13,7 @@ DESCRIPTION="Class to easily create a mail server"
 # Some files Artistic-2
 LICENSE="LGPL-2.1+ Artistic-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc ~x86"
 IUSE="test"
 
 RDEPEND="
