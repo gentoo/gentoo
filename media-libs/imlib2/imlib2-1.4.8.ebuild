@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="4"
+EAPI="5"
 
 EGIT_SUB_PROJECT="legacy"
 EGIT_URI_APPEND=${PN}
@@ -11,17 +11,12 @@ if [[ ${PV} != "9999" ]] ; then
 	EKEY_STATE="snap"
 fi
 
-# Select automake version explicitly to avoid regenerating all autotools.
-# This is a minor optimization.
-WANT_AUTOMAKE="1.13"
-inherit autotools enlightenment toolchain-funcs multilib-minimal
+inherit enlightenment toolchain-funcs multilib-minimal
 
 DESCRIPTION="Version 2 of an advanced replacement library for libraries like libXpm"
 HOMEPAGE="https://www.enlightenment.org/"
 
-KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x64-solaris ~x86-solaris"
-
-IUSE="bzip2 gif jpeg cpu_flags_x86_mmx mp3 png static-libs tiff X zlib"
+IUSE="bzip2 gif jpeg cpu_flags_x86_mmx cpu_flags_x86_sse2 mp3 png static-libs tiff X zlib"
 
 RDEPEND="=media-libs/freetype-2*[${MULTILIB_USEDEP}]
 	bzip2? ( >=app-arch/bzip2-1.0.6-r4[${MULTILIB_USEDEP}] )
@@ -42,19 +37,10 @@ DEPEND="${RDEPEND}
 		>=x11-proto/xproto-7.0.24[${MULTILIB_USEDEP}]
 	)"
 
-src_prepare() {
-	epatch "${FILESDIR}"/${PN}-1.4.5-no-my-libs.patch #497894
-	epatch "${FILESDIR}"/${PN}-1.4.5-giflib-5.patch #457634
-	epatch "${FILESDIR}"/${P}-out-of-source-build.patch #510522
-	epatch "${FILESDIR}"/${P}-no-x.patch
-
-	eautomake
-}
-
 multilib_src_configure() {
-	# imlib2 has diff configure options for x86/amd64 mmx
+	# imlib2 has diff configure options for x86/amd64 assembly
 	if [[ $(tc-arch) == amd64 ]]; then
-		E_ECONF+=( $(use_enable cpu_flags_x86_mmx amd64) --disable-mmx )
+		E_ECONF+=( $(use_enable cpu_flags_x86_sse2 amd64) --disable-mmx )
 	else
 		E_ECONF+=( --disable-amd64 $(use_enable cpu_flags_x86_mmx mmx) )
 	fi

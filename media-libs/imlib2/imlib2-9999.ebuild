@@ -1,14 +1,14 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="4"
+EAPI="5"
 
 EGIT_SUB_PROJECT="legacy"
 EGIT_URI_APPEND=${PN}
 
 if [[ ${PV} != "9999" ]] ; then
-	EKEY_STATE="stable"
+	EKEY_STATE="snap"
 fi
 
 inherit enlightenment toolchain-funcs multilib-minimal
