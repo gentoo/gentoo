@@ -118,8 +118,12 @@ python_install() {
 
 python_install_all() {
 	use doc && local HTML_DOCS=( docs/build/html/. )
-	use examples && local EXAMPLES=( examples/. )
 	distutils-r1_python_install_all
+	if use examples; then
+		insinto /usr/share/doc/${PF}/examples
+		doins -r examples/.
+		docompress -x /usr/share/doc/${PF}/examples
+	fi
 }
 
 pkg_postinst() {
