@@ -17,19 +17,19 @@ SRC_URI="mirror://sourceforge/jexcelapi/${MY_P}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 CDEPEND="dev-java/log4j:0"
 
-DEPEND="
-	${CDEPEND}
-	>=virtual/jdk-1.6"
-
 RDEPEND="
 	${CDEPEND}
-	app-arch/unzip
 	>=virtual/jre-1.6"
+
+DEPEND="
+	${CDEPEND}
+	>=virtual/jdk-1.6
+	source? ( app-arch/zip )"
 
 S="${WORKDIR}/${PN}"
 
