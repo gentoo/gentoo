@@ -24,6 +24,7 @@ RDEPEND="dev-libs/elfutils
 	selinux? ( sys-libs/libselinux )
 	unwind? ( sys-libs/libunwind )"
 DEPEND="${RDEPEND}
+	sys-libs/binutils-libs
 	test? ( dev-util/dejagnu )"
 
 S=${WORKDIR}/${PN}-${LTRACE_V}
