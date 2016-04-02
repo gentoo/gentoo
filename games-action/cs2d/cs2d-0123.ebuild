@@ -6,7 +6,7 @@ EAPI=5
 
 inherit eutils games
 
-DESCRIPTION="Counter-Strike 2D is freeware clone of Counter-Strike with some added features in gameplay"
+DESCRIPTION="A freeware clone of Counter-Strike with some added features in gameplay"
 HOMEPAGE="http://www.cs2d.com/"
 SRC_URI="https://dev.gentoo.org/~maksbotan/cs2d/cs2d_${PV}_linux.zip
 	https://dev.gentoo.org/~maksbotan/cs2d/cs2d_${PV}_win.zip
