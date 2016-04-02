@@ -277,6 +277,7 @@ dev-java/jcs
 # Force people to migrate to the new combined libraries:
 # media-libs/elementary & dev-libs/efl. #571796
 app-benchmarks/expedite
+dev-games/etrophy
 dev-libs/ecore
 dev-libs/edbus
 dev-libs/eet
@@ -291,6 +292,7 @@ media-libs/edje
 media-libs/emotion
 media-libs/ethumb
 media-libs/evas
+x11-plugins/echievements
 
 # Sergei Trofimovich <slyfox@gentoo.org> (19 Jan 2016)
 # Mask broken package. Exposes badly designed API
