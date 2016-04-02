@@ -10897,7 +10897,7 @@ gnome-extra/gnome-shell-extensions-topicons 26 28: Shows legacy tray icons on to
 gnome-extra/gnome-shell-frippery 0.10.3 3.18.1 3.18.2: Unofficial extension pack providing GNOME 2-like features for GNOME 3
 gnome-extra/gnome-software 3.18.3: Gnome install & update software
 gnome-extra/gnome-system-monitor 3.16.0 3.18.2: The Gnome System Monitor
-gnome-extra/gnome-tweak-tool 3.16.2 3.18.1 3.18.1-r1: Tool to customize GNOME 3 options
+gnome-extra/gnome-tweak-tool 3.18.1-r1 3.18.1-r2: Tool to customize GNOME 3 options
 gnome-extra/gnome-user-docs 3.16.1 3.18.1: GNOME end user documentation
 gnome-extra/gnome-user-share 3.14.2 3.18.0: Personal file sharing for the GNOME desktop
 gnome-extra/gnome-utils 3.8.0: Meta package for utilities for the GNOME desktop
