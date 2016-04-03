@@ -6,6 +6,7 @@
     <name>Pacho Ramos</name>
   </maintainer>
   <use>
+    <flag name="experimental">Build experimental plugins</flag>
     <flag name="extra-tools">Install tools that upstream doesn't install on
     purpose by default. All this tools shouldn't be used. Then, please
     notify upstream about you still need them to let them know the
