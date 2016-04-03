@@ -6,7 +6,7 @@ EAPI="5"
 CMAKE_MAKEFILE_GENERATOR="ninja"
 GCONF_DEBUG="no"
 PYTHON_COMPAT=( python2_7 )
-USE_RUBY="ruby20 ruby21 ruby22"
+USE_RUBY="ruby20 ruby21 ruby22 ruby23"
 
 inherit check-reqs cmake-utils eutils flag-o-matic gnome2 pax-utils python-any-r1 ruby-single toolchain-funcs versionator virtualx
 
@@ -22,6 +22,7 @@ KEYWORDS="~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~x86-f
 IUSE="aqua coverage doc +egl +geoloc gles2 gnome-keyring +gstreamer +introspection +jit nsplugin +opengl spell wayland +webgl X"
 # seccomp
 
+# webgl needs gstreamer, bug #560612
 REQUIRED_USE="
 	geoloc? ( introspection )
 	gles2? ( egl )
@@ -29,6 +30,7 @@ REQUIRED_USE="
 	nsplugin? ( X )
 	webgl? ( ^^ ( gles2 opengl ) )
 	!webgl? ( ?? ( gles2 opengl ) )
+	webgl? ( gstreamer )
 	|| ( aqua wayland X )
 "
 
@@ -38,8 +40,7 @@ RESTRICT="test"
 
 # use sqlite, svg by default
 # Aqua support in gtk3 is untested
-# gtk2 is needed for plugin process support, should we add a USE flag to configure this?
-# Dependencies found at Sources/cmake/OptionsGTK.cmake
+# Dependencies found at Source/cmake/OptionsGTK.cmake
 RDEPEND="
 	dev-db/sqlite:3=
 	>=dev-libs/glib-2.36:2
@@ -197,7 +198,9 @@ src_configure() {
 
 	local ruby_interpreter=""
 
-	if has_version "virtual/rubygems[ruby_targets_ruby22]"; then
+	if has_version "virtual/rubygems[ruby_targets_ruby23]"; then
+		ruby_interpreter="-DRUBY_EXECUTABLE=$(type -P ruby23)"
+	elif has_version "virtual/rubygems[ruby_targets_ruby22]"; then
 		ruby_interpreter="-DRUBY_EXECUTABLE=$(type -P ruby22)"
 	elif has_version "virtual/rubygems[ruby_targets_ruby21]"; then
 		ruby_interpreter="-DRUBY_EXECUTABLE=$(type -P ruby21)"
@@ -209,6 +212,16 @@ src_configure() {
 	# should somehow let user select between them?
 	#
 	# FTL_JIT requires llvm
+	#
+	# opengl needs to be explicetly handled, bug #576634
+
+	local opengl_enabled
+	if use opengl || use gles2; then
+		opengl_enabled=ON
+	else
+		opengl_enabled=OFF
+	fi
+
 	local mycmakeargs=(
 		$(cmake-utils_use_enable aqua QUARTZ_TARGET)
 		$(cmake-utils_use_enable test API_TESTS)
@@ -228,6 +241,7 @@ src_configure() {
 		$(cmake-utils_use_find_package egl EGL)
 		$(cmake-utils_use_find_package opengl OpenGL)
 		$(cmake-utils_use_enable X X11_TARGET)
+		-DENABLE_OPENGL=${opengl_enabled}
 		-DCMAKE_BUILD_TYPE=Release
 		-DPORT=GTK
 		${ruby_interpreter}

@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -13,10 +13,10 @@ DESCRIPTION="Building, finding and using wxWidgets binaries"
 
 SLOT="0"
 KEYWORDS="amd64 ~ia64 x86"
-IUSE="gstreamer test"
+IUSE="gstreamer opengl test"
 
 RDEPEND="
-	>=x11-libs/wxGTK-3:3.0[X,tiff,gstreamer=]
+	>=x11-libs/wxGTK-3:3.0[gstreamer=,opengl=,tiff,X]
 	>=dev-perl/Module-Pluggable-2.600.0
 "
 DEPEND="${RDEPEND}
