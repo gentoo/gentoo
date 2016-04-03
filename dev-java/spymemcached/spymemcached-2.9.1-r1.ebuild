@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -16,11 +16,8 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64 x86"
 
-IUSE="spring"
-
 CDEPEND="dev-java/log4j:0
-	dev-java/slf4j-api:0
-	spring? ( dev-java/spring-beans:3.2 )"
+	dev-java/slf4j-api:0"
 
 DEPEND=">=virtual/jdk-1.5
 	${CDEPEND}"
@@ -33,9 +30,5 @@ S="${WORKDIR}"
 JAVA_GENTOO_CLASSPATH="log4j,slf4j-api"
 
 java_prepare() {
-	if use spring; then
-		JAVA_GENTOO_CLASSPATH+=",spring-beans-3.2"
-	else
-		rm net/spy/memcached/spring/MemcachedClientFactoryBean.java || die
-	fi
+	rm net/spy/memcached/spring/MemcachedClientFactoryBean.java || die
 }
