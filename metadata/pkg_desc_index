@@ -69,7 +69,7 @@ app-admin/chrpath 0.13-r2: chrpath can modify the rpath and runpath of ELF execu
 app-admin/clog 1.1.0: A colorized log tail utility
 app-admin/clsync 0.4.1: Live sync tool based on inotify, written in GNU C
 app-admin/clustershell 1.6 1.6-r1: Python framework for efficient cluster administration
-app-admin/collectd 5.5.1-r2: Collects system statistics and provides mechanisms to store the values
+app-admin/collectd 5.5.1-r3: Collects system statistics and provides mechanisms to store the values
 app-admin/conky 1.9.0-r3 1.10.1: An advanced, highly configurable system monitor for X
 app-admin/conkyforecast 2.24-r1: Conky weather forecast script with support for language files
 app-admin/conserver 8.1.18 8.1.18-r1: Serial Console Manager
@@ -3940,7 +3940,7 @@ dev-java/jarbundler 1.8.1-r2 2.3.1: Jar Bundler Ant Task
 dev-java/jargs 1.0: Command-line argument parsing library in Java
 dev-java/jarjar 1.4: Tool for repackaging third-party jars
 dev-java/java-apicheck 0_p20150907: Command line tool to check Java packages for API compatibility
-dev-java/java-config 2.2.0 2.2.0-r3: Java environment configuration query tool
+dev-java/java-config 2.2.0-r3: Java environment configuration query tool
 dev-java/java-config-wrapper 0.16 0.16-r1: Wrapper for java-config
 dev-java/java-dep-check 0.3-r1: Java Dependency checker
 dev-java/java-getopt 1.0.14: Java command line option parser
@@ -8716,7 +8716,7 @@ dev-ruby/compass 1.0.1-r1 1.0.3-r1: Compass Stylesheet Authoring Framework
 dev-ruby/compass-core 1.0.1 1.0.3-r1: Compass Stylesheet Authoring Framework
 dev-ruby/compass-import-once 1.0.5: Speed up your Sass compilation by making @import only import each file once
 dev-ruby/concurrent-ruby 1.0.0 1.0.1: Modern concurrency tools including agents, futures, promises, thread pools, more
-dev-ruby/configliere 0.4.18-r1 0.4.22: Settings manager for Ruby scripts
+dev-ruby/configliere 0.4.22: Settings manager for Ruby scripts
 dev-ruby/connection_pool 2.2.0: Generic connection pooling for Ruby
 dev-ruby/contracts 0.12.0 0.13.0: provides contracts for Ruby
 dev-ruby/coolio 1.4.1 1.4.2: A high performance event framework for Ruby which uses the libev C library
@@ -12144,7 +12144,7 @@ media-gfx/pngtools 0.4-r2: A series of tools for the PNG image format
 media-gfx/pornview 0.2.2: Image viewer/manager with optional support for MPEG movies
 media-gfx/postr 0.13.1: Flickr uploader for GNOME
 media-gfx/potrace 1.10-r1 1.11 1.12 1.13: Transforming bitmaps into vector graphics
-media-gfx/povray 3.7.0.0: The Persistence of Vision Raytracer
+media-gfx/povray 3.7.0.0 3.7.0.0-r1: The Persistence of Vision Raytracer
 media-gfx/povtree 1.5-r1: Tree generator for POVray based on TOMTREE macro
 media-gfx/pqiv 2.2: Modern rewrite of Quick Image Viewer
 media-gfx/pqstego 0.0.1: Tools for Perturbed Quantization Steganography
