@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -10,7 +10,10 @@ MY_P="${P/_/-}"
 
 DESCRIPTION="Single process stack of various system monitors"
 HOMEPAGE="http://www.gkrellm.net/"
-SRC_URI="http://gkrellm.srcbox.net/${MY_P}.tar.bz2"
+SRC_URI="
+	http://gkrellm.srcbox.net/${MY_P}.tar.bz2
+	https://dev.gentoo.org/~jlec/distfiles/${P}-update_german_translation.patch.xz
+	"
 
 LICENSE="GPL-3"
 SLOT="2"
@@ -45,7 +48,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-fix_gtk_deprecation_warning.patch
 	"${FILESDIR}"/${P}-fix_copypaste_error.patch
 	"${FILESDIR}"/${P}-avoid_possible_busy_loop.patch
-	"${FILESDIR}"/${P}-update_german_translation.patch.xz
+	"${WORKDIR}"/${P}-update_german_translation.patch
 )
 
 S="${WORKDIR}/${MY_P}"
