@@ -1,9 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 WX_GTK_VER="3.0"
+CMAKE_MAKEFILE_GENERATOR=emake
 inherit cmake-utils wxwidgets flag-o-matic gnome2-utils fdo-mime games
 
 if [[ ${PV} == 9999 ]]; then
