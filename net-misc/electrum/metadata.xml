@@ -17,10 +17,6 @@
 		<email>emery@vfemail.net</email>
 		<name>Emery Hemingway</name>
 	</maintainer>
-	<maintainer type="project">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Proxy Maintainers</name>
-	</maintainer>
 	<use>
 		<flag name="cli">Enables the CLI interface</flag>
 		<flag name="cosign">Enable plugin to support multisig wallets between multiple Electrum clients</flag>
