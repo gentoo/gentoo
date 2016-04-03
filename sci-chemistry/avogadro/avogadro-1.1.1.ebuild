@@ -1,12 +1,12 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit cmake-utils eutils flag-o-matic python-single-r1
+inherit cmake-utils flag-o-matic python-single-r1
 
 DESCRIPTION="Advanced molecular editor that uses Qt4 and OpenGL"
 HOMEPAGE="http://avogadro.openmolecules.net/"
@@ -43,6 +43,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-no-strip.patch
 	"${FILESDIR}"/${P}-pkgconfig_eigen.patch
 	"${FILESDIR}"/${P}-openbabel.patch
+	"${FILESDIR}"/${P}-boost-join-moc.patch
 )
 
 pkg_setup() {
@@ -65,10 +66,10 @@ src_configure() {
 		-DENABLE_UPDATE_CHECKER=OFF
 		-DQT_MKSPECS_DIR="${EPREFIX}/usr/share/qt4/mkspecs"
 		-DQT_MKSPECS_RELATIVE=share/qt4/mkspecs
-		$(cmake-utils_use_enable glsl)
-		$(cmake-utils_use_enable test TESTS)
-		$(cmake-utils_use_with cpu_flags_x86_sse2 SSE2)
-		$(cmake-utils_use_enable python)
+		-DENABLE_glsl="$(usex glsl)"
+		-DENABLE_TESTS="$(usex test)"
+		-DWITH_SSE2="$(usex cpu_flags_x86_sse2)"
+		-DENABLE_python="$(usex python)"
 	)
 
 	cmake-utils_src_configure

@@ -253,4 +253,16 @@ pkg_postinst() {
 		elog "the following to your environment:"
 		elog " DBUS_SESSION_BUS_ADDRESS=\"launchd:env=DBUS_LAUNCHD_SESSION_BUS_SOCKET\""
 	fi
+
+	if use user-session; then
+		ewarn "You have enabled used-session, please note this can cause"
+		ewarn "bogus behaviors in several DBUS consumers due to	they"
+		ewarn "not being prepared for this dbus activation method yet"
+		ewarn
+		ewarn "Please take a look to the following link for understanding"
+		ewarn "the change:"
+		ewarn "https://lists.freedesktop.org/archives/systemd-devel/2015-January/027711.html"
+		ewarn "You can also take a look to the already known issues at:"
+		ewarn "https://bugs.gentoo.org/show_bug.cgi?id=576028"
+	fi
 }
