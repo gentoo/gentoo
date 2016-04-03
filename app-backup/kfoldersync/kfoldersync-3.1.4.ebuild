@@ -12,7 +12,7 @@ HOMEPAGE="http://kde-apps.org/content/show.php/KFolderSync?content=164092"
 SRC_URI="http://kde-apps.org/CONTENT/content-files/164092-${PN}-${PV}.tar.xz -> ${P}.tar.xz"
 
 LICENSE="GPL-2+"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm ~x86"
 IUSE=""
 
 RDEPEND="

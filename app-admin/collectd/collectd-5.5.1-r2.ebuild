@@ -195,7 +195,7 @@ collectd_linux_kernel_checks() {
 	collectd_plugin_kernel_linux battery ACPI_BATTERY warn
 
 	# cgroups.c: /sys/fs/cgroup/
-	collectd_plugin_kernel_linux cgroups CONFIG_CGROUPS warn
+	collectd_plugin_kernel_linux cgroups CGROUPS warn
 
 	# cpufreq.c: /sys/devices/system/cpu/cpu%d/cpufreq/
 	collectd_plugin_kernel_linux cpufreq SYSFS warn
