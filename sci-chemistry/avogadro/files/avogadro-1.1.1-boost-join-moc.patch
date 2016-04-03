@@ -1,0 +1,78 @@
+Add include guards to all boost includes, as qt's moc trips
+over nested BOOST_JOIN macros:
+* usr/include/boost/type_traits/detail/has_binary_operator.hp:50: Parse error at "BOOST_JOIN"
+* libavogadro/src/CMakeFiles/avogadro.dir/build.make:217: recipe for target 'libavogadro/src/moc_pythonengine_p.cxx' failed
+See also: https://bugs.gentoo.org/show_bug.cgi?id=578896
+
+--- avogadro-1.1.1/libavogadro/src/pythonengine_p.h
++++ avogadro-1.1.1/libavogadro/src/pythonengine_p.h
+@@ -27,7 +27,9 @@
+ 
+ #include <avogadro/global.h>
+ #include <avogadro/engine.h>
++#ifndef Q_MOC_RUN
+ #include <boost/python.hpp>
++#endif
+ 
+ namespace Avogadro {
+ 
+--- avogadro-1.1.1/libavogadro/src/pythonextension_p.h
++++ avogadro-1.1.1/libavogadro/src/pythonextension_p.h
+@@ -29,7 +29,9 @@
+ #include <avogadro/extension.h>
+ #include <avogadro/primitive.h>
+ #include <avogadro/glwidget.h>
++#ifndef Q_MOC_RUN
+ #include <boost/python.hpp>
++#endif
+ 
+ #include <QWidget>
+ #include <QList>
+--- avogadro-1.1.1/libavogadro/src/pythoninterpreter.h
++++ avogadro-1.1.1/libavogadro/src/pythoninterpreter.h
+@@ -26,7 +26,9 @@
+ #define PYTHONINTERPRETER_H
+ 
+ #include <avogadro/global.h>
++#ifndef Q_MOC_RUN
+ #include <boost/python.hpp>
++#endif
+ #include <avogadro/primitive.h>
+ #include <QString>
+ 
+--- avogadro-1.1.1/libavogadro/src/pythonscript.h
++++ avogadro-1.1.1/libavogadro/src/pythonscript.h
+@@ -27,7 +27,9 @@
+ #define PYTHONSCRIPT_H
+ 
+ #include <avogadro/global.h>
++#ifndef Q_MOC_RUN
+ #include <boost/python.hpp>
++#endif
+ 
+ #include "pythonerror.h"
+ 
+--- avogadro-1.1.1/libavogadro/src/pythonthread_p.h
++++ avogadro-1.1.1/libavogadro/src/pythonthread_p.h
+@@ -26,7 +26,9 @@
+ #define PYTHONTHREAD_H
+ 
+ #include <avogadro/global.h>
++#ifndef Q_MOC_RUN
+ #include <boost/python.hpp>
++#endif
+ 
+ namespace Avogadro {
+ 
+--- avogadro-1.1.1/libavogadro/src/pythontool_p.h
++++ avogadro-1.1.1/libavogadro/src/pythontool_p.h
+@@ -27,7 +27,9 @@
+ 
+ #include <avogadro/global.h>
+ #include <avogadro/tool.h>
++#ifndef Q_MOC_RUN
+ #include <boost/python.hpp>
++#endif
+ 
+ #include <QObject>
+ #include <QAction>
