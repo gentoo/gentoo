@@ -1,15 +1,15 @@
 DEFINED_PHASES=compile configure install prepare setup test unpack
-DEPEND=x11-libs/fox:1.6 >=x11-libs/fxscintilla-1.62-r1 dev-lang/swig ruby_targets_ruby19? ( test? ( dev-ruby/ruby-opengl[ruby_targets_ruby19] ) ) ruby_targets_ruby20? ( test? ( dev-ruby/ruby-opengl[ruby_targets_ruby20] ) ) ruby_targets_ruby19? ( doc? ( dev-ruby/rdoc[ruby_targets_ruby19] ) ) ruby_targets_ruby20? ( doc? ( dev-ruby/rdoc[ruby_targets_ruby20] ) ) test? ( !prefix? ( x11-base/xorg-server[xvfb] ) x11-apps/xhost ) ruby_targets_ruby19? ( dev-lang/ruby:1.9 ) ruby_targets_ruby20? ( dev-lang/ruby:2.0 ) ruby_targets_ruby19? ( test? ( dev-ruby/rake[ruby_targets_ruby19] ) ) ruby_targets_ruby20? ( test? ( dev-ruby/rake[ruby_targets_ruby20] ) ) ruby_targets_ruby19? ( virtual/rubygems[ruby_targets_ruby19] ) ruby_targets_ruby20? ( virtual/rubygems[ruby_targets_ruby20] ) test? ( ruby_targets_ruby19? ( virtual/rubygems[ruby_targets_ruby19] ) ruby_targets_ruby20? ( virtual/rubygems[ruby_targets_ruby20] ) )
+DEPEND=x11-libs/fox:1.6 >=x11-libs/fxscintilla-1.62-r1 dev-lang/swig ruby_targets_ruby20? ( test? ( dev-ruby/ruby-opengl[ruby_targets_ruby20] ) ) ruby_targets_ruby20? ( doc? ( dev-ruby/rdoc[ruby_targets_ruby20] ) ) test? ( !prefix? ( x11-base/xorg-server[xvfb] ) x11-apps/xhost ) ruby_targets_ruby20? ( dev-lang/ruby:2.0 ) ruby_targets_ruby20? ( test? ( dev-ruby/rake[ruby_targets_ruby20] ) ) ruby_targets_ruby20? ( virtual/rubygems[ruby_targets_ruby20] ) test? ( ruby_targets_ruby20? ( virtual/rubygems[ruby_targets_ruby20] ) )
 DESCRIPTION=Ruby language binding to the FOX GUI toolkit
 EAPI=5
 HOMEPAGE=http://www.fxruby.org/
-IUSE=examples doc test elibc_FreeBSD ruby_targets_ruby19 ruby_targets_ruby20 test test
+IUSE=examples doc test elibc_FreeBSD ruby_targets_ruby20 test test
 KEYWORDS=amd64 hppa ppc ppc64 x86 ~x86-fbsd
 LICENSE=LGPL-2.1
-RDEPEND=x11-libs/fox:1.6 >=x11-libs/fxscintilla-1.62-r1 ruby_targets_ruby19? ( dev-lang/ruby:1.9 ) ruby_targets_ruby20? ( dev-lang/ruby:2.0 ) ruby_targets_ruby19? ( virtual/rubygems[ruby_targets_ruby19] ) ruby_targets_ruby20? ( virtual/rubygems[ruby_targets_ruby20] )
-REQUIRED_USE=|| ( ruby_targets_ruby19 ruby_targets_ruby20 )
+RDEPEND=x11-libs/fox:1.6 >=x11-libs/fxscintilla-1.62-r1 ruby_targets_ruby20? ( dev-lang/ruby:2.0 ) ruby_targets_ruby20? ( virtual/rubygems[ruby_targets_ruby20] )
+REQUIRED_USE=|| ( ruby_targets_ruby20 )
 SLOT=1.6
 SRC_URI=mirror://rubygems/fxruby-1.6.29.gem
 _eclass_exported_funcs=pkg_setup:ruby-ng src_unpack:ruby-ng src_prepare:ruby-ng src_configure:ruby-ng src_compile:ruby-ng src_test:ruby-ng src_install:ruby-ng
 _eclasses_=eutils	9d81603248f2ba3ec59124320d123e5e	java-utils-2	4f0e83a2c108b9f3d74ecebf32e2f483	multilib	3972ca401cf7dbb430df9995f5d8d580	ruby-fakegem	836f858624840907bbb6ae6f2c881cb7	ruby-ng	3b6431b487e69b5070a45ea20d1c4c6c	ruby-utils	2f896785ed65442d7e84ab5f5eef3bd3	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	virtualx	86c9305a59b3e0459e7fbef3a5f30b96
-_md5_=20f0e44f0cded37b20f03bf07566724a
+_md5_=cdde9312250c39fbf1a7492cb806bee1

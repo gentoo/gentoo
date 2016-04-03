@@ -3265,6 +3265,7 @@ dev-haskell/dbus-core 0.9.3-r3: Low-level D-Bus protocol implementation
 dev-haskell/deepseq-generics 0.1.1.2: GHC.Generics-based Control.DeepSeq.rnf implementation
 dev-haskell/diff 0.1.3 0.3.0 0.3.2: O(ND) diff algorithm in haskell
 dev-haskell/digest 0.0.1.2: Various cryptographic hashes for bytestrings; CRC32 and Adler32 for now
+dev-haskell/disk-free-space 0.1.0.1: Retrieve information about disk space usage
 dev-haskell/distributive 0.3.2 0.4.4: Distributive functors -- Dual to Traversable
 dev-haskell/djinn-ghc 0.0.2.3: Generate Haskell code from a type. Bridge from Djinn to GHC API
 dev-haskell/djinn-lib 0.0.1.2: Generate Haskell code from a type. Library extracted from djinn package
@@ -3428,6 +3429,7 @@ dev-haskell/logging-facade 0.0.0: Simple logging abstraction that allows multipl
 dev-haskell/logict 0.6.0.2: A backtracking logic-programming monad
 dev-haskell/lvmlib 1.1: The Lazy Virtual Machine (LVM)
 dev-haskell/maccatcher 2.1.5: Obtain the host MAC address on *NIX and Windows
+dev-haskell/magic 1.1: Interface to C file/magic library
 dev-haskell/markdown-unlit 0.2.0.1: Literate Haskell support for Markdown
 dev-haskell/math-functions 0.1.5.2: Special functions and Chebyshev polynomials
 dev-haskell/memory 0.7 0.10: memory and related abstraction stuff
@@ -3450,6 +3452,7 @@ dev-haskell/monadcatchio-transformers 0.3.1.3: Monad-transformer compatible vers
 dev-haskell/monadrandom 0.1.13 0.3.0.2 0.4.2.1: Random-number generation monad
 dev-haskell/monads-tf 0.1.0.2: Monad classes, using type families
 dev-haskell/mono-traversable 0.1.0.0 0.4.0.1 0.6.3 0.7.0 0.9.2.1 0.10.0.1: Type classes for mapping, folding, and traversing monomorphic containers
+dev-haskell/mountpoints 1.0.2: list mount points
 dev-haskell/mtl 2.1.3.1 2.2.1: Monad classes, using functional dependencies
 dev-haskell/mtl-compat 0.2.1.3: Backported Control.Monad.Except module from mtl
 dev-haskell/multipart 0.1.2: HTTP multipart split out of the cgi package
@@ -5149,7 +5152,7 @@ dev-perl/Algorithm-Dependency 1.110.0-r1: Toolkit for implementing dependency sy
 dev-perl/Algorithm-Diff 1.190.300: Compute intelligent differences between two files / lists
 dev-perl/Algorithm-Munkres 0.80.0-r1: Munkres solution to classical Assignment problem
 dev-perl/Alien-SDL 1.446.0: building, finding and using SDL binaries
-dev-perl/Alien-wxWidgets 0.670.0: Building, finding and using wxWidgets binaries
+dev-perl/Alien-wxWidgets 0.670.0-r1: Building, finding and using wxWidgets binaries
 dev-perl/Any-Moose 0.210.0 0.260.0 0.260.0-r1: Use Moose or Mouse modules (DEPRECATED)
 dev-perl/AnyEvent 7.40.0-r1 7.80.0 7.110.0: Provides a uniform interface to various event loops
 dev-perl/AnyEvent-CacheDNS 0.80.0: Simple DNS resolver with caching
@@ -5401,6 +5404,7 @@ dev-perl/Data-Dump 1.230.0: Pretty printing of data structures
 dev-perl/Data-Dump-Streamer 2.380.0 2.390.0: Accurately serialize a data structure as Perl code
 dev-perl/Data-DumpXML 1.60.0-r1: Dump arbitrary data structures as XML
 dev-perl/Data-Dumper-Concise 2.20.0-r1: Less indentation and newlines plus sub deparsing
+dev-perl/Data-Float 0.12.0: details of the floating point data type
 dev-perl/Data-FormValidator 4.810.0-r1: Validates user input (usually from an HTML form) based on input profile
 dev-perl/Data-GUID 0.48.0: Simple interface for generating and using globally unique identifiers
 dev-perl/Data-HexDump 0.02-r1: Data::HexDump - A Simple Hexadecial Dumper
@@ -5513,7 +5517,7 @@ dev-perl/Encode-HanConvert 0.350.0-r1: Traditional and Simplified Chinese mappin
 dev-perl/Encode-HanExtra 0.230.0-r1: Extra sets of Chinese encodings
 dev-perl/Encode-IMAPUTF7 1.50.0-r1: Modification of UTF-7 encoding for IMAP
 dev-perl/Encode-JIS2K 0.02 0.30.0: JIS X 0212 (aka JIS 2000) Encodings
-dev-perl/Encode-Locale 1.30.0-r1: Determine the locale encoding
+dev-perl/Encode-Locale 1.30.0-r1 1.50.0: Determine the locale encoding
 dev-perl/Encode-compat 0.70.0-r1: Encode.pm emulation layer
 dev-perl/Error 0.170.240: Error/exception handling in an OO-ish way
 dev-perl/Eval-Closure 0.80.0-r1 0.130.0: safely and cleanly create closures via string eval
@@ -5534,11 +5538,13 @@ dev-perl/ExtUtils-AutoInstall 0.630.0-r1: Allows module writers to specify a mor
 dev-perl/ExtUtils-CChecker 0.90.0: Configure-time utilities for using C headers
 dev-perl/ExtUtils-Config 0.7.0: A wrapper for perl's configuration
 dev-perl/ExtUtils-Constant 0.230.0: Generate XS code to import C header constants
+dev-perl/ExtUtils-CppGuess 0.110.0: Guess C++ compiler and flags
 dev-perl/ExtUtils-Depends 0.404.0 0.405.0: Easily build XS extensions that depend on XS extensions
 dev-perl/ExtUtils-F77 1.180.0 1.190.0: Facilitate use of FORTRAN from Perl/XS code
 dev-perl/ExtUtils-Helpers 0.22.0: Various portability utilities for module builders
 dev-perl/ExtUtils-InstallPaths 0.10.0: Build.PL install path logic made easy
 dev-perl/ExtUtils-LibBuilder 0.04: A tool to build C libraries
+dev-perl/ExtUtils-Typemaps-Default 1.50.0: A set of useful typemaps
 dev-perl/ExtUtils-XSBuilder 0.280.0-r1: Modules to parse C header files and create XS glue code
 dev-perl/ExtUtils-XSpp 0.170.0 0.180.0: XS for C++
 dev-perl/FCGI 0.770.0: Fast CGI module
@@ -5630,6 +5636,7 @@ dev-perl/GraphViz 2.190.0 2.200.0: GraphViz - Interface to the GraphViz graphing
 dev-perl/Graphics-ColorNames 2.110.0-r1: Defines RGB values for common color names
 dev-perl/Graphics-ColorNames-WWW 1.130.0: WWW color names and equivalent RGB values
 dev-perl/Graphics-ColorObject 0.5.0-r1: convert between color spaces
+dev-perl/Growl-GNTP 0.200.0: Perl implementation of GNTP Protocol (Client Part)
 dev-perl/Gtk2-AppIndicator 0.150.0: Perl binding for the GTK2 AppIndicator
 dev-perl/Gtk2-Ex-PodViewer 0.180.0-r1: a Gtk2 widget for displaying Plain old Documentation (POD)
 dev-perl/Gtk2-Ex-PrintDialog 0.30.0-r1: a simple, pure Perl dialog for printing PostScript data in GTK+ applications
@@ -5714,6 +5721,7 @@ dev-perl/IO-Pipely 0.005.0: Portably create pipe() or pipe-like handles, one way
 dev-perl/IO-Prompt 0.997.3: Interactively prompt for user input
 dev-perl/IO-SessionData 1.30.0: Session data support module for SOAP::Lite
 dev-perl/IO-Socket-INET6 2.720.0: Work with IO sockets in ipv6
+dev-perl/IO-Socket-PortState 0.30.0: Perl extension for checking the open or closed status of a port
 dev-perl/IO-Socket-SSL 2.24.0: Nearly transparent SSL encapsulation for IO::Socket::INET
 dev-perl/IO-Socket-Timeout 0.320.0: IO::Socket with read/write timeout
 dev-perl/IO-String 1.80.0-r1: IO::File interface for in-core strings
@@ -5836,11 +5844,17 @@ dev-perl/Math-Base-Convert 0.110.0: Very fast base to base conversion
 dev-perl/Math-Base36 0.140.0: Encoding and decoding of base36 strings
 dev-perl/Math-Bezier 0.10.0-r1: Solution of Bezier Curves
 dev-perl/Math-BigInt-GMP 1.380.0 1.490.0: Use the GMP library for Math::BigInt routines
+dev-perl/Math-BigInt-Lite 0.140.0: What BigInts are before they become big
 dev-perl/Math-Calc-Units 1.70.0-r1: Human-readable unit-aware calculator
 dev-perl/Math-Derivative 0.40.0: 1st and 2nd order differentiation of data
+dev-perl/Math-Factor-XS 0.400.0: Factorize numbers and calculate matching multiplications
 dev-perl/Math-GMP 2.60.0-r1 2.110.0: High speed arbitrary size integer math
+dev-perl/Math-Libm 1.0.0: wrapper to libm functions
 dev-perl/Math-ModInt 0.11.0: modular integer arithmetic
+dev-perl/Math-NumSeq 71.0.0: number sequences (for example from OEIS)
 dev-perl/Math-NumberCruncher 5.0.0: Collection of useful math-related functions
+dev-perl/Math-PlanePath 122.0.0: Mathematical paths through the 2-D plane
+dev-perl/Math-Prime-XS 0.260.0: Detect and calculate prime numbers with deterministic tests
 dev-perl/Math-Random 0.710.0-r1 0.720.0: Random Number Generators
 dev-perl/Math-Random-ISAAC 1.4.0-r1: Perl interface to the ISAAC PRNG algorithm
 dev-perl/Math-Random-ISAAC-XS 1.4.0-r1: C implementation of the ISAAC PRNG algorithm
@@ -5856,6 +5870,7 @@ dev-perl/Modem-Vgetty 0.30.0-r1: Interface to voice modems using vgetty
 dev-perl/Modern-Perl 1.201.501.270: enable all of the features of Modern Perl with one import
 dev-perl/Module-Build 0.420.500 0.421.600: Build and install Perl modules
 dev-perl/Module-Build-Tiny 0.39.0: A tiny replacement for Module::Build
+dev-perl/Module-Build-WithXSpp 0.140.0: XS++ enhanced flavour of Module::Build
 dev-perl/Module-Build-XSUtil 0.160.0: A Module::Build class for building XS modules
 dev-perl/Module-Find 0.130.0: Find and use installed modules in a (sub)category
 dev-perl/Module-Implementation 0.90.0: Loads one of several alternate underlying implementations for a module
@@ -5916,6 +5931,7 @@ dev-perl/Nagios-Plugin 0.360.0-r1: A family of perl modules to streamline writin
 dev-perl/Net-ARP 1.0.9: Perl extension for creating ARP packets
 dev-perl/Net-Amazon 0.620.0: Framework for accessing amazon.com via SOAP and XML/HTTP
 dev-perl/Net-Amazon-S3 0.800.0: Framework for accessing the Amazon S3 Simple Storage Service
+dev-perl/Net-Bonjour 0.960.0: Module for DNS service discovery (Apple's Bonjour)
 dev-perl/Net-CIDR 0.180.0: Manipulate netblock lists in CIDR notation
 dev-perl/Net-CIDR-Lite 0.210.0: Perl extension for merging IPv4 or IPv6 CIDR addresses
 dev-perl/Net-CUPS 0.610.0-r2: CUPS C API Interface
@@ -5986,6 +6002,7 @@ dev-perl/News-Newsrc 1.90.0-r1 1.110.0: Manage newsrc files
 dev-perl/Nmap-Parser 1.300.0 1.310.0: Nmap::Parser - parse nmap scan data with perl
 dev-perl/Number-Compare 0.30.0-r1: Numeric comparisons
 dev-perl/Number-Format 1.730.0-r1 1.750.0: Package for formatting numbers for display
+dev-perl/Number-Fraction 2.0.0: Perl extension to model fractions
 dev-perl/OLE-StorageLite 0.190.0-r1: Simple Class for OLE document interface
 dev-perl/OOTools 2.300.0-r1: Pragma to implement lvalue accessors with options
 dev-perl/ORLite 1.980.0-r1: Extremely light weight SQLite-specific ORM
@@ -6072,8 +6089,10 @@ dev-perl/Plucene 1.250.0-r1 1.250.0-r2: Plucene - the Perl lucene port
 dev-perl/Pod-Abstract 0.200.0-r1: Abstract document tree for Perl POD documents
 dev-perl/Pod-Coverage 0.230.0-r1: Checks if the documentation of a module is comprehensive
 dev-perl/Pod-LaTeX 0.610.0: Convert Pod data to formatted LaTeX
+dev-perl/Pod-Markdown 3.5.0: Convert POD to Markdown
 dev-perl/Pod-POM 0.280.0-r1 0.290.0 2.10.0: POD Object Model
-dev-perl/Pod-Readme 0.110.0-r1: Convert POD to README file
+dev-perl/Pod-Readme 0.110.0-r1 1.1.2: Intelligently generate a README file from POD
+dev-perl/Pod-Simple-LaTeX 0.60.0: format Pod as LaTeX
 dev-perl/Pod-Spell 1.10.0-r1: A formatter for spellchecking Pod
 dev-perl/Pod-Strip 1.20.0: Remove POD from Perl code
 dev-perl/Pod-Tests 1.190.0-r1: Extracts embedded tests and code examples from POD
@@ -6391,6 +6410,7 @@ dev-perl/WebService-Linode 0.28.0: Perl interface to the Linode.com API
 dev-perl/WebService-MusicBrainz 0.930.0-r1: Web service API to MusicBrainz database
 dev-perl/WordNet-QueryData 1.490.0-r1: Direct perl interface to WordNet database
 dev-perl/Wx 0.990.200-r1 0.991.700 0.992.700 0.992.700-r1: Perl bindings for wxGTK
+dev-perl/Wx-GLCanvas 0.90.0: interface to wxWidgets' OpenGL canvas
 dev-perl/Wx-Perl-ProcessStream 0.320.0-r1 0.320.0-r2: access IO of external processes via events
 dev-perl/Wx-Scintilla 0.390.0-r1 0.390.0-r2: Scintilla source code editing component for wxWidgets
 dev-perl/X-Osd 0.700.0-r1: Perl glue to libxosd (X OnScreen Display)
@@ -6434,6 +6454,7 @@ dev-perl/XML-RegExp 0.40.0-r1: Regular expressions for XML tokens
 dev-perl/XML-SAX 0.990.0-r1: Perl module for using and building Perl SAX2 XML parsers, filters, and drivers
 dev-perl/XML-SAX-Base 1.80.0-r1: Base class SAX Drivers and Filters
 dev-perl/XML-SAX-Expat 0.400.0 0.500.0 0.510.0: SAX2 Driver for Expat
+dev-perl/XML-SAX-ExpatXS 1.330.0: Perl SAX 2 XS extension to Expat parser
 dev-perl/XML-SAX-Writer 0.530.0-r1 0.540.0 0.560.0: SAX2 Writer
 dev-perl/XML-Simple 2.200.0-r1: XML::Simple - Easy API to read/write XML (esp config files)
 dev-perl/XML-Simple-DTDReader 0.40.0-r1: Simple XML file reading based on their DTDs
@@ -6468,6 +6489,7 @@ dev-perl/cdk-perl 20141106: Perl extension for Cdk
 dev-perl/class-loader 2.30.0-r1: Load modules and create objects on demand
 dev-perl/common-sense 3.740.0: Save a tree AND a kitten, use common::sense!
 dev-perl/constant-boolean 0.20.0-r1: Define TRUE and FALSE constants
+dev-perl/constant-defer 6.0.0: constant subs with deferred value calculation
 dev-perl/convert-ascii-armour 1.400.0-r1: Convert binary octets into ASCII armoured messages
 dev-perl/convert-pem 0.80.0-r1: Read/write encrypted ASN.1 PEM files
 dev-perl/data-buffer 0.40.0-r1: Read/write buffer class
@@ -9479,7 +9501,7 @@ dev-util/bin_replace_string 0.2: A tool to edit C strings in compiled binaries
 dev-util/bitcoin-tx 0.10.0 0.10.1 0.11.0 0.11.1 0.11.2 0.12.0 9999: Command-line Bitcoin transaction tool
 dev-util/bless 0.6.0-r2: GTK# Hex Editor
 dev-util/bluej 3.1.1: An integrated Java environment for introductory teaching
-dev-util/bnfc 2.7.1 2.8: A compiler front-end generator
+dev-util/bnfc 2.8 2.8.1: A compiler front-end generator
 dev-util/boost-build 1.55.0 1.55.0-r1 1.56.0 1.58.0 1.59.0 1.60.0: A system for large project software construction, simple to use and powerful
 dev-util/bsdiff 4.3-r3: bsdiff: Binary Differencer using a suffix alg
 dev-util/btyacc 3.0-r2: Backtracking YACC - modified from Berkeley YACC
@@ -9487,7 +9509,7 @@ dev-util/build 0.3.9: A massively-parallel software build system implemented on 
 dev-util/buildbot 0.8.10 0.8.12-r2 9999: BuildBot build automation system
 dev-util/buildbot-slave 0.8.10 0.8.12 9999: BuildBot Slave Daemon
 dev-util/bumpversion 0.5.3: Version-bump your software with a single command
-dev-util/bustle 0.4.2-r1 0.4.3 0.4.7-r1 0.5.1 0.5.2 0.5.3: Draw sequence diagrams of D-Bus traffic
+dev-util/bustle 0.4.2-r1 0.4.7-r1 0.5.4: Draw sequence diagrams of D-Bus traffic
 dev-util/byacc 20140101 20141128 20150711: the best variant of the Yacc parser generator
 dev-util/catalyst 2.0.18-r1 2.0.18-r2 2.0.9999 2.9999 3.0_rc1 9999: Release metatool used for creating releases based on Gentoo Linux
 dev-util/catfish 1.2.2: A frontend for find, (s)locate, doodle, tracker, beagle, strigi and pinot
@@ -9828,12 +9850,12 @@ dev-vcs/cvsq 0.4.4: A tool that enables developers to work comfortably offline w
 dev-vcs/cvsspam 0.2.12: Utility to send colored HTML CVS-mails
 dev-vcs/cvsutils 0.2.5: A small bundle of utilities to work with CVS repositories
 dev-vcs/cvsync 2014.08.24.014706 9999: portable CVS repository synchronization utility
-dev-vcs/darcs 2.8.4-r6 2.10.1: a distributed, interactive, smart revision control system
+dev-vcs/darcs 2.8.4-r6 2.10.1 2.10.3-r1: a distributed, interactive, smart revision control system
 dev-vcs/easygit 1.6.5.5: Easy GIT is a wrapper for git, designed to make git easy to learn and use
 dev-vcs/fossil 1.34 20150119112900: Simple, high-reliability, source control management, and more
 dev-vcs/giggle 0.7-r1: GTK+ Frontend for GIT
 dev-vcs/git 2.4.11 2.5.5 2.6.6 2.7.3-r1 2.7.4 2.8.0 9999 9999-r1 9999-r2 9999-r3: GIT - the stupid content tracker, the revision control system heavily used by the Linux kernel team
-dev-vcs/git-annex 6.20160126: manage files with git, without checking their contents into git
+dev-vcs/git-annex 6.20160126 6.20160318: manage files with git, without checking their contents into git
 dev-vcs/git-bz 0.12.04.26 0.12.12.15 9999: Bugzilla subcommand for git
 dev-vcs/git-bzr-ng 0_pre20120130 0_pre20120822: Git subcommand providing a bidirectional bridge to Bazaar repositories
 dev-vcs/git-cola 2.2.1 2.3 2.4: The highly caffeinated git GUI
@@ -12155,6 +12177,7 @@ media-gfx/sfftobmp 3.1.2-r1: sff to bmp converter
 media-gfx/shotwell 0.22.0 0.22.0-r1: Open source photo manager for GNOME
 media-gfx/simple-scan 3.16.2 3.18.2: Simple document scanning utility
 media-gfx/skencil 0.6.18_pre20080519 1.0_alpha784: Interactive X11 vector drawing program
+media-gfx/slic3r 1.1.7 1.2.9 9999: A mesh slicer to generate G-code for fused-filament-fabrication (3D printers)
 media-gfx/smile 1.0: Slideshow Maker In Linux Environement
 media-gfx/splash-themes-gentoo 20101212-r1 20101212-r2: A collection of Gentoo themes for splashutils
 media-gfx/splash-themes-livecd 2004.3 2005.0 2005.1 2006.0 2006.1 2007.0-r3: Gentoo theme for gensplash consoles
@@ -14305,7 +14328,7 @@ net-libs/udns 0.4: Async-capable DNS stub resolver library
 net-libs/uhttpmock 0.4.0 0.5.0: HTTP web service mocking library
 net-libs/vanessa-mcast 1.0.0: Multicast Helper Library
 net-libs/vanessa-socket 0.0.12 0.0.13: Simplifies TCP/IP socket operations
-net-libs/webkit-gtk 2.4.9 2.4.9-r200 2.8.5 2.10.4-r1 2.10.7 2.10.8: Open source web browser engine
+net-libs/webkit-gtk 2.4.9 2.4.9-r200 2.4.10 2.4.10-r200 2.8.5 2.10.7 2.10.9: Open source web browser engine
 net-libs/wt 3.3.4: C++ library for developing interactive web applications
 net-libs/wvstreams 4.6.1-r2 4.6.1-r3: A network programming library in C++
 net-libs/xrootd 3.3.6 4.1.1: Extended ROOT remote file server
@@ -15882,7 +15905,7 @@ sci-libs/xkaapi 2.1 2.2 3.0.3: Kernel for Adaptative, Asynchronous Parallel and 
 sci-libs/xylib 1.1 1.2: Experimental x-y data reading library
 sci-mathematics/4ti2 1.6.2 1.6.5 1.6.6: Software package for algebraic, geometric and combinatorial problems
 sci-mathematics/Macaulay2 1.7_pre 1.8.2.1 1.8.2.1-r1: Research tool for commutative algebra and algebraic geometry
-sci-mathematics/agda 2.4.2.5 2.4.2.5-r1: A dependently typed functional programming language and proof assistant
+sci-mathematics/agda 2.4.2.5 2.4.2.5-r1 2.4.2.5-r2: A dependently typed functional programming language and proof assistant
 sci-mathematics/agda-executable 2.3.0.1-r1 2.3.0.1-r2: Command-line program for type-checking and compiling Agda programs
 sci-mathematics/agda-lib-ffi 0.0.2 0.0.2-r2: Auxiliary Haskell code used by Agda's standard library
 sci-mathematics/agda-stdlib 2.4.2.5: Agda standard library

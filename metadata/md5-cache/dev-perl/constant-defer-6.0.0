@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=virtual/perl-ExtUtils-MakeMaker virtual/perl-Exporter test? ( virtual/perl-Data-Dumper virtual/perl-Test virtual/perl-Test-Simple ) dev-lang/perl:=
+DESCRIPTION=constant subs with deferred value calculation
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/constant-defer/
+IUSE=test examples
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=virtual/perl-Carp dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/K/KR/KRYDE/constant-defer-6.tar.gz
+_eclass_exported_funcs=src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:-
+_eclasses_=multiprocessing	e32940a7b2a9992ad217eccddb84d548	perl-functions	15aff0b9cba2282790142295ceb6be0c	perl-module	b2108b3c85ac7a6a6a9b035b54f6813c
+_md5_=aa41bc3a9fc071f878f5c652c21976cd

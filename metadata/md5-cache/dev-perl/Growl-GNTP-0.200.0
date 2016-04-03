@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=examples? ( virtual/perl-Encode ) >=dev-perl/Crypt-CBC-2.290.0 >=dev-perl/Data-UUID-0.149.0 >=virtual/perl-Digest-MD5-2.360.0 >=virtual/perl-Digest-SHA-5.450.0 virtual/perl-IO dev-perl/IO-Socket-PortState >=dev-perl/Module-Build-0.380.0 virtual/perl-File-Spec virtual/perl-CPAN-Meta dev-lang/perl:=
+DESCRIPTION=Perl implementation of GNTP Protocol (Client Part)
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/Growl-GNTP/
+IUSE=test examples
+KEYWORDS=~amd64 ~x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=examples? ( virtual/perl-Encode ) >=dev-perl/Crypt-CBC-2.290.0 >=dev-perl/Data-UUID-0.149.0 >=virtual/perl-Digest-MD5-2.360.0 >=virtual/perl-Digest-SHA-5.450.0 virtual/perl-IO dev-perl/IO-Socket-PortState dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/M/MA/MATTN/Growl-GNTP-0.20.tar.gz
+_eclass_exported_funcs=src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:- src_install:-
+_eclasses_=multiprocessing	e32940a7b2a9992ad217eccddb84d548	perl-functions	15aff0b9cba2282790142295ceb6be0c	perl-module	b2108b3c85ac7a6a6a9b035b54f6813c
+_md5_=2e2b760b0d6889933c002f883357245c
