@@ -13,7 +13,7 @@ HOMEPAGE="http://jade.cselt.it/"
 SRC_URI="mirror://gentoo/JADE-src-${PV}.zip -> ${P}.zip"
 
 LICENSE="LGPL-2"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 SLOT="0"
 IUSE=""
 
