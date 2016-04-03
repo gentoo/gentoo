@@ -1,0 +1,150 @@
+From 69f820bb3d7c4dc8c838f115cb4c7ee5fd188721 Mon Sep 17 00:00:00 2001
+From: Jonathan Wakely <github@kayari.org>
+Date: Thu, 26 Nov 2015 16:27:52 +0000
+Subject: [PATCH] Qualify std::ifstream and std::ofstream
+
+Starting with Boost 1.60.0 <boost/filesystem.hpp> includes
+<boost/filesystem/fstream.hpp>, which declares ifstream and ofstream
+types that make the unqualified names ifstream and ofstream ambiguous.
+The names must be qualified to refer to the std versions.
+---
+ src/core/common/avatarmanager.cpp    | 4 ++--
+ src/core/common/loghelper_server.cpp | 6 +++---
+ src/net/common/clientstate.cpp       | 4 ++--
+ src/net/common/clientthread.cpp      | 4 ++--
+ src/net/common/downloaderthread.cpp  | 2 +-
+ src/pokerth_server.cpp               | 2 +-
+ src/zlib_compress.cpp                | 4 ++--
+ 7 files changed, 13 insertions(+), 13 deletions(-)
+
+diff --git a/src/core/common/avatarmanager.cpp b/src/core/common/avatarmanager.cpp
+index a8a52e4..0246b72 100644
+--- a/src/core/common/avatarmanager.cpp
++++ b/src/core/common/avatarmanager.cpp
+@@ -61,7 +61,7 @@ using namespace std;
+ using namespace boost::filesystem;
+ 
+ struct AvatarFileState {
+-	ifstream		inputStream;
++	std::ifstream		inputStream;
+ };
+ 
+ AvatarManager::AvatarManager(bool useExternalServer, const std::string &externalServerAddress,
+@@ -371,7 +371,7 @@ AvatarManager::StoreAvatarInCache(const MD5Buf &md5buf, AvatarFileType avatarFil
+ 				path tmpPath(cacheDir);
+ 				tmpPath /= (md5buf.ToString() + ext);
+ 				string fileName(tmpPath.file_string());
+-				ofstream o(fileName.c_str(), ios_base::out | ios_base::binary | ios_base::trunc);
++				std::ofstream o(fileName.c_str(), ios_base::out | ios_base::binary | ios_base::trunc);
+ 				if (!o.fail()) {
+ 					o.write((const char *)data, size);
+ 					o.close();
+diff --git a/src/core/common/loghelper_server.cpp b/src/core/common/loghelper_server.cpp
+index f79e4ca..a0d0350 100644
+--- a/src/core/common/loghelper_server.cpp
++++ b/src/core/common/loghelper_server.cpp
+@@ -67,7 +67,7 @@ void
+ internal_log_err(const string &msg)
+ {
+ 	if (!g_logFile.empty()) {
+-		ofstream o(g_logFile.c_str(), ios_base::out | ios_base::app);
++		std::ofstream o(g_logFile.c_str(), ios_base::out | ios_base::app);
+ 		if (!o.fail()) {
+ 			o << second_clock::local_time() << " ERR: " << msg;
+ 			o.flush();
+@@ -80,7 +80,7 @@ internal_log_msg(const std::string &msg)
+ {
+ 	if (g_logLevel) {
+ 		if (!g_logFile.empty()) {
+-			ofstream o(g_logFile.c_str(), ios_base::out | ios_base::app);
++			std::ofstream o(g_logFile.c_str(), ios_base::out | ios_base::app);
+ 			if (!o.fail())
+ 				o << second_clock::local_time() << " MSG: " << msg;
+ 		}
+@@ -92,7 +92,7 @@ internal_log_level(const std::string &msg, int logLevel)
+ {
+ 	if (g_logLevel >= logLevel) {
+ 		if (!g_logFile.empty()) {
+-			ofstream o(g_logFile.c_str(), ios_base::out | ios_base::app);
++			std::ofstream o(g_logFile.c_str(), ios_base::out | ios_base::app);
+ 			if (!o.fail())
+ 				o << second_clock::local_time() << " OUT: " << msg;
+ 		}
+diff --git a/src/net/common/clientstate.cpp b/src/net/common/clientstate.cpp
+index 143773b..080da2d 100644
+--- a/src/net/common/clientstate.cpp
++++ b/src/net/common/clientstate.cpp
+@@ -308,8 +308,8 @@ ClientStateReadingServerList::Enter(boost::shared_ptr<ClientThread> client)
+ 
+ 		// Unzip the file using zlib.
+ 		try {
+-			ifstream inFile(zippedServerListPath.directory_string().c_str(), ios_base::in | ios_base::binary);
+-			ofstream outFile(xmlServerListPath.directory_string().c_str(), ios_base::out | ios_base::trunc);
++			std::ifstream inFile(zippedServerListPath.directory_string().c_str(), ios_base::in | ios_base::binary);
++			std::ofstream outFile(xmlServerListPath.directory_string().c_str(), ios_base::out | ios_base::trunc);
+ 			boost::iostreams::filtering_streambuf<boost::iostreams::input> in;
+ 			in.push(boost::iostreams::zlib_decompressor());
+ 			in.push(inFile);
+diff --git a/src/net/common/clientthread.cpp b/src/net/common/clientthread.cpp
+index d60a535..1f3a619 100644
+--- a/src/net/common/clientthread.cpp
++++ b/src/net/common/clientthread.cpp
+@@ -1695,7 +1695,7 @@ void
+ ClientThread::ReadSessionGuidFromFile()
+ {
+ 	string guidFileName(GetContext().GetCacheDir() + TEMP_GUID_FILENAME);
+-	ifstream guidStream(guidFileName.c_str(), ios::in | ios::binary);
++	std::ifstream guidStream(guidFileName.c_str(), ios::in | ios::binary);
+ 	if (guidStream.good()) {
+ 		std::vector<char> tmpGuid(CLIENT_GUID_SIZE);
+ 		guidStream.read(&tmpGuid[0], CLIENT_GUID_SIZE);
+@@ -1707,7 +1707,7 @@ void
+ ClientThread::WriteSessionGuidToFile() const
+ {
+ 	string guidFileName(GetContext().GetCacheDir() + TEMP_GUID_FILENAME);
+-	ofstream guidStream(guidFileName.c_str(), ios::out | ios::trunc | ios::binary);
++	std::ofstream guidStream(guidFileName.c_str(), ios::out | ios::trunc | ios::binary);
+ 	if (guidStream.good()) {
+ 		guidStream.write(GetContext().GetSessionGuid().c_str(), GetContext().GetSessionGuid().size());
+ 	}
+diff --git a/src/net/common/downloaderthread.cpp b/src/net/common/downloaderthread.cpp
+index e58e3f8..56a9526 100644
+--- a/src/net/common/downloaderthread.cpp
++++ b/src/net/common/downloaderthread.cpp
+@@ -96,7 +96,7 @@ DownloaderThread::Main()
+ 				// Previous download was finished.
+ 				if (m_curDownloadData) {
+ 					path filepath(m_curDownloadData->filename);
+-					ifstream instream(filepath.file_string().c_str(), ios_base::in | ios_base::binary);
++					std::ifstream instream(filepath.file_string().c_str(), ios_base::in | ios_base::binary);
+ 					// Find out file size.
+ 					// Not fully portable, but works on win/linux/mac.
+ 					instream.seekg(0, ios_base::beg);
+diff --git a/src/pokerth_server.cpp b/src/pokerth_server.cpp
+index 3b93d46..450a47e 100644
+--- a/src/pokerth_server.cpp
++++ b/src/pokerth_server.cpp
+@@ -161,7 +161,7 @@ main(int argc, char *argv[])
+ 		pidFile = tmpPidPath.directory_string();
+ 	}
+ 	{
+-		ofstream pidStream(pidFile.c_str(), ios_base::out | ios_base::trunc);
++		std::ofstream pidStream(pidFile.c_str(), ios_base::out | ios_base::trunc);
+ 		if (!pidStream.fail())
+ 			pidStream << getpid();
+ 		else
+diff --git a/src/zlib_compress.cpp b/src/zlib_compress.cpp
+index e3fd72d..4b04817 100644
+--- a/src/zlib_compress.cpp
++++ b/src/zlib_compress.cpp
+@@ -59,8 +59,8 @@ main(int argc, char *argv[])
+ 		return 2;
+ 	}
+ 	try {
+-		ifstream inFile(inputFilePath.directory_string().c_str(), ios_base::in);
+-		ofstream outFile(outputFilePath.directory_string().c_str(), ios_base::out | ios_base::binary);
++		std::ifstream inFile(inputFilePath.directory_string().c_str(), ios_base::in);
++		std::ofstream outFile(outputFilePath.directory_string().c_str(), ios_base::out | ios_base::binary);
+ 		boost::iostreams::filtering_streambuf<boost::iostreams::output> out;
+ 		out.push(boost::iostreams::zlib_compressor());
+ 		out.push(outFile);
