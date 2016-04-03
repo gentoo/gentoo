@@ -31,6 +31,11 @@
 #--- END OF EXAMPLES ---
 
 # James Le Cuirot <chewi@gentoo.org> (03 Apr 2016)
+# Legacy migration package that is no longer needed. See
+# bug #549508. Removal in 30 days.
+dev-java/java-config-wrapper
+
+# James Le Cuirot <chewi@gentoo.org> (03 Apr 2016)
 # Masking Spring Framework for the time being as 3.2.4 is old, has
 # multiple vulnerabilities, and we're not likely to update it
 # soon. Hopefully we can revisit it when the Maven stuff works out.
