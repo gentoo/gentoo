@@ -3920,7 +3920,7 @@ dev-java/jackson-module-jaxb-annotations 2.5.1 2.5.2: JAXB alternative to native
 dev-java/jacl 1.4.1-r1: Jacl is an implementation of Tcl written in Java
 dev-java/jacoco 0.7.5: Java Code Coverage library.
 dev-java/jad-bin 1.5.8e-r1: Jad - The fast JAva Decompiler
-dev-java/jade 3.3-r1 3.3-r2: JADE is FIPA-compliant Java Agent Development Environment
+dev-java/jade 3.3-r3: JADE is FIPA-compliant Java Agent Development Environment
 dev-java/jaffl 0.5.11-r1: An abstracted interface to invoking native functions from java
 dev-java/jakarta-oro 2.0.8-r3 2.0.8-r4: A set of text-processing Java classes
 dev-java/jakarta-regexp 1.3-r4 1.3-r5 1.4-r1 1.4-r2 1.5: 100% Pure Java Regular Expression package
@@ -3989,7 +3989,7 @@ dev-java/jdynamite 1.2-r1: Dynamic Template in Java
 dev-java/jebl 2013.02.18: Java Evolutionary Biology Library
 dev-java/jempbox 1.7.1 1.8.11: An open source Java library for working with XMP metadata
 dev-java/jettison 1.3.7: A JSON StAX implementation
-dev-java/jexcelapi 2.6.8 2.6.8-r1 2.6.8-r2: A Java API to read, write, and modify Excel spreadsheets
+dev-java/jexcelapi 2.6.8-r2: A Java API to read, write, and modify Excel spreadsheets
 dev-java/jffi 1.0.11-r1 1.2.9: An optimized Java interface to libffi
 dev-java/jflex 1.6.0-r2 1.6.1: JFlex is a lexical analyzer generator for Java
 dev-java/jformatstring 2.0.3: Compile time checking for Java format strings
@@ -4062,9 +4062,9 @@ dev-java/jstun 0.7.3: Java-based STUN implementation
 dev-java/jta 1.0.1-r1 1.1: The Java Transaction API
 dev-java/jtds 1.3.1: jTDS - SQL Server and Sybase JDBC driver
 dev-java/jtidy 1.0: Java port of HTML Tidy, an HTML syntax checker and pretty printer
-dev-java/jtreemap 1.1.0 1.1.0-r1: Java, open-source library for treemapping
+dev-java/jtreemap 1.1.0-r1: Java library for treemapping data
 dev-java/juel 2.1.0 2.1.0-r1 2.1.0-r2: Implementation of the Unified Expression Language (EL) - JSR-245
-dev-java/jump 0.5 0.5-r1: JUMP Ultimate Math Package (JUMP) is a Java-based extensible high-precision math package
+dev-java/jump 0.5 0.5-r1: Java-based extensible high-precision math library
 dev-java/jung 1.7.6 1.7.6-r1: The Java Universal Network/Graph Framework
 dev-java/junit 3.8.2-r1 4.10 4.11 4.12-r1: Simple framework to write repeatable tests
 dev-java/junit-addons 1.4-r1: JUnit-addons is a collection of helper classes for JUnit
