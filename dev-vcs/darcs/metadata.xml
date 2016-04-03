@@ -5,10 +5,8 @@
   <email>haskell@gentoo.org</email>
 </maintainer>
 <use>
-  <flag name="color">Use ansi color escapes.</flag>
   <flag name="diff">Use 'lcs' for diff building.</flag>
   <flag name="http">Use the pure Haskell HTTP package for HTTP support.</flag>
-  <flag name="optimize">Build with optimizations (-O2).</flag>
   <flag name="network-uri">Get Network.URI from the network-uri package.</flag>
   <flag name="terminfo">Use the terminfo package for enhanced console support.</flag>
   <flag name="threaded">Use threading and SMP support.</flag>
