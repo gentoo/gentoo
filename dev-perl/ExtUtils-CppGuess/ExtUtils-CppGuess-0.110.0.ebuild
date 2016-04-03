@@ -4,8 +4,8 @@
 
 EAPI=6
 
-DIST_AUTHOR="ETJ"
-DIST_VERSION="0.08"
+DIST_AUTHOR=DAVIDO
+DIST_VERSION=0.11
 inherit perl-module
 
 DESCRIPTION="Guess C++ compiler and flags"
@@ -14,12 +14,17 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
 
-RDEPEND="dev-perl/Capture-Tiny"
+RDEPEND="
+	dev-perl/Capture-Tiny
+"
 DEPEND="${RDEPEND}
-	>=dev-perl/Module-Build-0.420.0
-	test? ( virtual/perl-autodie
-		virtual/perl-Test-Simple
+	virtual/perl-ExtUtils-MakeMaker
+	test? (
 		virtual/perl-File-Path
+		virtual/perl-Data-Dumper
+		virtual/perl-ExtUtils-Manifest
 		virtual/perl-File-Spec
-		virtual/perl-ExtUtils-MakeMaker
-		virtual/perl-ExtUtils-Manifest )"
+		virtual/perl-Test-Simple
+		dev-perl/Module-Build
+	)
+"
