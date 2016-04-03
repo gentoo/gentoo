@@ -1,0 +1,40 @@
+Hello,
+
+I see Shaun Jackmans' (abyss-)sam2afg script is available within the 
+Amos source repository. I find this very useful for coercing output from 
+assemblers which which don't track read location into amos by remapping 
+reads against the assembly and converting to afg - not ideal but better 
+than nothing when you don't have the 'real' read locations to work with.
+
+This fails, however when reads are aligned with 'bwa mem', which can 
+output multi-part alignments. sam2afg checks for reuse of the same read 
+id (presumably to prevent the generation of non-unique eid values), 
+consequently encountering multiple alignments for a read causes it to die.
+
+The following one-line patch allows sam2afg to skip these secondary 
+alignments present in 'bwa mem' output, provided bwa mem has been run 
+with the '-M' argument which sets the SAM 'secondary alignment' flag on 
+the alignments in question.
+
+Hopefully this will also be of use to others...
+
+Best Regards,
+James
+
+-- 
+Dr. James Abbott
+Lead Bioinformatician
+Bioinformatics Support Service
+Imperial College, London
+
+
+--- abyss-1.3.6/bin/abyss-samtoafg.ori	2015-05-23 23:43:46.797747928 +0200
++++ abyss-1.3.6/bin/abyss-samtoafg	2015-05-23 23:44:09.227747743 +0200
+@@ -105,6 +105,7 @@
+ 	die unless defined $qqual;
+ 
+ 	$tstart--; # convert to zero-based coordinate
++        next if $flag & 0x100; # secondary alignment
+ 	$qid .= "/1" if $flag & 0x40; #FREAD1
+ 	$qid .= "/2" if $flag & 0x80; #FREAD2
+ 
