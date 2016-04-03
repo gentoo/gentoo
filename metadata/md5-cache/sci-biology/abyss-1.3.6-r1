@@ -1,7 +1,7 @@
-DEFINED_PHASES=compile configure install prepare test
+DEFINED_PHASES=configure prepare
 DEPEND=dev-cpp/sparsehash dev-libs/boost misc-haskell? ( dev-libs/gmp:0= virtual/libffi:0= ) mpi? ( virtual/mpi ) misc-haskell? ( dev-lang/ghc dev-haskell/mmap ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=Assembly By Short Sequences - a de novo, parallel, paired-end sequence assembler
-EAPI=5
+EAPI=6
 HOMEPAGE=http://www.bcgsc.ca/platform/bioinfo/software/abyss/
 IUSE=+mpi openmp misc-haskell
 KEYWORDS=~amd64 ~x86
@@ -9,6 +9,6 @@ LICENSE=abyss
 RDEPEND=dev-cpp/sparsehash dev-libs/boost misc-haskell? ( dev-libs/gmp:0= virtual/libffi:0= ) mpi? ( virtual/mpi )
 SLOT=0
 SRC_URI=http://www.bcgsc.ca/downloads/abyss/abyss-1.3.6.tar.gz
-_eclass_exported_funcs=src_prepare:- src_configure:- src_compile:autotools-utils src_test:autotools-utils src_install:autotools-utils
-_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	autotools-utils	419811142edf3516b0d0cf1a254d93cb	eutils	9d81603248f2ba3ec59124320d123e5e	libtool	4890219c51da247200223277f993e054	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
-_md5_=7c38277481611802cbb8363842e6a527
+_eclass_exported_funcs=src_prepare:- src_configure:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	libtool	4890219c51da247200223277f993e054	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=5edcc89dbe8b21d260f6545673c709d5
