@@ -20,15 +20,15 @@ RDEPEND="
 	>=virtual/jre-1.6"
 
 DEPEND="
-	source? ( app-arch/zip )
-	>=virtual/jdk-1.6"
+	>=virtual/jdk-1.6
+	source? ( app-arch/zip )"
 
 S="${WORKDIR}/${P}"
 
 JAVA_SRC_DIR="src/main"
 
 java_prepare() {
-	rm -rf src/tests || die
+	rm -rv src/tests || die
 }
 
 src_install() {
