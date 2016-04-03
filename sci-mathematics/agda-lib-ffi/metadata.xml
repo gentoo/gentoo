@@ -3,6 +3,7 @@
 <pkgmetadata>
 	<maintainer type="project">
 		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
 	</maintainer>
 	<longdescription>
 		Auxiliary Haskell code used by Agda's standard library.
