@@ -17,7 +17,6 @@
 </longdescription>
 <use>
   <flag name="cpphs">Use cpphs instead of cpp.</flag>
-  <flag name="epic">Add support for the epic compiler.</flag>
   <flag name="stdlib">Install the standard library.</flag>
 </use>
 </pkgmetadata>
