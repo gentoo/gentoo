@@ -6,21 +6,22 @@ EAPI=5
 inherit eutils flag-o-matic gnome2-utils cmake-utils qt4-r2
 
 DESCRIPTION="Lets you easily share a single mouse and keyboard between multiple computers"
-HOMEPAGE="http://synergy-project.org/ https://github.com/synergy/synergy"
+HOMEPAGE="http://synergy-project.org/ https://github.com/symless/synergy"
 SRC_URI="
-	https://github.com/${PN}/${PN}/archive/v${PV}-stable.tar.gz -> ${P}.tar.gz
+	https://github.com/symless/${PN}/archive/v${PV}-stable.tar.gz -> ${P}.tar.gz
 	https://dev.gentoo.org/~hasufell/distfiles/${PN}.png
 "
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~x86-macos ~sparc-solaris ~x86-solaris"
-IUSE="qt4 test"
+IUSE="libressl qt4 test"
 
 S=${WORKDIR}/${P}-stable
 
 COMMON_DEPEND="
-	dev-libs/openssl:*
+	!libressl? ( dev-libs/openssl:* )
+	libressl? ( dev-libs/libressl )
 	x11-libs/libICE
 	x11-libs/libSM
 	x11-libs/libX11
