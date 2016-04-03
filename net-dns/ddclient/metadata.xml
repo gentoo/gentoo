@@ -6,6 +6,7 @@
     <name>Aaron W. Swenson</name>
   </maintainer>
   <use>
+    <flag name="cloudflare">Enable support for updating IP address via CloudFlare</flag>
     <flag name="hardened">Use iproute2 instead of ifconfig to grab an IP address</flag>
   </use>
   <upstream>
