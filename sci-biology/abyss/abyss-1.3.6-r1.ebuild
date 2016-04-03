@@ -1,12 +1,10 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-AUTOTOOLS_AUTORECONF=true
-
-inherit autotools-utils
+inherit autotools toolchain-funcs
 
 DESCRIPTION="Assembly By Short Sequences - a de novo, parallel, paired-end sequence assembler"
 HOMEPAGE="http://www.bcgsc.ca/platform/bioinfo/software/abyss/"
@@ -36,13 +34,15 @@ DEPEND="${RDEPEND}
 PATCHES=(
 	"${FILESDIR}"/${P}-gcc-4.7.patch
 	"${FILESDIR}"/${P}-ac_prog_ar.patch
-	)
+	"${FILESDIR}"/${P}-samtoafg.patch
+)
 
 src_prepare() {
+	default
 	tc-export AR
 	sed -i -e "s/-Werror//" configure.ac || die #365195
 	sed -i -e "/dist_pkgdoc_DATA/d" Makefile.am || die
-	autotools-utils_src_prepare
+	eautoreconf
 }
 
 src_configure() {
@@ -50,9 +50,5 @@ src_configure() {
 	# unless request by user: bug #534412
 	use misc-haskell || export ac_cv_prog_ac_ct_GHC=
 
-	local myeconfargs=(
-		--docdir="${EPREFIX}/usr/share/doc/${PF}"
-		$(use_enable openmp)
-	)
-	autotools-utils_src_configure
+	econf $(use_enable openmp)
 }
