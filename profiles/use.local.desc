@@ -1599,7 +1599,6 @@ dev-haskell/http-client:network-uri - Get Network.URI from the network-uri packa
 dev-haskell/httpd-shed:buildexamples - Build example executables.
 dev-haskell/httpd-shed:network-uri - Get Network.URI from the network-uri package.
 dev-haskell/hxt:network-uri - Get Network.URI from the network-uri package.
-dev-haskell/ieee754:big_endian - Build for a big endian machine. Beware that only little endian machines have been tested.
 dev-haskell/json:generic - Add support for generic encoder (dev-haskell/syb)
 dev-haskell/json:mapdict - Encode Haskell maps as JSON dicts
 dev-haskell/json:parsec - Add support for parsing with Parsec
@@ -2801,25 +2800,16 @@ dev-vcs/git:ppcsha1 - Make use of a bundled routine that is optimized for the PP
 dev-vcs/git:subversion - Include git-svn for dev-vcs/subversion support
 dev-vcs/git:tk - Include the 'gitk' and 'git gui' tools
 dev-vcs/git:webdav - Adds support for push'ing to HTTP/HTTPS repositories via DAV
-dev-vcs/git-annex:asciiprogress - Use ascii-progress library (experimental)
 dev-vcs/git-annex:assistant - Enable git-annex assistant and watch command
 dev-vcs/git-annex:benchmark - Enable benchmarking
 dev-vcs/git-annex:concurrentoutput - Use concurrent-output library (experimental)
 dev-vcs/git-annex:cryptonite - Use the cryptonite library, instead of the older cryptohash
-dev-vcs/git-annex:database - Enable building with dev-haskell/persistent for database use
-dev-vcs/git-annex:desktopnotify - Enable desktop environment notifications
-dev-vcs/git-annex:dns - Enable the haskell DNS library for DNS lookup
 dev-vcs/git-annex:ekg - Enable use of EKG to monitor git-annex as it runs.
-dev-vcs/git-annex:feed - Enable podcast feed support
 dev-vcs/git-annex:network-uri - Get Network.URI from the network-uri package.
 dev-vcs/git-annex:pairing - Enable pairing of git annex repositories
-dev-vcs/git-annex:quvi - Enable use of quvi to download videos
 dev-vcs/git-annex:s3 - Enable Amazon S3 remote
-dev-vcs/git-annex:tahoe - Enable the tahoe special remote
-dev-vcs/git-annex:tdfa - Use regex-tdfa for wildcards
 dev-vcs/git-annex:torrentparser - Use haskell torrent library to parse torrent files
 dev-vcs/git-annex:webapp - Enable git-annex webapp
-dev-vcs/git-annex:webapp-secure - Secure webapp
 dev-vcs/git-annex:webdav - Enable webdav remote
 dev-vcs/gitg:glade - Install a glade catalog file
 dev-vcs/gitg:python - Install Python bindings for those plugins requiring it.
