@@ -11,7 +11,7 @@ HOMEPAGE="https://cwrap.org/socket_wrapper.html"
 SRC_URI="https://ftp.samba.org/pub/cwrap/${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~hppa ia64 ppc ppc64 x86"
+KEYWORDS="amd64 ~arm ~hppa ia64 ppc ppc64 x86"
 IUSE="test"
 
 DEPEND=""
