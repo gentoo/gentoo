@@ -8,7 +8,10 @@ inherit eutils toolchain-funcs
 
 DESCRIPTION="Multi-purpose text editor for the X Window System"
 HOMEPAGE="http://nedit.org/"
-SRC_URI="mirror://gentoo/${P}.tar.bz2"
+SRC_URI="
+	mirror://gentoo/${P}.tar.bz2
+	https://dev.gentoo.org/~jlec/distfiles/${PN}.png.xz
+	"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -67,7 +70,7 @@ src_install() {
 	newbin source/nc neditc
 
 	make_desktop_entry "${PN}"
-	doicon "${FILESDIR}/${PN}.png"
+	doicon "${WORKDIR}/${PN}.png"
 
 	newman doc/nedit.man nedit.1
 	newman doc/nc.man neditc.1
