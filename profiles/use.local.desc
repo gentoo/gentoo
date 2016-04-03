@@ -6951,7 +6951,6 @@ sci-libs/xkaapi:blas - Kaapi BLAS tasks for PLASMA
 sci-libs/xkaapi:gpu - Build library for gpu threading
 sci-mathematics/Macaulay2:optimization - Accept upstream's choices for -O option, i.e. -O3 almost everywhere.
 sci-mathematics/agda:cpphs - Use cpphs instead of cpp.
-sci-mathematics/agda:epic - Add support for the epic compiler.
 sci-mathematics/agda:stdlib - Install the standard library.
 sci-mathematics/agda-stdlib:ffi - Install agda-lib-ffi for compilation using the MAlonzo backend
 sci-mathematics/bertini:optimization - Accept upstream's choices for -O option.
