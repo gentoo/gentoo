@@ -8,7 +8,7 @@ JAVA_PKG_IUSE="doc examples source"
 
 inherit java-pkg-2 java-pkg-simple
 
-DESCRIPTION="JUMP Ultimate Math Package (JUMP) is a Java-based extensible high-precision math package"
+DESCRIPTION="Java-based extensible high-precision math library"
 HOMEPAGE="http://jump-math.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}-math/${P}.tar.gz"
 
