@@ -27,20 +27,25 @@ RDEPEND="
 	python? ( ${PYTHON_DEPS} )
 "
 DEPEND="${RDEPEND}
+	>=sys-devel/boost-m4-0.4_p20160328
 	>=dev-util/mdds-0.12.0:0=
 "
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
+PATCHES=(
+	"${FILESDIR}/${PN}-0.9.1-typo.patch"
+	"${FILESDIR}/${PN}-0.9.1-python-optional.patch"
+)
 
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
 }
 
 src_prepare() {
-	eapply_user
+	default
 
-	eapply "${FILESDIR}/${PN}-0.9.1-typo.patch" \
-		"${FILESDIR}/${PN}-0.9.1-python-optional.patch"
+	# fixes bug 576462, which is due to an outdated bundled boost.m4
+	rm m4/boost.m4 || die
 
 	eautoreconf
 }
