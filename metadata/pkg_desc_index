@@ -320,7 +320,7 @@ app-arch/unrar 5.1.6 5.2.7 5.3.9 5.3.11: Uncompress rar files
 app-arch/unrar-gpl 0.0.1_p20080417-r1 0.0.1_p20080417-r2: Free rar unpacker for old (pre v3) rar files
 app-arch/unrpa 1.4.1 9999: Ren'Py's RPA data file extractor
 app-arch/unshield 0.6_p20120308 0.6_p20120308-r1: InstallShield CAB file extractor
-app-arch/unzip 5.52-r2 6.0-r3: unzipper for pkzip-compressed files
+app-arch/unzip 5.52-r2 6.0-r3 6.0_p20: unzipper for pkzip-compressed files
 app-arch/upx-bin 3.91: Ultimate Packer for eXecutables (binary version with proprietary NRV compression)
 app-arch/upx-ucl 3.91: Ultimate Packer for eXecutables (free version using UCL compression and not NRV)
 app-arch/vimball 0.5.1 9999: a command-line vimball archive extractor
