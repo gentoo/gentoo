@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=6
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python3_{4,5} )
 
 inherit autotools eutils multilib python-single-r1 readme.gentoo-r1 systemd udev user multilib-minimal
 
@@ -13,7 +13,7 @@ SRC_URI="mirror://kernel/linux/bluetooth/${P}.tar.xz"
 
 LICENSE="GPL-2+ LGPL-2.1+"
 SLOT="0/3"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 arm ~arm64 hppa ~mips ~ppc ppc64 ~x86"
 
 IUSE="cups doc debug extra-tools experimental +obex +readline selinux systemd test test-programs +udev"
 REQUIRED_USE="
