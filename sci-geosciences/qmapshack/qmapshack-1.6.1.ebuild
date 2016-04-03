@@ -2,10 +2,14 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 <<<<<<< HEAD
+<<<<<<< HEAD
 EAPI=6
 =======
 EAPI=5
 >>>>>>> fdc07ad... Version bump to version 1.6.1
+=======
+EAPI=6
+>>>>>>> 0f9dc28f6c99ea5445e5d99a2617a1c952ebd81b
 inherit cmake-utils
 
 DESCRIPTION="GPS mapping utility"
