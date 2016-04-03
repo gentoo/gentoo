@@ -14283,7 +14283,7 @@ net-libs/qxmpp 0.7.4 0.7.5 0.7.6 0.7.6-r1 0.8.0 0.8.2 9999: A cross-platform C++
 net-libs/rabbitmq-c 0.3.0 0.5.0: RabbitMQ C client
 net-libs/rb_libtorrent 0.16.17 0.16.17-r2 0.16.19 1.0.7 1.0.8 1.0.9: C++ BitTorrent implementation focusing on efficiency and scalability
 net-libs/rest 0.7.93 0.7.93-r1: Helper library for RESTful services
-net-libs/ripe-atlas-sagan 1.1.8: A parsing library for RIPE Atlas result strings
+net-libs/ripe-atlas-sagan 1.1.8 1.1.10: A parsing library for RIPE Atlas result strings
 net-libs/roadrunner 0.9.1: RoadRunner library provides API for using Blocks Extensible Exchange Protocol
 net-libs/rpc2 2.0 2.8 2.10: Remote procedure call package for IP/UDP (used by Coda)
 net-libs/serf 1.3.8 1.3.8-r1: HTTP client library
