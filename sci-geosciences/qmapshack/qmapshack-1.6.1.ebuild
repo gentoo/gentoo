@@ -1,11 +1,7 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
-<<<<<<< HEAD
 EAPI=6
-=======
-EAPI=5
->>>>>>> fdc07ad... Version bump to version 1.6.1
 inherit cmake-utils
 
 DESCRIPTION="GPS mapping utility"
