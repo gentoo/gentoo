@@ -7340,7 +7340,7 @@ dev-python/lp_solve 5.5.2.0-r1: Python wrappers for lpsolve linear programming l
 dev-python/lupy 0.2.1-r2: Lupy is a is a full-text indexer and search engine written in Python
 dev-python/lxml 3.4.4 3.5.0 3.6.0: A Pythonic binding for the libxml2 and libxslt libraries
 dev-python/lz4 0.6.1 0.7.0: LZ4 Bindings for Python
-dev-python/m2crypto 0.22.3-r4 0.22.3-r5 0.23.0: M2Crypto: A Python crypto and SSL toolkit
+dev-python/m2crypto 0.22.3-r4 0.22.3-r5 0.23.0 0.24.0: M2Crypto: A Python crypto and SSL toolkit
 dev-python/m2secret 0.1.1-r1: Encryption and decryption module and CLI utility
 dev-python/maintboot 0.1.0: Run maintenance tasks outside the OS
 dev-python/mako 1.0.0 1.0.2 1.0.3: A Python templating language
@@ -7674,7 +7674,7 @@ dev-python/pylibacl 0.5.0-r1: POSIX ACLs (Access Control Lists) for Python
 dev-python/pyliblzma 0.5.3-r1: Python bindings for liblzma
 dev-python/pylibmc 1.4.3 1.5.0: Libmemcached wrapper written as a Python extension
 dev-python/pylibpcap 0.6.4 0.6.4-r1: Python interface to libpcap
-dev-python/pylint 1.4.4 1.4.5 1.5.1 1.5.2 1.5.3 1.5.4: Python code static checker
+dev-python/pylint 1.4.4 1.4.5 1.5.1 1.5.2 1.5.3 1.5.4 1.5.5: Python code static checker
 dev-python/pylirc 0.0.5-r1: lirc module for Python
 dev-python/pylons 1.0.1-r1 1.0.2: Pylons Web Framework
 dev-python/pylons-sphinx-themes 0.3.1: Pylons Sphinx themes for documentation styling
@@ -7985,7 +7985,7 @@ dev-python/sepolgen 1.2.1-r1 1.2.2 1.2.3 9999: SELinux policy generation library
 dev-python/serpent 1.7 1.9 1.10 1.11 1.12: A simple serialization library based on ast.literal_eval
 dev-python/service_identity 14.0.0 16.0.0: Service identity verification for pyOpenSSL
 dev-python/setproctitle 1.1.8 1.1.9: Allow customization of the process title
-dev-python/setuptools 18.4 18.5 18.6.1 18.7.1 18.8.1 19.1.1 19.2 19.4 19.6.2 19.7 20.0 20.1.1 20.2.2 20.3.1 9999: Collection of extensions to Distutils
+dev-python/setuptools 18.4 18.5 18.6.1 18.7.1 18.8.1 19.1.1 19.2 19.4 19.6.2 19.7 20.0 20.1.1 20.2.2 20.3.1 20.6.7 9999: Collection of extensions to Distutils
 dev-python/setuptools-git 1.0 1.1: Setuptools revision control system plugin for Git
 dev-python/setuptools_hg 0.4-r1: Setuptools/distribute plugin for finding files under Mercurial version control
 dev-python/setuptools_scm 1.8.0 1.9.0 1.10.0 1.10.1: package to manage versions by scm tags via setuptools
@@ -17870,7 +17870,7 @@ x11-drivers/xf86-video-amdgpu 0.0.01_pre20150814 1.0.1 9999: Accelerated Open So
 x11-drivers/xf86-video-apm 1.2.4 1.2.5 1.2.5-r1: Alliance ProMotion video driver
 x11-drivers/xf86-video-ark 0.7.5: X.Org driver for ark cards
 x11-drivers/xf86-video-ast 0.97.0-r1 1.0.1 1.1.5: X.Org driver for ASpeedTech cards
-x11-drivers/xf86-video-ati 6.14.6-r1 7.3.0 7.4.0 7.5.0 7.6.1 7.6.1_p20160324: ATI video driver
+x11-drivers/xf86-video-ati 6.14.6-r1 7.5.0 7.6.1 7.6.1_p20160324 7.6.1_p20160401: ATI video driver
 x11-drivers/xf86-video-chips 1.2.6: Chips and Technologies video driver
 x11-drivers/xf86-video-cirrus 1.5.1 1.5.2 1.5.3: Cirrus Logic video driver
 x11-drivers/xf86-video-dummy 0.3.6 0.3.7: X.Org driver for dummy cards
@@ -17880,7 +17880,7 @@ x11-drivers/xf86-video-geode 2.11.17 2.11.18: AMD Geode GX2 and LX video driver
 x11-drivers/xf86-video-glint 1.2.7 1.2.8 1.2.8-r1: GLINT/Permedia video driver
 x11-drivers/xf86-video-i128 1.3.5 1.3.6 1.3.6-r1: Number 9 I128 video driver
 x11-drivers/xf86-video-i740 1.3.5: Intel i740 video driver
-x11-drivers/xf86-video-intel 2.9.1 2.21.15 2.99.917-r2 2.99.917_p20160224 2.99.917_p20160316 2.99.917_p20160324: X.Org driver for Intel cards
+x11-drivers/xf86-video-intel 2.9.1 2.21.15 2.99.917-r2 2.99.917_p20160224 2.99.917_p20160324 2.99.917_p20160403: X.Org driver for Intel cards
 x11-drivers/xf86-video-ivtv 1.1.2 1.1.2-r1 1.1.2-r2: X.Org driver for TV-out on ivtvdev cards
 x11-drivers/xf86-video-mach64 6.9.5: ATI Mach64 video driver
 x11-drivers/xf86-video-mga 1.6.2 1.6.3 1.6.4: Matrox video driver
