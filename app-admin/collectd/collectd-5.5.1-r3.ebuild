@@ -76,11 +76,9 @@ COMMON_DEPEND="
 	collectd_plugins_curl_xml?		( net-misc/curl dev-libs/libxml2:= )
 	collectd_plugins_dbi?			( dev-db/libdbi )
 	collectd_plugins_dns?			( net-libs/libpcap )
-	collectd_plugins_genericjmx?		( virtual/jre:= dev-java/java-config-wrapper )
 	collectd_plugins_gmond?			( sys-cluster/ganglia )
 	collectd_plugins_ipmi?			( >=sys-libs/openipmi-2.0.16-r1 )
 	collectd_plugins_iptables?		( >=net-firewall/iptables-1.4.13:= )
-	collectd_plugins_java?			( virtual/jre:= dev-java/java-config-wrapper )
 	collectd_plugins_log_logstash?		( dev-libs/yajl )
 	collectd_plugins_lvm?			( sys-fs/lvm2 )
 	collectd_plugins_memcachec?		( dev-libs/libmemcached )
@@ -133,6 +131,8 @@ DEPEND="${COMMON_DEPEND}
 	virtual/pkgconfig"
 
 RDEPEND="${COMMON_DEPEND}
+	collectd_plugins_genericjmx?		( >=virtual/jre-1.6 )
+	collectd_plugins_java?			( >=virtual/jre-1.6 )
 	collectd_plugins_syslog?		( virtual/logger )
 	selinux?				( sec-policy/selinux-collectd )"
 
