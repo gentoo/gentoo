@@ -16,7 +16,8 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE=""
 
-DEPEND="dev-libs/libplatform
+# libplatform changed in version 2 from platform to p8-platform which makes it incompatible
+DEPEND="=dev-libs/libplatform-1*
 	=media-libs/kodi-platform-16*
 	=media-tv/kodi-16*"
 RDEPEND="${DEPEND}"
