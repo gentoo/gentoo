@@ -1,0 +1,359 @@
+--- savagewheels-1.6.0/src/Main.cpp.old	2016-04-14 21:18:38.115071742 -0700
++++ savagewheels-1.6.0/src/Main.cpp	2016-04-14 22:01:42.375422000 -0700
+@@ -43,10 +43,17 @@
+  * Alpha Release: 29.06.2003
+  */
+ 
+ #include "Main.h"
+ 
++const char *sys_datadir;
++const char *usr_cfgdir;
++const char *usr_datadir;
++
++char *ART_FILE;
++char *BINDINGS_FILE;
++
+ int main( int argc, char *argv[] )
+ {
+ 	bool hardware_support = true;
+ 	/*
+ 	 * Start the game in a window by default.
+@@ -57,16 +64,92 @@ int main( int argc, char *argv[] )
+ 	 * Linux Note: Running the game in fullscreen would sometimes crash the gfx manager.
+ 	 * This is probably due to some video drivers. I was so far able to reproduce it on
+ 	 * ATI Mobility type of video cards.
+ 	 */
+ 	bool fullscreen = false;
++	String tmp;
+ 
+ #ifdef LINUX_BUILD
++	sys_datadir = getenv("SAVAGEWHEELS_SYS_DATADIR");
++	if (sys_datadir == NULL)
++	{
++	    fprintf(stderr, "SAVAGEWHEELS_SYS_DATADIR not set.\n");
++	    return 1;
++	}
++	sys_datadir = strdup(sys_datadir);
++
++	usr_cfgdir = getenv("SAVAGEWHEELS_USR_CONFDIR");
++	if (usr_cfgdir == NULL)
++	{
++	    fprintf(stderr, "SAVAGEWHEELS_USR_CONFDIR not set.\n");
++	    return 1;
++	}
++	usr_cfgdir = strdup(usr_cfgdir);
++
++	usr_datadir = getenv("SAVAGEWHEELS_USR_DATADIR");
++	if (usr_datadir == NULL)
++	{
++	    fprintf(stderr, "SAVAGEWHEELS_USR_DATADIR not set.\n");
++	    return 1;
++	}
++	usr_datadir = strdup(usr_datadir);
++
++	if (sys_datadir == NULL || usr_cfgdir == NULL || usr_datadir == NULL)
++	{
++	    fprintf(stderr, "Insufficient memory.  Execution aborted.\n");
++	    return 1;
++	}
++
+ 	setenv("SDL_VIDEO_CENTERED", "1", 1);
+ #else
++	sys_datadir = usr_cfgdir = usr_datadir = "./";
+ 	_putenv("SDL_VIDEO_CENTERED=1");
+ #endif
++	int len;
++	len = snprintf(NULL, 0, "%s/graphics/gfxdata.kdf", sys_datadir);
++	if (len < 0)
++	{
++		fprintf(stderr,
++			"Unable to store '%s/graphics/gfxdata.kdf': %s\n",
++			sys_datadir, strerror(errno));
++		return 1;
++	}
++	if (len == INT_MAX)
++	{
++		fprintf(stderr, "Unable to store '%s/graphics/gfxdata.kdf': "
++			"Path too log\n", sys_datadir);
++		return 1;
++	}
++	ART_FILE = new (std::nothrow) char[len + 1];
++	if (ART_FILE == NULL)
++	{
++		fprintf(stderr, "Insufficent memory.  Execution aborted.\n");
++		return 1;
++	}
++	sprintf(ART_FILE, "%s/graphics/gfxdata.kdf", sys_datadir);
++
++	len = snprintf(NULL, 0, "%s/bindings.xml", usr_cfgdir);
++	if (len < 0)
++	{
++		fprintf(stderr,
++			"Unable to store '%s/bindings.xml': %s\n", usr_cfgdir,
++			strerror(errno));
++		return 1;
++	}
++	if (len == INT_MAX)
++	{
++		fprintf(stderr, "Unable to store '%s/bindings.xml': "
++			"Path too log\n", usr_cfgdir);
++		return 1;
++	}
++	BINDINGS_FILE = new (std::nothrow) char[len + 1];
++	if (BINDINGS_FILE == NULL)
++	{
++		fprintf(stderr, "Insufficent memory.  Execution aborted.\n");
++		return 1;
++	}
++	sprintf(BINDINGS_FILE, "%s/bindings.xml", usr_cfgdir);
+ 
+ 	if (argc > 1) {
+ 		for (int i = 1; i < argc; i++) {
+ 			if (!strncmp(argv[i], "-wnd", 4)) {
+ 				fullscreen = false;
+@@ -104,11 +187,12 @@
+ 	
+ 	/*
+ 	 * Load & Start Game
+ 	 */
+ 	  
+-	OpenLog("debug.html");
++	tmp = String(usr_datadir).append("/debug.html");
++	OpenLog(tmp.c_str());
+ 	
+ 	CGame game;
+ 	game.Execute(fullscreen, hardware_support);
+ 	game.Close();
+ 
+--- savagewheels-1.6.0/src/Main.h.old	2016-04-14 21:20:27.443522441 -0700
++++ savagewheels-1.6.0/src/Main.h	2016-04-14 21:56:22.449964486 -0700
+@@ -35,10 +35,11 @@
+ #include <cstdlib>
+ #include <cmath>
+ #include <cstdarg>
+ #include <cassert>
+ #include <exception>
++#include <cerrno>
+ 
+ #include <ctime>
+ #include <sys/stat.h>
+ #include <sys/types.h>
+ #include <sys/timeb.h>
+@@ -84,12 +85,10 @@
+ 
+ // --- version
+ #include "Config.h"
+ 
+ // --- global game defines
+-#define ART_FILE	"graphics/gfxdata.kdf"
+-#define BINDINGS_FILE	"bindings.xml"
+ #define LOAD_OK         (-1)
+ #define LOAD_FAILED     (0)
+ #define HRESULT(x)	( (x) == NULL : LOAD_OK ? LOAD_FAILED )
+ #define NLPTR_SURF	0 //((SDL_Surface *)NULL)
+ 
+@@ -100,10 +99,16 @@
+ #endif
+ 
+ typedef std::string			String;
+ typedef std::ostringstream	OutputSStream;
+ 
++extern const char *sys_datadir;
++extern const char *usr_cfgdir;
++extern const char *usr_datadir;
++
++extern char *ART_FILE;
++extern char *BINDINGS_FILE;
+ //#include "pstdint.h" // portable types
+ #include "Utils.h"
+ #include "CKdf.h"
+ #include "CSdl.h"
+ #include "CSwv_module.h"
+--- savagewheels-1.6.0/src/Utils.cpp.old	2016-04-15 19:28:21.757879157 -0700
++++ savagewheels-1.6.0/src/Utils.cpp	2016-04-15 19:28:28.478786779 -0700
+@@ -261,11 +261,11 @@ inline String GetFormattedTime()
+ bool OpenLog ( const char* filename )
+ {
+     String time( GetFormattedTime() );
+ 
+     // open debug file
+-    debug_file.open ( "debug.html", std::ios::out ); //ios::ate );
++    debug_file.open ( filename, std::ios::out ); //ios::ate );
+     if ( ! debug_file.good() )
+       return false;
+ 
+     debug_file << "<html><head><title>Savage Wheels Log File</title></head><body><h1>Savage Wheels V" << VER_MAJ << "." << VER_MIN << " - Log File</h1>";
+     debug_file << "<hr/><pre>";
+--- savagewheels-1.6.0/src/CGame.cpp.old	2016-04-15 20:43:37.479330001 -0700
++++ savagewheels-1.6.0/src/CGame.cpp	2016-04-15 21:04:48.044721904 -0700
+@@ -116,10 +116,11 @@ void CGame::Close()
+ ///////////////////////////////////////////////////////////////////////
+ bool CGame::LoadGame()
+ {
+ 	char buf[255];
+ 	int  i = 0;
++	String tmp (sys_datadir);
+ 
+ 	AppendToLog( LOG_DASH );
+ 	AppendToLog("Loading Game...");
+ 
+ 	// global screen rect
+@@ -161,11 +162,14 @@ bool CGame::LoadGame()
+ 	srand( (unsigned)SDL_GetTicks() );
+ 
+ 	UpdateSplash();  // UPDATESPLASH... 
+ 
+ 	// search for vehicles
+-	if ( Swv.SearchAndLoad( "autos" ) != SWV_SUCCESS ) return false;
++	tmp.resize(strlen(sys_datadir));
++	tmp.append("/autos");
++	if ( Swv.SearchAndLoad( tmp.c_str() ) != SWV_SUCCESS )
++		return false;
+ 
+ 	// check for vehicle number
+ 	if ( Swv.GetVehicles() < 4 ) 
+ 	{
+ 		AppendToLog( "Not enough vehicles in the /auto dir!" );
+--- savagewheels-1.6.0/src/CSdl.cpp.old	2016-04-16 16:00:56.600502348 -0700
++++ savagewheels-1.6.0/src/CSdl.cpp	2016-04-16 16:01:16.152226435 -0700
+@@ -1298,13 +1298,10 @@
+ 	return NULL;
+ #else
+ 	
+ 	SDL_Surface *sdl_surf = NULL;
+ 
+-	char filename_buf[255];
+-	sprintf( filename_buf, "../%s", filename );
+-
+ 	if ( ( sdl_surf = SDL_LoadBMP( filename_buf )) == NULL )
+ 	{
+ 		LOG("...failed to load graphics from : " << filename_buf );
+ 		return NULL;
+ 	}
+--- savagewheels-1.6.0/src/CSounds.cpp.old	2016-04-16 16:06:43.887600441 -0700
++++ savagewheels-1.6.0/src/CSounds.cpp	2016-04-16 16:17:44.729332218 -0700
+@@ -46,22 +46,39 @@
+ // Name: Initialize()
+ // Desc: Load all ingame sounds
+ //////////////////////////////////////////////////////////////////////
+ bool CSounds::Initialize( CSdl *pSdl )
+ {
+-	ASSERT( _sdl != NULL );
++	ASSERT( pSdl != NULL );
+ 	this->_sdl = pSdl;
+ 
+ #if defined(WITH_FMOD) || defined(WITH_SDLMIXER)
++	String tmp (sys_datadir);
+ 
+-#define LOAD_SOUND( container, name, buffered ) if ( (sounds[container] = _sdl->LoadSound( name, buffered )) == -1 ) { \
+-	LOG( "Failed to load " << name << " ! "); \
+-	return false; }
++#define LOAD_SOUND( container, name, buffered)					\
++	do {									\
++		tmp.append("/").append(name);					\
++		sounds[container] =						\
++			_sdl->LoadSound( tmp.c_str(), buffered );		\
++		if ( sounds[container] == -1 ) {				\
++			LOG( "Failed to load " << name << " ! " );		\
++			return false;						\
++		}								\
++		tmp.resize(strlen(sys_datadir));				\
++	} while(0)
+ 
+-#define LOAD_MUSIC( container, name ) if ( (music[container] = _sdl->LoadSound( name, false, true )) == -1 ) { \
+-	LOG( "Failed to load music " << name << " ! "); \
+-	return false; }
++#define LOAD_MUSIC( container, name)						\
++	do {									\
++		tmp.append("/").append(name);					\
++		music[container] =						\
++			_sdl->LoadSound( tmp.c_str(), false, true );		\
++		if ( music[container] == -1 ) {					\
++			LOG( "Failed to load music " << name << " ! " );	\
++			return false;						\
++		}								\
++		tmp.resize(strlen(sys_datadir));				\
++	} while(0)
+ 
+ 	LOAD_SOUND( SND_CRASHLIGHT1, "sound/crash3.wav", true );
+ 	LOAD_SOUND( SND_CRASHLIGHT2, "sound/crash2.wav", true );
+ 	LOAD_SOUND( SND_CRASHLIGHT3, "sound/crash1.wav", true );
+ 	LOAD_SOUND( SND_EXPLOSION1, "sound/exp.wav", true );
+--- savagewheels-1.6.0/src/CSwv_module.cpp.old	2016-04-16 20:58:04.366973388 -0700
++++ savagewheels-1.6.0/src/CSwv_module.cpp	2016-04-16 20:58:13.026851358 -0700
+@@ -204,12 +204,10 @@ int CSwv_module::Load( char *filename, S
+ // 		DBG("pos: " << swv_file->pfiles[i].pos
+ // 				<< " size (KB): " << swv_file->pfiles[i].length
+ // 				<< " name: " << swv_file->pfiles[i].filename);
+ //	}
+ 	
+-	// set module filename
+-	sprintf( swv_file->filename, "%s", filename );
+ 
+ 	if ( fp != NULL )
+ 	  fclose( fp );
+ 
+ 	return SWV_SUCCESS;
+--- savagewheels-1.6.0/src/CSdl.cpp.old	2016-04-16 21:02:07.680544534 -0700
++++ savagewheels-1.6.0/src/CSdl.cpp	2016-04-16 21:06:59.400432874 -0700
+@@ -1336,12 +1336,25 @@ SDL_Surface* CSdl::LoadBitmap( const cha
+ SDL_Surface* CSdl::LoadBitmap( const char *filename, int32_t file_offset, Uint32 file_size, Uint32 color_key, Uint16 alpha_value )
+ {
+ 	SDL_Surface  *sdl_surf	= NULL;						// temp surface
+ 	FILE		 *fp		= NULL;						// file pointer
+ 	SDL_RWops	 *sdl_rw	= NULL;						// sdl_read_write_operations
++	String tmp;
+ 
+-	if ( ( fp = fopen( filename, "rb")) == NULL ) 
++#ifdef LINUX_BUILD
++	if ( filename[0] != '/' )
++	{
++	    tmp = String(sys_datadir).append("/autos/").append(filename);
++	}
++	else
++	{
++		tmp = String(filename);
++	}
++#else
++	tmp = String(filename);
++#endif
++	if ( ( fp = fopen( tmp.c_str(), "rb")) == NULL ) 
+ 	{
+ 		LOG("...failed to open file : " << filename );
+ 		return NULL;
+ 	}
+ 
+--- savagewheels-1.6.0/src/CMainMenu.cpp.old	2016-04-16 22:13:23.442523534 -0700
++++ savagewheels-1.6.0/src/CMainMenu.cpp	2016-04-16 22:13:17.701605381 -0700
+@@ -1121,12 +1121,13 @@ void CMainMenu::SaveSettings()
+ 	if ( _game == NULL )
+ 	  return;
+ 
+ 	FILE *fp = NULL;
+ 	char  header[3] = { 'S', 'W', 'P' };
++	String strPref(String(usr_cfgdir) + "/pref");
+ 
+-	if ( ( fp = fopen( "pref", "wb" ) ) == NULL )
++	if ( ( fp = fopen( strPref.c_str(), "wb" ) ) == NULL )
+ 	{
+ 		AppendToLog( "Error writing to /pref file !" );
+ 		return;
+ 	}
+ 
+--- savagewheels-1.6.0/src/CMainMenu.cpp.old	2016-04-17 07:38:09.417653268 -0700
++++ savagewheels-1.6.0/src/CMainMenu.cpp	2016-04-17 07:38:24.277437113 -0700
+@@ -1167,12 +1168,13 @@ void CMainMenu::SaveSettings()
+ void CMainMenu::LoadSettings()
+ {
+ 	FILE  *fp = NULL;
+ 	char  header[3];
+ 	bool  success = true;
++	String strPref(String(usr_cfgdir) + "/pref");
+ 
+-	if ( ( fp = fopen( "pref", "rb" ) ) == NULL )
++	if ( ( fp = fopen( strPref.c_str(), "wb" ) ) == NULL )
+ 	{
+ 		AppendToLog( "Error opening /pref file !" );
+ 		success = false;
+ 	}
+ 
