@@ -6141,7 +6141,7 @@ dev-perl/Signal-Mask 0.8.0: Signal masks made easy
 dev-perl/Snowball-Norwegian 1.200.0-r1: Porters stemming algorithm for Norwegian
 dev-perl/Snowball-Swedish 1.200.0-r1: Porters stemming algorithm for Swedish
 dev-perl/Socket-GetAddrInfo 0.220.0: Address-family independent name resolving functions
-dev-perl/Socket6 0.230.0-r1 0.250.0: IPv6 related part of the C socket.h defines and structure manipulators
+dev-perl/Socket6 0.230.0-r1 0.250.0 0.270.0: IPv6 related part of the C socket.h defines and structure manipulators
 dev-perl/Sort-Key 1.330.0: sort objects by some (calculated) key
 dev-perl/Sort-Key-IPv4 0.30.0: Sort IP v4 addresses
 dev-perl/Sort-Naturally 1.30.0-r1: sort lexically, but sort numeral parts numerically
@@ -6301,7 +6301,7 @@ dev-perl/Text-Roman 3.500.0: Allows conversion between Roman and Arabic algarism
 dev-perl/Text-Shellwords 1.80.0-r1: Parses lines of text and returns a set of tokens using the same rules as the Unix shell
 dev-perl/Text-Table 1.127.0-r1 1.130.0: Organize Data in Tables
 dev-perl/Text-Unaccent 1.80.0-r1: Removes accents from a string
-dev-perl/Text-Unidecode 0.40.0-r1 1.230.0 1.240.0: Plain ASCII transliterations of Unicode text
+dev-perl/Text-Unidecode 0.40.0-r1 1.230.0 1.240.0 1.270.0: Plain ASCII transliterations of Unicode text
 dev-perl/Text-VimColor 0.260: Syntax highlighting using vim
 dev-perl/Text-WikiFormat 0.800.0-r1 0.810.0: Translate Wiki formatted text into other formats
 dev-perl/Text-WrapI18N 0.60.0-r1: Internationalized substitute of Text::Wrap
@@ -7222,7 +7222,7 @@ dev-python/hypothesis 1.12.0 1.19.0 2.0.0 3.0.0 3.1.0: A library for property ba
 dev-python/icalendar 3.8.4 3.9.0 3.9.2: Package used for parsing and generating iCalendar files (RFC 2445)
 dev-python/iconvcodec 1.1.2-r1: Python Codecs for Iconv Encodings
 dev-python/id3-py 1.2 1.2-r1: Module for manipulating ID3 tags in Python
-dev-python/idna 1.1 2.0: Internationalized Domain Names in Applications (IDNA)
+dev-python/idna 1.1 2.0 2.1: Internationalized Domain Names in Applications (IDNA)
 dev-python/ijson 1.1 2.0 2.1 2.2 2.3: Iterative JSON parser with a Pythonic interface
 dev-python/imapclient 0.12 0.13: easy-to-use, pythonic, and complete IMAP client library
 dev-python/imdbpy 4.9-r1 5.0: Python package to access the IMDb movie database
@@ -7478,7 +7478,7 @@ dev-python/oslotest 1.3.0 1.5.0 1.5.1 1.6.0 1.10.0 1.12.0 2.4.0: Oslo test frame
 dev-python/osprofiler 0.3.0 1.2.0: OpenStack Profiler Library
 dev-python/ovs 2.4.0: OVS bindings for python.
 dev-python/pSQL 1.2.0 1.2.1: MySQL abstraction layer for python
-dev-python/packaging 15.3-r2 16.0 16.1 16.2 16.5: Core utilities for Python packages
+dev-python/packaging 15.3-r2 16.0 16.1 16.2 16.5 16.6: Core utilities for Python packages
 dev-python/paisley 0.3.1 0.3.1-r1: Paisley is a CouchDB client written in Python to be used within a Twisted application
 dev-python/pandas 0.16.2 0.17.0 0.17.1 9999: Powerful data structures for data analysis and statistics
 dev-python/paramiko 1.15.1-r1 1.16.0 9999: SSH2 protocol library
@@ -7551,7 +7551,7 @@ dev-python/promise 0.2.2-r1: Bytecode optimisation using staticness assertions
 dev-python/prompt_toolkit 0.45 0.46 0.47 0.48 0.50 0.52 0.53 0.54 0.57 0.58 0.60: Building powerful interactive command lines in Python
 dev-python/protorpc 0.10.0 0.11.1: Google Protocol RPC
 dev-python/pssi 1.0-r1: Python Simple Smartcard Interpreter
-dev-python/psutil 1.2.1 2.1.3 3.0.1 3.1.1 3.2.2 3.3.0 3.4.2 4.0.0: Retrieve information on running processes and system utilization
+dev-python/psutil 1.2.1 2.1.3 3.0.1 3.1.1 3.2.2 3.3.0 3.4.2 4.0.0 4.1.0: Retrieve information on running processes and system utilization
 dev-python/psycopg 1.1.21-r1 2.5.3 2.5.4 2.6 2.6.1: PostgreSQL database adapter for Python
 dev-python/ptpython 0.20 0.21 0.22 0.24 0.25 0.28 0.29 0.32: Python REPL build on top of prompt_toolkit
 dev-python/ptyprocess 0.5 0.5.1: Run a subprocess in a pseudo terminal
@@ -7876,7 +7876,7 @@ dev-python/pythonmagick 0.9.11 0.9.12: Python bindings for ImageMagick
 dev-python/pythonutils 0.4.0-r1: Voidspace Python modules
 dev-python/pytidylib 0.2.4: Python wrapper for HTML Tidy (tidylib)
 dev-python/pytools 2014.3.5 2016.1 9999: A collection of tools missing from the Python standard library
-dev-python/pytz 2015.4 2015.6 2015.7: World timezone definitions for Python
+dev-python/pytz 2015.4 2015.6 2015.7 2016.3: World timezone definitions for Python
 dev-python/pyudev 0.16.1-r1: Python binding to libudev
 dev-python/pyusb 0.4.3 1.0.0_beta2: USB support for Python
 dev-python/pyutil 2.0.0: A collection of utilities for Python programmers
