@@ -246,10 +246,6 @@ x11-themes/gtk-engines-qtcurve mozilla
 # Does not work on ppc/ppc64
 net-misc/tor tor-hardening
 
-# Michael Weber <xmw@gentoo.org> (3 Jun 2012)
-# pymol got stabled (bug 366229) but USE=apbs deps aren't keyworded
-sci-chemistry/pymol apbs
-
 # Andreas K. Huettel <dilfridge@gentoo.org> (28 May 2012)
 # Mask new useflag of opencv, as dependency dev-cpp/tbb is not keyworded on ppc
 media-libs/opencv tbb

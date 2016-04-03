@@ -15,10 +15,6 @@ x11-themes/smplayer-themes
 # Need deps pecl-apc and pecl-uploadprogress bug #416897
 >=www-apps/drupal-7.14
 
-# Justin Lecher <jlec@gentoo.org> (9 Mar 2011)
-# sci-libs/plplot needs keywords #358035
-=sci-biology/emboss-6.3.1*
-
 # Doug Goldstein <cardoe@gentoo.org> (11 Jan 2013)
 # Masked due to depends on bug #438780
 >=app-emulation/qemu-1.2.0

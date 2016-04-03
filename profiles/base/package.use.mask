@@ -239,10 +239,6 @@ games-emulation/yabause qt5
 # pidgin-opensteamworks is only available for amd64, ppc32 and x86
 net-im/telepathy-connection-managers steam
 
-# Andreas K. Huettel <dilfridge@gentoo.org> (27 Feb 2015)
-# Mask atlas support since atlas is not in the main tree yet
-sci-libs/armadillo atlas
-
 # Alexandre Rostovtsev <tetromino@gentoo.org> (18 Feb 2015)
 # Experimental backend, plus it requires openvg support in mesa which is
 # now disabled in >=mesa-10.4 (bug #536434)
@@ -609,8 +605,8 @@ gnome-extra/zeitgeist-datasources chromium tomboy
 app-misc/tracker eds
 
 # Christoph Jungans <ottxor@gentoo.org> (26 Dec 2012)
-# cuda/openmm/mkl only works on x86/amd64
-sci-chemistry/gromacs cuda mkl openmm
+# cuda/mkl only works on x86/amd64
+sci-chemistry/gromacs cuda mkl
 
 # Zac Medico <zmedico@gentoo.org> (13 Jun 2012)
 # Mask USE=pypy* for sys-apps/portage, since pypy has limited KEYWORDS.

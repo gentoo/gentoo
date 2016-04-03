@@ -170,7 +170,6 @@ sci-electronics/eagle
 sci-chemistry/cara-bin
 sci-chemistry/cyana
 sci-chemistry/icm
-sci-chemistry/icm-browser
 sci-chemistry/mars
 sci-chemistry/xdsgui
 sci-chemistry/xdsstat-bin

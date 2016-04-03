@@ -132,8 +132,8 @@ sys-kernel/dracut -dracut_modules_biosdevname -dracut_modules_systemd
 gnome-extra/zeitgeist-datasources -chromium -tomboy
 
 # Christoph Jungans <ottxor@gentoo.org> (26 Dec 2012)
-# cuda/openmm works on x86/amd64 (masked in base)
-sci-chemistry/gromacs -cuda -mkl -openmm
+# cuda works on x86/amd64 (masked in base)
+sci-chemistry/gromacs -cuda -mkl
 
 # Diego Elio Pettenò <flameeyes@gentoo.org> (3 Nov 2012)
 # Unmask here, as it's masked in base.
