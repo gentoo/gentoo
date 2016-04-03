@@ -12368,7 +12368,7 @@ media-libs/libgig 3.3.0 4.0.0: a C++ library for loading Gigasampler files and D
 media-libs/libgii 1.0.2-r1: Fast and safe graphics and drivers for about any graphics card to the Linux kernel (sometimes)
 media-libs/libgltf 0.0.1 0.0.2 9999: C++ Library for rendering OpenGL models stored in glTF format
 media-libs/libgphoto2 2.5.8 2.5.9: Library that implements support for numerous digital cameras
-media-libs/libgpod 0.8.3: Shared library to access the contents of an iPod
+media-libs/libgpod 0.8.3 0.8.3-r1: Shared library to access the contents of an iPod
 media-libs/libgroove 4.3.0: Streaming audio processing library.
 media-libs/libharu 2.3.0-r1: C/C++ library for PDF generation
 media-libs/libhdhomerun 20140121 20150826: SiliconDust HDHomeRun Utilties
