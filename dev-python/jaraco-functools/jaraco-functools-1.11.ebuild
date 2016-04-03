@@ -27,17 +27,11 @@ DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 		${RDEPEND}
 		>=dev-python/pytest-2.8[${PYTHON_USEDEP}]
 		dev-python/pytest-runner[${PYTHON_USEDEP}]
+		dev-python/backports-unittest-mock[${PYTHON_USEDEP}]
 	)
 "
 
 S="${WORKDIR}/${MY_PN}-${PV}"
-
-python_prepare_all() {
-	if use test && has_version "${CATEGORY}/${PN}"; then
-		die "Ensure $PN is not already installed or the test suite will fail"
-	fi
-	distutils-r1_python_prepare_all
-}
 
 python_test() {
 	PYTHONPATH=. py.test || die "tests failed with ${EPYTHON}"
