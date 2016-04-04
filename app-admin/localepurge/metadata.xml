@@ -4,12 +4,12 @@
 <maintainer type="person">
   <email>wimmuskee@gmail.com</email>
   <name>Wim Muskee</name>
+  <description>Proxied maintainer; set to assignee in all bugs</description>
 </maintainer>
 <maintainer type="project">
   <email>proxy-maint@gentoo.org</email>
   <name>Proxy Maintainers</name>
 </maintainer>
-<longdescription>
-Just a simple tool to erase all uneeded locale and man files usually generated for USE="nls"
-</longdescription>
+<longdescription>Just a simple tool to erase all uneeded locale and man files 
+usually generated for USE="nls"</longdescription>
 </pkgmetadata>
