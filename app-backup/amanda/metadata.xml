@@ -9,7 +9,7 @@
 	<maintainer type="person">
 		<email>lists@xunil.at</email>
 		<name>Stefan G. Weichinger</name>
-		<description>Proxied developer. Please CC on bugs.</description>
+		<description>Proxied developer; set to assignee in all bugs</description>
 	</maintainer>
 	<maintainer type="person">
 		<email>dustin@v.igoro.us</email>
