@@ -4,13 +4,13 @@
 
 # TODO: Add python support.
 
-EAPI="5"
+EAPI=6
 
 inherit multilib-minimal
 
 if [[ ${PV} == 9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/tatsuhiro-t/nghttp2.git"
-	inherit git-2
+	inherit git-r3
 else
 	SRC_URI="https://github.com/tatsuhiro-t/nghttp2/releases/download/v${PV}/${P}.tar.gz"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
@@ -58,5 +58,5 @@ multilib_src_configure() {
 }
 
 multilib_src_install_all() {
-	use static-libs || find "${ED}" -name '*.la' -delete
+	use static-libs || find "${ED}"/usr -name '*.la' -delete
 }
