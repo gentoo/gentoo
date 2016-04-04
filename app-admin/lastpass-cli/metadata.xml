@@ -4,6 +4,7 @@
 	<maintainer type="person">
 		<email>gokturk@binghamton.edu</email>
 		<name>Gokturk 'gokturk' Yuksek</name>
+		<description>Proxied maintainer; set to assignee in all bugs</description>
 	</maintainer>
 	<maintainer type="project">
 		<email>proxy-maint@gentoo.org</email>

@@ -4,7 +4,7 @@
   <maintainer type="person">
     <email>nerve@ipwar.ch</email>
     <name>Daniel Heule</name>
-    <description>Maintainer. Assign bugs to him</description>
+    <description>Proxied maintainer; set to assignee in all bugs</description>
   </maintainer>
   <maintainer type="project">
     <email>proxy-maint@gentoo.org</email>
