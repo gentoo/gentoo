@@ -100,19 +100,19 @@ src_configure() {
 		-DMPICH=OFF
 		-DBUNDLED_ANTLR=OFF
 		-DX11=ON
-		-DEIGEN3="(usex eigen)"
-		-DFFTW="(usex fftw)"
-		-DGRIB="(usex grib)"
-		-DGSHHS="(usex gshhs)"
-		-DHDF="(usex hdf)"
-		-DHDF5="(usex hdf5)"
-		-DLIBPROJ4="(usex proj)"
-		-DNETCDF="(usex netcdf)"
-		-DOPENMP="(usex openmp)"
-		-DPNGLIB="(usex png)"
-		-DPSLIB="(usex postscript)"
-		-DUDUNITS="(usex udunits)"
-		-DWXWIDGETS="(usex wxwidgets)"
+		-DEIGEN3="$(usex eigen)"
+		-DFFTW="$(usex fftw)"
+		-DGRIB="$(usex grib)"
+		-DGSHHS="$(usex gshhs)"
+		-DHDF="$(usex hdf)"
+		-DHDF5="$(usex hdf5)"
+		-DLIBPROJ4="$(usex proj)"
+		-DNETCDF="$(usex netcdf)"
+		-DOPENMP="$(usex openmp)"
+		-DPNGLIB="$(usex png)"
+		-DPSLIB="$(usex postscript)"
+		-DUDUNITS="$(usex udunits)"
+		-DWXWIDGETS="$(usex wxwidgets)"
 	)
 	if use imagemagick; then
 		if has_version media-gfx/graphicsmagick[cxx]; then
