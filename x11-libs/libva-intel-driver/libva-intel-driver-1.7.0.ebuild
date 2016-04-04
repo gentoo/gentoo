@@ -32,8 +32,7 @@ else
 fi
 IUSE="+drm wayland X"
 
-RDEPEND=">=x11-libs/libva-1.6[X?,wayland?,drm?,${MULTILIB_USEDEP}]
-	!<x11-libs/libva-1.0.15[video_cards_intel]
+RDEPEND=">=x11-libs/libva-1.7[X?,wayland?,drm?,${MULTILIB_USEDEP}]
 	>=x11-libs/libdrm-2.4.46[video_cards_intel,${MULTILIB_USEDEP}]
 	wayland? ( >=media-libs/mesa-9.1.6[egl,${MULTILIB_USEDEP}] >=dev-libs/wayland-1.0.6[${MULTILIB_USEDEP}] )"
 
