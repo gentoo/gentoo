@@ -24,6 +24,7 @@ src_prepare() {
 		-i Makefile || die
 
 	tc-export CC
+	eapply_user
 }
 
 src_compile() {
