@@ -14202,7 +14202,7 @@ net-libs/libhackrf 2014.04.1 2014.08.1 2015.07.2 9999: library for communicating
 net-libs/libhtp 0.5.18: security-aware parser for the HTTP protocol and the related bits and pieces
 net-libs/libhubbub 0.3.1-r1 0.3.3: HTML5 compliant parsing library, written in C
 net-libs/libident 0.32: A small library to interface to the Ident protocol server
-net-libs/libinfinity 0.5.4 0.6.7: An implementation of the Infinote protocol written in GObject-based C
+net-libs/libinfinity 0.6.7: An implementation of the Infinote protocol written in GObject-based C
 net-libs/libircclient 1.6-r2 1.8: Small but powerful library implementing the client-server IRC protocol
 net-libs/libiscsi 1.9.0-r1 1.15.0 9999: iscsi client library and utilities
 net-libs/libisds 0.7 0.10 9999: Client library for accessing ISDS Soap services
