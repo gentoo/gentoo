@@ -2516,6 +2516,11 @@
       <name>Roy Bamford</name>
       <role>Operator</role>
     </member>
+    <member>
+      <email>wraeth@gentoo.org</email>
+      <name>Sam Jorna</name>
+      <role>Operator</role>
+    </member>
   </project>
   <project>
     <email>overlays@gentoo.org</email>
