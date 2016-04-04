@@ -1973,7 +1973,7 @@ app-office/abiword-docs 3.0.0-r1 3.0.1: Fully featured yet light and fast cross 
 app-office/akonadi-server 1.13.0-r2 1.13.1_pre20160203-r1: The server part of Akonadi
 app-office/borg 1.7.4-r3: Calendar and task tracker, written in Java
 app-office/calcurse 4.0.0: a text-based calendar and scheduling application
-app-office/calligra 2.8.5 2.9.11 9999: KDE Office Suite
+app-office/calligra 2.8.5 2.9.11: KDE Office Suite
 app-office/calligra-l10n 2.8.5 2.9.11: Calligra localization package
 app-office/dia 0.97.3_pre20140417-r1 0.97.3: Diagram/flowchart creation program
 app-office/dia2code 0.8.7: Convert UML diagrams produced with Dia to various source code flavours
@@ -10921,7 +10921,7 @@ gnome-extra/gnome-software 3.18.3: Gnome install & update software
 gnome-extra/gnome-system-monitor 3.16.0 3.18.2: The Gnome System Monitor
 gnome-extra/gnome-tweak-tool 3.18.1-r1 3.18.1-r2: Tool to customize GNOME 3 options
 gnome-extra/gnome-user-docs 3.16.1 3.18.1: GNOME end user documentation
-gnome-extra/gnome-user-share 3.18.0 3.18.1: Personal file sharing for the GNOME desktop
+gnome-extra/gnome-user-share 3.18.0 3.18.1 3.18.1-r1: Personal file sharing for the GNOME desktop
 gnome-extra/gnome-utils 3.8.0: Meta package for utilities for the GNOME desktop
 gnome-extra/gnome-weather 3.16.2.1 3.18.1: A weather application for GNOME
 gnome-extra/gnome-web-photo 0.10.6: A tool to generate images and thumbnails from HTML files
