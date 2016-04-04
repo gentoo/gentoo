@@ -1,5 +1,5 @@
-DEFINED_PHASES=configure install preinst prepare unpack
-DEPEND=!static? ( >=sys-libs/ncurses-5.9-r1:0=[unicode?] sys-libs/ncurses:0= magic? ( sys-apps/file ) nls? ( virtual/libintl ) !ncurses? ( slang? ( sys-libs/slang ) ) ) nls? ( sys-devel/gettext ) virtual/pkgconfig static? ( >=sys-libs/ncurses-5.9-r1:0=[unicode?] sys-libs/ncurses:0=[static-libs(+)] magic? ( sys-apps/file[static-libs(+)] ) nls? ( virtual/libintl ) !ncurses? ( slang? ( sys-libs/slang[static-libs(+)] ) ) ) || ( dev-vcs/subversion[http] dev-vcs/subversion[webdav-neon] dev-vcs/subversion[webdav-serf] ) net-misc/rsync !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEFINED_PHASES=configure install prepare unpack
+DEPEND=!static? ( >=sys-libs/ncurses-5.9-r1:0=[unicode?] sys-libs/ncurses:0= magic? ( sys-apps/file ) nls? ( virtual/libintl ) !ncurses? ( slang? ( sys-libs/slang ) ) ) nls? ( sys-devel/gettext ) virtual/pkgconfig static? ( >=sys-libs/ncurses-5.9-r1:0=[unicode?] sys-libs/ncurses:0=[static-libs(+)] magic? ( sys-apps/file[static-libs(+)] ) nls? ( virtual/libintl ) !ncurses? ( slang? ( sys-libs/slang[static-libs(+)] ) ) ) >=dev-vcs/git-1.8.2.1 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=GNU GPL'd Pico clone with more functionality
 EAPI=5
 HOMEPAGE=http://www.nano-editor.org/ https://wiki.gentoo.org/wiki/Nano/Basics_Guide
@@ -7,6 +7,6 @@ IUSE=debug justify +magic minimal ncurses nls slang +spell static unicode
 LICENSE=GPL-3
 RDEPEND=!static? ( >=sys-libs/ncurses-5.9-r1:0=[unicode?] sys-libs/ncurses:0= magic? ( sys-apps/file ) nls? ( virtual/libintl ) !ncurses? ( slang? ( sys-libs/slang ) ) )
 SLOT=0
-_eclass_exported_funcs=pkg_preinst:subversion src_unpack:subversion src_prepare:- src_configure:- src_install:-
-_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	9d81603248f2ba3ec59124320d123e5e	flag-o-matic	d270fa247153df66074f795fa42dba3e	libtool	4890219c51da247200223277f993e054	multilib	3972ca401cf7dbb430df9995f5d8d580	subversion	4fee0a764150bb4dda27ed4d2c4ed7ce	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
-_md5_=9ce08ad73d41b49645d617818c236710
+_eclass_exported_funcs=src_unpack:git-r3 src_prepare:- src_configure:- src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	9d81603248f2ba3ec59124320d123e5e	flag-o-matic	d270fa247153df66074f795fa42dba3e	git-r3	ef66dfc3db09f327af21cf32f140fb2b	libtool	4890219c51da247200223277f993e054	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=aa338b8b009a1677a456a4f95322ebf7
