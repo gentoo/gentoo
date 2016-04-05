@@ -32,8 +32,8 @@ src_prepare() {
 	# Let's simply rename them.
 	for file in "${DUPLICATE_FILES[@]}"; do
 		[[ -f "${file}" ]] || die "Couldn't find: ${file}"
-		bname=$(basename "${file}")
-		path=$(dirname "${file}")
+		bname="${file##*/}"
+		path="${file%/*}"
 		noext="${bname%%.*}"
 		newname="${path}/${PN}_${noext}.vim"
 		mv "${file}" "${newname}" || die
