@@ -12,7 +12,7 @@ RUBY_FAKEGEM_EXTRADOC="README.rdoc History.rdoc"
 
 inherit ruby-fakegem
 
-DESCRIPTION="Hyphenates various words according to the rules of the language the word is written in"
+DESCRIPTION="Hyphenates words according to the rules of the language the word is written in"
 HOMEPAGE="http://rubyforge.org/projects/text-format"
 
 LICENSE="MIT"
