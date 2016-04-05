@@ -1,5 +1,24 @@
+diff --git a/Makefile.am b/Makefile.am
+index 8910b08..1bbe5fd 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -2452,12 +2452,14 @@ $(REPLACE_VARS_SED): $(SHELL_ENV_INIT) Makefile stamp-directories
+ 	  echo 's#@''PKGLIBDIR@#$(libdir)/ganeti#g'; \
+ 	  echo 's#@''GNTMASTERUSER@#$(MASTERD_USER)#g'; \
+ 	  echo 's#@''GNTRAPIUSER@#$(RAPI_USER)#g'; \
++	  echo 's#@''GNTKVMDUSER@#$(KVMD_USER)#g'; \
+ 	  echo 's#@''GNTCONFDUSER@#$(CONFD_USER)#g'; \
+ 	  echo 's#@''GNTWCONFDUSER@#$(WCONFD_USER)#g'; \
+ 	  echo 's#@''GNTLUXIDUSER@#$(LUXID_USER)#g'; \
+ 	  echo 's#@''GNTNODEDUSER@#$(NODED_USER)#g'; \
+ 	  echo 's#@''GNTMONDUSER@#$(MOND_USER)#g'; \
+ 	  echo 's#@''GNTRAPIGROUP@#$(RAPI_GROUP)#g'; \
++	  echo 's#@''GNTKVMDGROUP@#$(KVMD_GROUP)#g'; \
+ 	  echo 's#@''GNTADMINGROUP@#$(ADMIN_GROUP)#g'; \
+ 	  echo 's#@''GNTCONFDGROUP@#$(CONFD_GROUP)#g'; \
+ 	  echo 's#@''GNTNODEDGROUP@#$(NODED_GROUP)#g'; \
 diff --git a/daemons/daemon-util.in b/daemons/daemon-util.in
-index 7636fc9..aec5c92 100644
+index 7636fc9..91ea20b 100644
 --- a/daemons/daemon-util.in
 +++ b/daemons/daemon-util.in
 @@ -102,6 +102,9 @@ _daemon_usergroup() {
@@ -7,7 +26,7 @@ index 7636fc9..aec5c92 100644
        echo "@GNTRAPIUSER@:@GNTRAPIGROUP@"
        ;;
 +    kvmd)
-+      echo "@GNTDAEMONSUSER@:@GNTDAEMONSGROUP@"
++      echo "@GNTKVMDUSER@:@GNTKVMDGROUP@"
 +	;;
      noded)
        echo "@GNTNODEDUSER@:@GNTNODEDGROUP@"
