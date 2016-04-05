@@ -13483,7 +13483,7 @@ media-video/sub2srt 0.5.3: Tool to convert several subtitle formats into subview
 media-video/subcheck 0.78.2: Subcheck checks srt subtitle files for errors
 media-video/subdl 1.0.3: A command-line tool for downloading subs from opensubtitles.org
 media-video/subdownloader 2.0.18 2.0.18-r1: GUI application for automatic downloading/uploading of subtitles for videofiles
-media-video/subliminal 0.7.4 9999: Python library to search and download subtitles
+media-video/subliminal 0.7.4 1.1.1 9999: Python library to search and download subtitles
 media-video/submux-dvd 0.5.2: A subtitle multiplexer, muxes subtitles into .vob
 media-video/subotage 0.15: Universal subtitle converter in bash
 media-video/subsync 0.0.1: subsync is an program that synchronizes srt subtitle files
