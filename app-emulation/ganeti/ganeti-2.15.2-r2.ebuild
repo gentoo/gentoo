@@ -209,6 +209,8 @@ src_prepare() {
 	# take the sledgehammer approach to bug #526270
 	grep -lr '/bin/sh' "${S}" | xargs -r -- sed -i 's:/bin/sh:/bin/bash:g'
 
+	epatch_user
+
 	[[ ${PV} =~ [9]{4,} ]] && ./autogen.sh
 	rm autotools/missing
 	eautoreconf
