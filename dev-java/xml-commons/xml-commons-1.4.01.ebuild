@@ -17,7 +17,7 @@ SRC_URI="mirror://apache/xerces/${PN}/source/${MY_P}-src.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-1.1 public-domain W3C-document W3C"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64 ppc64 x86"
 IUSE=""
 
 RDEPEND="
