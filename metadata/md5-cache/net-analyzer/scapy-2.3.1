@@ -4,7 +4,7 @@ DESCRIPTION=A Python interactive packet manipulation program for mastering the n
 EAPI=5
 HOMEPAGE=http://www.secdev.org/projects/scapy/
 IUSE=gnuplot pyx crypt graphviz imagemagick visual tcpreplay python_targets_python2_7
-KEYWORDS=~amd64 ~arm ~x86
+KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2
 RDEPEND=net-analyzer/tcpdump gnuplot? ( dev-python/gnuplot-py[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) pyx? ( dev-python/pyx[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) crypt? ( dev-python/pycrypto[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) graphviz? ( media-gfx/graphviz ) imagemagick? ( || ( media-gfx/imagemagick media-gfx/graphicsmagick[imagemagick] ) ) visual? ( dev-python/visual ) tcpreplay? ( net-analyzer/tcpreplay ) python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
 REQUIRED_USE=|| ( python_targets_python2_7 )
@@ -12,4 +12,4 @@ SLOT=0
 SRC_URI=http://bb.secdev.org/scapy/downloads/scapy-2.3.1.zip
 _eclass_exported_funcs=src_prepare:distutils-r1 src_configure:distutils-r1 src_compile:distutils-r1 src_test:distutils-r1 src_install:distutils-r1
 _eclasses_=distutils-r1	4e8ac1ba76ddacd8f7c0289aa586a34c	eutils	9d81603248f2ba3ec59124320d123e5e	multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	3972ca401cf7dbb430df9995f5d8d580	multiprocessing	e32940a7b2a9992ad217eccddb84d548	python-r1	0f6937650a475d673baa5d0c8c0b37b3	python-utils-r1	2e6826f6a93ad2acf904eecf5b5fb6d2	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
-_md5_=27c8ee4fa5d9c811283498ac2b62c4a0
+_md5_=128eb3300c7585c5c01934a83a1991cf
