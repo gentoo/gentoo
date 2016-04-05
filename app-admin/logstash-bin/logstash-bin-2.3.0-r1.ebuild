@@ -43,10 +43,10 @@ src_install() {
 	fperms 0755 "/opt/${MY_PN}/bin/${MY_PN}" "/opt/${MY_PN}/vendor/jruby/bin/jruby"
 
 	insinto /etc/logrotate.d
-	newins "${FILESDIR}/${MY_PN}.logrotate-r1" "${MY_PN}"
+	newins "${FILESDIR}/${MY_PN}.logrotate-r2" "${MY_PN}"
 
 	newconfd "${FILESDIR}/${MY_PN}.confd-r1" "${MY_PN}"
-	newinitd "${FILESDIR}/${MY_PN}.initd-r1" "${MY_PN}"
+	newinitd "${FILESDIR}/${MY_PN}.initd-r2" "${MY_PN}"
 }
 
 pkg_postinst() {
