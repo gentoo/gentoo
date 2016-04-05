@@ -83,16 +83,14 @@
     
     <code>
       # emerge --sync
-      # emerge --ask --oneshot --verbose
-      "&gt;=app-emulation/xen-tools-4.5.2-r5"
+      # emerge --ask --oneshot --verbose "&gt;=app-emulation/xen-tools-4.5.2-r5"
     </code>
     
     <p>All Xen tools 4.6 users should upgrade to the latest version:</p>
     
     <code>
       # emerge --sync
-      # emerge --ask --oneshot --verbose
-      "&gt;=app-emulation/xen-tools-4.6.0-r9"
+      # emerge --ask --oneshot --verbose "&gt;=app-emulation/xen-tools-4.6.0-r9"
     </code>
     
     <p>All Xen pvgrub users should upgrade to the latest version:</p>
