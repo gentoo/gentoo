@@ -12318,7 +12318,7 @@ media-libs/icclib 2.14: Library for reading and writing ICC color profile files
 media-libs/id3lib 3.8.3-r8: Id3 library for C/C++
 media-libs/ilmbase 1.0.2 2.0.1-r1 2.1.0 2.2.0: OpenEXR ILM Base libraries
 media-libs/imlib 1.9.15-r4: Image loading and rendering library
-media-libs/imlib2 1.4.7 1.4.8 9999: Version 2 of an advanced replacement library for libraries like libXpm
+media-libs/imlib2 1.4.7 1.4.8-r1 9999: Version 2 of an advanced replacement library for libraries like libXpm
 media-libs/iulib 0.3 0.4 0.4-r1: easy-to-use image and video I/O functions
 media-libs/jasper 1.900.1-r9: software-based implementation of the codec specified in the JPEG-2000 Part-1 standard
 media-libs/jbig2dec 0.11-r1: A decoder implementation of the JBIG2 image compression format
