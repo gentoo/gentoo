@@ -58,7 +58,7 @@ src_install() {
 }
 
 pkg_postinst() {
-	elog "This version of Kibana is compatible with Elasticsearch 2.2+"
+	elog "This version of Kibana is compatible with Elasticsearch 2.3+"
 	elog
 	elog "Be sure to point ES_INSTANCE to your Elasticsearch instance"
 	elog "in /etc/conf.d/${MY_PN}."
