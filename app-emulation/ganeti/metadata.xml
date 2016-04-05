@@ -25,7 +25,6 @@
 	</longdescription>
 	<use>
 		<flag name="drbd">Enable DRBD support</flag>
-		<flag name="filestorage">Enable File Storage</flag>
 		<flag name="haskell-daemons">Build haskell daemons instead of python</flag>
 		<flag name="htools">Enable htools support</flag>
 		<flag name="kvm">Enable KVM support</flag>

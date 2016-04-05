@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -17,12 +17,6 @@ if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="git://git.ganeti.org/ganeti.git"
 	inherit git-2
 	KEYWORDS=""
-	GIT_DEPEND="app-text/pandoc
-		dev-python/docutils
-		dev-python/sphinx[${PYTHON_USEDEP}]
-		media-libs/gd[fontconfig,jpeg,png,truetype]
-		media-gfx/graphviz
-		media-fonts/urw-fonts"
 else
 	SRC_URI="http://downloads.ganeti.org/releases/${SERIES}/${MY_P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
@@ -90,12 +84,15 @@ DEPEND="
 	rbd? ( sys-cluster/ceph )
 	ipv6? ( net-misc/ndisc6 )
 	haskell-daemons? ( dev-haskell/text:0= )
-	${PYTHON_DEPS}
-	${GIT_DEPEND}"
+	${PYTHON_DEPS}"
 RDEPEND="${DEPEND}
 	!app-emulation/ganeti-htools"
-DEPEND+="sys-devel/m4
-	app-text/pandoc
+DEPEND+="
+	sys-devel/m4
+	<dev-python/sphinx-1.3[${PYTHON_USEDEP}]
+	media-fonts/urw-fonts
+	media-gfx/graphviz
+	=app-text/pandoc-1.12*
 	test? (
 		dev-python/mock
 		dev-python/pyyaml
@@ -231,7 +228,10 @@ src_install () {
 	insinto /etc/logrotate.d
 	newins doc/examples/ganeti.logrotate ${PN}
 
-	keepdir /var/{lib,log}/${PN}/
+	# need to dodir rather than keepdir here (bug #552482)
+	dodir /var/lib/${PN}
+
+	keepdir /var/log/${PN}/
 	keepdir /usr/share/${PN}/${SERIES}/os/
 	keepdir /var/lib/ganeti-storage/{export,file,shared}/
 
