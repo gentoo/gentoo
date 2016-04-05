@@ -50,8 +50,3 @@ python_test() {
 	testr init
 	testr run || die
 }
-
-python_install_all() {
-	distutils-r1_python_install_all
-	mv "${D}/usr/etc" "${D}/" || die
-}
