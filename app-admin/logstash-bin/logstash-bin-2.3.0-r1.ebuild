@@ -46,7 +46,7 @@ src_install() {
 	newins "${FILESDIR}/${MY_PN}.logrotate-r2" "${MY_PN}"
 
 	newconfd "${FILESDIR}/${MY_PN}.confd-r1" "${MY_PN}"
-	newinitd "${FILESDIR}/${MY_PN}.initd-r1" "${MY_PN}"
+	newinitd "${FILESDIR}/${MY_PN}.initd-r2" "${MY_PN}"
 }
 
 pkg_postinst() {
