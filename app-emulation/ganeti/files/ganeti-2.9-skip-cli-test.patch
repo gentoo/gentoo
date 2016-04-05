@@ -1,5 +1,5 @@
---- Makefile.am.orig	2013-11-13 02:19:49.198992622 +0000
-+++ Makefile.am	2013-11-13 02:20:12.709305182 +0000
+--- a/Makefile.am.orig	2013-11-13 02:19:49.198992622 +0000
++++ b/Makefile.am	2013-11-13 02:20:12.709305182 +0000
 @@ -1332,7 +1332,6 @@
  	test/py/daemon-util_unittest.bash \
  	test/py/ganeti-cleaner_unittest.bash \
