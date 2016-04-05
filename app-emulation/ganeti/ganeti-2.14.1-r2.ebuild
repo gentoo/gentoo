@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -17,11 +17,6 @@ if [[ ${PV} =~ [9]{4,} ]] ; then
 	EGIT_REPO_URI="git://git.ganeti.org/ganeti.git"
 	inherit git-2
 	KEYWORDS=""
-	GIT_DEPEND="dev-python/docutils
-		=dev-python/sphinx-1.2*[${PYTHON_USEDEP}]
-		media-libs/gd[fontconfig,jpeg,png,truetype]
-		media-gfx/graphviz
-		media-fonts/urw-fonts"
 else
 	SRC_URI="http://downloads.ganeti.org/releases/${SERIES}/${MY_P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
@@ -118,11 +113,14 @@ DEPEND="
 	drbd? ( <sys-cluster/drbd-8.5 )
 	rbd? ( sys-cluster/ceph )
 	ipv6? ( net-misc/ndisc6 )
-	${PYTHON_DEPS}
-	${GIT_DEPEND}"
+	${PYTHON_DEPS}"
 RDEPEND="${DEPEND}
 	!app-emulation/ganeti-htools"
-DEPEND+="sys-devel/m4
+DEPEND+="
+	sys-devel/m4
+	<dev-python/sphinx-1.3[${PYTHON_USEDEP}]
+	media-fonts/urw-fonts
+	media-gfx/graphviz
 	=app-text/pandoc-1.12*
 	>=dev-haskell/test-framework-0.6:0=
 	<dev-haskell/test-framework-0.9:0=
