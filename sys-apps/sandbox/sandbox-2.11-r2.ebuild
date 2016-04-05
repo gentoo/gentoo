@@ -28,7 +28,7 @@ has sandbox_death_notice ${EBUILD_DEATH_HOOKS} || EBUILD_DEATH_HOOKS="${EBUILD_D
 
 sandbox_death_notice() {
 	ewarn "If configure failed with a 'cannot run C compiled programs' error, try this:"
-	ewarn "FEATURES=-sandbox emerge sandbox"
+	ewarn "FEATURES='-sandbox -usersandbox' emerge sandbox"
 }
 
 src_prepare() {
