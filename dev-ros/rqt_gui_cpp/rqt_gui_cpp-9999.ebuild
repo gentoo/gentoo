@@ -16,10 +16,10 @@ SLOT="0"
 IUSE=""
 
 RDEPEND="
-	dev-qt/qtgui:4
-	dev-qt/qtcore:4
-	dev-ros/qt_gui_cpp
-	dev-ros/qt_gui
+	dev-qt/qtwidgets:5
+	dev-qt/qtcore:5
+	>=dev-ros/qt_gui_cpp-0.3.0
+	>=dev-ros/qt_gui-0.3.0
 	dev-ros/roscpp
 	dev-ros/nodelet
 "
