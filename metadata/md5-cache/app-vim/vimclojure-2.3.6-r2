@@ -10,4 +10,4 @@ SLOT=0
 SRC_URI=https://github.com/vim-scripts/VimClojure/archive/2.3.6.zip
 _eclass_exported_funcs=pkg_postrm:vim-plugin pkg_postinst:vim-plugin src_prepare:- src_install:-
 _eclasses_=vim-doc	1b0813c9dadf2431c96854a8d46f5eaf	vim-plugin	1bbfc3364a7588372fb4c21734f0cd96
-_md5_=1a5e25d8de8c1241e249a7cabe7af741
+_md5_=f27cbb6eb5ab2be966ac8c22957b9230
