@@ -76,8 +76,8 @@ src_install() {
 
 	cd "${WORKDIR}/sys/$(tc-arch-kernel)/conf" || die
 	insinto /boot
-	newins GENERIC.hints device.hints || die
+	newins GENERIC.hints device.hints
 
 	echo 'CONFIG_PROTECT="/boot/device.hints"' > "${T}"/50boot0
-	doenvd "${T}"/50boot0 || die
+	doenvd "${T}"/50boot0
 }
