@@ -195,7 +195,10 @@ src_install () {
 	insinto /etc/logrotate.d
 	newins doc/examples/ganeti.logrotate ${PN}
 
-	keepdir /var/{lib,log}/${PN}/
+	# need to dodir rather than keepdir here (bug #552482)
+	dodir /var/lib/${PN}
+
+	keepdir /var/log/${PN}/
 	keepdir /usr/share/${PN}/${SERIES}/os/
 	keepdir /var/lib/ganeti-storage/{export,file,shared}/
 
