@@ -58,10 +58,6 @@ python_install_all() {
 		insinto /usr/share/apps/konqueror/servicemenus
 		doins kde/hachoir.desktop
 	fi
-
-	if ! use gtk; then
-		rm "${ED}usr/bin/hachoir-metadata-gtk"* || die
-	fi
 }
 
 pkg_postinst() {
