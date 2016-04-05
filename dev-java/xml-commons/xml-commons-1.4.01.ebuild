@@ -17,14 +17,14 @@ SRC_URI="mirror://apache/xerces/${PN}/source/${MY_P}-src.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-1.1 public-domain W3C-document W3C"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
-RESTRICT="test"
+RDEPEND="
+	>=virtual/jre-1.6"
 
-RDEPEND=">=virtual/jre-1.6"
-
-DEPEND=">=virtual/jdk-1.6
+DEPEND="
+	>=virtual/jdk-1.6
 	source? ( app-arch/zip )"
 
 JAVA_SRC_DIR="org javax"
