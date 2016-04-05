@@ -17,12 +17,12 @@ SLOT="0"
 IUSE=""
 
 RDEPEND="
-	dev-qt/qtcore:4
-	dev-qt/qtgui:4
+	dev-qt/qtcore:5
+	dev-qt/qtwidgets:5
 	>=dev-ros/pluginlib-1.9.23
-	>=dev-ros/qt_gui-0.2.18[${PYTHON_USEDEP}]
+	>=dev-ros/qt_gui-0.3.0[${PYTHON_USEDEP}]
 	dev-libs/tinyxml
-	dev-ros/python_qt_binding[${PYTHON_USEDEP}]
+	>=dev-ros/python_qt_binding-0.3.0[${PYTHON_USEDEP}]
 	dev-libs/boost:=
 "
 DEPEND="${RDEPEND}
