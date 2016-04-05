@@ -2623,7 +2623,7 @@ app-vim/vim-spell-pt 20100312: vim spell files: Portuguese (pt)
 app-vim/vim-spell-ru 20060506 20070506: vim spell files: Russian (ru)
 app-vim/vimbuddy 0.9.2: vim plugin: vimbuddy for the status line
 app-vim/vimcalc 1.3 1.3-r2: vim plugin: provides an interactive calculator inside vim
-app-vim/vimclojure 2.3.6-r1: vim plugin: Clojure syntax highlighting, filetype and indent settings
+app-vim/vimclojure 2.3.6-r1 2.3.6-r2: vim plugin: Clojure syntax highlighting, filetype and indent settings
 app-vim/vimcommander 0.80 0.81: vim plugin: Total Commander style file explorer
 app-vim/vimoutliner 0.3.4-r2: vim plugin: easy and fast outlining
 app-vim/vimpress 2.1.5 3.2.0: vim plugin: manage wordpress blogs from vim
@@ -4725,7 +4725,7 @@ dev-libs/libsecp256k1 0.0.0_pre20141212 0.0.0_pre20150423 0.0.0_pre20151118 9999
 dev-libs/libserialport 0.1.0 9999: Cross platform serial port access library
 dev-libs/libsigc++ 1.2.7 2.4.1 2.6.2: Typesafe callback system for standard C++
 dev-libs/libsigsegv 2.10: library for handling page faults in user mode
-dev-libs/libsodium 1.0.2 1.0.7 1.0.8: A portable fork of NaCl, a higher-level cryptographic library
+dev-libs/libsodium 1.0.2 1.0.7 1.0.8 1.0.9: A portable fork of NaCl, a higher-level cryptographic library
 dev-libs/libspnav 0.2.2: The libspnav provides a replacement of the magellan library with cleaner and more orthogonal API
 dev-libs/libspt 1.1-r2: Library for handling root privilege
 dev-libs/libsqlora8 2.3.3: libsqlora8 is a simple C-library to access Oracle databases via the OCI interface
@@ -6834,7 +6834,7 @@ dev-python/apptools 4.2.1 4.3.0: Enthought Tool Suite: Application tools
 dev-python/apse 0.2-r3: Approximate String Matching in Python
 dev-python/apsw 3.8.7.1_p1 3.8.10.1_p1 3.8.11.1_p1 3.9.2_p1-r1 3.11.1_p1: APSW - Another Python SQLite Wrapper
 dev-python/aquarium 2.3-r1: Aquarium web application framework
-dev-python/argcomplete 0.8.1 0.8.9 0.9.0 1.0.0 1.1.0: Bash tab completion for argparse
+dev-python/argcomplete 0.8.1 0.8.9 0.9.0 1.0.0 1.1.0 1.1.1: Bash tab completion for argparse
 dev-python/argh 0.25.0 0.26.0 0.26.1: A simple argparse wrapper
 dev-python/args 0.1.0: Command Arguments for Humans
 dev-python/arrayterator 1.0.1-r1: A buffered iterator for reading big arrays in small contiguous blocks
@@ -6939,7 +6939,7 @@ dev-python/cheetah-docs 0.9.16_alpha1: Documentation for Cheetah templates
 dev-python/cherrypy 3.3.0 3.7.0 3.8.0: CherryPy is a pythonic, object-oriented HTTP framework
 dev-python/cherrytemplate 1.0.0-r1: Easy and powerful templating module for Python
 dev-python/cliapp 1.20130808 1.20140315 1.20150305: Framework for Unix-like command line programs
-dev-python/click 2.0 5.1 6.2 6.3: A Python package for creating beautiful command line interfaces
+dev-python/click 2.0 5.1 6.2 6.3 6.5: A Python package for creating beautiful command line interfaces
 dev-python/click-log 0.1.3: Logging integration for Click.
 dev-python/click-threading 0.1.2: Multithreaded Click apps made easy.
 dev-python/clientcookie 1.3.0-r1: Python module for handling HTTP cookies on the client side
@@ -7195,7 +7195,7 @@ dev-python/git-review 1.24 1.25.0: Tool to submit code to Gerrit
 dev-python/gitdb 0.6.3 0.6.4: GitDB is a pure-Python git object database
 dev-python/glance_store 0.1.10 0.4.0 0.5.0 0.6.0 0.9.1 0.9.2 0.13.0: A library for glance
 dev-python/globre 0.1.2-r1 0.1.3: A glob matching library, providing an interface similar to the 're' module
-dev-python/glueviz 0.7.0: Python library to explore relationships within and among related datasets
+dev-python/glueviz 0.7.0 0.7.1: Python library to explore relationships within and among related datasets
 dev-python/gmpy 2.0.4 2.0.6 2.0.7: Python bindings for GMP, MPC, MPFR and MPIR libraries
 dev-python/gnome-keyring-python 2.32.0-r1: Python bindings for the interfacing with the GNOME keyring
 dev-python/gnome-python-base 2.28.1-r1: Provides the base files for the gnome-python bindings
@@ -9642,7 +9642,7 @@ dev-util/itstool 2.0.2: Translation tool for XML documents that uses gettext fil
 dev-util/jarwizard 2.50: Takes the hassle out of creating executable JAR files for your Java programs
 dev-util/jay 1.1.1-r2: A LALR(1) parser generator: Berkeley yacc retargeted to C# and Java
 dev-util/jconfig 2.8-r3 2.8.5 2.9: jConfig is an extremely helpful utility, providing a simple API for the management of properties
-dev-util/jenkins-bin 1.642.4 1.654 1.655: Extensible continuous integration server
+dev-util/jenkins-bin 1.642.4 1.655 1.656: Extensible continuous integration server
 dev-util/jif 3.1_rc1: JIF is an IDE for the creation of text adventures based on Graham Nelson's Inform standard
 dev-util/kbuild 0.1.9998_pre20120806 0.1.9998_pre20131130 9999: A makefile framework for writing simple makefiles for complex tasks
 dev-util/kdbg 2.5.5: A graphical debugger interface
@@ -15232,13 +15232,13 @@ ros-meta/viz 1.2.0 9999: Metapackage for ROS visualization packages
 sci-astronomy/aatm 0.6: Atmospheric Modelling for ALMA Observatory
 sci-astronomy/astrometry 0.67-r1: Automated astrometric calibration programs and service
 sci-astronomy/casa-data 99999 20160222: Data and tables for the CASA software
-sci-astronomy/casacore 2.0.3: Core libraries for the Common Astronomy Software Applications
+sci-astronomy/casacore 2.0.3 2.1.0: Core libraries for the Common Astronomy Software Applications
 sci-astronomy/cdsclient 3.8.1: Collection of scripts to access the CDS databases
 sci-astronomy/celestia 1.6.1-r1: OpenGL 3D space simulator
-sci-astronomy/cpl 6.4.2 6.6.1: ESO common pipeline library for astronomical data reduction
+sci-astronomy/cpl 6.4.2 6.6.1 7.0: ESO common pipeline library for astronomical data reduction
 sci-astronomy/ds9-bin 7.2 7.4: Data visualization application for astronomical FITS images
 sci-astronomy/erfa 1.0.1 1.1.0 1.2.0: Essential Routines for Fundamental Astronomy
-sci-astronomy/esorex 3.10.2 3.12: ESO Recipe Execution Tool to exec cpl scripts
+sci-astronomy/esorex 3.10.2 3.12 3.12.3: ESO Recipe Execution Tool to exec cpl scripts
 sci-astronomy/funtools 1.4.6: FITS library and utlities for astronomical images
 sci-astronomy/galaxy 2.2: Stellar simulation program
 sci-astronomy/gasgano 2.4.5 2.4.8: ESO astronomical data file organizer
