@@ -6,7 +6,7 @@ EAPI="6"
 
 inherit eutils flag-o-matic autotools
 
-PATCHSET_REV="-r2"
+PATCHSET_REV="-r3"
 
 DESCRIPTION="A small but very powerful text-based mail client"
 HOMEPAGE="http://www.mutt.org/"
@@ -83,15 +83,6 @@ RDEPEND="${CDEPEND}
 "
 PATCHDIR="${WORKDIR}"/${P}-gentoo-patches${PATCHSET_REV}
 
-pkg_setup() {
-	if use sidebar ; then
-		eerror "Sorry, but this version does not yet support sidebar"
-		eerror "Please mask ${PF} for now and check back later:"
-		eerror " # echo '=${CATEGORY}/${PF}' >> /etc/portage/package.mask"
-		die "booooo"
-	fi
-}
-
 src_prepare() {
 	# Post-release hot-fixes grabbed from HG, this is what all following
 	# patches are based on in my Mercurial patchqueue (mq).
@@ -127,15 +118,13 @@ src_prepare() {
 	# we conditionalise this one, simply because it has considerable
 	# impact on the code
 	if use sidebar ; then
-		epatch "${PATCHDIR}"/sidebar-20140412.patch
-		epatch "${PATCHDIR}"/sidebar-dotpathsep.patch
-		epatch "${PATCHDIR}"/sidebar-counts.patch
+		epatch "${PATCHDIR}"/sidebar-neomutt.patch
 	fi
 
 	# Avoid symbol conflicts on Solaris
 	sed -i \
-		-e 's/\<M_CMD\>/MUTT_CMD/g' \
-		-e 's/\<M_READ\>/MUTT_READ/g' \
+		-e 's/\<M_CMD\>/MT_CMD/g' \
+		-e 's/\<M_READ\>/MT_READ/g' \
 		*.[ch] imap/*.[ch] || die
 
 	local upatches=
