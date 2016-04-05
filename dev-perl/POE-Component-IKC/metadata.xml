@@ -16,10 +16,9 @@
     <remote-id type="cpan-module">POE::Component::IKC::Protocol</remote-id>
     <remote-id type="cpan-module">POE::Component::IKC::Proxy</remote-id>
     <remote-id type="cpan-module">POE::Component::IKC::Responder</remote-id>
-    <remote-id type="cpan-module">POE::Component::IKC::Responder::Object</remote-id>
-    <remote-id type="cpan-module">POE::Component::IKC::Responder::Thunk</remote-id>
     <remote-id type="cpan-module">POE::Component::IKC::Server</remote-id>
     <remote-id type="cpan-module">POE::Component::IKC::Specifier</remote-id>
     <remote-id type="cpan-module">POE::Component::IKC::Timing</remote-id>
+    <remote-id type="cpan-module">POE::Component::IKC::Util</remote-id>
   </upstream>
 </pkgmetadata>
