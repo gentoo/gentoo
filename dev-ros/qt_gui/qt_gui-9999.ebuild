@@ -19,6 +19,6 @@ IUSE=""
 RDEPEND="
 	dev-qt/qtcore:4
 	dev-python/rospkg[${PYTHON_USEDEP}]
-	dev-ros/python_qt_binding[${PYTHON_USEDEP}]
+	>=dev-ros/python_qt_binding-0.3.0[${PYTHON_USEDEP}]
 "
 DEPEND="${RDEPEND}"
