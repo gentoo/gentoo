@@ -10,17 +10,14 @@ ROS_SUBDIR=${PN}
 
 inherit ros-catkin
 
-DESCRIPTION="Enables GUI plugins to use the C++ client library for ROS"
+DESCRIPTION="Qt-based framework for GUI development for ROS"
 LICENSE="BSD"
 SLOT="0"
 IUSE=""
 
 RDEPEND="
-	dev-qt/qtwidgets:5
-	dev-qt/qtcore:5
-	>=dev-ros/qt_gui_cpp-0.3.0
-	>=dev-ros/qt_gui-0.3.0
-	dev-ros/roscpp
-	dev-ros/nodelet
+	dev-ros/rqt_gui
+	dev-ros/rqt_gui_cpp
+	dev-ros/rqt_gui_py
 "
 DEPEND="${RDEPEND}"
