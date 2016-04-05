@@ -1,0 +1,15 @@
+diff --git a/v8/tools/gyp/v8.gyp.orig b/v8/tools/gyp/v8.gyp
+index bcb5801..3162456 100644
+--- a/v8/tools/gyp/v8.gyp.orig
++++ b/v8/tools/gyp/v8.gyp
+@@ -48,8 +48,8 @@
+         }, {
+           'toolsets': ['target'],
+         }],
+-        ['component=="shared_library"', {
+-          'type': '<(component)',
++        ['v8_target_type=="shared_library"', {
++          'type': 'shared_library',
+           'sources': [
+             # Note: on non-Windows we still build this file so that gyp
+             # has some sources to link into the component.
