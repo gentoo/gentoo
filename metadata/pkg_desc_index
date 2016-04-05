@@ -2444,7 +2444,7 @@ app-text/wv 1.2.9-r1: Tool for conversion of MSWord doc and rtf files to somethi
 app-text/wv2 0.4.2-r2: Excellent MS Word filter lib, used in most Office suites
 app-text/xapian-omega 1.2.19 1.2.22 1.2.23 1.3.4 1.3.5: An application built on Xapian, consisting of indexers and a CGI search frontend
 app-text/xchm 1.23 1.23-r1: Utility for viewing Compiled HTML Help (CHM) files
-app-text/xdvik 22.85-r1 22.86 22.87: DVI previewer for X Window System
+app-text/xdvik 22.85-r1 22.86 22.87 22.87.03: DVI previewer for X Window System
 app-text/xdvipdfmx 0.7.8_p20120701 0.7.9_p20130530: Extended dvipdfmx for use with XeTeX and other unicode TeXs
 app-text/xfbib 0.0.2-r1: a lightweight BibTeX editor
 app-text/xhtml1 20020801-r4: DTDs for the eXtensible HyperText Markup Language 1.0
@@ -4856,7 +4856,7 @@ dev-libs/rote 0.2.8: simple C library for VT102 terminal emulation
 dev-libs/rremove 1.0.5: A simple library to recursively delete non-empty directories
 dev-libs/safestr 1.0.3: provide a standards compatible yet secure string implementation
 dev-libs/sblim-sfcc 2.2.5: Small Footprint CIM Client Library
-dev-libs/sdformat 3.6.0 3.7.0 4.0.0: Simulation Description Format (SDF) parser
+dev-libs/sdformat 3.6.0 3.7.0 4.0.0 4.1.0: Simulation Description Format (SDF) parser
 dev-libs/serd 0.18.2 0.20.0 0.22.0: Library for RDF syntax which supports reading and writing Turtle and NTriples
 dev-libs/serdisplib 1.97.9: Library to drive serial/parallel/usb displays with built-in controllers
 dev-libs/shhopt 1.1.7-r2: library for parsing command line options
@@ -5052,7 +5052,7 @@ dev-ml/ocaml-expat 0.9.1: OCaml bindings for expat
 dev-ml/ocaml-expect 0.0.4 0.0.5: Ocaml implementation of expect to help building unitary testing
 dev-ml/ocaml-fileutils 0.4.5 0.5.0: Pure OCaml functions to manipulate real file (POSIX like) and filename
 dev-ml/ocaml-gettext 0.3.4 0.3.5: Provides support for internationalization of OCaml program
-dev-ml/ocaml-hashcons 1.0: OCaml hash-consing library
+dev-ml/ocaml-hashcons 1.0 1.2: OCaml hash-consing library
 dev-ml/ocaml-ipaddr 2.6.1 2.7.0: OCaml library for manipulation of IP (and MAC) address representations
 dev-ml/ocaml-make 6.37.0: Generic O'Caml Makefile for GNU Make
 dev-ml/ocaml-mysql 1.1.1 1.2.0: A package for ocaml that provides access to mysql databases
@@ -12740,7 +12740,7 @@ media-plugins/kodi-pvr-hts 16_p20160220 16.9999: Tvheadend Live TV and Radio PVR
 media-plugins/ladspa-bs2b 0.9.1: LADSPA plugin for bs2b headphone filter
 media-plugins/libvisual-plugins 0.4.0-r3: collection of visualization plugins for use with the libvisual framework
 media-plugins/libvisual-projectm 2.0.1 2.1.0: A libvisual graphical music visualization plugin similar to milkdrop
-media-plugins/live 2013.02.11 2016.02.09 2016.02.22 2016.03.16: Libraries for standards-based RTP/RTCP/RTSP multimedia streaming
+media-plugins/live 2013.02.11 2016.02.09 2016.02.22 2016.03.16 2016.04.01: Libraries for standards-based RTP/RTCP/RTSP multimedia streaming
 media-plugins/mcp-plugins 0.4.0 0.4.0-r1: MCP ladspa plugins package. Includes moogvcf, phaser & chorus
 media-plugins/mda-lv2 1.0.0 1.2.2: LV2 port of the MDA plugins by Paul Kellett
 media-plugins/mediastreamer-amr 0.0.1: mediastreamer plugin: add AMR Narrow Band support
@@ -16858,7 +16858,7 @@ sys-devel/binutils-apple 3.1.2 3.2 3.2.6 4.2 4.2-r1 4.3 4.3-r1 5.1 6.1 6.3: Darw
 sys-devel/binutils-config 4-r2 4-r3 4-r4 5-r2: Utility to change the binutils version being used
 sys-devel/binutils-hppa64 2.19.1 2.20.1 2.21.1-r1 2.22 2.23.1 2.23.2 2.24 2.25 2.25.1: binutils package for building 64bit kernels on HPPA
 sys-devel/bison 1.875d 2.4.3 2.7.1 3.0.3-r1 3.0.4 3.0.4-r1: A general-purpose (yacc-compatible) parser generator
-sys-devel/bmake 20140214 20151010 20151220 20160220: NetBSD's portable make
+sys-devel/bmake 20140214 20151010 20151220 20160220 20160315: NetBSD's portable make
 sys-devel/boost-m4 0.4 0.4-r1 0.4_p20160328: Another set of autoconf macros for compiling against boost
 sys-devel/byfl 1.4 9999: Compiler-based Application Analysis
 sys-devel/clang 3.3-r100 3.4.2-r100 3.5.0-r100 3.5.2-r100 3.6.2-r100 3.7.0-r100 3.7.1-r100 3.8.0-r100 9999-r100: C language family frontend for LLVM (meta-ebuild)

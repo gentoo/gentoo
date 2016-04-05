@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst prepare
+DEPEND=sys-devel/flex virtual/yacc virtual/pkgconfig media-libs/freetype:2 x11-libs/libXi x11-libs/libXmu x11-libs/libXp x11-libs/libXpm motif? ( >=x11-libs/motif-2.3:0 ) !motif? ( neXt? ( x11-libs/neXtaw ) !neXt? ( Xaw3d? ( x11-libs/libXaw3d ) !Xaw3d? ( x11-libs/libXaw ) ) ) dev-libs/kpathsea
+DESCRIPTION=DVI previewer for X Window System
+EAPI=5
+HOMEPAGE=http://xdvi.sourceforge.net/
+IUSE=motif neXt Xaw3d emacs
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~x64-solaris ~x86-solaris
+LICENSE=GPL-2
+RDEPEND=media-libs/freetype:2 x11-libs/libXi x11-libs/libXmu x11-libs/libXp x11-libs/libXpm motif? ( >=x11-libs/motif-2.3:0 ) !motif? ( neXt? ( x11-libs/neXtaw ) !neXt? ( Xaw3d? ( x11-libs/libXaw3d ) !Xaw3d? ( x11-libs/libXaw ) ) ) dev-libs/kpathsea virtual/latex-base !<app-text/texlive-2007
+SLOT=0
+SRC_URI=mirror://sourceforge/xdvi/xdvik-22.87.03.tar.gz
+_eclass_exported_funcs=pkg_postinst:- src_prepare:- src_configure:- src_compile:- src_install:-
+_eclasses_=elisp-common	9f56c4e9bf1282dbfc2a5a09e1124e74	eutils	9d81603248f2ba3ec59124320d123e5e	flag-o-matic	d270fa247153df66074f795fa42dba3e	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=b4000c05ab04592db03f29bbd2d38578
