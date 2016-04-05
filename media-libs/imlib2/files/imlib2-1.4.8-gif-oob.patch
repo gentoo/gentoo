@@ -1,0 +1,39 @@
+From 16de244bd03d2f75da6508feb1ad9cb4e668e9dc Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Bernhard=20=C3=9Cbelacker?= <bernhardu@vr-web.de>
+Date: Sat, 2 Apr 2016 13:05:21 -0400
+Subject: [PATCH] gif: fix oob reads w/bad colormaps
+
+Verify the color map is inbounds before indexing with it.
+
+https://bugs.debian.org/785369
+---
+ src/modules/loaders/loader_gif.c | 13 ++++++++++---
+ 1 file changed, 10 insertions(+), 3 deletions(-)
+
+diff --git a/src/modules/loaders/loader_gif.c b/src/modules/loaders/loader_gif.c
+index 638df59..7bdf29c 100644
+--- a/src/modules/loaders/loader_gif.c
++++ b/src/modules/loaders/loader_gif.c
+@@ -170,9 +170,16 @@ load(ImlibImage * im, ImlibProgressFunction progress, char progress_granularity,
+                     }
+                   else
+                     {
+-                       r = cmap->Colors[rows[i][j]].Red;
+-                       g = cmap->Colors[rows[i][j]].Green;
+-                       b = cmap->Colors[rows[i][j]].Blue;
++                       if (rows[i][j] < cmap->ColorCount)
++                         {
++                            r = cmap->Colors[rows[i][j]].Red;
++                            g = cmap->Colors[rows[i][j]].Green;
++                            b = cmap->Colors[rows[i][j]].Blue;
++                         }
++                       else
++                         {
++                            r = g = b = 0;
++                         }
+                        *ptr++ = (0xff << 24) | (r << 16) | (g << 8) | b;
+                     }
+                   per += per_inc;
+-- 
+2.7.4
+
