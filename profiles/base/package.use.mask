@@ -46,11 +46,6 @@ kde-plasma/plasma-sdk plasmate
 # to notify users.  This entry may be removed after 30 days
 app-text/atril ps
 
-# Ian Delaney <idella4@gentoo.org> (28 Dec 2015)
-# proxy maintainer excludes dep uchardet from the build
-# of mpv temporarily
-media-video/mpv uchardet
-
 # Manuel Rüger <mrueg@gentoo.org> (24 Dec 2015)
 # media-tv/xawtv is masked for removal
 net-im/ayttm webcam

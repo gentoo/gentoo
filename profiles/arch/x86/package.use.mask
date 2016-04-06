@@ -16,11 +16,6 @@ app-admin/lastpass chrome
 # chrome-binary-plugins dropped x86 support
 www-client/chromium widevine
 
-# Ian Delaney <idella4@gentoo.org> (28 Dec 2015)
-# proxy maintainer excludes dep uchardet from the build
-# of mpv temporarily but does not require masking in x86
-media-video/mpv -uchardet
-
 # Ian Delaney <idella4@gentoo.org> (02 Dec 2015)
 # mask revdeps of xen that emply a hypervisor in arch x86
 app-emulation/libvirt xen
