@@ -4,14 +4,9 @@
 
 EAPI="5"
 
-inherit eutils
-
-CODE2COLOR_PV="0.2"
-CODE2COLOR_P="code2color-${CODE2COLOR_PV}"
 DESCRIPTION="Excellent text file viewer"
 HOMEPAGE="http://www.greenwoodsoftware.com/less/"
-SRC_URI="http://www.greenwoodsoftware.com/less/${P}.tar.gz
-	http://www-zeuthen.desy.de/~friebel/unix/less/code2color -> ${CODE2COLOR_P}"
+SRC_URI="http://www.greenwoodsoftware.com/less/${P}.tar.gz"
 
 LICENSE="|| ( GPL-3 BSD-2 )"
 SLOT="0"
@@ -23,13 +18,7 @@ DEPEND=">=app-misc/editor-wrapper-3
 	pcre? ( dev-libs/libpcre )"
 RDEPEND="${DEPEND}"
 
-src_unpack() {
-	unpack ${P}.tar.gz
-	cp "${DISTDIR}"/${CODE2COLOR_P} "${S}"/code2color || die
-}
-
 src_prepare() {
-	epatch "${FILESDIR}"/${CODE2COLOR_P}.patch
 	chmod a+x configure || die
 }
 
@@ -44,14 +33,15 @@ src_configure() {
 src_install() {
 	default
 
-	dobin code2color
 	newbin "${FILESDIR}"/lesspipe.sh lesspipe
-	dosym lesspipe /usr/bin/lesspipe.sh
 	newenvd "${FILESDIR}"/less.envd 70less
-
-	dodoc "${FILESDIR}"/README.Gentoo
 }
 
-pkg_postinst() {
-	elog "lesspipe offers colorization options.  Run 'lesspipe -h' for info."
+pkg_preinst() {
+	if has_version "<${CATEGORY}/${PN}-483-r1" ; then
+		elog "The lesspipe.sh symlink has been dropped.  If you are still setting"
+		elog "LESSOPEN to that, you will need to update it to '|lesspipe %s'."
+		elog "Colorization support has been dropped.  If you want that, check out"
+		elog "the new app-text/lesspipe package."
+	fi
 }
