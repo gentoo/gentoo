@@ -105,6 +105,7 @@ app-admin/gamin 0.1.10-r1: Meta package providing the File Alteration Monitor AP
 app-admin/genromfs 0.5.2: Create space-efficient, small, read-only romfs filesystems
 app-admin/gentoo-rsync-mirror 1.0-r4 1.0-r5: Ebuild for setting up a Gentoo rsync mirror
 app-admin/geolizer 2.01.10_p20070115-r1: Webserver log file analyzer
+app-admin/github-backup-utils 2.5.0: Backup and recovery utilities for GitHub Enterprise
 app-admin/gkrellm 2.3.5-r3 2.3.6_rc1 2.3.6_rc1-r1: Single process stack of various system monitors
 app-admin/glance 11.0.1-r1 2015.2.9999 2016.1.9999: Services for discovering, registering, and retrieving VM images
 app-admin/gnome-system-log 3.9.90: System log viewer for GNOME
