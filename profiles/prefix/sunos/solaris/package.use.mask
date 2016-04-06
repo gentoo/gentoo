@@ -3,6 +3,10 @@
 # $Id$
 
 
+# Fabian Groffen <grobian@gentoo.org> (06 Apr 2016)
+# dev-libs/re2 needs love, bug #563932
+app-misc/sphinx re2
+
 # Fabian Groffen <grobian@gentoo.org> (23 Feb 2016)
 # luajit doesn't compile due to relocation problems
 ~app-text/texlive-core-2015 luajittex

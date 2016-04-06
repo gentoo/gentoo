@@ -3,6 +3,10 @@
 # $Id$
 
 
+# Fabian Groffen <grobian@gentoo.org> (06 Apr 2016)
+# dev-libs/re2 needs love, bug #563932
+app-misc/sphinx re2
+
 # Fabian Groffen <grobian@gentoo.org> (18 Jan 2016)
 # GNU attr isn't supported
 dev-libs/glib xattr
