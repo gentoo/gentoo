@@ -59,6 +59,15 @@ lesspipe() {
 		[[ ${match} == *.${ignore} ]] && exit 0
 	done
 
+	# Handle non-regular file types.
+	if [[ -d $1 ]] ; then
+		ls -alF -- "$1"
+		return
+	elif [[ ! -f $1 ]] ; then
+		stat "$1"
+		return
+	fi
+
 	case "${match}" in
 
 	### Doc files ###
@@ -234,13 +243,11 @@ lesspipe() {
 if [[ -z $1 ]] ; then
 	echo "Usage: lesspipe <file>"
 elif [[ $1 == "-V" || $1 == "--version" ]] ; then
-	Id="cvsid"
 	cat <<-EOF
-		$Id$
-		Copyright 2001-2013 Gentoo Foundation
+		lesspipe (git)
+		Copyright 2001-2016 Gentoo Foundation
 		Mike Frysinger <vapier@gentoo.org>
 		     (with plenty of ideas stolen from other projects/distros)
-
 
 	EOF
 	less -V
@@ -251,21 +258,20 @@ elif [[ $1 == "-h" || $1 == "--help" ]] ; then
 		Usage: lesspipe <file>
 
 		lesspipe specific settings:
-		  LESSCOLOR env     - toggle colorizing of output (no/yes/always)
+		  LESSCOLOR env     - toggle colorizing of output (no/yes/always; default: no)
 		  LESSCOLORIZER env - program used to colorize output (default: code2color)
 		  LESSIGNORE        - list of extensions to ignore (don't do anything fancy)
 
 		You can create per-user filters as well by creating the executable file:
 		  ~/.lessfilter
-		One argument is passed to it: the file to display.
+		One argument is passed to it: the file to display.  The script should exit 0
+		to indicate it handled the file, or non-zero to tell lesspipe to handle it.
 
 		To use lesspipe, simply add to your environment:
 		  export LESSOPEN="|lesspipe %s"
 
-		Run 'less --help' or 'man less' for more info
+		Run 'less --help' or 'man less' for more info.
 	EOF
-elif [[ -d $1 ]] ; then
-	ls -alF -- "$1"
 else
 	recur=0
 	[[ -n ${LESSDEBUG} ]] \

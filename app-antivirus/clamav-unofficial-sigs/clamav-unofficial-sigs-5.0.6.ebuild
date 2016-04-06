@@ -1,10 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-DESCRIPTION="Downloads and installs third-party clamav signatures"
+DESCRIPTION="Download and install third-party clamav signatures"
 HOMEPAGE="https://github.com/extremeshok/${PN}"
 SRC_URI="${HOMEPAGE}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
@@ -26,36 +26,30 @@ RDEPEND="${DEPEND}
 	net-misc/curl"
 
 src_prepare() {
-	# Fix the user/group in the config file to match the ones used by
-	# clamav.
-	local user_default="clam_user=\"clam\""
-	local user_gentoo="clam_user=\"clamav\""
-
-	local group_default="clam_group=\"clam\""
-	local group_gentoo="clam_group=\"clamav\""
-
-	# Log to someplace that (likely) already exists. Omit the
-	# "log_file_path" variable name so that we can reuse these patterns
-	# later to sed the logrotate file.
-	local log_default="/var/log/clamav-unofficial-sigs"
-	local log_gentoo="/var/log/clamav"
-
 	# clamd listens on a local socket by default. The clamd_socket
 	# setting needs to be uncommented in the configuration file for it
 	# to take effect.
-	local socket_default="#clamd_socket=\"/var/run/clamd.socket\""
+	local socket_default="#clamd_socket=\"/var/run/clamav/clamd.sock\""
 	local socket_gentoo="clamd_socket=\"/var/run/clamav/clamd.sock\""
 
-	sed -i -e "s~${user_default}~${user_gentoo}~" \
-		-e "s~${group_default}~${group_gentoo}~" \
-		-e "s~${log_default}~${log_gentoo}~" \
-		-e "s~${socket_default}~${socket_gentoo}~" \
-		"${PN}.conf" \
-		|| die "failed to update paths in ${PN}.conf"
+	# The clamav init script doesn't provide a "reload" command,
+	# so we reload manually.
+	local reload_default="clamd_restart_opt=\"service clamd restart\""
+	local reload_gentoo="clamd_restart_opt=\"clamdscan --reload\""
 
-	# Fix the log path in the logrotate file, too.
-	sed -i -e "s~${log_default}~${log_gentoo}~" "${PN}-logrotate" \
-		|| die "failed to update paths in ${PN}-logrotate"
+	sed -i "config/os.gentoo.conf" \
+		-e "s~${socket_default}~${socket_gentoo}~" \
+		-e "s~${reload_default}~${reload_gentoo}~" \
+		|| die "failed to update config/os.gentoo.conf"
+
+	# Uncomment the "create" line in the logrotate.d file, and tighten
+	# the permissions a bit.
+	local logrotate_gentoo="     create 0640 clamav clamav"
+	sed -e "s~#     create 0644 clamav clamav~${logrotate_gentoo}~" \
+		-i "logrotate.d/${PN}" \
+		|| die "failed to tighten permissions in logrotate.d/${PN}"
+
+	eapply_user
 }
 
 src_install() {
@@ -67,18 +61,19 @@ src_install() {
 	dodir "/var/lib/${PN}"
 
 	insinto /etc/logrotate.d
-	doins "${PN}-logrotate"
+	doins "logrotate.d/${PN}"
 
-	insinto /etc
-	doins "${PN}.conf"
+	insinto "/etc/${PN}"
+	doins config/master.conf
+	newins config/os.gentoo.conf os.conf
 
 	doman "${PN}.8"
-	dodoc CHANGELOG INSTALL README.md
+	dodoc README.md
 }
 
 pkg_postinst() {
 	elog ''
-	elog "You will need to select databases in /etc/${PN}.conf."
+	elog "You will need to select databases in /etc/${PN}/master.conf."
 	elog "For details, please see the ${PN}(8) manual page."
 	elog ''
 	elog 'An up-to-date description of the available Sanesecurity'
@@ -86,4 +81,8 @@ pkg_postinst() {
 	elog ''
 	elog '  http://sanesecurity.com/usage/signatures/'
 	elog ''
+	ewarn 'The configuration file has moved in the 5.x version!'
+	ewarn "You should migrate your config from /etc/${PN}.conf to"
+	ewarn "/etc/${PN}/master.conf"
+	ewarn ''
 }
