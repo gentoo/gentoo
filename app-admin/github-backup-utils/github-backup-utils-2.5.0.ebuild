@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 # See https://github.com/github/backup-utils/issues/135
 PYTHON_COMPAT=(python2_7)
@@ -27,13 +27,11 @@ RDEPEND="net-misc/rsync"
 MY_PN="${PN/#github-/}"
 S="${WORKDIR}/${MY_PN}-${PV}"
 
-src_compile()
-{
+src_compile() {
 	:;
 }
 
-src_install()
-{
+src_install() {
 	dobin bin/*
 	insinto usr/share/${PN}
 	doins share/${PN}/version
@@ -45,7 +43,6 @@ src_install()
 	newins backup.config-example backup.config
 }
 
-src_test()
-{
-	make test
+src_test() {
+	emake test
 }
