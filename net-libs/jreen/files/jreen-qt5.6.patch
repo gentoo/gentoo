@@ -1,0 +1,15 @@
+Fix build with Qt 5.6
+
+Gentoo-bug: 578912
+
+--- a/src/stanzaextension.h
++++ b/src/stanzaextension.h
+@@ -28,7 +28,7 @@
+ 
+ #include <QObject>
+ #include <QSharedPointer>
+-#include <QMetaTypeId>
++#include <QMetaType>
+ #include "jreen.h"
+ 
+ class QXmlStreamWriter;
