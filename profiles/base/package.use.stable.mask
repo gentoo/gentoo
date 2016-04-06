@@ -5,6 +5,12 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in package.use.mask
 
+# Ian Delaney <idella4@gentoo.org> (06 Apr 2016)
+# on behalf of Ilya Tumaykin <itumaykin+gentoo@gmail.com>
+# Requires >=dev-util/cmocka-1.0, which is unstable atm,
+# has open bugs and thus not yet ready for stabilization.
+media-video/mpv test
+
 # Michael Palimaka <kensington@gentoo.org (17 Feb 2016)
 # Needs unsable media-libs/opencv
 media-gfx/nomacs qt5

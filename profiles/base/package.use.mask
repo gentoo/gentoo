@@ -5,6 +5,12 @@
 # This file requires >=portage-2.1.1
 # New entries go on top.
 
+# Ian Delaney <idella4@gentoo.org> (06 Apr 2016)
+# on behalf of Ilya Tumaykin <itumaykin+gentoo@gmail.com>
+# Raspberry Pi support is only available on arm.
+# Mask raspberry-pi USE globally, unmask on arm.
+media-video/mpv raspberry-pi
+
 # Pawel Hajdan jr <phajdan.jr@gentoo.org> (25 Mar 2016)
 # System ffmpeg build is broken in recent chromium (bug #576372).
 >=www-client/chromium-50.0.2657.0 system-ffmpeg
@@ -39,11 +45,6 @@ kde-plasma/plasma-sdk plasmate
 # USE flag is renamed to postscript, mask the old flag #564422
 # to notify users.  This entry may be removed after 30 days
 app-text/atril ps
-
-# Ian Delaney <idella4@gentoo.org> (28 Dec 2015)
-# proxy maintainer excludes dep uchardet from the build
-# of mpv temporarily
-media-video/mpv uchardet
 
 # Manuel Rüger <mrueg@gentoo.org> (24 Dec 2015)
 # media-tv/xawtv is masked for removal

@@ -18,11 +18,6 @@
 
 #--- END OF EXAMPLES ---
 
-# Ian Delaney <idella4@gentoo.org> (28 Dec 2015)
-# proxy maintainer excludes dep uchardet from the build
-# of mpv temporarily but does not require masking in amd64
-media-video/mpv -uchardet
-
 # Nathan Phillip Brink <binki@gentoo.org> (26 Sep 2015)
 # git useflag requires dev-libs/libgit2 which few arches support
 dev-util/geany-plugins -git
