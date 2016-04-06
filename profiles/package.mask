@@ -30,6 +30,15 @@
 
 #--- END OF EXAMPLES ---
 
+# Michael Palimaka <kensington@gentoo.org> (06 Apr 2016)
+# Fails to build. Dead upstream. Bug #579020.
+# Masked for removal in 30 days.
+net-libs/libqinfinity
+
+# Michael Palimaka <kensington@gentoo.org> (06 Apr 2016)
+# Fails to build. Dead upstream. Masked for removal in 30 days.
+kde-misc/kte-collaborative
+
 # David Seifert <soap@gentoo.org> (05 Apr 2016)
 # No upstream release since 2007, no revdeps in tree,
 # version in tree outdated, bug #454702.
