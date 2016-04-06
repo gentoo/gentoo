@@ -14,7 +14,7 @@ SRC_URI="http://sphinxsearch.com/files/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="~amd64 ~arm ~x86 ~amd64-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris"
 IUSE="debug +id64 mysql odbc postgres re2 stemmer syslog xml"
 
 RDEPEND="mysql? ( virtual/mysql )
