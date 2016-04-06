@@ -15254,7 +15254,7 @@ sci-astronomy/skycat 3.1.2-r1: ESO astronomical image visualizer with catalog ac
 sci-astronomy/skychart 3.8.2450 3.10.2854: Planetarium for amauter astronomers
 sci-astronomy/skymaker 3.10.5: Program that simulates astronomical images
 sci-astronomy/sofa_c 20150209a: Library for algorithms for models in fundamental astronomy
-sci-astronomy/stellarium 0.12.4 0.14.2: 3D photo-realistic skies in real time
+sci-astronomy/stellarium 0.12.4 0.14.2 0.14.3: 3D photo-realistic skies in real time
 sci-astronomy/stiff 2.4.0: Converts astronomical FITS images to the TIFF format
 sci-astronomy/stuff 1.26.0: Tool for automatic generation of astronomical catalogs
 sci-astronomy/swarp 2.38.0: Resample and coadd astronomical FITS images
