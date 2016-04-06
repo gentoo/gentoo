@@ -251,18 +251,19 @@ elif [[ $1 == "-h" || $1 == "--help" ]] ; then
 		Usage: lesspipe <file>
 
 		lesspipe specific settings:
-		  LESSCOLOR env     - toggle colorizing of output (no/yes/always)
+		  LESSCOLOR env     - toggle colorizing of output (no/yes/always; default: no)
 		  LESSCOLORIZER env - program used to colorize output (default: code2color)
 		  LESSIGNORE        - list of extensions to ignore (don't do anything fancy)
 
 		You can create per-user filters as well by creating the executable file:
 		  ~/.lessfilter
-		One argument is passed to it: the file to display.
+		One argument is passed to it: the file to display.  The script should exit 0
+		to indicate it handled the file, or non-zero to tell lesspipe to handle it.
 
 		To use lesspipe, simply add to your environment:
 		  export LESSOPEN="|lesspipe %s"
 
-		Run 'less --help' or 'man less' for more info
+		Run 'less --help' or 'man less' for more info.
 	EOF
 elif [[ -d $1 ]] ; then
 	ls -alF -- "$1"
