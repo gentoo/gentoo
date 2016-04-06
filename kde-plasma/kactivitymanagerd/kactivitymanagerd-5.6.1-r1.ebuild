@@ -28,8 +28,8 @@ RDEPEND="
 	$(add_qt_dep qtwidgets)
 	!<kde-base/kactivities-4.13.3-r1:4[-minimal(-)]
 	!kde-base/kactivitymanagerd
-	!<kde-plasma/plasma-desktop-5.6.1
 	!<kde-frameworks/kactivities-5.20.0
+	!<kde-plasma/plasma-desktop-5.6.1
 "
 DEPEND="${RDEPEND}
 	>=dev-libs/boost-1.54
