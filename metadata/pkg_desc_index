@@ -10704,7 +10704,7 @@ games-server/bf1942-lnxded 1.61: dedicated server for Battlefield 1942
 games-server/crossfire-server 1.70.0 1.71.0: server for the crossfire clients
 games-server/cyphesis 0.6.2: WorldForge server running small games
 games-server/etqw-ded 1.5: Enemy Territory: Quake Wars dedicated server
-games-server/monopd 0.9.7 0.9.8 0.10.2: server for atlantik games
+games-server/monopd 0.10.2: server for atlantik games
 games-server/mtavc 0.5: dedicated server for GTA3 multiplayer
 games-server/nwn-ded 1.69: Neverwinter Nights Dedicated server
 games-server/pvpgn 1.8.5-r1: A gaming server for Battle.Net compatible clients
