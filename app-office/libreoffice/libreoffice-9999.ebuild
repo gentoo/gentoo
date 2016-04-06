@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 KDE_REQUIRED="optional"
 QT_MINIMAL="4.7.4"
@@ -266,8 +266,6 @@ elif [[ ${MERGE_TYPE} != binary ]] ; then
 fi
 
 pkg_pretend() {
-	local pgslot
-
 	use java || \
 		ewarn "If you plan to use lbase application you should enable java or you will get various crashes."
 
@@ -285,7 +283,7 @@ pkg_pretend() {
 	# Ensure pg version but we have to be sure the pg is installed (first
 	# install on clean system)
 	if use postgres && has_version dev-db/postgresql; then
-		 pgslot=$(postgresql-config show)
+		 local pgslot=$(postgresql-config show)
 		 if [[ ${pgslot//.} -lt 90 ]] ; then
 			eerror "PostgreSQL slot must be set to 9.0 or higher."
 			eerror "    postgresql-config set 9.0"
@@ -330,16 +328,9 @@ src_unpack() {
 }
 
 src_prepare() {
-	# patchset
-	if [[ -n ${PATCHSET} ]]; then
-		EPATCH_FORCE="yes" \
-		EPATCH_SOURCE="${WORKDIR}/${PATCHSET/.tar.xz/}" \
-		EPATCH_SUFFIX="patch" \
-		epatch
-	fi
-
-	epatch "${PATCHES[@]}"
-	epatch_user
+	[[ -n ${PATCHSET} ]] && eapply "${WORKDIR}/${PATCHSET/.tar.xz/}"
+	eapply "${PATCHES[@]}"
+	eapply_user
 
 	AT_M4DIR="m4" eautoreconf
 	# hack in the autogen.sh
@@ -368,7 +359,6 @@ src_prepare() {
 
 src_configure() {
 	local java_opts
-	local lo_ext
 	local ext_opts
 
 	# optimization flags
