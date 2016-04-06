@@ -40,6 +40,7 @@ DEPEND="
 RDEPEND="${DEPEND}"
 
 DOCS=( AUTHORS ChangeLog README.md )
+PATCHES=( "${FILESDIR}/${PN}-qt5.6.patch" )
 
 pkg_setup() {
 	MULTIBUILD_VARIANTS=( $(usev qt4) $(usev qt5) )
