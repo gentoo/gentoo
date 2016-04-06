@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="project">
-	<email>base-system@gentoo.org</email>
-	<name>Gentoo Base System</name>
-</maintainer>
-<maintainer type="project">
-	<email>embedded@gentoo.org</email>
-	<name>Embedded Gentoo</name>
-</maintainer>
+	<maintainer type="project">
+		<email>base-system@gentoo.org</email>
+		<name>Gentoo Base System</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>embedded@gentoo.org</email>
+		<name>Embedded Gentoo</name>
+	</maintainer>
+	<use>
+		<flag name="minimal">
+		Prefer <pkg>net-misc/dropbear</pkg> over <pkg>net-misc/openssh</pkg>
+	</flag>
+	</use>
 </pkgmetadata>
