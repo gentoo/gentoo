@@ -1,0 +1,56 @@
+From 73d12ad230a4ef4694f8d58b249ec6c2804ee324 Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Tue, 5 Apr 2016 22:56:27 -0400
+Subject: [PATCH] fix storage quoting with long long values
+
+On 32-bit systems w/64-bit time_t's (like the x32 ABI) we fail to build:
+../src/storage/sql_storage.cc: In member function 'virtual void SQLStorage::autoscanUpdateLM(zmm::Ref<AutoscanDirectory>)':
+../src/storage/sql_storage.cc:2139:81: error: call of overloaded 'quote(time_t)' is ambiguous
+         << " SET " << TQ("last_modified") << '=' << quote(adir->getPreviousLMT())
+
+Handle long long types explicitly to fix that.
+---
+ src/storage/mysql/mysql_storage.h     | 1 +
+ src/storage/sql_storage.h             | 1 +
+ src/storage/sqlite3/sqlite3_storage.h | 1 +
+ 3 files changed, 3 insertions(+)
+
+diff --git a/src/storage/mysql/mysql_storage.h b/src/storage/mysql/mysql_storage.h
+index c377d76..eaec12c 100644
+--- a/src/storage/mysql/mysql_storage.h
++++ b/src/storage/mysql/mysql_storage.h
+@@ -55,6 +55,7 @@ private:
+     virtual inline zmm::String quote(unsigned long val) { return zmm::String::from(val); }
+     virtual inline zmm::String quote(bool val) { return zmm::String(val ? '1' : '0'); }
+     virtual inline zmm::String quote(char val) { return quote(zmm::String(val)); }
++    virtual inline zmm::String quote(long long val) { return zmm::String::from(val); }
+     virtual zmm::Ref<SQLResult> select(const char *query, int length);
+     virtual int exec(const char *query, int length, bool getLastInsertId = false);
+     virtual void storeInternalSetting(zmm::String key, zmm::String value);
+diff --git a/src/storage/sql_storage.h b/src/storage/sql_storage.h
+index 833693a..bd1afc3 100644
+--- a/src/storage/sql_storage.h
++++ b/src/storage/sql_storage.h
+@@ -81,6 +81,7 @@ public:
+     virtual zmm::String quote(unsigned long val) = 0;
+     virtual zmm::String quote(bool val) = 0;
+     virtual zmm::String quote(char val) = 0;
++    virtual zmm::String quote(long long val) = 0;
+     virtual zmm::Ref<SQLResult> select(const char *query, int length) = 0;
+     virtual int exec(const char *query, int length, bool getLastInsertId = false) = 0;
+     
+diff --git a/src/storage/sqlite3/sqlite3_storage.h b/src/storage/sqlite3/sqlite3_storage.h
+index d825bd4..be6294d 100644
+--- a/src/storage/sqlite3/sqlite3_storage.h
++++ b/src/storage/sqlite3/sqlite3_storage.h
+@@ -160,6 +160,7 @@ private:
+     virtual inline zmm::String quote(unsigned long val) { return zmm::String::from(val); }
+     virtual inline zmm::String quote(bool val) { return zmm::String(val ? '1' : '0'); }
+     virtual inline zmm::String quote(char val) { return quote(zmm::String(val)); }
++    virtual inline zmm::String quote(long long val) { return zmm::String::from(val); }
+     virtual zmm::Ref<SQLResult> select(const char *query, int length);
+     virtual int exec(const char *query, int length, bool getLastInsertId = false);
+     virtual void storeInternalSetting(zmm::String key, zmm::String value);
+-- 
+2.7.4
+
