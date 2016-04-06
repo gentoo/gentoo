@@ -99,7 +99,8 @@ lesspipe() {
 		esac
 		;;
 	*.dvi)      dvi2tty "$1" ;;
-	*.ps|*.pdf) ps2ascii "$1" || pstotext "$1" || pdftotext "$1" ;;
+	*.ps)       ps2ascii "$1" || pstotext "$1" ;;
+	*.pdf)      pdftotext "$1" - || ps2ascii "$1" || pstotext "$1" ;;
 	*.doc)      antiword "$1" || catdoc "$1" ;;
 	*.rtf)      unrtf --nopict --text "$1" ;;
 	*.conf|*.txt|*.log) ;; # force less to work on these directly #150256
