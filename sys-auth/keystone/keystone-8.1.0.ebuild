@@ -164,9 +164,8 @@ RDEPEND="
 	<=dev-python/pycadf-2.0.1[${PYTHON_USEDEP}]
 	~dev-python/msgpack-0.4.6[${PYTHON_USEDEP}]"
 
-PATCHES=(
-	"${FILESDIR}/CVE-2015-7546_8.0.1.patch"
-)
+#PATCHES=(
+#)
 
 pkg_setup() {
 	enewgroup keystone
