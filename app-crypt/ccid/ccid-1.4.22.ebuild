@@ -58,7 +58,9 @@ src_install() {
 
 		# disable Kobil_mIDentity_switch udev rule with USE=-kobil-midentity
 		if ! use kobil-midentity; then
-			sed -i -e '/Kobil_mIDentity_switch/s/^/#/' "$(_udev_get_udevdir)"/rules.d/92-pcsc-ccid.rules
+			sed \
+				-e '/Kobil_mIDentity_switch/s/^/#/' \
+				-i "${D}/$(get_udevdir)"/rules.d/92-pcsc-ccid.rules || die
 		fi
 
 	fi
