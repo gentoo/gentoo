@@ -1,0 +1,13 @@
+diff --git a/lib/libusb/Makefile b/lib/libusb/Makefile
+index 88ec3fe..076b8d4 100644
+--- a/lib/libusb/Makefile
++++ b/lib/libusb/Makefile
+@@ -38,7 +38,7 @@ SRCS+=		libusb10_io.c
+ CFLAGS+=	-DCOMPAT_32BIT
+ .else
+ FILES=		libusb-0.1.pc libusb-1.0.pc libusb-2.0.pc
+-FILESDIR=	${LIBDATADIR}/pkgconfig
++FILESDIR=	${LIBDIR}/pkgconfig
+ .endif
+ 
+ #
