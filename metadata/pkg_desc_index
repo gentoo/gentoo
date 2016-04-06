@@ -7346,7 +7346,7 @@ dev-python/line_profiler 1.0 9999: Line-by-line profiler
 dev-python/linecache2 1.0.0: Backports of the linecache module
 dev-python/livereload 2.3.2 2.4.0 2.4.1: Python LiveReload is an awesome tool for web developers
 dev-python/llfuse 0.40 0.41 0.42.1 0.43-r1 1.0: Python bindings for the low-level FUSE API
-dev-python/llvmlite 0.2.1 0.2.2 0.5.0 0.6.0 0.8.0 0.9.0: Python wrapper around the llvm C++ library
+dev-python/llvmlite 0.2.1 0.2.2 0.5.0 0.6.0 0.8.0 0.9.0 0.10.0: Python wrapper around the llvm C++ library
 dev-python/llvmmath 0.1.2: LLVM math library for Python
 dev-python/llvmpy 0.12.2 0.12.3 0.12.4 0.12.5 0.12.6 0.12.7: Python wrapper around the llvm C++ library
 dev-python/locket 0.2.0: File-based locks for Python
@@ -7452,7 +7452,7 @@ dev-python/nosehtmloutput 0.0.4-r1 0.0.5: Nose plugin to produce test results in
 dev-python/nosexcover 1.0.10: Extends nose.plugins.cover to add Cobertura-style XML reports
 dev-python/notebook 4.0.6 4.1.0: Jupyter Interactive Notebook
 dev-python/notify-python 0.1.1-r3: Python bindings for libnotify
-dev-python/numba 0.18.2 0.19.2 0.20.0 0.22.1 0.23.1 0.24.0: NumPy aware dynamic Python compiler using LLVM
+dev-python/numba 0.18.2 0.19.2 0.20.0 0.22.1 0.23.1 0.24.0 0.25.0: NumPy aware dynamic Python compiler using LLVM
 dev-python/numdisplay 1.6.0-r1: Python package for interactively displaying FITS arrays
 dev-python/numexpr 2.4.3 2.4.4 2.4.6 2.5: Fast numerical array expression evaluator for Python and NumPy
 dev-python/numpy 1.8.2 1.9.2 1.9.3 1.10.1-r1 1.10.2-r2 1.10.4 9999: Fast array and numerical python library
@@ -14287,7 +14287,7 @@ net-libs/netembryo 0.1.1: a network abstraction library
 net-libs/netwib 5.39.0: Library of Ethernet, IP, UDP, TCP, ICMP, ARP and RARP protocols
 net-libs/nfqueue-bindings 0.5: High-level language bindings for libnetfilter_queue
 net-libs/nghttp2 1.6.0 1.7.1 1.8.0 1.9.1 1.9.2 9999: HTTP/2 C Library
-net-libs/nodejs 0.12.6 0.12.7 0.12.10 4.4.0 4.4.1 5.9.1 5.10.0: A JavaScript runtime built on Chrome's V8 JavaScript engine
+net-libs/nodejs 0.12.6 0.12.7 0.12.10 4.4.0 4.4.1 5.9.1 5.10.1: A JavaScript runtime built on Chrome's V8 JavaScript engine
 net-libs/obby 0.4.8 0.4.8-r1: Library for collaborative text editing
 net-libs/onion 0.7 9999: C library to create simple HTTP servers and Web Applications
 net-libs/opal 3.10.11 3.12.4: C++ class library normalising numerous telephony protocols
