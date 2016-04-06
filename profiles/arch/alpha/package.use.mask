@@ -27,11 +27,6 @@ app-text/mupdf opengl
 # dev-lang/luajit lacks alpha keyword. See bug #488318.
 media-video/mpv luajit
 
-# Ian Delaney <idella4@gentoo.org> (28 Dec 2015)
-# dep of testsuite dev-util/cmocka requires keywording for alpha
-# via Bug 569558, then this can be taken out
-media-video/mpv test
-
 # Mike Frysinger <vapier@gentoo.org> (22 Dec 2015)
 # Needs keywording. #569254
 net-firewall/iptables nftables
