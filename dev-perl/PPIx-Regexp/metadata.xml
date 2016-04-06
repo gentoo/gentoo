@@ -14,6 +14,8 @@
     <remote-id type="cpan-module">PPIx::Regexp::Lexer</remote-id>
     <remote-id type="cpan-module">PPIx::Regexp::Node</remote-id>
     <remote-id type="cpan-module">PPIx::Regexp::Node::Range</remote-id>
+    <remote-id type="cpan-module">PPIx::Regexp::Node::Unknown</remote-id>
+    <remote-id type="cpan-module">PPIx::Regexp::StringTokenizer</remote-id>
     <remote-id type="cpan-module">PPIx::Regexp::Structure</remote-id>
     <remote-id type="cpan-module">PPIx::Regexp::Structure::Assertion</remote-id>
     <remote-id type="cpan-module">PPIx::Regexp::Structure::BranchReset</remote-id>
@@ -56,6 +58,7 @@
     <remote-id type="cpan-module">PPIx::Regexp::Token::Interpolation</remote-id>
     <remote-id type="cpan-module">PPIx::Regexp::Token::Literal</remote-id>
     <remote-id type="cpan-module">PPIx::Regexp::Token::Modifier</remote-id>
+    <remote-id type="cpan-module">PPIx::Regexp::Token::NoOp</remote-id>
     <remote-id type="cpan-module">PPIx::Regexp::Token::Operator</remote-id>
     <remote-id type="cpan-module">PPIx::Regexp::Token::Quantifier</remote-id>
     <remote-id type="cpan-module">PPIx::Regexp::Token::Recursion</remote-id>
