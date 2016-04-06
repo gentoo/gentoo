@@ -10765,7 +10765,7 @@ games-strategy/galaxyhack 1.74: Multiplayer AI script based strategy game
 games-strategy/glob2 0.9.4.4-r1: Real Time Strategy (RTS) game involving a brave army of globs
 games-strategy/gorky17-demo 1.0.1.0.1-r1: Horror conspiracy game mixing elements of strategy and role-playing
 games-strategy/gwp 0.4.0-r3: GNOME client for the classic PBEM strategy game VGA Planets 3
-games-strategy/hedgewars 0.9.22: A turn-based strategy, artillery, action and comedy game
+games-strategy/hedgewars 0.9.22 0.9.22-r1: A turn-based strategy, artillery, action and comedy game
 games-strategy/heroes3 1.3.1a-r2: Heroes of Might and Magic III : The Restoration of Erathia - turn-based 2-D medieval combat
 games-strategy/heroes3-demo 1.3.1a: turn-based 2D medieval combat
 games-strategy/ja2-stracciatella 0.12.1_p7072: A port of Jagged Alliance 2 to SDL
