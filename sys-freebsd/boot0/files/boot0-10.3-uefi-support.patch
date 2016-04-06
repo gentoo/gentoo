@@ -1,0 +1,33 @@
+diff --git a/efi/Makefile b/efi/Makefile
+index 30024e3..a33efb2 100644
+--- a/efi/Makefile
++++ b/efi/Makefile
+@@ -2,15 +2,10 @@
+ 
+ .include <bsd.own.mk>
+ 
+-# In-tree GCC does not support __attribute__((ms_abi)).
+-.if ${COMPILER_TYPE} != "gcc"
+-
+ .if ${MACHINE_CPUARCH} == "amd64"
+ SUBDIR+=	libefi loader boot1
+ .endif
+ 
+-.endif # ${COMPILER_TYPE} != "gcc"
+-
+ .if ${MACHINE_CPUARCH} == "ia64"
+ SUBDIR+=	libefi
+ .endif
+diff --git a/efi/boot1/Makefile b/efi/boot1/Makefile
+index 4ffdfda..8ec0e00 100644
+--- a/efi/boot1/Makefile
++++ b/efi/boot1/Makefile
+@@ -64,7 +64,7 @@ LDFLAGS+=	-Wl,-znocombreloc
+ # Add libstand for required string and memory functions for all platforms.
+ #
+ DPADD+=		${LIBSTAND}
+-LDADD+=		-lstand
++LDADD+=		${LIBSTAND}
+ 
+ DPADD+=		${LDSCRIPT}
+ 
