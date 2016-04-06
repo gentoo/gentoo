@@ -1,0 +1,12 @@
+diff --git a/tests/test-syntax-error.py b/tests/test-syntax-error.py
+index ab14deb..78fc0ed 100644
+--- a/tests/test-syntax-error.py
++++ b/tests/test-syntax-error.py
+@@ -9,7 +9,3 @@ import traceback
+ def test_syntax_error(cx):
+     t.raises(t.JSError, cx.execute, "function(asdf;")
+ 
+-@t.cx()
+-def test_invalid_octal(cx):
+-    t.raises(t.JSError, cx.execute, "09;")
+-
