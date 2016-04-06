@@ -9627,7 +9627,7 @@ dev-util/hxd 0.70.02-r1: Binary to hexadecimal converter
 dev-util/hxtools 20121125-r1: A collection of tools and scripts
 dev-util/icemon 20140102: Icemon is a KDE monitor program for use with Icecream compile clusters
 dev-util/icmake 7.21.01 7.22.00 7.22.01: Hybrid between a make utility and a shell scripting language
-dev-util/idea-ultimate 14.1.5.141.2735.5 14.1.5.141.3056.5 15.0.3.143.1821.5 15.0.4.143.2287.1 16.0.0.144.3143.6_pre 16.0.0.145.184.1_pre: A complete toolset for web, mobile and enterprise development
+dev-util/idea-ultimate 14.1.6.141.3057.6 15.0.5.143.2332.3 2016.1.0.145.258.11 2016.1.1.145.597.3_pre: A complete toolset for web, mobile and enterprise development
 dev-util/idutils 4.2 4.5 4.6: Fast, high-capacity, identifier database tool
 dev-util/igprof 5.9.11: Ignominous Profiler for analysing application memory and performance characteristics
 dev-util/imediff2 1.1.2-r3: An interactive, user friendly 2-way merge tool in text mode
@@ -10902,7 +10902,7 @@ gnome-extra/gnome-characters 3.16.2 3.18.1: Unicode character map viewer and lib
 gnome-extra/gnome-clocks 3.16.2 3.18.0: Clocks application for GNOME
 gnome-extra/gnome-color-chooser 0.2.5: GTK+/GNOME color customization tool
 gnome-extra/gnome-color-manager 3.16.0 3.18.0: Color profile manager for the GNOME desktop
-gnome-extra/gnome-commander 1.4.2 1.4.6 1.4.7: A graphical, full featured, twin-panel file manager
+gnome-extra/gnome-commander 1.4.2 1.4.6 1.4.7 1.4.8: A graphical, full featured, twin-panel file manager
 gnome-extra/gnome-contacts 3.16.2 3.18.1: GNOME contact management application
 gnome-extra/gnome-directory-thumbnailer 0.1.6 0.1.7: Thumbnail generator for directories
 gnome-extra/gnome-do 0.9: GNOME Do allows you to get things done quickly
