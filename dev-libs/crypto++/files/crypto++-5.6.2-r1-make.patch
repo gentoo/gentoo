@@ -148,3 +148,29 @@
 -	$(CXX) $(CXXFLAGS) -c $<
 +%.lo : %.cpp
 +	$(LIBTOOL) --tag=CXX --mode=compile $(CXX) $(CXXFLAGS) -c $<
+From 0088b78b23ede2abb0e8ab08345ac334d8c1ad64 Mon Sep 17 00:00:00 2001
+From: Alon Bar-Lev <alon.barlev@gmail.com>
+Date: Thu, 7 Apr 2016 23:30:48 +0300
+Subject: [PATCH] build: remove native CXXFLAGS override
+
+---
+ GNUmakefile | 3 ---
+ 1 file changed, 3 deletions(-)
+
+diff --git a/GNUmakefile b/GNUmakefile
+index b1ab537..a0c6c13 100644
+--- a/GNUmakefile
++++ b/GNUmakefile
+@@ -38,9 +38,7 @@ GAS219_OR_LATER = $(shell $(CXX) -xc -c /dev/null -Wa,-v -o/dev/null 2>&1 | $(EG
+ ifneq ($(GCC42_OR_LATER),0)
+ ifeq ($(UNAME),Darwin)
+ CXXFLAGS += -arch x86_64 -arch i386
+-else
+-CXXFLAGS += -march=native
+ endif
+ endif
+ 
+ ifneq ($(INTEL_COMPILER),0)
+-- 
+2.7.3
+
