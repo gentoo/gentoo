@@ -3425,6 +3425,7 @@ kde-plasma/kinfocenter:nfs - Show information about NFS mounts, shares and log e
 kde-plasma/kinfocenter:pci - Show advanced PCI information
 kde-plasma/kinfocenter:samba - Show information about Samba mounts, shares and log entries
 kde-plasma/kmenuedit:hotkeys - Enable support for hotkey editing
+kde-plasma/kwallet-pam:oldwallet - Enable legacy support for kde-apps/kwalletd
 kde-plasma/kwin:gles2 - Use OpenGL ES 2 instead of full GL
 kde-plasma/kwin:multimedia - Enable effect video button in desktop effects KCM
 kde-plasma/libksysguard:detailedmemory - Enable display of detailed memory information using dev-qt/qtwebkit.
