@@ -29,7 +29,7 @@ RDEPEND="
 	dev-perl/convert-ascii-armour
 	dev-perl/data-buffer
 	dev-perl/digest-md2
-	>=dev-perl/math-pari-2.010603
+	>=dev-perl/Math-Pari-2.010603
 	dev-perl/Crypt-Random
 	dev-perl/Crypt-Primes
 	dev-perl/Crypt-DES_EDE3
