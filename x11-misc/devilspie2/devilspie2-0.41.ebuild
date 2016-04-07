@@ -5,7 +5,7 @@
 EAPI=5
 
 # check locales on version bump!
-PLOCALES="fi fr ja nl pt_BR ru sv"
+PLOCALES="fi fr it ja nl pt_BR ru sv"
 inherit flag-o-matic toolchain-funcs l10n
 
 DESCRIPTION="Devilspie like window matching utility, using LUA for scripting"
