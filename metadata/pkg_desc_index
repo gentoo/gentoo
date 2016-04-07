@@ -11136,7 +11136,7 @@ kde-apps/kdesdk-strigi-analyzer 4.14.3: kdesdk: strigi plugins
 kde-apps/kdesu 4.14.3 15.08.3 15.12.3: KDE gui for su(1)
 kde-apps/kdetoys-meta 4.14.3 15.08.3: KDE toys - merge this to pull in all kdetoys-derived packages
 kde-apps/kdeutils-meta 4.14.3 15.08.3 15.12.3: kdeutils - merge this to pull in all kdeutils-derived packages
-kde-apps/kdewebdev-meta 4.14.3 15.08.3: KDE WebDev - merge this to pull in all kdewebdev-derived packages
+kde-apps/kdewebdev-meta 4.14.3 15.08.3 15.12.3: KDE WebDev - merge this to pull in all kdewebdev-derived packages
 kde-apps/kdf 4.14.3 15.08.3 15.12.3: KDE free disk space utility
 kde-apps/kdialog 4.14.3 15.08.3 15.12.3: Can be used to show nice dialog boxes from shell scripts
 kde-apps/kdiamond 4.14.3 15.12.3: A KDE three-in-a-row game
@@ -11144,7 +11144,7 @@ kde-apps/kdontchangethehostname 4.14.3 15.08.3 15.12.3: Tool to inform Plasma ab
 kde-apps/keditbookmarks 4.14.3 15.08.3 15.12.3: KDE's bookmarks editor
 kde-apps/keditfiletype 4.14.3 15.08.3 15.12.3: KDE mime/file type assocciation editor
 kde-apps/kfile 4.14.3 15.08.3 15.12.3: Commandline frontend to KFileMetaInfo
-kde-apps/kfilereplace 4.14.3 15.08.3: KDE web development - powerful search and replace in multiple files
+kde-apps/kfilereplace 4.14.3 15.08.3 15.12.3: Powerful tool to search and replace in multiple files
 kde-apps/kfind 4.14.3 15.08.3 15.12.3: KDE file finder utility
 kde-apps/kfloppy 4.14.3 15.08.3 15.12.3: A straightforward graphical means to format 3.5" and 5.25" floppy disks
 kde-apps/kfmclient 4.14.3 15.08.3 15.12.3: KDE tool for opening URLs from the command line
@@ -11160,7 +11160,7 @@ kde-apps/kiconfinder 4.14.3 15.08.3 15.12.3: Finds an icon based on its name
 kde-apps/kig 4.14.3 15.12.3: KDE Interactive Geometry tool
 kde-apps/kigo 4.14.3 15.08.3 15.12.3: Go game by KDE
 kde-apps/killbots 4.14.3 15.12.3: Kill the bots or they kill you!
-kde-apps/kimagemapeditor 4.14.3 15.08.3: KDE web development - image map editor
+kde-apps/kimagemapeditor 4.14.3 15.08.3 15.12.3: KDE web development - image map editor
 kde-apps/kimgio 4.14.3 15.08.3 15.12.3: KDE WebP image format plugin
 kde-apps/kio-extras 15.08.3 15.12.3: KIO plugins present a filesystem-like view of arbitrary data
 kde-apps/kioclient 4.14.3 15.08.3 15.12.3: Command-line tool for network-transparent operations
@@ -11172,7 +11172,7 @@ kde-apps/kleopatra 4.4.2015.06 4.4.2016.01 4.14.8 4.14.10: Kleopatra - KDE X.509
 kde-apps/klettres 4.14.3 15.12.3: Alphabet learning application
 kde-apps/klickety 4.14.3 15.08.3 15.12.3: A game almost the same as ksame, but a bit different by KDE
 kde-apps/klines 4.14.3 15.12.3: A little KDE game about balls and how to get rid of them
-kde-apps/klinkstatus 4.14.3: KDE web development - link validity checker
+kde-apps/klinkstatus 4.14.3 15.12.3: KDE web development - link validity checker
 kde-apps/kmag 4.14.3 15.08.3 15.12.3: KDE screen magnifier
 kde-apps/kmahjongg 4.14.3 15.08.3 15.12.3: Mahjongg for KDE
 kde-apps/kmail 4.4.2015.06 4.4.2016.01 4.14.8 4.14.10: Email component of Kontact, the integrated personal information manager of KDE
@@ -11192,7 +11192,7 @@ kde-apps/knotify 4.14.3 15.08.3 15.12.3: The KDE notification daemon
 kde-apps/kolf 4.14.3 15.08.3 15.12.3: KDE Minigolf Game
 kde-apps/kollision 4.14.3 15.12.3-r1: Simple ball dodging game
 kde-apps/kolourpaint 4.14.3 15.08.3 15.12.3: Paint Program for KDE
-kde-apps/kommander 4.14.3 15.08.3: KDE dialog system for scripting
+kde-apps/kommander 4.14.3 15.08.3 15.12.3: KDE dialog system for scripting
 kde-apps/kompare 4.14.3 15.12.3: A program to view the differences between files
 kde-apps/konq-plugins 4.14.3 15.08.3 15.12.3: Various plugins for konqueror
 kde-apps/konqueror 4.14.3 15.08.3 15.12.3: Web browser and file manager
