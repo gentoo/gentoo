@@ -1,13 +1,13 @@
 DEFINED_PHASES=compile configure install prepare test
 DEPEND=virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=Small XML parsing library to read XML and XML-like data files
-EAPI=4
+EAPI=6
 HOMEPAGE=http://www.minixml.org/
 IUSE=threads static-libs
-KEYWORDS=amd64 ppc x86
+KEYWORDS=~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86
 LICENSE=Mini-XML
 SLOT=0
-SRC_URI=http://www.msweet.org/files/project3/mxml-2.7.tar.gz
+SRC_URI=http://www.msweet.org/files/project3/mxml-2.9.tar.gz
 _eclass_exported_funcs=src_prepare:- src_configure:- src_compile:- src_test:- src_install:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	libtool	4890219c51da247200223277f993e054	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
-_md5_=5f16bca953494f3bf80c8dcee7afd97f
+_md5_=f9e4dfcfcf9128fb3de6e57b4eb24fe7
