@@ -26,7 +26,7 @@ RDEPEND="
 	dev-perl/File-HomeDir
 	virtual/perl-IO
 	>=dev-perl/Math-GMP-1.40.0
-	>=dev-perl/math-pari-2.1.804
+	>=dev-perl/Math-Pari-2.1.804
 	virtual/perl-MIME-Base64
 	virtual/perl-Scalar-List-Utils
 	>=dev-perl/string-crc32-1.200.0
