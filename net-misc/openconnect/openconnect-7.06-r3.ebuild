@@ -70,7 +70,7 @@ src_configure() {
 		sed -e 's#"${ac_cv_path_PYTHON}"#""#' -i configure || die
 	fi
 
-	# stoken and liboath not in portage
+	# liboath not in portage
 	econf \
 		--with-vpnc-script="${EPREFIX}/etc/openconnect/openconnect.sh" \
 		$(use_enable static-libs static) \
@@ -78,7 +78,6 @@ src_configure() {
 		$(use_with !gnutls openssl) \
 		$(use_with gnutls ) \
 		$(use_with libproxy) \
-		--without-stoken \
 		$(use_with gssapi) \
 		$(use_with smartcard libpcsclite) \
 		$(use_with stoken) \

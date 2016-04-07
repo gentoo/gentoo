@@ -5,7 +5,6 @@
 EAPI=5
 
 XORG_DRI=always
-XORG_EAUTORECONF=yes
 inherit linux-info xorg-2
 
 DESCRIPTION="ATI video driver"
@@ -13,10 +12,6 @@ HOMEPAGE="http://www.x.org/wiki/ati/"
 
 KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd"
 IUSE="+glamor udev"
-COMMIT_ID="4693b1bd5b5c381e8b7b68a6f7f0c6696d6a68df"
-SRC_URI="http://cgit.freedesktop.org/xorg/driver/xf86-video-ati/snapshot/${COMMIT_ID}.tar.xz -> ${P}.tar.xz"
-
-S=${WORKDIR}/${COMMIT_ID}
 
 RDEPEND=">=x11-libs/libdrm-2.4.58[video_cards_radeon]
 	>=x11-libs/libpciaccess-0.8.0
