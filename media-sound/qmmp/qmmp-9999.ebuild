@@ -1,13 +1,13 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
+EAPI=6
 
 inherit cmake-utils
 [ "$PV" == "9999" ] && inherit subversion
 
-DESCRIPTION="Qt4-based audio player with winamp/xmms skins support"
+DESCRIPTION="Qt5-based audio player with winamp/xmms skins support"
 HOMEPAGE="http://qmmp.ylsoftware.com"
 if [ "$PV" != "9999" ]; then
 	SRC_URI="http://qmmp.ylsoftware.com/files/${P}.tar.bz2"
@@ -88,48 +88,47 @@ src_prepare() {
 
 src_configure() {
 	mycmakeargs=(
-		$(cmake-utils_use_use alsa)
-		$(cmake-utils_use_use aac)
-		$(cmake-utils_use_use alsa)
-		$(cmake-utils_use_use analyzer)
-		$(cmake-utils_use_use bs2b)
-		$(cmake-utils_use_use cdda CDA)
-		$(cmake-utils_use_use crossfade)
-		$(cmake-utils_use_use cover)
-		$(cmake-utils_use_use cue)
-		$(cmake-utils_use_use curl)
-		$(cmake-utils_use_use dbus)
-		$(cmake-utils_use_use enca)
-		$(cmake-utils_use_use ffmpeg)
-		$(cmake-utils_use_use flac)
-		$(cmake-utils_use_use game GME)
+		-DUSE_alsa="$(usex alsa)"
+		-DUSE_aac="$(usex aac)"
+		-DUSE_analyzer="$(usex analyzer)"
+		-DUSE_bs2b="$(usex bs2b)"
+		-DUSE_CDA="$(usex cdda)"
+		-DUSE_crossfade="$(usex crossfade)"
+		-DUSE_cover="$(usex cover)"
+		-DUSE_cue="$(usex cue)"
+		-DUSE_curl="$(usex curl)"
+		-DUSE_dbus="$(usex dbus)"
+		-DUSE_enca="$(usex enca)"
+		-DUSE_ffmpeg="$(usex ffmpeg)"
+		-DUSE_flac="$(usex flac)"
+		-DUSE_GME="$(usex game)"
 		-DUSE_HAL=OFF
-		$(cmake-utils_use_use jack)
-		$(cmake-utils_use_use kde KDENOTIFY)
-		$(cmake-utils_use_use ladspa)
-		$(cmake-utils_use_use lyrics)
-		$(cmake-utils_use_use mad)
-		$(cmake-utils_use_use midi MIDI_WILDMIDI)
-		$(cmake-utils_use_use mplayer)
-		$(cmake-utils_use_use mms)
-		$(cmake-utils_use_use modplug)
-		$(cmake-utils_use_use mpris)
-		$(cmake-utils_use_use musepack MPC)
-		$(cmake-utils_use_use notifier)
-		$(cmake-utils_use_use opus)
-		$(cmake-utils_use_use oss)
-		$(cmake-utils_use_use projectm)
-		$(cmake-utils_use_use pulseaudio PULSE)
-		$(cmake-utils_use_use qsui)
-		$(cmake-utils_use_use scrobbler)
-		$(cmake-utils_use_use sndfile)
-		$(cmake-utils_use_use stereo)
-		$(cmake-utils_use_use tray STATICON)
-		$(cmake-utils_use_use udisks UDISKS2)
-		$(cmake-utils_use_use libsamplerate SRC)
-		$(cmake-utils_use_use vorbis)
-		$(cmake-utils_use_use wavpack)
-		)
+		-DUSE_jack="$(usex jack)"
+		-DUSE_KDENOTIFY="$(usex kde)"
+		-DUSE_ladspa="$(usex ladspa)"
+		-DUSE_lyrics="$(usex lyrics)"
+		-DUSE_mad="$(usex mad)"
+		-DUSE_MIDI_WILDMIDI="$(usex midi)"
+		-DUSE_mplayer="$(usex mplayer)"
+		-DUSE_mms="$(usex mms)"
+		-DUSE_modplug="$(usex modplug)"
+		-DUSE_mpris="$(usex mpris)"
+		-DUSE_MPC="$(usex musepack)"
+		-DUSE_notifier="$(usex notifier)"
+		-DUSE_opus="$(usex opus)"
+		-DUSE_oss="$(usex oss)"
+		-DUSE_projectm="$(usex projectm)"
+		-DUSE_PULSE="$(usex pulseaudio)"
+		-DUSE_qsui="$(usex qsui)"
+		-DUSE_scrobbler="$(usex scrobbler)"
+		-DUSE_sndfile="$(usex sndfile)"
+		-DUSE_stereo="$(usex stereo)"
+		-DUSE_STATICON="$(usex tray)"
+		-DUSE_UDISKS2="$(usex udisks)"
+		-DUSE_SRC="$(usex libsamplerate)"
+		-DUSE_vorbis="$(usex vorbis)"
+		-DUSE_wavpack="$(usex wavpack)"
+	)
 
 	cmake-utils_src_configure
 }
