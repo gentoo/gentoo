@@ -24,7 +24,7 @@ DEPEND="dev-perl/class-loader
 	dev-perl/digest-md2
 	virtual/perl-Digest-MD5
 	dev-perl/Digest-SHA1
-	>=dev-perl/math-pari-2.010603
+	>=dev-perl/Math-Pari-2.010603
 	dev-perl/Sort-Versions
 	dev-perl/tie-encryptedhash"
 RDEPEND="${DEPEND}"

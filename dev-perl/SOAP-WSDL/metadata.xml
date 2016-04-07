@@ -45,7 +45,6 @@
     <remote-id type="cpan-module">SOAP::WSDL::SOAP::Operation</remote-id>
     <remote-id type="cpan-module">SOAP::WSDL::SOAP::Typelib::Fault</remote-id>
     <remote-id type="cpan-module">SOAP::WSDL::SOAP::Typelib::Fault11</remote-id>
-    <remote-id type="cpan-module">SOAP::WSDL::SOAP::Typelib::Fault11Detail</remote-id>
     <remote-id type="cpan-module">SOAP::WSDL::Serializer::XSD</remote-id>
     <remote-id type="cpan-module">SOAP::WSDL::Server</remote-id>
     <remote-id type="cpan-module">SOAP::WSDL::Server::CGI</remote-id>
@@ -130,7 +129,6 @@
     <remote-id type="cpan-module">SOAP::WSDL::XSD::Typelib::ComplexType</remote-id>
     <remote-id type="cpan-module">SOAP::WSDL::XSD::Typelib::Element</remote-id>
     <remote-id type="cpan-module">SOAP::WSDL::XSD::Typelib::SimpleType</remote-id>
-    <remote-id type="cpan-module">SOAP::WSDL::XSD::Typelib::SimpleType::restriction</remote-id>
     <remote-id type="cpan-module">SOAP::WSDL::XSD::WhiteSpace</remote-id>
   </upstream>
 </pkgmetadata>

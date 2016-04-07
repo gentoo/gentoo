@@ -8,7 +8,6 @@ MODULE_AUTHOR=ILYAZ
 MODULE_SECTION=modules
 MODULE_VERSION=2.010808
 MODULE_A_EXT=zip
-MY_PN=Math-Pari
 inherit perl-module toolchain-funcs
 
 PARI_VER=2.3.5

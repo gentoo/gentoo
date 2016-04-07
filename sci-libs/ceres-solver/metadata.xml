@@ -30,5 +30,6 @@
   packages from SuiteSparse</flag>
   <flag name="gflags">Use <pkg>dev-cpp/gflags</pkg> for flag parsing</flag>
   <flag name="protobuf">Use <pkg>dev-libs/protobuf</pkg> to encode structured data</flag>
+  <flag name="c++11">Build ceres-solver using the C++11 standard</flag>
 </use>
 </pkgmetadata>
