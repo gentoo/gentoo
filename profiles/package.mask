@@ -30,6 +30,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Michael Palimaka <kensington@gentoo.org> (07 Apr 2016)
+# Obsolete. Merged into media-libs/libexif.
+# Masked for removal in 30 days.
+media-libs/libmnote
+
 # Michael Palimaka <kensington@gentoo.org> (06 Apr 2016)
 # Fails to build. Dead upstream. Bug #579020.
 # Masked for removal in 30 days.
