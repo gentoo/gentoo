@@ -16,8 +16,8 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~s
 IUSE="libressl test minimal examples"
 
 RDEPEND="
-	!libressl? ( dev-libs/openssl:0 )
-	libressl? ( dev-libs/libressl )
+	!libressl? ( dev-libs/openssl:0= )
+	libressl? ( dev-libs/libressl:0= )
 	virtual/perl-MIME-Base64
 "
 DEPEND="${RDEPEND}
