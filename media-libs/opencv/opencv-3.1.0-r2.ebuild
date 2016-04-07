@@ -94,7 +94,8 @@ pkg_setup() {
 src_prepare() {
 
 	epatch "${FILESDIR}/${PN}-3.0.0-gles.patch" \
-		"${FILESDIR}/${PN}-3.1.0-cmake-no-opengl.patch"
+		"${FILESDIR}/${PN}-3.1.0-cmake-no-opengl.patch" \
+		"${FILESDIR}/${P}-git-autodetect.patch"
 
 	# remove bundled stuff
 	rm -rf 3rdparty
