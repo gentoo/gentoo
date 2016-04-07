@@ -11941,7 +11941,7 @@ media-fonts/stix-fonts 1.0.0-r1 1.1.1: Comprehensive OpenType font set of mathem
 media-fonts/symbola 7.12 8.00: Unicode font for Basic Latin, IPA Extensions, Greek, Cyrillic and many Symbol Blocks
 media-fonts/takao-fonts 003.02.01: A community developed derivatives of IPA Fonts
 media-fonts/tengwar-fonts 1.9d: Tengwar - the Elvish letters, created by Feanor and described by J.R.R.Tolkien)
-media-fonts/terminus-font 4.36 4.38 4.39 4.39-r1: A clean fixed font for the console and X11
+media-fonts/terminus-font 4.39-r1 4.40: A clean fixed font for the console and X11
 media-fonts/termsyn 1.8.7: Monospaced font based on terminus and tamsyn
 media-fonts/tex-gyre 2.005: Extensive remake of freely available URW fonts
 media-fonts/texcm-ttf 1.0: TeX's Computer Modern Fonts for MathML
