@@ -10314,7 +10314,7 @@ games-fps/doom3-inhell 1.1-r1: Doom 3 In Hell - Ultimate Doom-inspired levels fo
 games-fps/doom3-lms 4: Doom 3 Last Man Standing - add co-op support and/or play against swarms of monsters
 games-fps/doom3-mitm 20070129: Doom 3 Make it to Morning - Single player maps
 games-fps/doom3-roe 1: Doom III: Resurrection of Evil expansion pack
-games-fps/doomsday 1.14.5 1.15.7: A modern gaming engine for Doom, Heretic, and Hexen
+games-fps/doomsday 1.14.5 1.15.7 1.15.8: A modern gaming engine for Doom, Heretic, and Hexen
 games-fps/doomsday-resources 1.01-r1: Improved models & textures for doomsday
 games-fps/duke3d 20040817-r2: Port of the original Duke Nukem 3D
 games-fps/duke3d-data 1.0-r3: Duke Nukem 3D data files
