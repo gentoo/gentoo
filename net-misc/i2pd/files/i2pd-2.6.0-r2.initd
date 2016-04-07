@@ -1,0 +1,26 @@
+#!/sbin/runscript
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+description="C++ daemon for accessing the I2P network"
+
+depend() {
+	use dns logger netmount
+}
+
+start() {
+        ebegin "Starting ${SVCNAME}"
+        checkpath -f "${I2PD_LOG}" -o "${I2PD_USER}:${I2PD_GROUP}"
+        checkpath -f "${I2PD_PID}" -o "${I2PD_USER}:${I2PD_GROUP}"
+        start-stop-daemon -S -u "${I2PD_USER}:${I2PD_GROUP}" -p "${I2PD_PID}.pid" /usr/bin/i2pd -- ${I2PDOPTIONS}
+        sleep 1
+        [ -e "$I2PD_PID" -a -e /proc/$(cat "$I2PD_PID") ]
+        eend $?
+}
+
+stop() {
+        ebegin "Stopping ${SVCNAME}"
+        start-stop-daemon -K -p "${I2PD_PID}" -R SIGTERM/20 SIGKILL/20 -P
+        eend $?
+}
