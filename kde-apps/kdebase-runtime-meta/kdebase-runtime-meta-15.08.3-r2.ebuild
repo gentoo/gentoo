@@ -40,6 +40,6 @@ RDEPEND="
 	$(add_kdeapps_dep solid-runtime '-bluetooth')
 	oldwallet? (
 		$(add_kdeapps_dep kwalletd)
-		pam? ( kde-apps/kwalletd-pam:4 )
+		pam? ( || ( kde-apps/kwalletd-pam:4 $(add_plasma_dep kwallet-pam 'oldwallet') ) )
 	)
 "
