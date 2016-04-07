@@ -3996,6 +3996,8 @@ dev-java/jdynamite 1.2-r1: Dynamic Template in Java
 dev-java/jebl 2013.02.18: Java Evolutionary Biology Library
 dev-java/jempbox 1.7.1 1.8.11: An open source Java library for working with XMP metadata
 dev-java/jettison 1.3.7: A JSON StAX implementation
+dev-java/jetty-alpn-api 1.1.2: Jetty's ALPN API
+dev-java/jetty-npn-api 1.1.1: Jetty's NPN API
 dev-java/jexcelapi 2.6.8-r2: A Java API to read, write, and modify Excel spreadsheets
 dev-java/jffi 1.0.11-r1 1.2.9: An optimized Java interface to libffi
 dev-java/jflex 1.6.0-r2 1.6.1: JFlex is a lexical analyzer generator for Java
@@ -4103,6 +4105,7 @@ dev-java/lzma 9.18: Java code for LZMA compression and decompression
 dev-java/lzmajio 0.95-r1: Implementations of LzmaInputStream/LzmaOutputStream interacting with underlying LZMA en-/decoders
 dev-java/matrix-toolkits-java 0.9.12: BLAS and LAPACK-derived matrix data structures and linear algebra methods
 dev-java/maven-bin 1.1-r3 2.0.11-r2 2.2.1-r2 3.0.4-r1 3.1.1 3.2.5 3.3.3-r1 3.3.9: Project Management and Comprehension Tool for Java
+dev-java/maven-hawtjni-plugin 1.11: Maven plugin for the HawtJNI code generator (resources only)
 dev-java/mchange-commons 0.2.10: a library of arguably useful Java utilities
 dev-java/mersennetwister 0_pre23765-r1: Modified MersenneTwister java port for Freenet
 dev-java/metadata-extractor 2.8.1: Access the metadata in digital images and video via a simple Java API
@@ -4143,11 +4146,12 @@ dev-java/netbeans-platform 8.0.2 8.1: Netbeans Platform
 dev-java/netbeans-profiler 8.0.2 8.1: Netbeans Profiler Cluster
 dev-java/netbeans-webcommon 8.0.2 8.1: Netbeans Web Services Cluster
 dev-java/netbeans-websvccommon 8.0.2 8.1: Netbeans Web Services Common Cluster
-dev-java/netty-buffer 4.0.21 4.0.32: Async event-driven framework for rapid development of high performance network applications
-dev-java/netty-codec 4.0.21 4.0.32: Async event-driven framework for rapid development of high performance network applications
-dev-java/netty-common 4.0.21 4.0.32: Async event-driven framework for rapid development of high performance network applications
-dev-java/netty-handler 4.0.19: Async event-driven framework for rapid development of high performance network applications
-dev-java/netty-transport 4.0.21-r1 4.0.32: Async event-driven framework for rapid development of high performance network applications
+dev-java/netty-buffer 4.0.21 4.0.36: Async event-driven framework for high performance network applications
+dev-java/netty-codec 4.0.36: Async event-driven framework for high performance network applications
+dev-java/netty-common 4.0.21 4.0.36: Async event-driven framework for high performance network applications
+dev-java/netty-handler 4.0.36: Async event-driven framework for high performance network applications
+dev-java/netty-tcnative 1.1.33.15: Fork of Tomcat Native that incorporates various patches
+dev-java/netty-transport 4.0.21-r1 4.0.36: Async event-driven framework for high performance network applications
 dev-java/neuroph 2.3 2.3.1 2.4: A lightweight Java neural network framework
 dev-java/objenesis 1.3: A small Java library with one purpose: To instantiate a new object of a class
 dev-java/odfdom 0.8.6-r1: The ODFDOM reference implementation, written in Java
