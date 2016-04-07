@@ -9,7 +9,7 @@ inherit kde5 multilib
 
 DESCRIPTION="KWallet PAM module to not enter password again"
 LICENSE="LGPL-2.1"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm ~x86"
 IUSE=""
 
 DEPEND="
