@@ -1,0 +1,38 @@
+Title: KDE Plasma 5 Upgrade
+Author: Michael Palimaka <kensington@gentoo.org>
+Content-Type: text/plain
+Posted: 2016-04-02
+Revision: 1
+News-Item-Format: 1.0
+Display-If-Installed: kde-base/plasma-workspace
+
+KDE Workspaces 4.11 has reached end of life and is no longer supported
+by upstream. It is therefore recommended for all users to upgrade to
+KDE Plasma 5.
+
+A detailed upgrade guide is available[1], but in most cases it is enough to
+switch to the new desktop/plasma profile, update @world, and
+emerge kde-plasma/plasma-meta:
+
+# eselect profile list
+# eselect profile set <target>
+# emerge --ask --changed-use --newrepo --deep world
+# emerge --ask --verbose kde-plasma/plasma-meta
+
+If you normally use KDM to launch Plasma, note that it is no longer supported.
+Upstream recommends x11-misc/sddm instead which is pulled in by plasma-meta by
+default. OpenRC users should edit /etc/conf.d/xdm and update DISPLAYMANAGER.
+Systemd users should run: systemctl reenable sddm.service
+
+Due to an an evolution of KDE upstream's release process[2], the traditional
+monolithic KDE 4 release is now split into three distinct components. This
+means that KDE Applications are now separate from the Plasma desktop and
+older KDE 4-based applications will continue to function as normal inside
+Plasma 5.
+
+KDE Workspaces 4.11 will remain in the tree for a reasonable time, but
+be warned that it is unmaintained and may cause conflicts with
+newer versions of KDE Applications.
+
+[1] https://wiki.gentoo.org/wiki/KDE/Plasma_5_upgrade
+[2] https://dot.kde.org/2013/09/04/kde-release-structure-evolves
