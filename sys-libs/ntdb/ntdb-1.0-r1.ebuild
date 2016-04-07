@@ -21,7 +21,7 @@ IUSE="python"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="python? ( ${PYTHON_DEPS} )"
-DEPEND="!!<net-fs/samba-4.1.7
+DEPEND="!<net-fs/samba-4.1.7
 	${RDEPEND}
 	${PYTHON_DEPS}
 	app-text/docbook-xml-dtd:4.2"
