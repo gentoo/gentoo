@@ -1,10 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
-
-inherit eutils
+EAPI=6
 
 DESCRIPTION="A free ASCII-Text Screen Editor for UNIX"
 HOMEPAGE="http://sourceforge.net/projects/joe-editor/"
@@ -21,6 +19,7 @@ RDEPEND="xterm? ( >=x11-terms/xterm-239 )"
 DOCS=( README.md NEWS.md docs/hacking.md docs/man.md )
 
 src_prepare() {
+	default
 	# Enable xterm mouse support in the rc files
 	if use xterm; then
 		cd "${S}"/rc
@@ -28,11 +27,6 @@ src_prepare() {
 			sed -e 's/^ -\(mouse\|joexterm\)/-\1/' -i "${i}" || die "sed failed"
 		done
 	fi
-}
-
-src_configure() {
-	econf \
-		--docdir="/usr/share/doc/${PF}"
 }
 
 pkg_postinst() {
