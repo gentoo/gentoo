@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare
+DEPEND=examples? ( virtual/glu virtual/opengl ) doc? ( app-doc/doxygen ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Open Dynamics Engine SDK
+EAPI=5
+HOMEPAGE=http://ode.org/
+IUSE=debug doc double-precision examples gyroscopic static-libs
+KEYWORDS=~amd64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux
+LICENSE=|| ( LGPL-2.1+ BSD )
+RDEPEND=examples? ( virtual/glu virtual/opengl )
+SLOT=0
+SRC_URI=https://bitbucket.org/odedevs/ode/downloads/ode-0.14.tar.gz
+_eclass_exported_funcs=src_prepare:- src_configure:- src_compile:- src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	9d81603248f2ba3ec59124320d123e5e	libtool	4890219c51da247200223277f993e054	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=b1766178b64b45808762b7b0d0b934ea
