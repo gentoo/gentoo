@@ -1,5 +1,5 @@
---- contrib/nsd_munin_.orig	2013-08-08 23:14:27.000000000 +0200
-+++ contrib/nsd_munin_	2013-08-08 23:41:24.000000000 +0200
+--- a/contrib/nsd_munin_
++++ b/contrib/nsd_munin_
 @@ -87,10 +87,10 @@
  
  =cut

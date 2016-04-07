@@ -1,8 +1,8 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 inherit user
 
@@ -20,13 +20,18 @@ KEYWORDS="~amd64 ~x86"
 IUSE="bind8-stats ipv6 minimal-responses mmap +nsec3 ratelimit root-server runtime-checks zone-stats"
 
 RDEPEND="
-	dev-libs/openssl
+	dev-libs/openssl:0=
 	virtual/yacc
 "
 DEPEND="
 	${RDEPEND}
 	sys-devel/flex
 "
+
+pkg_setup() {
+	enewgroup nsd
+	enewuser nsd -1 -1 -1 nsd
+}
 
 src_configure() {
 	# ebuild.sh sets localstatedir to /var/lib, but nsd expects /var in several locations
@@ -60,18 +65,17 @@ src_install() {
 
 	newinitd "${FILESDIR}"/nsd3.initd-r1 nsd
 
-	# remove /var/run data created by Makefile, handled by initd script
-	rm -r "${D}"/var/run || die "could not remove /var/run/ directory"
-
-}
-
-pkg_postinst() {
-	enewgroup nsd
-	enewuser nsd -1 -1 -1 nsd
-
 	# database directory, writable by nsd for database updates and zone transfers
-	install -d -m 750 -o nsd -g nsd "${EROOT%/}"/var/db/nsd
+	dodir /var/db/nsd
+	fowners nsd:nsd /var/db/nsd
+	fperms 750 /var/db/nsd
 
 	# zones directory, writable by root for 'nsdc patch'
-	install -d -m 750 -o root -g nsd "${EROOT%/}"/var//nsd
+	dodir /var/lib/nsd
+	fowners root:nsd /var/lib/nsd
+	fperms 750 /var/lib/nsd
+
+	# remove /var/run data created by Makefile, handled by initd script
+	rm -r "${ED}"/var/run || die "could not remove /var/run/ directory"
+
 }

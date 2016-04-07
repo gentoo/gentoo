@@ -7,15 +7,14 @@ EAPI=6
 inherit cmake-utils
 [ "$PV" == "9999" ] && inherit subversion
 
-DESCRIPTION="Qt5-based audio player with winamp/xmms skins support"
+DESCRIPTION="Qt4-based audio player with winamp/xmms skins support"
 HOMEPAGE="http://qmmp.ylsoftware.com"
 if [ "$PV" != "9999" ]; then
 	SRC_URI="http://qmmp.ylsoftware.com/files/${P}.tar.bz2"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="~amd64 ~ppc ~x86"
 else
-	QMMP_DEV_BRANCH="1.1"
 	SRC_URI=""
-	ESVN_REPO_URI="svn://svn.code.sf.net/p/${PN}-dev/code/branches/${PN}-${QMMP_DEV_BRANCH}"
+	ESVN_REPO_URI="https://qmmp.googlecode.com/svn/trunk/qmmp/"
 	KEYWORDS=""
 fi
 
@@ -27,12 +26,8 @@ libsamplerate lyrics +mad midi mms modplug mplayer mpris musepack notifier opus 
 projectm pulseaudio qsui scrobbler sndfile stereo tray udisks +vorbis wavpack"
 
 RDEPEND="media-libs/taglib
-	dev-qt/qtcore:5
-	dev-qt/qtdbus:5
-	dev-qt/qtgui:5
-	dev-qt/qtnetwork:5
-	dev-qt/qtwidgets:5
-	dev-qt/qtx11extras:5
+	dev-qt/qtgui:4
+	dev-qt/qdbusviewer:4
 	alsa? ( media-libs/alsa-lib )
 	bs2b? ( media-libs/libbs2b )
 	cdda? ( dev-libs/libcdio-paranoia )
@@ -49,7 +44,7 @@ RDEPEND="media-libs/taglib
 	midi? ( media-sound/wildmidi )
 	mms? ( media-libs/libmms )
 	mplayer? ( media-video/mplayer )
-	mpris? ( dev-qt/qtdbus:5 )
+	mpris? ( dev-qt/qtdbus:4 )
 	musepack? ( >=media-sound/musepack-tools-444 )
 	modplug? ( >=media-libs/libmodplug-0.8.4 )
 	vorbis? ( media-libs/libvorbis
@@ -59,15 +54,13 @@ RDEPEND="media-libs/taglib
 	ffmpeg? ( virtual/ffmpeg )
 	opus? ( media-libs/opusfile )
 	projectm? ( media-libs/libprojectm
-		dev-qt/qtopengl:5
-		dev-qt/qtgui:5[-gles2] )
+		dev-qt/qtopengl:4 )
 	pulseaudio? ( >=media-sound/pulseaudio-0.9.9 )
 	wavpack? ( media-sound/wavpack )
 	scrobbler? ( net-misc/curl )
 	sndfile? ( media-libs/libsndfile )
 	udisks? ( sys-fs/udisks:2 )"
-DEPEND="${RDEPEND}
-	dev-qt/linguist-tools:5"
+DEPEND="${RDEPEND}"
 
 DOCS="AUTHORS ChangeLog README"
 
@@ -99,6 +92,7 @@ src_configure() {
 		-DUSE_dbus="$(usex dbus)"
 		-DUSE_enca="$(usex enca)"
 		-DUSE_ffmpeg="$(usex ffmpeg)"
+		-DUSE_FFMPEG_LEGACY=OFF
 		-DUSE_flac="$(usex flac)"
 		-DUSE_GME="$(usex game)"
 		-DUSE_HAL=OFF
@@ -124,10 +118,11 @@ src_configure() {
 		-DUSE_stereo="$(usex stereo)"
 		-DUSE_STATICON="$(usex tray)"
 		-DUSE_UDISKS2="$(usex udisks)"
+		-DUSE_UDISKS=OFF
 		-DUSE_SRC="$(usex libsamplerate)"
 		-DUSE_vorbis="$(usex vorbis)"
 		-DUSE_wavpack="$(usex wavpack)"
-	)
+		)
 
 	cmake-utils_src_configure
 }
