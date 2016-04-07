@@ -201,16 +201,14 @@ qt5-build_src_prepare() {
 		find config.tests/unix -name '*.test' -type f -execdir \
 			sed -i -re '/(bin\/qmake|QMAKE")/ s/-nocache //' '{}' + || die
 
+		# Don't inject -msse/-mavx/... into CXXFLAGS when detecting
+		# compiler support for extended instruction sets (bug 552942)
+		find config.tests/common -name '*.pro' -type f -execdir \
+			sed -i -e '/QMAKE_CXXFLAGS\s*+=/ d' '{}' + || die
+
 		# Don't add -O3 to CXXFLAGS (bug 549140)
 		sed -i -e '/CONFIG\s*+=/ s/optimize_full//' \
 			src/{corelib/corelib,gui/gui}.pro || die "sed failed (optimize_full)"
-
-		# Don't inject -msse/-mavx/... into CXXFLAGS when detecting
-		# compiler support for extended instruction sets (bug 552942)
-		if [[ ${QT5_MINOR_VERSION} -ge 5 ]]; then
-			find config.tests/common -name '*.pro' -type f -execdir \
-				sed -i -e '/QMAKE_CXXFLAGS\s*+=/ d' '{}' + || die
-		fi
 	fi
 
 	if [[ ${EAPI} == 5 ]]; then
@@ -552,14 +550,7 @@ qt5_base_configure() {
 		# obsolete flag, does nothing
 		#-qml-debug
 
-		# extended instruction sets support
-		$([[ ${QT5_MINOR_VERSION} -le 4 ]] && is-flagq -mno-sse2   && echo -no-sse2)
-		$([[ ${QT5_MINOR_VERSION} -le 4 ]] && is-flagq -mno-sse3   && echo -no-sse3)
-		$([[ ${QT5_MINOR_VERSION} -le 4 ]] && is-flagq -mno-ssse3  && echo -no-ssse3)
-		$([[ ${QT5_MINOR_VERSION} -le 4 ]] && is-flagq -mno-sse4.1 && echo -no-sse4.1)
-		$([[ ${QT5_MINOR_VERSION} -le 4 ]] && is-flagq -mno-sse4.2 && echo -no-sse4.2)
-		$([[ ${QT5_MINOR_VERSION} -le 4 ]] && is-flagq -mno-avx    && echo -no-avx)
-		$([[ ${QT5_MINOR_VERSION} -le 4 ]] && is-flagq -mno-avx2   && echo -no-avx2)
+		# MIPS DSP instruction set extensions
 		$(is-flagq -mno-dsp   && echo -no-mips_dsp)
 		$(is-flagq -mno-dspr2 && echo -no-mips_dspr2)
 
@@ -576,9 +567,8 @@ qt5_base_configure() {
 		$([[ ${QT5_MINOR_VERSION} -ge 6 ]] && echo -no-syslog)
 		-no-libpng -no-libjpeg
 		-no-freetype -no-harfbuzz
-		-no-openssl
-		$([[ ${QT5_MINOR_VERSION} -ge 5 ]] && echo -no-libproxy)
-		$([[ ${QT5_MINOR_VERSION} -ge 5 ]] && echo -no-xkbcommon-{x11,evdev})
+		-no-openssl -no-libproxy
+		-no-xkbcommon-x11 -no-xkbcommon-evdev
 		-no-xinput2 -no-xcb-xlib
 
 		# don't specify -no-gif because there is no way to override it later
@@ -609,10 +599,7 @@ qt5_base_configure() {
 		-iconv
 
 		# disable everything to prevent automagic deps (part 3)
-		-no-cups -no-evdev
-		$([[ ${QT5_MINOR_VERSION} -ge 5 ]] && echo -no-tslib)
-		-no-icu -no-fontconfig
-		-no-dbus
+		-no-cups -no-evdev -no-tslib -no-icu -no-fontconfig -no-dbus
 
 		# let portage handle stripping
 		-no-strip
@@ -657,10 +644,10 @@ qt5_base_configure() {
 		-no-opengl -no-egl
 
 		# disable libinput-based generic plugin by default, override in qtgui
-		$([[ ${QT5_MINOR_VERSION} -ge 5 ]] && echo -no-libinput)
+		-no-libinput
 
 		# disable gstreamer by default, override in qtmultimedia
-		$([[ ${QT5_MINOR_VERSION} -ge 5 ]] && echo -no-gstreamer)
+		-no-gstreamer
 
 		# use upstream default
 		#-no-system-proxies
