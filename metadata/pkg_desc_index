@@ -96,7 +96,7 @@ app-admin/evtxtools 1.1.1-r1: Read, decode and dump Windows Vista/2008/7 event l
 app-admin/fam 2.7.0-r6 2.7.0-r7: FAM, the File Alteration Monitor
 app-admin/fetchlog 1.0 1.4: Displays the last new messages of a logfile
 app-admin/fifo-cronolog 1.1.1: cronolog wrapper for use with dumb daemons like squid, varnish and so on
-app-admin/filebeat-bin 1.1.1 1.1.2: Lightweight log shipper for Logstash and Elasticsearch
+app-admin/filebeat-bin 1.1.2 1.2.0: Lightweight log shipper for Logstash and Elasticsearch
 app-admin/filewatcher 2.4.6: This is a configuration file control system and IDS
 app-admin/fleet 0.11.0-r1 0.11.1 0.11.5 9999: A Distributed init System
 app-admin/fsvs 1.2.5-r1 1.2.5-r2: Backup/restore for subversion backends
@@ -11089,7 +11089,7 @@ kde-apps/kde-dev-scripts 4.14.3 15.12.3: KDE Development Scripts
 kde-apps/kde-dev-utils 4.14.3 15.08.3 15.12.3: KDE Development Utilities
 kde-apps/kde-l10n 15.12.3: KDE internationalization package
 kde-apps/kde-meta 4.14.3 4.14.3-r1 15.08.3 15.12.3: Merge this to pull in all KDE Plasma and Applications packages
-kde-apps/kde-wallpapers 4.14.3 15.08.3 15.08.3-r1: KDE wallpapers
+kde-apps/kde-wallpapers 4.14.3 15.08.3 15.08.3-r2: KDE wallpapers
 kde-apps/kde4-l10n 4.14.3 4.14.3-r1 15.08.3-r2 15.12.3-r1: KDE internationalization package
 kde-apps/kdeaccessibility-meta 4.14.3 15.08.3 15.12.3: kdeaccessibility - merge this to pull in all kdeaccessiblity-derived packages
 kde-apps/kdeadmin-meta 4.14.3 15.08.3 15.12.3: KDE administration tools - merge this to pull in all kdeadmin-derived packages
@@ -11100,8 +11100,8 @@ kde-apps/kdeartwork-iconthemes 4.14.3 15.08.3: Icon themes for kde
 kde-apps/kdeartwork-kscreensaver 4.14.3 4.14.3-r1 15.08.3-r1: Extra screensavers for kde
 kde-apps/kdeartwork-meta 4.14.3 15.08.3-r1: kdeartwork - merge this to pull in all kdeartwork-derived packages
 kde-apps/kdeartwork-styles 4.14.3 15.08.3: Extra KWin styles and window decorations
-kde-apps/kdeartwork-wallpapers 4.14.3 15.08.3 15.08.3-r1: Wallpapers from kde
-kde-apps/kdeartwork-weatherwallpapers 4.14.3 15.08.3 15.08.3-r1: Weather aware wallpapers. Changes with weather outside
+kde-apps/kdeartwork-wallpapers 4.14.3 15.08.3 15.08.3-r2: Wallpapers from KDE
+kde-apps/kdeartwork-weatherwallpapers 4.14.3 15.08.3 15.08.3-r2: Weather aware wallpapers. Changes with weather outside
 kde-apps/kdebase-data 4.14.3 4.14.3-r1 15.08.3 15.12.3: Icons, localization data and various .desktop files from kdebase
 kde-apps/kdebase-desktoptheme 4.14.3 15.08.3 15.12.3: Oxygen Plasma 4 desktop theme
 kde-apps/kdebase-kioslaves 4.14.3 15.08.3 15.12.3: KDE VFS framework - kioslaves present a filesystem-like view of arbitrary data
@@ -11243,7 +11243,7 @@ kde-apps/kuiserver 4.14.3 15.08.3 15.12.3: KDE: Progress Info UI server
 kde-apps/kurifilter-plugins 4.14.3 15.08.3 15.12.3: KDE: Plugins to manage filtering URIs
 kde-apps/kuser 4.14.3 15.08.3 15.12.3: KDE application that helps you manage system users
 kde-apps/kwalletd 4.14.3-r2 15.08.3 15.12.3: KDE Password Server
-kde-apps/kwalletd-pam 5.5.5 5.6.2: KWallet PAM module to not enter password again
+kde-apps/kwalletd-pam 5.5.5: KWallet PAM module to not enter password again
 kde-apps/kwalletmanager 4.14.3 15.04.3 15.12.3: KDE Wallet management tool
 kde-apps/kwordquiz 4.14.3 15.12.3-r1: A powerful flashcard and vocabulary learning program
 kde-apps/kwrite 4.14.3 15.12.3: KDE simple text editor
@@ -12058,7 +12058,7 @@ media-gfx/gphotofs 0.5: FUSE file system for interfacing with digital cameras us
 media-gfx/gpicview 0.2.4: A Simple and Fast Image Viewer for X
 media-gfx/gqview 2.1.5-r1: A GTK-based image browser
 media-gfx/graphicsmagick 1.3.18 1.3.19 1.3.20-r1 1.3.23: Collection of tools and libraries for many image formats
-media-gfx/graphite2 1.2.1 1.3.5 1.3.7: Library providing rendering capabilities for complex non-Roman writing systems
+media-gfx/graphite2 1.3.5 1.3.7 1.3.8: Library providing rendering capabilities for complex non-Roman writing systems
 media-gfx/graphviz 2.26.3-r4 2.38.0-r1: Open Source Graph Visualization Software
 media-gfx/greycstoration 2.9-r1: Image regularization algorithm for denoising, inpainting and resizing
 media-gfx/grub-splashes 20091109: Collection of grub splashes
