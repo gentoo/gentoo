@@ -4,6 +4,9 @@
 # $Id$
 
 description="C++ daemon for accessing the I2P network"
+description_graceful="Graceful shutdown, takes 10 minutes"
+
+extra_started_commands="graceful"
 
 depend() {
 	use dns logger netmount
@@ -12,15 +15,24 @@ depend() {
 start() {
         ebegin "Starting ${SVCNAME}"
         checkpath -f "${I2PD_LOG}" -o "${I2PD_USER}:${I2PD_GROUP}"
-        checkpath -f "${I2PD_PID}" -o "${I2PD_USER}:${I2PD_GROUP}"
-        start-stop-daemon -S -u "${I2PD_USER}:${I2PD_GROUP}" -p "${I2PD_PID}.pid" /usr/bin/i2pd -- ${I2PDOPTIONS}
-        sleep 1
-        [ -e "$I2PD_PID" -a -e /proc/$(cat "$I2PD_PID") ]
+        checkpath -d -m 0750 -o "${I2PD_USER}:${I2PD_GROUP}" "${I2PD_PID_DIR}"
+        start-stop-daemon --start --user "${I2PD_USER}:${I2PD_GROUP}" --pidfile "${I2PD_PID}" \
+                --exec /usr/bin/i2pd -- ${I2PDOPTIONS}
         eend $?
 }
 
 stop() {
         ebegin "Stopping ${SVCNAME}"
-        start-stop-daemon -K -p "${I2PD_PID}" -R SIGTERM/20 SIGKILL/20 -P
+        start-stop-daemon --stop --user "${I2PD_USER}:${I2PD_GROUP}" --pidfile "${I2PD_PID}" \
+                --exec /usr/bin/i2pd --retry SIGTERM/20 SIGKILL/20 --progress
         eend $?
+}
+
+graceful() {
+        # on SIGINT, i2pd stops accepting tunnels and shuts down in 600 seconds 
+        ebegin "Gracefully stopping i2pd, this takes 10 minutes"
+        mark_service_stopping
+        start-stop-daemon --stop --user "${I2PD_USER}:${I2PD_GROUP}" --pidfile "${I2PD_PID}" \
+                --exec /usr/bin/i2pd --retry SIGINT/620 SIGTERM/20 SIGKILL/20 --progress
+        eend $? && mark_service_stopped
 }
