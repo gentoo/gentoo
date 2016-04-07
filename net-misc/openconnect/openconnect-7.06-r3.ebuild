@@ -2,29 +2,22 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI="5"
 
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="xml"
 
 inherit eutils java-pkg-opt-2 linux-info python-any-r1 readme.gentoo
 
-if [[ ${PV} == 9999 ]]; then
-	EGIT_REPO_URI="git://git.infradead.org/users/dwmw2/${PN}.git"
-	inherit git-r3 autotools
-else
-	ARCHIVE_URI="ftp://ftp.infradead.org/pub/${PN}/${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
-fi
-VPNC_VER=20140806
-SRC_URI="${ARCHIVE_URI}
-	ftp://ftp.infradead.org/pub/vpnc-scripts/vpnc-scripts-${VPNC_VER}.tar.gz"
-
 DESCRIPTION="Free client for Cisco AnyConnect SSL VPN software"
 HOMEPAGE="http://www.infradead.org/openconnect.html"
+VPNC_VER=20140806
+SRC_URI="ftp://ftp.infradead.org/pub/${PN}/${P}.tar.gz
+	ftp://ftp.infradead.org/pub/vpnc-scripts/vpnc-scripts-${VPNC_VER}.tar.gz"
 
 LICENSE="LGPL-2.1 GPL-2"
 SLOT="0/5"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 IUSE="doc +gnutls gssapi java libressl libproxy nls smartcard static-libs stoken"
 ILINGUAS="ar cs de el en_GB en_US es eu fi fr gl id lt nl pa pl pt pt_BR sk sl tg ug uk zh_CN zh_TW"
 for lang in $ILINGUAS; do
@@ -66,20 +59,6 @@ pkg_setup() {
 
 	if use doc; then
 		python-any-r1_pkg_setup
-	fi
-}
-
-src_unpack() {
-	if [[ ${PV} == 9999 ]]; then
-		git-r3_src_unpack
-	fi
-	unpack ${A}
-}
-
-src_prepare() {
-	epatch_user
-	if [[ ${PV} == 9999 ]]; then
-		eautoreconf
 	fi
 }
 
