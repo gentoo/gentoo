@@ -2555,7 +2555,7 @@ app-vim/neocomplcache 7.1: vim plugin: ultimate auto completion system
 app-vim/nerdcommenter 2.3.0: vim plugin: easy commenting of code for many filetypes
 app-vim/nerdtree 5.0.0: vim plugin: A tree explorer plugin for navigating the filesystem
 app-vim/nginx-syntax 0.3.3: vim plugin: Nginx configuration files syntax
-app-vim/notes 0.29 0.33: vim plugin: easy note taking in vim
+app-vim/notes 0.33 0.33.4: vim plugin: easy note taking in vim
 app-vim/ntp-syntax 20031001: vim plugin: ntp.conf syntax highlighting
 app-vim/omnicppcomplete 0.41: vim plugin: C/C++ omni-completion with ctags database
 app-vim/pam-syntax 20060424: vim plugin: PAM configuration syntax highlighting
@@ -4072,7 +4072,7 @@ dev-java/jtreemap 1.1.0-r1: Java library for treemapping data
 dev-java/juel 2.1.0 2.1.0-r1 2.1.0-r2: Implementation of the Unified Expression Language (EL) - JSR-245
 dev-java/jump 0.5 0.5-r1: Java-based extensible high-precision math library
 dev-java/jung 1.7.6 1.7.6-r1: The Java Universal Network/Graph Framework
-dev-java/junit 3.8.2-r1 4.10 4.11 4.12-r1: Simple framework to write repeatable tests
+dev-java/junit 3.8.2-r1 4.12-r1: Simple framework to write repeatable tests
 dev-java/junit-addons 1.4-r1: JUnit-addons is a collection of helper classes for JUnit
 dev-java/junitperf 1.9.1-r1 1.9.1-r2: Simple framework to write repeatable tests
 dev-java/junrar 0.6: Unrar java implementation
@@ -4300,7 +4300,7 @@ dev-java/xmpcore 5.1.2: Java library based on the Adobe C++ XMPCore library with
 dev-java/xom 1.2.10: A new XML object model
 dev-java/xp 0.5-r3: XP is an XML 1.0 parser written in Java
 dev-java/xpp2 2.1.10-r2: A streaming pull XML parser used to quickly process input elements
-dev-java/xpp3 1.1.4c-r1 1.1.4c-r2 1.1.4c-r3: An implementation of XMLPULL V1 API
+dev-java/xpp3 1.1.4c-r3: An implementation of XMLPULL V1 API
 dev-java/xsdlib 20090415: Sun XML Datatypes Library
 dev-java/xsom 20140925: XSOM is a Java library allows to easily parse and inspect XML schema docs
 dev-java/xstream 1.3.1-r4 1.4.8-r1: A text-processing Java API that serialize objects to XML and back again
@@ -18205,7 +18205,7 @@ x11-misc/launchy 2.5: utility that merges application menus, your desktop and ev
 x11-misc/light-locker 1.7.0: A simple locker using lightdm
 x11-misc/lightdm 1.10.5 1.16.7 1.17.5 1.17.6 1.18.0: A lightweight display manager
 x11-misc/lightdm-gtk-greeter 1.3.1-r1 1.6.1 1.9.0 2.0.0 2.0.1 2.0.1-r1: LightDM GTK+ Greeter
-x11-misc/lightdm-kde 0.3.2.1 0.3.2.1-r1: LightDM KDE greeter
+x11-misc/lightdm-kde 0.3.2.1-r1: LightDM KDE greeter
 x11-misc/lineak-defaultplugin 0.9.0-r1: Mute/unmute and other macros for LINEAK
 x11-misc/lineak-xosdplugin 0.9.0-r1: Xosd plugin for LINEAK
 x11-misc/lineakd 0.9.0-r1: Linux support for Easy Access and Internet Keyboards
