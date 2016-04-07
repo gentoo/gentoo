@@ -54,6 +54,7 @@ src_prepare(){
 	sed -i -e 's@node script/bootstrap@node script/bootstrap --no-quiet@g' \
 		./script/build \
 		|| die "Fail fixing verbosity of script/build"
+	default
 }
 
 src_compile(){
