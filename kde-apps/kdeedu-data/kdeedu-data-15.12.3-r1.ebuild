@@ -5,6 +5,7 @@
 EAPI=6
 
 KDE_AUTODEPS="false"
+KDE_DEBUG="false"
 inherit kde5
 
 DESCRIPTION="Shared icons, artwork and data files for educational applications"

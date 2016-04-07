@@ -9,8 +9,11 @@ KDE_DEBUG="false"
 inherit kde5
 
 DESCRIPTION="Additional wallpapers for the Plasma workspace"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm ~x86"
 IUSE=""
 
-DEPEND="$(add_frameworks_dep extra-cmake-modules)"
+DEPEND="
+	$(add_frameworks_dep extra-cmake-modules)
+	$(add_qt_dep qtcore)
+"
 RDEPEND="!<kde-apps/kde-wallpapers-15.08.3[-minimal(-)]"
