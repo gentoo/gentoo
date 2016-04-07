@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install preinst prepare setup test
-DEPEND=>=virtual/jdk-1.5 contrib? ( dev-java/commons-beanutils:1.7 >=dev-java/commons-codec-1.6:0 dev-java/commons-collections:0 dev-java/commons-compress:0 dev-java/commons-digester:0 dev-java/commons-logging:0 dev-java/jakarta-regexp:1.4 ) dev-java/ant-nodeps:0 test? ( =dev-java/junit-4.10*:4 dev-java/hamcrest-core ) dev-java/ant-junit:0 >=dev-java/ant-ivy-2.2.0:2 >=dev-java/java-config-2.2.0 source? ( app-arch/zip ) >=dev-java/ant-core-1.8.2:0 >=dev-java/javatoolkit-0.3.0-r2
+DEPEND=>=virtual/jdk-1.5 contrib? ( dev-java/commons-beanutils:1.7 >=dev-java/commons-codec-1.6:0 dev-java/commons-collections:0 dev-java/commons-compress:0 dev-java/commons-digester:0 dev-java/commons-logging:0 dev-java/jakarta-regexp:1.4 ) dev-java/ant-nodeps:0 test? ( >=dev-java/junit-4.12:4 dev-java/hamcrest-core ) dev-java/ant-junit:0 >=dev-java/ant-ivy-2.2.0:2 >=dev-java/java-config-2.2.0 source? ( app-arch/zip ) >=dev-java/ant-core-1.8.2:0 >=dev-java/javatoolkit-0.3.0-r2
 DESCRIPTION=High-performance, full-featured text search engine library written entirely in Java
 EAPI=3
 HOMEPAGE=http://lucene.apache.org
@@ -11,4 +11,4 @@ SLOT=3.6
 SRC_URI=mirror://apache/lucene/java/3.6.2/lucene-3.6.2-src.tgz
 _eclass_exported_funcs=pkg_preinst:java-pkg-2 pkg_setup:java-pkg-2 src_prepare:java-pkg-2 src_configure:java-ant-2 src_compile:- src_test:- src_install:-
 _eclasses_=eutils	9d81603248f2ba3ec59124320d123e5e	java-ant-2	7c5d0c274d390745f5033754a319f515	java-pkg-2	b02dc1e46b3648e467b5fbdf7857cf28	java-utils-2	4f0e83a2c108b9f3d74ecebf32e2f483	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=88956955028300f3cb5b46c2ac7c44be
+_md5_=07534aeba3871ccaffc4654b364adc77
