@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -25,7 +25,7 @@ HOMEPAGE="http://www.infradead.org/openconnect.html"
 
 LICENSE="LGPL-2.1 GPL-2"
 SLOT="0/5"
-IUSE="doc +gnutls gssapi java libressl libproxy nls smartcard static-libs"
+IUSE="doc +gnutls gssapi java libressl libproxy nls smartcard static-libs stoken"
 ILINGUAS="ar cs de el en_GB en_US es eu fi fr gl id lt nl pa pl pt pt_BR sk sl tg ug uk zh_CN zh_TW"
 for lang in $ILINGUAS; do
 	IUSE="${IUSE} linguas_${lang}"
@@ -44,7 +44,8 @@ DEPEND="dev-libs/libxml2
 	gssapi? ( virtual/krb5 )
 	libproxy? ( net-libs/libproxy )
 	nls? ( virtual/libintl )
-	smartcard? ( sys-apps/pcsc-lite:0= )"
+	smartcard? ( sys-apps/pcsc-lite:0= )
+	stoken? ( app-crypt/stoken )"
 RDEPEND="${DEPEND}
 	sys-apps/iproute2
 	!<sys-apps/openrc-0.13"
@@ -101,6 +102,7 @@ src_configure() {
 		--without-stoken \
 		$(use_with gssapi) \
 		$(use_with smartcard libpcsclite) \
+		$(use_with stoken) \
 		$(use_with java)
 }
 
