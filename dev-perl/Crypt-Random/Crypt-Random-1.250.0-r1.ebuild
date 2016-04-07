@@ -14,7 +14,7 @@ SLOT="0"
 KEYWORDS="alpha amd64 hppa ~mips ~ppc sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris"
 IUSE=""
 
-RDEPEND=">=dev-perl/math-pari-2.010603
+RDEPEND=">=dev-perl/Math-Pari-2.010603
 	dev-perl/class-loader"
 DEPEND="${RDEPEND}"
 
