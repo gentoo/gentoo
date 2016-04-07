@@ -372,7 +372,7 @@ app-backup/holland-lib-common 1.0.10: Holland Core Library
 app-backup/holland-lib-lvm 1.0.10: Holland LVM Library
 app-backup/holland-lib-mysql 1.0.10: Holland MySQL Library
 app-backup/kbackup 0.8-r1: KBackup is a program that lets you back up any directories or files
-app-backup/kfoldersync 3.1.4: Folder synchronization and backup tool for KDE
+app-backup/kfoldersync 3.1.5: Folder synchronization and backup tool for KDE
 app-backup/luckybackup 0.4.8: Powerful and flexible backup (and syncing) tool, using RSync and Qt4
 app-backup/mirdir 2.1-r1: Mirdir allows to synchronize two directory trees in a fast way
 app-backup/mylvmbackup 0.14: mylvmbackup is a tool for quickly creating backups of MySQL server's data files using LVM snapshots
@@ -11046,7 +11046,7 @@ kde-apps/bovo 4.14.3 15.12.3: Five-in-a-row Board Game
 kde-apps/calendarjanitor 4.14.8 4.14.10: A tool to scan calendar data for buggy instances
 kde-apps/cantor 4.14.3 15.12.3-r1: Interface for doing mathematics and scientific computing
 kde-apps/cervisia 4.14.3 15.08.3 15.12.3: A KDE CVS frontend
-kde-apps/dolphin 4.14.3 4.14.3-r1 15.12.3: Plasma filemanager focusing on usability
+kde-apps/dolphin 4.14.3 4.14.3-r1 15.12.3-r1: Plasma filemanager focusing on usability
 kde-apps/dolphin-plugins 4.14.3 15.12.3: Extra Dolphin plugins
 kde-apps/dragon 4.14.3 15.12.3: A simple video player
 kde-apps/drkonqi 4.14.3 15.08.3 15.12.3: KDE crash handler, gives the user feedback if a program crashed
@@ -11133,6 +11133,7 @@ kde-apps/kdepimlibs 4.14.8 4.14.10: Common library for KDE PIM apps
 kde-apps/kdesdk-kioslaves 4.14.3 15.08.3 15.12.3: kioslaves from kdesdk package
 kde-apps/kdesdk-meta 4.14.3 15.08.3 15.12.3: KDE SDK - merge this to pull in all kdesdk-derived packages
 kde-apps/kdesdk-strigi-analyzer 4.14.3: kdesdk: strigi plugins
+kde-apps/kdesdk-thumbnailers 15.12.3: Thumbnail generator for PO files
 kde-apps/kdesu 4.14.3 15.08.3 15.12.3: KDE gui for su(1)
 kde-apps/kdetoys-meta 4.14.3 15.08.3: KDE toys - merge this to pull in all kdetoys-derived packages
 kde-apps/kdeutils-meta 4.14.3 15.08.3 15.12.3: kdeutils - merge this to pull in all kdeutils-derived packages
