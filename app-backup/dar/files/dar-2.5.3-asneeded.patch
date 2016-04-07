@@ -1,0 +1,40 @@
+# Fix linking order so -Wl,--as-needed really works here.
+# Thanks to _AxS_ <axs@gentoo.org> for the patch.
+#
+# The first hunk is needed to make autopoint from eautoreconf happy.
+#
+# TODO: Needs to be sent to upstream.
+
+--- dar-2.5.3/configure.ac
++++ dar-2.5.3/configure.ac
+@@ -8,7 +8,7 @@
+ 
+ AM_INIT_AUTOMAKE([subdir-objects])
+ AM_GNU_GETTEXT([external])
+-AM_GNU_GETTEXT_VERSION
++AM_GNU_GETTEXT_VERSION(0.19.4)
+ XGETTEXT_EXTRA_OPTIONS='--keyword=dar_gettext'
+ AM_ICONV
+ 
+@@ -1053,8 +1053,8 @@
+ 		      		[
+ 				  CPPFLAGS___cache="$CPPFLAGS"
+ 				  CPPFLAGS="$GPGME_CFLAGS $CPPFLAGS"
+-				  LDFLAGS___cache="$LDFLAGS"
+-				  LDFLAGS="$GPGME_LIBS $LFDLAGS"
++				  LIBS___cache="$LIBS"
++				  LIBS="$GPGME_LIBS $LIBS"
+ 				  AC_CHECK_HEADERS([gpgme.h])
+ 				  AC_MSG_CHECKING([for libgpgme usability])
+ 				  AC_LINK_IFELSE([AC_LANG_PROGRAM([[
+@@ -1080,8 +1080,8 @@
+ 						 ])
+ 				  CPPFLAGS="$CPPFLAGS___cache"
+ 				  unset CPPFLAGS___cache
+-				  LDFLAGS="$LDFLAGS___cache"
+-				  unset LDFLAGS___cache
++				  LIBS="$LIBS___cache"
++				  unset LIBS___cache
+ 				],
+ 				[]
+ 			       )
