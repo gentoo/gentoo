@@ -11242,7 +11242,7 @@ kde-apps/kuiserver 4.14.3 15.08.3: KDE: Progress Info UI server
 kde-apps/kurifilter-plugins 4.14.3 15.08.3: KDE: Plugins to manage filtering URIs
 kde-apps/kuser 4.14.3 15.08.3 15.12.3: KDE application that helps you manage system users
 kde-apps/kwalletd 4.14.3-r2 15.08.3: KDE Password Server
-kde-apps/kwalletd-pam 5.5.5: KWallet PAM module to not enter password again
+kde-apps/kwalletd-pam 5.5.5 5.6.2: KWallet PAM module to not enter password again
 kde-apps/kwalletmanager 4.14.3 15.04.3 15.12.3: KDE Wallet management tool
 kde-apps/kwordquiz 4.14.3 15.12.3-r1: A powerful flashcard and vocabulary learning program
 kde-apps/kwrite 4.14.3 15.12.3: KDE simple text editor
