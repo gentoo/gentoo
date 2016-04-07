@@ -193,7 +193,6 @@ src_prepare() {
 	epatch "${FILESDIR}/${PN}-widevine-r1.patch"
 	epatch "${FILESDIR}/${PN}-last-commit-position-r0.patch"
 	epatch "${FILESDIR}/${PN}-snapshot-toolchain-r1.patch"
-	epatch "${FILESDIR}/${PN}-gn-r0.patch"
 
 	epatch_user
 
@@ -247,6 +246,7 @@ src_prepare() {
 		'third_party/analytics' \
 		'third_party/angle' \
 		'third_party/angle/src/third_party/compiler' \
+		'third_party/angle/src/third_party/libXNVCtrl' \
 		'third_party/angle/src/third_party/murmurhash' \
 		'third_party/angle/src/third_party/trace_event' \
 		'third_party/boringssl' \
