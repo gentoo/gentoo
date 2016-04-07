@@ -10,4 +10,4 @@ SLOT=0/5
 SRC_URI=ftp://ftp.infradead.org/pub/vpnc-scripts/vpnc-scripts-20140806.tar.gz
 _eclass_exported_funcs=pkg_pretend:- pkg_preinst:java-pkg-opt-2 pkg_postinst:- pkg_setup:- src_unpack:- src_prepare:- src_configure:- src_install:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	9d81603248f2ba3ec59124320d123e5e	git-r3	ef66dfc3db09f327af21cf32f140fb2b	java-pkg-opt-2	40db73f27fc6458ec2105812a4f261c7	java-utils-2	4f0e83a2c108b9f3d74ecebf32e2f483	libtool	4890219c51da247200223277f993e054	linux-info	fd1e29abbb02cbc49f1a14299846e9c4	multilib	3972ca401cf7dbb430df9995f5d8d580	python-any-r1	8eb13cdf35f6e43c48107b911900b2cc	python-utils-r1	2e6826f6a93ad2acf904eecf5b5fb6d2	readme.gentoo	df3fc8fdaf5a519e7d48c83e7592c95f	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=d61b31de57b83606893521c76bfcca5c
+_md5_=6cd2268f58dd315785c6cf996bed9d7d
