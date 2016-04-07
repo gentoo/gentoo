@@ -651,6 +651,23 @@ kde5_pkg_postinst() {
 
 	gnome2_icon_cache_update
 	xdg_pkg_postinst
+
+	if [[ -z ${I_KNOW_WHAT_I_AM_DOING} ]]; then
+		if [[ ${KDE_BUILD_TYPE} = live ]]; then
+			echo
+			einfo "WARNING! This is an experimental live ebuild of ${CATEGORY}/${PN}"
+			einfo "Use it at your own risk."
+			einfo "Do _NOT_ file bugs at bugs.gentoo.org because of this ebuild!"
+		fi
+		# for kf5-based applications tell user that he SHOULD NOT be using kde-base/plasma-workspace
+		if [[ ${KDEBASE} != kde-base || ${CATEGORY} = kde-apps ]]  && \
+				has_version 'kde-base/plasma-workspace'; then
+			echo
+			ewarn "WARNING! Your system configuration still contains \"kde-base/plasma-workspace\","
+			ewarn "indicating a Plasma 4 setup. With this setting you are unsupported by KDE team."
+			ewarn "Please consider upgrading to Plasma 5."
+		fi
+	fi
 }
 
 # @FUNCTION: kde5_pkg_postrm
