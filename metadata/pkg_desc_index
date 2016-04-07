@@ -11088,7 +11088,7 @@ kde-apps/kde-base-artwork 4.14.3 15.08.3: KDE base artwork
 kde-apps/kde-dev-scripts 4.14.3 15.12.3: KDE Development Scripts
 kde-apps/kde-dev-utils 4.14.3 15.08.3 15.12.3: KDE Development Utilities
 kde-apps/kde-l10n 15.12.3: KDE internationalization package
-kde-apps/kde-meta 4.14.3 4.14.3-r1 15.08.3: Merge this to pull in all KDE Plasma and Applications packages
+kde-apps/kde-meta 4.14.3 4.14.3-r1 15.08.3 15.12.3: Merge this to pull in all KDE Plasma and Applications packages
 kde-apps/kde-wallpapers 4.14.3 15.08.3 15.08.3-r1: KDE wallpapers
 kde-apps/kde4-l10n 4.14.3 4.14.3-r1 15.08.3-r2 15.12.3-r1: KDE internationalization package
 kde-apps/kdeaccessibility-meta 4.14.3 15.08.3 15.12.3: kdeaccessibility - merge this to pull in all kdeaccessiblity-derived packages
@@ -11107,7 +11107,7 @@ kde-apps/kdebase-desktoptheme 4.14.3 15.08.3 15.12.3: Oxygen Plasma 4 desktop th
 kde-apps/kdebase-kioslaves 4.14.3 15.08.3 15.12.3: KDE VFS framework - kioslaves present a filesystem-like view of arbitrary data
 kde-apps/kdebase-menu 4.14.3 15.08.3 15.12.3: KDE Menu query tool
 kde-apps/kdebase-menu-icons 4.14.3 15.08.3 15.12.3: KDE menu icons
-kde-apps/kdebase-meta 4.14.3 4.14.3-r2 15.08.3-r2: Transitional package to pull in plasma-meta plus basic applications
+kde-apps/kdebase-meta 4.14.3 4.14.3-r2 15.08.3-r2 15.12.3: Transitional package to pull in plasma-meta plus basic applications
 kde-apps/kdebase-runtime-meta 4.14.3 15.08.3-r2 15.12.3: Merge this to pull in all kdebase-runtime-derived packages
 kde-apps/kdebugdialog 4.14.3 15.08.3 15.12.3: Dialog box for setting preferences for debug output
 kde-apps/kdebugsettings 15.12.3: Application to enable/disable qCDebug
@@ -12018,7 +12018,7 @@ media-gfx/exiftags 1.01: Extracts JPEG EXIF headers from digital camera photos
 media-gfx/exiv2 0.24-r1 0.25-r1 0.25-r2: EXIF, IPTC and XMP metadata C++ library and command line utility
 media-gfx/farbfeld 1 2 9999: farbfeld simple image format tools
 media-gfx/fbgrab 1.0-r2 1.3: Framebuffer screenshot utility
-media-gfx/fbida 2.10 2.10-r1 2.11: Image viewers for the framebuffer console (fbi) and X11 (ida)
+media-gfx/fbida 2.10 2.10-r1 2.11 2.12: Image viewers for the framebuffer console (fbi) and X11 (ida)
 media-gfx/fblogo 0.5.2: Creates images to substitute Linux boot logo
 media-gfx/fbv 1.0b: simple program to view pictures on a linux framebuffer device
 media-gfx/feh 2.9.3 2.10 2.11 2.12 2.12.1 2.13.1 2.14: A fast, lightweight imageviewer using imlib2
@@ -14850,7 +14850,7 @@ net-misc/xrdp 0.8.0-r1: An open source Remote Desktop Protocol server
 net-misc/yajhfc 0.5.2 0.5.7: Yet another Java HylaFAX Plus Client
 net-misc/yandex-disk 0.1.5.758_p1 0.1.5.870_p1 0.1.5.940_p1: CLI to access Yandex Disk file storage service
 net-misc/you-get 0.4.365: A tiny command-line utility to download media contents from the Web.
-net-misc/youtube-dl 2016.01.01 2016.03.18 2016.03.27 99999999: Download videos from YouTube.com (and more sites...)
+net-misc/youtube-dl 2016.01.01 2016.03.18 2016.03.27 2016.04.06 99999999: Download videos from YouTube.com (and more sites...)
 net-misc/youtube-viewer 3.1.9 3.2.0 9999: A command line utility for viewing youtube-videos in Mplayer
 net-misc/ytalk 3.3.0: Multi-user replacement for UNIX talk
 net-misc/zssh 1.5c-r1: An ssh wrapper enabling zmodem up/download in ssh
@@ -17695,7 +17695,7 @@ www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
 www-client/netsurf 3.3-r1 3.4: a free, open source web browser
 www-client/opera 12.16_p1860-r1 36.0.2130.32 36.0.2130.46: A fast and secure web browser
 www-client/opera-beta 36.0.2130.29 37.0.2178.4: A fast and secure web browser
-www-client/opera-developer 37.0.2163.0 37.0.2171.0: A fast and secure web browser
+www-client/opera-developer 37.0.2171.0 38.0.2190.0: A fast and secure web browser
 www-client/otter 0.9.07 0.9.08 0.9.09 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
 www-client/phantomjs 1.9.8 2.0.0 2.0.0-r1: A headless WebKit scriptable with a JavaScript API
 www-client/pybugz 0.11.1 0.12.1 9999: Command line interface to (Gentoo) Bugzilla
