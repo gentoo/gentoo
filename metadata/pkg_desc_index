@@ -13702,7 +13702,7 @@ net-analyzer/ngrep 1.45-r3: A grep for network layers
 net-analyzer/nikto 1.36 2.1.5: Web Server vulnerability scanner
 net-analyzer/nipper 0.12.0: Router configuration security analysis tool
 net-analyzer/nload 0.7.4: console application which monitors network traffic and bandwidth usage in real time
-net-analyzer/nmap 6.47-r1 6.47-r3 7.00 7.01 7.10 7.11 9999: A utility for network discovery and security auditing
+net-analyzer/nmap 6.47-r1 7.01 7.11 7.12 9999: A utility for network discovery and security auditing
 net-analyzer/nmapsi 0.4.1: A Qt4 frontend to nmap
 net-analyzer/nmbscan 1.2.5: netbios scanner
 net-analyzer/nodebrain 0.9.03 0.9.04: Monitor and do event correlation
@@ -17711,7 +17711,7 @@ www-client/surfraw 2.2.9-r1: A fast unix command line interface to WWW
 www-client/uget 1.8.0 1.10.3 1.10.3-r1 1.10.4 9999: Download manager using gtk+ and libcurl
 www-client/vimb 2.9 2.11: a fast, lightweight, vim-like browser based on webkit
 www-client/vimprobable2 1.4.0 1.4.2 1.4.2-r1 9999: A minimal web browser that behaves like the Vimperator plugin for Firefox
-www-client/vivaldi 1.0.435.26_p1 1.0.435.29_p1: A new browser for our friends
+www-client/vivaldi 1.0.435.29_p1 1.0.435.40_p1: A new browser for our friends
 www-client/w3m 0.5.3-r5: Text based WWW browser, supports tables and frames
 www-client/w3mir 1.0.10-r2: w3mir is a all purpose HTTP copying and mirroring tool
 www-client/w3mmee 0.3.2_p24-r7: A variant of w3m with support for multiple character encodings
@@ -18137,7 +18137,7 @@ x11-misc/compton 0.1_beta1 0.1_beta2 9999: A compositor for X, and a fork of xco
 x11-misc/dclock 2.2.2_p4 2.2.2_p4-r1: Digital clock for the X window system
 x11-misc/denu 2.3.2-r1: A menu generation program for fluxbox, waimea, openbox, icewm, gnome and kde
 x11-misc/devilspie 0.22: A Window Matching utility similar to Sawfish's Matched Windows feature
-x11-misc/devilspie2 0.36 0.37 0.39: Devilspie like window matching utility, using LUA for scripting
+x11-misc/devilspie2 0.36 0.37 0.39 0.41: Devilspie like window matching utility, using LUA for scripting
 x11-misc/dex 0.6 0.7: DesktopEntry eXecution - tool to manage and launch autostart entries
 x11-misc/dmenu 4.6 9999: a generic, highly customizable, and efficient menu for the X Window System
 x11-misc/dockmanager 0.1.0-r1: dock-independent helper scripts
