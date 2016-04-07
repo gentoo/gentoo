@@ -5589,6 +5589,7 @@ dev-perl/File-Scan-ClamAV 1.910.0-r1 1.930.0: Connect to a local Clam Anti-Virus
 dev-perl/File-SearchPath 0.60.0-r1: Search for a file in an environment variable path
 dev-perl/File-ShareDir 1.30.0-r1: Locate per-dist and per-module shared files
 dev-perl/File-ShareDir-Install 0.90.0: Install shared files
+dev-perl/File-ShareDir-ProjectDistDir 1.0.8: Simple set-and-forget using of a '/share' directory in your projects root
 dev-perl/File-Slurp 9999.190.0-r1: Efficient Reading/Writing of Complete Files
 dev-perl/File-Slurp-Tiny 0.4.0: A simple, sane and efficient file slurper
 dev-perl/File-Slurp-Unicode 0.7.1-r1: Reading/Writing of Complete Files with Character Encoding Support
@@ -5861,6 +5862,7 @@ dev-perl/Math-Libm 1.0.0: wrapper to libm functions
 dev-perl/Math-ModInt 0.11.0: modular integer arithmetic
 dev-perl/Math-NumSeq 71.0.0: number sequences (for example from OEIS)
 dev-perl/Math-NumberCruncher 5.0.0: Collection of useful math-related functions
+dev-perl/Math-Pari 2.10.806.50-r1 2.10.808: Perl interface to PARI
 dev-perl/Math-PlanePath 122.0.0: Mathematical paths through the 2-D plane
 dev-perl/Math-Prime-XS 0.260.0: Detect and calculate prime numbers with deterministic tests
 dev-perl/Math-Random 0.710.0-r1 0.720.0: Random Number Generators
@@ -6033,20 +6035,20 @@ dev-perl/PGPLOT 2.210.0: allow subroutines in the PGPLOT graphics library to be 
 dev-perl/PHP-Serialization 0.340.0-r1: Convert PHP's serialize() into the equivalent Perl structure, and vice versa
 dev-perl/POE 1.356-r1 1.367: A framework for creating multitasking programs in Perl
 dev-perl/POE-API-Peek 2.200.0-r1: Peek into the internals of a running POE env
-dev-perl/POE-Component-Client-DNS 1.53.0: Non-blocking, parallel DNS client
+dev-perl/POE-Component-Client-DNS 1.53.0 1.54.0: Non-blocking, parallel DNS client
 dev-perl/POE-Component-Client-Keepalive 0.272.0: Manage connections, with keep-alive
-dev-perl/POE-Component-IKC 0.230.300 0.230.500: POE Inter-Kernel Communication
+dev-perl/POE-Component-IKC 0.230.500 0.240.200: Inter-Kernel Communication for POE
 dev-perl/POE-Component-PreforkDispatch 0.101.0-r1: Preforking task dispatcher
 dev-perl/POE-Component-Resolver 0.921.0: A non-blocking getaddrinfo() resolver
 dev-perl/POE-Test-Loops 1.353.0-r1 1.360: Reusable tests for POE::Loop authors
 dev-perl/POE-XS-Loop-EPoll 1.3.0: An XS implementation of POE::Loop, using Linux epoll(2)
 dev-perl/POE-XS-Loop-Poll 1.0.0-r1: An XS implementation of POE::Loop, using poll(2)
 dev-perl/POE-XS-Queue-Array 0.6.0-r1: An XS implementation of POE::Queue::Array
-dev-perl/POSIX-strftime-Compiler 0.400.0: GNU C library compatible strftime for loggers and servers
+dev-perl/POSIX-strftime-Compiler 0.400.0 0.410.0: GNU C library compatible strftime for loggers and servers
 dev-perl/PPI 1.220: Parse, Analyze and Manipulate Perl (without perl)
 dev-perl/PPI-PowerToys 0.140.0: A handy collection of small PPI-based utilities
 dev-perl/PPIx-EditorTools 0.170.0 0.180.0 0.190.0: Utility methods and base class for manipulating Perl via PPI
-dev-perl/PPIx-Regexp 0.31.0 0.33.0: Represent a regular expression of some sort
+dev-perl/PPIx-Regexp 0.33.0 0.48.0: Represent a regular expression of some sort
 dev-perl/PPIx-Utilities 1.1.0-r1: Extensions to PPI
 dev-perl/Package-DeprecationManager 0.130.0-r1 0.150.0: Manage deprecation warnings for your distribution
 dev-perl/Package-Stash 0.360.0-r1 0.370.0: Routines for manipulating stashes
@@ -6072,6 +6074,8 @@ dev-perl/Passwd-Linux 1.200.0-r1: Perl module for manipulating the passwd and sh
 dev-perl/Passwd-Unix 0.710.0: access to standard unix passwd files
 dev-perl/PatchReader 0.9.6-r1: Module for reading diff-compatible patch files
 dev-perl/Path-Class 0.350.0 0.360.0: Cross-platform path specification manipulation
+dev-perl/Path-FindDev 0.5.2: Find a development path somewhere in an upper hierarchy
+dev-perl/Path-IsDev 1.1.2: Determine if a given Path resembles a development source tree
 dev-perl/Path-Tiny 0.44.0 0.61.0 0.84.0: File path utility
 dev-perl/Pegex 0.600.0: Acmeist PEG Parser Framework
 dev-perl/Perl-Critic 1.118.0-r1 1.123 1.126.0: Critique Perl source code for best-practices
@@ -6101,18 +6105,18 @@ dev-perl/Pod-Markdown 3.5.0: Convert POD to Markdown
 dev-perl/Pod-POM 0.280.0-r1 0.290.0 2.10.0: POD Object Model
 dev-perl/Pod-Readme 0.110.0-r1 1.1.2: Intelligently generate a README file from POD
 dev-perl/Pod-Simple-LaTeX 0.60.0: format Pod as LaTeX
-dev-perl/Pod-Spell 1.10.0-r1: A formatter for spellchecking Pod
+dev-perl/Pod-Spell 1.10.0-r1 1.190.0: A formatter for spellchecking Pod
 dev-perl/Pod-Strip 1.20.0: Remove POD from Perl code
 dev-perl/Pod-Tests 1.190.0-r1: Extracts embedded tests and code examples from POD
 dev-perl/PortageXS 0.02.10-r4 0.2.10-r5 0.2.12-r1: Portage abstraction layer for perl
 dev-perl/PostScript 0.60.0-r1: An object that may be used to construct a block of text in PostScript
-dev-perl/PostScript-Simple 0.70.0-r1: Allows you to have a simple method of writing PostScript files from Perl
-dev-perl/Probe-Perl 0.10.0-r1: Information about the currently running perl
+dev-perl/PostScript-Simple 0.70.0-r1 0.90.0: Allows you to have a simple method of writing PostScript files from Perl
+dev-perl/Probe-Perl 0.10.0-r1 0.30.0: Information about the currently running perl
 dev-perl/Proc-Background 1.100.0-r1: Generic interface to background process management
-dev-perl/Proc-Daemon 0.140.0-r1 0.190.0: Run Perl program as a daemon process
-dev-perl/Proc-ProcessTable 0.480.0: Unix process table information
-dev-perl/Proc-Simple 1.310.0-r1: Perl Proc-Simple - Launch and control background processes
-dev-perl/Proc-Wait3 0.40.0-r1: Perl extension for wait3 system call
+dev-perl/Proc-Daemon 0.140.0-r1 0.190.0 0.230.0: Run Perl program as a daemon process
+dev-perl/Proc-ProcessTable 0.480.0 0.530.0: Unix process table information
+dev-perl/Proc-Simple 1.310.0-r1 1.320.0: Launch and control background processes
+dev-perl/Proc-Wait3 0.40.0-r1 0.50.0: Perl extension for wait3 system call
 dev-perl/Proc-WaitStat 1.0.0-r1: Interpret and act on wait() status values
 dev-perl/Quota 1.700.0-r1: Quota - Perl interface to file system quotas
 dev-perl/REST-Client 249: A simple client for interacting with RESTful http/https resources
@@ -6139,7 +6143,7 @@ dev-perl/SDL 2.546: Simple DirectMedia Layer (SDL) bindings for perl
 dev-perl/SGMLSpm 1.03-r7: Perl library for parsing the output of nsgmls
 dev-perl/SNMP_Session 1.13-r2: A SNMP Perl Module
 dev-perl/SOAP-Lite 1.040.0-r1 1.140.0 1.190.0: Simple and lightweight interface to the SOAP protocol (sic) both on client and server side
-dev-perl/SOAP-WSDL 2.00.10-r1 3.2.0: SOAP with WSDL support
+dev-perl/SOAP-WSDL 3.2.0 3.3.0: SOAP with WSDL support
 dev-perl/SQL-Abstract 1.780.0 1.810.0: Generate SQL from Perl data structures
 dev-perl/SQL-Abstract-Limit 0.141.0-r1: Portable LIMIT emulation
 dev-perl/SQL-Statement 1.405.0-r1 1.407.0: Small SQL parser and engine
@@ -6359,6 +6363,7 @@ dev-perl/Time-Period 1.240.0-r1 1.250.0: Time period Perl module
 dev-perl/Time-Piece-MySQL 0.60.0-r1: MySQL-specific functions for Time::Piece
 dev-perl/Time-Stopwatch 1.0.0: Use tied scalars as timers
 dev-perl/Time-TAI64 2.110.0-r1: Time manipulation in the TAI64* formats
+dev-perl/Time-TZOffset 0.40.0: Show timezone offset strings like +0900
 dev-perl/Time-modules 2011.51.700-r1 2013.91.200: A Date/Time Parsing Perl Module
 dev-perl/TimeDate 2.300.0: A Date/Time Parsing Perl Module
 dev-perl/Tk 804.32.0-r1 804.33.0: A Perl Module for Tk
@@ -6528,7 +6533,6 @@ dev-perl/libvorbis-perl 0.50.0-r1: Ogg::Vorbis - Perl extension for Ogg Vorbis s
 dev-perl/libwww-perl 6.150.0: A collection of Perl Modules for the WWW
 dev-perl/libxml-perl 0.80.0-r1: Collection of Perl modules for working with XML
 dev-perl/local-lib 2.0.14 2.0.18: create and use a local lib/ for perl modules with PERL5LIB
-dev-perl/math-pari 2.10.806.50-r1 2.10.808: Perl interface to PARI
 dev-perl/maybe 0.20.200-r1: Use a Perl module and ignore error if can't be loaded
 dev-perl/mecab-perl 0.996: Perl binding for MeCab
 dev-perl/mime-construct 1.900.0-r1: construct and optionally mail MIME messages
@@ -15707,7 +15711,7 @@ sci-libs/cctbx 2010.03.29.2334-r7: Computational Crystallography Toolbox
 sci-libs/cdd+ 077a: Another implementation of the double description method
 sci-libs/cddlib 094g: C implementation of the Double Description Method of Motzkin et al
 sci-libs/cdf 3.4.1 3.5.0.2: Common Data Format I/O library for multi-dimensional data sets
-sci-libs/ceres-solver 1.8.0 1.9.0: Nonlinear least-squares minimizer
+sci-libs/ceres-solver 1.8.0 1.9.0 1.11.0: Nonlinear least-squares minimizer
 sci-libs/cfitsio 3.38-r1 3.360: C and Fortran library for manipulating FITS files
 sci-libs/cgcode 1.0-r2: Conjugate gradient Codes for large sparse linear systems
 sci-libs/cgnslib 3.2.1 3.3.0: CFD General Notation System standard library

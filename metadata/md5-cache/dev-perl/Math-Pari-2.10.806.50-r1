@@ -1,13 +1,13 @@
 DEFINED_PHASES=compile configure install prepare test unpack
-DEPEND=~sci-mathematics/pari-2.3.5 app-arch/unzip dev-lang/perl:=[-build(-)]
+DEPEND=~sci-mathematics/pari-2.3.5 dev-lang/perl:=[-build(-)]
 DESCRIPTION=Perl interface to PARI
 EAPI=5
 HOMEPAGE=http://search.cpan.org/dist/Math-Pari/
-KEYWORDS=~alpha ~amd64 ~hppa ~mips ~ppc ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris
-LICENSE=|| ( Artistic GPL-1+ )
+KEYWORDS=alpha amd64 hppa ~mips ppc sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris
+LICENSE=|| ( Artistic GPL-2 )
 RDEPEND=~sci-mathematics/pari-2.3.5 dev-lang/perl:=[-build(-)]
 SLOT=0
-SRC_URI=mirror://cpan/authors/id/I/IL/ILYAZ/modules/Math-Pari-2.010808.zip http://pari.math.u-bordeaux.fr/pub/pari/unix/pari-2.3.5.tar.gz
+SRC_URI=mirror://cpan/authors/id/I/IL/ILYAZ/modules/Math-Pari-2.01080605.tar.gz http://pari.math.u-bordeaux.fr/pub/pari/unix/pari-2.3.5.tar.gz
 _eclass_exported_funcs=src_unpack:perl-module src_prepare:- src_configure:- src_compile:- src_test:perl-module src_install:perl-module
 _eclasses_=eutils	9d81603248f2ba3ec59124320d123e5e	multilib	3972ca401cf7dbb430df9995f5d8d580	multiprocessing	e32940a7b2a9992ad217eccddb84d548	perl-functions	15aff0b9cba2282790142295ceb6be0c	perl-module	b2108b3c85ac7a6a6a9b035b54f6813c	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	unpacker	45d07319df5f40ee6af58418b0f930be
-_md5_=4e416d37d329662096140eb3d772aaa7
+_md5_=03ed355233d15fa3eff834915619dc57

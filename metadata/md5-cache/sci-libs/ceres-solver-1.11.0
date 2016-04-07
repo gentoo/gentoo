@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install prepare pretend setup test
+DEPEND=dev-cpp/glog[gflags?] cxsparse? ( sci-libs/cxsparse:0= ) lapack? ( virtual/lapack ) sparse? ( sci-libs/amd:0= sci-libs/camd:0= sci-libs/ccolamd:0= sci-libs/cholmod:0= sci-libs/colamd:0= sci-libs/spqr:0= ) dev-cpp/eigen:3 doc? ( dev-python/sphinx dev-python/sphinx_rtd_theme ) lapack? ( virtual/pkgconfig ) sys-devel/make >=dev-util/cmake-2.8.12
+DESCRIPTION=Nonlinear least-squares minimizer
+EAPI=6
+HOMEPAGE=http://ceres-solver.org/
+IUSE=cxsparse c++11 doc examples gflags lapack openmp +schur sparse test abi_x86_32 abi_x86_64 abi_x86_x32 abi_mips_n32 abi_mips_n64 abi_mips_o32 abi_ppc_32 abi_ppc_64 abi_s390_32 abi_s390_64
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
+LICENSE=sparse? ( BSD ) !sparse? ( LGPL-2.1 ) cxsparse? ( BSD )
+RDEPEND=dev-cpp/glog[gflags?] cxsparse? ( sci-libs/cxsparse:0= ) lapack? ( virtual/lapack ) sparse? ( sci-libs/amd:0= sci-libs/camd:0= sci-libs/ccolamd:0= sci-libs/cholmod:0= sci-libs/colamd:0= sci-libs/spqr:0= )
+REQUIRED_USE=test? ( gflags ) sparse? ( lapack ) doc? ( )
+SLOT=0/1
+SRC_URI=http://ceres-solver.org//ceres-solver-1.11.0.tar.gz
+_eclass_exported_funcs=pkg_pretend:- pkg_setup:- src_prepare:- src_configure:- src_compile:cmake-multilib src_test:cmake-multilib src_install:-
+_eclasses_=cmake-multilib	273c15f5a0a06438a38bb5c3e98fa2db	cmake-utils	422bbd1bee2557490177a34dbe0a662b	eutils	9d81603248f2ba3ec59124320d123e5e	flag-o-matic	d270fa247153df66074f795fa42dba3e	multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	3972ca401cf7dbb430df9995f5d8d580	multilib-build	8fe2e81aeb36cdf8a6cc5f50443879cc	multilib-minimal	0224dee31c0f98405d572e14ad6dee65	python-any-r1	8eb13cdf35f6e43c48107b911900b2cc	python-utils-r1	2e6826f6a93ad2acf904eecf5b5fb6d2	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=e2c030d14864c83531503044dc6cea04

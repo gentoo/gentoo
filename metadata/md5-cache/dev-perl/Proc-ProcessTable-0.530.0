@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=virtual/perl-Storable virtual/perl-ExtUtils-MakeMaker dev-lang/perl:=
+DESCRIPTION=Unix process table information
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/Proc-ProcessTable/
+IUSE=examples
+KEYWORDS=~alpha ~amd64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=virtual/perl-Storable dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/J/JW/JWB/Proc-ProcessTable-0.53.tar.gz
+_eclass_exported_funcs=src_prepare:- src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:-
+_eclasses_=multiprocessing	e32940a7b2a9992ad217eccddb84d548	perl-functions	15aff0b9cba2282790142295ceb6be0c	perl-module	b2108b3c85ac7a6a6a9b035b54f6813c
+_md5_=752e0157f445575a333dd5f61128ba3c

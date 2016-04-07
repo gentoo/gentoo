@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=>=dev-perl/Class-Load-0.200.0 >=dev-perl/Class-Std-Fast-0.0.5 virtual/perl-Data-Dumper dev-perl/TimeDate virtual/perl-File-Path virtual/perl-File-Spec virtual/perl-Getopt-Long dev-perl/libwww-perl dev-perl/Module-Build virtual/perl-Scalar-List-Utils virtual/perl-Storable >=dev-perl/Template-Toolkit-2.180.0 dev-perl/TermReadKey dev-perl/URI dev-perl/XML-Parser virtual/perl-ExtUtils-MakeMaker test? ( virtual/perl-Test-Simple virtual/perl-Getopt-Long virtual/perl-Storable ) dev-lang/perl:=
+DESCRIPTION=SOAP with WSDL support
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/SOAP-WSDL/
+IUSE=test examples
+KEYWORDS=~amd64 ~x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=>=dev-perl/Class-Load-0.200.0 >=dev-perl/Class-Std-Fast-0.0.5 virtual/perl-Data-Dumper dev-perl/TimeDate virtual/perl-File-Path virtual/perl-File-Spec virtual/perl-Getopt-Long dev-perl/libwww-perl dev-perl/Module-Build virtual/perl-Scalar-List-Utils virtual/perl-Storable >=dev-perl/Template-Toolkit-2.180.0 dev-perl/TermReadKey dev-perl/URI dev-perl/XML-Parser dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/S/SW/SWALTERS/SOAP-WSDL-3.003.tar.gz
+_eclass_exported_funcs=src_prepare:- src_configure:perl-module src_compile:perl-module src_test:- src_install:-
+_eclasses_=multiprocessing	e32940a7b2a9992ad217eccddb84d548	perl-functions	15aff0b9cba2282790142295ceb6be0c	perl-module	b2108b3c85ac7a6a6a9b035b54f6813c
+_md5_=a8671e81d041c45e6b7c67ea796a0d2c
