@@ -5992,7 +5992,7 @@ dev-perl/Net-SSH-Any 0.40.0: Use any SSH module
 dev-perl/Net-SSH-AuthorizedKeysFile 0.170.0: Read and modify ssh's authorized_keys files
 dev-perl/Net-SSH-Perl 1.360.0-r1 1.420.0: Perl client Interface to SSH
 dev-perl/Net-SSH2 0.580.0: Support for the SSH 2 protocol via libssh2
-dev-perl/Net-SSLeay 1.650.0-r1 1.650.0-r2 1.720.0: Perl extension for using OpenSSL
+dev-perl/Net-SSLeay 1.650.0-r1 1.720.0-r1: Perl extension for using OpenSSL
 dev-perl/Net-Server 2.8.0: Extensible, general Perl server engine
 dev-perl/Net-Server-Coro 1.300.0-r1: A co-operative multithreaded server using Coro
 dev-perl/Net-Server-Mail 0.230.0: Class to easily create a mail server
@@ -6000,9 +6000,9 @@ dev-perl/Net-Subnet 1.30.0: Fast IP-in-subnet matcher for IPv4 and IPv6, CIDR or
 dev-perl/Net-Telnet 3.30.0-r1 3.40.0: interact with TELNET port or other TCP ports in Perl
 dev-perl/Net-Telnet-Cisco 1.100.0-r1: Automate telnet sessions w/ routers&switches
 dev-perl/Net-Trackback 1.10.0: Object-oriented interface for developing Trackback clients and servers
-dev-perl/Net-Twitter 4.10.80 4.10.100: A perl interface to the Twitter API
+dev-perl/Net-Twitter 4.10.100: A perl interface to the Twitter API
 dev-perl/Net-UPnP 1.4.2-r1 1.4.3: Perl extension for UPnP
-dev-perl/Net-Whois-IP 1.100.0-r1 1.190.0: Perl extension for looking up the whois information for ip addresses
+dev-perl/Net-Whois-IP 1.190.0: Perl extension for looking up the whois information for ip addresses
 dev-perl/Net-XMPP 1.20.0-r1 1.50.0: XMPP Perl Library
 dev-perl/Net-Z3950-ZOOM 1.280.0-r1: Perl extension for invoking the ZOOM-C API
 dev-perl/NetAddr-IP 4.72.0 4.78.0: Manipulation and operations on IP addresses
