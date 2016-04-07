@@ -9605,6 +9605,7 @@ dev-util/flawfinder 1.27-r2 1.31: Examines C/C++ source code for security flaws
 dev-util/ftjam 2.5.3_rc2-r1: Jam is a powerful alternative to make. FTJam is a 100% compatible enhanced Jam implementation
 dev-util/ftnchek 3.3.1-r1: Static analyzer a la 'lint' for Fortran 77
 dev-util/fuzz 0.6: Stress-tests programs by giving them random input
+dev-util/gcovr 3.2: A Python script for summarizing gcov data
 dev-util/gdbus-codegen 2.44.1 2.46.2 2.48.0: GDBus code and documentation generator
 dev-util/geany 1.24.1 1.25 1.26 1.27: GTK+ based fast and lightweight IDE
 dev-util/geany-plugins 1.23 1.24-r1 1.25 1.26: A collection of different plugins for Geany
