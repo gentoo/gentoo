@@ -11121,7 +11121,7 @@ kde-apps/kdemultimedia-meta 4.14.3 15.08.3-r1 15.12.3: kdemultimedia - merge thi
 kde-apps/kdenetwork-filesharing 4.14.3 15.08.3 15.12.3: kcontrol filesharing config module for SMB
 kde-apps/kdenetwork-meta 4.14.3 15.08.3-r1 15.12.3-r1: kdenetwork - merge this to pull in all kdenetwork-derived packages
 kde-apps/kdenlive 0.9.8 0.9.10 15.12.3: Non-linear video editing suite by KDE
-kde-apps/kdepasswd 4.14.3 15.08.3: KDE GUI for passwd
+kde-apps/kdepasswd 4.14.3 15.08.3 15.12.3: KDE GUI for passwd
 kde-apps/kdepim-common-libs 4.14.8 4.14.10: Common libraries for KDE PIM apps
 kde-apps/kdepim-icons 4.4.2015.06 4.4.2016.01 4.14.8 4.14.10: KDE PIM icons
 kde-apps/kdepim-kresources 4.4.2015.06 4.4.2016.01 4.14.8 4.14.10: KDE PIM groupware plugin collection
@@ -11138,16 +11138,16 @@ kde-apps/kdetoys-meta 4.14.3 15.08.3: KDE toys - merge this to pull in all kdeto
 kde-apps/kdeutils-meta 4.14.3 15.08.3 15.12.3: kdeutils - merge this to pull in all kdeutils-derived packages
 kde-apps/kdewebdev-meta 4.14.3 15.08.3: KDE WebDev - merge this to pull in all kdewebdev-derived packages
 kde-apps/kdf 4.14.3 15.08.3 15.12.3: KDE free disk space utility
-kde-apps/kdialog 4.14.3 15.08.3: KDialog can be used to show nice dialog boxes from shell scripts
+kde-apps/kdialog 4.14.3 15.08.3 15.12.3: Can be used to show nice dialog boxes from shell scripts
 kde-apps/kdiamond 4.14.3 15.12.3: A KDE three-in-a-row game
 kde-apps/kdontchangethehostname 4.14.3 15.08.3 15.12.3: Tool to inform Plasma about a change in hostname
-kde-apps/keditbookmarks 4.14.3 15.08.3: KDE's bookmarks editor
+kde-apps/keditbookmarks 4.14.3 15.08.3 15.12.3: KDE's bookmarks editor
 kde-apps/keditfiletype 4.14.3 15.08.3 15.12.3: KDE mime/file type assocciation editor
 kde-apps/kfile 4.14.3 15.08.3 15.12.3: Commandline frontend to KFileMetaInfo
 kde-apps/kfilereplace 4.14.3 15.08.3: KDE web development - powerful search and replace in multiple files
-kde-apps/kfind 4.14.3 15.08.3: KDE file finder utility
+kde-apps/kfind 4.14.3 15.08.3 15.12.3: KDE file finder utility
 kde-apps/kfloppy 4.14.3 15.08.3 15.12.3: A straightforward graphical means to format 3.5" and 5.25" floppy disks
-kde-apps/kfmclient 4.14.3 15.08.3: KDE tool for opening URLs from the command line
+kde-apps/kfmclient 4.14.3 15.08.3 15.12.3: KDE tool for opening URLs from the command line
 kde-apps/kfourinline 4.14.3 15.12.3-r1: KDE four-in-a-row game
 kde-apps/kgamma 4.14.3: KDE screen gamma values kcontrol module
 kde-apps/kgeography 4.14.3 15.12.3: Geography learning tool
@@ -11194,8 +11194,8 @@ kde-apps/kollision 4.14.3 15.12.3-r1: Simple ball dodging game
 kde-apps/kolourpaint 4.14.3 15.08.3 15.12.3: Paint Program for KDE
 kde-apps/kommander 4.14.3 15.08.3: KDE dialog system for scripting
 kde-apps/kompare 4.14.3 15.12.3: A program to view the differences between files
-kde-apps/konq-plugins 4.14.3 15.08.3: Various plugins for konqueror
-kde-apps/konqueror 4.14.3 15.08.3: KDE: Web browser and file manager
+kde-apps/konq-plugins 4.14.3 15.08.3 15.12.3: Various plugins for konqueror
+kde-apps/konqueror 4.14.3 15.08.3 15.12.3: Web browser and file manager
 kde-apps/konquest 4.14.3 15.08.3 15.12.3: Galactic Strategy KDE Game
 kde-apps/konsole 4.14.3 4.14.3-r2 15.12.3: KDE's terminal emulator
 kde-apps/konsolekalendar 4.4.2015.06 4.4.2016.01 4.14.8 4.14.10: A command line interface to KDE calendars
@@ -11260,14 +11260,14 @@ kde-apps/libkipi 4.14.3 15.08.3 15.12.3: A library for image plugins accross KDE
 kde-apps/libkleo 4.4.2015.06 4.4.2016.01: KDE library for encryption handling
 kde-apps/libkmahjongg 4.14.3 15.12.3: LibKMahjongg for KDE
 kde-apps/libkomparediff2 4.14.3 15.12.3: KDE library to compare files and strings
-kde-apps/libkonq 4.14.3 15.08.3: The embeddable part of konqueror
+kde-apps/libkonq 4.14.3 15.08.3 15.12.3: The embeddable part of konqueror
 kde-apps/libkpgp 4.4.2015.06 4.4.2016.01: KDE pgp abstraction library
 kde-apps/libksane 4.14.3 15.08.3 15.12.3: SANE Library interface for KDE
 kde-apps/lokalize 4.14.3 15.12.3: KDE Applications 5 translation tool
 kde-apps/lskat 4.14.3 15.08.3 15.12.3: Skat game for KDE
 kde-apps/marble 4.14.3 15.12.3: Generic geographical map widget
 kde-apps/mplayerthumbs 4.14.3 15.08.3 15.12.1: A Thumbnail Generator for Video Files on KDE filemanagers
-kde-apps/nsplugins 4.14.3 15.08.3: Netscape plugins support for Konqueror
+kde-apps/nsplugins 4.14.3 15.08.3 15.12.3: Netscape plugins support for Konqueror
 kde-apps/okteta 4.14.3 15.12.3: KDE hexeditor
 kde-apps/okular 4.14.3 15.08.3-r1 15.12.3: Okular is a universal document viewer based on KPDF for KDE 4
 kde-apps/pairs 4.14.3 15.04.3: KDE memory and pairs game
@@ -11275,7 +11275,7 @@ kde-apps/palapeli 4.14.3 15.08.3 15.12.3: KDE jigsaw puzzle game
 kde-apps/parley 4.14.3 15.12.3: A vocabulary trainer to help you memorize things
 kde-apps/phonon-kde 4.14.3 15.08.3 15.12.3: Phonon KDE Integration
 kde-apps/picmi 4.14.3 15.12.3: Nonogram logic game for KDE
-kde-apps/plasma-apps 4.14.3 15.08.3: Additional Applets for Plasma
+kde-apps/plasma-apps 4.14.3 15.08.3 15.12.3: Additional Applets for Plasma
 kde-apps/plasma-runtime 4.14.3 15.08.3 15.12.3: Script engine and package tool for plasma
 kde-apps/poxml 4.14.3 15.08.3 15.12.3: KDE utility to translate DocBook XML files using gettext po files
 kde-apps/print-manager 4.14.3 15.12.3: Manage print jobs and printers in Plasma
