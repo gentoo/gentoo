@@ -40,5 +40,5 @@ DEPEND="${RDEPEND}
 
 src_install() {
 	perl-module_src_install
-	doman "${WORKDIR}"/podspell.1 || die
+	doman "${WORKDIR}"/podspell.1
 }
