@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -417,7 +417,7 @@ src_configure() {
 }
 
 src_compile() {
-	emake -j1 CC="$(tc-getCC)" HOSTCC="$(tc-getCC $CBUILD)" \
+	emake CC="$(tc-getCC)" HOSTCC="$(tc-getCC $CBUILD)" \
 		AR="$(tc-getAR) cq" RANLIB="$(tc-getRANLIB)" FULLECHO='' \
 		|| die "make failed"
 }
