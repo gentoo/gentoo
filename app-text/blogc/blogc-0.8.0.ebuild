@@ -23,7 +23,7 @@ if [[ ${PV} = *9999* ]]; then
 	DEPEND="${RDEPEND}
 		app-text/ronn"
 else
-	RDEPEND=">=dev-libs/squareball-0.1"
+	RDEPEND=">=dev-libs/squareball-0.2.0"
 	DEPEND="${RDEPEND}"
 fi
 
