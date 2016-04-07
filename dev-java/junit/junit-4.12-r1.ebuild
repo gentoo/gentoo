@@ -4,12 +4,14 @@
 
 EAPI=5
 
+MY_PN="${PN}${PV%%.*}"
+MY_P="${MY_PN}-r${PV}"
 JAVA_PKG_IUSE="doc source"
 
 inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="Simple framework to write repeatable tests"
-SRC_URI="https://github.com/${PN}-team/${PN}/archive/r${PV}.zip"
+SRC_URI="https://github.com/${PN}-team/${MY_PN}/archive/r${PV}.tar.gz -> ${MY_P}.tar.gz"
 HOMEPAGE="http://junit.org/"
 LICENSE="EPL-1.0"
 SLOT="4"
@@ -24,7 +26,7 @@ RDEPEND=">=virtual/jre-1.6
 DEPEND=">=virtual/jdk-1.6
 	${CDEPEND}"
 
-S="${WORKDIR}/${PN}-r${PV}"
+S="${WORKDIR}/${MY_P}"
 JAVA_SRC_DIR="src/main/java"
 JAVA_GENTOO_CLASSPATH="hamcrest-core-1.3"
 
