@@ -28,8 +28,8 @@ DEPEND="${RDEPEND}
 	i2p-hardening? ( >=sys-devel/gcc-4.7 )
 	|| ( >=sys-devel/gcc-4.7 >=sys-devel/clang-3.3 )"
 
-I2PD_USER="${I2PD_USER:-i2pd}"
-I2PD_GROUP="${I2PD_GROUP:-i2pd}"
+I2PD_USER=i2pd
+I2PD_GROUP=i2pd
 
 CMAKE_USE_DIR="${S}/build"
 
@@ -53,27 +53,38 @@ src_configure() {
 
 src_install() {
 	cmake-utils_src_install
+
+	# config
+	insinto "/etc/i2pd"
+	doins "${S}/docs/i2pd.conf"
+	doins "${S}/debian/subscriptions.txt"
+	doins "${S}/debian/tunnels.conf"
+
+	# doc
 	dodoc README.md
+
+	# working directory
 	keepdir /var/lib/i2pd/
-	insinto "/var/lib/i2pd"
+	insinto /var/lib/i2pd
 	doins -r "${S}/contrib/certificates"
 	dosym /etc/i2pd/subscriptions.txt /var/lib/i2pd/subscriptions.txt
 	fowners "${I2PD_USER}:${I2PD_GROUP}" /var/lib/i2pd/
 	fperms 700 /var/lib/i2pd/
-	dodir "/etc/${PN}"
-	insinto "/etc/${PN}"
-	doins "${S}/docs/${PN}.conf"
-	doins "${S}/debian/subscriptions.txt"
-	doins "${S}/debian/tunnels.conf"
-	newconfd "${FILESDIR}/${PN}-2.6.0-r2.confd" "${PN}"
-	newinitd "${FILESDIR}/${PN}-2.6.0-r2.initd" "${PN}"
-	systemd_newunit "${FILESDIR}/${PN}-2.6.0-r2.service" "${PN}.service"
-	doenvd "${FILESDIR}/99${PN}"
+	
+	# add /var/lib/i2pd/certificates to CONFIG_PROTECT
+	doenvd "${FILESDIR}/99i2pd"
+
+	# openrc and systemd daemon routines
+	newconfd "${FILESDIR}/i2pd-2.6.0-r2.confd" i2pd
+	newinitd "${FILESDIR}/i2pd-2.6.0-r2.initd" i2pd
+	systemd_newunit "${FILESDIR}/i2pd-2.6.0-r2.service" i2pd.service
+	
+	# logrotate
 	insinto /etc/logrotate.d
-	newins "${FILESDIR}/${PN}-2.5.0.logrotate" "${PN}"
+	newins "${FILESDIR}/i2pd-2.5.0.logrotate" i2pd
 }
 
 pkg_setup() {
 	enewgroup "${I2PD_GROUP}"
-	enewuser "${I2PD_USER}" -1 -1 "/var/lib/run/${PN}" "${I2PD_GROUP}"
+	enewuser "${I2PD_USER}" -1 -1 /var/lib/run/i2pd "${I2PD_GROUP}"
 }
