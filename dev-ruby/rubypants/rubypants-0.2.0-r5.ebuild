@@ -4,7 +4,7 @@
 
 EAPI=5
 
-USE_RUBY="ruby20 ruby21 ruby22"
+USE_RUBY="ruby20 ruby21 ruby22 ruby23"
 
 RUBY_FAKEGEM_TASK_DOC=""
 RUBY_FAKEGEM_TASK_TEST=""
@@ -16,7 +16,7 @@ HOMEPAGE="http://chneukirchen.org/repos/rubypants/README"
 
 LICENSE="Ruby"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 all_ruby_prepare() {
