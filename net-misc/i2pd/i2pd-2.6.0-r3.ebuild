@@ -72,12 +72,6 @@ src_install() {
 	doenvd "${FILESDIR}/99${PN}"
 	insinto /etc/logrotate.d
 	newins "${FILESDIR}/${PN}-2.5.0.logrotate" "${PN}"
-	fowners "${I2PD_USER}:${I2PD_GROUP}" "/etc/${PN}/${PN}.conf" \
-		"/etc/${PN}/subscriptions.txt" \
-		"/etc/${PN}/tunnels.conf"
-	fperms 600 "/etc/${PN}/${PN}.conf" \
-		"/etc/${PN}/subscriptions.txt" \
-		"/etc/${PN}/tunnels.conf"
 }
 
 pkg_setup() {
