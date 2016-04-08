@@ -13,12 +13,12 @@ fi
 inherit cmake-utils cmake-multilib ${GIT_ECLASS}
 
 DESCRIPTION="Library that allows selection of GL API and of window system at runtime"
-HOMEPAGE="http://people.freedesktop.org/~chadversary/waffle/"
+HOMEPAGE="https://people.freedesktop.org/~chadversary/waffle/"
 
 if [[ $PV = 9999* ]]; then
 	KEYWORDS="arm"
 else
-	SRC_URI="http://people.freedesktop.org/~chadversary/waffle/files/release/${P}/${P}.tar.xz"
+	SRC_URI="https://people.freedesktop.org/~chadversary/waffle/files/release/${P}/${P}.tar.xz"
 	KEYWORDS="amd64 arm x86"
 fi
 

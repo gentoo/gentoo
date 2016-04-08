@@ -67,7 +67,7 @@ src_install() {
 pkg_postinst() {
 	if use udev; then
 		udevadm hwdb --update --root="${ROOT%/}"
-		# http://cgit.freedesktop.org/systemd/systemd/commit/?id=1fab57c209035f7e66198343074e9cee06718bda
+		# https://cgit.freedesktop.org/systemd/systemd/commit/?id=1fab57c209035f7e66198343074e9cee06718bda
 		[ "${ROOT:-/}" = "/" ] && udevadm control --reload
 	fi
 }

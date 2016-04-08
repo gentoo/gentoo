@@ -8,8 +8,8 @@ JAVA_PKG_IUSE="doc source"
 inherit eutils java-pkg-2
 
 DESCRIPTION="Java bindings for the D-Bus messagebus"
-HOMEPAGE="http://dbus.freedesktop.org/"
-SRC_URI="http://dbus.freedesktop.org/releases/dbus-java/${P}.tar.gz"
+HOMEPAGE="https://dbus.freedesktop.org/"
+SRC_URI="https://dbus.freedesktop.org/releases/dbus-java/${P}.tar.gz"
 
 LICENSE="|| ( GPL-2 AFL-2.1 )"
 SLOT="0"

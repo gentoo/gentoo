@@ -8,8 +8,8 @@ PYTHON_COMPAT=( python2_7 )
 inherit python-single-r1
 
 DESCRIPTION="A SIP connection manager for Telepathy based around the Sofia-SIP library"
-HOMEPAGE="http://telepathy.freedesktop.org/"
-SRC_URI="http://telepathy.freedesktop.org/releases/${PN}/${P}.tar.gz"
+HOMEPAGE="https://telepathy.freedesktop.org/"
+SRC_URI="https://telepathy.freedesktop.org/releases/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

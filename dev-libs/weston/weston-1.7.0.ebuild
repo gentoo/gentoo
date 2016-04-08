@@ -15,12 +15,12 @@ RESTRICT="test"
 inherit autotools readme.gentoo toolchain-funcs virtualx $GIT_ECLASS
 
 DESCRIPTION="Wayland reference compositor"
-HOMEPAGE="http://wayland.freedesktop.org/"
+HOMEPAGE="https://wayland.freedesktop.org/"
 
 if [[ $PV = 9999* ]]; then
 	SRC_URI="${SRC_PATCHES}"
 else
-	SRC_URI="http://wayland.freedesktop.org/releases/${P}.tar.xz"
+	SRC_URI="https://wayland.freedesktop.org/releases/${P}.tar.xz"
 fi
 
 LICENSE="MIT CC-BY-SA-3.0"

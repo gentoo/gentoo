@@ -6,8 +6,8 @@ EAPI=5
 inherit bash-completion-r1 eutils multilib-minimal
 
 DESCRIPTION="D-Bus bindings for glib"
-HOMEPAGE="http://dbus.freedesktop.org/"
-SRC_URI="http://dbus.freedesktop.org/releases/${PN}/${P}.tar.gz"
+HOMEPAGE="https://dbus.freedesktop.org/"
+SRC_URI="https://dbus.freedesktop.org/releases/${PN}/${P}.tar.gz"
 
 LICENSE="|| ( GPL-2 AFL-2.1 )"
 SLOT="0"

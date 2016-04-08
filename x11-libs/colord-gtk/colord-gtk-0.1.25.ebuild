@@ -9,8 +9,8 @@ VALA_USE_DEPEND="vapigen"
 inherit eutils vala
 
 DESCRIPTION="GTK support library for colord"
-HOMEPAGE="http://www.freedesktop.org/software/colord/"
-SRC_URI="http://www.freedesktop.org/software/colord/releases/${P}.tar.xz"
+HOMEPAGE="https://www.freedesktop.org/software/colord/"
+SRC_URI="https://www.freedesktop.org/software/colord/releases/${P}.tar.xz"
 
 LICENSE="LGPL-3+"
 SLOT="0/1" # subslot = libcolord-gtk soname version

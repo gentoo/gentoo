@@ -10,8 +10,8 @@ VALA_USE_DEPEND="vapigen"
 inherit autotools bash-completion-r1 check-reqs eutils gnome2 user systemd udev vala multilib-minimal
 
 DESCRIPTION="System service to accurately color manage input and output devices"
-HOMEPAGE="http://www.freedesktop.org/software/colord/"
-SRC_URI="http://www.freedesktop.org/software/colord/releases/${P}.tar.xz"
+HOMEPAGE="https://www.freedesktop.org/software/colord/"
+SRC_URI="https://www.freedesktop.org/software/colord/releases/${P}.tar.xz"
 
 LICENSE="GPL-2+"
 SLOT="0/2" # subslot = libcolord soname version

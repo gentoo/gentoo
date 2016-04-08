@@ -8,7 +8,7 @@ inherit eutils flag-o-matic autotools git-2
 
 DESCRIPTION="A simple TCP daemon and set of libraries for the usbredir protocol (redirecting USB traffic)"
 HOMEPAGE="http://spice-space.org/page/UsbRedir"
-EGIT_REPO_URI="http://anongit.freedesktop.org/git/spice/usbredir.git"
+EGIT_REPO_URI="https://anongit.freedesktop.org/git/spice/usbredir.git"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
@@ -24,7 +24,7 @@ DOCS="ChangeLog README* TODO *.txt"
 EGIT_BOOTSTRAP="eautoreconf"
 
 src_configure() {
-	# http://bugs.freedesktop.org/show_bug.cgi?id=54643
+	# https://bugs.freedesktop.org/show_bug.cgi?id=54643
 	append-cflags -Wno-error
 	econf $(use_enable static-libs static)
 }
