@@ -13,7 +13,7 @@ SRC_URI="https://github.com/magit/magit/releases/download/${PV}/${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 
 S="${WORKDIR}/${P}/lisp"
 SITEFILE="50${PN}-gentoo.el"
