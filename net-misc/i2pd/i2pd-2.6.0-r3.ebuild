@@ -53,25 +53,13 @@ src_configure() {
 
 src_install() {
 	cmake-utils_src_install
-	dodoc README.md
-	keepdir /var/lib/i2pd/
-	insinto "/var/lib/i2pd"
-	doins -r "${S}/contrib/certificates"
-	dosym /etc/i2pd/subscriptions.txt /var/lib/i2pd/subscriptions.txt
-	fowners "${I2PD_USER}:${I2PD_GROUP}" /var/lib/i2pd/
-	fperms 700 /var/lib/i2pd/
-	dodir "/etc/${PN}"
-	insinto "/etc/${PN}"
-	doins "${S}/docs/${PN}.conf"
-	doins "${S}/debian/subscriptions.txt"
-	doins "${S}/debian/tunnels.conf"
-	newconfd "${FILESDIR}/${PN}-2.6.0-r2.confd" "${PN}"
-	newinitd "${FILESDIR}/${PN}-2.6.0-r2.initd" "${PN}"
-	systemd_newunit "${FILESDIR}/${PN}-2.6.0-r2.service" "${PN}.service"
-	doenvd "${FILESDIR}/99${PN}"
-	insinto /etc/logrotate.d
-	newins "${FILESDIR}/${PN}-2.5.0.logrotate" "${PN}"
 
+	# config
+	insinto /etc/i2pd
+	doins docs/i2pd.conf
+	doins debian/tunnels.conf
+	doins debian/subscriptions.txt
+	
 	# grant i2pd group read and write access to config files
 	fowners "root:${I2PD_GROUP}" \
 		/etc/i2pd/i2pd.conf \
@@ -81,9 +69,32 @@ src_install() {
 		/etc/i2pd/i2pd.conf \
 		/etc/i2pd/tunnels.conf \
 		/etc/i2pd/subscriptions.txt
+
+	# doc
+	dodoc README.md
+
+	# working directory
+	keepdir /var/lib/i2pd
+	insinto /var/lib/i2pd
+	doins -r contrib/certificates
+	dosym /etc/i2pd/subscriptions.txt /var/lib/i2pd/subscriptions.txt
+	fowners "${I2PD_USER}:${I2PD_GROUP}" /var/lib/i2pd/
+	fperms 700 /var/lib/i2pd/
+	
+	# add /var/lib/i2pd/certificates to CONFIG_PROTECT
+	doenvd "${FILESDIR}/99i2pd"
+
+	# openrc and systemd daemon routines
+	newconfd "${FILESDIR}/i2pd-2.6.0-r2.confd" i2pd
+	newinitd "${FILESDIR}/i2pd-2.6.0-r2.initd" i2pd
+	systemd_newunit "${FILESDIR}/i2pd-2.6.0-r2.service" i2pd.service
+	
+	# logrotate
+	insinto /etc/logrotate.d
+	newins "${FILESDIR}/i2pd-2.5.0.logrotate" i2pd
 }
 
 pkg_setup() {
 	enewgroup "${I2PD_GROUP}"
-	enewuser "${I2PD_USER}" -1 -1 "/var/lib/run/${PN}" "${I2PD_GROUP}"
+	enewuser "${I2PD_USER}" -1 -1 /var/lib/run/i2pd "${I2PD_GROUP}"
 }
