@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure prepare
+DEPEND=>=dev-libs/squareball-0.2.0 virtual/pkgconfig test? ( dev-util/cmocka )
+DESCRIPTION=A blog compiler
+EAPI=6
+HOMEPAGE=http://blogc.org/
+IUSE=test
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD
+RDEPEND=>=dev-libs/squareball-0.2.0
+SLOT=0
+SRC_URI=https://github.com/blogc/blogc/releases/download/v0.8.0/blogc-0.8.0.tar.xz
+_eclass_exported_funcs=src_prepare:- src_configure:-
+_md5_=16312feec5a95ac4ae1029b67c9bf6fc
