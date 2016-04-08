@@ -7487,7 +7487,7 @@ dev-python/optcomplete 1.2-r1: Shell completion self-generator for Python
 dev-python/ordereddict 1.1: A drop-in substitute for Py2.7's new collections.OrderedDict that works in Python 2.4-2.6.
 dev-python/os-brick 0.5.0 1.2.0: OpenStack Cinder brick library for managing local volume attaches
 dev-python/os-client-config 1.6.1 1.6.3 1.16.0: OpenStack Client Configuation Library
-dev-python/os-diskconfig-python-novaclient-ext 0.1.1 0.1.1-r1 0.1.2 9999: Disk Config extension for python-novaclient
+dev-python/os-diskconfig-python-novaclient-ext 0.1.1 0.1.1-r1 0.1.2 0.1.3 9999: Disk Config extension for python-novaclient
 dev-python/os-networksv2-python-novaclient-ext 0.21 0.21-r1 0.25: Adds network extension support to python-novaclient
 dev-python/os-testr 0.3.0 0.6.0: A testr wrapper to provide functionality for OpenStack projects
 dev-python/os-virtual-interfacesv2-python-novaclient-ext 0.15 0.19: Adds Virtual Interfaces support to python-novaclient
@@ -7947,7 +7947,7 @@ dev-python/radon 1.2.1 1.2.2 1.3.1: Code Metrics in Python
 dev-python/raet 0.3.8 0.6.1 0.6.3 0.6.5: Reliable Asynchronous Event Transport Protocol
 dev-python/rarfile 2.6: Module for RAR archive reading
 dev-python/raven 5.2.0 5.3.0: Raven is a client for Sentry
-dev-python/rax-default-network-flags-python-novaclient-ext 0.1.3 0.1.3-r1 0.2.4 0.3.1: Disk Config extension for python-novaclient
+dev-python/rax-default-network-flags-python-novaclient-ext 0.1.3 0.1.3-r1 0.2.4 0.3.1 0.3.2: Disk Config extension for python-novaclient
 dev-python/rax-scheduled-images-python-novaclient-ext 0.2.1: Adds backup-schedule extension support to python-novaclient
 dev-python/rdflib 3.2.3-r1 4.1.2 4.2.0 4.2.1: RDF library containing a triple store and parser/serializer
 dev-python/readme 0.5.1 0.6.0: a library for rendering "readme" descriptions for Warehouse
@@ -15054,7 +15054,7 @@ net-proxy/squid 3.5.6 3.5.7 3.5.8 3.5.9 3.5.10 3.5.11 3.5.12 3.5.14 3.5.15 3.5.1
 net-proxy/squidclamav 6.8 6.10: HTTP Antivirus for Squid based on ClamAv and ICAP
 net-proxy/squidguard 1.4-r4 1.5_beta-r1: Combined filter, redirector and access controller plugin for Squid
 net-proxy/squirm 1.26-r1: A redirector for Squid
-net-proxy/sshuttle 0.61-r3 0.73 0.75 0.76 0.77.2: Transparent proxy server that works as a poor man's VPN using ssh
+net-proxy/sshuttle 0.61-r3 0.73 0.75 0.76 0.77.2 0.78.0: Transparent proxy server that works as a poor man's VPN using ssh
 net-proxy/tayga 0.9.2: out-of-kernel stateless NAT64 implementation based on TUN
 net-proxy/tinyproxy 1.8.3-r3: A lightweight HTTP/SSL proxy
 net-proxy/torsocks 1.2-r2 2.1.0: Use most socks-friendly applications with Tor
