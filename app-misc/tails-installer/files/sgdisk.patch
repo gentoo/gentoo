@@ -1,0 +1,29 @@
+--- /tails_installer/creator.py
++++ /tails_installer/creator.py
+@@ -220,7 +220,7 @@
+         raise NotImplementedError
+ 
+     def update_system_partition_properties(self):
+-        cmd = (  [ '/sbin/sgdisk' ]
++        cmd = (  [ '/usr/sbin/sgdisk' ]
+                + [ '--typecode=1:%s' % ESP_GUID ]
+                + [ self.drive['parent'] ])
+         self.popen(cmd, shell=False)
+@@ -235,7 +235,7 @@
+         if not device:
+             device = self.drive['device']
+ 
+-        proc = self.popen(['/sbin/sgdisk', '--print', device], shell=False, passive=True)
++        proc = self.popen(['/usr/sbin/sgdisk', '--print', device], shell=False, passive=True)
+         if proc.returncode:
+             return False
+         return True
+@@ -249,7 +249,7 @@
+         # understand... while we want to make it do this reset
+         # precisely to fix that unreadable partition table issue.
+         # Chicken'n'egg, right.
+-        self.popen(['/sbin/sgdisk', '--zap-all', device],
++        self.popen(['/usr/sbin/sgdisk', '--zap-all', device],
+                    shell=False, passive=True)
+ 
+     def switch_drive_to_system_partition(self):
