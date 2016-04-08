@@ -21,6 +21,5 @@ RDEPEND="${DEPEND}"
 RESTRICT="test"
 
 src_install() {
-	exeinto /usr/bin
-	doexe git-remote-hg
+	dobin git-remote-hg
 }
