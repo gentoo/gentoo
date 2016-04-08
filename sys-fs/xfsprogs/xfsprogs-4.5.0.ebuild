@@ -4,7 +4,6 @@
 
 EAPI=5
 
-inherit eutils toolchain-funcs multilib
 
 DESCRIPTION="xfs filesystem utilities"
 HOMEPAGE="http://oss.sgi.com/projects/xfs/"
@@ -16,6 +15,9 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
 IUSE="libedit nls readline static static-libs"
 REQUIRED_USE="static? ( static-libs )"
+PLOCALES="de pl"
+
+inherit eutils toolchain-funcs multilib l10n
 
 LIB_DEPEND=">=sys-apps/util-linux-2.17.2[static-libs(+)]
 	readline? ( sys-libs/readline:0=[static-libs(+)] )
@@ -98,4 +100,14 @@ src_install() {
 	gen_usr_ldscript -a xfs xlog
 	# removing unnecessary .la files if not needed
 	use static-libs || find "${ED}" -name '*.la' -delete
+
+
+	# remove disabled locales
+	# Removing these in src_prepare requires editing ${WORKDIR}/po/Makefile
+	rm_loc() {
+		rm -r "${ED}"/usr/share/locale/$1 || die
+		ls "${ED}"/usr/share/locale/* &> /dev/null || rmdir "${ED}"/usr/share/locale || die
+	}
+	l10n_for_each_disabled_locale_do rm_loc
+
 }
