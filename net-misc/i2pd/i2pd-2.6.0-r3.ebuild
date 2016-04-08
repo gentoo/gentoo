@@ -72,12 +72,16 @@ src_install() {
 	doenvd "${FILESDIR}/99${PN}"
 	insinto /etc/logrotate.d
 	newins "${FILESDIR}/${PN}-2.5.0.logrotate" "${PN}"
-	fowners "${I2PD_USER}:${I2PD_GROUP}" "/etc/${PN}/${PN}.conf" \
-		"/etc/${PN}/subscriptions.txt" \
-		"/etc/${PN}/tunnels.conf"
-	fperms 600 "/etc/${PN}/${PN}.conf" \
-		"/etc/${PN}/subscriptions.txt" \
-		"/etc/${PN}/tunnels.conf"
+
+	# grant i2pd group read and write access to config files
+	fowners "root:${I2PD_GROUP}" \
+		/etc/i2pd/i2pd.conf \
+		/etc/i2pd/tunnels.conf \
+		/etc/i2pd/subscriptions.txt
+	fperms 660 \
+		/etc/i2pd/i2pd.conf \
+		/etc/i2pd/tunnels.conf \
+		/etc/i2pd/subscriptions.txt
 }
 
 pkg_setup() {
