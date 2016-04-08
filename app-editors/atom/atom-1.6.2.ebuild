@@ -65,7 +65,7 @@ src_compile(){
 
 src_install(){
 	insinto "/usr/share/${PN}"
-	doins -r "${T}/Atom/*"
+	doins -r "${T}"/Atom/*
 	insinto "/usr/share/applications"
 	newins resources/linux/Atom.desktop atom.desktop
 	insinto "/usr/share/pixmaps"
