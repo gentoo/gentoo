@@ -15,7 +15,7 @@ SRC_URI="http://www.iana.org/time-zones/repository/releases/tzdata${data_ver}.ta
 
 LICENSE="BSD public-domain"
 SLOT="0"
-KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~x86-freebsd ~amd64-linux ~ia64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~x86-freebsd ~amd64-linux ~ia64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
 IUSE="nls leaps_timezone elibc_FreeBSD elibc_glibc"
 
 RDEPEND="!sys-libs/glibc[vanilla(+)]"
@@ -23,7 +23,7 @@ RDEPEND="!sys-libs/glibc[vanilla(+)]"
 S=${WORKDIR}
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-2015c-makefile.patch
+	epatch "${FILESDIR}"/${PN}-2016a-makefile.patch
 	tc-is-cross-compiler && cp -pR "${S}" "${S}"-native
 }
 
@@ -37,6 +37,7 @@ _emake() {
 src_compile() {
 	local LDLIBS
 	tc-export CC
+	append-lfs-flags #471102
 	if use elibc_FreeBSD || use elibc_Darwin ; then
 		append-cppflags -DSTD_INSPIRED #138251
 	fi
@@ -113,7 +114,10 @@ pkg_config() {
 		return 0
 	fi
 
-	tz=$(get_TIMEZONE) || return 0
+	if ! tz=$(get_TIMEZONE) ; then
+		einfo "Assuming your empty ${etc_lt} file is what you want; skipping update."
+		return 0
+	fi
 	if [[ ${tz} == "FOOKABLOIE" ]] ; then
 		elog "You do not have TIMEZONE set in ${src}."
 
