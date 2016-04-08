@@ -65,7 +65,6 @@ src_install() {
 	doins "${S}/docs/${PN}.conf"
 	doins "${S}/debian/subscriptions.txt"
 	doins "${S}/debian/tunnels.conf"
-	dodir /usr/share/i2pd
 	newconfd "${FILESDIR}/${PN}-2.6.0-r2.confd" "${PN}"
 	newinitd "${FILESDIR}/${PN}-2.6.0-r2.initd" "${PN}"
 	systemd_newunit "${FILESDIR}/${PN}-2.6.0-r2.service" "${PN}.service"
