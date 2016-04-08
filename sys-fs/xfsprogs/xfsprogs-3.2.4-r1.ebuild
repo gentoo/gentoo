@@ -39,16 +39,17 @@ pkg_setup() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-4.2.0-sharedlibs.patch
+	epatch "${FILESDIR}"/${PN}-3.2.2-sharedlibs.patch
 
-	# LLDFLAGS is used for programs, so apply -all-static when USE=static is enabled.
-	# Clear out -static from all flags since we want to link against dynamic xfs libs.
 	sed -i \
 		-e "/^PKG_DOC_DIR/s:@pkg_name@:${PF}:" \
-		-e "1iLLDFLAGS += $(usex static '-all-static' '')" \
 		include/builddefs.in || die
-	find -name Makefile -exec \
-		sed -i -r -e '/^LLDFLAGS [+]?= -static(-libtool-libs)?$/d' {} +
+	sed -i \
+		-e '1iLLDFLAGS = -static' \
+		{estimate,fsr}/Makefile || die
+	sed -i \
+		-e "/LLDFLAGS/s:-static-libtool-libs:$(use static && echo -all-static):" \
+		$(find -name Makefile) || die
 
 	# libdisk has broken blkid conditional checking
 	sed -i \
@@ -89,14 +90,13 @@ src_configure() {
 
 src_install() {
 	emake DIST_ROOT="${ED}" install
-	# parallel install fails on this target for >=xfsprogs-3.2.0
-	emake -j1 DIST_ROOT="${ED}" install-dev
+	# parallel install fails on these targets for >=xfsprogs-3.2.0
+	emake -j1 DIST_ROOT="${ED}" install-{dev,qa}
 
 	# handle is for xfsdump, the rest for xfsprogs
 	gen_usr_ldscript -a xfs xlog
 	# removing unnecessary .la files if not needed
 	use static-libs || find "${ED}" -name '*.la' -delete
-
 
 	# remove disabled locales
 	# Removing these in src_prepare requires editing ${WORKDIR}/po/Makefile
@@ -105,5 +105,4 @@ src_install() {
 		ls "${ED}"/usr/share/locale/* &> /dev/null || rmdir "${ED}"/usr/share/locale || die
 	}
 	l10n_for_each_disabled_locale_do rm_loc
-
 }
