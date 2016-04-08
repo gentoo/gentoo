@@ -51,6 +51,7 @@ REQUIRED_USE=${PYTHON_REQUIRED_USE}
 PATCHES=(
 	"${FILESDIR}/catalyst-2.0.18-Do-notuntarwith--acls.patch"
 	"${FILESDIR}/catalyst-2.0.18-fix-quotes.patch"
+	"${FILESDIR}/catalyst-2.0.18-remove-machine-id.patch"
 )
 
 pkg_setup() {
