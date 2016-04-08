@@ -5,10 +5,8 @@
 		<email>sping@gentoo.org</email>
 	</maintainer>
 	<use>
-		<flag name="introspection">Use <pkg>dev-libs/gobject-introspection</pkg> for introspection.</flag>
 		<flag name="lensfun">Enable support for <pkg>media-libs/lensfun</pkg>.</flag>
 		<flag name="umfpack">Enable sparse solving via <pkg>sci-libs/umfpack</pkg>.</flag>
-		<flag name="vala">Enable bindings for <pkg>dev-lang/vala</pkg></flag>
 		<flag name="webp">Enable support for <pkg>media-libs/libwebp</pkg></flag>
 	</use>
 </pkgmetadata>

@@ -12,7 +12,6 @@
 	<use>
 		<flag name="autostart">Enable XDG-compatible autostart of Fcitx</flag>
 		<flag name="enchant">Enable Enchant backend (using <pkg>app-text/enchant</pkg>) for spelling hinting</flag>
-		<flag name="introspection">Enable support for GObject Introspection</flag>
 		<flag name="gtk">Install input method module for GTK+ 2</flag>
 		<flag name="gtk2">Install input method module for GTK+ 2</flag>
 		<flag name="gtk3">Install input method module for GTK+ 3</flag>

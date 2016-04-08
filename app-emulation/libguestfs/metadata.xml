@@ -24,7 +24,6 @@
 modifying virtual machine (VM) disk images</longdescription>
 <use>
 	<flag name="fuse">Enable image mount support via fuse</flag>
-	<flag name="introspection">Use <pkg>dev-libs/gobject-introspection</pkg> for introspection</flag>
 	<flag name="erlang">Build Erlang bindings</flag>
 	<flag name="systemtap">Use <pkg>dev-util/systemtap</pkg> to inspect VM via "probes" way</flag>
 	<flag name="inspect-icons">Use <pkg>media-gfx/icoutils</pkg>for acces icon file in image and inspect it</flag>

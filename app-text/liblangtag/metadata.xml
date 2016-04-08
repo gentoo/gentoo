@@ -5,9 +5,6 @@
     <email>office@gentoo.org</email>
     <name>Gentoo Office project</name>
   </maintainer>
-  <use>
-    <flag name="introspection">Use <pkg>dev-libs/gobject-introspection</pkg> for introspection</flag>
-  </use>
   <upstream>
     <remote-id type="bitbucket">tagoh/liblangtag</remote-id>
   </upstream>
