@@ -18,7 +18,7 @@ DEPEND="
 RDEPEND="
 	!<kde-apps/kde4-l10n-${PV}
 	!kde-apps/kde4-l10n[-minimal]
-	!<kde-apps/kdepim-l10n-${PV}
+	!<kde-apps/kdepim-l10n-${PV}:5
 	!<kde-apps/ktp-l10n-${PV}
 "
 
