@@ -47,7 +47,7 @@ net-irc/quassel qt5
 # The corresponding Qt5 modules are not stable yet, and we don't want
 # to stabilize them solely because of PyQt5 when there are no other
 # in-tree users yet.
-dev-python/PyQt5 positioning sensors serialport webchannel websockets
+dev-python/PyQt5 serialport websockets
 
 # Pacho Ramos <pacho@gentoo.org> (15 May 2015)
 # Version compatible with current ffmpeg is not ready to be stabilized
