@@ -81,6 +81,6 @@ src_install(){
 	fperms +x "/usr/share/${PN}/resources/app/apm/bin/node"
 	fperms +x "/usr/share/${PN}/resources/app/apm/node_modules/npm/bin/node-gyp-bin/node-gyp"
 	# Symlinking to /usr/bin
-	dosym "/usr/share/${PN}/resources/app/atom.sh /usr/bin/atom"
-	dosym "/usr/share/${PN}/resources/app/apm/bin/apm /usr/bin/apm"
+	dosym "/usr/share/${PN}/resources/app/atom.sh" /usr/bin/atom
+	dosym "/usr/share/${PN}/resources/app/apm/bin/apm" /usr/bin/apm
 }
