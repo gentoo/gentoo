@@ -13,20 +13,17 @@ case ${PV} in
 	*_alpha*)
 		SLOT="unstable"
 		CHROMEDIR="opt/google/chrome-${SLOT}"
-		MY_PV=${PV/_alpha/-}
+		MY_PV=${PV%_alpha}-1
 		;;
 	*_beta*)
 		SLOT="beta"
 		CHROMEDIR="opt/google/chrome-${SLOT}"
-		MY_PV=${PV/_beta/-}
-		;;
-	*_p*)
-		SLOT="stable"
-		CHROMEDIR="opt/google/chrome"
-		MY_PV=${PV/_p/-}
+		MY_PV=${PV%_beta}-1
 		;;
 	*)
-		die "Invalid value for \${PV}: ${PV}"
+		SLOT="stable"
+		CHROMEDIR="opt/google/chrome"
+		MY_PV=${PV}-1
 		;;
 esac
 
@@ -38,7 +35,7 @@ SRC_URI="
 		https://dl.google.com/linux/chrome/deb/pool/main/g/${MY_PN}/${MY_P}_amd64.deb
 	)
 "
-KEYWORDS="-* amd64"
+KEYWORDS="-* ~amd64"
 
 LICENSE="google-chrome"
 IUSE="+flash +widevine"
