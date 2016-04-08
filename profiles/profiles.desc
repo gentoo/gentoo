@@ -174,11 +174,14 @@ x86		default/linux/x86/13.0/systemd			stable
 # Gentoo/FreeBSD Profiles
 amd64-fbsd	default/bsd/fbsd/amd64/9.1			dev
 amd64-fbsd	default/bsd/fbsd/amd64/10.2			dev
+amd64-fbsd	default/bsd/fbsd/amd64/10.3			dev
 amd64-fbsd	default/bsd/fbsd/amd64/9.1/clang		exp
 amd64-fbsd	default/bsd/fbsd/amd64/10.2/clang		exp
+amd64-fbsd	default/bsd/fbsd/amd64/10.3/clang		exp
 sparc-fbsd      default/bsd/fbsd/sparc/8.2                      exp
 x86-fbsd	default/bsd/fbsd/x86/9.1			dev
 x86-fbsd	default/bsd/fbsd/x86/10.2			dev
+x86-fbsd	default/bsd/fbsd/x86/10.3			dev
 
 # Hardened Profiles
 amd64		hardened/linux/amd64					stable
