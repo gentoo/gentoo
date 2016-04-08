@@ -1895,6 +1895,7 @@ app-misc/subsurface 3.1.1 4.2 9999: An open source dive log program
 app-misc/supercat 0.5.5-r1: A text file colorizer using powerful regular expressions
 app-misc/symlinks 1.4 1.4-r2: Scans for and fixes broken or messy symlinks
 app-misc/tablix 0.3.5-r1: Tablix is a powerful free software kernel for solving general timetabling problems
+app-misc/tails-installer 4.4.8: A graphical tool to install or upgrade Tails on a USB stick from an ISO image
 app-misc/task 2.4.4 2.5.0 2.5.1: Taskwarrior is a command-line todo list manager
 app-misc/taskd 1.1.0-r1: the server part of Taskwarrior, a command-line todo list manager
 app-misc/tasque 0.1.11 0.1.12: Simple task management app (TODO list) for the Linux Desktop
@@ -17228,7 +17229,7 @@ sys-libs/system-config-base 1-r1: system-config-* layout package
 sys-libs/talloc 2.1.5 2.1.5-r1 2.1.6: Samba talloc library
 sys-libs/tdb 1.3.8: A simple database API
 sys-libs/tevent 0.9.26 0.9.27 0.9.28: Samba tevent library
-sys-libs/timezone-data 2015f 2015g 2016a: Timezone data (/usr/share/zoneinfo) and utilities (tzselect/zic/zdump)
+sys-libs/timezone-data 2015g 2016a 2016c: Timezone data (/usr/share/zoneinfo) and utilities (tzselect/zic/zdump)
 sys-libs/uclibc 0.9.33.2-r15 0.9.33.9999 9999: C library for developing embedded Linux systems
 sys-libs/uid_wrapper 1.1.1 1.2.0 1.2.1: A wrapper to fake privilege separation
 sys-libs/zlib 1.2.8-r1: Standard (de)compression library
