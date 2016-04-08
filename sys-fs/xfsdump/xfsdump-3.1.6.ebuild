@@ -33,6 +33,7 @@ src_prepare() {
 		|| die
 	epatch "${FILESDIR}"/${PN}-3.0.5-prompt-overflow.patch #335115
 	epatch "${FILESDIR}"/${PN}-3.0.4-no-symlink.patch #311881
+	epatch "${FILESDIR}"/${PN}-3.1.6-linguas.patch #561664
 }
 
 src_configure() {
