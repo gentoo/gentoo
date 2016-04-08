@@ -22,8 +22,8 @@ PPC_OPTS="|| (
 RDEPEND="|| (
 	ppc? ( ${PPC_OPTS} )
 	ppc64? ( ${PPC_OPTS} )
-	=dev-java/icedtea-bin-6*
 	=dev-java/icedtea-6*
+	=dev-java/icedtea-bin-6*
 	=dev-java/ibm-jdk-bin-1.6.0*
 	=dev-java/hp-jdk-bin-1.6.0*
 	=dev-java/soylatte-jdk-bin-1.0*
