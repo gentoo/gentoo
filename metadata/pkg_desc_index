@@ -6005,12 +6005,12 @@ dev-perl/Net-Twitter 4.10.100: A perl interface to the Twitter API
 dev-perl/Net-UPnP 1.4.2-r1 1.4.3: Perl extension for UPnP
 dev-perl/Net-Whois-IP 1.190.0: Perl extension for looking up the whois information for ip addresses
 dev-perl/Net-XMPP 1.20.0-r1 1.50.0: XMPP Perl Library
-dev-perl/Net-Z3950-ZOOM 1.280.0-r1: Perl extension for invoking the ZOOM-C API
+dev-perl/Net-Z3950-ZOOM 1.280.0-r1 1.300.0: Perl extension for invoking the ZOOM-C API
 dev-perl/NetAddr-IP 4.72.0 4.78.0: Manipulation and operations on IP addresses
 dev-perl/NetPacket 1.4.1 1.6.0: Assemble / disassemble network packets at the protocol level
 dev-perl/NetxAP 0.20.0-r1: A base class for protocols such as IMAP, ACAP, IMSP, and ICAP
 dev-perl/News-Newsrc 1.90.0-r1 1.110.0: Manage newsrc files
-dev-perl/Nmap-Parser 1.300.0 1.310.0: Nmap::Parser - parse nmap scan data with perl
+dev-perl/Nmap-Parser 1.310.0: Nmap::Parser - parse nmap scan data with perl
 dev-perl/Number-Compare 0.30.0-r1: Numeric comparisons
 dev-perl/Number-Format 1.730.0-r1 1.750.0: Package for formatting numbers for display
 dev-perl/Number-Fraction 2.0.0: Perl extension to model fractions
@@ -6018,7 +6018,7 @@ dev-perl/OLE-StorageLite 0.190.0-r1: Simple Class for OLE document interface
 dev-perl/OOTools 2.300.0-r1: Pragma to implement lvalue accessors with options
 dev-perl/ORLite 1.980.0-r1: Extremely light weight SQLite-specific ORM
 dev-perl/ORLite-Migrate 1.100.0-r1: Extremely light weight SQLite-specific schema migration
-dev-perl/Object-Enum 0.72.0-r1 0.75.0: Replacement for if ($foo eq 'bar')
+dev-perl/Object-Enum 0.75.0: Replacement for if ($foo eq 'bar')
 dev-perl/Object-MultiType 0.50.0: Perl Objects as Hash, Array, Scalar, Code and Glob at the same time
 dev-perl/Object-Realize-Later 0.180.0-r1 0.190.0: Delayed creation of objects
 dev-perl/Ogg-Vorbis-Header 0.30.0-r1: An object-oriented interface to Ogg Vorbis information and comment fields
@@ -17749,7 +17749,7 @@ www-misc/visitors 0.7-r1: Fast web log analyzer
 www-misc/wsmake 0.6.4: Website Pre-processor
 www-misc/xxv 1.6.1-r1: WWW Admin for the VDR (Video Disk Recorder)
 www-misc/zoneminder 1.27.0 1.28.0 1.28.1: ZoneMinder allows you to capture, analyse, record and monitor any cameras attached to your system
-www-plugins/adobe-flash 11.2.202.577: Adobe Flash Player
+www-plugins/adobe-flash 11.2.202.577 11.2.202.616: Adobe Flash Player
 www-plugins/chrome-binary-plugins 49.0.2623.112 50.0.2661.66_beta 51.0.2700.0_alpha: Binary plugins from Google Chrome for use in Chromium
 www-plugins/freshplayerplugin 0.3.1-r2 0.3.2 0.3.3 0.3.3-r1 0.3.3-r2 0.3.4 0.3.4-r1: PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers
 www-plugins/gecko-mediaplayer 1.0.8 1.0.9: A browser plugin that uses GNOME MPlayer
