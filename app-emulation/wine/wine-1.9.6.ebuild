@@ -265,8 +265,9 @@ src_prepare() {
 		eend $?
 
 		# To differentiate unofficial staging releases
-		[[ ! -z ${SUFFIX} ]] && \
+		if [[ ! -z ${SUFFIX} ]]; then
 			sed -i "s/(Staging)/(Staging [Unofficial])/" libs/wine/Makefile.in || die
+		fi
 	fi
 
 	autotools-utils_src_prepare
