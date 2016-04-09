@@ -171,7 +171,7 @@ src_configure() {
 	use icu || OPTIONS+=" --disable-icu boost.locale.icu=off"
 	mpi_needed || OPTIONS+=" --without-mpi"
 	use nls || OPTIONS+=" --without-locale"
-	use context || OPTIONS+=" --without-context --without-coroutine"
+	use context || OPTIONS+=" --without-context --without-coroutine --without-coroutine2"
 
 	OPTIONS+=" pch=off"
 	OPTIONS+=" --boost-build=\"${EPREFIX}\"/usr/share/boost-build --prefix=\"${ED}usr\""
