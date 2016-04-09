@@ -3,11 +3,11 @@ DEPEND=>=x11-libs/libdockapp-0.7:= x11-libs/libX11 x11-libs/libXpm x11-libs/libX
 DESCRIPTION=dockapp for monitoring the top three processes using cpu or memory
 EAPI=6
 HOMEPAGE=http://windowmaker.org/dockapps/?name=wmtop
-KEYWORDS=~amd64 ~ppc ~x86
+KEYWORDS=amd64 ~ppc x86
 LICENSE=GPL-2
 RDEPEND=>=x11-libs/libdockapp-0.7:= x11-libs/libX11 x11-libs/libXpm x11-libs/libXext
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~voyageur/distfiles/wmtop-0.85.tar.gz
 _eclass_exported_funcs=src_prepare:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	libtool	4890219c51da247200223277f993e054	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
-_md5_=dddb0e3689a5c3fb287fabe3c74fb0d8
+_md5_=da90417068da72b1731ba535a0f605c6
