@@ -17,7 +17,3 @@ VIM_PLUGIN_HELPTEXT=\
 'To use this plugin, simply type \\\\es in normal mode and any lines which
 have been marked as errors (for example, via :make) will be indicated with
 a >> mark on the left of the window.'
-
-src_compile() {
-	default
-}

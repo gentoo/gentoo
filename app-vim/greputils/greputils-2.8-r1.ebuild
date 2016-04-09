@@ -20,7 +20,3 @@ RDEPEND="
 	>=app-vim/genutils-1.18
 	>=app-vim/multvals-3.6.1
 	>=app-vim/cmdalias-1.0"
-
-src_compile() {
-	default
-}
