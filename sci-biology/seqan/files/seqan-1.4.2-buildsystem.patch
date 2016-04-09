@@ -1,0 +1,30 @@
+Add default disabled flag to enable generation of documentation.
+For SeqAn 1.4.2 we generally do not want docs, as 1.4.2 is only a
+support library for legacy tools.
+
+--- seqan-1.4.2/CMakeLists.txt
++++ seqan-1.4.2/CMakeLists.txt
+@@ -123,10 +123,12 @@
+ add_subdirectory (core)
+ message (STATUS "Configuring extras")
+ add_subdirectory (extras)
++if (NOT SEQAN_NO_DOX)
+ message (STATUS "Configuring docs")
+ add_subdirectory (docs)
+ message (STATUS "Configuring manual")
+ add_subdirectory (manual)
++endif ()
+ message (STATUS "Configuring sandbox")
+ add_subdirectory (sandbox)
+ message (STATUS "Configuring util/py_lib")
+--- seqan-1.4.2/docs/main.py
++++ seqan-1.4.2/docs/main.py
+@@ -123,7 +123,7 @@
+ 
+         # Done, print end message.
+         print 'Documentation created/updated.'
+-        return dddoc_html.WARNING_COUNT > 0
++        return 0
+     
+     
+ def main(argv):
