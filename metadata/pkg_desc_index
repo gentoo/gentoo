@@ -16012,6 +16012,7 @@ sci-mathematics/yafu 1.34.3 9999: Yet another factoring utility
 sci-misc/ViSP-images 2.10.0 3.0.0: ViSP images data set
 sci-misc/apertium 3.2.0: Shallow-transfer machine Translation engine and toolbox
 sci-misc/boinc 7.2.0 7.2.0-r1 7.4.42-r1 7.6.31: The Berkeley Open Infrastructure for Network Computing
+sci-misc/cdfplayer 10.4.0: Wolfram Player for the interactive Computable Document Format (CDF)
 sci-misc/fitscut 1.4.4: Extract cutouts from FITS image files
 sci-misc/fitsverify 4.17: FITS file format checker
 sci-misc/flashdot 1.1.4 1.1.4-r1: Generator for psychophysical experiments
