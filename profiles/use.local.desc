@@ -1810,6 +1810,7 @@ dev-lang/ghc:ghcbootstrap - Bootstrap from an existing GHC installation.
 dev-lang/ghc:ghcmakebinary - Build with less runtime depends (bundle libffi for building bootstrap binaries).
 dev-lang/ghc:llvm - Enable llvm code generator for ghc (-fllvm).
 dev-lang/gnat-gcc:lto - Add support for link-time optimizations (unsupported, use at your own risk).
+dev-lang/go:gccgo - Enable bootstrapping using gccgo
 dev-lang/icc:eclipse - Install the dev-util/eclipse-sdk plugins
 dev-lang/icon:iplsrc - install the icon programming library source
 dev-lang/idb:eclipse - Install the dev-util/eclipse-sdk plugins
