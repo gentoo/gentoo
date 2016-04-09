@@ -11,7 +11,7 @@ DESCRIPTION="Perl extension for UPnP"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86 ~x86-solaris"
+KEYWORDS="amd64 ppc x86 ~x86-solaris"
 # Package warrants IUSE examples
 IUSE="examples test"
 
