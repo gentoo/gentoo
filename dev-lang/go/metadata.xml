@@ -10,4 +10,7 @@
 		Rob Pike. It has garbage collection, coroutines, communication
 		channels and a clean syntax.  
 	</longdescription>
+	<use>
+		<flag name="gccgo">Enable bootstrapping using gccgo</flag>
+	</use>
 </pkgmetadata>
