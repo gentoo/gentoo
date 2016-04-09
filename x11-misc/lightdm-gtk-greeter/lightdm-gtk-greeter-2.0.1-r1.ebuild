@@ -14,7 +14,7 @@ https://dev.gentoo.org/~hwoarang/distfiles/lightdm-gentoo-patch-2.tar.gz )"
 LICENSE="GPL-3 LGPL-3
 	branding? ( CC-BY-3.0 )"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc ~x86"
 IUSE="ayatana branding"
 
 COMMON_DEPEND="ayatana? ( dev-libs/libindicator:3 )
