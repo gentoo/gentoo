@@ -14,7 +14,3 @@ IUSE=""
 
 VIM_PLUGIN_HELPTEXT=\
 "This plugin provides syntax highlighting for perl module Template-Toolkit"
-
-src_compile() {
-	default
-}
