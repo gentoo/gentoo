@@ -20,7 +20,6 @@ IUSE="examples"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="sys-libs/ncurses:0=
-	dev-lang/lua:0
 	dev-lang/perl"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
@@ -49,6 +48,17 @@ src_install() {
 
 	mv "${ED}"/usr/bin/${PN}-${SLOT}/varfilter{,-${SLOT}}.py || die
 	python_replicate_script "${ED}"/usr/bin/${PN}-${SLOT}/varfilter-${SLOT}.py
+
+	# fix perl shebangs
+	pushd "${ED}"usr/bin/"${PN}-${SLOT}"/ >> /dev/null
+		local i
+		for i in plot-bamcheck *.pl; do
+			sed -e '1s:.*:#!/usr/bin/env perl:' -i "${i}" || die
+		done
+
+		# remove lua scripts
+		rm -f r2plot.lua vcfutils.lua || die
+	popd >> /dev/null
 
 	dolib.so libbam-${SLOT}$(get_libname 1)
 	dosym libbam-${SLOT}$(get_libname 1) /usr/$(get_libdir)/libbam-${SLOT}$(get_libname)
