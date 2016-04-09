@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -37,6 +37,10 @@ DEPEND="${RDEPEND}
 # FIXME: need network #424719, recheck
 # need various locales to be present
 RESTRICT="test"
+
+src_prepare() {
+	epatch "${FILESDIR}"/${P}-fix-GLIBC-features.patch
+}
 
 src_test() {
 	export GVFS_DISABLE_FUSE=1

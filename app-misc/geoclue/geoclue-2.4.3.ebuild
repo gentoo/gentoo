@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -34,6 +34,10 @@ DEPEND="${RDEPEND}
 	sys-devel/gettext
 	virtual/pkgconfig
 "
+
+src_prepare() {
+	epatch "${FILESDIR}"/${PN}-2.4.1-fix-GLIBC-features.patch
+}
 
 src_configure() {
 	# debug only affects CFLAGS
