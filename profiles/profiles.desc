@@ -194,6 +194,7 @@ amd64		hardened/linux/musl/amd64/x32				exp
 arm		hardened/linux/arm/armv7a				dev
 arm		hardened/linux/arm/armv6j				dev
 arm		hardened/linux/musl/arm/armv7a				exp
+arm64		hardened/linux/musl/arm64 				exp
 ia64		hardened/linux/ia64					dev
 mips		hardened/linux/musl/mips				exp
 mips		hardened/linux/musl/mips/mipsel				exp
