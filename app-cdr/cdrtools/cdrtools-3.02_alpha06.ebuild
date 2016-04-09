@@ -43,6 +43,12 @@ cdrtools_os() {
 src_prepare() {
 	gnuconfig_update
 
+	# This fixes a clash with clone() on uclibc.  Upstream isn't
+	# going to include this so let's try to carry it forward.
+	# Contact me if it needs updating.  Bug #486782.
+	# Anthony G. Basile <blueness@gentoo.org>.
+	use elibc_uclibc && epatch "${FILESDIR}"/${PN}-fix-clone-uclibc.patch
+
 	# Remove profiled make files.
 	find -name '*_p.mk' -delete
 
