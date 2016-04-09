@@ -1,0 +1,42 @@
+Description: Proper type-casting in using seqan::_setBegin().
+ Required by newer versions of GCC.
+Forwarded: no
+Author: Ognyan Kulev <ogi@debian.org>
+Last-Update: 2013-04-18
+
+--- a/pat.h
++++ b/pat.h
+@@ -82,20 +82,20 @@ struct ReadBuf {
+ 	~ReadBuf() {
+ 		clearAll(); reset();
+ 		// Prevent seqan from trying to free buffers
+-		_setBegin(patFw, NULL);
+-		_setBegin(patRc, NULL);
+-		_setBegin(qual, NULL);
+-		_setBegin(patFwRev, NULL);
+-		_setBegin(patRcRev, NULL);
+-		_setBegin(qualRev, NULL);
+-		_setBegin(name, NULL);
++		_setBegin(patFw, (Dna5*)NULL);
++		_setBegin(patRc, (Dna5*)NULL);
++		_setBegin(qual, (char*)NULL);
++		_setBegin(patFwRev, (Dna5*)NULL);
++		_setBegin(patRcRev, (Dna5*)NULL);
++		_setBegin(qualRev, (char*)NULL);
++		_setBegin(name, (char*)NULL);
+ 		for(int j = 0; j < 3; j++) {
+-			_setBegin(altPatFw[j], NULL);
+-			_setBegin(altPatFwRev[j], NULL);
+-			_setBegin(altPatRc[j], NULL);
+-			_setBegin(altPatRcRev[j], NULL);
+-			_setBegin(altQual[j], NULL);
+-			_setBegin(altQualRev[j], NULL);
++			_setBegin(altPatFw[j], (Dna5*)NULL);
++			_setBegin(altPatFwRev[j], (Dna5*)NULL);
++			_setBegin(altPatRc[j], (Dna5*)NULL);
++			_setBegin(altPatRcRev[j], (Dna5*)NULL);
++			_setBegin(altQual[j], (char*)NULL);
++			_setBegin(altQualRev[j], (char*)NULL);
+ 		}
+ 	}
+ 
