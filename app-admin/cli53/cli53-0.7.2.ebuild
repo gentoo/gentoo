@@ -15,14 +15,13 @@ SLOT="0"
 KEYWORDS="~amd64"
 
 EGO_PN="github.com/barnybug/cli53"
+S="${WORKDIR}/${P}/src/${EGO_PN}"
 
 src_compile() {
-	cd src/${EGO_PN} || die
 	GOPATH="${WORKDIR}/${P}" emake version=${PV} build
 }
 
 src_install() {
-	cd src/${EGO_PN} || die
 	dobin cli53
 	dodoc {CHANGELOG,README}.md
 }
