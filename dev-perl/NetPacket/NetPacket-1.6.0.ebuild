@@ -11,7 +11,7 @@ DESCRIPTION="Assemble / disassemble network packets at the protocol level"
 
 LICENSE="Artistic-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ppc x86"
 IUSE="test"
 
 RDEPEND="
