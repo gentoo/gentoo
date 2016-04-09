@@ -4,7 +4,8 @@
 
 EAPI=6
 
-inherit golang-build golang-vcs-snapshot
+EGO_PN=github.com/barnybug/cli53
+inherit golang-vcs-snapshot
 
 DESCRIPTION="Command line tool for Amazon Route 53"
 HOMEPAGE="https://github.com/barnybug/cli53"
@@ -14,15 +15,14 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
 
-src_unpack() {
-	EGO_PN="github.com/barnybug/cli53" golang-vcs-snapshot_src_unpack
-}
-
 src_compile() {
-	EGO_PN="github.com/barnybug/cli53/cmd/cli53" golang-build_src_compile
+	cd src/${EGO_PN}
+	version_arg="version=${PV}"
+	GOPATH="${WORKDIR}/${P}" emake ${version_arg} build
 }
 
 src_install() {
+	cd src/${EGO_PN}
 	dobin cli53
-	dodoc src/github.com/barnybug/cli53/{CHANGELOG,README}.md
+	dodoc {CHANGELOG,README}.md
 }
