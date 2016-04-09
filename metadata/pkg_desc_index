@@ -15644,7 +15644,7 @@ sci-geosciences/josm 8800 9060 9900 99999: Java-based editor for the OpenStreetM
 sci-geosciences/laszip 2.2.0: Library for free and lossless compression of the LAS LiDAR format
 sci-geosciences/liblas 1.8.0: C/C++ library for manipulating the LAS LiDAR format common in GIS
 sci-geosciences/libtcd 2.2.5_p2 2.2.6 2.2.7: Library for reading and writing Tide Constituent Database (TCD) files
-sci-geosciences/mapnik 2.0.1 2.0.2 2.1.0 2.2.0: A Free Toolkit for developing mapping applications
+sci-geosciences/mapnik 2.0.1 2.0.2 2.1.0 2.2.0 3.0.9: A Free Toolkit for developing mapping applications
 sci-geosciences/mapnik-world-boundaries 20090514: Mapnik World Boundaries
 sci-geosciences/mapserver 7.0.0 7.0.1: Development environment for building spatially enabled webapps
 sci-geosciences/mc2bsbh 0.0.9: MapCal to BSBchart Header Utility
