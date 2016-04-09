@@ -13260,7 +13260,7 @@ media-sound/sonic-visualiser 1.9 2.3 2.4.1 2.5: Music audio files viewer and ana
 media-sound/sooperlooper 1.6.17 1.6.18 1.7.3 1.7.3-r1: Live looping sampler with immediate loop recording
 media-sound/sound-juicer 3.18.1 3.18.2: CD ripper for GNOME
 media-sound/soundconverter 2.1.5-r1 2.1.6: A simple audiofile converter application for the GNOME environment
-media-sound/soundkonverter 2.1.2: Frontend to various audio converters
+media-sound/soundkonverter 2.1.2 2.2.0: Frontend to various audio converters
 media-sound/sox 14.4.1 14.4.2: The swiss army knife of sound processing programs
 media-sound/specimen 0.5.2_rc3-r1 0.5.2_rc3-r2: A Midi Controllable Audio Sampler
 media-sound/spek 0.8.3 0.8.3-r1: Analyse your audio files by showing their spectrogram
@@ -14118,7 +14118,7 @@ net-irc/irssi-otr 1.0.0-r1: Off-The-Record messaging (OTR) for irssi
 net-irc/irssi-xmpp 0.52: An irssi plugin providing Jabber/XMPP support
 net-irc/irssistats 0.75: Generates HTML IRC stats based on irssi logs
 net-irc/jircii 41: jIRCii - IRC client written in Java
-net-irc/konversation 1.5.1 1.6: A user friendly IRC Client
+net-irc/konversation 1.6: A user friendly IRC Client
 net-irc/kvirc 4.4_pre6250 4.4_pre20151218202654 5.0_pre20160201053254 5.0_pre20160401144043 9999: Advanced IRC Client
 net-irc/limnoria 20150523 20150829 99999999: Python based extensible IRC infobot and channel bot
 net-irc/loqui 0.5.4: a graphical IRC client for GNOME2 on UNIX like operating system
@@ -18210,7 +18210,7 @@ x11-misc/kapow 1.4.3 1.4.4: A punch clock program designed to easily keep track 
 x11-misc/kaqaz 1.2.0-r1: Modern note manager
 x11-misc/kbdd 0.7-r1: Very simple layout switcher
 x11-misc/kdocker 4.8-r2: Helper to dock any application into the system tray
-x11-misc/kronometer 2.0.1: Stopwatch application
+x11-misc/kronometer 2.0.1 2.0.2: Stopwatch application
 x11-misc/ksuperkey 0.4: Utility allowing you to use the Super key as a shortcut both directly or as part of a combination
 x11-misc/ktsuss 2: Graphical version of su written in C and GTK+ 2
 x11-misc/launchy 2.5: utility that merges application menus, your desktop and even your file manager
