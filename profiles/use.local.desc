@@ -6538,6 +6538,7 @@ net-wireless/bladerf-fpga:x40 - bitstream for the x40KLE Cyclone IV FPGA bladerf
 net-wireless/blueman:appindicator - Enable usage of dev-libs/libappindicator to export menu options
 net-wireless/blueman:network - Add functionality to setup (host) PAN connections using either net-dns/dnsmasq or net-misc/dhcp
 net-wireless/blueman:thunar - Install the sendto-plugin for xfce-base/thunar
+net-wireless/bluez:deprecated - Build deprecated plugins
 net-wireless/bluez:experimental - Build experimental plugins
 net-wireless/bluez:extra-tools - Install tools that upstream doesn't install on purpose by default. All this tools shouldn't be used. Then, please notify upstream about you still need them to let them know the situation.
 net-wireless/bluez:hid2hci - The HID proxying makes the keyboard / mouse show up as regular USB HID devices, but needs them to be paired before enabling this, otherwise they won't be detected

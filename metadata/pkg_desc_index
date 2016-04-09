@@ -44,7 +44,7 @@ app-admin/aerospike-amc-community 3.6.8: Web UI based monitoring tool for Aerosp
 app-admin/amazon-ec2-init 20101127: Init script to setup Amazon EC2 instance parameters
 app-admin/analog 6.0-r4: A webserver log analyzer
 app-admin/ansible 1.9.4 1.9.5 2.0.0.1-r2 2.0.0.2 2.0.1.0 9999: Model-driven deployment, config management, and command execution framework
-app-admin/apache-tools 2.2.31 2.4.18: Useful Apache tools - htdigest, htpasswd, ab, htdbm
+app-admin/apache-tools 2.2.31 2.4.18 2.4.20: Useful Apache tools - htdigest, htpasswd, ab, htdbm
 app-admin/apachetop 0.12.6-r1 0.12.6-r2: A realtime Apache log analyzer
 app-admin/apg 2.3.0b-r5: Another Password Generator
 app-admin/augeas 0.10.0-r2 1.1.0 1.3.0: A library for changing configuration files
@@ -12328,7 +12328,7 @@ media-libs/guilib 1.2.1: a simple widget set for SDL
 media-libs/gupnp-dlna 0.10.3 0.10.4: Library providing DLNA-related functionality for MediaServers
 media-libs/hal-flash 0.2.0_rc1: A libhal stub library forwarding to UDisks for www-plugins/adobe-flash to play DRM content
 media-libs/hamlib 1.2.15.3-r1 3.0 3.0.1: Ham radio backend rig control libraries
-media-libs/harfbuzz 0.9.41 1.1.3 1.2.4 1.2.5 9999: An OpenType text shaping engine
+media-libs/harfbuzz 0.9.41 1.1.3 1.2.4 1.2.5 1.2.6 9999: An OpenType text shaping engine
 media-libs/herqq 1.0.0-r2: A software library for building UPnP devices
 media-libs/hupnp-ng 9999: A software library for building UPnP devices, fork of herqq
 media-libs/icc-profiles-basiccolor-printing2009 1.2.0: ICC profiles for printing/offset
@@ -15086,7 +15086,7 @@ net-wireless/bladerf-firmware 1.7.1 1.8.0 1.9.0: bladeRF FX3 firmware images
 net-wireless/bladerf-fpga 0.0.6 0.1.1-r1 0.1.2 0.3.4 0.5.0: bladeRF FPGA bitstreams
 net-wireless/bluedevil 2.1.1: Bluetooth stack for KDE
 net-wireless/blueman 2.0.3 9999: GTK+ Bluetooth Manager, designed to be simple and intuitive for everyday bluetooth tasks
-net-wireless/bluez 4.101-r9 5.35 5.37 5.38: Bluetooth Tools and System Daemons for Linux
+net-wireless/bluez 4.101-r9 5.35 5.37 5.39: Bluetooth Tools and System Daemons for Linux
 net-wireless/bluez-hcidump 2.5: Bluetooth HCI packet analyzer
 net-wireless/broadcom-sta 6.30.223.30-r2 6.30.223.141-r2 6.30.223.248-r4 6.30.223.248-r5 6.30.223.271-r2 6.30.223.271-r3: Broadcom's IEEE 802.11a/b/g/n hybrid Linux device driver
 net-wireless/bss 0.8: Bluetooth stack smasher / fuzzer
@@ -17762,7 +17762,7 @@ www-plugins/mozplugger 2.1.6: Streaming media plugin for Mozilla, based on netsc
 www-plugins/nspluginwrapper 1.4.4-r3: Netscape Plugin Wrapper - Load 32bit plugins on 64bit browser
 www-plugins/pipelight 0.2.8.2 9999: Wine-based wrapper for running Windows plugins on POSIX systems
 www-servers/adsf 1.2.0 1.2.1: A Dead Simple Fileserver is a static file server that can launch in a directory
-www-servers/apache 2.2.31 2.4.18 2.4.18-r1: The Apache Web Server
+www-servers/apache 2.2.31 2.4.18 2.4.18-r1 2.4.20: The Apache Web Server
 www-servers/blogc-runserver 0.1.1 9999: A simple HTTP server to test blogc websites
 www-servers/boa 0.94.14_rc21-r1 0.94.14_rc21-r2: A very small and very fast http daemon
 www-servers/bozohttpd 20140708 20140708-r1: bozohttpd is a small and secure http server
