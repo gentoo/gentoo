@@ -15,7 +15,7 @@ LICENSE="GPL-2+ LGPL-2.1+"
 SLOT="0/3"
 KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~x86"
 
-IUSE="cups doc debug extra-tools experimental +obex +readline selinux systemd test test-programs +udev"
+IUSE="cups doc debug deprecated extra-tools experimental +obex +readline selinux systemd test test-programs +udev"
 REQUIRED_USE="
 	test? ( ${PYTHON_REQUIRED_USE} )
 	test-programs? ( ${PYTHON_REQUIRED_USE} )
@@ -32,11 +32,8 @@ CDEPEND="
 	udev? ( >=virtual/udev-172 )
 "
 TEST_DEPS="${PYTHON_DEPS}
-		>=dev-python/dbus-python-1[${PYTHON_USEDEP}]
-		|| (
-			dev-python/pygobject:3[${PYTHON_USEDEP}]
-			dev-python/pygobject:2[${PYTHON_USEDEP}]
-		)
+	>=dev-python/dbus-python-1[${PYTHON_USEDEP}]
+	dev-python/pygobject:3[${PYTHON_USEDEP}]
 "
 
 DEPEND="${CDEPEND}
@@ -51,6 +48,32 @@ DOC_CONTENTS="
 	If you want to use rfcomm as a normal user, you need to add the user
 	to the uucp group.
 "
+
+PATCHES=(
+	# Use static group "plugdev" if there is no ConsoleKit (or systemd logind)
+	"${FILESDIR}"/bluez-plugdev.patch
+
+	# Try both udevadm paths to cover udev/systemd vs. eudev locations (#539844)
+	# http://www.spinics.net/lists/linux-bluetooth/msg58739.html
+	"${FILESDIR}"/bluez-udevadm-path.patch
+
+	# build: Quote systemd variable names, bug #527432
+	"${FILESDIR}"/bluez-5.39-systemd-quote.patch
+
+	# http://article.gmane.org/gmane.linux.bluez.kernel/67230
+	# Fedora patches
+	# http://www.spinics.net/lists/linux-bluetooth/msg38490.html
+	"${FILESDIR}"/0001-Allow-using-obexd-without-systemd-in-the-user-sessio.patch
+
+	# http://www.spinics.net/lists/linux-bluetooth/msg40136.html
+	"${FILESDIR}"/0001-obex-Use-GLib-helper-function-to-manipulate-paths.patch
+
+	# http://www.spinics.net/lists/linux-bluetooth/msg41264.html
+	"${FILESDIR}"/0002-autopair-Don-t-handle-the-iCade.patch
+
+	# ???
+	"${FILESDIR}"/0004-agent-Assert-possible-infinite-loop.patch
+)
 
 pkg_setup() {
 	enewgroup plugdev
@@ -70,26 +93,6 @@ pkg_setup() {
 
 src_prepare() {
 	default
-
-	# Use static group "plugdev" if there is no ConsoleKit (or systemd logind)
-	epatch "${FILESDIR}"/bluez-plugdev.patch
-
-	# Try both udevadm paths to cover udev/systemd vs. eudev locations (#539844)
-	# http://www.spinics.net/lists/linux-bluetooth/msg58739.html
-	epatch "${FILESDIR}"/bluez-udevadm-path.patch
-
-	# Fedora patches
-	# http://www.spinics.net/lists/linux-bluetooth/msg38490.html
-	epatch "${FILESDIR}"/0001-Allow-using-obexd-without-systemd-in-the-user-sessio.patch
-
-	# http://www.spinics.net/lists/linux-bluetooth/msg40136.html
-	epatch "${FILESDIR}"/0001-obex-Use-GLib-helper-function-to-manipulate-paths.patch
-
-	# http://www.spinics.net/lists/linux-bluetooth/msg41264.html
-	epatch "${FILESDIR}"/0002-autopair-Don-t-handle-the-iCade.patch
-
-	# ???
-	epatch "${FILESDIR}"/0004-agent-Assert-possible-infinite-loop.patch
 
 	if use cups; then
 		sed -i \
@@ -131,6 +134,7 @@ multilib_src_configure() {
 		--enable-monitor \
 		--with-systemdsystemunitdir="$(systemd_get_systemunitdir)" \
 		$(multilib_native_use_enable cups) \
+		$(multilib_native_use_enable deprecated) \
 		$(multilib_native_use_enable experimental) \
 		$(multilib_native_use_enable obex) \
 		$(multilib_native_use_enable readline client) \
