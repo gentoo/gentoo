@@ -6052,10 +6052,10 @@ dev-perl/PPI-PowerToys 0.140.0: A handy collection of small PPI-based utilities
 dev-perl/PPIx-EditorTools 0.170.0 0.180.0 0.190.0: Utility methods and base class for manipulating Perl via PPI
 dev-perl/PPIx-Regexp 0.33.0 0.48.0: Represent a regular expression of some sort
 dev-perl/PPIx-Utilities 1.1.0-r1: Extensions to PPI
-dev-perl/Package-DeprecationManager 0.130.0-r1 0.150.0: Manage deprecation warnings for your distribution
+dev-perl/Package-DeprecationManager 0.130.0-r1 0.150.0 0.160.0: Manage deprecation warnings for your distribution
 dev-perl/Package-Stash 0.360.0-r1 0.370.0: Routines for manipulating stashes
-dev-perl/Package-Stash-XS 0.260.0 0.280.0: Faster and more correct implementation of the Package::Stash API
-dev-perl/Package-Variant 1.1.2-r1 1.3.2: Parameterizable packages
+dev-perl/Package-Stash-XS 0.280.0: Faster and more correct implementation of the Package::Stash API
+dev-perl/Package-Variant 1.3.2: Parameterizable packages
 dev-perl/PadWalker 2.100.0 2.200.0: play with other peoples' lexical variables
 dev-perl/Palm 1.12.0-r1 1.400.0: Read & write Palm OS databases (both PDB and PRC)
 dev-perl/Palm-PDB 1.400.0: Parse Palm database files
@@ -16432,7 +16432,7 @@ sys-apps/fxload 20081013-r1: USB firmware uploader
 sys-apps/gawk 3.1.8 4.0.2 4.1.2 4.1.3: GNU awk pattern-matching language
 sys-apps/gcp 0.1.3: File copying utility with progress and I/O indicator
 sys-apps/gentoo-functions 0.7 0.8 0.9 0.10 9999: base functions required by all gentoo systems
-sys-apps/gentoo-systemd-integration 2 4 5 9999: systemd integration files for Gentoo
+sys-apps/gentoo-systemd-integration 2 4 5 6 9999: systemd integration files for Gentoo
 sys-apps/gnome-disk-utility 3.16.2 3.18.2 3.18.3.1: Disk Utility for GNOME using udisks
 sys-apps/gpet 0.4: GTK+ based TOMOYO policy editor
 sys-apps/gptfdisk 0.8.10 1.0.0 1.0.1: GPT partition table manipulator for Linux
