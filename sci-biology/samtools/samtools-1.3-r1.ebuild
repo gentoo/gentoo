@@ -20,8 +20,7 @@ IUSE="examples"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="sys-libs/ncurses:0=
-	>=sci-libs/htslib-${PV}
-	dev-lang/lua:0
+	=sci-libs/htslib-${PV}*
 	dev-lang/perl"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
@@ -70,7 +69,19 @@ src_test() {
 src_install() {
 	dobin samtools $(find misc -type f -executable)
 
-	python_replicate_script "${ED}"/usr/bin/varfilter.py
+	python_replicate_script "${ED}"usr/bin/varfilter.py
+
+	# fix perl shebangs
+	pushd "${ED}"usr/bin/ >> /dev/null
+		local i
+		for i in plot-bamstats *.pl; do
+			sed -e '1s:.*:#!/usr/bin/env perl:' -i "${i}" || die
+		done
+
+		# remove lua scripts
+		rm -f r2plot.lua vcfutils.lua || die
+	popd >> /dev/null
+
 	dolib.so libbam.so*
 
 	insinto /usr/include/bam
