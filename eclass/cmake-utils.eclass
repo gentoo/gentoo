@@ -652,25 +652,67 @@ enable_cmake-utils_src_compile() {
 }
 
 _ninjaopts_from_makeopts() {
-	if [[ ${NINJAOPTS+set} == set ]]; then
+	if [[ ${NINJAOPTS+set} == set ]] ; then
 		return 0
 	fi
-	local ninjaopts=()
+
+	eshopts_push -s extglob
+
+	NINJAOPTS=
+	local jobs= keep= load=
+
 	set -- ${MAKEOPTS}
-	while (( $# )); do
-		case $1 in
-			-j|-l|-k)
-				ninjaopts+=( $1 $2 )
-				shift 2
-				;;
-			-j*|-l*|-k*)
-				ninjaopts+=( $1 )
-				shift 1
-				;;
-			*) shift ;;
+	while (( $# )) ; do
+		case "$1" in
+			-j|--jobs)
+				if [ -n "$2" ] && [[ "$2" =~ ^[0-9]+$ ]] ; then
+					jobs=$2
+					shift
+				else
+					# `man 1 make`:
+					# 	If the -j option is given without an argument, make will not limit
+					# 	the number of jobs that can run simultaneously.
+					jobs=99
+				fi
+			;;
+			-k|--keep-going)
+				# `man 1 make`:
+				# 	Continue as much as possible after an error
+				# `ninja --help`:
+				# 	keep going until N jobs fail
+				# ninja internals:
+				# 	ninja handles 0 as inifinity in this case
+				keep=0
+			;;
+			-l|--load-average)
+				if [ -n "$2" ] && [[ "$2" =~ ^[0-9]+\.?[0-9]*$ ]] ; then
+					# ninja internals:
+					# 	ninja supports floating-point numbers here
+					load=$2
+					shift
+				else
+					# `man 1 make`:
+					#	With no argument, removes a previous load limit.
+					load=
+				fi
+			;;
+			-j*|--jobs=*|-l*|--load-average=*)
+				local arg="${1##*([^0-9])}"
+				case "${1##*(-)}" in
+					j*) jobs=$arg ;;
+					l*) load=$arg ;;
+				esac
+			;;
 		esac
+		shift
 	done
-	export NINJAOPTS="${ninjaopts[*]}"
+
+	[ -n "${jobs}" ] && NINJAOPTS+=" -j ${jobs}"
+	[ -n "${keep}" ] && NINJAOPTS+=" -k ${keep}"
+	[ -n "${load}" ] && NINJAOPTS+=" -l ${load}"
+	export NINJAOPTS
+
+	eshopts_pop
 }
 
 # @FUNCTION: _cmake_ninja_src_make
