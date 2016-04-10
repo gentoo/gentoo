@@ -256,16 +256,6 @@ dev-tex/fundus
 # Masking until we figure out what to do about bug #576930
 =gnome-base/gnome-extra-apps-3.18.0-r2
 
-# Michael Palimaka <kensington@gentoo.org> (09 Mar 2016)
-# Deprecated by upstream. No further releases. Unused.
-lxqt-base/liblxqt-mount
-lxqt-base/lxqt-config-randr
-
-# Michael Palimaka <kensington@gentoo.org> (09 Mar 2016)
-# Dead upstream. Doesn't work with new Twitter API.
-# Masked for removal in 30 days. Bug 575156
-net-im/qwit
-
 # Ian Stakenvicius <axs@gentoo.org> (06 Mar 2016)
 # Mask old versions of thunderbird as they are no longer supported,
 # but we keep them in the repo for now in case there is a need

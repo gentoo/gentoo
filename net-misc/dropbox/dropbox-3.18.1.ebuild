@@ -2,15 +2,15 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 inherit eutils gnome2-utils pax-utils systemd
 
 DESCRIPTION="Dropbox daemon (pretends to be GUI-less)"
 HOMEPAGE="http://dropbox.com/"
 SRC_URI="
-	x86? ( http://dl-web.dropbox.com/u/17/dropbox-lnx.x86-${PV}.tar.gz )
-	amd64? ( http://dl-web.dropbox.com/u/17/dropbox-lnx.x86_64-${PV}.tar.gz )"
+	x86? ( https://dl.dropboxusercontent.com/u/17/dropbox-lnx.x86-${PV}.tar.gz )
+	amd64? ( https://dl.dropboxusercontent.com/u/17/dropbox-lnx.x86_64-${PV}.tar.gz )"
 
 LICENSE="CC-BY-ND-3.0 FTL MIT LGPL-2 openssl dropbox"
 SLOT="0"
@@ -56,7 +56,10 @@ RDEPEND="
 	net-misc/wget
 	>=sys-devel/gcc-4.2.0
 	sys-libs/zlib
-"
+	|| (
+		sys-libs/ncurses:5/5
+		sys-libs/ncurses:0/5
+	)"
 
 src_unpack() {
 	unpack ${A}
@@ -84,6 +87,8 @@ src_prepare() {
 		six-1.9.0-py2.7.egg
 		tornado-4.2-py2.7-*.egg
 	)
+
+	eapply_user
 
 	rm -vf libbz2* libpopt.so.0 libpng12.so.0 || die
 	rm -vf libdrm.so.2 libffi.so.6 libGL.so.1 libX11* || die
