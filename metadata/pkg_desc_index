@@ -11607,13 +11607,11 @@ lxde-base/lxtask 0.1.4 0.1.4-r1 0.1.5 0.1.6: LXDE Task manager
 lxde-base/lxterminal 0.1.11 0.2.0: Lightweight vte-based tabbed terminal emulator for LXDE
 lxde-base/menu-cache 0.3.3 0.4.1 0.5.1 1.0.0 1.0.0-r1 1.0.1: Library to create and utilize caches to speed up freedesktop application menus
 lxqt-base/liblxqt 0.10.0: Common base library for the LXQt desktop environment
-lxqt-base/liblxqt-mount 0.9.0: LXQt library for removable media and devices
 lxqt-base/libsysstat 0.3.1: A Qt-based interface to system statistics
 lxqt-base/lxqt-about 0.10.0: LXQt about dialog
 lxqt-base/lxqt-admin 0.10.0: LXQt system administration tool
 lxqt-base/lxqt-common 0.10.0: LXQt common resources
 lxqt-base/lxqt-config 0.10.0: LXQt system configuration control center
-lxqt-base/lxqt-config-randr 0.7.0: LXQt monitor configuration
 lxqt-base/lxqt-globalkeys 0.10.0: Daemon and library for global keyboard shortcuts registration
 lxqt-base/lxqt-meta 0.10.0: Meta ebuild for LXQt, the Lightweight Desktop Environment
 lxqt-base/lxqt-notificationd 0.10.0: LXQt notification daemon and library
@@ -14074,7 +14072,6 @@ net-im/pyicq-t 0.8.1.5-r4: Python based jabber transport for ICQ
 net-im/qtox 1.3.0 9999: Most feature-rich GUI for net-libs/tox using Qt5
 net-im/qtwitter 0.10.0-r1: A Qt-based microblogging client
 net-im/qutim 0.3.2 0.3.3_p1: Qt4-based multi-protocol instant messenger
-net-im/qwit 1.1_pre2 1.1_pre2-r1: Qt4 cross-platform client for Twitter
 net-im/reaim 0.8-r1: AIM transport proxy over NAT firewalls
 net-im/sendxmpp 1.23 1.24: A perl-script to send xmpp (jabber), similar to what mail(1) does for mail
 net-im/silc-server 1.1.18: Server for Secure Internet Live Conferencing
@@ -14540,7 +14537,7 @@ net-misc/dleyna-server 0.5.0: library for implementing services that allow clien
 net-misc/dnetstats 1.2.6-r3: Qt4 network monitor utility
 net-misc/drive 0.3.5: Google Drive client for the commandline
 net-misc/dropbear 2014.66 2015.67 2015.68 2015.71 2016.72 2016.73: small SSH 2 client/server designed for small memory environments
-net-misc/dropbox 2.10.2 3.6.8 3.12.6 3.17.31: Dropbox daemon (pretends to be GUI-less)
+net-misc/dropbox 2.10.2 3.18.1: Dropbox daemon (pretends to be GUI-less)
 net-misc/dropbox-cli 1-r1 1.6.0: Cli interface for dropbox (python), part of nautilus-dropbox
 net-misc/efax 0.9a-r4: A simple fax program for single-user systems
 net-misc/electrum 2.1.1 2.3.3 2.5.4: User friendly Bitcoin client
