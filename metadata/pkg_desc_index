@@ -9746,6 +9746,7 @@ dev-util/pkgconf 0.9.11 0.9.12 9999: pkg-config compatible replacement with no d
 dev-util/pkgconfig 0.28-r2 0.28-r3 0.29 0.29.1 9999: Package config system that manages compile/link flags
 dev-util/pkgconfig-openbsd 20130507-r1: A perl based version of pkg-config from OpenBSD
 dev-util/plan9port 20140306 20140306-r1 20140306-r2: Port of many Plan 9 programs and libraries
+dev-util/ply 0_pre20160313: Dynamic instrumentation of the Linux kernel with BPF and kprobes
 dev-util/pmd 4.2.5: A Java source code analyzer
 dev-util/premake 3.7 4.3-r1: A makefile generation tool
 dev-util/pretrace 0.4: start dynamically linked applications under debugging environment
@@ -10122,7 +10123,7 @@ games-arcade/spacerider 0.13: space-shooter written in C++, using the SDL
 games-arcade/spout 1.3: Abstract Japanese caveflier / shooter
 games-arcade/stardork 0.7: An ncurses-based space shooter
 games-arcade/supertransball2 1.5: Thrust clone
-games-arcade/supertux 0.1.3 0.4.0: A game similar to Super Mario Bros.
+games-arcade/supertux 0.4.0: A game similar to Super Mario Bros.
 games-arcade/syobon 1.0.1: Syobon Action (also known as Cat Mario or Neko Mario)
 games-arcade/tecnoballz 0.92: An exciting Brick Breaker
 games-arcade/thinktanks-demo 1.1-r2: tank combat game with lighthearted, fast paced pandemonium
