@@ -8,7 +8,6 @@ if [[ ${PV} != *9999* ]]; then
 	SRC_URI="http://gstreamer.freedesktop.org/src/${PN}/${P}.tar.xz"
 	KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86"
 else
-	GIT_ECLASS="git-r3"
 	EGIT_REPO_URI=( "git://anongit.freedesktop.org/gstreamer/${PN}" )
 	inherit git-r3
 fi
