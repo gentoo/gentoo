@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=5
-USE_RUBY="ruby20 ruby21 ruby22"
+USE_RUBY="ruby20 ruby21 ruby22 ruby23"
 
 inherit apache-module flag-o-matic multilib ruby-ng toolchain-funcs
 
@@ -25,7 +25,7 @@ ruby_add_rdepend "
 # libev is bundled but with adapations that do not seem to be accepted
 # upstream, so we must use the bundled version :-(
 CDEPEND="
-	>=dev-libs/libuv-1.5.0
+	>=dev-libs/libuv-1.8.0
 	net-misc/curl[ssl]
 	www-servers/apache[apache2_modules_unixd(+)]"
 

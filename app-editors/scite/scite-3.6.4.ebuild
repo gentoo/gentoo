@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -16,12 +16,12 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~arm-linux ~x86-linux"
 IUSE="lua"
 
-RDEPEND="dev-libs/glib:2
-	x11-libs/cairo
-	x11-libs/gtk+:2
-	x11-libs/gdk-pixbuf
-	x11-libs/pango
-	lua? ( >=dev-lang/lua-5:0= )"
+RDEPEND="dev-libs/glib:=
+	x11-libs/cairo:*
+	>=x11-libs/gtk+-2.0:*
+	x11-libs/gdk-pixbuf:*
+	x11-libs/pango:*
+	lua? ( >=dev-lang/lua-5:= )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	>=sys-apps/sed-4"
@@ -43,6 +43,13 @@ src_prepare() {
 		-e "s#-rdynamic#-rdynamic ${LDFLAGS}#" \
 		|| die "error patching makefile"
 
+	# repair and enhance the .desktop file
+	sed -i SciTE.desktop \
+		-e "s/^Encoding/#Encoding/" \
+		-e "s#text/plain#text/\*;application/xhtml+xml#" \
+		-e "s#^Categories=\(.*\)#Categories=Development;#" \
+		|| die "error patching SciTe.desktop"
+
 	cd "${S}"
 	sed -i makefile \
 		-e 's#usr/local#usr#g' \
@@ -55,6 +62,9 @@ src_prepare() {
 		-e 's#-g root#-g 0#' \
 		-e "s#-Os##" \
 		|| die "error patching makefile"
+
+	cd "${WORKDIR}"
+
 }
 
 src_compile() {
@@ -75,10 +85,6 @@ src_install() {
 	# we have to keep this because otherwise it'll break upgrading
 	mv "${ED}/usr/bin/SciTE" "${ED}/usr/bin/scite" || die
 	dosym /usr/bin/scite /usr/bin/SciTE
-
-	# replace .desktop file with our own working version
-	rm -f "${ED}/usr/share/applications/SciTE.desktop" || die
-	domenu "${FILESDIR}/scite.desktop"
 
 	doman ../doc/scite.1
 	dodoc ../README
