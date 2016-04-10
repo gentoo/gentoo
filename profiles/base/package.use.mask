@@ -1,9 +1,15 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 # This file requires >=portage-2.1.1
 # New entries go on top.
+
+# James Le Cuirot <chewi@gentoo.org> (10 Apr 2016)
+# Slower and less reliable than HotSpot and we don't support Java on
+# any non-HotSpot platforms. Don't unmask these unless you know what
+# you're doing. This has upstream's approval.
+dev-java/icedtea cacao jamvm
 
 # Ian Delaney <idella4@gentoo.org> (06 Apr 2016)
 # on behalf of Ilya Tumaykin <itumaykin+gentoo@gmail.com>
