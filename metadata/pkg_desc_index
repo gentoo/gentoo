@@ -8946,7 +8946,7 @@ dev-ruby/nokogiri 1.6.4.1 1.6.6.2 1.6.6.4 1.6.7.1 1.6.7.2: Nokogiri is an HTML, 
 dev-ruby/nokogiri-diff 0.2.0-r1 0.2.0-r2: Calculate the differences between two XML/HTML documents
 dev-ruby/nokogumbo 1.4.7: A Nokogiri interface to the Gumbo HTML5 parser
 dev-ruby/notify 0.5.2-r1: A function to notify on cross platform
-dev-ruby/ntlm-http 0.1.1-r1 0.1.1-r2: Ruby/NTLM HTTP provides NTLM authentication over http
+dev-ruby/ntlm-http 0.1.1-r2: Ruby/NTLM HTTP provides NTLM authentication over http
 dev-ruby/oauth 0.4.7-r2 0.5.1: A RubyGem for implementing both OAuth clients and servers
 dev-ruby/oauth2 1.1.0: Wrapper for the OAuth 2.0 protocol with a similar style to the OAuth gem
 dev-ruby/octokit 4.2.0 4.3.0: Ruby toolkit for the Github API
@@ -9188,7 +9188,7 @@ dev-ruby/tilt 1.4.1 1.4.1-r2 2.0.2: A thin interface over a Ruby template engine
 dev-ruby/timecop 0.7.1 0.8.0 0.8.1: A gem providing 'time travel' and 'time freezing' capabilities
 dev-ruby/timers 4.0.1 4.1.0 4.1.1: Pure Ruby one-shot and periodic timers
 dev-ruby/tins 0.13.1 1.6.0 1.8.2 1.9.0: All the stuff that isn't good enough for a real library
-dev-ruby/tokyocabinet 1.29.1: Ruby bindings for Tokyo Cabinet
+dev-ruby/tokyocabinet 1.29.1 1.32.0: Ruby bindings for Tokyo Cabinet
 dev-ruby/toml 0.1.2: A sane configuration format
 dev-ruby/totoridipjp 0.1.0: A ruby binding to use totori.dip.jp Web API
 dev-ruby/transaction-simple 1.4.0.2-r2: Provides transaction support at the object level
