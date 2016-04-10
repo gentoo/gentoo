@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -43,9 +43,6 @@ python_test() {
 
 python_install_all() {
 	distutils-r1_python_install_all
-
-	newicon {icons/,}${PN}.png
-	newicon {icons/,}${PN}.svg
 
 	l10n_for_each_disabled_locale_do remove_locale
 
