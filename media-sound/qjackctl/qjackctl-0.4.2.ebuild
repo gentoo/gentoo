@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -23,7 +23,8 @@ RDEPEND="
 	alsa? ( media-libs/alsa-lib )
 	dbus? ( dev-qt/qtdbus:4 )
 	portaudio? ( media-libs/portaudio )"
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	qt5? ( dev-qt/linguist-tools:5 )"
 
 DOCS="AUTHORS ChangeLog README TODO TRANSLATORS"
 
