@@ -13,7 +13,7 @@ IUSE="cvs"
 
 RDEPEND="
 	$(add_kdeapps_dep dolphin-plugins)
-	$(add_kdeapps_dep kapptemplate)
+	|| ( $(add_kdeapps_dep kapptemplate) kde-apps/kapptemplate:4 )
 	$(add_kdeapps_dep kate)
 	$(add_kdeapps_dep kcachegrind)
 	$(add_kdeapps_dep kde-dev-scripts)
