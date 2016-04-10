@@ -5,7 +5,7 @@
 EAPI=5
 
 # jruby → tests fail _badly_
-USE_RUBY="ruby20 ruby21 ruby22"
+USE_RUBY="ruby20 ruby21 ruby22 ruby23"
 
 RUBY_FAKEGEM_RECIPE_TEST="none"
 
