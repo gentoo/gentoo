@@ -2600,7 +2600,7 @@ app-vim/tcomment 3.08: vim plugin: an extensible and universal comment toggler
 app-vim/thlnk 1.2.1: vim plugin: linking in plaintext
 app-vim/tlib 1.20: vim plugin: a library of utility functions
 app-vim/tmpl 0.1: vim plugin: Syntax for Sam Tregar's HTML::Template
-app-vim/toggle 0.5: vim plugin: quickly toggle boolean-type keywords
+app-vim/toggle 0.5 0.5-r1: vim plugin: quickly toggle boolean-type keywords
 app-vim/tt2-syntax 1.13 1.13-r1: vim plugin: syntax highlighting for perl module Template-Toolkit
 app-vim/txtfmt 2.4: vim plugin: rich text highlighting in vim
 app-vim/udev-syntax 20051016-r1: vim plugin: syntax highlighting for udev rules files
@@ -8227,7 +8227,7 @@ dev-python/whisper 0.9.13 0.9.15: Fixed size round-robin style database
 dev-python/whoosh 2.6.0 2.7.3 2.7.4: Fast, pure-Python full text indexing, search and spell checking library
 dev-python/winpdb 1.4.8 1.4.8-r1: Graphical Python debugger
 dev-python/workerpool 0.9.2-r1 0.9.4: Module for distributing jobs to a pool of worker threads
-dev-python/wrapt 1.10.5 1.10.6 1.10.6-r1: Module for decorators, wrappers and monkey patching
+dev-python/wrapt 1.10.5 1.10.6 1.10.6-r1 1.10.7: Module for decorators, wrappers and monkey patching
 dev-python/ws4py 0.3.4 9999: WebSocket client and server library for Python 2 and 3 as well as PyPy
 dev-python/wsaccel 0.6.2: Accelerator for ws4py, AutobahnPython and tornado
 dev-python/wsgiintercept 0.9.0 0.9.1 0.10.0 0.10.2 1.1.2: WSGI application in place of a real URI for testing
