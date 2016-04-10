@@ -10,5 +10,5 @@ RDEPEND=media-gfx/graphviz virtual/perl-Carp >=virtual/perl-Getopt-Long-2.340.0 
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/R/RS/RSAVAGE/GraphViz-2.19.tgz
 _eclass_exported_funcs=src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:-
-_eclasses_=multiprocessing	e32940a7b2a9992ad217eccddb84d548	perl-functions	15aff0b9cba2282790142295ceb6be0c	perl-module	b2108b3c85ac7a6a6a9b035b54f6813c
+_eclasses_=multiprocessing	e32940a7b2a9992ad217eccddb84d548	perl-functions	78b15303f516c7bbfc794d6e98e538f8	perl-module	b2108b3c85ac7a6a6a9b035b54f6813c
 _md5_=f86eb6906763af21e2574ce95ed07140

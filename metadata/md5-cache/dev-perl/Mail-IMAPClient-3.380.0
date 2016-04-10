@@ -10,5 +10,5 @@ RDEPEND=virtual/perl-Carp virtual/perl-File-Temp >=virtual/perl-IO-1.260.0 virtu
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/P/PL/PLOBBES/Mail-IMAPClient-3.38.tar.gz
 _eclass_exported_funcs=src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
-_eclasses_=multiprocessing	e32940a7b2a9992ad217eccddb84d548	perl-functions	15aff0b9cba2282790142295ceb6be0c	perl-module	b2108b3c85ac7a6a6a9b035b54f6813c
+_eclasses_=multiprocessing	e32940a7b2a9992ad217eccddb84d548	perl-functions	78b15303f516c7bbfc794d6e98e538f8	perl-module	b2108b3c85ac7a6a6a9b035b54f6813c
 _md5_=60c2ab36b1bfa3866209ec2f26b46917

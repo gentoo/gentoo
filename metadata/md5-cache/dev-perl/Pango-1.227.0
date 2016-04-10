@@ -10,5 +10,5 @@ RDEPEND=>=dev-perl/glib-perl-1.220.0 >=dev-perl/Cairo-1.0.0 >=x11-libs/pango-1.0
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/X/XA/XAOC/Pango-1.227.tar.gz
 _eclass_exported_funcs=src_prepare:- src_configure:perl-module src_compile:perl-module src_test:- src_install:-
-_eclasses_=multiprocessing	e32940a7b2a9992ad217eccddb84d548	perl-functions	15aff0b9cba2282790142295ceb6be0c	perl-module	b2108b3c85ac7a6a6a9b035b54f6813c	virtualx	86c9305a59b3e0459e7fbef3a5f30b96
+_eclasses_=multiprocessing	e32940a7b2a9992ad217eccddb84d548	perl-functions	78b15303f516c7bbfc794d6e98e538f8	perl-module	b2108b3c85ac7a6a6a9b035b54f6813c	virtualx	86c9305a59b3e0459e7fbef3a5f30b96
 _md5_=d114efdf450a3bb5b4870e9d7477379d
