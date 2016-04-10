@@ -8171,6 +8171,7 @@ dev-python/twython 3.0.0 3.2.0 3.3.0: An easy (and up to date) way to access Twi
 dev-python/txAMQP 0.6.2: Python library for communicating with AMQP peers using Twisted
 dev-python/txaio 1.0.0 2.2.0 2.2.1: a helper library for writing code unmodified on both Twisted and asyncio
 dev-python/txsocksx 1.13.0.3 1.15.0.2: Twisted client endpoints for SOCKS{4,4a,5}
+dev-python/typing 3.5.0.1: Type Hints for Python
 dev-python/tzlocal 1.1.2 1.2: tzinfo object for the local timezone
 dev-python/uhashring 0.4: Full featured consistent hashing python library compatible with ketama
 dev-python/ujson 1.33: Ultra fast JSON encoder and decoder for Python
