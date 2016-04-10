@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -25,7 +25,8 @@ DEPEND="
 RDEPEND="${DEPEND}"
 
 PATCHES=(
-	"${FILESDIR}/${P}-qatomic_ia64.h.patch" # bug 559802
+	"${FILESDIR}/${PN}-5.5.1-qatomic_ia64.h.patch" # bug 559802
+	"${FILESDIR}/${PN}-5.5.1-libsystemd.patch" # bug 578316
 )
 
 QT5_TARGET_SUBDIRS=(
