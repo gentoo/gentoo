@@ -11079,7 +11079,7 @@ kde-apps/kalzium 4.14.3 15.12.3-r2: KDE: periodic table of the elements
 kde-apps/kamera 4.14.3 15.08.3 15.12.3: Plasma integration for gphoto2 cameras
 kde-apps/kanagram 4.14.3 15.12.3: Game based on anagrams of words
 kde-apps/kapman 4.14.3 15.12.3: Pac-Man clone for KDE
-kde-apps/kapptemplate 4.14.3 15.12.3: A shell script to create the necessary framework to develop KDE applications
+kde-apps/kapptemplate 4.14.3 15.12.3 15.12.3-r1: A shell script to create the necessary framework to develop KDE applications
 kde-apps/kate 4.14.3 15.12.3: Kate is an advanced text editor
 kde-apps/katomic 4.14.3 15.12.3: KDE Atomic Entertainment Game
 kde-apps/kblackbox 4.14.3 15.12.3: KDE Blackbox Game
@@ -15645,7 +15645,7 @@ sci-geosciences/josm 8800 9060 9900 99999: Java-based editor for the OpenStreetM
 sci-geosciences/laszip 2.2.0: Library for free and lossless compression of the LAS LiDAR format
 sci-geosciences/liblas 1.8.0: C/C++ library for manipulating the LAS LiDAR format common in GIS
 sci-geosciences/libtcd 2.2.5_p2 2.2.6 2.2.7: Library for reading and writing Tide Constituent Database (TCD) files
-sci-geosciences/mapnik 2.0.1 2.0.2 2.1.0 2.2.0 3.0.9: A Free Toolkit for developing mapping applications
+sci-geosciences/mapnik 3.0.9: A Free Toolkit for developing mapping applications
 sci-geosciences/mapnik-world-boundaries 20090514: Mapnik World Boundaries
 sci-geosciences/mapserver 7.0.0 7.0.1: Development environment for building spatially enabled webapps
 sci-geosciences/mc2bsbh 0.0.9: MapCal to BSBchart Header Utility

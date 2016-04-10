@@ -6749,7 +6749,6 @@ sci-geosciences/gshhs:data - Add earth data with sci-geosciences/gshhs-data
 sci-geosciences/liblas:gdal - Add support for the sci-libs/gdal geospatial raster library
 sci-geosciences/liblas:geotiff - Add support for geo-tagged TIFF files with sci-libs/libgeotiff
 sci-geosciences/mapnik:gdal - Enable sci-libs/gdal library support
-sci-geosciences/mapnik:geos - Enable sci-libs/geos library support
 sci-geosciences/mapserver:gdal - Enable sci-libs/gdal library support
 sci-geosciences/mapserver:geos - Enable sci-libs/geos library support
 sci-geosciences/mapserver:postgis - Enable dev-db/postgis support
