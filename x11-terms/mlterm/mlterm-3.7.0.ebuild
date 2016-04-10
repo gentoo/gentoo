@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
+EAPI="6"
 
 inherit eutils
 
@@ -42,6 +42,8 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	nls? ( sys-devel/gettext )"
 
+DOCS=( doc/{en,ja} )
+
 src_prepare() {
 	# default config
 	sed -i \
@@ -49,7 +51,11 @@ src_prepare() {
 		-e "/ scrollbar_view_name =/ascrollbar_view_name = sample" \
 		etc/main
 
-	epatch_user
+	sed -i \
+		-e "/^LIBS/s/$/ -lm/" \
+		tool/registobmp/Makefile.in
+
+	default
 }
 
 src_configure() {
@@ -73,7 +79,7 @@ src_configure() {
 	)
 
 	local scrollbars="sample,extra"
-	local tools="mlclient,mlcc,mlmenu,mlterm-zoom"
+	local tools="mlclient,mlcc,mlfc,mlmenu,mlterm-zoom"
 	if use gtk; then
 		myconf+=(--with-imagelib=gdk-pixbuf)
 		if has_version x11-libs/gtk+:3; then
@@ -100,7 +106,6 @@ src_test() {
 
 src_install () {
 	default
-	dodoc -r doc/{en,ja}
 	prune_libtool_files
 
 	docinto contrib/icon

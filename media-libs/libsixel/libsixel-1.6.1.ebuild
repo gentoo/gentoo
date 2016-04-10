@@ -2,9 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
+EAPI="6"
 
-inherit autotools bash-completion-r1 eutils
+inherit bash-completion-r1
 
 DESCRIPTION="A lightweight, fast implementation of DEC SIXEL graphics codec"
 HOMEPAGE="https://github.com/saitoha/libsixel"
@@ -23,20 +23,15 @@ RDEPEND="curl? ( net-misc/curl )
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
-src_prepare() {
-	epatch "${FILESDIR}"/${PN}-gd.patch
-	eautoreconf
-}
-
 src_configure() {
 	econf \
-		--disable-python \
-		--with-bashcompletiondir=$(get_bashcompdir) \
 		$(use_with curl libcurl) \
 		$(use_with gd) \
 		$(use_with gtk gdk-pixbuf2) \
 		$(use_with jpeg) \
-		$(use_with png)
+		$(use_with png) \
+		--disable-python \
+		--with-bashcompletiondir=$(get_bashcompdir)
 }
 
 src_test() {
@@ -46,6 +41,8 @@ src_test() {
 src_install() {
 	default
 
+	cd images
 	docompress -x /usr/share/doc/${PF}/images
-	dodoc -r images
+	docinto images
+	dodoc egret.jpg map{8,16}.png snake.jpg vimperator3.png
 }
