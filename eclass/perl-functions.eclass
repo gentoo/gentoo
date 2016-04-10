@@ -131,12 +131,31 @@ perl_delete_emptybsdir() {
 # @DESCRIPTION:
 # Look through ${D} for .packlist text files containing the temporary installation
 # folder (i.e. ${D}). If the pattern is found, silently replace it with `/'.
+# Remove duplicate entries; then validate all entries in the packlist against ${D}
+# and prune entries that do not correspond to installed files.
 perl_fix_packlist() {
 	debug-print-function $FUNCNAME "$@"
 
+	local packlist_temp="${T}/.gentoo_packlist_temp"
 	find "${D}" -type f -name '.packlist' -print0 | while read -rd '' f ; do
 		if file "${f}" | grep -q -i " text" ; then
+                        einfo "Fixing packlist file /${f#${D}}"
+
+			# remove the temporary build dir path
 			sed -i -e "s:${D}:/:g" "${f}"
+
+			# remove duplicate entries
+			sort -u "${f}" > "${packlist_temp}"
+			mv "${packlist_temp}" "${f}"
+
+			# remove files that dont exist
+			cat "${f}" | while read -r entry; do
+				if [ ! -e "${D}/${entry}" ]; then
+					einfo "Pruning surplus packlist entry ${entry}"
+					grep -v -x -F "${entry}" "${f}" > "${packlist_temp}"
+					mv "${packlist_temp}" "${f}"
+				fi
+			done
 		fi
 	done
 }
