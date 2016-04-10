@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -18,13 +18,16 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
 IUSE="bittorrent bzip2 debug finger ftp gc gopher gpm guile idn ipv6
-	  javascript lua +mouse nls nntp perl ruby samba ssl unicode X xml zlib"
+	  javascript libressl lua +mouse nls nntp perl ruby samba ssl unicode X xml zlib"
 RESTRICT="test"
 
 DEPEND="
 	bzip2? ( >=app-arch/bzip2-1.0.2 )
 	gc? ( dev-libs/boehm-gc )
-	ssl? ( >=dev-libs/openssl-0.9.6g:0= )
+	ssl? (
+		!libressl? ( dev-libs/openssl:0= )
+		libressl? ( dev-libs/libressl:0= )
+	)
 	xml? ( >=dev-libs/expat-1.95.4 )
 	X? ( x11-libs/libX11 x11-libs/libXt )
 	zlib? ( >=sys-libs/zlib-1.1.4 )
