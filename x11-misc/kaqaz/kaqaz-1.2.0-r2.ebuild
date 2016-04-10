@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -30,7 +30,6 @@ RDEPEND="dev-qt/qtcore:5
 	dev-qt/qtsingleapplication[qt5,X]
 	dev-qt/qtsensors:5
 	dev-qt/qtsql:5[sqlite]
-	dev-qt/qtquick1:5
 	dev-qt/qtquickcontrols:5
 	dev-qt/qtwidgets:5
 	dev-qt/qtxml:5
