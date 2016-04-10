@@ -21,7 +21,10 @@ RDEPEND="
 	qt5? ( dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtxml:5 dev-qt/qtwidgets:5 dev-qt/qtx11extras:5 )
 	!qt5? ( dev-qt/qtcore:4 dev-qt/qtgui:4 )
 	alsa? ( media-libs/alsa-lib )
-	dbus? ( dev-qt/qtdbus:4 )
+	dbus? (
+		qt5? ( dev-qt/qtdbus:5 )
+		!qt5? ( dev-qt/qtdbus:4 )
+	)
 	portaudio? ( media-libs/portaudio )"
 DEPEND="${RDEPEND}
 	qt5? ( dev-qt/linguist-tools:5 )"
