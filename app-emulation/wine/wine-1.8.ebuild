@@ -177,6 +177,19 @@ wine_build_environment_check() {
 			return 1
 		fi
 	fi
+	# bug #574044
+	if use abi_x86_64 && [[ $(gcc-major-version) = 5 && $(gcc-minor-version) = 3 ]]; then
+		einfo "Checking for gcc-5-3 stack realignment compiler bug ..."
+		# Compile in subshell to prevent "Aborted" message
+		if ! ( $(tc-getCC) -O2 -mincoming-stack-boundary=3 "${FILESDIR}"/pr69140.c -o "${T}"/pr69140 || false ) >/dev/null 2>&1; then
+			eerror "Wine cannot be built with this version of gcc-5.3"
+			eerror "due to compiler bugs; please use gcc-config to select a"
+			eerror "different compiler version."
+			eerror "See https://bugs.gentoo.org/574044"
+			eerror
+			return 1
+		fi
+	fi
 
 	if use abi_x86_64 && [[ $(( $(gcc-major-version) * 100 + $(gcc-minor-version) )) -lt 404 ]]; then
 		eerror "You need gcc-4.4+ to build 64-bit wine"

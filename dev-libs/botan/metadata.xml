@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="person">
-  <email>lloyd@randombit.net</email>
-    <name>Jack Lloyd </name>
-    <description>Ebuild contributor and botan author</description>
-</maintainer>
-<maintainer type="project">
-    <email>crypto@gentoo.org</email>
-    <name>Crypto</name>
-</maintainer>
-<maintainer type="project">
-    <email>proxy-maint@gentoo.org</email>
-    <name>Proxy Maintainers</name>
-</maintainer>
-<use>
-	<flag name="boost">use <pkg>dev-libs/boost</pkg></flag>
-</use>
+	<maintainer type="person">
+		<email>lloyd@randombit.net</email>
+	    	<name>Jack Lloyd </name>
+    		<description>Ebuild contributor and botan author</description>
+	</maintainer>
+	<maintainer type="project">
+		<email>crypto@gentoo.org</email>
+		<name>Crypto</name>
+		</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers Project</name>
+		</maintainer>
+	<use>
+		<flag name="boost">use <pkg>dev-libs/boost</pkg></flag>
+	</use>
 </pkgmetadata>

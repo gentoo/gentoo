@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>alexxy@gentoo.org</email>
-		<name>Alexey Shvetsov</name>
-	</maintainer>
 <maintainer type="project">
 		<email>python@gentoo.org</email>
 		<name>Python</name>

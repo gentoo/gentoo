@@ -19,8 +19,9 @@ IUSE="mikmod"
 
 DEPEND="media-libs/aalib:=
 	dev-libs/lzo:=
-	mikmod? ( media-libs/libmikmod:= )
+	mikmod? ( media-libs/libmikmod:=[openal] )
 "
+# media-libs/libmikmod[openal] is due to bug #516964
 RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${PN}-$(get_version_component_range 1-3)"

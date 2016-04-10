@@ -4,6 +4,11 @@
 
 # This file requires >=portage-2.1.1
 
+# Ian Delaney <idella4@gentoo.org> (06 Apr 2016)
+# on behalf of Ilya Tumaykin <itumaykin+gentoo@gmail.com>
+# dev-libs/uchardet lacks ppc32 keyword. See bug #569114.
+media-video/mpv uchardet
+
 # Michael Palimaka <kensington@gentoo.org> (27 Mar 2016)
 # Requires unkeyworded dev-qt/qtwebkit
 dev-qt/designer webkit

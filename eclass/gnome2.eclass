@@ -16,25 +16,18 @@ case "${EAPI:-0}" in
 	4|5)
 		EXPORT_FUNCTIONS src_unpack src_prepare src_configure src_compile src_install pkg_preinst pkg_postinst pkg_postrm
 		;;
+	6)
+		EXPORT_FUNCTIONS src_prepare src_configure src_compile src_install pkg_preinst pkg_postinst pkg_postrm
+		;;
 	*) die "EAPI=${EAPI} is not supported" ;;
 esac
 
-# @ECLASS-VARIABLE: G2CONF
+# @ECLASS-VARIABLE: DOCS
 # @DEFAULT_UNSET
 # @DESCRIPTION:
-# Extra configure opts passed to econf.
-# Deprecated, pass extra arguments to gnome2_src_configure.
-G2CONF=${G2CONF:-""}
-
-# @ECLASS-VARIABLE: GNOME2_LA_PUNT
-# @DESCRIPTION:
-# Should we delete ALL the .la files?
-# NOT to be used without due consideration.
-if has ${EAPI:-0} 4; then
-	GNOME2_LA_PUNT=${GNOME2_LA_PUNT:-"no"}
-else
-	GNOME2_LA_PUNT=${GNOME2_LA_PUNT:-""}
-fi
+# String containing documents passed to dodoc command for eapi4.
+# In eapi5 we rely on einstalldocs (from eutils.eclass) and for newer EAPIs we
+# follow PMS spec.
 
 # @ECLASS-VARIABLE: ELTCONF
 # @DEFAULT_UNSET
@@ -42,36 +35,63 @@ fi
 # Extra options passed to elibtoolize
 ELTCONF=${ELTCONF:-""}
 
-# @ECLASS-VARIABLE: DOCS
+# @ECLASS-VARIABLE: G2CONF
 # @DEFAULT_UNSET
 # @DESCRIPTION:
-# String containing documents passed to dodoc command.
+# Extra configure opts passed to econf.
+# Deprecated, pass extra arguments to gnome2_src_configure.
+# Banned in eapi6 and newer.
+if has ${EAPI:-0} 4 5; then
+	G2CONF=${G2CONF:-""}
+fi
 
 # @ECLASS-VARIABLE: GCONF_DEBUG
 # @DEFAULT_UNSET
-# @DESCRIPTION:
+# @DESCRIPTION: 
 # Whether to handle debug or not.
 # Some gnome applications support various levels of debugging (yes, no, minimum,
-# etc), but using --disable-debug also removes g_assert which makes debugging
-# harder. This variable should be set to yes for such packages for the eclass
+# etc), but using --disable-debug also removes g_assert which makes debugging   
+# harder. This variable should be set to yes for such packages for the eclass   
 # to handle it properly. It will enable minimal debug with USE=-debug.
 # Note that this is most commonly found in configure.ac as GNOME_DEBUG_CHECK.
-
+#
+# Banned since eapi6 as upstream is moving away from this obsolete macro in favor
+# of autoconf-archive macros, that do not expose this issue (bug #270919)
+if has ${EAPI:-0} 4 5; then
+	if [[ ${GCONF_DEBUG} != "no" ]]; then
+		IUSE="debug"
+	fi
+fi
+    
 # @ECLASS-VARIABLE: GNOME2_ECLASS_GIO_MODULES
 # @INTERNAL
 # @DESCRIPTION:
 # Array containing glib GIO modules
 
-if [[ ${GCONF_DEBUG} != "no" ]]; then
-	IUSE="debug"
+# @ECLASS-VARIABLE: GNOME2_LA_PUNT
+# @DESCRIPTION:
+# For eapi4 it sets if we should delete ALL or none of the .la files
+# For eapi5 and newer it relies on prune_libtool_files (from eutils.eclass)
+# for this. Available values for GNOME2_LA_PUNT:
+# - "no": will not clean any .la files
+# - "yes": will run prune_libtool_files --modules
+# - If it is not set, it will run prune_libtool_files
+if has ${EAPI:-0} 4; then
+	GNOME2_LA_PUNT=${GNOME2_LA_PUNT:-"no"}
+else
+	GNOME2_LA_PUNT=${GNOME2_LA_PUNT:-""}
 fi
 
 # @FUNCTION: gnome2_src_unpack
 # @DESCRIPTION:
 # Stub function for old EAPI.
 gnome2_src_unpack() {
-	unpack ${A}
-	cd "${S}"
+	if has ${EAPI:-0} 4 5; then
+		unpack ${A}
+		cd "${S}"
+	else
+		die "gnome2_src_unpack is banned from eapi6"
+	fi
 }
 
 # @FUNCTION: gnome2_src_prepare
@@ -85,7 +105,10 @@ gnome2_src_prepare() {
 	gnome2_environment_reset
 
 	# Prevent scrollkeeper access violations
-	gnome2_omf_fix
+	# We stop to run it from eapi6 as scrollkeeper helpers from
+	# rarian are not running anything and, then, access violations
+	# shouldn't occur.
+	has ${EAPI:-0} 4 5 && gnome2_omf_fix
 
 	# Disable all deprecation warnings
 	gnome2_disable_deprecation_warning
@@ -99,17 +122,26 @@ gnome2_src_prepare() {
 # @DESCRIPTION:
 # Gnome specific configure handling
 gnome2_src_configure() {
-	# Deprecated for a long time now, see Gnome team policies
+	# Deprecated for a long time now and banned since eapi6, see Gnome team policies
 	if [[ -n ${G2CONF} ]] ; then
-		eqawarn "G2CONF set, please review documentation at https://wiki.gentoo.org/wiki/Project:GNOME/Gnome_Team_Ebuild_Policies#G2CONF_and_src_configure"
+		if has ${EAPI:-0} 4 5; then
+			eqawarn "G2CONF set, please review documentation at https://wiki.gentoo.org/wiki/Project:GNOME/Gnome_Team_Ebuild_Policies#G2CONF_and_src_configure"
+		else
+			die "G2CONF set, please review documentation at https://wiki.gentoo.org/wiki/Project:GNOME/Gnome_Team_Ebuild_Policies#G2CONF_and_src_configure"
+		fi
 	fi
 
 	local g2conf=()
 
-	# Update the GNOME configuration options
-	if [[ ${GCONF_DEBUG} != 'no' ]] ; then
-		if use debug ; then
-			g2conf+=( --enable-debug=yes )
+	if has ${EAPI:-0} 4 5; then
+		if [[ ${GCONF_DEBUG} != 'no' ]] ; then
+			if use debug ; then
+				g2conf+=( --enable-debug=yes )
+			fi
+		fi
+	else
+		if [[ -n ${GCONF_DEBUG} ]] ; then
+			die "GCONF_DEBUG is banned since eapi6 in favor of each ebuild taking care of the proper handling of debug configure option"
 		fi
 	fi
 
@@ -139,7 +171,7 @@ gnome2_src_configure() {
 		g2conf+=( --disable-scrollkeeper )
 	fi
 
-	# Pass --disable-silent-rules when possible (not needed for eapi5), bug #429308
+	# Pass --disable-silent-rules when possible (not needed since eapi5), bug #429308
 	if has ${EAPI:-0} 4; then
 		if grep -q "disable-silent-rules" "${ECONF_SOURCE:-.}"/configure; then
 			g2conf+=( --disable-silent-rules )
@@ -166,22 +198,36 @@ gnome2_src_configure() {
 		g2conf+=( --enable-compile-warnings=minimum )
 	fi
 
-	# Pass --docdir with proper directory, bug #482646
-	if grep -q "^ *--docdir=" "${ECONF_SOURCE:-.}"/configure; then
-		g2conf+=( --docdir="${EPREFIX}"/usr/share/doc/${PF} )
+	# Pass --docdir with proper directory, bug #482646 (not needed since eapi6)
+	if has ${EAPI:-0} 4 5; then
+		if grep -q "^ *--docdir=" "${ECONF_SOURCE:-.}"/configure; then
+			g2conf+=( --docdir="${EPREFIX}"/usr/share/doc/${PF} )
+		fi
 	fi
 
 	# Avoid sandbox violations caused by gnome-vfs (bug #128289 and #345659)
-	addwrite "$(unset HOME; echo ~)/.gnome2"
+	if has ${EAPI:-0} 4 5; then
+		addwrite "$(unset HOME; echo ~)/.gnome2"
+	else
+		addpredict "$(unset HOME; echo ~)/.gnome2"
+	fi
 
-	econf ${g2conf[@]} ${G2CONF} "$@"
+	if has ${EAPI:-0} 4 5; then
+		econf ${g2conf[@]} ${G2CONF} "$@"
+	else
+		econf ${g2conf[@]} "$@"
+	fi
 }
 
 # @FUNCTION: gnome2_src_compile
 # @DESCRIPTION:
 # Only default src_compile for now
 gnome2_src_compile() {
-	emake
+	if has ${EAPI:-0} 4 5; then
+		emake
+	else
+		default
+	fi
 }
 
 # @FUNCTION: gnome2_src_install
@@ -189,27 +235,39 @@ gnome2_src_compile() {
 # Gnome specific install. Handles typical GConf and scrollkeeper setup
 # in packages and removal of .la files if requested
 gnome2_src_install() {
-	# if this is not present, scrollkeeper-update may segfault and
-	# create bogus directories in /var/lib/
-	local sk_tmp_dir="/var/lib/scrollkeeper"
-	dodir "${sk_tmp_dir}" || die "dodir failed"
-
 	# we must delay gconf schema installation due to sandbox
 	export GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL="1"
 
-	debug-print "Installing with 'make install'"
-	emake DESTDIR="${D}" "scrollkeeper_localstate_dir=${ED}${sk_tmp_dir} " "$@" install || die "install failed"
+	local sk_tmp_dir="/var/lib/scrollkeeper"
+	# scrollkeeper-update from rarian doesn't do anything. Then, since eapi6
+	# we stop taking care of it
+	#
+	# if this is not present, scrollkeeper-update may segfault and
+	# create bogus directories in /var/lib/
+	if has ${EAPI:-0} 4 5; then
+		dodir "${sk_tmp_dir}" || die "dodir failed"
+		emake DESTDIR="${D}" "scrollkeeper_localstate_dir=${ED}${sk_tmp_dir} " "$@" install || die "install failed"
+	else
+		default
+	fi
 
 	unset GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL
 
-	# Handle documentation as 'default' for eapi5 and newer, bug #373131
+	# Handle documentation as 'default' for eapi5, bug #373131
+	# Since eapi6 this is handled by default on its own plus MAINTAINERS and HACKING
+	# files that are really common in gnome packages (bug #573390)
 	if has ${EAPI:-0} 4; then
 		# Manual document installation
 		if [[ -n "${DOCS}" ]]; then
 			dodoc ${DOCS} || die "dodoc failed"
 		fi
-	else
+	elif has ${EAPI:-0} 5; then
 		einstalldocs
+	else
+		local d
+		for d in HACKING MAINTAINERS; do
+			[[ -s "${d}" ]] && dodoc "${d}"
+		done
 	fi
 
 	# Do not keep /var/lib/scrollkeeper because:

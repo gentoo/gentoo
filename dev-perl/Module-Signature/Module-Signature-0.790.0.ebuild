@@ -12,7 +12,7 @@ DESCRIPTION="Module signature file manipulation"
 
 LICENSE="CC0-1.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~x86-solaris"
+KEYWORDS="amd64 x86 ~x86-solaris"
 IUSE="test"
 
 # this needs checking, there is no indication in the metadata about any deps!!!
@@ -29,7 +29,7 @@ RDEPEND="
 	dev-perl/convert-ascii-armour
 	dev-perl/data-buffer
 	dev-perl/digest-md2
-	>=dev-perl/math-pari-2.010603
+	>=dev-perl/Math-Pari-2.010603
 	dev-perl/Crypt-Random
 	dev-perl/Crypt-Primes
 	dev-perl/Crypt-DES_EDE3

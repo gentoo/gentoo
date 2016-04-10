@@ -64,7 +64,7 @@ multilib_src_compile() {
 
 multilib_src_install() {
 	emake V=1 STRIP=: DESTDIR="${D}" install || die
-	multilib_is_native_abi && gen_usr_ldscript -a com_err ss $(usex kernel_linux '' 'uuid blkid')
+	gen_usr_ldscript -a com_err ss $(usex kernel_linux '' 'uuid blkid')
 	# configure doesn't have an option to disable static libs :/
 	use static-libs || find "${ED}" -name '*.a' -delete
 }

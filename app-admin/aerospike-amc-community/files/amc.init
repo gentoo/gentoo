@@ -1,0 +1,24 @@
+#!/sbin/runscript
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/dev-db/mongodb/files/mongodb.initd-r2,v 1.2 2014/05/26 08:03:45 ultrabug Exp $
+
+config_file=${config_file:-/etc/amc/config/gunicorn_config.py}
+run_dir=${run_dir:-/run}
+
+command="/usr/bin/gunicorn"
+command_args="--daemon --config ${config_file} flaskapp:app"
+command_background="true"
+pidfile=${run_dir}/${SVCNAME}.pid
+user=${user:-root}
+group=${group:-root}
+start_stop_daemon_args="--user ${user} --group ${group}"
+required_files="${config_file}"
+
+depend() {
+	use net
+}
+
+start_post() {
+	ewaitfile 60 "${pidfile}"
+}

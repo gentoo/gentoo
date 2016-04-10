@@ -88,7 +88,8 @@ src_configure() {
 	fi
 
 	# glib fails and picks up clang's internal stdint.h causing weird errors
-	[[ ${CC} == clang ]] && export gl_cv_absolute_stdint_h=/usr/include/stdint.h
+	[[ ${CC} == *clang ]] && \
+		export gl_cv_absolute_stdint_h=/usr/include/stdint.h
 
 	econf \
 		--docdir="${EPREFIX}/usr/share/doc/${PF}" \

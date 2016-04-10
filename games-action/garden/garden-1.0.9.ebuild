@@ -1,15 +1,15 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
-inherit eutils gnome2-utils autotools games
+inherit eutils gnome2-utils autotools flag-o-matic games
 
 DESCRIPTION="Multiplatform vertical shoot-em-up with non-traditional elements"
 HOMEPAGE="http://garden.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
-LICENSE="GPL-3"
+LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="amd64 ~ppc x86"
 IUSE=""
@@ -26,6 +26,7 @@ src_prepare() {
 		-e 's/inline/extern inline/' \
 		src/stuff.h || die
 	eautoreconf
+	append-cflags -std=gnu89 # build with gcc5 (bug #572672)
 }
 
 src_install() {

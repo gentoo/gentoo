@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+	<!-- maintainer-needed -->
 	<upstream>
 		<maintainer status="active">
-                <email>rasmus@alum.mit.edu</email>
-                <name>Matt Rasmussen</name>
-        </maintainer>
-        <doc lang="en">http://keepnote.org/manual/</doc>
-        <bugs-to>https://code.google.com/p/keepnote/issues/list</bugs-to>
+                	<email>rasmus@alum.mit.edu</email>
+                	<name>Matt Rasmussen</name>
+        	</maintainer>
+        	<doc lang="en">http://keepnote.org/manual/</doc>
+        	<bugs-to>https://code.google.com/p/keepnote/issues/list</bugs-to>
 	</upstream>
 	<longdescription lang="en">
 		KeepNote is a note taking application . With KeepNote, you can

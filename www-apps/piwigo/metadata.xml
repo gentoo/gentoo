@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>voyageur@gentoo.org</email>
+		<name>Bernard Cafarelli</name>
+	</maintainer>
+	<longdescription>
+Piwigo is a photo gallery software for the web that comes with powerful features to publish and manage your collection of pictures.
+
+Started in 2002, the project is now supported by an active community of users and developers.
+It supports numerous galleries of all sizes all over the world, from an individual ten-photos party to the images stock of an agency. This scalability is supported by smart browsing capabilities based on categories, tags and chronological search. Various extensions make Piwigo even more scalable and customizable to suit your own needs and desires.
+
+Piwigo is both web and photo standard compliant. And, icing on the cake, it is free and opensource.
+
+PhpWebGallery became Piwigo on February 15th, 2009.
+	</longdescription>
+</pkgmetadata>

@@ -12,7 +12,7 @@ SRC_URI="https://firehol.org/download/firehol/releases/v${PV}/${P}.tar.xz"
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="doc ipv6"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm"
 
 RDEPEND="net-firewall/iptables
 	sys-apps/iproute2[-minimal,ipv6?]

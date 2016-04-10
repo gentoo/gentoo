@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -13,7 +13,7 @@ SRC_URI="https://github.com/jiixyj/libebur128/archive/v${PV}.tar.gz -> ${P}.tar.
 
 LICENSE="MIT"
 SLOT="0/1"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE="+speex static-libs test"
 
 RDEPEND="speex? ( media-libs/speex[${MULTILIB_USEDEP}] )"

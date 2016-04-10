@@ -7,7 +7,7 @@ EAPI=6
 inherit kde5
 
 DESCRIPTION="Simple system settings module to manage the users of your system"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm ~x86"
 IUSE=""
 
 DEPEND="

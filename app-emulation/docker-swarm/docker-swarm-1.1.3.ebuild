@@ -22,7 +22,8 @@ LICENSE="Apache-2.0"
 SLOT="0"
 IUSE=""
 RESTRICT="test"
-DEPEND="!!<app-admin/consul-0.6.3-r1"
+DEPEND=">=dev-lang/go-1.6:=
+	!!<app-admin/consul-0.6.3-r1"
 RDEPEND=""
 S=${WORKDIR}/${P}/src/${EGO_PN%/*}
 

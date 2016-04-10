@@ -4,6 +4,7 @@
 	<maintainer type="person">
 		<email>BM-2cTVBXjxdVtEQCycBQjMxszLsgTNVujvM5@bitmessage.ch</email>
 		<name>Samuel Bauer</name>
+		<description>Proxied maintainer; set to assignee in all bugs</description>
 	</maintainer>
 	<maintainer type="person">
 		<email>xmw@gentoo.org</email>
@@ -13,8 +14,7 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
-	<longdescription>
-gtkdiskfree is a gtk extension to the cli tool df, does the same and more
+	<longdescription>gtkdiskfree is a gtk extension to the cli tool df, does the same and more
 	</longdescription>
 	<use>
 		<flag name="gtk2">Support GTK+ 2.x instead of GTK+ 3.x</flag>

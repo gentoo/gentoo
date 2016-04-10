@@ -1,0 +1,31 @@
+--- opengfx-0.5.3-source/Makefile
++++ opengfx-0.5.3-source/Makefile
+@@ -99,8 +99,8 @@
+ AWK            ?= awk
+ GREP           ?= grep
+ PYTHON         ?= python
+-UNIX2DOS       ?= $(shell which unix2dos)
+-UNIX2DOS_FLAGS ?= $(shell [ -n $(UNIX2DOS) ] && $(UNIX2DOS) -q --version 2>/dev/null && echo "-q" || echo "")
++UNIX2DOS       ?= $(shell which unix2dos 2>/dev/null)
++UNIX2DOS_FLAGS ?= $(shell [ -n $(UNIX2DOS) ] && $(UNIX2DOS) -q --version 2>/dev/null >&2 && echo "-q" || echo "")
+ 
+ # Graphics processing
+ GIMP           ?= gimp
+@@ -196,7 +196,7 @@
+ endif
+ 
+ # Days of commit since 2000-1-1 00-00
+-REPO_DAYS_SINCE_2000 ?= $(shell $(PYTHON) -c "from datetime import date; print (date(`echo "$(REPO_DATE)" | sed s/-/,/g | sed s/,0/,/g`)-date(2000,1,1)).days")
++REPO_DAYS_SINCE_2000 ?= $(shell $(PYTHON) -c "from datetime import date; print ((date(`echo "$(REPO_DATE)" | sed s/-/,/g | sed s/,0/,/g`)-date(2000,1,1)).days)")
+ 
+ # Filename addition, if we're not building the default branch
+ REPO_BRANCH_STRING ?= $(shell if [ "$(REPO_BRANCH)" = "$(DEFAULT_BRANCH_NAME)" ]; then echo ""; else echo "-$(REPO_BRANCH)"; fi)
+@@ -719,7 +719,7 @@
+ 	$(_E)
+ endif
+ 	$(_E) "Release:"
+-	$(_E) "bananas:     Upload bundle to BaNaNaS
++	$(_E) "bananas:     Upload bundle to BaNaNaS"
+ 	$(_E)
+ 	$(_E) "Valid command line variables are:"
+ 	$(_E) "Helper programmes:"

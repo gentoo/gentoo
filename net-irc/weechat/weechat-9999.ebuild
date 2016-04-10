@@ -107,7 +107,6 @@ src_configure() {
 		"-DENABLE_DEMO=OFF"
 		"-DENABLE_GTK=OFF"
 		"-DENABLE_JAVASCRIPT=OFF"
-		"-DPYTHON_EXECUTABLE=${PYTHON}"
 		$(cmake-utils_use_enable alias)
 		$(cmake-utils_use_enable doc)
 		$(cmake-utils_use_enable charset)
@@ -131,7 +130,14 @@ src_configure() {
 		$(cmake-utils_use_enable trigger)
 		$(cmake-utils_use_enable xfer)
 	)
-	[[ ${EPYTHON} == python3* ]] && mycmakeargs+=( $(cmake-utils_use_enable python PYTHON3) )
+
+	if use python; then
+		python_export PYTHON_LIBPATH
+		mycmakeargs+=(
+			-DPYTHON_EXECUTABLE="${PYTHON}"
+			-DPYTHON_LIBRARY="${PYTHON_LIBPATH}"
+		)
+	fi
 
 	cmake-utils_src_configure
 }

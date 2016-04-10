@@ -21,7 +21,6 @@ KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="doc freeimage pyamg qt4 test"
 
 RDEPEND="
-	dev-python/dask[${PYTHON_USEDEP}]
 	dev-python/matplotlib[${PYTHON_USEDEP}]
 	dev-python/networkx[${PYTHON_USEDEP}]
 	dev-python/numpy[${PYTHON_USEDEP}]
@@ -52,6 +51,7 @@ python_test() {
 pkg_postinst() {
 	optfeature "FITS io capability" dev-python/astropy
 	optfeature "GTK" dev-python/pygtk
+	optfeature "Parallel computation" dev-python/dask
 	# not in portage yet
 	#optfeature "io plugin providing a wide variety of formats, including specialized formats using in medical imaging." dev-python/simpleitk
 	#optfeature "io plugin providing most standard formats" dev-python/imread

@@ -11,7 +11,7 @@ HOMEPAGE="https://www.kde.org/workspaces/plasmadesktop/"
 
 LICENSE="metapackage"
 SLOT="5"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm ~x86"
 IUSE="bluetooth +display-manager gtk mediacenter networkmanager pam pulseaudio +sddm sdk +wallpapers"
 
 RDEPEND="

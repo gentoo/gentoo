@@ -43,7 +43,7 @@ multilib_src_configure() {
 multilib_src_install() {
 	emake DESTDIR="${D}" install
 
-	multilib_is_native_abi && gen_usr_ldscript -a usb
+	gen_usr_ldscript -a usb
 }
 
 multilib_src_install_all() {

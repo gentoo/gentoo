@@ -20,7 +20,7 @@ RDEPEND="caps? ( sys-libs/libcap )
 	tcpd? ( sys-apps/tcp-wrappers )
 	dev-libs/libconfig"
 DEPEND="${RDEPEND}
-	sys-apps/help2man"
+	dev-lang/perl"
 
 RESTRICT="test"
 

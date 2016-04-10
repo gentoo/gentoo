@@ -9,7 +9,7 @@ inherit kde5
 
 DESCRIPTION="Power management for KDE Plasma Shell"
 HOMEPAGE="https://projects.kde.org/projects/kde/workspace/powerdevil"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm ~x86"
 IUSE="systemd"
 
 DEPEND="
@@ -48,7 +48,11 @@ RDEPEND="${DEPEND}
 	!systemd? (
 		sys-auth/polkit-pkla-compat
 		|| (
-			( >=sys-auth/consolekit-1.0.1[pm-utils] >=sys-power/upower-0.9.23 )
+			(
+				>=sys-auth/consolekit-1.0.1
+				sys-power/pm-utils
+				>=sys-power/upower-0.9.23
+			)
 			sys-power/upower-pm-utils
 		)
 	)

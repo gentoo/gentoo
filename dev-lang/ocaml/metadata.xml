@@ -5,4 +5,7 @@
 	<email>ml@gentoo.org</email>
 	<name>Gentoo ML Project</name>
 </maintainer>
+  <use>
+	<flag name="flambda">Enables the Flambda optimizer: A new intermediate representation (introduced in ocaml 4.03) in the depths of the compiler designed to allow for better inlining.</flag>
+  </use>
 </pkgmetadata>

@@ -19,7 +19,7 @@ KEYWORDS="~amd64 ~arm ~x86"
 IUSE="doc static-libs test"
 
 RDEPEND="
-	app-text/liblangtag
+	>=app-text/liblangtag-0.5
 	dev-libs/librevenge
 	dev-libs/libxml2
 	sys-libs/zlib

@@ -14,5 +14,6 @@
       Build libraries and tools to work with NetWare protocols (IPX
       and NCP).
     </flag>
+    <flag name='zfs'>Enable ZFS support.</flag>
   </use>
 </pkgmetadata>

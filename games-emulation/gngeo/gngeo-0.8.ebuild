@@ -1,9 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
-inherit eutils autotools games
+inherit eutils autotools flag-o-matic games
 
 DESCRIPTION="A NeoGeo emulator"
 HOMEPAGE="https://code.google.com/p/gngeo/"
@@ -23,9 +23,11 @@ src_prepare() {
 	epatch \
 		"${FILESDIR}"/${P}-execstacks.patch \
 		"${FILESDIR}"/${P}-zlib.patch \
-		"${FILESDIR}"/${P}-concurrentMake.patch
+		"${FILESDIR}"/${P}-concurrentMake.patch \
+		"${FILESDIR}"/${P}-cflags.patch
 	mv configure.in configure.ac || die
 	eautoreconf
+	append-cflags -std=gnu89 # build with gcc5 (bug #571056)
 }
 
 src_configure() {

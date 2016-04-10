@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -12,7 +12,7 @@ HOMEPAGE="https://git.gnome.org/browse/geocode-glib"
 
 LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc x86"
 IUSE="+introspection test"
 
 RDEPEND="
@@ -37,6 +37,10 @@ DEPEND="${RDEPEND}
 # FIXME: need network #424719, recheck
 # need various locales to be present
 RESTRICT="test"
+
+src_prepare() {
+	epatch "${FILESDIR}"/${P}-fix-GLIBC-features.patch
+}
 
 src_test() {
 	export GVFS_DISABLE_FUSE=1

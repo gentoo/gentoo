@@ -1,0 +1,36 @@
+Add knob to disable valgrind at test runtime.
+
+When valgrind is installed in system but is not
+working we should still be able to run tests.
+
+Reported-by: Diego Elio Pettenò
+Bug: https://bugs.gentoo.org/424377
+diff --git a/waftools/unittest.py b/waftools/unittest.py
+index 4317287..6179dfd 100644
+--- a/waftools/unittest.py
++++ b/waftools/unittest.py
+@@ -64,7 +64,8 @@ def generate_coverage(bld):
+ 
+ def configure(conf):
+     conf.load("waf_unit_test")
+-    conf.find_program("valgrind", var="VALGRIND", mandatory=False)
++    if conf.options.enable_valgrind is True:
++        conf.find_program("valgrind", var="VALGRIND", mandatory=False)
+     conf.find_program("lcov", var="LCOV", mandatory=False)
+     conf.find_program("genhtml", var="GENHTML", mandatory=False)
+ 
+diff --git a/wscript b/wscript
+index 99c1fa3..a98d5e3 100644
+--- a/wscript
++++ b/wscript
+@@ -501,6 +501,10 @@ def options(opt):
+                    dest='ldconfig', help="Run ldconfig after install even if not root")
+     opt.add_option('--without-ldconfig', action='store_false',
+                    dest='ldconfig', help="Don't run ldconfig after install")
++    opt.add_option('--with-valgrind', action='store_true', default=None,
++                   dest='enable_valgrind', help="Run testsuite under valgrind (if present).")
++    opt.add_option('--without-valgrind', action='store_false', default=None,
++                   dest='enable_valgrind', help="Don't run testsuite under valgrind.")
+ 
+     opt.sub_options("src/xmms")
+     for o in optional_subdirs + subdirs:

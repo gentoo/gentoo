@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/msmtp/${P}.tar.xz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x86-macos"
-IUSE="doc gnutls idn libsecret +mta nls sasl ssl vim-syntax"
+IUSE="doc gnutls idn libressl libsecret +mta nls sasl ssl vim-syntax"
 
 CDEPEND="
 	idn? ( net-dns/libidn )
@@ -21,7 +21,10 @@ CDEPEND="
 	sasl? ( virtual/gsasl )
 	ssl? (
 		gnutls? ( net-libs/gnutls )
-		!gnutls? ( dev-libs/openssl )
+		!gnutls? (
+			!libressl? ( dev-libs/openssl:0= )
+			libressl? ( dev-libs/libressl:0= )
+		)
 	)
 "
 

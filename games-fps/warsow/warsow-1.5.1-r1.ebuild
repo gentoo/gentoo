@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -14,8 +14,8 @@ ENGINE_P=${PN}_${ENGINE_PV}_sdk
 
 DESCRIPTION="Multiplayer FPS based on the QFusion engine (evolved from Quake 2)"
 HOMEPAGE="http://www.warsow.net/"
-SRC_URI="http://www.warsow.eu/${ENGINE_P}.tar.gz
-	http://www.warsow.eu/warsow_${DATA_PV}_unified.tar.gz
+SRC_URI="http://www.warsow.net/${ENGINE_P}.tar.gz
+	http://www.warsow.net/warsow_${DATA_PV}_unified.tar.gz
 	mirror://gentoo/warsow.png
 	mirror://gentoo/${P}-build.patch.gz"
 

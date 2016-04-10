@@ -24,6 +24,7 @@ RDEPEND="
 	$(add_kdeapps_dep kdegraphics-meta)
 	$(add_kdeapps_dep kdemultimedia-meta)
 	$(add_kdeapps_dep kdenetwork-meta)
+	$(add_kdeapps_dep kdetoys-meta '' 15.08.3)
 	$(add_kdeapps_dep kdeutils-meta)
 	accessibility? ( $(add_kdeapps_dep kdeaccessibility-meta) )
 	nls? (

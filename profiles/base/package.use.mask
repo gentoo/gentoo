@@ -5,6 +5,12 @@
 # This file requires >=portage-2.1.1
 # New entries go on top.
 
+# Ian Delaney <idella4@gentoo.org> (06 Apr 2016)
+# on behalf of Ilya Tumaykin <itumaykin+gentoo@gmail.com>
+# Raspberry Pi support is only available on arm.
+# Mask raspberry-pi USE globally, unmask on arm.
+media-video/mpv raspberry-pi
+
 # Pawel Hajdan jr <phajdan.jr@gentoo.org> (25 Mar 2016)
 # System ffmpeg build is broken in recent chromium (bug #576372).
 >=www-client/chromium-50.0.2657.0 system-ffmpeg
@@ -39,11 +45,6 @@ kde-plasma/plasma-sdk plasmate
 # USE flag is renamed to postscript, mask the old flag #564422
 # to notify users.  This entry may be removed after 30 days
 app-text/atril ps
-
-# Ian Delaney <idella4@gentoo.org> (28 Dec 2015)
-# proxy maintainer excludes dep uchardet from the build
-# of mpv temporarily
-media-video/mpv uchardet
 
 # Manuel Rüger <mrueg@gentoo.org> (24 Dec 2015)
 # media-tv/xawtv is masked for removal
@@ -181,12 +182,6 @@ dev-java/oracle-jre-bin javafx nsplugin
 app-text/cmigemo emacs
 www-client/w3m migemo
 
-# Gilles Dartiguelongue <eva@gentoo.org> (25 May 2015)
-# webkit fails to build with USE=wayland, bug #549228
-# https://bugs.webkit.org/show_bug.cgi?id=142879
-# https://bugs.webkit.org/show_bug.cgi?id=136831
->=net-libs/webkit-gtk-2.8 wayland
-
 # Johannes Huber <johu@gentoo.org> (31 Nay 2015)
 # No released version available
 kde-plasma/plasma-workspace prison
@@ -238,10 +233,6 @@ games-emulation/yabause qt5
 # Michał Górny <mgorny@gentoo.org> (01 Mar 2015)
 # pidgin-opensteamworks is only available for amd64, ppc32 and x86
 net-im/telepathy-connection-managers steam
-
-# Andreas K. Huettel <dilfridge@gentoo.org> (27 Feb 2015)
-# Mask atlas support since atlas is not in the main tree yet
-sci-libs/armadillo atlas
 
 # Alexandre Rostovtsev <tetromino@gentoo.org> (18 Feb 2015)
 # Experimental backend, plus it requires openvg support in mesa which is
@@ -609,8 +600,8 @@ gnome-extra/zeitgeist-datasources chromium tomboy
 app-misc/tracker eds
 
 # Christoph Jungans <ottxor@gentoo.org> (26 Dec 2012)
-# cuda/openmm/mkl only works on x86/amd64
-sci-chemistry/gromacs cuda mkl openmm
+# cuda/mkl only works on x86/amd64
+sci-chemistry/gromacs cuda mkl
 
 # Zac Medico <zmedico@gentoo.org> (13 Jun 2012)
 # Mask USE=pypy* for sys-apps/portage, since pypy has limited KEYWORDS.

@@ -1,0 +1,20 @@
+Index: mcs/tools/xbuild/targets/Microsoft.Portable.VisualBasic_4.0.targets
+===================================================================
+--- /dev/null	1970-01-01 00:00:00.000000000 +0000
++++ mcs/tools/xbuild/targets/Microsoft.Portable.VisualBasic_4.0.targets	2015-05-15 15:55:12.074775985 +0100
+@@ -0,0 +1,5 @@
++<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
++	<Import Project="..\Microsoft.Portable.Core.props" />
++	<Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
++	<Import Project="..\Microsoft.Portable.Core.targets" />
++</Project>
+Index: mcs/tools/xbuild/targets/Microsoft.Portable.VisualBasic_4.5.targets
+===================================================================
+--- /dev/null	1970-01-01 00:00:00.000000000 +0000
++++ mcs/tools/xbuild/targets/Microsoft.Portable.VisualBasic_4.5.targets	2015-05-15 15:55:19.194775876 +0100
+@@ -0,0 +1,5 @@
++<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
++	<Import Project="..\Microsoft.Portable.Core.props" />
++	<Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
++	<Import Project="..\Microsoft.Portable.Core.targets" />
++</Project>

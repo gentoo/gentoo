@@ -4,7 +4,7 @@
 	<maintainer type="person">
 		<email>julian@simioni.org</email>
 		<name>Julian Simioni</name>
-		<description>Proxy-Maintainer, assign bugs</description>
+		<description>Proxy-Maintainer; set to assignee in all bugs</description>
 	</maintainer>
 	<maintainer type="person">
 		<email>perfinion@gentoo.org</email>

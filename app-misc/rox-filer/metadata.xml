@@ -4,7 +4,7 @@
 <maintainer type="person">
 	<email>ppurka@gmail.com</email>
 	<name>Punarbasu 'ppurka' Purkayastha</name>
-	<description>Primary Maintainer, Assign bugs</description>
+	<description>Proxy maintainer, Assign bugs</description>
 </maintainer>
 <maintainer type="person">
 	<email>forestmoonsilence@gmail.com</email>
@@ -13,7 +13,8 @@
 </maintainer>
 <maintainer type="project">
 	<email>proxy-maint@gentoo.org</email>
-	<name>Proxy Maintainers</name>
+	<name>Proxy Maintainers Project
+</name>
 </maintainer>
 <upstream>
 	<maintainer status="active">

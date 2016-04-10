@@ -5,6 +5,8 @@
 		<email>lxnay@gentoo.org</email>
 		<name>Fabio Erculiani</name>
 	</maintainer>
-	<use>
-	</use>
+	<maintainer type="person">
+		<email>johu@gentoo.org</email>
+		<name>Johannes Huber</name>
+	</maintainer>
 </pkgmetadata>

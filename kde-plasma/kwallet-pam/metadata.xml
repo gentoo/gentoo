@@ -5,4 +5,7 @@
 		<email>kde@gentoo.org</email>
 		<name>Gentoo KDE Project</name>
 	</maintainer>
+	<use>
+		<flag name="oldwallet">Enable legacy support for <pkg>kde-apps/kwalletd</pkg></flag>
+	</use>
 </pkgmetadata>

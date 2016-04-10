@@ -1,0 +1,106 @@
+commit fc66249e69f53eef709c5210546fdd92e1c89554
+Author: Erik Massop <e.massop@hccnet.nl>
+Date:   Sun Dec 22 23:04:08 2013 +0100
+
+    OTHER: Some compatibility with different avcodec versions
+
+diff --git a/src/plugins/avcodec/avcodec.c b/src/plugins/avcodec/avcodec.c
+index a41a675..023833d 100644
+--- a/src/plugins/avcodec/avcodec.c
++++ b/src/plugins/avcodec/avcodec.c
+@@ -124,7 +124,7 @@ xmms_avcodec_destroy (xmms_xform_t *xform)
+ 
+ 	avcodec_close (data->codecctx);
+ 	av_free (data->codecctx);
+-	avcodec_free_frame (&data->read_out_frame);
++	av_frame_free (&data->read_out_frame);
+ 
+ 	g_string_free (data->outbuf, TRUE);
+ 	g_free (data->buffer);
+@@ -150,7 +150,7 @@ xmms_avcodec_init (xmms_xform_t *xform)
+ 	data->buffer_size = AVCODEC_BUFFER_SIZE;
+ 	data->codecctx = NULL;
+ 
+-	data->read_out_frame = avcodec_alloc_frame ();
++	data->read_out_frame = av_frame_alloc ();
+ 
+ 	xmms_xform_private_data_set (xform, data);
+ 
+@@ -231,7 +231,6 @@ xmms_avcodec_init (xmms_xform_t *xform)
+ 	data->codecctx->extradata_size = data->extradata_size;
+ 	data->codecctx->codec_id = codec->id;
+ 	data->codecctx->codec_type = codec->type;
+-	data->codecctx->refcounted_frames = 0;
+ 
+ 	if (avcodec_open2 (data->codecctx, codec, NULL) < 0) {
+ 		XMMS_DBG ("Opening decoder '%s' failed", codec->name);
+@@ -473,7 +472,8 @@ xmms_avcodec_internal_decode_some (xmms_avcodec_data_t *data)
+ 	packet.data = data->buffer;
+ 	packet.size = data->buffer_length;
+ 
+-	avcodec_get_frame_defaults (data->read_out_frame);
++	/* clear buffers and reset fields to defaults */
++	av_frame_unref (data->read_out_frame);
+ 
+ 	bytes_read = avcodec_decode_audio4 (
+ 		data->codecctx, data->read_out_frame, &got_frame, &packet);
+diff --git a/src/plugins/avcodec/avcodec_compat.h b/src/plugins/avcodec/avcodec_compat.h
+index 73ac2ab..e74b3f8 100644
+--- a/src/plugins/avcodec/avcodec_compat.h
++++ b/src/plugins/avcodec/avcodec_compat.h
+@@ -83,3 +83,17 @@ typedef struct AVPacket {
+ # define avcodec_open2(avctx, codec, options) \
+     avcodec_open(avctx, codec)
+ #endif
++
++/* Map avcodec_free_frame to av_freep if the former doesn't exist.
++ * (This is in versions earlier than 54.28.0 (libav) or 54.59.100 (ffmpeg)) */
++#if ! HAVE_AVCODEC_FREE_FRAME
++# define avcodec_free_frame av_freep
++#endif
++
++/* Map av_frame_alloc, av_frame_unref, av_frame_free into their
++ * deprecated versions in versions earlier than 55.28.1 */
++#if LIBAVCODEC_VERSION_INT < 0x371c01
++# define av_frame_alloc avcodec_alloc_frame
++# define av_frame_unref avcodec_get_frame_defaults
++# define av_frame_free avcodec_free_frame
++#endif
+diff --git a/src/plugins/avcodec/wscript b/src/plugins/avcodec/wscript
+index 03ba7d8..d367816 100644
+--- a/src/plugins/avcodec/wscript
++++ b/src/plugins/avcodec/wscript
+@@ -1,10 +1,33 @@
+ from waftools.plugin import plugin
+ 
++## Code fragments for configuration
++avcodec_free_frame_fragment = """
++#ifdef HAVE_LIBAVCODEC_AVCODEC_H
++# include "libavcodec/avcodec.h"
++#else
++# include "avcodec.h"
++#endif
++int main(void) {
++    AVFrame *frame;
++
++    avcodec_free_frame (&frame);
++
++    return 0;
++}
++"""
++
+ def plugin_configure(conf):
+     conf.check_cfg(package="libavcodec", uselib_store="avcodec",
+             args="--cflags --libs")
+     conf.check_cc(header_name="avcodec.h", uselib="avcodec", type="cshlib", mandatory=False)
+     conf.check_cc(header_name="libavcodec/avcodec.h", uselib="avcodec", type="cshlib", mandatory=False)
+ 
++    # non-mandatory function avcodec_free_frame since
++    # * ffmpeg: commit 46a3595, lavc 54.59.100, release 1.0
++    # * libav: commit a42aada, lavc 54.28.0, release 9
++    conf.check_cc(fragment=avcodec_free_frame_fragment, uselib="avcodec",
++                  uselib_store="avcodec_free_frame",
++                  msg="Checking for function avcodec_free_frame", mandatory=False)
++
+ configure, build = plugin('avcodec', configure=plugin_configure,
+                           libs=["avcodec"])

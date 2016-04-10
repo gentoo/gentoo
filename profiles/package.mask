@@ -30,13 +30,84 @@
 
 #--- END OF EXAMPLES ---
 
+# Michael Sterrett <mr_bones_@gentoo.org> (06 Apr 2016)
+# These pin an old crufty version of media-libs/libsfml
+# and aren't used by anything in the tree.
+# Masked for removal on 20160506
+media-libs/csfml
+dev-python/pysfml
+
+# Michael Palimaka <kensington@gentoo.org> (07 Apr 2016)
+# Obsolete. Merged into media-libs/libexif.
+# Masked for removal in 30 days.
+media-libs/libmnote
+
+# Michael Palimaka <kensington@gentoo.org> (06 Apr 2016)
+# Fails to build. Dead upstream. Bug #579020.
+# Masked for removal in 30 days.
+net-libs/libqinfinity
+
+# Michael Palimaka <kensington@gentoo.org> (06 Apr 2016)
+# Fails to build. Dead upstream. Masked for removal in 30 days.
+kde-misc/kte-collaborative
+
+# David Seifert <soap@gentoo.org> (05 Apr 2016)
+# No upstream release since 2007, no revdeps in tree,
+# version in tree outdated, bug #454702.
+# Masking for removal in 30 days
+dev-libs/ptypes
+
+# Patrick Lauer <patrick@gentoo.org> (05 Apr 2016)
+# --configtest is broken, mask until 2.3.1 release
+=app-admin/logstash-bin-2.3.0*
+
+# Anthony G. Basile <blueness@gentoo.org> (04 Apr 2016)
+# Dead upstream and no real users
+# Masking for removal in 30 days
+sys-apps/rsbac-admin
+sys-kernel/rsbac-sources
+
+# James Le Cuirot <chewi@gentoo.org> (03 Apr 2016)
+# Legacy migration package that is no longer needed. See
+# bug #549508. Removal in 30 days.
+dev-java/java-config-wrapper
+
+# James Le Cuirot <chewi@gentoo.org> (03 Apr 2016)
+# Masking Spring Framework for the time being as 3.2.4 is old, has
+# multiple vulnerabilities, and we're not likely to update it
+# soon. Hopefully we can revisit it when the Maven stuff works out.
+dev-java/spring-aop
+dev-java/spring-beans
+dev-java/spring-core
+dev-java/spring-expression
+dev-java/spring-instrument
+
+# Andreas K. Hüttel <dilfridge@gentoo.org> (03 Apr 2016)
+# Can exhaust all available memory depending on task
+# but is made available for experts who heed this warning
+# as newer versions produce different output. Contact
+# the proxied maintainer Matthew Brewer <tomboy64@sina.cn>
+# for questions.
+<=media-gfx/slic3r-1.1.9999
+
+# William Hubbs <williamh@gentoo.org> (02 Apr 2016)
+# Stable dev-lang/go no longer needs this; end users should have never
+# installed it on their own.
+# Masked for removal on 20160409
+dev-lang/go-bootstrap
+
+# Michael Sterrett <mr_bones_@gentoo.org> (02 Apr 2016)
+# Doesn't work with latest dev-lang/ocaml; dead upstream
+# Masked for removal on 20160502
+games-simulation/planets
+
+# Patrick Lauer (30 Mar 2015)
+# Segfaults when creating directories #578582
+=sys-apps/sandbox-2.11*
+
 # Mike Frysinger <vapier@gentoo.org (28 Mar 2016)
 # Tons-o-bugs and no actual testing by new author. #578490
 dev-libs/libtomcrypt
-
-# Anthony G. Basile <blueness@gentoo.org> (27 Mar 2016)
-# Fails to build, bug #578348
-x11-wm/lumina
 
 # Pawel Hajdan jr <phajdan.jr@gentoo.org> (25 Mar 2016)
 # Dev channel releases are only for people who are developers or want more
@@ -195,12 +266,6 @@ lxqt-base/lxqt-config-randr
 # Masked for removal in 30 days. Bug 575156
 net-im/qwit
 
-# Aaron Bauman <bman@gentoo.org> (05 Mar 2016)
-# Pending completion of 9 security bugs against
-# this package.  Multiple vulnerabilities and no
-# updates from maintainers. Removal in 30 days.
-www-apps/mantisbt
-
 # Ian Stakenvicius <axs@gentoo.org> (06 Mar 2016)
 # Mask old versions of thunderbird as they are no longer supported,
 # but we keep them in the repo for now in case there is a need
@@ -208,55 +273,11 @@ www-apps/mantisbt
 ~mail-client/thunderbird-24.8.0
 ~mail-client/thunderbird-31.8.0
 
-# Aaron Bauman <bman@gentoo.org> (05 Mar 2016)
-# Per security bug #491372 this package is vulnerable
-# and unmaintained.  Removal in 30 days.
-net-mail/perdition
-
-# Aaron Bauman <bman@gentoo.org> (05 Mar 2016)
-# Per security bug #448826 this package is vulnerable
-# and unmaintained.  Removal in 30 days.
-www-apps/dragonflycms
-
-# Aaron Bauman <bman@gentoo.org> (05 Mar 2016)
-# Per security bug #392325 this package is vulnerable
-# and unmaintained.  Removal in 30 days.
-dev-libs/clearsilver
-
-# Aaron Bauman <bman@gentoo.org> (05 Mar 2016)
-# Per security bug #466782 this package is vulnerable
-# and unmaintained.  Removal in 30 days.
-media-sound/xmp
-
-# Aaron Bauman <bman@gentoo.org> (05 Mar 2016)
-# Per security bug #399563, #489946, #489948, and
-# #490422 these packages are vulnerable
-# and unmaintained.  Removal in 30 days.
-www-apps/horde
-www-apps/horde-chora
-www-apps/horde-dimp
-www-apps/horde-gollem
-www-apps/horde-hermes
-www-apps/horde-imp
-www-apps/horde-ingo
-www-apps/horde-jeta
-www-apps/horde-kronolith
-www-apps/horde-mimp
-www-apps/horde-mnemo
-www-apps/horde-nag
-www-apps/horde-passwd
-www-apps/horde-pear
-www-apps/horde-turba
-
 # Alexis Ballier <aballier@gentoo.org> (01 Mar 2016)
 # Breaks some of its rev deps, still in beta stage
 >=dev-lang/ocaml-4.03_beta
 >=dev-ml/camlp4-4.03
 >=dev-ml/ppx_tools-4.03
-
-# James Le Cuirot <chewi@gentoo.org> (29 Feb 2016)
-# Dead upstream and doesn't build with Java 8. Removal in 30 days.
-sci-biology/readseq
 
 # Patrice Clement <monsieurp@gentoo.org> (29 Feb 2016)
 # Duplicate of dev-libs/libedit.
@@ -314,8 +335,6 @@ dev-java/jcs
 
 # Sergey Popov <pinkbyte@gentoo.org> (20 Jan 2016)
 # Mask new versions of Boost - they are known to cause breakages
-~dev-util/boost-build-1.60.0
-~dev-libs/boost-1.60.0
 ~dev-util/boost-build-1.59.0
 ~dev-libs/boost-1.59.0
 
@@ -323,6 +342,7 @@ dev-java/jcs
 # Force people to migrate to the new combined libraries:
 # media-libs/elementary & dev-libs/efl. #571796
 app-benchmarks/expedite
+dev-games/etrophy
 dev-libs/ecore
 dev-libs/edbus
 dev-libs/eet
@@ -337,6 +357,7 @@ media-libs/edje
 media-libs/emotion
 media-libs/ethumb
 media-libs/evas
+x11-plugins/echievements
 
 # Sergei Trofimovich <slyfox@gentoo.org> (19 Jan 2016)
 # Mask broken package. Exposes badly designed API
@@ -370,10 +391,6 @@ www-apps/389-dsgw
 # Victor Ostorga <vostorga@gentoo.org> (30 Dec 2015)
 # Mask this liferea version because upstream released it broken
 =net-news/liferea-1.10.17
-
-# Fabian Groffen <grobian@gentoo.org> (11 Dec 2015)
-# Release candidates for Exim 4.87
-=mail-mta/exim-4.87_rc6
 
 # Anthony G. Basile <blueness@gentoo.org> (06 Dec 2015)
 # Masked until we deal with SSLv3, bug #567554
@@ -452,7 +469,7 @@ dev-libs/iniparser:4
 # Ben de Groot <yngwin@gentoo.org> (20 Jul 2015)
 # Version bump is a WIP, see bug #524242
 # It works (except USE=vamp) but is not up to Gentoo standards yet
-=media-sound/audacity-2.1.1
+>=media-sound/audacity-2.1.1
 
 # Patrick Lauer <patrick@gentoo.org> (1 Jul 2015)
 # Wrong version #553670
@@ -548,10 +565,6 @@ dev-db/postgresql-server
 # Patrick Lauer <patrick@gentoo.org> (24 Nov 2014)
 # Missing deps, uninstallable
 www-apps/trac-downloads
-
-# Markos Chandras <hwoarang@gentoo.org> (18 Nov 2014)
-# Mask latest development version for testing
-=x11-misc/lightdm-1.17*
 
 # Mike Pagano <mpagano@gentoo.org> (16 Oct 2014)
 # A regression in kernels 3.17.0 lead to file system corruption
@@ -662,9 +675,7 @@ dev-java/ibm-jdk-bin:1.5
 # Needs to be further tested and revised by both Java and Ruby herds.
 >=dev-java/jruby-1.7.12
 dev-ruby/bitescript
-dev-ruby/bouncy-castle-java
 dev-ruby/duby
-dev-ruby/jruby-openssl
 dev-ruby/weakling
 
 # Matti Bickel <mabi@gentoo.org> (22 Apr 2014)
@@ -858,7 +869,10 @@ net-wireless/madwifi-ng
 
 # Robin H. Johnson <robbat2@gentoo.org> (09 Feb 2012)
 # Needs to be slotted better
+# Andreas K. Hüttel <dilfridge@gentoo.org> (08 Apr 2016)
+# Add dev-perl/Net-Z3950-ZOOM-1.300.0 which requires yaz-4*
 =dev-libs/yaz-4*
+>=dev-perl/Net-Z3950-ZOOM-1.300.0
 
 # Andreas K. Huettel <dilfridge@gentoo.org> (22 Mar 2012)
 # Even its author admits that it's an ugly hack. Crashes e.g.

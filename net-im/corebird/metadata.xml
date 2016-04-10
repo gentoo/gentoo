@@ -4,16 +4,17 @@
 	<maintainer type="person">
 		<email>thatslyude@gmail.com</email>
 		<name>Chandler Paul</name>
-		<description>Maintainer, Assign bugs</description>
+		<description>Proxied maintainer; set to assignee in all bugs</description>
 	</maintainer>
 	<maintainer type="person">
 		<email>markpariente@gmail.com</email>
 		<name>Mark R. Pariente</name>
-		<description>Maintainer, Assign bugs</description>
+		<description>Proxied maintainer; CC in all bugs 
+bugs</description>
 	</maintainer>
 	<maintainer type="project">
 		<email>proxy-maint@gentoo.org</email>
-		<name>Proxy Maintainers</name>
+		<name>Proxy Maintainers Project</name>
 	</maintainer>
 	<use>
 		<flag name="glade">Install glade catalogs for corebird</flag>

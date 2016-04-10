@@ -44,7 +44,8 @@ src_prepare() {
 
 	sed -i -e '/no_dead_strip_inits_and_terms/d' *pro || die
 
-	epatch "${FILESDIR}"/${P}-qt5.patch
+	epatch "${FILESDIR}"/${P}-qt5.patch \
+		"${FILESDIR}/${P}-boost-1.60.patch"
 }
 
 src_configure() {

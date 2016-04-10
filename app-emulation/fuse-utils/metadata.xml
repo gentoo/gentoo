@@ -8,12 +8,12 @@
 	</maintainer>
 	<maintainer type="person">
 		<email>jmfo1982@yahoo.es</email>
-		<description>Proxied Maintainer. Please assign on bugs.</description>
 		<name>José Manuel Ferrer Ortiz</name>
+		<description>Proxied Maintainer. Please assign on bugs.</description>
 	</maintainer>
 	<maintainer type="project">
 		<email>proxy-maint@gentoo.org</email>
-		<name>Proxy Maintainers</name>
+		<name>Proxy Maintainers Project</name>
 	</maintainer>
 	<use>
 		<flag name="gcrypt">Use <pkg>dev-libs/libgcrypt</pkg> for low-level crypto of some

@@ -8,5 +8,6 @@
 	<use>
 		<flag name="ibus">Use ibus input method via <pkg>app-i18n/ibus</pkg></flag>
 		<flag name="scim">Enable applets that use <pkg>app-i18n/scim</pkg></flag>
+		<flag name="share">Enable applet for quickly sharing data to a variety of sources</flag>
 	</use>
 </pkgmetadata>

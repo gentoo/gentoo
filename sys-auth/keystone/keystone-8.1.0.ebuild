@@ -14,7 +14,7 @@ SRC_URI="https://tarballs.openstack.org/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE="+sqlite memcached mongo mysql postgres ldap test"
 REQUIRED_USE="|| ( mysql postgres sqlite )"
 
@@ -164,9 +164,8 @@ RDEPEND="
 	<=dev-python/pycadf-2.0.1[${PYTHON_USEDEP}]
 	~dev-python/msgpack-0.4.6[${PYTHON_USEDEP}]"
 
-PATCHES=(
-	"${FILESDIR}/CVE-2015-7546_8.0.1.patch"
-)
+#PATCHES=(
+#)
 
 pkg_setup() {
 	enewgroup keystone

@@ -22,6 +22,7 @@
 		<flag name="stk">Build the stk opcodes</flag>
 		<flag name="tcl">Build the tcl interface and clients</flag>
 		<flag name="utils">Build stand-alone executables for utilities that can also be used via `csound -U`</flag>
+		<flag name="websocket">Build the websocket opcode</flag>
 	</use>
 	<upstream>
 		<remote-id type="sourceforge">csound</remote-id>

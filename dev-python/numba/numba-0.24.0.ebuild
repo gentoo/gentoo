@@ -18,7 +18,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="doc examples test"
 
 RDEPEND="
-	dev-python/llvmlite[${PYTHON_USEDEP}]
+	<dev-python/llvmlite-0.10[${PYTHON_USEDEP}]
 	>=dev-python/numpy-1.6[${PYTHON_USEDEP}]
 	$(python_gen_cond_dep 'dev-python/enum34[${PYTHON_USEDEP}]' python{2_7,3_3})
 	virtual/python-funcsigs[${PYTHON_USEDEP}]"

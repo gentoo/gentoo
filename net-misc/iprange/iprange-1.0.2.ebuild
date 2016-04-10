@@ -10,7 +10,7 @@ SRC_URI=""https://firehol.org/download/iprange/releases/v${PV}/${P}.tar.xz
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm"
 IUSE=""
 
 DEPEND=""

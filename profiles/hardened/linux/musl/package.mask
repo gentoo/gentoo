@@ -8,9 +8,6 @@ sys-libs/glibc
 # Hopelessly broken, bug #525136
 dev-libs/pth
 
-# We mask these until we sort out bug #544476.
->sys-kernel/linux-headers-3.16
-
 # We use eudev which is tested on both uclibc and musl
 sys-apps/systemd
 sys-fs/udev

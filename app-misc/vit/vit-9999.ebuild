@@ -21,9 +21,11 @@ LICENSE="GPL-3"
 SLOT="0"
 IUSE=""
 
-DEPEND=""
-RDEPEND="${DEPEND}
+DEPEND="
+	app-misc/task
+	dev-lang/perl
 	dev-perl/Curses"
+RDEPEND="${DEPEND}"
 
 src_prepare() {
 	epatch "${FILESDIR}"/${PN}-allow-nonsudo-install.patch \

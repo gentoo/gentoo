@@ -12,7 +12,7 @@ SRC_URI="https://github.com/magnars/dash.el/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 
 S="${WORKDIR}/${PN}.el-${PV}"
 SITEFILE="50${PN}-gentoo.el"

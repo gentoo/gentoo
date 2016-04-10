@@ -1,5 +1,5 @@
---- libs/python/build/Jamfile.v2
-+++ libs/python/build/Jamfile.v2
+--- a/libs/python/build/Jamfile.v2
++++ b/libs/python/build/Jamfile.v2
 @@ -85,6 +85,12 @@
  rule lib_boost_python ( is-py3 ? )
  {

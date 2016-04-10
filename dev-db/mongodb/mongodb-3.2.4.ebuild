@@ -101,7 +101,8 @@ pkg_setup() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}/${PN}-3.2.0-fix-scons.patch"
+	epatch "${FILESDIR}/${PN}-3.2.0-fix-scons.patch" \
+		"${FILESDIR}/${P}-boost-1.60.patch"
 	epatch_user
 }
 

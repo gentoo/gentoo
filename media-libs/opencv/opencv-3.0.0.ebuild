@@ -90,7 +90,8 @@ pkg_setup() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}/${P}-gles.patch"
+	epatch "${FILESDIR}/${P}-gles.patch" \
+		"${FILESDIR}/${P}-git-autodetect.patch"
 
 	# remove bundled stuff
 	rm -rf 3rdparty

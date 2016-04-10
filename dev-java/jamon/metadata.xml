@@ -10,6 +10,7 @@
 	developers to easily monitor production applications
 	</longdescription>
 	<upstream>
+		<remote-id type="github">stevensouza/jamonapi</remote-id>
 		<remote-id type="sourceforge">jamonapi</remote-id>
 	</upstream>
 </pkgmetadata>

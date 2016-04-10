@@ -1,0 +1,296 @@
+commit 4198d9bf5dff517740ed51b22313367f156107e1
+Author: Erik Massop <e.massop@hccnet.nl>
+Date:   Sun Dec 22 17:19:30 2013 +0100
+
+    OTHER: Split xmms_avcodec_read, remove some duplicate code
+
+diff --git a/src/plugins/avcodec/avcodec.c b/src/plugins/avcodec/avcodec.c
+index 5b9b606..eed7964 100644
+--- a/src/plugins/avcodec/avcodec.c
++++ b/src/plugins/avcodec/avcodec.c
+@@ -57,6 +57,9 @@ typedef struct {
+ static gboolean xmms_avcodec_plugin_setup (xmms_xform_plugin_t *xform_plugin);
+ static gboolean xmms_avcodec_init (xmms_xform_t *xform);
+ static void xmms_avcodec_destroy (xmms_xform_t *xform);
++static gint xmms_avcodec_internal_read_some (xmms_xform_t *xform, xmms_avcodec_data_t *data, xmms_error_t *error);
++static gint xmms_avcodec_internal_decode_some (xmms_avcodec_data_t *data);
++static void xmms_avcodec_internal_append (xmms_avcodec_data_t *data);
+ static gint xmms_avcodec_read (xmms_xform_t *xform, xmms_sample_t *buf, gint len,
+                                xmms_error_t *error);
+ static gint64 xmms_avcodec_seek (xmms_xform_t *xform, gint64 samples,
+@@ -281,101 +284,24 @@ xmms_avcodec_read (xmms_xform_t *xform, xmms_sample_t *buf, gint len,
+                    xmms_error_t *error)
+ {
+ 	xmms_avcodec_data_t *data;
+-	gint bytes_read = 0;
+ 	guint size;
+ 
+ 	data = xmms_xform_private_data_get (xform);
+ 	g_return_val_if_fail (data, -1);
+ 
+-	size = MIN (data->outbuf->len, len);
+-	while (size == 0) {
+-		AVPacket packet;
+-		av_init_packet (&packet);
++	while (0 == (size = MIN (data->outbuf->len, len))) {
++		gint res;
+ 
+ 		if (data->no_demuxer || data->buffer_length == 0) {
+-			gint read_total;
+-
+-			bytes_read = xmms_xform_read (xform,
+-			                              (gchar *) (data->buffer + data->buffer_length),
+-			                              data->buffer_size - data->buffer_length,
+-			                              error);
+-
+-			if (bytes_read < 0) {
+-				XMMS_DBG ("Error while reading data");
+-				return bytes_read;
+-			} else if (bytes_read == 0) {
+-				XMMS_DBG ("EOF");
+-				return 0;
+-			}
+-
+-			read_total = bytes_read;
+-
+-			/* If we have a demuxer plugin, make sure we read the whole packet */
+-			while (read_total == data->buffer_size && !data->no_demuxer) {
+-				/* multiply the buffer size and try to read again */
+-				data->buffer = g_realloc (data->buffer, data->buffer_size * 2);
+-				bytes_read = xmms_xform_read (xform,
+-				                              (gchar *) data->buffer +
+-				                                data->buffer_size,
+-				                              data->buffer_size,
+-				                              error);
+-				data->buffer_size *= 2;
+-
+-				if (bytes_read < 0) {
+-					XMMS_DBG ("Error while reading data");
+-					return bytes_read;
+-				}
+-
+-				read_total += bytes_read;
+-
+-				if (read_total < data->buffer_size) {
+-					/* finally double the buffer size for performance reasons, the
+-					 * hotspot handling likes to fit two frames in the buffer */
+-					data->buffer = g_realloc (data->buffer, data->buffer_size * 2);
+-					data->buffer_size *= 2;
+-					XMMS_DBG ("Reallocated avcodec internal buffer to be %d bytes",
+-					          data->buffer_size);
+-
+-					break;
+-				}
+-			}
+-
+-			/* Update the buffer length */
+-			data->buffer_length += read_total;
+-		}
+-
+-		packet.data = data->buffer;
+-		packet.size = data->buffer_length;
+-
+-		data->read_out_buffer_size = AVCODEC_MAX_AUDIO_FRAME_SIZE;
+-		bytes_read = avcodec_decode_audio3 (data->codecctx, (short *) data->read_out_buffer,
+-		                                    &data->read_out_buffer_size, &packet);
++			gint bytes_read;
+ 
+-		/* The DTS decoder of ffmpeg is buggy and always returns
+-		 * the input buffer length, get frame length from header */
+-		if (!strcmp (data->codec_id, "dca") && bytes_read > 0) {
+-			bytes_read = ((int)data->buffer[5] << 12) |
+-			             ((int)data->buffer[6] << 4) |
+-			             ((int)data->buffer[7] >> 4);
+-			bytes_read = (bytes_read & 0x3fff) + 1;
++			bytes_read = xmms_avcodec_internal_read_some (xform, data, error);
++			if (bytes_read <= 0) { return bytes_read; }
+ 		}
+ 
+-		if (bytes_read < 0 || bytes_read > data->buffer_length) {
+-			XMMS_DBG ("Error decoding data!");
+-			return -1;
+-		} else if (bytes_read != data->buffer_length) {
+-			g_memmove (data->buffer,
+-			           data->buffer + bytes_read,
+-			           data->buffer_length - bytes_read);
+-		}
+-
+-		data->buffer_length -= bytes_read;
+-
+-		if (data->read_out_buffer_size > 0) {
+-			g_string_append_len (data->outbuf, data->read_out_buffer, data->read_out_buffer_size);
+-		}
+-
+-		size = MIN (data->outbuf->len, len);
++		res = xmms_avcodec_internal_decode_some (data);
++		if (res < 0) { return res; }
++		if (res > 0) { xmms_avcodec_internal_append (data); }
+ 	}
+ 
+ 	memcpy (buf, data->outbuf->str, size);
+@@ -388,7 +314,6 @@ static gint64
+ xmms_avcodec_seek (xmms_xform_t *xform, gint64 samples, xmms_xform_seek_mode_t whence, xmms_error_t *err)
+ {
+ 	xmms_avcodec_data_t *data;
+-	gint bytes_read = 0;
+ 	gint64 ret = -1;
+ 
+ 	g_return_val_if_fail (xform, -1);
+@@ -406,23 +331,11 @@ xmms_avcodec_seek (xmms_xform_t *xform, gint64 samples, xmms_xform_seek_mode_t w
+ 
+ 	/* The buggy ape decoder doesn't flush buffers, so we need to finish decoding
+ 	 * the frame before seeking to avoid segfaults... this hack sucks */
++	/* FIXME: Is ^^^ still true? */
+ 	while (data->buffer_length > 0) {
+-		AVPacket packet;
+-		av_init_packet (&packet);
+-		packet.data = data->buffer;
+-		packet.size = data->buffer_length;
+-
+-		data->read_out_buffer_size = AVCODEC_MAX_AUDIO_FRAME_SIZE;
+-		bytes_read = avcodec_decode_audio3 (data->codecctx, (short *) data->read_out_buffer,
+-		                                    &data->read_out_buffer_size, &packet);
+-
+-		if (bytes_read < 0 || bytes_read > data->buffer_length) {
+-			XMMS_DBG ("Error decoding data!");
++		if (xmms_avcodec_internal_decode_some (data) < 0) {
+ 			return -1;
+ 		}
+-
+-		data->buffer_length -= bytes_read;
+-		g_memmove (data->buffer, data->buffer + bytes_read, data->buffer_length);
+ 	}
+ 
+ 	ret = xmms_xform_seek (xform, samples, whence, err);
+@@ -456,3 +369,131 @@ xmms_avcodec_translate_sample_format (enum AVSampleFormat av_sample_format)
+ 		return XMMS_SAMPLE_FORMAT_UNKNOWN;
+ 	}
+ }
++
++/*
++Read some data from our source of data to data->buffer, updating buffer_length
++and buffer_size as needed.
++
++Returns: on error: negative
++         on EOF: zero
++         otherwise: number of bytes read.
++*/
++static gint
++xmms_avcodec_internal_read_some (xmms_xform_t *xform,
++                                 xmms_avcodec_data_t *data,
++                                 xmms_error_t *error)
++{
++	gint bytes_read, read_total;
++
++	bytes_read = xmms_xform_read (xform,
++	                              (gchar *) (data->buffer + data->buffer_length),
++	                              data->buffer_size - data->buffer_length,
++	                              error);
++
++	if (bytes_read < 0) {
++		XMMS_DBG ("Error while reading data");
++		return bytes_read;
++	} else if (bytes_read == 0) {
++		XMMS_DBG ("EOF");
++		return 0;
++	}
++
++	read_total = bytes_read;
++
++	/* If we have a demuxer plugin, make sure we read the whole packet */
++	while (read_total == data->buffer_size && !data->no_demuxer) {
++		/* multiply the buffer size and try to read again */
++		data->buffer = g_realloc (data->buffer, data->buffer_size * 2);
++		bytes_read = xmms_xform_read (xform,
++		                              (gchar *) data->buffer +
++		                                data->buffer_size,
++		                              data->buffer_size,
++		                              error);
++		data->buffer_size *= 2;
++
++		if (bytes_read < 0) {
++			XMMS_DBG ("Error while reading data");
++			return bytes_read;
++		}
++
++		read_total += bytes_read;
++
++		if (read_total < data->buffer_size) {
++			/* finally double the buffer size for performance reasons, the
++			 * hotspot handling likes to fit two frames in the buffer */
++			data->buffer = g_realloc (data->buffer, data->buffer_size * 2);
++			data->buffer_size *= 2;
++			XMMS_DBG ("Reallocated avcodec internal buffer to be %d bytes",
++			          data->buffer_size);
++
++			break;
++		}
++	}
++
++	/* Update the buffer length */
++	data->buffer_length += read_total;
++
++	return read_total;
++}
++
++/*
++Decode some data from data->buffer[0..data->buffer_length-1] to
++data->read_out_buffer. Number of bytes in data->read_out_buffer
++is stored in data->read_out_buffer_size.
++
++Returns: on error: negative
++         on no new data produced: zero
++         otherwise: positive
++
++FIXME: data->buffer should be at least data->buffer_length +
++FF_INPUT_BUFFER_PADDING_SIZE long.
++*/
++static gint
++xmms_avcodec_internal_decode_some (xmms_avcodec_data_t *data)
++{
++	gint bytes_read = 0;
++	AVPacket packet;
++
++	av_init_packet (&packet);
++	packet.data = data->buffer;
++	packet.size = data->buffer_length;
++
++	data->read_out_buffer_size = AVCODEC_MAX_AUDIO_FRAME_SIZE;
++	bytes_read = avcodec_decode_audio3 (data->codecctx,
++	                                    (short *) data->read_out_buffer,
++	                                    &data->read_out_buffer_size, &packet);
++
++	/* The DTS decoder of ffmpeg is buggy and always returns
++	 * the input buffer length, get frame length from header */
++	/* FIXME: Is ^^^^ still true? */
++	if (!strcmp (data->codec_id, "dca") && bytes_read > 0) {
++		bytes_read = ((int)data->buffer[5] << 12) |
++		             ((int)data->buffer[6] << 4) |
++		             ((int)data->buffer[7] >> 4);
++		bytes_read = (bytes_read & 0x3fff) + 1;
++	}
++
++	if (bytes_read < 0 || bytes_read > data->buffer_length) {
++		XMMS_DBG ("Error decoding data!");
++		return -1;
++	}
++
++	if (bytes_read < data->buffer_length) {
++		data->buffer_length -= bytes_read;
++		g_memmove (data->buffer,
++		           data->buffer + bytes_read,
++		           data->buffer_length);
++	} else {
++		data->buffer_length = 0;
++	}
++
++	return data->read_out_buffer_size;
++}
++
++static void
++xmms_avcodec_internal_append (xmms_avcodec_data_t *data)
++{
++	g_string_append_len (data->outbuf,
++	                     (gchar *) data->read_out_buffer,
++	                     data->read_out_buffer_size);
++}

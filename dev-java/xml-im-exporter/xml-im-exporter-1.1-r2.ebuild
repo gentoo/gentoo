@@ -14,14 +14,14 @@ SRC_URI="mirror://sourceforge/${PN}/${PN}${PV}.tgz -> ${P}.tgz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 RDEPEND="
 	>=virtual/jre-1.6"
 
 DEPEND="
-	source? ( app-arch/zip )
-	>=virtual/jdk-1.6"
+	>=virtual/jdk-1.6
+	source? ( app-arch/zip )"
 
 S="${WORKDIR}/${PN}"
 
@@ -31,7 +31,7 @@ JAVA_SRC_DIR="src"
 
 java_prepare() {
 	java-pkg_clean
-	rm -rf src/test || die
+	rm -rv src/test || die
 }
 
 src_install() {

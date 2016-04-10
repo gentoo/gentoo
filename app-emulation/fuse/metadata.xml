@@ -13,7 +13,7 @@
 	</maintainer>
 	<maintainer type="project">
 		<email>proxy-maint@gentoo.org</email>
-		<name>Proxy Maintainers</name>
+		<name>Proxy Maintainers Project</name>
 	</maintainer>
 	<upstream>
 		<remote-id type="sourceforge">fuse-emulator</remote-id>

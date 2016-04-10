@@ -44,5 +44,13 @@ src_compile() {
 	rm -rf "${T}/goroot/src/${EGO_SRC}" || die
 	rm -rf "${T}/goroot/pkg/$(go env GOOS)_$(go env GOARCH)/${EGO_SRC}" || die
 	export GOROOT="${T}/goroot"
-	golang-build_src_compile
+	# Exclude $(get_golibdir_gopath) from GOPATH, for bug 577908 which may
+	# or may not manifest, depending on what libraries are installed.
+	export GOPATH="${WORKDIR}/${P}"
+	go install -v -work -x ${EGO_BUILD_FLAGS} "${EGO_PN}" || die
+}
+
+src_test() {
+	# Exclude $(get_golibdir_gopath) from GOPATH
+	go test -v -work -x "${EGO_PN}" || die
 }

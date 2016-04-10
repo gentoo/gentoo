@@ -4,16 +4,16 @@
 	<maintainer type="person">
 		<email>bugs@bergstroem.nu</email>
 		<name>Johan Bergström</name>
-		<description>Proxied Maintainer</description>
+		<description>Primary proxied maintainer; set to assignee in all bugs</description>
 	</maintainer>
 	<maintainer type="person">
 		<email>whissi@whissi.de</email>
 		<name>Thomas D.</name>
-		<description>Proxied Maintainer</description>
+		<description>Proxied co-maintainer</description>
 	</maintainer>
 	<maintainer type="project">
 		<email>proxy-maint@gentoo.org</email>
-		<name>Proxy Maintainers</name>
+		<name>Proxy Maintainers Project</name>
 	</maintainer>
 	<longdescription lang="en">
 		Collectd gathers statistics about the system it is running on and stores this

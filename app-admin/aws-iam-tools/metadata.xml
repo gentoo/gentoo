@@ -7,7 +7,7 @@
   <maintainer type="person">
     <email>sergey.zhuga@gmail.com</email>
     <name>Sergey Zhuga</name>
-    <description>Proxy maintainers. CC him on bugs</description>
+    <description>Proxied maintainer; set to assignee in all bugs</description>
   </maintainer>
 <maintainer type="project">
     <email>proxy-maint@gentoo.org</email>

@@ -1,0 +1,53 @@
+#!/sbin/runscript
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+config_file=${config_file:-/etc/aerospike/${SVCNAME}.conf}
+run_dir=${run_dir:-/run/aerospike}
+
+command="/usr/bin/asd"
+command_args="--config-file ${config_file}"
+command_background="false"
+pidfile=${run_dir}/${SVCNAME}.pid
+user=${user:-aerospike}
+group=${group:-aerospike}
+start_stop_daemon_args="--user ${user} --group ${group}"
+required_files="${config_file}"
+
+depend() {
+	use net
+}
+
+set_shmall() {
+	mem=`/sbin/sysctl -n kernel.shmall`
+	min=4294967296
+	if [ ${#mem} -le ${#min} ]; then
+		if [ $mem -lt $min ]; then
+		ewarn "kernel.shmall too low, setting to 4G pages = 16TB"
+		/sbin/sysctl -w kernel.shmall=$min
+		fi
+	fi
+}
+
+set_shmmax() {
+	mem=`/sbin/sysctl -n kernel.shmmax`
+	min=1073741824
+	if [ ${#mem} -le ${#min} ]; then
+		if [ $mem -lt $min ]; then
+		ewarn "kernel.shmmax too low, setting to 1GB"
+		/sbin/sysctl -w kernel.shmmax=$min
+		fi
+	fi
+}
+
+start_pre() {
+	checkpath -d -m 0755 -o "${user}":"${group}" "${run_dir}"
+	set_shmall
+	set_shmmax
+	ulimit -n 100000
+	if [ -n $LD_PRELOAD ]; then export LD_PRELOAD; fi
+}
+
+start_post() {
+	ewaitfile 60 "${pidfile}"
+}

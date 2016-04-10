@@ -9,7 +9,7 @@ inherit kde5
 
 DESCRIPTION="KDE menu editor"
 HOMEPAGE="https://projects.kde.org/projects/kde/workspace/kmenuedit"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm ~x86"
 IUSE="+hotkeys"
 
 DEPEND="
@@ -35,6 +35,8 @@ DEPEND="
 RDEPEND="${DEPEND}
 	!kde-base/kmenuedit:4
 "
+
+PATCHES=( "${FILESDIR}/${PN}-5.5.5-hotkeys.patch" )
 
 src_configure() {
 	local mycmakeargs=(

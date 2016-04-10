@@ -4,9 +4,11 @@
 
 EAPI=5
 
+PLOCALES="ar ca cs de el en es fa fr he hu it ja ko nb nl pl pt_BR pt ru sr sv tr zh_CN zh_TW"
+PLOCALE_BACKUP="en"
 WX_GTK_VER="3.0"
 
-inherit cmake-utils eutils pax-utils toolchain-funcs versionator wxwidgets games
+inherit cmake-utils eutils l10n pax-utils toolchain-funcs versionator wxwidgets
 
 if [[ ${PV} == 9999* ]]
 then
@@ -130,6 +132,18 @@ src_prepare() {
 	mv SOIL Externals || die
 	mv gtest Externals || die
 	mv xxhash Externals || die
+
+	remove_locale() {
+		# Ensure preservation of the backup locale when no valid LINGUA is set
+		if [[ "${PLOCALE_BACKUP}" == "${1}" ]] && [[ "${PLOCALE_BACKUP}" == "$(l10n_get_locales)" ]]; then
+			return
+		else
+			rm "Languages/po/${1}.po" || die
+		fi
+	}
+
+	l10n_find_plocales_changes "Languages/po/" "" '.po'
+	l10n_for_each_disabled_locale_do remove_locale
 }
 
 src_configure() {
@@ -139,10 +153,6 @@ src_configure() {
 	fi
 
 	local mycmakeargs=(
-		"-DCMAKE_INSTALL_PREFIX=${GAMES_PREFIX}"
-		"-Dprefix=${GAMES_PREFIX}"
-		"-Ddatadir=${GAMES_DATADIR}/${PN}"
-		"-Dplugindir=$(games_get_libdir)/${PN}"
 		"-DUSE_SHARED_ENET=ON"
 		$( cmake-utils_use ffmpeg ENCODE_FRAMEDUMPS )
 		$( cmake-utils_use log FASTLOG )
@@ -173,11 +183,9 @@ src_install() {
 		dodoc -r docs/ActionReplay docs/DSP docs/WiiMote
 	fi
 
-	doicon -s 48 Installer/dolphin-emu.png
-	doicon -s scalable Installer/dolphin-emu.svg
-	make_desktop_entry "dolphin-emu" "Dolphin Emulator" "dolphin-emu" "Game;Emulator;"
-
-	prepgamesdirs
+	doicon -s 48 Data/dolphin-emu.png
+	doicon -s scalable Data/dolphin-emu.svg
+	doicon Data/dolphin-emu.svg
 }
 
 pkg_postinst() {

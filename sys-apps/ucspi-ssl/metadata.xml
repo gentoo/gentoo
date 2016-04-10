@@ -3,14 +3,14 @@
 <pkgmetadata>
 	<maintainer type="person">
 		<email>powerman-asdf@yandex.ru</email>
-                <description>Primary maintainer</description>
-                <name>Alex Efros</name>
+		<name>Alex Efros</name>
+		<description>Primary maintainer</description>
 	</maintainer>
 <maintainer type="project">
                 <email>proxy-maint@gentoo.org</email>
                 <name>Proxy Maintainers</name>
 	</maintainer>
-<longdescription>sslserver and sslclient are command-line tools for building SSL
-client-server applications. They conform to the UNIX Client-Server Program
-Interface, UCSPI.</longdescription>
+	<longdescription>sslserver and sslclient are command-line tools for building SSL
+	client-server applications. They conform to the UNIX Client-Server Program
+	Interface, UCSPI.</longdescription>
 </pkgmetadata>

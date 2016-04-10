@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -19,12 +19,17 @@ KEYWORDS="~amd64 ~x86"
 
 IUSE="avahi capmt constcw +cwc dbus +dvb +dvbscan ffmpeg hdhomerun libav imagecache inotify iptv satip +timeshift uriparser xmltv zlib"
 
+# does not build with ffmpeg-3 - bug 574990
+# https://tvheadend.org/issues/3597
 RDEPEND="dev-libs/openssl:=
 	virtual/libiconv
 	avahi? ( net-dns/avahi )
 	dbus? ( sys-apps/dbus )
 	ffmpeg? (
-		!libav? ( media-video/ffmpeg:0= )
+		!libav? (
+			media-video/ffmpeg:0=
+			<media-video/ffmpeg-3
+		)
 		libav? ( media-video/libav:= )
 	)
 	hdhomerun? ( media-libs/libhdhomerun )

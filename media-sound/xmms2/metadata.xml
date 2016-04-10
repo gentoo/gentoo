@@ -40,6 +40,7 @@
 		<flag name="phonehome">This client sends anonymous usage-statistics to the xmms2</flag>
 		<flag name="server">Build xmms2 player daemon (otherwise only clients are built)</flag>
 		<flag name="sid">Support for C64 SID</flag>
+		<flag name="valgrind">Run unit tests under valgrind.</flag>
 		<flag name="vocoder">Phase vocoder effect plugin</flag>
 		<flag name="mlib-update">Enable building of xmms2-mlib-updater client</flag>
 		<flag name="xml">Enable support for various XML based playlists and sources: RSS, XSPF</flag>

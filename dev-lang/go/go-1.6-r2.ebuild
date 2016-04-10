@@ -42,7 +42,7 @@ else
 	case ${PV} in
 		*9999*|*_rc*) ;;
 		*)
-			KEYWORDS="-* amd64 ~arm ~arm64 ~ppc64 x86 ~amd64-fbsd ~x86-fbsd ~x64-macos ~x64-solaris"
+			KEYWORDS="-* amd64 arm ~arm64 ~ppc64 x86 ~amd64-fbsd ~x86-fbsd ~x64-macos ~x64-solaris"
 			;;
 	esac
 fi
@@ -59,6 +59,9 @@ RDEPEND="!<dev-go/go-tools-0_pre20150902"
 
 # These test data objects have writable/executable stacks.
 QA_EXECSTACK="usr/lib/go/src/debug/elf/testdata/*.obj"
+
+# Do not complain about CFLAGS, etc, since Go doesn't use them.
+QA_FLAGS_IGNORED='.*'
 
 REQUIRES_EXCLUDE="/usr/lib/go/src/debug/elf/testdata/*"
 

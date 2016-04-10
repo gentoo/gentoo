@@ -28,7 +28,7 @@ depend() {
 }
 
 _checkconfig() {
-	if [ $(eval sed '/^$\|^#/d' \"${COLLECTD_CONFIGFILE}\" | grep --count 'LoadPlugin[[:space:]]\+oracle') -ge 1 ] ; then
+	if [ $(sed '/^$\|^#/d' "${COLLECTD_CONFIGFILE}" | grep 'LoadPlugin[[:space:]]\+oracle' | wc -l) -ge 1 ] ; then
 		if [ -e /etc/env.d/50oracle-instantclient-basic ] ; then
 			. /etc/env.d/50oracle-instantclient-basic
 			export ORACLE_HOME

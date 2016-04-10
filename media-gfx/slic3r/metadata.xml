@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+    <maintainer type="person">
+        <email>tomboy64@sina.cn</email>
+        <name>Proxy-Maintainer; please assign him to bugs.</name>
+    </maintainer>
+    <maintainer type="project">
+        <email>proxy-maint@gentoo.org</email>
+        <name>Gentoo Proxy Maintainers Project</name>
+    </maintainer>
+    <maintainer type="project">
+        <email>3dprint@gentoo.org</email>
+        <name>Gentoo 3D Printer Project</name>
+    </maintainer>
+    <maintainer type="project">
+        <email>perl@gentoo.org</email>
+        <name>Gentoo Perl Project</name>
+    </maintainer>
+    <use>
+        <flag name="gui">Enable GUI</flag>
+    </use>
+    <longdescription lang="en">
+        Slic3r is the tool you need to convert a 3D model into printing instructions for your 3D printer. It cuts the model into horizontal slices (layers), generates toolpaths to fill them and calculates the amount of material to be extruded.
+    </longdescription>
+    <upstream>
+        <remote-id type="github">alexrj/Slic3r</remote-id>
+    </upstream>
+</pkgmetadata>

@@ -51,6 +51,7 @@ src_compile() {
 		i?86*-dragonfly*)    TARGET=freebsd ;; # mislabelled bsd with x86 asm
 		*bsd* | *dragonfly*) TARGET=bsd ;;
 		*-darwin*)           TARGET=macosx ;;
+		*-cygwin*)           TARGET=cygwin ;;
 		*) die "Unknown target, you suck" ;;
 	esac
 

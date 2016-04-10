@@ -3,7 +3,7 @@
 <pkgmetadata>
 	<maintainer type="person">
 		<email>ale@clearmind.me</email>
-		<description>Maintainer. Assign bugs to him.</description>
+		<description>Proxied maintainer; set to assignee in all bugs</description>
 	</maintainer>
 	<maintainer type="person">
 		<email>kensington@gentoo.org</email>

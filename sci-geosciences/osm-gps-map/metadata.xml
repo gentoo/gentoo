@@ -2,9 +2,9 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="project">
-	<email>proxy-maint@gentoo.org</email>
-    <name>Proxy Maintainers</name>
-	</maintainer>
+  	<email>sci-geosciences@gentoo.org</email>
+	<name>Geosciences Project</name>
+  </maintainer>
   <longdescription lang="en">
     A gtk+ viewer for OpenStreetMap files.
   </longdescription>

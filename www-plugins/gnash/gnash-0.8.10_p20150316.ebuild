@@ -143,6 +143,10 @@ src_prepare() {
 	# Fix libamf includes
 	epatch "${FILESDIR}"/${PN}-0.8.10-amf-include.patch
 
+	# Fix new adjacent_tokens_only() in >=boost-1.59 (bug 579142)
+	# See https://savannah.gnu.org/bugs/?46148
+	epatch "${FILESDIR}"/${P}-boost-1.60.patch
+
 	eautoreconf
 }
 src_configure() {

@@ -5,9 +5,6 @@
 		<email>kde@gentoo.org</email>
 		<name>Gentoo KDE Project</name>
 	</maintainer>
-	<use>
-		<flag name="introspection">Use <pkg>dev-libs/gobject-introspection</pkg> for introspection</flag>
-	</use>
 	<upstream>
 		<remote-id type="launchpad">libindicate</remote-id>
 	</upstream>

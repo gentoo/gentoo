@@ -1,9 +1,9 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
-inherit eutils autotools games
+inherit eutils flag-o-matic autotools games
 
 DESCRIPTION="new 3d engine based off of id Softwares's Quake and QuakeWorld game engine"
 HOMEPAGE="http://www.quakeforge.net/"
@@ -47,6 +47,7 @@ DEPEND="${RDEPEND}
 src_prepare() {
 	epatch "${FILESDIR}"/${P}-gentoo.patch
 	eautoreconf
+	append-cflags -std=gnu89 # build with gcc5 (bug #570392)
 }
 
 src_configure() {

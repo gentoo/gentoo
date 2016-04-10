@@ -16,5 +16,11 @@
   <upstream>
     <remote-id type="cpan">Pod-Readme</remote-id>
     <remote-id type="cpan-module">Pod::Readme</remote-id>
+    <remote-id type="cpan-module">Pod::Readme::Filter</remote-id>
+    <remote-id type="cpan-module">Pod::Readme::Plugin</remote-id>
+    <remote-id type="cpan-module">Pod::Readme::Plugin::changes</remote-id>
+    <remote-id type="cpan-module">Pod::Readme::Plugin::requires</remote-id>
+    <remote-id type="cpan-module">Pod::Readme::Plugin::version</remote-id>
+    <remote-id type="cpan-module">Pod::Readme::Types</remote-id>
   </upstream>
 </pkgmetadata>

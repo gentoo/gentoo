@@ -16,7 +16,7 @@ SRC_PATH="stable"
 
 SRC_URI="mirror://samba/${SRC_PATH}/${MY_P}.tar.gz
 	https://dev.gentoo.org/~polynomial-c/samba-disable-python-patches-4.2.9.tar.xz"
-KEYWORDS="amd64 ~hppa x86"
+KEYWORDS="amd64 ~arm ~hppa ia64 ppc ppc64 x86"
 [[ ${PV} = *_rc* ]] && KEYWORDS="~hppa"
 
 DESCRIPTION="Samba Suite Version 4"
@@ -213,6 +213,11 @@ multilib_src_install() {
 		if use ldap ; then
 			insinto /etc/openldap/schema
 			doins examples/LDAP/samba.schema
+		fi
+
+		# create symlink for cups (bug #552310)
+		if use cups ; then
+			dosym /usr/bin/smbspool /usr/libexec/cups/backend/smb
 		fi
 
 		# install example config file

@@ -12,7 +12,7 @@ MY_PV=${PV/_/}
 inherit toolchain-funcs
 
 BOOTSTRAP_DIST="https://dev.gentoo.org/~williamh/dist"
-SRC_URI="
+SRC_URI="!gccgo? (
 kernel_Darwin? (
 	x64-macos? ( ${BOOTSTRAP_DIST}/go-darwin-amd64-bootstrap.tbz )
 )
@@ -29,6 +29,7 @@ kernel_linux? (
 )
 kernel_SunOS? (
 	x64-solaris? ( ${BOOTSTRAP_DIST}/go-solaris-amd64-bootstrap.tbz )
+)
 )
 "
 
@@ -52,13 +53,16 @@ HOMEPAGE="http://www.golang.org"
 
 LICENSE="BSD"
 SLOT="0/${PV}"
-IUSE=""
+IUSE="gccgo"
 
-DEPEND=""
+DEPEND="gccgo? ( >=sys-devel/gcc-5[go] )"
 RDEPEND="!<dev-go/go-tools-0_pre20150902"
 
 # These test data objects have writable/executable stacks.
 QA_EXECSTACK="usr/lib/go/src/debug/elf/testdata/*.obj"
+
+# Do not complain about CFLAGS, etc, since Go doesn't use them.
+QA_FLAGS_IGNORED='.*'
 
 REQUIRES_EXCLUDE="/usr/lib/go/src/debug/elf/testdata/*"
 
@@ -146,6 +150,14 @@ src_unpack()
 src_compile()
 {
 	export GOROOT_BOOTSTRAP="${WORKDIR}"/go-$(go_os)-$(go_arch)-bootstrap
+	if use gccgo; then
+		mkdir -p "${GOROOT_BOOTSTRAP}/bin" || die
+		local go_binary=$(type -P go-5 2>/dev/null)
+		[[ -x ${go_binary} ]] || go_binary=$(
+			find "${EPREFIX}"/usr/${CHOST}/gcc-bin/*/go-5 | sort -V | tail -n1)
+		[[ -x ${go_binary} ]] || die "go-5: command not found"
+		ln -s "${go_binary}" "${GOROOT_BOOTSTRAP}/bin/go" || die
+	fi
 	export GOROOT_FINAL="${EPREFIX}"/usr/lib/go
 	export GOROOT="$(pwd)"
 	export GOBIN="${GOROOT}/bin"

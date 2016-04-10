@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -224,6 +224,7 @@ multilib_src_configure() {
 		$(multilib_native_use_enable xkb xkbcommon)
 
 		# hardcode a few paths to spare some deps
+		KILL=/bin/kill
 		QUOTAON=/usr/sbin/quotaon
 		QUOTACHECK=/usr/sbin/quotacheck
 

@@ -14,7 +14,7 @@ SLOT="0"
 KEYWORDS="alpha amd64 hppa ~mips ~ppc sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris"
 IUSE=""
 
-RDEPEND="dev-perl/math-pari
+RDEPEND="dev-perl/Math-Pari
 	dev-perl/Crypt-Random"
 DEPEND="${RDEPEND}"
 

@@ -10,7 +10,7 @@ DESCRIPTION="A GStreamer based RTSP server"
 HOMEPAGE="http://people.freedesktop.org/~wtay/"
 
 LICENSE="LGPL-2"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="examples +introspection static-libs test"
 
 # FIXME: check should depend on USE=test but check is losy

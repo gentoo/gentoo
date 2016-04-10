@@ -1,5 +1,5 @@
---- libs/mpi/build/Jamfile.v2
-+++ libs/mpi/build/Jamfile.v2
+--- a/libs/mpi/build/Jamfile.v2
++++ b/libs/mpi/build/Jamfile.v2
 @@ -30,7 +30,7 @@
  python-id = [ option.get "python-buildid" ] ;
  if $(python-id)
@@ -9,8 +9,8 @@
  }
  
  rule tag ( name : type ? : property-set )
---- libs/python/build/Jamfile.v2
-+++ libs/python/build/Jamfile.v2
+--- a/libs/python/build/Jamfile.v2
++++ b/libs/python/build/Jamfile.v2
 @@ -36,7 +36,7 @@
  python-id = [ option.get "python-buildid" ] ;
  if $(python-id)

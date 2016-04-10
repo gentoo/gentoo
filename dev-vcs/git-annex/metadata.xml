@@ -22,23 +22,15 @@
 	<use>
 		<flag name="assistant">Enable git-annex assistant and watch command</flag>
 		<flag name="benchmark">Enable benchmarking</flag>
-		<flag name="asciiprogress">Use ascii-progress library (experimental)</flag>
 		<flag name="concurrentoutput">Use concurrent-output library (experimental)</flag>
 		<flag name="cryptonite">Use the cryptonite library, instead of the older cryptohash</flag>
-		<flag name="database">Enable building with <pkg>dev-haskell/persistent</pkg> for database use</flag>
-		<flag name="desktopnotify">Enable desktop environment notifications</flag>
-		<flag name="dns">Enable the haskell DNS library for DNS lookup</flag>
 		<flag name="ekg">Enable use of EKG to monitor git-annex as it runs.</flag>
-		<flag name="feed">Enable podcast feed support</flag>
+		<flag name="magicmime">Use libmagic to determine file MIME types</flag>
 		<flag name="network-uri">Get Network.URI from the network-uri package.</flag>
 		<flag name="pairing">Enable pairing of git annex repositories</flag>
-		<flag name="quvi">Enable use of quvi to download videos</flag>
 		<flag name="s3">Enable Amazon S3 remote</flag>
-		<flag name="tahoe">Enable the tahoe special remote</flag>
-		<flag name="tdfa">Use regex-tdfa for wildcards</flag>
 		<flag name="torrentparser">Use haskell torrent library to parse torrent files</flag>
 		<flag name="webapp">Enable git-annex webapp</flag>
-		<flag name="webapp-secure">Secure webapp</flag>
 		<flag name="webdav">Enable webdav remote</flag>
 	</use>
 </pkgmetadata>

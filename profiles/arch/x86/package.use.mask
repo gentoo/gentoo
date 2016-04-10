@@ -16,11 +16,6 @@ app-admin/lastpass chrome
 # chrome-binary-plugins dropped x86 support
 www-client/chromium widevine
 
-# Ian Delaney <idella4@gentoo.org> (28 Dec 2015)
-# proxy maintainer excludes dep uchardet from the build
-# of mpv temporarily but does not require masking in x86
-media-video/mpv -uchardet
-
 # Ian Delaney <idella4@gentoo.org> (02 Dec 2015)
 # mask revdeps of xen that emply a hypervisor in arch x86
 app-emulation/libvirt xen
@@ -126,8 +121,8 @@ sys-kernel/dracut -dracut_modules_biosdevname -dracut_modules_systemd
 gnome-extra/zeitgeist-datasources -chromium -tomboy
 
 # Christoph Jungans <ottxor@gentoo.org> (26 Dec 2012)
-# cuda/openmm/mkl works on x86/amd64 (masked in base)
-sci-chemistry/gromacs -cuda -mkl -openmm
+# cuda/mkl works on x86/amd64 (masked in base)
+sci-chemistry/gromacs -cuda -mkl
 
 # Diego Elio Pettenò <flameeyes@gentoo.org> (3 Nov 2012)
 # Unmask here, as it's masked in base.

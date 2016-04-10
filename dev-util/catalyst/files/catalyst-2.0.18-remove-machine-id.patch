@@ -1,0 +1,25 @@
+From fbf94254a714c8d72840faee42cf348eb69b1a43 Mon Sep 17 00:00:00 2001
+From: "Anthony G. Basile" <blueness@gentoo.org>
+Date: Fri, 8 Apr 2016 17:58:15 -0400
+Subject: [PATCH] targets/support/chroot-functions.sh: remove machine-id for
+ systemd stages
+
+---
+ targets/support/chroot-functions.sh | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/targets/support/chroot-functions.sh b/targets/support/chroot-functions.sh
+index 6c1a31c..67874a0 100755
+--- a/targets/support/chroot-functions.sh
++++ b/targets/support/chroot-functions.sh
+@@ -223,6 +223,7 @@ cleanup_stages() {
+ 		stage1|stage2|stage3|system)
+ 			rm -f /var/lib/portage/world
+ 			touch /var/lib/portage/world
++			rm -f /etc/machine-id
+ 			;;
+ 		*)
+ 			echo "Skipping removal of world file for ${clst_target}"
+-- 
+2.7.3
+

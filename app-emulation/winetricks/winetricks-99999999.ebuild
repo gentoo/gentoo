@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 inherit gnome2-utils eutils
 
@@ -14,7 +14,9 @@ else
 	SRC_URI="https://github.com/Winetricks/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
 fi
+
 wtg=winetricks-gentoo-2012.11.24
+
 SRC_URI="${SRC_URI}
 	gtk? ( https://dev.gentoo.org/~tetromino/distfiles/wine/${wtg}.tar.bz2 )
 	kde? ( https://dev.gentoo.org/~tetromino/distfiles/wine/${wtg}.tar.bz2 )"
@@ -40,7 +42,7 @@ RDEPEND="app-arch/cabextract
 # Uses non-standard "Wine" category, which is provided by app-emulation/wine; #451552
 QA_DESKTOP_FILE="usr/share/applications/winetricks.desktop"
 
-# Tests require network access and run wine, which is unreliable from a portage environment
+# Tests require network access and run Wine, which is unreliable from a portage environment.
 RESTRICT="test"
 
 src_unpack() {

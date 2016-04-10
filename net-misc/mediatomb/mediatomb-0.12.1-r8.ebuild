@@ -95,6 +95,8 @@ src_prepare() {
 	# Work around broken youtube support by using youtube-dl #467110
 	epatch "${FILESDIR}"/${P}-youtube-dl.patch
 
+	epatch "${FILESDIR}"/${P}-time-t.patch
+
 	epatch_user
 
 	eautoreconf

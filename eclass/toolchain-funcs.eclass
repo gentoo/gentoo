@@ -722,6 +722,11 @@ gen_usr_ldscript() {
 
 	tc-is-static-only && return
 
+	# We only care about stuffing / for the native ABI. #479448
+	if [[ $(type -t multilib_is_native_abi) == "function" ]] ; then
+		multilib_is_native_abi || return 0
+	fi
+
 	# Eventually we'd like to get rid of this func completely #417451
 	case ${CTARGET:-${CHOST}} in
 	*-darwin*) ;;

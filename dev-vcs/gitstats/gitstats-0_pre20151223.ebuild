@@ -39,6 +39,7 @@ src_prepare() {
 	sed \
 		-e "s:basedirs = \[binarypath, secondarypath, '/usr/share/gitstats'\]:basedirs = \['${EPREFIX}/usr/share/gitstats'\]:g" \
 	-i gitstats || die "failed to fix static files path"
+	eapply "${FILESDIR}"/${P}-grep-force-text.patch
 	default
 }
 

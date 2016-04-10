@@ -236,6 +236,7 @@ multilib_src_configure() {
 		$(multilib_native_use_enable xkb xkbcommon)
 
 		# hardcode a few paths to spare some deps
+		KILL=/bin/kill
 		QUOTAON=/usr/sbin/quotaon
 		QUOTACHECK=/usr/sbin/quotacheck
 

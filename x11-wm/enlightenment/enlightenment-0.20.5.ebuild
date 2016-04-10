@@ -20,6 +20,7 @@ DESCRIPTION="Enlightenment DR17 window manager"
 
 LICENSE="BSD-2"
 SLOT="0.17/${PV%%_*}"
+KEYWORDS="${KEYWORDS} amd64 x86"
 
 __CONF_MODS=(
 	applications bindings dialogs display

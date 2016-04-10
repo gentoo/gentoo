@@ -1,9 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!-- maintainer-needed -->
-	<longdescription>CD and DVD command line recording and ripping tools.</longdescription>
-	<upstream>
-		<remote-id type="sourceforge">burn-cd</remote-id>
-	</upstream>
+<maintainer type="person">
+	<email>canutethegreat@gmail.com</email>
+	<name>Ronald Farrer</name>
+	<description>Proxy-maintainer; set to assignee on bugs</description>
+</maintainer>
+<maintainer type="project">
+	<email>proxy-maint@gentoo.org</email>
+	<name>Proxy Maintainers</name>
+</maintainer>
+<longdescription>CD and DVD command line recording and ripping tools.</longdescription>
+<upstream>
+	<remote-id type="github">aglyzov/burn-cd</remote-id>
+</upstream>
 </pkgmetadata>

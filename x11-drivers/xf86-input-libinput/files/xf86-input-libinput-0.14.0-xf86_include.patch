@@ -1,0 +1,12 @@
+Index: xf86-input-libinput-0.14.0/src/xf86libinput.c
+===================================================================
+--- xf86-input-libinput-0.14.0.orig/src/xf86libinput.c
++++ xf86-input-libinput-0.14.0/src/xf86libinput.c
+@@ -33,6 +33,7 @@
+ #include <list.h>
+ #include <exevents.h>
+ #include <xkbsrv.h>
++#include <xf86.h>
+ #include <xf86Xinput.h>
+ #include <xf86_OSproc.h>
+ #include <xserver-properties.h>

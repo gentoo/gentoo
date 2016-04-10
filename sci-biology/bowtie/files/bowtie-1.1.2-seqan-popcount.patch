@@ -1,0 +1,24 @@
+Description: Use SeqAn 1.4's seqan::popCount() function instead of own function
+Author: Ognyan Kulev <ogi@debian.org>
+Last-Update: 2014-03-08
+---
+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+--- a/diff_sample.h
++++ b/diff_sample.h
+@@ -476,6 +476,8 @@ static String<T> getDeltaMap(T v, const
+ 	return amap;
+ }
+ 
++// Debian: Use seqan::popCount
++#if 0
+ /**
+  * Return population count (count of all bits set to 1) of i.
+  */
+@@ -488,6 +490,7 @@ static unsigned int popCount(T i) {
+ 	}
+ 	return cnt;
+ }
++#endif
+ 
+ /**
+  * Calculate log-base-2 of i

@@ -26,7 +26,7 @@ DESCRIPTION="Enlightenment Foundation Libraries all-in-one package"
 
 LICENSE="BSD-2 GPL-2 LGPL-2.1 ZLIB"
 KEYWORDS="amd64 arm x86"
-IUSE="+bmp debug drm +eet egl fbcon +fontconfig fribidi gif gles glib gnutls gstreamer harfbuzz +ico ibus jpeg2k neon oldlua opengl ssl physics pixman +png +ppm +psd pulseaudio scim sdl sound systemd tga tiff tslib v4l2 wayland webp X xim xine xpm"
+IUSE="+bmp debug drm +eet egl fbcon +fontconfig fribidi gif gles glib gnutls gstreamer harfbuzz +ico ibus jpeg2k neon oldlua opengl ssl physics pixman +png +ppm +psd pulseaudio scim sdl sound systemd tga tiff tslib v4l wayland webp X xim xine xpm"
 
 REQUIRED_USE="
 	pulseaudio?	( sound )
@@ -243,7 +243,7 @@ src_configure() {
 	$(use_enable tga image-loader-tga)
 	$(use_enable tiff image-loader-tiff)
 	$(use_enable tslib)
-	$(use_enable v4l2)
+	$(use_enable v4l v4l2)
 	$(use_enable wayland)
 	$(use_enable webp image-loader-webp)
 	$(use_enable xim)

@@ -1,0 +1,6 @@
+/var/log/logstash/*.err /var/log/logstash/*.log {
+        copytruncate
+        compress
+        missingok
+        notifempty
+}

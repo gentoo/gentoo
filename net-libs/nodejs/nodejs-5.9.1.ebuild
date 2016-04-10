@@ -15,7 +15,7 @@ SRC_URI="https://nodejs.org/dist/v${PV}/node-v${PV}.tar.xz"
 
 LICENSE="Apache-1.1 Apache-2.0 BSD BSD-2 MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86 ~x64-macos"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86 ~x64-macos"
 IUSE="cpu_flags_x86_sse2 debug doc icu +npm +snapshot +ssl test"
 
 RDEPEND="icu? ( >=dev-libs/icu-56:= )
@@ -94,12 +94,13 @@ src_configure() {
 	use debug && myconf+=( --debug )
 
 	case ${ABI} in
-		x86) myarch="ia32";;
 		amd64) myarch="x64";;
-		x32) myarch="x32";;
 		arm) myarch="arm";;
 		arm64) myarch="arm64";;
-		*) die "Unrecognized ARCH ${ARCH}";;
+		ppc64) myarch="ppc64";;
+		x32) myarch="x32";;
+		x86) myarch="ia32";;
+		*) myarch="${ABI}";;
 	esac
 
 	GYP_DEFINES="linux_use_gold_flags=0
