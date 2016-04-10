@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -16,7 +16,7 @@ SRC_URI="http://www.iana.org/time-zones/repository/releases/tzdata${data_ver}.ta
 LICENSE="BSD public-domain"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~x86-freebsd ~amd64-linux ~ia64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
-IUSE="nls leaps_timezone elibc_FreeBSD elibc_glibc"
+IUSE="nls leaps_timezone elibc_FreeBSD elibc_glibc elibc_musl"
 
 RDEPEND="!sys-libs/glibc[vanilla(+)]"
 
@@ -42,7 +42,7 @@ src_compile() {
 		append-cppflags -DSTD_INSPIRED #138251
 	fi
 	export NLS=$(usex nls 1 0)
-	if use nls && ! use elibc_glibc ; then
+	if use nls && ! use elibc_glibc && ! use elibc_musl ; then
 		LDLIBS+=" -lintl" #154181
 	fi
 	# TOPDIR is used in some utils when compiling.
