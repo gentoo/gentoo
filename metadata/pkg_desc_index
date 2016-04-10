@@ -6895,6 +6895,7 @@ dev-python/beaker 1.6.4-r1 1.7.0-r1 1.8.0: A Session and Caching library with WS
 dev-python/beanstalkc 0.4.0 0.4.0-r1: A simple beanstalkd client library
 dev-python/beautifulsoup 3.1.0.1-r2 3.2.1-r1 4.3.2 4.4.0 4.4.1: Provides pythonic idioms for iterating, searching, and modifying an HTML/XML parse tree
 dev-python/behave 1.2.4 1.2.5: behaviour-driven development, Python style
+dev-python/bibtexparser 0.6.2: A BibTeX parser written in python
 dev-python/bicyclerepair 0.9-r3: Bicycle Repair Man is the Python Refactoring Browser
 dev-python/billiard 3.3.0.18 3.3.0.19 3.3.0.20 3.3.0.21 3.3.0.22: Python multiprocessing fork
 dev-python/biplist 0.8 0.9 1.0.1: A binary plist parser/generator for Python
