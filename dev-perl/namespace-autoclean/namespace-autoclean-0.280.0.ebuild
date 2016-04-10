@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="Keep imports out of your namespace"
 
 SLOT="0"
-KEYWORDS="amd64 ~arm hppa ~ppc ~x86 ~x64-macos"
+KEYWORDS="amd64 ~arm hppa ~ppc ~x86 ~ppc-aix ~x86-freebsd ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x86-solaris"
 IUSE="test"
 
 RDEPEND="
