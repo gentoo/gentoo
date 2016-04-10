@@ -31,7 +31,7 @@ RDEPEND="
 	pyamg? ( dev-python/pyamg[${PYTHON_USEDEP}] )
 	qt4? ( dev-python/PyQt4[${PYTHON_USEDEP}] )"
 DEPEND="${RDEPEND}
-	dev-python/cython[${PYTHON_USEDEP}]
+	>=dev-python/cython-0.23[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (	dev-python/nose[${PYTHON_USEDEP}] )"
 
