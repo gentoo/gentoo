@@ -11,7 +11,7 @@ if [[ ${PV} = *9999* ]]; then
 	inherit git-2
 	DEPEND="app-text/asciidoc"
 else
-	SRC_URI="ftp://ftp.archlinux.org/other/packages/${PN}/${P}.tar.xz"
+	SRC_URI="https://sources.archlinux.org/other/packages/${PN}/${P}.tar.xz"
 	KEYWORDS="amd64 x86"
 fi
 
