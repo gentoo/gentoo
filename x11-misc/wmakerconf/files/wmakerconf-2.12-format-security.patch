@@ -1,0 +1,12 @@
+diff -Naur wmakerconf-2.12.orig/src/error.c wmakerconf-2.12/src/error.c
+--- wmakerconf-2.12.orig/src/error.c	2004-12-05 02:44:37.000000000 +0100
++++ wmakerconf-2.12/src/error.c	2016-04-11 20:42:32.810590888 +0200
+@@ -109,7 +109,7 @@
+       GtkTextIter    iter;
+       GtkTextBuffer *buffer;
+       
+-      g_log ("Wmakerconf", G_LOG_LEVEL_WARNING, message);
++      g_log ("Wmakerconf", G_LOG_LEVEL_WARNING, "%s", message);
+       Free (text);
+       buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (log_text));
+       gtk_text_buffer_get_iter_at_offset (buffer, &iter, -1);
