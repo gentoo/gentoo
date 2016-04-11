@@ -18331,7 +18331,7 @@ x11-misc/wdm 1.28-r3: WINGs Display Manager
 x11-misc/whaw 0.2: Window manager independent Window Layout tool
 x11-misc/wininfo 0.7: An X app that follows your pointer providing information about the windows below
 x11-misc/winswitch 0.12.18-r1: client server tool to start and control virtual desktops
-x11-misc/wmakerconf 2.12 2.12-r1 2.12-r2: X based config tool for the windowmaker X windowmanager
+x11-misc/wmakerconf 2.12-r2: X based config tool for the windowmaker X windowmanager
 x11-misc/wmctrl 1.07-r1: command line tool to interact with an EWMH/NetWM compatible X Window Manager
 x11-misc/wmiface 2.1: Command line tool allowing user scripting of the running window manager
 x11-misc/wmname 0.1: utility to set the name of your window manager
