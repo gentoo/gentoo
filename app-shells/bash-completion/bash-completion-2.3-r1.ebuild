@@ -43,6 +43,9 @@ src_prepare() {
 	eapply "${WORKDIR}/${BASHCOMP_P}/${PN}"-2.1_p*.patch
 	# Bug 543100
 	eapply "${FILESDIR}/${PN}-2.1-escape-characters.patch"
+	# backport from
+	# https://github.com/scop/bash-completion/commit/0382773bbfc21dc1fb5467c1c0426ea3c984b6ec
+	eapply "${FILESDIR}/${P}-remove-mpv-symlink.patch"
 	eapply_user
 }
 

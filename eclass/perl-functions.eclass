@@ -298,3 +298,24 @@ perl_check_env() {
 	eerror "Your environment settings may lead to undefined behavior and/or build failures."
 	die "Please fix your environment ( ~/.bashrc, package.env, ... ), see above for details."
 }
+
+# @FUNCTION: perl_doexamples
+# @USAGE: perl_doexamples "file_1" "file_2"
+# @DESCRIPTION:
+# Install example files ready-to-run.
+# Is called under certain circumstances in perl-module.eclass src_install
+# (see the documentation there).
+#
+perl_doexamples() {
+	debug-print-function $FUNCNAME "$@"
+
+	einfo "Installing examples into /usr/share/doc/${PF}/examples"
+
+	# no compression since we want ready-to-run scripts
+	docompress -x /usr/share/doc/${PF}/examples
+
+	docinto examples/
+	dodoc -r $@
+
+	# is there a way to undo "docinto" ?
+}
