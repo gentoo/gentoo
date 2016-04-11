@@ -8,7 +8,7 @@ inherit autotools eutils user
 
 MY_P=${P/_pre/-testing-r}
 
-DESCRIPTION="A command-line based binary newsgrapper supporting .nzb files"
+DESCRIPTION="A command-line based binary newsgrabber supporting .nzb files"
 HOMEPAGE="http://nzbget.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.gz"
 
