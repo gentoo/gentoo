@@ -5,10 +5,9 @@
 EAPI=6
 
 DIST_AUTHOR=DANBERR
-DIST_VERSION=1.3.2
 inherit perl-module
 
-DESCRIPTION="Sys::Virt provides an API for using the libvirt library from Perl"
+DESCRIPTION="API for using the libvirt library from Perl"
 
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
@@ -25,10 +24,12 @@ DEPEND="${RDEPEND}
 src_compile() {
 	MAKEOPTS+=" -j1" perl-module_src_compile
 }
+
 src_test() {
 	perl_rm_files "t/010-pod-coverage.t" "t/005-pod.t" "t/015-changes.t"
 	perl-module_src_test
 }
+
 src_install() {
 	perl-module_src_install
 	if use examples; then
