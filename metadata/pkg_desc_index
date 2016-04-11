@@ -6146,7 +6146,7 @@ dev-perl/SOAP-Lite 1.040.0-r1 1.140.0 1.190.0: Simple and lightweight interface 
 dev-perl/SOAP-WSDL 3.2.0 3.3.0: SOAP with WSDL support
 dev-perl/SQL-Abstract 1.780.0 1.810.0: Generate SQL from Perl data structures
 dev-perl/SQL-Abstract-Limit 0.141.0-r1: Portable LIMIT emulation
-dev-perl/SQL-Statement 1.405.0-r1 1.407.0: Small SQL parser and engine
+dev-perl/SQL-Statement 1.405.0-r1 1.407.0 1.409.0: Small SQL parser and engine
 dev-perl/SQL-Translator 0.110.160-r1 0.110.210: Manipulate structured data definitions (SQL and more)
 dev-perl/SRU 1.0.0 1.10.0: Search and Retrieval by URL
 dev-perl/SVG 2.590.0 2.640.0: Perl extension for generating Scalable Vector Graphics (SVG) documents
@@ -6157,15 +6157,15 @@ dev-perl/Safe-Isa 1.0.5: Call isa, can, does and DOES safely on things that may 
 dev-perl/Sane 0.50.0-r1: The Sane module allows you to access SANE-compatible scanners in a Perl
 dev-perl/Scalar-Properties 1.100.860-r1: run-time properties on scalar variables
 dev-perl/Schedule-At 1.150.0-r1: OS independent interface to the Unix 'at' command
-dev-perl/Schedule-Cron-Events 1.930.0: Take a line from a crontab and find out when events will occur
-dev-perl/Scope-Guard 0.200.0-r1: Lexically scoped resource management
+dev-perl/Schedule-Cron-Events 1.930.0 1.950.0: Take a line from a crontab and find out when events will occur
+dev-perl/Scope-Guard 0.200.0-r1 0.210.0: Lexically scoped resource management
 dev-perl/Search-Xapian 1.2.19.0 1.2.22.0 1.2.23.0: Perl XS frontend to the Xapian C++ search library
 dev-perl/Server-Starter 0.190.0 0.320.0: A superdaemon for hot-deploying server programs
 dev-perl/Set-Crontab 1.30.0: Expand crontab(5)-style integer lists
 dev-perl/Set-Infinite 0.650.0-r1: Sets of intervals
 dev-perl/Set-IntSpan 1.190.0-r1: Manages sets of integers
 dev-perl/Set-Object 1.310.0 1.350.0: set of objects and strings
-dev-perl/Shell 0.720.0: Shell - run shell commands transparently within perl
+dev-perl/Shell 0.720.0 0.730.0: Run shell commands transparently within perl
 dev-perl/Shell-EnvImporter 1.70.0-r1 1.70.0-r2: Import environment variable changes from external commands or shell scripts
 dev-perl/ShipIt 0.600.0: Software Release Tool
 dev-perl/Signal-Mask 0.8.0: Signal masks made easy
@@ -6177,40 +6177,40 @@ dev-perl/Sort-Key 1.330.0: sort objects by some (calculated) key
 dev-perl/Sort-Key-IPv4 0.30.0: Sort IP v4 addresses
 dev-perl/Sort-Naturally 1.30.0-r1: sort lexically, but sort numeral parts numerically
 dev-perl/Sort-Tree 1.90.0-r1: Organize list of objects into parent/child order
-dev-perl/Sort-Versions 1.500.0-r1 1.610.0: A perl 5 module for sorting of revision-like numbers
+dev-perl/Sort-Versions 1.500.0-r1 1.610.0 1.620.0: A perl 5 module for sorting of revision-like numbers
 dev-perl/Speech-Recognizer-SPX 0.80.100-r1: Interface to Sphinx-II speech recognition
-dev-perl/Sphinx-Config 0.90.0-r1: Sphinx search engine configuration file read/modify/write
+dev-perl/Sphinx-Config 0.90.0-r1 0.100.0: Sphinx search engine configuration file read/modify/write
 dev-perl/Sphinx-Search 0.280-r1 0.290.0: Perl API client for Sphinx search engine
 dev-perl/Spiffy 0.310.0-r1 0.460.0: Spiffy Perl Interface Framework For You
 dev-perl/Spreadsheet-ParseExcel 0.590.0-r1 0.650.0: Read information from an Excel file
 dev-perl/Spreadsheet-WriteExcel 2.390.0-r1 2.400.0: Write cross-platform Excel binary file
-dev-perl/Starlet 0.200.0 0.250.0: A simple, high-performance PSGI/Plack HTTP server
+dev-perl/Starlet 0.250.0 0.290.0: A simple, high-performance PSGI/Plack HTTP server
 dev-perl/Stat-lsMode 0.500.0-r1: The Perl Stat-lsMode Module
-dev-perl/Statistics-Descriptive 3.60.300-r1: Module of basic descriptive statistical functions
+dev-perl/Statistics-Descriptive 3.60.300-r1 3.61.200: Module of basic descriptive statistical functions
 dev-perl/Statistics-Descriptive-Discrete 0.70.0-r1: Statistics-Descriptive-Discrete module
 dev-perl/Statistics-Distributions 1.02: Perl module for calculating critical values
 dev-perl/Statistics-TTest 1.1.0: module to compute the confidence interval
-dev-perl/Stream-Buffered 0.20.0-r1: Temporary buffer to save bytes
+dev-perl/Stream-Buffered 0.20.0-r1 0.30.0: Temporary buffer to save bytes
 dev-perl/String-Approx 3.270.0: Perl extension for approximate string matching (fuzzy matching)
 dev-perl/String-Ediff 0.90.0-r1: Produce common sub-string indices for two strings
 dev-perl/String-Escape 2010.002: Backslash escapes, quoted phrase, word elision, etc
 dev-perl/String-Format 1.170.0-r1: sprintf-like string formatting capabilities with arbitrary format definitions
-dev-perl/String-RewritePrefix 0.6.0-r1: Rewrite strings based on a set of known prefixes
+dev-perl/String-RewritePrefix 0.6.0-r1 0.7.0: Rewrite strings based on a set of known prefixes
 dev-perl/String-ShellQuote 1.40.0-r1: Quote strings for passing through the shell
-dev-perl/String-Tokenizer 0.50.0-r1: A simple string tokenizer
+dev-perl/String-Tokenizer 0.50.0-r1 0.60.0: A simple string tokenizer
 dev-perl/Struct-Compare 1.0.1: Recursive diff for perl structures
 dev-perl/Sub-Exporter 0.986.0 0.987.0: A sophisticated exporter for custom-built routines
 dev-perl/Sub-Exporter-ForMethods 0.100.52: Helper routines for using Sub::Exporter to build methods
 dev-perl/Sub-Exporter-Progressive 0.1.11: Only use Sub::Exporter if you need it
-dev-perl/Sub-Identify 0.40.0-r1: Retrieve names of code references
+dev-perl/Sub-Identify 0.40.0-r1 0.120.0: Retrieve names of code references
 dev-perl/Sub-Install 0.926.0-r1 0.928.0: Install subroutines into packages easily
-dev-perl/Sub-Name 0.50.0-r1: (Re)name a sub
+dev-perl/Sub-Name 0.50.0-r1 0.150.0: (Re)name a sub
 dev-perl/Sub-Override 0.90.0: Perl extension for easily overriding subroutines
 dev-perl/Sub-Uplevel 0.240.0-r1 0.250.0: Apparently run a function in a higher stack frame
 dev-perl/Switch 2.160.0-r1 2.170.0: A switch statement for Perl
 dev-perl/Symbol-Global-Name 0.50.0: Finds name and type of a global variable
 dev-perl/Symbol-Util 0.20.300-r1: Additional utils for Perl symbols manipulation
-dev-perl/Syntax-Highlight-Engine-Simple 0.80.0: Simple Syntax Highlight Engine
+dev-perl/Syntax-Highlight-Engine-Simple 0.80.0 0.90.0: Simple Syntax Highlight Engine
 dev-perl/Syntax-Highlight-Engine-Simple-Perl 0.20.0: Experimental Perl code highlighting class
 dev-perl/Syntax-Keyword-Junction 0.3.8: Perl6 style Junction operators in Perl5
 dev-perl/Sys-CPU 0.540.0-r1 0.610.0: Access CPU info. number, etc on Win and UNIX
@@ -6220,7 +6220,7 @@ dev-perl/Sys-Mmap 0.160.0 0.170.0: Uses mmap to map in a file as a Perl variable
 dev-perl/Sys-SigAction 0.200.0-r1 0.210.0: Perl extension for Consistent Signal Handling
 dev-perl/Sys-Statistics-Linux 0.660.0-r1: Collect linux system statistics
 dev-perl/Sys-Syscall 0.250.0-r1: Access system calls that Perl doesn't normally provide access to
-dev-perl/Sys-Virt 1.1.2 1.2.5 1.2.9: Sys::Virt provides an API for using the libvirt library from Perl
+dev-perl/Sys-Virt 1.1.2 1.2.9 1.3.2: API for using the libvirt library from Perl
 dev-perl/Sysadm-Install 0.420.0 0.430.0 0.440.0 0.460.0: Typical installation tasks for system administrators
 dev-perl/TAP-Parser-SourceHandler-pgTAP 3.29 3.310.0: Stream TAP from pgTAP test scripts
 dev-perl/Taint-Runtime 0.30.0-r1: Runtime enable taint checking
@@ -6330,6 +6330,7 @@ dev-perl/Text-Quoted 2.60.0-r1 2.80.0: Extract the structure of a quoted mail me
 dev-perl/Text-Reform 1.200.0-r1: Manual text wrapping and reformatting
 dev-perl/Text-Roman 3.500.0: Allows conversion between Roman and Arabic algarisms
 dev-perl/Text-Shellwords 1.80.0-r1: Parses lines of text and returns a set of tokens using the same rules as the Unix shell
+dev-perl/Text-Soundex 3.50.0: Implementation of the soundex algorithm
 dev-perl/Text-Table 1.127.0-r1 1.130.0: Organize Data in Tables
 dev-perl/Text-Unaccent 1.80.0-r1: Removes accents from a string
 dev-perl/Text-Unidecode 0.40.0-r1 1.230.0 1.240.0 1.270.0: Plain ASCII transliterations of Unicode text
@@ -6536,6 +6537,7 @@ dev-perl/local-lib 2.0.14 2.0.18: create and use a local lib/ for perl modules w
 dev-perl/maybe 0.20.200-r1: Use a Perl module and ignore error if can't be loaded
 dev-perl/mecab-perl 0.996: Perl binding for MeCab
 dev-perl/mime-construct 1.900.0-r1: construct and optionally mail MIME messages
+dev-perl/multidimensional 0.11.0: disables multidimensional array emulation
 dev-perl/namespace-autoclean 0.130.0-r1 0.280.0: Keep imports out of your namespace
 dev-perl/namespace-clean 0.210.0-r1 0.260.0: Keep imports and functions out of your namespace
 dev-perl/pcsc-perl 1.4.13-r1 1.4.14: A Perl Module for PC/SC SmartCard access
@@ -6547,7 +6549,7 @@ dev-perl/rename 1.800.0-r1 1.900.0: A filename renaming utility based on perl re
 dev-perl/rpm-build-perl 0.820.0: Automatically extract Perl dependencies
 dev-perl/self 0.340.0-r1: provides '$self' in OO code
 dev-perl/set-scalar 1.280.0 1.290.0: Scalar set operations
-dev-perl/strictures 2.0.1: Turn on strict and make all warnings fatal
+dev-perl/strictures 2.0.1 2.0.2: Turn on strict and make most warnings fatal
 dev-perl/string-crc32 1.400.0-r1 1.500.0: Perl interface for cyclic redundancy check generation
 dev-perl/syntax 0.4.0: Activate syntax extensions
 dev-perl/text-template 1.460.0-r1: Expand template text with embedded Perl
