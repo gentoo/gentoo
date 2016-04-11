@@ -97,7 +97,7 @@ app-admin/evtxtools 1.1.1-r1: Read, decode and dump Windows Vista/2008/7 event l
 app-admin/fam 2.7.0-r6 2.7.0-r7: FAM, the File Alteration Monitor
 app-admin/fetchlog 1.0 1.4: Displays the last new messages of a logfile
 app-admin/fifo-cronolog 1.1.1: cronolog wrapper for use with dumb daemons like squid, varnish and so on
-app-admin/filebeat-bin 1.1.2 1.2.0: Lightweight log shipper for Logstash and Elasticsearch
+app-admin/filebeat-bin 1.1.2 1.2.1: Lightweight log shipper for Logstash and Elasticsearch
 app-admin/filewatcher 2.4.6: This is a configuration file control system and IDS
 app-admin/fleet 0.11.0-r1 0.11.1 0.11.5 9999: A Distributed init System
 app-admin/fsvs 1.2.5-r1 1.2.5-r2: Backup/restore for subversion backends
@@ -2121,7 +2121,7 @@ app-portage/tatt 0.3 9999: arch testing tool
 app-portage/ufed 0.91 0.92 9999: Gentoo Linux USE flags editor
 app-shells/autojump 22.2.4-r4: change directory command that learns
 app-shells/bash 2.05b_p13 3.0_p22 3.1_p23 3.2_p57 4.0_p44 4.1_p17 4.2_p53 4.3_p39_pre0 4.3_p42-r1 4.3_p42-r2 4.4_rc1: The standard GNU Bourne again shell
-app-shells/bash-completion 1.3-r2 2.1-r2 2.1_p20141224-r1 2.1_p20141224-r2 2.2 2.3: Programmable Completion for bash
+app-shells/bash-completion 1.3-r2 2.1-r2 2.1_p20141224-r1 2.1_p20141224-r2 2.2 2.3-r1: Programmable Completion for bash
 app-shells/bashdb 4.3.0.91-r1: bash source code debugging
 app-shells/bashish 2.2.4: Text console theme engine
 app-shells/ccsh 0.0.4-r3: UNIX Shell for people already familiar with the C language
@@ -4258,7 +4258,7 @@ dev-java/swt 3.5.2 3.7.1 3.7.2 3.7.2-r1 3.8.2 3.8.2-r1 4.2 4.2-r1 4.2-r2: GTK ba
 dev-java/tablelayout 1.0: Layout manager that makes creating user interfaces fast and easy
 dev-java/tagsoup 1.2.1: A SAX-compliant parser written in Java
 dev-java/tapestry 3.0.4-r2: Dynamic, robust, highly scalable web framework in Java
-dev-java/telnetd 2.0 2.0-r1: A telnet daemon for use in Java applications
+dev-java/telnetd 2.0-r1: A telnet daemon for use in Java applications
 dev-java/testng 6.9.10: Testing framework inspired by JUnit and NUnit with new features
 dev-java/texhyphj 1.1: Re-implementation of Franklin Mark Liang's hyphenation algorithm in Java
 dev-java/tijmp 0.8: Java Memory Profiler for java 1.6+
@@ -4740,7 +4740,7 @@ dev-libs/libsqlora8 2.3.3: libsqlora8 is a simple C-library to access Oracle dat
 dev-libs/libstrl 0.5.1: Compat library for functions like strlcpy(), strlcat(), strnlen(), getline(), and asprintf()
 dev-libs/libstroke 0.5.1: A Stroke and Gesture recognition Library
 dev-libs/libtar 1.2.20-r2 1.2.20-r3: C library for manipulating tar archives
-dev-libs/libtasn1 4.5 4.7: ASN.1 library
+dev-libs/libtasn1 4.5 4.7 4.8: ASN.1 library
 dev-libs/libtecla 1.6.1-r2 1.6.2: Tecla command-line editing library
 dev-libs/libtermkey 0.17 0.18: Library for easy processing of keyboard entry from terminal-based programs
 dev-libs/libtomcrypt 1.17: Modular and portable cryptographic toolkit
@@ -5991,7 +5991,7 @@ dev-perl/Net-SNPP 1.170.0-r1: libnet SNPP component
 dev-perl/Net-SSH-Any 0.40.0: Use any SSH module
 dev-perl/Net-SSH-AuthorizedKeysFile 0.170.0: Read and modify ssh's authorized_keys files
 dev-perl/Net-SSH-Perl 1.360.0-r1 1.420.0: Perl client Interface to SSH
-dev-perl/Net-SSH2 0.580.0: Support for the SSH 2 protocol via libssh2
+dev-perl/Net-SSH2 0.580.0 0.580.0-r1: Support for the SSH 2 protocol via libssh2
 dev-perl/Net-SSLeay 1.650.0-r1 1.720.0-r1: Perl extension for using OpenSSL
 dev-perl/Net-Server 2.8.0: Extensible, general Perl server engine
 dev-perl/Net-Server-Coro 1.300.0-r1: A co-operative multithreaded server using Coro
@@ -9832,7 +9832,7 @@ dev-util/watchr 0.7: Modern continuous testing (flexible alternative to Autotest
 dev-util/webcpp 0.8.4: converts source code into HTML using a customizable syntax highlight engine and colour schemes
 dev-util/weblint 1.020: syntax and minimal style checker for HTML by Neil Bowers
 dev-util/webstorm 10.0.4.141.1550: JavaScript IDE for complex client-side development and server-side development with Node.js
-dev-util/weka 3.6.6-r1 3.6.6-r2 3.6.12-r1: A Java data mining package
+dev-util/weka 3.6.6-r1 3.6.6-r2 3.6.12-r1 3.7.13: A Java data mining package
 dev-util/wiggle 0.9-r1: program for applying patches that patch cannot apply because of conflicting changes
 dev-util/wstool 0.1.10 0.1.12 9999: Commands to manage several local SCM repositories for ROS
 dev-util/wxglade 0.6.3-r1: Glade-like GUI designer which can generate Python, Perl, C++ or XRC code
@@ -11528,7 +11528,7 @@ kde-misc/pyrad 0.6.2-r1 0.7.1: A wheel type command interface for KDE, heavily i
 kde-misc/quadkonsole 0.4.4-r1: Grid of Konsole terminals
 kde-misc/quickaccess 0.8.2-r1: KDE4 plasmoid. Designed for the panel, provides quick access to the most used folders
 kde-misc/redshift-plasmoid 1.0: KDE4 plasmoid for redshift
-kde-misc/rsibreak 0.11-r1 0.12 0.12.1: Small utility which bothers you at certain intervals
+kde-misc/rsibreak 0.11-r1 0.12.1: Small utility which bothers you at certain intervals
 kde-misc/semantik 0.9.4-r1: Mindmapping-like tool for document generation
 kde-misc/serverstatuswidget 1.5.1: KDE plasma widget used for monitoring servers via ping or tcp connect
 kde-misc/skanlite 1.1-r1 2.0: KDE image scanning application
@@ -11574,7 +11574,7 @@ kde-plasma/libkscreen 5.5.5 5.6.2: Plasma screen management library
 kde-plasma/libksysguard 5.5.5 5.6.2: Task management and system monitoring library
 kde-plasma/milou 5.5.5 5.6.2: Dedicated search application built on top of Baloo
 kde-plasma/oxygen 5.5.5 5.6.2: KDE window manager theme
-kde-plasma/oxygen-fonts 5.4.3: Desktop/GUI font family for integrated use with the KDE desktop
+kde-plasma/oxygen-fonts 5.4.3: Desktop/GUI font family for integrated use with the KDE Plasma desktop
 kde-plasma/plasma-desktop 5.5.5 5.5.5-r1 5.6.2: KDE Plasma desktop
 kde-plasma/plasma-integration 5.6.2: Qt Platform Theme integration plugins for the Plasma workspaces
 kde-plasma/plasma-mediacenter 5.5.5 5.6.2: Unified media experience for any device capable of running KDE
@@ -12565,7 +12565,7 @@ media-libs/quarter 1.0.0-r1: A glue between Nokia Qt4 and Coin3D
 media-libs/quesoglc 0.7.2: A free implementation of the OpenGL Character Renderer (GLC)
 media-libs/quvi 0.2.19 0.4.2 0.9.4 0.9.5: A command line tool for parsing video download links
 media-libs/raptor 2.0.9 2.0.14: The RDF Parser Toolkit
-media-libs/raspberrypi-userland 0_pre20130705-r1 0_pre20140117 0_pre20140830 0_pre20150921 0_pre20160305-r1 0_pre20160330 9999: Raspberry Pi userspace tools and libraries
+media-libs/raspberrypi-userland 0_pre20130705-r1 0_pre20140117 0_pre20140830 0_pre20150921 0_pre20160305-r1 0_pre20160330 0_pre20160408 9999: Raspberry Pi userspace tools and libraries
 media-libs/raspberrypi-userland-bin 1.20160209 1.20160309: Raspberry Pi userspace tools and libraries
 media-libs/raul 0.8.0 0.8.0-r1: C++ utility library primarily aimed at audio/musical applications
 media-libs/resid 0.16_p2: C++ library to emulate the C64 SID chip
@@ -13889,7 +13889,7 @@ net-dns/bind-dns-keygen 9.3.2.39-r1: A simple BIND key generator
 net-dns/bind-tools 9.10.1_p1 9.10.3_p2 9.10.3_p4: bind tools: dig, nslookup, host, nsupdate, dnssec-keygen
 net-dns/c-ares 1.10.0-r1 1.11.0: C library that resolves names asynchronously
 net-dns/cagibi 0.2.0: Cache/proxy system for the SSDP part of UPnP
-net-dns/ddclient 3.8.1-r5 3.8.2: Perl updater client for dynamic DNS services
+net-dns/ddclient 3.8.1-r5 3.8.2 3.8.3: Perl updater client for dynamic DNS services
 net-dns/djbdns 1.05-r29 1.05-r30: Collection of DNS client/server software
 net-dns/dnrd 2.20.3-r1: A caching DNS proxy server
 net-dns/dnscap 20130814: dnscap is a network capture utility designed specifically for DNS traffic
@@ -14178,7 +14178,7 @@ net-libs/glib-networking 2.44.0 2.46.1: Network-related giomodules for glib
 net-libs/gloox 1.0.9 1.0.13 1.0.14 1.0.14-r1: A portable high-level Jabber/XMPP library for C++
 net-libs/gnet 2.0.8-r2: A simple network library
 net-libs/gnome-online-accounts 3.16.4.1 3.18.3 3.18.4: GNOME framework for accessing online accounts
-net-libs/gnutls 3.3.17.1 3.3.18 3.3.19 3.3.19-r1 3.3.20 3.3.21 3.3.22 3.4.5 3.4.6 3.4.7 3.4.7-r1 3.4.8 3.4.9 3.4.10: A TLS 1.2 and SSL 3.0 implementation for the GNU project
+net-libs/gnutls 3.3.17.1 3.3.18 3.3.19 3.3.19-r1 3.3.20 3.3.21 3.3.22 3.4.5 3.4.6 3.4.7 3.4.7-r1 3.4.8 3.4.9 3.4.10 3.4.11: A TLS 1.2 and SSL 3.0 implementation for the GNU project
 net-libs/gsnmp 0.3.0: An SNMP library based on glib and gnet
 net-libs/gsoap 2.7.17 2.7.17-r2 2.8.23 2.8.27 2.8.28 2.8.29 2.8.30: A cross-platform open source C and C++ SDK for SOAP/XML Web services
 net-libs/gssdp 0.14.11 0.14.13 0.14.14: A GObject-based API for handling resource discovery and announcement over SSDP
@@ -14663,7 +14663,7 @@ net-misc/ncp 1.2.4: utility for copying files in a LAN (npoll, npush)
 net-misc/ndisc6 0.9.9 0.9.9-r2 1.0.2: Recursive DNS Servers discovery Daemon (rdnssd) for IPv6
 net-misc/ndppd 0.2.3: Proxies NDP messages between interfaces
 net-misc/nemesis 1.4 1.4-r1: A commandline-based, portable human IP stack for UNIX/Linux
-net-misc/netctl 1.9 1.10 9999: Profile based network connection tool from Arch Linux
+net-misc/netctl 1.9 1.10 1.11 9999: Profile based network connection tool from Arch Linux
 net-misc/netdate 1.2: A Utility to synchronize the time with ntp-servers
 net-misc/netfleet 0.2.1 0.2.1-r1 0.2.1-r2: Qt4 cross-platform multi-threaded download utility
 net-misc/netifrc 0.2.2 0.2.3 0.2.4 0.3.0 0.3.1 9999: Gentoo Network Interface Management Scripts
@@ -14911,7 +14911,7 @@ net-nntp/kwooty 1.1.0: Friendly nzb linux usenet binary client
 net-nntp/leafnode 1.11.10 1.11.11: A USENET software package designed for small sites
 net-nntp/newspost 2.1.1-r3: A usenet binary autoposter for unix
 net-nntp/nzb 0.3: A binary news grabber
-net-nntp/nzbget 14.1 14.2 15.0 16.4 17.0_pre1660: A command-line based binary newsgrapper supporting .nzb files
+net-nntp/nzbget 14.1 14.2 15.0 16.4 17.0_pre1686: A command-line based binary newsgrabber supporting .nzb files
 net-nntp/pan 0.139 0.139-r1 0.139-r2: A newsreader for GNOME
 net-nntp/sabnzbd 0.7.16 0.7.17 0.7.18 0.7.19 0.7.20: Binary newsgrabber with web-interface
 net-nntp/slrn 1.0.2: A s-lang based newsreader
@@ -16535,7 +16535,7 @@ sys-apps/paxctl 0.7-r2 0.8 0.9: Manages various PaX related program header flags
 sys-apps/paxctld 1.0 1.0.1 1.1: PaX flags maintenance daemon
 sys-apps/pciutils 3.2.0 3.3.1 3.4.0 3.4.1: Various utilities dealing with the PCI bus
 sys-apps/pcmciautils 018_p8 018_p8-r1: PCMCIA userspace utilities for Linux
-sys-apps/pcsc-lite 1.8.12-r1 1.8.13 1.8.13-r1 1.8.14 1.8.15 1.8.16: PC/SC Architecture smartcard middleware library
+sys-apps/pcsc-lite 1.8.12-r1 1.8.13 1.8.13-r1 1.8.14 1.8.15 1.8.16 1.8.16-r1: PC/SC Architecture smartcard middleware library
 sys-apps/pcsc-slb-rf72-drv 1.1.0-r1 1.1.0-r2: Schlumberger Reflex 72 Serial Smartcard Reader
 sys-apps/pcsc-tools 1.4.25 1.4.26: PC/SC Architecture smartcard tools
 sys-apps/pkgcore 0.9.1 0.9.2 9999: a framework for package management
@@ -17146,7 +17146,7 @@ sys-kernel/pf-sources 2.6.31_p9 2.6.32_p16 2.6.33_p4 2.6.34_p7 2.6.35_p11 2.6.36
 sys-kernel/raspberrypi-image 4.1.17_p20160209 4.1.19_p20160309: Raspberry PI boot loader and firmware
 sys-kernel/raspberrypi-sources 3.10.1_pre-r20130719 3.10.9999 3.12.9999 3.14.9999 3.18.9999 4.1.9999 4.4.9999: Raspberry PI kernel sources
 sys-kernel/rsbac-sources 3.14.28: RSBAC kernel sources (kernel series 3.14)
-sys-kernel/rt-sources 3.14.64_p67 3.14.65_p68 3.18.28_p28 3.18.29_p30 4.1.19_p22 4.1.20_p23 4.4.4_p11 4.4.6_p12 4.4.6_p13: Full Linux 4.4 kernel sources with the CONFIG_PREEMPT_RT patch
+sys-kernel/rt-sources 3.14.64_p67 3.14.65_p68 3.18.28_p28 3.18.29_p30 4.1.19_p22 4.1.20_p23 4.4.4_p11 4.4.6_p12 4.4.6_p13 4.4.6_p14: Full Linux 4.4 kernel sources with the CONFIG_PREEMPT_RT patch
 sys-kernel/spl 0.6.0_rc13-r2 0.6.0_rc14-r3 0.6.1-r3 0.6.2-r5 0.6.3-r1 0.6.4.2 0.6.5.2 0.6.5.3 0.6.5.3-r1 0.6.5.4 0.6.5.4-r1 9999: The Solaris Porting Layer is a Linux kernel module which provides many of the Solaris kernel APIs
 sys-kernel/tuxonice-sources 3.4.110 3.10.98 3.10.100 3.12.55 3.12.56 3.14.62 3.14.64 3.18.27 3.18.28 4.1.18 4.1.19 4.2.8 4.3.6 4.4.3 4.4.5: TuxOnIce + Gentoo patchset sources
 sys-kernel/vanilla-sources 3.2.79 3.4.111 3.10.101 3.12.57 3.14.65 3.18.30 4.1.21 4.4.6 4.5.0: Full sources for the Linux kernel
@@ -17622,6 +17622,7 @@ www-apps/groupoffice 3.7.52 4.0.47 4.0.97 4.0.144 4.1.7: Group-Office is a power
 www-apps/guacamole 0.9.0 0.9.2 0.9.3 0.9.7 0.9.8 0.9.9: Guacamole is a html5 vnc client as servlet
 www-apps/hiawatha-monitor 1.0 1.2 1.3: Monitoring application for www-servers/hiawatha
 www-apps/icingaweb2 2.1.0 2.1.2 2.2.0 9999: Icinga Web 2 - Frontend for icinga2
+www-apps/icingaweb2-module-graphite 9999: Icinga Web 2 plugin for pnp4nagios
 www-apps/icingaweb2-module-pnp4nagios 1.0.1 9999: Icinga Web 2 plugin for pnp4nagios
 www-apps/ikiwiki 3.20140227 3.20140916 3.20150107: A wiki compiler
 www-apps/jekyll 2.5.3 3.1.2: A simple, blog aware, static site generator
@@ -17927,7 +17928,7 @@ x11-drivers/xf86-video-geode 2.11.17 2.11.18: AMD Geode GX2 and LX video driver
 x11-drivers/xf86-video-glint 1.2.7 1.2.8 1.2.8-r1: GLINT/Permedia video driver
 x11-drivers/xf86-video-i128 1.3.5 1.3.6 1.3.6-r1: Number 9 I128 video driver
 x11-drivers/xf86-video-i740 1.3.5: Intel i740 video driver
-x11-drivers/xf86-video-intel 2.9.1 2.21.15 2.99.917-r2 2.99.917_p20160403 2.99.917_p20160407: X.Org driver for Intel cards
+x11-drivers/xf86-video-intel 2.9.1 2.21.15 2.99.917-r2 2.99.917_p20160403 2.99.917_p20160407 2.99.917_p201604010: X.Org driver for Intel cards
 x11-drivers/xf86-video-ivtv 1.1.2 1.1.2-r1 1.1.2-r2: X.Org driver for TV-out on ivtvdev cards
 x11-drivers/xf86-video-mach64 6.9.5: ATI Mach64 video driver
 x11-drivers/xf86-video-mga 1.6.2 1.6.3 1.6.4: Matrox video driver
@@ -17989,7 +17990,7 @@ x11-libs/gtk+ 1.2.10-r13 2.24.28-r1 2.24.29 2.24.30 3.16.7 3.18.7 3.18.9: Gimp T
 x11-libs/gtk+extra 3.0.5 3.2.0: Useful Additional GTK+ widgets
 x11-libs/gtk-mac-integration 2.0.5: Menubar, doc and app bundle integration for GTK+
 x11-libs/gtkdatabox 0.9.2.0: Gtk+ Widgets for live display of large amounts of fluctuating numerical data
-x11-libs/gtkglarea 1.2.3-r1 2.0.1-r1 2.1.0: OpenGL canvas and context provider for GTK+
+x11-libs/gtkglarea 2.0.1-r1 2.1.0: OpenGL canvas and context provider for GTK+
 x11-libs/gtkglext 1.2.0-r2 1.2.0-r3: GL extensions for Gtk+ 2.0
 x11-libs/gtkhotkey 0.2.1: Cross platform library for using desktop wide hotkeys
 x11-libs/gtkmathview 0.8.0-r2: Rendering engine for MathML documents
@@ -18331,7 +18332,7 @@ x11-misc/wdm 1.28-r3: WINGs Display Manager
 x11-misc/whaw 0.2: Window manager independent Window Layout tool
 x11-misc/wininfo 0.7: An X app that follows your pointer providing information about the windows below
 x11-misc/winswitch 0.12.18-r1: client server tool to start and control virtual desktops
-x11-misc/wmakerconf 2.12-r2: X based config tool for the windowmaker X windowmanager
+x11-misc/wmakerconf 2.12-r2 2.12-r3: X based config tool for the windowmaker X windowmanager
 x11-misc/wmctrl 1.07-r1: command line tool to interact with an EWMH/NetWM compatible X Window Manager
 x11-misc/wmiface 2.1: Command line tool allowing user scripting of the running window manager
 x11-misc/wmname 0.1: utility to set the name of your window manager
