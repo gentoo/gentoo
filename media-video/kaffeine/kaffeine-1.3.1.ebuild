@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 KDE_LINGUAS="ar ast be bg ca ca@valencia cs da de el en_GB eo es et fi fr ga gl
 hr hu it ja km ko ku lt mai nb nds nl nn pa pl pt pt_BR ro ru se sk
@@ -33,7 +33,7 @@ PATCHES=( "${FILESDIR}/${P}-cmake34.patch" )
 
 src_configure() {
 	local mycmakeargs=(
-		$(cmake-utils_use_build debug DEBUG_MODULE)
+		-DBUILD_DEBUG_MODULE=$(usex debug)
 	)
 
 	kde4-base_src_configure
