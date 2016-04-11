@@ -131,6 +131,14 @@ LICENSE="${LICENSE:-|| ( Artistic GPL-1+ )}"
 # (EAPI=6) This variable sets the module author name for the calculation of
 # SRC_URI. Named MODULE_AUTHOR in EAPI=5.
 
+# @ECLASS-VARIABLE: DIST_EXAMPLES
+# @DESCRIPTION:
+# (EAPI=6) This Bash array allows passing a list of example files to be installed
+# in /usr/share/doc/${PF}/examples. If set before inherit, automatically adds
+# a use-flag examples, if not you'll have to add the useflag in your ebuild.
+# Examples are installed only if the useflag examples exists and is activated.
+
+
 if [[ ${EAPI:-0} == 5 ]]; then
 	if [[ -n ${MY_PN} || -n ${MY_PV} || -n ${MODULE_VERSION} ]] ; then
 		: ${MY_P:=${MY_PN:-${PN}}-${MY_PV:-${MODULE_VERSION:-${PV}}}}
@@ -158,6 +166,8 @@ else
 		SRC_URI="mirror://cpan/authors/id/${DIST_AUTHOR:0:1}/${DIST_AUTHOR:0:2}/${DIST_AUTHOR}/${DIST_SECTION:+${DIST_SECTION}/}${DIST_A}"
 	[[ -z "${HOMEPAGE}" ]] && \
 		HOMEPAGE="http://search.cpan.org/dist/${DIST_NAME}/"
+
+	[[ -z "${DIST_EXAMPLES}" ]] || IUSE+=" examples"
 fi
 
 SRC_PREP="no"
@@ -418,6 +428,12 @@ perl-module_src_install() {
 	for f in Change* CHANGES README* TODO FAQ ${mydoc}; do
 		[[ -s ${f} ]] && dodoc ${f}
 	done
+
+	if [[ ${EAPI:-0} != 5 ]] ; then
+		if in_iuse examples && use examples ; then
+                        [[ -z "${DIST_EXAMPLES}" ]] || perl_doexamples ${DIST_EXAMPLES}
+		fi
+	fi
 
 	perl_link_duallife_scripts
 }
