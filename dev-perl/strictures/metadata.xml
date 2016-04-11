@@ -8,5 +8,6 @@
 	<upstream>
 		<remote-id type="cpan">strictures</remote-id>
 		<remote-id type="cpan-module">strictures</remote-id>
+		<remote-id type="cpan-module">strictures::extra</remote-id>
 	</upstream>
 </pkgmetadata>
