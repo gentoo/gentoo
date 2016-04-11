@@ -15,7 +15,7 @@ KEYWORDS="~alpha ~amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
 IUSE="gif jpeg png tiff truetype X"
 
 RDEPEND="gif? ( >media-libs/giflib-4.2 )
-	jpeg? ( virtual/jpeg )
+	jpeg? ( virtual/jpeg:* )
 	png? (
 		media-libs/libpng:0
 		media-libs/netpbm
