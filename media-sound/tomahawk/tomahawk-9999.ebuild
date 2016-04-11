@@ -1,17 +1,17 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 KDE_REQUIRED="optional"
-inherit kde4-base ${GIT_ECLASS}
+inherit kde4-base
 
 if [[ ${PV} != *9999* ]]; then
 	SRC_URI="http://download.tomahawk-player.org/${P}.tar.bz2"
 	KEYWORDS="~amd64 ~x86"
 else
-	GIT_ECLASS="git-r3"
+	inherit git-r3
 	EGIT_REPO_URI="git://github.com/tomahawk-player/${PN}.git"
 	KEYWORDS=""
 fi
@@ -74,14 +74,21 @@ RDEPEND="${DEPEND}
 
 DOCS=( AUTHORS ChangeLog README.md )
 
+PATCHES=(
+	"${FILESDIR}/${PN}-quazip-cmake.patch"
+	"${FILESDIR}/${PN}-liblastfm-cmake.patch"
+)
+
 src_configure() {
 	local mycmakeargs=(
 		-DWITH_CRASHREPORTER=OFF
-		$(cmake-utils_use_build hatchet)
-		$(cmake-utils_use_with xmpp Jreen)
-		$(cmake-utils_use_with kde KDE4)
-		$(cmake-utils_use_build !qt5 WITH_QT4)
-		$(cmake-utils_use_with telepathy TelepathyQt)
+		-DBUILD_TESTS=OFF
+		-DBUILD_TOOLS=OFF
+		-DBUILD_HATCHET=$(usex hatchet)
+		-DWITH_KDE4=$(usex kde)
+		-DBUILD_WITH_QT4=$(usex !qt5)
+		-DWITH_TelepathyQt=$(usex telepathy)
+		-DWITH_Jreen=$(usex xmpp)
 	)
 
 	if [[ ${PV} != *9999* ]]; then
