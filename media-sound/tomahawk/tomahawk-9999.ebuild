@@ -74,6 +74,11 @@ RDEPEND="${DEPEND}
 
 DOCS=( AUTHORS ChangeLog README.md )
 
+PATCHES=(
+	"${FILESDIR}/${PN}-quazip-cmake.patch"
+	"${FILESDIR}/${PN}-liblastfm-cmake.patch"
+)
+
 src_configure() {
 	local mycmakeargs=(
 		-DWITH_CRASHREPORTER=OFF
