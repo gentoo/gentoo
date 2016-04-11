@@ -24,15 +24,17 @@ KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86
 # This is called libusb so that it doesn't fool people in thinking that
 # it is _required_ for USB support. Otherwise they'll disable udev and
 # that's going to be worse.
-IUSE="libusb policykit selinux +udev"
+IUSE="python libusb policykit selinux +udev"
 
-REQUIRED_USE="^^ ( udev libusb )"
+REQUIRED_USE="^^ ( udev libusb ) \
+	python? ( ${PYTHON_REQUIRED_USE} )"
 
 # No dependencies need the MULTILIB_DEPS because the libraries are actually
 # standalone, the deps are only needed for the daemon itself.
 CDEPEND="libusb? ( virtual/libusb:1 )
 	udev? ( virtual/udev )
-	policykit? ( >=sys-auth/polkit-0.111 )"
+	policykit? ( >=sys-auth/polkit-0.111 )
+	python? ( ${PYTHON_DEPS} )"
 DEPEND="${CDEPEND}
 	virtual/pkgconfig"
 RDEPEND="${CDEPEND}
@@ -49,10 +51,10 @@ PATCHES=(
 DOCS=( AUTHORS DRIVERS HELP README SECURITY ChangeLog )
 
 pkg_setup() {
-	python-single-r1_pkg_setup
-	#enewgroup openct # make sure it exists
-	#enewgroup pcscd
-	#enewuser pcscd -1 -1 /run/pcscd pcscd,openct
+	use python && python-single-r1_pkg_setup
+	enewgroup openct # make sure it exists
+	enewgroup pcscd
+	enewuser pcscd -1 -1 /run/pcscd pcscd,openct
 }
 
 multilib_src_configure() {
@@ -76,7 +78,13 @@ multilib_src_install_all() {
 		doins "${FILESDIR}"/99-pcscd-hotplug.rules
 	fi
 
-	python_fix_shebang "${ED}/usr/bin"
+	for f in "${ED}/usr/bin/pcsc-spy"; do
+		if use python; then
+			python_fix_shebang "${f}"
+		else
+			rm "${f}"
+		fi
+	done
 }
 
 pkg_postinst() {
