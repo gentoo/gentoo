@@ -2,8 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
-inherit base flag-o-matic
+EAPI=5
+inherit eutils flag-o-matic
 
 DESCRIPTION="Render images of the earth into the X root window"
 HOMEPAGE="http://xplanet.sourceforge.net/"
@@ -15,7 +15,7 @@ KEYWORDS="~alpha ~amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
 IUSE="gif jpeg png tiff truetype X"
 
 RDEPEND="gif? ( >media-libs/giflib-4.2 )
-	jpeg? ( virtual/jpeg )
+	jpeg? ( virtual/jpeg:* )
 	png? (
 		media-libs/libpng:0
 		media-libs/netpbm
@@ -40,7 +40,9 @@ DEPEND="${RDEPEND}
 
 DOCS="AUTHORS ChangeLog NEWS README TODO"
 
-PATCHES=( "${FILESDIR}"/xplanet-1.3.0-giflib.patch )
+src_prepare() {
+	epatch "${FILESDIR}"/${P}-giflib.patch
+}
 
 src_configure() {
 	# econf says 'checking pnm.h presence... no'
