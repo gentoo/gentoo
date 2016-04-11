@@ -14718,6 +14718,7 @@ net-misc/packETH 1.7.2 1.7.3 1.8: Packet generator tool for ethernet
 net-misc/pavuk 0.9.36_pre20120215-r2: Web spider and website mirroring tool
 net-misc/pcapfix 0.7: Repair and fix broken pcap files
 net-misc/pedro 1.6: Pedro is a subscription/notification communications system
+net-misc/peervpn 0.044: P2P mesh VPN
 net-misc/pen 0.25.1: TCP Load Balancing Port Forwarder
 net-misc/pimpd 0.8: RFC1413-compliant identd server supporting masqueraded connections
 net-misc/pipes 1.16 1.16.1: Very versatile TCP pipes
@@ -18477,7 +18478,7 @@ x11-plugins/pidgin-skypeweb 1.1 9999: SkypeWeb Plugin for Pidgin
 x11-plugins/pidgin-xmpp-receipts 0.6: Implementation of xmpp message delivery receipts (XEP-0184) for Pidgin
 x11-plugins/pidgintex 1.1.1: Pidgin plugin to render LaTeX expressions in messages
 x11-plugins/prpltwtr 0.12.0: libpurple twitter protocol
-x11-plugins/purple-facebook 20160107 20160118: Facebook protocol plugin for libpurple
+x11-plugins/purple-facebook 20160107 20160118 20160409: Facebook protocol plugin for libpurple
 x11-plugins/purple-libnotify-plus 1.99.2 2.99.1: Provide libnotify interface to Pidgin and Finch, inspired by Pidgin-libnotify and Guifications
 x11-plugins/purple-plugin_pack 2.7.0-r1: A package with many different plugins for pidgin and libpurple
 x11-plugins/qled 0.6.2: Custom Led widget plugin for Qt-Designer

@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure prepare
+DEPEND=dev-libs/json-glib net-im/pidgin !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Facebook protocol plugin for libpurple
+EAPI=5
+HOMEPAGE=https://github.com/jgeboski/purple-facebook
+KEYWORDS=~amd64
+LICENSE=GPL-2
+RDEPEND=dev-libs/json-glib net-im/pidgin
+SLOT=0
+SRC_URI=https://github.com/jgeboski/purple-facebook/releases/download/66ee77378d82/purple-facebook-66ee77378d82.tar.gz -> purple-facebook-20160409.tar.gz
+_eclass_exported_funcs=src_prepare:- src_configure:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	9d81603248f2ba3ec59124320d123e5e	libtool	4890219c51da247200223277f993e054	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=2d1ed3918a39a5b8fe98b4b9f511d5af
