@@ -1,0 +1,35 @@
+From 8ac62cf2aa07576763af2ae2dff1bebcd8a80083 Mon Sep 17 00:00:00 2001
+From: Ilya Tumaykin <itumaykin@gmail.com>
+Date: Mon, 11 Apr 2016 19:53:56 +0300
+Subject: Fix compilation with >=flex-2.6.1
+
+flex devs reverted yyleng's type back to `int' in 2.6.1 [1].
+It was previously changed from `int' to `yy_size_t' in 2.5.36 [2,3].
+
+Adjust the related guard accordingly.
+
+See also https://bugs.gentoo.org/show_bug.cgi?id=579490
+
+[1]: https://github.com/westes/flex/commit/7a7c3dfe1bcb8230447ba1656f926b4b4cdfc457
+[2]: https://github.com/westes/flex/commit/9ba3187a537d6a58d345f2874d06087fd4050399
+[3]: https://gitlab.com/agmartin/linuxdoc-tools/commit/ada178bdcd05f57024934ea6a00cecfa95973509
+---
+ rtf-fix/rtf2rtf.l | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
+
+diff --git a/rtf-fix/rtf2rtf.l b/rtf-fix/rtf2rtf.l
+index d1f6a66..274b6ee 100644
+--- a/rtf-fix/rtf2rtf.l
++++ b/rtf-fix/rtf2rtf.l
+@@ -73,9 +73,8 @@ int skipnewline = 0;
+
+ extern char *yytext;
+
+-#if   YY_FLEX_MAJOR_VERSION > 2 \
+- ||  (YY_FLEX_MAJOR_VERSION == 2 && YY_FLEX_MINOR_VERSION > 5) \
+- ||  (YY_FLEX_MAJOR_VERSION == 2 && YY_FLEX_MINOR_VERSION == 5 && YY_FLEX_SUBMINOR_VERSION > 35)
++#if (YY_FLEX_MAJOR_VERSION == 2 && YY_FLEX_MINOR_VERSION == 5 && YY_FLEX_SUBMINOR_VERSION > 35) \
++ || (YY_FLEX_MAJOR_VERSION == 2 && YY_FLEX_MINOR_VERSION == 6 && YY_FLEX_SUBMINOR_VERSION == 0)
+ extern yy_size_t yyleng;
+ #else
+ extern int yyleng;
