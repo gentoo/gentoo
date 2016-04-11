@@ -7,6 +7,7 @@
   </maintainer>
   <use>
     <flag name="memcached">Enable memcached support</flag>
+		<flag name="carbon">Enable carbon support</flag>
   </use>
   <upstream>
     <remote-id type="pypi">graphite-web</remote-id>
