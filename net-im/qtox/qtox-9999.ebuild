@@ -66,18 +66,8 @@ src_configure() {
 	# filter_audio is disabled since it's not available in Gentoo, and
 	# support for it in qTox at the present is ~broken anyway
 	eqmake5 \
+			PREFIX="${D}/usr" \
 			DISABLE_FILTER_AUDIO=YES \
 			${NO_GTK_SUPPORT} \
 			${NO_X_SUPPORT}
-}
-
-src_install() {
-	dobin "${S}/qtox"
-	# install all png icons
-	local ICONS=(16 22 24 32 36 48 64 72 96 128 192 256 512)
-	for i in "${ICONS[@]}"; do
-		newicon -s "${i}" "${S}/img/icons/qtox-${i}x${i}.png" "qtox.png"
-	done
-	doicon -s scalable "${S}/img/icons/qtox.svg"
-	domenu "${S}/qTox.desktop"
 }
