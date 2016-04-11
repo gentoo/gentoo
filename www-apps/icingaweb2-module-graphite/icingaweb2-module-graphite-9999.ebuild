@@ -24,6 +24,6 @@ DEPEND=">=net-analyzer/icinga2-2.1.1
 RDEPEND="${DEPEND}"
 
 src_install() {
-	insinto "/usr/share/icingaweb2/modules/pnp/${PN}"
+	insinto "/usr/share/icingaweb2/modules/graphite/"
 	doins -r "${S}"/*
 }
