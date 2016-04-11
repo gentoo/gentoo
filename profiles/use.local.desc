@@ -4962,6 +4962,7 @@ net-analyzer/goaccess:btree - Enable Tokyo Cabinet's on-disk B+ Tree database ba
 net-analyzer/goaccess:memhash - Enable Tokyo Cabinet's on-memory hash database backend
 net-analyzer/goaccess:tokyocabinet - Enable Tokyo Cabinet's on-memory hash database backend
 net-analyzer/gr-fosphor:glfw - enable GLFW based interface
+net-analyzer/graphite-web:carbon - Enable carbon support
 net-analyzer/graphite-web:memcached - Enable memcached support
 net-analyzer/httping:tfo - Enable support for TCP Fast Open
 net-analyzer/hydra:ncp - NCP protocol (NetWare) support through net-fs/ncpfs

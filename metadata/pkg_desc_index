@@ -13609,7 +13609,7 @@ net-analyzer/gnome-nettool 3.8.1: Graphical front-ends to various networking com
 net-analyzer/gnu-netcat 0.7.1-r3: the GNU network swiss army knife
 net-analyzer/goaccess 0.5-r1 0.6.1 0.8.5 0.9: A real-time web log analyzer and interactive viewer that runs in a terminal
 net-analyzer/gr-fosphor 9999: gnuradio fosphor block (GPU spectrum display)
-net-analyzer/graphite-web 0.9.13-r1 0.9.13-r2: Enterprise scalable realtime graphing
+net-analyzer/graphite-web 0.9.13-r1 0.9.13-r2 0.9.13-r3: Enterprise scalable realtime graphing
 net-analyzer/greenbone-security-assistant 6.0.8 6.0.9: Greenbone Security Assistant for openvas
 net-analyzer/gsm-receiver 9999: GSM receiver block from the airprobe suite
 net-analyzer/gspoof 3.2-r2: A simple GTK/command line TCP/IP packet generator
