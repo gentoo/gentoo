@@ -2,22 +2,9 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>bernd@lommerzheim.com</email>
-		<name>Bernd Lommerzheim</name>
-	</maintainer>
-	<maintainer type="person">
-		<email>voyageur@gentoo.org</email>
-		<name>Bernard Cafarelli</name>
-		<description>Proxy maintainer</description>
-	</maintainer>
-	<maintainer type="person">
 		<email>slyfox@gentoo.org</email>
 		<name>Sergei Trofimovich</name>
 		<description>Mostly user.</description>
-	</maintainer>
-	<maintainer type="project">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription>ProFTPD grew out of the desire to have a secure and 
 configurable FTP server, and out of a significant admiration of the Apache web 
