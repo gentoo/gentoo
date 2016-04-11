@@ -6,7 +6,7 @@ EAPI="6"
 
 JAVA_PKG_IUSE="source"
 
-inherit eutils java-pkg-2 java-ant-2 versionator
+inherit java-pkg-2 java-ant-2 versionator
 
 MY_P="${PN}-$(replace_all_version_separators '-')"
 DESCRIPTION="A Java data mining package"
