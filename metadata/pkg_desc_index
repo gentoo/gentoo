@@ -17594,7 +17594,7 @@ www-apps/agendav 1.2.6.2: multilanguage CalDAV web client
 www-apps/airdcpp-webui 1.0.2 1.0.3 1.0.4: Web interface for airdcpp-webclient
 www-apps/ampache 3.8.1: PHP-based tool for managing,updating and playing audio files via a web interface
 www-apps/b2evolution 4.1.7: Multilingual multiuser multi-blog engine
-www-apps/baikal 0.2.4 0.2.7 0.3.5: Lightweight CalDAV+CardDAV server
+www-apps/baikal 0.2.4 0.2.7 0.3.5 0.4.4: Lightweight CalDAV+CardDAV server
 www-apps/bitten 0.6-r1: Continuous integration plugin for Trac
 www-apps/blazeblogger 1.2.0 1.2.0-r1: simple-to-use, capable content management system for the cmdline producing static content
 www-apps/blohg 0.13 9999: A Mercurial (or Git) based blogging engine
