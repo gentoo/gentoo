@@ -1,0 +1,13 @@
+DEFINED_PHASES=install postinst postrm
+DEPEND=virtual/pkgconfig
+DESCRIPTION=The Great Internet Mersenne Prime Search
+EAPI=6
+HOMEPAGE=http://mersenne.org/
+KEYWORDS=-* ~amd64 ~x86
+LICENSE=GIMPS
+RDEPEND=net-misc/curl
+SLOT=0
+SRC_URI=amd64? ( ftp://mersenne.org/gimps/p95v289.linux64.tar.gz ) x86? ( ftp://mersenne.org/gimps/p95v289.linux32.tar.gz )
+_eclass_exported_funcs=pkg_postrm:- pkg_postinst:- src_install:-
+_eclasses_=multilib	3972ca401cf7dbb430df9995f5d8d580	pax-utils	ecf634cba91bb9591a8fdb6f6145f1bb	systemd	3165c885f3c71ffae7a867d931fb0e07	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=ed5e773e6916b5697a95d5ca294359da
