@@ -4,7 +4,7 @@
 
 EAPI=6
 
-inherit autotools eutils flag-o-matic user
+inherit eutils flag-o-matic user
 
 MY_PV=${PV/_pre/-r}
 MY_P=${PN}-${PV/_pre/-testing-r}
@@ -31,17 +31,6 @@ DOCS=( ChangeLog README nzbget.conf )
 
 S=${WORKDIR}/${PN}-${PV/_pre*/-testing}
 
-# Fix linking for ncurses[tinfo]
-# https://github.com/nzbget/nzbget/issues/188
-# https://bugs.gentoo.org/527262
-
-# Add a missing autoconf macro
-# https://github.com/nzbget/nzbget/pull/189
-PATCHES=(
-	"${FILESDIR}/${PN}-14.0_pre1145-tinfo.patch"
-	"${FILESDIR}/${PN}-17.0_pre1660-add-missing-macro.patch"
-)
-
 pkg_pretend() {
 	if [[ ${MERGE_TYPE} != binary ]] && ! test-flag-CXX -std=c++14; then
 		eerror "${P} requires a C++14-capable compiler. Your current compiler"
@@ -63,12 +52,6 @@ src_prepare() {
 		-e 's:^ConfigTemplate=.*:ConfigTemplate=/usr/share/nzbget/nzbget.conf:' \
 		-e 's:^DaemonUsername=.*:DaemonUsername=nzbget:' \
 		nzbget.conf > nzbgetd.conf || die
-
-	# Don't install a duplicate README which causes make install to fail
-	# https://github.com/nzbget/nzbget/issues/135
-	sed -i "\|^\tlib/par2/README|d" Makefile.am || die
-
-	eautoreconf
 }
 
 src_configure() {
