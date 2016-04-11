@@ -86,6 +86,7 @@ src_configure() {
 		--default-linker=$(tc-getBUILD_CC) \
 		--default-ar=$(tc-getBUILD_AR) \
 		--python=${EPYTHON} \
+		--disable-rpath \
 		$(use_enable clang) \
 		$(use_enable debug) \
 		$(use_enable debug llvm-assertions) \
