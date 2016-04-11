@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=5
-inherit base flag-o-matic
+inherit eutils flag-o-matic
 
 DESCRIPTION="Render images of the earth into the X root window"
 HOMEPAGE="http://xplanet.sourceforge.net/"
@@ -40,7 +40,9 @@ DEPEND="${RDEPEND}
 
 DOCS="AUTHORS ChangeLog NEWS README TODO"
 
-PATCHES=( "${FILESDIR}"/${P}-giflib.patch )
+src_prepare() {
+	epatch "${FILESDIR}"/${P}-giflib.patch
+}
 
 src_configure() {
 	# econf says 'checking pnm.h presence... no'
