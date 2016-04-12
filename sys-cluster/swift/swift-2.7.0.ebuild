@@ -57,10 +57,6 @@ CONFIG_CHECK="~EXT3_FS_XATTR ~SQUASHFS_XATTR ~CIFS_XATTR ~JFFS2_FS_XATTR
 ~TMPFS_XATTR ~UBIFS_FS_XATTR ~EXT2_FS_XATTR ~REISERFS_FS_XATTR ~EXT4_FS_XATTR
 ~ZFS"
 
-PATCHES=(
-	"${FILESDIR}/cve-2016-0738-stable-liberty.patch"
-)
-
 pkg_setup() {
 	enewuser swift
 	enewgroup swift
