@@ -28,14 +28,15 @@ DOCS+=( README.md )
 # See Copyright in source tarball and bug #506946. Waf is BSD, libmpv is ISC.
 LICENSE="GPL-2+ BSD ISC"
 SLOT="0"
-IUSE="+alsa archive bluray cdda +cli doc drm dvb +dvd +egl +enca encode gbm
-	+iconv jack jpeg lcms +libass libav libcaca libguess libmpv lua luajit
-	openal +opengl oss pulseaudio raspberry-pi rubberband samba -sdl selinux
-	test uchardet v4l vaapi vdpau vf-dlopen wayland +X xinerama +xscreensaver
-	+xv zsh-completion"
+IUSE="aqua +alsa archive bluray cdda +cli coreaudio doc drm dvb +dvd +egl +enca
+	encode gbm +iconv jack jpeg lcms +libass libav libcaca libguess libmpv lua
+	luajit openal +opengl oss pulseaudio raspberry-pi rubberband samba -sdl
+	selinux test uchardet v4l vaapi vdpau vf-dlopen wayland +X xinerama
+	+xscreensaver +xv zsh-completion"
 
 REQUIRED_USE="
 	|| ( cli libmpv )
+	aqua? ( opengl )
 	egl? ( || ( gbm X wayland ) )
 	enca? ( iconv )
 	gbm? ( drm egl )
@@ -87,8 +88,12 @@ COMMON_DEPEND="
 		luajit? ( dev-lang/luajit:2 )
 	)
 	openal? ( >=media-libs/openal-1.13 )
-	opengl? ( virtual/opengl )
+	opengl? ( !aqua? ( virtual/opengl ) )
 	pulseaudio? ( media-sound/pulseaudio )
+	raspberry-pi? (
+		>=media-libs/raspberrypi-userland-0_pre20160305-r1
+		media-libs/mesa[egl,gles2]
+	)
 	rubberband? ( >=media-libs/rubberband-1.8.0 )
 	samba? ( net-fs/samba )
 	sdl? ( media-libs/libsdl2[sound,threads,video,X?,wayland?] )
@@ -121,14 +126,7 @@ RDEPEND="${COMMON_DEPEND}
 	selinux? ( sec-policy/selinux-mplayer )
 "
 
-PATCHES=(
-	"${FILESDIR}/${P}-fix-srt-subtitles-on-libav.patch"
-	"${FILESDIR}/${P}-avoid-NULL-dereference-on-wayland.patch"
-	"${FILESDIR}/${P}-set-correct-seekable-flags.patch"
-	"${FILESDIR}/${P}-fix-bitrate-calculation.patch"
-	"${FILESDIR}/${P}-fix-coverart-decoding.patch"
-	"${FILESDIR}/${P}-add-missing-audio-reconfig-events.patch"
-)
+PATCHES=( "${FILESDIR}/${P}-fix-seeking-without-first-index-entry.patch" )
 
 pkg_pretend() {
 	if [[ ${MERGE_TYPE} != "binary" ]] && ! tc-has-tls && use vaapi && use egl; then
@@ -147,7 +145,7 @@ src_configure() {
 		--confdir="${EPREFIX}"/etc/${PN}
 		--docdir="${EPREFIX}"/usr/share/doc/${PF}
 
-		--disable-gpl3		# Unclear license info. See Gentoo bug 571728.
+		--disable-gpl3			# Unclear license info. See Gentoo bug 571728.
 
 		$(usex cli '' '--disable-cplayer')
 		$(use_enable libmpv libmpv-shared)
@@ -196,10 +194,10 @@ src_configure() {
 		$(use_enable openal)
 		--disable-opensles
 		$(use_enable alsa)
-		--disable-coreaudio
+		$(use_enable coreaudio)
 
 		# Video outputs
-		--disable-cocoa
+		$(use_enable aqua cocoa)
 		$(use_enable drm)
 		$(use_enable gbm)
 		$(use_enable wayland)
@@ -209,6 +207,7 @@ src_configure() {
 		$(use_enable xv)
 		$(use_enable xinerama)
 		$(use_enable X xrandr)
+		$(usex opengl "$(use_enable aqua gl-cocoa)" '--disable-gl-cocoa')
 		$(usex opengl "$(use_enable X gl-x11)" '--disable-gl-x11')
 		$(usex egl "$(use_enable X egl-x11)" '--disable-egl-x11')
 		$(usex egl "$(use_enable gbm egl-drm)" '--disable-egl-drm')
@@ -223,9 +222,10 @@ src_configure() {
 		$(use_enable jpeg)
 		--disable-android
 		$(use_enable raspberry-pi rpi)
-		$(use_enable opengl desktop-gl)
+		$(usex libmpv "$(use_enable opengl plain-gl)" '--disable-plain-gl')
 
 		# HWaccels
+		# Automagic Video Toolbox HW acceleration. See Gentoo bug 577332.
 		$(use_enable vaapi vaapi-hwaccel)
 		# Automagic VDPAU HW acceleration. See Gentoo bug 558870.
 
@@ -235,6 +235,9 @@ src_configure() {
 		$(use_enable v4l libv4l2)
 		$(use_enable v4l audio-input)
 		$(use_enable dvb dvbin)
+
+		# Miscellaneous features
+		--disable-apple-remote	# Needs testing first. See Gentoo bug 577332.
 	)
 
 	if use vaapi && use X; then

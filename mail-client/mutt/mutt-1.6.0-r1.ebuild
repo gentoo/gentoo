@@ -6,7 +6,7 @@ EAPI="6"
 
 inherit eutils flag-o-matic autotools
 
-PATCHSET_REV="-r3"
+PATCHSET_REV="-r4"
 
 DESCRIPTION="A small but very powerful text-based mail client"
 HOMEPAGE="http://www.mutt.org/"
@@ -115,12 +115,6 @@ src_prepare() {
 		epatch "${p}"
 	done
 
-	# we conditionalise this one, simply because it has considerable
-	# impact on the code
-	if use sidebar ; then
-		epatch "${PATCHDIR}"/sidebar-neomutt.patch
-	fi
-
 	# Avoid symbol conflicts on Solaris
 	sed -i \
 		-e 's/\<M_CMD\>/MT_CMD/g' \
@@ -158,6 +152,7 @@ src_configure() {
 		$(use_enable nls) \
 		$(use_enable nntp) \
 		$(use_enable pop) \
+		$(use_enable sidebar) \
 		$(use_enable smime) \
 		$(use_enable smtp) \
 		$(use_with idn) \
@@ -271,6 +266,12 @@ pkg_postinst() {
 		elog "If you are new to mutt you may want to take a look at"
 		elog "the Gentoo QuickStart Guide to Mutt E-Mail:"
 		elog "   https://wiki.gentoo.org/wiki/Mutt"
+		echo
+	elif use sidebar ; then
+		echo
+		elog "The sidebar patch has changed config names, please see"
+		elog "the following page for a list of new names:"
+		elog "http://www.neomutt.org/sidebar-intro.html#intro-sidebar-config-changes"
 		echo
 	fi
 }
