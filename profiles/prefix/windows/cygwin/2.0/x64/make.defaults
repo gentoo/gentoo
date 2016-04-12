@@ -5,3 +5,14 @@
 ARCH="x64-cygwin"
 CHOST="x86_64-pc-cygwin"
 ACCEPT_KEYWORDS="~x64-cygwin"
+
+# We don't have lib64 in prefix so, remove it here.
+SYMLINK_LIB=""
+LIBDIR_amd64="lib"
+
+# multilib build stuff, single ABI (no multilib)
+MULTILIB_ABIS="amd64"
+DEFAULT_ABI="amd64"
+ABI="amd64"
+IUSE_IMPLICIT="abi_x86_64"
+LIBDIR_amd64="lib"
