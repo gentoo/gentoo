@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 DESCRIPTION="Run arbitrary commands when files change"
 HOMEPAGE="http://entrproject.org/"
@@ -15,7 +15,7 @@ IUSE="test"
 
 src_unpack() {
 	unpack "${P}.tar.gz"
-	mv eradman-* "${P}"
+	mv eradman-* "${P}" || die
 }
 
 src_configure() {
