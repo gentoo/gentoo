@@ -18,9 +18,9 @@ DEPEND="
 	$(add_frameworks_dep kiconthemes)
 	$(add_frameworks_dep kio)
 	$(add_frameworks_dep kwidgetsaddons)
-	dev-libs/libpwquality
 	$(add_qt_dep qtdbus)
 	$(add_qt_dep qtgui)
 	$(add_qt_dep qtwidgets)
+	>=dev-libs/libpwquality-1.3.0
 "
 RDEPEND="${DEPEND}"
