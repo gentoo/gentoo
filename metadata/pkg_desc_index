@@ -5468,6 +5468,7 @@ dev-perl/Debug-Client 0.290.0: Client side code for perl debugger
 dev-perl/DelimMatch 1.06-r1: A Perl 5 module for locating delimited substrings with proper nesting
 dev-perl/Devel-ArgNames 0.30.0-r1: Figure out the names of variables passed into subroutines
 dev-perl/Devel-Caller 2.60.0: Meatier versions of caller
+dev-perl/Devel-CheckBin 0.40.0: check that a command is available
 dev-perl/Devel-CheckCompiler 0.50.0: Check the compiler's availability
 dev-perl/Devel-CheckLib 1.60.0: check that a library is available
 dev-perl/Devel-Cover 1.200.0 1.210.0: Code coverage metrics for Perl
