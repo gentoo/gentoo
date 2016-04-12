@@ -4,7 +4,7 @@
 
 EAPI="5"
 
-inherit java-vm-2 multilib prefix toolchain-funcs
+inherit eutils java-vm-2 multilib toolchain-funcs
 
 dist="https://dev.gentoo.org/~chewi/distfiles"
 TARBALL_VERSION="${PV}"
@@ -90,12 +90,8 @@ src_prepare() {
 		   {,jre/}bin/policytool bin/appletviewer || die
 	fi
 
-	if [[ -n "${EPREFIX}" ]]; then
-		# The binaries are built on a non-prefixed system so the
-		# fontconfig needs to have prefixes inserted.
-		sed -i 's:=/:=@GENTOO_PORTAGE_EPREFIX@/:' jre/lib/fontconfig.Gentoo.properties || die
-		eprefixify jre/lib/fontconfig.Gentoo.properties
-	fi
+	# Disable EC for now, bug #579676.
+	epatch "${FILESDIR}/no-sunec.patch"
 }
 
 src_install() {
