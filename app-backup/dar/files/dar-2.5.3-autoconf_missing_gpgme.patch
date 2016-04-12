@@ -1,0 +1,24 @@
+https://bugs.gentoo.org/579698
+
+--- dar-2.5.3/configure.ac
++++ dar-2.5.3/configure.ac
+@@ -1049,7 +1049,8 @@
+ 		  if test $local_crypto != no ; then
+   		    gpgme_min_version="1.2.0"
+ 		    AC_DEFINE_UNQUOTED(GPGME_MIN_VERSION, "$gpgme_min_version", [minimum version expected of GPGME])
+-		    AM_PATH_GPGME($gpgme_min_version,
++		    m4_ifdef([AM_PATH_GPGME], [
++			AM_PATH_GPGME($gpgme_min_version,
+ 		      		[
+ 				  CPPFLAGS___cache="$CPPFLAGS"
+ 				  CPPFLAGS="$GPGME_CFLAGS $CPPFLAGS"
+@@ -1084,7 +1085,8 @@
+ 				  unset LDFLAGS___cache
+ 				],
+ 				[]
+-			       )
++			)
++		    ])
+                  else
+ 		    AC_MSG_WARN([Public key support (GPGME linking) requires libgcrypt (strong encryption support)])
+                  fi
