@@ -6,7 +6,7 @@ EAPI="6"
 
 inherit eutils flag-o-matic autotools
 
-PATCHSET_REV="-r3"
+PATCHSET_REV="-r4"
 
 DESCRIPTION="A small but very powerful text-based mail client"
 HOMEPAGE="http://www.mutt.org/"
@@ -115,12 +115,6 @@ src_prepare() {
 		epatch "${p}"
 	done
 
-	# we conditionalise this one, simply because it has considerable
-	# impact on the code
-	if use sidebar ; then
-		epatch "${PATCHDIR}"/sidebar-neomutt.patch
-	fi
-
 	# Avoid symbol conflicts on Solaris
 	sed -i \
 		-e 's/\<M_CMD\>/MT_CMD/g' \
@@ -158,6 +152,7 @@ src_configure() {
 		$(use_enable nls) \
 		$(use_enable nntp) \
 		$(use_enable pop) \
+		$(use_enable sidebar) \
 		$(use_enable smime) \
 		$(use_enable smtp) \
 		$(use_with idn) \
