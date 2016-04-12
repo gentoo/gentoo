@@ -5,7 +5,7 @@
 EAPI=6
 
 : ${CMAKE_MAKEFILE_GENERATOR:=ninja}
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python{2_7,3_{3,4,5}} )
 
 inherit check-reqs cmake-utils eutils flag-o-matic git-r3 multilib \
 	multilib-minimal python-single-r1 toolchain-funcs pax-utils
@@ -66,7 +66,9 @@ PDEPEND="clang? ( =sys-devel/clang-${PV}-r100 )"
 # pypy gives me around 1700 unresolved tests due to open file limit
 # being exceeded. probably GC does not close them fast enough.
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
-	lldb? ( clang xml )"
+	lldb? ( clang xml
+		python? ( ^^ ( $(python_gen_useflags 'python2*') ) ) )
+	static-analyzer? ( ^^ ( $(python_gen_useflags 'python2*') ) )"
 
 pkg_pretend() {
 	# in megs
