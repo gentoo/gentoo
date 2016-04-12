@@ -15,7 +15,7 @@ IUSE="geogebra scripting"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-DEPEND="
+RDEPEND="
 	${PYTHON_DEPS}
 	$(add_frameworks_dep karchive)
 	$(add_frameworks_dep kcompletion)
@@ -36,7 +36,9 @@ DEPEND="
 	geogebra? ( $(add_qt_dep qtxmlpatterns) )
 	scripting? ( >=dev-libs/boost-1.48:=[python,${PYTHON_USEDEP}] )
 "
-RDEPEND="${DEPEND}"
+DEPEND="${RDEPEND}
+	$(add_frameworks_dep ktexteditor)
+"
 
 PATCHES=( "${FILESDIR}/${PN}-4.12.0-boostpython.patch" )
 
@@ -47,7 +49,6 @@ pkg_setup() {
 
 src_prepare() {
 	kde5_src_prepare
-
 	python_fix_shebang .
 }
 
