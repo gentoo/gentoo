@@ -34,7 +34,10 @@ DEPEND="${COMMON_DEPEND}
 RDEPEND="${COMMON_DEPEND}
 	sys-apps/iproute2"
 
-PATCHES=( "${FILESDIR}/${PN}-0.99.22.4-ipctl-forwarding.patch" )
+PATCHES=(
+	"${FILESDIR}/${PN}-0.99.22.4-ipctl-forwarding.patch"
+	"${FILESDIR}/${PN}-1.0.20160315-ripd-null-pointer-fix.patch"
+)
 
 DISABLE_AUTOFORMATTING=1
 DOC_CONTENTS="Sample configuration files can be found in /usr/share/doc/${PF}/samples
