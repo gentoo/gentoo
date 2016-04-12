@@ -17707,7 +17707,7 @@ www-client/jumanji 0.0.0_p20111209 0.0.0_p20130103-r1 0.0.0_p20150527 9999: high
 www-client/links 2.8-r1 2.9 2.9-r1 2.10 2.11 2.12 2.12-r1: A fast and lightweight web browser running in both graphics and text mode
 www-client/luakit 2012.09.13_p1-r1 9999: fast, small, webkit-gtk based micro-browser extensible by lua
 www-client/lynx 2.8.8_p2 2.8.9_pre4 2.8.9_pre6: An excellent console-based web browser with ssl support
-www-client/midori 0.5.10 0.5.11: A lightweight web browser based on WebKitGTK+
+www-client/midori 0.5.10 0.5.11 0.5.11-r1: A lightweight web browser based on WebKitGTK+
 www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
 www-client/netsurf 3.3-r1 3.4: a free, open source web browser
 www-client/opera 12.16_p1860-r1 36.0.2130.32 36.0.2130.46: A fast and secure web browser
