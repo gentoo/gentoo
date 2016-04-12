@@ -1,9 +1,37 @@
-#LS_USER="root"
-#LS_GROUP="root"
-#LS_CONFDIR="/etc/logstash/conf.d"
-#LS_LOGFILE="/var/log/logstash/logstash.log"
-#LS_PIDFILE="/run/logstash/logstash.pid"
-#LS_HEAP_SIZE="500m"
-#LS_NICE=19
-#LS_OPEN_FILES=16384
+###############################
+# Default settings for logstash
+###############################
+
+# Set a home directory
+#LS_HOME=/var/lib/logstash
+
+# Arguments to pass to logstash agent
 #LS_OPTS=""
+
+# Arguments to pass to java
+#LS_HEAP_SIZE="500m"
+#LS_JAVA_OPTS="-Djava.io.tmpdir=$HOME"
+
+# pidfiles location
+#LS_PIDFILE=/run/logstash/logstash.pid
+
+# user id to be invoked as
+#LS_USER=logstash
+#LS_GROUP=logstash
+
+# logstash logging
+#LS_LOG_FILE=/var/log/logstash/logstash.log
+#LS_USE_GC_LOGGING="true"
+
+# logstash configuration directory
+#LS_CONF_DIR=/etc/logstash/conf.d
+
+# Open file limit
+#LS_OPEN_FILES=16384
+
+# Nice level
+#LS_NICE=19
+
+# If this is set to 1, then when `stop` is called, if the process has
+# not exited within a reasonable time, SIGKILL will be sent next.
+KILL_ON_STOP_TIMEOUT=0
