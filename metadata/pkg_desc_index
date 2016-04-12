@@ -8656,7 +8656,7 @@ dev-ruby/allison 2.0.3-r3: A modern, pretty RDoc template
 dev-ruby/amatch 0.3.0: Approximate Matching Extension for Ruby
 dev-ruby/ammeter 1.1.3: Write specs for your Rails 3+ generators
 dev-ruby/amq-client 1.0.4: A fully-featured, low-level AMQP 0.9.1 client
-dev-ruby/amq-protocol 1.9.2 2.0.1: An AMQP 0.9.1 serialization library for Ruby
+dev-ruby/amq-protocol 1.9.2 2.0.1 2.0.1-r1: An AMQP 0.9.1 serialization library for Ruby
 dev-ruby/amqp 1.5.1 1.6.0: AMQP client implementation in Ruby/EventMachine
 dev-ruby/annoy 0.5.6-r1: Like your annoying friend that asks you questions all the time
 dev-ruby/ansi 1.5.0: The Ruby ANSI project is collection of ANSI escape codes for Ruby
@@ -8694,7 +8694,7 @@ dev-ruby/buftok 0.2.0-r1: Statefully split input data by a specifiable token
 dev-ruby/builder 3.0.4-r1 3.0.4-r2 3.1.4 3.2.2 3.2.2-r1: A builder to facilitate programatic generation of XML markup
 dev-ruby/bundler 1.8.9 1.9.10 1.10.6 1.11.2: An easy way to vendor gem dependencies
 dev-ruby/bundler-audit 0.4.0 0.5.0: Provides patch-level verification for Bundled apps
-dev-ruby/bunny 2.3.0: Another synchronous Ruby AMQP client
+dev-ruby/bunny 2.3.0 2.3.1: Another synchronous Ruby AMQP client
 dev-ruby/calendar_date_select 2.1.2: A popular and flexible JavaScript DatePicker for RubyOnRails
 dev-ruby/camping 2.1.532: A small web framework modeled after Ruby on Rails
 dev-ruby/capistrano 2.15.5-r1 2.15.5-r2 3.3.5 3.4.0: A distributed application deployment system
@@ -8767,7 +8767,7 @@ dev-ruby/docile 1.1.5: Turns any Ruby object into a DSL
 dev-ruby/domain_name 0.5.24 0.5.25 0.5.20160309 0.5.20160310: Domain Name manipulation library for Ruby
 dev-ruby/dotenv 2.1.0 2.1.1: Loads environment variables from .env into ENV
 dev-ruby/duby 0.0.2-r1: Customizable typed programming language with Ruby-inspired syntax
-dev-ruby/dust 0.1.7-r1 0.1.7-r2: Descriptive block syntax definition for Test::Unit
+dev-ruby/dust 0.1.7-r2: Descriptive block syntax definition for Test::Unit
 dev-ruby/equalizer 0.0.9 0.0.11: Module to define equality, equivalence and inspection methods
 dev-ruby/erubis 2.7.0-r1 2.7.0-r2: Erubis is an implementation of eRuby
 dev-ruby/escape_utils 1.2.0: Faster string escaping routines for your ruby apps
@@ -9489,7 +9489,7 @@ dev-util/abi-compliance-checker 1.99.9 1.99.12-r1 1.99.15 9999: A tool for check
 dev-util/ald 0.1.7 0.1.7-r1: Assembly Language Debugger - a tool for debugging executable programs at the assembly level
 dev-util/alleyoop 0.9.8: A Gtk+ front-end to the Valgrind memory checker
 dev-util/amtterm 1.3-r1 1.4: A nice tool to manage amt-enabled machines
-dev-util/android-ndk 8b 8c 8d 8e 9 9b 9c 9d 10 10b 10d 10e: Open Handset Alliance's Android NDK (Native Dev Kit)
+dev-util/android-ndk 8b 8c 8d 8e 9 9b 9c 9d 10 10b 10d 10e 11c: Open Handset Alliance's Android NDK (Native Dev Kit)
 dev-util/android-sdk-update-manager 21 21.1 22 22.0.1 22.0.1-r1 22.0.4 22.0.5 22.0.5-r1 22.2.1 22.3 22.6 22.6.1 23 23-r1 24.4.1: Open Handset Alliance's Android SDK
 dev-util/android-studio 1.2.2.0.141.1980579 1.5.1.0.141.2456560 2.0.0.20.143.2739321: A new Android development environment based on IntelliJ IDEA
 dev-util/android-tools 0_p20130218 5.1.1_p13: Android platform tools (adb, fastboot, and mkbootimg)
