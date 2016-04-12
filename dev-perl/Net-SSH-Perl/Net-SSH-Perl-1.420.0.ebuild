@@ -29,7 +29,7 @@ RDEPEND="
 	>=dev-perl/Math-Pari-2.1.804
 	virtual/perl-MIME-Base64
 	virtual/perl-Scalar-List-Utils
-	>=dev-perl/string-crc32-1.200.0
+	>=dev-perl/String-CRC32-1.200.0
 	!minimal? (
 		>=dev-perl/Module-Signature-0.500.0
 		dev-perl/digest-bubblebabble
