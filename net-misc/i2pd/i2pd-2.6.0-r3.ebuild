@@ -28,8 +28,8 @@ DEPEND="${RDEPEND}
 	i2p-hardening? ( >=sys-devel/gcc-4.7 )
 	|| ( >=sys-devel/gcc-4.7 >=sys-devel/clang-3.3 )"
 
-I2PD_USER="${I2PD_USER:-i2pd}"
-I2PD_GROUP="${I2PD_GROUP:-i2pd}"
+I2PD_USER=i2pd
+I2PD_GROUP=i2pd
 
 CMAKE_USE_DIR="${S}/build"
 
@@ -85,7 +85,7 @@ src_install() {
 	doenvd "${FILESDIR}/99i2pd"
 
 	# openrc and systemd daemon routines
-	newconfd "${FILESDIR}/i2pd-2.6.0-r2.confd" i2pd
+	newconfd "${FILESDIR}/i2pd-2.6.0-r3.confd" i2pd
 	newinitd "${FILESDIR}/i2pd-2.6.0-r2.initd" i2pd
 	systemd_newunit "${FILESDIR}/i2pd-2.6.0-r2.service" i2pd.service
 	
