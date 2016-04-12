@@ -33,6 +33,8 @@ I2PD_GROUP=i2pd
 
 CMAKE_USE_DIR="${S}/build"
 
+DOCS=( README.md docs/i2pd.conf debian/tunnels.conf debian/subscriptions.txt )
+
 src_prepare() {
 	eapply "${FILESDIR}/${PN}-2.5.1-fix_installed_components.patch"
 	eapply_user
@@ -69,9 +71,6 @@ src_install() {
 		/etc/i2pd/i2pd.conf \
 		/etc/i2pd/tunnels.conf \
 		/etc/i2pd/subscriptions.txt
-
-	# doc
-	dodoc README.md
 
 	# working directory
 	keepdir /var/lib/i2pd
