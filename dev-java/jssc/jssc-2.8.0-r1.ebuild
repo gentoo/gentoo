@@ -17,7 +17,7 @@ SRC_URI="https://github.com/scream3r/${MY_PN}/archive/${PV}.zip -> ${P}.zip"
 
 LICENSE="GPL-1"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc64 ~x86"
+KEYWORDS="amd64 ppc64 x86"
 
 IUSE=""
 
@@ -25,8 +25,8 @@ RDEPEND="
 	>=virtual/jre-1.6"
 
 DEPEND="
-	source? ( app-arch/zip )
-	>=virtual/jdk-1.6"
+	>=virtual/jdk-1.6
+	source? ( app-arch/zip )"
 
 PATCHES=(
 	"${FILESDIR}/${P}-library-load.patch"
