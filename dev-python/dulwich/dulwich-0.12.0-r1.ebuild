@@ -21,6 +21,8 @@ DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? ( dev-python/gevent[$(python_gen_usedep python2_7)] )"
 RDEPEND=""
+# https://github.com/jelmer/dulwich/pull/418
+PATCHES=( "${FILESDIR}/${P}-fix-gzip-hang.patch" )
 
 DISTUTILS_IN_SOURCE_BUILD=1
 
