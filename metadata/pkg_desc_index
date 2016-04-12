@@ -6025,7 +6025,7 @@ dev-perl/Ogg-Vorbis-Header 0.30.0-r1: An object-oriented interface to Ogg Vorbis
 dev-perl/Ogg-Vorbis-Header-PurePerl 1.0.0-r1: Object-oriented interface to Ogg Vorbis information and comment fields
 dev-perl/Olson-Abbreviations 0.40.0: Globally unique timezones abbreviation handling
 dev-perl/OpenGL 0.670.3 0.670.400: Perl interface providing graphics display using OpenGL
-dev-perl/PAR 1.5.0-r1 1.7.0-r1 1.10.0: Perl Archive Toolkit
+dev-perl/PAR 1.7.0-r1 1.10.0: Perl Archive Toolkit
 dev-perl/PAR-Dist 0.490.0-r1: Create and manipulate PAR distributions
 dev-perl/PBKDF2-Tiny 0.5.0: Minimalist PBKDF2 (RFC 2898) with HMAC-SHA1 or HMAC-SHA2
 dev-perl/PBS-Client 0.100.0-r1 0.110.0: Perl interface to submit jobs to PBS (Portable Batch System)
@@ -6061,8 +6061,8 @@ dev-perl/Palm-PDB 1.400.0: Parse Palm database files
 dev-perl/Pango 1.224.0-r1 1.227.0: Layout and render international text
 dev-perl/Panotools-Script 0.280.0-r2: A perl module for reading, writing, and manipulating hugin script files
 dev-perl/ParaDNS 2.0.0-r1: a DNS lookup class for the Danga::Socket framework
-dev-perl/Parallel-ForkManager 1.20.0-r1 1.170.0: A simple parallel processing fork manager
-dev-perl/Parallel-Prefork 0.140.0-r1 0.180.0: A simple prefork server framework
+dev-perl/Parallel-ForkManager 1.20.0-r1 1.170.0 1.180.0: A simple parallel processing fork manager
+dev-perl/Parallel-Prefork 0.180.0: A simple prefork server framework
 dev-perl/Params-Classify 0.13.0-r1: Argument type classification
 dev-perl/Params-Util 1.60.0-r1: Utility functions to aid in parameter checking
 dev-perl/Params-Validate 1.70.0-r1 1.80.0 1.210.0 1.220.0: Flexible system for validation of method/function call parameters
