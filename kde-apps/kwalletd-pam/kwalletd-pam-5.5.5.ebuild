@@ -40,8 +40,8 @@ src_configure() {
 pkg_postinst() {
 	check_dm() {
 		if [[ -e "${ROOT}${2}" ]] && \
-			[[ -n $(egrep "auth\s+optional\s+pam_kwallet.so" "${ROOT}${2}") ]] && \
-			[[ -n $(egrep "session\s+optional\s+pam_kwallet.so" "${ROOT}${2}") ]]; then
+			grep -Eq "auth\s+optional\s+pam_kwallet.so" "${ROOT}${2}" && \
+			grep -Eq "session\s+optional\s+pam_kwallet.so" "${ROOT}${2}" ; then
 			elog "    ${1} - ${2} ...GOOD"
 		else
 			ewarn "    ${1} - ${2} ...BAD"
@@ -50,12 +50,13 @@ pkg_postinst() {
 	elog
 	elog "This package enables auto-unlocking of kde-apps/kwalletd:4."
 	elog "List of things to make it work:"
-	elog "1.  Use same password for login and kwallet"
-	elog "2.  A display manager with support for PAM"
-	elog "3.a Have the following lines in the display manager's pam.d file:"
+	elog "1.  Use standard blowfish encryption instead of GPG"
+	elog "2.  Use same password for login and kwallet"
+	elog "3.  A display manager with support for PAM"
+	elog "4.a Have the following lines in the display manager's pam.d file:"
 	elog "    -auth        optional        pam_kwallet.so kdehome=.kde4"
 	elog "    -session     optional        pam_kwallet.so"
-	elog "3.b Checking installed DMs..."
+	elog "4.b Checking installed DMs..."
 	has_version "x11-misc/sddm" && check_dm "SDDM" "/etc/pam.d/sddm"
 	has_version "x11-misc/lightdm" && check_dm "LightDM" "/etc/pam.d/lightdm"
 	has_version "kde-base/kdm" && check_dm "KDM" "/etc/pam.d/kde"
