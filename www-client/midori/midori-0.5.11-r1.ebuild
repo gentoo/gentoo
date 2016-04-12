@@ -25,7 +25,7 @@ HOMEPAGE="http://www.midori-browser.org/"
 
 LICENSE="LGPL-2.1 MIT"
 SLOT="0"
-IUSE="deprecated doc granite introspection +jit +webkit2 zeitgeist"
+IUSE="deprecated doc granite introspection xscreensaver +jit +webkit2 zeitgeist"
 
 RDEPEND="
 	>=app-crypt/gcr-3[gtk]
@@ -35,6 +35,7 @@ RDEPEND="
 	>=net-libs/libsoup-2.38:2.4
 	>=net-libs/libsoup-gnome-2.38:2.4
 	>=x11-libs/libnotify-0.7
+	xscreensaver? ( x11-libs/libXScrnSaver )
 	deprecated? (
 		>=net-libs/webkit-gtk-1.8.1:2[jit=]
 		>=x11-libs/gtk+-2.24:2
@@ -89,6 +90,7 @@ src_configure() {
 		-DUSE_GIR="$(usex introspection)"
 		-DUSE_granite="$(usex granite)"
 		-DUSE_zeitgeist="$(usex zeitgeist)"
+		-DUSE_XSCREENSAVER="$(usex xscreensaver)"
 		-DVALA_EXECUTABLE="${VALAC}"
 		)
 
