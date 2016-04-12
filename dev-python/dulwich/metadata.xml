@@ -12,5 +12,6 @@
   <upstream>
     <remote-id type="pypi">dulwich</remote-id>
     <remote-id type="github">jelmer/dulwich</remote-id>
+    <bugs-to>https://github.com/jelmer/dulwich/issues</bugs-to>
   </upstream>
 </pkgmetadata>
