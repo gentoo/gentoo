@@ -7,7 +7,7 @@
 	</maintainer>
 	<use>
 		<flag name="legacy-toolchains">Install legacy toolchains</flag>
-        <flag name="target-32">Support for 32-bit targets</flag>
-        <flag name="target-64">Support for 64-bit targets</flag>
+		<flag name="target-32">Support for 32-bit targets</flag>
+		<flag name="target-64">Support for 64-bit targets</flag>
 	</use>
 </pkgmetadata>
