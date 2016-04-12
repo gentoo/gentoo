@@ -57,7 +57,11 @@ LICENSE="|| ( LGPL-2.1 LGPL-3 ) FDL-1.3"
 QT5_MINOR_VERSION=$(get_version_component_range 2)
 readonly QT5_MINOR_VERSION
 
-SLOT="5"
+if [[ ${QT5_MINOR_VERSION} -ge 6 ]]; then
+	SLOT=5/$(get_version_component_range 1-2)
+else
+	SLOT=5
+fi
 
 case ${PV} in
 	5.9999)
