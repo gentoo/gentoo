@@ -2314,7 +2314,7 @@ app-text/libwpd 0.9.9 0.10.0 0.10.0-r1 0.10.0-r2 0.10.1: WordPerfect Document im
 app-text/libwpg 0.2.2 0.3.0 0.3.1: C++ library to read and parse graphics in WPG
 app-text/libwps 0.2.9 0.3.1 0.4.2 0.4.3: Microsoft Works file word processor format import filter library
 app-text/libxmlpatch 0.3.3: A set of tools to create and apply patch to XML files using XPath
-app-text/linuxdoc-tools 0.9.71-r1: A toolset for processing LinuxDoc DTD SGML files
+app-text/linuxdoc-tools 0.9.71-r1 0.9.71-r2: A toolset for processing LinuxDoc DTD SGML files
 app-text/llpp 20_p20140818 21 21_p20150427 22 9999: a graphical PDF viewer which aims to superficially resemble less(1)
 app-text/lodgeit 0.3_p20120507 0.3_p20120618-r1: Command-line interface to paste.pocoo.org
 app-text/logmerge 0.4_beta: Merge multiple logs such that multilined entries appear in chronological order without breaks
