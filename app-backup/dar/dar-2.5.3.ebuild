@@ -39,7 +39,10 @@ REQUIRED_USE="?? ( dar32 dar64 )
 
 DOCS="AUTHORS ChangeLog NEWS README THANKS TODO"
 
-PATCHES=( "${FILESDIR}/${PN}-2.5.3-asneeded.patch" )
+PATCHES=(
+	"${FILESDIR}/${PN}-2.5.3-asneeded.patch"
+	"${FILESDIR}/${PN}-2.5.3-autoconf_missing_gpgme.patch" # 579698
+)
 
 src_prepare() {
 	default
