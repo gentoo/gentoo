@@ -89,10 +89,12 @@ pkg_postinst() {
 			elog "dev-python/pyinotify or app-admin/gamin (in order of preference)"
 			elog "to control how log file modifications are detected"
 		fi
+
 		if ! has_version dev-lang/python[sqlite]; then
 			elog "If you want to use ${PN}'s persistent database, then reinstall"
 			elog "dev-lang/python with USE=sqlite"
 		fi
+
 		if has_version sys-apps/systemd[-python]; then
 			elog "If you want to track logins through sys-apps/systemd's"
 			elog "journal backend, then reinstall sys-apps/systemd with USE=python"
