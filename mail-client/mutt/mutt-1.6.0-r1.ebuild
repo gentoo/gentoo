@@ -267,5 +267,11 @@ pkg_postinst() {
 		elog "the Gentoo QuickStart Guide to Mutt E-Mail:"
 		elog "   https://wiki.gentoo.org/wiki/Mutt"
 		echo
+	elif use sidebar ; then
+		echo
+		elog "The sidebar patch has changed config names, please see"
+		elog "the following page for a list of new names:"
+		elog "http://www.neomutt.org/sidebar-intro.html#intro-sidebar-config-changes"
+		echo
 	fi
 }
