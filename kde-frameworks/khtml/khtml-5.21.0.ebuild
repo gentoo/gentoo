@@ -10,7 +10,7 @@ inherit kde5
 DESCRIPTION="KHTML web rendering engine"
 LICENSE="LGPL-2"
 KEYWORDS="~amd64 ~arm ~x86"
-IUSE="X"
+IUSE="X libressl"
 
 RDEPEND="
 	$(add_frameworks_dep karchive)
@@ -52,7 +52,8 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	dev-lang/perl
-	dev-libs/openssl:0
+	!libressl? ( dev-libs/openssl:0 )
+	libressl? ( dev-libs/libressl:0 )
 	test? ( $(add_qt_dep qtx11extras) )
 	X? ( x11-proto/xproto )
 "
