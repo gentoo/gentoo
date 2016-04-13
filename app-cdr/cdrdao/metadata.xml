@@ -1,15 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <!-- maintainer-needed -->
-  <longdescription>
-  CD command line recording, ripping and copying tool.  Especially ISOs- and
-  bin/cue-files are handled very well.
-  </longdescription>
-  <use>
-    <flag name="gcdmaster">Enable building of gcdmaster application</flag>
-  </use>
-  <upstream>
-    <remote-id type="sourceforge">cdrdao</remote-id>
-  </upstream>
+	<maintainer type="person">
+		<email>brendan@horan.hk</email>
+		<name>Brendan Horan</name>
+		<description>Proxy maintainer - make assignee on bugs</description>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription>
+	CD command line recording, ripping and copying tool.	Especially ISOs- and
+	bin/cue-files are handled very well.
+	</longdescription>
+	<use>
+		<flag name="gcdmaster">Enable building of gcdmaster application</flag>
+	</use>
+	<upstream>
+		<remote-id type="sourceforge">cdrdao</remote-id>
+	</upstream>
 </pkgmetadata>
