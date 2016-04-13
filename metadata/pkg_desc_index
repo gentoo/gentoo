@@ -5141,7 +5141,7 @@ dev-ml/typerep 113.24.00: Library for creating runtime representation of OCaml t
 dev-ml/typerep_extended 113.24.00 113.33.00: Runtime types for OCaml (Extended)
 dev-ml/tyxml 3.5.0 3.6.0: A libary to build xml trees typechecked by OCaml
 dev-ml/ulex 1.1: A lexer generator for unicode
-dev-ml/utop 1.11 1.16 1.18 1.18.1 1.18.2: A new toplevel for OCaml with completion and colorization
+dev-ml/utop 1.18.2 1.19: A new toplevel for OCaml with completion and colorization
 dev-ml/uuidm 0.9.5: OCaml module implementing 128 bits universally unique identifiers
 dev-ml/uutf 0.9.4: Non-blocking streaming Unicode codec for OCaml
 dev-ml/variantslib 109.15.00 109.15.02 113.24.00: OCaml variants as first class values
@@ -17787,7 +17787,7 @@ www-servers/mongoose 5.3: easy to use web server
 www-servers/mongrel2 1.11.0: A language agnostic web server focused on web applications
 www-servers/monkeyd 1.5.6-r1 1.6.7 1.6.8 9999: A small, fast, and scalable web server
 www-servers/nginx 1.8.1 1.9.12 1.9.13 1.9.14: Robust, small and high performance http and reverse proxy server
-www-servers/ocsigenserver 2.5-r2 2.6: Ocaml-powered webserver and framework for dynamic web programming
+www-servers/ocsigenserver 2.5-r2 2.6 2.7: Ocaml-powered webserver and framework for dynamic web programming
 www-servers/pathod 0.10 0.11.1 0.12.0: A collection of pathological tools for testing and torturing HTTP clients and servers
 www-servers/pound 2.6 2.7d 2.7f 2.7f-r1: A http/https reverse-proxy and load-balancer
 www-servers/pshs 0.2.6 0.3 0.3-r1 9999: Pretty small HTTP server -- a command-line tool to share files
