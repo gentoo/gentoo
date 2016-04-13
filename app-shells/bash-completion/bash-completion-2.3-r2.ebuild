@@ -37,15 +37,18 @@ STRIP_COMPLETIONS=(
 
 	# Now-dead symlinks to deprecated completions
 	hd ncal
+
+	# Installed by sys-apps/util-linux-2.28
+	mount umount mount.linux umount.linux
+
+	# Dumb symlink to mplayer, removed upstream in git
+	mpv
 )
 
 src_prepare() {
 	eapply "${WORKDIR}/${BASHCOMP_P}/${PN}"-2.1_p*.patch
 	# Bug 543100
 	eapply "${FILESDIR}/${PN}-2.1-escape-characters.patch"
-	# backport from
-	# https://github.com/scop/bash-completion/commit/0382773bbfc21dc1fb5467c1c0426ea3c984b6ec
-	eapply "${FILESDIR}/${P}-remove-mpv-symlink.patch"
 	eapply_user
 }
 
