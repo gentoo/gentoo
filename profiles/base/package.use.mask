@@ -670,10 +670,6 @@ app-crypt/johntheripper cuda
 # sys-fs/zfs is not available everywhere.
 sys-boot/grub libzfs
 
-# Andreas K. Huettel <dilfridge@gentoo.org> (03 Jun 2012)
-# needs libpqxx-3* which is not in the tree anymore
-app-office/calligra postgres
-
 # Michael Weber<xmw@gentoo.org>  (02 Jun 2012)
 # Not fit for production (bug 404403, comment #5)
 dev-db/firebird client
