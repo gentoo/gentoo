@@ -22,6 +22,10 @@ RDEPEND=""
 
 DOCS=( AUTHORS ChangeLog README )
 
+src_prepare() {
+	epatch "${FILESDIR}/${P}_fix_32bit_librt.so.patch"
+}
+
 multilib_src_configure() {
 	local mycmakeargs=(
 		$(cmake-utils_use_with static-libs STATIC_LIB)
