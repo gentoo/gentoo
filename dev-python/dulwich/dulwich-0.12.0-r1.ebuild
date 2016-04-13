@@ -1,10 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-PYTHON_COMPAT=( python{2_7,3_4} )
+PYTHON_COMPAT=( python{2_7,3_4,3_5} )
 
 inherit distutils-r1
 
@@ -21,6 +21,8 @@ DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? ( dev-python/gevent[$(python_gen_usedep python2_7)] )"
 RDEPEND=""
+# https://github.com/jelmer/dulwich/pull/418
+PATCHES=( "${FILESDIR}/${P}-fix-gzip-hang.patch" )
 
 DISTUTILS_IN_SOURCE_BUILD=1
 

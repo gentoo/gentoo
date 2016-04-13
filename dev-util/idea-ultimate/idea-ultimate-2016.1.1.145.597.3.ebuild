@@ -11,18 +11,19 @@ MY_PV="$(get_version_component_range 1-3)"
 MY_PN="idea"
 
 # distinguish settings for official stable releases and EAP-version releases
-if [[ "$(get_version_component_range 6)x" = "prex" ]]
+if [[ "$(get_version_component_range 7)x" = "prex" ]]
 then
 	# upstream EAP
 	KEYWORDS=""
+	SRC_URI="https://download.jetbrains.com/idea/${MY_PN}IU-${PV_STRING}.tar.gz"
 else
 	# upstream stable
 	KEYWORDS="~amd64 ~x86"
+	SRC_URI="https://download.jetbrains.com/idea/${MY_PN}IU-${MY_PV}.tar.gz -> ${MY_PN}IU-${PV_STRING}.tar.gz"
 fi
 
 DESCRIPTION="A complete toolset for web, mobile and enterprise development"
 HOMEPAGE="https://www.jetbrains.com/idea"
-SRC_URI="https://download.jetbrains.com/idea/${MY_PN}IU-${MY_PV}.tar.gz -> ${MY_PN}IU-${PV_STRING}.tar.gz"
 
 LICENSE="IDEA
 	|| ( IDEA_Academic IDEA_Classroom IDEA_OpenSource IDEA_Personal )"
