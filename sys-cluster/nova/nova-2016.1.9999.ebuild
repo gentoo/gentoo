@@ -174,9 +174,9 @@ python_install() {
 	#rootwrap filters
 	insopts -m 0644
 	insinto /etc/nova/rootwrap.d
-	newins "${FILESDIR}/etc.liberty/rootwrap.d/api-metadata.filters" "api-metadata.filters"
-	newins "${FILESDIR}/etc.liberty/rootwrap.d/compute.filters" "compute.filters"
-	newins "${FILESDIR}/etc.liberty/rootwrap.d/network.filters" "network.filters"
+	newins "${FILESDIR}/etc.mitaka/rootwrap.d/api-metadata.filters" "api-metadata.filters"
+	newins "${FILESDIR}/etc.mitaka/rootwrap.d/compute.filters" "compute.filters"
+	newins "${FILESDIR}/etc.mitaka/rootwrap.d/network.filters" "network.filters"
 	#copy migration conf file (not coppied on install via setup.py script)
 	insinto /usr/$(get_libdir)/python2.7/site-packages/nova/db/sqlalchemy/migrate_repo/
 	doins "nova/db/sqlalchemy/migrate_repo/migrate.cfg"
