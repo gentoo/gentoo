@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>wraeth@gentoo.org</email>
+		<name>Sam Jorna</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">phhusson/quassel-irssi</remote-id>
+		<bugs-to>https://github.com/phhusson/quassel-irssi/issues</bugs-to>
+	</upstream>
+	<longdescription lang="en">
+	A plugin for the Irssi IRC client to allow connecting to a Quassel core
+	hosted either locally or remotely.
+	</longdescription>
+</pkgmetadata>
