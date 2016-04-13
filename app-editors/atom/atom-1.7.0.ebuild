@@ -75,7 +75,6 @@ src_install(){
 	# Fixes permissions
 	fperms +x "/usr/share/${PN}/${PN}"
 	fperms +x "/usr/share/${PN}/libgcrypt.so.11"
-	fperms +x "/usr/share/${PN}/libnotify.so.4"
 	fperms +x "/usr/share/${PN}/resources/app/atom.sh"
 	fperms +x "/usr/share/${PN}/resources/app/apm/bin/apm"
 	fperms +x "/usr/share/${PN}/resources/app/apm/bin/node"
