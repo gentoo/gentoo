@@ -1,0 +1,30 @@
+diff -Naur htmldoc-1.8.29b/Makefile.in htmldoc-1.8.29c/Makefile.in
+--- htmldoc-1.8.29b/Makefile.in	2016-04-13 17:02:29.706811414 +0000
++++ htmldoc-1.8.29c/Makefile.in	2016-04-13 17:03:37.713630261 +0000
+@@ -39,7 +39,7 @@
+ all:	Makedefs Makefile config.h htmldoc.list
+ 	for dir in $(DIRS); do\
+ 		echo Making all in $$dir...;\
+-		(cd $$dir; $(MAKE) -$(MAKEFLAGS)) || break;\
++		(cd $$dir; $(MAKE) -$(MAKEFLAGS)) || exit 1;\
+ 	done
+ 
+ 
+@@ -50,7 +50,7 @@
+ clean:
+ 	for dir in $(DIRS); do\
+ 		echo Cleaning in $$dir...;\
+-		(cd $$dir; $(MAKE) -$(MAKEFLAGS) clean) || break;\
++		(cd $$dir; $(MAKE) -$(MAKEFLAGS) clean) || exit 1;\
+ 	done
+ 	$(RM) *.bak
+ 	$(RM) *.bck
+@@ -77,7 +77,7 @@
+ 	$(MAKE) all
+ 	for dir in $(INSTALLDIRS); do\
+ 		echo Installing in $$dir...;\
+-		(cd $$dir; $(MAKE) -$(MAKEFLAGS) install) || break;\
++		(cd $$dir; $(MAKE) -$(MAKEFLAGS) install) || exit 1;\
+ 	done
+ 
+ 
