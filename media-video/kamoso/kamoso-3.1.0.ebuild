@@ -15,7 +15,7 @@ LICENSE="GPL-2+"
 KEYWORDS="~amd64"
 IUSE=""
 
-DEPEND="
+CDEPEND="
 	$(add_frameworks_dep kconfig)
 	$(add_frameworks_dep kcoreaddons)
 	$(add_frameworks_dep kdeclarative)
@@ -24,10 +24,12 @@ DEPEND="
 	$(add_qt_dep qtdeclarative)
 	$(add_qt_dep qtgui)
 	$(add_qt_dep qtwidgets)
-	dev-libs/purpose:5
 	media-libs/qt-gstreamer[qt5]
 	virtual/libudev:=
 "
-RDEPEND="${DEPEND}
-	media-plugins/gst-plugins-meta[alsa,theora,vorbis,v4l,xv]
+DEPEND="${CDEPEND}
+	dev-libs/purpose:5
+"
+RDEPEND="${CDEPEND}
+	media-plugins/gst-plugins-meta:1.0[alsa,theora,vorbis,v4l]
 "
