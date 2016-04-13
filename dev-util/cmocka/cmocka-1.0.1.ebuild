@@ -20,6 +20,8 @@ DEPEND="
 "
 RDEPEND=""
 
+PATCHES=( "${FILESDIR}/${P}-fix-librt-configure-issue.patch" )
+
 DOCS=( AUTHORS ChangeLog README )
 
 multilib_src_configure() {
