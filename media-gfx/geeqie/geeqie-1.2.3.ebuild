@@ -2,8 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
-inherit autotools eutils
+EAPI=6
+inherit autotools
 
 DESCRIPTION="A lightweight GTK image viewer forked from GQview"
 HOMEPAGE="http://www.geeqie.org"
@@ -30,8 +30,12 @@ DEPEND="${RDEPEND}
 	dev-util/intltool
 	sys-devel/gettext"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.2.2-fix_keywords_gtk3.patch
+)
+
 src_prepare() {
-	epatch_user
+	default
 
 	eautoreconf
 }
@@ -61,7 +65,10 @@ src_configure() {
 
 src_install() {
 	emake DESTDIR="${D}" install
-	rm -f "${D}/usr/share/doc/${MY_P}/COPYING"
+
+	rm -f "${D}/usr/share/doc/${PF}/COPYING"
+	# Application needs access to the uncompressed file
+	docompress -x /usr/share/doc/${PF}/README
 }
 
 pkg_postinst() {
