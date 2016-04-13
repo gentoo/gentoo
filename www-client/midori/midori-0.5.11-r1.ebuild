@@ -88,8 +88,8 @@ src_configure() {
 		-DCMAKE_INSTALL_DOCDIR=/usr/share/doc/${PF}
 		-DUSE_APIDOCS="$(usex doc)"
 		-DUSE_GIR="$(usex introspection)"
-		-DUSE_granite="$(usex granite)"
-		-DUSE_zeitgeist="$(usex zeitgeist)"
+		-DUSE_GRANITE="$(usex granite)"
+		-DUSE_ZEITGEIST="$(usex zeitgeist)"
 		-DUSE_XSCREENSAVER="$(usex xscreensaver)"
 		-DVALA_EXECUTABLE="${VALAC}"
 		)
