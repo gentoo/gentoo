@@ -27,6 +27,10 @@ DEPEND="${RDEPEND}"
 
 S="${WORKDIR}/squashfs${PV}/${PN}"
 
+src_prepare() {
+	epatch "${FILESDIR}"/${P}-sysmacros.patch
+}
+
 use10() { usex $1 1 2 ; }
 
 src_configure() {
