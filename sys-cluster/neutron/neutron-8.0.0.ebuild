@@ -103,7 +103,10 @@ RDEPEND="
 	net-firewall/iptables
 	net-firewall/ebtables
 	openvswitch? ( <=net-misc/openvswitch-2.5.9999 )
-	ipv6? ( net-misc/radvd )
+	ipv6? (
+		net-misc/radvd
+		>=net-misc/dibbler-1.0.1
+	)
 	dhcp? ( net-dns/dnsmasq[dhcp-tools] )"
 
 #PATCHES=(
