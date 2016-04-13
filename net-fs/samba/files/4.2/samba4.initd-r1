@@ -4,7 +4,7 @@
 # $Id$
 
 extra_started_commands="reload"
-piddir="/var/run/samba"
+piddir="/run/samba"
 
 depend() {
 	after slapd
