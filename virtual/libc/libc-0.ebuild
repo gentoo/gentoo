@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -13,6 +13,6 @@ KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86
 RDEPEND="!prefix? (
 		elibc_glibc? ( sys-libs/glibc:2.2 )
 		elibc_musl? ( sys-libs/musl )
-		elibc_uclibc? ( sys-libs/uclibc )
+		elibc_uclibc? ( || ( sys-libs/uclibc sys-libs/uclibc-ng ) )
 		elibc_FreeBSD? ( sys-freebsd/freebsd-lib )
 	)"

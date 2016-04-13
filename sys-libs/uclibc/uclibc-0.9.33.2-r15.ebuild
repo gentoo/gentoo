@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -30,6 +30,11 @@ LICENSE="LGPL-2"
 SLOT="0"
 IUSE="debug hardened iconv ipv6 nptl rpc ssp uclibc-compat wordexp crosscompile_opts_headers-only"
 RESTRICT="strip"
+
+# We cannot migrate between uclibc and uclibc-ng because as soon as portage
+# updates the ld.so sym link, the system breaks.  Ideally this should be a
+# hard blocker, but EAPI=0 doesn't allow hard blockers.
+RDEPEND="!sys-libs/uclibc-ng"
 
 S=${WORKDIR}/${MY_P}
 
