@@ -8,6 +8,7 @@ Restart=on-abnormal
 PIDFile=/run/i2pd/i2pd.pid
 User=i2pd
 Group=i2pd
+LimitNOFILE=4096
 PermissionsStartOnly=yes
 ExecStartPre=/bin/mkdir -p /run/i2pd
 ExecStartPre=/bin/chown i2pd:i2pd /run/i2pd
