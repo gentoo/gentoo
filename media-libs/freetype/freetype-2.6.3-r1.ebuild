@@ -6,7 +6,7 @@ EAPI=6
 
 inherit autotools flag-o-matic multilib multilib-build multilib-minimal toolchain-funcs
 
-INFINALITY_PATCH="03-infinality-2.6.3-2015.11.28.patch"
+INFINALITY_PATCH="03-infinality-2.6.3-2016.03.26.patch"
 
 DESCRIPTION="A high-quality and portable font engine"
 HOMEPAGE="http://www.freetype.org/"
