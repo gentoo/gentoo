@@ -6,8 +6,8 @@
 		<name>Luis Ressel</name>
 		<description>Proxied maintainer; set to assignee in all bugs</description>
 	</maintainer>
-	<maintainer type="project">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Proxy Maintainers</name>
+	<maintainer type="person">
+		<email>williamh@gentoo.org</email>
+		<name>William Hubbs</name>
 	</maintainer>
 </pkgmetadata>
