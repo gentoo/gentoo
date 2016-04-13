@@ -7098,7 +7098,7 @@ dev-python/dpkt 1.8-r1: Fast, simple packet creation / parsing, with definitions
 dev-python/dreampie 1.2.1: pygtk-based python shell
 dev-python/drpython 3.11.4: A powerful cross-platform IDE for Python
 dev-python/dugong 3.4 3.5: Python library for communicating with HTTP 1.1 servers
-dev-python/dulwich 0.9.9 0.10.0 0.10.1a 0.11.1 0.11.2 0.12.0: Pure-Python implementation of the Git file formats and protocols
+dev-python/dulwich 0.9.9 0.10.0 0.10.1a 0.11.1 0.11.2 0.12.0-r1: Pure-Python implementation of the Git file formats and protocols
 dev-python/dynd-python 0.6.5 0.6.6: Python exposure of multidimensionnal array library libdynd
 dev-python/easy-thumbnails 2.2: Easy thumbnails for Django
 dev-python/ecdsa 0.13: ECDSA cryptographic signature library in pure Python
@@ -9649,7 +9649,7 @@ dev-util/hxd 0.70.02-r1: Binary to hexadecimal converter
 dev-util/hxtools 20121125-r1: A collection of tools and scripts
 dev-util/icemon 20140102: Icemon is a KDE monitor program for use with Icecream compile clusters
 dev-util/icmake 7.21.01 7.22.00 7.22.01: Hybrid between a make utility and a shell scripting language
-dev-util/idea-ultimate 14.1.6.141.3057.6 15.0.5.143.2332.3 2016.1.0.145.258.11 2016.1.1.145.597.3_pre: A complete toolset for web, mobile and enterprise development
+dev-util/idea-ultimate 14.1.6.141.3057.6 15.0.5.143.2332.3 2016.1.1.145.597.3 2016.1.1.145.844.1_pre: A complete toolset for web, mobile and enterprise development
 dev-util/idutils 4.2 4.5 4.6: Fast, high-capacity, identifier database tool
 dev-util/igprof 5.9.11: Ignominous Profiler for analysing application memory and performance characteristics
 dev-util/imediff2 1.1.2-r3: An interactive, user friendly 2-way merge tool in text mode
