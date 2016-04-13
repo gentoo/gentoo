@@ -15,7 +15,7 @@ else
 fi
 
 DESCRIPTION="C library for developing embedded Linux systems"
-HOMEPAGE="http://www.uclibc.org/"
+HOMEPAGE="http://www.uclibc-ng.org/"
 if [[ ${PV} != "9999" ]] ; then
 	PATCH_VER=""
 	SRC_URI="http://downloads.uclibc-ng.org/releases/${PV}/${MY_P}.tar.bz2"
