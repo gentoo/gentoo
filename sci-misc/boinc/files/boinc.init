@@ -1,4 +1,7 @@
 #!/sbin/runscript
+# Copyright 1999-2016 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
 
 extra_started_commands="attach"
 
@@ -59,7 +62,7 @@ start() {
 	fi
 
 	ebegin "Starting ${SVCNAME}"
-	su -m ${USER} -c "nice -n ${NICELEVEL} \"${BOINCBIN}\" ${ARGS} --daemon --dir \"${RUNTIMEDIR}\" --redirectio"
+	start-stop-daemon -S -N ${NICELEVEL} -u ${USER} -q -x "${BOINCBIN}" -- ${ARGS} --daemon --dir "${RUNTIMEDIR}" --redirectio
 	eend $?
 }
 
@@ -81,7 +84,7 @@ attach() {
 	password=$(cat "${RUNTIMEDIR}/gui_rpc_auth.cfg")
 
 	ebegin "${SVCNAME}: Attaching to project"
-	su -m ${USER} -c "boinccmd --passwd \"${password}\" --project_attach ${url} ${key}"
+	start-stop-daemon -u ${USER} -q -x boinccmd -- --passwd "${password}" --project_attach ${url} ${key}
 	eend $?
 
 	unset password url key
@@ -96,7 +99,7 @@ stop() {
 	password=$(cat "${RUNTIMEDIR}/gui_rpc_auth.cfg")
 
 	ebegin "Stopping ${SVCNAME}"
-	su -m ${USER} -c "boinccmd --passwd \"${password}\" --quit"
+	start-stop-daemon -u ${USER} -q -x boinccmd -- --passwd "${password}" --quit
 	eend $?
 
 	unset password
