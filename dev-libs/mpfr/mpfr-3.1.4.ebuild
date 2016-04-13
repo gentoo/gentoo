@@ -31,6 +31,8 @@ src_prepare() {
 			epatch "${FILESDIR}"/${MY_PV}/patch$(printf '%02d' ${i})
 		done
 	fi
+	epatch "${FILESDIR}"/${P}-cygwin.patch #579840
+	epatch_user
 	find . -type f -exec touch -r configure {} +
 	elibtoolize
 }
