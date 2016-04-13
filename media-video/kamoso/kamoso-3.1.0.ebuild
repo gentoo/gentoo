@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 KDE_HANDBOOK="forceoptional"
 inherit kde5 versionator
@@ -15,19 +15,21 @@ LICENSE="GPL-2+"
 KEYWORDS="~amd64"
 IUSE=""
 
-DEPEND="
+CDEPEND="
 	$(add_frameworks_dep kconfig)
 	$(add_frameworks_dep kcoreaddons)
 	$(add_frameworks_dep kdeclarative)
 	$(add_frameworks_dep ki18n)
 	$(add_frameworks_dep kio)
-	dev-libs/purpose:5
-	dev-qt/qtdeclarative:5
-	dev-qt/qtgui:5
-	dev-qt/qtwidgets:5
+	$(add_qt_dep qtdeclarative)
+	$(add_qt_dep qtgui)
+	$(add_qt_dep qtwidgets)
 	media-libs/qt-gstreamer[qt5]
 	virtual/libudev:=
 "
-RDEPEND="${DEPEND}
-	media-plugins/gst-plugins-meta[alsa,theora,vorbis,v4l,xv]
+DEPEND="${CDEPEND}
+	dev-libs/purpose:5
+"
+RDEPEND="${CDEPEND}
+	media-plugins/gst-plugins-meta:1.0[alsa,theora,vorbis,v4l]
 "
