@@ -6100,6 +6100,11 @@ net-misc/megatools:fuse - Enables support for the filesystem in userspace plugin
 net-misc/memcached:slabs-reassign - Allow manual reassignment of memory slabs at the cost of slab optimizations.
 net-misc/minidlna:netgear - Enable netgear branding
 net-misc/minidlna:readynas - Enable readynas branding
+net-misc/miniupnpd:igd2 - Build for IGDv2 instead of an IGDv1
+net-misc/miniupnpd:leasefile - Enable lease file.
+net-misc/miniupnpd:pcp-peer - Enable support for PCP-PEER to allow NAT-PMP clients to mangle their packets.
+net-misc/miniupnpd:portinuse - Check if a port is in use before allowing a NAT-PMP client to map it.
+net-misc/miniupnpd:strict - Be more strict regarding compliance with UPnP specifications.
 net-misc/modemmanager:mbim - Enable MBIM modem protocol
 net-misc/modemmanager:qmi - Enable support for the QMI modem protocol used by devices with Qualcomm chipsets
 net-misc/modemmanager:qmi-newest - Avoid deprecated QMI commands. Warning: may cause incompatibility with older devices.
