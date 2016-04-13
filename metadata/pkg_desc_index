@@ -3873,7 +3873,7 @@ dev-java/glassfish-persistence 1.0-r1: Glassfish implementation of persistence A
 dev-java/glassfish-servlet-api 3.1.1: Glassfish reference implementation of Servlet API 2.5 and JSP API 2.1
 dev-java/glassfish-transaction-api 1.1.2.2.04: Java Transaction API
 dev-java/glassfish-xmlrpc-api 1.1.1: Project GlassFish XML RPC API
-dev-java/glazedlists 1.7.0-r1 1.8.0 1.8.0-r1: A toolkit for list transformations
+dev-java/glazedlists 1.8.0-r1: A toolkit for list transformations
 dev-java/gnu-classpath 0.98-r5: Free core class libraries for use with Java VMs and compilers
 dev-java/gnu-classpath-inetlib 1.0-r3 1.1-r3: Network extensions library for GNU classpath and classpathx
 dev-java/gnu-crypto 2.0.1-r2 2.0.1-r3: GNU Crypto cryptographic primitives for Java
@@ -4067,7 +4067,7 @@ dev-java/jsr311-api 1.1.1: JAX-RS: Java API for RESTful Web Services
 dev-java/jsr322 1.5: Java EE Connector Architecture
 dev-java/jsr67 1.3-r1: SAAJ 1.3 (AKA JSR-67 MR3) API
 dev-java/jss 4.3.2: Network Security Services for Java (JSS)
-dev-java/jssc 2.8.0 2.8.0-r1: Java Simple Serial Connector
+dev-java/jssc 2.8.0-r1: Java Simple Serial Connector
 dev-java/jstun 0.7.3: Java-based STUN implementation
 dev-java/jta 1.0.1-r1 1.1: The Java Transaction API
 dev-java/jtds 1.3.1: jTDS - SQL Server and Sybase JDBC driver
@@ -4206,7 +4206,7 @@ dev-java/sbt-bin 0.12.4 0.13.6 0.13.7 0.13.8 0.13.9: sbt, a build tool for Scala
 dev-java/servletapi 2.2-r3 2.3-r3 2.4-r5: Servlet API 2.4 from jakarta.apache.org
 dev-java/shared-objects 1.4-r3 1.4-r4: A Java Class implementing a core factory for maximal sharing of arbitrary objects
 dev-java/simplyhtml 0.13.1-r1: Text processing application based on HTML and CSS files
-dev-java/sjsxp 1.0.1 1.0.1-r1 1.0.1-r2 1.0.1-r3: Sun Java Streaming XML Parser
+dev-java/sjsxp 1.0.1-r3: Sun Java Streaming XML Parser
 dev-java/skinlf 6.7-r1: Skin Look and Feel - Skinning Engine for the Swing toolkit
 dev-java/slf4j-api 1.7.7: Simple Logging Facade for Java
 dev-java/slf4j-ext 1.7.5 1.7.7: Simple Logging Facade for Java
