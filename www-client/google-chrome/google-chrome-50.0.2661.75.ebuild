@@ -19,7 +19,7 @@ else
 	MY_PN=${PN}
 fi
 
-MY_P="${MY_PN}_${PV/_p/-}"
+MY_P="${MY_PN}_${PV}-1"
 
 SRC_URI="https://dl.google.com/linux/chrome/deb/pool/main/g/${MY_PN}/${MY_P}_amd64.deb"
 

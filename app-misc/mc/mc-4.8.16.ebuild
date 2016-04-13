@@ -42,8 +42,9 @@ DEPEND="${RDEPEND}
 [[ -n ${LIVE_EBUILD} ]] && DEPEND="${DEPEND} dev-vcs/cvs" # needed only for SCM source tree (autopoint uses cvs)
 
 PATCHES=(
-	"${FILESDIR}/${PN}-4.8.13-tinfo.patch"
-	"${FILESDIR}/${PN}-4.8.15-ebuild_syntax_EAPI-6.patch"
+	"${FILESDIR}"/${PN}-4.8.13-tinfo.patch
+	"${FILESDIR}"/${PN}-4.8.15-ebuild_syntax_EAPI-6.patch
+	"${FILESDIR}"/${PN}-4.8.16-makedev.patch
 )
 
 S=${WORKDIR}/${MY_P}
