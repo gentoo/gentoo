@@ -17,7 +17,7 @@ SRC_URI="https://github.com/google/protobuf/archive/v${MY_PV}.tar.gz -> ${P}.tar
 
 LICENSE="Apache-2.0"
 SLOT="0/10" # subslot = soname major version
-KEYWORDS="~alpha ~amd64 ~amd64-linux ~arm ~arm-linux ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x64-macos ~x86 ~x86-linux ~x86-macos"
+KEYWORDS="~amd64 ~amd64-linux ~arm ~arm-linux ~arm64 ~mips ~ppc64 ~sh ~x64-macos ~x86 ~x86-linux ~x86-macos"
 IUSE="emacs examples java nano python static-libs test vim-syntax zlib"
 
 CDEPEND="emacs? ( virtual/emacs )
