@@ -33,11 +33,14 @@
     <remote-id type="cpan-module">Test::Deep::MM</remote-id>
     <remote-id type="cpan-module">Test::Deep::Methods</remote-id>
     <remote-id type="cpan-module">Test::Deep::NoTest</remote-id>
+    <remote-id type="cpan-module">Test::Deep::None</remote-id>
     <remote-id type="cpan-module">Test::Deep::Number</remote-id>
+    <remote-id type="cpan-module">Test::Deep::Obj</remote-id>
     <remote-id type="cpan-module">Test::Deep::Ref</remote-id>
     <remote-id type="cpan-module">Test::Deep::RefType</remote-id>
     <remote-id type="cpan-module">Test::Deep::Regexp</remote-id>
     <remote-id type="cpan-module">Test::Deep::RegexpMatches</remote-id>
+    <remote-id type="cpan-module">Test::Deep::RegexpOnly</remote-id>
     <remote-id type="cpan-module">Test::Deep::RegexpRef</remote-id>
     <remote-id type="cpan-module">Test::Deep::RegexpRefOnly</remote-id>
     <remote-id type="cpan-module">Test::Deep::RegexpVersion</remote-id>
