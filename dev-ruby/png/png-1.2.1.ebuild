@@ -1,12 +1,11 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
-USE_RUBY="ruby19 ruby20 ruby21"
+USE_RUBY="ruby20 ruby21"
 
-RUBY_FAKEGEM_TASK_DOC="docs"
-RUBY_FAKEGEM_DOCDIR="doc"
+RUBY_FAKEGEM_RECIPE_DOC="rdoc"
 RUBY_FAKEGEM_EXTRADOC="History.txt README.txt"
 
 inherit ruby-fakegem
@@ -20,9 +19,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 ruby_add_bdepend "
-	doc? ( dev-ruby/hoe )
 	test? (
-		dev-ruby/hoe
 		dev-ruby/minitest
 	)"
 
@@ -36,6 +33,10 @@ all_ruby_prepare() {
 src_test() {
 	chmod 0755 "${HOME}" || die "Failed to fix permissions on home."
 	ruby-ng_src_test
+}
+
+each_ruby_test() {
+	${RUBY} -Ilib:test:. -e 'Dir["test/test_*.rb"].each{|f| require f}' || die
 }
 
 all_ruby_install() {
