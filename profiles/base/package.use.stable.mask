@@ -5,6 +5,10 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in package.use.mask
 
+# William Hubbs <williamh@gentoo.org (13 Apr 2016)
+# Needs gcc-5 which is currently unstable
+dev-lang/go gccgo
+
 # Ian Delaney <idella4@gentoo.org> (06 Apr 2016)
 # on behalf of Ilya Tumaykin <itumaykin+gentoo@gmail.com>
 # Requires >=dev-util/cmocka-1.0, which is unstable atm,
