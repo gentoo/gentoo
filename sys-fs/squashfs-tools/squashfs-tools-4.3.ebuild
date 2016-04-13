@@ -52,5 +52,6 @@ src_compile() {
 
 src_install() {
 	dobin mksquashfs unsquashfs
-	dodoc ../README
+	cd ..
+	dodoc CHANGES PERFORMANCE.README pseudo-file.example README* OLD-READMEs/*
 }
