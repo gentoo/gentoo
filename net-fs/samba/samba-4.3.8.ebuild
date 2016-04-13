@@ -129,7 +129,7 @@ multilib_src_configure() {
 		--sysconfdir=/etc
 		--localstatedir=/var
 		--with-modulesdir=/usr/$(get_libdir)/samba
-		--with-piddir=/var/run/${PN}
+		--with-piddir=/run/${PN}
 		--bundled-libraries=NONE
 		--builtin-libraries=NONE
 		--disable-rpath
