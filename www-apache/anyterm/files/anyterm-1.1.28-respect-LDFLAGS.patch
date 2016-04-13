@@ -1,6 +1,6 @@
 === modified file 'common.mk'
---- common.mk	2009-01-24 12:40:55 +0000
-+++ common.mk	2009-01-24 14:02:19 +0000
+--- anyterm-1.1.29/common.mk	2009-01-24 12:40:55 +0000
++++ anyterm-1.1.29/common.mk	2009-01-24 14:02:19 +0000
 @@ -71,7 +71,7 @@
  OBJS=$(addsuffix .o,$(notdir $(basename $(CC_SRCS))))
  

@@ -1,5 +1,5 @@
---- libpbe/src/SmtpClient.cc
-+++ libpbe/src/SmtpClient.cc
+--- anyterm-1.1.29/libpbe/src/SmtpClient.cc
++++ anyterm-1.1.29/libpbe/src/SmtpClient.cc
 @@ -20,6 +20,7 @@
  #include "ip.hh"
  #include "select.hh"
