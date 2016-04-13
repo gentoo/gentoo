@@ -13,7 +13,7 @@ HOMEPAGE="http://www.glazedlists.com/"
 SRC_URI="http://java.net/downloads/${PN}/${P}/${P}-source_java15.zip -> ${P}.zip"
 LICENSE="|| ( LGPL-2.1 MPL-1.1 )"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 RDEPEND="
