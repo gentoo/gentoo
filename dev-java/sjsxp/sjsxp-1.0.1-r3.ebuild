@@ -14,7 +14,7 @@ SRC_URI="mirror://gentoo/${P}.tar.bz2"
 
 LICENSE="bea.ri.jsr173"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~x86-fbsd"
+KEYWORDS="amd64 x86 ~x86-fbsd"
 IUSE=""
 
 CDEPEND="dev-java/xpp3:0"
