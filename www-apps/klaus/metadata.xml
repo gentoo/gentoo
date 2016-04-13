@@ -19,4 +19,7 @@
 		<remote-id type="github">jonashaag/klaus</remote-id>
 		<bugs-to>https://github.com/jonashaag/klaus/issues</bugs-to>
 	</upstream>
+	<use>
+		<flag name="ctags">Enable support for Exuberant ctags; makes all source code symbols hyperlinks to their definitions</flag>
+	</use>
 </pkgmetadata>
