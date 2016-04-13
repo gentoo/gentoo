@@ -30,6 +30,15 @@ REQUIRED_USE="toggle? ( editor )"
 
 S="${WORKDIR}/${P%_*}-${PRIVOXY_STATUS}"
 
+pkg_pretend() {
+	if ! use threads; then
+		ewarn
+		ewarn "Privoxy may be very slow without threads support, consider to enable them."
+		ewarn "See also http://www.privoxy.org/faq/trouble.html#GENTOO-RICERS"
+		ewarn
+	fi
+}
+
 pkg_setup() {
 	enewgroup privoxy
 	enewuser privoxy -1 -1 /etc/privoxy privoxy
@@ -43,7 +52,6 @@ src_prepare() {
 }
 
 src_configure() {
-
 	econf \
 		$(use_enable acl acl-support) \
 		$(use_enable editor) \
