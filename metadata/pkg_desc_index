@@ -66,7 +66,7 @@ app-admin/checksec 1.7.2 1.7.3 1.7.4: Tool to check properties of executables (e
 app-admin/chroot_safe 1.4: a tool to chroot any dynamically linked application in a safe and sane manner
 app-admin/chrootuid 1.3 1.3-r1: run a network service at low privilege level and with restricted file system access
 app-admin/chrpath 0.13-r2: chrpath can modify the rpath and runpath of ELF executables
-app-admin/cli53 0.7.2: Command line tool for Amazon Route 53
+app-admin/cli53 0.7.3: Command line tool for Amazon Route 53
 app-admin/clog 1.1.0: A colorized log tail utility
 app-admin/clsync 0.4.1: Live sync tool based on inotify, written in GNU C
 app-admin/clustershell 1.6 1.6-r1: Python framework for efficient cluster administration
@@ -9344,7 +9344,6 @@ dev-tex/flabels 1.0: Macros for typesetting pretty lables (optionally colored) f
 dev-tex/floatflt 1.31a: LaTeX package used to warp text around figures
 dev-tex/foiltex 2.1.4b: LaTeX package used to create foils and slides
 dev-tex/frakturx 20070103: Collection of blackletter fonts for LaTeX
-dev-tex/fundus 19970826: Providing LaTeX access to various font families
 dev-tex/g-brief 4.0.2: LaTeX styles for formless letters in German or English
 dev-tex/glossaries 3.04 4.07 4.11 4.12-r1: Create glossaries and lists of acronyms
 dev-tex/harvard 2.0.5: The harvard family of bibliographic styles
@@ -9398,7 +9397,6 @@ dev-tex/tth 3.77: Translate TEX into HTML
 dev-tex/vc 0.5: The vc (version control) bundle
 dev-tex/xcolor 2.11: xcolor -- easy driver-independent access to colors
 dev-tex/xmltex 1.9-r2: A non validating namespace aware XML parser implemented in TeX
-dev-tex/xymtex 5.00a: LaTeX package for rendering high-quality chemical structure diagrams
 dev-texlive/texlive-basic 2012 2013 2014 2015: TeXLive Essential programs and files
 dev-texlive/texlive-bibtexextra 2012 2012-r1 2013 2014 2015: TeXLive BibTeX additional styles
 dev-texlive/texlive-context 2012 2012-r1 2013 2013-r1 2014 2015: TeXLive ConTeXt and packages
@@ -11471,7 +11469,7 @@ kde-misc/kcm-ufw 0.4.3-r1: KCM module to control the Uncomplicated Firewall
 kde-misc/kcollectd 0.9-r1: Simple KDE-based live data viewer for collectd
 kde-misc/kcometen4 1.0.8: OpenGL KDE4 screensaver
 kde-misc/kde-gtk-config 2.2.1: KDE systemsettings kcm to set GTK application look&feel
-kde-misc/kdeconnect 0.8 0.8-r1: Adds communication between KDE and your smartphone
+kde-misc/kdeconnect 0.8-r1 0.9g: Adds communication between KDE and your smartphone
 kde-misc/kdesudo 3.4.2.4-r1: A frontend for sudo. Unlike kdesu, it uses directly sudo as backend
 kde-misc/kdiff3 0.9.98 0.9.98-r1: Qt/KDE based frontend to diff3
 kde-misc/kdirstat 2.7.5 3.0-r1: Nice KDE replacement to the du command
