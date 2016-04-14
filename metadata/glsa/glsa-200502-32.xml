@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="200502-32">
+  <title>UnAce: Buffer overflow and directory traversal vulnerabilities</title>
+  <synopsis>UnAce is vulnerable to several buffer overflow and directory
+    traversal attacks.
+  </synopsis>
+  <product type="ebuild">unace</product>
+  <announced>February 28, 2005</announced>
+  <revised>May 19, 2014: 2</revised>
+  <bug>81958</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-arch/unace" auto="yes" arch="*">
+      <unaffected range="ge">2.5-r3</unaffected>
+      <vulnerable range="le">2.5-r3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>UnAce is an utility to extract, view and test the contents of an ACE
+      archive.
+    </p>
+  </background>
+  <description>
+    <p>Ulf Harnhammar discovered that UnAce suffers from buffer overflows when
+      testing, unpacking or listing specially crafted ACE archives
+      (CAN-2005-0160). He also found out that UnAce is vulnerable to directory
+      traversal attacks, if an archive contains “./..” sequences or
+      absolute filenames (CAN-2005-0161).
+    </p>
+  </description>
+  <impact type="normal">
+    <p>An attacker could exploit the buffer overflows to execute malicious code
+      or the directory traversals to overwrite arbitrary files.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All UnAce users should upgrade to the latest available version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-arch/unace-2.5-r3"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0160">
+      CAN-2005-0160
+    </uri>
+    <uri link="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2005-0161">
+      CAN-2005-0161
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 07 Oct 2011 22:18:40 +0000">system</metadata>
+  <metadata tag="submitter" timestamp="Mon, 19 May 2014 00:38:42 +0000">system</metadata>
+  <metadata tag="bugReady" timestamp="Mon, 19 May 2014 02:38:44 +0200">system</metadata>
+</glsa>

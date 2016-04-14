@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201603-07">
+  <title>Adobe Flash Player: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Adobe Flash Player, the
+    worst of which allows remote attackers to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild"></product>
+  <announced>March 12, 2016</announced>
+  <revised>March 12, 2016: 1</revised>
+  <bug>574284</bug>
+  <bug>576980</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-plugins/adobe-flash" auto="yes" arch="*">
+      <unaffected range="ge">11.2.202.577</unaffected>
+      <vulnerable range="lt">11.2.202.577</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>The Adobe Flash Player is a renderer for the SWF file format, which is
+      commonly used to provide interactive websites.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Adobe Flash Player.
+      Please review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could possibly execute arbitrary code with the
+      privileges of the process, cause a Denial of Service condition, obtain
+      sensitive information, or bypass security restrictions.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Adobe Flash Player users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "www-plugins/adobe-flash-11.2.202.577"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-0960">CVE-2016-0960</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-0961">CVE-2016-0961</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-0962">CVE-2016-0962</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-0963">CVE-2016-0963</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-0964">CVE-2016-0964</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-0965">CVE-2016-0965</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-0966">CVE-2016-0966</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-0967">CVE-2016-0967</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-0968">CVE-2016-0968</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-0969">CVE-2016-0969</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-0970">CVE-2016-0970</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-0971">CVE-2016-0971</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-0972">CVE-2016-0972</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-0973">CVE-2016-0973</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-0974">CVE-2016-0974</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-0975">CVE-2016-0975</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-0976">CVE-2016-0976</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-0977">CVE-2016-0977</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-0978">CVE-2016-0978</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-0979">CVE-2016-0979</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-0980">CVE-2016-0980</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-0981">CVE-2016-0981</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-0982">CVE-2016-0982</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-0983">CVE-2016-0983</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-0984">CVE-2016-0984</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-0985">CVE-2016-0985</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-0986">CVE-2016-0986</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-0987">CVE-2016-0987</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-0988">CVE-2016-0988</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-0989">CVE-2016-0989</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-0990">CVE-2016-0990</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-0991">CVE-2016-0991</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-0992">CVE-2016-0992</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-0993">CVE-2016-0993</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-0994">CVE-2016-0994</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-0995">CVE-2016-0995</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-0996">CVE-2016-0996</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-0997">CVE-2016-0997</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-0998">CVE-2016-0998</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-0999">CVE-2016-0999</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-1000">CVE-2016-1000</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-1001">CVE-2016-1001</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-1002">CVE-2016-1002</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-1005">CVE-2016-1005</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-1010">CVE-2016-1010</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 10 Feb 2016 22:19:19 +0000">K_F</metadata>
+  <metadata tag="submitter" timestamp="Sat, 12 Mar 2016 11:32:24 +0000">b-man</metadata>
+</glsa>

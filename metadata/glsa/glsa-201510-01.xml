@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201510-01">
+  <title>BIND: Denial of Service</title>
+  <synopsis>A vulnerability in BIND could lead to a Denial of Service
+    condition.
+  </synopsis>
+  <product type="ebuild">bind</product>
+  <announced>October 18, 2015</announced>
+  <revised>October 18, 2015: 1</revised>
+  <bug>540640</bug>
+  <bug>553584</bug>
+  <bug>556150</bug>
+  <bug>559462</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-dns/bind" auto="yes" arch="*">
+      <unaffected range="ge">9.10.2_p4</unaffected>
+      <vulnerable range="lt">9.10.2_p4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>BIND (Berkeley Internet Name Domain) is a Name Server.</p>
+  </background>
+  <description>
+    <p>A vulnerability has been discovered in BIND’s named utility leading to
+      a Denial of Service condition.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker may be able to cause Denial of Service condition via
+      specially constructed zone data.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All BIND users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-dns/bind-9.10.2_p4"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1349">CVE-2015-1349</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4620">CVE-2015-4620</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5477">CVE-2015-5477</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5722">CVE-2015-5722</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5986">CVE-2015-5986</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 23 Jul 2015 15:16:23 +0000">Zlogene</metadata>
+  <metadata tag="submitter" timestamp="Sun, 18 Oct 2015 19:47:34 +0000">Zlogene</metadata>
+</glsa>

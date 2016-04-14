@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201508-03">
+  <title>Icecast: Denial of Service</title>
+  <synopsis>A bug in the Icecast code handling source client URL authentication
+    causes a Denial of Service condition.
+  </synopsis>
+  <product type="ebuild">icecast</product>
+  <announced>August 15, 2015</announced>
+  <revised>August 15, 2015: 1</revised>
+  <bug>545968</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/icecast" auto="yes" arch="*">
+      <unaffected range="ge">2.4.2</unaffected>
+      <vulnerable range="lt">2.4.2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Icecast is an open source alternative to shoutcast that supports mp3,
+      ogg (vorbis/theora) and aac streaming.
+    </p>
+  </background>
+  <description>
+    <p>When stream_auth handler is defined for URL authentication and a request
+      is sent without login credentials, a Denial of Service condition can
+      occur. 
+    </p>
+    
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could possibly cause a Denial of Service condition.</p>
+  </impact>
+  <workaround>
+    <p>Users of affected versions can change stream_auth mountpoints to use
+      password authentication instead.
+    </p>
+  </workaround>
+  <resolution>
+    <p>All icecast users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-misc/icecast-2.4.2"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-3026">CVE-2015-3026</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 11 May 2015 16:10:32 +0000">K_F</metadata>
+  <metadata tag="submitter" timestamp="Sat, 15 Aug 2015 13:08:56 +0000">mrueg</metadata>
+</glsa>

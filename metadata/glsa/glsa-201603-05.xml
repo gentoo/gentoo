@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201603-05">
+  <title>LibreOffice, OpenOffice: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in both LibreOffice and
+    OpenOffice allowing remote attackers to execute arbitrary code or cause
+    Denial of Service.
+  </synopsis>
+  <product type="ebuild"></product>
+  <announced>March 09, 2016</announced>
+  <revised>March 09, 2016: 1</revised>
+  <bug>521136</bug>
+  <bug>522060</bug>
+  <bug>528438</bug>
+  <bug>534684</bug>
+  <bug>547880</bug>
+  <bug>547900</bug>
+  <bug>565028</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-office/libreoffice" auto="yes" arch="*">
+      <unaffected range="ge">4.4.2</unaffected>
+      <vulnerable range="lt">4.4.2</vulnerable>
+    </package>
+    <package name="app-office/libreoffice-bin" auto="yes" arch="*">
+      <unaffected range="ge">4.4.2</unaffected>
+      <vulnerable range="lt">4.4.2</vulnerable>
+    </package>
+    <package name="app-office/libreoffice-bin-debug" auto="yes" arch="*">
+      <unaffected range="ge">4.4.2</unaffected>
+      <vulnerable range="lt">4.4.2</vulnerable>
+    </package>
+    <package name="app-office/openoffice-bin" auto="yes" arch="*">
+      <unaffected range="ge">4.1.2</unaffected>
+      <vulnerable range="lt">4.1.2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Apache OpenOffice is the leading open-source office software suite for
+      word processing, spreadsheets, presentations, graphics, databases and
+      more.
+    </p>
+    
+    <p>LibreOffice is a powerful office suite; its clean interface and powerful
+      tools let you unleash your creativity and grow your productivity.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities were found in both LibreOffice and OpenOffice
+      that allow the remote execution of arbitrary code and potential Denial of
+      Service.  These vulnerabilities may be exploited through multiple vectors
+      including crafted documents, link handling, printer setup in ODF document
+      types, DOC file formats, and Calc spreadsheets.  Please review the
+      referenced CVE’s for specific information regarding each.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to open a specially crafted file
+      using the LibreOffice or OpenOffice suite of software.  Execution of
+      these attacks could possibly result in the execution of arbitrary code
+      with the privileges of the process or a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known work around at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All LibreOffice users should upgrade their respective packages to the
+      latest version:
+    </p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-office/libreoffice-4.4.2"
+      # emerge --ask --oneshot --verbose
+      "&gt;=app-office/libreoffice-bin-4.4.2"# emerge --ask --oneshot --verbose
+      "&gt;=app-office/libreoffice-bin-debug-4.4.2"
+    </code>
+    
+    <p>All OpenOffice users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-office/openoffice-bin-4.1.2"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3524">CVE-2014-3524</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3575">CVE-2014-3575</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3693">CVE-2014-3693</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9093">CVE-2014-9093</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1774">CVE-2015-1774</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4551">CVE-2015-4551</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5212">CVE-2015-5212</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5213">CVE-2015-5213</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5214">CVE-2015-5214</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 15 Feb 2015 17:50:17 +0000">K_F</metadata>
+  <metadata tag="submitter" timestamp="Wed, 09 Mar 2016 18:08:54 +0000">b-man</metadata>
+</glsa>

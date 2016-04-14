@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201507-10">
+  <title>t1utils: Arbitrary code execution</title>
+  <synopsis>A buffer overflow in t1utils could result in execution of arbitrary
+    code or Denial of Service.
+  </synopsis>
+  <product type="ebuild">t1utils</product>
+  <announced>July 10, 2015</announced>
+  <revised>July 10, 2015: 1</revised>
+  <bug>548638</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-text/t1utils" auto="yes" arch="*">
+      <unaffected range="ge">1.39</unaffected>
+      <vulnerable range="lt">1.39</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>t1utils is a collection of simple Type 1 font manipulation programs.</p>
+  </background>
+  <description>
+    <p>t1utils has a buffer overflow in the set_cs_start function in
+      t1disasm.c.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could cause a denial of service and possibly execute
+      arbitrary code via a crafted font file.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All t1utils users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-text/t1utils-1.39"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-3905">CVE-2015-3905</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 06 Jul 2015 04:39:33 +0000">
+    BlueKnight
+  </metadata>
+  <metadata tag="submitter" timestamp="Fri, 10 Jul 2015 08:01:40 +0000">mrueg</metadata>
+</glsa>

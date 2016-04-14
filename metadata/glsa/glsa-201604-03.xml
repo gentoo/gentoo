@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201604-03">
+  <title>Xen: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Xen, the worst of which
+    cause a Denial of Service.
+  </synopsis>
+  <product type="ebuild">xen</product>
+  <announced>April 05, 2016</announced>
+  <revised>April 05, 2016: 1</revised>
+  <bug>445254</bug>
+  <bug>513832</bug>
+  <bug>547202</bug>
+  <bug>549200</bug>
+  <bug>549950</bug>
+  <bug>550658</bug>
+  <bug>553664</bug>
+  <bug>553718</bug>
+  <bug>555532</bug>
+  <bug>556304</bug>
+  <bug>561110</bug>
+  <bug>564472</bug>
+  <bug>564932</bug>
+  <bug>566798</bug>
+  <bug>566838</bug>
+  <bug>566842</bug>
+  <bug>567962</bug>
+  <bug>571552</bug>
+  <bug>571556</bug>
+  <bug>574012</bug>
+  <access>local</access>
+  <affected>
+    <package name="app-emulation/xen" auto="yes" arch="*">
+      <unaffected range="ge">4.6.0-r9</unaffected>
+      <unaffected range="rge">4.5.2-r5</unaffected>
+      <vulnerable range="lt">4.6.0-r9</vulnerable>
+    </package>
+    <package name="app-emulation/xen-pvgrub" auto="yes" arch="*">
+      <vulnerable range="lt">4.6.0</vulnerable>
+    </package>
+    <package name="app-emulation/xen-tools" auto="yes" arch="*">
+      <unaffected range="ge">4.6.0-r9</unaffected>
+      <unaffected range="rge">4.5.2-r5</unaffected>
+      <vulnerable range="lt">4.6.0-r9</vulnerable>
+    </package>
+    <package name="app-emulation/pvgrub" auto="yes" arch="*">
+      <unaffected range="ge">4.6.0</unaffected>
+      <unaffected range="rge">4.5.2</unaffected>
+    </package>
+  </affected>
+  <background>
+    <p>Xen is a bare-metal hypervisor.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Xen. Please review the
+      CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A local attacker could possibly cause a Denial of Service condition or
+      obtain sensitive information.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Xen 4.5 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-emulation/xen-4.5.2-r5"
+    </code>
+    
+    <p>All Xen 4.6 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-emulation/xen-4.6.0-r9"
+    </code>
+    
+    <p>All Xen tools 4.5 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-emulation/xen-tools-4.5.2-r5"
+    </code>
+    
+    <p>All Xen tools 4.6 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-emulation/xen-tools-4.6.0-r9"
+    </code>
+    
+    <p>All Xen pvgrub users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-emulation/xen-pvgrub-4.6.0"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-3494">CVE-2012-3494</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-3495">CVE-2012-3495</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-3496">CVE-2012-3496</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-3497">CVE-2012-3497</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-3498">CVE-2012-3498</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-3515">CVE-2012-3515</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-4411">CVE-2012-4411</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-4535">CVE-2012-4535</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-4536">CVE-2012-4536</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-4537">CVE-2012-4537</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-4538">CVE-2012-4538</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-4539">CVE-2012-4539</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-6030">CVE-2012-6030</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-6031">CVE-2012-6031</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-6032">CVE-2012-6032</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-6033">CVE-2012-6033</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-6034">CVE-2012-6034</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-6035">CVE-2012-6035</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-6036">CVE-2012-6036</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-2151">CVE-2015-2151</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-3209">CVE-2015-3209</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-3259">CVE-2015-3259</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-3340">CVE-2015-3340</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-3456">CVE-2015-3456</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4103">CVE-2015-4103</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4104">CVE-2015-4104</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4105">CVE-2015-4105</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4106">CVE-2015-4106</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4163">CVE-2015-4163</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4164">CVE-2015-4164</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5154">CVE-2015-5154</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-7311">CVE-2015-7311</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-7504">CVE-2015-7504</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-7812">CVE-2015-7812</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-7813">CVE-2015-7813</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-7814">CVE-2015-7814</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-7835">CVE-2015-7835</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-7871">CVE-2015-7871</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-7969">CVE-2015-7969</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-7970">CVE-2015-7970</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-7971">CVE-2015-7971</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-7972">CVE-2015-7972</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8339">CVE-2015-8339</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8340">CVE-2015-8340</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8341">CVE-2015-8341</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8550">CVE-2015-8550</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8551">CVE-2015-8551</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8552">CVE-2015-8552</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8554">CVE-2015-8554</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-8555">CVE-2015-8555</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2270">CVE-2016-2270</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2271">CVE-2016-2271</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 14 May 2015 19:20:02 +0000">K_F</metadata>
+  <metadata tag="submitter" timestamp="Tue, 05 Apr 2016 06:39:26 +0000">b-man</metadata>
+</glsa>

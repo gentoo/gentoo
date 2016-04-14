@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201601-04">
+  <title>OpenSMTPD: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in OpenSMTPD, the worst
+    allowing remote attackers to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">opensmtpd</product>
+  <announced>January 27, 2016</announced>
+  <revised>January 27, 2016: 1</revised>
+  <bug>562034</bug>
+  <bug>562290</bug>
+  <access>remote</access>
+  <affected>
+    <package name="mail-mta/opensmtpd" auto="yes" arch="*">
+      <unaffected range="ge">5.7.3_p1</unaffected>
+      <vulnerable range="lt">5.7.3_p1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>OpenSMTPD is a lightweight but featured SMTP daemon from OpenBSD.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in OpenSMTPD. Please
+      review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could possibly execute arbitrary code with the
+      privileges of the process, or cause a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All OpenSMTPD users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=mail-mta/opensmtpd-5.7.3_p1"
+    </code>
+    
+  </resolution>
+  <references>
+  </references>
+  <metadata tag="requester" timestamp="Fri, 02 Oct 2015 13:05:33 +0000">mrueg</metadata>
+  <metadata tag="submitter" timestamp="Wed, 27 Jan 2016 06:43:42 +0000">mrueg</metadata>
+</glsa>

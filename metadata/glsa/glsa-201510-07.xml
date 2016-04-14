@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201510-07">
+  <title>CUPS: Multiple vulnerabilities </title>
+  <synopsis>Multiple vulnerabilities have been found in CUPS, the worst of
+    which could lead to arbitrary code execution.
+  </synopsis>
+  <product type="ebuild">cups</product>
+  <announced>October 31, 2015</announced>
+  <revised>October 31, 2015: 1</revised>
+  <bug>551846</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-print/cups" auto="yes" arch="*">
+      <unaffected range="ge">2.0.3</unaffected>
+      <vulnerable range="lt">2.0.3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>CUPS, the Common Unix Printing System, is a full-featured print server.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in cups. Please review the
+      CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could possibly execute arbitrary code with the
+      privileges of the process, or cause a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All CUPS users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-print/cups-2.0.3"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1158">CVE-2015-1158</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1159">CVE-2015-1159</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 10 Aug 2015 23:00:11 +0000">
+    BlueKnight
+  </metadata>
+  <metadata tag="submitter" timestamp="Sat, 31 Oct 2015 15:26:37 +0000">mrueg</metadata>
+</glsa>

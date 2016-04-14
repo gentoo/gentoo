@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201512-04">
+  <title>OpenSSH: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in OpenSSH, the worst of
+    which could lead to arbitrary code execution, or cause a Denial of Service
+    condition.
+  </synopsis>
+  <product type="ebuild">openssh</product>
+  <announced>December 20, 2015</announced>
+  <revised>December 21, 2015: 4</revised>
+  <bug>553724</bug>
+  <bug>555518</bug>
+  <bug>557340</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/openssh" auto="yes" arch="*">
+      <unaffected range="ge">7.1_p1-r2</unaffected>
+      <vulnerable range="lt">7.1_p1-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>OpenSSH is a complete SSH protocol implementation that includes an SFTP
+      client and server support.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in OpenSSH. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All openssh users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-misc/openssh-7.1_p1-r2"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5352">CVE-2015-5352</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5600">CVE-2015-5600</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-6563">CVE-2015-6563</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-6564">CVE-2015-6564</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-6565">CVE-2015-6565</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 22 Jul 2015 17:49:28 +0000">Zlogene</metadata>
+  <metadata tag="submitter" timestamp="Mon, 21 Dec 2015 15:58:43 +0000">ackle</metadata>
+</glsa>

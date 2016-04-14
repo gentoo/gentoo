@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201603-13">
+  <title>Libreswan: Multiple Vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in libreSwan possibly
+    resulting in Denial of Service.
+  </synopsis>
+  <product type="ebuild"></product>
+  <announced>March 12, 2016</announced>
+  <revised>March 12, 2016: 1</revised>
+  <bug>550974</bug>
+  <bug>558692</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/libreswan" auto="yes" arch="*">
+      <unaffected range="ge">3.15</unaffected>
+      <vulnerable range="lt">3.15</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Libreswan is a free software implementation of the most widely supported
+      and standarized VPN protocol based on (“IPsec”) and the Internet Key
+      Exchange (“IKE”).
+    </p>
+  </background>
+  <description>
+    <p>The pluto IKE daemon in Libreswan, when built with NSS, allows remote
+      attackers to cause a Denial of Service (assertion failure and daemon
+      restart) via a zero DH g^x value in a KE payload in a IKE packet. 
+      Additionally, remote attackers could cause a Denial of Service (daemon
+      restart) via an IKEv1 packet with (1) unassigned bits set in the IPSEC
+      DOI value or (2) the next payload value set to ISAKMP_NEXT_SAK.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Remote attackers could possibly cause Denial of Service.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Libreswan users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-misc/libreswan-3.15"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-3204">CVE-2015-3204</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-3240">CVE-2015-3240</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 31 Dec 2015 05:09:11 +0000">
+    BlueKnight
+  </metadata>
+  <metadata tag="submitter" timestamp="Sat, 12 Mar 2016 23:20:43 +0000">b-man</metadata>
+</glsa>

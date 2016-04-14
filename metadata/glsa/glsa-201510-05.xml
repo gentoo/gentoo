@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201510-05">
+  <title>MediaWiki: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in MediaWiki, the worst of
+    which may allow remote attackers to cause a Denial of Service.
+  </synopsis>
+  <product type="ebuild">mediawiki</product>
+  <announced>October 31, 2015</announced>
+  <revised>October 31, 2015: 1</revised>
+  <bug>545944</bug>
+  <bug>557844</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-apps/mediawiki" auto="yes" arch="*">
+      <unaffected range="ge">1.25.2</unaffected>
+      <unaffected range="rge">1.24.3</unaffected>
+      <unaffected range="rge">1.23.10</unaffected>
+      <vulnerable range="lt">1.25.2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>MediaWiki is a collaborative editing software used by large projects
+      such as Wikipedia.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in MediaWiki. Please
+      review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker may be able to create a Denial of Service condition,
+      obtain sensitive information, bypass security restrictions, and inject
+      arbitrary web script or HTML.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All MediaWiki 1.25 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=www-apps/mediawiki-1.25.2"
+    </code>
+    
+    <p>All MediaWiki 1.24 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=www-apps/mediawiki-1.24.3"
+    </code>
+    
+    <p>All MediaWiki 1.23 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=www-apps/mediawiki-1.23.10"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-2931">CVE-2015-2931</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-2932">CVE-2015-2932</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-2933">CVE-2015-2933</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-2934">CVE-2015-2934</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-2935">CVE-2015-2935</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-2936">CVE-2015-2936</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-2937">CVE-2015-2937</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-2938">CVE-2015-2938</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-2939">CVE-2015-2939</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-2940">CVE-2015-2940</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-2941">CVE-2015-2941</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-2942">CVE-2015-2942</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-6728">CVE-2015-6728</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-6729">CVE-2015-6729</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-6730">CVE-2015-6730</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-6731">CVE-2015-6731</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-6732">CVE-2015-6732</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-6733">CVE-2015-6733</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-6734">CVE-2015-6734</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-6735">CVE-2015-6735</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-6736">CVE-2015-6736</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-6737">CVE-2015-6737</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sat, 10 Oct 2015 02:28:01 +0000">
+    BlueKnight
+  </metadata>
+  <metadata tag="submitter" timestamp="Sat, 31 Oct 2015 15:16:38 +0000">ackle</metadata>
+</glsa>

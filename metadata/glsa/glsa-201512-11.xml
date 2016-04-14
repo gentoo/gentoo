@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201512-11">
+  <title>Firebird: Buffer Overflow</title>
+  <synopsis>A buffer overflow in Firebird might allow remote attackers to
+    execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">firebird</product>
+  <announced>December 30, 2015</announced>
+  <revised>December 30, 2015: 1</revised>
+  <bug>460780</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-db/firebird" auto="yes" arch="*">
+      <unaffected range="ge">2.5.3.26780.0-r3</unaffected>
+      <vulnerable range="lt">2.5.3.26780.0-r3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Firebird is a multi-platform, open source relational database.</p>
+  </background>
+  <description>
+    <p>The vulnerability is caused due to an error when processing requests
+      from remote clients.
+    </p>
+  </description>
+  <impact type="high">
+    <p>A remote attacker could possibly execute arbitrary code with the
+      privileges of the process, or cause a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Firebird users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=dev-db/firebird-2.5.3.26780.0-r3"
+    </code>
+    
+    <p>NOTE: Firebird package was moved to the testing branch (unstable) of
+      Gentoo. There is currently no stable version of Firebird, and  there will
+      be no further GLSAs for this package.
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-2492">CVE-2013-2492</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 15 Jan 2015 13:57:42 +0000">
+    pinkbyte
+  </metadata>
+  <metadata tag="submitter" timestamp="Wed, 30 Dec 2015 16:24:28 +0000">
+    pinkbyte
+  </metadata>
+</glsa>

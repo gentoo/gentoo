@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201603-01">
+  <title>GIMP: Multiple vulnerabilities</title>
+  <synopsis>GIMP is vulnerable to multiple buffer overflows which could result
+    in the execution of arbitrary code or Denial of Service.
+  </synopsis>
+  <product type="ebuild"></product>
+  <announced>March 06, 2016</announced>
+  <revised>March 06, 2016: 1</revised>
+  <bug>434582</bug>
+  <bug>493372</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-gfx/gimp" auto="yes" arch="*">
+      <unaffected range="ge">2.8.0</unaffected>
+      <vulnerable range="lt">2.8.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>GIMP is a cross-platform image editor available for GNU/Linux, OS X,
+      Windows and more operating systems.
+    </p>
+  </background>
+  <description>
+    <p>GIMP’s network server, scriptfu, is vulnerable to the remote execution
+      of arbitrary code via the python-fu-eval command due to not requiring
+      authentication.  Additionally, the X Window Dump (XWD) plugin is
+      vulnerable to multiple buffer overflows possibly allowing the remote
+      execution of arbitrary code or Denial of Service.  The XWD plugin is
+      vulnerable due to not validating large color entries.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could possibly execute arbitrary code with the
+      privileges of the process due or perform a Denial of Service.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known work around at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All GIMP users should upgrade to the latest version:
+      <code>
+        # emerge --sync
+        # emerge --ask --oneshot --verbose "&gt;=media-gfx/gimp-2.8.0"
+      </code>
+     </p>
+    </resolution>
+    <references>
+      <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-4245">
+        CVE-2012-4245
+      </uri>
+      <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-1913">
+        CVE-2013-1913
+      </uri>
+      <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-1978">
+        CVE-2013-1978
+      </uri>
+    </references>
+    <metadata tag="requester" timestamp="Wed, 02 Mar 2016 11:01:16 +0000">b-man</metadata>
+    <metadata tag="submitter" timestamp="Sun, 06 Mar 2016 19:53:36 +0000">b-man</metadata>
+  </glsa>

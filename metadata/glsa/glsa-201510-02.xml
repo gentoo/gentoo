@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201510-02">
+  <title>QEMU: Arbitrary code execution</title>
+  <synopsis>A heap-based buffer overflow in QEMU could result in execution of
+    arbitrary code.
+  </synopsis>
+  <product type="ebuild">qemu</product>
+  <announced>October 31, 2015</announced>
+  <revised>October 31, 2015: 1</revised>
+  <bug>551752</bug>
+  <bug>555680</bug>
+  <bug>556050</bug>
+  <bug>556052</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="app-emulation/qemu" auto="yes" arch="*">
+      <unaffected range="ge">2.3.0-r4</unaffected>
+      <vulnerable range="lt">2.3.0-r4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>QEMU is a generic and open source machine emulator and virtualizer.</p>
+  </background>
+  <description>
+    <p>Heap-based buffer overflow has been found in QEMU’s PCNET controller.</p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could execute arbitrary code via a specially crafted
+      packets.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All QEMU users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-emulation/qemu-2.3.0-r4"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-3209">CVE-2015-3209</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-3214">CVE-2015-3214</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5154">CVE-2015-5154</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5158">CVE-2015-5158</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 16 Jul 2015 12:11:27 +0000">
+    BlueKnight
+  </metadata>
+  <metadata tag="submitter" timestamp="Sat, 31 Oct 2015 15:00:35 +0000">Zlogene</metadata>
+</glsa>

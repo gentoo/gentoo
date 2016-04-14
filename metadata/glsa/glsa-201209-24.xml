@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201209-24">
+  <title>PostgreSQL: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in PostgreSQL which may
+    allow a remote attacker to conduct several attacks.
+    
+  </synopsis>
+  <product type="ebuild">PostgreSQL</product>
+  <announced>September 28, 2012</announced>
+  <revised>January 20, 2014: 2</revised>
+  <bug>406037</bug>
+  <bug>419727</bug>
+  <bug>431766</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-db/postgresql-server" auto="yes" arch="*">
+      <unaffected range="ge">9.1.5</unaffected>
+      <unaffected range="rge">9.0.9</unaffected>
+      <unaffected range="rge">8.4.13</unaffected>
+      <unaffected range="rge">8.3.20</unaffected>
+      <unaffected range="rge">8.4.17</unaffected>
+      <unaffected range="rge">8.4.19</unaffected>
+      <unaffected range="rge">9.0.13</unaffected>
+      <unaffected range="rge">9.0.14</unaffected>
+      <unaffected range="rge">9.0.15</unaffected>
+      <unaffected range="rge">8.4.14</unaffected>
+      <unaffected range="rge">8.4.15</unaffected>
+      <unaffected range="rge">8.4.16</unaffected>
+      <unaffected range="rge">9.0.16</unaffected>
+      <unaffected range="rge">9.0.17</unaffected>
+      <vulnerable range="lt">9.1.5</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>PostgreSQL is an open source object-relational database management
+      system.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in PostgreSQL. Please
+      review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could spoof SSL connections. Furthermore, a remote
+      authenticated attacker could cause a Denial of Service, read and write
+      arbitrary files, inject SQL commands into dump scripts, or bypass
+      database restrictions to execute database functions.
+    </p>
+    
+    <p>A context-dependent attacker could more easily obtain access via
+      authentication attempts with an initial substring of the intended
+      password. 
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All PostgreSQL 9.1 server users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-db/postgresql-server-9.1.5"
+    </code>
+    
+    <p>All PostgreSQL 9.0 server users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-db/postgresql-server-9.0.9"
+    </code>
+    
+    <p>All PostgreSQL 8.4 server users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-db/postgresql-server-8.4.13"
+    </code>
+    
+    <p>All PostgreSQL 8.3 server users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-db/postgresql-server-8.3.20"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0866">CVE-2012-0866</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0867">CVE-2012-0867</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0868">CVE-2012-0868</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2143">CVE-2012-2143</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-2655">CVE-2012-2655</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-3488">CVE-2012-3488</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-3489">CVE-2012-3489</uri>
+  </references>
+  <metadata tag="requester" timestamp="Sun, 08 Apr 2012 15:26:13 +0000">
+    underling
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 20 Jan 2014 09:36:28 +0000">ackle</metadata>
+</glsa>

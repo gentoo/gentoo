@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201509-06">
+  <title>Git: Arbitrary command execution </title>
+  <synopsis>An attacker could execute arbitrary commands via Git repositories
+    in a case-insensitive or case-normalizing filesystem.
+  </synopsis>
+  <product type="ebuild">git</product>
+  <announced>September 24, 2015</announced>
+  <revised>September 24, 2015: 1</revised>
+  <bug>532984</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-vcs/git" auto="yes" arch="*">
+      <unaffected range="rge">1.8.5.6</unaffected>
+      <unaffected range="rge">1.9.5</unaffected>
+      <unaffected range="ge">2.0.5</unaffected>
+      <vulnerable range="lt">2.0.5</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Git is a free and open source distributed version control system
+      designed to handle everything from small to very large projects with
+      speed and efficiency.
+    </p>
+  </background>
+  <description>
+    <p>A vulnerability in Git causing Git-compatible clients that access
+      case-insensitive or case-normalizing filesystems to overwrite the
+      .git/config when cloning or checking out a repository, leading to
+      execution of arbitrary commands.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>An attacker can execute arbitrary commands on a client machine that
+      clones a crafted malicious Git tree.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Git 1.8.x users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-vcs/git-1.8.5.6"
+    </code>
+    
+    <p>All Git 1.9.x users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-vcs/git-1.9.5"
+    </code>
+    
+    <p>All Git 2.0.x users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-vcs/git-2.0.5"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9390">CVE-2014-9390</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 29 Dec 2014 01:59:41 +0000">
+    BlueKnight
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 24 Sep 2015 17:01:53 +0000">mrueg</metadata>
+</glsa>

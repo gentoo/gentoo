@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201509-05">
+  <title>NetworkManager: Denial of Service</title>
+  <synopsis>Improper handling of Router Advertisements in NetworkManager could
+    cause a Denial of Service condition in IPv6 network stacks.
+  </synopsis>
+  <product type="ebuild">networkmanager</product>
+  <announced>September 24, 2015</announced>
+  <revised>September 24, 2015: 1</revised>
+  <bug>545980</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/networkmanager" auto="yes" arch="*">
+      <unaffected range="ge">1.0.2</unaffected>
+      <vulnerable range="lt">1.0.2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>NetworkManager is an universal network configuration daemon for laptops,
+      desktops, servers and virtualization hosts.
+    </p>
+  </background>
+  <description>
+    <p>IPv6 Neighbour Discovery ICMP broadcast containing a non-route with a
+      low hop limit causes a Denial of Service by lowering the hop limit on
+      existing IPv6 routes in NetworkManager.
+    </p>
+    
+  </description>
+  <impact type="normal">
+    <p>A remote attacker on the same network segment could cause a Denial of
+      Service condition in NetworkManager
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All NetworkManager users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-misc/networkmanager-1.0.2"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-2924">CVE-2015-2924</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 30 Jun 2015 19:06:18 +0000">
+    BlueKnight
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 24 Sep 2015 16:58:36 +0000">mrueg</metadata>
+</glsa>

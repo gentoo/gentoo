@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201509-01">
+  <title>NTP: Multiple vulnerablities</title>
+  <synopsis>Multiple vulnerabilities have been found in NTP, the worst of which
+    could lead to arbitrary code execution.
+  </synopsis>
+  <product type="ebuild">ntp</product>
+  <announced>September 24, 2015</announced>
+  <revised>September 24, 2015: 1</revised>
+  <bug>545836</bug>
+  <bug>553682</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/ntp" auto="yes" arch="*">
+      <unaffected range="ge">4.2.8_p3</unaffected>
+      <vulnerable range="lt">4.2.8_p3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>NTP contains software for the Network Time Protocol.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in NTP. Please review the
+      CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could possibly execute arbitrary code with the
+      privileges of the process, or cause a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All NTP users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-misc/ntp-4.2.8_p3"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1798">CVE-2015-1798</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-1799">CVE-2015-1799</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5146">CVE-2015-5146</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 05 Aug 2015 06:31:39 +0000">
+    BlueKnight
+  </metadata>
+  <metadata tag="submitter" timestamp="Thu, 24 Sep 2015 16:30:37 +0000">mrueg</metadata>
+</glsa>

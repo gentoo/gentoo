@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201512-05">
+  <title>gdk-pixbuf: Multiple Vulnerabilities</title>
+  <synopsis>Multiple buffer overflow vulnerabilities in gdk-pixbuf may allow
+    remote attackers to execute arbitrary code or cause Denial of Service.
+  </synopsis>
+  <product type="ebuild">gdk-pixbuf</product>
+  <announced>December 21, 2015</announced>
+  <revised>December 21, 2015: 1</revised>
+  <bug>556314</bug>
+  <bug>562878</bug>
+  <bug>562880</bug>
+  <access>remote</access>
+  <affected>
+    <package name="x11-libs/gdk-pixbuf" auto="yes" arch="*">
+      <unaffected range="ge">2.32.1</unaffected>
+      <vulnerable range="lt">2.32.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>gdk-pixbuf is an image loading library for GTK+.</p>
+  </background>
+  <description>
+    <p>Three heap-based buffer overflow vulnerabilities have been discovered in
+      gdk-pixbuf. Please review the CVE identifiers referenced below for
+      details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to open a specially crafted image
+      file with an application linked against gdk-pixbuf, possibly resulting in
+      execution of arbitrary code with the privileges of the process or a
+      Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All gdk-pixbuf users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=x11-libs/gdk-pixbuf-2.32.1"
+    </code>
+    
+    <p>Packages which depend on this library may need to be recompiled. Tools
+      such as revdep-rebuild may assist in identifying these packages.
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-4491">CVE-2015-4491</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-7673">CVE-2015-7673</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-7674">CVE-2015-7674</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 13 Oct 2015 00:53:43 +0000">
+    BlueKnight
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 21 Dec 2015 14:06:18 +0000">ackle</metadata>
+</glsa>

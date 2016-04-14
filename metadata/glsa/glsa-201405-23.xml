@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201405-23">
+  <title>lib3ds: User-assisted execution of arbitrary code</title>
+  <synopsis>A vulnerability in lib3ds might allow a remote attacker to execute
+    arbitrary code.
+  </synopsis>
+  <product type="ebuild">lib3ds</product>
+  <announced>May 18, 2014</announced>
+  <revised>December 10, 2014: 2</revised>
+  <bug>308033</bug>
+  <bug>519936</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-libs/lib3ds" auto="yes" arch="*">
+      <unaffected range="ge">2.0.0_rc1</unaffected>
+      <unaffected range="rge">1.3.0-r1</unaffected>
+      <vulnerable range="lt">2.0.0_rc1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>lib3ds is a library for managing 3D-Studio Release 3 and 4 .3DS files.</p>
+  </background>
+  <description>
+    <p>An array index error has been discovered in lib3ds.</p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to open a specially crafted 3DS
+      file using an application linked against lib3ds, possibly resulting in
+      execution of arbitrary code with the privileges of the process or a
+      Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All lib3ds 2.0 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=media-libs/lib3ds-2.0.0_rc1"
+    </code>
+    
+    <p>All lib3ds 1.3 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=media-libs/lib3ds-1.3.0-r1"
+    </code>
+    
+    <p>Packages which depend on this library may need to be recompiled. Tools
+      such as revdep-rebuild may assist in identifying some of these packages.
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2010-0280">CVE-2010-0280</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 30 Sep 2013 23:22:44 +0000">ackle</metadata>
+  <metadata tag="submitter" timestamp="Wed, 10 Dec 2014 00:42:02 +0000">ackle</metadata>
+</glsa>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201603-04">
+  <title>FUSE: incorrect filtering of environment variables leading to
+    privilege escalation
+  </title>
+  <synopsis>The fusermount binary in FUSE does not properly clear the
+    environment before invoking mount or umount as root that allows a local
+    user to overwrite arbitrary files.
+  </synopsis>
+  <product type="ebuild">fuse</product>
+  <announced>March 09, 2016</announced>
+  <revised>March 09, 2016: 1</revised>
+  <bug>550152</bug>
+  <access>local</access>
+  <affected>
+    <package name="sys-fs/fuse" auto="yes" arch="*">
+      <unaffected range="ge">2.9.4</unaffected>
+      <vulnerable range="lt">2.9.4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>FUSE provides an interface for filesystems implemented in userspace.</p>
+  </background>
+  <description>
+    <p>The fusermount binary calls setuid(geteuid()) to reset the RUID when it
+      invokes /bin/mount so that it can use privileged mount options that are
+      normally restricted if RUID != EUID.  FUSE does not properly clear
+      environment variables before invoking mount or umount as root allowing
+      this to be passed to operations using elevated privileges such as
+      LIBMOUNT_MTAB that is used by the mount commands debugging feature.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>The FUSE vulnerability allows a local, unprivileged user to overwrite
+      arbitrary files on the system.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known work around at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All FUSE users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=sys-fs/fuse-2.9.4"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-3202">
+      CVE-2015-3202
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 09 Sep 2015 05:09:39 +0000">
+    BlueKnight
+  </metadata>
+  <metadata tag="submitter" timestamp="Wed, 09 Mar 2016 17:59:40 +0000">b-man</metadata>
+</glsa>

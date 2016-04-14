@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201512-09">
+  <title>encfs: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in encfs, the worst of
+    which can allow remote attackers to execute arbitrary code or cause a
+    Denial of Service condition.
+  </synopsis>
+  <product type="ebuild">encfs</product>
+  <announced>December 30, 2015</announced>
+  <revised>December 30, 2015: 1</revised>
+  <bug>510290</bug>
+  <access>local</access>
+  <affected>
+    <package name="sys-fs/encfs" auto="yes" arch="*">
+      <unaffected range="ge">1.7.5</unaffected>
+      <vulnerable range="lt">1.7.5</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Encfs is an implementation of encrypted filesystem in user-space using
+      FUSE.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in encfs. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A local attacker can utilize a  possible buffer overflow in the
+      encodeName method of StreamNameIO and BlockNameIO to execute arbitrary
+      code or cause a Denial of Service. Also multiple weak cryptographics
+      practices have been found in encfs. 
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All encfs users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=sys-fs/encfs-1.7.5"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3462">CVE-2014-3462</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 11 May 2015 16:35:36 +0000">K_F</metadata>
+  <metadata tag="submitter" timestamp="Wed, 30 Dec 2015 14:32:13 +0000">mrueg</metadata>
+</glsa>
