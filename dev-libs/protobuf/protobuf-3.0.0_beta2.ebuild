@@ -29,7 +29,7 @@ DEPEND="${CDEPEND}
 		dev-python/setuptools[${PYTHON_USEDEP}]
 		dev-python/six[${PYTHON_USEDEP}]
 	)
-	test? ( dev-cpp/gmock )"
+	test? ( dev-cpp/gmock[${MULTILIB_USEDEP}] )"
 RDEPEND="${CDEPEND}
 	java? ( >=virtual/jre-1.5 )"
 S="${WORKDIR}/${PN}-${MY_PV}"
@@ -110,8 +110,8 @@ multilib_src_compile() {
 	fi
 }
 
-src_test() {
-	multilib-minimal_src_test check
+multilib_src_test() {
+	emake check
 
 	if use python; then
 		pushd python >/dev/null || die
