@@ -56,14 +56,11 @@ pkg_setup() {
 src_prepare() {
 	use java && java-pkg-opt-2_src_prepare
 
-	if use python; then
-		sed \
-			-e 's|\(^xapian/__init__.py: modern/xapian.py\)|\1 xapian/_xapian$(PYTHON_SO)|' \
-			-i python/Makefile.in || die "sed failed"
-	fi
-
 	# http://trac.xapian.org/ticket/702
 	export XAPIAN_CONFIG="/usr/bin/xapian-config"
+
+	# Fix bug #579412 - requires re-automaking
+	epatch "${FILESDIR}"/${P}-fix-perl-doc.patch
 	eautoreconf
 }
 
@@ -82,6 +79,7 @@ src_configure() {
 	fi
 
 	econf \
+		--disable-documentation \
 		$(use_with java) \
 		$(use_with lua) \
 		--without-csharp \

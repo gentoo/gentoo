@@ -1,0 +1,46 @@
+Author: Ole Streicher <olebole@debian.org>
+Description: Another off-by-one
+ Fixes:
+ .
+  ERROR: AddressSanitizer: stack-buffer-overflow on address 0x7fff9e7713b1 at pc 0x7f4135c48c7c bp 0x7fff9e770e20 sp 0x7fff9e770e18
+WRITE of size 1 at 0x7fff9e7713b1 thread T0
+    #0 0x7f4135c48c7b in fitswdb prim/dio/libsrc/fitswdb.c:243
+    #1 0x7f4135c4a61c in fitswhd prim/dio/libsrc/fitswhd.c:450
+    #2 0x7f4135caab6e in SCFSAV libsrc/st/scfa.c:157
+    #3 0x7f4135caff75 in SCFCLO libsrc/st/scfb.c:483
+    #4 0x7f4135cba83e in SCSEPI libsrc/st/scs.c:353
+    #5 0x7f4135cc6cd8 in stsepi_ libsrc/ftoc/sts.c:67
+    #6 0x409fb7 in statis prim/display/src/statis.f:1034
+    #7 0x40549c in main prim/display/src/statis.f:1056
+    #8 0x7f4134de2b44 in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x21b44)
+    #9 0x405a92 (prim/exec/statis.exe+0x405a92)
+
+Address 0x7fff9e7713b1 is located in stack of thread T0 at offset 1265 in frame
+    #0 0x7f4135c45c7f in fitswdb prim/dio/libsrc/fitswdb.c:88
+
+  This frame has 21 object(s):
+    [32, 36) 'nv'
+   [...]
+    [1056, 1137) 'com'
+    [1184, 1265) 'cval' <== Memory access at offset 1265 overflows this variable
+    [1312, 1393) 'line'
+    [1440, 1521) 'help'
+
+--- a/prim/dio/libsrc/fitswdb.c
++++ b/prim/dio/libsrc/fitswdb.c
+@@ -240,12 +240,12 @@
+ 		  if (dtk->ctl==NCTL || dtk->ctl==SCTL) {
+ 		     nc = (MXLB<nbp) ? MXLB : nbp;
+ 		     SCDRDC(mfd,md->name,1,ns,nc,&nv,cval,unit,&null);
+-		     cval[nv] = '\0';
+-		     for (nn=0; nn<nv; nn++)
++		     cval[nv-1] = '\0';
++		     for (nn=0; nn<nv-1; nn++)
+ 		       if (cval[nn]<' ' || '~'<cval[nn])
+ 			 cval[nn] = ' ';
+ 		     if(dtk->ctl==SCTL) {
+-			ival = nv-1;
++			ival = nv-2;
+ 			while (ival && cval[ival]==' ') ival--;
+ 			cval[++ival] = '\0';
+ 		      }
