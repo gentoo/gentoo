@@ -3,7 +3,7 @@
 <pkgmetadata>
 	<maintainer type="person">
 		<email>peter@stuge.se</email>
-		<name> Peter Stuger</name>
+		<name>Peter Stuge</name>
 		<description>Proxied maintainer; set to assignee in all bugs</description>
 	</maintainer>
 	<maintainer type="project">
@@ -15,7 +15,7 @@
 		simple presentations easy while to make complicated presentations
 		possible. Its presentation file (whose suffix is typically .mgp) is
 		just text so that you can create presentation files quickly with your
-		favorite editor (e.g.  Emacs, vi).  
+		favorite editor (e.g.  Emacs, vi).
 	</longdescription>
 	<use>
 		<flag name="contrib">Install additional contributed scripts</flag>
