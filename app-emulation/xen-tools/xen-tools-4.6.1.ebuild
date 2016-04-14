@@ -348,6 +348,9 @@ src_prepare() {
 		-e 's:^#vif.default.script=:vif.default.script=:' \
 		-i tools/examples/xl.conf  || die
 
+	# Bug #575868 converted to a sed statement, typo of one char
+	sed -e "s:granter’s:granter's:" -i xen/include/public/grant_table.h || die
+
 	epatch_user
 }
 
