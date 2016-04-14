@@ -7,170 +7,133 @@
 # wxwidgets@gentoo.org
 # @BLURB: Manages build configuration for wxGTK-using packages.
 # @DESCRIPTION:
-#  This eclass gives ebuilds the ability to build against a specific wxGTK
-#  SLOT and profile without interfering with the system configuration.  Any
-#  ebuild with a x11-libs/wxGTK dependency must use this eclass.
+#  This eclass sets up the proper environment for ebuilds using the wxGTK
+#  libraries.  Ebuilds using wxPython do not need to inherit this eclass.
 #
-#  There are two ways to do it:
+#  More specifically, this eclass controls the configuration chosen by the
+#  /usr/bin/wx-config wrapper.
 #
-#    - set WX_GTK_VER before inheriting the eclass
-#    - set WX_GTK_VER and call need-wxwidgets from a phase function
+#  Using the eclass is simple:
 #
-#  (where WX_GTK_VER is the SLOT you want)
+#    - set WX_GTK_VER equal to a SLOT of wxGTK
+#    - call setup-wxwidgets()
 #
-#  If your package has optional support for wxGTK (ie. by a USE flag) then
-#  you should use need-wxwidgets.  This is important because some packages
-#  will force-enable wxGTK if they find WX_CONFIG set in the environment.
-#
-# @CODE
-#      inherit wxwidgets
-#
-#      IUSE="X wxwidgets"
-#      DEPEND="wxwidgets? ( x11-libs/wxGTK:2.8[X?] )"
-#
-#      src_configure() {
-#          if use wxwidgets; then
-#              WX_GTK_VER="2.8"
-#              if use X; then
-#                  need-wxwidgets unicode
-#              else
-#                  need-wxwidgets base-unicode
-#              fi
-#          fi
-#          econf --with-wx-config="${WX_CONFIG}"
-#      }
-# @CODE
-#
-# That's about as complicated as it gets.  99% of ebuilds can get away with:
-#
-# @CODE
-#      inherit wxwidgets
-#      DEPEND="wxwidgets? ( x11-libs/wxGTK:2.8[X] )
-#      ...
-#      WX_GTK_VER=2.8 need-wxwidgets unicode
-# @CODE
-#
-# Note: unless you know your package works with wxbase (which is very
-# doubtful), always depend on wxGTK[X].
-#
-# Debugging: In wxGTK 3.0 and later debugging support is enabled in the
-# library by default and needs to be controlled at the package level.
-# Use the -DNDEBUG preprocessor flag to disable debugging features.
-# (Using need-wxwidgets will do this for you, see below.)
+#  The configuration chosen is based on the version required and the flags
+#  wxGTK was built with.
 
 if [[ -z ${_WXWIDGETS_ECLASS} ]]; then
 
 case ${EAPI} in
 	0|1|2|3|4|5)
 		inherit eutils flag-o-matic multilib
+
+		# This was used to set up a sane default for ebuilds so they could
+		# avoid calling need-wxwidgets if they didn't need a particular build.
+		# This was a bad idea for a couple different reasons, and because
+		# get_libdir() is now illegal in global scope in EAPI 6 we can't do it
+		# anymore.  All ebuilds must now use setup-wxwidgets and this code is
+		# only here for backwards compatability.
+		if [[ -z ${WX_CONFIG} ]]; then
+			if [[ -n ${WX_GTK_VER} ]]; then
+				for _wxtoolkit in mac gtk2 base; do
+					# newer versions don't have a seperate debug config
+					for _wxdebug in xxx release- debug-; do
+						_wxconf="${_wxtoolkit}-unicode-${_wxdebug/xxx/}${WX_GTK_VER}"
+
+						[[ -f ${EPREFIX}/usr/$(get_libdir)/wx/config/${_wxconf} ]] \
+							|| continue
+
+						WX_CONFIG="${EPREFIX}/usr/$(get_libdir)/wx/config/${_wxconf}"
+						WX_ECLASS_CONFIG="${WX_CONFIG}"
+						break
+					done
+					[[ -n ${WX_CONFIG} ]] && break
+				done
+				[[ -n ${WX_CONFIG} ]] && export WX_CONFIG WX_ECLASS_CONFIG
+			fi
+		fi
+		unset _wxtoolkit
+		unset _wxdebug
+		unset _wxconf
+		;;
+	6)
+		inherit flag-o-matic multilib
 		;;
 	*)
 		die "EAPI=${EAPI:-0} is not supported"
 		;;
 esac
 
-# We do this in global scope so ebuilds can get sane defaults just by
-# inheriting.
-if [[ -z ${WX_CONFIG} ]]; then
-	if [[ -n ${WX_GTK_VER} ]]; then
-		for _wxtoolkit in mac gtk2 base; do
-			# newer versions don't have a seperate debug profile
-			for _wxdebug in xxx release- debug-; do
-				_wxconf="${_wxtoolkit}-unicode-${_wxdebug/xxx/}${WX_GTK_VER}"
-
-				[[ -f ${EPREFIX}/usr/$(get_libdir)/wx/config/${_wxconf} ]] || continue
-
-				WX_CONFIG="${EPREFIX}/usr/$(get_libdir)/wx/config/${_wxconf}"
-				WX_ECLASS_CONFIG="${WX_CONFIG}"
-				break
-			done
-			[[ -n ${WX_CONFIG} ]] && break
-		done
-		[[ -n ${WX_CONFIG} ]] && export WX_CONFIG WX_ECLASS_CONFIG
-	fi
-fi
-unset _wxtoolkit
-unset _wxdebug
-unset _wxconf
-
-# @FUNCTION:    need-wxwidgets
-# @USAGE:       <profile>
+# @FUNCTION:    setup-wxwidgets
 # @DESCRIPTION:
 #
-#  Available profiles are:
+#  Call this in your ebuild to set up the environment for wxGTK.  Besides
+#  controlling the wx-config wrapper this exports WX_CONFIG containing
+#  the path to the config in case it needs to be passed to a build system.
 #
-#    unicode       (USE="X")
-#    base-unicode  (USE="-X")
+#  In wxGTK-2.9 and later it also controls the level of debugging output
+#  from the libraries.  In these versions debugging features are enabled
+#  by default and need to be disabled at the package level.  Because this
+#  causes many warning dialogs to pop up during runtime we add -DNDEBUG to
+#  CPPFLAGS to disable debugging features (unless your ebuild has a debug
+#  USE flag and it's enabled).  If you don't like this behavior you can set
+#  WX_DISABLE_NDEBUG to override it.
 #
-#  This lets you choose which config file from /usr/lib/wx/config is used when
-#  building the package. It also exports ${WX_CONFIG} with the full path to
-#  that config.
-#
-#  If your ebuild does not have a debug USE flag, or it has one and it is
-#  disabled, -DNDEBUG will be automatically added to CPPFLAGS. This can be
-#  overridden by setting WX_DISABLE_DEBUG if you want to handle it yourself.
+#  See: http://docs.wxwidgets.org/trunk/overview_debugging.html
 
-need-wxwidgets() {
+setup-wxwidgets() {
 	local wxtoolkit wxdebug wxconf
 
-	if [[ -z ${WX_GTK_VER} ]]; then
-		eerror "WX_GTK_VER must be set before calling $FUNCNAME."
-		echo
-		die
-	fi
+	[[ -z ${WX_GTK_VER} ]] \
+		&& die "WX_GTK_VER must be set before calling $FUNCNAME."
 
-	if [[ ${WX_GTK_VER} != 2.8 && ${WX_GTK_VER} != 2.9 && ${WX_GTK_VER} != 3.0 ]]; then
-		eerror "Invalid WX_GTK_VER: ${WX_GTK_VER} - must be set to a valid wxGTK SLOT."
-		echo
-		die
-	fi
-
-	case $1 in
-		unicode|base-unicode) ;;
-		*)	eerror "Invalid $FUNCNAME profile: $1"
-			echo
-			die
+	case "${WX_GTK_VER}" in
+		3.0-gtk3)
+			wxtoolkit=gtk3
+			if [[ -z ${WX_DISABLE_NDEBUG} ]]; then
+				( in_iuse debug && use debug ) || append-cppflags -DNDEBUG
+			fi
+			;;
+		2.9|3.0)
+			wxtoolkit=gtk2
+			if [[ -z ${WX_DISABLE_NDEBUG} ]]; then
+				( in_iuse debug && use debug ) || append-cppflags -DNDEBUG
+			fi
+			;;
+		2.8)
+			wxtoolkit=gtk2
+			wxdebug="release-"
+			has_version x11-libs/wxGTK:${WX_GTK_VER}[debug] && wxdebug="debug-"
+			;;
+		*)
+			die "Invalid WX_GTK_VER: must be set to a valid wxGTK SLOT"
 			;;
 	esac
 
-	# wxbase is provided by both gtk2 and base installations
+	# toolkit overrides
 	if has_version "x11-libs/wxGTK:${WX_GTK_VER}[aqua]"; then
 		wxtoolkit="mac"
-	elif has_version "x11-libs/wxGTK:${WX_GTK_VER}[X]"; then
-		wxtoolkit="gtk2"
-	else
+	elif ! has_version "x11-libs/wxGTK:${WX_GTK_VER}[X]"; then
 		wxtoolkit="base"
-	fi
-
-	# 2.8 has a separate debug element
-	if [[ ${WX_GTK_VER} == 2.8 ]]; then
-		if has_version "x11-libs/wxGTK:${WX_GTK_VER}[debug]"; then
-			wxdebug="debug-"
-		else
-			wxdebug="release-"
-		fi
-	else
-		if [[ -z ${WX_DISABLE_DEBUG} ]]; then
-			use_if_iuse debug || append-cppflags -DNDEBUG
-		fi
 	fi
 
 	wxconf="${wxtoolkit}-unicode-${wxdebug}${WX_GTK_VER}"
 
-	if [[ ! -f ${EPREFIX}/usr/$(get_libdir)/wx/config/${wxconf} ]]; then
-		echo
-		eerror "Failed to find configuration ${wxconf}"
-		echo
-		die
-	fi
+	[[ ! -f ${EPREFIX}/usr/$(get_libdir)/wx/config/${wxconf} ]] \
+		&& die "Failed to find configuration ${wxconf}"
 
 	export WX_CONFIG="${EPREFIX}/usr/$(get_libdir)/wx/config/${wxconf}"
 	export WX_ECLASS_CONFIG="${WX_CONFIG}"
 
 	echo
-	einfo "Requested wxWidgets:        ${1} ${WX_GTK_VER}"
+	einfo "Requested wxWidgets:        ${WX_GTK_VER}"
 	einfo "Using wxWidgets:            ${wxconf}"
 	echo
+}
+
+# deprecated
+need-wxwidgets() {
+	setup-wxwidgets
 }
 
 _WXWIDGETS_ECLASS=1
