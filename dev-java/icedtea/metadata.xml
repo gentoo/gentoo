@@ -32,7 +32,6 @@
   <flag name="sctp">Build the SCTP NIO channel implementation against lksctp</flag>
   <flag name="smartcard">Build the PCSC driver against pcsc-lite</flag>
   <flag name="sunec">Build the SunEC provider against system NSS</flag>
-  <flag name="systemtap">Enable SystemTap probes in HotSpot.</flag>
   <flag name="zero">Enable Zero assembler port (usually for non-HotSpot architectures)</flag>
   <flag name="webstart">Enable Web Start support (via NetX).</flag>
 </use>
