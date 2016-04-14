@@ -21,6 +21,10 @@ src_compile() {
 	GOPATH="${WORKDIR}/${P}" emake version=${PV} build
 }
 
+src_test() {
+	GOPATH="${WORKDIR}/${P}" go test -v || die
+}
+
 src_install() {
 	dobin cli53
 	dodoc {CHANGELOG,README}.md
