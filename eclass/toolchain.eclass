@@ -2050,26 +2050,36 @@ do_gcc_config() {
 		return 0
 	fi
 
-	local current_gcc_config="" current_specs="" use_specs=""
+	local current_gcc_config target
 
 	current_gcc_config=$(env -i ROOT="${ROOT}" gcc-config -c ${CTARGET} 2>/dev/null)
 	if [[ -n ${current_gcc_config} ]] ; then
+		local current_specs use_specs
 		# figure out which specs-specific config is active
 		current_specs=$(gcc-config -S ${current_gcc_config} | awk '{print $3}')
 		[[ -n ${current_specs} ]] && use_specs=-${current_specs}
-	fi
-	if [[ -n ${use_specs} ]] && \
-	   [[ ! -e ${ROOT}/etc/env.d/gcc/${CTARGET}-${GCC_CONFIG_VER}${use_specs} ]]
-	then
-		ewarn "The currently selected specs-specific gcc config,"
-		ewarn "${current_specs}, doesn't exist anymore. This is usually"
-		ewarn "due to enabling/disabling hardened or switching to a version"
-		ewarn "of gcc that doesnt create multiple specs files. The default"
-		ewarn "config will be used, and the previous preference forgotten."
-		use_specs=""
+
+		if [[ -n ${use_specs} ]] && \
+		   [[ ! -e ${ROOT}/etc/env.d/gcc/${CTARGET}-${GCC_CONFIG_VER}${use_specs} ]]
+		then
+			ewarn "The currently selected specs-specific gcc config,"
+			ewarn "${current_specs}, doesn't exist anymore. This is usually"
+			ewarn "due to enabling/disabling hardened or switching to a version"
+			ewarn "of gcc that doesnt create multiple specs files. The default"
+			ewarn "config will be used, and the previous preference forgotten."
+			use_specs=""
+		fi
+
+		target="${CTARGET}-${GCC_CONFIG_VER}${use_specs}"
+	else
+		# The curent target is invalid.  Attempt to switch to a valid one.
+		# Blindly pick the latest version.  #529608
+		# TODO: Should update gcc-config to accept `-l ${CTARGET}` rather than
+		# doing a partial grep like this.
+		target=$(gcc-config -l 2>/dev/null | grep " ${CTARGET}-[0-9]" | tail -1 | awk '{print $2}')
 	fi
 
-	gcc-config ${CTARGET}-${GCC_CONFIG_VER}${use_specs}
+	gcc-config "${target}"
 }
 
 should_we_gcc_config() {
