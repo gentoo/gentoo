@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -203,7 +203,7 @@ src_install() {
 
 	if ! use minimal &&	use xorg; then
 		# Install xorg.conf.example into docs
-		dodoc "${AUTOTOOLS_BUILD_DIR}"/hw/xfree86/xorg.conf.example
+		dodoc hw/xfree86/xorg.conf.example
 	fi
 
 	newinitd "${FILESDIR}"/xdm-setup.initd-1 xdm-setup
