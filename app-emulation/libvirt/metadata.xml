@@ -6,10 +6,6 @@
 	<name>Matthias Maier</name>
 	<description>Please assign bugs to me</description>
 </maintainer>
-<maintainer type="person">
-	<email>cardoe@gentoo.org</email>
-	<name>Doug Goldstein</name>
-</maintainer>
 <maintainer type="project">
 	<email>virtualization@gentoo.org</email>
 	<name>Gentoo Virtualization Project</name>
