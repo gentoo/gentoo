@@ -34,6 +34,8 @@ RDEPEND="${CDEPEND}
 	java? ( >=virtual/jre-1.5 )"
 S="${WORKDIR}/${PN}-${MY_PV}"
 REQUIRED_USE="nano? ( java )"
+PATCHES=( "${FILESDIR}/${PN}-2.5.0-emacs-24.4.patch"
+	"${FILESDIR}/${PN}-2.6.1-protoc-cmdline.patch" )
 
 pkg_setup() {
 	if use java; then
@@ -43,8 +45,6 @@ pkg_setup() {
 
 src_prepare() {
 	append-cxxflags -DGOOGLE_PROTOBUF_NO_RTTI
-	eapply "${FILESDIR}/${PN}-2.5.0-emacs-24.4.patch"
-	eapply "${FILESDIR}/${PN}-2.6.1-protoc-cmdline.patch"
 	default
 	eautoreconf
 }
@@ -141,9 +141,11 @@ src_install() {
 		JAVA_JAR_FILENAME="${JAVA_JAR_FILENAME} ${S}/javanano/${PN}-nano.jar"
 		JAVA_SRC_DIR="${JAVA_SRC_DIR} ${S}/javanano/src/main/java"
 	fi
-	if use java || use nano; then
-		use java && cp -Rv "${S}/java/target" . || die
-		use nano && cp -Rvf "${S}/javanano/target" . # Yup, this might fail. So what?
+	if use java; then
+		cp -Rv "${S}/java/target" . || die
+		if use nano; then
+			cp -Rvf "${S}/javanano/target" . || die
+		fi
 		java-pkg-simple_src_install
 	fi
 
