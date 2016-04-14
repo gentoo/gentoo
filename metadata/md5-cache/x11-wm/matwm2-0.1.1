@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install
+DEPEND=x11-libs/libXext x11-libs/libX11 debug? ( x11-proto/xproto ) xft? ( x11-libs/libXft ) xinerama? ( x11-libs/libXinerama ) virtual/pkgconfig x11-proto/xextproto xinerama? ( x11-proto/xineramaproto )
+DESCRIPTION=Simple EWMH compatible window manager with titlebars and frames
+EAPI=4
+HOMEPAGE=http://squidjam.com/matwm/
+IUSE=debug xft xinerama
+KEYWORDS=~amd64 ~x86
+LICENSE=MIT
+RDEPEND=x11-libs/libXext x11-libs/libX11 debug? ( x11-proto/xproto ) xft? ( x11-libs/libXft ) xinerama? ( x11-libs/libXinerama )
+SLOT=0
+SRC_URI=http://squidjam.com/matwm/pub/matwm2-0.1.1.tar.gz
+_eclass_exported_funcs=src_configure:- src_compile:- src_install:-
+_eclasses_=multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=c83ca833269948962c7342bbdae18a2b

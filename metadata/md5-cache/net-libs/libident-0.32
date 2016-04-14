@@ -1,0 +1,10 @@
+DEFINED_PHASES=install
+DESCRIPTION=A small library to interface to the Ident protocol server
+EAPI=0
+HOMEPAGE=http://www.simphalempin.com/dev/libident/
+KEYWORDS=alpha amd64 ~hppa ia64 ~mips ppc ppc64 s390 ~sparc x86
+LICENSE=public-domain
+SLOT=0
+SRC_URI=http://people.via.ecp.fr/~rem/libident/libident-0.32.tar.bz2
+_eclass_exported_funcs=src_install:-
+_md5_=df9c5d5a33b27f59caf2e94be3592e6d

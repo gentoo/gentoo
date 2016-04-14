@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst prepare setup
+DEPEND=mysql? ( virtual/mysql ) postgres? ( dev-db/postgresql[server] ) =www-servers/apache-2.2* !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=A NuFW authentication module for Apache
+EAPI=2
+HOMEPAGE=http://software.inl.fr/trac/wiki/EdenWall/mod_auth_nufw
+IUSE=+mysql postgres
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=mysql? ( virtual/mysql ) postgres? ( dev-db/postgresql[server] ) =www-servers/apache-2.2*
+SLOT=0
+SRC_URI=http://software.inl.fr/releases/mod_auth_nufw/mod_auth_nufw-2.2.2.tar.bz2
+_eclass_exported_funcs=pkg_postinst:apache-module pkg_setup:- src_prepare:- src_configure:- src_compile:- src_install:apache-module
+_eclasses_=apache-module	5e66430013d92dfe0bf8672b05319b6d	autotools	07e71b3b5690738ef7e8bc097077e00c	confutils	18995f74ac4ffafb7ad853dfe133f209	depend.apache	e3c541cb90838388f81620d630c28f41	eutils	9d81603248f2ba3ec59124320d123e5e	libtool	4890219c51da247200223277f993e054	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=59622e055dfd9dab08db52e79df10af7

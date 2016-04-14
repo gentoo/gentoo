@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=doc? ( app-doc/doxygen ) virtual/pkgconfig
+DESCRIPTION=library for handling uncompressed audio and video data
+EAPI=4
+HOMEPAGE=http://gmerlin.sourceforge.net
+IUSE=doc
+KEYWORDS=amd64 hppa ppc ~ppc64 x86
+LICENSE=GPL-3
+SLOT=0
+SRC_URI=mirror://sourceforge/gmerlin/gavl-1.2.0.tar.gz
+_eclass_exported_funcs=src_prepare:- src_configure:- src_compile:autotools-utils src_test:autotools-utils src_install:autotools-utils
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	autotools-utils	419811142edf3516b0d0cf1a254d93cb	eutils	9d81603248f2ba3ec59124320d123e5e	libtool	4890219c51da247200223277f993e054	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=0f9e4e775f9ca6ff75132403922d67d0

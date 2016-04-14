@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install postinst postrm prepare
+DEPEND=x11-libs/libX11 >=dev-python/pygtk-2.12 sys-devel/gettext !media-plugins/banshee-mirage || ( =dev-lang/python-2.7* =dev-lang/python-2.6* )
+DESCRIPTION=A fast and simple image viewer based on python and GTK+
+EAPI=3
+HOMEPAGE=http://mirageiv.berlios.de/
+KEYWORDS=amd64 ppc ppc64 x86 ~x86-fbsd
+LICENSE=GPL-3
+RDEPEND=x11-libs/libX11 >=dev-python/pygtk-2.12 || ( =dev-lang/python-2.7* =dev-lang/python-2.6* )
+SLOT=0
+SRC_URI=mirror://gentoo/mirage-0.9.5.1.tar.bz2
+_eclass_exported_funcs=pkg_postrm:distutils pkg_postinst:distutils src_prepare:- src_compile:distutils src_install:-
+_eclasses_=distutils	ad9e4720eb3e69090dd968b152fc611b	eutils	9d81603248f2ba3ec59124320d123e5e	multilib	23ae8c186171e6476af098d2a50d0ee0	python	efc1c55fc44c5b7272fc2ffba73c3e6f	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=5eb29a7e4116aeb8317e34629f174b0c

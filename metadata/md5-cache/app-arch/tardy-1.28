@@ -1,0 +1,13 @@
+DEFINED_PHASES=prepare
+DEPEND=app-arch/bzip2 app-arch/xz-utils dev-libs/libexplain sys-libs/zlib dev-libs/boost
+DESCRIPTION=A tar post-processor
+EAPI=5
+HOMEPAGE=http://tardy.sourceforge.net/
+KEYWORDS=amd64 ppc x86
+LICENSE=GPL-3
+RDEPEND=app-arch/bzip2 app-arch/xz-utils dev-libs/libexplain sys-libs/zlib
+SLOT=0
+SRC_URI=mirror://sourceforge/tardy/tardy-1.28.D001.tar.gz
+_eclass_exported_funcs=src_prepare:-
+_eclasses_=eutils	9d81603248f2ba3ec59124320d123e5e	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=2b63d397ce8527dbe0edf5ec9c2eaea2

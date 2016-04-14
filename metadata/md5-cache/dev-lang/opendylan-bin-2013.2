@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install
+DEPEND=dev-libs/boehm-gc
+DESCRIPTION=OpenDylan language runtime environment (prebuilt)
+EAPI=4
+HOMEPAGE=http://opendylan.org
+KEYWORDS=~x86 ~amd64
+LICENSE=Opendylan
+RDEPEND=dev-libs/boehm-gc
+SLOT=0
+SRC_URI=amd64? ( http://opendylan.org/downloads/opendylan/2013.2/opendylan-2013.2-x86_64-linux.tar.bz2 ) x86? ( http://opendylan.org/downloads/opendylan/2013.2/opendylan-2013.2-x86-linux.tar.bz2 )
+_eclass_exported_funcs=src_configure:- src_compile:- src_install:-
+_md5_=f9fa2e48cf214cc95d3a573bd49fada0

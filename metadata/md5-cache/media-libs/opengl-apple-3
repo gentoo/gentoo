@@ -1,0 +1,11 @@
+DEFINED_PHASES=install postinst setup
+DEPEND=>=app-eselect/eselect-opengl-1.0.8-r1 x11-proto/glproto
+DESCRIPTION=Links to Apple's OpenGL X11 implementation
+EAPI=3
+HOMEPAGE=http://www.apple.com/
+KEYWORDS=-* ~ppc-macos ~x64-macos ~x86-macos
+LICENSE=public-domain
+RDEPEND=>=app-eselect/eselect-opengl-1.0.8-r1 x11-proto/glproto
+SLOT=0
+_eclass_exported_funcs=pkg_postinst:- pkg_setup:- src_install:-
+_md5_=b87441f4818aae897fe6bf6fbd48c698

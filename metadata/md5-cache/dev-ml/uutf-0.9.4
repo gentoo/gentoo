@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install test
+DEPEND=>=dev-lang/ocaml-3.12:=[ocamlopt?] utftrip? ( dev-ml/cmdliner:= ) dev-ml/ocamlbuild test? ( dev-ml/cmdliner ) >=dev-ml/findlib-1.0.4-r1
+DESCRIPTION=Non-blocking streaming Unicode codec for OCaml
+EAPI=5
+HOMEPAGE=http://erratique.ch/software/uutf
+IUSE=doc utftrip +ocamlopt test
+KEYWORDS=~amd64
+LICENSE=BSD
+RDEPEND=>=dev-lang/ocaml-3.12:=[ocamlopt?] utftrip? ( dev-ml/cmdliner:= )
+SLOT=0/0.9.4
+SRC_URI=http://erratique.ch/software/uutf/releases/uutf-0.9.4.tbz
+_eclass_exported_funcs=src_compile:- src_test:- src_install:-
+_eclasses_=findlib	9909e5ca0f77ff5b693885a3d7aeadb7
+_md5_=f63e225674f68705d9c4142f9f6754fa

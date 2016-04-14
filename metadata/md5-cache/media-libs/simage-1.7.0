@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install prepare unpack
+DEPEND=gif? ( media-libs/giflib ) jpeg? ( virtual/jpeg ) jpeg2k? ( media-libs/jasper ) png? ( media-libs/libpng:0 ) sndfile? ( media-libs/libsndfile ) tiff? ( media-libs/tiff:0 ) vorbis? ( media-libs/libogg media-libs/libvorbis ) zlib? ( sys-libs/zlib ) virtual/pkgconfig
+DESCRIPTION=Image and video texturing library
+EAPI=2
+HOMEPAGE=http://www.coin3d.org/lib/simage/
+IUSE=debug gif jpeg jpeg2k png sndfile static-libs tiff vorbis zlib
+KEYWORDS=amd64 ~arm ppc x86
+LICENSE=public-domain mpeg2enc
+RDEPEND=gif? ( media-libs/giflib ) jpeg? ( virtual/jpeg ) jpeg2k? ( media-libs/jasper ) png? ( media-libs/libpng:0 ) sndfile? ( media-libs/libsndfile ) tiff? ( media-libs/tiff:0 ) vorbis? ( media-libs/libogg media-libs/libvorbis ) zlib? ( sys-libs/zlib )
+RESTRICT=mirror bindist
+SLOT=0
+SRC_URI=https://bitbucket.org/Coin3D/coin/downloads/simage-1.7.0.tar.gz
+_eclass_exported_funcs=src_unpack:base src_prepare:base src_configure:- src_compile:base src_install:-
+_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	9d81603248f2ba3ec59124320d123e5e	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=ee8ed97b7025795d831d5d945d8944ab

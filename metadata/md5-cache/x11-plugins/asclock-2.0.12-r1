@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare
+DEPEND=x11-libs/libXpm
+DESCRIPTION=Clock applet for AfterStep
+EAPI=3
+HOMEPAGE=http://tigr.net/afterstep/applets/
+KEYWORDS=amd64 ~mips ppc sparc x86 ~amd64-linux ~x86-linux ~x64-solaris
+LICENSE=GPL-2
+RDEPEND=x11-libs/libXpm x11-proto/xextproto x11-proto/xproto
+SLOT=0
+SRC_URI=http://www.tigr.net/afterstep/download/asclock/asclock-2.0.12.tar.gz
+_eclass_exported_funcs=src_prepare:- src_configure:- src_compile:- src_install:-
+_eclasses_=eutils	9d81603248f2ba3ec59124320d123e5e	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=2280d5c7f7c5cf4f941b2e3f43522a48

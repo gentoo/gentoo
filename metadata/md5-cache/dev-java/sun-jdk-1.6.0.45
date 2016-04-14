@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile install postinst postrm prerm setup unpack
+DEPEND=jce? ( app-arch/unzip ) kernel_SunOS? ( app-arch/unzip ) pax_kernel? ( sys-apps/paxctl ) selinux? ( sec-policy/selinux-java ) >=dev-java/java-config-2.2.0 app-eselect/eselect-java
+DESCRIPTION=Oracle's Java SE Development Kit
+EAPI=5
+HOMEPAGE=http://www.oracle.com/technetwork/java/javase/
+IUSE=+X alsa derby doc examples jce kernel_SunOS nsplugin pax_kernel selinux source
+KEYWORDS=amd64 x86 ~amd64-linux ~x86-linux ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
+LICENSE=Oracle-BCLA-JavaSE examples? ( BSD )
+RDEPEND=X? ( x11-libs/libX11 x11-libs/libXext x11-libs/libXi x11-libs/libXt x11-libs/libXtst ) alsa? ( media-libs/alsa-lib ) doc? ( dev-java/java-sdk-docs:1.6.0 ) selinux? ( sec-policy/selinux-java ) !prefix? ( sys-libs/glibc ) >=dev-java/java-config-2.2.0 app-eselect/eselect-java
+RESTRICT=fetch strip
+SLOT=1.6
+SRC_URI=amd64? ( jdk-6u45-linux-x64.bin examples? ( jdk-6u45-linux-x64-demos.tar.gz ) ) ia64? ( jdk-6u45-linux-ia64.bin examples? ( jdk-6u45-linux-ia64-demos.tar.gz ) ) x86? ( jdk-6u45-linux-i586.bin examples? ( jdk-6u45-linux-i586-demos.tar.gz ) ) x64-solaris? ( jdk-6u45-solaris-i586.sh jdk-6u45-solaris-x64.sh examples? ( jdk-6u45-solaris-i586-demos.tar.Z jdk-6u45-solaris-x64-demos.tar.Z ) ) x86-solaris? ( jdk-6u45-solaris-i586.sh examples? ( jdk-6u45-solaris-i586-demos.tar.Z ) ) sparc-solaris? ( jdk-6u45-solaris-sparc.sh examples? ( jdk-6u45-solaris-sparc-demos.tar.Z ) ) sparc64-solaris? ( jdk-6u45-solaris-sparc.sh jdk-6u45-solaris-sparcv9.sh examples? ( jdk-6u45-solaris-sparc-demos.tar.Z jdk-6u45-solaris-sparcv9-demos.tar.Z ) ) jce? ( jce_policy-6.zip )
+_eclass_exported_funcs=pkg_prerm:java-vm-2 pkg_postrm:java-vm-2 pkg_postinst:- pkg_setup:java-vm-2 src_unpack:- src_compile:- src_install:-
+_eclasses_=eutils	9d81603248f2ba3ec59124320d123e5e	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	java-vm-2	ba3b22a014a6ebc7b43b7e1bba90b9e1	multilib	23ae8c186171e6476af098d2a50d0ee0	pax-utils	ecf634cba91bb9591a8fdb6f6145f1bb	prefix	e7f2b9c6e57342e5d25eac22fce23062	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=c18f78767cbd476a0685bedd2147a9b2

@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install postinst
+DEPEND=>=sys-fs/fuse-2.3:= >=net-fs/samba-3.2:=[smbclient(+)] >=dev-libs/glib-2.30:= gnome? ( gnome-base/gnome-keyring:= ) virtual/pkgconfig sys-devel/make
+DESCRIPTION=FUSE filesystem for SMB shares
+EAPI=5
+HOMEPAGE=http://sourceforge.net/projects/smbnetfs
+IUSE=gnome
+KEYWORDS=~x86 ~amd64 ~arm-linux ~x86-linux
+LICENSE=GPL-2
+RDEPEND=>=sys-fs/fuse-2.3:= >=net-fs/samba-3.2:=[smbclient(+)] >=dev-libs/glib-2.30:= gnome? ( gnome-base/gnome-keyring:= )
+SLOT=0
+SRC_URI=mirror://sourceforge/smbnetfs/smbnetfs-0.6.0.tar.bz2
+_eclass_exported_funcs=pkg_postinst:readme.gentoo src_configure:- src_install:-
+_eclasses_=eutils	9d81603248f2ba3ec59124320d123e5e	multilib	23ae8c186171e6476af098d2a50d0ee0	readme.gentoo	df3fc8fdaf5a519e7d48c83e7592c95f	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=bc0a2c060022182c89c26a4c1f9d064d

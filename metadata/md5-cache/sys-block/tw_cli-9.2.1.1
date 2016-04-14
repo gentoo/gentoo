@@ -1,0 +1,11 @@
+DEFINED_PHASES=install setup unpack
+DESCRIPTION=3ware Command Line Interface Tool
+EAPI=0
+HOMEPAGE=http://www.3ware.com/
+KEYWORDS=-* x86 amd64
+LICENSE=3ware
+RESTRICT=fetch strip mirror
+SLOT=0
+SRC_URI=x86? ( http://www.3ware.com/download/Escalade9000Series/9.2.1.1/tw_cli-linux-x86-9.2.1.1.tgz ) amd64? ( http://www.3ware.com/download/Escalade9000Series/9.2.1.1/tw_cli-linux-x86_64-9.2.1.1.tgz )
+_eclass_exported_funcs=pkg_setup:- src_unpack:- src_install:-
+_md5_=a82207b37c80733d3db04761d35560af

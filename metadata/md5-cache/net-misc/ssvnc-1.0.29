@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=sys-libs/zlib virtual/jpeg dev-libs/openssl dev-lang/tk net-misc/stunnel java? ( virtual/jre ) x11-terms/xterm x11-libs/libICE x11-libs/libSM x11-libs/libXaw x11-libs/libX11 x11-libs/libXext x11-libs/libXmu x11-libs/libXp x11-libs/libXpm x11-libs/libXt java? ( virtual/jdk )
+DESCRIPTION=VNC viewer that adds encryption security to VNC connections
+EAPI=3
+HOMEPAGE=http://www.karlrunge.com/x11vnc/ssvnc.html
+IUSE=java
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~arm-linux ~x86-linux
+LICENSE=GPL-2
+RDEPEND=sys-libs/zlib virtual/jpeg dev-libs/openssl dev-lang/tk net-misc/stunnel java? ( virtual/jre ) x11-terms/xterm x11-libs/libICE x11-libs/libSM x11-libs/libXaw x11-libs/libX11 x11-libs/libXext x11-libs/libXmu x11-libs/libXp x11-libs/libXpm x11-libs/libXt
+SLOT=0
+SRC_URI=mirror://sourceforge/ssvnc/ssvnc-1.0.29.src.tar.gz
+_eclass_exported_funcs=src_prepare:- src_compile:- src_install:-
+_eclasses_=eutils	9d81603248f2ba3ec59124320d123e5e	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=0e9a9198087b4a6fc76152c2ae108873

@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=dev-lang/perl sci-biology/hmmer
+DESCRIPTION=Prototype ncRNA genefinder
+EAPI=4
+HOMEPAGE=http://selab.janelia.org/software.html
+KEYWORDS=amd64 ~ppc x86
+LICENSE=GPL-2
+RDEPEND=dev-lang/perl sci-biology/hmmer
+SLOT=0
+SRC_URI=mirror://gentoo/qrna-2.0.3c.tar.bz2
+_eclass_exported_funcs=src_prepare:- src_compile:- src_install:-
+_eclasses_=eutils	9d81603248f2ba3ec59124320d123e5e	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=a604c43b2c62327815727613b2748c6f

@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=x11-libs/gtk+:2 virtual/pkgconfig
+DESCRIPTION=A fun monitoring applet for your desktop, complete with swimming duck
+EAPI=4
+HOMEPAGE=http://www.ne.jp/asahi/linux/timecop
+KEYWORDS=alpha amd64 ppc sparc x86 ~amd64-linux ~x86-linux ~x64-solaris
+LICENSE=GPL-2
+RDEPEND=x11-libs/gtk+:2
+SLOT=0
+SRC_URI=http://www.ne.jp/asahi/linux/timecop/software/bubblemon-dockapp-1.46.tar.gz
+_eclass_exported_funcs=src_prepare:- src_compile:- src_install:-
+_eclasses_=eutils	9d81603248f2ba3ec59124320d123e5e	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=ff88d0f3cc85449f4b411dd69e047df0

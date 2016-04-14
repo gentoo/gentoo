@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install
+DEPEND=x11-libs/libXext x11-libs/libXpm
+DESCRIPTION=A Window Maker dock app client for Music Player Daemon(media-sound/mpd)
+EAPI=2
+HOMEPAGE=http://mpd.wikia.com/wiki/Client:WMmp
+KEYWORDS=alpha amd64 sparc x86
+LICENSE=GPL-2
+RDEPEND=x11-libs/libXext x11-libs/libXpm
+SLOT=0
+SRC_URI=mirror://sourceforge/musicpd/WMmp-0.10.0.tar.gz
+_eclass_exported_funcs=src_configure:- src_compile:- src_install:-
+_md5_=788749f16117c2a59058a341a44c9bf2

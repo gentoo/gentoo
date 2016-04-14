@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install postinst setup
+DEPEND==www-servers/apache-2*[debug] unwind? ( sys-libs/libunwind ) app-arch/unzip =www-servers/apache-2*
+DESCRIPTION=Debug segmentation faults in Apache threads
+EAPI=5
+HOMEPAGE=http://emptyhammock.com/projects/httpd/diag/
+IUSE=unwind
+KEYWORDS=~amd64 ~x86
+LICENSE=Apache-2.0
+RDEPEND==www-servers/apache-2*[debug] unwind? ( sys-libs/libunwind ) =www-servers/apache-2*
+SLOT=0
+SRC_URI=http://emptyhammock.com/downloads/wku_bt-2.01.zip
+_eclass_exported_funcs=pkg_postinst:apache-module pkg_setup:depend.apache src_compile:- src_install:apache-module
+_eclasses_=apache-module	5e66430013d92dfe0bf8672b05319b6d	depend.apache	e3c541cb90838388f81620d630c28f41	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=2d9db091f2b65ac3645771c55e12fcc0

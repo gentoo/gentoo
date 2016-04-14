@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=sys-libs/ncurses:0 virtual/pkgconfig
+DESCRIPTION=uEmacs/PK is an enhanced version of MicroEMACS
+EAPI=5
+HOMEPAGE=https://git.kernel.org/?p=editors/uemacs/uemacs.git;a=summary ftp://ftp.cs.helsinki.fi/pub/Software/Local/uEmacs-PK
+KEYWORDS=amd64 x86 ~x86-fbsd
+LICENSE=free-noncomm
+RDEPEND=sys-libs/ncurses:0
+SLOT=0
+SRC_URI=https://dev.gentoo.org/~ulm/distfiles/uemacs-4.0.15_p20141208.tar.xz
+_eclass_exported_funcs=src_prepare:- src_compile:- src_install:-
+_eclasses_=eutils	9d81603248f2ba3ec59124320d123e5e	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=9a014879a537da1b99ba3bb657c32286

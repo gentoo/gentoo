@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst prepare
+DEPEND=X? ( x11-apps/xauth )
+DESCRIPTION=Port of many Plan 9 programs and libraries
+EAPI=5
+HOMEPAGE=http://swtch.com/plan9port/
+IUSE=X
+KEYWORDS=~amd64 ~x86
+LICENSE=9base BSD-4 MIT LGPL-2.1 BigelowHolmes
+RDEPEND=X? ( x11-apps/xauth )
+SLOT=0
+SRC_URI=https://plan9port.googlecode.com/files/plan9port-20140306.tgz
+_eclass_exported_funcs=pkg_postinst:- src_prepare:- src_configure:- src_compile:- src_install:-
+_eclasses_=eutils	9d81603248f2ba3ec59124320d123e5e	multilib	23ae8c186171e6476af098d2a50d0ee0	multiprocessing	e32940a7b2a9992ad217eccddb84d548	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=8cddac434cd87ca4554643539e6956c5

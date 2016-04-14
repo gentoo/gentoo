@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install postinst unpack
+DEPEND=app-arch/bzip2 app-arch/gzip app-arch/tar >=dev-libs/glib-2.0 virtual/pkgconfig
+DESCRIPTION=Hdup is backup program using tar, find, gzip/bzip2, mcrypt and ssh
+EAPI=0
+HOMEPAGE=http://www.miek.nl/projects/hdup2/index.html
+IUSE=crypt
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-2
+RDEPEND=app-arch/bzip2 app-arch/gzip app-arch/tar >=dev-libs/glib-2.0 net-misc/openssh sys-apps/coreutils sys-apps/findutils crypt? ( app-crypt/mcrypt )
+SLOT=0
+SRC_URI=http://www.miek.nl/projects/hdup2/hdup-2.0.14.tar.bz2
+_eclass_exported_funcs=pkg_postinst:- src_unpack:- src_compile:- src_install:-
+_md5_=4b9a4ff3d7e7f1c5c8e359608c8e9ba9

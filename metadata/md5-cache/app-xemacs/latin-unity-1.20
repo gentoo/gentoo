@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install unpack
+DESCRIPTION=MULE: find single ISO 8859 character set to encode a buffer
+EAPI=0
+HOMEPAGE=http://xemacs.org/
+KEYWORDS=alpha amd64 ppc ppc64 sparc x86
+LICENSE=GPL-2
+RDEPEND=app-xemacs/mule-base app-xemacs/latin-euro-standards app-xemacs/mule-ucs app-xemacs/leim app-xemacs/fsf-compat app-xemacs/dired app-editors/xemacs
+SLOT=0
+SRC_URI=http://ftp.xemacs.org/pub/xemacs/packages/latin-unity-1.20-pkg.tar.gz
+_eclass_exported_funcs=src_unpack:xemacs-packages src_compile:xemacs-packages src_install:xemacs-packages
+_eclasses_=xemacs-packages	3efe8d071b1fa620109b658175e85267
+_md5_=0461d9a5b69f1fa613f6b8118d0a4d48

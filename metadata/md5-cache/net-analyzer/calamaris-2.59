@@ -1,0 +1,11 @@
+DEFINED_PHASES=install
+DEPEND=dev-lang/perl
+DESCRIPTION=Calamaris parses the logfiles of a wide variety of Web proxy servers and generates reports
+EAPI=5
+HOMEPAGE=http://cord.de/calamaris-home-page
+KEYWORDS=amd64 ppc x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=http://cord.de/calamaris-2.59.tar.gz
+_eclass_exported_funcs=src_install:-
+_md5_=2b7342cd1b9299d2a7596028f456ebca

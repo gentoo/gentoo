@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install prepare test
+DEPEND=virtual/pkgconfig test? ( sys-libs/ncurses[unicode] >=dev-libs/check-0.9.4 ) dev-db/sqlite:3 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Library for Chinese Phonetic input method
+EAPI=5
+HOMEPAGE=http://chewing.csie.net/
+IUSE=static-libs test
+KEYWORDS=amd64 ~ppc ppc64 ~x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=https://github.com/chewing/libchewing/archive/v0.4.0.tar.gz -> libchewing-0.4.0.tar.gz
+_eclass_exported_funcs=src_prepare:- src_configure:- src_test:- src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	9d81603248f2ba3ec59124320d123e5e	libtool	4890219c51da247200223277f993e054	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=e906394a9c854d3f5fdd30a86632bdba

@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install
+DESCRIPTION=Library which includes a table of VIDs and PIDs of Ever UPS devices
+EAPI=4
+HOMEPAGE=http://www.ever.com.pl
+KEYWORDS=~x86
+LICENSE=LGPL-2
+SLOT=0
+SRC_URI=http://www.ever.com.pl/pl/pliki/powersoftplus-0.1.8-x86.tar.gz
+_eclass_exported_funcs=src_compile:- src_install:-
+_eclasses_=multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=9d170e55233f3850dfb2281842073b23

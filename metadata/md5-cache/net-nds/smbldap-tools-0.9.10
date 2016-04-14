@@ -1,0 +1,13 @@
+DEFINED_PHASES=install postinst
+DEPEND=dev-perl/perl-ldap dev-perl/Crypt-SmbHash dev-perl/Digest-SHA1 dev-perl/Unicode-MapUTF8 dev-perl/IO-Socket-SSL net-nds/openldap net-fs/samba
+DESCRIPTION=Samba LDAP management tools
+EAPI=4
+HOMEPAGE=https://gna.org/projects/smbldap-tools/
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86
+LICENSE=GPL-2
+RDEPEND=dev-perl/perl-ldap dev-perl/Crypt-SmbHash dev-perl/Digest-SHA1 dev-perl/Unicode-MapUTF8 dev-perl/IO-Socket-SSL net-nds/openldap net-fs/samba
+SLOT=0
+SRC_URI=http://download.gna.org/smbldap-tools/sources/0.9.10/smbldap-tools-0.9.10.tar.gz
+_eclass_exported_funcs=pkg_postinst:- src_install:-
+_eclasses_=eutils	9d81603248f2ba3ec59124320d123e5e	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=b3e8c674dc8f38d086c7161e7fd246cb

@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install unpack
+DESCRIPTION=Provides lockspool utility
+EAPI=0
+HOMEPAGE=http://www.openbsd.org/
+KEYWORDS=alpha amd64 arm hppa ia64 ~mips ppc ppc64 s390 sh sparc x86 ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x86-macos
+LICENSE=BSD
+SLOT=0
+SRC_URI=mirror://gentoo/mailx-support-20060102.tar.bz2
+_eclass_exported_funcs=src_unpack:- src_compile:- src_install:-
+_eclasses_=eutils	9d81603248f2ba3ec59124320d123e5e	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=15df892fbcbc8c302a36390e7489ed7e

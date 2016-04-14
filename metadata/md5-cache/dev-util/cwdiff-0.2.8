@@ -1,0 +1,12 @@
+DEFINED_PHASES=install
+DESCRIPTION=A script that wraps wdiff to support directories and colorize the output
+EAPI=5
+HOMEPAGE=https://github.com/junghans/cwdiff
+IUSE=a2ps mercurial
+KEYWORDS=~amd64 ~arm ~x86 ~amd64-linux ~x64-macos ~x86-macos
+LICENSE=GPL-2
+RDEPEND=sys-apps/sed app-shells/bash app-text/wdiff sys-apps/diffutils a2ps? ( app-text/a2ps ) mercurial? ( dev-vcs/mercurial )
+SLOT=0
+SRC_URI=https://github.com/junghans/cwdiff/archive/v0.2.8.tar.gz -> cwdiff-0.2.8.tar.gz
+_eclass_exported_funcs=src_install:-
+_md5_=ec01e3dd4bd45b3ff005f1cb1f8b23e1

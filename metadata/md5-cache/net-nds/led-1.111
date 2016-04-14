@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install
+DEPEND=>=dev-lang/perl-5.6.1 dev-perl/perl-ldap dev-perl/URI virtual/perl-Digest-MD5 dev-perl/Authen-SASL
+DESCRIPTION=led is a general purpose LDAP editor
+EAPI=0
+HOMEPAGE=http://led.sourceforge.net/
+KEYWORDS=~x86 ~amd64 ~ppc
+LICENSE=BSD
+RDEPEND=>=dev-lang/perl-5.6.1 dev-perl/perl-ldap dev-perl/URI virtual/perl-Digest-MD5 dev-perl/Authen-SASL
+SLOT=0
+SRC_URI=mirror://sourceforge/led/led-1.111.tar.gz
+_eclass_exported_funcs=src_compile:- src_install:-
+_eclasses_=eutils	9d81603248f2ba3ec59124320d123e5e	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=2977903e15003c02d82b2570f43759d5

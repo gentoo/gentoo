@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install unpack
+DEPEND=acl? ( virtual/acl ) nls? ( virtual/libintl ) nls? ( sys-devel/gettext )
+DESCRIPTION=Super-useful stream editor
+EAPI=0
+HOMEPAGE=http://sed.sourceforge.net/
+IUSE=acl nls selinux static
+KEYWORDS=alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd
+LICENSE=GPL-3
+RDEPEND=acl? ( virtual/acl ) nls? ( virtual/libintl )
+SLOT=0
+SRC_URI=mirror://gnu/sed/sed-4.2.1.tar.bz2
+_eclass_exported_funcs=src_unpack:- src_compile:- src_install:-
+_eclasses_=eutils	9d81603248f2ba3ec59124320d123e5e	flag-o-matic	d270fa247153df66074f795fa42dba3e	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=8ccdec82ae26d0b8bdcbbffd34554c17

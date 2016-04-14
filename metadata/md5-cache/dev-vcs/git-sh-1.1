@@ -1,0 +1,12 @@
+DEFINED_PHASES=postinst prepare unpack
+DESCRIPTION=A customized bash environment suitable for git work
+EAPI=4
+HOMEPAGE=https://github.com/rtomayko/git-sh
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=dev-vcs/git
+SLOT=0
+SRC_URI=https://github.com/rtomayko/git-sh/tarball/1.1 -> git-sh-1.1.tar.gz
+_eclass_exported_funcs=pkg_postinst:- src_unpack:vcs-snapshot src_prepare:-
+_eclasses_=vcs-snapshot	b45be87e7012be0af8424e8a5644da1d
+_md5_=997678aaf959bf10bacd0c97de1a471a

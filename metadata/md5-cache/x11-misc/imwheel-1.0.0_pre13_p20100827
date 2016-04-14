@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=x11-libs/libXtst x11-libs/libX11 x11-libs/libXmu x11-libs/libXt x11-libs/libXext x11-proto/inputproto x11-proto/xextproto x11-proto/xproto >=sys-apps/sed-4 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=mouse tool for advanced features such as wheels and 3+ buttons
+EAPI=2
+HOMEPAGE=http://imwheel.sourceforge.net/
+KEYWORDS=~alpha ~amd64 ~ppc ~x86
+LICENSE=GPL-2
+RDEPEND=x11-libs/libXtst x11-libs/libX11 x11-libs/libXmu x11-libs/libXt x11-libs/libXext
+SLOT=0
+SRC_URI=mirror://gentoo/imwheel-1.0.0_pre13_p20100827.tar.bz2
+_eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	9d81603248f2ba3ec59124320d123e5e	libtool	4890219c51da247200223277f993e054	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=07dcfe753a8843a50c86cc11e25ee818

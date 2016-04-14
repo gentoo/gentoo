@@ -1,0 +1,12 @@
+DEFINED_PHASES=install prepare
+DEPEND=dev-lang/perl
+DESCRIPTION=Addon mrtg contrib for stats ping/loss packets
+EAPI=5
+HOMEPAGE=http://pwo.de/projects/mrtg/
+KEYWORDS=~x86
+LICENSE=GPL-2
+RDEPEND=dev-lang/perl net-analyzer/mrtg
+SLOT=0
+SRC_URI=ftp://ftp.pwo.de/pub/pwo/mrtg/mrtg-ping-probe/mrtg-ping-probe-2.2.0.tar.gz
+_eclass_exported_funcs=src_prepare:- src_install:-
+_md5_=5d82c771db138a86f24287ffa48dbb6c

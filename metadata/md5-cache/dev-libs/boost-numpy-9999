@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install prepare test unpack
+DEPEND=dev-python/numpy dev-libs/boost[python] sys-devel/make >=dev-util/cmake-2.8.12 dev-vcs/git
+DESCRIPTION=Boost.Python interface for NumPy
+EAPI=5
+HOMEPAGE=https://github.com/ndarray/Boost.NumPy
+IUSE=doc examples
+LICENSE=Boost-1.0
+RDEPEND=dev-python/numpy dev-libs/boost[python]
+SLOT=0
+_eclass_exported_funcs=src_unpack:git-2 src_prepare:cmake-utils src_configure:cmake-utils src_compile:cmake-utils src_test:cmake-utils src_install:-
+_eclasses_=cmake-utils	422bbd1bee2557490177a34dbe0a662b	eutils	9d81603248f2ba3ec59124320d123e5e	flag-o-matic	d270fa247153df66074f795fa42dba3e	git-2	672c3929a162f221a53b4ccb4d25d8a2	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=545f314b0557237356acc990a7e29837

@@ -1,0 +1,13 @@
+DEFINED_PHASES=install
+DEPEND=test? ( dev-lang/ruby )
+DESCRIPTION=Parses latex-formatted text in search of forbidden phrases
+EAPI=4
+HOMEPAGE=http://www.cs.umd.edu/~nspring/software/style-check-readme.html
+IUSE=test
+KEYWORDS=amd64 ~ppc x86
+LICENSE=GPL-2
+RDEPEND=dev-lang/ruby
+SLOT=0
+SRC_URI=http://www.cs.umd.edu/~nspring/software/style-check-0.14.tar.gz
+_eclass_exported_funcs=src_install:-
+_md5_=710ce3491214f86bf5f151651e0290d9

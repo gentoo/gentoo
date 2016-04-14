@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile install postinst test
+DEPEND=virtual/pkgconfig app-arch/xz-utils virtual/pkgconfig virtual/pkgconfig
+DESCRIPTION=A useful tool for running RAID systems - it can be used as a replacement for the raidtools
+EAPI=5
+HOMEPAGE=http://neil.brown.name/blog/mdadm
+IUSE=static
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86
+LICENSE=GPL-2
+RDEPEND=>=sys-apps/util-linux-2.16
+RESTRICT=test
+SLOT=0
+SRC_URI=mirror://kernel/linux/utils/raid/mdadm/mdadm-3.4.tar.xz mirror://debian/pool/main/m/mdadm/mdadm_3.3.4-1.1.debian.tar.xz
+_eclass_exported_funcs=pkg_postinst:- src_compile:- src_test:- src_install:-
+_eclasses_=eutils	9d81603248f2ba3ec59124320d123e5e	flag-o-matic	d270fa247153df66074f795fa42dba3e	multilib	23ae8c186171e6476af098d2a50d0ee0	systemd	3165c885f3c71ffae7a867d931fb0e07	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	udev	73058269b3e70e34e084fa3981282338
+_md5_=379b9c65b828631a7943c24e6fd8cb19

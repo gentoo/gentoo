@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=nls? ( sys-devel/gettext ) sys-devel/make >=dev-util/cmake-2.8.12
+DESCRIPTION=Libraries for conversion between Traditional and Simplified Chinese
+EAPI=5
+HOMEPAGE=https://github.com/BYVoid/OpenCC
+IUSE=+nls static-libs
+KEYWORDS=~amd64 ~hppa ~ppc ~ppc64 ~x86
+LICENSE=Apache-2.0
+RDEPEND=nls? ( virtual/libintl )
+SLOT=0
+SRC_URI=https://opencc.googlecode.com/files/opencc-0.4.3.tar.gz
+_eclass_exported_funcs=src_prepare:cmake-utils src_configure:- src_compile:cmake-utils src_test:cmake-utils src_install:-
+_eclasses_=cmake-utils	422bbd1bee2557490177a34dbe0a662b	eutils	9d81603248f2ba3ec59124320d123e5e	flag-o-matic	d270fa247153df66074f795fa42dba3e	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=c02ad67eefa8ace7a6576d6b1a7e540b

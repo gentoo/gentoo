@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install
+DEPEND=>=app-text/aspell-0.60
+DESCRIPTION=Brazilian Portuguese language dictionary for aspell
+EAPI=0
+HOMEPAGE=http://aspell.net
+KEYWORDS=alpha amd64 arm hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd
+LICENSE=LGPL-2
+RDEPEND=!<app-dicts/aspell-pt-0.50.2-r1 >=app-text/aspell-0.60
+SLOT=0
+SRC_URI=mirror://gnu/aspell/dict/pt_BR/aspell6-pt_BR-20090702-0.tar.bz2
+_eclass_exported_funcs=src_compile:aspell-dict src_install:aspell-dict
+_eclasses_=aspell-dict	6df2ba61a621be13d44ec68128cc1343
+_md5_=986e7e9189272339f946b868dd50e8ac

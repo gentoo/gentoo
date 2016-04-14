@@ -1,0 +1,12 @@
+DEFINED_PHASES=install
+DEPEND=~mail-client/claws-mail-3.9.0 virtual/pkgconfig
+DESCRIPTION=Plugin to operate on mbox type mailboxes
+EAPI=0
+HOMEPAGE=http://www.claws-mail.org/
+KEYWORDS=~alpha amd64 ppc ppc64 sparc x86
+LICENSE=GPL-3
+RDEPEND=~mail-client/claws-mail-3.9.0
+SLOT=0
+SRC_URI=http://www.claws-mail.org/downloads/plugins/mailmbox-1.15.tar.gz
+_eclass_exported_funcs=src_install:-
+_md5_=c7dbe2bb9d2200e88a1a2392a21e8e98

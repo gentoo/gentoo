@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst prepare unpack
+DEPEND=x11-libs/gtk+:2 virtual/pkgconfig nls? ( sys-devel/gettext )
+DESCRIPTION=Systemtray volume mixer applet from PuppyLinux
+EAPI=4
+HOMEPAGE=http://puppylinux.org/wikka/Retrovol
+IUSE=nls linguas_de linguas_fr
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3 LGPL-3 public-domain
+RDEPEND=x11-libs/gtk+:2
+SLOT=0
+SRC_URI=http://www.browserloadofcoolness.com/software/puppy/PETget/retrovol-0.12.tar.gz
+_eclass_exported_funcs=pkg_postinst:- src_unpack:base src_prepare:- src_configure:- src_compile:base src_install:base
+_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	9d81603248f2ba3ec59124320d123e5e	l10n	714aaf78929eade946da5eaff7d2001a	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=1f7a1254103c3ad3bd1ce20440a8cbe5

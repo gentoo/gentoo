@@ -1,0 +1,13 @@
+DEFINED_PHASES=install
+DEPEND=x11-libs/libX11 x11-libs/libXcursor >=media-libs/libpng-1.2 x11-apps/xcursorgen
+DESCRIPTION="Neutral_Plus", the standard X.Org mouse cursor with shadows and animations
+EAPI=0
+HOMEPAGE=http://kde-look.org/content/show.php/show.php?content=48837
+IUSE=examples
+KEYWORDS=amd64 ~arm ~arm64 sparc x86 ~x86-fbsd
+LICENSE=Artistic-2
+RDEPEND=x11-libs/libX11 x11-libs/libXcursor >=media-libs/libpng-1.2
+SLOT=0
+SRC_URI=http://kde-look.org/CONTENT/content-files/48837-Neutral_Plus_1.2.tar.bz2
+_eclass_exported_funcs=src_install:-
+_md5_=f58d626ee4c75d380271683a9eb46c50

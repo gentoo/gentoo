@@ -1,0 +1,9 @@
+DEFINED_PHASES=install postinst
+DESCRIPTION=Ebuild for setting up a Gentoo rsync mirror
+EAPI=0
+HOMEPAGE=https://wiki.gentoo.org/wiki/Project:Infrastructure/Rsync
+KEYWORDS=alpha amd64 hppa ppc ppc64 sparc x86
+LICENSE=GPL-2
+SLOT=0
+_eclass_exported_funcs=pkg_postinst:- src_install:-
+_md5_=6dde85c40ee8dfc28e6a0c3a50f77f4f

@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install
+DEPEND=dev-lang/perl
+DESCRIPTION=A Perl module and a collection of easy-to-use text based interfaces to the UNIX CD burning tools
+EAPI=0
+HOMEPAGE=http://alx14.free.fr/burncenter/
+IUSE=vorbis
+KEYWORDS=~amd64 ppc x86
+LICENSE=GPL-2
+RDEPEND=dev-lang/perl virtual/cdrtools media-sound/mpg123 vorbis? ( >=media-sound/vorbis-tools-1.0_rc2 >=media-sound/oggtst-0.0 )
+SLOT=0
+SRC_URI=http://alx14.free.fr/burncenter/download/burncenter-3.2.1.tar.gz
+_eclass_exported_funcs=src_compile:- src_install:-
+_md5_=16c82c02f9304af11bd575595f6f6a04

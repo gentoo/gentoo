@@ -1,0 +1,14 @@
+DEFINED_PHASES=install postinst prerm setup unpack
+DEPEND=>=app-admin/webapp-config-1.50.15
+DESCRIPTION=phpWebSite Content Management System
+EAPI=0
+HOMEPAGE=http://phpwebsite.appstate.edu
+IUSE=vhosts
+KEYWORDS=ppc x86
+LICENSE=LGPL-2.1
+RDEPEND=virtual/httpd-php >=app-admin/webapp-config-1.50.15
+SLOT=0.10.2
+SRC_URI=mirror://sourceforge/phpwebsite/phpwebsite-0.10.2-full.tar.gz http://phpwebsite.appstate.edu/downloads/security/phpws_patch_20060419.2.tgz
+_eclass_exported_funcs=pkg_prerm:webapp pkg_postinst:webapp pkg_setup:webapp src_unpack:- src_install:-
+_eclasses_=webapp	42c6ef7af496b228f9854b3c81e4b226
+_md5_=7b398d5b7003aa5e1fc6da5e1ade31b0

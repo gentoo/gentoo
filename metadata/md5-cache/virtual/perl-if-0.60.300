@@ -1,0 +1,8 @@
+DEFINED_PHASES=-
+DESCRIPTION=Virtual for if
+EAPI=5
+KEYWORDS=alpha amd64 arm hppa ia64 ppc ppc64 sparc x86 ~amd64-fbsd
+RDEPEND=|| ( =dev-lang/perl-5.20* ~perl-core/if-0.60.300 ) !<perl-core/if-0.60.300 !>perl-core/if-0.60.300-r999
+SLOT=0
+_eclass_exported_funcs=-
+_md5_=afdafae2aa11b2a8137d1f3230579870

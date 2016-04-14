@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile install postinst postrm preinst pretend setup
+DEPEND=kernel_linux? ( virtual/modutils ) sys-apps/sed kernel_linux? ( virtual/linux-sources )
+DESCRIPTION=Linux driver for setting the backlight brightness on laptops using NVIDIA GPU
+EAPI=5
+HOMEPAGE=https://github.com/guillaumezin/nvidiabl
+IUSE=kernel_linux
+KEYWORDS=amd64 x86
+LICENSE=GPL-2
+RDEPEND=kernel_linux? ( virtual/modutils )
+RESTRICT=test
+SLOT=0
+SRC_URI=https://github.com/guillaumezin/nvidiabl/archive/v0.83.tar.gz
+_eclass_exported_funcs=pkg_pretend:- pkg_preinst:linux-mod pkg_postrm:linux-mod pkg_postinst:linux-mod pkg_setup:linux-mod src_compile:- src_install:linux-mod
+_eclasses_=eutils	9d81603248f2ba3ec59124320d123e5e	linux-info	fd1e29abbb02cbc49f1a14299846e9c4	linux-mod	4755518412586c2fd655ff6e55780bcb	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=4cd41f335e4c76695a67e19340066f5c

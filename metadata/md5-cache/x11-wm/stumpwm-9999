@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install prepare unpack
+DEPEND=dev-lisp/common-lisp-controller virtual/commonlisp dev-lisp/cl-ppcre doc? ( virtual/texi2dvi ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 dev-vcs/git
+DESCRIPTION=Stumpwm is a Window Manager written entirely in Common Lisp.
+EAPI=5
+HOMEPAGE=https://stumpwm.github.io/
+IUSE=doc clisp emacs +sbcl
+LICENSE=GPL-2
+PDEPEND=virtual/commonlisp
+RDEPEND=dev-lisp/common-lisp-controller virtual/commonlisp dev-lisp/cl-ppcre doc? ( virtual/texi2dvi ) emacs? ( app-emacs/slime ) !clisp? ( !sbcl? ( !amd64? ( dev-lisp/cmucl ) ) ) clisp? ( >=dev-lisp/clisp-2.38-r2[X,-new-clx] ) sbcl? ( >=dev-lisp/sbcl-1.1.15 dev-lisp/clx )
+RESTRICT=mirror
+SLOT=0
+_eclass_exported_funcs=src_unpack:git-2 src_prepare:- src_compile:- src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	common-lisp-3	732b3b6e2021a252e13158c86e4ea4d0	eutils	9d81603248f2ba3ec59124320d123e5e	git-2	672c3929a162f221a53b4ccb4d25d8a2	libtool	4890219c51da247200223277f993e054	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=cdb4200fa768396656ecb371d07d5d46

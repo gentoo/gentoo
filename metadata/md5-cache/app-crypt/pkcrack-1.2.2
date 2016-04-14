@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install postinst prepare test
+DEPEND=test? ( app-arch/zip[crypt] )
+DESCRIPTION=PkZip cipher breaker
+EAPI=4
+HOMEPAGE=http://www.unix-ag.uni-kl.de/~conrad/krypto/pkcrack.html
+IUSE=test
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=pkcrack
+RDEPEND=!<app-text/html-xml-utils-5.3
+SLOT=0
+SRC_URI=http://www.unix-ag.uni-kl.de/~conrad/krypto/pkcrack/pkcrack-1.2.2.tar.gz
+_eclass_exported_funcs=pkg_postinst:- src_prepare:- src_compile:- src_test:- src_install:-
+_eclasses_=multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=e71d74f82c2cd187a0a9d13ebc083a43

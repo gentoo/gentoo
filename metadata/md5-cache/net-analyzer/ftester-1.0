@@ -1,0 +1,11 @@
+DEFINED_PHASES=install
+DESCRIPTION=Firewall and Intrusion Detection System testing tool
+EAPI=5
+HOMEPAGE=http://dev.inversepath.com/trac/ftester
+KEYWORDS=amd64 ppc x86
+LICENSE=GPL-2
+RDEPEND=dev-perl/List-MoreUtils dev-perl/Net-Pcap dev-perl/Net-PcapUtils dev-perl/Net-RawIP dev-perl/NetPacket
+SLOT=0
+SRC_URI=http://dev.inversepath.com/ftester/ftester-1.0.tar.gz
+_eclass_exported_funcs=src_install:-
+_md5_=208face228f27375e6635c1a6b41c56e

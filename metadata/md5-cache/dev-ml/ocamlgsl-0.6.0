@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare unpack
+DEPEND=>=dev-lang/ocaml-3.10:= sci-libs/gsl !dev-ml/gsl-ocaml test? ( dev-ml/fort ) >=dev-ml/findlib-1.0.4-r1
+DESCRIPTION=OCaml bindings for the GSL library
+EAPI=5
+HOMEPAGE=http://oandrieu.nerim.net/ocaml/gsl/
+IUSE=doc test
+KEYWORDS=amd64 ~ppc x86
+LICENSE=GPL-2
+RDEPEND=>=dev-lang/ocaml-3.10:= sci-libs/gsl !dev-ml/gsl-ocaml
+SLOT=0/0.6.0
+SRC_URI=http://oandrieu.nerim.net/ocaml/gsl/ocamlgsl-0.6.0.tar.gz
+_eclass_exported_funcs=src_unpack:base src_prepare:base src_configure:base src_compile:- src_install:-
+_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	9d81603248f2ba3ec59124320d123e5e	findlib	9909e5ca0f77ff5b693885a3d7aeadb7	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=4f269385320b7b5af4191f03462326ee

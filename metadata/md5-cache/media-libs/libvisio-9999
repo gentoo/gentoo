@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure install prepare unpack
+DEPEND=dev-libs/icu:= dev-libs/librevenge dev-libs/libxml2 sys-libs/zlib dev-lang/perl >=dev-libs/boost-1.46 dev-util/gperf sys-devel/libtool virtual/pkgconfig doc? ( app-doc/doxygen ) test? ( dev-util/cppunit ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=dev-vcs/git-1.8.2.1
+DESCRIPTION=Library parsing the visio documents
+EAPI=6
+HOMEPAGE=https://wiki.documentfoundation.org/DLP/Libraries/libvisio
+IUSE=doc static-libs test tools
+LICENSE=|| ( GPL-2+ LGPL-2.1 MPL-1.1 )
+RDEPEND=dev-libs/icu:= dev-libs/librevenge dev-libs/libxml2 sys-libs/zlib
+SLOT=0
+_eclass_exported_funcs=src_unpack:git-r3 src_prepare:- src_configure:- src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	9d81603248f2ba3ec59124320d123e5e	git-r3	ef66dfc3db09f327af21cf32f140fb2b	libtool	4890219c51da247200223277f993e054	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=8c432fec0133d8f8f0224878984c38bb

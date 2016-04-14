@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst preinst prepare setup test unpack
+DEPEND=media-libs/allegro:0[X,jpeg,png,vorbis] media-libs/libogg media-libs/libpng:0 media-libs/libvorbis sys-libs/zlib virtual/jpeg:0 sys-devel/make >=dev-util/cmake-2.8.12
+DESCRIPTION=A free open-source game based on the Sonic the Hedgehog universe
+EAPI=5
+HOMEPAGE=http://opensnc.sourceforge.net/
+KEYWORDS=amd64 x86
+LICENSE=GPL-2
+RDEPEND=media-libs/allegro:0[X,jpeg,png,vorbis] media-libs/libogg media-libs/libpng:0 media-libs/libvorbis sys-libs/zlib virtual/jpeg:0 games-misc/games-envd
+RESTRICT=mirror
+SLOT=0
+SRC_URI=https://sourceforge.net/projects/opensnc/files/Open%20Sonic/0.1.4/opensnc-src-0.1.4.tar.gz
+_eclass_exported_funcs=pkg_preinst:games pkg_postinst:games pkg_setup:games src_unpack:base src_prepare:- src_configure:- src_compile:- src_test:cmake-utils src_install:-
+_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	cmake-utils	422bbd1bee2557490177a34dbe0a662b	eutils	9d81603248f2ba3ec59124320d123e5e	flag-o-matic	d270fa247153df66074f795fa42dba3e	games	2cf0d67d765e6358b435ccda30c13ad8	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	user	906f3c8eb3a2350a4f1191a89baa3e46	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=ac153958d1f42b154322c1864ac1c70f

@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=sci-libs/coinor-osi:= sci-libs/coinor-utils:= glpk? ( sci-mathematics/glpk:= sci-libs/amd ) metis? ( || ( sci-libs/metis sci-libs/parmetis ) ) mumps? ( sci-libs/mumps ) sparse? ( sci-libs/cholmod ) virtual/pkgconfig doc? ( app-doc/doxygen[dot] ) test? ( sci-libs/coinor-sample )
+DESCRIPTION=COIN-OR Linear Programming solver
+EAPI=5
+HOMEPAGE=https://projects.coin-or.org/Clp/
+IUSE=doc examples glpk metis mumps sparse static-libs test
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
+LICENSE=EPL-1.0
+RDEPEND=sci-libs/coinor-osi:= sci-libs/coinor-utils:= glpk? ( sci-mathematics/glpk:= sci-libs/amd ) metis? ( || ( sci-libs/metis sci-libs/parmetis ) ) mumps? ( sci-libs/mumps ) sparse? ( sci-libs/cholmod )
+SLOT=0/1
+SRC_URI=http://www.coin-or.org/download/source/Clp/Clp-1.15.6.tgz
+_eclass_exported_funcs=src_prepare:- src_configure:- src_compile:- src_test:- src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	autotools-utils	419811142edf3516b0d0cf1a254d93cb	eutils	9d81603248f2ba3ec59124320d123e5e	libtool	4890219c51da247200223277f993e054	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=17e1c7f84439109ee94f0babf2e601c4

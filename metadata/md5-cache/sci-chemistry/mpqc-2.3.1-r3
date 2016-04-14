@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst prepare test
+DEPEND=virtual/blas virtual/lapack mpi? ( virtual/mpi[cxx] ) tk? ( dev-lang/tk ) dev-lang/perl sys-devel/flex sys-apps/sed virtual/pkgconfig doc? ( app-doc/doxygen media-gfx/graphviz ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=The Massively Parallel Quantum Chemistry Program
+EAPI=4
+HOMEPAGE=http://www.mpqc.org/
+IUSE=doc mpi threads static-libs tk
+KEYWORDS=amd64 ppc ppc64 x86
+LICENSE=GPL-2
+RDEPEND=virtual/blas virtual/lapack mpi? ( virtual/mpi[cxx] ) tk? ( dev-lang/tk )
+SLOT=0
+SRC_URI=mirror://sourceforge/mpqc/mpqc-2.3.1.tar.bz2
+_eclass_exported_funcs=pkg_postinst:- src_prepare:- src_configure:- src_compile:autotools-utils src_test:- src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	autotools-utils	419811142edf3516b0d0cf1a254d93cb	eutils	9d81603248f2ba3ec59124320d123e5e	libtool	4890219c51da247200223277f993e054	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=57d00dc6fb022f66683aae58eb3d05e7

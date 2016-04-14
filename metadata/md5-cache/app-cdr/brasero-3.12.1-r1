@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare unpack
+DEPEND=>=dev-libs/glib-2.29.14:2 >=x11-libs/gtk+-3:3[introspection?] media-libs/gstreamer:1.0 media-libs/gst-plugins-base:1.0 >=dev-libs/libxml2-2.6:2 >=x11-libs/libnotify-0.6.1:= media-libs/libcanberra[gtk3] x11-libs/libICE x11-libs/libSM introspection? ( >=dev-libs/gobject-introspection-0.6.3:= ) libburn? ( >=dev-libs/libburn-0.4:= >=dev-libs/libisofs-0.6.4:= ) nautilus? ( >=gnome-base/nautilus-2.91.90 ) playlist? ( >=dev-libs/totem-pl-parser-2.29.1:= ) tracker? ( >=app-misc/tracker-0.12:0= ) >=dev-util/intltool-0.50 dev-util/itstool >=dev-util/gtk-doc-am-1.12 sys-devel/gettext virtual/pkgconfig test? ( app-text/docbook-xml-dtd:4.3 ) app-arch/xz-utils >=sys-apps/sed-4 dev-util/desktop-file-utils x11-misc/shared-mime-info
+DESCRIPTION=CD/DVD burning application for the GNOME desktop
+EAPI=5
+HOMEPAGE=https://wiki.gnome.org/Apps/Brasero
+IUSE=+css +introspection +libburn mp3 nautilus packagekit playlist test tracker
+KEYWORDS=~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc x86
+LICENSE=GPL-2+ CC-BY-SA-3.0
+PDEPEND=gnome-base/gvfs
+RDEPEND=>=dev-libs/glib-2.29.14:2 >=x11-libs/gtk+-3:3[introspection?] media-libs/gstreamer:1.0 media-libs/gst-plugins-base:1.0 >=dev-libs/libxml2-2.6:2 >=x11-libs/libnotify-0.6.1:= media-libs/libcanberra[gtk3] x11-libs/libICE x11-libs/libSM introspection? ( >=dev-libs/gobject-introspection-0.6.3:= ) libburn? ( >=dev-libs/libburn-0.4:= >=dev-libs/libisofs-0.6.4:= ) nautilus? ( >=gnome-base/nautilus-2.91.90 ) playlist? ( >=dev-libs/totem-pl-parser-2.29.1:= ) tracker? ( >=app-misc/tracker-0.12:0= ) media-libs/gst-plugins-good:1.0 media-plugins/gst-plugins-meta:1.0 x11-themes/hicolor-icon-theme css? ( media-libs/libdvdcss:1.2 ) !libburn? ( app-cdr/cdrdao app-cdr/dvd+rw-tools virtual/cdrtools ) mp3? ( media-libs/gst-plugins-ugly:1.0 media-plugins/gst-plugins-mad:1.0 ) packagekit? ( app-admin/packagekit-base )
+SLOT=0/3.1
+SRC_URI=mirror://gnome/sources/brasero/3.12/brasero-3.12.1.tar.xz
+_eclass_exported_funcs=pkg_preinst:gnome2 pkg_postrm:gnome2 pkg_postinst:gnome2 src_unpack:gnome2 src_prepare:- src_configure:- src_compile:gnome2 src_install:gnome2
+_eclasses_=eutils	9d81603248f2ba3ec59124320d123e5e	gnome.org	ad34f378a3d57a6f2f2b8b4aaca4543e	gnome2	21c81ea94c12e45a63f7f14fba666e3d	gnome2-utils	c6dcdf3a2c22b578b16adb945dc85c35	libtool	4890219c51da247200223277f993e054	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	xdg	a5c4c5ce4f5ce9a2e777f5d9a40a8723	xdg-utils	e2b2bd56125ce8cf59ce30c642b59d48
+_md5_=848bc0642591b8cb882ba377eb04408e

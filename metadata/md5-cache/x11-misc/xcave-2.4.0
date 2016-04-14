@@ -1,0 +1,13 @@
+DEFINED_PHASES=install
+DEPEND=>=x11-libs/gtk+-2.8:2 dev-libs/libxml2 virtual/pkgconfig sys-devel/gettext dev-util/intltool
+DESCRIPTION=View and manage contents of your wine cellar
+EAPI=4
+HOMEPAGE=http://xcave.free.fr/index-en.php
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=>=x11-libs/gtk+-2.8:2 dev-libs/libxml2
+RESTRICT=test
+SLOT=0
+SRC_URI=http://xcave.free.fr/backbone.php?what=download/xcave-2.4.0.tar.gz
+_eclass_exported_funcs=src_install:-
+_md5_=4d6c3e4e4930ea92490171d9330f5496

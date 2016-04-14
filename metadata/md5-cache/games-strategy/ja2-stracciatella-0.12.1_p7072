@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install postinst preinst prepare setup unpack
+DEPEND=media-libs/libsdl[X,sound,video] zlib? ( sys-libs/zlib )
+DESCRIPTION=A port of Jagged Alliance 2 to SDL
+EAPI=5
+HOMEPAGE=http://tron.homeunix.org/ja2/
+IUSE=cdinstall editor zlib linguas_de +linguas_en linguas_fr linguas_it linguas_nl linguas_pl linguas_ru linguas_ru_gold
+KEYWORDS=amd64 x86
+LICENSE=SFI-SCLA
+RDEPEND=media-libs/libsdl[X,sound,video] zlib? ( sys-libs/zlib ) cdinstall? ( games-strategy/ja2-stracciatella-data ) games-misc/games-envd
+REQUIRED_USE=^^ ( linguas_de linguas_en linguas_fr linguas_it linguas_nl linguas_pl linguas_ru linguas_ru_gold )
+SLOT=0
+SRC_URI=https://dev.gentoo.org/~hasufell/distfiles/ja2-stracciatella-0.12.1_p7072.tar.xz http://tron.homeunix.org/ja2/editor.slf.gz
+_eclass_exported_funcs=pkg_preinst:games pkg_postinst:- pkg_setup:games src_unpack:base src_prepare:- src_configure:games src_compile:- src_install:-
+_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	9d81603248f2ba3ec59124320d123e5e	games	2cf0d67d765e6358b435ccda30c13ad8	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	user	906f3c8eb3a2350a4f1191a89baa3e46
+_md5_=1dc566c387947c2d190873d8b29acb2d

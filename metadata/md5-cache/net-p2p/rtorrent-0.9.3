@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=~net-libs/libtorrent-0.13.3 >=dev-libs/libsigc++-2.2.2:2 >=net-misc/curl-7.19.1 sys-libs/ncurses xmlrpc? ( dev-libs/xmlrpc-c ) test? ( dev-util/cppunit ) virtual/pkgconfig
+DESCRIPTION=BitTorrent Client using libtorrent
+EAPI=4
+HOMEPAGE=http://libtorrent.rakshasa.no/
+IUSE=daemon debug ipv6 selinux test xmlrpc
+KEYWORDS=amd64 ~arm hppa ~ia64 ppc ppc64 ~sparc x86 ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris
+LICENSE=GPL-2
+RDEPEND=~net-libs/libtorrent-0.13.3 >=dev-libs/libsigc++-2.2.2:2 >=net-misc/curl-7.19.1 sys-libs/ncurses xmlrpc? ( dev-libs/xmlrpc-c ) daemon? ( app-misc/screen ) selinux? ( sec-policy/selinux-rtorrent )
+SLOT=0
+SRC_URI=http://libtorrent.rakshasa.no/downloads/rtorrent-0.9.3.tar.gz
+_eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
+_eclasses_=eutils	9d81603248f2ba3ec59124320d123e5e	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=b02bce1bccb221817621566e67151f63

@@ -1,0 +1,13 @@
+DEFINED_PHASES=prepare
+DEPEND=>=dev-lang/perl-5.8
+DESCRIPTION=Linux Health Checker
+EAPI=5
+HOMEPAGE=http://lnxhc.sourceforge.net
+KEYWORDS=amd64 x86
+LICENSE=EPL-1.0
+RDEPEND=>=dev-lang/perl-5.8
+SLOT=0
+SRC_URI=mirror://sourceforge/lnxhc/lnxhc-1.2.tar.gz
+_eclass_exported_funcs=src_prepare:-
+_eclasses_=eutils	9d81603248f2ba3ec59124320d123e5e	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=a9e7d9bf1172718eacd8c8a387a535fd

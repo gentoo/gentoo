@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install postinst postrm prepare setup
+DEPEND=x11-libs/libX11 x11-libs/libSM x11-libs/libICE gtk? ( >=x11-libs/gtk+-2.2:2 ) nls? ( virtual/libintl ) dev-libs/glib virtual/pkgconfig nls? ( sys-devel/gettext ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=sys-apps/sed-4
+DESCRIPTION=Vietnamese X Input Method
+EAPI=5
+HOMEPAGE=http://www.unikey.org/
+IUSE=nls gtk
+KEYWORDS=~amd64 ~ppc x86
+LICENSE=GPL-2
+RDEPEND=x11-libs/libX11 x11-libs/libSM x11-libs/libICE gtk? ( >=x11-libs/gtk+-2.2:2 ) nls? ( virtual/libintl )
+SLOT=0
+SRC_URI=mirror://sourceforge/unikey/x-unikey-1.0.4.tar.bz2
+_eclass_exported_funcs=pkg_postrm:- pkg_postinst:- pkg_setup:- src_prepare:- src_configure:- src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	9d81603248f2ba3ec59124320d123e5e	gnome2-utils	c6dcdf3a2c22b578b16adb945dc85c35	libtool	4890219c51da247200223277f993e054	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	xdg-utils	e2b2bd56125ce8cf59ce30c642b59d48
+_md5_=184a4d0f3a4a1b71ec9f4e43aaec5fbe

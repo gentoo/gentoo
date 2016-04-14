@@ -1,0 +1,12 @@
+DEFINED_PHASES=install postinst
+DEPEND==x11-libs/gtk+-2* net-libs/libpcap virtual/pkgconfig
+DESCRIPTION=802.11b Wireless Packet Sniffer/WEP Cracker
+EAPI=0
+HOMEPAGE=http://airsnort.shmoo.com/
+KEYWORDS=~amd64 ppc x86
+LICENSE=GPL-2
+RDEPEND==x11-libs/gtk+-2* net-libs/libpcap
+SLOT=0
+SRC_URI=mirror://sourceforge/airsnort/airsnort-0.2.7e.tar.gz
+_eclass_exported_funcs=pkg_postinst:- src_install:-
+_md5_=e0f9e1a9237a43929eb5b3e88c6a51a1

@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install postinst
+DEPEND=net-analyzer/nagios-core
+DESCRIPTION=Nagios plugin that provides an interface to SAP CCMS Infrastructure
+EAPI=0
+HOMEPAGE=http://sourceforge.net/projects/nagios-sap-ccms/
+KEYWORDS=x86
+LICENSE=GPL-2
+RDEPEND=net-analyzer/nagios-core
+SLOT=0
+SRC_URI=mirror://sourceforge/nagios-sap-ccms/sap-ccms-plugin-0.7.3.tar.gz
+_eclass_exported_funcs=pkg_postinst:- src_compile:- src_install:-
+_eclasses_=multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=00e030b4293cfbd37211d838c6670687

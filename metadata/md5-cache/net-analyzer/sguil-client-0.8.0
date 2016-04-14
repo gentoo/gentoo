@@ -1,0 +1,13 @@
+DEFINED_PHASES=install prepare
+DESCRIPTION=GUI Console for sguil Network Security Monitoring
+EAPI=5
+HOMEPAGE=http://sguil.sf.net
+IUSE=ssl
+KEYWORDS=~amd64 ~x86
+LICENSE=QPL
+RDEPEND=>=dev-lang/tcl-8.3:0=[-threads] >=dev-lang/tk-8.3:0= >=dev-tcltk/itcl-3.2 >=dev-tcltk/tclx-8.3 dev-tcltk/itk dev-tcltk/iwidgets dev-tcltk/tcllib net-analyzer/wireshark ssl? ( >=dev-tcltk/tls-1.4.1 )
+SLOT=0
+SRC_URI=mirror://sourceforge/sguil/sguil-client-0.8.0.tar.gz
+_eclass_exported_funcs=src_prepare:- src_install:-
+_eclasses_=multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=31cfd66fe9dbd3f955d720085e076ae9

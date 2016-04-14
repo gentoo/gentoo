@@ -1,0 +1,11 @@
+DEFINED_PHASES=install
+DESCRIPTION=Command line tool to check Java packages for API compatibility
+EAPI=5
+HOMEPAGE=https://github.com/gentoo/java-apicheck/
+KEYWORDS=amd64 x86
+LICENSE=GPL-2+
+RDEPEND=dev-java/japitools dev-java/java-config
+SLOT=0
+SRC_URI=https://github.com/gentoo/java-apicheck/archive/0_p20150907.tar.gz -> java-apicheck-0_p20150907.tar.gz
+_eclass_exported_funcs=src_install:-
+_md5_=6a4a46bb6588013ab28572c82f60c178

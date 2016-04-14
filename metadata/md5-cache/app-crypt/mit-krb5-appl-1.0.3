@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install prepare unpack
+DEPEND=>=app-crypt/mit-krb5-1.8.0 sys-libs/e2fsprogs-libs sys-libs/ncurses virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Kerberized applications split from the main MIT Kerberos V distribution
+EAPI=4
+HOMEPAGE=http://web.mit.edu/kerberos/www/
+KEYWORDS=alpha amd64 arm hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86
+LICENSE=openafs-krb5-a BSD
+RDEPEND=>=app-crypt/mit-krb5-1.8.0 sys-libs/e2fsprogs-libs sys-libs/ncurses
+SLOT=0
+SRC_URI=http://web.mit.edu/kerberos/dist/krb5-appl/1.0/krb5-appl-1.0.3-signed.tar
+_eclass_exported_funcs=src_unpack:- src_prepare:- src_configure:- src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	9d81603248f2ba3ec59124320d123e5e	flag-o-matic	d270fa247153df66074f795fa42dba3e	libtool	4890219c51da247200223277f993e054	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=8977c381234effbce30cb09c083264c2

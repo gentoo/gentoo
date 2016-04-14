@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install
+DEPEND=>=sys-libs/libraw1394-1.1 >=media-libs/libdv-0.103 >=media-libs/libiec61883-1 >=sys-libs/libavc1394-0.5.1 jpeg? ( virtual/jpeg ) quicktime? ( media-libs/libquicktime ) virtual/pkgconfig
+DESCRIPTION=Digital Video (DV) grabber for GNU/Linux
+EAPI=0
+HOMEPAGE=http://www.kinodv.org/
+IUSE=jpeg quicktime
+KEYWORDS=amd64 ppc ~ppc64 x86
+LICENSE=GPL-2
+RDEPEND=>=sys-libs/libraw1394-1.1 >=media-libs/libdv-0.103 >=media-libs/libiec61883-1 >=sys-libs/libavc1394-0.5.1 jpeg? ( virtual/jpeg ) quicktime? ( media-libs/libquicktime )
+SLOT=0
+SRC_URI=mirror://sourceforge/kino/dvgrab-3.5.tar.gz
+_eclass_exported_funcs=src_compile:- src_install:-
+_md5_=eb64bb187408f8c21c3524a68c587f6c

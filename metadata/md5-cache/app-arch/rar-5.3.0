@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install unpack
+DEPEND=all_sfx? ( app-arch/unrar )
+DESCRIPTION=RAR compressor/uncompressor
+EAPI=5
+HOMEPAGE=http://www.rarsoft.com/
+IUSE=all_sfx static
+KEYWORDS=-* amd64 x86
+LICENSE=RAR
+RDEPEND=sys-libs/glibc
+SLOT=0
+SRC_URI=x86? ( http://www.rarsoft.com/rar/rarlinux-5.3.0.tar.gz ) amd64? ( http://www.rarsoft.com/rar/rarlinux-x64-5.3.0.tar.gz ) all_sfx? ( http://www.rarsoft.com/rar/rarlinux-5.3.0.tar.gz http://www.rarsoft.com/rar/rarlinux-x64-5.3.0.tar.gz http://www.rarsoft.com/rar/winrar-x64-530.exe )
+_eclass_exported_funcs=src_unpack:- src_compile:- src_install:-
+_md5_=4058f0e9c269ced6fbc3dd2bcc6a891d

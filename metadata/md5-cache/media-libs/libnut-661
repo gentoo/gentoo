@@ -1,0 +1,11 @@
+DEFINED_PHASES=install
+DESCRIPTION=Library and tools to create NUT multimedia files
+EAPI=0
+HOMEPAGE=http://svn.mplayerhq.hu/nut/ http://wiki.multimedia.cx/index.php?title=NUT http://www.nut-container.org/
+KEYWORDS=alpha amd64 hppa ppc ppc64 sparc x86 ~amd64-fbsd ~x86-fbsd
+LICENSE=MIT
+SLOT=0
+SRC_URI=mirror://gentoo/libnut-661.tar.bz2
+_eclass_exported_funcs=src_install:-
+_eclasses_=eutils	9d81603248f2ba3ec59124320d123e5e	flag-o-matic	d270fa247153df66074f795fa42dba3e	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=cd6a564721a4c29350325336278b4f12

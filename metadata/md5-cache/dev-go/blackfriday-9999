@@ -1,0 +1,10 @@
+DEFINED_PHASES=compile install test unpack
+DEPEND=dev-go/sanitized-anchor-name >=dev-lang/go-1.4.2:=
+DESCRIPTION=a markdown processor implemented in Go
+EAPI=5
+HOMEPAGE=https://github.com/russross/blackfriday
+LICENSE=BSD-2
+SLOT=0
+_eclass_exported_funcs=src_unpack:golang-vcs src_compile:golang-build src_test:golang-build src_install:golang-build
+_eclasses_=eutils	9d81603248f2ba3ec59124320d123e5e	golang-base	08fe6e0e2b4750daff8887a7f0e1f873	golang-build	a44f10e6bd86ecccf2a07cc0d4cf6bec	golang-vcs	c46e447dc94466eabb5ce867f21b85bf	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=b1bbbdf24fcd301f161719cd98e4e98c

@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install postinst postrm prepare unpack
+DEPEND=!<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Exuberant Ctags creates tags files for code browsing in editors
+EAPI=5
+HOMEPAGE=http://ctags.sourceforge.net
+IUSE=ada
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd
+LICENSE=GPL-2
+RDEPEND=app-eselect/eselect-ctags
+SLOT=0
+SRC_URI=https://github.com/universal-ctags/ctags/archive/9fce9dd0afd3dd261c681825a61d3e9ffcaa7eea.tar.gz -> ctags-5.8_p20140919.tar.gz ada? ( mirror://sourceforge/gnuada/ctags-ada-mode-4.3.11.tar.bz2 )
+_eclass_exported_funcs=pkg_postrm:- pkg_postinst:- src_unpack:vcs-snapshot src_prepare:- src_configure:- src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	9d81603248f2ba3ec59124320d123e5e	libtool	4890219c51da247200223277f993e054	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	vcs-snapshot	b45be87e7012be0af8424e8a5644da1d
+_md5_=12259e66b1722d72ce0c25271bd12d4a

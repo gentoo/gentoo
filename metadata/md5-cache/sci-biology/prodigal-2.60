@@ -1,0 +1,10 @@
+DEFINED_PHASES=install prepare
+DESCRIPTION=Prokaryotic Dynamic Programming Genefinding Algorithm
+EAPI=2
+HOMEPAGE=http://prodigal.ornl.gov/ https://code.google.com/p/prodigal/
+KEYWORDS=~amd64
+LICENSE=GPL-3
+SLOT=0
+SRC_URI=https://prodigal.googlecode.com/files/prodigal.v2_60.tar.gz
+_eclass_exported_funcs=src_prepare:- src_install:-
+_md5_=305999f17f2c525994f97ab8a7636ff9

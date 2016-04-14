@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install postinst prepare test
+DEPEND=sys-devel/gdb sys-libs/ncurses x11-libs/libX11 x11-libs/libXaw x11-libs/libXmu x11-libs/libXpm x11-libs/libXt >=x11-libs/motif-2.3:0 ppc? ( dev-libs/elfutils ) ppc64? ( dev-libs/elfutils ) readline? ( sys-libs/readline ) x11-proto/xproto
+DESCRIPTION=Graphical front-end for command-line debuggers
+EAPI=4
+HOMEPAGE=https://www.gnu.org/software/ddd
+IUSE=+gnuplot readline
+KEYWORDS=alpha amd64 ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux
+LICENSE=GPL-3 LGPL-3 FDL-1.1
+RDEPEND=sys-devel/gdb sys-libs/ncurses x11-libs/libX11 x11-libs/libXaw x11-libs/libXmu x11-libs/libXpm x11-libs/libXt >=x11-libs/motif-2.3:0 ppc? ( dev-libs/elfutils ) ppc64? ( dev-libs/elfutils ) readline? ( sys-libs/readline ) x11-apps/xfontsel gnuplot? ( sci-visualization/gnuplot )
+RESTRICT=test
+SLOT=0
+SRC_URI=mirror://gnu/ddd/ddd-3.3.12.tar.gz
+_eclass_exported_funcs=pkg_postinst:- src_prepare:autotools-utils src_configure:- src_compile:autotools-utils src_test:autotools-utils src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	autotools-utils	419811142edf3516b0d0cf1a254d93cb	eutils	9d81603248f2ba3ec59124320d123e5e	libtool	4890219c51da247200223277f993e054	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=6dcd04e21c9851bbdee2f157445e6066

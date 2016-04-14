@@ -1,0 +1,10 @@
+DEFINED_PHASES=install
+DESCRIPTION=A high-level language for a number of Microchip PIC and Ubicom SX microcontrollers
+EAPI=0
+HOMEPAGE=http://jal.sourceforge.net/
+KEYWORDS=x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=mirror://sourceforge/jal/jal-0.4.60.tar.gz
+_eclass_exported_funcs=src_install:-
+_md5_=b7a76e924c72c9976672a1268e9c5775

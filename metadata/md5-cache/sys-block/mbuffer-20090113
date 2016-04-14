@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install unpack
+DEPEND=ssl? ( dev-libs/openssl )
+DESCRIPTION=M(easuring)buffer is a replacement for buffer with additional functionality
+EAPI=0
+HOMEPAGE=http://www.maier-komor.de/mbuffer.html
+IUSE=debug ssl
+KEYWORDS=amd64 ppc x86
+LICENSE=GPL-2
+RDEPEND=ssl? ( dev-libs/openssl )
+SLOT=0
+SRC_URI=http://www.maier-komor.de/software/mbuffer/mbuffer-20090113.tgz
+_eclass_exported_funcs=src_unpack:- src_compile:- src_install:-
+_md5_=384fda7a9390a0fb4d73208f8b1d1034

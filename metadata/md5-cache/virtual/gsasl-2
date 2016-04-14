@@ -1,0 +1,9 @@
+DEFINED_PHASES=-
+DEPEND=|| ( net-libs/libgsasl net-misc/gsasl )
+DESCRIPTION=Virtual for the GNU SASL library
+EAPI=2
+KEYWORDS=alpha amd64 arm hppa ia64 ppc ppc64 sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~x86-macos
+RDEPEND=|| ( net-libs/libgsasl net-misc/gsasl )
+SLOT=0
+_eclass_exported_funcs=-
+_md5_=dd8cff48e0439bd9856e6c42c7daeb86

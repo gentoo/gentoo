@@ -1,0 +1,14 @@
+DEFINED_PHASES=install postinst setup
+DESCRIPTION=Tool for managing events and logs
+EAPI=5
+HOMEPAGE=https://www.elastic.co/products/logstash
+IUSE=+standard all-plugins
+KEYWORDS=~amd64
+LICENSE=Apache-2.0
+RDEPEND=|| ( virtual/jre:1.8 virtual/jre:1.7 )
+RESTRICT=strip
+SLOT=0
+SRC_URI=standard? ( https://download.elastic.co/logstash/logstash/logstash-2.3.1.tar.gz ) all-plugins? ( https://download.elastic.co/logstash/logstash/logstash-all-plugins-2.3.1.tar.gz )
+_eclass_exported_funcs=pkg_postinst:- pkg_setup:- src_install:-
+_eclasses_=user	906f3c8eb3a2350a4f1191a89baa3e46
+_md5_=4ab9690067150fc0cc0ce6c0f717f0fd

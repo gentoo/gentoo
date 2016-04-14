@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst preinst prepare
+DEPEND=sys-libs/zlib ssl? ( dev-libs/openssl ) virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=sys-apps/sed-4 ssl? ( dev-libs/openssl )
+DESCRIPTION=An IRCd server based on DALnet's DreamForge IRCd
+EAPI=4
+HOMEPAGE=http://www.shadow-realm.org/
+IUSE=ssl ssl
+KEYWORDS=~amd64 ~ppc ~sparc x86 ~amd64-linux
+LICENSE=GPL-2
+RDEPEND=sys-libs/zlib ssl? ( dev-libs/openssl )
+SLOT=0
+SRC_URI=mirror://sourceforge/ultimate/Ultimate3.0.2.tar.bz2
+_eclass_exported_funcs=pkg_preinst:- pkg_postinst:- src_prepare:- src_configure:- src_compile:- src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	9d81603248f2ba3ec59124320d123e5e	fixheadtails	2f44773656577fe2653bacc8bdcb2174	libtool	4890219c51da247200223277f993e054	multilib	23ae8c186171e6476af098d2a50d0ee0	prefix	e7f2b9c6e57342e5d25eac22fce23062	ssl-cert	fd7c91ac6f84156489f28c0bc7a114e0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	user	906f3c8eb3a2350a4f1191a89baa3e46
+_md5_=e8450d6e61fe126a12676cf60026c6c4

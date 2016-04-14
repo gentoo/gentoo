@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install postinst prepare setup
+DEPEND=>=dev-libs/glib-2 !libressl? ( >=dev-libs/openssl-0.9.7:0 ) libressl? ( dev-libs/libressl ) virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 virtual/pkgconfig virtual/pkgconfig
+DESCRIPTION=An open-source TCG Software Stack (TSS) v1.1 implementation
+EAPI=5
+HOMEPAGE=http://trousers.sf.net
+IUSE=doc libressl selinux
+KEYWORDS=~amd64 ~arm ~arm64 ~m68k ~ppc ~ppc64 ~s390 ~sh ~x86
+LICENSE=CPL-1.0 GPL-2
+RDEPEND=>=dev-libs/glib-2 !libressl? ( >=dev-libs/openssl-0.9.7:0 ) libressl? ( dev-libs/libressl ) selinux? ( sec-policy/selinux-tcsd )
+SLOT=0
+SRC_URI=mirror://sourceforge/trousers/trousers-0.3.13.tar.gz
+_eclass_exported_funcs=pkg_postinst:readme.gentoo pkg_setup:- src_prepare:- src_configure:- src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	9d81603248f2ba3ec59124320d123e5e	libtool	4890219c51da247200223277f993e054	linux-info	fd1e29abbb02cbc49f1a14299846e9c4	multilib	23ae8c186171e6476af098d2a50d0ee0	readme.gentoo	df3fc8fdaf5a519e7d48c83e7592c95f	systemd	3165c885f3c71ffae7a867d931fb0e07	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	udev	73058269b3e70e34e084fa3981282338	user	906f3c8eb3a2350a4f1191a89baa3e46	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=91db857a65beef4fa5d9930a4084b195

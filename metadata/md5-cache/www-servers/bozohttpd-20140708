@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=dev-libs/openssl
+DESCRIPTION=bozohttpd is a small and secure http server
+EAPI=5
+HOMEPAGE=http://www.eterna.com.au/bozohttpd/
+KEYWORDS=~amd64 ~ppc x86
+LICENSE=GPL-2
+RDEPEND=dev-libs/openssl virtual/logger
+SLOT=0
+SRC_URI=http://www.eterna.com.au/bozohttpd/bozohttpd-20140708.tar.bz2
+_eclass_exported_funcs=src_prepare:- src_compile:- src_install:-
+_eclasses_=multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=7c3b2b6e8c94575066422cfea5cd06dc

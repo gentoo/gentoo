@@ -1,0 +1,11 @@
+DEFINED_PHASES=configure install
+DESCRIPTION=Collection of tools including assembler, linker and librarian for PIC microcontrollers
+EAPI=5
+HOMEPAGE=http://gputils.sourceforge.net/
+KEYWORDS=~amd64 ~ppc ~ppc64 ~x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=mirror://sourceforge/gputils/gputils-1.4.0.tar.gz
+_eclass_exported_funcs=src_configure:- src_install:-
+_eclasses_=multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=efa0f08eb753402041c200bb194fbb68

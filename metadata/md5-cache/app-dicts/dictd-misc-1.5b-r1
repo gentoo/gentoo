@@ -1,0 +1,12 @@
+DEFINED_PHASES=install
+DEPEND=>=app-text/dictd-1.5.5
+DESCRIPTION=Easton's 1897 Bible Dictionary for dict
+EAPI=0
+HOMEPAGE=http://www.dict.org/
+KEYWORDS=x86 ppc sparc amd64 ppc64
+LICENSE=GPL-2
+RDEPEND=>=app-text/dictd-1.5.5
+SLOT=0
+SRC_URI=ftp://ftp.dict.org/pub/dict/pre/dict-misc-1.5b-pre.tar.gz
+_eclass_exported_funcs=src_install:-
+_md5_=f2e79f6e3cd90ff89d709b408703c285

@@ -1,0 +1,14 @@
+DEFINED_PHASES=install postinst postrm preinst prepare
+DEPEND=dev-lang/perl dev-perl/Archive-Zip dev-perl/DateTime-Format-Strptime dev-perl/gtk2-perl dev-perl/HTML-Parser dev-perl/libwww-perl dev-perl/URI dev-perl/XML-Parser dev-perl/XML-Simple virtual/perl-Archive-Tar virtual/perl-Encode virtual/perl-Getopt-Long virtual/perl-File-Path virtual/perl-File-Spec virtual/perl-File-Temp virtual/perl-IO-Compress virtual/perl-libnet virtual/perl-Storable virtual/perl-Time-Piece cddb? ( dev-perl/Net-FreeDB ) gnome? ( dev-perl/gnome2-vfs-perl ) mp3? ( dev-perl/MP3-Info dev-perl/MP3-Tag ) spell? ( dev-perl/gtk2-spell ) stats? ( dev-perl/Date-Calc dev-perl/GD[png,truetype] ) tellico? ( virtual/perl-Digest-MD5 virtual/perl-MIME-Base64 ) vorbis? ( dev-perl/Ogg-Vorbis-Header-PurePerl ) >=sys-apps/sed-4
+DESCRIPTION=Manage your collections of movies, games, books, music and more
+EAPI=4
+HOMEPAGE=http://www.gcstar.org/
+IUSE=cddb gnome mp3 spell stats tellico vorbis
+KEYWORDS=amd64 x86
+LICENSE=GPL-2
+RDEPEND=dev-lang/perl dev-perl/Archive-Zip dev-perl/DateTime-Format-Strptime dev-perl/gtk2-perl dev-perl/HTML-Parser dev-perl/libwww-perl dev-perl/URI dev-perl/XML-Parser dev-perl/XML-Simple virtual/perl-Archive-Tar virtual/perl-Encode virtual/perl-Getopt-Long virtual/perl-File-Path virtual/perl-File-Spec virtual/perl-File-Temp virtual/perl-IO-Compress virtual/perl-libnet virtual/perl-Storable virtual/perl-Time-Piece cddb? ( dev-perl/Net-FreeDB ) gnome? ( dev-perl/gnome2-vfs-perl ) mp3? ( dev-perl/MP3-Info dev-perl/MP3-Tag ) spell? ( dev-perl/gtk2-spell ) stats? ( dev-perl/Date-Calc dev-perl/GD[png,truetype] ) tellico? ( virtual/perl-Digest-MD5 virtual/perl-MIME-Base64 ) vorbis? ( dev-perl/Ogg-Vorbis-Header-PurePerl )
+SLOT=0
+SRC_URI=http://download.gna.org/gcstar/gcstar-1.7.0.tar.gz
+_eclass_exported_funcs=pkg_preinst:- pkg_postrm:- pkg_postinst:- src_prepare:- src_install:-
+_eclasses_=eutils	9d81603248f2ba3ec59124320d123e5e	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	gnome2-utils	c6dcdf3a2c22b578b16adb945dc85c35	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	xdg-utils	e2b2bd56125ce8cf59ce30c642b59d48
+_md5_=6524ce684da9759763c1d9d81f386cd1

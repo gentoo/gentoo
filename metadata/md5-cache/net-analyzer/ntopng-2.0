@@ -1,0 +1,13 @@
+DEFINED_PHASES=install postinst prepare setup
+DEPEND=dev-db/sqlite:3 dev-lang/luajit:2 dev-libs/geoip dev-libs/glib:2 dev-libs/libxml2 net-analyzer/rrdtool net-libs/libpcap dev-python/pyzmq !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Network traffic analyzer with web interface
+EAPI=5
+HOMEPAGE=http://www.ntop.org/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=dev-db/sqlite:3 dev-lang/luajit:2 dev-libs/geoip dev-libs/glib:2 dev-libs/libxml2 net-analyzer/rrdtool net-libs/libpcap dev-python/pyzmq dev-db/redis
+SLOT=0
+SRC_URI=mirror://sourceforge/ntop/ntopng/ntopng-2.0.tar.gz
+_eclass_exported_funcs=pkg_postinst:- pkg_setup:- src_prepare:- src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	libtool	4890219c51da247200223277f993e054	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	user	906f3c8eb3a2350a4f1191a89baa3e46
+_md5_=513e00e0c13ffd8d996afd842d9114e4

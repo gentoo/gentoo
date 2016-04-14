@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install
+DEPEND=|| ( >=app-text/stardict-2.4.2 app-text/sdcv app-text/goldendict ) gzip? ( app-arch/gzip app-text/dictd )
+DESCRIPTION=Stardict Dictionary Turkish to German
+EAPI=0
+HOMEPAGE=http://stardict.sourceforge.net/
+IUSE=gzip
+KEYWORDS=amd64 ppc sparc x86
+LICENSE=GPL-2
+RESTRICT=strip
+SLOT=0
+SRC_URI=mirror://sourceforge/stardict/stardict-freedict-tur-deu-2.4.2.tar.bz2
+_eclass_exported_funcs=src_compile:stardict src_install:stardict
+_eclasses_=stardict	f2fd36b0af07ceaba9852e6caec6ac7f
+_md5_=6df9e534378870cd643323d51830fde6

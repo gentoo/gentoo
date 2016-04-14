@@ -1,0 +1,13 @@
+DEFINED_PHASES=setup
+DEPEND=dev-lang/mono >=dev-dotnet/dbus-sharp-0.7:1.0 virtual/pkgconfig
+DESCRIPTION=D-Bus for .NET: GLib integration module
+EAPI=4
+HOMEPAGE=https://github.com/mono/dbus-sharp
+KEYWORDS=amd64 ppc x86
+LICENSE=MIT
+RDEPEND=dev-lang/mono >=dev-dotnet/dbus-sharp-0.7:1.0
+SLOT=1.0
+SRC_URI=mirror://github/mono/dbus-sharp/dbus-sharp-glib-0.5.0.tar.gz
+_eclass_exported_funcs=pkg_setup:-
+_eclasses_=mono	3fb22ec265e021c7294a29e720f3d5f7	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=bd2f4502a997e2f6016ad39f357b6de1

@@ -1,0 +1,10 @@
+DEFINED_PHASES=compile install unpack
+DESCRIPTION=Utilities for controlling SCSI media changers and tape drives
+EAPI=0
+HOMEPAGE=http://mtx.sourceforge.net
+KEYWORDS=x86 amd64 sparc alpha ppc hppa ppc64
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=ftp://ftp.badtux.net/pub/storage/mtx/mtx-1.2.18rel.tar.gz
+_eclass_exported_funcs=src_unpack:- src_compile:- src_install:-
+_md5_=35a5c7f7cc6fc903ae9a5e71a542daca

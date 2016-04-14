@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=>=dev-lang/mono-2.0.1 virtual/pkgconfig
+DESCRIPTION=Monotorrent is an open source C# bittorrent library
+EAPI=2
+HOMEPAGE=http://projects.qnetp.net/projects/show/monotorrent
+KEYWORDS=amd64 x86
+LICENSE=MIT
+RDEPEND=>=dev-lang/mono-2.0.1
+RESTRICT=test
+SLOT=0
+SRC_URI=http://projects.qnetp.net/attachments/download/28/monotorrent-0.80.tar.gz mirror://gentoo/mono.snk.bz2
+_eclass_exported_funcs=src_prepare:- src_compile:- src_install:-
+_eclasses_=mono	3fb22ec265e021c7294a29e720f3d5f7	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=f462404d2d905c69ae6924383152b0b3

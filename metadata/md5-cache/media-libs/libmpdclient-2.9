@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=doc? ( app-doc/doxygen )
+DESCRIPTION=A library for interfacing Music Player Daemon (media-sound/mpd)
+EAPI=4
+HOMEPAGE=http://www.musicpd.org
+IUSE=doc examples static-libs
+KEYWORDS=amd64 arm hppa ppc ppc64 sparc x86
+LICENSE=BSD
+SLOT=0
+SRC_URI=http://www.musicpd.org/download/libmpdclient/2/libmpdclient-2.9.tar.xz
+_eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
+_md5_=f9ecce1941297b255d28bb9f3405e381

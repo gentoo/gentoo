@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=>=dev-embedded/gputils-0.12 !dev-embedded/gpsim-lcd dev-libs/glib:2 dev-libs/popt sys-libs/readline gtk? ( >=x11-libs/gtk+extra-2 ) sys-devel/flex virtual/pkgconfig virtual/yacc !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=A simulator for the Microchip PIC microcontrollers
+EAPI=4
+HOMEPAGE=http://gpsim.sourceforge.net
+IUSE=doc gtk static-libs
+KEYWORDS=amd64 ~ppc ~ppc64 x86
+LICENSE=GPL-2
+RDEPEND=>=dev-embedded/gputils-0.12 !dev-embedded/gpsim-lcd dev-libs/glib:2 dev-libs/popt sys-libs/readline gtk? ( >=x11-libs/gtk+extra-2 )
+SLOT=0
+SRC_URI=mirror://sourceforge/gpsim/gpsim-0.26.1.tar.gz
+_eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	9d81603248f2ba3ec59124320d123e5e	libtool	4890219c51da247200223277f993e054	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=c82e08b377eb69c5414470bd72661f28

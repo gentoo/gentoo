@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-libs/atk dev-libs/g-wrap dev-libs/glib:2 dev-scheme/guile:12 dev-scheme/guile-cairo dev-scheme/guile-lib gnome-base/gconf:2 gnome-base/gnome-vfs:2 gnome-base/libbonobo gnome-base/libglade:2.0 gnome-base/libgnomecanvas gnome-base/libgnomeui gnome-base/orbit:2 x11-libs/gtk+:2 x11-libs/pango virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Guile Scheme code that wraps the GNOME developer platform
+EAPI=4
+HOMEPAGE=https://www.gnu.org/software/guile-gnome/
+IUSE=static-libs
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-2
+RDEPEND=dev-libs/atk dev-libs/g-wrap dev-libs/glib:2 dev-scheme/guile:12 dev-scheme/guile-cairo dev-scheme/guile-lib gnome-base/gconf:2 gnome-base/gnome-vfs:2 gnome-base/libbonobo gnome-base/libglade:2.0 gnome-base/libgnomecanvas gnome-base/libgnomeui gnome-base/orbit:2 x11-libs/gtk+:2 x11-libs/pango
+RESTRICT=test
+SLOT=0
+SRC_URI=https://ftp.gnu.org/pub/gnu/guile-gnome/guile-gnome-platform/guile-gnome-platform-2.16.1.tar.gz
+_eclass_exported_funcs=src_prepare:- src_configure:- src_compile:- src_test:autotools-utils src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	autotools-utils	419811142edf3516b0d0cf1a254d93cb	eutils	9d81603248f2ba3ec59124320d123e5e	libtool	4890219c51da247200223277f993e054	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=917b96daf101895ab1c66d7f42c4fbcb

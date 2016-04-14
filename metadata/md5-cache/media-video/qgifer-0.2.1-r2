@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=media-libs/giflib:0 dev-qt/qtcore:4 dev-qt/qtgui:4 imagemagick? ( media-gfx/imagemagick:0 ) !opencv3? ( media-libs/opencv:0/2.4[ffmpeg] ) opencv3? ( media-libs/opencv:0/3.0[ffmpeg] ) virtual/ffmpeg:0 >=dev-util/cmake-2.8:0 sys-devel/make >=dev-util/cmake-2.8.12
+DESCRIPTION=A video-based animated GIF creator
+EAPI=5
+HOMEPAGE=https://sourceforge.net/projects/qgifer/
+IUSE=debug imagemagick opencv3
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=media-libs/giflib:0 dev-qt/qtcore:4 dev-qt/qtgui:4 imagemagick? ( media-gfx/imagemagick:0 ) !opencv3? ( media-libs/opencv:0/2.4[ffmpeg] ) opencv3? ( media-libs/opencv:0/3.0[ffmpeg] ) virtual/ffmpeg:0
+SLOT=0
+SRC_URI=mirror://sourceforge/qgifer/qgifer-0.2.1-source.tar.gz
+_eclass_exported_funcs=src_prepare:- src_configure:- src_compile:cmake-utils src_test:cmake-utils src_install:cmake-utils
+_eclasses_=cmake-utils	422bbd1bee2557490177a34dbe0a662b	eutils	9d81603248f2ba3ec59124320d123e5e	flag-o-matic	d270fa247153df66074f795fa42dba3e	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=a7a4523a301830270c593483bdb9cc72

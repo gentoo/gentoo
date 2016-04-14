@@ -1,0 +1,7 @@
+DEFINED_PHASES=-
+DESCRIPTION=Virtual for LeechCraft plugins providing a tray area
+EAPI=4
+RDEPEND=app-leechcraft/lc-sb2
+SLOT=0
+_eclass_exported_funcs=-
+_md5_=8c3564a5654e882f239f68bc17ff0bf4

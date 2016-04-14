@@ -1,0 +1,10 @@
+DEFINED_PHASES=install
+DESCRIPTION=Checks MP3s for errors
+EAPI=0
+HOMEPAGE=http://mpck.linuxonly.nl/
+KEYWORDS=~amd64 ~ppc x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=http://checkmate.linuxonly.nl/checkmate-0.15.tar.gz
+_eclass_exported_funcs=src_install:-
+_md5_=7ca01b7c0fe06feae19cf1858c864ed2

@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=>=media-libs/libsdl-1.2:=[X] sys-libs/zlib:= alsa? ( media-libs/alsa-lib:= ) jack? ( media-sound/jack-audio-connection-kit:= ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=FastTracker 2 inspired music tracker
+EAPI=5
+HOMEPAGE=http://milkytracker.org/
+IUSE=alsa jack
+KEYWORDS=~amd64 ~x86
+LICENSE=|| ( GPL-3 MPL-1.1 ) AIFFWriter.m BSD GPL-3 GPL-3+ LGPL-2.1+ MIT
+RDEPEND=>=media-libs/libsdl-1.2:=[X] sys-libs/zlib:= alsa? ( media-libs/alsa-lib:= ) jack? ( media-sound/jack-audio-connection-kit:= )
+SLOT=0
+SRC_URI=http://milkytracker.org/files/milkytracker-0.90.86.tar.bz2
+_eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	9d81603248f2ba3ec59124320d123e5e	libtool	4890219c51da247200223277f993e054	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=ea83240ae6054fcd12f218a1fffd6714

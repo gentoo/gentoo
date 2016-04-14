@@ -1,0 +1,7 @@
+DEFINED_PHASES=-
+DESCRIPTION=Virtual for LeechCraft plugins providing UI for search plugins
+EAPI=4
+RDEPEND=app-leechcraft/lc-summary
+SLOT=0
+_eclass_exported_funcs=-
+_md5_=731bdfa16b083c38be0d49bb7b58cc02

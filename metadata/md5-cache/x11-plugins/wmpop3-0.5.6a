@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install unpack
+DEPEND=x11-wm/windowmaker >=sys-apps/sed-4 x11-libs/libXpm
+DESCRIPTION=dockapp for checking pop3 accounts
+EAPI=0
+HOMEPAGE=http://www.cs.mun.ca/~scotth/
+KEYWORDS=amd64 ~sparc x86
+LICENSE=GPL-2
+RDEPEND=x11-wm/windowmaker >=sys-apps/sed-4 x11-libs/libXpm
+SLOT=0
+SRC_URI=http://www.cs.mun.ca/~scotth/download/WMPop3-0.5.6a.tar.gz
+_eclass_exported_funcs=src_unpack:- src_compile:- src_install:-
+_md5_=6dca7961ec09648470d967d777408d80

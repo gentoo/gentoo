@@ -1,0 +1,12 @@
+DEFINED_PHASES=install
+DESCRIPTION=library for encoding, decoding, and sending MMSes
+EAPI=4
+HOMEPAGE=http://www.hellkvist.org/software/#MMSLIB
+IUSE=examples
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=dev-lang/php
+SLOT=0
+SRC_URI=http://www.hellkvist.org/software/mmslib/mmslib-0.97.tar.gz
+_eclass_exported_funcs=src_install:-
+_md5_=8a3b87523f48940cc0de7bdd0d3b5719

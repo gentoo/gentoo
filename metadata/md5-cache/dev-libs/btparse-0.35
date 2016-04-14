@@ -1,0 +1,10 @@
+DEFINED_PHASES=install
+DESCRIPTION=A C library to parse Bibtex files
+EAPI=0
+HOMEPAGE=http://www.gerg.ca/software/btOOL/
+KEYWORDS=~amd64 ~sparc ~x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/A/AM/AMBS/btparse/btparse-0.35.tar.gz
+_eclass_exported_funcs=src_install:-
+_md5_=846099bc76fb260b223a692b23496158

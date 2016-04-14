@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install setup
+DEPEND=>=net-mail/vpopmail-5.3 virtual/qmail =www-servers/apache-2*
+DESCRIPTION=A web based control pannel to manage Virtual Qmail Domains. Works with qmailadmin
+EAPI=0
+HOMEPAGE=http://www.inter7.com/vqadmin
+KEYWORDS=~x86 ~ppc ~sparc
+LICENSE=GPL-2
+RDEPEND=>=net-mail/vpopmail-5.3 virtual/qmail net-mail/qmailadmin =www-servers/apache-2*
+SLOT=0
+SRC_URI=mirror://sourceforge/vqadmin/vqadmin-2.3.6.tar.gz
+_eclass_exported_funcs=pkg_setup:depend.apache src_compile:- src_install:-
+_eclasses_=depend.apache	e3c541cb90838388f81620d630c28f41	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=953b066d6311c977924f6d150638d656

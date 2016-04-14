@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst prepare test
+DEPEND=dev-libs/dbus-glib sys-devel/make >=dev-util/cmake-2.8.12
+DESCRIPTION=Zemberek-Pardus spell checker interface
+EAPI=5
+HOMEPAGE=http://www.pardus.org.tr/projeler/masaustu/zemberek-pardus
+KEYWORDS=amd64 x86
+LICENSE=GPL-2
+RDEPEND=dev-libs/dbus-glib app-text/zemberek-server
+SLOT=0
+SRC_URI=http://cekirdek.uludag.org.tr/~baris/zpspell/zpspell-0.4.3.tar.bz2
+_eclass_exported_funcs=pkg_postinst:- src_prepare:cmake-utils src_configure:cmake-utils src_compile:cmake-utils src_test:cmake-utils src_install:cmake-utils
+_eclasses_=cmake-utils	422bbd1bee2557490177a34dbe0a662b	eutils	9d81603248f2ba3ec59124320d123e5e	flag-o-matic	d270fa247153df66074f795fa42dba3e	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=d85209e426b2f99972bbc73f31c8c627

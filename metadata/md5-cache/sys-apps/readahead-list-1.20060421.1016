@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install postinst unpack
+DEPEND=virtual/os-headers
+DESCRIPTION=Preloads files into the page cache to accelerate program loading
+EAPI=0
+HOMEPAGE=http://www.orbis-terrarum.net
+IUSE=doc
+KEYWORDS=amd64 ppc x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=mirror://gentoo/readahead-list-1.20060421.1016.tar.bz2
+_eclass_exported_funcs=pkg_postinst:- src_unpack:base src_compile:- src_install:-
+_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	9d81603248f2ba3ec59124320d123e5e	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=2d2fdaa11a3a08f04f95de4c1f37bd85

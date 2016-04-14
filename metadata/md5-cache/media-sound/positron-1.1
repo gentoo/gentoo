@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install postinst postrm prepare setup
+DEPEND=vorbis? ( dev-python/pyvorbis ) =dev-lang/python-2*
+DESCRIPTION=Synchronization manager for the Neuros Audio Computer (www.neurosaudio.com) portable music player
+EAPI=3
+HOMEPAGE=http://www.xiph.org/positron
+IUSE=vorbis
+KEYWORDS=x86 ppc sparc amd64
+LICENSE=BSD
+RDEPEND=vorbis? ( dev-python/pyvorbis ) =dev-lang/python-2*
+SLOT=0
+SRC_URI=http://www.xiph.org/positron/files/source/positron-1.1.tar.gz
+_eclass_exported_funcs=pkg_postrm:distutils pkg_postinst:distutils pkg_setup:- src_prepare:- src_compile:distutils src_install:distutils
+_eclasses_=distutils	ad9e4720eb3e69090dd968b152fc611b	multilib	23ae8c186171e6476af098d2a50d0ee0	python	efc1c55fc44c5b7272fc2ffba73c3e6f	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=b7e8abb0cd4060acbb3fa11e1483f54c

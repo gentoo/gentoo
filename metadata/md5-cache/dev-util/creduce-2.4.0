@@ -1,0 +1,12 @@
+DEFINED_PHASES=-
+DEPEND=>=dev-lang/perl-5.10.0 app-text/delta dev-perl/Benchmark-Timer dev-perl/Exporter-Lite dev-perl/File-Which dev-perl/Getopt-Tabular dev-perl/regexp-common dev-perl/Sys-CPU dev-util/astyle dev-util/indent =sys-devel/clang-3.7*:0= =sys-devel/llvm-3.7*:0=[clang]
+DESCRIPTION=C-Reduce - a plugin-based C program reducer
+EAPI=5
+HOMEPAGE=http://embed.cs.utah.edu/creduce/
+KEYWORDS=~amd64 ~x86
+LICENSE=creduce
+RDEPEND=>=dev-lang/perl-5.10.0 app-text/delta dev-perl/Benchmark-Timer dev-perl/Exporter-Lite dev-perl/File-Which dev-perl/Getopt-Tabular dev-perl/regexp-common dev-perl/Sys-CPU dev-util/astyle dev-util/indent =sys-devel/clang-3.7*:0= =sys-devel/llvm-3.7*:0=[clang]
+SLOT=0
+SRC_URI=http://embed.cs.utah.edu/creduce/creduce-2.4.0.tar.gz
+_eclass_exported_funcs=-
+_md5_=404780ee35d0b98c5bae1b4b1d2f6992

@@ -1,0 +1,10 @@
+DEFINED_PHASES=compile install
+DESCRIPTION=A C library to parse Bibtex files
+EAPI=0
+HOMEPAGE=http://starship.python.net/~gward/btOOL/
+KEYWORDS=sparc x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=http://starship.python.net/~gward/btOOL//btparse-0.33.tar.gz
+_eclass_exported_funcs=src_compile:- src_install:-
+_md5_=95eb46f216bc09835ff6b8c23f67e541

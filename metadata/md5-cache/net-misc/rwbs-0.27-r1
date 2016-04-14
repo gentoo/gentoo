@@ -1,0 +1,10 @@
+DEFINED_PHASES=install
+DESCRIPTION=Roger Wilco base station
+EAPI=4
+HOMEPAGE=http://rogerwilco.gamespy.com/
+KEYWORDS=~amd64 x86
+LICENSE=Resounding GPL-2
+SLOT=0
+SRC_URI=http://games.gci.net/pub/VoiceOverIP/RogerWilco/rwbs_Linux_0_27.tar.gz
+_eclass_exported_funcs=src_install:-
+_md5_=6924c40d466ee9007433578727410178

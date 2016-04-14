@@ -1,0 +1,12 @@
+DEFINED_PHASES=install postinst
+DESCRIPTION=Flameeyes's Ruleset for ModSecurity
+EAPI=5
+HOMEPAGE=http://www.flameeyes.eu/projects/modsec
+KEYWORDS=~amd64
+LICENSE=CC-BY-SA-3.0
+RDEPEND=>=www-apache/mod_security-2.5.1
+SLOT=0
+SRC_URI=https://github.com/Flameeyes/modsec-flameeyes/archive/20130216.tar.gz -> modsec-flameeyes-20130216.tar.gz
+_eclass_exported_funcs=pkg_postinst:readme.gentoo src_install:-
+_eclasses_=eutils	9d81603248f2ba3ec59124320d123e5e	multilib	23ae8c186171e6476af098d2a50d0ee0	readme.gentoo	df3fc8fdaf5a519e7d48c83e7592c95f	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=32a1fc9c77d6c0c3524e2a5917b142f5

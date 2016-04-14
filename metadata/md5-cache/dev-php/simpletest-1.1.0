@@ -1,0 +1,11 @@
+DEFINED_PHASES=install
+DESCRIPTION=A PHP testing framework
+EAPI=4
+HOMEPAGE=http://www.lastcraft.com/simple_test.php
+KEYWORDS=~amd64 ~x86
+LICENSE=LGPL-2.1
+RDEPEND=dev-lang/php
+SLOT=0
+SRC_URI=mirror://sourceforge/simpletest/simpletest_1.1.0.tar.gz
+_eclass_exported_funcs=src_install:-
+_md5_=d78a1a4276e473e14fe77c5c706806b4

@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=gtk? ( x11-libs/gtk+:2 ) berkdb? ( >=sys-libs/db-3.2 ) nls? ( sys-devel/gettext )
+DESCRIPTION=Jigsaw Download is a tool designed to ease the distribution of large files, for example DVD images
+EAPI=4
+HOMEPAGE=http://atterer.net/jigdo/
+IUSE=gtk nls berkdb
+KEYWORDS=amd64 x86
+LICENSE=GPL-2
+RDEPEND=gtk? ( x11-libs/gtk+:2 ) berkdb? ( >=sys-libs/db-3.2 )
+SLOT=0
+SRC_URI=http://atterer.net/jigdo/jigdo-0.7.3.tar.bz2
+_eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
+_eclasses_=eutils	9d81603248f2ba3ec59124320d123e5e	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=3d5dc7e1e86c13b428d4d58a52021412

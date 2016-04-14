@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install setup unpack
+DEPEND=tcpd? ( >=sys-apps/tcp-wrappers-7.6-r7 ) >=dev-vcs/git-1.8.2.1
+DESCRIPTION=Netkit - portmapper
+EAPI=5
+HOMEPAGE=ftp://ftp.porcupine.org/pub/security/index.html
+IUSE=selinux tcpd
+LICENSE=BSD GPL-2
+RDEPEND=selinux? ( sec-policy/selinux-portmap )
+SLOT=0
+_eclass_exported_funcs=pkg_setup:- src_unpack:git-r3 src_compile:- src_install:-
+_eclasses_=eutils	9d81603248f2ba3ec59124320d123e5e	git-r3	ef66dfc3db09f327af21cf32f140fb2b	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	user	906f3c8eb3a2350a4f1191a89baa3e46
+_md5_=eec5bdcbf3633d548155e1489683574e

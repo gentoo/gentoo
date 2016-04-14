@@ -1,0 +1,10 @@
+DEFINED_PHASES=install postinst
+DESCRIPTION=Ocaml reference manual (html)
+EAPI=0
+HOMEPAGE=http://caml.inria.fr/pub/docs/manual-ocaml/
+KEYWORDS=amd64 ~ppc x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=http://caml.inria.fr/pub/distrib/ocaml-3.12/ocaml-3.12-refman.html.tar.gz
+_eclass_exported_funcs=pkg_postinst:- src_install:-
+_md5_=0f05bfcd8953e8265d24468fa6f122a6

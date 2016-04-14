@@ -1,0 +1,11 @@
+DEFINED_PHASES=install postinst unpack
+DESCRIPTION=A Curses front-end for mplayer
+EAPI=0
+HOMEPAGE=http://mplay.sourceforge.net
+KEYWORDS=~amd64 ~ppc x86
+LICENSE=GPL-2
+RDEPEND=dev-lang/perl >=dev-perl/MP3-Info-1.11 dev-perl/Audio-Mixer dev-perl/Ogg-Vorbis-Header-PurePerl >=virtual/perl-Time-HiRes-1.56 >=dev-perl/TermReadKey-2.21 dev-perl/Video-Info media-video/mplayer
+SLOT=0
+SRC_URI=mirror://sourceforge/mplay/mplay-0.80.tar.gz
+_eclass_exported_funcs=pkg_postinst:- src_unpack:- src_install:-
+_md5_=3897adf6dd65cb7eda4428780dc9140c

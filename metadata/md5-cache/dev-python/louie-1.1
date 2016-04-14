@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install postinst postrm prepare test
+DEPEND=dev-python/setuptools =dev-lang/python-2* test? ( dev-python/nose )
+DESCRIPTION=Signal dispatching mechanism for Python
+EAPI=3
+HOMEPAGE=https://pypi.python.org/pypi/Louie
+IUSE=test
+KEYWORDS=amd64 ppc ppc64 sparc x86
+LICENSE=BSD
+RDEPEND==dev-lang/python-2*
+SLOT=0
+SRC_URI=mirror://pypi/L/Louie/Louie-1.1.tar.gz
+_eclass_exported_funcs=pkg_postrm:distutils pkg_postinst:distutils src_prepare:- src_compile:distutils src_test:distutils src_install:distutils
+_eclasses_=distutils	ad9e4720eb3e69090dd968b152fc611b	multilib	23ae8c186171e6476af098d2a50d0ee0	python	efc1c55fc44c5b7272fc2ffba73c3e6f	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=707d9d9db2d2bb2ec488ad9b779c32a9

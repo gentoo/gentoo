@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install postinst prepare
+DEPEND=net-irc/irssi
+DESCRIPTION=Irssi module to connect to Quassel cores.
+EAPI=6
+HOMEPAGE=https://github.com/phhusson/quassel-irssi/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=net-irc/irssi
+SLOT=0
+SRC_URI=https://dev.gentoo.org/~wraeth/distfiles/quassel-irssi-0_p20160412.tar.gz https://dev.gentoo.org/~wraeth/distfiles/quasselc-0_p20150406.tar.gz
+_eclass_exported_funcs=pkg_postinst:- src_prepare:- src_compile:- src_install:-
+_md5_=a447bd1f2a025d8ac0ef391290823acb

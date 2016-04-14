@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst postrm prepare setup test unpack
+DEPEND=virtual/libusb:0 >=dev-libs/libg15-1.2.4 >=dev-libs/libg15render-1.2 perl? ( dev-lang/perl dev-perl/GDGraph >=dev-perl/Inline-0.4 ) python? ( dev-lang/python )
+DESCRIPTION=G15daemon takes control of the G15 keyboard, through the linux kernel uinput device driver
+EAPI=5
+HOMEPAGE=http://g15daemon.sourceforge.net/
+IUSE=perl python static-libs
+KEYWORDS=amd64 ppc ppc64 x86
+LICENSE=GPL-2
+RDEPEND=virtual/libusb:0 >=dev-libs/libg15-1.2.4 >=dev-libs/libg15render-1.2 perl? ( dev-lang/perl dev-perl/GDGraph >=dev-perl/Inline-0.4 ) python? ( dev-lang/python )
+SLOT=0
+SRC_URI=mirror://sourceforge/g15daemon/g15daemon-1.9.5.3.tar.gz
+_eclass_exported_funcs=pkg_postrm:- pkg_postinst:- pkg_setup:- src_unpack:- src_prepare:- src_configure:- src_compile:- src_test:perl-module src_install:-
+_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	9d81603248f2ba3ec59124320d123e5e	linux-info	fd1e29abbb02cbc49f1a14299846e9c4	multilib	23ae8c186171e6476af098d2a50d0ee0	multiprocessing	e32940a7b2a9992ad217eccddb84d548	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	461f1d9eb930e8d1b178a39e83635fd0	python	efc1c55fc44c5b7272fc2ffba73c3e6f	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	unpacker	45d07319df5f40ee6af58418b0f930be	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=cbfc17b2119d6b3578d361a49a9447e0

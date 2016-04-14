@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install postinst postrm prepare setup
+DEPEND=dev-lang/python dev-python/egenix-mx-base net-print/pkpgcounter dev-python/chardet dev-python/pkipplib ldap? ( dev-python/python-ldap ) mysql? ( dev-python/mysql-python ) postgres? ( dev-db/postgresql[server] dev-python/pygresql ) snmp? ( net-analyzer/net-snmp dev-python/pysnmp ) xml? ( dev-python/jaxml ) =dev-lang/python-2* =dev-lang/python-2*[sqlite?]
+DESCRIPTION=Flexible print quota and accounting package for use with CUPS and lpd
+EAPI=3
+HOMEPAGE=http://www.pykota.com
+IUSE=ldap mysql postgres snmp sqlite xml
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=dev-lang/python dev-python/egenix-mx-base net-print/pkpgcounter dev-python/chardet dev-python/pkipplib ldap? ( dev-python/python-ldap ) mysql? ( dev-python/mysql-python ) postgres? ( dev-db/postgresql[server] dev-python/pygresql ) snmp? ( net-analyzer/net-snmp dev-python/pysnmp ) xml? ( dev-python/jaxml ) =dev-lang/python-2* =dev-lang/python-2*[sqlite?]
+SLOT=0
+SRC_URI=https://dev.gentoo.org/~dilfridge/distfiles/pykota-1.26.tar.xz
+_eclass_exported_funcs=pkg_postrm:distutils pkg_postinst:distutils pkg_setup:- src_prepare:- src_compile:distutils src_install:-
+_eclasses_=distutils	ad9e4720eb3e69090dd968b152fc611b	multilib	23ae8c186171e6476af098d2a50d0ee0	python	efc1c55fc44c5b7272fc2ffba73c3e6f	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=369b5907e2e3c84621b25d291fed7ab0

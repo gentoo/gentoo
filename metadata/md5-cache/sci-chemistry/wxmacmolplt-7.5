@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=media-libs/glew media-libs/mesa x11-libs/wxGTK:2.9[X,opengl] flash? ( media-libs/ming ) virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Chemical 3D graphics program with GAMESS input builder
+EAPI=5
+HOMEPAGE=http://www.scl.ameslab.gov/MacMolPlt/
+IUSE=flash
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=media-libs/glew media-libs/mesa x11-libs/wxGTK:2.9[X,opengl] flash? ( media-libs/ming )
+SLOT=0
+SRC_URI=https://wxmacmolplt.googlecode.com/files/wxmacmolplt-7.5.tar.gz
+_eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	9d81603248f2ba3ec59124320d123e5e	flag-o-matic	d270fa247153df66074f795fa42dba3e	libtool	4890219c51da247200223277f993e054	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	wxwidgets	9b34ce3ca77f4e418e8fd9951c4c1cb1
+_md5_=09d3d4621c6530f3b4fe99d1bb904d4d

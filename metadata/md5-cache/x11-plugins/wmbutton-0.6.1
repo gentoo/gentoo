@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install unpack
+DEPEND=x11-libs/libX11 x11-libs/libXpm x11-libs/libXext x11-proto/xextproto x11-proto/xproto dev-util/ctags
+DESCRIPTION=a dockapp application that displays nine configurable buttons
+EAPI=0
+HOMEPAGE=http://www.freshports.org/x11/wmbutton
+IUSE=branding
+KEYWORDS=amd64 ppc sparc x86
+LICENSE=GPL-2
+RDEPEND=x11-libs/libX11 x11-libs/libXpm x11-libs/libXext
+SLOT=0
+SRC_URI=ftp://ftp.freebsd.org/pub/FreeBSD/ports/distfiles/wmbutton-0.6.1.tar.gz branding? ( mirror://gentoo/wmbutton-buttons.xpm )
+_eclass_exported_funcs=src_unpack:- src_compile:- src_install:-
+_eclasses_=eutils	9d81603248f2ba3ec59124320d123e5e	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=7a27d31a47e985ae4fd9a84f7ee5534c

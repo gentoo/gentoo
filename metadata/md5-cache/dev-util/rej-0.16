@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install
+DESCRIPTION=A utility for solving diff/patch rejects
+EAPI=0
+HOMEPAGE=http://ftp.suse.com/pub/people/mason/rej/
+KEYWORDS=amd64 ~ppc x86 ~amd64-linux ~x86-linux ~ppc-macos
+LICENSE=GPL-2
+RDEPEND=dev-lang/perl !<app-editors/mp-5 !dev-lang/qu-prolog !dev-util/mpatch
+SLOT=0
+SRC_URI=http://ftp.suse.com/pub/people/mason/rej/rej-0.16.tar.gz
+_eclass_exported_funcs=src_compile:- src_install:-
+_md5_=8724ce02ef36bb46e699a354b48de96f

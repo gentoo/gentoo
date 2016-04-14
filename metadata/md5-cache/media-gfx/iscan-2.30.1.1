@@ -1,0 +1,16 @@
+DEFINED_PHASES=configure install postinst prepare
+DEPEND=dev-libs/libxml2 media-gfx/iscan-data media-gfx/sane-backends virtual/udev virtual/libusb:1 X? ( x11-libs/gtk+:2 ) gimp? ( media-gfx/gimp ) jpeg? ( virtual/jpeg:= ) png? ( media-libs/libpng:= ) tiff? ( media-libs/tiff:= ) virtual/pkgconfig X? ( sys-devel/gettext ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=EPSON Image Scan! for Linux (including sane-epkowa backend)
+EAPI=5
+HOMEPAGE=http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
+IUSE=X doc gimp jpeg png tiff linguas_ar linguas_de linguas_es linguas_fr linguas_it linguas_ja linguas_ko linguas_nl linguas_pt linguas_zh_CN linguas_zh_TW
+KEYWORDS=amd64 x86
+LICENSE=GPL-2 AVASYS
+RDEPEND=dev-libs/libxml2 media-gfx/iscan-data media-gfx/sane-backends virtual/udev virtual/libusb:1 X? ( x11-libs/gtk+:2 ) gimp? ( media-gfx/gimp ) jpeg? ( virtual/jpeg:= ) png? ( media-libs/libpng:= ) tiff? ( media-libs/tiff:= )
+REQUIRED_USE=gimp? ( X ) jpeg? ( X ) png? ( X ) tiff? ( X )
+RESTRICT=test
+SLOT=0
+SRC_URI=https://dev.gentoo.org/~idella4/tarballs/iscan_2.30.1-1.tar.gz https://dev.gentoo.org/~flameeyes/avasys/iscan_2.30.1-1.tar.gz doc? ( https://dev.gentoo.org/~flameeyes/avasys/userg_revQ_e.pdf linguas_ja? ( https://dev.gentoo.org/~flameeyes/avasys/userg_revQ_j.pdf ) )
+_eclass_exported_funcs=pkg_postinst:- src_prepare:- src_configure:- src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	9d81603248f2ba3ec59124320d123e5e	flag-o-matic	d270fa247153df66074f795fa42dba3e	libtool	4890219c51da247200223277f993e054	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=9bdeedfef3a30feb022b91693b9790aa

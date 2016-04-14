@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure
+DEPEND=app-text/mecab[unicode=]
+DESCRIPTION=IPA dictionary for MeCab
+EAPI=5
+HOMEPAGE=http://mecab.sourceforge.net/
+IUSE=unicode
+KEYWORDS=amd64 ~arm hppa ia64 ppc ppc64 sparc x86 ~amd64-fbsd ~x86-fbsd
+LICENSE=ipadic
+SLOT=0
+SRC_URI=mirror://sourceforge/mecab/mecab-ipadic-2.7.0-20070801.tar.gz
+_eclass_exported_funcs=src_configure:-
+_md5_=f6b84c6f3d613c280a3142b4579c1ce2

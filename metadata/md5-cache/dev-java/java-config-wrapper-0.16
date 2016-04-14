@@ -1,0 +1,12 @@
+DEFINED_PHASES=install
+DEPEND=!<dev-java/java-config-1.3
+DESCRIPTION=Wrapper for java-config
+EAPI=0
+HOMEPAGE=https://www.gentoo.org/proj/en/java
+KEYWORDS=alpha amd64 arm ~hppa ppc64 ~sparc x86 ~amd64-fbsd ~x86-fbsd
+LICENSE=GPL-2
+RDEPEND=app-portage/portage-utils
+SLOT=0
+SRC_URI=mirror://gentoo/java-config-wrapper-0.16.tar.bz2
+_eclass_exported_funcs=src_install:-
+_md5_=4d5cf6380079a9a905dc0480c1bd856b

@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst prepare unpack
+DEPEND=media-libs/fontconfig sys-libs/ncurses:* x11-libs/libX11 x11-libs/libXrender kernel_Darwin? ( dev-perl/Mac-Pasteboard ) perl? ( dev-lang/perl:= ) pixbuf? ( x11-libs/gdk-pixbuf x11-libs/gtk+:2 ) startup-notification? ( x11-libs/startup-notification ) xft? ( x11-libs/libXft ) virtual/pkgconfig x11-proto/xproto !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 dev-vcs/cvs
+DESCRIPTION=rxvt clone with xft and unicode support
+EAPI=5
+HOMEPAGE=http://software.schmorp.de/pkg/rxvt-unicode.html
+IUSE=256-color alt-font-width blink buffer-on-clear +focused-urgency fading-colors +font-styles iso14755 +mousewheel +perl pixbuf secondary-wheel startup-notification xft unicode3 +vanilla wcwidth
+LICENSE=GPL-3
+RDEPEND=media-libs/fontconfig sys-libs/ncurses:* x11-libs/libX11 x11-libs/libXrender kernel_Darwin? ( dev-perl/Mac-Pasteboard ) perl? ( dev-lang/perl:= ) pixbuf? ( x11-libs/gdk-pixbuf x11-libs/gtk+:2 ) startup-notification? ( x11-libs/startup-notification ) xft? ( x11-libs/libXft )
+REQUIRED_USE=vanilla? ( !alt-font-width !buffer-on-clear focused-urgency !secondary-wheel !wcwidth )
+RESTRICT=test
+SLOT=0
+_eclass_exported_funcs=pkg_postinst:- src_unpack:cvs src_prepare:- src_configure:- src_compile:- src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	cvs	e94c89c58918dff87fa3db1e817c25be	eutils	9d81603248f2ba3ec59124320d123e5e	libtool	4890219c51da247200223277f993e054	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=c18b9a7f63ad4b38188179dee217aa60

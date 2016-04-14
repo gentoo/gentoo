@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install
+DEPEND=sys-devel/m4
+DESCRIPTION=Volume rendering library
+EAPI=4
+HOMEPAGE=http://amide.sourceforge.net/packages.html
+IUSE=doc examples static-libs
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD
+SLOT=0
+SRC_URI=mirror://sourceforge/amide/volpack-1.0c7.tgz
+_eclass_exported_funcs=src_configure:- src_compile:- src_install:-
+_md5_=70e968adfa24111a7d29af1cd9a5dec6

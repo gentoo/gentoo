@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare unpack
+DEPEND=png? ( media-libs/libpng sys-libs/zlib ) tiff? ( media-libs/tiff ) jpeg? ( virtual/jpeg ) X? ( x11-libs/libX11 ) sys-apps/texinfo
+DESCRIPTION=Versatile tool to convert Hewlett-Packard's HP-GL plotter language into other graphics formats
+EAPI=4
+HOMEPAGE=https://www.gnu.org/software/hp2xx/
+IUSE=X jpeg png tiff
+KEYWORDS=~x86 ~amd64
+LICENSE=GPL-2
+RDEPEND=png? ( media-libs/libpng sys-libs/zlib ) tiff? ( media-libs/tiff ) jpeg? ( virtual/jpeg ) X? ( x11-libs/libX11 )
+SLOT=0
+SRC_URI=mirror://gnu/hp2xx/hp2xx-3.4.4.tar.gz
+_eclass_exported_funcs=src_unpack:base src_prepare:- src_configure:base src_compile:- src_install:-
+_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	9d81603248f2ba3ec59124320d123e5e	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=a8b5cb95eeb60688e8fdf0d1a149d09e

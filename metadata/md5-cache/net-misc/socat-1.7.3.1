@@ -1,0 +1,15 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=ssl? ( dev-libs/openssl:0= ) readline? ( sys-libs/readline:= ) tcpd? ( sys-apps/tcp-wrappers ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Multipurpose relay (SOcket CAT)
+EAPI=5
+HOMEPAGE=http://www.dest-unreach.org/socat/
+IUSE=ssl readline ipv6 tcpd
+KEYWORDS=alpha amd64 arm hppa ia64 ~mips ppc sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos
+LICENSE=GPL-2
+RDEPEND=ssl? ( dev-libs/openssl:0= ) readline? ( sys-libs/readline:= ) tcpd? ( sys-apps/tcp-wrappers )
+RESTRICT=test
+SLOT=0
+SRC_URI=http://www.dest-unreach.org/socat/download/socat-1.7.3.1.tar.bz2
+_eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	9d81603248f2ba3ec59124320d123e5e	flag-o-matic	d270fa247153df66074f795fa42dba3e	libtool	4890219c51da247200223277f993e054	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=b697e22940b8c7d879ca3a1dfdef62c6

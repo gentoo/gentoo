@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install postinst
+DEPEND=readline? ( sys-libs/readline:0 ) libedit? ( dev-libs/libedit )
+DESCRIPTION=A reimplementation of the Plan 9 shell
+EAPI=5
+HOMEPAGE=http://static.tobold.org/
+IUSE=libedit readline
+KEYWORDS=~amd64 ~x86
+LICENSE=rc
+RDEPEND=readline? ( sys-libs/readline:0 ) libedit? ( dev-libs/libedit )
+SLOT=0
+SRC_URI=http://static.tobold.org/rc/rc-1.7.4.tar.gz
+_eclass_exported_funcs=pkg_postinst:- src_configure:- src_install:-
+_md5_=6beb3e8d988efbbcdbee784974bac831

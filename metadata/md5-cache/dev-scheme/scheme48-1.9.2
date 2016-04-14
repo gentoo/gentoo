@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst postrm
+DEPEND=emacs? ( virtual/emacs )
+DESCRIPTION=Scheme48 is an implementation of the Scheme Programming Language
+EAPI=5
+HOMEPAGE=http://www.s48.org/
+IUSE=doc emacs
+KEYWORDS=~x86 ~amd64 ~amd64-linux ~x86-linux ~x86-macos
+LICENSE=BSD
+RDEPEND=emacs? ( virtual/emacs )
+SLOT=0
+SRC_URI=http://www.s48.org/1.9.2/scheme48-1.9.2.tgz
+_eclass_exported_funcs=pkg_postrm:- pkg_postinst:- src_configure:- src_compile:- src_install:-
+_eclasses_=elisp-common	9f56c4e9bf1282dbfc2a5a09e1124e74	eutils	9d81603248f2ba3ec59124320d123e5e	flag-o-matic	d270fa247153df66074f795fa42dba3e	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=5a3dec2a30db70bd3ab3ea384db94374

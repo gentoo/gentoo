@@ -1,0 +1,13 @@
+DEFINED_PHASES=install postinst postrm setup
+DEPEND=X? ( x11-apps/mkfontdir media-fonts/encodings )
+DESCRIPTION=A set of monospaced bitmap programming fonts
+EAPI=0
+HOMEPAGE=https://wiki.gentoo.org/wiki/No_homepage
+IUSE=X
+KEYWORDS=alpha amd64 ia64 ppc ppc64 sparc x86
+LICENSE=MIT
+SLOT=0
+SRC_URI=mirror://gentoo/proggy-fonts-1.tar.bz2
+_eclass_exported_funcs=pkg_postrm:font pkg_postinst:font pkg_setup:font src_install:font
+_eclasses_=eutils	9d81603248f2ba3ec59124320d123e5e	font	cd7790315ca5b8c505e1e0513df6acce	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=432aa552b8fe4f35ed91ebcf80fd4d8a

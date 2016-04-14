@@ -1,0 +1,14 @@
+DEFINED_PHASES=install prepare
+DEPEND=media-libs/vamp-plugin-sdk media-libs/libsamplerate media-libs/libsndfile media-libs/ladspa-sdk sci-libs/fftw:3.0 virtual/pkgconfig
+DESCRIPTION=An audio time-stretching and pitch-shifting library and utility program
+EAPI=4
+HOMEPAGE=http://www.breakfastquay.com/rubberband/
+IUSE=static-libs
+KEYWORDS=amd64 ~ppc ~x86
+LICENSE=GPL-2
+RDEPEND=media-libs/vamp-plugin-sdk media-libs/libsamplerate media-libs/libsndfile media-libs/ladspa-sdk sci-libs/fftw:3.0
+SLOT=0
+SRC_URI=http://code.breakfastquay.com/attachments/download/23/rubberband-1.7.0.tar.bz2
+_eclass_exported_funcs=src_prepare:- src_install:-
+_eclasses_=multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=dfce7516f75118e373436cf15c2eab79

@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test unpack
+DEPEND=gnutls? ( net-libs/gnutls dev-libs/libgcrypt:0= ) pam? ( virtual/pam ) png? ( media-libs/libpng:0= x11-libs/cairo ) jpeg? ( virtual/jpeg:0 ) xml? ( dev-libs/libxml2:2 sys-libs/zlib ) systemd? ( sys-apps/systemd ) sqlite? ( dev-db/sqlite:3 ) boehm-gc? ( dev-libs/boehm-gc ) libev? ( dev-libs/libev ) !libev? ( libevent? ( dev-libs/libevent ) ) test? ( net-misc/curl ) >=dev-vcs/git-1.8.2.1 sys-devel/make >=dev-util/cmake-2.8.12
+DESCRIPTION=C library to create simple HTTP servers and Web Applications
+EAPI=5
+HOMEPAGE=http://www.coralbits.com/libonion/ https://github.com/davidmoreno/onion
+IUSE=gnutls pam png jpeg xml systemd sqlite boehm-gc test examples cxx -libev -libevent
+LICENSE=|| ( GPL-2+ Apache-2.0 ) AGPL-3
+RDEPEND=gnutls? ( net-libs/gnutls dev-libs/libgcrypt:0= ) pam? ( virtual/pam ) png? ( media-libs/libpng:0= x11-libs/cairo ) jpeg? ( virtual/jpeg:0 ) xml? ( dev-libs/libxml2:2 sys-libs/zlib ) systemd? ( sys-apps/systemd ) sqlite? ( dev-db/sqlite:3 ) boehm-gc? ( dev-libs/boehm-gc ) libev? ( dev-libs/libev ) !libev? ( libevent? ( dev-libs/libevent ) )
+REQUIRED_USE=test? ( examples )
+SLOT=0
+_eclass_exported_funcs=src_unpack:git-r3 src_prepare:cmake-utils src_configure:- src_compile:cmake-utils src_test:cmake-utils src_install:cmake-utils
+_eclasses_=cmake-utils	422bbd1bee2557490177a34dbe0a662b	eutils	9d81603248f2ba3ec59124320d123e5e	flag-o-matic	d270fa247153df66074f795fa42dba3e	git-r3	ef66dfc3db09f327af21cf32f140fb2b	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=917b109cb59c9a5df70361c532be9e92

@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure prepare
+DEPEND=x11-libs/libX11 x11-libs/libXext x11-libs/libXpm x11-libs/libXrender x11-libs/libXft media-libs/imlib2[X] png? ( media-libs/libpng ) x11-proto/xproto
+DESCRIPTION=fluxbox-util application that creates and manage icons on your Fluxbox desktop
+EAPI=5
+HOMEPAGE=http://fluxbox.sourceforge.net/fbdesk/
+IUSE=debug png
+KEYWORDS=amd64 ia64 ppc sparc x86
+LICENSE=MIT
+RDEPEND=x11-libs/libX11 x11-libs/libXext x11-libs/libXpm x11-libs/libXrender x11-libs/libXft media-libs/imlib2[X] png? ( media-libs/libpng )
+SLOT=0
+SRC_URI=mirror://gentoo/fbdesk-1.4.1.tar.gz
+_eclass_exported_funcs=src_prepare:- src_configure:-
+_eclasses_=eutils	9d81603248f2ba3ec59124320d123e5e	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=69ff7bb43464cbfb982b57429da7b8ec

@@ -1,0 +1,15 @@
+DEFINED_PHASES=configure install prepare setup
+DEPEND=tpm? ( app-crypt/trousers ) dev-libs/openssl:* !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=PKCS#11 provider cryptographic hardware
+EAPI=5
+HOMEPAGE=http://sourceforge.net/projects/opencryptoki
+IUSE=+tpm debug
+KEYWORDS=~amd64 ~arm ~x86
+LICENSE=CPL-0.5
+RDEPEND=tpm? ( app-crypt/trousers ) dev-libs/openssl:*
+RESTRICT=test
+SLOT=0
+SRC_URI=mirror://sourceforge/opencryptoki/3.4.1/opencryptoki-v3.4.1.tgz
+_eclass_exported_funcs=pkg_setup:- src_prepare:- src_configure:- src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	9d81603248f2ba3ec59124320d123e5e	flag-o-matic	d270fa247153df66074f795fa42dba3e	libtool	4890219c51da247200223277f993e054	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	user	906f3c8eb3a2350a4f1191a89baa3e46
+_md5_=a37bcc2415b1cb987b26f031a67d1688

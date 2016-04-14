@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install postinst postrm prepare test
+DEPEND=>=media-gfx/exiv2-0.25:= qt5? ( dev-qt/qtconcurrent:5 dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtprintsupport:5 dev-qt/qtwidgets:5 opencv? ( media-libs/opencv:=[qt5] ) zip? ( dev-libs/quazip[qt5] ) ) !qt5? ( dev-qt/qtcore:4 dev-qt/qtgui:4 opencv? ( >=media-libs/opencv-2.4:=[qt4] ) zip? ( dev-libs/quazip[qt4] ) ) raw? ( >=media-libs/libraw-0.14:= ) tiff? ( media-libs/tiff:0 ) webp? ( >=media-libs/libwebp-0.3.1:= ) qt5? ( dev-qt/linguist-tools:5 ) virtual/pkgconfig sys-devel/make >=dev-util/cmake-2.8.12
+DESCRIPTION=Qt-based image viewer
+EAPI=5
+HOMEPAGE=http://www.nomacs.org/
+IUSE=opencv qt5 raw tiff webp zip
+KEYWORDS=amd64 ~amd64-linux
+LICENSE=GPL-3
+RDEPEND=>=media-gfx/exiv2-0.25:= qt5? ( dev-qt/qtconcurrent:5 dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtprintsupport:5 dev-qt/qtwidgets:5 opencv? ( media-libs/opencv:=[qt5] ) zip? ( dev-libs/quazip[qt5] ) ) !qt5? ( dev-qt/qtcore:4 dev-qt/qtgui:4 opencv? ( >=media-libs/opencv-2.4:=[qt4] ) zip? ( dev-libs/quazip[qt4] ) ) raw? ( >=media-libs/libraw-0.14:= ) tiff? ( media-libs/tiff:0 ) webp? ( >=media-libs/libwebp-0.3.1:= )
+REQUIRED_USE=raw? ( opencv ) tiff? ( opencv )
+SLOT=0
+SRC_URI=mirror://sourceforge/nomacs/nomacs-2.4.6-source.tar.bz2
+_eclass_exported_funcs=pkg_postrm:- pkg_postinst:- src_prepare:cmake-utils src_configure:- src_compile:cmake-utils src_test:cmake-utils src_install:cmake-utils
+_eclasses_=cmake-utils	422bbd1bee2557490177a34dbe0a662b	eutils	9d81603248f2ba3ec59124320d123e5e	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	flag-o-matic	d270fa247153df66074f795fa42dba3e	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=a58d1a7a9d745cb0e030ab5865b6f6ca

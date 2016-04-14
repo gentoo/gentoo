@@ -1,0 +1,11 @@
+DEFINED_PHASES=install
+DESCRIPTION=Library for parsing dsh.style configuration files
+EAPI=0
+HOMEPAGE=http://www.netfort.gr.jp/~dancer/software/downloads/
+KEYWORDS=amd64 ppc x86 ~amd64-linux ~x86-linux ~m68k-mint
+LICENSE=GPL-2
+RDEPEND=virtual/ssh
+SLOT=0
+SRC_URI=http://www.netfort.gr.jp/~dancer/software/downloads/libdshconfig-0.20.12.tar.gz
+_eclass_exported_funcs=src_install:-
+_md5_=081d5e67a6cb36d21f169b31b7448e82

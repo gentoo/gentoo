@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare
+DEPEND=>=x11-proto/xproto-7.0.4 >=x11-libs/libX11-1.0.0 >=x11-libs/libXt-1.0.0
+DESCRIPTION=A package of Plan 9 compatibility libraries
+EAPI=4
+HOMEPAGE=http://www.netlib.org/research/9libs/9libs-1.0.README
+KEYWORDS=amd64 x86
+LICENSE=PLAN9
+RDEPEND=>=x11-proto/xproto-7.0.4 >=x11-libs/libX11-1.0.0 >=x11-libs/libXt-1.0.0
+SLOT=0
+SRC_URI=ftp://www.netlib.org/research/9libs/9libs-1.0.tar.bz2
+_eclass_exported_funcs=src_prepare:- src_configure:- src_compile:- src_install:-
+_eclasses_=eutils	9d81603248f2ba3ec59124320d123e5e	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=d850d366d371e73caaae670945c11a69

@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=iconv? ( virtual/libiconv ) dev-libs/kpathsea
+DESCRIPTION=Library for Japanese pTeX providing a better way of handling character encodings
+EAPI=3
+HOMEPAGE=http://tutimura.ath.cx/ptexlive/?ptexenc
+IUSE=iconv static-libs
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~ppc-macos ~x86-macos
+LICENSE=BSD
+RDEPEND=iconv? ( virtual/libiconv ) dev-libs/kpathsea
+SLOT=0
+SRC_URI=mirror://gentoo/texlive-20130530-source.tar.xz
+_eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
+_eclasses_=libtool	4890219c51da247200223277f993e054	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=10d737cc3ffcc08111e7277cb8565ccb

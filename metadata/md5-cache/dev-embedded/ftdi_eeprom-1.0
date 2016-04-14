@@ -1,0 +1,10 @@
+DEFINED_PHASES=setup
+DESCRIPTION=Utility to program external EEPROM for FTDI USB chips
+EAPI=4
+HOMEPAGE=http://www.intra2net.com/en/developer/libftdi/
+KEYWORDS=~amd64 ~x86
+LICENSE=LGPL-2
+RDEPEND=dev-embedded/libftdi:1[tools]
+SLOT=0
+_eclass_exported_funcs=pkg_setup:-
+_md5_=afbe3285a628e6cc3278d0ab5c3e7f15

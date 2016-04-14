@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure prepare unpack
+DEPEND=>=x11-libs/gtk+-2.12:2 >=media-libs/ladspa-sdk-1.12 media-sound/jack-audio-connection-kit alsa? ( media-libs/alsa-lib ) lash? ( >=media-sound/lash-0.5 ) gnome? ( >=gnome-base/libgnomeui-2 ) virtual/libintl xml? ( dev-libs/libxml2 media-libs/liblrdf ) virtual/pkgconfig sys-devel/gettext !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=JACK Rack is an effects rack for the JACK low latency audio API
+EAPI=4
+HOMEPAGE=http://jack-rack.sourceforge.net/
+IUSE=alsa gnome lash +xml
+KEYWORDS=amd64 ~ppc x86
+LICENSE=GPL-2
+RDEPEND=>=x11-libs/gtk+-2.12:2 >=media-libs/ladspa-sdk-1.12 media-sound/jack-audio-connection-kit alsa? ( media-libs/alsa-lib ) lash? ( >=media-sound/lash-0.5 ) gnome? ( >=gnome-base/libgnomeui-2 ) virtual/libintl xml? ( dev-libs/libxml2 media-libs/liblrdf )
+SLOT=0
+SRC_URI=mirror://debian/pool/main/j/jack-rack/jack-rack_1.4.8~rc1.orig.tar.gz mirror://debian/pool/main/j/jack-rack/jack-rack_1.4.8~rc1-1.debian.tar.gz
+_eclass_exported_funcs=src_unpack:- src_prepare:- src_configure:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	9d81603248f2ba3ec59124320d123e5e	flag-o-matic	d270fa247153df66074f795fa42dba3e	libtool	4890219c51da247200223277f993e054	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=a77de3d00cc54042d9807668d286c56e

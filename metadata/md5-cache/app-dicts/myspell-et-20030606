@@ -1,0 +1,12 @@
+DEFINED_PHASES=install prepare unpack
+DEPEND=app-arch/unzip
+DESCRIPTION=Estonian dictionaries for myspell/hunspell
+EAPI=4
+HOMEPAGE=http://www.meso.ee/~jjpp/speller/
+KEYWORDS=alpha amd64 arm hppa ia64 ~mips ppc ppc64 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd
+LICENSE=LGPL-3
+SLOT=0
+SRC_URI=http://www.meso.ee/~jjpp/speller/ispell-et_20030606.tar.gz
+_eclass_exported_funcs=src_unpack:myspell-r2 src_prepare:- src_install:myspell-r2
+_eclasses_=myspell-r2	3f98144882500b2caaa0ab2bf3202ada
+_md5_=0e325bedca3d88f24428de397391a748

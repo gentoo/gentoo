@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install unpack
+DEPEND=x11-libs/libXext x11-libs/libXrender
+DESCRIPTION=replace a desktop background with a movie or screensaver
+EAPI=4
+HOMEPAGE=http://tech.shantanugoel.com/projects/linux/shantz-xwinwrap
+KEYWORDS=~amd64 ~x86
+LICENSE=HPND
+RDEPEND=x11-libs/libXext x11-libs/libXrender
+SLOT=0
+SRC_URI=https://bazaar.launchpad.net/~shantanu-goel/xwinwrap/devel/tarball/4 -> xwinwrap-0_p4.tar.gz
+_eclass_exported_funcs=src_unpack:vcs-snapshot src_compile:- src_install:-
+_eclasses_=multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	vcs-snapshot	b45be87e7012be0af8424e8a5644da1d
+_md5_=91d7355fa6a04194e854c41a926f49c8

@@ -1,0 +1,13 @@
+DEFINED_PHASES=install
+DEPEND=>=dev-lang/perl-5.8 >=dev-perl/XML-DOM-1.43 >=virtual/perl-Digest-MD5-2.36
+DESCRIPTION=Convert database ERD designed in Dia into SQL DDL scripts
+EAPI=0
+HOMEPAGE=http://tedia2sql.tigris.org
+IUSE=doc
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-2
+RDEPEND=>=dev-lang/perl-5.8 >=dev-perl/XML-DOM-1.43 >=virtual/perl-Digest-MD5-2.36
+SLOT=0
+SRC_URI=http://tedia2sql.tigris.org/files/documents/282/19423/tedia2sql-1.2.12.tar.gz
+_eclass_exported_funcs=src_install:-
+_md5_=4c2af34d22904da10d46357b24c3d42b

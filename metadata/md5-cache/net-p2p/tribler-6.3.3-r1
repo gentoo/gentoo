@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install prepare unpack
+DEPEND=dev-lang/python:2.7[sqlite] dev-python/apsw dev-python/feedparser dev-python/gmpy dev-python/m2crypto dev-python/netifaces dev-python/pyasn1 dev-python/pycrypto dev-python/twisted-core dev-python/wxpython dev-libs/openssl:0[-bindist] net-libs/rb_libtorrent[python] vlc? ( media-video/vlc media-video/ffmpeg:0 ) app-arch/unzip
+DESCRIPTION=Bittorrent client that does not require a website to discover content
+EAPI=5
+HOMEPAGE=http://www.tribler.org/
+IUSE=vlc
+KEYWORDS=amd64 x86
+LICENSE=GPL-2 LGPL-2.1+ PSF-2.4 openssl wxWinLL-3.1
+RDEPEND=dev-lang/python:2.7[sqlite] dev-python/apsw dev-python/feedparser dev-python/gmpy dev-python/m2crypto dev-python/netifaces dev-python/pyasn1 dev-python/pycrypto dev-python/twisted-core dev-python/wxpython dev-libs/openssl:0[-bindist] net-libs/rb_libtorrent[python] vlc? ( media-video/vlc media-video/ffmpeg:0 )
+SLOT=0
+SRC_URI=https://github.com/Tribler/tribler/releases/download/v6.3.3/tribler_6.3.3_all.deb x86? ( https://github.com/Tribler/tribler/releases/download/v6.3.3/tribler-swift_6.3.3_i386.deb ) amd64? ( https://github.com/Tribler/tribler/releases/download/v6.3.3/tribler-swift_6.3.3_amd64.deb )
+_eclass_exported_funcs=src_unpack:unpacker src_prepare:- src_compile:- src_install:-
+_eclasses_=eutils	9d81603248f2ba3ec59124320d123e5e	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	unpacker	45d07319df5f40ee6af58418b0f930be
+_md5_=11843ca302e23554c1a4b9233b982667

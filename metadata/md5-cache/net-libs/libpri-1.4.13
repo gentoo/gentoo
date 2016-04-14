@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile configure install prepare unpack
+DESCRIPTION=Primary Rate ISDN (PRI) library
+EAPI=4
+HOMEPAGE=http://www.asterisk.org/
+KEYWORDS=~amd64 ~sparc ~x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=http://downloads.asterisk.org/pub/telephony/libpri/releases/libpri-1.4.13.tar.gz
+_eclass_exported_funcs=src_unpack:base src_prepare:base src_configure:base src_compile:base src_install:-
+_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	9d81603248f2ba3ec59124320d123e5e	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=df0c8a3ed0b01238916fd902fc1376b4

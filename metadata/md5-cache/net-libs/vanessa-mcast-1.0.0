@@ -1,0 +1,12 @@
+DEFINED_PHASES=install
+DEPEND=>=dev-libs/vanessa-logger-0.0.6 >=net-libs/vanessa-socket-0.0.7
+DESCRIPTION=Multicast Helper Library
+EAPI=0
+HOMEPAGE=http://horms.net/projects/vanessa/
+KEYWORDS=~x86 ~ppc
+LICENSE=GPL-2
+RDEPEND=>=dev-libs/vanessa-logger-0.0.6 >=net-libs/vanessa-socket-0.0.7
+SLOT=0
+SRC_URI=http://horms.net/projects/vanessa/download/vanessa_mcast/1.0.0/vanessa_mcast-1.0.0.tar.gz
+_eclass_exported_funcs=src_install:-
+_md5_=8efc825a66971221fe3be1d3c51d3c70

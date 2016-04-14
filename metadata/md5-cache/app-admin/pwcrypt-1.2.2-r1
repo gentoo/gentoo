@@ -1,0 +1,11 @@
+DEFINED_PHASES=prepare
+DESCRIPTION=An improved version of cli-crypt (encrypts data sent to it from the cli)
+EAPI=4
+HOMEPAGE=http://xjack.org/pwcrypt/
+KEYWORDS=amd64 ppc x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=http://xjack.org/pwcrypt/downloads/pwcrypt-1.2.2.tar.gz
+_eclass_exported_funcs=src_prepare:-
+_eclasses_=multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=c4f35b4925b9cbb52e98f2bd02f259cf

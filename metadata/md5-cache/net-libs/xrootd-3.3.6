@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare setup test
+DEPEND=!<sci-physics/root-5.32[xrootd] sys-libs/zlib:0= fuse? ( sys-fs/fuse ) kerberos? ( virtual/krb5 ) perl? ( dev-lang/perl readline? ( dev-perl/Term-ReadLine-Perl ) ) readline? ( sys-libs/readline:0= ) ssl? ( dev-libs/openssl:= ) doc? ( app-doc/doxygen[dot] ) perl? ( dev-lang/swig ) test? ( dev-util/cppunit ) sys-devel/make >=dev-util/cmake-2.8.12
+DESCRIPTION=Extended ROOT remote file server
+EAPI=5
+HOMEPAGE=http://xrootd.org/
+IUSE=doc fuse kerberos perl readline ssl test
+KEYWORDS=amd64 x86 ~amd64-linux ~x86-linux
+LICENSE=LGPL-3
+RDEPEND=!<sci-physics/root-5.32[xrootd] sys-libs/zlib:0= fuse? ( sys-fs/fuse ) kerberos? ( virtual/krb5 ) perl? ( dev-lang/perl readline? ( dev-perl/Term-ReadLine-Perl ) ) readline? ( sys-libs/readline:0= ) ssl? ( dev-libs/openssl:= )
+SLOT=0
+SRC_URI=http://xrootd.org//download/v3.3.6/xrootd-3.3.6.tar.gz
+_eclass_exported_funcs=pkg_setup:- src_prepare:cmake-utils src_configure:- src_compile:- src_test:cmake-utils src_install:-
+_eclasses_=cmake-utils	422bbd1bee2557490177a34dbe0a662b	eutils	9d81603248f2ba3ec59124320d123e5e	flag-o-matic	d270fa247153df66074f795fa42dba3e	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	user	906f3c8eb3a2350a4f1191a89baa3e46	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=2eb4e637a2604012a6570ff1fa456632

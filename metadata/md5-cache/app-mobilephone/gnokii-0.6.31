@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install postinst prepare setup test
+DEPEND=!app-mobilephone/smstools pcsc-lite? ( sys-apps/pcsc-lite ) X? ( x11-libs/gtk+:2 ) bluetooth? ( kernel_linux? ( net-wireless/bluez ) ) sms? ( !app-mobilephone/smstools dev-libs/glib:2 postgres? ( >=dev-db/postgresql-8.0 ) mysql? ( >=virtual/mysql-4.1 ) ) ical? ( dev-libs/libical ) usb? ( =virtual/libusb-0* ) irda? ( virtual/os-headers ) nls? ( sys-devel/gettext ) dev-util/intltool !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=user space driver and tools for use with mobile phones
+EAPI=4
+HOMEPAGE=http://www.gnokii.org/
+IUSE=nls bluetooth ical irda sms postgres mysql usb X debug +pcsc-lite linguas_cs linguas_de linguas_et linguas_fi linguas_fr linguas_it linguas_nl linguas_pl linguas_pt linguas_sk linguas_sl linguas_sv linguas_zh_CN
+KEYWORDS=amd64 hppa ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos
+LICENSE=GPL-2
+RDEPEND=!app-mobilephone/smstools pcsc-lite? ( sys-apps/pcsc-lite ) X? ( x11-libs/gtk+:2 ) bluetooth? ( kernel_linux? ( net-wireless/bluez ) ) sms? ( !app-mobilephone/smstools dev-libs/glib:2 postgres? ( >=dev-db/postgresql-8.0 ) mysql? ( >=virtual/mysql-4.1 ) ) ical? ( dev-libs/libical ) usb? ( =virtual/libusb-0* )
+SLOT=0
+SRC_URI=http://www.gnokii.org/download/gnokii/gnokii-0.6.31.tar.bz2
+_eclass_exported_funcs=pkg_postinst:- pkg_setup:linux-info src_prepare:- src_configure:- src_test:- src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	9d81603248f2ba3ec59124320d123e5e	libtool	4890219c51da247200223277f993e054	linux-info	fd1e29abbb02cbc49f1a14299846e9c4	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=8b5674105f9c173781116a04c4e69b12

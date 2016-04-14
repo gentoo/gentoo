@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install postinst preinst prepare
+DEPEND=dev-libs/openssl:0= x11-libs/libX11:0= x11-libs/libXfixes:0= x11-libs/libXrandr:0= fuse? ( sys-fs/fuse:0= ) jpeg? ( virtual/jpeg:0= ) kerberos? ( virtual/krb5:0= ) pam? ( virtual/pam:0= ) pulseaudio? ( media-sound/pulseaudio:0= ) app-arch/xz-utils !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 virtual/pkgconfig
+DESCRIPTION=An open source Remote Desktop Protocol server
+EAPI=5
+HOMEPAGE=http://www.xrdp.org/
+IUSE=debug fuse kerberos jpeg pam pulseaudio
+KEYWORDS=~amd64 ~x86
+LICENSE=Apache-2.0
+RDEPEND=dev-libs/openssl:0= x11-libs/libX11:0= x11-libs/libXfixes:0= x11-libs/libXrandr:0= fuse? ( sys-fs/fuse:0= ) jpeg? ( virtual/jpeg:0= ) kerberos? ( virtual/krb5:0= ) pam? ( virtual/pam:0= ) pulseaudio? ( media-sound/pulseaudio:0= ) || ( net-misc/tigervnc:0=[server,xorgmodule] net-misc/x11rdp:0= )
+SLOT=0
+SRC_URI=https://dev.gentoo.org/~mgorny/dist/xrdp-0.8.0.tar.xz
+_eclass_exported_funcs=pkg_preinst:- pkg_postinst:- src_prepare:- src_configure:- src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	9d81603248f2ba3ec59124320d123e5e	flag-o-matic	d270fa247153df66074f795fa42dba3e	libtool	4890219c51da247200223277f993e054	multilib	23ae8c186171e6476af098d2a50d0ee0	pam	3ecd5b75e39b0bb05a3183c08fcdfdb4	systemd	3165c885f3c71ffae7a867d931fb0e07	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=3f93c5147f33c56cec9de6dc854c6b02

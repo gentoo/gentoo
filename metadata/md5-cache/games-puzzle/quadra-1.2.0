@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst preinst prepare setup unpack
+DEPEND=x11-libs/libX11 x11-libs/libXpm x11-libs/libXxf86vm x11-libs/libXext media-libs/libpng:0 sys-libs/zlib sys-devel/bc x11-proto/xextproto
+DESCRIPTION=A tetris clone with multiplayer support
+EAPI=5
+HOMEPAGE=https://code.google.com/p/quadra/
+KEYWORDS=amd64 ~ppc x86
+LICENSE=LGPL-2.1
+RDEPEND=x11-libs/libX11 x11-libs/libXpm x11-libs/libXxf86vm x11-libs/libXext media-libs/libpng:0 sys-libs/zlib games-misc/games-envd
+SLOT=0
+SRC_URI=https://quadra.googlecode.com/files/quadra-1.2.0.tar.gz
+_eclass_exported_funcs=pkg_preinst:games pkg_postinst:games pkg_setup:games src_unpack:base src_prepare:- src_configure:games src_compile:games src_install:-
+_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	9d81603248f2ba3ec59124320d123e5e	games	2cf0d67d765e6358b435ccda30c13ad8	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	user	906f3c8eb3a2350a4f1191a89baa3e46
+_md5_=dd232d4538a50ad30d259917c303afb1

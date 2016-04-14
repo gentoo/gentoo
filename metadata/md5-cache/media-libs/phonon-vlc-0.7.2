@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install postinst prepare setup test
+DEPEND=>=media-libs/phonon-4.7.0[qt4=,qt5=] >=media-video/vlc-2.0.1:=[dbus,ogg,vorbis] qt4? ( dev-qt/qtcore:4 dev-qt/qtgui:4 ) qt5? ( dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 ) app-arch/xz-utils virtual/pkgconfig qt4? ( >=dev-util/automoc-0.9.87 ) sys-devel/make >=dev-util/cmake-2.8.12
+DESCRIPTION=Phonon VLC backend
+EAPI=5
+HOMEPAGE=https://projects.kde.org/projects/kdesupport/phonon/phonon-vlc
+IUSE=debug +qt4 qt5
+KEYWORDS=amd64 ~arm ppc ppc64 x86 ~amd64-fbsd
+LICENSE=LGPL-2.1
+RDEPEND=>=media-libs/phonon-4.7.0[qt4=,qt5=] >=media-video/vlc-2.0.1:=[dbus,ogg,vorbis] qt4? ( dev-qt/qtcore:4 dev-qt/qtgui:4 ) qt5? ( dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 )
+REQUIRED_USE=|| ( qt4 qt5 )
+SLOT=0
+SRC_URI=mirror://kde/stable/phonon/phonon-backend-vlc/0.7.2/src/phonon-backend-vlc-0.7.2.tar.xz
+_eclass_exported_funcs=pkg_postinst:- pkg_setup:- src_prepare:cmake-utils src_configure:- src_compile:- src_test:- src_install:-
+_eclasses_=cmake-utils	422bbd1bee2557490177a34dbe0a662b	eutils	9d81603248f2ba3ec59124320d123e5e	flag-o-matic	d270fa247153df66074f795fa42dba3e	multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=c1080786dac42038e5fdeec07c724e4d

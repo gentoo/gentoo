@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst preinst prepare setup unpack
+DESCRIPTION=Wilderness survival game full of science and magic
+EAPI=5
+HOMEPAGE=http://www.dontstarvegame.com/
+KEYWORDS=amd64 x86
+LICENSE=all-rights-reserved
+RDEPEND=net-misc/curl virtual/opengl games-misc/games-envd
+RESTRICT=fetch bindist splitdebug
+SLOT=0
+SRC_URI=amd64? ( dontstarve_x64_july21.tar.gz ) x86? ( dontstarve_x32_july21.tar.gz )
+_eclass_exported_funcs=pkg_preinst:games pkg_postinst:games pkg_setup:games src_unpack:base src_prepare:base src_configure:games src_compile:games src_install:-
+_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	9d81603248f2ba3ec59124320d123e5e	games	2cf0d67d765e6358b435ccda30c13ad8	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	user	906f3c8eb3a2350a4f1191a89baa3e46
+_md5_=d78a261de13c6d6b4e3c2d8d9c514f9e

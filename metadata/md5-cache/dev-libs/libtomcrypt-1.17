@@ -1,0 +1,11 @@
+DEFINED_PHASES=install
+DESCRIPTION=Modular and portable cryptographic toolkit
+EAPI=5
+HOMEPAGE=http://www.libtom.org/
+KEYWORDS=~amd64 ~x86
+LICENSE=WTFPL-2
+RESTRICT=test
+SLOT=0
+SRC_URI=https://github.com/libtom/libtomcrypt/releases/download/1.17/crypt-1.17.tar.bz2
+_eclass_exported_funcs=src_install:-
+_md5_=a2c5efa99b0f82814a9b00e8cc6b10af

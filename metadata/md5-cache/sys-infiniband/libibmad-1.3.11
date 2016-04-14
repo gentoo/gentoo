@@ -1,0 +1,13 @@
+DEFINED_PHASES=unpack
+DEPEND=sys-infiniband/libibumad:3.12 >=app-arch/rpm2targz-9.0.0.3g
+DESCRIPTION=OpenIB library providing low layer IB functions for use by the IB diagnostic/management programs
+EAPI=5
+HOMEPAGE=http://www.openfabrics.org/
+KEYWORDS=~amd64 ~x86 ~amd64-linux
+LICENSE=|| ( GPL-2 BSD-2 )
+RDEPEND=sys-infiniband/libibumad:3.12 !sys-infiniband/libibmad:0 !sys-infiniband/libibmad:1.5.4.1 !sys-infiniband/libibmad:3.5
+SLOT=3.12
+SRC_URI=https://www.openfabrics.org/downloads/OFED/ofed-3.12/OFED-3.12-rc1.tgz
+_eclass_exported_funcs=src_unpack:openib
+_eclasses_=eutils	9d81603248f2ba3ec59124320d123e5e	multilib	23ae8c186171e6476af098d2a50d0ee0	openib	88d3cf78b98b3ff627670687fcb1c7e4	rpm	3e120fdd74b358f9fb42b825a6558f61	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=657fd3a3ea13042d484a9e5a76b41019

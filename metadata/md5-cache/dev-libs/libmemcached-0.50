@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare
+DEPEND=net-misc/memcached virtual/perl-Pod-Parser doc? ( dev-python/sphinx ) libevent? ( dev-libs/libevent ) tcmalloc? ( dev-util/google-perftools ) sasl? ( virtual/gsasl )
+DESCRIPTION=a C client library to the memcached server
+EAPI=3
+HOMEPAGE=http://tangent.org/552/libmemcached.html
+IUSE=debug doc hsieh +libevent sasl static-libs tcmalloc
+KEYWORDS=alpha amd64 arm hppa ia64 ppc ppc64 sh sparc x86 ~sparc-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos
+LICENSE=BSD
+RDEPEND=net-misc/memcached virtual/perl-Pod-Parser doc? ( dev-python/sphinx ) libevent? ( dev-libs/libevent ) tcmalloc? ( dev-util/google-perftools ) sasl? ( virtual/gsasl )
+SLOT=0
+SRC_URI=https://launchpad.net/libmemcached/1.0/0.50/+download/libmemcached-0.50.tar.gz
+_eclass_exported_funcs=src_prepare:- src_configure:- src_compile:- src_install:-
+_eclasses_=eutils	9d81603248f2ba3ec59124320d123e5e	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=13bb08271e69bf087083ae1853340c9b

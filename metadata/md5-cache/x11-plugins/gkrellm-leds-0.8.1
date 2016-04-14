@@ -1,0 +1,14 @@
+DEFINED_PHASES=install setup unpack
+DEPEND=x11-proto/inputproto =app-admin/gkrellm-2* virtual/pkgconfig
+DESCRIPTION=GKrellM2 plugin for monitoring keyboard LEDs
+EAPI=0
+HOMEPAGE=http://heim.ifi.uio.no/~oyvinha/gkleds/
+KEYWORDS=x86 ppc sparc alpha amd64
+LICENSE=GPL-2
+RDEPEND=x11-libs/libXtst =app-admin/gkrellm-2*
+RESTRICT=test
+SLOT=2
+SRC_URI=http://heim.ifi.uio.no/~oyvinha/e107_files/downloads/gkleds-0.8.1.tar.gz
+_eclass_exported_funcs=pkg_setup:gkrellm-plugin src_unpack:- src_install:gkrellm-plugin
+_eclasses_=eutils	9d81603248f2ba3ec59124320d123e5e	gkrellm-plugin	0d8a7ae1368b3384fb89d1cbcb650415	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=375e04f9a83c503ea387ff4f2cb3a5d3

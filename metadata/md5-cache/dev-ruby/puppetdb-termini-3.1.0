@@ -1,0 +1,11 @@
+DEFINED_PHASES=install unpack
+DESCRIPTION=Library needed to connect puppet to puppetdb
+EAPI=5
+HOMEPAGE=http://docs.puppetlabs.com/puppetdb/
+KEYWORDS=amd64 ~ppc x86
+LICENSE=Apache-2.0
+SLOT=0
+SRC_URI=http://apt.puppetlabs.com/pool/wheezy/PC1/p/puppetdb/puppetdb-termini_3.1.0-1puppetlabs1_all.deb
+_eclass_exported_funcs=src_unpack:unpacker src_install:-
+_eclasses_=unpacker	45d07319df5f40ee6af58418b0f930be
+_md5_=aac44f34c2e7ad00dcf292487ca75ab4

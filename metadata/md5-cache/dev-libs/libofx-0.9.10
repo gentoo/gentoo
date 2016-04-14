@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=>=app-text/opensp-1.5 dev-cpp/libxmlpp:2.6 >=net-misc/curl-7.9.7 virtual/libiconv sys-apps/help2man virtual/pkgconfig test? ( app-crypt/gnupg )
+DESCRIPTION=A library to support the Open Financial eXchange XML format
+EAPI=5
+HOMEPAGE=http://libofx.sourceforge.net/
+IUSE=static-libs test
+KEYWORDS=amd64 hppa ~ppc ~ppc64 x86
+LICENSE=GPL-2
+RDEPEND=>=app-text/opensp-1.5 dev-cpp/libxmlpp:2.6 >=net-misc/curl-7.9.7 virtual/libiconv
+SLOT=0
+SRC_URI=mirror://sourceforge/libofx/libofx-0.9.10.tar.gz
+_eclass_exported_funcs=src_prepare:- src_configure:autotools-utils src_compile:- src_test:autotools-utils src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	autotools-utils	419811142edf3516b0d0cf1a254d93cb	eutils	9d81603248f2ba3ec59124320d123e5e	libtool	4890219c51da247200223277f993e054	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=c968064e85a2763e52eb1c842729231a

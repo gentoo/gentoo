@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=sys-libs/ncurses >=net-nds/openldap-2.2 dev-libs/popt >=dev-libs/glib-2 sys-libs/readline ssl? ( dev-libs/openssl ) virtual/pkgconfig
+DESCRIPTION=Manage LDAP entries with a text editor
+EAPI=2
+HOMEPAGE=http://www.lichteblau.com/ldapvi/
+IUSE=ssl
+KEYWORDS=amd64 hppa ppc ~sparc x86
+LICENSE=GPL-2
+RDEPEND=sys-libs/ncurses >=net-nds/openldap-2.2 dev-libs/popt >=dev-libs/glib-2 sys-libs/readline ssl? ( dev-libs/openssl )
+SLOT=0
+SRC_URI=http://www.lichteblau.com/download/ldapvi-1.7.tar.gz
+_eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
+_eclasses_=eutils	9d81603248f2ba3ec59124320d123e5e	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=3be8d5e2f4d0be5330b55dbac5f9f558

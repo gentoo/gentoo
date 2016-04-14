@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst preinst prepare setup test unpack
+DEPEND=X? ( x11-libs/gtk+:2 ) ruby? ( dev-lang/ruby ) app-shells/tcsh python? ( dev-lang/swig ) ruby? ( dev-lang/swig ) python? ( dev-python/setuptools[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),python_single_target_python2_7(+)] ) >=dev-util/scons-0.97 >=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),python_single_target_python2_7(+)] dev-vcs/git
+DESCRIPTION=Render farm managing software
+EAPI=5
+HOMEPAGE=http://www.drqueue.org/
+IUSE=X python ruby python_targets_python2_7
+LICENSE=GPL-2
+RDEPEND=X? ( x11-libs/gtk+:2 ) ruby? ( dev-lang/ruby ) app-shells/tcsh >=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),python_single_target_python2_7(+)]
+REQUIRED_USE=python_targets_python2_7
+SLOT=0
+_eclass_exported_funcs=pkg_preinst:- pkg_postinst:- pkg_setup:- src_unpack:git-2 src_prepare:distutils-r1 src_configure:distutils-r1 src_compile:- src_test:distutils-r1 src_install:-
+_eclasses_=distutils-r1	4e8ac1ba76ddacd8f7c0289aa586a34c	eutils	9d81603248f2ba3ec59124320d123e5e	git-2	672c3929a162f221a53b4ccb4d25d8a2	multilib	23ae8c186171e6476af098d2a50d0ee0	python-single-r1	2ebea8fbab356d63110245129a67a6dd	python-utils-r1	2e6826f6a93ad2acf904eecf5b5fb6d2	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	user	906f3c8eb3a2350a4f1191a89baa3e46
+_md5_=6f82f867280b3d8018a18bb2e7b5f3f2

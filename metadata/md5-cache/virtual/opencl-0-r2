@@ -1,0 +1,10 @@
+DEFINED_PHASES=-
+DESCRIPTION=Virtual for OpenCL implementations
+EAPI=4
+IUSE=video_cards_fglrx video_cards_nvidia
+KEYWORDS=amd64 x86
+RDEPEND=app-eselect/eselect-opencl || ( video_cards_fglrx? ( >=x11-drivers/ati-drivers-12.1-r1 ) video_cards_nvidia? ( >=x11-drivers/nvidia-drivers-290.10-r2 ) dev-util/intel-ocl-sdk )
+REQUIRED_USE=x86? ( || ( video_cards_fglrx video_cards_nvidia ) )
+SLOT=0
+_eclass_exported_funcs=-
+_md5_=34736bb73ee50c2758d9ef0017dfee78

@@ -1,0 +1,8 @@
+DEFINED_PHASES=-
+DESCRIPTION=Virtual for Math-BigInt
+EAPI=6
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~ppc-macos ~x86-solaris
+RDEPEND=~perl-core/Math-BigInt-1.999.710
+SLOT=0
+_eclass_exported_funcs=-
+_md5_=a17e65a65e42ba176ff1c195562a2ccc

@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install postinst setup
+DEPEND==www-servers/apache-2*
+DESCRIPTION=Apache2 module that processes X-SENDFILE headers registered by the original output handler
+EAPI=4
+HOMEPAGE=https://tn123.org/mod_xsendfile/
+KEYWORDS=amd64 sparc x86 ~amd64-linux
+LICENSE=Apache-2.0
+RDEPEND==www-servers/apache-2*
+SLOT=0
+SRC_URI=https://tn123.org/mod_xsendfile/beta/mod_xsendfile-1.0b1.tar.gz
+_eclass_exported_funcs=pkg_postinst:apache-module pkg_setup:depend.apache src_compile:apache-module src_install:apache-module
+_eclasses_=apache-module	5e66430013d92dfe0bf8672b05319b6d	depend.apache	e3c541cb90838388f81620d630c28f41	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=041972c8e5671265300190dfc59fa850

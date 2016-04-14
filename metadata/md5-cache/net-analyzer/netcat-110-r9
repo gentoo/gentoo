@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=!static? ( crypt? ( dev-libs/libmix ) ) static? ( crypt? ( dev-libs/libmix[static-libs(+)] ) )
+DESCRIPTION=the network swiss army knife
+EAPI=5
+HOMEPAGE=http://nc110.sourceforge.net/
+IUSE=crypt ipv6 static
+KEYWORDS=alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc64-solaris ~x64-solaris
+LICENSE=netcat
+RDEPEND=!static? ( crypt? ( dev-libs/libmix ) )
+SLOT=0
+SRC_URI=mirror://sourceforge/nc110/nc110.tgz ftp://sith.mimuw.edu.pl/pub/users/baggins/IPv6/nc-v6-20000918.patch.gz mirror://gentoo/netcat-110-patches-1.0.tar.bz2
+_eclass_exported_funcs=src_prepare:- src_compile:- src_install:-
+_eclasses_=eutils	9d81603248f2ba3ec59124320d123e5e	flag-o-matic	d270fa247153df66074f795fa42dba3e	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=839306edac94932ef0ccc668bf26c894

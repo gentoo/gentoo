@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install
+DEPEND=sys-libs/gdbm crypt? ( dev-libs/openssl ) snmp? ( net-analyzer/net-snmp ) virtual/pkgconfig
+DESCRIPTION=Library interface to IPMI
+EAPI=0
+HOMEPAGE=http://sourceforge.net/projects/openipmi/
+IUSE=crypt snmp
+KEYWORDS=~amd64 ~x86
+LICENSE=LGPL-2.1 GPL-2
+RDEPEND=sys-libs/gdbm crypt? ( dev-libs/openssl ) snmp? ( net-analyzer/net-snmp )
+SLOT=0
+SRC_URI=mirror://sourceforge/openipmi/OpenIPMI-1.3.18.tar.gz
+_eclass_exported_funcs=src_compile:- src_install:-
+_md5_=de8918648e53864e271358136f92b4fb

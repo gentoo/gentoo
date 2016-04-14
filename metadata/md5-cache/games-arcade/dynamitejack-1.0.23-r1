@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst preinst prepare setup unpack
+DESCRIPTION=A stealth game with bombs in glorious 2D
+EAPI=5
+HOMEPAGE=http://www.galcon.com/dynamitejack/
+KEYWORDS=-* amd64 x86
+LICENSE=all-rights-reserved
+RDEPEND=>=virtual/opengl-7.0-r1[abi_x86_32(-)] >=media-libs/alsa-lib-1.0.27.2[abi_x86_32(-)] >=media-libs/flac-1.2.1-r5[abi_x86_32(-)] >=media-libs/libogg-1.3.0[abi_x86_32(-)] >=media-libs/libsdl-1.2.15-r4[X,sound,joystick,opengl,video,abi_x86_32(-)] >=media-libs/libsndfile-1.0.25[abi_x86_32(-)] >=media-libs/libvorbis-1.3.3-r1[abi_x86_32(-)] >=media-sound/pulseaudio-2.1-r1[abi_x86_32(-)] >=virtual/glu-9.0-r1[abi_x86_32(-)] >=x11-libs/libICE-1.0.8-r1[abi_x86_32(-)] >=x11-libs/libSM-1.2.1-r1[abi_x86_32(-)] >=x11-libs/libX11-1.6.2[abi_x86_32(-)] >=x11-libs/libXau-1.0.7-r1[abi_x86_32(-)] >=x11-libs/libxcb-1.9.1[abi_x86_32(-)] >=x11-libs/libXdmcp-1.1.1-r1[abi_x86_32(-)] >=x11-libs/libXext-1.3.2[abi_x86_32(-)] >=x11-libs/libXi-1.7.2[abi_x86_32(-)] >=x11-libs/libXtst-1.2.1-r1[abi_x86_32(-)] games-misc/games-envd
+RESTRICT=bindist fetch splitdebug
+SLOT=0
+SRC_URI=dynamitejack-1.0.23.tgz
+_eclass_exported_funcs=pkg_preinst:games pkg_postinst:games pkg_setup:games src_unpack:base src_prepare:- src_configure:games src_compile:games src_install:-
+_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	9d81603248f2ba3ec59124320d123e5e	games	2cf0d67d765e6358b435ccda30c13ad8	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	user	906f3c8eb3a2350a4f1191a89baa3e46
+_md5_=9691826fe21dea112e6140c7f0001b7b

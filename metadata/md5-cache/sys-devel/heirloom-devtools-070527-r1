@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install postinst prepare
+DEPEND=app-shells/heirloom-sh
+DESCRIPTION=Original UNIX development tools
+EAPI=4
+HOMEPAGE=http://heirloom.sourceforge.net/devtools.html
+KEYWORDS=~amd64 ~x64-solaris
+LICENSE=BSD BSD-4 CDDL
+RDEPEND=app-shells/heirloom-sh
+SLOT=0
+SRC_URI=http://downloads.sourceforge.net/project/heirloom/heirloom-devtools/070527/heirloom-devtools-070527.tar.bz2
+_eclass_exported_funcs=pkg_postinst:- src_prepare:- src_compile:- src_install:-
+_eclasses_=eutils	9d81603248f2ba3ec59124320d123e5e	flag-o-matic	d270fa247153df66074f795fa42dba3e	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=dbf11bc6734065bc2ed0eb52b820b16b

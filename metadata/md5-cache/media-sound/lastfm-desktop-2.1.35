@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare unpack
+DEPEND=dev-qt/qtcore:4 dev-qt/qtdbus:4 dev-qt/qtgui:4 dev-qt/qtsql:4 dev-qt/qtwebkit:4 media-libs/libgpod >=media-libs/liblastfm-1.0.6[fingerprint,qt4(+)] sys-libs/zlib || ( dev-qt/qtphonon:4 kde-apps/phonon-kde:4 )
+DESCRIPTION=The official Last.fm desktop application suite
+EAPI=5
+HOMEPAGE=http://www.last.fm https://github.com/lastfm/lastfm-desktop
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
+LICENSE=GPL-3
+RDEPEND=dev-qt/qtcore:4 dev-qt/qtdbus:4 dev-qt/qtgui:4 dev-qt/qtsql:4 dev-qt/qtwebkit:4 media-libs/libgpod >=media-libs/liblastfm-1.0.6[fingerprint,qt4(+)] sys-libs/zlib || ( dev-qt/qtphonon:4 kde-apps/phonon-kde:4 )
+SLOT=0
+SRC_URI=https://github.com/lastfm/lastfm-desktop/archive/2.1.35.tar.gz -> lastfm-desktop-2.1.35.tar.gz
+_eclass_exported_funcs=src_unpack:qt4-r2 src_prepare:qt4-r2 src_configure:- src_compile:qt4-r2 src_install:qt4-r2
+_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	9d81603248f2ba3ec59124320d123e5e	multilib	23ae8c186171e6476af098d2a50d0ee0	qmake-utils	0a242e7177789b0028b4045f336dd4db	qt4-r2	d6c113024bb3086a1facc65cd338930e	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=175ac05993a42dd6651d2059112313c3

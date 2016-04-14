@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install
+DESCRIPTION=A base caller for Sanger DNA sequencing
+EAPI=0
+HOMEPAGE=http://phrap.org/phredphrapconsed.html
+KEYWORDS=~amd64 ~x86
+LICENSE=phrap
+RESTRICT=fetch
+SLOT=0
+SRC_URI=phred-dist-071220.b-acd.tar.gz
+_eclass_exported_funcs=src_compile:- src_install:-
+_md5_=3fea319425324b49a3e8a1c1fc146efd

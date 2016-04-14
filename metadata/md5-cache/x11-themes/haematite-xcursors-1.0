@@ -1,0 +1,10 @@
+DEFINED_PHASES=install postinst
+DESCRIPTION=A simple crispy dark-grey xcursor theme
+EAPI=0
+HOMEPAGE=http://www.kde-look.org/content/show.php/Haematite?content=19594
+KEYWORDS=amd64 x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=http://www.kde-look.org/CONTENT/content-files/19594-haematite-1.0.tar.gz
+_eclass_exported_funcs=pkg_postinst:- src_install:-
+_md5_=d79d9072ae37dcd69763960620236266

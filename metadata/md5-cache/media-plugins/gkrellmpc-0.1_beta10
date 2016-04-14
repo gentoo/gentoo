@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile install postinst prepare setup
+DEPEND=>=app-admin/gkrellm-2[X] net-misc/curl =app-admin/gkrellm-2* virtual/pkgconfig
+DESCRIPTION=A gkrellm plugin to control the MPD (Music Player Daemon)
+EAPI=2
+HOMEPAGE=http://mpd.wikia.com/wiki/Client:GKrellMPC
+IUSE=threads
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=>=app-admin/gkrellm-2[X] net-misc/curl =app-admin/gkrellm-2*
+RESTRICT=test
+SLOT=0
+SRC_URI=http://mina.naguib.ca/dist/gkrellmpc-0.1_beta10.tar.gz
+_eclass_exported_funcs=pkg_postinst:- pkg_setup:gkrellm-plugin src_prepare:- src_compile:- src_install:gkrellm-plugin
+_eclasses_=eutils	9d81603248f2ba3ec59124320d123e5e	gkrellm-plugin	0d8a7ae1368b3384fb89d1cbcb650415	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=1b0c6a02a21e36c9caee6ba74997adfb

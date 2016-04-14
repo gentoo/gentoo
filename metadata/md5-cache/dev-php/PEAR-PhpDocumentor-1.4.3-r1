@@ -1,0 +1,14 @@
+DEFINED_PHASES=install prepare setup
+DEPEND=dev-lang/php >=dev-php/pear-1.8.1
+DESCRIPTION=The phpDocumentor package provides automatic documenting of php api directly from the source
+EAPI=2
+HOMEPAGE=http://pear.php.net/PhpDocumentor
+IUSE=minimal
+KEYWORDS=alpha amd64 hppa ia64 ppc ppc64 sparc x86
+LICENSE=PHP-2.02 PHP-3 LGPL-2.1 public-domain Apache-2.0 BSD
+RDEPEND=!minimal? ( >=dev-php/PEAR-XML_Beautifier-1.1-r1 ) >=dev-php/smarty-2.6.0 dev-lang/php >=dev-php/pear-1.8.1
+SLOT=0
+SRC_URI=http://pear.php.net/get/PhpDocumentor-1.4.3.tgz
+_eclass_exported_funcs=pkg_setup:php-pear-r1 src_prepare:- src_install:php-pear-r1
+_eclasses_=multilib	23ae8c186171e6476af098d2a50d0ee0	php-pear-r1	7d1434952f2d1483feac6ad812d605dd	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=42b346ef61cec0239170c150cc4ee445

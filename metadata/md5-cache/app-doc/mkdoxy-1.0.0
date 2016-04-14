@@ -1,0 +1,12 @@
+DEFINED_PHASES=install
+DEPEND=app-doc/doxygen >=dev-lang/perl-5
+DESCRIPTION=mkDoxy generates Doxygen-compatible HTML documentation for makefiles
+EAPI=0
+HOMEPAGE=http://sourceforge.net/projects/mkdoxy/
+KEYWORDS=alpha amd64 hppa ia64 ppc sparc x86
+LICENSE=BSD
+RDEPEND=app-doc/doxygen >=dev-lang/perl-5
+SLOT=0
+SRC_URI=mirror://sourceforge/mkdoxy/mkdoxy-1.0.0.tar.gz
+_eclass_exported_funcs=src_install:-
+_md5_=901d19b5a91fb6b4ceaa1124752ea0f8

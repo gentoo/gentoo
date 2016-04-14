@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=app-misc/ddccontrol-db dev-libs/libxml2:2 gtk? ( x11-libs/gtk+:2 ) nls? ( sys-devel/gettext ) pci? ( sys-apps/pciutils ) video_cards_fglrx? ( x11-libs/amd-adl-sdk ) dev-perl/XML-Parser dev-util/intltool sys-kernel/linux-headers doc? ( >=app-text/docbook-xsl-stylesheets-1.65.1 >=dev-libs/libxslt-1.1.6 app-text/htmltidy ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=DDCControl allows control of monitor parameters via DDC
+EAPI=5
+HOMEPAGE=http://ddccontrol.sourceforge.net/
+IUSE=doc gtk nls +pci static-libs video_cards_fglrx
+KEYWORDS=amd64 ~ppc x86
+LICENSE=GPL-2
+RDEPEND=app-misc/ddccontrol-db dev-libs/libxml2:2 gtk? ( x11-libs/gtk+:2 ) nls? ( sys-devel/gettext ) pci? ( sys-apps/pciutils ) video_cards_fglrx? ( x11-libs/amd-adl-sdk )
+SLOT=0
+SRC_URI=https://github.com/ddccontrol/ddccontrol/archive/9d89d8c0b959a4da62ecc50fb2aeb23142d4bfb4.tar.gz -> ddccontrol-0.4.2_p20140105.tar.gz
+_eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	9d81603248f2ba3ec59124320d123e5e	libtool	4890219c51da247200223277f993e054	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=b572128742a2e6ccda6ae28199816142

@@ -1,0 +1,13 @@
+DEFINED_PHASES=install prepare
+DEPEND=ssl? ( dev-libs/openssl:0= ) >=dev-libs/boost-1.35.0
+DESCRIPTION=Asynchronous Network Library
+EAPI=6
+HOMEPAGE=http://asio.sourceforge.net/
+IUSE=doc examples ssl test
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86
+LICENSE=Boost-1.0
+RDEPEND=ssl? ( dev-libs/openssl:0= ) >=dev-libs/boost-1.35.0
+SLOT=0
+SRC_URI=mirror://sourceforge/asio/asio-1.10.6.tar.bz2
+_eclass_exported_funcs=src_prepare:- src_install:-
+_md5_=1272a387641201a7d09e114701fbd38d

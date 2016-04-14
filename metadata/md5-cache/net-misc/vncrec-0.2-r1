@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure prepare
+DEPEND=x11-libs/libXaw x11-libs/libXext x11-libs/libXmu x11-libs/libXp x11-libs/libXpm x11-libs/libXt app-text/rman x11-misc/gccmakedep x11-misc/imake x11-proto/xextproto
+DESCRIPTION=VNC session recorder and player
+EAPI=4
+HOMEPAGE=http://www.sodan.org/~penny/vncrec/
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-2
+RDEPEND=x11-libs/libXaw x11-libs/libXext x11-libs/libXmu x11-libs/libXp x11-libs/libXpm x11-libs/libXt
+SLOT=0
+SRC_URI=http://www.sodan.org/~penny/vncrec/vncrec-0.2.tar.gz
+_eclass_exported_funcs=src_prepare:- src_configure:- src_compile:-
+_eclasses_=eutils	9d81603248f2ba3ec59124320d123e5e	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=f9823dc9c7bdaaa28f06d6538fa8f2ed

@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install prepare unpack
+DEPEND=>=sys-devel/m4-1.4.16 >=dev-lang/perl-5.6 >=sys-apps/texinfo-4.3 dev-vcs/git
+DESCRIPTION=Used to create autoconfiguration files
+EAPI=5
+HOMEPAGE=https://www.gnu.org/software/autoconf/autoconf.html
+IUSE=emacs
+LICENSE=GPL-3
+PDEPEND=emacs? ( app-emacs/autoconf-mode )
+RDEPEND=>=sys-devel/m4-1.4.16 >=dev-lang/perl-5.6 !~sys-devel/autoconf-9999:2.5 >=sys-devel/autoconf-wrapper-13
+SLOT=9999
+_eclass_exported_funcs=src_unpack:git-2 src_prepare:- src_configure:- src_install:-
+_eclasses_=git-2	672c3929a162f221a53b4ccb4d25d8a2
+_md5_=9b97b006b4cab49e98aa1a7d08c766b3

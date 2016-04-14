@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install
+DEPEND=dev-libs/libpcre >=net-misc/curl-7.17.1 x11-libs/libXpm x11-libs/libXext x11-libs/libX11 x11-wm/windowmaker
+DESCRIPTION=A dockapp for displaying data collected from METAR, AVN, ETA, and MRF forecasts
+EAPI=4
+HOMEPAGE=http://www.sourceforge.net/projects/wmweatherplus/
+KEYWORDS=amd64 ~mips ppc ~ppc64 ~sparc x86
+LICENSE=GPL-2
+RDEPEND=dev-libs/libpcre >=net-misc/curl-7.17.1 x11-libs/libXpm x11-libs/libXext x11-libs/libX11 x11-wm/windowmaker
+SLOT=0
+SRC_URI=mirror://sourceforge/wmweatherplus/wmweather+-2.13.tar.gz
+_eclass_exported_funcs=src_configure:- src_install:-
+_eclasses_=eutils	9d81603248f2ba3ec59124320d123e5e	flag-o-matic	d270fa247153df66074f795fa42dba3e	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=4210f23cf4bec326fceb1aedd5fb696f

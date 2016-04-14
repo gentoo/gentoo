@@ -1,0 +1,12 @@
+DEFINED_PHASES=install postinst prepare
+DEPEND=app-antivirus/clamav
+DESCRIPTION=Download and install third-party clamav signatures
+EAPI=6
+HOMEPAGE=https://github.com/extremeshok/clamav-unofficial-sigs
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD
+RDEPEND=app-antivirus/clamav app-crypt/gnupg dev-lang/perl net-dns/bind-tools net-misc/curl
+SLOT=0
+SRC_URI=https://github.com/extremeshok/clamav-unofficial-sigs/archive/4.9.2.tar.gz -> clamav-unofficial-sigs-4.9.2.tar.gz
+_eclass_exported_funcs=pkg_postinst:- src_prepare:- src_install:-
+_md5_=90f10de752778fd6010ac604f8d439cc

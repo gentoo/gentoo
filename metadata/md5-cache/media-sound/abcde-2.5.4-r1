@@ -1,0 +1,13 @@
+DEFINED_PHASES=install prepare
+DESCRIPTION=A command line CD encoder
+EAPI=5
+HOMEPAGE=https://code.google.com/p/abcde/
+IUSE=aac cdparanoia cdr flac +id3tag +lame musicbrainz normalize replaygain speex vorbis
+KEYWORDS=amd64 ppc ppc64 x86
+LICENSE=GPL-2
+RDEPEND=media-sound/cd-discid net-misc/wget virtual/eject aac? ( media-libs/faac || ( media-video/atomicparsley media-video/atomicparsley-wez ) ) cdparanoia? ( || ( dev-libs/libcdio-paranoia media-sound/cdparanoia ) ) cdr? ( virtual/cdrtools ) flac? ( media-libs/flac ) id3tag? ( dev-python/eyeD3:0.7 >=media-sound/id3-0.12 media-sound/id3v2 ) lame? ( media-sound/lame ) musicbrainz? ( dev-perl/MusicBrainz-DiscID dev-perl/WebService-MusicBrainz virtual/perl-Digest-SHA virtual/perl-Getopt-Long ) normalize? ( >=media-sound/normalize-0.7.4 ) replaygain? ( vorbis? ( media-sound/vorbisgain ) lame? ( media-sound/mp3gain ) ) speex? ( media-libs/speex ) vorbis? ( media-sound/vorbis-tools )
+SLOT=0
+SRC_URI=https://abcde.googlecode.com/files/abcde-2.5.4.tar.gz
+_eclass_exported_funcs=src_prepare:- src_install:-
+_eclasses_=eutils	9d81603248f2ba3ec59124320d123e5e	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=2c3b078fff99a325ebd9ad04e404fa41

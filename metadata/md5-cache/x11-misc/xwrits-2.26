@@ -1,0 +1,12 @@
+DEFINED_PHASES=install
+DEPEND=x11-libs/libX11 x11-libs/libXext x11-libs/libXinerama x11-proto/xproto x11-proto/xineramaproto
+DESCRIPTION=Reminds you to take wrist breaks, which will hopefully help you prevent repetitive stress injury
+EAPI=0
+HOMEPAGE=http://www.lcdf.org/xwrits/
+KEYWORDS=amd64 ppc x86 ~x86-fbsd
+LICENSE=GPL-2
+RDEPEND=x11-libs/libX11 x11-libs/libXext x11-libs/libXinerama
+SLOT=0
+SRC_URI=http://www.lcdf.org/xwrits/xwrits-2.26.tar.gz
+_eclass_exported_funcs=src_install:-
+_md5_=b8fbc42b848d54b1d93bdb6e5aa53c38

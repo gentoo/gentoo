@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare
+DEPEND=X? ( x11-libs/libX11 dev-lang/tk ) dev-libs/libmix net-libs/libpcap !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Network Security Analysis Tool, an application-level network security scanner
+EAPI=5
+HOMEPAGE=http://nsat.sourceforge.net/
+IUSE=X
+KEYWORDS=~amd64 ~ppc x86
+LICENSE=GPL-2
+RDEPEND=X? ( x11-libs/libX11 dev-lang/tk ) dev-libs/libmix net-libs/libpcap
+SLOT=0
+SRC_URI=mirror://sourceforge/nsat/nsat-1.5.tgz
+_eclass_exported_funcs=src_prepare:- src_configure:- src_compile:- src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	9d81603248f2ba3ec59124320d123e5e	libtool	4890219c51da247200223277f993e054	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=0a467672ffa6fc3417c26c3d3a161195

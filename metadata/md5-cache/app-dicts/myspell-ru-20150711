@@ -1,0 +1,12 @@
+DEFINED_PHASES=install unpack
+DEPEND=app-arch/unzip
+DESCRIPTION=Russian spellcheck dictionary based on works of AOT group for myspell/hunspell
+EAPI=5
+HOMEPAGE=http://extensions.libreoffice.org/extension-center/russian-dictionary-pack
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86 ~amd64-fbsd ~amd64-linux ~x86-fbsd
+LICENSE=LGPL-2.1
+SLOT=0
+SRC_URI=http://extensions.libreoffice.org/extension-center/russian-dictionary-pack/releases/0.4.0/dict_pack_ru-aot-0-4-0.oxt
+_eclass_exported_funcs=src_unpack:myspell-r2 src_install:myspell-r2
+_eclasses_=myspell-r2	3f98144882500b2caaa0ab2bf3202ada
+_md5_=4059d7f4435f6a51e8b8ea95c9c1c64e

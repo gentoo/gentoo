@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install postinst postrm preinst setup test unpack
+DEPEND=tcl? ( >=dev-lang/tcl-8.4 ) java? ( >=virtual/jdk-1.4 ) test? ( >=dev-lang/tcl-8.4 ) java? ( >=dev-java/java-config-2.2.0 ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Oracle Berkeley DB
+EAPI=0
+HOMEPAGE=http://www.oracle.com/technology/software/products/berkeley-db/index.html
+IUSE=tcl java doc cxx rpc doc test examples elibc_FreeBSD java
+KEYWORDS=alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~x86-fbsd
+LICENSE=Sleepycat
+RDEPEND=tcl? ( dev-lang/tcl ) java? ( >=virtual/jre-1.4 ) java? ( >=dev-java/java-config-2.2.0 )
+SLOT=4.2
+SRC_URI=http://download.oracle.com/berkeley-db/db-4.2.52.tar.gz http://www.oracle.com/technology/products/berkeley-db/db/update/4.2.52/patch.4.2.52.1 http://www.oracle.com/technology/products/berkeley-db/db/update/4.2.52/patch.4.2.52.2 http://www.oracle.com/technology/products/berkeley-db/db/update/4.2.52/patch.4.2.52.3 http://www.oracle.com/technology/products/berkeley-db/db/update/4.2.52/patch.4.2.52.4 http://www.oracle.com/technology/products/berkeley-db/db/update/4.2.52/patch.4.2.52.5
+_eclass_exported_funcs=pkg_preinst:java-pkg-opt-2 pkg_postrm:- pkg_postinst:- pkg_setup:java-pkg-opt-2 src_unpack:- src_compile:- src_test:db src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	db	806b626ad04d8a628c9e2c9d9458ddcb	eutils	9d81603248f2ba3ec59124320d123e5e	flag-o-matic	d270fa247153df66074f795fa42dba3e	java-pkg-opt-2	40db73f27fc6458ec2105812a4f261c7	java-utils-2	4f0e83a2c108b9f3d74ecebf32e2f483	libtool	4890219c51da247200223277f993e054	multilib	23ae8c186171e6476af098d2a50d0ee0	multiprocessing	e32940a7b2a9992ad217eccddb84d548	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=b463a66ce3d0b8f0cf8abab584a93306

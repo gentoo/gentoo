@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test unpack
+DEPEND=virtual/perl-Carp || ( >=dev-perl/JSON-XS-2.3 virtual/perl-JSON-PP dev-perl/JSON ) virtual/perl-ExtUtils-MakeMaker test? ( virtual/perl-Data-Dumper virtual/perl-File-Spec virtual/perl-Storable dev-perl/Test-Fatal virtual/perl-Test-Simple dev-perl/Test-Requires >=dev-perl/Test-Warnings-0.9.0 dev-perl/Test-Without-Module ) dev-lang/perl:=[-build(-)]
+DESCRIPTION=Wrapper Class for the various JSON classes (DEPRECATED)
+EAPI=5
+HOMEPAGE=http://search.cpan.org/dist/JSON-Any/
+IUSE=test
+KEYWORDS=~amd64 ~x86 ~x64-macos ~x86-solaris
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=virtual/perl-Carp || ( >=dev-perl/JSON-XS-2.3 virtual/perl-JSON-PP dev-perl/JSON ) dev-lang/perl:=[-build(-)]
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/E/ET/ETHER/JSON-Any-1.39.tar.gz
+_eclass_exported_funcs=src_unpack:perl-module src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
+_eclasses_=eutils	9d81603248f2ba3ec59124320d123e5e	multilib	23ae8c186171e6476af098d2a50d0ee0	multiprocessing	e32940a7b2a9992ad217eccddb84d548	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	461f1d9eb930e8d1b178a39e83635fd0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	unpacker	45d07319df5f40ee6af58418b0f930be
+_md5_=9dcaad2fbf4c682f55f8b161fbd815de

@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install
+DEPEND=sys-devel/gcc
+DESCRIPTION=Virtual Router Redundancy Protocol Daemon
+EAPI=5
+HOMEPAGE=http://www.sourceforge.net/projects/vrrpd
+KEYWORDS=~x86 ~amd64
+LICENSE=GPL-2+
+SLOT=0
+SRC_URI=mirror://sourceforge/vrrpd/vrrpd/1.0/vrrpd-1.0.tar.gz
+_eclass_exported_funcs=src_compile:- src_install:-
+_md5_=76b93b8baee380195b453d3b97b7373a

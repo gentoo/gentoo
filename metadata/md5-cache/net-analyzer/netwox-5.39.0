@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=net-libs/libnet:1.1 net-libs/libpcap ~net-libs/netwib-5.39.0
+DESCRIPTION=Toolbox of 217 utilities for testing Ethernet/IP networks
+EAPI=5
+HOMEPAGE=http://ntwox.sourceforge.net/ http://www.laurentconstantin.com/en/netw/netwox/
+IUSE=doc
+KEYWORDS=~amd64 ~hppa ~ppc x86
+LICENSE=GPL-3
+RDEPEND=net-libs/libnet:1.1 net-libs/libpcap ~net-libs/netwib-5.39.0
+SLOT=0
+SRC_URI=mirror://sourceforge/ntwox/netwox-5.39.0-src.tgz doc? ( mirror://sourceforge/ntwox/netwox-5.39.0-doc_html.tgz )
+_eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
+_eclasses_=multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=c1338a70073eb6d7f02bf0f2c5a81410

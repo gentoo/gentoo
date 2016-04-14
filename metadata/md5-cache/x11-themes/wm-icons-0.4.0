@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install postinst
+DEPEND=virtual/awk dev-lang/perl sys-devel/autoconf sys-devel/automake sys-apps/sed
+DESCRIPTION=A Large Assortment of Beutiful Themed Icons, Created with FVWM in mind
+EAPI=0
+HOMEPAGE=http://wm-icons.sourceforge.net/
+KEYWORDS=~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~x86
+LICENSE=GPL-2
+RDEPEND=virtual/awk dev-lang/perl
+SLOT=0
+SRC_URI=mirror://sourceforge/wm-icons/wm-icons-0.4.0.tar.bz2
+_eclass_exported_funcs=pkg_postinst:- src_compile:- src_install:-
+_md5_=f9366bf990553d76e089a1797bb60281

@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install
+DEPEND=>=sys-libs/libhx-3.4
+DESCRIPTION=Open file lister (replaces fuser and lsof -m)
+EAPI=4
+HOMEPAGE=http://jengelh.medozas.de/projects/hxtools/
+KEYWORDS=~amd64
+LICENSE=public-domain
+RDEPEND=>=sys-libs/libhx-3.4
+SLOT=0
+SRC_URI=http://jftp.medozas.de/hxtools/hxtools-20110721.tar.xz
+_eclass_exported_funcs=src_configure:- src_compile:- src_install:-
+_eclasses_=multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=0eb3b294cfdfdd9209aa9a2f6a55e51e

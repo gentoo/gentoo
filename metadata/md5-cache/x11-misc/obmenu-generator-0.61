@@ -1,0 +1,11 @@
+DEFINED_PHASES=install postinst
+DESCRIPTION=A fast pipe/static menu generator for the Openbox Window Manager
+EAPI=5
+HOMEPAGE=http://trizen.go.ro/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=dev-lang/perl dev-perl/Data-Dump >=dev-perl/Linux-DesktopFiles-0.90.0 x11-wm/openbox
+SLOT=0
+SRC_URI=https://github.com/trizen/obmenu-generator/archive/0.61.tar.gz -> obmenu-generator-0.61.tar.gz
+_eclass_exported_funcs=pkg_postinst:- src_install:-
+_md5_=b70c85bb361bd240576fdf5190c0d00e

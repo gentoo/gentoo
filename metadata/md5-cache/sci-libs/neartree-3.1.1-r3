@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-libs/cvector sys-devel/make >=dev-util/cmake-2.8.12
+DESCRIPTION=Function library efficiently solving the Nearest Neighbor Problem(known as the post office problem)
+EAPI=4
+HOMEPAGE=http://neartree.sourceforge.net/
+IUSE=static-libs
+KEYWORDS=amd64 ppc x86 ~amd64-linux ~x86-linux
+LICENSE=LGPL-2.1
+RDEPEND=dev-libs/cvector
+SLOT=0
+SRC_URI=mirror://sourceforge/neartree/neartree/NearTree-3.1.1/NearTree-3.1.1.tar.gz -> neartree-3.1.1.tar.gz
+_eclass_exported_funcs=src_prepare:- src_configure:- src_compile:cmake-utils src_test:cmake-utils src_install:cmake-utils
+_eclasses_=cmake-utils	422bbd1bee2557490177a34dbe0a662b	eutils	9d81603248f2ba3ec59124320d123e5e	flag-o-matic	d270fa247153df66074f795fa42dba3e	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=f0bb9f8567438ebb0766fe4c201ad0cd

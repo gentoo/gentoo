@@ -1,0 +1,14 @@
+DEFINED_PHASES=install unpack
+DESCRIPTION=A time-frequency browser designed for scientific visualization of the spectral domain
+EAPI=3
+HOMEPAGE=http://www.baudline.com/
+IUSE=jack
+KEYWORDS=amd64 ~x86
+LICENSE=baudline
+RDEPEND=media-fonts/font-adobe-75dpi media-fonts/font-misc-misc x11-libs/libX11 x11-libs/libXext x11-libs/libXmu x11-libs/libXt x11-libs/libXxf86vm
+RESTRICT=mirror bindist
+SLOT=0
+SRC_URI=amd64? ( http://www.baudline.com/baudline_1.08_linux_x86_64.tar.gz ) ppc? ( http://www.baudline.com/baudline_1.08_linux_ppc.tar.gz ) s390? ( http://www.baudline.com/baudline_1.08_linux_s390.tar.gz ) x86? ( http://www.baudline.com/baudline_1.08_linux_i686.tar.gz )
+_eclass_exported_funcs=src_unpack:- src_install:-
+_eclasses_=eutils	9d81603248f2ba3ec59124320d123e5e	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=751e8ce3c1619463ee18542949702ec7

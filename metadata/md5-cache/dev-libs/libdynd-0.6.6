@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-libs/c-blosc:0= cuda? ( x11-drivers/nvidia-drivers dev-util/nvidia-cuda-toolkit ) fftw? ( sci-libs/fftw:3.0 ) sys-devel/make >=dev-util/cmake-2.8.12
+DESCRIPTION=C++ dynamic multi-dimensionnal array library with Python exposure
+EAPI=5
+HOMEPAGE=https://github.com/ContinuumIO/libdynd
+IUSE=cuda doc fftw test
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
+LICENSE=BSD
+RDEPEND=dev-libs/c-blosc:0= cuda? ( x11-drivers/nvidia-drivers dev-util/nvidia-cuda-toolkit ) fftw? ( sci-libs/fftw:3.0 )
+SLOT=0/0.6.6
+SRC_URI=https://github.com/ContinuumIO/libdynd/archive/v0.6.6.tar.gz -> libdynd-0.6.6.tar.gz
+_eclass_exported_funcs=src_prepare:- src_configure:- src_compile:cmake-utils src_test:- src_install:-
+_eclasses_=cmake-utils	422bbd1bee2557490177a34dbe0a662b	cuda	0ecb926cd855df14e36328a247443e49	eutils	9d81603248f2ba3ec59124320d123e5e	flag-o-matic	d270fa247153df66074f795fa42dba3e	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=fbf27ee1d7017120028fb97b53f1bfdc

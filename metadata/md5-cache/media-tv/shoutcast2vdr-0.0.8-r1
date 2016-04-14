@@ -1,0 +1,11 @@
+DEFINED_PHASES=install prepare
+DEPEND=media-video/vdr
+DESCRIPTION=VDR script: generate shoutcast playlists
+EAPI=5
+HOMEPAGE=http://www.vdr-portal.de/board/thread.php?threadid=19478
+KEYWORDS=amd64 x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=http://www.kost.sh/vdr/shoutcast2vdr-0.0.8.gz
+_eclass_exported_funcs=src_prepare:- src_install:-
+_md5_=0604e714c6048a4a78f4a6d2854a3573

@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=dev-libs/icu:= dev-libs/librevenge dev-libs/libxml2 sys-libs/zlib dev-libs/boost:= dev-util/gperf virtual/pkgconfig doc? ( app-doc/doxygen ) test? ( dev-util/cppunit ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Library parsing various ebook formats
+EAPI=6
+HOMEPAGE=http://www.sourceforge.net/projects/libebook/
+IUSE=doc test
+KEYWORDS=~amd64 ~arm ~x86
+LICENSE=MPL-2.0
+RDEPEND=dev-libs/icu:= dev-libs/librevenge dev-libs/libxml2 sys-libs/zlib
+SLOT=0
+SRC_URI=mirror://sourceforge/libebook/libe-book-0.1.2.tar.bz2
+_eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	9d81603248f2ba3ec59124320d123e5e	libtool	4890219c51da247200223277f993e054	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=9ae7dd66549744e43a4ab2b890dc8833

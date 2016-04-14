@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install prepare test
+DEPEND=dev-lang/ocaml:= || ( net-misc/wget net-misc/curl ) dev-ml/extlib:= dev-ml/ocaml-re:= dev-ml/ocamlgraph:= dev-ml/cmdliner:= dev-ml/cudf:= >=dev-ml/dose3-4:= dev-ml/uutf:= dev-ml/jsonm:=
+DESCRIPTION=A source-based package manager for OCaml
+EAPI=5
+HOMEPAGE=http://opam.ocaml.org/
+KEYWORDS=~amd64
+LICENSE=LGPL-3-with-linking-exception
+RDEPEND=dev-lang/ocaml:= || ( net-misc/wget net-misc/curl ) dev-ml/extlib:= dev-ml/ocaml-re:= dev-ml/ocamlgraph:= dev-ml/cmdliner:= dev-ml/cudf:= >=dev-ml/dose3-4:= dev-ml/uutf:= dev-ml/jsonm:= dev-ml/findlib
+SLOT=0
+SRC_URI=https://github.com/ocaml/opam/archive/1.2.2.tar.gz -> opam-1.2.2.tar.gz
+_eclass_exported_funcs=src_prepare:- src_compile:- src_test:- src_install:-
+_eclasses_=eutils	9d81603248f2ba3ec59124320d123e5e	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=76ff9e74dec9b4ccfd197899f9a940b6

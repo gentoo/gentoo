@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install prepare unpack
+DEPEND=gtk? ( x11-libs/gtk+:2 ) postgres? ( dev-db/postgresql ) qt4? ( dev-qt/qtgui:4[qt3support] ) ssl? ( dev-libs/openssl ) tcl? ( dev-lang/tcl:0 ) X? ( x11-libs/libXt ) >=sys-devel/flex-2.5.2 >=sys-devel/bison-1.22 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 dev-vcs/darcs net-misc/rsync
+DESCRIPTION=A freely available and fully compliant implementation of the CORBA standard
+EAPI=3
+HOMEPAGE=http://www.mico.org/
+IUSE=gtk postgres qt4 ssl tcl threads X
+LICENSE=GPL-2 LGPL-2
+RDEPEND=gtk? ( x11-libs/gtk+:2 ) postgres? ( dev-db/postgresql ) qt4? ( dev-qt/qtgui:4[qt3support] ) ssl? ( dev-libs/openssl ) tcl? ( dev-lang/tcl:0 ) X? ( x11-libs/libXt )
+RESTRICT=test
+SLOT=0
+SRC_URI=https://dev.gentoo.org/~haubi/distfiles/mico-9999-gentoo-patches-20120924.tar.bz2
+_eclass_exported_funcs=src_unpack:- src_prepare:- src_configure:- src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	darcs	25bcb4c9bede09580ffa4891aa70234d	eutils	9d81603248f2ba3ec59124320d123e5e	flag-o-matic	d270fa247153df66074f795fa42dba3e	libtool	4890219c51da247200223277f993e054	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=44f6189c3bef392d265eb7bc0226315b

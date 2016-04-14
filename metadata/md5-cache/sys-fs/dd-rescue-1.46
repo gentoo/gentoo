@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=lzo? ( dev-libs/lzo ) xattr? ( sys-apps/attr ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Similar to dd but can copy from source with errors
+EAPI=5
+HOMEPAGE=http://www.garloff.de/kurt/linux/ddrescue/
+IUSE=cpu_flags_x86_avx2 lzo cpu_flags_x86_sse4_2 static xattr
+KEYWORDS=amd64 ~arm ~mips ppc ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos
+LICENSE=GPL-2
+RDEPEND=lzo? ( dev-libs/lzo ) xattr? ( sys-apps/attr )
+SLOT=0
+SRC_URI=http://www.garloff.de/kurt/linux/ddrescue/dd_rescue-1.46.tar.gz
+_eclass_exported_funcs=src_prepare:- src_configure:- src_compile:- src_test:- src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	9d81603248f2ba3ec59124320d123e5e	flag-o-matic	d270fa247153df66074f795fa42dba3e	libtool	4890219c51da247200223277f993e054	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=5fec4493e327cd4bb15cda07e87decec

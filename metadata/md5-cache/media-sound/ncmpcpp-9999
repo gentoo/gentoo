@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure install postinst prepare unpack
+DEPEND=!dev-libs/boost:0/1.57.0 >=media-libs/libmpdclient-2.1 dev-libs/boost:=[nls,threads] sys-libs/ncurses:=[unicode?] sys-libs/readline:* curl? ( net-misc/curl ) taglib? ( media-libs/taglib ) unicode? ( dev-libs/boost:=[icu] ) visualizer? ( sci-libs/fftw:3.0 ) virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=dev-vcs/git-1.8.2.1
+DESCRIPTION=featureful ncurses based MPD client inspired by ncmpc
+EAPI=5
+HOMEPAGE=http://ncmpcpp.rybczak.net/
+IUSE=clock curl outputs taglib unicode visualizer
+LICENSE=GPL-2
+RDEPEND=!dev-libs/boost:0/1.57.0 >=media-libs/libmpdclient-2.1 dev-libs/boost:=[nls,threads] sys-libs/ncurses:=[unicode?] sys-libs/readline:* curl? ( net-misc/curl ) taglib? ( media-libs/taglib ) unicode? ( dev-libs/boost:=[icu] ) visualizer? ( sci-libs/fftw:3.0 )
+SLOT=0
+_eclass_exported_funcs=pkg_postinst:- src_unpack:git-r3 src_prepare:- src_configure:- src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	9d81603248f2ba3ec59124320d123e5e	git-r3	ef66dfc3db09f327af21cf32f140fb2b	libtool	4890219c51da247200223277f993e054	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=65e4301889dffc889744669f3430b875

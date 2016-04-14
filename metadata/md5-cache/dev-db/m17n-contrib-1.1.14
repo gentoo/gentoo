@@ -1,0 +1,11 @@
+DEFINED_PHASES=configure install
+DESCRIPTION=Contribution database for the m17n library
+EAPI=4
+HOMEPAGE=https://savannah.nongnu.org/projects/m17n
+KEYWORDS=amd64 x86
+LICENSE=LGPL-2.1
+RDEPEND=>=dev-db/m17n-db-1.6.4
+SLOT=0
+SRC_URI=http://download.savannah.gnu.org/releases/m17n/m17n-contrib-1.1.14.tar.gz
+_eclass_exported_funcs=src_configure:- src_install:-
+_md5_=f3f6eda9096d1a839cbb47acbbcb1286

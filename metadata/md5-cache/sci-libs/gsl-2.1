@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install postinst prepare pretend test
+DEPEND=cblas-external? ( virtual/cblas ) app-eselect/eselect-cblas virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=The GNU Scientific Library
+EAPI=6
+HOMEPAGE=https://www.gnu.org/software/gsl/
+IUSE=cblas-external static-libs
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd ~x86-interix ~amd64-linux ~x86-linux ~x86-macos ~sparc-solaris ~x86-solaris
+LICENSE=GPL-3
+RDEPEND=cblas-external? ( virtual/cblas )
+SLOT=0/19
+SRC_URI=mirror://gnu/gsl/gsl-2.1.tar.gz
+_eclass_exported_funcs=pkg_pretend:- pkg_postinst:- src_prepare:- src_configure:- src_test:- src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	9d81603248f2ba3ec59124320d123e5e	flag-o-matic	d270fa247153df66074f795fa42dba3e	libtool	4890219c51da247200223277f993e054	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=1ed560766c5cd1e43fc9d5a1729b3914

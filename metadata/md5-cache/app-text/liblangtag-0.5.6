@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-libs/glib dev-libs/libxml2 introspection? ( >=dev-libs/gobject-introspection-0.10.8 ) dev-libs/gobject-introspection-common sys-devel/gettext test? ( dev-libs/check )
+DESCRIPTION=An interface library to access tags for identifying languages
+EAPI=5
+HOMEPAGE=https://tagoh.bitbucket.org/liblangtag/
+IUSE=introspection static-libs test
+KEYWORDS=amd64 ~arm ~ppc x86
+LICENSE=|| ( LGPL-3 MPL-1.1 )
+RDEPEND=dev-libs/glib dev-libs/libxml2 introspection? ( >=dev-libs/gobject-introspection-0.10.8 )
+RESTRICT=test
+SLOT=0
+SRC_URI=https://bitbucket.org/tagoh/liblangtag/downloads/liblangtag-0.5.6.tar.bz2
+_eclass_exported_funcs=src_prepare:autotools-utils src_configure:- src_compile:autotools-utils src_test:autotools-utils src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	autotools-utils	419811142edf3516b0d0cf1a254d93cb	eutils	9d81603248f2ba3ec59124320d123e5e	libtool	4890219c51da247200223277f993e054	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=12f5b4534113303c26191a3c9da0a1ce

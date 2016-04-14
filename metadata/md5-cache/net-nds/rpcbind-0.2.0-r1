@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=net-libs/libtirpc tcpd? ( sys-apps/tcp-wrappers ) virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 virtual/pkgconfig
+DESCRIPTION=portmap replacement which supports RPC over various protocols
+EAPI=2
+HOMEPAGE=http://sourceforge.net/projects/rpcbind/
+IUSE=selinux tcpd
+KEYWORDS=alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 s390 sh sparc x86
+LICENSE=BSD
+RDEPEND=net-libs/libtirpc tcpd? ( sys-apps/tcp-wrappers ) selinux? ( sec-policy/selinux-rpcbind )
+SLOT=0
+SRC_URI=mirror://sourceforge/rpcbind/rpcbind-0.2.0.tar.bz2
+_eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	9d81603248f2ba3ec59124320d123e5e	libtool	4890219c51da247200223277f993e054	multilib	23ae8c186171e6476af098d2a50d0ee0	systemd	3165c885f3c71ffae7a867d931fb0e07	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=39ecf2e21c56373c86ff51b9af7ba948

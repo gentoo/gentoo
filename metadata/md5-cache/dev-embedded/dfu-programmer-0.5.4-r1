@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare unpack
+DEPEND=virtual/libusb:1 virtual/udev !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 virtual/pkgconfig
+DESCRIPTION=A Device Firmware Update based USB programmer for Atmel chips
+EAPI=4
+HOMEPAGE=http://dfu-programmer.sourceforge.net
+KEYWORDS=~amd64
+LICENSE=GPL-2
+RDEPEND=virtual/libusb:1 virtual/udev
+SLOT=0
+SRC_URI=mirror://sourceforge/dfu-programmer/dfu-programmer-0.5.4.tar.gz
+_eclass_exported_funcs=src_unpack:base src_prepare:- src_configure:base src_compile:base src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	9d81603248f2ba3ec59124320d123e5e	libtool	4890219c51da247200223277f993e054	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	udev	73058269b3e70e34e084fa3981282338
+_md5_=8cb916caba859c59fc5ed76020bc754a

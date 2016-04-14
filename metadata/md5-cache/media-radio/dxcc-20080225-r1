@@ -1,0 +1,13 @@
+DEFINED_PHASES=install prepare
+DESCRIPTION=A ham radio callsign DXCC lookup utility
+EAPI=5
+HOMEPAGE=http://fkurz.net/ham/dxcc.html
+IUSE=tk
+KEYWORDS=amd64 x86
+LICENSE=GPL-2
+RDEPEND=dev-lang/perl tk? ( dev-perl/Tk )
+SLOT=0
+SRC_URI=http://fkurz.net/ham/dxcc/dxcc-20080225.tar.gz
+_eclass_exported_funcs=src_prepare:- src_install:-
+_eclasses_=eutils	9d81603248f2ba3ec59124320d123e5e	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=f1d00757a9117738cc8a8f9486d93917

@@ -1,0 +1,13 @@
+DEFINED_PHASES=install prepare
+DEPEND=media-libs/ladspa-sdk
+DESCRIPTION=REV LADSPA plugins package. A stereo reverb plugin based on the well-known greverb
+EAPI=5
+HOMEPAGE=http://kokkinizita.linuxaudio.org/linuxaudio/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=media-libs/ladspa-sdk
+SLOT=0
+SRC_URI=http://kokkinizita.linuxaudio.org/linuxaudio/downloads/REV-plugins-0.3.1.tar.bz2
+_eclass_exported_funcs=src_prepare:- src_install:-
+_eclasses_=multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=a522d99cf23ae7b7f5f652b84bd3a833

@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install postinst prepare
+DEPEND=server? ( net-libs/libpcap )
+DESCRIPTION=A simple port-knocking daemon
+EAPI=4
+HOMEPAGE=http://www.zeroflux.org/projects/knock
+IUSE=+server
+KEYWORDS=amd64 ppc sparc x86
+LICENSE=GPL-2
+RDEPEND=server? ( net-libs/libpcap ) server? ( sys-apps/openrc )
+SLOT=0
+SRC_URI=http://www.zeroflux.org/proj/knock/files/knock-0.7.tar.gz
+_eclass_exported_funcs=pkg_postinst:- src_prepare:- src_configure:- src_install:-
+_md5_=65d8d67879c71398821f055bfa2176d1

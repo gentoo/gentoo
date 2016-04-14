@@ -1,0 +1,11 @@
+DEFINED_PHASES=install
+DESCRIPTION=C++11 wrapper for the LMDB database library
+EAPI=5
+HOMEPAGE=http://lmdbxx.sourceforge.net/
+KEYWORDS=~amd64 ~x86
+LICENSE=public-domain
+RDEPEND=dev-db/lmdb
+SLOT=0
+SRC_URI=mirror://sourceforge/lmdbxx/0.9.14.0/lmdbxx-0.9.14.0.tar.gz
+_eclass_exported_funcs=src_install:-
+_md5_=13d6cd91f561c08a7cf05eaad6a6453e

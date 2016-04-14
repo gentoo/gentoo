@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst preinst prepare setup unpack
+DESCRIPTION=Doom III - 3rd installment of the classic id 3D first-person shooter
+EAPI=5
+HOMEPAGE=http://www.doom3.com/
+KEYWORDS=-* ~amd64 ~x86
+LICENSE=DOOM3
+RDEPEND=sys-libs/glibc sys-libs/libstdc++-v3:5 amd64? ( sys-libs/glibc[multilib] sys-libs/libstdc++-v3:5[multilib] ) >=virtual/opengl-7.0-r1[abi_x86_32(-)] >=x11-libs/libX11-1.6.2[abi_x86_32(-)] >=x11-libs/libXext-1.3.2[abi_x86_32(-)] games-misc/games-envd
+RESTRICT=strip mirror
+SLOT=0
+SRC_URI=mirror://3dgamers/doom3/doom3-linux-1.1.1286-demo.x86.run mirror://idsoftware/doom3/linux/doom3-linux-1.1.1286-demo.x86.run mirror://gentoo/doom3.png
+_eclass_exported_funcs=pkg_preinst:games pkg_postinst:- pkg_setup:games src_unpack:- src_prepare:base src_configure:games src_compile:games src_install:-
+_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	9d81603248f2ba3ec59124320d123e5e	games	2cf0d67d765e6358b435ccda30c13ad8	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	unpacker	45d07319df5f40ee6af58418b0f930be	user	906f3c8eb3a2350a4f1191a89baa3e46
+_md5_=8d15479686d85bfeea192a7d9512c303

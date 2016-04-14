@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install unpack
+DESCRIPTION=A Portable Emacs Library. Used by XEmacs MIME support
+EAPI=0
+HOMEPAGE=http://xemacs.org/
+KEYWORDS=alpha amd64 hppa ppc ppc64 sparc x86
+LICENSE=GPL-2
+RDEPEND=app-xemacs/fsf-compat app-xemacs/xemacs-base app-editors/xemacs
+SLOT=0
+SRC_URI=http://ftp.xemacs.org/pub/xemacs/packages/apel-1.32-pkg.tar.gz
+_eclass_exported_funcs=src_unpack:xemacs-packages src_compile:xemacs-packages src_install:xemacs-packages
+_eclasses_=xemacs-packages	3efe8d071b1fa620109b658175e85267
+_md5_=dd7a60f76b579d36b80fdc996fdbf484

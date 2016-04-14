@@ -1,0 +1,10 @@
+DEFINED_PHASES=install
+DESCRIPTION=A utility to create text art tables from delimited input
+EAPI=0
+HOMEPAGE=http://sourceforge.net/projects/tabler/
+KEYWORDS=amd64 ppc x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=mirror://sourceforge/tabler/tabler-2.tar.gz
+_eclass_exported_funcs=src_install:-
+_md5_=cca2d9d78b96374c9bbc5d7eaf11e894

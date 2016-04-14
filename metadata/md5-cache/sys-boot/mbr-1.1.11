@@ -1,0 +1,12 @@
+DEFINED_PHASES=install postinst unpack
+DEPEND=sys-devel/bin86 test? ( dev-vcs/rcs )
+DESCRIPTION=A replacement master boot record for IBM-PC compatible computers
+EAPI=0
+HOMEPAGE=http://www.chiark.greenend.org.uk/~neilt/mbr/
+IUSE=test
+KEYWORDS=-alpha amd64 -ppc -sparc x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=http://www.chiark.greenend.org.uk/~neilt/mbr/mbr-1.1.11.tar.gz
+_eclass_exported_funcs=pkg_postinst:- src_unpack:- src_install:-
+_md5_=c32485b9770b7e4f091728cffd7aa171

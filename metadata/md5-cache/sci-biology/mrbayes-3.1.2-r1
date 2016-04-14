@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=sys-libs/ncurses mpi? ( virtual/mpi ) readline? ( sys-libs/readline:0 )
+DESCRIPTION=Bayesian Inference of Phylogeny
+EAPI=4
+HOMEPAGE=http://mrbayes.csit.fsu.edu/
+IUSE=debug mpi readline
+KEYWORDS=amd64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris
+LICENSE=GPL-2
+RDEPEND=sys-libs/ncurses mpi? ( virtual/mpi ) readline? ( sys-libs/readline:0 )
+SLOT=0
+SRC_URI=mirror://sourceforge/mrbayes/mrbayes-3.1.2.tar.gz
+_eclass_exported_funcs=src_prepare:- src_compile:- src_install:-
+_eclasses_=eutils	9d81603248f2ba3ec59124320d123e5e	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=cbcfd648e8584c43dc080e4afca5f038

@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=>=dev-libs/openssl-0.9.8 >=app-crypt/trousers-0.2.8
+DESCRIPTION=This provides a OpenSSL engine that uses private keys stored in TPM hardware
+EAPI=4
+HOMEPAGE=http://trousers.sourceforge.net
+KEYWORDS=~x86 ~amd64
+LICENSE=GPL-2
+RDEPEND=>=dev-libs/openssl-0.9.8 >=app-crypt/trousers-0.2.8
+SLOT=0
+SRC_URI=mirror://sourceforge/trousers/openssl_tpm_engine-0.4.1.tar.gz
+_eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
+_md5_=6b9eb89dcea79805eebfe050ab85e217

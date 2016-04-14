@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install prepare test
+DESCRIPTION=Reimplementation of Bourne shell based on pdksh
+EAPI=5
+HOMEPAGE=http://packages.debian.org/posh
+KEYWORDS=amd64 ppc x86
+LICENSE=GPL-2
+RESTRICT=test
+SLOT=0
+SRC_URI=mirror://debian/pool/main/p/posh/posh_0.12.tar.gz
+_eclass_exported_funcs=src_prepare:autotools-utils src_configure:- src_compile:autotools-utils src_test:autotools-utils src_install:autotools-utils
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	autotools-utils	419811142edf3516b0d0cf1a254d93cb	eutils	9d81603248f2ba3ec59124320d123e5e	libtool	4890219c51da247200223277f993e054	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=639c22844c1a3a02a5a1d89e1222f3c2

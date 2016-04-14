@@ -1,0 +1,11 @@
+DEFINED_PHASES=install
+DESCRIPTION=Extra themes for fvwm-themes
+EAPI=0
+HOMEPAGE=http://fvwm-themes.sourceforge.net/
+KEYWORDS=amd64 ~ppc ~ppc64 ~sparc x86
+LICENSE=GPL-2
+RDEPEND=x11-themes/fvwm-themes
+SLOT=0
+SRC_URI=mirror://sourceforge/fvwm-themes/fvwm-themes-extra-0.7.0.tar.bz2
+_eclass_exported_funcs=src_install:-
+_md5_=e98d379d6d3ecba4ba34cc73f6b7da6f

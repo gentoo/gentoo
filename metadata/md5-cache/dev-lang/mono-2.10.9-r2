@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install preinst prepare setup test unpack
+DEPEND=!dev-util/monodoc !minimal? ( =dev-dotnet/libgdiplus-2.10* ) ia64? ( sys-libs/libunwind ) sys-devel/bc virtual/yacc >=app-shells/bash-3.2 pax_kernel? ( sys-apps/elfix ) virtual/pkgconfig
+DESCRIPTION=Mono runtime and class libraries, a C# compiler/interpreter
+EAPI=4
+HOMEPAGE=http://www.mono-project.com/Main_Page
+IUSE=minimal pax_kernel xen
+KEYWORDS=amd64 ppc ~ppc64 x86
+LICENSE=MIT LGPL-2.1 GPL-2 BSD-4 NPL-1.1 Ms-PL GPL-2-with-linking-exception IDPL
+RDEPEND=!dev-util/monodoc !minimal? ( =dev-dotnet/libgdiplus-2.10* ) ia64? ( sys-libs/libunwind ) || ( www-client/links www-client/lynx )
+RESTRICT=test
+SLOT=0
+SRC_URI=http://download.mono-project.com/sources/mono/mono-2.10.9.tar.bz2
+_eclass_exported_funcs=pkg_preinst:- pkg_setup:- src_unpack:go-mono src_prepare:- src_configure:- src_compile:go-mono src_test:- src_install:-
+_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	9d81603248f2ba3ec59124320d123e5e	flag-o-matic	d270fa247153df66074f795fa42dba3e	go-mono	5461456ba8e9de04d3dbb017b19c6892	linux-info	fd1e29abbb02cbc49f1a14299846e9c4	mono	3fb22ec265e021c7294a29e720f3d5f7	multilib	23ae8c186171e6476af098d2a50d0ee0	pax-utils	ecf634cba91bb9591a8fdb6f6145f1bb	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=0ffd45437c47d452202e5fb285a979ea

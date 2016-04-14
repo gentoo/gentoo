@@ -1,0 +1,15 @@
+DEFINED_PHASES=configure prepare
+DEPEND=sys-libs/ncurses[unicode?] geoip? ( dev-libs/geoip ) !tokyocabinet? ( dev-libs/glib:2 ) tokyocabinet? ( dev-db/tokyocabinet btree? ( app-arch/bzip2 sys-libs/zlib ) ) virtual/pkgconfig
+DESCRIPTION=A real-time web log analyzer and interactive viewer that runs in a terminal
+EAPI=5
+HOMEPAGE=http://goaccess.io
+IUSE=btree debug geoip tokyocabinet unicode
+KEYWORDS=~amd64 ~x86 ~amd64-linux
+LICENSE=GPL-2
+RDEPEND=sys-libs/ncurses[unicode?] geoip? ( dev-libs/geoip ) !tokyocabinet? ( dev-libs/glib:2 ) tokyocabinet? ( dev-db/tokyocabinet btree? ( app-arch/bzip2 sys-libs/zlib ) )
+REQUIRED_USE=btree? ( tokyocabinet )
+SLOT=0
+SRC_URI=http://tar.goaccess.io/goaccess-0.9.tar.gz
+_eclass_exported_funcs=src_prepare:- src_configure:-
+_eclasses_=eutils	9d81603248f2ba3ec59124320d123e5e	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=ca16a3ee7f37306914e3dc8904977adc

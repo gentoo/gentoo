@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install postinst setup unpack
+DEPEND==www-servers/apache-2*
+DESCRIPTION=An Apache2 module which can do debugging of modules in the Apache2 Filter Chain
+EAPI=0
+HOMEPAGE=http://apache.webthing.com/mod_diagnostics/
+KEYWORDS=x86
+LICENSE=GPL-2
+RDEPEND==www-servers/apache-2*
+SLOT=0
+SRC_URI=mirror://gentoo/mod_diagnostics-0.0.1.c
+_eclass_exported_funcs=pkg_postinst:apache-module pkg_setup:depend.apache src_unpack:- src_compile:apache-module src_install:apache-module
+_eclasses_=apache-module	5e66430013d92dfe0bf8672b05319b6d	depend.apache	e3c541cb90838388f81620d630c28f41	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=84e101c440e8bc345dda377a206f6e90

@@ -1,0 +1,12 @@
+DEFINED_PHASES=prepare
+DESCRIPTION=Imposes stressful loads on different aspects of the system
+EAPI=5
+HOMEPAGE=http://people.seas.harvard.edu/~apw/stress
+IUSE=static
+KEYWORDS=~amd64 ~arm ~mips ~ppc ~ppc64 ~sparc ~x86
+LICENSE=GPL-3
+SLOT=0
+SRC_URI=http://people.seas.harvard.edu/~apw/stress/stress-1.0.4.tar.gz -> stress-1.0.4-r1.tar.gz
+_eclass_exported_funcs=src_prepare:-
+_eclasses_=eutils	9d81603248f2ba3ec59124320d123e5e	flag-o-matic	d270fa247153df66074f795fa42dba3e	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=4208818117847413171769ab2bf4a6f7

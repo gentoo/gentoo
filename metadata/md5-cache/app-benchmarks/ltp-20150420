@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst prepare setup
+DEPEND=expect? ( dev-tcltk/expect ) perl? ( dev-lang/perl ) python? ( dev-lang/python ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=A testsuite for the linux kernel
+EAPI=5
+HOMEPAGE=http://linux-test-project.github.io/
+IUSE=expect perl pm open-posix python rt
+KEYWORDS=~amd64 ~hppa ~ppc ~x86
+LICENSE=GPL-2
+RESTRICT=test
+SLOT=0
+SRC_URI=https://github.com/linux-test-project/ltp/archive/20150420.tar.gz -> ltp-20150420.tar.gz
+_eclass_exported_funcs=pkg_postinst:readme.gentoo pkg_setup:- src_prepare:- src_configure:- src_compile:- src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	9d81603248f2ba3ec59124320d123e5e	libtool	4890219c51da247200223277f993e054	multilib	23ae8c186171e6476af098d2a50d0ee0	readme.gentoo	df3fc8fdaf5a519e7d48c83e7592c95f	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=2e81ff8f2659307700ccfbf0d8b3cf5e

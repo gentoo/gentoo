@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install prepare setup
+DEPEND=>=dev-libs/btparser-0.18:= >=dev-libs/glib-2.21:2 dev-libs/json-c:= dev-libs/libtar dev-libs/libxml2:2 dev-libs/newt:= dev-libs/nss:= dev-libs/xmlrpc-c:=[curl] net-libs/libproxy:= net-misc/curl:=[ssl] sys-apps/dbus >=x11-libs/gtk+-3.3.12:3 x11-misc/xdg-utils python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] app-text/asciidoc app-text/xmlto >=dev-util/intltool-0.3.50 >=sys-devel/gettext-0.17 virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Generic library for reporting software bugs
+EAPI=5
+HOMEPAGE=https://fedorahosted.org/abrt/
+IUSE=debug python_targets_python2_7
+KEYWORDS=amd64 x86
+LICENSE=GPL-2
+RDEPEND=>=dev-libs/btparser-0.18:= >=dev-libs/glib-2.21:2 dev-libs/json-c:= dev-libs/libtar dev-libs/libxml2:2 dev-libs/newt:= dev-libs/nss:= dev-libs/xmlrpc-c:=[curl] net-libs/libproxy:= net-misc/curl:=[ssl] sys-apps/dbus >=x11-libs/gtk+-3.3.12:3 x11-misc/xdg-utils python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] || ( gnome-base/gnome-keyring >=kde-apps/kwalletd-4.8 )
+RESTRICT=test
+SLOT=0
+SRC_URI=https://fedorahosted.org/released/abrt/libreport-2.0.13.tar.gz
+_eclass_exported_funcs=pkg_setup:- src_prepare:- src_configure:- src_compile:- src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	9d81603248f2ba3ec59124320d123e5e	libtool	4890219c51da247200223277f993e054	multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	23ae8c186171e6476af098d2a50d0ee0	python-r1	0f6937650a475d673baa5d0c8c0b37b3	python-utils-r1	2e6826f6a93ad2acf904eecf5b5fb6d2	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	user	906f3c8eb3a2350a4f1191a89baa3e46
+_md5_=3ef6ac36fd808d7cca5523b85f4c103e

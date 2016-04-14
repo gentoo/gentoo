@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install postinst preinst prepare setup test unpack
+DEPEND=dev-db/sqlite:3 >=dev-lang/lua-5:0 dev-lua/toluapp media-libs/libpng:0 virtual/opengl x11-libs/libX11 media-libs/libsdl[sound,opengl,video] sys-libs/zlib bzip2? ( app-arch/bzip2 ) fluidsynth? ( media-sound/fluidsynth ) mikmod? ( media-libs/libmikmod ) mng? ( media-libs/libmng ) vorbis? ( media-libs/libogg media-libs/libvorbis theora? ( media-libs/libtheora ) ) doc? ( app-doc/doxygen ) virtual/pkgconfig sys-devel/make >=dev-util/cmake-2.8.12
+DESCRIPTION=A realtime strategy game engine
+EAPI=5
+HOMEPAGE=https://launchpad.net/stratagus/
+IUSE=bzip2 debug doc fluidsynth mikmod mng theora vorbis
+KEYWORDS=amd64 x86
+LICENSE=GPL-2
+RDEPEND=dev-db/sqlite:3 >=dev-lang/lua-5:0 dev-lua/toluapp media-libs/libpng:0 virtual/opengl x11-libs/libX11 media-libs/libsdl[sound,opengl,video] sys-libs/zlib bzip2? ( app-arch/bzip2 ) fluidsynth? ( media-sound/fluidsynth ) mikmod? ( media-libs/libmikmod ) mng? ( media-libs/libmng ) vorbis? ( media-libs/libogg media-libs/libvorbis theora? ( media-libs/libtheora ) ) games-misc/games-envd
+REQUIRED_USE=theora? ( vorbis )
+SLOT=0
+SRC_URI=https://launchpad.net/stratagus/trunk/2.3/+download/stratagus_2.3.0.orig.tar.gz
+_eclass_exported_funcs=pkg_preinst:games pkg_postinst:games pkg_setup:games src_unpack:base src_prepare:base src_configure:- src_compile:- src_test:cmake-utils src_install:-
+_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	cmake-utils	422bbd1bee2557490177a34dbe0a662b	eutils	9d81603248f2ba3ec59124320d123e5e	flag-o-matic	d270fa247153df66074f795fa42dba3e	games	2cf0d67d765e6358b435ccda30c13ad8	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	user	906f3c8eb3a2350a4f1191a89baa3e46	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=72da6b81cbfdb6ba1baf25195db747cc

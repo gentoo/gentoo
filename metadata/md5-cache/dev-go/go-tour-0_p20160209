@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install test unpack
+DEPEND=dev-go/go-tools:= >=dev-lang/go-1.4.2:=
+DESCRIPTION=A Tour of Go
+EAPI=5
+HOMEPAGE=https://tour.golang.org
+KEYWORDS=~amd64
+LICENSE=BSD
+SLOT=0
+SRC_URI=https://github.com/golang/tour/archive/6b2e5b35ce8ed092eaedc3d2a2294373a639f122.tar.gz -> go-tour-0_p20160209.tar.gz
+_eclass_exported_funcs=src_unpack:golang-vcs-snapshot src_compile:- src_test:golang-build src_install:-
+_eclasses_=golang-base	08fe6e0e2b4750daff8887a7f0e1f873	golang-build	a44f10e6bd86ecccf2a07cc0d4cf6bec	golang-vcs-snapshot	1caa6d8238d2378ad688ae068ff22e5a
+_md5_=1dccba359980958e81fb03e646253df0

@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst preinst prepare setup unpack
+DEPEND=sdl? ( >=media-libs/libsdl-1.2.0[opengl?,sound?,video] ) ncurses? ( sys-libs/ncurses:0 sound? ( !oss? ( media-libs/libsdl[sound] ) ) ) !sdl? ( !ncurses? ( sys-libs/ncurses:0 sound? ( !oss? ( media-libs/libsdl[sound] ) ) ) ) readline? ( sys-libs/readline:0 sys-libs/ncurses:0 ) media-libs/libpng:0 sys-libs/zlib app-arch/unzip !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Atari 800 emulator
+EAPI=5
+HOMEPAGE=http://atari800.sourceforge.net/
+IUSE=ncurses oss opengl readline +sdl +sound
+KEYWORDS=amd64 ~ppc x86
+LICENSE=GPL-2+
+RDEPEND=sdl? ( >=media-libs/libsdl-1.2.0[opengl?,sound?,video] ) ncurses? ( sys-libs/ncurses:0 sound? ( !oss? ( media-libs/libsdl[sound] ) ) ) !sdl? ( !ncurses? ( sys-libs/ncurses:0 sound? ( !oss? ( media-libs/libsdl[sound] ) ) ) ) readline? ( sys-libs/readline:0 sys-libs/ncurses:0 ) media-libs/libpng:0 sys-libs/zlib games-misc/games-envd
+SLOT=0
+SRC_URI=mirror://sourceforge/atari800/atari800-3.1.0.tar.gz mirror://sourceforge/atari800/xf25.zip
+_eclass_exported_funcs=pkg_preinst:games pkg_postinst:games pkg_setup:games src_unpack:base src_prepare:- src_configure:- src_compile:- src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	9d81603248f2ba3ec59124320d123e5e	games	2cf0d67d765e6358b435ccda30c13ad8	libtool	4890219c51da247200223277f993e054	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	user	906f3c8eb3a2350a4f1191a89baa3e46
+_md5_=71f87f1eb8a18d5d907183ca89107d2f

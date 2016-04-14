@@ -1,0 +1,10 @@
+DEFINED_PHASES=install
+DESCRIPTION=german-language hypertext tutorial about Linux
+EAPI=5
+HOMEPAGE=http://selflinux.sourceforge.net/
+KEYWORDS=amd64 ppc x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=mirror://sourceforge/selflinux/SelfLinux-0.13.0-html.tar.gz
+_eclass_exported_funcs=src_install:-
+_md5_=032f010b213c9963e1d64ef74e745dd4

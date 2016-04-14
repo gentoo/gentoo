@@ -1,0 +1,15 @@
+DEFINED_PHASES=install postinst prerm unpack
+DEPEND=office_implementation_libreoffice? ( || ( app-office/libreoffice[java] app-office/libreoffice-bin[java] ) ) office_implementation_openoffice? ( || ( app-office/openoffice[java] app-office/openoffice-bin[java] ) ) app-arch/unzip
+DESCRIPTION=Extension for export to Google docs, zoho and WebDAV
+EAPI=5
+HOMEPAGE=https://code.google.com/p/ooo2gd/
+IUSE=office_implementation_libreoffice office_implementation_openoffice
+KEYWORDS=amd64 x86
+LICENSE=LGPL-2
+RDEPEND=office_implementation_libreoffice? ( || ( app-office/libreoffice[java] app-office/libreoffice-bin[java] ) ) office_implementation_openoffice? ( || ( app-office/openoffice[java] app-office/openoffice-bin[java] ) )
+REQUIRED_USE=|| ( office_implementation_libreoffice office_implementation_openoffice )
+SLOT=0
+SRC_URI=https://ooo2gd.googlecode.com/files/ooo2gd_3.0.0.oxt
+_eclass_exported_funcs=pkg_prerm:office-ext-r1 pkg_postinst:office-ext-r1 src_unpack:office-ext-r1 src_install:office-ext-r1
+_eclasses_=eutils	9d81603248f2ba3ec59124320d123e5e	multilib	23ae8c186171e6476af098d2a50d0ee0	office-ext-r1	60f5f222dd37820c823e1451bbd621cf	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=8eb0b64d54bbe5f2f76f6cd01e71d336

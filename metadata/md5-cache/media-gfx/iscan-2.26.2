@@ -1,0 +1,15 @@
+DEFINED_PHASES=configure install postinst prepare
+DEPEND=media-gfx/iscan-data media-gfx/sane-backends virtual/udev virtual/libusb:0 X? ( x11-libs/gtk+:2 gimp? ( media-gfx/gimp ) png? ( media-libs/libpng ) jpeg? ( virtual/jpeg ) tiff? ( media-libs/tiff ) ) virtual/pkgconfig X? ( sys-devel/gettext ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=EPSON Image Scan! for Linux (including sane-epkowa backend)
+EAPI=2
+HOMEPAGE=http://www.avasys.jp/english/linux_e/dl_scan.html
+IUSE=X gimp jpeg png tiff doc linguas_ar linguas_de linguas_es linguas_fr linguas_it linguas_ja linguas_ko linguas_nl linguas_pt linguas_zh_CN linguas_zh_TW
+KEYWORDS=amd64 x86
+LICENSE=GPL-2 AVASYS
+RDEPEND=media-gfx/iscan-data media-gfx/sane-backends virtual/udev virtual/libusb:0 X? ( x11-libs/gtk+:2 gimp? ( media-gfx/gimp ) png? ( media-libs/libpng ) jpeg? ( virtual/jpeg ) tiff? ( media-libs/tiff ) )
+RESTRICT=test
+SLOT=0
+SRC_URI=http://linux.avasys.jp/drivers/iscan/2.26.2/iscan_2.26.2-1.tar.gz doc? ( http://linux.avasys.jp/drivers/iscan/doc/userg_revL_e.pdf )
+_eclass_exported_funcs=pkg_postinst:- src_prepare:- src_configure:- src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	9d81603248f2ba3ec59124320d123e5e	flag-o-matic	d270fa247153df66074f795fa42dba3e	libtool	4890219c51da247200223277f993e054	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=2462f8f693ceea2991696ebb9b010e81

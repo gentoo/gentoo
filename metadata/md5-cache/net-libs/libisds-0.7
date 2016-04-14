@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare unpack
+DEPEND=app-crypt/gpgme dev-libs/expat dev-libs/libgcrypt:0 dev-libs/libxml2 curl? ( net-misc/curl[ssl] ) virtual/pkgconfig nls? ( sys-devel/gettext )
+DESCRIPTION=Client library for accessing ISDS Soap services
+EAPI=5
+HOMEPAGE=http://xpisar.wz.cz/libisds/
+IUSE=+curl debug nls static-libs test
+KEYWORDS=~amd64 ~mips ~x86
+LICENSE=LGPL-3
+RDEPEND=app-crypt/gpgme dev-libs/expat dev-libs/libgcrypt:0 dev-libs/libxml2 curl? ( net-misc/curl[ssl] ) >=app-crypt/gnupg-2
+SLOT=0
+SRC_URI=http://xpisar.wz.cz/libisds/dist/libisds-0.7.tar.xz
+_eclass_exported_funcs=src_unpack:base src_prepare:- src_configure:- src_compile:base src_install:-
+_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	9d81603248f2ba3ec59124320d123e5e	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=b169791b13c6178ded559639746308dd

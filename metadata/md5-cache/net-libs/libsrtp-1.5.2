@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test unpack
+DEPEND=openssl? ( dev-libs/openssl:0 ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Open-source implementation of the Secure Real-time Transport Protocol (SRTP)
+EAPI=5
+HOMEPAGE=https://github.com/cisco/libsrtp
+IUSE=aesicm console debug doc openssl static-libs syslog
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 -sparc ~x86 ~x86-fbsd ~ppc-macos ~x64-macos ~x86-macos
+LICENSE=BSD
+RDEPEND=openssl? ( dev-libs/openssl:0 )
+SLOT=0
+SRC_URI=https://github.com/cisco/libsrtp/archive/v1.5.2.tar.gz -> libsrtp-1.5.2.tar.gz
+_eclass_exported_funcs=src_unpack:base src_prepare:- src_configure:- src_compile:- src_test:- src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	9d81603248f2ba3ec59124320d123e5e	libtool	4890219c51da247200223277f993e054	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=0085aca87d04a345c83441acd5619522

@@ -1,0 +1,11 @@
+DEFINED_PHASES=install prepare
+DESCRIPTION=Tools for configuring ISA PnP devices
+EAPI=3
+HOMEPAGE=http://www.roestock.demon.co.uk/isapnptools/
+KEYWORDS=-* amd64 x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=ftp://metalab.unc.edu/pub/Linux/system/hardware/isapnptools-1.27.tgz
+_eclass_exported_funcs=src_prepare:- src_install:-
+_eclasses_=eutils	9d81603248f2ba3ec59124320d123e5e	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=880e564d2c45b3755d85a362d1f63dbc

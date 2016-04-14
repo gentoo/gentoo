@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=>=dev-libs/cxxtools-2.2.1 sys-libs/zlib[minizip] ssl? ( gnutls? ( >=net-libs/gnutls-1.2.0 dev-libs/libgcrypt:0 ) !gnutls? ( dev-libs/openssl ) ) virtual/pkgconfig app-arch/zip !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Modular, multithreaded webapplicationserver extensible with C++
+EAPI=5
+HOMEPAGE=http://www.tntnet.org/
+IUSE=doc gnutls server ssl examples
+KEYWORDS=amd64 ~sparc x86
+LICENSE=LGPL-2.1
+RDEPEND=>=dev-libs/cxxtools-2.2.1 sys-libs/zlib[minizip] ssl? ( gnutls? ( >=net-libs/gnutls-1.2.0 dev-libs/libgcrypt:0 ) !gnutls? ( dev-libs/openssl ) )
+SLOT=0
+SRC_URI=http://www.tntnet.org/download/tntnet-2.2.1.tar.gz
+_eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	9d81603248f2ba3ec59124320d123e5e	libtool	4890219c51da247200223277f993e054	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=98764ea9397c08e9e64e17ba8e092797

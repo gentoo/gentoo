@@ -1,0 +1,15 @@
+DEFINED_PHASES=install postinst prerm unpack
+DEPEND=office_implementation_libreoffice? ( || ( app-office/libreoffice app-office/libreoffice-bin ) ) office_implementation_openoffice? ( || ( app-office/openoffice app-office/openoffice-bin ) ) app-arch/unzip
+DESCRIPTION=Extension for converting text to numbers
+EAPI=5
+HOMEPAGE=http://extensions.libreoffice.org/extension-center/ct2n-convert-text-to-number-and-dates
+IUSE=office_implementation_libreoffice office_implementation_openoffice
+KEYWORDS=amd64 x86
+LICENSE=LGPL-3
+RDEPEND=office_implementation_libreoffice? ( || ( app-office/libreoffice app-office/libreoffice-bin ) ) office_implementation_openoffice? ( || ( app-office/openoffice app-office/openoffice-bin ) )
+REQUIRED_USE=|| ( office_implementation_libreoffice office_implementation_openoffice )
+SLOT=0
+SRC_URI=http://extensions.libreoffice.org/extension-center/ct2n-convert-text-to-number-and-dates/releases/1.4.0/converttexttonumber-1.4.0.oxt
+_eclass_exported_funcs=pkg_prerm:office-ext-r1 pkg_postinst:office-ext-r1 src_unpack:office-ext-r1 src_install:office-ext-r1
+_eclasses_=eutils	9d81603248f2ba3ec59124320d123e5e	multilib	23ae8c186171e6476af098d2a50d0ee0	office-ext-r1	60f5f222dd37820c823e1451bbd621cf	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=61f24f809121590359d1eb12bdeab2c2

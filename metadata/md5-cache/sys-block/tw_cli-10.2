@@ -1,0 +1,12 @@
+DEFINED_PHASES=install setup unpack
+DEPEND=app-arch/unzip
+DESCRIPTION=3ware SATA+PATA RAID controller Command Line Interface tool
+EAPI=2
+HOMEPAGE=https://www.3ware.com/3warekb/article.aspx?id=14847
+KEYWORDS=-* amd64 x86 ~x86-fbsd
+LICENSE=3ware
+RESTRICT=strip primaryuri
+SLOT=0
+SRC_URI=kernel_linux? ( http://www.lsi.com/DistributionSystem/AssetDocument/cli_linux_10.2.zip?prodName=3ware%20SAS%209750-8i%20Gentoo -> cli_linux_10.2.zip ) kernel_FreeBSD? ( http://www.lsi.com/DistributionSystem/AssetDocument/cli_freebsd_10.2.zip?prodName=3ware%20SAS%209750-8i%20Gentoo -> cli_freebsd_10.2.zip )
+_eclass_exported_funcs=pkg_setup:- src_unpack:- src_install:-
+_md5_=2b5421cb3330bce1a6e2df2e76174fa0

@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install prepare
+DESCRIPTION=A multiple sequence alignment package
+EAPI=5
+HOMEPAGE=http://www.tcoffee.org/Projects_home_page/t_coffee_home_page.html
+IUSE=examples
+KEYWORDS=~amd64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux
+LICENSE=GPL-2
+RDEPEND=sci-biology/clustalw sci-chemistry/tm-align
+SLOT=0
+SRC_URI=http://www.tcoffee.org/Packages/Stable/Version_11.00.8cbe486/T-COFFEE_distribution_Version_11.00.8cbe486.tar.gz
+_eclass_exported_funcs=src_prepare:- src_compile:- src_install:-
+_eclasses_=eutils	9d81603248f2ba3ec59124320d123e5e	flag-o-matic	d270fa247153df66074f795fa42dba3e	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=f6ad616b3dcf58a2f7c0551f7aea38a6

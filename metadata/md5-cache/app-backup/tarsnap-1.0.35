@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure
+DEPEND=!libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) sys-libs/e2fsprogs-libs sys-libs/zlib acl? ( sys-apps/acl ) bzip2? ( app-arch/bzip2 ) lzma? ( app-arch/xz-utils ) xattr? ( sys-apps/attr ) virtual/os-headers
+DESCRIPTION=Online backups for the truly paranoid
+EAPI=5
+HOMEPAGE=http://www.tarsnap.com/
+IUSE=acl bzip2 libressl lzma cpu_flags_x86_sse2 xattr
+KEYWORDS=~amd64 ~x86
+LICENSE=tarsnap
+RDEPEND=!libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) sys-libs/e2fsprogs-libs sys-libs/zlib acl? ( sys-apps/acl ) bzip2? ( app-arch/bzip2 ) lzma? ( app-arch/xz-utils ) xattr? ( sys-apps/attr )
+SLOT=0
+SRC_URI=https://www.tarsnap.com/download/tarsnap-autoconf-1.0.35.tgz
+_eclass_exported_funcs=src_configure:-
+_md5_=578b84c48428df36b7d4398a8cf223cf

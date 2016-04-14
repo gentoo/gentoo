@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare pretend test
+DEPEND=~app-leechcraft/lc-core-0.6.65 graffiti? ( media-libs/flac ) guess? ( app-i18n/libguess ) media-libs/gstreamer:0.10 media-libs/taglib mpris? ( dev-qt/qtdbus:4 ) dev-qt/qtdeclarative:4 sys-devel/make >=dev-util/cmake-2.8.12 app-arch/xz-utils
+DESCRIPTION=LeechCraft Media Player, Phonon-based audio/video player
+EAPI=4
+HOMEPAGE=http://leechcraft.org/
+IUSE=debug +graffiti +guess +mpris +mp3tunes
+KEYWORDS=~amd64 ~x86
+LICENSE=Boost-1.0
+RDEPEND=~app-leechcraft/lc-core-0.6.65 graffiti? ( media-libs/flac ) guess? ( app-i18n/libguess ) media-libs/gstreamer:0.10 media-libs/taglib mpris? ( dev-qt/qtdbus:4 ) dev-qt/qtdeclarative:4
+SLOT=0
+SRC_URI=http://dist.leechcraft.org/LeechCraft/0.6.65/leechcraft-0.6.65.tar.xz
+_eclass_exported_funcs=pkg_pretend:leechcraft src_prepare:cmake-utils src_configure:- src_compile:cmake-utils src_test:cmake-utils src_install:cmake-utils
+_eclasses_=cmake-utils	422bbd1bee2557490177a34dbe0a662b	eutils	9d81603248f2ba3ec59124320d123e5e	flag-o-matic	d270fa247153df66074f795fa42dba3e	leechcraft	31c814e6a5231038f3abd13d747fefaf	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=0c0ef3170c148b289c5d1e0eafe21acb

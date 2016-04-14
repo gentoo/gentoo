@@ -1,0 +1,10 @@
+DEFINED_PHASES=install
+DESCRIPTION=Linux Gazette - common files
+EAPI=0
+HOMEPAGE=http://linuxgazette.net/
+KEYWORDS=alpha amd64 arm hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86
+LICENSE=OPL
+SLOT=0
+SRC_URI=mirror://gentoo/lg-base-182.tar.gz
+_eclass_exported_funcs=src_install:-
+_md5_=eba718cbf0dac8a38e953b638eb0aea7

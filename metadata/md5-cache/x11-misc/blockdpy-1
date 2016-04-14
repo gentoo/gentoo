@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install postinst unpack
+DEPEND=x11-libs/libX11 x11-libs/libXext
+DESCRIPTION=Tool to block access via the physical display while x11vnc is running
+EAPI=0
+HOMEPAGE=http://www.karlrunge.com/x11vnc/blockdpy.c
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=x11-libs/libX11 x11-libs/libXext
+SLOT=0
+SRC_URI=http://www.karlrunge.com/x11vnc/blockdpy.c
+_eclass_exported_funcs=pkg_postinst:- src_unpack:- src_compile:- src_install:-
+_eclasses_=multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=ebc3d046fdda79d0ed2378813ba62763

@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst prepare pretend test unpack
+DEPEND=>=dev-cpp/libxmlpp-2.33.1:2.6 >=dev-libs/boost-1.42 dev-libs/libpcre[cxx] media-fonts/liberation-fonts media-libs/libpng media-libs/libsdl >=sys-devel/gcc-4.6.0[cxx] <sys-devel/llvm-3.7 >=sys-devel/llvm-3.4 x11-libs/cairo x11-libs/gtk+:2 x11-libs/libX11 x11-libs/pango curl? ( net-misc/curl ) ffmpeg? ( virtual/ffmpeg ) !gles? ( >=media-libs/glew-1.5.3 virtual/opengl ) gles? ( media-libs/mesa[gles2] ) pulseaudio? ( media-sound/pulseaudio ) rtmp? ( media-video/rtmpdump ) virtual/jpeg amd64? ( dev-lang/nasm ) x86? ( dev-lang/nasm ) virtual/pkgconfig sys-devel/make >=dev-util/cmake-2.8.12 app-arch/unzip
+DESCRIPTION=High performance flash player
+EAPI=5
+HOMEPAGE=http://lightspark.sourceforge.net/
+IUSE=curl ffmpeg gles nsplugin profile pulseaudio rtmp sdl
+KEYWORDS=~amd64 ~x86
+LICENSE=LGPL-3
+RDEPEND=>=dev-cpp/libxmlpp-2.33.1:2.6 >=dev-libs/boost-1.42 dev-libs/libpcre[cxx] media-fonts/liberation-fonts media-libs/libpng media-libs/libsdl >=sys-devel/gcc-4.6.0[cxx] <sys-devel/llvm-3.7 >=sys-devel/llvm-3.4 x11-libs/cairo x11-libs/gtk+:2 x11-libs/libX11 x11-libs/pango curl? ( net-misc/curl ) ffmpeg? ( virtual/ffmpeg ) !gles? ( >=media-libs/glew-1.5.3 virtual/opengl ) gles? ( media-libs/mesa[gles2] ) pulseaudio? ( media-sound/pulseaudio ) rtmp? ( media-video/rtmpdump ) virtual/jpeg
+SLOT=0
+SRC_URI=mirror://gentoo/lightspark-0.7.2_p20150318.tar.gz
+_eclass_exported_funcs=pkg_pretend:- pkg_postinst:- src_unpack:- src_prepare:cmake-utils src_configure:- src_compile:cmake-utils src_test:cmake-utils src_install:-
+_eclasses_=cmake-utils	422bbd1bee2557490177a34dbe0a662b	eutils	9d81603248f2ba3ec59124320d123e5e	flag-o-matic	d270fa247153df66074f795fa42dba3e	mozextension	3d8ee4835f89ff39d4666656aa603433	multilib	23ae8c186171e6476af098d2a50d0ee0	nsplugins	bf5bfcef1d2f0adad7e6230455df8e91	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=eb9170d02da655b44ea989832567bb8f

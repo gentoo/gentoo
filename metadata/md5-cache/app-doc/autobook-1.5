@@ -1,0 +1,11 @@
+DEFINED_PHASES=install
+DESCRIPTION=GNU Autoconf, Automake and Libtool
+EAPI=0
+HOMEPAGE=https://sources.redhat.com/autobook/
+IUSE=examples
+KEYWORDS=amd64 arm hppa ia64 m68k ppc s390 sh x86
+LICENSE=OPL
+SLOT=0
+SRC_URI=https://sources.redhat.com/autobook/autobook-1.5.tar.gz examples? ( https://sources.redhat.com/autobook/foonly-2.0.tar.gz https://sources.redhat.com/autobook/small-2.0.tar.gz https://sources.redhat.com/autobook/hello-2.0.tar.gz https://sources.redhat.com/autobook/convenience-2.0.tar.gz )
+_eclass_exported_funcs=src_install:-
+_md5_=97a7289532662a986b70e3805b339fb8

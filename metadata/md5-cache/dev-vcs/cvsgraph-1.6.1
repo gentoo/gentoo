@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install
+DEPEND=media-libs/gd zlib? ( sys-libs/zlib ) gif? ( media-libs/giflib ) png? ( media-libs/libpng ) jpeg? ( virtual/jpeg ) truetype? ( media-libs/freetype )
+DESCRIPTION=CVS/RCS repository grapher
+EAPI=0
+HOMEPAGE=http://www.akhphd.au.dk/~bertho/cvsgraph
+IUSE=gif jpeg nls png truetype zlib
+KEYWORDS=-alpha amd64 -ia64 ppc sparc x86
+LICENSE=GPL-2
+RDEPEND=media-libs/gd zlib? ( sys-libs/zlib ) gif? ( media-libs/giflib ) png? ( media-libs/libpng ) jpeg? ( virtual/jpeg ) truetype? ( media-libs/freetype )
+SLOT=0
+SRC_URI=http://www.akhphd.au.dk/~bertho/cvsgraph/release/cvsgraph-1.6.1.tar.gz
+_eclass_exported_funcs=src_compile:- src_install:-
+_md5_=eacacb4ee6b5a3228a8198f8b14476d6

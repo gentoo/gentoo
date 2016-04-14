@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install postinst preinst prepare setup test unpack
+DEPEND=dev-java/commons-httpclient:3 dev-java/commons-logging dev-java/junit:4 >=virtual/jdk-1.6 app-arch/unzip >=dev-java/java-config-2.2.0 >=dev-java/ant-core-1.8.2:0 >=dev-java/javatoolkit-0.3.0-r2
+DESCRIPTION=An open source clone of the popular Axis and Allies boardgame
+EAPI=5
+HOMEPAGE=http://triplea.sourceforge.net/
+IUSE=elibc_FreeBSD elibc_FreeBSD
+KEYWORDS=amd64 x86
+LICENSE=GPL-2
+RDEPEND=dev-java/commons-httpclient:3 dev-java/commons-logging dev-java/junit:4 >=virtual/jre-1.6 >=dev-java/java-config-2.2.0 games-misc/games-envd
+RESTRICT=test
+SLOT=0
+SRC_URI=mirror://sourceforge/triplea/triplea_1_8_0_9_source_code_only.zip
+_eclass_exported_funcs=pkg_preinst:games pkg_postinst:games pkg_setup:- src_unpack:base src_prepare:- src_configure:games src_compile:- src_test:- src_install:-
+_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	9d81603248f2ba3ec59124320d123e5e	games	2cf0d67d765e6358b435ccda30c13ad8	java-ant-2	7c5d0c274d390745f5033754a319f515	java-pkg-2	b02dc1e46b3648e467b5fbdf7857cf28	java-utils-2	4f0e83a2c108b9f3d74ecebf32e2f483	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	user	906f3c8eb3a2350a4f1191a89baa3e46	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=e8b9958eb72a3fbda7b611a08bef7f76

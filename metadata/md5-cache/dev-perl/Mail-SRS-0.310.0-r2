@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst prepare test unpack
+DEPEND=>=dev-perl/Digest-HMAC-1.01-r1 >=dev-perl/MLDBM-2.01 >=virtual/perl-DB_File-1.807 >=virtual/perl-Digest-MD5-2.33 >=virtual/perl-Storable-2.04-r1 test? ( >=dev-perl/Test-Pod-1.00 >=dev-perl/Test-Pod-Coverage-0.02 ) dev-lang/perl:=[-build(-)]
+DESCRIPTION=Interface to Sender Rewriting Scheme
+EAPI=5
+HOMEPAGE=http://search.cpan.org/dist/Mail-SRS/
+IUSE=test
+KEYWORDS=amd64 x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=>=dev-perl/Digest-HMAC-1.01-r1 >=dev-perl/MLDBM-2.01 >=virtual/perl-DB_File-1.807 >=virtual/perl-Digest-MD5-2.33 >=virtual/perl-Storable-2.04-r1 dev-lang/perl:=[-build(-)]
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/S/SH/SHEVEK/Mail-SRS-0.31.tar.gz
+_eclass_exported_funcs=pkg_postinst:- src_unpack:perl-module src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:-
+_eclasses_=eutils	9d81603248f2ba3ec59124320d123e5e	multilib	23ae8c186171e6476af098d2a50d0ee0	multiprocessing	e32940a7b2a9992ad217eccddb84d548	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	461f1d9eb930e8d1b178a39e83635fd0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	unpacker	45d07319df5f40ee6af58418b0f930be
+_md5_=fb040dde63d873780267cdc083770841

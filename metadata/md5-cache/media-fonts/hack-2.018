@@ -1,0 +1,14 @@
+DEFINED_PHASES=install postinst postrm setup unpack
+DEPEND=app-arch/unzip X? ( x11-apps/mkfontdir media-fonts/encodings )
+DESCRIPTION=A typeface designed for source code
+EAPI=5
+HOMEPAGE=https://github.com/chrissimpkins/Hack
+IUSE=X
+KEYWORDS=~amd64 ~x86
+LICENSE=OFL-1.1
+RESTRICT=binchecks strip
+SLOT=0
+SRC_URI=https://github.com/chrissimpkins/Hack/releases/download/v2.018/Hack-v2_018-otf.zip
+_eclass_exported_funcs=pkg_postrm:font pkg_postinst:font pkg_setup:font src_unpack:- src_install:font
+_eclasses_=eutils	9d81603248f2ba3ec59124320d123e5e	font	cd7790315ca5b8c505e1e0513df6acce	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=991d7645fa7947a9ba935282d8a3967e

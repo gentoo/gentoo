@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install
+DEPEND=sys-apps/pciutils[-zlib] gtk? ( x11-libs/gtk+:2 ) X? ( x11-libs/libXi x11-libs/libXmu x11-libs/libXxf86vm ) X? ( x11-proto/xf86vidmodeproto )
+DESCRIPTION=TV-Out for NVidia cards
+EAPI=2
+HOMEPAGE=http://sourceforge.net/projects/nv-tv-out/
+IUSE=X gtk
+KEYWORDS=~x86 ~amd64
+LICENSE=GPL-2
+RDEPEND=sys-apps/pciutils[-zlib] gtk? ( x11-libs/gtk+:2 ) X? ( x11-libs/libXi x11-libs/libXmu x11-libs/libXxf86vm )
+SLOT=0
+SRC_URI=mirror://sourceforge/nv-tv-out/nvtv-0.4.7.tar.gz
+_eclass_exported_funcs=src_configure:- src_compile:- src_install:-
+_md5_=b892ce3d54b45a89498ac31a513119af

@@ -1,0 +1,10 @@
+DEFINED_PHASES=install
+DESCRIPTION=Global Self-consistent, Hierarchical, High-resolution Shoreline programs data
+EAPI=5
+HOMEPAGE=http://www.ngdc.noaa.gov/mgg/shorelines/gshhs.html
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=http://www.ngdc.noaa.gov/mgg/shorelines/data/gshhs/version2.2.0/gshhs+wdbii_2.2.0.zip
+_eclass_exported_funcs=src_install:-
+_md5_=e10555a709bb047f90370d503c30c8ed

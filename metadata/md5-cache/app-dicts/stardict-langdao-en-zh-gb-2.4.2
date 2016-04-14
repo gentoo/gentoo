@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install
+DEPEND=|| ( >=app-text/stardict-2.4.2 app-text/sdcv app-text/goldendict ) gzip? ( app-arch/gzip app-text/dictd )
+DESCRIPTION=Stardict Dictionary English to Simplified Chinese (GB)
+EAPI=0
+HOMEPAGE=http://stardict.sourceforge.net/Dictionaries_zh_CN.php
+IUSE=gzip
+KEYWORDS=~amd64 ~arm ppc sparc x86
+LICENSE=GPL-2
+RESTRICT=strip
+SLOT=0
+SRC_URI=mirror://sourceforge/stardict/stardict-langdao-ec-gb-2.4.2.tar.bz2
+_eclass_exported_funcs=src_compile:stardict src_install:stardict
+_eclasses_=stardict	f2fd36b0af07ceaba9852e6caec6ac7f
+_md5_=e153d3cab4c677c2da3a61b8c918de51

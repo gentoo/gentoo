@@ -1,0 +1,12 @@
+DEFINED_PHASES=install
+DEPEND=dev-perl/Config-General dev-perl/GD dev-perl/Math-Bezier dev-perl/Math-Round dev-perl/Math-VecStat dev-perl/Params-Validate dev-perl/Readonly dev-perl/regexp-common >=dev-perl/Set-IntSpan-1.11 dev-perl/Graphics-ColorObject dev-perl/List-MoreUtils
+DESCRIPTION=Circular layout visualization of genomic and other data
+EAPI=4
+HOMEPAGE=http://mkweb.bcgsc.ca/circos/
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
+LICENSE=GPL-2
+RDEPEND=dev-perl/Config-General dev-perl/GD dev-perl/Math-Bezier dev-perl/Math-Round dev-perl/Math-VecStat dev-perl/Params-Validate dev-perl/Readonly dev-perl/regexp-common >=dev-perl/Set-IntSpan-1.11 dev-perl/Graphics-ColorObject dev-perl/List-MoreUtils
+SLOT=0
+SRC_URI=http://mkweb.bcgsc.ca/circos/distribution/circos-0.55.tgz
+_eclass_exported_funcs=src_install:-
+_md5_=497584578c1a109e7c5a96547d449bb7

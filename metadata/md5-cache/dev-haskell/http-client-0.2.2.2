@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst postrm setup test
+DEPEND=>=dev-haskell/base64-bytestring-1.0:=[profile?] <dev-haskell/base64-bytestring-1.1:=[profile?] >=dev-haskell/blaze-builder-0.3:=[profile?] >=dev-haskell/case-insensitive-1.0:=[profile?] <dev-haskell/case-insensitive-1.2:=[profile?] dev-haskell/cookie:=[profile?] dev-haskell/data-default-class:=[profile?] >=dev-haskell/failure-0.2:=[profile?] <dev-haskell/failure-0.3:=[profile?] >=dev-haskell/http-types-0.8:=[profile?] >=dev-haskell/network-2.3:=[profile?] dev-haskell/publicsuffixlist:=[profile?] >=dev-haskell/text-0.11:=[profile?] dev-haskell/transformers:=[profile?] >=dev-haskell/zlib-bindings-0.1:=[profile?] <dev-haskell/zlib-bindings-0.2:=[profile?] >=dev-lang/ghc-7.4.1:= >=dev-haskell/cabal-1.10 test? ( dev-haskell/hspec dev-haskell/monad-control dev-haskell/zlib ) doc? ( || ( dev-haskell/haddock >=dev-lang/ghc-7.10.2 ) ) hscolour? ( dev-haskell/hscolour ) >=dev-haskell/cabal-1.1.4
+DESCRIPTION=An HTTP client engine, intended as a base layer for more user-friendly packages
+EAPI=5
+HOMEPAGE=https://github.com/snoyberg/http-client
+IUSE=doc hscolour profile test
+KEYWORDS=~amd64 ~x86
+LICENSE=MIT
+RDEPEND=>=dev-haskell/base64-bytestring-1.0:=[profile?] <dev-haskell/base64-bytestring-1.1:=[profile?] >=dev-haskell/blaze-builder-0.3:=[profile?] >=dev-haskell/case-insensitive-1.0:=[profile?] <dev-haskell/case-insensitive-1.2:=[profile?] dev-haskell/cookie:=[profile?] dev-haskell/data-default-class:=[profile?] >=dev-haskell/failure-0.2:=[profile?] <dev-haskell/failure-0.3:=[profile?] >=dev-haskell/http-types-0.8:=[profile?] >=dev-haskell/network-2.3:=[profile?] dev-haskell/publicsuffixlist:=[profile?] >=dev-haskell/text-0.11:=[profile?] dev-haskell/transformers:=[profile?] >=dev-haskell/zlib-bindings-0.1:=[profile?] <dev-haskell/zlib-bindings-0.2:=[profile?] >=dev-lang/ghc-7.4.1:=
+SLOT=0/0.2.2.2
+SRC_URI=mirror://hackage/packages/archive/http-client/0.2.2.2/http-client-0.2.2.2.tar.gz
+_eclass_exported_funcs=pkg_postrm:haskell-cabal pkg_postinst:haskell-cabal pkg_setup:haskell-cabal src_configure:haskell-cabal src_compile:haskell-cabal src_test:haskell-cabal src_install:haskell-cabal
+_eclasses_=eutils	9d81603248f2ba3ec59124320d123e5e	ghc-package	892c6c35a9ac0993e65049c039438508	haskell-cabal	e93b3ae2b779ea727098c318740957e3	multilib	23ae8c186171e6476af098d2a50d0ee0	multiprocessing	e32940a7b2a9992ad217eccddb84d548	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=0759b14d5eb8a4a19f4c6489038b3706

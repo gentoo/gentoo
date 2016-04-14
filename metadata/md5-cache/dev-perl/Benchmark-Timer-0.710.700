@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test unpack
+DEPEND=dev-perl/Statistics-TTest virtual/perl-Time-HiRes >=virtual/perl-ExtUtils-MakeMaker-6.360.0 test? ( virtual/perl-Test-Simple ) dev-lang/perl:=[-build(-)]
+DESCRIPTION=Perl code benchmarking tool
+EAPI=5
+HOMEPAGE=http://search.cpan.org/dist/Benchmark-Timer/
+IUSE=test
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=dev-perl/Statistics-TTest virtual/perl-Time-HiRes dev-lang/perl:=[-build(-)]
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/D/DC/DCOPPIT/Benchmark-Timer-0.7107.tar.gz
+_eclass_exported_funcs=src_unpack:perl-module src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
+_eclasses_=eutils	9d81603248f2ba3ec59124320d123e5e	multilib	23ae8c186171e6476af098d2a50d0ee0	multiprocessing	e32940a7b2a9992ad217eccddb84d548	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	461f1d9eb930e8d1b178a39e83635fd0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	unpacker	45d07319df5f40ee6af58418b0f930be
+_md5_=d67f7aad1246582d9968de0f6eefb0fb

@@ -1,0 +1,10 @@
+DEFINED_PHASES=install
+DESCRIPTION=A subset seed design tool for DNA sequence alignment
+EAPI=2
+HOMEPAGE=http://bioinfo.lifl.fr/yass/iedera.php
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=http://bioinfo.lifl.fr/yass/files/iedera-1.04.tar.gz
+_eclass_exported_funcs=src_install:-
+_md5_=42417fbcf3312ce2e8bccbcb98b86e64

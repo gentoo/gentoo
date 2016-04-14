@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install
+DEPEND=dev-lang/perl
+DESCRIPTION=Creates CD-Covers via LaTeX by fetching cd-info from freedb.org or local file
+EAPI=6
+HOMEPAGE=http://www.vanhemert.co.uk/disc-cover.html
+KEYWORDS=amd64 ppc sparc x86
+LICENSE=GPL-2
+RDEPEND=dev-lang/perl dev-perl/Audio-CD-disc-cover virtual/latex-base
+SLOT=0
+SRC_URI=http://www.vanhemert.co.uk/files/disc-cover-1.5.6.tar.gz
+_eclass_exported_funcs=src_compile:- src_install:-
+_md5_=fb8fc7ffd49ab0d9033e94ae59289f92

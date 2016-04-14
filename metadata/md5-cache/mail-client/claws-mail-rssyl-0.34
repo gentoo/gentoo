@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install
+DEPEND=~mail-client/claws-mail-3.9.0 net-misc/curl dev-libs/libxml2 nls? ( >=sys-devel/gettext-0.12.1 ) virtual/pkgconfig
+DESCRIPTION=Read your favorite newsfeeds in Claws Mail. RSS 1.0, 2.0 and Atom feeds are currently supported
+EAPI=4
+HOMEPAGE=http://www.claws-mail.org/
+IUSE=nls
+KEYWORDS=alpha amd64 ppc ppc64 x86
+LICENSE=GPL-2
+RDEPEND=~mail-client/claws-mail-3.9.0 net-misc/curl dev-libs/libxml2 nls? ( >=sys-devel/gettext-0.12.1 )
+SLOT=0
+SRC_URI=http://www.claws-mail.org/downloads/plugins/rssyl-0.34.tar.gz
+_eclass_exported_funcs=src_configure:- src_install:-
+_eclasses_=eutils	9d81603248f2ba3ec59124320d123e5e	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=09a68a7724b5a5cbd1d523cdd87c0a85

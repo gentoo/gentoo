@@ -1,0 +1,12 @@
+DEFINED_PHASES=install postinst unpack
+DESCRIPTION=Bash commandline flac verifier, organizer, analyzer
+EAPI=4
+HOMEPAGE=https://github.com/sirjaren/redoflacs
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=app-shells/bash media-libs/flac sys-apps/coreutils sys-apps/findutils
+SLOT=0
+SRC_URI=https://github.com/sirjaren/redoflacs/tarball/v0.15 -> redoflacs-0.15.tar.gz
+_eclass_exported_funcs=pkg_postinst:- src_unpack:vcs-snapshot src_install:-
+_eclasses_=vcs-snapshot	b45be87e7012be0af8424e8a5644da1d
+_md5_=d8a07ed34471abeb237a6e3c4869de36

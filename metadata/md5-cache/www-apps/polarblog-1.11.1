@@ -1,0 +1,14 @@
+DEFINED_PHASES=install postinst prerm setup
+DEPEND=>=app-admin/webapp-config-1.50.15
+DESCRIPTION=PolarBlog is an open source embedded weblog solution
+EAPI=4
+HOMEPAGE=http://polarblog.polarlava.com
+IUSE=vhosts
+KEYWORDS=~amd64 ~ppc ~sparc ~x86
+LICENSE=GPL-2
+RDEPEND=virtual/httpd-php >=app-admin/webapp-config-1.50.15
+SLOT=1.11.1
+SRC_URI=http://polarblog.polarlava.com/releases/pb_v1111.tgz
+_eclass_exported_funcs=pkg_prerm:webapp pkg_postinst:webapp pkg_setup:webapp src_install:-
+_eclasses_=webapp	42c6ef7af496b228f9854b3c81e4b226
+_md5_=4034e039e31dbd1d410978de5f54adbe

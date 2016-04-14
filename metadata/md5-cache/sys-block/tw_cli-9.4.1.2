@@ -1,0 +1,11 @@
+DEFINED_PHASES=install setup unpack
+DESCRIPTION=3ware SATA+PATA RAID controller Command Line Interface tool
+EAPI=0
+HOMEPAGE=https://www.3ware.com/3warekb/article.aspx?id=14847
+KEYWORDS=-* amd64 x86
+LICENSE=3ware
+RESTRICT=fetch strip mirror
+SLOT=0
+SRC_URI=x86? ( http://www.3ware.com/download/Escalade9650SE-Series/9.4.1.2/tw_cli-linux-x86-9.4.1.2.tgz ) amd64? ( http://www.3ware.com/download/Escalade9650SE-Series/9.4.1.2/tw_cli-linux-x86_64-9.4.1.2.tgz )
+_eclass_exported_funcs=pkg_setup:- src_unpack:- src_install:-
+_md5_=78bc2c426eef93565861c912c906f9f9

@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install postinst preinst prepare setup unpack
+DEPEND=media-libs/libsamplerate net-misc/curl virtual/opengl png? ( media-libs/libpng:0 ) flac? ( media-libs/flac ) sdl? ( media-libs/libsdl[video] ) X? ( x11-libs/libX11 x11-libs/libXext x11-libs/libXxf86vm ) ncurses? ( sys-libs/ncurses:0 ) vorbis? ( media-libs/libogg media-libs/libvorbis ) zlib? ( sys-libs/zlib ) xv? ( x11-libs/libX11 x11-libs/libXext x11-libs/libXxf86vm ) dga? ( x11-libs/libXxf86dga ) alsa? ( media-libs/alsa-lib ) wildmidi? ( media-sound/wildmidi ) cdinstall? ( games-fps/quake1-data ) >=sys-devel/bison-2.6 sys-devel/flex virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=new 3d engine based off of id Softwares's Quake and QuakeWorld game engine
+EAPI=5
+HOMEPAGE=http://www.quakeforge.net/
+IUSE=cdinstall debug fbcon flac sdl X ncurses png vorbis zlib ipv6 xv dga alsa oss xdg wildmidi
+KEYWORDS=amd64 ppc x86
+LICENSE=GPL-2
+RDEPEND=media-libs/libsamplerate net-misc/curl virtual/opengl png? ( media-libs/libpng:0 ) flac? ( media-libs/flac ) sdl? ( media-libs/libsdl[video] ) X? ( x11-libs/libX11 x11-libs/libXext x11-libs/libXxf86vm ) ncurses? ( sys-libs/ncurses:0 ) vorbis? ( media-libs/libogg media-libs/libvorbis ) zlib? ( sys-libs/zlib ) xv? ( x11-libs/libX11 x11-libs/libXext x11-libs/libXxf86vm ) dga? ( x11-libs/libXxf86dga ) alsa? ( media-libs/alsa-lib ) wildmidi? ( media-sound/wildmidi ) games-misc/games-envd
+RESTRICT=userpriv
+SLOT=0
+SRC_URI=mirror://sourceforge/quake/quakeforge-0.7.2.tar.bz2
+_eclass_exported_funcs=pkg_preinst:games pkg_postinst:- pkg_setup:games src_unpack:base src_prepare:- src_configure:- src_compile:games src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	9d81603248f2ba3ec59124320d123e5e	flag-o-matic	d270fa247153df66074f795fa42dba3e	games	2cf0d67d765e6358b435ccda30c13ad8	libtool	4890219c51da247200223277f993e054	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	user	906f3c8eb3a2350a4f1191a89baa3e46
+_md5_=203f6146705c1c2f7a87727bdd66b9e6

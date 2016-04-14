@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=dev-libs/libbsd dev-libs/libedit sys-libs/ncurses
+DESCRIPTION=FFS/UFS/UFS2 filesystem utilities from FreeBSD
+EAPI=4
+HOMEPAGE=http://packages.debian.org/source/sid/ufsutils
+KEYWORDS=~amd64
+LICENSE=BSD
+SLOT=0
+SRC_URI=mirror://debian/pool/main/u/ufsutils/ufsutils_8.2.orig.tar.gz mirror://debian/pool/main/u/ufsutils/ufsutils_8.2-3.debian.tar.gz
+_eclass_exported_funcs=src_prepare:- src_compile:- src_install:-
+_eclasses_=eutils	9d81603248f2ba3ec59124320d123e5e	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=899d27ba9ff7f0ed449ce1757593c71f

@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install prepare unpack
+DEPEND=>=dev-libs/glib-2.16:2 >=media-libs/freetype-2.3.7 >=media-libs/fontconfig-2.6 >=media-libs/libpng-1.4:0 x11-libs/libXrender x11-libs/libX11 x11-libs/libXt >=x11-libs/cairo-1.8.4[X] media-libs/libexif >=media-libs/giflib-4.2.3 virtual/jpeg:0 media-libs/tiff:0 !cairo? ( >=x11-libs/pango-1.20 )
+DESCRIPTION=Library for using System.Drawing with mono
+EAPI=5
+HOMEPAGE=http://www.mono-project.com
+IUSE=cairo
+KEYWORDS=~amd64 ~arm ~ppc ~ppc64 ~x86 ~amd64-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~x86-solaris
+LICENSE=MIT
+RDEPEND=>=dev-libs/glib-2.16:2 >=media-libs/freetype-2.3.7 >=media-libs/fontconfig-2.6 >=media-libs/libpng-1.4:0 x11-libs/libXrender x11-libs/libX11 x11-libs/libXt >=x11-libs/cairo-1.8.4[X] media-libs/libexif >=media-libs/giflib-4.2.3 virtual/jpeg:0 media-libs/tiff:0 !cairo? ( >=x11-libs/pango-1.20 )
+RESTRICT=test
+SLOT=0
+SRC_URI=http://download.mono-project.com/sources/libgdiplus/libgdiplus-2.10.9.tar.bz2
+_eclass_exported_funcs=src_unpack:base src_prepare:- src_configure:- src_compile:- src_install:-
+_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	9d81603248f2ba3ec59124320d123e5e	flag-o-matic	d270fa247153df66074f795fa42dba3e	mono	3fb22ec265e021c7294a29e720f3d5f7	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=86b26b0e3ff21730b632733a5402de23

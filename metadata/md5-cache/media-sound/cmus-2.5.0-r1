@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=sys-libs/ncurses[unicode?] aac? ( media-libs/faad2 ) alsa? ( >=media-libs/alsa-lib-1.0.11 ) ao? ( media-libs/libao ) cue? ( media-libs/libcue ) cdio? ( dev-libs/libcdio-paranoia ) cddb? ( media-libs/libcddb ) discid? ( media-libs/libdiscid ) flac? ( media-libs/flac ) mad? ( >=media-libs/libmad-0.14 ) mikmod? ( media-libs/libmikmod:0 ) modplug? ( >=media-libs/libmodplug-0.7 ) mp4? ( >=media-libs/libmp4v2-1.9:0 ) musepack? ( >=media-sound/musepack-tools-444 ) pulseaudio? ( media-sound/pulseaudio ) vorbis? ( >=media-libs/libvorbis-1.0 ) wavpack? ( media-sound/wavpack ) wma? ( >=virtual/ffmpeg-0.10.2-r1 ) virtual/pkgconfig
+DESCRIPTION=A ncurses based music player with plugin support for many formats
+EAPI=5
+HOMEPAGE=http://cmus.sourceforge.net/
+IUSE=aac alsa ao cue cdio cddb discid debug examples flac +mad mikmod modplug mp4 musepack oss pidgin pulseaudio unicode vorbis wavpack wma zsh-completion
+KEYWORDS=amd64 ~ppc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~x86-solaris
+LICENSE=GPL-2
+RDEPEND=sys-libs/ncurses[unicode?] aac? ( media-libs/faad2 ) alsa? ( >=media-libs/alsa-lib-1.0.11 ) ao? ( media-libs/libao ) cue? ( media-libs/libcue ) cdio? ( dev-libs/libcdio-paranoia ) cddb? ( media-libs/libcddb ) discid? ( media-libs/libdiscid ) flac? ( media-libs/flac ) mad? ( >=media-libs/libmad-0.14 ) mikmod? ( media-libs/libmikmod:0 ) modplug? ( >=media-libs/libmodplug-0.7 ) mp4? ( >=media-libs/libmp4v2-1.9:0 ) musepack? ( >=media-sound/musepack-tools-444 ) pulseaudio? ( media-sound/pulseaudio ) vorbis? ( >=media-libs/libvorbis-1.0 ) wavpack? ( media-sound/wavpack ) wma? ( >=virtual/ffmpeg-0.10.2-r1 ) zsh-completion? ( app-shells/zsh ) pidgin? ( net-im/pidgin dev-python/dbus-python )
+SLOT=0
+SRC_URI=mirror://sourceforge/cmus/cmus-v2.5.0.tar.bz2
+_eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
+_eclasses_=eutils	9d81603248f2ba3ec59124320d123e5e	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=8c6e2e09872a1acb8ac57b7e357b05b2

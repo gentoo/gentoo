@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install prepare unpack
+DEPEND=dev-libs/protobuf sys-libs/ncurses:0 virtual/ssh client? ( dev-lang/perl dev-perl/IO-Tty ) utempter? ( sys-libs/libutempter ) virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Mobile shell that supports roaming and intelligent local echo
+EAPI=4
+HOMEPAGE=http://mosh.mit.edu
+IUSE=+client examples +mosh-hardening +server ufw +utempter
+KEYWORDS=~amd64 ~arm ~mips ~ppc ~x86 ~amd64-linux ~arm-linux ~x86-linux ~x64-macos
+LICENSE=GPL-3
+RDEPEND=dev-libs/protobuf sys-libs/ncurses:0 virtual/ssh client? ( dev-lang/perl dev-perl/IO-Tty ) utempter? ( sys-libs/libutempter )
+REQUIRED_USE=|| ( client server ) examples? ( client )
+SLOT=0
+SRC_URI=http://mosh.mit.edu/mosh-1.2.5.tar.gz
+_eclass_exported_funcs=src_unpack:vcs-snapshot src_prepare:- src_configure:- src_compile:- src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	bash-completion-r1	acf715fa09463f043fbfdc1640f3fb85	eutils	9d81603248f2ba3ec59124320d123e5e	libtool	4890219c51da247200223277f993e054	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	vcs-snapshot	b45be87e7012be0af8424e8a5644da1d
+_md5_=f10d19d84541f0b5b5ea8146866f5c4a

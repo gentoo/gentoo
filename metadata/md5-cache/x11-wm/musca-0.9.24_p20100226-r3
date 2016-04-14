@@ -1,0 +1,14 @@
+DEFINED_PHASES=install postinst prepare
+DEPEND=x11-libs/libX11 sys-apps/sed
+DESCRIPTION=A simple dynamic window manager for X, with features nicked from ratpoison and dwm
+EAPI=4
+HOMEPAGE=https://launchpad.net/musca
+IUSE=apis xlisten savedconfig
+KEYWORDS=amd64 x86
+LICENSE=GPL-3
+RDEPEND=x11-libs/libX11 >=x11-misc/dmenu-4.4 apis? ( x11-misc/xbindkeys )
+SLOT=0
+SRC_URI=mirror://gentoo/musca-0.9.24_p20100226.tgz
+_eclass_exported_funcs=pkg_postinst:savedconfig src_prepare:- src_install:-
+_eclasses_=eutils	9d81603248f2ba3ec59124320d123e5e	multilib	23ae8c186171e6476af098d2a50d0ee0	portability	bb1a0ed8ea152b957d17339f01d4d7f5	savedconfig	7de7daa586f6bf361639e77d6f2299db	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=c5e011ffb7c0512bdeeedbb0e637c390

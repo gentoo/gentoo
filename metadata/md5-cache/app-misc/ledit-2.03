@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile install
+DEPEND=>=dev-lang/ocaml-3.09:=[ocamlopt?] dev-ml/camlp5:=
+DESCRIPTION=A line editor to be used with interactive commands
+EAPI=5
+HOMEPAGE=http://pauillac.inria.fr/~ddr/ledit/
+IUSE=+ocamlopt
+KEYWORDS=amd64 ppc x86 ~x86-fbsd
+LICENSE=BSD
+RDEPEND=>=dev-lang/ocaml-3.09:=[ocamlopt?] dev-ml/camlp5:=
+RESTRICT=installsources
+SLOT=0
+SRC_URI=http://pauillac.inria.fr/~ddr/ledit/distrib/src/ledit-2.03.tgz
+_eclass_exported_funcs=src_compile:- src_install:-
+_eclasses_=eutils	9d81603248f2ba3ec59124320d123e5e	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=e49510bbc2b5287c9004884ea6435dd2

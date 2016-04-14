@@ -1,0 +1,13 @@
+DEFINED_PHASES=install postinst
+DEPEND=dev-libs/atk dev-libs/libsigsegv media-libs/fontconfig media-libs/libpng sci-libs/gsl sys-devel/gettext x11-libs/cairo x11-libs/gtk+:2 gnome-extra/libgsf cwiid? ( app-misc/cwiid ) x11-misc/xdg-utils
+DESCRIPTION=Color, record and share free-hand annotations on screen and on network
+EAPI=4
+HOMEPAGE=https://code.google.com/p/ardesia/
+IUSE=cwiid
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=dev-libs/atk dev-libs/libsigsegv media-libs/fontconfig media-libs/libpng sci-libs/gsl sys-devel/gettext x11-libs/cairo x11-libs/gtk+:2 gnome-extra/libgsf cwiid? ( app-misc/cwiid )
+SLOT=0
+SRC_URI=https://ardesia.googlecode.com/files/ardesia-1.0.tar.bz2
+_eclass_exported_funcs=pkg_postinst:- src_install:-
+_md5_=dab7d7761713929be2bc6193ee1f3c51

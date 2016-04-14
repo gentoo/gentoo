@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=>=dev-libs/boost-1.42.0:= dev-libs/xerces-c net-misc/curl dev-cpp/xsd csharp? ( >=dev-lang/swig-2.0.7 dev-lang/mono ) java? ( >=dev-lang/swig-2.0.7 virtual/jre ) php? ( >=dev-lang/swig-2.0.7 dev-lang/php ) python? ( >=dev-lang/swig-2.0.7 dev-lang/python ) test? ( dev-qt/qttest:4 ) sys-devel/make >=dev-util/cmake-2.8.12
+DESCRIPTION=Kolab XML format schema definitions library
+EAPI=5
+HOMEPAGE=http://www.kolab.org
+IUSE=csharp java python php test
+KEYWORDS=~amd64 ~arm ~ppc ~ppc64 ~x86
+LICENSE=Apache-2.0 ZLIB LGPL-3+ public-domain
+RDEPEND=>=dev-libs/boost-1.42.0:= dev-libs/xerces-c net-misc/curl
+SLOT=4
+SRC_URI=http://mirror.kolabsys.com/pub/releases/libkolabxml-1.0.3.tar.gz
+_eclass_exported_funcs=src_prepare:cmake-utils src_configure:- src_compile:cmake-utils src_test:cmake-utils src_install:cmake-utils
+_eclasses_=cmake-utils	422bbd1bee2557490177a34dbe0a662b	eutils	9d81603248f2ba3ec59124320d123e5e	flag-o-matic	d270fa247153df66074f795fa42dba3e	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=11eb876bee5e91f0766dee2916f6ccaa

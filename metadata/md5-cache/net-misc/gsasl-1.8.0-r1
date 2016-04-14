@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=gcrypt? ( dev-libs/libgcrypt:0 ) idn? ( net-dns/libidn ) kerberos? ( virtual/krb5 ) nls? ( >=sys-devel/gettext-0.18.1 ) ntlm? ( net-libs/libntlm ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=The GNU SASL client, server, and library
+EAPI=4
+HOMEPAGE=https://www.gnu.org/software/gsasl/
+IUSE=doc gcrypt idn kerberos nls ntlm static-libs +threads
+KEYWORDS=amd64 ppc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos
+LICENSE=GPL-3
+RDEPEND=gcrypt? ( dev-libs/libgcrypt:0 ) idn? ( net-dns/libidn ) kerberos? ( virtual/krb5 ) nls? ( >=sys-devel/gettext-0.18.1 ) ntlm? ( net-libs/libntlm )
+SLOT=0
+SRC_URI=mirror://gnu/gsasl/gsasl-1.8.0.tar.gz
+_eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	9d81603248f2ba3ec59124320d123e5e	libtool	4890219c51da247200223277f993e054	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=becfc10c82a750e3427a26ab58838ddf

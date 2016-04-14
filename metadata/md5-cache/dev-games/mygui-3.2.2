@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install postinst prepare setup test
+DEPEND=media-libs/freetype:2 ogre? ( dev-games/ogre:=[freeimage,opengl] samples? ( dev-games/ois ) ) opengl? ( virtual/opengl media-libs/glew ) tools? ( dev-games/ois ) virtual/pkgconfig doc? ( app-doc/doxygen ) sys-devel/make >=dev-util/cmake-2.8.12
+DESCRIPTION=A library for creating GUIs for games
+EAPI=5
+HOMEPAGE=http://mygui.info/
+IUSE=debug doc +ogre -opengl plugins samples static-libs test tools linguas_ru
+KEYWORDS=amd64 x86
+LICENSE=MIT
+RDEPEND=media-libs/freetype:2 ogre? ( dev-games/ogre:=[freeimage,opengl] samples? ( dev-games/ois ) ) opengl? ( virtual/opengl media-libs/glew ) tools? ( dev-games/ois )
+REQUIRED_USE=ogre? ( !opengl ) opengl? ( !ogre )
+SLOT=0
+SRC_URI=https://github.com/MyGUI/mygui/archive/MyGUI3.2.2.tar.gz
+_eclass_exported_funcs=pkg_postinst:- pkg_setup:- src_prepare:- src_configure:- src_compile:- src_test:cmake-utils src_install:-
+_eclasses_=cmake-utils	422bbd1bee2557490177a34dbe0a662b	eutils	9d81603248f2ba3ec59124320d123e5e	flag-o-matic	d270fa247153df66074f795fa42dba3e	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=4bc091e57c0fe2dfd1deb62aa493a562

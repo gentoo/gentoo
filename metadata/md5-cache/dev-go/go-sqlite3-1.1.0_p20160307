@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install test unpack
+DEPEND=>=dev-lang/go-1.4.2:=
+DESCRIPTION=Go sqlite3 driver using database/sql
+EAPI=5
+HOMEPAGE=https://github.com/mattn/go-sqlite3
+KEYWORDS=~amd64
+LICENSE=MIT
+SLOT=0/1.1.0_p20160307
+SRC_URI=https://github.com/mattn/go-sqlite3/archive/10876d7dac65f02064c03d7372a2f1dfb90043fe.tar.gz -> go-sqlite3-1.1.0_p20160307.tar.gz
+_eclass_exported_funcs=src_unpack:golang-vcs-snapshot src_compile:- src_test:golang-build src_install:-
+_eclasses_=golang-base	08fe6e0e2b4750daff8887a7f0e1f873	golang-build	a44f10e6bd86ecccf2a07cc0d4cf6bec	golang-vcs-snapshot	1caa6d8238d2378ad688ae068ff22e5a
+_md5_=12aa9fb4a450e321e5f943baeb14fb2d

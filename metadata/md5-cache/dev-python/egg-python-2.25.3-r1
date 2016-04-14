@@ -1,0 +1,16 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare test unpack
+DEPEND=>=dev-python/libbonobo-python-2.22.1[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] >=dev-python/libgnome-python-2.22.1[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] virtual/pkgconfig gnome-base/gnome-common !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=sys-apps/sed-4 dev-util/desktop-file-utils x11-misc/shared-mime-info ~dev-python/gnome-python-extras-base-2.25.3 python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] virtual/pkgconfig
+DESCRIPTION=EggTrayIcon bindings for Python
+EAPI=5
+HOMEPAGE=http://pygtk.org/
+IUSE=examples python_targets_python2_7
+KEYWORDS=alpha amd64 ~arm ia64 ppc ppc64 sparc x86 ~x86-fbsd
+LICENSE=LGPL-2.1
+RDEPEND=>=dev-python/libbonobo-python-2.22.1[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] >=dev-python/libgnome-python-2.22.1[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ~dev-python/gnome-python-extras-base-2.25.3 python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
+REQUIRED_USE=|| ( python_targets_python2_7 )
+RESTRICT=test
+SLOT=0
+SRC_URI=mirror://gnome/sources/gnome-python-extras/2.25/gnome-python-extras-2.25.3.tar.bz2
+_eclass_exported_funcs=pkg_preinst:gnome2 pkg_postrm:gnome2 pkg_postinst:gnome2 src_unpack:gnome2 src_prepare:- src_configure:gnome-python-common-r1 src_compile:gnome-python-common-r1 src_test:gnome-python-common-r1 src_install:gnome-python-common-r1
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	9d81603248f2ba3ec59124320d123e5e	gnome-python-common-r1	f8451e1b2e77778df45f384242e991d1	gnome.org	ad34f378a3d57a6f2f2b8b4aaca4543e	gnome2	21c81ea94c12e45a63f7f14fba666e3d	gnome2-utils	c6dcdf3a2c22b578b16adb945dc85c35	libtool	4890219c51da247200223277f993e054	multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	23ae8c186171e6476af098d2a50d0ee0	python-r1	0f6937650a475d673baa5d0c8c0b37b3	python-utils-r1	2e6826f6a93ad2acf904eecf5b5fb6d2	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	xdg	a5c4c5ce4f5ce9a2e777f5d9a40a8723	xdg-utils	e2b2bd56125ce8cf59ce30c642b59d48
+_md5_=6504e903dfab1b9021d06def18ee876a

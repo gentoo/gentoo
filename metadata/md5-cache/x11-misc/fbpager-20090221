@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install postinst
+DEPEND=x11-libs/libX11 xrender? ( x11-libs/libXrender )
+DESCRIPTION=A Pager for fluxbox
+EAPI=2
+HOMEPAGE=http://git.fluxbox.org/fbpager.git/
+IUSE=+xrender
+KEYWORDS=amd64 ~mips ppc ~sparc x86 ~x86-fbsd
+LICENSE=MIT
+RDEPEND=x11-libs/libX11 xrender? ( x11-libs/libXrender )
+SLOT=0
+SRC_URI=mirror://gentoo/fbpager-20090221.tar.bz2
+_eclass_exported_funcs=pkg_postinst:- src_configure:- src_install:-
+_eclasses_=eutils	9d81603248f2ba3ec59124320d123e5e	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=b50564d72511eca43c4af7d6e43ced69

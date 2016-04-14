@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install postinst postrm prepare setup
+DEPEND=dev-python/pycrypto app-arch/unzip >=sys-apps/sed-4.0.5 =dev-lang/python-2*
+DESCRIPTION=TheShad0w's experimental BitTorrent client
+EAPI=3
+HOMEPAGE=http://www.bittornado.com/
+KEYWORDS=alpha amd64 ppc ppc64 ~sparc x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~x86-solaris
+LICENSE=MIT
+RDEPEND=dev-python/pycrypto =dev-lang/python-2*
+SLOT=0
+SRC_URI=http://download2.bittornado.com/download/BitTornado-0.3.18.tar.gz
+_eclass_exported_funcs=pkg_postrm:distutils pkg_postinst:distutils pkg_setup:- src_prepare:- src_compile:distutils src_install:-
+_eclasses_=distutils	ad9e4720eb3e69090dd968b152fc611b	eutils	9d81603248f2ba3ec59124320d123e5e	multilib	23ae8c186171e6476af098d2a50d0ee0	python	efc1c55fc44c5b7272fc2ffba73c3e6f	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=cf304e4bee7a5621038af49dd29b1a4d

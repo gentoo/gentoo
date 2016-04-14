@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=sys-devel/make >=dev-util/cmake-2.8.12
+DESCRIPTION=Video game music file emulators
+EAPI=5
+HOMEPAGE=https://bitbucket.org/mpyne/game-music-emu/wiki/Home
+IUSE=abi_x86_32 abi_x86_64 abi_x86_x32 abi_mips_n32 abi_mips_n64 abi_mips_o32 abi_ppc_32 abi_ppc_64 abi_s390_32 abi_s390_64
+KEYWORDS=alpha amd64 arm hppa ppc ppc64 x86 ~amd64-fbsd ~x86-fbsd
+LICENSE=LGPL-2.1
+SLOT=0
+SRC_URI=https://game-music-emu.googlecode.com/files/game-music-emu-0.6.0.tar.bz2
+_eclass_exported_funcs=src_prepare:cmake-utils src_configure:cmake-multilib src_compile:cmake-multilib src_test:cmake-multilib src_install:cmake-multilib
+_eclasses_=cmake-multilib	273c15f5a0a06438a38bb5c3e98fa2db	cmake-utils	422bbd1bee2557490177a34dbe0a662b	eutils	9d81603248f2ba3ec59124320d123e5e	flag-o-matic	d270fa247153df66074f795fa42dba3e	multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	23ae8c186171e6476af098d2a50d0ee0	multilib-build	8fe2e81aeb36cdf8a6cc5f50443879cc	multilib-minimal	0224dee31c0f98405d572e14ad6dee65	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=ca6c9e070e77f643abf35506a862aaf5

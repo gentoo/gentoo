@@ -1,0 +1,12 @@
+DEFINED_PHASES=install prepare
+DESCRIPTION=Shotgun assembly and alignment utilities
+EAPI=5
+HOMEPAGE=http://www.phrap.org/
+KEYWORDS=~amd64 ~x86
+LICENSE=phrap
+RDEPEND=dev-lang/perl dev-perl/Tk
+RESTRICT=fetch
+SLOT=0
+SRC_URI=phrap-1.080812-distrib.tar.gz
+_eclass_exported_funcs=src_prepare:- src_install:-
+_md5_=f826e1b40b9f0db523b295a5c6a899da

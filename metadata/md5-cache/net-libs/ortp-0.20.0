@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=srtp? ( net-libs/libsrtp ) ssl? ( dev-libs/openssl ) doc? ( app-doc/doxygen ) virtual/pkgconfig
+DESCRIPTION=Open Real-time Transport Protocol (RTP, RFC3550) stack
+EAPI=5
+HOMEPAGE=http://www.linphone.org/
+IUSE=debug doc examples ipv6 minimal srtp ssl
+KEYWORDS=alpha amd64 ia64 ppc ppc64 sparc x86 ~x86-fbsd ~ppc-macos ~x64-macos ~x86-macos
+LICENSE=LGPL-2.1
+RDEPEND=srtp? ( net-libs/libsrtp ) ssl? ( dev-libs/openssl )
+SLOT=0
+SRC_URI=mirror://nongnu/linphone/ortp/sources/ortp-0.20.0.tar.gz
+_eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
+_eclasses_=eutils	9d81603248f2ba3ec59124320d123e5e	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=8f2166dd9b8701f4ce55c99c86df8341

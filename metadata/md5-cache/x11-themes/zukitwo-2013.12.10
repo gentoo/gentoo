@@ -1,0 +1,13 @@
+DEFINED_PHASES=install prepare
+DEPEND=app-arch/xz-utils
+DESCRIPTION=Theme for GNOME 2 and 3
+EAPI=5
+HOMEPAGE=http://gnome-look.org/content/show.php/Zukitwo?content=140562
+IUSE=gnome-shell
+KEYWORDS=amd64 x86
+LICENSE=GPL-3
+RDEPEND=>=x11-libs/gtk+-2.10:2 >=x11-libs/gtk+-3.6:3 >=x11-themes/gnome-themes-standard-3.6 >=x11-themes/gtk-engines-murrine-0.98.1.1 gnome-shell? ( x11-themes/zukitwo-shell )
+SLOT=0
+SRC_URI=https://dev.gentoo.org/~jlec/distfiles/zukitwo-2013.12.10.tar.xz
+_eclass_exported_funcs=src_prepare:- src_install:-
+_md5_=758fcdc1ccb21d32f80302f31a39cab7

@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test unpack
+DEPEND=>=dev-perl/Apache-LogFormat-Compiler-0.120.0 >=dev-perl/Cookie-Baker-0.50.0 >=dev-perl/Devel-StackTrace-1.230.0 >=dev-perl/Devel-StackTrace-AsHTML-0.110.0 >=dev-perl/File-ShareDir-1.0.0 dev-perl/Filesys-Notify-Simple >=dev-perl/HTTP-Body-1.60.0 >=dev-perl/HTTP-Headers-Fast-0.180.0 >=dev-perl/HTTP-Message-5.814.0 >=virtual/perl-HTTP-Tiny-0.34.0 >=dev-perl/Hash-MultiValue-0.50.0 >=virtual/perl-Pod-Parser-1.360.0 >=dev-perl/Stream-Buffered-0.20.0 >=dev-perl/Test-TCP-2.0.0 dev-perl/Try-Tiny >=dev-perl/URI-1.590.0 virtual/perl-parent virtual/perl-ExtUtils-MakeMaker >=dev-perl/File-ShareDir-Install-0.60.0 test? ( >=virtual/perl-Test-Simple-0.880.0 dev-perl/Test-Requires ) dev-lang/perl:=[-build(-)]
+DESCRIPTION=Perl Superglue for Web frameworks and Web Servers (PSGI toolkit)
+EAPI=5
+HOMEPAGE=http://search.cpan.org/dist/Plack/
+IUSE=test
+KEYWORDS=~amd64 ~x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=>=dev-perl/Apache-LogFormat-Compiler-0.120.0 >=dev-perl/Cookie-Baker-0.50.0 >=dev-perl/Devel-StackTrace-1.230.0 >=dev-perl/Devel-StackTrace-AsHTML-0.110.0 >=dev-perl/File-ShareDir-1.0.0 dev-perl/Filesys-Notify-Simple >=dev-perl/HTTP-Body-1.60.0 >=dev-perl/HTTP-Headers-Fast-0.180.0 >=dev-perl/HTTP-Message-5.814.0 >=virtual/perl-HTTP-Tiny-0.34.0 >=dev-perl/Hash-MultiValue-0.50.0 >=virtual/perl-Pod-Parser-1.360.0 >=dev-perl/Stream-Buffered-0.20.0 >=dev-perl/Test-TCP-2.0.0 dev-perl/Try-Tiny >=dev-perl/URI-1.590.0 virtual/perl-parent dev-lang/perl:=[-build(-)]
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/M/MI/MIYAGAWA/Plack-1.0037.tar.gz
+_eclass_exported_funcs=src_unpack:perl-module src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
+_eclasses_=eutils	9d81603248f2ba3ec59124320d123e5e	multilib	23ae8c186171e6476af098d2a50d0ee0	multiprocessing	e32940a7b2a9992ad217eccddb84d548	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	461f1d9eb930e8d1b178a39e83635fd0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	unpacker	45d07319df5f40ee6af58418b0f930be
+_md5_=e5ed0678a249c1203cf80c8ab899c7ed

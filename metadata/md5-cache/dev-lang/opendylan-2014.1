@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare
+DEPEND=app-arch/unzip dev-libs/boehm-gc[threads] dev-lang/perl dev-perl/XML-Parser || ( dev-lang/opendylan-bin dev-lang/opendylan ) x86? ( <dev-libs/mps-1.108 ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=OpenDylan language runtime environment
+EAPI=4
+HOMEPAGE=http://opendylan.org
+KEYWORDS=~amd64 ~x86
+LICENSE=Opendylan
+RDEPEND=app-arch/unzip dev-libs/boehm-gc[threads] dev-lang/perl dev-perl/XML-Parser || ( dev-lang/opendylan-bin dev-lang/opendylan ) x86? ( <dev-libs/mps-1.108 )
+RESTRICT=test
+SLOT=0
+SRC_URI=http://opendylan.org/downloads/opendylan/2014.1/opendylan-2014.1-sources.tar.bz2
+_eclass_exported_funcs=src_prepare:- src_configure:- src_compile:- src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	libtool	4890219c51da247200223277f993e054	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=cde99ba6e5ef234a66ac2e0825f3eab4

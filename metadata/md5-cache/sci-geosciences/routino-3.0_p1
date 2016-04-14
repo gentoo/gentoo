@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile configure
+DESCRIPTION=Routing application based on openstreetmap data
+EAPI=6
+HOMEPAGE=http://www.routino.org/
+KEYWORDS=~amd64 ~x86
+LICENSE=AGPL-3+
+RDEPEND=!<sci-geosciences/qmapshack-1.5
+SLOT=0
+SRC_URI=https://dev.gentoo.org/~grozin/routino-3.0_p1.tgz
+_eclass_exported_funcs=src_configure:- src_compile:-
+_md5_=901ec399d205d48ae8168a7a60e40627

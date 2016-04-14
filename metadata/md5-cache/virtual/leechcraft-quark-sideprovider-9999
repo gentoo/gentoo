@@ -1,0 +1,7 @@
+DEFINED_PHASES=-
+DESCRIPTION=Virtual for LeechCraft plugins, displaying quarks in small size somewhere near screen end
+EAPI=4
+RDEPEND=app-leechcraft/lc-sb2
+SLOT=0
+_eclass_exported_funcs=-
+_md5_=098b30123a48dd874716d8cc10db3089

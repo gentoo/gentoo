@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install
+DEPEND=zlib? ( sys-libs/zlib ) dev-libs/libxml2 virtual/pkgconfig
+DESCRIPTION=A library to support lingoteach-ui and for generic lesson development
+EAPI=2
+HOMEPAGE=http://lingoteach.sourceforge.net
+IUSE=debug zlib
+KEYWORDS=amd64 ~ppc ~x86
+LICENSE=GPL-2
+RDEPEND=zlib? ( sys-libs/zlib ) dev-libs/libxml2
+SLOT=0
+SRC_URI=mirror://sourceforge/lingoteach/liblingoteach-0.2.3.tar.gz
+_eclass_exported_funcs=src_configure:- src_install:-
+_md5_=24ad100599ce6665eab6e56285ae9fb1

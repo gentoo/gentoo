@@ -1,0 +1,12 @@
+DEFINED_PHASES=install
+DEPEND=sys-libs/ncurses
+DESCRIPTION=Interactive console program to analyse squid logs
+EAPI=4
+HOMEPAGE=http://www.rillion.net/squidview/
+KEYWORDS=~amd64
+LICENSE=GPL-2
+RDEPEND=sys-libs/ncurses
+SLOT=0
+SRC_URI=http://www.rillion.net/squidview/squidview-0.80.tar.gz
+_eclass_exported_funcs=src_install:-
+_md5_=e2d87041fb210ce091d35c3e7eabecb8

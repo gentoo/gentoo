@@ -1,0 +1,11 @@
+DEFINED_PHASES=install setup unpack
+DESCRIPTION=3ware SATA+PATA RAID controller Command Line Interface tool
+EAPI=0
+HOMEPAGE=https://www.3ware.com/3warekb/article.aspx?id=14847
+KEYWORDS=-* amd64 x86 ~x86-fbsd
+LICENSE=3ware
+RESTRICT=strip
+SLOT=0
+SRC_URI=x86? ( http://www.3ware.com/download/Escalade9690SA-Series/9.5.2/tw_cli-linux-x86-9.5.2.tgz ) amd64? ( http://www.3ware.com/download/Escalade9690SA-Series/9.5.2/tw_cli-linux-x86_64-9.5.2.tgz ) x86-fbsd? ( http://www.3ware.com/download/Escalade9690SA-Series/9.5.2/tw_cli-freebsd-x86-9.5.2.tgz )
+_eclass_exported_funcs=pkg_setup:- src_unpack:- src_install:-
+_md5_=2751eba2f812ad499516b88ee32ba2e8

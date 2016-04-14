@@ -1,0 +1,12 @@
+DEFINED_PHASES=install
+DEPEND=>=dev-lang/perl-5.6 virtual/perl-Digest-MD5
+DESCRIPTION=gives you a quick MD5 Password from any string
+EAPI=0
+HOMEPAGE=http://linux.netpimpz.com/quickcrypt/
+KEYWORDS=x86 sparc ppc alpha amd64 ia64 hppa ~mips
+LICENSE=GPL-2
+RDEPEND=>=dev-lang/perl-5.6 virtual/perl-Digest-MD5
+SLOT=0
+SRC_URI=http://linux.netpimpz.com/quickcrypt/download/quickcrypt_0.9.2b.tar.gz
+_eclass_exported_funcs=src_install:-
+_md5_=c9c271156f455ff2838857251aef4052

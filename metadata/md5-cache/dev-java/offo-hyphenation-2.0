@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install postinst
+DEPEND=app-arch/unzip
+DESCRIPTION=Hyphenation patterns for Apache Fop
+EAPI=5
+HOMEPAGE=http://offo.sourceforge.net
+IUSE=doc
+KEYWORDS=amd64 ppc64 x86
+LICENSE=GPL-2 Apache-2.0 LPPL-1.3b TeX
+SLOT=0
+SRC_URI=mirror://sourceforge/offo/offo-hyphenation_v2.0.zip
+_eclass_exported_funcs=pkg_postinst:- src_compile:- src_install:-
+_md5_=97b8ddbf7b90d68f4e42f611dc3dd329

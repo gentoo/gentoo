@@ -1,0 +1,12 @@
+DEFINED_PHASES=install
+DEPEND=sys-fs/fuse media-libs/libid3tag media-libs/flac media-sound/lame media-libs/libogg
+DESCRIPTION=a read-only FUSE filesystem which transcodes FLAC audio files to MP3 when read
+EAPI=0
+HOMEPAGE=https://khenriks.github.com/mp3fs/
+KEYWORDS=amd64 x86
+LICENSE=GPL-3
+RDEPEND=sys-fs/fuse media-libs/libid3tag media-libs/flac media-sound/lame media-libs/libogg
+SLOT=0
+SRC_URI=mirror://github/khenriks/mp3fs/mp3fs-0.32.tar.gz
+_eclass_exported_funcs=src_install:-
+_md5_=6d5cce358ba1886552681074a1a007f3

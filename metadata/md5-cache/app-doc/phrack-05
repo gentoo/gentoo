@@ -1,0 +1,10 @@
+DEFINED_PHASES=install
+DESCRIPTION=A Hacker magazine by the community, for the community
+EAPI=5
+HOMEPAGE=http://www.phrack.org/
+KEYWORDS=alpha amd64 arm hppa ia64 ~mips ppc ppc64 s390 sh sparc x86 ~amd64-linux ~x86-linux ~ppc-macos
+LICENSE=phrack
+SLOT=05
+SRC_URI=http://www.phrack.org/archives/tgz/phrack05.tar.gz
+_eclass_exported_funcs=src_install:-
+_md5_=0d92a94c20d7aeaec1ddd52948c380cf

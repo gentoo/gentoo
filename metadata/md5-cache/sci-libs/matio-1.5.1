@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=sys-libs/zlib hdf5? ( sci-libs/hdf5 ) doc? ( virtual/latex-base ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Library for reading and writing matlab files
+EAPI=5
+HOMEPAGE=http://sourceforge.net/projects/matio/
+IUSE=doc examples hdf5 sparse static-libs
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
+LICENSE=BSD-2
+RDEPEND=sys-libs/zlib hdf5? ( sci-libs/hdf5 )
+SLOT=0
+SRC_URI=mirror://sourceforge/matio/matio-1.5.1.tar.gz
+_eclass_exported_funcs=src_prepare:autotools-utils src_configure:- src_compile:- src_test:autotools-utils src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	autotools-utils	419811142edf3516b0d0cf1a254d93cb	eutils	9d81603248f2ba3ec59124320d123e5e	libtool	4890219c51da247200223277f993e054	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=93bc9a2c235b32fb159cf90f7f50024f

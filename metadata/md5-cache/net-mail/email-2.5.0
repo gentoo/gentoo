@@ -1,0 +1,10 @@
+DEFINED_PHASES=compile install postinst preinst
+DESCRIPTION=Advanced CLI tool for sending email
+EAPI=0
+HOMEPAGE=http://email.cleancode.org
+KEYWORDS=alpha amd64 x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=http://email.cleancode.org/download/email-2.5.0.tar.bz2
+_eclass_exported_funcs=pkg_preinst:- pkg_postinst:- src_compile:- src_install:-
+_md5_=619769e8d5fe8f7623fb9eb823180ca7

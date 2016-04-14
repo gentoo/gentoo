@@ -1,0 +1,12 @@
+DEFINED_PHASES=install
+DEPEND=>=media-libs/libogg-1.1 >=media-libs/libvorbis-1.0.1-r2 >=media-sound/lame-3.96 >=media-libs/libmad-0.15.1b >=net-misc/curl-7.11.0
+DESCRIPTION=Command line application to transcode shoutcast/icecast streams to different bitrates
+EAPI=0
+HOMEPAGE=http://www.oddsock.org/tools/streamTranscoderV3
+KEYWORDS=amd64 ppc sparc x86
+LICENSE=GPL-2
+RDEPEND=>=media-libs/libogg-1.1 >=media-libs/libvorbis-1.0.1-r2 >=media-sound/lame-3.96 >=media-libs/libmad-0.15.1b >=net-misc/curl-7.11.0
+SLOT=0
+SRC_URI=http://www.oddsock.org/tools/streamTranscoderV3/streamtranscoderv3-3.1.11.tar.gz
+_eclass_exported_funcs=src_install:-
+_md5_=badc3f80f812a29ee6c4e95dfdf3ea4c

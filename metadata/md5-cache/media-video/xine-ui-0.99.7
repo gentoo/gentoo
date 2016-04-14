@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install postinst postrm preinst prepare
+DEPEND=|| ( app-arch/tar app-arch/libarchive ) media-libs/libpng:0 >=media-libs/xine-lib-1.2[aalib?,libcaca?] virtual/jpeg aalib? ( media-libs/aalib ) curl? ( >=net-misc/curl-7.10.2 ) libcaca? ( media-libs/libcaca ) lirc? ( app-misc/lirc ) nls? ( virtual/libintl ) readline? ( =sys-libs/readline-6.2* ) X? ( x11-libs/libICE x11-libs/libSM x11-libs/libX11 x11-libs/libXext x11-libs/libXft x11-libs/libXrender x11-libs/libXScrnSaver x11-libs/libXtst x11-libs/libXv x11-libs/libXxf86vm xinerama? ( x11-libs/libXinerama ) ) nls? ( sys-devel/gettext ) X? ( x11-libs/libXt x11-proto/inputproto x11-proto/xf86vidmodeproto xinerama? ( x11-proto/xineramaproto ) ) virtual/pkgconfig >=sys-apps/sed-4
+DESCRIPTION=Xine movie player
+EAPI=4
+HOMEPAGE=http://xine.sourceforge.net/
+IUSE=aalib curl debug libcaca lirc nls readline vdr X xinerama
+KEYWORDS=amd64 hppa ppc ppc64 x86 ~x86-fbsd
+LICENSE=GPL-2
+RDEPEND=|| ( app-arch/tar app-arch/libarchive ) media-libs/libpng:0 >=media-libs/xine-lib-1.2[aalib?,libcaca?] virtual/jpeg aalib? ( media-libs/aalib ) curl? ( >=net-misc/curl-7.10.2 ) libcaca? ( media-libs/libcaca ) lirc? ( app-misc/lirc ) nls? ( virtual/libintl ) readline? ( =sys-libs/readline-6.2* ) X? ( x11-libs/libICE x11-libs/libSM x11-libs/libX11 x11-libs/libXext x11-libs/libXft x11-libs/libXrender x11-libs/libXScrnSaver x11-libs/libXtst x11-libs/libXv x11-libs/libXxf86vm xinerama? ( x11-libs/libXinerama ) )
+SLOT=0
+SRC_URI=mirror://sourceforge/xine/xine-ui-0.99.7.tar.xz
+_eclass_exported_funcs=pkg_preinst:- pkg_postrm:- pkg_postinst:- src_prepare:- src_configure:- src_install:-
+_eclasses_=eutils	9d81603248f2ba3ec59124320d123e5e	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	gnome2-utils	c6dcdf3a2c22b578b16adb945dc85c35	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	xdg-utils	e2b2bd56125ce8cf59ce30c642b59d48
+_md5_=0d8959478b97c922c0a90d2437c573c6

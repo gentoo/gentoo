@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst postrm prepare test unpack
+DEPEND=~dev-qt/qtcore-4.8.6[aqua=,debug=,qt3support=,abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_ppc_32(-)?,abi_ppc_64(-)?,abi_s390_32(-)?,abi_s390_64(-)?] ~dev-qt/qtgui-4.8.6[aqua=,debug=,egl,qt3support=,abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_ppc_32(-)?,abi_ppc_64(-)?,abi_s390_32(-)?,abi_s390_64(-)?] media-libs/mesa[egl,openvg,abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_ppc_32(-)?,abi_ppc_64(-)?,abi_s390_32(-)?,abi_s390_64(-)?] dev-lang/perl virtual/pkgconfig[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_ppc_32(-)?,abi_ppc_64(-)?,abi_s390_32(-)?,abi_s390_64(-)?]
+DESCRIPTION=The OpenVG module for the Qt toolkit
+EAPI=5
+HOMEPAGE=https://www.qt.io/
+IUSE=qt3support abi_x86_32 abi_x86_64 abi_x86_x32 abi_mips_n32 abi_mips_n64 abi_mips_o32 abi_ppc_32 abi_ppc_64 abi_s390_32 abi_s390_64 aqua debug pch +exceptions
+KEYWORDS=amd64 arm ~ia64 ppc ~ppc64 x86 ~x86-fbsd
+LICENSE=|| ( LGPL-2.1 LGPL-3 GPL-3 ) FDL-1.3
+RDEPEND=~dev-qt/qtcore-4.8.6[aqua=,debug=,qt3support=,abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_ppc_32(-)?,abi_ppc_64(-)?,abi_s390_32(-)?,abi_s390_64(-)?] ~dev-qt/qtgui-4.8.6[aqua=,debug=,egl,qt3support=,abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_ppc_32(-)?,abi_ppc_64(-)?,abi_s390_32(-)?,abi_s390_64(-)?] media-libs/mesa[egl,openvg,abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_ppc_32(-)?,abi_ppc_64(-)?,abi_s390_32(-)?,abi_s390_64(-)?] dev-qt/qtchooser abi_x86_32? ( !app-emulation/emul-linux-x86-qtlibs[-abi_x86_32(-)] )
+SLOT=4
+SRC_URI=http://download.qt.io/official_releases/qt/4.8/4.8.6/qt-everywhere-opensource-src-4.8.6.tar.gz
+_eclass_exported_funcs=pkg_postrm:qt4-build-multilib pkg_postinst:qt4-build-multilib src_unpack:qt4-build-multilib src_prepare:qt4-build-multilib src_configure:multilib-minimal src_compile:multilib-minimal src_test:multilib-minimal src_install:multilib-minimal
+_eclasses_=eutils	9d81603248f2ba3ec59124320d123e5e	flag-o-matic	d270fa247153df66074f795fa42dba3e	multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	23ae8c186171e6476af098d2a50d0ee0	multilib-build	8fe2e81aeb36cdf8a6cc5f50443879cc	multilib-minimal	0224dee31c0f98405d572e14ad6dee65	qt4-build-multilib	6c927fe8b8a816ccb98cd89a04c2947a	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=5ab1511fbf0196635b8d8fd8cd98b634

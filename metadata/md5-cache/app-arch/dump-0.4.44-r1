@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install postinst prepare
+DEPEND=>=sys-fs/e2fsprogs-1.27 >=app-arch/bzip2-1.0.2 >=sys-libs/zlib-1.1.4 ermt? ( dev-libs/openssl ) readline? ( sys-libs/readline sys-libs/ncurses static? ( sys-libs/ncurses[static-libs] ) ) virtual/pkgconfig virtual/os-headers !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Dump/restore ext2fs backup utilities
+EAPI=4
+HOMEPAGE=http://dump.sourceforge.net/
+IUSE=debug ermt readline selinux static
+KEYWORDS=alpha amd64 ~hppa ia64 ppc ppc64 sparc x86
+LICENSE=BSD
+RDEPEND=>=sys-fs/e2fsprogs-1.27 >=app-arch/bzip2-1.0.2 >=sys-libs/zlib-1.1.4 ermt? ( dev-libs/openssl ) readline? ( sys-libs/readline sys-libs/ncurses static? ( sys-libs/ncurses[static-libs] ) )
+SLOT=0
+SRC_URI=mirror://sourceforge/dump/dump-0.4b44.tar.gz
+_eclass_exported_funcs=pkg_postinst:- src_prepare:- src_configure:- src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	9d81603248f2ba3ec59124320d123e5e	libtool	4890219c51da247200223277f993e054	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=47883e980d332508ffe66b6e2ff044dc

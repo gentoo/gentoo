@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst preinst prepare setup unpack
+DEPEND=virtual/opengl virtual/glu media-libs/freeglut media-libs/openal media-libs/freealut x11-libs/libX11 x11-libs/libXxf86vm xrandr? ( x11-libs/libXrandr ) sys-libs/zlib >=media-libs/libpng-1.2.40:0 >=media-libs/plib-1.8.3 x11-proto/xproto x11-libs/libXext x11-libs/libICE x11-libs/libSM x11-libs/libXt x11-libs/libXi x11-libs/libXmu x11-libs/libXrender xrandr? ( x11-proto/randrproto ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=A fork of the famous open racing car simulator TORCS
+EAPI=5
+HOMEPAGE=http://speed-dreams.sourceforge.net/
+IUSE=xrandr
+KEYWORDS=amd64 x86
+LICENSE=GPL-2
+RDEPEND=virtual/opengl virtual/glu media-libs/freeglut media-libs/openal media-libs/freealut x11-libs/libX11 x11-libs/libXxf86vm xrandr? ( x11-libs/libXrandr ) sys-libs/zlib >=media-libs/libpng-1.2.40:0 games-misc/games-envd
+SLOT=0
+SRC_URI=mirror://sourceforge/speed-dreams/speed-dreams-1.4.0-r2307-src.tar.bz2
+_eclass_exported_funcs=pkg_preinst:games pkg_postinst:games pkg_setup:games src_unpack:base src_prepare:- src_configure:- src_compile:games src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	9d81603248f2ba3ec59124320d123e5e	games	2cf0d67d765e6358b435ccda30c13ad8	libtool	4890219c51da247200223277f993e054	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	user	906f3c8eb3a2350a4f1191a89baa3e46	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=baab557900e9b4e93dd65fccf58332fb

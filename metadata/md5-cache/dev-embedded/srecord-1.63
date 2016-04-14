@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=dev-libs/libgcrypt:0 dev-libs/boost sys-apps/groff test? ( app-arch/sharutils ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=A collection of powerful tools for manipulating EPROM load files
+EAPI=5
+HOMEPAGE=http://srecord.sourceforge.net/
+IUSE=static-libs test
+KEYWORDS=~amd64 ~sparc ~x86
+LICENSE=GPL-3
+RDEPEND=dev-libs/libgcrypt:0
+SLOT=0
+SRC_URI=mirror://sourceforge/srecord/srecord-1.63.tar.gz
+_eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	9d81603248f2ba3ec59124320d123e5e	libtool	4890219c51da247200223277f993e054	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=c7b44ad1b18c627dca941a1efbc2a5c4

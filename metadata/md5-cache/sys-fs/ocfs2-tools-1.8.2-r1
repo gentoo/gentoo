@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install prepare setup
+DEPEND=dev-libs/libaio sys-apps/util-linux sys-cluster/libcman external? ( sys-cluster/libdlm sys-cluster/pacemaker[-heartbeat] ) sys-fs/e2fsprogs sys-libs/ncurses sys-libs/readline sys-process/psmisc gtk? ( dev-python/pygtk ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 gtk? ( =dev-lang/python-2* )
+DESCRIPTION=Support programs for the Oracle Cluster Filesystem 2
+EAPI=4
+HOMEPAGE=http://oss.oracle.com/projects/ocfs2-tools/
+IUSE=debug external gtk
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=dev-libs/libaio sys-apps/util-linux sys-cluster/libcman external? ( sys-cluster/libdlm sys-cluster/pacemaker[-heartbeat] ) sys-fs/e2fsprogs sys-libs/ncurses sys-libs/readline sys-process/psmisc gtk? ( dev-python/pygtk ) gtk? ( =dev-lang/python-2* )
+SLOT=0
+SRC_URI=https://dev.gentoo.org/~alexxy/distfiles/ocfs2-tools-1.8.2.tar.xz
+_eclass_exported_funcs=pkg_setup:- src_prepare:- src_configure:- src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	9d81603248f2ba3ec59124320d123e5e	libtool	4890219c51da247200223277f993e054	multilib	23ae8c186171e6476af098d2a50d0ee0	python	efc1c55fc44c5b7272fc2ffba73c3e6f	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=ef1190d37397b8d281fbf056f0671f9c

@@ -1,0 +1,13 @@
+DEFINED_PHASES=install postinst postrm
+DEPEND=|| ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
+DESCRIPTION=vim plugin: interface for browsing ri/ruby documentation
+EAPI=0
+HOMEPAGE=http://www.vim.org/scripts/script.php?script_id=494
+KEYWORDS=~amd64 ~ppc ~x86 ~sparc
+LICENSE=public-domain
+RDEPEND=dev-lang/ruby || ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
+SLOT=0
+SRC_URI=mirror://gentoo/ri-browser-1.2.tar.bz2 https://dev.gentoo.org/~radhermit/vim/ri-browser-1.2.tar.bz2
+_eclass_exported_funcs=pkg_postrm:vim-plugin pkg_postinst:vim-plugin src_install:vim-plugin
+_eclasses_=vim-doc	1b0813c9dadf2431c96854a8d46f5eaf	vim-plugin	1bbfc3364a7588372fb4c21734f0cd96
+_md5_=b8da3536b8ee2af29ceb8c835a5d2adb

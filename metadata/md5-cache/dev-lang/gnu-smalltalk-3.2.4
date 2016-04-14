@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst postrm prepare
+DEPEND=app-arch/zip sys-libs/gdbm sys-apps/debianutils dev-libs/libsigsegv virtual/libffi emacs? ( virtual/emacs ) readline? ( sys-libs/readline ) tk? ( dev-lang/tk ) gtk? ( =x11-libs/gtk+-2* ) gmp? ( dev-libs/gmp )
+DESCRIPTION=GNU Smalltalk
+EAPI=3
+HOMEPAGE=http://smalltalk.gnu.org
+IUSE=tk readline emacs gtk gmp
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=mirror://gnu/smalltalk/smalltalk-3.2.4.tar.gz
+_eclass_exported_funcs=pkg_postrm:- pkg_postinst:- src_prepare:- src_configure:- src_compile:- src_install:-
+_eclasses_=elisp-common	9f56c4e9bf1282dbfc2a5a09e1124e74	eutils	9d81603248f2ba3ec59124320d123e5e	flag-o-matic	d270fa247153df66074f795fa42dba3e	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=bac7f07f8d49f5bc11a05dd82c82347b

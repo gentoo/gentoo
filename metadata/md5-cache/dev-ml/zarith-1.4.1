@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install test
+DEPEND=>=dev-lang/ocaml-4:=[ocamlopt?] !mpir? ( dev-libs/gmp:0= ) mpir? ( sci-libs/mpir ) dev-lang/perl >=dev-ml/findlib-1.0.4-r1
+DESCRIPTION=Arithmetic and logic operations over arbitrary-precision integers
+EAPI=5
+HOMEPAGE=https://forge.ocamlcore.org/projects/zarith/
+IUSE=doc mpir +ocamlopt
+KEYWORDS=~amd64
+LICENSE=LGPL-2.1-with-linking-exception
+RDEPEND=>=dev-lang/ocaml-4:=[ocamlopt?] !mpir? ( dev-libs/gmp:0= ) mpir? ( sci-libs/mpir )
+SLOT=0/1.4.1
+SRC_URI=https://forge.ocamlcore.org/frs/download.php/1574/zarith-1.4.1.tgz
+_eclass_exported_funcs=src_configure:- src_compile:- src_test:- src_install:-
+_eclasses_=eutils	9d81603248f2ba3ec59124320d123e5e	findlib	9909e5ca0f77ff5b693885a3d7aeadb7	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=eed1e1fe1d43ce72066a31af4b30f636

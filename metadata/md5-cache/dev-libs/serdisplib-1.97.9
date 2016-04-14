@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install
+DEPEND=media-libs/gd[jpeg,png] sdl? ( media-libs/libsdl ) usb? ( virtual/libusb:0 )
+DESCRIPTION=Library to drive serial/parallel/usb displays with built-in controllers
+EAPI=4
+HOMEPAGE=http://serdisplib.sourceforge.net/
+IUSE=sdl usb
+KEYWORDS=amd64 ppc x86
+LICENSE=GPL-2
+RDEPEND=media-libs/gd[jpeg,png] sdl? ( media-libs/libsdl ) usb? ( virtual/libusb:0 )
+SLOT=0
+SRC_URI=mirror://sourceforge/serdisplib/serdisplib-1.97.9.tar.gz
+_eclass_exported_funcs=src_configure:- src_install:-
+_eclasses_=eutils	9d81603248f2ba3ec59124320d123e5e	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=52d4f1568c0a7cac4c7ff16b268bfbca

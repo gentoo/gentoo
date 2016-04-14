@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-cpp/gtkmm:2.4 dev-libs/glib:2 x11-misc/xdg-utils alsa? ( >=media-libs/alsa-lib-1 ) gnome? ( >=gnome-base/libgnomeui-2 ) !gnome? ( x11-libs/libSM x11-libs/libICE ) gnutls? ( >=net-libs/gnutls-1.2 ) !gnutls? ( >=dev-libs/openssl-0.9 ) migemo? ( app-text/cmigemo ) virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=gtk2 based 2ch browser written in C++
+EAPI=5
+HOMEPAGE=http://jd4linux.sourceforge.jp/
+IUSE=alsa gnome gnutls migemo
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=dev-cpp/gtkmm:2.4 dev-libs/glib:2 x11-misc/xdg-utils alsa? ( >=media-libs/alsa-lib-1 ) gnome? ( >=gnome-base/libgnomeui-2 ) !gnome? ( x11-libs/libSM x11-libs/libICE ) gnutls? ( >=net-libs/gnutls-1.2 ) !gnutls? ( >=dev-libs/openssl-0.9 ) migemo? ( app-text/cmigemo )
+SLOT=0
+SRC_URI=mirror://sourceforge.jp/jd4linux/56721/jd-2.8.5-120826.tgz
+_eclass_exported_funcs=src_prepare:autotools-utils src_configure:- src_compile:autotools-utils src_test:autotools-utils src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	autotools-utils	419811142edf3516b0d0cf1a254d93cb	eutils	9d81603248f2ba3ec59124320d123e5e	flag-o-matic	d270fa247153df66074f795fa42dba3e	libtool	4890219c51da247200223277f993e054	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=d790b3a4823488cdd3322b58ecc5fd49

@@ -1,0 +1,11 @@
+DEFINED_PHASES=install
+DESCRIPTION=Compatibility C++ and libc5 and libc6 libraries for very old programs
+EAPI=5
+HOMEPAGE=https://www.gentoo.org/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=!<=app-emulation/emul-linux-x86-compat-20140508
+SLOT=0
+SRC_URI=mirror://gentoo/lib-compat-1.4.2.tar.bz2
+_eclass_exported_funcs=src_install:-
+_md5_=157ce70c48dbb2235fac80647c1b10e5

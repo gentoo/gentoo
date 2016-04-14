@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install unpack
+DEPEND=sys-libs/db perl? ( dev-lang/perl ) ssl? ( dev-libs/openssl )
+DESCRIPTION=Grab news from a remote NNTP server and feed them to another
+EAPI=0
+HOMEPAGE=http://home.comcast.net/~bobyetman/
+IUSE=ssl perl
+KEYWORDS=~amd64 ~ppc x86
+LICENSE=public-domain
+RDEPEND=sys-libs/db perl? ( dev-lang/perl ) ssl? ( dev-libs/openssl )
+SLOT=0
+SRC_URI=http://home.comcast.net/~bobyetman/suck-4.3.2.tar.gz
+_eclass_exported_funcs=src_unpack:- src_compile:- src_install:-
+_md5_=f648c97853c140626ce112d8e626b709

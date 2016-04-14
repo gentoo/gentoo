@@ -1,0 +1,11 @@
+DEFINED_PHASES=install
+DESCRIPTION=Craig Markwardt IDL procedures (MPFIT, CMSVLIB, etc)
+EAPI=6
+HOMEPAGE=http://cow.physics.wisc.edu/~craigm/idl/idl.html
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
+LICENSE=Markwardt
+RDEPEND=dev-lang/gdl
+SLOT=0
+SRC_URI=http://www.physics.wisc.edu/~craigm/idl/down/cmtotal.tar.gz -> idlmarkwardt-20130418.tar.gz
+_eclass_exported_funcs=src_install:-
+_md5_=99bd09c379bf134cdd9148b88b376f6d

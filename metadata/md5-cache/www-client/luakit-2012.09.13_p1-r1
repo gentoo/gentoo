@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install prepare unpack
+DEPEND=virtual/pkgconfig sys-apps/help2man luajit? ( dev-lang/luajit:2 ) !luajit? ( >=dev-lang/lua-5.1 ) dev-db/sqlite:3 dev-libs/glib:2 dev-libs/libunique:1 net-libs/libsoup:2.4 net-libs/webkit-gtk:2 x11-libs/gtk+:2
+DESCRIPTION=fast, small, webkit-gtk based micro-browser extensible by lua
+EAPI=4
+HOMEPAGE=https://mason-larobina.github.com/luakit/
+IUSE=luajit vim-syntax
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=luajit? ( dev-lang/luajit:2 ) !luajit? ( >=dev-lang/lua-5.1 ) dev-db/sqlite:3 dev-libs/glib:2 dev-libs/libunique:1 net-libs/libsoup:2.4 net-libs/webkit-gtk:2 x11-libs/gtk+:2 dev-lua/luafilesystem vim-syntax? ( || ( app-editors/vim app-editors/gvim ) )
+SLOT=0
+SRC_URI=https://github.com/mason-larobina/luakit/tarball/2012.09.13-r1 -> luakit-2012.09.13_p1.tar.gz
+_eclass_exported_funcs=src_unpack:vcs-snapshot src_prepare:- src_compile:- src_install:-
+_eclasses_=multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	vcs-snapshot	b45be87e7012be0af8424e8a5644da1d
+_md5_=4ce098172d52c9dd9de9a760bce9a995

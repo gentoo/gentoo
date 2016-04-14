@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install postinst postrm setup unpack
+DEPEND==dev-lang/gnat-gcc-4.3* doc? ( virtual/latex-base app-text/texi2html ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=sys-apps/sed-4 sys-devel/gnuconfig >=app-eselect/eselect-gnat-1.3 sys-devel/bc
+DESCRIPTION=The Ada Semantic Interface Specification (semantic analysis and tools tied to compiler)
+EAPI=0
+HOMEPAGE=https://libre.adacore.com/
+IUSE=doc nls
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND==dev-lang/gnat-gcc-4.3* app-eselect/eselect-gnat
+SLOT=4.3
+SRC_URI=https://dev.gentoo.org/~george/src/asis-gpl-2009-src.tgz
+_eclass_exported_funcs=pkg_postrm:gnatbuild pkg_postinst:- pkg_setup:- src_unpack:- src_compile:- src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	9d81603248f2ba3ec59124320d123e5e	fixheadtails	2f44773656577fe2653bacc8bdcb2174	flag-o-matic	d270fa247153df66074f795fa42dba3e	gnatbuild	d35ec9fa00b26c1fa3a1297c83e4cb12	gnuconfig	3920de1188fc7bfee873515453ed1d10	libtool	4890219c51da247200223277f993e054	multilib	23ae8c186171e6476af098d2a50d0ee0	pax-utils	ecf634cba91bb9591a8fdb6f6145f1bb	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=7aede7e0df234070fee1adc8bdeab2f7

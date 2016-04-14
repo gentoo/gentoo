@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=nls? ( sys-devel/gettext )
+DESCRIPTION=Script for unpacking various file formats
+EAPI=5
+HOMEPAGE=http://packages.qa.debian.org/u/unp.html
+IUSE=nls
+KEYWORDS=~amd64 ~arm ~hppa ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~x86-solaris
+LICENSE=GPL-2
+RDEPEND=nls? ( sys-devel/gettext ) dev-lang/perl
+SLOT=0
+SRC_URI=mirror://debian/pool/main/u/unp/unp_2.0~pre7+nmu1.tar.bz2
+_eclass_exported_funcs=src_prepare:- src_compile:- src_install:-
+_eclasses_=bash-completion-r1	acf715fa09463f043fbfdc1640f3fb85	eutils	9d81603248f2ba3ec59124320d123e5e	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=1dad7a2a6f39cef3ef4bdbf1e7136498

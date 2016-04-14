@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure prepare
+DEPEND=|| ( sys-libs/gdbm sys-libs/db )
+DESCRIPTION=Find deleted files in block devices
+EAPI=4
+HOMEPAGE=http://www.itu.dk/people/jobr/magicrescue/
+KEYWORDS=amd64 ~ppc x86
+LICENSE=GPL-2
+RDEPEND=|| ( sys-libs/gdbm sys-libs/db )
+SLOT=0
+SRC_URI=http://www.itu.dk/people/jobr/magicrescue/release/magicrescue-1.1.9.tar.gz
+_eclass_exported_funcs=src_prepare:- src_configure:-
+_eclasses_=eutils	9d81603248f2ba3ec59124320d123e5e	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=b3b14059db90dbb7f2824a1f919aa79c

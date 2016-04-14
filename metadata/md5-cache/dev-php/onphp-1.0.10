@@ -1,0 +1,12 @@
+DEFINED_PHASES=install
+DESCRIPTION=onPHP is the LGPL'ed multi-purpose object-oriented PHP framework
+EAPI=4
+HOMEPAGE=http://onphp.org/
+IUSE=doc
+KEYWORDS=~amd64 ~x86
+LICENSE=LGPL-2
+RDEPEND=dev-lang/php
+SLOT=0
+SRC_URI=http://onphp.org/download/onphp-1.0.10.tar.bz2 doc? ( http://onphp.org/download/onphp-api-1.0.10.tar.bz2 )
+_eclass_exported_funcs=src_install:-
+_md5_=d484ba8db590189cc4c02f5f9b5ca95d

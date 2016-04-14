@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare setup unpack
+DEPEND=tcl? ( dev-lang/tcl:0= ) guile? ( dev-scheme/guile:12 ) perl? ( dev-lang/perl:= ) php? ( dev-lang/php:= ) python? ( >=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),python_single_target_python2_7(+)] ) firmware? ( sys-apps/fxload ) virtual/pkgconfig doc? ( app-text/docbook-sgml-utils ) perl? ( virtual/perl-ExtUtils-MakeMaker ) kernel_linux? ( virtual/modutils ) sys-apps/sed kernel_linux? ( virtual/linux-sources ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 virtual/pkgconfig
+DESCRIPTION=Kernel module and driver library for GPIB (IEEE 488.2) hardware
+EAPI=5
+HOMEPAGE=http://linux-gpib.sourceforge.net/
+IUSE=isa pcmcia static debug guile perl php python tcl doc firmware kernel_linux python_targets_python2_7
+KEYWORDS=amd64 ~arm ~x86
+LICENSE=GPL-2
+RDEPEND=tcl? ( dev-lang/tcl:0= ) guile? ( dev-scheme/guile:12 ) perl? ( dev-lang/perl:= ) php? ( dev-lang/php:= ) python? ( >=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),python_single_target_python2_7(+)] ) firmware? ( sys-apps/fxload ) kernel_linux? ( virtual/modutils )
+REQUIRED_USE=python? ( python_targets_python2_7 )
+SLOT=0
+SRC_URI=mirror://sourceforge/linux-gpib/linux-gpib-3.2.21.tar.gz firmware? ( http://linux-gpib.sourceforge.net/firmware/gpib_firmware-2006-11-12.tar.gz ) https://dev.gentoo.org/~dilfridge/distfiles/linux-gpib-3.2.21-ctrl-c.patch.gz
+_eclass_exported_funcs=pkg_preinst:- pkg_postrm:linux-mod pkg_postinst:- pkg_setup:- src_unpack:unpacker src_prepare:- src_configure:- src_compile:- src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	9d81603248f2ba3ec59124320d123e5e	libtool	4890219c51da247200223277f993e054	linux-info	fd1e29abbb02cbc49f1a14299846e9c4	linux-mod	4755518412586c2fd655ff6e55780bcb	multilib	23ae8c186171e6476af098d2a50d0ee0	multiprocessing	e32940a7b2a9992ad217eccddb84d548	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	461f1d9eb930e8d1b178a39e83635fd0	python-single-r1	2ebea8fbab356d63110245129a67a6dd	python-utils-r1	2e6826f6a93ad2acf904eecf5b5fb6d2	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	udev	73058269b3e70e34e084fa3981282338	unpacker	45d07319df5f40ee6af58418b0f930be	user	906f3c8eb3a2350a4f1191a89baa3e46	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=36e226c437123231ef1f2cce3cf98d3a

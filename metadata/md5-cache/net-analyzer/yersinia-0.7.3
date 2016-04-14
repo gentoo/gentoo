@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure prepare
+DEPEND=virtual/pkgconfig ncurses? ( >=sys-libs/ncurses-5.5 ) gtk? ( =x11-libs/gtk+-2* ) >=net-libs/libnet-1.1.2 >=net-libs/libpcap-0.9.4 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=A layer 2 attack framework
+EAPI=5
+HOMEPAGE=http://www.yersinia.net/
+IUSE=gtk ncurses
+KEYWORDS=amd64 x86
+LICENSE=GPL-2
+RDEPEND=ncurses? ( >=sys-libs/ncurses-5.5 ) gtk? ( =x11-libs/gtk+-2* ) >=net-libs/libnet-1.1.2 >=net-libs/libpcap-0.9.4
+SLOT=0
+SRC_URI=http://www.yersinia.net/download/yersinia-0.7.3.tar.gz
+_eclass_exported_funcs=src_prepare:- src_configure:- src_compile:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	9d81603248f2ba3ec59124320d123e5e	libtool	4890219c51da247200223277f993e054	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=24584b8d64d7001f7fff18e2743749fb

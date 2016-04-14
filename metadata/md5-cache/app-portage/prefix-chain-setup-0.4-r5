@@ -1,0 +1,10 @@
+DEFINED_PHASES=install
+DESCRIPTION=Chained EPREFIX bootstrapping utility
+EAPI=0
+HOMEPAGE=https://dev.gentoo.org/~mduft
+KEYWORDS=~ppc-aix ~ia64-hpux ~x86-interix ~x86-linux ~sparc-solaris ~x86-solaris
+LICENSE=GPL-3
+SLOT=0
+_eclass_exported_funcs=src_install:-
+_eclasses_=prefix	e7f2b9c6e57342e5d25eac22fce23062
+_md5_=91fcfb8682e24f22ca9cb153b6395c95

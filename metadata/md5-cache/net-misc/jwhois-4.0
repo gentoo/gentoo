@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install
+DEPEND=idn? ( net-dns/libidn )
+DESCRIPTION=Advanced Internet Whois client capable of recursive queries
+EAPI=0
+HOMEPAGE=https://www.gnu.org/software/jwhois/
+IUSE=idn nls
+KEYWORDS=alpha amd64 arm hppa ia64 m68k ~mips ~ppc ppc64 s390 sh sparc x86
+LICENSE=GPL-3
+RDEPEND=idn? ( net-dns/libidn )
+SLOT=0
+SRC_URI=mirror://gnu/jwhois/jwhois-4.0.tar.gz
+_eclass_exported_funcs=src_compile:- src_install:-
+_md5_=da5232691f1e7fb02a235bb597e6b944

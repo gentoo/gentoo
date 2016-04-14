@@ -1,0 +1,11 @@
+DEFINED_PHASES=install prepare setup unpack
+DEPEND=x11-libs/gtk+:2 dev-libs/glib:2 gnome-base/libgnome app-text/gnome-doc-utils >=app-text/asciidoc-8 dev-python/pygtk:2 dev-vcs/git virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 dev-vcs/git || ( =dev-lang/python-2.7* =dev-lang/python-2.6* )
+DESCRIPTION=a tool to track the history and make backups of your home directory
+EAPI=3
+HOMEPAGE=http://jean-francois.richard.name/ghh/
+LICENSE=GPL-2
+RDEPEND=x11-libs/gtk+:2 dev-libs/glib:2 gnome-base/libgnome app-text/gnome-doc-utils >=app-text/asciidoc-8 dev-python/pygtk:2 dev-vcs/git || ( =dev-lang/python-2.7* =dev-lang/python-2.6* )
+SLOT=0
+_eclass_exported_funcs=pkg_setup:- src_unpack:git-2 src_prepare:- src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	git-2	672c3929a162f221a53b4ccb4d25d8a2	libtool	4890219c51da247200223277f993e054	multilib	23ae8c186171e6476af098d2a50d0ee0	python	efc1c55fc44c5b7272fc2ffba73c3e6f	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=9684edfa9b888cb9d4c3324f900b90ee

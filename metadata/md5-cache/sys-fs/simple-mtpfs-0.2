@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=media-libs/libmtp >=sys-fs/fuse-2.8 virtual/pkgconfig
+DESCRIPTION=Simple MTP fuse filesystem driver
+EAPI=5
+HOMEPAGE=https://github.com/phatina/simple-mtpfs
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2+
+RDEPEND=media-libs/libmtp >=sys-fs/fuse-2.8
+SLOT=0
+SRC_URI=https://github.com/phatina/simple-mtpfs/archive/simple-mtpfs-0.2.tar.gz
+_eclass_exported_funcs=src_prepare:autotools-utils src_configure:autotools-utils src_compile:autotools-utils src_test:autotools-utils src_install:autotools-utils
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	autotools-utils	419811142edf3516b0d0cf1a254d93cb	eutils	9d81603248f2ba3ec59124320d123e5e	libtool	4890219c51da247200223277f993e054	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=ef6ede0d14f948309d6b49ac1da33c79

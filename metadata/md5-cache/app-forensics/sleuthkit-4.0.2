@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-db/sqlite:3 ewf? ( app-forensics/libewf ) aff? ( app-forensics/afflib )
+DESCRIPTION=A collection of file system and media management forensic analysis tools
+EAPI=5
+HOMEPAGE=http://www.sleuthkit.org/sleuthkit/
+IUSE=aff ewf static-libs
+KEYWORDS=amd64 hppa ppc x86
+LICENSE=GPL-2 IBM
+RDEPEND=dev-db/sqlite:3 ewf? ( app-forensics/libewf ) aff? ( app-forensics/afflib ) dev-perl/Date-Manip
+SLOT=0/9
+SRC_URI=mirror://sourceforge/sleuthkit/sleuthkit-4.0.2.tar.gz
+_eclass_exported_funcs=src_prepare:autotools-utils src_configure:- src_compile:autotools-utils src_test:autotools-utils src_install:autotools-utils
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	autotools-utils	419811142edf3516b0d0cf1a254d93cb	eutils	9d81603248f2ba3ec59124320d123e5e	libtool	4890219c51da247200223277f993e054	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=4734a62b35fa5aaa485ea64649fbe07a

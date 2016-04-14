@@ -1,0 +1,11 @@
+DEFINED_PHASES=configure install prepare
+DESCRIPTION=IAX (Inter Asterisk eXchange) Library
+EAPI=2
+HOMEPAGE=http://www.asterisk.org/
+IUSE=debug snomhack
+KEYWORDS=~amd64 ~ppc x86
+LICENSE=LGPL-2
+SLOT=0
+SRC_URI=http://downloads.asterisk.org/pub/telephony/libiax/iax-0.2.2.tar.gz
+_eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
+_md5_=6f3a2591f179ca9075b4063579211cd9

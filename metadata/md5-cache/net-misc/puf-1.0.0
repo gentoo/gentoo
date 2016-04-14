@@ -1,0 +1,10 @@
+DEFINED_PHASES=-
+DESCRIPTION=A download tool for UNIX-like systems
+EAPI=4
+HOMEPAGE=http://puf.sourceforge.net/
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=mirror://sourceforge/puf/puf-1.0.0.tar.gz
+_eclass_exported_funcs=-
+_md5_=fc40896367e1341fb94ba4c50c65c151

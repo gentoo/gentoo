@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install
+DEPEND=dev-java/maven-bin
+DESCRIPTION=Guacamole is a html5 vnc client as servlet
+EAPI=5
+HOMEPAGE=http://guacamole.sourceforge.net/
+IUSE=ldap mysql
+KEYWORDS=~x86
+LICENSE=AGPL-3
+RDEPEND=dev-java/maven-bin www-servers/tomcat >virtual/jre-1.6 net-misc/guacamole-server mysql? ( virtual/mysql ) ldap? ( net-nds/openldap )
+SLOT=0
+SRC_URI=mirror://sourceforge/guacamole/guacamole-client-0.9.0.tar.gz mysql? ( http://sourceforge.net/projects/guacamole/files/current/extensions/guacamole-auth-mysql-0.9.0.tar.gz ) ldap? ( http://sourceforge.net/projects/guacamole/files/current/extensions/guacamole-auth-ldap-0.9.0.tar.gz )
+_eclass_exported_funcs=src_compile:- src_install:-
+_eclasses_=eutils	9d81603248f2ba3ec59124320d123e5e	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=b4ed590e61c07216d4d110057b02edc9

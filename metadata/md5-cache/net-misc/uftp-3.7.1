@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=ssl? ( dev-libs/openssl )
+DESCRIPTION=Encrypted UDP based FTP with multicast
+EAPI=5
+HOMEPAGE=http://www.tcnj.edu/~bush/uftp.html
+IUSE=+server ssl
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=ssl? ( dev-libs/openssl )
+SLOT=0
+SRC_URI=http://www.tcnj.edu/~bush/downloads/uftp-3.7.1.tar
+_eclass_exported_funcs=src_prepare:- src_compile:- src_install:-
+_eclasses_=eutils	9d81603248f2ba3ec59124320d123e5e	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=7c8aafc57ce766493ce06711a79364a4

@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare pretend setup test
+DEPEND=dev-lang/luajit:2= >=dev-libs/jsoncpp-0.6_pre:0= sys-libs/ncurses:0= sys-libs/zlib:0= app-arch/xz-utils virtual/os-headers kernel_linux? ( virtual/modutils ) sys-apps/sed kernel_linux? ( virtual/linux-sources ) sys-devel/make >=dev-util/cmake-2.8.12
+DESCRIPTION=A system exploration and troubleshooting tool
+EAPI=5
+HOMEPAGE=http://www.sysdig.org/
+IUSE=+modules kernel_linux
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=dev-lang/luajit:2= >=dev-libs/jsoncpp-0.6_pre:0= sys-libs/ncurses:0= sys-libs/zlib:0= kernel_linux? ( virtual/modutils )
+SLOT=0
+SRC_URI=https://github.com/draios/sysdig/archive/0.1.104.tar.gz -> sysdig-0.1.104.tar.gz
+_eclass_exported_funcs=pkg_pretend:- pkg_preinst:linux-mod pkg_postrm:linux-mod pkg_postinst:linux-mod pkg_setup:- src_prepare:- src_configure:- src_compile:- src_test:cmake-utils src_install:-
+_eclasses_=bash-completion-r1	acf715fa09463f043fbfdc1640f3fb85	cmake-utils	422bbd1bee2557490177a34dbe0a662b	eutils	9d81603248f2ba3ec59124320d123e5e	flag-o-matic	d270fa247153df66074f795fa42dba3e	linux-info	fd1e29abbb02cbc49f1a14299846e9c4	linux-mod	4755518412586c2fd655ff6e55780bcb	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=4f1fae6f5217d3768b7427cadbd2449e

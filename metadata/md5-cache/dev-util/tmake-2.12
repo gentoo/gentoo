@@ -1,0 +1,11 @@
+DEFINED_PHASES=install
+DESCRIPTION=A Cross platform Makefile tool
+EAPI=3
+HOMEPAGE=http://tmake.sourceforge.net
+KEYWORDS=~amd64 ppc x86 ~x86-linux ~ppc-macos
+LICENSE=HPND
+RDEPEND=>=dev-lang/perl-5
+SLOT=0
+SRC_URI=mirror://sourceforge/tmake/tmake-2.12.tar.bz2
+_eclass_exported_funcs=src_install:-
+_md5_=db07d2091abc29a7ecc91f689908c2d0

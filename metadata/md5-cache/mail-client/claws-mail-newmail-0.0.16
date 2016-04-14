@@ -1,0 +1,12 @@
+DEFINED_PHASES=install
+DEPEND=~mail-client/claws-mail-3.9.0 virtual/pkgconfig
+DESCRIPTION=Plugin which writes a header summary to a log file for each received mail
+EAPI=0
+HOMEPAGE=http://www.claws-mail.org/
+KEYWORDS=amd64 ~ppc x86
+LICENSE=GPL-3
+RDEPEND=~mail-client/claws-mail-3.9.0
+SLOT=0
+SRC_URI=http://www.claws-mail.org/downloads/plugins/newmail-0.0.16.tar.gz
+_eclass_exported_funcs=src_install:-
+_md5_=3a5d8074238e9bc5ded1b007fd6c524d

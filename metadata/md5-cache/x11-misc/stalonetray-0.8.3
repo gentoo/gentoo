@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install
+DEPEND=x11-libs/libX11 x11-libs/libICE x11-libs/libSM x11-libs/libXpm x11-proto/xproto
+DESCRIPTION=System tray utility including support for KDE system tray icons
+EAPI=5
+HOMEPAGE=http://stalonetray.sourceforge.net/
+IUSE=debug +graceful-exit kde
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=x11-libs/libX11 x11-libs/libICE x11-libs/libSM x11-libs/libXpm
+SLOT=0
+SRC_URI=mirror://sourceforge/stalonetray/stalonetray-0.8.3.tar.bz2
+_eclass_exported_funcs=src_configure:- src_install:-
+_md5_=c1b9a831071b1495735c6a18b8766d36

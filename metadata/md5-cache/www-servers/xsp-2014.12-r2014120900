@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install preinst prepare setup test unpack
+DEPEND=dev-db/sqlite:3 virtual/pkgconfig dev-lang/mono !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=XSP is a small web server that can host ASP.NET pages
+EAPI=5
+HOMEPAGE=http://www.mono-project.com/ASP.NET
+IUSE=doc test developer net35 net40 net45
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=MIT
+RDEPEND=dev-db/sqlite:3
+SLOT=0
+SRC_URI=https://github.com/mono/xsp/archive/e272a2c006211b6b03be2ef5bbb9e3f8fefd0768.zip -> xsp-2014.12.zip
+_eclass_exported_funcs=pkg_preinst:- pkg_setup:dotnet src_unpack:base src_prepare:- src_configure:- src_compile:- src_test:autotools-utils src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	autotools-utils	419811142edf3516b0d0cf1a254d93cb	base	3fe4f8980633fd7bc69e9887209ba2fe	dotnet	b8788d81fe4ec93fda9fc56fed2981d0	eutils	9d81603248f2ba3ec59124320d123e5e	libtool	4890219c51da247200223277f993e054	mono-env	10809200679bcceefebac9e72bebb6e6	multilib	23ae8c186171e6476af098d2a50d0ee0	systemd	3165c885f3c71ffae7a867d931fb0e07	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	user	906f3c8eb3a2350a4f1191a89baa3e46	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=af57d10d847a9878e5dfc09a34225dfc

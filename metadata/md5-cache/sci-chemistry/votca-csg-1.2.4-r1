@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install postinst prepare test
+DEPEND=~sci-libs/votca-tools-1.2.4 gromacs? ( sci-chemistry/gromacs:= ) dev-lang/perl app-shells/bash doc? ( || ( <app-doc/doxygen-1.7.6.1[-nodot] >=app-doc/doxygen-1.7.6.1[dot] ) ) >=app-text/txt2tags-2.5 virtual/pkgconfig sys-devel/make >=dev-util/cmake-2.8.12
+DESCRIPTION=Votca coarse-graining engine
+EAPI=5
+HOMEPAGE=http://www.votca.org
+IUSE=doc examples extras +gromacs
+KEYWORDS=amd64 x86 ~amd64-linux ~x86-macos
+LICENSE=Apache-2.0
+PDEPEND=extras? ( =sci-chemistry/votca-csgapps-1.2.4 )
+RDEPEND=~sci-libs/votca-tools-1.2.4 gromacs? ( sci-chemistry/gromacs:= ) dev-lang/perl app-shells/bash
+SLOT=0
+SRC_URI=https://downloads.votca.googlecode.com/hg/votca-csg-1.2.4.tar.gz doc? ( https://downloads.votca.googlecode.com/hg/votca-csg-manual-1.2.4.pdf ) examples? ( https://downloads.votca.googlecode.com/hg/votca-csg-tutorials-1.2.4.tar.gz )
+_eclass_exported_funcs=pkg_postinst:- src_prepare:cmake-utils src_configure:- src_compile:cmake-utils src_test:cmake-utils src_install:-
+_eclasses_=bash-completion-r1	acf715fa09463f043fbfdc1640f3fb85	cmake-utils	422bbd1bee2557490177a34dbe0a662b	eutils	9d81603248f2ba3ec59124320d123e5e	flag-o-matic	d270fa247153df66074f795fa42dba3e	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=9f3a2818c5156c785e76b4e252e2bc3b

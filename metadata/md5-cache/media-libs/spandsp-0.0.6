@@ -1,0 +1,15 @@
+DEFINED_PHASES=configure install
+DEPEND=media-libs/tiff virtual/jpeg doc? ( app-doc/doxygen dev-libs/libxslt )
+DESCRIPTION=SpanDSP is a library of DSP functions for telephony
+EAPI=5
+HOMEPAGE=http://www.soft-switch.org/
+IUSE=doc fixed-point cpu_flags_x86_mmx cpu_flags_x86_sse cpu_flags_x86_sse2 cpu_flags_x86_sse3 static-libs
+KEYWORDS=~amd64 ~arm ~ppc ~ppc64 ~x86
+LICENSE=LGPL-2.1
+RDEPEND=media-libs/tiff virtual/jpeg
+REQUIRED_USE=cpu_flags_x86_sse3? ( cpu_flags_x86_sse2 ) cpu_flags_x86_sse2? ( cpu_flags_x86_sse ) cpu_flags_x86_sse? ( cpu_flags_x86_mmx )
+SLOT=0
+SRC_URI=http://www.soft-switch.org/downloads/spandsp/spandsp-0.0.6.tar.gz
+_eclass_exported_funcs=src_configure:- src_install:-
+_eclasses_=eutils	9d81603248f2ba3ec59124320d123e5e	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=134a414dcba0a3ba49c880e448938fec

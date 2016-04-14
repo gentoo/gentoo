@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst prepare setup
+DEPEND=net-dns/avahi[dbus] =www-servers/apache-2*
+DESCRIPTION=mod_dnssd is an Apache module which adds Zeroconf support via DNS-SD using Avahi
+EAPI=5
+HOMEPAGE=http://0pointer.de/lennart/projects/mod_dnssd/
+KEYWORDS=amd64 ~arm x86
+LICENSE=BSD
+RDEPEND=net-dns/avahi[dbus] =www-servers/apache-2*
+SLOT=0
+SRC_URI=http://0pointer.de/lennart/projects/mod_dnssd/mod_dnssd-0.6.tar.gz
+_eclass_exported_funcs=pkg_postinst:apache-module pkg_setup:depend.apache src_prepare:- src_configure:- src_compile:- src_install:apache-module
+_eclasses_=apache-module	5e66430013d92dfe0bf8672b05319b6d	depend.apache	e3c541cb90838388f81620d630c28f41	eutils	9d81603248f2ba3ec59124320d123e5e	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=cc6b23347fde3142aa62cdbc4bd31822

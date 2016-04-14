@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst preinst prepare setup unpack
+DEPEND=x11-libs/libXpm x11-libs/libXxf86vm x11-libs/libXmu x11-libs/libX11 x11-libs/libXt x11-proto/xproto x11-proto/recordproto x11-proto/xf86vidmodeproto
+DESCRIPTION=*nix minimizer for a few games
+EAPI=5
+HOMEPAGE=http://hem.bredband.net/b400150/
+KEYWORDS=amd64 x86
+LICENSE=GPL-2
+RDEPEND=x11-libs/libXpm x11-libs/libXxf86vm x11-libs/libXmu x11-libs/libX11 games-misc/games-envd
+SLOT=0
+SRC_URI=http://hem.bredband.net/b400150/etswitch/etswitch-0.1.14.tar.gz
+_eclass_exported_funcs=pkg_preinst:games pkg_postinst:games pkg_setup:games src_unpack:base src_prepare:- src_configure:- src_compile:games src_install:-
+_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	9d81603248f2ba3ec59124320d123e5e	games	2cf0d67d765e6358b435ccda30c13ad8	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	user	906f3c8eb3a2350a4f1191a89baa3e46
+_md5_=ec63ce7d12855538be5c76b8fccbcfaa

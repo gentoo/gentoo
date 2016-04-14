@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=dev-libs/boost:= dev-libs/openssl:0 >=dev-libs/rlog-1.4 >=sys-fs/fuse-2.7.0 sys-libs/zlib dev-lang/perl virtual/pkgconfig xattr? ( sys-apps/attr ) sys-devel/gettext !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=An implementation of encrypted filesystem in user-space using FUSE
+EAPI=5
+HOMEPAGE=https://vgough.github.io/encfs/
+IUSE=xattr
+KEYWORDS=amd64 ~arm ~sparc x86
+LICENSE=GPL-3
+RDEPEND=dev-libs/boost:= dev-libs/openssl:0 >=dev-libs/rlog-1.4 >=sys-fs/fuse-2.7.0 sys-libs/zlib
+SLOT=0
+SRC_URI=https://github.com/vgough/encfs/archive/v1.7.5.tar.gz -> encfs-1.7.5.tar.gz
+_eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	9d81603248f2ba3ec59124320d123e5e	libtool	4890219c51da247200223277f993e054	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=707aaabc17aac2f02e441a44f870112b

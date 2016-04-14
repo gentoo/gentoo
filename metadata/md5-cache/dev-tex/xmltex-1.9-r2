@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst postrm prepare unpack
+DEPEND=virtual/latex-base virtual/latex-base >=sys-apps/texinfo-4.2-r5
+DESCRIPTION=A non validating namespace aware XML parser implemented in TeX
+EAPI=5
+HOMEPAGE=http://www.dcarlisle.demon.co.uk/xmltex/manual.html
+KEYWORDS=alpha amd64 arm hppa ia64 ~mips ppc ppc64 s390 sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~x64-macos ~x86-macos ~x86-solaris
+LICENSE=LPPL-1.2
+RDEPEND=virtual/latex-base !=dev-texlive/texlive-htmlxml-2007* virtual/latex-base
+SLOT=0
+SRC_URI=mirror://gentoo/xmltex-1.9.tar.gz
+_eclass_exported_funcs=pkg_postrm:latex-package pkg_postinst:latex-package src_unpack:base src_prepare:base src_configure:base src_compile:- src_install:-
+_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	9d81603248f2ba3ec59124320d123e5e	latex-package	d75dd1e3099f9f8c35469a877b3fe082	multilib	23ae8c186171e6476af098d2a50d0ee0	texlive-common	cf8d3d36261adafe564b821b75b34a05	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=ffff3d08f9e68b880b853d22f1970b38

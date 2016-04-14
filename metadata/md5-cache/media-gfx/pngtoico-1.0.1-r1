@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=>=media-libs/libpng-1.4
+DESCRIPTION=Convert png images to MS ico format
+EAPI=4
+HOMEPAGE=https://www.kernel.org/pub/software/graphics/pngtoico/
+KEYWORDS=amd64 ~ppc x86 ~amd64-linux ~x86-linux ~ppc-macos
+LICENSE=GPL-2
+RDEPEND=>=media-libs/libpng-1.4
+SLOT=0
+SRC_URI=mirror://kernel/software/graphics/pngtoico/pngtoico-1.0.1.tar.bz2
+_eclass_exported_funcs=src_prepare:- src_compile:- src_install:-
+_eclasses_=eutils	9d81603248f2ba3ec59124320d123e5e	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=5a5ba12b33d410d0ae6d95ee2cc48667

@@ -1,0 +1,14 @@
+DEFINED_PHASES=install
+DEPEND=app-arch/bzip2 >=dev-lang/ocaml-3.12:=[ocamlopt] >=dev-ml/findlib-1.0.4-r1
+DESCRIPTION=OCaml bindings for libbz (AKA, bzip2)
+EAPI=5
+HOMEPAGE=http://camlbz2.forge.ocamlcore.org/
+IUSE=doc
+KEYWORDS=~amd64
+LICENSE=LGPL-2.1
+RDEPEND=app-arch/bzip2 >=dev-lang/ocaml-3.12:=[ocamlopt]
+SLOT=0/0.6.0
+SRC_URI=http://forge.ocamlcore.org/frs/download.php/72/camlbz2-0.6.0.tar.gz
+_eclass_exported_funcs=src_install:-
+_eclasses_=findlib	9909e5ca0f77ff5b693885a3d7aeadb7
+_md5_=9de044fae4ece47d5c71c09769bfec9c
