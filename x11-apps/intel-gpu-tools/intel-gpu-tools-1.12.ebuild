@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -40,13 +40,13 @@ src_install() {
 	xorg-2_src_install
 	if use test-programs; then
 		local testprogram
-		pushd "${AUTOTOOLS_BUILD_DIR}"/tests || die
-			for testprogram in $(<multi-tests.txt) $(<single-tests.txt); do
-				if [[ -f ${testprogram} ]]; then
-					dobin "${testprogram}"
-				fi
-			done
-		popd
+		pushd tests >/dev/null || die
+		for testprogram in $(<multi-tests.txt) $(<single-tests.txt); do
+			if [[ -f ${testprogram} ]]; then
+				dobin "${testprogram}"
+			fi
+		done
+		popd >/dev/null || die
 	fi
 }
 
