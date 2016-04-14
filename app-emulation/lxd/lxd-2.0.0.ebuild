@@ -42,7 +42,6 @@ RDEPEND="
 		app-arch/xz-utils
 		app-emulation/lxc[cgmanager,seccomp]
 		net-analyzer/openbsd-netcat
-		net-misc/bridge-utils
 		net-misc/rsync[xattr]
 		sys-apps/iproute2
 		virtual/acl
@@ -127,10 +126,7 @@ src_install() {
 
 	newbashcomp config/bash/lxd-client lxc
 
-	dodoc AUTHORS CONTRIBUTING.md README.md
-
-	docinto specs
-	dodoc specs/*
+	dodoc AUTHORS CONTRIBUTING.md README.md doc/*
 }
 
 pkg_postinst() {
