@@ -1,0 +1,26 @@
+<!ELEMENT projects (project)*>
+<!-- A project (identified by email address) -->
+<!ELEMENT project (email,name,url,description,subproject*,member*)>
+<!-- Contact e-mail address of a project or a project member -->
+<!ELEMENT email (#PCDATA)>
+<!-- Name of a project or a project member -->
+<!ELEMENT name (#PCDATA)>
+<!-- URL of the project homepage -->
+<!ELEMENT url (#PCDATA)>
+<!-- Description of the project -->
+<!ELEMENT description (#PCDATA)>
+<!-- Project member -->
+<!ELEMENT member (email,name,role)>
+<!-- is-lead="1" indicates that the member is the project's lead -->
+<!ATTLIST member
+          is-lead (0|1) "0">
+<!-- Project member role -->
+<!ELEMENT role (#PCDATA)>
+<!-- Subproject of a project -->
+<!ELEMENT subproject (#PCDATA)>
+<!-- inherit-members="1" indicates that the project inherits members
+	from the subproject -->
+<!-- ref="" references the subproject by the contact e-mail address -->
+<!ATTLIST subproject
+          inherit-members (0|1) "0"
+          ref CDATA #REQUIRED>
