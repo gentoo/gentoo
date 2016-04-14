@@ -3,8 +3,8 @@
 <pkgmetadata>
 	<maintainer type="person">
 		<email>yoshi3@autograf.pl</email>
-		<name> Marcin Kowalski</name>
-		<description>Maintainer. Assign bugs on him</description>
+		<name>Marcin Kowalski</name>
+		<description>Proxy Maintainer, Assign bugs to him</description>
 	</maintainer>
 	<maintainer type="project">
 		<email>proxy-maint@gentoo.org</email>
