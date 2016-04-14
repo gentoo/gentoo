@@ -7064,7 +7064,7 @@ dev-python/django-setuptest 0.1.6 0.2.1: Simple test suite enabling Django app t
 dev-python/django-social-auth 0.7.28: An easy to setup social authentication/authorization mechanism for Django projects
 dev-python/django-tables2 1.1.0 1.1.1 1.1.2: Table/data-grid framework for Django
 dev-python/django-tagging 0.3.4 0.3.6 0.4 0.4.1: Generic tagging application for Django
-dev-python/django-tastypie 0.9.15: A flexible and capable API layer for django utilising serialisers
+dev-python/django-tastypie 0.9.15 0.13.3: A flexible and capable API layer for django utilising serialisers
 dev-python/django-tinymce 1.5.3: TinyMCE integration for Django
 dev-python/django-treebeard 3.0 4.0: Efficient tree implementations for Django 1.6+
 dev-python/django-two-factor-auth 1.2.1 1.3.0: User-friendly Two-Factor Authentication for Django
