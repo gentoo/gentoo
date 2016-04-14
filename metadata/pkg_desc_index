@@ -15253,6 +15253,7 @@ sci-astronomy/celestia 1.6.1-r1: OpenGL 3D space simulator
 sci-astronomy/cpl 6.4.2 6.6.1 7.0: ESO common pipeline library for astronomical data reduction
 sci-astronomy/ds9-bin 7.2 7.4: Data visualization application for astronomical FITS images
 sci-astronomy/erfa 1.0.1 1.1.0 1.2.0: Essential Routines for Fundamental Astronomy
+sci-astronomy/esomidas 15.09: European Southern Observatory Munich Image Data Analysis System
 sci-astronomy/esorex 3.10.2 3.12 3.12.3: ESO Recipe Execution Tool to exec cpl scripts
 sci-astronomy/funtools 1.4.6: FITS library and utlities for astronomical images
 sci-astronomy/galaxy 2.2: Stellar simulation program
