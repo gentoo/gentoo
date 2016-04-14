@@ -14,7 +14,7 @@ SRC_URI="mirror://gentoo/jlfgr-${MY_PV}.zip"
 
 LICENSE="sun-jlfgr"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 RDEPEND=">=virtual/jre-1.6"
