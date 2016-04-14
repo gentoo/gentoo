@@ -16,8 +16,8 @@ if [[ ${PV} = *beta* ]]; then
 	SRC="${BETA_SNAPSHOT}/rustc-beta-src.tar.gz"
 	KEYWORDS=""
 else
-	SLOT="stable/${ABI_VER}"
 	ABI_VER="$(get_version_component_range 1-2)"
+	SLOT="stable/${ABI_VER}"
 	MY_P="rustc-${PV}"
 	SRC="${MY_P}-src.tar.gz"
 	KEYWORDS="~amd64 ~x86"
