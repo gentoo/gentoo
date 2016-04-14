@@ -1,0 +1,26 @@
+Title: Mesa r600 driver now defaults to gallium
+Author: Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+Content-Type: text/plain
+Posted: 2011-08-28
+Revision: 1
+News-Item-Format: 1.0
+Display-If-Installed: <media-libs/mesa-7.12
+
+This news item is relevant to you only if you have a Radeon graphics
+chipset and use the free/open source driver.
+
+The r600 driver that provides 3D acceleration for Radeon HD 2400 and
+later cards comes in the "classic" and "gallium" variants. The gallium
+driver is based on the new Gallium3D infrastructure and was chosen as
+the default driver for media-libs/mesa-7.11.
+
+Existing users will not be switched automatically. To switch to the
+r600 gallium driver, use the following command:
+
+    eselect mesa set r600 gallium
+
+Gallium3D requires kernel modesetting (KMS). If your system is not yet
+configured for KMS, consult the X Server Configuration HOWTO for
+instructions prior to switching:
+
+    http://www.gentoo.org/doc/en/xorg-config.xml

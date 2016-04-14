@@ -1,0 +1,19 @@
+Title: Upgrade to GNOME 2.26
+Author: Mart Raudsepp <leio@gentoo.org>
+Content-Type: text/plain
+Posted: 2009-10-08
+Revision: 1
+News-Item-Format: 1.0
+Display-If-Installed: <gnome-base/gnome-2.26.0
+Display-If-Installed: <gnome-base/gnome-light-2.26.0
+Display-If-Installed: <gnome-base/gnome-session-2.26.2
+Display-If-Installed: <gnome-base/gnome-menus-2.26.2
+
+We are pleased to announce the stabilization of GNOME-2.26. Users are
+strongly encouraged to read the GNOME 2.26 Upgrade Guide, to avoid any
+possible issues relating to the upgrade, such as Applications menu items
+disappearing, or nautilus constantly restarting when it is configured to
+not handle the desktop.
+
+Please read the Gnome 2.26 Upgrade Guide:
+http://gnome.gentoo.org/howtos/gnome-2.26-upgrade.xml

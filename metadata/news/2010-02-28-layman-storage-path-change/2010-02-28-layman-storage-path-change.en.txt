@@ -1,0 +1,41 @@
+Title: Layman storage path changed from version 1.3.0 on
+Author: Sebastian Pipping <sping@gentoo.org>
+Content-Type: text/plain
+Posted: 2010-02-28
+Revision: 2
+News-Item-Format: 1.0
+Display-If-Installed: <app-portage/layman-1.3
+
+Layman has been using /usr/local/portage/layman to store
+overlay checkouts from version 1.2.3 on.  As that path
+was violating the concept of keeping portage away from
+/usr/local the default of this storage location moves to
+
+  /var/lib/layman
+
+from version 1.3.0 on.  If you have never touched the file
+/etc/layman/layman.cfg manually before, you may be tempted to let
+tools like etc-update or dispatch-conf blindly accept this new version
+of layman.cfg.
+
+As that would hide all your currently installed overlays from layman
+it's probably not what you want.  Your options are:
+
+ A) Moving
+   1. Move your current content to /var/lib/layman.
+   2. Update PORTDIR_OVERLAY in /var/lib/layman/make.conf accordingly.
+   3. Make /etc/make.conf source /var/lib/layman/make.conf.
+   4. Set option "storage" in /etc/layman/layman.cfg
+      to "/var/lib/layman".
+
+ B) A symlink
+   Put a symlink to your current storage location at /var/lib/layman
+   before upgrading layman.
+
+ C) Configuration
+   Reject the path change for layman.cfg when running tools like
+   etc-update or dispatch-conf.  Be aware with this way you'll have
+   to do it for each layman update again.
+
+PS: This news item is a reaction to users having run into this problem
+(see bug #306233).  Thanks to Volker Hemmann for reporting.

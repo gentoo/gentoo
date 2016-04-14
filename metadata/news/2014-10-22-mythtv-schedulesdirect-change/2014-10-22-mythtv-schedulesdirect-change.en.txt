@@ -1,0 +1,18 @@
+Title: MythTV SchedulesDirect Change
+Author: Richard Freeman <rich0@gentoo.org>
+Content-Type: text/plain
+Posted: 2014-10-20
+Revision: 1
+News-Item-Format: 1.0
+Display-If-Installed: <media-tv/mythtv-0.27.4
+
+Many MythTV users use the SchedulesDirect service as a source of program
+data.  If you use this service you will need to take action or you will
+lose access to scheduling data on Nov 1st 2014.  If you do not use this
+service, no action is required.
+
+If you use the SchedulesDirect service, you must either upgrade to
+media-tv/mythtv-0.27.4, or you must follow one of the workarounds found
+at: http://www.mythtv.org/wiki/Schedules_Direct_URL_Change
+
+The link above also provides additional information about the change.

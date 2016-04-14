@@ -1,0 +1,24 @@
+Title: libvirt-1.2.19 init script changes
+Author: Doug Goldstein <cardoe@gentoo.org>
+Content-Type: text/plain
+Posted: 2015-09-09
+Revision: 1
+News-Item-Format: 1.0
+Display-If-Installed: <app-emulation/libvirt-1.2.19
+
+OpenRC Users:
+
+In libvirt-1.2.19 and newer, the libvirtd init script has been split into
+libvirtd and libvirt-guests.
+
+The purpose of this change is to separate the management of the libvirtd
+daemon from the libvirt domains/guests. This means that a number of settings
+from /etc/conf.d/libvirtd have been moved to /etc/conf.d/libvirt-guests. These
+settings have not been auto-migrated and you are advised to review
+/etc/conf.d/libvirt-guests to ensure the behaviors are as you expect.
+
+You must add libvirt-guests to the same runlevel where you run libvirtd
+currently. Otherwise your domains/guests will not be gracefully shutdown and
+could result in data loss. To do this run the following commands:
+  $ rc-update add libvirt-guests
+  $ service libvirt-guests start

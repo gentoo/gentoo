@@ -1,0 +1,37 @@
+Title: Upgrade to GLIB 2.28
+Author: The Gentoo Freedesktop Maintainers <freedesktop-bugs@gentoo.org>
+Content-Type: text/plain
+Posted: 2011-04-27
+Revision: 1
+News-Item-Format: 1.0
+Display-If-Installed: <dev-libs/glib-2.28
+
+The method for setting default applications for specific URI types
+(https://, mailto://, etc.) changed in dev-libs/glib-2.28 and newer.
+If you previously set them in GConf using the Configuration Editor,
+they will now be ignored.
+
+If you use GNOME, you must upgrade gnome-session and
+gnome-control-center and set your default browser/mail-client again.
+
+If you don't use GNOME, you should ensure that the file
+~/.local/share/applications/mimeapps.list has the following content:
+
+[Added Associations]
+x-scheme-handler/http=$browser_name.desktop;
+x-scheme-handler/https=$browser_name.desktop;
+x-scheme-handler/mailto=$mailclient_name.desktop;
+
+Replace $browser_name.desktop and $mailclient_name.desktop with the
+appropriate file from /usr/share/applications that can handle
+http/https/mailto URIs.
+
+The system-wide version of the file is often at
+/usr/share/applications/defaults.list instead.
+
+Please make sure that your browsers and mail clients have been upgraded
+to the latest stable versions before doing all this.
+
+More information about using defaults.list and mimeapps.list is at:
+
+http://www.freedesktop.org/wiki/Specifications/mime-actions-spec

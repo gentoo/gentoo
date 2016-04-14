@@ -1,0 +1,14 @@
+Title: Change on CAMERAS in libgphoto2-2.4.10
+Author: Pacho Ramos <pacho@gentoo.org>
+Content-Type: text/plain
+Posted: 2011-02-13
+Revision: 2
+News-Item-Format: 1.0
+Display-If-Installed: <media-libs/libgphoto2-2.4.10
+
+In order to not violate package manager handling, selective cameras 
+build logic has been modified in libgphoto2-2.4.10 to build 'ptp2' by 
+default, nothing if CAMERAS variable is set to an empty value and only 
+the ones specified otherwise.
+
+See http://bugs.gentoo.org/346491 for reference.

@@ -1,0 +1,21 @@
+Title: Some dhcpcd hooks are now examples
+Author: William Hubbs <williamh@gentoo.org>
+Content-Type: text/plain
+Posted: 2016-01-08
+Revision: 2
+News-Item-Format: 1.0
+Display-If-Installed: <=net-misc/dhcpcd-6.10.0
+
+In dhcpcd-6.10.0, the following hooks are no longer installed in
+/lib/dhcpcd/dhcpcd-hooks by default:
+
+10-wpa_supplicant
+15-timezone
+29-lookup-hostname
+
+These are now installed in /usr/share/dhcpcd/hooks, which is an example
+directory.
+
+If you were using these hooks before you upgrade to 6.10.0, you will
+need to copy them back to the /lib/dhcpcd/dhcpcd-hooks directory after the
+upgrade.

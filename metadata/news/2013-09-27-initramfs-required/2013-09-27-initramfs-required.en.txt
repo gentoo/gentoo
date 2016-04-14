@@ -1,0 +1,29 @@
+Title: Separate /usr on Linux requires initramfs
+Author: William Hubbs <williamh@gentoo.org>
+Content-Type: text/plain
+Posted: 2013-09-27
+Revision: 1
+News-Item-Format: 1.0
+
+Linux systems which have / and /usr on separate file systems but do not
+use an initramfs will not be supported starting on 01-Nov-2013.
+
+If you have / and /usr on separate file systems and you are not
+currently using an initramfs, you must set one up before this date.
+Otherwise, at some point on or after this date, upgrading packages
+will make your system unbootable.
+
+For more information on setting up an initramfs, see this URL:
+
+https://wiki.gentoo.org/wiki/Initramfs/HOWTO
+
+Due to many upstream changes, properly supporting Linux systems that
+have /usr missing at boot time has become increasingly difficult.
+Despite all our efforts, it already breaks in some exotic
+configurations, and this trend is likely to grow worse.
+
+For more information on the upstream changes and why using an initramfs
+is the cleanest route forward, see the following URLs:
+
+http://freedesktop.org/wiki/Software/systemd/separate-usr-is-broken
+https://blog.flameeyes.eu/2013/01/the-boot-process
