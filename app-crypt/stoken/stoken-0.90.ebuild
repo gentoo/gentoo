@@ -6,9 +6,9 @@ EAPI="6"
 
 inherit autotools
 
-DESCRIPTION="stoken - Software Token for Linux/UNIX"
-HOMEPAGE="http://stoken.sourceforge.net/"
-SRC_URI="http://github.com/cernekee/stoken/archive/v${PV}.tar.gz"
+DESCRIPTION="Software Token for Linux/UNIX"
+HOMEPAGE="https://github.com/cernekee/stoken"
+SRC_URI="https://github.com/cernekee/${PN}/archive/v${PV}.tar.gz"
 
 LICENSE="LGPL-2.1+"
 SLOT="0"
