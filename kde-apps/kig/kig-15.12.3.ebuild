@@ -5,6 +5,7 @@
 EAPI=6
 
 KDE_HANDBOOK="forceoptional"
+KDE_TEST="forceoptional"
 PYTHON_COMPAT=( python2_7 )
 inherit python-single-r1 kde5
 
@@ -15,8 +16,7 @@ IUSE="geogebra scripting"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-RDEPEND="
-	${PYTHON_DEPS}
+RDEPEND="${PYTHON_DEPS}
 	$(add_frameworks_dep karchive)
 	$(add_frameworks_dep kcompletion)
 	$(add_frameworks_dep kconfig)
@@ -38,6 +38,10 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	$(add_frameworks_dep ktexteditor)
+	test? (
+		$(add_frameworks_dep kemoticons)
+		$(add_frameworks_dep kitemmodels)
+	)
 "
 
 PATCHES=( "${FILESDIR}/${PN}-4.12.0-boostpython.patch" )
@@ -56,6 +60,8 @@ src_configure() {
 	local mycmakeargs=(
 		$(cmake-utils_use_find_package geogebra Qt5XmlPatterns)
 		$(cmake-utils_use_find_package scripting BoostPython)
+		$(cmake-utils_use_find_package test KF5Emoticons)
+		$(cmake-utils_use_find_package test KF5ItemModels)
 	)
 
 	kde5_src_configure
