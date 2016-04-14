@@ -1729,7 +1729,6 @@ dev-java/gnu-classpath:gstreamer - Build with GStreamer javax.sound.sampler prov
 dev-java/gnu-classpath:gtk - Build with Gtk+ AWT peers
 dev-java/gnu-classpath:qt4 - Build with Qt4 AWT peers
 dev-java/gnu-classpath:xml - Build with native XML backend
-dev-java/ibm-jdk-bin:javacomm - Enable Java Communications API support
 dev-java/icedtea:cacao - Use the CACAO virtual machine rather than HotSpot.
 dev-java/icedtea:headless-awt - Don't install the X backend for AWT, needed by some GUIs (used to be X flag)
 dev-java/icedtea:infinality - Enable better font rendering using fontconfig.
@@ -1741,7 +1740,6 @@ dev-java/icedtea:pax_kernel - Apply patch needed for pax enabled kernels.
 dev-java/icedtea:sctp - Build the SCTP NIO channel implementation against lksctp
 dev-java/icedtea:smartcard - Build the PCSC driver against pcsc-lite
 dev-java/icedtea:sunec - Build the SunEC provider against system NSS
-dev-java/icedtea:systemtap - Enable SystemTap probes in HotSpot.
 dev-java/icedtea:webstart - Enable Web Start support (via NetX).
 dev-java/icedtea:zero - Enable Zero assembler port (usually for non-HotSpot architectures)
 dev-java/icedtea-bin:headless-awt - Don't install the X backend for AWT, needed by some GUIs (used to be X flag)
@@ -1784,11 +1782,6 @@ dev-java/proguard:ant - Ant task for using ProGuard in build.xml scripts
 dev-java/proguard:j2me - Adds support for J2ME Wireless Toolkit
 dev-java/rxtx:lfd - Installs and uses LockFileServer daemon (lfd)
 dev-java/sbt:binary - Install from (Gentoo-compiled) binary instead of building from sources. Set this when you run out of memory during build.
-dev-java/sun-jdk:derby - Enable Installation of Bundled Derby (Java DB)
-dev-java/sun-jdk:jce - Enable Java Cryptographic Extension Unlimited Strength Policy files
-dev-java/sun-jdk:pax_kernel - Use paxctl to mark the JVM binaries.
-dev-java/sun-jre-bin:jce - Enable Java Cryptographic Extension Unlimited Strength Policy files
-dev-java/sun-jre-bin:pax_kernel - Use paxctl to mark the JVM binaries.
 dev-java/swt:webkit - Embedded browser support via net-libs/webkit-gtk:2, replacing former xulrunner-based browser.
 dev-lang/bas:lr0 - Use the LR0 parser instead of the recursive descending parser
 dev-lang/crystal:xml - Use the dev-libs/libxml2 library to enable Crystal xml module
