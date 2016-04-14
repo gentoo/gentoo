@@ -17157,7 +17157,7 @@ sys-kernel/rsbac-sources 3.14.28: RSBAC kernel sources (kernel series 3.14)
 sys-kernel/rt-sources 3.14.64_p67 3.14.65_p68 3.18.28_p28 3.18.29_p30 4.1.19_p22 4.1.20_p23 4.4.4_p11 4.4.6_p12 4.4.6_p13 4.4.6_p14: Full Linux 4.4 kernel sources with the CONFIG_PREEMPT_RT patch
 sys-kernel/spl 0.6.0_rc13-r2 0.6.0_rc14-r3 0.6.1-r3 0.6.2-r5 0.6.3-r1 0.6.4.2 0.6.5.2 0.6.5.3 0.6.5.3-r1 0.6.5.4 0.6.5.4-r1 9999: The Solaris Porting Layer is a Linux kernel module which provides many of the Solaris kernel APIs
 sys-kernel/tuxonice-sources 3.4.110 3.10.98 3.10.100 3.12.55 3.12.56 3.14.62 3.14.64 3.18.27 3.18.28 4.1.18 4.1.19 4.2.8 4.3.6 4.4.3 4.4.5: TuxOnIce + Gentoo patchset sources
-sys-kernel/vanilla-sources 3.2.79 3.4.111 3.10.101 3.12.57 3.14.66 3.18.30 4.1.21 4.4.7 4.5.1: Full sources for the Linux kernel
+sys-kernel/vanilla-sources 3.2.79 3.4.111 3.10.101 3.12.58 3.14.66 3.18.30 4.1.21 4.4.7 4.5.1: Full sources for the Linux kernel
 sys-kernel/xbox-sources 2.6.16.26: Full sources for the Xbox Linux kernel
 sys-kernel/zen-sources 3.8.9999 3.9.9999 3.10.9999 3.11.9999 3.12.9999 3.13.9999: The Zen Kernel Live Sources
 sys-libs/argp-standalone 1.3: Standalone argp library for use with uclibc
@@ -18436,7 +18436,7 @@ x11-plugins/compiz-plugins-unsupported 0.8.8: Compiz Fusion Window Decorator Uns
 x11-plugins/cputnik 0.2.0: cputnik is a simple cpu monitor dockapp
 x11-plugins/docker 1.5 1.5-r1: Openbox app which acts as a system tray for KDE and GNOME2
 x11-plugins/epplets 0.12 0.14: Base files for Enlightenment epplets and some epplets
-x11-plugins/fsviewer 0.2.6 0.2.6-r1: A file system viewer for Window Maker
+x11-plugins/fsviewer 0.2.6 0.2.6-r1 0.2.6-r2: A file system viewer for Window Maker
 x11-plugins/gkrellaclock 0.3.4: Nice analog clock for GKrellM2
 x11-plugins/gkrellfire 0.4.2: Cpu load flames for GKrellM 2
 x11-plugins/gkrellflynn 0.8: A funny GKrellM2 load monitor (for Doom(tm) fans)
