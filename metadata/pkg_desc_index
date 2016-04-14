@@ -3746,7 +3746,7 @@ dev-java/bcpg 1.50-r1 1.52-r1: Java cryptography APIs
 dev-java/bcpkix 1.50-r2 1.52-r1: Java cryptography APIs
 dev-java/bcprov 1.38-r4 1.40-r2 1.45-r2 1.48-r2 1.49-r4 1.50-r2 1.50-r3 1.50-r4 1.52-r1 1.52-r2 1.52-r3 1.54: Java cryptography APIs
 dev-java/bctsp 1.45-r1: Java cryptography APIs
-dev-java/beansbinding 1.2.1 1.2.1-r1 1.2.1-r2: Implementation of JSR295
+dev-java/beansbinding 1.2.1 1.2.1-r1 1.2.1-r2 1.2.1-r3: Implementation of JSR295
 dev-java/blowfishj 2.14-r3: Blowfish implementation in Java
 dev-java/bnd-junit 2.1.0: Junit plugin for bndlib, a swiss army knife for OSGi
 dev-java/bndlib 2.1.0: A swiss army knife for OSGi
