@@ -74,7 +74,7 @@ multilib_src_compile() {
 		emake -C "${WORKDIR}/build/src" protoc
 	fi
 
-	emake
+	default
 
 	if use emacs; then
 		elisp-compile "${S}"/editors/protobuf-mode.el
