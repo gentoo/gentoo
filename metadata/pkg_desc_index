@@ -4699,7 +4699,7 @@ dev-libs/libnl 1.1.4 3.2.27 3.2.9999: A collection of libraries providing APIs t
 dev-libs/libnsfb 0.1.3-r1 0.1.4: framebuffer abstraction library, written in C
 dev-libs/libnsutils 0.0.1-r1 0.0.2: base64 and time library, written in C
 dev-libs/libntru 0.4.1: C Implementation of NTRUEncrypt
-dev-libs/libofx 0.9.5 0.9.10: A library to support the Open Financial eXchange XML format
+dev-libs/libofx 0.9.10: A library to support the Open Financial eXchange XML format
 dev-libs/liboil 0.3.17 0.3.17-r1 0.3.17-r2: Library of simple functions that are optimized for various CPUs
 dev-libs/liboobs 3.0.0: Liboobs is a wrapping library to the System Tools Backends
 dev-libs/liboop 1.0-r1: low-level event loop management library for POSIX-based operating systems
@@ -9927,8 +9927,6 @@ dev-vcs/rapidsvn 0.12.1-r1 0.12.1-r2 0.12.1-r3: Cross-platform GUI front-end for
 dev-vcs/rcs 5.8.2 5.9.3 5.9.4: Revision Control System
 dev-vcs/rcsi 0.5: A program to give information about RCS files
 dev-vcs/rsvndump 0.6: Dump a remote Subversion repository
-dev-vcs/statcvs 0.5.0 0.5.0-r1: StatCVS generates HTML reports from CVS repository logs
-dev-vcs/statsvn 0.5.0: StatSVN generates HTML reports from SVN repository logs
 dev-vcs/stgit 0.16-r2 0.17.1-r2: Manage a stack of patches using GIT as a backend
 dev-vcs/subversion 1.7.21 1.8.14 1.8.15 1.9.2 1.9.3: Advanced version control system
 dev-vcs/svn2cl 0.12: Create a GNU-style ChangeLog from subversion's svn log --xml output
@@ -17695,7 +17693,7 @@ www-apps/webmcp 1.2.5 1.2.6: Web application framework written in Lua and C
 www-apps/websvn 2.3.2 2.3.3: Web-based browsing tool for Subversion (SVN) repositories in PHP
 www-apps/wiliki 0.6.1: WiLiKi is a lightweight Wiki engine written in and running on Gauche Scheme
 www-apps/wordpress 4.4.2: Wordpress PHP and MySQL based content management system (CMS)
-www-client/chromium 49.0.2623.108 50.0.2661.66 50.0.2661.75 51.0.2693.2 51.0.2700.0: Open-source version of Google Chrome web browser
+www-client/chromium 50.0.2661.75 51.0.2693.2 51.0.2700.0: Open-source version of Google Chrome web browser
 www-client/ck4up 1.2: Check for Updates on HTTP pages
 www-client/conkeror 1.0_pre20140212 1.0_pre20141005 1.0_pre20150227 1.0_pre20150519: A Mozilla-based web browser whose design is inspired by GNU Emacs
 www-client/dillo 3.0.4 3.0.4.1 3.0.5 3.0.5-r1: Lean FLTK based web browser
@@ -18292,7 +18290,7 @@ x11-misc/rofi 0.15.11 0.15.12: A window switcher, run dialog and dmenu replaceme
 x11-misc/rss-glx 0.9.1: Really Slick OpenGL Screensavers for XScreenSaver
 x11-misc/screen-message 0.23: Display a multi-line message large, fullscreen, black on white
 x11-misc/screengrab 1.0 1.2.1-r1: Qt application for getting screenshots
-x11-misc/sddm 0.13.0-r1 0.13.0-r3: Simple Desktop Display Manager
+x11-misc/sddm 0.13.0-r3: Simple Desktop Display Manager
 x11-misc/seetxt 0.72-r1: Clever, lightweight GUI text file and manual page viewer for X windows
 x11-misc/sent 0.2 9999: Simple plaintext presentation tool
 x11-misc/set_opacity 1.0 9999: Tool for set real compositing for windows through window's id, process' pid etc.
