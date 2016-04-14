@@ -14,8 +14,10 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-DEPEND=""
-RDEPEND="|| ( net-misc/miniupnpd net-libs/miniupnpc )"
+DEPEND="net-libs/libnfnetlink"
+
+RDEPEND="$DEPEND
+	|| ( net-misc/miniupnpd net-libs/miniupnpc )"
 
 src_prepare() {
 	epatch "${FILESDIR}/${PN}-1.2-remove-initd.patch"
