@@ -112,8 +112,7 @@ PDEPEND="
 	)
 	handbook? (
 		|| (
-			$(add_kdebase_dep khelpcenter '' 4.14.3)
-			kde-apps/khelpcenter:5
+			kde-apps/khelpcenter:*
 			kde-plasma/khelpcenter:5[compat(+)]
 		)
 	)
