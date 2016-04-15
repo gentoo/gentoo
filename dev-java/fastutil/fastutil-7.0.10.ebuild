@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
+EAPI=5
 
 JAVA_PKG_IUSE="doc source"
 
@@ -14,10 +14,10 @@ SRC_URI="https://github.com/vigna/fastutil/archive/${PV}.zip -> ${P}.zip"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc64 ~x86"
+KEYWORDS="amd64 ppc64 x86"
 
-DEPEND=">=virtual/jdk-1.6"
 RDEPEND=">=virtual/jre-1.6"
+DEPEND=">=virtual/jdk-1.6"
 
 src_compile() {
 	emake sources
