@@ -3883,7 +3883,7 @@ dev-java/groovy 2.4.5: A multi-faceted language for the Java platform
 dev-java/gson 2.3.1: Java library to convert JSON to Java objects and vice-versa
 dev-java/guava 07 13.0.1 13.0.1-r3 14.0.1 15.0 16.0.1 17.0 18.0: A collection of Google's core Java libraries
 dev-java/guice 4.0: Guice is a lightweight dependency injection framework for Java 5 and above
-dev-java/hamcrest-core 1.1 1.3: Core library of matchers for building test expressions
+dev-java/hamcrest-core 1.1 1.1-r1 1.3: Core library of matchers for building test expressions
 dev-java/hamcrest-generator 1.1 1.3-r1: Code generator for Hamcrest's library of matchers for building test expressions
 dev-java/hamcrest-integration 1.3: Integration library of hamcrest
 dev-java/hamcrest-library 1.3-r1: Core library of matchers for building test expressions
@@ -4318,7 +4318,7 @@ dev-lang/clojure 1.5.1 1.6.0 1.7.0 1.8.0: A dynamic programming language that ta
 dev-lang/closure-compiler-bin 20120305 20121212 20130227 20130411 20150126: JavaScript optimizing compiler
 dev-lang/coffee-script 1.9.3-r1 1.10.0: A little language that compiles into javascript
 dev-lang/confluence 0.10.6: Functional programming language for reactive system design (digital logic, hard-real-time software)
-dev-lang/crystal 0.11.1 0.12.0 0.13.0 0.14.2: The Crystal Programming Language
+dev-lang/crystal 0.11.1 0.12.0 0.13.0 0.14.2 0.15.0: The Crystal Programming Language
 dev-lang/dmd-bin 1.016 2.008-r1: Digital Mars D Compiler
 dev-lang/ekopath 6.0.619_p20151213-r1 6.0.619_p20151213-r100 6.0.637_p20151231-r1 6.0.637_p20151231-r100 6.0.661_p20160124-r1 6.0.661_p20160124-r100 6.0.705_p20160303-r1 6.0.705_p20160303-r100 6.0.713_p20160311-r1 6.0.713_p20160311-r100 6.0.720_p20160316-r1 6.0.720_p20160316-r100 6.0.728_p20160324-r1 6.0.728_p20160324-r100 6.0.756_p20160409-r1 6.0.756_p20160409-r100: PathScale EKOPath Compiler Suite
 dev-lang/elixir 1.0.5 1.1.1 1.2.3: Elixir programming language
@@ -17630,7 +17630,7 @@ www-apps/jekyll-sitemap 0.10.0: Automatically generate a sitemap.xml for your Je
 www-apps/jekyll-watch 1.3.1: Rebuild your Jekyll site when a file changes with the --watch switch
 www-apps/joomla 3.4.8: A powerful Open Source Content Management System
 www-apps/kibana-bin 4.1.6 4.4.2 4.5.0: Explore and visualize data
-www-apps/klaus 0.8.0: A simple, easy-to-set-up Git web viewer
+www-apps/klaus 0.8.0 0.9.1: A simple, easy-to-set-up Git web viewer
 www-apps/liquid_feedback_core 2.2.3 2.2.6 3.0.4: Internet platforms for proposition development and decision making
 www-apps/liquid_feedback_frontend 2.2.2 2.2.7 3.0.6: Internet platforms for proposition development and decision making
 www-apps/lxr 0.9.8-r1: general purpose source code indexer and cross-referener with a web-based frontend
