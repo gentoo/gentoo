@@ -23,7 +23,7 @@ RDEPEND="dev-perl/Config-General
 	dev-perl/libwww-perl
 	dev-perl/MIME-Lite
 	dev-perl/XML-Simple
-	net-analyzer/rrdtool[perl]
+	net-analyzer/rrdtool[graph,perl]
 	dev-perl/CGI
 	apcupsd? ( sys-power/apcupsd )
 	hddtemp? ( app-admin/hddtemp )
