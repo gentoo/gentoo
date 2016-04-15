@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -57,7 +57,7 @@ RDEPEND+="
 	!sys-block/eject
 	!<sys-libs/e2fsprogs-libs-1.41.8
 	!<sys-fs/e2fsprogs-1.41.8
-	!<app-shells/bash-completion-1.3-r2"
+	!<app-shells/bash-completion-2.3-r2"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
