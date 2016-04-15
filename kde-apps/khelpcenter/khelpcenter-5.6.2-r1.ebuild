@@ -4,12 +4,14 @@
 
 EAPI=6
 
-KDE_HANDBOOK="true"
+KDE_HANDBOOK="forceoptional"
 inherit kde5
 
 DESCRIPTION="The KDE Help Center"
 HOMEPAGE+=" https://userbase.kde.org/KHelpCenter"
-KEYWORDS="amd64 ~arm ~x86"
+SRC_URI="mirror://kde/stable/plasma/${PV}/${P}.tar.xz"
+
+KEYWORDS="~amd64 ~arm ~x86"
 IUSE=""
 
 DEPEND="
@@ -38,5 +40,9 @@ DEPEND="
 "
 RDEPEND="${DEPEND}
 	$(add_plasma_dep kde-cli-tools)
-	!kde-base/khelpcenter:4
 "
+
+src_install() {
+	kde5_src_install
+	rm -rf "${ED}"usr/share/locale || die
+}

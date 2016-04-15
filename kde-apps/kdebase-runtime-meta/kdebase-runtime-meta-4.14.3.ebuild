@@ -1,8 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
+
 inherit kde4-meta-pkg
 
 DESCRIPTION="Merge this to pull in all kdebase-runtime-derived packages"
@@ -41,10 +42,7 @@ RDEPEND="
 	$(add_kdeapps_dep renamedlg-plugins)
 	$(add_kdeapps_dep solid-runtime)
 	crash-reporter? ( $(add_kdeapps_dep drkonqi ) )
-	handbook? ( || (
-		$(add_kdebase_dep khelpcenter)
-		kde-plasma/khelpcenter:5[compat(+)]
-	) )
+	handbook? ( kde-apps/khelpcenter:* )
 	minimal? ( $(add_kdeapps_dep solid-runtime '-bluetooth') )
 	!minimal? (
 		$(add_kdeapps_dep attica)

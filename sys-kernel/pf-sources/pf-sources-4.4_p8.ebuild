@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI="5"
-inherit readme.gentoo toolchain-funcs versionator
+inherit readme.gentoo-r1 toolchain-funcs versionator
 
 COMPRESSTYPE=".xz"
 K_USEPV="yes"
@@ -28,7 +28,7 @@ KEYWORDS="-* ~amd64 ~ppc ~ppc64 ~x86"
 IUSE=""
 
 KV_FULL="${PVR}-pf"
-S="${WORKDIR}"/linux-"${KV_FULL}"
+S="${WORKDIR}/linux-${KV_FULL}"
 
 DISABLE_AUTOFORMATTING="yes"
 DOC_CONTENTS="
@@ -59,7 +59,9 @@ pkg_setup(){
 }
 
 src_prepare(){
-	epatch "${DISTDIR}"/"${PF_FILE}"
+	epatch "${DISTDIR}/${PF_FILE}"
+
+	default
 }
 
 src_install() {
