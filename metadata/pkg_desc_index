@@ -2276,7 +2276,7 @@ app-text/html-xml-utils 6.9 6.9-r1: A number of simple utilities for manipulatin
 app-text/html2text 1.3.2a 1.3.2a-r1: A HTML to text converter
 app-text/html401 19991224-r2: DTDs for the HyperText Markup Language 4.01
 app-text/htmlc 2.40.0 2.60.0: HTML template files expander
-app-text/htmldoc 1.8.27-r3: Convert HTML pages into a PDF document
+app-text/htmldoc 1.8.27-r3 1.8.29: Convert HTML pages into a PDF document
 app-text/htmlinc 1.0_beta1 1.0_beta1-r2: HTML Include System by Ulli Meybohm
 app-text/htmlrecode 1.3.1: Recodes HTML file using a new character set
 app-text/htmltidy 20090325-r1: Tidy the layout and correct errors in HTML and XML documents
@@ -6159,6 +6159,7 @@ dev-perl/Set-Crontab 1.30.0: Expand crontab(5)-style integer lists
 dev-perl/Set-Infinite 0.650.0-r1: Sets of intervals
 dev-perl/Set-IntSpan 1.190.0-r1: Manages sets of integers
 dev-perl/Set-Object 1.310.0 1.350.0: set of objects and strings
+dev-perl/Set-Scalar 1.280.0 1.290.0: Scalar set operations
 dev-perl/Shell 0.720.0 0.730.0: Run shell commands transparently within perl
 dev-perl/Shell-EnvImporter 1.70.0-r1 1.70.0-r2: Import environment variable changes from external commands or shell scripts
 dev-perl/ShipIt 0.600.0: Software Release Tool
@@ -6186,6 +6187,7 @@ dev-perl/Statistics-Distributions 1.02: Perl module for calculating critical val
 dev-perl/Statistics-TTest 1.1.0: module to compute the confidence interval
 dev-perl/Stream-Buffered 0.20.0-r1 0.30.0: Temporary buffer to save bytes
 dev-perl/String-Approx 3.270.0: Perl extension for approximate string matching (fuzzy matching)
+dev-perl/String-CRC32 1.400.0-r1 1.500.0: Perl interface for cyclic redundancy check generation
 dev-perl/String-Ediff 0.90.0-r1: Produce common sub-string indices for two strings
 dev-perl/String-Escape 2010.002: Backslash escapes, quoted phrase, word elision, etc
 dev-perl/String-Format 1.170.0-r1: sprintf-like string formatting capabilities with arbitrary format definitions
@@ -6232,40 +6234,40 @@ dev-perl/Term-Encoding 0.20.0: Detect encoding of the current terminal
 dev-perl/Term-ProgressBar 2.140.0-r1 2.150.0 2.160.0 2.170.0: Perl module for Term-ProgressBar
 dev-perl/Term-ProgressBar-Quiet 0.310.0: Provide a progress meter if run interactively
 dev-perl/Term-ProgressBar-Simple 0.30.0: Simple progess bars
-dev-perl/Term-ReadLine-Gnu 1.200.0-r2 1.226.0 1.270.0: GNU Readline XS library wrapper
+dev-perl/Term-ReadLine-Gnu 1.200.0-r2 1.226.0 1.270.0 1.310.0: GNU Readline XS library wrapper
 dev-perl/Term-ReadLine-Perl 1.30.300-r1: Quick implementation of readline utilities
 dev-perl/Term-ReadLine-TTYtter 1.4: Quick implementation of readline utilities for ttytter
 dev-perl/Term-ReadPassword 0.110.0-r1: Term::ReadPassword - Asking the user for a password
-dev-perl/Term-Screen 1.30.0-r1: A simple Term::Cap based screen positioning module
+dev-perl/Term-Screen 1.30.0-r1 1.50.0: A simple Term::Cap based screen positioning module
 dev-perl/Term-ScreenColor 1.200.0-r1: A Term::Screen based screen positioning and coloring module
-dev-perl/Term-Shell 0.30.0-r1: A simple command-line shell framework
+dev-perl/Term-Shell 0.30.0-r1 0.90: A simple command-line shell framework
 dev-perl/Term-ShellUI 0.920.0-r1: A fully-featured shell-like command line environment
 dev-perl/TermReadKey 2.300.200-r1 2.330.0: Change terminal modes, and perform non-blocking reads
 dev-perl/Test-Assert 0.50.400-r1: Assertion methods for those who like JUnit
 dev-perl/Test-Base 0.600.0-r1 0.880.0: A Data Driven Testing Framework
-dev-perl/Test-CPAN-Meta 0.25.0-r1: Validate your CPAN META.yml file
+dev-perl/Test-CPAN-Meta 0.250.0: Validate your CPAN META.yml file
 dev-perl/Test-CheckDeps 0.2.0 0.10.0: Check for presence of dependencies
 dev-perl/Test-Class 0.390.0-r1 0.480.0 0.500.0: Easily create test classes in an xUnit/JUnit style
 dev-perl/Test-ClassAPI 1.60.0-r1: Provides basic first-pass API testing for large class trees
 dev-perl/Test-CleanNamespaces 0.180.0: Check for uncleaned imports
-dev-perl/Test-Command 0.80.0-r1: Test routines for external commands
+dev-perl/Test-Command 0.80.0-r1 0.110.0: Test routines for external commands
 dev-perl/Test-Command-Simple 0.040.0 0.50.0: Test external commands (nearly) as easily as loaded modules
-dev-perl/Test-Deep 0.110.0-r2 0.115.0-r1 0.117.0: Test::Deep - Extremely flexible deep comparison
+dev-perl/Test-Deep 0.110.0-r2 0.115.0-r1 0.117.0 1.120.0: Extremely flexible deep comparison testing
 dev-perl/Test-Dependencies 0.120.0: Ensure that your Makefile.PL specifies all module dependencies
 dev-perl/Test-Differences 0.610.0-r1 0.630.0 0.640.0: Test strings and data structures and show differences if not ok
 dev-perl/Test-DistManifest 1.12.0-r1 1.14.0: Author test that validates a package MANIFEST
 dev-perl/Test-Distribution 2.0.0-r1: perform tests on all modules of a distribution
 dev-perl/Test-EOL 1.600.0: Check the correct line endings in your project
-dev-perl/Test-Exception 0.320.0-r1 0.380.0 0.400.0: Test functions for exception based code
+dev-perl/Test-Exception 0.320.0-r1 0.380.0 0.400.0 0.430.0: Test functions for exception based code
 dev-perl/Test-FailWarnings 0.8.0: Add test failures if warnings are caught
-dev-perl/Test-Fatal 0.10.0-r1: Incredibly simple helpers for testing code with exceptions
+dev-perl/Test-Fatal 0.10.0-r1 0.14.0: Incredibly simple helpers for testing code with exceptions
 dev-perl/Test-File-ShareDir 1.1.1-r1: Create a Fake ShareDir for your modules for testing.
 dev-perl/Test-Inline 2.212.0-r1 2.213.0-r1: Inline test suite support for Perl
-dev-perl/Test-Inter 1.30.0-r1: Framework for more readable interactive test scripts
+dev-perl/Test-Inter 1.30.0-r1 1.60.0: Framework for more readable interactive test scripts
 dev-perl/Test-LeakTrace 0.150.0: Traces memory leaks
 dev-perl/Test-LongString 0.150.0-r1 0.170.0: A library to test long strings
 dev-perl/Test-Manifest 1.230.0-r1 2.20.0: Interact with a t/test_manifest file
-dev-perl/Test-Memory-Cycle 1.40.0-r1: Check for memory leaks and circular memory references
+dev-perl/Test-Memory-Cycle 1.40.0-r1 1.60.0: Check for memory leaks and circular memory references
 dev-perl/Test-Mock-LWP-Dispatch 0.60.0: Mocks LWP::UserAgent and dispatches your requests/responses
 dev-perl/Test-MockModule 0.50.0-r2: Override subroutines in a module for unit testing
 dev-perl/Test-MockObject 1.201.203.10-r1 1.201.505.270: Perl extension for emulating troublesome interfaces
@@ -6542,9 +6544,7 @@ dev-perl/regexp-common 2013031301.0.0: Provide commonly requested regular expres
 dev-perl/rename 1.800.0-r1 1.900.0: A filename renaming utility based on perl regular expression
 dev-perl/rpm-build-perl 0.820.0: Automatically extract Perl dependencies
 dev-perl/self 0.340.0-r1: provides '$self' in OO code
-dev-perl/set-scalar 1.280.0 1.290.0: Scalar set operations
 dev-perl/strictures 2.0.1 2.0.2: Turn on strict and make most warnings fatal
-dev-perl/string-crc32 1.400.0-r1 1.500.0: Perl interface for cyclic redundancy check generation
 dev-perl/syntax 0.4.0: Activate syntax extensions
 dev-perl/text-template 1.460.0-r1: Expand template text with embedded Perl
 dev-perl/text-wrapper 1.40.0-r1: Word wrap text by breaking long lines
@@ -17621,7 +17621,7 @@ www-apps/gnopaste 0.5.5: gnopaste is a nopaste script based on PHP with MySQL
 www-apps/groupoffice 3.7.52 4.0.47 4.0.97 4.0.144 4.1.7: Group-Office is a powerful modular Intranet application framework
 www-apps/guacamole 0.9.0 0.9.2 0.9.3 0.9.7 0.9.8 0.9.9: Guacamole is a html5 vnc client as servlet
 www-apps/hiawatha-monitor 1.0 1.2 1.3: Monitoring application for www-servers/hiawatha
-www-apps/icingaweb2 2.1.0 2.1.2 2.2.0 2.3.0 9999: Icinga Web 2 - Frontend for icinga2
+www-apps/icingaweb2 2.1.0 2.1.2 2.2.0 2.3.0-r1 9999: Icinga Web 2 - Frontend for icinga2
 www-apps/icingaweb2-module-graphite 9999: Icinga Web 2 plugin for pnp4nagios
 www-apps/icingaweb2-module-pnp4nagios 1.0.1 9999: Icinga Web 2 plugin for pnp4nagios
 www-apps/ikiwiki 3.20140227 3.20140916 3.20150107: A wiki compiler
@@ -18188,7 +18188,7 @@ x11-misc/genmenu 1.1.0: menu generator for *box, WindowMaker, and Enlightenment
 x11-misc/gigolo 0.4.2: a frontend to easily manage connections to remote filesystems using GIO/GVfs
 x11-misc/gmrun 0.9.2-r1: A GTK-2 based launcher box with bash style auto completion!
 x11-misc/googsystray 1.3.1-r1: System tray application for Google Voice, GMail, Calendar, Reader, and Wave
-x11-misc/gpaste 3.14 3.16.2.1: Clipboard management system
+x11-misc/gpaste 3.16.3.1 3.18.3: Clipboard management system
 x11-misc/grabc 1.1-r1: determine the color string in hex (or RGB components) by clicking on a pixel on the screen
 x11-misc/gromit 20041213-r1: GRaphics Over MIscellaneous Things, a presentation helper
 x11-misc/grsync 1.2.4 1.2.5 1.2.6: A gtk frontend to rsync
