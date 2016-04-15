@@ -13,7 +13,7 @@ SRC_URI="https://github.com/tdbear/${PN}/archive/${PV}.zip -> ${P}.zip"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 CDEPEND="dev-java/jgraph:0"
@@ -24,8 +24,8 @@ RDEPEND="
 
 DEPEND="
 	${CDEPEND}
-	source? ( app-arch/zip )
-	>=virtual/jdk-1.6"
+	>=virtual/jdk-1.6
+	source? ( app-arch/zip )"
 
 S="${WORKDIR}/${P}"
 
