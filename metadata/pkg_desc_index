@@ -7530,7 +7530,7 @@ dev-python/pathtools 0.1.2: Pattern matching and various utilities for file syst
 dev-python/patsy 0.4.1: Python module to describe statistical models and design matrices
 dev-python/paver 1.2.3 1.2.4: Python-based software project scripting tool along the lines of Make
 dev-python/pbkdf2 1.3: Implementation of the password-based key derivation function, PBKDF2, specified in RSA PKCS#5 v2.0
-dev-python/pbr 0.8.2-r1 1.8.1 1.8.1-r1 1.9.0: Inject some useful and sensible default behaviors into setuptools
+dev-python/pbr 0.8.2-r1 1.8.1 1.8.1-r1 1.9.1: Inject some useful and sensible default behaviors into setuptools
 dev-python/pdfrw 0.1 0.2: PDF file reader/writer library
 dev-python/pdoc 0.3.1: A simple program and library to auto generate API documentation for Python modules
 dev-python/peak-rules 0.5: Generic functions and business rules support systems
