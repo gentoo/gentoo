@@ -1281,7 +1281,7 @@ app-emulation/crossover-office-pro-bin 5.0.0 5.0.1 5.0.3 6.0.0 6.1.0 6.2.0 7.0.2
 app-emulation/dinero 4.7-r1: Cache simulator
 app-emulation/dlx 1.0.0 1.0.0-r1: DLX Simulator
 app-emulation/docker 1.6.1 1.6.2 1.7.1 1.8.1 1.8.2 1.9.0 1.9.1 1.10.0 1.10.3 9999: Docker complements kernel namespacing with a high-level API which operates at the process level
-app-emulation/docker-compose 1.5.2 1.6.2 1.7.0_rc1: Multi-container orchestration for Docker
+app-emulation/docker-compose 1.5.2 1.6.2 1.7.0_rc1 1.7.0: Multi-container orchestration for Docker
 app-emulation/docker-machine 0.4.1 0.5.2 0.5.4 0.6.0: Machine management for a container-centric world
 app-emulation/docker-swarm 1.1.3: A Docker-native clustering system
 app-emulation/domi 20060816: Scripts for building Xen domains
@@ -7072,7 +7072,7 @@ dev-python/djangocms-text-ckeditor 2.6.0 2.8.1: Text Plugin for django CMS with 
 dev-python/djangocms-video 0.1: Video plugin for django CMS
 dev-python/dnspython 1.12.0-r200 1.12.0-r300 1.12.0-r301: DNS toolkit for Python
 dev-python/doc8 0.6.0: Style checker for Sphinx (or other) RST documentation
-dev-python/docker-py 1.2.2 1.7.2 1.8.0_rc2 1.8.0_rc5: Python client for Docker
+dev-python/docker-py 1.2.2 1.7.2 1.8.0_rc2 1.8.0_rc5 1.8.0: Python client for Docker
 dev-python/dockerpty 0.3.3 0.3.4 0.4.1: Python library to use the pseudo-tty of a docker container
 dev-python/docopt 0.6.2 0.6.2-r1: Pythonic argument parser, that will make you smile
 dev-python/doctest-ignore-unicode 0.1.2: Add flag to ignore unicode literal prefixes in doctests
@@ -16042,7 +16042,7 @@ sci-physics/herwig 6.5.21: High Energy Physics Event Generator
 sci-physics/herwig++ 2.7.1-r1: High-Energy Physics event generator
 sci-physics/hoomd-blue 1.0.2: a general-purpose particle simulation toolkit
 sci-physics/jaxodraw 2.0.1-r1: Java program for drawing Feynman diagrams
-sci-physics/lammps 20150210 20150515 20150515-r1 20150810 20150904 20150909 20150911 20150924 20151005 20151022 20151023 20151026 20151031 20151106 20151120 20151207 20151208 20151209 20151211 20160115 20160122 20160301 20160310 20160314: Large-scale Atomic/Molecular Massively Parallel Simulator
+sci-physics/lammps 20150210 20150515 20150515-r1 20150810 20151106 20151120 20151207 20151208 20151209 20151211 20160115 20160122 20160301 20160310 20160314: Large-scale Atomic/Molecular Massively Parallel Simulator
 sci-physics/lhapdf 5.9.1 6.1.6: Les Houches Parton Density Function unified library
 sci-physics/lightspeed 1.2a-r1: OpenGL interactive relativistic simulator
 sci-physics/looptools 2.8 2.12: Tools for evaluation of scalar and tensor one-loop integrals
