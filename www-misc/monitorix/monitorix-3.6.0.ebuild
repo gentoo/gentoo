@@ -8,12 +8,13 @@ inherit eutils systemd user
 
 DESCRIPTION="A lightweight system monitoring tool"
 HOMEPAGE="http://www.monitorix.org/"
-SRC_URI="http://www.${PN}.org/${P}.tar.gz"
+SRC_URI="https://github.com/mikaku/Monitorix/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="apcupsd hddtemp httpd lm_sensors postfix"
+S="${WORKDIR}/Monitorix-${PV}"
 
 DEPEND="sys-apps/sed"
 RDEPEND="dev-perl/Config-General
@@ -23,7 +24,7 @@ RDEPEND="dev-perl/Config-General
 	dev-perl/libwww-perl
 	dev-perl/MIME-Lite
 	dev-perl/XML-Simple
-	net-analyzer/rrdtool[perl]
+	net-analyzer/rrdtool[graph,perl]
 	dev-perl/CGI
 	apcupsd? ( sys-power/apcupsd )
 	hddtemp? ( app-admin/hddtemp )
@@ -63,8 +64,7 @@ src_install() {
 	insinto /var/lib/${PN}/www
 	doins logo_bot.png logo_top.png ${PN}ico.png
 
-	dodir /var/lib/${PN}/imgs
-	dosym /var/lib/${PN}/imgs /var/lib/${PN}/www/imgs
+	dodir /var/lib/${PN}/www/imgs
 
 	exeinto /var/lib/${PN}/www/cgi
 	doexe ${PN}.cgi
@@ -81,8 +81,7 @@ src_install() {
 }
 
 pkg_postinst() {
-	chown monitorix:monitorix /var/lib/${PN}/imgs
-
+	chmod 777 /var/lib/${PN}/www/imgs
 	elog "WARNING: ${PN} has changed its config format twice, in versions"
 	elog "3.0.0 and 3.4.0; this format may be incompatible with your existing"
 	elog "config file. Please take care if upgrading from an old version."
