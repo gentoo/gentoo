@@ -6073,11 +6073,11 @@ dev-perl/Path-IsDev 1.1.2: Determine if a given Path resembles a development sou
 dev-perl/Path-Tiny 0.61.0 0.84.0: File path utility
 dev-perl/Pegex 0.600.0: Acmeist PEG Parser Framework
 dev-perl/Perl-Critic 1.118.0-r1 1.123 1.126.0: Critique Perl source code for best-practices
-dev-perl/Perl-Critic-Deprecated 1.108.0 1.119.0: Perl::Critic policies which have been superseded by others
+dev-perl/Perl-Critic-Deprecated 1.119.0: Perl::Critic policies which have been superseded by others
 dev-perl/Perl-Critic-Dynamic 0.50.0-r1: Base class for dynamic Policies
 dev-perl/Perl-Critic-Nits 1.0.0-r1: policies of nits I like to pick
 dev-perl/Perl-Critic-Policy-Dynamic-NoIndirect 0.60.0-r1: Perl::Critic policy against indirect method calls
-dev-perl/Perl-Tags 0.280.0-r1 0.280.0-r2 0.320.0: Generate (possibly exuberant) Ctags style tags for Perl sourcecode
+dev-perl/Perl-Tags 0.280.0-r2 0.320.0: Generate (possibly exuberant) Ctags style tags for Perl sourcecode
 dev-perl/Perl-Tidy 20130922.0.0 20140711.0.0 20160302.0.0: Perl script indenter and beautifier
 dev-perl/Perl-Unsafe-Signals 0.30.0: Allow unsafe handling of signals in selected blocks
 dev-perl/Perl6-Junction 1.600.0: Perl6 style Junction operators in Perl5
@@ -6537,8 +6537,8 @@ dev-perl/multidimensional 0.11.0: disables multidimensional array emulation
 dev-perl/namespace-autoclean 0.130.0-r1 0.280.0: Keep imports out of your namespace
 dev-perl/namespace-clean 0.210.0-r1 0.260.0: Keep imports and functions out of your namespace
 dev-perl/pcsc-perl 1.4.14: A Perl Module for PC/SC SmartCard access
-dev-perl/perl-ldap 0.630.0 0.650.0: A collection of perl modules which provide an object-oriented interface to LDAP servers
-dev-perl/perl-mozldap 1.5.2 1.5.3: Mozilla PerLDAP
+dev-perl/perl-ldap 0.650.0: Perl modules which provide an object-oriented interface to LDAP servers
+dev-perl/perl-mozldap 1.5.3: Mozilla PerLDAP
 dev-perl/prefork 1.40.0-r1: Optimized module loading for forking or non-forking processes
 dev-perl/regexp-common 2013031301.0.0: Provide commonly requested regular expressions
 dev-perl/rename 1.800.0-r1 1.900.0: A filename renaming utility based on perl regular expression
