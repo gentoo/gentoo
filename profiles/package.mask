@@ -30,6 +30,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas K. Hüttel <dilfridge@gentoo.org> (16 Apr 2016)
+# Work in progress. Do not unmask! Unmasking these ebuilds
+# is like fiddling with the infinite improbability drive;
+# expect unexpected, weird, and potentially fatal results.
+=dev-lang/perl-5.22.2*
+=dev-lang/perl-5.24*
+
 # Michael Sterrett <mr_bones_@gentoo.org> (06 Apr 2016)
 # These pin an old crufty version of media-libs/libsfml
 # and aren't used by anything in the tree.
