@@ -44,3 +44,6 @@ DEPEND="${RDEPEND}
 		)
 	)
 "
+
+DIST_TEST=skip
+# the tests work in principle, but they mess up the terminal badly
