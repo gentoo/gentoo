@@ -15920,7 +15920,7 @@ sci-libs/xgks-pmel 2.5.5: PMEL fork of XGKS, an X11-based version of the ANSI Gr
 sci-libs/xkaapi 2.1 2.2 3.0.3: Kernel for Adaptative, Asynchronous Parallel and Interactive programming
 sci-libs/xylib 1.1 1.2: Experimental x-y data reading library
 sci-mathematics/4ti2 1.6.2 1.6.5 1.6.6: Software package for algebraic, geometric and combinatorial problems
-sci-mathematics/Macaulay2 1.7_pre 1.8.2.1 1.8.2.1-r1: Research tool for commutative algebra and algebraic geometry
+sci-mathematics/Macaulay2 1.7_pre 1.8.2.1-r1: Research tool for commutative algebra and algebraic geometry
 sci-mathematics/agda 2.4.2.5 2.4.2.5-r1 2.4.2.5-r2: A dependently typed functional programming language and proof assistant
 sci-mathematics/agda-executable 2.3.0.1-r1 2.3.0.1-r2: Command-line program for type-checking and compiling Agda programs
 sci-mathematics/agda-lib-ffi 0.0.2 0.0.2-r2: Auxiliary Haskell code used by Agda's standard library
@@ -16042,7 +16042,7 @@ sci-physics/herwig 6.5.21: High Energy Physics Event Generator
 sci-physics/herwig++ 2.7.1-r1: High-Energy Physics event generator
 sci-physics/hoomd-blue 1.0.2: a general-purpose particle simulation toolkit
 sci-physics/jaxodraw 2.0.1-r1: Java program for drawing Feynman diagrams
-sci-physics/lammps 20150210 20150515 20150515-r1 20150810 20150904 20150909 20150911 20150924 20151005 20151022 20151023 20151026 20151031 20151106 20151120 20151207 20151208 20151209 20151211 20160115 20160122 20160301 20160310: Large-scale Atomic/Molecular Massively Parallel Simulator
+sci-physics/lammps 20150210 20150515 20150515-r1 20150810 20150904 20150909 20150911 20150924 20151005 20151022 20151023 20151026 20151031 20151106 20151120 20151207 20151208 20151209 20151211 20160115 20160122 20160301 20160310 20160314: Large-scale Atomic/Molecular Massively Parallel Simulator
 sci-physics/lhapdf 5.9.1 6.1.6: Les Houches Parton Density Function unified library
 sci-physics/lightspeed 1.2a-r1: OpenGL interactive relativistic simulator
 sci-physics/looptools 2.8 2.12: Tools for evaluation of scalar and tensor one-loop integrals
