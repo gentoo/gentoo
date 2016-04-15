@@ -126,7 +126,8 @@ RDEPEND="${COMMON_DEPEND}
 	selinux? ( sec-policy/selinux-mplayer )
 "
 
-PATCHES=( "${FILESDIR}/${P}-fix-seeking-without-first-index-entry.patch" )
+PATCHES=( "${FILESDIR}/${P}-fix-seeking-without-first-index-entry.patch"
+	"${FILESDIR}/${P}-glibc-2.23.patch")
 
 pkg_pretend() {
 	if [[ ${MERGE_TYPE} != "binary" ]] && ! tc-has-tls && use vaapi && use egl; then
