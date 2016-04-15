@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -45,7 +45,7 @@ src_compile() {
 }
 
 src_install() {
-	mv -f src/.libs/libmod_gnutls.so src/.libs/${PN}.so
+	mv src/.libs/libmod_gnutls.so src/.libs/${PN}.so || die
 	keepdir /var/cache/${PN}
 	apache-module_src_install
 }
