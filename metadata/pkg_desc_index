@@ -43,7 +43,7 @@ app-admin/abrt 2.0.12-r2: Automatic bug detection and reporting tool
 app-admin/aerospike-amc-community 3.6.8: Web UI based monitoring tool for Aerospike Community Edition Server
 app-admin/amazon-ec2-init 20101127: Init script to setup Amazon EC2 instance parameters
 app-admin/analog 6.0-r4: A webserver log analyzer
-app-admin/ansible 1.9.4 1.9.5 2.0.0.1-r2 2.0.0.2 2.0.1.0 9999: Model-driven deployment, config management, and command execution framework
+app-admin/ansible 1.9.4 1.9.6 2.0.0.1-r2 2.0.0.2 2.0.1.0 9999: Model-driven deployment, config management, and command execution framework
 app-admin/apache-tools 2.2.31 2.4.18 2.4.20: Useful Apache tools - htdigest, htpasswd, ab, htdbm
 app-admin/apachetop 0.12.6-r1 0.12.6-r2: A realtime Apache log analyzer
 app-admin/apg 2.3.0b-r5: Another Password Generator
@@ -954,6 +954,7 @@ app-doc/autobook 1.5: GNU Autoconf, Automake and Libtool
 app-doc/blas-docs 3.1.1: Documentation reference and man pages for blas implementations
 app-doc/casting-spels-emacs 19-r1: Casting SPELs in Lisp - A Comic Book (Emacs Lisp Edition)
 app-doc/clsync-docs 0.4.1: Clsync and libclsync API documentation
+app-doc/cppman 0.4.6: C++ man pages for Linux, with source from cplusplus.com and cppreference.com
 app-doc/csound-manual 6.01 6.03 6.04 6.05 6.06: The Csound reference manual
 app-doc/devmanual 0_pre20141116 9999: The Gentoo Development Guide
 app-doc/diveintopython 2 3: 'Dive Into Python' by Mark Pilgrim - Python 3
@@ -2193,6 +2194,7 @@ app-text/catdoc 0.94.4 0.94.4-r1: Converter for Microsoft Word, Excel, PowerPoin
 app-text/cb2bib 1.4.9 1.5.0: Tool for extracting unformatted bibliographic references
 app-text/cedilla 0.6: UTF-8 to postscript converter
 app-text/chasen 2.4.4-r3: Japanese Morphological Analysis System, ChaSen
+app-text/cherrytree 0.36.9: A hierarchical note taking application
 app-text/chm2pdf 0.9.1-r1 0.9.1-r2: A script that converts a CHM file into a single PDF file
 app-text/clara 20031214: An OCR (Optical Character Recognition) program
 app-text/cmigemo 1.3c 1.3c-r1 1.3c-r2: C/Migemo -- Migemo library implementation in C
@@ -2258,6 +2260,7 @@ app-text/gnome-doc-utils 0.20.10-r1: A collection of documentation utilities for
 app-text/gnopaster 0.0.9: A submitter for gnopaste, a nopaste service like http://nopaste.info
 app-text/gocr 0.49 0.50: An OCR (Optical Character Recognition) reader
 app-text/goldendict 1.0.1: Feature-rich dictionary lookup program
+app-text/grip 4.2.0: Preview GitHub Markdown files like Readme locally before committing them
 app-text/groonga 4.0.7-r1 5.0.3 5.0.9: An Embeddable Fulltext Search Engine
 app-text/groonga-normalizer-mysql 1.0.6 1.0.9 1.1.0: Groonga plugin that provides MySQL compatible normalizers
 app-text/grutatxt 2.0.16-r1: A converter from plain text to HTML and other markup languages
@@ -4626,7 +4629,7 @@ dev-libs/libg15 1.2.7-r1 9999: The libg15 library gives low-level access to the 
 dev-libs/libg15render 1.2-r2 9999: Small library for display text and graphics on a Logitech G15 keyboard
 dev-libs/libgamin 0.1.10-r4 0.1.10-r5: Library providing the FAM File Alteration Monitor API
 dev-libs/libgaminggear 0.11.1 0.11.2: Provides functionality for gaming input devices
-dev-libs/libgcrypt 1.5.4-r1 1.5.4-r2 1.5.4-r101 1.5.5 1.6.3-r4 1.6.3-r5 1.6.4 1.6.5: General purpose crypto library based on the code used in GnuPG
+dev-libs/libgcrypt 1.5.4-r1 1.5.4-r2 1.5.4-r101 1.5.5 1.6.3-r4 1.6.3-r5 1.6.4 1.6.5 1.7.0: General purpose crypto library based on the code used in GnuPG
 dev-libs/libgdata 0.17.3 0.17.4 0.17.4-r1: GLib-based library for accessing online service APIs using the GData protocol
 dev-libs/libgee 0.6.7 0.6.8 0.14.0 0.16.1 0.18.0: GObject-based interfaces and classes for commonly used data structures
 dev-libs/libgit2 0.20.0-r1 0.21.5 0.22.3 0.23.2-r1 0.23.3 0.23.4 0.24.0 9999: A linkable library for Git
@@ -7524,6 +7527,7 @@ dev-python/passwordmeter 0.1.7-r1 0.1.8: A password strength measuring library
 dev-python/paste 1.7.5.1-r1 1.7.5.1-r2 2.0.2: Tools for using a Web Server Gateway Interface stack
 dev-python/pastedeploy 1.5.2: Load, configure, and compose WSGI applications and servers
 dev-python/pastescript 2.0.2: A pluggable command-line frontend, including commands to setup package file layouts
+dev-python/path-and-address 1.1.0: Functions for server CLI applications used by humans
 dev-python/path-py 8.1.2: A module wrapper for os.path
 dev-python/pathlib 1.0.1-r1 1.0.1-r2: Object-oriented filesystem paths
 dev-python/pathtools 0.1.2: Pattern matching and various utilities for file systems paths
@@ -11093,7 +11097,7 @@ kde-apps/kde-apps-meta 15.08.3-r3 15.12.3-r2 15.12.3-r3: Meta package for the KD
 kde-apps/kde-base-artwork 4.14.3 15.08.3: KDE base artwork
 kde-apps/kde-dev-scripts 4.14.3 15.12.3: KDE Development Scripts
 kde-apps/kde-dev-utils 4.14.3 15.08.3 15.12.3: KDE Development Utilities
-kde-apps/kde-l10n 15.12.3: KDE internationalization package
+kde-apps/kde-l10n 15.12.3-r1: KDE internationalization package
 kde-apps/kde-meta 4.14.3 4.14.3-r1 15.08.3 15.12.3: Merge this to pull in all KDE Plasma and Applications packages
 kde-apps/kde-wallpapers 4.14.3 15.08.3 15.08.3-r2: KDE wallpapers
 kde-apps/kde4-l10n 4.14.3 4.14.3-r1 15.08.3-r2 15.12.3-r1: KDE internationalization package
@@ -11163,6 +11167,7 @@ kde-apps/kglobalaccel 4.14.3 15.08.3 15.12.3: KDE's Global Shortcut Daemon
 kde-apps/kgoldrunner 4.14.3 15.08.3 15.12.3: Game of action and puzzle solving by KDE
 kde-apps/kgpg 4.14.3 4.14.3-r1 15.08.3 15.12.3: KDE gpg keyring manager
 kde-apps/khangman 4.14.3 15.12.3: Classical hangman game for KDE
+kde-apps/khelpcenter 4.14.3 5.5.5 5.5.5-r1 5.6.2-r1: The KDE Help Center
 kde-apps/kiconfinder 4.14.3 15.08.3 15.12.3: Finds an icon based on its name
 kde-apps/kig 4.14.3 15.12.3: KDE Interactive Geometry tool
 kde-apps/kigo 4.14.3 15.08.3 15.12.3: Go game by KDE
@@ -11314,7 +11319,6 @@ kde-base/kdeplasma-addons 4.14.3 4.14.3-r1: Extra Plasma applets and engines
 kde-base/kdm 4.11.19 4.11.22: KDE login manager, similar to xdm and gdm
 kde-base/kephal 4.11.19 4.11.22: Allows handling of multihead systems via the XRandR extension
 kde-base/kfilemetadata 4.14.3: A library for extracting file metadata
-kde-base/khelpcenter 4.14.3: The KDE Help Center
 kde-base/khotkeys 4.11.19 4.11.22: KDE: hotkey daemon
 kde-base/kimono 4.14.3: C# bindings for KDE
 kde-base/kinfocenter 4.11.19 4.11.22: The KDE Info Center
@@ -11550,7 +11554,6 @@ kde-plasma/kde-gtk-config 5.5.5 5.6.2: KDE systemsettings kcm to set GTK applica
 kde-plasma/kdecoration 5.5.5 5.6.2: Plugin based library to create window decorations
 kde-plasma/kdeplasma-addons 5.5.5 5.6.2: Extra Plasma applets and engines
 kde-plasma/kgamma 5.5.5 5.6.2: Screen gamma values kcontrol module
-kde-plasma/khelpcenter 5.5.5 5.6.2: The KDE Help Center
 kde-plasma/khotkeys 5.5.5 5.6.2: KDE workspace hotkey module
 kde-plasma/kinfocenter 5.5.5 5.6.2: A utility that provides information about a computer system
 kde-plasma/kmenuedit 5.5.5 5.6.2: KDE menu editor
@@ -13750,7 +13753,7 @@ net-analyzer/pypacker 2.4 2.9: Fast and simple packet creation and parsing libra
 net-analyzer/quidscor 1.2.48-r1: Qualys IDS Correlation Daemon
 net-analyzer/raddump 0.3.1: RADIUS packet interpreter
 net-analyzer/rain 1.2.9_beta1: powerful tool for testing stability of hardware and software utilizing IP protocols
-net-analyzer/ripe-atlas-tools 1.2.1 1.2.2: The official command-line client for RIPE Atlas
+net-analyzer/ripe-atlas-tools 1.2.1 1.2.2 1.2.3: The official command-line client for RIPE Atlas
 net-analyzer/rrdcollect 0.2.9: Read system statistical data and feed it to RRDtool
 net-analyzer/rrdtool 1.4.8-r1 1.4.8-r3 1.4.9 1.5.3 1.5.3-r1 1.5.4 1.5.5 1.5.5-r1: A system to store and display time-series data
 net-analyzer/rtpbreak 1.3a-r1: Detects, reconstructs and analyzes any RTP session through heuristics over the UDP network traffic
@@ -17138,7 +17141,7 @@ sys-kernel/linux-firmware 20151207 20160223 20160331 99999999: Linux firmware fi
 sys-kernel/linux-headers 2.4.33.3 2.4.36 3.18 4.3 4.4 4.5: Linux system headers
 sys-kernel/mips-sources 4.2.8 4.3.3: Linux-Mips GIT sources for MIPS-based machines, dated 20151126
 sys-kernel/openvz-sources 2.6.32.108.5 2.6.32.108.8 2.6.32.111.12 2.6.32.112.15 2.6.32.113.11: Kernel sources with OpenVZ patchset
-sys-kernel/pf-sources 2.6.31_p9 2.6.32_p16 2.6.33_p4 2.6.34_p7 2.6.35_p11 2.6.36_p6 2.6.37_p6 2.6.38_p8 2.6.39_p4 3.0.7-r2 3.1.6-r2 3.2.7 3.3.6 3.4.6 3.5.4 3.6.12 3.7.5 3.8.2 3.9.5 3.10.1 3.11.4 3.12.4 3.13.3 3.14_p4 3.15_p5 3.16_p4 3.17_p4 3.19_p1 4.0_p6 4.1_p1 4.2_p3 4.3_p4 4.4_p6: Linux kernel fork with new features, including the -ck patchset (BFS), BFQ, TuxOnIce and UKSM
+sys-kernel/pf-sources 2.6.31_p9 2.6.32_p16 2.6.33_p4 2.6.34_p7 2.6.35_p11 2.6.36_p6 2.6.37_p6 2.6.38_p8 2.6.39_p4 3.0.7-r2 3.1.6-r2 3.2.7 3.3.6 3.4.6 3.5.4 3.6.12 3.7.5 3.8.2 3.9.5 3.10.1 3.11.4 3.12.4 3.13.3 3.14_p4 3.15_p5 3.16_p4 3.17_p4 3.19_p1 4.0_p6 4.1_p1 4.2_p3 4.3_p4 4.4_p8: Linux kernel fork with new features, including the -ck patchset (BFS), BFQ, TuxOnIce and UKSM
 sys-kernel/raspberrypi-image 4.1.17_p20160209 4.1.19_p20160309: Raspberry PI boot loader and firmware
 sys-kernel/raspberrypi-sources 3.10.1_pre-r20130719 3.10.9999 3.12.9999 3.14.9999 3.18.9999 4.1.9999 4.4.9999: Raspberry PI kernel sources
 sys-kernel/rsbac-sources 3.14.28: RSBAC kernel sources (kernel series 3.14)
@@ -17716,7 +17719,7 @@ www-client/qtweb 3.8.5_p108: Lightweight, fast, secure and portable browser for 
 www-client/qupzilla 1.8.9: Qt WebKit web browser
 www-client/qutebrowser 0.4.1-r1 0.5.1 0.6.0 0.6.1 9999: A keyboard-driven, vim-like browser based on PyQt5 and QtWebKit
 www-client/rekonq 2.4.2-r1: A browser based on qtwebkit
-www-client/ripe-atlas-cousteau 1.0.6 1.0.7: A Python wrapper around the RIPE Atlas API
+www-client/ripe-atlas-cousteau 1.0.6 1.0.7 1.2: A Python wrapper around the RIPE Atlas API
 www-client/seamonkey 2.38 2.39 2.40: Seamonkey Web Browser
 www-client/seamonkey-bin 2.38 2.39: Mozilla Application Suite - web browser, email, HTML editor, IRC
 www-client/surf 0.6-r1 0.6-r2 0.7 9999: a simple web browser based on WebKit/GTK+
