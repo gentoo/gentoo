@@ -18,7 +18,7 @@ DEPEND="
 	!libressl? ( dev-libs/openssl:0 )
 	libressl? ( dev-libs/libressl )
 	dev-libs/elfutils
-	>=dev-qt/qtgui-5.5.1-r1"
+	>=dev-qt/qtgui-5.5.1-r1:5"
 RDEPEND="${DEPEND}"
 
 src_prepare() {
