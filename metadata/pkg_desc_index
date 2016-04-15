@@ -15350,7 +15350,7 @@ sci-biology/gibbs 3.1: Identify motifs, conserved regions, in DNA or protein seq
 sci-biology/glimmer 3.02-r3 3.02b: An HMM-based microbial gene finding system from TIGR
 sci-biology/glimmerhmm 3.0.1-r1: A eukaryotic gene finding system from TIGR
 sci-biology/gmap 2011.10.07 2012.07.20 2015.12.31.5: A Genomic Mapping and Alignment Program for mRNA and EST Sequences
-sci-biology/goby 1.9.7.3 1.9.8.1: A DNA sequencing data management framework
+sci-biology/goby 1.9.7.3-r1 1.9.8.1-r1: A DNA sequencing data management framework
 sci-biology/goby-cpp 1.9.7.3 1.9.8.1 2.0.1: A DNA sequencing data management framework - C/C++ API
 sci-biology/hmmer 2.3.2-r1 2.3.2-r2 3.0: Sequence analysis using profile hidden Markov models
 sci-biology/iedera 1.04 1.05-r1: A subset seed design tool for DNA sequence alignment
