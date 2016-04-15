@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -46,7 +46,7 @@ src_prepare() {
 src_install() {
 	dosbin ${PN}
 
-	newinitd "${FILESDIR}"/${P}.init ${PN}
+	newinitd "${FILESDIR}"/${PN}.init ${PN}
 
 	insinto /etc/monitorix
 	doins ${PN}.conf
