@@ -3730,7 +3730,7 @@ dev-java/appframework 1.03-r4: A small set of Java classes that simplify buildin
 dev-java/apple-java-extensions-bin 1.5 1.5-r1: A pluggable jar of stub classes representing the new Apple eAWT and eIO APIs for Java on Mac OS X
 dev-java/apt-mirror 1.0-r1: Annotation processing apt mirror API introduced in J2SE 5.0
 dev-java/args4j 2.32: args4j is a Java command line arguments parser
-dev-java/asm 2.0-r2 2.2.3-r2 3.3.1-r1 4.0-r1 5.0.3 5.0.4: Bytecode manipulation framework for Java
+dev-java/asm 2.0-r2 2.2.3-r2 3.3.1-r1 4.0-r1 5.0.3 5.0.4 5.1: Bytecode manipulation framework for Java
 dev-java/aspectj 1.7.3-r1 1.7.4: A seamless aspect-oriented extension to the Java programming language
 dev-java/assertj-core 2.3.0: Java library that provides a fluent interface for writing assertions
 dev-java/avalon-framework 4.1.5-r1 4.1.5-r2 4.2.0-r1 4.2.0-r2: Avalon Framework
