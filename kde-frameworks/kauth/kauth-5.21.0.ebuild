@@ -17,7 +17,7 @@ RDEPEND="
 	$(add_qt_dep qtdbus)
 	$(add_qt_dep qtgui)
 	$(add_qt_dep qtwidgets)
-	policykit? ( || ( $(add_frameworks_dep polkit-qt) sys-auth/polkit-qt[qt5] ) )
+	policykit? ( sys-auth/polkit-qt[qt5] )
 "
 DEPEND="${RDEPEND}
 	nls? ( $(add_qt_dep linguist-tools) )
