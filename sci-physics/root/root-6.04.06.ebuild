@@ -11,8 +11,8 @@ inherit elisp-common eutils fdo-mime fortran-2 multilib python-single-r1 \
 
 DESCRIPTION="C++ data analysis framework and interpreter from CERN"
 HOMEPAGE="http://root.cern.ch/"
-SRC_URI="ftp://root.cern.ch/${PN}/${PN}_v${PV}.source.tar.gz"
-DOC_URI="ftp://root.cern.ch/${PN}/doc"
+SRC_URI="https://root.cern.ch/download/${PN}_v${PV}.source.tar.gz"
+DOC_URI="https://root.cern.ch/download/doc"
 
 SLOT="0/$(get_version_component_range 1-3 ${PV})"
 LICENSE="LGPL-2.1 freedist MSttfEULA LGPL-3 libpng UoI-NCSA"
