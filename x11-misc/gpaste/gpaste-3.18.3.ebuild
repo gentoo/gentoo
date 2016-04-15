@@ -18,12 +18,12 @@ KEYWORDS="~amd64 ~x86"
 IUSE="+applet gnome vala"
 
 CDEPEND="
-	dev-util/appdata-tools
-	>=dev-libs/glib-2.40:2
-	>=dev-libs/gobject-introspection-1.42.0
+	dev-libs/appstream-glib
+	>=dev-libs/glib-2.46:2
+	>=dev-libs/gobject-introspection-1.46.0
 	sys-apps/dbus
-	>=x11-libs/gdk-pixbuf-2.26:2
-	>=x11-libs/gtk+-3.12:3
+	>=x11-libs/gdk-pixbuf-2.32:2
+	>=x11-libs/gtk+-3.18:3
 	x11-libs/libX11
 	x11-libs/libXi
 	gnome? (

@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -15,7 +15,7 @@ KEYWORDS="~amd64 ~ppc ~x86"
 IUSE=""
 
 DEPEND="
-	dev-perl/string-crc32
+	dev-perl/String-CRC32
 	virtual/perl-Time-HiRes
 "
 RDEPEND="${DEPEND}

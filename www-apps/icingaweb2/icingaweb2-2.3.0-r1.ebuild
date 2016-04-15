@@ -60,6 +60,7 @@ src_install() {
 	insinto "/usr/share/${PN}"
 	doins -r "${S}"/*
 	fperms -R a+rX "/usr/share/${PN}/public/"
+	fperms u+x,g+x "/usr/share/${PN}/bin/icingacli"
 }
 
 pkg_postinst() {

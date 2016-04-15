@@ -1,10 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 
-MY_PN=String-CRC32
 MODULE_AUTHOR=SOENKE
 MODULE_VERSION=1.5
 inherit perl-module

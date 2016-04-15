@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -37,7 +37,7 @@ RDEPEND="
 		openssl? ( dev-libs/openssl:0 )
 	)
 	verify-file? (
-		dev-perl/string-crc32
+		dev-perl/String-CRC32
 		virtual/perl-Digest-MD5
 	)
 "

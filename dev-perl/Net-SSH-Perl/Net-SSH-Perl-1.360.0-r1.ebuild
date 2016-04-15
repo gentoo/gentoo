@@ -16,7 +16,7 @@ IUSE=""
 
 DEPEND="
 	virtual/perl-Digest-MD5
-	>=dev-perl/string-crc32-1.2
+	>=dev-perl/String-CRC32-1.2
 	>=dev-perl/Math-GMP-1.04
 	>=dev-perl/Math-Pari-2.001804
 	>=dev-perl/Digest-SHA1-2.10

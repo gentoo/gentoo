@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -36,7 +36,7 @@ CDEPEND="
 		dev-perl/List-MoreUtils
 		dev-perl/Math-Random
 		dev-perl/PostScript
-		dev-perl/set-scalar
+		dev-perl/Set-Scalar
 		dev-perl/SOAP-Lite
 		dev-perl/Sort-Naturally
 		dev-perl/Spreadsheet-ParseExcel

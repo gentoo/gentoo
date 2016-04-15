@@ -24,7 +24,7 @@ RDEPEND=">=dev-perl/Module-Pluggable-3.1
 	dev-perl/PPIx-Utilities
 	>=dev-perl/PPIx-Regexp-0.27.0
 	dev-perl/Pod-Spell
-	>=dev-perl/set-scalar-1.20
+	>=dev-perl/Set-Scalar-1.20
 	dev-perl/File-Which
 	dev-perl/B-Keywords
 	dev-perl/Readonly
