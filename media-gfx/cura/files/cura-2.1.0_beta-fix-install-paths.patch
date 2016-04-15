@@ -1,0 +1,38 @@
+diff -Naur a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt	2016-04-12 17:39:03.000000000 +0200
++++ b/CMakeLists.txt	2016-04-16 13:30:27.339900905 +0200
+@@ -55,20 +55,31 @@
+ 
+ find_package(PythonInterp 3.4.0 REQUIRED)
+ 
++if(NOT PYTHON_SITE_PACKAGES_DIR)
++    if(APPLE OR WIN32)
++        set(PYTHON_SITE_PACKAGES_DIR lib/python${PYTHON_VERSION_MAJOR}.${PYTHON_VERSION_MINOR}/site-packages CACHE
++STRING "Directory to install Python bindings to")
++    else()
++        set(PYTHON_SITE_PACKAGES_DIR lib/python${PYTHON_VERSION_MAJOR}/dist-packages CACHE
++STRING "Directory to install Python bindings to")
++    endif()
++endif()
++
+ install(DIRECTORY resources
+         DESTINATION ${CMAKE_INSTALL_DATADIR}/cura)
+ install(DIRECTORY plugins
+-        DESTINATION lib/cura)
++        DESTINATION ${CMAKE_INSTALL_LIBDIR}/cura)
++
+ if(NOT APPLE AND NOT WIN32)
+     install(FILES cura_app.py
+             DESTINATION ${CMAKE_INSTALL_BINDIR}
+             PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE GROUP_READ GROUP_EXECUTE WORLD_READ WORLD_EXECUTE
+             RENAME cura)
+     install(DIRECTORY cura
+-            DESTINATION lib/python${PYTHON_VERSION_MAJOR}/dist-packages
++            DESTINATION ${PYTHON_SITE_PACKAGES_DIR}
+             FILES_MATCHING PATTERN *.py)
+     install(FILES ${CMAKE_BINARY_DIR}/CuraVersion.py
+-            DESTINATION lib/python${PYTHON_VERSION_MAJOR}/dist-packages/cura)
++            DESTINATION ${PYTHON_SITE_PACKAGES_DIR}/cura)
+     install(FILES cura.desktop
+             DESTINATION ${CMAKE_INSTALL_DATADIR}/applications)
+     install(FILES cura.sharedmimeinfo
