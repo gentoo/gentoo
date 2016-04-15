@@ -27,7 +27,11 @@ if [[ ${KDE_BUILD_TYPE} = live ]]; then
 	esac
 fi
 
-EXPORT_FUNCTIONS pkg_pretend pkg_setup src_unpack src_prepare src_configure src_compile src_test src_install pkg_preinst pkg_postinst pkg_postrm
+if [[ ${CATEGORY} != kde-frameworks ]]; then
+	EXPORT_FUNCTIONS pkg_pretend
+fi
+
+EXPORT_FUNCTIONS pkg_setup src_unpack src_prepare src_configure src_compile src_test src_install pkg_preinst pkg_postinst pkg_postrm
 
 # @ECLASS-VARIABLE: QT_MINIMAL
 # @DESCRIPTION:
