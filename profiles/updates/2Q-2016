@@ -1,2 +1,3 @@
 move dev-perl/math-pari dev-perl/Math-Pari
 move kde-base/khelpcenter kde-apps/khelpcenter
+move kde-plasma/khelpcenter kde-apps/khelpcenter

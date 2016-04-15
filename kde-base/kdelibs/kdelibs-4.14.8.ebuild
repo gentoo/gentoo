@@ -110,12 +110,7 @@ PDEPEND="
 		$(add_kdeapps_dep kfmclient '' 4.14.3)
 		x11-misc/xdg-utils
 	)
-	handbook? (
-		|| (
-			kde-apps/khelpcenter:*
-			kde-plasma/khelpcenter:5[compat(+)]
-		)
-	)
+	handbook? ( kde-apps/khelpcenter:* )
 	policykit? ( || (
 		>=sys-auth/polkit-kde-agent-0.99
 		kde-plasma/polkit-kde-agent

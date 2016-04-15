@@ -20,7 +20,6 @@ RDEPEND="
 	$(add_plasma_dep kdecoration)
 	$(add_plasma_dep kdeplasma-addons)
 	$(add_plasma_dep kgamma)
-	$(add_plasma_dep khelpcenter)
 	$(add_plasma_dep khotkeys)
 	$(add_plasma_dep kinfocenter)
 	$(add_plasma_dep kmenuedit)
@@ -42,6 +41,7 @@ RDEPEND="
 	$(add_plasma_dep powerdevil)
 	$(add_plasma_dep systemsettings)
 	$(add_plasma_dep user-manager)
+	$(add_kdeapps_dep khelpcenter '' 5.5.5)
 	bluetooth? (
 		$(add_plasma_dep bluedevil)
 	)
