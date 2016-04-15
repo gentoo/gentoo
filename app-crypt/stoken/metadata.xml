@@ -5,7 +5,12 @@
 		<email>prometheanfire@gentoo.org</email>
 		<name>Matthew Thode</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">cernekee/stoken</remote-id>
+		<bugs-to>https://github.com/cernekee/stoken/issues</bugs-to>
+	</upstream>
 	<longdescription lang="en">
-		stoken is an open source tokencode generator compatible with RSA SecurID 128-bit (AES) tokens. It is a hobbyist project, not affiliated with or endorsed by RSA Security.
+		stoken is an open source tokencode generator compatible with RSA SecurID 128-bit (AES) tokens.
+		It is a hobbyist project, not affiliated with or endorsed by RSA Security.
 	</longdescription>
 </pkgmetadata>
