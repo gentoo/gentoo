@@ -25,7 +25,7 @@ src_compile() {
 	local libs="gtk+-2.0 gtkglext-1.0 jack pango"
 	emake CC="$(tc-getCC)" \
 		CFLAGS="${CFLAGS} $(pkg-config --cflags ${libs})" \
-		LDFLAGS="${LDFLAGS} $(pkg-config --libs ${libs})" || die "emake failed."
+		LDFLAGS="-lm ${LDFLAGS} $(pkg-config --libs ${libs})" || die "emake failed."
 }
 
 src_install() {
