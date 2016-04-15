@@ -16985,7 +16985,7 @@ sys-fs/ddrescue 1.20 1.21: Copy data from one file or block device to another wi
 sys-fs/devfsd 1.3.25-r9: Daemon for the Linux Device Filesystem
 sys-fs/dfc 3.0.5-r1: A simple CLI tool that display file system usage, with colors
 sys-fs/diskdev_cmds 332.14 332.14_p1: HFS and HFS+ utils ported from OSX, supplies mkfs and fsck
-sys-fs/dislocker 0.5.2 9999: Dislocker is used to read BitLocker encrypted partitions.
+sys-fs/dislocker 0.5.2 0.6.1 9999: Dislocker is used to read BitLocker encrypted partitions.
 sys-fs/dmg2img 1.6.4 1.6.5: Converts Apple DMG files to standard HFS+ images
 sys-fs/dmraid 1.0.0_rc14 1.0.0_rc15 1.0.0_rc16-r3: Device-mapper RAID tool and library
 sys-fs/dosfstools 3.0.26 3.0.27 3.0.28: DOS filesystem tools - provides mkdosfs, mkfs.msdos, mkfs.vfat
