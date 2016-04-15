@@ -9,6 +9,8 @@ inherit kde5
 
 DESCRIPTION="The KDE Help Center"
 HOMEPAGE+=" https://userbase.kde.org/KHelpCenter"
+SRC_URI="mirror://kde/stable/plasma/${PV}/${P}.tar.xz"
+
 KEYWORDS="amd64 ~arm ~x86"
 IUSE=""
 
@@ -38,5 +40,4 @@ DEPEND="
 "
 RDEPEND="${DEPEND}
 	$(add_plasma_dep kde-cli-tools)
-	!kde-base/khelpcenter:4
 "
