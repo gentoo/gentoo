@@ -4,14 +4,12 @@
 
 EAPI=6
 
-KDE_REQUIRED="optional"
-inherit kde4-base
+inherit kde5
 
-if [[ ${PV} != *9999* ]]; then
+if [[ ${KDE_BUILD_TYPE} != live ]]; then
 	SRC_URI="http://download.tomahawk-player.org/${P}.tar.bz2"
 	KEYWORDS="~amd64 ~x86"
 else
-	inherit git-r3
 	EGIT_REPO_URI="git://github.com/tomahawk-player/${PN}.git"
 	KEYWORDS=""
 fi
@@ -21,54 +19,41 @@ HOMEPAGE="http://tomahawk-player.org/"
 
 LICENSE="GPL-3 BSD"
 SLOT="0"
-IUSE="debug +hatchet kde qt5 telepathy xmpp"
+IUSE="+hatchet telepathy xmpp"
 
-REQUIRED_USE="telepathy? ( kde )"
-
-DEPEND="
+CDEPEND="
+	$(add_frameworks_dep attica)
+	$(add_qt_dep designer)
+	$(add_qt_dep qtdbus)
+	$(add_qt_dep qtgui)
+	$(add_qt_dep qtnetwork)
+	$(add_qt_dep qtsql)
+	$(add_qt_dep qtsvg)
+	$(add_qt_dep qtwebkit)
+	$(add_qt_dep qtwidgets)
+	$(add_qt_dep qtx11extras)
+	$(add_qt_dep qtxml)
+	app-crypt/qca:2[qt5]
 	dev-cpp/lucene++
 	dev-cpp/sparsehash
 	dev-libs/boost:=
+	dev-libs/qtkeychain[qt5]
+	dev-libs/quazip[qt5]
+	>=media-libs/libechonest-2.3.0:=[qt5]
+	media-libs/liblastfm[qt5]
+	media-libs/phonon[qt5]
 	>=media-libs/taglib-1.8.0
 	>=net-libs/gnutls-3.2
 	x11-libs/libX11
 	hatchet? ( dev-cpp/websocketpp )
-	xmpp? ( net-libs/jreen )
-	!qt5? (
-		app-crypt/qca:2[qt4]
-		>=dev-libs/libattica-0.4.0
-		dev-libs/qjson
-		dev-libs/qtkeychain[qt4]
-		dev-libs/quazip[qt4]
-		dev-qt/designer:4
-		dev-qt/qtcore:4
-		dev-qt/qtdbus:4
-		dev-qt/qtgui:4
-		dev-qt/qtsql:4[sqlite]
-		dev-qt/qtsvg:4
-		dev-qt/qtwebkit:4
-		media-libs/phonon[qt4]
-		>=media-libs/libechonest-2.3.0:=[qt4]
-		media-libs/liblastfm[qt4]
-		telepathy? ( net-libs/telepathy-qt[qt4] )
-	)
-	qt5? (
-		app-crypt/qca:2[qt5]
-		dev-libs/qtkeychain[qt5]
-		dev-libs/quazip[qt5]
-		dev-qt/designer:5
-		dev-qt/qtcore:5
-		dev-qt/qtsvg:5
-		dev-qt/qtwebkit:5
-		dev-qt/qtwidgets:5
-		kde-frameworks/attica:5
-		media-libs/phonon[qt5]
-		>=media-libs/libechonest-2.3.0:=[qt5]
-		media-libs/liblastfm[qt5]
-		telepathy? ( net-libs/telepathy-qt[qt5] )
-	)
+	telepathy? ( net-libs/telepathy-qt[qt5] )
+	xmpp? ( net-libs/jreen[qt5] )
 "
-RDEPEND="${DEPEND}
+DEPEND="${CDEPEND}
+	$(add_qt_dep linguist-tools)
+	$(add_qt_dep qtconcurrent)
+"
+RDEPEND="${CDEPEND}
 	app-crypt/qca:2[openssl]
 "
 
@@ -84,24 +69,16 @@ src_configure() {
 		-DWITH_CRASHREPORTER=OFF
 		-DBUILD_TESTS=OFF
 		-DBUILD_TOOLS=OFF
+		-DBUILD_WITH_QT4=OFF
+		-DWITH_KDE4=OFF
 		-DBUILD_HATCHET=$(usex hatchet)
-		-DWITH_KDE4=$(usex kde)
-		-DBUILD_WITH_QT4=$(usex !qt5)
 		-DWITH_TelepathyQt=$(usex telepathy)
 		-DWITH_Jreen=$(usex xmpp)
 	)
 
-	if [[ ${PV} != *9999* ]]; then
+	if [[ ${KDE_BUILD_TYPE} != live ]]; then
 		mycmakeargs+=( -DBUILD_RELEASE=ON )
 	fi
 
-	cmake-utils_src_configure
-}
-
-src_compile() {
-	cmake-utils_src_compile
-}
-
-src_install() {
-	cmake-utils_src_install
+	kde5_src_configure
 }
