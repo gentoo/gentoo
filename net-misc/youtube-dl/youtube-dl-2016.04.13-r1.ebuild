@@ -1,12 +1,12 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-PYTHON_COMPAT=(python{2_7,3_3,3_4,3_5})
-DISTUTILS_SINGLE_IMPL=true
-inherit bash-completion-r1 distutils-r1 eutils
+PYTHON_COMPAT=( python{2_7,3_{3,4,5}} )
+
+inherit bash-completion-r1 distutils-r1
 
 DESCRIPTION="Download videos from YouTube.com (and more sites...)"
 HOMEPAGE="https://rg3.github.com/youtube-dl/"
@@ -24,7 +24,7 @@ DEPEND="
 
 S="${WORKDIR}/${PN}"
 
-src_prepare() {
+python_prepare_all() {
 	if ! use offensive; then
 		sed -i -e "/__version__/s|'$|-gentoo_no_offensive_sites'|g" \
 			youtube_dl/version.py || die
@@ -66,18 +66,14 @@ src_prepare() {
 			|| die
 	fi
 
-	epatch_user
+	distutils-r1_python_prepare_all
 }
 
-src_compile() {
-	distutils-r1_src_compile
-}
-
-src_test() {
+python_test() {
 	emake test
 }
 
-src_install() {
+python_install_all() {
 	python_domodule youtube_dl
 	dobin bin/${PN}
 
@@ -88,5 +84,5 @@ src_install() {
 	insinto /usr/share/zsh/site-functions
 	newins ${PN}.zsh _${PN}.zsh
 
-	python_fix_shebang "${ED}"
+	distutils-r1_python_install_all
 }
