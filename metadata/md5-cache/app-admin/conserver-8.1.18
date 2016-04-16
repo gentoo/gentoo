@@ -1,5 +1,5 @@
 DEFINED_PHASES=configure install postinst prepare
-DEPEND=ssl? ( >=dev-libs/openssl-0.9.6g ) pam? ( virtual/pam ) tcpd? ( sys-apps/tcp-wrappers ) debug? ( dev-libs/dmalloc ) kerberos? ( virtual/krb5 net-libs/libgssglue ) ssl? ( dev-libs/openssl:0= ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=ssl? ( >=dev-libs/openssl-0.9.6g ) pam? ( virtual/pam ) tcpd? ( sys-apps/tcp-wrappers ) debug? ( dev-libs/dmalloc ) kerberos? ( virtual/krb5 net-libs/libgssglue ) ssl? ( dev-libs/openssl:0 ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=Serial Console Manager
 EAPI=4
 HOMEPAGE=http://www.conserver.com/
@@ -10,5 +10,5 @@ RDEPEND=ssl? ( >=dev-libs/openssl-0.9.6g ) pam? ( virtual/pam ) tcpd? ( sys-apps
 SLOT=0
 SRC_URI=http://www.conserver.com/conserver-8.1.18.tar.gz
 _eclass_exported_funcs=pkg_postinst:- src_prepare:- src_configure:- src_install:-
-_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	9d81603248f2ba3ec59124320d123e5e	flag-o-matic	d270fa247153df66074f795fa42dba3e	libtool	4890219c51da247200223277f993e054	multilib	23ae8c186171e6476af098d2a50d0ee0	pam	3ecd5b75e39b0bb05a3183c08fcdfdb4	ssl-cert	b29ef3f715f3a76f1bf807b7e8751096	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	9d81603248f2ba3ec59124320d123e5e	flag-o-matic	d270fa247153df66074f795fa42dba3e	libtool	4890219c51da247200223277f993e054	multilib	23ae8c186171e6476af098d2a50d0ee0	pam	3ecd5b75e39b0bb05a3183c08fcdfdb4	ssl-cert	6f7d720c036362122b0bfb4461e56a11	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
 _md5_=2eb18a226842e7833602008fff2c68ed
