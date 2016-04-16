@@ -4,6 +4,8 @@
 
 EAPI=5
 
+inherit eutils
+
 DESCRIPTION="command-line utility to show process environment"
 HOMEPAGE="https://github.com/jamesodhunt/procenv"
 SRC_URI="https://github.com/jamesodhunt/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
@@ -17,3 +19,7 @@ DEPEND="
 	virtual/pkgconfig
 	test? ( dev-libs/check )
 "
+
+src_prepare() {
+	epatch "${FILESDIR}"/${P}-sysmacros.patch
+}
