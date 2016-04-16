@@ -23,7 +23,7 @@ else
 fi
 
 GV="2.44"
-MV="4.6.0"
+MV="4.6.2"
 [[ ${MAJOR_V} == "1.8" ]] && SUFFIX="-unofficial"
 STAGING_P="wine-staging-${PV}"
 STAGING_DIR="${WORKDIR}/${STAGING_P}${SUFFIX}"
