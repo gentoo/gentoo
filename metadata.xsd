@@ -51,6 +51,10 @@
 					<xs:selector xpath='slot'/>
 					<xs:field xpath='@name'/>
 				</xs:unique>
+				<xs:unique name='subslotsSingleConstraint'>
+					<xs:selector xpath='subslots'/>
+					<xs:field xpath='@fake-only-once'/>
+				</xs:unique>
 			</xs:element>
 			<xs:element name='upstream' type='upstreamType'>
 				<xs:unique name='bugsToSingleConstraint'>
@@ -175,25 +179,9 @@
 
 	<!-- slots -->
 	<xs:complexType name='slotsType'>
-		<!-- the crazy magic below is to cover any order possible
-			 in a deterministic way -->
-		<xs:choice>
-			<xs:sequence>
-				<xs:element name='slot' type='slotType'
-					minOccurs='1' maxOccurs='unbounded'/>
-				<xs:sequence minOccurs='0' maxOccurs='1'>
-					<xs:element name='subslots' type='xs:token'
-						minOccurs='1' maxOccurs='1'/>
-					<xs:element name='slot' type='slotType'
-						minOccurs='0' maxOccurs='unbounded'/>
-				</xs:sequence>
-			</xs:sequence>
-			<xs:sequence>
-				<xs:element name='subslots' type='xs:token'
-					minOccurs='1' maxOccurs='1'/>
-				<xs:element name='slot' type='slotType'
-					minOccurs='0' maxOccurs='unbounded'/>
-			</xs:sequence>
+		<xs:choice minOccurs='0' maxOccurs='unbounded'>
+			<xs:element name='slot' type='slotType'/>
+			<xs:element name='subslots' type='tokenOnceType'/>
 		</xs:choice>
 		<xs:attribute name='lang' type='langAttrType' default='en'/>
 	</xs:complexType>
@@ -531,6 +519,15 @@
 			<xs:pattern value="[^@]+@[^.]+\..+"/>
 		</xs:restriction>
 	</xs:simpleType>
+
+	<xs:complexType name='tokenOnceType'>
+		<xs:simpleContent>
+			<xs:extension base="xs:token">
+				<xs:attribute name='fake-only-once'
+					fixed='there can be at most one element of this type'/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
 
 	<xs:simpleType name='urlType'>
 		<xs:restriction base='xs:token'>
