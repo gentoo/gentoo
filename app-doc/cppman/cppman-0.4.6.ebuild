@@ -20,7 +20,7 @@ KEYWORDS="~amd64 ~arm ~x86"
 
 RDEPEND="
 	sys-apps/groff
-	>=dev-python/beautifulsoup-4
+	dev-python/beautifulsoup:4[${PYTHON_USEDEP}]
 "
 
 # `./setup install` already installs docs
