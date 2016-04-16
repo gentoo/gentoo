@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -20,7 +20,7 @@ DEPEND="
 	icu? ( dev-libs/icu:=[${MULTILIB_USEDEP}] )
 	ssl? (
 		!libressl? ( >=dev-libs/openssl-1.0.1h-r2:0[${MULTILIB_USEDEP}] )
-		libressl? ( dev-libs/libressl[${MULTILIB_USEDEP}] )
+		libressl? ( dev-libs/libressl:=[${MULTILIB_USEDEP}] )
 	)
 "
 RDEPEND="${DEPEND}"
@@ -35,9 +35,9 @@ MULTILIB_WRAPPED_HEADERS=(
 )
 
 PATCHES=(
-	"${FILESDIR}/${PN}-4.8.5-moc-boost-lexical-cast.patch"
 	"${FILESDIR}/${PN}-4.8.5-honor-ExcludeSocketNotifiers-in-glib-event-loop.patch" # bug 514968
 	"${FILESDIR}/${PN}-4.8.5-qeventdispatcher-recursive.patch" # bug 514968
+	"${FILESDIR}/${PN}-4.8.6-moc-boost-1.60.patch" # bug 556104
 )
 
 QT4_TARGET_DIRECTORIES="

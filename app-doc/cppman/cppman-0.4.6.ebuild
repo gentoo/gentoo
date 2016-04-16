@@ -5,6 +5,7 @@
 EAPI=6
 
 PYTHON_COMPAT=( python3_{3,4})
+PYTHON_REQ_USE='sqlite,threads'
 
 inherit distutils-r1
 
@@ -19,7 +20,7 @@ KEYWORDS="~amd64 ~arm ~x86"
 
 RDEPEND="
 	sys-apps/groff
-	>=dev-python/beautifulsoup-4
+	dev-python/beautifulsoup:4[${PYTHON_USEDEP}]
 "
 
 # `./setup install` already installs docs
