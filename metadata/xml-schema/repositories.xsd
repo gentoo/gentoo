@@ -1,0 +1,355 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<xs:schema xmlns:xs='http://www.w3.org/2001/XMLSchema'>
+	<xs:element name='repositories'>
+		<xs:complexType>
+			<xs:choice minOccurs='0' maxOccurs='unbounded'>
+				<xs:element name='repo' type='repoType'/>
+			</xs:choice>
+			<xs:attribute name='version' fixed='1.0' use='required'/>
+		</xs:complexType>
+		<xs:key name='repoKey'>
+			<xs:selector xpath='repo'/>
+			<xs:field xpath='name'/>
+		</xs:key>
+		<xs:unique name='descUniquityConstraint'>
+			<xs:selector xpath='description'/>
+			<xs:field xpath='@lang'/>
+		</xs:unique>
+		<xs:unique name='longDescUniquityConstraint'>
+			<xs:selector xpath='longdescription'/>
+			<xs:field xpath='@lang'/>
+		</xs:unique>
+		<xs:unique name='homepageSingleConstraint'>
+			<xs:selector xpath='homepage'/>
+			<xs:field xpath='@fake-only-once'/>
+		</xs:unique>
+	</xs:element>
+
+	<xs:complexType name='repoType'>
+		<xs:choice minOccurs='0' maxOccurs='unbounded'>
+			<xs:element name='name' type='repoNameType'/>
+			<xs:element name='description' type='descriptionType'/>
+			<xs:element name='longdescription' type='descriptionType'/>
+			<xs:element name='homepage' type='urlOnceType'/>
+			<xs:element name='owner' type='ownerType'/>
+			<xs:element name='source' type='sourceType'/>
+			<xs:element name='feed' type='urlType'/>
+		</xs:choice>
+		<xs:attribute name='priority' type='xs:integer'/>
+		<xs:attribute name='quality' type='repoQualityAttrType'
+			use='required'/>
+		<xs:attribute name='status' type='repoStatusAttrType'
+			use='required'/>
+	</xs:complexType>
+
+	<xs:simpleType name='repoNameType'>
+		<xs:restriction base='xs:token'>
+			<!-- PMS 3.1.5 Repository Name -->
+			<!-- note: this doesn't enforce 'not look like a version'
+				 rule -->
+			<xs:pattern value='[A-Za-z0-9_][A-Za-z0-9_-]*'/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:complexType name='descriptionType'>
+		<xs:simpleContent>
+			<xs:extension base='xs:token'>
+				<xs:attribute name='lang' type='langAttrType' default='en'/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+
+	<xs:complexType name='ownerType'>
+		<xs:all>
+			<xs:element name='email' type='emailType'
+				minOccurs='1' maxOccurs='1'/>
+			<xs:element name='name' type='xs:token'
+				minOccurs='0' maxOccurs='1'/>
+		</xs:all>
+		<xs:attribute name='type' type='ownerTypeAttrType'/>
+	</xs:complexType>
+
+	<xs:complexType name='sourceType'>
+		<xs:simpleContent>
+			<xs:extension base='urlType'>
+				<xs:attribute name='type' type='sourceTypeAttrType'
+					use='required'/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+
+	<!-- attributes -->
+	<xs:simpleType name='langAttrType'>
+		<xs:restriction base='xs:token'>
+			<!-- ISO 639-1 language codes -->
+			<xs:enumeration value='aa'/>
+			<xs:enumeration value='ab'/>
+			<xs:enumeration value='ae'/>
+			<xs:enumeration value='af'/>
+			<xs:enumeration value='ak'/>
+			<xs:enumeration value='am'/>
+			<xs:enumeration value='an'/>
+			<xs:enumeration value='ar'/>
+			<xs:enumeration value='as'/>
+			<xs:enumeration value='av'/>
+			<xs:enumeration value='ay'/>
+			<xs:enumeration value='az'/>
+			<xs:enumeration value='ba'/>
+			<xs:enumeration value='be'/>
+			<xs:enumeration value='bg'/>
+			<xs:enumeration value='bh'/>
+			<xs:enumeration value='bi'/>
+			<xs:enumeration value='bm'/>
+			<xs:enumeration value='bn'/>
+			<xs:enumeration value='bo'/>
+			<xs:enumeration value='bo'/>
+			<xs:enumeration value='br'/>
+			<xs:enumeration value='bs'/>
+			<xs:enumeration value='ca'/>
+			<xs:enumeration value='ce'/>
+			<xs:enumeration value='ch'/>
+			<xs:enumeration value='co'/>
+			<xs:enumeration value='cr'/>
+			<xs:enumeration value='cs'/>
+			<xs:enumeration value='cs'/>
+			<xs:enumeration value='cu'/>
+			<xs:enumeration value='cv'/>
+			<xs:enumeration value='cy'/>
+			<xs:enumeration value='cy'/>
+			<xs:enumeration value='da'/>
+			<xs:enumeration value='de'/>
+			<xs:enumeration value='de'/>
+			<xs:enumeration value='dv'/>
+			<xs:enumeration value='dz'/>
+			<xs:enumeration value='ee'/>
+			<xs:enumeration value='el'/>
+			<xs:enumeration value='el'/>
+			<xs:enumeration value='en'/>
+			<xs:enumeration value='eo'/>
+			<xs:enumeration value='es'/>
+			<xs:enumeration value='et'/>
+			<xs:enumeration value='eu'/>
+			<xs:enumeration value='eu'/>
+			<xs:enumeration value='fa'/>
+			<xs:enumeration value='fa'/>
+			<xs:enumeration value='ff'/>
+			<xs:enumeration value='fi'/>
+			<xs:enumeration value='fj'/>
+			<xs:enumeration value='fo'/>
+			<xs:enumeration value='fr'/>
+			<xs:enumeration value='fr'/>
+			<xs:enumeration value='fy'/>
+			<xs:enumeration value='ga'/>
+			<xs:enumeration value='ga'/>
+			<xs:enumeration value='Ga'/>
+			<xs:enumeration value='gd'/>
+			<xs:enumeration value='gl'/>
+			<xs:enumeration value='gn'/>
+			<xs:enumeration value='gu'/>
+			<xs:enumeration value='gv'/>
+			<xs:enumeration value='ha'/>
+			<xs:enumeration value='he'/>
+			<xs:enumeration value='hi'/>
+			<xs:enumeration value='ho'/>
+			<xs:enumeration value='hr'/>
+			<xs:enumeration value='ht'/>
+			<xs:enumeration value='hu'/>
+			<xs:enumeration value='hy'/>
+			<xs:enumeration value='hy'/>
+			<xs:enumeration value='hz'/>
+			<xs:enumeration value='ia'/>
+			<xs:enumeration value='id'/>
+			<xs:enumeration value='ie'/>
+			<xs:enumeration value='ig'/>
+			<xs:enumeration value='ii'/>
+			<xs:enumeration value='ik'/>
+			<xs:enumeration value='io'/>
+			<xs:enumeration value='is'/>
+			<xs:enumeration value='is'/>
+			<xs:enumeration value='it'/>
+			<xs:enumeration value='iu'/>
+			<xs:enumeration value='ja'/>
+			<xs:enumeration value='jv'/>
+			<xs:enumeration value='ka'/>
+			<xs:enumeration value='ka'/>
+			<xs:enumeration value='kg'/>
+			<xs:enumeration value='ki'/>
+			<xs:enumeration value='kj'/>
+			<xs:enumeration value='kk'/>
+			<xs:enumeration value='kl'/>
+			<xs:enumeration value='km'/>
+			<xs:enumeration value='kn'/>
+			<xs:enumeration value='ko'/>
+			<xs:enumeration value='kr'/>
+			<xs:enumeration value='ks'/>
+			<xs:enumeration value='ku'/>
+			<xs:enumeration value='kv'/>
+			<xs:enumeration value='kw'/>
+			<xs:enumeration value='ky'/>
+			<xs:enumeration value='la'/>
+			<xs:enumeration value='lb'/>
+			<xs:enumeration value='lg'/>
+			<xs:enumeration value='li'/>
+			<xs:enumeration value='ln'/>
+			<xs:enumeration value='lo'/>
+			<xs:enumeration value='lt'/>
+			<xs:enumeration value='lu'/>
+			<xs:enumeration value='lv'/>
+			<xs:enumeration value='mg'/>
+			<xs:enumeration value='mh'/>
+			<xs:enumeration value='mi'/>
+			<xs:enumeration value='mi'/>
+			<xs:enumeration value='mk'/>
+			<xs:enumeration value='mk'/>
+			<xs:enumeration value='ml'/>
+			<xs:enumeration value='mn'/>
+			<xs:enumeration value='mr'/>
+			<xs:enumeration value='ms'/>
+			<xs:enumeration value='ms'/>
+			<xs:enumeration value='mt'/>
+			<xs:enumeration value='my'/>
+			<xs:enumeration value='my'/>
+			<xs:enumeration value='na'/>
+			<xs:enumeration value='nb'/>
+			<xs:enumeration value='nd'/>
+			<xs:enumeration value='ne'/>
+			<xs:enumeration value='ng'/>
+			<xs:enumeration value='nl'/>
+			<xs:enumeration value='nl'/>
+			<xs:enumeration value='nn'/>
+			<xs:enumeration value='no'/>
+			<xs:enumeration value='nr'/>
+			<xs:enumeration value='nv'/>
+			<xs:enumeration value='ny'/>
+			<xs:enumeration value='oc'/>
+			<xs:enumeration value='oj'/>
+			<xs:enumeration value='om'/>
+			<xs:enumeration value='or'/>
+			<xs:enumeration value='os'/>
+			<xs:enumeration value='pa'/>
+			<xs:enumeration value='pi'/>
+			<xs:enumeration value='pl'/>
+			<xs:enumeration value='ps'/>
+			<xs:enumeration value='pt'/>
+			<xs:enumeration value='qu'/>
+			<xs:enumeration value='rm'/>
+			<xs:enumeration value='rn'/>
+			<xs:enumeration value='ro'/>
+			<xs:enumeration value='ro'/>
+			<xs:enumeration value='ru'/>
+			<xs:enumeration value='rw'/>
+			<xs:enumeration value='sa'/>
+			<xs:enumeration value='sc'/>
+			<xs:enumeration value='sd'/>
+			<xs:enumeration value='se'/>
+			<xs:enumeration value='sg'/>
+			<xs:enumeration value='si'/>
+			<xs:enumeration value='sk'/>
+			<xs:enumeration value='sk'/>
+			<xs:enumeration value='sl'/>
+			<xs:enumeration value='sm'/>
+			<xs:enumeration value='sn'/>
+			<xs:enumeration value='so'/>
+			<xs:enumeration value='sq'/>
+			<xs:enumeration value='sq'/>
+			<xs:enumeration value='sr'/>
+			<xs:enumeration value='ss'/>
+			<xs:enumeration value='st'/>
+			<xs:enumeration value='su'/>
+			<xs:enumeration value='sv'/>
+			<xs:enumeration value='sw'/>
+			<xs:enumeration value='ta'/>
+			<xs:enumeration value='te'/>
+			<xs:enumeration value='tg'/>
+			<xs:enumeration value='th'/>
+			<xs:enumeration value='ti'/>
+			<xs:enumeration value='tk'/>
+			<xs:enumeration value='tl'/>
+			<xs:enumeration value='tn'/>
+			<xs:enumeration value='to'/>
+			<xs:enumeration value='tr'/>
+			<xs:enumeration value='ts'/>
+			<xs:enumeration value='tt'/>
+			<xs:enumeration value='tw'/>
+			<xs:enumeration value='ty'/>
+			<xs:enumeration value='ug'/>
+			<xs:enumeration value='uk'/>
+			<xs:enumeration value='ur'/>
+			<xs:enumeration value='uz'/>
+			<xs:enumeration value='ve'/>
+			<xs:enumeration value='vi'/>
+			<xs:enumeration value='vo'/>
+			<xs:enumeration value='wa'/>
+			<xs:enumeration value='wo'/>
+			<xs:enumeration value='xh'/>
+			<xs:enumeration value='yi'/>
+			<xs:enumeration value='yo'/>
+			<xs:enumeration value='za'/>
+			<xs:enumeration value='zh'/>
+			<xs:enumeration value='zh'/>
+			<xs:enumeration value='zu'/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name='repoQualityAttrType'>
+		<xs:restriction base='xs:token'>
+			<xs:enumeration value='core'/>
+			<xs:enumeration value='stable'/>
+			<xs:enumeration value='testing'/>
+			<xs:enumeration value='experimental'/>
+			<xs:enumeration value='graveyard'/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name='repoStatusAttrType'>
+		<xs:restriction base='xs:token'>
+			<xs:enumeration value='official'/>
+			<xs:enumeration value='unofficial'/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name='ownerTypeAttrType'>
+		<xs:restriction base='xs:token'>
+			<xs:enumeration value='person'/>
+			<xs:enumeration value='project'/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name='sourceTypeAttrType'>
+		<xs:restriction base='xs:token'>
+			<xs:enumeration value='bzr'/>
+			<xs:enumeration value='cvs'/>
+			<xs:enumeration value='darcs'/>
+			<xs:enumeration value='git'/>
+			<xs:enumeration value='mercurial'/>
+			<xs:enumeration value='rsync'/>
+			<xs:enumeration value='svn'/>
+			<xs:enumeration value='tar'/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<!-- generic types -->
+	<xs:simpleType name='emailType'>
+		<xs:restriction base='xs:token'>
+			<!-- minimal safe regex -->
+			<xs:pattern value="[^@]+@[^.]+\..+"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name='urlType'>
+		<xs:restriction base='xs:token'>
+			<!-- TODO: something better? -->
+			<xs:pattern value="[^:]+:.+"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:complexType name='urlOnceType'>
+		<xs:simpleContent>
+			<xs:extension base="urlType">
+				<xs:attribute name='fake-only-once'
+					fixed='there can be at most one element of this type'/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+</xs:schema>
