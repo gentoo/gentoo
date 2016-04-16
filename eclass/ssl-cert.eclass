@@ -30,10 +30,10 @@
 
 if [[ "${SSL_DEPS_SKIP}" == "0" ]]; then
 	if [[ "${SSL_CERT_MANDATORY}" == "0" ]]; then
-		DEPEND="${SSL_CERT_USE}? ( dev-libs/openssl )"
+		DEPEND="${SSL_CERT_USE}? ( dev-libs/openssl:0= )"
 		IUSE="${SSL_CERT_USE}"
 	else
-		DEPEND="dev-libs/openssl"
+		DEPEND="dev-libs/openssl:0="
 	fi
 fi
 
