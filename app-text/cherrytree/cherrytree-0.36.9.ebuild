@@ -35,6 +35,8 @@ inherit l10n
 src_prepare() {
 	use nls && l10n_find_plocales_changes 'locale' '' '.po'
 
+	sed -i '\|update-desktop-database|d' 'setup.py' || die
+
 	default
 }
 
