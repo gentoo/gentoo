@@ -1,0 +1,550 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<xs:schema xmlns:xs='http://www.w3.org/2001/XMLSchema'>
+	<!-- top-level variants -->
+	<xs:element name='pkgmetadata' type='pkgMetadataType'>
+		<!-- note: restrict uniquity rules are simplified
+			 the spec says: one for each matched package
+			 we can only do: one for each restrict rule -->
+		<xs:unique name='longDescUniquityConstraint'>
+			<xs:selector xpath='longdescription'/>
+			<xs:field xpath='@lang'/>
+			<xs:field xpath='@restrict'/>
+		</xs:unique>
+		<xs:unique name='maintainerUniquityConstraint'>
+			<xs:selector xpath='maintainer'/>
+			<xs:field xpath='email'/>
+			<xs:field xpath='@restrict'/>
+		</xs:unique>
+		<xs:unique name='slotsUniquityConstraint'>
+			<xs:selector xpath='slots'/>
+			<xs:field xpath='@lang'/>
+		</xs:unique>
+		<xs:unique name='upstreamSingleConstraint'>
+			<xs:selector xpath='upstream'/>
+			<xs:field xpath='@fake-only-once'/>
+		</xs:unique>
+		<xs:unique name='useUniquityConstraint'>
+			<xs:selector xpath='use'/>
+			<xs:field xpath='@lang'/>
+		</xs:unique>
+	</xs:element>
+	<xs:element name='catmetadata' type='catMetadataType'>
+		<xs:unique name='catLongDescUniquityConstraint'>
+			<xs:selector xpath='longdescription'/>
+			<xs:field xpath='@lang'/>
+		</xs:unique>
+	</xs:element>
+
+	<!-- global elements -->
+	<xs:complexType name='pkgMetadataType'>
+		<xs:choice minOccurs='0' maxOccurs='unbounded'>
+			<xs:element name='longdescription' type='longDescType'/>
+			<xs:element name='maintainer' type='maintainerType'>
+				<xs:unique name='maintainerDescUniquityConstraint'>
+					<xs:selector xpath='description'/>
+					<xs:field xpath='@lang'/>
+				</xs:unique>
+			</xs:element>
+			<xs:element name='slots' type='slotsType'>
+				<xs:unique name='slotUniquityConstraint'>
+					<xs:selector xpath='slot'/>
+					<xs:field xpath='@name'/>
+				</xs:unique>
+			</xs:element>
+			<xs:element name='upstream' type='upstreamType'>
+				<xs:unique name='bugsToSingleConstraint'>
+					<xs:selector xpath='bugs-to'/>
+					<xs:field xpath='@fake-only-once'/>
+				</xs:unique>
+				<xs:unique name='changelogSingleConstraint'>
+					<xs:selector xpath='changelog'/>
+					<xs:field xpath='@fake-only-once'/>
+				</xs:unique>
+				<!-- prevent accidentally repeating the same remote -->
+				<xs:unique name='upstreamRemoteIdRepetitionConstraint'>
+					<xs:selector xpath='remote-id'/>
+					<xs:field xpath='@type'/>
+					<xs:field xpath='.'/>
+				</xs:unique>
+				<xs:unique name='upstreamDocUniquityConstraint'>
+					<xs:selector xpath='doc'/>
+					<xs:field xpath='@lang'/>
+				</xs:unique>
+			</xs:element>
+			<xs:element name='use' type='useType'>
+				<xs:unique name='flagUniquityConstraint'>
+					<xs:selector xpath='flag'/>
+					<xs:field xpath='@name'/>
+					<xs:field xpath='@restrict'/>
+				</xs:unique>
+			</xs:element>
+		</xs:choice>
+	</xs:complexType>
+
+	<xs:complexType name='catMetadataType'>
+		<xs:choice minOccurs='0' maxOccurs='unbounded'>
+			<xs:element name='longdescription' type='catLongDescType'/>
+		</xs:choice>
+	</xs:complexType>
+
+	<!-- the huge <upstream/> structure -->
+	<xs:complexType name='upstreamType'>
+		<xs:choice minOccurs='0' maxOccurs='unbounded'>
+			<xs:element name='maintainer' type='upstreamMaintainerType'>
+				<xs:unique name='upstreamMaintainerUniquityConstraint'>
+					<xs:selector xpath='maintainer'/>
+					<xs:field xpath='name'/>
+				</xs:unique>
+			</xs:element>
+			<xs:element name='changelog' type='urlOnceType'/>
+			<xs:element name='doc' type='upstreamDocType'/>
+			<xs:element name='bugs-to' type='urlOnceType'/>
+			<xs:element name='remote-id' type='upstreamRemoteIdType'/>
+		</xs:choice>
+		<xs:attribute name='fake-only-once'
+			fixed='there can be at most one &lt;upstream/&gt; element'/>
+	</xs:complexType>
+
+	<!-- maintainer in two variants -->
+	<xs:complexType name='maintainerType'>
+		<xs:all>
+			<xs:element name='email' type='emailType'
+				minOccurs='1'/>
+			<xs:element name='name' type='xs:token'
+				minOccurs='0'/>
+			<xs:element name='description' type='maintainerDescType'
+				minOccurs='0'/>
+		</xs:all>
+		<xs:attribute name='type' type='maintainerTypeAttrType'
+			use='required'/>
+		<xs:attribute name='restrict' type='restrictAttrType'/>
+	</xs:complexType>
+
+	<xs:simpleType name='maintainerTypeAttrType'>
+		<xs:restriction base='xs:token'>
+			<xs:enumeration value='person'/>
+			<xs:enumeration value='project'/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:complexType name='upstreamMaintainerType'>
+		<xs:all>
+			<xs:element name='email' type='emailType'
+				minOccurs='0'/>
+			<xs:element name='name' type='xs:token'
+				minOccurs='0'/>
+		</xs:all>
+		<xs:attribute name='status' type='upstreamMaintainerStatusAttrType'
+			default='unknown'/>
+	</xs:complexType>
+
+	<xs:simpleType name='upstreamMaintainerStatusAttrType'>
+		<xs:restriction base='xs:token'>
+			<xs:enumeration value='active'/>
+			<xs:enumeration value='inactive'/>
+			<xs:enumeration value='unknown'/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:complexType name='maintainerDescType'>
+		<xs:simpleContent>
+			<xs:extension base="xs:token">
+				<xs:attribute name='lang' type='langAttrType' default='en'/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+
+	<!-- long description -->
+	<xs:complexType name='longDescType' mixed='true'>
+		<xs:choice minOccurs='0' maxOccurs='unbounded'>
+			<xs:element name='pkg' type='pkgType'/>
+			<xs:element name='cat' type='catType'/>
+		</xs:choice>
+		<xs:attribute name='lang' type='langAttrType' default='en'/>
+		<xs:attribute name='restrict' type='restrictAttrType'/>
+	</xs:complexType>
+
+	<xs:complexType name='catLongDescType' mixed='true'>
+		<xs:choice minOccurs='0' maxOccurs='unbounded'>
+			<xs:element name='pkg' type='pkgType'/>
+			<xs:element name='cat' type='catType'/>
+		</xs:choice>
+		<xs:attribute name='lang' type='langAttrType' default='en'/>
+	</xs:complexType>
+
+	<!-- slots -->
+	<xs:complexType name='slotsType'>
+		<!-- the crazy magic below is to cover any order possible
+			 in a deterministic way -->
+		<xs:choice>
+			<xs:sequence>
+				<xs:element name='slot' type='slotType'
+					minOccurs='1' maxOccurs='unbounded'/>
+				<xs:sequence minOccurs='0' maxOccurs='1'>
+					<xs:element name='subslots' type='xs:token'
+						minOccurs='1' maxOccurs='1'/>
+					<xs:element name='slot' type='slotType'
+						minOccurs='0' maxOccurs='unbounded'/>
+				</xs:sequence>
+			</xs:sequence>
+			<xs:sequence>
+				<xs:element name='subslots' type='xs:token'
+					minOccurs='1' maxOccurs='1'/>
+				<xs:element name='slot' type='slotType'
+					minOccurs='0' maxOccurs='unbounded'/>
+			</xs:sequence>
+		</xs:choice>
+		<xs:attribute name='lang' type='langAttrType' default='en'/>
+	</xs:complexType>
+
+	<xs:complexType name='slotType'>
+		<xs:simpleContent>
+			<xs:extension base="xs:token">
+				<xs:attribute name='name' type='slotNameAttrType'
+					use='required'/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+
+	<xs:simpleType name='slotNameAttrType'>
+		<xs:restriction base='xs:token'>
+			<!-- PMS 3.1.3 Slot Names + special value '*' -->
+			<xs:pattern value="[A-Za-z0-9_][A-Za-z0-9+_.-]*|[*]"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<!-- use flags -->
+	<xs:complexType name='useType'>
+		<xs:choice minOccurs='0' maxOccurs='unbounded'>
+			<xs:element name='flag' type='flagType'/>
+		</xs:choice>
+		<xs:attribute name='lang' type='langAttrType' default='en'/>
+	</xs:complexType>
+
+	<xs:complexType name='flagType' mixed='true'>
+		<xs:choice minOccurs='0' maxOccurs='unbounded'>
+			<xs:element name='cat' type='catType'/>
+			<xs:element name='pkg' type='pkgType'/>
+		</xs:choice>
+		<xs:attribute name='name' type='flagNameAttrType'
+			use='required'/>
+		<xs:attribute name='restrict' type='restrictAttrType'
+			default=''/>
+	</xs:complexType>
+
+	<xs:simpleType name='flagNameAttrType'>
+		<xs:restriction base='xs:token'>
+			<!-- PMS 3.1.4 USE Flag Names -->
+			<xs:pattern value="[A-Za-z0-9][A-Za-z0-9+_@-]*"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<!-- upstream-specific types -->
+	<xs:complexType name='upstreamDocType'>
+		<xs:simpleContent>
+			<xs:extension base="urlType">
+				<xs:attribute name='lang' type='langAttrType' default='en'/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+
+	<xs:complexType name='upstreamRemoteIdType'>
+		<xs:simpleContent>
+			<xs:extension base="xs:token">
+				<xs:attribute name='type' type='upstreamRemoteIdTypeAttrType'
+					use='required'/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+
+	<xs:simpleType name='upstreamRemoteIdTypeAttrType'>
+		<xs:restriction base='xs:token'>
+			<xs:enumeration value='bitbucket'/>
+			<xs:enumeration value='cpan'/>
+			<xs:enumeration value='cpan-module'/>
+			<xs:enumeration value='cpe'/>
+			<xs:enumeration value='cran'/>
+			<xs:enumeration value='ctan'/>
+			<xs:enumeration value='freecode'/>
+			<xs:enumeration value='freshmeat'/>
+			<xs:enumeration value='github'/>
+			<xs:enumeration value='gitlab'/>
+			<xs:enumeration value='gitorious'/>
+			<xs:enumeration value='google-code'/>
+			<xs:enumeration value='launchpad'/>
+			<xs:enumeration value='pear'/>
+			<xs:enumeration value='pecl'/>
+			<xs:enumeration value='pypi'/>
+			<xs:enumeration value='rubyforge'/>
+			<xs:enumeration value='rubygems'/>
+			<xs:enumeration value='sourceforge'/>
+			<xs:enumeration value='sourceforge-jp'/>
+			<xs:enumeration value='vim'/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<!-- creepy mixed-text types -->
+	<xs:simpleType name='catType'>
+		<xs:restriction base='xs:token'>
+			<!-- PMS 3.1.1 Category Names -->
+			<xs:pattern value="[A-Za-z0-9_][A-Za-z0-9+_.-]*"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name='pkgType'>
+		<xs:restriction base='xs:token'>
+			<!-- PMS 3.1.1 Category Names + 3.1.2 Package Names -->
+			<!-- note: this does not enforce the 'anything matching
+				 the version syntax' requirement -->
+			<xs:pattern
+				value="[A-Za-z0-9_][A-Za-z0-9+_.-]*/[A-Za-z0-9_][A-Za-z0-9+_-]*"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<!-- common attributes -->
+	<xs:simpleType name='langAttrType'>
+		<xs:restriction base='xs:token'>
+			<!-- ISO 639-1 language codes -->
+			<xs:enumeration value='aa'/>
+			<xs:enumeration value='ab'/>
+			<xs:enumeration value='ae'/>
+			<xs:enumeration value='af'/>
+			<xs:enumeration value='ak'/>
+			<xs:enumeration value='am'/>
+			<xs:enumeration value='an'/>
+			<xs:enumeration value='ar'/>
+			<xs:enumeration value='as'/>
+			<xs:enumeration value='av'/>
+			<xs:enumeration value='ay'/>
+			<xs:enumeration value='az'/>
+			<xs:enumeration value='ba'/>
+			<xs:enumeration value='be'/>
+			<xs:enumeration value='bg'/>
+			<xs:enumeration value='bh'/>
+			<xs:enumeration value='bi'/>
+			<xs:enumeration value='bm'/>
+			<xs:enumeration value='bn'/>
+			<xs:enumeration value='bo'/>
+			<xs:enumeration value='bo'/>
+			<xs:enumeration value='br'/>
+			<xs:enumeration value='bs'/>
+			<xs:enumeration value='ca'/>
+			<xs:enumeration value='ce'/>
+			<xs:enumeration value='ch'/>
+			<xs:enumeration value='co'/>
+			<xs:enumeration value='cr'/>
+			<xs:enumeration value='cs'/>
+			<xs:enumeration value='cs'/>
+			<xs:enumeration value='cu'/>
+			<xs:enumeration value='cv'/>
+			<xs:enumeration value='cy'/>
+			<xs:enumeration value='cy'/>
+			<xs:enumeration value='da'/>
+			<xs:enumeration value='de'/>
+			<xs:enumeration value='de'/>
+			<xs:enumeration value='dv'/>
+			<xs:enumeration value='dz'/>
+			<xs:enumeration value='ee'/>
+			<xs:enumeration value='el'/>
+			<xs:enumeration value='el'/>
+			<xs:enumeration value='en'/>
+			<xs:enumeration value='eo'/>
+			<xs:enumeration value='es'/>
+			<xs:enumeration value='et'/>
+			<xs:enumeration value='eu'/>
+			<xs:enumeration value='eu'/>
+			<xs:enumeration value='fa'/>
+			<xs:enumeration value='fa'/>
+			<xs:enumeration value='ff'/>
+			<xs:enumeration value='fi'/>
+			<xs:enumeration value='fj'/>
+			<xs:enumeration value='fo'/>
+			<xs:enumeration value='fr'/>
+			<xs:enumeration value='fr'/>
+			<xs:enumeration value='fy'/>
+			<xs:enumeration value='ga'/>
+			<xs:enumeration value='ga'/>
+			<xs:enumeration value='Ga'/>
+			<xs:enumeration value='gd'/>
+			<xs:enumeration value='gl'/>
+			<xs:enumeration value='gn'/>
+			<xs:enumeration value='gu'/>
+			<xs:enumeration value='gv'/>
+			<xs:enumeration value='ha'/>
+			<xs:enumeration value='he'/>
+			<xs:enumeration value='hi'/>
+			<xs:enumeration value='ho'/>
+			<xs:enumeration value='hr'/>
+			<xs:enumeration value='ht'/>
+			<xs:enumeration value='hu'/>
+			<xs:enumeration value='hy'/>
+			<xs:enumeration value='hy'/>
+			<xs:enumeration value='hz'/>
+			<xs:enumeration value='ia'/>
+			<xs:enumeration value='id'/>
+			<xs:enumeration value='ie'/>
+			<xs:enumeration value='ig'/>
+			<xs:enumeration value='ii'/>
+			<xs:enumeration value='ik'/>
+			<xs:enumeration value='io'/>
+			<xs:enumeration value='is'/>
+			<xs:enumeration value='is'/>
+			<xs:enumeration value='it'/>
+			<xs:enumeration value='iu'/>
+			<xs:enumeration value='ja'/>
+			<xs:enumeration value='jv'/>
+			<xs:enumeration value='ka'/>
+			<xs:enumeration value='ka'/>
+			<xs:enumeration value='kg'/>
+			<xs:enumeration value='ki'/>
+			<xs:enumeration value='kj'/>
+			<xs:enumeration value='kk'/>
+			<xs:enumeration value='kl'/>
+			<xs:enumeration value='km'/>
+			<xs:enumeration value='kn'/>
+			<xs:enumeration value='ko'/>
+			<xs:enumeration value='kr'/>
+			<xs:enumeration value='ks'/>
+			<xs:enumeration value='ku'/>
+			<xs:enumeration value='kv'/>
+			<xs:enumeration value='kw'/>
+			<xs:enumeration value='ky'/>
+			<xs:enumeration value='la'/>
+			<xs:enumeration value='lb'/>
+			<xs:enumeration value='lg'/>
+			<xs:enumeration value='li'/>
+			<xs:enumeration value='ln'/>
+			<xs:enumeration value='lo'/>
+			<xs:enumeration value='lt'/>
+			<xs:enumeration value='lu'/>
+			<xs:enumeration value='lv'/>
+			<xs:enumeration value='mg'/>
+			<xs:enumeration value='mh'/>
+			<xs:enumeration value='mi'/>
+			<xs:enumeration value='mi'/>
+			<xs:enumeration value='mk'/>
+			<xs:enumeration value='mk'/>
+			<xs:enumeration value='ml'/>
+			<xs:enumeration value='mn'/>
+			<xs:enumeration value='mr'/>
+			<xs:enumeration value='ms'/>
+			<xs:enumeration value='ms'/>
+			<xs:enumeration value='mt'/>
+			<xs:enumeration value='my'/>
+			<xs:enumeration value='my'/>
+			<xs:enumeration value='na'/>
+			<xs:enumeration value='nb'/>
+			<xs:enumeration value='nd'/>
+			<xs:enumeration value='ne'/>
+			<xs:enumeration value='ng'/>
+			<xs:enumeration value='nl'/>
+			<xs:enumeration value='nl'/>
+			<xs:enumeration value='nn'/>
+			<xs:enumeration value='no'/>
+			<xs:enumeration value='nr'/>
+			<xs:enumeration value='nv'/>
+			<xs:enumeration value='ny'/>
+			<xs:enumeration value='oc'/>
+			<xs:enumeration value='oj'/>
+			<xs:enumeration value='om'/>
+			<xs:enumeration value='or'/>
+			<xs:enumeration value='os'/>
+			<xs:enumeration value='pa'/>
+			<xs:enumeration value='pi'/>
+			<xs:enumeration value='pl'/>
+			<xs:enumeration value='ps'/>
+			<xs:enumeration value='pt'/>
+			<xs:enumeration value='qu'/>
+			<xs:enumeration value='rm'/>
+			<xs:enumeration value='rn'/>
+			<xs:enumeration value='ro'/>
+			<xs:enumeration value='ro'/>
+			<xs:enumeration value='ru'/>
+			<xs:enumeration value='rw'/>
+			<xs:enumeration value='sa'/>
+			<xs:enumeration value='sc'/>
+			<xs:enumeration value='sd'/>
+			<xs:enumeration value='se'/>
+			<xs:enumeration value='sg'/>
+			<xs:enumeration value='si'/>
+			<xs:enumeration value='sk'/>
+			<xs:enumeration value='sk'/>
+			<xs:enumeration value='sl'/>
+			<xs:enumeration value='sm'/>
+			<xs:enumeration value='sn'/>
+			<xs:enumeration value='so'/>
+			<xs:enumeration value='sq'/>
+			<xs:enumeration value='sq'/>
+			<xs:enumeration value='sr'/>
+			<xs:enumeration value='ss'/>
+			<xs:enumeration value='st'/>
+			<xs:enumeration value='su'/>
+			<xs:enumeration value='sv'/>
+			<xs:enumeration value='sw'/>
+			<xs:enumeration value='ta'/>
+			<xs:enumeration value='te'/>
+			<xs:enumeration value='tg'/>
+			<xs:enumeration value='th'/>
+			<xs:enumeration value='ti'/>
+			<xs:enumeration value='tk'/>
+			<xs:enumeration value='tl'/>
+			<xs:enumeration value='tn'/>
+			<xs:enumeration value='to'/>
+			<xs:enumeration value='tr'/>
+			<xs:enumeration value='ts'/>
+			<xs:enumeration value='tt'/>
+			<xs:enumeration value='tw'/>
+			<xs:enumeration value='ty'/>
+			<xs:enumeration value='ug'/>
+			<xs:enumeration value='uk'/>
+			<xs:enumeration value='ur'/>
+			<xs:enumeration value='uz'/>
+			<xs:enumeration value='ve'/>
+			<xs:enumeration value='vi'/>
+			<xs:enumeration value='vo'/>
+			<xs:enumeration value='wa'/>
+			<xs:enumeration value='wo'/>
+			<xs:enumeration value='xh'/>
+			<xs:enumeration value='yi'/>
+			<xs:enumeration value='yo'/>
+			<xs:enumeration value='za'/>
+			<xs:enumeration value='zh'/>
+			<xs:enumeration value='zh'/>
+			<xs:enumeration value='zu'/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name='restrictAttrType'>
+		<xs:restriction base='xs:token'>
+			<!-- simplified package dependency syntax -->
+			<!-- note: 'pure' package atom is technically valid too
+				 but not really meaningful -->
+			<xs:pattern
+				value="(([&lt;&gt;]=?|[=~])[A-Za-z0-9_][A-Za-z0-9+_.-]*/[A-Za-z0-9_][A-Za-z0-9+_-]*-[0-9]+(\.[0-9]+)*[a-z]?((_alpha|_beta|_pre|_rc|_p)[0-9]*)*(-r[0-9]+)?\*?)?"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<!-- generic types -->
+	<xs:simpleType name='emailType'>
+		<xs:restriction base='xs:token'>
+			<!-- minimal safe regex -->
+			<xs:pattern value="[^@]+@[^.]+\..+"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name='urlType'>
+		<xs:restriction base='xs:token'>
+			<!-- TODO: something better? -->
+			<xs:pattern value="(mailto:[^@]+@[^.]+\..+|https?://.+)"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:complexType name='urlOnceType'>
+		<xs:simpleContent>
+			<xs:extension base="urlType">
+				<xs:attribute name='fake-only-once'
+					fixed='there can be at most one element of this type'/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+</xs:schema>
