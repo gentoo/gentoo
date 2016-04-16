@@ -966,7 +966,7 @@ app-doc/gimp-help 2.6.1: GNU Image Manipulation Program help files
 app-doc/gnucash-docs 2.6.9 2.6.11: Documentation package for GnuCash
 app-doc/halibut 1.0 1.1: yet another free document preparation system
 app-doc/jargon 4.4.7: A compendium of hacker slang illuminating many aspects of hackish tradition, folklore, and humor
-app-doc/kicad-doc 4.0.0_rc1 4.0.0_rc2 4.0.0 4.0.1: Electronic Schematic and PCB design tools manuals
+app-doc/kicad-doc 4.0.0 4.0.1: Electronic Schematic and PCB design tools manuals
 app-doc/lapack-docs 3.1.1: Documentation reference and man pages for lapack implementations
 app-doc/linkers-and-loaders 1: the Linkers and Loaders book
 app-doc/linux-device-drivers 2 3: howto write linux device drivers (updated for Linux 2.6)
@@ -1149,7 +1149,7 @@ app-emacs/filladapt 2.12-r1: Filladapt enhances the behavior of Emacs' fill func
 app-emacs/flashcard 2.3.3: An Emacs Lisp package for drilling on questions and answers
 app-emacs/flim 1.14.9-r2: A library to provide basic features about message representation or encoding
 app-emacs/folding 2012.0226.1623 2013.0613.1821: A folding-editor-like Emacs minor mode
-app-emacs/ghc-mod 5.4.0.0: Happy Haskell Programming
+app-emacs/ghc-mod 5.4.0.0 5.5.0.0-r1: Happy Haskell Programming
 app-emacs/gnuplot-mode 0.7.0: Gnuplot mode for Emacs
 app-emacs/gnuserv 3.12.8-r2: Attach to an already running Emacs
 app-emacs/google-c-style 20091009-r1: Provides the google C/C++ coding style
@@ -3194,7 +3194,7 @@ dev-haskell/bytestring-show 0.3.5.6: Efficient conversion of values into readabl
 dev-haskell/bzlib 0.5.0.5: Compression and decompression in the bzip2 format
 dev-haskell/c2hs 0.16.4 0.16.5 0.17.2 0.20.1 0.25.2 0.27.1: C->Haskell FFI tool that gives some cross-language type safety
 dev-haskell/cabal 1.14.0 1.16.0.3 1.18.1.2 1.18.1.3 1.18.1.5 1.20.0.2 1.22.8.0: A framework for packaging Haskell software
-dev-haskell/cabal-helper 0.6.1.0: Simple interface to some of Cabal's configuration state used by ghc-mod
+dev-haskell/cabal-helper 0.6.1.0 0.6.3.1: Simple interface to some of Cabal's configuration state used by ghc-mod
 dev-haskell/cabal-install 1.18.1.0 1.20.0.3-r2 1.22.7.0: The command-line interface for Cabal and Hackage
 dev-haskell/cairo 0.12.5.3 0.13.1.1: Binding to the Cairo library
 dev-haskell/case-insensitive 1.0.0.2-r1 1.1.0.3 1.2.0.5: Case insensitive string comparison
@@ -14861,7 +14861,7 @@ net-misc/xrdp 0.8.0-r1: An open source Remote Desktop Protocol server
 net-misc/yajhfc 0.5.2 0.5.7: Yet another Java HylaFAX Plus Client
 net-misc/yandex-disk 0.1.5.758_p1 0.1.5.870_p1 0.1.5.940_p1: CLI to access Yandex Disk file storage service
 net-misc/you-get 0.4.365: A tiny command-line utility to download media contents from the Web.
-net-misc/youtube-dl 2016.01.01 2016.04.06 2016.04.13 99999999: Download videos from YouTube.com (and more sites...)
+net-misc/youtube-dl 2016.01.01 2016.04.06 2016.04.13-r1 99999999: Download videos from YouTube.com (and more sites...)
 net-misc/youtube-viewer 3.1.9 3.2.0 9999: A command line utility for viewing youtube-videos in Mplayer
 net-misc/ytalk 3.3.0: Multi-user replacement for UNIX talk
 net-misc/zssh 1.5c-r1: An ssh wrapper enabling zmodem up/download in ssh
@@ -15593,7 +15593,7 @@ sci-electronics/gtkwave 3.3.65 3.3.66 3.3.68: A wave viewer for LXT, LXT2, VZT, 
 sci-electronics/gwave 20090213-r1: Analog waveform viewer for SPICE-like simulations
 sci-electronics/irsim 9.7.79 9.7.87 9.7.93: IRSIM is a "switch-level" simulator
 sci-electronics/iverilog 0.9.6 0.9.7: A Verilog simulation and synthesis tool
-sci-electronics/kicad 4.0.0_rc1 4.0.0_rc2 4.0.0 4.0.0-r1 4.0.1 4.0.1-r1 4.0.2 4.0.2-r1: Electronic Schematic and PCB design tools.
+sci-electronics/kicad 4.0.0 4.0.0-r1 4.0.1 4.0.1-r1 4.0.2 4.0.2-r1: Electronic Schematic and PCB design tools.
 sci-electronics/klayout 0.23.10: Viewer and editor for GDS and OASIS integrated circuit layouts
 sci-electronics/linsmith 0.99.28 0.99.30: Smith charting program, mainly designed for educational use
 sci-electronics/magic 7.5.202-r1 7.5.231 8.0.138 8.0.207: The VLSI design CAD tool
