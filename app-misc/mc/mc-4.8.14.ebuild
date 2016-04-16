@@ -45,6 +45,7 @@ src_prepare() {
 	[[ -n ${LIVE_EBUILD} ]] && ./autogen.sh
 
 	epatch "${FILESDIR}"/${PN}-4.8.13-tinfo.patch
+	epatch "${FILESDIR}"/${PN}-4.8.16-makedev.patch
 	epatch_user
 	eautoreconf
 }
