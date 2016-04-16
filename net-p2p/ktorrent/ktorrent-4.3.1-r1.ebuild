@@ -43,8 +43,8 @@ IUSE="+bwscheduler debug +downloadorder +infowidget +ipfilter +kross +logviewer
 +upnp webinterface +zeroconf"
 
 COMMONDEPEND="
-	<net-libs/libktorrent-${LIBKT_VERSION_MAX}
-	>=net-libs/libktorrent-${LIBKT_VERSION_MIN}
+	<net-libs/libktorrent-${LIBKT_VERSION_MAX}:4
+	>=net-libs/libktorrent-${LIBKT_VERSION_MIN}:4
 	infowidget? ( dev-libs/geoip )
 	mediaplayer? ( >=media-libs/taglib-1.5 )
 	plasma? ( $(add_kdebase_dep libtaskmanager) )

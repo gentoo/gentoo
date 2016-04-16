@@ -26,5 +26,5 @@ DEPEND="
 	$(add_qt_dep qtwidgets)
 "
 RDEPEND="${DEPEND}
-	!<kde-apps/kapptemplate-15.12.3-r1
+	!<kde-apps/kapptemplate-15.12.3-r1:5
 "
