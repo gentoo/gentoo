@@ -17302,7 +17302,7 @@ sys-process/parallel 20150522 20150622 20150822 20151222 20160222: A shell tool 
 sys-process/pidof-bsd 20050501-r4: pidof(1) utility for *BSD
 sys-process/pkill-darwin 1.0: pgrep(1) and pkill(1) for Darwin
 sys-process/prll 0.6.2: A utility for parallelizing execution of shell functions
-sys-process/procenv 0.35 0.36 0.39 0.45: command-line utility to show process environment
+sys-process/procenv 0.39 0.45: command-line utility to show process environment
 sys-process/procexp 1.5.277: Graphical process explorer
 sys-process/procps 3.3.9-r2 3.3.10-r1 3.3.11-r3: standard informational utilities and process-handling tools
 sys-process/psinfo 0.12: Process information and statistics using the kernel /proc interface
