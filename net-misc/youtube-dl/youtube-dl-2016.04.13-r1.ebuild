@@ -80,8 +80,13 @@ src_test() {
 src_install() {
 	python_domodule youtube_dl
 	dobin bin/${PN}
+
 	dodoc README.txt
 	doman ${PN}.1
+
 	newbashcomp ${PN}.bash-completion ${PN}
+	insinto /usr/share/zsh/site-functions
+	newins ${PN}.zsh _${PN}.zsh
+
 	python_fix_shebang "${ED}"
 }
