@@ -8,5 +8,7 @@
   <longdescription>A library that generates short, pretty, unambiguous unique IDs by using an extensive, case-sensitive alphabet and omitting similar-looking letters and numbers.</longdescription>
   <upstream>
     <remote-id type="pypi">shortuuid</remote-id>
+    <remote-id type="github">stochastic-technologies/shortuuid</remote-id>
+    <bugs-to>https://github.com/stochastic-technologies/shortuuid/issues</bugs-to>
   </upstream>
 </pkgmetadata>

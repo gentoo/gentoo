@@ -19,4 +19,9 @@
 		NTP servers and can act as NTP server itself, redistributing the
 		local clock.
 	</longdescription>
+	<use>
+	    <flag name="libressl">Enable HTTPS TLS time constraint support using
+		    <pkg>dev-libs/libressl</pkg>
+	    </flag>
+	</use>
 </pkgmetadata>
