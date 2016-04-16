@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -18,10 +18,12 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
 IUSE=""
 
-RDEPEND=">=dev-qt/qtcore-4.4.0:4
-	>=dev-qt/qtdbus-4.4.0:4
-	>=dev-qt/qtsql-4.4.0:4
-	>=app-admin/packagekit-base-0.8.15-r1"
+RDEPEND="
+	>=app-admin/packagekit-base-0.8.15-r1
+	dev-qt/qtcore:4
+	dev-qt/qtdbus:4
+	dev-qt/qtsql:4
+"
 DEPEND="${RDEPEND}
 	dev-libs/libxslt
 	virtual/pkgconfig"

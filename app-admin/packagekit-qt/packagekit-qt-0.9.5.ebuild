@@ -19,10 +19,10 @@ KEYWORDS="~amd64 ~arm ~x86"
 IUSE=""
 
 RDEPEND="
-	>=dev-qt/qtcore-4.4.0:4
-	>=dev-qt/qtdbus-4.4.0:4
-	>=dev-qt/qtsql-4.4.0:4
 	>=app-admin/packagekit-base-0.9
+	dev-qt/qtcore:4
+	dev-qt/qtdbus:4
+	dev-qt/qtsql:4
 "
 DEPEND="${RDEPEND}
 	dev-libs/libxslt
