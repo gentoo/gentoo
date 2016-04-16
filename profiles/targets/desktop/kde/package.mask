@@ -21,4 +21,6 @@ kde-apps/kdewebdev-meta:5
 kde-apps/kde-apps-meta:5
 kde-apps/kde-meta:5
 kde-apps/kde-wallpapers:5
+kde-apps/khelpcenter:5
 kde-frameworks/oxygen-icons:5
+kde-plasma/plasma-meta:5
