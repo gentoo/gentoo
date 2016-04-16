@@ -45,19 +45,18 @@ src_prepare() {
 		# do single line imports
 		sed -i \
 			-e $( printf '/%s/d;' ${xxx[@]} ) \
-			youtube_dl/extractor/__init__.py \
+			youtube_dl/extractor/extractors.py \
 			|| die
 
 		# do multiple line imports
 		sed -i \
 			-e $( printf '/%s/,/)/d;' ${mxxx[@]} ) \
-			youtube_dl/extractor/__init__.py \
+			youtube_dl/extractor/extractors.py \
 			|| die
 
 		sed -i \
 			-e $( printf '/%s/d;' ${mxxx[@]} ) \
 			youtube_dl/extractor/generic.py \
-			youtube_dl/extractor/tumblr.py \
 			|| die
 
 		rm \
