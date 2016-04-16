@@ -13,9 +13,7 @@
 	<longdescription>A lightweight system monitoring tool</longdescription>
 	<use>
 		<flag name="apcupsd">Make use of a daemon that controls APC UPSes with <pkg>sys-power/apcupsd</pkg>.</flag>
-		<flag name="hddtemp">Use SMART to monitor the temperature of hard drives with <pkg>app-admin/hddtemp</pkg>.</flag>
 		<flag name="httpd">Enables the CGI webserver with any package that satisfies <pkg>virtual/httpd-cgi</pkg>.</flag>
-		<flag name="lm_sensors">Additional hardware mnitoring sensors with <pkg>sys-apps/lm_sensors</pkg>.</flag>
 		<flag name="postfix">Analyze postfix logs with <pkg>net-mail/pflogsumm</pkg>.</flag>
 	</use>
 </pkgmetadata>
