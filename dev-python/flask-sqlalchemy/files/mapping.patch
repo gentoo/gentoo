@@ -1,6 +1,6 @@
 diff -ur Flask-SQLAlchemy-1.0.orig/docs/conf.py Flask-SQLAlchemy-1.0/docs/conf.py
---- docs/conf.py	2013-01-27 08:57:36.000000000 +0800
-+++ docs/conf.py	2014-04-03 18:08:34.772268079 +0800
+--- a/docs/conf.py	2013-01-27 08:57:36.000000000 +0800
++++ b/docs/conf.py	2014-04-03 18:08:34.772268079 +0800
 @@ -224,9 +224,9 @@
  
  
