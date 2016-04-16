@@ -5598,7 +5598,7 @@ dev-perl/File-Type 0.220.0-r1: Determine file type using magic
 dev-perl/File-Which 1.90.0-r1: Perl module implementing 'which' internally
 dev-perl/File-chdir 0.101.0: An alternative to File::Spec and CWD
 dev-perl/File-chmod 0.420.0: Implements symbolic and ls chmod modes
-dev-perl/File-pushd 1.3.0-r1: Change directory temporarily for a limited scope
+dev-perl/File-pushd 1.3.0-r1 1.9.0: Change directory temporarily for a limited scope
 dev-perl/FileHandle-Unget 0.162.800: A FileHandle which supports ungetting of multiple bytes
 dev-perl/Filesys-Df 0.920.0-r1: Disk free based on Filesys::Statvfs
 dev-perl/Filesys-DiskSpace 0.50.0-r1: Perl df
@@ -5810,6 +5810,7 @@ dev-perl/Log-TraceMessages 1.400.0-r1: Logging/debugging aid
 dev-perl/MARC-Charset 1.350.0-r1: convert MARC-8 encoded strings to UTF-8
 dev-perl/MARC-Record 2.0.6: Perl extension for handling MARC records
 dev-perl/MARC-XML 1.0.3: A subclass of MARC.pm to provide XML support
+dev-perl/MCE 1.705.0: Many-Core Engine providing parallel processing capabilities
 dev-perl/MD5 2.30.0-r1: The Perl MD5 Module
 dev-perl/MIME-Base32 1.20.0: Base32 encoder / decoder
 dev-perl/MIME-Charset 1.9.3 1.12.0: Charset Informations for MIME
@@ -6084,13 +6085,13 @@ dev-perl/Perl6-Junction 1.600.0: Perl6 style Junction operators in Perl5
 dev-perl/PerlIO-Layers 0.10.0 0.11.0: Querying your filehandle's capabilities
 dev-perl/PerlIO-eol 0.140.0-r1: PerlIO::eol - PerlIO layer for normalizing line endings
 dev-perl/PerlIO-gzip 0.180.0-r1 0.190.0: PerlIO layer to gzip/gunzip
-dev-perl/PerlIO-via-Timeout 0.290.0 0.320.0: PerlIO layer that adds read & write timeout to a handle
+dev-perl/PerlIO-via-Timeout 0.320.0: PerlIO layer that adds read & write timeout to a handle
 dev-perl/PerlIO-via-dynamic 0.140.0-r1: PerlIO::via::dynamic - dynamic PerlIO layers
 dev-perl/PerlIO-via-symlink 0.50.0-r1: PerlIO::via::symlink - PerlIO layer for symlinks
 dev-perl/Perlbal 1.800.0-r1: Reverse-proxy load balancer and webserver
 dev-perl/Perlbal-XS-HTTPHeaders 0.200.0-r1: XS acceleration for Perlbal header processing
 dev-perl/PlRPC 0.202.0-r2: The Perl RPC Module
-dev-perl/Plack 1.3.200 1.3.700 1.3.900: Perl Superglue for Web frameworks and Web Servers (PSGI toolkit)
+dev-perl/Plack 1.3.900: Perl Superglue for Web frameworks and Web Servers (PSGI toolkit)
 dev-perl/Plucene 1.250.0-r1 1.250.0-r2: Plucene - the Perl lucene port
 dev-perl/Pod-Abstract 0.200.0-r1: Abstract document tree for Perl POD documents
 dev-perl/Pod-Coverage 0.230.0-r1: Checks if the documentation of a module is comprehensive
@@ -6143,6 +6144,7 @@ dev-perl/SQL-Abstract-Limit 0.141.0-r1: Portable LIMIT emulation
 dev-perl/SQL-Statement 1.405.0-r1 1.407.0 1.409.0: Small SQL parser and engine
 dev-perl/SQL-Translator 0.110.160-r1 0.110.210: Manipulate structured data definitions (SQL and more)
 dev-perl/SRU 1.0.0 1.10.0: Search and Retrieval by URL
+dev-perl/SUPER 1.201.411.170: control superclass method dispatch
 dev-perl/SVG 2.590.0 2.640.0: Perl extension for generating Scalable Vector Graphics (SVG) documents
 dev-perl/SVG-Graph 0.20.0-r1: Visualize your data in Scalable Vector Graphics (SVG) format
 dev-perl/SVN-Simple 0.280.0-r1: SVN::Simple::Edit - Simple interface to SVN::Delta::Editor
@@ -6268,8 +6270,8 @@ dev-perl/Test-LeakTrace 0.150.0: Traces memory leaks
 dev-perl/Test-LongString 0.150.0-r1 0.170.0: A library to test long strings
 dev-perl/Test-Manifest 1.230.0-r1 2.20.0: Interact with a t/test_manifest file
 dev-perl/Test-Memory-Cycle 1.40.0-r1 1.60.0: Check for memory leaks and circular memory references
-dev-perl/Test-Mock-LWP-Dispatch 0.60.0: Mocks LWP::UserAgent and dispatches your requests/responses
-dev-perl/Test-MockModule 0.50.0-r2: Override subroutines in a module for unit testing
+dev-perl/Test-Mock-LWP-Dispatch 0.60.0 0.80.0: Mocks LWP::UserAgent and dispatches your requests/responses
+dev-perl/Test-MockModule 0.50.0-r2 0.110.0: Override subroutines in a module for unit testing
 dev-perl/Test-MockObject 1.201.203.10-r1 1.201.505.270: Perl extension for emulating troublesome interfaces
 dev-perl/Test-MockRandom 1.10.0: Replaces random number generation with non-random number generation
 dev-perl/Test-MockTime 0.130.0 0.150.0: Replaces actual time with simulated time
@@ -6279,16 +6281,16 @@ dev-perl/Test-NoWarnings 1.40.0-r2: Make sure you didn't emit any warnings while
 dev-perl/Test-Number-Delta 1.30.0-r1 1.40.0 1.60.0: Compare the difference between numbers against a given tolerance
 dev-perl/Test-Object 0.70.0-r1: Thoroughly testing objects via registered handlers
 dev-perl/Test-Output 1.30.0: Utilities to test STDOUT and STDERR messages
-dev-perl/Test-Perl-Critic 1.20.0-r1: Use Perl::Critic in test programs
+dev-perl/Test-Perl-Critic 1.20.0-r1 1.30.0: Use Perl::Critic in test programs
 dev-perl/Test-Pod 1.480.0 1.510.0: Check for POD errors in files
-dev-perl/Test-Pod-Coverage 1.80.0-r1: Check for pod coverage in your distribution
+dev-perl/Test-Pod-Coverage 1.80.0-r1 1.100.0: Check for pod coverage in your distribution
 dev-perl/Test-Portability-Files 0.60.0-r1: Check file names portability
-dev-perl/Test-Requires 0.60.0-r1 0.80.0: Checks to see if the module can be loaded
-dev-perl/Test-Script 1.70.0-r1: Cross-platform basic tests for scripts
-dev-perl/Test-SharedFork 0.210.0-r1 0.330.0: fork test
+dev-perl/Test-Requires 0.60.0-r1 0.80.0 0.100.0: Checks to see if the module can be loaded
+dev-perl/Test-Script 1.70.0-r1 1.100.0: Cross-platform basic tests for scripts
+dev-perl/Test-SharedFork 0.210.0-r1 0.330.0 0.350.0: fork test
 dev-perl/Test-Spec 0.470.0 0.510.0: Write tests in a declarative specification style
 dev-perl/Test-SubCalls 1.90.0-r1: Track the number of times subs are called
-dev-perl/Test-TCP 2.60.0 2.130.0: Testing TCP program
+dev-perl/Test-TCP 2.60.0 2.130.0 2.160.0: Testing TCP program
 dev-perl/Test-Taint 1.60.0-r1: Tools to test taintedness
 dev-perl/Test-Tester 0.108.0-r1 0.109.0-r1 0.114.0: Ease testing test modules built with Test::Builder
 dev-perl/Test-Time 0.40.0: Overrides the time() and sleep() core functions for testing
@@ -6297,7 +6299,7 @@ dev-perl/Test-Unit-Lite 0.120.200-r1: Unit testing without external dependencies
 dev-perl/Test-UseAllModules 0.140.0-r1 0.170.0: do use_ok() for all the MANIFESTed modules
 dev-perl/Test-WWW-Mechanize 1.440.0-r1: Testing-specific WWW::Mechanize subclass
 dev-perl/Test-Warn 0.240.0-r1 0.300.0-r1: Perl extension to test methods for warnings
-dev-perl/Test-Warnings 0.16.0: Test for warnings and the lack of them
+dev-perl/Test-Warnings 0.16.0 0.26.0: Test for warnings and the lack of them
 dev-perl/Test-Without-Module 0.170.0 0.180.0: Test fallback behaviour in absence of modules
 dev-perl/Test-YAML 1.50.0: Testing Module for YAML Implementations
 dev-perl/Test-use-ok 0.110.0-r1 0.160.0: Alternative to Test::More::use_ok

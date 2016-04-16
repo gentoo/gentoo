@@ -2221,6 +2221,7 @@ dev-perl/PDL:plplot - Enable plplot plotting capabilities
 dev-perl/Panotools-Script:gui - Installs GUIs for some tools
 dev-perl/Sub-Name:suggested - Install extra dependencies needed for extended regression tests
 dev-perl/Sysadm-Install:hammer - Enable hammer() funtion to run a command in the shell and simulate a user hammering the ENTER key to accept defaults on prompts
+dev-perl/Test-Warnings:suggested - Install optional dependencies for extra tests
 dev-php/PEAR-HTTP_Download:minimal - Do not include support for PEAR-MIME_Type
 dev-php/PEAR-HTTP_Download:postgres - Send postgres LOBs without buffering
 dev-php/PEAR-HTTP_Request2:curl - Force dev-lang/php to be compiled with curl extension
