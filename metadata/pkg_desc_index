@@ -13989,7 +13989,7 @@ net-fs/smbnetfs 0.5.3b 0.6.0 0.6.0-r1: FUSE filesystem for SMB shares
 net-fs/smbtad 1.2.6: Data receiver of the SMB Traffic Analyzer project
 net-fs/smbtatools 1.2.6-r1: Tools for configuration and query of SMB Traffic Analyzer
 net-fs/tahoe-lafs 1.10.2: Secure, decentralized, data store
-net-fs/wdfs 1.4.2 1.4.2-r1: WebDAV filesystem with special features for accessing subversion repositories
+net-fs/wdfs 1.4.2-r1: WebDAV filesystem with special features for accessing subversion repositories
 net-ftp/atftp 0.7-r3 0.7-r5: Advanced TFTP implementation client/server
 net-ftp/axyftp 0.5.1-r2: GUI FTP client for X Window System (former WXftp)
 net-ftp/bareftp 0.3.9 0.3.10: Mono based file transfer client
@@ -16691,7 +16691,7 @@ sys-block/afacli 4.1: Dell AACRAID-based PERC RAID controller management tool
 sys-block/aoetools 35 36: tools for ATA over Ethernet (AoE) network storage protocol
 sys-block/arcconf 1.2.20618 1.7.21229: Adaptec RAID Controller Command Line Utility
 sys-block/blocks 0.1.4_pre131210-r1 9999: Conversion tools for block devices
-sys-block/btrace 1.0.0 1.0.1 1.0.1-r1 1.0.3 1.1.0: btrace can show detailed info about what is happening on a block device io queue
+sys-block/btrace 1.0.1-r1 1.0.3 1.1.0: btrace can show detailed info about what is happening on a block device io queue
 sys-block/buffer 1.19-r2: a tapedrive tool for speeding up reading from and writing to tape
 sys-block/cec 14: Coraid Ethernet Console client
 sys-block/dellmgr 5.32-r1: Dell PERC 2/3/4 RAID controller management tool
@@ -16704,7 +16704,7 @@ sys-block/endpoint 0.1.0: Endpoint turns a Linux machine with one or more firewi
 sys-block/fio 1.17.2 1.99.10 2.0.14-r1 2.0.15 2.1.9 2.2.4-r1 2.2.9 2.2.10 2.2.13 2.5 2.6: Jens Axboe's Flexible IO tester
 sys-block/flashbench 20120606: Tool for benchmarking and classifying flash memory drives
 sys-block/fwdl 1.2.3: Seagate Fibre-Channel disk firmware upgrade tool
-sys-block/gpart 0.1h-r1 0.1h-r2: Partition table rescue/guessing tool
+sys-block/gpart 0.1h-r2: Partition table rescue/guessing tool
 sys-block/gparted 0.24.0 0.25.0: Gnome Partition Editor
 sys-block/hdrecover 0.4: Attempts to recover a hard disk that has bad blocks on it
 sys-block/hpacucli 9.30.15.0: HP Array Configuration Utility Command Line Interface (HPACUCLI, formerly CPQACUXE)
@@ -16712,7 +16712,7 @@ sys-block/iscsitarget 0.4.17 1.4.19 1.4.20.2 1.4.20.2_p20130103 1.4.20.2_p201308
 sys-block/kvpm 0.9.9: KDE frontend for Linux LVM2 and GNU parted
 sys-block/lio-utils 9999: Tools for controlling target_core_mod/ConfigFS
 sys-block/lsiutil 1.62-r1 1.62-r2: LSI Logic Fusion MPT Command Line Interface management tool
-sys-block/mbuffer 20090113 20110724 20130220 20140126 20150412 20160228: M(easuring)buffer is a replacement for buffer with additional functionality
+sys-block/mbuffer 20150412 20160228: M(easuring)buffer is a replacement for buffer with additional functionality
 sys-block/megacli 8.02.21 8.07.10 8.07.14 8.07.14-r1: LSI Logic MegaRAID Command Line Interface management tool
 sys-block/megactl 0.4.1-r1 0.4.1-r2: LSI MegaRAID control utility
 sys-block/megamgr 5.20-r2: LSI Logic MegaRAID Text User Interface management tool
@@ -16721,11 +16721,11 @@ sys-block/mpt-status 1.2.0-r1: Query tool to access the running configuration an
 sys-block/ms-sys 2.4.0 2.5.2 2.5.3: A command-line program for writing Microsoft compatible boot records
 sys-block/mtx 1.2.18 1.3.12: Utilities for controlling SCSI media changers and tape drives
 sys-block/nbd 3.11 3.12.1 3.13: Userland client/server for kernel network block device
-sys-block/noflushd 2.7.3 2.7.4 2.7.5 2.8: A daemon to spin down your disks and force accesses to be cached
+sys-block/noflushd 2.7.3 2.7.5 2.8: A daemon to spin down your disks and force accesses to be cached
 sys-block/nwutil 1.4 1.8: Netwinder hardware utilities
 sys-block/open-iscsi 2.0.872-r2 2.0.872-r3 2.0.873 2.0.873-r1: Open-iSCSI is a high performance, transport independent, multi-platform implementation of RFC3720
 sys-block/parted 2.4 3.1-r1 3.2 3.2-r1: Create, destroy, resize, check, copy partitions and file systems
-sys-block/partimage 0.6.8 0.6.9: Console-based application to efficiently save raw partition data to an image file
+sys-block/partimage 0.6.9: Console-based application to efficiently save raw partition data to an image file
 sys-block/partitionmanager 1.1.1 2.1.0: KDE utility for management of partitions and file systems
 sys-block/qla-fc-firmware 20071207-r1 20080423 20101015: QLogic Linux Fibre Channel HBA Firmware for ql2xxx cards
 sys-block/raid-check 20140719-r1: Script to do "scrubbing" on software RAID systems
@@ -16736,7 +16736,7 @@ sys-block/sas2ircu 19: LSI MPT-SAS2 controller management tool
 sys-block/sas3ircu 5: LSI MPT-SAS3 controller management tool
 sys-block/scsiadd 1.97: Add and remove SCSI devices from your Linux system during runtime
 sys-block/scsiping 0.0.1: SCSIPing pings a host on the SCSI-chain
-sys-block/scsirastools 1.5.4 1.5.6 1.5.7: Serviceability for SCSI Disks and Arrays
+sys-block/scsirastools 1.5.7: Serviceability for SCSI Disks and Arrays
 sys-block/seekwatcher 0.6 0.9 0.12 0.12_p20091015: Seekwatcher generates graphs from blktrace runs to help visualize IO patterns and performance
 sys-block/smp_utils 0.97 0.98: Utilities for SAS management protocol (SMP)
 sys-block/spindown 0.4.0-r4: Spindown is a daemon that can spin down idle disks
@@ -16745,7 +16745,7 @@ sys-block/targetcli 9999: The targetcli administration shell
 sys-block/tgt 1.0.60 1.0.63: Linux SCSI target framework (tgt)
 sys-block/thin-provisioning-tools 0.2.8-r1 0.3.2-r1 0.4.0 0.4.1 0.5.3: A suite of tools for thin provisioning on Linux
 sys-block/tw_cli 9.2.1.1 9.3.0.2 9.3.0.3 9.3.0.4 9.4.0 9.4.0.1 9.4.1.2 9.4.2 9.5.0 9.5.0.1 9.5.1.1 9.5.2 9.5.3 10.1 10.2 10.2.2.1: 3ware SATA/PATA/SAS RAID controller Command Line Interface tool
-sys-block/vblade 19 20 21: vblade exports a block device using AoE
+sys-block/vblade 20 21: vblade exports a block device using AoE
 sys-block/viaideinfo 0.5: Query VIA IDE controllers for various information
 sys-block/whdd 2.1 2.2 9999: Diagnostic and recovery tool for block devices
 sys-block/zram-init 2.7-r1 3.0 3.4 3.6: Scripts to support compressed swap devices or ramdisks with zram
