@@ -5,6 +5,7 @@
 EAPI=6
 
 PYTHON_COMPAT=( python3_{3,4})
+PYTHON_REQ_USE='sqlite,threads'
 
 inherit distutils-r1
 
