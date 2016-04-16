@@ -5,8 +5,9 @@
 EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
+DISTUTILS_SINGLE_IMPL=true
 
-inherit fdo-mime eutils python-single-r1
+inherit fdo-mime distutils-r1
 
 DESCRIPTION='A hierarchical note taking application'
 HOMEPAGE='http://www.giuspen.com/cherrytree'
@@ -18,7 +19,7 @@ SRC_URI="https://github.com/giuspen/cherrytree/archive/${PV}.tar.gz -> ${P}.tar.
 KEYWORDS='~amd64 ~x86'
 IUSE='nls'
 
-RDEPEND="${PYTHON_DEPS}
+RDEPEND="
 	x11-libs/libX11
 	dev-python/dbus-python[${PYTHON_USEDEP}]
 	dev-python/pyenchant[${PYTHON_USEDEP}]
@@ -32,44 +33,23 @@ DEPEND="${RDEPEND}
 PLOCALES='cs de es fr hy it ja lt nl pl pt_BR ru sl tr uk zh_CN'
 inherit l10n
 
-src_prepare() {
-	use nls && l10n_find_plocales_changes 'locale' '' '.po'
+python_prepare_all() {
+	if use nls ; then
+		l10n_find_plocales_changes 'locale' '' '.po'
+
+		rm_loc() {
+			rm -v -f "locale/${1}.po" || return 1
+		}
+		l10n_for_each_disabled_locale_do rm_loc
+	fi
 
 	sed -i '\|update-desktop-database|d' 'setup.py' || die
 
-	default
+	distutils-r1_python_prepare_all
 }
 
-src_compile() {
-	local args=()
-	use nls || args+=( '--without-gettext' )
-
-	"${EPYTHON}" ./setup.py "${args[@]}" build
-}
-
-src_install() {
-	dobin "${PN}"
-
-	doicon -s scalable "glade/svg/${PN}.svg"
-	domenu "linux/${PN}.desktop"
-	doman "linux/${PN}.1"
-
-	insinto "/usr/share/${PN}"
-	doins -r 'glade/' 'modules/' 'language-specs/'
-
-	insinto '/usr/share/mime-info'
-	doins "linux/${PN}".{mime,keys}
-	insinto '/usr/share/mime/packages'
-	doins "linux/${PN}.xml"
-
-	if use nls ; then
-		ins_loc() {
-			# cannot use domo() as it installs files into a wrong dir
-			insinto "/usr/share/locale/${1}/LC_MESSAGES"
-			doins "build/mo/${1}/${PN}.mo"
-		}
-		l10n_for_each_locale_do ins_loc
-	fi
+src_configure() {
+	use nls || mydistutilsargs+=( '--without-gettext' )
 }
 
 pkg_postinst() {
