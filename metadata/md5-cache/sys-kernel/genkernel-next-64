@@ -12,4 +12,4 @@ SLOT=0
 SRC_URI=https://github.com/Sabayon/genkernel-next/archive/v64.tar.gz -> 64.tar.gz
 _eclass_exported_funcs=src_prepare:- src_install:-
 _eclasses_=bash-completion-r1	acf715fa09463f043fbfdc1640f3fb85	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
-_md5_=9f798c0f81e8bd14c5880b9be5c9b978
+_md5_=c4bd190532d8ff751c22f97abb1e88b6
