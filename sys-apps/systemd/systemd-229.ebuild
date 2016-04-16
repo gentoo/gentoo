@@ -153,6 +153,7 @@ src_prepare() {
 		"${FILESDIR}/218-Dont-enable-audit-by-default.patch"
 		"${FILESDIR}/228-noclean-tmp.patch"
 		"${FILESDIR}/linux-headers-if.h.patch"
+		"${FILESDIR}/229-sysmacros.patch"
 	)
 	[[ -d "${WORKDIR}"/patches ]] && PATCHES+=( "${WORKDIR}"/patches )
 

@@ -30,6 +30,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas K. Hüttel <dilfridge@gentoo.org> (16 Apr 2016)
+# Masked because of security bug 580210
+=www-misc/monitorix-3.6.0
+=www-misc/monitorix-3.8.1
+
 # Mike Gilbert <floppym@gentoo.org> (16 Apr 2016)
 # Causes numerous build failures. Bug 575232.
 =sys-libs/glibc-2.23-r1
