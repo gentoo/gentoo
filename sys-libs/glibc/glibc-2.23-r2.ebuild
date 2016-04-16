@@ -166,6 +166,7 @@ eblit-src_unpack-pre() {
 	# Bug 558636 we don't apply the pie works around for 2.22. It shoud have the support. #558636
 	GLIBC_PATCH_EXCLUDE+=" 00_all_0002-workaround-crash-when-handling-signals-in-static-PIE.patch"
 	GLIBC_PATCH_EXCLUDE+=" 00_all_0012-disable-PIE-when-checking-for-PIC-default.patch"
+	GLIBC_PATCH_EXCLUDE+=" 00_all_0009-sys-types.h-drop-sys-sysmacros.h-include.patch"
 }
 
 eblit-src_prepare-post() {

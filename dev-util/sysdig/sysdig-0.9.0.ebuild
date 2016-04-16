@@ -4,12 +4,13 @@
 
 EAPI=5
 
+# cmake generates make-specific code
+#: ${CMAKE_MAKEFILE_GENERATOR:=ninja}
 inherit linux-mod bash-completion-r1 cmake-utils
 
 DESCRIPTION="A system exploration and troubleshooting tool"
 HOMEPAGE="http://www.sysdig.org/"
-# mirrored from https://github.com/draios/sysdig/archive/${PV}.tar.gz
-SRC_URI="https://dev.gentoo.org/~mgorny/dist/${P}.tar.xz"
+SRC_URI="https://github.com/draios/sysdig/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -18,8 +19,12 @@ IUSE="+modules"
 
 RDEPEND="
 	dev-lang/luajit:2=
-	dev-libs/jsoncpp:0=
-	sys-libs/zlib:0="
+	>=dev-libs/jsoncpp-0.6_pre:0=
+	dev-libs/libb64:0=
+	sys-libs/ncurses:0=
+	sys-libs/zlib:0=
+	dev-libs/openssl:0=
+	net-misc/curl:0="
 DEPEND="${RDEPEND}
 	app-arch/xz-utils
 	virtual/os-headers"
@@ -49,20 +54,14 @@ src_configure() {
 		-DBUILD_LIBSCAP_EXAMPLES=OFF
 
 		# unbundle the deps
-		-DUSE_BUNDLED_LUAJIT=OFF
-		-DLUAJIT_PREFIX="${EPREFIX}"/usr
-		-DLUAJIT_INCLUDE="${EPREFIX}"/usr/include/luajit-2.0
-		-DUSE_BUNDLED_JSONCPP=OFF
-		-DJSONCPP_PREFIX="${EPREFIX}"/usr
-		-DJSONCPP_INCLUDE="${EPREFIX}"/usr/include/jsoncpp
-		-DUSE_BUNDLED_ZLIB=OFF
-		-DZLIB_PREFIX="${EPREFIX}"/usr
+		-DUSE_BUNDLED_DEPS=OFF
 	)
 
 	cmake-utils_src_configure
 
 	# setup linux-mod ugliness
 	MODULE_NAMES="sysdig-probe(extra:${BUILD_DIR}/driver:)"
+	BUILD_PARAMS='KERNELDIR="${KERNEL_DIR}"'
 	BUILD_TARGETS="driver"
 }
 
