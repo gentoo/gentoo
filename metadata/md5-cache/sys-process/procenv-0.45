@@ -1,0 +1,12 @@
+DEFINED_PHASES=-
+DEPEND=virtual/pkgconfig test? ( dev-libs/check )
+DESCRIPTION=command-line utility to show process environment
+EAPI=5
+HOMEPAGE=https://github.com/jamesodhunt/procenv
+IUSE=test
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+SLOT=0
+SRC_URI=https://github.com/jamesodhunt/procenv/archive/0.45.tar.gz -> procenv-0.45.tar.gz
+_eclass_exported_funcs=-
+_md5_=30949bdfc8aa2f18278850335274892f

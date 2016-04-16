@@ -2615,7 +2615,7 @@ app-vim/vim-addon-mw-utils 20121105: vim plugin: interpret a file by function an
 app-vim/vim-latex 1.8.23.20130116 1.8.23.20141116: vim plugin: a comprehensive set of tools to view, edit and compile LaTeX documents
 app-vim/vim-misc 1.17.1 1.17.6: vim plugin: miscellaneous auto-load scripts
 app-vim/vim-r 1.0 1.2.6: vim plugin: integrate vim with R
-app-vim/vim-rest-console 2.3.0: vim plugin: a REST console for vim
+app-vim/vim-rest-console 2.3.0 2.4.0: a REST console for vim
 app-vim/vim-spell-cs 20061021: vim spell files: Czech (cs)
 app-vim/vim-spell-da 20060116: vim spell files: Danish (da)
 app-vim/vim-spell-de 20051008 20080213: vim spell files: German (de)
@@ -17302,7 +17302,7 @@ sys-process/parallel 20150522 20150622 20150822 20151222 20160222: A shell tool 
 sys-process/pidof-bsd 20050501-r4: pidof(1) utility for *BSD
 sys-process/pkill-darwin 1.0: pgrep(1) and pkill(1) for Darwin
 sys-process/prll 0.6.2: A utility for parallelizing execution of shell functions
-sys-process/procenv 0.35 0.36 0.39: A command-line utility that simply dumps all attributes of its environment
+sys-process/procenv 0.35 0.36 0.39 0.45: command-line utility to show process environment
 sys-process/procexp 1.5.277: Graphical process explorer
 sys-process/procps 3.3.9-r2 3.3.10-r1 3.3.11-r3: standard informational utilities and process-handling tools
 sys-process/psinfo 0.12: Process information and statistics using the kernel /proc interface
