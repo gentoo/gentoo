@@ -1,10 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-inherit base eutils
+inherit autotools eutils
 
 DESCRIPTION="Library parsing abiword documents"
 HOMEPAGE="https://wiki.documentfoundation.org/DLP/Libraries/${PN}"
@@ -33,6 +33,11 @@ PATCHES=(
 	"${FILESDIR}/${PN}-0.1.1-do-not-let-AbiDocument_parse-throw.patch"
 	"${FILESDIR}/${PN}-0.1.1-boost-1.59.patch"
 )
+
+src_prepare() {
+	default
+	eautoreconf
+}
 
 src_configure() {
 	econf \
