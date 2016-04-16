@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -45,6 +45,24 @@ MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/db$(get_version_component_range 1-2)/db.h
 )
 
+PATCHES=(
+	# bug #510506
+	"${FILESDIR}"/${PN}-4.8.24-java-manifest-location.patch
+
+	# use the includes from the prefix
+	"${FILESDIR}"/${PN}-6.2-jni-check-prefix-first.patch
+	"${FILESDIR}"/${PN}-4.3-listen-to-java-options.patch
+
+	# sqlite configure call has an extra leading ..
+	# upstreamed:5.2.36, missing in 5.3.x/6.x
+	# still needs to be patched in 6.0.20
+	"${FILESDIR}"/${PN}-6.1.19-sqlite-configure-path.patch
+
+	# The upstream testsuite copies .lib and the binaries for each parallel test
+	# core, ~300MB each. This patch uses links instead, saves a lot of space.
+	"${FILESDIR}"/${PN}-6.0.20-test-link.patch
+)
+
 src_prepare() {
 	cd "${WORKDIR}"/"${MY_P}"
 	for (( i=1 ; i<=${PATCHNO} ; i++ ))
@@ -52,21 +70,8 @@ src_prepare() {
 		epatch "${DISTDIR}"/patch."${MY_PV}"."${i}"
 	done
 
-	# bug #510506
-	epatch "${FILESDIR}"/${PN}-4.8.24-java-manifest-location.patch
-
-	# use the includes from the prefix
-	epatch "${FILESDIR}"/${PN}-4.6-jni-check-prefix-first.patch
-	epatch "${FILESDIR}"/${PN}-4.3-listen-to-java-options.patch
-
-	# sqlite configure call has an extra leading ..
-	# upstreamed:5.2.36, missing in 5.3.x/6.x
-	# still needs to be patched in 6.0.20
-	epatch "${FILESDIR}"/${PN}-6.0.19-sqlite-configure-path.patch
-
-	# The upstream testsuite copies .lib and the binaries for each parallel test
-	# core, ~300MB each. This patch uses links instead, saves a lot of space.
-	epatch "${FILESDIR}"/${PN}-6.0.20-test-link.patch
+	epatch "${PATCHES[@]}"
+	epatch_user
 
 	# Upstream release script grabs the dates when the script was run, so lets
 	# end-run them to keep the date the same.

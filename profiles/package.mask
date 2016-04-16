@@ -580,6 +580,7 @@ app-admin/hwreport
 # FAIL:07:02:35 (00:00:00) Dump/load of ./TESTDIR.3/recd001.db failed.
 # FAIL:07:02:35 (00:00:00) db_verify_preop: expected 0, got 1
 =sys-libs/db-6.1*
+=sys-libs/db-6.2*
 
 # Yixun Lan <dlan@gentoo.org> (17 Jul 2014)
 # Masked for proper testing. (Major updates in the code).
