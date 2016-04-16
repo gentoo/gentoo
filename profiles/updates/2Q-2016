@@ -3,3 +3,4 @@ move kde-base/khelpcenter kde-apps/khelpcenter
 move kde-plasma/khelpcenter kde-apps/khelpcenter
 move dev-perl/set-scalar dev-perl/Set-Scalar
 move dev-perl/string-crc32 dev-perl/String-CRC32
+move app-admin/packagekit-qt4 app-admin/packagekit-qt

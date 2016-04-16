@@ -14,6 +14,6 @@ KEYWORDS="~amd64 ~arm ~x86"
 IUSE="gtk qt4"
 
 RDEPEND="gtk? ( ~app-admin/packagekit-gtk-${PV} )
-	qt4? ( =app-admin/packagekit-qt4-0.8* )"
+	qt4? ( =app-admin/packagekit-qt-0.8* )"
 
 DEPEND="${RDEPEND}"

@@ -21,7 +21,7 @@ IUSE="+hwinfo imagemagick packagekit"
 COMMON_DEPEND="
 	hwinfo? ( sys-apps/hwinfo )
 	imagemagick? ( media-gfx/imagemagick )
-	packagekit? ( app-admin/packagekit-qt4 )
+	packagekit? ( app-admin/packagekit-qt )
 "
 DEPEND="${COMMON_DEPEND}
 	dev-util/automoc
