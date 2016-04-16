@@ -14,6 +14,6 @@
 	<upstream>
 		<remote-id type="launchpad">openshot</remote-id>
 		<remote-id type="github">OpenShot/openshot-qt</remote-id>
-		<bugs-to>https://github.com/OpenShot/openshot-qt/issues https://bugs.launchpad.net/openshot/+bugs</bugs-to>
+		<bugs-to>https://github.com/OpenShot/openshot-qt/issues</bugs-to>
 	</upstream>
 </pkgmetadata>
