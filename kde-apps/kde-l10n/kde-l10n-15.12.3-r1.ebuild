@@ -75,7 +75,7 @@ src_unpack() {
 
 src_prepare() {
 	default
-	[[ -n ${A} ]] || return
+	[[ ${LINGUAS} = "" ]] && return
 
 	# add all linguas to cmake
 	cat <<-EOF > CMakeLists.txt || die
@@ -144,15 +144,15 @@ src_configure() {
 		fi
 		kde5_src_configure
 	}
-	[[ -n ${A} ]] && multibuild_foreach_variant myconfigure
+	[[ ${LINGUAS} != "" ]] && multibuild_foreach_variant myconfigure
 }
 
 src_compile() {
-	[[ -n ${A} ]] && multibuild_foreach_variant kde5_src_compile
+	[[ ${LINGUAS} != "" ]] && multibuild_foreach_variant kde5_src_compile
 }
 
 src_test() { :; }
 
 src_install() {
-	[[ -n ${A} ]] && multibuild_foreach_variant kde5_src_install
+	[[ ${LINGUAS} != "" ]] && multibuild_foreach_variant kde5_src_install
 }
