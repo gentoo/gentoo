@@ -1,5 +1,5 @@
 DEFINED_PHASES=install postinst preinst prepare setup
-DEPEND=dev-lang/perl dev-perl/Template-Toolkit dev-perl/libwww-perl dev-perl/URI dev-perl/Locale-gettext virtual/perl-IO-Compress ipv6? ( dev-perl/IO-Socket-INET6 ) ssl? ( dev-perl/IO-Socket-SSL ) vdr? ( media-video/vdr ) virtual/perl-libnet dev-perl/Authen-SASL dev-perl/Digest-HMAC ssl? ( dev-libs/openssl )
+DEPEND=dev-lang/perl dev-perl/Template-Toolkit dev-perl/libwww-perl dev-perl/URI dev-perl/Locale-gettext virtual/perl-IO-Compress ipv6? ( dev-perl/IO-Socket-INET6 ) ssl? ( dev-perl/IO-Socket-SSL ) vdr? ( media-video/vdr ) virtual/perl-libnet dev-perl/Authen-SASL dev-perl/Digest-HMAC ssl? ( || ( dev-libs/openssl:0= dev-libs/libressl:0= ) )
 DESCRIPTION=WWW Admin for the Video Disk Recorder
 EAPI=5
 HOMEPAGE=http://andreas.vdr-developer.org/vdradmin-am/index.html
@@ -10,5 +10,5 @@ RDEPEND=dev-lang/perl dev-perl/Template-Toolkit dev-perl/libwww-perl dev-perl/UR
 SLOT=0
 SRC_URI=http://andreas.vdr-developer.org/vdradmin-am/download/vdradmin-am-3.6.9.tar.bz2
 _eclass_exported_funcs=pkg_preinst:- pkg_postinst:- pkg_setup:- src_prepare:- src_install:-
-_eclasses_=eutils	9d81603248f2ba3ec59124320d123e5e	multilib	23ae8c186171e6476af098d2a50d0ee0	ssl-cert	fd7c91ac6f84156489f28c0bc7a114e0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	user	906f3c8eb3a2350a4f1191a89baa3e46
+_eclasses_=eutils	9d81603248f2ba3ec59124320d123e5e	multilib	23ae8c186171e6476af098d2a50d0ee0	ssl-cert	3ffe9a38dc10da66b5a04e8889040faa	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	user	906f3c8eb3a2350a4f1191a89baa3e46
 _md5_=162ebed93ee942266e86ce8b5a1df334
