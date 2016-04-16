@@ -21,6 +21,7 @@ DEPEND="${RDEPEND}
 src_prepare() {
 	tc-ld-disable-gold
 	epatch "${FILESDIR}/0.21-nvme_ioctl.h.patch"
+	epatch "${FILESDIR}/0.23-sysmacros.patch"
 	epatch_user
 }
 
