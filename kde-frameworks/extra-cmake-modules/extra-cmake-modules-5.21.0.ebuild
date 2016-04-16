@@ -29,6 +29,10 @@ DEPEND="
 	)
 "
 
+RDEPEND="
+	app-arch/libarchive[bzip2]
+"
+
 python_check_deps() {
 	has_version "dev-python/sphinx[${PYTHON_USEDEP}]"
 }
