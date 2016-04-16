@@ -58,4 +58,3 @@ src_install() {
 
 	newbashcomp "${S}"/genkernel.bash genkernel
 }
-
