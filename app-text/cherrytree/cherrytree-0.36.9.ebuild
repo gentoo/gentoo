@@ -15,7 +15,7 @@ LICENSE='GPL-3'
 SLOT='0'
 SRC_URI="https://github.com/giuspen/cherrytree/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
-KEYWORDS='~amd64'
+KEYWORDS='~amd64 ~x86'
 IUSE='nls'
 
 RDEPEND="${PYTHON_DEPS}
