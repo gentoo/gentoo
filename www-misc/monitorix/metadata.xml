@@ -1,15 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <!-- maintainer-needed -->
-  <longdescription>
-    A lightweight system monitoring tool.
-  </longdescription>
-  <use>
-    <flag name="apcupsd">Make use of a daemon that controls APC UPSes with <pkg>sys-power/apcupsd</pkg>.</flag>
-    <flag name="hddtemp">Use SMART to monitor the temperature of hard drives with <pkg>app-admin/hddtemp</pkg>.</flag>
-    <flag name="httpd">Enables the CGI webserver with any package that satisfies <pkg>virtual/httpd-cgi</pkg>.</flag>
-    <flag name="lm_sensors">Additional hardware mnitoring sensors with <pkg>sys-apps/lm_sensors</pkg>.</flag>
-    <flag name="postfix">Analyze postfix logs with <pkg>net-mail/pflogsumm</pkg>.</flag>
-  </use>
+	<maintainer type="person">
+		<email>silmano@gmail.com</email>
+		<name>Pedro Arizmendi</name>
+		<description>Proxied maintainer; set to assignee in all bugs</description>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Gentoo Proxy Maintainers Project</name>
+	</maintainer>
+	<longdescription>A lightweight system monitoring tool</longdescription>
+	<use>
+		<flag name="apcupsd">Make use of a daemon that controls APC UPSes with <pkg>sys-power/apcupsd</pkg>.</flag>
+		<flag name="hddtemp">Use SMART to monitor the temperature of hard drives with <pkg>app-admin/hddtemp</pkg>.</flag>
+		<flag name="httpd">Enables the CGI webserver with any package that satisfies <pkg>virtual/httpd-cgi</pkg>.</flag>
+		<flag name="lm_sensors">Additional hardware mnitoring sensors with <pkg>sys-apps/lm_sensors</pkg>.</flag>
+		<flag name="postfix">Analyze postfix logs with <pkg>net-mail/pflogsumm</pkg>.</flag>
+	</use>
 </pkgmetadata>
