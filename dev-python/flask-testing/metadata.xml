@@ -7,5 +7,7 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="pypi">Flask-Testing</remote-id>
+		<remote-id type="github">jarus/flask-testing</remote-id>
+		<bugs-to>https://github.com/jarus/flask-testing/issues</bugs-to>
 	</upstream>
 </pkgmetadata>
