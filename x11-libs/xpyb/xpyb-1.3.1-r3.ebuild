@@ -5,7 +5,7 @@
 EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
-AUTOTOOLS_AUTORECONF=1
+XORG_EAUTORECONF=yes
 
 inherit flag-o-matic xorg-2 python-r1
 

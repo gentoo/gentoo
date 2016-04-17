@@ -43,12 +43,14 @@ fi
 # before inheriting this eclass.
 : ${XORG_MULTILIB:="no"}
 
-# we need to inherit autotools first to get the deps
-inherit autotools autotools-utils eutils libtool multilib toolchain-funcs \
+# Manage AUTOTOOLS_DEPEND ourselves
+: ${AUTOTOOLS_AUTO_DEPEND:="no"}
+
+inherit autotools eutils libtool multilib toolchain-funcs \
 	flag-o-matic ${FONT_ECLASS} ${GIT_ECLASS}
 
 if [[ ${XORG_MULTILIB} == yes ]]; then
-	inherit autotools-multilib
+	inherit multilib-minimal
 fi
 
 EXPORTED_FUNCTIONS="src_unpack src_compile src_install pkg_postinst pkg_postrm"
@@ -124,13 +126,11 @@ if [[ ${PN} != util-macros ]] ; then
 	# Required even by xorg-server
 	[[ ${PN} == "font-util" ]] || EAUTORECONF_DEPEND+=" >=media-fonts/font-util-1.2.0"
 fi
-WANT_AUTOCONF="latest"
-WANT_AUTOMAKE="latest"
 for arch in ${XORG_EAUTORECONF_ARCHES}; do
-	EAUTORECONF_DEPENDS+=" ${arch}? ( ${EAUTORECONF_DEPEND} )"
+	EAUTORECONF_DEPENDS+=" ${arch}? ( ${AUTOTOOLS_DEPEND} ${EAUTORECONF_DEPEND} )"
 done
 DEPEND+=" ${EAUTORECONF_DEPENDS}"
-[[ ${XORG_EAUTORECONF} != no ]] && DEPEND+=" ${EAUTORECONF_DEPEND}"
+[[ ${XORG_EAUTORECONF} != no ]] && DEPEND+=" ${AUTOTOOLS_DEPEND} ${EAUTORECONF_DEPEND}"
 unset EAUTORECONF_DEPENDS
 unset EAUTORECONF_DEPEND
 
@@ -350,6 +350,14 @@ xorg-2_patch_source() {
 	EPATCH_SUFFIX=${EPATCH_SUFFIX:=patch}
 
 	[[ -d "${EPATCH_SOURCE}" ]] && epatch
+
+	if [[ "$(declare -p PATCHES 2>/dev/null)" == "declare -a"* ]]; then
+		epatch "${PATCHES[@]}"
+	elif [[ -n ${PATCHES} ]]; then
+		epatch ${PATCHES}
+	fi
+
+	epatch_user
 }
 
 # @FUNCTION: xorg-2_reconf_source
@@ -358,18 +366,15 @@ xorg-2_patch_source() {
 xorg-2_reconf_source() {
 	debug-print-function ${FUNCNAME} "$@"
 
+	[[ -e configure.ac || -e configure.in ]] || return 0
+
+	local run_ea=${XORG_EAUTORECONF}
+
 	case ${CHOST} in
-		*-interix* | *-aix* | *-winnt*)
-			# some hosts need full eautoreconf
-			[[ -e "./configure.ac" || -e "./configure.in" ]] \
-				&& AUTOTOOLS_AUTORECONF=1
-			;;
-		*)
-			# elibtoolize required for BSD
-			[[ ${XORG_EAUTORECONF} != no && ( -e "./configure.ac" || -e "./configure.in" ) ]] \
-				&& AUTOTOOLS_AUTORECONF=1
-			;;
+		*-interix* | *-aix* | *-winnt*) run_ea=yes ;;
 	esac
+
+	[[ ${run_ea} == no ]] || eautoreconf
 }
 
 # @FUNCTION: xorg-2_src_prepare
@@ -380,7 +385,6 @@ xorg-2_src_prepare() {
 
 	xorg-2_patch_source
 	xorg-2_reconf_source
-	autotools-utils_src_prepare "$@"
 }
 
 # @FUNCTION: xorg-2_font_configure
@@ -472,12 +476,18 @@ xorg-2_src_configure() {
 		${dep_track}
 		${FONT_OPTIONS}
 		"${xorgconfadd[@]}"
+		"$@"
 	)
 
 	if [[ ${XORG_MULTILIB} == yes ]]; then
-		autotools-multilib_src_configure "$@"
+		if ! declare -f multilib_src_configure >/dev/null; then
+			multilib_src_configure() {
+				ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
+			}
+		fi
+		multilib-minimal_src_configure
 	else
-		autotools-utils_src_configure "$@"
+		econf "${myeconfargs[@]}"
 	fi
 }
 
@@ -487,10 +497,17 @@ xorg-2_src_configure() {
 xorg-2_src_compile() {
 	debug-print-function ${FUNCNAME} "$@"
 
+	local makeargs=( "$@" )
+
 	if [[ ${XORG_MULTILIB} == yes ]]; then
-		autotools-multilib_src_compile "$@"
+		if ! declare -f multilib_src_compile >/dev/null; then
+			multilib_src_compile() {
+				emake "${makeargs[@]}"
+			}
+		fi
+		multilib-minimal_src_compile
 	else
-		autotools-utils_src_compile "$@"
+		emake "${makeargs[@]}"
 	fi
 }
 
@@ -509,10 +526,18 @@ xorg-2_src_install() {
 		)
 	fi
 
+	install_args+=( "$@" )
+
 	if [[ ${XORG_MULTILIB} == yes ]]; then
-		autotools-multilib_src_install "${install_args[@]}"
+		if ! declare -f multilib_src_install >/dev/null; then
+			multilib_src_install() {
+				emake DESTDIR="${D}" install "${install_args[@]}"
+			}
+		fi
+		multilib-minimal_src_install
 	else
-		autotools-utils_src_install "${install_args[@]}"
+		emake DESTDIR="${D}" install "${install_args[@]}"
+		einstalldocs
 	fi
 
 	if [[ -n ${GIT_ECLASS} ]]; then
