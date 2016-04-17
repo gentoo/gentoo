@@ -10103,7 +10103,7 @@ games-arcade/pachi 1.0: platform game inspired by games like Manic Miner and Jet
 games-arcade/pacmanarena 0.15: a Pacman clone in full 3D with a few surprises. Rockets, bombs and explosions abound
 games-arcade/penguin-command 1.6.11: A clone of the classic Missile Command game
 games-arcade/pengupop 2.2.5: Networked multiplayer-only Puzzle Bubble clone
-games-arcade/performous 1.0: SingStar GPL clone
+games-arcade/performous 1.0 1.1: SingStar GPL clone
 games-arcade/primateplunge 1.1-r1: Help poor Monkey navigate his way down through treacherous areas
 games-arcade/pycadia 0.5.1: Pycadia. Home to vector gaming, python style
 games-arcade/pydance 1.1.0: a DDR clone for linux written in Python
