@@ -1,11 +1,11 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
-AUTOTOOLS_AUTORECONF=1
+XORG_EAUTORECONF=yes
 
 inherit flag-o-matic xorg-2 python-r1
 
