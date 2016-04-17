@@ -6,7 +6,7 @@ EAPI="5"
 GCONF_DEBUG="no"
 GNOME2_LA_PUNT="yes"
 
-inherit eutils gnome2 readme.gentoo
+inherit eutils gnome2 readme.gentoo-r1
 
 DESCRIPTION="Archive manager for GNOME"
 HOMEPAGE="https://wiki.gnome.org/Apps/FileRoller"

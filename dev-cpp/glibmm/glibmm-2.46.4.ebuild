@@ -26,10 +26,6 @@ DEPEND="${RDEPEND}
 # dev-cpp/mm-common needed for eautoreconf
 
 src_prepare() {
-	# Gio::Application: Destructor: Use noexcept in the implementation too
-	# (from 'master')
-	epatch "${FILESDIR}"/${PN}-2.46.2-use-noexcept{,2}.patch
-
 	if ! use test; then
 		# don't waste time building tests
 		sed 's/^\(SUBDIRS =.*\)tests\(.*\)$/\1\2/' \
@@ -39,10 +35,6 @@ src_prepare() {
 	# don't build examples - we want to install example sources, not binaries
 	sed 's/^\(SUBDIRS =.*\)examples\(.*\)$/\1\2/' \
 		-i Makefile.am Makefile.in || die "sed 2 failed"
-
-	# Test fails with IPv6 but not v4, upstream bug #720073
-#	sed -e 's:giomm_tls_client/test::' \
-#		-i tests/Makefile.{am,in} || die
 
 	gnome2_src_prepare
 }
