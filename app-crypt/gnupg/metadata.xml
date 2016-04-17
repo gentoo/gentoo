@@ -11,13 +11,11 @@
   </longdescription>
   <use>
     <flag name="smartcard">
-      Bring in <pkg>dev-libs/libusb</pkg> as a dependency; enable
-      scdaemon.
-    </flag>
-    <flag name="smartcard">
       Build scdaemon software. Enables usage of OpenPGP cards. For
       other type of smartcards, try
       <pkg>app-crypt/gnupg-pkcs11-scd</pkg>.
+      Bring in <pkg>dev-libs/libusb</pkg> as a dependency; enable
+      scdaemon.
     </flag>
     <flag name="usb">
       Build direct CCID access for scdaemon; requires
