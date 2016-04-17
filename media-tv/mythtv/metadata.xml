@@ -45,6 +45,8 @@
 		that LCD.</flag>
 		<flag name="lirc">Adds LIRC support directly to MythTV allowing for built in
 		control via a LIRC device.</flag>
+		<flag name="mythlogserver">Enable support for syslog and file logging. Not
+		used with systemd.</flag>
 		<flag name="perl">Builds the perl bindings for MythTV. Allows you to write
 		scripts in Perl to control your MythTV setup or communicate with
 		it.</flag>

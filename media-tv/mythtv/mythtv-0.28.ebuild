@@ -25,7 +25,7 @@ KEYWORDS="~amd64 ~x86"
 
 IUSE_INPUT_DEVICES="input_devices_joystick"
 IUSE="alsa altivec avahi libass autostart bluray cec crystalhd debug dvb dvd \
-egl fftw +hls ieee1394 jack lcd lirc perl pulseaudio python systemd +theora \
+egl fftw +hls ieee1394 jack lcd lirc +mythlogserver perl pulseaudio python systemd +theora \
 vaapi vdpau +vorbis +wrapper +xml xmltv +xvid ${IUSE_INPUT_DEVICES}"
 
 REQUIRED_USE="
@@ -34,7 +34,6 @@ REQUIRED_USE="
 	theora? ( vorbis )"
 
 COMMON="
-	media-gfx/exiv2:=
 	>=media-libs/freetype-2.0:=
 	>=media-sound/lame-3.93.1
 	sys-libs/zlib:=
@@ -47,13 +46,10 @@ COMMON="
 	dev-qt/qtcore:5=
 	dev-qt/qtdbus:5=
 	dev-qt/qtgui:5=
-	dev-qt/qtnetwork:5=
 	dev-qt/qtscript:5=
 	dev-qt/qtsql:5=[mysql]
 	dev-qt/qtopengl:5=
 	dev-qt/qtwebkit:5=
-	dev-qt/qtwidgets:5=
-	dev-qt/qtxml:5=
 	x11-misc/wmctrl:=
 	virtual/mysql
 	virtual/opengl:=
@@ -257,6 +253,7 @@ src_configure() {
 	has ccache ${FEATURES} || myconf="${myconf} --disable-ccache"
 
 	myconf="${myconf} $(use_enable systemd systemd_notify)"
+	use systemd || myconf="${myconf} $(use_enable mythlogserver)"
 
 	chmod +x ./external/FFmpeg/version.sh
 
@@ -268,7 +265,6 @@ src_configure() {
 		--extra-cflags="${CFLAGS}" \
 		--extra-cxxflags="${CXXFLAGS}" \
 		--extra-ldflags="${LDFLAGS}" \
-		--qmake=/usr/lib/qt5/bin/qmake \
 		${myconf} || die "configure died"
 }
 
