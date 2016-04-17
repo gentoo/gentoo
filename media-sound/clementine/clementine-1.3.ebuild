@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 EGIT_REPO_URI="https://github.com/clementine-player/Clementine.git"
 
@@ -56,7 +56,6 @@ COMMON_DEPEND="
 	mtp? ( >=media-libs/libmtp-1.0.0 )
 	moodbar? ( sci-libs/fftw:3.0 )
 	projectm? ( media-libs/glew:= )
-	>=dev-libs/crypto++-5.6.2-r4
 "
 # now only presets are used, libprojectm is internal
 # https://github.com/clementine-player/Clementine/tree/master/3rdparty/libprojectm/patches
@@ -93,7 +92,10 @@ MY_P="${P/_}"
 [[ ${PV} == *9999* ]] || \
 S="${WORKDIR}/C${MY_P:1}"
 
-PATCHES=( "${FILESDIR}"/${PN}-1.3-fix-tokenizer.patch )
+PATCHES=(
+	"${FILESDIR}/${PN}-1.3_rc1-cmake.patch"
+	"${FILESDIR}/${PN}-1.3-fix-tokenizer.patch"
+)
 
 src_prepare() {
 	cmake-utils_src_prepare
@@ -116,27 +118,24 @@ src_configure() {
 		-DLINGUAS="${langs}"
 		-DBUNDLE_PROJECTM_PRESETS=OFF
 		-DUSE_SYSTEM_PROJECTM=ON
-		$(cmake-utils_use cdda ENABLE_AUDIOCD)
-		$(cmake-utils_use dbus ENABLE_DBUS)
-		$(cmake-utils_use udisks ENABLE_DEVICEKIT)
-		$(cmake-utils_use ipod ENABLE_LIBGPOD)
-		$(cmake-utils_use lastfm ENABLE_LIBLASTFM)
-		$(cmake-utils_use mtp ENABLE_LIBMTP)
-		$(cmake-utils_use moodbar ENABLE_MOODBAR)
+		-DENABLE_AUDIOCD="$(usex cdda)"
+		-DENABLE_DBUS="$(usex dbus)"
+		-DENABLE_DEVICEKIT="$(usex udisks)"
+		-DENABLE_LIBGPOD="$(usex ipod)"
+		-DENABLE_LIBLASTFM="$(usex lastfm)"
+		-DENABLE_LIBMTP="$(usex mtp)"
+		-DENABLE_MOODBAR="$(usex moodbar)"
 		-DENABLE_GIO=ON
-		$(cmake-utils_use wiimote ENABLE_WIIMOTEDEV)
-		$(cmake-utils_use projectm ENABLE_VISUALISATIONS)
+		-DENABLE_WIIMOTEDEV="$(usex wiimote)"
+		-DENABLE_VISUALISATIONS="$(usex projectm)"
 		$(usex projectm '-DUSE_SYSTEM_PROJECTM=ON' '')
-		$(cmake-utils_use box ENABLE_BOX)
-		$(cmake-utils_use dropbox ENABLE_DROPBOX)
-		$(cmake-utils_use googledrive ENABLE_GOOGLE_DRIVE)
-		$(cmake-utils_use skydrive ENABLE_SKYDRIVE)
-		$(cmake-utils_use ubuntu-one ENABLE_UBUNTU_ONE)
+		-DENABLE_BOX="$(usex box)"
+		-DENABLE_DROPBOX="$(usex dropbox)"
+		-DENABLE_GOOGLE_DRIVE="$(usex googledrive)"
+		-DENABLE_SKYDRIVE="$(usex skydrive)"
+		-DENABLE_UBUNTU_ONE="$(usex ubuntu-one)"
 		-DENABLE_SPOTIFY_BLOB=OFF
 		-DENABLE_BREAKPAD=OFF
-		#$(cmake-utils_use !system-sqlite STATIC_SQLITE)
-		#$(cmake-utils_use system-sqlite I_HATE_MY_USERS)
-		#$(cmake-utils_use system-sqlite MY_USERS_WILL_SUFFER_BECAUSE_OF_ME)
 		-DUSE_BUILTIN_TAGLIB=OFF
 		-DUSE_SYSTEM_GMOCK=ON
 		)
@@ -148,7 +147,7 @@ src_configure() {
 
 src_test() {
 	cd "${CMAKE_BUILD_DIR}" || die
-	Xemake test
+	virtx emake test
 }
 
 pkg_preinst() {

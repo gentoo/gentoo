@@ -1,7 +1,7 @@
 https://github.com/clementine-player/Clementine/issues/5297
 
---- src/core/database.cpp
-+++ src/core/database.cpp
+--- a/src/core/database.cpp
++++ b/src/core/database.cpp
 @@ -265,6 +265,16 @@
    StaticInit();
  

@@ -7,11 +7,9 @@ PYTHON_COMPAT=( python2_7 python3_3 python3_4 )
 
 inherit distutils-r1 vcs-snapshot
 
-MY_PV=${PV//_/-}
-
 DESCRIPTION="Python client for Docker"
 HOMEPAGE="https://github.com/docker/docker-py"
-SRC_URI="https://github.com/docker/${PN}/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/docker/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
@@ -31,6 +29,7 @@ RDEPEND="
 	>=dev-python/requests-2.5.2[${PYTHON_USEDEP}]
 	>=dev-python/six-1.4.0[${PYTHON_USEDEP}]
 	>=dev-python/websocket-client-0.32.0[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '>=dev-python/py2-ipaddress-3.4.1[${PYTHON_USEDEP}]' 'python2_7')
 "
 
 python_compile_all() {
