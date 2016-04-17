@@ -1,19 +1,16 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
-PYTHON_COMPAT=( python2_7 pypy )
-
-# silly captcha test trying to access things over the network
-RESTRICT="test"
+EAPI=6
+PYTHON_COMPAT=( python{2_7,3_4,3_5} pypy )
 
 inherit distutils-r1
 
 MY_PN="Flask-WTF"
 MY_P="${MY_PN}-${PV}"
 
-DESCRIPTION="Simple integration of Flask and WTForms, including CSRF, file upload and Recaptcha integration"
+DESCRIPTION="Simple integration of Flask and WTForms"
 HOMEPAGE="http://pythonhosted.org/Flask-WTF/ https://pypi.python.org/pypi/Flask-WTF"
 SRC_URI="mirror://pypi/${MY_P:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
@@ -37,6 +34,12 @@ DEPEND="${RDEPEND}
 	)"
 
 S="${WORKDIR}/${MY_P}"
+
+python_prepare_all() {
+	# tries to access things over the network
+	rm tests/test_recaptcha.py || die
+	distutils-r1_python_prepare_all
+}
 
 python_compile_all() {
 	use doc && emake -C docs html
