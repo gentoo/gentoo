@@ -62,7 +62,7 @@ IUSE="+alsa cacao cjk +cups debug doc examples +gtk headless-awt
 	jamvm +jbootstrap libressl nsplugin pax_kernel
 	pulseaudio sctp selinux smartcard +source sunec test +webstart zero"
 
-REQUIRED_USE="gtk? ( !headless-awt )"
+REQUIRED_USE="gtk? ( !headless-awt ) test? ( sunec )"
 
 # Ideally the following were optional at build time.
 ALSA_COMMON_DEP="
