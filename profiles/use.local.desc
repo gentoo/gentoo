@@ -4563,6 +4563,7 @@ media-tv/mythtv:ieee1394 - Allows MythTV to communicate and use Firewire enabled
 media-tv/mythtv:jack - Allows MythTV to use JACK as your sound output device. You will have to manually configure the path to your JACK settings.
 media-tv/mythtv:lcd - Tells MythTV that you have an instance of app-misc/lcdproc configured on your machine and it should output information such as current time, show name, episode name, etc to that LCD.
 media-tv/mythtv:lirc - Adds LIRC support directly to MythTV allowing for built in control via a LIRC device.
+media-tv/mythtv:mythlogserver - Enable support for syslog and file logging. Not used with systemd.
 media-tv/mythtv:perl - Builds the perl bindings for MythTV. Allows you to write scripts in Perl to control your MythTV setup or communicate with it.
 media-tv/mythtv:raop - Remote Audio Output Protocol (aka AirTunes/AirPlay)
 media-tv/mythtv:wrapper - Use Ubuntu mythtfrontend wrapper.
