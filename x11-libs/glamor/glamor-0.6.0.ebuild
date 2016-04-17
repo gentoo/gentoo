@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -10,7 +10,7 @@ XORG_MODULE=driver/
 XORG_MODULE_REBUILD=yes
 S=${WORKDIR}/${PN}-egl-${PV}
 
-inherit xorg-2 autotools-utils toolchain-funcs
+inherit xorg-2 toolchain-funcs
 
 DESCRIPTION="OpenGL based 2D rendering acceleration library"
 SRC_URI="${XORG_BASE_INDIVIDUAL_URI}/${XORG_MODULE}${PN}-egl-${PV}.tar.bz2"
@@ -49,5 +49,5 @@ src_prepare() {
 
 src_install() {
 	# workaround parallel install failure, bug #488124.
-	autotools-utils_src_install -j1
+	xorg-2_src_install -j1
 }
