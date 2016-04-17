@@ -21,4 +21,4 @@ SLOT="0"
 KEYWORDS="~amd64 ~hppa ~ppc ~sparc ~x86"
 IUSE=""
 
-ruby_add_rdepend ">=dev-ruby/rainbow-1.1.4 dev-ruby/logue"
+ruby_add_rdepend ">=dev-ruby/rainbow-1.1.4:* dev-ruby/logue"
