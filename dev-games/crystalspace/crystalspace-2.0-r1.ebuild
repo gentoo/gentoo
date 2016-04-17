@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -46,7 +46,7 @@ DEPEND="${COMMON_DEP}
 	java? ( >=virtual/jdk-1.5
 		dev-java/ant-core )
 	dev-util/ftjam
-	dev-lang/swig
+	<dev-lang/swig-3
 	virtual/pkgconfig"
 
 S=${WORKDIR}/${MY_P}
@@ -60,6 +60,7 @@ src_prepare() {
 		docs/Jamfile || die
 	epatch \
 		"${FILESDIR}"/${P}-gcc47.patch \
+		"${FILESDIR}"/${P}-gcc52.patch \
 		"${FILESDIR}"/${P}-wxgtk.patch
 	use wxwidgets && append-libs -lGL
 	AT_M4DIR=mk/autoconf \
