@@ -56,6 +56,7 @@ COMMON_DEPEND="
 	mtp? ( >=media-libs/libmtp-1.0.0 )
 	moodbar? ( sci-libs/fftw:3.0 )
 	projectm? ( media-libs/glew:= )
+	>=dev-libs/crypto++-5.6.2-r4
 "
 # now only presets are used, libprojectm is internal
 # https://github.com/clementine-player/Clementine/tree/master/3rdparty/libprojectm/patches
@@ -92,9 +93,7 @@ MY_P="${P/_}"
 [[ ${PV} == *9999* ]] || \
 S="${WORKDIR}/C${MY_P:1}"
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-1.3_rc1-cmake.patch
-)
+PATCHES=( "${FILESDIR}"/${PN}-1.3-fix-tokenizer.patch )
 
 src_prepare() {
 	cmake-utils_src_prepare
