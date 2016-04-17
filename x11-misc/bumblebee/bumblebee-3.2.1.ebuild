@@ -31,6 +31,10 @@ DEPEND="${RDEPEND}
 
 REQUIRED_USE="|| ( video_cards_nouveau video_cards_nvidia )"
 
+src_prepare() {
+	epatch "${FILESDIR}/nvidia-modprobe.patch"
+}
+
 src_configure() {
 	DOC_CONTENTS="In order to use Bumblebee, add your user to 'bumblebee' group.
 		You may need to setup your /etc/bumblebee/bumblebee.conf"
