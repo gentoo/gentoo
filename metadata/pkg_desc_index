@@ -16721,7 +16721,7 @@ sys-block/megamgr 5.20-r2: LSI Logic MegaRAID Text User Interface management too
 sys-block/megarc 1.11-r2: LSI Logic MegaRAID Text User Interface management tool
 sys-block/mpt-status 1.2.0-r1: Query tool to access the running configuration and status of LSI SCSI HBAs
 sys-block/ms-sys 2.4.0 2.5.2 2.5.3: A command-line program for writing Microsoft compatible boot records
-sys-block/mtx 1.2.18 1.3.12: Utilities for controlling SCSI media changers and tape drives
+sys-block/mtx 1.3.12: Utilities for controlling SCSI media changers and tape drives
 sys-block/nbd 3.11 3.12.1 3.13: Userland client/server for kernel network block device
 sys-block/noflushd 2.7.3 2.7.5 2.8: A daemon to spin down your disks and force accesses to be cached
 sys-block/nwutil 1.4 1.8: Netwinder hardware utilities
@@ -16739,14 +16739,14 @@ sys-block/sas3ircu 5: LSI MPT-SAS3 controller management tool
 sys-block/scsiadd 1.97: Add and remove SCSI devices from your Linux system during runtime
 sys-block/scsiping 0.0.1: SCSIPing pings a host on the SCSI-chain
 sys-block/scsirastools 1.5.7: Serviceability for SCSI Disks and Arrays
-sys-block/seekwatcher 0.6 0.9 0.12 0.12_p20091015: Seekwatcher generates graphs from blktrace runs to help visualize IO patterns and performance
+sys-block/seekwatcher 0.6 0.12 0.12_p20091015: Seekwatcher generates graphs from blktrace runs to help visualize IO patterns and performance
 sys-block/smp_utils 0.97 0.98: Utilities for SAS management protocol (SMP)
 sys-block/spindown 0.4.0-r4: Spindown is a daemon that can spin down idle disks
 sys-block/tapecat 1.0.0: tapecat is a tape utility used to describe the physical content of a tape
 sys-block/targetcli 9999: The targetcli administration shell
 sys-block/tgt 1.0.60 1.0.63: Linux SCSI target framework (tgt)
 sys-block/thin-provisioning-tools 0.2.8-r1 0.3.2-r1 0.4.0 0.4.1 0.5.3: A suite of tools for thin provisioning on Linux
-sys-block/tw_cli 9.2.1.1 9.3.0.2 9.3.0.3 9.3.0.4 9.4.0 9.4.0.1 9.4.1.2 9.4.2 9.5.0 9.5.0.1 9.5.1.1 9.5.2 9.5.3 10.1 10.2 10.2.2.1: 3ware SATA/PATA/SAS RAID controller Command Line Interface tool
+sys-block/tw_cli 9.2.1.1 9.3.0.4 9.4.1.2 9.4.2 9.5.2 9.5.3 10.1 10.2 10.2.2.1: 3ware SATA/PATA/SAS RAID controller Command Line Interface tool
 sys-block/vblade 20 21: vblade exports a block device using AoE
 sys-block/viaideinfo 0.5: Query VIA IDE controllers for various information
 sys-block/whdd 2.1 2.2 9999: Diagnostic and recovery tool for block devices
