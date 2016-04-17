@@ -109,7 +109,6 @@ src_prepare() {
 		"${FILESDIR}"/${P}-gnusource.patch
 }
 
-
 src_compile() {
 	yesno() { usex $1 YES NO; }
 
