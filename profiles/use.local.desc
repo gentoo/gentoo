@@ -411,7 +411,7 @@ app-crypt/ekeyd:minimal - Only install the ekey-egd-linux service rather than th
 app-crypt/ekeyd:munin - Install a plugin for net-analyzer/munin to graph statistical data from ekeyd.
 app-crypt/ekeyd:usb - Build the libusb-based userland daemon for accessing the EntropyKey (alternative to the CDC USB driver). It is suggested to use this option by default, as the CDC driver in the kernel often seems to be fragile (or the gadget implementation on the EntropyKey is too buggy), and can cause various problems.
 app-crypt/gnupg:mta - Build mta support using virtual/mta.
-app-crypt/gnupg:smartcard - Build scdaemon software. Enables usage of OpenPGP cards. For other type of smartcards, try app-crypt/gnupg-pkcs11-scd.
+app-crypt/gnupg:smartcard - Build scdaemon software. Enables usage of OpenPGP cards. For other type of smartcards, try app-crypt/gnupg-pkcs11-scd. Bring in dev-libs/libusb as a dependency; enable scdaemon.
 app-crypt/gnupg:tofu - Enable support for Trust of First use trust model; requires dev-db/sqlite.
 app-crypt/gnupg:tools - Install extra tools.
 app-crypt/gnupg:usb - Build direct CCID access for scdaemon; requires dev-libs/libusb.
@@ -906,7 +906,7 @@ app-misc/digitemp:ds2490 - Build support for the ds2490 sensor
 app-misc/digitemp:ds9097 - Build support for the ds9097 sensor
 app-misc/digitemp:ds9097u - Build support for the ds9097u sensor
 app-misc/emelfm2:ansi - Add support for ANSI escape sequences
-app-misc/emelfm2:gtk3 - Use x11-libs/gtk:3 instead of x11-libs/gtk:2
+app-misc/emelfm2:gtk3 - Use x11-libs/gtk-3 instead of x11-libs/gtk-2
 app-misc/freemind:groovy - Build plugin for scripting via Groovy
 app-misc/freemind:latex - Build plugin for inserting mathematical formulas in LaTeX syntax
 app-misc/freemind:pdf - Build plugin for exporting mindmaps to SVG and PDF
@@ -925,12 +925,12 @@ app-misc/geoclue:plazes - Install plazes.com provider
 app-misc/geoclue:skyhook - Install skyhookwireless.com provider
 app-misc/geoclue:yahoo-geo - Install Yahoo geolocation provider
 app-misc/geoclue:zeroconf - Enable retrieval of GPS location from Android devices with https://wiki.gnome.org/Apps/GeoclueShare
-app-misc/gourmet:i18n - >app-misc/gourmet-0.16 Enable support for i18n through elib.intl
-app-misc/gourmet:ipython - >app-misc/gourmet-0.16 Enable support for the interactive Python console plugin
+app-misc/gourmet:i18n - Enable support for i18n through elib.intl
+app-misc/gourmet:ipython - Enable support for the interactive Python console plugin
 app-misc/gourmet:pdf - Enable export to PDF
-app-misc/gourmet:print - >app-misc/gourmet-0.16 Enable pretty Python printing
-app-misc/gourmet:spell - >app-misc/gourmet-0.16 Enable support for the spell check plugin
-app-misc/gourmet:web - >app-misc/gourmet-0.16 Enable support for the web import plugin
+app-misc/gourmet:print - Enable pretty Python printing
+app-misc/gourmet:spell - Enable support for the spell check plugin
+app-misc/gourmet:web - Enable support for the web import plugin
 app-misc/gramps:reports - All external software that is needed for graphical reports will be installed
 app-misc/gramps:webkit - Use Webkit-based rendering for geographical data view.
 app-misc/graphlcd-base:g15 - Add support for app-misc/g15daemon driver (e.g. Logitech G15 Keybord)
