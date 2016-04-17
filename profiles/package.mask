@@ -31,6 +31,33 @@
 #--- END OF EXAMPLES ---
 
 # Patrice Clement <monsieurp@gentoo.org> (17 Apr 2016)
+# Unmaintained ebuilds (EAPI 0!) which don't compile with Java 8.
+# Removal in 30 days. See bug 580094.
+dev-java/freehep-export
+dev-java/freehep-graphics2d
+dev-java/freehep-graphicsio
+dev-java/freehep-graphicsio-emf
+dev-java/freehep-graphicsio-java
+dev-java/freehep-graphicsio-pdf
+dev-java/freehep-graphicsio-ps
+dev-java/freehep-graphicsio-svg
+dev-java/freehep-graphicsio-swf
+dev-java/freehep-graphicsio-tests
+dev-java/freehep-io
+dev-java/freehep-mcfio
+dev-java/freehep-misc-deps
+dev-java/freehep-parameterdatabase
+dev-java/freehep-record
+dev-java/freehep-rootio
+dev-java/freehep-rtti
+dev-java/freehep-sio
+dev-java/freehep-stdhep
+dev-java/freehep-swing
+dev-java/freehep-util
+dev-java/freehep-xdr
+dev-java/freehep-xml
+
+# Patrice Clement <monsieurp@gentoo.org> (17 Apr 2016)
 # Relies on a non-existing dependency
 # removed by commit b38aa2bb931c2063d5ebdcfda230b45b559c98c2.
 =media-sound/clementine-1.3
