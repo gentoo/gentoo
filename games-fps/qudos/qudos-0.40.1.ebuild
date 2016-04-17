@@ -10,8 +10,8 @@ PK3_FILE="QuDos-${PV}.pk3"
 MY_PN="quake2"
 
 DESCRIPTION="Enhanced Quake 2 engine"
-HOMEPAGE="http://qudos.quakedev.com/"
-SRC_URI="http://qudos.quakedev.com/linux/${MY_PN}/engines/QuDos/${FILE_STEM}.tar.bz2
+HOMEPAGE="https://github.com/ZwS/qudos"
+SRC_URI="mirror://gentoo/${FILE_STEM}.tar.bz2
 	https://github.com/ZwS/qudos/raw/master/quake2/baseq2/qudos.pk3 -> ${PK3_FILE}"
 
 LICENSE="GPL-2+"
