@@ -94,7 +94,6 @@ S="${WORKDIR}/C${MY_P:1}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.3_rc1-cmake.patch
-	"${FILESDIR}"/${PN}-1.3_rc1-fix-tokenizer.patch
 )
 
 src_prepare() {
