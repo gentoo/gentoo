@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -28,19 +28,11 @@ src_configure() {
 }
 
 multilib_src_configure() {
-	autotools-utils_src_configure
+	ECONF_SOURCE="${S}"
+	econf
 
 	if multilib_is_native_abi; then
-		python_foreach_impl autotools-utils_src_configure
-	fi
-}
-
-multilib_src_compile() {
-	default
-
-	if multilib_is_native_abi; then
-		python_foreach_impl autotools-utils_src_compile -C xcbgen \
-			top_builddir="${BUILD_DIR}"
+		python_foreach_impl run_in_build_dir econf
 	fi
 }
 
@@ -48,8 +40,7 @@ multilib_src_install() {
 	default
 
 	if multilib_is_native_abi; then
-		python_foreach_impl autotools-utils_src_install -C xcbgen \
-			top_builddir="${BUILD_DIR}"
+		python_foreach_impl run_in_build_dir emake DESTDIR="${D}" install -C xcbgen
 	fi
 }
 
