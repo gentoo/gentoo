@@ -1,10 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=4
 
-inherit autotools-utils xorg-2
+inherit xorg-2
 
 DESCRIPTION="X authority file utility"
 
@@ -29,6 +29,7 @@ src_configure() {
 
 src_test() {
 	# Address sandbox failure, bug #527574
+	local -x SANDBOX_WRITE=${SANDBOX_WRITE}
 	addwrite /proc/self/comm
-	autotools-utils_src_test
+	default
 }
