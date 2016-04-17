@@ -9,7 +9,6 @@
 		<maintainer status="active">
 			<email>c.cboldt@gmail.com</email>
 			<name>Chuck Seyboldt</name>
-			<description>Will reply to bug reports</description>
 		</maintainer>
 		<changelog>https://sourceforge.net/p/mktwpol/code/ci/master/tree/CHANGES</changelog>
 		<doc>https://sourceforge.net/p/mktwpol/code/ci/master/tree/README</doc>

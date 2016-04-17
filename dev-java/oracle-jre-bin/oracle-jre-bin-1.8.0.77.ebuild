@@ -238,3 +238,12 @@ src_install() {
 	java-vm_revdep-mask
 	java-vm_sandbox-predict /dev/random /proc/self/coredump_filter
 }
+
+pkg_postinst() {
+	java-vm-2_pkg_postinst
+
+	if ! use headless-awt && ! use javafx; then
+		ewarn "You have disabled the javafx flag. Some modern desktop Java applications"
+		ewarn "require this and they may fail with a confusing error message."
+	fi
+}

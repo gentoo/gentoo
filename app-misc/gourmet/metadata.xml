@@ -28,20 +28,20 @@
 		<remote-id type="github">thinkle/gourmet</remote-id>
 	</upstream>
 	<use>
-		<flag name="i18n"><pkg>&gt;app-misc/gourmet-0.16</pkg>
+		<flag name="i18n">
 			Enable support for i18n through elib.intl
 		</flag>
-		<flag name="ipython"><pkg>&gt;app-misc/gourmet-0.16</pkg>
+		<flag name="ipython">
 			Enable support for the interactive Python console plugin
 		</flag>
 		<flag name="pdf">Enable export to PDF</flag>
-		<flag name="print"><pkg>&gt;app-misc/gourmet-0.16</pkg>
+		<flag name="print">
 			Enable pretty Python printing
 		</flag>
-		<flag name="spell"><pkg>&gt;app-misc/gourmet-0.16</pkg>
+		<flag name="spell">
 			Enable support for the spell check plugin
 		</flag>
-		<flag name="web"><pkg>&gt;app-misc/gourmet-0.16</pkg>
+		<flag name="web">
 			Enable support for the web import plugin
 		</flag>
 	</use>
