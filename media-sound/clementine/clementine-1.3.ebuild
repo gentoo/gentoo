@@ -93,6 +93,8 @@ MY_P="${P/_}"
 [[ ${PV} == *9999* ]] || \
 S="${WORKDIR}/C${MY_P:1}"
 
+PATCHES=( "${FILESDIR}"/${PN}-1.3-fix-tokenizer.patch )
+
 src_prepare() {
 	cmake-utils_src_prepare
 
