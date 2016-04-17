@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -20,7 +20,7 @@ if [[ ${PV} = *9999* ]]; then
 	KEYWORDS=""
 	DEPEND="=dev-libs/squareball-9999"
 else
-	DEPEND=">=dev-libs/squareball-0.1"
+	DEPEND=">=dev-libs/squareball-0.2.0"
 fi
 
 LICENSE="BSD"
