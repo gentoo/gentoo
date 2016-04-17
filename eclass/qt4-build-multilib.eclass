@@ -190,6 +190,10 @@ qt4-build-multilib_src_prepare() {
 		append-flags -mminimal-toc
 	fi
 
+	# Teach configure about gcc-6 and later
+	sed -i -e 's:5\*|:[5-9]*|:' \
+		configure || die "sed gcc version failed"
+
 	# Read also AR from the environment
 	sed -i -e 's/^SYSTEM_VARIABLES="/&AR /' \
 		configure || die "sed SYSTEM_VARIABLES failed"
