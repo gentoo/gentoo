@@ -80,6 +80,7 @@ dev-util/cmake -qt4
 >=media-libs/opencv-3.0.0 -qt4
 >=media-video/smplayer-14.9.0.6690 -qt4
 media-video/vlc -qt4
+net-analyzer/wireshark -qt4
 net-misc/owncloud-client -qt4
 net-news/rssguard -qt4
 >=net-news/quiterss-0.17.7 -qt4
