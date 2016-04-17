@@ -6,5 +6,5 @@
 <name>Gentoo Desktop Miscellaneous Project</name>
   </maintainer>
   <use><flag name="ansi">Add support for ANSI escape sequences</flag></use>
-  <use><flag name="gtk3">Use <pkg>x11-libs/gtk:3</pkg> instead of <pkg>x11-libs/gtk:2</pkg></flag></use>
+  <use><flag name="gtk3">Use <pkg>x11-libs/gtk-3</pkg> instead of <pkg>x11-libs/gtk-2</pkg></flag></use>
 </pkgmetadata>
