@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI="5"
-PYTHON_COMPAT=( python{2_7,3_3,3_4} pypy )
+PYTHON_COMPAT=( python{2_7,3_3,3_4,3_5} pypy )
 DISTUTILS_OPTIONAL=1
 
 inherit eutils distutils-r1 libtool toolchain-funcs multilib-minimal
