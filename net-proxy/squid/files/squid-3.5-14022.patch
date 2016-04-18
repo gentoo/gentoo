@@ -1,0 +1,50 @@
+------------------------------------------------------------
+revno: 14022
+revision-id: squid3@treenet.co.nz-20160411131130-z2lp1uj94sovgthy
+parent: squid3@treenet.co.nz-20160411124138-zsrf0ltaxlj25k2x
+fixes bug: http://bugs.squid-cache.org/show_bug.cgi?id=4481
+committer: Amos Jeffries <squid3@treenet.co.nz>
+branch nick: 3.5
+timestamp: Tue 2016-04-12 01:11:30 +1200
+message:
+  Bug 4481: varyEvaluateMatch: Oops. Not a Vary match on second attempt
+------------------------------------------------------------
+# Bazaar merge directive format 2 (Bazaar 0.90)
+# revision_id: squid3@treenet.co.nz-20160411131130-z2lp1uj94sovgthy
+# target_branch: http://bzr.squid-cache.org/bzr/squid3/3.5
+# testament_sha1: 91af3a71dfc316577c5661733fc0c9fdeeb8ba83
+# timestamp: 2016-04-11 13:50:55 +0000
+# source_branch: http://bzr.squid-cache.org/bzr/squid3/3.5
+# base_revision_id: squid3@treenet.co.nz-20160411124138-\
+#   zsrf0ltaxlj25k2x
+# 
+# Begin patch
+=== modified file 'src/StoreMetaVary.cc'
+--- src/StoreMetaVary.cc	2016-04-01 06:15:31 +0000
++++ src/StoreMetaVary.cc	2016-04-11 13:11:30 +0000
+@@ -22,6 +22,9 @@
+         /* XXX separate this mutator from the query */
+         /* Assume the object is OK.. remember the vary request headers */
+         e->mem_obj->vary_headers.assign(static_cast<const char *>(value), length);
++        /* entries created before SBuf vary handling may include string terminator */
++        static const SBuf nul("\0", 1);
++        e->mem_obj->vary_headers.trim(nul);
+         return true;
+     }
+ 
+
+=== modified file 'src/store_swapmeta.cc'
+--- src/store_swapmeta.cc	2016-04-01 06:15:31 +0000
++++ src/store_swapmeta.cc	2016-04-11 13:11:30 +0000
+@@ -89,9 +89,7 @@
+     SBuf vary(e->mem_obj->vary_headers);
+ 
+     if (!vary.isEmpty()) {
+-        // TODO: do we still need +1 here? StoreMetaVary::checkConsistency
+-        //       no longer relies on nul-termination, but other things might.
+-        t = StoreMeta::Factory(STORE_META_VARY_HEADERS, vary.length() + 1, vary.c_str());
++        t = StoreMeta::Factory(STORE_META_VARY_HEADERS, vary.length(), vary.c_str());
+ 
+         if (!t) {
+             storeSwapTLVFree(TLV);
+
