@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# Michael Haubenwallner <haubi@gentoo.org) (18 Apr 2016)
+# adjust MiNT specifics via USE flags
+sys-apps/coreutils stdbuf
+
 # Alan Hourihane <alanh@fairlite.co.uk> (11 Mar 2014)
 # plays havoc with GNU pth bug #503764
 dev-lang/tcl threads
