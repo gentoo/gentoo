@@ -340,7 +340,7 @@
 	<xs:simpleType name='urlType'>
 		<xs:restriction base='xs:token'>
 			<!-- TODO: something better? -->
-			<xs:pattern value="[^:]+:.+"/>
+			<xs:pattern value="[^:\s]+:\S+"/>
 		</xs:restriction>
 	</xs:simpleType>
 
