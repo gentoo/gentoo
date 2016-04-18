@@ -7167,7 +7167,7 @@ dev-python/flask-testing 0.4.1 0.4.2: Unit testing for Flask
 dev-python/flask-themes 0.1.3-r1: Infrastructure for theming support in Flask applications
 dev-python/flask-uploads 0.1.3 0.2.0: Flexible and efficient upload handling for Flask
 dev-python/flask-whooshalchemy 0.55a 0.56: Whoosh extension to Flask/SQLAlchemy
-dev-python/flask-wtf 0.10.2 0.10.3 0.11 0.12: Simple integration of Flask and WTForms, including CSRF, file upload and Recaptcha integration
+dev-python/flask-wtf 0.10.2 0.10.3 0.11 0.12: Simple integration of Flask and WTForms
 dev-python/flask-xml-rpc 0.1.2-r1: XML-RPC support for Flask applications
 dev-python/flexx 0.2 0.3 0.3.1: Pure Python toolkit for creating GUI's using web technology
 dev-python/flipflop 1.0: A FastCGI/WSGI gateway
