@@ -1,10 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 
-inherit eutils base toolchain-funcs
+inherit eutils toolchain-funcs
 
 DESCRIPTION="The advanced PC speaker beeper"
 HOMEPAGE="http://www.johnath.com/beep/"
@@ -16,11 +16,15 @@ KEYWORDS="alpha amd64 arm ppc ppc64 ~sparc x86"
 IUSE="suid"
 
 PATCHES=(
-	"${FILESDIR}"/"${PN}"-1.2.2-Makefile.patch
+	"${FILESDIR}"/"${P}"-Makefile.patch
 )
 
 pkg_setup() {
 	tc-export CC
+}
+
+src_prepare() {
+	epatch "${PATCHES[@]}"
 }
 
 src_install() {
