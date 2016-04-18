@@ -23,6 +23,10 @@ pkg_setup() {
 	tc-export CC
 }
 
+src_prepare() {
+	epatch "${PATCHES[@]}"
+}
+
 src_install() {
 	dobin beep
 	if use suid; then
