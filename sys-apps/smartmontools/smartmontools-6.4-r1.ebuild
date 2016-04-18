@@ -61,6 +61,8 @@ src_configure() {
 }
 
 src_install() {
+	local db_path="/var/db/${PN}"
+
 	if use minimal ; then
 		dosbin smartctl
 		doman smartctl.8
@@ -71,7 +73,8 @@ src_install() {
 	fi
 
 	# Move drivedb.h file out of PM's sight (bug #575292)
-	mv "${ED}"/var/db/${PN}/drivedb.h "${T}" || die
+	mv "${ED}"${db_path}/drivedb.h "${T}" || die
+	keepdir ${db_path}
 
 	exeinto /etc/cron.monthly
 	doexe "${FILESDIR}"/${PN}-update-drivedb
