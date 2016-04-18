@@ -16,7 +16,7 @@
 		<flag name="hpijs">Build the IJS driver for cups (Foomatic)</flag>
 		<flag name="kde">Enables <pkg>kde-misc/skanlite</pkg> as scanner GUI with USE="scanner X"</flag>
 		<flag name="libnotify">Enables desktop notifications</flag>
-		<flag name="libusb0">Depend on <pkg>virtual/libusb:0</pkg>. Some old printers do not work with <pkg>virtual/libusb:1</pkg></flag>
+		<flag name="libusb0">Depend on <pkg>virtual/libusb</pkg> SLOT 0. Some old printers do not work with <pkg>virtual/libusb</pkg> SLOT 1.</flag>
 		<flag name="minimal">Only build internal hpijs/hpcups driver (not recommended at all, make sure you know what you are doing)</flag>
 		<flag name="parport">Enable parallel port for devices which require it</flag>
 		<flag name="qt4">Enable graphical interface using Qt 4</flag>
