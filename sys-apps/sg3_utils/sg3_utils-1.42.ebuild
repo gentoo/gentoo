@@ -20,7 +20,8 @@ RDEPEND=""
 PDEPEND=">=sys-apps/rescan-scsi-bus-1.24"
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-1.26-stdint.patch
+	epatch "${FILESDIR}"/${PN}-1.26-stdint.patch #580236
+	epatch "${FILESDIR}"/${PN}-1.42-sysmacros.patch #580236
 }
 
 src_configure() {
