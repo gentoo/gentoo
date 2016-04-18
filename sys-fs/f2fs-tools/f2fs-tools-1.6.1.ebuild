@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit multilib
+inherit multilib eutils
 
 DESCRIPTION="Tools for Flash-Friendly File System (F2FS)"
 HOMEPAGE="https://git.kernel.org/?p=linux/kernel/git/jaegeuk/f2fs-tools.git;a=summary"
@@ -14,6 +14,10 @@ LICENSE="GPL-2"
 SLOT="0/0"
 KEYWORDS="~amd64 ~arm ~mips ~ppc ~ppc64 ~x86"
 IUSE=""
+
+src_prepare() {
+	epatch "${FILESDIR}"/${P}-sysmacros.patch #580338
+}
 
 src_configure() {
 	#This is required to install to /sbin, bug #481110

@@ -1,0 +1,45 @@
+https://bugs.gentoo.org/580338
+
+From d6abcb38899cd03d59e0f30c49419695f86ae543 Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Mon, 18 Apr 2016 18:18:07 -0400
+Subject: [PATCH] fibmap: pull in sys/sysmacros.h for major/minor
+
+These funcs are provided by sys/sysmacros.h, so include the header
+directly.  Building with alternative C libraries can fail otherwise
+like so:
+
+fibmap.c: In function 'print_stat':
+fibmap.c:36:32: warning: implicit declaration of function 'major' [-Wimplicit-function-declaration]
+  printf("dev       [%d:%d]\n", major(st->st_dev), minor(st->st_dev));
+                                ^
+fibmap.c:36:51: warning: implicit declaration of function 'minor' [-Wimplicit-function-declaration]
+  printf("dev       [%d:%d]\n", major(st->st_dev), minor(st->st_dev));
+                                                   ^
+fibmap.o: In function 'print_stat':
+tools/fibmap.c:36: undefined reference to 'minor'
+tools/fibmap.c:36: undefined reference to 'major'
+fibmap.o: In function 'stat_bdev':
+tools/fibmap.c:59: undefined reference to 'minor'
+tools/fibmap.c:59: undefined reference to 'major'
+
+Signed-off-by: Mike Frysinger <vapier@gentoo.org>
+---
+ tools/fibmap.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/tools/fibmap.c b/tools/fibmap.c
+index 224b233..6b092f5 100644
+--- a/tools/fibmap.c
++++ b/tools/fibmap.c
+@@ -8,6 +8,7 @@
+ #include <sys/types.h>
+ #include <sys/ioctl.h>
+ #include <sys/stat.h>
++#include <sys/sysmacros.h>
+ #include <libgen.h>
+ #include <linux/hdreg.h>
+ #include <linux/types.h>
+-- 
+2.7.4
+
