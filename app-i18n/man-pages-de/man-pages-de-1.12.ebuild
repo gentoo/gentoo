@@ -2,9 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-inherit eutils autotools
+inherit autotools
 
 MY_P="${PN/-/}-${PV}"
 
@@ -21,10 +21,14 @@ RDEPEND="virtual/man"
 DEPEND="${RDEPEND}
 	app-text/po4a"
 
+PATCHES=(
+	"${FILESDIR}/${PN}-1.3-bzip2.patch"
+)
+
 S=${WORKDIR}/${MY_P}
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-1.3-bzip2.patch
+	default
 
 	# Use the same compression as every other manpage
 	local PORTAGE_COMPRESS_LOCAL=${PORTAGE_COMPRESS-bzip2}

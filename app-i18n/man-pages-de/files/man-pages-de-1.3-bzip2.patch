@@ -1,5 +1,5 @@
---- po/generate-manpage.sh.old	2012-11-29 13:26:30.000000000 +0100
-+++ po/generate-manpage.sh	2013-08-18 18:34:37.715547485 +0200
+--- a/po/generate-manpage.sh
++++ b/po/generate-manpage.sh
 @@ -38,6 +38,16 @@
  		original="$uncompressed_manpage"
  	fi

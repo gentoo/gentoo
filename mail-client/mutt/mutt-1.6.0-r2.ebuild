@@ -6,7 +6,7 @@ EAPI="6"
 
 inherit eutils flag-o-matic autotools
 
-PATCHSET_REV="-r5"
+PATCHSET_REV="-r6"
 
 DESCRIPTION="A small but very powerful text-based mail client"
 HOMEPAGE="http://www.mutt.org/"
