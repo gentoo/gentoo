@@ -4,21 +4,29 @@
 
 EAPI=6
 
-inherit golang-vcs-snapshot
+if [[ ${PV} == 9999 ]]; then
+	inherit golang-vcs
+else
+	inherit golang-vcs-snapshot
+	SRC_URI="https://github.com/barnybug/cli53/archive/${PV}.tar.gz -> ${P}.tar.gz"
+	KEYWORDS="~amd64"
+fi
 
 DESCRIPTION="Command line tool for Amazon Route 53"
 HOMEPAGE="https://github.com/barnybug/cli53"
-SRC_URI="https://github.com/barnybug/cli53/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
 
 EGO_PN="github.com/barnybug/cli53"
 S="${WORKDIR}/${P}/src/${EGO_PN}"
 
 src_compile() {
-	GOPATH="${WORKDIR}/${P}" emake version=${PV} build
+	if [[ ${PV} == 9999 ]]; then
+		GOPATH="${WORKDIR}/${P}" emake build
+	else
+		GOPATH="${WORKDIR}/${P}" emake build version=${PV}
+	fi
 }
 
 src_test() {
@@ -27,5 +35,5 @@ src_test() {
 
 src_install() {
 	dobin cli53
-	dodoc {CHANGELOG,README}.md
+	dodoc CHANGELOG.md README.md
 }
