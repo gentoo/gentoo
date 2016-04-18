@@ -27,7 +27,7 @@ PATCHES=( "${FILESDIR}"/${PN}-1.1.0-sphinx.patch )
 
 python_compile_all() {
 	if use doc ; then
-		if [[ ${EPYTHON} == python3* ]] ; then
+		if python_is_python3; then
 			2to3 -nw --no-diffs docs/conf.py || die
 		fi
 		cd docs
@@ -36,7 +36,7 @@ python_compile_all() {
 }
 
 python_compile() {
-	if [[ ${EPYTHON} == python2* ]] ; then
+	if ! python_is_python3; then
 		local CFLAGS="${CFLAGS} -fno-strict-aliasing"
 		export CFLAGS
 	fi
