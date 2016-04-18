@@ -8309,7 +8309,7 @@ dev-qt/qtquick1 5.5.1-r1: Legacy declarative UI module for the Qt5 framework (de
 dev-qt/qtquickcontrols 5.5.1-r1: Set of controls used in conjunction with Qt Quick to build complete interfaces
 dev-qt/qtscript 4.8.6-r2 4.8.7 5.5.1-r1: Application scripting library for the Qt5 framework (deprecated)
 dev-qt/qtsensors 5.5.1-r1: Hardware sensor access library for the Qt5 framework
-dev-qt/qtserialport 5.5.1-r1: Serial port abstraction library for the Qt5 framework
+dev-qt/qtserialport 5.5.1-r2: Serial port abstraction library for the Qt5 framework
 dev-qt/qtsingleapplication 2.6.1_p20150629: Qt library to start applications only once per user
 dev-qt/qtsql 4.8.6-r1 4.8.7-r1 5.5.1: SQL abstraction library for the Qt5 tooolkit
 dev-qt/qtsvg 4.8.6-r1 4.8.7 5.5.1-r1: SVG rendering library for the Qt5 framework
