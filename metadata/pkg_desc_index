@@ -8701,7 +8701,7 @@ dev-ruby/bundler-audit 0.4.0 0.5.0: Provides patch-level verification for Bundle
 dev-ruby/bunny 2.3.0 2.3.1: Another synchronous Ruby AMQP client
 dev-ruby/calendar_date_select 2.1.2: A popular and flexible JavaScript DatePicker for RubyOnRails
 dev-ruby/camping 2.1.532: A small web framework modeled after Ruby on Rails
-dev-ruby/capistrano 2.15.5-r1 2.15.5-r2 3.3.5 3.4.0: A distributed application deployment system
+dev-ruby/capistrano 2.15.5-r1 2.15.5-r2 3.3.5 3.4.0 3.4.1: A distributed application deployment system
 dev-ruby/capistrano-stats 1.1.1: Official metrics to help the development direction of Capistrano
 dev-ruby/capybara 1.1.4 2.6.2 2.7.0: Capybara aims to simplify the process of integration testing Rack applications
 dev-ruby/celluloid 0.16.0-r1 0.17.3: Provides a simple and natural way to build fault-tolerant concurrent programs
@@ -9028,7 +9028,7 @@ dev-ruby/rbtree 0.4.2: Ruby/RBTree module
 dev-ruby/rcairo 1.14.1 1.14.1-r1 1.14.3: Ruby bindings for cairo
 dev-ruby/rdiscount 1.6.8-r2 1.6.8-r3 2.1.8: Implementation of John Gruber's Markdown
 dev-ruby/rdoc 4.0.1-r2 4.2.0 4.2.1 4.2.2: An extended version of the RDoc library from Ruby 1.8
-dev-ruby/rdtool 0.6.38-r1 0.6.38-r2: A multipurpose documentation format for Ruby
+dev-ruby/rdtool 0.6.38-r2: A multipurpose documentation format for Ruby
 dev-ruby/recog 2.0.6-r1 2.0.14-r1: Pattern recognition for hosts, services, and content
 dev-ruby/redcarpet 3.2.3 3.3.2 3.3.3 3.3.4: A Ruby wrapper for Upskirt
 dev-ruby/redcloth 4.2.9-r3 4.2.9-r4: A module for using Textile in Ruby
