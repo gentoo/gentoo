@@ -9,7 +9,6 @@
     <maintainer>
       <email>sustrik@fastmq.com</email>
       <name>Martin Sustrik</name>
-      <description>iMatrix Corporation</description>
     </maintainer>
     <doc>http://zguide.zeromq.org/chapter:1</doc>
     <bugs-to>https://github.com/zeromq/zeromq2/issues</bugs-to>
