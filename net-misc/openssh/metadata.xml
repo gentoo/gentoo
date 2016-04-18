@@ -5,7 +5,7 @@
     <email>base-system@gentoo.org</email>
     <name>Gentoo Base System</name>
   </maintainer>
-  <maintainer restrict="net-misc/openssh[ldap]" type="person">
+  <maintainer type="person">
     <email>robbat2@gentoo.org</email>
     <description>LPK issues. Only assign if it's a direct LPK issue. Do not directly assign for anything else.</description>
   </maintainer>
