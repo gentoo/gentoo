@@ -23,8 +23,8 @@
 		Enable support for <pkg>sys-fs/zfs</pkg>
 	</flag>
 	<flag name="multislot">
-		Allow concurrent installation of <pkg>sys-boot/grub:0</pkg> and
-		<pkg>sys-boot/grub:2</pkg> by renaming all programs.
+		Allow concurrent installation of <pkg>sys-boot/grub</pkg> SLOT 0 and
+		<pkg>sys-boot/grub</pkg> SLOT 2 by renaming all programs.
 	</flag>
 	<flag name="themes">Build and install GRUB themes (starfield)</flag>
 	<flag name="truetype">Build and install grub-mkfont conversion utility</flag>
