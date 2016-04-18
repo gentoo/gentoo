@@ -17,6 +17,10 @@ IUSE=""
 DEPEND="sys-libs/zlib"
 RDEPEND="${DEPEND}"
 
+src_prepare() {
+	sed -i '1i#include <sys/sysmacros.h>' mkcramfs.c || die #580196
+}
+
 src_compile() {
 	emake CFLAGS="${CFLAGS}" CC="$(tc-getCC)"
 }
