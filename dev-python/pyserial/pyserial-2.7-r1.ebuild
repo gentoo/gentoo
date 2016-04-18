@@ -18,14 +18,11 @@ IUSE="doc examples"
 
 DEPEND="
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )"
-RDEPEND=""
-PATCHES=( "${FILESDIR}"/mapping.patch )
-DOCS=( CHANGES.txt README.txt )
 
-python_prepare_all() {
-	# Usual avoid d'loading un-needed objects.inv file
-	distutils-r1_python_prepare_all
-}
+# Usual avoid d'loading un-needed objects.inv file
+PATCHES=( "${FILESDIR}"/mapping.patch )
+
+DOCS=( CHANGES.txt README.txt )
 
 python_compile_all() {
 	use doc && emake -C documentation html
