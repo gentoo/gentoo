@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="person">
-    <email>hasufell@gentoo.org</email>
-    <description>Libressl issues. Only assign if it's a direct Libressl issue. Do not directly assign for anything else.</description>
-  </maintainer>
-<maintainer type="project">
+  <maintainer type="project">
     <email>mysql-bugs@gentoo.org</email>
     <name>MySQL</name>
+  </maintainer>
+  <maintainer type="person">
+    <email>hasufell@gentoo.org</email>
+    <description>Libressl issues. Only assign if it's a direct Libressl issue. Do not directly assign for anything else.</description>
   </maintainer>
 <use>
   <flag name="embedded">Build embedded server (libmysqld)</flag>
