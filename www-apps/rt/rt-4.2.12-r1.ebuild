@@ -97,7 +97,7 @@ DEPEND="
 	dev-perl/TermReadKey
 	dev-perl/Text-Autoformat
 	dev-perl/Text-Password-Pronounceable
-	dev-perl/Time-modules
+	dev-perl/Time-ParseDate
 	dev-perl/TimeDate
 	dev-perl/UNIVERSAL-require
 	dev-perl/libwww-perl
