@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 PYTHON_COMPAT=( python2_7 python3_{3,4,5} )
 PYTHON_REQ_USE="ncurses"
@@ -49,7 +49,7 @@ python_test() {
 }
 
 python_install_all() {
-	use examples && local EXAMPLES=( examples/. )
+	use examples && dodoc -r examples
 	use doc && local HTML_DOCS=( docs/_build/html/. )
 
 	distutils-r1_python_install_all
