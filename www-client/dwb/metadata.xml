@@ -3,8 +3,8 @@
 <pkgmetadata>
 	<!-- maintainer-needed -->
 	<use>
-		<flag name="gtk3">Link against <pkg>x11-libs/gtk+:3</pkg> instead of
-			<pkg>x11-libs/gtk+:2</pkg></flag>
+		<flag name="gtk3">Link against <pkg>x11-libs/gtk</pkg> SLOT 3 instead of
+			<pkg>x11-libs/gtk</pkg> SLOT 2.</flag>
 		<flag name="libsecret">Enable libsecret support to store login credentials</flag>
 	</use>
 </pkgmetadata>

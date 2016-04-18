@@ -27,7 +27,7 @@
 		<flag name="hfs">Include HFS support (<pkg>sys-fs/hfsutils</pkg>)</flag>
 		<flag name="jfs">Include JFS support (<pkg>sys-fs/jfsutils</pkg>)</flag>
 		<flag name="mdadm">Support for Linux software RAID.</flag>
-		<flag name="ntfs">Include NTFS support (<pkg>sys-fs/ntfs3g[ntfsprogs]</pkg>)</flag>
+		<flag name="ntfs">Include NTFS support (<pkg>sys-fs/ntfs3g</pkg>)</flag>
 		<flag name="reiser4">Include ReiserFS4 support
 		(<pkg>sys-fs/reiser4progs</pkg>)</flag>
 		<flag name="reiserfs">Include ReiserFS support

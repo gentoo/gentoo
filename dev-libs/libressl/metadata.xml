@@ -19,8 +19,10 @@
 	</use>
 	<upstream>
 		<changelog>http://www.libressl.org/releases.html</changelog>
-		<bugs-to>mailto:libressl@openbsd.org</bugs-to>
-		<bugs-to>https://github.com/libressl-portable/portable/issues</bugs-to>
+		<bugs-to>
+			https://github.com/libressl-portable/portable/issues
+			mailto:libressl@openbsd.org
+		</bugs-to>
 		<remote-id type="github">libressl-portable/portable</remote-id>
 	</upstream>
 	<slots>

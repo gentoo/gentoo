@@ -41,7 +41,7 @@
 		</flag>
 		<flag name="crypt">
 			Support core-&gt;network per-channel and per-query blowfish
-			encryption via <pkg>app-crypt/qca:2</pkg>.
+			encryption via <pkg>app-crypt/qca</pkg> SLOT 2.
 		</flag>
 	</use>
 </pkgmetadata>
