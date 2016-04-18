@@ -254,7 +254,7 @@ pkg_setup() {
 }
 
 src_prepare() {
-	local version subversion
+	local version subversion extraversion
 
 	# uclibc-ng tries to create a two sym link with ld.so,
 	# ld-uClibc.so.{0,MAJOR_VERSION} -> ld-uClibc-<version>.so
@@ -269,11 +269,13 @@ src_prepare() {
 	version=( $(get_version_components) )
 	if [[ -z ${version[1]} ]]; then
 		subversion=0
+		extraversion=0
 	else
+		subversion=${version[1]}
 		if [[ -z ${version[2]} ]]; then
-			subversion=${version[1]}
+			extraversion=0
 		else
-			subversion=${version[1]}.${version[2]}
+			extraversion=.${version[2]}
 		fi
 	fi
 
@@ -281,6 +283,7 @@ src_prepare() {
 		-e "/^MAJOR_VERSION/s|:=.*|:= 0|" \
 		-e "/^MINOR_VERSION/s|:=.*|:= ${version[0]}|" \
 		-e "/^SUBLEVEL/s|:=.*|:= ${subversion}|" \
+		-e "/^EXTRAVERSION/s|:=.*|:= ${extraversion}|" \
 		Rules.mak || die
 
 	eapply_user
