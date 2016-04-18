@@ -33,8 +33,8 @@
 	<use>
 		<flag name="init">Adds the capability to place the firewall in a safe state prior to bringing up the network interfaces</flag>
 		<flag name="ipv4">Installs everything needed to create a full IPv4 firewall</flag>
-		<flag name="ipv6">Adds the capability to create a full IPv6 firewall (requires <pkg>net-firewall/shorewall[ipv4]</pkg>)</flag>
-		<flag name="lite4">Installs everything needed to just *run* an IPv4 compiled firewall script created with <pkg>net-firewall/shorewall[ipv4]</pkg></flag>
-		<flag name="lite6">Installs everything needed to just *run* an IPv6 compiled firewall script created with <pkg>net-firewall/shorewall[ipv6]</pkg></flag>
+		<flag name="ipv6">Adds the capability to create a full IPv6 firewall (requires <pkg>net-firewall/shorewall</pkg> ipv4 USE flag)</flag>
+		<flag name="lite4">Installs everything needed to just *run* an IPv4 compiled firewall script created with <pkg>net-firewall/shorewall</pkg> ipv4 USE flag</flag>
+		<flag name="lite6">Installs everything needed to just *run* an IPv6 compiled firewall script created with <pkg>net-firewall/shorewall</pkg> ipv6 USE flag</flag>
 	</use>
 </pkgmetadata>

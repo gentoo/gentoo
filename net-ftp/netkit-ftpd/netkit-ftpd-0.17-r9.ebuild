@@ -1,6 +1,8 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
+
+EAPI=6
 
 inherit eutils ssl-cert toolchain-funcs
 
@@ -15,17 +17,23 @@ SLOT="0"
 KEYWORDS="alpha amd64 arm ia64 ppc ~ppc64 s390 sh sparc x86"
 IUSE="ssl"
 
-DEPEND="ssl? ( dev-libs/openssl )"
+DEPEND="ssl? ( dev-libs/openssl:0= )"
 RDEPEND="${DEPEND}
 	virtual/inetd
 	!www-servers/publicfile"
 
 S=${WORKDIR}/${MY_P}
 
-src_unpack() {
-	unpack ${MY_P}.tar.gz
-	cd "${S}"
-	use ssl && epatch "${DISTDIR}"/${MY_P}-ssl.patch "${FILESDIR}"/${P}-cleanup-ssl.patch
+src_prepare() {
+	default
+
+	cd "${S}" || die
+	if use ssl; then
+		epatch "${DISTDIR}"/${MY_P}-ssl.patch
+		epatch "${FILESDIR}"/${P}-cleanup-ssl.patch
+		epatch "${FILESDIR}"/${P}-fclose-CVE-2007-6263.patch #199206
+	fi
+
 	epatch "${FILESDIR}"/${P}-cleanup.patch
 	epatch "${FILESDIR}"/${P}-build.patch
 	epatch "${FILESDIR}"/${P}-shadowfix.patch
@@ -33,17 +41,19 @@ src_unpack() {
 	epatch "${FILESDIR}"/${P}-setguid.patch
 	epatch "${FILESDIR}"/${P}-cross.patch
 	epatch "${FILESDIR}"/${P}-CVE-2008-4247.patch #239047
-	use ssl && epatch "${FILESDIR}"/${P}-fclose-CVE-2007-6263.patch #199206
+}
+
+src_configure() {
+	tc-export CC
+	./configure --prefix=/usr || die
 }
 
 src_compile() {
-	tc-export CC
-	./configure --prefix=/usr || die "configure failed"
-	emake || die "parallel make failed"
+	emake
 }
 
 src_install() {
-	dobin ftpd/ftpd || die
+	dobin ftpd/ftpd
 	doman ftpd/ftpd.8
 	dodoc README ChangeLog
 	insinto /etc/xinetd.d
@@ -51,7 +61,7 @@ src_install() {
 }
 
 pkg_postinst() {
-	if use ssl ; then
+	if use ssl; then
 		install_cert /etc/ssl/certs/ftpd
 		elog "In order to start the server with SSL support"
 		elog "You need a certificate /etc/ssl/certs/ftpd.pem."
