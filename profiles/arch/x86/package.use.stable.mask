@@ -31,12 +31,6 @@ dev-python/matplotlib qt5
 # mayavi is broken, bug #500104
 dev-python/apptools test
 
-# Michał Górny <mgorny@gentoo.org> (21 Feb 2015)
-# The external QCA plugins are not stable on this arch. Since
-# this is only a temporary measure and nothing depends on them,
-# just masking them until the new version goes stable.
-<app-crypt/qca-2.1 pkcs11
-
 # Tim Harder <radhermit@gentoo.org> (11 Oct 2014)
 # Masked since skype isn't stable
 net-im/bitlbee skype
