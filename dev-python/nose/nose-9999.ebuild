@@ -83,7 +83,7 @@ python_install() {
 }
 
 python_install_all() {
-	use examples && local EXAMPLES=( examples/. )
+	use examples && dodoc -r examples
 	use doc && HTML_DOCS=( doc/.build/html/. )
 	distutils-r1_python_install_all
 }
