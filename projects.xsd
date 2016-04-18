@@ -85,7 +85,7 @@
 	<xs:simpleType name='urlType'>
 		<xs:restriction base='xs:token'>
 			<!-- TODO: something better? -->
-			<xs:pattern value="(mailto:[^@]+@[^.]+\..+|https?://.+)"/>
+			<xs:pattern value="https?://\S+"/>
 		</xs:restriction>
 	</xs:simpleType>
 
