@@ -39,7 +39,7 @@ CDEPEND="
 	dev-libs/boost:=
 	dev-libs/qtkeychain[qt5]
 	dev-libs/quazip[qt5]
-	>=media-libs/libechonest-2.3.0:=[qt5]
+	>=media-libs/libechonest-2.3.1:=[qt5]
 	media-libs/liblastfm[qt5]
 	media-libs/phonon[qt5]
 	>=media-libs/taglib-1.8.0
