@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -37,7 +37,8 @@ python_compile_all() {
 
 python_install_all() {
 	use doc && local HTML_DOCS=( docs/build/html/* )
-	use examples && local EXAMPLES=( examples/. docs/mibs )
+	docinto examples
+	use examples && dodoc -r examples/* docs/mibs
 
 	distutils-r1_python_install_all
 }
