@@ -3311,7 +3311,7 @@ kde-base/kdeplasma-addons:json - Enable JSON support via dev-libs/qjson
 kde-base/kdeplasma-addons:kdepim - KDE PIM integration via kde-apps/kdepimlibs
 kde-base/kdeplasma-addons:oauth - Enable OAuth support via dev-libs/qoauth
 kde-base/kdeplasma-addons:qalculate - Enable Qalculate runner using sci-libs/libqalculate
-kde-base/kdeplasma-addons:qwt - Enable applets that use x11-libs/qwt:5
+kde-base/kdeplasma-addons:qwt - Enable applets that use x11-libs/qwt SLOT 5
 kde-base/kdeplasma-addons:scim - Enable applets that use app-i18n/scim
 kde-base/kdm:consolekit - Enables support for authorization using consolekit
 kde-base/kfilemetadata:epub - Adds support for reading EPUB ebook metadata
