@@ -232,10 +232,6 @@ media-libs/openimageio tbb
 # to do so.
 dev-ruby/rack-test test
 
-# Michael Weber <xmw@gentoo.org> (22 Aug 2012)
-# missing stable on >=www-client/firefox-3
-x11-themes/gtk-engines-qtcurve mozilla
-
 # Anthony G. Basile <blueness@gentoo.org> (21 Aug 2012)
 # Does not work on ppc/ppc64
 net-misc/tor tor-hardening
