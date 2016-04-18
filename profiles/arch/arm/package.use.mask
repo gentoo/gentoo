@@ -90,12 +90,6 @@ media-libs/freeimage tiff
 # Unkeyworded deps, bug #540540
 sys-auth/sssd augeas
 
-# Michał Górny <mgorny@gentoo.org> (21 Feb 2015)
-# The external QCA plugins are not keyworded on this arch. Since
-# this is only a temporary measure and nothing depends on them,
-# just masking them until the new version goes stable.
-<app-crypt/qca-2.1 logger pkcs11 sasl
-
 # Jason A. Donenfeld <zx2c4@gentoo.org> (09 Feb 2015)
 # Google does not distribute the widevine plugin for ARM. It must be extracted from a Chromebook,
 # and this kind of reverse engineering work likely violates many agreements, so we mask the flag.

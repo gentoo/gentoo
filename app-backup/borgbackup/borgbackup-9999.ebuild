@@ -23,7 +23,9 @@ LICENSE="BSD"
 SLOT="0"
 IUSE="libressl +fuse"
 
+# Unformately we have a file conflict with app-office/borg, bug #580402
 RDEPEND="
+	!!app-office/borg
 	app-arch/lz4
 	dev-python/msgpack[${PYTHON_USEDEP}]
 	!libressl? ( dev-libs/openssl:0= )
