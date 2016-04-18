@@ -431,7 +431,7 @@ perl-module_src_install() {
 
 	if [[ ${EAPI:-0} != 5 ]] ; then
 		if in_iuse examples && use examples ; then
-                        [[ -z "${DIST_EXAMPLES}" ]] || perl_doexamples ${DIST_EXAMPLES}
+                        [[ ${#DIST_EXAMPLES[@]} -eq 0 ]] || perl_doexamples "${DIST_EXAMPLES[@]}"
 		fi
 	fi
 
