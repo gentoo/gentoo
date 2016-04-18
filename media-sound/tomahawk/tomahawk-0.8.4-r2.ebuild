@@ -48,7 +48,7 @@ DEPEND="
 		dev-qt/qtsvg:4
 		dev-qt/qtwebkit:4
 		media-libs/phonon[qt4]
-		>=media-libs/libechonest-2.3.0:=[qt4]
+		>=media-libs/libechonest-2.3.1:=[qt4]
 		media-libs/liblastfm[qt4]
 		telepathy? ( net-libs/telepathy-qt[qt4] )
 	)
@@ -63,7 +63,7 @@ DEPEND="
 		dev-qt/qtwidgets:5
 		kde-frameworks/attica:5
 		media-libs/phonon[qt5]
-		>=media-libs/libechonest-2.3.0:=[qt5]
+		>=media-libs/libechonest-2.3.1:=[qt5]
 		media-libs/liblastfm[qt5]
 		telepathy? ( net-libs/telepathy-qt[qt5] )
 	)
@@ -78,6 +78,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-qt55.patch"
 	"${FILESDIR}/${P}-taglib-1.10.patch"
 	"${FILESDIR}/${P}-qca-qt5-linking.patch"
+	"${FILESDIR}/${P}-echonest231.patch"
 )
 
 src_configure() {
