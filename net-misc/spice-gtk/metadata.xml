@@ -12,8 +12,8 @@
   <use>
     <flag name="dbus">Support for desktop integration such as
 			automounting and other APIs exposed by your DE via D-Bus</flag>
-    <flag name="gtk3">Link against <pkg>x11-libs/gtk+:3</pkg> instead of
-		<pkg>x11-libs/gtk+:2</pkg></flag>
+    <flag name="gtk3">Link against <pkg>x11-libs/gtk</pkg> SLOT 3 instead of
+		<pkg>x11-libs/gtk</pkg> SLOT 2</flag>
     <flag name="lz4">Enable support for LZ4 compression using <pkg>app-arch/lz4</pkg></flag>
     <flag name="policykit">Enable <pkg>sys-auth/polkit</pkg> support for the
 			usbredir acl helper</flag>
