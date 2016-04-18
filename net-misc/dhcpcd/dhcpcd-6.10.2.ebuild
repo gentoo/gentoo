@@ -27,6 +27,10 @@ COMMON_DEPEND="udev? ( virtual/udev )"
 DEPEND="${COMMON_DEPEND}"
 RDEPEND="${COMMON_DEPEND}"
 
+PATCHES=(
+"${FILESDIR}"/${P}-fix-configure.patch
+)
+
 if [[ ${PV} == "9999" ]]; then
 	DEPEND+=" dev-vcs/fossil"
 
