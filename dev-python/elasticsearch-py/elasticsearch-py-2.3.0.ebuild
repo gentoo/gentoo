@@ -84,7 +84,7 @@ python_compile_all() {
 
 python_install_all() {
 	use doc && HTML_DOCS=( docs/_build/html/. )
-	use examples && local EXAMPLES=( example/. )
+	use examples && dodoc -r example
 	doman docs/_build/man/*
 	distutils-r1_python_install_all
 }
