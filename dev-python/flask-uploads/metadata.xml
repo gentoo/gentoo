@@ -7,5 +7,7 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="pypi">Flask-Uploads</remote-id>
+		<remote-id type="github">maxcountryman/flask-uploads</remote-id>
+		<bugs-to>https://github.com/maxcountryman/flask-uploads/issues</bugs-to>
 	</upstream>
 </pkgmetadata>
