@@ -4,7 +4,7 @@
 
 EAPI="4"
 
-inherit toolchain-funcs flag-o-matic
+inherit toolchain-funcs flag-o-matic eutils
 
 DESCRIPTION="Utility to change hard drive performance parameters"
 HOMEPAGE="http://sourceforge.net/projects/hdparm/"
@@ -16,6 +16,7 @@ KEYWORDS="~alpha amd64 arm ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc 
 IUSE="static"
 
 src_prepare() {
+	epatch "${FILESDIR}"/${P}-sysmacros.patch #580052
 	use static && append-ldflags -static
 	sed -i \
 		-e "/^CFLAGS/ s:-O2:${CFLAGS}:" \
