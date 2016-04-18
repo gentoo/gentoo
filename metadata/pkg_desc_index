@@ -5157,11 +5157,11 @@ dev-perl/Algorithm-Munkres 0.80.0-r1: Munkres solution to classical Assignment p
 dev-perl/Alien-SDL 1.446.0: building, finding and using SDL binaries
 dev-perl/Alien-wxWidgets 0.670.0-r1: Building, finding and using wxWidgets binaries
 dev-perl/Any-Moose 0.210.0 0.260.0 0.260.0-r1: Use Moose or Mouse modules (DEPRECATED)
-dev-perl/AnyEvent 7.40.0-r1 7.80.0 7.110.0: Provides a uniform interface to various event loops
+dev-perl/AnyEvent 7.80.0 7.110.0 7.120.0: Provides a uniform interface to various event loops
 dev-perl/AnyEvent-CacheDNS 0.80.0: Simple DNS resolver with caching
 dev-perl/AnyEvent-HTTP 2.220.0: Simple but non-blocking HTTP/HTTPS client
 dev-perl/AnyEvent-I3 0.150.0 0.160.0: Communicate with the i3 window manager
-dev-perl/Apache-AuthCookie 3.230.0: Perl Authentication and Authorization via cookies
+dev-perl/Apache-AuthCookie 3.230.0 3.240.0: Perl Authentication and Authorization via cookies
 dev-perl/Apache-CGI-Builder 1.300.0-r1: CGI::Builder and Apache/mod_perl (1 and 2) integration
 dev-perl/Apache-DBI 1.120.0-r1: Apache::DBI module for perl
 dev-perl/Apache-LogFormat-Compiler 0.320.0: Compile an Apache log format string to perl-code
@@ -5173,7 +5173,7 @@ dev-perl/Apache-Test 1.380.0-r1 1.390.0: Test.pm wrapper with helpers for testin
 dev-perl/Apache2-AuthenNTLM 0.20.0-r1: Apache2::AuthenNTLM - Perform Microsoft NTLM and Basic User Authentication
 dev-perl/App-CLI 0.313.0-r1: Dispatcher module for command line interface programs
 dev-perl/App-Nopaste 1.4.0: Easy access to any pastebin
-dev-perl/App-cpanminus 1.703.900: Get, unpack, build and install modules from CPAN
+dev-perl/App-cpanminus 1.703.900 1.704.0: Get, unpack, build and install modules from CPAN
 dev-perl/App-perlbrew 0.730.0 0.740.0: Manage perl installations in your $HOME
 dev-perl/AppConfig 1.710.0: Perl5 module for reading configuration files and parsing command line arguments
 dev-perl/Archive-Any 0.94.100: Single interface to deal with file archives
@@ -6032,12 +6032,12 @@ dev-perl/PGPLOT 2.210.0: allow subroutines in the PGPLOT graphics library to be 
 dev-perl/PHP-Serialization 0.340.0-r1: Convert PHP's serialize() into the equivalent Perl structure, and vice versa
 dev-perl/POE 1.356-r1 1.367: A framework for creating multitasking programs in Perl
 dev-perl/POE-API-Peek 2.200.0-r1: Peek into the internals of a running POE env
-dev-perl/POE-Component-Client-DNS 1.53.0 1.54.0: Non-blocking, parallel DNS client
+dev-perl/POE-Component-Client-DNS 1.54.0: Non-blocking, parallel DNS client
 dev-perl/POE-Component-Client-Keepalive 0.272.0: Manage connections, with keep-alive
-dev-perl/POE-Component-IKC 0.230.500 0.240.200: Inter-Kernel Communication for POE
+dev-perl/POE-Component-IKC 0.240.200: Inter-Kernel Communication for POE
 dev-perl/POE-Component-PreforkDispatch 0.101.0-r1: Preforking task dispatcher
 dev-perl/POE-Component-Resolver 0.921.0: A non-blocking getaddrinfo() resolver
-dev-perl/POE-Test-Loops 1.353.0-r1 1.360: Reusable tests for POE::Loop authors
+dev-perl/POE-Test-Loops 1.353.0-r1 1.360.0: Reusable tests for POE::Loop authors
 dev-perl/POE-XS-Loop-EPoll 1.3.0: An XS implementation of POE::Loop, using Linux epoll(2)
 dev-perl/POE-XS-Loop-Poll 1.0.0-r1: An XS implementation of POE::Loop, using poll(2)
 dev-perl/POE-XS-Queue-Array 0.6.0-r1: An XS implementation of POE::Queue::Array
@@ -6099,7 +6099,7 @@ dev-perl/Pod-Abstract 0.200.0-r1: Abstract document tree for Perl POD documents
 dev-perl/Pod-Coverage 0.230.0-r1: Checks if the documentation of a module is comprehensive
 dev-perl/Pod-LaTeX 0.610.0: Convert Pod data to formatted LaTeX
 dev-perl/Pod-Markdown 3.5.0: Convert POD to Markdown
-dev-perl/Pod-POM 0.280.0-r1 0.290.0 2.10.0: POD Object Model
+dev-perl/Pod-POM 2.10.0: POD Object Model
 dev-perl/Pod-Readme 0.110.0-r1 1.1.2: Intelligently generate a README file from POD
 dev-perl/Pod-Simple-LaTeX 0.60.0: format Pod as LaTeX
 dev-perl/Pod-Spell 1.10.0-r1 1.190.0: A formatter for spellchecking Pod
