@@ -1668,7 +1668,7 @@ app-misc/acdctl 1.1: Apple Cinema Display Control
 app-misc/activylircd 0.4: ACTIVYLIRCD lirc daemon for activy remote control
 app-misc/actkbd 0.2.8-r1: A keyboard shortcut daemon
 app-misc/aldo 0.7.7: A morse tutor
-app-misc/anki 2.0.31 2.0.33 2.0.34 2.0.35: A spaced-repetition memory training program (flash cards)
+app-misc/anki 2.0.31 2.0.33 2.0.34 2.0.35 2.0.36: A spaced-repetition memory training program (flash cards)
 app-misc/asciinema 0.9.8: Command line recorder for asciinema.org service
 app-misc/astrolog 5.40-r1 5.40-r2: A many featured astrology chart calculation program
 app-misc/astrolog-ephemeris 5.40: ephemeris files for optional extended accuracy of astrolog's calculations
