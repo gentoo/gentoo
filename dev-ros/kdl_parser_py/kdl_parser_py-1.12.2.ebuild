@@ -4,20 +4,19 @@
 
 EAPI=5
 ROS_REPO_URI="https://github.com/ros/robot_model"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm"
 ROS_SUBDIR=${PN}
 PYTHON_COMPAT=( python2_7 )
 
 inherit ros-catkin
 
-DESCRIPTION="Tool for setting and publishing joint state values for a given URDF"
+DESCRIPTION="Python tools to construct a KDL tree from an XML robot representation in URDF"
 LICENSE="BSD"
 SLOT="0"
 IUSE=""
 
-DEPEND=""
-RDEPEND="${DEPEND}
-	dev-ros/rospy[${PYTHON_USEDEP}]
-	dev-ros/python_qt_binding[${PYTHON_USEDEP}]
-	dev-ros/sensor_msgs[${CATKIN_MESSAGES_PYTHON_USEDEP}]
+RDEPEND="
+	dev-ros/urdf[${PYTHON_USEDEP}]
 "
+DEPEND="${RDEPEND}
+	test? ( dev-ros/rostest[${PYTHON_USEDEP}] )"

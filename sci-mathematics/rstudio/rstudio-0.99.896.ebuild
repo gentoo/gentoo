@@ -182,8 +182,8 @@ src_prepare() {
 		-i "${S}"/src/cpp/desktop/CMakeLists.txt \
 		|| die
 
-	# The git commit for tag v0.99.893
-	sed -e 's@git ARGS rev-parse HEAD@echo ARGS 7510856081e5b1b577bcc230fc2c8ac62eafa62e@'\
+	# The git commit for tag v0.99.896
+	sed -e 's@git ARGS rev-parse HEAD@echo ARGS 5dbc604635bb296bc41fb7fa21e56f7195fbe1ca@'\
 		-i "${S}"/CMakeLists.txt \
 		"${S}"/CMakeGlobals.txt \
 		|| die
