@@ -14,7 +14,7 @@ HOMEPAGE='http://www.giuspen.com/cherrytree'
 LICENSE='GPL-3'
 
 SLOT='0'
-SRC_URI="https://github.com/giuspen/cherrytree/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/giuspen/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 KEYWORDS='~amd64 ~x86'
 IUSE='nls'
@@ -48,7 +48,7 @@ python_prepare_all() {
 	distutils-r1_python_prepare_all
 }
 
-src_configure() {
+python_configure_all() {
 	use nls || mydistutilsargs+=( '--without-gettext' )
 }
 
