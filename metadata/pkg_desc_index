@@ -1342,12 +1342,12 @@ app-emulation/vice 2.4.22: The Versatile Commodore 8-bit Emulator
 app-emulation/virt-manager 1.3.2 9999: A graphical tool for administering virtual machines
 app-emulation/virt-viewer 3.1: Graphical console client for connecting to virtual machines
 app-emulation/virt-what 1.12: Detects if the current machine is running in a virtual machine
-app-emulation/virtualbox 4.3.32 4.3.34 4.3.36 5.0.14 5.0.16 5.0.16-r1: Family of powerful x86 virtualization products for enterprise and home use
-app-emulation/virtualbox-additions 4.3.32 4.3.34 4.3.36 5.0.14 5.0.16: CD image containing guest additions for VirtualBox
-app-emulation/virtualbox-bin 4.3.32.103443 4.3.34.104062 4.3.36.105129 5.0.14.105127 5.0.16.105871: Family of powerful x86 virtualization products for enterprise as well as home use
-app-emulation/virtualbox-extpack-oracle 4.3.32.103443 4.3.34.104062 4.3.36.105129 5.0.14.105127 5.0.16.105871: PUEL extensions for VirtualBox
-app-emulation/virtualbox-guest-additions 4.3.32 4.3.34 4.3.36 5.0.14 5.0.16: VirtualBox kernel modules and user-space tools for Gentoo guests
-app-emulation/virtualbox-modules 4.3.32 4.3.34 4.3.36 5.0.14 5.0.16: Kernel Modules for Virtualbox
+app-emulation/virtualbox 4.3.32 4.3.34 4.3.36 5.0.16-r1 5.0.18: Family of powerful x86 virtualization products for enterprise and home use
+app-emulation/virtualbox-additions 4.3.32 4.3.34 4.3.36 5.0.16 5.0.18: CD image containing guest additions for VirtualBox
+app-emulation/virtualbox-bin 4.3.32.103443 4.3.34.104062 4.3.36.105129 5.0.16.105871 5.0.18.106667: Family of powerful x86 virtualization products for enterprise as well as home use
+app-emulation/virtualbox-extpack-oracle 4.3.32.103443 4.3.34.104062 4.3.36.105129 5.0.16.105871 5.0.18.106667: PUEL extensions for VirtualBox
+app-emulation/virtualbox-guest-additions 4.3.32 4.3.34 4.3.36 5.0.16 5.0.18: VirtualBox kernel modules and user-space tools for Gentoo guests
+app-emulation/virtualbox-modules 4.3.32 4.3.34 4.3.36 5.0.16 5.0.18: Kernel Modules for Virtualbox
 app-emulation/vmips 1.3 1.3.1: A virtual machine simulator based on a MIPS R3000 processor
 app-emulation/vmips-cross-bin 1.0: vmips cross-development tools
 app-emulation/vmware-modules 271.3-r1 279.6 304.2 304.3-r1 308.1.0: VMware kernel modules
@@ -4625,7 +4625,7 @@ dev-libs/libezV24 0.1.1: library that provides an easy API to Linux serial ports
 dev-libs/libf2c 20110801-r4 20130927: Library that converts FORTRAN to C source
 dev-libs/libfastjson 0.99.2: Fork of the json-c library, which is optimized for liblognorm processing
 dev-libs/libffi 3.0.13-r1 3.1-r3 3.2 3.2.1: a portable, high level programming interface to various calling conventions
-dev-libs/libfilezilla 0.3.1 0.4.0.1: C++ library offering some basic functionality for platform-independent programs
+dev-libs/libfilezilla 0.4.0.1 0.5.0: C++ library offering some basic functionality for platform-independent programs
 dev-libs/libflatarray 0.1.1: Struct of arrays library with object oriented interface for C++
 dev-libs/libg15 1.2.7-r1 9999: The libg15 library gives low-level access to the Logitech G15 keyboard
 dev-libs/libg15render 1.2-r2 9999: Small library for display text and graphics on a Logitech G15 keyboard
@@ -17968,7 +17968,7 @@ x11-drivers/xf86-video-trident 1.3.7: Trident video driver
 x11-drivers/xf86-video-tseng 1.2.5-r1: Tseng Labs video driver
 x11-drivers/xf86-video-v4l 0.2.0: video4linux driver
 x11-drivers/xf86-video-vesa 2.3.3 2.3.4: Generic VESA video driver
-x11-drivers/xf86-video-virtualbox 4.3.32 4.3.34 4.3.36 5.0.14 5.0.16: VirtualBox video driver
+x11-drivers/xf86-video-virtualbox 4.3.32 4.3.34 4.3.36 5.0.16 5.0.18: VirtualBox video driver
 x11-drivers/xf86-video-vmware 13.0.1-r1 13.0.2 13.1.0: VMware SVGA video driver
 x11-drivers/xf86-video-voodoo 1.2.5: Voodoo video driver
 x11-libs/agg 2.5-r2: Anti-Grain Geometry - A High Quality Rendering Engine for C++
