@@ -67,10 +67,11 @@ RDEPEND="!!app-emulation/virtualbox
 		dev-libs/glib
 		chm? ( dev-libs/expat )
 	)
-	x11-libs/libXt
 	dev-libs/libxml2
+	sys-fs/lvm2
 	x11-libs/libXau
 	x11-libs/libX11
+	x11-libs/libXt
 	x11-libs/libXmu
 	x11-libs/libSM
 	x11-libs/libICE
@@ -248,8 +249,8 @@ src_install() {
 		fperms 0750 /opt/VirtualBox/kchmviewer
 	fi
 
-	# This ebuild / package supports only py2.7.  Where py3 comes is unknown.
-	# The compile phase makes VBoxPython2_[4-7].so.
+	# This ebuild / package supports only py2.7.  When py3 comes is unknown.
+	# The compile phase makes VBoxPython2_7.so.
 	# py3 support would presumably require a binary pre-compiled by py3.
 	use python && doins VBoxPython.so VBoxPython2_7.so
 

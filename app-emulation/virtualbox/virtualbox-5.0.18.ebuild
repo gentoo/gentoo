@@ -20,7 +20,7 @@ HOMEPAGE="http://www.virtualbox.org/"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="alsa doc headless java libressl pam pulseaudio +opengl python +qt4 +sdk +udev vboxwebsrv vnc"
+IUSE="alsa doc headless java libressl lvm pam pulseaudio +opengl python +qt4 +sdk +udev vboxwebsrv vnc"
 
 RDEPEND="!app-emulation/virtualbox-bin
 	~app-emulation/virtualbox-modules-${PV}
@@ -49,6 +49,7 @@ RDEPEND="!app-emulation/virtualbox-bin
 	java? ( >=virtual/jre-1.6:= )
 	libressl? ( dev-libs/libressl:= )
 	!libressl? ( dev-libs/openssl:0= )
+	lvm? ( sys-fs/lvm2 )
 	udev? ( >=virtual/udev-171 )
 	vnc? ( >=net-libs/libvncserver-0.9.9 )"
 DEPEND="${RDEPEND}
@@ -183,6 +184,7 @@ src_configure() {
 	use alsa       || myconf+=( --disable-alsa )
 	use doc        || myconf+=( --disable-docs )
 	use java       || myconf+=( --disable-java )
+	use lvm        || myconf+=( --disable-devmapper )
 	use opengl     || myconf+=( --disable-opengl )
 	use pulseaudio || myconf+=( --disable-pulse )
 	use python     || myconf+=( --disable-python )
@@ -200,9 +202,8 @@ src_configure() {
 	./configure \
 		--with-gcc="$(tc-getCC)" \
 		--with-g++="$(tc-getCXX)" \
-		--disable-kmods \
 		--disable-dbus \
-		--disable-devmapper \
+		--disable-kmods \
 		${myconf[@]} \
 		|| die "configure failed"
 }
@@ -215,7 +216,7 @@ src_compile() {
 	# strip-flags
 
 	MAKEJOBS=$(echo ${MAKEOPTS} | egrep -o '(\-j|\-\-jobs)(=?|[[:space:]]*)[[:digit:]]+')
-	MAKELOAD=$(echo ${MAKEOPTS} | egrep -o '(\-l|\-\-load-average)(=?|[[:space:]]*)[[:digit:]]+')
+	MAKELOAD=$(echo ${MAKEOPTS} | egrep -o '(\-l|\-\-load-average)(=?|[[:space:]]*)[[:digit:]]+') #'
 	MAKEOPTS="${MAKEJOBS} ${MAKELOAD}"
 	MAKE="kmk" emake \
 		VBOX_BUILD_PUBLISHER=_Gentoo \
@@ -231,7 +232,7 @@ src_compile() {
 src_install() {
 	cd "${S}"/out/linux.${ARCH}/release/bin || die
 
-	local vbox_inst_path="/usr/$(get_libdir)/${PN}"
+	local vbox_inst_path="/usr/$(get_libdir)/${PN}" each fwfile
 
 	vbox_inst() {
 		local binary="${1}"
@@ -256,69 +257,79 @@ src_install() {
 		-e "s@MY_LIBDIR@$(get_libdir)@" \
 		"${D}"/etc/vbox/vbox.cfg || die "vbox.cfg sed failed"
 
-	# Symlink binaries to the shipped wrapper
+	# Install the wrapper script
 	exeinto ${vbox_inst_path}
-	newexe "${FILESDIR}/${PN}-ose-3-wrapper" "VBox"
+	newexe "${FILESDIR}/${PN}-ose-5-wrapper" "VBox"
 	fowners root:vboxusers ${vbox_inst_path}/VBox
 	fperms 0750 ${vbox_inst_path}/VBox
-
-	dosym /usr/$(get_libdir)/${PN}/VBox /usr/bin/VBoxManage
-	dosym /usr/$(get_libdir)/${PN}/VBox /usr/bin/VBoxVRDP
-	dosym /usr/$(get_libdir)/${PN}/VBox /usr/bin/VBoxHeadless
-	dosym /usr/$(get_libdir)/${PN}/VBoxTunctl /usr/bin/VBoxTunctl
 
 	# Install binaries and libraries
 	insinto ${vbox_inst_path}
 	doins -r components
-
-	if use sdk ; then
-		doins -r sdk
-	fi
-
-	if use vboxwebsrv ; then
-		vbox_inst vboxwebsrv
-		dosym ${vbox_inst_path}/VBox /usr/bin/vboxwebsrv
-		newinitd "${FILESDIR}"/vboxwebsrv-initd vboxwebsrv
-		newconfd "${FILESDIR}"/vboxwebsrv-confd vboxwebsrv
-	fi
 
 	# *.rc files for x86_64 are only available on multilib systems
 	local rcfiles="*.rc"
 	if use amd64 && ! has_multilib_profile ; then
 		rcfiles=""
 	fi
-
-	for each in VBox{Manage,SVC,XPCOMIPCD,Tunctl,ExtPackHelperApp} *so *r0 ${rcfiles} ; do
+	for each in VBox{ExtPackHelperApp,Manage,SVC,Tunctl,XPCOMIPCD} *so *r0 ${rcfiles} ; do
 		vbox_inst ${each}
 	done
 
-	# VBoxNetAdpCtl and VBoxNetDHCP binaries need to be suid root in any case.
-	for each in VBoxNet{AdpCtl,DHCP,NAT} ; do
+	# These binaries need to be suid root in any case.
+	for each in VBox{Headless,Net{AdpCtl,DHCP,NAT}} ; do
 		vbox_inst ${each} 4750
 	done
 
+	# Install EFI Firmware files (bug #320757)
+	pushd "${S}"/src/VBox/Devices/EFI/FirmwareBin &>/dev/null || die
+	for fwfile in VBoxEFI{32,64}.fd ; do
+		vbox_inst ${fwfile} 0644
+	done
+	popd &>/dev/null || die
+
 	# VBoxSVC and VBoxManage need to be pax-marked (bug #403453)
 	# VBoxXPCOMIPCD (bug #524202)
-	for each in VBox{Manage,SVC,XPCOMIPCD} ; do
+	for each in VBox{Headless,Manage,SVC,XPCOMIPCD} ; do
 		pax-mark -m "${D}"${vbox_inst_path}/${each}
 	done
+
+	# Symlink binaries to the shipped wrapper
+	for each in vbox{headless,manage} VBox{Headless,Manage,VRDP} ; do
+		dosym ${vbox_inst_path}/VBox /usr/bin/${each}
+	done
+	dosym ${vbox_inst_path}/VBoxTunctl /usr/bin/VBoxTunctl
+
+	# VRDPAuth only works with this (bug #351949)
+	dosym VBoxAuth.so ${vbox_inst_path}/VRDPAuth.so
+
+	# set an env-variable for 3rd party tools
+	echo -n "VBOX_APP_HOME=${vbox_inst_path}" > "${T}/90virtualbox"
+	doenvd "${T}/90virtualbox"
 
 	if ! use headless ; then
 		vbox_inst VBoxSDL 4750
 		pax-mark -m "${D}"${vbox_inst_path}/VBoxSDL
+
+		for each in vboxsdl VBoxSDL ; do
+			dosym ${vbox_inst_path}/VBox /usr/bin/${each}
+		done
 
 		if use opengl && use qt4 ; then
 			vbox_inst VBoxTestOGL
 			pax-mark -m "${D}"${vbox_inst_path}/VBoxTestOGL
 		fi
 
-		dosym ${vbox_inst_path}/VBox /usr/bin/VBoxSDL
-
 		if use qt4 ; then
 			vbox_inst VirtualBox 4750
 			pax-mark -m "${D}"${vbox_inst_path}/VirtualBox
 
-			dosym ${vbox_inst_path}/VBox /usr/bin/VirtualBox
+			for each in virtualbox VirtualBox ; do
+				dosym ${vbox_inst_path}/VBox /usr/bin/${each}
+			done
+
+			insinto /usr/share/${PN}
+			doins -r nls
 
 			newmenu "${FILESDIR}"/${PN}-ose.desktop-2 ${PN}.desktop
 		fi
@@ -332,17 +343,20 @@ src_install() {
 		popd &>/dev/null || die
 	fi
 
-	vbox_inst VBoxHeadless 4750
-	pax-mark -m "${D}"${vbox_inst_path}/VBoxHeadless
+	if use lvm ; then
+		vbox_inst VBoxVolInfo 4750
+		dosym ${vbox_inst_path}/VBoxVolInfo /usr/bin/VBoxVolInfo
+	fi
 
-	insinto ${vbox_inst_path}
-	# Install EFI Firmware files (bug #320757)
-	pushd "${S}"/src/VBox/Devices/EFI/FirmwareBin &>/dev/null || die
-	for fwfile in VBoxEFI{32,64}.fd ; do
-		doins ${fwfile}
-		fowners root:vboxusers ${vbox_inst_path}/${fwfile}
-	done
-	popd &>/dev/null || die
+	if use sdk ; then
+		insinto ${vbox_inst_path}
+		doins -r sdk
+
+		if use java ; then
+			java-pkg_regjar "${D}${vbox_inst_path}/sdk/bindings/xpcom/java/vboxjxpcom.jar"
+			java-pkg_regso "${D}${vbox_inst_path}/libvboxjxpcom.so"
+		fi
+	fi
 
 	if use udev ; then
 		# New way of handling USB device nodes for VBox (bug #356215)
@@ -352,26 +366,16 @@ src_install() {
 		fowners root:vboxusers ${udevdir}/VBoxCreateUSBNode.sh
 		fperms 0750 ${udevdir}/VBoxCreateUSBNode.sh
 		insinto ${udevdir}/rules.d
-		doins "${FILESDIR}"/10-virtualbox.rules
-		sed "s@%UDEVDIR%@${udevdir}@" \
-			-i "${D}"${udevdir}/rules.d/10-virtualbox.rules || die
+		sed "s@%UDEVDIR%@${udevdir}@" "${FILESDIR}"/10-virtualbox.rules \
+			> "${T}"/10-virtualbox.rules || die
+		doins "${T}"/10-virtualbox.rules
 	fi
 
-	insinto /usr/share/${PN}
-	if ! use headless && use qt4 ; then
-		doins -r nls
-	fi
-
-	# VRDPAuth only works with this (bug #351949)
-	dosym VBoxAuth.so  ${vbox_inst_path}/VRDPAuth.so
-
-	# set an env-variable for 3rd party tools
-	echo -n "VBOX_APP_HOME=${vbox_inst_path}" > "${T}/90virtualbox"
-	doenvd "${T}/90virtualbox"
-
-	if use java ; then
-		java-pkg_regjar "${D}${vbox_inst_path}/sdk/bindings/xpcom/java/vboxjxpcom.jar"
-		java-pkg_regso "${D}${vbox_inst_path}/libvboxjxpcom.so"
+	if use vboxwebsrv ; then
+		vbox_inst vboxwebsrv
+		dosym ${vbox_inst_path}/VBox /usr/bin/vboxwebsrv
+		newinitd "${FILESDIR}"/vboxwebsrv-initd vboxwebsrv
+		newconfd "${FILESDIR}"/vboxwebsrv-confd vboxwebsrv
 	fi
 }
 
@@ -384,7 +388,7 @@ pkg_postinst() {
 	fi
 
 	if ! use headless && use qt4 ; then
-		elog "To launch VirtualBox just type: \"VirtualBox\"."
+		elog "To launch VirtualBox just type: \"virtualbox\"."
 	fi
 	elog "You must be in the vboxusers group to use VirtualBox."
 	elog ""

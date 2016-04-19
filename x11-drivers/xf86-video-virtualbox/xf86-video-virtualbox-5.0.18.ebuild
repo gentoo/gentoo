@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 inherit eutils linux-mod multilib python-single-r1 versionator toolchain-funcs
@@ -49,6 +49,14 @@ BUILD_TARGETS="all"
 BUILD_TARGET_ARCH="${ARCH}"
 MODULE_NAMES="vboxvideo(misc:${WORKDIR}/vboxvideo_drm:${WORKDIR}/vboxvideo_drm)"
 
+PATCHES=(
+	# Ugly hack to build the opengl part of the video driver
+	"${FILESDIR}/${PN}-2.2.0-enable-opengl.patch"
+
+	# unset useless/problematic checks in configure
+	"${FILESDIR}/${PN}-5.0.0_beta3-configure_checks.patch"
+)
+
 S="${WORKDIR}/${MY_P}"
 
 QA_TEXTRELS_x86="usr/lib/VBoxOGL.so"
@@ -79,19 +87,16 @@ src_prepare() {
 	done
 
 	# Remove shipped binaries (kBuild,yasm), see bug #232775
-	rm -rf kBuild/bin tools
+	rm -r kBuild/bin tools || die
 
 	# Disable things unused or splitted into separate ebuilds
 	cp "${FILESDIR}/${PN}-5-localconfig" LocalConfig.kmk || die
 
-	# Ugly hack to build the opengl part of the video driver
-	epatch "${FILESDIR}/${PN}-2.2.0-enable-opengl.patch"
-
-	# unset useless/problematic checks in configure
-	epatch "${FILESDIR}/${PN}-5.0.0_beta3-configure_checks.patch"
+	default
 
 	# link with lazy on hardened #394757
-	sed -i '/^TEMPLATE_VBOXR3EXE_LDFLAGS.linux/s/$/ -Wl,-z,lazy/' Config.kmk || die
+	sed '/^TEMPLATE_VBOXR3EXE_LDFLAGS.linux/s/$/ -Wl,-z,lazy/' \
+		-i Config.kmk || die
 }
 
 src_configure() {

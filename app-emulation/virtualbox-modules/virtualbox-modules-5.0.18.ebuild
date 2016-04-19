@@ -5,7 +5,7 @@
 # XXX: the tarball here is just the kernel modules split out of the binary
 #      package that comes from virtualbox-bin
 
-EAPI=5
+EAPI=6
 
 inherit eutils linux-mod user
 
@@ -43,6 +43,8 @@ src_prepare() {
 	if use pax_kernel && kernel_is -ge 3 0 0 ; then
 		epatch "${FILESDIR}"/${PN}-4.1.4-pax-const.patch
 	fi
+
+	default
 }
 
 src_install() {

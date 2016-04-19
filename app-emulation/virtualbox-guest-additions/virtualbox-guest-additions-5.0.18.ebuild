@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 inherit eutils linux-mod systemd user toolchain-funcs
 
@@ -73,7 +73,7 @@ src_unpack() {
 src_prepare() {
 	# PaX fixes (see bug #298988)
 	pushd "${WORKDIR}" &>/dev/null || die
-	epatch "${FILESDIR}"/vboxguest-4.1.0-log-use-c99.patch
+	eapply "${FILESDIR}"/vboxguest-4.1.0-log-use-c99.patch
 	popd &>/dev/null || die
 
 	# Disable things unused or splitted into separate ebuilds
@@ -87,6 +87,8 @@ src_prepare() {
 				"${WORKDIR}/${mdir}/${vboxheader}"
 		done
 	done
+
+	eapply_user
 }
 
 src_configure() {
