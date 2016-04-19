@@ -6,7 +6,7 @@
     <name>Michał Górny</name>
   </maintainer>
   <use>
-    <flag name="http-client">Build support for HTTP client using <pkg>dev-util/curl</pkg></flag>
+    <flag name="http-client">Build support for HTTP client using <pkg>net-misc/curl</pkg></flag>
     <flag name="http-server">Build support for HTTP server using <pkg>net-libs/libmicrohttpd</pkg></flag>
     <flag name="stubgen">Build header stub code generator (needed for development and when pregenerated headers are not bundled)</flag>
   </use>
