@@ -24,6 +24,10 @@ DEPEND="${RDEPEND}"
 
 DOCS="AUTHORS ChangeLog NEWS README TODO"
 
+src_prepare() {
+	epatch "${FILESDIR}"/${P}-sysmacros.patch #580192
+}
+
 src_configure() {
 	# build-system incorrectly recognizes '--disable-feature' options as enabled!
 	econf \
