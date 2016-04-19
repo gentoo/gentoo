@@ -1,0 +1,11 @@
+DEFINED_PHASES=configure install test
+DESCRIPTION=Sequence analysis using profile hidden Markov models
+EAPI=6
+HOMEPAGE=http://hmmer.janelia.org/
+IUSE=threads test
+KEYWORDS=~alpha amd64 ia64 ~ppc ppc64 ~sparc x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=ftp://ftp.genetics.wustl.edu/pub/eddy/hmmer/2.3.2/hmmer-2.3.2.tar.gz
+_eclass_exported_funcs=src_configure:- src_test:- src_install:-
+_md5_=567ee57c3e4279dc8f0e1cca217bd77b
