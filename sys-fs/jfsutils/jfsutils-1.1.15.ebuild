@@ -18,7 +18,7 @@ IUSE="static"
 DOCS=( AUTHORS ChangeLog NEWS README )
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-linux-headers.patch
+	epatch "${FILESDIR}"/${P}-linux-headers.patch #448844
 }
 
 src_configure() {
