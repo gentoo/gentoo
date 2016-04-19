@@ -2295,7 +2295,7 @@ app-text/jist 1.5.1: A ruby gem to publish a gist
 app-text/jmupdf 0.3.0 0.4.1 0.4.1-r1 9999: Java library for rendering PDF, XPS and CBZ (Comic Book) documents
 app-text/jpdftweak 0.9-r1: Swiss Army Knife for PDF files
 app-text/kbibtex 0.6: BibTeX editor for KDE to edit bibliographies used with LaTeX
-app-text/kchmviewer 6.0-r1 7.4 7.5: A feature rich chm file viewer, based on Qt
+app-text/kchmviewer 6.0-r1 7.4 7.5 7.5-r1: Feature rich chm file viewer, based on Qt
 app-text/kding 0.6-r2: KDE port of Ding, a dictionary lookup program
 app-text/keepnote 0.7.9-r2: A note taking application
 app-text/kpaste 1.0: Command-line tool to paste to paste.kde.org
@@ -7018,7 +7018,7 @@ dev-python/discogs-client 2.0.2 2.2.0 2.2.1: Official Python API client for Disc
 dev-python/disqus-python 0.4.2: Python client library for accessing the disqus.com API
 dev-python/distlib 0.2.1 0.2.1-r1 0.2.2: Distribution utilities
 dev-python/dj-database-url 0.3.0 0.4.0: Use Database URLs in your Django Application
-dev-python/django 1.4.22 1.5.12 1.6.11 1.7.11 1.8.9 1.9.2 9999: High-level Python web framework
+dev-python/django 1.4.22 1.5.12 1.6.11 1.7.11 1.8.9 1.9.2 1.9.5 9999: High-level Python web framework
 dev-python/django-annoying 0.7.6-r1 0.7.7 0.8.2 0.8.7: This is django application that try to eliminate annoying things in Django framework
 dev-python/django-appconf 0.6 1.0.1: A helper class for handling configuration defaults of packaged apps gracefully
 dev-python/django-auth-ldap 1.2.2 1.2.6 1.2.7: Django LDAP authentication backend
@@ -7791,7 +7791,7 @@ dev-python/pysnmp 4.2.5 4.3.0 4.3.1 4.3.2: Python SNMP library
 dev-python/pysnmp-apps 0.3.4 0.4.0 0.4.1: PySNMP applications
 dev-python/pysnmp-mibs 0.1.4 0.1.5 0.1.6: SNMP framework in Python - MIBs
 dev-python/pysolr 3.3.0 3.3.2: Lightweight python wrapper for Apache Solr
-dev-python/pyspf 2.0.11: Python implementation of the Sender Policy Framework (SPF) protocol
+dev-python/pyspf 2.0.11 2.0.12: Python implementation of the Sender Policy Framework (SPF) protocol
 dev-python/pysrt 1.0.1 1.1.0 9999: Python library used to edit or create SubRip files
 dev-python/pystache 0.5.3 0.5.4: Mustache for Python
 dev-python/pystatgrab 0.6: pystatgrab is a set of Python bindings for the libstatgrab library
@@ -8335,10 +8335,10 @@ dev-ros/base_local_planner 1.13.0 1.13.1 9999: Trajectory Rollout and Dynamic Wi
 dev-ros/bond 1.7.16 1.7.17 9999: A bond allows two processes, A and B, to know when the other has terminated
 dev-ros/bondcpp 1.7.16 1.7.17 9999: C++ implementation of bond, a mechanism for checking when another process has terminated
 dev-ros/bondpy 1.7.16 1.7.17 9999: Python implementation of bond, a mechanism for checking when another process has terminated
-dev-ros/calibration_estimation 0.10.13 9999: Runs an optimization to estimate the a robot's kinematic parameters
-dev-ros/calibration_launch 0.10.13 9999: Launch files that can be helpful in configuring the calibration stack to run on your robot
-dev-ros/calibration_msgs 0.10.13 9999: Messages for storing calibration samples to be used in full robot calibration procedures
-dev-ros/calibration_setup_helper 0.10.13 9999: Script to generate calibration launch and configurationfiles for your robot
+dev-ros/calibration_estimation 0.10.13 0.10.14 9999: Runs an optimization to estimate the a robot's kinematic parameters
+dev-ros/calibration_launch 0.10.13 0.10.14 9999: Launch files that can be helpful in configuring the calibration stack to run on your robot
+dev-ros/calibration_msgs 0.10.13 0.10.14 9999: Messages for storing calibration samples to be used in full robot calibration procedures
+dev-ros/calibration_setup_helper 0.10.13 0.10.14 9999: Script to generate calibration launch and configurationfiles for your robot
 dev-ros/camera_calibration 1.12.14 1.12.15 1.12.16 9999: Calibration of monocular or stereo cameras using a checkerboard calibration target
 dev-ros/camera_calibration_parsers 1.11.7 1.11.8 1.11.9 1.11.10 9999: Routines for reading and writing camera calibration parameters
 dev-ros/camera_info_manager 1.11.7 1.11.8 1.11.9 1.11.10 9999: C++ interface for camera calibration information
@@ -8404,7 +8404,7 @@ dev-ros/hector_pose_estimation 0.2.0 0.2.1 9999: hector_pose_estimation node and
 dev-ros/hector_pose_estimation_core 0.2.0 0.2.1 9999: Extended Kalman Filter (EKF) that estimates the 6DOF pose of the robot
 dev-ros/hector_slam_launch 0.3.3 0.3.4 9999: Launch files for launching hector_slam with different robot systems/setups/postprocessing scenarios
 dev-ros/hector_trajectory_server 0.3.3 0.3.4 9999: Keeps track of tf trajectories and makes this data accessible via a service and topic
-dev-ros/image_cb_detector 0.10.13 9999: Extracts checkerboard corners from ROS images
+dev-ros/image_cb_detector 0.10.13 0.10.14 9999: Extracts checkerboard corners from ROS images
 dev-ros/image_geometry 1.11.8 1.11.9 1.11.10 1.11.11 1.11.12 1.12.0 9999: C++ and Python libraries for interpreting images geometrically
 dev-ros/image_proc 1.12.14 1.12.15 1.12.16 9999: Single image rectification and color processing
 dev-ros/image_rotate 1.12.14 1.12.15 1.12.16 9999: Rotates an image stream minimizing the angle between an arbitrary vector and the camera frame
@@ -8414,16 +8414,16 @@ dev-ros/imu_processors 0.2.1 9999: Processors for sensor_msgs::Imu data
 dev-ros/imu_transformer 0.2.1 9999: Node/nodelet combination to transform sensor_msgs::Imu data from one frame into another
 dev-ros/interactive_marker_tutorials 0.9.2 9999: Interactive marker tutorials
 dev-ros/interactive_markers 1.11.1 9999: 3D interactive marker communication library for RViz and similar tools
-dev-ros/interval_intersection 0.10.13 9999: Tools for calculating the intersection of interval messages coming in on several topics
+dev-ros/interval_intersection 0.10.13 0.10.14 9999: Tools for calculating the intersection of interval messages coming in on several topics
 dev-ros/ivcon 0.1.5 9999: Mesh Conversion Utility
 dev-ros/joint_limits_interface 0.9.3 0.10.0 9999: Interface for enforcing joint limits
 dev-ros/joint_state_publisher 1.11.8 1.11.9 1.11.10 1.12.0 1.12.2 9999: Tool for setting and publishing joint state values for a given URDF
-dev-ros/joint_states_settler 0.10.13 9999: Reports how long a subset of joints has been settled
+dev-ros/joint_states_settler 0.10.13 0.10.14 9999: Reports how long a subset of joints has been settled
 dev-ros/kdl_conversions 1.11.7 1.11.8 9999: Conversion functions between KDL and geometry_msgs types
 dev-ros/kdl_parser 1.11.8 1.11.9 1.11.10 1.12.0 1.12.2 9999: Constructs a KDL tree from an XML robot representation in URDF
 dev-ros/kdl_parser_py 1.11.9 1.11.10 1.12.0 1.12.2 9999: Python tools to construct a KDL tree from an XML robot representation in URDF
 dev-ros/laser_assembler 1.7.3 9999: Nodes to assemble point clouds from either LaserScan or PointCloud messages
-dev-ros/laser_cb_detector 0.10.13 9999: Extracts checkerboard corners from a dense laser snapshot
+dev-ros/laser_cb_detector 0.10.13 0.10.14 9999: Extracts checkerboard corners from a dense laser snapshot
 dev-ros/laser_filters 1.8.0 1.8.1 1.8.2 9999: Assorted filters designed to operate on 2D planar laser scanners
 dev-ros/laser_geometry 1.6.4 9999: Class for converting from a 2D laser scan into a point cloud
 dev-ros/laser_proc 0.1.4 9999: Converts representations of sensor_msgs/LaserScan and sensor_msgs/MultiEchoLaserScan
@@ -8440,7 +8440,7 @@ dev-ros/message_generation 0.3.0 9999: Build-time dependencies for generating la
 dev-ros/message_runtime 0.4.12 9999: Package modeling the run-time dependencies for language bindings of messages
 dev-ros/message_to_tf 0.2.0 0.2.1 9999: Translates pose information from different kind of common_msgs message types to tf
 dev-ros/mk 1.12.3 1.12.5 1.13.1 9999: A collection of .mk include files for building ROS architectural elements
-dev-ros/monocam_settler 0.10.13 9999: Listens on a ImageFeatures topic, and waits for the data to settle
+dev-ros/monocam_settler 0.10.13 0.10.14 9999: Listens on a ImageFeatures topic, and waits for the data to settle
 dev-ros/move_base 1.13.0 1.13.1 9999: Given a goal in the world, will attempt to reach it with a mobile base
 dev-ros/move_base_msgs 1.13.0 9999: Holds the action description and relevant messages for the move_base package
 dev-ros/move_slow_and_clear 1.13.0 1.13.1 9999: Move slow and clear
@@ -8571,7 +8571,7 @@ dev-ros/rviz_plugin_tutorials 0.9.2 9999: Tutorials showing how to write plugins
 dev-ros/rviz_python_tutorial 0.9.2 9999: Tutorials showing how to call into rviz internals from python scripts
 dev-ros/self_test 1.8.8 1.8.9 9999: Robot self-test node
 dev-ros/sensor_msgs 1.12.3 1.12.4 9999: Messages for commonly used sensors, including cameras and scanning laser rangefinders
-dev-ros/settlerlib 0.10.13 9999: Helper functions and routines to help creating a settler for a specific sensor channel
+dev-ros/settlerlib 0.10.13 0.10.14 9999: Helper functions and routines to help creating a settler for a specific sensor channel
 dev-ros/shape_msgs 1.12.3 1.12.4 9999: Messages for defining shapes, such as simple solid object primitives, planes, and meshes
 dev-ros/shape_tools 0.2.1 9999: Tools for operating on shape messages
 dev-ros/smach 2.0.0 9999: Task-level architecture for rapidly creating complex robot behavior
@@ -15205,7 +15205,7 @@ perl-core/podlators 2.5.3: Format POD source into various output formats
 perl-core/version 0.990.800: Perl extension for Version Objects
 ros-meta/audio_common 0.2.7 0.2.8 0.2.9 0.2.10 0.2.11 0.2.12 9999: Common code for working with audio in ROS
 ros-meta/bond_core 1.7.16 1.7.17 9999: A bond allows two processes, A and B, to know when the other has terminated
-ros-meta/calibration 0.10.13 9999: Provides a toolchain running through the robot calibration process
+ros-meta/calibration 0.10.13 0.10.14 9999: Provides a toolchain running through the robot calibration process
 ros-meta/common_msgs 1.12.3 1.12.4 9999: Messages that are widely used by other ROS packages
 ros-meta/common_tutorials 0.1.8 9999: Metapackage that contains common tutorials
 ros-meta/desktop 1.2.0 9999: Metapackage for a basic ROS desktop install
@@ -16051,7 +16051,7 @@ sci-physics/herwig 6.5.21: High Energy Physics Event Generator
 sci-physics/herwig++ 2.7.1-r1: High-Energy Physics event generator
 sci-physics/hoomd-blue 1.0.2: a general-purpose particle simulation toolkit
 sci-physics/jaxodraw 2.0.1-r1: Java program for drawing Feynman diagrams
-sci-physics/lammps 20150210 20150515 20150515-r1 20150810 20151106 20151120 20151207 20151208 20151209 20151211 20160115 20160122 20160301 20160310 20160314 20160321 20160407: Large-scale Atomic/Molecular Massively Parallel Simulator
+sci-physics/lammps 20150210 20150515 20150515-r1 20150810 20151106 20151120 20151207 20151208 20151209 20151211 20160115 20160122 20160216 20160301 20160310 20160314 20160321 20160407: Large-scale Atomic/Molecular Massively Parallel Simulator
 sci-physics/lhapdf 5.9.1 6.1.6: Les Houches Parton Density Function unified library
 sci-physics/lightspeed 1.2a-r1: OpenGL interactive relativistic simulator
 sci-physics/looptools 2.8 2.12: Tools for evaluation of scalar and tensor one-loop integrals
