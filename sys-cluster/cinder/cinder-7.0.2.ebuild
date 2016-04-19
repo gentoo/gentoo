@@ -5,17 +5,16 @@
 EAPI=5
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1 eutils git-2 linux-info user
+inherit distutils-r1 eutils linux-info user
 
 DESCRIPTION="Cinder is the OpenStack Block storage service, a spin out of nova-volumes"
 HOMEPAGE="https://launchpad.net/cinder"
-SRC_URI="https://dev.gentoo.org/~prometheanfire/dist/cinder/liberty/cinder.conf.sample -> liberty-cinder.conf.sample"
-EGIT_REPO_URI="https://github.com/openstack/cinder.git"
-EGIT_BRANCH="stable/liberty"
+SRC_URI="https://tarballs.openstack.org/${PN}/${P}.tar.gz
+	https://dev.gentoo.org/~prometheanfire/dist/cinder/liberty/cinder.conf.sample -> liberty-cinder.conf.sample"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="+api +scheduler +volume iscsi lvm mysql +memcached postgres sqlite test"
 REQUIRED_USE="|| ( mysql postgres sqlite )"
 
@@ -109,6 +108,9 @@ RDEPEND="
 	!~dev-python/oslo-messaging-3.1.0[${PYTHON_USEDEP}]
 	<=dev-python/oslo-messaging-3.0.0[${PYTHON_USEDEP}]
 	>=dev-python/oslo-middleware-2.8.0[${PYTHON_USEDEP}]
+	!~dev-python/oslo-middleware-3.0.0[${PYTHON_USEDEP}]
+	!~dev-python/oslo-middleware-3.1.0[${PYTHON_USEDEP}]
+	!~dev-python/oslo-middleware-3.2.0[${PYTHON_USEDEP}]
 	<=dev-python/oslo-middleware-3.3.0[${PYTHON_USEDEP}]
 	>=dev-python/oslo-policy-0.5.0[${PYTHON_USEDEP}]
 	<=dev-python/oslo-policy-1.1.0[${PYTHON_USEDEP}]
@@ -150,6 +152,7 @@ RDEPEND="
 	>=dev-python/pytz-2013.6[${PYTHON_USEDEP}]
 	>=dev-python/requests-2.5.2[${PYTHON_USEDEP}]
 	!~dev-python/requests-2.8.0[${PYTHON_USEDEP}]
+	!~dev-python/requests-2.9.0[${PYTHON_USEDEP}]
 	<=dev-python/requests-2.8.1[${PYTHON_USEDEP}]
 	>=dev-python/retrying-1.2.3[${PYTHON_USEDEP}]
 	!~dev-python/retrying-1.3.0[${PYTHON_USEDEP}]
