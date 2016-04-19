@@ -20,7 +20,7 @@
 	also to enable smart power management of the dGPU when it's not in use.
 </longdescription>
 	<use>
-		<flag name="bbswitch">Add dependency on <pkg>sys-kernel/bbswitch</pkg> for
+		<flag name="bbswitch">Add dependency on <pkg>sys-power/bbswitch</pkg> for
 			PM feature</flag>
 	</use>
 	<upstream>

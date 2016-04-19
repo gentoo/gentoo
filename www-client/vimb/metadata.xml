@@ -3,8 +3,8 @@
 <pkgmetadata>
 	<!-- maintainer-needed -->
 	<use>
-		<flag name="gtk3">Link against <pkg>x11-libs/gtk</pkg> SLOT 3 instead of
-			<pkg>x11-libs/gtk</pkg> SLOT 2.</flag>
+		<flag name="gtk3">Link against <pkg>x11-libs/gtk+</pkg>:3 instead of
+			<pkg>x11-libs/gtk+</pkg>:2.</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">fanglingsu/vimb</remote-id>
