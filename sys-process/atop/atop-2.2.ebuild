@@ -31,6 +31,7 @@ S=${WORKDIR}/${MY_P}
 
 src_prepare() {
 	epatch "${FILESDIR}"/${PN}-2.2-build.patch
+	epatch "${FILESDIR}"/${PN}-2.2-sysmacros.patch #580372
 	tc-export CC PKG_CONFIG
 	sed -i 's: root : :' atop.cronsysv || die #191926
 	# prefixify
