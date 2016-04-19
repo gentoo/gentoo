@@ -98,6 +98,12 @@ RDEPEND="${COMMON_DEPEND}
 # 	kde5_src_prepare
 # }
 
+src_prepare() {
+	kde5_src_prepare
+
+	punt_bogus_dep Kross
+}
+
 src_configure() {
 	local mycmakeargs=(
 		-DENABLE_BWSCHEDULER_PLUGIN=$(usex bwscheduler)
