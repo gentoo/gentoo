@@ -1980,7 +1980,7 @@ app-office/abiword 3.0.1: Fully featured yet light and fast cross platform word 
 app-office/abiword-docs 3.0.0-r1 3.0.1: Fully featured yet light and fast cross platform word processor documentation
 app-office/akonadi-server 1.13.0-r2 1.13.1_pre20160203-r1: The server part of Akonadi
 app-office/borg 1.7.4-r3: Calendar and task tracker, written in Java
-app-office/calcurse 4.0.0: a text-based calendar and scheduling application
+app-office/calcurse 4.0.0 4.1.0: a text-based calendar and scheduling application
 app-office/calligra 2.8.5 2.9.11: KDE Office Suite
 app-office/calligra-l10n 2.8.5 2.9.11: Calligra localization package
 app-office/dia 0.97.3_pre20140417-r1 0.97.3: Diagram/flowchart creation program
@@ -2274,7 +2274,7 @@ app-text/hd2u 1.0.3: Dos2Unix like text file converter
 app-text/highlight 3.17 3.25 3.27 3.28: converts source code to formatted text ((X)HTML, RTF, (La)TeX, XSL-FO, XML) with syntax highlight
 app-text/hnb 1.9.18-r1: A program to organize many kinds of data in one place
 app-text/htag 0.0.24-r1: random signature maker
-app-text/html-xml-utils 6.9 6.9-r1: A number of simple utilities for manipulating HTML and XML files
+app-text/html-xml-utils 6.9 6.9-r1 7.0: A number of simple utilities for manipulating HTML and XML files
 app-text/html2text 1.3.2a 1.3.2a-r1: A HTML to text converter
 app-text/html401 19991224-r2: DTDs for the HyperText Markup Language 4.01
 app-text/htmlc 2.40.0 2.60.0: HTML template files expander
