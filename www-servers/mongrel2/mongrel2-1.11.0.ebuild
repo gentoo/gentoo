@@ -6,7 +6,7 @@ EAPI=5
 
 DESCRIPTION="A language agnostic web server focused on web applications"
 HOMEPAGE="http://mongrel2.org"
-SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz"
+SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
@@ -23,6 +23,6 @@ src_prepare() {
 }
 
 src_install() {
-	emake install PREFIX=/usr DESTDIR=${D} || die
-	dodoc README examples/configs/mongrel2.conf || die
+	emake install PREFIX=/usr DESTDIR="${D}"
+	dodoc README examples/configs/mongrel2.conf
 }
