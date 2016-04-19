@@ -467,7 +467,6 @@ www-apache/mod_h2
 # Lars Wendler <polynomial-c@gentoo.org> (20 Aug 2015)
 # Releases are not from original upstream but from a fork.
 # Masked as requested by vapier.
-~net-misc/iputils-20150815
 ~net-misc/iputils-20160308
 
 # Sebastian Pipping <sping@gentoo.org> (8 Aug 2015)
