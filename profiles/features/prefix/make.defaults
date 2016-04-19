@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# Michael Haubenwallner <haubi@gentoo.org> (19 Apr 2016)
+# We can not use xattrs by default in Prefix.
+USE="-xattr"
+
 # Jeremy Olexa <darkside@gentoo.org> (30 Jun 2009)
 # As of now, there does not exist a reliable working sandbox implementation on
 # any Gentoo Prefix platform. Lately, sandbox has caused *many* issues that
