@@ -30,6 +30,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Sergey Popov <pinkbyte@gentoo.org> (19 Apr 2016)
+# Security mask, wrt bug #577156
+# Should be kept in tree for some time
+# for users, that may experience problems with new versions
+<net-misc/quagga-1.0.20160315
+
 # Patrice Clement <monsieurp@gentoo.org> (17 Apr 2016)
 # Unmaintained ebuilds (EAPI 0!) which don't compile with Java 8.
 # Removal in 30 days. See bug 580094.
