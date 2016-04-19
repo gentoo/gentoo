@@ -13758,7 +13758,7 @@ net-analyzer/pypacker 2.4 2.9: Fast and simple packet creation and parsing libra
 net-analyzer/quidscor 1.2.48-r1: Qualys IDS Correlation Daemon
 net-analyzer/raddump 0.3.1: RADIUS packet interpreter
 net-analyzer/rain 1.2.9_beta1: powerful tool for testing stability of hardware and software utilizing IP protocols
-net-analyzer/ripe-atlas-tools 1.2.1 1.2.2 1.2.3: The official command-line client for RIPE Atlas
+net-analyzer/ripe-atlas-tools 1.2.1 1.2.2 1.2.3 1.2.3-r1: The official command-line client for RIPE Atlas
 net-analyzer/rrdcollect 0.2.9: Read system statistical data and feed it to RRDtool
 net-analyzer/rrdtool 1.4.8-r1 1.4.8-r3 1.4.9 1.5.3 1.5.3-r1 1.5.4 1.5.5 1.5.5-r1: A system to store and display time-series data
 net-analyzer/rtpbreak 1.3a-r1: Detects, reconstructs and analyzes any RTP session through heuristics over the UDP network traffic
