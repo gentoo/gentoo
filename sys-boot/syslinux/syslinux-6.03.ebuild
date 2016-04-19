@@ -45,6 +45,8 @@ QA_PREBUILT="usr/share/${PN}/*.c32"
 src_prepare() {
 	rm -f gethostip #bug 137081
 
+	epatch "${FILESDIR}"/${PN}-6.03-sysmacros.patch #579928
+
 	# Don't prestrip or override user LDFLAGS, bug #305783
 	local SYSLINUX_MAKEFILES="extlinux/Makefile linux/Makefile mtools/Makefile \
 		sample/Makefile utils/Makefile"
