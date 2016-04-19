@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild"></product>
   <announced>March 12, 2016</announced>
-  <revised>March 12, 2016: 1</revised>
+  <revised>April 19, 2016: 2</revised>
   <bug>537940</bug>
   <bug>559532</bug>
   <bug>565842</bug>
@@ -19,11 +19,13 @@
     <package name="dev-java/icedtea" auto="yes" arch="*">
       <unaffected range="ge">7.2.6.4</unaffected>
       <unaffected range="rge">6.1.13.9</unaffected>
+      <unaffected range="lt">6</unaffected>
       <vulnerable range="lt">7.2.6.4</vulnerable>
     </package>
     <package name="dev-java/icedtea-bin" auto="yes" arch="*">
       <unaffected range="ge">7.2.6.4</unaffected>
       <unaffected range="rge">6.1.13.9</unaffected>
+      <unaffected range="lt">6</unaffected>
       <vulnerable range="lt">7.2.6.4</vulnerable>
     </package>
   </affected>
@@ -131,5 +133,5 @@
     <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-0494">CVE-2016-0494</uri>
   </references>
   <metadata tag="requester" timestamp="Thu, 16 Jul 2015 14:44:12 +0000">K_F</metadata>
-  <metadata tag="submitter" timestamp="Sat, 12 Mar 2016 23:37:32 +0000">b-man</metadata>
+  <metadata tag="submitter" timestamp="Tue, 19 Apr 2016 21:34:37 +0000">b-man</metadata>
 </glsa>
