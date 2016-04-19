@@ -24,6 +24,10 @@ RDEPEND=">=sys-apps/util-linux-2.16"
 # Thus, they shouldn't be run on systems with active software RAID devices.
 RESTRICT="test"
 
+src_prepare() {
+	epatch "${FILESDIR}"/${PN}-3.4-sysmacros.patch #580188
+}
+
 mdadm_emake() {
 	# We should probably make corosync & libdlm into USE flags. #573782
 	emake \
