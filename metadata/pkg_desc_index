@@ -1871,7 +1871,7 @@ app-misc/remind 03.01.15: Ridiculously functional reminder program
 app-misc/reptyr 0.6.2: A utility to attach a running program to a new terminal
 app-misc/resolve-march-native 0.9: Resolve GCC flag -march=native
 app-misc/rioutil 1.5.0-r2: Command line tool for transfering mp3s to and from a Rio 600, 800, Rio Riot, and Nike PSA/Play
-app-misc/rl 0.2.7: Randomize lines from text files or stdin
+app-misc/rl 0.2.7 0.2.7-r1: Randomize lines from text files or stdin
 app-misc/rlwrap 0.42: GNU readline wrapper
 app-misc/roadnav 0.19-r1: Roadnav is a street map application with routing and GPS support
 app-misc/rox-filer 2.11: ROX-Filer a drag and drop spatial file manager
