@@ -16935,12 +16935,12 @@ sys-firmware/ipxe 1.0.0_p20130925: Open source network boot (PXE) firmware
 sys-firmware/ivtv-firmware 20080701-r1: firmware for Hauppauge PVR-x50 and Conexant 2341x based cards
 sys-firmware/iwl1000-ucode 39.31.5.1 128.50.3.1: Intel (R) Wireless WiFi Link 1000BGN ucode
 sys-firmware/iwl3160-7260-bt-ucode 37.8.10 37.8.10_p1 37.8.10_p2: Firmware for Intel (R) Wireless 3160, 7260, 7265 Bluetooth
-sys-firmware/iwl3160-ucode 0.7.1.22 0.8.15.22 0.8.24.22 0.9.214.23 0.9.228.25 0.10.11.23 0.10.15.23 0.12.16.25 0.15.227938: Firmware for Intel (R) Dual Band Wireless-AC 3160
+sys-firmware/iwl3160-ucode 0.7.1.22 0.8.15.22 0.8.24.22 0.9.214.23 0.9.228.25 0.10.11.23 0.10.15.23 0.12.16.25 0.12.17.25 0.13.30.25 0.15.227938 0.16.242414: Firmware for Intel (R) Dual Band Wireless-AC 3160
 sys-firmware/iwl6000-ucode 9.221.4.1: Intel (R) Wireless WiFi Ultimate-N 6300 and Advanced-N 6000 ucode
 sys-firmware/iwl6005-ucode 17.168.5.3 18.168.6.1: Intel (R) Wireless WiFi Advanced N 6005 ucode
 sys-firmware/iwl6030-ucode 17.168.5.2 18.168.6.1: Intel (R) Wireless WiFi Advanced N 6030 ucode
 sys-firmware/iwl6050-ucode 9.201.4.1 41.28.5.1: Intel (R) Wireless WiFi Link 6250-AGN ucode
-sys-firmware/iwl7260-ucode 0.7.1.22 0.8.15.22 0.8.24.22 0.9.214.23 0.9.228.25 0.10.11.23 0.10.15.23 0.12.16.25 0.15.227938: Firmware for Intel (R) Dual Band Wireless-AC 7260
+sys-firmware/iwl7260-ucode 0.7.1.22 0.8.15.22 0.8.24.22 0.9.214.23 0.9.228.25 0.10.11.23 0.10.15.23 0.12.16.25 0.12.17.25 0.13.30.25 0.15.227938 0.16.242414: Firmware for Intel (R) Dual Band Wireless-AC 7260
 sys-firmware/nvidia-firmware 325.15 340.32: Kernel and mesa firmware for nouveau (video accel and pgraph)
 sys-firmware/radeon-ucode 20140204 20140430 20140823 20150511 20160331: IRQ microcode for r6xx/r7xx/Evergreen/N.Islands/S.Islands Radeon GPUs and APUs
 sys-firmware/seabios 1.7.5 1.7.5-r1 1.8.2: Open Source implementation of a 16-bit x86 BIOS
