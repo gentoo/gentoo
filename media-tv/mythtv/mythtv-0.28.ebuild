@@ -265,6 +265,7 @@ src_configure() {
 		--extra-cflags="${CFLAGS}" \
 		--extra-cxxflags="${CXXFLAGS}" \
 		--extra-ldflags="${LDFLAGS}" \
+		--qmake="/usr/lib/qt5/bin/qmake" \
 		${myconf} || die "configure died"
 }
 
