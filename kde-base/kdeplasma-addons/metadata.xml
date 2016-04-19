@@ -8,7 +8,7 @@
 	<use>
 		<flag name="attica">Enable support for <pkg>dev-libs/libattica</pkg></flag>
 		<flag name="ibus">Use ibus input method via <pkg>app-i18n/ibus</pkg></flag>
-		<flag name="desktopglobe">Enable Desktop Globe wallpaper using <pkg>kde-base/marble</pkg></flag>
+		<flag name="desktopglobe">Enable Desktop Globe wallpaper using <pkg>kde-apps/marble</pkg></flag>
 		<flag name="eigen">Build Mandelbrot wallpaper plugin using <pkg>dev-cpp/eigen</pkg> using SLOT 2</flag>
 		<flag name="fcitx">Use fcitx input method via <pkg>app-i18n/fcitx</pkg></flag>
 		<flag name="json">Enable JSON support via <pkg>dev-libs/qjson</pkg></flag>

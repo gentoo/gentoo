@@ -8,6 +8,6 @@
 	<use>
 		<flag name="akonadi">Compile bindings for Akonadi</flag>
 		<flag name="kate">Compile bindings for KDE Advanced Text Editor</flag>
-		<flag name="okular">Compile bindings for <pkg>kde-base/okular</pkg></flag>
+		<flag name="okular">Compile bindings for <pkg>kde-apps/okular</pkg></flag>
 	</use>
 </pkgmetadata>
