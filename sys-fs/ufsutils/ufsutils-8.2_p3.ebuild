@@ -27,6 +27,8 @@ src_prepare() {
 	EPATCH_SOURCE="${WORKDIR}/debian/patches" EPATCH_SUFFIX="patch" \
         	EPATCH_OPTS="-p1" EPATCH_FORCE="yes" epatch
 
+	sed -i '1i#include <sys/sysmacros.h>' sbin/fsdb/fsdbutil.c || die #580292
+
 	# growfs is not properly ported
 	sed -e "s:sbin/growfs::" -i Makefile
 

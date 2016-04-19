@@ -70,27 +70,29 @@ src_install() {
 		default
 		newinitd "${FILESDIR}"/smartd-r1.rc smartd
 		newconfd "${FILESDIR}"/smartd.confd smartd
+
+		# Move drivedb.h file out of PM's sight (bug #575292)
+		mv "${ED}"${db_path}/drivedb.h "${T}" || die
+		keepdir ${db_path}
+
+		exeinto /etc/cron.monthly
+		doexe "${FILESDIR}"/${PN}-update-drivedb
 	fi
-
-	# Move drivedb.h file out of PM's sight (bug #575292)
-	mv "${ED}"${db_path}/drivedb.h "${T}" || die
-	keepdir ${db_path}
-
-	exeinto /etc/cron.monthly
-	doexe "${FILESDIR}"/${PN}-update-drivedb
 }
 
 pkg_postinst() {
-	local db_path="/var/db/${PN}"
+	if ! use minimal ; then
+		local db_path="/var/db/${PN}"
 
-	if [[ -f "${db_path}/drivedb.h" ]] ; then
-		ewarn "WARNING! The drive database file has been replaced with the version that"
-		ewarn "got shipped with this release of ${PN}. You may want to update the"
-		ewarn "database by running the following command as root:"
-		ewarn ""
-		ewarn "/usr/sbin/update-smart-drivedb"
+		if [[ -f "${db_path}/drivedb.h" ]] ; then
+			ewarn "WARNING! The drive database file has been replaced with the version that"
+			ewarn "got shipped with this release of ${PN}. You may want to update the"
+			ewarn "database by running the following command as root:"
+			ewarn ""
+			ewarn "/usr/sbin/update-smart-drivedb"
+		fi
+
+		# Move drivedb.h to /var/db/${PN} (bug #575292)
+		mv "${T}"/drivedb.h ${db_path} || die
 	fi
-
-	# Move drivedb.h to /var/db/${PN} (bug #575292)
-	mv "${T}"/drivedb.h ${db_path} || die
 }
