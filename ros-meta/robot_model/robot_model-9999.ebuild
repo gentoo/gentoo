@@ -4,7 +4,7 @@
 
 EAPI=5
 ROS_REPO_URI="https://github.com/ros/robot_model"
-KEYWORDS="~amd64 ~arm"
+KEYWORDS="~amd64"
 ROS_SUBDIR=${PN}
 
 inherit ros-catkin
