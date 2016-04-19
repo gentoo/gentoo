@@ -9,7 +9,7 @@
 		<flag name="autoipd">Build and install the IPv4LL (RFC3927) network address
 		configuration daemon</flag>
 		<flag name="bookmarks">Install the avahi-bookmarks application (requires
-		<pkg>dev-python/twisted</pkg>)</flag>
+		<pkg>dev-python/twisted-core</pkg> and <pkg>dev-python/twisted-web</pkg>)</flag>
 		<flag name="howl-compat">Enable compat libraries for howl</flag>
 		<flag name="gtk3">Build the avahi-ui-gtk3 library, and use gtk3 for the
 		avahi utilities under USE=utils</flag>
