@@ -583,7 +583,7 @@ app-crypt/p11-kit 0.20.7 0.22.0 0.22.1 0.23.1 0.23.2: Provides a standard config
 app-crypt/paperkey 1.3: OpenPGP key archiver
 app-crypt/pdfcrack 0.13 0.14 0.15: Tool for recovering passwords and content from PDF-files
 app-crypt/pesign 0.108: Tools for manipulating signed PE-COFF binaries
-app-crypt/pgpdump 0.28-r1 0.29: A PGP packet visualizer
+app-crypt/pgpdump 0.29 0.30: A PGP packet visualizer
 app-crypt/pinentry 0.9.0 0.9.0-r3 0.9.5 0.9.6-r6 0.9.7: Collection of simple PIN or passphrase entry dialogs which utilize the Assuan protocol
 app-crypt/pius 2.0.11 2.2.1: A tool for signing and email all UIDs on a set of PGP keys
 app-crypt/pkcrack 1.2.2 1.2.2-r1: PkZip cipher breaker
