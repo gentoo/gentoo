@@ -1,9 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
-USE_RUBY="ruby19 ruby20 ruby21 ruby22"
+USE_RUBY="ruby20 ruby21 ruby22 ruby23"
 
 RUBY_FAKEGEM_DOCDIR="doc/site/api"
 RUBY_FAKEGEM_EXTRADOC="NEWS README.rdoc"
@@ -16,7 +16,7 @@ SRC_URI="http://download.augeas.net/ruby/${P}.gem"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~ia64 ~ppc ~sparc ~x86"
+KEYWORDS="amd64 hppa ia64 ppc sparc x86"
 IUSE=""
 
 RDEPEND=">=app-admin/augeas-1.1.0"
