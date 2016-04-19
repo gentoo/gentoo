@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Does your process have access to the web"
 
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm ~x86"
 IUSE="test"
 # https://rt.cpan.org/Public/Bug/Display.html?id=112728
 PATCHES=("${FILESDIR}/${DIST_VERSION}-no-network.patch")
