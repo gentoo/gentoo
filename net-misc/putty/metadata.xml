@@ -13,6 +13,6 @@
 		things not provided by ssh in an xterm.
 	</longdescription>
 	<use>
-		<flag name="gtk">Build the PuTTY client which requires <pkg>x11-libs/gtk</pkg> SLOT 2. Otherwise only the CLI tools puttygen, plink, pscp and psftp will be built.</flag>
+		<flag name="gtk">Build the PuTTY client which requires <pkg>x11-libs/gtk+</pkg>:2. Otherwise only the CLI tools puttygen, plink, pscp and psftp will be built.</flag>
 	</use>
 </pkgmetadata>
