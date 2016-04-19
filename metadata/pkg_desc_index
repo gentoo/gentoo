@@ -5322,7 +5322,7 @@ dev-perl/Compress-Bzip2 2.170.0 2.220.0 2.240.0: Interface to Bzip2 compression 
 dev-perl/Config-Any 0.260.0: Load configuration from different file formats, transparently
 dev-perl/Config-ApacheFormat 1.200.0-r1: use Apache format config files
 dev-perl/Config-Auto 0.440.0: Magical config file parser
-dev-perl/Config-AutoConf 0.311.0: A module to implement some of AutoConf macros in pure perl
+dev-perl/Config-AutoConf 0.311.0 0.313.0: A module to implement some of AutoConf macros in pure perl
 dev-perl/Config-Crontab 1.400.0: Read/Write Vixie compatible crontab(5) files
 dev-perl/Config-General 2.600.0: Config file parser module
 dev-perl/Config-Grammar 1.100.0-r1: A grammar-based, user-friendly config parser
@@ -12762,7 +12762,7 @@ media-plugins/kipi-plugins 4.4.0 4.12.0 4.14.0: Plugins for the KDE Image Plugin
 media-plugins/kodi-pvr-hts 16_p20160220 16.9999: Tvheadend Live TV and Radio PVR client addon for Kodi
 media-plugins/ladspa-bs2b 0.9.1: LADSPA plugin for bs2b headphone filter
 media-plugins/libvisual-plugins 0.4.0-r3: collection of visualization plugins for use with the libvisual framework
-media-plugins/libvisual-projectm 2.0.1 2.1.0: A libvisual graphical music visualization plugin similar to milkdrop
+media-plugins/libvisual-projectm 2.1.0: A libvisual graphical music visualization plugin similar to milkdrop
 media-plugins/live 2013.02.11 2016.02.09 2016.02.22 2016.03.16 2016.04.01: Libraries for standards-based RTP/RTCP/RTSP multimedia streaming
 media-plugins/mcp-plugins 0.4.0 0.4.0-r1: MCP ladspa plugins package. Includes moogvcf, phaser & chorus
 media-plugins/mda-lv2 1.0.0 1.2.2: LV2 port of the MDA plugins by Paul Kellett
@@ -15031,7 +15031,7 @@ net-print/pykota 1.26: Flexible print quota and accounting package for use with 
 net-print/splix 2.0.0_p20111206 2.0.0_p20130826: A set of CUPS printer drivers for SPL (Samsung Printer Language) printers
 net-print/sshlpr 1: ssh-lpr backend for cups -- print to remote systems over ssh
 net-print/xerox-drivers 0_p20080123: PPD files of XEROX printers (CopyCentre, DocuPrint, Phaser, WorkCentre) for CUPS printing system
-net-proxy/3proxy 0.5.3k 0.6.1 0.7.1.2 0.7.1.4 0.8.6: A really tiny cross-platform proxy servers set
+net-proxy/3proxy 0.5.3k 0.7.1.2 0.7.1.4 0.8.6: A really tiny cross-platform proxy servers set
 net-proxy/adzapper 20110915-r2: Redirector for squid that intercepts advertising, page counters and some web bugs
 net-proxy/bfilter 1.1.4-r2 1.1.4-r3: Ad-filtering web proxy featuring an effective heuristic ad-detection algorithm
 net-proxy/c-icap 0.2.6: C Implementation of an ICAP server
@@ -16996,13 +16996,13 @@ sys-fs/dfc 3.0.5-r1: A simple CLI tool that display file system usage, with colo
 sys-fs/diskdev_cmds 332.14 332.14_p1: HFS and HFS+ utils ported from OSX, supplies mkfs and fsck
 sys-fs/dislocker 0.5.2 0.6.1 9999: Dislocker is used to read BitLocker encrypted partitions.
 sys-fs/dmg2img 1.6.4 1.6.5: Converts Apple DMG files to standard HFS+ images
-sys-fs/dmraid 1.0.0_rc14 1.0.0_rc15 1.0.0_rc16-r3: Device-mapper RAID tool and library
+sys-fs/dmraid 1.0.0_rc16-r3: Device-mapper RAID tool and library
 sys-fs/dosfstools 3.0.26 3.0.27 3.0.28: DOS filesystem tools - provides mkdosfs, mkfs.msdos, mkfs.vfat
 sys-fs/duperemove 0.09.1 0.09.2 0.09.3 0.09.4 0.09.5 0.10: Btrfs deduplication utility
 sys-fs/e2fsprogs 1.41.7-r1 1.42.13: Standard EXT2/EXT3/EXT4 filesystem utilities
 sys-fs/e2tools 0.0.16: utilities to read, write, and manipulate files in an ext2/ext3 filesystem
 sys-fs/e4rat 0.2.3-r1 0.2.4_pre20141201: Toolset to accelerate the boot process and application startup
-sys-fs/ecryptfs-utils 104 108: eCryptfs userspace utilities
+sys-fs/ecryptfs-utils 108: eCryptfs userspace utilities
 sys-fs/encfs 1.7.5 1.8.1 1.8.1-r1: An implementation of encrypted filesystem in user-space using FUSE
 sys-fs/etcd-fs 0_p20140620: Use etcd as a FUSE filesystem
 sys-fs/eudev 1.9-r2 1.10-r2 3.1.2 3.1.5 9999: Linux dynamic and persistent device naming support (aka userspace devfs)
@@ -17016,7 +17016,7 @@ sys-fs/fur 0.5: A RAPI (SynCE) based FUSE module
 sys-fs/fuse 2.9.4 2.9.5: An interface for filesystems implemented in userspace
 sys-fs/fuse-convmvfs 0.2.6: FUSE file system to convert filename charset
 sys-fs/fuse-exfat 1.0.1 1.1.0 1.2.2 1.2.3: exFAT filesystem FUSE module
-sys-fs/fuse-zip 0.2.12 0.2.13 0.3.0 0.4.0: FUSE file system to navigate, extract, create and modify ZIP archives
+sys-fs/fuse-zip 0.3.0 0.4.0: FUSE file system to navigate, extract, create and modify ZIP archives
 sys-fs/fuse4bsd 0.3.0 0.3.9_pre1: Fuse for FreeBSD
 sys-fs/fuseiso 20070708-r1: Fuse module to mount ISO9660
 sys-fs/genext2fs 1.4.1: generate ext2 file systems
@@ -17038,7 +17038,7 @@ sys-fs/libeatmydata 65 82 82-r1 105-r1: LD_PRELOAD hack to convert sync()/msync(
 sys-fs/libfat 0.3a: Support library to access and manipulate FAT12 / FAT16 / FAT32 file systems
 sys-fs/loop-aes 3.7b 3.7c 3.7e 3.7f: Linux kernel module to encrypt local file systems and disk partitions with AES cipher
 sys-fs/lsscsi 0.28: SCSI sysfs query tool
-sys-fs/lufis 0.2 0.3: Wrapper to use lufs modules with fuse kernel support
+sys-fs/lufis 0.3: Wrapper to use lufs modules with fuse kernel support
 sys-fs/lufs 0.9.7-r3: User-mode filesystem implementation
 sys-fs/lvm2 2.02.116 2.02.116-r1 2.02.116-r2 2.02.116-r4 2.02.116-r5 2.02.116-r6 2.02.136 2.02.136-r1 2.02.136-r2 2.02.139 2.02.139-r1 2.02.145 2.02.145-r1 2.02.145-r2: User-land utilities for LVM2 (device-mapper) software
 sys-fs/lxcfs 0.17 2.0.0_beta2 2.0.0: FUSE filesystem for LXC
@@ -17060,11 +17060,11 @@ sys-fs/progsreiserfs 0.3.1_rc8: Library for accessing and manipulating reiserfs 
 sys-fs/pysize 0.2-r1: A graphical and console tool for exploring the size of directories
 sys-fs/pytagsfs 0.9.2: File system that arranges media files based their tags
 sys-fs/quota 3.17-r1 4.02 4.03: Linux quota tools
-sys-fs/quotatool 1.4.6 1.4.11 1.4.12 1.4.13 1.5.0 1.6.0 1.6.1 1.6.2: command-line utility for filesystem quotas
+sys-fs/quotatool 1.4.6 1.4.13 1.5.0 1.6.0 1.6.1 1.6.2: command-line utility for filesystem quotas
 sys-fs/rar2fs 1.20.0 1.21.0 1.22.0: A FUSE based filesystem that can mount one or multiple RAR archive(s)
 sys-fs/rarfs 0.1.1: Fuse module to mount uncompressed RAR archives
 sys-fs/redirfs 0.8 0.10.20120313 9999: Layer between virtual file system switch and file system drivers
-sys-fs/reiser4progs 1.0.7 1.0.8 1.0.9 1.1.0: reiser4progs: mkfs, fsck, etc...
+sys-fs/reiser4progs 1.0.9 1.1.0: reiser4progs: mkfs, fsck, etc...
 sys-fs/reiserfs-defrag 0.2.1 0.2.2: Small defragmentation tool for reiserfs
 sys-fs/reiserfsprogs 3.6.21-r1 3.6.23 3.6.24: Reiserfs Utilities
 sys-fs/s3backer 1.3.7: FUSE-based single file backing store via Amazon S3
