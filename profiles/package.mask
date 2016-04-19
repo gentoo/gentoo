@@ -75,7 +75,7 @@ dev-java/freehep-xml
 # Richard Freeman <rich0@gentoo.org> (16 Apr 2016)
 # Masked for extended testing, and porting of openrc scripts
 # if necessary.
->=media-tv/mythv-0.28
+>=media-tv/mythtv-0.28
 >=media-plugins/mythplugins-0.28
 >=www-apps/mythweb-0.28
 
