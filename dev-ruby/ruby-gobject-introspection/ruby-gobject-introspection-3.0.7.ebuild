@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -27,15 +27,6 @@ all_ruby_prepare() {
 
 	# Avoid compilation of dependencies during test.
 	sed -i -e '/system/,/^  end/ s:^:#:' test/run-test.rb || die
-}
-
-each_ruby_prepare() {
-	case ${RUBY} in
-		*ruby19)
-			# Avoid test with ruby20+ code.
-			rm -f test/test-repository.rb || die
-			;;
-	esac
 }
 
 each_ruby_test() {
