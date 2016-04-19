@@ -8346,8 +8346,8 @@ dev-ros/carrot_planner 1.13.0 1.13.1 9999: Attempts to find a legal place to put
 dev-ros/class_loader 0.3.2 0.3.3 9999: ROS-independent package for loading plugins
 dev-ros/clear_costmap_recovery 1.13.0 1.13.1 9999: Recovery behavior that attempts to clear space by reverting the costmaps to the static map
 dev-ros/cmake_modules 0.4.0 9999: CMake Modules which are not distributed with CMake but are commonly used by ROS packages
-dev-ros/collada_parser 1.11.8 1.11.9 1.11.10 1.12.0 9999: C++ parser for the Collada robot description format
-dev-ros/collada_urdf 1.11.8 1.11.9 1.11.10 1.12.0 9999: Tool to convert Unified Robot Description Format (URDF) documents into COLLADA documents
+dev-ros/collada_parser 1.11.8 1.11.9 1.11.10 1.12.0 1.12.2 9999: C++ parser for the Collada robot description format
+dev-ros/collada_urdf 1.11.8 1.11.9 1.11.10 1.12.0 1.12.2 9999: Tool to convert Unified Robot Description Format (URDF) documents into COLLADA documents
 dev-ros/compressed_depth_image_transport 1.9.2-r1 1.9.3 9999: Plugin to image_transport for transparently sending depth images using PNG compression
 dev-ros/compressed_image_transport 1.9.2-r1 1.9.3 9999: Plugin to image_transport for transparently sending images encoded as JPEG or PNG
 dev-ros/control_msgs 1.3.1 9999: Base messages and actions useful for controlling robots
@@ -8417,11 +8417,11 @@ dev-ros/interactive_markers 1.11.1 9999: 3D interactive marker communication lib
 dev-ros/interval_intersection 0.10.13 9999: Tools for calculating the intersection of interval messages coming in on several topics
 dev-ros/ivcon 0.1.5 9999: Mesh Conversion Utility
 dev-ros/joint_limits_interface 0.9.3 0.10.0 9999: Interface for enforcing joint limits
-dev-ros/joint_state_publisher 1.11.8 1.11.9 1.11.10 1.12.0 9999: Tool for setting and publishing joint state values for a given URDF
+dev-ros/joint_state_publisher 1.11.8 1.11.9 1.11.10 1.12.0 1.12.2 9999: Tool for setting and publishing joint state values for a given URDF
 dev-ros/joint_states_settler 0.10.13 9999: Reports how long a subset of joints has been settled
 dev-ros/kdl_conversions 1.11.7 1.11.8 9999: Conversion functions between KDL and geometry_msgs types
-dev-ros/kdl_parser 1.11.8 1.11.9 1.11.10 1.12.0 9999: Constructs a KDL tree from an XML robot representation in URDF
-dev-ros/kdl_parser_py 1.11.9 1.11.10 1.12.0 9999: Python tools to construct a KDL tree from an XML robot representation in URDF
+dev-ros/kdl_parser 1.11.8 1.11.9 1.11.10 1.12.0 1.12.2 9999: Constructs a KDL tree from an XML robot representation in URDF
+dev-ros/kdl_parser_py 1.11.9 1.11.10 1.12.0 1.12.2 9999: Python tools to construct a KDL tree from an XML robot representation in URDF
 dev-ros/laser_assembler 1.7.3 9999: Nodes to assemble point clouds from either LaserScan or PointCloud messages
 dev-ros/laser_cb_detector 0.10.13 9999: Extracts checkerboard corners from a dense laser snapshot
 dev-ros/laser_filters 1.8.0 1.8.1 1.8.2 9999: Assorted filters designed to operate on 2D planar laser scanners
@@ -8620,8 +8620,8 @@ dev-ros/turtle_tf 0.2.2 9999: Demonstrates how to write a tf broadcaster and lis
 dev-ros/turtle_tf2 0.2.2 9999: Demonstrates how to write a tf2 broadcaster and listener with the turtlesim
 dev-ros/turtlesim 0.6.1 0.7.0 9999: Tool made for teaching ROS and ROS packages
 dev-ros/unique_id 1.0.5 9999: ROS Python and C++ interfaces for universally unique identifiers
-dev-ros/urdf 1.11.8 1.11.9 1.11.10 1.12.0 9999: C++ parser for the Unified Robot Description Format (URDF)
-dev-ros/urdf_parser_plugin 1.11.8 1.11.9 1.11.10 1.12.0 9999: C++ base class for URDF parsers
+dev-ros/urdf 1.11.8 1.11.9 1.11.10 1.12.0 1.12.2 9999: C++ parser for the Unified Robot Description Format (URDF)
+dev-ros/urdf_parser_plugin 1.11.8 1.11.9 1.11.10 1.12.0 1.12.2 9999: C++ base class for URDF parsers
 dev-ros/urdf_tutorial 0.2.4 9999: URDF tutorials
 dev-ros/urg_c 1.0.404 9999: URG Helper / URG Widget / URG Library / urg_c
 dev-ros/urg_node 0.1.9 9999: ROS wrapper for the Hokuyo urg_c library
@@ -15233,7 +15233,7 @@ ros-meta/perception_pcl 1.3.0 9999: PCL (Point Cloud Library) ROS interface stac
 ros-meta/pr2_common 1.11.9 1.11.10 1.11.11 1.11.13 1.11.14 9999: URDF description and 3D models of robot components of the PR2 robot
 ros-meta/qt_gui_core 0.2.29 0.2.30 0.3.0 9999: Integration of the ROS package system and ROS-specific plugins for a Qt-based GUI
 ros-meta/robot 1.2.0 9999: Metapackage which extends ros_base and includes ROS libaries for any robot hardware
-ros-meta/robot_model 1.11.8 1.11.9 1.11.10 1.12.0 9999: Packages for modeling various aspects of robot information
+ros-meta/robot_model 1.11.8 1.11.9 1.11.10 1.12.0 1.12.2 9999: Packages for modeling various aspects of robot information
 ros-meta/ros 1.12.3 1.12.5 1.13.1 9999: ROS packaging system
 ros-meta/ros_base 1.2.0 9999: Metapackage which extends ros_core and includes other basic non-robot tools
 ros-meta/ros_comm 1.11.14 1.11.15 1.11.16 1.11.17 1.12.0 9999: ROS communications-related packages
@@ -16000,7 +16000,7 @@ sci-mathematics/reduce 20110414-r1: A general-purpose computer algebra system
 sci-mathematics/relational 0.11: Qt4 relational algebra application
 sci-mathematics/rkward 0.6.1: IDE for the R-project
 sci-mathematics/rngstreams 1.0.1: Multiple independent streams of pseudo-random numbers
-sci-mathematics/rstudio 0.97.336 0.97.551 0.98.490 0.98.490-r1 0.98.932 0.98.953 0.98.1028 0.98.1091 0.99.473-r1 0.99.482 0.99.483 0.99.484 0.99.486-r1 0.99.491 0.99.879 0.99.893: IDE for the R language
+sci-mathematics/rstudio 0.97.336 0.97.551 0.98.490 0.98.490-r1 0.98.932 0.98.953 0.98.1028 0.98.1091 0.99.473-r1 0.99.482 0.99.483 0.99.484 0.99.486-r1 0.99.491 0.99.879 0.99.893 0.99.896: IDE for the R language
 sci-mathematics/rw 0.7: Compute rank-width decompositions of graphs
 sci-mathematics/sha1-polyml 5.5.0: implementation of SHA1 is taken from the GNU coreutils package
 sci-mathematics/singular 3.1.6 4.0.2: Computer algebra system for polynomial computations
