@@ -6,7 +6,7 @@
 <name>Gentoo network monitoring and analysis project</name>
 </maintainer>
 <use>
-<flag name="gtk2">Install the gtkpinger GUI utility based on <pkg>x11-libs/gtk-2</pkg></flag>
-<flag name="gtk3">Install the gtkpinger GUI utility based on <pkg>x11-libs/gtk-3</pkg></flag>
+<flag name="gtk2">Install the gtkpinger GUI utility based on <pkg>x11-libs/gtk+</pkg>:2</flag>
+<flag name="gtk3">Install the gtkpinger GUI utility based on <pkg>x11-libs/gtk+</pkg>:3</flag>
 </use>
 </pkgmetadata>
