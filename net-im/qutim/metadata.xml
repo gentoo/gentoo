@@ -34,7 +34,7 @@
 	<flag name="webkit">Enable Adium-like WebView plugin</flag>
 	<flag name="xscreensaver">Use X screensaver protocol extension to monitor idle/active status based on mouse/keyboard events</flag>
 	<flag name="tools">Enable some extra tools for qt developers</flag>
-	<flag name="telepathy">Enable to connect various IMs through <pkg>net-im/telepathy</pkg></flag>
+	<flag name="telepathy">Enable to connect various IMs through <pkg>net-libs/telepathy-qt</pkg></flag>
 	<flag name="antiboss">Enable support for the antiboss plugin</flag>
 	<flag name="espionage">!!Not recomended, contains privacy risk!! Enable control plugin that controls user by sending messages and roster to remote server</flag>
 	<flag name="mobility">Enable several mobility related plugins like vibro notification</flag>
