@@ -14,7 +14,7 @@
 
 inherit java-utils-2
 
-DEPEND=">=dev-java/java-config-2.2.0"
+DEPEND=">=dev-java/java-config-2.2.0-r3"
 RDEPEND="${DEPEND}"
 
 S="${WORKDIR}"
