@@ -2196,7 +2196,7 @@ app-text/catdoc 0.94.4 0.94.4-r1: Converter for Microsoft Word, Excel, PowerPoin
 app-text/cb2bib 1.4.9 1.5.0: Tool for extracting unformatted bibliographic references
 app-text/cedilla 0.6: UTF-8 to postscript converter
 app-text/chasen 2.4.4-r3: Japanese Morphological Analysis System, ChaSen
-app-text/cherrytree 0.36.9: A hierarchical note taking application
+app-text/cherrytree 0.36.9-r1: A hierarchical note taking application
 app-text/chm2pdf 0.9.1-r1 0.9.1-r2: A script that converts a CHM file into a single PDF file
 app-text/clara 20031214: An OCR (Optical Character Recognition) program
 app-text/cmigemo 1.3c 1.3c-r1 1.3c-r2: C/Migemo -- Migemo library implementation in C
