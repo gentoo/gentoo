@@ -12,7 +12,7 @@
   <use>
     <flag name="api">Installs the initscripts for the cinder api service</flag>
     <flag name="iscsi">Allow using an iSCSI remote storage server as pool for disk image storage</flag>
-    <flag name="lvm">Allow using the Logical Volume Manager (<pkg>sys-apps/lvm2</pkg>) as pool for disk image storage</flag>
+    <flag name="lvm">Allow using the Logical Volume Manager (<pkg>sys-fs/lvm2</pkg>) as pool for disk image storage</flag>
     <flag name="memcached">Installs the memcached server</flag>
     <flag name="scheduler">Installs the initscripts for the cinder scheduler service</flag>
     <flag name="volume">Installs the initscripts for the cinder volume service</flag>
