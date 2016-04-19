@@ -26,7 +26,7 @@
 	<flag name="pic">Force shared libraries to be built as PIC (this is slower).</flag>
 	<flag name="rtmp">Enable Real Time Messaging Protocol using librtmp instead the native implementation.</flag>
 	<flag name="schroedinger">Enable Dirac video support (an advanced royalty-free video compression format) via libschroedinger (high-speed implementation in C of the Dirac codec).</flag>
-	<flag name="ssl">Enable SSL/TLS support using <pkg>dev-libs/openssl</pkg> or <pkg>dev-libs/gnutls</pkg>.</flag>
+	<flag name="ssl">Enable SSL/TLS support using <pkg>dev-libs/openssl</pkg> or <pkg>net-libs/gnutls</pkg>.</flag>
 	<flag name="tools">Build and install small tools like aviocat, cws2fws, graph2dot, ismindex, qt-faststart.</flag>
 	<flag name="twolame">Enable MP2 encoding via <pkg>media-sound/twolame</pkg> as an alternative to the internal encoder</flag>
 	<flag name="vis"> Adds support for SIMD optimizations for UltraSPARC processors.</flag>
