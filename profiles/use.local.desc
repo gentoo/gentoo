@@ -3303,7 +3303,7 @@ kde-apps/step:qalculate - Enable the libqalculate library for unit conversion
 kde-base/kdebase-startkde:wallpapers - Install the KDE wallpapers
 kde-base/kdelibs:opengl - Enable OpenGL support for Plasma (GLApplet)
 kde-base/kdeplasma-addons:attica - Enable support for dev-libs/libattica
-kde-base/kdeplasma-addons:desktopglobe - Enable Desktop Globe wallpaper using kde-base/marble
+kde-base/kdeplasma-addons:desktopglobe - Enable Desktop Globe wallpaper using kde-apps/marble
 kde-base/kdeplasma-addons:eigen - Build Mandelbrot wallpaper plugin using dev-cpp/eigen using SLOT 2
 kde-base/kdeplasma-addons:fcitx - Use fcitx input method via app-i18n/fcitx
 kde-base/kdeplasma-addons:ibus - Use ibus input method via app-i18n/ibus
@@ -3321,13 +3321,13 @@ kde-base/kimono:plasma - Compile bindings for KDE's Plasma
 kde-base/klipper:prison - Enable support for barcodes/QRcodes
 kde-base/korundum:akonadi - Compile bindings for Akonadi
 kde-base/korundum:kate - Compile bindings for KDE Advanced Text Editor
-kde-base/korundum:okular - Compile bindings for kde-base/okular
+kde-base/korundum:okular - Compile bindings for kde-apps/okular
 kde-base/kwin:gles - Enable support for GLES.
 kde-base/libplasmaclock:kdepim - KDE PIM integration via kde-apps/kdepimlibs
 kde-base/perlkde:akonadi - Compile bindings for Akonadi
 kde-base/perlkde:attica - Compile bindings for dev-libs/libattica
 kde-base/perlkde:kate - Compile bindings for KDE Advanced Text Editor
-kde-base/perlkde:okular - Compile bindings for kde-base/okular
+kde-base/perlkde:okular - Compile bindings for kde-apps/okular
 kde-base/perlqt:declarative - Compile bindings for dev-qt/qtdeclarative.
 kde-base/perlqt:multimedia - Compile bindings for dev-qt/qtmultimedia.
 kde-base/perlqt:phonon - Compile bindings for Phonon.
@@ -3352,7 +3352,7 @@ kde-base/qyoto:webkit - Compile bindings for dev-qt/qtwebkit.
 kde-base/smokekde:akonadi - Compile bindings for Akonadi
 kde-base/smokekde:attica - Compile bindings for dev-libs/libattica
 kde-base/smokekde:kate - Compile bindings for KDE Advanced Text Editor
-kde-base/smokekde:okular - Compile bindings for kde-base/okular
+kde-base/smokekde:okular - Compile bindings for kde-apps/okular
 kde-base/smokeqt:declarative - Compile bindings for dev-qt/qtdeclarative.
 kde-base/smokeqt:multimedia - Compile bindings for dev-qt/qtmultimedia.
 kde-base/smokeqt:phonon - Compile bindings for Phonon.
@@ -3391,7 +3391,7 @@ kde-misc/kcm-grub2:imagemagick - Create splash images compatible with GRUB2
 kde-misc/kcm-grub2:packagekit - Add support for packagekit integration
 kde-misc/kdeconnect:app - Enable experimental kcapp frontend
 kde-misc/kdeconnect:telepathy - Enable net-libs/telepathy-qt support to receive text messages and respond to them
-kde-misc/kdeconnect:wayland - Enable kwin_wayland support for mousepad plugin using kde-frameworks/kwayland
+kde-misc/kdeconnect:wayland - Enable kwin_wayland support for mousepad plugin using kde-plasma/kwayland
 kde-misc/kepas:oscar - Enables ICQ (AIM) support.
 kde-misc/kimtoy:scim - Enable Smart Common Input Method support
 kde-misc/krusader:bookmarks - Add dependency on bookmark package.
@@ -4393,7 +4393,7 @@ media-sound/mpfc:wav - Enable wav audio codec support
 media-sound/mpg123:int-quality - Use rounding instead of fast truncation for integer output, where possible
 media-sound/mumble:g15 - Enable support for the Logitech G15 LCD (and compatible devices).
 media-sound/mumble:speech - Enable text-to-speech support in Mumble.
-media-sound/murmur:ice - Use dev-cpp/Ice to enable remote control capabilities.
+media-sound/murmur:ice - Use dev-libs/Ice to enable remote control capabilities.
 media-sound/ncmpc:artist-screen - Enable artist screen
 media-sound/ncmpc:chat-screen - Enable the chat screen
 media-sound/ncmpc:colors - Enable color support
@@ -4701,7 +4701,7 @@ media-video/h264enc:ogm - Support for OGM container format
 media-video/handbrake:fdk - Support for encoding AAC using media-libs/fdk-aac.
 media-video/handbrake:gstreamer - Support for the streaming media framework from media-libs/gstreamer.
 media-video/handbrake:gtk - Support for Gimp ToolKit + from x11-libs/gtk+, requirement for a GUI-based HandBrake.
-media-video/handbrake:libav-aac - Support for encoding AAC using media-libs/libav's internal encoder.
+media-video/handbrake:libav-aac - Support for encoding AAC using media-video/libav's internal encoder.
 media-video/handbrake:x265 - Support for encoding h265 using media-libs/x265.
 media-video/kino:gpac - Enable GPAC support when exporting to 3GPP format
 media-video/kmplayer:npp - Compile the npp backend that plays xembed style browser plugins.
@@ -4726,7 +4726,7 @@ media-video/libav:pic - Force shared libraries to be built as PIC (this is slowe
 media-video/libav:pulseaudio - Enable pulseaudio input support.
 media-video/libav:rtmp - Enable Real Time Messaging Protocol using librtmp instead the native implementation.
 media-video/libav:schroedinger - Enable Dirac video support (an advanced royalty-free video compression format) via libschroedinger (high-speed implementation in C of the Dirac codec).
-media-video/libav:ssl - Enable SSL/TLS support using dev-libs/openssl or dev-libs/gnutls.
+media-video/libav:ssl - Enable SSL/TLS support using dev-libs/openssl or net-libs/gnutls.
 media-video/libav:tools - Build and install small tools like aviocat, cws2fws, graph2dot, ismindex, qt-faststart.
 media-video/libav:twolame - Enable MP2 encoding via media-sound/twolame as an alternative to the internal encoder
 media-video/libav:vis - Adds support for SIMD optimizations for UltraSPARC processors.
@@ -4832,7 +4832,7 @@ media-video/vdr:alternatechannel - Use alternate channel on record
 media-video/vdr:bidi - fribidi support, for languages, written from right to left
 media-video/vdr:ddepgentry - remove duplicate EPG entries
 media-video/vdr:dvlvidprefer - controls video-dir choice on recording
-media-video/vdr:graphtft - support for media-plugins/vdr-grapftftplugin up from vdr-graphtft-0.1.7
+media-video/vdr:graphtft - support for media-plugins/vdr-graphtftplugin up from version 0.1.7
 media-video/vdr:html - Install HTML documentation
 media-video/vdr:jumpingseconds - skip seconds in played records
 media-video/vdr:jumpplay - Enables automatic jumping over cut marks while watching a recording
@@ -4841,12 +4841,12 @@ media-video/vdr:mainmenuhooks - Allows to replace main menu entries by some spec
 media-video/vdr:menuorg - Enables support for the media-plugins/vdr-menuorg
 media-video/vdr:menuselection - adds support for menu hotkeys of double digits
 media-video/vdr:naludump - Removes NALU fill data from h.264-Streams of TS files
-media-video/vdr:permashift - permanent timeshift by recording live TV on hard disk, need plugin media-plugins/vdr-vdr-permashift
+media-video/vdr:permashift - permanent timeshift by recording live TV on hard disk, need plugin media-plugins/vdr-permashift
 media-video/vdr:permashift_v1 - permanent timeshift by recording live TV on RAM, need plugin >=mediaplugins/vdr-permashift-1
 media-video/vdr:pinplugin - Support for media-plugins/vdr-pin
 media-video/vdr:resumereset - rreset resume of EOF
 media-video/vdr:rotor - Enable support for plugin media-plugins/vdr-rotor for dish-positioner.
-media-video/vdr:ttxtsubs - support for media-pugins/vdr-ttxtsubs
+media-video/vdr:ttxtsubs - support for media-plugins/vdr-ttxtsubs
 media-video/vdr:vasarajanauloja - replacement for the liemikuutio patch, adds some nice must haves features
 media-video/vdr:wareagleicon - Replace original icon set in menu
 media-video/vdr:yaepg - Enables support for the media-plugins/vdr-yaepg
