@@ -11,8 +11,6 @@
 	<use>
 		<flag name="ssh">enable support for ssh connections</flag>
 		<flag name="telnet">enable support for telnet connections</flag>
-		<flag name="terminal">enable support for terminal sessions</flag>
-		<flag name="pango">enable pango rendering</flag>
 	</use>
 	<upstream>
 		<remote-id type="sourceforge">guacamole</remote-id>
