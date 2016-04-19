@@ -21,7 +21,6 @@ IUSE="fortran"
 RDEPEND="dev-lang/perl"
 
 DEPEND="${RDEPEND}
-	sys-apps/sed
 	fortran? ( sys-devel/gcc:*[fortran] )
 	dev-lang/lua:0"
 
