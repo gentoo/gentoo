@@ -30,10 +30,10 @@
 
 if [[ "${SSL_DEPS_SKIP}" == "0" ]]; then
 	if [[ "${SSL_CERT_MANDATORY}" == "0" ]]; then
-		DEPEND="${SSL_CERT_USE}? ( dev-libs/openssl:0 )"
+		DEPEND="${SSL_CERT_USE}? ( || ( dev-libs/openssl:0 dev-libs/libressl:0 ) )"
 		IUSE="${SSL_CERT_USE}"
 	else
-		DEPEND="dev-libs/openssl:0"
+		DEPEND="|| ( dev-libs/openssl:0 dev-libs/libressl:0 )"
 	fi
 fi
 
@@ -113,8 +113,12 @@ get_base() {
 gen_key() {
 	local base=$(get_base "$1")
 	ebegin "Generating ${SSL_BITS} bit RSA key${1:+ for CA}"
-	openssl genrsa -rand "${SSL_RANDOM}" \
-		-out "${base}.key" "${SSL_BITS}" &> /dev/null
+	if openssl version | grep -i libressl > /dev/null; then
+		openssl genrsa -out "${base}.key" "${SSL_BITS}" &> /dev/null
+	else
+		openssl genrsa -rand "${SSL_RANDOM}" \
+			-out "${base}.key" "${SSL_BITS}" &> /dev/null
+	fi
 	eend $?
 
 	return $?
