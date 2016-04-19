@@ -8,6 +8,7 @@
   <use>
     <flag name="memleak">Enable memory-leaks detector (only for developers)</flag>
     <flag name="static">Link against static version of C and C++ runtimes</flag>
+    <flag name="webp">Enable webp image format support</flag>
   </use>
   <upstream>
     <remote-id type="github">aseprite/aseprite</remote-id>
