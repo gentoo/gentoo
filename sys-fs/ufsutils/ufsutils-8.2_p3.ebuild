@@ -4,7 +4,7 @@
 
 EAPI=4
 
-inherit eutils
+inherit eutils toolchain-funcs
 
 DESCRIPTION="FFS/UFS/UFS2 filesystem utilities from FreeBSD"
 HOMEPAGE="http://packages.debian.org/source/sid/ufsutils"
@@ -34,7 +34,12 @@ src_prepare() {
 
 	sed -e "s:^\(prefix = \)\(.*\):\1${EPREFIX}usr:" \
 		-e "s:^\(libdir = \$(exec_prefix)\/\)\(.*\):\1$(get_libdir):" \
+		-e "/ar rcs/s:ar:\$(AR):" \
 		-i Makefile.common
+}
+
+src_configure() {
+	tc-export AR CC
 }
 
 src_compile(){
