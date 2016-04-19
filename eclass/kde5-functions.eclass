@@ -274,7 +274,7 @@ punt_bogus_dep() {
 	sed -e "${first},${last}s/${dep}//" -i CMakeLists.txt || die
 
 	if [[ ${length} = 1 ]] ; then
-		sed -e "/find_package\s*(\s*${prefix}\s*\(REQUIRED\)*\s*\(COMPONENTS\)*\s*)/I d" -i CMakeLists.txt || die
+		sed -e "/find_package\s*(\s*${prefix}\(\s\+\(REQUIRED\|CONFIG\|COMPONENTS\|\${KF5_VERSION}\)\)\+\s*)/Is/^/# removed by kde5-functions.eclass - /" -i CMakeLists.txt || die
 	fi
 }
 
