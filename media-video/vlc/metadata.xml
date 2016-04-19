@@ -61,7 +61,7 @@
 		<flag name="rtsp">Enables real audio and RTSP modules.</flag>
 		<flag name="run-as-root">Allows vlc to start for root. Don't enable this unless you have a very specific (e.g. embedded) need for it!</flag>
 		<flag name="schroedinger">Enable Dirac video support (an advanced royalty-free video compression format) via libschroedinger (high-speed implementation in C of the Dirac codec).</flag>
-		<flag name="sid">Adds support for playing C64 SID files through <pkg>media-libs/libsidplay-2</pkg>.</flag>
+		<flag name="sid">Adds support for playing C64 SID files through <pkg>media-libs/libsidplay</pkg>:2.</flag>
 		<flag name="sdl-image">Enables sdl image video decoder (depends on sdl)</flag>
 		<flag name="sftp">Enables libssh2 to support SFTP file transfer.</flag>
 		<flag name="shout">Enables libshout output.</flag>
