@@ -36,6 +36,7 @@ src_prepare() {
 	epatch "${FILESDIR}/${P}-underlinking.patch"
 	epatch "${FILESDIR}/${P}-rl_completion_matches-detection.patch"
 	epatch "${FILESDIR}/${P}-fix-pointers-aliasing.patch"
+	epatch "${FILESDIR}/${P}-sysmacros.patch" #580204
 	eautoreconf
 }
 
