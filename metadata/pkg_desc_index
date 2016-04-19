@@ -10791,7 +10791,7 @@ games-strategy/heroes3-demo 1.3.1a: turn-based 2D medieval combat
 games-strategy/ja2-stracciatella 0.12.1_p7072: A port of Jagged Alliance 2 to SDL
 games-strategy/ja2-stracciatella-data 1: A port of Jagged Alliance 2 to SDL (data files)
 games-strategy/knights-demo 1.32-r1: Anglo-Saxon medieval army battles and resource management
-games-strategy/lgeneral 1.3.1: A Panzer General clone written in SDL
+games-strategy/lgeneral 1.3.1 1.3.1-r1: A Panzer General clone written in SDL
 games-strategy/lightyears 1.4-r1: a single-player game with a science-fiction theme
 games-strategy/liquidwar 5.6.4-r1: unique multiplayer wargame
 games-strategy/liquidwar6 0.4.3681-r1: Unique multiplayer wargame between liquids
