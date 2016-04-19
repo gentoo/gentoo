@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install postinst prepare setup
-DEPEND=apache2_modules_http2? ( >=net-libs/nghttp2-1.2.1 ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 ssl? ( dev-libs/openssl:0 ) dev-lang/perl =dev-libs/apr-1* =dev-libs/apr-util-1*[ldap?] dev-libs/libpcre apache2_modules_deflate? ( sys-libs/zlib ) apache2_modules_mime? ( app-misc/mime-types ) ldap? ( =net-nds/openldap-2* ) ssl? ( !libressl? ( >=dev-libs/openssl-1.0.2:0= ) libressl? ( dev-libs/libressl:= ) ) !=www-servers/apache-1* virtual/pkgconfig
+DEPEND=apache2_modules_http2? ( >=net-libs/nghttp2-1.2.1 ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 ssl? ( || ( dev-libs/openssl:0 dev-libs/libressl:0 ) ) dev-lang/perl =dev-libs/apr-1* =dev-libs/apr-util-1*[ldap?] dev-libs/libpcre apache2_modules_deflate? ( sys-libs/zlib ) apache2_modules_mime? ( app-misc/mime-types ) ldap? ( =net-nds/openldap-2* ) ssl? ( !libressl? ( >=dev-libs/openssl-1.0.2:0= ) libressl? ( dev-libs/libressl:= ) ) !=www-servers/apache-1* virtual/pkgconfig
 DESCRIPTION=The Apache Web Server
 EAPI=5
 HOMEPAGE=http://httpd.apache.org/
@@ -12,5 +12,5 @@ REQUIRED_USE=apache2_modules_http2? ( ssl )
 SLOT=2
 SRC_URI=mirror://apache/httpd/httpd-2.4.20.tar.bz2 https://dev.gentoo.org/~polynomial-c/dist/apache/gentoo-apache-2.4.18-r1-20160303.tar.bz2
 _eclass_exported_funcs=pkg_postinst:- pkg_setup:- src_prepare:apache-2 src_configure:- src_compile:- src_install:-
-_eclasses_=apache-2	d6aa6adb26a2cae934a099a0c82c6128	autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	9d81603248f2ba3ec59124320d123e5e	flag-o-matic	d270fa247153df66074f795fa42dba3e	libtool	4890219c51da247200223277f993e054	multilib	23ae8c186171e6476af098d2a50d0ee0	ssl-cert	6f7d720c036362122b0bfb4461e56a11	systemd	3165c885f3c71ffae7a867d931fb0e07	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	user	906f3c8eb3a2350a4f1191a89baa3e46	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=apache-2	d6aa6adb26a2cae934a099a0c82c6128	autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	9d81603248f2ba3ec59124320d123e5e	flag-o-matic	d270fa247153df66074f795fa42dba3e	libtool	4890219c51da247200223277f993e054	multilib	23ae8c186171e6476af098d2a50d0ee0	ssl-cert	f1980f7a15f7b414b0fd3b86700e8616	systemd	3165c885f3c71ffae7a867d931fb0e07	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	user	906f3c8eb3a2350a4f1191a89baa3e46	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=f57d1f728a5045043eb7301bf4b4cb05
