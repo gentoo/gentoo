@@ -27,7 +27,7 @@ media-video/mpv raspberry-pi
 
 # Pawel Hajdan jr <phajdan.jr@gentoo.org> (25 Mar 2016)
 # System ffmpeg build is broken in recent chromium (bug #576372).
->=www-client/chromium-50.0.2657.0 system-ffmpeg
+<www-client/chromium-51.0.2704.19 system-ffmpeg
 
 # Maciej Mrozowski <reavertm@gmail.com> (23 Mar 2016)
 # Experimental cairo-qt backend (see bug #568000).
