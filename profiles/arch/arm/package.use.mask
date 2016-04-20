@@ -188,7 +188,6 @@ dev-qt/qt-mobility messaging
 # unkeyworded deps
 kde-apps/gwenview semantic-desktop
 kde-apps/okular dpi
-kde-apps/nepomuk-core migrator
 
 # Yixun Lan <dlan@gentoo.org> (12 Apr 2014)
 # app-emulation/qemu is not keyworded on arm arch.
