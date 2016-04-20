@@ -10,7 +10,7 @@ MY_P="${PN}-$(replace_version_separator 2 -)"
 
 DESCRIPTION="A graphical interface to the GNU debugger"
 HOMEPAGE="http://sourceware.org/insight/"
-SRC_URI="ftp://sources.redhat.com/pub/${PN}/releases/${MY_P}a.tar.bz2
+SRC_URI="ftp://sourceware.org/pub/${PN}/releases/${MY_P}a.tar.bz2
 	https://dev.gentoo.org/~xarthisius/distfiles/${P}-patchset-02.tar.xz"
 
 LICENSE="GPL-2 LGPL-2"
