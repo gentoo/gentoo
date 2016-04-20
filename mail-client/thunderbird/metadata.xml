@@ -22,6 +22,8 @@
 		instead of bundled.</flag>
 	<flag name="system-jpeg">Use the system-wide <pkg>media-libs/libjpeg-turbo</pkg>
 		instead of bundled.</flag>
+	<flag name="system-libevent">Use the system-wide <pkg>dev-libs/libevent</pkg>
+		instead of bundled.</flag>
 	<flag name="system-libvpx">Use the system-wide <pkg>media-libs/libvpx</pkg>
 		instead of bundled.</flag>
 	<flag name="system-sqlite">Use the system-wide <pkg>dev-db/sqlite</pkg>
