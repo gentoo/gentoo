@@ -45,7 +45,8 @@ src_prepare() {
 	epatch \
 			"${FILESDIR}"/${P}-asneeded.patch \
 			"${FILESDIR}"/${P}-automake.patch \
-			"${FILESDIR}"/${P}-libpng15.patch
+			"${FILESDIR}"/${P}-libpng15.patch \
+			"${FILESDIR}"/${P}-math-hack.patch
 
 	sed -i \
 		-e '/ADDCFLAGS/s: -O2::' \
@@ -54,6 +55,7 @@ src_prepare() {
 		-e '/COPYING/s:=.*:= \\:' \
 		Makefile || die
 	sed -i \
+		-e '/LDFLAGS/s:-L/usr/lib::' \
 		-e "/^datadir/s:=.*:= ${GAMES_DATADIR}/${PN}:" \
 		Make-config.in || die
 
