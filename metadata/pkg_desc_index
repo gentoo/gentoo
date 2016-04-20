@@ -8122,7 +8122,7 @@ dev-python/tempora 1.4: Objects and routines pertaining to date and time
 dev-python/termcolor 1.1.0-r1: ANSII Color formatting for output in terminal
 dev-python/terminado 0.5 0.6: Terminals served to term.js using Tornado websockets
 dev-python/testfixtures 3.0.0 4.1.1 4.1.2 4.3.3 4.4.0 4.6.0 4.7.0 4.9.1: A collection of helpers and mock objects for unit tests and doc tests
-dev-python/testify 0.5.7 0.7.2: A more pythonic replacement for the unittest module and nose
+dev-python/testify 0.5.7 0.7.2 0.8.0: A more pythonic replacement for the unittest module and nose
 dev-python/testpath 0.2 0.3: Test utilities for code working with files and commands
 dev-python/testrepository 0.0.18-r1 0.0.20: A repository of test results
 dev-python/testresources 0.2.7-r2 1.0.0: A pyunit extension for managing expensive test resources
