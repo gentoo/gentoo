@@ -6,6 +6,7 @@ EAPI=6
 
 KDE_HANDBOOK="true"
 KDE_TEST="true"
+VIRTUALX_REQUIRED="test"
 inherit kde5
 
 DESCRIPTION="KDE Plasma desktop"
