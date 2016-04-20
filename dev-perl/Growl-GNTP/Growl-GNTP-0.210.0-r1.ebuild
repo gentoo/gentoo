@@ -21,12 +21,9 @@ RDEPEND="
 	>=virtual/perl-Digest-MD5-2.360.0
 	>=virtual/perl-Digest-SHA-5.450.0
 	virtual/perl-IO
-	dev-perl/IO-Socket-PortState
 "
 DEPEND="${RDEPEND}
-	dev-perl/Module-Build-Tiny
-	virtual/perl-File-Spec
-	virtual/perl-CPAN-Meta"
+	>=dev-perl/Module-Build-Tiny-0.35.0"
 
 src_test() {
 	my_test_control=${DIST_TEST_OVERRIDE:-${DIST_TEST:-do parallel}}
