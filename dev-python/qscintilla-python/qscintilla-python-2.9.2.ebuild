@@ -1,26 +1,26 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 PYTHON_COMPAT=( python{2_7,3_3,3_4} )
 
 inherit python-r1 qmake-utils
 
-MY_P=QScintilla-gpl-${PV}
+MY_P=QScintilla_gpl-${PV}
 
 DESCRIPTION="Python bindings for Qscintilla"
 HOMEPAGE="http://www.riverbankcomputing.com/software/qscintilla/intro"
 SRC_URI="mirror://sourceforge/pyqt/${MY_P}.tar.gz"
 
-LICENSE="|| ( GPL-2 GPL-3 )"
+LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="debug"
 
 DEPEND="
 	${PYTHON_DEPS}
-	>=dev-python/sip-4.16:=[${PYTHON_USEDEP}]
+	>=dev-python/sip-4.18:=[${PYTHON_USEDEP}]
 	>=dev-python/PyQt4-4.11.3[X,${PYTHON_USEDEP}]
 	dev-qt/qtcore:4
 	dev-qt/qtgui:4
@@ -33,19 +33,21 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 S=${WORKDIR}/${MY_P}/Python
 
 src_prepare() {
+	default
 	python_copy_sources
 }
 
 src_configure() {
 	configuration() {
 		local myconf=(
-			"${PYTHON}" configure.py
+			"${PYTHON}"
+			configure.py
 			--qmake="$(qt4_get_bindir)"/qmake
 			--destdir="$(python_get_sitedir)"/PyQt4
 			--sip-incdir="$(python_get_includedir)"
 			--pyqt=PyQt4
-			--no-timestamp
-			$(use debug && echo --debug)
+			$(usex debug '--debug --trace' '')
+			--verbose
 		)
 		echo "${myconf[@]}"
 		"${myconf[@]}" || die
