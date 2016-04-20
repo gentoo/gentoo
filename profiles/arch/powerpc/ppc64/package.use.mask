@@ -63,7 +63,6 @@ games-simulation/openttd openmedia
 # Michael Palimaka <kensington@gentoo.org> (02 Apr 2013)
 # Requires dev-lang/mono which currently has some issues
 # on ppc64.
-kde-base/kdebindings-meta csharp
 net-libs/libkolabxml csharp
 
 # Sergey Popov <pinkbyte@gentoo.org> (18 Feb 2013)
