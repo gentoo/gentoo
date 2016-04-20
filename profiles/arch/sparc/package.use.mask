@@ -339,10 +339,6 @@ media-gfx/povray mkl
 games-strategy/freeciv ggz
 
 # Alexey Shvetsov <alexxy@gentoo.org> (09 Feb 2010)
-# need dev-db/virtuoso-* keyworded
-dev-libs/soprano virtuoso
-
-# Alexey Shvetsov <alexxy@gentoo.org> (09 Feb 2010)
 # need sys-auth/polkit keyworded
 app-admin/system-config-printer-common  policykit
 
