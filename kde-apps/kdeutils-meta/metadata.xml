@@ -6,6 +6,6 @@
 		<name>Gentoo KDE Project</name>
 	</maintainer>
 	<use>
-		<flag name="floppy">Install <pkg>kde-base/kfloppy</pkg> to format and create DOS or ext2fs filesystems in a floppy.</flag>
+		<flag name="floppy">Install <pkg>kde-apps/kfloppy</pkg> to format and create DOS or ext2fs filesystems in a floppy.</flag>
 	</use>
 </pkgmetadata>

@@ -14,7 +14,7 @@
 		<flag name="t1lib">Enable the Type-1 fonts for the build-in DVI viewer
 			(<pkg>media-libs/t1lib</pkg>)</flag>
 		<flag name="xps">Enable XPS viewer using 
-			<pkg>app-text/libxps</pkg></flag>
+			<pkg>app-text/libgxps</pkg></flag>
 	</use>
     <upstream>
         <remote-id type="github">mate-desktop/atril</remote-id>
