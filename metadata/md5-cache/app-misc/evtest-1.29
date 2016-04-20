@@ -2,13 +2,13 @@ DEFINED_PHASES=prepare
 DEPEND=xml? ( dev-libs/libxml2 ) virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=test program for capturing input device events
 EAPI=4
-HOMEPAGE=http://cgit.freedesktop.org/evtest/
+HOMEPAGE=https://cgit.freedesktop.org/evtest/
 IUSE=+xml
 KEYWORDS=amd64 arm x86
 LICENSE=GPL-2
 RDEPEND=xml? ( dev-libs/libxml2 )
 SLOT=0
-SRC_URI=http://cgit.freedesktop.org/evtest/snapshot/evtest-1.29.tar.bz2 mirror://gentoo/evtest-1.29-mans.tar.xz
+SRC_URI=https://cgit.freedesktop.org/evtest/snapshot/evtest-1.29.tar.bz2 mirror://gentoo/evtest-1.29-mans.tar.xz
 _eclass_exported_funcs=src_prepare:-
-_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	9d81603248f2ba3ec59124320d123e5e	libtool	4890219c51da247200223277f993e054	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
-_md5_=cb77576a5ac62860175ddeec9335c36b
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	792f83d5ec9536cb5ccef375469d8bde	libtool	4890219c51da247200223277f993e054	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=db3550e07b0ddd8187985629b081d4bc

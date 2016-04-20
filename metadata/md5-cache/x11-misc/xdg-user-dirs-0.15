@@ -2,13 +2,13 @@ DEFINED_PHASES=prepare
 DEPEND=app-text/docbook-xml-dtd:4.3 dev-libs/libxslt sys-devel/gettext !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=A tool to help manage 'well known' user directories
 EAPI=5
-HOMEPAGE=http://www.freedesktop.org/wiki/Software/xdg-user-dirs
+HOMEPAGE=https://www.freedesktop.org/wiki/Software/xdg-user-dirs
 IUSE=gtk
 KEYWORDS=alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 sparc x86 ~x86-fbsd ~x86-freebsd ~x86-interix ~amd64-linux ~x86-linux ~x86-solaris
 LICENSE=GPL-2
 PDEPEND=gtk? ( x11-misc/xdg-user-dirs-gtk )
 SLOT=0
-SRC_URI=http://user-dirs.freedesktop.org/releases/xdg-user-dirs-0.15.tar.gz
+SRC_URI=https://user-dirs.freedesktop.org/releases/xdg-user-dirs-0.15.tar.gz
 _eclass_exported_funcs=src_prepare:-
-_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	9d81603248f2ba3ec59124320d123e5e	libtool	4890219c51da247200223277f993e054	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
-_md5_=2d009a7a34cb55e632c3a7b45ad008b0
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	792f83d5ec9536cb5ccef375469d8bde	libtool	4890219c51da247200223277f993e054	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=1ba7944a94de8826425205cde44f561c

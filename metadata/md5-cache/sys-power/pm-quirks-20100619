@@ -1,11 +1,11 @@
 DEFINED_PHASES=install
 DESCRIPTION=Video Quirks database for pm-utils
 EAPI=3
-HOMEPAGE=http://pm-utils.freedesktop.org/
+HOMEPAGE=https://pm-utils.freedesktop.org/
 KEYWORDS=alpha amd64 arm ~arm64 ia64 ~mips ppc ppc64 sparc x86
 LICENSE=GPL-2
 SLOT=0
-SRC_URI=http://pm-utils.freedesktop.org/releases/pm-quirks-20100619.tar.gz
+SRC_URI=https://pm-utils.freedesktop.org/releases/pm-quirks-20100619.tar.gz
 _eclass_exported_funcs=src_install:-
 _eclasses_=multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
-_md5_=2aba3787382e5e7d0fb7fa9070181ff3
+_md5_=284c74a248a10a7e78221ceb6ee710f3

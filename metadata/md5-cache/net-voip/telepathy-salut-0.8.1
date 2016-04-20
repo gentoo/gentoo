@@ -2,13 +2,13 @@ DEFINED_PHASES=configure install prepare setup
 DEPEND=>=dev-libs/dbus-glib-0.61 dev-libs/libxml2 >=dev-libs/glib-2.28:2 >=sys-apps/dbus-1.1.0 >=net-libs/telepathy-glib-0.17.1 >=net-dns/avahi-0.6.22[dbus] net-libs/libsoup:2.4 sys-apps/util-linux gnutls? ( >=net-libs/gnutls-2.10.2 ) !gnutls? ( >=dev-libs/openssl-0.9.8g:0[-bindist] ) || ( >=dev-lang/python-2.7.5-r2:2.7 ) dev-libs/libxslt virtual/pkgconfig test? ( >=dev-libs/check-0.9.4 net-libs/libgsasl dev-python/twisted-words )
 DESCRIPTION=A link-local XMPP connection manager for Telepathy
 EAPI=5
-HOMEPAGE=http://telepathy.freedesktop.org/wiki/CategorySalut
+HOMEPAGE=https://telepathy.freedesktop.org/wiki/CategorySalut
 IUSE=gnutls test
 KEYWORDS=alpha amd64 ~arm ia64 ppc ~ppc64 sparc x86 ~x86-linux
 LICENSE=LGPL-2.1
 RDEPEND=>=dev-libs/dbus-glib-0.61 dev-libs/libxml2 >=dev-libs/glib-2.28:2 >=sys-apps/dbus-1.1.0 >=net-libs/telepathy-glib-0.17.1 >=net-dns/avahi-0.6.22[dbus] net-libs/libsoup:2.4 sys-apps/util-linux gnutls? ( >=net-libs/gnutls-2.10.2 ) !gnutls? ( >=dev-libs/openssl-0.9.8g:0[-bindist] )
 SLOT=0
-SRC_URI=http://telepathy.freedesktop.org/releases/telepathy-salut/telepathy-salut-0.8.1.tar.gz
+SRC_URI=https://telepathy.freedesktop.org/releases/telepathy-salut/telepathy-salut-0.8.1.tar.gz
 _eclass_exported_funcs=pkg_setup:python-any-r1 src_prepare:- src_configure:- src_install:-
-_eclasses_=eutils	9d81603248f2ba3ec59124320d123e5e	multilib	23ae8c186171e6476af098d2a50d0ee0	python-any-r1	8eb13cdf35f6e43c48107b911900b2cc	python-utils-r1	2e6826f6a93ad2acf904eecf5b5fb6d2	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
-_md5_=b17e8f389e71339d39ddb1ba7efaf3a6
+_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	multilib	23ae8c186171e6476af098d2a50d0ee0	python-any-r1	8eb13cdf35f6e43c48107b911900b2cc	python-utils-r1	2e6826f6a93ad2acf904eecf5b5fb6d2	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=6ff2171c90233c2fe7d7386a048e51fe
