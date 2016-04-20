@@ -9784,7 +9784,7 @@ dev-util/sasm 2.2 9999: Simple crossplatform IDE for NASM assembly language
 dev-util/scala-ide 4.1.0 4.3.0: The Scala IDE
 dev-util/scanmem 0.15.2 0.15.3: Locate and modify variables in executing processes
 dev-util/schroot 1.6.3 1.6.5 1.6.5-r1 1.6.10-r3: Utility to execute commands in a chroot environment
-dev-util/scons 2.3.5 2.4.0 2.4.1: Extensible Python-based build utility
+dev-util/scons 2.3.5 2.4.1 2.5.0: Extensible Python-based build utility
 dev-util/sel 0.08.4 0.08.4-r1: A filemanager for shell scripts
 dev-util/setconf 0.6.6 0.6.7: A small python based utility used to change configuration files
 dev-util/sgb 20030623: Stanford GraphBase
@@ -11283,7 +11283,7 @@ kde-apps/libksane 4.14.3 15.08.3 15.12.3: SANE Library interface for KDE
 kde-apps/lokalize 4.14.3 15.12.3: KDE Applications 5 translation tool
 kde-apps/lskat 4.14.3 15.08.3 15.12.3: Skat game for KDE
 kde-apps/marble 4.14.3 15.12.3: Generic geographical map widget
-kde-apps/mplayerthumbs 4.14.3 15.08.3 15.12.1: A Thumbnail Generator for Video Files on KDE filemanagers
+kde-apps/mplayerthumbs 4.14.3 15.08.3 15.12.3: Thumbnail Generator for Video Files on KDE filemanagers
 kde-apps/nsplugins 4.14.3 15.08.3 15.12.3: Netscape plugins support for Konqueror
 kde-apps/okteta 4.14.3 15.12.3: KDE hexeditor
 kde-apps/okular 4.14.3 15.08.3-r1 15.12.3: Okular is a universal document viewer based on KPDF for KDE 4
