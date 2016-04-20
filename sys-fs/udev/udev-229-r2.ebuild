@@ -114,6 +114,7 @@ src_prepare() {
 	if [[ -n "${patchset}" ]]; then
 		EPATCH_SUFFIX=patch EPATCH_FORCE=yes epatch
 	fi
+	epatch "${FILESDIR}"/${PN}-229-sysmacros.patch #580200
 
 	cat <<-EOF > "${T}"/40-gentoo.rules
 	# Gentoo specific floppy and usb groups
