@@ -7315,6 +7315,9 @@ sys-block/gparted:ntfs - Include NTFS support (sys-fs/ntfs3g)
 sys-block/gparted:reiser4 - Include ReiserFS4 support (sys-fs/reiser4progs)
 sys-block/gparted:reiserfs - Include ReiserFS support (sys-fs/reiserfsprogs)
 sys-block/gparted:xfs - Include XFS support (sys-fs/xfsprogs, sys-fs/xfsdump)
+sys-block/open-iscsi:infiniban - Support iSCSI over Infiniband iSER
+sys-block/open-iscsi:rdma - Support iSCSI over RDMA
+sys-block/open-iscsi:tcp - Support iSCSI over TCP
 sys-block/parted:debug - Enable debugging as encouraged by upstream: [The default configuration] includes --enable-debug (by default), which contains many assertions. Obviously, these "waste" space, but in the past, they have caught potentially dangerous bugs before they would have done damage, so we think it's worth it. Also, it means we get more bug reports ;)
 sys-block/parted:device-mapper - Enable device-mapper support from sys-fs/lvm2 in parted
 sys-block/partimage:nologin - Do not include login support when connecting partimaged
