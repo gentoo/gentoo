@@ -37,7 +37,7 @@ DEPEND="${DEPEND}
 		dev-util/cmocka )"
 
 src_prepare() {
-	[[ ${PV} = *9999* ]] && eautoreconf
+	[[ ${PV} = *9999* ]] && AT_NO_RECURSIVE=1 eautoreconf
 	eapply_user
 	default
 }
