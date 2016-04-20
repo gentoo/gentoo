@@ -9586,7 +9586,7 @@ dev-util/cyclo 2.1.0: Computes cyclomatic complexity metrics on C source code.
 dev-util/d-feet 0.3.9 0.3.10: D-Feet is a powerful D-Bus debugger
 dev-util/dbus-test-runner 12.10.1: Run executables under a new DBus session for testing
 dev-util/ddd 3.3.12-r3 3.3.12-r4: Graphical front-end for command-line debuggers
-dev-util/debhelper 9.20150101 9.20151225 9.20160115 9.20160313: Collection of programs that can be used to automate common tasks in debian/rules
+dev-util/debhelper 9.20150101 9.20160313 9.20160403: Collection of programs that can be used to automate common tasks in debian/rules
 dev-util/debootstrap 1.0.75 1.0.78-r1 1.0.79 1.0.80: Debian/Ubuntu bootstrap scripts
 dev-util/debugedit 5.3.5-r1: standalone debugedit taken from rpm
 dev-util/dejagnu 1.4.4-r3 1.5: framework for testing other programs
@@ -17715,8 +17715,8 @@ www-client/midori 0.5.10 0.5.11 0.5.11-r1: A lightweight web browser based on We
 www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
 www-client/netsurf 3.3-r1 3.4: a free, open source web browser
 www-client/opera 12.16_p1860-r1 36.0.2130.46 36.0.2130.65: A fast and secure web browser
-www-client/opera-beta 37.0.2178.4 37.0.2178.10: A fast and secure web browser
-www-client/opera-developer 37.0.2171.0 38.0.2190.0: A fast and secure web browser
+www-client/opera-beta 37.0.2178.10 37.0.2178.19: A fast and secure web browser
+www-client/opera-developer 38.0.2190.0 38.0.2198.0: A fast and secure web browser
 www-client/otter 0.9.07 0.9.08 0.9.09 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
 www-client/phantomjs 1.9.8 2.0.0 2.0.0-r1: A headless WebKit scriptable with a JavaScript API
 www-client/pybugz 0.11.1 0.12.1 9999: Command line interface to (Gentoo) Bugzilla
@@ -18284,7 +18284,7 @@ x11-misc/redshift 1.10 1.11: A screen color temperature adjusting software
 x11-misc/rendercheck 1.4 1.5: Tests for compliance with X RENDER extension
 x11-misc/revelation 0.4.14-r1: A password manager for GNOME
 x11-misc/rodent 4.9.2 5.3.16.3: A fast, small and powerful file manager and graphical shell
-x11-misc/rofi 0.15.11 0.15.12: A window switcher, run dialog and dmenu replacement
+x11-misc/rofi 0.15.12 1.0.0: A window switcher, run dialog and dmenu replacement
 x11-misc/rss-glx 0.9.1: Really Slick OpenGL Screensavers for XScreenSaver
 x11-misc/screen-message 0.23: Display a multi-line message large, fullscreen, black on white
 x11-misc/screengrab 1.0 1.2.1-r1: Qt application for getting screenshots
