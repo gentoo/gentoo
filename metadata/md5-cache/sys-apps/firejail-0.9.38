@@ -1,4 +1,4 @@
-DEFINED_PHASES=configure
+DEFINED_PHASES=configure prepare
 DESCRIPTION=Security sandbox for any type of processes
 EAPI=5
 HOMEPAGE=https://firejail.wordpress.com/
@@ -7,5 +7,6 @@ KEYWORDS=~amd64
 LICENSE=GPL-2
 SLOT=0
 SRC_URI=mirror://sourceforge/firejail/firejail-0.9.38.tar.bz2
-_eclass_exported_funcs=src_configure:-
-_md5_=5cb3f57d6b6949e8d54c525b62eaa099
+_eclass_exported_funcs=src_prepare:- src_configure:-
+_eclasses_=eutils	9d81603248f2ba3ec59124320d123e5e	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=a24dc7351a6941478fe286399fa2e977
