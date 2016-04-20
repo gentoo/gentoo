@@ -8,8 +8,8 @@ PYTHON_COMPAT=( python2_7 )
 inherit autotools eutils linux-info flag-o-matic python-any-r1 readme.gentoo-r1 systemd virtualx user multilib-minimal
 
 DESCRIPTION="A message bus system, a simple way for applications to talk to each other"
-HOMEPAGE="http://dbus.freedesktop.org/"
-SRC_URI="http://dbus.freedesktop.org/releases/dbus/${P}.tar.gz"
+HOMEPAGE="https://dbus.freedesktop.org/"
+SRC_URI="https://dbus.freedesktop.org/releases/dbus/${P}.tar.gz"
 
 LICENSE="|| ( AFL-2.1 GPL-2 )"
 SLOT="0"

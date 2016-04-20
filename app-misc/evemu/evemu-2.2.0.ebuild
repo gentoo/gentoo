@@ -10,8 +10,8 @@ AUTOTOOLS_IN_SOURCE_BUILD=1
 inherit autotools-utils python-single-r1
 
 DESCRIPTION="Tools and bindings for kernel input event device emulation, data capture, and replay"
-HOMEPAGE="http://www.freedesktop.org/wiki/Evemu/"
-SRC_URI="http://www.freedesktop.org/software/${PN}/${P}.tar.xz"
+HOMEPAGE="https://www.freedesktop.org/wiki/Evemu/"
+SRC_URI="https://www.freedesktop.org/software/${PN}/${P}.tar.xz"
 
 LICENSE="LGPL-3 GPL-3"
 SLOT="0"

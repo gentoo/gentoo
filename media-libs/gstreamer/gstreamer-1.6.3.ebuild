@@ -7,8 +7,8 @@ EAPI="5"
 inherit bash-completion-r1 eutils multilib multilib-minimal pax-utils
 
 DESCRIPTION="Open source multimedia framework"
-HOMEPAGE="http://gstreamer.freedesktop.org/"
-SRC_URI="http://${PN}.freedesktop.org/src/${PN}/${P}.tar.xz"
+HOMEPAGE="https://gstreamer.freedesktop.org/"
+SRC_URI="https://${PN}.freedesktop.org/src/${PN}/${P}.tar.xz"
 
 LICENSE="LGPL-2+"
 SLOT="1.0"

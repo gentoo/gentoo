@@ -10,8 +10,8 @@ PYTHON_REQ_USE="threads(+)"
 inherit autotools eutils python-r1
 
 DESCRIPTION="Python bindings for the D-Bus messagebus"
-HOMEPAGE="http://www.freedesktop.org/wiki/Software/DBusBindings http://dbus.freedesktop.org/doc/dbus-python/"
-SRC_URI="http://dbus.freedesktop.org/releases/${PN}/${P}.tar.gz"
+HOMEPAGE="https://www.freedesktop.org/wiki/Software/DBusBindings https://dbus.freedesktop.org/doc/dbus-python/"
+SRC_URI="https://dbus.freedesktop.org/releases/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

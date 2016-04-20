@@ -6,7 +6,7 @@ EAPI=4
 inherit gnome.org
 
 DESCRIPTION="A dbus session bus service that is used to bring up authentication dialogs"
-HOMEPAGE="http://www.freedesktop.org/wiki/Software/polkit"
+HOMEPAGE="https://www.freedesktop.org/wiki/Software/polkit"
 
 LICENSE="LGPL-2"
 SLOT="0"

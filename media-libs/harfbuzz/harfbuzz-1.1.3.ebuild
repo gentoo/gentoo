@@ -12,8 +12,8 @@ PYTHON_COMPAT=( python2_7 )
 inherit eutils libtool multilib-minimal python-any-r1 xdg-utils
 
 DESCRIPTION="An OpenType text shaping engine"
-HOMEPAGE="http://www.freedesktop.org/wiki/Software/HarfBuzz"
-[[ ${PV} == 9999 ]] || SRC_URI="http://www.freedesktop.org/software/${PN}/release/${P}.tar.bz2"
+HOMEPAGE="https://www.freedesktop.org/wiki/Software/HarfBuzz"
+[[ ${PV} == 9999 ]] || SRC_URI="https://www.freedesktop.org/software/${PN}/release/${P}.tar.bz2"
 
 LICENSE="Old-MIT ISC icu"
 SLOT="0/0.9.18" # 0.9.18 introduced the harfbuzz-icu split; bug #472416

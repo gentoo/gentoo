@@ -9,8 +9,8 @@ inherit gnome2
 MY_P=${PN/gnome-}-${PV}
 
 DESCRIPTION="A lightweight and fast raw image thumbnailer for GNOME"
-HOMEPAGE="http://libopenraw.freedesktop.org/wiki/RawThumbnailer"
-SRC_URI="http://libopenraw.freedesktop.org/download/${MY_P}.tar.bz2"
+HOMEPAGE="https://libopenraw.freedesktop.org/wiki/RawThumbnailer"
+SRC_URI="https://libopenraw.freedesktop.org/download/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
