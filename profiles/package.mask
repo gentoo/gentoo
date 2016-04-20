@@ -30,6 +30,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Michael Sterrett <mr_bones_@gentoo.org> (19 Apr 2016)
+# No release in 6 years and segfaults on modern systems. (bug #311809)
+# Masked for removal on 20160519
+games-sports/toycars
+
 # Sergey Popov <pinkbyte@gentoo.org> (19 Apr 2016)
 # Security mask, wrt bug #577156
 # Should be kept in tree for some time
