@@ -3,13 +3,13 @@
 # $Id$
 
 DESCRIPTION="GNU Autoconf, Automake and Libtool"
-HOMEPAGE="https://sources.redhat.com/autobook/"
-SRC_URI="https://sources.redhat.com/autobook/${P}.tar.gz
+HOMEPAGE="https://sourceware.org/autobook/"
+SRC_URI="https://sourceware.org/autobook/${P}.tar.gz
 	examples? (
-		https://sources.redhat.com/autobook/foonly-2.0.tar.gz
-		https://sources.redhat.com/autobook/small-2.0.tar.gz
-		https://sources.redhat.com/autobook/hello-2.0.tar.gz
-		https://sources.redhat.com/autobook/convenience-2.0.tar.gz
+		https://sourceware.org/autobook/foonly-2.0.tar.gz
+		https://sourceware.org/autobook/small-2.0.tar.gz
+		https://sourceware.org/autobook/hello-2.0.tar.gz
+		https://sourceware.org/autobook/convenience-2.0.tar.gz
 	)"
 
 LICENSE="OPL"
