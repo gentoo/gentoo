@@ -214,11 +214,14 @@ QA_WX_LOAD="usr/bin/qemu-i386
 DOC_CONTENTS="If you don't have kvm compiled into the kernel, make sure
 you have the kernel module loaded before running kvm. The easiest way to
 ensure that the kernel module is loaded is to load it on boot.\n
-For AMD CPUs the module is called 'kvm-amd'\n
-For Intel CPUs the module is called 'kvm-intel'\n
-Please review /etc/conf.d/modules for how to load these\n\n
+For AMD CPUs the module is called 'kvm-amd'.\n
+For Intel CPUs the module is called 'kvm-intel'.\n
+Please review /etc/conf.d/modules for how to load these.\n\n
 Make sure your user is in the 'kvm' group\n
-Just run 'gpasswd -a <USER> kvm', then have <USER> re-login."
+Just run 'gpasswd -a <USER> kvm', then have <USER> re-login.\n\n
+For brand new installs, the default permissions on /dev/kvm might not let you
+access it.  You can tell udev to reset ownership/perms:\n
+udevadm trigger -c add /dev/kvm"
 
 qemu_support_kvm() {
 	if use qemu_softmmu_targets_x86_64 || use qemu_softmmu_targets_i386 \
