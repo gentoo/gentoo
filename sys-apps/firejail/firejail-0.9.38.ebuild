@@ -4,6 +4,8 @@
 
 EAPI=5
 
+inherit eutils
+
 DESCRIPTION="Security sandbox for any type of processes"
 HOMEPAGE="https://firejail.wordpress.com/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
@@ -13,8 +15,9 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE="+seccomp"
 
-DEPEND=""
-RDEPEND=""
+src_prepare() {
+	epatch "${FILESDIR}"/${P}-sysmacros.patch
+}
 
 src_configure() {
 	econf $(use_enable seccomp)
