@@ -18,6 +18,13 @@
 
 #--- END OF EXAMPLES ---
 
+dev-util/kdevelop gdbui
+net-p2p/ktorrent plasma rss shutdown
+net-voip/ekiga kde
+www-plugins/gnash kde
+x11-misc/xscreensaver new-login
+x11-themes/qtcurve kde
+
 # Pacho Ramos <pacho@gentoo.org> (15 May 2015)
 # Missing stable
 dev-libs/protobuf python
