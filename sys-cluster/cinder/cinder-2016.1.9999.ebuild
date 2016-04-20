@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -19,8 +19,8 @@ EGIT_BRANCH="stable/mitaka"
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS=""
-IUSE="+api +scheduler +volume iscsi lvm mysql +memcached postgres sqlite test"
-REQUIRED_USE="|| ( mysql postgres sqlite )"
+IUSE="+api +scheduler +volume infiniband iscsi lio lvm mysql +memcached postgres rdma sqlite +tcp test +tgt"
+REQUIRED_USE="|| ( mysql postgres sqlite ) iscsi? ( || ( tgt lio ) ) infiniband? ( rdma )"
 
 CDEPEND=">=dev-python/pbr-1.6[${PYTHON_USEDEP}]"
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
@@ -105,7 +105,11 @@ RDEPEND="
 	>=dev-python/tooz-1.28.0[${PYTHON_USEDEP}]
 	>=dev-python/google-api-python-client-1.4.2[${PYTHON_USEDEP}]
 	iscsi? (
-		sys-block/tgt
+		tgt? ( sys-block/tgt )
+		lio? (
+			sys-block/targetcli 
+			sys-block/lio-utils
+		)
 		sys-block/open-iscsi
 	)
 	lvm? ( sys-fs/lvm2 )
@@ -119,10 +123,19 @@ RDEPEND="
 
 pkg_setup() {
 	linux-info_pkg_setup
-	CONFIG_CHECK_MODULES="ISCSI_TCP"
+	CONFIG_CHECK_MODULES=""
+	if use tcp; then
+		CONFIG_CHECK_MODULES+="SCSI_ISCSI_ATTRS ISCSI_TCP "
+	fi
+	if use rdma; then
+		CONFIG_CHECK_MODULES+="INFINIBAND_ISER "
+	fi
+	if use infiniband; then
+		CONFIG_CHECK_MODULES+="INFINIBAND_IPOIB INFINIBAND_USER_MAD INFINIBAND_USER_ACCESS"
+	fi
 	if linux_config_exists; then
 		for module in ${CONFIG_CHECK_MODULES}; do
-			linux_chkconfig_present ${module} || ewarn "${module} needs to be built as module (builtin doesn't work)"
+			linux_chkconfig_present ${module} || ewarn "${module} needs to be enabled"
 		done
 	fi
 	enewgroup cinder
