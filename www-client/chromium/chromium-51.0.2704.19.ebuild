@@ -188,7 +188,7 @@ pkg_setup() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}/${PN}-system-ffmpeg-r2.patch"
+	epatch "${FILESDIR}/${PN}-system-ffmpeg-r3.patch"
 	epatch "${FILESDIR}/${PN}-system-jinja-r8.patch"
 	epatch "${FILESDIR}/${PN}-widevine-r1.patch"
 	epatch "${FILESDIR}/${PN}-last-commit-position-r0.patch"
@@ -296,7 +296,6 @@ src_prepare() {
 		'third_party/mesa' \
 		'third_party/modp_b64' \
 		'third_party/mt19937ar' \
-		'third_party/npapi' \
 		'third_party/openh264' \
 		'third_party/openmax_dl' \
 		'third_party/opus' \
