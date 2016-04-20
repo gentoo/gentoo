@@ -65,6 +65,7 @@ pkg_setup() {
 
 src_prepare() {
 	use systemd || { sed -i -e 's:libsystemd-login:&disable:' configure || die; }
+	epatch "${FILESDIR}"/${PN}-2.1.7-sysmacros.patch #580230
 
 	epatch_user
 }
