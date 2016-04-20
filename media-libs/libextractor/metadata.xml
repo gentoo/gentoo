@@ -7,7 +7,7 @@
   </maintainer>
   <use>
     <flag name="archive">Enable archive support using <pkg>app-arch/libarchive</pkg></flag>
-    <flag name="gsf">Enable OLE2 (MS Office) plug-in support using <pkg>gnome-base/libgsf</pkg></flag>
+    <flag name="gsf">Enable OLE2 (MS Office) plug-in support using <pkg>gnome-extra/libgsf</pkg></flag>
     <flag name="magic">Enable magic support using <pkg>sys-apps/file</pkg></flag>
     <flag name="midi">Enable MIDI support through <pkg>media-libs/libsmf</pkg></flag>
   </use>
