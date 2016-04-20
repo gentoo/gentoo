@@ -12,4 +12,4 @@ SLOT=0
 SRC_URI=https://github.com/giuspen/cherrytree/archive/0.36.9.tar.gz -> cherrytree-0.36.9.tar.gz
 _eclass_exported_funcs=pkg_postinst:- pkg_setup:python-single-r1 src_prepare:distutils-r1 src_configure:distutils-r1 src_compile:distutils-r1 src_test:distutils-r1 src_install:distutils-r1
 _eclasses_=distutils-r1	4e8ac1ba76ddacd8f7c0289aa586a34c	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	l10n	714aaf78929eade946da5eaff7d2001a	multilib	23ae8c186171e6476af098d2a50d0ee0	python-single-r1	2ebea8fbab356d63110245129a67a6dd	python-utils-r1	2e6826f6a93ad2acf904eecf5b5fb6d2	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
-_md5_=5f0730f215e1623d6cc163484d7ce448
+_md5_=e74f7e02334d8c4e55c85b945ab30d08
