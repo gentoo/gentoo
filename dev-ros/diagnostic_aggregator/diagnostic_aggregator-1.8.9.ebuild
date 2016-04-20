@@ -21,6 +21,7 @@ RDEPEND="
 	dev-ros/rospy
 	dev-ros/rostest
 	dev-ros/xmlrpcpp
+	dev-ros/bondcpp
 	dev-libs/boost:=
 "
 DEPEND="${RDEPEND}
