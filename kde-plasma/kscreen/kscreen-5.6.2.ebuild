@@ -33,3 +33,6 @@ RDEPEND="${DEPEND}
 	$(add_qt_dep qtgraphicaleffects)
 	!kde-misc/kscreen
 "
+
+# bug #580440, last checked 5.6.3
+RESTRICT="test"
