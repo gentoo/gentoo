@@ -28,6 +28,7 @@ pkg_setup() {
 }
 
 src_prepare() {
+	epatch "${FILESDIR}"/${P}-sysmacros.patch #580082
 	tc-export CC
 }
 
