@@ -12,7 +12,8 @@ inherit kde5
 
 DESCRIPTION="KDE Plasma desktop"
 KEYWORDS="~amd64 ~arm ~x86"
-IUSE="+fontconfig gtk2 gtk3 +input_devices_evdev input_devices_synaptics ibus legacy-systray pulseaudio +qt4 scim"
+IUSE="+fontconfig gtk2 gtk3 +input_devices_evdev input_devices_synaptics ibus
+legacy-systray packagekit pulseaudio +qt4 scim"
 
 COMMON_DEPEND="
 	$(add_frameworks_dep attica)
@@ -88,6 +89,7 @@ COMMON_DEPEND="
 		x11-libs/xcb-util-keysyms
 	)
 	input_devices_synaptics? ( x11-drivers/xf86-input-synaptics )
+	packagekit? ( app-admin/packagekit-qt[qt5] )
 	pulseaudio? (
 		dev-libs/glib:2
 		media-libs/libcanberra
@@ -144,6 +146,7 @@ src_configure() {
 		$(cmake-utils_use_find_package ibus IBus)
 		$(cmake-utils_use_find_package input_devices_evdev Evdev)
 		$(cmake-utils_use_find_package input_devices_synaptics Synaptics)
+		$(cmake-utils_use_find_package packagekit PackageKitQt5)
 		$(cmake-utils_use_find_package pulseaudio PulseAudio)
 		$(cmake-utils_use_find_package scim SCIM)
 	)
