@@ -17,6 +17,9 @@ IUSE="+seccomp"
 
 src_prepare() {
 	epatch "${FILESDIR}"/${P}-sysmacros.patch
+	find -name Makefile.in -exec sed -i -r \
+			-e '/CFLAGS/s: (-O2|-ggdb) : :g' \
+			-e '1iCC=@CC@' {} + || die
 }
 
 src_configure() {
