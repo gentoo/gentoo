@@ -7939,7 +7939,7 @@ dev-python/pyzmq 14.4.1 14.6.0 14.7.0 15.0.0 15.1.0 15.2.0: Lightweight and supe
 dev-python/pyzor 0.5.0-r2 0.7.0 1.0.0: A distributed, collaborative spam detection and filtering network
 dev-python/qpid-python 0.20: A high-speed platform independent enterprise messaging system for Apache
 dev-python/qrcode 5.1-r1: QR Code generator on top of PIL
-dev-python/qscintilla-python 2.8.4 2.9 2.9.1: Python bindings for Qscintilla
+dev-python/qscintilla-python 2.8.4 2.9.1 2.9.2: Python bindings for Qscintilla
 dev-python/qserve 0.2.8-r1: A job queue server
 dev-python/qtconsole 4.1.1 4.2.0 4.2.1: Qt-based console for Jupyter with support for rich media output
 dev-python/queuelib 1.1.1: Collection of persistent (disk-based) queues
@@ -18091,7 +18091,7 @@ x11-libs/neXtaw 0.15.1-r1: Athena Widgets with N*XTSTEP appearance
 x11-libs/pango 1.36.8 1.36.8-r1 1.38.1: Internationalized text layout and rendering library
 x11-libs/pangox-compat 0.0.2 0.0.2-r1: PangoX compatibility library
 x11-libs/pixman 0.32.8 0.33.4 0.33.6 0.34.0 9999: Low-level pixel manipulation routines
-x11-libs/qscintilla 2.8.4-r1 2.9 2.9.1: A Qt port of Neil Hodgson's Scintilla C++ editor class
+x11-libs/qscintilla 2.8.4-r1 2.9.1 2.9.2: A Qt port of Neil Hodgson's Scintilla C++ editor class
 x11-libs/qtermwidget 0.6.0 0.6.0-r1: Qt terminal emulator widget
 x11-libs/qtscriptgenerator 0.2.0: Tool for generating Qt bindings for Qt Script
 x11-libs/qwt 5.2.3-r2 6.1.0 6.1.2-r1: 2D plotting library for Qt4 and Qt5
