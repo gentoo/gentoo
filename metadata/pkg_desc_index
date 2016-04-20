@@ -7115,7 +7115,7 @@ dev-python/empy 3.3-r1 3.3.2: A powerful and robust templating system for Python
 dev-python/enable 4.4.1 4.5.1: Enthought Tool Suite: Drawing and interaction packages
 dev-python/enaml 0.6.8-r1 0.9.8: Enthought Tool Suite: framework for writing declarative interfaces
 dev-python/encore 0.3 0.4.0 0.5.1: Enthought Tool Suite: collection of core-level utility modules
-dev-python/enum34 1.0.4 1.1.2: Python 3.4 Enum backported
+dev-python/enum34 1.0.4 1.1.2 1.1.3: Python 3.4 Enum backported
 dev-python/envisage 4.4.0: Enthought Tool Suite: Extensible application framework
 dev-python/envoy 0.0.3: Simple API for running external processes
 dev-python/enzyme 0.4.1 9999: Python video metadata parser
@@ -8220,7 +8220,7 @@ dev-python/webcolors 1.5: Color names and value formats defined by the HTML and 
 dev-python/webencodings 0.4: Character encoding aliases for legacy web content
 dev-python/weberror 0.10.3-r1 0.11 0.12: Web Error handling and exception catching
 dev-python/webhelpers 1.3-r1: Web Helpers
-dev-python/webob 1.4 1.4.1 1.5.0 1.5.1 1.6.0_alpha0: WSGI request and response object
+dev-python/webob 1.4 1.4.1 1.5.0 1.5.1 1.6.0: WSGI request and response object
 dev-python/webpy 0.37 0.37-r1: A small and simple web framework for Python
 dev-python/websocket-client 0.21.0 0.31.0 0.32.0 0.34.0 0.35.0: WebSocket client for python with hybi13 support
 dev-python/websockify 0.6.0 0.7.0: WebSockets support for any application/server
@@ -13847,7 +13847,7 @@ net-dialup/dtrace 2.01-r2: DTRACE traces ISDN messages with AVM ISDN-controllers
 net-dialup/dwun 0.96e-r2 0.96e-r3: Dialer Without a Useful Name (DWUN)
 net-dialup/fbgetty 0.1.698-r1: An extended getty for the framebuffer console
 net-dialup/fcpci 0.1-r3: AVM kernel modules for Fritz!Card PCI
-net-dialup/freeradius 2.2.5 3.0.3: Highly configurable free RADIUS server
+net-dialup/freeradius 2.2.5 2.2.9 3.0.11: Highly configurable free RADIUS server
 net-dialup/freeradius-client 1.1.7: FreeRADIUS Client framework
 net-dialup/globespan-adsl 0.11-r1 0.12: Driver for various ADSL modems. Also known as EciAdsl
 net-dialup/gnuradius 1.6.1-r1: GNU radius authentication server
