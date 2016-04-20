@@ -7371,9 +7371,13 @@ sys-cluster/charm:syncft - Compile with Charm++ fault tolerance support
 sys-cluster/charm:tcp - Use TCP (instead of UPD) for socket communication
 sys-cluster/cinder:api - Installs the initscripts for the cinder api service
 sys-cluster/cinder:iscsi - Allow using an iSCSI remote storage server as pool for disk image storage
+sys-cluster/cinder:lio - Enable lio storage backend support
 sys-cluster/cinder:lvm - Allow using the Logical Volume Manager (sys-fs/lvm2) as pool for disk image storage
 sys-cluster/cinder:memcached - Installs the memcached server
+sys-cluster/cinder:rdma - Enable rdma storage backend support
 sys-cluster/cinder:scheduler - Installs the initscripts for the cinder scheduler service
+sys-cluster/cinder:tcp - Enables tcp support for the iscsi backend
+sys-cluster/cinder:tgt - Enable tgt storage backend support
 sys-cluster/cinder:volume - Installs the initscripts for the cinder volume service
 sys-cluster/cluster-glue:large-cluster - Extend messages length limits for resource heavy clusters
 sys-cluster/cluster-glue:libnet - Force use of net-libs/libnet
