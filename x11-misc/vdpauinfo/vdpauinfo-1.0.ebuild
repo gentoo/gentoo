@@ -5,8 +5,8 @@
 EAPI=5
 
 DESCRIPTION="Displays info about your card's VDPAU support"
-HOMEPAGE="http://www.freedesktop.org/wiki/Software/VDPAU"
-SRC_URI="http://people.freedesktop.org/~aplattner/vdpau/${P}.tar.gz"
+HOMEPAGE="https://www.freedesktop.org/wiki/Software/VDPAU"
+SRC_URI="https://people.freedesktop.org/~aplattner/vdpau/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

@@ -7,7 +7,7 @@ EAPI=5
 inherit linux-info
 
 DESCRIPTION="Microcode for V.Islands Radeon GPUs and APUs"
-HOMEPAGE="http://people.freedesktop.org/~agd5f/radeon_ucode/"
+HOMEPAGE="https://people.freedesktop.org/~agd5f/radeon_ucode/"
 SRC_URI="mirror://gentoo/${P}.tar.xz"
 
 LICENSE="radeon-ucode"

@@ -9,8 +9,8 @@ PYTHON_USE_WITH="xml"
 inherit distutils eutils
 
 DESCRIPTION="driconf is a GTK+2 GUI configurator for DRI"
-HOMEPAGE="http://dri.freedesktop.org/wiki/DriConf"
-SRC_URI="http://freedesktop.org/~fxkuehl/${PN}/${P}.tar.gz"
+HOMEPAGE="https://dri.freedesktop.org/wiki/DriConf"
+SRC_URI="https://freedesktop.org/~fxkuehl/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

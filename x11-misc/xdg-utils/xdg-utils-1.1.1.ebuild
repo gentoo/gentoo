@@ -8,11 +8,11 @@ inherit autotools eutils
 MY_P=${P/_/-}
 
 DESCRIPTION="Portland utils for cross-platform/cross-toolkit/cross-desktop interoperability"
-HOMEPAGE="http://www.freedesktop.org/wiki/Software/xdg-utils/"
+HOMEPAGE="https://www.freedesktop.org/wiki/Software/xdg-utils/"
 #SRC_URI="https://dev.gentoo.org/~johu/distfiles/${P}.tar.xz"
-#SRC_URI="http://people.freedesktop.org/~rdieter/${PN}/${MY_P}.tar.gz
+#SRC_URI="https://people.freedesktop.org/~rdieter/${PN}/${MY_P}.tar.gz
 #	https://dev.gentoo.org/~ssuominen/${P}-patchset-1.tar.xz"
-SRC_URI="http://portland.freedesktop.org/download/${MY_P}.tar.gz"
+SRC_URI="https://portland.freedesktop.org/download/${MY_P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

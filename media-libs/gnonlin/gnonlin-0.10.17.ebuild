@@ -6,7 +6,7 @@ EAPI="4"
 
 DESCRIPTION="Gnonlin is a set of GStreamer elements to ease the creation of non-linear multimedia editors"
 HOMEPAGE="http://gnonlin.sourceforge.net"
-SRC_URI="http://gstreamer.freedesktop.org/src/${PN}/${P}.tar.bz2"
+SRC_URI="https://gstreamer.freedesktop.org/src/${PN}/${P}.tar.bz2"
 
 LICENSE="LGPL-2"
 SLOT="0.10"

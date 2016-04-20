@@ -21,7 +21,7 @@ DEPEND="${RDEPEND}
 DOCS="ChangeLog README* TODO *.txt"
 
 src_configure() {
-	# http://bugs.freedesktop.org/show_bug.cgi?id=54643
+	# https://bugs.freedesktop.org/show_bug.cgi?id=54643
 	append-cflags -Wno-error
 
 	econf $(use_enable static-libs static)

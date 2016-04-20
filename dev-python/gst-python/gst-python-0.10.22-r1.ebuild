@@ -9,8 +9,8 @@ PYTHON_COMPAT=( python2_7 )
 inherit autotools eutils python-r1 virtualx
 
 DESCRIPTION="A Python Interface to GStreamer"
-HOMEPAGE="http://gstreamer.freedesktop.org/"
-SRC_URI="http://gstreamer.freedesktop.org/src/${PN}/${P}.tar.bz2"
+HOMEPAGE="https://gstreamer.freedesktop.org/"
+SRC_URI="https://gstreamer.freedesktop.org/src/${PN}/${P}.tar.bz2"
 
 LICENSE="LGPL-2"
 SLOT="0.10"

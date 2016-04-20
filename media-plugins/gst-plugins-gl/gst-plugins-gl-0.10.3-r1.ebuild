@@ -8,7 +8,7 @@ GST_TARBALL_SUFFIX="gz"
 inherit autotools eutils gstreamer
 
 DESCRIPTION="GStreamer OpenGL plugins"
-HOMEPAGE="http://gstreamer.freedesktop.org/"
+HOMEPAGE="https://gstreamer.freedesktop.org/"
 
 LICENSE="LGPL-2"
 SLOT="0"

@@ -6,8 +6,8 @@ EAPI=2
 inherit eutils
 
 DESCRIPTION="An X app that follows your pointer providing information about the windows below"
-HOMEPAGE="http://freedesktop.org/Software/wininfo"
-SRC_URI="http://www.freedesktop.org/software/${PN}/${P}.tar.gz"
+HOMEPAGE="https://freedesktop.org/Software/wininfo"
+SRC_URI="https://www.freedesktop.org/software/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

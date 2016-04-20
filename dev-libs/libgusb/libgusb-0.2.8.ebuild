@@ -10,7 +10,7 @@ inherit eutils gnome2 multilib-minimal vala
 
 DESCRIPTION="GObject wrapper for libusb"
 HOMEPAGE="https://github.com/hughsie/libgusb"
-SRC_URI="http://people.freedesktop.org/~hughsient/releases/${P}.tar.xz"
+SRC_URI="https://people.freedesktop.org/~hughsient/releases/${P}.tar.xz"
 
 LICENSE="LGPL-2.1+"
 SLOT="0"
