@@ -32,6 +32,7 @@ CONFIG_CHECK="~AUDITSYSCALL"
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.2.2-shared-build.patch
 	"${FILESDIR}"/${PN}-0.2.2-libdir.patch
+	"${FILESDIR}"/${PN}-0.2.4-sysmacros.patch #580534
 )
 
 pkg_setup() {
