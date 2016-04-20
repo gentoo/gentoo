@@ -7,6 +7,7 @@ EAPI=6
 FRAMEWORKS_MINIMAL="5.20.0"
 KDE_HANDBOOK="forceoptional"
 KDE_TEST="true"
+VIRTUALX_REQUIRED="test"
 inherit kde5
 
 DESCRIPTION="KDE Plasma desktop"
