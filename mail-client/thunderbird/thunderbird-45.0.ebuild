@@ -2,11 +2,11 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 WANT_AUTOCONF="2.1"
 MOZ_ESR=""
-MOZ_LIGHTNING_VER="4.0.5"
-MOZ_LIGHTNING_GDATA_VER="1.9"
+MOZ_LIGHTNING_VER="4.7"
+MOZ_LIGHTNING_GDATA_VER="2.6"
 
 # This list can be updated using scripts/get_langs.sh from the mozilla overlay
 MOZ_LANGS=(ar ast be bg bn-BD br ca cs cy da de el en en-GB en-US es-AR
@@ -23,31 +23,29 @@ fi
 MOZ_P="${PN}-${MOZ_PV}"
 
 # Enigmail version
-EMVER="1.8.2"
+EMVER="1.9.1"
 
 # Patches
 PATCH="thunderbird-38.0-patches-0.1"
-PATCHFF="firefox-38.0-patches-05"
+PATCHFF="firefox-45.0-patches-03"
 
-MOZ_HTTP_URI="http://ftp.mozilla.org/pub/${PN}/releases"
+MOZ_HTTP_URI="https://archive.mozilla.org/pub/${PN}/releases"
 
 MOZCONFIG_OPTIONAL_JIT="enabled"
-inherit flag-o-matic toolchain-funcs mozconfig-v6.38 makeedit multilib autotools pax-utils check-reqs nsplugins mozlinguas
+inherit flag-o-matic toolchain-funcs mozconfig-v6.45 makeedit autotools pax-utils check-reqs nsplugins mozlinguas
 
 DESCRIPTION="Thunderbird Mail Client"
 HOMEPAGE="http://www.mozilla.com/en-US/thunderbird/"
 
-KEYWORDS="~alpha amd64 ~arm ~ppc ppc64 ~x86 ~x86-fbsd ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha ~amd64 ~arm ~ppc ~ppc64 ~x86 ~x86-fbsd ~amd64-linux ~x86-linux"
 SLOT="0"
 LICENSE="MPL-2.0 GPL-2 LGPL-2.1"
 IUSE="bindist crypt hardened ldap lightning +minimal mozdom selinux"
 RESTRICT="!bindist? ( bindist )"
 
-# URI for upstream lightning package (when it is available)
-#${MOZ_HTTP_URI/${PN}/calendar/lightning}/${MOZ_LIGHTNING_VER}/linux/lightning.xpi -> lightning-${MOZ_LIGHTNING_VER}.xpi
 PATCH_URIS=( https://dev.gentoo.org/~{anarchy,axs,polynomial-c}/mozilla/patchsets/{${PATCH},${PATCHFF}}.tar.xz )
 SRC_URI="${SRC_URI}
-	${MOZ_HTTP_URI}/${MOZ_PV}/source/${MOZ_P}.source.tar.bz2
+	${MOZ_HTTP_URI}/${MOZ_PV}/source/${MOZ_P}.source.tar.xz
 	https://dev.gentoo.org/~axs/distfiles/lightning-${MOZ_LIGHTNING_VER}.tar.xz
 	lightning? ( https://dev.gentoo.org/~axs/distfiles/gdata-provider-${MOZ_LIGHTNING_GDATA_VER}.tar.xz )
 	crypt? ( http://www.enigmail.net/download/source/enigmail-${EMVER}.tar.gz )
@@ -56,8 +54,8 @@ SRC_URI="${SRC_URI}
 ASM_DEPEND=">=dev-lang/yasm-1.1"
 
 CDEPEND="
-	>=dev-libs/nss-3.21
-	>=dev-libs/nspr-4.10.10
+	>=dev-libs/nss-3.21.1
+	>=dev-libs/nspr-4.12
 	!x11-plugins/enigmail
 	crypt?  ( || (
 		( >=app-crypt/gnupg-2.0
@@ -79,11 +77,7 @@ RDEPEND="${CDEPEND}
 	selinux? ( sec-policy/selinux-thunderbird )
 "
 
-if [[ ${PV} =~ beta ]]; then
-	S="${WORKDIR}/comm-beta"
-else
-	S="${WORKDIR}/comm-esr${PV%%.*}"
-fi
+S="${WORKDIR}/${MOZ_P}"
 
 BUILD_OBJ_DIR="${S}/tbird"
 
@@ -129,17 +123,12 @@ src_unpack() {
 
 src_prepare() {
 	# Apply our Thunderbird patchset
-	EPATCH_SUFFIX="patch" \
-	EPATCH_FORCE="yes" \
-	epatch "${WORKDIR}/thunderbird"
+	rm -f "${WORKDIR}"/thunderbird/2001_ldap_respect_cflags.patch
+	eapply "${WORKDIR}/thunderbird"
 
 	# Apply our patchset from firefox to thunderbird as well
 	pushd "${S}"/mozilla &>/dev/null || die
-	EPATCH_SUFFIX="patch" \
-	EPATCH_FORCE="yes" \
-	EPATCH_EXCLUDE="8010_bug114311-freetype26.patch
-			8011_bug1194520-freetype261_until_moz43.patch" \
-	epatch "${WORKDIR}/firefox"
+	eapply "${WORKDIR}/firefox"
 	popd &>/dev/null || die
 
 	# Ensure that are plugins dir is enabled as default
@@ -165,7 +154,7 @@ src_prepare() {
 	done
 
 	# Allow user to apply any additional patches without modifing ebuild
-	epatch_user
+	eapply_user
 
 	# Confirm the version of lightning being grabbed for langpacks is the same
 	# as that used in thunderbird
