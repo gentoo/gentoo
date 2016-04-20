@@ -10,7 +10,6 @@ inherit distutils-r1 eutils versionator
 
 DESCRIPTION="Model-driven deployment, config management, and command execution framework"
 HOMEPAGE="http://ansible.com/"
-blake2b
 BLAKE2B_HASH="b3/0e/5f3ee8884866a3d5e3b8ba86e9caa85ecdec75adabac8924b1c122339e7f"
 SRC_URI="https://pypi.python.org/packages/${BLAKE2B_HASH}/${P}.tar.gz"
 
