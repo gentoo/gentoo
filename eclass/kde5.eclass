@@ -27,7 +27,11 @@ if [[ ${KDE_BUILD_TYPE} = live ]]; then
 	esac
 fi
 
-EXPORT_FUNCTIONS pkg_pretend pkg_setup src_unpack src_prepare src_configure src_compile src_test src_install pkg_preinst pkg_postinst pkg_postrm
+if [[ ${CATEGORY} != kde-frameworks ]]; then
+	EXPORT_FUNCTIONS pkg_pretend
+fi
+
+EXPORT_FUNCTIONS pkg_setup src_unpack src_prepare src_configure src_compile src_test src_install pkg_preinst pkg_postinst pkg_postrm
 
 # @ECLASS-VARIABLE: QT_MINIMAL
 # @DESCRIPTION:
@@ -337,9 +341,7 @@ debug-print "${LINENO} ${ECLASS} ${FUNCNAME}: SRC_URI is ${SRC_URI}"
 # Do some basic settings
 kde5_pkg_pretend() {
 	debug-print-function ${FUNCNAME} "$@"
-	if [[ ${MERGE_TYPE} != binary ]]; then
-		_check_gcc_version
-	fi
+	_check_gcc_version
 }
 
 # @FUNCTION: kde5_pkg_setup
@@ -347,9 +349,7 @@ kde5_pkg_pretend() {
 # Do some basic settings
 kde5_pkg_setup() {
 	debug-print-function ${FUNCNAME} "$@"
-	if [[ ${MERGE_TYPE} != binary ]]; then
-		_check_gcc_version
-	fi
+	_check_gcc_version
 }
 
 # @FUNCTION: kde5_src_unpack

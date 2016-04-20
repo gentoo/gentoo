@@ -41,7 +41,12 @@ esac
 # @ECLASS-VARIABLE: KDE_GCC_MINIMAL
 # @DESCRIPTION:
 # Minimal GCC version to require for the package.
-: ${KDE_GCC_MINIMAL:=4.8}
+if [[ ${CATEGORY} = kde-frameworks ]]; then
+	: ${KDE_GCC_MINIMAL:=4.5}
+else
+	: ${KDE_GCC_MINIMAL:=4.8}
+fi
+
 
 # @ECLASS-VARIABLE: KDEBASE
 # @DESCRIPTION:

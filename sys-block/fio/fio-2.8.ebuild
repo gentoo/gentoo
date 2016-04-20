@@ -1,9 +1,10 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI="5"
+
 PYTHON_COMPAT=( python2_7 )
+
 inherit eutils python-r1 toolchain-funcs
 
 MY_PV="${PV/_rc/-rc}"
@@ -15,17 +16,21 @@ SRC_URI="http://brick.kernel.dk/snaps/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ia64 ~ppc ~ppc64 ~x86"
-IUSE="aio gnuplot gtk numa zlib"
+KEYWORDS="~amd64 ~arm ~ia64 ~ppc ~ppc64 ~x86"
+IUSE="aio glusterfs gnuplot gtk numa rbd rdma static zlib"
 
-DEPEND="aio? ( dev-libs/libaio )
-	gtk? (
-		dev-libs/glib:2
-		x11-libs/gtk+:2
-	)
-	numa? ( sys-process/numactl )
-	zlib? ( sys-libs/zlib )"
-RDEPEND="${DEPEND}
+# GTK+:2 does not offer static libaries.
+LIB_DEPEND="aio? ( dev-libs/libaio[static-libs(+)] )
+	glusterfs? ( sys-cluster/glusterfs[static-libs(+)] )
+	gtk? ( dev-libs/glib:2[static-libs(+)] )
+	numa? ( sys-process/numactl[static-libs(+)] )
+	rbd? ( sys-cluster/ceph[static-libs(+)] )
+	zlib? ( sys-libs/zlib[static-libs(+)] )"
+RDEPEND="!static? ( ${LIB_DEPEND//\[static-libs(+)]} )
+	gtk? ( x11-libs/gtk+:2 )"
+DEPEND="${RDEPEND}
+	static? ( ${LIB_DEPEND} )"
+RDEPEND+="
 	gnuplot? (
 		sci-visualization/gnuplot
 		${PYTHON_DEPS}
@@ -34,7 +39,9 @@ RDEPEND="${DEPEND}
 S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
-	sed -i '/^DEBUGFLAGS/s, -D_FORTIFY_SOURCE=2,,g' Makefile || die
+	epatch "${FILESDIR}"/fio-2.8-sysmacros.patch #580592
+	epatch "${FILESDIR}"/fio-2.2.13-libmtd.patch
+	sed -i '/^DEBUGFLAGS/s: -D_FORTIFY_SOURCE=2::g' Makefile || die
 	epatch_user
 
 	# Many checks don't have configure flags.
@@ -48,12 +55,18 @@ src_prepare() {
 src_configure() {
 	chmod g-w "${T}"
 	# not a real configure script
+	set -- \
 	./configure \
+		--disable-optimizations \
 		--extra-cflags="${CFLAGS} ${CPPFLAGS}" \
 		--cc="$(tc-getCC)" \
+		$(usex glusterfs '' '--disable-gfapi') \
 		$(usex gtk '--enable-gfio' '') \
 		$(usex numa '' '--disable-numa') \
-		|| die 'configure failed'
+		$(usex rbd '' '--disable-rbd') \
+		$(usex static '--build-static' '')
+	echo "$@"
+	"$@" || die 'configure failed'
 }
 
 src_compile() {
