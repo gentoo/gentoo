@@ -22,7 +22,7 @@
 		<flag name="mysql">Build the MySQL databse output module (requires <pkg>virtual/mysql</pkg>)</flag>
 		<flag name="normalize">Build the normalize modify module (requires <pkg>dev-libs/libee</pkg> and <pkg>dev-libs/liblognorm</pkg>)</flag>
 		<flag name="omudpspoof">Build the udpspoof output module (requires <pkg>net-libs/libnet</pkg>)</flag>
-		<flag name="postgres">Build the PostgreSQL database output module (requires <pkg>dev-db/postgresql-base</pkg>)</flag>
+		<flag name="postgres">Build the PostgreSQL database output module (requires <pkg>dev-db/postgresql</pkg>)</flag>
 		<flag name="rabbitmq">Build the RabbitMQ output module (requires <pkg>net-libs/rabbitmq-c</pkg>)</flag>
 		<flag name="redis">Build the Redis output module using (requires <pkg>dev-libs/hiredis</pkg>)</flag>
 		<flag name="relp">Build the Reliable Event Logging Protocol (RELP) output module (requires <pkg>dev-libs/librelp</pkg>)</flag>
