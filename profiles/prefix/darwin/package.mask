@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -20,10 +20,6 @@
 # Fabian Groffen <grobian@gentoo.org> (12 Aug 2014)
 # Needs some patching, bug #513428
 ~dev-libs/libffi-3.1
-
-# Fabian Groffen <grobian@gentoo.org> (12 Aug 2014)
-# Fails to compile on xattr stuff, next release should solve that, #518444
-=app-arch/tar-1.28
 
 # Fabian Groffen <grobian@gentoo.org> (14 Jan 2014)
 # util-linux has no business on Darwin systems

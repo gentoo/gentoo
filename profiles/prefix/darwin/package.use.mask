@@ -7,12 +7,6 @@
 # dev-libs/re2 needs love, bug #563932
 app-misc/sphinx re2
 
-# Fabian Groffen <grobian@gentoo.org> (18 Jan 2016)
-# GNU attr isn't supported
-dev-libs/glib xattr
-app-arch/tar xattr
-sys-devel/patch xattr
-
 # Fabian Groffen <grobian@gentoo.org> (10 Jan 2016)
 # libutempter isn't ported for Darwin, bug #506494
 net-misc/mosh utempter
