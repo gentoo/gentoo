@@ -33,7 +33,8 @@ src_prepare() {
 		"${FILESDIR}"/${P}-soundconverter.patch \
 		"${FILESDIR}"/${P}-fpic.patch \
 		"${FILESDIR}"/${P}-format.patch \
-		"${FILESDIR}"/${P}-miniupnpc-api-14.patch
+		"${FILESDIR}"/${P}-miniupnpc-api-14.patch \
+		"${FILESDIR}"/${P}-cmake-3.patch
 }
 
 src_configure() {
