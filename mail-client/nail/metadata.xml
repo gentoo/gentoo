@@ -17,7 +17,7 @@
     </flag>
     <flag name="kerberos">
       If network is enabled, this adds support for GSSAPI login on IMAP
-      through <pkg>virtual/kerberos</pkg>.
+      through <pkg>virtual/krb5</pkg>.
     </flag>
   </use>
   <upstream>
