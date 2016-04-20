@@ -1,8 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="4"
+EAPI="5"
+
+inherit eutils
 
 DESCRIPTION="GNU macro processor"
 HOMEPAGE="https://www.gnu.org/software/m4/m4.html"
@@ -18,6 +20,8 @@ DEPEND="app-arch/xz-utils"
 RDEPEND=""
 
 src_prepare() {
+	epatch "${FILESDIR}"/${P}-fix-spawn_h_m4.patch #580688
+
 	# Disable gnulib build test that has no impact on the source.
 	# Re-enable w/next version bump (and gnulib is updated). #554728
 	[[ ${PV} != "1.4.17" ]] && die "re-enable test #554728"
