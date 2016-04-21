@@ -4,8 +4,8 @@ The offending MIME types are commented out rather than
 physically removed because doing so would cause the patch
 to be too large.
 
---- mimetypes/kde.xml
-+++ mimetypes/kde.xml
+--- a/mimetypes/kde.xml
++++ b/mimetypes/kde.xml
 @@ -1784,7 +1784,8 @@
      <glob pattern="*.abc"/>
    </mime-type>

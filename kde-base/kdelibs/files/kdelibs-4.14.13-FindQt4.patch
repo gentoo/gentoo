@@ -10,8 +10,8 @@ Once qmake is found, it is queried for the correct location of all other items.
 
 Gentoo-bug: 562746
 
---- cmake/modules/FindQt4.cmake
-+++ cmake/modules/FindQt4.cmake
+--- a/cmake/modules/FindQt4.cmake
++++ b/cmake/modules/FindQt4.cmake
 @@ -446,6 +446,15 @@ GET_FILENAME_COMPONENT(qt_install_version "[HKEY_CURRENT_USER\\Software\\trollte
  # check for qmake
  # Debian uses qmake-qt4
