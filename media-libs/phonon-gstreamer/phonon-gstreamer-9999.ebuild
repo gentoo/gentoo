@@ -49,7 +49,6 @@ RDEPEND="
 	network? ( media-plugins/gst-plugins-soup:1.0 )
 "
 DEPEND="${RDEPEND}
-	qt4? ( >=dev-util/automoc-0.9.87 )
 	virtual/pkgconfig
 "
 
