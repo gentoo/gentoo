@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -77,12 +77,4 @@ src_test() {
 
 src_install() {
 	multibuild_foreach_variant cmake-utils_src_install
-}
-
-pkg_postinst() {
-	elog "For more verbose debug information, export the following variables:"
-	elog "PHONON_DEBUG=1"
-	elog ""
-	elog "To make KDE detect the new backend without reboot, run:"
-	elog "kbuildsycoca4 --noincremental"
 }
