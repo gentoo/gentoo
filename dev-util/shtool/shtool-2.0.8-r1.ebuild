@@ -17,6 +17,6 @@ DEPEND="
 	>=dev-lang/perl-5.6"
 
 src_install () {
-	make DESTDIR="${D}" install || die "make install failed"
+	emake DESTDIR="${D}" install
 	dodoc AUTHORS ChangeLog README THANKS VERSION NEWS RATIONAL
 }
