@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -73,12 +73,14 @@ multilib_src_configure() {
 		$(multilib_is_native_abi && cmake-utils_use_with zeitgeist QZeitgeist)
 		-DQT_QMAKE_EXECUTABLE="$(${QT_MULTIBUILD_VARIANT}_get_bindir)"/qmake
 	)
+
 	if [[ ${QT_MULTIBUILD_VARIANT} = qt4 ]]; then
-		mycmakeargs+=(-DPHONON_BUILD_PHONON4QT5=OFF)
+		mycmakeargs+=( -DPHONON_BUILD_PHONON4QT5=OFF )
 	fi
 	if [[ ${QT_MULTIBUILD_VARIANT} = qt5 ]]; then
-		mycmakeargs+=(-DPHONON_BUILD_PHONON4QT5=ON)
+		mycmakeargs+=( -DPHONON_BUILD_PHONON4QT5=ON )
 	fi
+
 	cmake-utils_src_configure
 }
 
@@ -103,6 +105,7 @@ src_compile() {
 			cmake-utils_src_compile
 		fi
 	}
+
 	multibuild_foreach_variant mycompile
 }
 
@@ -114,6 +117,7 @@ src_test() {
 			cmake-utils_src_test
 		fi
 	}
+
 	multibuild_foreach_variant mytest
 }
 
@@ -125,5 +129,6 @@ src_install() {
 			cmake-utils_src_install
 		fi
 	}
+
 	multibuild_foreach_variant myinstall
 }
