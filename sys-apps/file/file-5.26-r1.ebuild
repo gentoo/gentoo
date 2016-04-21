@@ -1,8 +1,8 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI="5"
+
 PYTHON_COMPAT=( python{2_7,3_3,3_4,3_5} pypy )
 DISTUTILS_OPTIONAL=1
 
@@ -30,6 +30,15 @@ RDEPEND="${DEPEND}
 	python? ( !dev-python/python-magic )"
 
 src_prepare() {
+	epatch "${FILESDIR}"/${P}-header-define.patch
+	epatch "${FILESDIR}"/${P}-nes-magic.patch
+	epatch "${FILESDIR}"/${P}-php-magic.patch
+	epatch "${FILESDIR}"/${P}-msoffice-magic.patch
+	epatch "${FILESDIR}"/${P}-stdin-rpm.patch
+	epatch "${FILESDIR}"/${P}-tests-fatal.patch
+	epatch "${FILESDIR}"/${P}-stdin-test.patch
+	epatch "${FILESDIR}"/${P}-compress-1.patch
+	epatch "${FILESDIR}"/${P}-compress-2.patch
 	[[ ${PV} == "9999" ]] && eautoreconf
 	elibtoolize
 

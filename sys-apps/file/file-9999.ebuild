@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI="5"
+
 PYTHON_COMPAT=( python{2_7,3_3,3_4,3_5} pypy )
 DISTUTILS_OPTIONAL=1
 
@@ -25,9 +25,7 @@ SLOT="0"
 IUSE="python static-libs zlib"
 
 DEPEND="python? ( ${PYTHON_DEPS} )
-	zlib? ( >=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}] )
-	abi_x86_32? ( !<=app-emulation/emul-linux-x86-baselibs-20131008-r21
-		!app-emulation/emul-linux-x86-baselibs[-abi_x86_32(-)] )"
+	zlib? ( >=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}] )"
 RDEPEND="${DEPEND}
 	python? ( !dev-python/python-magic )"
 
@@ -80,7 +78,7 @@ multilib_src_compile() {
 }
 
 src_compile() {
-	if tc-is-cross-compiler && ! ROOT=/ has_version ~${CATEGORY}/${P} ; then
+	if tc-is-cross-compiler && ! ROOT=/ has_version "~${CATEGORY}/${P}" ; then
 		emake -C "${WORKDIR}"/build/src file
 		PATH="${WORKDIR}/build/src:${PATH}"
 	fi
