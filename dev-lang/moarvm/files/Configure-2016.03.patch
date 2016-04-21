@@ -1,0 +1,52 @@
+diff -Naur a/Configure.pl b/Configure.pl
+--- a/Configure.pl	2016-02-04 21:28:31.000000000 +0100
++++ b/Configure.pl	2016-04-21 01:11:06.063324250 +0200
+@@ -8,6 +8,7 @@
+ use Getopt::Long;
+ use Pod::Usage;
+ use File::Spec;
++use ExtUtils::PkgConfig;
+ 
+ use build::setup;
+ use build::auto;
+@@ -170,6 +171,10 @@
+ if ($args{'has-libuv'}) {
+     $defaults{-thirdparty}->{uv} = undef;
+     unshift @{$config{usrlibs}}, 'uv';
++    my %pkg_info= ExtUtils::PkgConfig->find("libuv");
++    if ($pkg_info{"Cflags"}) {
++        $config{cincludes} .= ' ' . $pkg_info{"Cflags"};
++    }
+ }
+ else {
+     $config{cincludes} .= ' ' . $defaults{ccinc} . '3rdparty/libuv/include'
+@@ -181,6 +186,10 @@
+ if ($args{'has-libatomic_ops'}) {
+     $defaults{-thirdparty}->{lao} = undef;
+     unshift @{$config{usrlibs}}, 'atomic_ops';
++    my %pkg_info = ExtUtils::PkgConfig->find("atomic_ops");
++    if ($pkg_info{"Cflags"}) {
++        $config{cincludes} .= ' ' . $pkg_info{"Cflags"};
++    }
+ }
+ else {
+     $config{cincludes} .= ' ' . $defaults{ccinc} . '3rdparty/libatomic_ops/src';
+@@ -232,6 +241,10 @@
+     $config{nativecall_backend} = 'libffi';
+     unshift @{$config{usrlibs}}, 'ffi';
+     push @{$config{defs}}, 'HAVE_LIBFFI';
++    my %pkg_info = ExtUtils::PkgConfig->find("libffi");
++    if ($pkg_info{"cflags"}) {
++        $config{cincludes} .= ' ' . $pkg_info{"cflags"};
++    }
+ }
+ elsif ($args{'has-dyncall'}) {
+     unshift @{$config{usrlibs}}, 'dyncall_s', 'dyncallback_s', 'dynload_s';
+@@ -364,6 +377,7 @@
+ print "\n", <<TERM, "\n";
+         make: $config{make}
+      compile: $config{cc} $config{cflags}
++    includes: $config{cincludes}
+         link: $config{ld} $config{ldflags}
+         libs: $config{ldlibs}
+ 
