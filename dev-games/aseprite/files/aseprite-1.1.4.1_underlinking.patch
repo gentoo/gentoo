@@ -1,0 +1,12 @@
+diff --git a/src/she/CMakeLists.txt b/src/she/CMakeLists.txt
+index eddf386..d1b8ce5 100644
+--- a/src/she/CMakeLists.txt
++++ b/src/she/CMakeLists.txt
+@@ -205,6 +205,7 @@ endif()
+ add_library(she ${SHE_SOURCES})
+ 
+ target_link_libraries(she
++  ${PLATFORM_LIBS}
+   gfx-lib
+   base-lib)
+ 
