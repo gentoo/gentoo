@@ -10,7 +10,6 @@ if [[ ${PV} != *9999* ]]; then
 else
 	EGIT_REPO_URI=( "git://anongit.kde.org/${PN}" )
 	inherit git-r3
-	KEYWORDS=""
 fi
 
 inherit cmake-multilib multibuild qmake-utils
