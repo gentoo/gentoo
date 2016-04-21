@@ -19,17 +19,16 @@ RDEPEND="sys-apps/rescan-scsi-bus
 DEPEND="${RDEPEND}"
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-sysmacros.patch #580214
+	epatch "${FILESDIR}"/${PN}-1.5.7-sysmacros.patch #580214
 	# this builds a really old mdadm
 	sed -i \
 		-e '/RPMB/d' \
 		-e '/^SUBDIRS/s,mdadm.d,,' \
 		-e '/^SUBDIRS/s,files,,' \
 		Makefile.am || die "sed Makefile.am failed"
-	epatch "${FILESDIR}"/${PN}-1.5.6-glibc-2.10.patch
 	eautoreconf
 	# i386 ELF binaries in tarball = bad
-	rm -f "${S}"/files/alarms*
+	rm "${S}"/files/ialarms* || die
 
 	# Fix up /sbin instances to be /usr/sbin instead
 	for i in src/sgraidmon.c src/sgdiskmon.c ; do
@@ -44,16 +43,12 @@ src_configure() {
 }
 
 src_install() {
-	into /usr
-	docdir="/usr/share/doc/${PF}/"
-	emake install DESTDIR="${D}" datato="${D}${docdir}"
-	dosbin files/sgevt
-	dosbin files/mdevt
-	# unneeded files
-	rm -f "${D}"${docdir}/{SCSIRAS,COPYING}
+	local docdir="/usr/share/doc/${PF}"
+	emake install DESTDIR="${D}" datato="${ED}${docdir}"
+	dosbin files/sgevt files/mdevt
+	rm -f "${ED}${docdir}"/{SCSIRAS,COPYING}
 	# install modepage files
 	insinto /usr/share/${PN}
 	doins files/*.mdf
-	# new docs
 	dodoc ChangeLog AUTHORS TODO
 }
