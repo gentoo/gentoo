@@ -12,7 +12,7 @@ inherit cmake-utils multibuild ${git_eclass}
 unset git_eclass
 
 DESCRIPTION="Phonon VLC backend"
-HOMEPAGE="https://projects.kde.org/projects/kdesupport/phonon/phonon-vlc"
+HOMEPAGE="https://phonon.kde.org/"
 [[ ${PV} == 9999 ]] || SRC_URI="mirror://kde/stable/phonon/${MY_PN}/${PV}/${MY_P}.tar.xz"
 
 LICENSE="LGPL-2.1+ || ( LGPL-2.1 LGPL-3 )"
