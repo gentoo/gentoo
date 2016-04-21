@@ -23,6 +23,7 @@
 		<flag name="osmesa">Build the Mesa library for off-screen rendering.</flag>
 		<flag name="pax_kernel">Enable if the user plans to run the package under a pax enabled hardened kernel</flag>
 		<flag name="pic">disable optimized assembly code that is not PIC friendly</flag>
+		<flag name="valgrind">Compile in valgrind memory hints</flag>
 		<flag name="vdpau">Enable the VDPAU acceleration interface for the Gallium3D Video Layer.</flag>
 		<flag name="wayland">Enable support for dev-libs/wayland</flag>
 		<flag name="xa">Enable the XA (X Acceleration) API for Gallium3D.</flag>
