@@ -1,8 +1,8 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=6
 
 DESCRIPTION="MTKBabel is a Perl program to operate the i-Blue 747 GPS data logger"
 HOMEPAGE="http://sourceforge.net/projects/mtkbabel/"
@@ -18,6 +18,8 @@ RDEPEND="
 	dev-perl/Device-SerialPort
 	dev-perl/TimeDate
 "
+
+S=${WORKDIR}/${PV}
 
 src_install() {
 	doman mtkbabel.1
