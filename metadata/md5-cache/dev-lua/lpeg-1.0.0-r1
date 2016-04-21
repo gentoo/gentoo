@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install prepare test
+DEPEND=!luajit? ( >=dev-lang/lua-5.1:= ) luajit? ( dev-lang/luajit:2= ) virtual/pkgconfig
+DESCRIPTION=Parsing Expression Grammars for Lua
+EAPI=6
+HOMEPAGE=http://www.inf.puc-rio.br/~roberto/lpeg/
+IUSE=debug doc luajit
+KEYWORDS=~amd64 ~arm ~hppa ~ppc ~x86
+LICENSE=MIT
+RDEPEND=!luajit? ( >=dev-lang/lua-5.1:= ) luajit? ( dev-lang/luajit:2= )
+SLOT=0
+SRC_URI=http://www.inf.puc-rio.br/~roberto/lpeg/lpeg-1.0.0.tar.gz
+_eclass_exported_funcs=src_prepare:- src_compile:- src_test:- src_install:-
+_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	flag-o-matic	d270fa247153df66074f795fa42dba3e	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=3dd0b2dbfade2fff8238a04df74871d9
