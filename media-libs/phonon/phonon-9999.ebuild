@@ -69,7 +69,6 @@ multilib_src_configure() {
 		$(cmake-utils_use_with pulseaudio GLIB2)
 		$(cmake-utils_use_with pulseaudio PulseAudio)
 		$(multilib_is_native_abi && cmake-utils_use_with zeitgeist QZeitgeist)
-		-DQT_QMAKE_EXECUTABLE="$(${QT_MULTIBUILD_VARIANT}_get_bindir)"/qmake
 	)
 
 	if [[ ${QT_MULTIBUILD_VARIANT} = qt4 ]]; then
