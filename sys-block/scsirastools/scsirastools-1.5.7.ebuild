@@ -19,6 +19,7 @@ RDEPEND="sys-apps/rescan-scsi-bus
 DEPEND="${RDEPEND}"
 
 src_prepare() {
+	epatch "${FILESDIR}"/${P}-sysmacros.patch #580214
 	# this builds a really old mdadm
 	sed -i \
 		-e '/RPMB/d' \
