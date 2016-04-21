@@ -6,7 +6,7 @@
 		<name>Gentoo KDE Project</name>
 	</maintainer>
 	<use>
-		<flag name="ppp">Enable support for <pkg>net-dialup/ppp</pkg>.</flag>
-		<flag name="telepathy">Enable build of <pkg>kde-apps/plasma-telepathy-meta</pkg>, otherwise <pkg>kde-apps/kopete</pkg>.</flag>
+		<flag name="sso">Enable support for Single sign-on through KAccounts</flag>
+		<flag name="otr">Enable support for encrypted conversations using Off-The-Records messaging</flag>
 	</use>
 </pkgmetadata>
