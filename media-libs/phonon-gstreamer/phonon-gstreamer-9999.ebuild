@@ -14,7 +14,7 @@ inherit cmake-utils multibuild ${git_eclass}
 
 DESCRIPTION="Phonon GStreamer backend"
 HOMEPAGE="https://phonon.kde.org/"
-[[ ${PV} == *9999 ]] || SRC_URI="mirror://kde/stable/phonon/${MY_PN}/${PV}/src/${MY_P}.tar.xz"
+[[ ${PV} == *9999 ]] || SRC_URI="mirror://kde/stable/phonon/${MY_PN}/${PV}/${MY_P}.tar.xz"
 
 LICENSE="LGPL-2.1"
 if [[ ${PV} == *9999 ]]; then
