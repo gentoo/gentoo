@@ -344,7 +344,7 @@ app-backup/backupninja 1.0.1: lightweight, extensible meta-backup system
 app-backup/backuppc 3.3.0-r1 3.3.1-r1: High-performance backups to a server's disk
 app-backup/bacula 5.2.13-r3 7.0.5-r1 7.2.0 7.4.0: Featureful client/server network backup suite
 app-backup/bareos 13.2.4-r1 14.2.2 14.2.5 15.2.2: Featureful client/server network backup suite
-app-backup/borgbackup 1.0.1 9999: Deduplicating backup program with compression and authenticated encryption.
+app-backup/borgbackup 1.0.1 1.0.2 9999: Deduplicating backup program with compression and authenticated encryption.
 app-backup/boxbackup 0.11.1: A completely automatic on-line backup system
 app-backup/burp 1.3.8-r1 1.3.48-r1 1.4.40-r1: Network backup and restore client and server for Unix and Windows
 app-backup/ccollect 0.8: (pseudo) incremental backup with different exclude lists using hardlinks and rsync
@@ -8352,13 +8352,13 @@ dev-ros/collada_parser 1.11.8 1.11.9 1.11.10 1.12.0 1.12.2 9999: C++ parser for 
 dev-ros/collada_urdf 1.11.8 1.11.9 1.11.10 1.12.0 1.12.2 9999: Tool to convert Unified Robot Description Format (URDF) documents into COLLADA documents
 dev-ros/compressed_depth_image_transport 1.9.2-r1 1.9.3 9999: Plugin to image_transport for transparently sending depth images using PNG compression
 dev-ros/compressed_image_transport 1.9.2-r1 1.9.3 9999: Plugin to image_transport for transparently sending images encoded as JPEG or PNG
-dev-ros/control_msgs 1.3.1 9999: Base messages and actions useful for controlling robots
+dev-ros/control_msgs 1.3.1 1.4.0 9999: Base messages and actions useful for controlling robots
 dev-ros/control_toolbox 1.13.2 9999: Modules that are useful across all controllers
 dev-ros/controller_interface 0.9.3 0.10.0 9999: Interface base class for controllers
 dev-ros/controller_manager 0.9.3 0.10.0 9999: The controller manager
 dev-ros/controller_manager_msgs 0.9.3 0.10.0 9999: The controller manager
 dev-ros/controller_manager_tests 0.9.3 0.10.0 9999: Tests for the controller manager
-dev-ros/convex_decomposition 0.1.10 9999: Convex Decomposition Tool for Robot Model
+dev-ros/convex_decomposition 0.1.10 0.1.11 9999: Convex Decomposition Tool for Robot Model
 dev-ros/costmap_2d 1.13.0 1.13.1 9999: Creates a 2D costmap from sensor data
 dev-ros/cpp_common 0.5.6 0.5.7 0.6.0 9999: C++ code for doing things that are not necessarily ROS related
 dev-ros/cv_bridge 1.11.8 1.11.9 1.11.10 1.11.11 1.11.12 1.12.0 9999: Converts between ROS Image messages and OpenCV images
@@ -8384,7 +8384,7 @@ dev-ros/gencpp 0.5.3 0.5.4 9999: ROS C++ message definition and serialization ge
 dev-ros/geneus 2.2.5 9999: EusLisp ROS message and service generators
 dev-ros/genlisp 0.4.15 9999: Common-Lisp ROS message and service generators
 dev-ros/genmsg 0.5.6 0.5.7 9999: Python library for generating ROS message and service data structures for various languages
-dev-ros/genpy 0.5.7 0.5.8 9999: Python ROS message and service generators
+dev-ros/genpy 0.5.7 0.5.8 0.5.9 9999: Python ROS message and service generators
 dev-ros/geodesy 0.4.0 9999: Python and C++ interfaces for manipulating geodetic coordinates
 dev-ros/geographic_msgs 0.4.0 9999: ROS messages for Geographic Information Systems
 dev-ros/geometric_shapes 0.4.3 0.4.4 9999: Generic definitions of geometric shapes and bodies
@@ -8417,7 +8417,7 @@ dev-ros/imu_transformer 0.2.1 9999: Node/nodelet combination to transform sensor
 dev-ros/interactive_marker_tutorials 0.9.2 9999: Interactive marker tutorials
 dev-ros/interactive_markers 1.11.1 9999: 3D interactive marker communication library for RViz and similar tools
 dev-ros/interval_intersection 0.10.13 0.10.14 9999: Tools for calculating the intersection of interval messages coming in on several topics
-dev-ros/ivcon 0.1.5 9999: Mesh Conversion Utility
+dev-ros/ivcon 0.1.5 0.1.6 9999: Mesh Conversion Utility
 dev-ros/joint_limits_interface 0.9.3 0.10.0 9999: Interface for enforcing joint limits
 dev-ros/joint_state_publisher 1.11.8 1.11.9 1.11.10 1.12.0 1.12.2 9999: Tool for setting and publishing joint state values for a given URDF
 dev-ros/joint_states_settler 0.10.13 0.10.14 9999: Reports how long a subset of joints has been settled
@@ -8446,7 +8446,7 @@ dev-ros/monocam_settler 0.10.13 0.10.14 9999: Listens on a ImageFeatures topic, 
 dev-ros/move_base 1.13.0 1.13.1 9999: Given a goal in the world, will attempt to reach it with a mobile base
 dev-ros/move_base_msgs 1.13.0 9999: Holds the action description and relevant messages for the move_base package
 dev-ros/move_slow_and_clear 1.13.0 1.13.1 9999: Move slow and clear
-dev-ros/moveit_msgs 0.6.1 0.7.0 9999: Messages, services and actions used by MoveIt
+dev-ros/moveit_msgs 0.6.1 0.7.0 0.7.1 9999: Messages, services and actions used by MoveIt
 dev-ros/nav_core 1.13.0 1.13.1 9999: Common interfaces for navigation specific robot actions
 dev-ros/nav_msgs 1.12.3 1.12.4 9999: Common messages used to interact with the navigation stack
 dev-ros/navfn 1.13.1-r1 9999: Fast interpolated navigation function that can be used to create plans for a mobile base
@@ -8508,7 +8508,7 @@ dev-ros/roslang 1.12.3 1.12.5 1.13.1 9999: Common package for all ROS client lib
 dev-ros/roslaunch 1.11.16-r1 1.11.17 1.12.0 1.12.1 9999: Tool for easily launching multiple ROS nodes
 dev-ros/roslib 1.12.3 1.12.5 1.13.1 9999: Base dependencies and support libraries for ROS
 dev-ros/roslint 0.10.0 0.11.0 9999: Performs static checking of Python or C++ source code for errors and standards compliance
-dev-ros/roslisp 1.9.19 9999: Lisp client library for ROS
+dev-ros/roslisp 1.9.19 1.9.20 9999: Lisp client library for ROS
 dev-ros/roslz4 1.11.14 1.11.15 1.11.16 1.11.17 1.12.0 1.12.1 9999: Python and C++ implementation of the LZ4 streaming format
 dev-ros/rosmake 1.12.3 1.12.5 1.13.1 9999: ROS dependency aware build tool
 dev-ros/rosmaster 1.11.14 1.11.15 1.11.16 1.11.17 1.12.0 1.12.1 9999: ROS Master implementation
@@ -11321,7 +11321,7 @@ kde-base/kdebase-cursors 4.11.19 4.11.22: oxygen cursors from kdebase
 kde-base/kdebase-pam 9 10: pam.d files used by several KDE components
 kde-base/kdebase-startkde 4.11.19 4.11.22 4.11.22-r1: Startkde script, which starts a complete KDE session, and associated scripts
 kde-base/kdebindings-meta 4.14.3: KDE bindings - merge this to pull in all kdebindings-derived packages
-kde-base/kdelibs 4.14.8 4.14.16 4.14.18: KDE libraries needed by all KDE programs
+kde-base/kdelibs 4.14.8 4.14.16 4.14.18 4.14.19: KDE libraries needed by all KDE programs
 kde-base/kdeplasma-addons 4.14.3 4.14.3-r1: Extra Plasma applets and engines
 kde-base/kdm 4.11.19 4.11.22: KDE login manager, similar to xdm and gdm
 kde-base/kephal 4.11.19 4.11.22: Allows handling of multihead systems via the XRandR extension
