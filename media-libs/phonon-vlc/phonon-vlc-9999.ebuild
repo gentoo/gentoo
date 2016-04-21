@@ -39,9 +39,7 @@ RDEPEND="
 	)
 "
 DEPEND="${RDEPEND}
-	app-arch/xz-utils
 	virtual/pkgconfig
-	qt4? ( >=dev-util/automoc-0.9.87 )
 "
 
 [[ ${PV} == 9999 ]] || S=${WORKDIR}/${MY_P}
