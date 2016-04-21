@@ -4,7 +4,7 @@
 
 EAPI="5"
 
-inherit eutils
+inherit eutils autotools
 
 DESCRIPTION="GNU macro processor"
 HOMEPAGE="https://www.gnu.org/software/m4/m4.html"
@@ -21,6 +21,7 @@ RDEPEND=""
 
 src_prepare() {
 	epatch "${FILESDIR}"/${P}-fix-spawn_h_m4.patch #580688
+	eautoreconf
 
 	# Disable gnulib build test that has no impact on the source.
 	# Re-enable w/next version bump (and gnulib is updated). #554728
