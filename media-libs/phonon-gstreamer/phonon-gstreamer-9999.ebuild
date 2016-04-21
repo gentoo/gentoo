@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -24,6 +24,7 @@ else
 fi
 SLOT="0"
 IUSE="alsa debug +network +qt4 qt5"
+
 REQUIRED_USE="|| ( qt4 qt5 )"
 
 RDEPEND="
@@ -62,10 +63,10 @@ src_configure() {
 	myconfigure() {
 		local mycmakeargs=()
 		if [[ ${MULTIBUILD_VARIANT} = qt4 ]]; then
-			mycmakeargs+=(-DPHONON_BUILD_PHONON4QT5=OFF)
+			mycmakeargs+=( -DPHONON_BUILD_PHONON4QT5=OFF )
 		fi
 		if [[ ${MULTIBUILD_VARIANT} = qt5 ]]; then
-			mycmakeargs+=(-DPHONON_BUILD_PHONON4QT5=ON)
+			mycmakeargs+=( -DPHONON_BUILD_PHONON4QT5=ON )
 		fi
 		cmake-utils_src_configure
 	}
