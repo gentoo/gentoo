@@ -53,8 +53,6 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 "
 
-[[ ${PV} == 9999 ]] || S=${WORKDIR}/${MY_P}
-
 pkg_setup() {
 	MULTIBUILD_VARIANTS=( $(usev qt4) $(usev qt5) )
 }
