@@ -1,0 +1,28 @@
+http://mx.gw.com/pipermail/file/2016/001947.html
+http://mx.gw.com/pipermail/file/2016/001949.html
+
+From a5995b6e56c1a476360ccc58598a389f6cd71948 Mon Sep 17 00:00:00 2001
+From: Christos Zoulas <christos@zoulas.com>
+Date: Tue, 19 Apr 2016 13:40:02 +0000
+Subject: [PATCH] Fix wrong level
+
+---
+ magic/Magdir/commands | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/magic/Magdir/commands b/magic/Magdir/commands
+index 95109f3..fddb764 100644
+--- a/magic/Magdir/commands
++++ b/magic/Magdir/commands
+@@ -101,7 +101,7 @@
+ 0	string	=<?php
+ >5	regex	[\ \n]
+ >>6	string	/*\ Smarty\ version		Smarty compiled template
+->24	regex	[0-9.]+				\b, version %s
++>>>24	regex	[0-9.]+				\b, version %s
+ !:mime	text/x-php
+ 
+ 0	string		Zend\x00		PHP script Zend Optimizer data
+-- 
+2.7.4
+
