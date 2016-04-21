@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 if [[ ${PV} != *9999* ]]; then
 	SRC_URI="mirror://kde/stable/phonon/${PV}/${P}.tar.xz"
@@ -64,11 +64,11 @@ pkg_setup() {
 
 multilib_src_configure() {
 	local mycmakeargs=(
+		-DPHONON_BUILD_DESIGNER_PLUGIN=$(usex designer)
 		-DPHONON_INSTALL_QT_EXTENSIONS_INTO_SYSTEM_QT=TRUE
-		$(cmake-utils_use designer PHONON_BUILD_DESIGNER_PLUGIN)
-		$(cmake-utils_use_with pulseaudio GLIB2)
-		$(cmake-utils_use_with pulseaudio PulseAudio)
-		$(multilib_is_native_abi && cmake-utils_use_with zeitgeist QZeitgeist)
+		-DWITH_GLIB2=$(usex pulseaudio)
+		-DWITH_PulseAudio=$(usex pulseaudio)
+		$(multilib_is_native_abi && echo -DWITH_QZeitgeist=$(usex zeitgeist))
 	)
 
 	if [[ ${QT_MULTIBUILD_VARIANT} = qt4 ]]; then
