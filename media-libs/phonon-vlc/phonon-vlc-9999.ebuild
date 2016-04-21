@@ -42,8 +42,6 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 "
 
-[[ ${PV} == 9999 ]] || S=${WORKDIR}/${MY_P}
-
 DOCS=( AUTHORS )
 
 pkg_setup() {
