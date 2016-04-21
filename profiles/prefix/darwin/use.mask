@@ -38,7 +38,6 @@ sybase
 sybase-ct
 rtc
 voodoo3
-pvm
 v4l
 
 # introspection is far from working on OSX
