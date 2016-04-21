@@ -16,7 +16,7 @@ DESCRIPTION="Phonon GStreamer backend"
 HOMEPAGE="https://phonon.kde.org/"
 [[ ${PV} == *9999 ]] || SRC_URI="mirror://kde/stable/phonon/${MY_PN}/${PV}/${MY_P}.tar.xz"
 
-LICENSE="LGPL-2.1"
+LICENSE="LGPL-2.1+ || ( LGPL-2.1 LGPL-3 )"
 if [[ ${PV} == *9999 ]]; then
 	KEYWORDS=""
 else
