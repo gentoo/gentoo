@@ -13,7 +13,7 @@ MY_P=${MY_PN}-${PV}
 inherit cmake-utils multibuild ${git_eclass}
 
 DESCRIPTION="Phonon GStreamer backend"
-HOMEPAGE="https://projects.kde.org/projects/kdesupport/phonon/phonon-gstreamer"
+HOMEPAGE="https://phonon.kde.org/"
 [[ ${PV} == *9999 ]] || SRC_URI="mirror://kde/stable/phonon/${MY_PN}/${PV}/src/${MY_P}.tar.xz"
 
 LICENSE="LGPL-2.1"
