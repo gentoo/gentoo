@@ -31,7 +31,7 @@ DEPEND="${RDEPEND}
 S=${WORKDIR}/${MY_P}
 
 src_prepare() {
-	epatch "${FILESDIR}/${PN}-3.0.0-build.patch"
+	epatch "${FILESDIR}/${PN}-3.2.5-build.patch"
 }
 
 src_compile() {
