@@ -31,7 +31,7 @@ DEPEND="${RDEPEND}
 	sys-devel/gettext"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-1.2.2-fix_keywords_gtk3.patch
+	"${FILESDIR}"/${P}-fix_keywords_gtk3.patch
 )
 
 src_prepare() {
