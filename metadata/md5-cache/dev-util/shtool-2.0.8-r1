@@ -8,4 +8,4 @@ LICENSE=GPL-2
 SLOT=0
 SRC_URI=mirror://gnu/shtool/shtool-2.0.8.tar.gz
 _eclass_exported_funcs=src_install:-
-_md5_=f5954928e1ff55ca914bee728b8fd1c4
+_md5_=9f9c992666915215b05aad3d61228e6d
