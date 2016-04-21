@@ -22,6 +22,7 @@ DEPEND="
 	dev-python/configobj[${PYTHON_USEDEP}]
 	dev-python/ipaddr[${PYTHON_USEDEP}]
 	dev-python/netifaces[${PYTHON_USEDEP}]
+	!dev-python/rtslib-fb[${PYTHON_USEDEP}]
 	"
 RDEPEND="${DEPEND}"
 
