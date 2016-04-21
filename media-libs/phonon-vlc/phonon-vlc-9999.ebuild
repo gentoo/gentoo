@@ -27,7 +27,7 @@ IUSE="debug +qt4 qt5"
 REQUIRED_USE="|| ( qt4 qt5 )"
 
 RDEPEND="
-	>=media-libs/phonon-4.8.0[qt4=,qt5=]
+	>=media-libs/phonon-4.9.0[qt4=,qt5=]
 	>=media-video/vlc-2.0.1:=[dbus,ogg,vorbis]
 	qt4? (
 		dev-qt/qtcore:4
