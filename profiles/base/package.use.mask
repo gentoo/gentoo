@@ -5,6 +5,10 @@
 # This file requires >=portage-2.1.1
 # New entries go on top.
 
+# Johannes Huber <johu@gentoo.org> (21 Apr 2016)
+# Unreleased dependency.
+kde-apps/ktp-text-ui speech
+
 # Michael Palimaka <kensington@gentoo.org> (17 Apr 2016)
 # Fails to build with recent doxygen. Bug #569776.
 dev-cpp/eigen:2 doc
