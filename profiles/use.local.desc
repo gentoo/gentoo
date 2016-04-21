@@ -1780,6 +1780,7 @@ dev-java/oracle-jre-bin:jce - Install Java Cryptographic Extension Unlimited Str
 dev-java/oracle-jre-bin:pax_kernel - Use paxctl to mark the JVM binaries
 dev-java/proguard:ant - Ant task for using ProGuard in build.xml scripts
 dev-java/proguard:j2me - Adds support for J2ME Wireless Toolkit
+dev-java/protobuf-java:nano - Enable code generator and runtime library designed specifically for resource-constrained systems, like Android
 dev-java/rxtx:lfd - Installs and uses LockFileServer daemon (lfd)
 dev-java/sbt:binary - Install from (Gentoo-compiled) binary instead of building from sources. Set this when you run out of memory during build.
 dev-java/swt:webkit - Embedded browser support via net-libs/webkit-gtk:2, replacing former xulrunner-based browser.
@@ -2097,6 +2098,8 @@ dev-libs/openssl:sctp - Support for Stream Control Transmission Protocol
 dev-libs/openssl:tls-heartbeat - Enable the Heartbeat Extension in TLS and DTLS
 dev-libs/pkcs11-helper:nss - Enable NSS crypto engine
 dev-libs/ppl:lpsol - Build the ppl_lpsol linear programming problem solver
+dev-libs/protobuf:java - Builds the Java implementation. This is not needed for Java support in protoc.
+dev-libs/protobuf:python - Builds the Python implementation. This is not needed for Python support in protoc.
 dev-libs/starpu:cuda - Enable NVIDIA CUDA toolkit support
 dev-libs/starpu:gcc-plugin - Enable GCC extension plugin (experimental)
 dev-libs/starpu:opencl - Enable OpenCL support
