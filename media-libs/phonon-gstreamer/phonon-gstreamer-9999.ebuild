@@ -44,6 +44,7 @@ RDEPEND="
 		dev-qt/qtgui:5
 		dev-qt/qtopengl:5
 		dev-qt/qtwidgets:5
+		dev-qt/qtx11extras:5
 	)
 	virtual/opengl
 	network? ( media-plugins/gst-plugins-soup:1.0 )
