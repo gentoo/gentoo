@@ -49,7 +49,6 @@ RDEPEND="
 	zeitgeist? ( dev-libs/libqzeitgeist )
 "
 DEPEND="${RDEPEND}
-	qt4? ( >=dev-util/automoc-0.9.87 )
 	virtual/pkgconfig[${MULTILIB_USEDEP}]
 "
 PDEPEND="
