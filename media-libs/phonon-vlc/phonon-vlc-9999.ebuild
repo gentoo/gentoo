@@ -23,6 +23,7 @@ KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86 ~amd64-fbsd"
 
 SLOT="0"
 IUSE="debug +qt4 qt5"
+
 REQUIRED_USE="|| ( qt4 qt5 )"
 
 RDEPEND="
@@ -52,10 +53,10 @@ src_configure() {
 	myconfigure() {
 		local mycmakeargs=()
 		if [[ ${MULTIBUILD_VARIANT} = qt4 ]]; then
-			mycmakeargs+=(-DPHONON_BUILD_PHONON4QT5=OFF)
+			mycmakeargs+=( -DPHONON_BUILD_PHONON4QT5=OFF )
 		fi
 		if [[ ${MULTIBUILD_VARIANT} = qt5 ]]; then
-			mycmakeargs+=(-DPHONON_BUILD_PHONON4QT5=ON)
+			mycmakeargs+=( -DPHONON_BUILD_PHONON4QT5=ON )
 		fi
 		cmake-utils_src_configure
 	}
