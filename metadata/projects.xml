@@ -416,10 +416,10 @@
       <name>Amy Winston</name>
       <role>Member</role>
     </member>
-    <member>
+    <member is-lead="1">
       <email>wraeth@gentoo.org</email>
       <name>Sam Jorna</name>
-      <role>Member</role>
+      <role>Lead</role>
     </member>
   </project>
   <project>
