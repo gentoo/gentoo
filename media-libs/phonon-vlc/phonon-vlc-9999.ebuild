@@ -6,21 +6,21 @@ EAPI=6
 
 MY_PN="phonon-backend-vlc"
 MY_P="${MY_PN}-${PV}"
-EGIT_REPO_URI=( "git://anongit.kde.org/${PN}" )
-[[ ${PV} == 9999 ]] && git_eclass=git-r3
-inherit cmake-utils multibuild ${git_eclass}
-unset git_eclass
+
+if [[ ${PV} != *9999* ]]; then
+	SRC_URI="mirror://kde/stable/phonon/${MY_PN}/${PV}/${MY_P}.tar.xz"
+	KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86 ~amd64-fbsd"
+else
+	EGIT_REPO_URI=( "git://anongit.kde.org/${PN}" )
+	inherit git-r3
+fi
+
+inherit cmake-utils multibuild
 
 DESCRIPTION="Phonon VLC backend"
 HOMEPAGE="https://phonon.kde.org/"
-[[ ${PV} == 9999 ]] || SRC_URI="mirror://kde/stable/phonon/${MY_PN}/${PV}/${MY_P}.tar.xz"
 
 LICENSE="LGPL-2.1+ || ( LGPL-2.1 LGPL-3 )"
-
-# Don't move KEYWORDS on the previous line or ekeyword won't work # 399061
-[[ ${PV} == 9999 ]] || \
-KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86 ~amd64-fbsd"
-
 SLOT="0"
 IUSE="debug +qt4 qt5"
 
