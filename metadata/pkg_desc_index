@@ -11274,7 +11274,7 @@ kde-apps/libkdepim 4.4.2015.06 4.4.2016.01: Common library for KDE PIM apps (noa
 kde-apps/libkeduvocdocument 15.12.3: Library for reading/writing KVTML
 kde-apps/libkexiv2 4.14.3 15.08.3 15.12.3: KDE Image Plugin Interface: an exiv2 library wrapper
 kde-apps/libkface 4.4.0 4.12.0 15.08.3 15.12.3: Qt/C++ wrapper around LibFace to perform face recognition and detection
-kde-apps/libkgeomap 4.4.0 4.12.0 15.08.3: Wrapper library for world map components as marble, openstreetmap and googlemap
+kde-apps/libkgeomap 4.4.0 4.12.0 15.08.3 15.12.3: Wrapper library for world map components as marble, openstreetmap and googlemap
 kde-apps/libkipi 4.14.3 15.08.3 15.12.3: A library for image plugins accross KDE applications
 kde-apps/libkleo 4.4.2015.06 4.4.2016.01: KDE library for encryption handling
 kde-apps/libkmahjongg 4.14.3 15.12.3: LibKMahjongg for KDE
