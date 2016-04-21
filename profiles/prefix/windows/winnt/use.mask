@@ -65,7 +65,6 @@ uclibc
 unicode
 usb
 voodoo3
-pvm
 v4l
 wifi
 

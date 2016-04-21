@@ -306,11 +306,6 @@ pam_console
 prefix
 prefix-guest
 
-# Diego E. Pettenò <flameeyes@gentoo.org> (6 Dec 2009)
-#  on behalf of QA Team
-# Removal of pvm is scheduled for Februrary 4.
-pvm
-
 # Alex Legler <a3li@gentoo.org> (7 Dec 2009)
 # Rubinius is whitelisted on supported arches
 ruby_targets_rbx
