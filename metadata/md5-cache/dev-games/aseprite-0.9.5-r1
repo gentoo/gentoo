@@ -1,14 +1,14 @@
 DEFINED_PHASES=compile configure install postinst prepare test
-DEPEND=dev-libs/tinyxml media-libs/allegro:0[X,png] media-libs/giflib media-libs/libpng:0 net-misc/curl sys-libs/zlib virtual/jpeg x11-libs/libX11 test? ( dev-cpp/gtest ) sys-devel/make >=dev-util/cmake-2.8.12
+DEPEND=dev-libs/tinyxml media-libs/allegro:0[X,png] media-libs/giflib media-libs/libpng:0 net-misc/curl sys-libs/zlib virtual/jpeg:0 x11-libs/libX11 test? ( dev-cpp/gtest ) sys-devel/make >=dev-util/cmake-2.8.12
 DESCRIPTION=Animated sprite editor & pixel art tool
 EAPI=5
 HOMEPAGE=http://www.aseprite.org
 IUSE=debug memleak static test
 KEYWORDS=amd64 x86
 LICENSE=GPL-2 FTL
-RDEPEND=dev-libs/tinyxml media-libs/allegro:0[X,png] media-libs/giflib media-libs/libpng:0 net-misc/curl sys-libs/zlib virtual/jpeg x11-libs/libX11
+RDEPEND=dev-libs/tinyxml media-libs/allegro:0[X,png] media-libs/giflib media-libs/libpng:0 net-misc/curl sys-libs/zlib virtual/jpeg:0 x11-libs/libX11
 SLOT=0
 SRC_URI=https://aseprite.googlecode.com/files/aseprite-0.9.5.tar.xz
 _eclass_exported_funcs=pkg_postinst:- src_prepare:- src_configure:- src_compile:cmake-utils src_test:cmake-utils src_install:cmake-utils
 _eclasses_=cmake-utils	422bbd1bee2557490177a34dbe0a662b	eutils	792f83d5ec9536cb5ccef375469d8bde	flag-o-matic	d270fa247153df66074f795fa42dba3e	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=863667e3b69b4b9648f486f5c67bd506
+_md5_=a3b3eab9b1eed9aab554846f7698b280
