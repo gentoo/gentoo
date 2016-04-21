@@ -4,24 +4,23 @@
 
 EAPI=6
 
-[[ ${PV} == *9999 ]] && git_eclass="git-r3"
-EGIT_REPO_URI=( "git://anongit.kde.org/${PN}" )
-
 MY_PN="phonon-backend-gstreamer"
 MY_P=${MY_PN}-${PV}
 
-inherit cmake-utils multibuild ${git_eclass}
+if [[ ${PV} != *9999* ]]; then
+	SRC_URI="mirror://kde/stable/phonon/${MY_PN}/${PV}/${MY_P}.tar.xz"
+	KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86 ~amd64-fbsd ~x86-fbsd ~x64-macos"
+else
+	EGIT_REPO_URI=( "git://anongit.kde.org/${PN}" )
+	inherit git-r3
+fi
+
+inherit cmake-utils multibuild
 
 DESCRIPTION="Phonon GStreamer backend"
 HOMEPAGE="https://phonon.kde.org/"
-[[ ${PV} == *9999 ]] || SRC_URI="mirror://kde/stable/phonon/${MY_PN}/${PV}/${MY_P}.tar.xz"
 
 LICENSE="LGPL-2.1+ || ( LGPL-2.1 LGPL-3 )"
-if [[ ${PV} == *9999 ]]; then
-	KEYWORDS=""
-else
-	KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86 ~amd64-fbsd ~x86-fbsd ~x64-macos"
-fi
 SLOT="0"
 IUSE="alsa debug +network +qt4 qt5"
 
