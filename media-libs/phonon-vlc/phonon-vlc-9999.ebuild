@@ -15,7 +15,7 @@ DESCRIPTION="Phonon VLC backend"
 HOMEPAGE="https://projects.kde.org/projects/kdesupport/phonon/phonon-vlc"
 [[ ${PV} == 9999 ]] || SRC_URI="mirror://kde/stable/phonon/${MY_PN}/${PV}/${MY_P}.tar.xz"
 
-LICENSE="LGPL-2.1"
+LICENSE="LGPL-2.1+ || ( LGPL-2.1 LGPL-3 )"
 
 # Don't move KEYWORDS on the previous line or ekeyword won't work # 399061
 [[ ${PV} == 9999 ]] || \
