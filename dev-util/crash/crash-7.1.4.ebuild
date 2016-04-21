@@ -16,4 +16,5 @@ IUSE=""
 
 src_prepare() {
 	epatch "${FILESDIR}"/${PN}-5.1.1-install-fix.patch
+	epatch "${FILESDIR}"/${PN}-7.1.4-sysmacros.patch #580244
 }
