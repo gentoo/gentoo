@@ -394,7 +394,7 @@ multilib_src_configure() {
 			*freebsd*)
 				myconf+=( --target-os=freebsd )
 				;;
-			mingw32*)
+			*mingw32*)
 				myconf+=( --target-os=mingw32 )
 				;;
 			*linux*)
