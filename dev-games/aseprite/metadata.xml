@@ -1,13 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <!-- maintainer-needed -->
+  <maintainer type="person">
+	<email>azamat.hackimov@gmail.com</email>
+	<name>Azamat H. Hackimov</name>
+    <description>Proxy maintainer for this package</description>
+  </maintainer>
+  <maintainer type="project">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
   <longdescription>
     Animated sprite editor and pixel art tool
   </longdescription>
   <use>
     <flag name="memleak">Enable memory-leaks detector (only for developers)</flag>
     <flag name="static">Link against static version of C and C++ runtimes</flag>
+    <flag name="webp">Enable webp image format support</flag>
   </use>
   <upstream>
     <remote-id type="github">aseprite/aseprite</remote-id>

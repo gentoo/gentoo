@@ -10,4 +10,8 @@
     <remote-id type="sourceforge">libtorrent</remote-id>
     <remote-id type="github">arvidn/libtorrent</remote-id>
   </upstream>
+  <use>
+    <flag name="dht">Enable DHT (distributed hash table) support for
+      libtorrent</flag>
+  </use>
 </pkgmetadata>
