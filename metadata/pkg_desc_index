@@ -11077,6 +11077,7 @@ kde-apps/juk 4.14.3 15.08.3 15.12.3: Jukebox and music manager for KDE
 kde-apps/kabcclient 4.4.2015.06 4.4.2016.01 4.14.8 4.14.10: A command line client for accessing the KDE addressbook
 kde-apps/kaccessible 4.14.3 15.08.3 15.12.3: Provides accessibility services like focus tracking
 kde-apps/kaccounts-integration 15.12.3: Administer web accounts for the sites and services across the Plasma desktop
+kde-apps/kaccounts-providers 15.12.3: KDE accounts providers
 kde-apps/kaddressbook 4.4.2015.06 4.4.2016.01 4.14.8 4.14.10: The KDE Address Book
 kde-apps/kajongg 4.14.3 15.08.3 15.12.3: The classical Mah Jongg for four players
 kde-apps/kalarm 4.4.2015.06 4.4.2016.01 4.14.8 4.14.10: Personal alarm message, command and email scheduler for KDE
@@ -11136,7 +11137,7 @@ kde-apps/kdegraphics-meta 4.14.3 15.08.3 15.12.3: kdegraphics - merge this to pu
 kde-apps/kdegraphics-mobipocket 4.14.3 15.08.3 15.12.3: Library to support mobipocket ebooks
 kde-apps/kdemultimedia-meta 4.14.3 15.08.3-r1 15.12.3: kdemultimedia - merge this to pull in all kdemultimedia-derived packages
 kde-apps/kdenetwork-filesharing 4.14.3 15.08.3 15.12.3: kcontrol filesharing config module for SMB
-kde-apps/kdenetwork-meta 4.14.3 15.08.3-r1 15.12.3-r1: kdenetwork - merge this to pull in all kdenetwork-derived packages
+kde-apps/kdenetwork-meta 4.14.3 15.08.3-r1 15.12.3-r1 15.12.3-r2: kdenetwork - merge this to pull in all kdenetwork-derived packages
 kde-apps/kdenlive 0.9.8 0.9.10 15.12.3: Non-linear video editing suite by KDE
 kde-apps/kdepasswd 4.14.3 15.08.3 15.12.3: KDE GUI for passwd
 kde-apps/kdepim-common-libs 4.14.8 4.14.10: Common libraries for KDE PIM apps
@@ -11251,7 +11252,18 @@ kde-apps/ktimetracker 4.4.2015.06 4.4.2016.01 4.14.8 4.14.10: KTimeTracker track
 kde-apps/ktimezoned 4.14.3 15.08.3 15.12.3: KDE: Timezone daemon
 kde-apps/ktnef 4.14.8 4.14.10: A viewer for TNEF attachments
 kde-apps/ktouch 4.14.3 15.12.3: KDE: A program that helps you to learn and practice touch typing
+kde-apps/ktp-accounts-kcm 15.12.3: KDE Telepathy account management kcm
+kde-apps/ktp-approver 15.12.3: KDE Telepathy notification handler
+kde-apps/ktp-auth-handler 15.12.3: KDE Telepathy authentication handler
+kde-apps/ktp-common-internals 15.12.3: KDE Telepathy common library
+kde-apps/ktp-contact-list 15.12.3: KDE Telepathy contact list
+kde-apps/ktp-contact-runner 15.12.3: KDE Telepathy krunner plugin
+kde-apps/ktp-desktop-applets 15.12.3: KDE Telepathy contact, presence and chat Plasma applets
+kde-apps/ktp-filetransfer-handler 15.12.3: KDE Telepathy file transfer handler
+kde-apps/ktp-kded-module 15.12.3: KDE Telepathy workspace integration
 kde-apps/ktp-l10n 15.12.3: KDE Telepathy internationalization package
+kde-apps/ktp-send-file 15.12.3: KDE Telepathy file manager plugin to send files to contacts
+kde-apps/ktp-text-ui 15.12.3: KDE Telepathy text chat window
 kde-apps/ktraderclient 4.14.3 15.08.3 15.12.3: A command-line tool for querying the KDE trader system
 kde-apps/ktuberling 4.14.3 15.08.3 15.12.3: Potato game for kids by KDE
 kde-apps/kturtle 4.14.3 15.12.3: Educational programming environment using the Logo programming language
@@ -11296,10 +11308,12 @@ kde-apps/phonon-kde 4.14.3 15.08.3 15.12.3: Phonon KDE Integration
 kde-apps/picmi 4.14.3 15.12.3: Nonogram logic game for KDE
 kde-apps/plasma-apps 4.14.3 15.08.3 15.12.3: Additional Applets for Plasma
 kde-apps/plasma-runtime 4.14.3 15.08.3 15.12.3: Script engine and package tool for plasma
+kde-apps/plasma-telepathy-meta 15.12.3: Plasma Telepathy client
 kde-apps/poxml 4.14.3 15.08.3 15.12.3: KDE utility to translate DocBook XML files using gettext po files
 kde-apps/print-manager 4.14.3 15.12.3: Manage print jobs and printers in Plasma
 kde-apps/renamedlg-plugins 4.14.3 15.08.3 15.12.3: KDE RenameDlg plugins
 kde-apps/rocs 4.14.3 15.12.3: Interface to work with Graph Theory
+kde-apps/signon-kwallet-extension 15.12.3: KWallet extension for signond
 kde-apps/solid-runtime 4.14.3 15.08.3 15.12.3: KDE SC solid runtime modules (autoeject, automounter and others)
 kde-apps/spectacle 15.12.3: Screenshot capture utility
 kde-apps/step 4.14.3 15.12.3: Interactive physics simulator

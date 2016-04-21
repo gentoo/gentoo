@@ -3244,6 +3244,7 @@ kde-apps/kdebase-runtime-meta:oldwallet - Install kde-apps/kwalletd on a minimal
 kde-apps/kdecore-meta:minimal - Disable install of various KDE SC 4 based packages
 kde-apps/kdecore-meta:wallpapers - Install the KDE wallpapers
 kde-apps/kdenetwork-meta:ppp - Enable support for net-dialup/ppp.
+kde-apps/kdenetwork-meta:telepathy - Enable build of kde-apps/plasma-telepathy-meta, otherwise kde-apps/kopete.
 kde-apps/kdenlive:gles2 - Use GLES 2.0 or later instead of full OpenGL
 kde-apps/kdepim-common-libs:google - Google service integration via net-libs/libkgapi
 kde-apps/kdepim-runtime:facebook - Facebook service integration via net-libs/libkfbapi
@@ -3293,6 +3294,10 @@ kde-apps/kstars:fits - Enable support for the FITS image format through cfitsio
 kde-apps/kstars:indi - Enable support for Astronomical control library using libindi
 kde-apps/kstars:wcs - Enable support for World Coordinate System library using wcslib
 kde-apps/kstars:xplanet - Enable support for Xplanet
+kde-apps/ktp-accounts-kcm:experimental - Enables disabled telepathy services (currently only steam)
+kde-apps/ktp-common-internals:otr - Enable support for encrypted conversations using Off-The-Records messaging
+kde-apps/ktp-common-internals:sso - Enable support for Single sign-on through KAccounts
+kde-apps/ktp-text-ui:speech - Enable incoming messages to be read out using text-to-speech
 kde-apps/kwalletd:gpg - Support wallets with GnuPG encryption additionally to default blowfish-encrypted file
 kde-apps/marble:aprs - Enable support for APRS data sources
 kde-apps/marble:designer-plugin - Enable designer plugin
