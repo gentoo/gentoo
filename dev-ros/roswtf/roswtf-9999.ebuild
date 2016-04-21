@@ -27,8 +27,3 @@ DEPEND="${RDEPEND}
 		dev-util/rosinstall[${PYTHON_USEDEP}]
 		dev-python/nose[${PYTHON_USEDEP}]
 	)"
-
-src_test() {
-	rosdep update
-	ros-catkin_src_test
-}
