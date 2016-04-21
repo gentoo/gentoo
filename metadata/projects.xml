@@ -1508,7 +1508,7 @@
     <name>Gentoo Geosciences Project</name>
     <url>https://wiki.gentoo.org/wiki/Project:Geosciences</url>
     <description>The Geosciences Project handles all geosciences activities in Gentoo.</description>
-    <member>
+    <member is-lead="1">
       <email>amynka@gentoo.org</email>
       <name>Amy Winston</name>
       <role>Member</role>
