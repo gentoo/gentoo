@@ -7,13 +7,17 @@
 <maintainer type='person'>
 	<email>tomboy64@sina.cn</email>
 </maintainer>
+<maintainer type="project">
+	<email>python@gentoo.org</email>
+	<name>Gentoo Python Project</name>
+</maintainer>
+<maintainer type="project">
+	<email>proxy-maint@gentoo.org</email>
+	<name>Gentoo Proxy Maintainers Project</name>
+</maintainer>
 <slots>
-	<subslots>soname major version number</subslots>
+	<subslots>soname major version number of protobuf</subslots>
 </slots>
-<use>
-	<flag name="java">Builds the Java implementation. This is not needed for Java support in protoc.</flag>
-	<flag name="python">Builds the Python implementation. This is not needed for Python support in protoc.</flag>
-</use>
 <upstream>
 	<remote-id type='github'>google/protobuf</remote-id>
 </upstream>
