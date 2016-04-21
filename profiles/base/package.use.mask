@@ -5,6 +5,11 @@
 # This file requires >=portage-2.1.1
 # New entries go on top.
 
+# Matthew Brewer <tomboy64@sina.cn> (21 Apr 2016)
+# Upstream supports using Clang's address sanitizer, but apparently
+# invokes it wrong.
+dev-lang/moarvm asan
+
 # Johannes Huber <johu@gentoo.org> (21 Apr 2016)
 # Unreleased dependency.
 kde-apps/ktp-text-ui speech
