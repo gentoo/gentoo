@@ -16,7 +16,7 @@ fi
 inherit multibuild qmake-utils cmake-multilib ${SCM_ECLASS}
 
 DESCRIPTION="KDE multimedia API"
-HOMEPAGE="https://projects.kde.org/projects/kdesupport/phonon"
+HOMEPAGE="https://phonon.kde.org/"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
