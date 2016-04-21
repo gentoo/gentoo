@@ -17,7 +17,7 @@ inherit cmake-multilib multibuild qmake-utils
 DESCRIPTION="KDE multimedia API"
 HOMEPAGE="https://phonon.kde.org/"
 
-LICENSE="LGPL-2.1"
+LICENSE="|| ( LGPL-2.1 LGPL-3 )"
 SLOT="0"
 IUSE="aqua debug designer gstreamer pulseaudio +qt4 qt5 +vlc zeitgeist"
 
