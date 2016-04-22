@@ -22,9 +22,9 @@ IUSE="debug test webp"
 RDEPEND="dev-libs/tinyxml
 	media-libs/allegro:0[X,png]
 	media-libs/freetype
-	media-libs/giflib
+	media-libs/giflib:=
 	webp? ( media-libs/libwebp )
-	media-libs/libpng:0
+	media-libs/libpng:0=
 	net-misc/curl
 	sys-libs/zlib
 	virtual/jpeg:0
