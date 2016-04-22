@@ -216,8 +216,7 @@ src_unpack() {
 			local WINE_COMMIT=${EGIT_VERSION}
 
 			EGIT_REPO_URI=${STAGING_EGIT_REPO_URI}
-			unset ${PN}_LIVE_REPO;
-			unset EGIT_COMMIT;
+			unset ${PN}_LIVE_{REPO,BRANCH,COMMIT} EGIT_COMMIT;
 
 			EGIT_CHECKOUT_DIR=${STAGING_DIR} git-r3_src_unpack
 
