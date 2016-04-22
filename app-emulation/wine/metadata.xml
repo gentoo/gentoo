@@ -5,6 +5,11 @@
 		<email>wine@gentoo.org</email>
 		<name>Wine</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>commendsarnex@gmail.com</email>
+		<name>Nick Sarnie</name>
+		<description>Only CC on bugs that involve USE="d3d9"</description>
+	</maintainer>
 	<longdescription>
 Wine is an Open Source implementation of the Windows API on top of X and Unix.
 
@@ -13,6 +18,8 @@ Think of Wine as a compatibility layer for running Windows programs. Wine does n
 	<use>
 		<flag name="capi">Enable ISDN support via CAPI</flag>
 		<flag name="custom-cflags">Bypass strip-flags; use at your own peril</flag>
+		<flag name="d3d9">Apply highly experimental patches for Gallium Nine support.
+			This patch may break some applications.</flag>
 		<flag name="dos">Pull in <pkg>games-emulation/dosbox</pkg> to run DOS applications</flag>
 		<flag name="gecko">Add support for the Gecko engine when using iexplore</flag>
 		<flag name="gstreamer">Use <pkg>media-libs/gstreamer</pkg> to provide DirectShow functionality;
