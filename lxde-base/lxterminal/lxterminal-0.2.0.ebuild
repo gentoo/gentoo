@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 DESCRIPTION="Lightweight vte-based tabbed terminal emulator for LXDE"
 HOMEPAGE="http://lxde.sf.net/"
@@ -21,7 +21,4 @@ DEPEND="${RDEPEND}
 	sys-devel/gettext
 	>=dev-util/intltool-0.40.0"
 
-src_install () {
-	emake DESTDIR="${D}" install
-	dodoc AUTHORS README
-}
+DOCS=( AUTHORS README )
