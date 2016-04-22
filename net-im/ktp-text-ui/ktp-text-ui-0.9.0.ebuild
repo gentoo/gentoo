@@ -28,7 +28,7 @@ DEPEND="
 	)
 "
 RDEPEND="${DEPEND}
-	>=net-im/ktp-contact-list-${PV}:4
+	>=kde-apps/ktp-contact-list-${PV}:4
 "
 
 src_configure() {

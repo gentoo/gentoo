@@ -23,6 +23,6 @@ DEPEND="
 	>=net-libs/telepathy-qt-0.9.5[qt4]
 "
 RDEPEND="${DEPEND}
-	>=net-im/ktp-contact-list-${PV}:4
+	>=kde-apps/ktp-contact-list-${PV}:4
 	>=net-im/ktp-filetransfer-handler-${PV}:4
 "

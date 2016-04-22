@@ -40,5 +40,5 @@ DEPEND="${COMMON_DEPEND}
 	$(add_qt_dep qtxml)
 "
 RDEPEND="${COMMON_DEPEND}
-	!net-im/ktp-contact-list
+	!kde-apps/ktp-contact-list:4
 "

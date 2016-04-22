@@ -19,9 +19,9 @@ RDEPEND="
 	!<kde-apps/kde-l10n-15.08.0-r1
 	!kde-apps/ktp-accounts-kcm:4
 	!kde-apps/ktp-approver:4
-	!kde-apps/ktp-auth-handler
+	!kde-apps/ktp-auth-handler:4
 	!kde-apps/ktp-common-internals:4
-	!net-im/ktp-contact-list
+	!kde-apps/ktp-contact-list:4
 	!net-im/ktp-filetransfer-handler
 	!net-im/ktp-kded-module
 	!net-im/ktp-send-file
