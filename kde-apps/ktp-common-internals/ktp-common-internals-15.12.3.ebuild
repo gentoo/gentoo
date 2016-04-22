@@ -54,7 +54,7 @@ DEPEND="${COMMON_DEPEND}
 	$(add_qt_dep qtnetwork)
 "
 RDEPEND="${COMMON_DEPEND}
-	!net-im/ktp-common-internals
+	!kde-apps/ktp-common-internals:4
 "
 
 src_configure() {

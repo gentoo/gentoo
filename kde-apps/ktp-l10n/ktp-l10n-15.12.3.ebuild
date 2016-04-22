@@ -20,7 +20,7 @@ RDEPEND="
 	!net-im/ktp-accounts-kcm
 	!net-im/ktp-approver
 	!net-im/ktp-auth-handler
-	!net-im/ktp-common-internals
+	!kde-apps/ktp-common-internals:4
 	!net-im/ktp-contact-list
 	!net-im/ktp-filetransfer-handler
 	!net-im/ktp-kded-module

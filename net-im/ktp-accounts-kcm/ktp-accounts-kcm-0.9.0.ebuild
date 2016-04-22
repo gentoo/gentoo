@@ -19,7 +19,7 @@ SLOT="4"
 IUSE="debug modemmanager"
 
 DEPEND="
-	>=net-im/ktp-common-internals-${PV}:4
+	>=kde-apps/ktp-common-internals-${PV}:4
 	net-im/telepathy-mission-control
 	net-libs/telepathy-glib
 	>=net-libs/telepathy-qt-0.9.5[qt4]
