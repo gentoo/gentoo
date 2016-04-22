@@ -15,7 +15,7 @@ HOMEPAGE="http://www.kmc.gr.jp/~ohai/rubysdl.en.html"
 SRC_URI="https://github.com/ohai/rubysdl/archive/${RELEASE}.tar.gz -> ${P}.tar.gz"
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc x86"
 
 IUSE="image mixer truetype mpeg sge"
 
