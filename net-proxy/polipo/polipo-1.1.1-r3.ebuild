@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -38,7 +38,7 @@ src_compile() {
 src_install() {
 	einstall PREFIX=/usr MANDIR=/usr/share/man INFODIR=/usr/share/info "TARGET=${D}"
 
-	newinitd "${FILESDIR}/${PN}.initd-2" ${PN}
+	newinitd "${FILESDIR}/${PN}.initd-4" ${PN}
 	insinto /etc/${PN} ; doins "${FILESDIR}/config"
 	systemd_newunit "${FILESDIR}/${PN}_at.service" "${PN}@.service"
 	if ! use systemd; then

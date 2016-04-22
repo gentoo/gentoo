@@ -4,3 +4,16 @@ move kde-plasma/khelpcenter kde-apps/khelpcenter
 move dev-perl/set-scalar dev-perl/Set-Scalar
 move dev-perl/string-crc32 dev-perl/String-CRC32
 move app-admin/packagekit-qt4 app-admin/packagekit-qt
+move net-im/ktp-common-internals kde-apps/ktp-common-internals
+move net-im/ktp-accounts-kcm kde-apps/ktp-accounts-kcm
+move net-im/ktp-approver kde-apps/ktp-approver
+move net-im/ktp-auth-handler kde-apps/ktp-auth-handler
+move net-im/ktp-call-ui kde-apps/ktp-call-ui
+move net-im/ktp-contact-list kde-apps/ktp-contact-list
+move net-im/ktp-contact-runner kde-apps/ktp-contact-runner
+move net-im/ktp-desktop-applets kde-apps/ktp-desktop-applets
+move net-im/ktp-filetransfer-handler kde-apps/ktp-filetransfer-handler
+move net-im/ktp-kded-module kde-apps/ktp-kded-module
+move net-im/ktp-send-file kde-apps/ktp-send-file
+move net-im/ktp-text-ui kde-apps/ktp-text-ui
+move net-im/kde-telepathy-meta -> kde-apps/plasma-telepathy-meta

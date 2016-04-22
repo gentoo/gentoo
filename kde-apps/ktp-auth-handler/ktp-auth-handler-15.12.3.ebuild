@@ -36,5 +36,5 @@ DEPEND="${COMMON_DEPEND}
 "
 RDEPEND="${COMMON_DEPEND}
 	app-crypt/qca:2[openssl]
-	!net-im/ktp-auth-handler
+	!kde-apps/ktp-auth-handler:4
 "

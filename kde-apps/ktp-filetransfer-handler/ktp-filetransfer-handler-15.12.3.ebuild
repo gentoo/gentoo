@@ -25,5 +25,5 @@ DEPEND="
 	net-libs/telepathy-qt[qt5]
 "
 RDEPEND="${DEPEND}
-	!net-im/ktp-filetransfer-handler
+	!kde-apps/ktp-filetransfer-handler:4
 "

@@ -27,5 +27,5 @@ DEPEND="${COMMON_DEPEND}
 	$(add_frameworks_dep kservice)
 "
 RDEPEND="${COMMON_DEPEND}
-	!net-im/ktp-contact-runner
+	!kde-apps/ktp-contact-runner:4
 "

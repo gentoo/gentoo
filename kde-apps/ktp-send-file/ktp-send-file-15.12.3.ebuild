@@ -31,5 +31,5 @@ DEPEND="${COMMON_DEPEND}
 RDEPEND="${COMMON_DEPEND}
 	$(add_kdeapps_dep ktp-contact-list)
 	$(add_kdeapps_dep ktp-filetransfer-handler)
-	!net-im/ktp-send-file
+	!kde-apps/ktp-send-file:4
 "

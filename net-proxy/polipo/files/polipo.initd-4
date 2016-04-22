@@ -52,7 +52,7 @@ checkconfig() {
 start() {
 	checkconfig || return 1
 
-	ebegin "Starting Polipo HTTP proxy"
+	ebegin "Starting ${SVCNAME} HTTP proxy"
 	start-stop-daemon --start --user polipo \
 		--background --pidfile "${PIDFILE}" --make-pidfile \
 		--exec /usr/bin/polipo -- -c "${CONFFILE}"
@@ -60,7 +60,7 @@ start() {
 }
 
 stop() {
-	ebegin "Stopping Polipo HTTP proxy"
+	ebegin "Stopping ${SVCNAME} HTTP proxy"
 	start-stop-daemon --stop --pidfile "${PIDFILE}"
 	eend $?
 }

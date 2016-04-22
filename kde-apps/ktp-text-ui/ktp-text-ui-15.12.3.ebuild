@@ -46,7 +46,7 @@ DEPEND="
 "
 RDEPEND="${DEPEND}
 	$(add_kdeapps_dep ktp-contact-list)
-	!net-im/ktp-text-ui
+	!kde-apps/ktp-text-ui:4
 "
 
 src_configure() {
