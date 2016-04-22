@@ -8684,7 +8684,7 @@ dev-ruby/aws-sdk-core 2.2.5 2.2.18: Official SDK for Amazon Web Services
 dev-ruby/aws-sdk-resources 2.2.5 2.2.18: Official SDK for Amazon Web Services
 dev-ruby/backports 3.6.7 3.6.8: Backports of Ruby features for older Ruby
 dev-ruby/bacon 1.2.0-r2: Small RSpec clone weighing less than 350 LoC
-dev-ruby/barby 0.6.2-r1 0.6.3: Ruby barcode generator that doesn't rely on 3rd party libraries
+dev-ruby/barby 0.6.3-r1: Ruby barcode generator that doesn't rely on 3rd party libraries
 dev-ruby/bcat 0.6.2-r1 0.6.2-r2: Pipe to browser utility for use at the shell and within editors
 dev-ruby/bcrypt-ruby 3.1.9 3.1.10 3.1.11: An easy way to keep your users' passwords secure
 dev-ruby/best_in_place 3.0.3 3.1.0: In-place editor helper for Rails 3
@@ -9028,7 +9028,7 @@ dev-ruby/rb-readline-r7 0.5.2.0: Ruby implementation of the GNU readline C libra
 dev-ruby/rbpdf 1.19.0: Ruby on Rails RBPDF plugin
 dev-ruby/rbpdf-font 1.19.0: Font files for the Ruby on Rails RBPDF plugin
 dev-ruby/rbtree 0.4.2: Ruby/RBTree module
-dev-ruby/rcairo 1.14.1 1.14.1-r1 1.14.3: Ruby bindings for cairo
+dev-ruby/rcairo 1.14.1 1.14.1-r1 1.14.3 1.15.2: Ruby bindings for cairo
 dev-ruby/rdiscount 1.6.8-r2 1.6.8-r3 2.1.8: Implementation of John Gruber's Markdown
 dev-ruby/rdoc 4.0.1-r2 4.2.0 4.2.1 4.2.2: An extended version of the RDoc library from Ruby 1.8
 dev-ruby/rdtool 0.6.38-r2: A multipurpose documentation format for Ruby
@@ -9109,7 +9109,7 @@ dev-ruby/ruby-rsvg 2.2.3 2.2.3-r1 2.2.5 3.0.7: Ruby bindings for librsvg
 dev-ruby/ruby-sdl 2.1.2-r1 2.1.2-r2: Ruby/SDL: Ruby bindings for SDL
 dev-ruby/ruby-shadow 2.4.1 2.5.0: ruby shadow bindings
 dev-ruby/ruby-shout 2.2.1-r2: A Ruby interface to libshout2
-dev-ruby/ruby-tcpwrap 0.6-r2 0.6-r3: A TCP wrappers library for Ruby
+dev-ruby/ruby-tcpwrap 0.6-r3: A TCP wrappers library for Ruby
 dev-ruby/ruby-termios 1.0.0 1.0.0-r1: A Ruby interface to termios
 dev-ruby/ruby-vte 2.2.3 2.2.3-r1 2.2.5 3.0.7: Ruby vte bindings
 dev-ruby/ruby-vte3 2.2.3 2.2.3-r1 2.2.5 3.0.7: Ruby VTE bindings

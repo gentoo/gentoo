@@ -2579,8 +2579,6 @@ dev-ros/rosbag:lz4 - Add support for lz4 compressed bags.
 dev-ros/rosconsole:glog - Use dev-cpp/glog as log backend.
 dev-ros/rosconsole:log4cxx - Use dev-libs/log4cxx as log backend.
 dev-ruby/barby:cairo - Add support for writing images (PNG, PS, EPS and, if supported, PDF and SVG) using dev-ruby/rcairo. Not available on JRuby.
-dev-ruby/barby:datamatrix - Add support for datamatrix using dev-ruby/semacode.
-dev-ruby/barby:pdf-writer - Add support for writing PDFs using dev-ruby/pdf-writer.
 dev-ruby/barby:png - Add support for writing PNG images using dev-ruby/chunky_png.
 dev-ruby/barby:prawn - Add support for writing PDF documents using dev-ruby/prawn.
 dev-ruby/barby:qrcode - Add support for QRCode 2D codes using dev-ruby/rqrcode.
