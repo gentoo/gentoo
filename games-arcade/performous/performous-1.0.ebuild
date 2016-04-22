@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -61,6 +61,7 @@ src_prepare() {
 		"${FILESDIR}"/${P}-libav.patch \
 		"${FILESDIR}"/${P}-gentoo.patch \
 		"${FILESDIR}"/${P}-linguas.patch \
+		"${FILESDIR}"/${P}-gcc52.patch \
 		"${FILESDIR}"/${P}-include.patch
 	sed -i \
 		-e "s:@GENTOO_BINDIR@:${GAMES_BINDIR}:" \
