@@ -41,6 +41,7 @@ RESTRICT="test"
 S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
+	epatch "${FILESDIR}/ocamlgraph.patch"
 	sed -e 's/INSTALLOPTS=-s/INSTALLOPTS=/' -i Makefile.config.in || die
 }
 
