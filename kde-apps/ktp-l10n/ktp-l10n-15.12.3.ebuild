@@ -18,7 +18,7 @@ DEPEND="
 RDEPEND="
 	!<kde-apps/kde-l10n-15.08.0-r1
 	!kde-apps/ktp-accounts-kcm:4
-	!net-im/ktp-approver
+	!kde-apps/ktp-approver:4
 	!net-im/ktp-auth-handler
 	!kde-apps/ktp-common-internals:4
 	!net-im/ktp-contact-list
