@@ -169,12 +169,7 @@ pkg_postinst() {
 		"${EROOT}"/usr/sbin/update-ca-certificates --root "${ROOT}"
 	fi
 
-	local c badcerts=0
-	for c in $(find -L "${EROOT}"etc/ssl/certs/ -type l) ; do
-		ewarn "Broken symlink for a certificate at $c"
-		badcerts=1
-	done
-	if [ ${badcerts} -eq 1 ]; then
+	if [ -n "$(find -L "${EROOT}"etc/ssl/certs/ -type l)" ] ; then
 		ewarn "Removing the following broken symlinks:"
 		ewarn "$(find -L "${EROOT}"/etc/ssl/certs/ -type l -printf '%p -> %l\n' -delete)"
 	fi
