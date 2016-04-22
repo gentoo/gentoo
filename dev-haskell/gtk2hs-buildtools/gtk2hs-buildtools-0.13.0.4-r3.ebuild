@@ -19,8 +19,8 @@ KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="+closuresignals"
 
 RDEPEND="dev-haskell/random:=
+	dev-haskell/hashtables:=
 	>=dev-lang/ghc-7.4.1:=
-	|| ( ( >=dev-lang/ghc-7.7:= dev-haskell/hashtables:= ) <dev-lang/ghc-7.7:= )
 "
 DEPEND="${RDEPEND}
 	dev-haskell/alex

@@ -21,8 +21,7 @@ IUSE="bounds-checking debug portable cpu_flags_x86_sse4_1 +unsafe-tricks"
 RDEPEND="dev-haskell/primitive:=[profile?]
 	>=dev-haskell/vector-0.7:=[profile?] <dev-haskell/vector-0.12:=[profile?]
 	>=dev-lang/ghc-6.10.4:=
-	|| ( ( >=dev-haskell/hashable-1.1:=[profile?] <dev-haskell/hashable-1.2:=[profile?] )
-		( >=dev-haskell/hashable-1.2.1:=[profile?] <dev-haskell/hashable-1.3:=[profile?] ) )
+	>=dev-haskell/hashable-1.1:=[profile?] <dev-haskell/hashable-1.3:=[profile?]
 "
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-1.8
