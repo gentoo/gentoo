@@ -43,6 +43,9 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 
+PLOCALES='chi dan deu dut fra ita jpn nor per pol ptb spa swe'
+inherit l10n
+
 S="${WORKDIR}/makemkv-oss-${PV}"
 
 src_prepare() {
@@ -56,6 +59,12 @@ src_prepare() {
 	elif use qt5; then
 		PATCHES+=("${FILESDIR}"/${PN}-qt5.patch )
 	fi
+
+	l10n_find_plocales_changes "${WORKDIR}/${MY_PB}/src/share" 'makemkv_' '.mo.gz'
+	rm_loc() {
+		rm -v -f "${WORKDIR}/${MY_PB}/src/share/makemkv_${1}.mo.gz"
+	}
+	l10n_for_each_disabled_locale_do rm_loc
 
 	default
 }
