@@ -24,5 +24,5 @@ DEPEND="
 "
 RDEPEND="${DEPEND}
 	>=kde-apps/ktp-contact-list-${PV}:4
-	>=net-im/ktp-filetransfer-handler-${PV}:4
+	>=kde-apps/ktp-filetransfer-handler-${PV}:4
 "
