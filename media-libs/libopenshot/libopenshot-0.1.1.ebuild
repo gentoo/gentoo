@@ -6,7 +6,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_{4,5} )
 
-inherit cmake-utils python-single-r1 versionator
+inherit cmake-utils python-single-r1 toolchain-funcs versionator
 
 DESCRIPTION="Video editing library used by OpenShot"
 HOMEPAGE="http://www.openshotvideo.com/"
@@ -39,6 +39,15 @@ DEPEND="
 PATCHES=( "${FILESDIR}/${PN}-0.1.0-fix-tests-exit-code.patch" )
 
 S="${WORKDIR}"
+
+pkg_pretend() {
+	if [[ ${MERGE_TYPE} != binary ]] && ! tc-has-openmp; then
+		eerror "${P} requires a compiler with OpenMP support. Your current"
+		eerror "compiler does not support it. If you use gcc, you can"
+		eerror "re-emerge it with the 'openmp' use flag enabled."
+		die "The current compiler does not support OpenMP"
+	fi
+}
 
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
