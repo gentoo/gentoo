@@ -25,7 +25,7 @@ RDEPEND="
 	>=kde-apps/ktp-desktop-applets-${PV}:4
 	>=kde-apps/ktp-filetransfer-handler-${PV}:4
 	>=kde-apps/ktp-kded-module-${PV}:4
-	>=net-im/ktp-send-file-${PV}:4
+	>=kde-apps/ktp-send-file-${PV}:4
 	>=net-im/ktp-text-ui-${PV}:4
 	net-im/telepathy-connection-managers
 "

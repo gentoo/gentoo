@@ -24,7 +24,7 @@ RDEPEND="
 	!kde-apps/ktp-contact-list:4
 	!kde-apps/ktp-filetransfer-handler:4
 	!kde-apps/ktp-kded-module:4
-	!net-im/ktp-send-file
+	!kde-apps/ktp-send-file:4
 	!net-im/ktp-text-ui
 "
 
