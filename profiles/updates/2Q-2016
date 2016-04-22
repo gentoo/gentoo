@@ -15,3 +15,4 @@ move net-im/ktp-desktop-applets kde-apps/ktp-desktop-applets
 move net-im/ktp-filetransfer-handler kde-apps/ktp-filetransfer-handler
 move net-im/ktp-kded-module kde-apps/ktp-kded-module
 move net-im/ktp-send-file kde-apps/ktp-send-file
+move net-im/ktp-text-ui kde-apps/ktp-text-ui

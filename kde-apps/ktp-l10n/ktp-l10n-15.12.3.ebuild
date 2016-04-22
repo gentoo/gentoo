@@ -25,7 +25,7 @@ RDEPEND="
 	!kde-apps/ktp-filetransfer-handler:4
 	!kde-apps/ktp-kded-module:4
 	!kde-apps/ktp-send-file:4
-	!net-im/ktp-text-ui
+	!kde-apps/ktp-text-ui:4
 "
 
 KEYWORDS="~amd64 ~x86"

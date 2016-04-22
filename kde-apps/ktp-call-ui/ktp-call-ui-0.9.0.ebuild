@@ -29,7 +29,7 @@ RDEPEND="${DEPEND}
 	|| (
 		>=kde-apps/ktp-contact-list-${PV}:4
 		>=kde-apps/ktp-desktop-applets-${PV}:4
-		>=net-im/ktp-text-ui-${PV}:4
+		>=kde-apps/ktp-text-ui-${PV}:4
 	)
 	v4l? ( media-plugins/gst-plugins-v4l2:0.10 )
 "
