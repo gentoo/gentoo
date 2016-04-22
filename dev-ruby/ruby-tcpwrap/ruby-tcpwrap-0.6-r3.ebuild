@@ -15,7 +15,7 @@ SRC_URI="http://shugo.net/archive/ruby-tcpwrap/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~mips ~ppc ~x86"
+KEYWORDS="amd64 ~hppa ~mips ~ppc x86"
 IUSE=""
 
 DEPEND+=" net-libs/libident
