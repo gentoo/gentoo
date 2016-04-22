@@ -603,7 +603,7 @@ app-crypt/seahorse-sharing 3.8.0 3.8.0_p20151117: Daemon for PGP public key shar
 app-crypt/sgeps 0_pre15: simple GnuPG-encrypted password store written in perl
 app-crypt/shash 0.2.6-r2: Generate or check digests or MACs of files
 app-crypt/sign 1.0.7: File signing and signature verification utility
-app-crypt/signify 17: Cryptographically sign and verify files
+app-crypt/signify 17-r1: Cryptographically sign and verify files
 app-crypt/signing-party 1.1.4 1.1.11-r1 2.0 2.1 2.2: A collection of several tools related to OpenPGP
 app-crypt/simp_le 9999: Simple Let's Encrypt Client
 app-crypt/simple-tpm-pk11 0.03 0.04: Simple PKCS11 provider for TPM chips
@@ -2887,7 +2887,7 @@ dev-db/lmdb++ 0.9.14.0: C++11 wrapper for the LMDB database library
 dev-db/m17n-contrib 1.1.13 1.1.14: Contribution database for the m17n library
 dev-db/m17n-db 1.5.2 1.5.5 1.6.2-r1 1.6.3 1.6.4: Database for the m17n library
 dev-db/maatkit 7540-r1: essential command-line utilities for MySQL
-dev-db/mariadb 5.5.47 5.5.48 10.0.23 10.0.24 10.1.10 10.1.11 10.1.12 10.1.13: An enhanced, drop-in replacement for MySQL
+dev-db/mariadb 5.5.49 10.0.23 10.0.24 10.1.12 10.1.13: An enhanced, drop-in replacement for MySQL
 dev-db/mariadb-galera 10.0.22: An enhanced, drop-in replacement for MySQL with Galera Replication
 dev-db/maxscale 1.2.0: A content aware, plug-able MySQL proxy server
 dev-db/metakit 2.4.9.7-r2: Embedded database library
