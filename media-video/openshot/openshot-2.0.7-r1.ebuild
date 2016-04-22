@@ -22,7 +22,7 @@ SLOT="1"
 KEYWORDS="~amd64 ~x86"
 
 RDEPEND="
-	dev-python/PyQt5[webkit,${PYTHON_USEDEP}]
+	dev-python/PyQt5[svg,webkit,${PYTHON_USEDEP}]
 	media-libs/libopenshot[python,${PYTHON_USEDEP}]
 	dev-python/httplib2[${PYTHON_USEDEP}]
 "
