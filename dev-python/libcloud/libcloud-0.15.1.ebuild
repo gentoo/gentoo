@@ -20,7 +20,8 @@ KEYWORDS="amd64 x86"
 IUSE="examples test"
 
 RDEPEND=""
-DEPEND="test? (
+DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
+	test? (
 		dev-python/mock[${PYTHON_USEDEP}]
 		dev-python/lockfile[${PYTHON_USEDEP}]
 	)"
