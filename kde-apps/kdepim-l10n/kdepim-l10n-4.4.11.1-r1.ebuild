@@ -15,7 +15,7 @@ DEPEND="
 "
 RDEPEND="!<=kde-base/kde-l10n-4.5.50:4"
 
-KEYWORDS="amd64 ppc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~ppc x86 ~amd64-linux ~x86-linux"
 IUSE=""
 
 MY_LANGS="ar bg ca ca@valencia cs csb da de el en_GB eo es et eu

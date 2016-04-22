@@ -10,7 +10,7 @@ inherit kde4-base
 DESCRIPTION="KDE Archiving tool"
 HOMEPAGE="https://www.kde.org/applications/utilities/ark
 https://utils.kde.org/projects/ark"
-KEYWORDS="amd64 ~arm ppc ppc64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm ~ppc ~ppc64 x86 ~amd64-linux ~x86-linux"
 IUSE="+archive +bzip2 debug lzma"
 
 DEPEND="

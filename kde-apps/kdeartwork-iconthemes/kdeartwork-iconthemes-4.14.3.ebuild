@@ -10,7 +10,7 @@ KDE_SCM="svn"
 inherit kde4-meta
 
 DESCRIPTION="Icon themes for kde"
-KEYWORDS="amd64 ~arm ppc ppc64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm ~ppc ~ppc64 x86 ~amd64-linux ~x86-linux"
 IUSE=""
 
 # Provides nuvola icon theme

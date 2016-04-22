@@ -8,7 +8,7 @@ KMNAME="kdegraphics-thumbnailers"
 inherit kde4-base
 
 DESCRIPTION="KDE 4 thumbnail generators for PDF/PS files"
-KEYWORDS="amd64 ~arm ppc ppc64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm ~ppc ~ppc64 x86 ~amd64-linux ~x86-linux"
 IUSE="debug"
 
 DEPEND="

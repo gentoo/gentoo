@@ -9,7 +9,7 @@ inherit kde4-base
 
 DESCRIPTION="KDE: Educational programming environment using the Logo programming language"
 HOMEPAGE="https://www.kde.org/applications/education/kturtle https://edu.kde.org/kturtle"
-KEYWORDS="amd64 ~arm ppc ppc64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm ~ppc ~ppc64 x86 ~amd64-linux ~x86-linux"
 IUSE="debug"
 
 RDEPEND="

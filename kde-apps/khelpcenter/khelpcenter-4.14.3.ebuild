@@ -10,7 +10,7 @@ inherit kde4-meta
 
 DESCRIPTION="The KDE Help Center"
 HOMEPAGE+=" https://userbase.kde.org/KHelpCenter"
-KEYWORDS="amd64 ~arm ppc ppc64 x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm ~ppc ~ppc64 x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux"
 IUSE="debug"
 
 RDEPEND="

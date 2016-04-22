@@ -78,7 +78,7 @@ PATCHES=( "${FILESDIR}/kdepim-4.14.10-fix-cmake-3.4.patch" )
 
 src_configure() {
 	# Bug 308903
-	use ppc64 && append-flags -mminimal-toc
+	use ~ppc64 && append-flags -mminimal-toc
 
 	kde4-meta_src_configure
 }
