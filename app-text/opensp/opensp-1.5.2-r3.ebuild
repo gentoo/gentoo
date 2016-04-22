@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=5
-inherit eutils flag-o-matic
+inherit eutils flag-o-matic autotools
 
 MY_P=${P/opensp/OpenSP}
 
@@ -34,6 +34,7 @@ src_prepare() {
 	epatch \
 		"${FILESDIR}"/${PN}-1.5-gcc34.patch \
 		"${FILESDIR}"/${P}-fix-segfault.patch
+	eautoreconf #580792
 }
 
 src_configure() {
