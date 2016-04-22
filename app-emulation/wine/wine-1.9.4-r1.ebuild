@@ -21,13 +21,12 @@ else
 	KEYWORDS="-* ~amd64 ~x86 ~x86-fbsd"
 fi
 
-GV="2.40"
+GV="2.44"
 MV="4.5.6"
 [[ ${MAJOR_V} == "1.8" ]] && SUFFIX="-unofficial"
 STAGING_P="wine-staging-${PV}"
 STAGING_DIR="${WORKDIR}/${STAGING_P}${SUFFIX}"
 WINE_GENTOO="wine-gentoo-2015.03.07"
-GST_P="wine-1.8-gstreamer-1.0"
 DESCRIPTION="Free implementation of Windows(tm) on Unix"
 HOMEPAGE="http://www.winehq.org/"
 SRC_URI="${SRC_URI}
@@ -36,7 +35,6 @@ SRC_URI="${SRC_URI}
 		abi_x86_64? ( https://dl.winehq.org/wine/wine-gecko/${GV}/wine_gecko-${GV}-x86_64.msi )
 	)
 	mono? ( https://dl.winehq.org/wine/wine-mono/${MV}/wine-mono-${MV}.msi )
-	https://dev.gentoo.org/~np-hardass/distfiles/${PN}/${GST_P}.patch.bz2
 	https://dev.gentoo.org/~tetromino/distfiles/${PN}/${WINE_GENTOO}.tar.bz2"
 
 if [[ ${PV} == "9999" ]] ; then
@@ -132,7 +130,7 @@ RDEPEND="${COMMON_DEPEND}
 	dos? ( games-emulation/dosbox )
 	perl? ( dev-lang/perl dev-perl/XML-Simple )
 	s3tc? ( >=media-libs/libtxc_dxtn-1.0.1-r1[${MULTILIB_USEDEP}] )
-	samba? ( >=net-fs/samba-3.0.25 )
+	samba? ( >=net-fs/samba-3.0.25[winbind] )
 	selinux? ( sec-policy/selinux-wine )
 	udisks? ( sys-fs/udisks:2 )
 	pulseaudio? ( realtime? ( sys-auth/rtkit ) )"
@@ -219,8 +217,7 @@ src_unpack() {
 			local WINE_COMMIT=${EGIT_VERSION}
 
 			EGIT_REPO_URI=${STAGING_EGIT_REPO_URI}
-			unset ${PN}_LIVE_REPO;
-			unset EGIT_COMMIT;
+			unset ${PN}_LIVE_{REPO,BRANCH,COMMIT} EGIT_COMMIT;
 
 			EGIT_CHECKOUT_DIR=${STAGING_DIR} git-r3_src_unpack
 
@@ -238,7 +235,6 @@ src_unpack() {
 	fi
 
 	unpack "${WINE_GENTOO}.tar.bz2"
-	unpack "${GST_P}.patch.bz2"
 
 	l10n_find_plocales_changes "${S}/po" "" ".po"
 }
@@ -250,7 +246,7 @@ src_prepare() {
 		"${FILESDIR}"/${PN}-1.4_rc2-multilib-portage.patch #395615
 		"${FILESDIR}"/${PN}-1.7.12-osmesa-check.patch #429386
 		"${FILESDIR}"/${PN}-1.6-memset-O3.patch #480508
-		"${WORKDIR}/${GST_P}.patch"
+		"${FILESDIR}"/${PN}-sysmacros.patch #580046
 	)
 	if use staging; then
 		ewarn "Applying the Wine-Staging patchset. Any bug reports to the"
@@ -441,12 +437,6 @@ pkg_postinst() {
 		ewarn "implementation of .NET.  Many windows applications rely upon"
 		ewarn "the existence of a .NET implementation, so you will likely need"
 		ewarn "to install an external one, like via winetricks"
-	fi
-
-	if use gstreamer; then
-		ewarn "This package uses a Gentoo specific patchset to provide"
-		ewarn "GStreamer 1.0 support.  Any bugs related to GStreamer should"
-		ewarn "be filed at Gentoo's bugzilla, not upstream's."
 	fi
 }
 

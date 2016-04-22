@@ -2,13 +2,12 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
+EAPI=6
 
-AUTOTOOLS_AUTORECONF=1
 PLOCALES="ar bg ca cs da de el en en_US eo es fa fi fr he hi hr hu it ja ko lt ml nb_NO nl or pa pl pt_BR pt_PT rm ro ru sk sl sr_RS@cyrillic sr_RS@latin sv te th tr uk wa zh_CN zh_TW"
 PLOCALE_BACKUP="en"
 
-inherit autotools-utils eutils fdo-mime flag-o-matic gnome2-utils l10n multilib multilib-minimal pax-utils toolchain-funcs virtualx versionator
+inherit autotools eutils fdo-mime flag-o-matic gnome2-utils l10n multilib multilib-minimal pax-utils toolchain-funcs virtualx versionator
 
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="git://source.winehq.org/git/wine.git http://source.winehq.org/git/wine.git"
@@ -22,11 +21,13 @@ else
 	KEYWORDS="-* ~amd64 ~x86 ~x86-fbsd"
 fi
 
-GV="2.44"
-MV="4.6.0"
+GV="2.40"
+MV="4.5.6"
+[[ ${MAJOR_V} == "1.8" ]] && SUFFIX="-unofficial"
 STAGING_P="wine-staging-${PV}"
-STAGING_DIR="${WORKDIR}/${STAGING_P}"
+STAGING_DIR="${WORKDIR}/${STAGING_P}${SUFFIX}"
 WINE_GENTOO="wine-gentoo-2015.03.07"
+GST_P="wine-1.8-gstreamer-1.0"
 DESCRIPTION="Free implementation of Windows(tm) on Unix"
 HOMEPAGE="http://www.winehq.org/"
 SRC_URI="${SRC_URI}
@@ -35,13 +36,14 @@ SRC_URI="${SRC_URI}
 		abi_x86_64? ( https://dl.winehq.org/wine/wine-gecko/${GV}/wine_gecko-${GV}-x86_64.msi )
 	)
 	mono? ( https://dl.winehq.org/wine/wine-mono/${MV}/wine-mono-${MV}.msi )
+	https://dev.gentoo.org/~np-hardass/distfiles/${PN}/${GST_P}.patch.bz2
 	https://dev.gentoo.org/~tetromino/distfiles/${PN}/${WINE_GENTOO}.tar.bz2"
 
 if [[ ${PV} == "9999" ]] ; then
 	STAGING_EGIT_REPO_URI="git://github.com/wine-compholio/wine-staging.git"
 else
 	SRC_URI="${SRC_URI}
-	staging? ( https://github.com/wine-compholio/wine-staging/archive/v${PV}.tar.gz -> ${STAGING_P}.tar.gz )"
+	staging? ( https://github.com/wine-compholio/wine-staging/archive/v${PV}${SUFFIX}.tar.gz -> ${STAGING_P}.tar.gz )"
 fi
 
 LICENSE="LGPL-2.1"
@@ -50,6 +52,7 @@ IUSE="+abi_x86_32 +abi_x86_64 +alsa capi cups custom-cflags dos elibc_glibc +fon
 REQUIRED_USE="|| ( abi_x86_32 abi_x86_64 )
 	test? ( abi_x86_32 )
 	elibc_glibc? ( threads )
+	mono? ( abi_x86_32 )
 	pipelight? ( staging )
 	s3tc? ( staging )
 	vaapi? ( staging )
@@ -129,7 +132,7 @@ RDEPEND="${COMMON_DEPEND}
 	dos? ( games-emulation/dosbox )
 	perl? ( dev-lang/perl dev-perl/XML-Simple )
 	s3tc? ( >=media-libs/libtxc_dxtn-1.0.1-r1[${MULTILIB_USEDEP}] )
-	samba? ( >=net-fs/samba-3.0.25 )
+	samba? ( >=net-fs/samba-3.0.25[winbind] )
 	selinux? ( sec-policy/selinux-wine )
 	udisks? ( sys-fs/udisks:2 )
 	pulseaudio? ( realtime? ( sys-auth/rtkit ) )"
@@ -216,8 +219,7 @@ src_unpack() {
 			local WINE_COMMIT=${EGIT_VERSION}
 
 			EGIT_REPO_URI=${STAGING_EGIT_REPO_URI}
-			unset ${PN}_LIVE_REPO;
-			unset EGIT_COMMIT;
+			unset ${PN}_LIVE_{REPO,BRANCH,COMMIT} EGIT_COMMIT;
 
 			EGIT_CHECKOUT_DIR=${STAGING_DIR} git-r3_src_unpack
 
@@ -235,6 +237,7 @@ src_unpack() {
 	fi
 
 	unpack "${WINE_GENTOO}.tar.bz2"
+	unpack "${GST_P}.patch.bz2"
 
 	l10n_find_plocales_changes "${S}/po" "" ".po"
 }
@@ -246,6 +249,8 @@ src_prepare() {
 		"${FILESDIR}"/${PN}-1.9.5-multilib-portage.patch #395615
 		"${FILESDIR}"/${PN}-1.7.12-osmesa-check.patch #429386
 		"${FILESDIR}"/${PN}-1.6-memset-O3.patch #480508
+		"${WORKDIR}/${GST_P}.patch"
+		"${FILESDIR}"/${PN}-sysmacros.patch #580046
 	)
 	if use staging; then
 		ewarn "Applying the Wine-Staging patchset. Any bug reports to the"
@@ -253,9 +258,6 @@ src_prepare() {
 
 		local STAGING_EXCLUDE=""
 		use pipelight || STAGING_EXCLUDE="${STAGING_EXCLUDE} -W Pipelight"
-
-		#577198 1.9.5 only
-		STAGING_EXCLUDE="${STAGING_EXCLUDE} -W makefiles-Disabled_Rules"
 
 		# Launch wine-staging patcher in a subshell, using epatch as a backend, and gitapply.sh as a backend for binary patches
 		ebegin "Running Wine-Staging patch installer"
@@ -265,8 +267,15 @@ src_prepare() {
 			source "${STAGING_DIR}/patches/patchinstall.sh"
 		)
 		eend $?
+
+		# To differentiate unofficial staging releases
+		if [[ ! -z ${SUFFIX} ]]; then
+			sed -i "s/(Staging)/(Staging [Unofficial])/" libs/wine/Makefile.in || die
+		fi
 	fi
-	autotools-utils_src_prepare
+
+	default
+	eautoreconf
 
 	# Modification of the server protocol requires regenerating the server requests
 	if [[ "$(md5sum server/protocol.def)" != "${md5}" ]]; then
@@ -432,6 +441,12 @@ pkg_postinst() {
 		ewarn "implementation of .NET.  Many windows applications rely upon"
 		ewarn "the existence of a .NET implementation, so you will likely need"
 		ewarn "to install an external one, like via winetricks"
+	fi
+
+	if use gstreamer; then
+		ewarn "This package uses a Gentoo specific patchset to provide"
+		ewarn "GStreamer 1.0 support.  Any bugs related to GStreamer should"
+		ewarn "be filed at Gentoo's bugzilla, not upstream's."
 	fi
 }
 
