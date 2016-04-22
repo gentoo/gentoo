@@ -18,7 +18,9 @@
 
 #--- END OF EXAMPLES ---
 
+app-text/kchmviewer kde
 dev-util/kdevelop gdbui
+games-arcade/jumpnbump kde
 net-p2p/ktorrent plasma rss shutdown
 net-voip/ekiga kde
 www-plugins/gnash kde
