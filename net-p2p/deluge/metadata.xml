@@ -21,5 +21,8 @@
 	<flag name="webinterface">Install dependencies needed for the web
 		interface</flag>
 	<flag name="console">Enable default console UI</flag>
+	<flag name="linguas_nap">Language support for Neapolitan</flag>
+	<flag name="linguas_iu">Language support for Inuktitut</flag>
+	<flag name="linguas_pms">Language support for Piemontese</flag>
 </use>
 </pkgmetadata>
