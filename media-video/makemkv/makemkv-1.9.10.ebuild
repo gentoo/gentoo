@@ -1,8 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
+
 inherit eutils gnome2-utils multilib flag-o-matic
 
 MY_P=makemkv-oss-${PV}
@@ -42,30 +43,36 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 
-S=${WORKDIR}/makemkv-oss-${PV}
+S="${WORKDIR}/makemkv-oss-${PV}"
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-{makefile,path}.patch
+	PATCHES+=( "${FILESDIR}"/${PN}-{makefile,path}.patch )
 
 	# Qt5 always trumps Qt4 if it is available. There are no configure
 	# options or variables to control this and there is no publicly
 	# available configure.ac either.
 	if use qt4; then
-		epatch "${FILESDIR}"/${PN}-qt4.patch
+		PATCHES+=( "${FILESDIR}"/${PN}-qt4.patch )
 	elif use qt5; then
-		epatch "${FILESDIR}"/${PN}-qt5.patch
+		PATCHES+=( "${FILESDIR}"/${PN}-qt5.patch )
 	fi
+
+	default
 }
 
 src_configure() {
 	# See bug #439380.
 	replace-flags -O* -Os
 
+	local econf_args=()
+
 	if use qt4 || use qt5; then
-		econf --enable-gui
+		econf_args+=( '--enable-gui' )
 	else
-		econf --disable-gui
+		econf_args+=( '--disable-gui' )
 	fi
+
+	econf "${econf_args[@]}"
 }
 
 src_compile() {
