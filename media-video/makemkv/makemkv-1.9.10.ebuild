@@ -1,8 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
+
 inherit eutils gnome2-utils multilib flag-o-matic
 
 MY_P=makemkv-oss-${PV}
@@ -42,30 +43,36 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 
-S=${WORKDIR}/makemkv-oss-${PV}
+S="${WORKDIR}/makemkv-oss-${PV}"
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-{makefile,path}.patch
+	PATCHES+=( "${FILESDIR}"/${PN}-{makefile,path}.patch )
 
 	# Qt5 always trumps Qt4 if it is available. There are no configure
 	# options or variables to control this and there is no publicly
 	# available configure.ac either.
 	if use qt4; then
-		epatch "${FILESDIR}"/${PN}-qt4.patch
+		PATCHES+=( "${FILESDIR}"/${PN}-qt4.patch )
 	elif use qt5; then
-		epatch "${FILESDIR}"/${PN}-qt5.patch
+		PATCHES+=("${FILESDIR}"/${PN}-qt5.patch )
 	fi
+
+	default
 }
 
 src_configure() {
 	# See bug #439380.
 	replace-flags -O* -Os
 
+	local econf_args=()
+
 	if use qt4 || use qt5; then
-		econf --enable-gui
+		econf_args+=( '--enable-gui' )
 	else
-		econf --disable-gui
+		econf_args+=( '--disable-gui' )
 	fi
+
+	econf "${econf_args[@]}"
 }
 
 src_compile() {
@@ -73,7 +80,12 @@ src_compile() {
 }
 
 src_install() {
-	# install oss package
+	# `bin/` and `share/` must be located under the same root dir
+	# libs are placed normally as they are loaded by the system loader
+	local std_root_dir='/usr' blob_root_dir='/opt'
+
+	## install oss package
+	into "${std_root_dir}"
 	dolib.so out/libdriveio.so.0
 	dolib.so out/libmakemkv.so.1
 	dolib.so out/libmmbd.so.0
@@ -83,9 +95,10 @@ src_install() {
 	dosym libmakemkv.so.1 /usr/$(get_libdir)/libmakemkv.so
 	dosym libmmbd.so.0    /usr/$(get_libdir)/libmmbd.so
 	dosym libmmbd.so.0    /usr/$(get_libdir)/libmmbd.so.0.${PV}
-	into /opt
 
 	if use qt4 || use qt5; then
+		# although this is oss binary, it expects blob binaries to be in the same dir
+		into "${blob_root_dir}"
 		dobin out/makemkv
 
 		local res
@@ -96,24 +109,28 @@ src_install() {
 		make_desktop_entry ${PN} MakeMKV ${PN} 'Qt;AudioVideo;Video'
 	fi
 
-	# install bin package
-	pushd "${WORKDIR}"/${MY_PB}/bin >/dev/null
+	## install bin package
+	into "${blob_root_dir}"
+
+	pushd "${WORKDIR}"/${MY_PB}/bin >/dev/null || die
 	if use x86; then
 		dobin i386/{makemkvcon,mmdtsdec}
 	elif use amd64; then
 		dobin amd64/makemkvcon
 		use multilib && dobin i386/mmdtsdec
 	fi
-	popd >/dev/null
+	popd >/dev/null || die
 
-	# install license and default profile
-	pushd "${WORKDIR}"/${MY_PB}/src/share >/dev/null
-	insinto /usr/share/MakeMKV
+	## install license and default profile
+	pushd "${WORKDIR}"/${MY_PB}/src/share >/dev/null || die
+	insinto "${blob_root_dir}/share/MakeMKV"
 	doins *.{gz,xml}
-	popd >/dev/null
+	popd >/dev/null || die
 }
 
-pkg_preinst() {	gnome2_icon_savelist; }
+pkg_preinst() {
+	use qt4 || use qt5 && gnome2_icon_savelist
+}
 
 pkg_postinst() {
 	gnome2_icon_cache_update
@@ -129,7 +146,7 @@ pkg_postinst() {
 	elog ""
 	elog "If this is a new install, remember to copy the default profile"
 	elog "to the config directory:"
-	elog "cp /usr/share/MakeMKV/default.mmcp.xml ~/.MakeMKV/"
+	elog "cp ${blob_root_dir}/share/MakeMKV/default.mmcp.xml ~/.MakeMKV/"
 	elog ""
 	elog "MakeMKV can also act as a drop-in replacement for libaacs and"
 	elog "libbdplus, allowing transparent decryption of a wider range of"
@@ -138,4 +155,6 @@ pkg_postinst() {
 	elog "LIBAACS_PATH=libmmbd LIBBDPLUS_PATH=libmmbd"
 }
 
-pkg_postrm() { gnome2_icon_cache_update; }
+pkg_postrm() {
+	gnome2_icon_cache_update
+}
