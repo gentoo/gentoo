@@ -1,0 +1,10 @@
+DEFINED_PHASES=postinst
+DESCRIPTION=Plasma Telepathy client
+EAPI=6
+HOMEPAGE=https://community.kde.org/Real-Time_Communication_and_Collaboration
+KEYWORDS=~amd64 ~x86
+LICENSE=|| ( GPL-2 GPL-3 LGPL-2.1 )
+RDEPEND=>=kde-apps/ktp-accounts-kcm-0.9.0:4 >=kde-apps/ktp-approver-0.9.0:4 >=kde-apps/ktp-auth-handler-0.9.0:4 >=kde-apps/ktp-call-ui-0.9.0:4 >=kde-apps/ktp-common-internals-0.9.0:4 >=kde-apps/ktp-contact-list-0.9.0:4 >=kde-apps/ktp-contact-runner-0.9.0:4 >=kde-apps/ktp-desktop-applets-0.9.0:4 >=kde-apps/ktp-filetransfer-handler-0.9.0:4 >=kde-apps/ktp-kded-module-0.9.0:4 >=kde-apps/ktp-send-file-0.9.0:4 >=kde-apps/ktp-text-ui-0.9.0:4 net-im/telepathy-connection-managers
+SLOT=4
+_eclass_exported_funcs=pkg_postinst:-
+_md5_=51a749d33897afa24afaba3f2f9ca621

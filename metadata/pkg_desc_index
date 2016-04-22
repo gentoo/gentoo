@@ -11254,18 +11254,19 @@ kde-apps/ktimetracker 4.4.2015.06 4.4.2016.01 4.14.8 4.14.10: KTimeTracker track
 kde-apps/ktimezoned 4.14.3 15.08.3 15.12.3: KDE: Timezone daemon
 kde-apps/ktnef 4.14.8 4.14.10: A viewer for TNEF attachments
 kde-apps/ktouch 4.14.3 15.12.3: KDE: A program that helps you to learn and practice touch typing
-kde-apps/ktp-accounts-kcm 15.12.3: KDE Telepathy account management kcm
-kde-apps/ktp-approver 15.12.3: KDE Telepathy notification handler
-kde-apps/ktp-auth-handler 15.12.3: KDE Telepathy authentication handler
-kde-apps/ktp-common-internals 15.12.3: KDE Telepathy common library
-kde-apps/ktp-contact-list 15.12.3: KDE Telepathy contact list
-kde-apps/ktp-contact-runner 15.12.3: KDE Telepathy krunner plugin
-kde-apps/ktp-desktop-applets 15.12.3: KDE Telepathy contact, presence and chat Plasma applets
-kde-apps/ktp-filetransfer-handler 15.12.3: KDE Telepathy file transfer handler
-kde-apps/ktp-kded-module 15.12.3: KDE Telepathy workspace integration
+kde-apps/ktp-accounts-kcm 0.9.0 15.12.3: KDE Telepathy account management kcm
+kde-apps/ktp-approver 0.9.0 15.12.3: KDE Telepathy notification handler
+kde-apps/ktp-auth-handler 0.9.0 15.12.3: KDE Telepathy authentication handler
+kde-apps/ktp-call-ui 0.9.0: KDE Telepathy audio/video conferencing ui
+kde-apps/ktp-common-internals 0.9.0 15.12.3: KDE Telepathy common library
+kde-apps/ktp-contact-list 0.9.0 15.12.3: KDE Telepathy contact list
+kde-apps/ktp-contact-runner 0.9.0 15.12.3: KDE Telepathy krunner plugin
+kde-apps/ktp-desktop-applets 0.9.0 15.12.3: KDE Telepathy contact, presence and chat Plasma applets
+kde-apps/ktp-filetransfer-handler 0.9.0 15.12.3: KDE Telepathy file transfer handler
+kde-apps/ktp-kded-module 0.9.0 15.12.3: KDE Telepathy workspace integration
 kde-apps/ktp-l10n 15.12.3: KDE Telepathy internationalization package
-kde-apps/ktp-send-file 15.12.3: KDE Telepathy file manager plugin to send files to contacts
-kde-apps/ktp-text-ui 15.12.3: KDE Telepathy text chat window
+kde-apps/ktp-send-file 0.9.0 15.12.3: KDE Telepathy file manager plugin to send files to contacts
+kde-apps/ktp-text-ui 0.9.0 15.12.3: KDE Telepathy text chat window
 kde-apps/ktraderclient 4.14.3 15.08.3 15.12.3: A command-line tool for querying the KDE trader system
 kde-apps/ktuberling 4.14.3 15.08.3 15.12.3: Potato game for kids by KDE
 kde-apps/kturtle 4.14.3 15.12.3: Educational programming environment using the Logo programming language
@@ -11310,7 +11311,7 @@ kde-apps/phonon-kde 4.14.3 15.08.3 15.12.3: Phonon KDE Integration
 kde-apps/picmi 4.14.3 15.12.3: Nonogram logic game for KDE
 kde-apps/plasma-apps 4.14.3 15.08.3 15.12.3: Additional Applets for Plasma
 kde-apps/plasma-runtime 4.14.3 15.08.3 15.12.3: Script engine and package tool for plasma
-kde-apps/plasma-telepathy-meta 15.12.3: Plasma Telepathy client
+kde-apps/plasma-telepathy-meta 0.9.0 15.12.3: Plasma Telepathy client
 kde-apps/poxml 4.14.3 15.08.3 15.12.3: KDE utility to translate DocBook XML files using gettext po files
 kde-apps/print-manager 4.14.3 15.12.3: Manage print jobs and printers in Plasma
 kde-apps/renamedlg-plugins 4.14.3 15.08.3 15.12.3: KDE RenameDlg plugins
@@ -14062,20 +14063,7 @@ net-im/indicator-messages 0.6.0-r1: A place on the user's desktop that collects 
 net-im/jabber-base 0.01 0.01-r1: Jabber servers and transports layout package
 net-im/jabberd2 2.3.1-r1 2.3.2 2.3.2-r1 2.3.3-r1 2.3.4: Open Source Jabber Server
 net-im/kadu 0.12.3 2.1: An open source Gadu-Gadu and Jabber/XMPP protocol Instant Messenger client
-net-im/kde-telepathy-meta 0.9.0: KDE Telepathy client - merge this to pull in all net-im/ktp-* kde packages
 net-im/kouchat 1.1.0: KouChat is a simple serverless chat client for local area networks
-net-im/ktp-accounts-kcm 0.9.0: KDE Telepathy account management kcm
-net-im/ktp-approver 0.9.0: KDE Telepathy notification handler
-net-im/ktp-auth-handler 0.9.0: KDE Telepathy authentication handler
-net-im/ktp-call-ui 0.9.0: KDE Telepathy audio/video conferencing ui
-net-im/ktp-common-internals 0.9.0: KDE Telepathy common library
-net-im/ktp-contact-list 0.9.0: KDE Telepathy contact list
-net-im/ktp-contact-runner 0.9.0: KDE Telepathy krunner plugin
-net-im/ktp-desktop-applets 0.9.0: KDE Telepathy contact, presence and chat Plasma applets
-net-im/ktp-filetransfer-handler 0.9.0: KDE Telepathy file transfer handler
-net-im/ktp-kded-module 0.9.0: KDE Telepathy workspace integration
-net-im/ktp-send-file 0.9.0: KDE Telepathy file manager plugin to send files to contacts
-net-im/ktp-text-ui 0.9.0: KDE Telepathy text chat window
 net-im/librvp 0.9.6 0.9.7: An RVP (Microsoft Exchange Instant Messaging) plugin for Pidgin
 net-im/licq 1.8.2: ICQ Client with v8 support
 net-im/mcabber 0.10.2_p20131025 0.10.2_p20131025-r1 0.10.3 1.0.0 1.0.1 1.0.2 9999: A small Jabber console client with various features, like MUC, SSL, PGP
@@ -15067,7 +15055,7 @@ net-proxy/nylon 1.21-r1: A lightweight SOCKS proxy server
 net-proxy/obfsproxy 0.2.11 0.2.12 0.2.13: An obfuscating proxy using Tor's pluggable transport protocol
 net-proxy/pingtunnel 0.72: Tunnel TCP over ICMP
 net-proxy/piper 1.14: Piper (a tool for manipulating SOCKS5 servers)
-net-proxy/polipo 1.1.1 1.1.1-r1 1.1.1-r2 9999: A caching web proxy
+net-proxy/polipo 1.1.1 1.1.1-r3 9999: A caching web proxy
 net-proxy/privoxy 3.0.24 3.0.24-r1: A web proxy with advanced filtering capabilities for enhancing privacy
 net-proxy/ratproxy 1.58: A semi-automated, largely passive web application security audit tool
 net-proxy/rejik 3.2.10: A squid redirector used for blocking unwanted content
