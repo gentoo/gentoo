@@ -11,8 +11,7 @@ HOMEPAGE="http://ocamlgraph.lri.fr/index.en.html"
 SRC_URI="http://ocamlgraph.lri.fr/download/${P}.tar.gz"
 LICENSE="LGPL-2.1"
 SLOT="0/${PV}"
-#Breaks dev-ml/dose3
-#KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~amd64 ~ppc ~x86"
 RDEPEND=">=dev-lang/ocaml-3.10.2:=[ocamlopt?]
 	gtk? ( dev-ml/lablgtk:=[gnomecanvas,ocamlopt?] )"
 DEPEND="${RDEPEND}
