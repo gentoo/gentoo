@@ -1,8 +1,7 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=5
+EAPI="5"
 
 DESCRIPTION="Near Field Communication (NFC) management daemon"
 HOMEPAGE="https://01.org/linux-nfc/"
@@ -25,6 +24,10 @@ src_configure() {
 
 src_install() {
 	default
+
+	# Patch for this has been sent upstream.  Do it manually
+	# to avoid having to rebuild autotools. #580876
+	mv "${ED}"/usr/include/version.h "${ED}"/usr/include/near/ || die
 
 	newinitd "${FILESDIR}"/${PN}.rc ${PN}
 	newconfd "${FILESDIR}"/${PN}.confd ${PN}
