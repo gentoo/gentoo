@@ -82,6 +82,7 @@ src_prepare() {
 		"${FILESDIR}"/2.3.1-shared-lib.patch	# 517002
 	epatch "${FILESDIR}/2.4.0-ncurses6.patch"
 	epatch "${FILESDIR}"/${PN}-2.4.0-libressl.patch
+	epatch "${FILESDIR}/${PN}-2.4.0-fix-tkinter-regression.patch"	# 533384
 
 	sed -e "s^@EPREFIX@^${EPREFIX}^" \
 		-e "s^@libdir@^$(get_libdir)^" \
