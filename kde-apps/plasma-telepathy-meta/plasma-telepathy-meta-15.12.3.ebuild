@@ -27,7 +27,7 @@ RDEPEND="
 	$(add_kdeapps_dep ktp-kded-module)
 	$(add_kdeapps_dep ktp-send-file)
 	$(add_kdeapps_dep ktp-text-ui)
-	!net-im/kde-telepathy-meta
+	!kde-apps/plasma-telepathy-meta:4
 	nls? (
 		$(add_kdeapps_dep ktp-l10n '' ${L10N_MINIMAL})
 	)

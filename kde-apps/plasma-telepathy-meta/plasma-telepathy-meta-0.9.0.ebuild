@@ -4,8 +4,7 @@
 
 EAPI=6
 
-DESCRIPTION="KDE Telepathy client - merge this to pull in all net-im/ktp-*
-kde packages"
+DESCRIPTION="Plasma Telepathy client"
 HOMEPAGE="https://community.kde.org/Real-Time_Communication_and_Collaboration"
 KEYWORDS="~amd64 ~x86"
 
