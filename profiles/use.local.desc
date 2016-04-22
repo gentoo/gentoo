@@ -1807,9 +1807,7 @@ dev-lang/ghc:ghcmakebinary - Build with less runtime depends (bundle libffi for 
 dev-lang/ghc:llvm - Enable llvm code generator for ghc (-fllvm).
 dev-lang/gnat-gcc:lto - Add support for link-time optimizations (unsupported, use at your own risk).
 dev-lang/go:gccgo - Enable bootstrapping using gccgo
-dev-lang/icc:eclipse - Install the dev-util/eclipse-sdk plugins
 dev-lang/icon:iplsrc - install the icon programming library source
-dev-lang/idb:eclipse - Install the dev-util/eclipse-sdk plugins
 dev-lang/io:clutter - Build add-on for media-libs/clutter
 dev-lang/io:editline - Build add-on for dev-libs/libedit
 dev-lang/io:google - Build the google search add-on
