@@ -20,5 +20,5 @@ DEPEND="
 	$(add_qt_dep qtdeclarative)
 "
 RDEPEND="${DEPEND}
-	!net-im/ktp-desktop-applets
+	!kde-apps/ktp-desktop-applets:4
 "
