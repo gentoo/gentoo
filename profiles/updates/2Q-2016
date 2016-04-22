@@ -10,3 +10,4 @@ move net-im/ktp-approver kde-apps/ktp-approver
 move net-im/ktp-auth-handler kde-apps/ktp-auth-handler
 move net-im/ktp-call-ui kde-apps/ktp-call-ui
 move net-im/ktp-contact-list kde-apps/ktp-contact-list
+move net-im/ktp-contact-runner kde-apps/ktp-contact-runner
