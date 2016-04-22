@@ -1,8 +1,8 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 KDE_LINGUAS="bs ca ca@valencia cs da de el es et fi fr ga gl hu ia it ja kk ko
 lt mr nb nds nl pl pt pt_BR ro ru sk sl sr sr@ijekavian sr@ijekavianlatin
@@ -11,19 +11,15 @@ inherit kde4-base
 
 DESCRIPTION="KDE Telepathy file transfer handler"
 HOMEPAGE="https://community.kde.org/Real-Time_Communication_and_Collaboration"
-if [[ ${PV} != *9999* ]]; then
-	SRC_URI="mirror://kde/stable/kde-telepathy/${PV}/src/${P}.tar.bz2"
-	KEYWORDS="~amd64 ~x86"
-else
-	KEYWORDS=""
-fi
+SRC_URI="mirror://kde/stable/kde-telepathy/${PV}/src/${P}.tar.bz2"
+KEYWORDS="~amd64 ~x86"
 
 LICENSE="GPL-2"
 SLOT="4"
 IUSE="debug"
 
 DEPEND="
-	>=net-im/ktp-common-internals-${PV}
+	>=net-im/ktp-common-internals-${PV}:4
 	>=net-libs/telepathy-qt-0.9.5[qt4]
 "
 RDEPEND="${DEPEND}"
