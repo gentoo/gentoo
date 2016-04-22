@@ -10,4 +10,4 @@ RDEPEND=>=dev-libs/glib-2.28:2 dev-libs/libnl systemd? ( sys-apps/systemd:0 ) >=
 SLOT=0
 SRC_URI=mirror://kernel/linux/network/nfc/neard-0.15.tar.xz
 _eclass_exported_funcs=src_configure:- src_install:-
-_md5_=288e4144db0c797bf16c7ec4af5abbb1
+_md5_=8cb96d0791fff01c23538f28a356c834

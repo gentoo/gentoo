@@ -15138,7 +15138,7 @@ net-wireless/mdk 3.6-r1: Wireless injection tool with various functions
 net-wireless/mfoc 0.10.7: Mifare Classic Offline Cracker
 net-wireless/multimode 1.00-r2 1.4_p20140831-r1 9999: multimode radio decoder for rtl-sdr devices using gnuradio
 net-wireless/ndiswrapper 1.59: Wrapper for using Windows drivers for some wireless cards
-net-wireless/neard 0.13 0.15: Near Field Communication (NFC) management daemon
+net-wireless/neard 0.15-r1: Near Field Communication (NFC) management daemon
 net-wireless/openbsc 9999: OpenBSC, OsmoSGSN, OsmoBSC and other programs
 net-wireless/openggsn 9999: Gateway GPRS Support Node
 net-wireless/orinoco-fwutils 0.3: ORiNOCO IEEE 802.11 wireless LAN firmware utilities
