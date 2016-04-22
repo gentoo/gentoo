@@ -15,7 +15,7 @@ IUSE=""
 
 DEPEND=""
 RDEPEND="
-	>=net-im/ktp-accounts-kcm-${PV}:4
+	>=kde-apps/ktp-accounts-kcm-${PV}:4
 	>=net-im/ktp-approver-${PV}:4
 	>=net-im/ktp-auth-handler-${PV}:4
 	>=net-im/ktp-call-ui-${PV}:4

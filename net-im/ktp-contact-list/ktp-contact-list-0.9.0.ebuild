@@ -19,7 +19,7 @@ SLOT="4"
 IUSE="debug semantic-desktop"
 
 DEPEND="
-	>=net-im/ktp-accounts-kcm-${PV}:4
+	>=kde-apps/ktp-accounts-kcm-${PV}:4
 	>=kde-apps/ktp-common-internals-${PV}:4[semantic-desktop?]
 	>=net-libs/telepathy-qt-0.9.5[qt4]
 	semantic-desktop? ( >=net-libs/libkpeople-0.3.0:= )
