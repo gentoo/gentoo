@@ -19,7 +19,7 @@ SLOT="4"
 IUSE="debug v4l"
 
 DEPEND="
-	>=kde-apps/ktp-common-internals-${PV}
+	>=kde-apps/ktp-common-internals-${PV}:4
 	>=media-libs/qt-gstreamer-1.2.0[qt4]
 	net-libs/farstream:0.2
 	>=net-libs/telepathy-farstream-0.6.0

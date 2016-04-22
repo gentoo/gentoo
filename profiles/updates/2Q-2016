@@ -8,3 +8,4 @@ move net-im/ktp-common-internals kde-apps/ktp-common-internals
 move net-im/ktp-accounts-kcm kde-apps/ktp-accounts-kcm
 move net-im/ktp-approver kde-apps/ktp-approver
 move net-im/ktp-auth-handler kde-apps/ktp-auth-handler
+move net-im/ktp-call-ui kde-apps/ktp-call-ui
