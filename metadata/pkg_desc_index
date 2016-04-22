@@ -2858,6 +2858,7 @@ dev-db/firebird 2.5.3.26780.0-r3: A relational database offering many ANSI SQL:2
 dev-db/freetds 0.91 0.91-r1: Tabular Datastream Library
 dev-db/gigabase 3.83-r1: OO-DBMS with interfaces for C/C++/Java/PHP/Perl
 dev-db/go-etcd 0_p20141013-r1 2.0.0 2.0.0-r1: Go client library for etcd
+dev-db/gqlplus 1.16: a front-end for Oracle program sqlplus with command-line editing
 dev-db/haildb 2.3.2: a relational database in shared library form
 dev-db/henplus 0.9.8 0.9.8-r1: Java-based multisession SQL shell for databases with JDBC support
 dev-db/hsqldb 1.8.1.3-r1: The leading SQL relational database engine written in Java
