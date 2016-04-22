@@ -23,7 +23,7 @@ RDEPEND="
 	!kde-apps/ktp-common-internals:4
 	!kde-apps/ktp-contact-list:4
 	!kde-apps/ktp-filetransfer-handler:4
-	!net-im/ktp-kded-module
+	!kde-apps/ktp-kded-module:4
 	!net-im/ktp-send-file
 	!net-im/ktp-text-ui
 "
