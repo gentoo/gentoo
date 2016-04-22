@@ -16,6 +16,9 @@ LICENSE="BSD"
 SLOT="0"
 IUSE=""
 
-RDEPEND="dev-ros/rosgraph[${PYTHON_USEDEP}]"
+RDEPEND="
+	dev-ros/rosgraph[${PYTHON_USEDEP}]
+	dev-python/defusedxml[${PYTHON_USEDEP}]
+"
 DEPEND="${RDEPEND}
 	test? ( dev-python/nose[${PYTHON_USEDEP}] )"
