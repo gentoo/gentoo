@@ -107,7 +107,7 @@ RDEPEND="
 	iscsi? (
 		tgt? ( sys-block/tgt )
 		lio? (
-			sys-block/targetcli 
+			sys-block/targetcli
 			sys-block/lio-utils
 		)
 		sys-block/open-iscsi
