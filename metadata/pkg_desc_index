@@ -3647,7 +3647,7 @@ dev-haskell/utf8-string 0.3.8 1.0.1.1: Support for reading and writing UTF8 Stri
 dev-haskell/uuagc 0.9.24 0.9.52.1: Attribute Grammar System of Universiteit Utrecht
 dev-haskell/uuagc-cabal 1.0.6.0: Cabal plugin for the Universiteit Utrecht Attribute Grammar System
 dev-haskell/uuid 1.3.11-r2: For creating, comparing, parsing and printing Universally Unique Identifiers
-dev-haskell/uuid-types 1.0.2-r2: Type definitions for Universally Unique Identifiers
+dev-haskell/uuid-types 1.0.3: Type definitions for Universally Unique Identifiers
 dev-haskell/uulib 0.9.16 0.9.22: Haskell Utrecht Tools Library
 dev-haskell/vault 0.3.0.3 0.3.0.5: a persistent store for values of arbitrary types
 dev-haskell/vector 0.10.0.1 0.10.12.3: Efficient Arrays
@@ -4083,7 +4083,7 @@ dev-java/jupidator 0.6.0 0.6.0-r1: Jupidator is a library/tool in Java for autom
 dev-java/jusb 0.4.4-r1: jUSB provides a Free Software Java API for USB
 dev-java/jutils 1.0.0-r1: Common utilities for the Java Game Technology Group
 dev-java/jvmstat 3.0: Monitoring APIs and tools for monitoring the performance of the JVM in production environments
-dev-java/jvyaml 0.2.1-r1: Java YAML parser and emitter
+dev-java/jvyaml 0.2.1-r2: Java YAML parser and emitter
 dev-java/jvyamlb 0.2.5: JvYAMLb, YAML processor extracted from JRuby
 dev-java/jython 2.7.0: An implementation of Python written in Java
 dev-java/jzlib 1.0.7-r2 1.1.1 1.1.3: JZlib is a re-implementation of zlib in pure Java
@@ -4174,7 +4174,7 @@ dev-java/piccolo 1.04: A small, extremely fast XML parser for Java
 dev-java/piccolo2d 3.0-r1: A Structured 2D Graphics Framework
 dev-java/picocontainer 1.1-r1: Small footprint Dependency Injection container
 dev-java/plexus-classworlds 2.2.3: The class loader framework of the Plexus project
-dev-java/portletapi 1.0 2.0 2.0-r1: Portlet API 2.0 developed by the Java Community Process JSR-286
+dev-java/portletapi 1.0 1.0-r1 2.0-r1: Portlet API 2.0 developed by the Java Community Process JSR-286
 dev-java/prefuse 20071021_beta: UI toolkit for building highly interactive visualizations of structured and unstructured data
 dev-java/proguard 4.5 4.7 4.8 5.2.1: Free Java class file shrinker, optimizer, and obfuscator
 dev-java/protobuf-java 3.0.0_beta2: Google's Protocol Buffers - official Java Bindings
@@ -15946,7 +15946,7 @@ sci-libs/xkaapi 2.1 2.2 3.0.3: Kernel for Adaptative, Asynchronous Parallel and 
 sci-libs/xylib 1.1 1.2: Experimental x-y data reading library
 sci-mathematics/4ti2 1.6.2 1.6.5 1.6.6: Software package for algebraic, geometric and combinatorial problems
 sci-mathematics/Macaulay2 1.7_pre 1.8.2.1-r1: Research tool for commutative algebra and algebraic geometry
-sci-mathematics/agda 2.4.2.5 2.4.2.5-r1 2.4.2.5-r2: A dependently typed functional programming language and proof assistant
+sci-mathematics/agda 2.4.2.5-r2: A dependently typed functional programming language and proof assistant
 sci-mathematics/agda-executable 2.3.0.1-r1 2.3.0.1-r2: Command-line program for type-checking and compiling Agda programs
 sci-mathematics/agda-lib-ffi 0.0.2 0.0.2-r2: Auxiliary Haskell code used by Agda's standard library
 sci-mathematics/agda-stdlib 2.4.2.5: Agda standard library
