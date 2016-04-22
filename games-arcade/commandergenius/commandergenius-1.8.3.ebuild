@@ -31,6 +31,7 @@ S=${WORKDIR}/Commander-Genius-${PV//./}release
 src_prepare() {
 	rm -rf vfsroot || die
 	sed -i -e '/INCLUDE(package.cmake)/d' CMakeLists.txt || die
+	cp version.h src/ || die # Workaround buggy neard package - bug #558160
 }
 
 src_configure() {
