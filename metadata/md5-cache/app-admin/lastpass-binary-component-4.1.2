@@ -1,0 +1,12 @@
+DEFINED_PHASES=install postinst
+DESCRIPTION=Binary component required by the LastPass Password Manager browser extension
+EAPI=6
+HOMEPAGE=https://helpdesk.lastpass.com/downloading-and-installing/#h5
+KEYWORDS=-* ~x86 ~amd64
+LICENSE=LastPass
+RDEPEND=!!app-admin/lastpass
+RESTRICT=strip mirror
+SLOT=0
+SRC_URI=https://lastpass.com/lplinux.tar.bz2 -> lastpass-binary-component-4.1.2.tar.bz2
+_eclass_exported_funcs=pkg_postinst:- src_install:-
+_md5_=218043a6fa16b1cd0dcbd1f3b2524a8a
