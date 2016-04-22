@@ -24,7 +24,7 @@ fi
 
 MOZ_P="${MOZ_PN}-${MOZ_PV}"
 
-MOZ_HTTP_URI="http://archive.mozilla.org/pub/mozilla.org/${MOZ_PN}/releases/"
+MOZ_HTTP_URI="http://archive.mozilla.org/pub/${MOZ_PN}/releases"
 
 inherit eutils multilib pax-utils fdo-mime gnome2-utils mozlinguas nsplugins
 
