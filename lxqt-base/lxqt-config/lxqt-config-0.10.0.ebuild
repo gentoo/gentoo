@@ -19,9 +19,8 @@ fi
 LICENSE="GPL-2 LGPL-2.1+"
 SLOT="0"
 
-DEPEND="
+CDEPEND="
 	>=dev-libs/libqtxdg-1.0.0
-	dev-qt/linguist-tools:5
 	dev-qt/qtconcurrent:5
 	dev-qt/qtcore:5
 	dev-qt/qtdbus:5
@@ -40,7 +39,9 @@ DEPEND="
 	x11-libs/libXcursor
 	x11-libs/libXext
 	x11-libs/libXfixes"
-RDEPEND="${DEPEND}
+DEPEND="${CDEPEND}
+	dev-qt/linguist-tools:5"
+RDEPEND="${CDEPEND}
 	x11-apps/setxkbmap"
 
 src_install(){
