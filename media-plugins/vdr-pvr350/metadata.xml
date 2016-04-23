@@ -7,6 +7,6 @@
 </maintainer>
 <use>
 	<flag name="yaepg">Enables full support for the output format of
-		<pkg>media-plugins/vdr-yaepg</pkg></flag>
+		vdr-yaepg</flag>
 </use>
 </pkgmetadata>

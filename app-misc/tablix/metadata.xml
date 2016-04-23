@@ -4,6 +4,6 @@
 <!-- maintainer-needed -->
 <use>
   <flag name="pvm">Add support for parallel virtual machine
-    (<pkg>sys-cluster/pvm</pkg>)</flag>
+    (sys-cluster/pvm)</flag>
 </use>
 </pkgmetadata>

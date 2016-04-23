@@ -27,6 +27,6 @@
 		<flag name="ttxtsubs">support for <pkg>media-plugins/vdr-ttxtsubs</pkg></flag>
 		<flag name="vasarajanauloja">replacement for the liemikuutio patch, adds some nice must haves features</flag>
 		<flag name="wareagleicon">Replace original icon set in menu</flag>
-		<flag name="yaepg">Enables support for the <pkg>media-plugins/vdr-yaepg</pkg></flag>
+		<flag name="yaepg">Enables support for the vdr-yaepg plugin</flag>
 	</use>
 </pkgmetadata>

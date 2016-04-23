@@ -21,7 +21,6 @@
 		<changelog>http://www.libressl.org/releases.html</changelog>
 		<bugs-to>
 			https://github.com/libressl-portable/portable/issues
-			mailto:libressl@openbsd.org
 		</bugs-to>
 		<remote-id type="github">libressl-portable/portable</remote-id>
 	</upstream>
