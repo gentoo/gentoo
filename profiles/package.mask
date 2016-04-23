@@ -30,6 +30,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Alex Brandt <alunduil@gentoo.org> (23 Apr 2016)
+# Contains collisions with dev-python/ipaddress.  See #580388 for more details.
+# Masked for removal in 30 days.
+dev-python/py2-ipaddress
+
 # Michael Palimaka <kensington@gentoo.org> (21 Apr 2016)
 # Requires package no longer in the tree to be useful. Unmaintained.
 # Dead upstream. Masked for removal in 30 days.
