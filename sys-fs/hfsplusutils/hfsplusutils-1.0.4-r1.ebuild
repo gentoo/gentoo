@@ -1,8 +1,9 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-inherit autotools eutils
+EAPI="5"
+
+inherit autotools eutils flag-o-matic
 
 MY_P="hfsplus_${PV}"
 DESCRIPTION="HFS+ Filesystem Access Utilities (a PPC filesystem)"
@@ -19,18 +20,16 @@ RDEPEND=""
 
 S=${WORKDIR}/hfsplus-${PV}
 
-src_unpack() {
-	unpack ${A}
-	cd "${S}"
+src_prepare() {
 	epatch "${FILESDIR}/${P}-glob.patch"
 	epatch "${FILESDIR}/${P}-errno.patch"
 	epatch "${FILESDIR}/${P}-gcc4.patch"
 	epatch "${FILESDIR}/${P}-string.patch"
-	#let's avoid the Makefile.cvs since isn't working for us
+	# let's avoid the Makefile.cvs since isn't working for us
 	eautoreconf
 }
 
 src_install() {
-	make DESTDIR="${D}" install || die "make install failed"
+	default
 	newman doc/man/hfsp.man hfsp.1
 }
