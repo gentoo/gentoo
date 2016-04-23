@@ -13,7 +13,7 @@ SRC_URI="http://penguinppc.org/historical/hfsplus/${MY_P}.src.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="ppc ppc64 x86"
-IUSE=""
+IUSE="static-libs"
 
 DEPEND="app-arch/bzip2"
 RDEPEND=""
@@ -33,7 +33,12 @@ src_prepare() {
 	append-flags -fgnu89-inline
 }
 
+src_configure() {
+	econf $(use_enable static-libs static)
+}
+
 src_install() {
 	default
+	find "${ED}"/usr/ -name libhfsp.la -delete
 	newman doc/man/hfsp.man hfsp.1
 }
