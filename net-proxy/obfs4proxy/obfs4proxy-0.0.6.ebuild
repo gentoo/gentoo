@@ -22,7 +22,7 @@ fi
 DESCRIPTION="An obfuscating proxy supporting Tor's pluggable transport protocol obfs4"
 HOMEPAGE="https://github.com/Yawning/obfs4"
 
-LICENSE="GPL-2"
+LICENSE="BSD"
 SLOT="0"
 IUSE=""
 
