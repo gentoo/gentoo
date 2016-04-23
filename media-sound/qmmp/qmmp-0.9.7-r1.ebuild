@@ -26,8 +26,9 @@ libsamplerate lyrics +mad midi mms modplug mplayer mpris musepack notifier opus 
 projectm pulseaudio qsui scrobbler sndfile stereo tray udisks +vorbis wavpack"
 
 RDEPEND="media-libs/taglib
+	dev-qt/qtcore:4
+	dev-qt/qtdbus:4
 	dev-qt/qtgui:4
-	dev-qt/qdbusviewer:4
 	alsa? ( media-libs/alsa-lib )
 	bs2b? ( media-libs/libbs2b )
 	cdda? ( dev-libs/libcdio-paranoia )
@@ -44,7 +45,6 @@ RDEPEND="media-libs/taglib
 	midi? ( media-sound/wildmidi )
 	mms? ( media-libs/libmms )
 	mplayer? ( media-video/mplayer )
-	mpris? ( dev-qt/qtdbus:4 )
 	musepack? ( >=media-sound/musepack-tools-444 )
 	modplug? ( >=media-libs/libmodplug-0.8.4 )
 	vorbis? ( media-libs/libvorbis
