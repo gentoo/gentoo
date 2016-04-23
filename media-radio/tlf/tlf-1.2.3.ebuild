@@ -19,7 +19,7 @@ RDEPEND="sys-libs/ncurses:=
 	dev-libs/glib:2
 	media-libs/hamlib
 	media-sound/sox
-	dev-libs/xmlrpc-c"
+	dev-libs/xmlrpc-c[curl]"
 DEPEND="${RDEPEND}"
 
 src_configure() {
