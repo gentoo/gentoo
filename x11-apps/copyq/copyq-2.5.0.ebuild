@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -27,7 +27,6 @@ RDEPEND="
 		webkit? ( dev-qt/qtwebkit:4 )
 	)
 	qt5? (
-		dev-qt/linguist-tools:5
 		dev-qt/qtcore:5
 		dev-qt/qtgui:5
 		dev-qt/qtnetwork:5
@@ -38,18 +37,23 @@ RDEPEND="
 	)
 "
 DEPEND="${RDEPEND}
-	qt4? ( test? ( dev-qt/qttest:4 ) )
-	qt5? ( test? ( dev-qt/qttest:5 ) )
+	qt4? (
+		test? ( dev-qt/qttest:4 )
+	)
+	qt5? (
+		dev-qt/linguist-tools:5
+		test? ( dev-qt/qttest:5 )
+	)
 "
 
-S="${WORKDIR}"/CopyQ-${PV}
+S=${WORKDIR}/CopyQ-${PV}
 
 src_configure() {
 	mycmakeargs=(
 		$(cmake-utils_use_with qt5)
 		$(cmake-utils_use_with webkit)
 		$(cmake-utils_use_with test TESTS)
-		-DPLUGIN_INSTALL_PREFIX=/usr/$(get_libdir)/${PN}/plugins/
+		-DPLUGIN_INSTALL_PREFIX="/usr/$(get_libdir)/${PN}/plugins"
 	)
 	cmake-utils_src_configure
 }
