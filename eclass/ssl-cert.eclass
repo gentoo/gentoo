@@ -13,6 +13,18 @@
 # @EXAMPLE:
 # "install_cert /foo/bar" installs ${ROOT}/foo/bar.{key,csr,crt,pem}
 
+# Guard against unsupported EAPIs.  We need EAPI >= 1 for slot dependencies.
+case "${EAPI:-0}" in
+	0)
+		die "${ECLASS}.eclass: EAPI=0 is not supported.  Please upgrade to EAPI >= 1."
+		;;
+	1|2|3|4|5|6)
+		;;
+	*)
+		die "${ECLASS}.eclass: EAPI=${EAPI} is not supported yet."
+		;;
+esac
+
 # @ECLASS-VARIABLE: SSL_CERT_MANDATORY
 # @DESCRIPTION:
 # Set to non zero if ssl-cert is mandatory for ebuild.
