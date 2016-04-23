@@ -1320,7 +1320,7 @@ app-emulation/openstack-guest-agents-unix 1.39.0 1.39.0-r1 1.39.0-r2 1.39.1: Ope
 app-emulation/phpvirtualbox 4.1.11 4.2.7 4.3.0 5.0.3: Web-based administration for VirtualBox in PHP
 app-emulation/playonlinux 4.2.4 4.2.6 4.2.8: Set of scripts to easily install and use Windows games and software
 app-emulation/q4wine 1.0-r3 1.1_p2-r1 1.2_p2: Qt4 GUI configuration tool for Wine
-app-emulation/qemu 2.5.0-r2 2.5.0-r3 9999: QEMU + Kernel-based Virtual Machine userland tools
+app-emulation/qemu 2.5.0-r2 2.5.0-r3 2.5.1 9999: QEMU + Kernel-based Virtual Machine userland tools
 app-emulation/qemu-guest-agent 2.5.0: QEMU Guest Agent (qemu-ga) for use when running inside a VM
 app-emulation/qemu-init-scripts 0.3.0: Kvm and qemu init scripts
 app-emulation/qtemu 1.0.5: A graphical user interface for QEMU written in Qt4
@@ -1809,7 +1809,7 @@ app-misc/joy2key 1.6.3: An application that translates joystick events to keyboa
 app-misc/joymouse 0.5: An application that translates joystick events to mouse events
 app-misc/jq 1.4 1.4-r1 1.5-r1: A lightweight and flexible command-line JSON processor
 app-misc/kanatest 0.4.8: Visual flashcard tool for memorizing the Japanese Hiragana and Katakana alphabet
-app-misc/khal 0.7.0: A CalDAV based calendar
+app-misc/khal 0.7.0 0.8.1: A CalDAV based calendar
 app-misc/klavaro 3.0.1: Another free touch typing tutor program
 app-misc/ktoblzcheck 1.39 1.45 1.48: Library to check account numbers and bank codes of German banks
 app-misc/lcd4linux 0.10.1_rc2-r3: Shows system and ISDN information on an external display or in a X11 window

@@ -9,4 +9,4 @@ RDEPEND=>=dev-libs/squareball-0.2.0 dev-vcs/git
 SLOT=0
 SRC_URI=https://github.com/blogc/blogc-git-receiver/releases/download/v0.4.0/blogc-git-receiver-0.4.0.tar.xz
 _eclass_exported_funcs=src_prepare:- src_configure:-
-_md5_=94d594f1a14e1cd617c73c5b2f606af4
+_md5_=9ec8c0c75043eec762c3ac39612a6731
