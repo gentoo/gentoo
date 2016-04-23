@@ -7,8 +7,14 @@ EAPI=5
 PYTHON_COMPAT=( python2_7 pypy )
 RUBY_OPTIONAL="yes"
 USE_RUBY="ruby19"
+PHP_EXT_NAME="IcePHP"
+PHP_EXT_INI="yes"
+PHP_EXT_ZENDEXT="no"
+PHP_EXT_S="${S}/php"
+PHP_EXT_OPTIONAL_USE=php
+USE_PHP="php5-6 php5-5 php5-4"
 
-inherit toolchain-funcs versionator python-r1 mono-env ruby-ng db-use
+inherit toolchain-funcs versionator php-ext-source-r2 php-lib-r1 python-r1 mono-env ruby-ng db-use
 
 DESCRIPTION="ICE middleware C++ library and generator tools"
 HOMEPAGE="http://www.zeroc.com/"
@@ -17,7 +23,7 @@ SRC_URI="http://www.zeroc.com/download/Ice/$(get_version_component_range 1-2)/${
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~ia64 x86 ~x86-linux ~x64-macos"
-IUSE="doc examples +ncurses mono python ruby test debug"
+IUSE="doc examples +ncurses mono php php_namespaces python ruby test debug"
 
 RDEPEND=">=dev-libs/expat-2.0.1
 	>=app-arch/bzip2-1.0.5
@@ -31,6 +37,8 @@ RDEPEND=">=dev-libs/expat-2.0.1
 	python? ( ${PYTHON_DEPS} )
 	ruby? ( $(ruby_implementation_depend ruby19) )
 	mono? ( dev-lang/mono )
+	php? ( >=dev-lang/php-5.3.1 )
+	php_namespaces? ( >=dev-lang/php-5.3 )
 	!dev-python/IcePy
 	!dev-ruby/IceRuby"
 DEPEND="${RDEPEND}
@@ -63,6 +71,11 @@ src_prepare() {
 		-e 's|\(install_docdir[[:space:]]*\):=|\1?=|' \
 		-e 's|\(install_configdir[[:space:]]*\):=|\1?=|' \
 		cpp/config/Make.rules || die "sed failed"
+
+	sed -i \
+		-e 's|\(install_phpdir[[:space:]]*\):=|\1?=|' \
+		-e 's|\(install_libdir[[:space:]]*\):=|\1?=|' \
+		php/config/Make.rules.php || die "sed failed"
 
 	sed -i \
 		-e 's|\(install_pythondir[[:space:]]*\):=|\1?=|' \
@@ -161,6 +174,25 @@ src_compile() {
 		emake -C cpp/doc || die "building docs failed"
 	fi
 
+	if use php; then
+		local slot
+		for slot in $(php_get_slots); do
+			mkdir -p "${WORKDIR}/${slot}"
+			cp -r "${PHP_EXT_S}" "${WORKDIR}/${slot}/" || die "Failed to copy source ${PHP_EXT_S} to PHP target directory"
+			cd "${WORKDIR}/${slot}"
+			ln -s ${S}/cpp
+			ln -s ${S}/config
+			ln -s ${S}/slice
+			ln -s ${S}/Makefile
+
+			MAKE_RULES_PHP="PHP_HOME=/usr/$(get_libdir)/${slot}"
+			if use php_namespaces ; then
+				MAKE_RULES_PHP="${MAKE_RULES_PHP} USE_NAMESPACES=yes"
+			fi
+			emake -C php ${MAKE_RULES} ${MAKE_RULES_PHP} || die "emake php failed"
+		done
+	fi
+
 	if use python ; then
 		building() {
 			emake -C "${BUILD_DIR}" ${MAKE_RULES} || die "emake py-${EPYTHON} failed"
@@ -197,6 +229,28 @@ src_install() {
 	if use doc ; then
 		dohtml -r cpp/doc/reference/*
 		dodoc "${DISTDIR}/${P}.pdf"
+	fi
+
+    if use php ; then
+		docinto php
+		dodoc php/CHANGES php/README
+		if use examples ; then
+			insinto /usr/share/doc/${PF}/examples-php
+			doins -r php/demo/*
+		fi
+
+		php-lib-r1_src_install php/lib $(cd php/lib; find . -name '*.php' -print)
+        for dir in $( cd ${D}/usr/share/${P}/slice ; ls -1 ); do
+            mkdir -p ${D}/usr/share/php/${dir}
+			${D}/usr/bin/slice2php -I${D}/usr/share/${P}/slice/ --all --output-dir ${D}/usr/share/php/${dir} --ice ${D}/usr/share/${P}/slice/${dir}/*
+        done
+
+		for slot in $(php_get_slots); do
+			php_init_slot_env ${slot}
+			insinto "${EXT_DIR}"
+			newins "php/lib/${PHP_EXT_NAME}.so" "${PHP_EXT_NAME}.so" || die "Unable to install extension"
+		done
+		php-ext-source-r2_createinifiles
 	fi
 
 	if use python ; then
