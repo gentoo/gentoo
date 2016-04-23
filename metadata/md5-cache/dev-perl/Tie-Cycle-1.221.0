@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=virtual/perl-Carp >=virtual/perl-ExtUtils-MakeMaker-6.640.0 virtual/perl-File-Spec test? ( >=virtual/perl-Test-Simple-0.950.0 ) dev-lang/perl:=
+DESCRIPTION=Cycle through a list of values via a scalar
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/Tie-Cycle/
+IUSE=test
+KEYWORDS=~amd64 ~x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=virtual/perl-Carp dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/B/BD/BDFOY/Tie-Cycle-1.221.tar.gz
+_eclass_exported_funcs=src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:- src_install:perl-module
+_eclasses_=multiprocessing	e32940a7b2a9992ad217eccddb84d548	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	c584f9e0fe426f3dcc2c46c6f7cb95ce
+_md5_=2f7a1657f95dd16328a7126271108b4c

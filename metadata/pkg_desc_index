@@ -6310,30 +6310,30 @@ dev-perl/Test-WWW-Mechanize 1.440.0-r1: Testing-specific WWW::Mechanize subclass
 dev-perl/Test-Warn 0.240.0-r1 0.300.0-r1: Perl extension to test methods for warnings
 dev-perl/Test-Warnings 0.16.0 0.26.0: Test for warnings and the lack of them
 dev-perl/Test-Without-Module 0.170.0 0.180.0: Test fallback behaviour in absence of modules
-dev-perl/Test-YAML 1.50.0: Testing Module for YAML Implementations
+dev-perl/Test-YAML 1.50.0 1.60.0: Testing Module for YAML Implementations
 dev-perl/Test-use-ok 0.110.0-r1 0.160.0: Alternative to Test::More::use_ok
-dev-perl/Text-Aligner 0.70.0-r1: Used to justify strings to various alignment styles
+dev-perl/Text-Aligner 0.70.0-r1 0.130.0: Used to justify strings to various alignment styles
 dev-perl/Text-Aspell 0.90.0-r1: Perl interface to the GNU Aspell Library
-dev-perl/Text-Autoformat 1.669.2-r1 1.690.0 1.720.0: Automatic text wrapping and reformatting
+dev-perl/Text-Autoformat 1.669.2-r1 1.720.0 1.740.0: Automatic text wrapping and reformatting
 dev-perl/Text-BibTeX 0.710.0: A Perl library for reading, parsing, and processing BibTeX files
 dev-perl/Text-CSV 1.320.0-r1 1.330.0: Manipulate comma-separated value strings
 dev-perl/Text-CSV-Simple 1.0.0-r1: Text::CSV::Simple - Simpler parsing of CSV files
-dev-perl/Text-CSV_XS 0.950.0 1.160.0 1.190.0: Comma-separated values manipulation routines
+dev-perl/Text-CSV_XS 0.950.0 1.190.0 1.230.0: Comma-separated values manipulation routines
 dev-perl/Text-CharWidth 0.40.0-r1: Get number of occupied columns of a string on terminal
-dev-perl/Text-Diff 1.410.0-r1 1.430.0: Perform diffs on files and record sets
-dev-perl/Text-FindIndent 0.100.0-r1: Heuristically determine the indent style
+dev-perl/Text-Diff 1.410.0-r1 1.430.0 1.440.0: Perform diffs on files and record sets
+dev-perl/Text-FindIndent 0.100.0-r1 0.110.0: Heuristically determine the indent style
 dev-perl/Text-Format 0.580.0-r1 0.590.0: Various subroutines to format text
 dev-perl/Text-German 0.60.0-r1: German grundform reduction
 dev-perl/Text-Glob 0.90.0-r1: Match globbing patterns against text
 dev-perl/Text-Iconv 1.700.0-r1: A Perl interface to the iconv() codeset conversion function
 dev-perl/Text-Kakasi 2.40.0-r1: This module provides libkakasi interface for Perl
-dev-perl/Text-Levenshtein 0.50.0-r1: An implementation of the Levenshtein edit distance
+dev-perl/Text-Levenshtein 0.50.0-r1 0.130.0: An implementation of the Levenshtein edit distance
 dev-perl/Text-LevenshteinXS 0.30.0-r1: An XS implementation of the Levenshtein edit distance
 dev-perl/Text-Markdown 1.0.31-r1: Convert MultiMarkdown syntax to (X)HTML
 dev-perl/Text-Netstring 0.70.0-r1: Create and manipulate netstrings
 dev-perl/Text-Password-Pronounceable 0.300.0-r1: Generate pronounceable passwords
 dev-perl/Text-Patch 1.800.0-r1: Patches text with given patch
-dev-perl/Text-Quoted 2.60.0-r1 2.80.0: Extract the structure of a quoted mail message
+dev-perl/Text-Quoted 2.60.0-r1 2.80.0 2.90.0: Extract the structure of a quoted mail message
 dev-perl/Text-Reform 1.200.0-r1: Manual text wrapping and reformatting
 dev-perl/Text-Roman 3.500.0: Allows conversion between Roman and Arabic algarisms
 dev-perl/Text-Shellwords 1.80.0-r1: Parses lines of text and returns a set of tokens using the same rules as the Unix shell
@@ -6347,32 +6347,32 @@ dev-perl/Text-WrapI18N 0.60.0-r1: Internationalized substitute of Text::Wrap
 dev-perl/Text-vFile-asData 0.80.0: Perl module to parse vFile formatted files into data structures
 dev-perl/TheSchwartz 1.120.0: Reliable job queue
 dev-perl/Thread-SigMask 0.4.0: Thread specific signal masks
-dev-perl/Throwable 0.200.11: A role for classes that can be thrown
+dev-perl/Throwable 0.200.11 0.200.13: A role for classes that can be thrown
 dev-perl/Tie-Array-Sorted 1.410.0-r1: An array which is kept sorted
 dev-perl/Tie-CPHash 1.60.0 2.0.0: Case preserving but case insensitive hash table
 dev-perl/Tie-Cache 0.190.0-r1 0.210.0: In memory size limited LRU cache
 dev-perl/Tie-Cache-LRU 20110205.0.0-r1 20150301.0.0: A Least-Recently Used cache
 dev-perl/Tie-Cache-LRU-Expires 0.550.0-r1: Extends Tie::Cache::LRU with expiring
-dev-perl/Tie-Cycle 1.190.0-r1 1.210.0: Cycle through a list of values via a scalar
+dev-perl/Tie-Cycle 1.190.0-r1 1.210.0 1.221.0: Cycle through a list of values via a scalar
 dev-perl/Tie-Hash-Method 0.20.0: Tied hash with specific methods overriden by callbacks
 dev-perl/Tie-IxHash 1.230.0: Ordered associative arrays for Perl
-dev-perl/Tie-LLHash 1.3.0-r1: Implements an ordered hash-like object
+dev-perl/Tie-LLHash 1.3.0-r1 1.4.0: Implements an ordered hash-like object
 dev-perl/Tie-ShadowHash 1.0.0-r1: Merge multiple data sources into a hash
-dev-perl/Tie-Simple 1.03-r1: Module for creating easier variable ties
+dev-perl/Tie-Simple 1.03-r1 1.40.0: Module for creating easier variable ties
 dev-perl/Tie-StrictHash 1.0.0-r1: A hash with strict-like semantics
 dev-perl/Tie-Sub 1.1.0-r1: Tying a subroutine, function or method to a hash
 dev-perl/Tie-ToObject 0.30.0-r1: Tie to an existing object
-dev-perl/Time-Duration 1.60.0-r1: Rounded or exact English expression of durations
-dev-perl/Time-Duration-Parse 0.60.0-r1: Parse string that represents time duration
+dev-perl/Time-Duration 1.60.0-r1 1.200.0: Rounded or exact English expression of durations
+dev-perl/Time-Duration-Parse 0.60.0-r1 0.130.0: Parse string that represents time duration
 dev-perl/Time-Format 1.120.0: Easy-to-use date/time formatting
 dev-perl/Time-Moment 0.380.0: Represents a date and time of day with an offset from UTC
 dev-perl/Time-Out 0.110.0: Easily timeout long running operations
+dev-perl/Time-ParseDate 2011.51.700-r1 2013.91.200 2015.103.0: A Date/Time Parsing Perl Module
 dev-perl/Time-Period 1.240.0-r1 1.250.0: Time period Perl module
 dev-perl/Time-Piece-MySQL 0.60.0-r1: MySQL-specific functions for Time::Piece
 dev-perl/Time-Stopwatch 1.0.0: Use tied scalars as timers
 dev-perl/Time-TAI64 2.110.0-r1: Time manipulation in the TAI64* formats
 dev-perl/Time-TZOffset 0.40.0: Show timezone offset strings like +0900
-dev-perl/Time-modules 2011.51.700-r1 2013.91.200: A Date/Time Parsing Perl Module
 dev-perl/TimeDate 2.300.0: A Date/Time Parsing Perl Module
 dev-perl/Tk 804.32.0-r1 804.33.0: A Perl Module for Tk
 dev-perl/Tk-CursorControl 0.400.0-r1: Manipulate the mouse cursor programmatically
@@ -8279,59 +8279,60 @@ dev-python/zope-component 4.2.2: Zope Component Architecture
 dev-python/zope-event 4.0.3 4.1.0 4.2.0: Event publishing / dispatch, used by Zope Component Architecture
 dev-python/zope-interface 4.1.1 4.1.2 4.1.3: Interfaces for Python
 dev-python/zsi 2.1_alpha1-r1: Web Services for Python
-dev-qt/assistant 4.8.6-r1 4.8.7 5.5.1-r1: Tool for viewing on-line documentation in Qt help file format
-dev-qt/designer 4.8.6-r1 4.8.7 5.5.1-r1: WYSIWYG tool for designing and building Qt-based GUIs
-dev-qt/linguist 4.8.6-r1 4.8.7 5.5.1-r1: Graphical tool for translating Qt applications
-dev-qt/linguist-tools 5.5.1-r1: Tools for working with Qt translation data files
-dev-qt/pixeltool 4.8.6-r1 4.8.7 5.5.1-r1: Qt screen magnifier
-dev-qt/qdbus 5.5.1-r1: Interface to Qt applications communicating over D-Bus
-dev-qt/qdbusviewer 4.8.6-r1 4.8.7 5.5.1-r1: Graphical tool that lets you introspect D-Bus objects and messages
-dev-qt/qdoc 5.5.1: Qt documentation generator
+dev-qt/assistant 4.8.6-r1 4.8.7 5.5.1-r1 5.6.0: Tool for viewing on-line documentation in Qt help file format
+dev-qt/designer 4.8.6-r1 4.8.7 5.5.1-r1 5.6.0: WYSIWYG tool for designing and building Qt-based GUIs
+dev-qt/linguist 4.8.6-r1 4.8.7 5.5.1-r1 5.6.0: Graphical tool for translating Qt applications
+dev-qt/linguist-tools 5.5.1-r1 5.6.0: Tools for working with Qt translation data files
+dev-qt/pixeltool 4.8.6-r1 4.8.7 5.5.1-r1 5.6.0: Qt screen magnifier
+dev-qt/qdbus 5.5.1-r1 5.6.0: Interface to Qt applications communicating over D-Bus
+dev-qt/qdbusviewer 4.8.6-r1 4.8.7 5.5.1-r1 5.6.0: Graphical tool that lets you introspect D-Bus objects and messages
+dev-qt/qdoc 5.5.1 5.6.0: Qt documentation generator
 dev-qt/qt-creator 2.8.1 3.4.2 3.5.1 3.6.1 4.0.0_rc1: Lightweight IDE for C++/QML development centering around Qt
 dev-qt/qt-docs 5.5.1_p0 5.6.0_p1: Documentation for Qt5, for use with Qt Creator and other tools
 dev-qt/qt-meta 4.8.6: Cross-platform application development framework (metapackage)
 dev-qt/qt-mobility 1.2.2_p20130703-r1: Additional Qt APIs for mobile devices and desktop platforms
 dev-qt/qt3support 4.8.6-r1 4.8.7: The Qt3Support module for the Qt toolkit
 dev-qt/qtbearer 4.8.6-r1 4.8.7: The network bearer plugins for the Qt toolkit
-dev-qt/qtbluetooth 5.5.1-r1: Bluetooth support library for the Qt5 framework
+dev-qt/qtbluetooth 5.5.1-r1 5.6.0: Bluetooth support library for the Qt5 framework
 dev-qt/qtchooser 0_p20150102 0_p20151008: Qt4/Qt5 version chooser
-dev-qt/qtconcurrent 5.5.1: Multi-threading concurrence support library for the Qt5 framework
-dev-qt/qtcore 4.8.6-r2 4.8.7-r2 5.5.1-r1: Cross-platform application development framework
-dev-qt/qtdbus 4.8.6-r1 4.8.7 5.5.1: The D-Bus module for the Qt5 framework
-dev-qt/qtdeclarative 4.8.6-r1 4.8.7 5.5.1-r1: The QML and Quick modules for the Qt5 framework
+dev-qt/qtconcurrent 5.5.1 5.6.0: Multi-threading concurrence support library for the Qt5 framework
+dev-qt/qtcore 4.8.6-r2 4.8.7-r2 5.5.1-r1 5.6.0: Cross-platform application development framework
+dev-qt/qtdbus 4.8.6-r1 4.8.7 5.5.1 5.6.0: The D-Bus module for the Qt5 framework
+dev-qt/qtdeclarative 4.8.6-r1 4.8.7 5.5.1-r1 5.6.0: The QML and Quick modules for the Qt5 framework
 dev-qt/qtdemo 4.8.6-r1 4.8.7: Demonstration module and examples for the Qt toolkit
-dev-qt/qtdiag 5.5.1-r1: Tool for reporting diagnostic information about Qt and its environment
-dev-qt/qtgraphicaleffects 5.5.1-r1: Set of QML types for adding visual effects to user interfaces
-dev-qt/qtgui 4.8.6-r4 4.8.7 5.5.1-r1: The GUI module and platform plugins for the Qt5 framework
-dev-qt/qthelp 4.8.6-r3 4.8.7 5.5.1-r1: The Help module for the Qt5 framework
-dev-qt/qtimageformats 5.5.1-r1: Additional format plugins for the Qt image I/O system
+dev-qt/qtdiag 5.5.1-r1 5.6.0: Tool for reporting diagnostic information about Qt and its environment
+dev-qt/qtgraphicaleffects 5.5.1-r1 5.6.0: Set of QML types for adding visual effects to user interfaces
+dev-qt/qtgui 4.8.6-r4 4.8.7 5.5.1-r1 5.6.0: The GUI module and platform plugins for the Qt5 framework
+dev-qt/qthelp 4.8.6-r3 4.8.7 5.5.1-r1 5.6.0: The Help module for the Qt5 framework
+dev-qt/qtimageformats 5.5.1-r1 5.6.0: Additional format plugins for the Qt image I/O system
 dev-qt/qtlockedfile 2.4.1_p20150629: QFile extension with advisory locking functions
-dev-qt/qtmultimedia 4.8.6-r1 4.8.7 5.5.1-r2: The Multimedia module for the Qt5 framework
-dev-qt/qtnetwork 5.5.1: Network abstraction library for the Qt5 framework
-dev-qt/qtopengl 4.8.6-r1 4.8.7 5.5.1: OpenGL support library for the Qt5 framework (deprecated)
+dev-qt/qtmultimedia 4.8.6-r1 4.8.7 5.5.1-r2 5.6.0: The Multimedia module for the Qt5 framework
+dev-qt/qtnetwork 5.5.1 5.6.0: Network abstraction library for the Qt5 framework
+dev-qt/qtopengl 4.8.6-r1 4.8.7 5.5.1 5.6.0: OpenGL support library for the Qt5 framework (deprecated)
 dev-qt/qtopenvg 4.8.6-r1 4.8.7: The OpenVG module for the Qt toolkit
-dev-qt/qtpaths 5.5.1-r1: Tool to query Qt path information
+dev-qt/qtpaths 5.5.1-r1 5.6.0: Tool to query Qt path information
 dev-qt/qtphonon 4.8.6-r1 4.8.7: The Phonon module for the Qt toolkit
-dev-qt/qtpositioning 5.5.1-r1: Physical position determination library for the Qt5 framework
-dev-qt/qtprintsupport 5.5.1: Printing support library for the Qt5 framework
-dev-qt/qtquick1 5.5.1-r1: Legacy declarative UI module for the Qt5 framework (deprecated)
-dev-qt/qtquickcontrols 5.5.1-r1: Set of controls used in conjunction with Qt Quick to build complete interfaces
-dev-qt/qtscript 4.8.6-r2 4.8.7 5.5.1-r1: Application scripting library for the Qt5 framework (deprecated)
-dev-qt/qtsensors 5.5.1-r1: Hardware sensor access library for the Qt5 framework
-dev-qt/qtserialport 5.5.1-r2: Serial port abstraction library for the Qt5 framework
+dev-qt/qtpositioning 5.5.1-r1 5.6.0: Physical position determination library for the Qt5 framework
+dev-qt/qtprintsupport 5.5.1 5.6.0: Printing support library for the Qt5 framework
+dev-qt/qtquick1 5.5.1-r1 5.6.0: Legacy declarative UI module for the Qt5 framework (deprecated)
+dev-qt/qtquickcontrols 5.5.1-r1 5.6.0: Set of controls used in conjunction with Qt Quick to build complete interfaces
+dev-qt/qtscript 4.8.6-r2 4.8.7 5.5.1-r1 5.6.0: Application scripting library for the Qt5 framework (deprecated)
+dev-qt/qtsensors 5.5.1-r1 5.6.0: Hardware sensor access library for the Qt5 framework
+dev-qt/qtserialport 5.5.1-r2 5.6.0: Serial port abstraction library for the Qt5 framework
 dev-qt/qtsingleapplication 2.6.1_p20150629: Qt library to start applications only once per user
-dev-qt/qtsql 4.8.6-r1 4.8.7-r1 5.5.1: SQL abstraction library for the Qt5 tooolkit
-dev-qt/qtsvg 4.8.6-r1 4.8.7 5.5.1-r1: SVG rendering library for the Qt5 framework
-dev-qt/qttest 4.8.6-r1 4.8.7 5.5.1: Unit testing library for the Qt5 framework
-dev-qt/qttranslations 4.8.6-r1 4.8.7 5.5.1-r1: Translation files for the Qt5 framework
-dev-qt/qtwayland 5.5.1-r1: Wayland platform plugin for Qt
-dev-qt/qtwebchannel 5.5.1-r1: Qt5 module for integrating C++ and QML applications with HTML/JavaScript clients
-dev-qt/qtwebkit 4.8.6-r1 4.8.7 4.10.4 5.5.1-r1: WebKit rendering library for the Qt5 framework (deprecated)
-dev-qt/qtwebsockets 5.5.1-r1: Implementation of the WebSocket protocol for the Qt5 framework
-dev-qt/qtwidgets 5.5.1-r1: Set of components for creating classic desktop-style UIs for the Qt5 framework
-dev-qt/qtx11extras 5.5.1: Linux/X11-specific support library for the Qt5 framework
-dev-qt/qtxml 5.5.1: SAX and DOM implementation library for the Qt5 framework
-dev-qt/qtxmlpatterns 4.8.6-r1 4.8.7 5.5.1-r1: XPath, XQuery, and XSLT support library for the Qt5 framework
+dev-qt/qtsql 4.8.6-r1 4.8.7-r1 5.5.1 5.6.0: SQL abstraction library for the Qt5 tooolkit
+dev-qt/qtsvg 4.8.6-r1 4.8.7 5.5.1-r1 5.6.0: SVG rendering library for the Qt5 framework
+dev-qt/qttest 4.8.6-r1 4.8.7 5.5.1 5.6.0: Unit testing library for the Qt5 framework
+dev-qt/qttranslations 4.8.6-r1 4.8.7 5.5.1-r1 5.6.0: Translation files for the Qt5 framework
+dev-qt/qtwayland 5.5.1-r1 5.6.0: Wayland platform plugin for Qt
+dev-qt/qtwebchannel 5.5.1-r1 5.6.0: Qt5 module for integrating C++ and QML applications with HTML/JavaScript clients
+dev-qt/qtwebengine 5.6.0: Library for rendering dynamic web content in Qt5 C++ and QML applications
+dev-qt/qtwebkit 4.8.6-r1 4.8.7 4.10.4 5.5.1-r1 5.6.0: WebKit rendering library for the Qt5 framework (deprecated)
+dev-qt/qtwebsockets 5.5.1-r1 5.6.0: Implementation of the WebSocket protocol for the Qt5 framework
+dev-qt/qtwidgets 5.5.1-r1 5.6.0: Set of components for creating classic desktop-style UIs for the Qt5 framework
+dev-qt/qtx11extras 5.5.1 5.6.0: Linux/X11-specific support library for the Qt5 framework
+dev-qt/qtxml 5.5.1 5.6.0: SAX and DOM implementation library for the Qt5 framework
+dev-qt/qtxmlpatterns 4.8.6-r1 4.8.7 5.5.1-r1 5.6.0: XPath, XQuery, and XSLT support library for the Qt5 framework
 dev-ros/actionlib 1.11.4 1.11.5 9999: Provides a standardized interface for interfacing with preemptable tasks
 dev-ros/actionlib_msgs 1.12.3 1.12.4 9999: Common messages to interact with an action server and an action client
 dev-ros/actionlib_tutorials 0.1.8 9999: Actionlib tutorials
