@@ -6048,10 +6048,10 @@ dev-perl/POE-Test-Loops 1.353.0-r1 1.360.0: Reusable tests for POE::Loop authors
 dev-perl/POE-XS-Loop-EPoll 1.3.0: An XS implementation of POE::Loop, using Linux epoll(2)
 dev-perl/POE-XS-Loop-Poll 1.0.0-r1: An XS implementation of POE::Loop, using poll(2)
 dev-perl/POE-XS-Queue-Array 0.6.0-r1: An XS implementation of POE::Queue::Array
-dev-perl/POSIX-strftime-Compiler 0.400.0 0.410.0: GNU C library compatible strftime for loggers and servers
+dev-perl/POSIX-strftime-Compiler 0.410.0: GNU C library compatible strftime for loggers and servers
 dev-perl/PPI 1.220: Parse, Analyze and Manipulate Perl (without perl)
 dev-perl/PPI-PowerToys 0.140.0: A handy collection of small PPI-based utilities
-dev-perl/PPIx-EditorTools 0.170.0 0.180.0 0.190.0: Utility methods and base class for manipulating Perl via PPI
+dev-perl/PPIx-EditorTools 0.190.0: Utility methods and base class for manipulating Perl via PPI
 dev-perl/PPIx-Regexp 0.33.0 0.48.0: Represent a regular expression of some sort
 dev-perl/PPIx-Utilities 1.1.0-r1: Extensions to PPI
 dev-perl/Package-DeprecationManager 0.130.0-r1 0.150.0 0.160.0: Manage deprecation warnings for your distribution
@@ -6117,7 +6117,7 @@ dev-perl/PostScript 0.60.0-r1: An object that may be used to construct a block o
 dev-perl/PostScript-Simple 0.70.0-r1 0.90.0: Allows you to have a simple method of writing PostScript files from Perl
 dev-perl/Probe-Perl 0.10.0-r1 0.30.0: Information about the currently running perl
 dev-perl/Proc-Background 1.100.0-r1: Generic interface to background process management
-dev-perl/Proc-Daemon 0.140.0-r1 0.190.0 0.230.0: Run Perl program as a daemon process
+dev-perl/Proc-Daemon 0.140.0-r1 0.230.0: Run Perl program as a daemon process
 dev-perl/Proc-ProcessTable 0.480.0 0.530.0: Unix process table information
 dev-perl/Proc-Simple 1.310.0-r1 1.320.0: Launch and control background processes
 dev-perl/Proc-Wait3 0.40.0-r1 0.50.0: Perl extension for wait3 system call
@@ -17744,7 +17744,7 @@ www-client/surfraw 2.2.9-r1: A fast unix command line interface to WWW
 www-client/uget 1.8.0 1.10.3 1.10.3-r1 1.10.4 9999: Download manager using gtk+ and libcurl
 www-client/vimb 2.9 2.11: a fast, lightweight, vim-like browser based on webkit
 www-client/vimprobable2 1.4.0 1.4.2 1.4.2-r1 9999: A minimal web browser that behaves like the Vimperator plugin for Firefox
-www-client/vivaldi 1.0.435.42_p1 1.1.453.30_p1 1.1.453.36_p1: A new browser for our friends
+www-client/vivaldi 1.0.435.42_p1 1.1.453.36_p1 1.1.453.43_p1: A new browser for our friends
 www-client/w3m 0.5.3-r5: Text based WWW browser, supports tables and frames
 www-client/w3mir 1.0.10-r2: w3mir is a all purpose HTTP copying and mirroring tool
 www-client/w3mmee 0.3.2_p24-r7: A variant of w3m with support for multiple character encodings
