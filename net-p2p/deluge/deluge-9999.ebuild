@@ -33,10 +33,9 @@ REQUIRED_USE="
 "
 PATCHES=(
 	"${FILESDIR}/${PN}-1.3.12-fix_scheduler_plugin.patch"
-#	"${FILESDIR}/${PN}-1.3.5-disable_libtorrent_internal_copy.patch" - Not needed anymore: #518354
 )
 
-CDEPEND=">=net-libs/rb_libtorrent-0.14.9[python]"
+CDEPEND=">=net-libs/rb_libtorrent-0.14.9[${PYTHON_USEDEP}]"
 DEPEND="${CDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	dev-util/intltool"
@@ -69,10 +68,10 @@ python_prepare_all() {
 	)
 	sed -i "${args[@]}" -- 'deluge/core/preferencesmanager.py' || die
 
-	loc_dir="${S}/deluge/i18n"
+	local loc_dir="${S}/deluge/i18n"
 	l10n_find_plocales_changes "${loc_dir}" "" ".po"
 	rm_loc() {
-		rm -vf "${loc_dir}/${1}.po"
+		rm -vf "${loc_dir}/${1}.po" || die
 	}
 	l10n_for_each_disabled_locale_do rm_loc
 
@@ -89,16 +88,16 @@ _distutils-r1_create_setup_cfg() {
 python_install_all() {
 	distutils-r1_python_install_all
 	if ! use console ; then
-		rm -rf "${D}/usr/$(get_libdir)/python2.7/site-packages/deluge/ui/console/"
-		rm -f "${D}/usr/bin/deluge-console"
-		rm -f "${D}/usr/share/man/man1/deluge-console.1"
+		rm -rf "${D}/usr/$(get_libdir)/python2.7/site-packages/deluge/ui/console/" || die
+		rm -f "${D}/usr/bin/deluge-console" || die
+		rm -f "${D}/usr/share/man/man1/deluge-console.1" ||die
 	fi
 	if ! use gtk ; then
-		rm -rf "${D}/usr/$(get_libdir)/python2.7/site-packages/deluge/ui/gtkui/"
-		rm -rf "${D}/usr/share/icons/"
-		rm -f "${D}/usr/bin/deluge-gtk"
-		rm -f "${D}/usr/share/man/man1/deluge-gtk.1"
-		rm -f "${D}/usr/share/applications/deluge.desktop"
+		rm -rf "${D}/usr/$(get_libdir)/python2.7/site-packages/deluge/ui/gtkui/" || die
+		rm -rf "${D}/usr/share/icons/" || die
+		rm -f "${D}/usr/bin/deluge-gtk" || die
+		rm -f "${D}/usr/share/man/man1/deluge-gtk.1" || die
+		rm -f "${D}/usr/share/applications/deluge.desktop" || die
 	fi
 	if use webinterface; then
 		newinitd "${FILESDIR}/deluge-web.init" deluge-web
@@ -106,9 +105,9 @@ python_install_all() {
 		systemd_newunit "${FILESDIR}/deluge-web.service-2" deluge-web.service
 		systemd_install_serviced "${FILESDIR}/deluge-web.service.conf"
 	else
-		rm -rf "${D}/usr/$(get_libdir)/python2.7/site-packages/deluge/ui/web/"
-		rm -f "${D}/usr/bin/deluge-web"
-		rm -f "${D}/usr/share/man/man1/deluge-web.1"
+		rm -rf "${D}/usr/$(get_libdir)/python2.7/site-packages/deluge/ui/web/" || die
+		rm -f "${D}/usr/bin/deluge-web" || die
+		rm -f "${D}/usr/share/man/man1/deluge-web.1" || die
 	fi
 	newinitd "${FILESDIR}"/deluged.init-2 deluged
 	newconfd "${FILESDIR}"/deluged.conf-2 deluged
