@@ -2,7 +2,7 @@ Title: Python ABIFLAGS rebuild needed
 Author: Mike Gilbert <floppym@gentoo.org>
 Content-Type: text/plain
 Posted: 2015-12-16
-Revision: 2
+Revision: 3
 News-Item-Format: 1.0
 Display-If-Installed: =dev-lang/python-3.3.5-r4
 Display-If-Installed: =dev-lang/python-3.3.5-r5
@@ -35,9 +35,10 @@ We have removed this patch from the most recent dev-lang/python ebuilds at
 the time of this writing. One result of this is that any packages which
 install python extension modules must be rebuilt.
 
-You should rebuild affected packages using the following command.
+You should rebuild affected packages using the following commands.
 
 emerge -1v $(find /usr/lib*/python3* -name '*cpython-3[3-5].so')
+emerge -1v /usr/include/python3.{3,4,5}
 
 You may experience build failures in related packages until this has been
 completed.
