@@ -25,7 +25,7 @@ COMMON_DEPEND="
 		dev-qt/qtgui:4
 	)
 	qt5? (
-		dev-qt/linguist-tools:5
+		dev-qt/qtcore:5
 		dev-qt/qtnetwork:5
 		dev-qt/qtwidgets:5
 	)
@@ -47,6 +47,7 @@ RDEPEND="${COMMON_DEPEND}
 "
 DEPEND="${COMMON_DEPEND}
 	virtual/pkgconfig
+	qt5? ( dev-qt/linguist-tools:5 )
 "
 
 REQUIRED_USE="^^ ( qt4 qt5 )"

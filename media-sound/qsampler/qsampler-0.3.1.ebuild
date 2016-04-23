@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -21,12 +21,13 @@ DEPEND="media-libs/alsa-lib
 	libgig? ( >=media-libs/libgig-3.3.0:= )
 	qt4? ( dev-qt/qtcore:4
 		dev-qt/qtgui:4 )
-	qt5? ( dev-qt/linguist-tools:5
-		dev-qt/qtcore:5
+	qt5? ( dev-qt/qtcore:5
 		dev-qt/qtgui:5
 		dev-qt/qtwidgets:5 )"
 RDEPEND="${DEPEND}
 	>=media-sound/linuxsampler-0.5"
+DEPEND="${DEPEND}
+	qt5? ( dev-qt/linguist-tools:5 )"
 
 src_configure() {
 	econf $(use_enable debug) \
