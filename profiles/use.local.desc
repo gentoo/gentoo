@@ -3484,7 +3484,7 @@ lxqt-base/lxqt-panel:volume - Build volume plugin
 lxqt-base/lxqt-panel:worldclock - Build worldclock plugin
 mail-client/alot:doc - Install user manual and API documentation
 mail-client/alpine:chappa - enhance alpine by applying Eduardo Chappa's patches
-mail-client/alpine:onlyalpine - installs only the alpine binary, so it does not collied with app-editors/pico and/or mail-client/pine
+mail-client/alpine:onlyalpine - installs only the alpine binary, so it does not collied with pico and/or pine
 mail-client/alpine:passfile - Adds support for caching passwords into a file between sessions
 mail-client/alpine:smime - Enable support for S/MIME
 mail-client/alpine:topal - Enable support for net-mail/topal
@@ -4195,7 +4195,7 @@ media-plugins/vdr-graphtft:theme_deeppurple - graphTFT Deep Purple theme
 media-plugins/vdr-graphtft:theme_poetter - graphTFT Poetter theme
 media-plugins/vdr-graphtft:touchscreen - Enable Touchscreen support
 media-plugins/vdr-music:graphtft - Enable support for media-plugins/vdr-graphtft
-media-plugins/vdr-pvr350:yaepg - Enables full support for the output format of media-plugins/vdr-yaepg
+media-plugins/vdr-pvr350:yaepg - Enables full support for the output format of vdr-yaepg
 media-plugins/vdr-streamdev:client - Compile the VDR plugin vdr-streamdev-client that acts like a dvb-budget card
 media-plugins/vdr-streamdev:server - Compile the VDR plugin vdr-streamdev-server that allows remote systems to access the DVB cards used for the local VDR
 media-plugins/vdr-text2skin:contrib - Install user contributed scripts
@@ -4864,7 +4864,7 @@ media-video/vdr:rotor - Enable support for plugin media-plugins/vdr-rotor for di
 media-video/vdr:ttxtsubs - support for media-plugins/vdr-ttxtsubs
 media-video/vdr:vasarajanauloja - replacement for the liemikuutio patch, adds some nice must haves features
 media-video/vdr:wareagleicon - Replace original icon set in menu
-media-video/vdr:yaepg - Enables support for the media-plugins/vdr-yaepg
+media-video/vdr:yaepg - Enables support for the vdr-yaepg plugin
 media-video/vlc:X - Enables support for, e.g., fullscreen mode via the X Window System. By itself, this flag does not build a graphical interface.
 media-video/vlc:atmo - Enables support for AtmoLight (homebrew Ambient Lighting Technology)
 media-video/vlc:audioqueue - Enables AudioQueue audio module for Mac OS X.
@@ -5844,7 +5844,7 @@ net-mail/mailutils:clients - Build client programs - frm maidag mail sieve messa
 net-mail/mailutils:kyotocabinet - Enable Kyoto Cabinet database support
 net-mail/mailutils:servers - Build server programs - imap4d pop3d comsatd
 net-mail/mailutils:tokyocabinet - Enable Tokyo Cabinet database support
-net-mail/mairix:gnus - Add support for the marks propagation feature in app-emacs/gnus
+net-mail/mairix:gnus - Add support for the marks propagation feature in app-xemacs/gnus
 net-mail/mpop:libsecret - Enable libsecret support to store login credentials
 net-mail/mu:emacs - Install the mu4e mail client.
 net-mail/mu:gui - Build and install the experimental gui 'mug'.
