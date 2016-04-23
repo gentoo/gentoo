@@ -53,7 +53,7 @@ RDEPEND="${COMMON_DEPEND}
 	|| (
 		media-video/mplayer[bidi?,libass,png,X]
 		(
-			>=media-video/mpv-0.6.2[libass,X]
+			>=media-video/mpv-0.10.0[libass,X]
 			streaming? ( >=net-misc/youtube-dl-2014.11.26 )
 		)
 	)
