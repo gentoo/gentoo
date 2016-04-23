@@ -31,7 +31,7 @@ RDEPEND="${DEPEND}
 	dev-vcs/git"
 
 src_prepare() {
-	[[ ${PV} = *9999* ]] && eautoreconf
+	[[ ${PV} = *9999* ]] && AT_NO_RECURSIVE=1 eautoreconf
 	default
 }
 
