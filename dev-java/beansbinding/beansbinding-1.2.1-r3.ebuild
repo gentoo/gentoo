@@ -14,11 +14,12 @@ SRC_URI="http://dev.gentoo.org/~monsieurp/packages/${P}-src.zip -> ${P}.zip"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 IUSE=""
 
-RDEPEND=">=virtual/jre-1.6"
+RDEPEND="
+	>=virtual/jre-1.6"
 
 DEPEND="
 	>=virtual/jdk-1.6
