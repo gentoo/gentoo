@@ -1,0 +1,205 @@
+--- libraries/liblutil/passwd.c.orig	2014-09-19 03:48:49.000000000 +0200
++++ libraries/liblutil/passwd.c	2014-11-05 19:57:10.807555025 +0100
+@@ -38,11 +38,11 @@
+ #	include <openssl/des.h>
+ 
+ 
+-typedef des_cblock des_key;
+-typedef des_cblock des_data_block;
+-typedef des_key_schedule des_context;
+-#define des_failed(encrypted) 0
+-#define des_finish(key, schedule) 
++typedef DES_cblock DES_key;
++typedef DES_cblock DES_data_block;
++typedef DES_key_schedule DES_context;
++#define DES_failed(encrypted) 0
++#define DES_finish(key, schedule) 
+ 
+ #elif defined(HAVE_MOZNSS)
+ /*
+@@ -53,9 +53,9 @@
+ */
+ #define PROTYPES_H 1
+ #	include <nss/pk11pub.h>
+-typedef PK11SymKey *des_key;
+-typedef unsigned char des_data_block[8];
+-typedef PK11Context *des_context[1];
++typedef PK11SymKey *DES_key;
++typedef unsigned char DES_data_block[8];
++typedef PK11Context *DES_context[1];
+ #define DES_ENCRYPT CKA_ENCRYPT
+ 
+ #endif
+@@ -664,10 +664,10 @@
+  * abstract away setting the parity.
+  */
+ static void
+-des_set_key_and_parity( des_key *key, unsigned char *keyData)
++DES_set_key_and_parity( DES_key *key, unsigned char *keyData)
+ {
+     memcpy(key, keyData, 8);
+-    des_set_odd_parity( key );
++    DES_set_odd_parity( key );
+ }
+ 
+ 
+@@ -677,7 +677,7 @@
+  * implement MozNSS wrappers for the openSSL calls 
+  */
+ static void
+-des_set_key_and_parity( des_key *key, unsigned char *keyData)
++DES_set_key_and_parity( DES_key *key, unsigned char *keyData)
+ {
+     SECItem keyDataItem;
+     PK11SlotInfo *slot;
+@@ -699,7 +699,7 @@
+ }
+ 
+ static void
+-des_set_key_unchecked( des_key *key, des_context ctxt )
++DES_set_key_unchecked( DES_key *key, DES_context ctxt )
+ {
+     ctxt[0] = NULL;
+ 
+@@ -712,37 +712,37 @@
+ }
+ 
+ static void
+-des_ecb_encrypt( des_data_block *plain, des_data_block *encrypted, 
+-			des_context ctxt, int op)
++DES_ecb_encrypt( DES_data_block *plain, DES_data_block *encrypted, 
++			DES_context ctxt, int op)
+ {
+     SECStatus rv;
+     int size;
+ 
+     if (ctxt[0] == NULL) {
+ 	/* need to fail here...  */
+-	memset(encrypted, 0, sizeof(des_data_block));
++	memset(encrypted, 0, sizeof(DES_data_block));
+ 	return;
+     }
+     rv = PK11_CipherOp(ctxt[0], (unsigned char *)&encrypted[0], 
+-			&size, sizeof(des_data_block),
+-			(unsigned char *)&plain[0], sizeof(des_data_block));
++			&size, sizeof(DES_data_block),
++			(unsigned char *)&plain[0], sizeof(DES_data_block));
+     if (rv != SECSuccess) {
+ 	/* signal failure */
+-	memset(encrypted, 0, sizeof(des_data_block));
++	memset(encrypted, 0, sizeof(DES_data_block));
+ 	return;
+     }
+     return;
+ }
+ 
+ static int
+-des_failed(des_data_block *encrypted)
++DES_failed(DES_data_block *encrypted)
+ {
+-   static const des_data_block zero = { 0 };
++   static const DES_data_block zero = { 0 };
+    return memcmp(encrypted, zero, sizeof(zero)) == 0;
+ }
+ 
+ static void
+-des_finish(des_key *key, des_context ctxt)
++DES_finish(DES_key *key, DES_context ctxt)
+ {
+      if (*key) {
+ 	PK11_FreeSymKey(*key);
+@@ -817,7 +817,7 @@
+ 
+ static void lmPasswd_to_key(
+ 	const char *lmPasswd,
+-	des_key *key)
++	DES_key *key)
+ {
+ 	const unsigned char *lpw = (const unsigned char *) lmPasswd;
+ 	unsigned char k[8];
+@@ -832,7 +832,7 @@
+ 	k[6] = ((lpw[5] & 0x3F) << 2) | (lpw[6] >> 6);
+ 	k[7] = ((lpw[6] & 0x7F) << 1);
+ 		
+-	des_set_key_and_parity( key, k );
++	DES_set_key_and_parity( key, k );
+ }	
+ 
+ static int chk_lanman(
+@@ -843,10 +843,10 @@
+ {
+ 	ber_len_t i;
+ 	char UcasePassword[15];
+-	des_key key;
+-	des_context schedule;
+-	des_data_block StdText = "KGS!@#$%";
+-	des_data_block PasswordHash1, PasswordHash2;
++	DES_key key;
++	DES_context schedule;
++	DES_data_block StdText = "KGS!@#$%";
++	DES_data_block PasswordHash1, PasswordHash2;
+ 	char PasswordHash[33], storedPasswordHash[33];
+ 	
+ 	for( i=0; i<cred->bv_len; i++) {
+@@ -864,21 +864,21 @@
+ 	ldap_pvt_str2upper( UcasePassword );
+ 	
+ 	lmPasswd_to_key( UcasePassword, &key );
+-	des_set_key_unchecked( &key, schedule );
+-	des_ecb_encrypt( &StdText, &PasswordHash1, schedule , DES_ENCRYPT );
++	DES_set_key_unchecked( &key, &schedule );
++	DES_ecb_encrypt( &StdText, &PasswordHash1, &schedule , DES_ENCRYPT );
+ 
+-	if (des_failed(&PasswordHash1)) {
++	if (DES_failed(&PasswordHash1)) {
+ 	    return LUTIL_PASSWD_ERR;
+ 	}
+ 	
+ 	lmPasswd_to_key( &UcasePassword[7], &key );
+-	des_set_key_unchecked( &key, schedule );
+-	des_ecb_encrypt( &StdText, &PasswordHash2, schedule , DES_ENCRYPT );
+-	if (des_failed(&PasswordHash2)) {
++	DES_set_key_unchecked( &key, &schedule );
++	DES_ecb_encrypt( &StdText, &PasswordHash2, &schedule , DES_ENCRYPT );
++	if (DES_failed(&PasswordHash2)) {
+ 	    return LUTIL_PASSWD_ERR;
+ 	}
+ 
+-	des_finish( &key, schedule );
++	DES_finish( &key, schedule );
+ 	
+ 	sprintf( PasswordHash, "%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x", 
+ 		PasswordHash1[0],PasswordHash1[1],PasswordHash1[2],PasswordHash1[3],
+@@ -1139,10 +1139,10 @@
+ 
+ 	ber_len_t i;
+ 	char UcasePassword[15];
+-	des_key key;
+-	des_context schedule;
+-	des_data_block StdText = "KGS!@#$%";
+-	des_data_block PasswordHash1, PasswordHash2;
++	DES_key key;
++	DES_context schedule;
++	DES_data_block StdText = "KGS!@#$%";
++	DES_data_block PasswordHash1, PasswordHash2;
+ 	char PasswordHash[33];
+ 	
+ 	for( i=0; i<passwd->bv_len; i++) {
+@@ -1160,12 +1160,12 @@
+ 	ldap_pvt_str2upper( UcasePassword );
+ 	
+ 	lmPasswd_to_key( UcasePassword, &key );
+-	des_set_key_unchecked( &key, schedule );
+-	des_ecb_encrypt( &StdText, &PasswordHash1, schedule , DES_ENCRYPT );
++	DES_set_key_unchecked( &key, &schedule );
++	DES_ecb_encrypt( &StdText, &PasswordHash1, &schedule , DES_ENCRYPT );
+ 	
+ 	lmPasswd_to_key( &UcasePassword[7], &key );
+-	des_set_key_unchecked( &key, schedule );
+-	des_ecb_encrypt( &StdText, &PasswordHash2, schedule , DES_ENCRYPT );
++	DES_set_key_unchecked( &key, &schedule );
++	DES_ecb_encrypt( &StdText, &PasswordHash2, &schedule , DES_ENCRYPT );
+ 	
+ 	sprintf( PasswordHash, "%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x", 
+ 		PasswordHash1[0],PasswordHash1[1],PasswordHash1[2],PasswordHash1[3],
+
