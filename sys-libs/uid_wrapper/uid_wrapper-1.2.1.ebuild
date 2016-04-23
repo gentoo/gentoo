@@ -12,7 +12,7 @@ SRC_URI="ftp://ftp.samba.org/pub/cwrap/${P}.tar.gz
 	https://ftp.samba.org/pub/cwrap/${P}.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 arm ~hppa ia64 ppc ppc64 sparc x86"
+KEYWORDS="amd64 arm hppa ia64 ppc ppc64 sparc x86"
 IUSE="test"
 
 DEPEND=""
