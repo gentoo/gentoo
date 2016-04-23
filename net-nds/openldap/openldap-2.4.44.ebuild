@@ -587,6 +587,32 @@ multilib_src_compile() {
 				-o pw-kerberos.la \
 				kerberos.lo || die "linking pw-kerberos failed"
 		fi
+
+		cd "${S}/contrib/slapd-modules/passwd/sha2" || die
+		einfo "Compiling contrib-module: pw-sha2"
+		"${lt}" --mode=compile --tag=CC \
+			"${CC}" \
+			-I"${BUILD_DIR}"/include \
+			-I../../../../include \
+			${CFLAGS} \
+			-o sha2.lo \
+			-c sha2.c || die "compiling pw-sha2 failed"
+		"${lt}" --mode=compile --tag=CC \
+			"${CC}" \
+			-I"${BUILD_DIR}"/include \
+			-I../../../../include \
+			${CFLAGS} \
+			-o slapd-sha2.lo \
+			-c slapd-sha2.c || die "compiling pw-sha2 failed"
+		einfo "Linking contrib-module: pw-sha2"
+		"${lt}" --mode=link --tag=CC \
+			"${CC}" -module \
+			${CFLAGS} \
+			${LDFLAGS} \
+			-rpath "${EPREFIX}"/usr/$(get_libdir)/openldap/openldap \
+			-o pw-sha2.la \
+			sha2.lo slapd-sha2.lo || die "linking pw-sha2 failed"
+
 		# We could build pw-radius if GNURadius would install radlib.h
 		cd "${S}/contrib/slapd-modules/passwd" || die
 		einfo "Compiling contrib-module: pw-netscape"
@@ -731,7 +757,7 @@ multilib_src_install() {
 
 		einfo "Installing contrib modules"
 		cd "${S}/contrib/slapd-modules" || die
-		for l in */*.la; do
+		for l in $(find -type f -name "*.la"); do
 			"${lt}" --mode=install cp ${l} \
 				"${ED}"usr/$(get_libdir)/openldap/openldap || \
 				die "installing ${l} failed"
@@ -739,7 +765,7 @@ multilib_src_install() {
 
 		dodoc "${FILESDIR}"/DB_CONFIG.fast.example
 		docinto contrib
-		doman */*.5
+		doman $(find -type f -name "*.5")
 		#newdoc acl/README*
 		newdoc addpartial/README addpartial-README
 		newdoc allop/README allop-README
@@ -749,7 +775,7 @@ multilib_src_install() {
 		newdoc passwd/README passwd-README
 		cd "${S}/contrib/slapi-plugins" || die
 		insinto /usr/$(get_libdir)/openldap/openldap
-		doins  */*.so
+		doins $(find -type f -name "*.so")
 		docinto contrib
 		newdoc addrdnvalues/README addrdnvalues-README
 
