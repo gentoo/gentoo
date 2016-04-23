@@ -12,7 +12,7 @@ inherit eutils java-pkg-2 java-ant-2 java-osgi
 
 MY_P="${P}-src"
 
-DESCRIPTION="The purpose of the library is to provide fundamental protocol access, not higher-level abstractions"
+DESCRIPTION="Java library emulating the client side of many basic Internet protocols"
 HOMEPAGE="http://commons.apache.org/net/"
 SRC_URI="mirror://apache/commons/net/source/${MY_P}.tar.gz"
 
