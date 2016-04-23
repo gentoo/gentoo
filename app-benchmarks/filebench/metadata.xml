@@ -4,17 +4,14 @@
 	<maintainer type="person">
 		<email>gokturk@binghamton.edu</email>
 		<name>Göktürk Yüksek</name>
-		<description>please assign bugs to</description>
 	</maintainer>
 	<maintainer type="person">
 		<email>bircoph@gentoo.org</email>
 		<name>Andrew Savchenko</name>
-		<description>please CC on bugs</description>
 	</maintainer>
 	<maintainer type="project">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
-		<description>please CC on bugs</description>
 	</maintainer>
 	<use>
 	  <flag name="auto-completion">
