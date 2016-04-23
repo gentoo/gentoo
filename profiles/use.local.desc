@@ -5844,7 +5844,7 @@ net-mail/mailutils:clients - Build client programs - frm maidag mail sieve messa
 net-mail/mailutils:kyotocabinet - Enable Kyoto Cabinet database support
 net-mail/mailutils:servers - Build server programs - imap4d pop3d comsatd
 net-mail/mailutils:tokyocabinet - Enable Tokyo Cabinet database support
-net-mail/mairix:gnus - Add support for the marks propagation feature in app-xemacs/gnus
+net-mail/mairix:gnus - Add support for the marks propagation feature in GNUS (provided by app-editors/emacs or app-xemacs/gnus for XEmacs users)
 net-mail/mpop:libsecret - Enable libsecret support to store login credentials
 net-mail/mu:emacs - Install the mu4e mail client.
 net-mail/mu:gui - Build and install the experimental gui 'mug'.
