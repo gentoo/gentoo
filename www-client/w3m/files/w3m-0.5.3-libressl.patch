@@ -1,0 +1,10 @@
+--- config.h.in.old	2014-07-18 13:37:59.000000000 +0200
++++ config.h.in	2014-07-18 13:38:20.000000000 +0200
+@@ -84,7 +84,6 @@
+ #undef INET6
+ #undef HAVE_SOCKLEN_T
+ #undef HAVE_OLD_SS_FAMILY
+-#define USE_EGD
+ #define ENABLE_REMOVE_TRAILINGSPACES
+ #undef MENU_THIN_FRAME
+ #undef USE_RAW_SCROLL
