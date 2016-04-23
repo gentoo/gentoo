@@ -126,6 +126,7 @@ QT5_GENTOO_CONFIG=(
 	xcb:xcb-xlib:
 	xcb:xinput2:
 	xcb::XKB
+	xcb:xrender
 )
 
 src_prepare() {
