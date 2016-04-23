@@ -35,6 +35,7 @@ DEPEND="${RDEPEND}
 S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
+	epatch "${FILESDIR}"/${PN}-2.5.0-sysmacros.patch #580924
 	epatch_user
 }
 
