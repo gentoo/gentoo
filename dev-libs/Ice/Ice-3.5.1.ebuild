@@ -23,7 +23,7 @@ SRC_URI="http://www.zeroc.com/download/Ice/$(get_version_component_range 1-2)/${
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~ia64 x86 ~x86-linux ~x64-macos"
-IUSE="doc examples +ncurses mono php php_namespaces python ruby test debug"
+IUSE="doc examples +ncurses mono php python ruby test debug"
 
 RDEPEND=">=dev-libs/expat-2.0.1
 	>=app-arch/bzip2-1.0.5
@@ -37,8 +37,7 @@ RDEPEND=">=dev-libs/expat-2.0.1
 	python? ( ${PYTHON_DEPS} )
 	ruby? ( $(ruby_implementation_depend ruby19) )
 	mono? ( dev-lang/mono )
-	php? ( >=dev-lang/php-5.3.1 )
-	php_namespaces? ( >=dev-lang/php-5.3 )
+	php? ( >=dev-lang/php-5.3.1 <dev-lang/php-7 )
 	!dev-python/IcePy
 	!dev-ruby/IceRuby"
 DEPEND="${RDEPEND}
@@ -186,9 +185,6 @@ src_compile() {
 			ln -s ${S}/Makefile
 
 			MAKE_RULES_PHP="PHP_HOME=/usr/$(get_libdir)/${slot}"
-			if use php_namespaces ; then
-				MAKE_RULES_PHP="${MAKE_RULES_PHP} USE_NAMESPACES=yes"
-			fi
 			emake -C php ${MAKE_RULES} ${MAKE_RULES_PHP} || die "emake php failed"
 		done
 	fi
