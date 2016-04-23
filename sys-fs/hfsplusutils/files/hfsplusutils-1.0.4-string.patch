@@ -1,5 +1,7 @@
---- libhfsp/src/unicode.c.bak	2007-01-08 17:14:44.000000000 -0500
-+++ libhfsp/src/unicode.c	2007-01-08 17:14:52.000000000 -0500
+needed for mem* funcs
+
+--- a/libhfsp/src/unicode.c
++++ b/libhfsp/src/unicode.c
 @@ -16,7 +16,7 @@
  #include <stdlib.h>
  #include <endian.h>
@@ -9,3 +11,23 @@
  
  #define __USE_GNU
      /* need wcsrtomb */
+--- a/libhfsp/src/partitions.c
++++ b/libhfsp/src/partitions.c
+@@ -31,6 +31,7 @@
+ #include "os.h"
+ #include "libhfsp.h"
+ 
++#include <string.h>
+ #include <stdlib.h>
+ 
+ /*
+--- a/libhfsp/src/record.c
++++ b/libhfsp/src/record.c
+@@ -32,6 +32,7 @@
+ 
+ #include <errno.h>
+ #include <stdio.h>
++#include <string.h>
+ 
+ #include "libhfsp.h"
+ #include "hfstime.h"

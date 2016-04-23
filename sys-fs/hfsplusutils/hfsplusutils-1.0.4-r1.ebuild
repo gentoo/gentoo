@@ -25,6 +25,7 @@ src_prepare() {
 	epatch "${FILESDIR}/${P}-errno.patch"
 	epatch "${FILESDIR}/${P}-gcc4.patch"
 	epatch "${FILESDIR}/${P}-string.patch"
+	epatch "${FILESDIR}/${P}-stdlib.patch"
 	# let's avoid the Makefile.cvs since isn't working for us
 	eautoreconf
 }
