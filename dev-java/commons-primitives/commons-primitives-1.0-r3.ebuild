@@ -14,20 +14,20 @@ SRC_URI="https://www.apache.org/dist/commons/primitives/source/${P}-src.tar.gz -
 
 LICENSE="Apache-1.1"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~x86-fbsd"
+KEYWORDS="amd64 x86 ~x86-fbsd"
 IUSE=""
 
 RDEPEND="
 	>=virtual/jre-1.6"
 
 DEPEND="
-	source? ( app-arch/zip )
-	>=virtual/jdk-1.6"
+	>=virtual/jdk-1.6
+	source? ( app-arch/zip )"
 
 S="${WORKDIR}/${P}"
 
 JAVA_SRC_DIR="src"
 
 java_prepare() {
-	rm -rf src/test || die
+	rm -rv src/test || die
 }
