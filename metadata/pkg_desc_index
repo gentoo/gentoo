@@ -3788,7 +3788,7 @@ dev-java/commons-daemon 1.0.7 1.0.9 1.0.15: Tools to allow Java programs to run 
 dev-java/commons-dbcp 2.1: Jakarta component providing database connection pooling API
 dev-java/commons-dbutils 1.6: A small set of classes designed to make working with JDBC easier
 dev-java/commons-digester 1.8.1-r2 2.1-r1 3.2-r2: Reads XML configuration files to provide initialization of various Java objects within the system
-dev-java/commons-discovery 0.4: Commons Discovery: Service Discovery component
+dev-java/commons-discovery 0.4 0.5: Commons Discovery: Service Discovery component
 dev-java/commons-el 1.0-r3: EL is the JSP 2.0 Expression Language Interpreter from Apache
 dev-java/commons-email 1.4: Commons Email aims to provide an API for sending email.
 dev-java/commons-fileupload 1.3: Add robust, high-performance, file upload capability to your servlets and web applications
@@ -3803,9 +3803,9 @@ dev-java/commons-lang 2.0-r2 2.0-r3 2.6-r1 3.1 3.3.2: Commons components to mani
 dev-java/commons-launcher 1.1-r1 1.1-r2: Commons-launcher eliminates the need for a batch or shell script to launch a Java class
 dev-java/commons-logging 1.2: The Jakarta-Commons Logging package is an ultra-thin bridge between different logging libraries
 dev-java/commons-math 2.1-r1 3.2: Lightweight, self-contained mathematics and statistics components
-dev-java/commons-net 1.4.1-r1 3.2: The purpose of the library is to provide fundamental protocol access, not higher-level abstractions
+dev-java/commons-net 3.2: Java library emulating the client side of many basic Internet protocols
 dev-java/commons-pool 1.6 2.2: Provides general purpose object pooling API
-dev-java/commons-primitives 1.0-r2 1.0-r3: The Jakarta-Commons Primitives Component
+dev-java/commons-primitives 1.0-r3: The Jakarta-Commons Primitives Component
 dev-java/commons-validator 1.4.0 1.4.1: Commons component to validate user input, or data input
 dev-java/commons-vfs 1.0 2.0-r1: A single API for accessing various different file systems
 dev-java/constantine 0.7-r1: Provides Java values for common platform C constants
@@ -8792,7 +8792,7 @@ dev-ruby/exifr 1.2.4: A library to read EXIF info from JPEG and TIFF images
 dev-ruby/expression_parser 0.9.0_p20130518: A math parser
 dev-ruby/extlib 0.9.16-r1: Support library for DataMapper and Merb
 dev-ruby/facets 2.9.3: Facets is the premier collection of extension methods for Ruby
-dev-ruby/facter 2.4.1 2.4.1-r1 2.4.3 2.4.4 2.4.6 3.0.2-r1 3.1.2 3.1.3 3.1.4-r1 3.1.5: A cross-platform ruby library for retrieving facts from operating systems
+dev-ruby/facter 2.4.1 2.4.1-r1 2.4.6 3.1.4-r1 3.1.6: A cross-platform ruby library for retrieving facts from operating systems
 dev-ruby/factory_girl 4.5.0 4.7.0: factory_girl provides a framework and DSL for defining and using factories
 dev-ruby/fakefs 0.6.0 0.6.0-r1 0.7.0 0.8.0 0.8.1: A fake filesystem. Use it in your tests
 dev-ruby/fakeweb 1.3.0-r1 1.3.0-r2: Helper for faking web requests in Ruby
@@ -14761,7 +14761,7 @@ net-misc/quickshare 1.0: A simple HTTP server with a GUI which allows for easy s
 net-misc/r8168 8.040.00 8.041.00-r1: r8168 driver for Realtek 8111/8168 PCI-E NICs
 net-misc/rabbitmq-server 3.2.4 3.3.4 3.5.4 3.5.7 3.6.0 3.6.1: RabbitMQ is a high-performance AMQP-compliant message broker written in Erlang
 net-misc/raccess 0.7: Remote Access Session is an systems security analyzer
-net-misc/radvd 1.9.8 1.15 2.10 2.11 2.11-r1 2.12: Linux IPv6 Router Advertisement Daemon
+net-misc/radvd 1.9.8 2.12 2.13: Linux IPv6 Router Advertisement Daemon
 net-misc/rancid 2.3.8: Really Awesome New Cisco confIg Differ
 net-misc/rancid-git 2.3.8: Really Awesome New Cisco confIg Differ with git extensions and support for colorized emails!
 net-misc/rdate 1.4-r3 1.4-r4: use TCP or UDP to retrieve the current time of another machine
