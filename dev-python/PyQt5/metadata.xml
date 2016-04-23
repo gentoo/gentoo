@@ -35,6 +35,7 @@
 			<name>Phil Thompson</name>
 		</maintainer>
 		<bugs-to>mailto:pyqt@riverbankcomputing.com</bugs-to>
+		<doc>http://pyqt.sourceforge.net/Docs/PyQt5/</doc>
 		<remote-id type="pypi">PyQt5</remote-id>
 		<remote-id type="sourceforge">pyqt</remote-id>
 	</upstream>

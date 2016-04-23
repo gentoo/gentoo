@@ -15,6 +15,7 @@
 			<name>Phil Thompson</name>
 		</maintainer>
 		<bugs-to>mailto:qscintilla@riverbankcomputing.com</bugs-to>
+		<doc>http://pyqt.sourceforge.net/Docs/QScintilla2/</doc>
 		<remote-id type="sourceforge">pyqt</remote-id>
 	</upstream>
 </pkgmetadata>
