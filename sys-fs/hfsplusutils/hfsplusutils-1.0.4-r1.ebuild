@@ -26,8 +26,11 @@ src_prepare() {
 	epatch "${FILESDIR}/${P}-gcc4.patch"
 	epatch "${FILESDIR}/${P}-string.patch"
 	epatch "${FILESDIR}/${P}-stdlib.patch"
+	epatch "${FILESDIR}/${P}-cflags.patch"
 	# let's avoid the Makefile.cvs since isn't working for us
 	eautoreconf
+
+	append-flags -fgnu89-inline
 }
 
 src_install() {
