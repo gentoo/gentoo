@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
+EAPI="4"
 WANT_AUTOMAKE="none"
 WANT_LIBTOOL="none"
 
@@ -18,40 +18,34 @@ SRC_URI="http://www.python.org/ftp/python/${PV}/${MY_P}.tar.xz
 	mirror://gentoo/python-gentoo-patches-${PATCHSET_VERSION}.tar.xz"
 
 LICENSE="PSF-2"
-SLOT="3.3/3.3m"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
-IUSE="build doc elibc_uclibc examples gdbm hardened ipv6 libressl +ncurses +readline sqlite +ssl +threads tk wininst +xml"
+SLOT="3.3"
+KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
+IUSE="build doc elibc_uclibc examples gdbm hardened ipv6 +ncurses +readline sqlite +ssl +threads tk wininst +xml"
 
 # Do not add a dependency on dev-lang/python to this ebuild.
 # If you need to apply a patch which requires python for bootstrapping, please
 # run the bootstrap code on your dev box and include the results in the
 # patchset. See bug 447752.
 
-PYVER=${SLOT%/*}
-
-RDEPEND="app-arch/bzip2:0=
-	app-arch/xz-utils:0=
-	>=sys-libs/zlib-1.1.3:0=
+RDEPEND="app-arch/bzip2
+	app-arch/xz-utils
+	>=sys-libs/zlib-1.1.3
 	virtual/libffi
 	virtual/libintl
 	!build? (
-		gdbm? ( sys-libs/gdbm:0=[berkdb] )
+		gdbm? ( sys-libs/gdbm[berkdb] )
 		ncurses? (
-			>=sys-libs/ncurses-5.2:0=
-			readline? ( >=sys-libs/readline-4.1:0= )
+			>=sys-libs/ncurses-5.2:0
+			readline? ( >=sys-libs/readline-4.1 )
 		)
-		sqlite? ( >=dev-db/sqlite-3.3.8:3= )
-		ssl? (
-			!libressl? ( dev-libs/openssl:0= )
-			libressl? ( dev-libs/libressl:= )
-		)
+		sqlite? ( >=dev-db/sqlite-3.3.8:3 )
+		ssl? ( dev-libs/openssl )
 		tk? (
-			>=dev-lang/tcl-8.0:0=
-			>=dev-lang/tk-8.0:0=
-			dev-tcltk/blt:0=
+			>=dev-lang/tk-8.0
+			dev-tcltk/blt
 			dev-tcltk/tix
 		)
-		xml? ( >=dev-libs/expat-2.1:0= )
+		xml? ( >=dev-libs/expat-2.1 )
 	)
 	!!<sys-apps/sandbox-2.6-r1"
 DEPEND="${RDEPEND}
@@ -59,8 +53,8 @@ DEPEND="${RDEPEND}
 	>=sys-devel/autoconf-2.65
 	!sys-devel/gcc[libffi]"
 RDEPEND+=" !build? ( app-misc/mime-types )
-	doc? ( dev-python/python-docs:${PYVER} )"
-PDEPEND=">=app-eselect/eselect-python-20140125-r1
+	doc? ( dev-python/python-docs:${SLOT} )"
+PDEPEND="app-eselect/eselect-python
 	app-admin/python-updater"
 
 S="${WORKDIR}/${MY_P}"
@@ -76,9 +70,9 @@ src_prepare() {
 		local EPATCH_EXCLUDE="*_regenerate_platform-specific_modules.patch"
 	fi
 
-	EPATCH_SUFFIX="patch" epatch "${WORKDIR}/patches"
+	EPATCH_SUFFIX="patch" EPATCH_EXCLUDE="61_all_process_data.patch" \
+		epatch "${WORKDIR}/patches"
 	epatch "${FILESDIR}/${PN}-3.3.5-ncurses-pkg-config.patch"
-	epatch "${FILESDIR}/${PN}-3.4-gcc-5.patch" #547626
 
 	sed -i -e "s:@@GENTOO_LIBDIR@@:$(get_libdir):g" \
 		Lib/distutils/command/install.py \
@@ -91,10 +85,11 @@ src_prepare() {
 		Modules/getpath.c \
 		setup.py || die "sed failed to replace @@GENTOO_LIBDIR@@"
 
+	# Disable ABI flags.
+	sed -e "s/ABIFLAGS=\"\${ABIFLAGS}.*\"/:/" -i configure.ac || die "sed failed"
+
 	# bug #514686
 	epatch "${FILESDIR}/${PN}-3.3-CVE-2014-4616.patch"
-
-	epatch "${FILESDIR}"/${PN}-3.3-libressl.patch
 
 	epatch_user
 
@@ -229,7 +224,7 @@ src_test() {
 	done
 
 	elog "If you would like to run them, you may:"
-	elog "cd '${EPREFIX}/usr/$(get_libdir)/python${PYVER}/test'"
+	elog "cd '${EPREFIX}/usr/$(get_libdir)/python${SLOT}/test'"
 	elog "and run the tests separately."
 
 	if [[ "${result}" -ne 0 ]]; then
@@ -238,7 +233,7 @@ src_test() {
 }
 
 src_install() {
-	local libdir=${ED}/usr/$(get_libdir)/python${PYVER}
+	local libdir=${ED}/usr/$(get_libdir)/python${SLOT}
 
 	cd "${BUILD_DIR}" || die
 
@@ -247,29 +242,20 @@ src_install() {
 	sed \
 		-e "s/\(CONFIGURE_LDFLAGS=\).*/\1/" \
 		-e "s/\(PY_LDFLAGS=\).*/\1/" \
-		-i "${libdir}/config-${PYVER}"*/Makefile || die "sed failed"
+		-i "${libdir}/config-${SLOT}/Makefile" || die "sed failed"
+
+	# Backwards compat with Gentoo divergence.
+	dosym python${SLOT}-config /usr/bin/python-config-${SLOT}
 
 	# Fix collisions between different slots of Python.
 	rm -f "${ED}usr/$(get_libdir)/libpython3.so"
 
-	# Cheap hack to get version with ABIFLAGS
-	local abiver=$(cd "${ED}usr/include"; echo python*)
-	if [[ ${abiver} != python${PYVER} ]]; then
-		# Replace python3.X with a symlink to python3.Xm
-		rm "${ED}usr/bin/python${PYVER}" || die
-		dosym "${abiver}" "/usr/bin/python${PYVER}"
-		# Create python3.X-config symlink
-		dosym "${abiver}-config" "/usr/bin/python${PYVER}-config"
-		# Create python-3.5m.pc symlink
-		dosym "python-${PYVER}.pc" "/usr/$(get_libdir)/pkgconfig/${abiver/${PYVER}/-${PYVER}}.pc"
-	fi
-
 	if use build; then
-		rm -fr "${ED}usr/bin/idle${PYVER}" "${libdir}/"{idlelib,sqlite3,test,tkinter}
+		rm -fr "${ED}usr/bin/idle${SLOT}" "${libdir}/"{idlelib,sqlite3,test,tkinter}
 	else
 		use elibc_uclibc && rm -fr "${libdir}/test"
 		use sqlite || rm -fr "${libdir}/"{sqlite3,test/test_sqlite*}
-		use tk || rm -fr "${ED}usr/bin/idle${PYVER}" "${libdir}/"{idlelib,tkinter,test/test_tk*}
+		use tk || rm -fr "${ED}usr/bin/idle${SLOT}" "${libdir}/"{idlelib,tkinter,test/test_tk*}
 	fi
 
 	use threads || rm -fr "${libdir}/multiprocessing"
@@ -287,15 +273,15 @@ src_install() {
 		emake --no-print-directory -s -f - 2>/dev/null)
 	newins "${S}"/Tools/gdb/libpython.py "${libname}"-gdb.py
 
-	newconfd "${FILESDIR}/pydoc.conf" pydoc-${PYVER}
-	newinitd "${FILESDIR}/pydoc.init" pydoc-${PYVER}
+	newconfd "${FILESDIR}/pydoc.conf" pydoc-${SLOT}
+	newinitd "${FILESDIR}/pydoc.init" pydoc-${SLOT}
 	sed \
-		-e "s:@PYDOC_PORT_VARIABLE@:PYDOC${PYVER/./_}_PORT:" \
-		-e "s:@PYDOC@:pydoc${PYVER}:" \
-		-i "${ED}etc/conf.d/pydoc-${PYVER}" "${ED}etc/init.d/pydoc-${PYVER}" || die "sed failed"
+		-e "s:@PYDOC_PORT_VARIABLE@:PYDOC${SLOT/./_}_PORT:" \
+		-e "s:@PYDOC@:pydoc${SLOT}:" \
+		-i "${ED}etc/conf.d/pydoc-${SLOT}" "${ED}etc/init.d/pydoc-${SLOT}" || die "sed failed"
 
 	# for python-exec
-	local vars=( EPYTHON PYTHON_SITEDIR PYTHON_SCRIPTDIR )
+	local vars=( EPYTHON PYTHON_SITEDIR )
 
 	# if not using a cross-compiler, use the fresh binary
 	if ! tc-is-cross-compiler; then
@@ -305,44 +291,13 @@ src_install() {
 		vars=( PYTHON "${vars[@]}" )
 	fi
 
-	python_export "python${PYVER}" "${vars[@]}"
+	python_export "python${SLOT}" "${vars[@]}"
 	echo "EPYTHON='${EPYTHON}'" > epython.py || die
 	python_domodule epython.py
-
-	# python-exec wrapping support
-	local pymajor=${PYVER%.*}
-	mkdir -p "${D}${PYTHON_SCRIPTDIR}" || die
-	# python and pythonX
-	ln -s "../../../bin/${abiver}" \
-		"${D}${PYTHON_SCRIPTDIR}/python${pymajor}" || die
-	ln -s "python${pymajor}" \
-		"${D}${PYTHON_SCRIPTDIR}/python" || die
-	# python-config and pythonX-config
-	# note: we need to create a wrapper rather than symlinking it due
-	# to some random dirname(argv[0]) magic performed by python-config
-	cat > "${D}${PYTHON_SCRIPTDIR}/python${pymajor}-config" <<-EOF || die
-		#!/bin/sh
-		exec "${abiver}-config" "\${@}"
-	EOF
-	chmod +x "${D}${PYTHON_SCRIPTDIR}/python${pymajor}-config" || die
-	ln -s "python${pymajor}-config" \
-		"${D}${PYTHON_SCRIPTDIR}/python-config" || die
-	# 2to3, pydoc, pyvenv
-	ln -s "../../../bin/2to3-${PYVER}" \
-		"${D}${PYTHON_SCRIPTDIR}/2to3" || die
-	ln -s "../../../bin/pydoc${PYVER}" \
-		"${D}${PYTHON_SCRIPTDIR}/pydoc" || die
-	ln -s "../../../bin/pyvenv-${PYVER}" \
-		"${D}${PYTHON_SCRIPTDIR}/pyvenv" || die
-	# idle
-	if use tk; then
-		ln -s "../../../bin/idle${PYVER}" \
-			"${D}${PYTHON_SCRIPTDIR}/idle" || die
-	fi
 }
 
 pkg_preinst() {
-	if has_version "<${CATEGORY}/${PN}-${PYVER}" && ! has_version ">=${CATEGORY}/${PN}-${PYVER}_alpha"; then
+	if has_version "<${CATEGORY}/${PN}-${SLOT}" && ! has_version ">=${CATEGORY}/${PN}-${SLOT}_alpha"; then
 		python_updater_warning="1"
 	fi
 }
