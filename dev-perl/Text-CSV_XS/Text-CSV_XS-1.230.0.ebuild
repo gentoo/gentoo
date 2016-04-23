@@ -1,12 +1,13 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-MODULE_AUTHOR=HMBRAND
-MODULE_A_EXT=tgz
-MODULE_VERSION=1.16
+DIST_AUTHOR=HMBRAND
+DIST_A_EXT=tgz
+DIST_VERSION=1.23
+DIST_EXAMPLES=("examples/*")
 inherit perl-module
 
 DESCRIPTION="Comma-separated values manipulation routines"
@@ -22,9 +23,9 @@ DEPEND="${RDEPEND}
 	virtual/perl-ExtUtils-MakeMaker
 	test? (
 		virtual/perl-Test-Simple
-		dev-perl/Test-Pod
-		dev-perl/Test-Pod-Coverage
 	)
 "
-
-SRC_TEST="do parallel"
+src_test() {
+	perl_rm_files "t/00_pod.t" "t/01_pod.t"
+	perl-module_src_test
+}

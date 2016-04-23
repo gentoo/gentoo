@@ -1,12 +1,12 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-MODULE_AUTHOR=MUIR
-MODULE_SECTION=modules
-MODULE_VERSION=2013.0912
+DIST_AUTHOR=MUIR
+DIST_SECTION=modules
+DIST_VERSION=2015.103
 inherit perl-module
 
 DESCRIPTION="A Date/Time Parsing Perl Module"
@@ -14,6 +14,10 @@ DESCRIPTION="A Date/Time Parsing Perl Module"
 LICENSE="Time-modules public-domain"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
-IUSE=""
+IUSE="test"
 
-SRC_TEST="do"
+RDEPEND=""
+DEPEND="
+	virtual/perl-ExtUtils-MakeMaker
+	test? ( virtual/perl-Time-Piece )
+"

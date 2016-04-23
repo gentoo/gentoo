@@ -8,7 +8,7 @@
 	<use>
 		<flag name="exceptions">Add support for exceptions - like catching them
 			inside the event loop (recommended by upstream)</flag>
-		<flag name="gles2">Enable EGL/GLES2 integration</flag>
+		<flag name="gles2">Use GLES 2.0 or later instead of full OpenGL</flag>
 		<flag name="gstreamer">Enable audio support via <pkg>media-libs/gstreamer</pkg> using SLOT 1.0</flag>
 		<flag name="gstreamer010">Enable audio support via <pkg>media-libs/gstreamer</pkg> using SLOT 0.10</flag>
 		<flag name="qml">Build QML/QtQuick bindings and imports</flag>
@@ -18,4 +18,9 @@
 		<bugs-to>https://bugreports.qt.io/</bugs-to>
 		<doc>http://doc.qt.io/</doc>
 	</upstream>
+	<slots>
+		<subslots>
+			Must only be used by packages that are known to use private parts of the Qt API.
+		</subslots>
+	</slots>
 </pkgmetadata>

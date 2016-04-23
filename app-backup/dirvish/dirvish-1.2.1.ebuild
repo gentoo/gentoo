@@ -12,7 +12,7 @@ KEYWORDS="amd64 ppc x86"
 IUSE=""
 
 DEPEND="app-arch/tar"
-RDEPEND="dev-perl/Time-modules
+RDEPEND="dev-perl/Time-ParseDate
 	dev-perl/Time-Period
 	>=net-misc/rsync-2.5.7"
 
