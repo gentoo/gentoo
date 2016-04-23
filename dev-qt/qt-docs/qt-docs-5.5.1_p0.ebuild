@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -10,11 +10,11 @@ MY_PV=$(get_version_component_range 1)$(get_version_component_range 2)
 
 DESCRIPTION="Documentation for Qt5, for use with Qt Creator and other tools"
 HOMEPAGE="https://www.qt.io/"
-SRC_URI="http://download.qt.io/online/qtsdkrepository/linux_x64/desktop/qt5_${MY_PV}_src_doc_examples/qt.${MY_PV}.doc/${PV/_p/-}qt5_docs.7z"
+SRC_URI="https://download.qt.io/online/qtsdkrepository/linux_x64/desktop/qt5_${MY_PV}_src_doc_examples/qt.${MY_PV}.doc/${PV/_p/-}qt5_docs.7z"
 
 LICENSE="FDL-1.3"
 SLOT="5"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 DEPEND="app-arch/p7zip"
 
