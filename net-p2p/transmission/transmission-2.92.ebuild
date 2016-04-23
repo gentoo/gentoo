@@ -149,7 +149,12 @@ pkg_postinst() {
 	gnome2_icon_cache_update
 
 	enewgroup transmission
-	enewuser transmission -1 -1 -1 transmission
+	enewuser transmission -1 -1 /var/lib/transmission transmission
+
+	if [[ ! -e "${ROOT%/}"/var/lib/transmission ]]; then
+		mkdir -p "${ROOT%/}"/var/lib/transmission
+		chown transmission:transmission "${ROOT%/}"/var/lib/transmission
+	fi
 
 	elog "If you use transmission-daemon, please, set 'rpc-username' and"
 	elog "'rpc-password' (in plain text, transmission-daemon will hash it on"
