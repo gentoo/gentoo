@@ -9108,7 +9108,7 @@ dev-ruby/ruby-progressbar 1.4.2 1.4.2-r1 1.7.5: A Text Progress Bar Library for 
 dev-ruby/ruby-rc4 0.1.5-r2: A pure Ruby implementation of the Rc4 algorithm
 dev-ruby/ruby-romkan 0.4-r6: A Romaji <-> Kana conversion library for Ruby
 dev-ruby/ruby-rsvg 2.2.3 2.2.3-r1 2.2.5 3.0.7: Ruby bindings for librsvg
-dev-ruby/ruby-sdl 2.1.2-r1 2.1.2-r2: Ruby/SDL: Ruby bindings for SDL
+dev-ruby/ruby-sdl 2.1.2-r2: Ruby/SDL: Ruby bindings for SDL
 dev-ruby/ruby-shadow 2.4.1 2.5.0: ruby shadow bindings
 dev-ruby/ruby-shout 2.2.1-r2: A Ruby interface to libshout2
 dev-ruby/ruby-tcpwrap 0.6-r3: A TCP wrappers library for Ruby
