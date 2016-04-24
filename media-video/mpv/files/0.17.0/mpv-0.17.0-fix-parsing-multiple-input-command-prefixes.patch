@@ -1,0 +1,19 @@
+commit 1f1117d0dd61e47d1c64f567be1ca80ac968bd22
+Author: Philip Sequeira <phsequei@gmail.com>
+Date:   Sun Apr 17 02:09:54 2016 -0400
+
+input: fix parsing multiple input command prefixes
+---
+
+diff --git a/input/cmd_parse.c b/input/cmd_parse.c
+index c2c3270..01e4bb6 100644
+--- a/input/cmd_parse.c
++++ b/input/cmd_parse.c
+@@ -273,7 +273,6 @@ static struct mp_cmd *parse_cmd_str(struct mp_log *log, void *tmp,
+             break;
+         if (pctx_read_token(ctx, &cur_token) < 0)
+             goto error;
+-        break;
+     }
+
+     if (!find_cmd(ctx->log, cmd, cur_token))
