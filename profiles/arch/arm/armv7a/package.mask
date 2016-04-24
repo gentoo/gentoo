@@ -3,14 +3,15 @@
 # $Id$
 
 # James Le Cuirot <chewi@gentoo.org> (09 Jan 2016)
-# Unmask against the wider arm mask.
--virtual/jdk:1.8
--virtual/jre:1.8
-
-# James Le Cuirot <chewi@gentoo.org> (09 Jan 2016)
 # This is built for armv6 so unmask against the wider arm mask.
 -dev-java/oracle-jdk-bin
 -dev-java/oracle-jre-bin
+
+# James Le Cuirot <chewi@gentoo.org> (24 Apr 2016)
+# The ARM32 JIT code is broken as of 7.2.6.6. Without this, Java 7 is
+# no faster than Java 8. Earlier versions have vulnerabilities so
+# either switch to icedtea-bin:8 or build icedtea:7 from source.
+dev-java/icedtea-bin:7
 
 # James Le Cuirot <chewi@gentoo.org> (24 May 2015)
 # This is built for armv7a so unmask against the wider arm mask.

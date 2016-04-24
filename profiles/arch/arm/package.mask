@@ -3,12 +3,6 @@
 # $Id$
 
 # James Le Cuirot <chewi@gentoo.org> (09 Jan 2016)
-# There are no providers for Java 8 on pre-armv6. icedtea 3 may work
-# but we don't have it in the tree yet.
-virtual/jdk:1.8
-virtual/jre:1.8
-
-# James Le Cuirot <chewi@gentoo.org> (09 Jan 2016)
 # This is built for armv6 and will not work on earlier generations.
 dev-java/oracle-jdk-bin
 dev-java/oracle-jre-bin

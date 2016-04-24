@@ -3,10 +3,6 @@
 # $Id$
 # Build written by Andrew John Hughes (gnu_andrew@member.fsf.org)
 
-# *********************************************************
-# * IF YOU CHANGE THIS EBUILD, CHANGE ICEDTEA-6.* AS WELL *
-# *********************************************************
-
 EAPI="5"
 SLOT="7"
 
@@ -16,13 +12,13 @@ ICEDTEA_VER=$(get_version_component_range 2-4)
 ICEDTEA_BRANCH=$(get_version_component_range 2-3)
 ICEDTEA_PKG=icedtea-${ICEDTEA_VER}
 ICEDTEA_PRE=$(get_version_component_range _)
-CORBA_TARBALL="389551542e13.tar.bz2"
-JAXP_TARBALL="8a56658cb829.tar.bz2"
-JAXWS_TARBALL="9c049d7f5adc.tar.bz2"
-JDK_TARBALL="e727fe32654c.tar.bz2"
-LANGTOOLS_TARBALL="f6593c32cc46.tar.bz2"
-OPENJDK_TARBALL="8e728c41fec5.tar.bz2"
-HOTSPOT_TARBALL="04d7046d2d41.tar.bz2"
+CORBA_TARBALL="ca3e3c4c5a61.tar.bz2"
+JAXP_TARBALL="683427778edf.tar.bz2"
+JAXWS_TARBALL="63f7bf7ed2d4.tar.bz2"
+JDK_TARBALL="55c38c1ace75.tar.bz2"
+LANGTOOLS_TARBALL="e42dd50480d3.tar.bz2"
+OPENJDK_TARBALL="882cfee70fe8.tar.bz2"
+HOTSPOT_TARBALL="3022a3d80efd.tar.bz2"
 
 CACAO_TARBALL="cacao-c182f119eaad.tar.gz"
 JAMVM_TARBALL="jamvm-ec18fb9e49e62dce16c5094ef1527eed619463aa.tar.gz"
@@ -230,8 +226,9 @@ src_configure() {
 	fi
 
 	# Are we on a architecture with a HotSpot port?
-	# In-tree JIT ports are available for amd64, arm, arm64, ppc64 (be&le), SPARC and x86.
-	if { use amd64 || use arm || use arm64 || use ppc64 || use sparc || use x86; }; then
+	# In-tree JIT ports are available for amd64, arm64, ppc64 (be&le), SPARC and x86.
+	# arm is broken as of 7.2.6.6.
+	if { use amd64 || use arm64 || use ppc64 || use sparc || use x86; }; then
 		hotspot_port="yes"
 	fi
 
@@ -261,10 +258,6 @@ src_configure() {
 			ewarn 'If so, please rebuild with USE="-cacao"'
 		fi
 		cacao_config="--enable-cacao"
-
-		# http://icedtea.classpath.org/bugzilla/show_bug.cgi?id=2612
-		export DISTRIBUTION_PATCHES="${SLOT}-cacao-pr-157.patch"
-		ln -snf "${FILESDIR}"/${SLOT}-cacao-pr-157.patch . || die
 	fi
 
 	# Turn on Zero if needed (non-HS/CACAO archs) or requested
