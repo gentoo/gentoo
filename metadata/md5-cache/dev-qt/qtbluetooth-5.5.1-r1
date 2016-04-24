@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install postinst postrm prepare test unpack
-DEPEND=~dev-qt/qtconcurrent-5.5.1 ~dev-qt/qtcore-5.5.1 ~dev-qt/qtdbus-5.5.1 >=net-wireless/bluez-5 qml? ( ~dev-qt/qtdeclarative-5.5.1 ) ~dev-qt/qtnetwork-5.5.1 virtual/pkgconfig dev-lang/perl virtual/pkgconfig test? ( ~dev-qt/qttest-5.5.1 )
+DEPEND=~dev-qt/qtconcurrent-5.5.1 ~dev-qt/qtcore-5.5.1 ~dev-qt/qtdbus-5.5.1 >=net-wireless/bluez-5 qml? ( ~dev-qt/qtdeclarative-5.5.1 ) ~dev-qt/qtnetwork-5.5.1 dev-lang/perl virtual/pkgconfig test? ( ~dev-qt/qttest-5.5.1 )
 DESCRIPTION=Bluetooth support library for the Qt5 framework
 EAPI=5
 HOMEPAGE=https://www.qt.io/
@@ -12,4 +12,4 @@ SLOT=5
 SRC_URI=https://download.qt.io/official_releases/qt/5.5/5.5.1/submodules/qtconnectivity-opensource-src-5.5.1.tar.xz
 _eclass_exported_funcs=pkg_postrm:qt5-build pkg_postinst:qt5-build src_unpack:qt5-build src_prepare:- src_configure:qt5-build src_compile:qt5-build src_test:qt5-build src_install:qt5-build
 _eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	flag-o-matic	d270fa247153df66074f795fa42dba3e	multilib	23ae8c186171e6476af098d2a50d0ee0	qt5-build	abd141247f04f3928a04a78554558f65	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	virtualx	86c9305a59b3e0459e7fbef3a5f30b96
-_md5_=7994942b2c4c7bbf73b81f72ab1cc217
+_md5_=b53167322a2185db8fe58873e84460f7
