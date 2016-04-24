@@ -127,8 +127,8 @@ RDEPEND="${COMMON_DEPEND}
 "
 
 PATCHES=(
-	"${FILESDIR}/${P}-fix-seeking-without-first-index-entry.patch"
-	"${FILESDIR}/${P}-add-missing-math-include.patch"
+	"${FILESDIR}/${PV}/${P}-fix-seeking-without-first-index-entry.patch"
+	"${FILESDIR}/${PV}/${P}-add-missing-math-include.patch"
 )
 
 pkg_pretend() {
