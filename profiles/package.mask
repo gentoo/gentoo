@@ -286,10 +286,6 @@ dev-vcs/statcvs
 # Bug: https://bugs.gentoo.org/577158
 =sys-apps/systemd-229-r100
 
-# Alexandre Rostovtsev <tetromino@gentoo.org> (10 Mar 2016)
-# Masking until we figure out what to do about bug #576930
-=gnome-base/gnome-extra-apps-3.18.0-r2
-
 # Ian Stakenvicius <axs@gentoo.org> (06 Mar 2016)
 # Mask old versions of thunderbird as they are no longer supported,
 # but we keep them in the repo for now in case there is a need
