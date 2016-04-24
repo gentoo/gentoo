@@ -4078,7 +4078,7 @@ dev-java/jtds 1.3.1: jTDS - SQL Server and Sybase JDBC driver
 dev-java/jtidy 1.0: Java port of HTML Tidy, an HTML syntax checker and pretty printer
 dev-java/jtreemap 1.1.0-r1: Java library for treemapping data
 dev-java/juel 2.1.0-r2: Implementation of the Unified Expression Language (EL) - JSR-245
-dev-java/jump 0.5 0.5-r1: Java-based extensible high-precision math library
+dev-java/jump 0.5-r1: Java-based extensible high-precision math library
 dev-java/jung 1.7.6 1.7.6-r1: The Java Universal Network/Graph Framework
 dev-java/junit 3.8.2-r1 4.12-r1: Simple framework to write repeatable tests
 dev-java/junit-addons 1.4-r1: JUnit-addons is a collection of helper classes for JUnit
@@ -17776,7 +17776,7 @@ www-plugins/adobe-flash 11.2.202.616: Adobe Flash Player
 www-plugins/chrome-binary-plugins 50.0.2661.75_beta 50.0.2661.86 51.0.2704.19_alpha: Binary plugins from Google Chrome for use in Chromium
 www-plugins/freshplayerplugin 0.3.1-r2 0.3.2 0.3.3 0.3.3-r1 0.3.3-r2 0.3.4 0.3.4-r1: PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers
 www-plugins/gecko-mediaplayer 1.0.8 1.0.9: A browser plugin that uses GNOME MPlayer
-www-plugins/gnash 0.8.10_p20131019 0.8.10_p20150316: GNU Flash movie player that supports many SWF v7,8,9 features
+www-plugins/gnash 0.8.10_p20131019 0.8.10_p20150316 0.8.10_p20160329: GNU Flash movie player that supports many SWF v7,8,9 features
 www-plugins/google-talkplugin 5.4.2.0 5.38.6.0 5.40.2.0 5.41.0.0 9999: Video chat browser plug-in for Google Talk
 www-plugins/kaffeine-mozilla-plugin 0.2-r1: The Kaffeine Mozilla starter plugin
 www-plugins/kpartsplugin 20120723-r2: Plugin using KDE's KParts technology to embed file viewers into non-KDE browsers
