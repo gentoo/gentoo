@@ -9,16 +9,17 @@ inherit autotools multilib-minimal
 MY_PV=${PV/_/-}
 MY_P=${PN}-${MY_PV}
 
-DESCRIPTION="code generator and runtime libraries to use Protocol Buffers (protobuf) from pure C"
+DESCRIPTION="Protocol Buffers implementation in C"
 HOMEPAGE="https://github.com/protobuf-c/protobuf-c/"
 SRC_URI="https://github.com/${PN}/${PN}/releases/download/v${MY_PV}/${MY_P}.tar.gz"
 
 LICENSE="BSD-2"
-SLOT="0"
+# Subslot == SONAME version
+SLOT="0/1.0.0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
 IUSE="static-libs test"
 
-RDEPEND=">=dev-libs/protobuf-2.6.0[${MULTILIB_USEDEP}]"
+RDEPEND=">=dev-libs/protobuf-2.6.0:0=[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}
 	test? ( ${AUTOTOOLS_DEPEND} )
 	virtual/pkgconfig[${MULTILIB_USEDEP}]"
