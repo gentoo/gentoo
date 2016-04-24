@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -72,6 +72,17 @@ src_prepare() {
 		x86)	loaderarch="efi32" ;;
 		*)	ewarn "Unsupported architecture, building installers only." ;;
 	esac
+
+	# building with ld.gold causes problems, bug #563364
+	if tc-ld-is-gold; then
+		ewarn "Building syslinux with the gold linker may cause problems, see bug #563364"
+		if [[ -z "${I_KNOW_WHAT_I_AM_DOING}" ]]; then
+			tc-ld-disable-gold
+			ewarn "set I_KNOW_WHAT_I_AM_DOING=1 to override this."
+		else
+			ewarn "Continuing anyway as requested."
+		fi
+	fi
 }
 
 src_compile() {

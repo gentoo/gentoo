@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -8,7 +8,15 @@ inherit eutils toolchain-funcs
 
 DESCRIPTION="SYSLINUX, PXELINUX, ISOLINUX, EXTLINUX and MEMDISK bootloaders"
 HOMEPAGE="http://www.syslinux.org/"
-SRC_URI="mirror://kernel/linux/utils/boot/syslinux/${P/_/-}.tar.xz"
+# Final releases in 6.xx/$PV.tar.* (literal "xx")
+# Testing releases in Testing/$PV/$PV.tar.*
+SRC_URI_DIR=${PV:0:1}.xx
+SRC_URI_TESTING=Testing/${PV:0:4}
+[[ ${PV/_alpha} != $PV ]] && SRC_URI_DIR=$SRC_URI_TESTING
+[[ ${PV/_beta} != $PV ]] && SRC_URI_DIR=$SRC_URI_TESTING
+[[ ${PV/_pre} != $PV ]] && SRC_URI_DIR=$SRC_URI_TESTING
+[[ ${PV/_rc} != $PV ]] && SRC_URI_DIR=$SRC_URI_TESTING
+SRC_URI="mirror://kernel/linux/utils/boot/syslinux/${SRC_URI_DIR}/${P/_/-}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -35,8 +43,9 @@ QA_PREBUILT="usr/share/${PN}/*.c32"
 # removed all the unpack/patching stuff since we aren't rebuilding the core stuff anymore
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-add-fno-stack-protector.patch
 	rm -f gethostip #bug 137081
+
+	epatch "${FILESDIR}"/${PN}-6.03-sysmacros.patch #579928
 
 	# Don't prestrip or override user LDFLAGS, bug #305783
 	local SYSLINUX_MAKEFILES="extlinux/Makefile linux/Makefile mtools/Makefile \
@@ -63,6 +72,17 @@ src_prepare() {
 		x86)	loaderarch="efi32" ;;
 		*)	ewarn "Unsupported architecture, building installers only." ;;
 	esac
+
+	# building with ld.gold causes problems, bug #563364
+	if tc-ld-is-gold; then
+		ewarn "Building syslinux with the gold linker may cause problems, see bug #563364"
+		if [[ -z "${I_KNOW_WHAT_I_AM_DOING}" ]]; then
+			tc-ld-disable-gold
+			ewarn "set I_KNOW_WHAT_I_AM_DOING=1 to override this."
+		else
+			ewarn "Continuing anyway as requested."
+		fi
+	fi
 }
 
 src_compile() {
@@ -83,7 +103,7 @@ src_install() {
 
 pkg_postinst() {
 	# print warning for users upgrading from the previous stable version
-	if has 4.06 ${REPLACING_VERSIONS}; then
+	if has 4.07 ${REPLACING_VERSIONS}; then
 		ewarn "syslinux now uses dynamically linked ELF executables. Before you reboot,"
 		ewarn "ensure that needed dependencies are fulfilled. For example, run from your"
 		ewarn "syslinux directory:"
