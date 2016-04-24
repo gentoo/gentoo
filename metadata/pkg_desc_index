@@ -214,7 +214,7 @@ app-admin/sysrqd 14: daemon providing access to the kernel sysrq functions via n
 app-admin/sysstat 11.0.2 11.2.2 11.2.3 11.3.3: System performance tools for Linux
 app-admin/system-config-printer 1.4.8: GNOME frontend for a Red Hat's printer administration tool
 app-admin/system-tools-backends 2.10.2: Tools aimed to make easy the administration of UNIX systems
-app-admin/systemrescuecd-x86 4.4.1 4.5.0 4.5.1 4.5.2 4.5.3 4.5.4 4.6.0 4.6.1 4.7.0 4.7.1: The .iso image of SystemRescueCD rescue disk, x86 (+ amd64) variant
+app-admin/systemrescuecd-x86 4.4.1 4.5.0 4.5.1 4.5.2 4.5.3 4.5.4 4.6.0 4.6.1 4.7.0 4.7.1 4.7.2: The .iso image of SystemRescueCD rescue disk, x86 (+ amd64) variant
 app-admin/tenshi 0.12 0.14 0.15: Log parsing and notification program
 app-admin/testdisk 7.0-r2 7.0-r3: Checks and undeletes partitions + PhotoRec, signature based recovery tool
 app-admin/tmpreaper 1.6.13: A utility for removing files based on when they were last accessed
@@ -8310,8 +8310,9 @@ dev-qt/qtmultimedia 4.8.6-r1 4.8.7 5.5.1-r2 5.6.0: The Multimedia module for the
 dev-qt/qtnetwork 5.5.1 5.6.0: Network abstraction library for the Qt5 framework
 dev-qt/qtopengl 4.8.6-r1 4.8.7 5.5.1 5.6.0: OpenGL support library for the Qt5 framework (deprecated)
 dev-qt/qtopenvg 4.8.6-r1 4.8.7: The OpenVG module for the Qt toolkit
-dev-qt/qtpaths 5.5.1-r1 5.6.0: Tool to query Qt path information
+dev-qt/qtpaths 5.5.1-r1 5.6.0: Command line client to QStandardPaths
 dev-qt/qtphonon 4.8.6-r1 4.8.7: The Phonon module for the Qt toolkit
+dev-qt/qtplugininfo 5.6.0: Qt5 plugin metadata dumper
 dev-qt/qtpositioning 5.5.1-r1 5.6.0-r1: Physical position determination library for the Qt5 framework
 dev-qt/qtprintsupport 5.5.1 5.6.0: Printing support library for the Qt5 framework
 dev-qt/qtquick1 5.5.1-r1 5.6.0: Legacy declarative UI module for the Qt5 framework (deprecated)
@@ -11683,7 +11684,7 @@ mail-client/evolution 3.18.5.1 3.18.5.2: Integrated mail, addressbook and calend
 mail-client/geary 0.6.3-r1 0.6.5 0.10.0: A lightweight, easy-to-use, feature-rich email client
 mail-client/hap 3.7-r1: A terminal mail notification program (replacement for biff)
 mail-client/mail-notification 5.4-r8 5.4-r9: Status icon informing about new mail
-mail-client/mailx 8.1.2.20050715-r6: The /bin/mail program, which is used to send mail via shell scripts
+mail-client/mailx 8.1.2.20050715-r6 8.1.2.20050715-r7: The /bin/mail program, which is used to send mail via shell scripts
 mail-client/mailx-support 20060102-r1 20060102-r2: Provides lockspool utility
 mail-client/mutt 1.5.23-r5 1.5.23-r7 1.5.23-r8 1.5.24-r1 1.5.24-r2 1.6.0-r1 1.6.0-r2: A small but very powerful text-based mail client
 mail-client/nail 12.4 12.4-r2 12.4-r3: an enhanced mailx-compatible mail client
