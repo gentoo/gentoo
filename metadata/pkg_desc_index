@@ -3959,7 +3959,7 @@ dev-java/java-sdk-docs 1.7.0.80 1.8.0.92: Oracle's documentation bundle (includi
 dev-java/java-service-wrapper 3.5.25-r1: A wrapper that makes it possible to install a Java Application as daemon
 dev-java/javacc 5.0-r2: Java Compiler Compiler - The Java Parser Generator
 dev-java/javacsv 2.1: Java library for reading and writing CSV and plain delimited text files
-dev-java/javacup 0.11a_beta20060608 0.11b_p20151001: CUP Parser Generator for Java
+dev-java/javacup 0.11b_p20151001: CUP Parser Generator for Java
 dev-java/javahelp 2.0.05_p63: The JavaHelp system online help system
 dev-java/javassist 2.6-r2 3.18.2: Javassist makes Java bytecode manipulation simple
 dev-java/javatoolkit 0.3.0-r9: Collection of Gentoo-specific tools for Java
@@ -4005,7 +4005,7 @@ dev-java/jetty-alpn-api 1.1.2: Jetty's ALPN API
 dev-java/jetty-npn-api 1.1.1: Jetty's NPN API
 dev-java/jexcelapi 2.6.8-r2: A Java API to read, write, and modify Excel spreadsheets
 dev-java/jffi 1.0.11-r1 1.2.9: An optimized Java interface to libffi
-dev-java/jflex 1.6.0-r2 1.6.1: JFlex is a lexical analyzer generator for Java
+dev-java/jflex 1.6.1: JFlex is a lexical analyzer generator for Java
 dev-java/jformatstring 2.0.3: Compile time checking for Java format strings
 dev-java/jfreechart 1.0.19 1.0.19-r1: JFreeChart is a free Java class library for generating charts
 dev-java/jfreesvg 2.1-r1 3.0: JFreeSVG is a fast, light-weight, vector graphics library for the Java platform
@@ -4183,7 +4183,7 @@ dev-java/portletapi 1.0 1.0-r1 2.0-r1: Portlet API 2.0 developed by the Java Com
 dev-java/prefuse 20071021_beta: UI toolkit for building highly interactive visualizations of structured and unstructured data
 dev-java/proguard 4.5 4.7 4.8 5.2.1: Free Java class file shrinker, optimizer, and obfuscator
 dev-java/protobuf-java 3.0.0_beta2: Google's Protocol Buffers - official Java Bindings
-dev-java/qdox 1.6.3 1.12-r1 1.12.1-r1: Parser for extracting class/interface/method definitions
+dev-java/qdox 1.6.3 1.12.1-r1: Parser for extracting class/interface/method definitions
 dev-java/radeox 1.0_beta2-r1: Radeox Wiki render engine
 dev-java/rat 0.11: Apache Rat is a release audit tool, focused on licenses.
 dev-java/reflectasm 1.11.0: High performance Java reflection
@@ -16801,7 +16801,7 @@ sys-boot/refind 0.9.0-r1 0.9.2 0.10.0 0.10.2: The rEFInd UEFI Boot Manager by Ro
 sys-boot/sgibootcd 0.12: Creates burnable CD images for SGI LiveCDs
 sys-boot/shlilo-lantank 20040408: bootloader for the SuperH Lantank
 sys-boot/silo 1.4.14_p20100228 1.4.14_p20120226 1.4.14_p20120819: SPARC/UltraSPARC Improved Loader, a boot loader for sparc
-sys-boot/syslinux 3.86 4.07 5.10 6.02 6.03: SYSLINUX, PXELINUX, ISOLINUX, EXTLINUX and MEMDISK bootloaders
+sys-boot/syslinux 3.86 4.07 5.10 6.03 6.04_pre1: SYSLINUX, PXELINUX, ISOLINUX, EXTLINUX and MEMDISK bootloaders
 sys-boot/systemrescuecd-x86-grub 0.1: Grub menu entries for the .iso image of systemrescuecd-x86
 sys-boot/tboot 1.8.3: Performs a measured and verified boot using Intel Trusted Execution Technology
 sys-boot/unetbootin 608 619: UNetbootin installs Linux/BSD distributions to a partition or USB drive
