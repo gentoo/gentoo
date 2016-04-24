@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit xorg-2
+inherit linux-info xorg-2
 
 DESCRIPTION="X.org input driver based on libinput"
 
@@ -15,3 +15,8 @@ RDEPEND=">=dev-libs/libinput-1.2.0:0="
 DEPEND="${RDEPEND}"
 
 DOCS=( "README.md" "conf/90-libinput.conf" )
+
+pkg_pretend() {
+	CONFIG_CHECK="~TIMERFD"
+	check_extra_config
+}
