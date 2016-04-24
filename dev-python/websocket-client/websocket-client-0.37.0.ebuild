@@ -1,16 +1,16 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 
-PYTHON_COMPAT=( python2_7 python3_3 python3_4 )
+PYTHON_COMPAT=( python2_7 python3_3 python3_4 python3_5 )
 
 inherit distutils-r1 vcs-snapshot
 
 MY_PN=${PN//-/_}
 
-DESCRIPTION="WebSocket client for python. hybi13 is supported"
+DESCRIPTION="WebSocket client for python with hybi13 support"
 HOMEPAGE="https://github.com/liris/websocket-client"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${MY_PN}-${PV}.tar.gz -> ${P}.tar.gz"
 
