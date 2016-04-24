@@ -12,21 +12,17 @@ if [[ ${QT5_BUILD_TYPE} == release ]]; then
 	KEYWORDS="~amd64 ~arm ~hppa ~ppc64 ~x86"
 fi
 
-# TODO: src/plugins/position/gypsy
 IUSE="geoclue qml"
 
 RDEPEND="
 	~dev-qt/qtcore-${PV}
-	geoclue? (
-		app-misc/geoclue:0
-		dev-libs/glib:2
-	)
-	qml? (
-		~dev-qt/qtdeclarative-${PV}
-		~dev-qt/qtnetwork-${PV}
-	)
+	geoclue? ( ~dev-qt/qtdbus-${PV} )
+	qml? ( ~dev-qt/qtdeclarative-${PV} )
 "
 DEPEND="${RDEPEND}"
+PDEPEND="
+	geoclue? ( app-misc/geoclue:0 )
+"
 
 QT5_TARGET_SUBDIRS=(
 	src/positioning
