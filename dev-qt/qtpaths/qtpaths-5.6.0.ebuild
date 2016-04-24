@@ -6,7 +6,7 @@ EAPI=6
 QT5_MODULE="qttools"
 inherit qt5-build
 
-DESCRIPTION="Tool to query Qt path information"
+DESCRIPTION="Command line client to QStandardPaths"
 
 if [[ ${QT5_BUILD_TYPE} == release ]]; then
 	KEYWORDS="~amd64 ~arm ~hppa ~ppc64 ~x86"

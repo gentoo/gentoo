@@ -2,14 +2,14 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 QT5_MODULE="qttools"
 inherit qt5-build
 
-DESCRIPTION="Command line client to QStandardPaths"
+DESCRIPTION="Qt5 plugin metadata dumper"
 
 if [[ ${QT5_BUILD_TYPE} == release ]]; then
-	KEYWORDS="amd64 arm ~hppa ~ppc64 ~x86"
+	KEYWORDS="~amd64 ~x86"
 fi
 
 IUSE=""
@@ -20,5 +20,5 @@ DEPEND="
 RDEPEND="${DEPEND}"
 
 QT5_TARGET_SUBDIRS=(
-	src/qtpaths
+	src/qtplugininfo
 )
