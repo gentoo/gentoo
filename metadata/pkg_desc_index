@@ -8312,7 +8312,7 @@ dev-qt/qtopengl 4.8.6-r1 4.8.7 5.5.1 5.6.0: OpenGL support library for the Qt5 f
 dev-qt/qtopenvg 4.8.6-r1 4.8.7: The OpenVG module for the Qt toolkit
 dev-qt/qtpaths 5.5.1-r1 5.6.0: Tool to query Qt path information
 dev-qt/qtphonon 4.8.6-r1 4.8.7: The Phonon module for the Qt toolkit
-dev-qt/qtpositioning 5.5.1-r1 5.6.0: Physical position determination library for the Qt5 framework
+dev-qt/qtpositioning 5.5.1-r1 5.6.0-r1: Physical position determination library for the Qt5 framework
 dev-qt/qtprintsupport 5.5.1 5.6.0: Printing support library for the Qt5 framework
 dev-qt/qtquick1 5.5.1-r1 5.6.0: Legacy declarative UI module for the Qt5 framework (deprecated)
 dev-qt/qtquickcontrols 5.5.1-r1 5.6.0: Set of controls used in conjunction with Qt Quick to build complete interfaces
