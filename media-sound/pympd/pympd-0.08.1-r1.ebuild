@@ -18,7 +18,7 @@ IUSE=""
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
-	>=dev-python/pygtk-2.6:2
+	>=dev-python/pygtk-2.6:2[${PYTHON_USEDEP}]
 	gnome-base/libglade:2.0
 	x11-libs/gdk-pixbuf:2[jpeg]
 	x11-themes/adwaita-icon-theme
