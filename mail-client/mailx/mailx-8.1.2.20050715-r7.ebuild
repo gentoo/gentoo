@@ -56,12 +56,4 @@ src_install() {
 	doins misc/mail.help misc/mail.tildehelp
 	insinto /etc
 	doins misc/mail.rc
-
-	# compatibility link
-	dosym /usr/bin/mail /bin/mail
-}
-
-pkg_postinst() {
-	elog "mail command now lives in /usr/bin."
-	elog "Please adjust your scripts."
 }
