@@ -58,10 +58,6 @@ src_configure() {
 	cmake-utils_src_configure
 }
 
-each_ruby_install() {
-	doruby "${BUILD_DIR}"/lib/facter.rb
-}
-
 src_install() {
 	cmake-utils_src_install
 	ruby-ng_src_install
