@@ -66,9 +66,6 @@ src_prepare() {
 	# Trick to avoid automagic dependency
 	use ayatana || { sed -i -e '/^LIBAPPINDICATOR_MINIMUM/s:=.*:=9999:' configure.ac || die; }
 
-	# Pass our configuration dir to systemd unit file
-	sed -i '/ExecStart/ s|$| -g /var/lib/transmission/config|' daemon/transmission-daemon.service || die
-
 	# http://trac.transmissionbt.com/ticket/4324
 	sed -i -e 's|noinst\(_PROGRAMS = $(TESTS)\)|check\1|' libtransmission/Makefile.am || die
 
@@ -120,6 +117,7 @@ src_install() {
 	newinitd "${FILESDIR}"/transmission-daemon.initd.10 transmission-daemon
 	newconfd "${FILESDIR}"/transmission-daemon.confd.4 transmission-daemon
 	systemd_dounit daemon/transmission-daemon.service
+	systemd_install_serviced "${FILESDIR}"/transmission-daemon.service.conf
 
 	if use qt4 || use qt5; then
 		pushd qt >/dev/null || die
