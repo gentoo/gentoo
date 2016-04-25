@@ -42,5 +42,5 @@ DEPEND="test? ( ${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]"
 
 python_test() {
-	nosetests -w ${PN}/tests || die
+	nosetests certbot || die
 }
