@@ -30,6 +30,12 @@
 
 #--- END OF EXAMPLES ---
 
+# James Le Cuirot <chewi@gentoo.org> (25 Apr 2016)
+# Long dead upstream and no longer needed. Removal in 30 days.
+dev-java/charva
+dev-java/jakarta-slide-webdavclient
+dev-java/xml-im-exporter
+
 # Alex Brandt <alunduil@gentoo.org> (23 Apr 2016)
 # Contains collisions with dev-python/ipaddress.  See #580388 for more details.
 # Masked for removal in 30 days.
