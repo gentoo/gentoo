@@ -1,0 +1,11 @@
+--- a/Makefile	2016-04-22 19:57:57.000000000 +0000
++++ b/Makefile	2016-04-25 06:49:38.344591274 +0000
+@@ -1,6 +1,6 @@
+-LDFLAGS=-lX11 -lXt  -L/usr/X11/lib
++LIBS=-lX11 -lXt  -L/usr/X11/lib
+ xystray: Xystray.o xystray.o
+-	$(CC) $(LDFLAGS) $^ -o $@
++	$(CC) $(LDFLAGS) $(LIBS) $^ -o $@
+ 
+ clean:
+ 	rm Xystray.o xystray.o
