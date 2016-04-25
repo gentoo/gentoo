@@ -1,0 +1,12 @@
+Index: ignition-transport-1.1.0/include/ignition/transport/RepHandler.hh
+===================================================================
+--- ignition-transport-1.1.0.orig/include/ignition/transport/RepHandler.hh
++++ ignition-transport-1.1.0/include/ignition/transport/RepHandler.hh
+@@ -22,6 +22,7 @@
+ #pragma warning(push, 0)
+ #endif
+ #include <google/protobuf/message.h>
++#include <google/protobuf/stubs/casts.h>
+ #ifdef _MSC_VER
+ #pragma warning(pop)
+ #endif
