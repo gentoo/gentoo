@@ -105,7 +105,7 @@ DEPEND="
 	dev-perl/Net-Server
 	dev-perl/regexp-common
 	dev-perl/Text-Template
-	dev-perl/text-wrapper
+	dev-perl/Text-Wrapper
 	virtual/perl-Digest
 	virtual/perl-File-Temp
 	virtual/perl-Scalar-List-Utils
