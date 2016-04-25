@@ -50,6 +50,7 @@
     <remote-id type="cpan-module">URI::rsync</remote-id>
     <remote-id type="cpan-module">URI::rtsp</remote-id>
     <remote-id type="cpan-module">URI::rtspu</remote-id>
+    <remote-id type="cpan-module">URI::sftp</remote-id>
     <remote-id type="cpan-module">URI::sip</remote-id>
     <remote-id type="cpan-module">URI::sips</remote-id>
     <remote-id type="cpan-module">URI::snews</remote-id>
