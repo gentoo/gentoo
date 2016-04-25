@@ -4,18 +4,19 @@
 
 EAPI=5
 
-inherit eutils qmake-utils git-r3
+inherit eutils qmake-utils
 
 DESCRIPTION="Most feature-rich GUI for net-libs/tox using Qt5"
 HOMEPAGE="https://github.com/tux3/qtox"
-SRC_URI=""
-EGIT_REPO_URI="git://github.com/tux3/qtox.git
-	https://github.com/tux3/qtox.git"
+SRC_URI="https://github.com/tux3/qTox/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="gtk X"
+
+# needed, since tarball provided by github extracts to `qTox`
+S="${WORKDIR}/qTox-${PV}"
 
 RDEPEND="
 	dev-db/sqlcipher
@@ -67,6 +68,7 @@ src_configure() {
 	# support for it in qTox at the present is ~broken anyway
 	eqmake5 \
 			PREFIX="${D}/usr" \
+			GIT_DESCRIBE="${PV}" \
 			DISABLE_FILTER_AUDIO=YES \
 			${NO_GTK_SUPPORT} \
 			${NO_X_SUPPORT}
