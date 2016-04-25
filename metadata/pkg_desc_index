@@ -14207,7 +14207,7 @@ net-libs/h323plus 1.25.0-r1 1.25.0-r2: Open Source implementation of the ITU H.3
 net-libs/http-parser 2.3 2.4.1 2.4.2 2.5.0 2.6.1 2.6.2: Http request/response parser for C
 net-libs/hubbub 0.1.2 0.1.2-r1: HTML5 compliant parsing library, written in C
 net-libs/iax 0.2.2 0.2.2-r1 0.2.2-r3: IAX (Inter Asterisk eXchange) Library
-net-libs/ignition-transport 0.7.0 0.9.0-r1 1.0.1 1.1.0: Combines ZeroMQ with Protobufs to create a fast and efficient message passing system
+net-libs/ignition-transport 1.1.0: Combines ZeroMQ with Protobufs to create a fast and efficient message passing system
 net-libs/jreen 1.2.0 1.2.1: Qt XMPP library
 net-libs/ldns 1.6.17 1.6.17-r1: a library with the aim to simplify DNS programming in C
 net-libs/liba53 9999: A5/3 Call encryption library
@@ -14834,7 +14834,7 @@ net-misc/throttle 1.2: Bandwidth limiting pipe
 net-misc/tiers 1.1: Random network topography generator
 net-misc/tigervnc 1.3.1-r1 1.3.1-r2 1.3.1-r3 1.3.1-r4 1.4.2-r1 1.4.2-r2 1.6.0-r1: Remote desktop viewer display system
 net-misc/tightvnc 1.3.10-r2: A great client/server software package allowing remote network access to graphical desktops
-net-misc/tinc 1.0.25 1.0.26 1.0.27 1.0.28 1.1_pre11: tinc is an easy to configure VPN implementation
+net-misc/tinc 1.0.28 1.1_pre12: tinc is an easy to configure VPN implementation
 net-misc/tipcutils 2.0.0 2.0.3: Utilities for TIPC (Transparent Inter-Process Communication)
 net-misc/tlsdate 0.0.1 0.0.4 0.0.4-r1 0.0.4-r2 0.0.5 0.0.6 0.0.11 0.0.12 0.0.12-r1 0.0.12-r2 0.0.13: Update local time over HTTPS
 net-misc/tn5250 0.17.4: Telnet client for the IBM AS/400 that emulates 5250 terminals and printers

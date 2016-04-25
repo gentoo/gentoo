@@ -6296,9 +6296,7 @@ net-misc/termpkg:uucp - Adds support for uucp style device locking
 net-misc/tigervnc:server - Build TigerVNC server
 net-misc/tigervnc:xorgmodule - Build the Xorg module
 net-misc/tightvnc:server - Build TightVNC server
-net-misc/tinc:gcrypt - Add support for encrypted log files using dev-libs/libgcrypt
 net-misc/tinc:gui - Add GUI support, using dev-python/wxpython
-net-misc/tinc:openssl - Using dev-libs/openssl for cryptography-related functions
 net-misc/tinc:uml - Enable support for User Mode Linux Sockets
 net-misc/tinc:vde - Enable Virtual Distributed Ethernet (VDE) based networking
 net-misc/tor:bufferevents - Use libevent's buffered IO implementation (unstable, buggy)
