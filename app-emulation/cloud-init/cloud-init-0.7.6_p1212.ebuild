@@ -22,7 +22,6 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
 
-
 CDEPEND="
 	dev-python/cheetah[${PYTHON_USEDEP}]
 	dev-python/configobj[${PYTHON_USEDEP}]
