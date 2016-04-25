@@ -1,0 +1,108 @@
+#!/sbin/openrc-run
+# Copyright 1999-2016 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+description='The Shoreline Firewall, more commonly known as "Shorewall", is'
+description="${description} a high-level tool for configuring Netfilter."
+
+extra_commands="check clear"
+extra_started_commands="refresh reload reset"
+
+description_check="Checks if the configuration will compile or not."
+
+description_clear="Clear will remove all rules and chains installed by"
+description_clear="${description_clear} Shorewall. The firewall is then"
+description_clear="${description_clear} wide open and unprotected."
+
+description_refresh="The mangle table will be refreshed along with the"
+description_refresh="${description_refresh} blacklist chain (if any)."
+
+description_reload="Reload is similar to \"${RC_SERVICE} start\" except that it assumes"
+description_reload="${description_reload} that the firewall is already started."
+description_reload="${description_reload} Existing connections are maintained."
+
+description_reset="All the packet and byte counters in the firewall are reset."
+
+command="/usr/sbin/shorewall"
+
+depend() {
+	provide firewall
+	after ulogd
+}
+
+status() {
+	local _retval
+	${command} status 1>/dev/null
+	_retval=$?
+	if [ ${_retval} = '0' ]; then
+		einfo 'status: started'
+		mark_service_started "${SVCNAME}"
+		return 0
+	else
+		einfo 'status: stopped'	
+		mark_service_stopped "${SVCNAME}"
+		return 3
+	fi
+}
+
+start() {
+	ebegin "Starting shorewall"
+	${command} ${OPTIONS} start ${STARTOPTIONS} 1>/dev/null
+	eend $? 
+}
+
+stop() {
+	ebegin "Stopping shorewall"
+	${command} ${OPTIONS} stop ${STOPOPTIONS} 1>/dev/null
+	eend $?
+}
+
+restart() {
+	ebegin "Restarting shorewall"
+	${command} status 1>/dev/null
+	if [ $? != 0 ] ; then
+		svc_start
+	else
+		${command} ${OPTIONS} restart ${RESTARTOPTIONS} 1>/dev/null
+	fi
+	eend $?
+}
+
+clear() {
+	ebegin "Clearing all shorewall rules and setting policy to ACCEPT"
+	${command} ${OPTIONS} clear 1>/dev/null
+	eend $?
+}
+
+reload() {
+	ebegin "Reloading shorewall"
+	${command} ${OPTIONS} reload ${RELOADOPTIONS} 1>/dev/null
+	eend $?
+}
+
+reset() {
+	ebegin "Resetting the packet and byte counters in shorewall"
+	${command} ${OPTIONS} reset 1>/dev/null
+	eend $?
+}
+
+refresh() {
+	# refresh the rules involving the broadcast addresses of firewall
+	# interfaces, the black list, traffic control rules and
+	# ECN control rules
+
+	ebegin "Refreshing shorewall rules"
+	${command} ${OPTIONS} refresh 1>/dev/null
+	eend $?
+}
+
+check() {
+	# perform cursory validation of the zones, interfaces, hosts, rules
+	# and policy files. CAUTION: does not parse and validate the generated
+	# iptables commands.
+
+	ebegin "Checking shorewall configuration"
+	${command} ${OPTIONS} check 1>/dev/null
+	eend $?
+}
