@@ -15,7 +15,7 @@ SRC_PATH="stable"
 [[ ${PV} = *_rc* ]] && SRC_PATH="rc"
 
 SRC_URI="mirror://samba/${SRC_PATH}/${MY_P}.tar.gz
-	https://dev.gentoo.org/~polynomial-c/samba-disable-python-patches-4.4.0_rc5.tar.xz"
+	https://dev.gentoo.org/~axs/distfiles/samba-disable-python-patches-4.4.2.tar.xz"
 KEYWORDS="~amd64 ~hppa ~x86"
 [[ ${PV} = *_rc* ]] && KEYWORDS="~hppa"
 
