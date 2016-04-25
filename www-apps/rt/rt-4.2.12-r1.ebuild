@@ -104,7 +104,7 @@ DEPEND="
 	dev-perl/Locale-Maketext-Fuzzy
 	dev-perl/Net-Server
 	dev-perl/regexp-common
-	dev-perl/text-template
+	dev-perl/Text-Template
 	dev-perl/text-wrapper
 	virtual/perl-Digest
 	virtual/perl-File-Temp
