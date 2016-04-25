@@ -8934,7 +8934,7 @@ dev-ruby/moneta 0.8.0: A unified interface to key/value stores
 dev-ruby/mongo 1.12.0 2.0.6: A Ruby driver for MongoDB
 dev-ruby/mongoid 2.8.1: ODM (Object Document Mapper) Framework for MongoDB
 dev-ruby/msgpack 0.7.4 0.7.5: Binary-based efficient data interchange format for ruby binding
-dev-ruby/multi_json 1.9.3 1.11.2: A gem to provide swappable JSON backends
+dev-ruby/multi_json 1.9.3 1.11.2 1.11.3: A gem to provide swappable JSON backends
 dev-ruby/multi_test 0.1.1 0.1.2: A uniform interface for Ruby testing libraries
 dev-ruby/multi_xml 0.5.4-r1 0.5.4-r2 0.5.5: A generic swappable back-end for XML parsing
 dev-ruby/multipart-post 2.0.0-r1: Adds a streamy multipart form post capability to Net::HTTP
