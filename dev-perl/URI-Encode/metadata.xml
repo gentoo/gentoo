@@ -5,4 +5,8 @@
     <email>perl@gentoo.org</email>
     <name>Gentoo Perl Project</name>
   </maintainer>
+  <upstream>
+    <remote-id type="cpan">URI-Encode</remote-id>
+    <remote-id type="cpan-module">URI::Encode</remote-id>
+  </upstream>
 </pkgmetadata>
