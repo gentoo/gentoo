@@ -42,7 +42,7 @@ RDEPEND=">=dev-libs/glib-2.42:2
 	>=media-libs/freetype-2.5.5:2
 	>=media-libs/lcms-2.6:2
 	>=sys-devel/gcc-4.9.3
-	>=sys-libs/glibc-2.21
+	>=sys-libs/glibc-2.22
 	>=sys-libs/zlib-1.2.8-r1
 	virtual/jpeg:62
 	alsa? ( >=media-libs/alsa-lib-1.0 )
