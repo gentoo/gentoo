@@ -5,4 +5,9 @@
     <email>perl@gentoo.org</email>
     <name>Gentoo Perl Project</name>
   </maintainer>
+  <upstream>
+    <remote-id type="cpan">XML-Entities</remote-id>
+    <remote-id type="cpan-module">XML::Entities</remote-id>
+    <remote-id type="cpan-module">XML::Entities::Data</remote-id>
+  </upstream>
 </pkgmetadata>
