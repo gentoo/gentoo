@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 inherit multilib eutils versionator
 
@@ -39,6 +39,7 @@ RDEPEND="dev-libs/atk
 	media-libs/libpng:1.2
 	media-libs/libvorbis
 	media-libs/speex
+	net-libs/webkit-gtk:2
 	virtual/krb5
 	x11-libs/cairo
 	x11-libs/gdk-pixbuf
@@ -50,24 +51,30 @@ RDEPEND="dev-libs/atk
 	x11-libs/libXmu
 	x11-libs/libXrender
 	x11-libs/libXt
-	x11-libs/pango
-	x11-terms/xterm"
+	x11-libs/pango"
 DEPEND=""
 
 pkg_nofetch() {
 	elog "Download the client file ${A} from
-	https://www.citrix.com/downloads/citrix-receiver/legacy-receiver-for-linux/receiver-for-linux-13-2.html"
+	https://www.citrix.com/downloads/citrix-receiver.html"
 	elog "and place it in ${DISTDIR:-/usr/portage/distfiles}."
 }
 
 src_unpack() {
 	default
 
-	if use amd64 ; then
-		ICAARCH=linuxx64
-	elif use x86 ; then
-		ICAARCH=linuxx86
-	fi
+	case ${ARCH} in
+		amd64)
+			ICAARCH=linuxx64
+		;;
+		x86)
+			ICAARCH=linuxx86
+		;;
+		*)
+			eerror "Given architecture is not supported by Citrix."
+		;;
+	esac
+
 	S="${WORKDIR}/${ICAARCH}/${ICAARCH}.cor"
 }
 
@@ -87,7 +94,10 @@ src_install() {
 	fi
 
 	insinto "${ICAROOT}"
-	doins nls/en/eula.txt
+	doins nls/en.UTF-8/eula.txt
+
+	insinto "${ICAROOT}"/nls/en
+	doins nls/en.UTF-8/eula.txt
 
 	insinto "${ICAROOT}"/config
 	doins config/* config/.* nls/en/*.ini
@@ -97,6 +107,9 @@ src_install() {
 
 	insinto "${ICAROOT}"/gtk/glade
 	doins gtk/glade/*
+
+	insinto "${ICAROOT}"/site
+	doins -r site/*
 
 	dodir "${ICAROOT}"/help
 
@@ -138,7 +151,7 @@ src_install() {
 
 	exeinto "${ICAROOT}"/util
 	doexe util/{configmgr,conncenter,echo_cmd,gst_aud_play,gst_aud_read,gst_play,gst_read,hdxcheck.sh,icalicense.sh,libgstflatstm.so}
-	doexe util/{lurdump,new_store,nslaunch,pnabrowse,sunraymac.sh,what,xcapture}
+	doexe util/{lurdump,new_store,nslaunch,pnabrowse,storebrowse,sunraymac.sh,what,xcapture}
 
 	doenvd "${FILESDIR}"/10ICAClient
 
