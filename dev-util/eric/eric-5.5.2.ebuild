@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -44,10 +44,12 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 S=${WORKDIR}/${MY_P}
 
 src_prepare() {
-	# Avoid file collisions between different slots of Eric
+	# Avoid file collisions between different slots of eric
 	sed -i -e 's/^Icon=eric$/&5/' eric/eric5.desktop || die
 	sed -i -e 's/\([^[:alnum:]]\)eric\.png\([^[:alnum:]]\)/\1eric5.png\2/' \
 		$(grep -lr 'eric\.png' .) || die
+	sed -i -e 's/eric"/eric5"/' \
+		$(grep -lr 'eric".*\.png' .) || die
 	mv eric/icons/default/eric{,5}.png || die
 	mv eric/pixmaps/eric{,5}.png || die
 	rm -f eric/APIs/Python/zope-*.api
