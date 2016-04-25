@@ -138,7 +138,7 @@ app-admin/logsentry 1.1.1 1.1.1-r1: automatically monitor system logs and mail s
 app-admin/logstalgia 1.0.3-r1 1.0.6: Replays or streams an access_log as a retro arcade game-like simulation
 app-admin/logstash-bin 2.2.4 2.3.1: Tool for managing events and logs
 app-admin/logstash-forwarder 0.4.0-r1: Collects logs locally in preparation for processing elsewhere
-app-admin/logsurfer+ 1.8-r1: Real Time Log Monitoring and Alerting
+app-admin/logsurfer+ 1.8-r2: Real Time Log Monitoring and Alerting
 app-admin/longrun 0.9-r4: A utility to control Transmeta's Crusoe and Efficeon processors
 app-admin/lsat 0.9.7.1-r1: The Linux Security Auditing Tool
 app-admin/lsyncd 2.1.5: Live Syncing (Mirror) Daemon
@@ -1276,7 +1276,7 @@ app-emacs/zenirc 2.112-r1: A full-featured scriptable IRC client for the Emacs t
 app-emulation/aqemu 0.8.2-r2 0.8.2-r3: Graphical interface for QEMU and KVM emulators, using Qt4
 app-emulation/armv8-fast-model 0.8.5206: emulator for a basic ARMv8 platform environment (for running bare metal & Linux)
 app-emulation/bochs 2.6 2.6.8: LGPL-ed pc emulator
-app-emulation/cloud-init 0.7.6-r1: EC2 initialisation magic
+app-emulation/cloud-init 0.7.6-r1 0.7.6-r2 0.7.6_p1212: EC2 initialisation magic
 app-emulation/coldfire 0.3.1: Motorola Coldfire Emulator
 app-emulation/containerd 0.2.0 9999: A daemon to control runC
 app-emulation/crossover-bin 12.5.0-r2 12.5.1-r2 13.0.0-r2 13.0.1-r2 13.1.0-r2 13.1.2-r2 13.1.3-r2 13.2.0-r2 14.0.3-r1 14.1.4-r1 15.0.0 15.0.1 15.1.0: Commercial version of app-emulation/wine with paid support.
@@ -8843,7 +8843,7 @@ dev-ruby/hiera-eyaml-gpg 0.4 0.5 0.6: A GPG backend for hiera-eyaml
 dev-ruby/hiera-eyaml-plaintext 0.6: A plaintext backend for hiera-eyaml
 dev-ruby/highline 1.7.6 1.7.7 1.7.8: Highline is a high-level command-line IO library for ruby
 dev-ruby/hike 1.2.3 1.2.3-r1 2.1.2: Hike is a Ruby library for finding files in a set of paths
-dev-ruby/hipchat 1.5.2: Ruby library to interact with HipChat
+dev-ruby/hipchat 1.5.2 1.5.3: Ruby library to interact with HipChat
 dev-ruby/hitimes 1.2.2 1.2.3: A fast, high resolution timer library
 dev-ruby/hoe 3.13.0-r1 3.13.1 3.14.1: Hoe extends rake to provide full project automation
 dev-ruby/hoe-seattlerb 1.3.2-r1 1.3.3 1.3.4: Hoe plugins providing tasks used by seattle.rb
@@ -9676,7 +9676,7 @@ dev-util/itstool 2.0.2: Translation tool for XML documents that uses gettext fil
 dev-util/jarwizard 2.50: Takes the hassle out of creating executable JAR files for your Java programs
 dev-util/jay 1.1.1-r2: A LALR(1) parser generator: Berkeley yacc retargeted to C# and Java
 dev-util/jconfig 2.8-r3 2.8.5 2.9: jConfig is an extremely helpful utility, providing a simple API for the management of properties
-dev-util/jenkins-bin 1.651.1 1.655 1.656: Extensible continuous integration server
+dev-util/jenkins-bin 1.651.1 1.655 1.656 2.0: Extensible continuous integration server
 dev-util/jif 3.1_rc1: JIF is an IDE for the creation of text adventures based on Graham Nelson's Inform standard
 dev-util/kbuild 0.1.9998_pre20120806 0.1.9998_pre20131130 9999: A makefile framework for writing simple makefiles for complex tasks
 dev-util/kdbg 2.5.5: A graphical debugger interface
