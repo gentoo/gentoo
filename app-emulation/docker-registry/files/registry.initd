@@ -5,8 +5,8 @@
 
 description="Docker Registry 2.0"
 pidfile=${pidfile:-"/run/${SVCNAME}/${SVCNAME}.pid"}
-user=${SVCNAME}
-group=${SVCNAME}
+user=${user:-${SVCNAME}}
+group=${group:-${SVCNAME}}
 
 command="/usr/libexec/docker-${SVCNAME}/${SVCNAME}"
 command_args="${command_args:-serve /etc/docker/registry/config.yml}"
