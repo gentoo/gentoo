@@ -32,7 +32,7 @@ src_install() {
 	exeinto /usr/libexec/${PN}
 	doexe "${S}"/bin/*
 	insinto /etc/docker/registry
-	newins "${FILESDIR}/config.yml" config.yml.example
+	newins "${S}"/src/${EGO_PN%/*}/cmd/registry/config-example.yml config.yml.example
 	newinitd "${FILESDIR}/${SVCNAME}.initd" "${SVCNAME}"
 	newconfd "${FILESDIR}/${SVCNAME}.confd" "${SVCNAME}"
 	systemd_dounit "${FILESDIR}/${SVCNAME}.service"
