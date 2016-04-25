@@ -27,8 +27,8 @@ DEPEND="test? ( ${RDEPEND}
 	dev-python/nose[${PYTHON_USEDEP}] )
 	dev-python/setuptools[${PYTHON_USEDEP}]"
 
-S=${WORKDIR}/${P}/${PN}
+S=${WORKDIR}/${P}/certbot-apache
 
 python_test() {
-	nosetests -w ${PN/-/_}/tests || die
+	nosetests || die
 }
