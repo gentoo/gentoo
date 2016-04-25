@@ -17238,7 +17238,7 @@ sys-libs/nss-usrfiles 2.18.1: NSS module to read passwd/group files from CoreOS 
 sys-libs/nss_wrapper 1.1.2 1.1.3: A wrapper for the user, group and hosts NSS API
 sys-libs/ntdb 1.0-r1: A not-so trivial keyword/data database system
 sys-libs/openhpi 2.12.0 3.0.0: Open source implementation of the Service Availability Forum (SAF) Hardware Platform Interface (HPI)
-sys-libs/openipmi 1.3.18 1.4.12 1.4.14 1.4.28 2.0.11 2.0.16 2.0.16-r1 2.0.18 2.0.18-r1: Library interface to IPMI
+sys-libs/openipmi 2.0.18-r1 2.0.21: Library interface to IPMI
 sys-libs/pam 1.2.1 1.2.1-r1: Linux-PAM (Pluggable Authentication Modules)
 sys-libs/pwdb 0.62: Password database
 sys-libs/readline 4.3_p5 5.2_p14 6.2_p5-r1 6.3_p8-r1 6.3_p8-r2 7.0_rc1: Another cute console display library
@@ -17293,7 +17293,7 @@ sys-process/at 3.1.16 3.1.16-r1 3.1.18: Queues jobs for later execution
 sys-process/atop 1.27_p3 2.0.2 2.1 2.2: Resource-specific view of processes
 sys-process/audit 1.7.18 2.0.5 2.1.3-r1 2.2.2-r2 2.2.2-r3 2.4.1 2.4.1-r1 2.4.3 2.4.3-r1: Userspace utilities for storing and processing auditing records
 sys-process/bcron 0.09 0.09-r2 0.10: A new cron system designed with secure operations in mind by Bruce Guenter
-sys-process/criu 1.6.1 1.7.2 1.8 2.0-r1: utility to checkpoint/restore a process tree
+sys-process/criu 1.6.1 1.7.2 1.8 2.0-r1 2.1: utility to checkpoint/restore a process tree
 sys-process/cronbase 0.3.7-r1: base for all cron ebuilds
 sys-process/cronie 1.5.0 1.5.0-r1: Cronie is a standard UNIX daemon cron based on the original vixie-cron
 sys-process/cronutils 1.5 1.9: Utilities to assist running batch processing jobs
