@@ -44,7 +44,7 @@ CDEPEND="
 	telepathy? ( >=net-libs/telepathy-qt-0.3 )
 	xmpp? (
 		app-crypt/qca:2[qt4(+)]
-		>=net-libs/jreen-1.2.0
+		>=net-libs/jreen-1.2.0[qt4]
 	)
 	jingle? ( dev-qt/qt-mobility[multimedia] )
 	oscar? ( app-crypt/qca:2[qt4(+)] )
