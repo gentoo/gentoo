@@ -1,8 +1,12 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-inherit eutils autotools python
+EAPI=6
+
+PYTHON_COMPAT=( python2_7 )
+
+inherit eutils autotools python-single-r1
 
 DESCRIPTION="Library interface to IPMI"
 HOMEPAGE="http://sourceforge.net/projects/openipmi/"
@@ -12,44 +16,46 @@ SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.gz"
 
 LICENSE="LGPL-2.1 GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 hppa ~ia64 ~ppc ~x86"
-IUSE="crypt snmp perl tcl python"
+KEYWORDS="~amd64 ~hppa ~ia64 ~ppc ~x86"
+IUSE="crypt snmp perl python tcl"
 S="${WORKDIR}/${MY_P}"
 RESTRICT='test'
 
-RDEPEND="dev-libs/glib
+RDEPEND="
+	dev-libs/glib:2
 	sys-libs/gdbm
-	crypt? ( dev-libs/openssl )
+	crypt? ( dev-libs/openssl:0= )
 	snmp? ( net-analyzer/net-snmp )
 	perl? ( dev-lang/perl )
-	python? ( dev-lang/python )
-	tcl? ( dev-lang/tcl )"
+	python? ( ${PYTHON_DEPS} )
+	tcl? ( dev-lang/tcl:0= )"
 DEPEND="${RDEPEND}
 	>=dev-lang/swig-1.3.21
 	virtual/pkgconfig"
 # Gui is broken!
 #		python? ( tcl? ( tk? ( dev-lang/tk dev-tcltk/tix ) ) )"
 
-# Upstream doesn't use --without properly
-use_yesno() {
-	yesmsg="yes"
-	[ -n "$3" ] && yesmsg="$3"
-	if use $1; then
-		echo "--with-$2=${yesmsg}"
-	else
-		echo "--without-$2"
-	fi
-}
+REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
-src_unpack() {
-	unpack ${A}
-	cd "${S}"
+PATCHES=(
 	# Bug #338499: The installed OpenIPMIpthread.pc depends on a non-existing
 	# pthread.pc. We patch it to link -lpthread directly instead.
-	epatch "${FILESDIR}/${PN}-2.0.16-pthreads.patch"
+	"${FILESDIR}/${PN}-2.0.16-pthreads.patch"
+
+	# https://bugs.gentoo.org/501510
+	"${FILESDIR}/${PN}-2.0.21-tinfo.patch"
+)
+
+pkg_setup() {
+	use python && python-single-r1_pkg_setup
+}
+
+src_prepare() {
+	default
+
 	# Bug #290763: The buildsys tries to compile+optimize the py file during
 	# install, when the .so might not be been added yet. We just skip the files
-	# and use python_mod_optimize ourselves later instead.
+	# and use python_optimize ourselves later instead.
 	sed -r -i \
 		-e '/INSTALL.*\.py[oc] /d' \
 		-e '/install-exec-local/s,OpenIPMI.pyc OpenIPMI.pyo,,g' \
@@ -63,44 +69,37 @@ src_unpack() {
 	# We touch the .in and .am above because if we use the below, the Perl stuff
 	# is very fragile, and often fails to link.
 	#cd "${S}"
-	#elibtoolize
-	#eautoreconf
+	elibtoolize
+	eautoreconf
 }
 
-src_compile() {
-	local myconf=""
-	myconf="${myconf} `use_with snmp ucdsnmp yes`"
-	myconf="${myconf} `use_with crypt openssl yes`"
-	myconf="${myconf} `use_with perl perl yes`"
-	myconf="${myconf} `use_with tcl tcl yes`"
-	myconf="${myconf} `use_with python python yes`"
+src_configure() {
+	local myconf=()
+	myconf+=( $(use_with snmp ucdsnmp yes) )
+	myconf+=( $(use_with crypt openssl yes) )
+	myconf+=( $(use_with perl perl yes) )
+	myconf+=( $(use_with tcl tcl yes) )
+	myconf+=( $(use_with python python yes) )
 
 	# GUI is broken
 	#use tk && use python && use !tcl && \
 	#	ewarn "Not building Tk GUI because it needs both Python AND Tcl"
 	#if use python && use tcl; then
-	#	myconf="${myconf} `use_yesno tk tkinter yes`"
+	#	myconf+=( $(use_with tk tkinter) )
 	#else
-	#	myconf="${myconf} `use_yesno tk tkinter no`"
+	#	myconf+=( --without-tkinter )
 	#fi
 
-	myconf="${myconf} --without-tkinter"
-	myconf="${myconf} --with-glib --with-swig"
+	myconf+=( --without-tkinter )
+	myconf+=( --with-glib --with-swig )
 	# these binaries are for root!
-	econf ${myconf} --bindir=/usr/sbin || die "econf failed"
-	emake || die "emake $i failed"
+	econf ${myconf[@]} --bindir=/usr/sbin
 }
 
 src_install() {
-	emake DESTDIR="${D}" install || die
-	dodoc README* FAQ ChangeLog TODO doc/IPMI.pdf lanserv/README.emulator
+	emake DESTDIR="${D}" install
+	dodoc README* FAQ ChangeLog TODO doc/IPMI.pdf lanserv/README.vm
 	newdoc cmdlang/README README.cmdlang
-}
 
-pkg_postinst() {
-	use python && python_mod_optimize $(python_get_sitedir)/OpenIPMI.py
-}
-
-pkg_postrm() {
-	use python && python_mod_cleanup $(python_get_sitedir)/OpenIPMI.py
+	use python && python_optimize
 }
