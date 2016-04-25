@@ -128,7 +128,14 @@ RDEPEND="${COMMON_DEPEND}
 
 PATCHES=(
 	"${FILESDIR}/${PV}/${P}-fix-seeking-without-first-index-entry.patch"
+	"${FILESDIR}/${PV}/${P}-fix-use-after-free.patch"
+	"${FILESDIR}/${PV}/${P}-remove-unneeded-X11-include.patch"
 	"${FILESDIR}/${PV}/${P}-add-missing-math-include.patch"
+	"${FILESDIR}/${PV}/${P}-fix-parsing-multiple-input-command-prefixes.patch"
+	"${FILESDIR}/${PV}/${P}-avoid-deprecated-API-usage.patch"
+	"${FILESDIR}/${PV}/${P}-fix-hwdec-fallback.patch"
+	"${FILESDIR}/${PV}/${P}-fix-relative-seeking-with-coverart.patch"
+	"${FILESDIR}/${PV}/${P}-fix-video-frame-info-memleak.patch"
 )
 
 pkg_pretend() {

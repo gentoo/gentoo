@@ -1,0 +1,19 @@
+commit e232f1a731a9089a13d88def6c1f2c1a069a6353
+Author: trUSTssc <trUSTssc@users.noreply.github.com>
+Date:   Sun Apr 24 20:11:36 2016 +0200
+
+player: fix memleak when using video-frame-info
+---
+
+diff --git a/player/command.c b/player/command.c
+index 7f65534..738865b 100644
+--- a/player/command.c
++++ b/player/command.c
+@@ -2581,6 +2581,7 @@ static int mp_property_video_frame_info(void *ctx, struct m_property *prop,
+         {0}
+     };
+
++    talloc_free(f);
+     return m_property_read_sub(props, action, arg);
+ }
+

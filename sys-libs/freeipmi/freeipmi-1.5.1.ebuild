@@ -1,13 +1,12 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-#AUTOTOOLS_AUTORECONF=1
 AT_M4DIR="config"
 
-inherit eutils multilib autotools-utils
+inherit eutils multilib
 
 DESCRIPTION="Provides Remote-Console and System Management Software as per IPMI v1.5/2.0"
 HOMEPAGE="https://www.gnu.org/software/freeipmi/"
@@ -40,14 +39,14 @@ src_configure() {
 		--localstatedir=/var
 	)
 
-	autotools-utils_src_configure
+	econf "${myeconfargs[@]}"
 }
 
 # There are no tests
 src_test() { :; }
 
 src_install() {
-	autotools-utils_src_install
+	default
 
 	# freeipmi by defaults install _all_ commands to /usr/sbin, but
 	# quite a few can be run remotely as standard user, so move them
