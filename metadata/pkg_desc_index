@@ -352,7 +352,7 @@ app-backup/ccollect 0.8: (pseudo) incremental backup with different exclude list
 app-backup/cdbackup 0.7.1: Allows streaming backup utilities to dump/restore from CD-R(W)s or DVD(+/-RW)s
 app-backup/cdbkup 1.0 1.0-r1: performs full/incremental backups of local/remote filesystems onto CD-R(W)s
 app-backup/cpdup 1.18: A comprehensive filesystem mirroring program
-app-backup/dar 2.4.9 2.4.17 2.4.20 2.5.3: A full featured backup tool, aimed for disks (floppy,CDR(W),DVDR(W),zip,jazz etc.)
+app-backup/dar 2.4.9 2.4.20 2.4.21 2.5.3 2.5.4: A full featured backup tool, aimed for disks (floppy,CDR(W),DVDR(W),zip,jazz etc.)
 app-backup/deja-dup 34.0 34.1: Simple backup tool using duplicity back-end
 app-backup/dirvish 1.2.1: Dirvish is a fast, disk based, rotating network backup system
 app-backup/duplicity 0.6.22 0.6.23-r1 0.6.24 0.6.25 0.6.26: Secure backup system using gnupg to encrypt data
@@ -13502,7 +13502,7 @@ media-video/noad 0.7.3 0.7.3-r1 0.8.6 0.8.6-r1: Mark commercial breaks in VDR re
 media-video/nvidia-settings 340.58 340.58-r1 355.11 358.16: NVIDIA Linux X11 Settings Utility
 media-video/nvidia_video_sdk 6.0.1: NVIDIA Video Codec SDK
 media-video/ogmrip 1.0.1: Graphical frontend and libraries for ripping DVDs and encoding to AVI/OGM/MKV/MP4
-media-video/openshot 1.4.3-r1 2.0.6 2.0.7: Free, open-source, non-linear video editor to create and edit videos and movies
+media-video/openshot 1.4.3-r1 2.0.6 2.0.7-r1: Free, open-source, non-linear video editor to create and edit videos and movies
 media-video/oxine 0.7.1-r1: OSD frontend for Xine
 media-video/parole 0.5.4 0.6.1 0.7.0 0.8.0-r1 0.8.1: a simple media player based on the GStreamer framework for the Xfce4 desktop
 media-video/pgcedit 0.8.6: DVD IFO and Menu editor
