@@ -15,12 +15,15 @@
 		<flag name="dbi">Build the general database output module (requires <pkg>dev-db/libdbi</pkg>)</flag>
 		<flag name="elasticsearch">Build the Elasticsearch output module (requires <pkg>net-misc/curl</pkg>)</flag>
 		<flag name="gcrypt">Add support for encrypted log files using <pkg>dev-libs/libgcrypt</pkg></flag>
+		<flag name="grok">Build the grok modify module (requires <pkg>dev-libs/grok</pkg>)</flag>
 		<flag name="jemalloc">Use <pkg>dev-libs/jemalloc</pkg> for allocations.</flag>
+		<flag name="kafka">Build the Apache Kafka output module (requires <pkg>dev-libs/librdkafka</pkg>)</flag>
 		<flag name="kerberos">Build the GSSAPI input and output module (requires <pkg>virtual/krb5</pkg>)</flag>
 		<flag name="libressl">Use <pkg>dev-libs/libressl</pkg> for building the rfc5424hmac modify module (requires rfc5424hmac USE flag)</flag>
 		<flag name="mongodb">Build the MongoDB output module (requires <pkg>dev-libs/libmongo-client</pkg>)</flag>
 		<flag name="mysql">Build the MySQL databse output module (requires <pkg>virtual/mysql</pkg>)</flag>
 		<flag name="normalize">Build the normalize modify module (requires <pkg>dev-libs/libee</pkg> and <pkg>dev-libs/liblognorm</pkg>)</flag>
+		<flag name="omhttpfs">Build the httpfs output module (requires <pkg>net-misc/curl</pkg>)</flag>
 		<flag name="omudpspoof">Build the udpspoof output module (requires <pkg>net-libs/libnet</pkg>)</flag>
 		<flag name="postgres">Build the PostgreSQL database output module (requires <pkg>dev-db/postgresql</pkg>)</flag>
 		<flag name="rabbitmq">Build the RabbitMQ output module (requires <pkg>net-libs/rabbitmq-c</pkg>)</flag>
@@ -32,7 +35,7 @@
 		<flag name="ssl">Add support for encrypted client/server communication (requires <pkg>net-libs/gnutls</pkg>)</flag>
 		<flag name="systemd">Build the journal input and output module (requires <pkg>sys-apps/systemd</pkg>)</flag>
 		<flag name="usertools">Installs the user tools (rsgtutil, rscryutil...) corresponding to the set USE flags</flag>
-		<flag name="zeromq">Build the ZeroMQ input and output modules (requires <pkg>net-libs/zeromq</pkg>)</flag>
+		<flag name="zeromq">Build the ZeroMQ input and output modules (requires <pkg>net-libs/czmq</pkg>)</flag>
 	</use>
 	<upstream>
 		<bugs-to>https://github.com/rsyslog/rsyslog/issues</bugs-to>
