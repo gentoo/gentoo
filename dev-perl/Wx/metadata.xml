@@ -25,10 +25,16 @@
     <remote-id type="cpan-module">Wx::Calendar</remote-id>
     <remote-id type="cpan-module">Wx::CalendarCtrl</remote-id>
     <remote-id type="cpan-module">Wx::CalendarEvent</remote-id>
+    <remote-id type="cpan-module">Wx::Client</remote-id>
     <remote-id type="cpan-module">Wx::ColourProperty</remote-id>
     <remote-id type="cpan-module">Wx::ColourPropertyValue</remote-id>
+    <remote-id type="cpan-module">Wx::Connection</remote-id>
+    <remote-id type="cpan-module">Wx::Connectionbase</remote-id>
     <remote-id type="cpan-module">Wx::ContextHelpButton</remote-id>
     <remote-id type="cpan-module">Wx::CursorProperty</remote-id>
+    <remote-id type="cpan-module">Wx::DDEClient</remote-id>
+    <remote-id type="cpan-module">Wx::DDEConnection</remote-id>
+    <remote-id type="cpan-module">Wx::DDEServer</remote-id>
     <remote-id type="cpan-module">Wx::DND</remote-id>
     <remote-id type="cpan-module">Wx::DataObject</remote-id>
     <remote-id type="cpan-module">Wx::DataObjectComposite</remote-id>
@@ -66,7 +72,6 @@
     <remote-id type="cpan-module">Wx::DropFilesEvent</remote-id>
     <remote-id type="cpan-module">Wx::DropSource</remote-id>
     <remote-id type="cpan-module">Wx::DropTarget</remote-id>
-    <remote-id type="cpan-module">Wx::Droptarget</remote-id>
     <remote-id type="cpan-module">Wx::EditEnumProperty</remote-id>
     <remote-id type="cpan-module">Wx::EnumProperty</remote-id>
     <remote-id type="cpan-module">Wx::Event</remote-id>
@@ -133,6 +138,7 @@
     <remote-id type="cpan-module">Wx::HtmlWinTagHandler</remote-id>
     <remote-id type="cpan-module">Wx::HtmlWindow</remote-id>
     <remote-id type="cpan-module">Wx::HtmlWordCell</remote-id>
+    <remote-id type="cpan-module">Wx::IPC</remote-id>
     <remote-id type="cpan-module">Wx::IPV4address</remote-id>
     <remote-id type="cpan-module">Wx::IPV6address</remote-id>
     <remote-id type="cpan-module">Wx::IPaddress</remote-id>
@@ -147,9 +153,6 @@
     <remote-id type="cpan-module">Wx::MDIChildFrame</remote-id>
     <remote-id type="cpan-module">Wx::MDIClientWindow</remote-id>
     <remote-id type="cpan-module">Wx::MDIParentFrame</remote-id>
-    <remote-id type="cpan-module">Wx::Media</remote-id>
-    <remote-id type="cpan-module">Wx::MediaCtrl</remote-id>
-    <remote-id type="cpan-module">Wx::MediaEvent</remote-id>
     <remote-id type="cpan-module">Wx::Menu</remote-id>
     <remote-id type="cpan-module">Wx::Mini</remote-id>
     <remote-id type="cpan-module">Wx::MultiChoiceProperty</remote-id>
@@ -184,7 +187,9 @@
     <remote-id type="cpan-module">Wx::Perl::TextValidator</remote-id>
     <remote-id type="cpan-module">Wx::PerlTest</remote-id>
     <remote-id type="cpan-module">Wx::PlArtProvider</remote-id>
+    <remote-id type="cpan-module">Wx::PlClient</remote-id>
     <remote-id type="cpan-module">Wx::PlCommand</remote-id>
+    <remote-id type="cpan-module">Wx::PlConnection</remote-id>
     <remote-id type="cpan-module">Wx::PlDataObjectSimple</remote-id>
     <remote-id type="cpan-module">Wx::PlDataViewIndexListModel</remote-id>
     <remote-id type="cpan-module">Wx::PlDropTarget</remote-id>
@@ -199,6 +204,7 @@
     <remote-id type="cpan-module">Wx::PlHtmlWinTagHandler</remote-id>
     <remote-id type="cpan-module">Wx::PlPreviewControlBar</remote-id>
     <remote-id type="cpan-module">Wx::PlPreviewFrame</remote-id>
+    <remote-id type="cpan-module">Wx::PlServer</remote-id>
     <remote-id type="cpan-module">Wx::PlThreadEvent</remote-id>
     <remote-id type="cpan-module">Wx::PlXmlResourceHandler</remote-id>
     <remote-id type="cpan-module">Wx::PliXmlSubclassFactory</remote-id>
@@ -249,6 +255,7 @@
     <remote-id type="cpan-module">Wx::RichTextStyleOrganiserDialog</remote-id>
     <remote-id type="cpan-module">Wx::RichTextXMLHandler</remote-id>
     <remote-id type="cpan-module">Wx::STC</remote-id>
+    <remote-id type="cpan-module">Wx::Server</remote-id>
     <remote-id type="cpan-module">Wx::SimpleApp</remote-id>
     <remote-id type="cpan-module">Wx::SimpleHelpProvider</remote-id>
     <remote-id type="cpan-module">Wx::SimpleHtmlListBox</remote-id>
@@ -262,6 +269,9 @@
     <remote-id type="cpan-module">Wx::StyledTextEvent</remote-id>
     <remote-id type="cpan-module">Wx::SymbolPickerDialog</remote-id>
     <remote-id type="cpan-module">Wx::SystemColourProperty</remote-id>
+    <remote-id type="cpan-module">Wx::TCPClient</remote-id>
+    <remote-id type="cpan-module">Wx::TCPConnection</remote-id>
+    <remote-id type="cpan-module">Wx::TCPServer</remote-id>
     <remote-id type="cpan-module">Wx::TextAttrEx</remote-id>
     <remote-id type="cpan-module">Wx::TextDataObject</remote-id>
     <remote-id type="cpan-module">Wx::TextDropTarget</remote-id>
@@ -273,13 +283,10 @@
     <remote-id type="cpan-module">Wx::UNIXaddress</remote-id>
     <remote-id type="cpan-module">Wx::URLDataObject</remote-id>
     <remote-id type="cpan-module">Wx::View</remote-id>
-    <remote-id type="cpan-module">Wx::WebView</remote-id>
-    <remote-id type="cpan-module">Wx::WebViewArchiveHandler</remote-id>
-    <remote-id type="cpan-module">Wx::WebViewEvent</remote-id>
-    <remote-id type="cpan-module">Wx::WebViewHandler</remote-id>
     <remote-id type="cpan-module">Wx::WinHelpController</remote-id>
     <remote-id type="cpan-module">Wx::WindowsPrintPreview</remote-id>
     <remote-id type="cpan-module">Wx::WindowsPrinter</remote-id>
+    <remote-id type="cpan-module">Wx::Wx_Exp</remote-id>
     <remote-id type="cpan-module">Wx::XRC</remote-id>
     <remote-id type="cpan-module">Wx::XSP::Enum</remote-id>
     <remote-id type="cpan-module">Wx::XSP::Event</remote-id>
