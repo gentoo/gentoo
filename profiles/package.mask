@@ -577,10 +577,6 @@ dev-db/postgresql-server
 # disabling GLX indirect rendering protocol support on the X server.
 <x11-drivers/nvidia-drivers-304
 
-# Sergey Popov <pinkbyte@gentoo.org> (09 Dec 2014)
-# Security mask, wrt bug #529728
-<app-antivirus/clamav-0.98.5
-
 # Patrick Lauer <patrick@gentoo.org> (24 Nov 2014)
 # Missing deps, uninstallable
 www-apps/trac-downloads
