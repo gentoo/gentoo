@@ -146,9 +146,6 @@ src_prepare() {
 	sed -i 's/, "-Werror"//' "${S}/tools/python/setup.py" || die "failed to re-set setup.py"
 
 	# Bug #575868 converted to a sed statement, typo of one char
-	sed -e "s:granter’s:granter's:" -i xen/include/public/grant_table.h
-
-	# Bug #575868 converted to a sed statement, typo of one char
 	sed -e "s:granter’s:granter's:" -i xen/include/public/grant_table.h || die
 
 	epatch_user
