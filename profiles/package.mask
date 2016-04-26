@@ -810,11 +810,6 @@ www-apache/mod_spdy
 # there is a working release.
 sci-geosciences/googleearth
 
-# Chris Reffett <creffett@gentoo.org> (20 Jul 2013)
-# Uses vulnerable versions of bzip2, but these versions are
-# necessary to reconstruct older archives. Use at your own risk.
-=app-portage/deltup-0.4.5
-
 # Michael Weber <xmw@gentoo.org> (17 Jul 2013)
 # Upstream next versions
 >=sys-boot/raspberrypi-firmware-1_pre
