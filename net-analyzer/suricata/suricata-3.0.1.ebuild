@@ -44,10 +44,6 @@ pkg_setup() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}/fortify_source-numeric.patch"
-	epatch "${FILESDIR}/magic-location.patch"
-	epatch "${FILESDIR}/json.patch"
-
 	eautoreconf
 }
 
