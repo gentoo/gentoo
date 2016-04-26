@@ -953,12 +953,6 @@ net-misc/asterisk-spandsp_codec_g726
 # Masking libmapi as it depends on masked samba4
 >=net-libs/libmapi-0.9
 
-# Peter Alfredsen <loki_val@gentoo.org> (21 Oct 2009)
-# Masked because this needs a patch to be applied to portage
-# to not install the kitchensink and everything else
-# into /usr/src/debug with FEATURES=installsources
-=dev-util/debugedit-4.4.6-r2
-
 # Diego E. Pettenò <flameeyes@gmail.com> (09 Oct 2009)
 # Untested yet; documented only in Russian, help is appreciated.
 sys-auth/pam_keystore
