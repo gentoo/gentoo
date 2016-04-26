@@ -712,11 +712,6 @@ app-eselect/eselect-lua
 =dev-lang/lua-5.2.3
 =dev-lang/lua-5.2.3-r1
 
-# Gilles Dartiguelongue <eva@gentoo.org> (06 Apr 2014)
-# Old release, never stable, not working anymore
-# See bug #327837, #382667, #492474
-<media-video/pitivi-0.90
-
 # Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (26 Mar 2014)
 # Affected by multiple vulnerabilities, #445916, #471098 and #472280
 <media-libs/mesa-9.1.4
