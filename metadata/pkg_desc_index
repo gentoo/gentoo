@@ -1836,9 +1836,9 @@ app-misc/mencal 2.3: A calendar that can be used to track menstruation (or other
 app-misc/mepl 0.45: Self-employed-mode software for 3COM/USR message modems
 app-misc/metromap 0.1.4-r1: Metromap is simple pygtk+2 programm for finding paths in metro(subway) maps
 app-misc/mime-types 9: Provides /etc/mime.types file
-app-misc/misterhouse 2.103 2.105: Mister House, an open source home automation program with X10 support
+app-misc/misterhouse 2.103-r1 2.105-r1: Mister House, an open source home automation program with X10 support
 app-misc/mmv 1.01b_p18: Move/copy/append/link multiple files according to a set of wildcard patterns
-app-misc/mouseremote 0.90-r1: X10 MouseRemote
+app-misc/mouseremote 0.90-r2: X10 MouseRemote
 app-misc/mtail 1.1.1-r2 1.1.1-r3: Tail workalike, that performs output colourising
 app-misc/muttprint 0.73 0.73-r1 0.73-r2 0.73-r3: Script for pretty printing of your mails
 app-misc/mvcase 0.1-r1: A modified version of mv, used to convert filenames to lower/upper case
@@ -6340,11 +6340,13 @@ dev-perl/Text-Roman 3.500.0: Allows conversion between Roman and Arabic algarism
 dev-perl/Text-Shellwords 1.80.0-r1: Parses lines of text and returns a set of tokens using the same rules as the Unix shell
 dev-perl/Text-Soundex 3.50.0: Implementation of the soundex algorithm
 dev-perl/Text-Table 1.127.0-r1 1.130.0: Organize Data in Tables
+dev-perl/Text-Template 1.460.0-r1: Expand template text with embedded Perl
 dev-perl/Text-Unaccent 1.80.0-r1: Removes accents from a string
 dev-perl/Text-Unidecode 0.40.0-r1 1.230.0 1.240.0 1.270.0: Plain ASCII transliterations of Unicode text
 dev-perl/Text-VimColor 0.260: Syntax highlighting using vim
 dev-perl/Text-WikiFormat 0.800.0-r1 0.810.0: Translate Wiki formatted text into other formats
 dev-perl/Text-WrapI18N 0.60.0-r1: Internationalized substitute of Text::Wrap
+dev-perl/Text-Wrapper 1.40.0-r1 1.50.0: Word wrap text by breaking long lines
 dev-perl/Text-vFile-asData 0.80.0: Perl module to parse vFile formatted files into data structures
 dev-perl/TheSchwartz 1.120.0: Reliable job queue
 dev-perl/Thread-SigMask 0.4.0: Thread specific signal masks
@@ -6355,6 +6357,7 @@ dev-perl/Tie-Cache 0.190.0-r1 0.210.0: In memory size limited LRU cache
 dev-perl/Tie-Cache-LRU 20110205.0.0-r1 20150301.0.0: A Least-Recently Used cache
 dev-perl/Tie-Cache-LRU-Expires 0.550.0-r1: Extends Tie::Cache::LRU with expiring
 dev-perl/Tie-Cycle 1.190.0-r1 1.210.0 1.221.0: Cycle through a list of values via a scalar
+dev-perl/Tie-EncryptedHash 1.240.0-r1: Hashes (and objects based on hashes) with encrypting fields
 dev-perl/Tie-Hash-Method 0.20.0: Tied hash with specific methods overriden by callbacks
 dev-perl/Tie-IxHash 1.230.0: Ordered associative arrays for Perl
 dev-perl/Tie-LLHash 1.3.0-r1 1.4.0: Implements an ordered hash-like object
@@ -6377,11 +6380,11 @@ dev-perl/Time-TZOffset 0.40.0: Show timezone offset strings like +0900
 dev-perl/TimeDate 2.300.0: A Date/Time Parsing Perl Module
 dev-perl/Tk 804.32.0-r1 804.33.0: A Perl Module for Tk
 dev-perl/Tk-CursorControl 0.400.0-r1: Manipulate the mouse cursor programmatically
-dev-perl/Tk-JPEG-Lite 2.14.30-r1: lite JPEG loader for Tk::Photo
+dev-perl/Tk-JPEG-Lite 2.14.30-r1 2.15.0: lite JPEG loader for Tk::Photo
 dev-perl/Tk-TableMatrix 1.230.0-r1: Perl module for Tk-TableMatrix
 dev-perl/Tree-DAG_Node 1.60.0-r1 1.240.0 1.270.0 1.290.0: (Super)class for representing nodes in a tree
-dev-perl/Tree-Simple 1.180.0-r1 1.250.0: A simple tree object
-dev-perl/Try-Tiny 0.220.0: Minimal try/catch with proper localization of source /home/mgorny/repos/gentoo/dev-perl/Try-Tiny/Try-Tiny-0.220.0.ebuild
+dev-perl/Tree-Simple 1.180.0-r1 1.250.0 1.270.0: A simple tree object
+dev-perl/Try-Tiny 0.220.0 0.240.0: Minimal try/catch with proper localization of $@
 dev-perl/Type-Tiny 1.0.5: tiny, yet Moo(se)-compatible type constraint
 dev-perl/Type-Tiny-XS 0.12.0: provides an XS boost for some of Type::Tiny's built-in type constraints
 dev-perl/Types-Serialiser 1.0.0: simple data types for common serialisation formats
@@ -6389,11 +6392,11 @@ dev-perl/UNIVERSAL-can 1.201.207.260-r1 1.201.401.240 1.201.403.280: Hack around
 dev-perl/UNIVERSAL-isa 1.201.207.260-r1 1.201.506.140: Attempt to recover from people calling UNIVERSAL::isa as a function
 dev-perl/UNIVERSAL-moniker 0.80.0-r1: adds a moniker to every class or module
 dev-perl/UNIVERSAL-require 0.160.0 0.180.0: UNIVERSAL::require - require() modules from a variable
-dev-perl/URI 1.600.0-r1 1.680.0 1.690.0: Uniform Resource Identifiers (absolute and relative)
-dev-perl/URI-Encode 0.90.0: Simple percent Encoding/Decoding
-dev-perl/URI-Fetch 0.90.0-r1: Smart URI fetching/caching
+dev-perl/URI 1.600.0-r1 1.680.0 1.690.0 1.710.0: Uniform Resource Identifiers (absolute and relative)
+dev-perl/URI-Encode 0.90.0 1.1.0: Simple percent Encoding/Decoding
+dev-perl/URI-Fetch 0.90.0-r1 0.110.0: Smart URI fetching/caching
 dev-perl/URI-Find 20111103.0.0-r1 20140709.0.0: Find URIs in plain text
-dev-perl/UUID 0.50.0: Perl extension for using UUID interfaces as defined in e2fsprogs.
+dev-perl/UUID 0.50.0 0.250.0: Perl extension for using UUID interfaces as defined in e2fsprogs
 dev-perl/UUID-Tiny 1.40.0: Pure Perl UUID Support With Functional Interface
 dev-perl/UltraDNS 0.60.0-r1: Client API for the NeuStar UltraDNS Transaction Protocol
 dev-perl/Unicode-EastAsianWidth 1.330.0-r1: East Asian Width properties
@@ -6412,13 +6415,13 @@ dev-perl/VM-EC2 1.280.0: Interface to Amazon EC2, VPC, ELB, Autoscaling, and Rel
 dev-perl/VM-EC2-Security-CredentialCache 0.250.0: Cache credentials respecting expiration time for IAM roles
 dev-perl/Validate-Net 0.600.0-r1: Format validation and more for Net:: related strings
 dev-perl/Validate-Tiny 1.015 1.551: Minimalistic data validation
-dev-perl/Variable-Magic 0.530.0-r1 0.570.0 0.580.0: Associate user-defined magic to variables from Perl
+dev-perl/Variable-Magic 0.530.0-r1 0.570.0 0.580.0 0.590.0: Associate user-defined magic to variables from Perl
 dev-perl/Video-Frequencies 0.03-r1: Video Frequencies perl module, for use with ivtv-ptune
 dev-perl/Video-Info 0.993.0-r1: Perl extension for getting video info
 dev-perl/Video-ivtv 0.13-r1: Video::ivtv perl module, for use with ivtv-ptune
 dev-perl/WWW-Bugzilla 1.500.0-r1: WWW::Bugzilla - automate interaction with bugzilla
 dev-perl/WWW-Curl 4.150.0-r1 4.170.0: Perl extension interface for libcurl
-dev-perl/WWW-Dict-Leo-Org 1.360.0 1.370.0 1.390.0: Commandline interface to http://dict.leo.org/
+dev-perl/WWW-Dict-Leo-Org 1.360.0 1.370.0 1.390.0 1.400.0: Commandline interface to http://dict.leo.org/
 dev-perl/WWW-Mechanize 1.730.0-r1 1.750.0: Handy web browsing in a Perl object
 dev-perl/WWW-Mechanize-FormFiller 0.100.0-r1 0.110.0: Framework to automate HTML forms
 dev-perl/WWW-Pastebin-PastebinCom-Create 0.4.0-r1 1.3.0: Paste on www.pastebin.com without API keys
@@ -6558,9 +6561,6 @@ dev-perl/rpm-build-perl 0.820.0: Automatically extract Perl dependencies
 dev-perl/self 0.340.0-r1: provides '$self' in OO code
 dev-perl/strictures 2.0.1 2.0.2: Turn on strict and make most warnings fatal
 dev-perl/syntax 0.4.0: Activate syntax extensions
-dev-perl/text-template 1.460.0-r1: Expand template text with embedded Perl
-dev-perl/text-wrapper 1.40.0-r1: Word wrap text by breaking long lines
-dev-perl/tie-encryptedhash 1.240.0-r1: Hashes (and objects based on hashes) with encrypting fields
 dev-perl/tkispell 0.180.0: Perl/Tk user interface for ispell
 dev-perl/txt2html 2.520.100: Convert a plain text file to HTML
 dev-perl/yaml 0.840.0-r1 0.900.0 1.140.0 1.150.0: YAML Ain't Markup Language (tm)
