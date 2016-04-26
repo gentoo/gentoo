@@ -21,3 +21,4 @@ move dev-perl/Time-modules dev-perl/Time-ParseDate
 move dev-perl/text-template dev-perl/Text-Template
 move dev-perl/text-wrapper dev-perl/Text-Wrapper
 move dev-perl/tie-encryptedhash dev-perl/Tie-EncryptedHash
+move dev-perl/yaml dev-perl/YAML
