@@ -542,10 +542,6 @@ app-emulation/emul-linux-x86-jna
 # Not supported by any django version upstream supports
 dev-python/south
 
-# Michał Górny <mgorny@gentoo.org> (11 Feb 2015)
-# Potentially destructive to @world, bug #539746.
-=sys-apps/portage-2.2.16
-
 # Sergei Trofimovich <slyfox@gentoo.org> (29 Jan 2015)
 # Mask live ebuild
 =dev-util/radare2-9999
