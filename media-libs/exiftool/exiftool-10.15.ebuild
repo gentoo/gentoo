@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 MY_PN=Image-ExifTool
 MY_P=${MY_PN}-${PV}
@@ -17,6 +17,8 @@ KEYWORDS="~amd64 ~ppc ~ppc64 ~x86 ~x64-macos"
 IUSE="doc"
 
 SRC_TEST="do"
+
+S="${WORKDIR}/Image-ExifTool-${PV}"
 
 src_install() {
 	perl-module_src_install
