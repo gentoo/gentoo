@@ -660,26 +660,6 @@ sys-block/afacli
 app-emulation/openstack-guest-agents-unix
 app-emulation/xe-guest-utilities
 
-# Tom Wijsman <TomWij@gentoo.org> (6 Jun 2014)
-# Mask gentoo-sources ebuilds that are affected with security bug CVE-2014-3153.
-#
-# Pinkie Pie discovered an issue in the futex subsystem that allows a
-# local user to gain ring 0 control via the futex syscall. An
-# unprivileged user could use this flaw to crash the kernel (resulting
-# in denial of service) or for privilege escalation.
-#
-# https://bugs.gentoo.org/show_bug.cgi?id=CVE-2014-3153
-# Expires (6 Jun 2016)
-=sys-kernel/gentoo-sources-3.2.58-r2
-~sys-kernel/gentoo-sources-3.4.90
-=sys-kernel/gentoo-sources-3.4.91
-~sys-kernel/gentoo-sources-3.10.40
-=sys-kernel/gentoo-sources-3.10.41
-~sys-kernel/gentoo-sources-3.12.20
-=sys-kernel/gentoo-sources-3.12.21
-~sys-kernel/gentoo-sources-3.14.4
-=sys-kernel/gentoo-sources-3.14.5
-
 # Hans de Graaff <graaff@gentoo.org> (1 Jun 2014)
 # Mask new rubinius version for testing. Current versions have some
 # issues that should be solved in the forthcoming rubinius 2.3
