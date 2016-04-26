@@ -3911,8 +3911,8 @@ dev-java/htmlparser-org 1.6: Java library used to parse HTML (from htmlparser.or
 dev-java/httpcomponents-client 4.5: A low level toolset of Java components focused on HTTP and associated protocols
 dev-java/httpcomponents-core 4.4.1-r1: A low level toolset of Java components focused on HTTP and associated protocols
 dev-java/ical4j 1.0.5: a Java library for handling iCalendar data streams
-dev-java/icedtea 3.0.0 7.2.6.6: A harness to build OpenJDK using Free Software build tools and dependencies
-dev-java/icedtea-bin 3.0.0_pre10 3.0.0-r1 7.2.6.5 7.2.6.6-r1: A Gentoo-made binary build of the IcedTea JDK
+dev-java/icedtea 3.0.1 7.2.6.6: A harness to build OpenJDK using Free Software build tools and dependencies
+dev-java/icedtea-bin 3.0.0_pre10 3.0.1 7.2.6.5 7.2.6.6-r1: A Gentoo-made binary build of the IcedTea JDK
 dev-java/icedtea-sound 1.0.1: Plugins for javax.sound
 dev-java/icedtea-web 1.5.1-r1 1.6.1-r1: FOSS Java browser plugin and Web Start implementation
 dev-java/icu4j 54.1.1 55.1: A set of Java libraries providing Unicode and Globalization support
@@ -4142,7 +4142,7 @@ dev-java/netbeans-extide 8.0.2 8.1: Netbeans ExtIDE Cluster
 dev-java/netbeans-groovy 8.0.2 8.1: Netbeans Groovy Cluster
 dev-java/netbeans-harness 8.0.2 8.1: Netbeans Harness
 dev-java/netbeans-ide 8.0.2-r2 8.1-r2: Netbeans IDE Cluster
-dev-java/netbeans-java 8.0.2-r4 8.1-r2: Netbeans Java Cluster
+dev-java/netbeans-java 8.0.2-r5 8.1-r2: Netbeans Java Cluster
 dev-java/netbeans-javacard 8.0.2 8.1: Netbeans JavaCard Cluster
 dev-java/netbeans-javadoc 8.0.2 8.1: Netbeans JavaDocs
 dev-java/netbeans-javafx 8.0.2 8.1: Netbeans JavaFX Cluster
@@ -17143,7 +17143,7 @@ sys-infiniband/perftest 1.4.0 2.0: OpenIB uverbs micro-benchmarks
 sys-infiniband/qperf 0.4.9: Measure RDMA and IP performance
 sys-infiniband/rds-tools 2.0.4-r2 2.0.4-r3: OpenIB userspace rds-tools
 sys-infiniband/srptools 0.0.4-r2 1.0.2: Tools for discovering and connecting to SRP CSI targets on InfiniBand fabrics
-sys-kernel/aufs-sources 3.18.29 4.0.9-r1 4.1.20 4.4.6 4.5.0: Full sources including the Gentoo patchset for the 4.5 kernel tree and aufs4 support
+sys-kernel/aufs-sources 3.18.29 3.18.31 4.1.20 4.1.22 4.4.6 4.4.8 4.5.0 4.5.2: Full sources including the Gentoo patchset for the 4.5 kernel tree and aufs4 support
 sys-kernel/ck-sources 3.4.110 3.10.97 3.14.61 3.18.27 4.1.18 4.3.6: Con Kolivas' high performance patchset and Gentoo's genpatches for Linux 4.3
 sys-kernel/cryptodev 1.7: device that allows access to Linux kernel cryptographic drivers
 sys-kernel/dracut 034-r4 040-r3 041-r3 043-r2 044: Generic initramfs generation tool
