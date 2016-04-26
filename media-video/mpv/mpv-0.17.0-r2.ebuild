@@ -282,7 +282,8 @@ pkg_postinst() {
 	gnome2_icon_cache_update
 
 	# bash-completion prior to 2.3-r1 installs (mostly broken) mpv completion.
-	if use cli && ! has_version '<app-shells/bash-completion-2.3-r1' && \
+	if use cli && ! use zsh-completion && \
+		! has_version '<app-shells/bash-completion-2.3-r1' && \
 		! has_version 'app-shells/mpv-bash-completion'; then
 		elog "If you want to have command-line completion via bash-completion,"
 		elog "please install app-shells/mpv-bash-completion."
