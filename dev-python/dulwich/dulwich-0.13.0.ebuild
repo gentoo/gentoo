@@ -1,10 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python{2_7,3_4,3_5} )
 
 inherit distutils-r1
 
@@ -29,16 +29,11 @@ python_compile_all() {
 }
 
 python_test() {
-	# https://github.com/jelmer/dulwich/issues/196
-	if [[ "${EPYTHON}" == pypy ]]; then
-		"${PYTHON}" -m unittest dulwich.tests.test_suite || die "Tests failed under pypy"
-	else
-		emake check
-	fi
+	emake check
 }
 
 python_install_all() {
 	use doc && local HTML_DOCS=( docs/build/html/. )
-	use examples && local EXAMPLES=( examples/. )
+	use examples && dodoc -r examples
 	distutils-r1_python_install_all
 }
