@@ -1,8 +1,8 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=2
+EAPI=6
 
 IUSE="X gtk"
 
@@ -43,12 +43,12 @@ src_configure() {
 src_compile() {
 	# The CFLAGS don't seem to make it into the Makefile.
 	cd src
-	emake CXFLAGS="${CFLAGS}" || die
+	emake CXFLAGS="${CFLAGS}"
 }
 
 src_install() {
-	dobin src/nvtv || die
-	dosbin src/nvtvd || die
+	dobin src/nvtv
+	dosbin src/nvtvd
 
 	dodoc ANNOUNCE BUGS FAQ INSTALL README \
 		doc/USAGE doc/chips.txt doc/overview.txt \

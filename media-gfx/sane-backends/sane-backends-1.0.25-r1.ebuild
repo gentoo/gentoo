@@ -1,10 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI="5"
 
-inherit autotools eutils flag-o-matic multilib multilib-minimal udev user toolchain-funcs
+inherit eutils flag-o-matic multilib multilib-minimal udev user toolchain-funcs
 
 # gphoto and v4l are handled by their usual USE flags.
 # The pint backend was disabled because I could not get it to compile.
@@ -121,7 +121,7 @@ HOMEPAGE="http://www.sane-project.org/"
 case ${PV} in
 9999)
 	EGIT_REPO_URI="git://anonscm.debian.org/sane/sane-backends.git"
-	inherit git-r3
+	inherit git-r3 autotools
 	;;
 *_pre*)
 	MY_P="${PN}-git${PV#*_pre}"
@@ -131,7 +131,8 @@ case ${PV} in
 	;;
 *)
 	MY_P=${P}
-	SRC_URI="https://alioth.debian.org/frs/download.php/file/3958/${P}.tar.gz"
+	FRS_ID="4146"
+	SRC_URI="https://alioth.debian.org/frs/download.php/file/${FRS_ID}/${P}.tar.gz"
 	;;
 esac
 
@@ -142,18 +143,20 @@ if [[ ${PV} != "9999" ]] ; then
 fi
 
 RDEPEND="
-	sane_backends_dc210? ( >=virtual/jpeg-0-r2[${MULTILIB_USEDEP}] )
-	sane_backends_dc240? ( >=virtual/jpeg-0-r2[${MULTILIB_USEDEP}] )
-	sane_backends_dell1600n_net? ( >=virtual/jpeg-0-r2[${MULTILIB_USEDEP}]
-									>=media-libs/tiff-3.9.7-r1[${MULTILIB_USEDEP}] )
+	sane_backends_dc210? ( >=virtual/jpeg-0-r2:0=[${MULTILIB_USEDEP}] )
+	sane_backends_dc240? ( >=virtual/jpeg-0-r2:0=[${MULTILIB_USEDEP}] )
+	sane_backends_dell1600n_net? (
+		>=virtual/jpeg-0-r2:0=[${MULTILIB_USEDEP}]
+		>=media-libs/tiff-3.9.7-r1:0=[${MULTILIB_USEDEP}]
+	)
 	avahi? ( >=net-dns/avahi-0.6.31-r2[${MULTILIB_USEDEP}] )
 	sane_backends_canon_pp? ( >=sys-libs/libieee1284-0.2.11-r3[${MULTILIB_USEDEP}] )
 	sane_backends_hpsj5s? ( >=sys-libs/libieee1284-0.2.11-r3[${MULTILIB_USEDEP}] )
 	sane_backends_mustek_pp? ( >=sys-libs/libieee1284-0.2.11-r3[${MULTILIB_USEDEP}] )
-	usb? ( >=virtual/libusb-1-r1:1[${MULTILIB_USEDEP}] )
+	usb? ( >=virtual/libusb-1-r1:1=[${MULTILIB_USEDEP}] )
 	gphoto2? (
 		>=media-libs/libgphoto2-2.5.3.1:=[${MULTILIB_USEDEP}]
-		>=virtual/jpeg-0-r2[${MULTILIB_USEDEP}]
+		>=virtual/jpeg-0-r2:0=[${MULTILIB_USEDEP}]
 	)
 	v4l? ( >=media-libs/libv4l-0.9.5[${MULTILIB_USEDEP}] )
 	xinetd? ( sys-apps/xinetd )
@@ -171,11 +174,7 @@ DEPEND="${RDEPEND}
 
 # We now use new syntax construct (SUBSYSTEMS!="usb|usb_device)
 RDEPEND="${RDEPEND}
-	!<sys-fs/udev-114
-	abi_x86_32? (
-		!<=app-emulation/emul-linux-x86-medialibs-20140508
-		!app-emulation/emul-linux-x86-medialibs[-abi_x86_32(-)]
-	)"
+	!<sys-fs/udev-114"
 
 MULTILIB_CHOST_TOOLS=(
 	/usr/bin/sane-config
@@ -193,16 +192,18 @@ src_prepare() {
 	# Add support for the Epson-specific backend.  Needs media-gfx/iscan installed.
 	epkowa
 	EOF
-	epatch "${FILESDIR}"/niash_array_index.patch \
-		"${FILESDIR}"/${PN}-1.0.24-automagic_systemd.patch \
-		"${FILESDIR}"/${PN}-1.0.24-systemd_pkgconfig.patch \
-		"${FILESDIR}"/${PN}-1.0.24-saned_pidfile_location.patch \
-		"${FILESDIR}"/${PN}-1.0.24-cross-compile.patch \
-		"${FILESDIR}"/${PN}-1.0.25-disable-usb-tests.patch
-	# Fix for "make check".
-	sed -i -e 's/sane-backends 1.0.24/sane-backends 1.0.25git/' testsuite/tools/data/html*
-	mv configure.{in,ac} || die
-	AT_NOELIBTOOLIZE=yes eautoreconf
+	epatch "${FILESDIR}"/${PN}-1.0.24-saned_pidfile_location.patch
+	epatch "${FILESDIR}"/${PN}-1.0.25-disable-usb-tests.patch
+	if [[ ${PV} == "9999" ]] ; then
+		mv configure.{in,ac} || die
+		AT_NOELIBTOOLIZE=yes eautoreconf
+	fi
+
+	# Fix for "make check".  Upstream sometimes forgets to update this.
+	local ver=$(./configure --version | awk '{print $NF; exit 0}')
+	sed -i \
+		-e "/by sane-desc 3.5 from sane-backends/s:sane-backends .*:sane-backends ${ver}:" \
+		testsuite/tools/data/html* || die
 }
 
 src_configure() {

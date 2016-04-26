@@ -1,8 +1,8 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI="2"
 WANT_AUTOMAKE=none
 
 inherit eutils autotools flag-o-matic ssl-cert user
@@ -13,8 +13,8 @@ SRC_URI="http://www.kannel.org/download/${PV}/gateway-${PV}.tar.gz"
 
 LICENSE="Apache-1.1"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
-IUSE="debug doc mysql pam pcre postgres sqlite ssl"
+KEYWORDS="~amd64 x86"
+IUSE="ssl mysql sqlite postgres pcre doc debug pam"
 
 RESTRICT="test" # some tests fail with "address already in use"
 
@@ -27,15 +27,13 @@ RDEPEND="sys-libs/e2fsprogs-libs
 	sqlite? ( dev-db/sqlite:3 )
 	postgres? ( dev-db/postgresql[server] )
 	pcre? ( dev-libs/libpcre )
-	pam? ( virtual/pam )
-"
+	pam? ( virtual/pam )"
 DEPEND="${RDEPEND}
 	>=sys-devel/bison-2.2
 	doc? ( media-gfx/transfig
 		app-text/jadetex
 		app-text/docbook-dsssl-stylesheets
-		app-text/docbook-sgml-dtd:3.1 )
-"
+		app-text/docbook-sgml-dtd:3.1 )"
 
 S="${WORKDIR}/gateway-${PV}"
 
@@ -45,9 +43,9 @@ pkg_setup() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}/${PN}-1.5.0-custom-wap-ports.patch"
-	epatch "${FILESDIR}/${PN}-1.4.3-autotools.patch"
-	epatch "${FILESDIR}/${PN}-1.4.3-external-libuuid.patch"
+	epatch "${FILESDIR}/${P}-custom-wap-ports.patch"
+	epatch "${FILESDIR}/${P}-autotools.patch"
+	epatch "${FILESDIR}/${P}-external-libuuid.patch"
 
 	#by default, use current directory for logging
 	sed -i -e 's:/tmp/::' doc/examples/kannel.conf
@@ -81,7 +79,7 @@ src_install() {
 	emake DESTDIR="${D}" install || die "emake install failed"
 
 	if use doc; then
-		emake -j1 DESTDIR="${D}" install-docs || die "emake install-docs failed"
+		emake DESTDIR="${D}" install-docs || die "emake install-docs failed"
 	fi
 	dodoc README
 
