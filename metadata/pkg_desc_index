@@ -1820,7 +1820,7 @@ app-misc/ledit 2.03: A line editor to be used with interactive commands
 app-misc/lfm 2.3-r1: Last File Manager is a powerful file manager for the console
 app-misc/linux-logo 5.11-r3: A utility that displays an ANSI/ASCII logo and some system information
 app-misc/linuxspa 0.7.1 0.7.1-r1: Linux Serial Protocol Analyser
-app-misc/lirc 0.9.0-r5: decode and send infra-red signals of many commonly used remote controls
+app-misc/lirc 0.9.0-r6: decode and send infra-red signals of many commonly used remote controls
 app-misc/livecd-tools 2.0.4 2.1 9999: Gentoo LiveCD tools for autoconfiguration of hardware
 app-misc/lockfile-progs 0.1.16 0.1.17: Programs to safely lock/unlock files and mailboxes
 app-misc/logitech-applet 0.4_pre1-r3: Control utility for some special features of some special Logitech USB mice!
@@ -15110,7 +15110,7 @@ net-wireless/broadcom-sta 6.30.223.30-r2 6.30.223.141-r2 6.30.223.248-r4 6.30.22
 net-wireless/bss 0.8: Bluetooth stack smasher / fuzzer
 net-wireless/btcrack 9999: linux port of Thierry Zollers' BTCrack
 net-wireless/chillispot 1.1.0: open source captive portal or wireless LAN access point controller
-net-wireless/chirp 0.4.1 9999: Free open-source tool for programming your amateur radio
+net-wireless/chirp 20160419 99999999: Free open-source tool for programming your amateur radio
 net-wireless/cpyrit-cuda 0.4.0-r1: A sub-package that adds CUDA-capability to Pyrit
 net-wireless/cpyrit-opencl 0.4.0-r1: A sub-package that adds OpenCL-capability to Pyrit
 net-wireless/crackle 0.1: Crackle cracks BLE Encryption (AKA Bluetooth Smart)
