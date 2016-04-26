@@ -66,7 +66,7 @@ RDEPEND=">=virtual/jdk-1.7
 	dev-java/jboss-logging:0
 	dev-java/jsr67:0
 	dev-java/jsr181:0
-	dev-java/jtidy:0
+	>=dev-java/jtidy-1:0
 	dev-java/log4j:0
 	dev-java/mimepull:0
 	dev-java/saaj:0
@@ -215,6 +215,7 @@ src_install() {
 	popd >/dev/null || die
 
 	local instdir=${INSTALL_DIR}/modules/ext/hibernate4
+	local dinstdir="${D}/${instdir}"
 	pushd "${D}"/${instdir} >/dev/null || die
 	rm antlr-2.7.7.jar && dosym /usr/share/antlr/lib/antlr.jar ${instdir}/antlr-2.7.7.jar || die
 	rm c3p0-0.9.2.1.jar && dosym /usr/share/c3p0/lib/c3p0.jar ${instdir}/c3p0-0.9.2.1.jar || die
@@ -224,7 +225,7 @@ src_install() {
 	rm javassist-3.18.1-GA.jar && dosym /usr/share/javassist-3/lib/javassist.jar ${instdir}/javassist-3.18.1-GA.jar || die
 	rm jboss-logging-3.1.3.GA.jar && dosym /usr/share/jboss-logging/lib/jboss-logging.jar ${instdir}/jboss-logging-3.1.3.GA.jar || die
 	rm jboss-transaction-api_1.2_spec-1.0.0.Final.jar && dosym /usr/share/glassfish-transaction-api/lib/jta.jar ${instdir}/jboss-transaction-api_1.2_spec-1.0.0.Final.jar || die
-	rm jtidy-r8-20060801.jar && dosym /usr/share/jtidy/lib/Tidy.jar ${instdir}/jtidy-r8-20060801.jar || die
+	rm jtidy-r8-20060801.jar && java-pkg_jar-from --into "${dinstdir}" jtidy jtidy.jar jtidy-r8-20060801.jar
 	rm log4j-1.2.12.jar && dosym /usr/share/log4j/lib/log4j.jar ${instdir}/log4j-1.2.12.jar || die
 	popd >/dev/null || die
 
