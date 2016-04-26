@@ -134,8 +134,7 @@ src_install() {
 	insinto /usr/share/RetroShare06
 	doins libbitdht/src/bitdht/bdboot.txt
 
-	insinto /usr/share/RetroShare06/webui
-	doins libresapi/src/webfiles/*
+	doins -r libresapi/src/webui
 
 	dodoc README.md
 	make_desktop_entry RetroShare06

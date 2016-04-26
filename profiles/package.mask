@@ -30,6 +30,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Sergey Popov <pinkbyte@gentoo.org> (26 Apr 2016)
+# Security mask of older branches, wrt bug #5567810
+<dev-vcs/subversion-1.8
+
 # James Le Cuirot <chewi@gentoo.org> (25 Apr 2016)
 # Long dead upstream and no longer needed. Removal in 30 days.
 dev-java/charva
