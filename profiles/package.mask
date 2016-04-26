@@ -776,12 +776,6 @@ www-client/google-chrome:beta
 www-client/google-chrome:stable
 www-client/google-chrome:unstable
 
-# Tony Vroon <chainsaw@gentoo.org> (13 Jan 2014)
-# Asterisk 12 is a short term "standard" release
-# containing significant architectural changes.
-# This is not for your production kit quite yet.
-=net-misc/asterisk-12*
-
 # Justin Lecher <jlec@gentoo.org> (14 Oct 2013)
 # Seems to break all deps - API change?
 >=sci-libs/metis-5
