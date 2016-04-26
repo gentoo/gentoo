@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -17,7 +17,7 @@ IUSE=""
 DEPEND="
 	virtual/perl-File-Spec
 	virtual/perl-File-Temp
-	|| ( dev-perl/YAML-Syck dev-perl/yaml )
+	|| ( dev-perl/YAML-Syck dev-perl/YAML )
 	dev-perl/Archive-Zip"
 	# || ( YAML::Syck YAML YAML-Tiny YAML-XS Parse-CPAN-Meta )
 RDEPEND="${DEPEND}"
