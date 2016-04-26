@@ -717,10 +717,6 @@ app-eselect/eselect-lua
 # See bug #327837, #382667, #492474
 <media-video/pitivi-0.90
 
-# Alexander Vershilov <qnikst@gentoo.org> (02 Apr 2014)
-# Multiple vulnerabilities, see #504724, #505860
-<sys-kernel/openvz-sources-2.6.32.85.17
-
 # Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (26 Mar 2014)
 # Affected by multiple vulnerabilities, #445916, #471098 and #472280
 <media-libs/mesa-9.1.4
