@@ -4,7 +4,7 @@
 
 EAPI="5"
 
-inherit eutils java-vm-2 multilib toolchain-funcs
+inherit java-vm-2 multilib toolchain-funcs
 
 dist="https://dev.gentoo.org/~chewi/distfiles"
 TARBALL_VERSION="${PV}"
@@ -14,7 +14,7 @@ HOMEPAGE="http://icedtea.classpath.org"
 SRC_URI="doc? ( ${dist}/${PN}-doc-${TARBALL_VERSION}.tar.xz )
 	source? ( ${dist}/${PN}-src-${TARBALL_VERSION}.tar.xz )"
 
-for arch in amd64 arm x86; do
+for arch in amd64 arm ppc64 x86; do
 	SRC_URI+="
 		${arch}? (
 			${dist}/${PN}-core-${TARBALL_VERSION}-${arch}.tar.xz
@@ -89,9 +89,6 @@ src_prepare() {
 		rm -vr jre/lib/$(get_system_arch)/lib*{[jx]awt,splashscreen}* \
 		   {,jre/}bin/policytool bin/appletviewer || die
 	fi
-
-	# Disable EC for now, bug #579676.
-	epatch "${FILESDIR}/no-sunec.patch"
 }
 
 src_install() {
