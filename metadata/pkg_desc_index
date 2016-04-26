@@ -70,7 +70,7 @@ app-admin/cli53 0.7.4 9999: Command line tool for Amazon Route 53
 app-admin/clog 1.1.0: A colorized log tail utility
 app-admin/clsync 0.4.1: Live sync tool based on inotify, written in GNU C
 app-admin/clustershell 1.6 1.6-r1: Python framework for efficient cluster administration
-app-admin/collectd 5.5.1-r3: Collects system statistics and provides mechanisms to store the values
+app-admin/collectd 5.5.1-r4: Collects system statistics and provides mechanisms to store the values
 app-admin/conky 1.9.0-r3 1.10.1: An advanced, highly configurable system monitor for X
 app-admin/conkyforecast 2.24-r1: Conky weather forecast script with support for language files
 app-admin/conserver 8.1.18 8.1.18-r1: Serial Console Manager
@@ -5475,7 +5475,7 @@ dev-perl/Devel-Caller 2.60.0: Meatier versions of caller
 dev-perl/Devel-CheckBin 0.40.0: check that a command is available
 dev-perl/Devel-CheckCompiler 0.50.0: Check the compiler's availability
 dev-perl/Devel-CheckLib 1.60.0: check that a library is available
-dev-perl/Devel-Cover 1.200.0 1.210.0: Code coverage metrics for Perl
+dev-perl/Devel-Cover 1.200.0 1.210.0 1.230.0: Code coverage metrics for Perl
 dev-perl/Devel-Cycle 1.120.0: Find memory cycles in objects
 dev-perl/Devel-Declare 0.6.18: Adding keywords to perl, in perl
 dev-perl/Devel-Dumpvar 1.60.0-r1: Pure-OO reimplementation of dumpvar.pl
