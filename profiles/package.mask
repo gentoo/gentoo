@@ -203,17 +203,6 @@ app-cdr/qmultirecord
 # Masked for removal in 30 days.
 net-p2p/hx
 
-# Aaron Bauman <bman@gentoo.org> (19 Mar 2016)
-# Unpatched security vulnerability per bug #521892.
-# Masked for removal in 30 days.
-net-irc/srvx
-
-# Aaron Bauman <bman@gentoo.org> (19 Mar 2016)
-# Unpatched security vulnerability per bug #261182.
-# Masked for removal in 30 days.
-media-sound/shoutcast-server-bin
-media-sound/shoutcast-trans-bin
-
 # Lars Wendler <polynomial-c@gentoo.org> (20 Mar 2016)
 # Don't work with latest claws-mail package. Most plugins are now part of
 # claws-mail sources and can be en-/disabled via USE flags.
@@ -249,16 +238,6 @@ x11-libs/libview
 # Unpatched security vulnerability per bug #512356.
 # Masked for removal in 30 days.
 =app-forensics/chkrootkit-0.49
-
-# Aaron Bauman <bman@gentoo.org> (19 Mar 2016)
-# Unpatched security vulnerability per bug #529712.
-# Masked for removal in 30 days.
-www-apps/coppermine
-
-# Aaron Bauman <bman@gentoo.org> (19 Mar 2016)
-# Multiple unpatched security vulnerabilities
-# per bug #532040. Masked for removal in 30 days.
-dev-libs/matrixssl
 
 # James Le Cuirot <chewi@gentoo.org> (14 Mar 2016)
 # Bye bye Java 6! If you really still need it then gnu_andrew will
