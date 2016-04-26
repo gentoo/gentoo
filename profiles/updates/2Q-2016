@@ -18,3 +18,6 @@ move net-im/ktp-send-file kde-apps/ktp-send-file
 move net-im/ktp-text-ui kde-apps/ktp-text-ui
 move net-im/kde-telepathy-meta kde-apps/plasma-telepathy-meta
 move dev-perl/Time-modules dev-perl/Time-ParseDate
+move dev-perl/text-template dev-perl/Text-Template
+move dev-perl/text-wrapper dev-perl/Text-Wrapper
+move dev-perl/tie-encryptedhash dev-perl/Tie-EncryptedHash

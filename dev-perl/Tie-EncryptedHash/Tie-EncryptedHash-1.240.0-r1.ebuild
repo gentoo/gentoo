@@ -4,7 +4,6 @@
 
 EAPI=5
 
-MY_PN=Tie-EncryptedHash
 MODULE_AUTHOR=VIPUL
 MODULE_VERSION=1.24
 inherit perl-module
