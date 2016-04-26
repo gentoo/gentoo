@@ -11,4 +11,4 @@ SLOT=0
 SRC_URI=https://github.com/docker/containerd/archive/v0.2.0.tar.gz -> containerd-0.2.0.tar.gz
 _eclass_exported_funcs=src_unpack:golang-vcs-snapshot src_prepare:- src_compile:- src_install:-
 _eclasses_=golang-base	08fe6e0e2b4750daff8887a7f0e1f873	golang-vcs-snapshot	1caa6d8238d2378ad688ae068ff22e5a
-_md5_=77e0ee1b610d8524caa4964441459e38
+_md5_=c3ada629eb331a06b2e2367cf1088b5b
