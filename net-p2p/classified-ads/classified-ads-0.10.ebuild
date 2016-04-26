@@ -5,11 +5,12 @@
 EAPI=5
 PLOCALES="en fi sv da uk"
 PLOCALE_BACKUP="en"
-inherit qt4-r2 qmake-utils
+inherit qt4-r2 qmake-utils virtualx vcs-snapshot
 
+COMMIT_ID="cd0652c52f86f6284b793f26e5362bc8fb8a7118"
 DESCRIPTION="Program for displaying classified advertisement items"
 HOMEPAGE="http://katiska.org/classified-ads/"
-SRC_URI="https://github.com/operatornormal/classified-ads/archive/${PV}.tar.gz -> classified-ads-${PV}.tar.gz \
+SRC_URI="https://github.com/operatornormal/classified-ads/archive/${COMMIT_ID}.tar.gz -> ${P}.tar.gz \
 	https://github.com/operatornormal/classified-ads/blob/graphics/preprocessed.tar.gz?raw=true \
 		-> classified-ads-graphics-${PV}.tar.gz"
 
@@ -37,13 +38,14 @@ DEPEND="${RDEPEND}
 	dev-qt/qttest:4
 		sys-devel/gdb:0
 	doc? ( app-doc/doxygen[dot] )
-	test? ( dev-libs/libgcrypt:0 )
+	test? ( dev-libs/libgcrypt:0
+		${VIRTUALX_DEPEND} )
 	"
 
 src_prepare() {
 	# preprocessed graphics are unpacked into wrong directory
 	# so lets move them into correct location:
-	mv ../ui/* ui/ || die
+	mv ../classified-ads-graphics-${PV}/* ui/ || die
 	# then just run qmake
 	qt4-r2_src_prepare
 }
@@ -57,8 +59,19 @@ src_compile() {
 }
 
 src_test() {
-	cd test || die "test suite missing"
-	"$(qt4_get_bindir)"/qmake || die "test suite configure failed"
+	virtx test_suite
+}
+
+src_install() {
+	emake install INSTALL_ROOT="${D}" DESTDIR="${D}"
+	use doc && dodoc -r doc/doxygen.generated/html/
+}
+
+# virtualx requires a command that returns number, and does not just die:
+test_suite() {
+	cd test || return -1
+	echo qmake
+	"$(qt4_get_bindir)"/qmake || return -2
 	emake
 	# test suite will create files under $HOME, set $HOME to point to
 	# safe location, ideas stolen from
@@ -70,11 +83,9 @@ src_test() {
 	result=$?
 	export HOME=$BACKUP_HOME
 	if [ $result != "0" ]; then
-		die "test suite failed with error code " `echo $result`
+		echo "test suite failed with error code " `echo $result`
+		return $result
+	else
+		return 0
 	fi
-}
-
-src_install() {
-	emake install INSTALL_ROOT="${D}" DESTDIR="${D}"
-	use doc && dodoc -r doc/doxygen.generated/html/
 }
