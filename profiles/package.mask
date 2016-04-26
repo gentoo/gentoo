@@ -949,10 +949,6 @@ net-misc/asterisk-spandsp_codec_g726
 <sys-libs/e2fsprogs-libs-1.41.8
 <sys-fs/e2fsprogs-1.41.9
 
-# Robert Piasek <dagger@gentoo.org> (23 Feb 2010)
-# Masking libmapi as it depends on masked samba4
->=net-libs/libmapi-0.9
-
 # Diego E. Pettenò <flameeyes@gmail.com> (09 Oct 2009)
 # Untested yet; documented only in Russian, help is appreciated.
 sys-auth/pam_keystore
