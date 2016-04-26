@@ -1799,7 +1799,7 @@ app-misc/icdiff 1.7.3: Colourized diff that supports side-by-side diffing
 app-misc/ifp-line 0.3: iRiver iFP open-source driver
 app-misc/ignuit 2.20.0: Memorization aid based on the Leitner flashcard system
 app-misc/iguanaIR 0.93 1.0.1: library for Irman control of Unix software
-app-misc/inputlircd 0.0.1_pre11 0.0.1_pre11-r1 0.0.1_pre15: Inputlirc daemon to utilize /dev/input/event*
+app-misc/inputlircd 0.0.1_pre11 0.0.1_pre11-r2 0.0.1_pre15-r1: Inputlirc daemon to utilize /dev/input/event*
 app-misc/interceptty 0.6: a program that can sit between a serial port and an application
 app-misc/irtrans-irclient 6.01.05: IRTrans Server
 app-misc/irtrans-irserver 6.09.04: IRTrans Server
@@ -1813,7 +1813,7 @@ app-misc/kanatest 0.4.8: Visual flashcard tool for memorizing the Japanese Hirag
 app-misc/khal 0.7.0 0.8.1: A CalDAV based calendar
 app-misc/klavaro 3.0.1: Another free touch typing tutor program
 app-misc/ktoblzcheck 1.39 1.45 1.48: Library to check account numbers and bank codes of German banks
-app-misc/lcd4linux 0.10.1_rc2-r3: Shows system and ISDN information on an external display or in a X11 window
+app-misc/lcd4linux 0.10.1_rc2-r4: Shows system and ISDN information on an external display or in a X11 window
 app-misc/lcdproc 0.5.2-r1 0.5.5 0.5.6-r1: Client/Server suite to drive all kinds of LCD (-like) devices
 app-misc/leave 20100918: Command-line tool from FreeBSD that reminds you when its time to leave
 app-misc/ledit 2.03: A line editor to be used with interactive commands
