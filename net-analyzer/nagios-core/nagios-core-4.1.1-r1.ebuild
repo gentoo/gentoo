@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -92,9 +92,9 @@ src_prepare(){
 	#
 	# http://tracker.nagios.org/view.php?id=651
 	#
-	# Gentoo bug #388321.
+	# Gentoo bugs #388321 and #581148.
 	#
-	epatch "${FILESDIR}"/use-INSTALL-to-install-themes.patch
+	epatch "${FILESDIR}"/use-INSTALL-to-install-themes-r1.patch
 }
 
 src_configure() {
