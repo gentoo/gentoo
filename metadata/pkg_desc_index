@@ -956,7 +956,7 @@ app-doc/autobook 1.5: GNU Autoconf, Automake and Libtool
 app-doc/blas-docs 3.1.1: Documentation reference and man pages for blas implementations
 app-doc/casting-spels-emacs 19-r1: Casting SPELs in Lisp - A Comic Book (Emacs Lisp Edition)
 app-doc/clsync-docs 0.4.1: Clsync and libclsync API documentation
-app-doc/cppman 0.4.6: C++ man pages for Linux, with source from cplusplus.com and cppreference.com
+app-doc/cppman 0.4.6 0.4.8: C++ man pages for Linux, with source from cplusplus.com and cppreference.com
 app-doc/csound-manual 6.01 6.03 6.04 6.05 6.06: The Csound reference manual
 app-doc/devmanual 0_pre20141116 9999: The Gentoo Development Guide
 app-doc/diveintopython 2 3: 'Dive Into Python' by Mark Pilgrim - Python 3
@@ -2142,6 +2142,7 @@ app-shells/ksh 93.20110208 93.20120229 93.20140606 93.20140625: The Original Kor
 app-shells/localshell 1.3.4-r1: Localshell allows per-user/group local control of shell execution
 app-shells/mksh 52 52b 52c 9999: MirBSD Korn Shell
 app-shells/mpibash 1.2 9999: Parallel scripting right from the Bourne-Again Shell (Bash)
+app-shells/mpv-bash-completion 0.16: Bash completion for the mpv video player
 app-shells/pdmenu 1.3.4 1.3.4-r1: A simple console menu program
 app-shells/pdsh 2.18-r1 2.26: A high-performance, parallel remote shell utility
 app-shells/posh 0.12 0.12.6: Reimplementation of Bourne shell based on pdksh
@@ -13498,7 +13499,7 @@ media-video/mplay-sh 0.5.3-r1: mplayer wrapper script as backend for vdr-mplayer
 media-video/mplayer 1.2_pre20150214-r1 1.2-r2 1.2.1 1.3.0 9999: Media Player for Linux
 media-video/mplayer-resume 2.0: MPlayer wrapper script to save/resume playback position
 media-video/mplayer-sh 0.8.6-r2 0.8.7: Video Disk Recorder Mplayer API Script
-media-video/mpv 0.9.2-r1 0.17.0 0.17.0-r1 9999: Media player based on MPlayer and mplayer2
+media-video/mpv 0.9.2-r1 0.17.0 0.17.0-r2 9999: Media player based on MPlayer and mplayer2
 media-video/noad 0.7.3 0.7.3-r1 0.8.6 0.8.6-r1: Mark commercial breaks in VDR recordings
 media-video/nvidia-settings 340.58 340.58-r1 355.11 358.16: NVIDIA Linux X11 Settings Utility
 media-video/nvidia_video_sdk 6.0.1: NVIDIA Video Codec SDK
