@@ -38,6 +38,12 @@ dev-qt/qtcore icu
 # Required by kde-plasma/kwin
 media-libs/mesa egl wayland
 
+# Required by net-libs/signon-ui
+net-libs/libproxy -kde
+
+# Required by kde-apps/kdenlive
+>=media-libs/mlt-0.9.8-r2 kdenlive melt -kde -qt4
+
 # Allow certain KDE 4 components to be coinstalled with Plasma 5
 <dev-util/kdevelop-4.8.0 -gdbui
 kde-apps/kcontrol -handbook
@@ -76,7 +82,6 @@ dev-db/sqlitebrowser -qt4
 >=dev-libs/quazip-0.7.1 -qt4
 dev-util/cmake -qt4
 >=kde-misc/kdiff3-0.9.98-r1 -kde -qt4
->=media-libs/mlt-0.9.8-r1 -kde -qt4
 >=media-libs/opencv-3.0.0 -qt4
 >=media-video/smplayer-14.9.0.6690 -qt4
 media-video/vlc -qt4

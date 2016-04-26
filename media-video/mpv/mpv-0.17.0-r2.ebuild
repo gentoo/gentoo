@@ -132,9 +132,11 @@ PATCHES=(
 	"${FILESDIR}/${PV}/${P}-remove-unneeded-X11-include.patch"
 	"${FILESDIR}/${PV}/${P}-add-missing-math-include.patch"
 	"${FILESDIR}/${PV}/${P}-fix-parsing-multiple-input-command-prefixes.patch"
+	"${FILESDIR}/${PV}/${P}-fix-early-audio-start.patch"
 	"${FILESDIR}/${PV}/${P}-avoid-deprecated-API-usage.patch"
 	"${FILESDIR}/${PV}/${P}-fix-hwdec-fallback.patch"
 	"${FILESDIR}/${PV}/${P}-fix-relative-seeking-with-coverart.patch"
+	"${FILESDIR}/${PV}/${P}-fix-unselecting-video-track.patch"
 	"${FILESDIR}/${PV}/${P}-fix-video-frame-info-memleak.patch"
 )
 
@@ -278,6 +280,19 @@ pkg_preinst() {
 pkg_postinst() {
 	fdo-mime_desktop_database_update
 	gnome2_icon_cache_update
+
+	# bash-completion prior to 2.3-r1 installs (mostly broken) mpv completion.
+	if use cli && ! has_version '<app-shells/bash-completion-2.3-r1' && \
+		! has_version 'app-shells/mpv-bash-completion'; then
+		elog "If you want to have command-line completion via bash-completion,"
+		elog "please install app-shells/mpv-bash-completion."
+	fi;
+
+	if use cli && [[ -n ${REPLACING_VERSIONS} ]] && \
+		has_version 'app-shells/mpv-bash-completion'; then
+		elog "If command-line completion doesn't work after mpv update,"
+		elog "please rebuild app-shells/mpv-bash-completion."
+	fi;
 }
 
 pkg_postrm() {
