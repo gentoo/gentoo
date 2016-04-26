@@ -1916,7 +1916,7 @@ app-misc/tmux-mem-cpu-load 2.2.1-r1 9999: CPU, RAM memory, and load monitor for 
 app-misc/toilet 0.3: The Other Implementations letters. Figlet replacement
 app-misc/tomboy 1.14.1: Desktop note-taking application
 app-misc/towitoko 2.0.7-r2: This library provides a driver for using Towitoko smartcard readers under UNIX environment
-app-misc/tpconfig 3.1.3: Touchpad config for ALPS and Synaptics TPs. Controls tap/click behaviour
+app-misc/tpconfig 3.1.3-r1: Touchpad config for ALPS and Synaptics TPs. Controls tap/click behaviour
 app-misc/tpipe 1.6: Command to duplicate standard input to more than one program
 app-misc/tprint 1.1.0-r1: Transparent Print Utility for terminals
 app-misc/tracker 1.6.1 1.6.2: A tagging metadata database, search tool and indexer
@@ -1958,7 +1958,7 @@ app-mobilephone/gnokii 0.6.31 9999: user space driver and tools for use with mob
 app-mobilephone/gnome-phone-manager 0.69-r1: Allows you to control aspects of your mobile phone from your GNOME desktop
 app-mobilephone/gsmlib 1.11_pre041028: Library and applications to access GSM mobile phones
 app-mobilephone/heimdall 1.4.0 1.4.1 9999: Tool suite used to flash firmware onto Samsung Galaxy S devices
-app-mobilephone/kannel 1.4.3-r1 1.5.0: Powerful SMS and WAP gateway
+app-mobilephone/kannel 1.4.3-r2 1.5.0-r1: Powerful SMS and WAP gateway
 app-mobilephone/kannel-sqlbox 0.7.2 1.5.0-r1: DB-Based Kannel Box for message queueing
 app-mobilephone/lightblue 0.4-r1: Cross-platform Bluetooth API for Python which provides simple access to Bluetooth operations
 app-mobilephone/linuxsms 0.77: A console perl script for sending SMS to cell phones
@@ -2218,7 +2218,7 @@ app-text/dbacl 1.14: Digramic Bayesian text classifier
 app-text/dblatex 0.3.7: Transform DocBook using TeX macros
 app-text/ddir 0_p20100323: A perl implementation of the tree(1) program
 app-text/delta 20060803: Heuristically minimizes interesting files
-app-text/dictd 1.12.1-r1: Dictionary Client/Server for the DICT protocol
+app-text/dictd 1.12.1-r2: Dictionary Client/Server for the DICT protocol
 app-text/diction 1.13: Diction and style checkers for english and german texts
 app-text/diffpdf 2.1.3: Program that textually or visually compares two PDF files
 app-text/ding 1.7: Tk based dictionary (German-English) (incl. dictionary itself)
@@ -3725,7 +3725,7 @@ dev-java/ant-core 1.9.2: Java-based build tool similar to 'make' that uses XML c
 dev-java/ant-eclipse-ecj 4.2.1 4.4.2 4.5.1: Ant Compiler Adapter for Eclipse Java Compiler
 dev-java/ant-ivy 1.3.1-r1 1.4.1-r1 2.0.0 2.3.0-r2: Ivy is a free java based dependency manager
 dev-java/ant-jai 1.9.2: Apache Ant's optional tasks depending on sun-jai-bin
-dev-java/ant-javamail 1.9.2 1.9.2-r1: Apache Ant's optional tasks depending on --virtual oracle-javamail
+dev-java/ant-javamail 1.9.2 1.9.2-r2: Apache Ant's optional tasks depending on oracle-javamail
 dev-java/ant-jdepend 1.9.2: Apache Ant's optional tasks depending on jdepend
 dev-java/ant-jmf 1.9.2: Apache Ant's optional tasks for the Java Media Framework (JMF)
 dev-java/ant-jsch 1.9.2: Apache Ant's optional tasks depending on jsch
@@ -4408,7 +4408,7 @@ dev-lang/qu-prolog 9.1 9.1-r1 9.5 9.6 9.7: Extended Prolog supporting quantifier
 dev-lang/rakudo 2016.01.1 2016.02 2016.03: A compiler for the Perl 6 programming language
 dev-lang/rebol 9999: Relative Expression-Based Object Language
 dev-lang/rebol-bin 3_pre111: Relative Expression-Based Object Language
-dev-lang/regina-rexx 3.6-r2 3.9.1: Portable Rexx interpreter
+dev-lang/regina-rexx 3.6-r3 3.9.1-r1: Portable Rexx interpreter
 dev-lang/rubinius 2.5.3 2.5.5: A re-implementation of the Ruby VM designed for speed
 dev-lang/ruby 2.0.0_p647-r1 2.0.0_p648 2.1.7 2.1.7-r1 2.1.8 2.1.9 2.1.10 2.2.2-r1 2.2.3 2.2.3-r1 2.2.3-r2 2.2.4 2.3.0: An object-oriented scripting language
 dev-lang/rust 1.2.0 1.3.0 1.5.0 1.7.0 1.7.0-r100 1.8.0 1.8.0-r100: Systems programming language from Mozilla
@@ -11756,7 +11756,7 @@ mail-filter/scmail 1.3: a mail filter written in Scheme
 mail-filter/sid-milter 1.0.0-r6 1.0.0-r7: A milter-based application to provide Sender-ID verification service
 mail-filter/sieve-connect 0.87: Sieve Command Line Interface
 mail-filter/spamass-milter 0.3.2: A milter for SpamAssassin
-mail-filter/spamassassin 3.4.0 3.4.1 3.4.1-r1: An extensible mail filter which can identify and tag spam
+mail-filter/spamassassin 3.4.0-r1 3.4.1 3.4.1-r2: An extensible mail filter which can identify and tag spam
 mail-filter/spamassassin-botnet 0.8-r1: SpamAssassin plugin that attempts to detect messages sent by a botnet
 mail-filter/spambayes 1.1_alpha6-r2 1.1_beta1 1.1_beta2: An anti-spam filter using on Bayesian filtering
 mail-filter/spamdyke 4.3.0 4.3.0-r1: A drop-in connection-time spam filter for qmail
@@ -12220,7 +12220,7 @@ media-gfx/replicatorg 37-r2 40-r1: ReplicatorG is a simple, open source 3D print
 media-gfx/ristretto 0.6.3 0.8.0-r1: A fast and lightweight picture viewer for the Xfce desktop environment
 media-gfx/rotoscope 0.2: Graphics program that can be used to give photos a cartoon-like appearance
 media-gfx/sam2p 0.49.1 0.49.2: Utility to convert raster images to EPS, PDF and many others
-media-gfx/sane-backends 1.0.24-r5 1.0.25_pre20150628 1.0.25 9999: Scanner Access Now Easy - Backends
+media-gfx/sane-backends 1.0.24-r6 1.0.25-r1 9999: Scanner Access Now Easy - Backends
 media-gfx/sane-frontends 1.0.14: Scanner Access Now Easy
 media-gfx/scantailor 0.9.10 0.9.11.1: A interactive post-processing tool for scanned pages
 media-gfx/scrot 0.8-r1 0.8_p13 0.8_p13-r1: Screen capture utility using imlib2 library
@@ -13297,7 +13297,7 @@ media-sound/spek 0.8.3 0.8.3-r1: Analyse your audio files by showing their spect
 media-sound/splay 0.9.5.2 0.9.5.2-r2: An audio player, primarily for the console
 media-sound/split2flac 115 9999: sh script to split an APE/FLAC/WV/WAV audio image with CUE sheet into tracks
 media-sound/spotify 1.0.27: Spotify is a social music platform
-media-sound/squeezeslave 1.1_p365 1.1_p381: A lightweight streaming audio player for Logitech Media Server
+media-sound/squeezeslave 1.1_p365-r1 1.1_p381-r1: A lightweight streaming audio player for Logitech Media Server
 media-sound/streamripper 1.64.6: Extracts and records individual MP3 file tracks from shoutcast streams
 media-sound/streamtranscoder 1.2.4 3.1.11: Command line application to transcode shoutcast/icecast streams to different bitrates
 media-sound/subsonic-bin 5.2.1-r1: Subsonic is a complete, personal media streaming solution
@@ -13375,7 +13375,7 @@ media-tv/linuxtv-dvb-firmware 2009.07.06-r1 2009.09.19: Firmware files needed fo
 media-tv/me-tv 1.4.0.10: Me TV is a GTK desktop application for watching digital television
 media-tv/mythtv 0.27_p20140321 0.27.5_p20151025 0.27.6_p20160318 0.28: Homebrew PVR project
 media-tv/mythtv-status 0.10.4: Displays the current status of MythTV at the command prompt
-media-tv/nvtv 0.4.7-r1: TV-Out for NVidia cards
+media-tv/nvtv 0.4.7-r2: TV-Out for NVidia cards
 media-tv/shoutcast2vdr 0.0.8 0.0.8-r1: VDR script: generate shoutcast playlists
 media-tv/tvbrowser 3.4.1.0-r1 3.4.3 9999-r1: Themeable and easy to use TV Guide - written in Java
 media-tv/tvheadend 3.4.27 4.0.6 4.0.8 9999: Tvheadend is a TV streaming server and digital video recorder
