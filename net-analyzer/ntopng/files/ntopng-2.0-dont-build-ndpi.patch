@@ -1,0 +1,16 @@
+--- configure.ac.old	2016-04-25 21:29:36.452888380 +0200
++++ configure.ac	2016-04-25 21:30:04.679554971 +0200
+@@ -62,13 +62,6 @@
+ fi
+ 
+ NDPI_LIB=$NDPI_HOME/src/lib/.libs/libndpi.a
+-AC_MSG_CHECKING(for $NDPI_LIB)
+-if test -f "$NDPI_LIB" ; then :
+-  AC_MSG_RESULT(found $NDPI_LIB)
+-else
+-  AC_MSG_RESULT(not found $NDPI_LIB: compiling)
+-  cd $NDPI_HOME; ./autogen.sh; make; cd -
+-fi
+ 
+ AC_MSG_CHECKING(for ntopng professional edition)
+ if test -d "pro"; then :
