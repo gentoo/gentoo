@@ -1,0 +1,15 @@
+DEFINED_PHASES=configure install prepare pretend setup
+DEPEND=dev-libs/libpcre zlib? ( sys-libs/zlib ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 virtual/pkgconfig
+DESCRIPTION=A web proxy with advanced filtering capabilities for enhancing privacy
+EAPI=5
+HOMEPAGE=http://www.privoxy.org http://sourceforge.net/projects/ijbswa/
+IUSE=+acl editor external-filters +fast-redirects +force graceful-termination +image-blocking ipv6 lfs png-images selinux +stats +threads toggle whitelists +zlib
+KEYWORDS=~alpha ~amd64 ~arm ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd
+LICENSE=GPL-2
+RDEPEND=dev-libs/libpcre zlib? ( sys-libs/zlib ) selinux? ( sec-policy/selinux-privoxy )
+REQUIRED_USE=toggle? ( editor )
+SLOT=0
+SRC_URI=mirror://sourceforge/ijbswa/privoxy-3.0.24-stable-src.tar.gz
+_eclass_exported_funcs=pkg_pretend:- pkg_setup:- src_prepare:- src_configure:- src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	792f83d5ec9536cb5ccef375469d8bde	libtool	4890219c51da247200223277f993e054	multilib	23ae8c186171e6476af098d2a50d0ee0	systemd	3165c885f3c71ffae7a867d931fb0e07	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	user	906f3c8eb3a2350a4f1191a89baa3e46
+_md5_=4d7c5b760757f906522cde8672c3ac25

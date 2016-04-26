@@ -15064,8 +15064,8 @@ net-proxy/obfs4proxy 0.0.6 9999: An obfuscating proxy supporting Tor's pluggable
 net-proxy/obfsproxy 0.2.11 0.2.12 0.2.13: An obfuscating proxy using Tor's pluggable transport protocol
 net-proxy/pingtunnel 0.72: Tunnel TCP over ICMP
 net-proxy/piper 1.14: Piper (a tool for manipulating SOCKS5 servers)
-net-proxy/polipo 1.1.1 1.1.1-r3 9999: A caching web proxy
-net-proxy/privoxy 3.0.24 3.0.24-r1: A web proxy with advanced filtering capabilities for enhancing privacy
+net-proxy/polipo 1.1.1 1.1.1-r3 1.1.1-r4 9999: A caching web proxy
+net-proxy/privoxy 3.0.24 3.0.24-r1 3.0.24-r2: A web proxy with advanced filtering capabilities for enhancing privacy
 net-proxy/ratproxy 1.58: A semi-automated, largely passive web application security audit tool
 net-proxy/rejik 3.2.10: A squid redirector used for blocking unwanted content
 net-proxy/shadowsocks-libev 2.4.3-r2 2.4.5: A lightweight secured scoks5 proxy for embedded devices and low end boxes
