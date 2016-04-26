@@ -1668,7 +1668,7 @@ app-misc/abduco 0.4 0.5: lightweight session manager with {de,at}tach support
 app-misc/abook 0.6.0_pre2 0.6.1: Abook is a text-based addressbook program designed to use with mutt mail client
 app-misc/acdctl 1.1: Apple Cinema Display Control
 app-misc/activylircd 0.4: ACTIVYLIRCD lirc daemon for activy remote control
-app-misc/actkbd 0.2.8-r1: A keyboard shortcut daemon
+app-misc/actkbd 0.2.8-r2: A keyboard shortcut daemon
 app-misc/aldo 0.7.7: A morse tutor
 app-misc/anki 2.0.31 2.0.33 2.0.34 2.0.35 2.0.36: A spaced-repetition memory training program (flash cards)
 app-misc/asciinema 0.9.8: Command line recorder for asciinema.org service
