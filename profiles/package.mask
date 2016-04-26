@@ -240,11 +240,6 @@ x11-libs/libview
 =app-forensics/chkrootkit-0.49
 
 # Aaron Bauman <bman@gentoo.org> (19 Mar 2016)
-# Unpatched security vulnerability per bug #529712.
-# Masked for removal in 30 days.
-www-apps/coppermine
-
-# Aaron Bauman <bman@gentoo.org> (19 Mar 2016)
 # Multiple unpatched security vulnerabilities
 # per bug #532040. Masked for removal in 30 days.
 dev-libs/matrixssl
