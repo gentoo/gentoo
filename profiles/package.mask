@@ -776,12 +776,6 @@ www-client/google-chrome:beta
 www-client/google-chrome:stable
 www-client/google-chrome:unstable
 
-# Tony Vroon <chainsaw@gentoo.org> (13 Jan 2014)
-# Asterisk 12 is a short term "standard" release
-# containing significant architectural changes.
-# This is not for your production kit quite yet.
-=net-misc/asterisk-12*
-
 # Justin Lecher <jlec@gentoo.org> (14 Oct 2013)
 # Seems to break all deps - API change?
 >=sci-libs/metis-5
@@ -810,33 +804,9 @@ www-apache/mod_spdy
 # there is a working release.
 sci-geosciences/googleearth
 
-# Chris Reffett <creffett@gentoo.org> (20 Jul 2013)
-# Uses vulnerable versions of bzip2, but these versions are
-# necessary to reconstruct older archives. Use at your own risk.
-=app-portage/deltup-0.4.5
-
 # Michael Weber <xmw@gentoo.org> (17 Jul 2013)
 # Upstream next versions
 >=sys-boot/raspberrypi-firmware-1_pre
-
-# Tom Wijsman <TomWij@gentoo.org> (30 Jun 2013)
-# Sun JDK and JRE contain critical vulnerabilities and receive no further
-# updates; masking to make users aware of this, users that still need this
-# package and have no alternative can unmask at their own risk. See bug #473830.
-#
-# This is continued by Oracle Corporation, which has acquired Sun Microsystems
-# in early 2010; as per https://en.wikipedia.gentoo.org/wiki/Sun_acquisition_by_Oracle
-#
-# Users are suggested to upgrade to one of the newer Oracle packages like
-# dev-java/oracle-jdk-bin or dev-java/oracle-jre-bin or choose another
-# alternative we provide; eg. the IBM JDK/JRE or the open source IcedTea.
-#
-# Most of these packages provide a jce USE flag for those whom need the
-# Java Cryptographic Extension Unlimited Strength Policy USE flag; whether that
-# works depends from VM to VM, it seems to work for most except for the IBM VMs.
-dev-java/sun-jdk
-dev-java/sun-jre-bin
-dev-java/sun-jce-bin
 
 # Julian Ospald <hasufell@gentoo.org> (26 Jun 2013)
 # Depends on masked dev-lang/lua-5.2
@@ -863,12 +833,6 @@ app-portage/g-ctan
 # Masked due test failures
 =app-arch/advancecomp-1.17
 
-# Sergey Popov <pinkbyte@gentoo.org> (02 Apr 2013)
-# Masking =media-libs/ffmpegsource-2.17.4_pre753
-# by maintainer's request.
-# This version does not work properly, see bug #464078
-=media-libs/ffmpegsource-2.17.4_pre753
-
 # Richard Freeman <rich0@gentoo.org> (24 Mar 2013)
 # Contains known buffer overflows.  Package generally works
 # but should not be fed untrusted input (eg from strangers).
@@ -886,12 +850,6 @@ app-text/cuneiform
 # stable wpa_supplicant sometimes wants madwifi-ng-tools
 #net-wireless/madwifi-ng-tools
 net-wireless/madwifi-ng
-
-# Pacho Ramos <pacho@gentoo.org> (25 Oct 2012)
-# obexd changed its API without any warning, it's recommended to ship
-# 0.46 until https://bugzilla.gnome.org/682106 is fixed to prevent
-# bluetooth-sendto breakage.
->=app-mobilephone/obexd-0.47
 
 # Robin H. Johnson <robbat2@gentoo.org> (09 Feb 2012)
 # Needs to be slotted better
@@ -948,16 +906,6 @@ net-misc/asterisk-spandsp_codec_g726
 # Added <sys-fs/e2fsprogs as well (halcy0n)
 <sys-libs/e2fsprogs-libs-1.41.8
 <sys-fs/e2fsprogs-1.41.9
-
-# Robert Piasek <dagger@gentoo.org> (23 Feb 2010)
-# Masking libmapi as it depends on masked samba4
->=net-libs/libmapi-0.9
-
-# Peter Alfredsen <loki_val@gentoo.org> (21 Oct 2009)
-# Masked because this needs a patch to be applied to portage
-# to not install the kitchensink and everything else
-# into /usr/src/debug with FEATURES=installsources
-=dev-util/debugedit-4.4.6-r2
 
 # Diego E. Pettenò <flameeyes@gmail.com> (09 Oct 2009)
 # Untested yet; documented only in Russian, help is appreciated.
