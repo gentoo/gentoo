@@ -2,10 +2,13 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
-PYTHON_COMPAT=(python{2_7,3_3,3_4})
+EAPI=6
+
+PYTHON_COMPAT=( python{2_7,3_{3,4}} )
+
 DISABLE_AUTOFORMATTING=true
-inherit distutils-r1 eutils readme.gentoo
+
+inherit python-single-r1 eutils readme.gentoo-r1
 
 DESCRIPTION="Elog viewer for Gentoo"
 HOMEPAGE="https://sourceforge.net/projects/elogviewer"
@@ -16,15 +19,17 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc ~sparc ~x86 ~x86-fbsd"
 IUSE=""
 
-RDEPEND="|| (
+RDEPEND="
+	|| (
 		dev-python/PyQt5[gui,widgets,${PYTHON_USEDEP}]
 		dev-python/PyQt4[${PYTHON_USEDEP},X]
-		dev-python/pyside[${PYTHON_USEDEP},X] )
+		dev-python/pyside[${PYTHON_USEDEP},X]
+	)
 	>=sys-apps/portage-2.1
 	$(python_gen_cond_dep 'dev-python/enum34[${PYTHON_USEDEP}]' python{2_7,3_3})
 	!dev-python/PyQt5[-gui]
 	!dev-python/PyQt5[-widgets]
-	"
+"
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]"
 
@@ -40,9 +45,14 @@ ${PORT_LOGDIR:-/var/log/portage}/elog created, belonging to group portage.
 To start the software as a user, add yourself to the portage group."
 
 src_install() {
-	mv elogviewer.py elogviewer
-	dobin elogviewer
-	doman elogviewer.1
+	python_newscript elogviewer.py elogviewer
+
 	make_desktop_entry ${PN} ${PN} ${PN} System
-	readme.gentoo_src_install
+
+	doman elogviewer.1
+	readme.gentoo_create_doc
+}
+
+pkg_postinst() {
+	readme.gentoo_print_elog
 }
