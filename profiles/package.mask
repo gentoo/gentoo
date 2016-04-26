@@ -690,13 +690,6 @@ app-emulation/xe-guest-utilities
 # Mask beta release
 =app-i18n/transifex-client-0.11_beta
 
-# Tom Wijsman <TomWij@gentoo.org> (30 May 2014)
-# CVE-2012-1721 - Remote Code Execution Vulnerability
-#
-# Vulnerable: IBM Java SE 5.0 SR12-FP5
-# URL:        http://www.securityfocus.com/bid/53959/
-dev-java/ibm-jdk-bin:1.5
-
 # Tom Wijsman <TomWij@gentoo.org> (03 May 2014)
 # Needs to be further tested and revised by both Java and Ruby herds.
 >=dev-java/jruby-1.7.12
