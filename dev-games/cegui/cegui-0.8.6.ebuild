@@ -56,8 +56,12 @@ DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen )
 	opengl? ( media-libs/glm )"
 
+src_prepare() {
+	sed -i -e '/CEGUI_ABI_AGE/s/5/4/' CMakeLists.txt || die
+}
+
 src_configure() {
-	# http://www.cegui.org.uk/mantis/view.php?id=991
+	# https://bitbucket.org/cegui/cegui/issues/991
 	append-ldflags $(no-as-needed)
 
 	local mycmakeargs=(
