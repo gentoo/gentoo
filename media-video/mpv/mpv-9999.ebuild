@@ -28,7 +28,7 @@ DOCS+=( README.md )
 # See Copyright in source tarball and bug #506946. Waf is BSD, libmpv is ISC.
 LICENSE="GPL-2+ BSD ISC"
 SLOT="0"
-IUSE="aqua +alsa archive bluray cdda +cli coreaudio doc drm dvb +dvd +egl +enca
+IUSE="aqua +alsa archive bluray cdda +cli coreaudio doc drm dvb dvd +egl +enca
 	encode gbm +iconv jack jpeg lcms +libass libav libcaca libguess libmpv lua
 	luajit openal +opengl oss pulseaudio raspberry-pi rubberband samba -sdl
 	selinux test uchardet v4l vaapi vdpau vf-dlopen wayland +X xinerama
@@ -266,6 +266,20 @@ pkg_preinst() {
 pkg_postinst() {
 	fdo-mime_desktop_database_update
 	gnome2_icon_cache_update
+
+	# bash-completion prior to 2.3-r1 installs (mostly broken) mpv completion.
+	if use cli && ! use zsh-completion && \
+		! has_version '<app-shells/bash-completion-2.3-r1' && \
+		! has_version 'app-shells/mpv-bash-completion'; then
+		elog "If you want to have command-line completion via bash-completion,"
+		elog "please install app-shells/mpv-bash-completion."
+	fi;
+
+	if use cli && [[ -n ${REPLACING_VERSIONS} ]] && \
+		has_version 'app-shells/mpv-bash-completion'; then
+		elog "If command-line completion doesn't work after mpv update,"
+		elog "please rebuild app-shells/mpv-bash-completion."
+	fi;
 }
 
 pkg_postrm() {
