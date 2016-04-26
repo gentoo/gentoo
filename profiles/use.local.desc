@@ -5128,7 +5128,6 @@ net-analyzer/suricata:luajit - Enable Luajit support
 net-analyzer/suricata:nflog - Enable libnetfilter_log support
 net-analyzer/suricata:nfqueue - Enable AF_PACKET support
 net-analyzer/suricata:rules - Enable AF_PACKET support
-net-analyzer/suricata:system-htp - Use net-libs/libhtp instead of bundled one
 net-analyzer/symon:perl - Enables a generic perl symux client
 net-analyzer/symon:symon - Enables the system monitor. Offers no functionality but monitoring and forwarding of measured data
 net-analyzer/symon:symux - Enables the multiplexer which stores incoming symon streams on disk in RRD (net-analyzer/rrdtool) files
