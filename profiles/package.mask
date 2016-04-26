@@ -591,15 +591,6 @@ dev-db/postgresql-server
 # Missing deps, uninstallable
 www-apps/trac-downloads
 
-# Mike Pagano <mpagano@gentoo.org> (16 Oct 2014)
-# A regression in kernels 3.17.0 lead to file system corruption
-# for affected systems. This has been fixed in >= 3.17.1
-# Expires (16 Oct 2016)
-# See Bug #525548.
-=sys-kernel/vanilla-sources-3.17.0
-=sys-kernel/gentoo-sources-3.17.0
-=sys-kernel/aufs-sources-3.17.0
-
 # Michał Górny <mgorny@gentoo.org> (15 Sep 2014)
 # Causes undefined references few layers down (in mediastreamer),
 # someone needs to investigate.
