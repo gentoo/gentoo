@@ -16,8 +16,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-DEPEND="app-arch/bzip2
-	dev-libs/libxml2"
+DEPEND="dev-libs/libxml2"
 RDEPEND="${DEPEND}"
 
 APACHE2_MOD_CONF="26_${PN}"
