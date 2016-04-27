@@ -3,11 +3,16 @@
 <pkgmetadata>
   <maintainer type="person">
     <email>witold.pilat@gmail.com</email>
+    <name>Witold Piłat</name>
     <description>Proxied/co-maintainer. CC on bugs.</description>
   </maintainer>
   <maintainer type="project">
     <email>fonts@gentoo.org</email>
     <name>Fonts</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
   </maintainer>
   <use>
     <flag name="free">Install fonts for the "free" preset</flag>
