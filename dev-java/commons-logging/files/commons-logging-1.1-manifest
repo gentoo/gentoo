@@ -1,8 +1,0 @@
-Manifest-Version: 1.0
-Bundle-ManifestVersion: 2
-Bundle-Name: %bundleName
-Bundle-Vendor: %vendorName
-Bundle-Localization: plugin
-Bundle-SymbolicName: org.apache.commons.logging
-Bundle-Version: 1.1
-Export-Package: org.apache.commons.logging;version="1.1",org.apache.commons.logging.impl;version="1.1"
