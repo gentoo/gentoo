@@ -137,6 +137,7 @@ PATCHES=(
 	"${FILESDIR}/${PV}/${P}-fix-hwdec-fallback.patch"
 	"${FILESDIR}/${PV}/${P}-fix-relative-seeking-with-coverart.patch"
 	"${FILESDIR}/${PV}/${P}-fix-unselecting-video-track.patch"
+	"${FILESDIR}/${PV}/${P}-fix-timestamp-resets.patch"
 	"${FILESDIR}/${PV}/${P}-fix-video-frame-info-memleak.patch"
 )
 
