@@ -2,9 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-inherit eutils
+EAPI=6
 
-S="${WORKDIR}/MouseRemote"
+inherit toolchain-funcs
+
 DESCRIPTION="X10 MouseRemote"
 HOMEPAGE="http://www4.pair.com/gribnif/ha/"
 SRC_URI="http://www4.pair.com/gribnif/ha/MouseRemote.tar.gz"
@@ -16,12 +17,14 @@ IUSE=""
 
 DEPEND="virtual/perl-Time-HiRes"
 
-src_unpack() {
-	unpack ${A}
-	cd "${S}"
+S="${WORKDIR}/MouseRemote"
 
-	epatch "${FILESDIR}"/${P}-makefile.diff
-	epatch "${FILESDIR}"/${PN}-gentoo-${PVR}.diff
+src_prepare() {
+	eapply -p0 "${FILESDIR}"/${P}-makefile.diff
+	eapply "${FILESDIR}"/${P}-gentoo.diff
+	eapply -p0 "${FILESDIR}"/${P}-fix-warnings.diff
+
+	eapply_user
 }
 
 src_compile() {
@@ -29,21 +32,21 @@ src_compile() {
 		CC=$(tc-getCC) \
 		PREFIX=/usr \
 		LOCKDIR=/var/lock \
-	    JMANDIR=/usr/share/man/ja_JP.ujis || die
+	    JMANDIR=/usr/share/man/ja_JP.ujis
 }
 
 src_install() {
-	dobin MultiMouse/multimouse || die
-	dosbin MultiMouse/multimoused || die
+	dobin MultiMouse/multimouse
+	dosbin MultiMouse/multimoused
 
-	dodoc README MultiMouse/README.jis MultiMouse/README.newstuff || die
-	newdoc MultiMouse/README README.MultiMouse || die
-	newdoc client/MouseRemote.conf MouseRemote.conf.dist || die
-	newdoc client/MouseRemote.pl MouseRemote.pl.dist || die
-	newdoc client/MouseRemoteKeys.pl MouseRemoteKeys.pl.dist || die
+	dodoc README MultiMouse/README.jis MultiMouse/README.newstuff
+	newdoc MultiMouse/README README.MultiMouse
+	newdoc client/MouseRemote.conf MouseRemote.conf.dist
+	newdoc client/MouseRemote.pl MouseRemote.pl.dist
+	newdoc client/MouseRemoteKeys.pl MouseRemoteKeys.pl.dist
 
-	newinitd "${FILESDIR}"/mouseremote.start mouseremote || die
-	newconfd "${FILESDIR}"/mouseremote.conf mouseremote || die
+	newinitd "${FILESDIR}"/mouseremote.start mouseremote
+	newconfd "${FILESDIR}"/mouseremote.conf mouseremote
 }
 
 pkg_postinst() {
