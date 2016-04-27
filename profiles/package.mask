@@ -31,6 +31,11 @@
 #--- END OF EXAMPLES ---
 
 # Michael Palimaka <kensington@gentoo.org> (27 Apr 2016)
+# Ancient. Dead upstream. Unmaintained.
+# Masked for removal in 30 days.
+net-p2p/nap
+
+# Michael Palimaka <kensington@gentoo.org> (27 Apr 2016)
 # Not useful due to being so outdated. Unmaintained.
 # Masked for removal in 30 days. Bug #212793.
 dev-lang/dmd-bin
