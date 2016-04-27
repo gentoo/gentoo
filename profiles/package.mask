@@ -30,6 +30,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Pawel Hajdan jr <phajdan.jr@gentoo.org> (27 Apr 2016)
+# Dev channel releases are only for people who are developers or want more
+# experimental features and accept a more unstable release.
+>=www-client/chromium-52
+
 # Sergey Popov <pinkbyte@gentoo.org> (26 Apr 2016)
 # Security mask of older branches, wrt bug #5567810
 <dev-vcs/subversion-1.8
@@ -179,11 +184,6 @@ games-simulation/planets
 # Mike Frysinger <vapier@gentoo.org (28 Mar 2016)
 # Tons-o-bugs and no actual testing by new author. #578490
 dev-libs/libtomcrypt
-
-# Pawel Hajdan jr <phajdan.jr@gentoo.org> (25 Mar 2016)
-# Dev channel releases are only for people who are developers or want more
-# experimental features and accept a more unstable release.
->=www-client/chromium-51
 
 # José María Alonso <nimiux@gentoo.org> (24 Mar 2016)
 # Fails to build dev-lisp/sbcl-1.3.3 #563812
