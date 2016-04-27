@@ -9,10 +9,6 @@
 		<email>ThyArmageddon+Gentoo@Gmail.com</email>
 		<name>Elijah El Lazkani</name>
 	</maintainer>
-	<maintainer type="project">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Proxy Maintainers</name>
-	</maintainer>
 	<upstream>
 		<remote-id type="github">IgnorantGuru/udevil</remote-id>
 	</upstream>
