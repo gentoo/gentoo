@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=6
 
 inherit toolchain-funcs
 
@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/ccsh/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ppc sparc x86 ~ppc64"
+KEYWORDS="~amd64 ~ppc ~sparc ~x86 ~ppc64"
 IUSE=""
 
 src_compile() {
@@ -21,7 +21,7 @@ src_compile() {
 
 src_install() {
 	exeinto /bin
-	doexe ccsh
-	newman ccsh.man ccsh.1
+	doexe "${PN}"
+	newman "${PN}.man" "${PN}.1"
 	dodoc ChangeLog README TODO
 }
