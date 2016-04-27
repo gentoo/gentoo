@@ -31,6 +31,7 @@ RDEPEND="
 		dev-libs/glib:2
 		dev-qt/qtcore:5
 		dev-qt/qtdbus:5
+		dev-qt/qtdeclarative:5
 		dev-qt/qtgui:5[-gles2,xcb]
 		dev-qt/qtopengl:5[-gles2]
 		dev-qt/qtnetwork:5
