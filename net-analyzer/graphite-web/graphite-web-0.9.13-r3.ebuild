@@ -33,6 +33,7 @@ RDEPEND="
 	)
 	>=dev-python/twisted-core-10.0[${PYTHON_USEDEP}]
 	>=dev-python/django-tagging-0.3.1[${PYTHON_USEDEP}]
+	<dev-python/django-1.9[${PYTHON_USEDEP}]
 	dev-python/pycairo[${PYTHON_USEDEP}]
 	dev-python/zope-interface[${PYTHON_USEDEP}]
 	dev-python/pytz[${PYTHON_USEDEP}]
@@ -91,7 +92,7 @@ python_install() {
 
 pkg_config() {
 	"${ROOT}"/usr/bin/${PN}-manage syncdb --noinput
-	local idx=$(grep 'INDEX_FILE =' "${EROOT}"/etc/local_settings.py 2>/dev/null)
+	local idx=$(grep 'INDEX_FILE =' "${EROOT}"/etc/graphite-web/local_settings.py 2>/dev/null)
 	if [[ -n ${idx} ]] ; then
 		idx=${idx##*=}
 		idx=$(echo ${idx})
