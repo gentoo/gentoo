@@ -202,11 +202,6 @@ dev-python/pykit
 # Masked for removal in 30 days.
 app-cdr/qmultirecord
 
-# Michael Palimaka <kensington@gentoo.org> (24 Mar 2016)
-# Fails to build. Bug #368953.
-# Masked for removal in 30 days.
-net-p2p/hx
-
 # Lars Wendler <polynomial-c@gentoo.org> (20 Mar 2016)
 # Don't work with latest claws-mail package. Most plugins are now part of
 # claws-mail sources and can be en-/disabled via USE flags.
