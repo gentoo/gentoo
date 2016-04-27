@@ -10440,6 +10440,7 @@ games-fps/ut2004-strikeforce 4.1: UT2004 Strike Force - a terrorist vs. strike f
 games-fps/ut2004-troopers 6.0: UT2004 Troopers - Star Wars mod
 games-fps/ut2004-unwheel 0_beta5: UT2004 UnWheel - multiplayer driving mod focusing on fun driving
 games-fps/warsow 1.5.1-r1: Multiplayer FPS based on the QFusion engine (evolved from Quake 2)
+games-fps/warsow-community-map-pack 01: Community Map Pack for the Warsow multiplayer FPS
 games-fps/wolfgl 0.93-r1: Wolfenstein and Spear of Destiny port using OpenGL
 games-fps/worldofpadman 1.6: A cartoon style multiplayer first-person shooter
 games-fps/xonotic 0.8.1: Fork of Nexuiz, Deathmatch FPS based on DarkPlaces, an advanced Quake 1 engine
@@ -16006,7 +16007,7 @@ sci-mathematics/pspp 0.8.1-r1 0.8.3: Program for statistical analysis of sampled
 sci-mathematics/pymc 2.2 9999: Markov chain Monte Carlo for Python
 sci-mathematics/qtoctave 0.10.1-r1: Qt4 front-end for Octave
 sci-mathematics/reduce 20110414-r1: A general-purpose computer algebra system
-sci-mathematics/relational 0.11: Qt4 relational algebra application
+sci-mathematics/relational 0.11 2.4: Educational tool for relational algebra
 sci-mathematics/rkward 0.6.1: IDE for the R-project
 sci-mathematics/rngstreams 1.0.1: Multiple independent streams of pseudo-random numbers
 sci-mathematics/rstudio 0.97.336 0.97.551 0.98.490 0.98.490-r1 0.98.932 0.98.953 0.98.1028 0.98.1091 0.99.473-r1 0.99.482 0.99.483 0.99.484 0.99.486-r1 0.99.491 0.99.879 0.99.893 0.99.896: IDE for the R language
