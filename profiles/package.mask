@@ -30,6 +30,11 @@
 
 #--- END OF EXAMPLES ---
 
+# James Le Cuirot <chewi@gentoo.org> (27 Apr 2016)
+# Very very dead upstream and probably doesn't work any more like
+# similar clients. Removal in 30 days.
+net-p2p/yaggui
+
 # Michael Palimaka <kensington@gentoo.org> (27 Apr 2016)
 # Ancient. Dead upstream. Unmaintained.
 # Masked for removal in 30 days.
