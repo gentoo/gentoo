@@ -19,6 +19,9 @@ IUSE=""
 RDEPEND="net-misc/wget"
 DEPEND=""
 
+# EAPI 4+ requires $S to be set
+S="$WORKDIR"
+
 src_install() {
 	newinitd "${FILESDIR}/amazon-ec2.init" amazon-ec2
 }
