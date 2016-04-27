@@ -30,6 +30,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Michael Palimaka <kensington@gentoo.org> (27 Apr 2016)
+# Not useful due to being so outdated. Unmaintained.
+# Masked for removal in 30 days. Bug #212793.
+dev-lang/dmd-bin
+
 # Pawel Hajdan jr <phajdan.jr@gentoo.org> (27 Apr 2016)
 # Dev channel releases are only for people who are developers or want more
 # experimental features and accept a more unstable release.
