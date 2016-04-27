@@ -11567,7 +11567,7 @@ kde-misc/stdin-plasmoid 0.2_beta1: KDE4 plasmoid for executing a process and cap
 kde-misc/steamcompanion 0.5.4-r1: Connector for web Steam service from Valve
 kde-misc/stock-quote 2.1-r2: Displays stock quotes pulled from the Yahoo! servers
 kde-misc/synaptiks 0.8.1-r4: Touchpad configuration and management tool for KDE
-kde-misc/systemd-kcm 0.7.0 1.2.1: KDE control module for systemd
+kde-misc/systemd-kcm 0.7.0 1.2.1: Plasma control module for systemd
 kde-misc/takeoff 1.0: A tablet desktop style app launcher
 kde-misc/tellico 2.3.10 2.3.11: A collection manager for the KDE environment
 kde-misc/wacomtablet 2.1.0 3.0.0_beta1: KControl module for Wacom tablets
