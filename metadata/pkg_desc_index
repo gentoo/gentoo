@@ -11558,7 +11558,7 @@ kde-misc/pyrad 0.6.2-r1 0.7.1: A wheel type command interface for KDE, heavily i
 kde-misc/quadkonsole 0.4.4-r1: Grid of Konsole terminals
 kde-misc/quickaccess 0.8.2-r1: KDE4 plasmoid. Designed for the panel, provides quick access to the most used folders
 kde-misc/redshift-plasmoid 1.0: KDE4 plasmoid for redshift
-kde-misc/rsibreak 0.11-r1 0.12.1: Small utility which bothers you at certain intervals
+kde-misc/rsibreak 0.11-r1 0.12.1 0.12.2: Small utility which bothers you at certain intervals
 kde-misc/semantik 0.9.4-r1: Mindmapping-like tool for document generation
 kde-misc/serverstatuswidget 1.5.1: KDE plasma widget used for monitoring servers via ping or tcp connect
 kde-misc/skanlite 1.1-r1 2.0: KDE image scanning application
@@ -18231,7 +18231,7 @@ x11-misc/kapow 1.4.3 1.4.4: A punch clock program designed to easily keep track 
 x11-misc/kaqaz 1.2.0-r2: Modern note manager
 x11-misc/kbdd 0.7-r1: Very simple layout switcher
 x11-misc/kdocker 4.8-r2: Helper to dock any application into the system tray
-x11-misc/kronometer 2.0.1 2.0.2: Stopwatch application
+x11-misc/kronometer 2.0.1 2.0.2 2.1.0: Stopwatch application
 x11-misc/ksuperkey 0.4: Utility allowing you to use the Super key as a shortcut both directly or as part of a combination
 x11-misc/ktsuss 2: Graphical version of su written in C and GTK+ 2
 x11-misc/launchy 2.5: utility that merges application menus, your desktop and even your file manager
