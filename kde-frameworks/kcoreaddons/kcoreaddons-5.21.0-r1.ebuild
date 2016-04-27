@@ -21,6 +21,8 @@ DEPEND="${RDEPEND}
 	nls? ( $(add_qt_dep linguist-tools) )
 "
 
+PATCHES=( "${FILESDIR}/${P}-random.patch" )
+
 src_configure() {
 	local mycmakeargs=(
 		-D_KDE4_DEFAULT_HOME_POSTFIX=4
