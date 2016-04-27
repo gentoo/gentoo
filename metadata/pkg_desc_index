@@ -262,7 +262,7 @@ app-arch/freeze 2.5.0-r1: Freeze/unfreeze compression program
 app-arch/funzix 1.0: unpacker for the bogus ZIX format
 app-arch/gcab 0.6 0.7: Library and tool for working with Microsoft Cabinet (CAB) files
 app-arch/gtk-splitter 2.2.1-r1: Split files into smaller pieces and combine them back together
-app-arch/gzip 1.6 1.7: Standard GNU compressor
+app-arch/gzip 1.6 1.7 1.8: Standard GNU compressor
 app-arch/hardlink 0.2.0 0.3.0: A tool which replaces copies of a file with hardlinks
 app-arch/innoextract 1.4 1.5 1.6: A tool to unpack installers created by Inno Setup
 app-arch/ipkg-utils 1.7.050831-r2: Tools for working with the ipkg binary package format
