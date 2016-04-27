@@ -91,6 +91,7 @@ CONFIG_CHECK="
 	~CFS_BANDWIDTH ~FAIR_GROUP_SCHED ~RT_GROUP_SCHED
 "
 
+ERROR_KEYS="CONFIG_KEYS: is mandatory, see bug 581348"
 ERROR_MEMCG_KMEM="CONFIG_MEMCG_KMEM: is optional"
 ERROR_MEMCG_SWAP="CONFIG_MEMCG_SWAP: is required if you wish to limit swap usage of containers"
 ERROR_RESOURCE_COUNTERS="CONFIG_RESOURCE_COUNTERS: is optional for container statistics gathering"
