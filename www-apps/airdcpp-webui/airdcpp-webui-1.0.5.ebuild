@@ -4,7 +4,7 @@
 
 EAPI=6
 
-DESCRIPTION="WEB interface for airdcpp-webclient"
+DESCRIPTION="Web interface for airdcpp-webclient"
 HOMEPAGE="https://www.npmjs.com/package/airdcpp-webui"
 SRC_URI="https://registry.npmjs.org/${PN}/-/${P}.tgz"
 
