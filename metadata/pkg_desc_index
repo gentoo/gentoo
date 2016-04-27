@@ -14526,7 +14526,7 @@ net-misc/clipgrab 3.4.9-r1 3.4.11 3.5.6: Download from various internet video se
 net-misc/clockspeed 0.62-r6: A simple Network Time Protocol (NTP) client
 net-misc/clockspeed-conf 0.4.5-r1: scripts to setup a clockspeed client and/or a taiclockd server
 net-misc/clusterssh 4.03.03 4.30.600 9999: Concurrent Multi-Server Terminal Access
-net-misc/cmst 2015.12.03: Qt GUI for Connman with system tray icon
+net-misc/cmst 2015.12.03 2016.04.03: Qt GUI for Connman with system tray icon
 net-misc/cocaine-core 0.9.2-r1 0.11.2.5 0.11.3.2: Cloud platform, core parts
 net-misc/connect 1.100 1.103: network connection relaying command (proxy)
 net-misc/connman 1.29 1.31-r1: Provides a daemon for managing internet connections
@@ -17700,7 +17700,7 @@ www-apps/webmcp 1.2.5 1.2.6: Web application framework written in Lua and C
 www-apps/websvn 2.3.2 2.3.3: Web-based browsing tool for Subversion (SVN) repositories in PHP
 www-apps/wiliki 0.6.1: WiLiKi is a lightweight Wiki engine written in and running on Gauche Scheme
 www-apps/wordpress 4.4.2 4.5: Wordpress PHP and MySQL based content management system (CMS)
-www-client/chromium 50.0.2661.75 50.0.2661.86 51.0.2704.19 51.0.2704.22: Open-source version of Google Chrome web browser
+www-client/chromium 50.0.2661.75 50.0.2661.86 51.0.2704.19 51.0.2704.22 52.0.2716.0: Open-source version of Google Chrome web browser
 www-client/ck4up 1.2: Check for Updates on HTTP pages
 www-client/conkeror 1.0_pre20140212 1.0_pre20141005 1.0_pre20150227 1.0_pre20150519: A Mozilla-based web browser whose design is inspired by GNU Emacs
 www-client/dillo 3.0.4 3.0.4.1 3.0.5 3.0.5-r1: Lean FLTK based web browser
