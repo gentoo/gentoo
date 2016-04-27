@@ -10,7 +10,7 @@ MY_P=${P/_p/p}
 DESCRIPTION="Network Time Protocol suite/programs"
 HOMEPAGE="http://www.ntp.org/"
 SRC_URI="http://www.eecis.udel.edu/~ntp/ntp_spool/ntp4/ntp-${PV:0:3}/${MY_P}.tar.gz
-	https://dev.gentoo.org/~polynomial-c/${MY_P}-manpages.tar.bz2"
+	https://dev.gentoo.org/~polynomial-c/${MY_P}-manpages.tar.xz"
 
 LICENSE="HPND BSD ISC"
 SLOT="0"
@@ -37,15 +37,19 @@ PDEPEND="openntpd? ( net-misc/openntpd )"
 
 S=${WORKDIR}/${MY_P}
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-4.2.8-ipc-caps.patch #533966
+	"${FILESDIR}"/${PN}-4.2.8-sntp-test-pthreads.patch #563922
+	"${FILESDIR}"/${PN}-4.2.8-ntpd-test-signd.patch
+)
+
 pkg_setup() {
 	enewgroup ntp 123
 	enewuser ntp 123 -1 /dev/null ntp
 }
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-4.2.8-ipc-caps.patch #533966
-	epatch "${FILESDIR}"/${PN}-4.2.8-sntp-test-pthreads.patch #563922
-	epatch "${FILESDIR}"/${PN}-4.2.8-ntpd-test-signd.patch
+	epatch "${PATCHES[@]}"
 	append-cppflags -D_GNU_SOURCE #264109
 	# Make sure every build uses the same install layout. #539092
 	find sntp/loc/ -type f '!' -name legacy -delete || die
