@@ -7,4 +7,4 @@ LICENSE=GPL-2
 RDEPEND=net-misc/wget
 SLOT=0
 _eclass_exported_funcs=pkg_postinst:- src_install:-
-_md5_=0ebe66b81a672cfb2915dd743307aa05
+_md5_=b4fd5dc701a2313d5da2f08ba159d27a

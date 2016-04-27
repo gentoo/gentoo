@@ -17784,7 +17784,7 @@ www-servers/adsf 1.2.0 1.2.1: A Dead Simple Fileserver is a static file server t
 www-servers/apache 2.2.31 2.4.18 2.4.18-r1 2.4.20: The Apache Web Server
 www-servers/blogc-runserver 0.1.1 9999: A simple HTTP server to test blogc websites
 www-servers/boa 0.94.14_rc21-r1 0.94.14_rc21-r2: A very small and very fast http daemon
-www-servers/bozohttpd 20140708 20140708-r1: bozohttpd is a small and secure http server
+www-servers/bozohttpd 20140708 20140708-r2: bozohttpd is a small and secure http server
 www-servers/cherokee 1.2.104: An extremely fast and tiny web server
 www-servers/fnord 1.10-r2 1.11: Yet another small httpd
 www-servers/gatling 0.12-r2 0.13 0.13-r1: High performance web server
@@ -17809,7 +17809,7 @@ www-servers/tomcat 7.0.67 7.0.68-r1 7.0.69 8.0.32-r1 8.0.33 9.0.0_alpha4: Tomcat
 www-servers/tornado 4.2.1 4.3: Python web framework and asynchronous networking library
 www-servers/uwsgi 2.0.9 2.0.11.2-r1 2.0.12: uWSGI server for Python web applications
 www-servers/varnish 3.0.7 4.0.3 4.1.0 4.1.2: Varnish is a state-of-the-art, high-performance HTTP accelerator
-www-servers/webfs 1.21-r3 1.21-r4: Lightweight HTTP server for static content
+www-servers/webfs 1.21-r3 1.21-r5: Lightweight HTTP server for static content
 www-servers/xsp 2014.12-r2014120900: XSP is a small web server that can host ASP.NET pages
 x11-apps/amlc 0.5.1: Another Modeline Calculator, generates quality X11 display configs easily
 x11-apps/appres 1.0.4: list X application resource database
