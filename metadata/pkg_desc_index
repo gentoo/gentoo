@@ -481,7 +481,6 @@ app-cdr/nrg2iso 0.4-r1: Converts Nero nrg CD-images to iso
 app-cdr/pburn 3.4.3: A burning tool with GTK+ frontend
 app-cdr/plextor-tool 0.5.0: Tool to change the parameters of a Plextor CD-ROM drive
 app-cdr/poweriso 1.3: Utility to extract, list and convert PowerISO DAA image files
-app-cdr/qmultirecord 0.0.3: CD and DVD recording frontend for cdrtools and dvd+rw-tools
 app-cdr/qpxtool 0.7.2: CD/DVD quality checking utilities
 app-cdr/recorder 1.4.5 1.4.5-r1: A simple GTK+ disc burner
 app-cdr/sync2cd 1.3 1.3-r1: An incremental archiving tool to CD/DVD
@@ -4410,7 +4409,7 @@ dev-lang/rebol 9999: Relative Expression-Based Object Language
 dev-lang/rebol-bin 3_pre111: Relative Expression-Based Object Language
 dev-lang/regina-rexx 3.6-r3 3.9.1-r1: Portable Rexx interpreter
 dev-lang/rubinius 2.5.3 2.5.5: A re-implementation of the Ruby VM designed for speed
-dev-lang/ruby 2.0.0_p647-r1 2.0.0_p648 2.1.7 2.1.7-r1 2.1.8 2.1.9 2.1.10 2.2.2-r1 2.2.3 2.2.3-r1 2.2.3-r2 2.2.4 2.3.0: An object-oriented scripting language
+dev-lang/ruby 2.0.0_p647-r1 2.0.0_p648 2.1.7 2.1.7-r1 2.1.8 2.1.9 2.1.10 2.2.2-r1 2.2.3 2.2.3-r1 2.2.3-r2 2.2.4 2.2.5 2.3.0 2.3.1: An object-oriented scripting language
 dev-lang/rust 1.2.0 1.3.0 1.5.0 1.7.0 1.7.0-r100 1.8.0 1.8.0-r100: Systems programming language from Mozilla
 dev-lang/rust-bin 1.2.0 1.3.0 1.5.0 1.6.0 1.7.0 1.8.0: Systems programming language from Mozilla
 dev-lang/scala 2.9.3 2.10.2-r3 2.10.3-r2 2.10.4-r2 2.10.6 2.11.1-r2 2.11.2-r2 2.11.4-r1 2.11.4-r2 2.11.6-r1 2.11.7-r1: The Scala Programming Language
@@ -7372,8 +7371,6 @@ dev-python/linecache2 1.0.0: Backports of the linecache module
 dev-python/livereload 2.3.2 2.4.0 2.4.1: Python LiveReload is an awesome tool for web developers
 dev-python/llfuse 0.40 0.41 0.42.1 0.43-r1 1.0: Python bindings for the low-level FUSE API
 dev-python/llvmlite 0.2.1 0.2.2 0.5.0 0.6.0 0.8.0 0.9.0 0.10.0: Python wrapper around the llvm C++ library
-dev-python/llvmmath 0.1.2: LLVM math library for Python
-dev-python/llvmpy 0.12.2 0.12.3 0.12.4 0.12.5 0.12.6 0.12.7: Python wrapper around the llvm C++ library
 dev-python/locket 0.2.0: File-based locks for Python
 dev-python/lockfile 0.11.0-r1 0.12.2: Platform-independent file locking module
 dev-python/locustio 0.7.3: A python utility for doing easy, distributed load testing of a web site
@@ -7715,7 +7712,6 @@ dev-python/pyinotify 0.9.4-r1 0.9.5 0.9.6: Python module used for monitoring fil
 dev-python/pyinsane 1.3.8: Python implementation of the Sane API and abstration layer
 dev-python/pyjwt 1.3.0 1.4.0: JSON Web Token implementation in Python
 dev-python/pykerberos 1.1.5 1.1.7 1.1.9: A high-level Python wrapper for Kerberos/GSSAPI operations
-dev-python/pykit 0.1.0 0.2.0: Backend compiler for high-level typed code
 dev-python/pykka 1.2.1: A Python implementation of the actor model
 dev-python/pykwalify 1.4.0 1.4.1 1.5.0 9999: Python lib/cli for JSON/YAML schema validation
 dev-python/pylast 0.5.11-r1 1.0.0: Python interface to last.fm and other api-compatible websites
@@ -8813,7 +8809,7 @@ dev-ruby/ffi 1.9.6-r1 1.9.6-r2 1.9.10 1.9.10-r1: Ruby extension for programmatic
 dev-ruby/file-tail 1.1.0 1.1.1: A small ruby library that allows it to 'tail' files in Ruby
 dev-ruby/filesize 0.1.1: small ruby class for handling filesizes with both the SI and binary prefixes
 dev-ruby/fivemat 1.3.2: MiniTest/RSpec/Cucumber formatter that gives each test file its own line of dots
-dev-ruby/flexmock 1.3.3 1.3.3-r1 2.0.5: Simple mock object library for Ruby unit testing
+dev-ruby/flexmock 1.3.3-r1 2.0.5 2.1.0: Simple mock object library for Ruby unit testing
 dev-ruby/flickraw 0.9.8: A library to access flickr api in a simple way
 dev-ruby/flog 4.3.2: Flog reports the most tortured code in an easy to read pain report
 dev-ruby/forgery 0.6.0: Easy and customizable generation of forged data
@@ -8902,7 +8898,7 @@ dev-ruby/map 6.5.5 6.6.0: A string/symbol indifferent ordered hash that works in
 dev-ruby/maruku 0.7.2 0.7.2-r1: A Markdown-superset interpreter written in Ruby
 dev-ruby/mash 0.1.1-r2: Mash is an extended Hash that gives simple pseudo-object functionality
 dev-ruby/matchy 0.5.2-r1: RSpec-esque matchers for use in Test::Unit
-dev-ruby/maxitest 1.5.6: Minitest + all the features you always wanted
+dev-ruby/maxitest 1.5.6 1.5.7: Minitest + all the features you always wanted
 dev-ruby/mecab-ruby 0.996-r1: Ruby binding for MeCab
 dev-ruby/mechanize 2.7.3 2.7.3-r1 2.7.4: A Ruby library used for automating interaction with websites
 dev-ruby/memcache-client 1.8.5-r1 1.8.5-r2: A ruby library for accessing memcached
@@ -8977,7 +8973,7 @@ dev-ruby/origin 1.1.0 2.1.1 2.2.0: Origin is a simple DSL for generating MongoDB
 dev-ruby/ox 2.3.0 2.4.0: A fast XML parser and Object marshaller
 dev-ruby/packetfu 1.1.9-r1 1.1.10-r2 1.1.11-r1: A mid-level packet manipulation library
 dev-ruby/paint 1.0.1: Terminal painter
-dev-ruby/parser 2.3.0.4 2.3.0.6 2.3.0.7: A production-ready Ruby parser written in pure Ruby
+dev-ruby/parser 2.3.0.7 2.3.1.0: A production-ready Ruby parser written in pure Ruby
 dev-ruby/parslet 1.7.1: A small PEG based parser library
 dev-ruby/patron 0.4.18-r2 0.4.20 0.5.0-r1 0.5.1 0.6.0: Patron is a Ruby HTTP client library based on libcurl
 dev-ruby/pcaprub 0.11.3-r2 0.12.0-r1 0.12.1: Libpcap bindings for ruby compat
@@ -9087,7 +9083,7 @@ dev-ruby/ruby-feedparser 0.9.3: Ruby library to parse ATOM/RSS feeds
 dev-ruby/ruby-filemagic 0.7.1: Ruby binding to libmagic
 dev-ruby/ruby-gdk3 2.2.3 2.2.3-r1 2.2.5 3.0.7: Ruby GDK-3.x bindings
 dev-ruby/ruby-gdkpixbuf2 2.2.3 2.2.3-r1 2.2.5 3.0.7: Ruby GdkPixbuf2 bindings
-dev-ruby/ruby-gettext 3.1.1 3.1.2 3.1.9 3.2.1: Native Language Support Library and Tools modeled after GNU gettext package
+dev-ruby/ruby-gettext 3.1.1 3.1.2 3.1.9 3.2.1 3.2.2: Native Language Support Library and Tools modeled after GNU gettext package
 dev-ruby/ruby-gio2 2.2.3 2.2.3-r1 2.2.5 3.0.7: Ruby binding of GooCanvas
 dev-ruby/ruby-glib2 2.2.3 2.2.3-r1 2.2.5 3.0.7: Ruby Glib2 bindings
 dev-ruby/ruby-gnome2 2.2.3 2.2.3-r1 2.2.5 3.0.7: Ruby Gnome2 bindings
@@ -9779,7 +9775,7 @@ dev-util/quilt 0.50 0.63 9999: quilt patch manager
 dev-util/radare2 0.10.1 0.10.2 9999: Advanced command line hexadecimal editor and more
 dev-util/ragel 6.7-r1 6.8 6.9: Compiles finite state machines from regular languages into executable code
 dev-util/rats 2.1-r2 2.3: RATS - Rough Auditing Tool for Security
-dev-util/rbtools 0.7.5: Command line tools for use with Review Board
+dev-util/rbtools 0.7.5 0.7.6: Command line tools for use with Review Board
 dev-util/re2c 0.13.5-r1 0.13.6 0.13.7.5 0.14.2 0.14.3 0.15.2 0.15.3 0.16: tool for generating C-based recognizers from regular expressions
 dev-util/rebar 2.5.1 2.6.0 2.6.1: A sophisticated build-tool for Erlang projects that follows OTP principles
 dev-util/rec 1.6: Reverse Engineering Compiler
@@ -11408,7 +11404,7 @@ kde-frameworks/kcodecs 5.18.0 5.21.0: Framework for manipulating strings using v
 kde-frameworks/kcompletion 5.18.0 5.21.0: Framework for common completion tasks such as filename or URL completion
 kde-frameworks/kconfig 5.18.0 5.21.0: Framework for reading and writing configuration
 kde-frameworks/kconfigwidgets 5.18.0 5.21.0: Framework providing an assortment of configuration-related widgets
-kde-frameworks/kcoreaddons 5.18.0 5.21.0: Framework for solving common problems such as caching, randomisation, and more
+kde-frameworks/kcoreaddons 5.18.0 5.21.0-r1: Framework for solving common problems such as caching, randomisation, and more
 kde-frameworks/kcrash 5.18.0 5.21.0: Framework for intercepting and handling application crashes
 kde-frameworks/kdbusaddons 5.18.0 5.21.0: Framework for registering services and applications per freedesktop standards
 kde-frameworks/kdeclarative 5.18.0 5.21.0: Framework providing integration of QML and KDE work spaces
@@ -14961,7 +14957,6 @@ net-p2p/freenet 0.7.5_p1470: An encrypted network without censorship
 net-p2p/gnut 0.4.28-r1: Text-mode gnutella client
 net-p2p/gtk-gnutella 1.1.8 1.1.9-r1: A GTK+ Gnutella client
 net-p2p/gtorrentviewer 0.2b: A GTK2-based viewer and editor for BitTorrent meta files
-net-p2p/hx 0.4.11: This is a Hotline 1.5+ compatible *nix Hotline Client in CLI. It supports IRC compatibility
 net-p2p/i2p 0.9.24-r2 0.9.25-r1: A privacy-centric, anonymous network.
 net-p2p/kmldonkey 2.0.7: Provides integration for the MLDonkey P2P software and KDE 4
 net-p2p/ktorrent 4.3.1-r1 5.0 5.0.1: Powerful BitTorrent client based on KDE Frameworks
