@@ -1283,7 +1283,7 @@ app-emulation/crossover-office-bin 6.0.0 6.0.1 6.1.0 6.2.0: simplified/streamlin
 app-emulation/crossover-office-pro-bin 5.0.0 5.0.1 5.0.3 6.0.0 6.1.0 6.2.0 7.0.2 7.1.0 8.0.0 9.0.0 9.0.1 9.1.0 9.2.0: simplified/streamlined version of wine with commercial support
 app-emulation/dinero 4.7-r1: Cache simulator
 app-emulation/dlx 1.0.0 1.0.0-r1: DLX Simulator
-app-emulation/docker 1.6.1 1.6.2 1.7.1 1.8.1 1.8.2 1.9.0 1.9.1 1.10.0 1.10.3 1.11.0 9999: Docker complements kernel namespacing with a high-level API which operates at the process level
+app-emulation/docker 1.11.0 9999: Docker complements kernel namespacing with a high-level API which operates at the process level
 app-emulation/docker-compose 1.5.2 1.6.2 1.7.0_rc1 1.7.0: Multi-container orchestration for Docker
 app-emulation/docker-machine 0.6.0 0.7.0: Machine management for a container-centric world
 app-emulation/docker-registry 2.4.0: Docker Registry 2.0
@@ -13635,7 +13635,7 @@ net-analyzer/gnome-nettool 3.8.1: Graphical front-ends to various networking com
 net-analyzer/gnu-netcat 0.7.1-r3: the GNU network swiss army knife
 net-analyzer/goaccess 0.5-r1 0.6.1 0.8.5 0.9: A real-time web log analyzer and interactive viewer that runs in a terminal
 net-analyzer/gr-fosphor 9999: gnuradio fosphor block (GPU spectrum display)
-net-analyzer/graphite-web 0.9.13-r1 0.9.13-r2 0.9.13-r3: Enterprise scalable realtime graphing
+net-analyzer/graphite-web 0.9.13-r3: Enterprise scalable realtime graphing
 net-analyzer/greenbone-security-assistant 6.0.8 6.0.9: Greenbone Security Assistant for openvas
 net-analyzer/gsm-receiver 9999: GSM receiver block from the airprobe suite
 net-analyzer/gspoof 3.2-r2: A simple GTK/command line TCP/IP packet generator
@@ -14932,7 +14932,7 @@ net-nntp/suck 4.3.2: Grab news from a remote NNTP server and feed them to anothe
 net-nntp/tin 2.0.1-r1 2.2.1 2.3.1: A threaded NNTP and spool based UseNet newsreader
 net-nntp/ubh 2.5: The Usenet Binary Harvester
 net-nntp/xrn 9.02: A small and fast news reader for X
-net-p2p/airdcpp-webclient 1.0.0 1.0.1 1.0.2: Cross-platform Direct Connect client
+net-p2p/airdcpp-webclient 1.0.1 1.0.2 1.0.3: Cross-platform Direct Connect client
 net-p2p/amule 2.3.1 2.3.1-r1: aMule, the all-platform eMule p2p client
 net-p2p/bitcoin-cli 0.10.2 0.11.0 0.11.1 0.11.2 0.12.0 9999: Command-line client specifically designed for talking to Bitcoin Core Daemon
 net-p2p/bitcoin-qt 0.10.2 0.10.2-r1 0.11.0 0.11.1 0.11.2 0.12.0 9999: An end-user Qt GUI for the Bitcoin crypto-currency
