@@ -9649,7 +9649,7 @@ dev-util/gtk-doc 1.21 1.24 1.25: GTK+ Documentation Generator
 dev-util/gtk-doc-am 1.21 1.24 1.25: Automake files from gtk-doc
 dev-util/gtk-update-icon-cache 3.16.7 3.18.4: GTK update icon cache
 dev-util/heaptrack 9999: A fast heap memory profiler
-dev-util/howdoi 1.1.7: A code search tool
+dev-util/howdoi 1.1.7 1.1.9: A code search tool
 dev-util/httpup 0.4.0k: synchronisation tool for http file repositories
 dev-util/huc 0.1: HTML umlaut conversion tool
 dev-util/hxd 0.70.02-r1: Binary to hexadecimal converter
@@ -13015,7 +13015,7 @@ media-sound/cdtool 2.1.8-r1: collection of command-line utilities to control cdr
 media-sound/chordii 4.3 4.5.1: A guitar music typesetter
 media-sound/christine 0.7.0: A simple gstreamer based media player
 media-sound/chuck 1.2.1.2 1.3.5.1: Strongly-timed, concurrent, and on-the-fly audio programming language
-media-sound/clementine 1.2.2 1.2.3 1.3 9999: A modern music player and library organizer based on Amarok 1.4 and Qt4
+media-sound/clementine 1.2.3 1.3 1.3.1 9999: A modern music player and library organizer based on Amarok 1.4 and Qt4
 media-sound/cmix 1.6: command line audio mixer
 media-sound/cmus 2.5.0-r1 2.6.0 2.7.1: A ncurses based music player with plugin support for many formats
 media-sound/cmusfm 0.2.5: Last.fm scrobbler for cmus music player
@@ -14874,7 +14874,7 @@ net-misc/xrdp 0.8.0-r1: An open source Remote Desktop Protocol server
 net-misc/yajhfc 0.5.2 0.5.7: Yet another Java HylaFAX Plus Client
 net-misc/yandex-disk 0.1.5.758_p1 0.1.5.870_p1 0.1.5.940_p1: CLI to access Yandex Disk file storage service
 net-misc/you-get 0.4.365: A tiny command-line utility to download media contents from the Web.
-net-misc/youtube-dl 2016.01.01 2016.04.13-r1 2016.04.19-r1 99999999: Download videos from YouTube.com (and more sites...)
+net-misc/youtube-dl 2016.01.01 2016.04.19-r1 2016.04.24 99999999: Download videos from YouTube.com (and more sites...)
 net-misc/youtube-viewer 3.1.9 3.2.0 9999: A command line utility for viewing youtube-videos in Mplayer
 net-misc/ytalk 3.3.0: Multi-user replacement for UNIX talk
 net-misc/zssh 1.5c-r1: An ssh wrapper enabling zmodem up/download in ssh
@@ -17722,7 +17722,7 @@ www-client/midori 0.5.10 0.5.11 0.5.11-r1: A lightweight web browser based on We
 www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
 www-client/netsurf 3.3-r1 3.4: a free, open source web browser
 www-client/opera 12.16_p1860-r1 36.0.2130.46 36.0.2130.65: A fast and secure web browser
-www-client/opera-beta 37.0.2178.19 37.0.2178.22: A fast and secure web browser
+www-client/opera-beta 37.0.2178.22 37.0.2178.27: A fast and secure web browser
 www-client/opera-developer 38.0.2198.0 38.0.2205.0: A fast and secure web browser
 www-client/otter 0.9.07 0.9.08 0.9.09 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
 www-client/phantomjs 1.9.8 2.0.0 2.0.0-r1: A headless WebKit scriptable with a JavaScript API
@@ -17739,7 +17739,7 @@ www-client/surfraw 2.2.9-r1: A fast unix command line interface to WWW
 www-client/uget 1.8.0 1.10.3 1.10.3-r1 1.10.4 9999: Download manager using gtk+ and libcurl
 www-client/vimb 2.9 2.11: a fast, lightweight, vim-like browser based on webkit
 www-client/vimprobable2 1.4.0 1.4.2 1.4.2-r1 9999: A minimal web browser that behaves like the Vimperator plugin for Firefox
-www-client/vivaldi 1.0.435.42_p1 1.1.453.43_p1 1.1.453.45_p1: A new browser for our friends
+www-client/vivaldi 1.0.435.42_p1 1.1.453.45_p1 1.1.453.47_p1: A new browser for our friends
 www-client/w3m 0.5.3-r5: Text based WWW browser, supports tables and frames
 www-client/w3mir 1.0.10-r2: w3mir is a all purpose HTTP copying and mirroring tool
 www-client/w3mmee 0.3.2_p24-r7: A variant of w3m with support for multiple character encodings
@@ -18131,7 +18131,7 @@ x11-misc/Xorgautoconfig 0.2.4-r1: Xorgautconfig generates xorg.conf files for PP
 x11-misc/accessx 0951-r1: Interface to the XKEYBOARD extension in X11
 x11-misc/afbinit 1.0.1-r7: loads the microcode for Elite3D framebuffers to use X
 x11-misc/alacarte 3.10.0 3.11.91: Simple GNOME menu editor
-x11-misc/albert 0.8.2 0.8.7.1 0.8.7.2: Desktop agnostic launcher
+x11-misc/albert 0.8.2 0.8.7.1 0.8.7.2 0.8.7.3: Desktop agnostic launcher
 x11-misc/alock 94 94-r1: locks the local X display until a password is entered
 x11-misc/andromeda 0.3: Qt4-based filemanager
 x11-misc/appmenu-qt 0.2.6: Application menu module for Qt
