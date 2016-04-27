@@ -46,6 +46,7 @@ RDEPEND="dev-libs/atk
 	>=x11-libs/cairo-1.10[X]
 	x11-libs/gdk-pixbuf
 	>=x11-libs/gtk+-2.18:2
+	>=x11-libs/gtk+-3.4.0:3
 	x11-libs/libX11
 	x11-libs/libXcomposite
 	x11-libs/libXdamage
@@ -163,8 +164,7 @@ pkg_postinst() {
 		einfo "gnome-base/orbit and net-misc/curl emerged."
 		einfo
 	fi
-	einfo "For HTML5 video you need media-video/ffmpeg installed.  Please note"
-	einfo "that gstreamer:0.10 will also be used, if available."
+	einfo "For HTML5 video you need media-video/ffmpeg installed."
 
 	# Drop requirement of curl not built with nss as it's not necessary anymore
 	#if has_version 'net-misc/curl[nss]'; then
