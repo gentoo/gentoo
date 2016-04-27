@@ -3831,7 +3831,7 @@ dev-java/ecj-gcj 3.5.2-r3 3.6-r1 4.2.1-r2 4.4.2: A subset of Eclipse Compiler fo
 dev-java/eclipse-ecj 4.2.1 4.4.2-r1 4.5.1: Eclipse Compiler for Java
 dev-java/eclipsito 0_pre20130713: A small subset of Eclipse core libraries for modular applications
 dev-java/ecs 1.4.2-r2: Java library to generate markup language text such as HTML and XML
-dev-java/edtftpj 2.0.4: FTP client library written in Java
+dev-java/edtftpj 2.0.4 2.4.0: FTP client library written in Java
 dev-java/ehcache 1.2.4-r3 1.2.4-r4: Ehcache is a pure Java, fully-featured, in-process cache
 dev-java/emma 2.0.5312-r2: a free Java code coverage tool
 dev-java/fastinfoset 1.2.11: Fast Infoset specifies a standardized binary encoding for the XML Information Sets
