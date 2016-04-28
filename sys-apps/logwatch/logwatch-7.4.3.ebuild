@@ -27,7 +27,7 @@ RDEPEND="virtual/cron
 	dev-perl/Sys-MemInfo"
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-7.4.0-openssh-hpn.patch
+	epatch "${FILESDIR}"/${PN}-7.4.2-openssh-hpn.patch
 }
 
 src_install() {
