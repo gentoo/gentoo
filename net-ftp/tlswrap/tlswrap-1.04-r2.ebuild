@@ -19,9 +19,9 @@ DEPEND="!libressl? ( dev-libs/openssl:0= )
 	libressl? ( dev-libs/libressl:= )"
 RDEPEND=${DEPEND}
 
-src_prepare() {
-	epatch "${FILESDIR}/${P}-libressl.patch"
-}
+PATCHES=(
+	"${FILESDIR}/${P}-libressl.patch"
+)
 
 src_install() {
 	emake prefix="${D}/usr" install
