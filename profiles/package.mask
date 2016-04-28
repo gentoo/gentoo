@@ -199,31 +199,6 @@ dev-libs/libtomcrypt
 =dev-lisp/asdf-3.1.7
 =dev-lisp/uiop-3.1.7
 
-# Lars Wendler <polynomial-c@gentoo.org> (20 Mar 2016)
-# Don't work with latest claws-mail package. Most plugins are now part of
-# claws-mail sources and can be en-/disabled via USE flags.
-# Masked for removal in 30 days.
-mail-client/claws-mail-acpi-notifier
-mail-client/claws-mail-address_keeper
-mail-client/claws-mail-archive
-mail-client/claws-mail-att-remover
-mail-client/claws-mail-attachwarner
-mail-client/claws-mail-clamd
-mail-client/claws-mail-fancy
-mail-client/claws-mail-fetchinfo
-mail-client/claws-mail-gdata
-mail-client/claws-mail-gtkhtml
-mail-client/claws-mail-mailmbox
-mail-client/claws-mail-newmail
-mail-client/claws-mail-notification
-mail-client/claws-mail-pdf-viewer
-mail-client/claws-mail-perl
-mail-client/claws-mail-python
-mail-client/claws-mail-rssyl
-mail-client/claws-mail-spam-report
-mail-client/claws-mail-tnef-parse
-mail-client/claws-mail-vcalendar
-
 # Andreas K. Huettel <dilfridge@gentoo.org> (19 Mar 2016)
 # Dead upstream since 2010, new VMware uses new incompatible
 # proprietary libview. No other consumers. Removal in 30 days.
