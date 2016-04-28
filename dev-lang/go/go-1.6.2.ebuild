@@ -88,6 +88,8 @@ go_arch()
 	case "${portage_arch}" in
 		x86)	echo 386;;
 		x64-*)	echo amd64;;
+		ppc64)
+			[[ "$(tc-endian)" = big ]] && echo ppc64 || echo ppc64le ;;
 		*)		echo "${portage_arch}";;
 	esac
 }
@@ -175,6 +177,7 @@ src_compile()
 	if [[ ${ARCH} == arm ]]; then
 		export GOARM=$(go_arm)
 	fi
+	elog "GOROOT_BOOTSTRAP is ${GOROOT_BOOTSTRAP}"
 
 	cd src
 	./make.bash || die "build failed"
