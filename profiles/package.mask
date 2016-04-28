@@ -158,12 +158,6 @@ dev-libs/ptypes
 # --configtest is broken, mask until 2.3.1 release
 =app-admin/logstash-bin-2.3.0*
 
-# Anthony G. Basile <blueness@gentoo.org> (04 Apr 2016)
-# Dead upstream and no real users
-# Masking for removal in 30 days
-sys-apps/rsbac-admin
-sys-kernel/rsbac-sources
-
 # James Le Cuirot <chewi@gentoo.org> (03 Apr 2016)
 # Legacy migration package that is no longer needed. See
 # bug #549508. Removal in 30 days.
