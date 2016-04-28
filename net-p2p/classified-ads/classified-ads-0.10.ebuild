@@ -2,10 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 PLOCALES="en fi sv da uk"
 PLOCALE_BACKUP="en"
-inherit qt4-r2 qmake-utils virtualx vcs-snapshot
+inherit qmake-utils virtualx vcs-snapshot
 
 COMMIT_ID="cd0652c52f86f6284b793f26e5362bc8fb8a7118"
 DESCRIPTION="Program for displaying classified advertisement items"
@@ -21,37 +21,40 @@ KEYWORDS="~amd64 ~x86"
 IUSE="debug doc test"
 
 RDEPEND="dev-libs/openssl:0
-		dev-libs/qjson
 		>=net-libs/libnatpmp-20130911
 		<=net-libs/libnatpmp-20140401-r1
 		>=net-libs/miniupnpc-1.8
 		sys-apps/file
 		sys-devel/gettext
-		dev-qt/qtcore:4[ssl]
-		dev-qt/qtsql:4[sqlite]
-		dev-qt/qtgui:4[debug?]
+		dev-qt/qtcore:5
+		dev-qt/qtgui:5
+		dev-qt/qtnetwork:5[ssl]
+		dev-qt/qtwidgets:5
+		dev-qt/qtsql:5[sqlite]
+		dev-qt/qtmultimedia:5[widgets]
 		dev-qt/qt-mobility[multimedia]
-		dev-qt/qtmultimedia:4
+		dev-qt/qtprintsupport:5
 		media-libs/opus"
 
 DEPEND="${RDEPEND}
-	dev-qt/qttest:4
+	dev-qt/qttest:5
 		sys-devel/gdb:0
 	doc? ( app-doc/doxygen[dot] )
 	test? ( dev-libs/libgcrypt:0
-		${VIRTUALX_DEPEND} )
-	"
+		${VIRTUALX_DEPEND} )"
 
 src_prepare() {
 	# preprocessed graphics are unpacked into wrong directory
 	# so lets move them into correct location:
 	mv ../classified-ads-graphics-${PV}/* ui/ || die
+	# possible patches
+	eapply_user
 	# then just run qmake
-	qt4-r2_src_prepare
+	eqmake5
 }
 
 src_compile() {
-	qt4-r2_src_compile
+	emake
 	if use doc; then
 		cd doc || die
 		doxygen || die
@@ -70,8 +73,7 @@ src_install() {
 # virtualx requires a command that returns number, and does not just die:
 test_suite() {
 	cd test || return -1
-	echo qmake
-	"$(qt4_get_bindir)"/qmake || return -2
+	eqmake5 || return -2
 	emake
 	# test suite will create files under $HOME, set $HOME to point to
 	# safe location, ideas stolen from
