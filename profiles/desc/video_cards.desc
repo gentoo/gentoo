@@ -69,6 +69,7 @@ tga - VIDEO_CARDS setting to build driver for tga video cards
 trident - VIDEO_CARDS setting to build driver for trident video cards
 tseng - VIDEO_CARDS setting to build driver for tseng video cards
 v4l - VIDEO_CARDS setting to build driver for v4l video cards
+vc4 - VIDEO_CARDS setting to build driver for vc4 video cards
 vesa - VIDEO_CARDS setting to build driver for vesa video cards
 via - VIDEO_CARDS setting to build driver for via video cards
 virtualbox - VIDEO_CARDS setting to build driver for virtualbox emulation
