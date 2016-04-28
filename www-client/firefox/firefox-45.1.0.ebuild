@@ -31,7 +31,6 @@ PATCH="${PN}-45.0-patches-04"
 MOZ_HTTP_URI="https://archive.mozilla.org/pub/${PN}/releases"
 
 MOZCONFIG_OPTIONAL_GTK3="enabled"
-MOZCONFIG_OPTIONAL_QT5=1
 MOZCONFIG_OPTIONAL_WIFI=1
 MOZCONFIG_OPTIONAL_JIT="enabled"
 
@@ -44,7 +43,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x
 
 SLOT="0"
 LICENSE="MPL-2.0 GPL-2 LGPL-2.1"
-IUSE="bindist egl hardened +hwaccel pgo selinux +gmp-autoupdate test"
+IUSE="bindist hardened +hwaccel pgo selinux +gmp-autoupdate test"
 RESTRICT="!bindist? ( bindist )"
 
 # More URIs appended below...
@@ -133,8 +132,7 @@ src_prepare() {
 	# Apply our patches
 	eapply "${WORKDIR}/firefox" \
 		"${FILESDIR}"/arm64-4-link-chromium-mutex-based-atomics.patch \
-		"${FILESDIR}"/arm64-5-mozjemalloc-no-static-page-sizes.patch \
-		"${FILESDIR}"/${PN}-45-qt-widget-fix.patch
+		"${FILESDIR}"/arm64-5-mozjemalloc-no-static-page-sizes.patch
 
 	# Allow user to apply any additional patches without modifing ebuild
 	eapply_user
@@ -208,7 +206,7 @@ src_configure() {
 	use hardened && append-ldflags "-Wl,-z,relro,-z,now"
 
 	# Only available on mozilla-overlay for experimentation -- Removed in Gentoo repo per bug 571180
-	use egl && mozconfig_annotate 'Enable EGL as GL provider' --with-gl-provider=EGL
+	#use egl && mozconfig_annotate 'Enable EGL as GL provider' --with-gl-provider=EGL
 
 	# Setup api key for location services
 	echo -n "${_google_api_key}" > "${S}"/google-api-key
