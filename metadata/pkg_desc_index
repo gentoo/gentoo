@@ -11656,26 +11656,6 @@ mail-client/alpine 2.00-r5 2.00-r6: alpine is an easy to use text-based based ma
 mail-client/balsa 2.4.14 2.5.2 2.5.2-r1: Email client for GNOME
 mail-client/biabam 0.9.7: Biabam is a small commandline tool for sending mail attachments
 mail-client/claws-mail 3.13.2: An email client (and news reader) based on GTK+
-mail-client/claws-mail-acpi-notifier 1.0.28: This plugin enables mail notification via LEDs on some laptops
-mail-client/claws-mail-address_keeper 1.0.7: Plugin for Claws to collect all recipients in an address book folder
-mail-client/claws-mail-archive 0.6.13: Plugin for Claws to add archiving features
-mail-client/claws-mail-att-remover 1.0.15: This plugin lets you remove attachments from mails
-mail-client/claws-mail-attachwarner 1.0: Warn about missing attachment, if it's mentioned in message body
-mail-client/claws-mail-clamd 3.5.5: Plugin for Claws to scan for viruses
-mail-client/claws-mail-fancy 0.9.17: Plugin to display HTML with Webkit
-mail-client/claws-mail-fetchinfo 0.4.25: Plugin to add additional headers with download information
-mail-client/claws-mail-gdata 0.5: Plugin for Claws to use Google data providers
-mail-client/claws-mail-gtkhtml 0.34: Renders HTML mail using the gtkhtml2 rendering widget
-mail-client/claws-mail-mailmbox 1.15: Plugin to operate on mbox type mailboxes
-mail-client/claws-mail-newmail 0.0.16: Plugin which writes a header summary to a log file for each received mail
-mail-client/claws-mail-notification 0.31: Plugin providing various ways to notify user of new and unread mail
-mail-client/claws-mail-pdf-viewer 0.9.3: A plugin for Claws to display PDF files directly
-mail-client/claws-mail-perl 0.9.20: Plugin to use perl to write filtering rules
-mail-client/claws-mail-python 0.11: Plugin to integrate with Python
-mail-client/claws-mail-rssyl 0.34: Read your favorite newsfeeds in Claws Mail. RSS 1.0, 2.0 and Atom feeds are currently supported
-mail-client/claws-mail-spam-report 0.3.17: Plugin for Claws to report spam to various places
-mail-client/claws-mail-tnef-parse 0.3.14: Plugin for Claws to support application/ms-tnef attachments
-mail-client/claws-mail-vcalendar 2.0.14: Plugin for Claws to support the vCalendar meeting format
 mail-client/clawsker 0.7.8 0.7.10: Applet to edit Claws Mail's hidden preferences
 mail-client/cone 0.89 0.90 0.90-r1 0.92: CONE: COnsole News reader and Emailer
 mail-client/drac 1.12-r1: A robust implementation of POP-before-SMTP
