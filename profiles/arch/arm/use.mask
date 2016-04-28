@@ -159,6 +159,7 @@ csharp
 -video_cards_omap
 -video_cards_omapfb
 -video_cards_tegra
+-video_cards_vc4
 
 # 2006/02/05 - Donnie Berkholz <dberkholz@gentoo.org>
 # Modular X: mask for architectures on which they aren't available

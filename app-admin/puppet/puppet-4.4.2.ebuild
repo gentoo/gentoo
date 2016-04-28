@@ -66,7 +66,7 @@ all_ruby_prepare() {
 	rm spec/lib/matchers/json.rb $( grep -Rl matchers/json spec) || die
 
 	# can't be run within portage.
-	epatch "${FILESDIR}/puppet-fix-tests-4.x.patch"
+	epatch "${FILESDIR}/puppet-fix-tests-4.4.2.patch"
 
 	# Avoid specs that can only run in the puppet.git repository. This
 	# should be narrowed down to the specific specs.
