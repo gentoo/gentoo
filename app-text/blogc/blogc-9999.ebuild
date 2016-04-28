@@ -12,32 +12,39 @@ if [[ ${PV} = *9999* ]]; then
 fi
 
 DESCRIPTION="A blog compiler"
-HOMEPAGE="http://blogc.org/"
+HOMEPAGE="https://blogc.rgm.io/"
 
 SRC_URI="https://github.com/${PN}/${PN}/releases/download/v${PV}/${P}.tar.xz"
 KEYWORDS="~amd64 ~x86"
 if [[ ${PV} = *9999* ]]; then
 	SRC_URI=""
 	KEYWORDS=""
-	RDEPEND="=dev-libs/squareball-9999"
-	DEPEND="${RDEPEND}
-		app-text/ronn"
-else
-	RDEPEND=">=dev-libs/squareball-0.2.0"
-	DEPEND="${RDEPEND}"
+	DEPEND="app-text/ronn"
 fi
 
 LICENSE="BSD"
 SLOT="0"
-IUSE="test"
+IUSE="git httpd test"
+
+CDEPEND="
+	httpd? (
+		dev-libs/libevent
+		sys-apps/file )"
+
+RDEPEND="${CDEPEND}
+	git? (
+		dev-vcs/git )
+	!dev-vcs/blogc-git-receiver
+	!www-servers/blogc-runserver"
 
 DEPEND="${DEPEND}
+	${CDEPEND}
 	virtual/pkgconfig
 	test? (
 		dev-util/cmocka )"
 
 src_prepare() {
-	[[ ${PV} = *9999* ]] && AT_NO_RECURSIVE=1 eautoreconf
+	[[ ${PV} = *9999* ]] && eautoreconf
 	eapply_user
 	default
 }
@@ -51,7 +58,8 @@ src_configure() {
 	fi
 	econf \
 		$(use_enable test tests) \
+		$(use_enable git git-receiver) \
+		$(use_enable httpd runserver) \
 		--disable-valgrind \
-		--with-squareball=system \
 		${myconf}
 }
