@@ -34,6 +34,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-selinux.patch" #326697
 	"${FILESDIR}/${P}-shutdown-h.patch" #449354
 	"${FILESDIR}/${PN}-2.88-sysmacros.patch"
+	"${FILESDIR}/${PN}-2.88-ttydefaults.patch" #551626
 )
 
 src_prepare() {

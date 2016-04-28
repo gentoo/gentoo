@@ -1,6 +1,8 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
+
+EAPI=6
 
 DESCRIPTION="Gadu-Gadu transport for Jabber"
 HOMEPAGE="https://github.com/Jajcus/jggtrans"
@@ -22,7 +24,7 @@ DEPEND="${RDEPEND}
 S="${WORKDIR}/jggtrans-${PV}"
 
 src_install() {
-	emake DESTDIR="${D}" install || die "install failed"
+	emake DESTDIR="${D}" install
 
 	keepdir /var/spool/jabber/gg
 	keepdir /var/run/jabber
