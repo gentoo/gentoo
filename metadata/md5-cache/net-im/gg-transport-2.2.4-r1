@@ -9,4 +9,4 @@ RDEPEND=>=net-im/jabber-base-0.01 >=dev-libs/glib-2.6.4 net-dns/libidn >=net-lib
 SLOT=0
 SRC_URI=mirror://github/Jajcus/jggtrans/jggtrans-2.2.4.tar.gz
 _eclass_exported_funcs=src_install:-
-_md5_=0e74e9baaa41fec65a9f91f5aff38539
+_md5_=80b491f8028f2bd5cef79c76e8784deb
