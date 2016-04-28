@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 KDE_HANDBOOK="forceoptional"
 KDE_SELINUX_MODULE="games"
@@ -32,7 +32,6 @@ DEPEND="
 	$(add_qt_dep qtwidgets)
 	$(add_qt_dep qtxml)
 "
-
 RDEPEND="${DEPEND}"
 
 DOCS=( AUTHORS )

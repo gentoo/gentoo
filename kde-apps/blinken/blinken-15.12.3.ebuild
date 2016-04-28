@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 KDE_HANDBOOK="forceoptional"
 inherit kde5
@@ -30,5 +30,5 @@ RDEPEND="${DEPEND}"
 src_install() {
 	kde5_src_install
 
-	rm "${D}"/usr/share/${PN}/README.packagers
+	rm "${D}"/usr/share/${PN}/README.packagers || die
 }

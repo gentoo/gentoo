@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 KDE_HANDBOOK="forceoptional"
 inherit kde5
@@ -25,7 +25,6 @@ DEPEND="
 	$(add_qt_dep qtsvg)
 	$(add_qt_dep qtwidgets)
 "
-
 RDEPEND="${DEPEND}"
 
 DOCS=( AUTHORS HISTORY TODO )
