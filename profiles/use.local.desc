@@ -7233,7 +7233,6 @@ sys-apps/qingy:opensslcrypt - Encrypt communications between qingy and its GUI u
 sys-apps/razercfg:pm-utils - Installs the pm-utils hooks for suspend/resume and requires sys-power/pm-utils
 sys-apps/razercfg:qt4 - Installs a qt UI. Requires dev-python/pyside
 sys-apps/roccat-tools:lua - Build support for Lua scripting for RyosMKPro ripple effects
-sys-apps/rsbac-admin:rklogd - Enabled deprecated RSBAC kernel logger
 sys-apps/s390-tools:fuse - build cmsfs-fuse to read files stored on a z/VM CMS disk
 sys-apps/s390-tools:zfcpdump - build the kernel disk dumping utility
 sys-apps/smartmontools:minimal - Do not install the monitoring daemon and associated scripts.

@@ -16578,7 +16578,6 @@ sys-apps/restartd 0.2.2: A daemon for checking your running and not running proc
 sys-apps/rkflashtool 5.1: Tool for flashing Rockchip devices
 sys-apps/rng-tools 4-r7 5 5-r1 5-r2: Daemon to use hardware random number generators
 sys-apps/roccat-tools 3.7.0 3.9.0: Utility for advanced configuration of Roccat devices
-sys-apps/rsbac-admin 1.4.9: Rule Set Based Access Control (RSBAC) Admin Tools
 sys-apps/s390-tools 1.17.0 1.23.1: User space utilities for the zSeries (s390) Linux kernel and device drivers
 sys-apps/s6 2.1.3.0 2.2.4.3: skarnet.org's small and secure supervision software suite
 sys-apps/s6-linux-init 0.0.1.4: Generates an init binary for s6-based init systems
@@ -17159,7 +17158,6 @@ sys-kernel/openvz-sources 2.6.32.108.5 2.6.32.108.8 2.6.32.111.12 2.6.32.112.15 
 sys-kernel/pf-sources 2.6.31_p9 2.6.32_p16 2.6.33_p4 2.6.34_p7 2.6.35_p11 2.6.36_p6 2.6.37_p6 2.6.38_p8 2.6.39_p4 3.0.7-r2 3.1.6-r2 3.2.7 3.3.6 3.4.6 3.5.4 3.6.12 3.7.5 3.8.2 3.9.5 3.10.1 3.11.4 3.12.4 3.13.3 3.14_p4 3.15_p5 3.16_p4 3.17_p4 3.19_p1 4.0_p6 4.1_p1 4.2_p3 4.3_p4 4.4_p8: Linux kernel fork with new features, including the -ck patchset (BFS), BFQ, TuxOnIce and UKSM
 sys-kernel/raspberrypi-image 4.1.17_p20160209 4.1.19_p20160309: Raspberry PI boot loader and firmware
 sys-kernel/raspberrypi-sources 3.10.1_pre-r20130719 3.10.9999 3.12.9999 3.14.9999 3.18.9999 4.1.9999 4.4.9999: Raspberry PI kernel sources
-sys-kernel/rsbac-sources 3.14.28: RSBAC kernel sources (kernel series 3.14)
 sys-kernel/rt-sources 3.14.64_p67 3.14.65_p68 3.18.28_p28 3.18.29_p30 4.1.19_p22 4.1.20_p23 4.4.4_p11 4.4.6_p12 4.4.6_p13 4.4.6_p14 4.4.7_p16: Full Linux 4.4 kernel sources with the CONFIG_PREEMPT_RT patch
 sys-kernel/spl 0.6.0_rc13-r2 0.6.0_rc14-r3 0.6.1-r3 0.6.2-r5 0.6.3-r1 0.6.4.2 0.6.5.2 0.6.5.3 0.6.5.3-r1 0.6.5.4 0.6.5.4-r1 0.6.5.6 9999: The Solaris Porting Layer is a Linux kernel module which provides many of the Solaris kernel APIs
 sys-kernel/tuxonice-sources 3.4.110 3.4.111 3.10.98 3.10.100 3.10.101 3.12.55 3.12.56 3.12.58 3.14.62 3.14.64 3.14.67 3.18.27 3.18.28 3.18.31 4.1.18 4.1.19 4.1.22 4.2.8 4.3.6 4.4.3 4.4.5 4.4.8 4.5.2: TuxOnIce + Gentoo patchset sources
