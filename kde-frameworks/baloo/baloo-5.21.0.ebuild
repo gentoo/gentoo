@@ -5,6 +5,7 @@
 EAPI=6
 
 KDE_TEST="forceoptional"
+VIRTUALX_REQUIRED="test"
 inherit kde5
 
 DESCRIPTION="Framework for searching and managing metadata"
@@ -21,11 +22,11 @@ DEPEND="
 	$(add_frameworks_dep kidletime)
 	$(add_frameworks_dep kio)
 	$(add_frameworks_dep solid)
-	>=dev-db/lmdb-0.9.17
 	$(add_qt_dep qtdbus)
 	$(add_qt_dep qtdeclarative)
 	$(add_qt_dep qtgui)
 	$(add_qt_dep qtwidgets)
+	>=dev-db/lmdb-0.9.17
 "
 RDEPEND="${DEPEND}
 	!kde-base/baloo:4[-minimal(-)]
