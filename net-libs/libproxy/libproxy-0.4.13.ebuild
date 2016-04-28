@@ -35,19 +35,19 @@ DEPEND="${RDEPEND}
 # avoid dependency loop, bug #467696
 PDEPEND="networkmanager? ( net-misc/networkmanager )"
 
-src_prepare() {
-	# Gentoo's spidermonkey doesn't set Version: in mozjs18[57].pc
-	epatch "${FILESDIR}/${P}-mozjs.pc.patch"
-
+PATCHES=(
 	# get-pac-test freezes when run by the ebuild, succeeds when building
 	# manually; virtualx.eclass doesn't help :(
-	epatch "${FILESDIR}/${PN}-0.4.10-disable-pac-test.patch"
-
-	epatch "${FILESDIR}"/${P}-macosx.patch
+	"${FILESDIR}/${PN}-0.4.10-disable-pac-test.patch"
 
 	# prevent dependency loop with networkmanager, libsoup, glib-networking; bug #467696
-	epatch "${FILESDIR}/${PN}-0.4.11-avoid-nm-build-dep.patch"
-}
+	"${FILESDIR}/${PN}-0.4.11-avoid-nm-build-dep.patch"
+
+	# Gentoo's spidermonkey doesn't set Version: in mozjs18[57].pc
+	"${FILESDIR}/${PN}-0.4.12-mozjs.pc.patch"
+
+	"${FILESDIR}/${PN}-0.4.12-macosx.patch"
+)
 
 src_configure() {
 	[[ ${CHOST} == *-solaris* ]] && append-libs -lsocket -lnsl
