@@ -2,7 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
+
 PYTHON_COMPAT=( python2_7 )
 
 inherit cmake-multilib eutils flag-o-matic mono python-r1
@@ -49,40 +50,33 @@ PATCHES=(
 	"${FILESDIR}/${PN}-0.4.12-macosx.patch"
 )
 
+multilib_src_configure() {
+	local mycmakeargs=(
+		'-DPERL_VENDORINSTALL=ON'
+		# WITH_VALA just copies the .vapi file over and needs no deps,
+		# hence always enable it unconditionally
+		'-DWITH_VALA=ON'
+		"-DCMAKE_C_FLAGS=${CFLAGS}"
+		"-DCMAKE_CXX_FLAGS=${CXXFLAGS}"
+		"-DWITH_GNOME3=$(usex gnome)"
+		"-DWITH_KDE=$(usex kde)"
+		"-DWITH_DOTNET=$(multilib_is_native_abi	&& usex mono || echo 'OFF')"
+		"-DWITH_NM=$(usex networkmanager)"
+		"-DWITH_PERL=$(multilib_is_native_abi	&& usex perl || echo 'OFF')"
+		"-DWITH_PYTHON=$(multilib_is_native_abi	&& usex python || echo 'OFF')"
+		"-DWITH_MOZJS=$(multilib_is_native_abi	&& usex spidermonkey || echo 'OFF')"
+		"-DWITH_WEBKIT=$(multilib_is_native_abi	&& usex webkit || echo 'OFF')"
+		"-DWITH_WEBKIT3=$(multilib_is_native_abi && usex webkit || echo 'OFF')"
+		"-DBUILD_TESTING=$(usex test)"
+	)
+	cmake-utils_src_configure
+}
+
 src_configure() {
 	[[ ${CHOST} == *-solaris* ]] && append-libs -lsocket -lnsl
 
 	use python && python_setup
 	multilib-minimal_src_configure
-}
-
-multilib_src_configure() {
-	# WITH_VALA just copies the .vapi file over and needs no deps,
-	# hence always enable it unconditionally
-	local mycmakeargs=(
-			-DPERL_VENDORINSTALL=ON
-			-DCMAKE_C_FLAGS="${CFLAGS}"
-			-DCMAKE_CXX_FLAGS="${CXXFLAGS}"
-			$(cmake-utils_use_with gnome GNOME3)
-			$(multilib_is_native_abi && cmake-utils_use_with kde KDE4 \
-				|| echo -DWITH_KDE4=OFF)
-			$(multilib_is_native_abi && cmake-utils_use_with mono DOTNET \
-				|| echo -DWITH_DOTNET=OFF)
-			$(cmake-utils_use_with networkmanager NM)
-			$(multilib_is_native_abi && cmake-utils_use_with perl PERL \
-				|| echo -DWITH_PERL=OFF)
-			$(multilib_is_native_abi && cmake-utils_use_with python PYTHON \
-				|| echo -DWITH_PYTHON=OFF)
-			$(multilib_is_native_abi && cmake-utils_use_with spidermonkey MOZJS \
-				|| echo -DWITH_MOZJS=OFF)
-			$(multilib_is_native_abi && cmake-utils_use_with webkit WEBKIT \
-				|| echo -DWITH_WEBKIT=OFF)
-			$(multilib_is_native_abi && cmake-utils_use_with webkit WEBKIT3 \
-				|| echo -DWITH_WEBKIT3=OFF)
-			-DWITH_VALA=ON
-			$(cmake-utils_use test BUILD_TESTING)
-	)
-	cmake-utils_src_configure
 }
 
 multilib_src_install_all() {
