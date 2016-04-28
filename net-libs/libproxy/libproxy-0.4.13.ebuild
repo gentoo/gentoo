@@ -8,11 +8,11 @@ PYTHON_COMPAT=( python2_7 )
 inherit cmake-multilib eutils flag-o-matic mono python-r1
 
 DESCRIPTION="Library for automatic proxy configuration management"
-HOMEPAGE="https://code.google.com/p/libproxy/"
+HOMEPAGE="https://github.com/libproxy/libproxy"
 LICENSE="LGPL-2.1+"
 
 SLOT="0"
-SRC_URI="https://${PN}.googlecode.com/files/${P}.tar.gz"
+SRC_URI="https://github.com/libproxy/libproxy/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 KEYWORDS="~alpha ~amd64 ~amd64-linux ~arm ~arm-linux ~hppa ~ia64 ~ia64-linux ~mips ~ppc ~ppc64 ~sh ~sparc ~sparc-solaris ~x64-macos ~x86 ~x86-fbsd ~x86-freebsd ~x86-interix ~x86-linux ~x86-macos ~x86-solaris"
 IUSE="gnome kde mono networkmanager perl python spidermonkey test webkit"
