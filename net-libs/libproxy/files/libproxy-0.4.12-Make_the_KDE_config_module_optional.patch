@@ -1,0 +1,31 @@
+From 8ca0db36983e9154c808288fea4cbdfc9a7ea4c5 Mon Sep 17 00:00:00 2001
+From: Raphael Kubo da Costa <rakuco@FreeBSD.org>
+Date: Mon, 18 Jan 2016 16:59:28 +0100
+Subject: [PATCH] Make the KDE config module optional again.
+
+This is a follow-up to bd9bf72 ("Add generic KDE config module"): make
+it possible for distributions to not build the KDE config module at all,
+even if it does not have any dependencies on Qt/KDE/KF5.
+---
+ libproxy/cmake/modules/config_kde.cmk | 12 ++++++++----
+ 1 file changed, 8 insertions(+), 4 deletions(-)
+
+diff --git a/libproxy/cmake/modules/config_kde.cmk b/libproxy/cmake/modules/config_kde.cmk
+index d0a66ef..56c14b8 100644
+--- a/libproxy/cmake/modules/config_kde.cmk
++++ b/libproxy/cmake/modules/config_kde.cmk
+@@ -1,6 +1,10 @@
+-find_program(KDE4_CONF kreadconfig)
+-find_program(KF5_CONF kreadconfig5)
++option(WITH_KDE "Build module to read proxy settings from KDE4/KF5" ON)
+ 
+-if (KDE4_CONF OR KF5_CONF)
+-  set(KDE_FOUND 1)
++if (WITH_KDE)
++  find_program(KDE4_CONF kreadconfig)
++  find_program(KF5_CONF kreadconfig5)
++
++  if (KDE4_CONF OR KF5_CONF)
++    set(KDE_FOUND 1)
++  endif()
+ endif()
