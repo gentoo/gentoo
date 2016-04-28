@@ -33,7 +33,7 @@ src_install() {
 	fowners jabber:jabber /var/run/jabber
 	fowners jabber:jabber /var/log/jabber
 
-	newinitd "${FILESDIR}/jggtrans-${PVR}" jggtrans
+	newinitd "${FILESDIR}/jggtrans-${PV}" jggtrans
 
 	insinto /etc/jabber
 	doins jggtrans.xml
