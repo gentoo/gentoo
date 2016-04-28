@@ -87,5 +87,7 @@ src_configure() {
 }
 
 multilib_src_install_all() {
+	doman "${FILESDIR}/proxy.1"
+
 	use python && python_foreach_impl python_domodule 'bindings/python/libproxy.py'
 }
