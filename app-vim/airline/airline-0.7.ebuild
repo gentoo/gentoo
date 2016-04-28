@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -23,5 +23,5 @@ VIM_PLUGIN_HELPFILES="${PN}.txt"
 
 src_prepare() {
 	# remove unwanted files
-	rm -rf t Gemfile Rakefile LICENSE README*
+	rm -rv t Gemfile Rakefile LICENSE README* || die
 }
