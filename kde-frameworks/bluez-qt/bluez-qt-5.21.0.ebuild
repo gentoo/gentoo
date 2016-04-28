@@ -4,6 +4,7 @@
 
 EAPI=6
 
+VIRTUALX_REQUIRED="test"
 inherit kde5 udev
 
 DESCRIPTION="Qt wrapper for Bluez 5 DBus API"
