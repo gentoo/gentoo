@@ -1,10 +1,10 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-inherit eutils toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="Dialer Without a Useful Name (DWUN)"
 HOMEPAGE="http://dwun.sourceforge.net/"
@@ -20,7 +20,7 @@ src_prepare() {
 	sed -i -e "s:TODO QUICKSTART README UPGRADING ChangeLog COPYING AUTHORS::" Makefile.in || die
 	tc-export CC
 
-	epatch_user
+	eapply_user
 }
 
 src_configure() {
