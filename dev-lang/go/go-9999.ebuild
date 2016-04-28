@@ -24,7 +24,10 @@ kernel_linux? (
 	amd64? ( ${BOOTSTRAP_DIST}/go-linux-amd64-bootstrap.tbz )
 	arm? ( ${BOOTSTRAP_DIST}/go-linux-arm-bootstrap.tbz )
 	arm64? ( ${BOOTSTRAP_DIST}/go-linux-arm64-bootstrap.tbz )
-	ppc64? ( ${BOOTSTRAP_DIST}/go-linux-ppc64-bootstrap.tbz )
+	ppc64? (
+		${BOOTSTRAP_DIST}/go-linux-ppc64-bootstrap.tbz
+		${BOOTSTRAP_DIST}/go-linux-ppc64le-bootstrap.tbz
+	)
 	x86? ( ${BOOTSTRAP_DIST}/go-linux-386-bootstrap-1.tbz )
 )
 kernel_SunOS? (
@@ -38,8 +41,6 @@ if [[ ${PV} = 9999 ]]; then
 	inherit git-r3
 else
 	SRC_URI+="https://storage.googleapis.com/golang/go${MY_PV}.src.tar.gz"
-	# go-bootstrap-1.4 only supports go on amd64, arm and x86 architectures.
-	# Allowing other bootstrap options would enable arm64 and ppc64 builds.
 	case ${PV} in
 		*9999*|*_rc*) ;;
 		*)
@@ -87,6 +88,8 @@ go_arch()
 	case "${portage_arch}" in
 		x86)	echo 386;;
 		x64-*)	echo amd64;;
+		ppc64)
+			[[ "$(tc-endian)" = big ]] && echo ppc64 || echo ppc64le ;;
 		*)		echo "${portage_arch}";;
 	esac
 }
@@ -174,6 +177,7 @@ src_compile()
 	if [[ ${ARCH} == arm ]]; then
 		export GOARM=$(go_arm)
 	fi
+	elog "GOROOT_BOOTSTRAP is ${GOROOT_BOOTSTRAP}"
 
 	cd src
 	./make.bash || die "build failed"
