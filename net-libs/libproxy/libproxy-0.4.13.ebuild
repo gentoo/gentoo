@@ -87,9 +87,6 @@ src_configure() {
 }
 
 multilib_src_install_all() {
-	DOCS="AUTHORS ChangeLog NEWS README"
-	einstalldocs
-
 	if use python; then
 		python_foreach_impl python_domodule bindings/python/libproxy.py || die
 	fi
