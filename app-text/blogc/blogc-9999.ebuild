@@ -33,7 +33,9 @@ CDEPEND="
 
 RDEPEND="${CDEPEND}
 	git? (
-		dev-vcs/git )"
+		dev-vcs/git )
+	!dev-vcs/blogc-git-receiver
+	!www-servers/blogc-runserver"
 
 DEPEND="${DEPEND}
 	${CDEPEND}
