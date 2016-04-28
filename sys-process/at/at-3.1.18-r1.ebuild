@@ -1,8 +1,8 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 inherit autotools eutils flag-o-matic pam user systemd
 
@@ -24,26 +24,33 @@ RDEPEND="virtual/mta
 	virtual/logger
 	selinux? ( sec-policy/selinux-at )"
 
+S="${WORKDIR}"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-3.1.8-more-deny.patch
+	"${FILESDIR}"/${PN}-3.1.14-Makefile.patch
+	# fix parallel make issues, bug #244884
+	"${FILESDIR}"/${PN}-3.1.10.2-Makefile.in-parallel-make-fix.patch
+	"${FILESDIR}"/${PN}-3.1.13-configure.in-fix-PAM-automagick-dep.patch
+	# Fix parallel make issue (bug #408375)
+	"${FILESDIR}"/${PN}-3.1.13-parallel-make-fix.patch
+	"${FILESDIR}"/${PN}-3.1.13-getloadavg.patch
+)
+
 pkg_setup() {
 	enewgroup at 25
 	enewuser at 25 -1 /var/spool/at/atjobs at
 }
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-3.1.8-more-deny.patch
-	epatch "${FILESDIR}"/${PN}-3.1.14-Makefile.patch
-	# fix parallel make issues, bug #244884
-	epatch "${FILESDIR}"/${PN}-3.1.10.2-Makefile.in-parallel-make-fix.patch
-	epatch "${FILESDIR}"/${PN}-3.1.13-configure.in-fix-PAM-automagick-dep.patch
-	# Fix parallel make issue (bug #408375)
-	epatch "${FILESDIR}"/${PN}-3.1.13-parallel-make-fix.patch
-	epatch "${FILESDIR}"/${PN}-3.1.13-getloadavg.patch
-
+	default
 	eautoconf
 }
 
 src_configure() {
-	use pam || my_conf="--without-pam"
+	local myconf=()
+	use pam || my_conf+=( --without-pam )
+	use selinux && my_conf+=( --with-selinux )
 	econf \
 		--sysconfdir=/etc/at \
 		--with-jobdir=/var/spool/at/atjobs \
@@ -51,7 +58,7 @@ src_configure() {
 		--with-etcdir=/etc/at \
 		--with-daemon_username=at \
 		--with-daemon_groupname=at \
-		${my_conf}
+		${my_conf[@]}
 }
 
 src_install() {
@@ -73,10 +80,11 @@ src_install() {
 
 pkg_postinst() {
 	einfo "Forcing correct permissions on /var/spool/at"
-	chown at:at "${ROOT}/var/spool/at/atjobs"
-	chmod 1770  "${ROOT}/var/spool/at/atjobs"
-	chown at:at "${ROOT}/var/spool/at/atjobs/.SEQ"
-	chmod 0600  "${ROOT}/var/spool/at/atjobs/.SEQ"
-	chown at:at "${ROOT}/var/spool/at/atspool"
-	chmod 1770  "${ROOT}/var/spool/at/atspool"
+	local atspooldir="${ROOT}/var/spool/at"
+	chown at:at "${atspooldir}/atjobs"
+	chmod 1770  "${atspooldir}/atjobs"
+	chown at:at "${atspooldir}/atjobs/.SEQ"
+	chmod 0600  "${atspooldir}/atjobs/.SEQ"
+	chown at:at "${atspooldir}/atspool"
+	chmod 1770  "${atspooldir}/atspool"
 }
