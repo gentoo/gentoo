@@ -5,6 +5,16 @@
 # This file requires >=portage-2.1.1
 # New entries go on top.
 
+# Ian Stakenvicius <axs@gentoo.org> (28 Apr 2016)
+# system-cairo support causes lots of crashing in mozilla pkgs
+# (see bug #556378 and others)
+www-client/firefox system-cairo
+mail-client/thunderbird system-cairo
+# system-libvpx on mozilla 45.1 and newer kept firefox
+# from playing html5 video in tests, mask for now until
+# further testing can determine why and fix
+>=www-client/firefox-45.1.0 system-libvpx
+
 # Johannes Huber <johu@gentoo.org> (21 Apr 2016)
 # Unreleased dependency.
 kde-apps/ktp-text-ui speech
