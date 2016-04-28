@@ -14044,7 +14044,7 @@ net-ftp/pybootd 1.5.0_pre20110524131526: Simplified BOOTP/DHCP/PXE/TFTP server
 net-ftp/qshare 2.1.5-r1: FTP server with a service discovery feature
 net-ftp/scythia 0.9.3_p2: Just a small FTP client
 net-ftp/tftp-hpa 5.2 5.2-r1: port of the OpenBSD TFTP server
-net-ftp/tlswrap 1.04-r1: a TLS/SSL FTP wrapper/proxy which allows to use TLS with every FTP client
+net-ftp/tlswrap 1.04-r2: a TLS/SSL FTP wrapper/proxy which allows to use TLS with every FTP client
 net-ftp/tnftp 20141104 20151004: NetBSD FTP client with several advanced features
 net-ftp/vsftpd 2.3.5 3.0.2 3.0.2-r1 3.0.2-r2 3.0.2-r3 3.0.2-r4 3.0.3: Very Secure FTP Daemon written with speed, size and security in mind
 net-ftp/weex 2.6.1.5-r1: Automates maintaining a web page or other FTP archive
@@ -14064,7 +14064,7 @@ net-im/ekg2 0.3.1-r2 9999: Text-based, multi-protocol instant messenger
 net-im/empathy 3.12.10 3.12.11: Telepathy instant messaging and video/audio call client for GNOME
 net-im/err 1.7.1-r1: Plugin based XMPP chatbot designed to be easily deployable, extensible and maintainable
 net-im/gajim 0.16.5: Jabber client written in PyGTK
-net-im/gg-transport 2.2.4: Gadu-Gadu transport for Jabber
+net-im/gg-transport 2.2.4-r1: Gadu-Gadu transport for Jabber
 net-im/indicator-messages 0.6.0-r1: A place on the user's desktop that collects messages that need a response
 net-im/jabber-base 0.01 0.01-r1: Jabber servers and transports layout package
 net-im/jabberd2 2.3.1-r1 2.3.2 2.3.2-r1 2.3.3-r1 2.3.4: Open Source Jabber Server
