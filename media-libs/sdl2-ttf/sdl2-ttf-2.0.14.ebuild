@@ -12,7 +12,7 @@ SRC_URI="http://www.libsdl.org/projects/SDL_ttf/release/${MY_P}.tar.gz"
 
 LICENSE="ZLIB"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="static-libs X"
 
 RDEPEND="X? ( >=x11-libs/libXt-1.1.4[${MULTILIB_USEDEP}] )
@@ -27,10 +27,6 @@ multilib_src_configure() {
 	ECONF_SOURCE="${S}" econf \
 		$(use_enable static-libs static) \
 		$(use_with X x)
-}
-
-multilib_src_install() {
-	emake DESTDIR="${D}" install
 }
 
 multilib_src_install_all() {
