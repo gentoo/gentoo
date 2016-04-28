@@ -18,7 +18,6 @@
 		<flag name="opencc">Enable OpenCC engine (using <pkg>app-i18n/opencc</pkg>) for converter between Simplified Chinese and Traditional Chinese</flag>
 		<flag name="pango">Enable support for <pkg>x11-libs/pango</pkg></flag>
 		<flag name="qt4">Install input method module for Qt 4</flag>
-		<flag name="snooper">Enable key snooper for GTK+ applications</flag>
 		<flag name="table">Install table input methods for Simplified Chinese</flag>
 	</use>
 </pkgmetadata>
