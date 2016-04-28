@@ -24,9 +24,9 @@ RDEPEND="${PYTHON_DEPS}
 	dev-python/PyQt5[${PYTHON_USEDEP}]
 	dev-python/numpy[${PYTHON_USEDEP}]
 	dev-qt/qtdeclarative:5
-	dev-qt/qtquickcontrols:5
-	sys-devel/gettext"
+	dev-qt/qtquickcontrols:5"
 DEPEND="${RDEPEND}
+	sys-devel/gettext
 	doc? ( app-doc/doxygen )
 	test? ( dev-python/pytest[${PYTHON_USEDEP}] )"
 S="${WORKDIR}/${MY_PN}-${MY_PV}"
