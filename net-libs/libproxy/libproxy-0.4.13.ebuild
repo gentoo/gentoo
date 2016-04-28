@@ -22,17 +22,24 @@ REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 # NOTE: mozjs/spidermonkey might still cause problems like #373397 ?
 # NOTE: webkit-gtk:3, not :2, needed for libjavascriptcoregtk support
-RDEPEND="gnome? ( >=dev-libs/glib-2.34.3:2[${MULTILIB_USEDEP}] )
-	kde? ( >=kde-base/kdelibs-4.4.5 )
+CDEPEND="
+	gnome? ( dev-libs/glib:2[${MULTILIB_USEDEP}] )
 	mono? ( dev-lang/mono )
-	networkmanager? ( >=sys-apps/dbus-1.6.18-r1[${MULTILIB_USEDEP}] )
+	networkmanager? ( sys-apps/dbus:0[${MULTILIB_USEDEP}] )
 	perl? ( dev-lang/perl:= )
 	python? ( ${PYTHON_DEPS} )
 	spidermonkey? ( >=dev-lang/spidermonkey-1.8.5:0= )
-	webkit? ( >=net-libs/webkit-gtk-1.6:3= )"
-DEPEND="${RDEPEND}
-	kde? ( dev-util/automoc )
-	>=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}]"
+	webkit? ( || (
+		net-libs/webkit-gtk:3=
+		net-libs/webkit-gtk:4=
+	) )"
+DEPEND="${CDEPEND}
+	virtual/pkgconfig:0[${MULTILIB_USEDEP}]"
+RDEPEND="${CDEPEND}
+	kde? ( || (
+		kde-apps/kreadconfig:4
+		kde-frameworks/kconfig:5
+	) )"
 # avoid dependency loop, bug #467696
 PDEPEND="networkmanager? ( net-misc/networkmanager )"
 
