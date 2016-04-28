@@ -12617,7 +12617,7 @@ media-libs/sdl2-gfx 1.0.1: Graphics drawing primitives library for SDL2
 media-libs/sdl2-image 2.0.1: Image file loading library
 media-libs/sdl2-mixer 2.0.1: Simple Direct Media Layer Mixer Library
 media-libs/sdl2-net 2.0.1: Simple Direct Media Layer Network Support Library
-media-libs/sdl2-ttf 2.0.13: library that allows you to use TrueType fonts in SDL applications
+media-libs/sdl2-ttf 2.0.13 2.0.14: library that allows you to use TrueType fonts in SDL applications
 media-libs/sdlmm 0.1.8-r1: A C++ Wrapper for the Simple DirectMedia Layer
 media-libs/sg 1.5: Socket Graphics tool for displaying polygons
 media-libs/sge 030809: Graphics extensions library for SDL
