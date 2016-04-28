@@ -4,7 +4,7 @@
 
 EAPI=5
 PYTHON_COMPAT=( python2_7 )
-USE_RUBY="ruby22 ruby21 ruby20"
+USE_RUBY="ruby23 ruby22 ruby21 ruby20"
 DISTUTILS_OPTIONAL=1
 WANT_AUTOMAKE="none"
 GENTOO_DEPEND_ON_PERL="no"
@@ -37,7 +37,7 @@ COMMON_DEPEND=">=dev-db/sqlite-3.7.12
 	python? ( ${PYTHON_DEPS} )
 	ruby? ( ${RUBY_DEPS} )
 	sasl? ( dev-libs/cyrus-sasl )
-	http? ( >=net-libs/serf-1.2.1 )"
+	http? ( >=net-libs/serf-1.3.4 )"
 RDEPEND="${COMMON_DEPEND}
 	apache2? ( www-servers/apache[apache2_modules_dav] )
 	java? ( >=virtual/jre-1.5 )
@@ -63,6 +63,14 @@ REQUIRED_USE="
 		${PYTHON_REQUIRED_USE}
 		!dso
 	)"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.5.4-interix.patch
+	"${FILESDIR}"/${PN}-1.5.6-aix-dso.patch
+	"${FILESDIR}"/${PN}-1.8.0-hpux-dso.patch
+	"${FILESDIR}"/${PN}-fix-parallel-build-support-for-perl-bindings.patch
+	"${FILESDIR}"/${PN}-1.8.1-revert_bdb6check.patch
+)
 
 want_apache
 
@@ -128,12 +136,7 @@ pkg_setup() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-1.5.4-interix.patch \
-		"${FILESDIR}"/${PN}-1.5.6-aix-dso.patch \
-		"${FILESDIR}"/${PN}-1.8.0-hpux-dso.patch \
-		"${FILESDIR}"/${PN}-fix-parallel-build-support-for-perl-bindings.patch \
-		"${FILESDIR}"/${PN}-1.8.1-revert_bdb6check.patch
-	epatch_user
+	epatch "${PATCHES[@]}"
 
 	fperms +x build/transform_libtool_scripts.sh
 
@@ -152,13 +155,6 @@ src_prepare() {
 		-i build-outputs.mk || die "sed failed"
 
 	if use python ; then
-		if [[ ${CHOST} == *-darwin* ]] ; then
-			# http://mail-archives.apache.org/mod_mbox/subversion-dev/201306.mbox/%3C20130614113003.GA19257@tarsus.local2%3E
-			# in short, we don't have gnome-keyring stuff here, patch
-			# borrowed from MacPorts
-			epatch "${FILESDIR}"/${PN}-1.8.5-swig-python-no-gnome-keyring.patch
-		fi
-
 		# XXX: make python_copy_sources accept path
 		S=${S}/subversion/bindings/swig/python python_copy_sources
 		rm -r "${S}"/subversion/bindings/swig/python || die
@@ -166,16 +162,16 @@ src_prepare() {
 }
 
 src_configure() {
-	local myconf
+	local myconf=()
 
 	if use python || use perl || use ruby; then
-		myconf+=" --with-swig"
+		myconf+=( --with-swig )
 	else
-		myconf+=" --without-swig"
+		myconf+=( --without-swig )
 	fi
 
 	if use java ; then
-		myconf+=" --without-junit"
+		myconf+=( --without-junit )
 	fi
 
 	case ${CHOST} in
@@ -185,27 +181,27 @@ src_configure() {
 		;;
 		*-interix*)
 			# loader crashes on the LD_PRELOADs...
-			myconf+=" --disable-local-library-preloading"
+			myconf+=( --disable-local-library-preloading )
 		;;
 		*-solaris*)
 			# need -lintl to link
 			use nls && append-libs intl
 			# this breaks installation, on x64 echo replacement is 32-bits
-			myconf+=" --disable-local-library-preloading"
+			myconf+=( --disable-local-library-preloading )
 		;;
 		*-mint*)
-			myconf+=" --enable-all-static --disable-local-library-preloading"
+			myconf+=( --enable-all-static --disable-local-library-preloading )
 		;;
 		*)
 			# inject LD_PRELOAD entries for easy in-tree development
-			myconf+=" --enable-local-library-preloading"
+			myconf+=( --enable-local-library-preloading )
 		;;
 	esac
 
 	#version 1.7.7 again tries to link against the older installed version and fails, when trying to
 	#compile for x86 on amd64, so workaround this issue again
 	#check newer versions, if this is still/again needed
-	myconf+=" --disable-disallowing-of-undefined-references"
+	myconf+=( --disable-disallowing-of-undefined-references )
 
 	# for build-time scripts
 	if use ctypes-python || use python || use test; then
@@ -235,7 +231,7 @@ src_configure() {
 		$(use_enable nls) \
 		$(use_with sasl) \
 		$(use_with http serf) \
-		${myconf} \
+		${myconf[@]} \
 		--with-apr="${EPREFIX}/usr/bin/apr-1-config" \
 		--with-apr-util="${EPREFIX}/usr/bin/apu-1-config" \
 		--disable-experimental-libtool \
@@ -428,7 +424,8 @@ EOF
 	fi
 
 	if use doc ; then
-		dohtml -r doc/doxygen/html/*
+		docinto html
+		dodoc -r doc/doxygen/html/*
 
 		if use java ; then
 			java-pkg_dojavadoc doc/javadoc
@@ -439,7 +436,7 @@ EOF
 
 	cd "${ED}"usr/share/locale
 	for i in * ; do
-		[[ $i == *$LINGUAS* ]] || { rm -r $i || die ; }
+		[[ ${i} == *$LINGUAS* ]] || { rm -r ${i} || die ; }
 	done
 }
 
