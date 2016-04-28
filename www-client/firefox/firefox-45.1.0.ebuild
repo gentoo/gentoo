@@ -31,7 +31,6 @@ PATCH="${PN}-45.0-patches-04"
 MOZ_HTTP_URI="https://archive.mozilla.org/pub/${PN}/releases"
 
 MOZCONFIG_OPTIONAL_GTK3="enabled"
-MOZCONFIG_OPTIONAL_QT5=1
 MOZCONFIG_OPTIONAL_WIFI=1
 MOZCONFIG_OPTIONAL_JIT="enabled"
 
@@ -133,8 +132,7 @@ src_prepare() {
 	# Apply our patches
 	eapply "${WORKDIR}/firefox" \
 		"${FILESDIR}"/arm64-4-link-chromium-mutex-based-atomics.patch \
-		"${FILESDIR}"/arm64-5-mozjemalloc-no-static-page-sizes.patch \
-		"${FILESDIR}"/${PN}-45-qt-widget-fix.patch
+		"${FILESDIR}"/arm64-5-mozjemalloc-no-static-page-sizes.patch
 
 	# Allow user to apply any additional patches without modifing ebuild
 	eapply_user
