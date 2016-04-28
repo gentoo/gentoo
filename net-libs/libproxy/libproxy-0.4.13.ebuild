@@ -87,7 +87,5 @@ src_configure() {
 }
 
 multilib_src_install_all() {
-	if use python; then
-		python_foreach_impl python_domodule bindings/python/libproxy.py || die
-	fi
+	use python && python_foreach_impl python_domodule 'bindings/python/libproxy.py'
 }
