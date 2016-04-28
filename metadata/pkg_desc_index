@@ -9937,7 +9937,7 @@ dev-vcs/rcs 5.8.2 5.9.3 5.9.4: Revision Control System
 dev-vcs/rcsi 0.5: A program to give information about RCS files
 dev-vcs/rsvndump 0.6: Dump a remote Subversion repository
 dev-vcs/stgit 0.16-r2 0.17.1-r2: Manage a stack of patches using GIT as a backend
-dev-vcs/subversion 1.7.21 1.8.14 1.8.15 1.9.2 1.9.3: Advanced version control system
+dev-vcs/subversion 1.7.21 1.8.14 1.8.16 1.9.3 1.9.4: Advanced version control system
 dev-vcs/svn2cl 0.12: Create a GNU-style ChangeLog from subversion's svn log --xml output
 dev-vcs/svn2git 1.0.10 9999: Tool for one-time conversion from svn to git
 dev-vcs/svneverever 1.2.2-r1 1.3.0: Tool collecting path entries across SVN history
@@ -17713,7 +17713,7 @@ www-client/otter 0.9.07 0.9.08 0.9.09 9999: Project aiming to recreate classic O
 www-client/phantomjs 1.9.8 2.0.0 2.0.0-r1: A headless WebKit scriptable with a JavaScript API
 www-client/pybugz 0.11.1 0.12.1 9999: Command line interface to (Gentoo) Bugzilla
 www-client/qtweb 3.8.5_p108: Lightweight, fast, secure and portable browser for the Web
-www-client/qupzilla 1.8.9: Qt WebKit web browser
+www-client/qupzilla 1.8.9 2.0.0: A cross-platform web browser using QtWebEngine
 www-client/qutebrowser 0.4.1-r1 0.5.1 0.6.0 0.6.1 9999: A keyboard-driven, vim-like browser based on PyQt5 and QtWebKit
 www-client/rekonq 2.4.2-r1: A browser based on qtwebkit
 www-client/ripe-atlas-cousteau 1.0.6 1.0.7 1.2: A Python wrapper around the RIPE Atlas API
