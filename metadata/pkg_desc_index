@@ -2484,7 +2484,7 @@ app-text/zathura-pdf-poppler 0.2.5 0.2.6 9999: PDF plug-in for zathura
 app-text/zathura-ps 0.2.2 0.2.3 9999: PostScript plug-in for zathura
 app-text/zemberek-server 0.7.1 0.7.1-r1: A Turkish spell checker server based on Zemberek NLP library
 app-text/zpspell 0.4.3-r1: Zemberek-Pardus spell checker interface
-app-vim/airline 0.7 0.8 9999: vim plugin: lean & mean statusline for vim that's light as air
+app-vim/airline 0.8 9999: vim plugin: lean & mean statusline for vim that's light as air
 app-vim/align 43: vim plugin: commands and maps to help produce aligned text
 app-vim/alternate 2.18: vim plugin: quickly switch between .c and .h files
 app-vim/ansiesc 12: vim plugin: ansi escape sequences concealed, but highlighted as specified
@@ -2495,7 +2495,7 @@ app-vim/bash-support 3.12 4.1 4.2.1: vim plugin: Bash-IDE - Write and run bash s
 app-vim/bnf-syntax 1.2-r1: vim plugin: BNF file syntax highlighting
 app-vim/brainfuck-syntax 1.0.2 1.0.3: vim plugin: BrainFuck source file syntax highlighting
 app-vim/breakpts 4.0: vim plugin: sets vim breakpoints visually
-app-vim/bufexplorer 7.4.6 7.4.9: vim plugin: easily browse vim buffers
+app-vim/bufexplorer 7.4.6 7.4.9-r1: vim plugin: easily browse vim buffers
 app-vim/c-support 6.0 6.1 6.1.1: vim plugin: C/C++-IDE -- Write and run programs using menus and hotkeys
 app-vim/calendar 2.9: vim plugin: calendar window
 app-vim/cctree 1.61: vim plugin: Cscope based source-code browser and code flow analysis tool
