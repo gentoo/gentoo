@@ -6426,15 +6426,15 @@ dev-perl/WWW-Mechanize 1.730.0-r1 1.750.0: Handy web browsing in a Perl object
 dev-perl/WWW-Mechanize-FormFiller 0.100.0-r1 0.110.0: Framework to automate HTML forms
 dev-perl/WWW-Pastebin-PastebinCom-Create 0.4.0-r1 1.3.0: Paste on www.pastebin.com without API keys
 dev-perl/WWW-RobotRules 6.20.0: Parse /robots.txt file
-dev-perl/WWW-Shorten 3.30.0-r1: Interface to URL shortening sites
-dev-perl/Want 0.210.0-r1 0.230.0 0.260.0: A generalisation of wantarray
+dev-perl/WWW-Shorten 3.30.0-r1 3.93.0: Interface to URL shortening sites
+dev-perl/Want 0.210.0-r1 0.260.0 0.290.0: A generalisation of wantarray
 dev-perl/WattsUp-Daemon 0.4-r1: Watt's Up Monitoring Daemon
 dev-perl/WeakRef 0.10.0-r1: An API to the Perl weak references
 dev-perl/Weather-Com 2.0.0: fetching weather information from weather.com
 dev-perl/WebService-Linode 0.28.0: Perl interface to the Linode.com API
 dev-perl/WebService-MusicBrainz 0.930.0-r1: Web service API to MusicBrainz database
 dev-perl/WordNet-QueryData 1.490.0-r1: Direct perl interface to WordNet database
-dev-perl/Wx 0.990.200-r1 0.991.700 0.992.700 0.992.700-r1: Perl bindings for wxGTK
+dev-perl/Wx 0.992.700-r1 0.992.800: Perl bindings for wxGTK
 dev-perl/Wx-GLCanvas 0.90.0: interface to wxWidgets' OpenGL canvas
 dev-perl/Wx-Perl-ProcessStream 0.320.0-r1 0.320.0-r2: access IO of external processes via events
 dev-perl/Wx-Scintilla 0.390.0-r1 0.390.0-r2: Scintilla source code editing component for wxWidgets
@@ -6444,36 +6444,37 @@ dev-perl/X11-Protocol 0.560.0-r1: Client-side interface to the X11 Protocol
 dev-perl/X500-DN 0.290.0-r1: handle X.500 DNs (Distinguished Names), parse and format them
 dev-perl/XML-Atom 0.410.0-r1: Atom feed and API implementation
 dev-perl/XML-AutoWriter 0.400.0-r1: DOCTYPE based XML output
-dev-perl/XML-Catalog 0.20.0-r1 1.03.0: Resolve public identifiers and remap system identifiers
+dev-perl/XML-Catalog 0.20.0-r1 1.30.0: Resolve public identifiers and remap system identifiers
 dev-perl/XML-CompactTree-XS 0.20.0-r1: a fast builder of compact tree structures from XML documents
-dev-perl/XML-DOM 1.440.0-r1: A Perl module for an DOM Level 1 compliant interface
+dev-perl/XML-DOM 1.440.0-r1 1.450.0: A Perl module for an DOM Level 1 compliant interface
 dev-perl/XML-DOM-XPath 0.140.0-r1: Perl extension to add XPath support to XML::DOM, using XML::XPath engine
-dev-perl/XML-DT 0.660.0 0.670.0: A perl XML down translate module
+dev-perl/XML-DT 0.660.0 0.670.0 0.680.0: A perl XML down translate module
 dev-perl/XML-DTDParser 2.10.0-r1: Quick and dirty DTD Parser
 dev-perl/XML-Directory 1.0.0: Returns a content of directory as XML
 dev-perl/XML-Dumper 0.810.0-r1: Perl module for dumping Perl objects from/to XML
 dev-perl/XML-Elemental 2.110.0-r1: an XML::Parser style and generic classes for simplistic and perlish handling of XML data
-dev-perl/XML-Encoding 2.80.0-r1: Perl Module that parses encoding map XML files
-dev-perl/XML-Entities 1.0.100: Decode strings with XML entities
+dev-perl/XML-Encoding 2.80.0-r1 2.90.0: Perl Module that parses encoding map XML files
+dev-perl/XML-Entities 1.0.100 1.0.200: Decode strings with XML entities
 dev-perl/XML-Fast 0.110.0-r1: Simple and very fast XML to hash conversion
-dev-perl/XML-Feed 0.510.0 0.520.0: Syndication feed parser and auto-discovery
+dev-perl/XML-Feed 0.520.0 0.530.0: Syndication feed parser and auto-discovery
 dev-perl/XML-Filter-BufferText 1.10.0-r1: Filter to put all characters() in one event
-dev-perl/XML-Filter-DOMFilter-LibXML 0.20.0-r1: SAX Filter allowing DOM processing of selected subtrees
+dev-perl/XML-Filter-DOMFilter-LibXML 0.20.0-r1 0.40.0: SAX Filter allowing DOM processing of selected subtrees
 dev-perl/XML-Generator 1.40.0-r1: Perl XML::Generator - A module to help in generating XML documents
 dev-perl/XML-Grove 0.46_alpha-r2: A Perl module providing a simple API to parsed XML instances
 dev-perl/XML-Handler-YAWriter 0.230.0-r1: A Perl module providing a simple API to parsed XML instances
-dev-perl/XML-LibXML 2.12.100: Perl binding for libxml2
+dev-perl/XML-LibXML 2.12.100 2.12.400: Perl binding for libxml2
 dev-perl/XML-LibXML-Iterator 1.40.0-r1: Iterator class for XML::LibXML parsed documents
-dev-perl/XML-LibXML-Simple 0.930.0 0.950.0: XML::LibXML based XML::Simple clone
+dev-perl/XML-LibXML-Simple 0.950.0 0.970.0: XML::LibXML based XML::Simple clone
 dev-perl/XML-LibXSLT 1.810.0-r1 1.870.0 1.920.0 1.940.0: A Perl module to parse XSL Transformational sheets using gnome's libXSLT
 dev-perl/XML-Mini 1.380.0-r1: pure perl API to create and parse XML
 dev-perl/XML-NamespaceSupport 1.110.0-r1: A Perl module that offers a simple to process namespaced XML names
 dev-perl/XML-NodeFilter 0.10.0-r1: Generic XML::NodeFilter Class
 dev-perl/XML-Parser 2.410.0-r2 2.440.0: A Perl extension interface to James Clark's XML parser, expat
-dev-perl/XML-Parser-Lite 0.720.0: Lightweight regexp-based XML parser
+dev-perl/XML-Parser-Lite 0.720.0 0.721.0: Lightweight regexp-based XML parser
 dev-perl/XML-RAI 1.303.100-r1: RSS Abstraction Interface
-dev-perl/XML-RSS 1.490.0-r1 1.540.0-r1 1.560.0: a basic framework for creating and maintaining RSS files
+dev-perl/XML-RSS 1.540.0-r1 1.560.0 1.590.0: a basic framework for creating and maintaining RSS files
 dev-perl/XML-RSS-Feed 2.400.0-r1: Persistant XML RSS Encapsulation
+dev-perl/XML-RSS-LibXML 0.310.500: XML::RSS with XML::LibXML
 dev-perl/XML-RSS-Parser 4.0.0-r1: A liberal object-oriented parser for RSS feeds
 dev-perl/XML-RegExp 0.40.0-r1: Regular expressions for XML tokens
 dev-perl/XML-SAX 0.990.0-r1: Perl module for using and building Perl SAX2 XML parsers, filters, and drivers
@@ -6490,17 +6491,18 @@ dev-perl/XML-TreePP 0.430.0: Pure Perl implementation for parsing/writing XML do
 dev-perl/XML-Twig 3.460.0 3.480.0 3.490.0: Process huge XML documents in tree mode
 dev-perl/XML-Validator-Schema 1.100.0: Validate XML against a subset of W3C XML Schema
 dev-perl/XML-Writer 0.623.0-r1 0.624.0 0.625: XML Writer Perl Module
-dev-perl/XML-XPath 1.130.0-r1: A XPath Perl Module
+dev-perl/XML-XPath 1.130.0-r1 1.360.0: A XPath Perl Module
 dev-perl/XML-XPathEngine 0.130.0-r1 0.140.0-r1: A re-usable XPath engine for DOM-like trees
 dev-perl/XML-XQL 0.680.0-r1: A Perl module that allows you to perform XQL queries on XML trees
 dev-perl/XML-XSLT 0.480.0-r1: A Perl module to parse XSL Transformational sheets
 dev-perl/XML-XUpdate-LibXML 0.6.0-r1: Process XUpdate commands over an XML document
 dev-perl/XMLRPC-Lite 0.717.0: client and server implementation of XML-RPC protocol
-dev-perl/YAML-LibYAML 0.590.0: Perl YAML Serialization using XS and libyaml
+dev-perl/YAML 0.840.0-r1 1.150.0: YAML Ain't Markup Language (tm)
+dev-perl/YAML-LibYAML 0.590.0 0.620.0: Perl YAML Serialization using XS and libyaml
 dev-perl/YAML-Syck 1.200.0-r1 1.270.0 1.290.0: Fast, lightweight YAML loader and dumper
 dev-perl/YAML-Tiny 1.510.0-r1 1.660.0 1.670.0 1.690.0: Read/Write YAML files with as little code as possible
-dev-perl/ZMQ-Constants 1.20.0 1.30.0: Constants for libzmq
-dev-perl/ZMQ-LibZMQ2 1.40.0: A libzmq 2.x wrapper for Perl
+dev-perl/ZMQ-Constants 1.20.0 1.30.0 1.40.0: Constants for libzmq
+dev-perl/ZMQ-LibZMQ2 1.40.0 1.90.0: A libzmq 2.x wrapper for Perl
 dev-perl/ZMQ-LibZMQ3 1.19.0: A libzmq 3.x wrapper for Perl
 dev-perl/aliased 0.340.0: Use shorter versions of class names
 dev-perl/asa 1.30.0: Lets your class/object say it works like something else
@@ -6563,7 +6565,6 @@ dev-perl/strictures 2.0.1 2.0.2: Turn on strict and make most warnings fatal
 dev-perl/syntax 0.4.0: Activate syntax extensions
 dev-perl/tkispell 0.180.0: Perl/Tk user interface for ispell
 dev-perl/txt2html 2.520.100: Convert a plain text file to HTML
-dev-perl/yaml 0.840.0-r1 0.900.0 1.140.0 1.150.0: YAML Ain't Markup Language (tm)
 dev-php/File_Iterator 1.3.1 1.3.4: FilterIterator implementation that filters files based on a list of suffixes
 dev-php/PEAR-Archive_Tar 1.3.15 1.4.0 1.4.2: Tar file management class
 dev-php/PEAR-Auth 1.6.4: Provides methods for creating an authentication system using PHP
@@ -16367,7 +16368,7 @@ sys-apps/acl 2.2.52-r1: access control list utilities, libraries and headers
 sys-apps/adjtime 0.4-r2: A perl script to adjust the clock tick of the hardware clock on the system board
 sys-apps/agedu 20151213: A utility for tracking down wasted disk space
 sys-apps/aix-miscutils 0.1.1671: Miscellaneous helpers for AIX (currently just ldd)
-sys-apps/apmd 3.2.2_p14: Advanced Power Management Daemon
+sys-apps/apmd 3.2.2_p14 3.2.2_p14-r1: Advanced Power Management Daemon
 sys-apps/apparmor 2.8.3 2.8.4 2.10: Userspace utils and init scripts for the AppArmor application security system
 sys-apps/apparmor-utils 2.8.3 2.8.4 2.10: Additional userspace utils to assist with AppArmor profile management
 sys-apps/apply-default-acl 0.0.4: Apply default POSIX ACLs to files and directories
@@ -16525,13 +16526,13 @@ sys-apps/mouseemu 0.12 0.15: Emulates scrollwheel, right- & left-click for one-b
 sys-apps/msr-tools 1.2: Utilities allowing the read and write of CPU model-specific registers (MSR)
 sys-apps/mtree 1.0 1.0.1: Directory hierarchy mapping tool from FreeBSD
 sys-apps/nawk 20121220-r2: Brian Kernighan's pattern scanning and processing language
-sys-apps/nca 0.9.0: Network Console on Acid
+sys-apps/nca 0.9.0-r1: Network Console on Acid
 sys-apps/net-tools 1.60_p20141019041918-r1 1.60_p20151124144947 1.60_p20160215155418 9999: Standard Linux networking tools
 sys-apps/netboot-base 20050110: Baselayout for netboot systems
 sys-apps/netkit-base 0.17-r9: Old-style inetd
 sys-apps/netloc 0.5: Portable Network Locality (netloc)
 sys-apps/netplug 1.2.9.2-r1: Brings up/down ethernet ports automatically with cable detection
-sys-apps/newrelic-sysmond 1.1.2.124: NewRelic System Monitor
+sys-apps/newrelic-sysmond 1.1.2.124-r1: NewRelic System Monitor
 sys-apps/noexec 1.1.0: a package for preventing processes from using exec system calls
 sys-apps/nvme-cli 0_pre20150821 0.6: NVM-Express user space tooling for Linux
 sys-apps/openrc 0.13.11 0.14 0.15 0.15.1 0.16 0.16.1 0.16.2 0.16.3 0.16.4 0.17 0.18.3 0.18.4 0.19.1 0.20.4 0.20.5 9999: OpenRC manages the services, startup and shutdown of a host
@@ -16983,7 +16984,7 @@ sys-fs/bedup 0.10.0 9999: Btrfs file de-duplication tool
 sys-fs/bindfs 1.12.6 1.13.0 1.13.1: FUSE filesystem for mounting a directory to another location and altering permissions
 sys-fs/btrfs-progs 3.14.2 3.16.2 3.17.3 3.18.2 3.19.1 4.0 4.0.1 4.1 4.1.2 4.2 4.2.2 4.3.1 4.4.1 4.5.1 9999: Btrfs filesystem utilities
 sys-fs/cachefilesd 0.10.5-r4: Provides a caching directory on an already mounted filesystem
-sys-fs/clamfs 1.0.1-r1: A FUSE-based user-space file system with on-access anti-virus file scanning
+sys-fs/clamfs 1.0.1-r2: A FUSE-based user-space file system with on-access anti-virus file scanning
 sys-fs/cloudfuse 1.0: A FUSE filesystem for Rackspace's Cloud Files
 sys-fs/copyfs 1.0.1: fuse-based filesystem for maintaining configuration files
 sys-fs/cramfs 1.1: Linux filesystem designed to be simple, small, and to compress things well
@@ -17248,7 +17249,7 @@ sys-power/acpitool 0.5.1-r1: A small command line application, intended to be a 
 sys-power/apcupsd 3.14.8-r2 3.14.12-r1 3.14.13: APC UPS daemon with integrated tcp/ip remote shutdown
 sys-power/athcool 0.3.12: small utility to toggle Powersaving mode for AMD Athlon/Duron processors
 sys-power/bbswitch 0.8: Toggle discrete NVIDIA Optimus graphics card
-sys-power/cpudyn 1.0.1 1.0.1-r1: A daemon to control laptop power consumption via cpufreq and disk standby
+sys-power/cpudyn 1.0.1 1.0.1-r2: A daemon to control laptop power consumption via cpufreq and disk standby
 sys-power/cpupower 3.13 3.14 3.15 3.18 4.2: Shows and sets processor power related values
 sys-power/cpuspeedy 0.4.1: A simple and easy to use program to control the speed and the voltage of CPUs on the fly
 sys-power/hibernate-script 2.0-r6: Hibernate script supporting multiple suspend methods
@@ -17264,7 +17265,7 @@ sys-power/phctool 0.5.2.2-r1 0.5.2.2-r2: Processor Hardware Control userland con
 sys-power/pm-quirks 20100619: Video Quirks database for pm-utils
 sys-power/pm-utils 1.4.1-r6 1.4.1-r7: Suspend and hibernation utilities
 sys-power/pmtools 20071116 20110323 20110323-r1: Collection of tools for ACPI and power management
-sys-power/powerman 2.3.9: RPC/PDU control and monitoring service for data center or compute cluster power management
+sys-power/powerman 2.3.9-r1: RPC/PDU control and monitoring service for data center or compute cluster power management
 sys-power/powermgmt-base 1.31: Script to test whether computer is running on AC power
 sys-power/powernowd 1.00-r3: Daemon to control the speed and voltage of CPUs
 sys-power/powertop 1.13 2.6 2.8 9999: tool that helps you find what software is using the most power

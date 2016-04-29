@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=virtual/perl-ExtUtils-MakeMaker test? ( >=dev-perl/Test-Requires-0.60.0 >=virtual/perl-Test-Simple-0.880.0 ) dev-lang/perl:=
+DESCRIPTION=Lightweight regexp-based XML parser
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/XML-Parser-Lite/
+IUSE=test minimal
+KEYWORDS=~amd64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/P/PH/PHRED/XML-Parser-Lite-0.721.tar.gz
+_eclass_exported_funcs=src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:- src_install:perl-module
+_eclasses_=multiprocessing	e32940a7b2a9992ad217eccddb84d548	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	c584f9e0fe426f3dcc2c46c6f7cb95ce
+_md5_=10681c8d82ffd8ee143d84a2bf0e08b4

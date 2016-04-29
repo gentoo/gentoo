@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=examples? ( dev-perl/Config-Auto >=virtual/perl-Getopt-Long-2.400.0 >=dev-perl/Try-Tiny-0.240.0 ) virtual/perl-Carp >=dev-perl/libwww-perl-5.835.0 virtual/perl-ExtUtils-MakeMaker test? ( >=virtual/perl-Test-Simple-0.880.0 >=dev-perl/Try-Tiny-0.240.0 ) dev-lang/perl:=
+DESCRIPTION=Interface to URL shortening sites
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/WWW-Shorten/
+IUSE=test examples examples
+KEYWORDS=~amd64 ~x86
+LICENSE=Artistic-2
+RDEPEND=examples? ( dev-perl/Config-Auto >=virtual/perl-Getopt-Long-2.400.0 >=dev-perl/Try-Tiny-0.240.0 ) virtual/perl-Carp >=dev-perl/libwww-perl-5.835.0 dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/C/CA/CAPOEIRAB/WWW-Shorten-3.093.tar.gz
+_eclass_exported_funcs=src_prepare:- src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
+_eclasses_=multiprocessing	e32940a7b2a9992ad217eccddb84d548	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	c584f9e0fe426f3dcc2c46c6f7cb95ce
+_md5_=dbb0d3f78d44aae6fdf2c6735ab8a223
