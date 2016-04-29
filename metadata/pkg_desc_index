@@ -4770,7 +4770,7 @@ dev-libs/libvterm-neovim 0.0_pre20150309 0.0_pre20150621: An abstract library im
 dev-libs/libwacom 0.11 0.15 0.17 0.18: Library for identifying Wacom tablets and their model-specific features
 dev-libs/libwapcaplet 0.2.2-r1 0.3.0: string internment library, written in C
 dev-libs/libwbxml 0.11.2: Library and tools to parse, encode and handle WBXML documents
-dev-libs/libx86 1.1-r2 1.1-r3: A hardware-independent library for executing real-mode x86 code
+dev-libs/libx86 1.1-r2 1.1-r3 1.1-r4: A hardware-independent library for executing real-mode x86 code
 dev-libs/libx86emu 1.1: A library for emulating x86
 dev-libs/libxdg-basedir 1.2.0-r1: Small library to access XDG Base Directories Specification paths
 dev-libs/libxdiff 0.23 0.23-r1: Library for creating diff files
