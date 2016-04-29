@@ -1,0 +1,33 @@
+From dc07b64245459ff75c638dedc14ac86bdf9bc176 Mon Sep 17 00:00:00 2001
+From: Alexandre Rostovtsev <tetromino@gentoo.org>
+Date: Mon, 16 Jul 2012 05:43:38 -0400
+Subject: [PATCH] Export fits to home directory, not python sitedir
+
+---
+ service/settings.py | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/service/settings.py b/service/settings.py
+index 60627e6..7087e5c 100644
+--- a/service/settings.py
++++ b/service/settings.py
+@@ -21,6 +21,7 @@ import cPickle
+ import os.path
+ import config
+ import urllib2
++import sys
+ 
+ class SettingsProvider():
+     BASE_PATH = os.path.join(config.savePath, "settings")
+@@ -221,7 +222,7 @@ class HTMLExportSettings():
+         return cls._instance
+ 
+     def __init__(self):
+-        serviceHTMLExportDefaultSettings = {"enabled": False, "path": config.pyfaPath + os.sep + 'pyfaFits.html', "website": "null-sec.com" }
++        serviceHTMLExportDefaultSettings = {"enabled": False, "path": unicode(os.path.expanduser(os.path.join('~', 'pyfaFits.html')), sys.getfilesystemencoding()), "website": "null-sec.com" }
+         self.serviceHTMLExportSettings = SettingsProvider.getInstance().getSettings("pyfaServiceHTMLExportSettings", serviceHTMLExportDefaultSettings)
+ 
+     def getEnabled(self):
+-- 
+2.8.1
+
