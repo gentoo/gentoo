@@ -116,7 +116,8 @@ src_unpack() {
 
 src_prepare() {
 	# Apply our patches
-	eapply "${WORKDIR}/firefox"
+	eapply "${WORKDIR}/firefox" \
+		"${FILESDIR}"/jit-none-branch64.patch
 
 	# Enable gnomebreakpad
 	if use debug ; then

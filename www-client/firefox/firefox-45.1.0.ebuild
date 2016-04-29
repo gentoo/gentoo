@@ -132,7 +132,8 @@ src_prepare() {
 	# Apply our patches
 	eapply "${WORKDIR}/firefox" \
 		"${FILESDIR}"/arm64-4-link-chromium-mutex-based-atomics.patch \
-		"${FILESDIR}"/arm64-5-mozjemalloc-no-static-page-sizes.patch
+		"${FILESDIR}"/arm64-5-mozjemalloc-no-static-page-sizes.patch \
+		"${FILESDIR}"/jit-none-branch64.patch
 
 	# Allow user to apply any additional patches without modifing ebuild
 	eapply_user
