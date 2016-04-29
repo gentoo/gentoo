@@ -8,4 +8,4 @@ SLOT=0
 SRC_URI=https://dev.gentoo.org/~blueness/install-xattr/install-xattr-0.5.tar.bz2
 _eclass_exported_funcs=src_prepare:- src_compile:- src_test:- src_install:-
 _eclasses_=multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
-_md5_=01bb7f940584aaa975fc8e275ffe0209
+_md5_=2c8cfc95416d0186714afb2898ae2fd5
