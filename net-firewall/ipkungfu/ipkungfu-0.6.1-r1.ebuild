@@ -1,8 +1,8 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-inherit eutils
+EAPI=6
 
 DESCRIPTION="A nice iptables firewall script"
 HOMEPAGE="http://www.linuxkungfu.org/"
@@ -17,17 +17,16 @@ DEPEND="net-firewall/iptables"
 RDEPEND="${DEPEND}
 	virtual/logger"
 
-src_compile() {
-	epatch "${FILESDIR}/ipkungfu_noiseless.patch" || die "Could not apply ipkungfu_noiseless.patch patch"
-	econf || die "Could not run econf"
-	emake || die "Couldn't run make"
+src_prepare() {
+	eapply "${FILESDIR}/ipkungfu_noiseless.patch"
+	eapply_user
 }
 
 src_install() {
-	make DESTDIR="${D}" install || die
+	default
 
 	# Install configuration files
-	make DESTDIR="${D}" install-config || die
+	emake DESTDIR="${D}" install-config
 
 	# Install Gentoo init script
 	newinitd "${FILESDIR}"/ipkungfu.init ipkungfu
@@ -35,12 +34,12 @@ src_install() {
 
 pkg_postinst() {
 	# Remove the cache dir so ipkungfu won't fail when running for
-	# the first time, case 0.6.0 was installed before.
+	# the first time, in case 0.6.0 was installed before.
 	rm -rf /etc/ipkungfu/cache
 
-	einfo "Be sure to, before running ipkungfu, edit the config files in:"
+	einfo "Be sure, before running ipkungfu, to edit the config files in:"
 	einfo "/etc/ipkungfu/"
-	echo
+	einfo
 	einfo "Also, be sure to run ipkungfu prior to rebooting,"
 	einfo "especially if you you're updating from <0.6.0 to >=0.6.0."
 	einfo "There are some significant configuration changes on this"
