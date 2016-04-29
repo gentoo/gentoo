@@ -1,19 +1,21 @@
-#!/sbin/runscript
+#!/sbin/openrc-run
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 extra_started_commands="attach"
 
+
 depend() {
 	# we can use dns and net, but we can also in most cases live without them
 	use dns net ntp-client ntpd
 }
 
+
 create_work_directory() {
 	if [ ! -d "${RUNTIMEDIR}" ]; then
-		einfo "Directory ${RUNTIMEDIR} not existing, creating now."
-		mkdir "${RUNTIMEDIR}"
+		einfo "Directory ${RUNTIMEDIR} does not exist, creating now."
+		mkdir -p "${RUNTIMEDIR}"
 		if [ ! -d "${RUNTIMEDIR}" ]; then
 			eeror "Directory ${RUNTIMEDIR} could not be created!"
 			return 1
@@ -22,7 +24,10 @@ create_work_directory() {
 	if [ ! -e "${RUNTIMEDIR}"/ca-bundle.crt ] ; then
 		ln -s /etc/ssl/certs/ca-certificates.crt "${RUNTIMEDIR}"/ca-bundle.crt
 	fi
+
+	return 0
 }
+
 
 cuda_check() {
 	if [ -f /opt/cuda/lib/libcudart.so ]; then
@@ -31,15 +36,42 @@ cuda_check() {
 	fi
 }
 
-check_baselayout() {
-	if [ "${RC_VERSION:-0}" = "0" ]; then
-		eerror "This script cannot be used for baselayout-1."
+
+env_check() {
+	# Make sure the configuration is sane
+	${USER:="boinc"}
+	${GROUP:="boinc"}
+	${RUNTIMEDIR:="/var/lib/boinc"}
+	${BOINCBIN:="$(which boinc_client)"}
+	${ALLOW_REMOTE_RPC:="yes"}
+	${NICELEVEL:="19"}
+	# ARGS is not checked, it could have been explicitly set
+	# to be empty by the user.
+
+	# If the client was not found (how?) something is seriously wrong
+	if [ ! -x "$BOINCBIN" ] ; then
+		eerror "No boinc_client found!"
 		return 1
 	fi
+
+	return 0
 }
 
-start() {
-	check_baselayout || return 1
+
+need_passwd_arg() {
+	local vers=$(${BOINCBIN} --version | cut -d '.' --output-delimiter='' -f 1,2)
+	[ -z "$vers" ] && vers=0
+	[ $vers -lt 74 ] && return 0
+
+	# From version 7.4 on, the default is to read
+	# gui_rpc_auth.cfg for the password.
+
+	return 1
+}
+
+
+start_pre() {
+	env_check || return 1
 	create_work_directory || return 1
 	cuda_check
 
@@ -50,24 +82,36 @@ start() {
 		einfo "File \"${RUNTIMEDIR}/lockfile\" does not exist, assuming first run."
 		einfo "You need to setup an account on the BOINC project homepage beforehand!"
 		einfo "Go to http://boinc.berkeley.edu/ and locate your project."
-		einfo "Then either run /etc/init.d/boinc attach or connect with a gui client"
+		einfo "Then either run ${RC_SERVICE} attach or connect with a gui client"
 		einfo "and attach to a project with that."
-		echo
+		einfo ""
 		ewarn "Note that for attaching to some project you need your network up and running."
 		ewarn "network is needed only for jobs fetching afterwards"
 	fi
 
+	return 0
+}
+
+
+start() {
 	if [ "${ALLOW_REMOTE_RPC}" = "yes" ]; then
 		ARGS="${ARGS} --allow_remote_gui_rpc"
 	fi
 
-	ebegin "Starting ${SVCNAME}"
-	start-stop-daemon -S -N ${NICELEVEL} -u ${USER} -q -x "${BOINCBIN}" -- ${ARGS} --daemon --dir "${RUNTIMEDIR}" --redirectio
+	ARGS="${ARGS} --daemon --dir "${RUNTIMEDIR}" --redirectio"
+
+	ebegin "Starting ${RC_SVCNAME}"
+	start-stop-daemon -S -N ${NICELEVEL} -u ${USER} -q -x "${BOINCBIN}" -- ${ARGS}
 	eend $?
 }
 
+
 attach() {
-	local password url key
+	local password=""
+	local url=""
+	local key=""
+
+	env_check || return 1
 
 	einfo "If you cant find your account key just try to obtain it by using:"
 	einfo "    boinccmd --passwd PASSWORD_FROM_GUI_RPC_AUTH --lookup_account URL EMAIL PASSWORD"
@@ -81,26 +125,28 @@ attach() {
 		"${RC_SERVICE}" start
 	fi
 
-	password=$(cat "${RUNTIMEDIR}/gui_rpc_auth.cfg")
+	if need_passwd_arg; then
+		password="--passwd \"$(cat "${RUNTIMEDIR}/gui_rpc_auth.cfg")\""
+	fi
 
-	ebegin "${SVCNAME}: Attaching to project"
-	start-stop-daemon -u ${USER} -q -x boinccmd -- --passwd "${password}" --project_attach ${url} ${key}
+	ebegin "${RC_SVCNAME}: Attaching to project"
+	start-stop-daemon -u ${USER} -q -d "${RUNTIMEDIR}" -x boinccmd -- ${password} --project_attach ${url} ${key}
 	eend $?
-
-	unset password url key
 
 	sleep 10
 	tail "${RUNTIMEDIR}/stdoutdae.txt"
 }
 
 stop() {
-	local password
+	local password=""
 
-	password=$(cat "${RUNTIMEDIR}/gui_rpc_auth.cfg")
+	env_check || return 1
 
-	ebegin "Stopping ${SVCNAME}"
-	start-stop-daemon -u ${USER} -q -x boinccmd -- --passwd "${password}" --quit
+	if need_passwd_arg; then
+		password="--passwd \"$(cat "${RUNTIMEDIR}/gui_rpc_auth.cfg")\""
+	fi
+
+	ebegin "Stopping ${RC_SVCNAME}"
+	start-stop-daemon -u ${USER} -q -d "${RUNTIMEDIR}" -x boinccmd -- ${password} --quit
 	eend $?
-
-	unset password
 }
