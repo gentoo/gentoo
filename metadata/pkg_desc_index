@@ -7204,7 +7204,7 @@ dev-python/fusil 1.5: Fusil the fuzzer is a Python library used to write fuzzing
 dev-python/future 0.15.2: Easy, clean, reliable Python 2/3 compatibility
 dev-python/futures 2.2.0 3.0.2 3.0.3 3.0.4 3.0.5: Backport of the concurrent.futures package from Python 3.2
 dev-python/futurist 0.4.0 0.13.0: Useful additions to futures, from the future
-dev-python/gammapy 0.3: Python package for gamma-ray astronomy
+dev-python/gammapy 0.3 0.4: Python package for gamma-ray astronomy
 dev-python/gconf-python 2.28.1-r1: Python bindings for the GConf library
 dev-python/gcs-oauth2-boto-plugin 1.8-r1 1.9 1.12: OAuth 2.0 plugin for Google Cloud Storage credentials in the Boto library
 dev-python/gdata 2.0.14 2.0.17-r1 2.0.18: Python client library for Google data APIs
@@ -13956,7 +13956,7 @@ net-dns/resolvconf-symlink 0: Make /etc/resolv.conf a symlink to a runtime-writa
 net-dns/sheerdns 1.0.3: Sheerdns is a small, simple, fast master only DNS server
 net-dns/tinystats 1.1: A tinydns logging helper app
 net-dns/totd 1.5.1: Trick Or Treat Daemon, a DNS proxy for 6to4
-net-dns/unbound 1.4.22-r1 1.5.1-r2 1.5.6 1.5.7: A validating, recursive and caching DNS resolver
+net-dns/unbound 1.4.22-r1 1.5.1-r2 1.5.7 1.5.8: A validating, recursive and caching DNS resolver
 net-dns/updatedd 2.6 2.6-r1: Dynamic DNS client with plugins for several dynamic dns services
 net-dns/validns 0.7 0.8: A high performance DNS/DNSSEC zone validator
 net-dns/valtz 0.7: Validation tool for tinydns-data zone files
@@ -15997,7 +15997,7 @@ sci-mathematics/pari-data 20120726: Data sets for pari
 sci-mathematics/polymake 2.13 2.14 2.14-r1: research tool for polyhedral geometry and combinatorics
 sci-mathematics/prng 3.0.2 3.0.2-r1: Pseudo-Random Number Generator library
 sci-mathematics/prover9 2009.11a: Automated theorem prover for first-order and equational logic
-sci-mathematics/pspp 0.8.1-r1 0.8.3: Program for statistical analysis of sampled data
+sci-mathematics/pspp 0.8.1-r1 0.8.3 0.10.1: Program for statistical analysis of sampled data
 sci-mathematics/pymc 2.2 9999: Markov chain Monte Carlo for Python
 sci-mathematics/qtoctave 0.10.1-r1: Qt4 front-end for Octave
 sci-mathematics/reduce 20110414-r1: A general-purpose computer algebra system
