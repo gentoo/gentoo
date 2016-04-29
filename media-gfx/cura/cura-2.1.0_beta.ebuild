@@ -20,7 +20,7 @@ SLOT="0"
 IUSE="+usb"
 
 RDEPEND="${PYTHON_DEPS}
-	dev-libs/libarcus:=[${PYTHON_USEDEP}]
+	dev-libs/libarcus:=[python,${PYTHON_USEDEP}]
 	dev-python/uranium[${PYTHON_USEDEP}]
 	usb? ( dev-python/pyserial[${PYTHON_USEDEP}] )
 	~media-gfx/curaengine-${PV}"
