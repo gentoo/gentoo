@@ -10,10 +10,6 @@
 # (see bug #556378 and others)
 www-client/firefox system-cairo
 mail-client/thunderbird system-cairo
-# system-libvpx on mozilla 45.1 and newer kept firefox
-# from playing html5 video in tests, mask for now until
-# further testing can determine why and fix
->=www-client/firefox-45.1.0 system-libvpx
 
 # Johannes Huber <johu@gentoo.org> (21 Apr 2016)
 # Unreleased dependency.
