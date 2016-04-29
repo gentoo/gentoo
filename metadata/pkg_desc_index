@@ -16471,7 +16471,7 @@ sys-apps/idle3-tools 0.9.1: Read, Set or disable the idle3 timer of Western Digi
 sys-apps/ifd-gempc 1.0.6 1.0.7: GemCore based PC/SC reader drivers for pcsc-lite
 sys-apps/ifplugd 0.28-r9: Brings up/down ethernet ports automatically with cable detection
 sys-apps/input-utils 0.0.1_pre20081014 1.1 1.2: Small collection of linux input layer utils
-sys-apps/install-xattr 0.5 9999: Wrapper to coreutil's install to preserve Filesystem Extended Attributes
+sys-apps/install-xattr 0.5 0.5-r1 9999: Wrapper to coreutil's install to preserve Filesystem Extended Attributes
 sys-apps/intel-performance-counter-monitor 2.8 2.10: Intel Performance Counter Monitor - A better way to measure CPU utilization
 sys-apps/inxi 2.2.14 2.2.19: A newer, better system information script for irc, administration, and system troubleshooters.
 sys-apps/iotools 1.4 1.5: Simple commands to access hardware device registers
