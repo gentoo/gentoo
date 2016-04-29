@@ -9732,7 +9732,7 @@ dev-util/mpatch 0.8-r1: Patch-like tool for applying diffs which can resolve com
 dev-util/mutrace 0.2: A mutex tracer/profiler
 dev-util/nemiver 0.9.5 0.9.6: A gtkmm front end to the GNU Debugger (gdb)
 dev-util/netbeans 8.0.2 8.1: Netbeans IDE
-dev-util/ninja 1.6.0 9999: A small build system similar to make
+dev-util/ninja 1.6.0 1.7.1 9999: A small build system similar to make
 dev-util/ninja-ide 2.3: Ninja-IDE Is Not Just Another IDE
 dev-util/nsis 2.46-r1: Nullsoft Scriptable Install System
 dev-util/nvidia-cuda-sdk 6.5.14 7.5.18: NVIDIA CUDA Software Development Kit
