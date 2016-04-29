@@ -32,8 +32,7 @@ DEPEND="${RDEPEND}
 	>=sys-kernel/linux-headers-2.6.39"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-1.16-execinfo-assumptions.patch"
-	"${FILESDIR}/${PN}-1.31-iptables-1.6.0.patch"
+	"${FILESDIR}/${PN}-1.32-execinfo-assumptions.patch"
 	"${FILESDIR}/${PN}-1.31-xtables.patch"
 )
 
