@@ -1,8 +1,8 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-inherit eutils
+EAPI=6
 
 DESCRIPTION="Spindown is a daemon that can spin down idle disks"
 HOMEPAGE="https://code.google.com/p/spindown"
@@ -17,14 +17,13 @@ DEPEND=""
 RDEPEND="${DEPEND}
 	sys-apps/sg3_utils"
 
-src_unpack() {
-	unpack ${A}
-	cd "${S}"
-	epatch "${FILESDIR}"/${P}-CFLAGS-LDFLAGS.patch
+src_prepare() {
+	eapply "${FILESDIR}"/${P}-CFLAGS-LDFLAGS.patch
+	eapply_user
 }
 
 src_compile() {
-	emake || die "emake failed"
+	emake
 }
 
 src_install() {
