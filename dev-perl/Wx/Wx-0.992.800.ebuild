@@ -2,11 +2,12 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-WX_GTK_VER="2.8"
-MODULE_AUTHOR=MDOOTSON
-MODULE_VERSION=0.9927
+WX_GTK_VER="3.0"
+DIST_AUTHOR=MDOOTSON
+DIST_VERSION=0.9928
+DIST_EXAMPLES=("samples/*")
 inherit wxwidgets virtualx perl-module
 
 DESCRIPTION="Perl bindings for wxGTK"
@@ -17,7 +18,8 @@ KEYWORDS="~amd64 ~x86"
 IUSE="test"
 
 RDEPEND="
-	>=dev-perl/Alien-wxWidgets-0.250.0
+	>=dev-perl/Alien-wxWidgets-0.670.0
+	x11-libs/wxGTK:${WX_GTK_VER}
 	>=virtual/perl-File-Spec-0.820.0
 "
 DEPEND="${RDEPEND}
@@ -31,9 +33,12 @@ DEPEND="${RDEPEND}
 	)
 "
 
-src_test() {
-	VIRTUALX_COMMAND=perl-module_src_test
-	virtualmake
+src_prepare() {
+	need-wxwidgets base-unicode
+	perl-module_src_prepare
 }
 
-SRC_TEST="do"
+src_test() {
+	perl_rm_files t/12_pod.t
+	virtx perl-module_src_test
+}

@@ -1,10 +1,10 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="2"
+EAPI="6"
 
-inherit eutils toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="Network Console on Acid"
 HOMEPAGE="http://www.xenoclast.org/nca/"
@@ -26,10 +26,12 @@ src_prepare() {
 		-e "s:=\(\$(CFLAGS)\):=\"\1\":g" -e "s:=\(\$(CC)\):=\"\1\":g" Makefile
 
 	sed -i -e "s:-s sshd:sshd:g" ncad.patch
+
+	eapply_user
 }
 
 src_compile() {
-	emake -j1 CFLAGS="${CFLAGS}" CC=$(tc-getCC) || die "emake failed"
+	emake -j1 CFLAGS="${CFLAGS}" CC=$(tc-getCC)
 }
 
 src_install() {

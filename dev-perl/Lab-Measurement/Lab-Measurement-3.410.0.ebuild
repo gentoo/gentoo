@@ -39,7 +39,7 @@ RDEPEND="
 	dev-perl/XML-DOM
 	dev-perl/XML-Twig
 	dev-perl/encoding-warnings
-	dev-perl/yaml
+	dev-perl/YAML
 	dev-perl/Switch
 	sci-visualization/gnuplot
 	virtual/perl-Data-Dumper

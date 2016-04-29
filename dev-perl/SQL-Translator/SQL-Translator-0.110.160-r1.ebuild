@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -17,7 +17,7 @@ IUSE="test"
 
 RDEPEND="
 	dev-perl/Carp-Clan
-	>=dev-perl/yaml-0.680.0
+	>=dev-perl/YAML-0.680.0
 	>=dev-perl/IO-stringy-2.110.0
 	>=dev-perl/Parse-RecDescent-1.967.9
 	>=dev-perl/File-ShareDir-1.0.0

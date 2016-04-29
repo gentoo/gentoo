@@ -1,8 +1,8 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="2"
+EAPI="6"
 inherit eutils linux-info
 
 DESCRIPTION="A FUSE-based user-space file system with on-access anti-virus file scanning"
@@ -25,19 +25,19 @@ RDEPEND="${DEPEND}
 CONFIG_CHECK="~FUSE_FS"
 
 src_prepare() {
-	epatch \
-		"${FILESDIR}/${P}-gentoo.patch" \
-		"${FILESDIR}/${P}-gcc45.patch"
+	eapply "${FILESDIR}/${P}-gentoo.patch"
+	eapply -p0 "${FILESDIR}/${P}-gcc45.patch"
+	eapply_user
 }
 
 src_install() {
-	emake install DESTDIR="${D}" || die "emake install failed"
+	emake install DESTDIR="${D}"
 
 	insinto /etc/clamfs
-	doins doc/clamfs.xml || die
+	doins doc/clamfs.xml
 
-	newinitd "${FILESDIR}/${PN}.initd" ${PN} || die
-	newconfd "${FILESDIR}/${PN}.confd" ${PN} || die
+	newinitd "${FILESDIR}/${PN}.initd" ${PN}
+	newconfd "${FILESDIR}/${PN}.confd" ${PN}
 
-	dodoc AUTHORS ChangeLog NEWS README TODO || die
+	dodoc AUTHORS ChangeLog NEWS README TODO
 }
