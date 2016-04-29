@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -15,7 +15,7 @@ SRC_URI="http://unbound.net/downloads/${MY_P}.tar.gz"
 LICENSE="BSD GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~hppa ~mips ~ppc ~ppc64 ~x86"
-IUSE="debug dnstap +ecdsa gost python selinux static-libs test threads"
+IUSE="debug dnstap +ecdsa gost libressl python selinux static-libs test threads"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 # Note: expat is needed by executable only but the Makefile is custom
@@ -25,12 +25,15 @@ REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 CDEPEND=">=dev-libs/expat-2.1.0-r3[${MULTILIB_USEDEP}]
 	>=dev-libs/libevent-2.0.21[${MULTILIB_USEDEP}]
-	>=dev-libs/openssl-1.0.1h-r2:0[${MULTILIB_USEDEP}]
+	libressl? ( >=dev-libs/libressl-2.2.4:0[${MULTILIB_USEDEP}] )
+	!libressl? ( >=dev-libs/openssl-1.0.1h-r2:0[${MULTILIB_USEDEP}] )
 	dnstap? (
 		dev-libs/fstrm[${MULTILIB_USEDEP}]
 		>=dev-libs/protobuf-c-1.0.2-r1[${MULTILIB_USEDEP}]
 	)
-	ecdsa? ( dev-libs/openssl:0[-bindist] )
+	ecdsa? (
+		!libressl? ( dev-libs/openssl:0[-bindist] )
+	)
 	python? ( ${PYTHON_DEPS} )"
 
 DEPEND="${CDEPEND}
@@ -62,7 +65,7 @@ src_prepare() {
 	# 'auto-trust-anchor-file'.
 	# [23109:0] error: Could not open autotrust file for writing,
 	# /etc/dnssec/root-anchors.txt: Permission denied
-	epatch "${FILESDIR}"/${PN}-1.4.12-gentoo.patch
+	epatch "${FILESDIR}"/${PN}-1.5.7-trust-anchor-file.patch
 
 	# required for the python part
 	multilib_copy_sources
