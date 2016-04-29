@@ -15,6 +15,7 @@ SLOT="0"
 KEYWORDS=""
 
 RDEPEND="
+	!sys-apps/renameutils
 	media-libs/fontconfig
 	media-libs/libsdl2
 	media-libs/sdl2-ttf

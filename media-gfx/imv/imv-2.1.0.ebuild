@@ -8,13 +8,14 @@ inherit eutils fdo-mime
 
 DESCRIPTION="Minimal image viewer designed for tiling window manager users"
 HOMEPAGE="https://github.com/eXeC64/imv"
-SRC_URI="https://github.com/eXeC64/${PN}/archive/v${PV}.tar.gz"
+SRC_URI="https://github.com/eXeC64/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 RDEPEND="
+	!sys-apps/renameutils
 	media-libs/fontconfig
 	media-libs/libsdl2
 	media-libs/sdl2-ttf

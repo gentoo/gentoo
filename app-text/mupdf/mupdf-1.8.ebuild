@@ -13,7 +13,7 @@ SRC_URI="http://git.ghostscript.com/?p=mupdf.git;a=snapshot;h=179403598244f069b5
 LICENSE="AGPL-3"
 MY_SOVER=1.8
 SLOT="0/${MY_SOVER}"
-KEYWORDS="~alpha ~amd64 ~arm hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~ppc-macos ~x64-macos ~x86-macos"
+KEYWORDS="~alpha ~amd64 ~arm hppa ~ia64 ~ppc ppc64 ~sparc ~x86 ~amd64-linux ~ppc-macos ~x64-macos ~x86-macos"
 IUSE="X vanilla +curl javascript libressl opengl +openssl static static-libs"
 
 LIB_DEPEND="
