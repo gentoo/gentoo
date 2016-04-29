@@ -9129,7 +9129,7 @@ dev-ruby/ruby-yadis 0.3.4-r2: A ruby library for performing Yadis service discov
 dev-ruby/ruby2ruby 2.1.4 2.2.0 2.3.0: Generates readable ruby from ParseTree
 dev-ruby/ruby_gntp 0.3.4: Ruby library for GNTP(Growl Notification Transport Protocol)
 dev-ruby/ruby_parser 3.6.6 3.7.2 3.7.3 3.8.1: A ruby parser written in pure ruby
-dev-ruby/rubygems 2.2.5-r1 2.5.1 2.5.2 2.6.1 2.6.2 2.6.3: Centralized Ruby extension management system
+dev-ruby/rubygems 2.2.5-r1 2.5.1 2.5.2 2.6.1 2.6.2 2.6.3 2.6.4: Centralized Ruby extension management system
 dev-ruby/rubyntlm 0.5.3 0.6.0: Ruby/NTLM provides message creator and parser for the NTLM authentication.
 dev-ruby/rubypants 0.2.0-r5: A Ruby port of the SmartyPants PHP library
 dev-ruby/rubytest 0.7.0 0.8.1: Ruby Test is a universal test harness for Ruby
@@ -17584,7 +17584,7 @@ www-apache/mod_xsendfile 1.0_beta1: Apache2 module that processes X-SENDFILE hea
 www-apache/modsec-flameeyes 20130216 99999999: Flameeyes's Ruleset for ModSecurity
 www-apache/modsecurity-crs 2.2.6-r1 2.2.7: Core Rule Set for ModSecurity
 www-apache/mpm_itk 2.4.7_p4-r1: Run virtual hosts under separate users/groups
-www-apache/passenger 4.0.60 5.0.26 5.0.27: Passenger makes deployment of Ruby on Rails applications a breeze
+www-apache/passenger 4.0.60 5.0.26 5.0.27 5.0.28: Passenger makes deployment of Ruby on Rails applications a breeze
 www-apache/pwauth 2.3.10: A Unix Web Authenticator
 www-apps/389-dsgw 1.1.10: 389 Directory Server Gateway Web Application
 www-apps/Apache-Gallery 1.0_rc3-r1: Apache gallery for mod_perl
