@@ -3,7 +3,6 @@
 # $Id$
 
 # The 32-bits profile is inherited by the 64-bits one!
-# All the Mac OS X profiles inherit from their matching arch profile here.
 
 
 # Alexandre Rostovtsev <tetromono@gentoo.org> (09 Jan 2012)
