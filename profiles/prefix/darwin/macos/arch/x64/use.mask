@@ -2,6 +2,6 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-# Force the flag corresponding to the default ABI
-ppc-macos
-abi_ppc_32
+# Unmask the flag corresponding to the default ABI
+-x64-macos
+-abi_x86_64
