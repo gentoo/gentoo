@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install postinst prepare
+DESCRIPTION=Spindown is a daemon that can spin down idle disks
+EAPI=6
+HOMEPAGE=https://code.google.com/p/spindown
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=sys-apps/sg3_utils
+SLOT=0
+SRC_URI=https://spindown.googlecode.com/files/spindown-0.4.0.tar.gz
+_eclass_exported_funcs=pkg_postinst:- src_prepare:- src_compile:- src_install:-
+_md5_=c7d8c9886b1a4152614414ce2650fa76

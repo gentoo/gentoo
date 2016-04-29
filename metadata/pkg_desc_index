@@ -16745,7 +16745,7 @@ sys-block/scsiping 0.0.1: SCSIPing pings a host on the SCSI-chain
 sys-block/scsirastools 1.5.7 1.6.4: Serviceability for SCSI Disks and Arrays
 sys-block/seekwatcher 0.6 0.12 0.12_p20091015: Seekwatcher generates graphs from blktrace runs to help visualize IO patterns and performance
 sys-block/smp_utils 0.97 0.98: Utilities for SAS management protocol (SMP)
-sys-block/spindown 0.4.0-r4: Spindown is a daemon that can spin down idle disks
+sys-block/spindown 0.4.0-r5: Spindown is a daemon that can spin down idle disks
 sys-block/tapecat 1.0.0: tapecat is a tape utility used to describe the physical content of a tape
 sys-block/targetcli 9999: The targetcli administration shell
 sys-block/tgt 1.0.60 1.0.63: Linux SCSI target framework (tgt)
