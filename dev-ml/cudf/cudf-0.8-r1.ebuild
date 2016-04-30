@@ -20,6 +20,7 @@ RDEPEND="
 	dev-ml/extlib:=
 	dev-libs/glib:2
 	dev-ml/camlp4:=
+	dev-ml/cppo:=
 "
 DEPEND="${RDEPEND}
 	test? ( dev-ml/ounit )
