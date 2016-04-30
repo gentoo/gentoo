@@ -10,19 +10,15 @@ PYTHON_COMPAT=( python2_7 )
 
 inherit ros-catkin
 
-DESCRIPTION="Tests for the controller manager"
+DESCRIPTION="Interface for enforcing joint limits"
 LICENSE="BSD"
 SLOT="0"
 IUSE=""
 
 RDEPEND="
-	dev-ros/controller_manager[${PYTHON_USEDEP}]
-	dev-ros/controller_interface
-	dev-ros/control_toolbox
+	dev-ros/roscpp
+	dev-ros/hardware_interface
+	dev-libs/urdfdom
 "
 DEPEND="${RDEPEND}
-	test? (
-		dev-ros/rostest[${PYTHON_USEDEP}]
-		dev-python/nose[${PYTHON_USEDEP}]
-		dev-ros/rosservice[${PYTHON_USEDEP}]
-	)"
+	test? ( dev-ros/rostest dev-cpp/gtest )"

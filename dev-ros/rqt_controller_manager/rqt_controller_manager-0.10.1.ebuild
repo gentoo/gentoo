@@ -10,19 +10,13 @@ PYTHON_COMPAT=( python2_7 )
 
 inherit ros-catkin
 
-DESCRIPTION="Tests for the controller manager"
+DESCRIPTION="RQT control manager plugin"
 LICENSE="BSD"
 SLOT="0"
 IUSE=""
 
 RDEPEND="
 	dev-ros/controller_manager[${PYTHON_USEDEP}]
-	dev-ros/controller_interface
-	dev-ros/control_toolbox
+	dev-ros/rqt_gui[${PYTHON_USEDEP}]
 "
-DEPEND="${RDEPEND}
-	test? (
-		dev-ros/rostest[${PYTHON_USEDEP}]
-		dev-python/nose[${PYTHON_USEDEP}]
-		dev-ros/rosservice[${PYTHON_USEDEP}]
-	)"
+DEPEND="${RDEPEND}"
