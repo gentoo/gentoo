@@ -7,7 +7,7 @@ EAPI=5
 PYTHON_COMPAT=( python2_7 python3_{3,4} )
 DISTUTILS_SINGLE_IMPL=true
 
-inherit distutils-r1 readme.gentoo virtualx
+inherit distutils-r1 readme.gentoo-r1 virtualx
 
 DESCRIPTION="The highly caffeinated git GUI"
 HOMEPAGE="https://git-cola.github.io/"
@@ -15,7 +15,7 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="doc test"
 
 RDEPEND="
@@ -32,10 +32,7 @@ DEPEND="${RDEPEND}
 	test? ( dev-python/nose[${PYTHON_USEDEP}] )
 "
 
-PATCHES=(
-	"${FILESDIR}"/${P}-disable-live-tests.patch
-	"${FILESDIR}"/${P}-update-git-config-in-tests.patch
-)
+PATCHES=()
 
 python_prepare_all() {
 	rm share/git-cola/bin/*askpass* || die
@@ -88,7 +85,7 @@ python_install_all() {
 		prefix="${EPREFIX}/usr" \
 		install
 
-	python_fix_shebang "${ED}/usr/share/git-cola/bin/git-xbase"
+	python_fix_shebang "${ED}/usr/share/git-cola/bin/git-xbase" "${ED}"/usr/bin/git-cola
 	python_optimize "${ED}/usr/share/git-cola/lib/cola"
 
 	use doc || HTML_DOCS=( "${FILESDIR}"/index.html )
