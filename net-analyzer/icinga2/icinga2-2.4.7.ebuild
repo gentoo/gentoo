@@ -157,6 +157,6 @@ src_install() {
 }
 
 pkg_postinst() {
-	elog "DB IDO schema upgrade required. http://docs.icinga.org/icinga2/snapshot/chapter-2.html#upgrading-the-mysql-database"
-	elog "You will need to update your configuration files, see https://dev.icinga.org/issues/5909"
+	elog "DB IDO schema upgrade could be required. See section 2.5.1 or 2.5.2 of "
+	elog "http://docs.icinga.org/icinga2/snapshot/chapter-2.html"
 }
