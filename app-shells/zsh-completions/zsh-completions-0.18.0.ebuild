@@ -20,6 +20,11 @@ SLOT="0"
 
 RDEPEND="app-shells/zsh"
 
+src_prepare() {
+	# Already included in dev-util/ninja
+	rm src/_ninja || die
+}
+
 src_install() {
 	insinto /usr/share/zsh/site-functions
 	doins src/_*
