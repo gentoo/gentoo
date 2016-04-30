@@ -330,8 +330,9 @@ src_compile() {
 	fi
 
 	if [[ ${CHOST} == *-darwin* ]]; then
-		cd "${S}"/contrib/credential/osxkeychain || die "cd credential/osxkeychain"
-		git_emake || die "emake credential-osxkeychain"
+		cd "${S}"/contrib/credential/osxkeychain || die
+		git_emake CC=$(tc-getCC) CFLAGS="${CFLAGS}" \
+			|| die "emake credential-osxkeychain"
 	fi
 
 	cd "${S}"/Documentation
