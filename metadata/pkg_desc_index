@@ -3786,7 +3786,7 @@ dev-java/commons-codec 1.7: Implementations of common encoders and decoders in J
 dev-java/commons-collections 3.2.1-r1: Jakarta-Commons Collections Component
 dev-java/commons-compress 1.8.1-r1 1.10: Commons Compress defines an API for working with ar, cpio, tar, zip, gzip and bzip2 files
 dev-java/commons-configuration 1.6-r2: Generic interface for reading configuration data from a variety of sources
-dev-java/commons-daemon 1.0.7 1.0.9 1.0.15: Tools to allow Java programs to run as UNIX daemons
+dev-java/commons-daemon 1.0.15: Tools to allow Java programs to run as UNIX daemons
 dev-java/commons-dbcp 2.1: Jakarta component providing database connection pooling API
 dev-java/commons-dbutils 1.6: A small set of classes designed to make working with JDBC easier
 dev-java/commons-digester 1.8.1-r2 2.1-r1 3.2-r2: Reads XML configuration files to provide initialization of various Java objects within the system
