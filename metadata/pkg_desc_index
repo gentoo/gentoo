@@ -5018,7 +5018,7 @@ dev-ml/core_profiler 113.24.00 113.33.00: Jane Street's profiling library
 dev-ml/cppo 1.3.1-r1 1.3.2: An equivalent of the C preprocessor for OCaml programs
 dev-ml/cryptokit 1.10: Cryptographic primitives library for Objective Caml
 dev-ml/csv 1.4.2: A pure OCaml library to read and write CSV files
-dev-ml/cudf 0.8: Library to parse, pretty print, and evaluate CUDF documents
+dev-ml/cudf 0.8-r1: Library to parse, pretty print, and evaluate CUDF documents
 dev-ml/deriving 0.6.2 0.7: A deriving library for Ocsigen
 dev-ml/deriving-ocsigen 0.3c: A deriving library for Ocsigen
 dev-ml/dose3 4.2 4.3: Library and a collection of tools to perform la large spectrum of analysis on package repositories
@@ -17466,7 +17466,7 @@ virtual/perl-Pod-Simple 3.280.0-r2 3.290.0: Virtual for Pod-Simple
 virtual/perl-Safe 2.370.0 2.390.0: Virtual for Safe
 virtual/perl-Scalar-List-Utils 1.380.0 1.410.0: Virtual for Scalar::Util and List::Util, also distributed as Scalar::List::Utils
 virtual/perl-Socket 2.13.0 2.18.0: Virtual for Socket
-virtual/perl-Storable 2.490.100-r1 2.530.0-r1 2.530.100: Virtual for Storable
+virtual/perl-Storable 2.490.100-r1 2.530.0-r1 2.530.100-r1: Virtual for Storable
 virtual/perl-Sys-Syslog 0.330.0-r2: Virtual for Sys-Syslog
 virtual/perl-Term-ANSIColor 4.20.0-r3 4.30.0: Virtual for Term-ANSIColor
 virtual/perl-Term-ReadLine 1.140.0 1.150.0: Virtual for Term-ReadLine
