@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 DESCRIPTION="A small, fast, and portable POP3 client"
 HOMEPAGE="http://mpop.sourceforge.net/"
@@ -10,8 +10,8 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.xz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
-IUSE="gnutls idn libsecret nls sasl ssl vim-syntax"
+KEYWORDS="~amd64 ~arm ~x86"
+IUSE="gnutls idn libressl libsecret nls sasl ssl vim-syntax"
 
 RDEPEND="
 	idn? ( net-dns/libidn )
@@ -20,7 +20,10 @@ RDEPEND="
 	sasl? ( virtual/gsasl )
 	ssl? (
 		gnutls? ( net-libs/gnutls )
-		!gnutls? ( dev-libs/openssl )
+		!gnutls? (
+			!libressl? ( dev-libs/openssl:0= )
+			libressl? ( dev-libs/libressl:0= )
+		)
 	)"
 DEPEND="${RDEPEND}
 	nls? ( sys-devel/gettext )
