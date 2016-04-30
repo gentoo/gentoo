@@ -11,12 +11,12 @@ MY_P="${PN}-${MY_PV}"
 PVER="20160321"
 
 DESCRIPTION="The OpenAFS distributed file system"
-HOMEPAGE="http://www.openafs.org/"
+HOMEPAGE="https://www.openafs.org/"
 # We always d/l the doc tarball as man pages are not USE=doc material
 [[ ${PV} == *_pre* ]] && MY_PRE="candidate/" || MY_PRE=""
 SRC_URI="
-	http://openafs.org/dl/openafs/${MY_PRE}${MY_PV}/${MY_P}-src.tar.bz2
-	http://openafs.org/dl/openafs/${MY_PV}/${MY_P}-doc.tar.bz2
+	https://openafs.org/dl/openafs/${MY_PRE}${MY_PV}/${MY_P}-src.tar.bz2
+	https://openafs.org/dl/openafs/${MY_PRE}${MY_PV}/${MY_P}-doc.tar.bz2
 	https://dev.gentoo.org/~bircoph/afs/${PN}-patches-${PVER}.tar.xz
 "
 
