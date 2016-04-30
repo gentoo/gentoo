@@ -33,8 +33,8 @@ DEPEND+=" test? ( ${CDEPEND} )"
 
 src_prepare() {
 	# Remove the code that installs facter.rb to the wrong directory.
-	sed -i 's/if(RUBY_VENDORDIR)/if(False)/g' lib/CMakeLists.txt || die
-	sed -i '/RUBY_VENDORDIR/d' lib/CMakeLists.txt || die
+	sed -i '/install(.*facter\.rb/d' lib/CMakeLists.txt || die
+	sed -i '/install(.*facter\.jar/d' lib/CMakeLists.txt || die
 	# make it support multilib
 	sed -i "s/\ lib)/\ $(get_libdir))/g" lib/CMakeLists.txt || die
 	sed -i "s/lib\")/$(get_libdir)\")/g" CMakeLists.txt || die
@@ -56,6 +56,10 @@ src_configure() {
 		)
 	fi
 	cmake-utils_src_configure
+}
+
+each_ruby_install() {
+	doruby "${BUILD_DIR}"/lib/facter.rb
 }
 
 src_install() {
