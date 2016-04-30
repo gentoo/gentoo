@@ -232,6 +232,7 @@ app-admin/whowatch 1.8.5: interactive who-like program that displays information
 app-admin/xstow 1.0.1: replacement for GNU stow with extensions
 app-admin/xtail 2.1 2.1-r1: Tail multiple logfiles at once, even if rotated
 app-admin/yaala 0.7.3-r1 0.7.3-r2: Yet Another Log Analyzer
+app-admin/yadm 1.04: A dotfile manager for the config files in your home folder
 app-antivirus/clamav 0.98.7 0.98.7-r1 0.99 0.99.1: Clam Anti-Virus Scanner
 app-antivirus/clamav-unofficial-sigs 3.7.2 4.9.2 5.0.6: Download and install third-party clamav signatures
 app-antivirus/skyldav 0.5-r2 0.6: Skyld AV: on-access scanning daemon for ClamAV using fanotify
@@ -9534,6 +9535,7 @@ dev-util/autoproject 0.20 0.20_p5: Used to start a programming project using aut
 dev-util/babeltrace 1.2.3 1.2.4: A command-line tool and library to read and convert trace files
 dev-util/bakefile 0.2.9-r1: Native makefiles generator
 dev-util/bam 0.4.0-r1: Fast and flexible Lua-based build system
+dev-util/bats 0.4.0: An automated testing system for bash
 dev-util/bbe 0.2.2: Sed-like editor for binary files
 dev-util/bcc 0.1.8: Tools for BPF-based Linux IO analysis, networking, monitoring, and more
 dev-util/bcpp 20050725 20090630 20150811: Indents C/C++ source code

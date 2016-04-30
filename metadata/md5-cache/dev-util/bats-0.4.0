@@ -1,0 +1,10 @@
+DEFINED_PHASES=install test
+DESCRIPTION=An automated testing system for bash
+EAPI=6
+HOMEPAGE=https://github.com/sstephenson/bats/
+KEYWORDS=~amd64 ~x86
+LICENSE=MIT
+SLOT=0
+SRC_URI=https://github.com/sstephenson/bats/archive/v0.4.0.tar.gz -> bats-0.4.0.tar.gz
+_eclass_exported_funcs=src_test:- src_install:-
+_md5_=fb3659bc6e64b6b9f9b8505487c1ea1e
