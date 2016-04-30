@@ -1,0 +1,27 @@
+diff --git a/Makefile b/Makefile
+index 32fa704..c426ef8 100644
+--- a/Makefile
++++ b/Makefile
+@@ -18,9 +18,9 @@ endif
+ ifeq ($(BUILD_TYPE),PROFILE)
+ 	CFLAGS+= -pg
+ endif
+-ifeq ($(BUILD_TYPE),RELEASE)
+-	CFLAGS+= -O3 -fomit-frame-pointer
+-endif
++#ifeq ($(BUILD_TYPE),RELEASE)
++#	CFLAGS+= -O3 -fomit-frame-pointer
++#endif
+ 
+ LDFLAGS += -Lbuild/ -lclipper
+ 
+# By courtesy of Whissi: this enforces use of our CXXFLAGS
+@@ -70,7 +70,7 @@ $(BUILD_DIR)/libclipper.a: $(LIBS_DIR)/clipper/clipper.cpp
+ 	$(CXX) $(CFLAGS) -o $(BUILD_DIR)/libclipper.a $(LIBS_DIR)/clipper/clipper.cpp
+ 
+ $(EXECUTABLE): $(OBJECTS) $(BUILD_DIR)/libclipper.a
+-	$(CXX) $(OBJECTS) -o $@ $(LDFLAGS)
++	$(CXX) $(CXXFLAGS) $(LDFLAGS) $(OBJECTS) -o $@
+ 
+ $(DIRS):
+ 	-@$(MKDIR_PREFIX) $(DIRS)
