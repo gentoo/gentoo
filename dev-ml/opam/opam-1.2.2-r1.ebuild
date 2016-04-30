@@ -36,7 +36,9 @@ RDEPEND="${DEPEND}
 "
 
 src_prepare() {
-	epatch "${FILESDIR}/0001-Port-to-Dose3-4.0.1.patch"
+	epatch \
+		"${FILESDIR}/0001-Port-to-Dose3-4.0.1.patch" \
+		"${FILESDIR}/no-insecure.patch"
 }
 
 src_compile() {
