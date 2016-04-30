@@ -5091,7 +5091,7 @@ dev-ml/ocamlweb 1.38-r1 1.39: O'Caml literate programming tool
 dev-ml/ocplib-endian 0.8-r1: Optimised functions to read and write int16/32/64 from strings, bytes and bigarrays
 dev-ml/ocurl 0.6.1 0.7.4 0.7.5 0.7.6: OCaml interface to the libcurl library
 dev-ml/odns 0.3-r1: OCaml library to query DNS servers
-dev-ml/opam 1.2.2: A source-based package manager for OCaml
+dev-ml/opam 1.2.2-r1: A source-based package manager for OCaml
 dev-ml/optcomp 1.6: Optional compilation for OCaml with cpp-like directives
 dev-ml/ounit 1.1.2 2.0.0: Unit testing framework for OCaml
 dev-ml/pa_bench 109.55.02 111.28.00 112.06.00: Syntax extension writing inline benchmarks
@@ -13344,7 +13344,7 @@ media-sound/vsound 0.6-r1: A virtual audio loopback cable
 media-sound/waheela 0.3: Amarok Fullscreen Player
 media-sound/wavbreaker 0.11: wavbreaker/wavmerge GTK+ utility to break or merge WAV files
 media-sound/wavegain 1.3.1: ReplayGain for WAVE audio files
-media-sound/wavpack 4.70.0: Hybrid lossless audio compression tools
+media-sound/wavpack 4.70.0 4.80.0: Hybrid lossless audio compression tools
 media-sound/wavplay 2.0: A command line player/recorder for wav files
 media-sound/wavsplit 1.2.1-r1: WavSplit is a simple command line tool to split WAV files
 media-sound/wildmidi 0.2.3.5 0.3.6 0.3.7 0.3.8: Midi processing library and a midi player using the gus patch set
