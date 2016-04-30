@@ -21,4 +21,8 @@ RDEPEND="
 	dev-ros/control_toolbox
 "
 DEPEND="${RDEPEND}
-	test? ( dev-ros/rostest[${PYTHON_USEDEP}] dev-python/nose[${PYTHON_USEDEP}] )"
+	test? (
+		dev-ros/rostest[${PYTHON_USEDEP}]
+		dev-python/nose[${PYTHON_USEDEP}]
+		dev-ros/rosservice[${PYTHON_USEDEP}]
+	)"
