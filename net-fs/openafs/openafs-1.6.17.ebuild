@@ -16,7 +16,7 @@ HOMEPAGE="https://www.openafs.org/"
 [[ ${PV} == *_pre* ]] && MY_PRE="candidate/" || MY_PRE=""
 SRC_URI="
 	https://openafs.org/dl/openafs/${MY_PRE}${MY_PV}/${MY_P}-src.tar.bz2
-	https://openafs.org/dl/openafs/${MY_PV}/${MY_P}-doc.tar.bz2
+	https://openafs.org/dl/openafs/${MY_PRE}${MY_PV}/${MY_P}-doc.tar.bz2
 	https://dev.gentoo.org/~bircoph/afs/${PN}-patches-${PVER}.tar.xz
 "
 
