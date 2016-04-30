@@ -16,7 +16,7 @@ HOMEPAGE="https://github.com/erikh/deprecated"
 
 LICENSE="BSD"
 SLOT="3"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ppc x86"
 IUSE="test"
 
 ruby_add_bdepend "test? ( dev-ruby/test-unit:2 )"
