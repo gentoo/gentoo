@@ -157,6 +157,6 @@ src_install() {
 }
 
 pkg_postinst() {
-	elog "DB IDO schema upgrade could be required. See section 2.5.1 or 2.5.2 of "
-	elog "http://docs.icinga.org/icinga2/snapshot/chapter-2.html"
+	elog "DB IDO schema upgrade could be required. See the following for more information."
+	elog "http://docs.icinga.org/icinga2/snapshot/doc/module/icinga2/chapter/upgrading-icinga-2"
 }
