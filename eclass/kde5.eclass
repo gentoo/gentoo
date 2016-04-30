@@ -392,8 +392,8 @@ kde5_src_prepare() {
 	fi
 
 	# drop translations when nls is not wanted
-	if [[ -d po ]] && ! use_if_iuse nls ; then
-		rm -rf po || die
+	if [[ -d po ]] && in_iuse nls && ! use nls ; then
+		rm -r po || die
 	fi
 
 	# enable only the requested translations
