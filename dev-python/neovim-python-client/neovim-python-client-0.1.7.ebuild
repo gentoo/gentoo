@@ -22,7 +22,7 @@ DEPEND="
 
 RDEPEND="
 	${DEPEND}
-	=app-editors/neovim-0.1.3
+	>=app-editors/neovim-0.1.3
 "
 
 S="${WORKDIR}/python-client-${PV}"
