@@ -34,7 +34,7 @@
 # Packages merged upstream with app-text/blogc. Please install
 # app-text/blogc with USE=git and USE=httpd instead. Removal in 30 days.
 dev-vcs/blogc-git-receiver
-www-server/blogc-runserver
+www-servers/blogc-runserver
 
 # James Le Cuirot <chewi@gentoo.org> (27 Apr 2016)
 # Very very dead upstream and probably doesn't work any more like
