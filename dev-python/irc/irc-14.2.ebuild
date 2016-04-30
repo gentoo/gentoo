@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 PYTHON_COMPAT=( python{2_7,3_4,3_5} )
 
 inherit distutils-r1
@@ -19,6 +19,7 @@ IUSE="doc examples test"
 RDEPEND="
 	dev-python/six[${PYTHON_USEDEP}]
 	dev-python/jaraco-collections[${PYTHON_USEDEP}]
+	dev-python/jaraco-stream[${PYTHON_USEDEP}]
 	dev-python/jaraco-text[${PYTHON_USEDEP}]
 	dev-python/jaraco-itertools[${PYTHON_USEDEP}]
 	dev-python/jaraco-logging[${PYTHON_USEDEP}]
@@ -33,6 +34,10 @@ DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 		dev-python/pytest-runner[${PYTHON_USEDEP}]
 		dev-python/backports-unittest-mock[${PYTHON_USEDEP}]
 	)
+	doc? (
+		dev-python/sphinx[${PYTHON_USEDEP}]
+		dev-python/rst-linker[${PYTHON_USEDEP}]
+	)
 "
 
 python_compile_all() {
@@ -44,7 +49,11 @@ python_test() {
 }
 
 python_install_all() {
-	use examples && local EXAMPLES=( scripts/. )
+	if use examples; then
+		insinto "/usr/share/doc/${PF}"
+		docompress -x "/usr/share/doc/${PF}/scripts"
+		doins -r scripts
+	fi
 	use doc && local HTML_DOCS=( "${BUILD_DIR}"/sphinx/html/. )
 	distutils-r1_python_install_all
 }

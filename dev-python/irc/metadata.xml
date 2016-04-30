@@ -17,5 +17,6 @@
 	<upstream>
 		<remote-id type="pypi">irc</remote-id>
 		<remote-id type="github">jaraco/irc</remote-id>
+		<bugs-to>https://github.com/jaraco/irc/issues</bugs-to>
 	</upstream>
 </pkgmetadata>
