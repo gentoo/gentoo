@@ -39,6 +39,9 @@ src_prepare() {
 }
 
 src_test() {
-	perl_rm_files t/12_pod.t
+	# the webview/t/03_threads.t test tends to hang or crash in weird
+	# ways depending on local configuration. eg, backtraces involving
+	# all of webkit-gtk, kpartsplugin and kdelibs...
+	perl_rm_files t/12_pod.t ext/webview/t/03_threads.t
 	virtx perl-module_src_test
 }
