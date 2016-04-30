@@ -1,0 +1,12 @@
+--- a/Makefile	2014-12-03 09:39:30.000000000 -0500
++++ b/Makefile	2014-12-08 16:15:08.360366417 -0500
+@@ -18,9 +18,6 @@
+ ifeq ($(BUILD_TYPE),PROFILE)
+ 	CFLAGS+= -pg
+ endif
+-ifeq ($(BUILD_TYPE),RELEASE)
+-	CFLAGS+= -O3 -fomit-frame-pointer
+-endif
+ 
+ LDFLAGS += -Lbuild/ -lclipper
+ 
