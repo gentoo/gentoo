@@ -6122,27 +6122,27 @@ dev-perl/Proc-Background 1.100.0-r1: Generic interface to background process man
 dev-perl/Proc-Daemon 0.140.0-r1 0.230.0: Run Perl program as a daemon process
 dev-perl/Proc-ProcessTable 0.480.0 0.530.0: Unix process table information
 dev-perl/Proc-Simple 1.310.0-r1 1.320.0: Launch and control background processes
-dev-perl/Proc-Wait3 0.40.0-r1 0.50.0: Perl extension for wait3 system call
+dev-perl/Proc-Wait3 0.50.0: Perl extension for wait3 system call
 dev-perl/Proc-WaitStat 1.0.0-r1: Interpret and act on wait() status values
-dev-perl/Quota 1.700.0-r1: Quota - Perl interface to file system quotas
-dev-perl/REST-Client 249: A simple client for interacting with RESTful http/https resources
+dev-perl/Quota 1.7.0 1.7.2: Perl interface to file system quotas
+dev-perl/REST-Client 249 273: A simple client for interacting with RESTful http/https resources
 dev-perl/RPC-XML 0.770.0-r1 0.780.0 0.790.0: An implementation of XML-RPC
 dev-perl/RRD-Simple 1.440.0-r1: Simple interface to create and store data in RRD files
 dev-perl/RTF-Writer 1.110.0-r2: RTF::Writer - for generating documents in Rich Text Format
 dev-perl/RadiusPerl 0.220.0-r1: Communicate with a Radius server from Perl
 dev-perl/Rcs 1.50.0-r1: Perl bindings for Revision Control System
-dev-perl/Readonly 1.30.0-r1 2.0.0: Facility for creating read-only scalars, arrays, hashes
+dev-perl/Readonly 1.30.0-r1 2.0.0 2.10.0: Facility for creating read-only scalars, arrays, hashes
 dev-perl/Readonly-XS 1.50.0-r1: Companion module for Readonly.pm, to speed up read-only scalar variables
-dev-perl/Redis 1.961.0 1.976.0: Perl binding for Redis database
+dev-perl/Redis 1.976.0: Perl binding for Redis database
 dev-perl/RedisDB 2.360.0: Perl extension to access redis database
 dev-perl/RedisDB-Parser 2.200.0: Redis protocol parser for RedisDB
 dev-perl/Regexp-Common-net-CIDR 0.20.0-r1: Provides patterns for CIDR blocks
 dev-perl/Regexp-IPv6 0.30.0-r1: Regular expression for IPv6 addresses
-dev-perl/Regexp-RegGrp 1.2.1 2.0.0: Groups a regular expressions collection
+dev-perl/Regexp-RegGrp 2.0.0: Groups a regular expressions collection
 dev-perl/Regexp-Shellish 0.930.0-r1: Regexp::Shellish - Shell-like regular expressions
 dev-perl/Return-Value 1.666.1-r1: Polymorphic Return Values
 dev-perl/Role-Basic 0.130.0: Just roles. Nothing else
-dev-perl/Role-Tiny 1.3.2 2.0.0 2.0.1: Roles. Like a nouvelle cuisine portion size slice of Moose
+dev-perl/Role-Tiny 2.0.1: Roles. Like a nouvelle cuisine portion size slice of Moose
 dev-perl/Roman 1.230.0-r1 1.240.0: Perl module for conversion between Roman and Arabic numerals
 dev-perl/Router-Simple 0.140.0-r1: Simple HTTP router
 dev-perl/SDL 2.546: Simple DirectMedia Layer (SDL) bindings for perl
@@ -6558,8 +6558,8 @@ dev-perl/pcsc-perl 1.4.14: A Perl Module for PC/SC SmartCard access
 dev-perl/perl-ldap 0.650.0: Perl modules which provide an object-oriented interface to LDAP servers
 dev-perl/perl-mozldap 1.5.3: Mozilla PerLDAP
 dev-perl/prefork 1.40.0-r1: Optimized module loading for forking or non-forking processes
-dev-perl/regexp-common 2013031301.0.0: Provide commonly requested regular expressions
-dev-perl/rename 1.800.0-r1 1.900.0: A filename renaming utility based on perl regular expression
+dev-perl/regexp-common 2013031301.0.0 2016020301.0.0: Provide commonly requested regular expressions
+dev-perl/rename 1.900.0: A filename renaming utility based on perl regular expression
 dev-perl/rpm-build-perl 0.820.0: Automatically extract Perl dependencies
 dev-perl/self 0.340.0-r1: provides '$self' in OO code
 dev-perl/strictures 2.0.1 2.0.2: Turn on strict and make most warnings fatal
@@ -14830,7 +14830,7 @@ net-misc/throttle 1.2: Bandwidth limiting pipe
 net-misc/tiers 1.1: Random network topography generator
 net-misc/tigervnc 1.3.1-r1 1.3.1-r2 1.3.1-r3 1.3.1-r4 1.4.2-r1 1.4.2-r2 1.6.0-r1: Remote desktop viewer display system
 net-misc/tightvnc 1.3.10-r2: A great client/server software package allowing remote network access to graphical desktops
-net-misc/tinc 1.0.28 1.1_pre12: tinc is an easy to configure VPN implementation
+net-misc/tinc 1.0.28 1.1_pre13: tinc is an easy to configure VPN implementation
 net-misc/tipcutils 2.0.0 2.0.3: Utilities for TIPC (Transparent Inter-Process Communication)
 net-misc/tlsdate 0.0.1 0.0.4 0.0.4-r1 0.0.4-r2 0.0.5 0.0.6 0.0.11 0.0.12 0.0.12-r1 0.0.12-r2 0.0.13: Update local time over HTTPS
 net-misc/tn5250 0.17.4: Telnet client for the IBM AS/400 that emulates 5250 terminals and printers
@@ -17708,7 +17708,7 @@ www-client/epiphany 3.18.4 3.18.6: GNOME webbrowser based on Webkit
 www-client/fetch 1.0-r1 1.0-r2: HTTP download tool built atop the HTTP fetcher library
 www-client/firefox 38.7.0 38.8.0 45.1.0 46.0: Firefox Web Browser
 www-client/firefox-bin 38.8.0 45.1.0 46.0: Firefox Web Browser
-www-client/google-chrome 50.0.2661.86: The web browser from Google
+www-client/google-chrome 50.0.2661.94: The web browser from Google
 www-client/google-chrome-beta 51.0.2704.29: The web browser from Google
 www-client/google-chrome-unstable 52.0.2716.0: The web browser from Google
 www-client/httrack 3.48.21-r1 3.48.21-r2: HTTrack Website Copier, Open Source Offline Browser
@@ -17766,7 +17766,7 @@ www-misc/wsmake 0.6.4: Website Pre-processor
 www-misc/xxv 1.6.1-r1: WWW Admin for the VDR (Video Disk Recorder)
 www-misc/zoneminder 1.27.0 1.28.0 1.28.1: ZoneMinder allows you to capture, analyse, record and monitor any cameras attached to your system
 www-plugins/adobe-flash 11.2.202.616: Adobe Flash Player
-www-plugins/chrome-binary-plugins 50.0.2661.86 51.0.2704.29_beta 52.0.2716.0_alpha: Binary plugins from Google Chrome for use in Chromium
+www-plugins/chrome-binary-plugins 50.0.2661.94 51.0.2704.29_beta 52.0.2716.0_alpha: Binary plugins from Google Chrome for use in Chromium
 www-plugins/freshplayerplugin 0.3.1-r2 0.3.2 0.3.3 0.3.3-r1 0.3.3-r2 0.3.4 0.3.4-r1: PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers
 www-plugins/gecko-mediaplayer 1.0.8 1.0.9: A browser plugin that uses GNOME MPlayer
 www-plugins/gnash 0.8.10_p20131019 0.8.10_p20150316 0.8.10_p20160329: GNU Flash movie player that supports many SWF v7,8,9 features
