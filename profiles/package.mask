@@ -130,9 +130,6 @@ dev-java/freehep-xml
 # Work in progress. Do not unmask! Unmasking these ebuilds
 # is like fiddling with the infinite improbability drive;
 # expect unexpected, weird, and potentially fatal results.
-=dev-lang/perl-5.22.2*
-=virtual/perl-File-Spec-3.560.100
-=virtual/perl-Module-CoreList-5.201.604.290
 =dev-lang/perl-5.24*
 
 # Michael Sterrett <mr_bones_@gentoo.org> (06 Apr 2016)
