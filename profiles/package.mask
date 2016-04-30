@@ -260,6 +260,7 @@ dev-vcs/statcvs
 >=dev-lang/ocaml-4.03_beta
 >=dev-ml/camlp4-4.03
 >=dev-ml/ppx_tools-4.03
+>=dev-ml/labltk-8.06.1
 
 # Patrice Clement <monsieurp@gentoo.org> (29 Feb 2016)
 # Duplicate of dev-libs/libedit.
