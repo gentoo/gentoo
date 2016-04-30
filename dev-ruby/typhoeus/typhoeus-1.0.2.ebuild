@@ -21,7 +21,7 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE=""
 
-ruby_add_rdepend ">=dev-ruby/ethon-0.8.0"
+ruby_add_rdepend ">=dev-ruby/ethon-0.9.0"
 
 ruby_add_bdepend "test? ( dev-ruby/json >=dev-ruby/faraday-0.9 >=dev-ruby/sinatra-1.3 )"
 
