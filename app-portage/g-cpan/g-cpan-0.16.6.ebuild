@@ -31,7 +31,6 @@ src_install() {
 		perl-module_src_install
 		diropts "-m0755"
 		dodir "/var/tmp/g-cpan"
-		keepdir "/var/tmp/g-cpan"
 		dodir "/var/log/g-cpan"
 		keepdir "/var/log/g-cpan"
 }

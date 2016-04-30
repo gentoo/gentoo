@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 inherit perl-module
 if [[ ${PV} == "9999" ]] ; then
@@ -32,16 +32,15 @@ RDEPEND="${DEPEND}
 
 src_install() {
 		perl-module_src_install
-		diropts "-m0755"
+		diropts -m0775 -o portage -g portage
 		dodir "/var/tmp/g-cpan"
-		keepdir "/var/tmp/g-cpan"
 		dodir "/var/log/g-cpan"
 		keepdir "/var/log/g-cpan"
 }
 
 pkg_postinst() {
-	elog "You may wish to adjust the permissions on /var/tmp/g-cpan"
-	elog "if you have users besides root expecting to use g-cpan."
+	elog "If you want to use g-cpan besides root you may wish to"
+	elog " adjust the permissions on /var/tmp/g-cpan or add users into portage group."
 	elog "Please note that some CPAN packages need additional manual"
 	elog "parameters or tweaking, due to bugs in their build systems."
 }
