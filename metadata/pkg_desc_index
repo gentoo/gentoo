@@ -3802,7 +3802,7 @@ dev-java/commons-jelly 1.0-r8: A Java and XML based scripting and processing eng
 dev-java/commons-jexl 1.1-r1 2.1.1: Expression language engine, can be embedded in applications and frameworks
 dev-java/commons-jxpath 1.3-r1 1.3-r2: Applies XPath expressions to graphs of objects of all kinds
 dev-java/commons-lang 2.0-r2 2.0-r3 2.6-r1 3.1 3.3.2: Commons components to manipulate core java classes
-dev-java/commons-launcher 1.1-r1 1.1-r2: Commons-launcher eliminates the need for a batch or shell script to launch a Java class
+dev-java/commons-launcher 1.1-r2: Java library to launch Java classes
 dev-java/commons-logging 1.2 1.2-r1: An ultra-thin bridge between different Java logging libraries
 dev-java/commons-math 2.1-r1 3.2: Lightweight, self-contained mathematics and statistics components
 dev-java/commons-net 3.2: Java library emulating the client side of many basic Internet protocols
@@ -5145,7 +5145,7 @@ dev-ml/typerep 113.24.00: Library for creating runtime representation of OCaml t
 dev-ml/typerep_extended 113.24.00 113.33.00: Runtime types for OCaml (Extended)
 dev-ml/tyxml 3.5.0 3.6.0: A libary to build xml trees typechecked by OCaml
 dev-ml/ulex 1.1: A lexer generator for unicode
-dev-ml/utop 1.18.2 1.19 1.19.1: A new toplevel for OCaml with completion and colorization
+dev-ml/utop 1.18.2 1.19 1.19.1 1.19.2: A new toplevel for OCaml with completion and colorization
 dev-ml/uuidm 0.9.5: OCaml module implementing 128 bits universally unique identifiers
 dev-ml/uutf 0.9.4: Non-blocking streaming Unicode codec for OCaml
 dev-ml/variantslib 109.15.00 109.15.02 113.24.00: OCaml variants as first class values
