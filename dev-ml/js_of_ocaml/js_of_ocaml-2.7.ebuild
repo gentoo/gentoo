@@ -31,6 +31,10 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	dev-ml/ocamlbuild"
 
+src_prepare() {
+	has_version '>=dev-lang/ocaml-4.03' && epatch "${FILESDIR}/oc43.patch"
+}
+
 src_configure() {
 	printf "\n\n" >> Makefile.conf
 	use ocamlopt || echo "BEST := byte" >> Makefile.conf
