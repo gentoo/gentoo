@@ -42,7 +42,7 @@
     <!ELEMENT changelog (#PCDATA)>
     <!-- URL where the location of the upstream documentation can be found -->
     <!ELEMENT doc (#PCDATA)>
-      <!ATTLIST doc lang CDATA "C" >
+      <!ATTLIST doc lang CDATA "en" >
     <!-- location where to report bugs
       (may also be an email address prefixed with mailto:) -->
     <!ELEMENT bugs-to (#PCDATA)>
@@ -57,14 +57,14 @@
           
 <!-- Common attributes -->
 
-<!-- the lang attribute, specifies the language of this tag. This is 
-  only useful for descriptions of various kinds. If a tag with this 
-  attribute is included there must be a description in the default 
-  language "C" or "en", which is equivalent -->
-  <!ATTLIST description lang CDATA "C" >
-  <!ATTLIST longdescription lang CDATA "C" >
-  <!ATTLIST slots lang CDATA "C" >
-  <!ATTLIST use lang CDATA "C" >
+<!-- the lang attribute, specifies the language of this tag in the
+  form of a ISO 639-1 language code. This is only useful for
+  descriptions of various kinds. If a tag with this attribute is
+  included there must be a description in the default language "en" -->
+  <!ATTLIST description lang CDATA "en" >
+  <!ATTLIST longdescription lang CDATA "en" >
+  <!ATTLIST slots lang CDATA "en" >
+  <!ATTLIST use lang CDATA "en" >
 
 <!-- The restrict attribute, this attribute specifies restrictions on 
   the applicability of tags on versions. The format of this attribute is 
