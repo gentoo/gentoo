@@ -85,6 +85,7 @@ dev-db/sqlitebrowser -qt4
 >=dev-libs/quazip-0.7.1 -qt4
 >=kde-misc/kdiff3-0.9.98-r1 -kde -qt4
 >=media-libs/opencv-3.0.0 -qt4
+media-video/makemkv -qt4
 >=media-video/smplayer-14.9.0.6690 -qt4
 media-video/vlc -qt4
 net-analyzer/wireshark -qt4
