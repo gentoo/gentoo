@@ -11,17 +11,17 @@ inherit golang-build
 
 KEYWORDS=""
 DESCRIPTION="Replicated SQLite using the Raft consensus protocol "
-EGO_PN="github.com/otoolep/rqlite/..."
-HOMEPAGE="https://${EGO_PN%/*} http://www.philipotoole.com/replicating-sqlite-using-raft-consensus"
+EGO_PN="github.com/rqlite/rqlite/..."
+HOMEPAGE="https://${EGO_PN%/*} http://www.philipotoole.com/tag/rqlite/"
 LICENSE="MIT"
 SLOT="0/${PVR}"
 IUSE=""
 RESTRICT="test"
-EGIT_REPO_URI="https://github.com/otoolep/rqlite.git"
-#EGIT_COMMIT="f65218201d46804e52459301b1e6c8a3af2c21ad"
+EGIT_REPO_URI="https://github.com/rqlite/rqlite.git"
+#EGIT_COMMIT="32514f4744917937d8ac9a85f4ad7ee7adcfe3d7"
 SRC_URI="
 	https://github.com/armon/go-metrics/archive/345426c77237ece5dab0e1605c3e4b35c3f54757.tar.gz -> go-metrics-345426c77237ece5dab0e1605c3e4b35c3f54757.tar.gz
-	https://github.com/boltdb/bolt/archive/2f846c3551b76d7710f159be840d66c3d064abbe.tar.gz -> bolt-2f846c3551b76d7710f159be840d66c3d064abbe.tar.gz
+	https://github.com/boltdb/bolt/archive/ee4a0888a9abe7eefe5a0992ca4cb06864839873.tar.gz -> bolt-ee4a0888a9abe7eefe5a0992ca4cb06864839873.tar.gz
 	https://github.com/hashicorp/go-msgpack/archive/fa3f63826f7c23912c15263591e65d54d080b458.tar.gz -> go-msgpack-fa3f63826f7c23912c15263591e65d54d080b458.tar.gz
 	https://github.com/hashicorp/raft/archive/057b893fd996696719e98b6c44649ea14968c811.tar.gz -> hashicorp-raft-057b893fd996696719e98b6c44649ea14968c811.tar.gz
 	https://github.com/hashicorp/raft-boltdb/archive/d1e82c1ec3f15ee991f7cc7ffd5b67ff6f5bbaee.tar.gz -> hashicorp-boltdb-d1e82c1ec3f15ee991f7cc7ffd5b67ff6f5bbaee.tar.gz
@@ -91,5 +91,5 @@ golang_install_pkgs() {
 	doins -r "${S}"/src/${EGO_PN%/*}
 	insinto $(dirname "${EPREFIX}$(get_golibdir)/pkg/$(go env GOOS)_$(go env GOARCH)/${EGO_PN%/*}")
 	doins -r "${S}"/pkg/$(go env GOOS)_$(go env GOARCH)/${EGO_PN%/*}{,.a}
-	dodoc "${S}/src/${EGO_PN%/*}/README.md"
+	dodoc "${S}/src/${EGO_PN%/*}/"{CHANGELOG,README}.md
 }
