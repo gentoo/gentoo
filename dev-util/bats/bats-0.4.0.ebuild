@@ -13,7 +13,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 src_test() {
-	bin/bats --tap test
+	bin/bats --tap test || die "Tests failed"
 }
 
 src_install() {
