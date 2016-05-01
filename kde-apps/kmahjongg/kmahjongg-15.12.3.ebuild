@@ -2,11 +2,11 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 KDE_HANDBOOK="optional"
 KDE_SELINUX_MODULE="games"
-inherit kde4-base
+inherit kde5
 
 DESCRIPTION="Mahjongg for KDE"
 HOMEPAGE="
@@ -17,7 +17,21 @@ KEYWORDS=" ~amd64 ~x86"
 IUSE="debug"
 
 DEPEND="
+	$(add_frameworks_dep kcompletion)
+	$(add_frameworks_dep kconfig)
+	$(add_frameworks_dep kconfigwidgets)
+	$(add_frameworks_dep kcoreaddons)
+	$(add_frameworks_dep kcrash)
+	$(add_frameworks_dep kdbusaddons)
+	$(add_frameworks_dep kdeclarative)
+	$(add_frameworks_dep ki18n)
+	$(add_frameworks_dep knewstuff)
+	$(add_frameworks_dep kwidgetsaddons)
+	$(add_frameworks_dep kxmlgui)
 	$(add_kdeapps_dep libkdegames)
 	$(add_kdeapps_dep libkmahjongg)
+	$(add_qt_dep qtgui)
+	$(add_qt_dep qtsvg)
+	$(add_qt_dep qtwidgets)
 "
 RDEPEND="${DEPEND}"
