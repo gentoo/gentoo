@@ -2,14 +2,14 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 inherit eutils fdo-mime gnome2-utils pax-utils unpacker
 
 DESCRIPTION="Spotify is a social music platform"
 HOMEPAGE="https://www.spotify.com/ch-de/download/previews/"
 SRC_BASE="http://repository.spotify.com/pool/non-free/${PN:0:1}/${PN}-client/"
-SRC_URI="amd64? ( ${SRC_BASE}${PN}-client_${PV}.71.g0a26e3b2-9_amd64.deb )
-	x86? ( ${SRC_BASE}${PN}-client_${PV}.73.g602ced10-2_i386.deb )"
+SRC_URI="amd64? ( ${SRC_BASE}${PN}-client_${PV}.89.gf959d4ce-37_amd64.deb )
+	x86? ( ${SRC_BASE}${PN}-client_${PV}.89.gf959d4ce-4_i386.deb )"
 LICENSE="Spotify"
 SLOT="0"
 KEYWORDS="amd64 x86"
@@ -29,12 +29,14 @@ RDEPEND="
 	media-libs/mesa
 	net-misc/curl
 	net-print/cups[ssl]
-	sys-libs/glibc
 	x11-libs/gtk+:2
 	x11-libs/libXScrnSaver
 	x11-libs/libXtst
+	dev-python/pygobject:3
+	dev-python/dbus-python
 	pulseaudio? ( media-sound/pulseaudio )
 	gnome? ( gnome-extra/gnome-integration-spotify )"
+	#sys-libs/glibc
 
 S=${WORKDIR}/
 
@@ -43,14 +45,15 @@ QA_PREBUILT="opt/spotify/spotify-client/spotify"
 src_prepare() {
 	# Fix desktop entry to launch spotify-dbus.py for GNOME integration
 	if use gnome ; then
-	sed -i \
-		-e 's/spotify \%U/spotify-dbus.py \%U/g' \
-		usr/share/spotify/spotify.desktop || die "sed failed"
+		sed -i \
+			-e 's/spotify \%U/spotify-dbus.py \%U/g' \
+			usr/share/spotify/spotify.desktop || die "sed failed"
 	fi
+	default
 }
 
 src_install() {
-	dodoc usr/share/doc/spotify-client/changelog.Debian.gz
+	dodoc usr/share/doc/spotify-client/changelog.gz
 
 	SPOTIFY_PKG_HOME=usr/share/spotify
 	insinto /usr/share/pixmaps
