@@ -8,10 +8,10 @@ PYTHON_COMPAT=(python2_7)
 if [[ ${PV} == 9999* ]]; then
 	EGIT_REPO_URI="https://github.com/letsencrypt/letsencrypt.git"
 	inherit git-r3
-	KEYWORDS=""
+	KEYWORDS="~arm"
 else
 	SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64"
+	KEYWORDS="~amd64 ~arm"
 fi
 
 inherit distutils-r1
