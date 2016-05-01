@@ -14428,7 +14428,7 @@ net-mail/mswatch 1.2.0: A utility to watch mailstores for changes and initiate m
 net-mail/mu 0.9.9 0.9.9.5 0.9.9.6 0.9.15-r1 0.9.16: Set of tools to deal with Maildirs, in particular, searching and indexing
 net-mail/muchsync 2: Synchronizes mail messages and notmuch tags across machines
 net-mail/nmzmail 1.1: Fast mail searching for mutt using namazu
-net-mail/notmuch 0.18.2 0.19-r1 0.20.2 0.21: Thread-based e-mail indexer, supporting quick search and tagging
+net-mail/notmuch 0.18.2 0.19-r1 0.20.2 0.21 0.22: Thread-based e-mail indexer, supporting quick search and tagging
 net-mail/offlineimap 6.5.5 6.5.6 6.5.7: Powerful IMAP/Maildir synchronization and reader support
 net-mail/peephole 1.5: A daemon that polls your POP servers, checking if there are messages from specific people
 net-mail/pflogsumm 1.1.5: Pflogsumm is a log analyzer for Postfix logs
@@ -16452,7 +16452,7 @@ sys-apps/fwts 14.12.00 15.03.01 15.12.00: Firmware Test Suite
 sys-apps/fxload 20081013-r1: USB firmware uploader
 sys-apps/gawk 3.1.8 4.0.2 4.1.2 4.1.3: GNU awk pattern-matching language
 sys-apps/gcp 0.1.3: File copying utility with progress and I/O indicator
-sys-apps/gentoo-functions 0.7 0.8 0.9 0.10 9999: base functions required by all gentoo systems
+sys-apps/gentoo-functions 0.10 9999: base functions required by all gentoo systems
 sys-apps/gentoo-systemd-integration 2 4 5 6 9999: systemd integration files for Gentoo
 sys-apps/gnome-disk-utility 3.16.2 3.18.2 3.18.3.1: Disk Utility for GNOME using udisks
 sys-apps/gpet 0.4: GTK+ based TOMOYO policy editor
