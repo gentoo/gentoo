@@ -1,0 +1,24 @@
+commit 926305bb6fc95494064e75ceafc6443b62d3773b
+Author: Vasilis Papavasileiou <git@vasilis.airpost.net>
+Date:   Tue Mar 29 15:42:38 2016 +0200
+
+    Fix DELETE_RULE for 4.03 (nonrec flag)
+
+diff --git a/syntax/std/pa_deriving_std.ml b/syntax/std/pa_deriving_std.ml
+index 1ec000c..dde8d9e 100644
+--- a/syntax/std/pa_deriving_std.ml
++++ b/syntax/std/pa_deriving_std.ml
+@@ -18,8 +18,13 @@ struct
+   open Camlp4.PreCast
+   include Syntax
+ 
++#if ocaml_version >= (4, 03)
++  DELETE_RULE Gram str_item: "type"; opt_nonrec; type_declaration END
++  DELETE_RULE Gram sig_item: "type"; opt_nonrec; type_declaration END
++#else
+   DELETE_RULE Gram str_item: "type"; type_declaration END
+   DELETE_RULE Gram sig_item: "type"; type_declaration END
++#endif
+ 
+   open Ast
+ 
