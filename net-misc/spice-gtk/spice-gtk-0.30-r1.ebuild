@@ -22,7 +22,7 @@ KEYWORDS="alpha amd64 ~arm ia64 ppc ppc64 sparc x86"
 IUSE="dbus gstreamer gtk3 +introspection lz4 policykit pulseaudio python sasl smartcard static-libs usbredir vala webdav"
 
 REQUIRED_USE="
-	python? ( ${PYTHON_REQUIRED_USE} )
+	${PYTHON_REQUIRED_USE}
 	?? ( pulseaudio gstreamer )
 "
 
