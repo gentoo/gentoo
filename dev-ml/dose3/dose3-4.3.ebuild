@@ -14,7 +14,7 @@ SRC_URI="https://gforge.inria.fr/frs/download.php/file/35797/${P}.tar.gz"
 LICENSE="LGPL-3"
 SLOT="0/${PV}"
 KEYWORDS="~amd64"
-IUSE="+ocamlopt +parmap zip bzip2 xml curl rpm4 test"
+IUSE="+ocamlopt parmap zip bzip2 xml curl rpm4 test"
 
 RDEPEND="
 	>=dev-lang/ocaml-3.12:=[ocamlopt?]
