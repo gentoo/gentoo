@@ -23,7 +23,7 @@ RDEPEND="${RDEPEND} !!<app-accessibility/speech-tools-2.1-r3"
 
 ruby_add_bdepend "doc? ( app-text/ronn )"
 
-ruby_add_rdepend "dev-ruby/rack"
+ruby_add_rdepend "dev-ruby/rack:*"
 
 each_ruby_prepare() {
 	sed -i -e "s/a2h/#{ENV['RUBY']} -S a2h/" test/test_bcat_a2h.rb || die
