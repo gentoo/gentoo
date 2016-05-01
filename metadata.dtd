@@ -20,7 +20,10 @@
   <!ELEMENT slots ((slot)*,subslots?) >
     <!-- A particular SLOT -->
     <!ELEMENT slot (#PCDATA)* >
-      <!-- name attribute holds the name of the SLOT, for sub-SLOTS use the subslots element -->
+      <!-- name attribute holds the name of the SLOT, for sub-SLOTS
+      use the subslots element. A slot name of '*' can be used to
+      indicate a single description applying to all the slots in which
+      case no other <slot/> elements may be present. -->
       <!ATTLIST slot name CDATA #REQUIRED >
     <!-- The meaning of sub-SLOTs for the whole package -->
     <!ELEMENT subslots (#PCDATA)* >
