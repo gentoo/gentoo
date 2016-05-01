@@ -1,6 +1,18 @@
-diff -uNr ppx_core-113.33.00/_oasis ppx_core-113.33.00+4.03/_oasis
+diff -uNr ppx_core-113.33.00/js-utils/gen_install.ml ppx_core-113.33.01+4.03/js-utils/gen_install.ml
+--- ppx_core-113.33.00/js-utils/gen_install.ml	2016-03-09 16:44:53.000000000 +0100
++++ ppx_core-113.33.01+4.03/js-utils/gen_install.ml	2016-04-18 12:14:21.000000000 +0200
+@@ -31,7 +31,7 @@
+   |> List.map (fun line -> Scanf.sscanf line "%[^=]=%S" (fun k v -> (k, v)))
+ 
+ let remove_cwd =
+-  let prefix = Sys.getcwd () ^ "/" in
++  let prefix = Sys.getcwd () ^ Filename.dir_sep in
+   let len_prefix = String.length prefix in
+   fun fn ->
+     let len = String.length fn in
+diff -uNr ppx_core-113.33.00/_oasis ppx_core-113.33.01+4.03/_oasis
 --- ppx_core-113.33.00/_oasis	2016-03-09 16:44:53.000000000 +0100
-+++ ppx_core-113.33.00+4.03/_oasis	2016-03-23 17:20:19.000000000 +0100
++++ ppx_core-113.33.01+4.03/_oasis	2016-04-18 12:14:21.000000000 +0200
 @@ -1,8 +1,8 @@
  OASISFormat:      0.4
 -OCamlVersion:     >= 4.02.3
@@ -8,14 +20,48 @@ diff -uNr ppx_core-113.33.00/_oasis ppx_core-113.33.00+4.03/_oasis
  FindlibVersion:   >= 1.3.2
  Name:             ppx_core
 -Version:          113.33.00
-+Version:          113.33.00+4.03
++Version:          113.33.01+4.03
  Synopsis:         Standard library for ppx rewriters
  Authors:          Jane Street Group, LLC <opensource@janestreet.com>
  Copyrights:       (C) 2015-2016 Jane Street Group LLC <opensource@janestreet.com>
-diff -uNr ppx_core-113.33.00/src/ast_builder.ml ppx_core-113.33.00+4.03/src/ast_builder.ml
+diff -uNr ppx_core-113.33.00/opam ppx_core-113.33.01+4.03/opam
+--- ppx_core-113.33.00/opam	2016-03-18 12:08:01.000000000 +0100
++++ ppx_core-113.33.01+4.03/opam	2016-04-18 12:27:13.000000000 +0200
+@@ -14,4 +14,4 @@
+   "ocamlfind"  {build & >= "1.3.2"}
+   "ppx_tools"  {>= "0.99.3"}
+ ]
+-available: [ ocaml-version >= "4.02.3" ]
++available: [ ocaml-version >= "4.03.0" ]
+diff -uNr ppx_core-113.33.00/src/ast_builder_intf.ml ppx_core-113.33.01+4.03/src/ast_builder_intf.ml
+--- ppx_core-113.33.00/src/ast_builder_intf.ml	2016-03-09 16:44:53.000000000 +0100
++++ ppx_core-113.33.01+4.03/src/ast_builder_intf.ml	2016-04-18 12:14:21.000000000 +0200
+@@ -44,6 +44,11 @@
+   val elist : (expression list -> expression) with_loc
+   val plist : (pattern    list -> pattern   ) with_loc
+ 
++  val pstr_value_list :
++    loc:Location.t -> Asttypes.rec_flag -> value_binding list -> structure_item list
++  (** [pstr_value_list ~loc rf vbs] = [pstr_value ~loc rf vbs] if [vbs <> []], [[]]
++      otherwise. *)
++
+   val nonrec_type_declaration :
+     (name:string Location.loc
+      -> params:(core_type * Asttypes.variance) list
+diff -uNr ppx_core-113.33.00/src/ast_builder.ml ppx_core-113.33.01+4.03/src/ast_builder.ml
 --- ppx_core-113.33.00/src/ast_builder.ml	2016-03-09 16:44:53.000000000 +0100
-+++ ppx_core-113.33.00+4.03/src/ast_builder.ml	2016-03-23 17:20:19.000000000 +0100
-@@ -28,21 +28,21 @@
++++ ppx_core-113.33.01+4.03/src/ast_builder.ml	2016-04-18 12:14:21.000000000 +0200
+@@ -22,27 +22,31 @@
+ 
+   include Ast_builder_generated.M
+ 
++  let pstr_value_list ~loc rec_flag = function
++    | [] -> []
++    | vbs -> [pstr_value ~loc rec_flag vbs]
++
+   let nonrec_type_declaration ~loc ~name ~params ~cstrs ~kind ~private_ ~manifest =
+     let td = type_declaration ~loc ~name ~params ~cstrs ~kind ~private_ ~manifest in
+     { td with ptype_attributes =
                  ({ txt = "nonrec"; loc }, PStr []) :: td.ptype_attributes }
    ;;
  
@@ -52,7 +98,7 @@ diff -uNr ppx_core-113.33.00/src/ast_builder.ml ppx_core-113.33.00+4.03/src/ast_
  
    let ebool ~loc t = pexp_construct ~loc (Located.lident ~loc (string_of_bool t)) None
    let pbool ~loc t = ppat_construct ~loc (Located.lident ~loc (string_of_bool t)) None
-@@ -77,10 +77,11 @@
+@@ -77,10 +81,11 @@
      | _ -> pexp_apply ~loc e el
    ;;
  
@@ -66,9 +112,18 @@ diff -uNr ppx_core-113.33.00/src/ast_builder.ml ppx_core-113.33.00+4.03/src/ast_
    ;;
  
    let pconstruct cd arg = ppat_construct ~loc:cd.pcd_loc (Located.map_lident cd.pcd_name) arg
-diff -uNr ppx_core-113.33.00/src/ast_pattern.ml ppx_core-113.33.00+4.03/src/ast_pattern.ml
+@@ -111,6 +116,8 @@
+ module Make(Loc : sig val loc : Location.t end) : S = struct
+   include Ast_builder_generated.Make(Loc)
+ 
++  let pstr_value_list = Default.pstr_value_list
++
+   let nonrec_type_declaration ~name ~params ~cstrs ~kind ~private_ ~manifest =
+     Default.nonrec_type_declaration ~loc ~name ~params ~cstrs ~kind ~private_ ~manifest
+   ;;
+diff -uNr ppx_core-113.33.00/src/ast_pattern.ml ppx_core-113.33.01+4.03/src/ast_pattern.ml
 --- ppx_core-113.33.00/src/ast_pattern.ml	2016-03-09 16:44:53.000000000 +0100
-+++ ppx_core-113.33.00+4.03/src/ast_pattern.ml	2016-03-23 17:20:19.000000000 +0100
++++ ppx_core-113.33.01+4.03/src/ast_pattern.ml	2016-04-18 12:14:21.000000000 +0200
 @@ -80,6 +80,13 @@
  
  let ( >>| ) t f = map t ~f
@@ -134,9 +189,9 @@ diff -uNr ppx_core-113.33.00/src/ast_pattern.ml ppx_core-113.33.00+4.03/src/ast_
  
  let attribute (T f1) (T f2) = T (fun ctx loc ((name : _ Location.loc), payload) k ->
    let k = f1 ctx name.loc name.txt k in
-diff -uNr ppx_core-113.33.00/src/ast_pattern.mli ppx_core-113.33.00+4.03/src/ast_pattern.mli
+diff -uNr ppx_core-113.33.00/src/ast_pattern.mli ppx_core-113.33.01+4.03/src/ast_pattern.mli
 --- ppx_core-113.33.00/src/ast_pattern.mli	2016-03-09 16:44:53.000000000 +0100
-+++ ppx_core-113.33.00+4.03/src/ast_pattern.mli	2016-03-23 17:20:19.000000000 +0100
++++ ppx_core-113.33.01+4.03/src/ast_pattern.mli	2016-04-18 12:14:21.000000000 +0200
 @@ -115,6 +115,10 @@
      one. *)
  val alt : ('a, 'b, 'c) t -> ('a, 'b, 'c) t -> ('a, 'b, 'c) t
@@ -168,9 +223,9 @@ diff -uNr ppx_core-113.33.00/src/ast_pattern.mli ppx_core-113.33.00+4.03/src/ast
  
  val attribute : (string, 'a, 'b) t -> (payload, 'b, 'c) t -> (attribute, 'a, 'c) t
  val extension : (string, 'a, 'b) t -> (payload, 'b, 'c) t -> (attribute, 'a, 'c) t
-diff -uNr ppx_core-113.33.00/src/attribute.ml ppx_core-113.33.00+4.03/src/attribute.ml
+diff -uNr ppx_core-113.33.00/src/attribute.ml ppx_core-113.33.01+4.03/src/attribute.ml
 --- ppx_core-113.33.00/src/attribute.ml	2016-03-09 16:44:53.000000000 +0100
-+++ ppx_core-113.33.00+4.03/src/attribute.ml	2016-03-23 17:20:19.000000000 +0100
++++ ppx_core-113.33.01+4.03/src/attribute.ml	2016-04-18 12:14:21.000000000 +0200
 @@ -15,6 +15,10 @@
      ; "ocaml.doc"
      ; "ocaml.text"
@@ -240,15 +295,7 @@ diff -uNr ppx_core-113.33.00/src/attribute.ml ppx_core-113.33.00+4.03/src/attrib
  
  (*
    let pattern : type a b c d. a t
-@@ -435,6 +455,7 @@
-   method! attribute (name, _) =
-     Location.raise_errorf ~loc:name.loc
-       "attribute not expected here, Ppx_core.Std.Attribute needs updating!"
-+      name.txt
- 
-   method private check_node : type a. a Context.t -> a -> a = fun context node ->
-     let attrs = Context.get_attributes context node in
-@@ -480,6 +501,7 @@
+@@ -480,6 +500,7 @@
    method! module_expr             x = super#module_expr             (self#check_node Context.Module_expr             x)
    method! value_binding           x = super#value_binding           (self#check_node Context.Value_binding           x)
    method! module_binding          x = super#module_binding          (self#check_node Context.Module_binding          x)
@@ -256,9 +303,9 @@ diff -uNr ppx_core-113.33.00/src/attribute.ml ppx_core-113.33.00+4.03/src/attrib
  
    method! class_field x =
      let x = self#check_node              Context.Class_field x in
-diff -uNr ppx_core-113.33.00/src/attribute.mli ppx_core-113.33.00+4.03/src/attribute.mli
+diff -uNr ppx_core-113.33.00/src/attribute.mli ppx_core-113.33.01+4.03/src/attribute.mli
 --- ppx_core-113.33.00/src/attribute.mli	2016-03-09 16:44:53.000000000 +0100
-+++ ppx_core-113.33.00+4.03/src/attribute.mli	2016-03-23 17:20:19.000000000 +0100
++++ ppx_core-113.33.01+4.03/src/attribute.mli	2016-04-18 12:14:21.000000000 +0200
 @@ -42,6 +42,7 @@
    val pstr_eval               : structure_item          t
    val pstr_extension          : structure_item          t
@@ -267,9 +314,9 @@ diff -uNr ppx_core-113.33.00/src/attribute.mli ppx_core-113.33.00+4.03/src/attri
  end
  
  (** [declare fully_qualified_name context payload_pattern k] declares an attribute. [k] is
-diff -uNr ppx_core-113.33.00/src/common.ml ppx_core-113.33.00+4.03/src/common.ml
+diff -uNr ppx_core-113.33.00/src/common.ml ppx_core-113.33.01+4.03/src/common.ml
 --- ppx_core-113.33.00/src/common.ml	2016-03-09 16:44:53.000000000 +0100
-+++ ppx_core-113.33.00+4.03/src/common.ml	2016-03-23 17:20:19.000000000 +0100
++++ ppx_core-113.33.01+4.03/src/common.ml	2016-04-18 12:14:21.000000000 +0200
 @@ -16,7 +16,7 @@
    List.fold_right
      (fun (tp, _variance) acc ->
@@ -298,9 +345,9 @@ diff -uNr ppx_core-113.33.00/src/common.ml ppx_core-113.33.00+4.03/src/common.ml
    | PTyp t           -> t.ptyp_loc
    | PPat (x, None)   -> x.ppat_loc
    | PPat (x, Some e) -> { x.ppat_loc with loc_end = e.pexp_loc.loc_end }
-diff -uNr ppx_core-113.33.00/src/gen/common.ml ppx_core-113.33.00+4.03/src/gen/common.ml
+diff -uNr ppx_core-113.33.00/src/gen/common.ml ppx_core-113.33.01+4.03/src/gen/common.ml
 --- ppx_core-113.33.00/src/gen/common.ml	2016-03-09 16:44:53.000000000 +0100
-+++ ppx_core-113.33.00+4.03/src/gen/common.ml	2016-03-23 17:20:19.000000000 +0100
++++ ppx_core-113.33.01+4.03/src/gen/common.ml	2016-04-18 12:14:21.000000000 +0200
 @@ -70,8 +70,13 @@
    | Type_variant cds ->
      List.fold_left cds ~init:acc
@@ -317,9 +364,9 @@ diff -uNr ppx_core-113.33.00/src/gen/common.ml ppx_core-113.33.00+4.03/src/gen/c
    | Type_abstract ->
      match td.type_manifest with
      | None -> acc
-diff -uNr ppx_core-113.33.00/src/gen/gen_ast_builder.ml ppx_core-113.33.00+4.03/src/gen/gen_ast_builder.ml
+diff -uNr ppx_core-113.33.00/src/gen/gen_ast_builder.ml ppx_core-113.33.01+4.03/src/gen/gen_ast_builder.ml
 --- ppx_core-113.33.00/src/gen/gen_ast_builder.ml	2016-03-09 16:44:53.000000000 +0100
-+++ ppx_core-113.33.00+4.03/src/gen/gen_ast_builder.ml	2016-03-23 17:20:19.000000000 +0100
++++ ppx_core-113.33.01+4.03/src/gen/gen_ast_builder.ml	2016-04-18 12:14:21.000000000 +0200
 @@ -121,57 +121,60 @@
    open M
  
@@ -442,9 +489,9 @@ diff -uNr ppx_core-113.33.00/src/gen/gen_ast_builder.ml ppx_core-113.33.00+4.03/
          )
      in
  (*    let body =
-diff -uNr ppx_core-113.33.00/src/gen/gen_ast_pattern.ml ppx_core-113.33.00+4.03/src/gen/gen_ast_pattern.ml
+diff -uNr ppx_core-113.33.00/src/gen/gen_ast_pattern.ml ppx_core-113.33.01+4.03/src/gen/gen_ast_pattern.ml
 --- ppx_core-113.33.00/src/gen/gen_ast_pattern.ml	2016-03-09 16:44:53.000000000 +0100
-+++ ppx_core-113.33.00+4.03/src/gen/gen_ast_pattern.ml	2016-03-23 17:20:19.000000000 +0100
++++ ppx_core-113.33.01+4.03/src/gen/gen_ast_pattern.ml	2016-04-18 12:14:21.000000000 +0200
 @@ -157,66 +157,69 @@
    ]
  
@@ -582,9 +629,9 @@ diff -uNr ppx_core-113.33.00/src/gen/gen_ast_pattern.ml ppx_core-113.33.00+4.03/
    in
    [%stri let [%p pvar (Common.function_name_of_path path)] = [%e body]]
  ;;
-diff -uNr ppx_core-113.33.00/src/gen/gen.ml ppx_core-113.33.00+4.03/src/gen/gen.ml
+diff -uNr ppx_core-113.33.00/src/gen/gen.ml ppx_core-113.33.01+4.03/src/gen/gen.ml
 --- ppx_core-113.33.00/src/gen/gen.ml	2016-03-09 16:44:53.000000000 +0100
-+++ ppx_core-113.33.00+4.03/src/gen/gen.ml	2016-03-23 17:20:19.000000000 +0100
++++ ppx_core-113.33.01+4.03/src/gen/gen.ml	2016-04-18 12:14:21.000000000 +0200
 @@ -23,7 +23,7 @@
  
    method apply
