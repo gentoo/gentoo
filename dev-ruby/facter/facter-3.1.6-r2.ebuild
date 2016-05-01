@@ -70,4 +70,5 @@ src_install() {
 		mv "${D}/usr/lib/"* "${D}/usr/lib64/"
 		rmdir "${D}/usr/lib"
 	fi
+	doenvd "${FILESDIR}"/00facterdir
 }
