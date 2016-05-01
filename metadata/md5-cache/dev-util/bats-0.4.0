@@ -7,4 +7,4 @@ LICENSE=MIT
 SLOT=0
 SRC_URI=https://github.com/sstephenson/bats/archive/v0.4.0.tar.gz -> bats-0.4.0.tar.gz
 _eclass_exported_funcs=src_test:- src_install:-
-_md5_=fb3659bc6e64b6b9f9b8505487c1ea1e
+_md5_=3a25cbaca645ee7422847a71fe37d8a1
