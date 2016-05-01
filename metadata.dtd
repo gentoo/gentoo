@@ -3,7 +3,7 @@
 <!ATTLIST catmetadata pkgname CDATA "">
 
 <!-- Metadata for a package -->
-<!ELEMENT pkgmetadata ( (maintainer|natural-name|longdescription|slots|use|upstream)* )>
+<!ELEMENT pkgmetadata ( (maintainer|longdescription|slots|use|upstream)* )>
 <!ATTLIST pkgmetadata pkgname CDATA "">
 
   <!-- One tag for each maintainer of a package, multiple allowed-->
@@ -12,9 +12,6 @@
     Unknown is added to handle <maintainer/>s in <upstream/>s. Using it (or no
     explicit type) for Gentoo maintainers is prohibited. -->
   <!ATTLIST maintainer type (person|project|unknown) "unknown">
-
-  <!-- Natural name for package, example: LibreOffice (for app-office/libreoffice) -->
-  <!ELEMENT natural-name (#PCDATA) >
 
   <!-- A long description of the package in freetext-->
   <!ELEMENT longdescription (#PCDATA|pkg|cat)* >
