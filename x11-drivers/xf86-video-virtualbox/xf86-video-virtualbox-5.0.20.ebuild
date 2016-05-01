@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 inherit eutils linux-mod multilib python-single-r1 versionator toolchain-funcs
@@ -47,9 +47,17 @@ REQUIRED_USE=( "${PYTHON_REQUIRED_USE}" )
 
 BUILD_TARGETS="all"
 BUILD_TARGET_ARCH="${ARCH}"
-MODULE_NAMES="vboxvideo(misc:${WORKDIR}/vboxvideo_drm:${WORKDIR}/vboxvideo_drm)"
-
 S="${WORKDIR}/${MY_P}"
+MODULES_SRC_DIR="${S}/src/VBox/Additions/linux/drm"
+MODULE_NAMES="vboxvideo(misc:${MODULES_SRC_DIR}:${MODULES_SRC_DIR})"
+
+PATCHES=(
+	# Ugly hack to build the opengl part of the video driver
+	"${FILESDIR}/${PN}-2.2.0-enable-opengl.patch"
+
+	# unset useless/problematic checks in configure
+	"${FILESDIR}/${PN}-5.0.0_beta3-configure_checks.patch"
+)
 
 QA_TEXTRELS_x86="usr/lib/VBoxOGL.so"
 
@@ -65,35 +73,27 @@ pkg_setup() {
 }
 
 src_prepare() {
-	# Prepare the vboxvideo_drm sources and Makefile in ${WORKDIR}
-	cp -a "${S}"/src/VBox/Additions/linux/drm "${WORKDIR}/vboxvideo_drm" \
-		|| die "cannot copy vboxvideo_drm directory"
-	cp "${FILESDIR}/${PN}-3-vboxvideo_drm.makefile" \
-		"${WORKDIR}/vboxvideo_drm/Makefile" \
-			|| die "cannot copy vboxvideo_drm Makefile"
-
-	# stupid new header references...
-	for vboxheader in {product,version}-generated.h ; do
-		ln -sf "${S}"/out/linux.${ARCH}/release/${vboxheader} \
-			"${WORKDIR}/vboxvideo_drm/${vboxheader}"
+	# Prepare the vboxvideo_drm Makefiles
+	#cp "${FILESDIR}/Makefile.inc" "${MODULES_SRC_DIR}" || die
+	ln -s Makefile.module.kms "${MODULES_SRC_DIR}/Makefile" || die
+	#sed '/^include.*header/ainclude $(obj)/Makefile.inc' \
+	#	-i "${MODULES_SRC_DIR}/Makefile.module.kms" || die
+	for incfile in Makefile.include.{head,foot}er ; do
+		ln -s "${S}/src/VBox/Installer/linux/${incfile}" \
+			"${MODULES_SRC_DIR}/${incfile}" || die
 	done
 
 	# Remove shipped binaries (kBuild,yasm), see bug #232775
-	rm -rf kBuild/bin tools
+	rm -r kBuild/bin tools || die
 
 	# Disable things unused or splitted into separate ebuilds
-	cp "${FILESDIR}/${PN}-3-localconfig" LocalConfig.kmk || die
+	cp "${FILESDIR}/${PN}-5-localconfig" LocalConfig.kmk || die
 
-	# Ugly hack to build the opengl part of the video driver
-	epatch "${FILESDIR}/${PN}-2.2.0-enable-opengl.patch"
-
-	# unset useless/problematic checks in configure
-	epatch "${FILESDIR}/${PN}-3.2.8-mesa-check.patch" \
-		"${FILESDIR}/${PN}-4-makeself-check.patch" \
-		"${FILESDIR}/${PN}-4-mkisofs-check.patch"
+	default
 
 	# link with lazy on hardened #394757
-	sed -i '/^TEMPLATE_VBOXR3EXE_LDFLAGS.linux/s/$/ -Wl,-z,lazy/' Config.kmk || die
+	sed '/^TEMPLATE_VBOXR3EXE_LDFLAGS.linux/s/$/ -Wl,-z,lazy/' \
+		-i Config.kmk || die
 }
 
 src_configure() {
@@ -118,31 +118,60 @@ src_configure() {
 }
 
 src_compile() {
-	for each in /src/VBox/{Runtime,Additions/common/VBoxGuestLib} \
-		/src/VBox/{GuestHost/OpenGL,Additions/x11/x11stubs,Additions/common/crOpenGL} \
-		/src/VBox/Additions/x11/vboxvideo ; do
-			cd "${S}"${each} || die
-			MAKE="kmk" \
-			emake TOOL_YASM_AS=yasm \
-			VBOX_USE_SYSTEM_XORG_HEADERS=1 \
-			KBUILD_PATH="${S}/kBuild" \
-			KBUILD_VERBOSE=2
+	local targets=()
+
+	targets=(
+		Runtime
+		Additions/common/VBoxGuestLib
+		GuestHost/OpenGL
+		Additions/x11/x11stubs
+		Additions/common/crOpenGL
+		Additions/x11/vboxvideo
+		#Additions/linux/drm
+	)
+
+	for each in ${targets[@]} ; do
+		pushd "${S}"/src/VBox/${each} $>/dev/null || die
+		MAKE="kmk" \
+		emake TOOL_YASM_AS=yasm \
+		VBOX_USE_SYSTEM_XORG_HEADERS=1 \
+		KBUILD_PATH="${S}/kBuild" \
+		KBUILD_VERBOSE=2
+		popd &>/dev/null || die
 	done
 
 	if use dri ; then
+		local objdir="out/linux.${ARCH}/release/obj/vboxvideo_drv_system/src/VBox"
+		ln -s "${S}"/${objdir}/Additions/common/VBoxVideo/HGSMIBase.o \
+			${MODULES_SRC_DIR} || die
+		ln -s "${S}"/${objdir}/GuestHost/HGSMI/HGSMICommon.o \
+			${MODULES_SRC_DIR} || die
+		ln -s "${S}"/${objdir}/GuestHost/HGSMI/HGSMIMemAlloc.o \
+			${MODULES_SRC_DIR} || die
+		ln -s "${S}"/${objdir}/Runtime/common/alloc/heapoffset.o \
+			${MODULES_SRC_DIR} || die
+		ln -s "${S}"/${objdir}/Additions/common/VBoxVideo/Modesetting.o \
+			${MODULES_SRC_DIR} || die
+		ln -s "${S}"/${objdir}/Additions/common/VBoxVideo/VBVABase.o \
+			${MODULES_SRC_DIR} || die
+
 		# Now creating the kernel modules. We must do this _after_
 		# we compiled the user-space tools as we need two of the
 		# automatically generated header files. (>=3.2.0)
+		pushd "${MODULES_SRC_DIR}" &>/dev/null || die
 		linux-mod_src_compile
+		popd &>/dev/null || die
 	fi
 }
 
 src_install() {
 	if use dri; then
+		pushd "${MODULES_SRC_DIR}" &>/dev/null || die
 		linux-mod_src_install
+		popd &>/dev/null || die
 	fi
 
-	cd "${S}/out/linux.${ARCH}/release/bin/additions"
+	cd "${S}/out/linux.${ARCH}/release/bin/additions" || die
 	insinto /usr/$(get_libdir)/xorg/modules/drivers
 	newins vboxvideo_drv_system.so vboxvideo_drv.so
 
