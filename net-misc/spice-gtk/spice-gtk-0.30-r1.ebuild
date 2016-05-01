@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -66,7 +66,7 @@ RDEPEND="
 		>=net-libs/libsoup-2.49.91 )
 "
 DEPEND="${RDEPEND}
-	>=app-emulation/spice-protocol-0.12.10
+	~app-emulation/spice-protocol-0.12.10
 	dev-perl/Text-CSV
 	dev-python/pyparsing[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
