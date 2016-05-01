@@ -220,7 +220,8 @@ src_prepare() {
 	epatch \
 		"${FILESDIR}"/${PN}-1.3.0-do_not_use_sysconf.patch \
 		"${FILESDIR}"/${PN}-1.2.16-fix_paths_in_libvirt-guests_sh.patch \
-		"${FILESDIR}"/${PN}-1.3.1-fix_paths_for_apparmor.patch
+		"${FILESDIR}"/${PN}-1.3.1-fix_paths_for_apparmor.patch \
+		"${FILESDIR}"/${PN}-1.3.4-glibc-2.23.patch
 
 	[[ -n ${BACKPORTS} ]] &&
 		EPATCH_FORCE=yes EPATCH_SUFFIX="patch" \
@@ -229,7 +230,7 @@ src_prepare() {
 	epatch_user
 
 	# Tweak the init script:
-	cp "${FILESDIR}/libvirtd.init-r15" "${S}/libvirtd.init" || die
+	cp "${FILESDIR}/libvirtd.init-r16" "${S}/libvirtd.init" || die
 	sed -e "s/USE_FLAG_FIREWALLD/$(usex firewalld 'need firewalld' '')/" \
 		-e "s/USE_FLAG_AVAHI/$(usex avahi avahi-daemon '')/" \
 		-e "s/USE_FLAG_ISCSI/$(usex iscsi iscsid '')/" \
@@ -343,7 +344,7 @@ src_install() {
 	systemd_newtmpfilesd "${FILESDIR}"/libvirtd.tmpfiles.conf libvirtd.conf
 
 	newinitd "${S}/libvirtd.init" libvirtd || die
-	newinitd "${FILESDIR}/libvirt-guests.init-r1" libvirt-guests || die
+	newinitd "${FILESDIR}/libvirt-guests.init-r2" libvirt-guests || die
 	newinitd "${FILESDIR}/virtlockd.init-r1" virtlockd || die
 	newinitd "${FILESDIR}/virtlogd.init-r1" virtlogd || die
 

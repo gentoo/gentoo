@@ -221,7 +221,8 @@ src_prepare() {
 		"${FILESDIR}"/${PN}-1.3.0-do_not_use_sysconf.patch \
 		"${FILESDIR}"/${PN}-1.2.16-fix_paths_in_libvirt-guests_sh.patch \
 		"${FILESDIR}"/${PN}-1.3.1-fix_paths_for_apparmor.patch \
-		"${FILESDIR}"/${PN}-1.2.21-avoid_deprecated_pc_file.patch
+		"${FILESDIR}"/${PN}-1.2.21-avoid_deprecated_pc_file.patch \
+		"${FILESDIR}"/${P}-glibc-2.23.patch
 
 	[[ -n ${BACKPORTS} ]] &&
 		EPATCH_FORCE=yes EPATCH_SUFFIX="patch" \
