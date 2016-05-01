@@ -8,11 +8,11 @@ PYTHON_COMPAT=(python{2_7,3_4,3_5})
 if [[ ${PV} == 9999* ]]; then
 	EGIT_REPO_URI="https://github.com/letsencrypt/letsencrypt.git"
 	inherit git-r3
-	KEYWORDS=""
+	KEYWORDS="~arm"
 	S=${WORKDIR}/${P}/${PN}
 else
 	SRC_URI="https://github.com/letsencrypt/letsencrypt/archive/v${PV}.tar.gz -> letsencrypt-${PV}.tar.gz"
-	KEYWORDS="~amd64"
+	KEYWORDS="~amd64 ~arm"
 	S=${WORKDIR}/letsencrypt-${PV}/acme
 fi
 
