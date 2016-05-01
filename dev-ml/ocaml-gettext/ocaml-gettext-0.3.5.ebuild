@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit findlib
+inherit findlib eutils
 
 DESCRIPTION="Provides support for internationalization of OCaml program"
 HOMEPAGE="http://forge.ocamlcore.org/projects/ocaml-gettext"
@@ -24,6 +24,10 @@ RDEPEND=">=dev-lang/ocaml-3.12.1:=
 DEPEND="${RDEPEND}
 	doc? ( app-text/docbook-xsl-stylesheets dev-libs/libxslt )
 	test? ( dev-ml/ounit )"
+
+src_prepare() {
+	has_version '>=dev-lang/ocaml-4.03' && epatch "${FILESDIR}/oc43.patch"
+}
 
 src_configure() {
 	econf \
