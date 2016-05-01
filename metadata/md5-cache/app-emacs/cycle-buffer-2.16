@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
+DEPEND=>=virtual/emacs-23
+DESCRIPTION=Select buffer by cycling through
+EAPI=6
+HOMEPAGE=http://www.emacswiki.org/emacs/cycle-buffer.el
+KEYWORDS=~amd64
+LICENSE=public-domain
+RDEPEND=>=virtual/emacs-23
+SLOT=0
+SRC_URI=https://enise.org/users/victor/share/distfiles/cycle-buffer-2.16.el.xz
+_eclass_exported_funcs=pkg_postrm:elisp pkg_postinst:elisp pkg_setup:elisp src_unpack:elisp src_prepare:elisp src_configure:elisp src_compile:- src_install:elisp
+_eclasses_=elisp	7e36316fe822639d5a29fa10d5529eb9	elisp-common	9f56c4e9bf1282dbfc2a5a09e1124e74
+_md5_=b922cc1845b0cbe67d26efc477bfe97d

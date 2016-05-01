@@ -1091,6 +1091,7 @@ app-emacs/apel 10.8-r1: A Portable Emacs Library is a library for making portabl
 app-emacs/auctex 11.87-r1 11.88 11.89: Extended support for (La)TeX, Texinfo and BibTeX files
 app-emacs/auto-complete 1.3.1: Auto-complete package
 app-emacs/autoconf-mode 2.69: Emacs major modes for editing autoconf and autotest input
+app-emacs/basic-toolkit 0.3: Basic edit toolkit
 app-emacs/bbdb 2.35-r1 3.1.2: The Insidious Big Brother Database
 app-emacs/binclock 1.7-r1: Display the current time using a binary clock
 app-emacs/bison-mode 0.3: Emacs major mode for Bison, Yacc and Lex grammars
@@ -1100,6 +1101,7 @@ app-emacs/bongo 20110621: Buffer-oriented media player for Emacs
 app-emacs/boxquote 1.23: Quote text with a semi-box
 app-emacs/browse-kill-ring 1.3 1.3c: An improved interface to kill-ring
 app-emacs/bubblet 0.74-r1: A bubble-popping game
+app-emacs/buffer-extension 0.1: Some enhanced functions for buffer manipulate
 app-emacs/calfw 1.3: A calendar framework for Emacs
 app-emacs/chess 2.0_beta6-r2 2.0.4: A chess client and library for Emacs
 app-emacs/circe 1.3: A great IRC client for Emacs
@@ -1114,6 +1116,7 @@ app-emacs/crypt++ 2.92 2.94_pre20080430: Handle all sorts of compressed and encr
 app-emacs/csharp-mode 0.7.0-r1: A derived Emacs mode implementing most of the C# rules
 app-emacs/css-mode 0.11-r1: A major mode for editing Cascading Style Sheets (CSS)
 app-emacs/csv-mode 1.50: A major mode for editing comma-separated value files
+app-emacs/cycle-buffer 2.16: Select buffer by cycling through
 app-emacs/d-mode 2.0.6: Emacs major mode for editing D code
 app-emacs/dash 2.12.0 2.12.1: A modern list library for Emacs
 app-emacs/ddskk 14.3 14.4 15.1: One Japanese input methods on Emacs
@@ -1222,6 +1225,7 @@ app-emacs/qwerty 1.1: Switch between QWERTY and DVORAK without changing the cons
 app-emacs/redo+ 1.19: Redo/undo system for Emacs
 app-emacs/regress 1.5.1: Regression test harness for Emacs Lisp code
 app-emacs/remember 2.0: Simplify writing short notes in emacs
+app-emacs/revive 2.23: Resume Emacs
 app-emacs/rfcview 0.13: An Emacs mode that reformats IETF RFCs for display
 app-emacs/riece 8.0.0 9.0.0: A redesign of Liece IRC client
 app-emacs/rnc-mode 1.0_beta3: An Emacs mode for editing Relax NG compact schema files
@@ -1263,6 +1267,7 @@ app-emacs/wanderlust 2.14.0-r6 2.15.9_p20130619: Yet Another Message Interface o
 app-emacs/wgrep 2.1.10: Writable grep buffer and apply the changes to files
 app-emacs/whine 20091222: Complaint generator for GNU Emacs
 app-emacs/wikipedia-mode 0.5-r1: Mode for editing Wikipedia articles off-line
+app-emacs/windows 2.49: Window manager for GNU Emacs
 app-emacs/with-editor 2.5.0-r1 2.5.0-r2: Use the Emacsclient as the $EDITOR of child processes
 app-emacs/xclip 1.3: Emacs Interface to XClip
 app-emacs/xrdb-mode 3.0: An Emacs major mode for editing X resource database files

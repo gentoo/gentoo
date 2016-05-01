@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
+DEPEND=>=virtual/emacs-23
+DESCRIPTION=Resume Emacs
+EAPI=6
+HOMEPAGE=http://www.gentei.org/~yuuji/software/
+KEYWORDS=~amd64
+LICENSE=yuuji
+RDEPEND=>=virtual/emacs-23
+SLOT=0
+SRC_URI=https://enise.org/users/victor/share/distfiles/revive-2.23.el.xz
+_eclass_exported_funcs=pkg_postrm:elisp pkg_postinst:elisp pkg_setup:elisp src_unpack:elisp src_prepare:elisp src_configure:elisp src_compile:- src_install:elisp
+_eclasses_=elisp	7e36316fe822639d5a29fa10d5529eb9	elisp-common	9f56c4e9bf1282dbfc2a5a09e1124e74
+_md5_=2380d7429ab0fa397470a8dd167ff633
