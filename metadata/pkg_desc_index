@@ -1288,6 +1288,7 @@ app-emulation/crossover-bin 12.5.0-r2 12.5.1-r2 13.0.0-r2 13.0.1-r2 13.1.0-r2 13
 app-emulation/crossover-office-bin 6.0.0 6.0.1 6.1.0 6.2.0: simplified/streamlined version of wine with commercial support
 app-emulation/crossover-office-pro-bin 5.0.0 5.0.1 5.0.3 6.0.0 6.1.0 6.2.0 7.0.2 7.1.0 8.0.0 9.0.0 9.0.1 9.1.0 9.2.0: simplified/streamlined version of wine with commercial support
 app-emulation/dinero 4.7-r1: Cache simulator
+app-emulation/diskimage-builder 1.15.0: Golden Disk Image builder.
 app-emulation/dlx 1.0.0 1.0.0-r1: DLX Simulator
 app-emulation/docker 1.11.0 9999: The core functions you need to create Docker images and run Docker containers
 app-emulation/docker-compose 1.5.2 1.6.2 1.7.0_rc1 1.7.0: Multi-container orchestration for Docker
@@ -7025,6 +7026,7 @@ dev-python/deform 0.9.8 0.9.9: Another form generation library
 dev-python/defusedxml 0.4.1-r1: XML bomb protection for Python stdlib modules, an xml serialiser
 dev-python/demjson 2.2.2 2.2.3 2.2.4: encoder, decoder, and lint/validator for JSON (JavaScript Object Notation) compliant with RFC 4627
 dev-python/dexml 0.5.1: Dead-simple Object-XML mapper for Python
+dev-python/dib-utils 0.0.8: Standalone tools related to diskimage-builder.
 dev-python/dicttoxml 1.5.6 1.6.6: Converts a Python dictionary or other ata type to a valid XML string
 dev-python/diff-match-patch 20121119: Diff, match and patch algorithms for plain text
 dev-python/dill 0.2.5: Serialize all of python (almost)
