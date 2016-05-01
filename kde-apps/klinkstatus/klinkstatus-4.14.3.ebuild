@@ -11,7 +11,7 @@ inherit kde4-meta
 
 DESCRIPTION="KDE web development - link validity checker"
 HOMEPAGE="https://www.kde.org/applications/development/klinkstatus/"
-KEYWORDS="amd64 ~arm ppc ppc64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm ~ppc ~ppc64 x86 ~amd64-linux ~x86-linux"
 IUSE="debug tidy"
 
 DEPEND="
