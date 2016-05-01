@@ -4,7 +4,7 @@
 
 EAPI=5
 
-PYTHON_COMPAT=( python{2_7,3_4} )
+PYTHON_COMPAT=( python2_7 python3_4 )
 
 inherit eutils python-any-r1
 
@@ -27,11 +27,10 @@ RDEPEND="
 	>=x11-libs/pixman-0.17.7[static-libs(+)?]
 	!libressl? ( dev-libs/openssl:0[static-libs(+)?] )
 	libressl? ( dev-libs/libressl[static-libs(+)?] )
-	smartcard? ( >=app-emulation/libcacard-0.1.2 )
 	sasl? ( dev-libs/cyrus-sasl[static-libs(+)?] )"
 
 DEPEND="
-	>=app-emulation/spice-protocol-0.12.10
+	~app-emulation/spice-protocol-0.12.11
 	virtual/pkgconfig
 	$(python_gen_any_dep '
 		>=dev-python/pyparsing-1.5.6-r2[${PYTHON_USEDEP}]

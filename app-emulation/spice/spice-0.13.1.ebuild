@@ -4,7 +4,7 @@
 
 EAPI=5
 
-PYTHON_COMPAT=( python2_7 python3_4 )
+PYTHON_COMPAT=( python{2_7,3_4} )
 
 inherit eutils python-any-r1
 
@@ -14,7 +14,7 @@ SRC_URI="http://spice-space.org/download/releases/${P}.tar.bz2"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="libressl sasl smartcard static-libs"
 
 # the libspice-server only uses the headers of libcacard
@@ -27,10 +27,11 @@ RDEPEND="
 	>=x11-libs/pixman-0.17.7[static-libs(+)?]
 	!libressl? ( dev-libs/openssl:0[static-libs(+)?] )
 	libressl? ( dev-libs/libressl[static-libs(+)?] )
+	smartcard? ( >=app-emulation/libcacard-0.1.2 )
 	sasl? ( dev-libs/cyrus-sasl[static-libs(+)?] )"
 
 DEPEND="
-	~app-emulation/spice-protocol-0.12.10
+	~app-emulation/spice-protocol-0.12.11
 	virtual/pkgconfig
 	$(python_gen_any_dep '
 		>=dev-python/pyparsing-1.5.6-r2[${PYTHON_USEDEP}]
@@ -52,8 +53,6 @@ pkg_setup() {
 # * opengl support is currently broken
 
 src_prepare() {
-	epatch "${FILESDIR}/0.11.0-gold.patch"
-
 	epatch_user
 }
 
