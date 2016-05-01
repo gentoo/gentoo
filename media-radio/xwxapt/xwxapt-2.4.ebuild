@@ -1,14 +1,14 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=5
 
 inherit autotools
 
 DESCRIPTION="GTK+ linux weather satellite APT image decoder software"
-HOMEPAGE="http://5b4az.chronos.org.uk/pages/apt.html"
-SRC_URI="http://5b4az.chronos.org.uk/pkg/apt/${PN}/${P}.tar.bz2"
+HOMEPAGE="http://www.qsl.net/5b4az/pages/apt.html"
+SRC_URI="http://www.qsl.net/5b4az/pkg/apt/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -22,8 +22,6 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	sys-devel/gettext
 	virtual/pkgconfig"
-
-S=${WORKDIR}/${PN}
 
 src_prepare() {
 	# create missing mkinstalldir and prepare package
