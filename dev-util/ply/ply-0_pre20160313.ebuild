@@ -39,7 +39,7 @@ src_configure() {
 		# create a symlink copy of the source tree so that we are free
 		# to clean things up as needed.
 		kerneldir_orig=${KERNEL_DIR}
-		cp -sR "${kerneldir_orig}" "${T}/kerneldir" || die
+		cp -sR "$(realpath "${kerneldir_orig}")" "${T}/kerneldir" || die
 		export KERNEL_DIR="${T}/kerneldir"
 		pushd "${KERNEL_DIR}" || die
 		# avoid sandbox violation for scripts/kconfig/.conf.cmd
