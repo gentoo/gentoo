@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure test
+DEPEND==dev-lang/nqp-2016.04:=[moar] >=dev-lang/perl-5.10
+DESCRIPTION=A compiler for the Perl 6 programming language
+EAPI=6
+HOMEPAGE=http://rakudo.org
+IUSE=test
+KEYWORDS=~amd64 ~x86
+LICENSE=Artistic-2
+RDEPEND==dev-lang/nqp-2016.04:=[moar]
+SLOT=0
+SRC_URI=http://rakudo.org/downloads/rakudo/rakudo-2016.04.tar.gz
+_eclass_exported_funcs=src_configure:- src_test:-
+_md5_=7f150eb971f471274d9c6a7ac237b555
