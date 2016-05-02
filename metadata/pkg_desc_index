@@ -9942,7 +9942,7 @@ dev-vcs/hgsvn 0.2.3-r1: A set of scripts to work locally on Subversion checkouts
 dev-vcs/hgview 1.9.0: A Mercurial interactive history viewer
 dev-vcs/hub 2.2.0-r1 2.2.2 2.2.3 2.2.3-r1: Command-line wrapper for git that makes you better at GitHub
 dev-vcs/kdesvn 1.6.0-r1 1.7.0: A frontend to the subversion vcs
-dev-vcs/mercurial 3.3.2 3.3.3 3.4.2 3.5.2 3.6.3 3.7.3 9999: Scalable distributed SCM
+dev-vcs/mercurial 3.3.2 3.7.3 3.8.1 9999: Scalable distributed SCM
 dev-vcs/mercurial-server 1.1 1.2 9999: Mercurial authentication and authorization tools
 dev-vcs/monotone 1.0-r4: Monotone Distributed Version Control System
 dev-vcs/mr 1.20150503 1.20160123: Multiple Repository management tool
@@ -9966,7 +9966,7 @@ dev-vcs/svnmailer 1.0.9-r1: A subversion commit notifier written in Python
 dev-vcs/tig 2.1.1: text mode interface for git
 dev-vcs/tkcvs 8.2.2 8.2.3: Tcl/Tk-based graphical interface to CVS with Subversion support
 dev-vcs/topgit 0.9: A different patch queue manager
-dev-vcs/tortoisehg 3.3.2 3.3.3 3.4.2 3.5.2 3.6.3 3.7.2 3.7.3 9999: Set of graphical tools for Mercurial
+dev-vcs/tortoisehg 3.3.2 3.7.3 9999: Set of graphical tools for Mercurial
 dev-vcs/vcsh 1.20150502 1.20151229: Manage config files in $HOME via fake bare git repositories
 dev-vcs/veracity 1.0.0.10517 1.1.0.10565: A modern and featureful DVCS (distributed version control system)
 games-action/0verkill 0.16-r3: a bloody 2D action deathmatch-like game in ASCII-ART
@@ -13551,7 +13551,7 @@ media-video/tcmplex-panteltje 0.4.7: audio video multiplexer for 8 audio channel
 media-video/tivodecode 0.2_pre4: TiVo File Decoder
 media-video/totem 3.16.4 3.18.1: Media player for GNOME
 media-video/tovid 0.34 0.34_p20120123 0.35.2: A collection of DVD authoring tools
-media-video/transcode 1.1.7-r1 1.1.7-r2 1.1.7-r3: A suite of utilities for transcoding video and audio codecs in different containers
+media-video/transcode 1.1.7-r3: A suite of utilities for transcoding video and audio codecs in different containers
 media-video/tsmuxer 1.10.6-r1 2.6.11: Utility to create and demux TS and M2TS files
 media-video/ttcut 0.19.6-r3: Tool for cutting MPEG files especially for removing commercials
 media-video/ushare 1.1a-r5 1.1a-r6 1.1a-r8: uShare is a UPnP (TM) A/V & DLNA Media Server
