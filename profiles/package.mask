@@ -30,6 +30,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Lars Wendler <polynomial-c@gentoo.org> (2 May 2016)
+# Broken reverse deps. At least one header file has been moved around.
+>=media-gfx/imagemagick-7.0.1.0
+
 # Lars Wendler <polynomial-c@gentoo.org> (1 May 2016)
 # Broken custom makefile in x11-drivers/xf86-video-virtualbox
 # Fails to compile since version 5.0.18. No soluton yet. This is a Gentoo
