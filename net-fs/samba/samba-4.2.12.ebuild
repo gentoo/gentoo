@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=6
+EAPI=5
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE='threads(+),xml(+)'
 
@@ -15,9 +15,9 @@ SRC_PATH="stable"
 [[ ${PV} = *_rc* ]] && SRC_PATH="rc"
 
 SRC_URI="mirror://samba/${SRC_PATH}/${MY_P}.tar.gz
-	https://dev.gentoo.org/~axs/distfiles/samba-disable-python-patches-4.4.2.tar.xz"
-KEYWORDS="~amd64 ~hppa ~x86"
-[[ ${PV} = *_rc* ]] && KEYWORDS="~hppa"
+	https://dev.gentoo.org/~polynomial-c/samba-disable-python-patches-4.2.12.tar.xz"
+[[ ${PV} = *_rc* ]] || \
+KEYWORDS="~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 
 DESCRIPTION="Samba Suite Version 4"
 HOMEPAGE="http://www.samba.org/"
@@ -25,7 +25,7 @@ LICENSE="GPL-3"
 
 SLOT="0"
 
-IUSE="acl addc addns ads avahi client cluster cups dmapi fam gnutls iprint
+IUSE="acl addc addns ads aio avahi client cluster cups dmapi fam gnutls iprint
 ldap pam quota selinux syslog +system-mitkrb5 systemd test winbind"
 
 MULTILIB_WRAPPED_HEADERS=(
@@ -48,17 +48,21 @@ CDEPEND="${PYTHON_DEPS}
 	sys-libs/readline:=
 	virtual/libiconv
 	dev-python/subunit[${PYTHON_USEDEP},${MULTILIB_USEDEP}]
+	>=net-libs/socket_wrapper-1.1.2[${MULTILIB_USEDEP}]
 	sys-apps/attr[${MULTILIB_USEDEP}]
 	sys-libs/libcap
-	>=sys-libs/ldb-1.1.26[${MULTILIB_USEDEP}]
+	>=sys-libs/ldb-1.1.24[${MULTILIB_USEDEP}]
 	sys-libs/ncurses:0=[${MULTILIB_USEDEP}]
-	>=sys-libs/talloc-2.1.6[python,${PYTHON_USEDEP},${MULTILIB_USEDEP}]
-	>=sys-libs/tdb-1.3.8[python,${PYTHON_USEDEP},${MULTILIB_USEDEP}]
-	>=sys-libs/tevent-0.9.28[${MULTILIB_USEDEP}]
+	>=sys-libs/nss_wrapper-1.0.2[${MULTILIB_USEDEP}]
+	>=sys-libs/ntdb-1.0[python,${PYTHON_USEDEP},${MULTILIB_USEDEP}]
+	>=sys-libs/talloc-2.1.2[python,${PYTHON_USEDEP},${MULTILIB_USEDEP}]
+	>=sys-libs/tdb-1.3.6[python,${PYTHON_USEDEP},${MULTILIB_USEDEP}]
+	>=sys-libs/tevent-0.9.25[${MULTILIB_USEDEP}]
+	>=sys-libs/uid_wrapper-1.0.1[${MULTILIB_USEDEP}]
 	sys-libs/zlib[${MULTILIB_USEDEP}]
-	virtual/pam
 	acl? ( virtual/acl )
 	addns? ( net-dns/bind-tools[gssapi] )
+	aio? ( dev-libs/libaio )
 	cluster? ( !dev-db/ctdb )
 	cups? ( net-print/cups )
 	dmapi? ( sys-apps/dmapi )
@@ -66,6 +70,7 @@ CDEPEND="${PYTHON_DEPS}
 	gnutls? ( dev-libs/libgcrypt:0
 		>=net-libs/gnutls-1.4.0 )
 	ldap? ( net-nds/openldap[${MULTILIB_USEDEP}] )
+	pam? ( virtual/pam )
 	system-mitkrb5? ( app-crypt/mit-krb5[${MULTILIB_USEDEP}] )
 	!system-mitkrb5? ( >=app-crypt/heimdal-1.5[-ssl,${MULTILIB_USEDEP}] )
 	systemd? ( sys-apps/systemd:0= )"
@@ -84,7 +89,7 @@ S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-4.2.3-heimdal_compilefix.patch"
-	"${FILESDIR}/${PN}-4.4.0-pam.patch"
+	"${FILESDIR}/${PN}-4.2.7-pam.patch"
 )
 
 CONFDIR="${FILESDIR}/$(get_version_component_range 1-2)"
@@ -95,17 +100,33 @@ SHAREDMODS=""
 
 pkg_setup() {
 	python-single-r1_pkg_setup
+	if use aio ; then
+		if ! linux_config_exists || ! linux_chkconfig_present AIO; then
+			ewarn "You must enable AIO support in your kernel config, "
+			ewarn "to be able to support asynchronous I/O. "
+			ewarn "You can find it at"
+			ewarn
+			ewarn "General Support"
+			ewarn " Enable AIO support "
+			ewarn
+			ewarn "and recompile your kernel..."
+		fi
+	fi
 	if use cluster ; then
 		SHAREDMODS="${SHAREDMODS}idmap_rid,idmap_tdb2,idmap_ad"
 	fi
 }
 
 src_prepare() {
-	default
+	epatch ${PATCHES[@]}
 
 	# install the patches from tarball(s)
-	eapply "${WORKDIR}/patches/"
+	EPATCH_SUFFIX="patch" \
+	EPATCH_FORCE="yes" \
+	epatch "${WORKDIR}/patches"
 
+	# Allow user patches
+	epatch_user
 	multilib_copy_sources
 }
 
@@ -131,6 +152,7 @@ multilib_src_configure() {
 			$(use_with addns dnsupdate)
 			$(use_with ads)
 			$(usex ads '--with-shared-modules=idmap_ad' '')
+			$(use_with aio aio-support)
 			$(use_enable avahi)
 			$(use_with cluster cluster-support)
 			$(use_enable cups)
@@ -140,6 +162,7 @@ multilib_src_configure() {
 			$(use_enable iprint)
 			$(use_with ldap)
 			$(use_with pam)
+			$(use_with pam pam_smbpass)
 			$(usex pam "--with-pammodulesdir=/$(get_libdir)/security" '')
 			$(use_with quota quotas)
 			$(use_with syslog)
@@ -155,6 +178,7 @@ multilib_src_configure() {
 			--without-ad-dc
 			--without-dnsupdate
 			--without-ads
+			--without-aio-support
 			--disable-avahi
 			--without-cluster-support
 			--disable-cups
@@ -164,6 +188,7 @@ multilib_src_configure() {
 			--disable-iprint
 			$(use_with ldap)
 			--without-pam
+			--without-pam_smbpass
 			--without-quotas
 			--without-syslog
 			--without-systemd
