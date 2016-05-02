@@ -2,9 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
+EAPI=6
 
-MODULE_AUTHOR=OLLY
+DIST_AUTHOR=OLLY
 inherit perl-module toolchain-funcs versionator
 
 VERSION=$(get_version_component_range 1-3)
@@ -12,18 +12,19 @@ VERSION=$(get_version_component_range 1-3)
 SRC_URI+=" http://oligarchy.co.uk/xapian/${VERSION}/${P}.tar.gz"
 DESCRIPTION="Perl XS frontend to the Xapian C++ search library"
 
-LICENSE="|| ( Artistic GPL-1 GPL-2 GPL-3 )"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
-IUSE="examples"
+KEYWORDS="~amd64 ~x86"
+IUSE="examples test"
 
 RDEPEND="dev-libs/xapian:0/1.2.22
 	!dev-libs/xapian-bindings[perl]"
 DEPEND="${RDEPEND}
-	dev-perl/Module-Build"
+	virtual/perl-ExtUtils-MakeMaker
+	test? ( dev-perl/Devel-Leak )
+"
 
-SRC_TEST=skip
-# missing dependencies; fixed in -r1
+DIST_TEST=do
+# parallel fails sometimes...
 
 myconf="CXX=$(tc-getCXX) CXXFLAGS=${CXXFLAGS}"
 
