@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
@@ -19,7 +19,7 @@ IUSE=""
 
 RDEPEND="
 	dev-python/pycairo[${PYTHON_USEDEP}]
-	media-gfx/imagemagick
+	media-gfx/imagemagick:=
 	media-libs/lcms:2
 	dev-python/pillow[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
@@ -33,8 +33,10 @@ PATCHES=(
 	)
 
 python_prepare_all() {
+	default
+
 	local wand
-	wand=$(pkg-config --libs Wand | sed -e "s:^ *::g" -e "s: *$::g" -e "s:-l:\':g" -e "s: :',:g" -e "s:$:':g" -e "s:,'$::g")
+	wand=$(pkg-config --libs MagickWand | sed -e "s:^ *::g" -e "s: *$::g" -e "s:-l:\':g" -e "s: :',:g" -e "s:$:':g" -e "s:,'$::g")
 
 	distutils-r1_python_prepare_all
 
