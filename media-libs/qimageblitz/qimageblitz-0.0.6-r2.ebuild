@@ -27,6 +27,13 @@ PATCHES=(
 	"${FILESDIR}/${P}-cmake.patch"
 )
 
+src_prepare() {
+	cmake-utils_src_prepare
+
+	# bug 581824: use system find module for Qt4
+	rm -f cmake/modules/FindQt4.cmake || die
+}
+
 src_configure() {
 	local mycmakeargs=(
 		-DHAVE_ALTIVEC=$(usex altivec)
