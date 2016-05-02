@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install test unpack
+DEPEND=>=dev-lang/go-1.4.2:=
+DESCRIPTION=Replicated SQLite using the Raft consensus protocol
+EAPI=5
+HOMEPAGE=https://github.com/rqlite/rqlite http://www.philipotoole.com/tag/rqlite/
+KEYWORDS=~amd64
+LICENSE=MIT
+SLOT=0/3.0.1
+SRC_URI=https://github.com/rqlite/rqlite/archive/v3.0.1.tar.gz -> rqlite-3.0.1.tar.gz https://github.com/armon/go-metrics/archive/345426c77237ece5dab0e1605c3e4b35c3f54757.tar.gz -> go-metrics-345426c77237ece5dab0e1605c3e4b35c3f54757.tar.gz https://github.com/boltdb/bolt/archive/ee4a0888a9abe7eefe5a0992ca4cb06864839873.tar.gz -> bolt-ee4a0888a9abe7eefe5a0992ca4cb06864839873.tar.gz https://github.com/hashicorp/go-msgpack/archive/fa3f63826f7c23912c15263591e65d54d080b458.tar.gz -> go-msgpack-fa3f63826f7c23912c15263591e65d54d080b458.tar.gz https://github.com/hashicorp/raft/archive/057b893fd996696719e98b6c44649ea14968c811.tar.gz -> hashicorp-raft-057b893fd996696719e98b6c44649ea14968c811.tar.gz https://github.com/hashicorp/raft-boltdb/archive/d1e82c1ec3f15ee991f7cc7ffd5b67ff6f5bbaee.tar.gz -> hashicorp-boltdb-d1e82c1ec3f15ee991f7cc7ffd5b67ff6f5bbaee.tar.gz https://github.com/mattn/go-sqlite3/archive/10876d7dac65f02064c03d7372a2f1dfb90043fe.tar.gz -> go-sqlite3-1.1.0_p20160307.tar.gz
+_eclass_exported_funcs=src_unpack:- src_compile:- src_test:golang-build src_install:-
+_eclasses_=golang-base	08fe6e0e2b4750daff8887a7f0e1f873	golang-build	a44f10e6bd86ecccf2a07cc0d4cf6bec
+_md5_=a0fba28f5e46e279db4595abf91f2416
