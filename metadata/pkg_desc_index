@@ -8222,7 +8222,7 @@ dev-python/vatnumber 1.1: Module to validate VAT numbers
 dev-python/vcrpy 1.5.2 1.7.3 1.7.4: Automatically mock your HTTP interactions to simplify and speed up testing
 dev-python/vcstools 0.1.38 9999: Python library for interacting with various VCS systems
 dev-python/vcversioner 2.14.0.0 2.16.0.0: Use version control tags to discover version numbers
-dev-python/vdirsyncer 0.7.5 0.9.0 0.9.3: Synchronize calendars and contacts
+dev-python/vdirsyncer 0.7.5 0.9.0 0.9.3 0.10.0: Synchronize calendars and contacts
 dev-python/venusian 1.0_alpha8 1.0: A library for deferring decorator actions
 dev-python/verboselogs 1.0.1 1.0.2: Verbose logging for Python's logging module
 dev-python/versioneer 0.15: Easy VCS-based management of project version strings
@@ -14022,7 +14022,7 @@ net-fs/nfstest 1.0.2: Tools for testing either the NFS client or the NFS server
 net-fs/openafs 1.6.17 1.6.18: The OpenAFS distributed file system
 net-fs/openafs-kernel 1.6.17 1.6.18: The OpenAFS distributed file system kernel module
 net-fs/openafs-legacy 0.1: Legacy path symlinks to access FHS-compliant OpenAFS installation
-net-fs/samba 3.5.21 3.5.22 3.6.25 4.2.9 4.2.11 4.3.8 4.4.2: Samba Suite Version 4
+net-fs/samba 3.5.21 3.5.22 3.6.25 4.2.9 4.2.11 4.2.12 4.3.9 4.4.3: Samba Suite Version 4
 net-fs/smbnetfs 0.5.3b 0.6.0 0.6.0-r1: FUSE filesystem for SMB shares
 net-fs/smbtad 1.2.6: Data receiver of the SMB Traffic Analyzer project
 net-fs/smbtatools 1.2.6-r1: Tools for configuration and query of SMB Traffic Analyzer
