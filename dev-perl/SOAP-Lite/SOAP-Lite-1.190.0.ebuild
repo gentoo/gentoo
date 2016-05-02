@@ -43,8 +43,7 @@ DEPEND="${RDEPEND}
 	)
 "
 
-#SRC_TEST="do parallel"
-# test fails because of \C deprecation warning
+SRC_TEST="do parallel"
 
 src_test() {
 	has_version '>=www-apache/mod_perl-2' && export MOD_PERL_API_VERSION=2
