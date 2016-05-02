@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=5
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python2_7 python3_{3,4,5} )
 
 inherit eutils python-r1 qt4-r2 flag-o-matic
 
