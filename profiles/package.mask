@@ -177,11 +177,6 @@ dev-libs/ptypes
 =app-admin/logstash-bin-2.3.0*
 
 # James Le Cuirot <chewi@gentoo.org> (03 Apr 2016)
-# Legacy migration package that is no longer needed. See
-# bug #549508. Removal in 30 days.
-dev-java/java-config-wrapper
-
-# James Le Cuirot <chewi@gentoo.org> (03 Apr 2016)
 # Masking Spring Framework for the time being as 3.2.4 is old, has
 # multiple vulnerabilities, and we're not likely to update it
 # soon. Hopefully we can revisit it when the Maven stuff works out.
@@ -227,23 +222,6 @@ x11-libs/libview
 # Unpatched security vulnerability per bug #512356.
 # Masked for removal in 30 days.
 =app-forensics/chkrootkit-0.49
-
-# James Le Cuirot <chewi@gentoo.org> (14 Mar 2016)
-# Bye bye Java 6! If you really still need it then gnu_andrew will
-# continue to maintain icedtea:6 in java-overlay but it is not
-# supported by Java team at all. IBM's JVM is still alive but
-# downloads are behind a registration wall and Java team does not wish
-# to support it. haubi may provide IBM updates though probably only
-# for ppc-aix. Removal in 30 days.
-dev-java/apple-jdk-bin
-dev-java/hp-jdk-bin
-dev-java/ibm-jdk-bin:1.6
-dev-java/ibm-jre-bin:1.6
-dev-java/icedtea-bin:6
-<dev-java/icedtea-6.1.13.10:6
-dev-java/soylatte-jdk-bin
-virtual/jdk:1.6
-virtual/jre:1.6
 
 # Hans de Graaff <graaff@gentoo.org> (14 Mar 2016)
 # Not compatible with ruby21+, no reverse dependencies.
