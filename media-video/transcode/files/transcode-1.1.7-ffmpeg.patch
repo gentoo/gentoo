@@ -1,5 +1,5 @@
---- encode/encode_lavc.c
-+++ encode/encode_lavc.c
+--- a/encode/encode_lavc.c
++++ b/encode/encode_lavc.c
 @@ -955,8 +955,6 @@
      /* 
       * context *transcode* (not libavcodec) defaults
@@ -18,8 +18,8 @@
          { "lmin", PAUX(lmin), TCCONF_TYPE_FLOAT, TCCONF_FLAG_RANGE, 0.01, 255.0 },
          { "lmax", PAUX(lmax), TCCONF_TYPE_FLOAT, TCCONF_FLAG_RANGE, 0.01, 255.0 },
          { "vqdiff", PCTX(max_qdiff), TCCONF_TYPE_INT, TCCONF_FLAG_RANGE, 1, 31 },
---- export/ffmpeg_cfg.c
-+++ export/ffmpeg_cfg.c
+--- a/export/ffmpeg_cfg.c
++++ b/export/ffmpeg_cfg.c
 @@ -34,8 +34,6 @@
  //int lavc_param_vqscale = 0;
  //int lavc_param_vqmin = 2;
@@ -38,8 +38,8 @@
      {"lmin", &lavc_param_lmin, TCCONF_TYPE_FLOAT, TCCONF_FLAG_RANGE, 0.01, 255.0},
      {"lmax", &lavc_param_lmax, TCCONF_TYPE_FLOAT, TCCONF_FLAG_RANGE, 0.01, 255.0},
      {"vqdiff", &lavc_param_vqdiff, TCCONF_TYPE_INT, TCCONF_FLAG_RANGE, 1, 31},
---- export/ffmpeg_cfg.h
-+++ export/ffmpeg_cfg.h
+--- a/export/ffmpeg_cfg.h
++++ b/export/ffmpeg_cfg.h
 @@ -13,8 +13,6 @@
  //extern int lavc_param_vqscale;
  //extern int lavc_param_vqmin;
