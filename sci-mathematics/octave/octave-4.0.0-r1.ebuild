@@ -100,6 +100,11 @@ src_prepare() {
 		-e 's@A-Za-z0-9@[:alnum:]@g' \
 		-e 's@A-Za-z@[:alpha:]@g' \
 		libinterp/mkbuiltins || die
+
+	# Fix bug 554226 - sci-mathematics/octave-4.0.0 fails because of a LaTeX error
+	epatch "${FILESDIR}"/${PN}-4.0.0-texinfo.patch
+	rm -f "${S}"/doc/texinfo.tex || die
+
 	autotools-utils_src_prepare
 }
 

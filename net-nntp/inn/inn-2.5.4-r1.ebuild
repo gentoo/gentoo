@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -37,8 +37,8 @@ pkg_setup() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-ar.patch
-	epatch "${FILESDIR}"/${P}-tests.patch
+	epatch "${FILESDIR}"/${PN}-2.5.3-ar.patch
+	epatch "${FILESDIR}"/${PN}-2.5.3-tests.patch
 
 	sed -e 's: -B .OLD::' -i Makefile.global.in || die
 
