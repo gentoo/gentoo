@@ -184,7 +184,7 @@ src_compile() {
 			ln -s ${S}/slice
 			ln -s ${S}/Makefile
 
-			MAKE_RULES_PHP="PHP_HOME=/usr/$(get_libdir)/${slot} USE_NAMESPACES=yes"
+			MAKE_RULES_PHP="PHP_HOME=/usr/$(get_libdir)/${slot}"
 			emake -C php ${MAKE_RULES} ${MAKE_RULES_PHP} || die "emake php failed"
 		done
 	fi
