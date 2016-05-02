@@ -1,6 +1,6 @@
 DEFINED_PHASES=compile configure install prepare test unpack
 DEPEND=dev-perl/Class-Inspector >=dev-perl/IO-SessionData-1.30.0 dev-perl/libwww-perl virtual/perl-MIME-Base64 virtual/perl-Scalar-List-Utils dev-perl/Task-Weaken dev-perl/URI >=dev-perl/XML-Parser-2.230.0 dev-perl/MIME-tools ssl? ( dev-perl/IO-Socket-SSL dev-perl/LWP-Protocol-https dev-perl/Crypt-SSLeay ) xmpp? ( dev-perl/Net-Jabber ) virtual/perl-ExtUtils-MakeMaker test? ( virtual/perl-IO virtual/perl-Test-Simple dev-perl/Test-Warn dev-perl/XML-Parser-Lite ) dev-lang/perl:=[-build(-)]
-DESCRIPTION=Simple and lightweight interface to the SOAP protocol (sic) both on client and server side
+DESCRIPTION=Lightweight interface to the SOAP protocol both on client and server side
 EAPI=5
 HOMEPAGE=http://search.cpan.org/dist/SOAP-Lite/
 IUSE=ssl test xmpp
@@ -11,4 +11,4 @@ SLOT=0
 SRC_URI=mirror://cpan/authors/id/P/PH/PHRED/SOAP-Lite-1.19.tar.gz
 _eclass_exported_funcs=src_unpack:perl-module src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:- src_install:perl-module
 _eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	multilib	23ae8c186171e6476af098d2a50d0ee0	multiprocessing	e32940a7b2a9992ad217eccddb84d548	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	c584f9e0fe426f3dcc2c46c6f7cb95ce	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	unpacker	45d07319df5f40ee6af58418b0f930be
-_md5_=43049b611174144e6407d0858a6023c3
+_md5_=4e9e934ed83d8c82dce10b44206d0943
