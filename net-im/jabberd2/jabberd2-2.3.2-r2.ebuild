@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -12,8 +12,8 @@ SRC_URI="https://github.com/jabberd2/jabberd2/releases/download/jabberd-${PV}/ja
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ppc sparc x86 ~x86-fbsd"
-IUSE="berkdb debug ldap memdebug mysql pam postgres sqlite ssl test zlib"
+KEYWORDS="amd64 ~ppc ~sparc x86 ~x86-fbsd"
+IUSE="berkdb debug experimental ldap memdebug mysql pam postgres sqlite ssl test zlib"
 REQUIRED_USE="memdebug? ( debug )"
 
 # broken
@@ -96,6 +96,7 @@ src_configure() {
 		--enable-pipe \
 		--enable-anon \
 		--enable-fs \
+		$(use_enable experimental) \
 		$(use_enable test tests) \
 		$(usex berkdb "--with-extra-include-path=$(db_includedir)" "") \
 		$(use_with zlib)
@@ -119,10 +120,10 @@ src_install() {
 		mv "${ED%/}"/usr/bin/${i} "${ED%/}"/usr/bin/jabberd2-${i} || die
 	done
 
-	newinitd "${FILESDIR}/${P}.init" jabberd
-	newpamd "${FILESDIR}/${P}.pamd" jabberd
+	newinitd "${FILESDIR}/${PN}-2.3.2.init" jabberd
+	newpamd "${FILESDIR}/${PN}-2.3.1.pamd" jabberd
 	insinto /etc/logrotate.d
-	newins "${FILESDIR}/${P}.logrotate" jabberd
+	newins "${FILESDIR}/${PN}-2.3.2.logrotate" jabberd
 
 	docompress -x /usr/share/doc/${PF}/tools
 	docinto tools

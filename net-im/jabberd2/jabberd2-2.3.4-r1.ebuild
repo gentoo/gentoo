@@ -1,10 +1,10 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 
-inherit db-use eutils flag-o-matic pam
+inherit autotools db-use eutils flag-o-matic pam
 
 DESCRIPTION="Open Source Jabber Server"
 HOMEPAGE="http://jabberd2.org"
@@ -12,8 +12,8 @@ SRC_URI="https://github.com/jabberd2/jabberd2/releases/download/jabberd-${PV}/ja
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~ppc ~sparc x86 ~x86-fbsd"
-IUSE="berkdb debug experimental ldap memdebug mysql pam postgres sqlite ssl test zlib"
+KEYWORDS="~amd64 ~ppc ~sparc ~x86 ~x86-fbsd"
+IUSE="berkdb debug experimental ldap libressl memdebug mysql pam postgres sqlite ssl test websocket zlib"
 REQUIRED_USE="memdebug? ( debug )"
 
 # broken
@@ -23,13 +23,20 @@ DEPEND="dev-libs/expat
 	net-libs/udns
 	net-dns/libidn
 	virtual/gsasl
-	berkdb? ( >=sys-libs/db-4.1.25 )
+	berkdb? ( >=sys-libs/db-4.1.25:= )
 	ldap? ( net-nds/openldap )
-	mysql? ( virtual/mysql )
+	mysql? (
+		virtual/libmysqlclient:=
+		virtual/mysql:=
+	)
 	pam? ( virtual/pam )
-	postgres? ( dev-db/postgresql )
-	ssl? ( >=dev-libs/openssl-1.0.1:0 )
+	postgres? ( dev-db/postgresql:= )
+	ssl? (
+		!libressl? ( >=dev-libs/openssl-1.0.1:0[-bindist] )
+		libressl? ( dev-libs/libressl:= )
+	)
 	sqlite? ( dev-db/sqlite:3 )
+	websocket? ( net-libs/http-parser:= )
 	zlib? ( sys-libs/zlib )"
 RDEPEND="${DEPEND}
 	>=net-im/jabber-base-0.01"
@@ -41,6 +48,15 @@ DEPEND="${DEPEND}
 DOCS=( AUTHORS README )
 
 S=${WORKDIR}/jabberd-${PV}
+
+pkg_pretend() {
+	if is-flagq '-O[3s]' ; then
+		ewarn "O3/Os compiler flags have been known to cause problems"
+		ewarn "with old gcc version. Be aware that this could break"
+		ewarn "port binding. Make sure to test this."
+		ewarn "See https://github.com/jabberd2/jabberd2/issues/34"
+	fi
+}
 
 src_prepare() {
 	# Fix some default directory locations
@@ -69,18 +85,24 @@ src_prepare() {
 
 	# rename pid files wrt #241472
 	sed -i \
-		-e '/pidfile/s/c2s\.pid/jabberd2-c2s\.pid/' \
-		-e '/pidfile/s/router\.pid/jabberd2-router\.pid/' \
-		-e '/pidfile/s/s2s\.pid/jabberd2-s2s\.pid/' \
-		-e '/pidfile/s/sm\.pid/jabberd2-sm\.pid/' \
-		etc/*.xml.dist.in || die "renaming pid files failed!"
+		-e '/pidfile/s/${id}\.pid/jabberd2-c2s\.pid/' \
+		etc/c2s.xml.dist.in || die
+	sed -i \
+		-e '/pidfile/s/${id}\.pid/jabberd2-router\.pid/' \
+		etc/router.xml.dist.in || die
+	sed -i \
+		-e '/pidfile/s/${id}\.pid/jabberd2-s2s\.pid/' \
+		etc/s2s.xml.dist.in || die
+	sed -i \
+		-e '/pidfile/s/${id}\.pid/jabberd2-sm\.pid/' \
+		etc/sm.xml.dist.in || die
+
+	epatch "${FILESDIR}"/${P}-optimization.patch \
+		"${FILESDIR}"/${P}-websocket.patch
+	eautoreconf
 }
 
 src_configure() {
-	# https://bugs.gentoo.org/show_bug.cgi?id=207655#c3
-	# https://github.com/jabberd2/jabberd2/issues/34
-	replace-flags -O[3s] -O2
-
 	# --enable-pool-debug is currently broken
 	econf \
 		--sysconfdir=/etc/jabber \
@@ -96,6 +118,7 @@ src_configure() {
 		--enable-pipe \
 		--enable-anon \
 		--enable-fs \
+		$(use_enable websocket) \
 		$(use_enable experimental) \
 		$(use_enable test tests) \
 		$(usex berkdb "--with-extra-include-path=$(db_includedir)" "") \

@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/courier/${P}.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd"
+KEYWORDS="~amd64 ~hppa ~mips ~ppc64 ~x86"
 IUSE="berkdb debug fam +gdbm ipv6 selinux gnutls trashquota"
 
 REQUIRED_USE="|| ( berkdb gdbm )"
@@ -21,6 +21,7 @@ CDEPEND="
 	gnutls? ( net-libs/gnutls )
 	!gnutls? ( >=dev-libs/openssl-0.9.6:0= )
 	>=net-libs/courier-authlib-0.61
+	>=net-libs/courier-unicode-1.3
 	>=net-mail/mailbase-0.00-r8
 	berkdb? ( sys-libs/db:= )
 	fam? ( virtual/fam )
@@ -47,17 +48,17 @@ src_prepare() {
 	# Bug #48838. Patch to enable/disable FAM support.
 	# 20 Aug 2004 langthang@gentoo.org
 	# This patch should fix bug #51540. fam USE flag is not needed for shared folder support.
-	epatch "${FILESDIR}"/${P}-disable-fam-configure.ac.patch
+	epatch "${FILESDIR}"/${PN}-4.15-disable-fam-configure.ac.patch
 
 	# Kill unneeded call to AC_PROG_SYSCONFTOOL (bug #168206).
-	epatch "${FILESDIR}"/${P}-aclocal-fix.patch
+	epatch "${FILESDIR}"/${PN}-4.15-aclocal-fix.patch
 
 	# These patches should fix problems detecting BerkeleyDB.
 	# We now can compile with db4 support.
 	if use berkdb ; then
 		epatch \
-			"${FILESDIR}"/${P}-db4-bdbobj_configure.ac.patch \
-			"${FILESDIR}"/${P}-db4-configure.ac.patch
+			"${FILESDIR}"/${PN}-4.15-db4-bdbobj_configure.ac.patch \
+			"${FILESDIR}"/${PN}-4.15-db4-configure.ac.patch
 	fi
 
 	eautoreconf
@@ -74,18 +75,6 @@ src_configure() {
 	elif use berkdb ; then
 		einfo "Building with BerkeleyDB support"
 		myconf="${myconf} --with-db=db"
-	fi
-
-	# Disabling unicode is no longer supported
-	# By default all available character sets are included
-	# Set ENABLE_UNICODE=iso-8859-1,utf-8,iso-8859-10
-	# to include only specified translation tables.
-	if [[ -z "${ENABLE_UNICODE}" ]] ; then
-		einfo "ENABLE_UNICODE is not set, building with all available character sets"
-		myconf="${myconf} --enable-unicode"
-	else
-		einfo "ENABLE_UNICODE is set, building with unicode=${ENABLE_UNICODE}"
-		myconf="${myconf} --enable-unicode=${ENABLE_UNICODE}"
 	fi
 
 	if use trashquota ; then
@@ -161,17 +150,17 @@ src_install() {
 		echo 'LOGINRUN=' >> "${service}"
 	done
 
-	cd "${D}/usr/sbin" || die
+	cd "${D}/usr/sbin"
 	for x in * ; do
 		if [[ -L "${x}" ]] ; then
 			rm -f "${x}" || die "Failed to rm ${x}"
 		fi
 	done
 
-	cd ../share || die
-	mv -f * ../sbin || die
-	mv -f ../sbin/man . || die
-	cd .. || die
+	cd ../share
+	mv -f * ../sbin
+	mv -f ../sbin/man .
+	cd ..
 
 	for x in mkimapdcert mkpop3dcert ; do
 		mv -f "${D}/usr/sbin/${x}" "${D}/usr/sbin/${x}.orig" || die "Failed to mv /usr/sbin/${x} to /usr/sbin/${x}.orig"
@@ -181,7 +170,7 @@ src_install() {
 
 	dosym /usr/sbin/courierlogger /usr/$(get_libdir)/${PN}/courierlogger
 
-	mkdir "${WORKDIR}/tmp" && cd "${WORKDIR}/tmp" || die
+	mkdir "${WORKDIR}/tmp" ; cd "${WORKDIR}/tmp"
 
 	for initd in courier-{imapd,pop3d}{,-ssl} ; do
 		sed -e "s:GENTOO_LIBDIR:$(get_libdir):g" "${FILESDIR}/${PN}-${INITD_VER}-${initd}.rc6" > "${initd}" || die "initd libdir-sed failed"

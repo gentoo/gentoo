@@ -1,6 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
+
+EAPI=6
 
 inherit eutils
 
@@ -23,10 +25,7 @@ IUSE="mysql"
 
 S="${WORKDIR}/${PN}_${PV}"
 
-src_unpack() {
-	unpack ${A}
-	cd "${S}"
-
+src_prepare() {
 	# Fix missing header in src/conference_user.c in order to
 	# make emerge happy and avoid QA notice.
 	sed -i "/conference.h/ i #define _XOPEN_SOURCE" src/conference_user.c || die
@@ -37,10 +36,8 @@ src_unpack() {
 		# Makefile is broken. Should not always link against mysql
 		sed -i 's/`mysql_config --libs`//' src/Makefile || die
 	fi
-}
 
-src_compile() {
-	emake || die
+	eapply_user
 }
 
 src_install() {

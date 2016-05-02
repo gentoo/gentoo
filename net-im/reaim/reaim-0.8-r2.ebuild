@@ -1,8 +1,8 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=6
 
 inherit toolchain-funcs
 
@@ -25,12 +25,13 @@ pkg_setup() {
 src_prepare() {
 	sed -i -e 's/gcc/$(CC) $(CFLAGS) $(LDFLAGS)/' \
 		-e 's/ -g / /'  Makefile || die "sed failed" #365863
+	default
 }
 
 src_install() {
-	dosbin reaim || die
+	local HTML_DOCS=( html )
+	einstalldocs
 	doman reaim.8
-	dodoc CREDITS
-	dohtml -r -x CVS html/*
-	newinitd "${FILESDIR}"/reaim reaim
+	dosbin reaim
+	doinitd "${FILESDIR}"/reaim
 }

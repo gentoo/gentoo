@@ -69,8 +69,8 @@ DEPEND="${RDEPEND}
 	doc? (
 		virtual/latex-base
 		dev-texlive/texlive-genericrecommended
-		dev-texlive/texlive-metapost
-		sys-apps/texinfo )
+		dev-texlive/texlive-metapost )
+	sys-apps/texinfo
 	dev-util/gperf
 	virtual/pkgconfig"
 
@@ -160,7 +160,13 @@ src_compile() {
 
 src_install() {
 	autotools-utils_src_install
-	use doc && dodoc $(find doc -name \*.pdf)
+	if use doc; then
+		dodoc $(find doc -name \*.pdf)
+	else
+		# bug 566134, macros.texi is installed by make install if use doc
+		insinto /usr/share/${PN}/${PV}/etc
+		doins doc/interpreter/macros.texi
+	fi
 	[[ -e test/fntests.log ]] && dodoc test/fntests.log
 	use java && \
 		java-pkg_regjar "${ED}/usr/share/${PN}/${PV}/m/java/octave.jar"

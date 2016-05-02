@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -13,7 +13,7 @@ SRC_URI="https://github.com/jabberd2/jabberd2/releases/download/jabberd-${PV}/ja
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~sparc ~x86 ~x86-fbsd"
-IUSE="berkdb debug experimental ldap memdebug mysql pam postgres sqlite ssl test zlib"
+IUSE="berkdb debug experimental ldap libressl memdebug mysql pam postgres sqlite ssl test zlib"
 REQUIRED_USE="memdebug? ( debug )"
 
 # broken
@@ -23,12 +23,15 @@ DEPEND="dev-libs/expat
 	net-libs/udns
 	net-dns/libidn
 	virtual/gsasl
-	berkdb? ( >=sys-libs/db-4.1.25 )
+	berkdb? ( >=sys-libs/db-4.1.25:* )
 	ldap? ( net-nds/openldap )
 	mysql? ( virtual/mysql )
 	pam? ( virtual/pam )
-	postgres? ( dev-db/postgresql )
-	ssl? ( >=dev-libs/openssl-1.0.1:0 )
+	postgres? ( dev-db/postgresql:* )
+	ssl? (
+		!libressl? ( >=dev-libs/openssl-1.0.1:0[-bindist] )
+		libressl? ( dev-libs/libressl )
+	)
 	sqlite? ( dev-db/sqlite:3 )
 	zlib? ( sys-libs/zlib )"
 RDEPEND="${DEPEND}
@@ -120,10 +123,10 @@ src_install() {
 		mv "${ED%/}"/usr/bin/${i} "${ED%/}"/usr/bin/jabberd2-${i} || die
 	done
 
-	newinitd "${FILESDIR}/${PN}-2.3.1.init" jabberd
+	newinitd "${FILESDIR}/${PN}-2.3.2.init" jabberd
 	newpamd "${FILESDIR}/${PN}-2.3.1.pamd" jabberd
 	insinto /etc/logrotate.d
-	newins "${FILESDIR}/${PN}-2.3.1.logrotate" jabberd
+	newins "${FILESDIR}/${PN}-2.3.2.logrotate" jabberd
 
 	docompress -x /usr/share/doc/${PF}/tools
 	docinto tools

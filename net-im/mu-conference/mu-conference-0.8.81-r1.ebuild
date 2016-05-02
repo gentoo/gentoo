@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 inherit toolchain-funcs
 
@@ -41,6 +41,8 @@ src_prepare() {
 		sed -i -e 's/ar/$(AR)/' -e 's/ranlib/$(RANLIB)/' src/jabberd/Makefile || die
 		sed -i -e 's/gcc -g/$(CC) -g/' src/jcomp/Makefile || die
 	tc-export CC AR RANLIB
+
+	eapply_user
 }
 
 src_install() {
