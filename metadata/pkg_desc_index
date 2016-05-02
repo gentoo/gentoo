@@ -9547,7 +9547,7 @@ dev-util/bats 0.4.0: An automated testing system for bash
 dev-util/bbe 0.2.2: Sed-like editor for binary files
 dev-util/bcc 0.1.8: Tools for BPF-based Linux IO analysis, networking, monitoring, and more
 dev-util/bcpp 20050725 20090630 20150811: Indents C/C++ source code
-dev-util/bdelta 0.3.1 9999: Binary Delta - Efficient difference algorithm and format
+dev-util/bdelta 0.3.1: Binary Delta - Efficient difference algorithm and format
 dev-util/beediff 1.9: A graphical user interface for comparing and merging files
 dev-util/biew 6.1.0-r3: A portable viewer of binary files, hexadecimal and disassembler modes
 dev-util/bin_replace_string 0.2: A tool to edit C strings in compiled binaries
@@ -16996,7 +16996,7 @@ sys-fs/bashmount 3.2.0: A bash script that uses udisks to handle removable devic
 sys-fs/bcache-tools 1.0.5 1.0.8 1.0.8_p20140220-r1 9999: Tools for bcachefs
 sys-fs/bedup 0.10.0 9999: Btrfs file de-duplication tool
 sys-fs/bindfs 1.12.6 1.13.0 1.13.1: FUSE filesystem for mounting a directory to another location and altering permissions
-sys-fs/btrfs-progs 3.14.2 3.16.2 3.17.3 3.18.2 3.19.1 4.0 4.0.1 4.1 4.1.2 4.2 4.2.2 4.3.1 4.4.1 4.5.1 9999: Btrfs filesystem utilities
+sys-fs/btrfs-progs 3.14.2 3.16.2 3.17.3 3.18.2 3.19.1 4.0 4.0.1 4.1 4.1.2 4.2 4.2.2 4.3.1 4.4.1 4.5.1 4.5.2 9999: Btrfs filesystem utilities
 sys-fs/cachefilesd 0.10.5-r4: Provides a caching directory on an already mounted filesystem
 sys-fs/clamfs 1.0.1-r2: A FUSE-based user-space file system with on-access anti-virus file scanning
 sys-fs/cloudfuse 1.0: A FUSE filesystem for Rackspace's Cloud Files
