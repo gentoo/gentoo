@@ -14074,14 +14074,14 @@ net-im/gajim 0.16.5: Jabber client written in PyGTK
 net-im/gg-transport 2.2.4-r1: Gadu-Gadu transport for Jabber
 net-im/indicator-messages 0.6.0-r1: A place on the user's desktop that collects messages that need a response
 net-im/jabber-base 0.01 0.01-r1: Jabber servers and transports layout package
-net-im/jabberd2 2.3.1-r1 2.3.2 2.3.2-r1 2.3.3-r1 2.3.4: Open Source Jabber Server
+net-im/jabberd2 2.3.1-r2 2.3.2-r2 2.3.3-r2 2.3.4-r1: Open Source Jabber Server
 net-im/kadu 0.12.3 2.1: An open source Gadu-Gadu and Jabber/XMPP protocol Instant Messenger client
 net-im/kouchat 1.1.0: KouChat is a simple serverless chat client for local area networks
 net-im/librvp 0.9.6 0.9.7: An RVP (Microsoft Exchange Instant Messaging) plugin for Pidgin
 net-im/licq 1.8.2: ICQ Client with v8 support
 net-im/mcabber 0.10.2_p20131025 0.10.2_p20131025-r1 0.10.3 1.0.0 1.0.1 1.0.2 9999: A small Jabber console client with various features, like MUC, SSL, PGP
-net-im/minbif 1.0.5-r1: an IRC gateway to IM networks
-net-im/mu-conference 0.7 0.8-r1 0.8.81: Multi-User Chat for jabberd
+net-im/minbif 1.0.5-r2: an IRC gateway to IM networks
+net-im/mu-conference 0.7-r1 0.8-r2 0.8.81-r1: Multi-User Chat for jabberd
 net-im/openfire 3.10.0 3.10.1 3.10.2 3.10.3 4.0.0 4.0.1 4.0.2: Openfire (formerly wildfire) real time collaboration (RTC) server
 net-im/pidgin 2.10.11 2.10.12-r2: GTK Instant Messenger client
 net-im/pork 0.99.8.1 0.99.8.1-r1: Console based AIM client that looks like ircII
@@ -14090,14 +14090,14 @@ net-im/psi 0.15 9999: Qt4 Jabber client, with Licq-like interface
 net-im/psimedia 1.0.3-r3: Psi plugin for voice/video calls
 net-im/purple-events 0.2 0.99.1: Allows a fine-grained control over libpurple events
 net-im/pyaim-t 0.8.0.1-r1: Python based jabber transport for AIM
-net-im/pyicq-t 0.8.1.5-r4: Python based jabber transport for ICQ
+net-im/pyicq-t 0.8.1.5-r4 0.8.1.5-r5: Python based jabber transport for ICQ
 net-im/qtox 1.3.0 1.4.0 9999: Most feature-rich GUI for net-libs/tox using Qt5
 net-im/qutim 0.3.2 0.3.3_p1: Qt4-based multi-protocol instant messenger
-net-im/reaim 0.8-r1: AIM transport proxy over NAT firewalls
+net-im/reaim 0.8-r2: AIM transport proxy over NAT firewalls
 net-im/sendxmpp 1.23 1.24: A perl-script to send xmpp (jabber), similar to what mail(1) does for mail
-net-im/silc-server 1.1.18: Server for Secure Internet Live Conferencing
+net-im/silc-server 1.1.18-r1: Server for Secure Internet Live Conferencing
 net-im/silc-toolkit 1.1.10: SDK for the SILC protocol
-net-im/simpserver-bin 2.1.0-r1: SimpServer for Unix: IM instant security transparent proxy
+net-im/simpserver-bin 2.1.0-r2: SimpServer for Unix: IM instant security transparent proxy
 net-im/skype 4.3.0.37-r5 4.3.0.37-r6: P2P Internet Telephony (VoiceIP) client
 net-im/skypetab-ng 0.5.2 0.5.2_p20150201 9999: An LD_PRELOAD wrapper that adds tabs to Skype for Linux
 net-im/telepathy-connection-managers 2-r2: Meta-package for Telepathy Connection Managers
@@ -14384,7 +14384,7 @@ net-mail/bincimap 1.2.13: IMAP server for Maildir
 net-mail/checkpassword 0.90-r2 0.90-r3: A uniform password checking interface for root applications
 net-mail/checkpassword-pam 0.99: checkpassword-compatible authentication program w/pam support
 net-mail/cmd5checkpw 0.30-r1: A checkpassword compatible authentication program that used CRAM-MD5 authentication mode
-net-mail/courier-imap 4.15-r1 4.16.0 4.16.2: An IMAP daemon designed specifically for maildirs
+net-mail/courier-imap 4.15-r2 4.16.0-r1 4.16.2-r1: An IMAP daemon designed specifically for maildirs
 net-mail/courierpassd 1.1.2-r1: Courierpassd is a utility for changing a user's password from across a network
 net-mail/cyrus-imap-admin 2.4.17-r1 2.4.18: Utilities and Perl modules to administer a Cyrus IMAP server
 net-mail/cyrus-imapd 2.4.16 2.4.17 2.4.17-r1 2.4.18 2.5.4 2.5.5 2.5.6 2.5.7: The Cyrus IMAP Server
@@ -16001,7 +16001,7 @@ sci-mathematics/nestedsums 1.4.12-r1: A GiNaC-based library for symbolic expansi
 sci-mathematics/normaliz 2.12.2 3.1.0 3.1.1: Tool for computations in affine monoids and more
 sci-mathematics/num-utils 0.3 0.5-r1: A set of programs for dealing with numbers from the command line
 sci-mathematics/nusmv 2.3.1 2.5.0 2.5.2 2.5.3 2.5.4: NuSMV: new symbolic model checker
-sci-mathematics/octave 3.6.4 3.6.4-r1 3.8.1 3.8.1-r1 3.8.2 4.0.0 4.0.1 4.0.2: High-level interactive language for numerical computations
+sci-mathematics/octave 3.6.4 3.6.4-r1 3.8.1 3.8.1-r1 3.8.2 4.0.0 4.0.0-r1 4.0.1 4.0.1-r1 4.0.2-r1: High-level interactive language for numerical computations
 sci-mathematics/octave-epstk 2.3 2.4: Graphical output functions for Matlab and Octave
 sci-mathematics/otter 3.3-r1 3.3-r2: An Automated Deduction System
 sci-mathematics/p9m4 05-r1: This is a Graphical User Interface for Prover9 and Mace4
