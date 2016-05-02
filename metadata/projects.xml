@@ -2465,6 +2465,11 @@
       <name>William Hubbs</name>
       <role>Lead</role>
     </member>
+    <member>
+      <email>wizardedit@gentoo.org</email>
+      <name>Austin English</name>
+      <role>Member</role>
+    </member>
   </project>
   <project>
     <email>openstack@gentoo.org</email>
