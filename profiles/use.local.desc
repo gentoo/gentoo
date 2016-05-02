@@ -3946,6 +3946,8 @@ media-libs/harfbuzz:graphite - Use graphite to render complex non-Roman writing 
 media-libs/jbig2enc:webp - Add support for WEBP image format
 media-libs/leptonica:utils - Install command-line utilities
 media-libs/leptonica:webp - Adds support for the WebP image format
+media-libs/libafterimage:shaping - Use MIT shaped X windows extention.
+media-libs/libafterimage:shm - Use MIT shared memory extention for X image transfer.
 media-libs/libass:enca - Enables support for charset discovery and conversion.
 media-libs/libass:harfbuzz - Enables OpenType shaping via media-libs/harfbuzz.
 media-libs/libbdplus:aacs - Add support for decryption of AACS
