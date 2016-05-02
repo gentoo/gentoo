@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 inherit eutils flag-o-matic libtool multilib toolchain-funcs versionator
 
@@ -69,7 +69,7 @@ REQUIRED_USE="corefonts? ( truetype )
 S=${WORKDIR}/${MY_P}
 
 src_prepare() {
-	epatch_user
+	default
 
 	elibtoolize # for Darwin modules
 
@@ -144,12 +144,12 @@ src_configure() {
 
 src_test() {
 	LD_LIBRARY_PATH="${S}/coders/.libs:${S}/filters/.libs:${S}/Magick++/lib/.libs:${S}/magick/.libs:${S}/wand/.libs" \
-	emake -j1 check
+	emake check
 }
 
 src_install() {
 	# Ensure documentation installation files and paths with each release!
-	emake -j1 \
+	emake \
 		DESTDIR="${D}" \
 		DOCUMENTATION_PATH="${EPREFIX}"/usr/share/doc/${PF}/html \
 		install
