@@ -6,7 +6,7 @@ EAPI="6"
 
 inherit eutils flag-o-matic autotools
 
-PATCHSET_REV="-r4"
+PATCHSET_REV="-r3"
 
 DESCRIPTION="A small but very powerful text-based mail client"
 HOMEPAGE="http://www.mutt.org/"
@@ -114,12 +114,6 @@ src_prepare() {
 	for p in "${PATCHDIR}"/[0-9][0-9]-*.patch ; do
 		epatch "${p}"
 	done
-
-	# Avoid symbol conflicts on Solaris
-	sed -i \
-		-e 's/\<M_CMD\>/MT_CMD/g' \
-		-e 's/\<M_READ\>/MT_READ/g' \
-		*.[ch] imap/*.[ch] || die
 
 	local upatches=
 	# allow user patches
