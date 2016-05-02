@@ -24,21 +24,26 @@ LICENSE="BSD-2"
 SLOT="0"
 IUSE="python static-libs zlib"
 
-DEPEND="python? ( ${PYTHON_DEPS} )
+DEPEND="python? ( ${PYTHON_DEPS}
+		dev-python/setuptools )
 	zlib? ( >=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}] )"
 RDEPEND="${DEPEND}
 	python? ( !dev-python/python-magic )"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-header-define.patch
+	"${FILESDIR}"/${P}-nes-magic.patch
+	"${FILESDIR}"/${P}-php-magic.patch
+	"${FILESDIR}"/${P}-msoffice-magic.patch
+	"${FILESDIR}"/${P}-stdin-rpm.patch
+	"${FILESDIR}"/${P}-tests-fatal.patch
+	"${FILESDIR}"/${P}-stdin-test.patch
+	"${FILESDIR}"/${P}-compress-1.patch
+	"${FILESDIR}"/${P}-compress-2.patch
+)
+
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-header-define.patch
-	epatch "${FILESDIR}"/${P}-nes-magic.patch
-	epatch "${FILESDIR}"/${P}-php-magic.patch
-	epatch "${FILESDIR}"/${P}-msoffice-magic.patch
-	epatch "${FILESDIR}"/${P}-stdin-rpm.patch
-	epatch "${FILESDIR}"/${P}-tests-fatal.patch
-	epatch "${FILESDIR}"/${P}-stdin-test.patch
-	epatch "${FILESDIR}"/${P}-compress-1.patch
-	epatch "${FILESDIR}"/${P}-compress-2.patch
+	epatch "${PATCHES[@]}"
 	[[ ${PV} == "9999" ]] && eautoreconf
 	elibtoolize
 
