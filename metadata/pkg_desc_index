@@ -5486,6 +5486,7 @@ dev-perl/Devel-Declare 0.6.18: Adding keywords to perl, in perl
 dev-perl/Devel-Dumpvar 1.60.0-r1: Pure-OO reimplementation of dumpvar.pl
 dev-perl/Devel-GlobalDestruction 0.120.0 0.130.0 0.130.0-r1: Returns the equivalent of ${^GLOBAL_PHASE} eq DESTRUCT for older perls
 dev-perl/Devel-Hide 0.0.900: Forces the unavailability of specified Perl modules (for testing)
+dev-perl/Devel-Leak 0.30.0: Utility for looking for perl objects that are not reclaimed
 dev-perl/Devel-LexAlias 0.50.0: Alias lexical variables
 dev-perl/Devel-NYTProf 6.20.0: Powerful feature-rich perl source code profiler
 dev-perl/Devel-OverloadInfo 0.4.0: Introspect overloaded operators
@@ -6131,7 +6132,7 @@ dev-perl/Proc-Wait3 0.50.0: Perl extension for wait3 system call
 dev-perl/Proc-WaitStat 1.0.0-r1: Interpret and act on wait() status values
 dev-perl/Quota 1.7.0 1.7.2: Perl interface to file system quotas
 dev-perl/REST-Client 249 273: A simple client for interacting with RESTful http/https resources
-dev-perl/RPC-XML 0.770.0-r1 0.780.0 0.790.0: An implementation of XML-RPC
+dev-perl/RPC-XML 0.770.0-r1 0.790.0: An implementation of XML-RPC
 dev-perl/RRD-Simple 1.440.0-r1: Simple interface to create and store data in RRD files
 dev-perl/RTF-Writer 1.110.0-r2: RTF::Writer - for generating documents in Rich Text Format
 dev-perl/RadiusPerl 0.220.0-r1: Communicate with a Radius server from Perl
@@ -6149,7 +6150,7 @@ dev-perl/Return-Value 1.666.1-r1: Polymorphic Return Values
 dev-perl/Role-Basic 0.130.0: Just roles. Nothing else
 dev-perl/Role-Tiny 2.0.1: Roles. Like a nouvelle cuisine portion size slice of Moose
 dev-perl/Roman 1.230.0-r1 1.240.0: Perl module for conversion between Roman and Arabic numerals
-dev-perl/Router-Simple 0.140.0-r1: Simple HTTP router
+dev-perl/Router-Simple 0.140.0-r1 0.170.0: Simple HTTP router
 dev-perl/SDL 2.546: Simple DirectMedia Layer (SDL) bindings for perl
 dev-perl/SGMLSpm 1.03-r7: Perl library for parsing the output of nsgmls
 dev-perl/SNMP_Session 1.13-r2: A SNMP Perl Module
@@ -6169,10 +6170,10 @@ dev-perl/Safe-Isa 1.0.5: Call isa, can, does and DOES safely on things that may 
 dev-perl/Sane 0.50.0-r1: The Sane module allows you to access SANE-compatible scanners in a Perl
 dev-perl/Scalar-Properties 1.100.860-r1: run-time properties on scalar variables
 dev-perl/Schedule-At 1.150.0-r1: OS independent interface to the Unix 'at' command
-dev-perl/Schedule-Cron-Events 1.930.0 1.950.0: Take a line from a crontab and find out when events will occur
+dev-perl/Schedule-Cron-Events 1.950.0: Take a line from a crontab and find out when events will occur
 dev-perl/Scope-Guard 0.200.0-r1 0.210.0: Lexically scoped resource management
-dev-perl/Search-Xapian 1.2.19.0 1.2.22.0 1.2.23.0: Perl XS frontend to the Xapian C++ search library
-dev-perl/Server-Starter 0.190.0 0.320.0: A superdaemon for hot-deploying server programs
+dev-perl/Search-Xapian 1.2.19.0 1.2.22.0 1.2.23.0 1.2.23.0-r1: Perl XS frontend to the Xapian C++ search library
+dev-perl/Server-Starter 0.320.0: A superdaemon for hot-deploying server programs
 dev-perl/Set-Crontab 1.30.0: Expand crontab(5)-style integer lists
 dev-perl/Set-Infinite 0.650.0-r1: Sets of intervals
 dev-perl/Set-IntSpan 1.190.0-r1: Manages sets of integers
@@ -6566,7 +6567,7 @@ dev-perl/prefork 1.40.0-r1: Optimized module loading for forking or non-forking 
 dev-perl/regexp-common 2013031301.0.0 2016020301.0.0: Provide commonly requested regular expressions
 dev-perl/rename 1.900.0: A filename renaming utility based on perl regular expression
 dev-perl/rpm-build-perl 0.820.0: Automatically extract Perl dependencies
-dev-perl/self 0.340.0-r1: provides '$self' in OO code
+dev-perl/self 0.340.0-r1 0.350.0: provides '$self' in OO code
 dev-perl/strictures 2.0.1 2.0.2: Turn on strict and make most warnings fatal
 dev-perl/syntax 0.4.0: Activate syntax extensions
 dev-perl/tkispell 0.180.0: Perl/Tk user interface for ispell
@@ -16442,7 +16443,7 @@ sys-apps/fakeroot 1.18.4 1.19 1.20 1.20.2: A fake root environment by means of L
 sys-apps/fakeroot-ng 0.17 0.18 0.18-r1: A utility to run commands with fake root privileges
 sys-apps/fbset 2.1: A utility to set the framebuffer videomode
 sys-apps/file 5.22 5.25 5.26-r1 9999: identify a file's format by scanning binary data for patterns
-sys-apps/findutils 4.4.2-r1 4.4.2-r2 4.5.16 4.5.17 4.5.18 4.6.0: GNU utilities for finding files
+sys-apps/findutils 4.4.2-r2 4.5.18 4.6.0: GNU utilities for finding files
 sys-apps/firejail 0.9.36 0.9.38: Security sandbox for any type of processes
 sys-apps/fix-gnustack 0.1: Utility to report and remove the executable flag from an ELF object's GNU_STACK
 sys-apps/flashrom 0.9.6.1 0.9.7 0.9.8 9999: Utility for reading, writing, erasing and verifying flash ROM chips
