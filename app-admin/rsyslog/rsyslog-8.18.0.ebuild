@@ -135,12 +135,10 @@ src_unpack() {
 				EGIT_BRANCH=${_EGIT_BRANCH}
 			fi
 		else
-			local doc_tarball="${PN}-doc-${PV}.tar.gz"
-
 			cd "${S}" || die "Cannot change dir into '${S}'"
 			mkdir docs || die "Failed to create docs directory"
 			cd docs || die "Failed to change dir into '${S}/docs'"
-			unpack ${doc_tarball}
+			unpack ${MY_FILENAME_DOCS}
 		fi
 	fi
 }
@@ -290,7 +288,7 @@ src_install() {
 		"${FILESDIR}"/${BRANCH}/README.gentoo
 	)
 
-	use doc && local HTML_DOCS=( "${S}/docs/build/" )
+	use doc && local HTML_DOCS=( "${S}/docs/build/." )
 
 	default
 
