@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -64,7 +64,7 @@ src_configure() {
 			mycmakeargs+=(-DBUILD_WITH_QT4=ON)
 		fi
 		if [[ ${MULTIBUILD_VARIANT} = qt5 ]]; then
-			mycmakeargs+=(-DBUILD_WITH_OT4=OFF)
+			mycmakeargs+=(-DBUILD_WITH_QT4=OFF)
 		fi
 		cmake-utils_src_configure
 	}
