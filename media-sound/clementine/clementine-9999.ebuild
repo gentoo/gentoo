@@ -56,7 +56,7 @@ COMMON_DEPEND="
 	mtp? ( >=media-libs/libmtp-1.0.0 )
 	moodbar? ( sci-libs/fftw:3.0 )
 	projectm? ( media-libs/glew:=
-		        >=media-libs/libprojectm-1.2.0 )
+			>=media-libs/libprojectm-1.2.0 )
 "
 # Note: sqlite driver of dev-qt/qtsql is bundled, so no sqlite use is required; check if this can be overcome someway;
 # Libprojectm-1.2 seams to work fine, so no reasons to use bundled version; check the clementine's patches:
@@ -86,13 +86,15 @@ DEPEND="${COMMON_DEPEND}
 	skydrive? ( dev-cpp/sparsehash )
 	test? ( gnome-base/gsettings-desktop-schemas )
 "
-DOCS=(Changelog README.md)
+DOCS=( Changelog README.md )
 
 MY_P="${P/_}"
 [[ ${PV} == *9999* ]] || \
 S="${WORKDIR}/${MY_P^}"
 
-PATCHES=( "${FILESDIR}"/${PN}-1.3-fix-tokenizer.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.3-fix-tokenizer.patch
+)
 
 src_prepare() {
 	cmake-utils_src_prepare
