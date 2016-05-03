@@ -1,0 +1,126 @@
+diff -uNr ppx_compare-113.33.00/expander/ppx_compare_expander.ml ppx_compare-113.33.00+4.03/expander/ppx_compare_expander.ml
+--- ppx_compare-113.33.00/expander/ppx_compare_expander.ml	2016-03-09 16:44:53.000000000 +0100
++++ ppx_compare-113.33.00+4.03/expander/ppx_compare_expander.ml	2016-03-22 15:13:50.000000000 +0100
+@@ -219,53 +219,56 @@
+     if cd.pcd_res <> None then
+       Location.raise_errorf ~loc "GADTs are not supported by comparelib";
+     match cd.pcd_args with
+-    | [] ->
+-      let pcnstr = pconstruct cd None in
+-      let pany = ppat_any ~loc in
+-      let case l r n =
+-        case ~guard:None ~lhs:(ppat_tuple ~loc [l; r]) ~rhs:(eint ~loc n)
+-      in
+-      if rightmost then
+-        [ case pcnstr pcnstr 0 ]
+-      else
+-        [ case pcnstr pcnstr 0
+-        ; case pcnstr pany   (-1)
+-        ; case pany pcnstr   1
+-        ]
+-    | tps ->
+-      let ids_ty =
+-        List.map tps
+-          ~f:(fun ty ->
+-            (gen_symbol ~prefix:"_a" (),
+-             gen_symbol ~prefix:"_b" (),
+-             ty))
+-      in
+-      let lpatt = List.map ids_ty ~f:(fun (l,_r,_ty) -> pvar ~loc l) |> ppat_tuple ~loc
+-      and rpatt = List.map ids_ty ~f:(fun (_l,r,_ty) -> pvar ~loc r) |> ppat_tuple ~loc
+-      and body =
+-        List.map ids_ty ~f:(fun (l,r,ty) ->
+-          compare_of_ty ty (evar ~loc l) (evar ~loc r))
+-        |> chain_if
+-      in
+-      let res =
+-        case ~guard:None
+-          ~lhs:(ppat_tuple ~loc [ pconstruct cd (Some lpatt)
+-                                ; pconstruct cd (Some rpatt)
+-                                ])
+-          ~rhs:body
+-      in
+-      if rightmost then
+-        [ res ]
+-      else
++    | Pcstr_record _ -> failwith "Pcstr_record not supported"
++    | Pcstr_tuple pcd_args ->
++      match pcd_args with
++      | [] ->
++        let pcnstr = pconstruct cd None in
+         let pany = ppat_any ~loc in
+-        let pcnstr = pconstruct cd (Some pany) in
+         let case l r n =
+           case ~guard:None ~lhs:(ppat_tuple ~loc [l; r]) ~rhs:(eint ~loc n)
+         in
+-        [ res
+-        ; case pcnstr pany   (-1)
+-        ; case pany   pcnstr 1
+-        ])
++        if rightmost then
++          [ case pcnstr pcnstr 0 ]
++        else
++          [ case pcnstr pcnstr 0
++          ; case pcnstr pany   (-1)
++          ; case pany pcnstr   1
++          ]
++      | tps ->
++        let ids_ty =
++          List.map tps
++            ~f:(fun ty ->
++              (gen_symbol ~prefix:"_a" (),
++               gen_symbol ~prefix:"_b" (),
++               ty))
++        in
++        let lpatt = List.map ids_ty ~f:(fun (l,_r,_ty) -> pvar ~loc l) |> ppat_tuple ~loc
++        and rpatt = List.map ids_ty ~f:(fun (_l,r,_ty) -> pvar ~loc r) |> ppat_tuple ~loc
++        and body =
++          List.map ids_ty ~f:(fun (l,r,ty) ->
++            compare_of_ty ty (evar ~loc l) (evar ~loc r))
++          |> chain_if
++        in
++        let res =
++          case ~guard:None
++            ~lhs:(ppat_tuple ~loc [ pconstruct cd (Some lpatt)
++                                  ; pconstruct cd (Some rpatt)
++                                  ])
++            ~rhs:body
++        in
++        if rightmost then
++          [ res ]
++        else
++          let pany = ppat_any ~loc in
++          let pcnstr = pconstruct cd (Some pany) in
++          let case l r n =
++            case ~guard:None ~lhs:(ppat_tuple ~loc [l; r]) ~rhs:(eint ~loc n)
++          in
++          [ res
++          ; case pcnstr pany   (-1)
++          ; case pany   pcnstr 1
++          ])
+   |> List.map ~f:List.rev
+   |> List.concat
+   |> List.rev
+diff -uNr ppx_compare-113.33.00/_oasis ppx_compare-113.33.00+4.03/_oasis
+--- ppx_compare-113.33.00/_oasis	2016-03-09 16:44:53.000000000 +0100
++++ ppx_compare-113.33.00+4.03/_oasis	2016-03-22 15:13:50.000000000 +0100
+@@ -1,8 +1,8 @@
+ OASISFormat:      0.4
+-OCamlVersion:     >= 4.02.3
++OCamlVersion:     >= 4.03.0
+ FindlibVersion:   >= 1.3.2
+ Name:             ppx_compare
+-Version:          113.33.00
++Version:          113.33.00+4.03
+ Synopsis:         Generation of comparison functions from types
+ Authors:          Jane Street Group, LLC <opensource@janestreet.com>
+ Copyrights:       (C) 2015-2016 Jane Street Group LLC <opensource@janestreet.com>
+diff -uNr ppx_compare-113.33.00/opam ppx_compare-113.33.00+4.03/opam
+--- ppx_compare-113.33.00/opam	2016-03-18 12:08:01.000000000 +0100
++++ ppx_compare-113.33.00+4.03/opam	2016-03-22 17:51:35.000000000 +0100
+@@ -17,4 +17,4 @@
+   "ppx_tools"     {>= "0.99.3"}
+   "ppx_type_conv"
+ ]
+-available: [ ocaml-version >= "4.02.3" ]
++available: [ ocaml-version >= "4.03.0" ]
