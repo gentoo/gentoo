@@ -12236,7 +12236,7 @@ media-gfx/sfftobmp 3.1.2-r1: sff to bmp converter
 media-gfx/shotwell 0.22.0 0.22.0-r1: Open source photo manager for GNOME
 media-gfx/simple-scan 3.16.2 3.18.2: Simple document scanning utility
 media-gfx/skencil 0.6.18_pre20080519 1.0_alpha784: Interactive X11 vector drawing program
-media-gfx/slic3r 1.1.7 1.2.9-r1 9999: A mesh slicer to generate G-code for fused-filament-fabrication (3D printers)
+media-gfx/slic3r 1.1.7 1.2.9-r2 9999: A mesh slicer to generate G-code for fused-filament-fabrication (3D printers)
 media-gfx/smile 1.0: Slideshow Maker In Linux Environement
 media-gfx/splash-themes-gentoo 20101212-r1 20101212-r2: A collection of Gentoo themes for splashutils
 media-gfx/splash-themes-livecd 2004.3 2005.0 2005.1 2006.0 2006.1 2007.0-r3: Gentoo theme for gensplash consoles
