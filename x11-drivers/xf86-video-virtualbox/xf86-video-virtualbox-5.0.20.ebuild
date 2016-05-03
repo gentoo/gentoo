@@ -73,14 +73,19 @@ pkg_setup() {
 }
 
 src_prepare() {
-	# Prepare the vboxvideo_drm Makefiles
-	#cp "${FILESDIR}/Makefile.inc" "${MODULES_SRC_DIR}" || die
-	ln -s Makefile.module.kms "${MODULES_SRC_DIR}/Makefile" || die
-	#sed '/^include.*header/ainclude $(obj)/Makefile.inc' \
-	#	-i "${MODULES_SRC_DIR}/Makefile.module.kms" || die
-	for incfile in Makefile.include.{head,foot}er ; do
-		ln -s "${S}/src/VBox/Installer/linux/${incfile}" \
-			"${MODULES_SRC_DIR}/${incfile}" || die
+	# Prepare the vboxvideo_drm Makefiles and build dir
+	eapply "${FILESDIR}"/${P}-Makefile.module.kms.patch
+	ln -sf Makefile.module.kms "${MODULES_SRC_DIR}"/Makefile || die
+	# All of these are expected to be in $(KBUILD_EXTMOD)/ so symlink them into place
+	local incfile incfiles=(
+		include
+		src/VBox/Runtime/r0drv
+		src/VBox/Installer/linux/Makefile.include.{head,foot}er
+		out/linux.${ARCH}/release/{product,version,revision}-generated.h
+	)
+	for incfile in ${incfiles[@]} ; do
+		ln -sf "${S}"/${incfile} \
+			"${MODULES_SRC_DIR}"/${incfile##*/} || die
 	done
 
 	# Remove shipped binaries (kBuild,yasm), see bug #232775
@@ -118,18 +123,14 @@ src_configure() {
 }
 
 src_compile() {
-	local targets=()
-
-	targets=(
+	local each targets=(
 		Runtime
 		Additions/common/VBoxGuestLib
 		GuestHost/OpenGL
 		Additions/x11/x11stubs
 		Additions/common/crOpenGL
 		Additions/x11/vboxvideo
-		#Additions/linux/drm
 	)
-
 	for each in ${targets[@]} ; do
 		pushd "${S}"/src/VBox/${each} $>/dev/null || die
 		MAKE="kmk" \
@@ -142,18 +143,18 @@ src_compile() {
 
 	if use dri ; then
 		local objdir="out/linux.${ARCH}/release/obj/vboxvideo_drv_system/src/VBox"
-		ln -s "${S}"/${objdir}/Additions/common/VBoxVideo/HGSMIBase.o \
-			${MODULES_SRC_DIR} || die
-		ln -s "${S}"/${objdir}/GuestHost/HGSMI/HGSMICommon.o \
-			${MODULES_SRC_DIR} || die
-		ln -s "${S}"/${objdir}/GuestHost/HGSMI/HGSMIMemAlloc.o \
-			${MODULES_SRC_DIR} || die
-		ln -s "${S}"/${objdir}/Runtime/common/alloc/heapoffset.o \
-			${MODULES_SRC_DIR} || die
-		ln -s "${S}"/${objdir}/Additions/common/VBoxVideo/Modesetting.o \
-			${MODULES_SRC_DIR} || die
-		ln -s "${S}"/${objdir}/Additions/common/VBoxVideo/VBVABase.o \
-			${MODULES_SRC_DIR} || die
+		# see the vboxvideo_drm_SOURCES list in Makefile.kmk for the below
+		targets=(
+			Additions/common/VBoxVideo/HGSMIBase.o
+			Additions/common/VBoxVideo/Modesetting.o
+			Additions/common/VBoxVideo/VBVABase.o
+			GuestHost/HGSMI/HGSMICommon.o
+			GuestHost/HGSMI/HGSMIMemAlloc.o
+			Runtime/common/alloc/heapoffset.o
+		)
+		for each in ${targets[@]} ; do
+			ln -sf "${S}"/${objdir}/${each} "${MODULES_SRC_DIR}"/${each##*/} || die
+		done
 
 		# Now creating the kernel modules. We must do this _after_
 		# we compiled the user-space tools as we need two of the
