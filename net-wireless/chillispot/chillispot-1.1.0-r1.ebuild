@@ -1,8 +1,8 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-inherit eutils
+EAPI=6
 
 DESCRIPTION="open source captive portal or wireless LAN access point controller"
 HOMEPAGE="http://www.chillispot.info/"
@@ -16,19 +16,19 @@ IUSE=""
 DEPEND=">=sys-apps/sed-4"
 RDEPEND=""
 
-src_unpack() {
-	unpack ${A}
-	cd "${S}"
+src_prepare() {
 	chmod 644 doc/*.conf
 	find . -exec chmod go-w '{}' \;
 
-	epatch "${FILESDIR}"/${P}-gcc44.patch
+	eapply "${FILESDIR}"/${P}-gcc44.patch
+
+	default
 }
 
 src_install() {
-	emake DESTDIR="${D}" STRIPPROG=true install || die "emake install failed"
+	emake DESTDIR="${D}" STRIPPROG=true install
 	cd doc && dodoc chilli.conf freeradius.users hotspotlogin.cgi firewall.iptables
 
 	# init script provided by Michele Beltrame bug #124698
-	newinitd "${FILESDIR}"/${PN} ${PN} || die
+	doinitd "${FILESDIR}"/${PN}
 }

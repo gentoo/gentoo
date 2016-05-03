@@ -1,15 +1,15 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 # note: wxGTK interface has been removed wrt #391685. this ebuild is only for
 # cmdline tools as is.
 
-EAPI=5
+EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1 eutils
+inherit distutils-r1
 
 MY_PN=BitTornado
 MY_P=${MY_PN}-${PV}
@@ -35,7 +35,7 @@ python_prepare_all() {
 	# fixes wrong icons path
 	sed -i "s:os.path.abspath(os.path.dirname(os.path.realpath(sys.argv\[0\]))):\"${PIXMAPLOC}/\":" btdownloadgui.py
 	# Needs wxpython-2.6 only, bug #201247
-	epatch "${FILESDIR}"/${P}-wxversion.patch
+	eapply "${FILESDIR}"/${P}-wxversion.patch
 
 	distutils-r1_python_prepare_all
 }

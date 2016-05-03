@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
+EAPI="6"
 WANT_AUTOCONF=2.5
 
 inherit flag-o-matic eutils autotools toolchain-funcs user
@@ -58,8 +58,10 @@ src_prepare() {
 	eautoconf
 	cd "${S}"
 	use ocamlopt || sed -i -e "s/ocamlopt/idontwantocamlopt/g" "${S}/config/configure" || die "failed to disable ocamlopt"
-	epatch "${FILESDIR}/ocaml4.patch"
-	has_version '>=dev-lang/ocaml-4.03' && epatch "${FILESDIR}/ocaml-4.03.patch"
+	eapply "${FILESDIR}/ocaml4.patch"
+	has_version '>=dev-lang/ocaml-4.03' && eapply "${FILESDIR}/ocaml-4.03.patch"
+
+	default
 }
 
 src_configure() {

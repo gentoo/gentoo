@@ -1,10 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-inherit eutils wxwidgets user
+inherit wxwidgets user
 
 MY_P=${PN/m/M}-${PV}
 S="${WORKDIR}"/${MY_P}
@@ -46,9 +46,11 @@ pkg_preinst() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-2.2.6-fallocate.diff
+	eapply "${FILESDIR}"/${PN}-2.2.6-fallocate.diff
 	# Bug 412371
-	epatch "${FILESDIR}"/${PN}-2.3.1-gcc47.patch
+	eapply "${FILESDIR}"/${PN}-2.3.1-gcc47.patch
+
+	default
 }
 
 src_configure() {

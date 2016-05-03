@@ -1,10 +1,10 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
+EAPI="6"
 
-inherit eutils versionator
+inherit versionator
 
 MY_P1=${PN}-$(replace_version_separator 2 -)
 MY_P2=${PN}-$(get_version_component_range 1-2)
@@ -40,9 +40,11 @@ DEPEND="${RDEPEND}
 S=${WORKDIR}/${MY_P2}
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-3.4-ptrace.patch
-	epatch "${FILESDIR}"/${PN}-3.2.2-h323plus-buildopts.patch
-	epatch "${FILESDIR}"/${PN}-3.2.2-lua.cxx-toolkit_h.patch
+	eapply -p1 "${FILESDIR}"/${PN}-3.4-ptrace.patch
+	eapply "${FILESDIR}"/${PN}-3.2.2-h323plus-buildopts.patch
+	eapply "${FILESDIR}"/${PN}-3.2.2-lua.cxx-toolkit_h.patch
+
+	default
 }
 
 # TODO: investigate possible ebuild conversion to use cmake
