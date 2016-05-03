@@ -2371,7 +2371,7 @@ app-text/pdfsandwich 0.1.4: generator of sandwich OCR pdf files
 app-text/pdfshuffler 0.6.0 0.6.0-r1: GUI app that can merge or split pdfs and rotate, crop and rearrange their pages
 app-text/pdftk 2.02: A tool for manipulating PDF documents
 app-text/peg-markdown 0.4.14: Implementation of markdown in C, using a PEG grammar
-app-text/pelican 3.6.0 3.6.3: A tool to generate a static blog, with restructured text (or markdown) input files
+app-text/pelican 3.6.0 3.6.3: A tool to generate a static blog, with restructured text or markdown input files
 app-text/pep 2.8-r1: General purpose filter and file cleaning program
 app-text/pinfo 0.6.10-r5: Hypertext info and man viewer based on (n)curses
 app-text/po4a 0.45-r1 0.45-r2: Tools for helping translation of documentation
@@ -7153,7 +7153,7 @@ dev-python/eyeD3 0.7.5: Module for manipulating ID3 (v1 + v2) tags in Python
 dev-python/fabric 1.10.0-r1 1.10.1 1.10.2-r1: A simple pythonic tool for remote execution and deployment
 dev-python/falcon 0.1.6 0.1.7 0.1.8 0.1.9: A supersonic micro-framework for building cloud APIs
 dev-python/fasteners 0.13.0: A python package that provides useful locks
-dev-python/feedgenerator 1.6 1.7: Standalone version of django.utils.feedgenerator
+dev-python/feedgenerator 1.6 1.7 1.8: Standalone version of django.utils.feedgenerator
 dev-python/feedparser 5.1.3-r2 5.2.1: Parse RSS and Atom feeds in Python
 dev-python/fexpect 0.2: Extension for fabric to handle prompts through pexpect
 dev-python/figleaf 0.6.1-r1: Code coverage tool
@@ -14950,7 +14950,7 @@ net-p2p/bitcoinxt-qt 0.11.0d: BitcoinXT crypto-currency GUI wallet
 net-p2p/bitcoinxtd 0.11.0d: BitcoinXT crypto-currency wallet for automated services
 net-p2p/bitflu 1.50 1.51 1.52: BitTorrent client, written in Perl and is designed to run as a daemon
 net-p2p/bittornado 0.3.18-r2 0.3.18-r3: TheShad0w's experimental BitTorrent client
-net-p2p/classified-ads 0.07 0.07_p20150728 0.09 0.09_p20151220: Program for displaying classified advertisement items
+net-p2p/classified-ads 0.07 0.07_p20150728 0.09 0.09_p20151220 0.10: Program for displaying classified advertisement items
 net-p2p/createtorrent 1.1.4: Create BitTorrent files easily
 net-p2p/ctcs 1.4.1: interface for monitoring and managing Enhanced CTorrent clients
 net-p2p/ctorrent 3.3.2-r2 3.3.2-r3: Enhanced CTorrent is a BitTorrent console client written in C and C++
