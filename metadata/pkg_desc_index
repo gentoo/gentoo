@@ -14126,7 +14126,7 @@ net-irc/ii 1.6 1.7: A minimalist FIFO and filesystem-based IRC client
 net-irc/iip 1.2: Proxy server for encrypted anonymous IRC-like network
 net-irc/inspircd 2.0.20 2.0.21: Inspire IRCd - The Stable, High-Performance Modular IRCd
 net-irc/irc-client 2.10.3_p7: A simplistic RFC compliant IRC client
-net-irc/irc-server 2.11.1_p1-r2: RFC compliant IRC server
+net-irc/irc-server 2.11.1_p1-r3: RFC compliant IRC server
 net-irc/ircii 20110228 20111115: An IRC and ICB client that runs under most UNIX platforms
 net-irc/ircmap 0.99: Scripts to treate diagrams of IRC networks using the LINKS command
 net-irc/ircservices 5.1.24: ChanServ, NickServ, and MemoServ with support for several IRC daemons
@@ -14151,8 +14151,8 @@ net-irc/onis 0.8.2: onis not irc stats
 net-irc/pisg 0.73-r1: Perl IRC Statistics Generator
 net-irc/polari 3.16.1 3.18.1 3.18.1-r1: An IRC client for Gnome
 net-irc/psybnc 2.3.2.9-r2: psyBNC is a multi-user and multi-server gateway to IRC networks
-net-irc/ptlink-ircd 6.19.6-r2: Secure IRC daemon with many advanced features
-net-irc/ptlink-opm 1.3.1: PTlink Open Proxy Monitor
+net-irc/ptlink-ircd 6.19.6-r3: Secure IRC daemon with many advanced features
+net-irc/ptlink-opm 1.3.1-r1: PTlink Open Proxy Monitor
 net-irc/quassel 0.12.2-r3 0.12.3-r1 0.12.4 9999: Qt/KDE IRC client supporting a remote daemon for 24/7 connectivity
 net-irc/quassel-irssi 0_p20160412: Irssi module to connect to Quassel cores.
 net-irc/rbot 0.9.15_p20131020-r1: A ruby IRC bot
@@ -14888,7 +14888,7 @@ net-misc/youtube-viewer 3.1.9 3.2.0 9999: A command line utility for viewing you
 net-misc/ytalk 3.3.0: Multi-user replacement for UNIX talk
 net-misc/zssh 1.5c-r1: An ssh wrapper enabling zmodem up/download in ssh
 net-misc/zsync 0.6.2-r1: Partial/differential file download client over HTTP which uses the rsync algorithm
-net-nds/389-admin 1.1.31: 389 Directory Server (admin)
+net-nds/389-admin 1.1.31-r1: 389 Directory Server (admin)
 net-nds/389-ds-base 1.3.4.8 1.3.5.1: 389 Directory Server (core librares and daemons )
 net-nds/adtool 1.3.3: Utility for Active Directory administration
 net-nds/gosa-core 2.6.10 2.6.11 2.6.12: LDAP administration frontend for user administration
@@ -14908,9 +14908,9 @@ net-nds/shelldap 1.3.1: A handy shell-like interface for browsing LDAP servers a
 net-nds/smbldap-tools 0.9.8 0.9.9 0.9.10 0.9.10-r1: Samba LDAP management tools
 net-nds/tac_plus 4.0.4.19-r3 4.0.4.19-r4 4.0.4.27a: An updated version of Cisco's TACACS+ server
 net-nds/yp-tools 2.12-r1: Network Information Service tools
-net-nds/ypbind 1.37.2: Multithreaded NIS bind service (ypbind-mt)
-net-nds/ypserv 2.26: Network Information Service server
-net-news/amphetadesk 0.93.1 0.93.1-r1: AmphetaDesk is a free syndicated news aggregator
+net-nds/ypbind 1.37.2-r1: Multithreaded NIS bind service (ypbind-mt)
+net-nds/ypserv 2.26-r1: Network Information Service server
+net-news/amphetadesk 0.93.1-r1: AmphetaDesk is a free syndicated news aggregator
 net-news/blam 1.8.9 1.8.12: A RSS aggregator written in C#
 net-news/canto-curses 0.9.3: The ncurses client for canto-daemon
 net-news/canto-daemon 0.9.1: Daemon part of Canto-NG RSS reader
