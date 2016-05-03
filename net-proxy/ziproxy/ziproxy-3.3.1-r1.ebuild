@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 inherit user
 
 DESCRIPTION="A forwarding, non-caching, compressing web proxy server"
@@ -33,6 +33,8 @@ pkg_setup() {
 }
 
 src_prepare() {
+	default
+
 	# fix sample config file
 	sed -i \
 		-e "s:/var/ziproxy/:/var/lib/ziproxy/:g" \

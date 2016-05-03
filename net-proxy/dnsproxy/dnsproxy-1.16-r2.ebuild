@@ -1,8 +1,8 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=6
 
 inherit eutils flag-o-matic
 
@@ -19,8 +19,10 @@ DEPEND="dev-libs/libevent"
 RDEPEND="${DEPEND}"
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-include.patch
-	append-flags -D_GNU_SOURCE
+	eapply -p0 "${FILESDIR}"/${P}-include.patch
+	append-cppflags -D_GNU_SOURCE
+
+	default
 }
 
 src_compile() {

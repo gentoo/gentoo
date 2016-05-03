@@ -1,8 +1,8 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=6
 inherit eutils user
 
 DESCRIPTION="Web caching proxy suitable for non-permanent Internet connections"
@@ -23,10 +23,11 @@ DEPEND="dev-lang/perl
 # Unsure whether to depend on >=www-misc/htdig-3.1.6-r4 or not
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-2.9i-define.patch
+	eapply "${FILESDIR}"/${PN}-2.9i-define.patch
 	sed -i cache/Makefile.in \
 		-e 's#$(TAR) xpf #$(TAR) --no-same-owner -xpf #' \
 		|| die
+	default
 }
 
 src_configure() {

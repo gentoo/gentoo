@@ -1,9 +1,9 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
-inherit autotools eutils
+EAPI=6
+inherit autotools
 
 DESCRIPTION="A lightweight SOCKS proxy server"
 HOMEPAGE="http://monkey.org/~marius/nylon/"
@@ -23,7 +23,9 @@ DEPEND="
 DOCS=( README THANKS )
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-libevent.patch
+	default
+
+	eapply "${FILESDIR}"/${P}-libevent.patch
 	eautoreconf
 }
 
