@@ -4,8 +4,6 @@
 
 EAPI=5
 
-inherit eutils
-
 DESCRIPTION="OCamlbuild"
 HOMEPAGE="https://github.com/ocaml/ocamlbuild"
 SRC_URI="https://github.com/ocaml/ocamlbuild/archive/${PV}.tar.gz -> ${P}.tar.gz"
@@ -19,10 +17,6 @@ DEPEND=">=dev-lang/ocaml-4.02.3-r1:=[ocamlopt?]"
 RDEPEND="${DEPEND}
 	!<dev-ml/findlib-1.6.1-r1
 "
-
-src_prepare() {
-	epatch "${FILESDIR}/installbin.patch"
-}
 
 src_configure() {
 	emake -f configure.make Makefile.config \
