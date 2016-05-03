@@ -5730,6 +5730,13 @@ net-libs/libssh:ssh1 - Build with SSH1 support
 net-libs/libssh2:gcrypt - Use dev-libs/libgcrypt instead of dev-libs/openssl
 net-libs/libvncserver:24bpp - enable 24bpp support
 net-libs/libvncserver:gcrypt - enable support for gcrypt
+net-libs/libwebsockets:client - The client part of the library
+net-libs/libwebsockets:http2 - Compile with support for http2
+net-libs/libwebsockets:ipv6 - Compile with support for ipv6
+net-libs/libwebsockets:server - The server part of the library
+net-libs/libwebsockets:ssl - Include SSL support (default dev-libs/openssl)
+net-libs/libwebsockets:static-libs - Build the static version of the library
+net-libs/libwebsockets:zlib - Include zlib support
 net-libs/loudmouth:asyncns - Use net-libs/libasyncns for asynchronous name resolution.
 net-libs/loudmouth:openssl - Enable dev-libs/openssl support instead of gnutls (which is the default).
 net-libs/mbedtls:havege - Enable the HAVEGE random generator. Warning: the HAVEGE random generator is not suitable for virtualized environments
