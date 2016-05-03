@@ -33,8 +33,6 @@ PATCHES=(
 	)
 
 python_prepare_all() {
-	default
-
 	local wand
 	wand=$(pkg-config --libs MagickWand | sed -e "s:^ *::g" -e "s: *$::g" -e "s:-l:\':g" -e "s: :',:g" -e "s:$:':g" -e "s:,'$::g")
 
