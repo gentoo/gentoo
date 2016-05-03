@@ -11,10 +11,6 @@
     <name>Samuli Suominen</name>
   </maintainer>
   <maintainer type="project">
-    <email>qt@gentoo.org</email>
-    <name>Gentoo Qt Project</name>
-  </maintainer>
-  <maintainer type="project">
     <email>desktop-misc@gentoo.org</email>
     <name>Gentoo Desktop Miscellaneous Project</name>
   </maintainer>
