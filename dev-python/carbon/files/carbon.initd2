@@ -1,0 +1,53 @@
+#!/sbin/runscript
+# Copyright 1999-2016 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+export GRAPHITE_CONF_DIR=/etc/carbon
+export GRAPHITE_STORAGE_DIR=/var/lib/carbon
+
+INSTANCE=${SVCNAME/#*.}
+if [ "${INSTANCE}" == "${SVCNAME}" ]; then
+	INSTANCE="a"
+fi
+
+PIDFILE="/var/run/${SVCNAME}.pid"
+PROGRAMNAME=${SVCNAME/.*}
+
+CARBON_CONFIG=${CARBON_CONFIG:-/etc/carbon/carbon.conf}
+
+depend() {
+	use net
+}
+
+
+start_pre() {
+	if [ ! -f ${CARBON_CONFIG} ] ; then
+		eend "Missing ${CARBON_CONFIG}"
+	fi
+	case "${PROGRAMNAME}" in
+		"carbon-relay" )
+			if `grep -q "^RELAY_METHOD = rules$" ${CARBON_CONFIG}`; then
+				[ -f /etc/carbon/relay-rules.conf ] || eend "Missing relay-rules.conf"
+			fi
+			;;
+		"carbon-aggregator" )
+			[ -f /etc/carbon/aggregation-rules.conf ] || eend "Missing missing aggregation-rules.conf"
+			;;
+	esac
+}
+
+start() {
+	ebegin "Starting ${PROGRAMNAME} instance ${INSTANCE}"
+	start-stop-daemon --start --exec /usr/bin/${PROGRAMNAME}.py \
+	    --pidfile ${PIDFILE} \
+	    -- --pidfile ${PIDFILE} --instance ${INSTANCE} \
+		--logdir /var/log/carbon/ --config ${CARBON_CONFIG} start >/dev/null
+	eend $? "Failed to start ${SVCNAME}"
+}
+
+stop() {
+	ebegin "Stopping ${PROGRAMNAME} instance ${INSTANCE}"
+	start-stop-daemon --stop \
+		--pidfile ${PIDFILE}
+	eend $? "Failed to stop ${SVCNAME}"
+}
