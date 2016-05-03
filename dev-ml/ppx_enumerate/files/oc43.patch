@@ -1,0 +1,40 @@
+diff -uNr ppx_enumerate-113.33.00/_oasis ppx_enumerate-113.33.00+4.03/_oasis
+--- ppx_enumerate-113.33.00/_oasis	2016-03-09 16:44:54.000000000 +0100
++++ ppx_enumerate-113.33.00+4.03/_oasis	2016-03-22 15:13:50.000000000 +0100
+@@ -1,8 +1,8 @@
+ OASISFormat:      0.4
+-OCamlVersion:     >= 4.02.3
++OCamlVersion:     >= 4.03.0
+ FindlibVersion:   >= 1.3.2
+ Name:             ppx_enumerate
+-Version:          113.33.00
++Version:          113.33.00+4.03
+ Synopsis:         Generate a list containing all values of a finite type
+ Authors:          Jane Street Group, LLC <opensource@janestreet.com>
+ Copyrights:       (C) 2015-2016 Jane Street Group LLC <opensource@janestreet.com>
+diff -uNr ppx_enumerate-113.33.00/opam ppx_enumerate-113.33.00+4.03/opam
+--- ppx_enumerate-113.33.00/opam	2016-03-18 12:08:01.000000000 +0100
++++ ppx_enumerate-113.33.00+4.03/opam	2016-03-22 17:51:36.000000000 +0100
+@@ -16,4 +16,4 @@
+   "ppx_tools"     {>= "0.99.3"}
+   "ppx_type_conv"
+ ]
+-available: [ ocaml-version >= "4.02.3" ]
++available: [ ocaml-version >= "4.03.0" ]
+diff -uNr ppx_enumerate-113.33.00/src/ppx_enumerate.ml ppx_enumerate-113.33.00+4.03/src/ppx_enumerate.ml
+--- ppx_enumerate-113.33.00/src/ppx_enumerate.ml	2016-03-09 16:44:54.000000000 +0100
++++ ppx_enumerate-113.33.00+4.03/src/ppx_enumerate.ml	2016-03-22 15:13:50.000000000 +0100
+@@ -226,10 +226,11 @@
+ 
+ and constructor_case loc cd =
+   match cd.pcd_args with
+-  | [] -> [%expr [ [%e econstruct cd None ] ] ]
+-  | tps ->
++  | Pcstr_tuple [] -> [%expr [ [%e econstruct cd None ] ] ]
++  | Pcstr_tuple tps ->
+     product loc tps (fun x ->
+       econstruct cd (Some (pexp_tuple ~loc x)))
++  | Pcstr_record _ -> failwith "Pcstr_record not supported"
+ 
+ and product loc tps f =
+     let all = List.map tps ~f:(fun tp -> enum ~main_type:tp tp) in
