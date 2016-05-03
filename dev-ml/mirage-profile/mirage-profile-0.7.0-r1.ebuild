@@ -22,7 +22,8 @@ RDEPEND="
 	>=dev-lang/ocaml-4:=
 	dev-ml/io-page:=
 	dev-ml/lwt:=
-	>=dev-ml/ocaml-cstruct-1.9.0:=[camlp4(-)]
+	>=dev-ml/ocaml-cstruct-1.9.0:=[ppx(-)]
+	dev-ml/ppx_tools:=
 	dev-ml/ocplib-endian:=
 "
 DEPEND="
