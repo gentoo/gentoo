@@ -14945,14 +14945,14 @@ net-nntp/tin 2.0.1-r1 2.2.1 2.3.1: A threaded NNTP and spool based UseNet newsre
 net-nntp/ubh 2.5: The Usenet Binary Harvester
 net-nntp/xrn 9.02: A small and fast news reader for X
 net-p2p/airdcpp-webclient 1.0.1 1.0.2 1.0.3: Cross-platform Direct Connect client
-net-p2p/amule 2.3.1 2.3.1-r1: aMule, the all-platform eMule p2p client
+net-p2p/amule 2.3.1 2.3.1-r2: aMule, the all-platform eMule p2p client
 net-p2p/bitcoin-cli 0.10.2 0.11.0 0.11.1 0.11.2 0.12.0 9999: Command-line client specifically designed for talking to Bitcoin Core Daemon
 net-p2p/bitcoin-qt 0.10.2 0.10.2-r1 0.11.0 0.11.1 0.11.2 0.12.0 9999: An end-user Qt GUI for the Bitcoin crypto-currency
 net-p2p/bitcoind 0.10.2 0.10.2-r1 0.11.0 0.11.1 0.11.2 0.12.0 9999: Original Bitcoin crypto-currency wallet for automated services
 net-p2p/bitcoinxt-qt 0.11.0d: BitcoinXT crypto-currency GUI wallet
 net-p2p/bitcoinxtd 0.11.0d: BitcoinXT crypto-currency wallet for automated services
 net-p2p/bitflu 1.50 1.51 1.52: BitTorrent client, written in Perl and is designed to run as a daemon
-net-p2p/bittornado 0.3.18-r2 0.3.18-r3: TheShad0w's experimental BitTorrent client
+net-p2p/bittornado 0.3.18-r2 0.3.18-r4: TheShad0w's experimental BitTorrent client
 net-p2p/classified-ads 0.07 0.07_p20150728 0.09 0.09_p20151220: Program for displaying classified advertisement items
 net-p2p/createtorrent 1.1.4: Create BitTorrent files easily
 net-p2p/ctcs 1.4.1: interface for monitoring and managing Enhanced CTorrent clients
@@ -14977,7 +14977,7 @@ net-p2p/litecoind 0.10.2.2-r4: P2P Internet currency based on Bitcoin but easier
 net-p2p/microdc2 0.15.6-r2: A small command-line based Direct Connect client
 net-p2p/mktorrent 1.0-r1: Simple command line utility to create BitTorrent metainfo files
 net-p2p/mktorrent-borg 0.9.9: Console .torrent file creator. It support Multi Trackers (tier groups)
-net-p2p/mldonkey 3.1.5: A multi-network P2P application written in Ocaml, with its own Gtk GUI, web and telnet interface
+net-p2p/mldonkey 3.1.5-r1: A multi-network P2P application written in Ocaml, with its own Gtk GUI, web and telnet interface
 net-p2p/multibit 0.5.18: Secure, lightweight, international Bitcoin wallet written in Java
 net-p2p/myster 8.0-r1: Myster is a decentralized file sharing network
 net-p2p/nap 1.5.4-r1: Console Napster/OpenNap client
@@ -15089,10 +15089,10 @@ net-proxy/wwwoffle 2.9i: Web caching proxy suitable for non-permanent Internet c
 net-proxy/ziproxy 3.3.1: A forwarding, non-caching, compressing web proxy server
 net-voip/blink 1.4.1: A state of the art, easy to use SIP client
 net-voip/ekiga 4.0.1: H.323 and SIP VoIP softphone
-net-voip/gnugk 3.4: GNU H.323 gatekeeper
+net-voip/gnugk 3.4-r1: GNU H.323 gatekeeper
 net-voip/homer 0.25-r1 9999: Homer Conferencing (short: Homer) is a free SIP softphone with advanced audio and video support
 net-voip/linphone 3.5.2 3.6.1: Video softphone based on the SIP protocol
-net-voip/openmcu 2.2.5: Simple Multi Conference Unit using H.323
+net-voip/openmcu 2.2.5-r1: Simple Multi Conference Unit using H.323
 net-voip/telepathy-gabble 0.18.3: A Jabber/XMPP connection manager, with handling of single and multi user chats and voice calls
 net-voip/telepathy-haze 0.8.0 0.8.0-r1: Telepathy connection manager providing libpurple supported protocols
 net-voip/telepathy-rakia 0.8.0: A SIP connection manager for Telepathy based around the Sofia-SIP library
@@ -15116,7 +15116,7 @@ net-wireless/bluez-hcidump 2.5: Bluetooth HCI packet analyzer
 net-wireless/broadcom-sta 6.30.223.30-r2 6.30.223.141-r2 6.30.223.248-r4 6.30.223.248-r5 6.30.223.271-r2 6.30.223.271-r3: Broadcom's IEEE 802.11a/b/g/n hybrid Linux device driver
 net-wireless/bss 0.8: Bluetooth stack smasher / fuzzer
 net-wireless/btcrack 9999: linux port of Thierry Zollers' BTCrack
-net-wireless/chillispot 1.1.0: open source captive portal or wireless LAN access point controller
+net-wireless/chillispot 1.1.0-r1: open source captive portal or wireless LAN access point controller
 net-wireless/chirp 20160419 99999999: Free open-source tool for programming your amateur radio
 net-wireless/cpyrit-cuda 0.4.0-r1: A sub-package that adds CUDA-capability to Pyrit
 net-wireless/cpyrit-opencl 0.4.0-r1: A sub-package that adds OpenCL-capability to Pyrit
@@ -15139,7 +15139,7 @@ net-wireless/horst 4.2 9999: Small 802.11 wireless LAN analyzer
 net-wireless/hostap-utils 0.4.7-r1: Utilities for Intersil Prism2/2.5/3 based IEEE 802.11b wireless LAN products
 net-wireless/hostapd 2.5: IEEE 802.11 wireless LAN Host AP daemon
 net-wireless/inspectrum 0.1.1 9999: a tool for analysing captured signals from software-defined radio receivers
-net-wireless/irda-utils 0.9.18-r4 0.9.18-r5: IrDA management and handling utilities
+net-wireless/irda-utils 0.9.18-r4 0.9.18-r6: IrDA management and handling utilities
 net-wireless/iw 3.17 4.0 4.3: nl80211-based configuration utility for wireless devices using the mac80211 kernel stack
 net-wireless/kismet 2013.03.1-r2 2016.01.1 9999: IEEE 802.11 wireless LAN sniffer
 net-wireless/kismet-ubertooth 2015.09.2 2015.10.1 9999: Provides basic bluetooth support in kismet
