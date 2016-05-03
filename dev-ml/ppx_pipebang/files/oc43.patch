@@ -1,0 +1,46 @@
+diff -uNr ppx_pipebang-113.33.00/_oasis ppx_pipebang-113.33.00+4.03/_oasis
+--- ppx_pipebang-113.33.00/_oasis	2016-03-09 16:44:54.000000000 +0100
++++ ppx_pipebang-113.33.00+4.03/_oasis	2016-03-22 15:13:51.000000000 +0100
+@@ -1,8 +1,8 @@
+ OASISFormat:      0.4
+-OCamlVersion:     >= 4.02.3
++OCamlVersion:     >= 4.03.0
+ FindlibVersion:   >= 1.3.2
+ Name:             ppx_pipebang
+-Version:          113.33.00
++Version:          113.33.00+4.03
+ Synopsis:         A ppx rewriter that inlines reverse application operators `|>` and `|!`
+ Authors:          Jane Street Group, LLC <opensource@janestreet.com>
+ Copyrights:       (C) 2015-2016 Jane Street Group LLC <opensource@janestreet.com>
+diff -uNr ppx_pipebang-113.33.00/opam ppx_pipebang-113.33.00+4.03/opam
+--- ppx_pipebang-113.33.00/opam	2016-03-18 12:08:01.000000000 +0100
++++ ppx_pipebang-113.33.00+4.03/opam	2016-03-22 17:51:37.000000000 +0100
+@@ -16,4 +16,4 @@
+   "ppx_driver"
+   "ppx_tools"  {>= "0.99.3"}
+ ]
+-available: [ ocaml-version >= "4.02.3" ]
++available: [ ocaml-version >= "4.03.0" ]
+diff -uNr ppx_pipebang-113.33.00/src/ppx_pipebang.ml ppx_pipebang-113.33.00+4.03/src/ppx_pipebang.ml
+--- ppx_pipebang-113.33.00/src/ppx_pipebang.ml	2016-03-09 16:44:54.000000000 +0100
++++ ppx_pipebang-113.33.00+4.03/src/ppx_pipebang.ml	2016-03-22 15:13:51.000000000 +0100
+@@ -11,16 +11,16 @@
+     let loc = e.pexp_loc in
+     match e.pexp_desc with
+     | Pexp_apply ({ pexp_desc = Pexp_ident { txt = Lident ("|!" | "|>"); _ }; _ },
+-                  [("", x); ("", y)]) -> begin
++                  [(Nolabel, x); (Nolabel, y)]) -> begin
+         let x = self#expression x in
+         let y = self#expression y in
+         match y with
+         | { pexp_desc = Pexp_construct (id, None); _ } ->
+           { y with pexp_desc = Pexp_construct (id, Some x) }
+         | { pexp_desc = Pexp_apply (f, args); pexp_attributes = []; _ } ->
+-          { e with pexp_desc = Pexp_apply (f, args @ [("", x)]) }
++          { e with pexp_desc = Pexp_apply (f, args @ [(Nolabel, x)]) }
+         | _ ->
+-          { e with pexp_desc = Pexp_apply (y, [("", x)]) }
++          { e with pexp_desc = Pexp_apply (y, [(Nolabel, x)]) }
+       end
+     | Pexp_ident { txt = Lident ("|!" | "|>" as s); _ } ->
+       Location.raise_errorf ~loc "%s must be applied to two arguments" s
