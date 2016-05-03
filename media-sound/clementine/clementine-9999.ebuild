@@ -2,14 +2,14 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 EGIT_REPO_URI="https://github.com/clementine-player/Clementine.git"
 
 LANGS=" af ar be bg bn br bs ca cs cy da de el en_CA en_GB eo es et eu fa fi fr ga gl he he_IL hi hr hu hy ia id is it ja ka kk ko lt lv mr ms my nb nl oc pa pl pt pt_BR ro ru si_LK sk sl sr sr@latin sv te tr tr_TR uk uz vi zh_CN zh_TW"
 
 inherit cmake-utils flag-o-matic fdo-mime gnome2-utils virtualx
-[[ ${PV} == *9999* ]] && inherit git-2
+[[ ${PV} == *9999* ]] && inherit git-r3
 
 DESCRIPTION="A modern music player and library organizer based on Amarok 1.4 and Qt4"
 HOMEPAGE="http://www.clementine-player.org https://github.com/clementine-player/Clementine"
@@ -20,7 +20,7 @@ LICENSE="GPL-3"
 SLOT="0"
 [[ ${PV} == *9999* ]] || \
 KEYWORDS="~amd64 ~x86"
-IUSE="box cdda +dbus debug dropbox googledrive ipod lastfm mms moodbar mtp projectm skydrive test ubuntu-one +udisks wiimote"
+IUSE="amazoncloud box cdda +dbus debug dropbox googledrive ipod lastfm mms moodbar mtp projectm pulseaudio skydrive test +udisks vkontakte wiimote"
 IUSE+="${LANGS// / linguas_}"
 
 REQUIRED_USE="
@@ -28,7 +28,6 @@ REQUIRED_USE="
 	wiimote? ( dbus )
 "
 
-# qca dep is temporary for bug #489850
 COMMON_DEPEND="
 	dev-db/sqlite:=
 	>=dev-libs/glib-2.24.1-r1
@@ -38,7 +37,7 @@ COMMON_DEPEND="
 	>=dev-qt/qtcore-4.5:4
 	>=dev-qt/qtgui-4.5:4
 	>=dev-qt/qtopengl-4.5:4
-	>=dev-qt/qtsql-4.5:4[sqlite]
+	>=dev-qt/qtsql-4.5:4
 	>=media-libs/chromaprint-0.6
 	media-libs/gstreamer:1.0
 	media-libs/gst-plugins-base:1.0
@@ -46,6 +45,7 @@ COMMON_DEPEND="
 	>=media-libs/libmygpo-qt-1.0.8
 	>=media-libs/taglib-1.8[mp4]
 	sys-libs/zlib
+	dev-libs/crypto++
 	virtual/glu
 	virtual/opengl
 	x11-libs/libX11
@@ -55,17 +55,19 @@ COMMON_DEPEND="
 	lastfm? ( >=media-libs/liblastfm-1[qt4(+)] )
 	mtp? ( >=media-libs/libmtp-1.0.0 )
 	moodbar? ( sci-libs/fftw:3.0 )
-	projectm? ( media-libs/glew:= )
-	>=dev-libs/crypto++-5.6.2-r4
+	projectm? ( media-libs/glew:=
+			>=media-libs/libprojectm-1.2.0 )
 "
-# now only presets are used, libprojectm is internal
+# Note: sqlite driver of dev-qt/qtsql is bundled, so no sqlite use is required; check if this can be overcome someway;
+# Libprojectm-1.2 seams to work fine, so no reasons to use bundled version; check the clementine's patches:
 # https://github.com/clementine-player/Clementine/tree/master/3rdparty/libprojectm/patches
-# r1966 "Compile with a static sqlite by default, since Qt 4.7 doesn't seem to expose the symbols we need to use FTS"
+# Still possibly essential but not applied yet patches are:
+# 06-fix-numeric-locale.patch
+# 08-stdlib.h-for-rand.patch
 RDEPEND="${COMMON_DEPEND}
 	dbus? ( udisks? ( sys-fs/udisks:2 ) )
 	mms? ( media-plugins/gst-plugins-libmms:1.0 )
 	mtp? ( gnome-base/gvfs )
-	projectm? ( >=media-libs/libprojectm-1.2.0 )
 	media-plugins/gst-plugins-meta:1.0
 	media-plugins/gst-plugins-soup:1.0
 	media-plugins/gst-plugins-taglib:1.0
@@ -76,24 +78,23 @@ DEPEND="${COMMON_DEPEND}
 	sys-devel/gettext
 	dev-qt/qttest:4
 	dev-cpp/gmock
+	amazoncloud? ( dev-cpp/sparsehash )
 	box? ( dev-cpp/sparsehash )
 	dropbox? ( dev-cpp/sparsehash )
 	googledrive? ( dev-cpp/sparsehash )
+	pulseaudio? ( media-sound/pulseaudio )
 	skydrive? ( dev-cpp/sparsehash )
-	ubuntu-one? ( dev-cpp/sparsehash )
 	test? ( gnome-base/gsettings-desktop-schemas )
 "
-DOCS="Changelog"
-
-# https://github.com/clementine-player/Clementine/issues/3935
-RESTRICT="test"
+DOCS=( Changelog README.md )
 
 MY_P="${P/_}"
-# Switch to ^ when we switch to EAPI=6.
 [[ ${PV} == *9999* ]] || \
-S="${WORKDIR}/C${MY_P:1}"
+S="${WORKDIR}/${MY_P^}"
 
-PATCHES=( "${FILESDIR}"/${PN}-1.3-fix-tokenizer.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.3-fix-tokenizer.patch
+)
 
 src_prepare() {
 	cmake-utils_src_prepare
@@ -114,31 +115,32 @@ src_configure() {
 	local mycmakeargs=(
 		-DBUILD_WERROR=OFF
 		-DLINGUAS="${langs}"
-		-DBUNDLE_PROJECTM_PRESETS=OFF
-		-DUSE_SYSTEM_PROJECTM=ON
-		$(cmake-utils_use cdda ENABLE_AUDIOCD)
-		$(cmake-utils_use dbus ENABLE_DBUS)
-		$(cmake-utils_use udisks ENABLE_DEVICEKIT)
-		$(cmake-utils_use ipod ENABLE_LIBGPOD)
-		$(cmake-utils_use lastfm ENABLE_LIBLASTFM)
-		$(cmake-utils_use mtp ENABLE_LIBMTP)
-		$(cmake-utils_use moodbar ENABLE_MOODBAR)
+		-DENABLE_AMAZON_CLOUD_DRIVE="$(usex amazoncloud)"
+		-DENABLE_AUDIOCD="$(usex cdda)"
+		-DENABLE_DBUS="$(usex dbus)"
+		-DENABLE_DEVICEKIT="$(usex udisks)"
+		-DENABLE_LIBGPOD="$(usex ipod)"
+		-DENABLE_LIBLASTFM="$(usex lastfm)"
+		-DENABLE_LIBMTP="$(usex mtp)"
+		-DENABLE_MOODBAR="$(usex moodbar)"
 		-DENABLE_GIO=ON
-		$(cmake-utils_use wiimote ENABLE_WIIMOTEDEV)
-		$(cmake-utils_use projectm ENABLE_VISUALISATIONS)
-		$(usex projectm '-DUSE_SYSTEM_PROJECTM=ON' '')
-		$(cmake-utils_use box ENABLE_BOX)
-		$(cmake-utils_use dropbox ENABLE_DROPBOX)
-		$(cmake-utils_use googledrive ENABLE_GOOGLE_DRIVE)
-		$(cmake-utils_use skydrive ENABLE_SKYDRIVE)
-		$(cmake-utils_use ubuntu-one ENABLE_UBUNTU_ONE)
+		-DENABLE_WIIMOTEDEV="$(usex wiimote)"
+		-DENABLE_VISUALISATIONS="$(usex projectm)"
+		-DENABLE_BOX="$(usex box)"
+		-DENABLE_DROPBOX="$(usex dropbox)"
+		-DENABLE_GOOGLE_DRIVE="$(usex googledrive)"
+		-DENABLE_LIBPULSE="$(usex pulseaudio)"
+		-DENABLE_SKYDRIVE="$(usex skydrive)"
+		-DENABLE_VK="$(usex vkontakte)"
 		-DENABLE_SPOTIFY_BLOB=OFF
-		-DENABLE_BREAKPAD=OFF
-		#$(cmake-utils_use !system-sqlite STATIC_SQLITE)
-		#$(cmake-utils_use system-sqlite I_HATE_MY_USERS)
-		#$(cmake-utils_use system-sqlite MY_USERS_WILL_SUFFER_BECAUSE_OF_ME)
+		-DENABLE_BREAKPAD=OFF  #< disable crash reporting
 		-DUSE_BUILTIN_TAGLIB=OFF
 		-DUSE_SYSTEM_GMOCK=ON
+		-DUSE_SYSTEM_PROJECTM=ON
+		-DBUNDLE_PROJECTM_PRESETS=OFF
+		# force to find crypto++ see bug #548544
+		-DCRYPTOPP_LIBRARIES="crypto++"
+		-DCRYPTOPP_FOUND=ON
 		)
 
 	use !debug && append-cppflags -DQT_NO_DEBUG_OUTPUT
@@ -148,7 +150,7 @@ src_configure() {
 
 src_test() {
 	cd "${CMAKE_BUILD_DIR}" || die
-	Xemake test
+	virtx emake test
 }
 
 pkg_preinst() {
