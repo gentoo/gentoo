@@ -15,13 +15,10 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="+gui test"
 
-# Slic3r is a fragile application.
-# In order to produce reasonably good results we require
-# latest dependencies.
-RDEPEND=">=dev-lang/perl-5.22
+RDEPEND="!=dev-lang/perl-5.16*
 	>=dev-libs/boost-1.55[threads]
 	dev-perl/Class-XSAccessor
-	>=dev-perl/Encode-Locale-0.50.0
+	>=dev-perl/Encode-Locale-1.50.0
 	dev-perl/IO-stringy
 	>=dev-perl/Math-PlanePath-53.0.0
 	>=dev-perl/Moo-1.3.1
