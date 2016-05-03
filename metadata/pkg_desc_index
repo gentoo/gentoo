@@ -10310,7 +10310,7 @@ games-emulation/pcsx2 1.4.0 9999: A PlayStation 2 emulator
 games-emulation/pcsxr 1.9.94 1.9.94-r1: PCSX-Reloaded: a fork of PCSX, the discontinued Playstation emulator
 games-emulation/ppsspp 1.2.2 9999: A PSP emulator written in C++.
 games-emulation/raine 0.51.9: R A I N E M680x0 Arcade Emulation
-games-emulation/sdlmame 0.168: Multiple Arcade Machine Emulator + Multi Emulator Super System (MESS)
+games-emulation/sdlmame 0.168 0.173: Multiple Arcade Machine Emulator + Multi Emulator Super System (MESS)
 games-emulation/snes9x 1.53: Super Nintendo Entertainment System (SNES) emulator
 games-emulation/stella 4.0 4.7.2: Stella Atari 2600 VCS Emulator
 games-emulation/vbam 2.0.0_pre1507 9999: Game Boy, GBC, and GBA emulator forked from VisualBoyAdvance
@@ -10777,7 +10777,6 @@ games-simulation/lincity 1.13.1: city/country simulation game for X and Linux SV
 games-simulation/lincity-ng 2.0: city/country simulation game for X and opengl
 games-simulation/micropolis 1.0: Free version of the well-known city building simulation
 games-simulation/openttd 1.5.3 1.6.0: OpenTTD is a clone of Transport Tycoon Deluxe
-games-simulation/planets 0.1.13: a simple interactive planetary system simulator
 games-simulation/pmars-sdl 0.9.2e: Portable redcode simulator's sdl port for core war
 games-simulation/searchandrescue 1.5.0: Helicopter based air rescue flight simulator
 games-simulation/senken 0.3.0: city simulation game
