@@ -7,9 +7,10 @@ EAPI="5"
 OASIS_BUILD_DOCS=1
 OASIS_BUILD_TESTS=1
 
-inherit oasis
+inherit eutils oasis
 
-DESCRIPTION="System-independent part of Core"
+MY_P=${P/_/\~}
+DESCRIPTION="Jane Street's alternative to the standard library"
 HOMEPAGE="http://www.janestreet.com/ocaml"
 SRC_URI="http://ocaml.janestreet.com/ocaml-core/${PV%.*}/files/${P}.tar.gz"
 
@@ -19,19 +20,19 @@ KEYWORDS="~amd64"
 IUSE=""
 
 RDEPEND="
-	>=dev-ml/bin-prot-112.17.00:=
-	>=dev-ml/fieldslib-109.20.00:=
+	>=dev-ml/bin-prot-113.24.00:=
+	>=dev-ml/core_kernel-113.24.00:=
+	>=dev-ml/fieldslib-113.24.00:=
 	dev-ml/ppx_assert:=
 	dev-ml/ppx_bench:=
 	dev-ml/ppx_driver:=
 	dev-ml/ppx_expect:=
 	dev-ml/ppx_inline_test:=
 	dev-ml/ppx_jane:=
-	>=dev-ml/sexplib-109.20.00:=
-	>=dev-ml/variantslib-109.15.00:=
-	>=dev-ml/typerep-111.17:=
-	dev-ml/result:=
-	"
+	>=dev-ml/sexplib-113.24.00:=
+	dev-ml/typerep:=
+	dev-ml/variantslib:=
+"
 DEPEND="${RDEPEND}"
 
 src_prepare() {
@@ -53,5 +54,5 @@ src_install() {
 		--libdir="${D}/$(ocamlc -where)" \
 		--docdir="${ED}/usr/share/doc/${PF}" \
 		${PN}.install || die
-	dodoc CHANGES.md
+	dodoc CHANGES.md README.md
 }
