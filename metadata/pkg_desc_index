@@ -6155,7 +6155,7 @@ dev-perl/SDL 2.546: Simple DirectMedia Layer (SDL) bindings for perl
 dev-perl/SGMLSpm 1.03-r7 1.1: Perl library for parsing the output of nsgmls
 dev-perl/SNMP_Session 1.13-r2: A SNMP Perl Module
 dev-perl/SOAP-Lite 1.040.0-r1 1.190.0: Lightweight interface to the SOAP protocol both on client and server side
-dev-perl/SOAP-WSDL 3.2.0 3.3.0: SOAP with WSDL support
+dev-perl/SOAP-WSDL 3.3.0: SOAP with WSDL support
 dev-perl/SQL-Abstract 1.780.0 1.810.0: Generate SQL from Perl data structures
 dev-perl/SQL-Abstract-Limit 0.141.0-r1: Portable LIMIT emulation
 dev-perl/SQL-Statement 1.405.0-r1 1.407.0 1.409.0: Small SQL parser and engine
@@ -6186,15 +6186,15 @@ dev-perl/Signal-Mask 0.8.0: Signal masks made easy
 dev-perl/Snowball-Norwegian 1.200.0-r1: Porters stemming algorithm for Norwegian
 dev-perl/Snowball-Swedish 1.200.0-r1: Porters stemming algorithm for Swedish
 dev-perl/Socket-GetAddrInfo 0.220.0: Address-family independent name resolving functions
-dev-perl/Socket6 0.230.0-r1 0.250.0 0.270.0: IPv6 related part of the C socket.h defines and structure manipulators
+dev-perl/Socket6 0.250.0 0.270.0: IPv6 related part of the C socket.h defines and structure manipulators
 dev-perl/Sort-Key 1.330.0: sort objects by some (calculated) key
 dev-perl/Sort-Key-IPv4 0.30.0: Sort IP v4 addresses
 dev-perl/Sort-Naturally 1.30.0-r1: sort lexically, but sort numeral parts numerically
 dev-perl/Sort-Tree 1.90.0-r1: Organize list of objects into parent/child order
-dev-perl/Sort-Versions 1.500.0-r1 1.610.0 1.620.0: A perl 5 module for sorting of revision-like numbers
+dev-perl/Sort-Versions 1.500.0-r1 1.620.0: A perl 5 module for sorting of revision-like numbers
 dev-perl/Speech-Recognizer-SPX 0.80.100-r1: Interface to Sphinx-II speech recognition
-dev-perl/Sphinx-Config 0.90.0-r1 0.100.0: Sphinx search engine configuration file read/modify/write
-dev-perl/Sphinx-Search 0.280-r1 0.290.0: Perl API client for Sphinx search engine
+dev-perl/Sphinx-Config 0.100.0: Sphinx search engine configuration file read/modify/write
+dev-perl/Sphinx-Search 0.290.0: Perl API client for Sphinx search engine
 dev-perl/Spiffy 0.310.0-r1 0.460.0: Spiffy Perl Interface Framework For You
 dev-perl/Spreadsheet-ParseExcel 0.590.0-r1 0.650.0: Read information from an Excel file
 dev-perl/Spreadsheet-WriteExcel 2.390.0-r1 2.400.0: Write cross-platform Excel binary file
@@ -15052,20 +15052,20 @@ net-print/sshlpr 1: ssh-lpr backend for cups -- print to remote systems over ssh
 net-print/xerox-drivers 0_p20080123: PPD files of XEROX printers (CopyCentre, DocuPrint, Phaser, WorkCentre) for CUPS printing system
 net-proxy/3proxy 0.5.3k 0.7.1.2 0.7.1.4 0.8.6: A really tiny cross-platform proxy servers set
 net-proxy/adzapper 20110915-r2: Redirector for squid that intercepts advertising, page counters and some web bugs
-net-proxy/bfilter 1.1.4-r2 1.1.4-r3: Ad-filtering web proxy featuring an effective heuristic ad-detection algorithm
+net-proxy/bfilter 1.1.4-r2 1.1.4-r4: Ad-filtering web proxy featuring an effective heuristic ad-detection algorithm
 net-proxy/c-icap 0.2.6: C Implementation of an ICAP server
 net-proxy/c-icap-modules 0.2.4: URL blocklist and virus scanner for the C-ICAP server
-net-proxy/cntlm 0.93_beta5-r1: Cntlm is an NTLM/NTLMv2 authenticating HTTP proxy
+net-proxy/cntlm 0.93_beta5-r2: Cntlm is an NTLM/NTLMv2 authenticating HTTP proxy
 net-proxy/dante 1.1.19-r4 1.4.0-r2 1.4.1: A free socks4,5 and msproxy implementation
-net-proxy/dnsproxy 1.16-r1: The dnsproxy daemon is a proxy for DNS queries
+net-proxy/dnsproxy 1.16-r2: The dnsproxy daemon is a proxy for DNS queries
 net-proxy/haproxy 1.5.14 1.5.15 1.5.16 1.6.3-r1 1.6.4 9999: A TCP/HTTP reverse proxy for high availability environments
 net-proxy/hatop 0.7.7: interactive ncurses client and real-time monitoring, statistics displaying tool for the HAProxy
-net-proxy/havp 0.92a-r1: HTTP AntiVirus Proxy
-net-proxy/http-replicator 3.0-r4 3.0-r5 4.0_alpha2-r4: Proxy cache for Gentoo packages
+net-proxy/havp 0.92a-r2: HTTP AntiVirus Proxy
+net-proxy/http-replicator 3.0-r4 3.0-r6 4.0_alpha2-r5: Proxy cache for Gentoo packages
 net-proxy/httpush 0.9_beta11-r1: Httpush is an intercepting proxy, allowing user to modify HTTP requests on-the-fly
 net-proxy/mitmproxy 0.10.1 0.11.1 0.11.3: An interactive, SSL-capable, man-in-the-middle HTTP proxy
 net-proxy/nutcracker 0.2.4 0.3.0: A fast, light-weight proxy for Memcached and Redis. (Twitter's Twemproxy)
-net-proxy/nylon 1.21-r1: A lightweight SOCKS proxy server
+net-proxy/nylon 1.21-r2: A lightweight SOCKS proxy server
 net-proxy/obfs4proxy 0.0.6 9999: An obfuscating proxy supporting Tor's pluggable transport protocol obfs4
 net-proxy/obfsproxy 0.2.11 0.2.12 0.2.13: An obfuscating proxy using Tor's pluggable transport protocol
 net-proxy/pingtunnel 0.72: Tunnel TCP over ICMP
@@ -15081,12 +15081,12 @@ net-proxy/squidguard 1.4-r4 1.5_beta-r1: Combined filter, redirector and access 
 net-proxy/squirm 1.26-r1: A redirector for Squid
 net-proxy/sshuttle 0.61-r3 0.73 0.75 0.76 0.77.2 0.78.0: Transparent proxy server that works as a poor man's VPN using ssh
 net-proxy/tayga 0.9.2: out-of-kernel stateless NAT64 implementation based on TUN
-net-proxy/tinyproxy 1.8.3-r3: A lightweight HTTP/SSL proxy
+net-proxy/tinyproxy 1.8.3-r4: A lightweight HTTP/SSL proxy
 net-proxy/torsocks 1.2-r2 2.1.0: Use most socks-friendly applications with Tor
 net-proxy/tsocks 1.8_beta5-r5 1.8_beta5-r8: Transparent SOCKS v4 proxying library
 net-proxy/ufdbguard 1.24-r1 1.29: ufdbGuard is a redirector for the Squid internet proxy
-net-proxy/wwwoffle 2.9i: Web caching proxy suitable for non-permanent Internet connections
-net-proxy/ziproxy 3.3.1: A forwarding, non-caching, compressing web proxy server
+net-proxy/wwwoffle 2.9i-r1: Web caching proxy suitable for non-permanent Internet connections
+net-proxy/ziproxy 3.3.1-r1: A forwarding, non-caching, compressing web proxy server
 net-voip/blink 1.4.1: A state of the art, easy to use SIP client
 net-voip/ekiga 4.0.1: H.323 and SIP VoIP softphone
 net-voip/gnugk 3.4-r1: GNU H.323 gatekeeper
