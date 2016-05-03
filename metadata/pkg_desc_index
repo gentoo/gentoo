@@ -4828,7 +4828,7 @@ dev-libs/openct 0.6.20-r3 0.6.20-r4: library for accessing smart card terminals
 dev-libs/openobex 1.5 1.7.1: An implementation of the OBEX protocol used for transferring data to mobile devices
 dev-libs/opensc 0.12.2-r2 0.13.0 0.14.0 0.15.0: Libraries and applications to access smartcards
 dev-libs/openspecfun 0.4-r1: A collection of special mathematical functions
-dev-libs/openssl 0.9.8z_p8 1.0.2f 1.0.2g-r2: full-strength general purpose cryptography library (including SSL and TLS)
+dev-libs/openssl 0.9.8z_p8 1.0.2f 1.0.2g-r2 1.0.2h: full-strength general purpose cryptography library (including SSL and TLS)
 dev-libs/ossp-uuid 1.6.2-r2 1.6.2-r4: An ISO-C:1999 API and corresponding CLI for the generation of DCE 1.1, ISO/IEC 11578:1996 and RFC 4122 compliant UUID
 dev-libs/pakchois 0.4-r2: PaKChoiS - PKCS #11 wrapper library
 dev-libs/papi 5.3.0 5.4.0: Performance Application Programming Interface
@@ -16455,7 +16455,7 @@ sys-apps/fwts 14.12.00 15.03.01 15.12.00: Firmware Test Suite
 sys-apps/fxload 20081013-r1: USB firmware uploader
 sys-apps/gawk 3.1.8 4.0.2 4.1.2 4.1.3: GNU awk pattern-matching language
 sys-apps/gcp 0.1.3: File copying utility with progress and I/O indicator
-sys-apps/gentoo-functions 0.8 0.10 9999: base functions required by all gentoo systems
+sys-apps/gentoo-functions 0.10 9999: base functions required by all gentoo systems
 sys-apps/gentoo-systemd-integration 2 4 5 6 9999: systemd integration files for Gentoo
 sys-apps/gnome-disk-utility 3.16.2 3.18.2 3.18.3.1: Disk Utility for GNOME using udisks
 sys-apps/gpet 0.4: GTK+ based TOMOYO policy editor
