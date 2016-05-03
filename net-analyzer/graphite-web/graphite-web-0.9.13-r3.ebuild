@@ -102,7 +102,7 @@ pkg_config() {
 }
 
 pkg_postinst() {
-	einfo "You will need to ${PN} it with Apache (mod_wsgi) or nginx (uwsgi)."
+	einfo "You need to configure ${PN} to run with a WSGI server of your choice."
 	einfo "Don't forget to edit local_settings.py in ${EPREFIX}/etc/${PN}"
 	einfo "See http://graphite.readthedocs.org/en/latest/config-local-settings.html"
 	einfo "Run emerge --config =${PN}-${PVR} if this is a fresh install."
