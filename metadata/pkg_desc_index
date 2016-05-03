@@ -8735,7 +8735,7 @@ dev-ruby/calendar_date_select 2.1.2: A popular and flexible JavaScript DatePicke
 dev-ruby/camping 2.1.532: A small web framework modeled after Ruby on Rails
 dev-ruby/capistrano 2.15.5-r1 2.15.5-r2 3.3.5 3.4.0 3.4.1: A distributed application deployment system
 dev-ruby/capistrano-stats 1.1.1: Official metrics to help the development direction of Capistrano
-dev-ruby/capybara 1.1.4 2.6.2 2.7.0: Capybara aims to simplify the process of integration testing Rack applications
+dev-ruby/capybara 1.1.4 2.6.2 2.7.0 2.7.1: Capybara aims to simplify the process of integration testing Rack applications
 dev-ruby/celluloid 0.16.0-r1 0.17.3: Provides a simple and natural way to build fault-tolerant concurrent programs
 dev-ruby/celluloid-essentials 0.20.5: Provides a simple and natural way to build fault-tolerant concurrent programs
 dev-ruby/celluloid-extras 0.20.5: Provides a simple and natural way to build fault-tolerant concurrent programs
@@ -8769,7 +8769,7 @@ dev-ruby/commander 4.3.7 4.3.8 4.4.0: The complete solution for Ruby command-lin
 dev-ruby/compass 1.0.1-r1 1.0.3-r1: Compass Stylesheet Authoring Framework
 dev-ruby/compass-core 1.0.1 1.0.3-r1: Compass Stylesheet Authoring Framework
 dev-ruby/compass-import-once 1.0.5: Speed up your Sass compilation by making @import only import each file once
-dev-ruby/concurrent-ruby 1.0.0 1.0.1: Modern concurrency tools including agents, futures, promises, thread pools, more
+dev-ruby/concurrent-ruby 1.0.0 1.0.1 1.0.2: Modern concurrency tools including agents, futures, promises, thread pools, more
 dev-ruby/configliere 0.4.22: Settings manager for Ruby scripts
 dev-ruby/connection_pool 2.2.0: Generic connection pooling for Ruby
 dev-ruby/contracts 0.13.0 0.14.0: provides contracts for Ruby
