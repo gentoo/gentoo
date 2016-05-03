@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
+EAPI="6"
 
 inherit cmake-utils flag-o-matic
 
@@ -13,7 +13,7 @@ HOMEPAGE="http://www.kadu.net"
 SRC_URI="http://download.kadu.im/stable/${P}.tar.bz2"
 
 LICENSE="GPL-2"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="~amd64 ~x86"
 SLOT="0"
 IUSE="+gadu mpd otr phonon sdk speech spell xmpp"
 REQUIRED_USE="
@@ -27,10 +27,10 @@ COMMON_DEPEND="
 	>=dev-libs/injeqt-1.0.0
 	>=dev-qt/qtcore-5.2.0:5
 	>=dev-qt/qtdbus-5.2.0:5
+	>=dev-qt/qtdeclarative-5.2.0:5
 	>=dev-qt/qtgui-5.2.0:5
 	>=dev-qt/qtmultimedia-5.2.0:5
 	>=dev-qt/qtnetwork-5.2.0:5
-	>=dev-qt/qtquick1-5.2.0:5
 	>=dev-qt/qtscript-5.2.0:5
 	>=dev-qt/qtsql-5.2.0:5
 	>=dev-qt/qtsvg-5.2.0:5
@@ -73,6 +73,7 @@ RDEPEND="${COMMON_DEPEND}
 
 PATCHES=(
 	"${FILESDIR}/${P}-qt5-compilation.patch"
+	"${FILESDIR}/${P}-port-to-QtQuick-2.3.patch"
 )
 
 PLUGINS='
@@ -136,8 +137,8 @@ src_configure() {
 		-DBUILD_DESCRIPTION='Gentoo Linux'
 		-DCOMPILE_PLUGINS="${PLUGINS}"
 		-DNETWORK_IMPLEMENTATION="Qt"
-		$(cmake-utils_use sdk INSTALL_SDK)
-		$(cmake-utils_use_with spell ENCHANT)
+		-DINSTALL_SDK=$(usex sdk)
+		-DWITH_ENCHANT=$(usex spell)
 	)
 	unset PLUGINS
 
