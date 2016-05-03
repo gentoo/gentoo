@@ -1,8 +1,8 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="4"
+EAPI="6"
 
 inherit autotools
 
@@ -27,6 +27,8 @@ src_prepare() {
 		sed -i -e 's/USE_SLP=1/USE_SLP=0/g' configure.in || die
 		eautoreconf
 	fi
+
+	default
 }
 
 src_install() {

@@ -1,6 +1,8 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
+
+EAPI=6
 
 inherit eutils versionator flag-o-matic user
 
@@ -29,14 +31,12 @@ pkg_setup() {
 	enewuser ircd -1 -1 -1 ircd
 }
 
-src_unpack() {
-	unpack ${A}
-	cd "${S}"
-
-	epatch "${FILESDIR}"/2.10.3_p3-gentoo.patch
+src_prepare() {
+	eapply "${FILESDIR}"/2.10.3_p3-gentoo.patch
+	default
 }
 
-src_compile () {
+src_configure () {
 	sed -i \
 		-e "s/^#undef\tOPER_KILL$/#define\tOPER_KILL/" \
 		-e "s/^#undef\tOPER_RESTART$/#define\tOPER_RESTART/" \
@@ -58,24 +58,24 @@ src_compile () {
 		--with-rundir=/var/run/ircd \
 		--mandir='${prefix}/share/man' \
 		$(use_with zlib) \
-		$(use_enable ipv6 ip6) \
-		|| die "econf failed"
+		$(use_enable ipv6 ip6)
+}
 
+src_compile() {
 	cd $(support/config.guess)
-	emake ircd iauth chkconf ircd-mkpasswd ircdwatch tkserv || die "emake failed"
+	emake ircd iauth chkconf ircd-mkpasswd ircdwatch tkserv
 }
 
 src_install() {
 	cd $(support/config.guess)
 
 	emake \
-		prefix=${D}/usr \
-		ircd_conf_dir=${D}/etc/ircd \
-		ircd_var_dir=${D}/var/run/ircd \
-		ircd_log_dir=${D}/var/log/ircd \
+		prefix="${D}"/usr \
+		ircd_conf_dir="${D}"/etc/ircd \
+		ircd_var_dir="${D}"/var/run/ircd \
+		ircd_log_dir="${D}"/var/log/ircd \
 		install-server \
-		install-tkserv \
-		|| die "make install failed"
+		install-tkserv
 
 	fowners ircd:ircd /var/run/ircd
 	fowners ircd:ircd /var/log/ircd
@@ -83,7 +83,7 @@ src_install() {
 	cd ../doc
 	dodoc \
 		*-New alt-irc-faq Authors BUGS ChangeLog Etiquette \
-		iauth-internals.txt INSTALL.appendix INSTALL.* LICENSE \
+		iauth-internals.txt INSTALL.appendix INSTALL.* \
 		m4macros README RELEASE* rfc* SERVICE*
 
 	docinto Juped
