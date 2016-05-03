@@ -198,11 +198,6 @@ dev-java/spring-instrument
 # for questions.
 <=media-gfx/slic3r-1.1.9999
 
-# Michael Sterrett <mr_bones_@gentoo.org> (02 Apr 2016)
-# Doesn't work with latest dev-lang/ocaml; dead upstream
-# Masked for removal on 20160502
-games-simulation/planets
-
 # Patrick Lauer (30 Mar 2015)
 # Segfaults when creating directories #578582
 =sys-apps/sandbox-2.11*
