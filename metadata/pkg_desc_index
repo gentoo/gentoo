@@ -5014,7 +5014,7 @@ dev-ml/camlzip 1.05: Compressed file access ML library (ZIP, GZIP and JAR)
 dev-ml/camomile 0.8.4 0.8.5: Camomile is a comprehensive Unicode library for ocaml
 dev-ml/cmdliner 0.9.8: Declarative definition of command line interfaces for OCaml
 dev-ml/comparelib 109.60.00 113.00.00: Camlp4 syntax extension that derives comparison functions from type representations
-dev-ml/core 113.24.00 113.24.01 113.24.02 113.33.00: Jane Street's alternative to the standard library
+dev-ml/core 113.24.00 113.24.01 113.24.02 113.33.00 113.33.02: Jane Street's alternative to the standard library
 dev-ml/core_bench 112.35.00 113.24.00 113.33.00: Micro-benchmarking library for OCaml
 dev-ml/core_extended 113.24.00 113.33.00: Jane Street's alternative to the standard library
 dev-ml/core_kernel 113.24.00 113.33.00 113.33.01: System-independent part of Core
