@@ -8,7 +8,7 @@ GST_ORG_MODULE=gst-plugins-good
 inherit gstreamer
 
 DESCRIPION="plugin to allow capture from video4linux2 devices"
-KEYWORDS="~alpha amd64 ~arm hppa ~ia64 ~ppc ppc64 ~sparc x86"
+KEYWORDS="~alpha amd64 arm hppa ~ia64 ~ppc ppc64 ~sparc x86"
 IUSE="udev"
 
 RDEPEND="
