@@ -1,0 +1,581 @@
+diff -uNr core_kernel-113.33.01/check_caml_modify/caml_modify.ml core_kernel-113.33.01+4.03/check_caml_modify/caml_modify.ml
+--- core_kernel-113.33.01/check_caml_modify/caml_modify.ml	2016-03-22 11:37:07.000000000 +0100
++++ core_kernel-113.33.01+4.03/check_caml_modify/caml_modify.ml	2016-03-22 15:15:54.000000000 +0100
+@@ -1,5 +1,5 @@
+-external count : unit -> int  = "check_caml_modify_count" "noalloc"
+-external reset : unit -> unit = "check_caml_modify_reset" "noalloc"
++external count : unit -> int = "check_caml_modify_count" [@@noalloc]
++external reset : unit -> unit = "check_caml_modify_reset" [@@noalloc]
+ 
+ let%test_unit _ =
+   let x = Array.make (32 * 1024) [Random.int 10] in
+diff -uNr core_kernel-113.33.01/check_caml_modify/caml_modify.mli core_kernel-113.33.01+4.03/check_caml_modify/caml_modify.mli
+--- core_kernel-113.33.01/check_caml_modify/caml_modify.mli	2016-03-22 11:37:07.000000000 +0100
++++ core_kernel-113.33.01+4.03/check_caml_modify/caml_modify.mli	2016-03-22 15:15:54.000000000 +0100
+@@ -6,7 +6,7 @@
+ 
+ (** [count ()] returns the number of times [caml_modify] has been called since the last
+     call to {!reset}. *)
+-external count : unit -> int = "check_caml_modify_count" "noalloc"
++external count : unit -> int = "check_caml_modify_count" [@@noalloc]
+ 
+ (** [reset ()] reset the counter to [0]. *)
+-external reset : unit -> unit = "check_caml_modify_reset" "noalloc"
++external reset : unit -> unit = "check_caml_modify_reset" [@@noalloc]
+diff -uNr core_kernel-113.33.01/_oasis core_kernel-113.33.01+4.03/_oasis
+--- core_kernel-113.33.01/_oasis	2016-03-22 11:37:07.000000000 +0100
++++ core_kernel-113.33.01+4.03/_oasis	2016-03-22 15:15:54.000000000 +0100
+@@ -1,8 +1,8 @@
+ OASISFormat:           0.4
+-OCamlVersion:          >= 4.02.3
++OCamlVersion:          >= 4.03.0
+ FindlibVersion:        >= 1.3.2
+ Name:                  core_kernel
+-Version:               113.33.01
++Version:               113.33.01+4.03
+ Synopsis:              Industrial strength alternative to OCaml's standard library
+ Authors:               Jane Street Group, LLC <opensource@janestreet.com>
+ Copyrights:            (C) 2008-2016 Jane Street Group LLC <opensource@janestreet.com>
+diff -uNr core_kernel-113.33.01/opam core_kernel-113.33.01+4.03/opam
+--- core_kernel-113.33.01/opam	2016-03-22 11:43:53.000000000 +0100
++++ core_kernel-113.33.01+4.03/opam	2016-03-22 17:51:34.000000000 +0100
+@@ -25,4 +25,4 @@
+   "typerep"
+   "variantslib"
+ ]
+-available: [ ocaml-version >= "4.02.3" ]
++available: [ ocaml-version >= "4.03.0" ]
+diff -uNr core_kernel-113.33.01/src/bigstring.ml core_kernel-113.33.01+4.03/src/bigstring.ml
+--- core_kernel-113.33.01/src/bigstring.ml	2016-03-22 11:37:07.000000000 +0100
++++ core_kernel-113.33.01+4.03/src/bigstring.ml	2016-03-22 15:15:54.000000000 +0100
+@@ -16,6 +16,8 @@
+ 
+ external aux_create: max_mem_waiting_gc:int -> size:int -> t = "bigstring_alloc"
+ 
++external test_allocation : unit -> 'a = "core_bigstring_test_allocation"
++
+ let create ?max_mem_waiting_gc size =
+   let max_mem_waiting_gc =
+     match max_mem_waiting_gc with
+@@ -35,6 +37,7 @@
+     let max_mem_waiting_gc = Byte_units.create mem_units 256. in
+     for _ = 0 to large_int do
+       let (_ : t) = create ~max_mem_waiting_gc large_int in
++      ignore (test_allocation ());  (* ensure we allocate something *)
+       ()
+     done;
+     Alarm.delete alarm;
+@@ -48,7 +51,7 @@
+ 
+ let length = Array1.dim
+ 
+-external is_mmapped : t -> bool = "bigstring_is_mmapped_stub" "noalloc"
++external is_mmapped : t -> bool = "bigstring_is_mmapped_stub" [@@noalloc]
+ 
+ let init n ~f =
+   let t = create n in
+@@ -119,7 +122,7 @@
+     (struct
+       external unsafe_blit
+         : src : string -> src_pos : int -> dst : t -> dst_pos : int -> len : int -> unit
+-        = "bigstring_blit_string_bigstring_stub" "noalloc"
++        = "bigstring_blit_string_bigstring_stub" [@@noalloc]
+       include Bigstring_sequence
+     end)
+ ;;
+@@ -131,7 +134,7 @@
+     (struct
+       external unsafe_blit
+         : src : t -> src_pos : int -> dst : string -> dst_pos : int -> len : int -> unit
+-        = "bigstring_blit_bigstring_string_stub" "noalloc"
++        = "bigstring_blit_bigstring_string_stub" [@@noalloc]
+       include String_sequence
+     end)
+ ;;
+@@ -200,7 +203,7 @@
+ 
+ external unsafe_memcmp
+   : t1 : t -> t1_pos : int -> t2 : t -> t2_pos : int -> len : int -> int
+-  = "bigstring_memcmp_stub" "noalloc"
++  = "bigstring_memcmp_stub" [@@noalloc]
+ 
+ let compare t1 t2 =
+   if phys_equal t1 t2 then 0 else
+@@ -395,7 +398,7 @@
+ 
+ (* Search *)
+ 
+-external unsafe_find : t -> char -> pos:int -> len:int -> int = "bigstring_find" "noalloc"
++external unsafe_find : t -> char -> pos:int -> len:int -> int = "bigstring_find" [@@noalloc]
+ 
+ let find ?(pos = 0) ?len chr bstr =
+   let len = get_opt_len bstr ~pos len in
+diff -uNr core_kernel-113.33.01/src/bigstring.mli core_kernel-113.33.01+4.03/src/bigstring.mli
+--- core_kernel-113.33.01/src/bigstring.mli	2016-03-22 11:37:07.000000000 +0100
++++ core_kernel-113.33.01+4.03/src/bigstring.mli	2016-03-22 15:15:54.000000000 +0100
+@@ -83,7 +83,7 @@
+ (** [set t pos] sets the character at [pos] *)
+ external set : t -> int -> char -> unit = "%caml_ba_set_1"
+ 
+-external is_mmapped : t -> bool = "bigstring_is_mmapped_stub" "noalloc"
++external is_mmapped : t -> bool = "bigstring_is_mmapped_stub" [@@noalloc]
+ (** [is_mmapped bstr] @return whether the bigstring [bstr] is
+     memory-mapped. *)
+ 
+@@ -159,7 +159,7 @@
+ 
+ (** Same as [find], but does no bounds checking, and returns a negative value instead of
+     [None] if [char] is not found. *)
+-external unsafe_find : t -> char -> pos:int -> len:int -> int = "bigstring_find" "noalloc"
++external unsafe_find : t -> char -> pos:int -> len:int -> int = "bigstring_find" [@@noalloc]
+ 
+ 
+ (** {6 Destruction} *)
+diff -uNr core_kernel-113.33.01/src/bigstring_stubs.c core_kernel-113.33.01+4.03/src/bigstring_stubs.c
+--- core_kernel-113.33.01/src/bigstring_stubs.c	2016-03-22 11:37:07.000000000 +0100
++++ core_kernel-113.33.01+4.03/src/bigstring_stubs.c	2016-03-22 15:15:54.000000000 +0100
+@@ -202,3 +202,14 @@
+   core_bigstring_destroy(Caml_ba_array_val(v_bstr), 0);
+   return Val_unit;
+ }
++
++CAMLprim value core_bigstring_test_allocation(value v_unit)
++{
++  int i;
++  value v;
++  v_unit = v_unit;
++  for (i = 0; i < 20; i++) { 
++    v = caml_alloc_small(100, 0);
++  }
++  return v;
++}
+diff -uNr core_kernel-113.33.01/src/core_array.ml core_kernel-113.33.01+4.03/src/core_array.ml
+--- core_kernel-113.33.01/src/core_array.ml	2016-03-22 11:37:07.000000000 +0100
++++ core_kernel-113.33.01+4.03/src/core_array.ml	2016-03-22 15:15:54.000000000 +0100
+@@ -937,7 +937,7 @@
+     module Unsafe_blit = struct
+       external unsafe_blit
+         : src:t_ -> src_pos:int -> dst:t_ -> dst_pos:int -> len:int -> unit
+-        = "core_array_unsafe_int_blit" "noalloc"
++        = "core_array_unsafe_int_blit" [@@noalloc]
+     end
+ 
+     include
+@@ -966,7 +966,7 @@
+     module Unsafe_blit = struct
+       external unsafe_blit
+         : src:t_ -> src_pos:int -> dst:t_ -> dst_pos:int -> len:int -> unit
+-        = "core_array_unsafe_float_blit" "noalloc"
++        = "core_array_unsafe_float_blit" [@@noalloc]
+     end
+ 
+     include
+@@ -1131,7 +1131,7 @@
+ 
+     external unsafe_blit
+       : src:[> read] t -> src_pos:int -> dst:[> write] t -> dst_pos:int -> len:int -> unit
+-      = "core_array_unsafe_int_blit" "noalloc"
++      = "core_array_unsafe_int_blit" [@@noalloc]
+   end
+ 
+   module Float : sig
+@@ -1141,7 +1141,7 @@
+ 
+     external unsafe_blit
+       : src:[> read] t -> src_pos:int -> dst:[> write] t -> dst_pos:int -> len:int -> unit
+-      = "core_array_unsafe_float_blit" "noalloc"
++      = "core_array_unsafe_float_blit" [@@noalloc]
+   end
+ 
+   val of_array_id : 'a array -> ('a, [< read_write]) t
+diff -uNr core_kernel-113.33.01/src/core_array.mli core_kernel-113.33.01+4.03/src/core_array.mli
+--- core_kernel-113.33.01/src/core_array.mli	2016-03-22 11:37:07.000000000 +0100
++++ core_kernel-113.33.01+4.03/src/core_array.mli	2016-03-22 15:15:54.000000000 +0100
+@@ -97,7 +97,7 @@
+ 
+   external unsafe_blit
+     : src:t -> src_pos:int -> dst:t -> dst_pos:int -> len:int -> unit
+-    = "core_array_unsafe_int_blit" "noalloc"
++    = "core_array_unsafe_int_blit" [@@noalloc]
+ end
+ 
+ module Float : sig
+@@ -107,7 +107,7 @@
+ 
+   external unsafe_blit
+     : src:t -> src_pos:int -> dst:t -> dst_pos:int -> len:int -> unit
+-    = "core_array_unsafe_float_blit" "noalloc"
++    = "core_array_unsafe_float_blit" [@@noalloc]
+ end
+ 
+ (** [Array.of_list l] returns a fresh array containing the elements of [l]. *)
+@@ -332,7 +332,7 @@
+ 
+     external unsafe_blit
+       : src:[> read] t -> src_pos:int -> dst:[> write] t -> dst_pos:int -> len:int -> unit
+-      = "core_array_unsafe_int_blit" "noalloc"
++      = "core_array_unsafe_int_blit" [@@noalloc]
+   end
+ 
+   module Float : sig
+@@ -342,7 +342,7 @@
+ 
+     external unsafe_blit
+       : src:[> read] t -> src_pos:int -> dst:[> write] t -> dst_pos:int -> len:int -> unit
+-      = "core_array_unsafe_float_blit" "noalloc"
++      = "core_array_unsafe_float_blit" [@@noalloc]
+   end
+ 
+   (** [of_array_id] and [to_array_id] return the same underlying array.  On the other
+diff -uNr core_kernel-113.33.01/src/core_gc.ml core_kernel-113.33.01+4.03/src/core_gc.ml
+--- core_kernel-113.33.01/src/core_gc.ml	2016-03-22 11:37:07.000000000 +0100
++++ core_kernel-113.33.01+4.03/src/core_gc.ml	2016-03-22 15:15:54.000000000 +0100
+@@ -83,6 +83,7 @@
+           the first-fit policy, which can be slower in some cases but can be better for
+           programs with fragmentation problems.  Default: 0. *)
+       mutable allocation_policy : int;
++      window_size : int;
+     } [@@deriving compare, bin_io, sexp, fields]
+   end
+ 
+@@ -91,7 +92,8 @@
+ end
+ 
+ let tune ?logger ?minor_heap_size ?major_heap_increment ?space_overhead
+-      ?verbose ?max_overhead ?stack_limit ?allocation_policy () =
++      ?verbose ?max_overhead ?stack_limit ?allocation_policy
++      ?window_size () =
+   let module Field = Fieldslib.Field in
+   let old_control_params = get () in
+   let f opt to_string field =
+@@ -113,6 +115,7 @@
+       ~max_overhead:        (f max_overhead         string_of_int)
+       ~stack_limit:         (f stack_limit          string_of_int)
+       ~allocation_policy:   (f allocation_policy    string_of_int)
++      ~window_size:         (f window_size          string_of_int)
+   in
+   set new_control_params
+ ;;
+@@ -141,14 +144,14 @@
+ ;;
+ 
+ external minor_words : unit -> int = "core_kernel_gc_minor_words"
+-external major_words : unit -> int = "core_kernel_gc_major_words" "noalloc"
+-external promoted_words : unit -> int = "core_kernel_gc_promoted_words" "noalloc"
+-external minor_collections : unit -> int = "core_kernel_gc_minor_collections" "noalloc"
+-external major_collections : unit -> int = "core_kernel_gc_major_collections" "noalloc"
+-external heap_words : unit -> int = "core_kernel_gc_heap_words" "noalloc"
+-external heap_chunks : unit -> int = "core_kernel_gc_heap_chunks" "noalloc"
+-external compactions : unit -> int = "core_kernel_gc_compactions" "noalloc"
+-external top_heap_words : unit -> int = "core_kernel_gc_top_heap_words" "noalloc"
++external major_words : unit -> int = "core_kernel_gc_major_words" [@@noalloc]
++external promoted_words : unit -> int = "core_kernel_gc_promoted_words" [@@noalloc]
++external minor_collections : unit -> int = "core_kernel_gc_minor_collections" [@@noalloc]
++external major_collections : unit -> int = "core_kernel_gc_major_collections" [@@noalloc]
++external heap_words : unit -> int = "core_kernel_gc_heap_words" [@@noalloc]
++external heap_chunks : unit -> int = "core_kernel_gc_heap_chunks" [@@noalloc]
++external compactions : unit -> int = "core_kernel_gc_compactions" [@@noalloc]
++external top_heap_words : unit -> int = "core_kernel_gc_top_heap_words" [@@noalloc]
+ 
+ external major_plus_minor_words : unit -> int = "core_kernel_gc_major_plus_minor_words"
+ 
+diff -uNr core_kernel-113.33.01/src/core_gc.mli core_kernel-113.33.01+4.03/src/core_gc.mli
+--- core_kernel-113.33.01/src/core_gc.mli	2016-03-22 11:37:07.000000000 +0100
++++ core_kernel-113.33.01+4.03/src/core_gc.mli	2016-03-22 15:15:54.000000000 +0100
+@@ -148,6 +148,7 @@
+         first-fit policy, which can be slower in some cases but
+         can be better for programs with fragmentation problems.
+         Default: 0. *)
++    window_size : int;
+   }
+   [@@deriving bin_io, sexp, fields]
+ 
+@@ -185,21 +186,21 @@
+     (%r15 on x86-64) to the global variable [caml_young_ptr] before the C stub tries to
+     read its value. *)
+ external minor_words       : unit -> int = "core_kernel_gc_minor_words"
+-external major_words       : unit -> int = "core_kernel_gc_major_words"       "noalloc"
+-external promoted_words    : unit -> int = "core_kernel_gc_promoted_words"    "noalloc"
+-external minor_collections : unit -> int = "core_kernel_gc_minor_collections" "noalloc"
+-external major_collections : unit -> int = "core_kernel_gc_major_collections" "noalloc"
+-external heap_words        : unit -> int = "core_kernel_gc_heap_words"        "noalloc"
+-external heap_chunks       : unit -> int = "core_kernel_gc_heap_chunks"       "noalloc"
+-external compactions       : unit -> int = "core_kernel_gc_compactions"       "noalloc"
+-external top_heap_words    : unit -> int = "core_kernel_gc_top_heap_words"    "noalloc"
++external major_words       : unit -> int = "core_kernel_gc_major_words"       [@@noalloc]
++external promoted_words    : unit -> int = "core_kernel_gc_promoted_words"    [@@noalloc]
++external minor_collections : unit -> int = "core_kernel_gc_minor_collections" [@@noalloc]
++external major_collections : unit -> int = "core_kernel_gc_major_collections" [@@noalloc]
++external heap_words        : unit -> int = "core_kernel_gc_heap_words"        [@@noalloc]
++external heap_chunks       : unit -> int = "core_kernel_gc_heap_chunks"       [@@noalloc]
++external compactions       : unit -> int = "core_kernel_gc_compactions"       [@@noalloc]
++external top_heap_words    : unit -> int = "core_kernel_gc_top_heap_words"    [@@noalloc]
+ 
+ (** This function returns [major_words () + minor_words ()].  It exists purely for speed
+     (one call into C rather than two).  Like [major_words] and [minor_words],
+     [major_plus_minor_words] avoids allocating a [stat] record or a float, and may
+     overflow on 32-bit machines.
+ 
+-    This function is not marked ["noalloc"] to ensure that the allocation pointer is
++    This function is not marked [[@@noalloc]] to ensure that the allocation pointer is
+     up-to-date when the minor-heap measurement is made.
+ *)
+ external major_plus_minor_words : unit -> int = "core_kernel_gc_major_plus_minor_words"
+@@ -256,6 +257,7 @@
+   -> ?max_overhead         : int
+   -> ?stack_limit          : int
+   -> ?allocation_policy    : int
++  -> ?window_size          : int
+   -> unit
+   -> unit
+ 
+diff -uNr core_kernel-113.33.01/src/core_gc_stubs.c core_kernel-113.33.01+4.03/src/core_gc_stubs.c
+--- core_kernel-113.33.01/src/core_gc_stubs.c	2016-03-22 11:37:07.000000000 +0100
++++ core_kernel-113.33.01+4.03/src/core_gc_stubs.c	2016-03-22 15:15:54.000000000 +0100
+@@ -11,8 +11,8 @@
+ 
+ extern intnat caml_stat_minor_collections;
+ extern intnat caml_stat_major_collections;
+-extern intnat caml_stat_heap_size;
+-extern intnat caml_stat_top_heap_size;
++extern intnat caml_stat_heap_wsz;
++extern intnat caml_stat_top_heap_wsz;
+ extern intnat caml_stat_compactions;
+ extern intnat caml_stat_heap_chunks;
+ 
+@@ -54,7 +54,7 @@
+ 
+ CAMLprim value core_kernel_gc_heap_words(value unit __attribute__((unused)))
+ {
+-  return Val_long(caml_stat_heap_size / sizeof (value));
++  return Val_long(caml_stat_heap_wsz);
+ }
+ 
+ CAMLprim value core_kernel_gc_heap_chunks(value unit __attribute__((unused)))
+@@ -69,7 +69,7 @@
+ 
+ CAMLprim value core_kernel_gc_top_heap_words(value unit __attribute__((unused)))
+ {
+-  return Val_long(caml_stat_top_heap_size / sizeof (value));
++  return Val_long(caml_stat_top_heap_wsz);
+ }
+ 
+ CAMLprim value core_kernel_gc_major_plus_minor_words(value unit __attribute__((unused)))
+diff -uNr core_kernel-113.33.01/src/core_pervasives.mli core_kernel-113.33.01+4.03/src/core_pervasives.mli
+--- core_kernel-113.33.01/src/core_pervasives.mli	2016-03-22 11:37:07.000000000 +0100
++++ core_kernel-113.33.01+4.03/src/core_pervasives.mli	2016-03-22 15:15:54.000000000 +0100
+@@ -417,8 +417,8 @@
+    zero.  When [f] is non-zero, they are defined by
+    [f = x *. 2 ** n] and [0.5 <= x < 1.0]. *)
+ 
+-external ldexp : float -> int -> float = "caml_ldexp_float"
+-  [@@deprecated "[since 2014-10] Use [Float]"]
++external ldexp : (float [@unboxed]) -> (int [@untagged]) -> (float [@unboxed]) =
++  "caml_ldexp_float" "caml_ldexp_float_unboxed" [@@noalloc]
+ (** [ldexp x n] returns [x *. 2 ** n]. *)
+ 
+ external modf : float -> float * float = "caml_modf_float"
+@@ -480,7 +480,8 @@
+ (** The five classes of floating-point numbers, as determined by
+    the {!Pervasives.classify_float} function. *)
+ 
+-external classify_float : float -> fpclass = "caml_classify_float"
++external classify_float : (float [@unboxed]) -> fpclass =
++  "caml_classify_float" "caml_classify_float_unboxed" [@@noalloc]
+   [@@deprecated "[since 2014-10] Use [Float]"]
+ (** Return the class of the given floating-point number:
+    normal, subnormal, zero, infinite, or not a number. *)
+@@ -953,6 +954,10 @@
+    Equivalent to [fun r -> r := pred !r]. *)
+ 
+ 
++(* Result type *)
++
++type ('a,'b) result = ('a, 'b) Pervasives.result = Ok of 'a | Error of 'b
++
+ (** {6 Operations on format strings} *)
+ 
+ (** Format strings are character strings with special lexical conventions
+@@ -1054,7 +1059,6 @@
+   [f1], then results from [f2].
+ *)
+ 
+-
+ (** {6 Program termination} *)
+ 
+ val exit : int -> 'a
+diff -uNr core_kernel-113.33.01/src/core_string.ml core_kernel-113.33.01+4.03/src/core_string.ml
+--- core_kernel-113.33.01/src/core_string.ml	2016-03-22 11:37:07.000000000 +0100
++++ core_kernel-113.33.01+4.03/src/core_string.ml	2016-03-22 15:15:54.000000000 +0100
+@@ -949,7 +949,7 @@
+    divergence is to expose the macro redefined in hash_stubs.c in the hash.h header of
+    the OCaml compiler.) *)
+ module Hash = struct
+-  external hash : string -> int = "caml_hash_string" "noalloc"
++  external hash : string -> int = "caml_hash_string" [@@noalloc]
+ 
+   let%test_unit _ =
+     List.iter ~f:(fun string -> assert (hash string = Caml.Hashtbl.hash string))
+diff -uNr core_kernel-113.33.01/src/core_string.mli core_kernel-113.33.01+4.03/src/core_string.mli
+--- core_kernel-113.33.01/src/core_string.mli	2016-03-22 11:37:07.000000000 +0100
++++ core_kernel-113.33.01+4.03/src/core_string.mli	2016-03-22 15:15:54.000000000 +0100
+@@ -269,7 +269,7 @@
+ val concat_array : ?sep : t -> t array -> t
+ 
+ (** slightly faster hash function on strings *)
+-external hash : t -> int = "caml_hash_string" "noalloc"
++external hash : t -> int = "caml_hash_string" [@@noalloc]
+ 
+ (** fast equality function on strings, doesn't use compare_val *)
+ val equal : t -> t -> bool
+diff -uNr core_kernel-113.33.01/src/exn.ml core_kernel-113.33.01+4.03/src/exn.ml
+--- core_kernel-113.33.01/src/exn.ml	2016-03-22 11:37:07.000000000 +0100
++++ core_kernel-113.33.01+4.03/src/exn.ml	2016-03-22 15:15:54.000000000 +0100
+@@ -112,7 +112,8 @@
+   try func () with
+   | exn -> raise (Reraised (str, exn))
+ 
+-external clear_backtrace : unit -> unit = "clear_caml_backtrace_pos" "noalloc"
++external clear_backtrace : unit -> unit = "clear_caml_backtrace_pos" [@@noalloc]
++
+ let raise_without_backtrace e =
+   (* We clear the backtrace to reduce confusion, so that people don't think whatever
+      is stored corresponds to this raise. *)
+diff -uNr core_kernel-113.33.01/src/float.ml core_kernel-113.33.01+4.03/src/float.ml
+--- core_kernel-113.33.01/src/float.ml	2016-03-22 11:37:07.000000000 +0100
++++ core_kernel-113.33.01+4.03/src/float.ml	2016-03-22 15:15:54.000000000 +0100
+@@ -15,7 +15,7 @@
+   type t = float [@@deriving sexp, bin_io, typerep]
+   let compare (x : t) y = compare x y
+   let equal (x : t) y = x = y
+-  external hash : float -> int = "caml_hash_double" "noalloc"
++  external hash : float -> int = "caml_hash_double" [@@noalloc]
+ 
+   let%test_unit _ =
+     List.iter ~f:(fun float -> assert (hash float = Caml.Hashtbl.hash float))
+@@ -381,6 +381,7 @@
+     else
+       invalid_argf "Float.iround_up_exn: argument (%f) is too small or NaN" (box t) ()
+   end
++[@@ocaml.inline always]
+ 
+ let iround_down t =
+   if t >= 0.0 then begin
+@@ -409,6 +410,7 @@
+     else
+       invalid_argf "Float.iround_down_exn: argument (%f) is too small or NaN" (box t) ()
+   end
++[@@ocaml.inline always]
+ 
+ let iround_towards_zero t =
+   if t >= iround_lbound && t <= iround_ubound then
+@@ -481,6 +483,7 @@
+       else
+         invalid_argf "Float.iround_nearest_exn: argument (%f) is too small or NaN" (box t)
+           ()
++[@@ocaml.inline always]
+ 
+ (* The following [iround_exn] and [iround] functions are slower than the ones above.
+    Their equivalence to those functions is tested in the unit tests below. *)
+diff -uNr core_kernel-113.33.01/src/heap_block.ml core_kernel-113.33.01+4.03/src/heap_block.ml
+--- core_kernel-113.33.01/src/heap_block.ml	2016-03-22 11:37:07.000000000 +0100
++++ core_kernel-113.33.01+4.03/src/heap_block.ml	2016-03-22 15:15:54.000000000 +0100
+@@ -1,6 +1,6 @@
+ type 'a t = 'a [@@deriving sexp_of]
+ 
+-external is_heap_block : Obj.t -> bool = "core_heap_block_is_heap_block" "noalloc"
++external is_heap_block : Obj.t -> bool = "core_heap_block_is_heap_block" [@@noalloc]
+ 
+ let is_ok v = is_heap_block (Obj.repr v)
+ 
+diff -uNr core_kernel-113.33.01/src/int_math.ml core_kernel-113.33.01+4.03/src/int_math.ml
+--- core_kernel-113.33.01/src/int_math.ml	2016-03-22 11:37:07.000000000 +0100
++++ core_kernel-113.33.01+4.03/src/int_math.ml	2016-03-22 15:15:54.000000000 +0100
+@@ -8,7 +8,7 @@
+   Core_printf.invalid_argf "integer overflow in pow" ()
+ 
+ (* To implement [int64_pow], we use C code rather than OCaml to eliminate allocation. *)
+-external int_math_int_pow   : int   -> int   -> int   = "int_math_int_pow_stub" "noalloc"
++external int_math_int_pow   : int   -> int   -> int   = "int_math_int_pow_stub" [@@noalloc]
+ external int_math_int64_pow : int64 -> int64 -> int64 = "int_math_int64_pow_stub"
+ 
+ let int_pow base exponent =
+diff -uNr core_kernel-113.33.01/src/META core_kernel-113.33.01+4.03/src/META
+--- core_kernel-113.33.01/src/META	2016-03-22 11:43:53.000000000 +0100
++++ core_kernel-113.33.01+4.03/src/META	2016-03-22 17:51:34.000000000 +0100
+@@ -1,6 +1,6 @@
+ # OASIS_START
+-# DO NOT EDIT (digest: decb3f50ccea06803a171b5aba7b36dd)
+-version = "113.33.01"
++# DO NOT EDIT (digest: f5e86cbda47f50180165621f5cbe2d8d)
++version = "113.33.01+4.03"
+ description = "Industrial strength alternative to OCaml's standard library"
+ requires =
+ "bin_prot fieldslib num ppx_assert.runtime-lib ppx_bench.runtime-lib ppx_expect.collector ppx_inline_test.runtime-lib result sexplib typerep variantslib"
+diff -uNr core_kernel-113.33.01/src/obj_array.ml core_kernel-113.33.01+4.03/src/obj_array.ml
+--- core_kernel-113.33.01/src/obj_array.ml	2016-03-22 11:37:07.000000000 +0100
++++ core_kernel-113.33.01+4.03/src/obj_array.ml	2016-03-22 15:15:54.000000000 +0100
+@@ -33,16 +33,22 @@
+ 
+ let empty = [||]
+ 
++type not_a_float = Not_a_float_0 | Not_a_float_1 of int
++let _not_a_float_0 = Not_a_float_0
++let _not_a_float_1 = Not_a_float_1 42
++
+ let get t i =
+-  (* Make the compiler believe [a] is an integer array so it does not check if [a] is
+-     tagged with [Double_array_tag]. *)
+-  Obj.repr (Array.get (Obj.magic (t : t) : int array) i : int)
++  (* Make the compiler believe [a] is an array not containing floats so it does not
++     check if [a] is tagged with [Double_array_tag].  It is NOT ok to use "int array"
++     since (if this function is inlined and the array contains in-heap boxed values)
++     wrong register typing may result, leading to a failure to register necessary
++     GC roots. *)
++  Obj.repr (Array.get (Obj.magic (t : t) : not_a_float array) i : not_a_float)
+ ;;
+ 
+ let unsafe_get t i =
+-  (* Make the compiler believe [a] is an integer array so it does not check if [a] is
+-     tagged with [Double_array_tag]. *)
+-  Obj.repr (Array.unsafe_get (Obj.magic (t : t) : int array) i : int)
++  (* See comment on [get]. *)
++  Obj.repr (Array.unsafe_get (Obj.magic (t : t) : not_a_float array) i : not_a_float)
+ ;;
+ 
+ (* For [set] and [unsafe_set], if a pointer is involved, we first do a physical-equality
+diff -uNr core_kernel-113.33.01/src/time_ns.ml core_kernel-113.33.01+4.03/src/time_ns.ml
+--- core_kernel-113.33.01/src/time_ns.ml	2016-03-22 11:37:07.000000000 +0100
++++ core_kernel-113.33.01+4.03/src/time_ns.ml	2016-03-22 15:15:54.000000000 +0100
+@@ -419,7 +419,7 @@
+ 
+ #if JSC_ARCH_SIXTYFOUR
+   external since_unix_epoch_or_zero : unit -> t
+-    = "core_kernel_time_ns_gettime_or_zero" "noalloc"
++    = "core_kernel_time_ns_gettime_or_zero" [@@noalloc]
+ #else
+   external since_unix_epoch_or_zero : unit -> t
+     = "core_kernel_time_ns_gettime_or_zero"
+diff -uNr core_kernel-113.33.01/src/type_equal.ml core_kernel-113.33.01+4.03/src/type_equal.ml
+--- core_kernel-113.33.01/src/type_equal.ml	2016-03-22 11:37:07.000000000 +0100
++++ core_kernel-113.33.01+4.03/src/type_equal.ml	2016-03-22 15:15:54.000000000 +0100
+@@ -64,7 +64,8 @@
+       type _ t = ..
+ 
+       let sexp_of_t _sexp_of_a t =
+-        (`type_witness (Obj.extension_id t)) |> [%sexp_of: [ `type_witness of int ]]
++        (`type_witness (Obj.extension_id (Obj.extension_constructor t)))
++        |> [%sexp_of: [ `type_witness of int ]]
+       ;;
+     end
+ 
+@@ -87,7 +88,8 @@
+       (module M : S with type t = t)
+     ;;
+ 
+-    let uid (type a) (module M : S with type t = a) = Obj.extension_id M.Key
++    let uid (type a) (module M : S with type t = a) =
++      Obj.extension_id (Obj.extension_constructor M.Key)
+ 
+     (* We want a constant allocated once that [same] can return whenever it gets the same
+        witnesses.  If we write the constant inside the body of [same], the native-code
