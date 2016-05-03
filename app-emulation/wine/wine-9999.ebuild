@@ -26,7 +26,7 @@ MV="4.6.2"
 [[ ${MAJOR_V} == "1.8" ]] && SUFFIX="-unofficial"
 STAGING_P="wine-staging-${PV}"
 STAGING_DIR="${WORKDIR}/${STAGING_P}${SUFFIX}"
-D3D9_P="${PV}"
+D3D9_P="wine-d3d9-${PV}"
 D3D9_DIR="${WORKDIR}/wine-d3d9-patches-${D3D9_P}"
 WINE_GENTOO="wine-gentoo-2015.03.07"
 DESCRIPTION="Free implementation of Windows(tm) on Unix"
@@ -45,7 +45,7 @@ if [[ ${PV} == "9999" ]] ; then
 else
 	SRC_URI="${SRC_URI}
 	staging? ( https://github.com/wine-compholio/wine-staging/archive/v${PV}${SUFFIX}.tar.gz -> ${STAGING_P}.tar.gz )
-	d3d9? ( https://github.com/sarnex/wine-d3d9-patches/archive/wine-d3d9-${PV}.tar.gz -> ${D3D9_P}.tar.gz )"
+	d3d9? ( https://github.com/sarnex/wine-d3d9-patches/archive/${D3D9_P}.tar.gz )"
 fi
 
 LICENSE="LGPL-2.1"
