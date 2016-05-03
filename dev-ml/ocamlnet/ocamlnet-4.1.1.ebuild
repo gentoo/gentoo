@@ -35,6 +35,10 @@ DEPEND="${RDEPEND}
 
 S=${WORKDIR}/${MY_P}
 
+src_prepare() {
+	has_version '>=dev-lang/ocaml-4.03' && epatch "${FILESDIR}/oc43.patch"
+}
+
 ocamlnet_use_with() {
 	if use $1; then
 		echo "-with-$2"

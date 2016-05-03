@@ -27,6 +27,10 @@ IUSE="examples +ocamlopt"
 
 S=${WORKDIR}/${MY_P}
 
+src_prepare() {
+	epatch "${FILESDIR}/oc43.patch"
+}
+
 src_configure() {
 	#the included configure does not support  many standard switches and is quite picky
 	./configure || die "configure failed"

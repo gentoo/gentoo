@@ -1,0 +1,762 @@
+commit 45bcb681e4218586b66f3a0d83d7f5a51f5548e0
+Author: KC Sivaramakrishnan <sk826@cl.cam.ac.uk>
+Date:   Wed Mar 23 09:42:33 2016 +0000
+
+    Upgrading to 4.03
+
+diff --git a/src/batArray.mliv b/src/batArray.mliv
+index 51b4e28..025887f 100644
+--- a/src/batArray.mliv
++++ b/src/batArray.mliv
+@@ -82,8 +82,7 @@ external make : int -> 'a -> 'a array = "caml_make_vect"
+     If the value of [x] is a floating-point number, then the maximum
+     size is only [Sys.max_array_length / 2].*)
+ 
+-##V<4.2##val make_float : int -> float array
+-##V>=4.2##external make_float : int -> float array = "caml_make_float_vect"
++val make_float : int -> float array
+ (** [Array.make_float n] returns a fresh float array of length [n],
+     with uninitialized data.
+ 
+diff --git a/src/batCharParser.mli b/src/batCharParser.mli
+index 52c00d8..80ff8a8 100644
+--- a/src/batCharParser.mli
++++ b/src/batCharParser.mli
+@@ -52,7 +52,7 @@ val source_of_string : string      -> (char, position) Source.t
+ val source_of_enum   : char BatEnum.t -> (char, position) Source.t
+ (** Create a source from a latin-1 character.*)
+ 
+-val parse : (char, 'a, position) t -> string -> ('a, position report) BatPervasives.result
++val parse : (char, 'a, position) t -> string -> ('a, position report) result
+ (**Apply a parser to a string.*)
+ 
+ (**{6 Utilities}*)
+diff --git a/src/batGc.mli b/src/batGc.mli
+index f3e6f54..ecffb79 100644
+--- a/src/batGc.mli
++++ b/src/batGc.mli
+@@ -34,18 +34,18 @@
+ type stat = Gc.stat =
+   { minor_words : float;
+     (** Number of words allocated in the minor heap since
+-        the program was started.  This number is accurate in
+-        byte-code programs, but only an approximation in programs
+-        compiled to native code. *)
++       the program was started.  This number is accurate in
++       byte-code programs, but only an approximation in programs
++       compiled to native code. *)
+ 
+     promoted_words : float;
+     (** Number of words allocated in the minor heap that
+-        survived a minor collection and were moved to the major heap
+-        since the program was started. *)
++       survived a minor collection and were moved to the major heap
++       since the program was started. *)
+ 
+     major_words : float;
+     (** Number of words allocated in the major heap, including
+-        the promoted words, since the program was started. *)
++       the promoted words, since the program was started. *)
+ 
+     minor_collections : int;
+     (** Number of minor collections since the program was started. *)
+@@ -62,7 +62,7 @@ type stat = Gc.stat =
+ 
+     live_words : int;
+     (** Number of words of live data in the major heap, including the header
+-        words. *)
++       words. *)
+ 
+     live_blocks : int;
+     (** Number of live blocks in the major heap. *)
+@@ -78,8 +78,8 @@ type stat = Gc.stat =
+ 
+     fragments : int;
+     (** Number of wasted words due to fragmentation.  These are
+-        1-words free blocks placed between two live blocks.  They
+-        are not available for allocation. *)
++       1-words free blocks placed between two live blocks.  They
++       are not available for allocation. *)
+ 
+     compactions : int;
+     (** Number of heap compactions since the program was started. *)
+@@ -89,62 +89,68 @@ type stat = Gc.stat =
+ 
+     stack_size: int;
+     (** Current size of the stack, in words. @since 3.12.0 *)
+-  }
++}
+ (** The memory management counters are returned in a [stat] record.
+ 
+-    The total amount of memory allocated by the program since it was started
+-    is (in words) [minor_words + major_words - promoted_words].  Multiply by
+-    the word size (4 on a 32-bit machine, 8 on a 64-bit machine) to get
+-    the number of bytes.
++   The total amount of memory allocated by the program since it was started
++   is (in words) [minor_words + major_words - promoted_words].  Multiply by
++   the word size (4 on a 32-bit machine, 8 on a 64-bit machine) to get
++   the number of bytes.
+ *)
+ 
+ type control = Gc.control =
+   { mutable minor_heap_size : int;
+     (** The size (in words) of the minor heap.  Changing
+-        this parameter will trigger a minor collection.  Default: 32k. *)
++       this parameter will trigger a minor collection.  Default: 256k. *)
+ 
+     mutable major_heap_increment : int;
+-    (** The minimum number of words to add to the
+-        major heap when increasing it.  Default: 124k. *)
++    (** How much to add to the major heap when increasing it. If this
++        number is less than or equal to 1000, it is a percentage of
++        the current heap size (i.e. setting it to 100 will double the heap
++        size at each increase). If it is more than 1000, it is a fixed
++        number of words that will be added to the heap. Default: 15. *)
+ 
+     mutable space_overhead : int;
+     (** The major GC speed is computed from this parameter.
+-        This is the memory that will be "wasted" because the GC does not
+-        immediatly collect unreachable blocks.  It is expressed as a
+-        percentage of the memory used for live data.
+-        The GC will work more (use more CPU time and collect
+-        blocks more eagerly) if [space_overhead] is smaller.
+-        Default: 80. *)
++       This is the memory that will be "wasted" because the GC does not
++       immediatly collect unreachable blocks.  It is expressed as a
++       percentage of the memory used for live data.
++       The GC will work more (use more CPU time and collect
++       blocks more eagerly) if [space_overhead] is smaller.
++       Default: 80. *)
+ 
+     mutable verbose : int;
+     (** This value controls the GC messages on standard error output.
+-        It is a sum of some of the following flags, to print messages
+-        on the corresponding events:
+-        - [0x001] Start of major GC cycle.
+-        - [0x002] Minor collection and major GC slice.
+-        - [0x004] Growing and shrinking of the heap.
+-        - [0x008] Resizing of stacks and memory manager tables.
+-        - [0x010] Heap compaction.
+-        - [0x020] Change of GC parameters.
+-        - [0x040] Computation of major GC slice size.
+-        - [0x080] Calling of finalisation functions.
+-        - [0x100] Bytecode executable search at start-up.
+-        - [0x200] Computation of compaction triggering condition.
+-        Default: 0. *)
++       It is a sum of some of the following flags, to print messages
++       on the corresponding events:
++       - [0x001] Start of major GC cycle.
++       - [0x002] Minor collection and major GC slice.
++       - [0x004] Growing and shrinking of the heap.
++       - [0x008] Resizing of stacks and memory manager tables.
++       - [0x010] Heap compaction.
++       - [0x020] Change of GC parameters.
++       - [0x040] Computation of major GC slice size.
++       - [0x080] Calling of finalisation functions.
++       - [0x100] Bytecode executable and shared library search at start-up.
++       - [0x200] Computation of compaction-triggering condition.
++       - [0x400] Output GC statistics at program exit.
++       Default: 0. *)
+ 
+     mutable max_overhead : int;
+     (** Heap compaction is triggered when the estimated amount
+-        of "wasted" memory is more than [max_overhead] percent of the
+-        amount of live data.  If [max_overhead] is set to 0, heap
+-        compaction is triggered at the end of each major GC cycle
+-        (this setting is intended for testing purposes only).
+-        If [max_overhead >= 1000000], compaction is never triggered.
+-        Default: 500. *)
++       of "wasted" memory is more than [max_overhead] percent of the
++       amount of live data.  If [max_overhead] is set to 0, heap
++       compaction is triggered at the end of each major GC cycle
++       (this setting is intended for testing purposes only).
++       If [max_overhead >= 1000000], compaction is never triggered.
++       If compaction is permanently disabled, it is strongly suggested
++       to set [allocation_policy] to 1.
++       Default: 500. *)
+ 
+     mutable stack_limit : int;
+     (** The maximum size of the stack (in words).  This is only
+-        relevant to the byte-code runtime, as the native code runtime
+-        uses the operating system's stack.  Default: 256k. *)
++       relevant to the byte-code runtime, as the native code runtime
++       uses the operating system's stack.  Default: 1024k. *)
+ 
+     mutable allocation_policy : int;
+     (** The policy used for allocating in the heap.  Possible
+@@ -153,16 +159,22 @@ type control = Gc.control =
+         first-fit policy, which can be slower in some cases but
+         can be better for programs with fragmentation problems.
+         Default: 0. @since 3.11.0 *)
+-  }
++
++    window_size : int;
++    (** The size of the window used by the major GC for smoothing
++        out variations in its workload. This is an integer between
++        1 and 50.
++        Default: 1. @since 4.03.0 *)
++}
+ (** The GC parameters are given as a [control] record.  Note that
+     these parameters can also be initialised by setting the
+     OCAMLRUNPARAM environment variable.  See the documentation of
+-    ocamlrun. *)
++    [ocamlrun]. *)
+ 
+ external stat : unit -> stat = "caml_gc_stat"
+ (** Return the current values of the memory management counters in a
+-    [stat] record.  This function examines every heap block to get the
+-    statistics. *)
++   [stat] record.  This function examines every heap block to get the
++   statistics. *)
+ 
+ external quick_stat : unit -> stat = "caml_gc_quick_stat"
+ (** Same as [stat] except that [live_words], [live_blocks], [free_words],
+@@ -172,117 +184,144 @@ external quick_stat : unit -> stat = "caml_gc_quick_stat"
+ 
+ external counters : unit -> float * float * float = "caml_gc_counters"
+ (** Return [(minor_words, promoted_words, major_words)].  This function
+-    is as fast at [quick_stat]. *)
++    is as fast as [quick_stat]. *)
+ 
+ external get : unit -> control = "caml_gc_get"
+ (** Return the current values of the GC parameters in a [control] record. *)
+ 
+ external set : control -> unit = "caml_gc_set"
+ (** [set r] changes the GC parameters according to the [control] record [r].
+-    The normal usage is: [Gc.set { (Gc.get()) with Gc.verbose = 0x00d }] *)
++   The normal usage is: [Gc.set { (Gc.get()) with Gc.verbose = 0x00d }] *)
+ 
+ external minor : unit -> unit = "caml_gc_minor"
+ (** Trigger a minor collection. *)
+ 
+-external major_slice : int -> int = "caml_gc_major_slice";;
+-(** Do a minor collection and a slice of major collection.  The argument
+-    is the size of the slice, 0 to use the automatically-computed
+-    slice size.  In all cases, the result is the computed slice size. *)
++external major_slice : int -> int = "caml_gc_major_slice"
++(** [major_slice n]
++    Do a minor collection and a slice of major collection. [n] is the
++    size of the slice: the GC will do enough work to free (on average)
++    [n] words of memory. If [n] = 0, the GC will try to do enough work
++    to ensure that the next slice has no work to do.
++    Return an approximation of the work that the next slice will have
++    to do. *)
+ 
+ external major : unit -> unit = "caml_gc_major"
+ (** Do a minor collection and finish the current major collection cycle. *)
+ 
+ external full_major : unit -> unit = "caml_gc_full_major"
+ (** Do a minor collection, finish the current major collection cycle,
+-    and perform a complete new cycle.  This will collect all currently
+-    unreachable blocks. *)
++   and perform a complete new cycle.  This will collect all currently
++   unreachable blocks. *)
+ 
+ external compact : unit -> unit = "caml_gc_compaction"
+ (** Perform a full major collection and compact the heap.  Note that heap
+-    compaction is a lengthy operation. *)
++   compaction is a lengthy operation. *)
+ 
+ val print_stat : _ BatInnerIO.output -> unit
+ (** Print the current values of the memory management counters (in
+-    human-readable form) into the channel argument. *)
++   human-readable form) into the channel argument. *)
+ 
+ val allocated_bytes : unit -> float
+ (** Return the total number of bytes allocated since the program was
+-    started.  It is returned as a [float] to avoid overflow problems
+-    with [int] on 32-bit machines. *)
++   started.  It is returned as a [float] to avoid overflow problems
++   with [int] on 32-bit machines. *)
++
++external get_minor_free : unit -> int = "caml_get_minor_free" [@@noalloc]
++(** Return the current size of the free space inside the minor heap. *)
++
++external get_bucket : int -> int = "caml_get_major_bucket" [@@noalloc]
++(** [get_bucket n] returns the current size of the [n]-th future bucket
++    of the GC smoothing system. The unit is one millionth of a full GC.
++    Raise [Invalid_argument] if [n] is negative, return 0 if n is larger
++    than the smoothing window. *)
++
++external get_credit : unit -> int = "caml_get_major_credit" [@@noalloc]
++(** [get_credit ()] returns the current size of the "work done in advance"
++    counter of the GC smoothing system. The unit is one millionth of a
++    full GC. *)
++
++external huge_fallback_count : unit -> int = "caml_gc_huge_fallback_count"
++(** Return the number of times we tried to map huge pages and had to fall
++    back to small pages. This is always 0 if [OCAMLRUNPARAM] contains [H=1].
++    @since 4.03.0 *)
+ 
+ val finalise : ('a -> unit) -> 'a -> unit
+ (** [finalise f v] registers [f] as a finalisation function for [v].
+-    [v] must be heap-allocated.  [f] will be called with [v] as
+-    argument at some point between the first time [v] becomes unreachable
+-    and the time [v] is collected by the GC.  Several functions can
+-    be registered for the same value, or even several instances of the
+-    same function.  Each instance will be called once (or never,
+-    if the program terminates before [v] becomes unreachable).
+-
+-    The GC will call the finalisation functions in the order of
+-    deallocation.  When several values become unreachable at the
+-    same time (i.e. during the same GC cycle), the finalisation
+-    functions will be called in the reverse order of the corresponding
+-    calls to [finalise].  If [finalise] is called in the same order
+-    as the values are allocated, that means each value is finalised
+-    before the values it depends upon.  Of course, this becomes
+-    false if additional dependencies are introduced by assignments.
+-
+-    Anything reachable from the closure of finalisation functions
+-    is considered reachable, so the following code will not work
+-    as expected:
+-    - [ let v = ... in Gc.finalise (fun x -> ...) v ]
+-
+-    Instead you should write:
+-    - [ let f = fun x -> ... ;; let v = ... in Gc.finalise f v ]
+-
+-
+-    The [f] function can use all features of OCaml, including
+-    assignments that make the value reachable again.  It can also
+-    loop forever (in this case, the other
+-    finalisation functions will not be called during the execution of f,
+-    unless it calls [finalise_release]).
+-    It can call [finalise] on [v] or other values to register other
+-    functions or even itself.  It can raise an exception; in this case
+-    the exception will interrupt whatever the program was doing when
+-    the function was called.
+-
+-
+-    [finalise] will raise [Invalid_argument] if [v] is not
+-    heap-allocated.  Some examples of values that are not
+-    heap-allocated are integers, constant constructors, booleans,
+-    the empty array, the empty list, the unit value.  The exact list
+-    of what is heap-allocated or not is implementation-dependent.
+-    Some constant values can be heap-allocated but never deallocated
+-    during the lifetime of the program, for example a list of integer
+-    constants; this is also implementation-dependent.
+-    You should also be aware that compiler optimisations may duplicate
+-    some immutable values, for example floating-point numbers when
+-    stored into arrays, so they can be finalised and collected while
+-    another copy is still in use by the program.
+-
+-
+-    The results of calling {!String.make}, {!String.create},
+-    {!Array.make}, and {!Pervasives.ref} are guaranteed to be
+-    heap-allocated and non-constant except when the length argument is [0].
++   [v] must be heap-allocated.  [f] will be called with [v] as
++   argument at some point between the first time [v] becomes unreachable
++   (including through weak pointers) and the time [v] is collected by
++   the GC. Several functions can
++   be registered for the same value, or even several instances of the
++   same function.  Each instance will be called once (or never,
++   if the program terminates before [v] becomes unreachable).
++
++   The GC will call the finalisation functions in the order of
++   deallocation.  When several values become unreachable at the
++   same time (i.e. during the same GC cycle), the finalisation
++   functions will be called in the reverse order of the corresponding
++   calls to [finalise].  If [finalise] is called in the same order
++   as the values are allocated, that means each value is finalised
++   before the values it depends upon.  Of course, this becomes
++   false if additional dependencies are introduced by assignments.
++
++   In the presence of multiple OCaml threads it should be assumed that
++   any particular finaliser may be executed in any of the threads.
++
++   Anything reachable from the closure of finalisation functions
++   is considered reachable, so the following code will not work
++   as expected:
++   - [ let v = ... in Gc.finalise (fun _ -> ...v...) v ]
++
++   Instead you should make sure that [v] is not in the closure of
++   the finalisation function by writing:
++   - [ let f = fun x -> ... ;; let v = ... in Gc.finalise f v ]
++
++
++   The [f] function can use all features of OCaml, including
++   assignments that make the value reachable again.  It can also
++   loop forever (in this case, the other
++   finalisation functions will not be called during the execution of f,
++   unless it calls [finalise_release]).
++   It can call [finalise] on [v] or other values to register other
++   functions or even itself.  It can raise an exception; in this case
++   the exception will interrupt whatever the program was doing when
++   the function was called.
++
++
++   [finalise] will raise [Invalid_argument] if [v] is not
++   guaranteed to be heap-allocated.  Some examples of values that are not
++   heap-allocated are integers, constant constructors, booleans,
++   the empty array, the empty list, the unit value.  The exact list
++   of what is heap-allocated or not is implementation-dependent.
++   Some constant values can be heap-allocated but never deallocated
++   during the lifetime of the program, for example a list of integer
++   constants; this is also implementation-dependent.
++   Note that values of types [float] and ['a lazy] (for any ['a]) are
++   sometimes allocated and sometimes not, so finalising them is unsafe,
++   and [finalise] will also raise [Invalid_argument] for them.
++
++
++   The results of calling {!String.make}, {!Bytes.make}, {!Bytes.create},
++   {!Array.make}, and {!Pervasives.ref} are guaranteed to be
++   heap-allocated and non-constant except when the length argument is [0].
+ *)
+ 
+-val finalise_release : unit -> unit;;
++val finalise_release : unit -> unit
+ (** A finalisation function may call [finalise_release] to tell the
+     GC that it can launch the next finalisation function without waiting
+     for the current one to return. *)
+ 
+ type alarm = Gc.alarm
+ (** An alarm is a piece of data that calls a user function at the end of
+-    each major GC cycle.  The following functions are provided to create
+-    and delete alarms. *)
++   each major GC cycle.  The following functions are provided to create
++   and delete alarms. *)
+ 
+ val create_alarm : (unit -> unit) -> alarm
+ (** [create_alarm f] will arrange for [f] to be called at the end of each
+-    major GC cycle, starting with the current cycle or the next one.
+-    A value of type [alarm] is returned that you can
+-    use to call [delete_alarm]. *)
++   major GC cycle, starting with the current cycle or the next one.
++   A value of type [alarm] is returned that you can
++   use to call [delete_alarm]. *)
+ 
+ val delete_alarm : alarm -> unit
+-  (** [delete_alarm a] will stop the calls to the function associated
+-      to [a].  Calling [delete_alarm a] again has no effect. *)
++(** [delete_alarm a] will stop the calls to the function associated
++   to [a].  Calling [delete_alarm a] again has no effect. *)
+diff --git a/src/batHashtbl.mli b/src/batHashtbl.mli
+index d3a9118..dd95c0c 100644
+--- a/src/batHashtbl.mli
++++ b/src/batHashtbl.mli
+@@ -276,7 +276,7 @@ val print :  ?first:string -> ?last:string -> ?sep:string -> ?kvsep:string ->
+ module Exceptionless :
+ sig
+   val find : ('a, 'b) t -> 'a -> 'b option
+-  val modify : 'a -> ('b -> 'b) -> ('a, 'b) t -> (unit, exn) BatPervasives.result
++  val modify : 'a -> ('b -> 'b) -> ('a, 'b) t -> (unit, exn) result
+ end
+ 
+ (** Infix operators over a {!BatHashtbl} *)
+@@ -402,7 +402,7 @@ sig
+   module Exceptionless :
+   sig
+     val find : 'a t -> key -> 'a option
+-    val modify : key -> ('a -> 'a) -> 'a t -> (unit, exn) BatPervasives.result
++    val modify : key -> ('a -> 'a) -> 'a t -> (unit, exn) result
+   end
+ 
+   (** Infix operators over a {!BatHashtbl} *)
+@@ -562,7 +562,7 @@ sig
+   module Exceptionless :
+   sig
+     val find : ('a, 'b, [>`Read]) t -> 'a -> 'b option
+-    val modify : 'a -> ('b -> 'b) -> ('a, 'b, [>`Read]) t -> (unit, exn) BatPervasives.result
++    val modify : 'a -> ('b -> 'b) -> ('a, 'b, [>`Read]) t -> (unit, exn) result
+   end
+ 
+   (** Operations on {!BatHashtbl.Cap} with labels.*)
+diff --git a/src/batHashtbl.mlv b/src/batHashtbl.mlv
+index 6a79a33..ef7a030 100644
+--- a/src/batHashtbl.mlv
++++ b/src/batHashtbl.mlv
+@@ -413,7 +413,7 @@ sig
+   module Exceptionless :
+   sig
+     val find : 'a t -> key -> 'a option
+-    val modify : key -> ('a -> 'a) -> 'a t -> (unit, exn) BatPervasives.result
++    val modify : key -> ('a -> 'a) -> 'a t -> (unit, exn) result
+   end
+ 
+   (** Infix operators over a {!BatHashtbl} *)
+@@ -571,7 +571,7 @@ struct
+   let map_inplace (f:key -> 'a -> 'b) h = map_inplace f (to_hash h)
+   let filteri_inplace f h = filteri_inplace f (to_hash h)
+   let filter_inplace f h = filter_inplace f (to_hash h)
+-  let filter_map_inplace f h = filter_map_inplace f (to_hash h)
++  let filter_map_inplace f h = filter_map_inplace f h
+ 
+ 
+   let find_option h key =
+diff --git a/src/batInnerPervasives.mlv b/src/batInnerPervasives.mlv
+index c86f1f7..c81cba4 100644
+--- a/src/batInnerPervasives.mlv
++++ b/src/batInnerPervasives.mlv
+@@ -43,20 +43,16 @@ let unique ()     =
+    Q.unit (fun () -> unique () <> unique ())
+ *)
+ 
+-type ('a, 'b) result =
+-  | Ok  of 'a
+-  | Bad of 'b
+-
+ (* Ideas taken from Nicholas Pouillard's my_std.ml in ocamlbuild/ *)
+ let ignore_ok = function
+     Ok _ -> ()
+-  | Bad ex -> raise ex
++  | Error ex -> raise ex
+ 
+ let ok = function
+     Ok v -> v
+-  | Bad ex -> raise ex
++  | Error ex -> raise ex
+ 
+-let wrap f x = try Ok (f x) with ex -> Bad ex
++let wrap f x = try Ok (f x) with ex -> Error ex
+ 
+ let forever f x = ignore (while true do f x done)
+ 
+diff --git a/src/batInnerWeaktbl.ml b/src/batInnerWeaktbl.ml
+index 64bb15f..c525f62 100644
+--- a/src/batInnerWeaktbl.ml
++++ b/src/batInnerWeaktbl.ml
+@@ -120,6 +120,7 @@ module Make (H: Hashtbl.HashedType) : Hashtbl.S with type key = H.t = struct
+     W.iter (fun cls -> W.add tbl' (Stack.copy cls)) tbl; tbl'
+   let stats _ = assert false
+   let reset _ = assert false
++  let filter_map_inplace _ = assert false
+ end
+ 
+ module StdHash = Make
+diff --git a/src/batParserCo.ml b/src/batParserCo.ml
+index cac4701..75ac6fb 100644
+--- a/src/batParserCo.ml
++++ b/src/batParserCo.ml
+@@ -274,10 +274,10 @@ let lookahead p e = match apply p e with
+   | Failure _ as result              -> result
+ 
+ let interpret_result = function
+-  | Setback f | Failure f                -> BatInnerPervasives.Bad f
+-  | Success (r, _) | Backtrack (r, _, _) -> BatInnerPervasives.Ok r
++  | Setback f | Failure f                -> Error f
++  | Success (r, _) | Backtrack (r, _, _) -> Ok r
+ 
+-let suspend : ('a, 'b, 'c) t -> ('a, (unit -> ('b, 'c report) BatInnerPervasives.result), 'c) t = fun s e ->
++let suspend : ('a, 'b, 'c) t -> ('a, (unit -> ('b, 'c report) Pervasives.result), 'c) t = fun s e ->
+   let resume () = interpret_result (s e) in
+   Success (resume, e)
+ 
+diff --git a/src/batParserCo.mli b/src/batParserCo.mli
+index 1fbe15a..40c5cf7 100644
+--- a/src/batParserCo.mli
++++ b/src/batParserCo.mli
+@@ -141,15 +141,15 @@ val filter: ('b -> bool) -> ('a, 'b, 'c) t ->  ('a, 'b, 'c) t
+ (**[filter f p] is only accepts values [x] such that [p]
+    accepts [x] and [f (p x)] is [true]*)
+ 
+-val suspend : ('a, 'b, 'c) t -> ('a, (unit -> ('b, 'c report) BatPervasives.result), 'c) t
++val suspend : ('a, 'b, 'c) t -> ('a, (unit -> ('b, 'c report) result), 'c) t
+ (**[suspend s] returns the state of the parser in a form that can be
+    resumed by calling the returned function. evaluation will resume
+    from parser s *)
+ 
+-val run: ('a, 'b, 'c) t -> ('a, 'c) Source.t -> ('b, 'c report) BatPervasives.result
++val run: ('a, 'b, 'c) t -> ('a, 'c) Source.t -> ('b, 'c report) result
+ (**[run p s] executes parser [p] on source [s]. In case of
+    success, returns [Ok v], where [v] is the return value of [p].
+-   In case of failure, returns [Bad f], with [f] containing
++   In case of failure, returns [Error f], with [f] containing
+    details on the parsing error.*)
+ 
+ 
+diff --git a/src/batPathGen.ml b/src/batPathGen.ml
+index 46a97ba..71d1084 100644
+--- a/src/batPathGen.ml
++++ b/src/batPathGen.ml
+@@ -512,7 +512,7 @@ module Make = functor (S : StringType) -> struct
+   let full_match pars ss =
+     let parser_final = BatParserCo.( >>> ) pars BatParserCo.eof in
+     match BatParserCo.run parser_final (S.Parse.source ss) with
+-    | BatPervasives.Ok _ -> true
++    | Ok _ -> true
+     | _ -> false
+ 
+   (*  let full_match_none_of raw_excluded ss =
+diff --git a/src/batPervasives.mliv b/src/batPervasives.mliv
+index 6353214..c74b913 100644
+--- a/src/batPervasives.mliv
++++ b/src/batPervasives.mliv
+@@ -842,20 +842,14 @@ val print :  ?first:string -> ?last:string -> ?sep:string -> ('a BatInnerIO.outp
+ 
+     For more functions related to this type, see the {!BatResult} module.
+ *)
+-type ('a, 'b) result = ('a, 'b) BatInnerPervasives.result =
+-  | Ok  of 'a
+-  | Bad of 'b
+-  (** The result of a computation - either an [Ok] with the normal
+-      result or a [Bad] with some value (often an exception) containing
+-      failure information*)
+ 
+ val ignore_ok : ('a, exn) result -> unit
+ (** [ignore_ok (f x)] ignores the result of [f x] if it's ok, but
+-    throws the exception contained if [Bad] is returned. *)
++    throws the exception contained if [Error] is returned. *)
+ 
+ val ok : ('a, exn) result -> 'a
+ (** [f x |> ok] unwraps the [Ok] result of [f x] and returns it, or
+-    throws the exception contained if [Bad] is returned. *)
++    throws the exception contained if [Error] is returned. *)
+ 
+ val wrap : ('a -> 'b) -> 'a -> ('b, exn) result
+ (** [wrap f x] wraps a function that would normally throw an exception
+diff --git a/src/batResult.ml b/src/batResult.ml
+index 1d98663..f90b4d9 100644
+--- a/src/batResult.ml
++++ b/src/batResult.ml
+@@ -1,45 +1,45 @@
+ 
+-type ('a, 'b) t = ('a, 'b) BatPervasives.result =
++type ('a, 'b) t = ('a, 'b) result =
+   | Ok  of 'a
+-  | Bad of 'b
++  | Error of 'b
+ 
+-let catch f x = try Ok (f x) with e -> Bad e
+-let catch2 f x y = try Ok (f x y) with e -> Bad e
+-let catch3 f x y z = try Ok (f x y z) with e -> Bad e
++let catch f x = try Ok (f x) with e -> Error e
++let catch2 f x y = try Ok (f x y) with e -> Error e
++let catch3 f x y z = try Ok (f x y z) with e -> Error e
+ 
+ let of_option = function
+   | Some x -> Ok x
+-  | None   -> Bad ()
++  | None   -> Error ()
+ 
+ let to_option = function
+   | Ok x   -> Some x
+-  | Bad _-> None
++  | Error _-> None
+ 
+ let default def = function
+   | Ok x  -> x
+-  | Bad _ -> def
++  | Error _ -> def
+ 
+ let map_default def f = function
+   | Ok x -> f x
+-  | Bad _ -> def
++  | Error _ -> def
+ 
+-let is_ok = function Ok _ -> true | Bad _ -> false
++let is_ok = function Ok _ -> true | Error _ -> false
+ 
+-let is_bad = function Bad _ -> true | Ok _ -> false
++let is_bad = function Error _ -> true | Ok _ -> false
+ 
+-let is_exn e = function Bad exn -> exn = e | Ok _ -> false
++let is_exn e = function Error exn -> exn = e | Ok _ -> false
+ 
+-let get = function Ok x -> x | Bad e -> raise e
++let get = function Ok x -> x | Error e -> raise e
+ 
+ let print print_val oc = function
+   | Ok x -> BatPrintf.fprintf oc "Ok(%a)" print_val x
+-  | Bad e -> BatPrintf.fprintf oc "Bad(%a)" BatPrintexc.print e
++  | Error e -> BatPrintf.fprintf oc "Error(%a)" BatPrintexc.print e
+ 
+ 
+ module Monad = struct
+   let bind m k = match m with
+     | Ok  x      -> k x
+-    | Bad _ as e -> e
++    | Error _ as e -> e
+ 
+   let return x = Ok x
+ 
+diff --git a/src/batResult.mli b/src/batResult.mli
+index a295c64..203c125 100644
+--- a/src/batResult.mli
++++ b/src/batResult.mli
+@@ -1,12 +1,12 @@
+ (**  Monadic results of computations that can raise exceptions *)
+ 
+ (** The type of a result.  A result is either [Ok x] carrying the
+-    normal return value [x] or is [Bad e] carrying some indication of an
++    normal return value [x] or is [Error e] carrying some indication of an
+     error.  The value associated with a bad result is usually an exception
+     ([exn]) that can be raised.
+     @since 1.0
+ *)
+-type ('a, 'b) t = ('a, 'b) BatPervasives.result = Ok of 'a | Bad of 'b
++type ('a, 'b) t = ('a, 'b) result = Ok of 'a | Error of 'b
+ 
+ (** Execute a function and catch any exception as a result.  This
+     function encapsulates code that could throw an exception and returns
+@@ -26,19 +26,19 @@ val catch2: ('a -> 'b -> 'c) -> 'a -> 'b -> ('c, exn) t
+ val catch3: ('a -> 'b -> 'c -> 'd) -> 'a -> 'b -> 'c -> ('d, exn) t
+ 
+ 
+-(** [get (Ok x)] returns [x], and [get (Bad e)] raises [e].  This
++(** [get (Ok x)] returns [x], and [get (Error e)] raises [e].  This
+     function is, in a way, the opposite of the [catch] function
+     @since 2.0
+ *)
+ val get : ('a, exn) t -> 'a
+ 
+-(** [default d r] evaluates to [d] if [r] is [Bad] else [x] when [r] is
++(** [default d r] evaluates to [d] if [r] is [Error] else [x] when [r] is
+     [Ok x]
+     @since 2.0
+ *)
+ val default: 'a -> ('a, _) t -> 'a
+ 
+-(** [map_default d f r] evaluates to [d] if [r] is [Bad] else [f x]
++(** [map_default d f r] evaluates to [d] if [r] is [Error] else [f x]
+     when [r] is [Ok x]
+     @since 2.0
+ *)
+@@ -49,12 +49,12 @@ val map_default : 'b -> ('a -> 'b) -> ('a, _) t -> 'b
+ *)
+ val is_ok : ('a, 'b) t -> bool
+ 
+-(** [is_bad (Bad _)] is [true], otherwise [false]
++(** [is_bad (Error _)] is [true], otherwise [false]
+     @since 2.0
+ *)
+ val is_bad : ('a, 'b) t -> bool
+ 
+-(** [is_exn e1 r] is [true] iff [r] is [Bad e2] with [e1=e2] *)
++(** [is_exn e1 r] is [true] iff [r] is [Error e2] with [e1=e2] *)
+ val is_exn : exn -> ('a, exn) t -> bool
+ 
+ (** Convert an [option] to a [result]
+@@ -96,5 +96,5 @@ module Infix : sig
+   val ( >>= ): ('a, 'b) t -> ('a -> ('c, 'b) t) -> ('c, 'b) t
+ end
+ 
+-(** Print a result as Ok(x) or Bad(exn) *)
++(** Print a result as Ok(x) or Error(exn) *)
+ val print : ('b BatInnerIO.output -> 'a -> unit) -> 'b BatInnerIO.output -> ('a, exn) t -> unit
+diff --git a/src/batSys.mliv b/src/batSys.mliv
+index 510a661..add0b33 100644
+--- a/src/batSys.mliv
++++ b/src/batSys.mliv
+@@ -65,7 +65,8 @@ external getenv : string -> string = "caml_sys_getenv"
+ external command : string -> int = "caml_sys_system_command"
+ (** Execute the given shell command and return its exit code. *)
+ 
+-external time : unit -> float = "caml_sys_time"
++##V<4.3## external time : unit -> float = "caml_sys_time"
++##V>=4.3## external time : unit -> (float [@unboxed]) = "caml_sys_time" "caml_sys_time_unboxed" [@@noalloc]
+ (** Return the processor time, in seconds, used by the program
+     since the beginning of execution. *)
+ 
+diff --git a/src/batUnix.mliv b/src/batUnix.mliv
+index 60a6ec4..069d63a 100644
+--- a/src/batUnix.mliv
++++ b/src/batUnix.mliv
+@@ -766,7 +766,8 @@ val create_process_env :
+ (** {6 Symbolic links} *)
+ 
+ 
+-val symlink : string -> string -> unit
++##V>=4.3##val symlink : ?to_dir:bool -> string -> string -> unit
++##V<4.3##val symlink : string -> string -> unit
+ (** [symlink source dest] creates the file [dest] as a symbolic link
+     to the file [source]. *)
+ 

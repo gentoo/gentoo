@@ -4,7 +4,7 @@
 
 EAPI="5"
 
-inherit oasis
+inherit oasis eutils
 
 DESCRIPTION="Feature-full driver for OCaml AST transformers"
 HOMEPAGE="http://www.janestreet.com/ocaml"
@@ -21,6 +21,10 @@ DEPEND="dev-ml/ppx_tools:=
 	dev-ml/ppx_optcomp:="
 RDEPEND="${DEPEND}"
 DEPEND="${DEPEND} dev-ml/opam"
+
+src_prepare() {
+	has_version '>=dev-lang/ocaml-4.03' && epatch "${FILESDIR}/oc43.patch"
+}
 
 src_configure() {
 	emake setup.exe

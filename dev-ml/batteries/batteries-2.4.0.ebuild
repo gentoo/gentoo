@@ -22,3 +22,8 @@ DEPEND="${RDEPEND}
 DOCS=( "ChangeLog" "FAQ" "README.folders" "README.md" )
 
 S="${WORKDIR}/${PN}-included-${PV}"
+PATCHES=(
+	"${FILESDIR}/oc43-1.patch"
+	"${FILESDIR}/oc43-2.patch"
+	"${FILESDIR}/oc43-3.patch"
+)

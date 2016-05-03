@@ -2,12 +2,15 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
+EAPI=5
 
-inherit oasis eutils
+OASIS_BUILD_DOCS=1
+OASIS_BUILD_TESTS=1
 
-DESCRIPTION="Standard library for ppx rewriters"
-HOMEPAGE="http://www.janestreet.com/ocaml"
+inherit oasis
+
+DESCRIPTION="Collection of tools to help building Jane Street Packages"
+HOMEPAGE="https://github.com/janestreet/js-build-tools"
 SRC_URI="http://ocaml.janestreet.com/ocaml-core/${PV%.*}/files/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
@@ -15,13 +18,8 @@ SLOT="0/${PV}"
 KEYWORDS="~amd64"
 IUSE=""
 
-DEPEND="dev-ml/ppx_tools:="
-RDEPEND="${DEPEND}"
-DEPEND="${DEPEND} dev-ml/opam"
-
-src_prepare() {
-	has_version '>=dev-lang/ocaml-4.03' && epatch "${FILESDIR}/oc43.patch"
-}
+RDEPEND=""
+DEPEND="${RDEPEND} dev-ml/opam"
 
 src_configure() {
 	emake setup.exe
@@ -38,5 +36,5 @@ src_install() {
 		--libdir="${D}/$(ocamlc -where)" \
 		--docdir="${ED}/usr/share/doc/${PF}" \
 		${PN}.install || die
-	dodoc CHANGES.md
+	dodoc README.md
 }

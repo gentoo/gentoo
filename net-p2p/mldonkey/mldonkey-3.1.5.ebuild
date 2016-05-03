@@ -59,6 +59,7 @@ src_prepare() {
 	cd "${S}"
 	use ocamlopt || sed -i -e "s/ocamlopt/idontwantocamlopt/g" "${S}/config/configure" || die "failed to disable ocamlopt"
 	epatch "${FILESDIR}/ocaml4.patch"
+	has_version '>=dev-lang/ocaml-4.03' && epatch "${FILESDIR}/ocaml-4.03.patch"
 }
 
 src_configure() {

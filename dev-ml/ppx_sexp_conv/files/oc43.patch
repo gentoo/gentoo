@@ -1,0 +1,193 @@
+diff -uNr ppx_sexp_conv-113.33.00/expander/ppx_sexp_conv_expander.ml ppx_sexp_conv-113.33.01+4.03/expander/ppx_sexp_conv_expander.ml
+--- ppx_sexp_conv-113.33.00/expander/ppx_sexp_conv_expander.ml	2016-03-09 16:44:54.000000000 +0100
++++ ppx_sexp_conv-113.33.01+4.03/expander/ppx_sexp_conv_expander.ml	2016-04-18 12:09:44.000000000 +0200
+@@ -491,30 +491,33 @@
+       let lid = Located.map lident cnstr in
+       let str = estring ~loc cnstr.txt in
+       match cd.pcd_args with
+-      | [] ->
+-        ppat_construct ~loc lid None --> [%expr Sexplib.Sexp.Atom [%e str]]
+-      | args ->
+-        match args with
+-        | [ [%type: [%t? tp] sexp_list ] ] ->
+-          let cnv_expr = Fun_or_match.expr ~loc (sexp_of_type renaming tp) in
+-          ppat_construct ~loc lid (Some [%pat? l]) -->
+-          [%expr
+-            Sexplib.Sexp.List
+-              (Sexplib.Sexp.Atom [%e str] ::
+-               Sexplib.Conv.list_map [%e cnv_expr] l)]
+-        | _ ->
+-          let sexp_of_args = List.map ~f:(sexp_of_type renaming) args in
+-          let cnstr_expr = [%expr Sexplib.Sexp.Atom [%e str] ] in
+-          let bindings, patts, vars = Fun_or_match.map_tmp_vars ~loc sexp_of_args in
+-          let patt =
+-            match patts with
+-            | [patt] -> patt
+-            | _ -> ppat_tuple ~loc patts
+-          in
+-          ppat_construct ~loc lid (Some patt) -->
+-          pexp_let ~loc Nonrecursive bindings
+-            [%expr Sexplib.Sexp.List [%e elist ~loc (cnstr_expr :: vars)]]
+-    )
++      | Pcstr_record _ -> failwith "Pcstr_record unsupported"
++      | Pcstr_tuple pcd_args ->
++        match pcd_args with
++        | [] ->
++          ppat_construct ~loc lid None --> [%expr Sexplib.Sexp.Atom [%e str]]
++        | args ->
++          match args with
++          | [ [%type: [%t? tp] sexp_list ] ] ->
++            let cnv_expr = Fun_or_match.expr ~loc (sexp_of_type renaming tp) in
++            ppat_construct ~loc lid (Some [%pat? l]) -->
++            [%expr
++              Sexplib.Sexp.List
++                (Sexplib.Sexp.Atom [%e str] ::
++                 Sexplib.Conv.list_map [%e cnv_expr] l)]
++          | _ ->
++            let sexp_of_args = List.map ~f:(sexp_of_type renaming) args in
++            let cnstr_expr = [%expr Sexplib.Sexp.Atom [%e str] ] in
++            let bindings, patts, vars = Fun_or_match.map_tmp_vars ~loc sexp_of_args in
++            let patt =
++              match patts with
++              | [patt] -> patt
++              | _ -> ppat_tuple ~loc patts
++            in
++            ppat_construct ~loc lid (Some patt) -->
++            pexp_let ~loc Nonrecursive bindings
++              [%expr Sexplib.Sexp.List [%e elist ~loc (cnstr_expr :: vars)]]
++      )
+ 
+   let sexp_of_sum tps cds = Fun_or_match.Match (branch_sum tps cds)
+ 
+@@ -721,7 +724,7 @@
+   let sexp_of_tds ~loc ~path:_ (rec_flag, tds) =
+     let rec_flag = really_recursive rec_flag tds in
+     let bindings = List.map tds ~f:sexp_of_td |> List.concat in
+-    [pstr_value ~loc rec_flag bindings]
++    pstr_value_list ~loc rec_flag bindings
+ 
+   let sexp_of_exn ~loc:_ ~path ec =
+     let renaming = Renaming.identity in
+@@ -730,14 +733,14 @@
+     let expr =
+       match ec with
+       | {pext_name = {loc; txt = cnstr};
+-         pext_kind = Pext_decl ([], None); _;} ->
++         pext_kind = Pext_decl (Pcstr_tuple [], None); _;} ->
+         [%expr
+             Sexplib.Exn_magic.register [%e pexp_construct ~loc
+                                              (Located.lident ~loc cnstr) None]
+             [%e estring ~loc (get_full_cnstr cnstr)]
+         ]
+       | {pext_name = {loc; txt = cnstr};
+-         pext_kind = Pext_decl (_::_ as tps, None); _;} ->
++         pext_kind = Pext_decl (Pcstr_tuple ((_::_) as tps), None); _;} ->
+         let fps = List.map ~f:(fun tp -> sexp_of_type renaming tp) tps in
+         let sexp_converters = List.map fps ~f:Fun_or_match.(expr ~loc) in
+         let _, patts, vars = Fun_or_match.map_tmp_vars ~loc fps in
+@@ -761,6 +764,8 @@
+           eapply ~loc partial sexp_converters
+         in
+         [%expr  [%e call] ]
++      | { pext_kind = Pext_decl (Pcstr_record _, _); _;} ->
++        failwith "Pcstr_record not supported"
+       | { pext_kind = Pext_decl (_, Some _); _} ->
+         Location.raise_errorf ~loc "sexp_of_exn/:"
+       | { pext_kind = Pext_rebind _; _} ->
+@@ -1089,13 +1094,14 @@
+   (* Generate matching code for well-formed S-expressions wrt. sum types *)
+   let mk_good_sum_matches (loc,cds) =
+     List.map cds ~f:(function
+-    | { pcd_name = cnstr; pcd_args = []; _} ->
++    | { pcd_args = Pcstr_record _; _} -> failwith "Pcstr_record unsupported"
++    | { pcd_name = cnstr; pcd_args = Pcstr_tuple []; _} ->
+       let lcstr = pstring ~loc (String.uncapitalize cnstr.txt) in
+       let str = pstring ~loc cnstr.txt in
+       [%pat? Sexplib.Sexp.Atom ([%p lcstr] | [%p str])] -->
+       pexp_construct ~loc (Located.lident ~loc cnstr.txt) None
+ 
+-    | { pcd_name = cnstr; pcd_args = (_::_ as tps); _} ->
++    | { pcd_name = cnstr; pcd_args = Pcstr_tuple (_::_ as tps); _} ->
+       let lcstr = pstring ~loc (String.uncapitalize cnstr.txt) in
+       let str = pstring ~loc cnstr.txt in
+       [%pat? (Sexplib.Sexp.List
+@@ -1109,14 +1115,15 @@
+      wrt. sum types *)
+   let mk_bad_sum_matches (loc,cds) =
+     List.map cds ~f:(function
+-    | { pcd_name = cnstr; pcd_args = []; _} ->
++    | { pcd_args = Pcstr_record _; _} -> failwith "Pcstr_record unsupported"
++    | { pcd_name = cnstr; pcd_args = Pcstr_tuple []; _} ->
+       let lcstr = pstring ~loc (String.uncapitalize cnstr.txt) in
+       let str = pstring ~loc cnstr.txt in
+       [%pat? Sexplib.Sexp.List
+              (Sexplib.Sexp.Atom ([%p lcstr] | [%p str]) :: _) as sexp
+       ] -->
+       [%expr Sexplib.Conv_error.stag_no_args _tp_loc sexp]
+-    | { pcd_name = cnstr; pcd_args = _::_; _} ->
++    | { pcd_name = cnstr; pcd_args = Pcstr_tuple (_::_); _} ->
+       let lcstr = pstring ~loc (String.uncapitalize cnstr.txt) in
+       let str = pstring ~loc cnstr.txt in
+       [%pat? Sexplib.Sexp.Atom ([%p lcstr] | [%p str]) as sexp] -->
+@@ -1479,13 +1486,14 @@
+               internals @ externals)
+             |> List.concat
+           in
+-          [pstr_value ~loc Recursive bindings]
++          pstr_value_list ~loc Recursive bindings
+         | Nonrecursive ->
+           let bindings =
+             List.map tds ~f:(fun td ->
+               let internals,externals = td_of_sexp ~loc ~poly ~path td in
+-              [pstr_value ~loc Nonrecursive internals;
+-               pstr_value ~loc Nonrecursive externals])
++              pstr_value_list ~loc Nonrecursive internals @
++              pstr_value_list ~loc Nonrecursive externals
++            )
+             |> List.concat
+           in
+           bindings
+@@ -1496,7 +1504,7 @@
+             internals @ externals)
+           |> List.concat
+         in
+-        [pstr_value ~loc rec_flag bindings]
++        pstr_value_list ~loc rec_flag bindings
+     end
+ 
+   let type_of_sexp ~path ctyp =
+diff -uNr ppx_sexp_conv-113.33.00/js-utils/gen_install.ml ppx_sexp_conv-113.33.01+4.03/js-utils/gen_install.ml
+--- ppx_sexp_conv-113.33.00/js-utils/gen_install.ml	2016-03-09 16:44:54.000000000 +0100
++++ ppx_sexp_conv-113.33.01+4.03/js-utils/gen_install.ml	2016-04-18 12:09:44.000000000 +0200
+@@ -31,7 +31,7 @@
+   |> List.map (fun line -> Scanf.sscanf line "%[^=]=%S" (fun k v -> (k, v)))
+ 
+ let remove_cwd =
+-  let prefix = Sys.getcwd () ^ "/" in
++  let prefix = Sys.getcwd () ^ Filename.dir_sep in
+   let len_prefix = String.length prefix in
+   fun fn ->
+     let len = String.length fn in
+diff -uNr ppx_sexp_conv-113.33.00/_oasis ppx_sexp_conv-113.33.01+4.03/_oasis
+--- ppx_sexp_conv-113.33.00/_oasis	2016-03-09 16:44:54.000000000 +0100
++++ ppx_sexp_conv-113.33.01+4.03/_oasis	2016-04-18 12:09:44.000000000 +0200
+@@ -1,8 +1,8 @@
+ OASISFormat:      0.4
+-OCamlVersion:     >= 4.02.3
++OCamlVersion:     >= 4.03.0
+ FindlibVersion:   >= 1.3.2
+ Name:             ppx_sexp_conv
+-Version:          113.33.00
++Version:          113.33.01+4.03
+ Synopsis:         Generation of S-expression conversion functions from type definitions
+ Authors:          Jane Street Group, LLC <opensource@janestreet.com>
+ Copyrights:       (C) 2015-2016 Jane Street Group LLC <opensource@janestreet.com>
+diff -uNr ppx_sexp_conv-113.33.00/opam ppx_sexp_conv-113.33.01+4.03/opam
+--- ppx_sexp_conv-113.33.00/opam	2016-03-18 12:08:01.000000000 +0100
++++ ppx_sexp_conv-113.33.01+4.03/opam	2016-04-18 12:27:13.000000000 +0200
+@@ -17,4 +17,4 @@
+   "ppx_type_conv"
+   "sexplib"
+ ]
+-available: [ ocaml-version >= "4.02.3" ]
++available: [ ocaml-version >= "4.03.0" ]
