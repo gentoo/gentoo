@@ -40,7 +40,7 @@ src_configure() {
 	then
 		econf $(use_with caps) $(use_with python) $(use_with seccomp)
 	else
-		tc-export CC
+		tc-export CC PKG_CONFIG
 	fi
 }
 
