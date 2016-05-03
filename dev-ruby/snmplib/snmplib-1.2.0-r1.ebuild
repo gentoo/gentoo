@@ -18,7 +18,7 @@ IUSE=""
 DESCRIPTION="SNMP library implemented in pure Ruby"
 HOMEPAGE="http://snmplib.rubyforge.org/"
 
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ppc x86"
 LICENSE="Ruby"
 SLOT="0"
 
