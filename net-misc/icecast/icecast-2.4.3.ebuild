@@ -2,8 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
-inherit eutils autotools systemd user
+EAPI=6
+inherit autotools systemd user
 
 DESCRIPTION="An opensource alternative to shoutcast that supports mp3, ogg (vorbis/theora) and aac streaming"
 HOMEPAGE="http://www.icecast.org/"
@@ -32,11 +32,16 @@ pkg_setup() {
 	enewuser icecast -1 -1 -1 nogroup
 }
 
-src_prepare() {
+PATCHES=(
 	# bug #368539
-	epatch "${FILESDIR}"/${PN}-2.3.3-libkate.patch
+	"${FILESDIR}"/${PN}-2.3.3-libkate.patch
 	# bug #430434
-	epatch "${FILESDIR}"/${PN}-2.3.3-fix-xiph_openssl.patch
+	"${FILESDIR}"/${PN}-2.3.3-fix-xiph_openssl.patch
+)
+
+src_prepare() {
+	default
+	mv configure.{in,ac} || die
 	eautoreconf
 }
 
@@ -56,9 +61,10 @@ src_configure() {
 src_install() {
 	emake DESTDIR="${D}" install
 	dodoc AUTHORS README TODO HACKING NEWS conf/icecast.xml.dist
-	dohtml -A chm,hhc,hhp doc/*
+	docinto html
+	dodoc doc/*.html
 
-	newinitd "${FILESDIR}"/init.d.icecast-2 icecast
+	newinitd "${FILESDIR}"/${PN}.initd ${PN}
 	systemd_dounit "${FILESDIR}"/${PN}.service
 
 	insinto /etc/icecast2
@@ -74,7 +80,7 @@ src_install() {
 	diropts -m0764 -o icecast -g nogroup
 	dodir /var/log/icecast
 	keepdir /var/log/icecast
-	rm -rf "${D}"/usr/share/doc/icecast
+	rm -r "${D}"/usr/share/doc/icecast || die
 }
 
 pkg_postinst() {
