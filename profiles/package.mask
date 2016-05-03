@@ -30,6 +30,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Maciej Mrozowski <reavertm@gentoo.org> (3 May 2016)
+# Mask until >=net-libs/qxmpp-0.8.3 is provided with qt5 support.
+=net-im/kadu-3.0
+
 # Lars Wendler <polynomial-c@gentoo.org> (2 May 2016)
 # Broken reverse deps. At least one header file has been moved around.
 >=media-gfx/imagemagick-7.0.1.0

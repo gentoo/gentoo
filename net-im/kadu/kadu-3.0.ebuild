@@ -1,8 +1,8 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
+EAPI="6"
 
 inherit cmake-utils flag-o-matic
 
@@ -13,7 +13,7 @@ HOMEPAGE="http://www.kadu.net"
 SRC_URI="http://download.kadu.im/stable/${P}.tar.bz2"
 
 LICENSE="GPL-2"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="~amd64 ~x86"
 SLOT="0"
 IUSE="+gadu mpd otr phonon sdk speech spell xmpp"
 REQUIRED_USE="
@@ -30,7 +30,6 @@ COMMON_DEPEND="
 	>=dev-qt/qtgui-5.2.0:5
 	>=dev-qt/qtmultimedia-5.2.0:5
 	>=dev-qt/qtnetwork-5.2.0:5
-	>=dev-qt/qtquick1-5.2.0:5
 	>=dev-qt/qtscript-5.2.0:5
 	>=dev-qt/qtsql-5.2.0:5
 	>=dev-qt/qtsvg-5.2.0:5
@@ -58,6 +57,7 @@ COMMON_DEPEND="
 	spell? ( app-text/enchant )
 	xmpp? (
 		net-dns/libidn
+		>=net-libs/qxmpp-0.8.3[qt5]
 		sys-libs/zlib
 	)
 "
@@ -84,8 +84,8 @@ autostatus
 cenzor
 chat_notify
 config_wizard
-desktop_docking
 docking
+docking_notify
 emoticons
 encryption_ng
 encryption_ng_simlite
@@ -103,8 +103,6 @@ last_seen
 mediaplayer
 mprisplayer_mediaplayer
 pcspeaker
-qt4_docking
-qt4_docking_notify
 screenshot simpleview
 single_window
 sms
@@ -136,8 +134,8 @@ src_configure() {
 		-DBUILD_DESCRIPTION='Gentoo Linux'
 		-DCOMPILE_PLUGINS="${PLUGINS}"
 		-DNETWORK_IMPLEMENTATION="Qt"
-		$(cmake-utils_use sdk INSTALL_SDK)
-		$(cmake-utils_use_with spell ENCHANT)
+		-DINSTALL_SDK=$(usex sdk)
+		-DWITH_ENCHANT=$(usex spell)
 	)
 	unset PLUGINS
 
