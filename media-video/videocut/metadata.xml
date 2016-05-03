@@ -4,10 +4,6 @@
 	<maintainer type="project">
 		<email>media-video@gentoo.org</email>
 	</maintainer>
-	<maintainer type="project">
-		<email>qt@gentoo.org</email>
-		<name>Gentoo Qt Project</name>
-	</maintainer>
 	<upstream>
 		<remote-id type="google-code">videocut</remote-id>
 	</upstream>
