@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -18,14 +18,13 @@ HOMEPAGE="http://packages.qa.debian.org/c/capi4hylafax.html"
 
 S="${WORKDIR}/${PN}-svn"
 
-IUSE=""
+IUSE="unicode"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ppc x86"
 
 DEPEND="net-dialup/capi4k-utils
-	app-shells/bash
 	media-libs/tiff
 	virtual/jpeg
 	sys-libs/zlib"
@@ -40,7 +39,9 @@ src_unpack() {
 	# apply debian patches + update configs
 	epatch "${WORKDIR}/${MY_P}-${MY_PV3}.diff"
 
-	# update autotools
+	# apply bugfix patch (see bug #145982)
+	epatch "${FILESDIR}/${P}-recvdev.diff"
+
 	eautoreconf
 
 	# fix location of fax spool
@@ -61,6 +62,14 @@ src_unpack() {
 		-e "s:CAPI4HYLAFAXCONFIG \"1\":C2FAXADDMODEM \"8\":g" \
 		-e "s:capi4hylafaxconfig:c2faxaddmodem:g" debian/*.1
 	cp -f debian/capi4hylafaxconfig.1 debian/c2faxaddmodem.8
+
+	# if specified, convert all relevant files from latin1 to UTF-8
+	if use unicode; then
+		for i in config.faxCAPI; do
+			einfo "Converting ${i} to UTF-8"
+			iconv -f latin1 -t utf8 -o "${i}~" "${i}" && mv -f "${i}~" "${i}" || rm -f "${i}~"
+		done
+	fi
 }
 
 src_compile() {
@@ -92,7 +101,7 @@ src_install() {
 
 	# install examples
 	insinto /usr/share/doc/${PF}/examples
-	doins sample_faxrcvd config.faxCAPI fritz_pic.tif GenerateFileMail.pl
+	doins sample_faxrcvd faxrcvd config.faxCAPI fritz_pic.tif GenerateFileMail.pl
 	newins sample_AVMC4_config.faxCAPI config.faxCAPI_AVMC4
 	newins debian/faxsend sample_faxsend
 
@@ -102,32 +111,32 @@ src_install() {
 }
 
 pkg_postinst() {
-	elog "To use capi4hylafax:"
-	elog "Make sure that your isdn/capi devices are owned by"
-	elog "the \"uucp\" user (see udev or devfsd config)."
-	elog "Modify ${FAX_SPOOL_DIR}/etc/config.faxCAPI"
-	elog "to suit your system."
+	einfo "To use capi4hylafax:"
+	einfo "Make sure that your isdn/capi devices are owned by"
+	einfo "the \"uucp\" user (see udev or devfsd config)."
+	einfo "Modify ${FAX_SPOOL_DIR}/etc/config.faxCAPI"
+	einfo "to suit your system."
 
 	if [ -f "${FAX_SPOOL_DIR}/etc/config.faxCAPI" ]; then
-		elog
-		elog "If you're upgrading from a previous version"
-		elog "please check for new or changed options."
-		elog "A sample default config is installed as:"
-		elog "${FAX_SPOOL_DIR}/etc/config.faxCAPI.default"
+		einfo
+		einfo "If you're upgrading from a previous version"
+		einfo "please check for new or changed options."
+		einfo "A sample default config is installed as:"
+		einfo "${FAX_SPOOL_DIR}/etc/config.faxCAPI.default"
 	else
 		# install default config
 		cp -f "${FAX_SPOOL_DIR}/etc/config.faxCAPI.default" \
 			"${FAX_SPOOL_DIR}/etc/config.faxCAPI"
 	fi
 
-	elog
-	elog "You should also check special options in:"
-	elog "/etc/conf.d/${PN}"
-	elog
-	elog "If you want to use capi4hylafax together with"
-	elog "hylafax, then please emerge net-misc/hylafax"
-	elog
-	elog "Then append the following line to your hylafax"
-	elog "config file (${FAX_SPOOL_DIR}/etc/config):"
-	elog "SendFaxCmd:             /usr/bin/c2faxsend"
+	einfo
+	einfo "You should also check special options in:"
+	einfo "/etc/conf.d/${PN}"
+	einfo
+	einfo "If you want to use capi4hylafax together with"
+	einfo "hylafax, then please emerge net-misc/hylafax"
+	einfo
+	einfo "Then append the following line to your hylafax"
+	einfo "config file (${FAX_SPOOL_DIR}/etc/config):"
+	einfo "SendFaxCmd:			   /usr/bin/c2faxsend"
 }

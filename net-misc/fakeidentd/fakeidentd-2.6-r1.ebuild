@@ -1,8 +1,8 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=6
 
 inherit toolchain-funcs
 
@@ -33,7 +33,7 @@ src_compile() {
 }
 
 src_install() {
-	dosbin ${PN} || die
+	dosbin ${PN}
 	newdoc ${P}.readme identd.readme
 
 	newinitd "${FILESDIR}"/fakeidentd.rc fakeidentd

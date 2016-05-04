@@ -1,8 +1,10 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-inherit eutils user
+EAPI=6
+
+inherit user
 
 DESCRIPTION="This is an identd with provides registering of idents"
 HOMEPAGE="http://druglord.freelsd.org/ezbounce/"
@@ -23,21 +25,24 @@ pkg_setup() {
 	enewuser mdidentd -1 -1 /dev/null mdidentd
 }
 
-src_unpack() {
-	unpack ${A}
-	cd "${S}"
-	epatch "${FILESDIR}"/1.04a-security.patch
-	epatch "${FILESDIR}"/1.04a-pidfile.patch
-	epatch "${FILESDIR}"/1.04a-glibc210.patch
+src_prepare() {
+	eapply "${FILESDIR}"/1.04a-security.patch
+	eapply -p0 "${FILESDIR}"/1.04a-pidfile.patch
+	eapply -p1 "${FILESDIR}"/1.04a-glibc210.patch
+
+	default
+}
+
+src_configure() {
+	econf $(use_with ssl)
 }
 
 src_compile() {
-	econf $(use_with ssl) || die
-	emake CXX="$(tc-getCXX)" -C mdidentd CXX_OPTIMIZATIONS="${CXXFLAGS}" || die
+	emake CXX="$(tc-getCXX)" -C mdidentd CXX_OPTIMIZATIONS="${CXXFLAGS}"
 }
 
 src_install() {
-	dosbin mdidentd/mdidentd || die
+	dosbin mdidentd/mdidentd
 	dodoc mdidentd/README
 
 	newinitd "${FILESDIR}"/mdidentd.init.d mdidentd

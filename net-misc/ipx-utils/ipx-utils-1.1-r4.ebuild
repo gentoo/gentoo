@@ -1,8 +1,8 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="4"
+EAPI="6"
 inherit eutils
 
 DESCRIPTION="The IPX Utilities"
@@ -20,15 +20,16 @@ S=${WORKDIR}/${P/-utils}
 
 src_prepare() {
 	sed -i "s:-O2 -Wall:${CFLAGS}:" "${S}"/Makefile
-	epatch "${FILESDIR}"/${P}-makefile.patch
-	epatch "${FILESDIR}"/${P}-proc.patch #67642
+	eapply "${FILESDIR}"/${P}-makefile.patch
+	eapply "${FILESDIR}"/${P}-proc.patch #67642
+
+	default
 }
 
 src_install() {
-	dodir /sbin /usr/share/man/man8
-	dodoc "${S}"/README
-	emake DESTDIR="${D}" install
-
+	doman *.8
 	newconfd "${FILESDIR}"/ipx.confd ipx
 	newinitd "${FILESDIR}"/ipx.init ipx
+
+	default
 }

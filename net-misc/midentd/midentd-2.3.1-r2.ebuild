@@ -1,9 +1,8 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
-inherit eutils
+EAPI=6
 
 DESCRIPTION="ident daemon with masquerading and fake replies support"
 HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
@@ -18,7 +17,9 @@ DEPEND=""
 RDEPEND="dev-lang/perl"
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PV}-pidfile.patch
+	default
+
+	eapply "${FILESDIR}"/${PV}-pidfile.patch
 	sed -i \
 		-e 's:/usr/local:/usr:' \
 		-e 's:service ident:service auth:' \

@@ -1,8 +1,8 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-inherit eutils
+EAPI=6
 
 MY_P="${PN}-2003-02-08"
 S=${WORKDIR}/${PN}
@@ -18,15 +18,12 @@ IUSE=""
 DEPEND=""
 RDEPEND="dev-lang/perl dev-perl/Term-ANSIScreen"
 
-src_unpack() {
-	unpack ${A}
-
-	epatch "${FILESDIR}"/${P}-non-local.patch
-	epatch "${FILESDIR}"/${P}-Makefile.patch
-}
+PATCHES=( 	"${FILESDIR}"/${P}-fix-pod2man.patch
+			"${FILESDIR}"/${P}-non-local.patch
+			"${FILESDIR}"/${P}-Makefile.patch )
 
 src_install() {
-	make PREFIX=/usr DESTDIR="${D}" install || die
+	default
 
 	newinitd "${FILESDIR}"/blinkperl.rc blinkperl
 	newconfd "${FILESDIR}"/blinkperl.confd blinkperl

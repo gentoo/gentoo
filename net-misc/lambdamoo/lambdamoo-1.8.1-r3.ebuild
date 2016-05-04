@@ -1,10 +1,10 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="2"
+EAPI="6"
 
-inherit eutils autotools
+inherit autotools
 
 DESCRIPTION="networked mud that can be used for different types of collaborative software"
 HOMEPAGE="http://sourceforge.net/projects/lambdamoo/"
@@ -21,7 +21,9 @@ RDEPEND=""
 S=${WORKDIR}/MOO-${PV}
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PV}-enable-outbound.patch
+	default
+
+	eapply "${FILESDIR}"/${PV}-enable-outbound.patch
 	sed -i Makefile.in \
 		-e '/ -o /s|$(CFLAGS)|& $(LDFLAGS)|g' \
 		|| die "sed Makefile.in"
@@ -32,8 +34,7 @@ src_compile() {
 	emake \
 		CC=$(tc-getCC) \
 		CFLAGS="${CFLAGS} \
-		-DHAVE_MKFIFO=1" \
-		|| die "emake failed!"
+		-DHAVE_MKFIFO=1"
 }
 
 src_install() {
