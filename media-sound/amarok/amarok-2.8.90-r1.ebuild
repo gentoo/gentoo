@@ -75,6 +75,7 @@ RDEPEND="${COMMONDEPEND}
 PATCHES=(
 	"${FILESDIR}/${PN}-2.8.0-taglib110.patch"
 	"${FILESDIR}/${P}-mysql-embedded.patch"
+	"${FILESDIR}/${P}-mysqld-rpath.patch"
 )
 
 src_configure() {
@@ -96,6 +97,9 @@ src_configure() {
 		-DWITH_LibOFA=$(usex ofa)
 		-DWITH_UTILITIES=$(usex utils)
 	)
+
+	# bug 581554: add libmysqld location for rpath patch
+	use embedded && mycmakeargs+=( -DMYSQLD_DIR="${EPREFIX}/usr/$(get_libdir)/mysql" )
 
 	kde4-base_src_configure
 }
