@@ -1,10 +1,10 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="2"
+EAPI="6"
 
-inherit eutils flag-o-matic toolchain-funcs
+inherit flag-o-matic toolchain-funcs
 
 IUSE=""
 DESCRIPTION="Netkit - timed"
@@ -18,11 +18,12 @@ DEPEND=""
 RDEPEND=""
 
 src_prepare() {
-	epatch "${FILESDIR}"/0.17-CFLAG-DEF-fix.patch
-	epatch "${FILESDIR}"/0.17-timed-opt-parsing.patch
+	eapply "${FILESDIR}"/0.17-CFLAG-DEF-fix.patch
+	eapply "${FILESDIR}"/0.17-timed-opt-parsing.patch
 	sed -i configure \
 		-e '/^LDFLAGS=/d' \
 		|| die "sed configure"
+	default
 }
 
 src_configure() {
@@ -32,11 +33,11 @@ src_configure() {
 }
 
 src_install() {
-	dosbin timed/timed/timed || die
-	doman  timed/timed/timed.8 || die
-	dosbin timed/timedc/timedc || die
-	doman  timed/timedc/timedc.8 || die
-	dodoc  README ChangeLog BUGS || die
+	dosbin timed/timed/timed
+	doman  timed/timed/timed.8
+	dosbin timed/timedc/timedc
+	doman  timed/timedc/timedc.8
+	dodoc  README ChangeLog BUGS
 
-	newinitd "${FILESDIR}"/timed.rc6 timed || die
+	newinitd "${FILESDIR}"/timed.rc6 timed
 }

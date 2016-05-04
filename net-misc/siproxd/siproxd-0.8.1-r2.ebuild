@@ -1,8 +1,8 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="2"
+EAPI=5
 
 inherit eutils autotools user
 
@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="examples doc static"
 # TODO: debug can be used but dmalloc is breaking the build
 # upstream has been contacted, see bug 2649238 in their bugtracker
@@ -42,6 +42,8 @@ src_prepare() {
 	# do not crash when building with external libltdl, bug 308495
 	sed -i 's|"../libltdl/ltdl.h"|<ltdl.h>|' src/plugins.h || die "patching plugins.h failed"
 
+	epatch "${FILESDIR}/${PN}-0.8.1-amd64_static_build.patch" #380835
+
 	eautoreconf
 }
 
@@ -51,6 +53,7 @@ src_configure() {
 	econf \
 		$(use_enable doc) \
 		$(use_enable static static-libosip2) \
+		$(use_enable !static shared) \
 		--enable-static
 		#$(use debug && use_enable debug dmalloc) \
 
@@ -70,33 +73,32 @@ src_configure() {
 }
 
 src_install() {
-	einstall || die "einstall failed"
+	default
 
-	newinitd "${FILESDIR}"/${PN}.rc6 ${PN} || die "newinitd failed"
+	newinitd "${FILESDIR}"/${PN}.rc8 ${PN}
 
 	dodoc AUTHORS ChangeLog NEWS README RELNOTES TODO \
-		doc/FAQ doc/FLI4L_HOWTO.txt doc/KNOWN_BUGS \
-		|| die "dodoc failed"
+		doc/FAQ doc/FLI4L_HOWTO.txt doc/KNOWN_BUGS
 
 	if use doc; then
-		dodoc doc/RFC3261_compliance.txt || die "dodoc failed"
+		dodoc doc/RFC3261_compliance.txt
 		# auto-generated doc is not auto-installed
 		# upstream has been contacted, see bug 2649333 in their bugtracker
-		dohtml -r doc/html/ || die "dohtml failed"
+		dohtml -r doc/html/
 		# pdf is not build all the time
-		if has_version app-text/docbook-sgml-utils[jadetex]; then
-			dodoc doc/pdf/*.pdf || die "dodoc failed"
+		if has_version 'app-text/docbook-sgml-utils[jadetex]' ; then
+			dodoc doc/pdf/*.pdf
 		fi
 	fi
 
 	if use examples; then
 		docinto examples
-		dodoc doc/sample_*.txt || die "dodoc failed"
+		dodoc doc/sample_*.txt
 	fi
 
 	# set up siproxd directories
-	keepdir /var/{lib,run}/${PN} || die "keepdir failed"
-	fowners siproxd:siproxd /var/{lib,run}/${PN} || die "fowners failed"
+	keepdir /var/lib/${PN}
+	fowners siproxd:siproxd /var/lib/${PN}
 }
 
 pkg_postinst() {

@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -7,7 +7,7 @@ EAPI=6
 inherit toolchain-funcs
 
 DESCRIPTION="A small Telnet daemon, derived from the Axis tools"
-HOMEPAGE="http://www.pengutronix.de/software/utelnetd/index_en.html"
+HOMEPAGE="http://www.pengutronix.de/software/utelnetd_en.html"
 SRC_URI="http://www.pengutronix.de/software/utelnetd/${P}.tar.gz"
 
 LICENSE="GPL-2"
@@ -21,9 +21,7 @@ src_prepare() {
 	sed -i \
 		-e "/(STRIP)/d" \
 		-e "/^CC/s:=.*:= $(tc-getCC):" \
-		-e "/fomit-frame-pointer/d" \
 		Makefile || die
-
 	default
 }
 

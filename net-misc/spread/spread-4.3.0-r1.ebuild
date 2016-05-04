@@ -1,9 +1,9 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="4"
-inherit eutils user
+EAPI="6"
+inherit user
 
 MY_PN="spread-src"
 
@@ -27,6 +27,8 @@ pkg_setup() {
 }
 
 src_prepare() {
+	default
+
 	# don't strip binaries
 	sed -i -e 's/0755 -s/0755/g' daemon/Makefile.in examples/Makefile.in
 }

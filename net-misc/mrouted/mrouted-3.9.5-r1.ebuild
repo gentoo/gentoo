@@ -1,10 +1,10 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="2"
+EAPI="6"
 
-inherit eutils toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="IP multicast routing daemon"
 HOMEPAGE="http://troglobit.com/mrouted.shtml"
@@ -23,18 +23,19 @@ src_prepare() {
 	sed -i Makefile \
 		-e '/^CFLAGS/{s|[[:space:]]=| +=|g;s|-O2||g;s|-Werror||g}' \
 		|| die
+	default
 }
 
 src_compile() {
-	emake CC=$(tc-getCC) || die
+	emake CC=$(tc-getCC)
 }
 
 src_install() {
-	dobin mrouted || die
-	dosbin mtrace mrinfo map-mbone || die
-	doman mrouted.8 mtrace.8 mrinfo.8 map-mbone.8 || die
+	dobin mrouted
+	dosbin mtrace mrinfo map-mbone
+	doman mrouted.8 mtrace.8 mrinfo.8 map-mbone.8
 
 	insinto /etc
-	doins mrouted.conf || die
-	newinitd "${FILESDIR}"/mrouted.rc mrouted || die
+	doins mrouted.conf
+	newinitd "${FILESDIR}"/mrouted.rc mrouted
 }

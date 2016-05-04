@@ -1,8 +1,8 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="2"
+EAPI="6"
 
 inherit toolchain-funcs
 
@@ -18,17 +18,17 @@ IUSE=""
 S=${WORKDIR}/${PN}
 
 src_prepare() {
+	default
 	sed -i -e "s:gcc:$(tc-getCC) \$(CFLAGS) \$(LDFLAGS):" Makefile
 }
 
 src_compile() {
-	emake CFLAGS="${CFLAGS} -DLINUX" LDFLAGS="${LDFLAGS}" || die
+	emake CFLAGS="${CFLAGS} -DLINUX" LDFLAGS="${LDFLAGS}"
 }
 
 src_install() {
-	dosbin rinetd || die
+	dosbin rinetd
 	newinitd "${FILESDIR}"/rinetd.rc rinetd
 	doman rinetd.8
-	dodoc CHANGES README
-	dohtml index.html
+	dodoc CHANGES README index.html
 }

@@ -1,8 +1,8 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI="5"
 
 inherit eutils autotools user
 
@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="examples doc static"
 # TODO: debug can be used but dmalloc is breaking the build
 # upstream has been contacted, see bug 2649238 in their bugtracker
@@ -33,6 +33,8 @@ pkg_setup() {
 }
 
 src_prepare() {
+	default
+
 	# make the daemon run as user 'siproxd' by default
 	sed -i -e "s:nobody:siproxd:" doc/siproxd.conf.example \
 		|| die "patching doc/siproxd.conf.example failed"
@@ -41,8 +43,6 @@ src_prepare() {
 	epatch "${FILESDIR}/${PN}-libtool-2.4.patch"
 	# do not crash when building with external libltdl, bug 308495
 	sed -i 's|"../libltdl/ltdl.h"|<ltdl.h>|' src/plugins.h || die "patching plugins.h failed"
-
-	epatch "${FILESDIR}/${PN}-0.8.1-amd64_static_build.patch" #380835
 
 	eautoreconf
 }
@@ -53,7 +53,6 @@ src_configure() {
 	econf \
 		$(use_enable doc) \
 		$(use_enable static static-libosip2) \
-		$(use_enable !static shared) \
 		--enable-static
 		#$(use debug && use_enable debug dmalloc) \
 
@@ -73,9 +72,9 @@ src_configure() {
 }
 
 src_install() {
-	default
+	einstall
 
-	newinitd "${FILESDIR}"/${PN}.rc8 ${PN}
+	newinitd "${FILESDIR}"/${PN}.rc6 ${PN}
 
 	dodoc AUTHORS ChangeLog NEWS README RELNOTES TODO \
 		doc/FAQ doc/FLI4L_HOWTO.txt doc/KNOWN_BUGS
@@ -86,7 +85,7 @@ src_install() {
 		# upstream has been contacted, see bug 2649333 in their bugtracker
 		dohtml -r doc/html/
 		# pdf is not build all the time
-		if has_version 'app-text/docbook-sgml-utils[jadetex]' ; then
+		if has_version app-text/docbook-sgml-utils[jadetex]; then
 			dodoc doc/pdf/*.pdf
 		fi
 	fi
@@ -97,8 +96,8 @@ src_install() {
 	fi
 
 	# set up siproxd directories
-	keepdir /var/lib/${PN}
-	fowners siproxd:siproxd /var/lib/${PN}
+	keepdir /var/{lib,run}/${PN}
+	fowners siproxd:siproxd /var/{lib,run}/${PN}
 }
 
 pkg_postinst() {
