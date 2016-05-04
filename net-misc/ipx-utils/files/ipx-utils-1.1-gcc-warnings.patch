@@ -1,0 +1,51 @@
+Binary files ipx-1.1.orig/ipx_configure and ipx-1.1/ipx_configure differ
+diff -ur ipx-1.1.orig/ipx_configure.c ipx-1.1/ipx_configure.c
+--- ipx-1.1.orig/ipx_configure.c	2016-05-04 21:08:46.606264315 +0000
++++ ipx-1.1/ipx_configure.c	2016-05-04 21:21:46.139346843 +0000
+@@ -7,6 +7,7 @@
+ #include <unistd.h>
+ #include <ctype.h>
+ #include <getopt.h>
++#include <stdlib.h>
+ #include <strings.h>
+ #include <netipx/ipx.h>
+ #include <sys/types.h>
+Binary files ipx-1.1.orig/ipx_interface and ipx-1.1/ipx_interface differ
+diff -ur ipx-1.1.orig/ipx_interface.c ipx-1.1/ipx_interface.c
+--- ipx-1.1.orig/ipx_interface.c	2016-05-04 21:08:46.606264315 +0000
++++ ipx-1.1/ipx_interface.c	2016-05-04 21:20:27.414995860 +0000
+@@ -8,7 +8,7 @@
+ #include <errno.h>
+ #include <unistd.h>
+ #include <stdlib.h>
+-#include <strings.h>
++#include <string.h>
+ #include <netinet/in.h>
+ #include <netipx/ipx.h>
+ #include <linux/if.h>
+Binary files ipx-1.1.orig/ipx_internal_net and ipx-1.1/ipx_internal_net differ
+diff -ur ipx-1.1.orig/ipx_internal_net.c ipx-1.1/ipx_internal_net.c
+--- ipx-1.1.orig/ipx_internal_net.c	2016-05-04 21:08:46.606264315 +0000
++++ ipx-1.1/ipx_internal_net.c	2016-05-04 21:20:14.814299490 +0000
+@@ -7,7 +7,7 @@
+ #include <stdlib.h>
+ #include <ctype.h>
+ #include <errno.h>
+-#include <strings.h>
++#include <string.h>
+ #include <netinet/in.h>
+ #include <netipx/ipx.h>
+ #include <linux/if.h>
+Binary files ipx-1.1.orig/ipx_route and ipx-1.1/ipx_route differ
+diff -ur ipx-1.1.orig/ipx_route.c ipx-1.1/ipx_route.c
+--- ipx-1.1.orig/ipx_route.c	2016-05-04 21:08:46.606264315 +0000
++++ ipx-1.1/ipx_route.c	2016-05-04 21:20:17.954473064 +0000
+@@ -8,7 +8,7 @@
+ #include <stdlib.h>
+ #include <ctype.h>
+ #include <errno.h>
+-#include <strings.h>
++#include <string.h>
+ #include <netinet/in.h>
+ #include <netipx/ipx.h>
+ #include <sys/types.h>

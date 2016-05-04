@@ -163,7 +163,7 @@ COMMON_DEPEND="
 	gltf? ( media-libs/libgltf )
 	gnome? ( gnome-base/gconf:2 )
 	gtk? (
-		x11-libs/gdk-pixbuf[X]
+		x11-libs/gdk-pixbuf
 		>=x11-libs/gtk+-2.24:2
 	)
 	gtk3? ( >=x11-libs/gtk+-3.8:3 )
