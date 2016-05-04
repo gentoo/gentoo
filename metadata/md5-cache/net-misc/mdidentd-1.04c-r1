@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare setup
+DEPEND=ssl? ( dev-libs/openssl )
+DESCRIPTION=This is an identd with provides registering of idents
+EAPI=6
+HOMEPAGE=http://druglord.freelsd.org/ezbounce/
+IUSE=ssl
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-2
+RDEPEND=ssl? ( dev-libs/openssl )
+SLOT=0
+SRC_URI=http://druglord.freelsd.org/ezbounce/files/ezbounce-1.04c.tar.gz
+_eclass_exported_funcs=pkg_setup:- src_prepare:- src_configure:- src_compile:- src_install:-
+_eclasses_=user	906f3c8eb3a2350a4f1191a89baa3e46
+_md5_=8693c8b1da07e164673a1cf5fe5ed18f

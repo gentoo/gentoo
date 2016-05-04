@@ -14514,16 +14514,16 @@ net-misc/bfgminer 3.10.5 3.10.10 4.10.3 4.10.4 5.3.0 5.4.0 5.4.1 5.4.2: Modular 
 net-misc/bgpq 1.0.9.9: Generate access-lists for Cisco/Juniper routers
 net-misc/bgpq3 0.1.21 0.1.22: Generate access-lists for Cisco/Juniper routers, successor of bgpq
 net-misc/bird 1.3.9 1.4.3 1.4.4 1.4.5 1.5.0 1.6.0: A routing daemon implementing OSPF, RIPv2 & BGP for IPv4 or IPv6
-net-misc/blinkperl 20030301-r1: blinkperl is a telnet server, which plays BlinkenLight movies
+net-misc/blinkperl 20030301-r2: blinkperl is a telnet server, which plays BlinkenLight movies
 net-misc/bopm 3.1.3 3.1.3-r1: Blitzed Open Proxy Monitor
 net-misc/bridge-utils 1.5: Tools for configuring the Linux kernel 802.1d Ethernet Bridge
 net-misc/bsdwhois 1.43.2.1: FreeBSD Whois Client
 net-misc/bti 031-r1: A command line twitter/identi.ca client
 net-misc/bwwhois 5.5.2-r2: Perl-based whois client designed to work with the new Shared Registration System
 net-misc/cadaver 0.23.3: Command-line WebDAV client
-net-misc/capi4hylafax 01.03.00.99.300.3-r1 01.03.00.99.300.9 01.03.00.99.300.20: capi4hylafax adds a faxcapi modem to the hylafax enviroment
+net-misc/capi4hylafax 01.03.00.99.300.3-r2 01.03.00.99.300.9-r1 01.03.00.99.300.20-r1: capi4hylafax adds a faxcapi modem to the hylafax enviroment
 net-misc/capiisdnmon 0.42-r2: a CAPI 2.0 ISDN call monitor with LDAP name resolution
-net-misc/cbqinit 0.7.3-r1: Sets up class-based queue traffic control (QoS) with iproute2
+net-misc/cbqinit 0.7.3-r2: Sets up class-based queue traffic control (QoS) with iproute2
 net-misc/cbugzilla 0.2.1: CLI and C api to get data from Bugzilla
 net-misc/cfengine 2.2.10-r4 3.3.9 3.4.5 3.5.3 3.6.2: An automated suite of programs for configuring and maintaining Unix-like computers
 net-misc/cgminer 4.7.0 4.8.0 4.9.0 4.9.1 4.9.2: Bitcoin CPU/GPU/FPGA/ASIC miner in C
@@ -14569,7 +14569,7 @@ net-misc/elliptics 2.19.2.6: Elliptics network is a fault tolerant key/value sto
 net-misc/elliptics-eblob 0.0.1 0.22.16: The elliptics network - eblob backend
 net-misc/ethercard-diag 20050321.1g 20050321.1g-r1: low level mii diagnostic tools including mii-diag and etherwake (merge of netdiag/isa-diag)
 net-misc/exabgp 3.2.17: The BGP swiss army knife of networking
-net-misc/fakeidentd 2.6: A static, secure identd. One source file only!
+net-misc/fakeidentd 2.6-r1: A static, secure identd. One source file only!
 net-misc/fatrat 1.2.0_beta2: Qt4-based download/upload manager
 net-misc/flexget 1.2.315 1.2.346 9999: Multipurpose automation tool for content like torrents, nzbs, podcasts, comics
 net-misc/fmirror 0.8.4-r2: FTP mirror utility
@@ -14604,7 +14604,7 @@ net-misc/hath 0.3.0: Hath manipulates network blocks in CIDR notation
 net-misc/hlfl 0.60.1: High Level Firewall Language
 net-misc/hotot 0.9.8.14 0.9.8.14_p20130514 9999: lightweight & open source microblogging client
 net-misc/hsc 1.0b: An HTML preprocessor using ML syntax
-net-misc/htbinit 0.8.5-r6: Sets up Hierachical Token Bucket based traffic control (QoS) with iproute2
+net-misc/htbinit 0.8.5-r7: Sets up Hierachical Token Bucket based traffic control (QoS) with iproute2
 net-misc/htpdate 1.0.7 1.1.2 1.1.3: Synchronize local workstation with time offered by remote webservers
 net-misc/httpie 0.9.2 0.9.3: A CLI, cURL-like tool for humans
 net-misc/httptunnel 3.3-r2: httptunnel can create IP tunnels through firewalls/proxies using HTTP
@@ -14612,13 +14612,13 @@ net-misc/httptype 1.3.9-r1: Returns the http host software of a website
 net-misc/htun 0.9.6: Project to tunnel IP traffic over HTTP
 net-misc/hylafaxplus 5.5.4-r1 5.5.5: Enterprise client-server fax package for class 1 and 2 fax modems
 net-misc/i2pd 2.5.0-r4 2.5.1-r3 2.6.0-r1 2.6.0-r2: A C++ daemon for accessing the I2P anonymous network
-net-misc/iaxmodem 1.2.0 1.3.0: Software modem that uses an IAX channel instead of a traditional phone line
+net-misc/iaxmodem 1.2.0-r1 1.3.0-r1: Software modem that uses an IAX channel instead of a traditional phone line
 net-misc/icaclient 13.3.0.344519 13.3.0.344519-r1: ICA Client for Citrix Presentation servers
 net-misc/icecast 2.4.2 2.4.3: An opensource alternative to shoutcast that supports mp3, ogg (vorbis/theora) and aac streaming
 net-misc/ices 2.0.1-r1 2.0.2: Icecast OGG streaming client, supports on the fly re-encoding
 net-misc/identicurse 0.9: A simple Identi.ca client with a curses-based UI
 net-misc/ifenslave 1.1.0-r6: Attach and detach slave interfaces to a bonding device
-net-misc/igmpproxy 0.1-r1: Multicast Routing Daemon using only IGMP signalling (Internet Group Management Protocol)
+net-misc/igmpproxy 0.1-r2: Multicast Routing Daemon using only IGMP signalling (Internet Group Management Protocol)
 net-misc/iodine 0.7.0: IP over DNS tunnel
 net-misc/ip-sentinel 0.12: Prevent unauthorized usage of IPs in the local ethernet broadcastdomain by answering ARP-requests
 net-misc/ipcalc 0.41: IP Calculator prints broadcast/network/etc for an IP address and netmask
@@ -14629,7 +14629,7 @@ net-misc/ipsorcery 2.0.9-r1: Ipsorcery allows you to generate IP, TCP, UDP, ICMP
 net-misc/ipsvd 1.0.0-r1: ipsvd is a set of internet protocol service daemons for Unix
 net-misc/iputils 20121221-r1 20121221-r2 20151218 20160308 99999999: Network monitoring tools including ping and ping6
 net-misc/ipv6calc 0.94.1 0.97.4 0.99.0 0.99.1: IPv6 address calculator
-net-misc/ipx-utils 1.1-r3: The IPX Utilities
+net-misc/ipx-utils 1.1-r4: The IPX Utilities
 net-misc/isatapd 0.9.7-r2: creates and maintains an ISATAP tunnel (rfc5214)
 net-misc/java-wakeonlan 1.0.0-r2: A wakeonlan commandline tool and Java library
 net-misc/jigdo 0.7.3-r2: Jigsaw Download is a tool designed to ease the distribution of large files, for example DVD images
@@ -14646,7 +14646,7 @@ net-misc/ksshaskpass 0.5.3-r1: KDE implementation of ssh-askpass with Kwallet in
 net-misc/kvpnc 0.9.6a-r2: KDE frontend for various VPN clients
 net-misc/l7-filter-userspace 0.11 0.12_beta1: Userspace utilities for layer 7 iptables QoS
 net-misc/l7-protocols 2009.05.28: Protocol definitions of l7-filter kernel modules
-net-misc/lambdamoo 1.8.1-r2: networked mud that can be used for different types of collaborative software
+net-misc/lambdamoo 1.8.1-r3: networked mud that can be used for different types of collaborative software
 net-misc/lanmap 81-r1 81-r2: lanmap sits quietly on a network and builds a picture of what it sees
 net-misc/lcr 9999: Linux Call Router
 net-misc/leapcast 0.1.3-r1 9999: Simple ChromeCast emulation app
@@ -14655,19 +14655,19 @@ net-misc/libreswan 3.15 3.17 9999: IPsec implementation for Linux, fork of Opens
 net-misc/libss7 1.0.2: Signalling System 7 (SS7) protocol library
 net-misc/libteam 1.0 1.11 1.14 1.22: Library and tools set for controlling team network device
 net-misc/linux-eoip 0.5: Linux support for proprietary MIkrotik EoIP protocol
-net-misc/linux-identd 1.3-r1: A real IDENT daemon for linux
+net-misc/linux-identd 1.3-r2: A real IDENT daemon for linux
 net-misc/linuxptp 1.5 1.6: The Linux Precision Time Protocol (PTP) implementation
 net-misc/liveice 2000530-r1: Live Source Client For IceCast
 net-misc/livestreamer 1.11.1 1.12.1 1.12.2: CLI tool that pipes video streams from services like twitch.tv into a video player
 net-misc/lksctp-tools 1.0.13 1.0.16: Tools for Linux Kernel Stream Control Transmission Protocol implementation
 net-misc/lldpd 0.7.11-r3 0.7.13 0.9.1: Implementation of IEEE 802.1ab (LLDP)
 net-misc/logmein-hamachi 2.1.0.139: LogMeIn Hamachi VPN tunneling engine
-net-misc/mdidentd 1.04c: This is an identd with provides registering of idents
+net-misc/mdidentd 1.04c-r1: This is an identd with provides registering of idents
 net-misc/mediatomb 0.12.1-r7 0.12.1-r8 0.12.2_pre20150118 0.12.2_pre20150118-r1: MediaTomb is an open source UPnP MediaServer
 net-misc/megatools 1.9.95 1.9.96 1.9.97: Command line tools and C library for accessing Mega cloud storage
 net-misc/memcached 1.2.6-r1 1.2.8-r1 1.3.3-r5 1.4.17 1.4.17-r3 1.4.24 1.4.25: High-performance, distributed memory object caching system
 net-misc/mico 2.3.13-r7 9999: A freely available and fully compliant implementation of the CORBA standard
-net-misc/midentd 2.3.1-r1: ident daemon with masquerading and fake replies support
+net-misc/midentd 2.3.1-r2: ident daemon with masquerading and fake replies support
 net-misc/mikutter 3.2.7 3.3.5 9999: Simple, powerful and moeful twitter client
 net-misc/mindterm 3.4: A Java SSH Client
 net-misc/minidlna 1.1.4 1.1.5 1.1.5-r1: DLNA/UPnP-AV compliant media server
