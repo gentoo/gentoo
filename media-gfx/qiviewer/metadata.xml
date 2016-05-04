@@ -5,10 +5,6 @@
 		<email>pinkbyte@gentoo.org</email>
 		<name>Sergey Popov</name>
 	</maintainer>
-	<maintainer type="project">
-		<email>qt@gentoo.org</email>
-		<name>Gentoo Qt Project</name>
-	</maintainer>
 	<use>
 		<flag name="webp">Build support for WEBP image format</flag>
 	</use>
