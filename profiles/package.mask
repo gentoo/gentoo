@@ -38,15 +38,6 @@
 # Broken reverse deps. At least one header file has been moved around.
 >=media-gfx/imagemagick-7.0.1.0
 
-# Lars Wendler <polynomial-c@gentoo.org> (1 May 2016)
-# Broken custom makefile in x11-drivers/xf86-video-virtualbox
-# Fails to compile since version 5.0.18. No soluton yet. This is a Gentoo
-# problem so no chance to get a solution from upstream (bug #580600).
-# Masked app-emulation/virtualbox-guest-additions as well as it depends on
-# the broken package.
->=app-emulation/virtualbox-guest-additions-5.0.18
->=x11-drivers/xf86-video-virtualbox-5.0.18
-
 # Rafael G. Martins <rafaelmartins@gentoo.org> (30 Apr 2016)
 # Packages merged upstream with app-text/blogc. Please install
 # app-text/blogc with USE=git and USE=httpd instead. Removal in 30 days.

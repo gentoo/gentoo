@@ -75,7 +75,7 @@ pkg_setup() {
 src_prepare() {
 	# Prepare the vboxvideo_drm Makefiles and build dir
 	eapply "${FILESDIR}"/${P}-Makefile.module.kms.patch
-	ln -sf Makefile.module.kms "${MODULES_SRC_DIR}"/Makefile || die
+	ln -s Makefile.module.kms "${MODULES_SRC_DIR}"/Makefile || die
 	# All of these are expected to be in $(KBUILD_EXTMOD)/ so symlink them into place
 	local incfile incfiles=(
 		include
@@ -84,7 +84,7 @@ src_prepare() {
 		out/linux.${ARCH}/release/{product,version,revision}-generated.h
 	)
 	for incfile in ${incfiles[@]} ; do
-		ln -sf "${S}"/${incfile} \
+		ln -s "${S}"/${incfile} \
 			"${MODULES_SRC_DIR}"/${incfile##*/} || die
 	done
 
@@ -153,7 +153,8 @@ src_compile() {
 			Runtime/common/alloc/heapoffset.o
 		)
 		for each in ${targets[@]} ; do
-			ln -sf "${S}"/${objdir}/${each} "${MODULES_SRC_DIR}"/${each##*/} || die
+			ln -s "${S}"/${objdir}/${each} \
+				"${MODULES_SRC_DIR}" || die
 		done
 
 		# Now creating the kernel modules. We must do this _after_
