@@ -9792,7 +9792,7 @@ dev-util/premake 3.7 4.3-r1: A makefile generation tool
 dev-util/pretrace 0.4: start dynamically linked applications under debugging environment
 dev-util/pscan 20000721-r1: A limited problem scanner for C source files
 dev-util/pycharm-community 3.4.1 4.0.6 4.5.4 5.0.3 5.0.4 2016.1-r1: Intelligent Python IDE with unique code assistance and analysis
-dev-util/pycharm-professional 3.4.1-r1 4.0.6-r1 4.5.4 5.0.3 5.0.4 2016.1-r1: Intelligent Python IDE with unique code assistance and analysis
+dev-util/pycharm-professional 3.4.1-r1 4.0.6-r1 4.5.4 5.0.3 5.0.4 2016.1-r1 2016.1.2: Intelligent Python IDE with unique code assistance and analysis
 dev-util/qbs 1.4.2 1.4.3 1.4.5: Qt Build Suite
 dev-util/qdevelop 0.28: A development environment entirely dedicated to Qt4
 dev-util/qfsm 0.53.0 0.54.0: A graphical tool for designing finite state machines
@@ -15024,7 +15024,7 @@ net-print/dymo-cups-drivers 1.4.0: Dymo SDK for LabelWriter/LabelManager printer
 net-print/epson-inkjet-printer-escpr 1.4.4 1.5.2 1.6.1 1.6.4: Epson Inkjet Printer Driver (ESC/P-R)
 net-print/fax4cups 1.29-r1: Fax backend for CUPS
 net-print/foo2zjs 99999999: Support for printing to ZjStream-based printers
-net-print/foomatic-db 4.0.20140105 4.0.20141025 4.0.20150819: Printer information files for foomatic-db-engine to generate ppds
+net-print/foomatic-db 4.0.20140105 4.0.20141025 4.0.20150819 4.0.20160504: Printer information files for foomatic-db-engine to generate ppds
 net-print/foomatic-db-engine 4.0.11 4.0.12: Generates ppds out of xml foomatic printer description files
 net-print/foomatic-db-ppds 4.0.20140105 4.0.20141025 4.0.20150819-r1: linuxprinting.org PPD files for postscript printers
 net-print/foomatic-filters 4.0.17-r1: Foomatic wrapper scripts
