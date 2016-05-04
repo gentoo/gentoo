@@ -21,18 +21,21 @@ REQUIRED_USE="test? ( xtinyproxy-header )"
 
 DEPEND="!minimal? ( app-text/asciidoc )"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.8.1-ldflags.patch
+	"${FILESDIR}"/${P}-r2-DoS-Prevention.patch
+
+)
+
 pkg_setup() {
 	enewgroup ${PN}
 	enewuser ${PN} "" "" "" ${PN}
 }
 
 src_prepare() {
+	use minimal && PATCHES+=( "${FILESDIR}/${PN}-1.8.1-minimal.patch" )
+
 	default
-
-	eapply "${FILESDIR}"/${PN}-1.8.1-ldflags.patch
-	eapply "${FILESDIR}"/${P}-r2-DoS-Prevention.patch
-
-	use minimal && epatch "${FILESDIR}/${PN}-1.8.1-minimal.patch"
 
 	sed -i \
 		-e "s|nobody|${PN}|g" \

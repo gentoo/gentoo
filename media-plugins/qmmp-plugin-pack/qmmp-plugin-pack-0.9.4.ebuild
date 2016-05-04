@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 CMAKE_MIN_VERSION=2.8
 
@@ -19,12 +19,7 @@ IUSE=""
 
 RDEPEND="media-libs/taglib
 	media-sound/mpg123
-	>=media-sound/qmmp-1.0.0
-	dev-qt/qtgui:5
-	dev-qt/qtx11extras:5
-	dev-qt/qtwidgets:5"
+	media-sound/qmmp
+	dev-qt/qtgui:4"
 DEPEND="${RDEPEND}
-	dev-lang/yasm
-	dev-qt/linguist-tools:5"
-
-PATCHES=( "${FILESDIR}"/${P}-fix-build.patch )
+	dev-lang/yasm"
