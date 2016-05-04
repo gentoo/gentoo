@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 MY_PN=Image-ExifTool
 MY_P=${MY_PN}-${PV}
@@ -18,7 +18,11 @@ IUSE="doc"
 
 SRC_TEST="do"
 
+S="${WORKDIR}/Image-ExifTool-${PV}"
+
 src_install() {
 	perl-module_src_install
-	use doc && dohtml -r html/
+	if use doc ; then
+		dodoc -r html/
+	fi
 }
