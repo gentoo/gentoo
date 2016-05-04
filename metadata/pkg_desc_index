@@ -17922,7 +17922,7 @@ x11-drivers/nvidia-drivers 96.43.23-r1 173.14.39-r1 304.131 304.131-r1 304.131-r
 x11-drivers/xf86-input-acecad 1.5.0: Acecad Flair input driver
 x11-drivers/xf86-input-aiptek 1.4.1: Aiptek USB Digital Tablet Input Driver for Linux
 x11-drivers/xf86-input-elographics 1.4.1: Elographics input driver
-x11-drivers/xf86-input-evdev 2.9.1 2.9.2 2.10.0 2.10.1: Generic Linux input driver
+x11-drivers/xf86-input-evdev 2.9.1 2.9.2 2.10.1 2.10.2: Generic Linux input driver
 x11-drivers/xf86-input-fpit 1.4.0: Fujitsu Stylistic input driver
 x11-drivers/xf86-input-hyperpen 1.4.1: X.Org driver for hyperpen input devices
 x11-drivers/xf86-input-joystick 1.6.1 1.6.2: X.Org driver for joystick input devices
