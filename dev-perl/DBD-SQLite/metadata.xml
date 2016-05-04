@@ -5,6 +5,9 @@
     <email>perl@gentoo.org</email>
     <name>Gentoo Perl Project</name>
   </maintainer>
+  <use>
+    <flag name="system-sqlite">Use the system-wide <pkg>dev-db/sqlite</pkg> installation</flag>
+  </use>
   <upstream>
     <remote-id type="cpan">DBD-SQLite</remote-id>
     <remote-id type="cpan-module">DBD::SQLite</remote-id>
