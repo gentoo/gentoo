@@ -71,7 +71,7 @@ all_ruby_install() {
 	all_fakegem_install
 
 	keepdir /etc/thin
-	newinitd "${FILESDIR}"/${PN}.initd-3 ${PN}
+	newinitd "${FILESDIR}"/${PN}.initd-r4 ${PN}
 	newconfd "${FILESDIR}"/${PN}.confd-2 ${PN}
 
 	einfo
