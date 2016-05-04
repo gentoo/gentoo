@@ -14,7 +14,7 @@ SLOT="0"
 KEYWORDS="amd64 ppc64 x86"
 IUSE=""
 
-DEPEND=""
+RDEPEND="!!net-fs/ncpfs" # conflicts on manpages
 
 S=${WORKDIR}/${P/-utils}
 
