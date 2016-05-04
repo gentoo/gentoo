@@ -12,7 +12,7 @@ if [[ ${PV} == 9999* ]]; then
 	S=${WORKDIR}/${P}/${PN}
 else
 	SRC_URI="https://github.com/letsencrypt/letsencrypt/archive/v${PV}.tar.gz -> letsencrypt-${PV}.tar.gz"
-	KEYWORDS="~amd64"
+	KEYWORDS="~amd64 ~arm"
 	S=${WORKDIR}/letsencrypt-${PV}/acme
 fi
 
