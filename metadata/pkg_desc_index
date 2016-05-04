@@ -12810,7 +12810,7 @@ media-plugins/mediastreamer-silk 0.0.1: SILK (skype codec) implementation for Li
 media-plugins/mediastreamer-x264 1.4.1 1.4.2 1.4.2-r1: mediastreamer plugin: add H264 support
 media-plugins/mythplugins 0.27_p20140321-r1 0.27.5_p20150627-r4 0.27.6_p20160318 0.28: Official MythTV plugins
 media-plugins/npapi-vlc 2.0.0 9999: Mozilla plugin based on VLC
-media-plugins/qmmp-plugin-pack 0.8.3 0.8.6 0.9.2 0.9.3 1.0.1 1.0.2: A set of extra plugins for Qmmp
+media-plugins/qmmp-plugin-pack 0.9.2 0.9.3 0.9.4 1.0.2 1.0.3: A set of extra plugins for Qmmp
 media-plugins/rev-plugins 0.3.1-r1 0.3.1-r2 0.7.1: REV LADSPA plugins package. A stereo reverb plugin based on the well-known greverb
 media-plugins/swh-lv2 1.0.15: Large collection of LV2 audio plugins/effects
 media-plugins/swh-plugins 0.4.15-r3: Large collection of LADSPA audio plugins/effects
@@ -13249,7 +13249,7 @@ media-sound/qastools 0.18.1-r1: Qt4 GUI ALSA tools: mixer, configuration browser
 media-sound/qjackctl 0.3.10 0.4.0 0.4.1-r2 0.4.2: A Qt application to control the JACK Audio Connection Kit and ALSA sequencer connections
 media-sound/qmidiarp 0.3.9 0.6.1: An arpeggiator, sequencer and MIDI LFO for ALSA
 media-sound/qmidiroute 0.3.0: QMidiRoute is a filter/router for MIDI events
-media-sound/qmmp 0.9.2 0.9.7-r1 0.9.8 1.0.6-r1 1.0.7 9999: Qt5-based audio player with winamp/xmms skins support
+media-sound/qmmp 0.9.2 0.9.8 0.9.9 1.0.7 1.0.9 9999: Qt5-based audio player with winamp/xmms skins support
 media-sound/qmpdclient 1.2.2-r1: QMPDClient with NBL additions, such as lyrics' display
 media-sound/qpitch 1.0.1-r1: A program to tune musical instruments using Qt4
 media-sound/qsampler 0.2.2_p2345 0.3.1: A graphical frontend to the LinuxSampler engine
