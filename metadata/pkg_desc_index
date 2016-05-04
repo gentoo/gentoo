@@ -492,7 +492,7 @@ app-cdr/xcdroast 0.98_alpha16 0.98_alpha16-r1: Lightweight cdrtools front-end fo
 app-cdr/xdvdfs-tools 2.1-r1: Tools for manipulating Xbox ISO images
 app-cdr/xfburn 0.5.2 0.5.4: GTK+ based CD and DVD burning application
 app-crypt/WiRouterKeyRec 1.1.2: Recovery tool for wpa passphrase
-app-crypt/acme 0.1.0 0.4.2 0.5.0 9999: An implementation of the ACME protocol
+app-crypt/acme 0.1.0 0.5.0 9999: An implementation of the ACME protocol
 app-crypt/acr38u 1.7.11-r1 1.7.11-r3: Non CCID driver for ACR38 AC1038-based Smart Card Reader
 app-crypt/aescrypt 3.0.6b: Advanced file encryption using AES
 app-crypt/aespipe 2.3e 2.4c-r1 2.4d: Encrypts data from stdin to stdout
@@ -551,7 +551,7 @@ app-crypt/keybase 0.8.13 0.8.18 0.8.22 0.8.23 0.8.24 0.8.25 1.0.8.0 1.0.9.0 1.0.
 app-crypt/keylookup 2.2 2.2-r9999: A tool to fetch PGP keys from keyservers
 app-crypt/keynote 2.3-r3: The KeyNote Trust-Management System
 app-crypt/kstart 4.1: Modified versions of kinit for refreshing kerberos tickets automatically
-app-crypt/letsencrypt 0.4.2 0.5.0 9999: Let's encrypt client to automate deployment of X.509 certificates
+app-crypt/letsencrypt 0.5.0 9999: Let's encrypt client to automate deployment of X.509 certificates
 app-crypt/letsencrypt-apache 9999: Apache plugin for letsencrypt
 app-crypt/libscrypt 1.19 1.20: Shared library to impliment the scrypt algorithm. See http://www.tarsnap.com/scrypt.html.
 app-crypt/libsecret 0.18.3 0.18.4 0.18.5: GObject library for accessing the freedesktop.org Secret Service API
@@ -4772,7 +4772,7 @@ dev-libs/libvformat 1.13-r1 1.13-r2: Library to read and write vcard files
 dev-libs/libvolume_id 0.81.0 0.81.1: Library to provide file system information
 dev-libs/libvterm 0.0_pre20151022 0.0_pre20160305: An abstract library implementation of a VT220/xterm/ECMA-48 terminal emulator
 dev-libs/libvterm-neovim 0.0_pre20150309 0.0_pre20150621: An abstract library implementation of a VT220/xterm/ECMA-48 terminal emulator
-dev-libs/libwacom 0.11 0.15 0.17 0.18: Library for identifying Wacom tablets and their model-specific features
+dev-libs/libwacom 0.11 0.18 0.19: Library for identifying Wacom tablets and their model-specific features
 dev-libs/libwapcaplet 0.2.2-r1 0.3.0: string internment library, written in C
 dev-libs/libwbxml 0.11.2: Library and tools to parse, encode and handle WBXML documents
 dev-libs/libx86 1.1-r2 1.1-r3 1.1-r4: A hardware-independent library for executing real-mode x86 code
@@ -9699,7 +9699,7 @@ dev-util/itstool 2.0.2: Translation tool for XML documents that uses gettext fil
 dev-util/jarwizard 2.50: Takes the hassle out of creating executable JAR files for your Java programs
 dev-util/jay 1.1.1-r2: A LALR(1) parser generator: Berkeley yacc retargeted to C# and Java
 dev-util/jconfig 2.8-r3 2.8.5 2.9: jConfig is an extremely helpful utility, providing a simple API for the management of properties
-dev-util/jenkins-bin 1.651.1 1.656 2.0: Extensible continuous integration server
+dev-util/jenkins-bin 1.651.1 1.656 2.0 2.1: Extensible continuous integration server
 dev-util/jif 3.1_rc1: JIF is an IDE for the creation of text adventures based on Graham Nelson's Inform standard
 dev-util/kbuild 0.1.9998_pre20120806 0.1.9998_pre20131130 9999: A makefile framework for writing simple makefiles for complex tasks
 dev-util/kdbg 2.5.5: A graphical debugger interface
@@ -17927,7 +17927,7 @@ x11-drivers/xf86-input-fpit 1.4.0: Fujitsu Stylistic input driver
 x11-drivers/xf86-input-hyperpen 1.4.1: X.Org driver for hyperpen input devices
 x11-drivers/xf86-input-joystick 1.6.1 1.6.2: X.Org driver for joystick input devices
 x11-drivers/xf86-input-keyboard 1.8.0 1.8.1: Keyboard input driver
-x11-drivers/xf86-input-libinput 0.6.0 0.14.0 0.16.0 0.17.0 0.18.0: X.org input driver based on libinput
+x11-drivers/xf86-input-libinput 0.6.0 0.14.0 0.18.0 0.19.0: X.org input driver based on libinput
 x11-drivers/xf86-input-mouse 1.8.1 1.9.0 1.9.1: X.Org driver for mouse input devices
 x11-drivers/xf86-input-mtrack 0.3.0 0.3.1: Xorg Driver for Multitouch Trackpads
 x11-drivers/xf86-input-mutouch 1.3.0: Microtouch input driver
