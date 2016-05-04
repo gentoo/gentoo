@@ -30,6 +30,6 @@ src_compile() {
 }
 
 src_install() {
-	default
+	einstalldocs
 	newbashcomp ${PN} mpv
 }
