@@ -14677,9 +14677,9 @@ net-misc/miredo 1.2.5-r2 1.2.6: Miredo is an open-source Teredo IPv6 tunneling s
 net-misc/mknbi 1.4.4: Utility for making tagged kernel images useful for netbooting
 net-misc/mobile-broadband-provider-info 20120614 20151214: Database of mobile broadband service providers
 net-misc/modemmanager 1.4.8 1.4.10 1.4.12: Modem and mobile broadband management libraries
-net-misc/monmotha 2.3.8: MonMotha IPTables-based firewall script
+net-misc/monmotha 2.3.8-r1: MonMotha IPTables-based firewall script
 net-misc/mosh 1.2.4 1.2.5 1.2.5-r1 9999: Mobile shell that supports roaming and intelligent local echo
-net-misc/mrouted 3.9.5: IP multicast routing daemon
+net-misc/mrouted 3.9.5-r1: IP multicast routing daemon
 net-misc/mulk 0.6.0 0.7.0: Download agent similar to wget/curl
 net-misc/nat-traverse 0.6: Traverse NAT gateways with the Use of UDP
 net-misc/ncp 1.2.4: utility for copying files in a LAN (npoll, npush)
@@ -14693,14 +14693,14 @@ net-misc/netifrc 0.2.2 0.2.3 0.2.4 0.3.0 0.3.1 9999: Gentoo Network Interface Ma
 net-misc/netkit-bootparamd 0.17-r2 0.17-r3: Netkit - bootparamd
 net-misc/netkit-bootpd 2.4-r1: Netkit - bootp
 net-misc/netkit-fingerd 0.17-r3: Netkit - fingerd and finger client
-net-misc/netkit-routed 0.17-r4: Netkit - routed
+net-misc/netkit-routed 0.17-r5: Netkit - routed
 net-misc/netkit-rsh 0.17-r10: Netkit's Remote Shell Suite: rexec{,d} rlogin{,d} rsh{,d}
 net-misc/netkit-rusers 0.17-r1: Netkit - rup rpc.rusersd rusers
 net-misc/netkit-rwall 0.17-r1: Netkit - rwall
 net-misc/netkit-rwho 0.17-r4: Netkit - ruptime/rwho/rwhod
 net-misc/netkit-talk 0.17-r5: Netkit - talkd
 net-misc/netkit-telnetd 0.17-r10 0.17-r11: Standard Linux telnet client and server
-net-misc/netkit-timed 0.17-r9: Netkit - timed
+net-misc/netkit-timed 0.17-r10: Netkit - timed
 net-misc/netpipe 1.0.0_beta2 1.0.0_beta2-r1: tool to reliably distribute binary data using UDP broadcasting techniques
 net-misc/netpipes 4.2-r2: a package to manipulate BSD TCP/IP stream sockets
 net-misc/netprofiles-ims 0.1.0134: The Netprofiles Interface Management System (IMS) is an easy way to manage multiple network configurations for your wired or wireless network cards
@@ -14735,7 +14735,7 @@ net-misc/openssh-blacklist 0.4.1: Source files of vuln Debian keys
 net-misc/openvpn 2.3.8 2.3.10 2.3.10-r1 9999: Robust and highly flexible tunneling application compatible with many OSes
 net-misc/openvpn-auth-ldap 2.0.4_pre20131110: LDAP authentication and authorization plugin for OpenVPN 2.x
 net-misc/openvswitch 1.11.0 2.0.0-r3 2.1.3 2.5.0: Production quality, multilayer virtual switch
-net-misc/orbited 0.7.10-r1 0.7.10-r2: Real-time communication for the browser.
+net-misc/orbited 0.7.10-r1 0.7.10-r3: Real-time communication for the browser.
 net-misc/owncloud-client 2.0.0 2.0.1 2.0.2 2.1.0 2.1.1: Synchronize files from ownCloud Server with your computer
 net-misc/packETH 1.7.2 1.7.3 1.8: Packet generator tool for ethernet
 net-misc/pavuk 0.9.36_pre20120215-r2: Web spider and website mirroring tool
@@ -14748,7 +14748,7 @@ net-misc/pipes 1.16 1.16.1: Very versatile TCP pipes
 net-misc/plowshare 1.2.0 2.1.1 2.1.2 2.1.3: Command-line downloader and uploader for file-sharing websites
 net-misc/pmsvn 1.0.5 1.0.6 1.0.7: Server's configuration management and monitoring tool
 net-misc/polly 0.93.11 0.93.12: twitter client designed for multiple columns of multiple accounts
-net-misc/portfwd 0.29: Port Forwarding Daemon
+net-misc/portfwd 0.29-r1: Port Forwarding Daemon
 net-misc/portspoof 1.1 1.3 9999: return SYN+ACK for every port connection attempt
 net-misc/pps-tools 0.0.20110710 0.0.20120407: User-space tools for LinuxPPS
 net-misc/proxychains 4.10 4.11: force any tcp connections to flow through a proxy (or proxy chain)
@@ -14778,11 +14778,11 @@ net-misc/rdate 1.4-r3 1.4-r4: use TCP or UDP to retrieve the current time of ano
 net-misc/rdesktop 1.8.3 1.8.3-r1 1.8.3-r2: A Remote Desktop Protocol Client
 net-misc/redir 2.2.1: Redir is a port redirector
 net-misc/remmina 1.2.0_rc3 1.2.0_rc3-r1 9999: A GTK+ RDP, VNC, XDMCP and SSH client
-net-misc/rinetd 0.62-r1: redirects TCP connections from one IP address and port to another
+net-misc/rinetd 0.62-r2: redirects TCP connections from one IP address and port to another
 net-misc/ris-linux 0.4-r1: BINL server to doing Windows(r) RIS
 net-misc/rsync 3.1.2: File transfer program to keep remote files into sync
-net-misc/rwbs 0.27-r1: Roger Wilco base station
-net-misc/rwhoisd 1.5.9.5-r2: ARIN rwhois daemon
+net-misc/rwbs 0.27-r2: Roger Wilco base station
+net-misc/rwhoisd 1.5.9.5-r3: ARIN rwhois daemon
 net-misc/rygel 0.28.2-r1 0.28.3: Rygel is an open source UPnP/DLNA MediaServer
 net-misc/s3cmd 1.0.1 1.5.2-r1 1.6.0 1.6.1: Command line client for Amazon S3
 net-misc/samplicator 1.3.6 1.3.7_beta6: UDP packets forwarder and duplicator
@@ -14790,14 +14790,14 @@ net-misc/scponly 4.8-r5: A tiny pseudoshell which only permits scp and sftp
 net-misc/secpanel 0.6.1: Graphical frontend for managing and running SSH and SCP connections
 net-misc/selfdhcp 0.2a-r1: a small stealth network autoconfigure software
 net-misc/sendfile 2.1b-r1: SAFT implementation for UNIX and serves as a tool for asynchronous sending of files in the Internet
-net-misc/ser 0.9.7-r1: SIP Express Router
+net-misc/ser 0.9.7-r2: SIP Express Router
 net-misc/ser2net 2.7-r1 2.9.1 2.10.0: Serial To Network Proxy
 net-misc/sgopherd 13.01: Small Gopher Server written in GNU Bash
 net-misc/shigofumi 0.3 9999: Command line client for ISDS
 net-misc/shmux 1.0 1.0.2: Program for executing the same command on many hosts in parallel
 net-misc/shout 0.8.0-r2: Shout is a program for creating mp3 stream for use with icecast or shoutcast
 net-misc/sipcalc 1.1.6: Sipcalc is an advanced console-based IP subnet calculator
-net-misc/siproxd 0.8.0-r2 0.8.1-r1: A proxy/masquerading daemon for the SIP protocol
+net-misc/siproxd 0.8.0-r3 0.8.1-r2: A proxy/masquerading daemon for the SIP protocol
 net-misc/sipsak 0.9.6_p1-r1 0.9.6_p1-r2: small command line tool for testing SIP applications and devices
 net-misc/sitecopy 0.16.6-r1: Maintain remote web sites with ease
 net-misc/sjphone 1.60.2235: VOIP softphone supports both SIP and H.323 standards
@@ -14813,7 +14813,7 @@ net-misc/socket 1.5: A shell-level interface to TCP sockets
 net-misc/sparkleshare 1.1.0: Git-based collaboration and file sharing tool
 net-misc/spice-gtk 0.30-r1 0.31: Set of GObject and Gtk objects for connecting to Spice servers and a client GUI
 net-misc/spiped 1.5.0-r1: secure pipe daemon
-net-misc/spread 4.1.0 4.3.0: Distributed network messaging system
+net-misc/spread 4.1.0-r1 4.3.0-r1: Distributed network messaging system
 net-misc/ssh-askpass-fullscreen 1.0-r1: A small SSH Askpass replacement written with GTK2
 net-misc/ssh-chain 20131217: ssh via a chain of intermediary hosts
 net-misc/sshpass 1.05: Tool for noninteractively performing password authentication with ssh
@@ -14835,7 +14835,7 @@ net-misc/taylor-uucp 1.07-r2 1.07-r3: Taylor UUCP
 net-misc/tcpsound 0.3.1-r1: Play sounds in response to network traffic
 net-misc/teamviewer 9.0.32150 10.0.41499-r1 11.0.57095: All-In-One Solution for Remote Access and Support over the Internet
 net-misc/telnet-bsd 1.2-r1: Telnet and telnetd ported from OpenBSD with IPv6 support
-net-misc/termpkg 3.3.9.1 3.3.9.1-r1: Termpkg, the Poor Man's Terminal Server
+net-misc/termpkg 3.3.9.1-r2: Termpkg, the Poor Man's Terminal Server
 net-misc/termtter 2.2.3: Termtter is a terminal based Twitter client
 net-misc/throttle 1.2: Bandwidth limiting pipe
 net-misc/tiers 1.1: Random network topography generator
@@ -14850,13 +14850,13 @@ net-misc/tor 0.2.7.6 0.2.8.2_alpha: Anonymizing overlay network for TCP
 net-misc/ttytter 2.1.00: A multi-functional, console-based Twitter client
 net-misc/ucarp 1.5.2-r3 1.5.2-r4: Portable userland implementation of Common Address Redundancy Protocol (CARP)
 net-misc/udpcast 20120424 20120424-r1: Multicast file transfer tool
-net-misc/udpxy 1.0.23.7-r1: Small-footprint daemon to relay multicast UDP traffic to client's TCP (HTTP) connection
+net-misc/udpxy 1.0.23.7-r2: Small-footprint daemon to relay multicast UDP traffic to client's TCP (HTTP) connection
 net-misc/uftp 3.7 3.7.1: Encrypted UDP based FTP with multicast
 net-misc/unison 2.27.157 2.32.52 2.40.102 2.45.4 2.48.3: Two-way cross-platform file synchronizer
 net-misc/unix2tcp 0.8.2: a connection forwarder that converts Unix sockets into TCP sockets
 net-misc/urlview 0.9: extracts urls from text and will send them to another app
 net-misc/usbip 3.19: Userspace utilities for a general USB device sharing system over IP networks
-net-misc/utelnetd 0.1.9-r1 0.1.11: A small Telnet daemon, derived from the Axis tools
+net-misc/utelnetd 0.1.9-r2 0.1.11-r1: A small Telnet daemon, derived from the Axis tools
 net-misc/valve 1.0: Copies data while enforcing a specified maximum transfer rate
 net-misc/vconfig 1.9: 802.1Q vlan control utility
 net-misc/vde 2.2.2 2.2.2-r1 2.3.2-r2: Virtual distributed ethernet emulator for emulators like qemu, bochs, and uml
