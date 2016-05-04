@@ -6,6 +6,11 @@
 		<name>Jaco Kroon</name>
 		<description>Proxy-Maintainer. Assign bugs to him</description>
 	</maintainer>
+	<maintainer type="person">
+		<email>yuchen.xie@live.com</email>
+		<name>Yuchen Xie</name>
+		<description>Proxy-Maintainer. Assign bugs to him</description>
+	</maintainer>
 	<maintainer type="project">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
