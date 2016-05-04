@@ -1,12 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>patrick@gentoo.org</email>
-		<name>Patrick Lauer</name>
-	</maintainer>
-        <maintainer type="project">
-        <email>perl@gentoo.org</email>
-        <name>Gentoo Perl Project</name>
-        </maintainer>
+  <maintainer type="person">
+    <email>patrick@gentoo.org</email>
+    <name>Patrick Lauer</name>
+  </maintainer>
+  <maintainer type="person">
+    <email>tomboy64@sina.cn</email>
+    <name>Matthew Brewer</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <use>
+    <flag name="clang">Use Clang to compile the MoarVM backend</flag>
+    <flag name="moar">Use the MoarVM as backend</flag>
+  </use>
 </pkgmetadata>
