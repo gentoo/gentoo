@@ -14425,7 +14425,7 @@ net-mail/mess822 0.58-r2: Collection of utilities for parsing Internet mail mess
 net-mail/metamail 2.7.53.3-r1: Metamail (with Debian patches) - Generic MIME package
 net-mail/mhonarc 2.6.18-r2: Perl Mail-to-HTML Converter
 net-mail/mhonarc-gentoo 2.6.18-r1: Perl Mail-to-HTML Converter, Gentoo fork
-net-mail/mlmmj 1.2.18.0 1.2.18.1 1.2.19.0: Mailing list managing made joyful
+net-mail/mlmmj 1.2.18.0 1.2.18.1 1.2.19.0 1.2.19.0-r1: Mailing list managing made joyful
 net-mail/mpack 1.6-r3: Command-line MIME encoding and decoding utilities
 net-mail/mpop 1.2.2 1.2.4: A small, fast, and portable POP3 client
 net-mail/mswatch 1.2.0: A utility to watch mailstores for changes and initiate mailbox syncs
