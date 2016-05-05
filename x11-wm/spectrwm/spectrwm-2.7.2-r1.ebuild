@@ -36,7 +36,7 @@ src_compile() {
 }
 
 src_install() {
-	emake PREFIX="${EROOT}usr" DESTDIR="${D}" install
+	emake PREFIX="${EROOT}usr" LIBDIR="${EROOT}usr/$(get_libdir)" DESTDIR="${D}" install
 
 	cd "${WORKDIR}"/${P} || die
 
