@@ -12858,7 +12858,7 @@ media-plugins/vdr-femon 2.0.4 2.1.1 2.2.0 2.2.1: VDR Plugin: DVB Frontend Status
 media-plugins/vdr-fepg 0.4.1: VDR plugin: show epg of multiple channels graphically
 media-plugins/vdr-ffnetdev 0.1.2: VDR Plugin: Output device which offers OSD via VNC and Video as raw mpeg over network
 media-plugins/vdr-filebrowser 0.2.1: VDR plugin: file manager plugin for moving or renaming files in VDR
-media-plugins/vdr-freecell 0.0.2-r2 0.0.2-r3: VDR plugin: play 'Freecell' on the On Screen Display
+media-plugins/vdr-freecell 0.0.2-r3: VDR plugin: play 'Freecell' on the On Screen Display
 media-plugins/vdr-fritzbox 1.5.3: VDR Plugin: Inform about incoming phone-calls and use the fritz!box phonebook
 media-plugins/vdr-graphlcd 0.1.9: VDR Plugin: support output on Graphical LCD
 media-plugins/vdr-graphtft 0.3.7 0.3.7-r1: VDR plugin: GraphTFT
@@ -18866,7 +18866,7 @@ x11-wm/ratpoison 1.4.8 1.4.8-r1 9999: window manager without mouse dependency
 x11-wm/sawfish 1.9.1-r2: Extensible window manager using a Lisp-based scripting language
 x11-wm/selectwm 0.4.1: window manager selector tool
 x11-wm/sithwm 1.2.3: Minimalist Window Manager for X
-x11-wm/spectrwm 2.7.2 2.7.2-r1: Small dynamic tiling window manager for X11
+x11-wm/spectrwm 2.7.2-r1 3.0.0: Small dynamic tiling window manager for X11
 x11-wm/stumpwm 0.9.9 9999: Stumpwm is a Window Manager written entirely in Common Lisp.
 x11-wm/subtle 0.11.3244 9999: A manual tiling window manager
 x11-wm/treewm 0.4.5 0.4.5-r1: WindowManager that arranges the windows in a tree (not in a list)
