@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -30,7 +30,7 @@ RDEPEND="
 			gnome-base/libglade:2.0
 			x11-libs/gtk+:2
 			>=x11-libs/gtksourceview-2.2:2.0 )
-	ncurses? ( sys-libs/ncurses )
+	ncurses? ( sys-libs/ncurses:0= )
 	postgres? ( dev-db/postgresql:=[server] )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
