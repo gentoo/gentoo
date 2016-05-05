@@ -2,9 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-inherit eutils flag-o-matic multilib pam toolchain-funcs
+inherit flag-o-matic pam toolchain-funcs
 
 DESCRIPTION="OpenRC manages the services, startup and shutdown of a host"
 HOMEPAGE="https://github.com/openrc/openrc/"
@@ -65,7 +65,7 @@ src_prepare() {
 	fi
 
 	# Allow user patches to be applied without modifying the ebuild
-	epatch_user
+	eapply_user
 }
 
 src_compile() {
