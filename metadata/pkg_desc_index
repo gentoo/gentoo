@@ -282,7 +282,7 @@ app-arch/lzma 9.20-r1: LZMA Stream Compressor from the SDK
 app-arch/lzop 1.03: Utility for fast (even real-time) compression/decompression
 app-arch/makeself 2.1.5-r2 2.2.0-r1: shell script that generates a self-extractible tar.gz
 app-arch/mscompress 0.3-r1: Microsoft compress.exe/expand.exe compatible (de)compressor
-app-arch/mt-st 1.1 1.2: control magnetic tape drive operation
+app-arch/mt-st 1.1 1.2 1.3: control magnetic tape drive operation
 app-arch/ncompress 4.2.4.4: Another uncompressor for compatibility
 app-arch/p7zip 9.20.1-r5 9.38.1-r2 9.38.1-r3 15.09 15.09-r2 15.14 15.14.1: Port of 7-Zip archiver for Unix
 app-arch/par 1.1: Parchive archive fixing tool
@@ -14292,7 +14292,7 @@ net-libs/libotr 4.1.1: (OTR) Messaging allows you to have private conversations 
 net-libs/libpcap 1.7.4 9999: A system-independent library for user-level network packet capture
 net-libs/libpcapnav 0.8: Libpcap wrapper library to navigate to arbitrary packets in a tcpdump trace file
 net-libs/libpri 1.4.12-r2 1.4.13 1.4.14 1.4.15: Primary Rate ISDN (PRI) library
-net-libs/libprotoident 2.0.7: A library that performs application layer protocol identification for flows
+net-libs/libprotoident 2.0.7 2.0.8: A library that performs application layer protocol identification for flows
 net-libs/libproxy 0.4.11-r2: Library for automatic proxy configuration management
 net-libs/libqinfinity 0.5.2: Qt-style interface for libinfinity
 net-libs/libqmi 1.0.0 1.4.0 1.8.0 1.10.2 1.12.6 1.14.0 9999: QMI modem protocol helper library
@@ -14310,7 +14310,7 @@ net-libs/libssh2 1.7.0 9999: Library implementing the SSH2 protocol
 net-libs/libtelnet 0.21 9999: Simple RFC-complient TELNET implementation as a C library
 net-libs/libtirpc 0.1.10 0.2.4-r1 0.2.4-r2 0.2.5 0.3.1 1.0.1: Transport Independent RPC library (SunRPC replacement)
 net-libs/libtorrent 0.13.3 0.13.4 0.13.6: BitTorrent library written in C++ for *nix
-net-libs/libtrace 3.0.21 3.0.22: A library and tools for trace processing
+net-libs/libtrace 3.0.22: A library and tools for trace processing
 net-libs/libupnp 1.6.18 1.6.18-r1 1.6.19: An Portable Open Source UPnP Development Kit
 net-libs/libvncserver 0.9.10-r3 0.9.10-r4 0.9.10_p20160127: library for creating vnc servers
 net-libs/libwebsockets 1.4 1.6.0 1.7.6: canonical libwebsockets.org websocket library
@@ -14886,7 +14886,7 @@ net-misc/xrdp 0.8.0-r1: An open source Remote Desktop Protocol server
 net-misc/yajhfc 0.5.2 0.5.7: Yet another Java HylaFAX Plus Client
 net-misc/yandex-disk 0.1.5.758_p1 0.1.5.870_p1 0.1.5.940_p1: CLI to access Yandex Disk file storage service
 net-misc/you-get 0.4.365: A tiny command-line utility to download media contents from the Web.
-net-misc/youtube-dl 2016.01.01 2016.04.19-r1 2016.04.24 99999999: Download videos from YouTube.com (and more sites...)
+net-misc/youtube-dl 2016.01.01 2016.04.19-r1 2016.04.24 2016.05.01 99999999: Download videos from YouTube.com (and more sites...)
 net-misc/youtube-viewer 3.1.9 3.2.0 9999: A command line utility for viewing youtube-videos in Mplayer
 net-misc/ytalk 3.3.0: Multi-user replacement for UNIX talk
 net-misc/zssh 1.5c-r1: An ssh wrapper enabling zmodem up/download in ssh
@@ -18301,7 +18301,7 @@ x11-misc/redshift 1.10 1.11: A screen color temperature adjusting software
 x11-misc/rendercheck 1.4 1.5: Tests for compliance with X RENDER extension
 x11-misc/revelation 0.4.14-r1: A password manager for GNOME
 x11-misc/rodent 4.9.2 5.3.16.3: A fast, small and powerful file manager and graphical shell
-x11-misc/rofi 0.15.12 1.0.0: A window switcher, run dialog and dmenu replacement
+x11-misc/rofi 1.0.0 1.0.1: A window switcher, run dialog and dmenu replacement
 x11-misc/rss-glx 0.9.1: Really Slick OpenGL Screensavers for XScreenSaver
 x11-misc/screen-message 0.23: Display a multi-line message large, fullscreen, black on white
 x11-misc/screengrab 1.0 1.2.1-r1: Qt application for getting screenshots
