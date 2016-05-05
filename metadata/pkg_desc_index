@@ -17244,7 +17244,7 @@ sys-libs/nss_wrapper 1.1.2 1.1.3: A wrapper for the user, group and hosts NSS AP
 sys-libs/ntdb 1.0-r1: A not-so trivial keyword/data database system
 sys-libs/openhpi 2.12.0 3.0.0: Open source implementation of the Service Availability Forum (SAF) Hardware Platform Interface (HPI)
 sys-libs/openipmi 2.0.18-r1 2.0.21: Library interface to IPMI
-sys-libs/pam 1.2.1 1.2.1-r1: Linux-PAM (Pluggable Authentication Modules)
+sys-libs/pam 1.2.1 1.2.1-r1 1.3.0: Linux-PAM (Pluggable Authentication Modules)
 sys-libs/pwdb 0.62: Password database
 sys-libs/readline 4.3_p5 5.2_p14 6.2_p5-r1 6.3_p8-r1 6.3_p8-r2 7.0_rc1: Another cute console display library
 sys-libs/rvm 1.12 1.16 1.17: Recoverable Virtual Memory (used by Coda)
