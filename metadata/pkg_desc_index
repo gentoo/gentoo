@@ -11952,7 +11952,7 @@ media-fonts/mplus-outline-fonts 0_pre059 0_pre060: M+ Japanese outline fonts
 media-fonts/nanum 3.0: The Nanum Korean fonts distributed by Naver
 media-fonts/nanumfont 2.0 2.0-r1: Korean monospace font distributed by NHN
 media-fonts/nepali-fonts 1-r1: a collection of fonts for Nepali users
-media-fonts/noto 2014.11 2015.04 20160305: Google's font family that aims to support all the world's languages
+media-fonts/noto 2014.11 2015.04 20160305 20160305-r1: Google's font family that aims to support all the world's languages
 media-fonts/nunito 1.0: A well balanced Sans Serif with rounded terminals
 media-fonts/nuosu-sil 2.1.1: Unicode font for the standardized Yi script
 media-fonts/ohsnap 1.8.0: The ohsnap / osnap monospace font (based on Artwiz Snap)
@@ -14232,7 +14232,7 @@ net-libs/libdom 0.1.2-r1 0.3.0: implementation of the W3C DOM, written in C
 net-libs/libeXosip 3.5.0 4.0.0: library that hides the complexity of using the SIP protocol for multimedia session establishement
 net-libs/libecap 0.2.0 1.0.0: API for implementing ICAP content analysis and adaptation
 net-libs/libesmtp 1.0.6 1.0.6-r1 1.0.6-r2: lib that implements the client side of the SMTP protocol
-net-libs/libetpan 1.1 1.5 1.6: A portable, efficient middleware for different kinds of mail access
+net-libs/libetpan 1.6 1.7: A portable, efficient middleware for different kinds of mail access
 net-libs/libflowmanager 2.0.4: A library designed to facilitate performing flow-based measurement tasks using packet-based inputs
 net-libs/libgadu 1.11.4 1.12.0 1.12.1: This library implements the client side of the Gadu-Gadu protocol
 net-libs/libgcal 0.9.6-r1: C/C++ interface to the Google Data API
@@ -17749,7 +17749,7 @@ www-client/surfraw 2.2.9-r1: A fast unix command line interface to WWW
 www-client/uget 1.8.0 1.10.3 1.10.3-r1 1.10.4 9999: Download manager using gtk+ and libcurl
 www-client/vimb 2.9 2.11: a fast, lightweight, vim-like browser based on webkit
 www-client/vimprobable2 1.4.0 1.4.2 1.4.2-r1 9999: A minimal web browser that behaves like the Vimperator plugin for Firefox
-www-client/vivaldi 1.0.435.42_p1 1.1.453.45_p1 1.1.453.47_p1: A new browser for our friends
+www-client/vivaldi 1.1.453.47_p1 1.1.453.52_p1 1.2.470.11_p1: A new browser for our friends
 www-client/w3m 0.5.3-r5: Text based WWW browser, supports tables and frames
 www-client/w3mir 1.0.10-r2: w3mir is a all purpose HTTP copying and mirroring tool
 www-client/w3mmee 0.3.2_p24-r7: A variant of w3m with support for multiple character encodings
