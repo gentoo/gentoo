@@ -91,6 +91,8 @@ src_test() {
 
 src_install () {
 	dobin bin/${PN}{c,s} bin/syntool
+	insinto /usr/$(get_libdir)/${PN}
+	doins bin/plugins/libns.so
 
 	if use qt4 ; then
 		newbin bin/${PN} qsynergy
@@ -113,6 +115,10 @@ pkg_preinst() {
 
 pkg_postinst() {
 	use qt4 && gnome2_icon_cache_update
+	einfo
+	einfo "To enable encryption for Pro users, link or copy"
+	einfo "/usr/$(get_libdir)/${PN}/libns.so to ~/.synergy/plugins/libns.so"
+	einfo
 }
 
 pkg_postrm() {
