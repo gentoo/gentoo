@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=5
 
 inherit eutils multilib toolchain-funcs
 
@@ -27,18 +27,24 @@ DEPEND="${DEPEND}
 S=${WORKDIR}/${P}/linux
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-Makefile.patch
+	epatch "${FILESDIR}"/${PN}-2.6.2-Makefile.patch
 	tc-export CC
 }
 
+src_compile() {
+	emake PREFIX="${EROOT}usr" LIBDIR="${EROOT}usr/$(get_libdir)"
+}
+
 src_install() {
-	emake PREFIX="${D}"/usr LIBDIR="${D}usr/$(get_libdir)" install
+	emake PREFIX="${EROOT}usr" DESTDIR="${D}" install
 
 	cd "${WORKDIR}"/${P} || die
 
 	insinto /etc
 	doins ${PN}.conf
 	dodoc ${PN}_*.conf {initscreen,screenshot}.sh
+
+	make_session_desktop ${PN} ${PN}
 
 	elog "Example keyboard config and helpful scripts can be found"
 	elog "in ${ROOT}usr/share/doc/${PF}"
