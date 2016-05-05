@@ -18,9 +18,12 @@ REQUIRED_USE="i3? ( windowmode )"
 RDEPEND="
 	dev-libs/glib:2
 	media-libs/freetype
+	x11-libs/cairo[xcb]
 	x11-libs/libX11
 	x11-libs/libXft
 	x11-libs/libXinerama
+	x11-libs/libxcb
+	x11-libs/libxkbcommon[X]
 	x11-libs/pango[X]
 	x11-libs/startup-notification
 	i3? ( x11-wm/i3 )
