@@ -1,7 +1,7 @@
 http://bugs.gentoo.org/401287
 
---- filter/filter_pp.c
-+++ filter/filter_pp.c
+--- a/filter/filter_pp.c
++++ b/filter/filter_pp.c
 @@ -38,8 +38,8 @@
  
  /* FIXME: these use the filter ID as an index--the ID can grow

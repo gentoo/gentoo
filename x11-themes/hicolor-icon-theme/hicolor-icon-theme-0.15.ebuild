@@ -6,8 +6,8 @@ EAPI=5
 inherit gnome2-utils
 
 DESCRIPTION="Fallback theme for the freedesktop icon theme specification"
-HOMEPAGE="http://freedesktop.org/wiki/Software/icon-theme"
-SRC_URI="http://icon-theme.freedesktop.org/releases/${P}.tar.xz"
+HOMEPAGE="https://freedesktop.org/wiki/Software/icon-theme"
+SRC_URI="https://icon-theme.freedesktop.org/releases/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"

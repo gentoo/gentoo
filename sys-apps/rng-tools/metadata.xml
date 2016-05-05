@@ -2,12 +2,11 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 <maintainer type="person">
-	<email>idella4@gentoo.org</email>
+	<email>gokturk@binghamton.edu</email>
+	<name>Göktürk Yüksek</name>
 </maintainer>
 <maintainer type="person">
-	<email>gokturk@binghamton.edu</email>
-	<name>Gokturk Yuksek</name>
-	<description>Proxy maintainer, CC him on bugs.</description>
+	<email>idella4@gentoo.org</email>
 </maintainer>
 <maintainer type="project">
 	<email>base-system@gentoo.org</email>

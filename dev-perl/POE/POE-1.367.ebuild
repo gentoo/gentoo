@@ -16,7 +16,7 @@ KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="ipv6 libwww ncurses tk test"
 
 RDEPEND="
-	dev-perl/yaml
+	dev-perl/YAML
 	dev-perl/Filter
 	dev-perl/IO-Pipely
 	dev-perl/FreezeThaw

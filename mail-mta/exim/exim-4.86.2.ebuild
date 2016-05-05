@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -22,7 +22,7 @@ LICENSE="GPL-2"
 KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86"
 
 COMMON_DEPEND=">=sys-apps/sed-4.0.5
-	>=sys-libs/db-3.2
+	>=sys-libs/db-3.2:=
 	dev-libs/libpcre
 	perl? ( dev-lang/perl:= )
 	pam? ( virtual/pam )
@@ -35,7 +35,7 @@ COMMON_DEPEND=">=sys-apps/sed-4.0.5
 			  dev-libs/libtasn1 )
 	ldap? ( >=net-nds/openldap-2.0.7 )
 	mysql? ( virtual/mysql )
-	postgres? ( dev-db/postgresql )
+	postgres? ( dev-db/postgresql:= )
 	sasl? ( >=dev-libs/cyrus-sasl-2.1.26-r2 )
 	redis? ( dev-libs/hiredis )
 	spf? ( >=mail-filter/libspf2-1.2.5-r1 )

@@ -7,7 +7,7 @@ inherit autotools bash-completion-r1 eutils flag-o-matic gnome2-utils linux-info
 
 DESCRIPTION="A networked sound server with an advanced plugin system"
 HOMEPAGE="http://www.pulseaudio.org/"
-SRC_URI="http://freedesktop.org/software/pulseaudio/releases/${P}.tar.xz"
+SRC_URI="https://freedesktop.org/software/pulseaudio/releases/${P}.tar.xz"
 
 # libpulse-simple and libpulse link to libpulse-core; this is daemon's
 # library and can link to gdbm and other GPL-only libraries. In this
@@ -334,8 +334,8 @@ pkg_postinst() {
 		elog "incompatible with many expected pulseaudio features."
 		elog "On normal desktop systems, system-wide mode is STRONGLY DISCOURAGED."
 		elog "For more information, see"
-		elog "    http://www.freedesktop.org/wiki/Software/PulseAudio/Documentation/User/WhatIsWrongWithSystemWide/"
-		elog "    http://www.freedesktop.org/wiki/Software/PulseAudio/Documentation/User/SystemWide/"
+		elog "    https://www.freedesktop.org/wiki/Software/PulseAudio/Documentation/User/WhatIsWrongWithSystemWide/"
+		elog "    https://www.freedesktop.org/wiki/Software/PulseAudio/Documentation/User/SystemWide/"
 		elog "    https://wiki.gentoo.org/wiki/PulseAudio#Headless_server"
 		if use gnome ; then
 			elog

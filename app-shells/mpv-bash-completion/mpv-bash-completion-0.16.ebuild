@@ -1,0 +1,35 @@
+# Copyright 1999-2016 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+EAPI=6
+
+inherit bash-completion-r1
+
+DESCRIPTION="Bash completion for the mpv video player"
+HOMEPAGE="https://2ion.github.io/mpv-bash-completion/"
+SRC_URI="https://github.com/2ion/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+
+LICENSE="GPL-3+"
+SLOT="0"
+KEYWORDS="~amd64"
+IUSE=""
+
+DEPEND="
+	media-video/mpv[cli]
+	!<app-shells/bash-4
+"
+RDEPEND="${DEPEND}
+	>=app-shells/bash-completion-2.3-r1
+"
+
+PATCHES=( "${FILESDIR}/${P}-fix-no-flag-options-completion.patch" )
+
+src_compile() {
+	"${S}"/gen.sh > ${PN} || die
+}
+
+src_install() {
+	default
+	newbashcomp ${PN} mpv
+}

@@ -15,7 +15,4 @@
   well. License, terms of qualifications can be found on the web
   site and follow the one received in the Intel compilers.
 </longdescription>
-  <use>
-    <flag name="eclipse">Install the <pkg>dev-util/eclipse-sdk</pkg> plugins</flag>
-  </use>
 </pkgmetadata>

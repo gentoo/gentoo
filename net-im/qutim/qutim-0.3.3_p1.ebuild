@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -44,7 +44,7 @@ CDEPEND="
 	telepathy? ( >=net-libs/telepathy-qt-0.3 )
 	xmpp? (
 		app-crypt/qca:2[qt4(+)]
-		>=net-libs/jreen-1.2.0
+		>=net-libs/jreen-1.2.0[qt4]
 	)
 	jingle? ( dev-qt/qt-mobility[multimedia] )
 	oscar? ( app-crypt/qca:2[qt4(+)] )
@@ -64,10 +64,7 @@ CDEPEND="
 		dev-qt/qt-mobility[multimedia,feedback]
 		>=dev-qt/qtbearer-${QT_PV}
 	)
-	otr? (
-		>=net-libs/libotr-3.2.0
-		<net-libs/libotr-4.0.0
-	)
+	otr? ( >=net-libs/libotr-4.0.0 )
 	phonon? (
 		kde? ( media-libs/phonon[qt4] )
 		!kde? ( || ( >=dev-qt/qtphonon-${QT_PV} media-libs/phonon[qt4] ) )

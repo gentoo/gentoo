@@ -32,3 +32,10 @@ RDEPEND="${PYTHON_DEPS}
 	>=dev-python/pyopenssl-0.13[${PYTHON_USEDEP}]
 	>=dev-python/retry-decorator-1.0.0[${PYTHON_USEDEP}]
 	>=dev-python/PySocks-1.01[${PYTHON_USEDEP}]"
+
+python_prepare_all() {
+	distutils-r1_python_prepare_all
+	sed \
+		-e '/SocksiPy-branch/d' \
+		-i setup.py || die
+}

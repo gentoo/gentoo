@@ -6,8 +6,8 @@ EAPI=4
 inherit elisp-common eutils
 
 DESCRIPTION="Command line utilities to work with desktop menu entries"
-HOMEPAGE="http://freedesktop.org/wiki/Software/desktop-file-utils"
-SRC_URI="http://www.freedesktop.org/software/${PN}/releases/${P}.tar.xz"
+HOMEPAGE="https://freedesktop.org/wiki/Software/desktop-file-utils"
+SRC_URI="https://www.freedesktop.org/software/${PN}/releases/${P}.tar.xz"
 
 LICENSE="GPL-2+"
 SLOT="0"

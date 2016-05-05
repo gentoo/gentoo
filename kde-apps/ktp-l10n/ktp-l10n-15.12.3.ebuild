@@ -17,15 +17,15 @@ DEPEND="
 "
 RDEPEND="
 	!<kde-apps/kde-l10n-15.08.0-r1
-	!net-im/ktp-accounts-kcm
-	!net-im/ktp-approver
-	!net-im/ktp-auth-handler
-	!net-im/ktp-common-internals
-	!net-im/ktp-contact-list
-	!net-im/ktp-filetransfer-handler
-	!net-im/ktp-kded-module
-	!net-im/ktp-send-file
-	!net-im/ktp-text-ui
+	!kde-apps/ktp-accounts-kcm:4
+	!kde-apps/ktp-approver:4
+	!kde-apps/ktp-auth-handler:4
+	!kde-apps/ktp-common-internals:4
+	!kde-apps/ktp-contact-list:4
+	!kde-apps/ktp-filetransfer-handler:4
+	!kde-apps/ktp-kded-module:4
+	!kde-apps/ktp-send-file:4
+	!kde-apps/ktp-text-ui:4
 "
 
 KEYWORDS="~amd64 ~x86"

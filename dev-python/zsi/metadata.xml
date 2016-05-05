@@ -10,7 +10,9 @@
 		<name>Python</name>
 	</maintainer>
 	<use>
-		<flag name="twisted">add support for <pkg>dev-python/twisted</pkg></flag>
+		<flag name="twisted">add support for python-twisted (needs 
+			<pkg>dev-python/twisted-core</pkg> and <pkg>dev-python/twisted-web</pkg>)
+		</flag>
 	</use>
 	<upstream>
 		<remote-id type="sourceforge">pywebsvcs</remote-id>

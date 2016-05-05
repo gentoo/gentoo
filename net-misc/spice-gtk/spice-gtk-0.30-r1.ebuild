@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -22,7 +22,7 @@ KEYWORDS="alpha amd64 ~arm ia64 ppc ppc64 sparc x86"
 IUSE="dbus gstreamer gtk3 +introspection lz4 policykit pulseaudio python sasl smartcard static-libs usbredir vala webdav"
 
 REQUIRED_USE="
-	python? ( ${PYTHON_REQUIRED_USE} )
+	${PYTHON_REQUIRED_USE}
 	?? ( pulseaudio gstreamer )
 "
 
@@ -34,7 +34,8 @@ RDEPEND="
 	pulseaudio? ( media-sound/pulseaudio[glib] )
 	gstreamer? (
 		media-libs/gstreamer:1.0
-		media-libs/gst-plugins-base:1.0 )
+		media-libs/gst-plugins-base:1.0
+		media-libs/gst-plugins-good:1.0 )
 	>=x11-libs/pixman-0.17.7
 	>=media-libs/celt-0.5.1.1:0.5.1
 	media-libs/opus
@@ -66,7 +67,7 @@ RDEPEND="
 		>=net-libs/libsoup-2.49.91 )
 "
 DEPEND="${RDEPEND}
-	>=app-emulation/spice-protocol-0.12.10
+	~app-emulation/spice-protocol-0.12.10
 	dev-perl/Text-CSV
 	dev-python/pyparsing[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]

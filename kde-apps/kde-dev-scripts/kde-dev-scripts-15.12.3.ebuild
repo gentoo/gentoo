@@ -11,7 +11,12 @@ DESCRIPTION="KDE Development Scripts"
 KEYWORDS=" ~amd64 ~x86"
 IUSE=""
 
-DEPEND="$(add_frameworks_dep kdoctools)" # to use ECM instead of kdelibs4
+# kdelibs4support - required for kdex.dtd
+# kdoctools - to use ECM instead of kdelibs4
+DEPEND="
+	$(add_frameworks_dep kdelibs4support)
+	$(add_frameworks_dep kdoctools)
+"
 RDEPEND="
 	app-arch/advancecomp
 	media-gfx/optipng

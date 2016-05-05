@@ -24,7 +24,7 @@ RDEPEND="
 	>=dev-perl/IO-Tty-1.08
 	dev-perl/Filter
 	dev-perl/FreezeThaw
-	dev-perl/yaml
+	dev-perl/YAML
 	>=dev-perl/TermReadKey-2.21
 	>=virtual/perl-Time-HiRes-1.59
 	ipv6? (

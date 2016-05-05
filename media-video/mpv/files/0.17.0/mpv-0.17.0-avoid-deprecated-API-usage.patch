@@ -1,0 +1,28 @@
+commit 78346e9c9a8a70fa581989b2cc8b4e0933765330
+Author: wm4 <wm4@nowhere>
+Date:   Wed Apr 20 19:37:45 2016 +0200
+
+ad_spdif: take care of deprecated libavcodec API usage
+---
+
+diff --git a/audio/decode/ad_spdif.c b/audio/decode/ad_spdif.c
+index eb2e2bb..56e4a81 100644
+--- a/audio/decode/ad_spdif.c
++++ b/audio/decode/ad_spdif.c
+@@ -116,9 +116,16 @@ static int determine_codec_profile(struct dec_audio *da, AVPacket *pkt)
+         goto done;
+     }
+
++#if HAVE_AVCODEC_NEW_CODEC_API
++    if (avcodec_send_packet(ctx, pkt) < 0)
++        goto done;
++    if (avcodec_receive_frame(ctx, frame) < 0)
++        goto done;
++#else
+     int got_frame = 0;
+     if (avcodec_decode_audio4(ctx, frame, &got_frame, pkt) < 1 || !got_frame)
+         goto done;
++#endif
+
+     profile = ctx->profile;
+

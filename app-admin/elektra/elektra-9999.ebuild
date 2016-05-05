@@ -7,7 +7,7 @@ EAPI=5
 inherit cmake-multilib eutils java-pkg-opt-2 git-r3
 
 DESCRIPTION="Framework to store config parameters in hierarchical key-value pairs"
-HOMEPAGE="http://freedesktop.org/wiki/Software/Elektra"
+HOMEPAGE="https://freedesktop.org/wiki/Software/Elektra"
 EGIT_REPO_URI="git://github.com/ElektraInitiative/libelektra.git"
 
 LICENSE="BSD"

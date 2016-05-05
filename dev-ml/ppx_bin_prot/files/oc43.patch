@@ -1,0 +1,113 @@
+diff -uNr ppx_bin_prot-113.33.00/_oasis ppx_bin_prot-113.33.00+4.03/_oasis
+--- ppx_bin_prot-113.33.00/_oasis	2016-03-09 16:44:53.000000000 +0100
++++ ppx_bin_prot-113.33.00+4.03/_oasis	2016-03-22 15:13:49.000000000 +0100
+@@ -1,8 +1,8 @@
+ OASISFormat:      0.4
+-OCamlVersion:     >= 4.02.3
++OCamlVersion:     >= 4.03.0
+ FindlibVersion:   >= 1.3.2
+ Name:             ppx_bin_prot
+-Version:          113.33.00
++Version:          113.33.00+4.03
+ Synopsis:         Generation of bin_prot readers and writers from types
+ Authors:          Jane Street Group, LLC <opensource@janestreet.com>
+ Copyrights:       (C) 2015-2016 Jane Street Group LLC <opensource@janestreet.com>
+diff -uNr ppx_bin_prot-113.33.00/opam ppx_bin_prot-113.33.00+4.03/opam
+--- ppx_bin_prot-113.33.00/opam	2016-03-18 12:08:01.000000000 +0100
++++ ppx_bin_prot-113.33.00+4.03/opam	2016-03-22 17:51:35.000000000 +0100
+@@ -17,4 +17,4 @@
+   "ppx_tools"     {>= "0.99.3"}
+   "ppx_type_conv"
+ ]
+-available: [ ocaml-version >= "4.02.3" ]
++available: [ ocaml-version >= "4.03.0" ]
+diff -uNr ppx_bin_prot-113.33.00/src/ppx_bin_prot.ml ppx_bin_prot-113.33.00+4.03/src/ppx_bin_prot.ml
+--- ppx_bin_prot-113.33.00/src/ppx_bin_prot.ml	2016-03-09 16:44:53.000000000 +0100
++++ ppx_bin_prot-113.33.00+4.03/src/ppx_bin_prot.ml	2016-03-22 15:13:49.000000000 +0100
+@@ -37,7 +37,7 @@
+         ~init:result_type
+         ~f:(fun (tp, _variance) acc ->
+           let loc = tp.ptyp_loc in
+-          ptyp_arrow ~loc "" (wrap_type ~loc tp) acc)
++          ptyp_arrow ~loc Nolabel (wrap_type ~loc tp) acc)
+     in
+     psig_value ~loc (value_description ~loc ~name ~type_:typ ~prim:[])
+ 
+@@ -72,7 +72,12 @@
+     | Rinherit _ -> false)
+ ;;
+ 
+-let atoms_in_variant cds = List.exists cds ~f:(fun cds -> cds.pcd_args = [])
++let atoms_in_variant cds =
++  List.exists cds ~f:(fun cds ->
++    match cds.pcd_args with
++    | Pcstr_tuple [] -> true
++    | Pcstr_tuple _ -> false
++    | Pcstr_record _ -> failwith "Pcstr_record not supported")
+ 
+ let let_ins loc bindings expr =
+   List.fold_right bindings ~init:expr ~f:(fun binding expr ->
+@@ -327,8 +332,8 @@
+            Location.raise_errorf ~loc:ty.ptyp_loc
+              "bin_size_sum: GADTs are not supported by bin_prot");
+         match cd.pcd_args with
+-        | [] -> acc
+-        | args ->
++        | Pcstr_tuple [] -> acc
++        | Pcstr_tuple args ->
+           let get_tp tp = tp in
+           let mk_patt loc v_name _ = pvar ~loc v_name in
+           let patts, size_args =
+@@ -344,7 +349,8 @@
+               let size = [%e size_tag] in
+               [%e size_args]
+             ]
+-          :: acc)
++          :: acc
++        | Pcstr_record _ -> failwith "Pcstr_record not supported")
+     in
+     let matchings =
+       if atoms_in_variant alts then
+@@ -585,13 +591,13 @@
+            Location.raise_errorf ~loc:ty.ptyp_loc
+              "bin_write_sum: GADTs are not supported by bin_prot");
+         match cd.pcd_args with
+-        | [] ->
++        | Pcstr_tuple [] ->
+           let loc = cd.pcd_loc in
+           case
+             ~lhs:(pconstruct cd None)
+             ~guard:None
+             ~rhs:(eapply ~loc write_tag [eint ~loc i])
+-        | args ->
++        | Pcstr_tuple args ->
+           let get_tp tp = tp in
+           let mk_patt loc v_name _ = pvar ~loc v_name in
+           let patts, write_args =
+@@ -606,7 +612,8 @@
+             ~rhs:[%expr
+               let pos = [%e write_tag] [%e eint ~loc i] in
+               [%e write_args]
+-            ])
++            ]
++        | Pcstr_record _ -> failwith "Pcstr_record not supported")
+     in
+     `Match matchings
+ 
+@@ -934,13 +941,14 @@
+          Location.raise_errorf ~loc:cd.pcd_loc
+            "bin_read_sum: GADTs are not supported by bin_prot");
+       match cd.pcd_args with
+-      | [] ->
++      | Pcstr_tuple [] ->
+         let loc = cd.pcd_loc in
+         case ~lhs:(pint ~loc mi) ~guard:None ~rhs:(econstruct cd None)
+-      | args ->
++      | Pcstr_tuple args ->
+         let bindings, args_expr = handle_arg_tp loc full_type_name args in
+         let rhs = let_ins loc bindings (econstruct cd (Some args_expr)) in
+         case ~lhs:(pint ~loc mi) ~guard:None ~rhs
++      | Pcstr_record _ -> failwith "Pcstr_record not supported"
+     in
+     let mcs = List.mapi alts ~f:map in
+     let n_alts = List.length alts in

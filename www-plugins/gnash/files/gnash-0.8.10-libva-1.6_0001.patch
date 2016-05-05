@@ -1,0 +1,28 @@
+From f5016cc9399c9ffd3c5d32c67bb28fac285559c6 Mon Sep 17 00:00:00 2001
+From: Bastiaan Jacques <bastiaan@bjacques.org>
+Date: Wed, 09 Sep 2015 19:25:31 +0000
+Subject: Compilation fix. See Savannah #44636.
+
+Also skip useless NULL check.
+---
+diff --git a/gui/gtk/gtk_glue_agg_vaapi.cpp b/gui/gtk/gtk_glue_agg_vaapi.cpp
+index 1eda283..6209e89 100644
+--- a/gui/gtk/gtk_glue_agg_vaapi.cpp
++++ b/gui/gtk/gtk_glue_agg_vaapi.cpp
+@@ -301,11 +301,9 @@ GtkAggVaapiGlue::getVideoWindow(std::shared_ptr<VaapiSurface> surface,
+         return NULL;
+ 
+     if (!context->getData()) {
+-        std::unique_ptr<VaapiContextData> contextData;
+-        contextData.reset(new VaapiVideoWindow(parent_window, rect));
+-        if (!contextData.get())
+-            return NULL;
+-        context->setData(contextData);
++        context->setData(
++            std::unique_ptr<VaapiContextData>(
++                new VaapiVideoWindow(parent_window, rect)));
+     }
+     return dynamic_cast<VaapiVideoWindow *>(context->getData());
+ }
+--
+cgit v0.9.0.2

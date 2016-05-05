@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -23,7 +23,12 @@ RDEPEND=">=x11-libs/gtk+-2.14:2=
 	hddtemp? ( app-admin/hddtemp net-analyzer/gnu-netcat )
 	libnotify? ( >=x11-libs/libnotify-0.7:= )
 	lm_sensors? ( >=sys-apps/lm_sensors-3.1.0:= )
-	video_cards_nvidia? ( media-video/nvidia-settings )"
+	video_cards_nvidia? (
+		|| (
+			x11-drivers/nvidia-drivers[tools,static-libs]
+			media-video/nvidia-settings
+			)
+	)"
 DEPEND="${RDEPEND}
 	dev-util/intltool
 	virtual/pkgconfig"

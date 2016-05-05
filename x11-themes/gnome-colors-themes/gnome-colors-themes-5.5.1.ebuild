@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=2
+EAPI=6
 inherit gnome2-utils
 
 DESCRIPTION="Some gnome-colors iconsets including a Gentoo one"
@@ -18,7 +18,10 @@ IUSE=""
 
 RDEPEND="x11-themes/gnome-colors-common"
 DEPEND=""
+
 RESTRICT="binchecks strip"
+
+S="${WORKDIR}"
 
 src_compile() {
 	einfo "Nothing to compile"
@@ -32,7 +35,7 @@ src_install() {
 			doins -r "${i}" || die
 		fi
 	done
-	dodoc AUTHORS ChangeLog README
+	einstalldocs
 }
 
 pkg_preinst() {

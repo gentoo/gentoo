@@ -6,7 +6,7 @@ EAPI=4
 inherit eutils gnome.org libtool
 
 DESCRIPTION="A library for the X Keyboard Extension (high-level API)"
-HOMEPAGE="http://www.freedesktop.org/wiki/Software/LibXklavier"
+HOMEPAGE="https://www.freedesktop.org/wiki/Software/LibXklavier"
 
 LICENSE="LGPL-2"
 SLOT="0"

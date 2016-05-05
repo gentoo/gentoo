@@ -1,0 +1,23 @@
+don't clobber the user's settings that configure already put together for us
+
+--- a/libhfsp/src/Makefile.am
++++ b/libhfsp/src/Makefile.am
+@@ -27,7 +27,5 @@
+ 	    blockiter.c btree.c btreecheck.c fscheck.c hfstime.c libhfsp.c os.c unicode.c \
+ 	    record.c volume.c partitions.c 
+ 
+-CFLAGS = -O2 -Wall
+-
+ # I need to clean up these headers first before i can distribute them ...		
+ # include_HEADERS = apple.h hfs.h hfsp.h libhfsp.h 
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -8,8 +8,6 @@
+ 
+ INCLUDES = -I../libhfsp/src
+ 
+-CFLAGS = -O2 -Wall
+-
+ bin_PROGRAMS = hpmount hpumount hpls hpcd hpcopy hppwd hpfsck hprm hpmkdir
+ 
+ hpmount_SOURCES = hpmount.c hpcache.c hfsputil.c glob.c dstring.c dlist.c

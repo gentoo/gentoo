@@ -101,7 +101,7 @@ RDEPEND="${COMMON_DEPEND}
 src_prepare() {
 	kde5_src_prepare
 
-	punt_bogus_dep Kross
+	punt_bogus_dep KF5 Kross
 }
 
 src_configure() {

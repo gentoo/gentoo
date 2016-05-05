@@ -7,8 +7,8 @@ EAPI=5
 inherit systemd toolchain-funcs
 
 DESCRIPTION="simple & stable nscd replacement"
-HOMEPAGE="http://busybox.net/~vda/unscd/README"
-SRC_URI="http://busybox.net/~vda/unscd/nscd-${PV}.c"
+HOMEPAGE="https://busybox.net/~vda/unscd/README"
+SRC_URI="https://busybox.net/~vda/unscd/nscd-${PV}.c"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -1,0 +1,32 @@
+diff -Naur python/setup.py python/setup.py
+--- python/setup.py	2015-12-30 22:21:46.000000000 +0100
++++ python/setup.py	2016-04-18 00:51:49.490809789 +0200
+@@ -169,14 +169,26 @@
+       extra_compile_args.append('-Werror')
+       sys.argv.remove(warnings_as_errors)
+ 
++    inclD = ['.', '../src']
++    libD = []
++    try:
++      subprocess.check_call(['pkg-config', '--exists', 'protobuf'])
++      inclD += subprocess.check_output(['pkg-config','--variable=includedir','protobuf']).split()
++      libD = subprocess.check_output(['pkg-config','--variable=libdir','protobuf']).split()
++    except OSError as osex:
++      if osex.errno == errno.ENOENT:
++        info('pkg-config not found')
++      else:
++        warn("Running pkg-config failed - %s." % osexception)
++      libD = ['../src/.libs']
+     # C++ implementation extension
+     ext_module_list.append(
+         Extension(
+             "google.protobuf.pyext._message",
+             glob.glob('google/protobuf/pyext/*.cc'),
+-            include_dirs=[".", "../src"],
++            include_dirs=inclD,
+             libraries=['protobuf'],
+-            library_dirs=['../src/.libs'],
++            library_dirs=libD,
+             extra_compile_args=extra_compile_args,
+         )
+     )

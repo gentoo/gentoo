@@ -23,7 +23,7 @@ RDEPEND="
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtmultimedia:5[widgets]
-	media-gfx/imagemagick
+	media-gfx/imagemagick[cxx]
 	media-libs/libopenshot-audio
 	libav? ( media-video/libav:=[encode,x264,xvid,vpx,mp3,theora] )
 	!libav? ( media-video/ffmpeg:0=[encode,x264,xvid,vpx,mp3,theora] )

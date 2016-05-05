@@ -8,8 +8,8 @@ PYTHON_COMPAT=( python2_7 )
 inherit python-any-r1 cmake-utils virtualx multibuild
 
 DESCRIPTION="Qt bindings for the Telepathy D-Bus protocol"
-HOMEPAGE="http://telepathy.freedesktop.org/"
-SRC_URI="http://telepathy.freedesktop.org/releases/${PN}/${P}.tar.gz"
+HOMEPAGE="https://telepathy.freedesktop.org/"
+SRC_URI="https://telepathy.freedesktop.org/releases/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

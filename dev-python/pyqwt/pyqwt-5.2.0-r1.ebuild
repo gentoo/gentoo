@@ -36,7 +36,7 @@ src_prepare() {
 
 src_configure() {
 	configuration() {
-		local myonf=()
+		local myconf=()
 		use debug && myconf+=( --debug )
 
 		cd "${BUILD_DIR}" || die

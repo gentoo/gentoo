@@ -15,7 +15,7 @@ DESCRIPTION="Handler library for evdev events"
 if [[ ${PV} == 9999* ]] ; then
 	SRC_URI=""
 else
-	SRC_URI="http://www.freedesktop.org/software/${PN}/${P}.tar.xz"
+	SRC_URI="https://www.freedesktop.org/software/${PN}/${P}.tar.xz"
 fi
 
 RESTRICT="test" # Tests need to run as root.

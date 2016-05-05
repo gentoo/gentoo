@@ -50,6 +50,7 @@ python_prepare_all() {
 
 python_configure_all() {
 	use nls || mydistutilsargs+=( '--without-gettext' )
+	distutils-r1_python_configure_all
 }
 
 pkg_postinst() {

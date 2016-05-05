@@ -5,7 +5,7 @@
 EAPI=6
 
 if [[ ${PV} != *9999* ]]; then
-	SRC_URI="http://gstreamer.freedesktop.org/src/${PN}/${P}.tar.xz"
+	SRC_URI="https://gstreamer.freedesktop.org/src/${PN}/${P}.tar.xz"
 	KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86"
 else
 	EGIT_REPO_URI=( "git://anongit.freedesktop.org/gstreamer/${PN}" )
@@ -15,7 +15,7 @@ fi
 inherit cmake-utils multibuild
 
 DESCRIPTION="C++ bindings for GStreamer with a Qt-style API"
-HOMEPAGE="http://gstreamer.freedesktop.org/modules/qt-gstreamer.html"
+HOMEPAGE="https://gstreamer.freedesktop.org/modules/qt-gstreamer.html"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

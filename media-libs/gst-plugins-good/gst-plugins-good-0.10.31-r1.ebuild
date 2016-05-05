@@ -8,7 +8,7 @@ GST_ORG_MODULE="gst-plugins-good"
 inherit eutils flag-o-matic gstreamer
 
 DESCRIPTION="Basepack of plugins for gstreamer"
-HOMEPAGE="http://gstreamer.freedesktop.org/"
+HOMEPAGE="https://gstreamer.freedesktop.org/"
 
 LICENSE="LGPL-2.1+"
 KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd"

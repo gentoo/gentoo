@@ -6,9 +6,6 @@
   <name>Gentoo C++ Project</name>
 </maintainer>
 <use>
-  <flag name="smtp" restrict="&lt;dev-libs/log4cxx-0.10">Offer SMTP support via
-    <pkg>net-libs/libsmtp</pkg></flag>
-  <flag name="smtp" restrict="&gt;=dev-libs/log4cxx-0.10">Offer SMTP support via
-    <pkg>net-libs/libesmtp</pkg></flag>
+  <flag name="smtp">Offer SMTP support via <pkg>net-libs/libesmtp</pkg></flag>
 </use>
 </pkgmetadata>

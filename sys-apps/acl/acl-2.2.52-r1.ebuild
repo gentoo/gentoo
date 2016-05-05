@@ -4,7 +4,7 @@
 
 EAPI="4"
 
-inherit eutils toolchain-funcs multilib-minimal
+inherit eutils libtool toolchain-funcs multilib-minimal
 
 DESCRIPTION="access control list utilities, libraries and headers"
 HOMEPAGE="http://savannah.nongnu.org/projects/acl"
@@ -30,6 +30,7 @@ src_prepare() {
 		include/builddefs.in \
 		|| die
 	strip-linguas po
+	elibtoolize #580792
 
 	# same as https://savannah.nongnu.org/bugs/index.php?39736
 	multilib_copy_sources

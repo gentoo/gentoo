@@ -8,7 +8,7 @@ inherit eutils findlib autotools
 
 DESCRIPTION="Ocaml bindings for the cairo vector graphics library"
 HOMEPAGE="http://www.cairographics.org/cairo-ocaml/"
-SRC_URI="http://cgit.freedesktop.org/cairo-ocaml/snapshot/${P}.tar.bz2"
+SRC_URI="https://cgit.freedesktop.org/cairo-ocaml/snapshot/${P}.tar.bz2"
 
 LICENSE="LGPL-2.1"
 SLOT="0/${PV}"

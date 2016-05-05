@@ -7,8 +7,8 @@ EAPI=5
 MY_P=systemd-${PV}
 
 DESCRIPTION="sysvinit compatibility symlinks and manpages"
-HOMEPAGE="http://www.freedesktop.org/wiki/Software/systemd"
-SRC_URI="http://www.freedesktop.org/software/systemd/${MY_P}.tar.xz"
+HOMEPAGE="https://www.freedesktop.org/wiki/Software/systemd"
+SRC_URI="https://www.freedesktop.org/software/systemd/${MY_P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"

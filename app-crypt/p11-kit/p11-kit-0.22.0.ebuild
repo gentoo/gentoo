@@ -7,8 +7,8 @@ EAPI=5
 inherit eutils multilib-minimal
 
 DESCRIPTION="Provides a standard configuration setup for installing PKCS#11"
-HOMEPAGE="http://p11-glue.freedesktop.org/p11-kit.html"
-SRC_URI="http://p11-glue.freedesktop.org/releases/${P}.tar.gz"
+HOMEPAGE="https://p11-glue.freedesktop.org/p11-kit.html"
+SRC_URI="https://p11-glue.freedesktop.org/releases/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

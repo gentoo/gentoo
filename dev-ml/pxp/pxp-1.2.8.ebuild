@@ -18,7 +18,7 @@ KEYWORDS="~amd64 ~ppc ~x86"
 SLOT="0/${PV}"
 DEPEND=">=dev-ml/pcre-ocaml-4.31:=
 	>=dev-ml/ulex-0.5:=
-	>=dev-ml/ocamlnet-0.98:=
+	>=dev-ml/ocamlnet-4:=
 	>=dev-lang/ocaml-3.10.2:=[ocamlopt?]
 	|| ( dev-ml/camlp4:= <dev-lang/ocaml-4.02.0 )"
 RDEPEND="${DEPEND}"
@@ -26,6 +26,10 @@ RDEPEND="${DEPEND}"
 IUSE="examples +ocamlopt"
 
 S=${WORKDIR}/${MY_P}
+
+src_prepare() {
+	epatch "${FILESDIR}/oc43.patch"
+}
 
 src_configure() {
 	#the included configure does not support  many standard switches and is quite picky

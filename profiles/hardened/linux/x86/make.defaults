@@ -15,10 +15,7 @@ USE="nptl"
 
 # 2006/08/18 - Donnie Berkholz <dberkholz@gentoo.org>
 # Defaults for video drivers
-VIDEO_CARDS="apm ark chips cirrus cyrix dummy fbdev glint i128 i740 intel \
-	mach64 mga nsc nv r128 radeon rendition s3 s3virge savage \
-	siliconmotion sis sisusb tdfx tga trident tseng v4l vesa via vmware \
-	voodoo"
+VIDEO_CARDS="amdgpu fbdev intel nouveau radeon radeonsi vesa"
 
 # 2006/12/21 - Andrej Kacian <ticho@gentoo.org>
 # Defaults for audio drivers

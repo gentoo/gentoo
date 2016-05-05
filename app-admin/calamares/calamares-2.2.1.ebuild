@@ -4,6 +4,7 @@
 
 EAPI=6
 
+QT_MINIMAL="5.6.0"
 PYTHON_COMPAT=( python{3_4,3_5} )
 inherit kde5 python-r1
 
@@ -31,7 +32,7 @@ DEPEND="${PYTHON_DEPS}
 	$(add_qt_dep qtgui)
 	$(add_qt_dep qtnetwork)
 	$(add_qt_dep qtsvg)
-	$(add_qt_dep qtwebkit)
+	$(add_qt_dep qtwebengine 'widgets')
 	$(add_qt_dep qtwidgets)
 	>=dev-cpp/yaml-cpp-0.5.1
 	>=dev-libs/boost-1.55:=[${PYTHON_USEDEP}]
@@ -67,7 +68,10 @@ src_prepare() {
 }
 
 src_configure() {
-	local mycmakeargs=( "-DWITH_PARTITIONMANAGER=1" )
+	local mycmakeargs=(
+		-DWEBVIEW_FORCE_WEBKIT=OFF
+	)
+
 	kde5_src_configure
 	sed -i -e 's:pkexec /usr/bin/calamares:calamares-pkexec:' "${S}"/calamares.desktop
 	sed -i -e 's:Icon=calamares:Icon=drive-harddisk:' "${S}"/calamares.desktop

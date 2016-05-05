@@ -1,0 +1,86 @@
+get major/minor macros by using AC_HEADER_MAJOR
+
+https://www.gnu.org/software/autoconf/manual/autoconf-2.69/html_node/Particular-Headers.html#AC_HEADER_MAJOR
+
+https://bugs.gentoo.org/579960
+diff --git a/configure.ac b/configure.ac
+index 93d347c..1e7ee51 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -282,2 +282,5 @@ AC_CHECK_SIZEOF([long])
+ 
++dnl detect system-specific headers for major()/minor()
++AC_HEADER_MAJOR
++
+ dnl Availability of various common functions (non-fatal if missing),
+diff --git a/src/conf/domain_audit.c b/src/conf/domain_audit.c
+index bd2eeb6..74b2487 100644
+--- a/src/conf/domain_audit.c
++++ b/src/conf/domain_audit.c
+@@ -28,2 +28,9 @@
+ 
++#ifdef MAJOR_IN_MKDEV
++# include <sys/mkdev.h>
++#endif
++#ifdef MAJOR_IN_SYSMACROS
++# include <sys/sysmacros.h>
++#endif
++
+ #include "domain_audit.h"
+diff --git a/src/lxc/lxc_controller.c b/src/lxc/lxc_controller.c
+index 76bef82..49c0648 100644
+--- a/src/lxc/lxc_controller.c
++++ b/src/lxc/lxc_controller.c
+@@ -48,2 +48,9 @@
+ 
++#ifdef MAJOR_IN_MKDEV
++# include <sys/mkdev.h>
++#endif
++#ifdef MAJOR_IN_SYSMACROS
++# include <sys/sysmacros.h>
++#endif
++
+ #include "virerror.h"
+diff --git a/src/lxc/lxc_driver.c b/src/lxc/lxc_driver.c
+index 3c6c839..983cd21 100644
+--- a/src/lxc/lxc_driver.c
++++ b/src/lxc/lxc_driver.c
+@@ -38,2 +38,9 @@
+ 
++#ifdef MAJOR_IN_MKDEV
++# include <sys/mkdev.h>
++#endif
++#ifdef MAJOR_IN_SYSMACROS
++# include <sys/sysmacros.h>
++#endif
++
+ #include "virerror.h"
+diff --git a/src/util/vircgroup.c b/src/util/vircgroup.c
+index 38398fd..4b45458 100644
+--- a/src/util/vircgroup.c
++++ b/src/util/vircgroup.c
+@@ -31,2 +31,10 @@
+ #endif
++
++#ifdef MAJOR_IN_MKDEV
++# include <sys/mkdev.h>
++#endif
++#ifdef MAJOR_IN_SYSMACROS
++# include <sys/sysmacros.h>
++#endif
++
+ #include <fcntl.h>
+diff --git a/src/util/virutil.c b/src/util/virutil.c
+index bb9604a..9840a9e 100644
+--- a/src/util/virutil.c
++++ b/src/util/virutil.c
+@@ -68,2 +68,9 @@
+ 
++#ifdef MAJOR_IN_MKDEV
++# include <sys/mkdev.h>
++#endif
++#ifdef MAJOR_IN_SYSMACROS
++# include <sys/sysmacros.h>
++#endif
++
+ #include "c-ctype.h"

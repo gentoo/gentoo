@@ -35,8 +35,7 @@ RDEPEND=">=dev-haskell/attoparsec-0.10:=[profile?] <dev-haskell/attoparsec-0.14:
 	>=dev-haskell/vector-0.6:=[profile?] <dev-haskell/vector-0.12:=[profile?]
 	>=dev-haskell/zlib-enum-0.2.1:=[profile?] <dev-haskell/zlib-enum-0.3:=[profile?]
 	>=dev-lang/ghc-7.4.1:=
-	|| ( ( >=dev-haskell/hashable-1.1:=[profile?] <dev-haskell/hashable-1.2:=[profile?] )
-		( >=dev-haskell/hashable-1.2.1:=[profile?] <dev-haskell/hashable-1.3:=[profile?] ) )
+	>=dev-haskell/hashable-1.1:=[profile?] <dev-haskell/hashable-1.3:=[profile?]
 	portable? ( >=dev-haskell/time-locale-compat-0.1:=[profile?] <dev-haskell/time-locale-compat-0.2:=[profile?] )
 	!portable? ( >=dev-haskell/bytestring-mmap-0.2.2:=[profile?] <dev-haskell/bytestring-mmap-0.3:=[profile?]
 			>=dev-haskell/old-locale-1:=[profile?] <dev-haskell/old-locale-2:=[profile?] )

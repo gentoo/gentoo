@@ -6,7 +6,7 @@ EAPI=5
 inherit gnome.org readme.gentoo
 
 DESCRIPTION="Integrates xdg-user-dirs into the Gnome desktop and Gtk+ applications"
-HOMEPAGE="http://www.freedesktop.org/wiki/Software/xdg-user-dirs"
+HOMEPAGE="https://www.freedesktop.org/wiki/Software/xdg-user-dirs"
 
 LICENSE="GPL-2"
 SLOT="0"

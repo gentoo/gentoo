@@ -8,8 +8,8 @@ PYTHON_COMPAT=( python2_7 python{3_3,3_4,3_5} )
 inherit python-r1
 
 DESCRIPTION="A Python Interface to GStreamer"
-HOMEPAGE="http://gstreamer.freedesktop.org/"
-SRC_URI="http://gstreamer.freedesktop.org/src/${PN}/${P}.tar.xz"
+HOMEPAGE="https://gstreamer.freedesktop.org/"
+SRC_URI="https://gstreamer.freedesktop.org/src/${PN}/${P}.tar.xz"
 
 LICENSE="LGPL-2"
 SLOT="1.0"

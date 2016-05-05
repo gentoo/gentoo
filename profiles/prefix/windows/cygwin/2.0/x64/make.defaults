@@ -4,7 +4,7 @@
 
 ARCH="x64-cygwin"
 CHOST="x86_64-pc-cygwin"
-ACCEPT_KEYWORDS="~x64-cygwin"
+ACCEPT_KEYWORDS="~x64-cygwin ~amd64-linux"
 
 # We don't have lib64 in prefix so, remove it here.
 SYMLINK_LIB=""

@@ -21,7 +21,7 @@ IUSE="doc emacs system-jsoncpp ncurses qt4 qt5"
 RDEPEND="
 	>=app-arch/libarchive-3.0.0:=
 	>=dev-libs/expat-2.0.1
-	>=net-misc/curl-7.20.0-r1[ssl]
+	>=net-misc/curl-7.21.5[ssl]
 	sys-libs/zlib
 	virtual/pkgconfig
 	emacs? ( virtual/emacs )

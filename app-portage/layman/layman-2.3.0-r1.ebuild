@@ -61,6 +61,7 @@ python_prepare_all()  {
 	esetup.py setup_plugins
 	distutils-r1_python_prepare_all
 	#rm "${S}"/"${PN}"/tests/dtest.py
+	epatch "${FILESDIR}"/${P}-dir_check.patch
 	eprefixify etc/layman.cfg layman/config.py
 }
 

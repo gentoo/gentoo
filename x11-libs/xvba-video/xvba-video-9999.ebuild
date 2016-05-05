@@ -11,9 +11,9 @@ AUTOTOOLS_AUTORECONF="yes"
 inherit eutils autotools-multilib python-any-r1
 
 DESCRIPTION="XVBA Backend for Video Acceleration (VA) API"
-HOMEPAGE="http://www.freedesktop.org/wiki/Software/vaapi"
+HOMEPAGE="https://www.freedesktop.org/wiki/Software/vaapi"
 # No source release yet, the src_uri is theoretical at best right now
-[[ ${PV} = 9999 ]] || SRC_URI="http://www.freedesktop.org/software/vaapi/releases/${PN}/${P}.tar.bz2"
+[[ ${PV} = 9999 ]] || SRC_URI="https://www.freedesktop.org/software/vaapi/releases/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2+ MIT"
 SLOT="0"

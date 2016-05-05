@@ -10,7 +10,7 @@ inherit perl-module
 
 DESCRIPTION="Implementation of the soundex algorithm"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm ~x86"
 IUSE="test minimal"
 
 RDEPEND="

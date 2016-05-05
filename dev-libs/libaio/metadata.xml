@@ -3,8 +3,7 @@
 <pkgmetadata>
   <maintainer type="person">
     <email>gokturk@binghamton.edu</email>
-    <name>Gokturk Yuksek</name>
-    <description>Primary Maintainer, Assign bugs</description>
+	<name>Göktürk Yüksek</name>
   </maintainer>
   <maintainer type="project">
     <email>proxy-maint@gentoo.org</email>

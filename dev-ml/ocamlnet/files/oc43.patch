@@ -1,0 +1,84 @@
+commit 0893920618cec4885b1633fd2f81de84e7a8be72
+Author: Gerd Stolpmann <gerd@gerd-stolpmann.de>
+Date:   Sun May 1 13:24:22 2016 +0200
+
+    Fixes for building against OCaml-4.03
+
+diff --git a/code/src/equeue/uq_engines_compat.ml b/code/src/equeue/uq_engines_compat.ml
+index 512811a..e779410 100644
+--- a/code/src/equeue/uq_engines_compat.ml
++++ b/code/src/equeue/uq_engines_compat.ml
+@@ -7,7 +7,8 @@ class type server_socket_acceptor = server_endpoint_acceptor
+ class type client_socket_connector = client_endpoint_connector
+           
+ 
+-exception Mem_not_supported = Uq_multiplex.Mem_not_supported
++(* exception Mem_not_supported = Uq_multiplex.Mem_not_supported *)
++(* already included from Uq_engines *)
+ 
+ let create_multiplex_controller_for_connected_socket =
+   Uq_multiplex.create_multiplex_controller_for_connected_socket
+diff --git a/code/src/netstring/netasn1.ml b/code/src/netstring/netasn1.ml
+index 05d5d3a..4cada35 100644
+--- a/code/src/netstring/netasn1.ml
++++ b/code/src/netstring/netasn1.ml
+@@ -437,7 +437,7 @@ module Value = struct
+                let hour = int_of_string (Netstring_str.matched_group m 4 s) in
+                let minute = int_of_string (Netstring_str.matched_group m 5 s) in
+                let second = int_of_string (Netstring_str.matched_group m 6 s) in
+-               let zonestr = Netstring_str.matched_group m 8s in
++               let zonestr = Netstring_str.matched_group m 8 s in
+                let zone = get_zone zonestr in
+                if month = 0 || month > 12 || day = 0 || day > 31 ||
+                     hour > 23 || minute > 59 || second > 59 
+diff --git a/code/src/netsys/netlog.ml b/code/src/netsys/netlog.ml
+index 4d87c0e..4633655 100644
+--- a/code/src/netsys/netlog.ml
++++ b/code/src/netsys/netlog.ml
+@@ -8,6 +8,18 @@ type level =
+ type logger =
+     level -> string -> unit
+ 
++type timespec = float * int
++type clock_id
++type clock =
++  (* originally from Netsys_posix *)
++  | CLOCK_REALTIME
++  | CLOCK_MONOTONIC
++  | CLOCK_ID of clock_id
++
++external clock_gettime : clock -> timespec = "netsys_clock_gettime"
++(* originally from Netsys_posix *)
++
++
+ let level_weight =
+   function
+     | `Emerg   -> 0
+@@ -95,7 +107,7 @@ let current_formatter =
+ let channel_logger ch max_lev lev msg = 
+   if level_weight lev <= level_weight max_lev then (
+     let (sec,ns) =
+-      try Netsys_posix.clock_gettime Netsys_posix.CLOCK_REALTIME
++      try clock_gettime CLOCK_REALTIME
+       with Invalid_argument _ ->
+ 	(Unix.gettimeofday(), 0) in
+     let s =   (* Netdate is unavailable here *)
+diff --git a/code/src/netsys/netsys_posix.ml b/code/src/netsys/netsys_posix.ml
+index 1062a6c..602ceae 100644
+--- a/code/src/netsys/netsys_posix.ml
++++ b/code/src/netsys/netsys_posix.ml
+@@ -771,12 +771,14 @@ external readlinkat : Unix.file_descr -> string -> string
+ type timespec = float * int
+ type clock_id
+ type clock =
++  (* also in Netlog *)
+   | CLOCK_REALTIME
+   | CLOCK_MONOTONIC
+   | CLOCK_ID of clock_id
+ 
+ external nanosleep : timespec -> timespec ref -> unit = "netsys_nanosleep"
+ external clock_gettime : clock -> timespec = "netsys_clock_gettime"
++         (* also in Netlog *)
+ external clock_settime : clock -> timespec -> unit = "netsys_clock_settime"
+ external clock_getres : clock -> timespec = "netsys_clock_getres"
+ external clock_getcpuclockid : int -> clock_id = "netsys_clock_getcpuclockid"

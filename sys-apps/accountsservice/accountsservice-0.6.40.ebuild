@@ -8,8 +8,8 @@ GCONF_DEBUG="no"
 inherit eutils gnome2 systemd
 
 DESCRIPTION="D-Bus interfaces for querying and manipulating user account information"
-HOMEPAGE="http://www.freedesktop.org/wiki/Software/AccountsService/"
-SRC_URI="http://www.freedesktop.org/software/${PN}/${P}.tar.xz"
+HOMEPAGE="https://www.freedesktop.org/wiki/Software/AccountsService/"
+SRC_URI="https://www.freedesktop.org/software/${PN}/${P}.tar.xz"
 
 LICENSE="GPL-3+"
 SLOT="0"

@@ -6,8 +6,8 @@ EAPI=5
 inherit autotools eutils multilib-minimal
 
 DESCRIPTION="An implementation of the Interactice Connectivity Establishment standard (ICE)"
-HOMEPAGE="http://nice.freedesktop.org/wiki/"
-SRC_URI="http://nice.freedesktop.org/releases/${P}.tar.gz"
+HOMEPAGE="https://nice.freedesktop.org/wiki/"
+SRC_URI="https://nice.freedesktop.org/releases/${P}.tar.gz"
 
 LICENSE="|| ( MPL-1.1 LGPL-2.1 )"
 SLOT="0"

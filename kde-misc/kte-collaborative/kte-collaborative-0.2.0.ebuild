@@ -21,7 +21,7 @@ IUSE="debug"
 
 RDEPEND="
 	dev-libs/glib:2
-	net-im/ktp-common-internals
+	kde-apps/ktp-common-internals:4
 	net-libs/libinfinity[server]
 	net-libs/libqinfinity
 	>=net-libs/telepathy-qt-0.8.9

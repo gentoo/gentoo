@@ -15,7 +15,7 @@ fi
 inherit autotools-multilib multilib ${GIT_ECLASS}
 
 DESCRIPTION="The OpenGL Utility Library"
-HOMEPAGE="http://cgit.freedesktop.org/mesa/glu/"
+HOMEPAGE="https://cgit.freedesktop.org/mesa/glu/"
 
 if [[ ${PV} = 9999* ]]; then
 	SRC_URI=""

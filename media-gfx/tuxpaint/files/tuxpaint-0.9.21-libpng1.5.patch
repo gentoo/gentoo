@@ -1,8 +1,8 @@
 http://tuxpaint.cvs.sourceforge.net/viewvc/tuxpaint/tuxpaint/src/tuxpaint.c?r1=1.828&r2=1.829
 No longer directly accessing PNG structure members directly, now using png_set_IHDR(). (Patch from SF.net Bug #3386433)
 
---- src/tuxpaint.c	2011/07/29 21:27:39	1.828
-+++ src/tuxpaint.c	2011/08/08 17:59:12	1.829
+--- a/src/tuxpaint.c	2011/07/29 21:27:39	1.828
++++ b/src/tuxpaint.c	2011/08/08 17:59:12	1.829
 @@ -13425,12 +13425,7 @@
        {
  	png_init_io(png_ptr, fi);

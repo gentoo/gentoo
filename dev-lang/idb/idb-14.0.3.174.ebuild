@@ -17,13 +17,12 @@ _INTEL_PV1=14
 DESCRIPTION="Intel C/C++/FORTRAN debugger"
 HOMEPAGE="http://software.intel.com/en-us/articles/intel-composer-xe/"
 
-IUSE="eclipse"
+IUSE=""
 KEYWORDS="-* ~amd64 ~x86 ~amd64-linux ~x86-linux"
 
 DEPEND=">=dev-libs/intel-common-13.1[compiler]"
 RDEPEND="${DEPEND}
-	virtual/jre
-	eclipse? ( dev-util/eclipse-sdk )"
+	virtual/jre"
 
 INTEL_BIN_RPMS="idb"
 INTEL_DAT_RPMS="idb-common idbcdt"

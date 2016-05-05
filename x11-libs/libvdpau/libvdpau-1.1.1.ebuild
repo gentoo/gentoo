@@ -7,8 +7,8 @@ VIRTUALX_REQUIRED="test"
 inherit autotools-multilib flag-o-matic virtualx
 
 DESCRIPTION="VDPAU wrapper and trace libraries"
-HOMEPAGE="http://www.freedesktop.org/wiki/Software/VDPAU"
-SRC_URI="http://people.freedesktop.org/~aplattner/vdpau/${P}.tar.gz"
+HOMEPAGE="https://www.freedesktop.org/wiki/Software/VDPAU"
+SRC_URI="https://people.freedesktop.org/~aplattner/vdpau/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

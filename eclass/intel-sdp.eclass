@@ -170,34 +170,6 @@ QA_PREBUILT="${INTEL_SDP_DIR}/*"
 #
 # e.g. amd64-multilib -> INTEL_ARCH="intel64 ia32"
 
-# @FUNCTION: _isdp_link_eclipse_plugins
-# @INTERNAL
-# @DESCRIPTION:
-# Creating necessary links to use intel compiler with eclipse
-_isdp_link_eclipse_plugins() {
-	debug-print-function ${FUNCNAME} "${@}"
-
-	local c f
-	pushd ${INTEL_SDP_DIR}/eclipse_support > /dev/null || die
-		for c in cdt*; do
-			local cv=${c#cdt} ev=3.$(( ${cv:0:1} - 1))
-			if has_version "dev-util/eclipse-sdk:${ev}"; then
-				einfo "Linking eclipse (v${ev}) plugin cdt (v${cv})"
-				for f in cdt${cv}/eclipse/features/*; do
-					dodir /usr/$(get_libdir)/eclipse-${ev}/features
-					dosym "${INTEL_SDP_EDIR}"/eclipse_support/${f} \
-						/usr/$(get_libdir)/eclipse-${ev}/features/ || die
-				done
-				for f in cdt${cv}/eclipse/plugins/*; do
-					dodir /usr/$(get_libdir)/eclipse-${ev}/plugins
-					dosym "${INTEL_SDP_EDIR}"/eclipse_support/${f} \
-						/usr/$(get_libdir)/eclipse-${ev}/plugins/ || die
-				done
-			fi
-		done
-	popd > /dev/null || die
-}
-
 # @FUNCTION: _isdp_big-warning
 # @USAGE: [pre-check | test-failed]
 # @INTERNAL
@@ -456,16 +428,6 @@ intel-sdp_src_install() {
 		ebegin "Cleaning out examples"
 		find "${INTEL_SDP_DIR}"/Samples -delete || die
 		eend
-	fi
-
-	if path_exists "${INTEL_SDP_DIR}"/eclipse_support; then
-		if has eclipse ${IUSE} && use eclipse; then
-			_isdp_link_eclipse_plugins
-		else
-			ebegin "Cleaning out eclipse plugin"
-			find "${INTEL_SDP_DIR}"/eclipse_support -delete || die
-			eend
-		fi
 	fi
 
 	if path_exists "${INTEL_SDP_DIR}"/man; then

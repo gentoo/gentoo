@@ -26,7 +26,6 @@ REQUIRED_USE="
 "
 
 PATCHES=( "${FILESDIR}"/${PN}-4.18-darwin.patch )
-DOCS=( "${S}"/{ChangeLog,NEWS} )
 
 src_prepare() {
 	# Sub-slot sanity check
@@ -41,7 +40,7 @@ src_prepare() {
 		die "sub-slot sanity check failed"
 	fi
 
-	# Fix out-of-source installation of sip.pyi
+	# Fix out-of-source installation of sip.pyi (reported upstream)
 	sed -i -e '/installs.*sip\.pyi/ s/build_dir/src_dir/' configure.py || die
 
 	default
@@ -82,10 +81,11 @@ src_compile() {
 
 src_install() {
 	installation() {
-		default
+		emake DESTDIR="${D}" install
 		python_optimize
 	}
 	python_foreach_impl run_in_build_dir installation
 
+	einstalldocs
 	use doc && dodoc -r doc/html
 }

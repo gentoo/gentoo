@@ -7,7 +7,7 @@ XORG_DRI="always"
 inherit xorg-2
 
 DESCRIPTION="X.Org driver for VIA/S3G cards"
-HOMEPAGE="http://www.freedesktop.org/wiki/Openchrome/"
+HOMEPAGE="https://www.freedesktop.org/wiki/Openchrome/"
 LICENSE="MIT"
 
 KEYWORDS="amd64 x86"

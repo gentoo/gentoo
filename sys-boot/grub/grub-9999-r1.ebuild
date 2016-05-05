@@ -217,6 +217,19 @@ grub_configure() {
 	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
 }
 
+grub_get_platforms() {
+	MULTIBUILD_VARIANTS=()
+	local platform
+	for platform in "${GRUB_ALL_PLATFORMS[@]}"; do
+		if use "grub_platforms_${platform}"; then
+			MULTIBUILD_VARIANTS+=( "${platform}" )
+		fi
+	done
+	if (( ${#MULTIBUILD_VARIANTS[@]} == 0 )); then
+		MULTIBUILD_VARIANTS=( guessed )
+	fi
+}
+
 src_configure() {
 	# Bug 508758.
 	replace-flags -O3 -O2
@@ -238,7 +251,7 @@ src_configure() {
 	tc-export BUILD_CC # Bug 485592
 
 	# Portage will take care of cleaning up GRUB_PLATFORMS
-	MULTIBUILD_VARIANTS=( ${GRUB_PLATFORMS:-guessed} )
+	grub_get_platforms
 	grub_do grub_configure
 }
 

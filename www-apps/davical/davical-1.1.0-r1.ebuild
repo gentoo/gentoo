@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -22,7 +22,7 @@ RDEPEND="app-admin/pwgen
 	dev-lang/php:*[calendar,curl,pdo,postgres,xml]
 	dev-perl/DBI
 	dev-perl/DBD-Pg
-	dev-perl/yaml
+	dev-perl/YAML
 	>=dev-php/awl-0.51
 	www-servers/apache"
 

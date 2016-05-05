@@ -9,7 +9,7 @@ inherit gnome2
 
 DESCRIPTION="SDK for making video editors and more"
 HOMEPAGE="http://wiki.pitivi.org/wiki/GES"
-SRC_URI="http://gstreamer.freedesktop.org/src/${PN}/${P}.tar.xz"
+SRC_URI="https://gstreamer.freedesktop.org/src/${PN}/${P}.tar.xz"
 
 LICENSE="LGPL-2+"
 SLOT="1.0"

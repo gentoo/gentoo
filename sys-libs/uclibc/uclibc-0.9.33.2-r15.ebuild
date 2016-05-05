@@ -18,10 +18,10 @@ fi
 
 MY_P=uClibc-${PV}
 DESCRIPTION="C library for developing embedded Linux systems"
-HOMEPAGE="http://www.uclibc.org/"
+HOMEPAGE="https://www.uclibc.org/"
 if [[ ${PV} != "9999" ]] ; then
 	PATCH_VER="17"
-	SRC_URI="http://uclibc.org/downloads/${MY_P}.tar.bz2
+	SRC_URI="https://uclibc.org/downloads/${MY_P}.tar.bz2
 		${PATCH_VER:+mirror://gentoo/${MY_P}-patches-${PATCH_VER}.tar.bz2}"
 	KEYWORDS="-* amd64 arm m68k ~mips ppc sh sparc x86"
 fi

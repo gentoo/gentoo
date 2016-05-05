@@ -5,8 +5,8 @@ Set up XDG_CONFIG_DIRS lookup in order:
 
 Index: kdecore/kernel/kstandarddirs.cpp
 ===================================================================
---- kdecore/kernel/kstandarddirs.cpp	(revision 1014759)
-+++ kdecore/kernel/kstandarddirs.cpp	(working copy)
+--- a/kdecore/kernel/kstandarddirs.cpp	(revision 1014759)
++++ b/kdecore/kernel/kstandarddirs.cpp	(working copy)
 @@ -1664,16 +1664,13 @@
      {
          tokenize(xdgdirList, xdgdirs, QString(QChar(KPATH_SEPARATOR)));

@@ -13,7 +13,7 @@ X86_NV_PACKAGE="NVIDIA-Linux-x86-${PV}"
 EXTRACT_FIRMWARE_REV="96641bfebb2547402b2145fcf0e3116410f0da87"
 
 DESCRIPTION="Kernel and mesa firmware for nouveau (video accel and pgraph)"
-HOMEPAGE="http://nouveau.freedesktop.org/wiki/VideoAcceleration/"
+HOMEPAGE="https://nouveau.freedesktop.org/wiki/VideoAcceleration/"
 SRC_URI="${NV_URI}Linux-x86/${PV}/${X86_NV_PACKAGE}.run
 	https://raw.github.com/imirkin/re-vp2/${EXTRACT_FIRMWARE_REV}/extract_firmware.py -> nvidia_extract_firmware-${PV}.py"
 

@@ -11,7 +11,7 @@ DESCRIPTION="A utility that provides information about a computer system"
 HOMEPAGE="https://www.kde.org/applications/system/kinfocenter/"
 SRC_URI+=" https://www.gentoo.org/assets/img/logo/gentoo-3d-small.png -> glogo-small.png"
 KEYWORDS="~amd64 ~arm ~x86"
-IUSE="egl gles ieee1394 +opengl +pci samba nfs wayland X"
+IUSE="egl gles ieee1394 +opengl +pci samba nfs wayland"
 
 REQUIRED_USE="egl? ( || ( gles opengl ) )"
 
@@ -36,6 +36,7 @@ COMMON_DEPEND="
 	$(add_qt_dep qtdeclarative)
 	$(add_qt_dep qtgui 'opengl(+)')
 	$(add_qt_dep qtwidgets)
+	x11-libs/libX11
 	gles? (
 		$(add_qt_dep qtgui 'gles2')
 		|| (
@@ -52,7 +53,6 @@ COMMON_DEPEND="
 	pci? ( sys-apps/pciutils )
 	samba? ( net-fs/samba[server(+)] )
 	wayland? ( $(add_plasma_dep kwayland) )
-	X? ( x11-libs/libX11 )
 "
 DEPEND="${COMMON_DEPEND}
 	$(add_frameworks_dep plasma)
@@ -72,7 +72,6 @@ src_configure() {
 		$(cmake-utils_use_find_package opengl OpenGL)
 		$(cmake-utils_use_find_package pci PCIUTILS)
 		$(cmake-utils_use_find_package wayland KF5Wayland)
-		$(cmake-utils_use_find_package X X11)
 	)
 
 	kde5_src_configure

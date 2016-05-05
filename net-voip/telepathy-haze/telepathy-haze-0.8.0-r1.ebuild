@@ -9,7 +9,7 @@ inherit eutils python-single-r1
 
 DESCRIPTION="Telepathy connection manager providing libpurple supported protocols"
 HOMEPAGE="http://developer.pidgin.im/wiki/TelepathyHaze"
-SRC_URI="http://telepathy.freedesktop.org/releases/${PN}/${P}.tar.gz"
+SRC_URI="https://telepathy.freedesktop.org/releases/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -24,6 +24,7 @@ RESTRICT="strip mirror" # We can't mirror it, but we can fetch it
 
 DEPEND="app-arch/unzip"
 RDEPEND="
+	!!app-admin/lastpass-binary-component
 	chrome? ( || (
 		www-client/google-chrome
 		www-client/google-chrome-beta

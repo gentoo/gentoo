@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=5
-USE_RUBY="ruby20 ruby21 ruby22"
+USE_RUBY="ruby20 ruby21 ruby22 ruby23"
 
 inherit multilib ruby-ng
 
@@ -12,7 +12,7 @@ HOMEPAGE="http://arika.org/ruby/termios"
 SRC_URI="https://github.com/arika/ruby-termios/archive/version_${PV//./_}.tar.gz -> ${P}.tar.gz"
 LICENSE="Ruby"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~mips ~ppc ~x86 ~x86-macos"
+KEYWORDS="amd64 ~hppa ~mips ~ppc x86 ~x86-macos"
 IUSE=""
 
 RUBY_S="${PN}-version_${PV//./_}"

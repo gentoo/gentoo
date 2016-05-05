@@ -10,10 +10,6 @@
 # Mask because requires a lot of unstable depends not ready for the stabilization
 gnome-extra/nm-applet bluetooth
 
-# Joseph Jezak <josejx@gentoo.org> (18 May 2012)
-# Mask the C# bindings for KDE
-kde-base/kdebindings-meta csharp
-
 # Patrick McLean <chutzpah@gentoo.org> (08 Nov 2011)
 # mask conntrack USE flag for dnsmasq as dep is not keyworded
 net-dns/dnsmasq conntrack

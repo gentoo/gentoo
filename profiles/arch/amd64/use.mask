@@ -212,10 +212,6 @@ video_cards_i740
 video_cards_newport
 video_cards_nsc
 
-# 2004/10/06 - Jeremy Huddleston <eradicator@gentoo.org>
-# sys-cluster/pvm won't build
-pvm
-
 # 2004/06/22 - Taken from 2004.0 profile
 # masked
 3dfx

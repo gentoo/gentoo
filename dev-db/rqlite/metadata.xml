@@ -5,6 +5,6 @@
     <email>zmedico@gentoo.org</email>
   </maintainer>
   <upstream>
-    <remote-id type="github">otoolep/rqlite</remote-id>
+    <remote-id type="github">rqlite/rqlite</remote-id>
   </upstream>
 </pkgmetadata>

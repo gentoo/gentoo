@@ -7,7 +7,7 @@ EAPI=5
 inherit base eutils
 
 DESCRIPTION="Library parsing abiword documents"
-HOMEPAGE="http://www.freedesktop.org/wiki/Software/libabw/"
+HOMEPAGE="https://www.freedesktop.org/wiki/Software/libabw/"
 SRC_URI="http://dev-www.libreoffice.org/src/${PN}/${P}.tar.xz"
 
 LICENSE="MPL-2.0"

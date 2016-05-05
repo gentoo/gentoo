@@ -8,7 +8,7 @@ GCONF_DEBUG="no"
 inherit gnome2 virtualx
 
 DESCRIPTION="PackageKit client for the GNOME desktop"
-HOMEPAGE="http://www.freedesktop.org/software/PackageKit/"
+HOMEPAGE="https://www.freedesktop.org/software/PackageKit/"
 
 LICENSE="GPL-2"
 SLOT="0"

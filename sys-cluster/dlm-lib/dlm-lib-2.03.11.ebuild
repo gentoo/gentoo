@@ -11,8 +11,8 @@ MAJ_PV="$(get_major_version)"
 MIN_PV="$(get_version_component_range 2).$(get_version_component_range 3)"
 
 DESCRIPTION="General-purpose Distributed Lock Manager"
-HOMEPAGE="https://sources.redhat.com/cluster/wiki/"
-SRC_URI="ftp://sources.redhat.com/pub/cluster/releases/${MY_P}.tar.gz"
+HOMEPAGE="https://sourceware.org/cluster/wiki/"
+SRC_URI="ftp://sourceware.org/pub/cluster/releases/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

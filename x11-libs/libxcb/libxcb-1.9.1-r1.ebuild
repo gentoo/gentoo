@@ -12,10 +12,10 @@ XORG_MULTILIB=yes
 inherit eutils python-single-r1 xorg-2
 
 DESCRIPTION="X C-language Bindings library"
-HOMEPAGE="http://xcb.freedesktop.org/"
+HOMEPAGE="https://xcb.freedesktop.org/"
 EGIT_REPO_URI="git://anongit.freedesktop.org/git/xcb/libxcb"
 [[ ${PV} != 9999* ]] && \
-	SRC_URI="http://xcb.freedesktop.org/dist/${P}.tar.bz2"
+	SRC_URI="https://xcb.freedesktop.org/dist/${P}.tar.bz2"
 
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~x86-freebsd ~x86-interix ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="selinux xkb"
@@ -41,10 +41,10 @@ src_prepare() {
 		-i "${S}/tests/Makefile.am" \
 		-i "${S}/tests/Makefile.in" \
 		|| die "Could not patch tests/Makefile.am and tests/Makefile.in to fix tests"
-	# http://patchwork.freedesktop.org/patch/15185/
+	# https://patchwork.freedesktop.org/patch/15185/
 	# Sounds like this commit is missing:
 	# c_client.py: Handle multiple expr. in a bitcase
-	# http://cgit.freedesktop.org/xcb/libxcb/commit/?id=e602b65
+	# https://cgit.freedesktop.org/xcb/libxcb/commit/?id=e602b65
 	epatch "${FILESDIR}/${PN}-1.9.1-list-object-has-no-attribute-lenfield_name.patch"
 	# https://bugs.freedesktop.org/show_bug.cgi?id=71502
 	epatch "${FILESDIR}/${PN}-1.9.1-conflicting-types-for-xcb_ge_event_t.patch"

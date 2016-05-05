@@ -23,7 +23,6 @@ case ${EAPI} in
 		die "EAPI=${EAPI} not supported"
 		;;
 	5)
-		# not needed for EAPI6 and above
 		inherit multilib
 		;;
 esac
@@ -72,7 +71,7 @@ inherit flag-o-matic toolchain-funcs mozcoreconf-v3
 
 # use-flags common among all mozilla ebuilds
 IUSE="${IUSE} dbus debug ffmpeg +gstreamer gstreamer-0 +jemalloc3 neon pulseaudio selinux startup-notification system-cairo
-	system-icu system-jpeg system-libevent system-sqlite system-libvpx"
+	system-harfbuzz system-icu system-jpeg system-libevent system-sqlite system-libvpx"
 
 # some notes on deps:
 # gtk:2 minimum is technically 2.10 but gio support (enabled by default) needs 2.14
@@ -121,8 +120,17 @@ RDEPEND=">=app-text/hunspell-1.2
 	system-jpeg? ( >=media-libs/libjpeg-turbo-1.2.1 )
 	system-libevent? ( =dev-libs/libevent-2.0*:0= )
 	system-sqlite? ( >=dev-db/sqlite-3.9.1:3[secure-delete,debug=] )
-	system-libvpx? ( >=media-libs/libvpx-1.3.0:0=[postproc] )
+	system-harfbuzz? ( >=media-libs/harfbuzz-1.1.3:0=[graphite,icu] >=media-gfx/graphite2-1.3.8 )
 "
+
+if [[ ${PV/45.0*/} == "" ]]; then
+	RDEPEND+="
+	system-libvpx? ( >=media-libs/libvpx-1.3.0:0=[postproc] )"
+else
+	# 45.1.0 and above bumped the libvpx requirement
+	RDEPEND+="
+	system-libvpx? ( >=media-libs/libvpx-1.5.0:0=[postproc] )"
+fi
 
 if [[ -n ${MOZCONFIG_OPTIONAL_GTK3} ]]; then
 	if [[ ${MOZCONFIG_OPTIONAL_GTK3} = "enabled" ]]; then
@@ -180,8 +188,11 @@ DEPEND="app-arch/zip
 RDEPEND+="
 	selinux? ( sec-policy/selinux-mozilla )"
 
-# only one of gstreamer and gstreamer-0 can be enabled at a time, so set REQUIRED_USE to signify this
-REQUIRED_USE="?? ( gstreamer gstreamer-0 )"
+# only one of gstreamer and gstreamer-0 can be enabled at a time, so set REQUIRED_USE to signify this.
+# also force system-icu if system-harfbuzz is set to avoid any potential ABI issues
+REQUIRED_USE="
+	?? ( gstreamer gstreamer-0 )
+	system-harfbuzz? ( system-icu )"
 
 # only one of gtk3 or qt5 should be permitted to be selected, since only one will be used.
 [[ -n ${MOZCONFIG_OPTIONAL_GTK3} ]] && [[ -n ${MOZCONFIG_OPTIONAL_QT5} ]] && \
@@ -327,6 +338,8 @@ mozconfig_config() {
 	mozconfig_use_with system-jpeg
 	mozconfig_use_with system-icu
 	mozconfig_use_with system-libvpx
+	mozconfig_use_with system-harfbuzz
+	mozconfig_use_with system-harfbuzz system-graphite2
 
 	# Modifications to better support ARM, bug 553364
 	if use neon ; then
@@ -342,5 +355,46 @@ mozconfig_config() {
 			sed -i -e "s|softfp|hard|" \
 				"${S}"/media/libvpx/moz.build
 		fi
+	fi
+}
+
+# @FUNCTION: mozconfig_install_prefs
+# @DESCRIPTION:
+# Set preferences into the prefs.js file specified as a parameter to
+# the function.  This sets both some common prefs to all mozilla
+# packages, and any prefs that may relate to the use flags administered
+# by mozconfig_config().
+#
+# Call this within src_install() phase, after copying the template
+# prefs file (if any) from ${FILESDIR}
+#
+# Example:
+#
+# inherit mozconfig-v6.46
+#
+# src_install() {
+# 	cp "${FILESDIR}"/gentoo-default-prefs.js \
+#	"${BUILD_OBJ_DIR}/dist/bin/browser/defaults/preferences/all-gentoo.js"  \
+#	|| die
+#
+# 	mozconfig_install_prefs \
+#	"${BUILD_OBJ_DIR}/dist/bin/browser/defaults/preferences/all-gentoo.js"
+#
+#	...
+# }
+
+mozconfig_install_prefs() {
+	local prefs_file="${1}"
+
+	einfo "Adding prefs from mozconfig to ${prefs_file}"
+
+	# set dictionary path, to use system hunspell
+	echo "pref(\"spellchecker.dictionary_path\", \"${EPREFIX}/usr/share/myspell\");" \
+		>>"${prefs_file}" || die
+
+	# force the graphite pref if system-harfbuzz is enabled, since the pref cant disable it
+	if use system-harfbuzz ; then
+		echo "sticky_pref(\"gfx.font_rendering.graphite.enabled\",true);" \
+			>>"${prefs_file}" || die
 	fi
 }

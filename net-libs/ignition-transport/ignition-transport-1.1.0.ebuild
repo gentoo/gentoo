@@ -25,6 +25,7 @@ RDEPEND="${DEPEND}"
 DEPEND="${DEPEND}
 	virtual/pkgconfig"
 CMAKE_BUILD_TYPE=RelWithDebInfo
+PATCHES=( "${FILESDIR}/protobuf3.patch" )
 
 src_configure() {
 	# upstream appends this conditionally...

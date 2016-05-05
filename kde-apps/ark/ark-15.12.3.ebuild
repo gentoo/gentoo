@@ -11,7 +11,7 @@ inherit kde5
 DESCRIPTION="KDE Archiving tool"
 HOMEPAGE="https://www.kde.org/applications/utilities/ark
 https://utils.kde.org/projects/ark"
-KEYWORDS=" ~amd64 ~x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="bzip2 lzma zlib"
 
 RDEPEND="
@@ -55,5 +55,9 @@ pkg_postinst() {
 
 	if ! has_version app-arch/rar ; then
 		elog "For creating rar archives, install app-arch/rar"
+	fi
+
+	if ! has_version app-arch/p7zip ; then
+		elog "For handling 7-Zip archives, install app-arch/p7zip"
 	fi
 }

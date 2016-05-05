@@ -1,0 +1,21 @@
+diff -urN skyldav-0.6.orig/examples/etc/skyldav.conf skyldav-0.6/examples/etc/skyldav.conf
+--- skyldav-0.6.orig/examples/etc/skyldav.conf	2016-04-13 00:55:28.000000000 +0200
++++ skyldav-0.6/examples/etc/skyldav.conf	2016-04-22 10:18:56.631146410 +0200
+@@ -22,6 +22,9 @@
+ 
+ # Directories that shall not be scanned (including subdirectories)
+ # EXCLUDE_PATH = /var/noscan, /opt/noscan
++# 
++# Exclude various portage directories for performance reasons
++EXCLUDE_PATH = /usr/portage, /var/cache/edb, /var/db/pkg, /var/tmp/portage, /var/tmp/binpkgs, /var/log/portage
+ 
+ # File systems that are local, virus scan results may be cached.
+ # LOCAL_FS = ext3, ext4, iso9660, tmpfs, vfat
+@@ -31,6 +34,7 @@
+ # File systems that shall not be marked for virus scan.
+ # Cifs uses a background daemon which causes problems when scanned.
+ # Exclusion of fuse file systems is hard coded.
++# Do not exclude devtmpfs and configfs, as userspace could write malware onto them!
+ # NOMARK_FS = proc, sysfs
+ NOMARK_FS = proc, sysfs, devpts, debugfs, securityfs, cgroup, rpc_pipefs
+ NOMARK_FS = mqueue, autofs, cifs

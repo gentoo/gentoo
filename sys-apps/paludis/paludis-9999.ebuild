@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -7,7 +7,7 @@ EAPI=5
 EGIT_REPO_URI='git://git.exherbo.org/paludis/paludis.git'
 PYTHON_COMPAT=( python2_7 )
 # matching profile defaults for now
-RUBY_VER=2.0
+RUBY_VER=2.1
 
 inherit autotools bash-completion-r1 eutils git-r3 python-single-r1 user
 
@@ -22,7 +22,7 @@ KEYWORDS=""
 
 COMMON_DEPEND="
 	>=app-admin/eselect-1.2.13
-	>=app-shells/bash-3.2
+	>=app-shells/bash-3.2:0
 	dev-libs/libpcre[cxx]
 	sys-apps/file
 	pbins? ( >=app-arch/libarchive-3.1.2 )
@@ -39,11 +39,8 @@ DEPEND="${COMMON_DEPEND}
 	app-text/xmlto
 	>=sys-devel/gcc-4.7
 	doc? (
-		|| (
-			>=app-doc/doxygen-1.5.3
-			<=app-doc/doxygen-1.5.1 )
-		python? (
-		dev-python/sphinx[${PYTHON_USEDEP}] )
+		app-doc/doxygen
+		python? ( dev-python/sphinx[${PYTHON_USEDEP}] )
 		ruby? ( dev-ruby/syntax[ruby_targets_ruby${RUBY_VER/./}] )
 	)
 	virtual/pkgconfig

@@ -30,6 +30,65 @@
 
 #--- END OF EXAMPLES ---
 
+# Maciej Mrozowski <reavertm@gentoo.org> (3 May 2016)
+# Mask until >=net-libs/qxmpp-0.8.3 is provided with qt5 support.
+=net-im/kadu-3.0
+
+# Lars Wendler <polynomial-c@gentoo.org> (2 May 2016)
+# Broken reverse deps. At least one header file has been moved around.
+>=media-gfx/imagemagick-7.0.1.0
+
+# Rafael G. Martins <rafaelmartins@gentoo.org> (30 Apr 2016)
+# Packages merged upstream with app-text/blogc. Please install
+# app-text/blogc with USE=git and USE=httpd instead. Removal in 30 days.
+dev-vcs/blogc-git-receiver
+www-servers/blogc-runserver
+
+# James Le Cuirot <chewi@gentoo.org> (27 Apr 2016)
+# Very very dead upstream and probably doesn't work any more like
+# similar clients. Removal in 30 days.
+net-p2p/yaggui
+
+# Michael Palimaka <kensington@gentoo.org> (27 Apr 2016)
+# Ancient. Dead upstream. Unmaintained.
+# Masked for removal in 30 days.
+net-p2p/nap
+
+# Michael Palimaka <kensington@gentoo.org> (27 Apr 2016)
+# Not useful due to being so outdated. Unmaintained.
+# Masked for removal in 30 days. Bug #212793.
+dev-lang/dmd-bin
+
+# Pawel Hajdan jr <phajdan.jr@gentoo.org> (27 Apr 2016)
+# Dev channel releases are only for people who are developers or want more
+# experimental features and accept a more unstable release.
+>=www-client/chromium-52
+
+# Sergey Popov <pinkbyte@gentoo.org> (26 Apr 2016)
+# Security mask of older branches, wrt bug #5567810
+<dev-vcs/subversion-1.8
+
+# James Le Cuirot <chewi@gentoo.org> (25 Apr 2016)
+# Long dead upstream and no longer needed. Removal in 30 days.
+dev-java/charva
+dev-java/jakarta-slide-webdavclient
+dev-java/xml-im-exporter
+
+# Alex Brandt <alunduil@gentoo.org> (23 Apr 2016)
+# Contains collisions with dev-python/ipaddress.  See #580388 for more details.
+# Masked for removal in 30 days.
+dev-python/py2-ipaddress
+
+# Michael Palimaka <kensington@gentoo.org> (21 Apr 2016)
+# Requires package no longer in the tree to be useful. Unmaintained.
+# Dead upstream. Masked for removal in 30 days.
+app-misc/tablix
+
+# Michael Sterrett <mr_bones_@gentoo.org> (19 Apr 2016)
+# No release in 6 years and segfaults on modern systems. (bug #311809)
+# Masked for removal on 20160519
+games-sports/toycars
+
 # Sergey Popov <pinkbyte@gentoo.org> (19 Apr 2016)
 # Security mask, wrt bug #577156
 # Should be kept in tree for some time
@@ -68,10 +127,6 @@ dev-java/freehep-xml
 =www-misc/monitorix-3.6.0
 =www-misc/monitorix-3.8.1
 
-# Mike Gilbert <floppym@gentoo.org> (16 Apr 2016)
-# Causes numerous build failures. Bug 575232.
-=sys-libs/glibc-2.23-r1
-
 # Richard Freeman <rich0@gentoo.org> (16 Apr 2016)
 # Masked for extended testing, and porting of openrc scripts
 # if necessary.
@@ -83,7 +138,6 @@ dev-java/freehep-xml
 # Work in progress. Do not unmask! Unmasking these ebuilds
 # is like fiddling with the infinite improbability drive;
 # expect unexpected, weird, and potentially fatal results.
-=dev-lang/perl-5.22.2*
 =dev-lang/perl-5.24*
 
 # Michael Sterrett <mr_bones_@gentoo.org> (06 Apr 2016)
@@ -117,17 +171,6 @@ dev-libs/ptypes
 # --configtest is broken, mask until 2.3.1 release
 =app-admin/logstash-bin-2.3.0*
 
-# Anthony G. Basile <blueness@gentoo.org> (04 Apr 2016)
-# Dead upstream and no real users
-# Masking for removal in 30 days
-sys-apps/rsbac-admin
-sys-kernel/rsbac-sources
-
-# James Le Cuirot <chewi@gentoo.org> (03 Apr 2016)
-# Legacy migration package that is no longer needed. See
-# bug #549508. Removal in 30 days.
-dev-java/java-config-wrapper
-
 # James Le Cuirot <chewi@gentoo.org> (03 Apr 2016)
 # Masking Spring Framework for the time being as 3.2.4 is old, has
 # multiple vulnerabilities, and we're not likely to update it
@@ -146,11 +189,6 @@ dev-java/spring-instrument
 # for questions.
 <=media-gfx/slic3r-1.1.9999
 
-# Michael Sterrett <mr_bones_@gentoo.org> (02 Apr 2016)
-# Doesn't work with latest dev-lang/ocaml; dead upstream
-# Masked for removal on 20160502
-games-simulation/planets
-
 # Patrick Lauer (30 Mar 2015)
 # Segfaults when creating directories #578582
 =sys-apps/sandbox-2.11*
@@ -159,68 +197,10 @@ games-simulation/planets
 # Tons-o-bugs and no actual testing by new author. #578490
 dev-libs/libtomcrypt
 
-# Pawel Hajdan jr <phajdan.jr@gentoo.org> (25 Mar 2016)
-# Dev channel releases are only for people who are developers or want more
-# experimental features and accept a more unstable release.
->=www-client/chromium-51
-
-# Michael Palimaka <kensington@gentoo.org> (24 Mar 2016)
-# Requires old llvm. Dead upstream.
-# Masked for removal in 30 days. Bug #571216.
-dev-python/llvmpy
-dev-python/llvmmath
-dev-python/pykit
-
 # José María Alonso <nimiux@gentoo.org> (24 Mar 2016)
 # Fails to build dev-lisp/sbcl-1.3.3 #563812
 =dev-lisp/asdf-3.1.7
 =dev-lisp/uiop-3.1.7
-
-# Michael Palimaka <kensington@gentoo.org> (24 Mar 2016)
-# Doesn't run. Unmaintained. Bug #304865.
-# Masked for removal in 30 days.
-app-cdr/qmultirecord
-
-# Michael Palimaka <kensington@gentoo.org> (24 Mar 2016)
-# Fails to build. Bug #368953.
-# Masked for removal in 30 days.
-net-p2p/hx
-
-# Aaron Bauman <bman@gentoo.org> (19 Mar 2016)
-# Unpatched security vulnerability per bug #521892.
-# Masked for removal in 30 days.
-net-irc/srvx
-
-# Aaron Bauman <bman@gentoo.org> (19 Mar 2016)
-# Unpatched security vulnerability per bug #261182.
-# Masked for removal in 30 days.
-media-sound/shoutcast-server-bin
-media-sound/shoutcast-trans-bin
-
-# Lars Wendler <polynomial-c@gentoo.org> (20 Mar 2016)
-# Don't work with latest claws-mail package. Most plugins are now part of
-# claws-mail sources and can be en-/disabled via USE flags.
-# Masked for removal in 30 days.
-mail-client/claws-mail-acpi-notifier
-mail-client/claws-mail-address_keeper
-mail-client/claws-mail-archive
-mail-client/claws-mail-att-remover
-mail-client/claws-mail-attachwarner
-mail-client/claws-mail-clamd
-mail-client/claws-mail-fancy
-mail-client/claws-mail-fetchinfo
-mail-client/claws-mail-gdata
-mail-client/claws-mail-gtkhtml
-mail-client/claws-mail-mailmbox
-mail-client/claws-mail-newmail
-mail-client/claws-mail-notification
-mail-client/claws-mail-pdf-viewer
-mail-client/claws-mail-perl
-mail-client/claws-mail-python
-mail-client/claws-mail-rssyl
-mail-client/claws-mail-spam-report
-mail-client/claws-mail-tnef-parse
-mail-client/claws-mail-vcalendar
 
 # Andreas K. Huettel <dilfridge@gentoo.org> (19 Mar 2016)
 # Dead upstream since 2010, new VMware uses new incompatible
@@ -232,38 +212,6 @@ x11-libs/libview
 # Unpatched security vulnerability per bug #512356.
 # Masked for removal in 30 days.
 =app-forensics/chkrootkit-0.49
-
-# Aaron Bauman <bman@gentoo.org> (19 Mar 2016)
-# Unpatched security vulnerability per bug #529712.
-# Masked for removal in 30 days.
-www-apps/coppermine
-
-# Aaron Bauman <bman@gentoo.org> (19 Mar 2016)
-# Multiple unpatched security vulnerabilities
-# per bug #532040. Masked for removal in 30 days.
-dev-libs/matrixssl
-
-# Michael Palimaka <kensington@gentoo.org> (17 Mar 2016)
-# Dead upstream. Doesn't work with new Twitter API.
-# Masked for removal in 30 days.
-net-im/qtwitter
-
-# James Le Cuirot <chewi@gentoo.org> (14 Mar 2016)
-# Bye bye Java 6! If you really still need it then gnu_andrew will
-# continue to maintain icedtea:6 in java-overlay but it is not
-# supported by Java team at all. IBM's JVM is still alive but
-# downloads are behind a registration wall and Java team does not wish
-# to support it. haubi may provide IBM updates though probably only
-# for ppc-aix. Removal in 30 days.
-dev-java/apple-jdk-bin
-dev-java/hp-jdk-bin
-dev-java/ibm-jdk-bin:1.6
-dev-java/ibm-jre-bin:1.6
-dev-java/icedtea-bin:6
-<dev-java/icedtea-6.1.13.10:6
-dev-java/soylatte-jdk-bin
-virtual/jdk:1.6
-virtual/jre:1.6
 
 # Hans de Graaff <graaff@gentoo.org> (14 Mar 2016)
 # Not compatible with ruby21+, no reverse dependencies.
@@ -280,10 +228,6 @@ dev-vcs/statcvs
 # Bug: https://bugs.gentoo.org/577158
 =sys-apps/systemd-229-r100
 
-# Alexandre Rostovtsev <tetromino@gentoo.org> (10 Mar 2016)
-# Masking until we figure out what to do about bug #576930
-=gnome-base/gnome-extra-apps-3.18.0-r2
-
 # Ian Stakenvicius <axs@gentoo.org> (06 Mar 2016)
 # Mask old versions of thunderbird as they are no longer supported,
 # but we keep them in the repo for now in case there is a need
@@ -296,6 +240,7 @@ dev-vcs/statcvs
 >=dev-lang/ocaml-4.03_beta
 >=dev-ml/camlp4-4.03
 >=dev-ml/ppx_tools-4.03
+>=dev-ml/labltk-8.06.1
 
 # Patrice Clement <monsieurp@gentoo.org> (29 Feb 2016)
 # Duplicate of dev-libs/libedit.
@@ -534,10 +479,6 @@ app-emulation/emul-linux-x86-jna
 # Not supported by any django version upstream supports
 dev-python/south
 
-# Michał Górny <mgorny@gentoo.org> (11 Feb 2015)
-# Potentially destructive to @world, bug #539746.
-=sys-apps/portage-2.2.16
-
 # Sergei Trofimovich <slyfox@gentoo.org> (29 Jan 2015)
 # Mask live ebuild
 =dev-util/radare2-9999
@@ -569,28 +510,9 @@ dev-db/postgresql-server
 # disabling GLX indirect rendering protocol support on the X server.
 <x11-drivers/nvidia-drivers-304
 
-# Sergey Popov <pinkbyte@gentoo.org> (09 Dec 2014)
-# Security mask, wrt bug #529728
-<app-antivirus/clamav-0.98.5
-
-# Richard Yao <ryao@gentoo.org> (29 Nov 2014)
-# Depends on media-libs/lcms:0, which has unspecified security vulnerabilities.
-# Masked until mscms.dll.so that links to media-libs/lcms:2 is backported from
-# a newer wine, bug #526806.
-<app-emulation/crossover-bin-12.5.0
-
 # Patrick Lauer <patrick@gentoo.org> (24 Nov 2014)
 # Missing deps, uninstallable
 www-apps/trac-downloads
-
-# Mike Pagano <mpagano@gentoo.org> (16 Oct 2014)
-# A regression in kernels 3.17.0 lead to file system corruption
-# for affected systems. This has been fixed in >= 3.17.1
-# Expires (16 Oct 2016)
-# See Bug #525548.
-=sys-kernel/vanilla-sources-3.17.0
-=sys-kernel/gentoo-sources-3.17.0
-=sys-kernel/aufs-sources-3.17.0
 
 # Michał Górny <mgorny@gentoo.org> (15 Sep 2014)
 # Causes undefined references few layers down (in mediastreamer),
@@ -623,10 +545,6 @@ app-admin/hwreport
 =sys-libs/db-6.1*
 =sys-libs/db-6.2*
 
-# Yixun Lan <dlan@gentoo.org> (17 Jul 2014)
-# Masked for proper testing. (Major updates in the code).
-=net-misc/tinc-1.1_pre*
-
 # Ulrich Müller <ulm@gentoo.org> (15 Jul 2014)
 # Permanently mask sys-libs/lib-compat and its reverse dependencies,
 # pending multiple security vulnerabilities and QA issues.
@@ -652,42 +570,11 @@ sys-block/afacli
 app-emulation/openstack-guest-agents-unix
 app-emulation/xe-guest-utilities
 
-# Tom Wijsman <TomWij@gentoo.org> (6 Jun 2014)
-# Mask gentoo-sources ebuilds that are affected with security bug CVE-2014-3153.
-#
-# Pinkie Pie discovered an issue in the futex subsystem that allows a
-# local user to gain ring 0 control via the futex syscall. An
-# unprivileged user could use this flaw to crash the kernel (resulting
-# in denial of service) or for privilege escalation.
-#
-# https://bugs.gentoo.org/show_bug.cgi?id=CVE-2014-3153
-# Expires (6 Jun 2016)
-=sys-kernel/gentoo-sources-3.2.58-r2
-~sys-kernel/gentoo-sources-3.4.90
-=sys-kernel/gentoo-sources-3.4.91
-~sys-kernel/gentoo-sources-3.10.40
-=sys-kernel/gentoo-sources-3.10.41
-~sys-kernel/gentoo-sources-3.12.20
-=sys-kernel/gentoo-sources-3.12.21
-~sys-kernel/gentoo-sources-3.14.4
-=sys-kernel/gentoo-sources-3.14.5
-
 # Hans de Graaff <graaff@gentoo.org> (1 Jun 2014)
 # Mask new rubinius version for testing. Current versions have some
 # issues that should be solved in the forthcoming rubinius 2.3
 # release.
 =dev-lang/rubinius-2*
-
-# Markos Chandras <hwoarang@gentoo.org> (30 May 2014)
-# Mask beta release
-=app-i18n/transifex-client-0.11_beta
-
-# Tom Wijsman <TomWij@gentoo.org> (30 May 2014)
-# CVE-2012-1721 - Remote Code Execution Vulnerability
-#
-# Vulnerable: IBM Java SE 5.0 SR12-FP5
-# URL:        http://www.securityfocus.com/bid/53959/
-dev-java/ibm-jdk-bin:1.5
 
 # Tom Wijsman <TomWij@gentoo.org> (03 May 2014)
 # Needs to be further tested and revised by both Java and Ruby herds.
@@ -703,15 +590,6 @@ app-eselect/eselect-lua
 =dev-lang/lua-5.1.5-r100
 =dev-lang/lua-5.2.3
 =dev-lang/lua-5.2.3-r1
-
-# Gilles Dartiguelongue <eva@gentoo.org> (06 Apr 2014)
-# Old release, never stable, not working anymore
-# See bug #327837, #382667, #492474
-<media-video/pitivi-0.90
-
-# Alexander Vershilov <qnikst@gentoo.org> (02 Apr 2014)
-# Multiple vulnerabilities, see #504724, #505860
-<sys-kernel/openvz-sources-2.6.32.85.17
 
 # Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (26 Mar 2014)
 # Affected by multiple vulnerabilities, #445916, #471098 and #472280
@@ -768,12 +646,6 @@ www-client/google-chrome:beta
 www-client/google-chrome:stable
 www-client/google-chrome:unstable
 
-# Tony Vroon <chainsaw@gentoo.org> (13 Jan 2014)
-# Asterisk 12 is a short term "standard" release
-# containing significant architectural changes.
-# This is not for your production kit quite yet.
-=net-misc/asterisk-12*
-
 # Justin Lecher <jlec@gentoo.org> (14 Oct 2013)
 # Seems to break all deps - API change?
 >=sci-libs/metis-5
@@ -802,33 +674,9 @@ www-apache/mod_spdy
 # there is a working release.
 sci-geosciences/googleearth
 
-# Chris Reffett <creffett@gentoo.org> (20 Jul 2013)
-# Uses vulnerable versions of bzip2, but these versions are
-# necessary to reconstruct older archives. Use at your own risk.
-=app-portage/deltup-0.4.5
-
 # Michael Weber <xmw@gentoo.org> (17 Jul 2013)
 # Upstream next versions
 >=sys-boot/raspberrypi-firmware-1_pre
-
-# Tom Wijsman <TomWij@gentoo.org> (30 Jun 2013)
-# Sun JDK and JRE contain critical vulnerabilities and receive no further
-# updates; masking to make users aware of this, users that still need this
-# package and have no alternative can unmask at their own risk. See bug #473830.
-#
-# This is continued by Oracle Corporation, which has acquired Sun Microsystems
-# in early 2010; as per https://en.wikipedia.gentoo.org/wiki/Sun_acquisition_by_Oracle
-#
-# Users are suggested to upgrade to one of the newer Oracle packages like
-# dev-java/oracle-jdk-bin or dev-java/oracle-jre-bin or choose another
-# alternative we provide; eg. the IBM JDK/JRE or the open source IcedTea.
-#
-# Most of these packages provide a jce USE flag for those whom need the
-# Java Cryptographic Extension Unlimited Strength Policy USE flag; whether that
-# works depends from VM to VM, it seems to work for most except for the IBM VMs.
-dev-java/sun-jdk
-dev-java/sun-jre-bin
-dev-java/sun-jce-bin
 
 # Julian Ospald <hasufell@gentoo.org> (26 Jun 2013)
 # Depends on masked dev-lang/lua-5.2
@@ -855,12 +703,6 @@ app-portage/g-ctan
 # Masked due test failures
 =app-arch/advancecomp-1.17
 
-# Sergey Popov <pinkbyte@gentoo.org> (02 Apr 2013)
-# Masking =media-libs/ffmpegsource-2.17.4_pre753
-# by maintainer's request.
-# This version does not work properly, see bug #464078
-=media-libs/ffmpegsource-2.17.4_pre753
-
 # Richard Freeman <rich0@gentoo.org> (24 Mar 2013)
 # Contains known buffer overflows.  Package generally works
 # but should not be fed untrusted input (eg from strangers).
@@ -878,12 +720,6 @@ app-text/cuneiform
 # stable wpa_supplicant sometimes wants madwifi-ng-tools
 #net-wireless/madwifi-ng-tools
 net-wireless/madwifi-ng
-
-# Pacho Ramos <pacho@gentoo.org> (25 Oct 2012)
-# obexd changed its API without any warning, it's recommended to ship
-# 0.46 until https://bugzilla.gnome.org/682106 is fixed to prevent
-# bluetooth-sendto breakage.
->=app-mobilephone/obexd-0.47
 
 # Robin H. Johnson <robbat2@gentoo.org> (09 Feb 2012)
 # Needs to be slotted better
@@ -940,16 +776,6 @@ net-misc/asterisk-spandsp_codec_g726
 # Added <sys-fs/e2fsprogs as well (halcy0n)
 <sys-libs/e2fsprogs-libs-1.41.8
 <sys-fs/e2fsprogs-1.41.9
-
-# Robert Piasek <dagger@gentoo.org> (23 Feb 2010)
-# Masking libmapi as it depends on masked samba4
->=net-libs/libmapi-0.9
-
-# Peter Alfredsen <loki_val@gentoo.org> (21 Oct 2009)
-# Masked because this needs a patch to be applied to portage
-# to not install the kitchensink and everything else
-# into /usr/src/debug with FEATURES=installsources
-=dev-util/debugedit-4.4.6-r2
 
 # Diego E. Pettenò <flameeyes@gmail.com> (09 Oct 2009)
 # Untested yet; documented only in Russian, help is appreciated.

@@ -6,8 +6,8 @@ EAPI=3
 inherit multilib
 
 DESCRIPTION="Video Quirks database for pm-utils"
-HOMEPAGE="http://pm-utils.freedesktop.org/"
-SRC_URI="http://pm-utils.freedesktop.org/releases/${P}.tar.gz"
+HOMEPAGE="https://pm-utils.freedesktop.org/"
+SRC_URI="https://pm-utils.freedesktop.org/releases/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

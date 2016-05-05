@@ -1,14 +1,14 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="4"
+EAPI=4
 
 inherit toolchain-funcs
 
 DESCRIPTION="UNIX Shell for people already familiar with the C language"
 HOMEPAGE="http://ccsh.sourceforge.net/"
-SRC_URI="http://download.sourceforge.net/ccsh/${P}.tar.gz"
+SRC_URI="mirror://sourceforge/ccsh/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -1,0 +1,13 @@
+Index: coq-8.5pl1/Makefile.common
+===================================================================
+--- coq-8.5pl1.orig/Makefile.common
++++ coq-8.5pl1/Makefile.common
+@@ -231,7 +231,7 @@ endif
+ LINKCMO:=$(CORECMA) $(STATICPLUGINS)
+ LINKCMX:=$(CORECMA:.cma=.cmxa) $(STATICPLUGINS:.cma=.cmxa)
+ 
+-IDEDEPS:=lib/clib.cma lib/xml_lexer.cmo lib/xml_parser.cmo lib/xml_printer.cmo lib/errors.cmo lib/spawn.cmo
++IDEDEPS:=lib/clib.cma lib/errors.cmo lib/spawn.cmo
+ IDECMA:=ide/ide.cma
+ IDETOPLOOPCMA=ide/coqidetop.cma
+ 

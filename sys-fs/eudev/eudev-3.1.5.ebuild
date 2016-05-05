@@ -61,7 +61,7 @@ pkg_pretend() {
 	ewarn
 	ewarn "As of 2013-01-29, ${P} provides the new interface renaming functionality,"
 	ewarn "as described in the URL below:"
-	ewarn "http://www.freedesktop.org/wiki/Software/systemd/PredictableNetworkInterfaceNames"
+	ewarn "https://www.freedesktop.org/wiki/Software/systemd/PredictableNetworkInterfaceNames"
 	ewarn
 	ewarn "This functionality is enabled BY DEFAULT because eudev has no means of synchronizing"
 	ewarn "between the default or user-modified choice of sys-fs/udev.  If you wish to disable"
@@ -193,7 +193,7 @@ pkg_postinst() {
 	if use hwdb && has_version 'sys-apps/hwids[udev]'; then
 		udevadm hwdb --update --root="${ROOT%/}"
 
-		# http://cgit.freedesktop.org/systemd/systemd/commit/?id=1fab57c209035f7e66198343074e9cee06718bda
+		# https://cgit.freedesktop.org/systemd/systemd/commit/?id=1fab57c209035f7e66198343074e9cee06718bda
 		# reload database after it has be rebuilt, but only if we are not upgrading
 		# also pass if we are -9999 since who knows what hwdb related changes there might be
 		if [[ ${REPLACING_VERSIONS%-r*} == ${PV} || -z ${REPLACING_VERSIONS} ]] && \
@@ -222,7 +222,7 @@ pkg_postinst() {
 	elog "         https://www.gentoo.org/doc/en/udev-guide.xml"
 	elog
 
-	# http://cgit.freedesktop.org/systemd/systemd/commit/rules/50-udev-default.rules?id=3dff3e00e044e2d53c76fa842b9a4759d4a50e69
+	# https://cgit.freedesktop.org/systemd/systemd/commit/rules/50-udev-default.rules?id=3dff3e00e044e2d53c76fa842b9a4759d4a50e69
 	# https://bugs.gentoo.org/246847
 	# https://bugs.gentoo.org/514174
 	enewgroup input
@@ -232,7 +232,7 @@ pkg_postinst() {
 		udevadm hwdb --update --root="${ROOT%/}"
 		# Only reload when we are not upgrading to avoid potential race w/ incompatible hwdb.bin and the running udevd
 		if [[ -z ${REPLACING_VERSIONS} ]]; then
-			# http://cgit.freedesktop.org/systemd/systemd/commit/?id=1fab57c209035f7e66198343074e9cee06718bda
+			# https://cgit.freedesktop.org/systemd/systemd/commit/?id=1fab57c209035f7e66198343074e9cee06718bda
 			if [[ ${ROOT} != "" ]] && [[ ${ROOT} != "/" ]]; then
 				return 0
 			fi

@@ -7,7 +7,7 @@
   </maintainer>
   <use>
     <flag name="allegro">Add support for Allegro</flag>
-    <flag name="nvtt">Add support for <pkg>dev-util/nvidia-texture-tools</pkg></flag>
+    <flag name="nvtt">Add support for <pkg>media-gfx/nvidia-texture-tools</pkg></flag>
   </use>
   <upstream>
     <remote-id type="sourceforge">openil</remote-id>

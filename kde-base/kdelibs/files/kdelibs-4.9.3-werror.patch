@@ -1,5 +1,5 @@
---- cmake/modules/FindKDE4Internal.cmake
-+++ cmake/modules/FindKDE4Internal.cmake
+--- a/cmake/modules/FindKDE4Internal.cmake
++++ b/cmake/modules/FindKDE4Internal.cmake
 @@ -1204,7 +1204,7 @@
     set(CMAKE_C_FLAGS_DEBUGFULL        "-g3 -fno-inline")
     set(CMAKE_C_FLAGS_PROFILE          "-g3 -fno-inline -ftest-coverage -fprofile-arcs")

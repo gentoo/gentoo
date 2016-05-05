@@ -16,7 +16,7 @@ KEYWORDS="~amd64"
 IUSE="cpu_flags_x86_sse2 libav test"
 
 RDEPEND="
-	>=dev-libs/protobuf-2.3.0
+	=dev-libs/protobuf-2*:=
 	virtual/opengl
 	media-libs/openal
 	net-misc/curl

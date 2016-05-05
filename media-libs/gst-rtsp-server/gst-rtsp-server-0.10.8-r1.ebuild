@@ -8,8 +8,8 @@ PYTHON_COMPAT=( python2_7 )
 inherit eutils gstreamer python-r1 vala
 
 DESCRIPTION="A GStreamer based RTSP server"
-HOMEPAGE="http://people.freedesktop.org/~wtay/"
-SRC_URI="http://gstreamer.freedesktop.org/src/${PN}/${PN/-server/}-${PV}.tar.bz2"
+HOMEPAGE="https://people.freedesktop.org/~wtay/"
+SRC_URI="https://gstreamer.freedesktop.org/src/${PN}/${PN/-server/}-${PV}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0.10"

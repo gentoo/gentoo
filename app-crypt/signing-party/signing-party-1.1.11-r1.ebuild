@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -19,7 +19,7 @@ DEPEND="dev-lang/perl"
 RDEPEND="${DEPEND}
 	>=app-crypt/gnupg-1.3.92
 	dev-perl/GnuPG-Interface
-	dev-perl/text-template
+	dev-perl/Text-Template
 	dev-perl/MIME-tools
 	net-mail/qprint
 	>=dev-perl/MailTools-1.62

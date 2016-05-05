@@ -14,7 +14,8 @@
 		<name>Gentoo Sound project</name>
 	</maintainer>
 	<use>
-		<flag name="box">Enable Box support</flag>
+		<flag name="amazoncloud">Enable Amazon cloud drive support</flag>
+		<flag name="box">Enable filesharing via Box.com</flag>
 		<flag name="dropbox">Enable Dropbox support</flag>
 		<flag name="googledrive">Enable Google Drive support</flag>
 		<flag name="lastfm">Use liblastfm for fetching song info, scrobbling and radio streams</flag>
@@ -23,6 +24,7 @@
 		<flag name="skydrive">Enable Skydrive support</flag>
 		<flag name="system-sqlite">Use the system-wide <pkg>dev-db/sqlite</pkg> installation</flag>
 		<flag name="ubuntu-one">Enable Ubuntu One support</flag>
+		<flag name="vkontakte">Enable vk.com support</flag>
 		<flag name="wiimote">Enable support for Wii remote</flag>
 	</use>
 	<upstream>

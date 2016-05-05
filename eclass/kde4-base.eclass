@@ -451,19 +451,10 @@ _calculate_src_uri() {
 					# Last SC release
 					SRC_URI="mirror://kde/stable/${PV}/src/${_kmname_pv}.tar.xz" ;;
 				4.14.8)
-					# Part of 15.04.1 actually, sigh. Not stable for next release!
+					# Part of 15.04.1 actually, sigh. Used by kdelibs and KDE PIM 4.
 					SRC_URI="mirror://kde/Attic/applications/15.04.1/src/${_kmname_pv}.tar.xz" ;;
 				4.14.10)
-					# Part of 15.04.3 actually, sigh. Not stable for next release!
-					SRC_URI="mirror://kde/Attic/applications/15.04.3/src/${_kmname_pv}.tar.xz" ;;
-				4.14.16)
-					# Part of 15.12.1 actually, sigh. Not stable for next release!
-					SRC_URI="mirror://kde/stable/applications/15.12.1/src/${_kmname_pv}.tar.xz" ;;
-				4.14.18)
-					# Part of 15.12.3 actually, sigh. Not stable for next release!
-					SRC_URI="mirror://kde/stable/applications/15.12.3/src/${_kmname_pv}.tar.xz" ;;
-				15.04.3)
-					# Files moved to Attic
+					# Part of 15.04.3 actually, sigh. Used by last version of KDE PIM 4.
 					SRC_URI="mirror://kde/Attic/applications/15.04.3/src/${_kmname_pv}.tar.xz" ;;
 				??.?.[6-9]? | ??.??.[4-9]?)
 					# Unstable KDE Applications releases

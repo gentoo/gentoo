@@ -1,0 +1,43 @@
+From 31db8136bdf61e7f9cb866f9d47c99c63343558d Mon Sep 17 00:00:00 2001
+From: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
+Date: Fri, 15 Apr 2016 11:17:37 +0200
+Subject: xdg-mime: support for KDE Frameworks 5.6
+
+
+diff --git a/scripts/xdg-mime.in b/scripts/xdg-mime.in
+index 129850f..63b8a82 100644
+--- a/scripts/xdg-mime.in
++++ b/scripts/xdg-mime.in
+@@ -428,13 +428,9 @@ defapp_kde()
+       case "${KDE_SESSION_VERSION}" in
+         4)
+           KTRADER=`which ktraderclient 2> /dev/null`
+-          MIMETYPE="--mimetype"
+-          SERVICETYPE="--servicetype"
+         ;;
+         5)
+           KTRADER=`which ktraderclient${KDE_SESSION_VERSION} 2> /dev/null`
+-          MIMETYPE="--mimetype"
+-          SERVICETYPE="--servicetype"
+         ;;
+       esac
+     else
+@@ -442,8 +438,8 @@ defapp_kde()
+     fi
+     if [ -n "$KTRADER" ] ; then
+         DEBUG 1 "Running KDE trader query \"$MIME\" mimetype and \"Application\" servicetype"
+-        trader_result=`$KTRADER $MIMETYPE "$MIME" $SERVICETYPE Application 2>/dev/null \
+-            | grep DesktopEntryPath | head -n 1 | cut -d ':' -f 2 | cut -d \' -f 2`
++        trader_result=`$KTRADER --mimetype "$MIME" --servicetype Application 2>/dev/null \
++            | grep -E "^DesktopEntryPath : |\.desktop$" | head -n1 | sed "s/^DesktopEntryPath : '\(.*\.desktop\)'\$/\1/"`
+         if [ -n "$trader_result" ] ; then
+             basename "$trader_result"
+             exit_success
+@@ -954,4 +950,3 @@ esac
+ update_mime_database $xdg_base_dir
+ 
+ exit_success
+-
+-- 
+cgit v0.10.2
+

@@ -6,9 +6,9 @@ EAPI=5
 inherit autotools eutils multilib-minimal toolchain-funcs
 
 DESCRIPTION="GStreamer plugin for ICE (RFC 5245) support"
-HOMEPAGE="http://nice.freedesktop.org/wiki/"
+HOMEPAGE="https://nice.freedesktop.org/wiki/"
 MY_P=libnice-${PV}
-SRC_URI="http://nice.freedesktop.org/releases/${MY_P}.tar.gz"
+SRC_URI="https://nice.freedesktop.org/releases/${MY_P}.tar.gz"
 
 LICENSE="|| ( MPL-1.1 LGPL-2.1 )"
 SLOT="0.10"

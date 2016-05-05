@@ -8,6 +8,7 @@
   <upstream>
     <remote-id type="pypi">pelican</remote-id>
     <remote-id type="github">getpelican/pelican</remote-id>
+    <bugs-to>https://github.com/getpelican/pelican/issues</bugs-to>
   </upstream>
   <use>
     <flag name="markdown">Markdown support</flag>

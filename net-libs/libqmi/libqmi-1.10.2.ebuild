@@ -10,11 +10,11 @@ if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="git://anongit.freedesktop.org/${PN}"
 else
 	KEYWORDS="~amd64 ~arm ~arm64 ~mips ~x86"
-	SRC_URI="http://www.freedesktop.org/software/${PN}/${P}.tar.xz"
+	SRC_URI="https://www.freedesktop.org/software/${PN}/${P}.tar.xz"
 fi
 
 DESCRIPTION="QMI modem protocol helper library"
-HOMEPAGE="http://cgit.freedesktop.org/libqmi/"
+HOMEPAGE="https://cgit.freedesktop.org/libqmi/"
 
 LICENSE="LGPL-2"
 SLOT="0"

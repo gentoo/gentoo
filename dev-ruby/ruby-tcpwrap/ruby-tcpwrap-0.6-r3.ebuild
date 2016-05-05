@@ -1,11 +1,11 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 
 # ruby22 -> Does not compile
-USE_RUBY="ruby19 ruby20 ruby21"
+USE_RUBY="ruby20 ruby21"
 
 inherit ruby-ng
 
@@ -15,7 +15,7 @@ SRC_URI="http://shugo.net/archive/ruby-tcpwrap/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~mips ~ppc ~x86"
+KEYWORDS="amd64 ~hppa ~mips ~ppc x86"
 IUSE=""
 
 DEPEND+=" net-libs/libident

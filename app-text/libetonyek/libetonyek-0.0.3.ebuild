@@ -9,7 +9,7 @@ inherit base eutils
 [[ ${PV} == 9999 ]] && inherit autotools git-2
 
 DESCRIPTION="Library parsing Apple Keynote presentations"
-HOMEPAGE="http://www.freedesktop.org/wiki/Software/libetonyek"
+HOMEPAGE="https://www.freedesktop.org/wiki/Software/libetonyek"
 [[ ${PV} == 9999 ]] || SRC_URI="http://dev-www.libreoffice.org/src/${P}.tar.xz"
 
 LICENSE="|| ( GPL-2+ LGPL-2.1 MPL-1.1 )"

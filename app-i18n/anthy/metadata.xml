@@ -11,9 +11,9 @@
   <longdescription>
   Anthy is a free and secure Japanese kana-kanji server.  This ebuild includes
   cannadic as a server-side dictionary, so you don't need any extra package to
-  run it.  You can use anthy with <pkg>app-i18n/jmode</pkg> (XIM),
-  <pkg>app-i18n/uim</pkg> (XIM, GTK+ immodule) and <pkg>virtual/emacs</pkg>
-  (to enable Anthy support for emacs, build this package with emacs USE flag).
+  run it.  You can use anthy with <pkg>app-i18n/uim</pkg> (XIM, GTK+ immodule)
+  and <pkg>virtual/emacs</pkg> (to enable Anthy support for emacs, build this
+  package with emacs USE flag).
 </longdescription>
   <use>
     <flag name="canna-2ch">Enable support for <pkg>app-dicts/canna-2ch</pkg></flag>

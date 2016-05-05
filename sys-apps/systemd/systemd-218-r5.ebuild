@@ -11,8 +11,8 @@ inherit autotools-utils bash-completion-r1 linux-info multilib \
 	user
 
 DESCRIPTION="System and service manager for Linux"
-HOMEPAGE="http://www.freedesktop.org/wiki/Software/systemd"
-SRC_URI="http://www.freedesktop.org/software/systemd/${P}.tar.xz"
+HOMEPAGE="https://www.freedesktop.org/wiki/Software/systemd"
+SRC_URI="https://www.freedesktop.org/software/systemd/${P}.tar.xz"
 
 LICENSE="GPL-2 LGPL-2.1 MIT public-domain"
 SLOT="0/2"

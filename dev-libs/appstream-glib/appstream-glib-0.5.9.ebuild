@@ -9,12 +9,12 @@ GNOME2_LA_PUNT="yes"
 inherit bash-completion-r1 gnome2
 
 DESCRIPTION="Provides GObjects and helper methods to read and write AppStream metadata"
-HOMEPAGE="http://people.freedesktop.org/~hughsient/appstream-glib/"
-SRC_URI="http://people.freedesktop.org/~hughsient/${PN}/releases/${P}.tar.xz"
+HOMEPAGE="https://people.freedesktop.org/~hughsient/appstream-glib/"
+SRC_URI="https://people.freedesktop.org/~hughsient/${PN}/releases/${P}.tar.xz"
 
 LICENSE="LGPL-2.1"
 SLOT="0/8" # soname version
-KEYWORDS="~alpha amd64 ~arm hppa ~ia64 ~ppc ppc64 ~sparc x86"
+KEYWORDS="~alpha amd64 arm hppa ~ia64 ~ppc ppc64 ~sparc x86"
 IUSE="+introspection nls"
 
 # FIXME: yaml is optional with --enable-dep11 but not

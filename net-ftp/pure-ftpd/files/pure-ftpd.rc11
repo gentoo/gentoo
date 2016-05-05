@@ -1,5 +1,5 @@
-#!/sbin/runscript
-# Copyright 1999-2014 Gentoo Foundation
+#!/sbin/openrc-run
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -13,7 +13,7 @@ depend() {
 	need net
 }
 
-checkconfig() {
+start_pre() {
 	if [ -z "$IS_CONFIGURED" ] ; then
 		eerror "You need to setup /etc/conf.d/pure-ftpd first!"
 		return 1
@@ -21,8 +21,6 @@ checkconfig() {
 }
 
 start() {
-	checkconfig || return 1
-
 	UPSCRIPT=""
 	if [ -n "$UPLOADSCRIPT" ] ; then
 		UPSCRIPT="--uploadscript"

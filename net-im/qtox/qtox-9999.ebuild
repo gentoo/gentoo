@@ -37,12 +37,12 @@ RDEPEND="
 			x11-libs/cairo[X]
 			x11-libs/pango[X] )
 	net-libs/tox[av]
-	virtual/pkgconfig
 	X? ( x11-libs/libX11
 		x11-libs/libXScrnSaver )
 "
 DEPEND="${RDEPEND}
 	dev-qt/linguist-tools:5
+	virtual/pkgconfig
 "
 
 pkg_pretend() {

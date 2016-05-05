@@ -12,7 +12,7 @@ DESCRIPTION="Java-based extensible high-precision math library"
 HOMEPAGE="http://jump-math.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}-math/${P}.tar.gz"
 
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 LICENSE="BSD"
 SLOT="0"
 

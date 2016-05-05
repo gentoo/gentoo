@@ -18,7 +18,7 @@ HOMEPAGE="http://intridea.com/posts/hashie-the-hash-toolkit"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~ppc ~ppc64 x86"
 IUSE=""
 
 all_ruby_prepare() {

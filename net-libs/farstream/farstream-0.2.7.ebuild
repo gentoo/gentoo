@@ -10,8 +10,8 @@ PYTHON_COMPAT=( python2_7 )
 inherit gnome2 python-any-r1
 
 DESCRIPTION="Audio/video conferencing framework specifically designed for instant messengers"
-HOMEPAGE="http://www.freedesktop.org/wiki/Software/Farstream"
-SRC_URI="http://freedesktop.org/software/farstream/releases/${PN}/${P}.tar.gz"
+HOMEPAGE="https://www.freedesktop.org/wiki/Software/Farstream"
+SRC_URI="https://freedesktop.org/software/farstream/releases/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1+"
 KEYWORDS="~alpha amd64 ~arm hppa ~ia64 ~ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux"

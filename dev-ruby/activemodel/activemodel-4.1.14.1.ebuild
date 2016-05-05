@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -14,7 +14,7 @@ RUBY_FAKEGEM_GEMSPEC="activemodel.gemspec"
 
 inherit ruby-fakegem versionator
 
-DESCRIPTION="A toolkit for building modeling frameworks like Active Record and Active Resource"
+DESCRIPTION="Toolkit for building modeling frameworks like Active Record and Active Resource"
 HOMEPAGE="https://github.com/rails/rails"
 SRC_URI="https://github.com/rails/rails/archive/v${PV}.tar.gz -> rails-${PV}.tgz"
 

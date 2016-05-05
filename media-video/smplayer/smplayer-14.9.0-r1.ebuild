@@ -16,7 +16,7 @@ DESCRIPTION="Great Qt4 GUI front-end for mplayer"
 HOMEPAGE="http://www.smplayer.eu/"
 LICENSE="GPL-2 BSD"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm hppa ~ppc ~ppc64 x86 ~x86-fbsd ~amd64-linux"
+KEYWORDS="amd64 ~arm hppa ~ppc ~ppc64 x86 ~x86-fbsd ~amd64-linux"
 IUSE="autoshutdown bidi debug"
 
 DEPEND="dev-qt/qtcore:4

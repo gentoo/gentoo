@@ -26,7 +26,7 @@ DEPEND="dev-perl/class-loader
 	dev-perl/Digest-SHA1
 	>=dev-perl/Math-Pari-2.010603
 	dev-perl/Sort-Versions
-	dev-perl/tie-encryptedhash"
+	dev-perl/Tie-EncryptedHash"
 RDEPEND="${DEPEND}"
 
 SRC_TEST="do"

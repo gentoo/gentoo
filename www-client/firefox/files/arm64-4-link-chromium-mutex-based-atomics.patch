@@ -1,0 +1,59 @@
+From: Mike Hommey <mh@glandium.org>
+Date: Sat, 19 Mar 2016 01:24:21 +0900
+Subject: Bug 1257888 - Link chromium mutex-based atomics implementation to
+ webrtc signaling tests
+
+---
+ ipc/chromium/atomics/moz.build           | 17 +++++++++++++++++
+ ipc/chromium/moz.build                   |  4 ++++
+ media/webrtc/signaling/test/common.build |  1 +
+ 3 files changed, 22 insertions(+)
+ create mode 100644 ipc/chromium/atomics/moz.build
+
+diff --git a/ipc/chromium/atomics/moz.build b/ipc/chromium/atomics/moz.build
+new file mode 100644
+index 0000000..6e0a9e4
+--- /dev/null
++++ b/ipc/chromium/atomics/moz.build
+@@ -0,0 +1,17 @@
++# -*- Mode: python; c-basic-offset: 4; indent-tabs-mode: nil; tab-width: 40 -*-
++# vim: set filetype=python:
++# This Source Code Form is subject to the terms of the Mozilla Public
++# License, v. 2.0. If a copy of the MPL was not distributed with this
++# file, You can obtain one at http://mozilla.org/MPL/2.0/.
++
++include('/ipc/chromium/chromium-config.mozbuild')
++
++Library('chromium_atomics')
++
++# This test is copied from ../moz.build for atomicops_internals_mutex.cc
++ost = CONFIG['OS_TEST']
++if '86' not in ost and 'arm' not in ost and 'aarch64' != ost and 'mips' not in ost:
++    SOURCES += [
++        '../src/base/atomicops_internals_mutex.cc',
++        '../src/base/lock_impl_posix.cc',
++    ]
+diff --git a/ipc/chromium/moz.build b/ipc/chromium/moz.build
+index 88aaafe..52b6282 100644
+--- a/ipc/chromium/moz.build
++++ b/ipc/chromium/moz.build
+@@ -172,3 +172,7 @@ CXXFLAGS += CONFIG['TK_CFLAGS']
+ include('/ipc/chromium/chromium-config.mozbuild')
+ 
+ FINAL_LIBRARY = 'xul'
++
++DIRS += [
++    'atomics',
++]
+diff --git a/media/webrtc/signaling/test/common.build b/media/webrtc/signaling/test/common.build
+index c0a624f..21adad5 100644
+--- a/media/webrtc/signaling/test/common.build
++++ b/media/webrtc/signaling/test/common.build
+@@ -79,6 +79,7 @@ if CONFIG['OS_TARGET'] in ('DragonFly', 'FreeBSD', 'NetBSD', 'OpenBSD'):
+ 
+ USE_LIBS += [
+     '/media/webrtc/trunk/testing/gtest_gtest/gtest',
++    'chromium_atomics',
+     'gkmedias',
+     'nksrtp_s',
+     'nss',

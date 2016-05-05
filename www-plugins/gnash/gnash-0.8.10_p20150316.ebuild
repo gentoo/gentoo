@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -41,8 +41,8 @@ REQUIRED_USE="dump? ( agg ffmpeg )
 RDEPEND=">=dev-libs/boost-1.41.0:0=
 	dev-libs/expat
 	dev-libs/libxml2
-	virtual/jpeg
-	media-libs/libpng
+	virtual/jpeg:0
+	media-libs/libpng:0
 	net-misc/curl
 	x11-libs/libX11
 	x11-libs/libXi
@@ -65,16 +65,17 @@ RDEPEND=">=dev-libs/boost-1.41.0:0=
 	fbcon? (
 		x11-libs/tslib
 	)
-	ffmpeg? (
-		virtual/ffmpeg[vaapi?]
-	)
+	ffmpeg? ( || (
+		!vaapi? ( media-video/libav )
+		media-video/ffmpeg[vaapi?]
+	) )
 	gconf? (
 		gnome-base/gconf
 	)
 	gstreamer? (
-		media-plugins/gst-plugins-ffmpeg
-		media-plugins/gst-plugins-mad
-		media-plugins/gst-plugins-meta
+		media-plugins/gst-plugins-ffmpeg:*
+		media-plugins/gst-plugins-mad:*
+		media-plugins/gst-plugins-meta:*
 	)
 	gtk? (
 		x11-libs/gtk+:2
@@ -99,7 +100,7 @@ RDEPEND=">=dev-libs/boost-1.41.0:0=
 	lirc? ( app-misc/lirc )
 	dbus? ( sys-apps/dbus )
 	ssh?  ( >=net-libs/libssh-0.4[server] )
-	ssl? ( dev-libs/openssl )
+	ssl? ( dev-libs/openssl:0 )
 	vaapi? ( x11-libs/libva[opengl?] )
 	"
 DEPEND="${RDEPEND}
@@ -146,6 +147,11 @@ src_prepare() {
 	# Fix new adjacent_tokens_only() in >=boost-1.59 (bug 579142)
 	# See https://savannah.gnu.org/bugs/?46148
 	epatch "${FILESDIR}"/${P}-boost-1.60.patch
+
+	# Fix vaapi build, bug #546584
+	# See https://savannah.gnu.org/bugs/?44636
+	epatch "${FILESDIR}"/${PN}-0.8.10-libva-1.6_0000.patch
+	epatch "${FILESDIR}"/${PN}-0.8.10-libva-1.6_0001.patch
 
 	eautoreconf
 }

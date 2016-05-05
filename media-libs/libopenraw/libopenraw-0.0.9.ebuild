@@ -6,8 +6,8 @@ EAPI=5
 inherit eutils gnome2-utils
 
 DESCRIPTION="A decoding library for RAW image formats"
-HOMEPAGE="http://libopenraw.freedesktop.org/wiki/"
-SRC_URI="http://${PN}.freedesktop.org/download/${P}.tar.bz2"
+HOMEPAGE="https://libopenraw.freedesktop.org/wiki/"
+SRC_URI="https://${PN}.freedesktop.org/download/${P}.tar.bz2"
 
 LICENSE="GPL-3 LGPL-3"
 SLOT="0"

@@ -1,0 +1,25 @@
+commit 4ebac1e936f761f08d455acf77be40c93048f6d5
+Author: wm4 <wm4@nowhere>
+Date:   Thu Apr 14 22:39:10 2016 +0200
+
+player: fix use-after-free with --screenshot-directory
+
+Probably fixes #3049.
+---
+
+diff --git a/player/screenshot.c b/player/screenshot.c
+index 02cbb4a..33b972b 100644
+--- a/player/screenshot.c
++++ b/player/screenshot.c
+@@ -287,9 +287,10 @@ static char *gen_fname(screenshot_ctx *ctx, const char *file_ext)
+             void *t = fname;
+             dir = mp_get_user_path(t, ctx->mpctx->global, dir);
+             fname = mp_path_join(NULL, dir, fname);
+-            talloc_free(t);
+
+             mp_mkdirp(dir);
++
++            talloc_free(t);
+         }
+
+         if (!mp_path_exists(fname))

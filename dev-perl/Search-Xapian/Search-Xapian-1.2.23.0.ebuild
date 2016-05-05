@@ -22,7 +22,8 @@ RDEPEND="dev-libs/xapian:0/1.2.22
 DEPEND="${RDEPEND}
 	dev-perl/Module-Build"
 
-SRC_TEST="do"
+SRC_TEST=skip
+# missing dependencies; fixed in -r1
 
 myconf="CXX=$(tc-getCXX) CXXFLAGS=${CXXFLAGS}"
 

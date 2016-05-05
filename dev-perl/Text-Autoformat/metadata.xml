@@ -7,8 +7,8 @@
   </maintainer>
   <upstream>
     <remote-id type="cpan">Text-Autoformat</remote-id>
-    <remote-id type="cpan-module">Hang</remote-id>
-    <remote-id type="cpan-module">NullHang</remote-id>
     <remote-id type="cpan-module">Text::Autoformat</remote-id>
+    <remote-id type="cpan-module">Text::Autoformat::Hang</remote-id>
+    <remote-id type="cpan-module">Text::Autoformat::NullHang</remote-id>
   </upstream>
 </pkgmetadata>

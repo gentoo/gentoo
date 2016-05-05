@@ -6,8 +6,8 @@ EAPI=5
 inherit eutils systemd
 
 DESCRIPTION="D-Bus abstraction for enumerating power devices and querying history and statistics"
-HOMEPAGE="http://upower.freedesktop.org/"
-SRC_URI="http://${PN}.freedesktop.org/releases/${P}.tar.xz"
+HOMEPAGE="https://upower.freedesktop.org/"
+SRC_URI="https://${PN}.freedesktop.org/releases/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0/3" # based on SONAME of libupower-glib.so

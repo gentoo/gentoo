@@ -689,7 +689,7 @@ edos2unix() {
 #           a full path to an icon
 # type:     what kind of application is this?
 #           for categories:
-#           http://standards.freedesktop.org/menu-spec/latest/apa.html
+#           https://specifications.freedesktop.org/menu-spec/latest/apa.html
 #           if unset, function tries to guess from package's category
 # fields:	extra fields to append to the desktop file; a printf string
 # @CODE

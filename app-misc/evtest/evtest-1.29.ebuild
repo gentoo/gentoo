@@ -7,8 +7,8 @@ EAPI="4"
 inherit autotools eutils
 
 DESCRIPTION="test program for capturing input device events"
-HOMEPAGE="http://cgit.freedesktop.org/evtest/"
-SRC_URI="http://cgit.freedesktop.org/evtest/snapshot/${P}.tar.bz2
+HOMEPAGE="https://cgit.freedesktop.org/evtest/"
+SRC_URI="https://cgit.freedesktop.org/evtest/snapshot/${P}.tar.bz2
 	mirror://gentoo/${P}-mans.tar.xz"
 
 LICENSE="GPL-2"

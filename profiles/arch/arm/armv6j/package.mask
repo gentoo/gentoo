@@ -3,11 +3,6 @@
 # $Id$
 
 # James Le Cuirot <chewi@gentoo.org> (09 Jan 2016)
-# Unmask against the wider arm mask.
--virtual/jdk:1.8
--virtual/jre:1.8
-
-# James Le Cuirot <chewi@gentoo.org> (09 Jan 2016)
 # This is built for armv6 so unmask against the wider arm mask.
 -dev-java/oracle-jdk-bin
 -dev-java/oracle-jre-bin

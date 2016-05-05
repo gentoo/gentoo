@@ -7,9 +7,9 @@ EAPI=5
 inherit autotools-utils readme.gentoo systemd toolchain-funcs
 
 DESCRIPTION="Graphical boot animation (splash) and logger"
-HOMEPAGE="http://cgit.freedesktop.org/plymouth/"
+HOMEPAGE="https://cgit.freedesktop.org/plymouth/"
 SRC_URI="
-	http://www.freedesktop.org/software/plymouth/releases/${P}.tar.bz2
+	https://www.freedesktop.org/software/plymouth/releases/${P}.tar.bz2
 	https://dev.gentoo.org/~aidecoe/distfiles/${CATEGORY}/${PN}/gentoo-logo.png"
 
 LICENSE="GPL-2"

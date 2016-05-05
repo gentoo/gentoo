@@ -29,6 +29,7 @@ DEPEND="${RDEPEND}
 DOCS=( CHANGES README.md )
 oasis_configure_opts="--enable-tc"
 OASIS_SETUP_COMMAND="./setup.exe"
+PATCHES=( "${FILESDIR}/oc43.patch" )
 
 src_configure() {
 	emake setup.exe

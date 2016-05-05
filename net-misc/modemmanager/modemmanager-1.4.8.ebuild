@@ -10,8 +10,8 @@ VALA_USE_DEPEND="vapigen"
 inherit gnome2 user readme.gentoo udev vala
 
 DESCRIPTION="Modem and mobile broadband management libraries"
-HOMEPAGE="http://cgit.freedesktop.org/ModemManager/ModemManager/"
-SRC_URI="http://www.freedesktop.org/software/ModemManager/ModemManager-${PV}.tar.xz"
+HOMEPAGE="https://cgit.freedesktop.org/ModemManager/ModemManager/"
+SRC_URI="https://www.freedesktop.org/software/ModemManager/ModemManager-${PV}.tar.xz"
 
 LICENSE="GPL-2+"
 SLOT="0/1" # subslot = dbus interface version, i.e. N in org.freedesktop.ModemManager${N}

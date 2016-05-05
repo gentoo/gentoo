@@ -4,6 +4,16 @@
 <maintainer type='person'>
 	<email>vapier@gentoo.org</email>
 </maintainer>
+<maintainer type='person'>
+	<email>tomboy64@sina.cn</email>
+</maintainer>
+<slots>
+	<subslots>soname major version number</subslots>
+</slots>
+<use>
+	<flag name="java">Builds the Java implementation. This is not needed for Java support in protoc.</flag>
+	<flag name="python">Builds the Python implementation. This is not needed for Python support in protoc.</flag>
+</use>
 <upstream>
 	<remote-id type='github'>google/protobuf</remote-id>
 </upstream>
