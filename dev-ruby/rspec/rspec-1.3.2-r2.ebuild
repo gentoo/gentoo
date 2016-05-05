@@ -3,6 +3,8 @@
 # $Id$
 
 EAPI=5
+
+# ruby22: incompatible code
 USE_RUBY="ruby20 ruby21"
 
 RUBY_FAKEGEM_TASK_TEST="spec"
