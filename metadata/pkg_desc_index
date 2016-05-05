@@ -6776,7 +6776,7 @@ dev-php/pecl-sphinx 1.3.3: PHP extension to execute search queries on a sphinx d
 dev-php/pecl-spl_types 0.4.0-r1: Standard PHP library types add-on
 dev-php/pecl-ssh2 0.12-r3: PHP bindings for the libssh2 library
 dev-php/pecl-stomp 1.0.8: PHP extension to communicate with Stomp compliant Message Brokers
-dev-php/pecl-svn 1.0.2-r1: PHP Bindings for the Subversion Revision control system
+dev-php/pecl-svn 1.0.3: PHP Bindings for the Subversion Revision control system
 dev-php/pecl-taint 2.0.0_beta 2.0.1_beta: Extension used for detecting XSS codes(tainted string)
 dev-php/pecl-timezonedb 2014.7 2015.7: Timezone Database to be used with PHP's date and time functions
 dev-php/pecl-translit 0.6.1-r1: Transliterates non-latin character sets to latin
