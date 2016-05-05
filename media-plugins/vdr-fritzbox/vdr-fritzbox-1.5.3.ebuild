@@ -17,7 +17,7 @@ IUSE=""
 
 DEPEND=">=media-video/vdr-1.7.34
 		dev-libs/libgcrypt:0
-		dev-libs/boost"
+		dev-libs/boost[threads]"
 RDEPEND="${DEPEND}"
 
 pkg_postinst() {
