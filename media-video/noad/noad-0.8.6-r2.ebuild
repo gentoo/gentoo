@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -25,9 +25,16 @@ DEPEND="${RDEPEND}
 REQUIRED_USE="|| ( ffmpeg libmpeg2 )"
 
 src_prepare() {
-	if has_version '>=media-video/vdr-1.7.15'; then
-		sed -i -e 's:2001:6419:' svdrpc.cpp main.cpp || die
-	fi
+	sed -i -e 's:2001:6419:' svdrpc.cpp main.cpp
+
+	# wrt bug 575494
+	sed -e "s:CODEC_ID_MP3:AV_CODEC_ID_MP3:" -i audiotools.cpp
+	sed -e "sCODEC_ID_PROBE:AV_CODEC_ID_PROBE:" -i ffmpeg_decoder.cpp
+
+	# tested libav-9, ffmepg-2.2.9
+	epatch "${FILESDIR}/patches-0.8.x/${P}-libav9.diff" \
+		"${FILESDIR}/patches-0.8.x/${P}-ffmpeg25.patch"
+
 	eautoreconf
 }
 
