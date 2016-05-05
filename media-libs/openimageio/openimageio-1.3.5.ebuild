@@ -35,7 +35,7 @@ RDEPEND="dev-libs/boost[python?]
 	colorio? ( >=media-libs/opencolorio-1.0.7:= )
 	opencv? (
 		>=media-libs/opencv-2.3:=
-		python? ( || ( <media-libs/opencv-2.4.8 >=media-libs/opencv-2.4.8[python,${PYTHON_USEDEP}] ) )
+		python? ( >=media-libs/opencv-2.4.8[python,${PYTHON_USEDEP}] )
 	)
 	opengl? (
 		virtual/glu
