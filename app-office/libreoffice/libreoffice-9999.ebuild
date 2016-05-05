@@ -77,20 +77,17 @@ unset ADDONS_URI
 unset EXT_URI
 unset ADDONS_SRC
 
-IUSE="bluetooth +branding coinmp collada +cups dbus debug eds firebird gltf gnome gstreamer
-+gtk gtk3 jemalloc kde libressl mysql odk postgres telepathy test vlc"
-
-LO_EXTS="nlpsolver scripting-beanshell scripting-javascript wiki-publisher"
 # Unpackaged separate extensions:
 # diagram: lo has 0.9.5 upstream is weirdly patched 0.9.4 -> wtf?
 # hunart: only on ooo extensions -> fubared download path somewhere on sf
 # numbertext, typo, validator, watch-window: ^^
 # oooblogger: no homepage or anything
 # Extensions that need extra work:
-for lo_xt in ${LO_EXTS}; do
-	IUSE+=" libreoffice_extensions_${lo_xt}"
-done
-unset lo_xt
+LO_EXTS="nlpsolver scripting-beanshell scripting-javascript wiki-publisher"
+
+IUSE="bluetooth +branding coinmp collada +cups dbus debug eds firebird gltf gnome gstreamer
++gtk gtk3 jemalloc kde libressl mysql odk postgres telepathy test vlc
+$(printf 'libreoffice_extensions_%s ' ${LO_EXTS})"
 
 LICENSE="|| ( LGPL-3 MPL-1.1 )"
 SLOT="0"
@@ -101,10 +98,10 @@ COMMON_DEPEND="
 	${PYTHON_DEPS}
 	app-arch/zip
 	app-arch/unzip
-	>=app-text/hunspell-1.3.2-r3
+	app-text/hunspell
 	app-text/mythes
 	>=app-text/libabw-0.1.0
-	>=app-text/libexttextcat-3.4.4
+	app-text/libexttextcat
 	>=app-text/libebook-0.1
 	>=app-text/libetonyek-0.1
 	app-text/liblangtag
@@ -114,24 +111,24 @@ COMMON_DEPEND="
 	app-text/libwpd:0.10[tools]
 	app-text/libwpg:0.3
 	>=app-text/libwps-0.4
-	>=app-text/poppler-0.16:=[cxx]
+	app-text/poppler:=[cxx]
 	>=dev-cpp/clucene-2.3.3.4-r2
 	=dev-cpp/libcmis-0.5*
 	dev-db/unixODBC
 	>=dev-libs/boost-1.55:=
 	dev-libs/expat
-	>=dev-libs/hyphen-2.7.1
-	>=dev-libs/icu-4.8.1.1:=
+	dev-libs/hyphen
+	dev-libs/icu:=
 	>=dev-libs/liborcus-0.11.1
-	>=dev-libs/librevenge-0.0.1
-	>=dev-libs/nspr-4.8.8
-	>=dev-libs/nss-3.12.9
+	dev-libs/librevenge
+	dev-libs/nspr
+	dev-libs/nss
 	>=dev-lang/perl-5.0
 	!libressl? ( >=dev-libs/openssl-1.0.0d:0 )
 	libressl? ( dev-libs/libressl )
 	>=dev-libs/redland-1.0.16
 	media-gfx/graphite2
-	>=media-libs/fontconfig-2.8.0
+	media-libs/fontconfig
 	media-libs/freetype:2
 	>=media-libs/glew-1.10
 	>=media-libs/harfbuzz-0.9.18:=[icu(+)]
@@ -141,12 +138,12 @@ COMMON_DEPEND="
 	>=media-libs/libfreehand-0.1.0
 	media-libs/libpagemaker
 	>=media-libs/libvisio-0.1.0
-	>=net-misc/curl-7.21.4
+	net-misc/curl
 	net-libs/neon
 	net-nds/openldap
 	sci-mathematics/lpsolve
 	virtual/jpeg:0
-	>=x11-libs/cairo-1.10.0[X,-xlib-xcb]
+	x11-libs/cairo[X,-xlib-xcb]
 	x11-libs/libXinerama
 	x11-libs/libXrandr
 	x11-libs/libXrender
@@ -156,7 +153,7 @@ COMMON_DEPEND="
 	coinmp? ( sci-libs/coinor-mp )
 	collada? ( >=media-libs/opencollada-1.2.2_p20150207 )
 	cups? ( net-print/cups )
-	dbus? ( >=dev-libs/dbus-glib-0.92 )
+	dbus? ( dev-libs/dbus-glib )
 	eds? (
 		dev-libs/glib:2
 		gnome-extra/evolution-data-server
@@ -177,17 +174,16 @@ COMMON_DEPEND="
 		media-libs/gst-plugins-base:1.0
 	)
 	jemalloc? ( dev-libs/jemalloc )
-	libreoffice_extensions_scripting-beanshell? ( >=dev-java/bsh-2.0_beta4 )
+	libreoffice_extensions_scripting-beanshell? ( dev-java/bsh )
 	libreoffice_extensions_scripting-javascript? ( dev-java/rhino:1.6 )
-	mysql? ( >=dev-db/mysql-connector-c++-1.1.0 )
+	mysql? ( dev-db/mysql-connector-c++ )
 	postgres? ( >=dev-db/postgresql-9.0:*[kerberos] )
-	telepathy? ( >=net-libs/telepathy-glib-0.18.0 )
+	telepathy? ( net-libs/telepathy-glib )
 "
 
 RDEPEND="${COMMON_DEPEND}
 	!app-office/libreoffice-bin
 	!app-office/libreoffice-bin-debug
-	!<app-office/openoffice-bin-3.4.0-r1
 	!app-office/openoffice
 	media-fonts/libertine
 	media-fonts/liberation-fonts
