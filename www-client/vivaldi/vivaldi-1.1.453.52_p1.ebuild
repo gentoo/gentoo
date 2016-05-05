@@ -12,7 +12,7 @@ inherit chromium eutils multilib unpacker toolchain-funcs
 
 DESCRIPTION="A new browser for our friends"
 HOMEPAGE="http://vivaldi.com/"
-VIVALDI_BASE_URI="${HOMEPAGE}download/stable/${PN}-stable_${PV/_p/-}_"
+VIVALDI_BASE_URI="https://downloads.vivaldi.com/stable/${PN}-stable_${PV/_p/-}_"
 SRC_URI="
 	amd64? ( ${VIVALDI_BASE_URI}amd64.deb -> ${P}-amd64.deb )
 	x86? ( ${VIVALDI_BASE_URI}i386.deb -> ${P}-i386.deb )
@@ -66,10 +66,6 @@ src_unpack() {
 }
 
 src_prepare() {
-	sed -i \
-		-e "s|@LIBDIR@|$(get_libdir)|g" \
-		${VIVALDI_HOME}/vivaldi || die
-
 	sed -i \
 		-e 's|vivaldi-stable|vivaldi|g' \
 		usr/share/applications/${PN}-stable.desktop \

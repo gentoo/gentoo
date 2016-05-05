@@ -67,10 +67,6 @@ src_unpack() {
 
 src_prepare() {
 	sed -i \
-		-e "s|@LIBDIR@|$(get_libdir)|g" \
-		opt/vivaldi-snapshot/vivaldi-snapshot || die
-
-	sed -i \
 		-e 's|vivaldi-snapshot|vivaldi|g' \
 		usr/share/applications/${PN}-snapshot.desktop \
 		usr/share/xfce4/helpers/${PN}-snapshot.desktop || die
