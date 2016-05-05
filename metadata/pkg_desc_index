@@ -12904,7 +12904,7 @@ media-plugins/vdr-radiolist 0.0.2: VDR plugin: Filters channel list and only sho
 media-plugins/vdr-rcu 2.0.0 2.2.0: VDR plugin: Remote Control Unit consists mainly of an infrared receiver, controlled by a PIC 16C84
 media-plugins/vdr-recsearch 0.3.5: VDR Plugin: Search through your recordings and find the one you are looking for...
 media-plugins/vdr-recstatus 0.0.8: VDR plugin: displays the recording status of the available devices
-media-plugins/vdr-remote 0.6.0 0.6.0-r1 0.7.0: VDR Plugin: use various devices for controlling vdr (keyboards, lirc, remotes bundled with tv-cards)
+media-plugins/vdr-remote 0.6.0-r1 0.7.0: VDR Plugin: use various devices for controlling vdr (keyboards, lirc, remotes bundled with tv-cards)
 media-plugins/vdr-remoteosd 1.0.0: VDR Plugin: server/client remoteosd
 media-plugins/vdr-remotetimers 1.0.0 1.0.1 1.0.2: VDR plugin: edit timers on remote vdr instances
 media-plugins/vdr-rotor 0.1.5: VDR Plugin: Add support for dishes with rotation control engine
