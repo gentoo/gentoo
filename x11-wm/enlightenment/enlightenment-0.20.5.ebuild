@@ -51,7 +51,7 @@ RDEPEND="
 	systemd? ( sys-apps/systemd )
 	wayland? (
 		dev-libs/efl[wayland]
-		>=dev-libs/wayland-1.2.0
+		>=dev-libs/wayland-1.8.0
 		>=x11-libs/pixman-0.31.1
 		>=x11-libs/libxkbcommon-0.3.1
 	)
