@@ -1,18 +1,18 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 
-inherit eutils multilib toolchain-funcs
+inherit eutils multilib toolchain-funcs vcs-snapshot
 
 DESCRIPTION="Small dynamic tiling window manager for X11"
 HOMEPAGE="https://opensource.conformal.com/wiki/spectrwm"
-SRC_URI="http://opensource.conformal.com/snapshots/${PN}/${P}.tgz"
+SRC_URI="https://codeload.github.com/conformal/${PN}/tar.gz/SPECTRWM_${PV//./_} -> ${P}.tar.gz"
 
 LICENSE="ISC"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND="x11-misc/dmenu"
@@ -28,11 +28,16 @@ S=${WORKDIR}/${P}/linux
 
 src_prepare() {
 	epatch "${FILESDIR}"/${PN}-2.6.2-Makefile.patch
+	epatch "${FILESDIR}"/${PN}-3.0.0-outdated-manpages.patch
 	tc-export CC
 }
 
+src_compile() {
+	emake PREFIX="${EROOT}usr" LIBDIR="${EROOT}usr/$(get_libdir)"
+}
+
 src_install() {
-	emake PREFIX="${D}"/usr LIBDIR="${D}usr/$(get_libdir)" install
+	emake PREFIX="${EROOT}usr" LIBDIR="${EROOT}usr/$(get_libdir)" DESTDIR="${D}" install
 
 	cd "${WORKDIR}"/${P} || die
 
