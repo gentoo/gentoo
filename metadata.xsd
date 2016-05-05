@@ -137,7 +137,7 @@
 			<xs:element name='email' type='emailType'
 				minOccurs='0'/>
 			<xs:element name='name' type='xs:token'
-				minOccurs='0'/>
+				minOccurs='1'/>
 		</xs:all>
 		<xs:attribute name='status' type='upstreamMaintainerStatusAttrType'
 			default='unknown'/>
