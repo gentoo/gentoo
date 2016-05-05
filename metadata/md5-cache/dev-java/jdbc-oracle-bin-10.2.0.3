@@ -1,12 +1,12 @@
 DEFINED_PHASES=compile install preinst setup unpack
-DEPEND=doc? ( app-arch/unzip ) >=dev-java/java-config-2.2.0-r3
+DEPEND=doc? ( app-arch/unzip ) >=dev-java/java-config-2.2.0-r3 >=sys-apps/portage-2.1.2.7
 DESCRIPTION=JDBC 3.0 Drivers for Oracle
 EAPI=0
 HOMEPAGE=http://www.oracle.com/technology/software/tech/java/sqlj_jdbc/index.html
 IUSE=debug dms doc examples nls ons elibc_FreeBSD
 KEYWORDS=amd64 x86
 LICENSE=oracle-jdbc
-RDEPEND=>=virtual/jre-1.4 >=dev-java/java-config-2.2.0-r3
+RDEPEND=>=virtual/jre-1.4 >=dev-java/java-config-2.2.0-r3 >=sys-apps/portage-2.1.2.7
 RESTRICT=fetch
 SLOT=10.2
 SRC_URI=!dms? ( !debug? ( jdbc-oracle-bin-10.2.0.3-ojdbc14.jar ) debug? ( jdbc-oracle-bin-10.2.0.3-ojdbc14_g.jar ) ) dms? ( !debug? ( jdbc-oracle-bin-10.2.0.3-ojdbc14dms.jar ) debug? ( jdbc-oracle-bin-10.2.0.3-ojdbc14dms_g.jar ) ) doc? ( jdbc-oracle-bin-10.2.0.1-javadoc.zip ) examples? ( jdbc-oracle-bin-10.2.0.3-demo.tar ) nls? ( jdbc-oracle-bin-10.2.0.3-orai18n.jar ) ons? ( jdbc-oracle-bin-10.2.0.3-ons.jar )

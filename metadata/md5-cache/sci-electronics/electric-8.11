@@ -1,12 +1,12 @@
 DEFINED_PHASES=compile install preinst setup
-DEPEND=app-arch/unzip >=dev-java/java-config-2.2.0-r3
+DEPEND=app-arch/unzip >=dev-java/java-config-2.2.0-r3 >=sys-apps/portage-2.1.2.7
 DESCRIPTION=Complete Electronic Design Automation (EDA) system that can handle many forms of circuit design
 EAPI=0
 HOMEPAGE=https://www.gnu.org/software/electric/electric.html
 IUSE=elibc_FreeBSD
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2
-RDEPEND=>=virtual/jre-1.6 sci-electronics/electronics-menu >=dev-java/java-config-2.2.0-r3
+RDEPEND=>=virtual/jre-1.6 sci-electronics/electronics-menu >=dev-java/java-config-2.2.0-r3 >=sys-apps/portage-2.1.2.7
 SLOT=0
 SRC_URI=mirror://gnu/electric/electricBinary-8.11.jar
 _eclass_exported_funcs=pkg_preinst:java-pkg-2 pkg_setup:java-pkg-2 src_compile:java-pkg-2 src_install:-

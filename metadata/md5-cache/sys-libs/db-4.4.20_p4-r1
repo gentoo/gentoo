@@ -1,12 +1,12 @@
 DEFINED_PHASES=compile install postinst postrm preinst setup test unpack
-DEPEND=tcl? ( >=dev-lang/tcl-8.4 ) java? ( >=virtual/jdk-1.4 ) >=sys-devel/binutils-2.16.1 test? ( >=dev-lang/tcl-8.4 ) java? ( >=dev-java/java-config-2.2.0-r3 ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=tcl? ( >=dev-lang/tcl-8.4 ) java? ( >=virtual/jdk-1.4 ) >=sys-devel/binutils-2.16.1 test? ( >=dev-lang/tcl-8.4 ) java? ( >=dev-java/java-config-2.2.0-r3 >=sys-apps/portage-2.1.2.7 ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=Oracle Berkeley DB
 EAPI=0
 HOMEPAGE=http://www.oracle.com/technology/software/products/berkeley-db/index.html
 IUSE=tcl java doc cxx rpc doc test examples elibc_FreeBSD java
 KEYWORDS=~amd64 ~arm ~arm64 ~ia64 ~m68k ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd
 LICENSE=Sleepycat BSD
-RDEPEND=tcl? ( dev-lang/tcl ) java? ( >=virtual/jre-1.4 ) java? ( >=dev-java/java-config-2.2.0-r3 )
+RDEPEND=tcl? ( dev-lang/tcl ) java? ( >=virtual/jre-1.4 ) java? ( >=dev-java/java-config-2.2.0-r3 >=sys-apps/portage-2.1.2.7 )
 SLOT=4.4
 SRC_URI=http://download.oracle.com/berkeley-db/db-4.4.20.tar.gz mirror://gentoo/db-4.4.20-20060110-rpc_server-java.tar.gz http://www.oracle.com/technology/products/berkeley-db/db/update/4.4.20/patch.4.4.20.1 http://www.oracle.com/technology/products/berkeley-db/db/update/4.4.20/patch.4.4.20.2 http://www.oracle.com/technology/products/berkeley-db/db/update/4.4.20/patch.4.4.20.3 http://www.oracle.com/technology/products/berkeley-db/db/update/4.4.20/patch.4.4.20.4
 _eclass_exported_funcs=pkg_preinst:java-pkg-opt-2 pkg_postrm:- pkg_postinst:- pkg_setup:java-pkg-opt-2 src_unpack:- src_compile:- src_test:db src_install:-

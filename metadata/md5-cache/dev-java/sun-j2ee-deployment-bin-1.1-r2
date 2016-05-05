@@ -1,12 +1,12 @@
 DEFINED_PHASES=compile install preinst setup
-DEPEND=>=virtual/jdk-1.4 app-arch/unzip >=dev-java/java-config-2.2.0-r3
+DEPEND=>=virtual/jdk-1.4 app-arch/unzip >=dev-java/java-config-2.2.0-r3 >=sys-apps/portage-2.1.2.7
 DESCRIPTION=J2EE Application Deployment Specification
 EAPI=0
 HOMEPAGE=http://java.sun.com/j2ee/tools/deployment/
 IUSE=doc elibc_FreeBSD
 KEYWORDS=amd64 x86 ~x86-fbsd
 LICENSE=sun-bcla-j2ee-deployment
-RDEPEND=>=virtual/jre-1.4 >=dev-java/java-config-2.2.0-r3
+RDEPEND=>=virtual/jre-1.4 >=dev-java/java-config-2.2.0-r3 >=sys-apps/portage-2.1.2.7
 RESTRICT=fetch
 SLOT=1.1
 SRC_URI=j2ee_deployment-1_1-fr-class.zip doc? ( j2ee_deployment-1_1-fr-doc.zip )

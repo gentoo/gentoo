@@ -1,12 +1,12 @@
 DEFINED_PHASES=compile install preinst setup unpack
-DEPEND=>=virtual/jdk-1.4 =dev-java/jgoodies-looks-1.2* app-arch/unzip >=dev-java/java-config-2.2.0-r3
+DEPEND=>=virtual/jdk-1.4 =dev-java/jgoodies-looks-1.2* app-arch/unzip >=dev-java/java-config-2.2.0-r3 >=sys-apps/portage-2.1.2.7
 DESCRIPTION=Free font viewer written in Java
 EAPI=0
 HOMEPAGE=http://opcion.sourceforge.net/
 IUSE=elibc_FreeBSD
 KEYWORDS=amd64 x86
 LICENSE=GPL-2
-RDEPEND=>=virtual/jre-1.4 =dev-java/jgoodies-looks-1.2* >=dev-java/java-config-2.2.0-r3
+RDEPEND=>=virtual/jre-1.4 =dev-java/jgoodies-looks-1.2* >=dev-java/java-config-2.2.0-r3 >=sys-apps/portage-2.1.2.7
 SLOT=0
 SRC_URI=mirror://sourceforge/opcion/Opcion_v1.1.1_src.zip
 _eclass_exported_funcs=pkg_preinst:java-pkg-2 pkg_setup:java-pkg-2 src_unpack:- src_compile:- src_install:-

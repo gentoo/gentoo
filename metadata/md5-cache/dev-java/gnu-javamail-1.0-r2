@@ -1,12 +1,12 @@
 DEFINED_PHASES=compile install preinst setup
-DEPEND=>=virtual/jdk-1.4 >=virtual/jre-1.4 =dev-java/gnu-jaf-1* =dev-java/gnu-classpath-inetlib-1.0* !<=dev-java/mx4j-3.0.1 !<=dev-java/mx4j-3.0.1-r2 >=dev-java/java-config-2.2.0-r3
+DEPEND=>=virtual/jdk-1.4 >=virtual/jre-1.4 =dev-java/gnu-jaf-1* =dev-java/gnu-classpath-inetlib-1.0* !<=dev-java/mx4j-3.0.1 !<=dev-java/mx4j-3.0.1-r2 >=dev-java/java-config-2.2.0-r3 >=sys-apps/portage-2.1.2.7
 DESCRIPTION=GNU implementation of the Javamail API
 EAPI=0
 HOMEPAGE=https://www.gnu.org/software/classpathx/javamail/
 IUSE=doc elibc_FreeBSD
 KEYWORDS=amd64 x86
 LICENSE=GPL-2-with-linking-exception
-RDEPEND=>=virtual/jre-1.4 =dev-java/gnu-jaf-1* =dev-java/gnu-classpath-inetlib-1.0* !<=dev-java/mx4j-3.0.1 !<=dev-java/mx4j-3.0.1-r2 >=dev-java/java-config-2.2.0-r3
+RDEPEND=>=virtual/jre-1.4 =dev-java/gnu-jaf-1* =dev-java/gnu-classpath-inetlib-1.0* !<=dev-java/mx4j-3.0.1 !<=dev-java/mx4j-3.0.1-r2 >=dev-java/java-config-2.2.0-r3 >=sys-apps/portage-2.1.2.7
 SLOT=1
 SRC_URI=mirror://gnu/classpathx/mail-1.0.tar.gz
 _eclass_exported_funcs=pkg_preinst:java-pkg-2 pkg_setup:java-pkg-2 src_compile:- src_install:-
