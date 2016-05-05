@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 inherit linux-info linux-mod
 
@@ -39,6 +39,7 @@ src_prepare() {
 	epatch "${FILESDIR}/v4l-dvb-saa716x-Makefilepatch-2.diff"
 	kernel_is ge 3 19 0 && epatch "${FILESDIR}/v4l-dvb-saa716x-3.19-set_gpio.patch"
 	kernel_is ge 4 2 0 && epatch "${FILESDIR}/v4l-dvb-saa716x-4.2-fix-compile.patch"
+	kernel_is ge 4 5 2 && epatch "${FILESDIR}/v4l-dvb-saa716x-4.5.2-fix-compile.patch"
 }
 
 src_compile() {
