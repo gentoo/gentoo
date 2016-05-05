@@ -2,10 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-# Ignore rudimentary et, uz@Latn, zh_TW translation(s)
-PLOCALES="cs_CZ cs de es_MX es fr gl hu it ja_JP lt nb pl_PL pl pt_BR pt_PT ro_RO ru sr tr uk zh_CN"
+# Ignore rudimentary et, uz@Latn, zh_TW translation(s).
+PLOCALES="cs cs_CZ de es es_MX fr gl hu it ja_JP lt nb pl pl_PL pt_BR pt_PT ro_RO ru sr tr uk zh_CN"
 
 inherit cmake-utils fdo-mime gnome2-utils l10n virtualx git-r3
 
@@ -57,7 +57,9 @@ DEPEND="${COMMON_DEPEND}
 REQUIRED_USE="^^ ( qt4 qt5 )"
 
 src_prepare() {
-	# Ignore rudimentary et, uz@Latn, zh_TW translation(s)
+	cmake-utils_src_prepare
+
+	# Ignore rudimentary et, uz@Latn, zh_TW translation(s).
 	rm "translations/${PN}_uz@Latn.desktop" || die
 	rm "translations/${PN}"_{et,zh_TW}.ts || die
 
@@ -67,8 +69,6 @@ src_prepare() {
 
 	l10n_find_plocales_changes 'translations' "${PN}_" '.ts'
 	l10n_for_each_disabled_locale_do remove_locale
-
-	cmake-utils_src_prepare
 }
 
 src_configure() {
