@@ -22,8 +22,6 @@ RDEPEND="nvram? ( sys-power/nvram-wakeup )
 
 VDR_HOME=/var/vdr
 
-DOCS=( README* TODO ChangeLog )
-
 pkg_setup() {
 	enewgroup vdr
 
@@ -43,6 +41,8 @@ src_prepare() {
 }
 
 src_install() {
+	local DOCS=( README* TODO ChangeLog )
+
 	default
 
 	# create necessary directories
