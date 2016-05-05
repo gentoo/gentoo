@@ -699,11 +699,6 @@ app-portage/g-ctan
 # Masked to ensure users are aware before they install.
 app-text/cuneiform
 
-# Tom Wijsman <TomWij@gentoo.org> (12 Mar 2013)
-# 2.5.* has known security and other issues due to an affected
-# bundled ffmpeg, see bugs #446468 and #444262.
-<media-video/avidemux-2.6.2
-
 # Rick Farina <zerochaos@gentoo.org> (21 Dec 2012)
 # madwifi has been replaced by ath5k and ath9k in kernel
 # drivers and is subject to numerous long standing bugs
