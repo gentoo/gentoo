@@ -4901,7 +4901,7 @@ dev-libs/ucl 1.03-r1: the UCL Compression Library
 dev-libs/ucommon 6.0.3 6.1.10 6.3.1 6.5.2 6.5.7: Portable C++ runtime for threads and sockets
 dev-libs/udis86 1.7-r2 1.7.2: Disassembler library for the x86/-64 architecture sets
 dev-libs/unibilium 1.1.2 1.1.4: A very basic terminfo library
-dev-libs/unittest++ 1.6.0: A lightweight unit testing framework for C++
+dev-libs/unittest++ 1.6.0 1.6.1: A lightweight unit testing framework for C++
 dev-libs/univalue 1.0.2: C++ universal value object and JSON library
 dev-libs/urdfdom 0.3.0 0.4.1 9999: URDF (U-Robot Description Format) library
 dev-libs/urdfdom_headers 0.3.0 0.4.0 0.4.1 9999: URDF (U-Robot Description Format) headers
@@ -18866,7 +18866,7 @@ x11-wm/ratpoison 1.4.8 1.4.8-r1 9999: window manager without mouse dependency
 x11-wm/sawfish 1.9.1-r2: Extensible window manager using a Lisp-based scripting language
 x11-wm/selectwm 0.4.1: window manager selector tool
 x11-wm/sithwm 1.2.3: Minimalist Window Manager for X
-x11-wm/spectrwm 2.6.2 2.7.2: Small dynamic tiling window manager for X11
+x11-wm/spectrwm 2.7.2 2.7.2-r1: Small dynamic tiling window manager for X11
 x11-wm/stumpwm 0.9.9 9999: Stumpwm is a Window Manager written entirely in Common Lisp.
 x11-wm/subtle 0.11.3244 9999: A manual tiling window manager
 x11-wm/treewm 0.4.5 0.4.5-r1: WindowManager that arranges the windows in a tree (not in a list)
