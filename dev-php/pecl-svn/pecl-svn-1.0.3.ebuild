@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -6,7 +6,7 @@ EAPI=5
 
 PHP_EXT_NAME="svn"
 
-USE_PHP="php5-6 php5-5 php5-4"
+USE_PHP="php5-6 php5-5"
 
 inherit php-ext-pecl-r2
 
@@ -17,5 +17,5 @@ LICENSE="PHP-3.01"
 SLOT="0"
 IUSE=""
 
-DEPEND="<dev-vcs/subversion-1.9"
+DEPEND="dev-vcs/subversion"
 RDEPEND="${DEPEND}"
