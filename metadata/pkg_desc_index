@@ -7604,7 +7604,7 @@ dev-python/posix_ipc 0.9.8: POSIX IPC primitives (semaphores, shared memory and 
 dev-python/potr 1.0.1: Pure Python OTR implementation
 dev-python/pp 1.6.4-r1: Parallel and distributed programming for Python
 dev-python/pretend 1.0.8: A library for stubbing in Python
-dev-python/pretty-yaml 14.05.7 15.5.7 15.6.3: PyYAML-based module to produce pretty and readable YAML-serialized data
+dev-python/pretty-yaml 15.5.7 15.6.3 15.8.2: PyYAML-based module to produce pretty and readable YAML-serialized data
 dev-python/prettytable 0.7.1-r1 0.7.2: Easily displaying tabular data in a visually appealing ASCII table format
 dev-python/process-tests 1.1.0 1.1.2 1.2.0: Tools for testing processes
 dev-python/processing 0.52-r1: Package for using processes, which mimics the threading module API
@@ -17046,7 +17046,7 @@ sys-fs/gt5 1.4.0-r2: a diff-capable 'du-browser'
 sys-fs/hfsplusutils 1.0.4-r1: HFS+ Filesystem Access Utilities (a PPC filesystem)
 sys-fs/hfsutils 3.2.6-r5: HFS FS Access utils
 sys-fs/inotify-tools 3.13-r1 3.14: a set of command-line programs providing a simple interface to inotify
-sys-fs/iprutils 2.4.7 2.4.8-r1 2.4.9 2.4.10.1: IBM's tools for support of the ipr SCSI controller
+sys-fs/iprutils 2.4.7 2.4.8-r1 2.4.9 2.4.10.1 2.4.11.1: IBM's tools for support of the ipr SCSI controller
 sys-fs/jdiskreport-bin 1.2.5-r1 1.3.0 1.4.1: JDiskReport helps you to understand disk drive usage
 sys-fs/jfsutils 1.1.15: IBM's Journaling Filesystem (JFS) Utilities
 sys-fs/jmtpfs 0.5: A FUSE and libmtp based filesystem for accessing MTP devices
