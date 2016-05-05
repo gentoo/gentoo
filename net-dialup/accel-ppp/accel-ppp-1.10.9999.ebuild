@@ -4,15 +4,17 @@
 
 EAPI=6
 
-inherit cmake-utils linux-info linux-mod
+EGIT_REPO_URI="git://git.code.sf.net/p/accel-ppp/code"
+EGIT_BRANCH="1.10"
+inherit cmake-utils flag-o-matic git-r3 linux-info linux-mod
 
 DESCRIPTION="High performance PPTP, PPPoE and L2TP server"
 HOMEPAGE="http://accel-ppp.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
+SRC_URI=""
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS=""
 IUSE="debug doc ipoe postgres radius shaper snmp valgrind"
 
 RDEPEND="postgres? ( dev-db/postgresql:* )
@@ -42,8 +44,12 @@ src_prepare() {
 	sed -i  -e "/mkdir/d" \
 		-e "/echo/d" \
 		-e "s: RENAME accel-ppp.conf.dist::" accel-pppd/CMakeLists.txt || die 'sed on accel-pppd/CMakeLists.txt failed'
+	sed -i -e '/modules_install/d' drivers/ipoe/CMakeLists.txt || die 'sed on drivers/ipoe/CMakeLists.txt failed'
 
-	eapply_user
+	# Bug #549918
+	append-ldflags -Wl,-z,lazy
+
+	cmake-utils_src_prepare
 }
 
 src_configure() {
@@ -69,6 +75,11 @@ src_compile() {
 }
 
 src_install() {
+	if use ipoe; then
+		local MODULE_NAMES="ipoe(accel-ppp:${BUILD_DIR}/drivers/ipoe/driver)"
+		linux-mod_src_install
+	fi
+
 	cmake-utils_src_install
 
 	use doc && dodoc -r rfc

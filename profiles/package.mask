@@ -359,16 +359,6 @@ www-apps/389-dsgw
 # Masked until we deal with SSLv3, bug #567554
 =dev-libs/libressl-2.3*
 
-# Brian Evans <grknight@gentoo.org> (02 Dec 2015)
-# All current targets are masked.
-<dev-php/pecl-taint-1.99.99
-
-# Brian Evans <grknight@gentoo.org> (02 Dec 2015)
-# PHP 5.4 is End Of Life and will not receive any further updates
-# Please migrate to 5.5 or, preferably 5.6.
-dev-lang/php:5.4
-~virtual/httpd-php-5.4
-
 # Michał Górny <mgorny@gentoo.org> (30 Oct 2015)
 # Uses unsafe ioctls that could result in data corruption. Upstream
 # is working on replacing them in the wip/dedup-syscall branch.

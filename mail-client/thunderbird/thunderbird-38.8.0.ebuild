@@ -5,7 +5,7 @@
 EAPI=5
 WANT_AUTOCONF="2.1"
 MOZ_ESR=""
-MOZ_LIGHTNING_VER="4.0.7"
+MOZ_LIGHTNING_VER="4.0.8"
 MOZ_LIGHTNING_GDATA_VER="1.9"
 
 # This list can be updated using scripts/get_langs.sh from the mozilla overlay
