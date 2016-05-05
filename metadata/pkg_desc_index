@@ -4403,7 +4403,7 @@ dev-lang/parrot 7.1.0 7.5.0 7.11.0 8.1.0: Virtual machine designed to efficientl
 dev-lang/pasm 1.7: A portable assembler for processors of the PowerPC family
 dev-lang/pcc 1.1.0-r1 9999: pcc portable c compiler
 dev-lang/perl 5.20.2 5.20.2-r1 5.22.0 5.22.1 5.22.2: Larry Wall's Practical Extraction and Report Language
-dev-lang/php 5.4.45 5.5.33 5.5.34 5.5.35 5.6.19 5.6.20 5.6.21 7.0.6: The PHP language runtime engine
+dev-lang/php 5.5.33 5.5.34 5.5.35 5.6.19 5.6.20 5.6.21 7.0.6: The PHP language runtime engine
 dev-lang/pocl 0.11 0.12 0.13: PortableCL: opensource implementation of the OpenCL standard
 dev-lang/polyml 5.4.1 5.5.0 5.5.1 5.5.2: Poly/ML is a full implementation of Standard ML
 dev-lang/python 2.7.10-r1 2.7.11-r2 3.3.5-r3 3.3.5-r8 3.4.3-r1 3.4.3-r7 3.5.0-r2 3.5.1-r2: An interpreted, interactive, object-oriented programming language
@@ -6777,7 +6777,7 @@ dev-php/pecl-spl_types 0.4.0-r1: Standard PHP library types add-on
 dev-php/pecl-ssh2 0.12-r3: PHP bindings for the libssh2 library
 dev-php/pecl-stomp 1.0.8: PHP extension to communicate with Stomp compliant Message Brokers
 dev-php/pecl-svn 1.0.2-r1: PHP Bindings for the Subversion Revision control system
-dev-php/pecl-taint 1.2.2-r1 2.0.0_beta: Extension used for detecting XSS codes(tainted string)
+dev-php/pecl-taint 2.0.0_beta 2.0.1_beta: Extension used for detecting XSS codes(tainted string)
 dev-php/pecl-timezonedb 2014.7 2015.7: Timezone Database to be used with PHP's date and time functions
 dev-php/pecl-translit 0.6.1-r1: Transliterates non-latin character sets to latin
 dev-php/pecl-uploadprogress 1.0.3.1-r1 1.0.3.1-r2: An extension to track progress of a file upload
@@ -11702,8 +11702,8 @@ mail-client/pinepgp 0.18.0-r1: Use GPG/PGP with Pine
 mail-client/roundcube 1.1.4 1.2_beta: A browser-based multilingual IMAP client with an application-like user interface
 mail-client/squirrelmail 1.4.23_pre20140426: Webmail for nuts!
 mail-client/sylpheed 3.4.2 3.4.3 3.4.3-r1 3.5.0: A lightweight email client and newsreader
-mail-client/thunderbird 24.8.0 31.8.0 38.7.0 38.7.1 45.0: Thunderbird Mail Client
-mail-client/thunderbird-bin 31.8.0 38.7.0 45.0: Thunderbird Mail Client
+mail-client/thunderbird 24.8.0 31.8.0 38.7.0 38.8.0 45.0: Thunderbird Mail Client
+mail-client/thunderbird-bin 31.8.0 38.8.0 45.0: Thunderbird Mail Client
 mail-client/trojita 0.4.1 0.5 0.6 9999: A Qt IMAP e-mail client
 mail-filter/MailScanner 4.84.5.2: Free Anti-Virus and Anti-Spam Filter
 mail-filter/amavisd-milter 1.5.0 1.5.0-r1 1.6.0 1.6.0-r1: sendmail milter for amavisd-new
@@ -13868,7 +13868,7 @@ net-analyzer/yersinia 0.7.3: A layer 2 attack framework
 net-analyzer/zabbix 2.2.5 2.2.9 2.2.11 2.4.5 2.4.7: ZABBIX is software for monitoring of your applications, network and servers
 net-analyzer/zmap 1.1.1 1.1.2 1.2.0 1.2.1 2.1.1 9999: Fast network scanner designed for Internet-wide network surveys
 net-analyzer/zniper 1.0-r1: Displays and kill active TCP connections seen by the selected interface
-net-dialup/accel-ppp 1.10.1: High performance PPTP, PPPoE and L2TP server
+net-dialup/accel-ppp 1.10.2 1.10.9999 9999: High performance PPTP, PPPoE and L2TP server
 net-dialup/capi4k-utils 20050718-r7: CAPI4Linux Utils
 net-dialup/capidivert 0.0.2: CAPI based utility to control ISDN diversion facilities
 net-dialup/capifwd 0.6.3-r1 0.6.3-r2: A daemon forwarding CAPI messages to capi20proxy clients
@@ -17155,7 +17155,7 @@ sys-kernel/cryptodev 1.7: device that allows access to Linux kernel cryptographi
 sys-kernel/dracut 034-r4 040-r3 041-r3 043-r2 044: Generic initramfs generation tool
 sys-kernel/genkernel 3.4.45.1 3.4.48 3.4.49.2 3.4.50 3.4.51.4 3.4.52.2 3.4.52.3 3.4.52.4 3.4.52.4-r1 3.5.0.0 3.5.0.1 9999: Gentoo automatic kernel building scripts
 sys-kernel/genkernel-next 35 55 60 63 64: Gentoo automatic kernel building scripts, reloaded
-sys-kernel/gentoo-sources 3.4.110 3.4.111 3.4.112 3.4.9999 3.10.95 3.10.101 3.12.52-r1 3.12.57 3.12.58 3.12.59 3.12.9999 3.14.58-r1 3.14.65 3.14.66 3.14.67 3.14.68 3.18.25-r1 3.18.26 3.18.27 3.18.28 3.18.29 3.18.30 3.18.31 4.1.12 4.1.15-r1 4.1.20 4.1.21 4.1.22 4.1.23 4.4.6 4.4.7 4.4.8 4.4.9 4.5.0-r1 4.5.1 4.5.2: Full sources including the Gentoo patchset for the 4.5 kernel tree
+sys-kernel/gentoo-sources 3.4.110 3.4.111 3.4.112 3.4.9999 3.10.95 3.10.101 3.12.52-r1 3.12.57 3.12.58 3.12.59 3.12.9999 3.14.58-r1 3.14.65 3.14.66 3.14.67 3.14.68 3.18.25-r1 3.18.26 3.18.27 3.18.28 3.18.29 3.18.30 3.18.31 4.1.12 4.1.15-r1 4.1.20 4.1.21 4.1.22 4.1.23 4.4.6 4.4.7 4.4.8 4.4.9 4.5.0-r1 4.5.1 4.5.2 4.5.3: Full sources including the Gentoo patchset for the 4.5 kernel tree
 sys-kernel/git-sources 4.6_rc1 4.6_rc2 4.6_rc3 4.6_rc4 4.6_rc5 4.6_rc6: The very latest -git version of the Linux kernel
 sys-kernel/hardened-sources 4.3.3-r4 4.4.2 4.4.8-r1 4.5.2-r1: Hardened kernel sources (kernel series 4.5)
 sys-kernel/kccmp 0.3: A simple tool for comparing two linux kernel .config files
@@ -17367,7 +17367,7 @@ virtual/gsasl 2: Virtual for the GNU SASL library
 virtual/httpd-basic 0-r1 0-r2: Virtual for static HTML-enabled webservers
 virtual/httpd-cgi 0-r1 0-r2: Virtual for CGI-enabled webservers
 virtual/httpd-fastcgi 0-r1: Virtual for FastCGI-enabled webservers
-virtual/httpd-php 5.4-r1 5.5 5.6 7.0: Virtual to provide PHP-enabled webservers
+virtual/httpd-php 5.5 5.6 7.0: Virtual to provide PHP-enabled webservers
 virtual/imap-c-client 0 1: Virtual for IMAP c-client
 virtual/inetd 0: Virtual for the internet super-server daemon
 virtual/jack 0: Virtual for JACK Audio Connection Kit
