@@ -12859,7 +12859,7 @@ media-plugins/vdr-fepg 0.4.1: VDR plugin: show epg of multiple channels graphica
 media-plugins/vdr-ffnetdev 0.1.2: VDR Plugin: Output device which offers OSD via VNC and Video as raw mpeg over network
 media-plugins/vdr-filebrowser 0.2.1: VDR plugin: file manager plugin for moving or renaming files in VDR
 media-plugins/vdr-freecell 0.0.2-r2 0.0.2-r3: VDR plugin: play 'Freecell' on the On Screen Display
-media-plugins/vdr-fritzbox 1.5.3: VDR Plugin: Inform about incoming phone-calls and use the fritz!box phonebook from vdr menu
+media-plugins/vdr-fritzbox 1.5.3: VDR Plugin: Inform about incoming phone-calls and use the fritz!box phonebook
 media-plugins/vdr-graphlcd 0.1.9: VDR Plugin: support output on Graphical LCD
 media-plugins/vdr-graphtft 0.3.7 0.3.7-r1: VDR plugin: GraphTFT
 media-plugins/vdr-image 0.3.1 0.4.0: VDR plugin: display of digital images, like jpeg, tiff, png, bmp
