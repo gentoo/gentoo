@@ -61,7 +61,6 @@ src_prepare() {
 src_configure() {
 	local mycmakeargs=(
 		-DCGAL_INSTALL_LIB_DIR=$(get_libdir)
-		-DCGAL_INSTALL_CMAKE_DIR="${EPREFIX}/usr/share/cmake/Modules/"
 		-DWITH_CGAL_Qt3=OFF
 		-DWITH_LEDA=OFF
 		-DWITH_Eigen3=ON
