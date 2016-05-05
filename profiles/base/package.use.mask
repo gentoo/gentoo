@@ -78,10 +78,6 @@ net-im/ayttm webcam
 # Drizzle is slated for removal
 sys-cluster/gearmand drizzle
 
-# Sergey Popov <pinkbyte@gentoo.org> (7 Dec 2015)
-# IPoE driver does not build properly
-net-dialup/accel-ppp ipoe
-
 # Patrice Clement <monsieurp@gentoo.org> (27 Nov 2015)
 # Unsastified dependencies are upsetting repoman. Needs investigation.
 app-arch/cfv bittorrent
