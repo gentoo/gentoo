@@ -41,11 +41,14 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
+PATCHES=(
+	"${FILESDIR}/${P}-nosmp-undefined-variable.patch"
+	"${FILESDIR}/${P}-isnan-floating-point-cast.patch"
+)
 S="${WORKDIR}/${PN}_${PV}/src"
 
 src_prepare() {
 	default
-	epatch "${FILESDIR}"/${P}-nosmp-undefined-variable.patch
 	sed -e 's/^\(HOSTARCH\s*=\).*/\1 ${HOST}/' \
 		-e "s:^\(CCPROG\s*=\).*:\1 $(tc-getCC):" \
 		-e "s:^\(CFPROG\s*=\).*:\1 $(tc-getFC):" \
