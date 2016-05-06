@@ -24,3 +24,9 @@ SRC_URI="http://extensions.libreoffice.org/${EXT}/${DICT}/releases/${MY_PV}/${MY
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86 ~amd64-fbsd ~amd64-linux ~x86-fbsd"
+
+src_install() {
+	myspell-r2_src_install
+	dosym /usr/share/hunspell/russian-aot.dic /usr/share/myspell/ru_RU.dic
+	dosym /usr/share/hunspell/russian-aot.aff /usr/share/myspell/ru_RU.aff
+}
