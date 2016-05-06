@@ -222,8 +222,7 @@ dev-java/proguard j2me
 
 # Lars Wendler <polynomial-c@gentoo.org> (19 Mar 2015)
 # >=games-strategy/freeciv-2.5.0 requires >=dev-lang/lua-5.2
-# No stable qt5 yet.
-games-strategy/freeciv system-lua qt5
+games-strategy/freeciv system-lua
 
 # Brian Evans <grknight@gentoo.org> (17 Mar 2015)
 # Mask the cluster flag for deprecation. Use dev-db/mysql-cluster if
