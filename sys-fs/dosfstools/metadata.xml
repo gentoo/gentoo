@@ -8,4 +8,7 @@
 <upstream>
 	<remote-id type="github">dosfstools/dosfstools</remote-id>
 </upstream>
+<use>
+	<flag name="compat">Install symlinks for legacy names of the tools</flag>
+</use>
 </pkgmetadata>
