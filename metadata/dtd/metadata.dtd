@@ -3,7 +3,7 @@
 <!ATTLIST catmetadata pkgname CDATA "">
 
 <!-- Metadata for a package -->
-<!ELEMENT pkgmetadata ( (maintainer|natural-name|longdescription|slots|use|upstream)* )>
+<!ELEMENT pkgmetadata ( (maintainer|longdescription|slots|use|upstream)* )>
 <!ATTLIST pkgmetadata pkgname CDATA "">
 
   <!-- One tag for each maintainer of a package, multiple allowed-->
@@ -13,9 +13,6 @@
     explicit type) for Gentoo maintainers is prohibited. -->
   <!ATTLIST maintainer type (person|project|unknown) "unknown">
 
-  <!-- Natural name for package, example: LibreOffice (for app-office/libreoffice) -->
-  <!ELEMENT natural-name (#PCDATA) >
-
   <!-- A long description of the package in freetext-->
   <!ELEMENT longdescription (#PCDATA|pkg|cat)* >
 
@@ -23,7 +20,10 @@
   <!ELEMENT slots ((slot)*,subslots?) >
     <!-- A particular SLOT -->
     <!ELEMENT slot (#PCDATA)* >
-      <!-- name attribute holds the name of the SLOT, for sub-SLOTS use the subslots element -->
+      <!-- name attribute holds the name of the SLOT, for sub-SLOTS
+      use the subslots element. A slot name of '*' can be used to
+      indicate a single description applying to all the slots in which
+      case no other <slot/> elements may be present. -->
       <!ATTLIST slot name CDATA #REQUIRED >
     <!-- The meaning of sub-SLOTs for the whole package -->
     <!ELEMENT subslots (#PCDATA)* >
@@ -45,7 +45,7 @@
     <!ELEMENT changelog (#PCDATA)>
     <!-- URL where the location of the upstream documentation can be found -->
     <!ELEMENT doc (#PCDATA)>
-      <!ATTLIST doc lang CDATA "C" >
+      <!ATTLIST doc lang CDATA "en" >
     <!-- location where to report bugs
       (may also be an email address prefixed with mailto:) -->
     <!ELEMENT bugs-to (#PCDATA)>
@@ -60,20 +60,21 @@
           
 <!-- Common attributes -->
 
-<!-- the lang attribute, specifies the language of this tag. This is 
-  only useful for descriptions of various kinds. If a tag with this 
-  attribute is included there must be a description in the default 
-  language "C" or "en", which is equivalent -->
-  <!ATTLIST description lang CDATA "C" >
-  <!ATTLIST longdescription lang CDATA "C" >
-  <!ATTLIST slots lang CDATA "C" >
-  <!ATTLIST use lang CDATA "C" >
+<!-- the lang attribute, specifies the language of this tag in the
+  form of a ISO 639-1 language code. This is only useful for
+  descriptions of various kinds. If a tag with this attribute is
+  included there must be a description in the default language "en" -->
+  <!ATTLIST description lang CDATA "en" >
+  <!ATTLIST longdescription lang CDATA "en" >
+  <!ATTLIST slots lang CDATA "en" >
+  <!ATTLIST use lang CDATA "en" >
 
 <!-- The restrict attribute, this attribute specifies restrictions on 
   the applicability of tags on versions. The format of this attribute is 
-  equal to the format of DEPEND lines in ebuilds. There is one special 
-  value though: restrict="*". A tag that specifies this only applies if 
-  there are no other tags that apply.
+  equal to the format of DEPEND lines in ebuilds. Only package
+  dependency specifications conforming to EAPI=0 syntax are allowed.
+  The dependency specification may only contain references to the
+  package itself and no other package.
   
   For required tags, there must be either an unrestricted version, or a 
   version that is default restricted. -->
