@@ -306,10 +306,6 @@ net-im/bitlbee skype
 # if anybody cares.
 net-libs/ortp zrtp
 
-# Johannes Huber <johu@gentoo.org> (14 Sep 2014)
-# Masked until dev-libs/extra-cmake-modules is in tree.
-dev-libs/libattica qt5
-
 # Michał Górny <mgorny@gentoo.org> (06 Sep 2014)
 # Mask the removed/deprecated flags for old ebuilds that do not use
 # the python-r1 eclass.
