@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -16,19 +16,15 @@ KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~spar
 IUSE="nls"
 
 PDEPEND="app-dicts/aspell-en"
-LANGS="af be bg br ca cs cy da de el en eo es et fi fo fr ga gl he hr hu hy is it la
-lt nl no pl pt pt_BR ro ru sk sl sr sv uk vi"
+LANGS="af be bg br ca cs cy da de de_1901 el en eo es et fi fo fr ga gl he hr
+hu hy is it la lt nl no pl pt pt_BR ro ru sk sl sr sv uk vi"
 for lang in ${LANGS}; do
-	dep="linguas_${lang}? ( app-dicts/aspell-${lang/pt_BR/pt-br} )"
-	if [[ ${lang} == de ]] ; then
-		dep="linguas_${lang}? (
-			|| (
-				app-dicts/aspell-${lang}
-				app-dicts/aspell-${lang}-alt
-			)
-		)"
-	fi
-	PDEPEND+=" ${dep}"
+	case ${lang} in
+		de_1901) dep="app-dicts/aspell-de-alt"  ;;
+		pt_BR)   dep="app-dicts/aspell-pt-br"   ;;
+		*)       dep="app-dicts/aspell-${lang}" ;;
+	esac
+	PDEPEND+=" linguas_${lang}? ( ${dep} )"
 	IUSE+=" linguas_${lang}"
 done
 unset dep
