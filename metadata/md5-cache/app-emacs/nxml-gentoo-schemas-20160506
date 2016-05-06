@@ -7,7 +7,7 @@ KEYWORDS=~amd64 ~ppc ~x86 ~x86-fbsd
 LICENSE=HPND
 RDEPEND=>=virtual/emacs-23
 SLOT=0
-SRC_URI=https://dev.gentoo.org/~ulm/distfiles/nxml-gentoo-schemas-20160125.tar.xz
+SRC_URI=https://dev.gentoo.org/~ulm/distfiles/nxml-gentoo-schemas-20160506.tar.xz
 _eclass_exported_funcs=pkg_postrm:elisp pkg_postinst:elisp pkg_setup:elisp src_unpack:elisp src_prepare:elisp src_configure:elisp src_compile:- src_install:-
 _eclasses_=elisp	7e36316fe822639d5a29fa10d5529eb9	elisp-common	9f56c4e9bf1282dbfc2a5a09e1124e74
 _md5_=872a4e72e31e26ee3ae75c4c10fe64c7
