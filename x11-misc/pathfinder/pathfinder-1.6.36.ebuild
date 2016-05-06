@@ -21,6 +21,8 @@ DEPEND="
 
 RDEPEND="${DEPEND}"
 
-FOXCONF="$(use_enable jpeg) \
-	$(use_enable png) \
-	$(use_enable tiff)"
+src_configure() {
+	FOXCONF="$(use_enable jpeg) \
+		$(use_enable png) \
+		$(use_enable tiff)" fox_src_configure
+}
