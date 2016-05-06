@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -15,7 +15,7 @@ SLOT="0"
 KEYWORDS=" amd64 ~x86"
 IUSE="debug doc +sqlite postgres +qwt"
 
-COMMON_DEPEND=">=dev-libs/boost-1.46
+COMMON_DEPEND=">=dev-libs/boost-1.46:=[threads]
 	dev-qt/qtcore:4
 	dev-qt/qtdbus:4
 	dev-qt/qtdeclarative:4
@@ -35,6 +35,10 @@ RDEPEND="${COMMON_DEPEND}
 	 )"
 
 REQUIRED_USE="|| ( postgres sqlite )"
+
+PATCHES=(
+	"${FILESDIR}/${P}-c++11-direct-list-initialization.patch"
+)
 
 src_configure() {
 	local mycmakeargs=(
