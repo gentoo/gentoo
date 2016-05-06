@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -22,6 +22,7 @@ DEPEND="virtual/opengl
 	media-libs/sdl-ttf
 	net-libs/enet:0
 	dev-games/physfs"
+RDEPEND=${DEPEND}
 
 src_prepare() {
 	edos2unix src/game/platform/file_linux.c \
@@ -32,7 +33,7 @@ src_prepare() {
 		-e "s:@GENTOO_DATADIR@:${GAMES_DATADIR}/${PN}:" \
 		-e "s:@GENTOO_CONFDIR@:${GAMES_SYSCONFDIR}/${PN}:" \
 		src/game/platform/file_linux.c || die "sed failed"
-	rm -rf src/enet || die "failed removing enet"
+	rm -rf src/enet || die
 }
 
 src_compile() {
