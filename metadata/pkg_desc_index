@@ -2,7 +2,7 @@ app-accessibility/SphinxTrain 0.9.1-r1 1.0.8: Speech Recognition (Training Modul
 app-accessibility/accerciser 3.14.0: Interactive Python accessibility explorer
 app-accessibility/at-spi2-atk 2.16.0-r1 2.18.1: Gtk module for bridging AT-SPI to Atk
 app-accessibility/at-spi2-core 2.16.0 2.18.3: D-Bus accessibility specifications and registration daemon
-app-accessibility/brltty 5.2: Daemon that provides access to the Linux/Unix console for a blind person
+app-accessibility/brltty 5.2-r1: Daemon that provides access to the Linux/Unix console for a blind person
 app-accessibility/caribou 0.4.19 0.4.20: Input assistive technology intended for switch and pointer users
 app-accessibility/edbrowse 3.5.1: editor, browser, and mail client using the /bin/ed interface
 app-accessibility/eflite 0.4.1-r2: A speech server that allows emacspeak and other screen readers to interact with festival lite
@@ -17709,7 +17709,7 @@ www-apps/webdavcgi 0.8.3 0.8.4: A Perl CGI for accessing and sharing files, or c
 www-apps/webmcp 1.2.5 1.2.6: Web application framework written in Lua and C
 www-apps/websvn 2.3.2 2.3.3: Web-based browsing tool for Subversion (SVN) repositories in PHP
 www-apps/wiliki 0.6.1: WiLiKi is a lightweight Wiki engine written in and running on Gauche Scheme
-www-apps/wordpress 4.4.2 4.5 4.5.1: Wordpress PHP and MySQL based content management system (CMS)
+www-apps/wordpress 4.4.2 4.5 4.5.1 4.5.2: Wordpress PHP and MySQL based content management system (CMS)
 www-client/chromium 50.0.2661.94 51.0.2704.19 51.0.2704.22 52.0.2716.0: Open-source version of Google Chrome web browser
 www-client/ck4up 1.2: Check for Updates on HTTP pages
 www-client/conkeror 1.0_pre20140212 1.0_pre20141005 1.0_pre20150227 1.0_pre20150519: A Mozilla-based web browser whose design is inspired by GNU Emacs
