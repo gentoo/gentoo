@@ -10,5 +10,5 @@ RESTRICT=test
 SLOT=0
 SRC_URI=mirror://sourceforge/docbook/docbook-xsl-1.79.1.tar.bz2
 _eclass_exported_funcs=pkg_postrm:- pkg_postinst:- src_prepare:- src_compile:- src_test:- src_install:-
-_eclasses_=ruby-single	c49250968781888465d5a8597376297f	ruby-utils	2f896785ed65442d7e84ab5f5eef3bd3
+_eclasses_=ruby-single	a5e86595177a8998cbb9f794f2bf9700	ruby-utils	2f896785ed65442d7e84ab5f5eef3bd3
 _md5_=7150b211086f8bc54a96eb1a8b851bcc
