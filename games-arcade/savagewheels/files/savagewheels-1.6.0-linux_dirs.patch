@@ -296,7 +296,7 @@
  	return SWV_SUCCESS;
 --- savagewheels-1.6.0/src/CSdl.cpp.old	2016-04-16 21:02:07.680544534 -0700
 +++ savagewheels-1.6.0/src/CSdl.cpp	2016-04-16 21:06:59.400432874 -0700
-@@ -1336,12 +1336,25 @@ SDL_Surface* CSdl::LoadBitmap( const cha
+@@ -1336,12 +1339,25 @@ SDL_Surface* CSdl::LoadBitmap( const cha
  SDL_Surface* CSdl::LoadBitmap( const char *filename, int32_t file_offset, Uint32 file_size, Uint32 color_key, Uint16 alpha_value )
  {
  	SDL_Surface  *sdl_surf	= NULL;						// temp surface
@@ -342,7 +342,7 @@
  
 --- savagewheels-1.6.0/src/CMainMenu.cpp.old	2016-04-17 07:38:09.417653268 -0700
 +++ savagewheels-1.6.0/src/CMainMenu.cpp	2016-04-17 07:38:24.277437113 -0700
-@@ -1167,12 +1168,13 @@ void CMainMenu::SaveSettings()
+@@ -1168,12 +1167,13 @@ void CMainMenu::SaveSettings()
  void CMainMenu::LoadSettings()
  {
  	FILE  *fp = NULL;
