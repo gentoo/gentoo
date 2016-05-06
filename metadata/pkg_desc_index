@@ -9529,7 +9529,7 @@ dev-util/android-studio 1.2.2.0.141.1980579 1.5.1.0.141.2456560 2.0.0.20.143.273
 dev-util/android-tools 0_p20130218 5.1.1_p13: Android platform tools (adb, fastboot, and mkbootimg)
 dev-util/anjuta 3.16.0 3.18.2: A versatile IDE for GNOME
 dev-util/antlrworks 1.2.3: A novel grammar development environment for ANTLR v3 grammars
-dev-util/apitrace 4.0 5.0 6.0 6.1: A tool for tracing, analyzing, and debugging graphics APIs
+dev-util/apitrace 4.0 5.0 6.0 6.1 7.1: A tool for tracing, analyzing, and debugging graphics APIs
 dev-util/appdata-tools 0.1.7 0.1.8-r1: CLI designed to validate AppData descriptions for standards compliance and to the style guide
 dev-util/appinventor 1.1: MIT App Inventor Setup package
 dev-util/archdiff 1.1.6: Utility to view the differences between two source code archives
