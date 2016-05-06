@@ -953,6 +953,9 @@ app-misc/mc:mclib - Compile and install the libmc.so shared library
 app-misc/mc:sftp - Add support for sftp (uses net-libs/libssh2 for it).
 app-misc/mc:slang - Use sys-libs/slang instead of sys-libs/ncurses.
 app-misc/mc:xdg - Toggles mc's config dir location. Enable for $XDG_CONFIG_HOME/mc, disable for $HOME/.mc
+app-misc/mosquitto:bridge - Enable bridge support in the MQTT broker.
+app-misc/mosquitto:persistence - Store messages and subscriptions to a file.
+app-misc/mosquitto:srv - Include SRV lookup support.
 app-misc/muttprint:doc - Builds documentation
 app-misc/note:general - Add support for ascii flatfile backend
 app-misc/note:text - Add support for text backend
