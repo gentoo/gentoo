@@ -20,7 +20,7 @@ IUSE="sdl X"
 
 DEPEND="sdl? ( x11-libs/libX11 media-libs/libsdl[video] )
 	X? ( x11-libs/libX11 )
-	!sdl? ( !X? ( sys-libs/ncurses ) )"
+	!sdl? ( !X? ( sys-libs/ncurses:0 ) )"
 RDEPEND=${DEPEND}
 
 S=${WORKDIR}/${MY_P}
