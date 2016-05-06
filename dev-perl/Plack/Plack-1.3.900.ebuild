@@ -13,7 +13,9 @@ DESCRIPTION="Perl Superglue for Web frameworks and Web Servers (PSGI toolkit)"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test minimal examples"
-
+PATCHES=(
+	"${FILESDIR}/${P}-issue-545.patch"
+)
 RDEPEND="
 	!minimal? (
 		dev-perl/CGI-Compile
