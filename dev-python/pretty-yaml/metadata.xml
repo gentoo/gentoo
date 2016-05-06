@@ -8,5 +8,6 @@
   <upstream>
     <remote-id type="pypi">pyaml</remote-id>
     <remote-id type="github">mk-fg/pretty-yaml</remote-id>
+    <bugs-to>https://github.com/mk-fg/pretty-yaml/issues</bugs-to>
   </upstream>
 </pkgmetadata>

@@ -39,12 +39,12 @@ cuda_check() {
 
 env_check() {
 	# Make sure the configuration is sane
-	${USER:="boinc"}
-	${GROUP:="boinc"}
-	${RUNTIMEDIR:="/var/lib/boinc"}
-	${BOINCBIN:="$(which boinc_client)"}
-	${ALLOW_REMOTE_RPC:="yes"}
-	${NICELEVEL:="19"}
+	: ${USER:="boinc"}
+	: ${GROUP:="boinc"}
+	: ${RUNTIMEDIR:="/var/lib/boinc"}
+	: ${BOINCBIN:="$(which boinc_client)"}
+	: ${ALLOW_REMOTE_RPC:="yes"}
+	: ${NICELEVEL:="19"}
 	# ARGS is not checked, it could have been explicitly set
 	# to be empty by the user.
 
@@ -136,6 +136,7 @@ attach() {
 	sleep 10
 	tail "${RUNTIMEDIR}/stdoutdae.txt"
 }
+
 
 stop() {
 	local password=""

@@ -30,6 +30,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michael Palimaka <kensington@gentoo.org> (05 May 2016)
+# Doesn't compile against latest media-libs/spandsp.
+# Not needed anymore for Asterisk 1.6.
+# Masked for removal in 30 days. Bug #575778.
+net-misc/asterisk-spandsp_codec_g726
+
 # Maciej Mrozowski <reavertm@gentoo.org> (3 May 2016)
 # Mask until >=net-libs/qxmpp-0.8.3 is provided with qt5 support.
 =net-im/kadu-3.0
@@ -160,12 +166,6 @@ net-libs/libqinfinity
 # Michael Palimaka <kensington@gentoo.org> (06 Apr 2016)
 # Fails to build. Dead upstream. Masked for removal in 30 days.
 kde-misc/kte-collaborative
-
-# David Seifert <soap@gentoo.org> (05 Apr 2016)
-# No upstream release since 2007, no revdeps in tree,
-# version in tree outdated, bug #454702.
-# Masking for removal in 30 days
-dev-libs/ptypes
 
 # Patrick Lauer <patrick@gentoo.org> (05 Apr 2016)
 # --configtest is broken, mask until 2.3.1 release
@@ -358,16 +358,6 @@ www-apps/389-dsgw
 # Anthony G. Basile <blueness@gentoo.org> (06 Dec 2015)
 # Masked until we deal with SSLv3, bug #567554
 =dev-libs/libressl-2.3*
-
-# Brian Evans <grknight@gentoo.org> (02 Dec 2015)
-# All current targets are masked.
-<dev-php/pecl-taint-1.99.99
-
-# Brian Evans <grknight@gentoo.org> (02 Dec 2015)
-# PHP 5.4 is End Of Life and will not receive any further updates
-# Please migrate to 5.5 or, preferably 5.6.
-dev-lang/php:5.4
-~virtual/httpd-php-5.4
 
 # Michał Górny <mgorny@gentoo.org> (30 Oct 2015)
 # Uses unsafe ioctls that could result in data corruption. Upstream
@@ -709,11 +699,6 @@ app-portage/g-ctan
 # Masked to ensure users are aware before they install.
 app-text/cuneiform
 
-# Tom Wijsman <TomWij@gentoo.org> (12 Mar 2013)
-# 2.5.* has known security and other issues due to an affected
-# bundled ffmpeg, see bugs #446468 and #444262.
-<media-video/avidemux-2.6.2
-
 # Rick Farina <zerochaos@gentoo.org> (21 Dec 2012)
 # madwifi has been replaced by ath5k and ath9k in kernel
 # drivers and is subject to numerous long standing bugs
@@ -764,11 +749,6 @@ net-analyzer/ncrack
 # Luca Barbato <lu_zero@gentoo.org> (21 Jul 2010)
 # Not ready for public consumption, clashes with current mesa-git
 media-libs/shivavg
-
-# Stefan Briesenick <sbriesen@gentoo.org> (21 Jul 2010)
-# doesn't compile against latest media-libs/spandsp.
-# not needed anymore for Asterisk 1.6.
-net-misc/asterisk-spandsp_codec_g726
 
 # Mike Frysinger <vapier@gentoo.org> (07 Mar 2010)
 # Very old packages that people should have upgraded away from

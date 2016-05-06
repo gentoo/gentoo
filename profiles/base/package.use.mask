@@ -5,6 +5,10 @@
 # This file requires >=portage-2.1.1
 # New entries go on top.
 
+# Michael Palimaka <kensington@gentoo.org> (05 May 2016)
+# Doesn't work
+media-libs/openimageio python
+
 # Ian Stakenvicius <axs@gentoo.org> (28 Apr 2016)
 # system-cairo support causes lots of crashing in mozilla pkgs
 # (see bug #556378 and others)
@@ -77,10 +81,6 @@ net-im/ayttm webcam
 # Brian Evans <grknight@gentoo.org> (17 Dec 2015)
 # Drizzle is slated for removal
 sys-cluster/gearmand drizzle
-
-# Sergey Popov <pinkbyte@gentoo.org> (7 Dec 2015)
-# IPoE driver does not build properly
-net-dialup/accel-ppp ipoe
 
 # Patrice Clement <monsieurp@gentoo.org> (27 Nov 2015)
 # Unsastified dependencies are upsetting repoman. Needs investigation.

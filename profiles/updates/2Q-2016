@@ -22,3 +22,4 @@ move dev-perl/text-template dev-perl/Text-Template
 move dev-perl/text-wrapper dev-perl/Text-Wrapper
 move dev-perl/tie-encryptedhash dev-perl/Tie-EncryptedHash
 move dev-perl/yaml dev-perl/YAML
+move app-dicts/myspell-de-alt app-dicts/myspell-de_1901

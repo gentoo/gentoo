@@ -24,8 +24,14 @@ start() {
 
 stop() {
 	ebegin "Stopping accel-pppd"
-	start-stop-daemon --stop --quiet --pidfile ${ACCEL_PPPD_PID}
-	eend $?
+	accel-cmd shutdown
+	[ $? -ne 0 ] && kill -9 $(pidof accel-pppd)
+	PID="$(cat ${ACCEL_PPPD_PID})"
+	while [ -n "${PID}" -a -d "/proc/${PID}" ]; do
+		sleep 1
+	done
+	rm -f ${ACCEL_PPPD_PID}
+	eend 0
 }
 
 reload() {

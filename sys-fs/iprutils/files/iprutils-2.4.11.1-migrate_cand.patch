@@ -1,0 +1,11 @@
+--- a/iprconfig.c
++++ b/iprconfig.c
+@@ -16827,7 +16828,7 @@
+ 	}
+ 
+ 	if (!dev->array_rcd->migrate_cand) {
+-		scsi_err(dev, "%s is not a candidate for array migration.\n");
++		scsi_err(dev, "%s is not a candidate for array migration.\n", args[0]);
+ 		return -EINVAL;
+ 	}
+ 

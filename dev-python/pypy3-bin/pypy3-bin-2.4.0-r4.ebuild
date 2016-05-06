@@ -84,9 +84,10 @@ QA_PREBUILT="
 src_prepare() {
 	epatch \
 		"${FILESDIR}/4.0.0-gentoo-path.patch" \
-		"${FILESDIR}/1.9-distutils.unixccompiler.UnixCCompiler.runtime_library_dir_option.patch"
-	epatch "${FILESDIR}/2.4.0-ncurses6.patch"
-	epatch "${FILESDIR}"/pypy3-2.4.0-libressl.patch
+		"${FILESDIR}/1.9-distutils.unixccompiler.UnixCCompiler.runtime_library_dir_option.patch" \
+		"${FILESDIR}/2.4.0-ncurses6.patch" \
+		"${FILESDIR}/pypy3-2.4.0-libressl.patch" \
+		"${FILESDIR}/pypy3-2.4.0-fix-tkinter-regression.patch"
 
 	sed -e "s^@EPREFIX@^${EPREFIX}^" \
 		-e "s^@libdir@^$(get_libdir)^" \
