@@ -260,10 +260,6 @@ app-admin/clsync cluster mhash
 # Mask for all arches, can be unmasked on arm once keyworded there
 games-board/stockfish armv7
 
-# Michael Palimaka <kensington@gentoo.org> (03 Feb 2015)
-# Requires unreleased version of dev-libs/soprano
-app-office/akonadi-server qt5
-
 # Brian Evans <grknight@gentoo.org> (02 Feb 2015)
 # Masked for dev-php/PEAR-MDB2_Driver_sqlite last rites Bug 538584
 dev-php/PHPonTrax sqlite
