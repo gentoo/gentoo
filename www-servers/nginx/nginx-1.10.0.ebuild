@@ -529,7 +529,7 @@ src_configure() {
 				myconf+=( --without-stream_upstream_least_conn_module )
 				myconf+=( --without-stream_upstream_zone_module )
 			else
-				myconf+=( --without-stream_${stream}_module )
+				myconf+=( --without-stream_${mod}_module )
 			fi
 		fi
 	done
