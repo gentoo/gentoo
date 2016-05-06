@@ -1,15 +1,17 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
-inherit eutils flag-o-matic games
+inherit autotools eutils flag-o-matic games
 
 LVL_PV="0.7.0" #they unfortunately don't release both at the same time, why ~ as separator :(
 LVL="inksmoto-${LVL_PV}"
+DEB_PV=6
 DESCRIPTION="A challenging 2D motocross platform game"
 HOMEPAGE="http://xmoto.tuxfamily.org"
 SRC_URI="http://download.tuxfamily.org/xmoto/xmoto/${PV}/${P}-src.tar.gz
+	mirror://debian/pool/main/x/${PN}/${PN}_${PV}+dfsg-${DEB_PV}.debian.tar.xz
 	editor? ( http://download.tuxfamily.org/xmoto/svg2lvl/${LVL_PV}/${LVL}.tar.gz )"
 
 LICENSE="GPL-2"
@@ -36,24 +38,27 @@ RDEPEND="
 	media-fonts/dejavu
 	nls? ( virtual/libintl )"
 DEPEND="${RDEPEND}
+	app-arch/xz-utils
 	nls? ( sys-devel/gettext )"
 RDEPEND="${RDEPEND}
 	editor? ( media-gfx/inkscape )"
 
 src_prepare() {
+	EPATCH_SOURCE="${WORKDIR}/debian/patches" \
+		epatch $(cat ${WORKDIR}/debian/patches/series)
 	use editor && rm -vf "${WORKDIR}"/extensions/{bezmisc,inkex}.py
 	sed -i \
 		-e '/^gettextsrcdir/s:=.*:= @localedir@/gettext/po:' \
 		po/Makefile.in.in || die
-
-	epatch "${FILESDIR}"/${P}-utf8.patch
+	mv configure.{in,ac} || die
+	eautoreconf
 }
 
 src_configure() {
 	# bug #289792
 	filter-flags -DdDOUBLE -DdSINGLE
 	# bug #569624 - ode-0.13 needs one or the other defined
-	append-flags -Dd$(has_version 'dev-games/ode[double-precision]' && echo DOUBLE || echo SINGLE)
+	append-cppflags -Dd$(has_version 'dev-games/ode[double-precision]' && echo DOUBLE || echo SINGLE)
 
 	egamesconf \
 		--enable-threads=posix \
