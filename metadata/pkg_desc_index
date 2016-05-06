@@ -703,7 +703,7 @@ app-dicts/myspell-cs 20110224: Czech dictionaries for myspell/hunspell
 app-dicts/myspell-cy 20060316 20130708: Welsh dictionaries for myspell/hunspell
 app-dicts/myspell-da 2.1: Danish dictionaries for myspell/hunspell
 app-dicts/myspell-de 2013.12.06 2015.12.28: German dictionaries for myspell/hunspell
-app-dicts/myspell-de-alt 20120929: German (traditional orthography) dictionaries for myspell/hunspell
+app-dicts/myspell-de_1901 20120929 20160403: German (traditional orthography) dictionaries for myspell/hunspell
 app-dicts/myspell-el 0.8: Greek dictionaries for myspell/hunspell
 app-dicts/myspell-en 20081002 20151201 20160201: English dictionaries for myspell/hunspell
 app-dicts/myspell-eo 1.0: Esperanto dictionaries for myspell/hunspell
@@ -2185,7 +2185,7 @@ app-text/antixls 0.3b: It is used to print out an XLS file with minimal formatti
 app-text/apvlv 0.1.5 0.1.5-r1: Alf's PDF Viewer Like Vim
 app-text/asa 1.1 1.1-r1: ASA Carriage control conversion for ouput by Fortran programs
 app-text/asciidoc 8.6.9-r1 8.6.9-r2 8.6.9-r3 9999: AsciiDoc is a plain text human readable/writable document format
-app-text/aspell 0.60.6.1-r1 0.60.6.1-r2: A spell checker replacement for ispell
+app-text/aspell 0.60.6.1-r1 0.60.6.1-r3: A spell checker replacement for ispell
 app-text/atril 1.8.1 1.10.3-r2: Atril document viewer for MATE
 app-text/bact 0.13: Boosting Algorithm for Classification of Trees
 app-text/barcode 0.98-r1: barcode generator
@@ -14061,7 +14061,7 @@ net-ftp/yafc 1.3.7: Console ftp client with a lot of nifty features
 net-im/ayttm 0.6.3-r1: A multi-protocol instant messaging client
 net-im/bitlbee 3.4.1 3.4.2 9999: irc to IM gateway that support multiple IM protocols
 net-im/bitlbee-steam 1.2.0 9999: Steam protocol plugin for BitlBee
-net-im/centerim 4.22.10 5.0.0_beta2: CenterIM is a ncurses ICQ/Yahoo!/AIM/IRC/MSN/Jabber/GaduGadu/RSS/LiveJournal Client
+net-im/centerim 4.22.10 4.22.10-r1 5.0.0_beta2: CenterIM is a ncurses ICQ/Yahoo!/AIM/IRC/MSN/Jabber/GaduGadu/RSS/LiveJournal Client
 net-im/choqok 1.5: Free/Open Source micro-blogging client for KDE
 net-im/climm 0.7.1: ICQ text-mode client with many features
 net-im/coccinella 0.96.20: Jabber Client With a Built-in Whiteboard and VoIP (jingle)
