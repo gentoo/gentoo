@@ -5,7 +5,7 @@ app-accessibility/at-spi2-core 2.16.0 2.18.3: D-Bus accessibility specifications
 app-accessibility/brltty 5.2-r1: Daemon that provides access to the Linux/Unix console for a blind person
 app-accessibility/caribou 0.4.19 0.4.20: Input assistive technology intended for switch and pointer users
 app-accessibility/edbrowse 3.5.1: editor, browser, and mail client using the /bin/ed interface
-app-accessibility/eflite 0.4.1-r2: A speech server that allows emacspeak and other screen readers to interact with festival lite
+app-accessibility/eflite 0.4.1-r3: A speech server that allows emacspeak and other screen readers to interact with festival lite
 app-accessibility/emacspeak 39.0-r2 9999: the emacspeak audio desktop
 app-accessibility/emacspeak-ss 1.9.1: adds support for several speech synthesizers to emacspeak
 app-accessibility/epos 2.5.37-r1: language independent text-to-speech system
@@ -5164,7 +5164,7 @@ dev-ml/zed 1.2 1.4: Zed is an abstract engine for text edition
 dev-perl/Ace 1.920.0-r1: Object-Oriented Access to ACEDB Databases
 dev-perl/Acme-Damn 0.60.0: Module, that 'unblesses' Perl objects
 dev-perl/Algorithm-Annotate 0.100.0-r1: Represent a series of changes in annotate form
-dev-perl/Algorithm-C3 0.90.0: A module for merging hierarchies using the C3 algorithm
+dev-perl/Algorithm-C3 0.90.0 0.100.0: A module for merging hierarchies using the C3 algorithm
 dev-perl/Algorithm-ClusterPoints 0.80.0: Find clusters inside a set of points
 dev-perl/Algorithm-Dependency 1.110.0-r1: Toolkit for implementing dependency systems
 dev-perl/Algorithm-Diff 1.190.300: Compute intelligent differences between two files / lists
@@ -5179,7 +5179,7 @@ dev-perl/AnyEvent-I3 0.150.0 0.160.0: Communicate with the i3 window manager
 dev-perl/Apache-AuthCookie 3.230.0 3.240.0: Perl Authentication and Authorization via cookies
 dev-perl/Apache-CGI-Builder 1.300.0-r1: CGI::Builder and Apache/mod_perl (1 and 2) integration
 dev-perl/Apache-DBI 1.120.0-r1: Apache::DBI module for perl
-dev-perl/Apache-LogFormat-Compiler 0.320.0: Compile an Apache log format string to perl-code
+dev-perl/Apache-LogFormat-Compiler 0.320.0 0.330.0: Compile an Apache log format string to perl-code
 dev-perl/Apache-Reload 0.130.0: Perl module for Apache::Reload
 dev-perl/Apache-Session 1.930.0: A persistence framework for session data
 dev-perl/Apache-SessionX 2.10.0-r1: An extented persistence framework for session data
@@ -5189,17 +5189,17 @@ dev-perl/Apache2-AuthenNTLM 0.20.0-r1: Apache2::AuthenNTLM - Perform Microsoft N
 dev-perl/App-CLI 0.313.0-r1: Dispatcher module for command line interface programs
 dev-perl/App-Nopaste 1.4.0: Easy access to any pastebin
 dev-perl/App-cpanminus 1.703.900 1.704.0: Get, unpack, build and install modules from CPAN
-dev-perl/App-perlbrew 0.730.0 0.740.0: Manage perl installations in your $HOME
+dev-perl/App-perlbrew 0.730.0 0.740.0 0.750.0: Manage perl installations in your $HOME
 dev-perl/AppConfig 1.710.0: Perl5 module for reading configuration files and parsing command line arguments
-dev-perl/Archive-Any 0.94.100: Single interface to deal with file archives
-dev-perl/Archive-Extract 0.720.0: Generic archive extracting mechanism
+dev-perl/Archive-Any 0.94.100 0.94.500: Single interface to deal with file archives
+dev-perl/Archive-Extract 0.720.0 0.760.0: Generic archive extracting mechanism
 dev-perl/Archive-Rar 2.20.0-r1: Archive::Rar - Interface with the rar command
-dev-perl/Archive-Zip 1.530.0 1.560.0: A wrapper that lets you read Zip archive members as if they were files
-dev-perl/Array-Compare 2.20.0-r1: Perl extension for comparing arrays
+dev-perl/Archive-Zip 1.530.0 1.560.0 1.570.0: A wrapper that lets you read Zip archive members as if they were files
+dev-perl/Array-Compare 2.20.0-r1 2.110.0: Perl extension for comparing arrays
 dev-perl/Array-RefElem 1.0.0-r1: Set up array elements as aliases
 dev-perl/Array-Window 1.20.0-r1: Array::Window - Calculate windows/subsets/pages of arrays
 dev-perl/Astro-FITS-Header 3.70.0: Interface to FITS headers
-dev-perl/AtExit 2.10.0-r1: atexit() function to register exit-callbacks
+dev-perl/AtExit 2.10.0-r1 2.30.0: atexit() function to register exit-callbacks
 dev-perl/Audio-CD-disc-cover 0.05-r1: Perl Module needed for app-cdr/disc-cover
 dev-perl/Audio-DSP 0.20.0-r1: Perl interface to *NIX digital audio device
 dev-perl/Audio-FLAC-Header 2.400.0-r1: Access to FLAC audio metadata
@@ -5396,7 +5396,7 @@ dev-perl/Curses-UI 0.960.900-r1: Perl UI framework based on the curses library
 dev-perl/CursesWidgets 1.997.0-r1: Provide high level APIs for rapid user interface design on the console in Perl
 dev-perl/Cwd-Guard 0.40.0: Temporary changing working directory (chdir)
 dev-perl/DBD-Pg 3.4.2 3.5.3: PostgreSQL database driver for the DBI module
-dev-perl/DBD-SQLite 1.480.0: Self Contained RDBMS in a DBI Driver
+dev-perl/DBD-SQLite 1.480.0 1.500.0: Self Contained RDBMS in a DBI Driver
 dev-perl/DBD-mysql 4.32.0-r1: The Perl DBD:mysql Module
 dev-perl/DBI 1.634.0: Database independent interface for Perl
 dev-perl/DBI-Shell 11.950.0-r1: Interactive command shell for the DBI
