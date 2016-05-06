@@ -41,6 +41,10 @@
 		<xs:choice minOccurs='0' maxOccurs='unbounded'>
 			<xs:element name='longdescription' type='longDescType'/>
 			<xs:element name='maintainer' type='maintainerType'>
+				<xs:unique name='maintainerNameSingleConstraint'>
+					<xs:selector xpath='name'/>
+					<xs:field xpath='@fake-only-once'/>
+				</xs:unique>
 				<xs:unique name='maintainerDescUniquityConstraint'>
 					<xs:selector xpath='description'/>
 					<xs:field xpath='@lang'/>
@@ -112,14 +116,11 @@
 
 	<!-- maintainer in two variants -->
 	<xs:complexType name='maintainerType'>
-		<xs:all>
-			<xs:element name='email' type='emailType'
-				minOccurs='1'/>
-			<xs:element name='name' type='xs:token'
-				minOccurs='0'/>
-			<xs:element name='description' type='maintainerDescType'
-				minOccurs='0'/>
-		</xs:all>
+		<xs:choice minOccurs='0' maxOccurs='unbounded'>
+			<xs:element name='email' type='emailType'/>
+			<xs:element name='name' type='tokenOnceType'/>
+			<xs:element name='description' type='maintainerDescType'/>
+		</xs:choice>
 		<xs:attribute name='type' type='maintainerTypeAttrType'
 			use='required'/>
 		<xs:attribute name='restrict' type='restrictAttrType'/>
