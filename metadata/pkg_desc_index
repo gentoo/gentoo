@@ -2375,7 +2375,7 @@ app-text/peg-markdown 0.4.14: Implementation of markdown in C, using a PEG gramm
 app-text/pelican 3.6.0 3.6.3: A tool to generate a static blog, with restructured text or markdown input files
 app-text/pep 2.8-r1: General purpose filter and file cleaning program
 app-text/pinfo 0.6.10-r5: Hypertext info and man viewer based on (n)curses
-app-text/po4a 0.45-r1 0.45-r2: Tools for helping translation of documentation
+app-text/po4a 0.45-r1 0.45-r2 0.45-r3: Tools for helping translation of documentation
 app-text/podofo 0.9.2 0.9.3: PoDoFo is a C++ library to work with the PDF file format
 app-text/poppler 0.32.0 0.42.0 0.43.0 9999: PDF rendering library based on the xpdf-3.0 code base
 app-text/poppler-data 0.4.7: Data files for poppler to support uncommon encodings without xpdfrc
@@ -9821,6 +9821,7 @@ dev-util/scanmem 0.15.2 0.15.3: Locate and modify variables in executing process
 dev-util/schroot 1.6.3 1.6.5 1.6.5-r1 1.6.10-r3: Utility to execute commands in a chroot environment
 dev-util/scons 2.3.5 2.4.1 2.5.0: Extensible Python-based build utility
 dev-util/sel 0.08.4 0.08.4-r1: A filemanager for shell scripts
+dev-util/serialtalk 1.2 9999: simple command-line tool to talk to serial devices
 dev-util/setconf 0.6.6 0.6.7: A small python based utility used to change configuration files
 dev-util/sgb 20030623: Stanford GraphBase
 dev-util/shards 0.6.1 0.6.2: Dependency manager for the Crystal language
