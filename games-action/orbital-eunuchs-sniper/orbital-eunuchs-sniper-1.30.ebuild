@@ -15,9 +15,9 @@ SLOT="0"
 KEYWORDS="amd64 ppc x86"
 IUSE=""
 
-DEPEND="media-libs/libsdl
-	media-libs/sdl-mixer
-	media-libs/sdl-image"
+DEPEND="media-libs/libsdl[joystick,video]
+	media-libs/sdl-mixer[vorbis]
+	media-libs/sdl-image[png]"
 RDEPEND=${DEPEND}
 
 S=${WORKDIR}/${MY_P}
