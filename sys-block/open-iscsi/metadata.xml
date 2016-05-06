@@ -8,6 +8,5 @@
 	<use>
 		<flag name="tcp">Support iSCSI over TCP</flag>
 		<flag name="rdma">Support iSCSI over RDMA</flag>
-		<flag name="infiniban">Support iSCSI over Infiniband iSER</flag>
 	</use>
 </pkgmetadata>
