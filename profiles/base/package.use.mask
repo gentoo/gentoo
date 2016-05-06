@@ -236,11 +236,6 @@ dev-db/percona-server cluster
 # Mask bdplus support and unmask on arches where libbdplus is keyworded.
 media-libs/libbluray bdplus
 
-# Michael Sterrett <mr_bones_@gentoo.org> (09 Mar 2015)
-# Mask qt5 support until qt5 is stable so as to not
-# hold up making yabause stable.
-games-emulation/yabause qt5
-
 # Michał Górny <mgorny@gentoo.org> (01 Mar 2015)
 # pidgin-opensteamworks is only available for amd64, ppc32 and x86
 net-im/telepathy-connection-managers steam
