@@ -15,7 +15,7 @@ KEYWORDS="amd64 ppc x86"
 IUSE=""
 
 DEPEND="media-libs/libsdl[joystick,sound,video]
-	virtual/jpeg
+	virtual/jpeg:0
 	sys-libs/zlib
 	media-libs/libpng:0
 	media-libs/sdl-image[jpeg,png]
