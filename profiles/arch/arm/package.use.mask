@@ -190,11 +190,6 @@ dev-qt/qt-mobility messaging
 # Do it! No reason to ask permission before!
 >=media-sound/easytag-2.2.0 opus test
 
-# Johannes Huber <johu@gentoo.org> (16 Apr 2014)
-# unkeyworded deps
-kde-apps/gwenview semantic-desktop
-kde-apps/okular dpi
-
 # Yixun Lan <dlan@gentoo.org> (12 Apr 2014)
 # app-emulation/qemu is not keyworded on arm arch.
 app-emulation/xen-tools system-qemu
@@ -391,16 +386,11 @@ app-accessibility/speech-dispatcher flite
 # Markus Meier <maekke@gentoo.org> (23 Dec 2012)
 # mask kde-base/* flags due to unkeyworded dependencies
 kde-apps/kalzium editor solver
-kde-apps/krdc rdesktop
-kde-apps/kopete jingle msn sms
-kde-base/kdeplasma-addons fcitx oauth qwt scim
-kde-apps/okular ebook chm
+kde-apps/kopete jingle sms
+kde-base/kdeplasma-addons fcitx oauth
 kde-apps/kstars indi
 kde-apps/kdeutils-meta floppy
 kde-apps/kdenetwork-meta ppp
-kde-base/smokeqt qscintilla qwt
-kde-base/qtruby qscintilla qwt
-kde-base/perlqt qscintilla qwt
 
 # Alexandre Rostovtsev <tetromino@gentoo.org> (15 Dec 2012)
 # media-video/coherence not keyworded
