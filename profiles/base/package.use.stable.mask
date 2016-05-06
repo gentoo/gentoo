@@ -43,10 +43,6 @@ dev-lang/python-exec -python_targets_python3_5
 =app-office/libreoffice-5.0* gtk3
 =app-office/libreoffice-5.1* gtk3
 
-# Johannes Huber <johu@gentoo.org> (27 Aug 2015)
-# Needs KF 5 stable, bug #558460
-net-irc/quassel qt5
-
 # Davide Pesavento <pesa@gentoo.org> (26 Aug 2015)
 # The corresponding Qt5 modules are not stable yet, and we don't want
 # to stabilize them solely because of PyQt5 when there are no other
