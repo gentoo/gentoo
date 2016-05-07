@@ -329,6 +329,9 @@ src_prepare() {
 
 	if use nginx_modules_http_upstream_check; then
 		eapply -p0 "${FILESDIR}/check-1.9.2".patch
+		pushd "${HTTP_UPSTREAM_CHECK_MODULE_WD}" >/dev/null
+		eapply -p1 "${FILESDIR}/check-0.3.0-segfault-on-reload".patch
+		popd >/dev/null
 	fi
 
 	if use nginx_modules_http_lua; then
