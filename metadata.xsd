@@ -168,7 +168,7 @@
 			<xs:element name='cat' type='catType'/>
 		</xs:choice>
 		<xs:attribute name='lang' type='langAttrType' default='en'/>
-		<xs:attribute name='restrict' type='restrictAttrType'/>
+		<xs:attribute name='restrict' type='restrictAttrType' default=''/>
 	</xs:complexType>
 
 	<xs:complexType name='catLongDescType' mixed='true'>
