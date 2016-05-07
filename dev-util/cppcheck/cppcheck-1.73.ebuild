@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -6,7 +6,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python{2_7,3_3,3_4,3_5} )
 
-inherit distutils-r1 eutils flag-o-matic qt4-r2 toolchain-funcs
+inherit distutils-r1 eutils qt4-r2 toolchain-funcs flag-o-matic
 
 DESCRIPTION="static analyzer of C/C++ code"
 HOMEPAGE="http://cppcheck.sourceforge.net"
@@ -27,14 +27,14 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 src_prepare() {
+	append-cxxflags -std=c++0x
+
 	# Drop bundled libs, patch Makefile generator and re-run it
 	rm -r externals || die
-	epatch "${FILESDIR}"/${PN}-1.69-tinyxml2.patch
+	epatch "${FILESDIR}"/${PN}-1.72-tinyxml2.patch
 	tc-export CXX
 	emake dmake
 	./dmake || die
-
-	epatch "${FILESDIR}"/${PN}-1.69-c++0x.patch
 
 	epatch_user
 }
@@ -90,7 +90,7 @@ src_install() {
 	doins cfg/*.cfg
 	if use qt4 ; then
 		dobin gui/${PN}-gui
-		dodoc readme_gui.txt gui/{projectfile.txt,gui.${PN}}
+		dodoc gui/{projectfile.txt,gui.${PN}}
 	fi
 	if use htmlreport ; then
 		pushd htmlreport
@@ -101,6 +101,5 @@ src_install() {
 		rm "${ED}/usr/bin/cppcheck-htmlreport" || die
 	fi
 	doman ${PN}.1
-	dodoc readme.txt
 	dodoc -r triage
 }
