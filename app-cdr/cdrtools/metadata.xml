@@ -8,6 +8,7 @@
 	<upstream>
 		<maintainer>
 			<email>joerg.schilling@fokus.fraunhofer.de</email>
+			<name>Jörg Schilling</name>
 		</maintainer>
 		<remote-id type="sourceforge">cdrtools</remote-id>
 	</upstream>
