@@ -35,11 +35,13 @@ MODULE_NAMES="saa716x_ff(misc:${ROOT}/usr/src/linux:${S}/linux/drivers/media/com
 CONFIG_CHECK="DVB_CORE DVB_STV6110x DVB_STV090x"
 
 src_prepare() {
-	epatch "${FILESDIR}/OSD_RAW_CMD_patch_2.diff"
-	epatch "${FILESDIR}/v4l-dvb-saa716x-Makefilepatch-2.diff"
-	kernel_is ge 3 19 0 && epatch "${FILESDIR}/v4l-dvb-saa716x-3.19-set_gpio.patch"
-	kernel_is ge 4 2 0 && epatch "${FILESDIR}/v4l-dvb-saa716x-4.2-fix-compile.patch"
-	kernel_is ge 4 5 2 && epatch "${FILESDIR}/v4l-dvb-saa716x-4.5.2-fix-compile.patch"
+	default
+
+	eapply -p0 "${FILESDIR}/OSD_RAW_CMD_patch_2.diff"
+	eapply "${FILESDIR}/v4l-dvb-saa716x-Makefilepatch-2.diff"
+	kernel_is ge 3 19 0 && eapply "${FILESDIR}/v4l-dvb-saa716x-3.19-set_gpio.patch"
+	kernel_is ge 4 2 0 && eapply "${FILESDIR}/v4l-dvb-saa716x-4.2-fix-compile.patch"
+	kernel_is ge 4 5 2 && eapply "${FILESDIR}/v4l-dvb-saa716x-4.5.2-fix-compile.patch"
 }
 
 src_compile() {
