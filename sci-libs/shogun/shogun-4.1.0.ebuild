@@ -2,14 +2,14 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{3,4} )
+PYTHON_COMPAT=( python2_7 python3_{4,5} )
 
-inherit cmake-utils multilib python-single-r1 toolchain-funcs versionator
+inherit cmake-utils flag-o-matic python-single-r1 toolchain-funcs versionator
 
 MYPV=$(get_version_component_range 1-2)
-MYPD=${PN}-data-0.8
+MYPD=${PN}-data-0.9
 
 DESCRIPTION="Large Scale Machine Learning Toolbox"
 HOMEPAGE="http://shogun-toolbox.org/"
@@ -25,8 +25,7 @@ IUSE="doc examples lua mono octave python R ruby static-libs test"
 
 REQUIRED_USE="
 	python? ( ${PYTHON_REQUIRED_USE} )
-	test? ( python )
-	"
+	test? ( python )"
 
 RDEPEND="
 	app-arch/bzip2:=
@@ -53,7 +52,7 @@ RDEPEND="
 	virtual/lapack
 	lua? ( dev-lang/lua:0 )
 	mono? ( dev-lang/mono )
-	octave? ( sci-mathematics/octave[hdf5] )
+	octave? ( <sci-mathematics/octave-3.8.0[hdf5] )
 	python? ( dev-python/numpy[${PYTHON_USEDEP}] )
 	R? ( dev-lang/R )
 	ruby? ( dev-ruby/narray )"
@@ -78,7 +77,7 @@ DEPEND="${RDEPEND}
 # feel free to do work for it
 
 PATCHES=(
-	"${FILESDIR}"/${P}-atlas.patch
+	"${FILESDIR}"/${P}-fix-buildsystem.patch
 )
 
 pkg_setup() {
@@ -90,8 +89,12 @@ src_configure() {
 	export CBLAS_LIBRARY="$($(tc-getPKG_CONFIG) --libs cblas)"
 	export ATLAS_LIBRARIES="$($(tc-getPKG_CONFIG) --libs blas cblas lapack)"
 	export LAPACK_LIBRARIES="$($(tc-getPKG_CONFIG) --libs lapack)"
+
+	append-cppflags "$($(tc-getPKG_CONFIG) --cflags cblas)"
+
 	local mycmakeargs=(
-		-DBUILD_EXAMPLES=OFF
+		-DCMAKE_SKIP_INSTALL_RPATH=ON
+		-DCMAKE_SKIP_RPATH=ON
 		-DBUNDLE_ARPREC=OFF
 		-DBUNDLE_COLPACK=OFF
 		-DBUNDLE_EIGEN=OFF
@@ -101,16 +104,17 @@ src_configure() {
 		-DJavaModular=OFF
 		-DPerlModular=OFF
 		-DLIB_INSTALL_DIR=$(get_libdir)
-		$(cmake-utils_use lua LuaModular)
-		$(cmake-utils_use mono CSharpModular)
-		$(cmake-utils_use octave OctaveModular)
-		$(cmake-utils_use octave OctaveStatic)
-		$(cmake-utils_use python PythonModular)
-		$(cmake-utils_use python PythonStatic)
-		$(cmake-utils_use R RModular)
-		$(cmake-utils_use R RStatic)
-		$(cmake-utils_use ruby RubyModular)
-		$(cmake-utils_use test ENABLE_TESTING)
+		-DLuaModular="$(usex lua)"
+		-DCSharpModular="$(usex mono)"
+		-DOctaveModular="$(usex octave)"
+		-DOctaveStatic="$(usex octave)"
+		-DPythonModular="$(usex python)"
+		-DPythonStatic="$(usex python)"
+		-DRModular="$(usex R)"
+		-DRStatic="$(usex R)"
+		-DRubyModular="$(usex ruby)"
+		-DENABLE_TESTING="$(usex test)"
+		-DBUILD_EXAMPLES="$(usex examples)"
 	)
 	cmake-utils_src_configure
 	# gentoo bug #302621
@@ -120,18 +124,4 @@ src_configure() {
 src_compile() {
 	cmake-utils_src_compile
 	use doc && emake -C doc
-}
-
-src_install() {
-	cmake-utils_src_install
-	use doc && dohtml -r doc/html/*
-	if use examples; then
-		insinto /usr/share/doc/${PF}
-		emake -C examples clean
-		doins -r examples
-		docompress -x /usr/share/doc/${PF}/examples
-		insinto /usr/share/doc/${PF}/data
-		doins -r "${WORKDIR}"/${MYPD}/*
-
-	fi
 }

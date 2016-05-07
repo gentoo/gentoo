@@ -123,5 +123,4 @@ vim-spell_pkg_postinst() {
 	elog "For further documentation, use:"
 	elog "    :help spell"
 	echo
-	epause
 }
