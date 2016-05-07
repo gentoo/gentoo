@@ -77,18 +77,23 @@ l10n_for_each_disabled_locale_do() {
 # Example: l10n_find_plocales_changes "${S}/src/translations" "${PN}_" '.ts'
 l10n_find_plocales_changes() {
 	[[ $# -ne 3 ]] && die "Exactly 3 arguments are needed!"
-	einfo "Looking in ${1} for new locales ..."
-	pushd "${1}" >/dev/null || die "Cannot access ${1}"
-	local current= x=
-	for x in ${2}*${3} ; do
-		x=${x#"${2}"}
-		x=${x%"${3}"}
-		current+="${x} "
+	local dir="${1}" pre="${2}" post="${3}"
+
+	einfo "Looking in '${dir}' for new locales ..."
+	pushd "${dir}" >/dev/null || die "Cannot access ${dir}"
+	local current= l=
+	for l in ${pre}*${post} ; do
+		l="${l#"${pre}"}"
+		l="${l%"${post}"}"
+		current+="${l} "
 	done
+	current="${current% }"
 	popd >/dev/null
-	if [[ ${PLOCALES} != ${current%[[:space:]]} ]] ; then
+
+	plocales_norm="$( echo ${PLOCALES} )"
+	if [[ "${plocales_norm}" != "${current}" ]] ; then
 		einfo "There are changes in locales! This ebuild should be updated to:"
-		einfo "PLOCALES=\"${current%[[:space:]]}\""
+		einfo "PLOCALES='${current}'"
 	else
 		einfo "Done"
 	fi
