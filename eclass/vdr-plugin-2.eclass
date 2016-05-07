@@ -571,7 +571,11 @@ vdr-plugin-2_src_install() {
 	local SOFILE_STRING=$(grep SOFILE Makefile)
 	if [[ -n ${SOFILE_STRING} ]]; then
 		BUILD_TARGETS=${BUILD_TARGETS:-${VDRPLUGIN_MAKE_TARGET:-install }}
-		einstall ${BUILD_PARAMS} \
+		if [[ ${EAPI} == 6 ]]; then
+			emake install ${BUILD_PARAMS} \
+		else
+			einstall ${BUILD_PARAMS} \
+		fi
 			${BUILD_TARGETS} \
 			TMPDIR="${T}" \
 			DESTDIR="${D}" \
