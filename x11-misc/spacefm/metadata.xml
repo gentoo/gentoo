@@ -8,6 +8,7 @@
 	<upstream>
 		<maintainer status="active">
 			<email>ignorantguru@users.sourceforge.net</email>
+			<name>IgnorantGuru</name>
 		</maintainer>
 		<changelog>https://ignorantguru.github.com/spacefm/news.html</changelog>
 		<doc lang="en">https://github.com/IgnorantGuru/spacefm/wiki/</doc>
