@@ -11,11 +11,11 @@
 			<xs:field xpath='@lang'/>
 			<xs:field xpath='@restrict'/>
 		</xs:unique>
-		<xs:unique name='maintainerUniquityConstraint'>
+		<xs:key name='maintainerKeyConstraint'>
 			<xs:selector xpath='maintainer'/>
 			<xs:field xpath='email'/>
 			<xs:field xpath='@restrict'/>
-		</xs:unique>
+		</xs:key>
 		<xs:unique name='slotsUniquityConstraint'>
 			<xs:selector xpath='slots'/>
 			<xs:field xpath='@lang'/>
@@ -123,7 +123,8 @@
 		</xs:choice>
 		<xs:attribute name='type' type='maintainerTypeAttrType'
 			use='required'/>
-		<xs:attribute name='restrict' type='restrictAttrType'/>
+		<xs:attribute name='restrict' type='restrictAttrType'
+			default=''/>
 	</xs:complexType>
 
 	<xs:simpleType name='maintainerTypeAttrType'>
