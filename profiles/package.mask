@@ -30,6 +30,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Michael Weber <xmw@gentoo.org> (08 May 2016)
+# Replaced by net-libs/libhubbub.
+# Masked for removal in 30 days. Bug #582382.
+net-libs/hubbub
+
 # Michael Palimaka <kensington@gentoo.org> (05 May 2016)
 # Doesn't compile against latest media-libs/spandsp.
 # Not needed anymore for Asterisk 1.6.

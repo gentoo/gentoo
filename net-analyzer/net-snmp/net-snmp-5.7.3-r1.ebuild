@@ -45,7 +45,7 @@ COMMON_DEPEND="
 	lm_sensors? ( sys-apps/lm_sensors )
 	netlink? ( dev-libs/libnl:3 )
 	mysql? ( virtual/mysql )
-	perl? ( dev-lang/perl:= )
+	perl? ( <dev-lang/perl-5.24.0:= )
 "
 DEPEND="
 	${COMMON_DEPEND}

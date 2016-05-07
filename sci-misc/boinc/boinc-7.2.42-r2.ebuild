@@ -4,7 +4,7 @@
 
 EAPI=5
 
-WX_GTK_VER=3.0
+WX_GTK_VER=2.8
 
 inherit autotools flag-o-matic linux-info systemd user versionator wxwidgets
 
@@ -38,7 +38,7 @@ RDEPEND="
 		virtual/jpeg:0=
 		x11-libs/gtk+:2
 		>=x11-libs/libnotify-0.7
-		x11-libs/wxGTK:${WX_GTK_VER}[X,opengl,webkit]
+		x11-libs/wxGTK:${WX_GTK_VER}[X,opengl]
 	)
 "
 DEPEND="${RDEPEND}
@@ -50,32 +50,24 @@ DEPEND="${RDEPEND}
 S="${WORKDIR}/${PN}-client_release-${MY_PV}-${PV}"
 
 pkg_setup() {
+	# Bug 578750
 	if use kernel_linux; then
 		linux-info_pkg_setup
 		if ! linux_config_exists; then
 			ewarn "Can't check the linux kernel configuration."
 			ewarn "You might be missing vsyscall support."
-		else
-			if   kernel_is -ge 4 4 \
-			  && linux_chkconfig_present LEGACY_VSYSCALL_NONE \
-			  && ! linux_chkconfig_present X86_VSYSCALL_EMULATION; then
-				ewarn "You do have neither x86 vsyscall emulation"
-				ewarn "nor legacy vsyscall support enabled."
-				ewarn "This will prevent some boinc projects from running."
-				ewarn "Please enable vsyscall emulation:"
-				ewarn "    CONFIG_X86_VSYSCALL_EMULATION=y"
-				ewarn "in /usr/src/linux/.config, to be found at"
-				ewarn "    Processor type and features --->"
-				ewarn "        [*] Enable vsyscall emulation"
-				ewarn "or set"
-				ewarn "    CONFIG_LEGACY_VSYSCALL_EMULATE=y"
-				ewarn "in /usr/src/linux/.config, to be found at"
-				ewarn "    Processor type and features --->"
-				ewarn "        vsyscall table for legacy applications (None) --->"
-				ewarn "            (X) Emulate"
-				ewarn "Alternatively, you can enable CONFIG_LEGACY_VSYSCALL_NATIVE."
-				ewarn "However, this has security implications and is not recommended."
-			fi
+		elif   kernel_is -ge 4 4 \
+		    && linux_chkconfig_present LEGACY_VSYSCALL_NONE; then
+			ewarn "You do not have vsyscall emulation enabled."
+			ewarn "This will prevent some boinc projects from running."
+			ewarn "Please enable vsyscall emulation:"
+			ewarn "    CONFIG_LEGACY_VSYSCALL_EMULATE=y"
+			ewarn "in /usr/src/linux/.config, to be found at"
+			ewarn "    Processor type and features --->"
+			ewarn "        vsyscall table for legacy applications (None) --->"
+			ewarn "            (X) Emulate"
+			ewarn "Alternatively, you can enable CONFIG_LEGACY_VSYSCALL_NATIVE."
+			ewarn "However, this has security implications and is not recommended."
 		fi
 	fi
 }
