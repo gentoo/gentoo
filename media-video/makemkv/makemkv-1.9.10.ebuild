@@ -43,6 +43,28 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 
+# Upstream uses non-standard locale names so map them with this
+# associative array and perform some tricks below.
+declare -A MY_LOCALES
+MY_LOCALES=(
+	[zh]=chi
+	[da]=dan
+	[de]=deu
+	[nl]=dut
+	[fr]=fra
+	[it]=ita
+	[ja]=jpn
+	[no]=nor
+	[fa]=per
+	[pl]=pol
+	[pt_BR]=ptb
+	[es]=spa
+	[sv]=swe
+)
+
+PLOCALES="${!MY_LOCALES[@]}"
+inherit l10n
+
 S="${WORKDIR}/makemkv-oss-${PV}"
 
 src_prepare() {
@@ -56,6 +78,9 @@ src_prepare() {
 	elif use qt5; then
 		PATCHES+=( "${FILESDIR}"/${PN}-qt5.patch )
 	fi
+
+	# Check for locale changes against the non-standard names.
+	PLOCALES="${MY_LOCALES[@]}" l10n_find_plocales_changes "${WORKDIR}"/${MY_PB}/src/share makemkv_ .mo.gz
 
 	default
 }
@@ -103,24 +128,29 @@ src_install() {
 		make_desktop_entry ${PN} MakeMKV ${PN} 'Qt;AudioVideo;Video'
 	fi
 
-	# install bin package
-	pushd "${WORKDIR}"/${MY_PB}/bin >/dev/null
-	if use x86; then
-		dobin i386/{makemkvcon,mmdtsdec}
-	elif use amd64; then
-		dobin amd64/makemkvcon
-		use multilib && dobin i386/mmdtsdec
-	fi
-	popd >/dev/null
+	cd "${WORKDIR}"/${MY_PB} || die
 
-	# install license and default profile
-	pushd "${WORKDIR}"/${MY_PB}/src/share >/dev/null
+	# install prebuilt bins
+	if use x86; then
+		dobin bin/i386/{makemkvcon,mmdtsdec}
+	elif use amd64; then
+		dobin bin/amd64/makemkvcon
+		use multilib && dobin bin/i386/mmdtsdec
+	fi
+
 	insinto /usr/share/MakeMKV
-	doins *.{gz,xml}
-	popd >/dev/null
+
+	# install profiles
+	doins src/share/*.xml
+
+	# install locales
+	local locale
+	for locale in $(l10n_get_locales); do
+		doins src/share/makemkv_${MY_LOCALES[${locale}]}.mo.gz
+	done
 }
 
-pkg_preinst() {	gnome2_icon_savelist; }
+pkg_preinst() { gnome2_icon_savelist; }
 
 pkg_postinst() {
 	gnome2_icon_cache_update
