@@ -20,13 +20,11 @@ DEPEND="dev-libs/xapian:0/1.3.6
 	sys-libs/zlib"
 RDEPEND="${DEPEND}"
 
-src_prepare() {
-	echo "CONFIG_PROTECT=\"/etc/omega.conf\"" > "${T}"/20xapian-omega
-}
-
 src_install () {
 	emake DESTDIR="${D}" install
 
+	# Protect /etc/omega.conf
+	echo "CONFIG_PROTECT=\"/etc/omega.conf\"" > "${T}"/20xapian-omega
 	doenvd "${T}"/20xapian-omega
 	dodoc AUTHORS ChangeLog INSTALL NEWS README TODO
 
