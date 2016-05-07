@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -46,12 +46,12 @@ RDEPEND="
 	sci-libs/nlopt:=
 	sci-mathematics/glpk:=
 	sci-mathematics/lpsolve:=
-	sys-libs/readline
+	sys-libs/readline:0
 	sys-libs/zlib:=
 	virtual/blas
 	virtual/cblas
 	virtual/lapack
-	lua? ( dev-lang/lua )
+	lua? ( dev-lang/lua:0 )
 	mono? ( dev-lang/mono )
 	octave? ( sci-mathematics/octave[hdf5] )
 	python? ( dev-python/numpy[${PYTHON_USEDEP}] )
