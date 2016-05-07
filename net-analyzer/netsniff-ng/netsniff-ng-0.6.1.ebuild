@@ -34,7 +34,7 @@ src_prepare() {
 	sed -e '/CFLAGS/s:?=:+=:' \
 		-e '/CPPFLAGS/s:?=:+=:' \
 		-e '/CFLAGS/s:\(-g\|-O2\|-O3\|-m\(arch\|tune\)=native\)::g' \
-		-i Makefile || die
+		-i.bak Makefile || die
 
 	if ! grep nacl-20110221 curvetun/nacl_build.sh >/dev/null ; then
 		die "have nacl-20110221, expected $(grep ${MY_NACL_P} curvetun/nacl_build.sh)"
