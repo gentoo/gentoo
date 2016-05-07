@@ -28,7 +28,6 @@ S=${WORKDIR}/${P}/linux
 
 src_prepare() {
 	epatch "${FILESDIR}"/${PN}-2.6.2-Makefile.patch
-	epatch "${FILESDIR}"/${PN}-3.0.0-outdated-manpages.patch
 	tc-export CC
 }
 
