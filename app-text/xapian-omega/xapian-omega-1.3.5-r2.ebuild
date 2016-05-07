@@ -27,9 +27,22 @@ src_prepare() {
 src_install () {
 	emake DESTDIR="${D}" install
 
+	doenvd "${T}"/20xapian-omega
+	dodoc AUTHORS ChangeLog INSTALL NEWS README TODO
+
 	#move docs to /usr/share/doc/${PF}.
 	mv "${D}/usr/share/doc/xapian-omega" "${D}/usr/share/doc/${PF}" || die
 
-	doenvd "${T}"/20xapian-omega
-	dodoc AUTHORS ChangeLog INSTALL NEWS README TODO
+	# Directory containing Xapian databases:
+	keepdir /var/lib/omega/data
+
+	# Directory containing OmegaScript templates:
+	keepdir /var/lib/omega/templates
+	mv "${S}"/templates/* "${D}"/var/lib/omega/templates || die
+
+	# Directory to write Omega logs to:
+	keepdir /var/log/omega
+
+	# Directory containing any cdb files for the $lookup OmegaScript command:
+	keepdir /var/lib/omega/cdb
 }
