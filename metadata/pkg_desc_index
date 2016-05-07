@@ -10079,7 +10079,7 @@ games-arcade/bumprace 1.5.3: simple arcade racing game
 games-arcade/burgerspace 1.9.2: Clone of the 1982 BurgerTime video game by Data East
 games-arcade/cavezofphear 0.5.1: A boulder dash / digger-like game for console using ncurses
 games-arcade/cdogs-sdl 0.4-r1: A port of the old DOS arcade game C-Dogs
-games-arcade/ceferino 0.97.8: Super-Pang clone (destroy bouncing balloons with your grapnel)
+games-arcade/ceferino 0.97.8 0.97.8-r1: Super-Pang clone (destroy bouncing balloons with your grapnel)
 games-arcade/circuslinux 1.0.3: clone of the Atari 2600 game "Circus Atari"
 games-arcade/cob 0.9: Cruising on Broadway: a painting-type game
 games-arcade/commandergenius 1.8.0.0 1.8.3: Open Source Commander Keen clone (needs original game files)
