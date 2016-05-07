@@ -17,7 +17,7 @@ DESCRIPTION="A library for communicating with The Echo Nest"
 HOMEPAGE="https://projects.kde.org/projects/playground/libs/libechonest"
 
 LICENSE="GPL-2"
-SLOT="0"
+SLOT="0/2.3"
 IUSE="+qt4 qt5"
 
 REQUIRED_USE="|| ( qt4 qt5 )"
