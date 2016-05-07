@@ -6,7 +6,4 @@
 		<name>Sergei Trofimovich</name>
 		<description>Primary Maintainer</description>
 	</maintainer>
-	<upstream>
-		<remote-id type="sourceforge">xmms2</remote-id>
-	</upstream>
 </pkgmetadata>
