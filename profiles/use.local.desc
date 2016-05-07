@@ -4664,9 +4664,6 @@ media-video/aravis:X - Build the GTK+-based video viewer for aravis. This requir
 media-video/aravis:gstreamer - Build the GStreamer plugin for aravis, but not the video viewer.
 media-video/arista:faac - Use external faac library for AAC encoding
 media-video/arista:nautilus - Add an entry in the Nautilus context menu to transcode media files for a specified device.
-media-video/avidemux:aften - Enable A/52 (AC-3) audio encoder support.
-media-video/avidemux:amr - Enable Adaptive Multi-Rate format support via media-libs/opencore-amr.
-media-video/avidemux:vpx - Enable VP8 codec support via media-libs/libvpx.
 media-video/chaplin:transcode - Enable DVD ripping and transcoding
 media-video/clive:clipboard - Support reading from X clipboard
 media-video/clive:pager - Support pager!?
