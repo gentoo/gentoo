@@ -6,7 +6,7 @@ EAPI=5
 inherit eutils toolchain-funcs
 
 DESCRIPTION="A simple tool to retrieve the X screensaver state"
-HOMEPAGE="http://tools.suckless.org/xssstate"
+HOMEPAGE="http://tools.suckless.org/x/xssstate"
 SRC_URI="http://dl.suckless.org/tools/${P}.tar.gz"
 
 LICENSE="MIT"
