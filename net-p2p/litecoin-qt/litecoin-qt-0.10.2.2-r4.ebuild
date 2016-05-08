@@ -61,6 +61,7 @@ src_prepare() {
 	epatch "${FILESDIR}"/litecoind-0.10.2.2-memenv_h.patch
 	epatch "${FILESDIR}"/litecoin-miniupnpc-abi.patch
 	epatch "${FILESDIR}"/litecoind-0.10.2.2-fix-gnustack.patch
+	epatch "${FILESDIR}"/litecoin-0.10.2.2-fix-litecoin-qt_protocol.patch
 	eautoreconf
 	rm -r src/leveldb
 
