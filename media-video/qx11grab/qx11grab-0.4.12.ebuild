@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -16,6 +16,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="libav kde opengl pulseaudio"
 
 RDEPEND="
+	dev-libs/qjson
 	>=dev-qt/qtcore-4.7.4:4
 	>=dev-qt/qtdbus-4.7.4:4
 	>=dev-qt/qtgui-4.7.4:4[accessibility]
@@ -25,7 +26,6 @@ RDEPEND="
 	>=sys-apps/dbus-1.6.4
 	>=x11-libs/libX11-1.3.4
 	>=x11-libs/libXrandr-1.3
-	dev-libs/qjson
 	libav? ( >=media-video/libav-9:0=[X,encode,truetype] )
 	!libav? ( >=media-video/ffmpeg-1.1:0=[X,encode,truetype] )
 	kde? ( kde-base/kdelibs:4 )
@@ -37,6 +37,7 @@ DEPEND="${RDEPEND}
 	kde? ( dev-util/automoc )
 "
 PDEPEND="virtual/freedesktop-icon-theme"
+
 PATCHES=( "${FILESDIR}/${P}-ffmpeg3.patch" )
 
 src_prepare() {
