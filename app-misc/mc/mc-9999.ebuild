@@ -48,8 +48,6 @@ DEPEND="${RDEPEND}
 	test? ( dev-libs/check )
 	"
 
-[[ -n ${LIVE_EBUILD} ]] && DEPEND="${DEPEND} dev-vcs/cvs" # needed only for SCM source tree (autopoint uses cvs)
-
 src_prepare() {
 	default
 
