@@ -20,7 +20,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="libav multilib qt4 qt5"
 REQUIRED_USE="?? ( qt4 qt5 )"
 
-QA_PREBUILT="opt/bin/makemkvcon opt/bin/mmdtsdec"
+QA_PREBUILT="usr/bin/makemkvcon usr/bin/mmdtsdec"
 
 DEPEND="
 	sys-libs/glibc[multilib?]
@@ -116,7 +116,6 @@ src_install() {
 	dosym libmakemkv.so.1 /usr/$(get_libdir)/libmakemkv.so
 	dosym libmmbd.so.0    /usr/$(get_libdir)/libmmbd.so
 	dosym libmmbd.so.0    /usr/$(get_libdir)/libmmbd.so.0.${PV}
-	into /opt
 
 	if use qt4 || use qt5; then
 		dobin out/makemkv
@@ -165,9 +164,9 @@ pkg_postinst() {
 	elog "Note that beta license may have an expiration date and you will"
 	elog "need to check for newer licenses/releases. "
 	elog ""
-	elog "If this is a new install, remember to copy the default profile"
-	elog "to the config directory:"
-	elog "cp /usr/share/MakeMKV/default.mmcp.xml ~/.MakeMKV/"
+	elog "We previously said to copy default.mmcp.xml to ~/.MakeMKV/. This"
+	elog "is no longer necessary and you should delete it from there to"
+	elog "avoid warning messages."
 	elog ""
 	elog "MakeMKV can also act as a drop-in replacement for libaacs and"
 	elog "libbdplus, allowing transparent decryption of a wider range of"
