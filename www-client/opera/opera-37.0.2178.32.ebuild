@@ -17,8 +17,9 @@ SLOT="0"
 SRC_URI_BASE="http://get.geo.opera.com/pub/"
 SRC_URI="
 	amd64? ( "${SRC_URI_BASE}${PN}/desktop/${PV}/linux/${PN}-stable_${PV}_amd64.deb" )
+	x86? ( "${SRC_URI_BASE}${PN}/desktop/${PV}/linux/${PN}-stable_${PV}_i386.deb" )
 "
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 
 RDEPEND="
 	dev-libs/expat
