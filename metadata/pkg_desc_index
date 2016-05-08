@@ -11559,7 +11559,6 @@ kde-misc/krusader 2.4.0_beta3-r1 2.4.0_beta3-r2: An advanced twin-panel (command
 kde-misc/kscreen 1.0.71_p20150824: Alternative KDE screen management
 kde-misc/kshutdown 3.2: A shutdown manager for KDE
 kde-misc/ksplasher 2.0_beta2-r2: A KSplashX engine (KDE4) Splash Screen Creator
-kde-misc/kte-collaborative 0.2.0: Collaborative text editor via kde-telepathy
 kde-misc/ktoshiba 5.2: Function key (FN) monitoring for Toshiba laptops
 kde-misc/ktrafficanalyzer 0.5.4.1: A network traffic visualizer
 kde-misc/kvkbd 0.6-r1: A virtual keyboard for KDE
@@ -14297,7 +14296,6 @@ net-libs/libpcapnav 0.8: Libpcap wrapper library to navigate to arbitrary packet
 net-libs/libpri 1.4.12-r2 1.4.13 1.4.14 1.4.15: Primary Rate ISDN (PRI) library
 net-libs/libprotoident 2.0.7 2.0.8: A library that performs application layer protocol identification for flows
 net-libs/libproxy 0.4.11-r2 0.4.13-r1: Library for automatic proxy configuration management
-net-libs/libqinfinity 0.5.2: Qt-style interface for libinfinity
 net-libs/libqmi 1.0.0 1.4.0 1.8.0 1.10.2 1.12.6 1.14.0 9999: QMI modem protocol helper library
 net-libs/librouteros 1.1.2: Library for accessing MikroTik's RouterOS via its API
 net-libs/librpcsecgss 0.16 0.19 0.19-r1: implementation of rpcsec_gss (RFC 2203) for secure rpc communication
