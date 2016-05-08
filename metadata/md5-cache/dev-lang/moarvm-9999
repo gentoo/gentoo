@@ -1,11 +1,13 @@
-DEFINED_PHASES=configure install prepare unpack
-DEPEND=dev-lang/perl >=dev-vcs/git-1.8.2.1
+DEFINED_PHASES=configure prepare unpack
+DEPEND=dev-libs/libatomic_ops dev-libs/libtommath dev-libs/libuv jit? ( dev-lang/lua:0[deprecated] dev-lua/LuaBitOp ) virtual/libffi clang? ( >=sys-devel/clang-3.1 ) dev-lang/perl >=dev-vcs/git-1.8.2.1
 DESCRIPTION=A 6model-based VM for NQP and Rakudo Perl 6
-EAPI=5
-HOMEPAGE=https://github.com/MoarVM/MoarVM
-IUSE=doc
+EAPI=6
+HOMEPAGE=http://moarvm.org
+IUSE=asan clang debug doc +jit static-libs +system-libs optimize ubsan
 LICENSE=Artistic-2
+RDEPEND=dev-libs/libatomic_ops dev-libs/libtommath dev-libs/libuv jit? ( dev-lang/lua:0[deprecated] dev-lua/LuaBitOp ) virtual/libffi
+RESTRICT=test
 SLOT=0
-_eclass_exported_funcs=src_unpack:git-r3 src_prepare:- src_configure:- src_install:-
-_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	git-r3	ef66dfc3db09f327af21cf32f140fb2b	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
-_md5_=c38a5f1bd84441664bac91acd0a7d0f6
+_eclass_exported_funcs=src_unpack:git-r3 src_prepare:- src_configure:-
+_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	flag-o-matic	d270fa247153df66074f795fa42dba3e	git-r3	ef66dfc3db09f327af21cf32f140fb2b	multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=11d4335ef6edaddad1fe434f23ef71ec
