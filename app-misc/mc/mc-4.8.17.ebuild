@@ -1,29 +1,20 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=6
 
-if [[ ${PV} = *9999* ]]; then
-	EGIT_REPO_URI="git://github.com/MidnightCommander/mc.git https://github.com/MidnightCommander/mc.git git://midnight-commander.org/git/mc.git"
-	LIVE_ECLASSES="git-r3 autotools"
-	LIVE_EBUILD=yes
-fi
-
-inherit eutils flag-o-matic ${LIVE_ECLASSES}
+inherit autotools eutils flag-o-matic
 
 MY_P=${P/_/-}
 
-if [[ -z ${LIVE_EBUILD} ]]; then
-	SRC_URI="http://www.midnight-commander.org/downloads/${MY_P}.tar.xz"
-	KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd ~x86-interix ~amd64-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x86-solaris"
-fi
-
 DESCRIPTION="GNU Midnight Commander is a text based file manager"
 HOMEPAGE="http://www.midnight-commander.org"
+SRC_URI="http://www.midnight-commander.org/downloads/${MY_P}.tar.xz"
 
 LICENSE="GPL-3"
 SLOT="0"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~x86-interix ~amd64-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x86-solaris"
 IUSE="+edit gpm mclib nls samba sftp +slang spell test X +xdg"
 
 REQUIRED_USE="spell? ( edit )"
@@ -50,10 +41,19 @@ DEPEND="${RDEPEND}
 
 [[ -n ${LIVE_EBUILD} ]] && DEPEND="${DEPEND} dev-vcs/cvs" # needed only for SCM source tree (autopoint uses cvs)
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-4.8.13-tinfo.patch
+	"${FILESDIR}"/${PN}-4.8.15-ebuild_syntax_EAPI-6.patch
+)
+
+S=${WORKDIR}/${MY_P}
+
 src_prepare() {
+	[[ -n ${LIVE_EBUILD} ]] && ./autogen.sh
+
 	default
 
-	[[ -n ${LIVE_EBUILD} ]] && ./autogen.sh
+	eautoreconf
 }
 
 src_configure() {
@@ -85,7 +85,7 @@ src_configure() {
 
 src_install() {
 	emake DESTDIR="${D}" install
-	dodoc AUTHORS doc/{FAQ,NEWS,README}
+	dodoc AUTHORS README NEWS
 
 	# fix bug #334383
 	if use kernel_linux && [[ ${EUID} == 0 ]] ; then
