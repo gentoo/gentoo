@@ -253,7 +253,7 @@ app-arch/createrepo 0.10.3 0.10.4: Creates a common rpm-metadata repository
 app-arch/deb2targz 1-r2: Convert a .deb file to a .tar.gz archive
 app-arch/defluff 0.3.2: deflate huffman optimizer
 app-arch/deltarpm 3.6_pre20110223-r1: tools to create and apply deltarpms
-app-arch/dpkg 1.17.26 1.18.4: Package maintenance system for Debian
+app-arch/dpkg 1.17.26 1.17.27 1.18.4 1.18.6: Package maintenance system for Debian
 app-arch/duff 0.5.2: Command-line utility for quickly finding duplicates in a given set of files
 app-arch/dump 0.4.44-r1 0.4.44-r2: Dump/restore ext2fs backup utilities
 app-arch/engrampa 1.8.1-r1 1.10.2: Engrampa archive manager for MATE
@@ -9622,8 +9622,8 @@ dev-util/cyclo 2.1.0: Computes cyclomatic complexity metrics on C source code.
 dev-util/d-feet 0.3.9 0.3.10: D-Feet is a powerful D-Bus debugger
 dev-util/dbus-test-runner 12.10.1: Run executables under a new DBus session for testing
 dev-util/ddd 3.3.12-r3 3.3.12-r4: Graphical front-end for command-line debuggers
-dev-util/debhelper 9.20150101 9.20160313 9.20160403: Collection of programs that can be used to automate common tasks in debian/rules
-dev-util/debootstrap 1.0.75 1.0.78-r1 1.0.79 1.0.80: Debian/Ubuntu bootstrap scripts
+dev-util/debhelper 9.20150101 9.20160403: Collection of programs that can be used to automate common tasks in debian/rules
+dev-util/debootstrap 1.0.75 1.0.80 1.0.81: Debian/Ubuntu bootstrap scripts
 dev-util/debugedit 5.3.5-r1: standalone debugedit taken from rpm
 dev-util/dejagnu 1.4.4-r3 1.5: framework for testing other programs
 dev-util/desktop-file-utils 0.21 0.22: Command line utilities to work with desktop menu entries
@@ -13684,7 +13684,7 @@ net-analyzer/jmx2munin 1.0_p20120811-r1: JMX Monitoring plugin for Munin
 net-analyzer/jnettop 0.13.0-r1: A top like console network traffic visualiser
 net-analyzer/knocker 0.7.1-r2 0.7.1-r3: Knocker is an easy to use security port scanner written in C
 net-analyzer/labrea 2.5-r2: 'Sticky' Honeypot and IDS
-net-analyzer/lft 3.73: Layer Four Traceroute: an advanced traceroute implementation
+net-analyzer/lft 3.73 3.74: Layer Four Traceroute (LFT) and WhoB
 net-analyzer/libnasl 2.2.9-r1: A remote security scanner for Linux (libnasl)
 net-analyzer/lilac 1.0.3: Web-based configuration tool written to configure Nagios
 net-analyzer/linkchecker 9.3-r1 9999: Check websites for broken links
@@ -14296,7 +14296,7 @@ net-libs/libpcap 1.7.4 9999: A system-independent library for user-level network
 net-libs/libpcapnav 0.8: Libpcap wrapper library to navigate to arbitrary packets in a tcpdump trace file
 net-libs/libpri 1.4.12-r2 1.4.13 1.4.14 1.4.15: Primary Rate ISDN (PRI) library
 net-libs/libprotoident 2.0.7 2.0.8: A library that performs application layer protocol identification for flows
-net-libs/libproxy 0.4.11-r2 0.4.13: Library for automatic proxy configuration management
+net-libs/libproxy 0.4.11-r2 0.4.13-r1: Library for automatic proxy configuration management
 net-libs/libqinfinity 0.5.2: Qt-style interface for libinfinity
 net-libs/libqmi 1.0.0 1.4.0 1.8.0 1.10.2 1.12.6 1.14.0 9999: QMI modem protocol helper library
 net-libs/librouteros 1.1.2: Library for accessing MikroTik's RouterOS via its API
@@ -15478,7 +15478,7 @@ sci-calculators/speedcrunch 0.10.1 0.11-r1 0.11-r2: Fast and usable calculator f
 sci-calculators/tiemu 3.03: Texas Instruments hand-helds emulator
 sci-calculators/tilp2 1.16-r1 1.17-r1: Communication program for Texas Instruments calculators
 sci-calculators/transcalc 0.14-r1: Microwave and RF transmission line calculator
-sci-calculators/units 2.11 2.11n 2.12: Unit conversion program
+sci-calculators/units 2.12: Unit conversion program
 sci-calculators/wcalc 2.4: A flexible command-line scientific calculator
 sci-chemistry/GromacsWrapper 0.3.1 0.3.2: Python framework for Gromacs
 sci-chemistry/PyMca 4.6.2 4.6.2-r1: X-ray Fluorescence Toolkit
