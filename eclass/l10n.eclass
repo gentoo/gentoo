@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -86,7 +86,9 @@ l10n_find_plocales_changes() {
 		current+="${x} "
 	done
 	popd >/dev/null
-	if [[ ${PLOCALES} != ${current%[[:space:]]} ]] ; then
+	# RHS will be sorted with single spaces so ensure the LHS is too
+	# before attempting to compare them for equality. See bug #513242.
+	if [[ $(tr -s "[:space:]" "\n" <<< "${PLOCALES}" | sort | xargs echo) != ${current%[[:space:]]} ]] ; then
 		einfo "There are changes in locales! This ebuild should be updated to:"
 		einfo "PLOCALES=\"${current%[[:space:]]}\""
 	else
