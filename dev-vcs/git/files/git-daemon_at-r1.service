@@ -5,9 +5,8 @@ Documentation=man:git-daemon(1)
 [Service]
 User=nobody
 Group=nobody
-EnvironmentFile=/etc/conf.d/git-daemon
 # Ignore non-zero exit status, access error makes git-daemon return them
-ExecStart=-/usr/libexec/git-core/git-daemon --inetd --base-path=/var/git --verbose $GITDAEMON_OPTS
+ExecStart=-/usr/libexec/git-core/git-daemon --inetd --base-path=/var/git --verbose
 StandardInput=socket
 StandardOutput=inherit
 StandardError=journal
