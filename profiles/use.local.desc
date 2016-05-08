@@ -8329,7 +8329,6 @@ x11-wm/compiz:gconf - Enable the GConf-based configuration backend; it is not re
 x11-wm/compiz-fusion:emerald - Install the x11-wm/emerald package.
 x11-wm/compiz-fusion:unsupported - Install the x11-plugins/compiz-plugins-unsupported package.
 x11-wm/echinus:xrandr - Enable support for multihead configuration
-x11-wm/enlightenment:enlightenment_modules_access - Accessibility module designed to improve ease of use for the vision impaired and the blind
 x11-wm/enlightenment:enlightenment_modules_appmenu - Gadget that hold the toolbar of the foreground application
 x11-wm/enlightenment:enlightenment_modules_backlight - Backlight control slider gadget
 x11-wm/enlightenment:enlightenment_modules_battery - A gadget to visualize your battery status
@@ -8338,7 +8337,6 @@ x11-wm/enlightenment:enlightenment_modules_clock - Nice clock gadget to show cur
 x11-wm/enlightenment:enlightenment_modules_conf - Settings Panel
 x11-wm/enlightenment:enlightenment_modules_conf-applications - Allows configuration of Ibar, Restart, and Startup applications
 x11-wm/enlightenment:enlightenment_modules_conf-bindings - Input Control Settings
-x11-wm/enlightenment:enlightenment_modules_conf-comp - Configure default dialog properties
 x11-wm/enlightenment:enlightenment_modules_conf-dialogs - Configure default dialog properties
 x11-wm/enlightenment:enlightenment_modules_conf-display - Used to configure your screen
 x11-wm/enlightenment:enlightenment_modules_conf-interaction - Configure Mouse and Touch input
@@ -8349,11 +8347,9 @@ x11-wm/enlightenment:enlightenment_modules_conf-performance - Used to configure 
 x11-wm/enlightenment:enlightenment_modules_conf-randr - Used to configure your screen's resolution
 x11-wm/enlightenment:enlightenment_modules_conf-shelves - Shelf configuration dialog
 x11-wm/enlightenment:enlightenment_modules_conf-theme - Used to configure your theme preferences
-x11-wm/enlightenment:enlightenment_modules_conf-wallpaper2 - Used to configure your theme preferences
 x11-wm/enlightenment:enlightenment_modules_conf-window-manipulation - Configures window raise, resistance, and maximize policies
 x11-wm/enlightenment:enlightenment_modules_conf-window-remembers - Delete existing window remembers
 x11-wm/enlightenment:enlightenment_modules_connman - Control Wifi and wired networks as a user
-x11-wm/enlightenment:enlightenment_modules_contact - Enable the contact module
 x11-wm/enlightenment:enlightenment_modules_cpufreq - Gadget to monitor and change the CPU frequency
 x11-wm/enlightenment:enlightenment_modules_everything - The run command module provides an application launcher dialog
 x11-wm/enlightenment:enlightenment_modules_fileman - Enlightenment's integrated file manager
@@ -8362,7 +8358,6 @@ x11-wm/enlightenment:enlightenment_modules_gadman - Module to manage gadgets on 
 x11-wm/enlightenment:enlightenment_modules_geolocation - Geolocation
 x11-wm/enlightenment:enlightenment_modules_ibar - Iconic application launcher
 x11-wm/enlightenment:enlightenment_modules_ibox - A home for your iconified applications
-x11-wm/enlightenment:enlightenment_modules_illume2 - Illume2 - next generation of illume - special WM mode for embedded devices and set of plugins with same purpose
 x11-wm/enlightenment:enlightenment_modules_lokker - Screen locker
 x11-wm/enlightenment:enlightenment_modules_mixer - A module to provide a mixer for changing volume
 x11-wm/enlightenment:enlightenment_modules_msgbus - DBus Extension
@@ -8385,7 +8380,6 @@ x11-wm/enlightenment:enlightenment_modules_winlist - A module to show the list o
 x11-wm/enlightenment:enlightenment_modules_wizard - First Run Wizard
 x11-wm/enlightenment:enlightenment_modules_wl-desktop-shell - Enlightenment Wayland Desktop Shell
 x11-wm/enlightenment:enlightenment_modules_wl-drm - Wayland DRM (Direct Rendering Manager) compositing module
-x11-wm/enlightenment:enlightenment_modules_wl-screenshot - Enlightenment Wayland Screenshot module
 x11-wm/enlightenment:enlightenment_modules_wl-text-input - Wayland text input support
 x11-wm/enlightenment:enlightenment_modules_wl-weekeyboard - Wayland virtual keyboard
 x11-wm/enlightenment:enlightenment_modules_wl-wl - Wayland-in-Wayland module
