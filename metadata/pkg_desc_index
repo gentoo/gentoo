@@ -16116,7 +16116,7 @@ sci-visualization/qtiplot 0.9.8.9-r2 0.9.8.9-r3 0.9.8.9-r4: Qt based clone of th
 sci-visualization/quickplot 0.10.6 0.10.8: A fast interactive 2D plotter
 sci-visualization/spectromatic 1.0-r2: Generates time-frequency analysis images from wav files
 sci-visualization/spyview 20111018 20130823: Interactive plotting program
-sci-visualization/veusz 1.11 1.23 1.23.2 1.23.2-r1: Qt scientific plotting package with good Postscript output
+sci-visualization/veusz 1.11 1.23 1.23.2 1.23.2-r1 1.24: Qt scientific plotting package with good Postscript output
 sci-visualization/visit 2.7.3 2.8.2 2.9.0: A software that delivers parallel interactive visualizations
 sci-visualization/xd3d 8.3.1: Scientific visualization tool
 sci-visualization/xds-viewer 0.6: Viewing X-ray diffraction and control images in the context of data processing by the XDS
