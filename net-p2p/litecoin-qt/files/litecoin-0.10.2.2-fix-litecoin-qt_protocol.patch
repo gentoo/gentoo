@@ -1,0 +1,12 @@
+diff -Naur litecoin-0.10.2.2.orig/contrib/debian/bitcoin-qt.protocol litecoin-0.10.2.2/contrib/debian/bitcoin-qt.protocol
+--- litecoin-0.10.2.2.orig/contrib/debian/bitcoin-qt.protocol	2015-06-15 04:51:30.000000000 -0400
++++ litecoin-0.10.2.2/contrib/debian/bitcoin-qt.protocol	2016-05-08 11:33:39.818668684 -0400
+@@ -1,6 +1,6 @@
+ [Protocol]
+-exec=bitcoin-qt '%u'
+-protocol=bitcoin
++exec=litecoin-qt '%u'
++protocol=litecoin
+ input=none
+ output=none
+ helper=true
