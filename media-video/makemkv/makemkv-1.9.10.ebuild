@@ -68,7 +68,7 @@ inherit l10n
 S="${WORKDIR}/makemkv-oss-${PV}"
 
 src_prepare() {
-	PATCHES+=( "${FILESDIR}"/${PN}-{makefile,path}.patch )
+	PATCHES+=( "${FILESDIR}"/${PN}-{makefile,path,sysmacros}.patch )
 
 	# Qt5 always trumps Qt4 if it is available. There are no configure
 	# options or variables to control this and there is no publicly
