@@ -22,4 +22,19 @@
       may watch Blu-ray and DVD discs with your favorite player on
       your favorite OS or on your favorite device.
 </longdescription>
+<use>
+	<flag name="linguas_chi">Chinese locale</flag>
+	<flag name="linguas_dan">Danish locale</flag>
+	<flag name="linguas_deu">German locale</flag>
+	<flag name="linguas_dut">Dutch locale</flag>
+	<flag name="linguas_fra">French locale</flag>
+	<flag name="linguas_ita">Italian locale</flag>
+	<flag name="linguas_jpn">Japanese locale</flag>
+	<flag name="linguas_nor">Norwegian locale</flag>
+	<flag name="linguas_per">Persian locale</flag>
+	<flag name="linguas_pol">Polish locale</flag>
+	<flag name="linguas_ptb">Brazilian Portuguese locale</flag>
+	<flag name="linguas_spa">Spanish locale</flag>
+	<flag name="linguas_swe">Swedish locale</flag>
+</use>
 </pkgmetadata>
