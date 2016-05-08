@@ -22,7 +22,7 @@ REQUIRED_USE="?? ( qt4 qt5 )"
 
 QA_PREBUILT="opt/bin/makemkvcon opt/bin/mmdtsdec"
 
-RDEPEND="
+DEPEND="
 	sys-libs/glibc[multilib?]
 	dev-libs/expat
 	dev-libs/openssl:0
@@ -41,7 +41,8 @@ RDEPEND="
 	!libav? ( >=media-video/ffmpeg-1.0.0:0= )
 	libav? ( >=media-video/libav-0.8.9:0= )
 "
-DEPEND="${RDEPEND}"
+RDEPEND="${DEPEND}
+	net-misc/wget"
 
 # Upstream uses non-standard locale names so map them with this
 # associative array and perform some tricks below.
