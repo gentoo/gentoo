@@ -292,23 +292,15 @@ src_test() {
 	# Don't let vim talk to X
 	unset DISPLAY
 
-	# We've got to call make test from within testdir, since the Makefiles
-	# don't pass through our VIMPROG argument
-	cd "${S}"/src/testdir
+	# Make gvim not try to connect to X. See :help gui-x11-start in vim for how
+	# this evil trickery works.
+	ln -s "${S}"/src/gvim "${S}"/src/testvim || die
 
-	# Test 49 won't work inside a portage environment
-	einfo "Test 49 isn't sandbox-friendly, so it will be skipped."
-	sed -i 's~test49.out~~g' Makefile
+	# Make sure our VIMPROG is used.
+	sed -i 's:\.\./vim:../testvim:' src/testdir/test49.vim || die
 
-	# We don't want to rebuild vim before running the tests
-	sed -i 's,: \$(VIMPROG),: ,' Makefile
-
-	# Make gvim not try to connect to X. See :help gui-x11-start
-	# in vim for how this evil trickery works.
-	ln -s "${S}"/src/gvim "${S}"/src/testvim
-
-	# Don't try to do the additional GUI test
-	emake -j1 VIMPROG=../testvim nongui
+	# Don't do additional GUI tests.
+	emake -j1 VIMPROG=../testvim -C src/testdir nongui
 }
 
 # Make convenience symlinks, hopefully without stepping on toes.  Some
