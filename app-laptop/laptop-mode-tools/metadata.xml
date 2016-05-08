@@ -7,6 +7,7 @@
 	<upstream>
 		<maintainer status="active">
 			<email>gentoo-lmt@researchut.com</email>
+			<name>Ritesh Raj Sarraf</name>
 		</maintainer>
 	</upstream>
 	<use>
