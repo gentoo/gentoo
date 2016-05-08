@@ -2096,7 +2096,7 @@ app-portage/euscan 0.1.1-r1 9999: Ebuild upstream scan utility
 app-portage/euses 2.5.9: look up USE flag descriptions fast
 app-portage/fetchcommandwrapper 0.7.1 0.7.2: Wrapper integrating aria2 into portage's FETCHCOMMAND
 app-portage/flaggie 0.2.1 9999: A smart CLI mangler for package.* files
-app-portage/fquery 0.2.2: Installed package query tool for Gentoo Linux
+app-portage/fquery 0.2.2 0.2.3: Installed package query tool for Gentoo Linux
 app-portage/g-cpan 0.16.5 0.16.6 0.16.7 9999: Autogenerate and install ebuilds for CPAN modules
 app-portage/g-ctan 2011.1: Generate and install ebuilds from the TeXLive package manager
 app-portage/g-octave 0.4.1-r4: A tool that generates and installs ebuilds for Octave-Forge
