@@ -3,46 +3,48 @@
 # $Id$
 
 EAPI=5
-inherit eutils flag-o-matic
+inherit flag-o-matic
 
 DESCRIPTION="protects hosts from brute force attacks against ssh"
 HOMEPAGE="http://sshguard.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
+SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~x86-fbsd"
 IUSE="ipfilter kernel_FreeBSD kernel_linux"
 
-CDEPEND="kernel_linux? ( net-firewall/iptables )
-	kernel_FreeBSD? ( !ipfilter? ( sys-freebsd/freebsd-pf ) )"
-DEPEND="${CDEPEND}
-	sys-devel/flex"
-RDEPEND="${CDEPEND}
+CDEPEND="
+	kernel_linux? ( net-firewall/iptables )
+	kernel_FreeBSD? ( !ipfilter? ( sys-freebsd/freebsd-pf ) )
+"
+DEPEND="
+	${CDEPEND}
+	sys-devel/flex
+"
+RDEPEND="
+	${CDEPEND}
 	sys-apps/openrc
-	virtual/logger"
+	virtual/logger
+"
 
-DOCS=( README Changes scripts/sshguard_backendgen.sh )
+DOCS=( ChangeLog README.rst )
 
 src_prepare() {
 	sed -i -e '/OPTIMIZER_CFLAGS=/d' configure || die
-	epatch "${FILESDIR}"/${P}-day-starts-with-0.patch
 }
 
 src_configure() {
 	# Needed for usleep(3), see "nasty" in src/sshguard_logsuck.c
-	append-cppflags -D_BSD_SOURCE
+	append-cppflags -D_DEFAULT_SOURCE
 
 	local myconf
 	if use kernel_linux; then
-		einfo "Selected firewall backend: iptables"
 		myconf="--with-firewall=iptables"
 	elif use kernel_FreeBSD; then
 		if use ipfilter; then
-			einfo "Selected firewall backend: ipfw"
 			myconf="--with-firewall=ipfw"
 		else
-			einfo "Selected firewall backend: pf"
 			myconf="--with-firewall=pf"
 		fi
 	fi
@@ -52,7 +54,9 @@ src_configure() {
 
 src_install() {
 	default
-	dodoc examples/*
+
+	dodoc -r examples/
+
 	newinitd "${FILESDIR}"/${PN}.initd ${PN}
 	newconfd "${FILESDIR}"/${PN}.confd ${PN}
 }
