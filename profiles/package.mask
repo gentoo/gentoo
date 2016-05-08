@@ -163,15 +163,6 @@ dev-python/pysfml
 # Masked for removal in 30 days.
 media-libs/libmnote
 
-# Michael Palimaka <kensington@gentoo.org> (06 Apr 2016)
-# Fails to build. Dead upstream. Bug #579020.
-# Masked for removal in 30 days.
-net-libs/libqinfinity
-
-# Michael Palimaka <kensington@gentoo.org> (06 Apr 2016)
-# Fails to build. Dead upstream. Masked for removal in 30 days.
-kde-misc/kte-collaborative
-
 # Patrick Lauer <patrick@gentoo.org> (05 Apr 2016)
 # --configtest is broken, mask until 2.3.1 release
 =app-admin/logstash-bin-2.3.0*
