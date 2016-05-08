@@ -3375,7 +3375,7 @@ dev-haskell/haskell-src-meta 0.6.0.8-r1 0.6.0.10: Parse source to template-haske
 dev-haskell/hastache 0.5.1 0.6.1: Haskell implementation of Mustache templates
 dev-haskell/haxml 1.24 1.24.1 1.25.3: Utilities for manipulating XML documents
 dev-haskell/hdbc 2.3.1.2 2.4.0.1: Haskell Database Connectivity
-dev-haskell/hdbc-mysql 0.6.6.1-r2: MySQL driver for HDBC
+dev-haskell/hdbc-mysql 0.6.6.1-r3: MySQL driver for HDBC
 dev-haskell/hdbc-odbc 2.3.1.1 2.4.0.1: ODBC driver for HDBC
 dev-haskell/hdbc-postgresql 2.3.2.3: PostgreSQL driver for HDBC
 dev-haskell/hdbc-sqlite 2.3.3.1: Sqlite v3 driver for HDBC
