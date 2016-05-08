@@ -3,6 +3,7 @@
 <pkgmetadata>
 	<maintainer type="project">
 		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
 	</maintainer>
 	<maintainer type="project">
 		<email>proxy-maint@gentoo.org</email>
