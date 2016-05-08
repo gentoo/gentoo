@@ -14973,7 +14973,7 @@ net-p2p/gtorrentviewer 0.2b: A GTK2-based viewer and editor for BitTorrent meta 
 net-p2p/i2p 0.9.24-r2 0.9.25-r1: A privacy-centric, anonymous network.
 net-p2p/kmldonkey 2.0.7: Provides integration for the MLDonkey P2P software and KDE 4
 net-p2p/ktorrent 4.3.1-r1 5.0 5.0.1: Powerful BitTorrent client based on KDE Frameworks
-net-p2p/litecoin-qt 0.10.2.2-r3: P2P Internet currency based on Bitcoin but easier to mine
+net-p2p/litecoin-qt 0.10.2.2-r4: P2P Internet currency based on Bitcoin but easier to mine
 net-p2p/litecoind 0.10.2.2-r4: P2P Internet currency based on Bitcoin but easier to mine
 net-p2p/microdc2 0.15.6-r2: A small command-line based Direct Connect client
 net-p2p/mktorrent 1.0-r1: Simple command line utility to create BitTorrent metainfo files
