@@ -4864,7 +4864,7 @@ dev-libs/quazip 0.7.1: A simple C++ wrapper over Gilles Vollant's ZIP/UNZIP pack
 dev-libs/radlib 2.12.0-r1: Rapid Application Development Library
 dev-libs/rapidxml 1.13 1.13-r1: Fast XML parser
 dev-libs/rasqal 0.9.29 0.9.32: library that handles Resource Description Framework (RDF)
-dev-libs/re2 0_p20130115 0_p20130115-r1 0_p20130712 0_p20140304: An efficent, principled regular expression library
+dev-libs/re2 0_p20130115 0_p20130115-r1 0_p20130712 0_p20140304 0.2016.05.01: An efficent, principled regular expression library
 dev-libs/redland 1.0.15 1.0.16 1.0.17 1.0.17-r1: High-level interface for the Resource Description Framework
 dev-libs/redland-bindings 1.0.14.1 1.0.14.1-r2: Language bindings for Redland
 dev-libs/replicant 0.6.4 0.7.1 0.8.0 0.8.1: Hyperdex replicant support library
@@ -9522,7 +9522,8 @@ dev-util/App-SVN-Bisect 1.1-r1: Binary search through svn revisions
 dev-util/Orange 2.7.2: Open source data visualization and analysis for novice and experts.
 dev-util/a8 0.11-r2 1.0: An ultra-lightweight IDE, that embeds Vim, a terminal emulator, and a file browser
 dev-util/aap 1.076 1.091-r2: Bram Moolenaar's super-make program
-dev-util/abi-compliance-checker 1.99.9 1.99.12-r1 1.99.15 9999: A tool for checking backward compatibility of a C/C++ library
+dev-util/abi-compliance-checker 1.99.9 1.99.12-r1 1.99.15 1.99.19 9999: A tool for checking backward compatibility of a C/C++ library
+dev-util/abi-dumper 0.99.15: Dump ABI of an ELF object containing DWARF debug info
 dev-util/ald 0.1.7 0.1.7-r1: Assembly Language Debugger - a tool for debugging executable programs at the assembly level
 dev-util/alleyoop 0.9.8: A Gtk+ front-end to the Valgrind memory checker
 dev-util/amtterm 1.3-r1 1.4: A nice tool to manage amt-enabled machines
@@ -9869,6 +9870,7 @@ dev-util/vbindiff 3.0_beta1 3.0_beta4: Visual binary diff utility
 dev-util/visual-regexp 3.0-r1 3.1: Type the regexp and visualize it on a sample of your choice
 dev-util/visualvm 1.3.8-r1: Integrates commandline JDK tools and profiling capabilites
 dev-util/vmtouch 1.0.2: Virtual Memory Toucher, portable file system cache diagnostics and control
+dev-util/vtable-dumper 1.1: A tool to list content of virtual tables in a shared library
 dev-util/w32api 3.17.2 4.0.3.1: Free Win32 runtime and import library definitions
 dev-util/watchr 0.7: Modern continuous testing (flexible alternative to Autotest)
 dev-util/webcpp 0.8.4: converts source code into HTML using a customizable syntax highlight engine and colour schemes
@@ -13755,7 +13757,7 @@ net-analyzer/nikto 1.36 2.1.5: Web Server vulnerability scanner
 net-analyzer/nipper 0.12.0: Router configuration security analysis tool
 net-analyzer/nload 0.7.4: console application which monitors network traffic and bandwidth usage in real time
 net-analyzer/nmap 6.47-r1 7.01 7.11 7.12 9999: A utility for network discovery and security auditing
-net-analyzer/nmapsi 0.4.1: A Qt4 frontend to nmap
+net-analyzer/nmapsi 0.4.1 0.5_alpha1: A Qt frontend to nmap
 net-analyzer/nmbscan 1.2.5: netbios scanner
 net-analyzer/nodebrain 0.9.03 0.9.04: Monitor and do event correlation
 net-analyzer/nrpe 2.15-r2 2.15-r3: Nagios Remote Plugin Executor
