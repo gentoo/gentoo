@@ -1,0 +1,17 @@
+diff -Naur a/tools/build/Makefile-Moar.in b/tools/build/Makefile-Moar.in
+--- a/tools/build/Makefile-Moar.in	2016-02-02 14:27:13.000000000 +0100
++++ b/tools/build/Makefile-Moar.in	2016-04-22 15:01:35.338534944 +0200
+@@ -87,11 +87,11 @@
+ 	$(M_CC) @moar::ccswitch@ @moar::ccshared@ $(M_CFLAGS) -I$(PREFIX)/include/libatomic_ops \
+ 	    -I$(PREFIX)/include/dyncall -I$(PREFIX)/include/moar \
+ 	    -I$(PREFIX)/include/sha1 -I$(PREFIX)/include/tinymt  -I$(PREFIX)/include/libtommath \
+-	    -I$(PREFIX)/include/libuv -I$(PREFIX)/include @moar::ccout@$(M_PERL6_OPS_OBJ) $(M_PERL6_OPS_SRC)
++			-I$(PREFIX)/include/libuv -I$(PREFIX)/include @moar::cincludes@ @moar::ccout@$(M_PERL6_OPS_OBJ) $(M_PERL6_OPS_SRC)
+ 	$(M_CC) @moar::ccswitch@ @moar::ccshared@ $(M_CFLAGS) -I$(PREFIX)/include/libatomic_ops \
+ 	    -I$(PREFIX)/include/dyncall -I$(PREFIX)/include/moar \
+ 	    -I$(PREFIX)/include/sha1 -I$(PREFIX)/include/tinymt  -I$(PREFIX)/include/libtommath \
+-	    -I$(PREFIX)/include/libuv -I$(PREFIX)/include @moar::ccout@$(M_PERL6_CONT_OBJ) $(M_PERL6_CONT_SRC)
++			-I$(PREFIX)/include/libuv -I$(PREFIX)/include @moar::cincludes@ @moar::ccout@$(M_PERL6_CONT_OBJ) $(M_PERL6_CONT_SRC)
+ 	$(M_LD) @moar::ldswitch@ -L@moar::libdir@ @moar::ldshared@ $(M_LDFLAGS) @moar::ldout@$(M_PERL6_OPS_DLL) $(M_PERL6_OPS_OBJ) $(M_PERL6_CONT_OBJ) -lmoar @moarimplib@
+ 
+ $(PERL6_ML_MOAR): src/Perl6/ModuleLoader.nqp src/vm/moar/ModuleLoaderVMConfig.nqp

@@ -5,12 +5,18 @@
     <email>patrick@gentoo.org</email>
     <name>Patrick Lauer</name>
   </maintainer>
+  <maintainer type="person">
+    <email>tomboy64@sina.cn</email>
+    <name>Matthew Brewer</name>
+  </maintainer>
   <maintainer type="project">
     <email>perl@gentoo.org</email>
     <name>Gentoo Perl Project</name>
   </maintainer>
   <use>
+    <flag name="clang">Toggle usage of the clang compiler in conjunction with MoarVM</flag>
     <flag name="moar">Build the MoarVM backend (experimental/broken)</flag>
+    <flag name="system-libs">Use jars provided by the system instead of upstream</flag>
   </use>
   <upstream>
     <remote-id type="github">perl6/nqp</remote-id>
