@@ -75,10 +75,6 @@ src_prepare() {
 	# Support qreal on arm architecture (bug 322349)
 	use arm && PATCHES+=("${FILESDIR}/${PN}-4.7.3-qreal_float_support.patch")
 
-	# Typo?
-	sed -i -e '/pyqt4_qtdbus/ s/pyqtslots_/pyqtslot_/' \
-		sip/QtDBus/qdbusconnection.sip || die
-
 	default
 }
 
