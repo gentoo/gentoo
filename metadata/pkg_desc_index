@@ -255,7 +255,7 @@ app-arch/defluff 0.3.2: deflate huffman optimizer
 app-arch/deltarpm 3.6_pre20110223-r1: tools to create and apply deltarpms
 app-arch/dpkg 1.17.26 1.17.27 1.18.4 1.18.6: Package maintenance system for Debian
 app-arch/duff 0.5.2: Command-line utility for quickly finding duplicates in a given set of files
-app-arch/dump 0.4.44-r1 0.4.44-r2: Dump/restore ext2fs backup utilities
+app-arch/dump 0.4.44-r1 0.4.44-r2 0.4.45: Dump/restore ext2fs backup utilities
 app-arch/engrampa 1.8.1-r1 1.10.2: Engrampa archive manager for MATE
 app-arch/fastjar 0.98-r2 0.98-r3: A jar program written in C
 app-arch/file-roller 3.16.4-r1 3.16.5: Archive manager for GNOME
@@ -4735,7 +4735,7 @@ dev-libs/librdkafka 0.9.0.99: Apache Kafka C/C++ client library
 dev-libs/librelp 1.2.7-r1 1.2.9: An easy to use library for the RELP protocol
 dev-libs/librep 0.92.2.1 0.92.3 0.92.5: Shared library implementing a Lisp dialect
 dev-libs/libreport 2.0.13-r1: Generic library for reporting software bugs
-dev-libs/libressl 2.2.6 2.2.7 2.3.3 2.3.4: Free version of the SSL/TLS protocol forked from OpenSSL
+dev-libs/libressl 2.2.7 2.3.4: Free version of the SSL/TLS protocol forked from OpenSSL
 dev-libs/librevenge 0.0.1 0.0.2 0.0.3 0.0.4 9999: A helper library for REVerse ENGineered formats filters
 dev-libs/libroadnav 0.19: A library capable of plotting streetmaps and providing driving directions for US addresses
 dev-libs/librra 0.16: Implements the RRA protocol, for syncing pre WM-2005 PIM data, and files for all versions
