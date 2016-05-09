@@ -24,7 +24,7 @@ index a050f38..53f697d 100644
              else:
                  obj_list.append(s)
          return env.SharedLibrary(target=target,
-@@ -925,9 +925,11 @@ static_gpslib = env.StaticLibrary("gps_static",
+@@ -925,9 +925,12 @@ static_gpslib = env.StaticLibrary("gps_static",
                                    [env.StaticObject(s) for s in libgps_sources],
                                    rtlibs)
  
@@ -36,6 +36,7 @@ index a050f38..53f697d 100644
 +                           sources=libgpsd_sources,
 +                           version=libgps_version,
 +                           parse_flags=usbflags + rtlibs + bluezflags + ["-lgps"])
++env.Depends(compiled_gpsdlib, [compiled_gpslib])
  
  libraries = [compiled_gpslib, compiled_gpsdlib]
  
@@ -58,12 +59,12 @@ index a050f38..53f697d 100644
  gpsctl = env.Program('gpsctl', ['gpsctl.c'],
                       LIBS=['gpsd'], parse_flags=gpsdflags+gpslibs)
 -env.Depends(gpsctl, [compiled_gpslib])
-+env.Depends(gpsctl, [compiled_gpslib, compiled_gpslib])
++env.Depends(gpsctl, [compiled_gpsdlib, compiled_gpslib])
  
  gpsmon = env.Program('gpsmon', gpsmon_sources,
                       LIBS=['gpsd'], parse_flags=gpsdflags+gpslibs + ncurseslibs)
 -env.Depends(gpsmon, [compiled_gpslib])
-+env.Depends(gpsmon, [compiled_gpslib, compiled_gpslib])
++env.Depends(gpsmon, [compiled_gpsdlib, compiled_gpslib])
  
  gpsdctl = env.Program('gpsdctl', ['gpsdctl.c'], parse_flags=gpslibs)
  env.Depends(gpsdctl, compiled_gpslib)
