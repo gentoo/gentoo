@@ -4395,7 +4395,7 @@ dev-lang/mozart-stdlib 1.4.0-r1: The Mozart Standard Library
 dev-lang/mujs 0_p20150202: lightweight Javascript interpreter
 dev-lang/nasm 2.11.08 2.12.01: groovy little assembler
 dev-lang/nqc 3.1_p6: Not Quite C - C-like compiler for Lego Mindstorms
-dev-lang/nqp 2016.01 2016.02 2016.03 2016.04 2016.04-r1 9999: Not Quite Perl, a Perl 6 bootstrapping compiler
+dev-lang/nqp 2016.01 2016.02 2016.03 2016.04 2016.04-r2 9999: Not Quite Perl, a Perl 6 bootstrapping compiler
 dev-lang/nwcc 0.8.2 0.8.3: Nils Weller's C Compiler
 dev-lang/ocaml 3.12.1 4.02.3 4.02.3-r1 4.03.0: Fast modern type-inferring functional programming language descended from the ML family
 dev-lang/open-cobol 1.1: an open-source COBOL compiler
