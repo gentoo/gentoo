@@ -64,12 +64,18 @@ src_configure() {
 		"--backend=${backends}"
 		"--prefix=/usr" )
 
-	# 2016.04 doesn't like our jna-3.4.1
+	# 2016.04 doesn't like our jna-3.4.1 nor jna-4.1.0
 	# keep testing against it
-	use system-libs && myconfargs+=(
-		"--with-asm=$(echo $(java-pkg_getjars asm-4) | tr : '\n' | grep '/asm\.jar$')"
-		"--with-asm-tree=$(echo $(java-pkg_getjars asm-4) | tr : '\n' | grep '/asm-tree\.jar$')"
-		"--with-jline=$(echo $(java-pkg_getjars jline) | tr : '\n' | grep '/jline\.jar$')" )
+	if use system-libs; then
+		if use java; then
+			myconfargs+=(
+				"--with-asm=$(echo $(java-pkg_getjars asm-4) | tr : '\n' | grep '/asm\.jar$')"
+				"--with-asm-tree=$(echo $(java-pkg_getjars asm-4) | tr : '\n' | grep '/asm-tree\.jar$')"
+				"--with-jline=$(echo $(java-pkg_getjars jline) | tr : '\n' | grep '/jline\.jar$')" )
+		else
+			einfo "USE=system-libs set, but this won't have any effect without USE=java."
+		fi
+	fi
 
 	perl Configure.pl "${myconfargs[@]}" || die
 }
