@@ -10152,7 +10152,7 @@ games-arcade/ri-li 2.0.1: Drive a toy wood engine and collect all the coaches
 games-arcade/rockdodger 0.6.0a-r1: Dodge the rocks for as long as possible until you die
 games-arcade/rocksndiamonds 3.3.1.2: A Boulderdash clone
 games-arcade/sable 1.0: A frantic 3D space shooter
-games-arcade/savagewheels 1.6.0: 2D car crashing game similar to the old classic Destruction Derby.
+games-arcade/savagewheels 1.6.1: 2D car crashing game similar to the old classic Destruction Derby.
 games-arcade/sdb 1.0.2: a 2D top-down action game; escape a facility full of walking death machines
 games-arcade/sdl-sopwith 1.7.5-r1: Port of the classic Sopwith game using LibSDL
 games-arcade/sdlroids 1.3.4-r3: Asteroids Clone for X using SDL
