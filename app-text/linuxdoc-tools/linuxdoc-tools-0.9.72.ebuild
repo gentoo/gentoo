@@ -2,18 +2,14 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# EAPI=6 is blocked by Gentoo bugs 497038, 497052.
 EAPI=5
 
-AUTOTOOLS_AUTORECONF=1
-AUTOTOOLS_IN_SOURCE_BUILD=1
-# Source tarball has SHA1 of release in the name of the second topmost directory
-GIT_SHA1="5a46c4ced4ef899b398bcedf8ccd29d6f2584100"
-
-inherit autotools-utils latex-package perl-module sgml-catalog toolchain-funcs
+inherit autotools-utils latex-package perl-functions sgml-catalog toolchain-funcs vcs-snapshot
 
 DESCRIPTION="A toolset for processing LinuxDoc DTD SGML files"
 HOMEPAGE="https://gitlab.com/agmartin/linuxdoc-tools"
-SRC_URI="https://gitlab.com/agmartin/${PN}/repository/archive.tar.gz?ref=upstream/${PV} -> ${P}.tar.gz"
+SRC_URI="https://gitlab.com/agmartin/${PN}/repository/archive.tar.gz?ref=v${PV} -> ${P}.tar.gz"
 
 LICENSE="MIT SGMLUG"
 SLOT="0"
@@ -35,24 +31,15 @@ DEPEND="${RDEPEND}
 	)
 "
 
-DOCS=( ChangeLog README )
-
-PATCHES=(
-	"${FILESDIR}/${P}-fix-parallel-doc-build.patch"
-	"${FILESDIR}/${P}-upgrade-deprecated-perl-regexs.patch"
-	"${FILESDIR}/${P}-upgrade-deprecated-latex-commands.patch"
-	"${FILESDIR}/${P}-fix-build-with-flex-2.6.1.patch"
-)
-
-S="${WORKDIR}/${PN}-upstream/${PV}-${GIT_SHA1}"
-
 src_prepare() {
-	# Use Gentoo doc install path.
+	autotools-utils_src_prepare
+
+	# Update the build system with Gentoo paths.
 	sed -i \
-		-e "s%/share/doc/${PN}%/share/doc/${PF}%" \
+		-e "s|share/doc/${PN}|share/doc/${PF}|g" \
 		Makefile.in || die
 
-	autotools-utils_src_prepare
+	eautoreconf
 }
 
 src_configure() {
@@ -66,18 +53,17 @@ src_configure() {
 	)
 	use doc && myeconfargs+=(--enable-docs="txt pdf html")
 
-	autotools-utils_src_configure
+	econf "${myeconfargs[@]}"
 }
 
 src_compile() {
-	autotools-utils_src_compile
+	# Prevent access violations from bitmap font files generation.
+	use doc && export VARTEXFONTS="${T}/fonts"
+	default_src_compile
 }
 
 src_install() {
-	# Prevent access violations from bitmap font files generation.
-	export VARTEXFONTS="${T}/fonts"
-
-	autotools-utils_src_install
+	default_src_install
 }
 
 sgml-catalog_cat_include "/etc/sgml/linuxdoc.cat" "/usr/share/${PN}/${PN}.catalog"
