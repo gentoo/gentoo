@@ -5,6 +5,10 @@
 # This file requires >=portage-2.1.1
 # New entries go on top.
 
+# Mike Frysinger <vapier@gentoo.org> (08 May 2016)
+# Most targets do not support VTV #547040.
+sys-devel/gcc vtv
+
 # Matthew Brewer <tomboy64@sina.cn> (08 May 2016)
 # Upstream supports using Clang's address sanitizer, but apparently
 # invokes it wrong.
