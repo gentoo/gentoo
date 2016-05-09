@@ -48,6 +48,10 @@ RDEPEND="${COMMON_DEPEND}
 DEPEND="${COMMON_DEPEND}
 	virtual/pkgconfig
 	qt5? ( dev-qt/linguist-tools:5 )
+	test? (
+		qt4? ( dev-qt/qttest:4 )
+		qt5? ( dev-qt/qttest:5 )
+	)
 "
 
 REQUIRED_USE="^^ ( qt4 qt5 )"
