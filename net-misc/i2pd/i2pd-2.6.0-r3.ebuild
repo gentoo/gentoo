@@ -61,7 +61,7 @@ src_install() {
 	doins docs/i2pd.conf
 	doins debian/tunnels.conf
 	doins debian/subscriptions.txt
-	
+
 	# grant i2pd group read and write access to config files
 	fowners "root:${I2PD_GROUP}" \
 		/etc/i2pd/i2pd.conf \
@@ -79,7 +79,7 @@ src_install() {
 	dosym /etc/i2pd/subscriptions.txt /var/lib/i2pd/subscriptions.txt
 	fowners "${I2PD_USER}:${I2PD_GROUP}" /var/lib/i2pd/
 	fperms 700 /var/lib/i2pd/
-	
+
 	# add /var/lib/i2pd/certificates to CONFIG_PROTECT
 	doenvd "${FILESDIR}/99i2pd"
 
@@ -87,7 +87,7 @@ src_install() {
 	newconfd "${FILESDIR}/i2pd-2.6.0-r3.confd" i2pd
 	newinitd "${FILESDIR}/i2pd-2.6.0-r3.initd" i2pd
 	systemd_newunit "${FILESDIR}/i2pd-2.6.0-r3.service" i2pd.service
-	
+
 	# logrotate
 	insinto /etc/logrotate.d
 	newins "${FILESDIR}/i2pd-2.6.0-r3.logrotate" i2pd
