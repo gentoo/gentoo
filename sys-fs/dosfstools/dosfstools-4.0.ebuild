@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -7,7 +7,7 @@ EAPI="5"
 inherit toolchain-funcs flag-o-matic
 
 DESCRIPTION="DOS filesystem tools - provides mkdosfs, mkfs.msdos, mkfs.vfat"
-HOMEPAGE="http://www.daniel-baumann.ch/software/dosfstools/"
+HOMEPAGE="https://github.com/dosfstools/dosfstools"
 SRC_URI="https://github.com/dosfstools/dosfstools/releases/download/v${PV}/${P}.tar.xz"
 
 LICENSE="GPL-3"
