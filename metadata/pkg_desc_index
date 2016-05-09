@@ -1800,7 +1800,7 @@ app-misc/hatools 2.14: High availability environment tools for shell scripting
 app-misc/hddled 0.3: Show hard disk activity using the scroll lock LED
 app-misc/hello 2.8 2.9 2.10: GNU "Hello, world" application
 app-misc/hexcompare 1.0.1 1.0.4: ncurses-based visual comparison of binary files
-app-misc/hilite 1.5: A utility which highlights stderr text in red
+app-misc/hilite 1.5 1.5-r1: A utility which highlights stderr text in red
 app-misc/hivex 1.3.11 1.3.11-r1: Library for reading and writing Windows Registry 'hive' binary files
 app-misc/icdiff 1.7.3: Colourized diff that supports side-by-side diffing
 app-misc/ifp-line 0.3: iRiver iFP open-source driver
