@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>yuchen.xie@live.com</email>
+		<name>Yuchen Xie</name>
+		<description>Proxy-Maintainer. Assign bugs to him</description>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription>
+		Folly (acronymed loosely after Facebook Open Source Library) is a library of C++11 components designed with practicality and efficiency in mind.
+		Folly contains a variety of core library components used extensively at Facebook. In particular, it's often a dependency of Facebook's other open
+		source C++ efforts and place where those projects can share code.
+
+		It complements (as opposed to competing against) offerings such as Boost and of course std. In fact, we embark on defining our own component only
+		when something we need is either not available, or does not meet the needed performance profile. We endeavor to remove things from folly if or
+		when std or Boost obsoletes them.
+
+		Performance concerns permeate much of Folly, sometimes leading to designs that are more idiosyncratic than they would otherwise be
+		(see e.g. PackedSyncPtr.h, SmallLocks.h). Good performance at large scale is a unifying theme in all of Folly.
+	</longdescription>
+	<upstream>
+		<doc lang="en">https://github.com/facebook/folly/blob/master/folly/docs/Overview.md</doc>
+	</upstream>
+</pkgmetadata>
