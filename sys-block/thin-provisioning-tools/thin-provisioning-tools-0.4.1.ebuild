@@ -42,6 +42,11 @@ src_configure() {
 		$(use_enable test testing)
 }
 
+src_compile() {
+	MAKEOPTS+=" V="
+	default
+}
+
 src_install() {
 	emake DESTDIR="${D}" MANPATH="${D}"/usr/share/man install
 	dodoc README.md TODO.org

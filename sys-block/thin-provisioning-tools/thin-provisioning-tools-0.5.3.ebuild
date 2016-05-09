@@ -44,6 +44,11 @@ src_configure() {
 		$(use_enable test testing)
 }
 
+src_compile() {
+	MAKEOPTS+=" V="
+	default
+}
+
 src_test() {
 	emake unit-test
 }

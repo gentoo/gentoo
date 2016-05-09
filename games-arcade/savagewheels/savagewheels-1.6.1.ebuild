@@ -12,7 +12,7 @@ HOMEPAGE="https://github.com/petarov/savagewheels"
 GAMEDATA="${PN}-gamedata-1.4.0"
 
 SRC_URI="
-	https://github.com/petarov/savagewheels/archive/v1.6.0.tar.gz -> ${P}.tar.gz
+	https://github.com/petarov/savagewheels/archive/${PV}.tar.gz -> ${P}.tar.gz
 	https://github.com/petarov/savagewheels/releases/download/v1.4/${PN}-gamedata.tar.gz -> ${GAMEDATA}.tar.gz
 "
 
@@ -32,11 +32,6 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 REQUIRED_USE="fmod? ( sound )"
-
-PATCHES=(
-	"${FILESDIR}/${P}-cmakelists.txt.patch"
-	"${FILESDIR}/${P}-linux_dirs.patch"
-)
 
 src_unpack() {
 	unpack ${P}.tar.gz
