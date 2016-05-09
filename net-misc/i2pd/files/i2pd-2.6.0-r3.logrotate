@@ -1,0 +1,11 @@
+/var/log/i2pd.log {
+        rotate 4
+        weekly
+        missingok
+        notifempty
+        create 640 i2pd i2pd
+        postrotate
+                /bin/kill -HUP $(cat /run/i2pd/i2pd.pid)
+        endscript
+}
+

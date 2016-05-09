@@ -1,0 +1,21 @@
+[Unit]
+Description=C++ daemon for accessing the I2P network
+After=network.target
+
+[Service]
+Type=forking
+Restart=on-abnormal
+PIDFile=/run/i2pd/i2pd.pid
+User=i2pd
+Group=i2pd
+LimitNOFILE=4096
+PermissionsStartOnly=yes
+ExecStartPre=/bin/mkdir -p /run/i2pd
+ExecStartPre=/bin/chown i2pd:i2pd /run/i2pd
+ExecStartPre=/bin/touch /run/i2pd/i2pd.pid /var/log/i2pd.log
+ExecStartPre=/bin/chown i2pd:i2pd /run/i2pd/i2pd.pid /var/log/i2pd.log
+ExecStart=/usr/bin/i2pd --daemon --service --pidfile=/run/i2pd/i2pd.pid --log=file --logfile=/var/log/i2pd.log --conf=/etc/i2pd/i2pd.conf --tunconf=/etc/i2pd/tunnels.conf
+
+[Install]
+WantedBy=multi-user.target
+
