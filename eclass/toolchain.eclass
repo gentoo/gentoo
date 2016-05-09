@@ -152,7 +152,7 @@ if [[ ${PN} != "kgcc64" && ${PN} != gcc-* ]] ; then
 	# versions which we dropped.  Since graphite was also experimental in
 	# the older versions, we don't want to bother supporting it.  #448024
 	tc_version_is_at_least 4.8 && IUSE+=" graphite" IUSE_DEF+=( sanitize )
-	tc_version_is_at_least 4.9 && IUSE+=" cilk"
+	tc_version_is_at_least 4.9 && IUSE+=" cilk +vtv"
 	tc_version_is_at_least 5.0 && IUSE+=" jit"
 	tc_version_is_at_least 6.0 && IUSE+=" pie +ssp"
 fi
@@ -1163,6 +1163,13 @@ toolchain_src_configure() {
 
 	if in_iuse cilk ; then
 		confgcc+=( $(use_enable cilk libcilkrts) )
+	fi
+
+	if in_iuse vtv ; then
+		confgcc+=(
+			$(use_enable vtv vtable-verify)
+			$(use_enable vtv libvtv)
+		)
 	fi
 
 	# newer gcc's come with libquadmath, but only fortran uses
