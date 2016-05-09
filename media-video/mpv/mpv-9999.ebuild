@@ -7,7 +7,7 @@ EAPI=6
 PYTHON_COMPAT=( python{2_7,3_3,3_4,3_5} )
 PYTHON_REQ_USE='threads(+)'
 
-WAF_PV='1.8.12'
+WAF_PV=1.8.12
 
 inherit fdo-mime gnome2-utils pax-utils python-any-r1 toolchain-funcs waf-utils
 
@@ -19,13 +19,13 @@ if [[ ${PV} != *9999* ]]; then
 	KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux"
 	DOCS=( RELEASE_NOTES )
 else
-	EGIT_REPO_URI="https://github.com/mpv-player/mpv.git"
+	EGIT_REPO_URI="git://github.com/mpv-player/mpv.git"
 	inherit git-r3
 fi
 SRC_URI+=" https://waf.io/waf-${WAF_PV}"
-DOCS+=( README.md )
+DOCS+=( CONTRIBUTING.md README.md )
 
-# See Copyright in source tarball and bug #506946. Waf is BSD, libmpv is ISC.
+# See Copyright in sources and Gentoo bug 506946. Waf is BSD, libmpv is ISC.
 LICENSE="GPL-2+ BSD ISC"
 SLOT="0"
 IUSE="aqua +alsa archive bluray cdda +cli coreaudio doc drm dvb dvd +egl +enca
@@ -135,24 +135,24 @@ pkg_pretend() {
 src_prepare() {
 	cp "${DISTDIR}/waf-${WAF_PV}" "${S}"/waf || die
 	chmod +x "${S}"/waf || die
-	default
+	default_src_prepare
 }
 
 src_configure() {
 	local mywafargs=(
-		--confdir="${EPREFIX}"/etc/${PN}
-		--docdir="${EPREFIX}"/usr/share/doc/${PF}
+		--confdir="${EPREFIX}/etc/${PN}"
+		--docdir="${EPREFIX}/usr/share/doc/${PF}"
 
 		--disable-gpl3			# Unclear license info. See Gentoo bug 571728.
 
 		$(usex cli '' '--disable-cplayer')
 		$(use_enable libmpv libmpv-shared)
 
-		# See deep down below for build-date
+		# See deep down below for build-date.
 		--disable-libmpv-static
 		--disable-static-build
-		--disable-optimize		# Do not add '-O2' to CFLAGS
-		--disable-debug-build	# Do not add '-g' to CFLAGS
+		--disable-optimize		# Don't add '-O2' to CFLAGS.
+		--disable-debug-build	# Don't add '-g' to CFLAGS.
 
 		$(use_enable doc html-build)
 		$(use_enable doc pdf-build)
@@ -176,17 +176,17 @@ src_configure() {
 		$(use_enable uchardet)
 		$(use_enable rubberband)
 		$(use_enable lcms lcms2)
-		--disable-vapoursynth	# Only available in overlays
+		--disable-vapoursynth	# Only available in overlays.
 		--disable-vapoursynth-lazy
 		$(use_enable archive libarchive)
 
 		--enable-libavdevice
 
-		# Audio outputs
-		$(use_enable sdl sdl2)	# Listed under audio, but also includes video
+		# Audio outputs:
+		$(use_enable sdl sdl2)	# Listed under audio, but also includes video.
 		--disable-sdl1
 		$(use_enable oss oss-audio)
-		--disable-rsound		# Only available in overlays
+		--disable-rsound		# Only available in overlays.
 		$(use_enable pulseaudio pulse)
 		$(use_enable jack)
 		$(use_enable openal)
@@ -194,7 +194,7 @@ src_configure() {
 		$(use_enable alsa)
 		$(use_enable coreaudio)
 
-		# Video outputs
+		# Video outputs:
 		$(use_enable aqua cocoa)
 		$(use_enable drm)
 		$(use_enable gbm)
@@ -212,7 +212,7 @@ src_configure() {
 		$(use_enable wayland gl-wayland)
 		$(use_enable vdpau)
 		$(usex vdpau "$(use_enable opengl vdpau-gl-x11)" '--disable-vdpau-gl-x11')
-		$(use_enable vaapi)		# See below for vaapi-glx, vaapi-x-egl
+		$(use_enable vaapi)		# See below for vaapi-glx, vaapi-x-egl.
 		$(usex vaapi "$(use_enable X vaapi-x11)" '--disable-vaapi-x11')
 		$(usex vaapi "$(use_enable wayland vaapi-wayland)" '--disable-vaapi-wayland')
 		$(usex vaapi "$(use_enable gbm vaapi-drm)" '--disable-vaapi-drm')
@@ -222,19 +222,19 @@ src_configure() {
 		$(use_enable raspberry-pi rpi)
 		$(usex libmpv "$(use_enable opengl plain-gl)" '--disable-plain-gl')
 
-		# HWaccels
+		# HWaccels:
 		# Automagic Video Toolbox HW acceleration. See Gentoo bug 577332.
 		$(use_enable vaapi vaapi-hwaccel)
 		# Automagic VDPAU HW acceleration. See Gentoo bug 558870.
 
-		# TV features
+		# TV features:
 		$(use_enable v4l tv)
 		$(use_enable v4l tv-v4l2)
 		$(use_enable v4l libv4l2)
 		$(use_enable v4l audio-input)
 		$(use_enable dvb dvbin)
 
-		# Miscellaneous features
+		# Miscellaneous features:
 		--disable-apple-remote	# Needs testing first. See Gentoo bug 577332.
 	)
 
@@ -245,7 +245,11 @@ src_configure() {
 		)
 	fi
 
-	# Create reproducible non-live builds
+	if ! use egl && ! use opengl && ! use raspberry-pi; then
+		mywafargs+=(--disable-gl)
+	fi
+
+	# Create reproducible non-live builds.
 	[[ ${PV} != *9999* ]] && mywafargs+=(--disable-build-date)
 
 	waf-utils_src_configure "${mywafargs[@]}"
@@ -255,7 +259,7 @@ src_install() {
 	waf-utils_src_install
 
 	if use cli && use luajit; then
-		pax-mark -m "${ED}usr/bin/${PN}"
+		pax-mark -m "${ED}"usr/bin/${PN}
 	fi
 }
 
@@ -272,13 +276,13 @@ pkg_postinst() {
 		! has_version 'app-shells/mpv-bash-completion'; then
 		elog "If you want to have command-line completion via bash-completion,"
 		elog "please install app-shells/mpv-bash-completion."
-	fi;
+	fi
 
 	if use cli && [[ -n ${REPLACING_VERSIONS} ]] && \
 		has_version 'app-shells/mpv-bash-completion'; then
 		elog "If command-line completion doesn't work after mpv update,"
 		elog "please rebuild app-shells/mpv-bash-completion."
-	fi;
+	fi
 }
 
 pkg_postrm() {
