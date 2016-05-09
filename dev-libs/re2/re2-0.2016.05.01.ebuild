@@ -11,8 +11,8 @@ RE2_VER=${PV#0.}
 RE2_VER=${RE2_VER//./-}
 
 DESCRIPTION="An efficent, principled regular expression library"
-HOMEPAGE="https://www.github.com/google/re2/"
-SRC_URI="https://www.github.com/google/re2/archive/${RE2_VER}.tar.gz -> ${PN}-${RE2_VER}.tar.gz"
+HOMEPAGE="https://github.com/google/re2"
+SRC_URI="https://github.com/google/re2/archive/${RE2_VER}.tar.gz -> ${PN}-${RE2_VER}.tar.gz"
 
 LICENSE="BSD"
 # NOTE: Always run libre2 through abi-compliance-checker!
