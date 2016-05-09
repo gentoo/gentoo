@@ -151,13 +151,6 @@ dev-java/freehep-xml
 # expect unexpected, weird, and potentially fatal results.
 =dev-lang/perl-5.24*
 
-# Michael Sterrett <mr_bones_@gentoo.org> (06 Apr 2016)
-# These pin an old crufty version of media-libs/libsfml
-# and aren't used by anything in the tree.
-# Masked for removal on 20160506
-media-libs/csfml
-dev-python/pysfml
-
 # Michael Palimaka <kensington@gentoo.org> (07 Apr 2016)
 # Obsolete. Merged into media-libs/libexif.
 # Masked for removal in 30 days.
