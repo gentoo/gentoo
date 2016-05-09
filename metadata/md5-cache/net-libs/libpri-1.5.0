@@ -1,0 +1,10 @@
+DEFINED_PHASES=install
+DESCRIPTION=Primary Rate ISDN (PRI) library
+EAPI=6
+HOMEPAGE=http://www.asterisk.org/
+KEYWORDS=~amd64 ~sparc ~x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=http://downloads.asterisk.org/pub/telephony/libpri/releases/libpri-1.5.0.tar.gz
+_eclass_exported_funcs=src_install:-
+_md5_=0a0de9af1bc2269b06bb515d75dd9dbe
