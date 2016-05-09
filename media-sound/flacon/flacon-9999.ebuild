@@ -13,7 +13,7 @@ DESCRIPTION="Extracts audio tracks from an audio CD image to separate tracks"
 HOMEPAGE="https://flacon.github.io/"
 EGIT_REPO_URI="git://github.com/${PN}/${PN}.git"
 
-LICENSE="LGPL-2.1"
+LICENSE="LGPL-2.1+"
 SLOT="0"
 KEYWORDS=""
 IUSE="aac flac mac mp3 opus qt4 qt5 replaygain test tta vorbis wavpack"
