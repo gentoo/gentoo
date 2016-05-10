@@ -1,5 +1,5 @@
-DEFINED_PHASES=configure
-DEPEND=udev? ( virtual/libudev ) udev? ( virtual/pkgconfig )
+DEFINED_PHASES=configure prepare
+DEPEND=udev? ( virtual/libudev ) udev? ( virtual/pkgconfig ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=DOS filesystem tools - provides mkdosfs, mkfs.msdos, mkfs.vfat
 EAPI=5
 HOMEPAGE=https://github.com/dosfstools/dosfstools
@@ -7,8 +7,9 @@ IUSE=compat +udev
 KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~arm-linux ~x86-linux
 LICENSE=GPL-3
 RDEPEND=udev? ( virtual/libudev )
+RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/dosfstools/dosfstools/releases/download/v4.0/dosfstools-4.0.tar.xz
-_eclass_exported_funcs=src_configure:-
-_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	flag-o-matic	d270fa247153df66074f795fa42dba3e	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
-_md5_=0979b275334740970e29a6acd2a6c4a1
+_eclass_exported_funcs=src_prepare:- src_configure:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	792f83d5ec9536cb5ccef375469d8bde	flag-o-matic	d270fa247153df66074f795fa42dba3e	libtool	4890219c51da247200223277f993e054	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=635d4e13c9b01fb746166c9e4fc80b92
