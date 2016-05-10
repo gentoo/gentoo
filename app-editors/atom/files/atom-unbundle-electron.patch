@@ -1,0 +1,45 @@
+From d8e2b7e0fabdb4604063071f7f3a4a24e49daca7 Mon Sep 17 00:00:00 2001
+From: Elvis Pranskevichus <elvis@magic.io>
+Date: Thu, 5 May 2016 17:23:35 -0400
+Subject: [PATCH] Unbundle electron
+
+---
+ atom.sh | 12 +++++-------
+ 1 file changed, 5 insertions(+), 7 deletions(-)
+
+diff --git a/atom.sh b/atom.sh
+index b68716b..d89587f 100755
+--- a/atom.sh
++++ b/atom.sh
+@@ -87,11 +87,9 @@ elif [ $OS == 'Linux' ]; then
+   SCRIPT=$(readlink -f "$0")
+   USR_DIRECTORY=$(readlink -f $(dirname $SCRIPT)/..)
+ 
+-  if [ -n "$BETA_VERSION" ]; then
+-    ATOM_PATH="$USR_DIRECTORY/share/atom-beta/atom"
+-  else
+-    ATOM_PATH="$USR_DIRECTORY/share/atom/atom"
+-  fi
++  export NPM_CONFIG_NODEDIR="/usr/include/electron/node/"
++  export ATOM_RESOURCE_PATH="{{ATOM_RESOURCE_PATH}}"
++  ATOM_PATH="{{ATOM_PATH}}"
+ 
+   ATOM_HOME="${ATOM_HOME:-$HOME/.atom}"
+   mkdir -p "$ATOM_HOME"
+@@ -101,11 +99,11 @@ elif [ $OS == 'Linux' ]; then
+   [ -x "$ATOM_PATH" ] || ATOM_PATH="$TMPDIR/atom-build/Atom/atom"
+ 
+   if [ $EXPECT_OUTPUT ]; then
+-    "$ATOM_PATH" --executed-from="$(pwd)" --pid=$$ "$@"
++    "$ATOM_PATH" --app="$ATOM_RESOURCE_PATH" --executed-from="$(pwd)" --pid=$$ "$@"
+     exit $?
+   else
+     (
+-    nohup "$ATOM_PATH" --executed-from="$(pwd)" --pid=$$ "$@" > "$ATOM_HOME/nohup.out" 2>&1
++    nohup "$ATOM_PATH" --app="$ATOM_RESOURCE_PATH" --executed-from="$(pwd)" --pid=$$ "$@" > "$ATOM_HOME/nohup.out" 2>&1
+     if [ $? -ne 0 ]; then
+       cat "$ATOM_HOME/nohup.out"
+       exit $?
+-- 
+2.7.3
+
