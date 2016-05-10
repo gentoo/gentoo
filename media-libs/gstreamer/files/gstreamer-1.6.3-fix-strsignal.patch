@@ -1,0 +1,29 @@
+From c9da8b0e7f53005ab125e48165dae39fbfee2352 Mon Sep 17 00:00:00 2001
+From: "Anthony G. Basile" <blueness@gentoo.org>
+Date: Sun, 13 Mar 2016 11:05:29 -0400
+Subject: libcompat.h: strsignal() should be not be decleared const
+
+POSIX standards requires strsignal() to return a pointer to a char,
+not a const pointer to a char. [1]  On uClibc, and possibly other
+libc's, that do not HAVE_DECL_STRSIGNAL, libcompat.h declares
+const char *strsignal (int sig) which causes a type error.
+
+[1] man 3 strsignal
+
+https://bugzilla.gnome.org/show_bug.cgi?id=763567
+
+diff --git a/libs/gst/check/libcheck/strsignal.c b/libs/gst/check/libcheck/strsignal.c
+index b79409b..57e71cd 100644
+--- a/libs/gst/check/libcheck/strsignal.c
++++ b/libs/gst/check/libcheck/strsignal.c
+@@ -1,6 +1,6 @@
+ #include "libcompat.h"
+ 
+-const char *
++char *
+ strsignal (int sig)
+ {
+   static char signame[40];
+-- 
+cgit v0.10.2
+
