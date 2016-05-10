@@ -73,7 +73,9 @@ src_unpack() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-qt.patch
+	epatch \
+		"${FILESDIR}"/${P}-qt.patch \
+		"${FILESDIR}"/${P}-cxx14.patch
 	# Disable using bundled libraries
 	enable_feature USE_SYSTEM_LIB_EXPAT
 	enable_feature USE_SYSTEM_LIB_FLAC
