@@ -601,7 +601,7 @@ app-crypt/scute 1.4.0: A PKCS #11 module for OpenPGP smartcards
 app-crypt/seahorse 3.16.0-r1 3.18.0: A GNOME application for managing encryption keys
 app-crypt/seahorse-sharing 3.8.0 3.8.0_p20151117: Daemon for PGP public key sharing using DNS-SD and HKP
 app-crypt/sgeps 0_pre15: simple GnuPG-encrypted password store written in perl
-app-crypt/shash 0.2.6-r2: Generate or check digests or MACs of files
+app-crypt/shash 0.2.6-r2 0.2.6-r3: Generate or check digests or MACs of files
 app-crypt/sign 1.0.7: File signing and signature verification utility
 app-crypt/signify 17-r1: Cryptographically sign and verify files
 app-crypt/signing-party 1.1.4 1.1.11-r1 2.0 2.1 2.2: A collection of several tools related to OpenPGP
@@ -15787,7 +15787,7 @@ sci-libs/deap 0.9.1 1.0.0: Distributed Evolutionary Algorithms in Python
 sci-libs/djbfft 0.76-r2: Extremely fast library for floating-point convolution
 sci-libs/dlib 18.7 18.15: Numerical and networking C++ library
 sci-libs/dsdp 5.8-r2: Software for interior-point for semidefinite programming
-sci-libs/exodusii 6.02: Model developed to store and retrieve transient data for finite element analyses
+sci-libs/exodusii 6.02 6.09: Model developed to store and retrieve transient data for finite element analyses
 sci-libs/fcl 0.3.2 0.4.0 9999: The Flexible Collision Library
 sci-libs/fetk 1.5: The Finite Element ToolKit - Meta package
 sci-libs/fftw 2.1.5-r8 3.3.4: Fast C library for the Discrete Fourier Transform
