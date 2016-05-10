@@ -4898,7 +4898,7 @@ dev-libs/totem-pl-parser 3.10.5 3.10.6: Playlist parsing library
 dev-libs/tre 0.8.0: Lightweight, robust, and efficient POSIX compliant regexp matching library
 dev-libs/tvision 2.1.0_pre2-r3: Text User Interface that implements the well known CUA widgets
 dev-libs/tvmet 1.7.2-r2: Tiny Vector Matrix library using Expression Templates
-dev-libs/uchardet 0.0.1 0.0.5-r1: An encoding detector library ported from Mozilla
+dev-libs/uchardet 0.0.5-r1 9999: An encoding detector library ported from Mozilla
 dev-libs/ucl 1.03-r1: the UCL Compression Library
 dev-libs/ucommon 6.0.3 6.1.10 6.3.1 6.5.2 6.5.7: Portable C++ runtime for threads and sockets
 dev-libs/udis86 1.7-r2 1.7.2: Disassembler library for the x86/-64 architecture sets
