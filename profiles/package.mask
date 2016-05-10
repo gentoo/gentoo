@@ -421,11 +421,6 @@ dev-libs/iniparser:4
 # See #551724 and duplicates
 =sys-fs/udev-init-scripts-29
 
-# Patrick Lauer <patrick@gentoo.org> (10 Apr 2015)
-# Breaks pretty much all consumers, like samba
-# Mask until it's more usable
->=net-libs/gnutls-3.4.0
-
 # Michał Górny <mgorny@gentoo.org> (28 Mar 2015)
 # on behalf of gx86-multilib project <multilib@gentoo.org>
 # Removed lastrited emul-linux-x86. The mask is kept post-removal
