@@ -2,11 +2,11 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 AUTOTOOLS_PRUNE_LIBTOOL_FILES="all"
 AUTOTOOLS_AUTORECONF=1
 
-inherit eutils linux-info mono-env flag-o-matic pax-utils autotools-utils versionator
+inherit eutils linux-info mono-env flag-o-matic pax-utils versionator
 
 DESCRIPTION="Mono runtime and class libraries, a C# compiler/interpreter"
 HOMEPAGE="http://www.mono-project.com/Main_Page"
@@ -38,6 +38,7 @@ MAKEOPTS="${MAKEOPTS} -j1" #nowarn
 S="${WORKDIR}/${PN}-$(get_version_component_range 1-3)"
 
 pkg_pretend() {
+	# https://github.com/gentoo/gentoo/blob/f200e625bda8de696a28338318c9005b69e34710/eclass/linux-info.eclass#L686
 	# If CONFIG_SYSVIPC is not set in your kernel .config, mono will hang while compiling.
 	# See http://bugs.gentoo.org/261869 for more info."
 	CONFIG_CHECK="SYSVIPC"
@@ -66,21 +67,24 @@ src_prepare() {
 
 	# Fix VB targets
 	# http://osdir.com/ml/general/2015-05/msg20808.html
-	epatch "${FILESDIR}/add_missing_vb_portable_targets.patch"
+	#eapply "${FILESDIR}/add_missing_vb_portable_targets.patch"
 
 	# Fix build when sgen disabled
 	# https://bugzilla.xamarin.com/show_bug.cgi?id=32015
-	epatch "${FILESDIR}/${PN}-4.0.2.5-fix-mono-dis-makefile-am-when-without-sgen.patch"
+	#eapply "${FILESDIR}/${PN}-4.0.2.5-fix-mono-dis-makefile-am-when-without-sgen.patch"
 
+	# TODO: update patch
 	# Fix atomic_add_i4 support for 32-bit ppc
 	# https://github.com/mono/mono/compare/f967c79926900343f399c75624deedaba460e544^...8f379f0c8f98493180b508b9e68b9aa76c0c5bdf
-	epatch "${FILESDIR}/${PN}-4.0.2.5-fix-ppc-atomic-add-i4.patch"
+	#epatch "${FILESDIR}/${PN}-4.0.2.5-fix-ppc-atomic-add-i4.patch"
 
-	epatch "${FILESDIR}/systemweb3.patch"
-	epatch "${FILESDIR}/fix-for-GitExtensions-issue-2710-another-resolution.patch"
-	epatch "${FILESDIR}/fix-for-bug36724.patch"
+	# TODO: update patch
+	#epatch "${FILESDIR}/systemweb3.patch"
+	#epatch "${FILESDIR}/fix-for-GitExtensions-issue-2710-another-resolution.patch"
+	#epatch "${FILESDIR}/fix-for-bug36724.patch"
 
-	autotools-utils_src_prepare
+	default_src_prepare
+	#eapply_user
 }
 
 src_configure() {
@@ -93,11 +97,11 @@ src_configure() {
 		$(use_enable nls)
 	)
 
-	autotools-utils_src_configure
+	default_src_configure
 }
 
 src_compile() {
-	autotools-utils_src_compile
+	default_src_compile
 }
 
 src_test() {
@@ -106,7 +110,7 @@ src_test() {
 }
 
 src_install() {
-	autotools-utils_src_install
+	default_src_install
 
 	# Remove files not respecting LDFLAGS and that we are not supposed to provide, see Fedora
 	# mono.spec and http://www.mail-archive.com/mono-devel-list@lists.ximian.com/msg24870.html
