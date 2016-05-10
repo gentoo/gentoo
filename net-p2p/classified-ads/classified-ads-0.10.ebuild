@@ -5,7 +5,7 @@
 EAPI=6
 PLOCALES="en fi sv da uk"
 PLOCALE_BACKUP="en"
-inherit qmake-utils virtualx vcs-snapshot
+inherit qmake-utils virtualx vcs-snapshot l10n
 
 COMMIT_ID="cd0652c52f86f6284b793f26e5362bc8fb8a7118"
 DESCRIPTION="Program for displaying classified advertisement items"
@@ -33,15 +33,14 @@ RDEPEND="dev-libs/openssl:0
 		dev-qt/qtmultimedia:5[widgets]
 		dev-qt/qt-mobility[multimedia]
 		dev-qt/qtprintsupport:5
-		media-libs/opus"
+		media-libs/opus
+		virtual/libintl"
 
 DEPEND="${RDEPEND}
-	sys-devel/gettext
-		sys-devel/gdb:0
 	doc? ( app-doc/doxygen[dot] )
 	test? ( dev-libs/libgcrypt:0
 		dev-qt/qttest:5
-		${VIRTUALX_DEPEND} )"
+		sys-devel/gdb:0 )"
 
 src_prepare() {
 	# preprocessed graphics are unpacked into wrong directory
@@ -49,32 +48,34 @@ src_prepare() {
 	mv ../classified-ads-graphics-${PV}/* ui/ || die
 	# possible patches
 	eapply_user
-	# then just run qmake
+}
+
+src_configure() {
 	eqmake5
+	if use test; then
+		cd test || die
+		eqmake5
+	fi
 }
 
 src_compile() {
 	emake
 	if use doc; then
-		cd doc || die
+		cd "${S}"/doc || die
 		doxygen || die
+	fi
+	if use test; then
+		cd "${S}"/test || die
+		emake
 	fi
 }
 
 src_test() {
-	virtx test_suite
+	# testca will return 0 if all unit tests pass
+	virtx ./test/testca
 }
 
 src_install() {
 	emake install INSTALL_ROOT="${D}" DESTDIR="${D}"
 	use doc && dodoc -r doc/doxygen.generated/html/
-}
-
-# virtualx requires a command that returns number, and does not just die:
-test_suite() {
-	cd test || return -1
-	eqmake5 || return -2
-	emake
-	./testca
-	return $?
 }
