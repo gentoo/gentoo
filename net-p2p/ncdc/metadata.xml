@@ -7,7 +7,8 @@
 </maintainer>
 <upstream>
 	<maintainer status="active">
-	<email>projects@yorhel.nl</email>
+		<email>projects@yorhel.nl</email>
+		<name>Yoran Heling</name>
 	</maintainer>
 	<changelog>http://dev.yorhel.nl/ncdc/changes</changelog>
 	<doc lang="en">http://dev.yorhel.nl/ncdc/man</doc>
