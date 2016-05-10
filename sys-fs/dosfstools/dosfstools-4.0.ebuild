@@ -4,7 +4,7 @@
 
 EAPI="5"
 
-inherit toolchain-funcs flag-o-matic
+inherit autotools toolchain-funcs flag-o-matic
 
 DESCRIPTION="DOS filesystem tools - provides mkdosfs, mkfs.msdos, mkfs.vfat"
 HOMEPAGE="https://github.com/dosfstools/dosfstools"
@@ -20,7 +20,16 @@ DEPEND="${CDEPEND}
 	udev? ( virtual/pkgconfig )"
 RDEPEND="${CDEPEND}"
 
-#RESTRICT="test" # there is no test target #239071
+RESTRICT="test" # there is no test target #239071
+
+PATCHES=(
+	"${FILESDIR}/${P}-udevlibs.patch"
+)
+
+src_prepare() {
+	epatch "${PATCHES[@]}"
+	eautoreconf
+}
 
 src_configure() {
 	econf \
