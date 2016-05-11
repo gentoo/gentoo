@@ -6,16 +6,18 @@ EAPI=6
 
 PYTHON_COMPAT=( python{2_7,3_3,3_4} )
 
-inherit distutils-r1 git-r3
+inherit distutils-r1
 
 DESCRIPTION="Python video metadata parser"
 HOMEPAGE="https://github.com/Diaoul/enzyme https://pypi.python.org/pypi/enzyme"
-EGIT_REPO_URI="git://github.com/Diaoul/${PN}.git"
-SRC_URI="test? ( http://downloads.sourceforge.net/project/matroska/test_files/matroska_test_w1_1.zip )"
+SRC_URI="
+	mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz
+	test? ( http://downloads.sourceforge.net/project/matroska/test_files/matroska_test_w1_1.zip )
+"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="test"
 
 RDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
@@ -26,11 +28,6 @@ DEPEND="${RDEPEND}
 		dev-python/requests[${PYTHON_USEDEP}]
 	)
 "
-
-src_unpack() {
-	default_src_unpack
-	git-r3_src_unpack
-}
 
 python_prepare_all() {
 	if use test; then
