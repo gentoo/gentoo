@@ -18,8 +18,6 @@
       or <pkg>dev-qt/qtphonon</pkg></flag>
   </use>
   <upstream>
-    <remote-id type="google-code">quite-rss</remote-id>
-    <bugs-to>https://code.google.com/p/quite-rss/issues</bugs-to>
     <remote-id type="github">QuiteRSS/quiterss</remote-id>
   </upstream>
 </pkgmetadata>
