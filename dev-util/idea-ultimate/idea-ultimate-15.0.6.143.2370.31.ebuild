@@ -26,7 +26,7 @@ SRC_URI="https://download.jetbrains.com/idea/${MY_PN}IU-${MY_PV}.tar.gz -> ${MY_
 
 LICENSE="IDEA
 	|| ( IDEA_Academic IDEA_Classroom IDEA_OpenSource IDEA_Personal )"
-IUSE="-custom-jdk"
+IUSE=""
 
 DEPEND="!dev-util/${PN}:14
 	!dev-util/${PN}:15"
@@ -49,11 +49,6 @@ src_prepare() {
 	fi
 	if ! use x86; then
 		rm -r plugins/tfsIntegration/lib/native/linux/x86 || die
-	fi
-	if ! use custom-jdk; then
-		if [[ -d jre ]]; then
-			rm -r jre || die
-		fi
 	fi
 	rm -r plugins/tfsIntegration/lib/native/solaris || die
 	rm -r plugins/tfsIntegration/lib/native/hpux || die
