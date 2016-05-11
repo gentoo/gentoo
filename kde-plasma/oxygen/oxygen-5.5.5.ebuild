@@ -12,6 +12,7 @@ KEYWORDS="amd64 ~arm ~x86"
 IUSE=""
 
 RDEPEND="
+	<kde-frameworks/frameworkintegration-5.22.0
 	$(add_frameworks_dep frameworkintegration)
 	$(add_frameworks_dep kcmutils)
 	$(add_frameworks_dep kcompletion)
