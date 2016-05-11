@@ -155,7 +155,7 @@ sci-libs/gdal ruby
 # See bug #547834
 <sys-apps/paludis-2.4.0 ruby
 # See bug #480574
-media-libs/mlt ruby
+<media-libs/mlt-6.2.0 ruby
 
 # Andreas K. Huettel <dilfridge@gentoo.org> (1 Sep 2015)
 # Currently broken upstream. We still hope it will get fixed.
