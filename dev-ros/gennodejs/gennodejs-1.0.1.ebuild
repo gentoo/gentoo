@@ -12,10 +12,9 @@ inherit ros-catkin
 
 DESCRIPTION="Javascript ROS message and service generators"
 HOMEPAGE="http://wiki.ros.org/genpy"
-LICENSE="BSD"
+LICENSE="Apache-2.0"
 SLOT="0/${PV}"
 IUSE=""
 
 RDEPEND="dev-ros/genmsg[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}"
-PATCHES=( "${FILESDIR}/py3.patch" )
