@@ -1,0 +1,32 @@
+Author: 80x24 <80x24@momoka.net>
+
+diff -ru stunnel-5.24/src/verify.c stunnel-5.24.new/src/verify.c
+--- stunnel-5.24/src/verify.c	2015-09-23 18:00:08.000000000 +0800
++++ stunnel-5.24.new/src/verify.c	2015-11-18 13:16:06.321540501 +0800
+@@ -51,7 +51,7 @@
+ NOEXPORT int verify_callback(int, X509_STORE_CTX *);
+ NOEXPORT int verify_checks(CLI *, int, X509_STORE_CTX *);
+ NOEXPORT int cert_check(CLI *, X509_STORE_CTX *, int);
+-#if OPENSSL_VERSION_NUMBER>=0x10002000L
++#if OPENSSL_VERSION_NUMBER>=0x10002000L && !defined(LIBRESSL_VERSION_NUMBER)
+ NOEXPORT int cert_check_subject(CLI *, X509_STORE_CTX *);
+ #endif /* OPENSSL_VERSION_NUMBER>=0x10002000L */
+ NOEXPORT int cert_check_local(X509_STORE_CTX *);
+@@ -280,7 +280,7 @@
+     }
+ 
+     if(depth==0) { /* additional peer certificate checks */
+-#if OPENSSL_VERSION_NUMBER>=0x10002000L
++#if OPENSSL_VERSION_NUMBER>=0x10002000L && !defined(LIBRESSL_VERSION_NUMBER)
+         if(!cert_check_subject(c, callback_ctx))
+             return 0; /* reject */
+ #endif /* OPENSSL_VERSION_NUMBER>=0x10002000L */
+@@ -291,7 +291,7 @@
+     return 1; /* accept */
+ }
+ 
+-#if OPENSSL_VERSION_NUMBER>=0x10002000L
++#if OPENSSL_VERSION_NUMBER>=0x10002000L && !defined(LIBRESSL_VERSION_NUMBER)
+ NOEXPORT int cert_check_subject(CLI *c, X509_STORE_CTX *callback_ctx) {
+     X509 *cert=X509_STORE_CTX_get_current_cert(callback_ctx);
+     NAME_LIST *ptr;
