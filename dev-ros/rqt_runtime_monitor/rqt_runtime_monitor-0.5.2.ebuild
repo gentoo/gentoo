@@ -11,18 +11,17 @@ ROS_SUBDIR=${PN}
 
 inherit ros-catkin
 
-DESCRIPTION="GUI plugin embedding RViz"
+DESCRIPTION="GUI plugin viewing DiagnosticsArray messages"
 LICENSE="BSD"
 SLOT="0"
 IUSE=""
 
 RDEPEND="
-	dev-libs/boost:=
-	dev-ros/pluginlib[${PYTHON_USEDEP}]
+	dev-ros/diagnostic_msgs[${CATKIN_MESSAGES_PYTHON_USEDEP}]
+	dev-python/rospkg[${PYTHON_USEDEP}]
+	dev-ros/qt_gui[${PYTHON_USEDEP}]
+	dev-ros/rospy[${PYTHON_USEDEP}]
 	dev-ros/rqt_gui[${PYTHON_USEDEP}]
-	dev-ros/rqt_gui_cpp
-	>=dev-ros/qt_gui_cpp-0.3
-	dev-qt/qtwidgets:5
-	dev-ros/rviz
+	dev-ros/rqt_gui_py[${PYTHON_USEDEP}]
 "
 DEPEND="${RDEPEND}"
