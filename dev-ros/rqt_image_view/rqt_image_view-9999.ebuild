@@ -20,7 +20,8 @@ RDEPEND="
 	dev-ros/cv_bridge[${PYTHON_USEDEP}]
 	dev-ros/image_transport
 	dev-ros/rqt_gui[${PYTHON_USEDEP}]
-	dev-ros/rqt_gui_cpp
+	>=dev-ros/rqt_gui_cpp-0.3
 	dev-ros/sensor_msgs[${CATKIN_MESSAGES_PYTHON_USEDEP}]
+	dev-qt/qtwidgets:5
 "
 DEPEND="${RDEPEND}"
