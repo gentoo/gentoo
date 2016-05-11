@@ -10,6 +10,9 @@ DESCRIPTION="FreeBSD's base system libraries"
 SLOT="0"
 LICENSE="BSD zfs? ( CDDL )"
 
+# Security Advisory and Errata patches.
+UPSTREAM_PATCHES=( "EN-16:06/libc.patch" )
+
 # Crypto is needed to have an internal OpenSSL header
 # sys is needed for libalias, probably we can just extract that instead of
 # extracting the whole tarball
