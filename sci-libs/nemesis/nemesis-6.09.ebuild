@@ -11,7 +11,7 @@ MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Enhancement to the EXODUSII finite element database model"
 HOMEPAGE="http://sourceforge.net/projects/exodusii/"
-SRC_URI="mirror://sourceforge/project/${MY_PN}ii/${MY_P}.tar.bz2"
+SRC_URI="mirror://sourceforge/project/${MY_PN}ii/${MY_P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
@@ -25,21 +25,21 @@ RDEPEND="${DEPEND}"
 
 S="${WORKDIR}"/${MY_P}/${PN}
 
-PATCHES=( "${FILESDIR}"/${PN}-5.22b-multilib.patch )
+PATCHES=( "${FILESDIR}"/${P}-multilib.patch )
 
 src_prepare() {
 	find ../exodus -delete || die
 	cmake-utils_src_prepare
-	sed -i 's/exoIIv2c/NAMES exodus &/' CMakeLists.txt || die
 }
 
 src_configure() {
-	mycmakeargs="${mycmakeargs}
+	mycmakeargs=(
 		-DLIB_INSTALL_DIR=$(get_libdir)
 		-DNETCDF_DIR="${EPREFIX}/usr/"
 		-DEXODUS_DIR="${EPREFIX}/usr/"
 		$(cmake-utils_use !static-libs BUILD_SHARED_LIBS)
-		$(cmake-utils_use test BUILD_TESTING)"
+		$(cmake-utils_use test BUILD_TESTING)
+	)
 	cmake-utils_src_configure
 }
 
