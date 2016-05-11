@@ -40,7 +40,8 @@ src_prepare() {
 		"${FILESDIR}/${PN}-0.5.3-glibc214.patch" \
 		"${FILESDIR}/${PN}-0.5.3-underlinking.patch" \
 		"${FILESDIR}/${PN}-0.5.3-tinfo.patch" \
-		"${FILESDIR}/${PN}-0.5.3-gettext.patch"
+		"${FILESDIR}/${PN}-0.5.3-gettext.patch" \
+		"${FILESDIR}/${PN}-0.5.3-remove-EGD.patch"
 	use vanilla || \
 		epatch "${FILESDIR}"/${PN}-0.5.3-button.patch \
 			"${FILESDIR}"/${P}-gdk-pixbuf.patch \
