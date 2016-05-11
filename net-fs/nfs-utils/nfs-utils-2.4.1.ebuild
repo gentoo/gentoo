@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools flag-o-matic multilib systemd
+inherit autotools flag-o-matic linux-info multilib systemd
 
 DESCRIPTION="NFS client and server daemons"
 HOMEPAGE="http://linux-nfs.org/"
@@ -69,6 +69,16 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.3.4-no-werror.patch
 	"${FILESDIR}"/${P}-gssd-Look-in-lib32-for-gss-libs-aswell.patch
 )
+
+pkg_setup() {
+	linux-info_pkg_setup
+	if use nfsv4 && ! use nfsdcld && linux_config_exists && ! linux_chkconfig_present CRYPTO_MD5 ; then
+		ewarn "Your NFS server will be unable to track clients across server restarts!"
+		ewarn "Please enable the \"${HILITE}nfsdcld${NORMAL}\" USE flag to install the nfsdcltrack usermode"
+		ewarn "helper upcall program, or enable ${HILITE}CONFIG_CRYPTO_MD5${NORMAL} in your kernel to"
+		ewarn "support the legacy, in-kernel client tracker."
+	fi
+}
 
 src_prepare() {
 	default
