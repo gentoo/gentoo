@@ -35,7 +35,10 @@ REQUIRED_USE="|| ( java lua perl php python ruby tcl )"
 COMMONDEPEND="dev-libs/xapian:0/1.3.7
 	lua? ( dev-lang/lua:= )
 	perl? ( dev-lang/perl:= )
-	python? ( ${PYTHON_DEPS} )
+	python? (
+		dev-python/sphinx
+		${PYTHON_DEPS}
+	)
 	ruby? ( dev-lang/ruby:= )
 	tcl? ( dev-lang/tcl:= )"
 #	mono? ( dev-lang/mono )
