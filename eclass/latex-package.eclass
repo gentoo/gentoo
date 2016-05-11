@@ -96,6 +96,10 @@ latex-package_has_tetex_3() {
 # for a TeX installation
 latex-package_src_doinstall() {
 	debug-print function $FUNCNAME $*
+
+	# Avoid generating font cache outside of the sandbox
+	export VARTEXFONTS="${T}/fonts"
+
 	# This actually follows the directions for a "single-user" system
 	# at http://www.ctan.org/installationadvice/ modified for gentoo.
 	[ -z "$1" ] && latex-package_src_install all
