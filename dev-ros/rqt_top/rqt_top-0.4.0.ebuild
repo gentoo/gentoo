@@ -11,17 +11,15 @@ ROS_SUBDIR=${PN}
 
 inherit ros-catkin
 
-DESCRIPTION="GUI plugin for displaying debug information about ROS topics"
+DESCRIPTION="RQT plugin for monitoring ROS processes"
 LICENSE="BSD"
 SLOT="0"
 IUSE=""
 
 RDEPEND="
-	dev-python/rospkg[${PYTHON_USEDEP}]
-	dev-ros/rostopic[${PYTHON_USEDEP}]
+	dev-python/psutil[${PYTHON_USEDEP}]
+	dev-ros/rospy[${PYTHON_USEDEP}]
 	dev-ros/rqt_gui[${PYTHON_USEDEP}]
 	dev-ros/rqt_gui_py[${PYTHON_USEDEP}]
-	dev-ros/std_msgs[${PYTHON_USEDEP}]
-	>=dev-ros/python_qt_binding-0.2.19[${PYTHON_USEDEP}]
 "
 DEPEND="${RDEPEND}"
