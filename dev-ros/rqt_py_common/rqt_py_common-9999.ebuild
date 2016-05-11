@@ -22,5 +22,6 @@ RDEPEND="
 	dev-ros/roslib[${PYTHON_USEDEP}]
 	dev-ros/rospy[${PYTHON_USEDEP}]
 	dev-ros/rostopic[${PYTHON_USEDEP}]
+	>=dev-ros/python_qt_binding-0.2.19[${PYTHON_USEDEP}]
 "
 DEPEND="${RDEPEND}"
