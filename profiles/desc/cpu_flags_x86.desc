@@ -15,6 +15,7 @@ fma3 - Use the Fused Multiply Add 3 instruction set ([fma] in cpuinfo)
 fma4 - Use the Fused Multiply Add 4 instruction set
 mmx - Use the MMX instruction set
 mmxext - Use the Extended MMX instruction set (a subset of SSE) ([mmxext] or [sse] in cpuinfo)
+mpx - Use Memory Protection Extensions (MPX)
 padlock - Use VIA padlock instructions ([phe] in cpuinfo)
 popcnt - Enable popcnt instruction support ([abm] or [popcnt] in cpuinfo)
 sse - Use the SSE instruction set
