@@ -18,3 +18,4 @@ IUSE=""
 
 RDEPEND="dev-ros/genmsg[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}"
+PATCHES=( "${FILESDIR}/py3.patch" )
