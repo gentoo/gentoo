@@ -19,6 +19,7 @@
       This will slow down the compiler a bit as it forces all of the toolchain to be shared libs.</flag>
     <flag name="libssp">Build SSP support into a dedicated library rather than use the
       code in the C library (DO NOT ENABLE THIS IF YOU DON'T KNOW WHAT IT DOES)</flag>
+    <flag name="mpx">Enable support for Intel Memory Protection Extensions (MPX)</flag>
     <flag name="mudflap">Add support for mudflap, a pointer use checking library</flag>
     <flag name="multislot">Allow for multiple versions to be emerged at once for same CTARGET</flag>
     <flag name="nopie">Disable PIE support (NOT FOR GENERAL USE)</flag>
