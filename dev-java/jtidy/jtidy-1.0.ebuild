@@ -17,7 +17,6 @@ SRC_URI="mirror://sourceforge/${PN}/${PN}-${MY_PV}-sources.zip -> ${P}.zip"
 LICENSE="HTML-Tidy W3C"
 SLOT="0"
 KEYWORDS="amd64 ppc64 x86"
-IUSE=""
 
 CDEPEND="dev-java/ant-core:0"
 
@@ -30,6 +29,7 @@ DEPEND="
 	>=virtual/jdk-1.6
 	source? ( app-arch/zip )"
 
+JAVA_ANT_ENCODING="UTF-8"
 JAVA_ANT_REWRITE_CLASSPATH="yes"
 EANT_GENTOO_CLASSPATH="ant-core"
 EANT_BUILD_TARGET="jar"
