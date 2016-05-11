@@ -279,7 +279,7 @@ REQUIRED_USE="
 	${GPL_REQUIRED_USE}
 	${CPU_REQUIRED_USE}"
 RESTRICT="
-	encode? ( faac? ( bindist ) nvenc? ( bindist ) )
+	encode? ( faac? ( bindist ) )
 	gpl? ( openssl? ( bindist ) fdk? ( bindist ) )
 "
 
@@ -311,7 +311,7 @@ multilib_src_configure() {
 		if use amrenc ; then
 			myconf+=( --enable-version3 )
 		fi
-		if use faac || use nvenc ; then
+		if use faac ; then
 			myconf+=( --enable-nonfree )
 		fi
 	else

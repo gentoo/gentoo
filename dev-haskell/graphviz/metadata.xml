@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
+	<longdescription>
+		This library provides bindings for the Dot language used by the
+		Graphviz (&lt;http://graphviz.org/&gt;) suite of programs for visualising
+		graphs, as well as functions to call those programs.
+		
+		Main features of the graphviz library include:
+		
+		* Almost complete coverage of all Graphviz attributes and syntax.
+		
+		* Support for specifying clusters.
+		
+		* The ability to use a custom node type.
+		
+		* Functions for running a Graphviz layout tool with all specified
+		output types.
+		
+		* The ability to not only generate but also parse Dot code with two
+		options: strict and liberal (in terms of ordering of statements).
+		
+		* Functions to convert FGL graphs and other graph-like data structures
+		to Dot code - including support to group them into clusters - with a
+		high degree of customisation by specifying which attributes to use
+		and limited support for the inverse operation.
+		
+		* Round-trip support for passing an FGL graph through Graphviz to
+		augment node and edge labels with positional information, etc.
+	</longdescription>
+</pkgmetadata>

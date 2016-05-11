@@ -31,6 +31,11 @@ DEPEND="${RDEPEND}
 		dev-haskell/tasty-th )
 "
 
+src_prepare() {
+	cabal_chdeps \
+		'base >= 4.7 && <4.9' 'base >= 4.7'
+}
+
 src_configure() {
 	haskell-cabal_src_configure \
 		$(cabal_flag with-conduit with-conduit)

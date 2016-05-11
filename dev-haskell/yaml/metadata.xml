@@ -13,6 +13,7 @@
 		don't need to worry about any non-Haskell dependencies.
 	</longdescription>
 	<use>
+		<flag name="no-examples">don't build the examples</flag>
 		<flag name="no-exe">don't install the yaml2json executable</flag>
 		<flag name="no-unicode">Don't enable unicode output. Instead, unicode characters will be escaped.</flag>
 		<flag name="system-libyaml">Use system libyaml instead on generic one</flag>
