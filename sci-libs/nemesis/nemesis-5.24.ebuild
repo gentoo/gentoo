@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -30,6 +30,7 @@ PATCHES=( "${FILESDIR}"/${PN}-5.22b-multilib.patch )
 src_prepare() {
 	find ../exodus -delete || die
 	cmake-utils_src_prepare
+	sed -i 's/exoIIv2c/NAMES exodus &/' CMakeLists.txt || die
 }
 
 src_configure() {
