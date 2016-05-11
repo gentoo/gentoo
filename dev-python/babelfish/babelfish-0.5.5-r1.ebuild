@@ -6,15 +6,15 @@ EAPI=6
 
 PYTHON_COMPAT=( python{2_7,3_3,3_4} pypy )
 
-inherit distutils-r1 git-r3
+inherit distutils-r1
 
 DESCRIPTION="Python library to work with countries and languages"
 HOMEPAGE="https://github.com/Diaoul/babelfish https://pypi.python.org/pypi/babelfish"
-EGIT_REPO_URI="git://github.com/Diaoul/${PN}.git"
+SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
