@@ -19,8 +19,6 @@ RDEPEND="
 	ros-meta/robot
 	ros-meta/viz
 	dev-ros/roslint
-	ros-meta/rqt_common_plugins
-	ros-meta/rqt_robot_plugins
 	dev-ros/urdf_tutorial
 	ros-meta/visualization_tutorials
 "
