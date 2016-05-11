@@ -4230,6 +4230,20 @@
     </member>
   </project>
   <project>
+    <email>mate@gentoo.org</email>
+    <name>Gentoo MATE Desktop</name>
+    <url>https://wiki.gentoo.org/wiki/User:Kajzer</url>
+    <description>The Gentoo MATE Project aims to bring the current and complete MATE Desktop Environment to Gentoo.</description>
+    <member>
+      <email>amynka@gentoo.org</email>
+      <name>Amy Winston</name>
+    </member>
+    <member is-lead="1">
+      <email>NP-Hardass@gentoo.org</email>
+      <name>NP-Hardass</name>
+    </member>
+  </project>
+  <project>
     <email>vdr@gentoo.org</email>
     <name>Gentoo VDR project</name>
     <url>https://wiki.gentoo.org/wiki/Project:VDR</url>
