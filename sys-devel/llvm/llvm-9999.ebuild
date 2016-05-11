@@ -213,7 +213,7 @@ multilib_src_configure() {
 	if use multitarget; then
 		targets=all
 	else
-		targets='host;BPF;CppBackend'
+		targets='host;BPF'
 		use video_cards_radeon && targets+=';AMDGPU'
 	fi
 
