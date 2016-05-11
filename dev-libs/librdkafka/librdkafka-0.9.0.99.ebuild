@@ -4,6 +4,8 @@
 
 EAPI=6
 
+inherit toolchain-funcs
+
 DESCRIPTION="Apache Kafka C/C++ client library"
 HOMEPAGE="https://github.com/edenhill/librdkafka"
 
@@ -38,9 +40,12 @@ DEPEND="
 "
 
 src_configure() {
+	tc-export CC CXX LD NM OBJDUMP PKG_CONFIG STRIP
+
 	local myeconf=(
 		--no-cache
 		--no-download
+		--disable-debug-symbols
 		$(use_enable sasl)
 		$(usex static-libs '--enable-static' '')
 		$(use_enable ssl)

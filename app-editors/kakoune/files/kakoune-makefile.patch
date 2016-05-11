@@ -1,0 +1,38 @@
+diff --git a/src/Makefile b/src/Makefile
+index c79c270..9409a8c 100644
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -3,10 +3,10 @@ pedantic ?= yes
+ 
+ ifeq ($(debug),yes)
+     CPPFLAGS += -DKAK_DEBUG
++    CXXFLAGS += -g
+     suffix := .debug
+ else
+     ifeq ($(debug),no)
+-        CXXFLAGS += -O3
+         suffix := .opt
+     else
+         $(error debug should be either yes or no)
+@@ -26,8 +26,6 @@ mandocs := $(docs:.asciidoc=.gz)
+ PREFIX ?= /usr/local
+ DESTDIR ?= # root dir
+ 
+-NCURSESW_INCLUDE ?= /usr/include/ncursesw
+-
+ bindir := $(DESTDIR)$(PREFIX)/bin
+ sharedir := $(DESTDIR)$(PREFIX)/share/kak
+ docdir := $(DESTDIR)$(PREFIX)/share/doc/kak
+@@ -53,11 +51,10 @@ else ifneq (,$(findstring CYGWIN,$(os)))
+     LIBS += -lncursesw -lboost_regex -ldbghelp
+ else
+     LIBS += -lncursesw -lboost_regex
+-    CPPFLAGS += -I$(NCURSESW_INCLUDE)
+     LDFLAGS += -rdynamic
+ endif
+ 
+-CXXFLAGS += -std=gnu++11 -g -Wall -Wno-reorder -Wno-sign-compare -Wno-address
++CXXFLAGS += -std=gnu++11 -Wall -Wno-reorder -Wno-sign-compare -Wno-address
+ 
+ kak : $(objects)
+ 	$(CXX) $(LDFLAGS) $(CXXFLAGS) $(objects) $(LIBS) -o $@

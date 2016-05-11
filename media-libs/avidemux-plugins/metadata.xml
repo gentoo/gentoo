@@ -8,8 +8,6 @@
   <use>
     <flag name="aften">Enable A/52 (AC-3) audio encoder support.</flag>
     <flag name="amr">Enable Adaptive Multi-Rate format support via <pkg>media-libs/opencore-amr</pkg>.</flag>
-    <flag name="faac">Enable free MPEG-4 audio codecs support via <pkg>media-libs/faac</pkg>.</flag>
-    <flag name="faad">Enable AAC audio decoding library support via <pkg>media-libs/faad2</pkg>.</flag>
     <flag name="fribidi">Enable unicode bidirectional algorithm support via <pkg>dev-libs/fribidi</pkg>.</flag>
     <flag name="twolame">Enable TwoLAME support via <pkg>media-sound/twolame</pkg>, an optimised MPEG Audio Layer 2 (MP2) encoder.</flag>
     <flag name="vpx">Enable WebM VP8 Codec SDK support via <pkg>media-libs/libvpx</pkg>.</flag>

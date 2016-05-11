@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -30,18 +30,18 @@ RDEPEND="
 	glpk? ( sci-mathematics/glpk )
 	gzip? ( app-arch/gzip )
 	hdf5? ( sci-libs/hdf5 )
-	java? ( >=virtual/jdk-1.5 )
+	java? ( >=virtual/jdk-1.5:* )
 	json? ( dev-libs/json-c )
 	lapack? ( virtual/cblas virtual/lapack )
 	lpsolve? ( sci-mathematics/lpsolve )
-	lua? ( dev-lang/lua )
+	lua? ( dev-lang/lua:0 )
 	lzo? ( dev-libs/lzo )
 	mono? ( dev-lang/mono )
 	nlopt? ( sci-libs/nlopt )
 	octave? ( sci-mathematics/octave[hdf5=] )
 	python? ( dev-python/numpy )
 	R? ( dev-lang/R )
-	readline? ( sys-libs/readline )
+	readline? ( sys-libs/readline:0 )
 	ruby? ( >=dev-ruby/narray-0.6.0.1-r2 )
 	snappy? ( app-arch/snappy )
 	superlu? ( sci-libs/superlu )

@@ -14,6 +14,7 @@
 	<upstream>
 		<maintainer status="active">
 			<email>eionrobb@gmail.com</email>
+			<name>Eion Robb</name>
 		</maintainer>
 		<bugs-to>https://code.google.com/p/pidgin-opensteamworks/issues/list</bugs-to>
 		<remote-id type="github">EionRobb/pidgin-opensteamworks</remote-id>

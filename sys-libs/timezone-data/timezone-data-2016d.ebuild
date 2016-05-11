@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=6
+EAPI="5"
 
 inherit eutils toolchain-funcs flag-o-matic
 
@@ -25,8 +25,7 @@ RDEPEND="${DEPEND}
 S=${WORKDIR}
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-2016a-makefile.patch
-	eapply_user
+	epatch "${FILESDIR}"/${PN}-2016c-makefile.patch
 	tc-is-cross-compiler && cp -pR "${S}" "${S}"-native
 }
 

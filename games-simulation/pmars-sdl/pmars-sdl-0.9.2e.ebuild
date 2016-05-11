@@ -1,9 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
-inherit toolchain-funcs games eutils
+inherit toolchain-funcs eutils games
 
 MY_PN="${PN/-sdl/}"
 MY_PV="${PV/e/-5}"
@@ -20,7 +20,8 @@ IUSE="sdl X"
 
 DEPEND="sdl? ( x11-libs/libX11 media-libs/libsdl[video] )
 	X? ( x11-libs/libX11 )
-	!sdl? ( !X? ( sys-libs/ncurses ) )"
+	!sdl? ( !X? ( sys-libs/ncurses:0 ) )"
+RDEPEND=${DEPEND}
 
 S=${WORKDIR}/${MY_P}
 

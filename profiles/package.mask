@@ -30,6 +30,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Michael Weber <xmw@gentoo.org> (08 May 2016)
+# Replaced by net-libs/libhubbub.
+# Masked for removal in 30 days. Bug #582382.
+net-libs/hubbub
+
 # Michael Palimaka <kensington@gentoo.org> (05 May 2016)
 # Doesn't compile against latest media-libs/spandsp.
 # Not needed anymore for Asterisk 1.6.
@@ -146,26 +151,10 @@ dev-java/freehep-xml
 # expect unexpected, weird, and potentially fatal results.
 =dev-lang/perl-5.24*
 
-# Michael Sterrett <mr_bones_@gentoo.org> (06 Apr 2016)
-# These pin an old crufty version of media-libs/libsfml
-# and aren't used by anything in the tree.
-# Masked for removal on 20160506
-media-libs/csfml
-dev-python/pysfml
-
 # Michael Palimaka <kensington@gentoo.org> (07 Apr 2016)
 # Obsolete. Merged into media-libs/libexif.
 # Masked for removal in 30 days.
 media-libs/libmnote
-
-# Michael Palimaka <kensington@gentoo.org> (06 Apr 2016)
-# Fails to build. Dead upstream. Bug #579020.
-# Masked for removal in 30 days.
-net-libs/libqinfinity
-
-# Michael Palimaka <kensington@gentoo.org> (06 Apr 2016)
-# Fails to build. Dead upstream. Masked for removal in 30 days.
-kde-misc/kte-collaborative
 
 # Patrick Lauer <patrick@gentoo.org> (05 Apr 2016)
 # --configtest is broken, mask until 2.3.1 release
@@ -431,11 +420,6 @@ dev-libs/iniparser:4
 # Has race condition / failure modes that make systems unusable
 # See #551724 and duplicates
 =sys-fs/udev-init-scripts-29
-
-# Patrick Lauer <patrick@gentoo.org> (10 Apr 2015)
-# Breaks pretty much all consumers, like samba
-# Mask until it's more usable
->=net-libs/gnutls-3.4.0
 
 # Michał Górny <mgorny@gentoo.org> (28 Mar 2015)
 # on behalf of gx86-multilib project <multilib@gentoo.org>

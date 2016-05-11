@@ -23,7 +23,8 @@ DEPEND="${RDEPEND}
 	static? ( ${LIB_DEPEND} )
 	test? (
 		|| ( dev-lang/ruby:2.9 dev-lang/ruby:2.8 dev-lang/ruby:2.7 dev-lang/ruby:2.6 dev-lang/ruby:2.5 dev-lang/ruby:2.4 dev-lang/ruby:2.3 dev-lang/ruby:2.2 dev-lang/ruby:2.1 dev-lang/ruby:2.0 dev-lang/ruby:1.9 )
-		dev-cpp/gmock
+		>=dev-cpp/gmock-1.6
+		>=dev-cpp/gtest-1.6
 		dev-util/cucumber
 		dev-util/aruba
 	)
@@ -31,6 +32,10 @@ DEPEND="${RDEPEND}
 
 src_prepare() {
 	sed -i -e '/^INSTALL_PROGRAM/s:-s::' Makefile.in || die
+	sed -i \
+		-e '/^unit-tests\/unit_tests:/s:lib/libgmock.a::' \
+		-e '/-lgmock/s:$: -lgtest:' \
+		unit-tests/Makefile.in || die #493440
 	epatch_user
 	eautoreconf
 }
@@ -42,6 +47,11 @@ src_configure() {
 		--bindir="${EPREFIX}"/sbin \
 		--with-optimisation='' \
 		$(use_enable test testing)
+}
+
+src_compile() {
+	MAKEOPTS+=" V="
+	default
 }
 
 src_test() {

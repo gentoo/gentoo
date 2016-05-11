@@ -26,9 +26,11 @@ pkg_setup() {
 src_prepare() {
 	epatch \
 		"${FILESDIR}"/${PN}-0.92a-run.patch \
-		"${FILESDIR}"/${PF}-pkg-config-libclamav.patch
+		"${FILESDIR}"/${P}-pkg-config-libclamav.patch
+
 	sed -i configure.in -e '/^CFLAGS=/d' || die
 	mv configure.{in,ac} || die
+
 	eautoreconf
 }
 

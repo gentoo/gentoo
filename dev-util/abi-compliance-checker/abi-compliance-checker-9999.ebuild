@@ -22,6 +22,7 @@ IUSE=""
 
 DEPEND="dev-lang/perl"
 RDEPEND="${DEPEND}
+	dev-util/abi-dumper
 	dev-util/ctags"
 
 #if LIVE

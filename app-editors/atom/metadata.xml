@@ -4,4 +4,12 @@
 	<maintainer type="person">
 		<email>cynede@gentoo.org</email>
 	</maintainer>
+	<maintainer type="person">
+		<email>elvis@magic.io</email>
+		<name>Elvis Pranskevichus</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
 </pkgmetadata>

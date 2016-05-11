@@ -1,0 +1,26 @@
+From 2a52fbf565d0d5bdc9f25382b5af6e952216831f Mon Sep 17 00:00:00 2001
+From: Dmitry Saprykin <saprykin.dmitry@gmail.com>
+Date: Fri, 5 Dec 2014 11:46:18 +0300
+Subject: [PATCH] * serfault on reload fix
+
+---
+ ngx_http_upstream_check_module.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/ngx_http_upstream_check_module.c b/ngx_http_upstream_check_module.c
+index e2a4030..41aa63a 100644
+--- a/ngx_http_upstream_check_module.c
++++ b/ngx_http_upstream_check_module.c
+@@ -3991,9 +3991,9 @@ ngx_http_upstream_check_find_shm_peer(ngx_http_upstream_check_peers_shm_t *p,
+             continue;
+         }
+ 
+-        if ((ngx_memcmp(addr->sockaddr, peer_shm->sockaddr, addr->socklen) == 0)
+-            && (ngx_strncmp(upstream_name->data, peer_shm->upstream_name->data,
+-                            upstream_name->len) == 0)) {
++        if (ngx_memcmp(addr->sockaddr, peer_shm->sockaddr, addr->socklen) == 0
++            && upstream_name->len == peer_shm->upstream_name->len
++            && ngx_strncmp(upstream_name->data, peer_shm->upstream_name->data, upstream_name->len) == 0) {
+             return peer_shm;
+         }
+     }

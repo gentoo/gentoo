@@ -117,7 +117,7 @@ diff -Naurd libAfterImage-1.20.orig/export.c libAfterImage-1.20/export.c
  				}
  				
 +#if (GIFLIB_MAJOR>=5)
-+				if( (errcode = EGifPutImageDesc(gif, 0, 0, im->width, im->height, FALSE, (dont_save_cmap)?NULL:gif_cmap )) == GIF_ERROR )
++				if( (errcode = EGifPutImageDesc(gif, 0, 0, im->width, im->height, false, (dont_save_cmap)?NULL:gif_cmap )) == GIF_ERROR )
 +					ASIM_PrintGifError(errcode);
 +#else
  				if( EGifPutImageDesc(gif, 0, 0, im->width, im->height, FALSE, (dont_save_cmap)?NULL:gif_cmap ) == GIF_ERROR )
@@ -155,7 +155,7 @@ diff -Naurd libAfterImage-1.20.orig/export.c libAfterImage-1.20/export.c
  		EGifPutExtension(gif, 0xf9, GIF_GCE_BYTES, &(gce_bytes[0]));
  	
 +#if (GIFLIB_MAJOR>=5)
-+		if( (errcode = EGifPutImageDesc(gif, 0, 0, im->width, im->height, FALSE, NULL )) == GIF_ERROR )
++		if( (errcode = EGifPutImageDesc(gif, 0, 0, im->width, im->height, false, NULL )) == GIF_ERROR )
 +			ASIM_PrintGifError(errcode);
 +#else
  		if( EGifPutImageDesc(gif, 0, 0, im->width, im->height, FALSE, NULL ) == GIF_ERROR )

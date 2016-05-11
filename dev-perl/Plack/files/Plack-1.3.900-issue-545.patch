@@ -1,0 +1,22 @@
+From 86256c2af6115a2c99c310ba6979bf40f72a6864 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Richard=20Sim=C3=B5es?= <rsimoes@gmail.com>
+Date: Sun, 3 Jan 2016 19:49:51 -0600
+Subject: [PATCH] Allow log4perl.t and log4perl-category.t to run in parallel
+
+---
+ t/Plack-Middleware/log4perl-category.t | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/t/Plack-Middleware/log4perl-category.t b/t/Plack-Middleware/log4perl-category.t
+index 1951015..946edbf 100644
+--- a/t/Plack-Middleware/log4perl-category.t
++++ b/t/Plack-Middleware/log4perl-category.t
+@@ -6,7 +6,7 @@ use Test::More;
+ use Plack::Middleware::Log4perl;
+ use HTTP::Request::Common;
+ 
+-my $test_file = "t/Plack-Middleware/log4perl.log";
++my $test_file = "t/Plack-Middleware/log4perl-category.log";
+ 
+ my $conf = <<CONF;
+ log4perl.logger.0 = INFO, Logfile

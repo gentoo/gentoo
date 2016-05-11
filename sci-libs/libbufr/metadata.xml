@@ -9,9 +9,4 @@
 		and comes with a few example tools (some of which are built
 		and installed).
 	</longdescription>
-	<use>
-		<flag name="lto">
-			Use gold linker and -flto (requires existing env setup)
-		</flag>
-	</use>
 </pkgmetadata>

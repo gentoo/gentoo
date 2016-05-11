@@ -5,10 +5,22 @@
     <email>patrick@gentoo.org</email>
     <name>Patrick Lauer</name>
   </maintainer>
+  <maintainer type="person">
+    <email>tomboy64@sina.cn</email>
+    <name>Matthew Brewer</name>
+  </maintainer>
   <maintainer type="project">
     <email>perl@gentoo.org</email>
     <name>Gentoo Perl Project</name>
   </maintainer>
+  <use>
+    <flag name="asan">Enable clang's Address Sanitizer functionality. Expect longer compile time.</flag>
+    <flag name="clang">Use clang compiler instead of GCC</flag>
+    <flag name="jit">Enable Just-In-Time-Compiler. Has no effect except on AMD64 and Darwin.</flag>
+    <flag name="optimize">Enable optimization via CFLAGS</flag>
+    <flag name="system-libs">Link against the system's shared libraries</flag>
+    <flag name="ubsan">Enable clang's Undefined Behavior Sanitizer functionality. Expect longer compile time.</flag>
+  </use>
   <upstream>
     <remote-id type="github">MoarVM/MoarVM</remote-id>
   </upstream>

@@ -73,7 +73,9 @@ src_unpack() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-qt.patch
+	epatch \
+		"${FILESDIR}"/${P}-qt.patch \
+		"${FILESDIR}"/${P}-cxx14.patch
 	# Disable using bundled libraries
 	enable_feature USE_SYSTEM_LIB_EXPAT
 	enable_feature USE_SYSTEM_LIB_FLAC
@@ -207,7 +209,7 @@ src_install() {
 		"${GAMES_SYSCONFDIR}/${PN}"/{ctrlr,cheat}
 
 	if use tools ; then
-		for f in castool chdman floptool imgtool jedutil ldresample ldverify romcmp testkeys ; do
+		for f in castool chdman floptool imgtool jedutil ldresample ldverify romcmp ; do
 			newgamesbin ${f} ${PN}-${f}
 			newman docs/man/${f}.1 ${PN}-${f}.1
 		done

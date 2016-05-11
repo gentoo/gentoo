@@ -1,0 +1,28 @@
+# work around gcc-4.9.3's implementation of cxx14
+# bug  582576 with patch from Alexander Miller
+# https://bugs.gentoo.org/show_bug.cgi?id=582576
+
+--- a/src/lib/util/strformat.h
++++ b/src/lib/util/strformat.h
+@@ -185,9 +185,8 @@
+ #include <type_traits>
+ #include <utility>
+ 
+-#if defined(__GLIBCXX__) && (__GLIBCXX__ < 20150413)
+-namespace std
+-{
++namespace std {
++namespace mame_cxx14_compat {
+ template<class _Container>
+ 	inline constexpr auto
+ 	cbegin(const _Container& __cont) noexcept(noexcept(std::begin(__cont)))-> decltype(std::begin(__cont))
+@@ -198,7 +197,8 @@
+ 	cend(const _Container& __cont) noexcept(noexcept(std::end(__cont)))-> decltype(std::end(__cont))
+ 	{ return std::end(__cont); }
+ }
+-#endif
++using namespace mame_cxx14_compat;
++}
+ 
+ namespace util {
+ namespace detail {

@@ -11,5 +11,7 @@
                 <remote-id type="cpan-module">Archive::Any::Plugin</remote-id>
                 <remote-id type="cpan-module">Archive::Any::Plugin::Tar</remote-id>
                 <remote-id type="cpan-module">Archive::Any::Plugin::Zip</remote-id>
+                <remote-id type="cpan-module">Archive::Any::Tar</remote-id>
+                <remote-id type="cpan-module">Archive::Any::Zip</remote-id>
         </upstream>
 </pkgmetadata>

@@ -71,7 +71,7 @@ src_install() {
 		# Since this is a live ebuild, we're forced to, unfortuantely,
 		# dynamically construct the command line args for Chromium.
 		version=$(sed -n 's/.*"version": "\(.*\)",.*/\1/p' PepperFlash/manifest.json)
-		flapper="${ROOT}usr/$(get_libdir)/chromium-browser/PepperFlash/libpepflashplayer.so"
+		flapper="${EPREFIX}/usr/$(get_libdir)/chromium-browser/PepperFlash/libpepflashplayer.so"
 		echo -n "CHROMIUM_FLAGS=\"\${CHROMIUM_FLAGS} " > pepper-flash
 		echo -n "--ppapi-flash-path=$flapper " >> pepper-flash
 		echo "--ppapi-flash-version=$version\"" >> pepper-flash

@@ -73,6 +73,8 @@ src_prepare() {
 	epatch "${FILESDIR}"/${PN}-3.15-dynamic-libs.patch
 	epatch "${FILESDIR}"/${PN}-3.15-libgpsd.patch
 	epatch "${FILESDIR}"/${PN}-3.15-broken-install.patch
+	epatch "${FILESDIR}"/${PN}-3.15-timebase.patch
+	epatch "${FILESDIR}"/${PN}-3.16-sysmacros.patch #581740
 
 	# Avoid useless -L paths to the install dir
 	sed -i \
@@ -80,8 +82,6 @@ src_prepare() {
 		SConstruct || die
 
 	sed -e 's:libusb.h:libusb-1.0/libusb.h:' -i driver_garmin.c || die
-
-	eapply_user
 
 	use python && distutils-r1_src_prepare
 }
