@@ -23,7 +23,9 @@ UPSTREAM_PATCHES=( "SA-16:01/sctp.patch"
 	"EN-16:01/filemon.patch"
 	"EN-16:02/pf-10.2.patch"
 	"EN-16:04/hyperv.patch"
-	"EN-16:05/hv_netvsc.patch" )
+	"EN-16:05/hv_netvsc.patch"
+	"EN-16:07/ipi.patch"
+	"EN-16:08/zfs.patch" )
 
 if [[ ${PV} != *9999* ]]; then
 	KEYWORDS="~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
