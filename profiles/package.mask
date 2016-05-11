@@ -30,6 +30,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Michael Palimaka <kensington@gentoo.org> (11 May 2016)
+# Contents of tarball do not match package version.
+=kde-apps/khelpcenter-5.6.4
+
 # Michael Weber <xmw@gentoo.org> (08 May 2016)
 # Replaced by net-libs/libhubbub.
 # Masked for removal in 30 days. Bug #582382.
