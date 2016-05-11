@@ -23,6 +23,7 @@ RDEPEND="
 	dev-ros/geneus
 	dev-ros/genlisp
 	dev-ros/genpy
+	dev-ros/gennodejs
 	dev-ros/genmsg
 	dev-ros/message_generation
 	dev-ros/message_runtime
