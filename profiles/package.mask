@@ -151,11 +151,6 @@ dev-java/freehep-xml
 # expect unexpected, weird, and potentially fatal results.
 =dev-lang/perl-5.24*
 
-# Michael Palimaka <kensington@gentoo.org> (07 Apr 2016)
-# Obsolete. Merged into media-libs/libexif.
-# Masked for removal in 30 days.
-media-libs/libmnote
-
 # Patrick Lauer <patrick@gentoo.org> (05 Apr 2016)
 # --configtest is broken, mask until 2.3.1 release
 =app-admin/logstash-bin-2.3.0*
