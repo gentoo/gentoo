@@ -14,7 +14,7 @@ DESCRIPTION="User friendly Bitcoin client"
 HOMEPAGE="https://electrum.org/"
 SRC_URI="https://download.electrum.org/${PV}/${MY_P}.tar.gz"
 
-LICENSE="GPL-3"
+LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 LINGUAS="ar_SA cs_CZ de_DE eo_UY fr_FR hy_AM it_IT ky_KG nb_NO no_NO pt_BR ro_RO sk_SK ta_IN vi_VN bg_BG da_DK el_GR es_ES hu_HU id_ID ja_JP lv_LV nl_NL pl_PL pt_PT ru_RU sl_SI th_TH zh_CN"
