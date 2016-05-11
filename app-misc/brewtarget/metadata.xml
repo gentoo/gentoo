@@ -8,6 +8,6 @@
 		<flag name="phonon">Enable sound support via <pkg>media-libs/phonon</pkg> or <pkg>dev-qt/qtphonon</pkg></flag>
 	</use>
 	<upstream>
-		<remote-id type="launchpad">brewtarget</remote-id>
+		<remote-id type="github">Brewtarget/brewtarget</remote-id>
 	</upstream>
 </pkgmetadata>
