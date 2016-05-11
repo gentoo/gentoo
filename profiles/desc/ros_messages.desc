@@ -8,4 +8,5 @@
 cxx - Generate and install C++ messages.
 eus - Generate and install EusLisp messages.
 lisp - Generate and install Common-Lisp messages.
+nodejs - Generate and install Nodejs messages.
 python - Generate and install Python messages. The PYTHON_TARGETS variable controls the Python versions to build for.
