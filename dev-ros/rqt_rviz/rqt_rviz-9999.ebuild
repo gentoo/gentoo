@@ -21,6 +21,8 @@ RDEPEND="
 	dev-ros/pluginlib[${PYTHON_USEDEP}]
 	dev-ros/rqt_gui[${PYTHON_USEDEP}]
 	dev-ros/rqt_gui_cpp
+	>=dev-ros/qt_gui_cpp-0.3
+	dev-qt/qtwidgets:5
 	dev-ros/rviz
 "
 DEPEND="${RDEPEND}"
