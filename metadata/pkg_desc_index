@@ -3908,7 +3908,7 @@ dev-java/gnu-jaf 1.1.1: GNU implementation of the JavaBeans Activation Framework
 dev-java/gnu-javamail 1.0-r2: GNU implementation of the Javamail API
 dev-java/gnu-regexp 1.1.4-r3: GNU regular expression package for Java
 dev-java/groovy 2.4.5: A multi-faceted language for the Java platform
-dev-java/gson 2.3.1: Java library to convert JSON to Java objects and vice-versa
+dev-java/gson 2.3.1 2.6.2: Java library to convert JSON to Java objects and vice-versa
 dev-java/guava 07 13.0.1 13.0.1-r3 14.0.1 15.0 16.0.1 17.0 18.0: A collection of Google's core Java libraries
 dev-java/guice 4.0: Guice is a lightweight dependency injection framework for Java 5 and above
 dev-java/hamcrest-core 1.1 1.1-r1 1.3: Core library of matchers for building test expressions
@@ -4052,7 +4052,7 @@ dev-java/jmdns 3.4.1-r1: JmDNS is an implementation of multi-cast DNS in Java
 dev-java/jmf-bin 2.1.1e-r2: The Java Media Framework API (JMF)
 dev-java/jmi-interface 1.0-r3 1.0-r4: Java Metadata Interface Sample Class Interface
 dev-java/jmock 1.2.0-r1 2.6.1: Library for testing Java code using mock objects
-dev-java/jna 3.4.0 3.4.0-r1 3.4.1: Java Native Access (JNA)
+dev-java/jna 3.4.0 3.4.1 4.2.2: Java Native Access (JNA)
 dev-java/jnlp-api 6.0.18: JNLP API classes, repackaged from the icedtea-web fork of netx
 dev-java/jnr-constants 0.8.3-r1 0.8.6: A set of platform constants (e.g. errno values)
 dev-java/jnr-enxio 0.7-r1: Java Native Runtime Enhanced X-platform I/O
@@ -4205,7 +4205,7 @@ dev-java/qdox 1.6.3 1.12.1-r1: Parser for extracting class/interface/method defi
 dev-java/radeox 1.0_beta2-r1: Radeox Wiki render engine
 dev-java/rat 0.11: Apache Rat is a release audit tool, focused on licenses.
 dev-java/reflectasm 1.11.0: High performance Java reflection
-dev-java/reflections 0.9.9: Java runtime metadata analysis
+dev-java/reflections 0.9.10: Java runtime metadata analysis
 dev-java/relaxng-datatype 1.0-r1: Interface between RELAX NG validators and datatype libraries
 dev-java/relaxngcc 1.12-r3: RELAX NG Compiler Compiler
 dev-java/resin-servlet-api 3.0.25 3.1.12 4.0.26 4.0.27 4.0.44 4.0.46: Resin Servlet API 3.0/JSP API 2.1 implementation
