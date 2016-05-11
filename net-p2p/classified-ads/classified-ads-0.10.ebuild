@@ -18,7 +18,7 @@ LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-IUSE="debug doc test"
+IUSE="doc test"
 
 RDEPEND="dev-libs/openssl:0
 		>=net-libs/libnatpmp-20130911
@@ -61,12 +61,14 @@ src_configure() {
 src_compile() {
 	emake
 	if use doc; then
-		cd "${S}"/doc || die
+		pushd doc || die
 		doxygen || die
+		popd >> /dev/null || die
 	fi
 	if use test; then
-		cd "${S}"/test || die
+		pushd test || die
 		emake
+		popd >> /dev/null || die
 	fi
 }
 
