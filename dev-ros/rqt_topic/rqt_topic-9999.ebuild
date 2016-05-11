@@ -22,5 +22,6 @@ RDEPEND="
 	dev-ros/rqt_gui[${PYTHON_USEDEP}]
 	dev-ros/rqt_gui_py[${PYTHON_USEDEP}]
 	dev-ros/std_msgs[${PYTHON_USEDEP}]
+	>=dev-ros/python_qt_binding-0.2.19[${PYTHON_USEDEP}]
 "
 DEPEND="${RDEPEND}"
