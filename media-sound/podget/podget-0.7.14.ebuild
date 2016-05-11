@@ -4,11 +4,11 @@
 
 EAPI=6
 
-DESCRIPTION="A simple podcast aggregator"
+DESCRIPTION="A simple podcast aggregator optimized for running as a scheduled job"
 HOMEPAGE="http://podget.sourceforge.net/ https://github.com/dvehrs/podget"
 SRC_URI="https://github.com/dvehrs/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="GPL-3"
+LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
 IUSE=""
