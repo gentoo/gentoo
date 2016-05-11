@@ -7160,7 +7160,7 @@ dev-python/expects 0.4.2 0.8.0_rc2 0.8.0_rc3 0.8.0_rc4: Expressive and extensibl
 dev-python/extras 0.0.3: Useful extra bits for Python that should be in the standard library
 dev-python/extremes 1.1.1: Production-quality 'Min' and 'Max' objects
 dev-python/eyeD3 0.7.5: Module for manipulating ID3 (v1 + v2) tags in Python
-dev-python/fabric 1.10.0-r1 1.10.1 1.10.2-r1: A simple pythonic tool for remote execution and deployment
+dev-python/fabric 1.10.0-r1 1.10.1 1.10.2-r1 1.11.1: A simple pythonic tool for remote execution and deployment
 dev-python/falcon 0.1.6 0.1.7 0.1.8 0.1.9: A supersonic micro-framework for building cloud APIs
 dev-python/fasteners 0.13.0: A python package that provides useful locks
 dev-python/feedgenerator 1.6 1.7 1.8: Standalone version of django.utils.feedgenerator
@@ -7798,7 +7798,7 @@ dev-python/pypy-bin 4.0.1-r1 5.0.0: Pre-built version of PyPy
 dev-python/pypy3 2.4.0-r2 9999: A fast, compliant alternative implementation of Python 3
 dev-python/pypy3-bin 2.4.0-r4: A fast, compliant alternative implementation of Python 3 (binary package)
 dev-python/pyqtgraph 0.9.9 0.9.10: a pure-python scientific graphics and GUI library built on PyQt4/PySide and numpy
-dev-python/pyquery 1.2.4 1.2.8 1.2.9 1.2.9-r1 1.2.11: A jQuery-like library for python
+dev-python/pyquery 1.2.4 1.2.8 1.2.9 1.2.9-r1 1.2.11 1.2.13: A jQuery-like library for python
 dev-python/pyqwt 5.2.0-r1: Python bindings for the Qwt library
 dev-python/pyramid 1.5.1 1.5.2 1.5.4 1.5.7: A small open source Python web framework
 dev-python/pyrax 1.9.2 1.9.3 1.9.4 1.9.7: Python language bindings for OpenStack Clouds
