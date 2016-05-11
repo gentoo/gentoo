@@ -11224,7 +11224,7 @@ kde-apps/kglobalaccel 4.14.3 15.08.3 15.12.3: KDE's Global Shortcut Daemon
 kde-apps/kgoldrunner 4.14.3 15.08.3 15.12.3: Game of action and puzzle solving by KDE
 kde-apps/kgpg 4.14.3 4.14.3-r1 15.08.3 15.12.3: KDE gpg keyring manager
 kde-apps/khangman 4.14.3 15.12.3: Classical hangman game for KDE
-kde-apps/khelpcenter 4.14.3 5.5.5 5.5.5-r1 5.6.2-r1 5.6.4: The KDE Help Center
+kde-apps/khelpcenter 4.14.3 5.5.5 5.5.5-r1 5.6.2-r1: The KDE Help Center
 kde-apps/kiconfinder 4.14.3 15.08.3 15.12.3: Finds an icon based on its name
 kde-apps/kig 4.14.3 15.12.3: KDE Interactive Geometry tool
 kde-apps/kigo 4.14.3 15.08.3 15.12.3: Go game by KDE
