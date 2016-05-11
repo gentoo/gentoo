@@ -15,7 +15,6 @@ IUSE="+doc profile +X"
 
 RDEPEND="
 	>=dev-haskell/cabal-1.18.1.3
-	>=dev-haskell/hpc-0.6.0.1
 	>=dev-haskell/xhtml-3000.2.1
 
 	>=dev-haskell/async-2.0.1.5
