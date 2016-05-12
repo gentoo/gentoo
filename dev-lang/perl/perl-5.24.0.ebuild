@@ -55,14 +55,14 @@ dual_scripts() {
 	src_remove_dual      perl-core/Digest-SHA         5.950.0       shasum
 	src_remove_dual      perl-core/CPAN               2.110.0       cpan
 	src_remove_dual      perl-core/Encode             2.800.0       enc2xs piconv
-	src_remove_dual      perl-core/ExtUtils-MakeMaker 7.100.100     instmodsh
+	src_remove_dual      perl-core/ExtUtils-MakeMaker 7.100.100_rc  instmodsh
 	src_remove_dual      perl-core/ExtUtils-ParseXS   3.310.0       xsubpp
 	src_remove_dual      perl-core/IO-Compress        2.69.0        zipdetails
 	src_remove_dual      perl-core/JSON-PP            2.273.0       json_pp
 	src_remove_dual      perl-core/Module-CoreList    5.201.605.60  corelist
 	src_remove_dual      perl-core/Pod-Parser         1.630.0       pod2usage podchecker podselect
-	src_remove_dual      perl-core/Pod-Perldoc        3.250.200     perldoc
-	src_remove_dual      perl-core/Test-Harness       3.350.0       prove
+	src_remove_dual      perl-core/Pod-Perldoc        3.250.200_rc  perldoc
+	src_remove_dual      perl-core/Test-Harness       3.360.0       prove
 	src_remove_dual      perl-core/podlators          4.70.0        pod2man pod2text
 	src_remove_dual_man  perl-core/podlators          4.70.0        /usr/share/man/man1/perlpodstyle.1
 }
