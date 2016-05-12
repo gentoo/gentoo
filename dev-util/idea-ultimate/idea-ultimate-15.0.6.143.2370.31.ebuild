@@ -22,11 +22,11 @@ fi
 
 DESCRIPTION="A complete toolset for web, mobile and enterprise development"
 HOMEPAGE="https://www.jetbrains.com/idea"
-SRC_URI="https://download.jetbrains.com/idea/${MY_PN}IU-${MY_PV}b.tar.gz -> ${MY_PN}IU-${PV_STRING}.tar.gz"
+SRC_URI="https://download.jetbrains.com/idea/${MY_PN}IU-${MY_PV}.tar.gz -> ${MY_PN}IU-${PV_STRING}.tar.gz"
 
 LICENSE="IDEA
 	|| ( IDEA_Academic IDEA_Classroom IDEA_OpenSource IDEA_Personal )"
-IUSE="-custom-jdk"
+IUSE=""
 
 DEPEND="!dev-util/${PN}:14
 	!dev-util/${PN}:15"
@@ -37,11 +37,21 @@ S="${WORKDIR}/${MY_PN}-IU-${PV_STRING}"
 QA_PREBUILT="opt/${PN}-${MY_PV}/*"
 
 src_prepare() {
-	if ! use custom-jdk; then
-		if [[ -d jre ]]; then
-			rm -r jre || die
-		fi
+	if ! use amd64; then
+		rm -r plugins/tfsIntegration/lib/native/linux/x86_64 || die
 	fi
+	if ! use arm; then
+		rm bin/fsnotifier-arm || die
+		rm -r plugins/tfsIntegration/lib/native/linux/arm || die
+	fi
+	if ! use ppc; then
+		rm -r plugins/tfsIntegration/lib/native/linux/ppc || die
+	fi
+	if ! use x86; then
+		rm -r plugins/tfsIntegration/lib/native/linux/x86 || die
+	fi
+	rm -r plugins/tfsIntegration/lib/native/solaris || die
+	rm -r plugins/tfsIntegration/lib/native/hpux || die
 }
 
 src_install() {
