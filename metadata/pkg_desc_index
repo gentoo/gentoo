@@ -15218,7 +15218,7 @@ perl-core/MIME-Base64 3.140.0-r1: A base64/quoted-printable encoder/decoder Perl
 perl-core/Math-BigInt 1.999.300 1.999.710 1.999.715: Arbitrary size floating point math package
 perl-core/Math-Complex 1.590.0: complex numbers and associated mathematical functions
 perl-core/Memoize 1.30.0-r1: Generic Perl function result caching system
-perl-core/Module-CoreList 5.201.502.140 5.201.505.200: what modules shipped with versions of perl
+perl-core/Module-CoreList 5.201.502.140 5.201.505.200 5.201.605.70: what modules shipped with versions of perl
 perl-core/Module-Loaded 0.80.0-r1: Mark modules as loaded or unloaded
 perl-core/Module-Metadata 1.0.26: Gather package and POD information from perl module files
 perl-core/Package-Constants 0.60.0: List all constants declared in a package
@@ -17478,7 +17478,7 @@ virtual/perl-Math-BigInt-FastCalc 0.310.0-r1: Virtual for Math-BigInt-FastCalc
 virtual/perl-Math-BigRat 0.260.600 0.260.800: Virtual for Math-BigRat
 virtual/perl-Math-Complex 1.590.0-r5: Virtual for Math-Complex
 virtual/perl-Memoize 1.30.0-r2: Virtual for Memoize
-virtual/perl-Module-CoreList 5.201.502.140-r1 5.201.505.200-r3 5.201.512.130 5.201.604.290: Virtual for Module-CoreList
+virtual/perl-Module-CoreList 5.201.502.140-r1 5.201.505.200-r3 5.201.512.130 5.201.604.290 5.201.605.70: Virtual for Module-CoreList
 virtual/perl-Module-Load 0.320.0-r1: Virtual for Module-Load
 virtual/perl-Module-Load-Conditional 0.620.0 0.640.0: Virtual for Module-Load-Conditional
 virtual/perl-Module-Loaded 0.80.0-r5: Virtual for Module-Loaded
