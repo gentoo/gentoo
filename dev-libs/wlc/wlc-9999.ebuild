@@ -6,7 +6,7 @@ EAPI=6
 
 inherit git-r3 cmake-utils
 
-DESCRIPTION="A helper library for Wayland compositors."
+DESCRIPTION="A helper library for Wayland compositors"
 HOMEPAGE="https://github.com/Cloudef/wlc"
 
 EGIT_REPO_URI="https://github.com/Cloudef/wlc.git"
@@ -47,4 +47,12 @@ src_configure() {
 	)
 
 	cmake-utils_src_configure
+}
+
+pkg_postinst() {
+	if use X && !has_version 'x11-base/xorg-server[wayland]'
+	then
+		elog "You have enabled wlc's X11 support. To use Xwayland, you must emerge"
+		elog "'x11-base/xorg-server[wayland]'."
+	fi
 }
