@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -118,9 +118,9 @@ src_install()	{ eblit-run src_install   v50200001 ; }
 # FILESDIR might not be available during binpkg install
 # FIXME: version passing
 for x in setup {pre,post}{inst,rm} ; do
-	e="${FILESDIR}/eblits/pkg_${x}-v50220001.eblit"
+	e="${FILESDIR}/eblits/pkg_${x}-v50240001.eblit"
 	if [[ -e ${e} ]] ; then
 		. "${e}"
-		eval "pkg_${x}() { eblit-run pkg_${x} v50160001 ; }"
+		eval "pkg_${x}() { eblit-run pkg_${x} v50240001 ; }"
 	fi
 done
