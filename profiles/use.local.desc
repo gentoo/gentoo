@@ -7401,6 +7401,7 @@ sys-boot/refind:iso9660 - Construire le gestionnaire EFI pour le système de fic
 sys-boot/refind:ntfs - Construire le gestionnaire EFI pour le système de fichier ntfs
 sys-boot/refind:reiserfs - Construire le gestionnaire EFI pour le système de fichier reiserfs
 sys-cluster/ceph:babeltrace - Add support for LTTng babeltrace
+sys-cluster/ceph:cephfs - Build support for cephfs, a POSIX compatible filesystem built on top of ceph
 sys-cluster/ceph:cryptopp - Use dev-libs/crypto++ for cryptography
 sys-cluster/ceph:fuse - Build fuse client
 sys-cluster/ceph:jemalloc - Use dev-libs/jemalloc for allocations
