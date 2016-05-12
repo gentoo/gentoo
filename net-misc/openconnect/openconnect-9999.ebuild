@@ -38,7 +38,7 @@ DEPEND="dev-libs/libxml2
 		libressl? ( dev-libs/libressl[static-libs?] )
 	)
 	gnutls? (
-		>=net-libs/gnutls-3[static-libs?] dev-libs/nettle
+		>=net-libs/gnutls-3:0=[static-libs?] dev-libs/nettle
 		app-misc/ca-certificates
 	)
 	gssapi? ( virtual/krb5 )
