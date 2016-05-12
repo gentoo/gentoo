@@ -19,7 +19,7 @@ SLOT="0"
 LICENSE="public-domain"
 KEYWORDS="~amd64 ~ppc ~x86"
 
-DEPEND="sys-libs/ncurses:5=
+DEPEND="sys-libs/ncurses:0=
 	>=sys-libs/zlib-1.1.3-r2
 	>=dev-libs/boehm-gc-7.2
 	dev-lang/perl
