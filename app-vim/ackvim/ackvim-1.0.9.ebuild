@@ -13,5 +13,9 @@ DESCRIPTION="vim plugin: run ack from within vim"
 HOMEPAGE="https://github.com/mileszs/ack.vim"
 SRC_URI="https://github.com/mileszs/${MY_PN}/archive/${PV}.zip -> ${MY_P}.zip"
 LICENSE="vim"
-KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~sparc ~x86"
+KEYWORDS="~amd64 ~x86"
+
+DEPEND="sys-apps/ack"
+RDEPEND="${DEPEND}"
+
 S="${WORKDIR}/${MY_P}"
