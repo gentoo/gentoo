@@ -9,6 +9,7 @@ DESCRIPTION="A set of tools to collect and process netflow data"
 HOMEPAGE="https://github.com/phaag/nfdump"
 SRC_URI="
 	${HOMEPAGE}/archive/v${PV}.tar.gz -> ${P}.tar.gz
+	${HOMEPAGE}/commit/ff0e855bd1f51bed9fc5d8559c64d3cfb475a5d8.patch
 "
 
 LICENSE="BSD"
@@ -39,7 +40,8 @@ DOCS=( AUTHORS ChangeLog NEWS README )
 src_prepare() {
 	epatch \
 		"${FILESDIR}"/${PN}-1.6.14-libft.patch \
-		"${FILESDIR}"/${PN}-1.6.14-libnfdump.patch
+		"${FILESDIR}"/${PN}-1.6.14-libnfdump.patch \
+		"${DISTDIR}"/ff0e855bd1f51bed9fc5d8559c64d3cfb475a5d8.patch
 
 	eautoreconf
 }
