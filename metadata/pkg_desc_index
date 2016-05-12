@@ -9812,7 +9812,7 @@ dev-util/pretrace 0.4: start dynamically linked applications under debugging env
 dev-util/pscan 20000721-r1: A limited problem scanner for C source files
 dev-util/pycharm-community 3.4.1 4.0.6 4.5.4 5.0.4 2016.1.2: Intelligent Python IDE with unique code assistance and analysis
 dev-util/pycharm-professional 3.4.1-r1 4.0.6-r1 4.5.4 5.0.4 2016.1.2: Intelligent Python IDE with unique code assistance and analysis
-dev-util/qbs 1.4.2 1.4.3 1.4.5: Qt Build Suite
+dev-util/qbs 1.4.2 1.4.5: Qt Build Suite
 dev-util/qdevelop 0.28: A development environment entirely dedicated to Qt4
 dev-util/qfsm 0.53.0 0.54.0: A graphical tool for designing finite state machines
 dev-util/qmtest 2.4.1 2.4.1-r1: CodeSourcery's test harness system
@@ -17769,7 +17769,7 @@ www-client/vimprobable2 1.4.0 1.4.2 1.4.2-r1 9999: A minimal web browser that be
 www-client/vivaldi 1.1.453.47_p1 1.1.453.52_p1 1.2.470.11_p1: A new browser for our friends
 www-client/w3m 0.5.3-r5 0.5.3-r8: Text based WWW browser, supports tables and frames
 www-client/w3mir 1.0.10-r2: w3mir is a all purpose HTTP copying and mirroring tool
-www-client/w3mmee 0.3.2_p24-r7 0.3.2_p24-r8: A variant of w3m with support for multiple character encodings
+www-client/w3mmee 0.3.2_p24-r7 0.3.2_p24-r9: A variant of w3m with support for multiple character encodings
 www-client/weboob 0g 0h 9998 9999: Weboob (Web Outside of Browsers) provides several applications to interact with a lot of websites
 www-client/xombrero 1.6.3 9999: A minimalist web browser with sophisticated security features designed-in
 www-misc/awstats 7.1_p20121017 7.1.1 7.3 7.4: AWStats is short for Advanced Web Statistics
