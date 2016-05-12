@@ -30,6 +30,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Ian Delaney <idella4@gentoo.org> (12 May 2016)
+# on behalf of Ilya Tumaykin <itumaykin+gentoo@gmail.com>
+# Missing dev-python/rarfile-2.7 dependency. See bug #582500.
+~media-video/subliminal-2.0_rc1
+
 # Sergei Trofimovich <slyfox@gentoo.org> (11 May 2016)
 # Mask standalone hpc. dev-lang/ghc provides bundled hpc.
 dev-haskell/hpc
@@ -282,11 +287,6 @@ dev-java/jcs
 # Wolfram Schlich <wschlich@gentoo.org> (06 Feb 2016)
 # Mask live ebuild
 =net-im/mcabber-9999
-
-# Bernard Cafarelli <voyageur@gentoo.org> (27 Jan 2016)
-# New llvm version, masked for testing
-=sys-devel/llvm-3.8.0*
-=sys-devel/clang-3.8.0*
 
 # Sergey Popov <pinkbyte@gentoo.org> (20 Jan 2016)
 # Mask new versions of Boost - they are known to cause breakages

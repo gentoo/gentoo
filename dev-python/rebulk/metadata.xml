@@ -10,7 +10,7 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">Diaoul/enzyme</remote-id>
-		<remote-id type="pypi">enzyme</remote-id>
+		<remote-id type="github">Toilal/rebulk</remote-id>
+		<remote-id type="pypi">rebulk</remote-id>
 	</upstream>
 </pkgmetadata>

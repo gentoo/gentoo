@@ -178,6 +178,10 @@ src_prepare() {
 		# Automatically select active system GCC's libraries, bugs #406163 and #417913
 		eapply "${FILESDIR}"/clang-3.5-gentoo-runtime-gcc-detection-v3.patch
 
+		# Support gcc4.9 search paths
+		# https://github.com/llvm-mirror/clang/commit/af4db76e059c1a3
+		eapply "${FILESDIR}"/clang-3.8-gcc4.9-search-path.patch
+
 		eapply "${FILESDIR}"/clang-3.6-gentoo-install.patch
 
 		eapply "${FILESDIR}"/clang-3.4-darwin_prefix-include-paths.patch

@@ -6,16 +6,17 @@ EAPI=6
 
 PYTHON_COMPAT=( python{2_7,3_4} )
 
-inherit distutils-r1 git-r3
+inherit distutils-r1
+
+MY_PV="${PV/_/-}"
 
 DESCRIPTION="Python library to search and download subtitles"
 HOMEPAGE="https://github.com/Diaoul/subliminal https://pypi.python.org/pypi/subliminal"
-EGIT_REPO_URI="git://github.com/Diaoul/${PN}.git"
-EGIT_BRANCH="develop"
+SRC_URI="https://github.com/Diaoul/${PN}/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="test"
 
 RDEPEND="
@@ -32,7 +33,6 @@ RDEPEND="
 	>=dev-python/six-1.9.0[${PYTHON_USEDEP}]
 	>=dev-python/appdirs-1.3[${PYTHON_USEDEP}]
 	>=dev-python/rarfile-2.7[compressed,${PYTHON_USEDEP}]
-	>=dev-python/pytz-2012c[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	virtual/python-futures[${PYTHON_USEDEP}]
 "
@@ -49,6 +49,8 @@ DEPEND="${RDEPEND}
 
 # Tests require network and severely broken too.
 RESTRICT=test
+
+S="${WORKDIR}/${PN}-${MY_PV}"
 
 python_prepare_all() {
 	# Disable code checkers as they require unavailable dependencies.
