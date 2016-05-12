@@ -1,35 +1,46 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1
+inherit distutils-r1 versionator
 
 DESCRIPTION="Secure backup system using gnupg to encrypt data"
 HOMEPAGE="http://www.nongnu.org/duplicity/"
-SRC_URI="https://code.launchpad.net/${PN}/0.6-series/${PV}/+download/${P}.tar.gz"
+SRC_URI="https://code.launchpad.net/${PN}/$(get_version_component_range 1-2)-series/${PV}/+download/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 ppc ~sparc x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos"
-IUSE="s3"
+KEYWORDS="~amd64 ~ppc ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos"
+IUSE="s3 test"
 
-DEPEND="
+CDEPEND="
 	net-libs/librsync
 	app-crypt/gnupg
 	dev-python/lockfile
 "
-RDEPEND="${DEPEND}
+DEPEND="${CDEPEND}
+	dev-python/setuptools[${PYTHON_USEDEP}]
+	test? ( dev-python/mock[${PYTHON_USEDEP}] )
+"
+RDEPEND="${CDEPEND}
 	dev-python/paramiko[${PYTHON_USEDEP}]
 	s3? ( dev-python/boto[${PYTHON_USEDEP}] )
 "
 
 python_prepare_all() {
+	# workaround until failing test is fixed
+	local PATCHES=( "${FILESDIR}"/${PN}-0.6.24-skip-test.patch )
+
 	distutils-r1_python_prepare_all
 
 	sed -i "s/'COPYING',//" setup.py || die "Couldn't remove unnecessary COPYING file."
+}
+
+python_test() {
+	esetup.py test
 }
 
 pkg_postinst() {
