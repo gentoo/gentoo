@@ -2142,6 +2142,8 @@ dev-libs/weston:screen-sharing - Enable screen-sharing through RDP
 dev-libs/weston:unwind - Enable libunwind usage for backtraces
 dev-libs/weston:wayland-compositor - Enable Wayland compositor support
 dev-libs/weston:xwayland - Enable ability support native X11 applications
+dev-libs/wlc:X - Enable X11 backend and XWayland support.
+dev-libs/wlc:systemd - Enable support for systemd-logind.
 dev-libs/xapian:brass - Enabled brass backend db support
 dev-libs/xapian:chert - Enabled chert backend db support
 dev-libs/xapian:inmemory - Enabled inmemory backend db support
