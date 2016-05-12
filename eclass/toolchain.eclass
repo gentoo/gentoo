@@ -1745,12 +1745,48 @@ toolchain_src_install() {
 	if ! is_crosscompile ; then
 		insinto "${DATAPATH}"
 		newins "${GCC_FILESDIR}"/awk/fixlafiles.awk-no_gcc_la fixlafiles.awk || die
-		find "${D}/${LIBPATH}" -name libstdc++.la -type f -delete
-		find "${D}/${LIBPATH}" -name 'lib*san.la' -type f -delete #487550 #546700
 		exeinto "${DATAPATH}"
 		doexe "${GCC_FILESDIR}"/fix_libtool_files.sh || die
 		doexe "${GCC_FILESDIR}"/c{89,99} || die
 	fi
+
+	# libstdc++.la: Delete as it doesn't add anything useful: g++ itself
+	# handles linkage correctly in the dynamic & static case.  It also just
+	# causes us pain: any C++ progs/libs linking with libtool will gain a
+	# reference to the full libstdc++.la file which is gcc version specific.
+	# libstdc++fs.la: It doesn't link against anything useful.
+	# libsupc++.la: This has no dependencies.
+	# libcc1.la: There is no static library, only dynamic.
+	# libcc1plugin.la: Same as above, and it's loaded via dlopen.
+	# libgomp.la: gcc itself handles linkage (libgomp.spec).
+	# libgomp-plugin-*.la: Same as above, and it's an internal plugin only
+	# loaded via dlopen.
+	# libgfortran.la: gfortran itself handles linkage correctly in the
+	# dynamic & static case (libgfortran.spec). #573302
+	# libgfortranbegin.la: Same as above, and it's an internal lib.
+	# libmpx.la: gcc itself handles linkage correctly (libmpx.spec).
+	# libmpxwrappers.la: See above.
+	# libitm.la: gcc itself handles linkage correctly (libitm.spec).
+	# libvtv.la: gcc itself handles linkage correctly.
+	# lib*san.la: Sanitizer linkage is handled internally by gcc, and they
+	# do not support static linking. #487550 #546700
+	find "${D}/${LIBPATH}" \
+		'(' \
+			-name libstdc++.la -o \
+			-name libstdc++fs.la -o \
+			-name libsupc++.la -o \
+			-name libcc1.la -o \
+			-name libcc1plugin.la -o \
+			-name 'libgomp.la' -o \
+			-name 'libgomp-plugin-*.la' -o \
+			-name libgfortran.la -o \
+			-name libgfortranbegin.la -o \
+			-name libmpx.la -o \
+			-name libmpxwrappers.la -o \
+			-name libitm.la -o \
+			-name libvtv.la -o \
+			-name 'lib*san.la' \
+		')' -type f -delete
 
 	# Use gid of 0 because some stupid ports don't have
 	# the group 'root' set to gid 0.  Send to /dev/null
