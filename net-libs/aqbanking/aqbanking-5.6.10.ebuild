@@ -49,7 +49,7 @@ src_configure() {
 src_install() {
 	emake DESTDIR="${D}" install
 
-	rm -rf "${ED}"/usr/share/doc/aq{banking,hbci,paypal}
+	rm -rv "${ED}"/usr/share/doc/aq{banking,hbci,paypal} || die
 
 	dodoc AUTHORS ChangeLog NEWS README TODO
 
