@@ -39,10 +39,8 @@ src_prepare() {
 	default
 
 	if use ssl ; then
-		cp "${FILESDIR}/artifactory-4.4.0-artifactory.xml" \
-			tomcat/conf/Catalina/localhost/artifactory.xml || die
-		cp "${FILESDIR}/artifactory-4.4.0-server.xml" \
-			tomcat/conf/server.xml || die
+		cp "${FILESDIR}/artifactory.xml" tomcat/conf/Catalina/localhost/artifactory.xml || die
+		cp "${FILESDIR}/server.xml" tomcat/conf/server.xml || die
 	fi
 
 	# Reverse https://www.jfrog.com/jira/browse/RTFACT-7123
