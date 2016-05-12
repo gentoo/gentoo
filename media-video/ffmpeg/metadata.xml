@@ -57,4 +57,9 @@
 	<flag name="zimg">Enables <pkg>media-libs/zimg</pkg> based scale filter.</flag>
 	<flag name="zvbi">Enables <pkg>media-libs/zvbi</pkg> based teletext decoder.</flag>
   </use>
+  <slots>
+    <slot name="0">For building against. This is the only slot that provides
+     headers and command line tools. Binary compatibility slots come and go
+     as required, so always pin dependencies to this slot when appropriate.</slot>
+  </slots>
 </pkgmetadata>
