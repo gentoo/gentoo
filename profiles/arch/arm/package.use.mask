@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# Patrick McLean <chutzpah@gentoo.org> (12 May 2016)
+# Tests require dev-python/tox which isn't keyworded on arm
+sys-cluster/ceph test
+
 # Thomas Deutschmann <whissi@whissi.de> (25 Apr 2016), on behalf of
 # Ian Delaney <idella4@gentoo.org> (25 Apr 2016)
 # for the proxy-maintainers project
