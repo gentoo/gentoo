@@ -26,6 +26,7 @@ RDEPEND="
 	dev-ros/tf
 	dev-ros/tf2
 	dev-ros/tf2_ros
+	dev-ros/tf2_eigen
 	dev-ros/nodelet
 	dev-ros/nodelet_topic_tools
 	sci-libs/pcl[qhull]
