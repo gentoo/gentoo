@@ -58,7 +58,6 @@ COMMON_DEPEND="
 	${PYTHON_DEPS}
 	"
 DEPEND="${COMMON_DEPEND}
-	dev-python/cython[${PYTHON_USEDEP}]
 	virtual/pkgconfig"
 RDEPEND="${COMMON_DEPEND}
 	sys-apps/hdparm
@@ -88,7 +87,7 @@ check-reqs_export_vars() {
 		export CHECKREQS_DISK_BUILD="23G"
 		export CHECKREQS_DISK_USR="7G"
 	else
-		export CHECKREQS_DISK_BUILD="1400M"
+		export CHECKREQS_DISK_BUILD="9G"
 		export CHECKREQS_DISK_USR="450M"
 	fi
 
@@ -138,8 +137,6 @@ src_configure() {
 		$(use_with zfs libzfs)
 		$(use_with lttng )
 		$(use_with babeltrace)
-		--with-eventfd
-		--with-python
 		--without-kinetic
 		--without-librocksdb
 		--with-systemdsystemunitdir="$(systemd_get_systemunitdir)"
@@ -172,7 +169,7 @@ src_install() {
 	fowners ceph:ceph /var/lib/ceph
 
 	newinitd "${FILESDIR}/rbdmap.initd" rbdmap
-	newinitd "${FILESDIR}/${PN}.initd-r1" ${PN}
+	newinitd "${FILESDIR}/${PN}.initd-r2" ${PN}
 	newconfd "${FILESDIR}/${PN}.confd-r1" ${PN}
 
 	systemd_install_serviced "${FILESDIR}/ceph-mds_at.service.conf" "ceph-mds@.service"
