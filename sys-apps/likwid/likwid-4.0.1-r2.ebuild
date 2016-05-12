@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -29,8 +29,8 @@ RESTRICT="mirror"
 CONFIG_CHECK="~X86_MSR"
 
 FILECAPS=(
-	cap_sys_rawio usr/sbin/likwid-accessD --
-	cap_sys_rawio usr/bin/likwid-{perfctr,bench,powermeter}
+	-M 755 cap_sys_rawio usr/sbin/likwid-accessD --
+	-M 755 cap_sys_rawio usr/bin/likwid-{perfctr,bench,powermeter}
 )
 
 S=${WORKDIR}/likwid-likwid-${PV}
