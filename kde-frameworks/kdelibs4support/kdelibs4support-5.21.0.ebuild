@@ -10,7 +10,7 @@ inherit kde5
 DESCRIPTION="Framework easing the development transition from KDE 4 to KF 5"
 LICENSE="LGPL-2+"
 KEYWORDS="~amd64 ~arm ~x86"
-IUSE="X libressl"
+IUSE="X"
 
 COMMON_DEPEND="
 	$(add_frameworks_dep kauth)
@@ -40,8 +40,7 @@ COMMON_DEPEND="
 	$(add_frameworks_dep kxmlgui)
 	$(add_frameworks_dep solid)
 	app-text/docbook-xml-dtd:4.2
-	!libressl? ( dev-libs/openssl:0= )
-	libressl? ( dev-libs/libressl:0= )
+	dev-libs/openssl:0
 	$(add_qt_dep qtdbus)
 	$(add_qt_dep qtgui)
 	$(add_qt_dep qtnetwork 'ssl')
