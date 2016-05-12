@@ -61,12 +61,12 @@ src_configure() {
 src_compile() {
 	emake
 	if use doc; then
-		pushd doc || die
+		pushd doc >> /dev/null || die
 		doxygen || die
 		popd >> /dev/null || die
 	fi
 	if use test; then
-		pushd test || die
+		pushd test >> /dev/null || die
 		emake
 		popd >> /dev/null || die
 	fi
