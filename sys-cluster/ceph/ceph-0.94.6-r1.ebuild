@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -12,20 +12,20 @@ if [[ $PV = *9999* ]]; then
 		https://github.com/ceph/ceph.git"
 	SRC_URI=""
 else
-	SRC_URI="http://ceph.com/download/${P}.tar.bz2"
+	SRC_URI="http://ceph.com/download/${P}.tar.gz"
 fi
 KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86"
 
-inherit check-reqs autotools eutils multilib python-single-r1 udev readme.gentoo systemd ${scm_eclass}
+inherit check-reqs autotools eutils multilib python-single-r1 udev readme.gentoo-r1 systemd ${scm_eclass}
 
 DESCRIPTION="Ceph distributed filesystem"
 HOMEPAGE="http://ceph.com/"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-IUSE="babeltrace cryptopp debug fuse gtk libatomic +libaio lttng +nss radosgw static-libs jemalloc tcmalloc xfs zfs"
+IUSE="babeltrace cryptopp debug fuse gtk libatomic +libaio lttng +nss radosgw static-libs jemalloc python tcmalloc xfs zfs"
 
-CDEPEND="
+COMMON_DEPEND="
 	app-arch/snappy
 	dev-libs/boost:=[threads]
 	dev-libs/fcgi
@@ -57,9 +57,9 @@ CDEPEND="
 	lttng? ( dev-util/lttng-ust )
 	${PYTHON_DEPS}
 	"
-DEPEND="${CDEPEND}
+DEPEND="${COMMON_DEPEND}
 	virtual/pkgconfig"
-RDEPEND="${CDEPEND}
+RDEPEND="${COMMON_DEPEND}
 	sys-apps/hdparm
 	dev-python/flask[${PYTHON_USEDEP}]
 	dev-python/requests[${PYTHON_USEDEP}]
@@ -105,10 +105,10 @@ src_configure() {
 		$(use_with jemalloc)
 		$(use_with xfs libxfs)
 		$(use_with zfs libzfs)
-		--without-kinetic
-		--without-librocksdb
 		$(use_with lttng )
 		$(use_with babeltrace)
+		--without-kinetic
+		--without-librocksdb
 	)
 
 	use jemalloc || \
@@ -136,7 +136,7 @@ src_install() {
 	keepdir /var/log/${PN}/stat
 
 	newinitd "${FILESDIR}/rbdmap.initd" rbdmap
-	newinitd "${FILESDIR}/${PN}.initd-r1" ${PN}
+	newinitd "${FILESDIR}/${PN}.initd-r1.1" ${PN}
 	newconfd "${FILESDIR}/${PN}.confd-r1" ${PN}
 
 	systemd_dounit           "${FILESDIR}/ceph.target"
@@ -156,4 +156,8 @@ src_install() {
 	udev_dorules udev/95-ceph-osd.rules
 
 	readme.gentoo_create_doc
+}
+
+pkg_postinst() {
+	readme.gentoo_print_elog
 }
