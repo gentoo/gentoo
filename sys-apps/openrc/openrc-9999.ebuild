@@ -280,6 +280,13 @@ pkg_postinst() {
 		fi
 	fi
 
+	# Added for 0.21
+	if [[ ! -e "${EROOT}"etc/runlevels/nonetwork ]]; then
+		einfo "copying default nonetwork runlevel"
+		cp -RPp "${EROOT}"usr/share/${PN}/runlevels/nonetwork \
+			"${EROOT}"etc/runlevels
+	fi
+
 	if use hppa; then
 		elog "Setting the console font does not work on all HPPA consoles."
 		elog "You can still enable it by running:"
