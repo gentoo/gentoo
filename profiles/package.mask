@@ -253,10 +253,6 @@ dev-lang/niecza-bin
 # Mask experimental software
 =mail-mta/postfix-3.2*
 
-# Yixun Lan <dlan@gentoo.org> (16 Feb 2016)
-# Mask early development version, leave only upstream stable version
->=sys-cluster/ceph-10
-
 # Sergey Popov <pinkbyte@gentoo.org> (15 Feb 2016)
 # Security mask, wrt bug #519730
 <app-emulation/ganeti-2.11.6-r2
