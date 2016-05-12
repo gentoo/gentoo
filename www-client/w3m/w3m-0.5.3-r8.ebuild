@@ -16,7 +16,7 @@ IUSE="X fbcon gpm gtk imlib libressl lynxkeymap nls nntp ssl unicode vanilla xfa
 
 # We cannot build w3m with gtk+2 w/o X because gtk+2 ebuild doesn't
 # allow us to build w/o X, so we have to give up framebuffer w3mimg....
-RDEPEND="sys-libs/ncurses:5=
+RDEPEND=">=sys-libs/ncurses-5.2-r3:0=
 	>=sys-libs/zlib-1.1.3-r2
 	>=dev-libs/boehm-gc-6.2
 	X? ( x11-libs/libXext x11-libs/libXdmcp )
