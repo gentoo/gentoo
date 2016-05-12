@@ -84,8 +84,8 @@ SOFTMMU_LIB_DEPEND="${COMMON_LIB_DEPEND}
 	fdt? ( >=sys-apps/dtc-1.4.0[static-libs(+)] )
 	glusterfs? ( >=sys-cluster/glusterfs-3.4.0[static-libs(+)] )
 	gnutls? (
-		dev-libs/nettle[static-libs(+)]
-		>=net-libs/gnutls-3.0[static-libs(+)]
+		dev-libs/nettle:=[static-libs(+)]
+		>=net-libs/gnutls-3.0:=[static-libs(+)]
 	)
 	gtk? (
 		gtk2? (
