@@ -20,5 +20,6 @@ RDEPEND="
 	dev-ros/gencpp
 	dev-ros/genpy
 	dev-ros/geneus
+	dev-ros/gennodejs
 "
 DEPEND="${RDEPEND}"
