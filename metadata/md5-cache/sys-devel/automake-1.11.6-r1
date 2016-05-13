@@ -10,4 +10,4 @@ SLOT=1.11
 SRC_URI=mirror://gnu/automake/automake-1.11.6.tar.xz
 _eclass_exported_funcs=src_prepare:- src_configure:- src_compile:- src_install:-
 _eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
-_md5_=31644b1b487ea1589ca65428dff8fc1f
+_md5_=4b5dbebeecefd5a309d699672448e6fc
