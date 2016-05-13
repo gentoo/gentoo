@@ -8118,6 +8118,7 @@ www-servers/resin:admin - Enable Resin admin webapp
 www-servers/tomcat:extra-webapps - Build also the docs and examples webapp
 www-servers/tomcat:websockets - Builds websockets api and implementation (requires java 7)
 www-servers/uwsgi:embedded - Embed plugins instead of building them as real plugins. When disabling this USE flag make sure you specify all used plugins in your uWSGI configuration. Note: Language plugins will always be built as real plugins.
+www-servers/uwsgi:go - Build the gccgo plugin to run Go applications.
 www-servers/uwsgi:jemalloc - Use dev-libs/jemalloc instead of libc's malloc
 www-servers/uwsgi:json - Support json as a configuration file format.
 www-servers/uwsgi:pypy - Build the pypy plugin to run your code using virtual/pypy.
