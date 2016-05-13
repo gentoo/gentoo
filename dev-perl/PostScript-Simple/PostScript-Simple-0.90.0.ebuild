@@ -12,7 +12,7 @@ DESCRIPTION="Allows you to have a simple method of writing PostScript files from
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~ia64 ~ppc ~sparc ~x86"
+KEYWORDS="amd64 ~hppa ~ia64 ~ppc ~sparc ~x86"
 IUSE="test examples"
 
 RDEPEND=""
