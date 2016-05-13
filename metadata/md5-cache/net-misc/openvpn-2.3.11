@@ -1,4 +1,4 @@
-DEFINED_PHASES=configure install postinst
+DEFINED_PHASES=configure install postinst setup
 DEPEND=kernel_linux? ( iproute2? ( sys-apps/iproute2[-minimal] ) !iproute2? ( sys-apps/net-tools ) ) pam? ( virtual/pam ) ssl? ( !polarssl? ( !libressl? ( >=dev-libs/openssl-0.9.7:* ) libressl? ( dev-libs/libressl ) ) polarssl? ( >=net-libs/polarssl-1.3.8 ) ) lzo? ( >=dev-libs/lzo-1.07 ) pkcs11? ( >=dev-libs/pkcs11-helper-1.11 ) systemd? ( sys-apps/systemd ) virtual/pkgconfig
 DESCRIPTION=Robust and highly flexible tunneling application compatible with many OSes
 EAPI=5
@@ -9,7 +9,7 @@ LICENSE=GPL-2
 RDEPEND=kernel_linux? ( iproute2? ( sys-apps/iproute2[-minimal] ) !iproute2? ( sys-apps/net-tools ) ) pam? ( virtual/pam ) ssl? ( !polarssl? ( !libressl? ( >=dev-libs/openssl-0.9.7:* ) libressl? ( dev-libs/libressl ) ) polarssl? ( >=net-libs/polarssl-1.3.8 ) ) lzo? ( >=dev-libs/lzo-1.07 ) pkcs11? ( >=dev-libs/pkcs11-helper-1.11 ) systemd? ( sys-apps/systemd ) selinux? ( sec-policy/selinux-openvpn )
 REQUIRED_USE=static? ( !plugins !pkcs11 ) polarssl? ( ssl !libressl ) pkcs11? ( ssl ) !plugins? ( !pam !down-root )
 SLOT=0
-SRC_URI=http://swupdate.openvpn.net/community/releases/openvpn-2.3.10.tar.gz
-_eclass_exported_funcs=pkg_postinst:- src_configure:- src_install:-
-_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	flag-o-matic	d270fa247153df66074f795fa42dba3e	multilib	d062ae4ba2fc40a19c11de2ad89b6616	systemd	3165c885f3c71ffae7a867d931fb0e07	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	user	906f3c8eb3a2350a4f1191a89baa3e46
-_md5_=6ed7773b66da64afe16ad632f831522d
+SRC_URI=http://swupdate.openvpn.net/community/releases/openvpn-2.3.11.tar.gz
+_eclass_exported_funcs=pkg_postinst:- pkg_setup:- src_configure:- src_install:-
+_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	flag-o-matic	d270fa247153df66074f795fa42dba3e	linux-info	fd1e29abbb02cbc49f1a14299846e9c4	multilib	d062ae4ba2fc40a19c11de2ad89b6616	systemd	3165c885f3c71ffae7a867d931fb0e07	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	user	906f3c8eb3a2350a4f1191a89baa3e46	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=c6c7a961bb60a448010650afbffd1ace
