@@ -1577,6 +1577,7 @@ app-i18n/xcin 2.5.3_pre3-r2 2.5.3_pre3-r3: Chinese X Input Method
 app-i18n/xsim 0.3.9.4-r5: A simple and fast GB and BIG5 Chinese XIM server
 app-i18n/xsunpinyin 2.0.3-r3 2.0.4_pre20130108: The SunPinyin IMEngine Wrapper for XIM Framework
 app-i18n/xvnkb 0.2.8a-r1 0.2.9a-r1: Vietnamese input keyboard for X
+app-i18n/yaskkserv 1.1.0: Yet Another SKK server
 app-i18n/zhcon 0.2.6-r2: A Fast CJK (Chinese/Japanese/Korean) Console Environment
 app-i18n/zinnia 0.06-r3: Online hand recognition system with machine learning
 app-i18n/zinnia-tomoe 0.6.0_p20080911: Handwriting model files trained with Tomoe data
@@ -18688,7 +18689,7 @@ x11-terms/hanterm 3.1.6-r2 3.1.6-r4: Hanterm -- Korean terminal
 x11-terms/kterm 6.2.0-r5: Japanese Kanji X Terminal
 x11-terms/lilyterm 0.9.9.4 0.9.9.4-r1: a terminal emulator based off of libvte that aims to be fast and lightweight
 x11-terms/mate-terminal 1.8.1 1.10.2: The MATE Terminal
-x11-terms/mlterm 3.4.5 3.6.3 3.7.0: A multi-lingual terminal emulator
+x11-terms/mlterm 3.4.5 3.7.0 3.7.1: A multi-lingual terminal emulator
 x11-terms/mrxvt 0.5.4: Multi-tabbed rxvt clone with XFT, transparent background and CJK support
 x11-terms/multi-aterm 0.2.1-r1: Terminal emulator with transparency support as well as rxvt backwards compatibility with tab support
 x11-terms/pangoterm 0.0_pre20150323 0.0_pre20150913 0.0_pre20151022 0.0_pre20160305: A GTK/Pango-based terminal that uses libvterm to provide terminal emulation
