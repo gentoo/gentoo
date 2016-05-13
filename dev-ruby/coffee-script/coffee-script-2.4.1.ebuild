@@ -20,4 +20,4 @@ KEYWORDS="amd64 ~arm x86 ~x64-macos"
 
 IUSE=""
 
-ruby_add_rdepend "dev-ruby/coffee-script-source dev-ruby/execjs"
+ruby_add_rdepend "dev-ruby/coffee-script-source dev-ruby/execjs:*"
