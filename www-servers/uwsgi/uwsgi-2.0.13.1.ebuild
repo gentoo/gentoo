@@ -43,7 +43,7 @@ UWSGI_PLUGINS_OPT=( alarm_{curl,xmpp} clock_{monotonic,realtime} curl_cron
 	systemd_logger transformation_toupper tuntap webdav xattr xslt zabbix )
 
 LANG_SUPPORT_SIMPLE=( cgi mono perl ) # plugins which can be built in the main build process
-LANG_SUPPORT_EXTENDED=( lua php pypy python python_asyncio python_gevent ruby )
+LANG_SUPPORT_EXTENDED=( go lua php pypy python python_asyncio python_gevent ruby )
 
 # plugins to be ignored (for now):
 # cheaper_backlog2: example plugin
@@ -52,7 +52,6 @@ LANG_SUPPORT_EXTENDED=( lua php pypy python python_asyncio python_gevent ruby )
 # dummy: no idea
 # example: example plugin
 # exception_log: example plugin
-# *go*: TODO
 # *java*: TODO
 # v8: TODO
 # matheval: TODO
@@ -109,6 +108,7 @@ CDEPEND="sys-libs/zlib
 	uwsgi_plugins_systemd_logger? ( sys-apps/systemd )
 	uwsgi_plugins_webdav? ( dev-libs/libxml2 )
 	uwsgi_plugins_xslt? ( dev-libs/libxslt )
+	go? ( dev-lang/go:=[gccgo] )
 	lua? ( dev-lang/lua:= )
 	mono? ( =dev-lang/mono-2* )
 	perl? ( dev-lang/perl:= )
@@ -275,6 +275,10 @@ src_compile() {
 
 	python uwsgiconfig.py --build gentoo || die "building uwsgi failed"
 
+	if use go ; then
+		python uwsgiconfig.py --plugin plugins/gccgo gentoo || die "building plugin for go failed"
+	fi
+
 	if use lua ; then
 		# setting the name for the pkg-config file to lua, since we don't have
 		# slotted lua
@@ -311,6 +315,7 @@ src_install() {
 	doins "${T}/plugins"/*.so
 
 	use cgi && dosym uwsgi /usr/bin/uwsgi_cgi
+	use go && dosym uwsgi /usr/bin/uwsgi_go
 	use lua && dosym uwsgi /usr/bin/uwsgi_lua
 	use mono && dosym uwsgi /usr/bin/uwsgi_mono
 	use perl && dosym uwsgi /usr/bin/uwsgi_psgi
@@ -333,8 +338,8 @@ src_install() {
 		done
 	fi
 
-	newinitd "${FILESDIR}"/uwsgi.initd-r6 uwsgi
-	newconfd "${FILESDIR}"/uwsgi.confd-r3 uwsgi
+	newinitd "${FILESDIR}"/uwsgi.initd-r7 uwsgi
+	newconfd "${FILESDIR}"/uwsgi.confd-r4 uwsgi
 	keepdir /etc/"${PN}".d
 	use uwsgi_plugins_spooler && keepdir /var/spool/"${PN}"
 }
