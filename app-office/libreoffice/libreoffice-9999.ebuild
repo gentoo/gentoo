@@ -119,7 +119,7 @@ COMMON_DEPEND="
 	dev-libs/expat
 	dev-libs/hyphen
 	dev-libs/icu:=
-	>=dev-libs/liborcus-0.11.1
+	>=dev-libs/liborcus-0.11.2
 	dev-libs/librevenge
 	dev-libs/nspr
 	dev-libs/nss
@@ -212,7 +212,7 @@ DEPEND="${COMMON_DEPEND}
 	dev-util/cppunit
 	>=dev-util/gperf-3
 	dev-util/intltool
-	dev-util/mdds:1=
+	>=dev-util/mdds-1.2.0:1=
 	media-libs/glm
 	sys-devel/bison
 	sys-devel/flex
