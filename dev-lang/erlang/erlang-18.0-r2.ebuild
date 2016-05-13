@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -16,7 +16,7 @@ SRC_URI="http://www.erlang.org/download/otp_src_${PV}.tar.gz
 	http://erlang.org/download/otp_doc_man_${PV}.tar.gz
 	doc? ( http://erlang.org/download/otp_doc_html_${PV}.tar.gz )"
 
-LICENSE="ErlPL-1.1"
+LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris"
 IUSE="compat-ethread doc emacs halfword hipe java kpoll libressl odbc smp sctp ssl systemd tk wxwidgets"

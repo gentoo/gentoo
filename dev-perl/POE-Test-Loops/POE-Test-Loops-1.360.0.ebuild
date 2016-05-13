@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="Reusable tests for POE::Loop authors"
 
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc ~x86"
 IUSE=""
 
 SRC_TEST="do"
