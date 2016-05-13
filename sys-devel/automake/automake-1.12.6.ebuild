@@ -28,7 +28,7 @@ src_prepare() {
 }
 
 src_configure() {
-	econf --docdir=/usr/share/doc/${PF} HELP2MAN=true
+	econf --docdir=/usr/share/doc/${PF}
 }
 
 src_compile() {

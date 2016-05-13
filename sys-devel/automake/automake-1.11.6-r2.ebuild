@@ -28,10 +28,11 @@ src_prepare() {
 	epatch "${FILESDIR}"/${PN}-1.10-perl-5.16.patch #424453
 	epatch "${FILESDIR}"/${PN}-1.13-perl-escape-curly-bracket.patch
 	chmod a+rx tests/*.test
+	export HELP2MAN=true
 }
 
 src_configure() {
-	econf --docdir=/usr/share/doc/${PF} HELP2MAN=true
+	econf --docdir=/usr/share/doc/${PF}
 }
 
 src_compile() {
