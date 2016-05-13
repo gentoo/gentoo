@@ -13,7 +13,7 @@ SRC_URI="mirror://sourceforge/tomoe/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="doc hyperestraier mysql ruby python static-libs subversion"
 
 RDEPEND=">=dev-libs/glib-2.4

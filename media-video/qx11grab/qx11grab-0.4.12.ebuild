@@ -12,7 +12,7 @@ SRC_URI="http://qx11grab.hjcms.de/downloads/${PV}/${P}.tar.xz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="libav kde opengl pulseaudio"
 
 RDEPEND="
