@@ -15,8 +15,8 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-RDEPEND=">=sys-devel/llvm-3.7
-	>=sys-devel/clang-3.7
+RDEPEND="=sys-devel/llvm-3.7*
+	=sys-devel/clang-3.7*
 "
 DEPEND="${RDEPEND}"
 
