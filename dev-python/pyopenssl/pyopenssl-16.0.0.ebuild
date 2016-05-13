@@ -28,7 +28,7 @@ RESTRICT="test" # currently pretty broken
 
 RDEPEND="
 	>=dev-python/six-1.5.2[${PYTHON_USEDEP}]
-	>=dev-python/cryptography-0.7[${PYTHON_USEDEP}]"
+	>=dev-python/cryptography-1.3[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )"
 
