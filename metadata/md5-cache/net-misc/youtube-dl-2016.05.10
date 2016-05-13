@@ -9,7 +9,7 @@ LICENSE=public-domain
 RDEPEND=python_single_target_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) python_single_target_python3_3? ( >=dev-lang/python-3.3.2-r2:3.3 ) python_single_target_python3_4? ( dev-lang/python:3.4 ) python_single_target_python3_5? ( dev-lang/python:3.5 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,python_targets_python3_3(-)?,python_targets_python3_4(-)?,python_targets_python3_5(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),python_single_target_python2_7(+)?,python_single_target_python3_3(+)?,python_single_target_python3_4(+)?,python_single_target_python3_5(+)?]
 REQUIRED_USE=^^ ( python_single_target_python2_7 python_single_target_python3_3 python_single_target_python3_4 python_single_target_python3_5 ) python_single_target_python2_7? ( python_targets_python2_7 ) python_single_target_python3_3? ( python_targets_python3_3 ) python_single_target_python3_4? ( python_targets_python3_4 ) python_single_target_python3_5? ( python_targets_python3_5 )
 SLOT=0
-SRC_URI=http://youtube-dl.org/downloads/2016.04.24/youtube-dl-2016.04.24.tar.gz
+SRC_URI=http://youtube-dl.org/downloads/2016.05.10/youtube-dl-2016.05.10.tar.gz
 _eclass_exported_funcs=pkg_setup:python-single-r1 src_prepare:- src_configure:distutils-r1 src_compile:- src_test:- src_install:-
 _eclasses_=bash-completion-r1	acf715fa09463f043fbfdc1640f3fb85	distutils-r1	4e8ac1ba76ddacd8f7c0289aa586a34c	eutils	792f83d5ec9536cb5ccef375469d8bde	multilib	d062ae4ba2fc40a19c11de2ad89b6616	python-single-r1	2ebea8fbab356d63110245129a67a6dd	python-utils-r1	2e6826f6a93ad2acf904eecf5b5fb6d2	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
-_md5_=cec830d1089174151044e2ed3a8f6d43
+_md5_=a1513e3755799df31037f01b5c041190
