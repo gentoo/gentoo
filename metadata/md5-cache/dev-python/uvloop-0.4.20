@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=>=dev-libs/libuv-1.8.0:= dev-python/setuptools[python_targets_python3_5(-)?,-python_single_target_python3_5(-)] doc? ( >=dev-python/alabaster-0.6.2[python_targets_python3_5(-)?,-python_single_target_python3_5(-)] >=dev-python/cython-0.23.4[python_targets_python3_5(-)?,-python_single_target_python3_5(-)] dev-python/sphinx[python_targets_python3_5(-)?,-python_single_target_python3_5(-)] ) python_targets_python3_5? ( dev-lang/python:3.5 ) >=dev-lang/python-exec-2:=[python_targets_python3_5(-)?,-python_single_target_python3_5(-)]
+DESCRIPTION=Ultra-fast implementation of asyncio event loop on top of libuv.
+EAPI=6
+HOMEPAGE=https://github.com/magicstack/uvloop
+IUSE=doc examples test python_targets_python3_5
+KEYWORDS=~amd64 ~x86
+LICENSE=MIT
+RDEPEND=>=dev-libs/libuv-1.8.0:= python_targets_python3_5? ( dev-lang/python:3.5 ) >=dev-lang/python-exec-2:=[python_targets_python3_5(-)?,-python_single_target_python3_5(-)]
+REQUIRED_USE=|| ( python_targets_python3_5 )
+SLOT=0
+SRC_URI=mirror://pypi/u/uvloop/uvloop-0.4.20.tar.gz
+_eclass_exported_funcs=src_prepare:- src_configure:distutils-r1 src_compile:distutils-r1 src_test:distutils-r1 src_install:distutils-r1
+_eclasses_=distutils-r1	4e8ac1ba76ddacd8f7c0289aa586a34c	multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	d062ae4ba2fc40a19c11de2ad89b6616	multiprocessing	e32940a7b2a9992ad217eccddb84d548	python-r1	0f6937650a475d673baa5d0c8c0b37b3	python-utils-r1	2e6826f6a93ad2acf904eecf5b5fb6d2	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=872a6d5775e657d8cf008aa8a8ff49c2
