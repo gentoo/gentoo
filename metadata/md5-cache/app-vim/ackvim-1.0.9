@@ -1,13 +1,13 @@
 DEFINED_PHASES=install postinst postrm
-DEPEND=sys-apps/ack app-arch/unzip || ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
+DEPEND=app-arch/unzip || ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
 DESCRIPTION=vim plugin: run ack from within vim
 EAPI=6
 HOMEPAGE=https://github.com/mileszs/ack.vim
 KEYWORDS=~amd64 ~x86
 LICENSE=vim
-RDEPEND=sys-apps/ack app-arch/unzip || ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
+RDEPEND=sys-apps/ack || ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
 SLOT=0
 SRC_URI=https://github.com/mileszs/ack.vim/archive/1.0.9.zip -> ack.vim-1.0.9.zip
 _eclass_exported_funcs=pkg_postrm:vim-plugin pkg_postinst:vim-plugin src_install:vim-plugin
 _eclasses_=vim-doc	1b0813c9dadf2431c96854a8d46f5eaf	vim-plugin	1bbfc3364a7588372fb4c21734f0cd96
-_md5_=02a5d8008444e88960fd634343acaf54
+_md5_=28761e0a6bef3d7a4b18fb1fab5edbaf

@@ -1,13 +1,13 @@
 DEFINED_PHASES=install postinst postrm
-DEPEND=dev-lang/python:* app-arch/unzip || ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
+DEPEND=app-arch/unzip || ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
 DESCRIPTION=vim plugin: Tab-complete your Python code
 EAPI=6
 HOMEPAGE=https://rkulla.github.io/pydiction/
 KEYWORDS=~amd64 ~ppc ~ppc64 ~x86
 LICENSE=vim
-RDEPEND=dev-lang/python:* app-arch/unzip || ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
+RDEPEND=dev-lang/python:* || ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~monsieurp/packages/pydiction-1.2.3.zip
 _eclass_exported_funcs=pkg_postrm:vim-plugin pkg_postinst:vim-plugin src_install:-
 _eclasses_=vim-doc	1b0813c9dadf2431c96854a8d46f5eaf	vim-plugin	1bbfc3364a7588372fb4c21734f0cd96
-_md5_=b0a4ed50c84895c1498fbf867786f5a1
+_md5_=b802a388295617d3fb3e096d96b3b6d7
