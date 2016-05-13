@@ -54,7 +54,7 @@ LIBCC_S="${BRIGHTRAY_S}/vendor/libchromiumcontent"
 LICENSE="BSD"
 SLOT="0/$(get_version_component_range 2)"
 KEYWORDS="~amd64"
-IUSE="custom-cflags cups gnome gnome-keyring gtk3 hidpi kerberos lto neon pic +proprietary-codecs pulseaudio selinux +system-ffmpeg +tcmalloc"
+IUSE="custom-cflags cups gnome gnome-keyring hidpi kerberos lto neon pic +proprietary-codecs pulseaudio selinux +system-ffmpeg +tcmalloc"
 RESTRICT="!system-ffmpeg? ( proprietary-codecs? ( bindist ) )"
 
 # Native Client binaries are compiled with different set of flags, bug #452066.
@@ -100,8 +100,7 @@ RDEPEND=">=app-accessibility/speech-dispatcher-0.8:=
 	virtual/udev
 	x11-libs/cairo:=
 	x11-libs/gdk-pixbuf:=
-	gtk3? ( x11-libs/gtk+:3= )
-	!gtk3? ( x11-libs/gtk+:2= )
+	x11-libs/gtk+:2=
 	x11-libs/libdrm
 	x11-libs/libX11:=
 	x11-libs/libXcomposite:=
@@ -490,7 +489,6 @@ src_configure() {
 		$(gyp_use gnome use_gconf)
 		$(gyp_use gnome-keyring use_gnome_keyring)
 		$(gyp_use gnome-keyring linux_link_gnome_keyring)
-		$(gyp_use gtk3)
 		$(gyp_use hidpi enable_hidpi)
 		$(gyp_use kerberos)
 		$(gyp_use lto)

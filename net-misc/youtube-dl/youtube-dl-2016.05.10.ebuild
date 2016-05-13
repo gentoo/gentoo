@@ -32,11 +32,11 @@ src_prepare() {
 		local xxx=(
 			alphaporno anysex behindkink camwithher chaturbate drtuber eporner
 			eroprofile extremetube fourtube foxgay goshgay hellporno
-			hentaistigma hornbunny keezmovies lovehomeporn malemotion mofosex
-			motherless myvidster porn91 pornhd pornotube pornovoisines pornoxo
-			redtube ruleporn sexu sexykarma slutload spankbang spankwire
-			sunporno thisav trutube tube8 vporn xbef xnxx xtube xvideos
-			xxxymovies youjizz youporn
+			hentaistigma hornbunny keezmovies lovehomeporn mofosex motherless
+			myvidster porn91 pornhd pornotube pornovoisines pornoxo redtube
+			ruleporn sexu slutload spankbang spankwire sunporno thisav trutube
+			tube8 vporn watchindianporn xbef xnxx xtube xvideos xxxymovies
+			youjizz youporn
 		)
 		# these have multi-line import statements
 		local mxxx=(
