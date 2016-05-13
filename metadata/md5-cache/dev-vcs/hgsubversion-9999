@@ -1,12 +1,13 @@
-DEFINED_PHASES=compile install postinst postrm prepare test unpack
-DEPEND=dev-python/setuptools test? ( dev-python/nose ) =dev-lang/python-2* dev-vcs/mercurial
+DEFINED_PHASES=compile configure install prepare test unpack
+DEPEND=dev-python/setuptools[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] test? ( dev-python/nose[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-vcs/mercurial
 DESCRIPTION=hgsubversion is a Mercurial extension for working with Subversion repositories
-EAPI=3
+EAPI=5
 HOMEPAGE=https://bitbucket.org/durin42/hgsubversion/wiki/Home https://pypi.python.org/pypi/hgsubversion
-IUSE=test
+IUSE=test python_targets_python2_7
 LICENSE=GPL-2
-RDEPEND=>=dev-vcs/mercurial-1.4 || ( dev-python/subvertpy >=dev-vcs/subversion-1.5[python] ) =dev-lang/python-2*
+RDEPEND=dev-vcs/mercurial[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] || ( dev-python/subvertpy[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] >=dev-vcs/subversion-1.5[python] ) python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
+REQUIRED_USE=|| ( python_targets_python2_7 )
 SLOT=0
-_eclass_exported_funcs=pkg_postrm:distutils pkg_postinst:distutils src_unpack:mercurial src_prepare:distutils src_compile:distutils src_test:- src_install:distutils
-_eclasses_=distutils	ad9e4720eb3e69090dd968b152fc611b	eutils	792f83d5ec9536cb5ccef375469d8bde	mercurial	789038b352d112bcff9dff083aa40d8d	multilib	d062ae4ba2fc40a19c11de2ad89b6616	python	efc1c55fc44c5b7272fc2ffba73c3e6f	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
-_md5_=ea4dcfe841f1e5359e438b9acf137bb4
+_eclass_exported_funcs=src_unpack:mercurial src_prepare:distutils-r1 src_configure:distutils-r1 src_compile:distutils-r1 src_test:distutils-r1 src_install:distutils-r1
+_eclasses_=distutils-r1	4e8ac1ba76ddacd8f7c0289aa586a34c	eutils	792f83d5ec9536cb5ccef375469d8bde	mercurial	789038b352d112bcff9dff083aa40d8d	multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	d062ae4ba2fc40a19c11de2ad89b6616	multiprocessing	e32940a7b2a9992ad217eccddb84d548	python-r1	0f6937650a475d673baa5d0c8c0b37b3	python-utils-r1	2e6826f6a93ad2acf904eecf5b5fb6d2	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=bd07cda6ff153512e40805279f515fb5
