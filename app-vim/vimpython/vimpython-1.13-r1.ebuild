@@ -11,8 +11,5 @@ HOMEPAGE="http://www.vim.org/scripts/script.php?script_id=30"
 LICENSE="vim"
 KEYWORDS="alpha amd64 ia64 ppc sparc x86"
 
-DEPEND="
-	dev-lang/python:*
-	app-arch/unzip"
-
-RDEPEND="${DEPEND}"
+DEPEND="app-arch/unzip"
+RDEPEND="dev-lang/python:*"
