@@ -4,7 +4,7 @@
 
 EAPI="6"
 
-inherit toolchain-funcs eutils
+inherit toolchain-funcs eutils flag-o-matic
 
 MY_PV=${PV//./}
 DESCRIPTION="A very powerful editor for programmers"
