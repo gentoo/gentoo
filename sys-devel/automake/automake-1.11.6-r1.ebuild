@@ -30,7 +30,7 @@ src_prepare() {
 }
 
 src_configure() {
-	econf --docdir=/usr/share/doc/${PF} HELP2MAN=true
+	econf --docdir="\$(datarootdir)/doc/${PF}" HELP2MAN=true
 }
 
 src_compile() {

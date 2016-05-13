@@ -42,7 +42,7 @@ src_prepare() {
 }
 
 src_configure() {
-	econf --docdir=/usr/share/doc/${PF}
+	econf --docdir="\$(datarootdir)/doc/${PF}"
 }
 
 src_compile() {

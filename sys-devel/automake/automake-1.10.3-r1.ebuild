@@ -30,7 +30,7 @@ src_prepare() {
 }
 
 src_configure() {
-	econf --docdir=/usr/share/doc/${PF}
+	econf --docdir="\$(datarootdir)/doc/${PF}"
 }
 
 # slot the info pages.  do this w/out munging the source so we don't have
