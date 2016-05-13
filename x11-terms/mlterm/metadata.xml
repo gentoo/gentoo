@@ -12,6 +12,7 @@
     <flag name="regis">Enable ReGIS support</flag>
     <flag name="scim">Enable <pkg>app-i18n/scim</pkg> support</flag>
     <flag name="uim">Enable <pkg>app-i18n/uim</pkg> support</flag>
+    <flag name="skk">Enable SKK support (<pkg>vitrual/skkserv</pkg> or <pkg>app-i18n/skk-jisyo</pkg>)</flag>
     <flag name="utempter">Enable <pkg>sys-libs/libutempter</pkg> support</flag>
   </use>
   <upstream>
