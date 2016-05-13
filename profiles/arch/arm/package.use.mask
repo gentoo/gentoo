@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# Davide Pesavento <pesa@gentoo.org> (13 May 2016)
+# dev-qt/qtwebengine:5 not keyworded, bug 581478
+dev-qt/qt-creator webengine
+
 # Patrick McLean <chutzpah@gentoo.org> (12 May 2016)
 # Tests require dev-python/tox which isn't keyworded on arm
 sys-cluster/ceph test
