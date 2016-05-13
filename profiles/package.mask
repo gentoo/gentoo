@@ -755,7 +755,6 @@ sys-auth/pam_keystore
 # live ebuilds, nor the availability of the server hosting them. As
 # per QA team policy, all these need to be kept masked by default, if
 # available in the tree.
-~app-i18n/skk-jisyo-9999
 =app-misc/sleepyhead-9999
 app-portage/layman-dbtools
 =www-plugins/google-talkplugin-9999
