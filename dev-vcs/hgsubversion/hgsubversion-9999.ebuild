@@ -20,7 +20,7 @@ IUSE="test"
 RDEPEND="dev-vcs/mercurial[${PYTHON_USEDEP}]
 	|| (
 		dev-python/subvertpy[${PYTHON_USEDEP}]
-		>=dev-vcs/subversion-1.5[python]
+		>=dev-vcs/subversion-1.5[${PYTHON_USEDEP}]
 	)"
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 		test? ( dev-python/nose[${PYTHON_USEDEP}] )"
