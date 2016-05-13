@@ -30,7 +30,7 @@ DEPEND="
 	dev-cpp/sparsehash
 	dev-libs/boost:=
 	>=media-libs/taglib-1.8.0
-	>=net-libs/gnutls-3.2
+	>=net-libs/gnutls-3.2:=
 	x11-libs/libX11
 	hatchet? ( dev-cpp/websocketpp )
 	xmpp? ( net-libs/jreen )
