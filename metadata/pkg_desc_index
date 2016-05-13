@@ -121,7 +121,7 @@ app-admin/ide-smart 1.4-r1: A tool to read SMART information from harddiscs
 app-admin/integrit 4.0 4.1-r1: file integrity verification program
 app-admin/jinit 0.1.12-r1: An alternative to sysvinit which supports the need(8) concept
 app-admin/kedpm 0.4.0-r2: Ked Password Manager helps to manage large amounts of passwords and related information
-app-admin/keepass 2.30 2.31 2.32: A free, open source, light-weight and easy-to-use password manager
+app-admin/keepass 2.30 2.31 2.32 2.33: A free, open source, light-weight and easy-to-use password manager
 app-admin/keepassx 0.4.4 2.0.2: Qt password manager compatible with its Win32 and Pocket PC versions
 app-admin/killproc 2.13-r1: killproc and assorted tools for boot scripts
 app-admin/kpcli 2.7 2.8 3.0: A command line interface to KeePass database files
@@ -584,7 +584,7 @@ app-crypt/p11-kit 0.20.7 0.22.0 0.22.1 0.23.1 0.23.2: Provides a standard config
 app-crypt/paperkey 1.3: OpenPGP key archiver
 app-crypt/pdfcrack 0.13 0.14 0.15: Tool for recovering passwords and content from PDF-files
 app-crypt/pesign 0.108: Tools for manipulating signed PE-COFF binaries
-app-crypt/pgpdump 0.29 0.30: A PGP packet visualizer
+app-crypt/pgpdump 0.29 0.30 0.31: A PGP packet visualizer
 app-crypt/pinentry 0.9.0 0.9.0-r3 0.9.5 0.9.6-r6 0.9.7: Collection of simple PIN or passphrase entry dialogs which utilize the Assuan protocol
 app-crypt/pius 2.0.11 2.2.1: A tool for signing and email all UIDs on a set of PGP keys
 app-crypt/pkcrack 1.2.2 1.2.2-r1: PkZip cipher breaker
