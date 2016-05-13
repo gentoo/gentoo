@@ -30,6 +30,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Alon Bar-Lev <alonbl@gentoo.org) (13 May 2016)
+# Force gnutls-3.4 testing so we can stabilize it.
+>=net-libs/gnutls-3.5.0
+
 # Ian Delaney <idella4@gentoo.org> (12 May 2016)
 # on behalf of Ilya Tumaykin <itumaykin+gentoo@gmail.com>
 # Missing dev-python/rarfile-2.7 dependency. See bug #582500.
