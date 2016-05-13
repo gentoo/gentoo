@@ -6,7 +6,7 @@ EAPI="5"
 
 PYTHON_COMPAT=( python{2_7,3_4,3_5} )
 
-inherit base eutils flag-o-matic git-2 linux-info multilib pam prefix \
+inherit eutils flag-o-matic git-2 linux-info multilib pam prefix \
 		python-single-r1 systemd user versionator
 
 KEYWORDS=""
