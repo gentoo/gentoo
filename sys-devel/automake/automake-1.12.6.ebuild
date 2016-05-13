@@ -28,7 +28,7 @@ src_prepare() {
 }
 
 src_configure() {
-	econf --docdir=/usr/share/doc/${PF} HELP2MAN=true
+	econf --docdir="\$(datarootdir)/doc/${PF}"
 }
 
 src_compile() {
@@ -38,7 +38,7 @@ src_compile() {
 # slot the info pages.  do this w/out munging the source so we don't have
 # to depend on texinfo to regen things.  #464146 (among others)
 slot_info_pages() {
-	pushd "${D}"/usr/share/info >/dev/null
+	pushd "${ED}"/usr/share/info >/dev/null
 	rm -f dir
 
 	# Rewrite all the references to other pages.
@@ -68,13 +68,13 @@ src_install() {
 	emake DESTDIR="${D}" install \
 		APIVERSION="${SLOT}" pkgvdatadir="/usr/share/${PN}-${SLOT}"
 	slot_info_pages
-	rm "${D}"/usr/share/aclocal/README || die
-	rmdir "${D}"/usr/share/aclocal || die
+	rm "${ED}"/usr/share/aclocal/README || die
+	rmdir "${ED}"/usr/share/aclocal || die
 	dodoc AUTHORS ChangeLog NEWS README THANKS
 
 	rm \
-		"${D}"/usr/bin/{aclocal,automake} \
-		"${D}"/usr/share/man/man1/{aclocal,automake}.1 || die
+		"${ED}"/usr/bin/{aclocal,automake} \
+		"${ED}"/usr/share/man/man1/{aclocal,automake}.1 || die
 
 	# remove all config.guess and config.sub files replacing them
 	# w/a symlink to a specific gnuconfig version

@@ -147,8 +147,9 @@ src_install() {
 	insinto /etc/logrotate.d
 	newins "${FILESDIR}"/openrc.logrotate openrc
 
-	# install the gentoo pam.d file
+	# install gentoo pam.d files
 	newpamd "${FILESDIR}"/start-stop-daemon.pam start-stop-daemon
+	newpamd "${FILESDIR}"/start-stop-daemon.pam supervise-daemon
 
 	# install documentation
 	dodoc ChangeLog *.md
