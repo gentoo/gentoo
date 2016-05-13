@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="Lexically scoped resource management"
 
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86 ~ppc-aix ~x86-solaris"
+KEYWORDS="amd64 ~ppc ~x86 ~ppc-aix ~x86-solaris"
 IUSE="test"
 
 RDEPEND=""
