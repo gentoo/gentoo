@@ -13,7 +13,7 @@ SRC_URI="mirror://sourceforge/mlterm/${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~hppa ~ppc ~ppc64 ~x86"
-IUSE="bidi cairo canna debug fcitx freewnn gtk ibus libssh2 m17n-lib nls regis scim static-libs uim utempter xft"
+IUSE="bidi cairo canna debug fcitx freewnn gtk ibus libssh2 m17n-lib nls regis scim skk static-libs uim utempter xft"
 
 RDEPEND="x11-libs/libICE
 	x11-libs/libSM
@@ -35,6 +35,12 @@ RDEPEND="x11-libs/libICE
 		)
 	)
 	scim? ( app-i18n/scim )
+	skk? (
+		|| (
+			virtual/skkserv
+			app-i18n/skk-jisyo
+		)
+	)
 	uim? ( app-i18n/uim )
 	utempter? ( sys-libs/libutempter )
 	xft? ( x11-libs/libXft )"
@@ -70,12 +76,13 @@ src_configure() {
 		$(use_enable m17n-lib m17nlib)
 		$(use_enable nls)
 		$(use_enable scim)
+		$(use_enable skk)
 		$(use_enable uim)
 		$(use_enable utempter utmp)
 	)
 
 	local scrollbars="sample,extra"
-	local tools="mlclient,mlcc,mlmenu,mlterm-zoom"
+	local tools="mlclient,mlcc,mlfc,mlmenu,mlterm-zoom"
 	if use gtk; then
 		myconf+=(--with-imagelib=gdk-pixbuf)
 		if has_version x11-libs/gtk+:3; then
