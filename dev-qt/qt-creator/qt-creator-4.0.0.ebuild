@@ -29,12 +29,14 @@ fi
 
 # TODO: unbundle sqlite
 #	allow disabling modeleditor plugin
-#	we can avoid building some libs (clangbackendipc, glsl, modelinglib, sqlite) when the plugins that use them are disabled
+#	it should be possible to skip building some internal libs (clangbackendipc, glsl, modelinglib, sqlite) when the plugins that use them are disabled
 
 QTC_PLUGINS=('android:android|qmakeandroidsupport' autotools:autotoolsprojectmanager baremetal bazaar
 	clangcodemodel clangstaticanalyzer clearcase cmake:cmakeprojectmanager cvs git glsl:glsleditor
 	ios mercurial perforce python:pythoneditor qbs:qbsprojectmanager qnx subversion valgrind winrt)
-IUSE="doc systemd test webkit ${QTC_PLUGINS[@]%:*}"
+IUSE="doc systemd test webengine webkit ${QTC_PLUGINS[@]%:*}"
+
+REQUIRED_USE="?? ( webengine webkit )"
 
 # minimum Qt version required
 QT_PV="5.5.0:5"
@@ -58,8 +60,9 @@ RDEPEND="
 	>=dev-qt/qtxml-${QT_PV}
 	>=sys-devel/gdb-7.5[client,python]
 	clangcodemodel? ( >=sys-devel/clang-3.6.2:= )
-	qbs? ( !dev-util/qbs )
+	qbs? ( >=dev-util/qbs-1.5.0 )
 	systemd? ( sys-apps/systemd:= )
+	webengine? ( >=dev-qt/qtwebengine-5.6.0:5 )
 	webkit? ( >=dev-qt/qtwebkit-${QT_PV} )
 "
 DEPEND="${RDEPEND}
@@ -118,11 +121,10 @@ src_prepare() {
 	fi
 
 	# automagic dep on qtwebengine
-	# TODO: re-enable behind USE flag when qtwebengine enters the tree
-	#if ! use webengine; then
+	if ! use webengine; then
 		sed -i -e 's/isEmpty(QT\.webenginewidgets\.name)/true/' \
 			src/plugins/help/help.pro || die "failed to disable webengine"
-	#fi
+	fi
 
 	# disable broken or unreliable tests
 	sed -i -e '/SUBDIRS/ s/\<dumpers\>//' tests/auto/debugger/debugger.pro || die
@@ -134,20 +136,19 @@ src_prepare() {
 		share/qtcreator/translations/translations.pro || die
 
 	# remove bundled qbs
-	#rm -rf src/shared/qbs || die # TODO
+	rm -rf src/shared/qbs || die
 }
 
 src_configure() {
 	eqmake5 IDE_LIBRARY_BASENAME="$(get_libdir)" \
 		IDE_PACKAGE_MODE=1 \
 		$(use clangcodemodel && echo LLVM_INSTALL_DIR="${EPREFIX}/usr") \
+		$(use qbs && echo QBS_INSTALL_DIR="${EPREFIX}/usr") \
+		CONFIG+=qbs_disable_rpath \
+		CONFIG+=qbs_enable_project_file_updates \
 		$(use systemd && echo CONFIG+=journald) \
 		$(use test && echo BUILD_TESTS=1) \
 		USE_SYSTEM_BOTAN=1
-		# TODO: re-enable when upstream releases a compatible version of qbs
-		#$(use qbs && echo QBS_INSTALL_DIR="${EPREFIX}/usr") \
-		#CONFIG+=qbs_disable_rpath \
-		#CONFIG+=qbs_enable_project_file_updates \
 }
 
 src_test() {
