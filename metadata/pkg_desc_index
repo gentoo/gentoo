@@ -2562,7 +2562,7 @@ app-vim/gtk-syntax 20130716: vim plugin: Syntax highlighting for GLib, Gtk+, Xli
 app-vim/gundo 2.5.0 2.6.1: vim plugin: visualize your vim undo tree
 app-vim/help-extra-syntax 20050106-r1: vim plugin: extra syntax highlighting for help files
 app-vim/increment 1.1: vim plugin: easily create sequences of incremented values
-app-vim/info 1.7-r1: vim plugin: GNU info documentation browser
+app-vim/info 1.7-r1 1.7-r2: vim plugin: GNU info documentation browser
 app-vim/json 20130830 20140625 20150511: vim plugin: a better JSON for Vim
 app-vim/l9 1.1: vim plugin: library for vim scripts
 app-vim/locateopen 1.3: vim plugin: open a file without supplying a path
@@ -2627,7 +2627,7 @@ app-vim/txtfmt 2.4: vim plugin: rich text highlighting in vim
 app-vim/udev-syntax 20051016-r1: vim plugin: syntax highlighting for udev rules files
 app-vim/undotree 4.3 5.0: vim plugin: display your undo history in a graph
 app-vim/unite 2.0 4.0: vim plugin: unite all sources
-app-vim/uptime 1.3 1.3-r1: vim plugin: display vim uptimes
+app-vim/uptime 1.3-r1: vim plugin: display vim uptimes
 app-vim/vcscommand 1.99.47: vim plugin: CVS/SVN/SVK/git/bzr/hg integration plugin
 app-vim/vim-addon-mw-utils 20121105: vim plugin: interpret a file by function and cache file automatically
 app-vim/vim-latex 1.8.23.20130116 1.8.23.20141116: vim plugin: a comprehensive set of tools to view, edit and compile LaTeX documents
@@ -2654,11 +2654,11 @@ app-vim/vimclojure 2.3.6-r2: vim plugin: Clojure syntax highlighting, filetype a
 app-vim/vimcommander 0.80 0.81: vim plugin: Total Commander style file explorer
 app-vim/vimoutliner 0.3.4-r2: vim plugin: easy and fast outlining
 app-vim/vimpress 2.1.5 3.2.0: vim plugin: manage wordpress blogs from vim
-app-vim/vimpython 1.13 1.13-r1: vim plugin: A set of menus/shortcuts to work with Python files
+app-vim/vimpython 1.13-r1: vim plugin: A set of menus/shortcuts to work with Python files
 app-vim/vimtex 20160324: vim plugin: a modern vim plugin for editing LaTeX files
 app-vim/voom 5.1: vim plugin: emulates a two-pane text outliner
 app-vim/webapi 0.1 0.2: vim plugin: interface to Web APIs
-app-vim/wikipedia-syntax 20101113: vim plugin: Wikipedia syntax highlighting
+app-vim/wikipedia-syntax 20101113-r1: vim plugin: Wikipedia syntax highlighting
 app-vim/xquery-syntax 0.1-r1: vim plugin: XQuery syntax highlighting
 app-vim/xsl-syntax 0.3.11-r1: vim plugin: Syntax for XSLT (with HTML and others)
 app-vim/yankring 18.0 19.0: vim plugin: maintains a history of previous yanks and deletes
