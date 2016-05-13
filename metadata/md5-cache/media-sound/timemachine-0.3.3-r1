@@ -4,11 +4,11 @@ DESCRIPTION=JACK client record button remembering the last 10 seconds when press
 EAPI=6
 HOMEPAGE=http://plugin.org.uk/timemachine/
 IUSE=lash
-KEYWORDS=~amd64 ~ppc ~x86
+KEYWORDS=amd64 ~ppc ~x86
 LICENSE=GPL-2
 RDEPEND=>=media-sound/jack-audio-connection-kit-0.80 x11-libs/gtk+:2 >=media-libs/libsndfile-1.0.5 media-libs/liblo lash? ( >=media-sound/lash-0.5 )
 SLOT=0
 SRC_URI=http://plugin.org.uk/timemachine/timemachine-0.3.3.tar.gz
 _eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	libtool	4890219c51da247200223277f993e054	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
-_md5_=f73e5d5d0ef8613023c5ff5500aa610e
+_md5_=8bdaebbd1e62271b2c5d9ccad0fd55e1

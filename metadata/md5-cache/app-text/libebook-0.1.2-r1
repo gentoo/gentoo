@@ -4,11 +4,11 @@ DESCRIPTION=Library parsing various ebook formats
 EAPI=6
 HOMEPAGE=http://www.sourceforge.net/projects/libebook/
 IUSE=doc test
-KEYWORDS=~amd64 ~arm ~x86
+KEYWORDS=amd64 ~arm ~x86
 LICENSE=MPL-2.0
 RDEPEND=dev-libs/icu:= dev-libs/librevenge dev-libs/libxml2 sys-libs/zlib
 SLOT=0
 SRC_URI=mirror://sourceforge/libebook/libe-book-0.1.2.tar.bz2
 _eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	792f83d5ec9536cb5ccef375469d8bde	libtool	4890219c51da247200223277f993e054	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
-_md5_=9ae7dd66549744e43a4ab2b890dc8833
+_md5_=b684943a85a2f49e633a7da61467d8ab

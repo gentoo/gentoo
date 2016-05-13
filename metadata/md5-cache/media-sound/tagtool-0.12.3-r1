@@ -4,7 +4,7 @@ DESCRIPTION=Audio Tag Tool Ogg/Mp3 Tagger
 EAPI=6
 HOMEPAGE=http://pwp.netcabo.pt/paol/tagtool
 IUSE=mp3 +vorbis
-KEYWORDS=~amd64 ~ppc ~sparc ~x86
+KEYWORDS=amd64 ~ppc ~sparc ~x86
 LICENSE=GPL-2
 RDEPEND=x11-libs/gtk+:2 >=gnome-base/libglade-2.6 mp3? ( >=media-libs/id3lib-3.8.3-r6 ) vorbis? ( >=media-libs/libvorbis-1 )
 REQUIRED_USE=|| ( mp3 vorbis )
@@ -12,4 +12,4 @@ SLOT=0
 SRC_URI=mirror://sourceforge/tagtool/tagtool-0.12.3.tar.bz2
 _eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	libtool	4890219c51da247200223277f993e054	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
-_md5_=3687ccaf94c97b462a36248da4525f20
+_md5_=c249bd8044c1554bfe2bf0bad4014172

@@ -4,7 +4,7 @@ DESCRIPTION=Reimplementation of the SCUMM game engine used in Lucasarts adventur
 EAPI=5
 HOMEPAGE=http://scummvm.sourceforge.net/
 IUSE=aac alsa debug flac fluidsynth jpeg mpeg2 mp3 opengl png theora truetype unsupported vorbis zlib
-KEYWORDS=~amd64 ~ppc ~ppc64 ~x86 ~x86-fbsd
+KEYWORDS=amd64 ~ppc ~ppc64 ~x86 ~x86-fbsd
 LICENSE=GPL-2+ LGPL-2.1 BSD GPL-3-with-font-exception
 RDEPEND=>=media-libs/libsdl-1.2.2[sound,joystick,video] zlib? ( sys-libs/zlib ) jpeg? ( virtual/jpeg:0 ) png? ( media-libs/libpng:0 ) vorbis? ( media-libs/libogg media-libs/libvorbis ) theora? ( media-libs/libtheora ) aac? ( media-libs/faad2 ) alsa? ( media-libs/alsa-lib ) mp3? ( media-libs/libmad ) mpeg2? ( media-libs/libmpeg2 ) flac? ( media-libs/flac ) opengl? ( virtual/opengl ) truetype? ( media-libs/freetype:2 ) fluidsynth? ( media-sound/fluidsynth ) games-misc/games-envd
 RESTRICT=test
@@ -12,4 +12,4 @@ SLOT=0
 SRC_URI=http://scummvm.org/frs/scummvm/1.8.0/scummvm-1.8.0.tar.xz
 _eclass_exported_funcs=pkg_preinst:- pkg_postrm:- pkg_postinst:- pkg_setup:games src_unpack:base src_prepare:- src_configure:- src_compile:- src_install:-
 _eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	792f83d5ec9536cb5ccef375469d8bde	flag-o-matic	d270fa247153df66074f795fa42dba3e	games	2cf0d67d765e6358b435ccda30c13ad8	gnome2-utils	c6dcdf3a2c22b578b16adb945dc85c35	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	user	906f3c8eb3a2350a4f1191a89baa3e46	xdg-utils	e2b2bd56125ce8cf59ce30c642b59d48
-_md5_=36403a908cad240dd83af51effe1538e
+_md5_=0ec983adf32287c617f9b3818cf72887

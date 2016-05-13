@@ -3129,7 +3129,7 @@ dev-games/ps2-packer 0.4.4: another ELF packer for the PS2
 dev-games/quake4-sdk 1.4.2: Quake4 SDK
 dev-games/simgear 3.4.0 2016.1.1 9999: Development library for simulation games
 dev-games/t4k-common 0.1.1: A library of code shared between tuxmath and tuxtype
-dev-games/tiled 0.15.2 0.16.0: A general purpose tile map editor
+dev-games/tiled 0.16.0 0.16.1: A general purpose tile map editor
 dev-games/vamos 0.7.1: an automotive simulation framework
 dev-games/wfmath 1.0.2: Worldforge math library
 dev-go/bee 1.4.1_p20160125: A tool for helping develop with beego app framework
@@ -15319,7 +15319,7 @@ sci-astronomy/pyephem 3.7.5.3 3.7.6.0: Astronomical routines for the python prog
 sci-astronomy/scamp 2.0.4: Astrometric and photometric solutions for astronomical images
 sci-astronomy/sextractor 2.19.5: Extract catalogs of sources from astronomical FITS images
 sci-astronomy/skycat 3.1.2-r1: ESO astronomical image visualizer with catalog access
-sci-astronomy/skychart 3.8.2450 3.10.2854: Planetarium for amauter astronomers
+sci-astronomy/skychart 3.10.2854: Planetarium for amauter astronomers
 sci-astronomy/skymaker 3.10.5: Program that simulates astronomical images
 sci-astronomy/sofa_c 20150209a: Library for algorithms for models in fundamental astronomy
 sci-astronomy/stellarium 0.12.4 0.14.2 0.14.3: 3D photo-realistic skies in real time
