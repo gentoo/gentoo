@@ -13785,7 +13785,7 @@ net-analyzer/ntopng 1.2.1 2.0: Network traffic analyzer with web interface
 net-analyzer/nttcp 1.47-r1 1.47-r3: tool to test TCP and UDP throughput
 net-analyzer/odhcploc 20111021: Open DHCP Locator
 net-analyzer/oinkmaster 2.0: Rule management for SNORT
-net-analyzer/openbsd-netcat 1.84: the OpenBSD network swiss army knife
+net-analyzer/openbsd-netcat 1.84 1.105: the OpenBSD network swiss army knife
 net-analyzer/openvas 8.0.5-r1: A remote security scanner
 net-analyzer/openvas-cli 1.4.3: A remote security scanner for Linux (OpenVAS-cli)
 net-analyzer/openvas-libraries 8.0.5: A remote security scanner for Linux (openvas-libraries)
