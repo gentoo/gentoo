@@ -4,7 +4,7 @@ DESCRIPTION=A full featured backup tool, aimed for disks (floppy,CDR(W),DVDR(W),
 EAPI=6
 HOMEPAGE=http://dar.linux.free.fr/
 IUSE=acl dar32 dar64 doc gcrypt lzo nls static static-libs
-KEYWORDS=~amd64 ~ppc ~sparc ~x86 ~amd64-linux
+KEYWORDS=amd64 ~ppc ~sparc ~x86 ~amd64-linux
 LICENSE=GPL-2
 RDEPEND=>=sys-libs/zlib-1.2.3:= !static? ( app-arch/bzip2:= ) acl? ( !static? ( sys-apps/attr:= ) ) gcrypt? ( dev-libs/libgcrypt:0= ) lzo? ( !static? ( dev-libs/lzo:= ) ) nls? ( virtual/libintl )
 REQUIRED_USE=?? ( dar32 dar64 )
@@ -13,4 +13,4 @@ SLOT=0
 SRC_URI=mirror://sourceforge/dar/dar-2.4.20.tar.gz
 _eclass_exported_funcs=src_configure:- src_install:-
 _eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	flag-o-matic	d270fa247153df66074f795fa42dba3e	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
-_md5_=ba4768113ea7fbb520f682908ded021b
+_md5_=428538f8fdc69cc5a23e3bec961f38e3

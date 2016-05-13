@@ -4,11 +4,11 @@ DESCRIPTION=A free, open source, light-weight and easy-to-use password manager
 EAPI=5
 HOMEPAGE=http://keepass.info/
 IUSE=aot
-KEYWORDS=~amd64 ~x86
+KEYWORDS=amd64 ~x86
 LICENSE=GPL-2
 RDEPEND=>=dev-lang/mono-2.10.5 dev-dotnet/libgdiplus[cairo]
 SLOT=0
 SRC_URI=mirror://sourceforge/keepass/KeePass-2.32-Source.zip
 _eclass_exported_funcs=pkg_preinst:- pkg_postrm:- pkg_postinst:- pkg_setup:mono-env src_prepare:- src_compile:- src_install:-
 _eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	gnome2-utils	c6dcdf3a2c22b578b16adb945dc85c35	mono-env	10809200679bcceefebac9e72bebb6e6	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	xdg-utils	e2b2bd56125ce8cf59ce30c642b59d48
-_md5_=ba6ec236255a528ed5fc11364fec28bc
+_md5_=18edaf4ee6df523858977bc0aee3ca48

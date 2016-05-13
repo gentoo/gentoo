@@ -4,11 +4,11 @@ DESCRIPTION=Hangul IMEngine for SCIM ported from imhangul
 EAPI=5
 HOMEPAGE=http://www.scim-im.org/
 IUSE=nls
-KEYWORDS=~amd64 ~ppc ~x86
+KEYWORDS=amd64 ~ppc ~x86
 LICENSE=GPL-2
 RDEPEND=|| ( >=app-i18n/scim-0.99.8 >=app-i18n/scim-cvs-0.99.8 ) >=app-i18n/libhangul-0.0.4 nls? ( virtual/libintl )
 SLOT=0
 SRC_URI=mirror://sourceforge/scim/scim-hangul-0.4.0.tar.gz
 _eclass_exported_funcs=pkg_postinst:- src_prepare:autotools-utils src_configure:- src_compile:autotools-utils src_test:autotools-utils src_install:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	autotools-utils	419811142edf3516b0d0cf1a254d93cb	eutils	792f83d5ec9536cb5ccef375469d8bde	libtool	4890219c51da247200223277f993e054	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
-_md5_=de8ee4ad9536680b415282639891dd97
+_md5_=97313abb48855bb0ef43ad79624ae2cf
