@@ -90,11 +90,6 @@ kde-plasma/plasma-sdk plasmate
 # docs from installing. Sorry about that.
 =net-dns/libidn-1.30 doc
 
-# NP-Hardass <NP-Hardass@gentoo.org> (1 Jan 2016)
-# USE flag is renamed to postscript, mask the old flag #564422
-# to notify users.  This entry may be removed after 30 days
-app-text/atril ps
-
 # Manuel Rüger <mrueg@gentoo.org> (24 Dec 2015)
 # media-tv/xawtv is masked for removal
 net-im/ayttm webcam
