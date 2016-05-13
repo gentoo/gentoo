@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit multilib flag-o-matic user systemd
+inherit multilib flag-o-matic user systemd linux-info
 
 DESCRIPTION="Robust and highly flexible tunneling application compatible with many OSes"
 SRC_URI="http://swupdate.openvpn.net/community/releases/${P}.tar.gz"
@@ -38,6 +38,12 @@ DEPEND="
 RDEPEND="${DEPEND}
 	selinux? ( sec-policy/selinux-openvpn )
 "
+
+CONFIG_CHECK="~TUN"
+
+pkg_setup()  {
+	linux-info_pkg_setup
+}
 
 src_configure() {
 	use static && LDFLAGS="${LDFLAGS} -Xcompiler -static"
