@@ -12,11 +12,8 @@ SRC_URI="https://dev.gentoo.org/~monsieurp/packages/${P}.zip"
 LICENSE="vim"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 
-DEPEND="
-	dev-lang/python:*
-	app-arch/unzip"
-
-RDEPEND="${DEPEND}"
+DEPEND="app-arch/unzip"
+RDEPEND="dev-lang/python:*"
 
 S="${WORKDIR}/${PN}"
 
