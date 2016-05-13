@@ -15,10 +15,7 @@ SRC_URI="https://github.com/mileszs/${MY_PN}/archive/${PV}.zip -> ${MY_P}.zip"
 LICENSE="vim"
 KEYWORDS="~amd64 ~x86"
 
-DEPEND="
-	sys-apps/ack
-	app-arch/unzip"
-
-RDEPEND="${DEPEND}"
+DEPEND="app-arch/unzip"
+RDEPEND="sys-apps/ack"
 
 S="${WORKDIR}/${MY_P}"
