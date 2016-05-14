@@ -21,7 +21,7 @@ IUSE="doc test"
 
 RDEPEND="${PYTHON_DEPS}
 	dev-libs/libarcus:*[${PYTHON_USEDEP}]
-	dev-python/PyQt5[${PYTHON_USEDEP}]
+	dev-python/PyQt5[${PYTHON_USEDEP},declarative,network,svg]
 	dev-python/numpy[${PYTHON_USEDEP}]
 	dev-qt/qtdeclarative:5
 	dev-qt/qtquickcontrols:5"

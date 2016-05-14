@@ -314,12 +314,6 @@ media-libs/ethumb
 media-libs/evas
 x11-plugins/echievements
 
-# Sergei Trofimovich <slyfox@gentoo.org> (19 Jan 2016)
-# Mask broken package. Exposes badly designed API
-# that can't be transparently used in ghc-7.8 and
-# ghc-7.10, bug #561122
-dev-haskell/extra:0
-
 # Andreas K. Hüttel <dilfridge@gentoo.org> (9 Jan 2016)
 # Errorneously added. Is already in perl-core. Please uninstall.
 dev-perl/ExtUtils-Constant
