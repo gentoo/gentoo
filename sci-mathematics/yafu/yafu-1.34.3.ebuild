@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -19,7 +19,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="+sieve"
 
 DEPEND="
-	dev-libs/gmp
+	dev-libs/gmp:0=
 	sci-mathematics/gmp-ecm
 	sieve? (
 		sci-mathematics/msieve

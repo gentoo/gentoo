@@ -171,6 +171,53 @@ dev-java/freehep-xml
 # is like fiddling with the infinite improbability drive;
 # expect unexpected, weird, and potentially fatal results.
 =dev-lang/perl-5.24*
+=virtual/perl-Attribute-Handlers-0.990.0
+=virtual/perl-autodie-2.290.0
+=virtual/perl-bignum-0.420.0
+=virtual/perl-Carp-1.400.0
+=virtual/perl-Compress-Raw-Bzip2-2.69.0
+=virtual/perl-Compress-Raw-Zlib-2.69.0
+=virtual/perl-CPAN-Meta-2.150.5
+=virtual/perl-CPAN-Meta-Requirements-2.140.0
+=virtual/perl-CPAN-Meta-YAML-0.18.0
+=virtual/perl-Data-Dumper-2.160.0
+=virtual/perl-Devel-PPPort-3.320.0
+=virtual/perl-Dumpvalue-1.180.0
+=virtual/perl-Encode-2.800.0
+=virtual/perl-ExtUtils-CBuilder-0.280.225
+=virtual/perl-ExtUtils-Command-7.100.0
+=virtual/perl-ExtUtils-MakeMaker-7.100.100_rc
+=virtual/perl-ExtUtils-ParseXS-3.310.0
+=virtual/perl-File-Path-2.120.100_rc
+=virtual/perl-File-Spec-3.630.0
+=virtual/perl-Getopt-Long-2.480.0
+=virtual/perl-HTTP-Tiny-0.56.0
+=virtual/perl-if-0.60.600
+=virtual/perl-IO-1.360.0
+=virtual/perl-IO-Compress-2.69.0
+=virtual/perl-Math-BigInt-FastCalc-0.400.0
+=virtual/perl-Math-BigRat-0.260.802
+=virtual/perl-Module-CoreList-5.201.605.60
+=virtual/perl-Module-Metadata-1.0.31
+=virtual/perl-libnet-3.80.0
+=virtual/perl-parent-0.234.0
+=virtual/perl-Parse-CPAN-Meta-1.441.700
+=virtual/perl-Perl-OSType-1.9.0
+=virtual/perl-podlators-4.70.0
+=virtual/perl-Pod-Simple-3.320.0
+=virtual/perl-Scalar-List-Utils-1.420.200_rc
+=virtual/perl-Socket-2.20.30_rc
+=virtual/perl-Storable-2.560.0
+=virtual/perl-Term-ANSIColor-4.40.0
+=virtual/perl-Test-1.280.0
+=virtual/perl-Test-Harness-3.360.0
+=virtual/perl-Thread-Queue-3.90.0
+=virtual/perl-threads-2.70.0
+=virtual/perl-threads-shared-1.510.0
+=virtual/perl-Time-HiRes-1.973.300
+=virtual/perl-Time-Piece-1.310.0
+=virtual/perl-version-0.991.600
+=virtual/perl-XSLoader-0.210.0
 
 # Patrick Lauer <patrick@gentoo.org> (05 Apr 2016)
 # --configtest is broken, mask until 2.3.1 release

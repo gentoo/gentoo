@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -22,7 +22,7 @@ KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86 ~x86-fbsd ~amd64-linux ~x86-linux"
 RDEPEND="
 	app-text/ghostscript-gpl
 	dev-libs/libpcre
-	sys-libs/ncurses
+	sys-libs/ncurses:0=
 	virtual/lapack
 	curl? ( net-misc/curl )
 	fftw? ( sci-libs/fftw:3.0 )

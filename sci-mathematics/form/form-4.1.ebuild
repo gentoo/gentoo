@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -16,7 +16,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="devref doc doxygen gmp mpi threads zlib"
 
 RDEPEND="
-	gmp? ( dev-libs/gmp )
+	gmp? ( dev-libs/gmp:0= )
 	mpi? ( virtual/mpi )
 	zlib? ( sys-libs/zlib )"
 DEPEND="${RDEPEND}
