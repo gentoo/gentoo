@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">phpMyAdmin</product>
   <announced>May 31, 2015</announced>
-  <revised>May 31, 2015: 1</revised>
+  <revised>May 14, 2016: 2</revised>
   <bug>517858</bug>
   <bug>522844</bug>
   <bug>530054</bug>
@@ -17,6 +17,10 @@
       <unaffected range="ge">4.2.13</unaffected>
       <unaffected range="rge">4.1.14.7</unaffected>
       <unaffected range="rge">4.0.10.6</unaffected>
+      <unaffected range="rge">4.0.10.15</unaffected>
+      <unaffected range="rge">4.0.10.16</unaffected>
+      <unaffected range="rge">4.0.10.17</unaffected>
+      <unaffected range="rge">4.0.10.18</unaffected>
       <vulnerable range="lt">4.2.13</vulnerable>
     </package>
   </affected>
@@ -70,7 +74,7 @@
     <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8961">CVE-2014-8961</uri>
   </references>
   <metadata tag="requester" timestamp="Sat, 14 Mar 2015 15:47:49 +0000">K_F</metadata>
-  <metadata tag="submitter" timestamp="Sun, 31 May 2015 19:18:54 +0000">
+  <metadata tag="submitter" timestamp="Sat, 14 May 2016 20:55:11 +0000">
     BlueKnight
   </metadata>
 </glsa>

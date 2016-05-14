@@ -5,9 +5,9 @@
   <synopsis>GIMP is vulnerable to multiple buffer overflows which could result
     in the execution of arbitrary code or Denial of Service.
   </synopsis>
-  <product type="ebuild"></product>
+  <product type="ebuild">gimp</product>
   <announced>March 06, 2016</announced>
-  <revised>March 06, 2016: 1</revised>
+  <revised>May 04, 2016: 2</revised>
   <bug>434582</bug>
   <bug>493372</bug>
   <access>remote</access>
@@ -40,24 +40,23 @@
     <p>There is no known work around at this time.</p>
   </workaround>
   <resolution>
-    <p>All GIMP users should upgrade to the latest version:
-      <code>
-        # emerge --sync
-        # emerge --ask --oneshot --verbose "&gt;=media-gfx/gimp-2.8.0"
-      </code>
-     </p>
-    </resolution>
-    <references>
-      <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-4245">
-        CVE-2012-4245
-      </uri>
-      <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-1913">
-        CVE-2013-1913
-      </uri>
-      <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-1978">
-        CVE-2013-1978
-      </uri>
-    </references>
-    <metadata tag="requester" timestamp="Wed, 02 Mar 2016 11:01:16 +0000">b-man</metadata>
-    <metadata tag="submitter" timestamp="Sun, 06 Mar 2016 19:53:36 +0000">b-man</metadata>
-  </glsa>
+    <p>All GIMP users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=media-gfx/gimp-2.8.0"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-4245">CVE-2012-4245</uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-1913">
+      CVE-2013-1913
+    </uri>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-1978">
+      CVE-2013-1978
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 02 Mar 2016 11:01:16 +0000">b-man</metadata>
+  <metadata tag="submitter" timestamp="Wed, 04 May 2016 00:41:21 +0000">b-man</metadata>
+</glsa>
