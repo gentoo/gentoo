@@ -15,7 +15,7 @@ KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 DEPEND="app-arch/unzip"
 RDEPEND="dev-lang/python:*"
 
-S="${WORKDIR}/${PN}"
+S="${WORKDIR}/${PN}-master"
 
 src_install() {
 	insinto "/usr/share/${PN}"
