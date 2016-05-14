@@ -33,8 +33,8 @@ RDEPEND="
 		virtual/pam
 	)
 	ssl? (
-		gnutls? ( >=net-libs/gnutls-1.2.3 )
-		openssl? ( dev-libs/openssl:0 )
+		gnutls? ( >=net-libs/gnutls-1.2.3:0= )
+		openssl? ( dev-libs/openssl:0= )
 	)
 	verify-file? (
 		dev-perl/String-CRC32
