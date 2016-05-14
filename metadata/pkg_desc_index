@@ -15722,7 +15722,7 @@ sci-geosciences/osmosis 0.35.1: Commandline tool to process openstreetmap data
 sci-geosciences/qgis 1.8.0 2.12.1 2.12.2: User friendly Geographic Information System
 sci-geosciences/qlandkartegt 1.7.6-r2 1.7.7 1.8.0 1.8.1: View and upload map files, track and waypoint data to your Garmin GPS device
 sci-geosciences/qlandkartegt-garmindev 0.3.4: Garmin drivers for qlandkartegt
-sci-geosciences/qmapshack 1.3.0 1.5.1 1.6.1: GPS mapping utility
+sci-geosciences/qmapshack 1.3.0 1.5.1 1.6.1-r1: GPS mapping utility
 sci-geosciences/readosm 1.0.0 1.0.0e: A complete Spatial DBMS in a nutshell built upon sqlite
 sci-geosciences/routino 3.0_p1: Routing application based on openstreetmap data
 sci-geosciences/seawater 2.0.1 3.3.2 3.3.3 3.3.4: Python version of the SEAWATER 3.2 MATLAB toolkit for calculating the properties of sea water
