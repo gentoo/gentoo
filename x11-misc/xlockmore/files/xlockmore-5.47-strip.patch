@@ -1,0 +1,64 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -3895,7 +3895,7 @@
+     BITMAPTYPE="bsd"
+     PIXMAPTYPE="bsd"
+     FORTUNE=""
+-    INSTPGMFLAGS="-s -o root -m 4111"
++    INSTPGMFLAGS="-o root -m 4111"
+     cpp_name=`echo $CC | cut -f1 -d' '`
+     if test "$cpp_name" = "gcc"; then
+         dirname=`which gcc`
+@@ -3960,7 +3960,6 @@
+           ;;
+       esac
+     fi
+-    INSTPGMFLAGS="-s $INSTPGMFLAGS"
+     BITMAPTYPE="linux"
+     PIXMAPTYPE="linux"
+ dnl if Shadow and not elf
+@@ -3985,7 +3984,7 @@
+         AC_SUBST(OSF1_ENH_SEC)
+         XLOCKLIBS="${XLOCKLIBS} -lsecurity"
+         # SETGID auth may not be enough for Tru64 5.x.
+-        INSTPGMFLAGS="-s -g auth -m 2111"
++        INSTPGMFLAGS="-g auth -m 2111"
+       else
+         AC_MSG_RESULT(no)
+       fi
+@@ -4011,7 +4010,7 @@
+         PIXMAPTYPE="sol"
+       ;;
+     esac
+-    INSTPGMFLAGS="-s -o root -m 4111"
++    INSTPGMFLAGS="-o root -m 4111"
+     AC_DEFINE([HAVE_SHADOW], [1], [Shadow passwording])
+     AC_DEFINE([SYSV], [1], [System 5])
+     AC_DEFINE([SVR4], [1], [System 5 Release 4])
+@@ -4040,7 +4039,7 @@
+   ;;
+ 
+   *-*-sysv5* )
+-    INSTPGMFLAGS="-s -o root -m 4111"
++    INSTPGMFLAGS="-o root -m 4111"
+     AC_DEFINE([HAVE_SHADOW], [1], [Shadow passwording])
+     AC_DEFINE([SYSV], [1], [System 5])
+     AC_DEFINE([SVR4], [1], [System 5 Release 4])
+@@ -4820,7 +4819,7 @@
+   case ${canonical} in
+   *-*-linux*)
+     if test "$vtlock" = "yes"; then
+-      INSTPGMFLAGS="-s -o root -g bin -m 4111"
++      INSTPGMFLAGS="-o root -g bin -m 4111"
+       AC_MSG_RESULT([defining install options (setuid/setgid) = "$INSTPGMFLAGS" for vtlock])
+        echo "experimental: Big buffer overrun security risk"
+     else
+@@ -4838,7 +4837,7 @@
+   case ${canonical} in
+   *-*-linux*)
+     if test "$vtlock" = "yes"; then
+-      INSTPGMFLAGS="-s -o root -g bin -m 4111"
++      INSTPGMFLAGS="-o root -g bin -m 4111"
+       AC_MSG_RESULT([defining install options (setuid/setgid) = "$INSTPGMFLAGS" for vtlock])
+     else
+   AC_MSG_RESULT([defining install options (setuid/setgid) = "$INSTPGMFLAGS"])
