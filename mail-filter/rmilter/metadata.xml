@@ -5,6 +5,9 @@
     <email>djc@gentoo.org</email>
     <name>Dirkjan Ochtman</name>
   </maintainer>
+  <use>
+    <flag name="memcached">Enable support for memcached</flag>
+  </use>
   <upstream>
     <remote-id type="github">vstakhov/rmilter</remote-id>
   </upstream>
