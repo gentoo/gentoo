@@ -13,7 +13,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~ppc-macos ~x64-macos ~x86-solaris"
+KEYWORDS="amd64 ~x86 ~ppc-macos ~x64-macos ~x86-solaris"
 IUSE="test"
 
 # although any ref absent in the source, tests fail badly with >=mercurial-2.8.1
