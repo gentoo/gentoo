@@ -15044,7 +15044,7 @@ net-print/cups-pdf 2.6.1 3.0_beta1: Provides a virtual printer for CUPS to produ
 net-print/cups-pk-helper 0.2.5 0.2.6: PolicyKit helper to configure cups with fine-grained privileges
 net-print/cups-windows 6.0-r1: CUPS PostScript Driver for Windows
 net-print/dymo-cups-drivers 1.4.0: Dymo SDK for LabelWriter/LabelManager printers
-net-print/epson-inkjet-printer-escpr 1.4.4 1.5.2 1.6.1 1.6.4: Epson Inkjet Printer Driver (ESC/P-R)
+net-print/epson-inkjet-printer-escpr 1.4.4 1.5.2 1.6.1 1.6.4 1.6.5: Epson Inkjet Printer Driver (ESC/P-R)
 net-print/fax4cups 1.29-r1: Fax backend for CUPS
 net-print/foo2zjs 99999999: Support for printing to ZjStream-based printers
 net-print/foomatic-db 4.0.20140105 4.0.20141025 4.0.20150819 4.0.20160504: Printer information files for foomatic-db-engine to generate ppds
@@ -17743,7 +17743,7 @@ www-client/fetch 1.0-r1 1.0-r2: HTTP download tool built atop the HTTP fetcher l
 www-client/firefox 38.7.0 38.8.0 45.1.0 46.0: Firefox Web Browser
 www-client/firefox-bin 38.8.0 45.1.0 46.0: Firefox Web Browser
 www-client/google-chrome 50.0.2661.102: The web browser from Google
-www-client/google-chrome-beta 51.0.2704.36: The web browser from Google
+www-client/google-chrome-beta 51.0.2704.47: The web browser from Google
 www-client/google-chrome-unstable 52.0.2729.3: The web browser from Google
 www-client/httrack 3.48.21-r1 3.48.21-r2: HTTrack Website Copier, Open Source Offline Browser
 www-client/jd 2.8.5_p120826: gtk2 based 2ch browser written in C++
@@ -17800,7 +17800,7 @@ www-misc/wsmake 0.6.4: Website Pre-processor
 www-misc/xxv 1.6.1-r1: WWW Admin for the VDR (Video Disk Recorder)
 www-misc/zoneminder 1.27.0 1.28.0 1.28.1: ZoneMinder allows you to capture, analyse, record and monitor any cameras attached to your system
 www-plugins/adobe-flash 11.2.202.616 11.2.202.621: Adobe Flash Player
-www-plugins/chrome-binary-plugins 50.0.2661.102 51.0.2704.36_beta 52.0.2729.3_alpha: Binary plugins from Google Chrome for use in Chromium
+www-plugins/chrome-binary-plugins 50.0.2661.102 51.0.2704.47_beta 52.0.2729.3_alpha: Binary plugins from Google Chrome for use in Chromium
 www-plugins/freshplayerplugin 0.3.1-r2 0.3.2 0.3.3 0.3.3-r1 0.3.3-r2 0.3.4 0.3.4-r1: PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers
 www-plugins/gecko-mediaplayer 1.0.8 1.0.9: A browser plugin that uses GNOME MPlayer
 www-plugins/gnash 0.8.10_p20131019 0.8.10_p20150316 0.8.10_p20160329: GNU Flash movie player that supports many SWF v7,8,9 features
