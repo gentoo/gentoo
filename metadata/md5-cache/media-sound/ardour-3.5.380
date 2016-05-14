@@ -10,5 +10,5 @@ RDEPEND=media-libs/aubio media-libs/liblo sci-libs/fftw:3.0 media-libs/freetype:
 SLOT=3
 SRC_URI=https://github.com/Ardour/ardour/archive/3.5.380.tar.gz -> ardour-3.5.380.tar.gz
 _eclass_exported_funcs=pkg_postinst:- pkg_setup:python-any-r1 src_unpack:- src_prepare:- src_configure:- src_compile:waf-utils src_install:-
-_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	flag-o-matic	d270fa247153df66074f795fa42dba3e	multilib	d062ae4ba2fc40a19c11de2ad89b6616	multiprocessing	e32940a7b2a9992ad217eccddb84d548	python-any-r1	8eb13cdf35f6e43c48107b911900b2cc	python-utils-r1	2e6826f6a93ad2acf904eecf5b5fb6d2	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	waf-utils	c21174962af5ca8091b66f58612797ce
+_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	flag-o-matic	d270fa247153df66074f795fa42dba3e	multilib	d062ae4ba2fc40a19c11de2ad89b6616	multiprocessing	e32940a7b2a9992ad217eccddb84d548	python-any-r1	8eb13cdf35f6e43c48107b911900b2cc	python-utils-r1	00f984fbfe2fde78b718d7a0cfe1dddd	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	waf-utils	c21174962af5ca8091b66f58612797ce
 _md5_=180b04986f8f9b537fdfd742bb0b8073

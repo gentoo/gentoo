@@ -10,5 +10,5 @@ RDEPEND=>=sys-devel/clang-3.7 >=sys-devel/llvm-3.7
 SLOT=0
 SRC_URI=https://github.com/ispc/ispc/archive/v1.8.2.tar.gz -> ispc-1.8.2.tar.gz http://dev.gentoo.org/~ottxor/dist/ispc-1.8.2-llvm-3.7.patch.gz
 _eclass_exported_funcs=pkg_setup:python-any-r1 src_prepare:- src_compile:- src_install:-
-_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	multilib	d062ae4ba2fc40a19c11de2ad89b6616	python-any-r1	8eb13cdf35f6e43c48107b911900b2cc	python-utils-r1	2e6826f6a93ad2acf904eecf5b5fb6d2	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	multilib	d062ae4ba2fc40a19c11de2ad89b6616	python-any-r1	8eb13cdf35f6e43c48107b911900b2cc	python-utils-r1	00f984fbfe2fde78b718d7a0cfe1dddd	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
 _md5_=4e09595b3d971c39889d6fdae433fc34
