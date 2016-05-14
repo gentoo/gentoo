@@ -253,7 +253,7 @@ app-arch/createrepo 0.10.3 0.10.4: Creates a common rpm-metadata repository
 app-arch/deb2targz 1-r2: Convert a .deb file to a .tar.gz archive
 app-arch/defluff 0.3.2: deflate huffman optimizer
 app-arch/deltarpm 3.6_pre20110223-r1: tools to create and apply deltarpms
-app-arch/dpkg 1.17.26 1.17.27 1.18.4 1.18.6: Package maintenance system for Debian
+app-arch/dpkg 1.17.26 1.17.27 1.18.6 1.18.7: Package maintenance system for Debian
 app-arch/duff 0.5.2: Command-line utility for quickly finding duplicates in a given set of files
 app-arch/dump 0.4.44-r1 0.4.44-r2 0.4.45: Dump/restore ext2fs backup utilities
 app-arch/engrampa 1.8.1-r1 1.10.2: Engrampa archive manager for MATE
@@ -18013,7 +18013,7 @@ x11-drivers/xf86-video-vmware 13.0.1-r1 13.0.2 13.1.0: VMware SVGA video driver
 x11-drivers/xf86-video-voodoo 1.2.5: Voodoo video driver
 x11-libs/agg 2.5-r2: Anti-Grain Geometry - A High Quality Rendering Engine for C++
 x11-libs/amd-adl-sdk 6.0-r1 7.0 8.0: API to access display driver functionality for ATI graphics cards
-x11-libs/c++-gtk-utils 2.0.27 2.0.28 2.0.29 2.2.10 2.2.11 2.2.12: A library containing a number of classes and functions for programming GTK+ programs using C++
+x11-libs/c++-gtk-utils 2.0.27 2.0.29 2.0.30 2.2.10 2.2.12 2.2.13: A library containing a number of classes and functions for programming GTK+ programs using C++
 x11-libs/cairo 1.14.2 1.14.2-r1 1.14.4 1.14.6 9999: A vector graphics library with cross-device output support
 x11-libs/colord-gtk 0.1.25 0.1.26: GTK support library for colord
 x11-libs/compiz-bcop 0.8.8: Compiz Option code Generator
