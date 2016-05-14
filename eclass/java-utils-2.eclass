@@ -831,7 +831,10 @@ java-pkg_dolauncher() {
 	echo "source /usr/share/java-config-2/launcher/launcher.bash" >> "${target}"
 
 	if [[ -n "${target_dir}" ]]; then
-		DESTTREE="${target_dir}" dobin "${target}"
+		(
+			into "${target_dir}"
+			dobin "${target}"
+		)
 		local ret=$?
 		return ${ret}
 	else
