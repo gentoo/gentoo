@@ -14,7 +14,7 @@ SRC_URI="https://github.com/SirCmpwn/sway/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="swaylock swaybg swaybar swaygrab swaymsg gdk-pixbuf zsh-completion wallpapers systemd"
+IUSE="+gdk-pixbuf +swaybar +swaybg swaygrab swaylock +swaymsg systemd wallpapers zsh-completion"
 
 RDEPEND="dev-libs/wlc[systemd=]
 		dev-libs/json-c
