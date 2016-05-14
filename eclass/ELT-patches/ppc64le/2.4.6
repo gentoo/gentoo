@@ -1,0 +1,15 @@
+--- m4/libtool.m4.orig	2016-04-21 16:42:22.170586778 +0000
++++ m4/libtool.m4	2016-04-21 16:43:41.571195049 +0000
+@@ -1417,10 +1417,10 @@
+ 	  x86_64-*linux*)
+ 	    LD="${LD-ld} -m elf_x86_64"
+ 	    ;;
+-	  powerpcle-*linux*)
++	  powerpcle-*linux*|powerpc64le-*linux*)
+ 	    LD="${LD-ld} -m elf64lppc"
+ 	    ;;
+-	  powerpc-*linux*)
++	  powerpc-*linux*|powerpc64-*linux*)
+ 	    LD="${LD-ld} -m elf64ppc"
+ 	    ;;
+ 	  s390*-*linux*|s390*-*tpf*)
