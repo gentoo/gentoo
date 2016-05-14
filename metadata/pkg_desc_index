@@ -3508,7 +3508,7 @@ dev-haskell/nonce 1.0.2: Generate cryptographic nonces
 dev-haskell/objectname 1.0.0.0 1.0.1.0 1.1.0.1: Explicitly handled object names
 dev-haskell/old-locale 1.0.0.7: locale library
 dev-haskell/old-time 1.1.0.3-r1: Time library
-dev-haskell/openal 1.3.1.1 1.4.0.2 1.6.0.0 1.7.0.0: A binding to the OpenAL cross-platform 3D audio API
+dev-haskell/openal 1.4.0.2 1.6.0.0 1.7.0.0: A binding to the OpenAL cross-platform 3D audio API
 dev-haskell/opengl 2.2.1.1 2.5.0.0 2.6.0.1 2.8.0.0 2.9.2.0 2.12.0.1: A binding for the OpenGL graphics system
 dev-haskell/openglraw 1.2.0.0 1.3.0.0 1.5.0.0 2.5.1.0: A raw binding for the OpenGL graphics system
 dev-haskell/options 1.2.1.1: A powerful and easy-to-use command-line option parser
