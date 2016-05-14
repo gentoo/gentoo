@@ -2361,7 +2361,7 @@ app-text/openjade 1.3.2-r6: Jade is an implementation of DSSSL - an ISO standard
 app-text/openlp 2.0.4 2.0.5: Free church presentation software
 app-text/opensp 1.5.2-r3 1.5.2-r4: A free, object-oriented toolkit for SGML parsing and entity management
 app-text/ots 0.5.0-r1: Open source Text Summarizer, as used in newer releases of abiword and kword
-app-text/pandoc 1.12.1-r1 1.12.4.2-r1 1.13.2.1 1.14.0.4 1.15.0.6: Conversion between markup formats
+app-text/pandoc 1.12.4.2-r1 1.13.2.1 1.14.0.4 1.15.0.6: Conversion between markup formats
 app-text/paperwork 0.2.5 0.3.0.1 0.3.2: a personal document manager for scanned documents (and PDFs)
 app-text/paps 0.6.8-r1: Unicode-aware text to PostScript converter
 app-text/par 1.52: a paragraph reformatter, vaguely similar to fmt, but better
@@ -2468,7 +2468,7 @@ app-text/writerperfect 0.8.1 0.8.2 0.9.2 0.9.4 0.9.5: Various formats to Open do
 app-text/wscr 1.2-r1: A Lightweight and Fast Anagram Solver
 app-text/wv 1.2.9-r1: Tool for conversion of MSWord doc and rtf files to something readable
 app-text/wv2 0.4.2-r2: Excellent MS Word filter lib, used in most Office suites
-app-text/xapian-omega 1.2.19 1.2.22 1.2.23-r2 1.3.5-r2 1.3.6: An application built on Xapian, consisting of indexers and a CGI search frontend
+app-text/xapian-omega 1.2.19 1.2.22 1.2.23-r2 1.3.6: An application built on Xapian, consisting of indexers and a CGI search frontend
 app-text/xchm 1.23 1.23-r1 1.23-r2: Utility for viewing Compiled HTML Help (CHM) files
 app-text/xdvik 22.85-r1 22.86 22.87 22.87.03: DVI previewer for X Window System
 app-text/xdvipdfmx 0.7.8_p20120701 0.7.9_p20130530: Extended dvipdfmx for use with XeTeX and other unicode TeXs
@@ -3426,7 +3426,7 @@ dev-haskell/http-client 0.2.2.2 0.3.3.2 0.4.18.1 0.4.26.2 0.4.28: An HTTP client
 dev-haskell/http-client-conduit 0.2.0.1 0.3.0: Frontend support for using http-client with conduit (deprecated)
 dev-haskell/http-client-multipart 0.2.0.0 0.3.0.0: Generate multipart uploads for http-client. (deprecated)
 dev-haskell/http-client-tls 0.2.2 0.2.4: http-client backend using the connection package and tls library
-dev-haskell/http-conduit 1.9.5.1 2.1.7.2 2.1.8 2.1.10.1: HTTP client package with conduit interface and HTTPS support
+dev-haskell/http-conduit 2.1.8 2.1.10.1: HTTP client package with conduit interface and HTTPS support
 dev-haskell/http-date 0.0.6.1: HTTP Date parser/formatter
 dev-haskell/http-reverse-proxy 0.1.1.6 0.2.0 0.4.3: Reverse proxy HTTP requests, either over raw sockets or with WAI
 dev-haskell/http-types 0.8.6: Generic HTTP types for Haskell (for both client and server code)
@@ -4939,8 +4939,8 @@ dev-libs/weston 1.6.1 1.7.0 1.8.0 1.9.0 1.10.0 9999: Wayland reference composito
 dev-libs/wlc 0.0.2 9999: A helper library for Wayland compositors
 dev-libs/wnn7sdk 20011017 20011017-r1: Library and headers for Wnn7 client
 dev-libs/xalan-c 1.11.0_pre1153059: XSLT processor for transforming XML into HTML, text, or other XML types
-dev-libs/xapian 1.2.19 1.2.22 1.2.23 1.3.5 1.3.6: Xapian Probabilistic Information Retrieval library
-dev-libs/xapian-bindings 1.2.19 1.2.22 1.2.23 1.3.5 1.3.6: SWIG and JNI bindings for Xapian
+dev-libs/xapian 1.2.19 1.2.22 1.2.23 1.3.6: Xapian Probabilistic Information Retrieval library
+dev-libs/xapian-bindings 1.2.19 1.2.22 1.2.23 1.3.6: SWIG and JNI bindings for Xapian
 dev-libs/xerces-c 3.1.2 3.1.3: A validating XML parser written in a portable subset of C++
 dev-libs/xml-security-c 1.7.3: Apache C++ XML security libraries
 dev-libs/xmlrpc-c 1.32.05-r1: A lightweigt RPC library based on XML and HTTP
