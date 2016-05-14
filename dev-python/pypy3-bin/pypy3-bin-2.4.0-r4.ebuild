@@ -110,7 +110,7 @@ src_compile() {
 
 	#use doc && emake -C pypy/doc/ html
 	#needed even without jit :( also needed in both compile and install phases
-	pax-mark m pypy-c
+	pax-mark m pypy-c libpypy-c.so
 
 	# ctypes config cache
 	# this one we need to do with python2 too...
