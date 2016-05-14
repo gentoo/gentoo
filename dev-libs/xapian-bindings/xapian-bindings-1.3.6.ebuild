@@ -61,6 +61,9 @@ src_prepare() {
 
 	# http://trac.xapian.org/ticket/702
 	export XAPIAN_CONFIG="/usr/bin/xapian-config"
+
+	# Accept ruby 2.0 - patch configure directly to avoid autoreconf
+	epatch "${FILESDIR}"/${P}-allow-ruby-2.0.patch
 }
 
 src_configure() {
