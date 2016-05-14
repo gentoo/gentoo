@@ -5,13 +5,7 @@
 		<email>haskell@gentoo.org</email>
 		<name>Gentoo Haskell</name>
 	</maintainer>
-	<longdescription>
-		A hodge-podge of functions and modules that do not have a better home
-	</longdescription>
-	<use>
-		<flag name="network-uri">use network-uri package</flag>
-	</use>
 	<upstream>
-		<remote-id type="github">ddssff/haskell-extra</remote-id>
+		<remote-id type="github">ndmitchell/extra</remote-id>
 	</upstream>
 </pkgmetadata>
