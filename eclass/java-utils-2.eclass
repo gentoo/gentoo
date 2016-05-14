@@ -2334,14 +2334,14 @@ java-pkg_init_paths_() {
 		JAVA_PKG_NAME="${PN}-${SLOT%/*}"
 	fi
 
-	JAVA_PKG_SHAREPATH="${DESTTREE}/share/${JAVA_PKG_NAME}"
+	JAVA_PKG_SHAREPATH="/usr/share/${JAVA_PKG_NAME}"
 	JAVA_PKG_SOURCESPATH="${JAVA_PKG_SHAREPATH}/sources/"
 	JAVA_PKG_ENV="${D}${JAVA_PKG_SHAREPATH}/package.env"
-	JAVA_PKG_VIRTUALS_PATH="${DESTTREE}/share/java-config-2/virtuals"
+	JAVA_PKG_VIRTUALS_PATH="/usr/share/java-config-2/virtuals"
 	JAVA_PKG_VIRTUAL_PROVIDER="${D}/${JAVA_PKG_VIRTUALS_PATH}/${JAVA_PKG_NAME}"
 
 	[[ -z "${JAVA_PKG_JARDEST}" ]] && JAVA_PKG_JARDEST="${JAVA_PKG_SHAREPATH}/lib"
-	[[ -z "${JAVA_PKG_LIBDEST}" ]] && JAVA_PKG_LIBDEST="${DESTTREE}/$(get_libdir)/${JAVA_PKG_NAME}"
+	[[ -z "${JAVA_PKG_LIBDEST}" ]] && JAVA_PKG_LIBDEST="/usr/$(get_libdir)/${JAVA_PKG_NAME}"
 	[[ -z "${JAVA_PKG_WARDEST}" ]] && JAVA_PKG_WARDEST="${JAVA_PKG_SHAREPATH}/webapps"
 
 	# TODO maybe only print once?
