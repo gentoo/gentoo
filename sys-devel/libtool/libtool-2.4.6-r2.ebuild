@@ -53,6 +53,7 @@ src_prepare() {
 	epatch "${FILESDIR}"/${P}-libtoolize-slow.patch
 	epatch "${FILESDIR}"/${P}-libtoolize-delay-help.patch
 	epatch "${FILESDIR}"/${P}-sed-quote-speedup.patch #542252
+	epatch "${FILESDIR}"/${PN}-2.4.6-libtool-m4-for-ppc64le.patch #581314
 	pushd libltdl >/dev/null
 	AT_NOELIBTOOLIZE=yes eautoreconf
 	popd >/dev/null

@@ -1,0 +1,41 @@
+From a08fc6407e6bead83024668227b91556de7292eb Mon Sep 17 00:00:00 2001
+From: Leno Hou <lenohou@gmail.com>
+Date: Sat, 14 May 2016 14:56:57 +0000
+Subject: [PATCH] m4/libtool.m4: Fix LD parameters with ppc64 & ppc64le
+ platform
+
+For v2.4.6
+Reference Bug:
+Gentoo Bug: https://bugs.gentoo.org/show_bug.cgi?id=581314
+GNU Bug: http://debbugs.gnu.org/cgi/bugreport.cgi?bug=23348
+
+* m4/libtool (LD=elf64lppc): add recognise definition with
+CHOST=powerpc64le-unknown-linux-gnu on ppc64le platform and
+CHOST=powerpc64-unknown-linux-gnu on ppc64 platform. This
+patch sets =elf64lppc on ppc64le and =elf64ppc on ppc64.
+
+Signed-off-by: Leno Hou <lenohou@gmail.com>
+---
+ m4/libtool.m4 | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/m4/libtool.m4 b/m4/libtool.m4
+index a3bc337..91b2e01 100644
+--- a/m4/libtool.m4
++++ b/m4/libtool.m4
+@@ -1417,10 +1417,10 @@ s390*-*linux*|s390*-*tpf*|sparc*-*linux*)
+ 	  x86_64-*linux*)
+ 	    LD="${LD-ld} -m elf_x86_64"
+ 	    ;;
+-	  powerpcle-*linux*)
++	  powerpcle-*linux*|powerpc64le-*linux*)
+ 	    LD="${LD-ld} -m elf64lppc"
+ 	    ;;
+-	  powerpc-*linux*)
++	  powerpc-*linux*|powerpc64-*linux*)
+ 	    LD="${LD-ld} -m elf64ppc"
+ 	    ;;
+ 	  s390*-*linux*|s390*-*tpf*)
+-- 
+2.7.3
+
