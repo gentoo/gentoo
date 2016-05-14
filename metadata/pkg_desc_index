@@ -18420,7 +18420,7 @@ x11-misc/xidle 24102005: xidle monitors inactivity in X and runs the specified p
 x11-misc/xkbd 0.8.15-r1 0.8.16: onscreen soft keyboard for X11
 x11-misc/xkeyboard-config 2.14 2.16 2.17: X keyboard configuration database
 x11-misc/xkeycaps 2.47-r1: GUI frontend to xmodmap
-x11-misc/xlockmore 5.45 5.46: Just another screensaver application for X
+x11-misc/xlockmore 5.45 5.46 5.47: Just another screensaver application for X
 x11-misc/xmobar 0.20.1-r1 0.21 0.22.1 0.23 0.23.1: A Minimalistic Text Based Status Bar
 x11-misc/xmonad-log-applet 2.0.0-r301: Gnome and XFCE applet for displaying XMonad log
 x11-misc/xmountains 2.9: Fractal terrains of snow-capped mountains near water
