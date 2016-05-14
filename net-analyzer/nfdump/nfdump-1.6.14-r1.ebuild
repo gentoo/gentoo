@@ -14,7 +14,7 @@ SRC_URI="
 
 LICENSE="BSD"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="compat15 debug ftconv nfprofile nftrack readpcap sflow"
 
 COMMON_DEPEND="
