@@ -1,8 +1,18 @@
-Author: 80x24 <80x24@momoka.net>
-
-diff -ru stunnel-5.24/src/verify.c stunnel-5.24.new/src/verify.c
---- stunnel-5.24/src/verify.c	2015-09-23 18:00:08.000000000 +0800
-+++ stunnel-5.24.new/src/verify.c	2015-11-18 13:16:06.321540501 +0800
+diff -Naur stunnel-5.30.orig/src/ctx.c stunnel-5.30/src/ctx.c
+--- stunnel-5.30.orig/src/ctx.c	2016-01-15 16:45:23.000000000 +0000
++++ stunnel-5.30/src/ctx.c	2016-05-14 15:16:47.392859450 +0000
+@@ -359,7 +359,7 @@
+ /**************************************** initialize OpenSSL CONF */
+ 
+ NOEXPORT int conf_init(SERVICE_OPTIONS *section) {
+-#if OPENSSL_VERSION_NUMBER>=0x10002000L
++#if OPENSSL_VERSION_NUMBER>=0x10002000L && !defined(LIBRESSL_VERSION_NUMBER)
+     SSL_CONF_CTX *cctx;
+     NAME_LIST *curr;
+     char *cmd, *param;
+diff -Naur stunnel-5.30.orig/src/verify.c stunnel-5.30/src/verify.c
+--- stunnel-5.30.orig/src/verify.c	2016-01-15 16:45:23.000000000 +0000
++++ stunnel-5.30/src/verify.c	2016-05-14 15:16:10.369860180 +0000
 @@ -51,7 +51,7 @@
  NOEXPORT int verify_callback(int, X509_STORE_CTX *);
  NOEXPORT int verify_checks(CLI *, int, X509_STORE_CTX *);
