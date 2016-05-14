@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -657,7 +657,7 @@ python_optimize() {
 # The current script destination for python_doscript(). The path
 # is relative to the installation root (${ED}).
 #
-# When unset, ${DESTTREE}/bin (/usr/bin by default) will be used.
+# When unset, /usr/bin will be used.
 #
 # Can be set indirectly through the python_scriptinto() function.
 #
@@ -718,7 +718,7 @@ python_newexe() {
 		die "python_do* and python_new* helpers are banned in EAPIs older than 4."
 	fi
 
-	local wrapd=${python_scriptroot:-${DESTTREE}/bin}
+	local wrapd=${python_scriptroot:-/usr/bin}
 
 	local f=${1}
 	local newfn=${2}
