@@ -4,11 +4,11 @@ DESCRIPTION=A framework for creating multitasking programs in Perl
 EAPI=5
 HOMEPAGE=http://search.cpan.org/dist/POE/
 IUSE=ipv6 libwww ncurses tk test
-KEYWORDS=~amd64 ~ppc ~x86
+KEYWORDS=amd64 ~ppc ~x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=dev-perl/YAML dev-perl/Filter dev-perl/IO-Pipely dev-perl/FreezeThaw >=dev-perl/Event-1.09 >=virtual/perl-File-Spec-0.87 >=virtual/perl-IO-1.23.01 >=virtual/perl-IO-Compress-1.33 >=virtual/perl-Storable-2.12 >=dev-perl/IO-Tty-1.08 >=dev-perl/TermReadKey-2.21 >=virtual/perl-Time-HiRes-1.59 ipv6? ( >=dev-perl/Socket6-0.14 ) tk? ( >=dev-perl/Tk-800.027 ) libwww? ( >=dev-perl/libwww-perl-5.79 >=dev-perl/URI-1.30 ) ncurses? ( >=dev-perl/Curses-1.08 ) dev-lang/perl:=[-build(-)]
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/R/RC/RCAPUTO/POE-1.367.tar.gz
 _eclass_exported_funcs=src_unpack:perl-module src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:- src_install:perl-module
 _eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	multilib	d062ae4ba2fc40a19c11de2ad89b6616	multiprocessing	e32940a7b2a9992ad217eccddb84d548	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	c584f9e0fe426f3dcc2c46c6f7cb95ce	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	unpacker	45d07319df5f40ee6af58418b0f930be
-_md5_=e4fcfb11fe88edd40a318e4718b02e76
+_md5_=269208e4edab6b7937c266264c651104
