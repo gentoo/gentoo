@@ -65,7 +65,7 @@ src_install() {
 	emake install DESTDIR="${D}"
 
 	if use python ; then
-		local python_scriptroot="/usr/sbin"
+		python_scriptinto /usr/sbin
 		python_doscript "${ED%/}"/usr/sbin/smbios-{{keyboard,thermal,token,wakeup,wireless}-ctl,lcd-brightness,passwd,rbu-bios-update,sys-info}
 	fi
 
