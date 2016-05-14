@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -162,7 +162,7 @@ src_compile() {
 	#    assert txt.check()
 	# AssertionError
 	#use doc && emake -C pypy/doc/ html
-	pax-mark m "${ED%/}${INSDESTTREE}/pypy-c"
+	pax-mark m pypy-c libpypy-c.so
 }
 
 src_test() {
