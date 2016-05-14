@@ -5,6 +5,14 @@
 # This file requires >=portage-2.1.1
 # New entries go on top.
 
+# Michał Górny <mgorny@gentoo.org> (14 May 2016)
+# (on behalf of QA team)
+# sys-devel/gcc[jit]:
+# - violates strict multilib rules, #569608
+# - causes collisions between multiple gcc versions, #583010
+# Masking the flag until it is fixed.
+sys-devel/gcc jit
+
 # Mike Frysinger <vapier@gentoo.org> (08 May 2016)
 # Most targets do not support VTV #547040.
 sys-devel/gcc vtv
