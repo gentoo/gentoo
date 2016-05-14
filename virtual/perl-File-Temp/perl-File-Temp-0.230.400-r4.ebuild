@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 DESCRIPTION="Virtual for ${PN#perl-}"
 HOMEPAGE=""
@@ -18,4 +18,4 @@ RDEPEND="
 	!=perl-core/File-Temp-0.230.400
 "
 
-# this is the dev-lang/perl-5.20 and dev-lang/perl-5.22 version but we need the security patch
+# this is the dev-lang/perl-5.20 and dev-lang/perl-5.22 and dev-lang/perl-5.24 version but we need the security patch
