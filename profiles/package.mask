@@ -209,7 +209,7 @@ dev-java/freehep-xml
 =virtual/perl-Socket-2.20.30_rc
 =virtual/perl-Storable-2.560.0
 =virtual/perl-Term-ANSIColor-4.40.0
-=virtual/perl-Test-1.310.0
+=virtual/perl-Test-1.280.0
 =virtual/perl-Test-Harness-3.360.0
 =virtual/perl-Thread-Queue-3.90.0
 =virtual/perl-threads-2.70.0
