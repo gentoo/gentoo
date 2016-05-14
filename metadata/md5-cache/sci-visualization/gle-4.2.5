@@ -1,14 +1,14 @@
 DEFINED_PHASES=compile configure install postinst postrm prepare unpack
-DEPEND=sys-libs/ncurses X? ( x11-libs/libX11 ) qt4? ( dev-qt/qtopengl:4 ) jpeg? ( virtual/jpeg:0 ) png? ( media-libs/libpng:0 ) tiff? ( media-libs/tiff:0 ) doc? ( dev-texlive/texlive-latexextra ) emacs? ( virtual/emacs ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=sys-libs/ncurses:0= X? ( x11-libs/libX11 ) qt4? ( dev-qt/qtopengl:4 ) jpeg? ( virtual/jpeg:0 ) png? ( media-libs/libpng:0= ) tiff? ( media-libs/tiff:0 ) doc? ( dev-texlive/texlive-latexextra ) emacs? ( virtual/emacs ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=Graphics Layout Engine
 EAPI=5
 HOMEPAGE=http://glx.sourceforge.net/
 IUSE=X qt4 jpeg png tiff doc emacs vim-syntax
 KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
 LICENSE=BSD-2 emacs? ( GPL-2 ) qt4? ( GPL-2 )
-RDEPEND=sys-libs/ncurses X? ( x11-libs/libX11 ) qt4? ( dev-qt/qtopengl:4 ) jpeg? ( virtual/jpeg:0 ) png? ( media-libs/libpng:0 ) tiff? ( media-libs/tiff:0 ) doc? ( dev-texlive/texlive-latexextra ) emacs? ( virtual/emacs ) app-text/ghostscript-gpl virtual/latex-base vim-syntax? ( || ( app-editors/vim app-editors/gvim ) )
+RDEPEND=sys-libs/ncurses:0= X? ( x11-libs/libX11 ) qt4? ( dev-qt/qtopengl:4 ) jpeg? ( virtual/jpeg:0 ) png? ( media-libs/libpng:0= ) tiff? ( media-libs/tiff:0 ) doc? ( dev-texlive/texlive-latexextra ) emacs? ( virtual/emacs ) app-text/ghostscript-gpl virtual/latex-base vim-syntax? ( || ( app-editors/vim app-editors/gvim ) )
 SLOT=0
 SRC_URI=mirror://sourceforge/glx/gle-graphics-4.2.5f-src.tar.gz
 _eclass_exported_funcs=pkg_postrm:- pkg_postinst:- src_unpack:qt4-r2 src_prepare:- src_configure:- src_compile:- src_install:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	base	3fe4f8980633fd7bc69e9887209ba2fe	elisp-common	9f56c4e9bf1282dbfc2a5a09e1124e74	eutils	792f83d5ec9536cb5ccef375469d8bde	flag-o-matic	d270fa247153df66074f795fa42dba3e	libtool	4890219c51da247200223277f993e054	multilib	d062ae4ba2fc40a19c11de2ad89b6616	qmake-utils	0a242e7177789b0028b4045f336dd4db	qt4-r2	d6c113024bb3086a1facc65cd338930e	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
-_md5_=a16ec91f43ad58306545187c0bf8bbde
+_md5_=a3c0af359e1b185f1d49eb685f72ea3a

@@ -1,0 +1,8 @@
+DEFINED_PHASES=-
+DESCRIPTION=Virtual for XSLoader
+EAPI=6
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~amd64-fbsd ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x86-solaris
+RDEPEND=|| ( =dev-lang/perl-5.24* ~perl-core/XSLoader-0.210.0 ) !<perl-core/XSLoader-0.210.0 !>perl-core/XSLoader-0.210.0-r999
+SLOT=0
+_eclass_exported_funcs=-
+_md5_=f05297c1eefa509b0c28ce010e5b7df3

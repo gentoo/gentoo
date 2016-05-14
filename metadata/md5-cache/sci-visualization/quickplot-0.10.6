@@ -1,14 +1,14 @@
 DEFINED_PHASES=compile configure install prepare test
-DEPEND=media-libs/libsndfile >=sys-libs/readline-0.6.2 x11-libs/gtk+:3 virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=media-libs/libsndfile >=sys-libs/readline-0.6.2:0= x11-libs/gtk+:3 virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=A fast interactive 2D plotter
 EAPI=5
 HOMEPAGE=http://quickplot.sourceforge.net/
 IUSE=static-libs
 KEYWORDS=amd64 ~ppc ~x86 ~amd64-linux ~x86-linux
 LICENSE=GPL-3
-RDEPEND=media-libs/libsndfile >=sys-libs/readline-0.6.2 x11-libs/gtk+:3
+RDEPEND=media-libs/libsndfile >=sys-libs/readline-0.6.2:0= x11-libs/gtk+:3
 SLOT=0
 SRC_URI=mirror://sourceforge/quickplot/quickplot-0.10.6.tar.xz
 _eclass_exported_funcs=src_prepare:- src_configure:- src_compile:autotools-utils src_test:autotools-utils src_install:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	autotools-utils	419811142edf3516b0d0cf1a254d93cb	eutils	792f83d5ec9536cb5ccef375469d8bde	libtool	4890219c51da247200223277f993e054	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
-_md5_=1589747d96ac393a98c9a640a5979f73
+_md5_=2c61d03233191a6f55a8e15d2c2ff4c0

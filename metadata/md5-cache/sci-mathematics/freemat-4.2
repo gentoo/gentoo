@@ -1,14 +1,14 @@
 DEFINED_PHASES=compile configure install postinst postrm prepare test
-DEPEND=dev-libs/libpcre media-libs/portaudio sci-libs/arpack sci-libs/fftw:3.0 sci-libs/matio sci-libs/umfpack sys-libs/ncurses virtual/glu virtual/lapack virtual/libffi virtual/opengl dev-qt/qtgui:4 dev-qt/qtopengl:4 dev-qt/qtsvg:4 dev-qt/qtwebkit:4 volpack? ( media-libs/volpack ) vtk? ( sci-libs/vtk ) dev-lang/python virtual/pkgconfig sys-devel/make >=dev-util/cmake-2.8.12
+DEPEND=dev-libs/libpcre media-libs/portaudio sci-libs/arpack sci-libs/fftw:3.0 sci-libs/matio sci-libs/umfpack sys-libs/ncurses:0= virtual/glu virtual/lapack virtual/libffi virtual/opengl dev-qt/qtgui:4 dev-qt/qtopengl:4 dev-qt/qtsvg:4 dev-qt/qtwebkit:4 volpack? ( media-libs/volpack ) vtk? ( sci-libs/vtk ) dev-lang/python virtual/pkgconfig sys-devel/make >=dev-util/cmake-2.8.12
 DESCRIPTION=Environment for rapid engineering and scientific processing
 EAPI=5
 HOMEPAGE=http://freemat.sourceforge.net/
 IUSE=volpack vtk
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2
-RDEPEND=dev-libs/libpcre media-libs/portaudio sci-libs/arpack sci-libs/fftw:3.0 sci-libs/matio sci-libs/umfpack sys-libs/ncurses virtual/glu virtual/lapack virtual/libffi virtual/opengl dev-qt/qtgui:4 dev-qt/qtopengl:4 dev-qt/qtsvg:4 dev-qt/qtwebkit:4 volpack? ( media-libs/volpack ) vtk? ( sci-libs/vtk )
+RDEPEND=dev-libs/libpcre media-libs/portaudio sci-libs/arpack sci-libs/fftw:3.0 sci-libs/matio sci-libs/umfpack sys-libs/ncurses:0= virtual/glu virtual/lapack virtual/libffi virtual/opengl dev-qt/qtgui:4 dev-qt/qtopengl:4 dev-qt/qtsvg:4 dev-qt/qtwebkit:4 volpack? ( media-libs/volpack ) vtk? ( sci-libs/vtk )
 SLOT=0
 SRC_URI=mirror://sourceforge/freemat/FreeMat-4.2-Source.tar.gz
 _eclass_exported_funcs=pkg_postrm:- pkg_postinst:- src_prepare:- src_configure:- src_compile:cmake-utils src_test:cmake-utils src_install:-
 _eclasses_=cmake-utils	422bbd1bee2557490177a34dbe0a662b	eutils	792f83d5ec9536cb5ccef375469d8bde	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	flag-o-matic	d270fa247153df66074f795fa42dba3e	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=56b46bc2a7d9785e601cc198d1feb877
+_md5_=430438f72239b1ec1f520259fe00d8af

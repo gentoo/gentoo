@@ -1,15 +1,15 @@
 DEFINED_PHASES=compile configure install prepare test unpack
-DEPEND=dev-lang/perl media-libs/gd doc? ( dev-texlive/texlive-latex ) python? ( python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-lang/swig ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 dev-lang/perl:=[-build(-)]
+DEPEND=dev-lang/perl media-libs/gd doc? ( dev-texlive/texlive-latex ) python? ( python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-lang/swig:0 ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 dev-lang/perl:=[-build(-)]
 DESCRIPTION=RNA secondary structure prediction and comparison
 EAPI=5
 HOMEPAGE=http://www.tbi.univie.ac.at/~ivo/RNA/
 IUSE=doc openmp python static-libs python_targets_python2_7
 KEYWORDS=amd64 ppc x86
 LICENSE=vienna-rna
-RDEPEND=dev-lang/perl media-libs/gd doc? ( dev-texlive/texlive-latex ) python? ( python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-lang/swig ) dev-lang/perl:=[-build(-)]
+RDEPEND=dev-lang/perl media-libs/gd doc? ( dev-texlive/texlive-latex ) python? ( python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-lang/swig:0 ) dev-lang/perl:=[-build(-)]
 REQUIRED_USE=python? ( || ( python_targets_python2_7 ) )
 SLOT=0
 SRC_URI=http://www.tbi.univie.ac.at/~ronny/RNA/ViennaRNA-2.1.1.tar.gz
 _eclass_exported_funcs=src_unpack:perl-module src_prepare:- src_configure:- src_compile:- src_test:- src_install:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	autotools-utils	419811142edf3516b0d0cf1a254d93cb	distutils-r1	0af33659915efd4b147c76251893f652	eutils	792f83d5ec9536cb5ccef375469d8bde	libtool	4890219c51da247200223277f993e054	multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	d062ae4ba2fc40a19c11de2ad89b6616	multiprocessing	e32940a7b2a9992ad217eccddb84d548	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	c584f9e0fe426f3dcc2c46c6f7cb95ce	python-r1	0f6937650a475d673baa5d0c8c0b37b3	python-utils-r1	00f984fbfe2fde78b718d7a0cfe1dddd	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	unpacker	45d07319df5f40ee6af58418b0f930be
-_md5_=3bb953b2944fc7a1b3e08ac636074e7f
+_md5_=6d978aca9747776d0b4fb8d647081e1e

@@ -1,15 +1,15 @@
 DEFINED_PHASES=compile configure install prepare test
-DEPEND=dev-libs/gmp dev-libs/mpfr gc? ( dev-libs/boehm-gc ) ntl? ( dev-libs/ntl ) doc? ( app-text/texlive-core dev-texlive/texlive-latex dev-texlive/texlive-latexextra )
+DEPEND=dev-libs/gmp:0= dev-libs/mpfr:0 gc? ( dev-libs/boehm-gc ) ntl? ( dev-libs/ntl ) doc? ( app-text/texlive-core dev-texlive/texlive-latex dev-texlive/texlive-latexextra )
 DESCRIPTION=Fast Library for Number Theory
 EAPI=5
 HOMEPAGE=http://www.flintlib.org/
 IUSE=doc gc ntl static-libs test
 KEYWORDS=amd64 ppc x86
 LICENSE=GPL-2
-RDEPEND=dev-libs/gmp dev-libs/mpfr gc? ( dev-libs/boehm-gc ) ntl? ( dev-libs/ntl )
+RDEPEND=dev-libs/gmp:0= dev-libs/mpfr:0 gc? ( dev-libs/boehm-gc ) ntl? ( dev-libs/ntl )
 RESTRICT=mirror
 SLOT=0
 SRC_URI=http://www.flintlib.org/flint-2.4.4.tar.gz
 _eclass_exported_funcs=src_prepare:- src_configure:- src_compile:- src_test:- src_install:-
 _eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
-_md5_=5826adc8292d6ec7507991910f3dd032
+_md5_=ee7564f28bfd3e1ad12867663ae2ca56

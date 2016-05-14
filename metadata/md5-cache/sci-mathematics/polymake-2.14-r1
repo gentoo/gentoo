@@ -1,15 +1,15 @@
 DEFINED_PHASES=configure install postinst prepare
-DEPEND=<dev-lang/perl-5.21 dev-libs/gmp dev-libs/mpfr dev-libs/libxml2:2 dev-libs/libxslt ppl? ( dev-libs/ppl ) cdd? ( sci-libs/cddlib ) lrs? ( >=sci-libs/lrslib-051[gmp] ) bliss? ( sci-libs/bliss[gmp] ) group? ( dev-libs/boost ) libnormaliz? ( dev-libs/boost ) singular? ( >=sci-mathematics/singular-4.0.1 )
+DEPEND=<dev-lang/perl-5.21 dev-libs/gmp:0= dev-libs/mpfr:0 dev-libs/libxml2:2 dev-libs/libxslt ppl? ( dev-libs/ppl ) cdd? ( sci-libs/cddlib ) lrs? ( >=sci-libs/lrslib-051[gmp] ) bliss? ( sci-libs/bliss[gmp] ) group? ( dev-libs/boost:= ) libnormaliz? ( dev-libs/boost:= ) singular? ( >=sci-mathematics/singular-4.0.1 )
 DESCRIPTION=research tool for polyhedral geometry and combinatorics
 EAPI=5
 HOMEPAGE=http://polymake.org
 IUSE=+cdd lrs ppl bliss group +libnormaliz singular libpolymake
 KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
 LICENSE=GPL-2
-RDEPEND=<dev-lang/perl-5.21 dev-libs/gmp dev-libs/mpfr dev-libs/libxml2:2 dev-libs/libxslt ppl? ( dev-libs/ppl ) cdd? ( sci-libs/cddlib ) lrs? ( >=sci-libs/lrslib-051[gmp] ) bliss? ( sci-libs/bliss[gmp] ) group? ( dev-libs/boost ) libnormaliz? ( dev-libs/boost ) singular? ( >=sci-mathematics/singular-4.0.1 ) dev-perl/XML-LibXML dev-perl/XML-LibXSLT dev-perl/XML-Writer dev-perl/Term-ReadLine-Gnu
+RDEPEND=<dev-lang/perl-5.21 dev-libs/gmp:0= dev-libs/mpfr:0 dev-libs/libxml2:2 dev-libs/libxslt ppl? ( dev-libs/ppl ) cdd? ( sci-libs/cddlib ) lrs? ( >=sci-libs/lrslib-051[gmp] ) bliss? ( sci-libs/bliss[gmp] ) group? ( dev-libs/boost:= ) libnormaliz? ( dev-libs/boost:= ) singular? ( >=sci-mathematics/singular-4.0.1 ) dev-perl/XML-LibXML dev-perl/XML-LibXSLT dev-perl/XML-Writer dev-perl/Term-ReadLine-Gnu
 REQUIRED_USE=group? ( cdd lrs )
 SLOT=0
 SRC_URI=http://polymake.org/lib/exe/fetch.php/download/polymake-2.14-minimal.tar.bz2
 _eclass_exported_funcs=pkg_postinst:- src_prepare:- src_configure:- src_install:-
 _eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	flag-o-matic	d270fa247153df66074f795fa42dba3e	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
-_md5_=bbd9c43272559a4d6e1e7f22fbdabfeb
+_md5_=a6207d49827ecd721c0a0470e5dbe85a

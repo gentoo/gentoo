@@ -1,14 +1,14 @@
 DEFINED_PHASES=compile configure install prepare test
-DEPEND=sys-libs/readline data? ( sci-mathematics/pari-data ) doc? ( X? ( x11-misc/xdg-utils ) ) fltk? ( x11-libs/fltk:1 ) gmp? ( dev-libs/gmp ) qt4? ( dev-qt/qtgui:4 ) X? ( x11-libs/libX11 ) doc? ( virtual/latex-base )
+DEPEND=sys-libs/readline:0= data? ( sci-mathematics/pari-data ) doc? ( X? ( x11-misc/xdg-utils ) ) fltk? ( x11-libs/fltk:1 ) gmp? ( dev-libs/gmp:0= ) qt4? ( dev-qt/qtgui:4 ) X? ( x11-libs/libX11 ) doc? ( virtual/latex-base )
 DESCRIPTION=Computer-aided number theory C library and tools
 EAPI=5
 HOMEPAGE=http://pari.math.u-bordeaux.fr/
 IUSE=data doc fltk gmp qt4 X
 KEYWORDS=~alpha ~amd64 ~hppa ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-fbsd ~x86-linux ~x86-macos ~x86-solaris
 LICENSE=GPL-2
-RDEPEND=sys-libs/readline data? ( sci-mathematics/pari-data ) doc? ( X? ( x11-misc/xdg-utils ) ) fltk? ( x11-libs/fltk:1 ) gmp? ( dev-libs/gmp ) qt4? ( dev-qt/qtgui:4 ) X? ( x11-libs/libX11 )
+RDEPEND=sys-libs/readline:0= data? ( sci-mathematics/pari-data ) doc? ( X? ( x11-misc/xdg-utils ) ) fltk? ( x11-libs/fltk:1 ) gmp? ( dev-libs/gmp:0= ) qt4? ( dev-qt/qtgui:4 ) X? ( x11-libs/libX11 )
 SLOT=0
 SRC_URI=http://pari.math.u-bordeaux.fr/pub/pari/unix/pari-2.5.4.tar.gz
 _eclass_exported_funcs=src_prepare:- src_configure:- src_compile:- src_test:- src_install:-
 _eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	flag-o-matic	d270fa247153df66074f795fa42dba3e	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
-_md5_=7e23ba27bb055d67750886783d2f2492
+_md5_=cf6a32b1a09c6b837bcf281ebdcc12f1

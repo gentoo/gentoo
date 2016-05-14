@@ -1,0 +1,8 @@
+DEFINED_PHASES=-
+DESCRIPTION=Virtual for AutoLoader
+EAPI=6
+KEYWORDS=alpha amd64 ia64 ppc ppc64 sparc x86 ~x86-solaris
+RDEPEND=|| ( =dev-lang/perl-5.24* =dev-lang/perl-5.22* =dev-lang/perl-5.20* ~perl-core/AutoLoader-5.740.0 ) !<perl-core/AutoLoader-5.740.0 !>perl-core/AutoLoader-5.740.0-r999
+SLOT=0
+_eclass_exported_funcs=-
+_md5_=be67c1cd56873cb84095fd0282d8687c

@@ -1,15 +1,15 @@
 DEFINED_PHASES=compile configure install prepare test
-DEPEND=python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7[sqlite] ) python_targets_python3_4? ( dev-lang/python:3.4[sqlite] ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,python_targets_python3_4(-)?,-python_single_target_python2_7(-),-python_single_target_python3_4(-)] dev-libs/gmp dev-lang/perl !sci-mathematics/ggnfs !sci-biology/shrimp sys-devel/make >=dev-util/cmake-2.8.12
+DEPEND=python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7[sqlite] ) python_targets_python3_4? ( dev-lang/python:3.4[sqlite] ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,python_targets_python3_4(-)?,-python_single_target_python2_7(-),-python_single_target_python3_4(-)] dev-libs/gmp:0= dev-lang/perl !sci-mathematics/ggnfs !sci-biology/shrimp sys-devel/make >=dev-util/cmake-2.8.12
 DESCRIPTION=Number Field Sieve (NFS) implementation for factoring integers
 EAPI=5
 HOMEPAGE=http://cado-nfs.gforge.inria.fr/
 IUSE=python_targets_python2_7 python_targets_python3_4
 KEYWORDS=~amd64 ~x86
 LICENSE=LGPL-2.1
-RDEPEND=python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7[sqlite] ) python_targets_python3_4? ( dev-lang/python:3.4[sqlite] ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,python_targets_python3_4(-)?,-python_single_target_python2_7(-),-python_single_target_python3_4(-)] dev-libs/gmp dev-lang/perl !sci-mathematics/ggnfs !sci-biology/shrimp
+RDEPEND=python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7[sqlite] ) python_targets_python3_4? ( dev-lang/python:3.4[sqlite] ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,python_targets_python3_4(-)?,-python_single_target_python2_7(-),-python_single_target_python3_4(-)] dev-libs/gmp:0= dev-lang/perl !sci-mathematics/ggnfs !sci-biology/shrimp
 RESTRICT=test
 SLOT=0
 SRC_URI=https://gforge.inria.fr/frs/download.php/file/35401/cado-nfs-2.2.0.tar.gz
 _eclass_exported_funcs=src_prepare:- src_configure:- src_compile:- src_test:cmake-utils src_install:cmake-utils
 _eclasses_=cmake-utils	422bbd1bee2557490177a34dbe0a662b	eutils	792f83d5ec9536cb5ccef375469d8bde	flag-o-matic	d270fa247153df66074f795fa42dba3e	multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	d062ae4ba2fc40a19c11de2ad89b6616	python-r1	0f6937650a475d673baa5d0c8c0b37b3	python-utils-r1	00f984fbfe2fde78b718d7a0cfe1dddd	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=0178c5046018d3035eedb052636ad904
+_md5_=449fc6eeae32f0d60a920842c9500879

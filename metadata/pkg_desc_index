@@ -4418,7 +4418,7 @@ dev-lang/orc 0.4.23 0.4.24 0.4.25: The Oil Runtime Compiler, a just-in-time comp
 dev-lang/parrot 7.1.0 7.5.0 7.11.0 8.1.0: Virtual machine designed to efficiently compile and execute bytecode for dynamic languages
 dev-lang/pasm 1.7: A portable assembler for processors of the PowerPC family
 dev-lang/pcc 1.1.0-r1 9999: pcc portable c compiler
-dev-lang/perl 5.20.2 5.20.2-r1 5.22.0 5.22.1 5.22.2: Larry Wall's Practical Extraction and Report Language
+dev-lang/perl 5.20.2 5.20.2-r1 5.22.0 5.22.1 5.22.2 5.24.0: Larry Wall's Practical Extraction and Report Language
 dev-lang/php 5.5.33 5.5.34 5.5.35 5.6.19 5.6.20 5.6.21 7.0.6: The PHP language runtime engine
 dev-lang/pocl 0.11 0.12 0.13: PortableCL: opensource implementation of the OpenCL standard
 dev-lang/polyml 5.4.1 5.5.0 5.5.1 5.5.2: Poly/ML is a full implementation of Standard ML
@@ -15983,7 +15983,7 @@ sci-mathematics/cado-nfs 1.1 2.0 2.1 2.1.1 2.2.0: Number Field Sieve (NFS) imple
 sci-mathematics/calc 2.12.2.2 2.12.4.13-r1 2.12.5.4: Arbitrary precision C-like arithmetic system
 sci-mathematics/cgal 4.3 4.3-r1 4.8-r1: C++ library for geometric algorithms and data structures
 sci-mathematics/coq 8.4_p5 8.4_p6 8.5 8.5_p1: Proof assistant written in O'Caml
-sci-mathematics/cvc3 2.4.1: CVC3 is an automatic theorem prover for Satisfiability Modulo Theories (SMT) problems
+sci-mathematics/cvc3 2.4.1: CVC3 is a theorem prover for Satisfiability Modulo Theories (SMT) problems
 sci-mathematics/dataplot 20090821 20131220: Program for scientific visualization and statistical analyis
 sci-mathematics/diagrtb 2.64: Calculation of some eigenvectors of a large real, symmetrical, matrix
 sci-mathematics/drgeo 1.1.0: Interactive geometry package
@@ -17436,98 +17436,98 @@ virtual/os-headers 0: Virtual for operating system headers
 virtual/package-manager 0: Virtual for the package manager
 virtual/pager 0: Virtual for command-line pagers
 virtual/pam 0 0-r1: Virtual for PAM (Pluggable Authentication Modules)
-virtual/perl-Archive-Tar 1.960.0 2.40.0: Virtual for Archive-Tar
-virtual/perl-Attribute-Handlers 0.960.0 0.970.0: Virtual for Attribute-Handlers
-virtual/perl-AutoLoader 5.740.0-r1: Virtual for AutoLoader
-virtual/perl-B-Debug 1.190.0 1.230.0: Virtual for B-Debug
-virtual/perl-CPAN 2.90.0-r1 2.110.0: Virtual for CPAN
-virtual/perl-CPAN-Meta 2.140.640 2.143.240 2.150.1: Virtual for CPAN-Meta
-virtual/perl-CPAN-Meta-Requirements 2.125.0-r1 2.132.0: Virtual for CPAN-Meta-Requirements
-virtual/perl-CPAN-Meta-YAML 0.12.0-r1: Virtual for CPAN-Meta-YAML
-virtual/perl-Carp 1.330.100 1.360.0: Virtual for Carp
-virtual/perl-Compress-Raw-Bzip2 2.64.0 2.68.0: Virtual for Compress-Raw-Bzip2
-virtual/perl-Compress-Raw-Zlib 2.65.0 2.68.0: Virtual for Compress-Raw-Zlib
-virtual/perl-DB_File 1.831.0 1.835.0: Virtual for DB_File
-virtual/perl-Data-Dumper 2.154.0 2.158.0: Virtual for Data-Dumper
-virtual/perl-Devel-PPPort 3.210.0 3.310.0: Virtual for Devel-PPPort
-virtual/perl-Digest 1.170.0-r5: Virtual for Digest
-virtual/perl-Digest-MD5 2.530.0-r2 2.540.0: Virtual for Digest-MD5
-virtual/perl-Digest-SHA 5.880.0 5.950.0: Virtual for Digest-SHA
-virtual/perl-Dumpvalue 1.170.0-r5: Virtual for Dumpvalue
-virtual/perl-Encode 2.600.0 2.730.0: Virtual for Encode
-virtual/perl-Exporter 5.710.0-r2 5.720.0: Virtual for Exporter
-virtual/perl-ExtUtils-CBuilder 0.280.217-r2 0.280.221: Virtual for ExtUtils-CBuilder
-virtual/perl-ExtUtils-Command 1.180.0-r2 1.200.0: Virtual for ExtUtils-Command
-virtual/perl-ExtUtils-Constant 0.230.0-r7: Virtual for ExtUtils-Constant
-virtual/perl-ExtUtils-Install 1.670.0 2.40.0: Virtual for ExtUtils-Install
-virtual/perl-ExtUtils-MakeMaker 6.980.0 7.40.0 7.40.100_rc: Virtual for ExtUtils-MakeMaker
-virtual/perl-ExtUtils-Manifest 1.630.0-r2 1.700.0-r1: Virtual for ExtUtils-Manifest
-virtual/perl-ExtUtils-ParseXS 3.240.0 3.280.0: Virtual for ExtUtils-ParseXS
-virtual/perl-File-Path 2.90.0-r3: Virtual for File-Path
-virtual/perl-File-Spec 3.480.100-r1 3.560.0-r1 3.560.100: Virtual for File-Spec
-virtual/perl-File-Temp 0.230.400-r3: Virtual for File-Temp
-virtual/perl-Filter-Simple 0.910.0 0.920.0: Virtual for perl-core/Filter-Simple
-virtual/perl-Getopt-Long 2.420.0-r1 2.450.0: Virtual for Getopt-Long
-virtual/perl-HTTP-Tiny 0.43.0 0.54.0: Virtual for HTTP-Tiny
-virtual/perl-I18N-LangTags 0.400.0-r1: Virtual for I18N-LangTags
-virtual/perl-IO 1.310.0 1.350.0: Virtual for IO
-virtual/perl-IO-Compress 2.64.0 2.68.0: Virtual for IO-Compress
-virtual/perl-IO-Socket-IP 0.290.0 0.370.0: Virtual for IO-Socket-IP
-virtual/perl-IO-Zlib 1.100.0-r6: Virtual for IO-Zlib
-virtual/perl-IPC-Cmd 0.920.0-r1: Virtual for IPC-Cmd
-virtual/perl-JSON-PP 2.272.30 2.273.0: Virtual for JSON-PP
-virtual/perl-Locale-Maketext 1.250.0 1.260.0: Virtual for Locale-Maketext
-virtual/perl-Locale-Maketext-Simple 0.210.0-r6: Virtual for Locale-Maketext-Simple
-virtual/perl-MIME-Base64 3.140.0-r1 3.150.0: Virtual for MIME-Base64
-virtual/perl-Math-BigInt 1.999.300 1.999.700 1.999.710 1.999.715: Virtual for Math-BigInt
-virtual/perl-Math-BigInt-FastCalc 0.310.0-r1: Virtual for Math-BigInt-FastCalc
-virtual/perl-Math-BigRat 0.260.600 0.260.800: Virtual for Math-BigRat
-virtual/perl-Math-Complex 1.590.0-r5: Virtual for Math-Complex
-virtual/perl-Memoize 1.30.0-r2: Virtual for Memoize
-virtual/perl-Module-CoreList 5.201.502.140-r1 5.201.505.200-r3 5.201.512.130 5.201.604.290 5.201.605.70: Virtual for Module-CoreList
-virtual/perl-Module-Load 0.320.0-r1: Virtual for Module-Load
-virtual/perl-Module-Load-Conditional 0.620.0 0.640.0: Virtual for Module-Load-Conditional
-virtual/perl-Module-Loaded 0.80.0-r5: Virtual for Module-Loaded
-virtual/perl-Module-Metadata 1.0.19 1.0.26: Virtual for Module-Metadata
-virtual/perl-Net-Ping 2.430.0-r1: Virtual for Net-Ping
+virtual/perl-Archive-Tar 1.960.0 2.40.0-r1: Virtual for Archive-Tar
+virtual/perl-Attribute-Handlers 0.960.0 0.970.0 0.990.0: Virtual for Attribute-Handlers
+virtual/perl-AutoLoader 5.740.0-r2: Virtual for AutoLoader
+virtual/perl-B-Debug 1.190.0 1.230.0-r1: Virtual for B-Debug
+virtual/perl-CPAN 2.90.0-r1 2.110.0-r1: Virtual for CPAN
+virtual/perl-CPAN-Meta 2.140.640 2.143.240 2.150.1 2.150.5: Virtual for CPAN-Meta
+virtual/perl-CPAN-Meta-Requirements 2.125.0-r1 2.132.0 2.140.0: Virtual for CPAN-Meta-Requirements
+virtual/perl-CPAN-Meta-YAML 0.12.0-r1 0.18.0: Virtual for CPAN-Meta-YAML
+virtual/perl-Carp 1.330.100 1.360.0 1.400.0: Virtual for Carp
+virtual/perl-Compress-Raw-Bzip2 2.64.0 2.68.0 2.69.0: Virtual for Compress-Raw-Bzip2
+virtual/perl-Compress-Raw-Zlib 2.65.0 2.68.0 2.69.0: Virtual for Compress-Raw-Zlib
+virtual/perl-DB_File 1.831.0 1.835.0-r1: Virtual for DB_File
+virtual/perl-Data-Dumper 2.154.0 2.158.0 2.160.0: Virtual for Data-Dumper
+virtual/perl-Devel-PPPort 3.210.0 3.310.0 3.320.0: Virtual for Devel-PPPort
+virtual/perl-Digest 1.170.0-r6: Virtual for Digest
+virtual/perl-Digest-MD5 2.530.0-r2 2.540.0-r1: Virtual for Digest-MD5
+virtual/perl-Digest-SHA 5.880.0 5.950.0-r1: Virtual for Digest-SHA
+virtual/perl-Dumpvalue 1.170.0-r5 1.180.0: Virtual for Dumpvalue
+virtual/perl-Encode 2.600.0 2.730.0 2.800.0: Virtual for Encode
+virtual/perl-Exporter 5.710.0-r2 5.720.0-r1: Virtual for Exporter
+virtual/perl-ExtUtils-CBuilder 0.280.217-r2 0.280.221 0.280.225: Virtual for ExtUtils-CBuilder
+virtual/perl-ExtUtils-Command 1.180.0-r2 1.200.0 7.100.0: Virtual for ExtUtils-Command
+virtual/perl-ExtUtils-Constant 0.230.0-r8: Virtual for ExtUtils-Constant
+virtual/perl-ExtUtils-Install 1.670.0 2.40.0-r1: Virtual for ExtUtils-Install
+virtual/perl-ExtUtils-MakeMaker 6.980.0 7.40.0 7.40.100_rc 7.100.100_rc: Virtual for ExtUtils-MakeMaker
+virtual/perl-ExtUtils-Manifest 1.630.0-r2 1.700.0-r2: Virtual for ExtUtils-Manifest
+virtual/perl-ExtUtils-ParseXS 3.240.0 3.280.0 3.310.0: Virtual for ExtUtils-ParseXS
+virtual/perl-File-Path 2.90.0-r3 2.120.100_rc: Virtual for File-Path
+virtual/perl-File-Spec 3.480.100-r1 3.560.0-r1 3.560.100 3.630.0: Virtual for File-Spec
+virtual/perl-File-Temp 0.230.400-r4: Virtual for File-Temp
+virtual/perl-Filter-Simple 0.910.0 0.920.0-r1: Virtual for perl-core/Filter-Simple
+virtual/perl-Getopt-Long 2.420.0-r1 2.450.0 2.480.0: Virtual for Getopt-Long
+virtual/perl-HTTP-Tiny 0.43.0 0.54.0 0.56.0: Virtual for HTTP-Tiny
+virtual/perl-I18N-LangTags 0.400.0-r2: Virtual for I18N-LangTags
+virtual/perl-IO 1.310.0 1.350.0 1.360.0: Virtual for IO
+virtual/perl-IO-Compress 2.64.0 2.68.0 2.69.0: Virtual for IO-Compress
+virtual/perl-IO-Socket-IP 0.290.0 0.370.0-r1: Virtual for IO-Socket-IP
+virtual/perl-IO-Zlib 1.100.0-r7: Virtual for IO-Zlib
+virtual/perl-IPC-Cmd 0.920.0-r2: Virtual for IPC-Cmd
+virtual/perl-JSON-PP 2.272.30 2.273.0-r1: Virtual for JSON-PP
+virtual/perl-Locale-Maketext 1.250.0 1.260.0-r1: Virtual for Locale-Maketext
+virtual/perl-Locale-Maketext-Simple 0.210.0-r7: Virtual for Locale-Maketext-Simple
+virtual/perl-MIME-Base64 3.140.0-r1 3.150.0-r1: Virtual for MIME-Base64
+virtual/perl-Math-BigInt 1.999.300 1.999.700 1.999.710 1.999.715-r1: Virtual for Math-BigInt
+virtual/perl-Math-BigInt-FastCalc 0.310.0-r1 0.400.0: Virtual for Math-BigInt-FastCalc
+virtual/perl-Math-BigRat 0.260.600 0.260.800 0.260.802: Virtual for Math-BigRat
+virtual/perl-Math-Complex 1.590.0-r6: Virtual for Math-Complex
+virtual/perl-Memoize 1.30.0-r3: Virtual for Memoize
+virtual/perl-Module-CoreList 5.201.502.140-r1 5.201.505.200-r3 5.201.512.130 5.201.604.290 5.201.605.60 5.201.605.70: Virtual for Module-CoreList
+virtual/perl-Module-Load 0.320.0-r2: Virtual for Module-Load
+virtual/perl-Module-Load-Conditional 0.620.0 0.640.0-r1: Virtual for Module-Load-Conditional
+virtual/perl-Module-Loaded 0.80.0-r6: Virtual for Module-Loaded
+virtual/perl-Module-Metadata 1.0.19 1.0.26 1.0.31: Virtual for Module-Metadata
+virtual/perl-Net-Ping 2.430.0-r2: Virtual for Net-Ping
 virtual/perl-Package-Constants 0.40.0 0.60.0: Virtual for Package-Constants
-virtual/perl-Params-Check 0.380.0-r2: Virtual for Params-Check
-virtual/perl-Parse-CPAN-Meta 1.441.400-r1: Virtual for Parse-CPAN-Meta
-virtual/perl-Perl-OSType 1.7.0 1.8.0: Virtual for Perl-OSType
-virtual/perl-Pod-Escapes 1.60.0 1.70.0: Virtual for Pod-Escapes
-virtual/perl-Pod-Parser 1.620.0 1.630.0: Virtual for Pod-Parser
-virtual/perl-Pod-Simple 3.280.0-r2 3.290.0: Virtual for Pod-Simple
-virtual/perl-Safe 2.370.0 2.390.0: Virtual for Safe
-virtual/perl-Scalar-List-Utils 1.380.0 1.410.0: Virtual for Scalar::Util and List::Util, also distributed as Scalar::List::Utils
-virtual/perl-Socket 2.13.0 2.18.0: Virtual for Socket
-virtual/perl-Storable 2.490.100-r1 2.530.0-r1 2.530.100-r1: Virtual for Storable
-virtual/perl-Sys-Syslog 0.330.0-r2: Virtual for Sys-Syslog
-virtual/perl-Term-ANSIColor 4.20.0-r3 4.30.0: Virtual for Term-ANSIColor
-virtual/perl-Term-ReadLine 1.140.0 1.150.0: Virtual for Term-ReadLine
-virtual/perl-Test 1.260.0-r3: Virtual for Test
-virtual/perl-Test-Harness 3.330.0 3.350.0: Virtual for Test-Harness
-virtual/perl-Test-Simple 1.1.2 1.1.14: Virtual for Test-Simple
-virtual/perl-Text-Balanced 2.20.0-r6 2.30.0: Virtual for Text-Balanced
-virtual/perl-Text-ParseWords 3.290.0-r1 3.300.0: Virtual for Text-ParseWords
-virtual/perl-Text-Tabs+Wrap 2013.52.300-r2: Virtual for Text::Tabs and Text::Wrap, also distributed as Text::Tabs+Wrap
-virtual/perl-Thread-Queue 3.50.0-r1: Virtual for Thread-Queue
-virtual/perl-Thread-Semaphore 2.120.0-r5: Virtual for Thread-Semaphore
-virtual/perl-Tie-RefHash 1.390.0-r4: Virtual for Tie-RefHash
-virtual/perl-Time-HiRes 1.972.600-r2: Virtual for Time-HiRes
-virtual/perl-Time-Local 1.230.0-r2: Virtual for Time-Local
-virtual/perl-Time-Piece 1.270.0 1.290.0: Virtual for Time-Piece
-virtual/perl-Unicode-Collate 1.120.0 1.140.0: Virtual for Unicode-Collate
-virtual/perl-Unicode-Normalize 1.170.0 1.180.0 1.250.0: Virtual for Unicode-Normalize
-virtual/perl-XSLoader 0.170.0 0.200.0: Virtual for XSLoader
-virtual/perl-autodie 2.230.0 2.260.0: Virtual for autodie
-virtual/perl-bignum 0.370.0 0.390.0: Virtual for bignum
-virtual/perl-if 0.60.300 0.60.400: Virtual for if
-virtual/perl-libnet 1.270.0 3.50.0: Virtual for libnet
-virtual/perl-parent 0.228-r1 0.232.0: Virtual for parent
-virtual/perl-podlators 2.5.3-r1: Virtual for podlators
-virtual/perl-threads 1.930.0 2.10.0: Virtual for threads
-virtual/perl-threads-shared 1.460.0 1.480.0: Virtual for threads-shared
-virtual/perl-version 0.990.900-r2: Virtual for version
+virtual/perl-Params-Check 0.380.0-r3: Virtual for Params-Check
+virtual/perl-Parse-CPAN-Meta 1.441.400-r1 1.441.700: Virtual for Parse-CPAN-Meta
+virtual/perl-Perl-OSType 1.7.0 1.8.0 1.9.0: Virtual for Perl-OSType
+virtual/perl-Pod-Escapes 1.60.0 1.70.0-r1: Virtual for Pod-Escapes
+virtual/perl-Pod-Parser 1.620.0 1.630.0-r1: Virtual for Pod-Parser
+virtual/perl-Pod-Simple 3.280.0-r2 3.290.0 3.320.0: Virtual for Pod-Simple
+virtual/perl-Safe 2.370.0 2.390.0-r1: Virtual for Safe
+virtual/perl-Scalar-List-Utils 1.380.0 1.410.0 1.420.200_rc: Virtual for Scalar::Util and List::Util, also distributed as Scalar::List::Utils
+virtual/perl-Socket 2.13.0 2.18.0 2.20.30_rc: Virtual for Socket
+virtual/perl-Storable 2.490.100-r1 2.530.0-r1 2.530.100-r1 2.560.0: Virtual for Storable
+virtual/perl-Sys-Syslog 0.330.0-r3: Virtual for Sys-Syslog
+virtual/perl-Term-ANSIColor 4.20.0-r3 4.30.0 4.40.0: Virtual for Term-ANSIColor
+virtual/perl-Term-ReadLine 1.140.0 1.150.0-r1: Virtual for Term-ReadLine
+virtual/perl-Test 1.260.0-r3 1.280.0: Virtual for Test
+virtual/perl-Test-Harness 3.330.0 3.350.0 3.360.0: Virtual for Test-Harness
+virtual/perl-Test-Simple 1.1.2 1.1.14-r1: Virtual for Test-Simple
+virtual/perl-Text-Balanced 2.20.0-r6 2.30.0-r1: Virtual for Text-Balanced
+virtual/perl-Text-ParseWords 3.290.0-r1 3.300.0-r1: Virtual for Text-ParseWords
+virtual/perl-Text-Tabs+Wrap 2013.52.300-r3: Virtual for Text::Tabs and Text::Wrap, also distributed as Text::Tabs+Wrap
+virtual/perl-Thread-Queue 3.50.0-r1 3.90.0: Virtual for Thread-Queue
+virtual/perl-Thread-Semaphore 2.120.0-r6: Virtual for Thread-Semaphore
+virtual/perl-Tie-RefHash 1.390.0-r5: Virtual for Tie-RefHash
+virtual/perl-Time-HiRes 1.972.600-r2 1.973.300: Virtual for Time-HiRes
+virtual/perl-Time-Local 1.230.0-r3: Virtual for Time-Local
+virtual/perl-Time-Piece 1.270.0 1.290.0 1.310.0: Virtual for Time-Piece
+virtual/perl-Unicode-Collate 1.120.0 1.140.0-r1: Virtual for Unicode-Collate
+virtual/perl-Unicode-Normalize 1.170.0 1.180.0 1.250.0-r1: Virtual for Unicode-Normalize
+virtual/perl-XSLoader 0.170.0 0.200.0 0.210.0: Virtual for XSLoader
+virtual/perl-autodie 2.230.0 2.260.0 2.290.0: Virtual for autodie
+virtual/perl-bignum 0.370.0 0.390.0 0.420.0: Virtual for bignum
+virtual/perl-if 0.60.300 0.60.400 0.60.600: Virtual for if
+virtual/perl-libnet 1.270.0 3.50.0 3.80.0: Virtual for libnet
+virtual/perl-parent 0.228-r1 0.232.0 0.234.0: Virtual for parent
+virtual/perl-podlators 2.5.3-r1 4.70.0: Virtual for podlators
+virtual/perl-threads 1.930.0 2.10.0 2.70.0: Virtual for threads
+virtual/perl-threads-shared 1.460.0 1.480.0 1.510.0: Virtual for threads-shared
+virtual/perl-version 0.990.900-r2 0.991.600: Virtual for version
 virtual/perl6 0: Convenience virtual for perl6
 virtual/pkgconfig 0-r1: Virtual for the pkg-config implementation
 virtual/pmake 0: Virtual for BSD-like make

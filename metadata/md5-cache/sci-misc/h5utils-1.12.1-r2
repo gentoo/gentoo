@@ -1,14 +1,14 @@
 DEFINED_PHASES=compile configure install prepare test
-DEPEND=media-libs/libpng:0= sci-libs/hdf5:0= sys-libs/zlib:0= hdf? ( sci-libs/hdf:0= virtual/jpeg ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=media-libs/libpng:0= sci-libs/hdf5:0= sys-libs/zlib:0= hdf? ( sci-libs/hdf:0= virtual/jpeg:0 ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=Utilities for visualization and conversion of HDF5 files
 EAPI=5
 HOMEPAGE=http://ab-initio.mit.edu/h5utils/
 IUSE=hdf octave
 KEYWORDS=~amd64 ~ppc x86 ~amd64-linux ~x86-linux
 LICENSE=GPL-2
-RDEPEND=media-libs/libpng:0= sci-libs/hdf5:0= sys-libs/zlib:0= hdf? ( sci-libs/hdf:0= virtual/jpeg )
+RDEPEND=media-libs/libpng:0= sci-libs/hdf5:0= sys-libs/zlib:0= hdf? ( sci-libs/hdf:0= virtual/jpeg:0 )
 SLOT=0
 SRC_URI=http://ab-initio.mit.edu/h5utils/h5utils-1.12.1.tar.gz
 _eclass_exported_funcs=src_prepare:autotools-utils src_configure:- src_compile:autotools-utils src_test:autotools-utils src_install:autotools-utils
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	autotools-utils	419811142edf3516b0d0cf1a254d93cb	eutils	792f83d5ec9536cb5ccef375469d8bde	libtool	4890219c51da247200223277f993e054	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
-_md5_=1d8e34c7aa714d24e102b2d3e010d6e5
+_md5_=98b698b03fdf7f63989663e3f76385a4

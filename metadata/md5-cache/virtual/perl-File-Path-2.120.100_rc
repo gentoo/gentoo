@@ -1,0 +1,8 @@
+DEFINED_PHASES=-
+DESCRIPTION=Virtual for File-Path
+EAPI=6
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~amd64-fbsd ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris
+RDEPEND=|| ( =dev-lang/perl-5.24* ~perl-core/File-Path-2.120.100_rc ) !<perl-core/File-Path-2.120.100_rc !>perl-core/File-Path-2.120.100_rc-r999
+SLOT=0
+_eclass_exported_funcs=-
+_md5_=f60e5639ac42dc2a054bc46c9842dcd1
