@@ -56,6 +56,13 @@ EXPORT_FUNCTIONS pkg_setup src_unpack src_prepare src_configure src_compile src_
 # Otherwise, add debug to IUSE to control building with that flag.
 : ${KDE_DEBUG:=true}
 
+# @ECLASS-VARIABLE: KDE_DESIGNERPLUGIN
+# @DESCRIPTION:
+# If set to "false", do nothing.
+# Otherwise, add "designer" to IUSE to toggle build of designer plugins
+# and add the necessary DEPENDs.
+: ${KDE_DESIGNERPLUGIN:=false}
+
 # @ECLASS-VARIABLE: KDE_DOXYGEN
 # @DESCRIPTION:
 # If set to "false", do nothing.
@@ -189,6 +196,17 @@ case ${KDE_DEBUG} in
 	false)	;;
 	*)
 		IUSE+=" debug"
+		;;
+esac
+
+case ${KDE_DESIGNERPLUGIN} in
+	false)  ;;
+	*)
+		IUSE+=" designer"
+		DEPEND+=" designer? (
+			$(add_frameworks_dep kdesignerplugin)
+			$(add_qt_dep designer)
+		)"
 		;;
 esac
 
@@ -482,6 +500,10 @@ kde5_src_configure() {
 
 	if ! use_if_iuse handbook && [[ ${KDE_HANDBOOK} = optional ]] ; then
 		cmakeargs+=( -DCMAKE_DISABLE_FIND_PACKAGE_KF5DocTools=ON )
+	fi
+
+	if ! use_if_iuse designer && [[ ${KDE_DESIGNERPLUGIN} != false ]] ; then
+		cmakeargs+=( -DCMAKE_DISABLE_FIND_PACKAGE_Qt5Designer=ON )
 	fi
 
 	# install mkspecs in the same directory as qt stuff
