@@ -8735,7 +8735,7 @@ dev-ruby/aws-sdk-core 2.2.5 2.2.18: Official SDK for Amazon Web Services
 dev-ruby/aws-sdk-resources 2.2.5 2.2.18: Official SDK for Amazon Web Services
 dev-ruby/backports 3.6.7 3.6.8: Backports of Ruby features for older Ruby
 dev-ruby/bacon 1.2.0-r2: Small RSpec clone weighing less than 350 LoC
-dev-ruby/barby 0.6.3-r1: Ruby barcode generator that doesn't rely on 3rd party libraries
+dev-ruby/barby 0.6.3-r1 0.6.4: Ruby barcode generator that doesn't rely on 3rd party libraries
 dev-ruby/bcat 0.6.2-r1 0.6.2-r2: Pipe to browser utility for use at the shell and within editors
 dev-ruby/bcrypt-ruby 3.1.9 3.1.10 3.1.11: An easy way to keep your users' passwords secure
 dev-ruby/best_in_place 3.0.3 3.1.0: In-place editor helper for Rails 3
