@@ -3687,7 +3687,7 @@ dev-haskell/void 0.6.1 0.7.1: A Haskell 98 logically uninhabited data type
 dev-haskell/wai 1.4.0.2 2.0.0 2.1.0 3.0.3.0 3.0.5.0: Web Application Interface
 dev-haskell/wai-app-static 1.3.2.1 2.0.0.3 3.0.1 3.1.4.1: WAI application for static serving
 dev-haskell/wai-conduit 3.0.0.2 3.0.0.3: conduit wrappers for WAI
-dev-haskell/wai-extra 3.0.10 3.0.14: Provides some basic WAI handlers and middleware
+dev-haskell/wai-extra 3.0.10 3.0.14 3.0.15.1: Provides some basic WAI handlers and middleware
 dev-haskell/wai-logger 2.2.4.1 2.2.7: A logging system for WAI
 dev-haskell/wai-test 1.3.1.1 2.0.0.2 3.0.0: Unit test framework (built on HUnit) for WAI applications. (deprecated)
 dev-haskell/warp 3.0.13.1 3.1.10: A fast, light-weight web server for WAI applications

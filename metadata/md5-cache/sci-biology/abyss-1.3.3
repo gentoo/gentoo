@@ -1,14 +1,14 @@
 DEFINED_PHASES=configure prepare
-DEPEND=dev-cpp/sparsehash mpi? ( virtual/mpi ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=dev-cpp/sparsehash dev-libs/boost mpi? ( virtual/mpi ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=Assembly By Short Sequences - a de novo, parallel, paired-end sequence assembler
 EAPI=4
 HOMEPAGE=http://www.bcgsc.ca/platform/bioinfo/software/abyss/
 IUSE=+mpi openmp
 KEYWORDS=amd64 x86
 LICENSE=abyss
-RDEPEND=dev-cpp/sparsehash mpi? ( virtual/mpi )
+RDEPEND=dev-cpp/sparsehash dev-libs/boost mpi? ( virtual/mpi )
 SLOT=0
 SRC_URI=http://www.bcgsc.ca/downloads/abyss/abyss-1.3.3.tar.gz
 _eclass_exported_funcs=src_prepare:- src_configure:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	792f83d5ec9536cb5ccef375469d8bde	libtool	4890219c51da247200223277f993e054	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
-_md5_=0cf454bdff2b93fbf261fabc9acab1dd
+_md5_=cd8ca0a92b04d5ab1ebf39e92c92d888
