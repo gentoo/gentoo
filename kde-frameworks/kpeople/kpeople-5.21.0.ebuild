@@ -29,5 +29,4 @@ DEPEND="
 "
 RDEPEND="${DEPEND}
 	!net-libs/kpeople:5
-	!net-libs/libkpeople[-minimal(-)]
 "
