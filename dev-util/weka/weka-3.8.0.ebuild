@@ -64,3 +64,12 @@ src_install() {
 	insinto /usr/share/${PN}/data/
 	doins data/*
 }
+
+pkg_postinst() {
+	elog "If you are upgrading from weka 3.7 to later"
+	elog "and your package manager does not start please delete"
+	elog "file installedPackageCache.ser from packages folder"
+	elog "in wekafiles located in your user home."
+	elog
+	elog "rm \${HOME}/wekafiles/packages/installedPackageCache.ser"
+}
