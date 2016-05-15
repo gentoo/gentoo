@@ -5,7 +5,7 @@
 EAPI=6
 
 DIST_AUTHOR=RAAB
-inherit eutils perl-module
+inherit perl-module
 
 DESCRIPTION="Perl library for parsing the output of nsgmls"
 LICENSE="GPL-2+"
@@ -14,3 +14,8 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~s
 IUSE=""
 
 DEPEND="dev-perl/Module-Build"
+
+src_install() {
+	perl-module_src_install
+	dosym sgmlspl.pl /usr/bin/sgmlspl
+}
