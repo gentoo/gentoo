@@ -164,7 +164,7 @@ app-admin/pass 1.6.5 9999: Stores, retrieves, generates, and synchronizes passwo
 app-admin/passook 20121001: Password generator capable of generating pronounceable and/or secure passwords
 app-admin/passwordsafe 0.98.1_beta: Password manager with wxGTK based frontend
 app-admin/paxtest 0.9.14: PaX regression test suite
-app-admin/perl-cleaner 2.16 2.19 2.20 9999: User land tool for cleaning up old perl installs
+app-admin/perl-cleaner 2.19 2.20 2.21 9999: User land tool for cleaning up old perl installs
 app-admin/petrovich 1.0.0: Filesystem Integrity Checker
 app-admin/phpsyslogng 2.9.8m-r1: php-syslog-ng is a log monitor designed to easily manage logs from many hosts
 app-admin/pprocm 1.0-r1: a ncurses which monitors the CPU, disk, network and memory usage
