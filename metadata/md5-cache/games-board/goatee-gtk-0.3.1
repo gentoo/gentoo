@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst postrm prepare setup test
+DEPEND=>=dev-games/goatee-0.3:=[profile?] <dev-games/goatee-0.4:=[profile?] >=dev-haskell/cairo-0.13:=[profile?] <dev-haskell/cairo-0.14:=[profile?] >=dev-haskell/glib-0.13:=[profile?] <dev-haskell/glib-0.14:=[profile?] >=dev-haskell/gtk-0.13:=[profile?] >=dev-haskell/mtl-2.1:=[profile?] <dev-haskell/mtl-2.3:=[profile?] >=dev-haskell/parsec-3.1:=[profile?] <dev-haskell/parsec-3.2:=[profile?] >=dev-lang/ghc-7.4.1:= >=dev-haskell/cabal-1.8 test? ( >=dev-haskell/hunit-1.2 ) doc? ( || ( dev-haskell/haddock >=dev-lang/ghc-7.10.2 ) ) hscolour? ( dev-haskell/hscolour ) >=dev-haskell/cabal-1.1.4
+DESCRIPTION=A monadic take on a 2,500-year-old board game - GTK+ UI
+EAPI=6
+HOMEPAGE=http://khumba.net/projects/goatee
+IUSE=doc hscolour profile test
+KEYWORDS=~amd64 ~x86
+LICENSE=AGPL-3
+RDEPEND=>=dev-games/goatee-0.3:=[profile?] <dev-games/goatee-0.4:=[profile?] >=dev-haskell/cairo-0.13:=[profile?] <dev-haskell/cairo-0.14:=[profile?] >=dev-haskell/glib-0.13:=[profile?] <dev-haskell/glib-0.14:=[profile?] >=dev-haskell/gtk-0.13:=[profile?] >=dev-haskell/mtl-2.1:=[profile?] <dev-haskell/mtl-2.3:=[profile?] >=dev-haskell/parsec-3.1:=[profile?] <dev-haskell/parsec-3.2:=[profile?] >=dev-lang/ghc-7.4.1:=
+SLOT=0/0.3.1
+SRC_URI=mirror://hackage/packages/archive/goatee-gtk/0.3.1/goatee-gtk-0.3.1.tar.gz
+_eclass_exported_funcs=pkg_postrm:haskell-cabal pkg_postinst:haskell-cabal pkg_setup:haskell-cabal src_prepare:- src_configure:haskell-cabal src_compile:haskell-cabal src_test:haskell-cabal src_install:haskell-cabal
+_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	ghc-package	892c6c35a9ac0993e65049c039438508	haskell-cabal	e93b3ae2b779ea727098c318740957e3	multilib	d062ae4ba2fc40a19c11de2ad89b6616	multiprocessing	e32940a7b2a9992ad217eccddb84d548	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=a5eec07e8bf8f49eac418e571b4a5d16

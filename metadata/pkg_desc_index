@@ -3104,7 +3104,7 @@ dev-games/clanlib 0.8.1 2.3.7: multi-platform game development library
 dev-games/crystalspace 2.0-r1: Portable 3D Game Development Kit written in C++
 dev-games/flatzebra 0.1.6: A generic game engine for 2D double-buffering animation
 dev-games/flinker 1.72: GBA cart writing utility by Jeff Frohwein
-dev-games/goatee 0.3.0: A monadic take on a 2,500-year-old board game - library
+dev-games/goatee 0.3.0 0.3.1.1: A monadic take on a 2,500-year-old board game - library
 dev-games/gtkradiant 1.5.0_pre20060302: FPS level editor
 dev-games/guichan 0.8.2: a portable C++ GUI library designed for games using Allegro, SDL and/or OpenGL
 dev-games/hawknl 1.68-r2: A cross-platform network library designed for games
@@ -9898,7 +9898,7 @@ dev-util/watchr 0.7: Modern continuous testing (flexible alternative to Autotest
 dev-util/webcpp 0.8.4: converts source code into HTML using a customizable syntax highlight engine and colour schemes
 dev-util/weblint 1.020: syntax and minimal style checker for HTML by Neil Bowers
 dev-util/webstorm 10.0.4.141.1550: JavaScript IDE for complex client-side development and server-side development with Node.js
-dev-util/weka 3.6.6-r1 3.6.6-r2 3.6.12-r1 3.7.13: A Java data mining package
+dev-util/weka 3.6.6-r1 3.6.6-r2 3.6.12-r1 3.7.13 3.8.0: A Java data mining package
 dev-util/wiggle 0.9-r1: program for applying patches that patch cannot apply because of conflicting changes
 dev-util/wstool 0.1.10 0.1.12 0.1.13 9999: Commands to manage several local SCM repositories for ROS
 dev-util/wxglade 0.6.3-r1: Glade-like GUI designer which can generate Python, Perl, C++ or XRC code
@@ -10247,7 +10247,7 @@ games-board/gnuchess 6.2.2-r1: Console based chess interface
 games-board/gnuchess-book 1.02: Opening book for gnuchess
 games-board/gnugo 3.9.1-r1: A Go-playing program
 games-board/gnushogi 1.4.1: Japanese version of chess (commandline + X-Version)
-games-board/goatee-gtk 0.3.0: A monadic take on a 2,500-year-old board game - GTK+ UI
+games-board/goatee-gtk 0.3.0 0.3.1: A monadic take on a 2,500-year-old board game - GTK+ UI
 games-board/grhino 0.16.1: Reversi game for GNOME, supporting the Go/Game Text Protocol
 games-board/gtkatlantic 0.6.1: Monopoly-like game that works with the monopd server
 games-board/gtkboard 0.11_pre0: Board games system
