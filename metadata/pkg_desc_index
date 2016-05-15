@@ -1482,7 +1482,7 @@ app-i18n/ibus-cangjie 2.1 2.2 2.3 2.4: The IBus engine for users of the Cangjie 
 app-i18n/ibus-chewing 1.4.7: The Chewing IMEngine for IBus Framework
 app-i18n/ibus-fbterm 0.9.1: ibus-fbterm is a input method for FbTerm based on iBus
 app-i18n/ibus-handwrite 2.1.4 2.1.4-r1: hand write recognition/input using ibus IM engine
-app-i18n/ibus-hangul 1.4.0 1.4.1 1.4.2 1.4.2-r1: The Hangul engine for IBus input platform
+app-i18n/ibus-hangul 1.4.0 1.4.1 1.4.2 1.4.2-r1 1.5.0: The Hangul engine for IBus input platform
 app-i18n/ibus-libpinyin 1.6.92: ibus-libpinyin - pinyin chinese input for ibus using libpinyin
 app-i18n/ibus-m17n 1.3.2 1.3.3 1.3.4: The M17N engine IMEngine for IBus Framework
 app-i18n/ibus-pinyin 1.4.0 1.4.0-r1 1.5.0 1.5.0-r1 1.5.0-r2: Chinese PinYin IMEngine for IBus Framework
@@ -15502,7 +15502,7 @@ sci-calculators/units 2.12: Unit conversion program
 sci-calculators/wcalc 2.4: A flexible command-line scientific calculator
 sci-chemistry/GromacsWrapper 0.3.1 0.3.2: Python framework for Gromacs
 sci-chemistry/PyMca 4.6.2 4.6.2-r1: X-ray Fluorescence Toolkit
-sci-chemistry/acpype 366 374 389: AnteChamber PYthon Parser interfacE
+sci-chemistry/acpype 389: AnteChamber PYthon Parser interfacE
 sci-chemistry/ambertools 1.5-r1: A suite for carrying out complete molecular mechanics investigations
 sci-chemistry/apbs 1.4.1-r2: Evaluation of electrostatic properties of nanoscale biomolecular systems
 sci-chemistry/aqua 3.2-r2: Program suite in this distribution calculates restraint violations
@@ -15633,7 +15633,7 @@ sci-electronics/ghdl 0.29: Complete VHDL simulator using the GCC technology
 sci-electronics/gnetman 0.0.1_pre20110124: A GNU Netlist Manipulation Library
 sci-electronics/gnucap 0.35.20091207: GNUCap is the GNU Circuit Analysis Package
 sci-electronics/gplcver 2.11a 2.12a: Verilog simulator
-sci-electronics/gresistor 0.0.1 0.0.1-r1 0.0.1-r2: Translate a resistor color codes into a readable value
+sci-electronics/gresistor 0.0.1 0.0.1-r1 0.0.1-r2 0.0.2: Translate a resistor color codes into a readable value
 sci-electronics/gsmc 1.1-r2: A GTK program for doing Smith Chart calculations
 sci-electronics/gspeakers 0.11-r2: GTK based loudspeaker enclosure and crossovernetwork designer
 sci-electronics/gspiceui 1.1.0: GUI frontend for Ngspice and Gnucap
@@ -16043,7 +16043,7 @@ sci-mathematics/reduce 20110414-r1: A general-purpose computer algebra system
 sci-mathematics/relational 0.11 2.4: Educational tool for relational algebra
 sci-mathematics/rkward 0.6.1: IDE for the R-project
 sci-mathematics/rngstreams 1.0.1: Multiple independent streams of pseudo-random numbers
-sci-mathematics/rstudio 0.97.336 0.97.551 0.98.490 0.98.490-r1 0.98.932 0.98.953 0.98.1028 0.98.1091 0.99.473-r1 0.99.482 0.99.483 0.99.484 0.99.486-r1 0.99.491 0.99.879 0.99.893 0.99.896: IDE for the R language
+sci-mathematics/rstudio 0.97.336 0.97.551 0.98.490 0.98.490-r1 0.98.932 0.98.953 0.98.1028 0.98.1091 0.99.473-r1 0.99.482 0.99.483 0.99.484 0.99.486-r1 0.99.491 0.99.879 0.99.893 0.99.896 0.99.902: IDE for the R language
 sci-mathematics/rw 0.7: Compute rank-width decompositions of graphs
 sci-mathematics/sha1-polyml 5.5.0: implementation of SHA1 is taken from the GNU coreutils package
 sci-mathematics/singular 3.1.6 4.0.2: Computer algebra system for polynomial computations
