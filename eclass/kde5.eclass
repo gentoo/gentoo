@@ -249,8 +249,7 @@ _calculate_src_uri() {
 		kjs | \
 		kjsembed | \
 		kmediaplayer | \
-		kross | \
-		krunner)
+		kross)
 			_kmname="portingAids/${_kmname}"
 			;;
 	esac
