@@ -9898,7 +9898,7 @@ dev-util/watchr 0.7: Modern continuous testing (flexible alternative to Autotest
 dev-util/webcpp 0.8.4: converts source code into HTML using a customizable syntax highlight engine and colour schemes
 dev-util/weblint 1.020: syntax and minimal style checker for HTML by Neil Bowers
 dev-util/webstorm 10.0.4.141.1550: JavaScript IDE for complex client-side development and server-side development with Node.js
-dev-util/weka 3.6.6-r1 3.6.6-r2 3.6.12-r1 3.7.13 3.8.0: A Java data mining package
+dev-util/weka 3.7.13 3.8.0: A Java data mining package
 dev-util/wiggle 0.9-r1: program for applying patches that patch cannot apply because of conflicting changes
 dev-util/wstool 0.1.10 0.1.12 0.1.13 9999: Commands to manage several local SCM repositories for ROS
 dev-util/wxglade 0.6.3-r1: Glade-like GUI designer which can generate Python, Perl, C++ or XRC code
