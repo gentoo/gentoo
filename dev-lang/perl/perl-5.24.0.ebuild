@@ -104,7 +104,7 @@ eblit-run() {
 
 src_prepare()	{ eblit-run src_prepare   v50240001 ; }
 
-src_configure()	{ eblit-run src_configure v50180002 ; }
+src_configure()	{ eblit-run src_configure v50240001 ; }
 
 #src_compile()	{ eblit-run src_compile   v50160001 ; }
 
@@ -113,7 +113,7 @@ src_test()		{
 	eblit-run src_test      v50160001 ;
 }
 
-src_install()	{ eblit-run src_install   v50200001 ; }
+src_install()	{ eblit-run src_install   v50240001 ; }
 
 # FILESDIR might not be available during binpkg install
 # FIXME: version passing
