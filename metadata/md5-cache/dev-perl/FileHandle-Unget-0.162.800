@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install prepare test unpack
-DEPEND=>=virtual/perl-Scalar-List-Utils-1.140.0 >=virtual/perl-ExtUtils-MakeMaker-6.360.0 dev-perl/File-Slurp test? ( virtual/perl-Test-Simple ) dev-lang/perl:=[-build(-)]
+DEPEND=>=virtual/perl-Scalar-List-Utils-1.140.0 >=virtual/perl-ExtUtils-MakeMaker-6.360.0 dev-perl/File-Slurp dev-perl/URI test? ( virtual/perl-Test-Simple ) dev-lang/perl:=[-build(-)]
 DESCRIPTION=A FileHandle which supports ungetting of multiple bytes
 EAPI=5
 HOMEPAGE=http://search.cpan.org/dist/FileHandle-Unget/
@@ -11,4 +11,4 @@ SLOT=0
 SRC_URI=mirror://cpan/authors/id/D/DC/DCOPPIT/FileHandle-Unget-0.1628.tar.gz
 _eclass_exported_funcs=src_unpack:perl-module src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
 _eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	multilib	d062ae4ba2fc40a19c11de2ad89b6616	multiprocessing	e32940a7b2a9992ad217eccddb84d548	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	c584f9e0fe426f3dcc2c46c6f7cb95ce	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	unpacker	45d07319df5f40ee6af58418b0f930be
-_md5_=9533f5e904e1a2dccd8d45649219a842
+_md5_=8d3f8c9fb13cee5ea15d7716d45a9a94
