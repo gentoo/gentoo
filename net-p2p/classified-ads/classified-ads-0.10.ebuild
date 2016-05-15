@@ -37,6 +37,7 @@ RDEPEND="dev-libs/openssl:0
 		virtual/libintl"
 
 DEPEND="${RDEPEND}
+	sys-devel/gettext
 	doc? ( app-doc/doxygen[dot] )
 	test? ( dev-libs/libgcrypt:0
 		dev-qt/qttest:5
