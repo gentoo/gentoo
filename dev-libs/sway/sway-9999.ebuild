@@ -14,7 +14,7 @@ EGIT_REPO_URI="https://github.com/SirCmpwn/sway.git"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS=""
-IUSE="swaylock swaybg swaybar swaygrab swaymsg gdk-pixbuf zsh-completion wallpapers systemd"
+IUSE="+swaybg +swaybar +swaymsg swaygrab swaylock +gdk-pixbuf zsh-completion wallpapers systemd"
 
 RDEPEND="=dev-libs/wlc-9999[systemd=]
 		dev-libs/json-c
