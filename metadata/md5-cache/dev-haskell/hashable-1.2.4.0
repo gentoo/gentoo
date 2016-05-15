@@ -4,11 +4,11 @@ DESCRIPTION=A class for types that can be converted to a hash value
 EAPI=5
 HOMEPAGE=https://github.com/tibbe/hashable
 IUSE=+cpu_flags_x86_sse2 cpu_flags_x86_sse4_1 +gmp doc hscolour profile test
-KEYWORDS=~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86
+KEYWORDS=~alpha amd64 ~ia64 ~ppc ~ppc64 ~sparc x86
 LICENSE=BSD
 RDEPEND=>=dev-haskell/text-0.11.0.5:=[profile?] >=dev-lang/ghc-7.4.1:=
 SLOT=0/1.2.4.0
 SRC_URI=mirror://hackage/packages/archive/hashable/1.2.4.0/hashable-1.2.4.0.tar.gz
 _eclass_exported_funcs=pkg_postrm:haskell-cabal pkg_postinst:haskell-cabal pkg_setup:haskell-cabal src_configure:- src_compile:haskell-cabal src_test:haskell-cabal src_install:haskell-cabal
 _eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	ghc-package	892c6c35a9ac0993e65049c039438508	haskell-cabal	e93b3ae2b779ea727098c318740957e3	multilib	d062ae4ba2fc40a19c11de2ad89b6616	multiprocessing	e32940a7b2a9992ad217eccddb84d548	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=d3d918429944a8c2a13419c401ccfd5b
+_md5_=0fe25dcb4211295535d4707b0683bdbd

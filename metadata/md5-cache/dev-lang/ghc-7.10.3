@@ -4,7 +4,7 @@ DESCRIPTION=The Glasgow Haskell Compiler
 EAPI=5
 HOMEPAGE=http://www.haskell.org/ghc/
 IUSE=doc ghcbootstrap ghcmakebinary +gmp binary elibc_glibc
-KEYWORDS=~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux
+KEYWORDS=~alpha amd64 ~ia64 ~ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux
 LICENSE=BSD
 PDEPEND=!ghcbootstrap? ( =app-admin/haskell-updater-1.2* )
 RDEPEND=>=dev-lang/perl-5.6.1 >=dev-libs/gmp-5:= sys-libs/ncurses:=[unicode] !ghcmakebinary? ( virtual/libffi:= ) !kernel_Darwin? ( >=sys-devel/gcc-2.95.3:* ) kernel_linux? ( >=sys-devel/binutils-2.17:* ) kernel_SunOS? ( >=sys-devel/binutils-2.17:* )
@@ -13,4 +13,4 @@ SLOT=0/7.10.3
 SRC_URI=!binary? ( http://downloads.haskell.org/~ghc/7.10.3/ghc-7.10.3-src.tar.bz2 ) !ghcbootstrap? ( alpha? ( http://code.haskell.org/~slyfox/ghc-alpha/ghc-bin-7.10.3-alpha.tbz2 ) amd64? ( http://code.haskell.org/~slyfox/ghc-amd64/ghc-bin-7.10.3-amd64.tbz2 ) ia64? ( http://code.haskell.org/~slyfox/ghc-ia64/ghc-bin-7.10.3-ia64.tbz2 ) ppc? ( http://code.haskell.org/~slyfox/ghc-ppc/ghc-bin-7.10.3-ppc.tbz2 ) ppc64? ( http://code.haskell.org/~slyfox/ghc-ppc64/ghc-bin-7.10.3-ppc64.tbz2 ) sparc? ( http://code.haskell.org/~slyfox/ghc-sparc/ghc-bin-7.10.3-sparc.tbz2 ) x86? ( http://code.haskell.org/~slyfox/ghc-x86/ghc-bin-7.10.3-x86.tbz2 ) ) mirror://hackage/package/binary/binary-0.7.6.1.tar.gz mirror://hackage/package/hoopl/hoopl-3.10.2.0.tar.gz mirror://hackage/package/transformers/transformers-0.4.3.0.tar.gz
 _eclass_exported_funcs=pkg_prerm:- pkg_preinst:- pkg_postrm:- pkg_postinst:- pkg_setup:- src_unpack:- src_prepare:- src_configure:- src_compile:- src_install:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	bash-completion-r1	acf715fa09463f043fbfdc1640f3fb85	eutils	792f83d5ec9536cb5ccef375469d8bde	flag-o-matic	d270fa247153df66074f795fa42dba3e	ghc-package	892c6c35a9ac0993e65049c039438508	libtool	4890219c51da247200223277f993e054	multilib	d062ae4ba2fc40a19c11de2ad89b6616	pax-utils	ecf634cba91bb9591a8fdb6f6145f1bb	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=7b73310c94e88c25fd7fbd5412b6ef3e
+_md5_=6af5e5b8d08c48ee4cf1e57356207a57
