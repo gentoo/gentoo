@@ -6169,7 +6169,7 @@ dev-perl/Role-Tiny 2.0.1: Roles. Like a nouvelle cuisine portion size slice of M
 dev-perl/Roman 1.230.0-r1 1.240.0: Perl module for conversion between Roman and Arabic numerals
 dev-perl/Router-Simple 0.140.0-r1 0.170.0: Simple HTTP router
 dev-perl/SDL 2.546: Simple DirectMedia Layer (SDL) bindings for perl
-dev-perl/SGMLSpm 1.03-r7 1.1: Perl library for parsing the output of nsgmls
+dev-perl/SGMLSpm 1.03-r7 1.1-r1: Perl library for parsing the output of nsgmls
 dev-perl/SNMP_Session 1.13-r2: A SNMP Perl Module
 dev-perl/SOAP-Lite 1.040.0-r1 1.190.0: Lightweight interface to the SOAP protocol both on client and server side
 dev-perl/SOAP-WSDL 3.3.0: SOAP with WSDL support
