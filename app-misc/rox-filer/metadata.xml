@@ -13,9 +13,9 @@
 </maintainer>
 <maintainer type="project">
 	<email>proxy-maint@gentoo.org</email>
-	<name>Proxy Maintainers Project
-</name>
+	<name>Proxy Maintainers Project</name>
 </maintainer>
+
 <upstream>
 	<maintainer status="active">
 		<email>talex5@gmail.com</email>
@@ -24,6 +24,7 @@
 	<bugs-to>http://rox.sourceforge.net/desktop/lists</bugs-to>
 	<remote-id type="sourceforge">rox</remote-id>
 </upstream>
+
 <longdescription lang="en">
 	ROX-Filer is a fast and powerful graphical file manager for the
 	X Window System. You can use it as a small and fast filer within your
