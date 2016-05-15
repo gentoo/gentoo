@@ -20,7 +20,7 @@ IUSE="+semigroups +statevar +tagged"
 
 RDEPEND=">=dev-haskell/transformers-0.2:=[profile?] <dev-haskell/transformers-0.5:=[profile?]
 	>=dev-haskell/transformers-compat-0.3:=[profile?] <dev-haskell/transformers-compat-1:=[profile?]
-	>=dev-haskell/void-0.6:=[profile?] <dev-haskell/void-1:=[profile?]
+	>=dev-haskell/void-0.7.1:=[profile?] <dev-haskell/void-1:=[profile?]
 	>=dev-lang/ghc-7.4.1:=
 	semigroups? ( >=dev-haskell/semigroups-0.15.2:=[profile?] <dev-haskell/semigroups-1:=[profile?] )
 	statevar? ( >=dev-haskell/statevar-1.1:=[profile?] <dev-haskell/statevar-1.2:=[profile?] )
