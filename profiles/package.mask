@@ -30,6 +30,11 @@
 
 #--- END OF EXAMPLES ---
 
+# David Seifert <soap@gentoo.org> (15 May 2016)
+# Masked for removal. Deprecated, relies on ancient CUDA APIs,
+# does not build with current CUDA releases. See bug #583068.
+sci-libs/torch
+
 # Sergei Trofimovich <slyfox@gentoo.org> (14 May 2016)
 # Masked for removal. Deprecated, use dev-haskell/tls instead.
 dev-haskell/tls-extra
