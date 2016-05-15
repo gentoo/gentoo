@@ -234,7 +234,7 @@ app-admin/xtail 2.1 2.1-r1: Tail multiple logfiles at once, even if rotated
 app-admin/yaala 0.7.3-r1 0.7.3-r2: Yet Another Log Analyzer
 app-admin/yadm 1.04: A dotfile manager for the config files in your home folder
 app-antivirus/clamav 0.98.7 0.98.7-r1 0.99 0.99.1 0.99.2: Clam Anti-Virus Scanner
-app-antivirus/clamav-unofficial-sigs 3.7.2 4.9.2 5.0.6: Download and install third-party clamav signatures
+app-antivirus/clamav-unofficial-sigs 3.7.2 4.9.2 5.3.1: Download and install third-party clamav signatures
 app-antivirus/skyldav 0.5-r2 0.6: Skyld AV: on-access scanning daemon for ClamAV using fanotify
 app-arch/advancecomp 1.15 1.19 1.20: Recompress ZIP, PNG and MNG, considerably improving compression
 app-arch/afio 2.5 2.5.1: makes cpio-format archives and deals somewhat gracefully with input data corruption
