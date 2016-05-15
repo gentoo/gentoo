@@ -124,7 +124,7 @@ get_ada_dep() {
 # This function is used to check whether the requested gnat profile matches the
 # requested Ada standard
 # !!ATTN!!
-# This must match dependencies as specified in vitrual/ada !!!
+# This must match dependencies as specified in virtual/ada !!!
 #
 # params:
 #  $1 - the requested gnat profile in usual form (e.g. x86_64-pc-linux-gnu-gnat-gcc-4.1)
