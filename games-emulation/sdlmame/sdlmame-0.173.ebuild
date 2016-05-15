@@ -53,12 +53,12 @@ S=${WORKDIR}
 
 # Function to disable a makefile option
 disable_feature() {
-	sed -i -e "/$1.*=/s:^:# :" makefile || die
+	sed -i -e "/^[ 	]*$1.*=/s:^:# :" makefile || die
 }
 
 # Function to enable a makefile option
 enable_feature() {
-	sed -i -e "/^#.*$1.*=/s:^#::"  makefile || die
+	sed -i -e "/^#.*$1.*=/s:^#[ 	]*::"  makefile || die
 }
 
 pkg_setup() {
