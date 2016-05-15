@@ -4,7 +4,7 @@
 
 EAPI=6
 
-inherit eutils user
+inherit user
 
 DESCRIPTION="Scripts necessary for use of vdr as a set-top-box"
 HOMEPAGE="https://www.gentoo.org/"
@@ -30,14 +30,6 @@ pkg_setup() {
 	#   audio - playing sound when using software-devices
 	#   cdrom - playing dvds/audio-cds ...
 	enewuser vdr -1 /bin/bash "${VDR_HOME}" vdr,video,audio,cdrom
-}
-
-src_prepare() {
-	# moved into own package
-	sed -e '/SUBDIRS =/s# bin # #' -i usr/Makefile
-	sed -e '/all:/s#compile##' -i Makefile
-
-	eapply_user
 }
 
 src_install() {
