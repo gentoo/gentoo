@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -147,7 +147,7 @@ COMMON_DEPEND="
 	net-nds/openldap
 	sci-mathematics/lpsolve
 	virtual/jpeg:0
-	>=x11-libs/cairo-1.10.0[X]
+	>=x11-libs/cairo-1.10.0[X,-xlib-xcb]
 	x11-libs/libXinerama
 	x11-libs/libXrandr
 	x11-libs/libXrender
@@ -163,7 +163,7 @@ COMMON_DEPEND="
 	gltf? ( media-libs/libgltf )
 	gnome? ( gnome-base/gconf:2 )
 	gtk? (
-		x11-libs/gdk-pixbuf[X]
+		x11-libs/gdk-pixbuf
 		>=x11-libs/gtk+-2.24:2
 	)
 	gtk3? ( >=x11-libs/gtk+-3.8:3 )
@@ -221,15 +221,13 @@ DEPEND="${COMMON_DEPEND}
 	dev-util/cppunit
 	>=dev-util/gperf-3
 	dev-util/intltool
-	>=dev-util/mdds-0.12.0:=
+	>=dev-util/mdds-0.12.0:0=
 	media-libs/glm
 	net-misc/npapi-sdk
-	>=sys-apps/findutils-4.4.2
 	sys-devel/bison
-	sys-apps/coreutils
 	sys-devel/flex
 	sys-devel/gettext
-	>=sys-devel/make-3.82
+	!<sys-devel/make-3.82
 	sys-devel/ucpp
 	sys-libs/zlib
 	virtual/pkgconfig

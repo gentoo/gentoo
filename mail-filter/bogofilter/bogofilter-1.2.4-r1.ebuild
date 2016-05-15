@@ -1,8 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
+
 inherit autotools db-use eutils flag-o-matic toolchain-funcs
 
 DESCRIPTION="Bayesian spam filter designed with fast algorithms, and tuned for speed"
@@ -14,7 +15,8 @@ SLOT="0"
 KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 ~sh sparc x86 ~x86-fbsd"
 IUSE="berkdb sqlite tokyocabinet"
 
-DEPEND="virtual/libiconv
+DEPEND="
+	virtual/libiconv
 	berkdb?  ( >=sys-libs/db-3.2 )
 	!berkdb? (
 		sqlite?  ( >=dev-db/sqlite-3.6.22 )
@@ -23,7 +25,7 @@ DEPEND="virtual/libiconv
 			!tokyocabinet? ( >=sys-libs/db-3.2 )
 		)
 	)
-	sci-libs/gsl
+	sci-libs/gsl:=
 	app-arch/pax"
 # pax needed for bf_tar
 RDEPEND="${DEPEND}"

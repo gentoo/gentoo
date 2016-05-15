@@ -1,0 +1,75 @@
+From 366372076042687a0bf21cf72c7693e4a7c2b3d6 Mon Sep 17 00:00:00 2001
+From: Detlef Graef <detlef.graef@yahoo.de>
+Date: Wed, 13 Jan 2016 16:59:35 +0100
+Subject: Fix crash at PanTreeStore::get_iter()
+
+---
+ pan/gui/gui.cc      | 2 +-
+ pan/gui/prefs-ui.cc | 2 +-
+ pan/gui/prefs.cc    | 6 ++++--
+ pan/gui/prefs.h     | 2 +-
+ 4 files changed, 7 insertions(+), 5 deletions(-)
+
+diff --git a/pan/gui/gui.cc b/pan/gui/gui.cc
+index d709608..da7b5e7 100644
+--- a/pan/gui/gui.cc
++++ b/pan/gui/gui.cc
+@@ -2022,7 +2022,7 @@ void GUI :: do_read_selected_group ()
+     // update iconv handler
+     const char * from = g_mime_charset_iconv_name(local.c_str());
+     char buf[256];
+-    g_snprintf(buf, sizeof(buf), "%s//IGNORE", _prefs.get_string("default-charset", "UTF-8").c_str());
++    g_snprintf(buf, sizeof(buf), "%s//IGNORE", _prefs.get_string("default-charset", "UTF-8").str);
+     const char * to  = g_mime_charset_iconv_name(buf);
+     {
+       if (iconv_inited)
+diff --git a/pan/gui/prefs-ui.cc b/pan/gui/prefs-ui.cc
+index 23dc212..57f45bf 100644
+--- a/pan/gui/prefs-ui.cc
++++ b/pan/gui/prefs-ui.cc
+@@ -343,7 +343,7 @@ namespace pan
+   {
+     GtkWidget * t = gtk_entry_new();
+     g_object_set_data_full (G_OBJECT(t), PREFS_KEY, g_strdup(key), g_free);
+-    gtk_entry_set_text (GTK_ENTRY(t), prefs.get_string (key, fallback).c_str());
++    gtk_entry_set_text (GTK_ENTRY(t), prefs.get_string (key, fallback).str);
+     g_signal_connect (t, "changed", G_CALLBACK(entry_changed_cb), &prefs);
+     return t;
+   }
+diff --git a/pan/gui/prefs.cc b/pan/gui/prefs.cc
+index 5d21af7..95700a8 100644
+--- a/pan/gui/prefs.cc
++++ b/pan/gui/prefs.cc
+@@ -324,12 +324,14 @@ Prefs :: set_long64 (const StringView& key, uint64_t value)
+ ****  STRINGS
+ ***/
+ 
+-std::string
++StringView
+ Prefs :: get_string (const StringView& key, const StringView& fallback) const
+ {
++  StringView prefs_string;
+   if (!_strings.count (key))
+     _strings[key] = fallback;
+-  return _strings[key];
++  prefs_string = _strings[key];
++  return prefs_string;
+ }
+ 
+ void
+diff --git a/pan/gui/prefs.h b/pan/gui/prefs.h
+index 748834a..eac865e 100644
+--- a/pan/gui/prefs.h
++++ b/pan/gui/prefs.h
+@@ -103,7 +103,7 @@ namespace pan
+       uint64_t get_long64 (const StringView& key, uint64_t fallback) const;
+       void set_long64 (const StringView& key, uint64_t value);
+ 
+-      std::string get_string (const StringView& key, const StringView& fallback) const;
++      StringView get_string (const StringView& key, const StringView& fallback) const;
+       void set_string (const StringView& key, const StringView&);
+ 
+       void set_color (const StringView& key, const GdkColor& color);
+-- 
+cgit v0.12
+

@@ -1,18 +1,3 @@
-From bde898de482645f6963b673e8ff0b486a0a6db25 Mon Sep 17 00:00:00 2001
-From: Matthias Maier <tamiko@kyomu.43-1.org>
-Date: Tue, 28 Jul 2015 11:10:59 -0500
-Subject: [PATCH] adapt paths for gentoo's fs layout
-
-https://bugs.gentoo.org/show_bug.cgi?id=554628
----
- examples/apparmor/Makefile.am                    |  4 +-
- examples/apparmor/usr.lib.libvirt.virt-aa-helper | 48 ------------------------
- examples/apparmor/usr.libexec.virt-aa-helper     | 48 ++++++++++++++++++++++++
- examples/apparmor/usr.sbin.libvirtd              |  4 +-
- 4 files changed, 52 insertions(+), 52 deletions(-)
- delete mode 100644 examples/apparmor/usr.lib.libvirt.virt-aa-helper
- create mode 100644 examples/apparmor/usr.libexec.virt-aa-helper
-
 diff --git a/examples/apparmor/Makefile.am b/examples/apparmor/Makefile.am
 index 7a20e16..c3c67b6 100644
 --- a/examples/apparmor/Makefile.am

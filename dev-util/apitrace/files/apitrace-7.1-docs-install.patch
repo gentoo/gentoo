@@ -1,0 +1,23 @@
+--- apitrace-7.1/CMakeLists.txt
++++ apitrace-7.1/CMakeLists.txt
+@@ -553,20 +553,6 @@
+ ##############################################################################
+ # Packaging
+ 
+-install (
+-    FILES
+-        README.markdown
+-        docs/BUGS.markdown
+-        docs/NEWS.markdown
+-        docs/USAGE.markdown
+-    DESTINATION ${DOC_INSTALL_DIR}
+-)
+-install (
+-    FILES LICENSE
+-    DESTINATION ${DOC_INSTALL_DIR}
+-    RENAME LICENSE.txt
+-)
+-
+ set (CPACK_PACKAGE_VERSION_MAJOR "7")
+ set (CPACK_PACKAGE_VERSION_MINOR "0")
+ 

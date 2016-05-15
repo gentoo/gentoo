@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="safely and cleanly create closures via string eval"
 
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~ppc ~x86 ~x86-fbsd ~x64-macos"
+KEYWORDS="amd64 ~arm hppa ppc x86 ~x86-fbsd ~x64-macos"
 IUSE="test minimal"
 
 # Scalar::Util -> Scalar-List-Utils
@@ -22,7 +22,7 @@ RDEPEND="
 	dev-perl/Try-Tiny
 	!minimal? (
 		>=dev-perl/Devel-LexAlias-0.50.0
-		dev-perl/perltidy
+		dev-perl/Perl-Tidy
 	)
 "
 DEPEND="${RDEPEND}

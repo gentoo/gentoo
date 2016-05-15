@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -8,8 +8,7 @@ PYTHON_REQ_USE="xml"
 
 inherit python-single-r1
 
-DESCRIPTION="A software that lets you send anything you want directly to a
-pastebin from the command line."
+DESCRIPTION="A software that lets you send anything you want directly to a pastebin"
 HOMEPAGE="https://launchpad.net/pastebinit"
 SRC_URI="https://launchpad.net/${PN}/trunk/${PV}/+download/${P}.tar.bz2"
 

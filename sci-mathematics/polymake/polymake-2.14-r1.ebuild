@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -20,16 +20,16 @@ KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 
 # do not allow new perl versions because our testbuilds segfault
 DEPEND="<dev-lang/perl-5.21
-	dev-libs/gmp
-	dev-libs/mpfr
+	dev-libs/gmp:0=
+	dev-libs/mpfr:0
 	dev-libs/libxml2:2
 	dev-libs/libxslt
 	ppl? ( dev-libs/ppl )
 	cdd? ( sci-libs/cddlib )
 	lrs? ( >=sci-libs/lrslib-051[gmp] )
 	bliss? ( sci-libs/bliss[gmp] )
-	group? ( dev-libs/boost )
-	libnormaliz? ( dev-libs/boost )
+	group? ( dev-libs/boost:= )
+	libnormaliz? ( dev-libs/boost:= )
 	singular? ( >=sci-mathematics/singular-4.0.1 )"
 RDEPEND="${DEPEND}
 	dev-perl/XML-LibXML

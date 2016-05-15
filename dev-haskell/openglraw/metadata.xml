@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>haskell</herd>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
 	<longdescription>
 		OpenGLRaw is a raw Haskell binding for the OpenGL 3.2 graphics system and
-		lots of OpenGL extensions. It is basically a 1:1 mapping of OpenGL&#39;s C API,
+		lots of OpenGL extensions. It is basically a 1:1 mapping of OpenGL's C API,
 		intended as a basis for a nicer interface. OpenGLRaw offers access to all
 		necessary functions, tokens and types plus a general facility for loading
 		extension entries. The module hierarchy closely mirrors the naming structure
@@ -13,7 +16,7 @@
 		needed for building this package. If an API entry is not found at runtime, a
 		userError is thrown.
 		
-		OpenGL is the industry&#39;s most widely used and supported 2D and 3D graphics
+		OpenGL is the industry's most widely used and supported 2D and 3D graphics
 		application programming interface (API), incorporating a broad set of
 		rendering, texture mapping, special effects, and other powerful visualization
 		functions. For more information about OpenGL and its various extensions,

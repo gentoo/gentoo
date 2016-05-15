@@ -6,8 +6,8 @@ EAPI=5
 inherit eutils xorg-2
 
 DESCRIPTION="Application startup notification and feedback library"
-HOMEPAGE="http://www.freedesktop.org/wiki/Software/startup-notification"
-SRC_URI="http://www.freedesktop.org/software/${PN}/releases/${P}.tar.gz"
+HOMEPAGE="https://www.freedesktop.org/wiki/Software/startup-notification"
+SRC_URI="https://www.freedesktop.org/software/${PN}/releases/${P}.tar.gz"
 
 LICENSE="LGPL-2 MIT"
 SLOT="0"

@@ -2,8 +2,8 @@ Fixing as-needed issues
 
 http://bugs.gentoo.org/show_bug.cgi?id=318135
 
---- irdadump/Makefile
-+++ irdadump/Makefile
+--- irda-utils-0.9.18/irdadump/Makefile
++++ irda-utils-0.9.18/irdadump/Makefile
 @@ -40,7 +40,7 @@
  
  irdadump: $(IRDADUMP_OBJS) $(LIBIRDADUMP_TARGET)

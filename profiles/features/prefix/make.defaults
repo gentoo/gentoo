@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# Michael Haubenwallner <haubi@gentoo.org> (19 Apr 2016)
+# We can not use xattrs by default in Prefix.
+USE="-xattr"
+
 # Jeremy Olexa <darkside@gentoo.org> (30 Jun 2009)
 # As of now, there does not exist a reliable working sandbox implementation on
 # any Gentoo Prefix platform. Lately, sandbox has caused *many* issues that
@@ -18,6 +22,3 @@ FEATURES="${FEATURES} -sandbox"
 # this probably already is like this, but we assure that in prefix we
 # have a GNU userland
 USERLAND="GNU"
-
-# Python 3.4 isn't in prefix yet.
-USE="python_targets_python3_3 -python_targets_python3_4"

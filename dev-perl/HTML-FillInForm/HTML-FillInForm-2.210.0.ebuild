@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="Populates HTML Forms with data"
 
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~x86 ~x86-fbsd"
+KEYWORDS="amd64 ~arm ~ppc x86 ~x86-fbsd"
 IUSE="test"
 
 RDEPEND="

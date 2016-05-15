@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>net-im</herd>
-<maintainer>
+<maintainer type="person">
   <email>chainsaw@gentoo.org</email>
 </maintainer>
 	<longdescription>Package that creats the users and directory's for jabber

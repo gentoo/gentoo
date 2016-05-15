@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>freedesktop</herd>
-	<maintainer>
+	<maintainer type="project">
 		<email>freedesktop-bugs@gentoo.org</email>
 	</maintainer>
 	<use>
-		<flag name='internal-glib'>Use internal copy of <pkg>dev-libs/glib</pkg></flag>
+		<flag name="internal-glib">Use internal copy of <pkg>dev-libs/glib</pkg></flag>
 	</use>
 </pkgmetadata>

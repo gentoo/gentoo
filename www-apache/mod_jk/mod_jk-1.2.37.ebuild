@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -8,7 +8,7 @@ inherit apache-module java-pkg-2
 
 MY_P="tomcat-connectors-${PV}-src"
 
-KEYWORDS="amd64 ppc x86"
+KEYWORDS="amd64 x86"
 
 DESCRIPTION="JK module for connecting Tomcat and Apache using the ajp13 protocol"
 HOMEPAGE="http://tomcat.apache.org/connectors-doc/"

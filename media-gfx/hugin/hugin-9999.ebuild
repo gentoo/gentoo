@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -25,7 +25,7 @@ IUSE="debug lapack python sift $(echo ${LANGS//\ /\ linguas_})"
 CDEPEND="
 	!!dev-util/cocom
 	dev-db/sqlite:3
-	>=dev-libs/boost-1.49.0-r1:=
+	>=dev-libs/boost-1.49.0-r1:0=
 	dev-libs/zthread
 	>=media-gfx/enblend-4.0
 	media-gfx/exiv2:=
@@ -38,7 +38,7 @@ CDEPEND="
 	>=media-libs/vigra-1.9.0[openexr]
 	sci-libs/fftw:=
 	sys-libs/zlib
-	virtual/opengl
+	virtual/glu
 	virtual/jpeg:0
 	virtual/opengl
 	x11-libs/wxGTK:3.0=[X,opengl]
@@ -59,8 +59,8 @@ S=${WORKDIR}/${PN}-$(get_version_component_range 1-3)
 pkg_setup() {
 	DOCS="authors.txt README TODO"
 	mycmakeargs=(
-		$(cmake-utils_use_enable lapack LAPACK)
-		$(cmake-utils_use_build python HSI)
+		-DBUILD_HSI=$(usex python ON OFF)
+		-DENABLE_LAPACK=$(usex lapack ON OFF)
 	)
 	use python && python-single-r1_pkg_setup
 }

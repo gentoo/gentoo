@@ -1,18 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>proxy-maintainers</herd>
-  <maintainer>
+  <maintainer type="person">
     <email>blueness@gentoo.org</email>
     <name>Anthony G. Basile</name>
   </maintainer>
-  <maintainer>
+  <maintainer type="person">
     <email>luke-jr+gentoobugs@utopios.org</email>
     <name>Luke Dashjr</name>
   </maintainer>
   <use>
     <flag name="asm">Enable x86_64 assembly optimisation</flag>
+    <flag name="ecdh">Enable ECDH shared secret computation</flag>
     <flag name="endomorphism">Enable endomorphism</flag>
+    <flag name="experimental">Allow experimental USE flags</flag>
+    <flag name="recovery">Enable ECDSA pubkey recovery module</flag>
+    <flag name="schnorr">Enable Schnorr signature module</flag>
   </use>
   <upstream>
     <remote-id type="github">bitcoin/secp256k1</remote-id>

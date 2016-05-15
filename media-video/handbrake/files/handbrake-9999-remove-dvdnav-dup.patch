@@ -1,5 +1,5 @@
---- libhb/dvdnav.c	2013-05-05 16:14:10.265388521 +0200
-+++ libhb/dvdnav.c.2	2013-05-05 16:14:18.325388471 +0200
+--- a/libhb/dvdnav.c
++++ b/libhb/dvdnav.c
 @@ -1225,16 +1225,7 @@
                  {
                      for (kk = 0; kk < buttons; kk++)

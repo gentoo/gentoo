@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>x11</herd>
-	<maintainer>
+	<maintainer type="person">
 		<email>vapier@gentoo.org</email>
 		<name>Mike Frysinger</name>
+	</maintainer>
+<maintainer type="project">
+		<email>x11@gentoo.org</email>
+		<name>X11</name>
 	</maintainer>
 </pkgmetadata>

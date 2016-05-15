@@ -15,7 +15,7 @@ CLVMD_PIDFILE="/var/run/clvmd.pid"
 
 depend() {
 	use net dns logger dmeventd
-	need cman
+	want cman corosync openais
 }
 
 load_modules() {

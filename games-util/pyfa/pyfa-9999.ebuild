@@ -1,24 +1,24 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
+EAPI="6"
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="sqlite,threads"
 
 inherit eutils gnome2-utils python-r1
 
 DESCRIPTION="Python Fitting Assistant - a ship fitting application for EVE Online"
-HOMEPAGE="https://github.com/DarkFenX/Pyfa"
+HOMEPAGE="https://github.com/pyfa-org/Pyfa"
 
 LICENSE="GPL-3+ LGPL-2.1+ CC-BY-2.5 free-noncomm"
 SLOT="0"
 if [[ ${PV} = 9999 ]]; then
-	EGIT_REPO_URI="https://github.com/DarkFenX/Pyfa.git"
+	EGIT_REPO_URI="https://github.com/pyfa-org/Pyfa.git"
 	inherit git-r3
 	KEYWORDS=""
 else
-	SRC_URI="https://github.com/DarkFenX/Pyfa/archive/v${PV}.tar.gz -> pyfa-${PV}.tar.gz"
+	SRC_URI="https://github.com/pyfa-org/Pyfa/archive/v${PV}.tar.gz -> pyfa-${PV}.tar.gz"
 	KEYWORDS="~amd64 ~arm ~x86"
 fi
 IUSE="+graph"
@@ -39,13 +39,16 @@ src_prepare() {
 	edos2unix config.py pyfa.py service/settings.py
 
 	# load gameDB and images from separate staticdata directory
-	epatch "${FILESDIR}/${PN}-1.15.1-staticdata.patch"
+	eapply "${FILESDIR}/${PN}-1.15.1-staticdata.patch"
 
 	# do not try to save exported html to python sitedir
-	epatch "${FILESDIR}/${PN}-1.1.8-html-export-path.patch"
+	eapply "${FILESDIR}/${PN}-1.20.2-html-export-path.patch"
 
 	# fix import path in the main script for systemwide installation
-	epatch "${FILESDIR}/${PN}-1.15.1-import-pyfa.patch"
+	eapply "${FILESDIR}/${PN}-1.15.1-import-pyfa.patch"
+
+	eapply_user
+
 	touch __init__.py
 
 	pyfa_make_configforced() {

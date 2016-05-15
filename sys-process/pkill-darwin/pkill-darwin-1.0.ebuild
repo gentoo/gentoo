@@ -7,7 +7,7 @@ EAPI=3
 inherit toolchain-funcs
 
 DESCRIPTION="pgrep(1) and pkill(1) for Darwin"
-HOMEPAGE="http://prefix.gentooexperimental.org:8000/pkill-darwin/"
+HOMEPAGE="https://sourceforge.net/p/pkilldarwin/code/ci/default/tree/"
 SRC_URI="https://www.gentoo.org/~grobian/distfiles/${P}.tar.xz"
 
 LICENSE="BSD"

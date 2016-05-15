@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>kerberos</herd>
+	<maintainer type="project">
+		<email>kerberos@gentoo.org</email>
+		<name>Kerberos</name>
+	</maintainer>
 	<longdescription>Kerberos 5 implementation from KTH</longdescription>
 	<use>
 		<flag name="otp">

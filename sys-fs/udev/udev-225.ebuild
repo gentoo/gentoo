@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -11,17 +11,17 @@ if [[ ${PV} = 9999* ]]; then
 	inherit git-r3
 else
 	patchset=
-	SRC_URI="https://github.com/systemd/systemd/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/systemd/systemd/archive/v${PV}.tar.gz -> systemd-${PV}.tar.gz"
 	if [[ -n "${patchset}" ]]; then
 		SRC_URI+="
 			https://dev.gentoo.org/~ssuominen/${P}-patches-${patchset}.tar.xz
 			https://dev.gentoo.org/~williamh/dist/${P}-patches-${patchset}.tar.xz"
 	fi
-	KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc x86"
+	KEYWORDS="alpha amd64 arm arm64 ~hppa ia64 m68k ~mips ppc ~ppc64 s390 sh sparc x86"
 fi
 
 DESCRIPTION="Linux dynamic and persistent device naming support (aka userspace devfs)"
-HOMEPAGE="http://www.freedesktop.org/wiki/Software/systemd"
+HOMEPAGE="https://www.freedesktop.org/wiki/Software/systemd"
 
 LICENSE="LGPL-2.1 MIT GPL-2"
 SLOT="0"
@@ -367,8 +367,8 @@ pkg_postinst() {
 	elog
 	elog "Starting from version >= 197 the new predictable network interface names are"
 	elog "used by default, see:"
-	elog "http://www.freedesktop.org/wiki/Software/systemd/PredictableNetworkInterfaceNames"
-	elog "http://cgit.freedesktop.org/systemd/systemd/tree/src/udev/udev-builtin-net_id.c"
+	elog "https://www.freedesktop.org/wiki/Software/systemd/PredictableNetworkInterfaceNames"
+	elog "https://cgit.freedesktop.org/systemd/systemd/tree/src/udev/udev-builtin-net_id.c"
 	elog
 	elog "Example command to get the information for the new interface name before booting"
 	elog "(replace <ifname> with, for example, eth0):"
@@ -424,7 +424,7 @@ pkg_postinst() {
 		eend $?
 	fi
 
-	# http://cgit.freedesktop.org/systemd/systemd/commit/rules/50-udev-default.rules?id=3dff3e00e044e2d53c76fa842b9a4759d4a50e69
+	# https://cgit.freedesktop.org/systemd/systemd/commit/rules/50-udev-default.rules?id=3dff3e00e044e2d53c76fa842b9a4759d4a50e69
 	# https://bugs.gentoo.org/246847
 	# https://bugs.gentoo.org/514174
 	enewgroup input
@@ -433,7 +433,7 @@ pkg_postinst() {
 	if has_version 'sys-apps/hwids[udev]'; then
 		udevadm hwdb --update --root="${ROOT%/}"
 		# Only reload when we are not upgrading to avoid potential race w/ incompatible hwdb.bin and the running udevd
-		# http://cgit.freedesktop.org/systemd/systemd/commit/?id=1fab57c209035f7e66198343074e9cee06718bda
+		# https://cgit.freedesktop.org/systemd/systemd/commit/?id=1fab57c209035f7e66198343074e9cee06718bda
 		[[ -z ${REPLACING_VERSIONS} ]] && udev_reload
 	fi
 }

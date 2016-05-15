@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>s390</herd>
+<maintainer type="project">
+	<email>s390@gentoo.org</email>
+	<name>Gentoo Linux s390 Development</name>
+</maintainer>
 <longdescription>Linux/390 Interface to z/VM's Control Program</longdescription>
 </pkgmetadata>

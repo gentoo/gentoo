@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -24,7 +24,7 @@ DEPEND="
 	dev-perl/Sys-CPU
 	dev-util/astyle
 	dev-util/indent
-	sys-devel/clang:0/3.7
-	sys-devel/llvm:0/3.7.0[clang]"
+	=sys-devel/clang-3.7*:0=
+	=sys-devel/llvm-3.7*:0=[clang]"
 
 RDEPEND="${DEPEND}"

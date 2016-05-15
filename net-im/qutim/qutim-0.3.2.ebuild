@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -22,7 +22,8 @@ IUSE="doc +sound tools"
 IUSE="$IUSE telepathy irc xmpp jingle mrim oscar purple vkontakte"
 # plugins
 IUSE="$IUSE antiboss aspell ayatana awn crypt dbus debug -espionage histman hunspell
-	kde mobility otr plugman phonon purple qml sdl +ssl +xscreensaver webkit"
+	kde mobility plugman phonon purple qml sdl +ssl +xscreensaver webkit"
+# NOTE: otr support was removed due to remove of net-libs/libotr-3.x
 
 REQUIRED_USE="
 	oscar? ( ssl )
@@ -43,7 +44,7 @@ CDEPEND="
 	telepathy? ( >=net-libs/telepathy-qt-0.3 )
 	xmpp? (
 		app-crypt/qca:2[qt4(+)]
-		>=net-libs/jreen-1.2.0
+		>=net-libs/jreen-1.2.0[qt4]
 	)
 	jingle? ( dev-qt/qt-mobility[multimedia] )
 	oscar? ( app-crypt/qca:2[qt4(+)] )
@@ -63,10 +64,6 @@ CDEPEND="
 		dev-qt/qt-mobility[multimedia,feedback]
 		>=dev-qt/qtbearer-${QT_PV}
 	)
-	otr? (
-		>=net-libs/libotr-3.2.0
-		<net-libs/libotr-4.0.0
-	)
 	phonon? (
 		kde? ( media-libs/phonon[qt4] )
 		!kde? ( || ( >=dev-qt/qtphonon-${QT_PV} media-libs/phonon[qt4] ) )
@@ -82,6 +79,11 @@ CDEPEND="
 	xscreensaver? ( x11-libs/libXScrnSaver )
 	webkit? ( >=dev-qt/qtwebkit-${QT_PV} )
 "
+#	otr? (
+#		>=net-libs/libotr-3.2.0
+#		<net-libs/libotr-4.0.0
+#	)
+
 DEPEND="${CDEPEND}
 	virtual/pkgconfig
 	doc? ( app-doc/doxygen )
@@ -157,7 +159,7 @@ src_configure() {
 		$(cmake-utils_use  debug       LOGGER            )
 		$(cmake-utils_use  mobility    MOBILITY          )
 		$(cmake-utils_use  dbus        NOWPLAYING        )
-		$(cmake-utils_use  otr         OFFTHERECORD      )
+		# $(cmake-utils_use  otr         OFFTHERECORD      )
 		$(cmake-utils_use  qml         QMLCHAT           )
 		$(cmake-utils_use  sdl         SDLSOUND          )
 		$(cmake-utils_use_enable espionage               )

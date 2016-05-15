@@ -1,5 +1,5 @@
---- configure.ac.orig	2007-10-13 23:54:47.000000000 +0200
-+++ configure.ac	2015-09-02 21:10:40.829519545 +0200
+--- fsviewer-app-0.2.6.orig/configure.ac	2007-10-13 23:54:47.000000000 +0200
++++ fsviewer-app-0.2.6/configure.ac	2015-09-02 21:10:40.829519545 +0200
 @@ -26,15 +26,15 @@
  dnl look for X windows first so further libs check
  AC_PATH_X 

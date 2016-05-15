@@ -1,0 +1,55 @@
+diff -Naur kvpm-0.9.9.orig/kvpm/logvol.cpp kvpm-0.9.9/kvpm/logvol.cpp
+--- kvpm-0.9.9.orig/kvpm/logvol.cpp	2014-09-09 01:34:06.000000000 +0200
++++ kvpm-0.9.9/kvpm/logvol.cpp	2016-04-19 20:44:09.775924549 +0200
+@@ -16,6 +16,7 @@
+ #include "logvol.h"
+ 
+ #include <sys/types.h>
++#include <sys/sysmacros.h>
+ #include <sys/stat.h>
+ #include <fcntl.h>
+ #include <errno.h>
+diff -Naur kvpm-0.9.9.orig/kvpm/misc.cpp kvpm-0.9.9/kvpm/misc.cpp
+--- kvpm-0.9.9.orig/kvpm/misc.cpp	2014-01-29 07:39:53.000000000 +0100
++++ kvpm-0.9.9/kvpm/misc.cpp	2016-04-19 20:42:32.496964783 +0200
+@@ -15,6 +15,7 @@
+ #include "misc.h"
+ 
+ #include <sys/types.h>
++#include <sys/sysmacros.h>
+ #include <sys/stat.h>
+ #include <fcntl.h>
+ #include <errno.h>
+diff -Naur kvpm-0.9.9.orig/kvpm/processprogress.cpp kvpm-0.9.9/kvpm/processprogress.cpp
+--- kvpm-0.9.9.orig/kvpm/processprogress.cpp	2014-01-29 20:48:04.000000000 +0100
++++ kvpm-0.9.9/kvpm/processprogress.cpp	2016-04-19 20:43:20.139434830 +0200
+@@ -19,6 +19,7 @@
+ #include "progressbox.h"
+ 
+ #include <sys/types.h>
++#include <sys/sysmacros.h>
+ #include <signal.h>
+ 
+ #include <KApplication>
+diff -Naur kvpm-0.9.9.orig/kvpm/storagebase.cpp kvpm-0.9.9/kvpm/storagebase.cpp
+--- kvpm-0.9.9.orig/kvpm/storagebase.cpp	2014-01-29 07:39:53.000000000 +0100
++++ kvpm-0.9.9/kvpm/storagebase.cpp	2016-04-19 20:43:36.869599894 +0200
+@@ -14,6 +14,7 @@
+ 
+ 
+ #include <sys/types.h>
++#include <sys/sysmacros.h>
+ #include <kde_file.h>
+ 
+ #include <QByteArray>
+diff -Naur kvpm-0.9.9.orig/kvpm/storagepartition.cpp kvpm-0.9.9/kvpm/storagepartition.cpp
+--- kvpm-0.9.9.orig/kvpm/storagepartition.cpp	2014-01-29 07:39:53.000000000 +0100
++++ kvpm-0.9.9/kvpm/storagepartition.cpp	2016-04-19 20:43:56.465793229 +0200
+@@ -17,6 +17,7 @@
+ #include "storagepartition.h"
+ 
+ #include <sys/types.h>
++#include <sys/sysmacros.h>
+ #include <kde_file.h>
+ 
+ #include <QDebug>

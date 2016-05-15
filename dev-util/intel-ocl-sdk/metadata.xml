@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer>
+	<maintainer type="person">
 		<email>dev@kicherer.org</email>
 		<name>anYc</name>
 	</maintainer>
-	<maintainer>
+	<maintainer type="person">
 		<email>zerochaos@gentoo.org</email>
 		<name>Rick Farina</name>
 	</maintainer>
 	<use>
-		<flag name='android'>Install android related files</flag>
-		<flag name='tools'>Install Intel Offline Compiler</flag>
-		<flag name='system-boost'>Use system boost (dev-libs/boost) instead of bundled one</flag>
-		<flag name='system-clang'>Use system clang (sys-devel/clang) instead of bundled one</flag>
-		<flag name='system-qt'>Use system Qt (sys-devel-qtcore, sys-devel/qtgui) instead of bundled one</flag>
-		<flag name='system-tbb'>Use sytem Thread Building Blocks (dev-cpp/tbb) instead of bundled one</flag>
+		<flag name="android">Install android related files</flag>
+		<flag name="tools">Install Intel Offline Compiler</flag>
+		<flag name="system-boost">Use system boost (dev-libs/boost) instead of bundled one</flag>
+		<flag name="system-clang">Use system clang (sys-devel/clang) instead of bundled one</flag>
+		<flag name="system-qt">Use system Qt (sys-devel-qtcore, sys-devel/qtgui) instead of bundled one</flag>
+		<flag name="system-tbb">Use sytem Thread Building Blocks (dev-cpp/tbb) instead of bundled one</flag>
 	</use>
 </pkgmetadata>

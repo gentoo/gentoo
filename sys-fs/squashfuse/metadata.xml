@@ -7,7 +7,7 @@
 		<doc>https://raw.github.com/vasi/squashfuse/master/README</doc>
 		<remote-id type="github">vasi/squashfuse</remote-id>
 	</upstream>
-	<maintainer>
+	<maintainer type="person">
 		<email>zmedico@gentoo.org</email>
 		<name>Zac Medico</name>
 	</maintainer>

@@ -1,0 +1,119 @@
+From f9a2293e611930bab7a799efe2569313a4414348 Mon Sep 17 00:00:00 2001
+From: Olaf Leidinger <oleid@mescharet.de>
+Date: Sat, 14 Nov 2015 16:46:28 +0100
+Subject: [PATCH] compile fix for upower 0.99 series
+
+upower 0.99 has lost support for hibernate and suspend. This leads to undefined
+references to up_client_get_can_suspend  and up_client_get_can_hibernate on my
+system. This patch removes any call to those functions for upower >= 0.99.
+---
+ configure.ac                     |  7 ++++++-
+ mate-session/gsm-logout-dialog.c |  8 ++++----
+ mate-session/gsm-manager.c       | 12 ++++++------
+ 3 files changed, 16 insertions(+), 11 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 74d86ac..9fe1f29 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -146,13 +146,18 @@ AC_ARG_ENABLE(upower,
+               enable_upower=$enableval,
+               enable_upower=no)
+ if test "x$enable_upower" = "xyes"; then
+-    PKG_CHECK_MODULES(UPOWER, upower-glib >= $UPOWER_REQUIRED, has_upower=yes, has_upower=no)
++    PKG_CHECK_MODULES([UPOWER], [upower-glib >= $UPOWER_REQUIRED], has_upower=yes, has_upower=no)
+ 
+     if test "x$has_upower" = "xyes"; then
+         AC_DEFINE(HAVE_UPOWER, 1, [upower support])
+         AC_SUBST(UPOWER_CFLAGS)
+         AC_SUBST(UPOWER_LIBS)
+     fi
++    PKG_CHECK_MODULES([UPOWER_HIBERNATE], [upower-glib < 0.99], has_upower_hibernate_suspend=yes, has_upower_hibernate_suspend=no)
++    if test "x$has_upower_hibernate_suspend" = "xyes"; then
++        AC_DEFINE(HAVE_UPOWER_HIBERNATE_SUSPEND, 1, [upower based support for hibernate and suspend (<0.99) ])
++    fi
++
+ fi
+ AM_CONDITIONAL(HAVE_UPOWER, test "x$has_upower" = "xyes")
+ AC_SUBST(HAVE_UPOWER)
+diff --git a/mate-session/gsm-logout-dialog.c b/mate-session/gsm-logout-dialog.c
+index 464101b..f53c197 100644
+--- a/mate-session/gsm-logout-dialog.c
++++ b/mate-session/gsm-logout-dialog.c
+@@ -215,10 +215,10 @@ gsm_logout_supports_system_suspend (GsmLogoutDialog *logout_dialog)
+         if (LOGIND_RUNNING())
+             ret = gsm_systemd_can_suspend (logout_dialog->priv->systemd);
+ #endif
+-#if defined(HAVE_SYSTEMD) && defined(HAVE_UPOWER)
++#if defined(HAVE_SYSTEMD) && defined(HAVE_UPOWER_HIBERNATE_SUSPEND)
+         else
+ #endif
+-#ifdef HAVE_UPOWER
++#ifdef HAVE_UPOWER_HIBERNATE_SUSPEND
+         ret = up_client_get_can_suspend (logout_dialog->priv->up_client);
+ #endif
+         return ret;
+@@ -233,10 +233,10 @@ gsm_logout_supports_system_hibernate (GsmLogoutDialog *logout_dialog)
+         if (LOGIND_RUNNING())
+             ret = gsm_systemd_can_hibernate (logout_dialog->priv->systemd);
+ #endif
+-#if defined(HAVE_SYSTEMD) && defined(HAVE_UPOWER)
++#if defined(HAVE_SYSTEMD) && defined(HAVE_UPOWER_HIBERNATE_SUSPEND)
+         else
+ #endif
+-#ifdef HAVE_UPOWER
++#ifdef HAVE_UPOWER_HIBERNATE_SUSPEND
+         ret = up_client_get_can_hibernate (logout_dialog->priv->up_client);
+ #endif
+         return ret;
+diff --git a/mate-session/gsm-manager.c b/mate-session/gsm-manager.c
+index db392b8..7930993 100644
+--- a/mate-session/gsm-manager.c
++++ b/mate-session/gsm-manager.c
+@@ -1184,10 +1184,10 @@ manager_attempt_hibernate (GsmManager *manager)
+                 gsm_systemd_attempt_hibernate (systemd);
+         }
+ #endif
+-#if defined(HAVE_SYSTEMD) && defined(HAVE_UPOWER)
++#if defined(HAVE_SYSTEMD) && defined(HAVE_UPOWER_HIBERNATE_SUSPEND)
+         else {
+ #endif
+-#ifdef HAVE_UPOWER
++#ifdef HAVE_UPOWER_HIBERNATE_SUSPEND
+         can_hibernate = up_client_get_can_hibernate (manager->priv->up_client);
+         if (can_hibernate) {
+ 
+@@ -1203,7 +1203,7 @@ manager_attempt_hibernate (GsmManager *manager)
+                 }
+         }
+ #endif
+-#if defined(HAVE_SYSTEMD) && defined(HAVE_UPOWER)
++#if defined(HAVE_SYSTEMD) && defined(HAVE_UPOWER_HIBERNATE_SUSPEND)
+         }
+ #endif
+ }
+@@ -1229,10 +1229,10 @@ manager_attempt_suspend (GsmManager *manager)
+                 gsm_systemd_attempt_suspend (systemd);
+         }
+ #endif
+-#if defined(HAVE_SYSTEMD) && defined(HAVE_UPOWER)
++#if defined(HAVE_SYSTEMD) && defined(HAVE_UPOWER_HIBERNATE_SUSPEND)
+         else {
+ #endif
+-#ifdef HAVE_UPOWER
++#ifdef HAVE_UPOWER_HIBERNATE_SUSPEND
+         can_suspend = up_client_get_can_suspend (manager->priv->up_client);
+         if (can_suspend) {
+ 
+@@ -1248,7 +1248,7 @@ manager_attempt_suspend (GsmManager *manager)
+                 }
+         }
+ #endif
+-#if defined(HAVE_SYSTEMD) && defined(HAVE_UPOWER)
++#if defined(HAVE_SYSTEMD) && defined(HAVE_UPOWER_HIBERNATE_SUSPEND)
+         }
+ #endif
+ }
+-- 
+2.6.3
+

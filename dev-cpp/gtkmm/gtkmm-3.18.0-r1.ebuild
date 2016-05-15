@@ -5,14 +5,14 @@
 EAPI="5"
 GCONF_DEBUG="no"
 
-inherit gnome2 multilib-minimal
+inherit eutils gnome2 multilib-minimal
 
 DESCRIPTION="C++ interface for GTK+"
 HOMEPAGE="http://www.gtkmm.org"
 
 LICENSE="LGPL-2.1+"
 SLOT="3.0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sh ~sparc ~x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~x86-solaris"
+KEYWORDS="~alpha amd64 arm hppa ~ia64 ~ppc ppc64 ~sh ~sparc x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~x86-solaris"
 IUSE="aqua doc examples test wayland X"
 REQUIRED_USE="|| ( aqua wayland X )"
 
@@ -37,6 +37,9 @@ DEPEND="${RDEPEND}
 # eautoreconf needs mm-common
 
 src_prepare() {
+	# Fix building with gcc-4.7, fixed in next version, bug #567882
+	epatch "${FILESDIR}"/${P}-gcc47.patch
+
 	if ! use test; then
 		# don't waste time building tests
 		sed 's/^\(SUBDIRS =.*\)tests\(.*\)$/\1\2/' -i Makefile.am Makefile.in \

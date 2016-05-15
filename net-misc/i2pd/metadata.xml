@@ -1,23 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer>
+	<maintainer type="person">
 		<email>klondike@gentoo.org</email>
 		<name>Francisco Blas Izquierdo Riera</name>
 	</maintainer>
-	<maintainer>
+	<maintainer type="person">
 		<email>blueness@gentoo.org</email>
 		<name>Anthony G. Basile</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>tomboy64@sina.cn</email>
+		<name>Proxy maintainer. Please subscribe to bugs.</name>
 	</maintainer>
 	<use>
 		<flag name="i2p-hardening">
 			Compile with hardening on vanilla compilers/linkers
 		</flag>
-		<flag name="library">
-			Build the libi2pd library
-		</flag>
 	</use>
 	<upstream>
-		<remote-id type="github">PrivacySolutions/i2pd</remote-id>
+		<remote-id type="github">PurpleI2P/i2pd</remote-id>
 	</upstream>
 </pkgmetadata>

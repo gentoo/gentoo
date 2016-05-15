@@ -1,9 +1,9 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
-USE_RUBY="ruby19 ruby20 ruby21"
+USE_RUBY="ruby20 ruby21 ruby22"
 
 # Skip tests since they depend on sass-globbing which does not have a
 # license and where the last version is known to be broken.
@@ -25,7 +25,7 @@ KEYWORDS="~amd64"
 IUSE=""
 
 ruby_add_rdepend "
-	>=dev-ruby/sass-3.2 <dev-ruby/sass-3.5
+	>=dev-ruby/sass-3.2:* <dev-ruby/sass-3.5:*
 "
 
 all_ruby_prepare() {

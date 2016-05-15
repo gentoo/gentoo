@@ -1,0 +1,85 @@
+Description: Renamed seqan::fill function calls to use seqan::resize.
+ SeqAn 1.3 renamed seqan::fill() to seqan::resize().
+ SeqAn ticket: http://trac.seqan.de/ticket/77
+Forwarded: no
+Author: Ognyan Kulev <ogi@debian.org>
+Last-Update: 2014-08-13
+
+--- a/blockwise_sa.h
++++ b/blockwise_sa.h
+@@ -456,8 +456,8 @@ void KarkkainenBlockwiseSA<TStr>::buildS
+ 		try {
+ 			// Allocate and initialize containers for holding bucket
+ 			// sizes and representatives.
+-			fill(bucketSzs, numBuckets, 0, Exact());
+-			fill(bucketReps, numBuckets, OFF_MASK, Exact());
++			resize(bucketSzs, numBuckets, 0, Exact());
++			resize(bucketReps, numBuckets, OFF_MASK, Exact());
+ 		} catch(bad_alloc &e) {
+ 			if(this->_passMemExc) {
+ 				throw e; // rethrow immediately
+@@ -816,7 +816,7 @@ void KarkkainenBlockwiseSA<TStr>::nextBl
+ 				// Not the last bucket
+ 				assert_lt(_cur, length(_sampleSuffs));
+ 				hi = _sampleSuffs[_cur];
+-				fill(zHi, _dcV, 0, Exact());
++				resize(zHi, _dcV, 0, Exact());
+ 				assert_eq(zHi[0], 0);
+ 				calcZ(t, hi, zHi, this->verbose(), this->sanityCheck());
+ 			}
+@@ -825,7 +825,7 @@ void KarkkainenBlockwiseSA<TStr>::nextBl
+ 				assert_gt(_cur, 0);
+ 				assert_leq(_cur, length(_sampleSuffs));
+ 				lo = _sampleSuffs[_cur-1];
+-				fill(zLo, _dcV, 0, Exact());
++				resize(zLo, _dcV, 0, Exact());
+ 				assert_gt(_dcV, 3);
+ 				assert_eq(zLo[0], 0);
+ 				calcZ(t, lo, zLo, this->verbose(), this->sanityCheck());
+--- a/diff_sample.h
++++ b/diff_sample.h
+@@ -452,7 +452,7 @@ static String<T> getDeltaMap(T v, const
+ 	// Declare anchor-map-related items
+ 	String<T> amap;
+ 	size_t amapEnts = 1;
+-	fill(amap, v, 0xffffffff, Exact());
++	resize(amap, v, 0xffffffff, Exact());
+ 	amap[0] = 0;
+ 	// Print out difference cover (and optionally calculate
+ 	// anchor map)
+@@ -532,7 +532,7 @@ public:
+ 		assert_gt(_d, 0);
+ 		assert_eq(1, popCount(_v)); // must be power of 2
+ 		// Build map from d's to idx's
+-		fill(_dInv, _v, 0xffffffff, Exact());
++		resize(_dInv, _v, 0xffffffff, Exact());
+ 		uint32_t lim = (uint32_t)length(_ds);
+ 		for(uint32_t i = 0; i < lim; i++) {
+ 			_dInv[_ds[i]] = i;
+@@ -656,7 +656,7 @@ void DifferenceCoverSample<TStr>::doBuil
+ 	VMSG_NL("  Doing sanity check");
+ 	TIndexOffU added = 0;
+ 	String<TIndexOffU> sorted;
+-	fill(sorted, length(_isaPrime), OFF_MASK, Exact());
++	resize(sorted, length(_isaPrime), OFF_MASK, Exact());
+ 	for(size_t di = 0; di < this->d(); di++) {
+ 		uint32_t d = _ds[di];
+ 		size_t i = 0;
+@@ -717,7 +717,7 @@ void DifferenceCoverSample<TStr>::buildS
+ 	assert_eq(length(_doffs), d+1);
+ 	// Size sPrime appropriately
+ 	reserve(sPrime, sPrimeSz+1, Exact()); // reserve extra slot for LS
+-	fill(sPrime, sPrimeSz, OFF_MASK, Exact());
++	resize(sPrime, sPrimeSz, OFF_MASK, Exact());
+ 	// Slot suffixes from text into sPrime according to the mu
+ 	// mapping; where the mapping would leave a blank, insert a 0
+ 	TIndexOffU added = 0;
+@@ -823,7 +823,7 @@ void DifferenceCoverSample<TStr>::build(
+ 		// arrays back into sPrime.
+ 		VMSG_NL("  Allocating rank array");
+ 		reserve(_isaPrime, length(sPrime)+1, Exact());
+-		fill(_isaPrime, length(sPrime), OFF_MASK, Exact());
++		resize(_isaPrime, length(sPrime), OFF_MASK, Exact());
+ 		assert_gt(length(_isaPrime), 0);
+ 		{
+ 			Timer timer(cout, "  Ranking v-sort output time: ", this->verbose());

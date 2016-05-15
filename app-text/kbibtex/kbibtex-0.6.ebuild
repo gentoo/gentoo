@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -12,14 +12,14 @@ SRC_URI="http://download.gna.org/${PN}/$(get_version_component_range 1-2)/${P}.t
 
 LICENSE="GPL-2"
 SLOT="4"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="debug"
 
 DEPEND="
 	app-text/poppler[qt4]
 	dev-libs/libxml2
 	dev-libs/libxslt
-	dev-libs/qoauth
+	dev-libs/qoauth:0
 	virtual/tex-base
 	x11-libs/libqxt
 "

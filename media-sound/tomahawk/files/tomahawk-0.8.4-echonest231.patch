@@ -1,0 +1,168 @@
+commit 778b8ee180480e4296fe96d2496b740df8365f02
+Author: Dominik Schmidt <dev@dominik-schmidt.de>
+Date:   Fri Feb 6 22:48:54 2015 +0100
+
+    Use new echonest5 include dir for Qt5
+
+diff --git a/CMakeModules/FindEchonest.cmake b/CMakeModules/FindEchonest.cmake
+index 2a3625e..1459372 100644
+--- a/CMakeModules/FindEchonest.cmake
++++ b/CMakeModules/FindEchonest.cmake
+@@ -13,7 +13,7 @@ endif()
+ 
+ PKG_CHECK_MODULES(PC_ECHONEST QUIET libechonest${LIBECHONEST_SUFFIX})
+ 
+-FIND_PATH(ECHONEST_INCLUDE_DIR NAMES echonest/Track.h
++FIND_PATH(ECHONEST_INCLUDE_DIR NAMES echonest${LIBECHONEST_SUFFIX}/Track.h
+     HINTS
+         ${PC_ECHONEST_INCLUDEDIR}
+         ${PC_ECHONEST_INCLUDE_DIRS}
+diff --git a/src/infoplugins/generic/echonest/EchonestPlugin.cpp b/src/infoplugins/generic/echonest/EchonestPlugin.cpp
+index 92e8c11..a17c4a4 100644
+--- a/src/infoplugins/generic/echonest/EchonestPlugin.cpp
++++ b/src/infoplugins/generic/echonest/EchonestPlugin.cpp
+@@ -23,7 +23,11 @@
+ #include "utils/Logger.h"
+ #include "utils/NetworkAccessManager.h"
+ 
++#if QT_VERSION >= QT_VERSION_CHECK(5,0,0)
++#include <echonest5/ArtistTypes.h>
++#else
+ #include <echonest/ArtistTypes.h>
++#endif
+ 
+ #include <QNetworkConfiguration>
+ 
+diff --git a/src/infoplugins/generic/echonest/EchonestPlugin.h b/src/infoplugins/generic/echonest/EchonestPlugin.h
+index 7388b38..40edd0c 100644
+--- a/src/infoplugins/generic/echonest/EchonestPlugin.h
++++ b/src/infoplugins/generic/echonest/EchonestPlugin.h
+@@ -25,7 +25,11 @@
+ #include "infosystem/InfoSystem.h"
+ #include "infosystem/InfoSystemWorker.h"
+ 
++#if QT_VERSION >= QT_VERSION_CHECK(5,0,0)
++#include <echonest5/Artist.h>
++#else
+ #include <echonest/Artist.h>
++#endif
+ 
+ #include <QObject>
+ 
+diff --git a/src/libtomahawk/EchonestCatalogSynchronizer.cpp b/src/libtomahawk/EchonestCatalogSynchronizer.cpp
+index cb70ed8..5d030c7 100644
+--- a/src/libtomahawk/EchonestCatalogSynchronizer.cpp
++++ b/src/libtomahawk/EchonestCatalogSynchronizer.cpp
+@@ -33,8 +33,13 @@
+ #include "TomahawkSettings.h"
+ #include "Track.h"
+ 
++#if QT_VERSION >= QT_VERSION_CHECK(5,0,0)
++#include <echonest5/CatalogUpdateEntry.h>
++#include <echonest5/Config.h>
++#else
+ #include <echonest/CatalogUpdateEntry.h>
+ #include <echonest/Config.h>
++#endif
+ 
+ using namespace Tomahawk;
+ 
+diff --git a/src/libtomahawk/EchonestCatalogSynchronizer.h b/src/libtomahawk/EchonestCatalogSynchronizer.h
+index 50d7cc2..0e7a5ac 100644
+--- a/src/libtomahawk/EchonestCatalogSynchronizer.h
++++ b/src/libtomahawk/EchonestCatalogSynchronizer.h
+@@ -22,7 +22,11 @@
+ #include "DllMacro.h"
+ #include "Query.h"
+ 
++#if QT_VERSION >= QT_VERSION_CHECK(5,0,0)
++#include <echonest5/Catalog.h>
++#else
+ #include <echonest/Catalog.h>
++#endif
+ 
+ #include <QObject>
+ #include <QQueue>
+diff --git a/src/libtomahawk/GlobalActionManager.cpp b/src/libtomahawk/GlobalActionManager.cpp
+index 1b14bb2..24f0ad1 100644
+--- a/src/libtomahawk/GlobalActionManager.cpp
++++ b/src/libtomahawk/GlobalActionManager.cpp
+@@ -61,8 +61,12 @@
+ #include <QClipboard>
+ #include <QMessageBox>
+ 
+-#include <echonest/Playlist.h>
+ 
++#if QT_VERSION >= QT_VERSION_CHECK(5,0,0)
++#include <echonest5/Playlist.h>
++#else
++#include <echonest/Playlist.h>
++#endif
+ 
+ GlobalActionManager* GlobalActionManager::s_instance = 0;
+ 
+diff --git a/src/libtomahawk/playlist/dynamic/echonest/EchonestControl.h b/src/libtomahawk/playlist/dynamic/echonest/EchonestControl.h
+index b12108e..5704f35 100644
+--- a/src/libtomahawk/playlist/dynamic/echonest/EchonestControl.h
++++ b/src/libtomahawk/playlist/dynamic/echonest/EchonestControl.h
+@@ -24,7 +24,11 @@
+ #include <QTimer>
+ #include <QPointer>
+ 
++#if QT_VERSION >= QT_VERSION_CHECK(5,0,0)
++#include <echonest5/Playlist.h>
++#else
+ #include <echonest/Playlist.h>
++#endif
+ 
+ namespace Tomahawk
+ {
+diff --git a/src/libtomahawk/playlist/dynamic/echonest/EchonestGenerator.h b/src/libtomahawk/playlist/dynamic/echonest/EchonestGenerator.h
+index 5ed250c..adb6e6c 100644
+--- a/src/libtomahawk/playlist/dynamic/echonest/EchonestGenerator.h
++++ b/src/libtomahawk/playlist/dynamic/echonest/EchonestGenerator.h
+@@ -28,7 +28,12 @@
+ 
+ #include "DllMacro.h"
+ 
++
++#if QT_VERSION >= QT_VERSION_CHECK(5,0,0)
++#include <echonest5/Playlist.h>
++#else
+ #include <echonest/Playlist.h>
++#endif
+ 
+ namespace Tomahawk
+ {
+diff --git a/src/libtomahawk/playlist/dynamic/echonest/EchonestSteerer.cpp b/src/libtomahawk/playlist/dynamic/echonest/EchonestSteerer.cpp
+index d7e2040..960aadb 100644
+--- a/src/libtomahawk/playlist/dynamic/echonest/EchonestSteerer.cpp
++++ b/src/libtomahawk/playlist/dynamic/echonest/EchonestSteerer.cpp
+@@ -24,7 +24,11 @@
+ #include "utils/TomahawkUtils.h"
+ #include "utils/Logger.h"
+ 
++#if QT_VERSION >= QT_VERSION_CHECK(5,0,0)
++#include <echonest5/Playlist.h>
++#else
+ #include <echonest/Playlist.h>
++#endif
+ 
+ #include <QPaintEvent>
+ #include <QHBoxLayout>
+diff --git a/src/tomahawk/sourcetree/items/CategoryItems.cpp b/src/tomahawk/sourcetree/items/CategoryItems.cpp
+index 425591f..c830ff9 100644
+--- a/src/tomahawk/sourcetree/items/CategoryItems.cpp
++++ b/src/tomahawk/sourcetree/items/CategoryItems.cpp
+@@ -33,7 +33,11 @@
+ #include "utils/ImageRegistry.h"
+ #include "utils/Logger.h"
+ 
++#if QT_VERSION >= QT_VERSION_CHECK(5,0,0)
++#include <echonest5/Playlist.h>
++#else
+ #include <echonest/Playlist.h>
++#endif
+ 
+ using namespace Tomahawk;
+ 

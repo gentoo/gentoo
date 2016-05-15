@@ -1,0 +1,93 @@
+# This file contains the syntax information for 
+# the entries to be put in any tnsnames.ora file
+# The entries in this file are need based. 
+# There are no defaults for entries in this file
+# that Sqlnet/Net3 use that need to be overridden 
+#
+# Typically you could have two tnsnames.ora files
+# in the system, one that is set for the entire system
+# and is called the system tnsnames.ora file, and a
+# second file that is used by each user locally so that
+# he can override the definitions dictated by the system
+# tnsnames.ora file.
+
+# The entries in tnsnames.ora are an alternative to using
+# the names server with the onames adapter.
+# They are a collection of aliases for the addresses that 
+# the listener(s) is(are) listening for a database or 
+# several databases.
+
+# The following is the general syntax for any entry in 
+# a tnsnames.ora file. There could be several such entries 
+# tailored to the user's needs.
+
+<alias>= [ (DESCRIPTION_LIST =  # Optional depending on whether u have 
+				# one or more descriptions
+				# If there is just one description, unnecessary ]
+	  (DESCRIPTION=
+	    [ (SDU=2048) ]	# Optional, defaults to 2048
+				# Can take values between 512 and 32K
+	    [ (ADDRESS_LIST=    # Optional depending on whether u have
+				# one or more addresses
+				# If there is just one address, unnecessary ]
+	      (ADDRESS=
+		[ (COMMUNITY=<community_name>) ] 
+		(PROTOCOL=tcp)
+		(HOST=<hostname>)
+		(PORT=<portnumber (1521 is a standard port used)>)
+	      )
+	      [ (ADDRESS=
+		  (PROTOCOL=ipc)
+		  (KEY=<ipckey (PNPKEY is a standard key used)>)	
+		)
+	      ]
+	      [ (ADDRESS=
+		  [ (COMMUNITY=<community_name>) ]
+		  (PROTOCOL=decnet)
+		  (NODE=<nodename>)
+		  (OBJECT=<objectname>)
+		)
+	      ]
+              ... # More addresses
+	    [ ) ] # Optional depending on whether ADDRESS_LIST is used or not 
+	    [ (CONNECT_DATA=
+		(SID=<oracle_sid>)
+		[ (GLOBAL_NAME=<global_database_name>) ]
+	      )
+	    ]
+	    [ (SOURCE_ROUTE=yes) ]  
+	  )
+	  (DESCRIPTION=     
+	    [ (SDU=2048) ]	# Optional, defaults to 2048
+				# Can take values between 512 and 32K
+	    [ (ADDRESS_LIST= ]	# Optional depending on whether u have more
+				# than one address or not
+				# If there is just one address, unnecessary
+	      (ADDRESS
+		[ (COMMUNITY=<community_name>) ]
+		(PROTOCOL=tcp)
+		(HOST=<hostname>)
+		(PORT=<portnumber (1521 is a standard port used)>)
+	      )
+	      [ (ADDRESS=
+		  (PROTOCOL=ipc)
+		  (KEY=<ipckey (PNPKEY is a standard key used)>)
+	         )
+	      ]
+	      ... 		# More addresses
+	    [ ) ] 		# Optional depending on whether ADDRESS_LIST  
+				# is being used
+	    [ (CONNECT_DATA=
+		(SID=<oracle_sid>)
+		[ (GLOBAL_NAME=<global_database_name>) ]
+	      )
+	    ]
+	    [ (SOURCE_ROUTE=yes) ]
+	  )
+	  [ (CONNECT_DATA=
+	      (SID=<oracle_sid>)
+	      [ (GLOBAL_NAME=<global_database_name>) ]
+	    )
+	  ]
+	  ...   # More descriptions 
+	[ ) ]	# Optional depending on whether DESCRIPTION_LIST is used or not

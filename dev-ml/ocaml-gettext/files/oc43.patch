@@ -1,0 +1,12 @@
+Index: ocaml-gettext-0.3.5/ocaml-gettext/Makefile
+===================================================================
+--- ocaml-gettext-0.3.5.orig/ocaml-gettext/Makefile
++++ ocaml-gettext-0.3.5/ocaml-gettext/Makefile
+@@ -64,7 +64,6 @@ uninstall: ocaml-xgettext-uninstall
+ ocaml-xgettext: $(BUILDBIN)
+ 	$(OCAMLC)                                                            \
+            -I +camlp4 dynlink.cma camlp4lib.cma                              \
+-           unix.cma                                                          \
+           `$(OCAMLFIND) query -r -predicates byte gettext.extract -i-format` \
+           `$(OCAMLFIND) query -r -predicates byte gettext.extract -a-format` \
+           `$(OCAMLFIND) query -r -predicates byte gettext.extract -o-format` \

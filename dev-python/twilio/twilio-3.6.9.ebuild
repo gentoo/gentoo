@@ -20,7 +20,7 @@ IUSE="test"
 
 CDEPEND="dev-python/six[${PYTHON_USEDEP}]
 		dev-python/httplib2[${PYTHON_USEDEP}]
-		dev-python/socksipy[${PYTHON_USEDEP}]"
+		dev-python/PySocks[${PYTHON_USEDEP}]"
 
 RDEPEND="${CDEPEND}"
 DEPEND="test? (

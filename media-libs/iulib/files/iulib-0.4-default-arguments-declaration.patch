@@ -1,0 +1,25 @@
+Default arguments need to be specified in the class declaration and cannot be redeclared.
+https://bugs.gentoo.org/show_bug.cgi?id=570102
+
+--- iulib-0.4/imglib/imgops.cc
++++ iulib-0.4/imglib/imgops.cc
+@@ -133,7 +133,7 @@
+ 
+     template<class T,class V>
+     void addscaled(narray<T> &dest,narray<T> &src,
+-            V scale=1,int dx=0,int dy=0) {
++            V scale,int dx,int dy) {
+         for (int i=0; i<dest.dim(0); i++)
+             for (int j=0; j<dest.dim(1); j++)
+                 dest.unsafe_at(i,j) += (T)(scale*xref(src,i+dx,j+dy));
+--- iulib-0.4/imglib/imgops.h
++++ iulib-0.4/imglib/imgops.h
+@@ -67,7 +67,7 @@
+     }
+ 
+     template<class T, class V>
+-    void addscaled(colib::narray<T> &, colib::narray<T> &, V, int, int);
++    void addscaled(colib::narray<T> &dest, colib::narray<T> &src, V scale=1, int dx=0, int dy=0);
+     template<class T>
+     void tighten(colib::narray<T> &image);
+     template<class T>

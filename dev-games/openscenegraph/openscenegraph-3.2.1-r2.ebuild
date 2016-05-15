@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -44,7 +44,7 @@ RDEPEND="
 	)
 	ffmpeg? ( virtual/ffmpeg )
 	gdal? ( sci-libs/gdal )
-	gif? ( media-libs/giflib )
+	gif? ( media-libs/giflib:= )
 	jpeg? ( virtual/jpeg:0 )
 	jpeg2k? ( media-libs/jasper )
 	openexr? (
@@ -91,6 +91,7 @@ DOCS=(AUTHORS.txt ChangeLog NEWS.txt)
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.2.1-cmake.patch
 	"${FILESDIR}"/${PN}-3.2.1-gdal-2.0.patch
+	"${FILESDIR}"/${PN}-3.2.1-giflib5.patch
 )
 
 src_configure() {

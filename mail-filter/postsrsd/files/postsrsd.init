@@ -1,0 +1,30 @@
+#!/sbin/runscript
+# Copyright 2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+PIDFILE=/var/run/$SVCNAME.pid
+SRS_DOMAIN=`postconf -h mydomain || true`
+SRS_EXCLUDE_DOMAINS=
+
+depend() {
+	need net
+}
+
+start() {
+	ebegin "Starting ${SVCNAME}"
+	start-stop-daemon --start --quiet --pidfile $PIDFILE \
+						--name $SVCNAME \
+						--exec /usr/sbin/postsrsd \
+						-- -f "$SRS_FORWARD_PORT" -r "$SRS_REVERSE_PORT" \
+							-d "$SRS_DOMAIN" -s "$SRS_SECRET" -a "$SRS_SEPARATOR" \
+							-u "$RUN_AS" -p "$PIDFILE" -c "$CHROOT" \
+							-D -X"$SRS_EXCLUDE_DOMAINS"
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping ${SVCNAME}"
+	start-stop-daemon --stop --quiet --pidfile $PIDFILE \
+						--name $SVCNAME
+	eend $?
+}

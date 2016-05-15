@@ -1,0 +1,87 @@
+From a28f70d7fa11907898887706df35c3c3831d901a Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Tue, 10 May 2016 01:12:30 -0400
+Subject: [PATCH] c3270: autolink libtinfo when it exists
+
+The ncurses libs might split out core funcs into libtinfo.  Make sure we
+detect & link this when available otherwise the linker might complain the
+symbols are missing:
+ld: screen.o: undefined reference to symbol 'meta'
+/usr/lib64/libtinfo.so.6: error adding symbols: DSO missing from command line
+collect2: error: ld returned 1 exit status
+---
+ x3270/c3270/configure.in |  1 +
+ x3270/c3270/configure    | 45 +++++++++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 46 insertions(+)
+
+diff --git a/x3270/c3270/configure.in b/x3270/c3270/configure.in
+index d9f19e6..8c6d852 100644
+--- a/x3270/c3270/configure.in
++++ b/x3270/c3270/configure.in
+@@ -129,6 +129,7 @@ dnl first, so that objects in them can be used by subsequent libraries.
+ AC_SEARCH_LIBS(forkpty, util)
+ AC_CHECK_FUNCS(forkpty)
+ AC_CHECK_LIB(ncursesw, newterm, , [AC_CHECK_LIB(ncurses, newterm, , [AC_CHECK_LIB(curses, newterm, , [AC_MSG_ERROR(Can't find libncurses or new-enough libcurses)])])])
++AC_CHECK_LIB(tinfo, meta)
+ if test "$with_readline" != no; then
+ AC_CHECK_LIB(readline, rl_initialize)
+ fi
+diff --git a/x3270/c3270/configure b/x3270/c3270/configure
+index bef2dff..9946e83 100755
+--- a/x3270/c3270/configure
++++ b/x3270/c3270/configure
+@@ -4020,6 +4020,51 @@ fi
+ 
+ fi
+ 
++{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for meta in -ltinfo" >&5
++$as_echo_n "checking for meta in -ltinfo... " >&6; }
++if ${ac_cv_lib_tinfo_meta+:} false; then :
++  $as_echo_n "(cached) " >&6
++else
++  ac_check_lib_save_LIBS=$LIBS
++LIBS="-ltinfo  $LIBS"
++cat confdefs.h - <<_ACEOF >conftest.$ac_ext
++/* end confdefs.h.  */
++
++/* Override any GCC internal prototype to avoid an error.
++   Use char because int might match the return type of a GCC
++   builtin and then its argument prototype would still apply.  */
++#ifdef __cplusplus
++extern "C"
++#endif
++char meta ();
++int
++main ()
++{
++return meta ();
++  ;
++  return 0;
++}
++_ACEOF
++if ac_fn_c_try_link "$LINENO"; then :
++  ac_cv_lib_tinfo_meta=yes
++else
++  ac_cv_lib_tinfo_meta=no
++fi
++rm -f core conftest.err conftest.$ac_objext \
++    conftest$ac_exeext conftest.$ac_ext
++LIBS=$ac_check_lib_save_LIBS
++fi
++{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $ac_cv_lib_tinfo_meta" >&5
++$as_echo "$ac_cv_lib_tinfo_meta" >&6; }
++if test "x$ac_cv_lib_tinfo_meta" = xyes; then :
++  cat >>confdefs.h <<_ACEOF
++#define HAVE_LIBTINFO 1
++_ACEOF
++
++  LIBS="-ltinfo $LIBS"
++
++fi
++
+ if test "$with_readline" != no; then
+ { $as_echo "$as_me:${as_lineno-$LINENO}: checking for rl_initialize in -lreadline" >&5
+ $as_echo_n "checking for rl_initialize in -lreadline... " >&6; }
+-- 
+2.7.4
+

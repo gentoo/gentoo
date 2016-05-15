@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer>
+  <maintainer type="person">
     <email>grozin@gentoo.org</email>
     <name>Andrey Grozin</name>
   </maintainer>
-  <herd>sci-mathematics</herd>
+  <maintainer type="project">
+    <email>sci-mathematics@gentoo.org</email>
+    <name>Gentoo Mathematics Project</name>
+  </maintainer>
   <longdescription lang="en">
 GSL shell offers an interactive command-line interface
 that gives access to GSL collection of mathematical functions.

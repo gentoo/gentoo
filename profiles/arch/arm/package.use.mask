@@ -1,6 +1,59 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
+
+# Davide Pesavento <pesa@gentoo.org> (13 May 2016)
+# dev-qt/qtwebengine:5 not keyworded, bug 581478
+dev-qt/qt-creator webengine
+
+# Patrick McLean <chutzpah@gentoo.org> (12 May 2016)
+# Tests require dev-python/tox which isn't keyworded on arm
+sys-cluster/ceph test
+
+# Thomas Deutschmann <whissi@whissi.de> (25 Apr 2016), on behalf of
+# Ian Delaney <idella4@gentoo.org> (25 Apr 2016)
+# for the proxy-maintainers project
+# Unkeyworded deps, bug #581180
+app-admin/rsyslog grok
+
+# Ian Delaney <idella4@gentoo.org> (06 Apr 2016)
+# on behalf of Ilya Tumaykin <itumaykin+gentoo@gmail.com>
+# Unmask Raspberry Pi support on arm.
+media-video/mpv -raspberry-pi
+
+# Thomas Deutschmann <whissi@whissi.de> (19 Mar 2016), on behalf of
+# Ian Delaney <idella4@gentoo.org> (19 Mar 2016)
+# for the proxy-maintainers project
+# Unkeyworded deps, bug #564274
+app-admin/collectd collectd_plugins_gmond
+app-admin/collectd collectd_plugins_ipmi
+app-admin/collectd collectd_plugins_modbus
+app-admin/collectd collectd_plugins_oracle
+app-admin/collectd collectd_plugins_routeros
+app-admin/collectd collectd_plugins_sigrok
+app-admin/collectd collectd_plugins_tokyotyrant
+app-admin/collectd collectd_plugins_varnish
+app-admin/collectd collectd_plugins_virt
+
+# Markus Meier <maekke@gentoo.org> (02 Mar 2016)
+# unkeyworded deps for bug #573324
+sci-mathematics/flint ntl
+
+# Markus Meier <maekke@gentoo.org> (26 Feb 2016)
+# unmask scanner for net-print/hplip, bug #518456
+media-sound/moc timidity
+
+# Justin Lecher <jlec@gentoo.org> (22 Feb 2016)
+# Missing test deps keyword #575366
+dev-cpp/eigen test
+
+# James Le Cuirot <chewi@gentoo.org) (30 Jan 2016)
+# scrollview requires SWT, which is currently unsupported on ARM.
+app-text/tesseract scrollview
+
+# Michael Weber <xmw@gentoo.org> (09 Jan 2016)
+# no arm support in media-libs/glfw
+app-text/mupdf opengl
 
 # Brian Evans <grknight@gentoo.org> (23 Nov 2015)
 # unmask galera for dev-db/mariadb
@@ -35,17 +88,13 @@ app-portage/g-sorcery bson
 # media-libs/rubberband lacks arm keyword, bug 548446
 media-video/mpv rubberband
 
-# Patrick Lauer <patrick@gentoo.org> (20 Apr 2015)
-# kde-frameworks/*:5 not keyworded on arm
-net-irc/quassel qt5
-
 # Markos Chandras <hwoarang@gentoo.org> (18 Apr 2015)
 # samba-4 not keyworded on arm
 sys-auth/sssd samba
 
 # Markus Meier <maekke@gentoo.org> (03 Apr 2015)
 # Deps not yet stable or keyworded
-=media-libs/libsdl2-2.0.3-r200 fusionsound
+media-libs/libsdl2 fusionsound
 
 # Alexis Ballier <aballier@gentoo.org> (02 Apr 2015)
 # Needs ilmbase (openexr), which does not build and is masked on arm.
@@ -54,12 +103,6 @@ media-libs/freeimage tiff
 # Markus Meier <maekke@gentoo.org> (03 Mar 2015)
 # Unkeyworded deps, bug #540540
 sys-auth/sssd augeas
-
-# Michał Górny <mgorny@gentoo.org> (21 Feb 2015)
-# The external QCA plugins are not keyworded on this arch. Since
-# this is only a temporary measure and nothing depends on them,
-# just masking them until the new version goes stable.
-<app-crypt/qca-2.1 logger pkcs11 sasl
 
 # Jason A. Donenfeld <zx2c4@gentoo.org> (09 Feb 2015)
 # Google does not distribute the widevine plugin for ARM. It must be extracted from a Chromebook,
@@ -114,10 +157,6 @@ net-im/prosody libevent mysql postgres sqlite
 # sci-libs/hdf is not supported on arm
 sci-libs/netcdf hdf
 
-# Markus Meier <maekke@gentoo.org> (23 Oct 2014)
-# Unkeyworded deps, bug #523468
-net-misc/networkmanager teamd
-
 # Markus Meier <maekke@gentoo.org> (24 Sep 2014)
 # Unkeyworded deps, bug #519618
 sys-block/fio glusterfs rbd
@@ -150,10 +189,6 @@ mail-filter/opendkim opendbx
 # Unkeyworded deps, bug #507896
 dev-qt/qt-mobility messaging
 
-# Julian Ospald <hasufell@gentoo.org> (20 Apr 2014)
-# Missing keywords, bug #508226
-media-video/mpv sdl
-
 # S. Suominen <ssuominen@g.o> (17 Apr 2014)
 # First GTK+-3.x version of EasyTAG!
 # Keyword as reqiuired, ~arch is enough for now:
@@ -162,12 +197,6 @@ media-video/mpv sdl
 # app-text/apadata-tools for FEAATURES and USE test
 # Do it! No reason to ask permission before!
 >=media-sound/easytag-2.2.0 opus test
-
-# Johannes Huber <johu@gentoo.org> (16 Apr 2014)
-# unkeyworded deps
-kde-apps/gwenview semantic-desktop
-kde-apps/okular dpi
-kde-apps/nepomuk-core migrator
 
 # Yixun Lan <dlan@gentoo.org> (12 Apr 2014)
 # app-emulation/qemu is not keyworded on arm arch.
@@ -218,10 +247,6 @@ gnome-base/gnome classic extras
 # Benda Xu <heroxbd@gentoo.org> (31 Oct 2013)
 # Missing keywords from dev-ml/lablgtk, bug #487722
 net-p2p/mldonkey gtk guionly
-
-# Tom Wijsman <TomWij@gentoo.org> (16 Oct 2013)
-# Mask luajit on ~media-video/mpv-0.2.0 because it only has amd64 x86 keywords. See bug #488318.
->=media-video/mpv-0.2.0 luajit
 
 # Pacho Ramos <pacho@gentoo.org> (22 Sep 2013)
 # Missing keywords, bug #484734
@@ -314,7 +339,7 @@ media-gfx/pstoedit emf
 net-misc/openconnect java
 dev-util/oprofile java
 =dev-db/qdbm-1.8.78-r1 java
-=dev-libs/beecrypt-4.2.1 java
+dev-libs/beecrypt java
 dev-libs/cyrus-sasl java
 =dev-libs/xapian-bindings-1.2.12 java
 =dev-libs/xapian-bindings-1.2.12-r1 java
@@ -369,16 +394,11 @@ app-accessibility/speech-dispatcher flite
 # Markus Meier <maekke@gentoo.org> (23 Dec 2012)
 # mask kde-base/* flags due to unkeyworded dependencies
 kde-apps/kalzium editor solver
-kde-apps/krdc rdesktop
-kde-apps/kopete jingle msn sms
-kde-base/kdeplasma-addons fcitx oauth qwt scim
-kde-apps/okular ebook chm
+kde-apps/kopete jingle sms
+kde-base/kdeplasma-addons fcitx oauth
 kde-apps/kstars indi
 kde-apps/kdeutils-meta floppy
 kde-apps/kdenetwork-meta ppp
-kde-base/smokeqt qscintilla qwt
-kde-base/qtruby qscintilla qwt
-kde-base/perlqt qscintilla qwt
 
 # Alexandre Rostovtsev <tetromino@gentoo.org> (15 Dec 2012)
 # media-video/coherence not keyworded
@@ -482,10 +502,6 @@ net-misc/mediatomb lastfm
 # Raúl Porcel <armin76@gentoo.org> (28 Mar 2010)
 # Needs kde-4 stable
 dev-vcs/subversion kde
-
-# Raúl Porcel <armin76@gentoo.org> (20 Jan 2010)
-# Needs mplayer
-kde-base/dolphin thumbnail
 
 # Markus Meier <maekke@gentoo.org> (27 Sep 2009)
 # mask media-gfx/imagemagick[autotrace] as autotrace is not keyworded

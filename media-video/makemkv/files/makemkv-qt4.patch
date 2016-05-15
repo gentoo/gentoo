@@ -1,0 +1,34 @@
+--- makemkv-oss-1.9.8/configure.orig	2015-12-20 16:22:19.000000000 +0000
++++ makemkv-oss-1.9.8/configure	2015-12-26 23:59:44.601387071 +0000
+@@ -5048,6 +5048,7 @@
+ if test "$enable_gui" != "no"; then
+ 
+ 
++: '
+ pkg_failed=no
+ { $as_echo "$as_me:${as_lineno-$LINENO}: checking for qt5" >&5
+ $as_echo_n "checking for qt5... " >&6; }
+@@ -5105,6 +5106,7 @@
+         fi
+ 	# Put the nasty error message in config.log where it belongs
+ 	echo "$qt5_PKG_ERRORS" >&5
++'
+ 
+ 
+ 
+@@ -5271,6 +5273,7 @@
+ 
+ fi
+ 
++: '
+ else
+ 	qt5_CFLAGS=$pkg_cv_qt5_CFLAGS
+ 	qt5_LIBS=$pkg_cv_qt5_LIBS
+@@ -5283,6 +5286,7 @@
+     QT_MOC="$qt5_host_bins/moc";
+ 
+ fi
++'
+ 
+ QT_INC=$QT_INC
+ 

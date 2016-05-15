@@ -14,7 +14,7 @@ DOCS="arrays.markdown README.markdown"
 
 inherit php-ext-pecl-r2
 
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 DESCRIPTION="PHP extension for interfacing with Redis"
 LICENSE="PHP-3.01"

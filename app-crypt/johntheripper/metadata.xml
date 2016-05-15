@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>crypto</herd>
-  <maintainer>
+  <maintainer type="person">
     <email>zerochaos@gentoo.org</email>
     <name>Rick Farina</name>
     <description>Any and all help appreciated</description>
+  </maintainer>
+  <maintainer type="project">
+    <email>crypto@gentoo.org</email>
+    <name>Crypto</name>
   </maintainer>
   <use>
     <flag name="cuda">Use nvidia cuda toolkit for speeding up cracking on capable devices</flag>

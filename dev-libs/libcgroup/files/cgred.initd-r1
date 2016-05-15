@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /etc/init.d/cgred,v 1.1 2015/02/14 09:53:59 tokiclover Exp $
+# $Id$
 
 command="/usr/sbin/cgrulesengd"
 command_args="${CGRED_OPTS}"

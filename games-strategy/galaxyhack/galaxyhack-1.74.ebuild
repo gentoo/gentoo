@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -12,12 +12,12 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2
 
 LICENSE="GPL-2 galaxyhack"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE=""
 
 DEPEND="media-libs/libsdl[video]
-	media-libs/sdl-image
-	media-libs/sdl-mixer
+	media-libs/sdl-image[png]
+	media-libs/sdl-mixer[mod,vorbis]
 	>=dev-libs/boost-1.34"
 RDEPEND=${DEPEND}
 
@@ -30,6 +30,7 @@ src_prepare() {
 		"${FILESDIR}"/${P}-boost.patch \
 		"${FILESDIR}"/${P}-gcc43.patch \
 		"${FILESDIR}"/${P}-boost-1.50.patch \
+		"${FILESDIR}"/${P}-format.patch \
 		"${FILESDIR}"/${P}-gentoo.patch
 	sed -i "s:@GAMES_DATADIR@:${GAMES_DATADIR}:" \
 		Main.cpp || die

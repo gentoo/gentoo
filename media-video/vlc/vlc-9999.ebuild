@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
+EAPI="6"
 
 SCM=""
 if [ "${PV%9999}" != "${PV}" ] ; then
@@ -34,24 +34,22 @@ fi
 LICENSE="LGPL-2.1 GPL-2"
 SLOT="0/5-8" # vlc - vlccore
 
-if [ "${PV%9999}" = "${PV}" ] ; then
-	KEYWORDS="~amd64 ~arm ~ppc -sparc ~x86 ~x86-fbsd"
-else
-	KEYWORDS=""
+if [[ ${PV} != *9999 ]] ; then
+	KEYWORDS="~amd64 ~arm ~ppc ~ppc64 -sparc ~x86 ~x86-fbsd"
 fi
 
-IUSE="a52 aalib alsa altivec atmo +audioqueue +avcodec
-	+avformat bidi bluray cdda cddb chromaprint dbus dc1394 debug
+IUSE="a52 aalib alsa altivec +audioqueue +avcodec
+	+avformat bidi bluray cddb chromaprint chromecast dbus dc1394 debug
 	directfb directx dts dvb +dvbpsi dvd dxva2 elibc_glibc +encode faad fdk
-	fluidsynth +ffmpeg flac fontconfig +gcrypt gme gnome gnutls
-	growl httpd ieee1394 jack jpeg kate kde libass libav libcaca libnotify
+	fluidsynth +ffmpeg flac fontconfig +gcrypt gme gnutls gstreamer httpd
+	ieee1394 jack jpeg kate kde libass libav libcaca libnotify
 	+libsamplerate libtiger linsys libtar lirc live lua
-	macosx-dialog-provider macosx-eyetv macosx-quartztext macosx-qtkit
-	matroska media-library cpu_flags_x86_mmx modplug mp3 mpeg
-	mtp musepack ncurses neon ogg omxil opencv opengl optimisememory opus
+	macosx-eyetv macosx-notifications macosx-quartztext macosx-qtkit
+	matroska media-library cpu_flags_x86_mmx modplug mp3 mpeg mtp musepack
+	ncurses neon ogg omxil opencv opengl optimisememory opus
 	png +postproc projectm pulseaudio +qt4 qt5 rdp rtsp run-as-root samba
 	schroedinger sdl sdl-image sftp shout sid skins speex cpu_flags_x86_sse svg +swscale
-	taglib theora tremor truetype twolame udev upnp vaapi v4l vcdx vdpau
+	taglib theora tremor truetype twolame udev upnp vaapi v4l vcd vdpau
 	vlm vnc vorbis vpx wma-fixed +X x264 x265 +xcb xml xv zvbi zeroconf"
 
 RDEPEND="
@@ -75,6 +73,7 @@ RDEPEND="
 		bluray? ( >=media-libs/libbluray-0.3:0 )
 		cddb? ( >=media-libs/libcddb-1.2:0 )
 		chromaprint? ( >=media-libs/chromaprint-0.6:0 )
+		chromecast? ( >=dev-libs/protobuf-2.5.0 )
 		dbus? ( >=sys-apps/dbus-1.6:0 )
 		dc1394? ( >=sys-libs/libraw1394-2.0.1:0 >=media-libs/libdc1394-2.1:2 )
 		directfb? ( dev-libs/DirectFB:0 sys-libs/zlib:0 )
@@ -89,8 +88,8 @@ RDEPEND="
 		fontconfig? ( media-libs/fontconfig:1.0 )
 		gcrypt? ( >=dev-libs/libgcrypt-1.2.0:0= )
 		gme? ( media-libs/game-music-emu:0 )
-		gnome? ( gnome-base/gnome-vfs:2 dev-libs/glib:2 )
 		gnutls? ( >=net-libs/gnutls-3.0.20:0 )
+		gstreamer? ( >=media-libs/gst-plugins-base-1.4.5:1.0 )
 		ieee1394? ( >=sys-libs/libraw1394-2.0.1:0 >=sys-libs/libavc1394-0.5.3:0 )
 		jack? ( >=media-sound/jack-audio-connection-kit-0.99.0-r1:0 )
 		jpeg? ( virtual/jpeg:0 )
@@ -151,10 +150,10 @@ RDEPEND="
 		v4l? ( media-libs/libv4l:0 )
 		vaapi? (
 			x11-libs/libva:0[X,drm]
-			!libav? ( media-video/ffmpeg:0=[vaapi] )
+			!libav? ( <media-video/ffmpeg-2.9:0=[vaapi] )
 			libav? ( media-video/libav:0=[vaapi] )
 		)
-		vcdx? ( >=dev-libs/libcdio-0.78.2:0 >=media-video/vcdimager-0.7.22:0 )
+		vcd? ( >=dev-libs/libcdio-0.78.2:0 )
 		zeroconf? ( >=net-dns/avahi-0.6:0[dbus] )
 "
 
@@ -163,7 +162,10 @@ RDEPEND="
 RDEPEND="${RDEPEND}
 		vdpau? (
 			>=x11-libs/libvdpau-0.6:0
-			!libav? ( >=media-video/ffmpeg-2.2:0= )
+			!libav? (
+					>=media-video/ffmpeg-2.2:0=
+					<media-video/ffmpeg-2.9:0=
+			)
 			libav? ( >=media-video/libav-10:0= )
 		)
 		vnc? ( >=net-libs/libvncserver-0.9.9:0 )
@@ -189,7 +191,6 @@ DEPEND="${RDEPEND}
 REQUIRED_USE="
 	aalib? ( X )
 	bidi? ( truetype )
-	cddb? ( cdda )
 	dvb? ( dvbpsi )
 	dxva2? ( avcodec )
 	ffmpeg? ( avcodec avformat swscale postproc )
@@ -249,6 +250,8 @@ src_prepare() {
 	# We are not in a real git checkout due to the absence of a .git directory.
 	touch src/revision.txt || die
 
+	default
+
 	# Fix build system mistake.
 	epatch "${FILESDIR}"/${PN}-2.1.0-fix-libtremor-libs.patch
 
@@ -262,8 +265,6 @@ src_prepare() {
 	if ! use dbus ; then
 		sed -i 's/ --started-from-file//' share/vlc.desktop.in || die
 	fi
-
-	epatch_user
 
 	eautoreconf
 
@@ -317,15 +318,14 @@ src_configure() {
 		$(use_enable aalib aa) \
 		$(use_enable alsa) \
 		$(use_enable altivec) \
-		$(use_enable atmo) \
 		$(use_enable audioqueue) \
 		$(use_enable avcodec) \
 		$(use_enable avformat) \
 		$(use_enable bidi fribidi) \
 		$(use_enable bluray) \
-		$(use_enable cdda vcd) \
 		$(use_enable cddb libcddb) \
 		$(use_enable chromaprint) \
+		$(use_enable chromecast) \
 		$(use_enable dbus) \
 		$(use_enable directfb) \
 		$(use_enable directx) \
@@ -343,9 +343,8 @@ src_configure() {
 		$(use_enable fontconfig) \
 		$(use_enable gcrypt libgcrypt) \
 		$(use_enable gme) \
-		$(use_enable gnome gnomevfs) \
 		$(use_enable gnutls) \
-		$(use_enable growl) \
+		$(use_enable gstreamer gst-decode) \
 		$(use_enable httpd) \
 		$(use_enable ieee1394 dv1394) \
 		$(use_enable jack) \
@@ -362,8 +361,8 @@ src_configure() {
 		$(use_enable lirc) \
 		$(use_enable live live555) \
 		$(use_enable lua) \
-		$(use_enable macosx-dialog-provider) \
 		$(use_enable macosx-eyetv) \
+		$(use_enable macosx-notifications osx-notifications) \
 		$(use_enable macosx-qtkit) \
 		$(use_enable macosx-quartztext) \
 		$(use_enable matroska mkv) \
@@ -375,11 +374,10 @@ src_configure() {
 		$(use_enable musepack mpc) \
 		$(use_enable ncurses) \
 		$(use_enable neon) \
-		$(use_enable ogg) $(use_enable ogg mux_ogg) \
+		$(use_enable ogg) $(use_enable ogg) \
 		$(use_enable omxil) \
 		$(use_enable omxil omxil-vout) \
 		$(use_enable opencv) \
-		$(use_enable opengl glspectrum) \
 		$(use_enable opus) \
 		$(use_enable optimisememory optimize-memory) \
 		$(use_enable png) \
@@ -412,7 +410,7 @@ src_configure() {
 		$(use_enable upnp) \
 		$(use_enable v4l v4l2) \
 		$(use_enable vaapi libva) \
-		$(use_enable vcdx) \
+		$(use_enable vcd) \
 		$(use_enable vdpau) \
 		$(use_enable vlm) \
 		$(use_enable vnc) \
@@ -425,7 +423,7 @@ src_configure() {
 		$(use_enable xml libxml2) \
 		$(use_enable xv xvideo) \
 		$(use_enable x265) \
-		$(use_enable zeroconf bonjour) \
+		$(use_enable zeroconf avahi) \
 		$(use_enable zvbi) $(use_enable !zvbi telx) \
 		--disable-asdcp \
 		--disable-coverage \
@@ -440,8 +438,7 @@ src_configure() {
 		--disable-maintainer-mode \
 		--disable-merge-ffmpeg \
 		--disable-mfx \
-		--disable-mmal-codec \
-		--disable-mmal-vout \
+		--disable-mmal \
 		--disable-opensles \
 		--disable-oss \
 		--disable-quicktime \
@@ -464,7 +461,7 @@ src_test() {
 	Xemake check-TESTS
 }
 
-DOCS="AUTHORS THANKS NEWS README doc/fortunes.txt doc/intf-vcd.txt"
+DOCS="AUTHORS THANKS NEWS README doc/fortunes.txt"
 
 src_install() {
 	default
@@ -476,7 +473,6 @@ src_install() {
 pkg_postinst() {
 	if [ "$ROOT" = "/" ] && [ -x "/usr/$(get_libdir)/vlc/vlc-cache-gen" ] ; then
 		einfo "Running /usr/$(get_libdir)/vlc/vlc-cache-gen on /usr/$(get_libdir)/vlc/plugins/"
-		"/usr/$(get_libdir)/vlc/vlc-cache-gen" -f "/usr/$(get_libdir)/vlc/plugins/"
 	else
 		ewarn "We cannot run vlc-cache-gen (most likely ROOT!=/)"
 		ewarn "Please run /usr/$(get_libdir)/vlc/vlc-cache-gen manually"

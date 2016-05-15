@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -94,16 +94,12 @@ python_prepare_all() {
 	fi
 
 	# don't version f2py, we will handle it.
-	sed -i -e '/f2py_exe/s:+os\.path.*$::' numpy/f2py/setup.py || die
+	sed -i -e '/f2py_exe/s: + os\.path.*$::' numpy/f2py/setup.py || die
 
 	# we don't have f2py-3.3
-	sed \
-		-e "/f2py_cmd/s:'f2py'.*:'f2py':g" \
-		-i numpy/tests/test_scripts.py || die
-
-	sed \
-		-e "s:\"cblas\":\"$(pc_libs cblas)\":g" \
-		-i numpy/distutils/system_info.py || die
+#	sed \
+#		-e 's:test_f2py:_&:g' \
+#		-i numpy/tests/test_scripts.py || die
 
 	distutils-r1_python_prepare_all
 }
@@ -127,12 +123,11 @@ python_install() {
 }
 
 python_install_all() {
+	DOCS+=( COMPATIBILITY DEV_README.txt THANKS.txt )
+
 	distutils-r1_python_install_all
 
-	dodoc COMPATIBILITY DEV_README.txt THANKS.txt
-
-	# absent in 1.9
-	#docinto f2py
-	#dodoc numpy/f2py/docs/*.txt
-	#doman numpy/f2py/f2py.1
+	docinto f2py
+	dodoc doc/f2py/*.txt
+	doman doc/f2py/f2py.1
 }

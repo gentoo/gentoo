@@ -16,6 +16,7 @@ IUSE="examples"
 
 RDEPEND="!<dev-texlive/texlive-fontsextra-2007-r1"
 DEPEND="${RDEPEND}
+	dev-texlive/texlive-langgerman
 	app-arch/unzip"
 
 TEXMF="/usr/share/texmf-site"

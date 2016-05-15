@@ -1,0 +1,15 @@
+Solves issue with trying to locate icudtl.dat in /usr/share/qt5/ when built
+with system-icu.
+
+Patch from Fedora.
+
+--- a/src/core/config/linux.pri
++++ b/src/core/config/linux.pri
+@@ -40,6 +40,6 @@
+ use?(system_snappy):   GYP_CONFIG += use_system_snappy=1
+ use?(system_speex):    GYP_CONFIG += use_system_speex=1
+ use?(system_vpx):      GYP_CONFIG += use_system_libvpx=1
+-use?(system_icu):      GYP_CONFIG += use_system_icu=1
++use?(system_icu):      GYP_CONFIG += use_system_icu=1 icu_use_data_file_flag=0
+ use?(system_ffmpeg):   GYP_CONFIG += use_system_ffmpeg=1
+ 

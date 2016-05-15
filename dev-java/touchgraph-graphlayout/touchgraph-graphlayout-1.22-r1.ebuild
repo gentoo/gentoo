@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -15,7 +15,7 @@ HOMEPAGE="http://touchgraph.sourceforge.net"
 SRC_URI="mirror://sourceforge/touchgraph/TGGL_${PV//./}_jre11.zip"
 LICENSE="Apache-1.1"
 SLOT="0"
-KEYWORDS="amd64 ppc ~ppc64 x86"
+KEYWORDS="amd64 ~ppc64 x86"
 IUSE=""
 
 DEPEND=">=virtual/jdk-1.6"

@@ -1,16 +1,22 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>proxy-maintainers</herd>
-	<maintainer>
+	<maintainer type="person">
 		<email>BM-2cTVBXjxdVtEQCycBQjMxszLsgTNVujvM5@bitmessage.ch</email>
 		<name>Samuel Bauer</name>
+		<description>Proxied maintainer; set to assignee in all bugs</description>
 	</maintainer>
-	<maintainer>
+	<maintainer type="person">
 		<email>xmw@gentoo.org</email>
 		<name>Michael Weber</name>
 	</maintainer>
-	<longdescription>
-gtkdiskfree is a gtk extension to the cli tool df, does the same and more
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription>gtkdiskfree is a gtk extension to the cli tool df, does the same and more
 	</longdescription>
+	<use>
+		<flag name="gtk2">Support GTK+ 2.x instead of GTK+ 3.x</flag>
+	</use>
 </pkgmetadata>

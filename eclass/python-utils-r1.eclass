@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -41,10 +41,10 @@ inherit toolchain-funcs
 # @DESCRIPTION:
 # All supported Python implementations, most preferred last.
 _PYTHON_ALL_IMPLS=(
+	jython2_7
+	pypy pypy3
 	python2_7
 	python3_3 python3_4 python3_5
-	pypy pypy3
-	jython2_7
 )
 readonly _PYTHON_ALL_IMPLS
 
@@ -82,6 +82,55 @@ _python_impl_supported() {
 		*)
 			die "Invalid implementation in PYTHON_COMPAT: ${impl}"
 	esac
+}
+
+# @FUNCTION: _python_set_impls
+# @INTERNAL
+# @DESCRIPTION:
+# Check PYTHON_COMPAT for well-formedness and validity, then set
+# two global variables:
+#
+# - _PYTHON_SUPPORTED_IMPLS containing valid implementations supported
+#   by the ebuild (PYTHON_COMPAT - dead implementations),
+#
+# - and _PYTHON_UNSUPPORTED_IMPLS containing valid implementations that
+#   are not supported by the ebuild.
+#
+# Implementations in both variables are ordered using the pre-defined
+# eclass implementation ordering.
+#
+# This function must be called once in global scope by an eclass
+# utilizing PYTHON_COMPAT.
+_python_set_impls() {
+	local i
+
+	if ! declare -p PYTHON_COMPAT &>/dev/null; then
+		die 'PYTHON_COMPAT not declared.'
+	fi
+	if [[ $(declare -p PYTHON_COMPAT) != "declare -a"* ]]; then
+		die 'PYTHON_COMPAT must be an array.'
+	fi
+	for i in "${PYTHON_COMPAT[@]}"; do
+		# trigger validity checks
+		_python_impl_supported "${i}"
+	done
+
+	_PYTHON_SUPPORTED_IMPLS=()
+	_PYTHON_UNSUPPORTED_IMPLS=()
+
+	for i in "${_PYTHON_ALL_IMPLS[@]}"; do
+		if has "${i}" "${PYTHON_COMPAT[@]}"; then
+			_PYTHON_SUPPORTED_IMPLS+=( "${i}" )
+		else
+			_PYTHON_UNSUPPORTED_IMPLS+=( "${i}" )
+		fi
+	done
+
+	if [[ ${#_PYTHON_SUPPORTED_IMPLS[@]} -eq 0 ]]; then
+		die "No supported implementation in PYTHON_COMPAT."
+	fi
+
+	readonly _PYTHON_SUPPORTED_IMPLS _PYTHON_UNSUPPORTED_IMPLS
 }
 
 # @ECLASS-VARIABLE: PYTHON
@@ -602,32 +651,23 @@ python_optimize() {
 	done
 }
 
-# @ECLASS-VARIABLE: python_scriptroot
-# @DEFAULT_UNSET
+# @FUNCTION: python_scriptinto
+# @USAGE: <new-path>
 # @DESCRIPTION:
-# The current script destination for python_doscript(). The path
-# is relative to the installation root (${ED}).
+# Set the directory to which files passed to python_doexe(),
+# python_doscript(), python_newexe() and python_newscript()
+# are going to be installed. The new value needs to be relative
+# to the installation root (${ED}).
 #
-# When unset, ${DESTTREE}/bin (/usr/bin by default) will be used.
-#
-# Can be set indirectly through the python_scriptinto() function.
+# If not set explicitly, the directory defaults to /usr/bin.
 #
 # Example:
 # @CODE
 # src_install() {
-#   local python_scriptroot=${GAMES_BINDIR}
+#   python_scriptinto /usr/sbin
 #   python_foreach_impl python_doscript foo
 # }
 # @CODE
-
-# @FUNCTION: python_scriptinto
-# @USAGE: <new-path>
-# @DESCRIPTION:
-# Set the current scriptroot. The new value will be stored
-# in the 'python_scriptroot' environment variable. The new value need
-# be relative to the installation root (${ED}).
-#
-# Alternatively, you can set the variable directly.
 python_scriptinto() {
 	debug-print-function ${FUNCNAME} "${@}"
 
@@ -637,7 +677,7 @@ python_scriptinto() {
 # @FUNCTION: python_doexe
 # @USAGE: <files>...
 # @DESCRIPTION:
-# Install the given executables into current python_scriptroot,
+# Install the given executables into the executable install directory,
 # for the current Python implementation (${EPYTHON}).
 #
 # The executable will be wrapped properly for the Python implementation,
@@ -654,7 +694,7 @@ python_doexe() {
 # @FUNCTION: python_newexe
 # @USAGE: <path> <new-name>
 # @DESCRIPTION:
-# Install the given executable into current python_scriptroot,
+# Install the given executable into the executable install directory,
 # for the current Python implementation (${EPYTHON}).
 #
 # The executable will be wrapped properly for the Python implementation,
@@ -669,7 +709,7 @@ python_newexe() {
 		die "python_do* and python_new* helpers are banned in EAPIs older than 4."
 	fi
 
-	local wrapd=${python_scriptroot:-${DESTTREE}/bin}
+	local wrapd=${python_scriptroot:-/usr/bin}
 
 	local f=${1}
 	local newfn=${2}
@@ -697,7 +737,7 @@ python_newexe() {
 # @FUNCTION: python_doscript
 # @USAGE: <files>...
 # @DESCRIPTION:
-# Install the given scripts into current python_scriptroot,
+# Install the given scripts into the executable install directory,
 # for the current Python implementation (${EPYTHON}).
 #
 # All specified files must start with a 'python' shebang. The shebang
@@ -720,7 +760,7 @@ python_doscript() {
 # @FUNCTION: python_newscript
 # @USAGE: <path> <new-name>
 # @DESCRIPTION:
-# Install the given script into current python_scriptroot
+# Install the given script into the executable install directory
 # for the current Python implementation (${EPYTHON}), and name it
 # <new-name>.
 #
@@ -741,30 +781,27 @@ python_newscript() {
 	python_newexe "${@}"
 }
 
-# @ECLASS-VARIABLE: python_moduleroot
-# @DEFAULT_UNSET
+# @FUNCTION: python_moduleinto
+# @USAGE: <new-path>
 # @DESCRIPTION:
-# The current module root for python_domodule(). The path can be either
-# an absolute system path (it must start with a slash, and ${ED} will be
-# prepended to it) or relative to the implementation's site-packages directory
-# (then it must start with a non-slash character).
+# Set the Python module install directory for python_domodule().
+# The <new-path> can either be an absolute target system path (in which
+# case it needs to start with a slash, and ${ED} will be prepended to
+# it) or relative to the implementation's site-packages directory
+# (then it must not start with a slash).
 #
-# When unset, the modules will be installed in the site-packages root.
-#
-# Can be set indirectly through the python_moduleinto() function.
+# When not set explicitly, the modules are installed to the top
+# site-packages directory.
 #
 # Example:
 # @CODE
 # src_install() {
-#   local python_moduleroot=bar
+#   python_moduleinto bar
 #   # installs ${PYTHON_SITEDIR}/bar/baz.py
 #   python_foreach_impl python_domodule baz.py
 # }
 # @CODE
 
-# @FUNCTION: python_moduleinto
-# @USAGE: <new-path>
-# @DESCRIPTION:
 # Set the current module root. The new value will be stored
 # in the 'python_moduleroot' environment variable. The new value need
 # be relative to the site-packages root.
@@ -779,8 +816,8 @@ python_moduleinto() {
 # @FUNCTION: python_domodule
 # @USAGE: <files>...
 # @DESCRIPTION:
-# Install the given modules (or packages) into the current
-# python_moduleroot. The list can mention both modules (files)
+# Install the given modules (or packages) into the current Python module
+# installation directory. The list can mention both modules (files)
 # and packages (directories). All listed files will be installed
 # for all enabled implementations, and compiled afterwards.
 #
@@ -880,7 +917,7 @@ python_wrapper_setup() {
 		mkdir -p "${workdir}"/{bin,pkgconfig} || die
 
 		# Clean up, in case we were supposed to do a cheap update.
-		rm -f "${workdir}"/bin/python{,2,3,-config} || die
+		rm -f "${workdir}"/bin/python{,2,3}{,-config} || die
 		rm -f "${workdir}"/bin/2to3 || die
 		rm -f "${workdir}"/pkgconfig/python{,2,3}.pc || die
 

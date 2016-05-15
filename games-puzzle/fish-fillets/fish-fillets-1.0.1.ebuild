@@ -23,7 +23,7 @@ RDEPEND=">=media-libs/libsdl-1.2[sound,video]
 	x11-libs/libX11
 	media-libs/sdl-ttf
 	dev-libs/fribidi
-	>=dev-lang/lua-5"
+	>=dev-lang/lua-5:0"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 

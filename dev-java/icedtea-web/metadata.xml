@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>java</herd>
+  <maintainer type="project">
+    <email>java@gentoo.org</email>
+    <name>Java</name>
+  </maintainer>
   <longdescription>
     FOSS Java Web Start and optional browser plugin implementation based on NetX, to be used with icedtea.
   </longdescription>

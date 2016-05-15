@@ -1,0 +1,78 @@
+https://bugs.gentoo.org/575120
+https://github.com/bos/text/issues/138
+
+commit 6c69034c81974b3fab9dba2993f22cc0a80f1b9e
+Author: Herbert Valerio Riedel <hvr@gnu.org>
+Date:   Sat Feb 13 12:44:20 2016 +0100
+
+    Revert "Rename integer-simple to integer-pure (gh-138)"
+    
+    This basically reverts commit b806d9491c740dfcbf172d2936f1eeb3b72d3492.
+    and therefore resolve #138
+
+diff --git a/Data/Text/Lazy/Builder/Int.hs b/Data/Text/Lazy/Builder/Int.hs
+index 6d26ecd..1cb0651 100644
+--- a/Data/Text/Lazy/Builder/Int.hs
++++ b/Data/Text/Lazy/Builder/Int.hs
+@@ -36,14 +36,14 @@ import Control.Monad.ST
+ #ifdef  __GLASGOW_HASKELL__
+ # if defined(INTEGER_GMP)
+ import GHC.Integer.GMP.Internals (Integer(S#))
+-# elif defined(INTEGER_PURE)
++# elif defined(INTEGER_SIMPLE)
+ import GHC.Integer
+ # else
+-# error "You need to use either GMP or integer-pure."
++# error "You need to use either GMP or integer-simple."
+ # endif
+ #endif
+ 
+-#if defined(INTEGER_GMP) || defined(INTEGER_PURE)
++#if defined(INTEGER_GMP) || defined(INTEGER_SIMPLE)
+ # define PAIR(a,b) (# a,b #)
+ #else
+ # define PAIR(a,b) (a,b)
+diff --git a/text.cabal b/text.cabal
+index ffb92cf..5fa1be0 100644
+--- a/text.cabal
++++ b/text.cabal
+@@ -69,10 +69,10 @@ flag developer
+   default: False
+   manual: True
+ 
+-flag integer-pure
+-  description: Use the pure-Haskell integer library instead of GMP
++flag integer-simple
++  description: Use the simple integer library instead of GMP
+   default: False
+-  manual: True
++  manual: False
+ 
+ library
+   c-sources:    cbits/cbits.c
+@@ -145,9 +145,9 @@ library
+     ghc-options: -Werror
+     cpp-options: -DASSERTS
+ 
+-  if flag(integer-pure)
+-    cpp-options: -DINTEGER_PURE
+-    build-depends: integer-pure >= 1.0
++  if flag(integer-simple)
++    cpp-options: -DINTEGER_SIMPLE
++    build-depends: integer-simple >= 0.1 && < 0.5
+   else
+     cpp-options: -DINTEGER_GMP
+     build-depends: integer-gmp >= 0.2
+@@ -181,9 +181,9 @@ test-suite tests
+     test-framework-hunit >= 0.2,
+     test-framework-quickcheck2 >= 0.2
+ 
+-  if flag(integer-pure)
+-    cpp-options: -DINTEGER_PURE
+-    build-depends: integer-pure >= 0.1 && < 0.5
++  if flag(integer-simple)
++    cpp-options: -DINTEGER_SIMPLE
++    build-depends: integer-simple >= 0.1 && < 0.5
+   else
+     cpp-options: -DINTEGER_GMP
+     build-depends: integer-gmp >= 0.2

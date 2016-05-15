@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -63,6 +63,10 @@ src_prepare() {
 }
 
 src_configure() {
+	# libsigc++-2.0 >= 2.5.1 requires C++11. Using -std=c++11
+	# does not provide "linux" definition, we need gnu++11
+	append-cxxflags -std=gnu++11
+
 	# https://bugs.gentoo.org/402279
 	export CUSTOM_PROCPS_NAME=procps
 	export CUSTOM_PROCPS_LIBS="$($(tc-getPKG_CONFIG) --libs libprocps)"
@@ -108,6 +112,9 @@ src_install() {
 	if use X; then
 		fperms 4755 /usr/bin/vmware-user-suid-wrapper
 		dobin scripts/common/vmware-xdg-detect-de
+
+		insinto /etc/xdg/autostart
+		doins "${FILESDIR}"/open-vm-tools.desktop
 
 		elog "To be able to use the drag'n'drop feature of VMware for file"
 		elog "exchange, please add the users to the 'vmware' group."

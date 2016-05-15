@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer>
+  <maintainer type="person">
     <email>qnikst@gentoo.org</email>
     <name>Alexander Vershilov</name>
   </maintainer>
@@ -9,7 +9,6 @@
     <maintainer>
       <email>sustrik@fastmq.com</email>
       <name>Martin Sustrik</name>
-      <description>iMatrix Corporation</description>
     </maintainer>
     <doc>http://zguide.zeromq.org/chapter:1</doc>
     <bugs-to>https://github.com/zeromq/zeromq2/issues</bugs-to>

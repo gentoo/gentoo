@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>virtualization</herd>
+	<maintainer type="project">
+		<email>virtualization@gentoo.org</email>
+		<name>Gentoo Virtualization Project</name>
+	</maintainer>
 	<use>
 		<flag name="spice">Support connecting to SPICE-enabled virtual
 			machines.</flag>
@@ -9,4 +12,3 @@
 			machines.</flag>
 	</use>
 </pkgmetadata>
-

@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>sci</herd>
+  <maintainer type="project">
+    <email>sci@gentoo.org</email>
+    <name>Gentoo Science Project</name>
+  </maintainer>
   <longdescription lang="en">
   The Intel® Debugger is a command line debugger for Intel based
   architectures. It is well suited with the Intel C++ or Intel FORTRAN
@@ -12,7 +15,4 @@
   well. License, terms of qualifications can be found on the web
   site and follow the one received in the Intel compilers.
 </longdescription>
-  <use>
-    <flag name="eclipse">Install the <pkg>dev-util/eclipse-sdk</pkg> plugins</flag>
-  </use>
 </pkgmetadata>

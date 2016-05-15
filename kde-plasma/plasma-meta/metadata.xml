@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>kde</herd>
+	<maintainer type="project">
+		<email>kde@gentoo.org</email>
+		<name>Gentoo KDE Project</name>
+	</maintainer>
 	<use>
 		<flag name="display-manager">Pull in a graphical display manager</flag>
+		<flag name="grub">Pull in Breeze theme for <pkg>sys-boot/grub</pkg></flag>
 		<flag name="mediacenter">Pull in <pkg>kde-plasma/plasma-mediacenter</pkg></flag>
+		<flag name="plymouth">Pull in Breeze theme for <pkg>sys-boot/plymouth</pkg></flag>
 		<flag name="sddm">Pull in the <pkg>x11-misc/sddm</pkg> display manager and KCM</flag>
 		<flag name="sdk">Pull in <pkg>kde-plasma/plasma-sdk</pkg></flag>
 		<flag name="wallpapers">Install the KDE wallpapers</flag>

@@ -1,0 +1,11 @@
+# Copyright 1999-2016 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+# Joshua Kinard <kumba@gentoo.org> (18 Jan 2016)
+# Fails linking to gettext/libintl for symbol 'libintl_gettext'.
+# Is fixable by using 'append-ldflags' from flag-o-matic to force
+# -lintl, but that's a QA violation.  Real solution is to use
+# 'append-libs', but xfsdump's build system doesn't honor $LIBS.
+# So this is the best way for now.  See 570548.
+sys-fs/xfsdump nls

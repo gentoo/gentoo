@@ -1,0 +1,14 @@
+Author: Ole Streicher <debian@liska.ath.cx>
+Description: If a unrecoverable error occurred, abort() instead of exit()
+ to allow the user for tracing the problem.
+--- a/libwcs/poly.c
++++ b/libwcs/poly.c
+@@ -43,7 +43,7 @@
+ void	qerror(char *msg1, char *msg2)
+   {
+   fprintf(stderr, "\n> %s%s\n\n",msg1,msg2);
+-  exit(-1);
++  abort();
+   }
+ 
+ 

@@ -31,4 +31,5 @@ DEPEND="${RDEPEND}
 src_prepare() {
 	epatch "${FILESDIR}"/${P}-qc28.patch
 	epatch "${FILESDIR}"/${P}-HUnit-1.3.patch
+	epatch "${FILESDIR}"/${P}-QC-2.8.2.patch
 }

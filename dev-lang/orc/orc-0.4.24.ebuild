@@ -6,8 +6,8 @@ EAPI="5"
 inherit autotools-multilib flag-o-matic gnome2-utils pax-utils
 
 DESCRIPTION="The Oil Runtime Compiler, a just-in-time compiler for array operations"
-HOMEPAGE="http://gstreamer.freedesktop.org/"
-SRC_URI="http://gstreamer.freedesktop.org/src/${PN}/${P}.tar.xz"
+HOMEPAGE="https://gstreamer.freedesktop.org/"
+SRC_URI="https://gstreamer.freedesktop.org/src/${PN}/${P}.tar.xz"
 
 LICENSE="BSD BSD-2"
 SLOT="0"

@@ -1,0 +1,26 @@
+Ignore configure checks and include stdbool.h
+unconditionally, we're in 2016.
+
+--- gearmand-0.34/libhostile/called.c
++++ gearmand-0.34/libhostile/called.c
+@@ -41,6 +41,7 @@
+ #include <assert.h>
+ #include <stdio.h>
+ #include <stdlib.h>
++#include <stdbool.h>
+ 
+ __thread bool is_called_= false;
+ static __thread char** unique_ptr= NULL;
+--- gearmand-0.34/libhostile/called.h
++++ gearmand-0.34/libhostile/called.h
+@@ -36,9 +36,7 @@
+ 
+ #pragma once
+ 
+-#ifdef HAVE_STDBOOL_H
+-# include <stdbool.h>
+-#endif
++#include <stdbool.h>
+ 
+ bool is_called(void);
+ void set_called();

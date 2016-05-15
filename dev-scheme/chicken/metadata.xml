@@ -1,15 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>scheme</herd>
-<herd>proxy-maintainers</herd>
-<maintainer>
+<maintainer type="person">
 	<email>ewfalor@gmail.com</email>
 	<name>Erik Falor</name>
 </maintainer>
-<maintainer>
+<maintainer type="person">
 	<email>maksbotan@gentoo.org</email>
 	<name>Maxim Koltsov</name>
+</maintainer>
+<maintainer type="project">
+	<email>scheme@gentoo.org</email>
+	<name>Gentoo Scheme Project</name>
+</maintainer>
+<maintainer type="project">
+	<email>proxy-maint@gentoo.org</email>
+	<name>Proxy Maintainers</name>
 </maintainer>
 <longdescription>
 CHICKEN is a compiler for the Scheme programming language. CHICKEN produces

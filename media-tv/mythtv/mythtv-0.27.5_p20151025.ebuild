@@ -21,7 +21,7 @@ SRC_URI="https://github.com/MythTV/mythtv/archive/v0.27.5.tar.gz -> mythtv-0.27.
 
 SLOT="0/${PV}"
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 IUSE_INPUT_DEVICES="input_devices_joystick"
 IUSE="alsa altivec avahi libass autostart bluray cec crystalhd debug dvb dvd \
@@ -104,7 +104,7 @@ COMMON="
 		dev-python/urlgrabber
 	)
 	theora? ( media-libs/libtheora:= media-libs/libogg:= )
-	vaapi? ( x11-libs/libva:= )
+	vaapi? ( x11-libs/libva:=[opengl] )
 	vdpau? ( x11-libs/libvdpau:= )
 	vorbis? ( >=media-libs/libvorbis-1.0:= media-libs/libogg:= )
 	xml? ( >=dev-libs/libxml2-2.6.0:= )

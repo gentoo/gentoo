@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -13,24 +13,29 @@ MY_IMPL="${MY_PN}-impl"
 
 DESCRIPTION="JSP Standard Tag Library (JSTL) - Implementation jar"
 HOMEPAGE="https://tomcat.apache.org/taglibs/standard/"
-SRC_URI="http://apache.mirrors.ovh.net/ftp.apache.org/dist/tomcat/taglibs/${MY_P}/${MY_P}-source-release.zip"
+SRC_URI="http://apache.mirrors.ovh.net/ftp.apache.org/dist/tomcat/taglibs/${MY_P}/${MY_P}-source-release.zip -> ${P}.zip"
 
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="test"
 
-CDEPEND="dev-java/xalan:0
+CDEPEND="
+	dev-java/xalan:0
 	dev-java/tomcat-jstl-spec:0
 	dev-java/tomcat-servlet-api:3.1"
-RDEPEND=">=virtual/jre-1.6
-	${CDEPEND}"
-DEPEND=">=virtual/jdk-1.6
+
+RDEPEND="
+	${CDEPEND}
+	>=virtual/jre-1.6"
+
+DEPEND="
+	${CDEPEND}
 	test? (
 		dev-java/ant-junit:0
 		dev-java/easymock:3.2
 	)
-	${CDEPEND}"
+	>=virtual/jdk-1.6"
 
 S="${WORKDIR}/${MY_P}"
 
@@ -39,18 +44,21 @@ EANT_GENTOO_CLASSPATH="tomcat-servlet-api-3.1,tomcat-jstl-spec,xalan"
 EANT_BUILD_TARGET="package"
 EANT_BUILD_XML="impl/build.xml"
 
-java_prepare() {
-	cp "${FILESDIR}"/${P}-build.xml "${S}"/impl/build.xml
+JAVA_RM_FILES=(
+	impl/src/test/java/org/apache/taglibs/standard/tag/common/fmt/BundleSupportTest.java
+)
 
+PATCHES=(
 	# This patch overrides a couple of methods.
-	epatch "${FILESDIR}"/${P}-ImportSupport.patch
-
+	"${FILESDIR}"/${P}-ImportSupport.patch
 	# This one disables one test case which doesn't work.
-	epatch "${FILESDIR}"/${P}-SetSupport.patch
+	"${FILESDIR}"/${P}-SetSupport.patch
+)
 
-	# This test case doesn't pass.
-	rm -v \
-		impl/src/test/java/org/apache/taglibs/standard/tag/common/fmt/BundleSupportTest.java
+java_prepare() {
+	cp "${FILESDIR}"/${P}-build.xml "${S}"/impl/build.xml || die
+
+	epatch "${PATCHES[@]}"
 }
 
 EANT_TEST_TARGET="test"

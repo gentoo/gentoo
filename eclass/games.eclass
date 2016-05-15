@@ -19,6 +19,11 @@
 #
 # For a general guide on writing games ebuilds, see:
 # https://wiki.gentoo.org/wiki/Project:Games/Ebuild_howto
+#
+# WARNING: This eclass is DEPRECATED and must not be used by new games
+# ebuilds, bug #574082. When writing game ebuilds, no specific eclass
+# is needed. For more details, see the QA team policies page:
+# https://wiki.gentoo.org/wiki/Project:Quality_Assurance/Policies#Games
 
 
 if [[ -z ${_GAMES_ECLASS} ]]; then
@@ -29,7 +34,7 @@ inherit base multilib toolchain-funcs eutils user
 case ${EAPI:-0} in
 	0|1) EXPORT_FUNCTIONS pkg_setup src_compile pkg_preinst pkg_postinst ;;
 	2|3|4|5) EXPORT_FUNCTIONS pkg_setup src_configure src_compile pkg_preinst pkg_postinst ;;
-	*) die "no support for EAPI=${EAPI} yet" ;;
+	*) die "games.eclass is banned in EAPI=${EAPI}, see https://wiki.gentoo.org/wiki/Project:Quality_Assurance/Policies#Games" ;;
 esac
 
 if [[ ${CATEGORY}/${PN} != "games-misc/games-envd" ]] ; then

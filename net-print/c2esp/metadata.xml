@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>printing</herd>
-  <maintainer>
+  <maintainer type="person">
     <email>binki@gentoo.org</email>
     <name>Nathan Phillip Brink</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>printing@gentoo.org</email>
+    <name>Gentoo Printing Project</name>
   </maintainer>
   <upstream>
     <remote-id type="sourceforge">cupsdriverkodak</remote-id>

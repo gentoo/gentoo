@@ -1,10 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 
-inherit eutils autotools gnome2
+inherit autotools eutils flag-o-matic gnome2
 
 DESCRIPTION="Audio converter for GNOME"
 HOMEPAGE="http://gnac.sourceforge.net/"
@@ -34,10 +34,17 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	nls? ( sys-devel/gettext )
 "
+PATCHES=(
+	"${FILESDIR}/${P}-cflags.patch"
+	"${FILESDIR}/${P}-nls.patch"
+)
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-cflags.patch
-	epatch "${FILESDIR}"/${P}-nls.patch
+	default
+	epatch -p1 "${PATCHES[@]}"
+
+	# fix bug 574568 by restoring pre-GCC5 inline semantics
+	append-cflags -std=gnu89
 
 	eautoreconf
 	gnome2_src_prepare

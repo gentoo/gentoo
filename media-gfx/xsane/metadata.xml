@@ -1,12 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>printing</herd>
-<herd>graphics</herd>
-<maintainer>
+<maintainer type="person">
 	<email>pacho@gentoo.org</email>
 </maintainer>
+<maintainer type="project">
+        <email>printing@gentoo.org</email>
+        <name>Gentoo Printing Project</name>
+</maintainer>
+<maintainer type="project">
+        <email>graphics@gentoo.org</email>
+        <name>Gentoo Graphics Project</name>
+</maintainer>
 <use>
-        <flag name='ocr'>Enable support for Optical Character Recognition reader</flag>
+        <flag name="ocr">Enable support for Optical Character Recognition reader</flag>
 </use>
 </pkgmetadata>

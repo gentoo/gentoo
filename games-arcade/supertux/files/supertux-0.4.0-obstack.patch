@@ -1,0 +1,19 @@
+--- CMakeLists.txt.orig
++++ CMakeLists.txt
+@@ -251,7 +251,6 @@
+ include_directories (${CMAKE_CURRENT_SOURCE_DIR}/external/squirrel/include/)
+ include_directories (${CMAKE_CURRENT_SOURCE_DIR}/external/tinygettext/include/)
+ include_directories (${CMAKE_CURRENT_SOURCE_DIR}/external/findlocale/)
+-include_directories (${CMAKE_CURRENT_SOURCE_DIR}/external/obstack/)
+ 
+ IF(WIN32)
+   ADD_DEFINITIONS(-D_USE_MATH_DEFINES -DNOMINMAX)
+@@ -260,7 +259,7 @@
+ 
+ ## Build list of sources for supertux binary
+ 
+-FILE(GLOB SUPERTUX_SOURCES_C RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} external/obstack/*.c external/findlocale/findlocale.c)
++FILE(GLOB SUPERTUX_SOURCES_C RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} external/findlocale/findlocale.c)
+ 
+ FILE(GLOB SUPERTUX_SOURCES_CXX RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} src/*/*.cpp src/supertux/menu/*.cpp src/video/sdl/*.cpp)
+ FILE(GLOB SUPERTUX_RESOURCES RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} "${PROJECT_BINARY_DIR}/tmp/*.rc")

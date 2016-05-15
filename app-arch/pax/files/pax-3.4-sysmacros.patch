@@ -1,0 +1,12 @@
+not all C libs pull in this header via sys/types.h for major()/etc...
+
+--- a/src/extern.h
++++ b/src/extern.h
+@@ -38,6 +38,7 @@
+  */
+ 
+ #include <sys/cdefs.h>
++#include <sys/sysmacros.h>
+ 
+ /*
+  * ar_io.c

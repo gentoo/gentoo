@@ -1,6 +1,44 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
+
+# Ian Delaney <idella4@gentoo.org> (06 Apr 2016)
+# on behalf of Ilya Tumaykin <itumaykin+gentoo@gmail.com>
+# dev-libs/uchardet lacks sparc keyword. See bug #569114.
+media-video/mpv uchardet
+
+# Justin Lecher <jlec@gentoo.org> (22 Feb 2016)
+# Missing test deps keyword #575366
+dev-cpp/eigen test
+
+# Mike Frysinger <vapier@gentoo.org> (21 Feb 2016)
+# Needs arch love for elementary. #575322
+media-libs/elementary javascript
+
+# Pacho Ramos <pacho@gentoo.org> (20 Feb 2016)
+# Missing keywords, bug #551580
+app-office/planner eds
+
+# Pacho Ramos <pacho@gentoo.org> (31 Jan 2016)
+# Missing keywords, bug #560382
+media-video/ffmpeg snappy
+
+# James Le Cuirot <chewi@gentoo.org) (30 Jan 2016)
+# scrollview requires Java, which is unsupported on SPARC.
+app-text/tesseract scrollview
+
+# Michael Weber <xmw@gentoo.org> (09 Jan 2016)
+# no sparc support in media-libs/glfw
+app-text/mupdf opengl
+
+# Ian Delaney <idella4@gentoo.org> (05 Jan 2016)
+# on behalf of Ilya Tumaykin <itumaykin+gentoo@gmail.com>
+# dev-lang/luajit lacks sparc keyword. See bug #488318.
+media-video/mpv luajit
+
+# Mike Frysinger <vapier@gentoo.org> (22 Dec 2015)
+# Needs keywording. #569254
+net-firewall/iptables nftables
 
 # Justin Lecher <jlec@gentoo.org> (18 Nov 2015)
 # requires dev-python/restkit which requires
@@ -166,10 +204,6 @@ net-im/telepathy-connection-managers sipe
 # template-haskell not yet available
 dev-haskell/dataenc test
 
-# Tom Wijsman <TomWij@gentoo.org> (16 Oct 2013)
-# Mask luajit on ~media-video/mpv-0.2.0 because it only has amd64 x86 keywords. See bug #488318.
->=media-video/mpv-0.2.0 luajit
-
 # Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (22 Aug 2013)
 # dev-libs/jemalloc is not keyworded
 www-plugins/gnash jemalloc
@@ -303,14 +337,6 @@ media-gfx/povray mkl
 
 # uses games-board/ggz-gtk-client
 games-strategy/freeciv ggz
-
-# Alexey Shvetsov <alexxy@gentoo.org> (09 Feb 2010)
-# need dev-db/virtuoso-* keyworded
-dev-libs/soprano virtuoso
-
-# Alexey Shvetsov <alexxy@gentoo.org> (09 Feb 2010)
-# need sys-auth/polkit keyworded
-app-admin/system-config-printer-common  policykit
 
 # Ben de Groot <yngwin@gentoo.org> (16 Jan 2010)
 # qtmultimedia is not keyworded, bug 293671

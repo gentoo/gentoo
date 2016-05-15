@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -16,8 +16,8 @@ COMMON_DEPEND=">=dev-lang/spidermonkey-24.0:24
 	>=sys-libs/readline-6.0
 	>=net-misc/curl-7.36.0
 	>=dev-libs/libpcre-7.8
-	!libressl? ( dev-libs/openssl:0 )
-	libressl? ( dev-libs/libressl )
+	!libressl? ( dev-libs/openssl:0= )
+	libressl? ( dev-libs/libressl:0= )
 	odbc? ( dev-db/unixODBC )"
 DEPEND="${COMMON_DEPEND}
 	virtual/pkgconfig

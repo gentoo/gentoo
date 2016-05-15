@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
-
 <pkgmetadata>
-<maintainer>
+<maintainer type="person">
 	<email>lxnay@gentoo.org</email>
 </maintainer>
 <use>
-	<flag name='cryptsetup'>Enable support for Luks disk enrcyption using <pkg>sys-fs/cryptsetup</pkg></flag>
-	<flag name='dmraid'>Enable support for DMRAID (include dmraid dependency)</flag>
-	<flag name='gpg'>Enable support for GPG (include gnupg dependency)</flag>
-	<flag name='iscsi'>Enable support for open-iscsi (include open-iscsi dependency)</flag>
-	<flag name='mdadm'>Enable support for mdadm (include mdadm dependency)</flag>
-	<flag name='plymouth'>Enable support for Plymouth (include Plymouth dependency)</flag>
+	<flag name="cryptsetup">Enable support for Luks disk enrcyption using <pkg>sys-fs/cryptsetup</pkg></flag>
+	<flag name="dmraid">Enable support for DMRAID (include dmraid dependency)</flag>
+	<flag name="gpg">Enable support for GPG (include gnupg dependency)</flag>
+	<flag name="iscsi">Enable support for open-iscsi (include open-iscsi dependency)</flag>
+	<flag name="mdadm">Enable support for mdadm (include mdadm dependency)</flag>
+	<flag name="plymouth">Enable support for Plymouth (include Plymouth dependency)</flag>
 </use>
 </pkgmetadata>

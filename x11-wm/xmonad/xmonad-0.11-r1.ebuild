@@ -55,7 +55,7 @@ src_install() {
 }
 
 pkg_postinst() {
-	ghc-package_pkg_postinst
+	haskell-cabal_pkg_postinst
 
 	elog "A sample ${SAMPLE_CONFIG} configuration file can be found here:"
 	elog "    /usr/share/${PF}/ghc-$(ghc-version)/${SAMPLE_CONFIG_LOC}/${SAMPLE_CONFIG}"

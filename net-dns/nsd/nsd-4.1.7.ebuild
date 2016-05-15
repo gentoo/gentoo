@@ -18,12 +18,12 @@ SRC_URI="http://www.nlnetlabs.nl/downloads/${PN}/${MY_P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="bind8-stats ipv6 libevent minimal-responses mmap munin +nsec3 ratelimit root-server runtime-checks ssl"
+IUSE="bind8-stats ipv6 libevent minimal-responses mmap munin +nsec3 ratelimit root-server runtime-checks ssl libressl"
 
 RDEPEND="
 	virtual/yacc
 	libevent? ( dev-libs/libevent )
-	ssl? ( dev-libs/openssl:0= )
+	ssl? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:= ) )
 	munin? ( net-analyzer/munin )
 "
 DEPEND="

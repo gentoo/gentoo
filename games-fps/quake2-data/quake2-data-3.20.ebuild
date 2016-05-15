@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=2
+EAPI=5
 inherit unpacker eutils cdrom games
 
 DESCRIPTION="iD Software's Quake 2 ... the data files"
@@ -56,16 +56,15 @@ src_install() {
 
 	if use videos ; then
 		insinto "${GAMES_DATADIR}"/quake2/baseq2/video
-		doins "${baseq2_cdpath}"/video/* || die "doins videos"
+		doins "${baseq2_cdpath}"/video/*
 	fi
 
 	insinto "${GAMES_DATADIR}"/quake2/baseq2
-	doins "${baseq2_cdpath}"/pak0.pak || die "couldnt grab pak0.pak"
-	doins baseq2/*.pak || die "couldnt grab release paks"
-	doins baseq2/maps.lst || die "couldnt grab maps.lst"
+	doins "${baseq2_cdpath}"/pak0.pak
+	doins baseq2/*.pak baseq2/maps.lst
 	dodir "${GAMES_DATADIR}"/quake2/baseq2/players
 	cp -R "${baseq2_cdpath}"/players/* baseq2/players/* \
-		"${D}/${GAMES_DATADIR}"/quake2/baseq2/players/ || die "couldnt grab player models"
+		"${D}/${GAMES_DATADIR}"/quake2/baseq2/players/ || die
 
 	for mod in ctf rogue xatrix ; do
 		if [[ -d ${baseq2_cdpath}/../${mod} ]] ; then
@@ -75,13 +74,13 @@ src_install() {
 			fi
 			if [[ -n $(ls "${baseq2_cdpath}"/../${mod}/*.pak 2>/dev/null) ]] ; then
 				insinto "${GAMES_DATADIR}"/quake2/${mod}
-				doins "${baseq2_cdpath}"/../${mod}/*.pak || die "doins ${mod} pak"
+				doins "${baseq2_cdpath}"/../${mod}/*.pak
 			fi
 		fi
 	done
 
 	insinto "${GAMES_DATADIR}"/quake2/ctf
-	doins ctf/*.{cfg,ico,pak} || die "couldnt grab ctf"
+	doins ctf/*.{cfg,ico,pak}
 
 	prepgamesdirs
 }

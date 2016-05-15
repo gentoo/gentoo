@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="Designate tests only run by module authors"
 
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="test"
 
 RDEPEND="

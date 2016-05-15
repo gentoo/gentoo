@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>sci-physics</herd>
+<maintainer type="project">
+  <email>sci-physics@gentoo.org</email>
+  <name>Gentoo Physics Project</name>
+</maintainer>
 <longdescription lang="en">
   The rootpy project is a community-driven initiative aiming to provide
   a more pythonic interface with ROOT on top of the existing PyROOT

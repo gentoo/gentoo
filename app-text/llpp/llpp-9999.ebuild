@@ -45,12 +45,16 @@ src_compile() {
 	local ocaml=$(usex ocamlopt ocamlopt.opt ocamlc.opt)
 	local cmo=$(usex ocamlopt cmx cmo)
 	local cma=$(usex ocamlopt cmxa cma)
-	local ccopt="$(freetype-config --cflags ) -O -include ft2build.h -D_GNU_SOURCE -DUSE_FONTCONFIG"
+	local ccopt="$(freetype-config --cflags ) -O -include ft2build.h -D_GNU_SOURCE -DUSE_FONTCONFIG -std=c99 -Wextra -Wall -pedantic-errors -Wunused-parameter -Wsign-compare -Wshadow"
+	#if use egl ; then
+	#	ccopt+=" -DUSE_EGL $(pkg-config --cflags egl)"
+	#	local egl="egl"
+	#fi
 	if use static ; then
 		local cclib=""
 		local slib=""
-		local spath=( ${EROOT}usr/$(get_libdir) $($(tc-getPKG_CONFIG) --libs-only-L --static mupdf x11 | sed 's:-L::g') )
-		for slib in $($(tc-getPKG_CONFIG) --libs-only-l --static mupdf x11 fontconfig) -ljpeg -ljbig2dec ; do
+		local spath=( ${EROOT}usr/$(get_libdir) $($(tc-getPKG_CONFIG) --libs-only-L --static mupdf x11 ${egl} | sed 's:-L::g') )
+		for slib in $($(tc-getPKG_CONFIG) --libs-only-l --static mupdf x11 ${egl} fontconfig) -ljpeg -ljbig2dec ; do
 			case ${slib} in
 				-lm|-ldl|-lpthread)
 					einfo "${slib}: shared"
@@ -62,14 +66,13 @@ src_compile() {
 			esac
 		done
 	else
-		local cclib="$($(tc-getPKG_CONFIG) --libs mupdf x11 fontconfig) -lpthread"
+		local cclib="$($(tc-getPKG_CONFIG) --libs mupdf x11 ${egl} fontconfig) -lpthread"
 	fi
 
 	verbose() { echo "$@" >&2 ; "$@" || die ; }
-	verbose ocaml str.cma keystoml.ml < KEYS > help.ml
+	verbose sh mkhelp.sh KEYS ${PV} > help.ml
 	verbose printf 'let version ="%s";;\n' ${PV} >> help.ml
 	verbose ${ocaml} -c -o link.o -ccopt "${ccopt}" link.c
-	verbose ${ocaml} -c -o bo.${cmo} le/bo.ml
 	verbose ${ocaml} -c -o help.${cmo} help.ml
 	verbose ${ocaml} -c -o utils.${cmo} utils.ml
 	verbose ${ocaml} -c -o wsi.cmi wsi.mli
@@ -80,7 +83,7 @@ src_compile() {
 	verbose ${ocaml} $(usex ocamlopt "" -custom) -o llpp -I +lablGL\
 		str.${cma} unix.${cma} lablgl.${cma} link.o \
 	    -cclib "${cclib}" \
-		bo.${cmo} help.${cmo} utils.${cmo} parser.${cmo} wsi.${cmo} config.${cmo} main.${cmo}
+		help.${cmo} utils.${cmo} parser.${cmo} wsi.${cmo} config.${cmo} main.${cmo}
 }
 
 src_install() {

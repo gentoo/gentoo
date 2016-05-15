@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>sci-biology</herd>
+  <maintainer type="project">
+    <email>sci-biology@gentoo.org</email>
+    <name>Gentoo Biology Project</name>
+  </maintainer>
   <longdescription>
 		SeaView is a graphical multiple sequence alignment editor developped by
 		Manolo Gouy. SeaView is able to read and write various alignment

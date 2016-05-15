@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=5
 
 if [[ ${PV} = *9999* ]]; then
 	EGIT_REPO_URI="git://github.com/kekekeks/skypetab-ng.git"
@@ -12,7 +12,7 @@ else
 	UNPACKER_ECLASS="vcs-snapshot"
 fi
 
-inherit qt4-r2 multilib ${UNPACKER_ECLASS}
+inherit eutils qt4-r2 multilib ${UNPACKER_ECLASS}
 
 if [[ -z ${LIVE_EBUILD} ]]; then
 	KEYWORDS="-* ~x86 ~amd64"
@@ -35,4 +35,8 @@ RDEPEND="${DEPEND}
 
 pkg_setup() {
 	use amd64 && multilib_toolchain_setup x86
+}
+
+src_prepare() {
+	epatch "${FILESDIR}"/${PN}-0.5.2_p20150201-isdigit.patch
 }

@@ -1,0 +1,71 @@
+Fix -Werror=format-security errors
+https://bugs.gentoo.org/show_bug.cgi?id=542278
+
+--- mpqc-2.3.1/src/lib/chemistry/molecule/atominfo.cc
++++ mpqc-2.3.1/src/lib/chemistry/molecule/atominfo.cc
+@@ -493,7 +493,7 @@
+   if (iname != symbol_to_Z_.end()) return iname->second;
+ 
+   if (allow_exceptions) {
+-      ExEnv::err0() << sprintf("AtomInfo: invalid name: %s\n",name.c_str());
++      ExEnv::err0() << fprintf(stderr, "AtomInfo: invalid name: %s\n",name.c_str());
+       throw std::runtime_error("invalid atom name");
+     }
+ 
+--- mpqc-2.3.1/src/lib/chemistry/molecule/atominfo.h
++++ mpqc-2.3.1/src/lib/chemistry/molecule/atominfo.h
+@@ -49,8 +49,8 @@
+     struct atom
+     {
+       int Z;
+-      char *name;
+-      char *symbol;
++      const char *name;
++      const char *symbol;
+     };
+ 
+     static struct atom elements_[Nelement];
+--- mpqc-2.3.1/src/lib/chemistry/molecule/simple.cc
++++ mpqc-2.3.1/src/lib/chemistry/molecule/simple.cc
+@@ -214,7 +214,7 @@
+       os << scprintf(" %4d", atoms[i]);
+ 
+   if (mol.nonnull()) {
+-      char *separator = " ";
++      const char *separator = " ";
+       os << "  ";
+       for (i=0; i<(4-natoms()); i++) {
+           os << "   ";
+--- mpqc-2.3.1/src/lib/chemistry/qc/psi/psiexenv.cc
++++ mpqc-2.3.1/src/lib/chemistry/qc/psi/psiexenv.cc
+@@ -147,7 +147,7 @@
+   return 0;
+ }
+ 
+-int PsiExEnv::run_psi_module(char *module)
++int PsiExEnv::run_psi_module(const char *module)
+ {
+   int errcod;
+   char *module_cmd = new char[2*cwd_.size()+strlen(module)+psiprefix_.size()+fileprefix_.size()+stdout_.size()+stderr_.size()+40];
+--- mpqc-2.3.1/src/lib/chemistry/qc/psi/psiexenv.h
++++ mpqc-2.3.1/src/lib/chemistry/qc/psi/psiexenv.h
+@@ -57,7 +57,7 @@
+     /// Executes Psi input+driver
+     int run_psi();
+     /// Executes a Psi module
+-    int run_psi_module(char *);
++    int run_psi_module(const char *);
+ 
+     /// Returns current working directory
+     string get_cwd() const { return cwd_;};
+--- mpqc-2.3.1/src/lib/chemistry/qc/psi/psiwfn.cc
++++ mpqc-2.3.1/src/lib/chemistry/qc/psi/psiwfn.cc
+@@ -44,7 +44,7 @@
+     bytes = 2000000;
+   int bytes_str_len = (int)ceil(log10((long double)bytes));
+   memory_ = new char[bytes_str_len+5];
+-  sprintf(memory_,"(%ld B)",bytes);
++  sprintf(memory_,"(%d B)",bytes);
+ }
+ 
+ PsiWavefunction::~PsiWavefunction()

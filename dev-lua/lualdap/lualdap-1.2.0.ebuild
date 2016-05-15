@@ -18,7 +18,7 @@ KEYWORDS="~amd64 ~x86"
 
 IUSE=""
 
-RDEPEND="dev-lang/lua:*"
+RDEPEND="dev-lang/lua:* net-nds/openldap"
 DEPEND="${RDEPEND}
 	net-nds/openldap
 	virtual/pkgconfig"

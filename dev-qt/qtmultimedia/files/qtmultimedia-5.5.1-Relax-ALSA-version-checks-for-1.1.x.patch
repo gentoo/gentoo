@@ -1,0 +1,118 @@
+From 3b322323d036ae2fc9f685bfc74d1ebcd5532159 Mon Sep 17 00:00:00 2001
+From: Raphael Kubo da Costa <rakuco@FreeBSD.org>
+Date: Fri, 27 Nov 2015 14:36:50 +0100
+Subject: [PATCH] alsa: Relax ALSA version checks for 1.1.x to be detected.
+
+Relax the check for SND_LIB_MINOR and SND_LIB_SUBMINOR so that ALSA
+1.1.x is not considered older than 1.0.10. QtMultimedia builds fine with
+ALSA 1.1.
+
+Change-Id: If697c34cc7d9bbe2f2a3413d0c25ac4de4e93b34
+Reviewed-by: Christian Stromme <christian.stromme@theqtcompany.com>
+---
+ config.tests/alsa/alsatest.cpp            | 2 +-
+ src/plugins/alsa/qalsaaudiodeviceinfo.cpp | 8 ++++----
+ src/plugins/alsa/qalsaaudioinput.cpp      | 4 ++--
+ src/plugins/alsa/qalsaaudiooutput.cpp     | 4 ++--
+ 4 files changed, 9 insertions(+), 9 deletions(-)
+
+diff --git a/config.tests/alsa/alsatest.cpp b/config.tests/alsa/alsatest.cpp
+index a9f9c24..1b59cb1 100644
+--- a/config.tests/alsa/alsatest.cpp
++++ b/config.tests/alsa/alsatest.cpp
+@@ -32,7 +32,7 @@
+ ****************************************************************************/
+ 
+ #include <alsa/asoundlib.h>
+-#if (!(SND_LIB_MAJOR == 1 && SND_LIB_MINOR == 0 && SND_LIB_SUBMINOR >= 10))
++#if (!(SND_LIB_MAJOR == 1 && (SND_LIB_MINOR > 0 || SND_LIB_SUBMINOR >= 10)))
+ #error "Alsa version found too old, require >= 1.0.10"
+ #endif
+ 
+diff --git a/src/plugins/alsa/qalsaaudiodeviceinfo.cpp b/src/plugins/alsa/qalsaaudiodeviceinfo.cpp
+index be90ca6..3d31087 100644
+--- a/src/plugins/alsa/qalsaaudiodeviceinfo.cpp
++++ b/src/plugins/alsa/qalsaaudiodeviceinfo.cpp
+@@ -141,7 +141,7 @@ bool QAlsaAudioDeviceInfo::open()
+     QList<QByteArray> devices = availableDevices(mode);
+ 
+     if(dev.compare(QLatin1String("default")) == 0) {
+-#if(SND_LIB_MAJOR == 1 && SND_LIB_MINOR == 0 && SND_LIB_SUBMINOR >= 14)
++#if (SND_LIB_MAJOR == 1 && (SND_LIB_MINOR > 0 || SND_LIB_SUBMINOR >= 14))
+         if (devices.size() > 0)
+             dev = QLatin1String(devices.first().constData());
+         else
+@@ -150,7 +150,7 @@ bool QAlsaAudioDeviceInfo::open()
+         dev = QLatin1String("hw:0,0");
+ #endif
+     } else {
+-#if(SND_LIB_MAJOR == 1 && SND_LIB_MINOR == 0 && SND_LIB_SUBMINOR >= 14)
++#if (SND_LIB_MAJOR == 1 && (SND_LIB_MINOR > 0 || SND_LIB_SUBMINOR >= 14))
+         dev = device;
+ #else
+         int idx = 0;
+@@ -194,7 +194,7 @@ bool QAlsaAudioDeviceInfo::testSettings(const QAudioFormat& format) const
+     snd_pcm_hw_params_t *params;
+     QString dev;
+ 
+-#if(SND_LIB_MAJOR == 1 && SND_LIB_MINOR == 0 && SND_LIB_SUBMINOR >= 14)
++#if (SND_LIB_MAJOR == 1 && (SND_LIB_MINOR > 0 || SND_LIB_SUBMINOR >= 14))
+     dev = device;
+     if (dev.compare(QLatin1String("default")) == 0) {
+         QList<QByteArray> devices = availableDevices(QAudio::AudioOutput);
+@@ -335,7 +335,7 @@ QList<QByteArray> QAlsaAudioDeviceInfo::availableDevices(QAudio::Mode mode)
+     QList<QByteArray> devices;
+     QByteArray filter;
+ 
+-#if(SND_LIB_MAJOR == 1 && SND_LIB_MINOR == 0 && SND_LIB_SUBMINOR >= 14)
++#if (SND_LIB_MAJOR == 1 && (SND_LIB_MINOR > 0 || SND_LIB_SUBMINOR >= 14))
+     // Create a list of all current audio devices that support mode
+     void **hints, **n;
+     char *name, *descr, *io;
+diff --git a/src/plugins/alsa/qalsaaudioinput.cpp b/src/plugins/alsa/qalsaaudioinput.cpp
+index 4a8dd80..d6d8adc 100644
+--- a/src/plugins/alsa/qalsaaudioinput.cpp
++++ b/src/plugins/alsa/qalsaaudioinput.cpp
+@@ -303,7 +303,7 @@ bool QAlsaAudioInput::open()
+     QString dev = QString(QLatin1String(m_device.constData()));
+     QList<QByteArray> devices = QAlsaAudioDeviceInfo::availableDevices(QAudio::AudioInput);
+     if(dev.compare(QLatin1String("default")) == 0) {
+-#if(SND_LIB_MAJOR == 1 && SND_LIB_MINOR == 0 && SND_LIB_SUBMINOR >= 14)
++#if (SND_LIB_MAJOR == 1 && (SND_LIB_MINOR > 0 || SND_LIB_SUBMINOR >= 14))
+         if (devices.size() > 0)
+             dev = QLatin1String(devices.first());
+         else
+@@ -312,7 +312,7 @@ bool QAlsaAudioInput::open()
+         dev = QLatin1String("hw:0,0");
+ #endif
+     } else {
+-#if(SND_LIB_MAJOR == 1 && SND_LIB_MINOR == 0 && SND_LIB_SUBMINOR >= 14)
++#if (SND_LIB_MAJOR == 1 && (SND_LIB_MINOR > 0 || SND_LIB_SUBMINOR >= 14))
+         dev = QLatin1String(m_device);
+ #else
+         int idx = 0;
+diff --git a/src/plugins/alsa/qalsaaudiooutput.cpp b/src/plugins/alsa/qalsaaudiooutput.cpp
+index 7b7da50..f8f0f58 100644
+--- a/src/plugins/alsa/qalsaaudiooutput.cpp
++++ b/src/plugins/alsa/qalsaaudiooutput.cpp
+@@ -306,7 +306,7 @@ bool QAlsaAudioOutput::open()
+     QString dev = QString(QLatin1String(m_device.constData()));
+     QList<QByteArray> devices = QAlsaAudioDeviceInfo::availableDevices(QAudio::AudioOutput);
+     if(dev.compare(QLatin1String("default")) == 0) {
+-#if(SND_LIB_MAJOR == 1 && SND_LIB_MINOR == 0 && SND_LIB_SUBMINOR >= 14)
++#if (SND_LIB_MAJOR == 1 && (SND_LIB_MINOR > 0 || SND_LIB_SUBMINOR >= 14))
+         if (devices.size() > 0)
+             dev = QLatin1String(devices.first());
+         else
+@@ -315,7 +315,7 @@ bool QAlsaAudioOutput::open()
+         dev = QLatin1String("hw:0,0");
+ #endif
+     } else {
+-#if(SND_LIB_MAJOR == 1 && SND_LIB_MINOR == 0 && SND_LIB_SUBMINOR >= 14)
++#if (SND_LIB_MAJOR == 1 && (SND_LIB_MINOR > 0 || SND_LIB_SUBMINOR >= 14))
+         dev = QLatin1String(m_device);
+ #else
+         int idx = 0;
+-- 
+2.7.0
+

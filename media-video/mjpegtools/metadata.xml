@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>video</herd>
-	<herd>media-tv</herd>
-	<maintainer>
+	<maintainer type="person">
 		<email>billie@gentoo.org</email>
 		<name>Daniel Pielmeier</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>media-video@gentoo.org</email>
+		<name>Gentoo Video project</name>
 	</maintainer>
 	<use>
 		<flag name="sdlgfx">Enables y4mhist to display a graphical histogram</flag>

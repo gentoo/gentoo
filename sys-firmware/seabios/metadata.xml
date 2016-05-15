@@ -1,15 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>qemu</herd>
-	<herd>virtualization</herd>
-	<maintainer>
+	<maintainer type="person">
 		<email>cardoe@gentoo.org</email>
 		<name>Doug Goldstein</name>
 	</maintainer>
+	<maintainer type="project">
+		<email>qemu@gentoo.org</email>
+		<name>Gentoo QEMU Project</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>virtualization@gentoo.org</email>
+		<name>Gentoo Virtualization Project</name>
+	</maintainer>
 	<use>
-		<flag name='binary'>Use official upstream pre-built binaries</flag>
-		<flag name='seavgabios'>Include SeaVGABIOS binaries (replacement for vgabios)</flag>
+		<flag name="binary">Use official upstream pre-built binaries</flag>
+		<flag name="seavgabios">Include SeaVGABIOS binaries (replacement for vgabios)</flag>
 	</use>
 </pkgmetadata>
-

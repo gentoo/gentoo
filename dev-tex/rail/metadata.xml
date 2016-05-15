@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>tex</herd>
-<longdescription lang='en'>
+<maintainer type="project">
+	<email>tex@gentoo.org</email>
+	<name>Gentoo TeX Project</name>
+</maintainer>
+<longdescription lang="en">
 A C program and LaTeX package to draw syntax diagrams specified in EBNF.
 </longdescription>
 </pkgmetadata>

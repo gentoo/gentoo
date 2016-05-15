@@ -8,8 +8,8 @@ AUTOTOOLS_AUTORECONF="yes"
 inherit autotools-multilib eutils
 
 DESCRIPTION="VDPAU Backend for Video Acceleration (VA) API"
-HOMEPAGE="http://www.freedesktop.org/wiki/Software/vaapi"
-SRC_URI="http://www.freedesktop.org/software/vaapi/releases/libva-vdpau-driver/${P}.tar.bz2"
+HOMEPAGE="https://www.freedesktop.org/wiki/Software/vaapi"
+SRC_URI="https://www.freedesktop.org/software/vaapi/releases/libva-vdpau-driver/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

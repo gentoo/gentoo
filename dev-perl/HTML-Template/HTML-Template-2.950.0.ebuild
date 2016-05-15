@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="A Perl module to use HTML Templates"
 
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~mips ~ppc ~ppc64 ~x86 ~x86-fbsd"
+KEYWORDS="amd64 ~arm ~mips ppc ~ppc64 x86 ~x86-fbsd"
 IUSE="test"
 
 DEPEND="test? ( dev-perl/CGI )"

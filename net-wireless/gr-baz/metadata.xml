@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>radio</herd>
-<maintainer>
+<maintainer type="person">
 	<email>zerochaos@gentoo.org</email>
 	<name>Rick Farina</name>
+</maintainer>
+<maintainer type="project">
+	<email>radio@gentoo.org</email>
+	<name>Radio</name>
 </maintainer>
 <longdescription lang="en">
 </longdescription>
 <use>
-	<flag name='armadillo'>install MUSIC DOA estimator block</flag>
-	<flag name='rtlsdr'>install rtlsdr source block</flag>
-	<flag name='uhd'>install UHD aware blocks</flag>
+	<flag name="armadillo">install MUSIC DOA estimator block</flag>
+	<flag name="rtlsdr">install rtlsdr source block</flag>
+	<flag name="uhd">install UHD aware blocks</flag>
 </use>
 </pkgmetadata>
-

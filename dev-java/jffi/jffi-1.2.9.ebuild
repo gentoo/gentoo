@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -14,7 +14,7 @@ SRC_URI="https://github.com/jnr/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="|| ( Apache-2.0 LGPL-3 )"
 SLOT="1.2"
-KEYWORDS="amd64 ppc ppc64 x86 ~ppc-macos ~x64-macos ~x86-macos"
+KEYWORDS="amd64 ppc64 x86 ~ppc-macos ~x64-macos ~x86-macos"
 
 CDEPEND="virtual/libffi:0"
 

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>blueness@gentoo.org</email>
+		<name>Anthony G. Basile</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>embedded@gentoo.org</email>
+		<name>Embedded Gentoo</name>
+	</maintainer>
+	<longdescription>
+	uClibc-ng is a small C library for developing embedded Linux systems. It is much
+	smaller than the GNU C Library, but nearly all applications supported by glibc
+	also work perfectly with uClibc-ng. 
+	</longdescription>
+	<use>
+		<flag name="rpc">Enable sun nis/rpc support (you should use libtirpc though)</flag>
+	</use>
+</pkgmetadata>

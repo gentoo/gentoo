@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -13,15 +13,14 @@ if [[ ${PV} = *9999* ]]; then
 	EGIT_REPO_URI="git://git.lxde.org/git/lxde/${PN}.git"
 else
 	SRC_URI="https://downloads.lxqt.org/lxqt/${PV}/${P}.tar.xz"
-	KEYWORDS="~amd64   ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 fi
 
 LICENSE="GPL-2 LGPL-2.1+"
 SLOT="0"
 
-DEPEND="
+CDEPEND="
 	>=dev-libs/libqtxdg-1.0.0
-	dev-qt/linguist-tools:5
 	dev-qt/qtconcurrent:5
 	dev-qt/qtcore:5
 	dev-qt/qtdbus:5
@@ -30,7 +29,7 @@ DEPEND="
 	dev-qt/qtx11extras:5
 	dev-qt/qtxml:5
 	kde-frameworks/kwindowsystem:5
-	kde-plasma/libkscreen
+	kde-plasma/libkscreen:5=
 	~lxqt-base/liblxqt-${PV}
 	sys-libs/zlib
 	x11-libs/libICE
@@ -40,7 +39,9 @@ DEPEND="
 	x11-libs/libXcursor
 	x11-libs/libXext
 	x11-libs/libXfixes"
-RDEPEND="${DEPEND}
+DEPEND="${CDEPEND}
+	dev-qt/linguist-tools:5"
+RDEPEND="${CDEPEND}
 	x11-apps/setxkbmap"
 
 src_install(){

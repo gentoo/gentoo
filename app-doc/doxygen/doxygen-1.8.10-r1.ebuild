@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -55,7 +55,7 @@ DEPEND="sys-apps/sed
 	${RDEPEND}"
 
 # src_test() defaults to make -C testing but there is no such directory (bug #504448)
-RESTRICT="mirror test"
+RESTRICT="test"
 EPATCH_SUFFIX="patch"
 
 get_langs() {
@@ -139,9 +139,11 @@ src_compile() {
 	cmake-utils_src_compile
 
 	# generate html and pdf documents. errors here are not considered
-	# fatal, hence the ewarn message TeX's font caching in /var/cache/fonts
-	# causes sandbox warnings, so we allow it.
+	# fatal, hence the ewarn message.
+
 	if use doc; then
+		export VARTEXFONTS="${T}/fonts" # bug #564944
+
 		if ! use dot; then
 			sed -i -e "s/HAVE_DOT               = YES/HAVE_DOT    = NO/" \
 				{Doxyfile,doc/Doxyfile} \

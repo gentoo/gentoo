@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>games</herd>
+  <maintainer type="project">
+    <email>games@gentoo.org</email>
+    <name>Gentoo Games Project</name>
+  </maintainer>
   <longdescription>A traditional and challenging 2D platformer game with a
     slight rotational twist. Help a mysterious big-eared salaryman named Guy
     find his keys in a labyrinth of dangers and bad dialogue.</longdescription>

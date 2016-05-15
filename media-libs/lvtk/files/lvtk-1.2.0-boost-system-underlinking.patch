@@ -1,0 +1,13 @@
+Prevent underlinking issues due to recent boost versions requiring boost::system
+See also: https://bugs.gentoo.org/show_bug.cgi?id=579398
+
+--- lvtk-1.2.0/wscript
++++ lvtk-1.2.0/wscript
+@@ -71,6 +71,7 @@
+                             atleast_version="2.20.0", mandatory=False)
+ 
+     # Setup the Environment
++    conf.env.LIB_BOOST = ['boost_system']
+     conf.env.EXAMPLES_DISABLED  = conf.options.disable_examples
+     conf.env.TOOLS_DISABLED     = conf.options.disable_tools
+     conf.env.UI_DISABLED        = conf.options.disable_ui

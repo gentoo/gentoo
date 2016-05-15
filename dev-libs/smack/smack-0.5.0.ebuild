@@ -14,5 +14,6 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-DEPEND="app-arch/snappy"
+DEPEND="app-arch/snappy
+	dev-libs/boost"
 RDEPEND="${DEPEND}"

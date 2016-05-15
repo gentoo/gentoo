@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -19,7 +19,7 @@ HOMEPAGE="https://www.enlightenment.org/pages/imlib2.html"
 IUSE="eet xcf"
 
 RDEPEND=">=media-libs/imlib2-${PV}
-	eet? ( dev-libs/eet )"
+	eet? ( dev-libs/efl )"
 
 src_configure() {
 	E_ECONF=(

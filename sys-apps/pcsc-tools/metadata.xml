@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>crypto</herd>
+  <maintainer type="project">
+    <email>crypto@gentoo.org</email>
+    <name>Crypto</name>
+  </maintainer>
   <longdescription>User tools for PC/SC SmartCard access (including pcsc_scan and the gscriptor GUI).</longdescription>
 
   <use>
-    <flag name='network-cron'>Monthly cronjob the update-smartcard_list script</flag>
+    <flag name="network-cron">Monthly cronjob the update-smartcard_list script</flag>
   </use>
 </pkgmetadata>

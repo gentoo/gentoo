@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer>
+	<maintainer type="person">
 		<email>blueness@gentoo.org</email>
 		<name>Anthony G. Basile</name>
 	</maintainer>
 	<use>
 		<flag name="logrotate">Use app-admin/logrotate for rotating logs</flag>
-		<flag name='wallet'>Enable wallet support</flag>
+		<flag name="wallet">Enable wallet support</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">litecoin-project/litecoin</remote-id>

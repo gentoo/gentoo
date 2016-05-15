@@ -1,9 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
-inherit eutils games
+inherit eutils flag-o-matic games
 
 DESCRIPTION="clone of old-school Wizardry(tm) games by SirTech"
 HOMEPAGE="http://icculus.org/gwiz/"
@@ -21,6 +21,7 @@ RDEPEND=${DEPEND}
 
 src_prepare() {
 	epatch "${FILESDIR}"/${P}-buffer.patch
+	append-cflags -std=gnu89 # build with gcc5 (bug #572532)
 }
 
 src_install() {

@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>sci</herd>
-<longdescription lang='en'>
+<maintainer type="project">
+	<email>sci@gentoo.org</email>
+	<name>Gentoo Science Project</name>
+</maintainer>
+<longdescription lang="en">
   SPOOLES is a library for solving sparse real and complex linear
   systems of equations, written in the C language using object
   oriented design. At present, there is the following functionality:

@@ -1,0 +1,68 @@
+ijs is part of the ghostscript package, so it needs to be dropped when we drop
+ghostscript (i.e., USE="-postscript"). Patch accepted here:
+
+https://bugs.linuxfoundation.org/show_bug.cgi?id=1345
+
+--- Makefile.am
++++ Makefile.am
+@@ -490,7 +490,6 @@
+ 	bannertopdf \
+ 	commandtoescpx \
+ 	commandtopclx \
+-	pdftoijs \
+ 	sys5ippprinter \
+ 	pdftops \
+ 	pdftoraster \
+@@ -499,6 +498,10 @@
+ 	texttopdf \
+ 	urftopdf \
+ 	rastertopdf
++if ENABLE_IJS
++pkgfilter_PROGRAMS += \
++	pdftoijs
++endif
+ if ENABLE_GHOSTSCRIPT
+ pkgfilter_PROGRAMS += \
+ 	gstoraster
+@@ -846,9 +849,12 @@
+ 	ppd/Fuji_Xerox-DocuPrint_CM305_df-PDF.ppd \
+ 	ppd/Generic-PDF_Printer-PDF.ppd \
+ 	ppd/HP-Color_LaserJet_CM3530_MFP-PDF.ppd \
+-	ppd/HP-PhotoSmart_Pro_B8300-hpijs-pdftoijs.ppd \
+ 	ppd/Ricoh-PDF_Printer-PDF.ppd \
+ 	ppd/textonly.ppd
++if ENABLE_IJS
++ppd_DATA += \
++	ppd/HP-PhotoSmart_Pro_B8300-hpijs-pdftoijs.ppd
++endif
+ if ENABLE_GHOSTSCRIPT
+ ppd_DATA += \
+ 	ppd/pxlcolor.ppd \
+
+--- configure.ac
++++ configure.ac
+@@ -443,7 +443,7 @@
+ ])
+ PKG_CHECK_MODULES([FREETYPE], [freetype2], [AC_DEFINE([HAVE_FREETYPE_H], [1], [Have FreeType2 include files])])
+ PKG_CHECK_MODULES([FONTCONFIG], [fontconfig >= 2.0.0])
+-PKG_CHECK_MODULES([IJS], [ijs])
++PKG_CHECK_MODULES([IJS], [ijs], [have_ijs=yes], [have_ijs=no])
+ PKG_CHECK_MODULES([POPPLER], [poppler >= 0.18])
+ PKG_CHECK_MODULES([ZLIB], [zlib])
+ AC_DEFINE([HAVE_LIBZ], [], [Define that we use zlib])
+@@ -489,6 +489,15 @@
+ 	[enable_ghostscript="$enableval"],
+ 	[enable_ghostscript=yes]
+ )
++AC_ARG_ENABLE([ijs],
++	[AS_HELP_STRING([--disable-ijs], [Disable filters using IJS.])],
++	[enable_ijs="$enableval"],
++	[enable_ijs=yes]
++)
++AS_IF([test "x$enable_ijs" = "xyes" -a "x$have_ijs" != "xyes"], [
++       AC_MSG_ERROR([IJS not found, but requested.])
++])
++AM_CONDITIONAL(ENABLE_IJS, test "x$enable_ijs" = "xyes")
+ AC_ARG_WITH([pdftops],
+ 	[AS_HELP_STRING([--with-pdftops=value], [Set which pdftops to use (gs,pdftops,pdftocairo,acroread,hybrid).])],
+ 	[with_pdftops="$withval"],

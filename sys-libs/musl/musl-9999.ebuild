@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -18,7 +18,7 @@ if [[ ${CTARGET} == ${CHOST} ]] ; then
 	fi
 fi
 
-DESCRIPTION="Lightweight, fast and simple C library focused on standards-conformance and safety"
+DESCRIPTION="Light, fast and simple C library focused on standards-conformance and safety"
 HOMEPAGE="http://www.musl-libc.org/"
 if [[ ${PV} != "9999" ]] ; then
 	PATCH_VER=""
@@ -31,6 +31,9 @@ SLOT="0"
 IUSE="crosscompile_opts_headers-only"
 
 RDEPEND="!sys-apps/getent"
+
+QA_SONAME="/usr/lib/libc.so"
+QA_DT_NEEDED="/usr/lib/libc.so"
 
 is_crosscompile() {
 	[[ ${CHOST} != ${CTARGET} ]]
@@ -78,7 +81,7 @@ src_configure() {
 }
 
 src_compile() {
-	emake include/bits/alltypes.h
+	emake obj/include/bits/alltypes.h
 	just_headers && return 0
 
 	emake

@@ -3,8 +3,8 @@
 # $Id$
 
 DESCRIPTION="lib for D-Bus daemon messages, querying HAL or PolicyKit privileges"
-HOMEPAGE="http://freedesktop.org/wiki/Software/liblazy"
-SRC_URI="http://people.freedesktop.org/~homac/${PN}/${P}.tar.bz2"
+HOMEPAGE="https://freedesktop.org/wiki/Software/liblazy"
+SRC_URI="https://people.freedesktop.org/~homac/${PN}/${P}.tar.bz2"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

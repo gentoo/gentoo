@@ -1,0 +1,23 @@
+--- vmnet-only/vmnetInt.h.orig	2015-05-31 16:40:39.000000000 +0300
++++ vmnet-only/vmnetInt.h	2015-09-28 01:22:01.553054142 +0300
+@@ -78,12 +78,16 @@
+ 
+ extern struct proto vmnet_proto;
+ #ifdef VMW_NETDEV_HAS_NET
+-#   define compat_sk_alloc(_bri, _pri) sk_alloc(&init_net, \
+-                                                PF_NETLINK, _pri, &vmnet_proto)
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 2, 0)
++# define compat_sk_alloc(_bri, _pri) sk_alloc(&init_net, \
++                        PF_NETLINK, _pri, &vmnet_proto, 1)
+ #else
+-#   define compat_sk_alloc(_bri, _pri) sk_alloc(PF_NETLINK, _pri, &vmnet_proto, 1)
++# define compat_sk_alloc(_bri, _pri) sk_alloc(&init_net, \
++                        PF_NETLINK, _pri, &vmnet_proto)
++#endif
++#else
++# define compat_sk_alloc(_bri, _pri) sk_alloc(PF_NETLINK, _pri, &vmnet_proto, 1)
+ #endif
+-
+ 
+ #ifdef NF_IP_LOCAL_IN
+ #define VMW_NF_INET_LOCAL_IN     NF_IP_LOCAL_IN

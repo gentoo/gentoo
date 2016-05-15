@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <longdescription>
@@ -6,7 +6,7 @@
     parallel, visualization tool for visualizing data defined on two-
     and three-dimensional structured and unstructured meshes.
   </longdescription>
-  <maintainer>
+  <maintainer type="person">
     <email>slis@gentoo.org</email>
   </maintainer>
   <use>

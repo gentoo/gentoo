@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer>
+<maintainer type="person">
 <email>grozin@gentoo.org</email>
 <name>Andrey Grozin</name>
 </maintainer>
-<herd>common-lisp</herd>
+<maintainer type="project">
+<email>common-lisp@gentoo.org</email>
+<name>Gentoo Common Lisp Project</name>
+</maintainer>
 <longdescription>
 CMUCL is a free implementation of the Common Lisp programming language
 which runs on most major Unix platforms. It mainly conforms to the
@@ -31,6 +34,6 @@ ANSI Common Lisp standard. Here is a summary of its main features:
    code profiler.
 </longdescription>
 <use>
-<flag name='source'>Include source code for CMUCL in installation</flag>
+<flag name="source">Include source code for CMUCL in installation</flag>
 </use>
 </pkgmetadata>

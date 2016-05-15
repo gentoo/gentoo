@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>cjk</herd>
+	<maintainer type="project">
+		<email>cjk@gentoo.org</email>
+		<name>Cjk</name>
+	</maintainer>
 	<longdescription lang="en">
     gWaei is a drop-in replacement for Gjiten. The main feature of
     this dictonary program is regular expression support. For example,
@@ -13,13 +16,9 @@
       Enable single instance support using
       <pkg>dev-libs/libunique</pkg>.
     </flag>
-	</use>
-	<use>
 		<flag name="mecab">
 	  Enable <pkg>app-text/mecab</pkg> support
 	</flag>
-	</use>
-	<use>
 		<flag name="hunspell">
 	  Enable <pkg>app-text/hunspell</pkg> spellchecking and morphological analysis
 	</flag>

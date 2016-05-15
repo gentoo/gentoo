@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>office</herd>
+	<maintainer type="project">
+		<email>office@gentoo.org</email>
+		<name>Gentoo Office project</name>
+	</maintainer>
+	<use>
+		<flag name="spreadsheet-model">Enable the spreadsheet model implementation</flag>
+		<flag name="tools">Build miscellaneous tools</flag>
+	</use>
+	<upstream>
+		<remote-id type="gitlab">orcus/orcus</remote-id>
+	</upstream>
 </pkgmetadata>

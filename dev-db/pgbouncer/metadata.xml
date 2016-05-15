@@ -1,16 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-    <herd>postgresql</herd>
-    <herd>proxy-maintainers</herd>
-    <maintainer>
+    <maintainer type="person">
         <email>bugs@bergstroem.nu</email>
         <name>Johan Bergström</name>
         <description>Proxy-Maintainer, assign bugs</description>
     </maintainer>
-    <maintainer>
+    <maintainer type="person">
         <email>titanofold@gentoo.org</email>
         <name>Aaron W. Swenson</name>
+    </maintainer>
+    <maintainer type="project">
+        <email>pgsql-bugs@gentoo.org</email>
+        <name>PostgreSQL and Related Package Development</name>
+    </maintainer>
+    <maintainer type="project">
+        <email>proxy-maint@gentoo.org</email>
+        <name>Proxy Maintainers</name>
     </maintainer>
     <use>
         <flag name="libevent">Use libevent 2.0+ and evdns as the DNS backend</flag>

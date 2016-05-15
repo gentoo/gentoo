@@ -15,7 +15,7 @@ EGIT_REPO_URI="https://github.com/radare/radare2"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="debug ssl"
+IUSE="ssl"
 
 RDEPEND="
 	ssl? ( dev-libs/openssl:= )
@@ -26,6 +26,5 @@ DEPEND="${RDEPEND}
 
 src_configure() {
 	econf \
-		$(use_with ssl openssl) \
-		$(use_enable debug)
+		$(use_with ssl openssl)
 }

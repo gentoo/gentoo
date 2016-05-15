@@ -6,12 +6,12 @@ EAPI=5
 inherit eutils udev
 
 DESCRIPTION="Library to handle input devices in Wayland"
-HOMEPAGE="http://www.freedesktop.org/wiki/Software/libinput/"
-SRC_URI="http://www.freedesktop.org/software/${PN}/${P}.tar.xz"
+HOMEPAGE="https://www.freedesktop.org/wiki/Software/libinput/"
+SRC_URI="https://www.freedesktop.org/software/${PN}/${P}.tar.xz"
 
 LICENSE="MIT"
 SLOT="0/10"
-KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ~m68k ~mips ppc ~ppc64 ~s390 ~sh ~sparc x86"
+KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86"
 IUSE="test"
 # Tests require write access to udev rules directory which is a no-no for live system.
 # Other tests are just about logs, exported symbols and autotest of the test library.

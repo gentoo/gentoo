@@ -1,4 +1,4 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -11,7 +11,7 @@ HOMEPAGE="https://github.com/olabini/jvyamlb"
 SRC_URI="https://jvyamlb.googlecode.com/files/jvyamlb-src-${PV}.tar.gz"
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~ppc x86 ~amd64-linux ~x86-linux ~x86-solaris"
+KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux ~x86-solaris"
 IUSE=""
 
 CDEPEND="dev-java/bytelist:0

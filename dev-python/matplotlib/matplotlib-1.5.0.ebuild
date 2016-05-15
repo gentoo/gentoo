@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -47,6 +47,12 @@ COMMON_DEPEND="
 	media-libs/freetype:2
 	media-libs/libpng:0
 	media-libs/qhull
+	cairo? (
+		|| (
+			dev-python/pycairo[${PYTHON_USEDEP}]
+			dev-python/cairocffi[${PYTHON_USEDEP}]
+			)
+		)
 	gtk2? (
 		dev-libs/glib:2=
 		x11-libs/gdk-pixbuf
@@ -67,6 +73,7 @@ DEPEND="${COMMON_DEPEND}
 		dev-python/mock[${PY2_USEDEP}]
 		dev-python/numpydoc[${PYTHON_USEDEP}]
 		dev-python/sphinx[${PYTHON_USEDEP}]
+		!~dev-python/sphinx-1.3.4
 		dev-python/xlwt[${PYTHON_USEDEP}]
 		dev-texlive/texlive-latexextra
 		dev-texlive/texlive-fontsrecommended
@@ -80,12 +87,6 @@ DEPEND="${COMMON_DEPEND}
 
 RDEPEND="${COMMON_DEPEND}
 	>=dev-python/pyparsing-1.5.6[${PYTHON_USEDEP}]
-	cairo? (
-		|| (
-			dev-python/pycairo[${PYTHON_USEDEP}]
-			dev-python/cairocffi[${PYTHON_USEDEP}]
-			)
-		)
 	excel? ( dev-python/xlwt[${PYTHON_USEDEP}] )
 	fltk? ( dev-python/pyfltk[${PYTHON_USEDEP}] )
 	gtk3? (

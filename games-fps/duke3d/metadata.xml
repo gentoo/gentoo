@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>games</herd>
+  <maintainer type="project">
+    <email>games@gentoo.org</email>
+    <name>Gentoo Games Project</name>
+  </maintainer>
   <longdescription>
 The third chapter in the series, and the first with a 3D perspective 
 (the original Duke Nukem and the sequel, Duke Nukem II, are side 
@@ -53,6 +56,6 @@ What doesn't work/known bugs:
 </longdescription>
   <use>
     <flag name="demo">Install the demo files</flag>
-    <flag name='pic'>disable optimized assembly code that is not PIC friendly</flag>
+    <flag name="pic">disable optimized assembly code that is not PIC friendly</flag>
   </use>
 </pkgmetadata>

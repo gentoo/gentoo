@@ -64,7 +64,7 @@ src_configure() {
 	local libdir=$(get_libdir)
 
 	# required for ddocdir
-	_check_build_dir init
+	_cmake_check_build_dir init
 	local mycmakeargs=(
 		-DDOCDIR="${CMAKE_BUILD_DIR}"/doc
 		-DLIBDIR_SUFFIX=${libdir/lib}

@@ -27,7 +27,7 @@ RDEPEND="sys-libs/zlib
 		app-arch/bzip2
 		x11-libs/libX11
 	)
-	sqlite? ( dev-db/sqlite:0 )
+	sqlite? ( dev-db/sqlite:3 )
 	sound? ( media-libs/alsa-lib )
 	mikmod? (
 		media-libs/libmikmod

@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>dev-tools</herd>
+<maintainer type="person">
+	<email>tamiko@gentoo.org</email>
+	<name>Matthias Maier</name>
+</maintainer>
 <longdescription>Doxygen is a tool for analyzing, documenting, and reverse-engineering 
     source code of various languages using a variety of output formats 
     (try it and see).  Doxygen supports C++, C, Java, Objective-C, Python, 
@@ -9,8 +12,8 @@
     as well as other languages (using additional helper tools).
 </longdescription>
 <use>
-	<flag name='clang'>support for <pkg>sys-devel/clang</pkg> assisted parsing</flag>
-	<flag name='dot'>allow to create dot graphs using <pkg>media-gfx/graphviz</pkg></flag>
-	<flag name='doxysearch'>build doxyindexer and doxysearch.cgi</flag>
+	<flag name="clang">support for <pkg>sys-devel/clang</pkg> assisted parsing</flag>
+	<flag name="dot">allow to create dot graphs using <pkg>media-gfx/graphviz</pkg></flag>
+	<flag name="doxysearch">build doxyindexer and doxysearch.cgi</flag>
 </use>
 </pkgmetadata>

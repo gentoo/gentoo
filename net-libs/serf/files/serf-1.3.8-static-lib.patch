@@ -1,0 +1,49 @@
+respect the active archiver tool instead of using `ar` all the time.
+same for `ranlib`.
+
+also add support for BUILD_STATIC bool for controlling the libserf.a.
+
+--- a/SConstruct
++++ b/SConstruct
+@@ -103,6 +103,9 @@
+   BoolVariable('APR_STATIC',
+                "Enable using a static compiled APR",
+                False),
++  RawListVariable('AR', "Command name or path of the archiver", None),
++  RawListVariable('RANLIB', "Command name or path of the archiver indexer", None),
++  BoolVariable('BUILD_STATIC', 'Build libserf static library', True),
+   RawListVariable('CC', "Command name or path of the C compiler", None),
+   RawListVariable('CFLAGS', "Extra flags for the C compiler (space-separated)",
+                   None),
+@@ -193,6 +196,7 @@ if gssapi and os.path.isdir(gssapi):
+ 
+ debug = env.get('DEBUG', None)
+ aprstatic = env.get('APR_STATIC', None)
++build_static = env.get('BUILD_STATIC', True)
+ 
+ Help(opts.GenerateHelpText(env))
+ opts.Save(SAVED_CONFIG, env)
+@@ -384,7 +388,9 @@ pkgconfig = env.Textfile('serf-%d.pc' % (MAJOR,),
+                                                        env.get('GSSAPI_LIBS', '')),
+                            })
+ 
+-env.Default(lib_static, lib_shared, pkgconfig)
++env.Default(lib_shared, pkgconfig)
++if build_static:
++  env.Default(lib_static)
+ 
+ if CALLOUT_OKAY:
+   conf = Configure(env)
+@@ -420,8 +420,10 @@ if sys.platform == 'darwin':
+                                      % (target_install_shared_path,
+                                         install_shared_path)))
+ 
+-env.Alias('install-lib', [install_static, install_shared,
+-                          ])
++install_libs = [install_shared]
++if build_static:
++  install_libs.append(install_static)
++env.Alias('install-lib', install_libs)
+ env.Alias('install-inc', env.Install(incdir, HEADER_FILES))
+ env.Alias('install-pc', env.Install(os.path.join(libdir, 'pkgconfig'),
+                                     pkgconfig))

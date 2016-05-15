@@ -1,6 +1,0 @@
-# /etc/conf.d/shishid
-
-# Options to pass to the Shishi KDC server.  Please see shishid man page for details.
-#
-# OPTIONS="--no-tls"
-

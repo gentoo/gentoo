@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>games</herd>
+<maintainer type="project">
+	<email>games@gentoo.org</email>
+	<name>Gentoo Games Project</name>
+</maintainer>
 <longdescription>
 GtkRadiant is a level editor supporting multiple games and mods: Quake III Arena, Quake III: Team Arena, Quake III Arena modifications, Return To Castle Wolfenstein, Jedi Knight II: Jedi Outcast, Soldier Of Fortune II, Star Trek Voyager: Elite Force.
 </longdescription>

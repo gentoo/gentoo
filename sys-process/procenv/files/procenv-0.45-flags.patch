@@ -1,0 +1,18 @@
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -4,7 +4,6 @@
+ 	-pedantic \
+ 	-std=gnu99 \
+ 	-Wall -Wunused \
+-	-fstack-protector \
+ 	-Wformat
+ 
+ 
+@@ -13,7 +12,6 @@
+ AM_CFLAGS += -fdata-sections -ffunction-sections
+ 
+ # keep it tight
+-AM_CFLAGS += -Werror
+ 
+ bin_PROGRAMS = procenv
+ 

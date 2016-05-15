@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -14,11 +14,11 @@ PYTHON_COMPAT=( python2_7 )
 inherit eutils multilib virtualx python-any-r1
 
 DESCRIPTION="Documentation for ROOT Data Analysis Framework"
-HOMEPAGE="http://root.cern.ch/drupal"
-SRC_URI="ftp://root.cern.ch/${ROOT_PN}/${ROOT_PN}_v${PV}.source.tar.gz
+HOMEPAGE="https://root.cern.ch"
+SRC_URI="https://root.cern.ch/download/${ROOT_PN}_v${PV}.source.tar.gz
 	math? (
 		http://tmva.sourceforge.net/docu/TMVAUsersGuide.pdf -> TMVAUsersGuide-v${TMVA_DOC_PV}.pdf
-		http://root.cern.ch/download/doc/RooFit_Users_Manual_${ROOFIT_DOC_PV}.pdf
+		https://root.cern.ch/download/doc/RooFit_Users_Manual_${ROOFIT_DOC_PV}.pdf
 		http://root.cern.ch/drupal/sites/default/files/roofit_quickstart_${ROOFIT_QS_DOC_PV}.pdf )
 	api? (
 		${HOMEPAGE}/sites/default/files/images/root6-banner.jpg

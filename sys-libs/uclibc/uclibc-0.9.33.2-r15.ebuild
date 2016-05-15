@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -18,10 +18,10 @@ fi
 
 MY_P=uClibc-${PV}
 DESCRIPTION="C library for developing embedded Linux systems"
-HOMEPAGE="http://www.uclibc.org/"
+HOMEPAGE="https://www.uclibc.org/"
 if [[ ${PV} != "9999" ]] ; then
 	PATCH_VER="17"
-	SRC_URI="http://uclibc.org/downloads/${MY_P}.tar.bz2
+	SRC_URI="https://uclibc.org/downloads/${MY_P}.tar.bz2
 		${PATCH_VER:+mirror://gentoo/${MY_P}-patches-${PATCH_VER}.tar.bz2}"
 	KEYWORDS="-* amd64 arm m68k ~mips ppc sh sparc x86"
 fi
@@ -30,6 +30,11 @@ LICENSE="LGPL-2"
 SLOT="0"
 IUSE="debug hardened iconv ipv6 nptl rpc ssp uclibc-compat wordexp crosscompile_opts_headers-only"
 RESTRICT="strip"
+
+# We cannot migrate between uclibc and uclibc-ng because as soon as portage
+# updates the ld.so sym link, the system breaks.  Ideally this should be a
+# hard blocker, but EAPI=0 doesn't allow hard blockers.
+RDEPEND="!sys-libs/uclibc-ng"
 
 S=${WORKDIR}/${MY_P}
 
@@ -140,6 +145,7 @@ src_config() {
 	fi
 
 	defs=(
+		LDSO_GNU_HASH_SUPPORT
 		MALLOC_GLIBC_COMPAT
 		DO_C99_MATH
 		UCLIBC_HAS_{CTYPE_CHECKED,WCHAR,HEXADECIMAL_FLOATS,GLIBC_CUSTOM_PRINTF,FOPEN_EXCLUSIVE_MODE,GLIBC_CUSTOM_STREAMS,PRINTF_M_SPEC}

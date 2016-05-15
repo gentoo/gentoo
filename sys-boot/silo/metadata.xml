@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>sparc</herd>
+<maintainer type="project">
+	<email>sparc@gentoo.org</email>
+	<name>Gentoo Linux SPARC Development</name>
+</maintainer>
 <longdescription>
 SILO is the SPARC/UltraSPARC Improved Loader, a boot loader for sparc similar to LILO.
 </longdescription>

@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>haskell</herd>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
 	<longdescription>
 		The @text@ package provides high performance functions for decoding strict and lazy @ByteString@s into @Text@. However, these functions present two issues for streaming data libraries: they throw exceptions from pure code, and are not designed for incremental consumption. This library addresses both issues with a unified API for UTF-8, -16LE, -16BE, -32LE, and -32BE. It is intended for use by high level streaming data libraries, such as conduit, enumerator, iteratee, and pipes.
 	</longdescription>

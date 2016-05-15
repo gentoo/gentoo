@@ -1,4 +1,0 @@
-TILESET=name:Small tiles, file:gltile16.png, transparent
-TILESET=name:Big tiles, file:gltile32.png, transparent
-TILESET=name:Big 3D tiles, file:gltile64.png, transparent, pseudo3D
-OPTIONS=tiles:Big 3D tiles

@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer>
-<email>maintainer-needed@gentoo.org</email>
-</maintainer>
+<!-- maintainer-needed -->
 <longdescription lang="en">
 bff is a slightly optimized interpreter for brainfuck, a turing-complete
 programming language.
 </longdescription>
 </pkgmetadata>
-

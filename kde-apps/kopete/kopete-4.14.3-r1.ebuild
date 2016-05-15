@@ -65,7 +65,7 @@ IUSE="${IUSE} ${PLUGINS} ${PROTOCOLS}"
 
 COMMONDEPEND="
 	$(add_kdebase_dep kdelibs 'zeroconf?')
-	$(add_kdebase_dep kdepimlibs)
+	$(add_kdeapps_dep kdepimlibs)
 	dev-libs/libpcre
 	>=dev-qt/qtgui-4.4.0:4[mng]
 	media-libs/phonon[qt4]

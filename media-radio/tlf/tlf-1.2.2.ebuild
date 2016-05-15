@@ -12,14 +12,14 @@ SRC_URI="http://www.hs-mittweida.de/tb/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 RDEPEND="sys-libs/ncurses:=
 	dev-libs/glib:2
 	media-libs/hamlib
 	media-sound/sox
-	dev-libs/xmlrpc-c"
+	dev-libs/xmlrpc-c[curl]"
 DEPEND="${RDEPEND}"
 
 src_configure() {

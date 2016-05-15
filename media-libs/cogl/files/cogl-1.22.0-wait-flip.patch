@@ -1,0 +1,42 @@
+From a583492ea2aa3ea8e78c269bd5db3f52f82aa79c Mon Sep 17 00:00:00 2001
+From: Ray Strode <rstrode@redhat.com>
+Date: Wed, 21 Oct 2015 15:47:01 -0400
+Subject: kms-winsys: don't wait for a flip when page flipping fails
+
+If we get EACCES from drmPageFlip we're not going to get
+a flip event and shouldn't wait for one.
+
+This commit changes the EACCES path to silently ignore the
+failed flip request and just clean up the fb.
+
+https://bugzilla.gnome.org/show_bug.cgi?id=756926
+---
+ cogl/winsys/cogl-winsys-egl-kms.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/cogl/winsys/cogl-winsys-egl-kms.c b/cogl/winsys/cogl-winsys-egl-kms.c
+index 20c325c..b460907 100644
+--- a/cogl/winsys/cogl-winsys-egl-kms.c
++++ b/cogl/winsys/cogl-winsys-egl-kms.c
+@@ -590,7 +590,7 @@ flip_all_crtcs (CoglDisplay *display, CoglFlipKMS *flip, int fb_id)
+   for (l = kms_display->crtcs; l; l = l->next)
+     {
+       CoglKmsCrtc *crtc = l->data;
+-      int ret;
++      int ret = 0;
+ 
+       if (crtc->count == 0 || crtc->ignore)
+         continue;
+@@ -610,7 +610,8 @@ flip_all_crtcs (CoglDisplay *display, CoglFlipKMS *flip, int fb_id)
+             }
+         }
+ 
+-      flip->pending++;
++      if (ret == 0)
++        flip->pending++;
+     }
+ 
+   if (kms_renderer->page_flips_not_supported && needs_flip)
+-- 
+cgit v0.11.2
+

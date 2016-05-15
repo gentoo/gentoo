@@ -1,18 +1,24 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>shell-tools</herd>
-  <herd>proxy-maintainers</herd>
-  <maintainer>
+  <maintainer type="person">
     <email>steev@gentoo.org</email>
     <name>Steev Klimaszewski</name>
     <description>Maintainer</description>
   </maintainer>
-  <maintainer>
+  <maintainer type="person">
     <email>pacopablo@pacopablo.com</email>
     <name>John Hampton</name>
     <description>Consider him the user-maintainer of this package, and please
   CC him on bug reports (if he's not the reporter).</description>
+  </maintainer>
+  <maintainer type="project">
+    <email>shell-tools@gentoo.org</email>
+    <name>Gentoo Shell Tools Project</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
   </maintainer>
   <use>
     <flag name="mew">Add support for using the mewdecode mime decoder

@@ -16,6 +16,7 @@ LICENSE="GPL-3"
 IUSE=""
 
 src_prepare() {
+	epatch "${FILESDIR}"/${P}-sysmacros.patch #579982
 	sed \
 		-e 's: -g : :g' \
 		-e 's: $(LDFLAGS) : :g' \

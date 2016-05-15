@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/bowtie-bio/${P}-src.zip"
 
 LICENSE="Artistic"
 SLOT="1"
-KEYWORDS="~amd64 ~x86 ~x64-macos"
+KEYWORDS="amd64 x86 ~x64-macos"
 
 IUSE="examples +tbb"
 

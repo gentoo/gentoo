@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>base-system</herd>
+<maintainer type="project">
+ <email>base-system@gentoo.org</email>
+ <name>Gentoo Base System</name>
+</maintainer>
 <use>
- <flag name='asm'>Support assembly hand optimized crypto functions (i.e. faster run time)</flag>
- <flag name='bindist'>Disable EC algorithms (as they seem to be patented) -- note: changes the ABI</flag>
- <flag name='sctp'>Support for Stream Control Transmission Protocol</flag>
- <flag name='rfc3779'>Enable support for RFC 3779 (X.509 Extensions for IP Addresses and AS Identifiers)</flag>
- <flag name='tls-heartbeat'>Enable the Heartbeat Extension in TLS and DTLS</flag>
+ <flag name="asm">Support assembly hand optimized crypto functions (i.e. faster run time)</flag>
+ <flag name="bindist">Disable EC algorithms (as they seem to be patented) -- note: changes the ABI</flag>
+ <flag name="sctp">Support for Stream Control Transmission Protocol</flag>
+ <flag name="rfc3779">Enable support for RFC 3779 (X.509 Extensions for IP Addresses and AS Identifiers)</flag>
+ <flag name="tls-heartbeat">Enable the Heartbeat Extension in TLS and DTLS</flag>
 </use>
 <upstream>
  <remote-id type="cpe">cpe:/a:openssl:openssl</remote-id>

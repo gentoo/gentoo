@@ -1,0 +1,24 @@
+--- tesseract-3.04.00/opencl/openclwrapper.cpp.orig     2016-01-31 11:55:02.535154846 +0100
++++ tesseract-3.04.00/opencl/openclwrapper.cpp  2016-01-31 12:04:23.727809089 +0100
+@@ -14,6 +14,21 @@
+ #include "otsuthr.h"
+ #include "thresholder.h"
+ 
++/*
++    Convenience macro to test the version of Leptonica.
++*/
++#if defined(LIBLEPT_MAJOR_VERSION) && defined(LIBLEPT_MINOR_VERSION)
++#   define TESSERACT_LIBLEPT_PREREQ(maj, min) \
++        ((LIBLEPT_MAJOR_VERSION) > (maj) || ((LIBLEPT_MAJOR_VERSION) == (maj) && (LIBLEPT_MINOR_VERSION) >= (min)))
++#else
++#   define TESSERACT_LIBLEPT_PREREQ(maj, min) 0
++#endif
++
++#if TESSERACT_LIBLEPT_PREREQ(1,73)
++#   define CALLOC LEPT_CALLOC
++#   define FREE LEPT_FREE
++#endif
++
+ #ifdef USE_OPENCL
+ 
+ #if ON_APPLE

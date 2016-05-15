@@ -1,0 +1,443 @@
+https://www.sqlite.org/cgi/src/info/374b5108087a2eae
+
+--- ext/fts3/fts3_tokenizer.c
++++ ext/fts3/fts3_tokenizer.c
+@@ -30,6 +30,18 @@
+ #include <string.h>
+ 
+ /*
++** Return true if the two-argument version of fts3_tokenizer()
++** has been activated via a prior call to sqlite3_db_config(db,
++** SQLITE_DBCONFIG_ENABLE_FTS3_TOKENIZER, 1, 0);
++*/
++static int fts3TokenizerEnabled(sqlite3_context *context){
++  sqlite3 *db = sqlite3_context_db_handle(context);
++  int isEnabled = 0;
++  sqlite3_db_config(db,SQLITE_DBCONFIG_ENABLE_FTS3_TOKENIZER,-1,&isEnabled);
++  return isEnabled;
++}
++
++/*
+ ** Implementation of the SQL scalar function for accessing the underlying 
+ ** hash table. This function may be called as follows:
+ **
+@@ -49,7 +61,7 @@
+ ** is a blob containing the pointer stored as the hash data corresponding
+ ** to string <key-name> (after the hash-table is updated, if applicable).
+ */
+-static void scalarFunc(
++static void fts3TokenizerFunc(
+   sqlite3_context *context,
+   int argc,
+   sqlite3_value **argv
+@@ -67,27 +79,23 @@
+   nName = sqlite3_value_bytes(argv[0])+1;
+ 
+   if( argc==2 ){
+-#ifdef SQLITE_ENABLE_FTS3_TOKENIZER
+-    void *pOld;
+-    int n = sqlite3_value_bytes(argv[1]);
+-    if( zName==0 || n!=sizeof(pPtr) ){
+-      sqlite3_result_error(context, "argument type mismatch", -1);
+-      return;
+-    }
+-    pPtr = *(void **)sqlite3_value_blob(argv[1]);
+-    pOld = sqlite3Fts3HashInsert(pHash, (void *)zName, nName, pPtr);
+-    if( pOld==pPtr ){
+-      sqlite3_result_error(context, "out of memory", -1);
++    if( fts3TokenizerEnabled(context) ){
++      void *pOld;
++      int n = sqlite3_value_bytes(argv[1]);
++      if( zName==0 || n!=sizeof(pPtr) ){
++        sqlite3_result_error(context, "argument type mismatch", -1);
++        return;
++      }
++      pPtr = *(void **)sqlite3_value_blob(argv[1]);
++      pOld = sqlite3Fts3HashInsert(pHash, (void *)zName, nName, pPtr);
++      if( pOld==pPtr ){
++        sqlite3_result_error(context, "out of memory", -1);
++      }
++    }else{
++      sqlite3_result_error(context, "fts3tokenize disabled", -1);
+       return;
+     }
+-#else
+-    sqlite3_result_error(context, "fts3tokenize: " 
+-        "disabled - rebuild with -DSQLITE_ENABLE_FTS3_TOKENIZER", -1
+-    );
+-    return;
+-#endif /* SQLITE_ENABLE_FTS3_TOKENIZER */
+-  }else
+-  {
++  }else{
+     if( zName ){
+       pPtr = sqlite3Fts3HashFind(pHash, zName, nName);
+     }
+@@ -98,7 +106,6 @@
+       return;
+     }
+   }
+-
+   sqlite3_result_blob(context, (void *)&pPtr, sizeof(pPtr), SQLITE_TRANSIENT);
+ }
+ 
+@@ -336,7 +343,6 @@
+   Tcl_DecrRefCount(pRet);
+ }
+ 
+-#ifdef SQLITE_ENABLE_FTS3_TOKENIZER
+ static
+ int registerTokenizer(
+   sqlite3 *db, 
+@@ -358,7 +364,6 @@
+ 
+   return sqlite3_finalize(pStmt);
+ }
+-#endif /* SQLITE_ENABLE_FTS3_TOKENIZER */
+ 
+ 
+ static
+@@ -431,13 +436,13 @@
+   assert( 0==strcmp(sqlite3_errmsg(db), "unknown tokenizer: nosuchtokenizer") );
+ 
+   /* Test the storage function */
+-#ifdef SQLITE_ENABLE_FTS3_TOKENIZER
+-  rc = registerTokenizer(db, "nosuchtokenizer", p1);
+-  assert( rc==SQLITE_OK );
+-  rc = queryTokenizer(db, "nosuchtokenizer", &p2);
+-  assert( rc==SQLITE_OK );
+-  assert( p2==p1 );
+-#endif
++  if( fts3TokenizerEnabled(context) ){
++    rc = registerTokenizer(db, "nosuchtokenizer", p1);
++    assert( rc==SQLITE_OK );
++    rc = queryTokenizer(db, "nosuchtokenizer", &p2);
++    assert( rc==SQLITE_OK );
++    assert( p2==p1 );
++  }
+ 
+   sqlite3_result_text(context, "ok", -1, SQLITE_STATIC);
+ }
+@@ -453,7 +458,7 @@
+ **    sqlite3Fts3HashInit(pHash, FTS3_HASH_STRING, 1);
+ **
+ ** This function adds a scalar function (see header comment above
+-** scalarFunc() in this file for details) and, if ENABLE_TABLE is
++** fts3TokenizerFunc() in this file for details) and, if ENABLE_TABLE is
+ ** defined at compilation time, a temporary virtual table (see header 
+ ** comment above struct HashTableVtab) to the database schema. Both 
+ ** provide read/write access to the contents of *pHash.
+@@ -482,10 +487,10 @@
+ #endif
+ 
+   if( SQLITE_OK==rc ){
+-    rc = sqlite3_create_function(db, zName, 1, any, p, scalarFunc, 0, 0);
++    rc = sqlite3_create_function(db, zName, 1, any, p, fts3TokenizerFunc, 0, 0);
+   }
+   if( SQLITE_OK==rc ){
+-    rc = sqlite3_create_function(db, zName, 2, any, p, scalarFunc, 0, 0);
++    rc = sqlite3_create_function(db, zName, 2, any, p, fts3TokenizerFunc, 0, 0);
+   }
+ #ifdef SQLITE_TEST
+   if( SQLITE_OK==rc ){
+--- src/main.c
++++ src/main.c
+@@ -797,8 +797,9 @@
+         int op;      /* The opcode */
+         u32 mask;    /* Mask of the bit in sqlite3.flags to set/clear */
+       } aFlagOp[] = {
+-        { SQLITE_DBCONFIG_ENABLE_FKEY,    SQLITE_ForeignKeys    },
+-        { SQLITE_DBCONFIG_ENABLE_TRIGGER, SQLITE_EnableTrigger  },
++        { SQLITE_DBCONFIG_ENABLE_FKEY,           SQLITE_ForeignKeys    },
++        { SQLITE_DBCONFIG_ENABLE_TRIGGER,        SQLITE_EnableTrigger  },
++        { SQLITE_DBCONFIG_ENABLE_FTS3_TOKENIZER, SQLITE_Fts3Tokenizer  },
+       };
+       unsigned int i;
+       rc = SQLITE_ERROR; /* IMP: R-42790-23372 */
+@@ -2815,6 +2816,9 @@
+ #if defined(SQLITE_ENABLE_OVERSIZE_CELL_CHECK)
+                  | SQLITE_CellSizeCk
+ #endif
++#if defined(SQLITE_ENABLE_FTS3_TOKENIZER)
++                 | SQLITE_Fts3Tokenizer
++#endif
+       ;
+   sqlite3HashInit(&db->aCollSeq);
+ #ifndef SQLITE_OMIT_VIRTUALTABLE
+--- src/sqlite.h.in
++++ src/sqlite.h.in
+@@ -1904,11 +1904,25 @@
+ ** following this call.  The second parameter may be a NULL pointer, in
+ ** which case the trigger setting is not reported back. </dd>
+ **
++** <dt>SQLITE_DBCONFIG_ENABLE_FTS3_TOKENIZER</dt>
++** <dd> ^This option is used to enable or disable the two-argument
++** version of the [fts3_tokenizer()] function which is part of the
++** [FTS3] full-text search engine extension.
++** There should be two additional arguments.
++** The first argument is an integer which is 0 to disable fts3_tokenizer() or
++** positive to enable fts3_tokenizer() or negative to leave the setting
++** unchanged.
++** The second parameter is a pointer to an integer into which
++** is written 0 or 1 to indicate whether fts3_tokenizer is disabled or enabled
++** following this call.  The second parameter may be a NULL pointer, in
++** which case the new setting is not reported back. </dd>
++**
+ ** </dl>
+ */
+-#define SQLITE_DBCONFIG_LOOKASIDE       1001  /* void* int int */
+-#define SQLITE_DBCONFIG_ENABLE_FKEY     1002  /* int int* */
+-#define SQLITE_DBCONFIG_ENABLE_TRIGGER  1003  /* int int* */
++#define SQLITE_DBCONFIG_LOOKASIDE             1001 /* void* int int */
++#define SQLITE_DBCONFIG_ENABLE_FKEY           1002 /* int int* */
++#define SQLITE_DBCONFIG_ENABLE_TRIGGER        1003 /* int int* */
++#define SQLITE_DBCONFIG_ENABLE_FTS3_TOKENIZER 1004 /* int int* */
+ 
+ 
+ /*
+--- src/sqliteInt.h
++++ src/sqliteInt.h
+@@ -1317,6 +1317,7 @@
+ #define SQLITE_VdbeEQP        0x04000000  /* Debug EXPLAIN QUERY PLAN */
+ #define SQLITE_Vacuum         0x08000000  /* Currently in a VACUUM */
+ #define SQLITE_CellSizeCk     0x10000000  /* Check btree cell sizes on load */
++#define SQLITE_Fts3Tokenizer  0x20000000  /* Enable fts3_tokenizer(2) */
+ 
+ 
+ /*
+--- src/test1.c
++++ src/test1.c
+@@ -6921,6 +6921,53 @@
+ }
+ 
+ /*
++** tclcmd:   sqlite3_db_config DB SETTING VALUE
++**
++** Invoke sqlite3_db_config() for one of the setting values.
++*/
++static int test_sqlite3_db_config(
++  void *clientData,
++  Tcl_Interp *interp,
++  int objc,
++  Tcl_Obj *CONST objv[]
++){
++  static const struct {
++    const char *zName;
++    int eVal;
++  } aSetting[] = {
++    { "FKEY",            SQLITE_DBCONFIG_ENABLE_FKEY },
++    { "TRIGGER",         SQLITE_DBCONFIG_ENABLE_TRIGGER },
++    { "FTS3_TOKENIZER",  SQLITE_DBCONFIG_ENABLE_FTS3_TOKENIZER },
++  };
++  int i;
++  int v;
++  const char *zSetting;
++  sqlite3 *db;
++
++  if( objc!=4 ){
++    Tcl_WrongNumArgs(interp, 1, objv, "DB SETTING VALUE");
++    return TCL_ERROR;
++  }
++  if( getDbPointer(interp, Tcl_GetString(objv[1]), &db) ) return TCL_ERROR;
++  zSetting = Tcl_GetString(objv[2]);
++  if( sqlite3_strglob("SQLITE_*", zSetting)==0 ) zSetting += 7;
++  if( sqlite3_strglob("DBCONFIG_*", zSetting)==0 ) zSetting += 9;
++  if( sqlite3_strglob("ENABLE_*", zSetting)==0 ) zSetting += 7;
++  for(i=0; i<ArraySize(aSetting); i++){
++    if( strcmp(zSetting, aSetting[i].zName)==0 ) break;
++  }
++  if( i>=ArraySize(aSetting) ){
++    Tcl_SetObjResult(interp,
++      Tcl_NewStringObj("unknown sqlite3_db_config setting", -1));
++    return TCL_ERROR;
++  }
++  if( Tcl_GetIntFromObj(interp, objv[3], &v) ) return TCL_ERROR;
++  sqlite3_db_config(db, aSetting[i].eVal, v, &v);
++  Tcl_SetObjResult(interp, Tcl_NewIntObj(v));
++  return TCL_OK;
++}
++
++/*
+ ** Register commands with the TCL interpreter.
+ */
+ int Sqlitetest1_Init(Tcl_Interp *interp){
+@@ -6989,6 +7036,7 @@
+      Tcl_ObjCmdProc *xProc;
+      void *clientData;
+   } aObjCmd[] = {
++     { "sqlite3_db_config",             test_sqlite3_db_config, 0 },
+      { "bad_behavior",                  test_bad_behavior,  (void*)&iZero },
+      { "register_dbstat_vtab",          test_register_dbstat_vtab  },
+      { "sqlite3_connection_pointer",    get_sqlite_pointer, 0 },
+--- src/test_config.c
++++ src/test_config.c
+@@ -370,12 +370,6 @@
+   Tcl_SetVar2(interp, "sqlite_options", "fts3", "0", TCL_GLOBAL_ONLY);
+ #endif
+ 
+-#ifdef SQLITE_ENABLE_FTS3_TOKENIZER
+-  Tcl_SetVar2(interp, "sqlite_options", "fts3_tokenizer", "1", TCL_GLOBAL_ONLY);
+-#else
+-  Tcl_SetVar2(interp, "sqlite_options", "fts3_tokenizer", "0", TCL_GLOBAL_ONLY);
+-#endif
+-
+ #ifdef SQLITE_ENABLE_FTS5
+   Tcl_SetVar2(interp, "sqlite_options", "fts5", "1", TCL_GLOBAL_ONLY);
+ #else
+--- test/fts3atoken.test
++++ test/fts3atoken.test
+@@ -56,40 +56,41 @@
+ #
+ #   5: Test that the table created to use tokenizer 'blah' is usable.
+ #
+-ifcapable fts3_tokenizer {
+-  do_test fts3atoken-1.1 {
+-    catchsql {
+-      CREATE VIRTUAL TABLE t1 USING fts3(content, tokenize blah);
+-    }
+-  } {1 {unknown tokenizer: blah}}
+-  do_test fts3atoken-1.2 {
+-    execsql {
+-      SELECT fts3_tokenizer('blah', fts3_tokenizer('simple')) IS NULL;
+-    }
+-  } {0}
+-  do_test fts3atoken-1.3 {
+-    execsql {
+-      SELECT fts3_tokenizer('blah') == fts3_tokenizer('simple');
+-    }
+-  } {1}
+-  do_test fts3atoken-1.4 {
+-    catchsql {
+-      CREATE VIRTUAL TABLE t1 USING fts3(content, tokenize blah);
+-    }
+-  } {0 {}}
+-  do_test fts3atoken-1.5 {
+-    execsql {
+-      INSERT INTO t1(content) VALUES('There was movement at the station');
+-      INSERT INTO t1(content) VALUES('For the word has passed around');
+-      INSERT INTO t1(content) VALUES('That the colt from ol regret had got');
+-      SELECT content FROM t1 WHERE content MATCH 'movement'
+-    }
+-  } {{There was movement at the station}}
+-} else {
+-  do_catchsql_test 1.6 {
++sqlite3_db_config db SQLITE_DBCONFIG_ENABLE_FTS3_TOKENIZER 1
++do_test fts3atoken-1.1 {
++  catchsql {
++    CREATE VIRTUAL TABLE t1 USING fts3(content, tokenize blah);
++  }
++} {1 {unknown tokenizer: blah}}
++do_test fts3atoken-1.2 {
++  execsql {
+     SELECT fts3_tokenizer('blah', fts3_tokenizer('simple')) IS NULL;
+-  } {1 {fts3tokenize: disabled - rebuild with -DSQLITE_ENABLE_FTS3_TOKENIZER}}
+-}
++  }
++} {0}
++do_test fts3atoken-1.3 {
++  execsql {
++    SELECT fts3_tokenizer('blah') == fts3_tokenizer('simple');
++  }
++} {1}
++do_test fts3atoken-1.4 {
++  catchsql {
++    CREATE VIRTUAL TABLE t1 USING fts3(content, tokenize blah);
++  }
++} {0 {}}
++do_test fts3atoken-1.5 {
++  execsql {
++    INSERT INTO t1(content) VALUES('There was movement at the station');
++    INSERT INTO t1(content) VALUES('For the word has passed around');
++    INSERT INTO t1(content) VALUES('That the colt from ol regret had got');
++    SELECT content FROM t1 WHERE content MATCH 'movement'
++  }
++} {{There was movement at the station}}
++
++sqlite3_db_config db SQLITE_DBCONFIG_ENABLE_FTS3_TOKENIZER 0
++do_catchsql_test 1.6 {
++  SELECT fts3_tokenizer('blah', fts3_tokenizer('simple')) IS NULL;
++} {1 {fts3tokenize disabled}}
++
+ 
+ #--------------------------------------------------------------------------
+ # Test cases fts3atoken-2.* test error cases in the scalar function based
+@@ -212,14 +213,14 @@
+ do_catchsql_test 6.2.1 {
+   SELECT fts3_tokenizer(NULL);
+ } {1 {unknown tokenizer: }}
+-ifcapable fts3_tokenizer {
+-  do_catchsql_test 6.2.2 {
+-    SELECT fts3_tokenizer(NULL, X'1234567812345678');
+-  } {1 {argument type mismatch}}
+-  do_catchsql_test 6.2.3 {
+-    SELECT fts3_tokenizer(NULL, X'12345678');
+-  } {1 {argument type mismatch}}
+-}
++
++sqlite3_db_config db SQLITE_DBCONFIG_ENABLE_FTS3_TOKENIZER 1
++do_catchsql_test 6.2.2 {
++  SELECT fts3_tokenizer(NULL, X'1234567812345678');
++} {1 {argument type mismatch}}
++do_catchsql_test 6.2.3 {
++  SELECT fts3_tokenizer(NULL, X'12345678');
++} {1 {argument type mismatch}}
+ 
+ 
+ finish_test
+--- test/fts4langid.test
++++ test/fts4langid.test
+@@ -358,31 +358,30 @@
+   }
+ }
+ 
+-ifcapable fts3_tokenizer {
+-  do_test 4.1.0 {
+-    reset_db
+-    set ptr [fts3_test_tokenizer]
+-    execsql { SELECT fts3_tokenizer('testtokenizer', $ptr) }
+-    build_multilingual_db_2 db
+-  } {}
+-  do_execsql_test 4.1.1 {
+-    SELECT docid FROM t4 WHERE t4 MATCH 'quick';
+-  } {0}
+-  do_execsql_test 4.1.2 {
+-    SELECT docid FROM t4 WHERE t4 MATCH 'quick' AND lid=1;
+-  } {}
+-  do_execsql_test 4.1.3 {
+-    SELECT docid FROM t4 WHERE t4 MATCH 'Quick' AND lid=1;
+-  } {1}
+-  for {set i 0} {$i < 50} {incr i} {
+-    do_execsql_test 4.1.4.$i {
+-      SELECT count(*) FROM t4 WHERE t4 MATCH 'fox' AND lid=$i;
+-    } [expr 0==($i%2)]
+-  }
+-  do_catchsql_test 4.1.5 {
+-    INSERT INTO t4(content, lid) VALUES('hello world', 101)
+-  } {1 {SQL logic error or missing database}}
++do_test 4.1.0 {
++  reset_db
++  set ptr [fts3_test_tokenizer]
++  sqlite3_db_config db SQLITE_DBCONFIG_ENABLE_FTS3_TOKENIZER 1
++  execsql { SELECT fts3_tokenizer('testtokenizer', $ptr) }
++  build_multilingual_db_2 db
++} {}
++do_execsql_test 4.1.1 {
++  SELECT docid FROM t4 WHERE t4 MATCH 'quick';
++} {0}
++do_execsql_test 4.1.2 {
++  SELECT docid FROM t4 WHERE t4 MATCH 'quick' AND lid=1;
++} {}
++do_execsql_test 4.1.3 {
++  SELECT docid FROM t4 WHERE t4 MATCH 'Quick' AND lid=1;
++} {1}
++for {set i 0} {$i < 50} {incr i} {
++  do_execsql_test 4.1.4.$i {
++    SELECT count(*) FROM t4 WHERE t4 MATCH 'fox' AND lid=$i;
++  } [expr 0==($i%2)]
+ }
++do_catchsql_test 4.1.5 {
++  INSERT INTO t4(content, lid) VALUES('hello world', 101)
++} {1 {SQL logic error or missing database}}
+ 
+ #-------------------------------------------------------------------------
+ # Test cases 5.*

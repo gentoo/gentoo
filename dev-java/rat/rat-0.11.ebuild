@@ -1,8 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
+
 JAVA_PKG_IUSE="doc source"
 
 inherit java-pkg-2 java-pkg-simple
@@ -18,7 +19,7 @@ SRC_URI="
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 CDEPEND="
@@ -49,6 +50,6 @@ JAVA_GENTOO_CLASSPATH="
 "
 
 src_install() {
-	java-pkg_dolauncher "${MY_PN}" --main org.apache.rat.Report
 	java-pkg-simple_src_install
+	java-pkg_dolauncher "${MY_PN}" --main org.apache.rat.Report
 }

@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -15,7 +15,7 @@ KEYWORDS="amd64 x86"
 IUSE="tk"
 
 RDEPEND="dev-lang/perl
-	tk? ( dev-perl/perl-tk )"
+	tk? ( dev-perl/Tk )"
 
 src_prepare() {
 	epatch "${FILESDIR}/Makefile.patch"

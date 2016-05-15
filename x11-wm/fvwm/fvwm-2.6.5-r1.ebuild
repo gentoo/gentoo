@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -50,7 +50,7 @@ RDEPEND="${COMMON_DEPEND}
 	gtk2-perl? ( dev-perl/gtk2-perl )
 	perl? ( tk? (
 			dev-lang/tk
-			dev-perl/perl-tk
+			dev-perl/Tk
 			>=dev-perl/X11-Protocol-0.56
 		)
 	)

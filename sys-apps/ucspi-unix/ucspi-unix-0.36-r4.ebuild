@@ -1,8 +1,8 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="2"
+EAPI="5"
 
 inherit eutils toolchain-funcs multilib
 
@@ -15,7 +15,10 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc ~sparc ~x86"
 IUSE=""
 
+# We statically link bglibs.
 DEPEND=">=dev-libs/bglibs-1.106"
+# Block other unixcat installers. #480546
+RDEPEND="!net-analyzer/mk-livestatus"
 
 src_prepare() {
 	epatch "${FILESDIR}"/${PN}-gentoo-head.patch
@@ -27,12 +30,12 @@ src_configure() {
 	local has_peercred
 	use kernel_linux && has_peercred="-DHASPEERCRED=1"
 
-	echo "$(tc-getCC) ${CFLAGS} -I/usr/include/bglibs ${has_peercred} -D_GNU_SOURCE" > conf-cc
-	echo "$(tc-getCC) ${LDFLAGS} -L/usr/$(get_libdir)/bglibs" > conf-ld
+	echo "$(tc-getCC) ${CPPFLAGS} ${CFLAGS} -I${SYSROOT}/usr/include/bglibs ${has_peercred} -D_GNU_SOURCE" > conf-cc
+	echo "$(tc-getCC) ${CFLAGS} ${LDFLAGS} -L${SYSROOT}/usr/$(get_libdir)/bglibs" > conf-ld
 }
 
 src_install() {
-	dobin unixserver unixclient unixcat || die
+	dobin unixserver unixclient unixcat
 	doman unixserver.1 unixclient.1
 	dodoc ANNOUNCEMENT NEWS PROTOCOL README TODO
 }

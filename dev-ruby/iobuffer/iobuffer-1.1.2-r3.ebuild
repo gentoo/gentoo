@@ -1,10 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 # rbx: Kernel(Autoload)#allocate (method_missing)
-USE_RUBY="ruby19 ruby20 ruby21 ruby22"
+USE_RUBY="ruby20 ruby21 ruby22"
 
 RUBY_FAKEGEM_TASK_DOC=""
 RUBY_FAKEGEM_EXTRADOC="CHANGES.md README.md"
@@ -15,7 +15,7 @@ inherit multilib ruby-fakegem
 
 GITHUB_USER="tarcieri"
 
-DESCRIPTION="IO::Buffer is a fast byte queue which is primarily intended for non-blocking I/O applications"
+DESCRIPTION="IO::Buffer is a byte queue which is intended for non-blocking I/O applications"
 HOMEPAGE="https://github.com/tarcieri/iobuffer"
 SRC_URI="https://github.com/${GITHUB_USER}/iobuffer/tarball/v${PV} -> ${PN}-git-${PV}.tgz"
 

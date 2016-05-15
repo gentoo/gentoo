@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -18,7 +18,7 @@ else
 	KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86"
 fi
 
-DESCRIPTION="GPS daemon and library to support USB/serial GPS devices and various GPS/mapping clients"
+DESCRIPTION="GPS daemon and library for USB/serial GPS devices and GPS/mapping clients"
 HOMEPAGE="http://catb.org/gpsd/"
 
 LICENSE="BSD"
@@ -37,7 +37,7 @@ REQUIRED_USE="X? ( python )
 	python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="X? ( dev-python/pygtk:2[${PYTHON_USEDEP}] )
-	ncurses? ( sys-libs/ncurses )
+	ncurses? ( sys-libs/ncurses:= )
 	bluetooth? ( net-wireless/bluez )
 	usb? ( virtual/libusb:1 )
 	dbus? (
@@ -73,11 +73,15 @@ src_prepare() {
 	epatch "${FILESDIR}"/${PN}-3.15-dynamic-libs.patch
 	epatch "${FILESDIR}"/${PN}-3.15-libgpsd.patch
 	epatch "${FILESDIR}"/${PN}-3.15-broken-install.patch
+	epatch "${FILESDIR}"/${PN}-3.15-timebase.patch
+	epatch "${FILESDIR}"/${PN}-3.16-sysmacros.patch #581740
 
 	# Avoid useless -L paths to the install dir
 	sed -i \
 		-e 's:\<STAGING_PREFIX\>:SYSROOT:g' \
 		SConstruct || die
+
+	sed -e 's:libusb.h:libusb-1.0/libusb.h:' -i driver_garmin.c || die
 
 	use python && distutils-r1_src_prepare
 }

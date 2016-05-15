@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+EAPI=5
 inherit eutils games
 
 MY_PN=${PN/-bin/}
@@ -33,7 +34,7 @@ src_install() {
 
 	#...then mass copy everything to the install dir...
 	dodir "${dir}"
-	cp -R * "${Ddir}" || die "cp failed"
+	cp -R * "${Ddir}" || die
 
 	# ...and remove the docs since we don't need them installed twice.
 	rm -rf \

@@ -1,0 +1,26 @@
+From: Gilles Caulier <caulier.gilles@gmail.com>
+Date: Mon, 14 Dec 2015 21:41:55 +0000
+Subject: fix compilation with Lensfun 0.3.2
+X-Git-Url: http://quickgit.kde.org/?p=digikam.git&a=commitdiff&h=0f159981176faa6da701f112bfe557b79804d468
+---
+fix compilation with Lensfun 0.3.2
+It still compatible with older lensfun releases.
+BUGS: 356672
+FIXED-IN: 5.0.0
+---
+
+
+--- a/libs/dimg/filters/lens/lensfuniface.h
++++ b/libs/dimg/filters/lens/lensfuniface.h
+@@ -24,10 +24,7 @@
+ 
+ // Lib LensFun includes
+ 
+-extern "C"
+-{
+ #include <lensfun.h>
+-}
+ 
+ // Local includes
+ 
+

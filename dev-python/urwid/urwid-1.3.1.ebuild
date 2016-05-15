@@ -1,10 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{3,4} )
+PYTHON_COMPAT=( python2_7 python3_{3,4,5} )
 PYTHON_REQ_USE="ncurses"
 
 inherit distutils-r1
@@ -27,7 +27,7 @@ PATCHES=( "${FILESDIR}"/${PN}-1.1.0-sphinx.patch )
 
 python_compile_all() {
 	if use doc ; then
-		if [[ ${EPYTHON} == python3* ]] ; then
+		if python_is_python3; then
 			2to3 -nw --no-diffs docs/conf.py || die
 		fi
 		cd docs
@@ -36,7 +36,7 @@ python_compile_all() {
 }
 
 python_compile() {
-	if [[ ${EPYTHON} == python2* ]] ; then
+	if ! python_is_python3; then
 		local CFLAGS="${CFLAGS} -fno-strict-aliasing"
 		export CFLAGS
 	fi
@@ -49,7 +49,7 @@ python_test() {
 }
 
 python_install_all() {
-	use examples && local EXAMPLES=( examples/. )
+	use examples && dodoc -r examples
 	use doc && local HTML_DOCS=( docs/_build/html/. )
 
 	distutils-r1_python_install_all

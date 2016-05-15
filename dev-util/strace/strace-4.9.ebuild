@@ -40,6 +40,9 @@ src_prepare() {
 	use static && append-ldflags -static
 
 	export ac_cv_header_libaio_h=$(usex aio)
+
+	# Stub out the -k test since it's known to be flaky. #545812
+	sed -i '1iexit 77' tests*/strace-k.test || die
 }
 
 src_configure() {

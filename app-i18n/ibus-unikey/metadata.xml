@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>cjk</herd>
+	<maintainer type="project">
+		<email>cjk@gentoo.org</email>
+		<name>Cjk</name>
+	</maintainer>
 	<longdescription lang="en">Ibus-unikey is a IM Engine for IBus
 Use for type Vietnamese
 Support via forum at: http://forum.ubuntu-vn.com/viewforum.php?f=85</longdescription>

@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -36,5 +36,7 @@ src_prepare() {
 		-i "${S}/${PN}.cabal" \
 		|| die "Could not change ${PN}.cabal for wxdirect slot ${WX_GTK_VER}"
 	cabal_chdeps \
-		'process    >= 1.1   && < 1.2' 'process    >= 1.1'
+		'process    >= 1.1   && < 1.2' 'process    >= 1.1' \
+		'time       >= 1.0   && < 1.5' 'time       >= 1.0' \
+		'filepath   <  1.4' 'filepath'
 }

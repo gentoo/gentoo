@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>gnome</herd>
-	<maintainer>
+	<maintainer type="person">
 		<email>sping@gentoo.org</email>
 		<name>Sebastian Pipping</name>
 	</maintainer>
-	<maintainer>
+	<maintainer type="person">
 		<email>pacho@gentoo.org</email>
 		<name>Pacho Ramos</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>gnome@gentoo.org</email>
+		<name>Gentoo GNOME Desktop</name>
 	</maintainer>
 	<use>
 		<flag name="gtk3">Support GTK 3.x, too</flag>

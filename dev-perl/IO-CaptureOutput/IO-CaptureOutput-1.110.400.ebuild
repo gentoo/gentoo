@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="Capture STDOUT and STDERR from Perl code, subprocesses or XS"
 
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~mips ~ppc ~ppc64 ~x86 ~x86-linux"
+KEYWORDS="amd64 hppa ~mips ppc ppc64 x86 ~x86-linux"
 IUSE="test"
 
 RDEPEND="

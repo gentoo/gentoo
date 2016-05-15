@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -17,7 +17,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="bluetooth gnome"
 
-RDEPEND=">=app-mobilephone/gammu-1.25.0[python]
+RDEPEND=">=app-mobilephone/gammu-1.25.0[python] <app-mobilephone/gammu-1.34.0[python]
 	>=dev-python/wxpython-2.8[${PYTHON_USEDEP}]
 	bluetooth? ( dev-python/pybluez[${PYTHON_USEDEP}]
 		gnome? ( net-wireless/gnome-bluetooth )

@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -21,10 +21,11 @@ IUSE="debug doc examples svg"
 RDEPEND="
 	x11-libs/qwt:5[svg?]
 	dev-python/PyQt4[${PYTHON_USEDEP}]
-	dev-python/numpy[${PYTHON_USEDEP}]
-	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )"
+	dev-python/numpy[${PYTHON_USEDEP}]"
 DEPEND="${DEPEND}
-	dev-python/sip[${PYTHON_USEDEP}]"
+	dev-python/sip[${PYTHON_USEDEP}]
+	~dev-python/PyQt4-4.11.1[${PYTHON_USEDEP}]
+	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )"
 
 S="${WORKDIR}/${MY_P}/configure"
 
@@ -35,7 +36,7 @@ src_prepare() {
 
 src_configure() {
 	configuration() {
-		local myonf=()
+		local myconf=()
 		use debug && myconf+=( --debug )
 
 		cd "${BUILD_DIR}" || die

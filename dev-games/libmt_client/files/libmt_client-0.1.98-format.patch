@@ -1,0 +1,50 @@
+--- src/mt_client_game.c.old	2015-12-22 08:51:19.858561807 +0100
++++ src/mt_client_game.c	2015-12-22 08:52:48.934904973 +0100
+@@ -56,7 +56,7 @@
+ 	}
+       else
+ 	{
+-	  g_printerr (str_err_function[num]);
++	  g_printerr ("%s\n", str_err_function[num]);
+ 	  exit (-1);
+ 	}
+     }
+@@ -110,27 +110,27 @@
+     }
+ 
+   str_err_function[LIBMT_CLIENT_FUNCTION_INIT] =
+-    _("libmt_client_function INIT : not initialised\n");
++    _("libmt_client_function INIT : not initialised");
+   str_err_function[LIBMT_CLIENT_FUNCTION_GAME_INIT] =
+-    _("libmt_client_function GAME_INIT : not initialised\n");
++    _("libmt_client_function GAME_INIT : not initialised");
+   str_err_function[LIBMT_CLIENT_FUNCTION_MAKE_BID] =
+-    _("libmt_client_function MAKE_BID : not initialised\n");
++    _("libmt_client_function MAKE_BID : not initialised");
+   str_err_function[LIBMT_CLIENT_FUNCTION_MAKE_CHIEN] =
+-    _("libmt_client_function MAKE_CHIEN : not initialised\n");
++    _("libmt_client_function MAKE_CHIEN : not initialised");
+   str_err_function[LIBMT_CLIENT_FUNCTION_NOT_MAKE_CHIEN] =
+-    _("libmt_client_function NOT_MAKE_CHIEN : not initialised\n");
++    _("libmt_client_function NOT_MAKE_CHIEN : not initialised");
+   str_err_function[LIBMT_CLIENT_FUNCTION_CHOOSE_CARD] =
+-    _("libmt_client_function CHOOSE_CARD : not initialised\n");
++    _("libmt_client_function CHOOSE_CARD : not initialised");
+   str_err_function[LIBMT_CLIENT_FUNCTION_DRAW] =
+-    _("libmt_client_function DRAW : not initialised\n");
++    _("libmt_client_function DRAW : not initialised");
+   str_err_function[LIBMT_CLIENT_FUNCTION_REMOVE_CARD] =
+-    _("libmt_client_function REMOVE CARD : not initialised\n");
++    _("libmt_client_function REMOVE CARD : not initialised");
+   str_err_function[LIBMT_CLIENT_FUNCTION_ACK_REPLAY] =
+-    _("libmt_client_function ACK REPLAY : not initialised\n");
++    _("libmt_client_function ACK REPLAY : not initialised");
+   str_err_function[LIBMT_CLIENT_FUNCTION_LOST_CONNECTION] =
+-    _("libmt_client_function LOST CONNECTION : not initialised\n");
++    _("libmt_client_function LOST CONNECTION : not initialised");
+   str_err_function[LIBMT_CLIENT_FUNCTION_NORMAL_CLOSE] =
+-    _("libmt_client_function NORMAL CLOSE : not initialised\n");
++    _("libmt_client_function NORMAL CLOSE : not initialised");
+ 
+   return (0);
+ }

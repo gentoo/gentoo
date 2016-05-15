@@ -1,16 +1,16 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
-USE_RUBY="ruby19 ruby20 ruby21 ruby22"
+USE_RUBY="ruby20 ruby21 ruby22 ruby23"
 
 RUBY_FAKEGEM_TASK_DOC="man"
 RUBY_FAKEGEM_EXTRADOC="README"
 
 inherit ruby-fakegem
 
-DESCRIPTION="A pipe to browser utility for use at the shell and within editors like Vim or Emacs"
+DESCRIPTION="Pipe to browser utility for use at the shell and within editors"
 HOMEPAGE="https://github.com/rtomayko/bcat"
 
 LICENSE="MIT"
@@ -23,7 +23,7 @@ RDEPEND="${RDEPEND} !!<app-accessibility/speech-tools-2.1-r3"
 
 ruby_add_bdepend "doc? ( app-text/ronn )"
 
-ruby_add_rdepend "dev-ruby/rack"
+ruby_add_rdepend "dev-ruby/rack:*"
 
 each_ruby_prepare() {
 	sed -i -e "s/a2h/#{ENV['RUBY']} -S a2h/" test/test_bcat_a2h.rb || die

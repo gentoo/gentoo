@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -51,16 +51,18 @@
 # you must either grab each file individually, or find a place to mirror an
 # archive of them.  (iBiblio)
 #
-# It inherits base.
+# It inherits base and eutils in EAPI 5 and earlier.
 
-inherit base
+case ${EAPI:-0} in
+	0|1|2|3|4|5) inherit base eutils ;;
+	6) ;;
+	*) die "Unknown EAPI ${EAPI} for ${ECLASS}" ;;
+esac
 
 RDEPEND="virtual/latex-base"
 DEPEND="${RDEPEND}
 	>=sys-apps/texinfo-4.2-r5"
 HOMEPAGE="http://www.tug.org/"
-SRC_URI="ftp://tug.ctan.org/macros/latex/"
-S=${WORKDIR}/${P}
 TEXMF="/usr/share/texmf-site"
 
 # @ECLASS-VARIABLE: SUPPLIER
@@ -69,17 +71,19 @@ TEXMF="/usr/share/texmf-site"
 # DESCRIPTION above)
 SUPPLIER="misc"
 
-# @FUNCTION: latex-package_has_tetex3
-# @RETURN: true if at least one of (>=tetex-3 or >=ptex-3.1.8 or >=texlive-core-2007) is installed, else false
+# @ECLASS-VARIABLE: LATEX_DOC_ARGUMENTS
 # @DESCRIPTION:
-# It is often used to know if the current TeX installation supports gentoo's
-# texmf-update or if the package has to do it the old way
+# When compiling documentation (.tex/.dtx), this variable will be passed
+# to pdflatex as additional argument (e.g. -shell-escape). This variable
+# must be set after inherit, as it gets automatically cleared otherwise.
+LATEX_DOC_ARGUMENTS=""
+
+# Kept for backwards compatibility
 latex-package_has_tetex_3() {
-	if has_version '>=app-text/tetex-3' || has_version '>=app-text/ptex-3.1.8' || has_version '>=app-text/texlive-core-2007' ; then
-		true
-	else
-		false
-	fi
+	case ${EAPI:-0} in
+		0|1|2|3|4|5) return 0 ;;
+		*) die "${FUNCNAME} no longer supported in EAPI ${EAPI}" ;;
+	esac
 }
 
 # @FUNCTION: latex-package_src_doinstall
@@ -92,6 +96,10 @@ latex-package_has_tetex_3() {
 # for a TeX installation
 latex-package_src_doinstall() {
 	debug-print function $FUNCNAME $*
+
+	# Avoid generating font cache outside of the sandbox
+	export VARTEXFONTS="${T}/fonts"
+
 	# This actually follows the directions for a "single-user" system
 	# at http://www.ctan.org/installationadvice/ modified for gentoo.
 	[ -z "$1" ] && latex-package_src_install all
@@ -127,11 +135,18 @@ latex-package_src_doinstall() {
 				done
 				;;
 			"tex" | "dtx")
-				for i in `find . -maxdepth 1 -type f -name "*.${1}"`
-				do
-					einfo "Making documentation: $i"
-					texi2dvi -q -c --language=latex $i &> /dev/null
+				if ! in_iuse doc || use doc ; then
+					for i in `find . -maxdepth 1 -type f -name "*.${1}"`
+					do
+						einfo "Making documentation: $i"
+						if pdflatex ${LATEX_DOC_ARGUMENTS} --interaction=batchmode $i &> /dev/null ; then
+							pdflatex ${LATEX_DOC_ARGUMENTS} --interaction=batchmode $i &> /dev/null || die
+						else
+							einfo "pdflatex failed, trying texi2dvi"
+							texi2dvi -q -c --language=latex $i &> /dev/null || die
+						fi
 					done
+				fi
 				;;
 			"tfm" | "vf" | "afm")
 				for i in `find . -maxdepth 1 -type f -name "*.${1}"`
@@ -190,7 +205,7 @@ latex-package_src_compile() {
 	for i in `find \`pwd\` -maxdepth 1 -type f -name "*.ins"`
 	do
 		einfo "Extracting from $i"
-		latex --interaction=batchmode $i &> /dev/null
+		latex --interaction=batchmode $i &> /dev/null || die
 	done
 }
 
@@ -228,11 +243,7 @@ latex-package_pkg_postrm() {
 # Rehashes the kpathsea database, according to the current TeX installation
 latex-package_rehash() {
 	debug-print function $FUNCNAME $*
-	if latex-package_has_tetex_3 ; then
-		texmf-update
-	else
-		texconfig rehash
-	fi
+	texmf-update
 }
 
 EXPORT_FUNCTIONS src_compile src_install pkg_postinst pkg_postrm

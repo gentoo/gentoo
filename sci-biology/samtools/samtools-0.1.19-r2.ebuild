@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 )
 
 inherit eutils multilib python-r1 toolchain-funcs
 
-DESCRIPTION="Utilities for SAM (Sequence Alignment/Map), a format for large nucleotide sequence alignments"
+DESCRIPTION="Utilities for analysing and manipulating the SAM/BAM alignment formats"
 HOMEPAGE="http://samtools.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
 
@@ -19,7 +19,7 @@ IUSE="examples"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-CDEPEND="sys-libs/ncurses"
+CDEPEND="sys-libs/ncurses:0="
 RDEPEND="${CDEPEND}
 	dev-lang/lua
 	dev-lang/perl"

@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -39,7 +39,7 @@ DEPEND="${RDEPEND}
 	>=x11-proto/xf86vidmodeproto-2.3.1-r1[${MULTILIB_USEDEP}]
 	>=x11-proto/xproto-7.0.24[${MULTILIB_USEDEP}]"
 
-PATCHES=( "${FILESDIR}"/${PN}-5.0.4-underlink.patch )
+PATCHES=( "${FILESDIR}"/${P}-{underlink,multilib}.patch )
 
 MULTILIB_WRAPPED_HEADERS=( /usr/include/allegro5/allegro_native_dialog.h )
 

@@ -16,7 +16,7 @@ LICENSE="GPL-2 LGPL-2"
 IUSE="debug"
 
 if [[ ${KDE_BUILD_TYPE} = release ]]; then
-	KEYWORDS="amd64 ~x86"
+	KEYWORDS="amd64 x86"
 fi
 
 RDEPEND="

@@ -7,12 +7,12 @@ inherit eutils flag-o-matic multilib-minimal
 
 MY_PN="gst-libav"
 DESCRIPTION="FFmpeg based gstreamer plugin"
-HOMEPAGE="http://gstreamer.freedesktop.org/modules/gst-libav.html"
-SRC_URI="http://gstreamer.freedesktop.org/src/${MY_PN}/${MY_PN}-${PV}.tar.xz"
+HOMEPAGE="https://gstreamer.freedesktop.org/modules/gst-libav.html"
+SRC_URI="https://gstreamer.freedesktop.org/src/${MY_PN}/${MY_PN}-${PV}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="1.0"
-KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 sparc x86 ~amd64-fbsd ~x86-fbsd"
+KEYWORDS="ia64 ppc"
 IUSE="libav +orc"
 
 RDEPEND="

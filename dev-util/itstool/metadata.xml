@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>gnome</herd>
+  <maintainer type="project">
+    <email>gnome@gentoo.org</email>
+    <name>Gentoo GNOME Desktop</name>
+  </maintainer>
   <longdescription lang="en">ITS Tool allows you to translate your XML documents
   with gettext PO files, using rules from the W3C Internationalization Tag Set
   (ITS) to determine what to translate and how to separate it into PO file

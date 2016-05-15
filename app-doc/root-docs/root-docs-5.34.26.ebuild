@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -15,7 +15,7 @@ if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="http://root.cern.ch/git/root.git"
 	KEYWORDS=""
 else
-	SRC_URI="ftp://root.cern.ch/${ROOT_PN}/${ROOT_PN}_v${PV}.source.tar.gz"
+	SRC_URI="https://root.cern.ch/download/${ROOT_PN}_v${PV}.source.tar.gz"
 	KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
 	S="${WORKDIR}/${ROOT_PN}"
 fi
@@ -23,11 +23,11 @@ fi
 inherit eutils multilib virtualx
 
 DESCRIPTION="Documentation for ROOT Data Analysis Framework"
-HOMEPAGE="http://root.cern.ch/drupal"
+HOMEPAGE="https://root.cern.ch"
 SRC_URI="${SRC_URI}
 	math? (
 		http://tmva.sourceforge.net/docu/TMVAUsersGuide.pdf -> TMVAUsersGuide-v${TMVA_DOC_PV}.pdf
-		http://root.cern.ch/download/doc/RooFit_Users_Manual_${ROOFIT_DOC_PV}.pdf
+		https://root.cern.ch/download/doc/RooFit_Users_Manual_${ROOFIT_DOC_PV}.pdf
 		http://root.cern.ch/drupal/sites/default/files/roofit_quickstart_${ROOFIT_QS_DOC_PV}.pdf )
 	api? (
 		${HOMEPAGE}/sites/all/themes/newsflash/images/blue/root-banner.png

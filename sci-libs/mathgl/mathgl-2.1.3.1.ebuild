@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -30,7 +30,7 @@ RDEPEND="
 	fltk? ( x11-libs/fltk:1 )
 	gif? ( media-libs/giflib )
 	glut? ( media-libs/freeglut )
-	gsl? ( sci-libs/gsl )
+	gsl? ( <sci-libs/gsl-2 )
 	hdf? ( sci-libs/hdf )
 	hdf5? ( >=sci-libs/hdf5-1.8[mpi=] )
 	jpeg? ( virtual/jpeg:0 )

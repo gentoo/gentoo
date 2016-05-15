@@ -19,7 +19,7 @@ inherit golang-build
 DESCRIPTION="Go packages for low-level interaction with the operating system"
 HOMEPAGE="https://godoc.org/golang.org/x/sys"
 LICENSE="BSD"
-SLOT="0/${PV}"
+SLOT="0/${PVR}"
 IUSE=""
 DEPEND=""
 RDEPEND=""

@@ -11,7 +11,7 @@ SRC_URI="http://files.canon-europe.com/files/soft46530/software/o1581en_linux_UF
 
 LICENSE="Canon-UFR-II GPL-2 MIT"
 SLOT="0"
-KEYWORDS="-* ~amd64 ~x86"
+KEYWORDS="-* amd64 x86"
 IUSE=""
 
 # Needed because GPL2 stuff miss their sources in tarball

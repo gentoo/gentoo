@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>haskell</herd>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
 	<longdescription>
 		Atomic operations including CAS (compare-and-swap), fetch &amp; add and variants
 		suitable for low-level shared-memory synchronization.
 		
-		The implementation is using GCC&#39;s builtin atomic operations (available in GCC &gt;=
+		The implementation is using GCC's builtin atomic operations (available in GCC &gt;=
 		4) in C wrappers called through the FFI. See these links for background:
 		
 		* GCC manual: &lt;https://gcc.gnu.org/onlinedocs/gcc/Atomic-Builtins.html&gt;

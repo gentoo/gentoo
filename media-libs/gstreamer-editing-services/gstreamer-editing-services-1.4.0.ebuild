@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -9,7 +9,7 @@ inherit gnome2
 
 DESCRIPTION="SDK for making video editors and more"
 HOMEPAGE="http://wiki.pitivi.org/wiki/GES"
-SRC_URI="http://gstreamer.freedesktop.org/src/${PN}/${P}.tar.xz"
+SRC_URI="https://gstreamer.freedesktop.org/src/${PN}/${P}.tar.xz"
 
 LICENSE="LGPL-2+"
 SLOT="1.0"
@@ -46,8 +46,8 @@ src_configure() {
 		$(use_enable introspection) \
 		--disable-examples \
 		--without-gtk \
-	        --with-package-name="GStreamer editing services ebuild for Gentoo" \
-        	--with-package-origin="https://packages.gentoo.org/package/media-libs/gstreamer-editing-services"
+		--with-package-name="GStreamer editing services ebuild for Gentoo" \
+		--with-package-origin="https://packages.gentoo.org/package/media-libs/gstreamer-editing-services"
 }
 
 src_compile() {

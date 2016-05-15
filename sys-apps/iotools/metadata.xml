@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer>
+<maintainer type="person">
  <email>vapier@gentoo.org</email>
 </maintainer>
 <use>
- <flag name='make-symlinks'>Generate sub-command symlinks to iotools -- note that a lot are simple like "xor"</flag>
+ <flag name="make-symlinks">Generate sub-command symlinks to iotools -- note that a lot are simple like "xor"</flag>
 </use>
 </pkgmetadata>

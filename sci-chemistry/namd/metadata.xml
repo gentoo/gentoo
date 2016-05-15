@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>sci-chemistry</herd>
-	<maintainer>
+	<maintainer type="person">
 		<email>nicolasbock@gentoo.org</email>
 		<name>Nicolas Bock</name>
+	</maintainer>
+<maintainer type="project">
+		<email>sci-chemistry@gentoo.org</email>
+		<name>Gentoo Chemistry Project</name>
 	</maintainer>
 </pkgmetadata>

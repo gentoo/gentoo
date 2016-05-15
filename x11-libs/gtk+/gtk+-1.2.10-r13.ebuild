@@ -7,7 +7,7 @@ EAPI=5
 GNOME_TARBALL_SUFFIX="gz"
 GNOME2_LA_PUNT="yes"
 
-inherit autotools eutils gnome2 toolchain-funcs multilib-minimal
+inherit autotools eutils flag-o-matic gnome2 toolchain-funcs multilib-minimal
 
 DESCRIPTION="The GIMP Toolkit"
 HOMEPAGE="http://www.gtk.org/"
@@ -36,6 +36,7 @@ DEPEND="${RDEPEND}
 MULTILIB_CHOST_TOOLS=(/usr/bin/gtk-config)
 
 src_prepare() {
+	append-cflags -std=gnu89
 	epatch "${FILESDIR}"/${P}-m4.patch
 	epatch "${FILESDIR}"/${P}-automake.patch
 	epatch "${FILESDIR}"/${P}-cleanup.patch

@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer>
+	<maintainer type="person">
 		<email>patrick@gentoo.org</email>
 		<name>Patrick Lauer</name>
 	</maintainer>
 	<upstream>
-		<remote-id type='github'>wbhart/flint2</remote-id>
+		<remote-id type="github">wbhart/flint2</remote-id>
 	</upstream>
 	<use>
-		<flag name='gc'>Enable garbage collection
+		<flag name="gc">Enable garbage collection
 			support via <pkg>dev-libs/boehm-gc</pkg></flag>
-		<flag name='ntl'>Build NTL interface</flag>
+		<flag name="ntl">Build NTL interface</flag>
 	</use>
 </pkgmetadata>

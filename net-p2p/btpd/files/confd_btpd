@@ -1,5 +1,0 @@
-# owner of btpd process (must be existing)
-#BTPDUSER="p2p"
-
-# Extra arguments for btpd
-#BTPDEXTRARGS="-p 43729"

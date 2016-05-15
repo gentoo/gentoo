@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer>
+	<maintainer type="person">
 		<email>dev-zero@gentoo.org</email>
 		<name>Tiziano Müller</name>
 	</maintainer>
-	<maintainer>
+	<maintainer type="person">
 		<email>mgorny@gentoo.org</email>
 		<name>Michał Górny</name>
 	</maintainer>
@@ -21,5 +21,6 @@
 	</use>
 	<upstream>
 		<remote-id type="sourceforge">aria2</remote-id>
+		<remote-id type="github">tatsuhiro-t/aria2</remote-id>
 	</upstream>
 </pkgmetadata>

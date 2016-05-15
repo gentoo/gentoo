@@ -1,11 +1,11 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 inherit toolchain-funcs
 
-DESCRIPTION="a command-line utility for converting 24/32-bit PNG images to paletted (8-bit) PNGs"
+DESCRIPTION="command-line utility and library for lossy compression of PNG images"
 HOMEPAGE="http://pngquant.org/"
 SRC_URI="http://pngquant.org/${P}-src.tar.bz2"
 

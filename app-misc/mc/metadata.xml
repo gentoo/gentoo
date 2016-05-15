@@ -1,18 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>desktop-misc</herd>
-  <maintainer>
+  <maintainer type="person">
     <email>wired@gentoo.org</email>
     <name>Alex Alexander</name>
   </maintainer>
-  <maintainer>
+  <maintainer type="person">
     <email>slyfox@gentoo.org</email>
     <name>Sergei Trofimovich</name>
   </maintainer>
-  <maintainer>
+  <maintainer type="person">
     <email>polynomial-c@gentoo.org</email>
     <name>Lars Wendler</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>desktop-misc@gentoo.org</email>
+    <name>Gentoo Desktop Miscellaneous Project</name>
   </maintainer>
   <use>
     <flag name="edit">Compile and install the mcedit application</flag>

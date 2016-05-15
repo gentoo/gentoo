@@ -1,0 +1,11 @@
+--- vagrant-1.8.1/bin/vagrant
++++ vagrant-1.8.1/bin/vagrant
+@@ -5,6 +5,8 @@
+ # initializing which have historically resulted in stack traces.
+ Signal.trap("INT") { abort }
+ 
++ENV.delete('GEM_PATH')
++
+ # Split arguments by "--" if its there, we'll recombine them later
+ argv = ARGV.dup
+ argv_extra = []

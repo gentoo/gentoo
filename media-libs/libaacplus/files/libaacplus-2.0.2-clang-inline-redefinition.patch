@@ -1,0 +1,37 @@
+Fix implicit gnu89 inline semantics causing issues with clang:
+* main.o:main.c:function main: error: undefined reference to 'AuChannelOpen'
+* https://bugs.gentoo.org/show_bug.cgi?id=458932
+
+--- libaacplus-2.0.2/frontend/au_channel.h
++++ libaacplus-2.0.2/frontend/au_channel.h
+@@ -12,7 +12,7 @@
+ 	int	aFmt;
+ } WavInfo;
+ 
+-inline FILE* AuChannelOpen (const char* filename, WavInfo* info)
++static inline FILE* AuChannelOpen (const char* filename, WavInfo* info)
+ {
+ 	unsigned char header[12];
+ 	unsigned char data[WAV_HEADER_SIZE];
+@@ -48,18 +48,18 @@
+ 	return handle;
+ }
+ 
+-inline void AuChannelClose (FILE *audioChannel)
++static inline void AuChannelClose (FILE *audioChannel)
+ {
+ 	fclose(audioChannel);
+ }
+ 
+-inline size_t AuChannelReadShort(FILE *audioChannel, short *samples, int nSamples, int *readed)
++static inline size_t AuChannelReadShort(FILE *audioChannel, short *samples, int nSamples, int *readed)
+ {
+ 	*readed = fread(samples, 2, nSamples, audioChannel);
+ 	return *readed <= 0;
+ }
+ 
+-inline size_t AuChannelReadFloat(FILE *audioChannel, float *samples, int nSamples, int *readed)
++static inline size_t AuChannelReadFloat(FILE *audioChannel, float *samples, int nSamples, int *readed)
+ {
+ 	*readed = fread(samples, 4, nSamples, audioChannel);
+ 	return *readed <= 0;

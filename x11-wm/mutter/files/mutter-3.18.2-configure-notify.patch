@@ -1,0 +1,56 @@
+From 26a18e83125529605eda88a5eb60a884914c311c Mon Sep 17 00:00:00 2001
+From: Rui Matos <tiagomatos@gmail.com>
+Date: Wed, 16 Dec 2015 18:26:23 +0100
+Subject: x11/window: Ensure we send a ConfigureNotify to just mapped windows
+
+When managing a non-OR window we're required by the ICCCM to behave as
+if we received a ConfigureRequest which means that we must generate a
+synthetic ConfigureNotify even if the window isn't moved or resized
+from its current (initial) geometry.
+
+During MetaWindow's x11/wayland split a slight behavior change for x11
+windows crept in. Before the code split, MetaWindow->rect was
+initialized with the X window's geometry, but now we're not
+initializing MetaWindowX11Private->client_rect which causes the checks
+for whether it's necessary to move/resize the window in
+meta_window_x11_move_resize_internal() to tell us that we do need to
+move/resize which means we do an XConfigureWindow() call and don't
+send the sythetic ConfigureNotify. But since the X window isn't really
+moving, the XConfigureWindow() call doesn't cause the X server to
+generate a ConfigureNotify which breaks some clients such as Java's
+AWT.
+
+We can fix this by setting MetaWindowX11Privatew->client_rect for both
+OR and non-OR windows. We can set buffer_rect for non-OR windows as
+well to simplify the code since it will be assigned the correct value
+in meta_window_x11_move_resize_internal() .
+
+https://bugzilla.gnome.org/show_bug.cgi?id=759492
+---
+ src/x11/window-x11.c | 9 +++------
+ 1 file changed, 3 insertions(+), 6 deletions(-)
+
+diff --git a/src/x11/window-x11.c b/src/x11/window-x11.c
+index b6e5621..de9f725 100644
+--- a/src/x11/window-x11.c
++++ b/src/x11/window-x11.c
+@@ -542,13 +542,10 @@ meta_window_x11_manage (MetaWindow *window)
+    * For normal windows, do a full ConfigureRequest based on the
+    * window hints, as that's what the ICCCM says to do.
+    */
++  priv->client_rect = window->rect;
++  window->buffer_rect = window->rect;
+ 
+-  if (window->override_redirect)
+-    {
+-      priv->client_rect = window->rect;
+-      window->buffer_rect = window->rect;
+-    }
+-  else
++  if (!window->override_redirect)
+     {
+       MetaRectangle rect;
+       MetaMoveResizeFlags flags;
+-- 
+cgit v0.11.2
+

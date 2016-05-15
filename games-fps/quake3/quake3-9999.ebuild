@@ -7,9 +7,9 @@
 # quake3-VER_alphaREV  -> git snapshot REV for version VER
 # quake3-VER           -> normal quake release
 
-EAPI=2
-inherit eutils flag-o-matic games toolchain-funcs
-[[ "${PV}" == 9999* ]] && inherit git-2
+EAPI=5
+inherit eutils flag-o-matic toolchain-funcs games
+[[ "${PV}" == 9999* ]] && inherit git-r3
 
 MY_PN="ioquake3"
 MY_PV="${PV}"
@@ -28,7 +28,7 @@ IUSE="dedicated opengl teamarena +openal curl vorbis voice mumble"
 
 UIDEPEND="virtual/opengl
 	media-libs/libsdl[sound,video,joystick,X,opengl]
-	virtual/jpeg
+	virtual/jpeg:0
 	openal? ( media-libs/openal )
 	vorbis? (
 		media-libs/libogg
@@ -45,9 +45,7 @@ RDEPEND="${DEPEND}
 	games-fps/quake3-data
 	teamarena? ( games-fps/quake3-teamarena )"
 
-if [[ "${PV}" == 9999* ]] ; then
-	S="${WORKDIR}/trunk"
-else
+if [[ "${PV}" != 9999* ]] ; then
 	S="${WORKDIR}/${MY_P}"
 fi
 
@@ -79,6 +77,7 @@ src_compile() {
 	# TODO: BUILD_CLIENT_SMP=$(buildit smp)
 	emake \
 		ARCH="$(my_arch)" \
+		V=1 \
 		BUILD_CLIENT=$(( $(buildit opengl) | $(buildit !dedicated) )) \
 		BUILD_GAME_QVM=0 \
 		BUILD_GAME_SO=0 \
@@ -98,18 +97,17 @@ src_compile() {
 		USE_MUMBLE=$(buildit mumble) \
 		USE_OPENAL=$(buildit openal) \
 		USE_OPENAL_DLOPEN=0 \
-		USE_VOIP=$(buildit voice) \
-		|| die "emake failed"
+		USE_VOIP=$(buildit voice)
 }
 
 src_install() {
-	dodoc BUGS ChangeLog id-readme.txt md4-readme.txt NOTTODO README.md opengl2-readme.txt TODO voip-readme.txt || die
+	dodoc BUGS ChangeLog id-readme.txt md4-readme.txt NOTTODO README.md TODO voip-readme.txt
 	if use voice ; then
-		dodoc voip-readme.txt || die
+		dodoc voip-readme.txt
 	fi
 
 	if use opengl || ! use dedicated ; then
-		doicon misc/quake3.svg || die
+		doicon misc/quake3.svg
 		make_desktop_entry quake3 "Quake III Arena"
 		#use smp && make_desktop_entry quake3-smp "Quake III Arena (SMP)"
 	fi
@@ -118,8 +116,8 @@ src_install() {
 	local exe
 	for exe in ioquake3 ioquake3-smp ioq3ded ; do
 		if [[ -x ${exe} ]] ; then
-			dogamesbin ${exe} || die "dogamesbin ${exe}"
-			dosym ${exe} "${GAMES_BINDIR}/${exe/io}" || die "dosym ${exe}"
+			dogamesbin ${exe}
+			dosym ${exe} "${GAMES_BINDIR}/${exe/io}"
 		fi
 	done
 
@@ -127,7 +125,7 @@ src_install() {
 	# this should be done through 'dogameslib', but
 	# for this some files need to be patched
 	exeinto "${GAMES_DATADIR}/${PN}"
-	doexe renderer*.so || die 'install renderers failed'
+	doexe renderer*.so
 
 	prepgamesdirs
 }

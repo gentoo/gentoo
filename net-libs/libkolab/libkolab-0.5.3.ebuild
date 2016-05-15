@@ -20,7 +20,7 @@ IUSE="php python test"
 RESTRICT="test"
 
 DEPEND="
-	$(add_kdebase_dep kdepimlibs 'semantic-desktop(+)')
+	$(add_kdeapps_dep kdepimlibs 'semantic-desktop(+)')
 	dev-lang/swig
 	>=net-libs/libkolabxml-1.0.0
 	php? ( dev-lang/php )

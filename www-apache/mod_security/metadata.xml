@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer>
+  <maintainer type="person">
     <email>flameeyes@gentoo.org</email>
     <name>Diego E. Pettenò</name>
   </maintainer>
   <use>
-    <flag name='geoip'>
+    <flag name="geoip">
       Configure ModSecurity to query the GeoIP database from MaxMind,
       provided by <pkg>dev-libs/geoip</pkg>. This flag only controls
       the default configuration, as the GeoIP query code is part of
       ModSecurity's source code.
     </flag>
 
-    <flag name='curl'>
+    <flag name="curl">
       Build the ModSecurity Audit Log Collector (mlogc) that depends
       on <pkg>net-misc/curl</pkg>.
     </flag>
 
-    <flag name='jit'>
+    <flag name="jit">
       Add support for the PCRE Just-in-Time optimisation, as enabled
       by <pkg>dev-libs/libpcre</pkg> with jit USE flag enabled. Might
       not be available on hardened systems.

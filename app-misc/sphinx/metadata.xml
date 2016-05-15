@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer>
+<maintainer type="person">
   <email>graaff@gentoo.org</email>
 </maintainer>
 <use>
-  <flag name='id64'>use 64-bit document and word IDs</flag>
-  <flag name='re2'>use the <pkg>dev-libs/re2</pkg> regular expression library</flag>
-  <flag name='stemmer'>Enable language stemming support</flag>
+  <flag name="id64">use 64-bit document and word IDs</flag>
+  <flag name="re2">use the <pkg>dev-libs/re2</pkg> regular expression library</flag>
+  <flag name="stemmer">Enable language stemming support</flag>
 </use>
 </pkgmetadata>

@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -9,10 +9,10 @@ inherit java-pkg-2 java-ant-2
 
 DESCRIPTION="A fast, programmer-friendly, free CSV library for Java"
 HOMEPAGE="http://super-csv.github.io/"
-SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.zip"
+SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.zip -> ${P}.zip"
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ppc64 x86"
 
 RDEPEND=">=virtual/jre-1.6"
 DEPEND=">=virtual/jdk-1.6

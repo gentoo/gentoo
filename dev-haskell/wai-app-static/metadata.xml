@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>haskell</herd>
+	<maintainer type="project">
+        <email>haskell@gentoo.org</email>
+        <name>Gentoo Haskell</name>
+	</maintainer>
 	<longdescription>
 		Also provides some helper functions and datatypes for use outside of WAI.
 	</longdescription>
 	<use>
-		<flag name='print'>print debug info.</flag>
+		<flag name="print">print debug info.</flag>
         </use>
 </pkgmetadata>

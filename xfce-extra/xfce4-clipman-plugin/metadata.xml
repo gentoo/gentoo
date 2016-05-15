@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer>
+  <maintainer type="project">
     <email>xfce@gentoo.org</email>
     <name>XFCE Team</name>
   </maintainer>
   <use>
-    <flag name='qrcode'>Enable support for <pkg>media-gfx/qrencode</pkg></flag>
+    <flag name="qrcode">Enable support for <pkg>media-gfx/qrencode</pkg></flag>
   </use>
 </pkgmetadata>

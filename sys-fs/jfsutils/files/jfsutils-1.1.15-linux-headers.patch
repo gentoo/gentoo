@@ -1,7 +1,8 @@
-Index: jfsutils-1.1.15/libfs/devices.h
-===================================================================
---- jfsutils-1.1.15.orig/libfs/devices.h
-+++ jfsutils-1.1.15/libfs/devices.h
+https://sourceforge.net/p/jfs/bugs/286/
+https://bugs.gentoo.org/448844
+
+--- a/libfs/devices.h
++++ b/libfs/devices.h
 @@ -42,6 +42,7 @@
  
  struct stat;

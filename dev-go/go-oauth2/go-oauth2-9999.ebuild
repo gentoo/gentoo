@@ -1,8 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
+
 EGO_PN=golang.org/x/oauth2
 EGO_SRC=golang.org/x/oauth2
 
@@ -18,9 +19,12 @@ inherit golang-build
 
 DESCRIPTION="Go client implementation for OAuth 2.0 spec"
 HOMEPAGE="https://godoc.org/golang.org/x/oauth2"
+
 LICENSE="BSD"
 SLOT="0/${PV}"
 IUSE=""
-DEPEND="dev-go/go-net:=
+
+DEPEND="
+	dev-go/go-net:=
 	dev-go/go-tools:="
 RDEPEND=""

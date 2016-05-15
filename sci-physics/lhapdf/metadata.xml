@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>sci-physics</herd>
+<maintainer type="project">
+  <email>sci-physics@gentoo.org</email>
+  <name>Gentoo Physics Project</name>
+</maintainer>
 <longdescription lang="en">
   Les Houches Parton Density Function (LHAPDF)
   provides a unified and easy to use interface to modern PDF
@@ -16,6 +19,6 @@
   installation of LHAPDF.
 </longdescription>
 <use>
-  <flag name='octave'>Add bindings for <pkg>sci-mathematics/octave</pkg></flag> 
+  <flag name="octave">Add bindings for <pkg>sci-mathematics/octave</pkg></flag> 
 </use>
 </pkgmetadata>

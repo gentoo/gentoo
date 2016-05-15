@@ -1,6 +1,10 @@
 # Unmask the flag which corresponds to ARCH.
 -ppc
 
+# James Le Cuirot <chewi@gentoo.org> (12 Jan 2015)
+# Java is no longer supported on ppc.
+java
+
 # Ben de Groot <yngwin@gentoo.org> (01 Feb 2015)
 # please remove when keyworded
 qt5

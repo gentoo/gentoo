@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -110,12 +110,7 @@ PDEPEND="
 		$(add_kdeapps_dep kfmclient '' 4.14.3)
 		x11-misc/xdg-utils
 	)
-	handbook? (
-		|| (
-			$(add_kdebase_dep khelpcenter '' 4.14.3)
-			kde-plasma/khelpcenter:5[compat(+)]
-		)
-	)
+	handbook? ( kde-apps/khelpcenter:* )
 	policykit? ( || (
 		>=sys-auth/polkit-kde-agent-0.99
 		kde-plasma/polkit-kde-agent

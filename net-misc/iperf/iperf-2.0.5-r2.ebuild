@@ -3,7 +3,6 @@
 # $Id$
 
 EAPI=5
-inherit base
 
 DESCRIPTION="Tool to measure IP bandwidth using UDP or TCP"
 HOMEPAGE="http://iperf.sourceforge.net/"

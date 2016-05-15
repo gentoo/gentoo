@@ -2,18 +2,16 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=2
+EAPI=5
 
 MOD_DESC="Community Bonus Pack 2 volumes 1 and 2"
 MOD_NAME="Community Bonus Pack 2 volumes 1 and 2"
 
 inherit games games-mods
 
-HOMEPAGE="http://www.planetunreal.com/cbp/"
-SRC_URI="http://downloads.unrealadmin.org/UT2004/BonusPack/cbp2-volume1_zip.zip
-	http://www.i4games.eu/downloads/ut2k4/cbp2-volume1_zip.zip
-	http://downloads.unrealadmin.org/UT2004/BonusPack/cbp2-volume2_zip.zip
-	http://www.i4games.eu/downloads/ut2k4/cbp2-volume2_zip.zip"
+HOMEPAGE="http://liandri.beyondunreal.com/Unreal_Tournament_2004"
+SRC_URI="https://ut.rushbase.net/beyondunreal/official/ut2004/cbp2-volume1_zip.zip
+	https://ut.rushbase.net/beyondunreal/official/ut2004/cbp2-volume2_zip.zip"
 
 LICENSE="freedist"
 KEYWORDS="amd64 x86"

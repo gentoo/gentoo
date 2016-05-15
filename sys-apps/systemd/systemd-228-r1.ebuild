@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -16,7 +16,7 @@ inherit autotools bash-completion-r1 linux-info multilib \
 	multilib-minimal pam systemd toolchain-funcs udev user
 
 DESCRIPTION="System and service manager for Linux"
-HOMEPAGE="http://www.freedesktop.org/wiki/Software/systemd"
+HOMEPAGE="https://www.freedesktop.org/wiki/Software/systemd"
 
 LICENSE="GPL-2 LGPL-2.1 MIT public-domain"
 SLOT="0/2"
@@ -168,6 +168,11 @@ multilib_src_configure() {
 		# disable -flto since it is an optimization flag
 		# and makes distcc less effective
 		cc_cv_CFLAGS__flto=no
+		# disable -fuse-ld=gold since Gentoo supports explicit linker
+		# choice and forcing gold is undesired, #539998
+		# ld.gold may collide with user's LDFLAGS, #545168
+		# ld.gold breaks sparc, #573874
+		cc_cv_LDFLAGS__Wl__fuse_ld_gold=no
 
 		# Workaround for gcc-4.7, bug 554454.
 		cc_cv_CFLAGS__Werror_shadow=no
@@ -223,6 +228,7 @@ multilib_src_configure() {
 		$(multilib_native_use_enable xkb xkbcommon)
 
 		# hardcode a few paths to spare some deps
+		KILL=/bin/kill
 		QUOTAON=/usr/sbin/quotaon
 		QUOTACHECK=/usr/sbin/quotacheck
 

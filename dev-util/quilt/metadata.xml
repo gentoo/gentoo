@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>dev-tools</herd>
-	<herd>suse</herd>
-	<maintainer>
+	<maintainer type="person">
 		  <email>mpagano@gentoo.org</email>
+	</maintainer>
+<maintainer type="project">
+		  <email>suse@gentoo.org</email>
+		  <name>SUSE</name>
 	</maintainer>
 </pkgmetadata>

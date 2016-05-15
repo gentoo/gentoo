@@ -1,5 +1,5 @@
 AC_PREREQ(2.59)
-AC_INIT([dataplot], [20080225], [n.heckert@nist.gov])
+AC_INIT([dataplot], [20090821], [n.heckert@nist.gov])
 AC_CONFIG_HEADER([config.h])
 AC_CONFIG_AUX_DIR(config)
 AM_MAINTAINER_MODE

@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -14,12 +14,12 @@ SRC_URI="https://dev.gentoo.org/~hwoarang/distfiles/${P}.tar.gz"
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
 KEYWORDS="amd64 ~arm hppa ~mips ppc ppc64 x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux"
-IUSE="gnutls polarssl ssl"
+IUSE="gnutls polarssl ssl libressl"
 
 DEPEND="ssl? (
 		gnutls? ( >=net-libs/gnutls-2.12.23-r6[${MULTILIB_USEDEP}] )
 		polarssl? ( !gnutls? ( >=net-libs/polarssl-1.3.4[${MULTILIB_USEDEP}] ) )
-		!gnutls? ( !polarssl? ( >=dev-libs/openssl-1.0.1h-r2[${MULTILIB_USEDEP}] ) )
+		!gnutls? ( !polarssl? ( !libressl? ( >=dev-libs/openssl-1.0.1h-r2[${MULTILIB_USEDEP}] ) libressl? ( dev-libs/libressl ) ) )
 		>=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}]
 	)"
 RDEPEND="${DEPEND}"
@@ -68,12 +68,12 @@ multilib_src_compile() {
 }
 
 multilib_src_install() {
-	mkdir -p "${ED}"/${DESTTREE}/$(get_libdir) || die
+	mkdir -p "${ED}"/usr/$(get_libdir) || die
 	if multilib_is_native_abi; then
 		dodoc README ChangeLog rtmpdump.1.html rtmpgw.8.html
 	else
 		cd librtmp || die
 	fi
-	emake DESTDIR="${ED}" prefix="${DESTTREE}" mandir="${DESTTREE}/share/man" \
+	emake DESTDIR="${ED}" prefix="/usr" mandir="/usr/share/man" \
 	CRYPTO="${crypto}" install
 }

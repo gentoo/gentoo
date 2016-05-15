@@ -1,19 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>cluster</herd>
-	<maintainer>
+	<maintainer type="person">
 		<email>jsbronder@gentoo.org</email>
 	</maintainer>
+	<maintainer type="project">
+		<email>cluster@gentoo.org</email>
+		<name>Gentoo Cluster Project</name>
+	</maintainer>
 	<use>
-		<flag name='cma'>Enable the CMA (Cross Memory Attach) MCA</flag>
-		<flag name='cuda'>Add GPU direct support</flag>
-		<flag name='heterogeneous'>Enable features required for heterogeneous
+		<flag name="cma">Enable the CMA (Cross Memory Attach) MCA</flag>
+		<flag name="cuda">Add GPU direct support</flag>
+		<flag name="heterogeneous">Enable features required for heterogeneous
 		platform support</flag>
-		<flag name='romio'>Build the ROMIO MPI-IO component</flag>
-		<flag name='mpi-threads'>Enable MPI_THREAD_MULTIPLE</flag>
-		<flag name='numa'>Enable numactl to allow binding processes to CPUs</flag>
-		<flag name='vt'>Enable bundled VampirTrace support</flag>
+		<flag name="romio">Build the ROMIO MPI-IO component</flag>
+		<flag name="mpi-threads">Enable MPI_THREAD_MULTIPLE</flag>
+		<flag name="numa">Enable numactl to allow binding processes to CPUs</flag>
+		<flag name="vt">Enable bundled VampirTrace support</flag>
 		<flag name="pbs">Add support for the Portable Batch System (PBS)</flag>
 	</use>
 </pkgmetadata>

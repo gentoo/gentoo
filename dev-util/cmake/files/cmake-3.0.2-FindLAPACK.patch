@@ -1,5 +1,5 @@
---- Modules/FindLAPACK.cmake.orig	2014-09-15 23:50:11.377111987 +0200
-+++ Modules/FindLAPACK.cmake	2014-09-15 23:52:54.734388375 +0200
+--- a/Modules/FindLAPACK.cmake
++++ b/Modules/FindLAPACK.cmake
 @@ -4,6 +4,10 @@
  #
  # Find LAPACK library

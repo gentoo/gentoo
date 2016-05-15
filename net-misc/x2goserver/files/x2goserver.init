@@ -1,10 +1,10 @@
 #!/sbin/runscript
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 DAEMON=/usr/sbin/x2gocleansessions
-PIDFILE=/var/run/x2goserver.pid
+PIDFILE=/run/x2goserver.pid
 
 start() {
 	ebegin "Starting ${SVCNAME}"

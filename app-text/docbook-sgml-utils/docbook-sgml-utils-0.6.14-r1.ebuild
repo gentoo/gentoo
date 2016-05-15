@@ -11,8 +11,8 @@ MY_P=${MY_PN}-${PV}
 S=${WORKDIR}/${MY_P}
 
 DESCRIPTION="Shell scripts to manage DocBook documents"
-HOMEPAGE="https://sources.redhat.com/docbook-tools/"
-SRC_URI="ftp://sources.redhat.com/pub/docbook-tools/new-trials/SOURCES/${MY_P}.tar.gz"
+HOMEPAGE="https://sourceware.org/docbook-tools/"
+SRC_URI="ftp://sourceware.org/pub/docbook-tools/new-trials/SOURCES/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

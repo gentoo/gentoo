@@ -1,0 +1,77 @@
+diff -rupN vsock-only/linux/af_vsock.c vsock-only.new/linux/af_vsock.c
+--- vsock-only/linux/af_vsock.c	2016-03-16 21:31:24.582040320 -0400
++++ vsock-only.new/linux/af_vsock.c	2016-03-16 21:37:22.140045067 -0400
+@@ -231,7 +231,16 @@ static int VSockVmciStreamSetsockopt(str
+ 
+ static int VSockVmciStreamGetsockopt(struct socket *sock, int level, int optname,
+                                      char __user *optval, int __user * optlen);
+-
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 2, 0)
++static int VSockVmciDgramSendmsg(
++                                 struct socket *sock, struct msghdr *msg, size_t len);
++static int VSockVmciDgramRecvmsg(struct socket *sock,
++                                 struct msghdr *msg, size_t len, int flags);
++static int VSockVmciStreamSendmsg(
++                                 struct socket *sock, struct msghdr *msg, size_t len);
++static int VSockVmciStreamRecvmsg(struct socket *sock,
++                                 struct msghdr *msg, size_t len, int flags);
++#else
+ static int VSockVmciDgramSendmsg(struct kiocb *kiocb,
+                                  struct socket *sock, struct msghdr *msg, size_t len);
+ static int VSockVmciDgramRecvmsg(struct kiocb *kiocb, struct socket *sock,
+@@ -240,6 +249,7 @@ static int VSockVmciStreamSendmsg(struct
+                                  struct socket *sock, struct msghdr *msg, size_t len);
+ static int VSockVmciStreamRecvmsg(struct kiocb *kiocb, struct socket *sock,
+                                  struct msghdr *msg, size_t len, int flags);
++#endif
+ 
+ static int VSockVmciCreate(
+ #if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 24)
+@@ -4210,7 +4220,11 @@ VSockVmciShutdown(struct socket *sock,
+  */
+ 
+ static int
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 2, 0)
++VSockVmciDgramSendmsg(
++#else
+ VSockVmciDgramSendmsg(struct kiocb *kiocb,          // UNUSED
++#endif
+                       struct socket *sock,          // IN: socket to send on
+                       struct msghdr *msg,           // IN: message to send
+                       size_t len)                   // IN: length of message
+@@ -4540,7 +4554,11 @@ VSockVmciStreamGetsockopt(struct socket
+  */
+ 
+ static int
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 2, 0)
++VSockVmciStreamSendmsg(
++#else
+ VSockVmciStreamSendmsg(struct kiocb *kiocb,          // UNUSED
++#endif
+                        struct socket *sock,          // IN: socket to send on
+                        struct msghdr *msg,           // IN: message to send
+                        size_t len)                   // IN: length of message
+@@ -4709,7 +4727,11 @@ out:
+  */
+ 
+ static int
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 2, 0)
++VSockVmciDgramRecvmsg(
++#else
+ VSockVmciDgramRecvmsg(struct kiocb *kiocb,          // UNUSED
++#endif
+                       struct socket *sock,          // IN: socket to receive from
+                       struct msghdr *msg,           // IN/OUT: message to receive into
+                       size_t len,                   // IN: length of receive buffer
+@@ -4804,7 +4826,11 @@ out:
+  */
+ 
+ static int
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 2, 0)
++VSockVmciStreamRecvmsg(
++#else
+ VSockVmciStreamRecvmsg(struct kiocb *kiocb,          // UNUSED
++#endif
+                        struct socket *sock,          // IN: socket to receive from
+                        struct msghdr *msg,           // IN/OUT: message to receive into
+                        size_t len,                   // IN: length of receive buffer

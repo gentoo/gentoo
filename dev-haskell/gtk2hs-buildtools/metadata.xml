@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>haskell</herd>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
 	<longdescription>
 		This package provides a set of helper programs necessary to
 		build the Gtk2Hs suite of libraries. These tools include
@@ -13,7 +16,7 @@
 		to actually run Gtk2Hs programs.
 	</longdescription>
 	<use>
-		<flag name='closuresignals'>Use the the GClosure-based signals
+		<flag name="closuresignals">Use the the GClosure-based signals
 		implementation.</flag>
 	</use>
 </pkgmetadata>

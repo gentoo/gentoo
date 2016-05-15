@@ -1,5 +1,5 @@
---- configure
-+++ configure
+--- herrie-2.2/configure
++++ herrie-2.2/configure
 @@ -301,7 +301,7 @@ fi
  if [ "$CFG_XSPF" != "" ]
  then
@@ -9,8 +9,8 @@
  	SRCS="$SRCS util vfs_xspf"
  	PLAYQ_DUMPFILE="autosave.xspf"
  else
---- src/conftest.c
-+++ src/conftest.c
+--- herrie-2.2/src/conftest.c
++++ herrie-2.2/src/conftest.c
 @@ -56,16 +56,10 @@
  #include <vorbis/codec.h>
  #include <vorbis/vorbisfile.h>
@@ -28,8 +28,8 @@
  
  	return (0);
  }
---- src/vfs_xspf.c
-+++ src/vfs_xspf.c
+--- herrie-2.2/src/vfs_xspf.c
++++ herrie-2.2/src/vfs_xspf.c
 @@ -30,7 +30,7 @@
  
  #include "stdinc.h"

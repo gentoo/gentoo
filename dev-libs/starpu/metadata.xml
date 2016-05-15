@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer>
+<maintainer type="person">
   <email>bicatali@gentoo.org</email>
   <description>Feel free to update and/or fix</description>
 </maintainer>
-<longdescription lang='en'>
+<longdescription lang="en">
   StarPU is a runtime system that offers support for heterogeneous
   multicore machines. While many efforts are devoted to design efficient
   computation kernels for those architectures (e.g. to implement BLAS

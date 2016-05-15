@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>java</herd>
+	<maintainer type="project">
+		<email>java@gentoo.org</email>
+		<name>Java</name>
+	</maintainer>
 	<longdescription>FindBugs uses static analysis to inspect Java bytecode for occurrences of bug patterns. Static analysis means that FindBugs can find bugs by simply inspecting a program's code: executing the program is not necessary. This makes FindBugs very easy to use: in general, you should be able to use it to look for bugs in your code within a few minutes of downloading it. FindBugs works by analyzing Java bytecode (compiled class files), so you don't even need the program's source code to use it. Because its analysis is sometimes imprecise, FindBugs can report false warnings, which are warnings that do not indicate real errors. In practice, the rate of false warnings reported by FindBugs is less than 50%.</longdescription>
 	<upstream>
 		<remote-id type="sourceforge">findbugs</remote-id>

@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>netmon</herd>
-  <herd>perl</herd>
+  <maintainer type="project">
+    <email>netmon@gentoo.org</email>
+    <name>Gentoo network monitoring and analysis project</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
   <longdescription>Look up country by IP Address</longdescription>
   <upstream>
     <remote-id type="cpan">Geo-IP</remote-id>

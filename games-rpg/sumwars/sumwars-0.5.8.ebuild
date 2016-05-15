@@ -25,7 +25,7 @@ RDEPEND="
 	>=dev-games/ogre-1.7.4-r1[freeimage,opengl]
 	dev-games/ois
 	dev-games/physfs
-	>=dev-lang/lua-5.1
+	>=dev-lang/lua-5.1:0
 	>=dev-libs/tinyxml-2.6.2-r2
 	media-libs/freealut
 	media-libs/openal

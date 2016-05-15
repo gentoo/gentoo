@@ -1,0 +1,15 @@
+https://github.com/Gnurou/tagainijisho/issues/163
+
+--- src/sqlite/sqlite3ext.cc
++++ src/sqlite/sqlite3ext.cc
+@@ -118,6 +118,10 @@
+ 	sqlite3_stmt *pStmt;
+ 	const char *zSql = "SELECT fts3_tokenizer(?, ?)";
+ 
++#ifdef SQLITE_DBCONFIG_ENABLE_FTS3_TOKENIZER
++	sqlite3_db_config(db, SQLITE_DBCONFIG_ENABLE_FTS3_TOKENIZER, 1, NULL);
++#endif
++
+ 	rc = sqlite3_prepare_v2(db, zSql, -1, &pStmt, 0);
+ 	if( rc!=SQLITE_OK ){
+ 		return rc;

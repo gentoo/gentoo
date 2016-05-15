@@ -1,11 +1,11 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 inherit autotools eutils
 
-DESCRIPTION="a dockapp that informs events, such as incoming chat messages, by displaying icons and times"
+DESCRIPTION="universal visual notification dockapp"
 HOMEPAGE="http://swapspace.net/~matt/wmmsg"
 SRC_URI="http://swapspace.net/~matt/wmmsg/${P}.tar.gz"
 
@@ -28,7 +28,8 @@ DOCS="AUTHORS ChangeLog README wmmsgrc"
 src_prepare() {
 	epatch \
 		"${FILESDIR}"/${P}-use_gtk2.patch \
-		"${FILESDIR}"/${P}-alt-desktop.patch
+		"${FILESDIR}"/${P}-alt-desktop.patch \
+		"${FILESDIR}"/${P}-list.patch
 
 	eautoreconf
 }

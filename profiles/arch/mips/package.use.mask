@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# Mike Frysinger <vapier@gentoo.org> 21 Feb 2016
+# Needs arch love for elementary. #575322
+media-libs/elementary javascript
+
 # Mike Frysinger <vapier@gentoo.org> (17 Dec 2015)
 # The tlsdate seccomp logic is open-coded and doesn't support this arch yet.
 net-misc/tlsdate seccomp

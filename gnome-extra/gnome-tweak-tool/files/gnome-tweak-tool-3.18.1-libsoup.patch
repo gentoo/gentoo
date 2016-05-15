@@ -1,0 +1,41 @@
+From 0335e0edd652542ab6b995dc3e4334251b582b5d Mon Sep 17 00:00:00 2001
+From: Rui Matos <tiagomatos@gmail.com>
+Date: Sun, 17 Jan 2016 19:48:51 +0100
+Subject: egowrapper: Port to new Soup.Session API
+
+This also allows us to stop using SoupGNOME since Soup.Session now
+uses the system's default proxy by default.
+
+https://bugzilla.gnome.org/show_bug.cgi?id=759951
+---
+ gtweak/egowrapper.py | 6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
+
+diff --git a/gtweak/egowrapper.py b/gtweak/egowrapper.py
+index 738172a..9657c9b 100644
+--- a/gtweak/egowrapper.py
++++ b/gtweak/egowrapper.py
+@@ -20,9 +20,8 @@ import logging
+ 
+ import gi
+ gi.require_version("Soup", "2.4")
+-gi.require_version("SoupGNOME", "2.4")
+ from gi.repository import GObject
+-from gi.repository import Soup, SoupGNOME
++from gi.repository import Soup
+ 
+ class ExtensionsDotGnomeDotOrg(GObject.GObject):
+ 
+@@ -35,8 +34,7 @@ class ExtensionsDotGnomeDotOrg(GObject.GObject):
+ 
+     def __init__(self, shell_version_tuple):
+         GObject.GObject.__init__(self)
+-        self._session = Soup.SessionAsync.new()
+-        self._session.add_feature_by_type(SoupGNOME.ProxyResolverGNOME)
++        self._session = Soup.Session.new()
+ 
+         self._shell_version_tuple = shell_version_tuple
+         self._extensions = {}
+-- 
+cgit v0.12
+

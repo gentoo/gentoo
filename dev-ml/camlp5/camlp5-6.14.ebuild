@@ -13,7 +13,7 @@ SRC_URI="http://camlp5.gforge.inria.fr/distrib/src/${MY_P}.tgz"
 
 LICENSE="BSD"
 SLOT="0/${PV}"
-KEYWORDS="amd64 ppc x86 ~x86-fbsd"
+KEYWORDS="alpha amd64 ppc x86 ~x86-fbsd"
 IUSE="doc +ocamlopt"
 
 DEPEND=">=dev-lang/ocaml-3.10:=[ocamlopt?]"

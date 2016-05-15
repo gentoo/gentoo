@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -45,7 +45,7 @@ COMMONDEPEND="
 	media-libs/libpng:0=
 	media-libs/tiff:0
 	virtual/jpeg:0
-	calendar? ( $(add_kdebase_dep kdepimlibs) )
+	calendar? ( $(add_kdeapps_dep kdepimlibs) )
 	crypt? ( app-crypt/qca:2[qt4(+)] )
 	ipod? (
 		media-libs/libgpod
@@ -56,7 +56,7 @@ COMMONDEPEND="
 		media-libs/phonon[qt4]
 		x11-libs/libXrandr
 	)
-	redeyes? ( >=media-libs/opencv-3.0.0[contrib] )
+	redeyes? ( >=media-libs/opencv-3.0.0:=[contrib] )
 	scanner? (
 		$(add_kdeapps_dep libksane)
 		media-gfx/sane-backends

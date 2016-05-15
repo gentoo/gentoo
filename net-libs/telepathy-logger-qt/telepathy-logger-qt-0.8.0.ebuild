@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -6,7 +6,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
 KDE_REQUIRED="never"
-inherit kde4-base python-any-r1
+inherit kde4-base python-any-r1 qmake-utils
 
 DESCRIPTION="Qt4 bindings for the Telepathy logger"
 HOMEPAGE="https://projects.kde.org/projects/extragear/network/telepathy/telepathy-logger-qt"
@@ -41,6 +41,7 @@ pkg_setup() {
 src_configure() {
 	local mycmakeargs=(
 		-DBUILD_SHARED_LIBS=ON
+		-DQT_QMAKE_EXECUTABLE="$(qt4_get_bindir)/qmake"
 	)
 	kde4-base_src_configure
 }

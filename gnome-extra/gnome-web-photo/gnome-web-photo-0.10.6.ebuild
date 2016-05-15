@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -10,7 +10,7 @@ inherit gnome2
 DESCRIPTION="A tool to generate images and thumbnails from HTML files"
 HOMEPAGE="https://git.gnome.org/browse/gnome-web-photo/"
 
-LICENSE="GPL-2"
+LICENSE="LGPL-2.1+"
 SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE=""

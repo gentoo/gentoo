@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>gnustep</herd>
+<maintainer type="project">
+	<email>gnustep@gentoo.org</email>
+	<name>Gentoo GNUstep Project</name>
+</maintainer>
 <longdescription>
 GWorkspace is the official GNUstep workspace manager. It is a clone of the NeXT workspace manager. GWorkspace is becoming more and more stable every day and it is already ready for daily usage.
 </longdescription>
 <use>
-	<flag name='gwmetadata'>Enable the metadata indexing and searching system</flag>
+	<flag name="gwmetadata">Enable the metadata indexing and searching system</flag>
 </use>
 </pkgmetadata>

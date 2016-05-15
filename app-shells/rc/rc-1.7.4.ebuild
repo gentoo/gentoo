@@ -20,7 +20,7 @@ DEPEND="${RDEPEND}"
 src_configure() {
 	local myconf="--with-history"
 	use readline && myconf="--with-edit=readline"
-	use libedit && myconf="--with-edit=editline"
+	use libedit && myconf="--with-edit=edit"
 
 	econf \
 		--disable-dependency-tracking \
@@ -35,8 +35,9 @@ src_install() {
 }
 
 pkg_postinst() {
-	ebegin "Updating /etc/shells"
-	( grep -v "^/bin/rcsh$" "${ROOT}"etc/shells; echo "/bin/rcsh" ) > "${T}"/shells
-	mv -f "${T}"/shells "${ROOT}"etc/shells
-	eend $?
+	if ! grep -q '^/bin/rcsh$' "${EROOT}"/etc/shells ; then
+		ebegin "Updating /etc/shells"
+		echo "/bin/rcsh" >> "${EROOT}"/etc/shells
+		eend $?
+	fi
 }

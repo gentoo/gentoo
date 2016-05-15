@@ -1,9 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python{2_7,3_3,3_4,3_5} )
+DISTUTILS_IN_SOURCE_BUILD=1
 inherit distutils-r1
 
 if [[ ${PV} == *9999 ]] ; then
@@ -14,7 +15,7 @@ else
 	SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 fi
 
-DESCRIPTION="pkgcore package manager"
+DESCRIPTION="a framework for package management"
 HOMEPAGE="https://github.com/pkgcore/pkgcore"
 
 LICENSE="|| ( BSD GPL-2 )"
@@ -40,15 +41,7 @@ pkg_setup() {
 }
 
 python_compile_all() {
-	if [[ ${PV} == *9999 ]]; then
-		esetup.py build_man
-		ln -s "${BUILD_DIR}/sphinx/man" man || die
-	fi
-
-	if use doc; then
-		esetup.py build_docs
-		ln -s "${BUILD_DIR}/sphinx/html" html || die
-	fi
+	esetup.py build_man $(usex doc "build_docs" "")
 }
 
 python_test() {
@@ -56,18 +49,9 @@ python_test() {
 }
 
 python_install_all() {
-	local cmds=(
-		install_man
-	)
-	use doc && cmds+=(
-		install_docs --path="${ED%/}"/usr/share/doc/${PF}/html
-	)
-
-	distutils-r1_python_install "${cmds[@]}"
+	distutils-r1_python_install install_man \
+		$(usex doc "install_docs --path="${ED%/}"/usr/share/doc/${PF}/html" "")
 	distutils-r1_python_install_all
-
-	insinto /usr/share/zsh/site-functions
-	doins shell/zsh-completion/*
 }
 
 pkg_postinst() {

@@ -1,9 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
-USE_RUBY="ruby19 ruby20 ruby21 ruby22"
+USE_RUBY="ruby20 ruby21 ruby22"
 
 RUBY_FAKEGEM_TASK_TEST="none"
 RUBY_FAKEGEM_TASK_DOC="none"
@@ -23,7 +23,7 @@ SRC_URI="https://github.com/rspec/${PN}/archive/v${PV}.tar.gz -> ${P}-git.tgz"
 
 LICENSE="MIT"
 SLOT="3"
-KEYWORDS="~amd64 ~arm ~hppa ~ppc64"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc64"
 IUSE="highlight"
 
 SUBVERSION="$(get_version_component_range 1-2)"
@@ -39,7 +39,6 @@ ruby_add_bdepend "test? (
 		>=dev-ruby/coderay-1.0.9
 		dev-ruby/syntax
 		>=dev-ruby/thread_order-1.1.0
-		>=dev-ruby/zentest-4.6.2
 		>=dev-ruby/rspec-expectations-3.3.0:3
 		>=dev-ruby/rspec-mocks-2.99.0:3
 	)"

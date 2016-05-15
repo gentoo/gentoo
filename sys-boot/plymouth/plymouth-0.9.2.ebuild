@@ -12,18 +12,18 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="git://anongit.freedesktop.org/plymouth"
 	inherit git-r3
 else
-	SRC_URI="${SRC_URI} http://www.freedesktop.org/software/plymouth/releases/${P}.tar.bz2"
+	SRC_URI="${SRC_URI} https://www.freedesktop.org/software/plymouth/releases/${P}.tar.bz2"
 fi
 
 inherit autotools-utils readme.gentoo systemd toolchain-funcs
 
 DESCRIPTION="Graphical boot animation (splash) and logger"
-HOMEPAGE="http://cgit.freedesktop.org/plymouth/"
+HOMEPAGE="https://cgit.freedesktop.org/plymouth/"
 
 LICENSE="GPL-2"
 SLOT="0"
 [[ ${PV} == 9999 ]] || \
-KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="debug gdm +gtk +libkms +pango static-libs"
 
 CDEPEND="

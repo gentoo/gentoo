@@ -1,11 +1,11 @@
-# Copyright 2010-2015 Gentoo Foundation
+# Copyright 2010-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 
-BITCOINCORE_IUSE="dbus kde +qrcode qt4 qt5 test upnp +wallet"
-LANGS="ach af_ZA ar be_BY bg bs ca ca@valencia ca_ES cmn cs cy da de el_GR en eo es es_CL es_DO es_MX es_UY et eu_ES fa fa_IR fi fr fr_CA gl gu_IN he hi_IN hr hu id_ID it ja ka kk_KZ ko_KR ky la lt lv_LV mn ms_MY nb nl pam pl pt_BR pt_PT ro_RO ru sah sk sl_SI sq sr sv th_TH tr uk ur_PK uz@Cyrl vi vi_VN zh_HK zh_CN zh_TW"
+BITCOINCORE_IUSE="dbus kde +qrcode qt4 qt5 test upnp +wallet zeromq"
+LANGS="af_ZA ar be_BY bg bg_BG bs ca ca@valencia ca_ES cs cs_CZ cy da de el el_GR en en_GB eo es es_CL es_DO es_ES es_MX es_UY es_VE et eu_ES fa fa_IR fi fr fr_CA fr_FR gl he hi_IN hr hu id_ID it ja ka kk_KZ ko_KR ky la lt lv_LV mk_MK mn ms_MY nb nl pam pl pt_BR pt_PT ro_RO ru ru_RU sk sl_SI sq sr sv th_TH tr tr_TR uk ur_PK uz@Cyrl vi vi_VN zh zh_CN zh_TW"
 BITCOINCORE_NEED_LEVELDB=1
 BITCOINCORE_NEED_LIBSECP256K1=1
 inherit bitcoincore eutils fdo-mime gnome2-utils kde4-functions qt4-r2 git-2
@@ -79,6 +79,8 @@ src_install() {
 
 	dodoc doc/assets-attribution.md doc/bips.md doc/tor.md
 	doman contrib/debian/manpages/bitcoin-qt.1
+
+	use zeromq && dodoc doc/zmq.md
 
 	if use kde; then
 		insinto /usr/share/kde4/services

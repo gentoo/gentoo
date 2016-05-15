@@ -1,0 +1,36 @@
+--- src/ui/gtkmm/player.h	2015-11-17 14:04:43.251096876 +0100
++++ src/ui/gtkmm/player.h	2015-11-17 14:04:43.251096876 +0100
+@@ -36,7 +36,7 @@
+ #include "../../player/player.h"
+ typedef ::Player::Type PlayerType;
+ 
+-#include <sigc++/object.h>
++#include <sigc++/trackable.h>
+ namespace Gtk {
+   class Label;
+   class Button;
+
+--- src/ui/gtkmm/aiconfig.h	2015-11-17 14:04:43.251096876 +0100
++++ src/ui/gtkmm/aiconfig.h	2015-11-17 14:04:43.251096876 +0100
+@@ -36,7 +36,7 @@
+ #include "../../player/aiconfig.h"
+ 
+ #include "widgets/label_type_selector.h"
+-#include <sigc++/object.h>
++#include <sigc++/trackable.h>
+ #include <gtkmm/liststore.h>
+ namespace Gtk {
+   class VBox;
+
+--- src/player/ai/heuristics.cpp	2015-11-17 14:04:13.267766289 +0100
++++ src/player/ai/heuristics.cpp	2015-11-17 14:04:13.267766289 +0100
+@@ -2350,7 +2350,7 @@
+            && (   card.less(c)
+                || (   tpoints >= hi.value( Aiconfig::LIMITDOLLE )
+                    && c.less(Card(Card::DIAMOND, Card::QUEEN))
+-                   && !hi.color_runs( t.startcard().color() ) < 1
++                   && (hi.color_runs( t.startcard().color() ) > 0)
+                    && !t.islastcard()
+                   )
+               )
+

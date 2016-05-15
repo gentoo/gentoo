@@ -17,7 +17,7 @@ HOMEPAGE="http://mate-desktop.org"
 
 LICENSE="GPL-2 FDL-1.1 LGPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 IUSE="X ipv6 networkmanager policykit +upower"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
@@ -84,7 +84,7 @@ src_test() {
 DOCS="AUTHORS ChangeLog NEWS README"
 
 src_install() {
-	python_fix_shebang invest-applet timer-applet/src
+	python_fix_shebang invest-applet
 	gnome2_src_install
 
 	local APPLETS="accessx-status battstat charpick command cpufreq drivemount

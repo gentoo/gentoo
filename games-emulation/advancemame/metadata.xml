@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>games</herd>
+	<maintainer type="project">
+		<email>games@gentoo.org</email>
+		<name>Gentoo Games Project</name>
+	</maintainer>
 	<longdescription>
 AdvanceMAME and AdvanceMESS are unofficial MAME and MESS versions with an advanced video support for 
 helping the use with TVs, Arcade Monitors, Fixed Frequencies Monitors and also for PC Monitors.

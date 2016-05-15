@@ -2,16 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=2
+EAPI=5
 fromcvs=0
-ECVS_MODULE="duke3d"
-if [[ ${fromcvs} -eq 1 ]] ; then
-	ECVS_PASS="anonymous"
-	ECVS_SERVER="icculus.org:/cvs/cvsroot"
-	inherit unpacker cvs eutils flag-o-matic games
-else
-	inherit unpacker eutils flag-o-matic games
-fi
+inherit unpacker eutils flag-o-matic games
 
 DEMO="3dduke13.zip"
 
@@ -43,15 +36,7 @@ S=${WORKDIR}/${PN}
 use_tf() { use ${1} && echo "true" || echo "false"; }
 
 src_unpack() {
-	if [[ ${fromcvs} -eq 1 ]] ; then
-		cvs_src_unpack
-		cd duke3d/source
-		ECVS_MODULE="buildengine"
-		cvs_src_unpack
-	else
-		unpack ${A}
-	fi
-
+	unpack ${A}
 	if use demo ; then
 		unpack_zip DN3DSW13.SHR
 	fi
@@ -66,8 +51,7 @@ src_prepare() {
 		-e "/^usephysfs := / s:=.*:= false:" \
 		-e 's:-O3::' -e 's: -g : :' \
 		-e 's:/usr/lib/perl5/i386-linux/CORE/libperl.a::' \
-		Makefile \
-		|| die "sed build Makefile failed"
+		Makefile || die
 	epatch "${FILESDIR}/${PV}-endian.patch"
 
 	# configure duke3d
@@ -84,15 +68,12 @@ src_prepare() {
 	sed -i \
 		-e "/^use_opengl := / s:=.*:= $(use_tf opengl):" \
 		-e "/^use_physfs := / s:=.*:= false:" \
-		Makefile \
-		|| die "sed duke3d Makefile failed"
+		Makefile || die
 	if ! use pic && use x86 ; then
 		sed -i \
-			-e 's:^#USE_ASM:USE_ASM:' buildengine/Makefile \
-			|| die "sed failed"
+			-e 's:^#USE_ASM:USE_ASM:' buildengine/Makefile || die
 		sed -i \
-			-e '/^#use_asm := /s:#::' Makefile \
-			|| die "sed failed"
+			-e '/^#use_asm := /s:#::' Makefile || die
 	fi
 
 	# causes crazy redefine errors with gcc-3.[2-4].x
@@ -101,13 +82,13 @@ src_prepare() {
 }
 
 src_compile() {
-	emake -C source/buildengine OPTFLAGS="${CFLAGS}" || die "buildengine failed"
-	emake -C source OPTIMIZE="${CFLAGS}" || die "duke3d failed"
+	emake -C source/buildengine OPTFLAGS="${CFLAGS}"
+	emake -C source OPTIMIZE="${CFLAGS}"
 }
 
 src_install() {
 	games_make_wrapper duke3d "${GAMES_BINDIR}/duke3d.bin" "${GAMES_DATADIR}/${PN}"
-	newgamesbin source/duke3d duke3d.bin || die "newgamesbin failed"
+	newgamesbin source/duke3d duke3d.bin
 
 	dodoc readme.txt
 
@@ -118,7 +99,7 @@ src_install() {
 	newins user.con USER.CON
 	newins "${FILESDIR}/network.cfg" network.cfg.template
 	if use demo ; then
-		doins "${WORKDIR}/DUKE3D.GRP" || die "doins DUKE3D.GRP failed"
+		doins "${WORKDIR}/DUKE3D.GRP"
 	fi
 
 	insinto "${GAMES_SYSCONFDIR}"

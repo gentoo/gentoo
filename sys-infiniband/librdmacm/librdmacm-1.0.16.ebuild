@@ -17,5 +17,5 @@ IUSE=""
 
 DEPEND="sys-infiniband/libibverbs:${SLOT}"
 RDEPEND="${DEPEND}
-		!sys-infiniband/openib-userspace"
+			!sys-infiniband/openib-userspace"
 block_other_ofed_versions

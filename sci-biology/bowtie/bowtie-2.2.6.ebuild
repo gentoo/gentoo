@@ -6,13 +6,13 @@ EAPI=5
 
 inherit eutils toolchain-funcs
 
-DESCRIPTION="Popular short read aligner for Next-generation sequencing data, allowing for gaps"
+DESCRIPTION="Popular short read aligner for Next-generation sequencing data"
 HOMEPAGE="http://bowtie-bio.sourceforge.net/bowtie2/"
 SRC_URI="mirror://sourceforge/project/${PN}-bio/${PN}2/${PV}/${PN}2-${PV}-source.zip"
 
 LICENSE="GPL-3"
 SLOT="2"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 IUSE="examples cpu_flags_x86_sse2 +tbb"
 

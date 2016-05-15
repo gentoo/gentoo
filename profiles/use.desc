@@ -166,7 +166,7 @@ jpeg2k - Support for JPEG 2000, a wavelet-based image compression format
 kde - Add support for KDE (K Desktop Environment)
 kerberos - Add kerberos support
 kolab - Add support for the Kolab groupware server
-kontact - Enable support for the KDE personal information manager (kde-base/kdepim*)
+kontact - Enable support for the KDE personal information manager (kde-apps/kdepim*)
 ladspa - Enable the ability to support ladspa plugins
 lame - Prefer using LAME libraries for MP3 encoding support
 lapack - Add support for the virtual/lapack numerical library

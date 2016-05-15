@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>sci</herd>
-  <maintainer>
+  <maintainer type="person">
     <email>dberkholz@gentoo.org</email>
     <name>Donnie Berkholz</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>sci@gentoo.org</email>
+    <name>Gentoo Science Project</name>
   </maintainer>
   <longdescription lang="en">
   mlpy provides a wide range of state-of-the-art machine learning

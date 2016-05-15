@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>desktop-effects</herd>
+<maintainer type="project">
+    <email>desktop-effects@gentoo.org</email>
+    <name>Desktop effects</name>
+  </maintainer>
 <longdescription lang="en">
 Package with the base compiz-fusion plugins:
 animation, colourfilter, expo, ezoom, jpeg, neg, opacify, put, resizeinfo, ring,

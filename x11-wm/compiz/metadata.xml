@@ -11,7 +11,10 @@
       used.
     </flag>
   </use>
-  <herd>desktop-effects</herd>
+  <maintainer type="project">
+    <email>desktop-effects@gentoo.org</email>
+    <name>Desktop effects</name>
+  </maintainer>
   <longdescription>
     compiz is a compositing window manager that uses 3D graphics acceleration via OpenGL.
   </longdescription>

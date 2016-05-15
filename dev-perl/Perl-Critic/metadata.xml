@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>perl</herd>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
   <upstream>
     <remote-id type="cpan">Perl-Critic</remote-id>
     <remote-id type="cpan-module">Perl::Critic</remote-id>
@@ -38,6 +41,7 @@
     <remote-id type="cpan-module">Perl::Critic::Policy::BuiltinFunctions::ProhibitStringySplit</remote-id>
     <remote-id type="cpan-module">Perl::Critic::Policy::BuiltinFunctions::ProhibitUniversalCan</remote-id>
     <remote-id type="cpan-module">Perl::Critic::Policy::BuiltinFunctions::ProhibitUniversalIsa</remote-id>
+    <remote-id type="cpan-module">Perl::Critic::Policy::BuiltinFunctions::ProhibitUselessTopic</remote-id>
     <remote-id type="cpan-module">Perl::Critic::Policy::BuiltinFunctions::ProhibitVoidGrep</remote-id>
     <remote-id type="cpan-module">Perl::Critic::Policy::BuiltinFunctions::ProhibitVoidMap</remote-id>
     <remote-id type="cpan-module">Perl::Critic::Policy::BuiltinFunctions::RequireBlockGrep</remote-id>
@@ -64,6 +68,7 @@
     <remote-id type="cpan-module">Perl::Critic::Policy::ControlStructures::ProhibitUnlessBlocks</remote-id>
     <remote-id type="cpan-module">Perl::Critic::Policy::ControlStructures::ProhibitUnreachableCode</remote-id>
     <remote-id type="cpan-module">Perl::Critic::Policy::ControlStructures::ProhibitUntilBlocks</remote-id>
+    <remote-id type="cpan-module">Perl::Critic::Policy::ControlStructures::ProhibitYadaOperator</remote-id>
     <remote-id type="cpan-module">Perl::Critic::Policy::Documentation::PodSpelling</remote-id>
     <remote-id type="cpan-module">Perl::Critic::Policy::Documentation::RequirePackageMatchesPodName</remote-id>
     <remote-id type="cpan-module">Perl::Critic::Policy::Documentation::RequirePodAtEnd</remote-id>
@@ -112,6 +117,7 @@
     <remote-id type="cpan-module">Perl::Critic::Policy::RegularExpressions::ProhibitSingleCharAlternation</remote-id>
     <remote-id type="cpan-module">Perl::Critic::Policy::RegularExpressions::ProhibitUnusedCapture</remote-id>
     <remote-id type="cpan-module">Perl::Critic::Policy::RegularExpressions::ProhibitUnusualDelimiters</remote-id>
+    <remote-id type="cpan-module">Perl::Critic::Policy::RegularExpressions::ProhibitUselessTopic</remote-id>
     <remote-id type="cpan-module">Perl::Critic::Policy::RegularExpressions::RequireBracesForMultiline</remote-id>
     <remote-id type="cpan-module">Perl::Critic::Policy::RegularExpressions::RequireDotMatchAnything</remote-id>
     <remote-id type="cpan-module">Perl::Critic::Policy::RegularExpressions::RequireExtendedFormatting</remote-id>

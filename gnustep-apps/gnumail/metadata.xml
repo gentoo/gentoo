@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>gnustep</herd>
+<maintainer type="project">
+	<email>gnustep@gentoo.org</email>
+	<name>Gentoo GNUstep Project</name>
+</maintainer>
 <longdescription>
 GNUMail.app is a fully featured mail application running on Linux (or FreeBSD, OpenBSD, etc) and Apple Mac OS X. It uses the GNUstep development framework or Apple Cocoa, which is based on the OpenStep specification provided by NeXT, Inc.. GNUMail.app is licensed under the GPL, and the full sources of the application are available.
 
 GNUMail.app was written from scratch. It uses Pantomime as its mail handling framework.
 </longdescription>
 <use>
-	<flag name='emoticon'>Enable extra Emoticon Bundle to see smiley's in e-mail
+	<flag name="emoticon">Enable extra Emoticon Bundle to see smiley's in e-mail
 		messages</flag>
 </use>
 </pkgmetadata>

@@ -8,7 +8,7 @@ XORG_STATIC=no
 inherit xorg-2
 
 DESCRIPTION="X Compositing manager"
-HOMEPAGE="http://freedesktop.org/Software/xapps"
+HOMEPAGE="https://freedesktop.org/Software/xapps"
 SRC_URI="http://xorg.freedesktop.org/releases/individual/app/${P}.tar.bz2"
 
 LICENSE="BSD"

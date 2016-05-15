@@ -1,6 +1,6 @@
---- Makefile.in.orig	2013-07-08 09:45:42.667070273 -0700
-+++ Makefile.in	2013-07-08 09:46:43.928417641 -0700
-@@ -29,17 +29,17 @@
+--- cdsclient-3.81/Makefile.in.orig	2016-02-26 17:33:14.217750589 +0000
++++ cdsclient-3.81/Makefile.in	2016-02-26 17:38:22.463875411 +0000
+@@ -31,17 +31,17 @@
  #################################################################
  #PREFIX  = /usr/local
  #PREFIX  = $(HOME)
@@ -21,7 +21,13 @@
  ###########
  # NOTE: The definition below is required only on SOLARIS
  #       Comment the following line if required
-@@ -60,7 +60,7 @@
+@@ -57,12 +57,13 @@
+ COPY   = cp -p
+ RM     = rm
+ AWK    = @AWK@
++MKDIR  = mkdir -p
+ 
+ # C options	--------------------------------
  DEBUG = 
  C_OPT = -O
  SYS = 
@@ -30,7 +36,7 @@
  
  # FILES		--------------------------------
  VERFILE = $(PREFIX)/versions
-@@ -98,7 +98,7 @@
+@@ -102,7 +103,7 @@
  # RULES		--------------------------------
  .SUFFIXES: .o .c 
  .c.o:
@@ -39,20 +45,18 @@
  
  # DEPENDENCIES	--------------------------------
  
-@@ -117,41 +117,41 @@
+@@ -121,41 +122,39 @@
  #		rm -f $$f; ln finducac2 $$f; done
  
  aclient: aclient.o $(OBJ)
 -	$(CC) $@.o $(OBJ) $(LIBSYS) -o $@
 -	$(STRIP) $@
 +	$(CC) $(LDFLAGS) $@.o $(OBJ) $(LIBSYS) -o $@
-+
  
  wwwget: wwwget.c
 -	$(CC) wwwget.c $(LIBSYS) -o $@
 -	$(STRIP) $@
 +	$(CC) $(CFLAGS) $(LDFLAGS) wwwget.c $(LIBSYS) -o $@
-+
  
  doc: sk.tex man.tex aclient.tex
  	latex man.tex
@@ -66,37 +70,37 @@
  install_man: $(MAN)
  	if [ -d $(MANDIR) ]; then echo $(MANDIR) exists; \
 -	else mkdir $(MANDIR); fi 
-+	else mkdir -p $(MANDIR); fi 
++	else $(MKDIR) $(MANDIR); fi 
  	for f in $(MAN); do \
  	    e=`echo $$f | cut -d. -f2`;  \
  	    if [ -d $(MANDIR)/man$$e ] ; then echo $(MANDIR)/man$$e exists ; \
 -	    else mkdir $(MANDIR)/man$$e ; fi ; \
-+	    else mkdir -p $(MANDIR)/man$$e ; fi ; \
++	    else $(MKDIR) $(MANDIR)/man$$e ; fi ; \
  	    $(COPY) $$f $(MANDIR)/man$$e ;  \
  	done
  
  install_h: $(INC)
 -	test -d $(INCDIR) || mkdir $(INCDIR)
-+	test -d $(INCDIR) || mkdir -p $(INCDIR)
++	test -d $(INCDIR) || $(MKDIR) $(INCDIR)
  	$(COPY) $(INC) $(INCDIR)
  
  install_bin: $(BIN)
 -	test -d $(BINDIR) || mkdir $(BINDIR)
-+	test -d $(BINDIR) || mkdir -p $(BINDIR)
++	test -d $(BINDIR) || $(MKDIR) $(BINDIR)
  	$(COPY) $(BIN) $(BINDIR)
  
  install_shs: Makefile
 -	test -d $(SHSDIR) || mkdir $(SHSDIR)
-+	test -d $(SHSDIR) || mkdir -p $(SHSDIR)
++	test -d $(SHSDIR) || $(MKDIR) $(SHSDIR)
  	ractools=""; test -r $(RACatCDS) && ractools=$(RACatCDS)/*; \
          test -z "$$ractools" || ls -l $$ractools; \
  	cdsutil="$(SHSatCDS)"; test -z "$(atCDS)" && cdsutil=""; \
-@@ -189,7 +189,7 @@
+@@ -195,7 +194,7 @@
  	$(MAKE) clean
  	-test -d /tmp/$(DISTRIB) && rm -rf /tmp/$(DISTRIB)
  	autoconf
 -	mkdir /tmp/$(DISTRIB)
-+	mkdir -p /tmp/$(DISTRIB)
- 	cp -p $(SHS) Makefile.in configure /tmp/$(DISTRIB)
- 	test -z "$(atCDS)" || cp -p $(SHSatCDS) /tmp/$(DISTRIB)
- 
++	$(MKDIR) /tmp/$(DISTRIB)
+ 	cp -p COPYRIGHT /ftp/pub/sw/COPYING /tmp/$(DISTRIB)
+ 	for f in $(SHS) Makefile.in configure; do cp -p $$f /tmp/$(DISTRIB); \
+ 	    add_license $$f > /tmp/$(DISTRIB)/$$f; done

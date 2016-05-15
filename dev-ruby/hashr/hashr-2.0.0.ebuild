@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -13,7 +13,7 @@ RUBY_FAKEGEM_EXTRADOC="README.md"
 
 inherit ruby-fakegem
 
-DESCRIPTION="Simple Hash extension to make working with nested hashes easier and less error-prone"
+DESCRIPTION="Simple Hash extension to make working with nested hashes easier"
 HOMEPAGE="https://github.com/svenfuchs/hashr"
 
 LICENSE="MIT"

@@ -15,6 +15,8 @@ KEYWORDS="amd64 ppc ppc64 x86"
 IUSE=""
 
 RDEPEND=">=dev-perl/Data-ObjectDriver-0.06"
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	dev-perl/Module-Build
+"
 
 SRC_TEST="do"

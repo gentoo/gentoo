@@ -3,8 +3,7 @@
 # $Id$
 
 EAPI=5
-
-inherit autotools eutils
+inherit autotools eutils flag-o-matic
 
 DESCRIPTION="A slim GTK-based image browser"
 HOMEPAGE="https://sourceforge.net/projects/gimmage.berlios/"
@@ -37,5 +36,6 @@ src_configure() {
 	local myconf
 	use debug && myconf="--enable-debug"
 
+	append-cxxflags -std=c++11
 	econf ${myconf}
 }

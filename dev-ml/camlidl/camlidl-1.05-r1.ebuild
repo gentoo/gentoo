@@ -19,6 +19,7 @@ RDEPEND="${DEPEND}"
 src_prepare() {
 	epatch "${FILESDIR}/tests.patch"
 	epatch "${FILESDIR}/includes.patch"
+	epatch "${FILESDIR}/nowarn.patch"
 }
 
 src_compile() {

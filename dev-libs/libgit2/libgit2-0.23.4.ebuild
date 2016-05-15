@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -11,7 +11,7 @@ if [[ ${PV} == "9999" ]] ; then
 	inherit git-r3
 else
 	SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86 ~ppc-macos"
+	KEYWORDS="amd64 ~arm x86 ~ppc-macos"
 fi
 
 DESCRIPTION="A linkable library for Git"
@@ -25,7 +25,7 @@ RDEPEND="
 	!libressl? ( dev-libs/openssl:0 )
 	libressl? ( dev-libs/libressl )
 	sys-libs/zlib
-	net-libs/http-parser
+	net-libs/http-parser:=
 	gssapi? ( virtual/krb5 )
 	ssh? ( net-libs/libssh2 )
 "
@@ -69,7 +69,7 @@ src_install() {
 	cmake-utils_src_install
 
 	if use examples ; then
-		find examples -name .gitignore -delete || die
+		egit_clean examples
 		dodoc -r examples
 		docompress -x /usr/share/doc/${PF}/examples
 	fi

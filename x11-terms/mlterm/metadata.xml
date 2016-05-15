@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>cjk</herd>
+  <maintainer type="project">
+    <email>cjk@gentoo.org</email>
+    <name>Cjk</name>
+  </maintainer>
   <use>
     <flag name="fcitx">Enable <pkg>app-i18n/fcitx</pkg> support</flag>
     <flag name="ibus">Enable <pkg>app-i18n/ibus</pkg> support</flag>
@@ -9,6 +12,7 @@
     <flag name="regis">Enable ReGIS support</flag>
     <flag name="scim">Enable <pkg>app-i18n/scim</pkg> support</flag>
     <flag name="uim">Enable <pkg>app-i18n/uim</pkg> support</flag>
+    <flag name="skk">Enable SKK support (<pkg>virtual/skkserv</pkg> or <pkg>app-i18n/skk-jisyo</pkg>)</flag>
     <flag name="utempter">Enable <pkg>sys-libs/libutempter</pkg> support</flag>
   </use>
   <upstream>

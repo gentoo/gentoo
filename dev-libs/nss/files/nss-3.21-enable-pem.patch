@@ -1,6 +1,5 @@
-diff -urN a/nss/lib/ckfw/manifest.mn b/nss/lib/ckfw/manifest.mn
---- a/nss/lib/ckfw/manifest.mn	2015-11-15 09:25:06.130786072 -0600
-+++ b/nss/lib/ckfw/manifest.mn	2015-11-15 09:31:03.372770145 -0600
+--- nss/lib/ckfw/manifest.mn
++++ nss/lib/ckfw/manifest.mn
 @@ -5,7 +5,7 @@
  
  CORE_DEPTH = ../..

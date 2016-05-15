@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer>
+<maintainer type="person">
 <email>jer@gentoo.org</email>
 </maintainer>
 <use>
-<flag name='savedconfig'>Without a saved config.h, this package depends on <pkg>net-misc/curl</pkg> and <pkg>x11-terms/st</pkg> for a default download mechanism</flag>
+<flag name="savedconfig">Without a saved config.h, this package depends on <pkg>net-misc/curl</pkg> and <pkg>x11-terms/st</pkg> for a default download mechanism</flag>
 </use>
 </pkgmetadata>

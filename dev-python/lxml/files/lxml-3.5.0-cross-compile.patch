@@ -33,7 +33,7 @@ index e04c38f..0549eaa 100644
 -    xslt_flags = run_command(find_xslt_config(), "--%s" % option)
 +    pkg_config = os.environ.get('PKG_CONFIG', 'pkg-config')
 +    xml2_flags = run_command(pkg_config, 'libxml-2.0', '--%s' % option)
-+    xslt_flags = run_command(pkg_config, 'libxxlt', '--%s' % option)
++    xslt_flags = run_command(pkg_config, 'libxslt', '--%s' % option)
  
      flag_list = xml2_flags.split()
      for flag in xslt_flags.split():

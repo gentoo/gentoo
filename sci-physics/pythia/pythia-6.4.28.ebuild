@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -20,7 +20,7 @@ HOMEPAGE="http://pythia6.hepforge.org/"
 # tar cJf pythia-6.4.x.tar.xz
 SRC_URI="
 	https://dev.gentoo.org/~bicatali/distfiles/${P}.tar.xz
-	ftp://root.cern.ch/root/pythia6.tar.gz
+	https://root.cern.ch/download/pythia6.tar.gz
 	doc? ( http://home.thep.lu.se/~torbjorn/pythia/lutp${DOC_PV}man2.pdf )
 	examples? ( mirror://gentoo/${PN}-${EX_PV}-examples.tar.bz2 )"
 

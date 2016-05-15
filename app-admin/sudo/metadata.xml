@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>base-system</herd>
+  <maintainer type="project">
+    <email>base-system@gentoo.org</email>
+    <name>Gentoo Base System</name>
+  </maintainer>
   <longdescription lang="en">
     Sudo (superuser do) allows a system administrator to give certain
     users (or groups of users) the ability to run some (or all)
@@ -9,10 +12,10 @@
     arguments.
   </longdescription>
   <use>
-	<flag name='sendmail'>
+	<flag name="sendmail">
 	  Allow sudo to send emails with sendmail.
 	</flag>
-    <flag name='offensive'>
+    <flag name="offensive">
       Let sudo print insults when the user types the wrong password.
     </flag>
   </use>

@@ -1,0 +1,51 @@
+diff --git a/scheduler/main.c b/scheduler/main.c
+index b1aa503..2f0f5fe 100644
+--- a/scheduler/main.c
++++ b/scheduler/main.c
+@@ -656,8 +656,15 @@ main(int  argc,				/* I - Number of command-line args */
+ 
+ #if defined(HAVE_LAUNCHD) || defined(HAVE_SYSTEMD)
+   if (OnDemand)
++  {
+     cupsdAddEvent(CUPSD_EVENT_SERVER_STARTED, NULL, NULL, "Scheduler started on demand.");
+-  else
++# ifdef HAVE_SYSTEMD
++    sd_notifyf(0, "READY=1\n"
++               "STATUS=Scheduler is running...\n"
++               "MAINPID=%lu",
++               (unsigned long) getpid());
++# endif /* HAVE_SYSTEMD */
++  } else
+ #endif /* HAVE_LAUNCHD || HAVE_SYSTEMD */
+   if (fg)
+     cupsdAddEvent(CUPSD_EVENT_SERVER_STARTED, NULL, NULL, "Scheduler started in foreground.");
+diff --git a/scheduler/org.cups.cupsd.path.in b/scheduler/org.cups.cupsd.path.in
+index 1bccc6f..4564164 100644
+--- a/scheduler/org.cups.cupsd.path.in
++++ b/scheduler/org.cups.cupsd.path.in
+@@ -2,7 +2,7 @@
+ Description=CUPS Scheduler
+ 
+ [Path]
+-PathExists=@CUPS_CACHEDIR@/org.cups.cupsd
++PathExistsGlob=@CUPS_REQUESTS@/d*
+ 
+ [Install]
+ WantedBy=multi-user.target
+diff --git a/scheduler/org.cups.cupsd.service.in b/scheduler/org.cups.cupsd.service.in
+index 0a27c76..0a841a2 100644
+--- a/scheduler/org.cups.cupsd.service.in
++++ b/scheduler/org.cups.cupsd.service.in
+@@ -1,10 +1,11 @@
+ [Unit]
+ Description=CUPS Scheduler
+ Documentation=man:cupsd(8)
++After=network.target
+ 
+ [Service]
+ ExecStart=@sbindir@/cupsd -l
+-Type=simple
++Type=notify
+ 
+ [Install]
+ Also=org.cups.cupsd.socket org.cups.cupsd.path

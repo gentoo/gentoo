@@ -1,35 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>proxy-maintainers</herd>
-  <maintainer>
+  <maintainer type="person">
       <email>hydrapolic@gmail.com</email>
       <name>Tomas Mozes</name>
       <description>Primary maintainer. Assign bugs to him.</description>
   </maintainer>
-  <maintainer>
+  <maintainer type="person">
       <email>mjo@gentoo.org</email>
       <name>Michael Orlitzky</name>
       <description>Secondary maintainer. Please CC on bugs.</description>
   </maintainer>
+  <maintainer type="project">
+      <email>proxy-maint@gentoo.org</email>
+      <name>Proxy Maintainers</name>
+  </maintainer>
   <use>
-    <flag name='dns'>
+    <flag name="dns">
       Install <pkg>net-dns/bind-tools</pkg> required for monitoring
       DNS servers. Disabling the flag does not remove any plugins.
     </flag>
-    <flag name='game'>
+    <flag name="game">
       Install <pkg>games-util/qstat</pkg> required for monitoring FPS
       servers. Disabling the flag does not remove any plugins.
     </flag>
-    <flag name='fping'>
+    <flag name="fping">
       Install <pkg>net-analyzer/fping</pkg> required for fancy ping
       monitoring. Disabling the flag does not remove any plugins.
     </flag>
-    <flag name='ssh'>
+    <flag name="ssh">
       Install <pkg>net-misc/openssh</pkg> required for monitoring SSH
       servers. Disabling the flag does not remove any plugins.
     </flag>
-    <flag name='snmp'>
+    <flag name="snmp">
       Install <pkg>dev-perl/Net-SNMP</pkg> and
       <pkg>net-analyzer/net-snmp</pkg> required for monitoring SNMP
       values. Disabling the flag does not remove any plugins.

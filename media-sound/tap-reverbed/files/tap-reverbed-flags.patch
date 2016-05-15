@@ -2,7 +2,18 @@ Index: tap-reverbed-r0/configure.ac
 ===================================================================
 --- tap-reverbed-r0.orig/configure.ac
 +++ tap-reverbed-r0/configure.ac
-@@ -25,8 +25,7 @@ PKG_CHECK_MODULES(GTK, gtk+-2.0 >= 2.0.0
+@@ -18,6 +18,10 @@
+ AC_C_INLINE
+ 
+ # Checks for libraries.
++AC_SEARCH_LIBS([powf], [m], [], [
++	AC_MSG_ERROR([unable to find the powf() function])
++])
++
+ PKG_CHECK_MODULES(JACK, jack >= 0.91.0)
+ PKG_CHECK_MODULES(GTK, gtk+-2.0 >= 2.0.0)
+ 
+@@ -25,8 +29,7 @@
  AC_FUNC_MALLOC
  AC_CHECK_FUNCS([strdup])
  
@@ -16,16 +27,26 @@ Index: tap-reverbed-r0/src/Makefile.am
 ===================================================================
 --- tap-reverbed-r0.orig/src/Makefile.am
 +++ tap-reverbed-r0/src/Makefile.am
-@@ -9,11 +9,11 @@ file_io.h file_io.c \
+@@ -9,20 +9,7 @@
  gui_ext.h gui_ext.c \
  ports.h ports.c \
  sound.h sound.c
 +reverbed_LDADD = $(GTK_LIBS) $(JACK_LIBS)
  
- EXTRA_DIST = .reverbed
+-EXTRA_DIST = .reverbed
++dist_pkgdata_DATA = .reverbed
  
- INCLUDES =
+-INCLUDES =
 -LIBS =
- #LIBS = $(LDFLAGS)
- 
- install: all
+-#LIBS = $(LDFLAGS)
+-
+-install: all
+-	-mkdir -p $(bindir)
+-	cp reverbed $(bindir)
+-	@echo
+-	@echo "                   *** IMPORTANT NOTICE ***"
+-	@echo "Please don't forget to copy the src/.reverbed file to the home"
+-	@echo "directory of every user who will run the program. Also, don't"
+-	@echo "forget to set the permissions of the copied files so these users"
+-	@echo "have read/write access to their own copies."
+-	@echo

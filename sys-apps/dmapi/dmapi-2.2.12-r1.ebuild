@@ -40,7 +40,7 @@ multilib_src_configure() {
 
 multilib_src_install() {
 	emake DESTDIR="${D}" install install-dev
-	multilib_is_native_abi && gen_usr_ldscript -a dm
+	gen_usr_ldscript -a dm
 }
 
 multilib_src_install_all() {

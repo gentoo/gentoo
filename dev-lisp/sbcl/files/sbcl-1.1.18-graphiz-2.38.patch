@@ -1,0 +1,19 @@
+--- sbcl-1.1.18/doc/internals/discriminating-functions.dot.old	2016-03-18 18:40:54.297597061 -0700
++++ sbcl-1.1.18/doc/internals/discriminating-functions.dot	2016-03-18 18:41:29.912053235 -0700
+@@ -33,13 +33,13 @@
+ // oneindex -> dispatch
+ // nn -> caching
+ // nn -> checking
+ // nn -> dispatch
+ 
+-subgraph class -> caching
+-subgraph class -> checking
+-subgraph class -> dispatch
++subgraph { class -> caching }
++subgraph { class -> checking }
++subgraph { class -> dispatch }
+ 
+ initial -> oneclass
+ 
+ initial -> default
+ initial -> nomethods

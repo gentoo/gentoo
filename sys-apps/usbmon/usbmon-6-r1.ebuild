@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit toolchain-funcs
+inherit toolchain-funcs eutils
 
 DESCRIPTION="Userland for USB monitoring framework"
 HOMEPAGE="https://people.redhat.com/zaitcev/linux/"
@@ -18,6 +18,7 @@ IUSE=""
 DEPEND="!=sys-apps/usbutils-0.72-r2"
 
 src_prepare() {
+	epatch "${FILESDIR}"/${P}-sysmacros.patch #580360
 	sed \
 		-e '/CFLAGS =/s, = , \+= ,g' \
 		-e 's:-O2::g' \

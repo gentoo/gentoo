@@ -1,0 +1,116 @@
+diff -Naur wmgeneral.orig/list.c wmgeneral/list.c
+--- wmgeneral.orig/list.c	2016-01-04 13:18:09.361133006 +0100
++++ wmgeneral/list.c	2016-01-04 13:18:21.789137166 +0100
+@@ -40,7 +40,7 @@
+ 
+ /* Return a cons cell produced from (head . tail) */
+ 
+-inline LinkedList* 
++LinkedList* 
+ list_cons(void* head, LinkedList* tail)
+ {
+   LinkedList* cell;
+@@ -53,7 +53,7 @@
+ 
+ /* Return the length of a list, list_length(NULL) returns zero */
+ 
+-inline int
++int
+ list_length(LinkedList* list)
+ {
+   int i = 0;
+@@ -68,7 +68,7 @@
+ /* Return the Nth element of LIST, where N count from zero.  If N 
+    larger than the list length, NULL is returned  */
+ 
+-inline void*
++void*
+ list_nth(int index, LinkedList* list)
+ {
+   while(index-- != 0)
+@@ -83,7 +83,7 @@
+ 
+ /* Remove the element at the head by replacing it by its successor */
+ 
+-inline void
++void
+ list_remove_head(LinkedList** list)
+ {
+   if (!*list) return;  
+@@ -103,7 +103,7 @@
+ 
+ /* Remove the element with `car' set to ELEMENT */
+ /*
+-inline void
++void
+ list_remove_elem(LinkedList** list, void* elem)
+ {
+   while (*list)
+@@ -114,7 +114,7 @@
+     }
+ }*/
+ 
+-inline LinkedList *
++LinkedList *
+ list_remove_elem(LinkedList* list, void* elem)
+ {
+     LinkedList *tmp;
+@@ -134,7 +134,7 @@
+ 
+ /* Return element that has ELEM as car */
+ 
+-inline LinkedList*
++LinkedList*
+ list_find(LinkedList* list, void* elem)
+ {
+   while(list)
+@@ -148,7 +148,7 @@
+ 
+ /* Free list (backwards recursive) */
+ 
+-inline void
++void
+ list_free(LinkedList* list)
+ {
+   if(list)
+@@ -160,7 +160,7 @@
+ 
+ /* Map FUNCTION over all elements in LIST */
+ 
+-inline void
++void
+ list_mapcar(LinkedList* list, void(*function)(void*))
+ {
+   while(list)
+diff -Naur wmgeneral.orig/list.h wmgeneral/list.h
+--- wmgeneral.orig/list.h	2016-01-04 13:18:09.361133006 +0100
++++ wmgeneral/list.h	2016-01-04 13:18:26.007138577 +0100
+@@ -36,20 +36,20 @@
+   struct LinkedList *tail;
+ } LinkedList;
+ 
+-inline LinkedList* list_cons(void* head, LinkedList* tail);
++LinkedList* list_cons(void* head, LinkedList* tail);
+ 
+-inline int list_length(LinkedList* list);
++int list_length(LinkedList* list);
+ 
+-inline void* list_nth(int index, LinkedList* list);
++void* list_nth(int index, LinkedList* list);
+ 
+-inline void list_remove_head(LinkedList** list);
++void list_remove_head(LinkedList** list);
+ 
+-inline LinkedList *list_remove_elem(LinkedList* list, void* elem);
++LinkedList *list_remove_elem(LinkedList* list, void* elem);
+ 
+-inline void list_mapcar(LinkedList* list, void(*function)(void*));
++void list_mapcar(LinkedList* list, void(*function)(void*));
+ 
+-inline LinkedList*list_find(LinkedList* list, void* elem);
++LinkedList*list_find(LinkedList* list, void* elem);
+ 
+-inline void list_free(LinkedList* list);
++void list_free(LinkedList* list);
+ 
+ #endif

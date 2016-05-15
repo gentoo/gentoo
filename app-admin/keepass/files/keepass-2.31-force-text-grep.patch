@@ -1,0 +1,13 @@
+Force text mode for >=grep-2.22 (bug #574480).
+
+--- a/Build/PrepMonoDev.sh
++++ b/Build/PrepMonoDev.sh
+@@ -3,7 +3,7 @@
+ 
+ sed 's!<SignAssembly>true</SignAssembly>!<SignAssembly>false</SignAssembly>!g' ../KeePass/KeePass.csproj > ../KeePass/KeePass.csproj.new
+ sed 's! ToolsVersion="3.5"!!g' ../KeePass/KeePass.csproj.new > ../KeePass/KeePass.csproj.new2
+-cat ../KeePass/KeePass.csproj.new2 | grep -v 'sgen\.exe' > ../KeePass/KeePass.csproj
++cat ../KeePass/KeePass.csproj.new2 | grep -va 'sgen\.exe' > ../KeePass/KeePass.csproj
+ rm -f ../KeePass/KeePass.csproj.new2
+ rm -f ../KeePass/KeePass.csproj.new
+ 

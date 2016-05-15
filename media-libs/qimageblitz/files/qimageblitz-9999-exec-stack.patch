@@ -1,6 +1,6 @@
-diff -uar qimageblitz/blitz/asm_scale.S qimageblitz~/blitz/asm_scale.S
---- qimageblitz-orig/blitz/asm_scale.S	2007-10-17 01:17:57.000000000 +0200
-+++ qimageblitz/blitz/asm_scale.S	2007-10-17 01:19:12.000000000 +0200
+diff -Naur qimageblitz/blitz/asm_scale.S qimageblitz~/blitz/asm_scale.S
+--- a/qimageblitz-orig/blitz/asm_scale.S	2007-10-17 01:17:57.000000000 +0200
++++ b/qimageblitz/blitz/asm_scale.S	2007-10-17 01:19:12.000000000 +0200
 @@ -814,3 +814,7 @@
  SIZE(qimageScale_mmx_AARGBA)
  

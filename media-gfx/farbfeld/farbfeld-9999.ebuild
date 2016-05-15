@@ -6,7 +6,7 @@ EAPI=5
 inherit git-r3 toolchain-funcs
 
 DESCRIPTION="farbfeld simple image format tools"
-HOMEPAGE="http://git.2f30.org/farbfeld/about/"
+HOMEPAGE="http://tools.suckless.org/farbfeld/"
 EGIT_REPO_URI="git://git.suckless.org/farbfeld"
 
 LICENSE="ISC"
@@ -16,6 +16,7 @@ KEYWORDS=""
 RDEPEND="
 	media-libs/libjpeg-turbo
 	media-libs/libpng:*
+	media-libs/lcms:2
 "
 DEPEND="
 	${RDEPEND}
@@ -38,4 +39,8 @@ src_prepare() {
 
 src_compile() {
 	emake CC=$(tc-getCC)
+}
+
+src_install() {
+	emake DESTDIR="${D}" install MANPREFIX=/usr/share/man
 }

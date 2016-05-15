@@ -1,7 +1,7 @@
 Patch by Arfrever; sent to upstream developer.
 
---- libpbe/src/parse_http_request.cc
-+++ libpbe/src/parse_http_request.cc
+--- anyterm-1.1.29/libpbe/src/parse_http_request.cc
++++ anyterm-1.1.29/libpbe/src/parse_http_request.cc
 @@ -18,11 +18,11 @@
  
  #include "parse_http_request.hh"
@@ -28,8 +28,8 @@ Patch by Arfrever; sent to upstream developer.
  
  
  namespace pbe {
---- libpbe/src/URI.cc
-+++ libpbe/src/URI.cc
+--- anyterm-1.1.29/libpbe/src/URI.cc
++++ anyterm-1.1.29/libpbe/src/URI.cc
 @@ -18,11 +18,11 @@
  
  #include "URI.hh"

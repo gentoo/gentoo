@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>tcltk</herd>
+<maintainer type="project">
+	<email>tcltk@gentoo.org</email>
+	<name>Gentoo Tcltk Project</name>
+</maintainer>
 <longdescription>
 Tcl3D offers the 3D functionality of OpenGL and other 3D libraries at the Tcl scripting level.
 The Tcl3D package currently consists of the following modules:

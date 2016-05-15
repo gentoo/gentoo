@@ -1,14 +1,14 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="4"
+EAPI="5"
 
 EGIT_SUB_PROJECT="legacy"
 EGIT_URI_APPEND=${PN}
 
 if [[ ${PV} != "9999" ]] ; then
-	EKEY_STATE="stable"
+	EKEY_STATE="snap"
 fi
 
 inherit enlightenment toolchain-funcs multilib-minimal
@@ -31,7 +31,7 @@ RDEPEND="=media-libs/freetype-2*[${MULTILIB_USEDEP}]
 	)
 	mp3? ( >=media-libs/libid3tag-0.15.1b-r3[${MULTILIB_USEDEP}] )"
 DEPEND="${RDEPEND}
-	png? ( >=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}] )
+	>=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}]
 	X? (
 		>=x11-proto/xextproto-7.2.1-r1[${MULTILIB_USEDEP}]
 		>=x11-proto/xproto-7.0.24[${MULTILIB_USEDEP}]

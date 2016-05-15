@@ -1,11 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>cpp</herd>
+	<maintainer type="project">
+		<email>cpp@gentoo.org</email>
+		<name>Gentoo C++ Project</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>office@gentoo.org</email>
+		<description>Please CC on stabilisation bugs</description>
+	</maintainer>
+
 	<use>
 		<flag name="context">
       Build and install the Boost.Context library and all other 
-      Boostlibraries that depends on it
+      Boost libraries that depend on it
     </flag>
 		<flag name="tools">
       Build and install the boost tools (bcp, quickbook, inspect,

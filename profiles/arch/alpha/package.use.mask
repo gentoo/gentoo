@@ -1,6 +1,40 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
+
+# Ian Delaney <idella4@gentoo.org> (06 Apr 2016)
+# on behalf of Ilya Tumaykin <itumaykin+gentoo@gmail.com>
+# dev-libs/uchardet lacks alpha keyword. See bug #569114.
+media-video/mpv uchardet
+
+# Justin Lecher <jlec@gentoo.org> (22 Feb 2016)
+# Missing test deps keyword #575366
+dev-cpp/eigen test
+
+# Mike Frysinger <vapier@gentoo.org> (21 Feb 2016)
+# Needs arch love for elementary. #575322
+media-libs/elementary javascript
+
+# Tobias Klausmann <klausman@gentoo.org> 04 Feb 2016
+# sys-cluster/ceph is not broken per se, but a maintenance burden.
+net-analyzer/rrdtool rados
+
+# James Le Cuirot <chewi@gentoo.org) (30 Jan 2016)
+# scrollview requires Java, which is unsupported on Alpha.
+app-text/tesseract scrollview
+
+# Michael Weber <xmw@gentoo.org> (09 Jan 2016)
+# no alpha support in media-libs/glfw
+app-text/mupdf opengl
+
+# Ian Delaney <idella4@gentoo.org> (05 Jan 2016)
+# on behalf of Ilya Tumaykin <itumaykin+gentoo@gmail.com>
+# dev-lang/luajit lacks alpha keyword. See bug #488318.
+media-video/mpv luajit
+
+# Mike Frysinger <vapier@gentoo.org> (22 Dec 2015)
+# Needs keywording. #569254
+net-firewall/iptables nftables
 
 # Justin Lecher <jlec@gentoo.org> (18 Nov 2015)
 # requires dev-python/restkit which requires
@@ -82,12 +116,6 @@ xfce-base/xfce4-settings libinput
 # Dependency not keyworded for some reason.
 media-libs/gegl umfpack
 
-# Michał Górny <mgorny@gentoo.org> (21 Feb 2015)
-# The external QCA plugins are not keyworded on this arch. Since
-# this is only a temporary measure and nothing depends on them,
-# just masking them until the new version goes stable.
-<app-crypt/qca-2.1 pkcs11
-
 # Patrick Lauer <patrick@gentoo.org> (10 Feb 2015)
 # Missing keywords for media-libs/x265
 media-video/libav x265
@@ -150,10 +178,6 @@ media-video/ffmpeg x265
 # Missing keywords on dev-python/rst2pdf, bug #515222
 media-video/mpv doc-pdf
 
-# Julian Ospald <hasufell@gentoo.org> (20 Apr 2014)
-# Missing keywords, bug #508226
-media-video/mpv sdl
-
 # Pacho Ramos <pacho@gentoo.org> (15 Mar 2014)
 # Missing keywords, bug #504672
 >=net-misc/vinagre-3.10 rdp
@@ -180,10 +204,6 @@ net-im/telepathy-connection-managers sipe
 # Mark Wright <gienah@gentoo.org> (26 Oct 2013)
 # template-haskell not yet available
 dev-haskell/dataenc test
-
-# Tom Wijsman <TomWij@gentoo.org> (16 Oct 2013)
-# Mask luajit on ~media-video/mpv-0.2.0 because it only has amd64 x86 keywords. See bug #488318.
->=media-video/mpv-0.2.0 luajit
 
 # Pacho Ramos <pacho@gentoo.org> (20 Jul 2013)
 # Keywords pending, bug #476710

@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>ppc</herd>
-<maintainer>
+<maintainer type="person">
 <email>josejx@gentoo.org</email>
 <name>Joseph Jezak</name>
+</maintainer>
+<maintainer type="project">
+<email>ppc@gentoo.org</email>
+<name>Gentoo Linux PowerPC Development</name>
 </maintainer>
 <longdescription lang="en">
 HFS+ Filesytstem tools (mkfs.hfsplus and fsck.hfsplus), ported from Apple's
 versions.
 </longdescription>
 </pkgmetadata>
-

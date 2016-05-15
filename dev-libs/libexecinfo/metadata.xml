@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>bsd</herd>
+<maintainer type="project">
+	<email>bsd@gentoo.org</email>
+	<name>BSD Project</name>
+</maintainer>
 <longdescription lang="en">
 	This is a quick-n-dirty BSD licensed clone of backtrace facility found
 	in the GNU libc, mainly intended for porting linuxish code to BSD
@@ -9,4 +12,3 @@
 	compiler.
 </longdescription>
 </pkgmetadata>
-

@@ -1,5 +1,5 @@
---- gentoo/cpudyn.conf.orig	2004-01-08 17:20:39.575230665 +0100
-+++ gentoo/cpudyn.conf	2004-01-08 17:20:37.450290151 +0100
+--- cpudyn/debian/cpudyn.conf.orig	2004-01-08 17:20:39.575230665 +0100
++++ cpudyn/debian/cpudyn.conf	2004-01-08 17:20:37.450290151 +0100
 @@ -32,6 +32,12 @@
  
  THROTTLING_LOW=7

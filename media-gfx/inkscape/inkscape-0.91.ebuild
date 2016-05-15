@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -43,7 +43,7 @@ COMMON_DEPEND="
 	media-libs/fontconfig
 	media-libs/freetype:2
 	media-libs/libpng:0
-	sci-libs/gsl
+	sci-libs/gsl:=
 	x11-libs/libX11
 	>=x11-libs/gtk+-2.10.7:2
 	>=x11-libs/pango-1.24

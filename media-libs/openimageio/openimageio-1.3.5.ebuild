@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -29,13 +29,13 @@ RDEPEND="dev-libs/boost[python?]
 	media-libs/tiff:0=
 	sci-libs/hdf5
 	sys-libs/zlib:=
-	virtual/jpeg
+	virtual/jpeg:0
 	gif? ( media-libs/giflib )
 	jpeg2k? ( >=media-libs/openjpeg-1.5:0= )
 	colorio? ( >=media-libs/opencolorio-1.0.7:= )
 	opencv? (
 		>=media-libs/opencv-2.3:=
-		python? ( || ( <media-libs/opencv-2.4.8 >=media-libs/opencv-2.4.8[python,${PYTHON_USEDEP}] ) )
+		python? ( >=media-libs/opencv-2.4.8[python,${PYTHON_USEDEP}] )
 	)
 	opengl? (
 		virtual/glu

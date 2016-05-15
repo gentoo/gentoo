@@ -1,0 +1,26 @@
+[Unit]
+Description=MySQL database server
+ConditionPathExists=/etc/mysql/my%I.cnf
+After=network.target
+
+[Service]
+Type=simple
+User=mysql
+Group=mysql
+
+# Note: we set --basedir to prevent probes that might trigger SELinux alarms,
+# https://bugzilla.redhat.com/show_bug.cgi?id=547485
+ExecStart=/usr/sbin/mysqld --defaults-file=/etc/mysql/my%I.cnf --basedir=/usr
+ExecStartPost=/usr/libexec/mysqld-wait-ready $MAINPID
+
+# Give a reasonable amount of time for the server to start up/shut down
+TimeoutSec=300
+
+# We rely on systemd, not mysqld_safe, to restart mysqld if it dies
+Restart=always
+
+# Place temp files in a secure directory, not /tmp
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

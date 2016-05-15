@@ -6,7 +6,7 @@ EAPI=5
 inherit autotools-utils flag-o-matic
 
 DESCRIPTION="A generic touchscreen calibration program for X.Org"
-HOMEPAGE="http://www.freedesktop.org/wiki/Software/xinput_calibrator"
+HOMEPAGE="https://www.freedesktop.org/wiki/Software/xinput_calibrator"
 SRC_URI="mirror://github/tias/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"

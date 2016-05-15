@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -9,7 +9,8 @@ inherit eutils python-single-r1 flag-o-matic autotools
 
 DESCRIPTION="Provide access to (SM)BIOS information"
 HOMEPAGE="http://linux.dell.com/libsmbios/main/index.html"
-SRC_URI="http://linux.dell.com/libsmbios/download/libsmbios/${P}/${P}.tar.bz2"
+SRC_URI="http://linux.dell.com/libsmbios/download/libsmbios/${P}/${P}.tar.bz2
+	http://linux.dell.com/libsmbios/download/libsmbios/old/${P}/${P}.tar.bz2"
 
 LICENSE="GPL-2 OSL-2.0"
 SLOT="0"
@@ -66,7 +67,7 @@ src_install() {
 		rmdir "${D}libsmbios_c" "${D}usr/share/smbios-utils"
 		rm -rf "${D}etc"
 	else
-		local python_scriptroot="/usr/sbin"
+		python_scriptinto /usr/sbin
 		python_doscript "${D}"/usr/sbin/smbios-{lcd-brightness,passwd,rbu-bios-update,sys-info,token-ctl,wakeup-ctl,wireless-ctl}
 	fi
 

@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -10,6 +10,7 @@ inherit eutils multilib flag-o-matic toolchain-funcs udev
 if [[ ${PV} == "9999" ]] ; then
 	inherit autotools git-2
 	EGIT_REPO_URI="git://git.code.sf.net/p/${PN}/code"
+	EGIT_PROJECT="${PN}"
 else
 	MY_PV="${PV/_/-}"
 	MY_P="${PN}-${MY_PV}"
@@ -27,12 +28,13 @@ IUSE="cmsis-dap dummy ftdi parport +usb verbose-io"
 RESTRICT="strip" # includes non-native binaries
 
 RDEPEND=">=dev-lang/jimtcl-0.76
+	dev-embedded/libjaylink
 	cmsis-dap? ( dev-libs/hidapi )
 	usb? (
 		virtual/libusb:0
 		virtual/libusb:1
 	)
-	ftdi? ( dev-embedded/libftdi )"
+	ftdi? ( dev-embedded/libftdi:= )"
 
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
@@ -52,6 +54,7 @@ src_configure() {
 		--enable-buspirate
 		--disable-werror
 		--disable-internal-jimtcl
+		--disable-internal-libjaylink
 		--enable-amtjtagaccel
 		--enable-ep93xx
 		--enable-at91rm9200
@@ -125,5 +128,5 @@ src_configure() {
 src_install() {
 	default
 	env -uRESTRICT prepstrip "${ED}"/usr/bin
-	udev_dorules ${D}/usr/share/${PN}/contrib/*.rules
+	udev_dorules "${D}"/usr/share/${PN}/contrib/*.rules
 }

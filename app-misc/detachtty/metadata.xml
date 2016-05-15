@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>shell-tools</herd>
-<herd>common-lisp</herd>
+<maintainer type="project">
+	<email>shell-tools@gentoo.org</email>
+	<name>Gentoo Shell Tools Project</name>
+</maintainer>
+<maintainer type="project">
+	<email>common-lisp@gentoo.org</email>
+	<name>Gentoo Common Lisp Project</name>
+</maintainer>
 <longdescription>
 detachtty is a utility that lets you run interactive programs non-interactively.
 Reattaching can be done locally or over the network.  detachtty is similar in

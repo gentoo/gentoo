@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+    <maintainer type="person">
+        <email>tomboy64@sina.cn</email>
+        <name>M.B.</name>
+        <description>Maintainer, assign bugs to him</description>
+    </maintainer>
+    <maintainer type="project">
+        <email>proxy-maint@gentoo.org</email>
+        <name>Proxy Maintainers</name>
+    </maintainer>
+    <use>
+        <flag name="nanotimestamp">Enable timestamps with nano-second resolution</flag>
+    </use>
+    <longdescription lang="en">
+        The ipsumdump program summarizes TCP/IP dump files into a self-describing ASCII format easily readable by humans and programs. The companion ipaggcreate program counts various properties of packet aggregates.
+    </longdescription>
+</pkgmetadata>

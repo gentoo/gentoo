@@ -1,0 +1,26 @@
+http://mx.gw.com/pipermail/file/2016/001955.html
+
+From c4b6ea9b998882d08692599e28f4245714eaf8bb Mon Sep 17 00:00:00 2001
+From: Christos Zoulas <christos@zoulas.com>
+Date: Sun, 17 Apr 2016 13:56:03 +0000
+Subject: [PATCH] add missing define.
+
+---
+ src/magic.h.in | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/magic.h.in b/src/magic.h.in
+index 1e567cd..3d6954a 100644
+--- a/src/magic.h.in
++++ b/src/magic.h.in
+@@ -114,6 +114,7 @@ int magic_errno(magic_t);
+ #define MAGIC_PARAM_ELF_SHNUM_MAX	3
+ #define MAGIC_PARAM_ELF_NOTES_MAX	4
+ #define MAGIC_PARAM_REGEX_MAX		5
++#define	MAGIC_PARAM_BYTES_MAX		6
+ 
+ int magic_setparam(magic_t, int, const void *);
+ int magic_getparam(magic_t, int, void *);
+-- 
+2.7.4
+

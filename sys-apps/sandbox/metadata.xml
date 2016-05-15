@@ -4,7 +4,7 @@
 
 <!-- portage lacks a herd.  correct this when we have one. -->
 
-<maintainer>
+<maintainer type="project">
   <email>sandbox@gentoo.org</email>
   <description>Sandbox Maintainers</description>
 </maintainer>

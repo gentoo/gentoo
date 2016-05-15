@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -6,7 +6,7 @@ EAPI="5"
 
 inherit eutils gnustep-2 vcs-snapshot
 
-DESCRIPTION="An extensive set of frameworks which form a complete Web application server environment"
+DESCRIPTION="A set of frameworks forming a complete Web application server environment"
 HOMEPAGE="http://www.sogo.nu/"
 SRC_URI="https://github.com/inverse-inc/sope/archive/SOPE-${PV}.tar.gz -> ${P}.tar.gz"
 
@@ -39,6 +39,7 @@ pkg_pretend() {
 src_prepare() {
 	# https://github.com/inverse-inc/sope/pull/33
 	epatch "${FILESDIR}"/${P}-optional-deps.patch
+	epatch "${FILESDIR}"/${P}-mysql-preamble.patch
 	gnustep-base_src_prepare
 }
 

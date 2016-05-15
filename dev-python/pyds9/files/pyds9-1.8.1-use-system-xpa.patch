@@ -1,0 +1,36 @@
+Author: Ole Streicher <debian@liska.ath.cx>
+Description: Don't install and use the convienience copy provided in the
+ source, but use the one installed by the "libxpa1" package.
+--- a/setup.py
++++ b/setup.py
+@@ -21,7 +21,7 @@
+ xpadir = 'xpa'
+ 
+ 
+-def make(which):
++def _disabled_make(which):
+     curdir = os.getcwd()
+     srcDir = os.path.join(os.path.dirname(os.path.abspath(__file__)), xpadir)
+     os.chdir(srcDir)
+@@ -86,10 +86,5 @@
+       author_email='saord@cfa.harvard.edu',
+       url='http://hea-www.harvard.edu/saord/ds9/',
+       py_modules=['pyds9', 'xpa'],
+-      data_files=[('', [os.path.join(xpadir, xpalib),
+-                        os.path.join(xpadir, xpans)])],
+-      cmdclass={'build_py': my_build_py,
+-                'install_data': my_install_data,
+-                'clean': my_clean},
+       install_requires=['six']
+       )
+--- a/xpa.py
++++ b/xpa.py
+@@ -28,7 +28,7 @@
+         return _fname
+     return None
+ 
+-_libpath = _find_shlib('xpa')
++_libpath = 'libxpa.so.1'
+ if _libpath:
+     libxpa = ctypes.cdll.LoadLibrary(_libpath)
+     _ulist = platform.uname()

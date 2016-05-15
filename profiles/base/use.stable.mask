@@ -21,9 +21,10 @@ python_single_target_python3_5
 curl_ssl_libressl
 libressl
 
-# Hans de Graaff <graaff@gentoo.org> (28 Sep 2015)
+# Hans de Graaff <graaff@gentoo.org> (26 Dec 2015)
 # Currently in testing and not ready to go stable yet.
 ruby_targets_ruby22
+ruby_targets_ruby23
 
 # Patrick Lauer <patrick@gentoo.org> (28 Apr 2015)
 # dependencies not stable yet

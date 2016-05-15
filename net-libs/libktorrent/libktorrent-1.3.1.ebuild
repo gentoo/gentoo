@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -29,7 +29,7 @@ VIRTUALX_REQUIRED="test"
 inherit kde4-base
 
 DESCRIPTION="A BitTorrent library based on KDE Platform"
-HOMEPAGE="http://ktorrent.org/"
+HOMEPAGE="http://ktorrent.pwsp.net/"
 
 LICENSE="GPL-2"
 SLOT="4"
@@ -37,8 +37,8 @@ IUSE="debug"
 
 RDEPEND="
 	app-crypt/qca:2[qt4(+)]
-	dev-libs/gmp
-	dev-libs/libgcrypt:0
+	dev-libs/gmp:0=
+	dev-libs/libgcrypt:0=
 "
 DEPEND="${RDEPEND}
 	dev-libs/boost

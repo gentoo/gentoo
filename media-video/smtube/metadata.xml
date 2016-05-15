@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer>
+	<maintainer type="person">
 		<email>zlg@gentoo.org</email>
 		<name>Daniel Campbell</name>
 	</maintainer>
@@ -10,6 +10,10 @@
 		that allows you to play videos directly in a variety of media players.
 	</longdescription>
 	<upstream>
+		<maintainer status="active">
+			<email>ricardo@smplayer.info</email>
+			<name>Ricardo Villalba</name>
+		</maintainer>
 		<remote-id type="sourceforge">smtube</remote-id>
 	</upstream>
 	<use>

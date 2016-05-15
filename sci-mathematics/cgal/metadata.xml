@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>sci-mathematics</herd>
+  <maintainer type="project">
+    <email>sci-mathematics@gentoo.org</email>
+    <name>Gentoo Mathematics Project</name>
+  </maintainer>
   <longdescription lang="en">
   The Computational Geometry Algorithms Library is a collaborative
   open source library containing:
@@ -16,6 +19,7 @@
     e.g., for visualisation, and I/O, and other support facilities.
 </longdescription>
   <use>
-    <flag name="mpfi">Enable support for multiple recision interval arithmetic via <pkg>sci-mathematics/mpfi</pkg></flag>
+    <flag name="mpfi">Enable support for multiple recision interval arithmetic via <pkg>sci-libs/mpfi</pkg></flag>
+	<flag name="ntl">Enable support for <pkg>dev-libs/ntl</pkg></flag>
   </use>
 </pkgmetadata>

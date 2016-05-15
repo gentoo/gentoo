@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer>
+<maintainer type="person">
 <email>joker@gentoo.org</email>
 <name>Christian Birchinger</name>
 </maintainer>
-<herd>games</herd>
+<maintainer type="project">
+<email>games@gentoo.org</email>
+<name>Gentoo Games Project</name>
+</maintainer>
 <longdescription>
 Syobon Action (also known as Cat Mario or Neko Mario) is a platform game with a similar gameplay experience as Super Mario Bros, except it's a lot more difficult.
 </longdescription>

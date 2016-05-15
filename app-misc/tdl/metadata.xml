@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>shell-tools</herd>
+	<maintainer type="project">
+		<email>shell-tools@gentoo.org</email>
+		<name>Gentoo Shell Tools Project</name>
+	</maintainer>
 	<longdescription lang="en">
 		tdl is a command-line application for managing a list of outstanding
 		tasks that you have to do. It can organise tasks in a hierarchy, produce

@@ -8,6 +8,3 @@ ACCEPT_KEYWORDS="~x86-macos"
 
 USE="mmx mmxext sse sse2"
 CPU_FLAGS_X86="mmx mmxext sse sse2"
-# normally we set arch to prescott for all MacTel users, as this enables
-# SSE and MMX support in GCC
-CFLAGS="-march=prescott"

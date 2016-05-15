@@ -1,0 +1,32 @@
+Index: asymptote-2.36/configure.ac
+===================================================================
+--- asymptote-2.36.orig/configure.ac
++++ asymptote-2.36/configure.ac
+@@ -156,7 +156,7 @@ if test "x$ac_cv_use_gc" != "xno" ; then
+       fi
+       CPPFLAGS_SAVE=$CPPFLAGS
+       CPPFLAGS=$CPPFLAGS" $INCL"
+-      AC_CHECK_HEADER(gc.h,
++      AC_CHECK_HEADER([gc/gc.h],
+ 	AC_CHECK_LIB([gc],[GC_malloc],[
+ 	  LIBS=$LIBS"-lgc "
+ 	  AC_MSG_NOTICE([enabling system $GCNAME])],[
+@@ -231,7 +231,17 @@ AC_MSG_ERROR([*** Please install libm on
+ AC_CHECK_LIB([z], [deflate],,
+ AC_MSG_ERROR([*** Please install libz or zlib-devel on your system ***]))
+ AX_PTHREAD
+-AC_CHECK_LIB([sigsegv], [stackoverflow_install_handler])
++
++AC_ARG_WITH(sigsegv,
++           [  --with-sigsegv          use libsigsegv],
++           [with_sigsegv=$withval],
++           [with_sigsegv="no"])
++if test "$with_sigsegv" = "yes"; then
++AC_CHECK_HEADER([sigsegv.h],
++   AC_CHECK_LIB([sigsegv], [stackoverflow_install_handler]),
++   AC_MSG_NOTICE([*** Header file sigsegv.h not found ***]))
++fi
++
+ AC_CHECK_LIB([rt], [sched_yield])
+ 
+ AC_ARG_ENABLE(readline,

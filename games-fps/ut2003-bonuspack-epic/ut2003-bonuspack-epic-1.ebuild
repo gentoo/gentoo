@@ -2,17 +2,18 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+EAPI=5
 inherit games
 
-IUSE=""
 DESCRIPTION="Epic Bonus Pack for UT2003"
-HOMEPAGE="http://www.unrealtournament2003.com/"
-SRC_URI="UT2003-epicbonuspackone.exe"
+HOMEPAGE="http://www.moddb.com/games/unreal-tournament-2003"
+SRC_URI="http://ftp.student.utwente.nl/pub/games/UT2003/BonusPack/UT2003-epicbonuspackone.exe"
 
 LICENSE="ut2003"
 SLOT="1"
 KEYWORDS="x86"
-RESTRICT="fetch strip"
+IUSE=""
+RESTRICT="strip"
 
 DEPEND="app-arch/unzip"
 RDEPEND="games-fps/ut2003"
@@ -22,31 +23,23 @@ S=${WORKDIR}/UT2003-BonusPack
 dir=${GAMES_PREFIX_OPT}/ut2003
 Ddir=${D}/${dir}
 
-pkg_nofetch() {
-	einfo "Please download ${A} and put it into ${DISTDIR}"
-	einfo "http://files.filefront.com/ut2003+epicbonuspackoneexe/;826445;/fileinfo.html"
-}
-
 src_unpack() {
-	unzip -qq "${DISTDIR}"/${A} || die "unpacking"
+	unzip -qq "${DISTDIR}"/${A} || die
 	# This is done since the files are the same
-	rm -f "${S}"/Textures/LastManStanding.utx
+	rm -f "${S}"/Textures/LastManStanding.utx || die
 }
 
 src_install() {
 	insinto "${dir}"/Help
-	newins "${S}"/Help/BonusPackReadme.txt EpicBonusPack.README || die "README"
+	newins "${S}"/Help/BonusPackReadme.txt EpicBonusPack.README
 
 	exeinto "${dir}"
 	doexe "${FILESDIR}"/epic-installer
 	dodir "${dir}"/System
 
-	cp -r "${S}"/{Maps,Sounds,StaticMeshes,Textures} "${Ddir}" \
-		|| die "Copying Maps/Sounds/Textures"
-	cp "${S}"/System/{*.{det,est,frt,int,itt,kot,tmt,u},User.ini} \
-		"${Ddir}"/System || die "Copying System files"
-	cp -v "${S}"/System/Manifest.ini "${Ddir}"/System/Manifest.ini.epic \
-		|| die "Copying Manifest"
+	cp -r "${S}"/{Maps,Sounds,StaticMeshes,Textures} "${Ddir}" || die
+	cp "${S}"/System/{*.{det,est,frt,int,itt,kot,tmt,u},User.ini} "${Ddir}"/System || die
+	cp -v "${S}"/System/Manifest.ini "${Ddir}"/System/Manifest.ini.epic || die
 
 	prepgamesdirs
 }
@@ -65,11 +58,11 @@ pkg_postinst() {
 }
 
 pkg_config() {
-	cd ${dir}/System
-	cp Manifest.ini Manifest.ini.pre-epic
-	cp ${dir}/System/Manifest.ini.epic Manifest.ini
+	cd ${dir}/System || die
+	cp Manifest.ini Manifest.ini.pre-epic || die
+	cp ${dir}/System/Manifest.ini.epic Manifest.ini || die
 
-	cp Default.ini Default.ini.pre-epic
+	cp Default.ini Default.ini.pre-epic || die
 	cat >> Default.ini <<EOT
 
 [Xinterface.Tab_AudioSettings]
@@ -112,7 +105,7 @@ w
 q
 EOT
 
-	cp DefUser.ini DefUser.ini.pre-epic
-	sed -i 's/^F11=.*$/F11=MusicMenu/g' DefUser.ini
-	chown games:games ${dir}/System/*.ini
+	cp DefUser.ini DefUser.ini.pre-epic || die
+	sed -i 's/^F11=.*$/F11=MusicMenu/g' DefUser.ini || die
+	chown games:games ${dir}/System/*.ini || die
 }

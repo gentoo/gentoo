@@ -1,0 +1,11 @@
+--- a/wr/write-ps.c
++++ b/wr/write-ps.c
+@@ -458,7 +458,7 @@
+ 	    fprintf(fp,"\n");
+ 	}
+     }
+-    fprintf(fp,footer);
++    fprintf(fp, "%s", footer);
+     return 0;
+ }
+ 

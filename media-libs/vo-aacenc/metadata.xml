@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>sound</herd>
+	<maintainer type="project">
+		<email>sound@gentoo.org</email>
+		<name>Gentoo Sound project</name>
+	</maintainer>
 	<longdescription lang="en">VisualOn AAC encoder library This library contains an encoder implementation
 of the Advanced Audio Coding (AAC) audio codec. The library is based on
 a codec implementation by VisualOn, part of the Stagefright framework from

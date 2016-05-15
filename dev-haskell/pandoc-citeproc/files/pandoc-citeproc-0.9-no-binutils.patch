@@ -1,0 +1,26 @@
+Fails to build with -f-bibutils:
+https://bugs.gentoo.org/516640
+diff --git a/pandoc-citeproc.hs b/pandoc-citeproc.hs
+index 7006e02..f72fa41 100644
+--- a/pandoc-citeproc.hs
++++ b/pandoc-citeproc.hs
+@@ -1 +1,2 @@
++{-# LANGUAGE CPP #-}
+ module Main where
+@@ -75,2 +76,3 @@ readFormat = go . map toLower
+         go "bibtex"   = Just Bibtex
++#ifdef USE_BIBUTILS
+         go "ris"      = Just Ris
+@@ -87,2 +89,3 @@ readFormat = go . map toLower
+         go "yaml"     = Just Yaml
++#endif
+         go _          = Nothing
+diff --git a/src/Text/CSL/Input/Bibutils.hs b/src/Text/CSL/Input/Bibutils.hs
+index 081fa91..49ddbd0 100644
+--- a/src/Text/CSL/Input/Bibutils.hs
++++ b/src/Text/CSL/Input/Bibutils.hs
+@@ -64,3 +64,3 @@ readBiblioFile f
+ #else
+-        _           -> error $ "citeproc: Bibliography format not supported.\n" ++
++        _           -> error $ "citeproc: Bibliography format not supported.\n"
+ #endif

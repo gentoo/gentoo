@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>gnustep</herd>
+<maintainer type="project">
+	<email>gnustep@gentoo.org</email>
+	<name>Gentoo GNUstep Project</name>
+</maintainer>
 <longdescription>
 The makefile package is a simple, powerful and extensible way to write
 makefiles for a GNUstep-based project.  It allows the user to write a
@@ -10,7 +13,7 @@ configuration, building, installation, and packaging.  It also allows
 the user to easily create cross-compiled binaries.
 </longdescription>
 <use>
-	<flag name='libobjc2'>Enables use of the GNUstep Objective-C runtime (<pkg>gnustep-base/libobjc2</pkg>) with non-fragile ABI and <pkg>sys-devel/clang</pkg> compiler</flag>
-	<flag name='native-exceptions'>Enables use of the native Objective-C exception support (@try/@catch/@finally) built-in objective-c exceptions with compilers that support it </flag>
+	<flag name="libobjc2">Enables use of the GNUstep Objective-C runtime (<pkg>gnustep-base/libobjc2</pkg>) with non-fragile ABI and <pkg>sys-devel/clang</pkg> compiler</flag>
+	<flag name="native-exceptions">Enables use of the native Objective-C exception support (@try/@catch/@finally) built-in objective-c exceptions with compilers that support it </flag>
 </use>
 </pkgmetadata>

@@ -18,7 +18,7 @@ SRC_URI="https://github.com/simsong/${MY_PN}/archive/v${PV}.tar.gz -> ${P}.tar.g
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~arm hppa ppc x86"
+KEYWORDS="amd64 ~arm hppa ppc x86 ~x64-macos"
 IUSE="fuse ncurses python qemu readline s3 static-libs threads"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 

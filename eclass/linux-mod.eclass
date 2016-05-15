@@ -1,10 +1,10 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 # @ECLASS: linux-mod.eclass
 # @MAINTAINER:
-# kernel-misc@gentoo.org
+# kernel@gentoo.org
 # @AUTHOR:
 # John Mylchreest <johnm@gentoo.org>,
 # Stefan Schweizer <genstef@gentoo.org>

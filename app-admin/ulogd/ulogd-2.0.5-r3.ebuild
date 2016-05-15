@@ -17,7 +17,7 @@ SRC_URI="
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ia64 ~ppc ~x86"
+KEYWORDS="amd64 ~ia64 ppc x86"
 IUSE="dbi doc json mysql nfacct +nfct +nflog pcap postgres sqlite -ulog"
 
 RDEPEND="
@@ -137,8 +137,8 @@ src_install() {
 	fowners root:ulogd /etc/${PN}.conf
 	fperms 640 /etc/${PN}.conf
 
-	newinitd "${FILESDIR}/${PN}.init-r2" ${PN}
-	systemd_newunit "${FILESDIR}/${PN}.service-r1" ${PN}.service
+	newinitd "${FILESDIR}/${PN}.init" ${PN}
+	systemd_dounit "${FILESDIR}/${PN}.service"
 
 	insinto /etc/logrotate.d
 	newins "${FILESDIR}/${PN}.logrotate" ${PN}

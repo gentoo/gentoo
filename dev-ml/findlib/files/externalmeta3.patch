@@ -1,0 +1,16 @@
+Avoid installing META files for labltk, camlp4 and ocamlbuild: Those are provided by their
+respective packages now.
+
+Index: findlib-1.6.2/configure
+===================================================================
+--- findlib-1.6.2.orig/configure
++++ findlib-1.6.2/configure
+@@ -521,7 +521,7 @@ fi
+ 
+ # Generate the META files now.
+ 
+-l="$ldbm dynlink graphics num num-top str threads unix stdlib bigarray ocamldoc $llabltk $lcamlp4 $lobuild $lcomplibs $lbytes"
++l="$ldbm dynlink graphics num num-top str threads unix stdlib bigarray ocamldoc $lcomplibs $lbytes"
+ 
+ for dir in site-lib-src/*; do
+     # We do not really know if $dir is a directory.

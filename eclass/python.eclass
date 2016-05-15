@@ -796,10 +796,6 @@ _python_calculate_PYTHON_ABIS() {
 			python_version="$("${EPREFIX}/usr/bin/python" -c 'from sys import version_info; print(".".join(str(x) for x in version_info[:2]))')"
 
 			if has_version "=dev-lang/python-2*"; then
-				if [[ "$(readlink "${EPREFIX}/usr/bin/python2")" != "python2."* ]]; then
-					die "'${EPREFIX}/usr/bin/python2' is not a valid symlink"
-				fi
-
 				python2_version="$("${EPREFIX}/usr/bin/python2" -c 'from sys import version_info; print(".".join(str(x) for x in version_info[:2]))')"
 
 				support_python_major_version="0"
@@ -819,10 +815,6 @@ _python_calculate_PYTHON_ABIS() {
 			fi
 
 			if has_version "=dev-lang/python-3*"; then
-				if [[ "$(readlink "${EPREFIX}/usr/bin/python3")" != "python3."* ]]; then
-					die "'${EPREFIX}/usr/bin/python3' is not a valid symlink"
-				fi
-
 				python3_version="$("${EPREFIX}/usr/bin/python3" -c 'from sys import version_info; print(".".join(str(x) for x in version_info[:2]))')"
 
 				support_python_major_version="0"

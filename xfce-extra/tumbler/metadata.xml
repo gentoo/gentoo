@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer>
+  <maintainer type="project">
     <email>xfce@gentoo.org</email>
     <name>XFCE Team</name>
   </maintainer>
   <use>
-    <flag name='odf'>Enable support for .odf thumbnailers by using <pkg>gnome-extra/libgsf</pkg></flag>
+    <flag name="odf">Enable support for .odf thumbnailers by using <pkg>gnome-extra/libgsf</pkg></flag>
   </use>
 </pkgmetadata>

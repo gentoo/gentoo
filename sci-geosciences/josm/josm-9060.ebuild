@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -6,7 +6,7 @@ EAPI=5
 
 JAVA_ANT_ENCODING=UTF-8
 
-[[ ${PV} == "9999" ]] && SUBVERSION_ECLASS="subversion"
+[[ ${PV} == "99999" ]] && SUBVERSION_ECLASS="subversion"
 ESVN_REPO_URI="http://josm.openstreetmap.de/svn/trunk"
 inherit eutils java-pkg-2 java-ant-2 ${SUBVERSION_ECLASS}
 unset SUBVERSION_ECLASS
@@ -19,13 +19,13 @@ HOMEPAGE="http://josm.openstreetmap.de/"
 # svn co -r ${REVISION} http://josm.openstreetmap.de/svn/trunk/ josm-${REVISION}
 # cd josm-${REVISION} && ant init-svn-revision-xml && cd -
 # tar -cz  --exclude=.svn -f /usr/portage/distfiles/josm-${REVISION}.tar.gz josm-${REVISION}
-[[ ${PV} == "9999" ]] || SRC_URI="mirror://gentoo/${P}.tar.gz"
+[[ ${PV} == "99999" ]] || SRC_URI="mirror://gentoo/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
 
 # Don't move KEYWORDS on the previous line or ekeyword won't work # 399061
-[[ ${PV} == "9999" ]] || \
+[[ ${PV} == "99999" ]] || \
 KEYWORDS="~amd64 ~x86"
 
 DEPEND=">=virtual/jdk-1.7"
@@ -35,7 +35,7 @@ IUSE=""
 
 src_prepare() {
 
-	if [[ ${PV} == "9999" ]]; then
+	if [[ ${PV} == "99999" ]]; then
 
 		# create-revision needs the compile directory to be a svn directory
 		# see also http://lists.openstreetmap.org/pipermail/dev/2009-March/014182.html

@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -11,7 +11,7 @@ HOMEPAGE="https://www.gentoo.org/"
 SRC_URI=""
 
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86 ~x86-linux"
+KEYWORDS="~amd64 ~arm ~ppc64 ~x86 ~x86-linux"
 SLOT="0"
 IUSE="awt"
 

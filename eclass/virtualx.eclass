@@ -154,7 +154,7 @@ virtx() {
 	local retval=0
 	local OLD_SANDBOX_ON="${SANDBOX_ON}"
 	local XVFB XHOST XDISPLAY
-	local xvfbargs="-screen 0 1280x1024x24"
+	local xvfbargs="-screen 0 1280x1024x24 +extension RANDR"
 	XVFB=$(type -p Xvfb) || die
 	XHOST=$(type -p xhost) || die
 
@@ -205,7 +205,7 @@ virtx() {
 	export DISPLAY=:${XDISPLAY}
 	# Do not break on error, but setup $retval, as we need
 	# to kill Xvfb
-	debug-print "${FUNCNAME}: ${VIRTUALX_COMMAND} \"$@\""
+	debug-print "${FUNCNAME}: $@"
 	if has "${EAPI}" 2 3; then
 		"$@"
 		retval=$?
@@ -218,7 +218,7 @@ virtx() {
 	kill $(cat /tmp/.X${XDISPLAY}-lock)
 
 	# die if our command failed
-	[[ ${retval} -ne 0 ]] && die "${FUNCNAME}: the ${VIRTUALX_COMMAND} failed."
+	[[ ${retval} -ne 0 ]] && die "Failed to run '$@'"
 
 	return 0 # always return 0, it can be altered by failed kill for Xvfb
 }

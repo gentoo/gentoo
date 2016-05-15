@@ -1,0 +1,65 @@
+From b6552e3b0b006fa28014150d199813de12d89ef4 Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <michael@orlitzky.com>
+Date: Mon, 25 Apr 2016 20:06:18 -0400
+Subject: [PATCH 1/1] Use $(INSTALL) to install themes.
+
+Most of the images installed under the htdocs folder are installed
+mode 644 with owner:group nagios:nagios. This is due to the use of
+$(INSTALL) in html/Makefile. However, the theme images and stylesheets
+are currently installed with a simple "cp -r", which leads to
+inconsistencies like the following:
+
+  $ cd /usr/share/nagios/htdocs/images
+  $ ls action*.gif
+  -rw-rw-r-- 1 nagios nagios 1.3K 2014-11-12 08:22 action.gif
+  -rw-r--r-- 1 root   root   1.3K 2014-11-12 08:22 action-graph.gif
+  -rw-r--r-- 1 root   root    171 2014-11-12 08:22 action-nagios.gif
+  -rw-r--r-- 1 root   root    162 2014-11-12 08:22 action-orig.gif
+
+By using $(INSTALL) in the install-exfoliation and install-classicui
+targets, we enforce some consistency.
+---
+ Makefile.in | 20 ++++++++++++++++----
+ 1 file changed, 16 insertions(+), 4 deletions(-)
+
+diff --git a/Makefile.in b/Makefile.in
+index 5b97513..0ec50b7 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -300,8 +300,14 @@ install-webconf:
+ 	@echo ""
+ 
+ install-exfoliation:
+-	cp -rf contrib/exfoliation/stylesheets/* $(DESTDIR)$(HTMLDIR)/stylesheets
+-	cp -rf contrib/exfoliation/images/* $(DESTDIR)$(HTMLDIR)/images
++	for file in contrib/exfoliation/stylesheets/*.*; \
++	do $(INSTALL) -m 664 $(INSTALL_OPTS) $$file $(DESTDIR)$(HTMLDIR)/stylesheets; done
++
++	for file in contrib/exfoliation/images/*.*; \
++	do $(INSTALL) -m 664 $(INSTALL_OPTS) $$file $(DESTDIR)$(HTMLDIR)/images; done
++
++	for file in contrib/exfoliation/images/logos/*.*; \
++	do $(INSTALL) -m 664 $(INSTALL_OPTS) $$file $(DESTDIR)$(HTMLDIR)/images/logos; done
+ 
+ 	@echo ""
+ 	@echo "*** Exfoliation theme installed ***"
+@@ -309,8 +315,14 @@ install-exfoliation:
+ 	@echo ""
+ 
+ install-classicui:
+-	cp -rf html/stylesheets/* $(DESTDIR)$(HTMLDIR)/stylesheets
+-	cp -rf html/images/* $(DESTDIR)$(HTMLDIR)/images
++	for file in html/stylesheets/*.*; \
++	do $(INSTALL) -m 664 $(INSTALL_OPTS) $$file $(DESTDIR)$(HTMLDIR)/stylesheets; done
++
++	for file in html/images/*.*; \
++	do $(INSTALL) -m 664 $(INSTALL_OPTS) $$file $(DESTDIR)$(HTMLDIR)/images; done
++
++	for file in html/images/logos/*.*; \
++	do $(INSTALL) -m 664 $(INSTALL_OPTS) $$file $(DESTDIR)$(HTMLDIR)/images/logos; done
+ 
+ 	@echo ""
+ 	@echo "*** Classic theme installed ***"
+-- 
+2.7.3
+

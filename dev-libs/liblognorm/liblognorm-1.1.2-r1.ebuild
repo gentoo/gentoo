@@ -15,7 +15,7 @@ SRC_URI="http://www.liblognorm.com/files/download/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0/2"
-KEYWORDS="~amd64 ~arm hppa ~x86 ~amd64-linux"
+KEYWORDS="amd64 ~arm hppa x86 ~amd64-linux"
 IUSE="debug doc static-libs test"
 
 RDEPEND="

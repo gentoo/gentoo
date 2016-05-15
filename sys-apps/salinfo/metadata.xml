@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>ia64</herd>
+<maintainer type="project">
+	<email>ia64@gentoo.org</email>
+	<name>Gentoo Linux IA-64 Development</name>
+</maintainer>
 </pkgmetadata>

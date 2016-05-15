@@ -11,7 +11,7 @@ SRC_URI="https://launchpad.net/stratagus/trunk/2.3/+download/stratagus_${PV}.ori
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="bzip2 debug doc fluidsynth mikmod mng theora vorbis"
 
 RDEPEND="dev-db/sqlite:3

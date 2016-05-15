@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>grobian@gentoo.org</email>
+		<name>Fabian Groffen</name>
+	</maintainer>
+	<longdescription lang="en">
+		gqlplus is a front-end for Oracle program sqlplus with
+		command-line editing, history, table-name and column-name
+		completion. Otherwise the user interface is identical to that of
+		sqlplus. Command-line editing works as in bash/tcsh shells.
+	</longdescription>
+</pkgmetadata>

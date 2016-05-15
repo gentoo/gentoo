@@ -1,46 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>tex</herd>
+<maintainer type="project">
+  <email>tex@gentoo.org</email>
+  <name>Gentoo TeX Project</name>
+</maintainer>
 <use>
-  <flag name='context'>Add support for the ConTeXt format
+  <flag name="context">Add support for the ConTeXt format
     (<pkg>dev-texlive/texlive-context</pkg>)</flag>
-  <flag name='detex'>Add support for <pkg>dev-tex/detex</pkg>, a filter program
+  <flag name="detex">Add support for <pkg>dev-tex/detex</pkg>, a filter program
 	  that removes the LaTeX (or TeX) control sequences</flag>
-  <flag name='dvi2tty'>Add support for <pkg>dev-tex/dvi2tty</pkg> to preview
+  <flag name="dvi2tty">Add support for <pkg>dev-tex/dvi2tty</pkg> to preview
 	  dvi-files on text-only devices</flag>
-  <flag name='dvipdfm'>Add support for <pkg>app-text/dvipdfm</pkg> to convert
+  <flag name="dvipdfm">Add support for <pkg>app-text/dvipdfm</pkg> to convert
 	  DVI files to PDF</flag>
-  <flag name='epspdf'>Add support for <pkg>app-text/epspdf</pkg>, a tool for converting [e]ps files to pdf.</flag>
-  <flag name='extra'>Add support for extra TeXLive packages</flag>
-  <flag name='games'>Add typesetting support for games (chess, etc.)
+  <flag name="epspdf">Add support for <pkg>app-text/epspdf</pkg>, a tool for converting [e]ps files to pdf.</flag>
+  <flag name="extra">Add support for extra TeXLive packages</flag>
+  <flag name="games">Add typesetting support for games (chess, etc.)
     (<pkg>dev-texlive/texlive-games</pkg>)</flag>
-  <flag name='graphics'>Add support for several graphics packages
+  <flag name="graphics">Add support for several graphics packages
     (pgf, tikz,...)</flag>
-  <flag name='humanities'>Add LaTeX support for the humanities
+  <flag name="humanities">Add LaTeX support for the humanities
     (<pkg>dev-texlive/texlive-humanities</pkg>)</flag>
-  <flag name='jadetex'>Add support for <pkg>app-text/jadetex</pkg>
+  <flag name="jadetex">Add support for <pkg>app-text/jadetex</pkg>
     (for processing tex files produced by the TeX backend of Jade)</flag>
-  <flag name='luatex'>Add extra support for luatex</flag>
-  <flag name='metapost'>Add support for metapost: A tool for creating graphics in scalable PostScript.</flag>
-  <flag name='music'>Add support for music typesetting
+  <flag name="luatex">Add extra support for luatex</flag>
+  <flag name="metapost">Add support for metapost: A tool for creating graphics in scalable PostScript.</flag>
+  <flag name="music">Add support for music typesetting
     (<pkg>dev-texlive/texlive-music</pkg>)</flag>
-  <flag name='omega'>Add omega packages
+  <flag name="omega">Add omega packages
     (<pkg>dev-texlive/texlive-omega</pkg>)</flag>
-  <flag name='pdfannotextractor'>Add <pkg>dev-tex/pdfannotextractor</pkg> support, for extracting annotations from PDF files.</flag>
-  <flag name='pstricks'>Add pstricks packages
+  <flag name="pdfannotextractor">Add <pkg>dev-tex/pdfannotextractor</pkg> support, for extracting annotations from PDF files.</flag>
+  <flag name="pstricks">Add pstricks packages
     (<pkg>dev-texlive/texlive-pstricks</pkg>)</flag>
-  <flag name='publishers'>Add support for publishers
+  <flag name="publishers">Add support for publishers
     (<pkg>dev-texlive/texlive-publishers</pkg>)</flag>
-  <flag name='science'>Add typesetting support for natural and computer
+  <flag name="science">Add typesetting support for natural and computer
     sciences (<pkg>dev-texlive/texlive-science</pkg>)</flag>
-  <flag name='tex4ht'>Add support for <pkg>dev-tex/tex4ht</pkg>
+  <flag name="tex4ht">Add support for <pkg>dev-tex/tex4ht</pkg>
     (for converting (La)TeX to (X)HTML, XML and OO.org)</flag>
-  <flag name='texi2html'>Add support for <pkg>app-text/texi2html</pkg>
+  <flag name="texi2html">Add support for <pkg>app-text/texi2html</pkg>
 	  which converts texi files to HTML.</flag>
-  <flag name='xetex'>Add support for XeTeX macros
+  <flag name="xetex">Add support for XeTeX macros
     (<pkg>dev-texlive/texlive-xetex</pkg>)</flag>
-  <flag name='xindy'>Add support for <pkg>app-text/xindy</pkg>, a flexible
+  <flag name="xindy">Add support for <pkg>app-text/xindy</pkg>, a flexible
 	  indexing system</flag>
 </use>
 </pkgmetadata>

@@ -1,0 +1,13 @@
+--- vsock-only/linux/af_vsock.c.orig	2015-09-28 01:26:51.354061029 +0300
++++ vsock-only/linux/af_vsock.c	2015-09-28 01:25:11.196058649 +0300
+@@ -2826,7 +2826,9 @@
+     * network namespace, and the option to zero the sock was dropped.
+     *
+     */
+-#if LINUX_VERSION_CODE < KERNEL_VERSION(2, 6, 12)
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 2, 0)
++     sk = sk_alloc(net, vsockVmciFamilyOps.family, priority, &vsockVmciProto, 1);
++#elif LINUX_VERSION_CODE < KERNEL_VERSION(2, 6, 12)
+    sk = sk_alloc(vsockVmciFamilyOps.family, priority,
+                  vsockVmciProto.slab_obj_size, vsockVmciProto.slab);
+ #elif LINUX_VERSION_CODE < KERNEL_VERSION(2, 6, 24)

@@ -12,7 +12,7 @@ SRC_URI="mirror://gnu/${PN}/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~x64-freebsd ~x86-freebsd ~hppa-hpux ~ia64-hpux ~x86-interix ~amd64-linux ~arm-linux ~ia64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="alpha amd64 arm ~arm64 hppa ~ia64 ~m68k ~mips ~ppc ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~x64-freebsd ~x86-freebsd ~hppa-hpux ~ia64-hpux ~x86-interix ~amd64-linux ~arm-linux ~ia64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="examples nls static test"
 
 RDEPEND=">=sys-devel/m4-1.4.16"
@@ -26,13 +26,18 @@ DOCS=( AUTHORS ChangeLog-2012 NEWS README THANKS TODO ) # ChangeLog-1998 PACKAGI
 
 src_prepare() {
 	epatch "${FILESDIR}"/${P}-optional-perl.patch #538300
-	touch doc/bison.1 #548778
+	# The makefiles make the man page depend on the configure script
+	# which we patched above.  Touch it to prevent regeneration.
+	touch doc/bison.1 #548778 #538300#9
+	# Avoid regenerating the info page when the timezone is diff. #574492
+	sed -i '2iexport TZ=UTC' build-aux/mdate-sh || die
 }
 
 src_configure() {
 	use static && append-ldflags -static
 
-ac_cv_path_PERL=true \
+	# We don't need perl unless we run tests.
+	use test || export ac_cv_path_PERL=true
 	econf \
 		--docdir='$(datarootdir)'/doc/${PF} \
 		$(use_enable examples) \

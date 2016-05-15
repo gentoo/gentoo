@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -147,6 +147,7 @@ RDEPEND="
 	<=dev-python/python-keystoneclient-2.0.0[${PYTHON_USEDEP}]
 	>=dev-python/python-swiftclient-2.2.0[${PYTHON_USEDEP}]
 	<=dev-python/python-swiftclient-2.7.0[${PYTHON_USEDEP}]
+	>=dev-python/pytz-2013.6[${PYTHON_USEDEP}]
 	>=dev-python/requests-2.5.2[${PYTHON_USEDEP}]
 	!~dev-python/requests-2.8.0[${PYTHON_USEDEP}]
 	<=dev-python/requests-2.8.1[${PYTHON_USEDEP}]

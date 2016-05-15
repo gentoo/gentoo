@@ -1,9 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
-USE_RUBY="ruby19 ruby20 ruby21 ruby22"
+USE_RUBY="ruby20 ruby21 ruby22 ruby23"
 
 RUBY_FAKEGEM_TASK_TEST="test:units"
 
@@ -15,7 +15,7 @@ RUBY_FAKEGEM_EXTRAINSTALL="init.rb"
 
 inherit ruby-fakegem
 
-DESCRIPTION="A Ruby library for mocking and stubbing using a syntax like that of JMock, and SchMock"
+DESCRIPTION="Mocking and stubbing using a syntax like that of JMock and SchMock"
 HOMEPAGE="http://gofreerange.com/mocha/docs/"
 
 LICENSE="MIT"
@@ -25,7 +25,7 @@ IUSE=""
 
 ruby_add_bdepend "
 	doc? ( dev-ruby/yard )
-	test? ( >=dev-ruby/test-unit-2.5.1-r1 dev-ruby/introspection )"
+	test? ( dev-ruby/yard >=dev-ruby/test-unit-2.5.1-r1 dev-ruby/introspection )"
 
 ruby_add_rdepend "dev-ruby/metaclass" #metaclass ~> 0.0.1
 

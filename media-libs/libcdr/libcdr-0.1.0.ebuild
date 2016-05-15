@@ -1,12 +1,12 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 
 EGIT_REPO_URI="git://anongit.freedesktop.org/git/libreoffice/libcdr/"
-inherit base eutils
-[[ ${PV} == 9999 ]] && inherit autotools git-2
+inherit autotools eutils
+[[ ${PV} == 9999 ]] && inherit git-r3
 
 DESCRIPTION="Library parsing the Corel cdr documents"
 HOMEPAGE="https://wiki.documentfoundation.org/DLP/Libraries/libcdr"
@@ -32,9 +32,10 @@ DEPEND="${RDEPEND}
 "
 
 src_prepare() {
-	base_src_prepare
+	epatch "${FILESDIR}/${PN}-0.1.1-boost-1.59.patch"
+	epatch_user
 	[[ -d m4 ]] || mkdir "m4"
-	[[ ${PV} == 9999 ]] && eautoreconf
+	eautoreconf
 }
 
 src_configure() {

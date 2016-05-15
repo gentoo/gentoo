@@ -31,7 +31,7 @@ else
 		http://www.rsyslog.com/files/download/${PN}/${P}.tar.gz
 		doc? ( http://www.rsyslog.com/files/download/${PN}/${PN}-doc-${PV}.tar.gz )
 	"
-	KEYWORDS="~amd64 ~arm hppa ~x86"
+	KEYWORDS="amd64 ~arm hppa x86"
 
 	PATCHES+=( "${FILESDIR}"/${BRANCH}/50-${PN}-8.12.0-fix-re_extract.patch )
 	PATCHES+=( "${FILESDIR}"/${BRANCH}/50-${PN}-8.13.0-lookup-table-reload-bugfix.patch )
@@ -65,8 +65,8 @@ RDEPEND="
 	relp? ( >=dev-libs/librelp-1.2.5 )
 	rfc3195? ( >=dev-libs/liblogging-1.0.1:=[rfc3195] )
 	rfc5424hmac? (
-		!libressl? ( >=dev-libs/openssl-0.9.8y:0= )
-		libressl? ( dev-libs/libressl:= )
+		!libressl? ( dev-libs/openssl:0= )
+		libressl? ( dev-libs/libressl:0= )
 	)
 	snmp? ( >=net-analyzer/net-snmp-5.7.2 )
 	ssl? ( >=net-libs/gnutls-2.12.23 )

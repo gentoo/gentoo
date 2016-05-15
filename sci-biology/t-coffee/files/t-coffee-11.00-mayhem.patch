@@ -1,0 +1,25 @@
+Author: Andreas Tille <tille@debian.org>
+Last-Update: Mon, 21 Dec 2015 21:30:36 +0100
+Bug-Debian: https://bugs.debian.org/716373
+Description: Fix Mayhem issue
+ The idea behind this patch is that if there is a problem to set the HOME
+ directories no additional processes can exist and so we should *really*
+ exit.  Somehow the printf_exit() function does some logic which ends up
+ in an endless loop and thus forcing the exit will help here.
+ .
+ Unfortunately this does not solve the issue completely since inside the
+ Exit call a "Segmentation fault" happens - so some broken pointer handling
+ seems to happen somewhere before.
+
+--- a/t_coffee_source/util_lib/util.c
++++ b/t_coffee_source/util_lib/util.c
+@@ -4642,7 +4642,8 @@ char *get_home_4_tcoffee ()
+     }
+   else
+     {
+-      printf_exit (EXIT_FAILURE, stderr, "ERROR: Could not set a HOME directory.\nSet any of the following environement variables to some suitable location: HOME, HOME_4_TCOFFEE, TMP or TEMP [FATAL:%s]\n", PROGRAM);
++      fprintf(stderr, "ERROR: Could not set a HOME directory.\nSet any of the following environement variables to some suitable location: HOME, HOME_4_TCOFFEE, TMP or TEMP [FATAL:%s]\n", PROGRAM);
++      exit(EXIT_FAILURE);
+     }
+ 
+ 

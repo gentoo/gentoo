@@ -445,6 +445,34 @@ multilib_src_install() {
 		fi
 	fi
 
+	# apply CHOST and PV to clang executables
+	# they're statically linked so we don't have to worry about the lib
+	if use clang; then
+		local clang_tools=( clang clang++ )
+		local i
+
+		# append ${PV} and symlink back
+		# TODO: use alternatives.eclass? does that make any sense?
+		# maybe with USE=-clang on :0 and USE=clang on older
+		for i in "${clang_tools[@]}"; do
+			mv "${ED%/}/usr/bin/${i}"{,-${PV}} || die
+			dosym "${i}"-${PV} /usr/bin/${i}
+		done
+
+		# now prepend ${CHOST} and let the multilib-build.eclass symlink it
+		if ! multilib_is_native_abi; then
+			# non-native? let's replace it with a simple wrapper
+			for i in "${clang_tools[@]}"; do
+				rm "${ED%/}/usr/bin/${i}-${PV}" || die
+				cat > "${T}"/wrapper.tmp <<-_EOF_
+					#!${EPREFIX}/bin/sh
+					exec "${i}-${PV}" $(get_abi_CFLAGS) "\${@}"
+				_EOF_
+				newbin "${T}"/wrapper.tmp "${i}-${PV}"
+			done
+		fi
+	fi
+
 	# Fix install_names on Darwin.  The build system is too complicated
 	# to just fix this, so we correct it post-install
 	local lib= f= odylib= ndylib= libpv=${PV}

@@ -1,0 +1,67 @@
+diff -rupN vmblock-only/linux/inode.c vmblock-only.new/linux/inode.c
+--- vmblock-only/linux/inode.c	2016-03-16 22:22:00.470080630 -0400
++++ vmblock-only.new/linux/inode.c	2016-03-16 22:23:33.016081859 -0400
+@@ -44,7 +44,9 @@ static struct dentry *InodeOpLookup(stru
+ static int InodeOpReadlink(struct dentry *, char __user *, int);
+ #endif
+ 
+-#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 2, 0)
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 5, 0)
++const char *InodeOpGetLink(struct dentry *dentry, struct inode *inode, struct delayed_call *done);
++#elif LINUX_VERSION_CODE >= KERNEL_VERSION(4, 2, 0)
+ static const char *InodeOpFollowlink(struct dentry *dentry, void **cookie);
+ #elif LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 13)
+ static void *InodeOpFollowlink(struct dentry *dentry, struct nameidata *nd);
+@@ -63,7 +65,11 @@ static struct inode_operations LinkInode
+ struct inode_operations LinkInodeOps = {
+ #endif
+    .readlink    = InodeOpReadlink,
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 5, 0)
++   .get_link = InodeOpGetLink,
++#else
+    .follow_link = InodeOpFollowlink,
++#endif
+ };
+ 
+ /*
+@@ -222,7 +228,9 @@ InodeOpReadlink(struct dentry *dentry,
+  *
+  *----------------------------------------------------------------------------
+  */
+-#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 2, 0)
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 5, 0)
++const char *InodeOpGetLink(struct dentry *dentry, struct inode *inode, struct delayed_call *done)
++#elif LINUX_VERSION_CODE >= KERNEL_VERSION(4, 2, 0)
+ static const char *InodeOpFollowlink(struct dentry *dentry, void **cookie)
+ #else
+ #if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 13)
+@@ -238,18 +246,28 @@ InodeOpFollowlink(struct dentry *dentry,
+    VMBlockInodeInfo *iinfo;
+ 
+    if (!dentry) {
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 5, 0)
++      ret = -ECHILD;
++#else
+       Warning("InodeOpReadlink: invalid args from kernel\n");
+       ret = -EINVAL;
++#endif
+       goto out;
+    }
+ 
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 5, 0)
++   iinfo = INODE_TO_IINFO(inode);
++#else
+    iinfo = INODE_TO_IINFO(dentry->d_inode);
++#endif
+    if (!iinfo) {
+       ret = -EINVAL;
+       goto out;
+    }
+ 
+-#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 2, 0)
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 5, 0)
++   return (char *)(iinfo->name);  
++#elif LINUX_VERSION_CODE >= KERNEL_VERSION(4, 2, 0)
+    return *cookie = (char *)(iinfo->name);  
+ #else
+    nd_set_link(nd, iinfo->name);

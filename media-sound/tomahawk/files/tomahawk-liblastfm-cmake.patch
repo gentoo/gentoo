@@ -1,0 +1,126 @@
+diff --git a/CMakeModules/FindLibLastFm.cmake b/CMakeModules/FindLibLastFm.cmake
+index a348835..545e39f 100644
+--- a/CMakeModules/FindLibLastFm.cmake
++++ b/CMakeModules/FindLibLastFm.cmake
+@@ -14,7 +14,7 @@ endif()
+ # Include dir
+ find_path(LIBLASTFM_INCLUDE_DIR
+   # Track.h doesn't exist in liblastfm-0.3.1, was called Track back then
+-  NAMES lastfm${LASTFM_LIB_SUFFIX}/Track.h
++  NAMES lastfm/Track.h
+   PATHS ${KDE4_INCLUDE_DIR}
+ )
+ 
+diff --git a/src/libtomahawk/accounts/lastfm/LastFmConfig.cpp b/src/libtomahawk/accounts/lastfm/LastFmConfig.cpp
+index 85b747b..098e460 100644
+--- a/src/libtomahawk/accounts/lastfm/LastFmConfig.cpp
++++ b/src/libtomahawk/accounts/lastfm/LastFmConfig.cpp
+@@ -29,17 +29,10 @@
+ #include "utils/Closure.h"
+ #include "utils/NetworkAccessManager.h"
+ 
+-#if QT_VERSION >= QT_VERSION_CHECK(5,0,0)
+-#include <lastfm5/ws.h>
+-#include <lastfm5/User.h>
+-#include <lastfm5/XmlQuery.h>
+-#include <lastfm5/Track.h>
+-#else
+ #include <lastfm/ws.h>
+ #include <lastfm/User.h>
+ #include <lastfm/XmlQuery.h>
+ #include <lastfm/Track.h>
+-#endif
+ 
+ using namespace Tomahawk::Accounts;
+ 
+diff --git a/src/libtomahawk/accounts/lastfm/LastFmInfoPlugin.cpp b/src/libtomahawk/accounts/lastfm/LastFmInfoPlugin.cpp
+index 277a62e..cea29a1 100644
+--- a/src/libtomahawk/accounts/lastfm/LastFmInfoPlugin.cpp
++++ b/src/libtomahawk/accounts/lastfm/LastFmInfoPlugin.cpp
+@@ -34,13 +34,8 @@
+ #include "TomahawkSettings.h"
+ #include "utils/NetworkAccessManager.h"
+ 
+-#if QT_VERSION >= QT_VERSION_CHECK(5,0,0)
+-#include <lastfm5/ws.h>
+-#include <lastfm5/XmlQuery.h>
+-#else
+ #include <lastfm/ws.h>
+ #include <lastfm/XmlQuery.h>
+-#endif
+ 
+ using namespace Tomahawk::Accounts;
+ using namespace Tomahawk::InfoSystem;
+diff --git a/src/libtomahawk/accounts/lastfm/LastFmInfoPlugin.h b/src/libtomahawk/accounts/lastfm/LastFmInfoPlugin.h
+index 0eb3b07..6e202b2 100644
+--- a/src/libtomahawk/accounts/lastfm/LastFmInfoPlugin.h
++++ b/src/libtomahawk/accounts/lastfm/LastFmInfoPlugin.h
+@@ -24,15 +24,9 @@
+ #include "infosystem/InfoSystemWorker.h"
+ #include "DllMacro.h"
+ 
+-#if QT_VERSION >= QT_VERSION_CHECK(5,0,0)
+-#include <lastfm5/Track.h>
+-#include <lastfm5/Audioscrobbler.h>
+-#include <lastfm5/ScrobblePoint.h>
+-#else
+ #include <lastfm/Track.h>
+ #include <lastfm/Audioscrobbler.h>
+ #include <lastfm/ScrobblePoint.h>
+-#endif
+ 
+ #include <QObject>
+ 
+diff --git a/src/libtomahawk/utils/TomahawkUtils.cpp b/src/libtomahawk/utils/TomahawkUtils.cpp
+index 0baa27c..cf808d9 100644
+--- a/src/libtomahawk/utils/TomahawkUtils.cpp
++++ b/src/libtomahawk/utils/TomahawkUtils.cpp
+@@ -32,11 +32,7 @@
+ #include "Track.h"
+ 
+ #ifdef LIBLASTFM_FOUND
+-    #if QT_VERSION >= QT_VERSION_CHECK(5,0,0)
+-    #include <lastfm5/ws.h>
+-    #else
+     #include <lastfm/ws.h>
+-    #endif
+ #endif
+ 
+ #if QT_VERSION >= QT_VERSION_CHECK(5,0,0)
+diff --git a/src/tomahawk/Scrobbler.h b/src/tomahawk/Scrobbler.h
+index 01c2695..fab0ca6 100644
+--- a/src/tomahawk/Scrobbler.h
++++ b/src/tomahawk/Scrobbler.h
+@@ -20,15 +20,10 @@
+ #ifndef TOMAHAWK_SCROBBLER_H
+ #define TOMAHAWK_SCROBBLER_H
+ 
++#include "lastfm/ScrobblePoint.h"
+ #include "Result.h"
+ #include "infosystem/InfoSystem.h"
+ 
+-
+-#if QT_VERSION >= QT_VERSION_CHECK(5,0,0)
+-#include <lastfm5/ScrobblePoint.h>
+-#else
+-#include <lastfm/ScrobblePoint.h>
+-#endif
+ #include <QObject>
+ 
+ /**
+diff --git a/src/tomahawk/TomahawkApp.h b/src/tomahawk/TomahawkApp.h
+index 953140b..c161d07 100644
+--- a/src/tomahawk/TomahawkApp.h
++++ b/src/tomahawk/TomahawkApp.h
+@@ -64,11 +64,7 @@ namespace Tomahawk
+ }
+ 
+ #ifdef LIBLASTFM_FOUND
+-    #if QT_VERSION >= QT_VERSION_CHECK(5,0,0)
+-    #include <lastfm5/NetworkAccessManager.h>
+-    #else
+     #include <lastfm/NetworkAccessManager.h>
+-    #endif
+     #include "Scrobbler.h"
+ #endif
+ 

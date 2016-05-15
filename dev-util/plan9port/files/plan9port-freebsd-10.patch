@@ -1,0 +1,11 @@
+--- a/bin/9l	2015-12-09 19:12:50.000000000 +0000
++++ b/bin/9l	2015-12-09 19:13:00.000000000 +0000
+@@ -19,7 +19,7 @@ case "$tag" in
+ 	5.2.*)
+ 		extralibs="$extralibs -lkse"
+ 		;;
+-	[5-9].*)
++	[5-9].*|10.*)
+ 		extralibs="$extralibs -lpthread"
+ 		;;
+ 	esac

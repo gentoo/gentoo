@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>sci</herd>
+<maintainer type="project">
+  <email>sci@gentoo.org</email>
+  <name>Gentoo Science Project</name>
+</maintainer>
 <longdescription lang="en">
   Ceres Solver is a portable C++ library that allows for
   modeling and solving large complicated nonlinear least squares
@@ -27,5 +30,6 @@
   packages from SuiteSparse</flag>
   <flag name="gflags">Use <pkg>dev-cpp/gflags</pkg> for flag parsing</flag>
   <flag name="protobuf">Use <pkg>dev-libs/protobuf</pkg> to encode structured data</flag>
+  <flag name="c++11">Build ceres-solver using the C++11 standard</flag>
 </use>
 </pkgmetadata>

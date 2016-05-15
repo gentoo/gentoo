@@ -1,0 +1,27 @@
+From d895b1327814fad6846fec9370fade177a587aa3 Mon Sep 17 00:00:00 2001
+From: Thomas D.
+Date: Tue, 8 Mar 2016 16:05:08 +0100
+Subject: [PATCH] printbuf.c: Fix for implicit declaration of function
+ 'vasprintf'
+
+Using the same q'n'd fix from eabae907c9d991143e17da278a239819f2e8ae1c for
+printbuf.c as well.
+---
+ printbuf.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/printbuf.c b/printbuf.c
+index 18237f6..d529d23 100644
+--- a/printbuf.c
++++ b/printbuf.c
+@@ -15,6 +15,7 @@
+ 
+ #include "config.h"
+ 
++#define _GNU_SOURCE
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>
+-- 
+2.7.2
+

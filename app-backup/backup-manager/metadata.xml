@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer>
+	<maintainer type="person">
 		<email>voyageur@gentoo.org</email>
 		<name>Bernard Cafarelli</name>
 	</maintainer>
-	<herd>app-backup</herd>
 	<longdescription>command line backup tool, designed to help make daily archives of the file system. It can make archives in lots of open formats (tar, gzip, bzip2, lzma, dar, zip) and provides interesting features (such as network exports or CD/DVD automated-burning)</longdescription>
 	<use>
 		<flag name="s3">Support for backing up to the Amazon S3 system</flag>

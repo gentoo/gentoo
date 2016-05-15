@@ -14,7 +14,7 @@ SLOT="0"
 KEYWORDS="amd64 ppc x86"
 IUSE="nls ncurses gtk gnome sdl"
 
-RDEPEND="ncurses? ( >=sys-libs/ncurses-5.2 )
+RDEPEND="ncurses? ( >=sys-libs/ncurses-5.2:0 )
 	gtk? ( x11-libs/gtk+:2 )
 	dev-libs/glib:2
 	nls? ( virtual/libintl )

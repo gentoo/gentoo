@@ -22,6 +22,9 @@ RDEPEND="
 
 S=${WORKDIR}/data
 
+dir=${GAMES_PREFIX_OPT}/${PN}
+QA_PREBUILT="${dir#/}/aquaria"
+
 pkg_nofetch() {
 	echo
 	elog "Download ${SRC_URI} from ${HOMEPAGE} and place it in ${DISTDIR}"
@@ -33,8 +36,6 @@ src_unpack() {
 }
 
 src_install() {
-	local dir="${GAMES_PREFIX_OPT}/${PN}"
-
 	insinto "${dir}"
 	exeinto "${dir}"
 

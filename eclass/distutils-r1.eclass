@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -588,9 +588,11 @@ distutils-r1_python_install_all() {
 	if declare -p EXAMPLES &>/dev/null; then
 		[[ ${EAPI} != [45] ]] && die "EXAMPLES are banned in EAPI ${EAPI}"
 
-		local INSDESTTREE=/usr/share/doc/${PF}/examples
-		doins -r "${EXAMPLES[@]}"
-		docompress -x "${INSDESTTREE}"
+		(
+			docinto examples
+			dodoc -r "${EXAMPLES[@]}"
+		)
+		docompress -x "/usr/share/doc/${PF}/examples"
 	fi
 
 	_DISTUTILS_DEFAULT_CALLED=1

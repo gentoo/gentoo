@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -20,9 +20,10 @@ DESCRIPTION="Basic widget set, based on EFL for mobile touch-screen devices"
 HOMEPAGE="https://trac.enlightenment.org/e/wiki/Elementary"
 
 LICENSE="LGPL-2.1"
-IUSE="debug examples fbcon quicklaunch sdl wayland X static-libs"
+IUSE="debug examples fbcon javascript quicklaunch sdl wayland X static-libs"
 
-DEPEND=">=dev-libs/efl-${PV}[fbcon?,sdl?,png,wayland?,X?]"
+DEPEND=">=dev-libs/efl-${PV}[fbcon?,sdl?,png,wayland?,X?]
+	javascript? ( net-libs/nodejs )"
 RDEPEND="${DEPEND}"
 
 S=${WORKDIR}/${MY_P}
@@ -41,8 +42,9 @@ src_configure() {
 		#$(use_enable examples build-examples)
 		$(use_enable examples install-examples)
 		$(use_enable fbcon ecore-fb)
+		$(use_enable javascript js-bindings)
 		$(use_enable sdl ecore-sdl)
-		$(use_enable wayland ecore-wayland)
+		$(use_enable wayland ecore-wl2)
 		$(use_enable X ecore-x)
 		$(use_enable quicklaunch quick-launch)
 	)

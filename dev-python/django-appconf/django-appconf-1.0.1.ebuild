@@ -15,7 +15,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="doc test"
+IUSE="doc"
 
 RDEPEND="
 	>=dev-python/django-1.4.1[${PYTHON_USEDEP}]
@@ -23,21 +23,12 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
-	test? ( dev-python/django-discover-runner[${PYTHON_USEDEP}]
-		dev-python/flake8[${PYTHON_USEDEP}]
-		dev-python/coverage[${PYTHON_USEDEP}] )"
+	"
 
 PATCHES=( "${FILESDIR}"/docs.patch )
 
 python_compile_all() {
 	use doc && emake -C docs html
-}
-
-python_test() {
-	cd appconf/tests || die
-	set -- django-admin.py test appconf --settings=appconf.test_settings
-	echo "$@"
-	"$@" || die "Testing failed with ${EPYTHON}"
 }
 
 python_install_all() {

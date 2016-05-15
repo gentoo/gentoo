@@ -1,0 +1,31 @@
+https://bugs.gentoo.org/516274
+diff --git a/cc_help.sh.in b/cc_help.sh.in
+index b20feb6..1820304 100644
+--- a/cc_help.sh.in
++++ b/cc_help.sh.in
+@@ -7,2 +7,3 @@ LIBS_PNG='@LIBS_PNG@'
+ LIBS_TIFF='@LIBS_TIFF@'
++LIBS_MATH='@LIBS_MATH@'
+ ENABLE_DEBUG='@ENABLE_DEBUG@'
+diff --git a/configure.in b/configure.in
+index d11f42c..459ad8f 100644
+--- a/configure.in
++++ b/configure.in
+@@ -125,2 +125,8 @@ fi
+ 
++LIBS=""
++AC_SEARCH_LIBS([pow], [m], [LIBS_MATH="$LIBS"], [
++  AC_MSG_ERROR([unable to find the pow() function])
++])
++AC_SUBST(LIBS_MATH)
++
+ dnl Checks for header files.
+diff --git a/do.sh b/do.sh
+index fa15db8..0e9f449 100755
+--- a/do.sh
++++ b/do.sh
+@@ -117,3 +117,3 @@ SOURCES='png22pnm.c'
+ TARGET=png22pnm
+-LIBS="$LIBS_PNG"
++LIBS="$LIBS_PNG $LIBS_MATH"
+ build

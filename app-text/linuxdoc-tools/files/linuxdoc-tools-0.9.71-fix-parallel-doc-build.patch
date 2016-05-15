@@ -22,7 +22,7 @@ index adb85d0..f215678 100644
 +		BUILDDOC_FORMATS="$(BUILDDOC_FORMATS)" \
  		sh Makedoc.sh)
  endif
- 
+
 @@ -174,7 +175,7 @@ ifneq ($(BUILDDOC_FORMATS),)
  	mkdir -m 755 -p $(doc_ddir)
  	# cp -r doc/* $(doc_ddir)
@@ -55,7 +55,7 @@ index b7e2efb..da4be99 100644
  else
      # --with-installed-iso-entities: Use system prefix.
 @@ -88,45 +88,42 @@ fi
- 
+
  # Build actual documentation
  echo "- Building documentation for formats: ${BUILDDOC_FORMATS}" >&2
 +BUILDDOC_MAKE=""
@@ -112,7 +112,7 @@ index b7e2efb..da4be99 100644
 -				 --pass="\usepackage{times}" ./guide.sgml
 +		echo "- Add to build list: guide.dvi" >&2
 +		BUILDDOC_MAKE="${BUILDDOC_MAKE} guide.dvi"
- 
+
  		if [ -n "`which dvips`" ]; then
  		    echo "   + dvips" >&2
 @@ -137,9 +134,13 @@ for docformat in ${BUILDDOC_FORMATS}; do
@@ -135,13 +135,13 @@ index b7e2efb..da4be99 100644
 @@ -156,7 +157,9 @@ for docformat in ${BUILDDOC_FORMATS}; do
      esac
  done
- 
+
 +${MAKE} TMPDIR="${TMPDIR}" DVIPS_PAPER="${DVIPS_PAPER}" ${BUILDDOC_MAKE}
 +
  # Remove temporary directory.
 -rm -rf $TMPDIR
 +rm -rf "${TMPDIR}"
- 
+
  exit 0
 diff --git a/doc/Makefile b/doc/Makefile
 new file mode 100644

@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -6,7 +6,7 @@ EAPI="5"
 
 # needed to make webapp-config dep optional
 WEBAPP_OPTIONAL="yes"
-inherit flag-o-matic webapp depend.php autotools java-pkg-opt-2 user systemd toolchain-funcs
+inherit flag-o-matic webapp autotools java-pkg-opt-2 user systemd toolchain-funcs
 
 DESCRIPTION="ZABBIX is software for monitoring of your applications, network and servers"
 HOMEPAGE="http://www.zabbix.com/"
@@ -325,7 +325,6 @@ src_install() {
 	if use frontend; then
 		webapp_src_preinst
 		cp -R frontends/php/* "${D}/${MY_HTDOCSDIR}"
-		webapp_postinst_txt en "${FILESDIR}/"1.6.6/postinstall-en.txt
 		webapp_configfile \
 			"${MY_HTDOCSDIR}"/include/db.inc.php \
 			"${MY_HTDOCSDIR}"/include/config.inc.php

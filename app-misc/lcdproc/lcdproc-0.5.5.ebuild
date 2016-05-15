@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -42,7 +42,7 @@ REQUIRED_USE="lcd_devices_mdm166a? ( hid )"
 
 RDEPEND="
 	usb?      ( virtual/libusb:0 )
-	ftdi?     ( dev-embedded/libftdi )
+	ftdi?     ( dev-embedded/libftdi:0 )
 	lirc?     ( app-misc/lirc )
 	irman?    ( media-libs/libirman )
 	hid?	  ( >=dev-libs/libhid-0.2.16 )
@@ -51,14 +51,14 @@ RDEPEND="
 	lcd_devices_g15?       ( dev-libs/libg15  dev-libs/libg15render )
 	lcd_devices_ncurses?   ( sys-libs/ncurses )
 	lcd_devices_svga?      ( media-libs/svgalib )
-	lcd_devices_ula200?    ( dev-embedded/libftdi )
+	lcd_devices_ula200?    ( dev-embedded/libftdi:0 )
 	lcd_devices_xosd?      ( x11-libs/xosd  x11-libs/libX11  x11-libs/libXext )
 	lcd_devices_cfontzpacket? ( virtual/libusb:0 )
 	lcd_devices_cwlinux?    ( virtual/libusb:0 )
 	lcd_devices_pyramid?    ( virtual/libusb:0 )
 	lcd_devices_picolcd?    ( virtual/libusb:0 )
-	lcd_devices_i2500vfd?   ( dev-embedded/libftdi )
-	lcd_devices_lis?        ( dev-embedded/libftdi virtual/libusb:0 )
+	lcd_devices_i2500vfd?   ( dev-embedded/libftdi:0 )
+	lcd_devices_lis?        ( dev-embedded/libftdi:0 virtual/libusb:0 )
 	lcd_devices_shuttlevfd? ( virtual/libusb:0 )"
 DEPEND="${RDEPEND}
 	doc? ( app-text/xmlto

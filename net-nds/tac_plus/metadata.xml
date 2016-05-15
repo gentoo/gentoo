@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer>
+  <maintainer type="person">
           <email>chainsaw@gentoo.org</email>
           <name>Tony Vroon</name>
   </maintainer>
   <use>
-	  <flag name='finger'>Adds support for checking user counts via fingering
+	  <flag name="finger">Adds support for checking user counts via fingering
 		  the NAS</flag>
-	  <flag name='maxsess'>Enforce a limit on maximum sessions per user</flag>
+	  <flag name="maxsess">Enforce a limit on maximum sessions per user</flag>
   </use>
 </pkgmetadata>

@@ -15,7 +15,7 @@ inherit eutils fdo-mime multilib pax-utils prefix
 EXPORT_FUNCTIONS pkg_setup pkg_postinst pkg_prerm pkg_postrm
 
 RDEPEND="
-	>=dev-java/java-config-2.2.0
+	>=dev-java/java-config-2.2.0-r3
 	app-eselect/eselect-java"
 DEPEND="${RDEPEND}"
 has "${EAPI}" 0 1 && DEPEND="${DEPEND} >=sys-apps/portage-2.1"
@@ -84,8 +84,11 @@ java-vm-2_pkg_postinst() {
 		fi
 	fi
 
-	java-vm_check-nsplugin
-	java_mozilla_clean_
+	if [[ "${_install_mozilla_plugin_called}" = 1 ]]; then
+		java-vm_check-nsplugin
+		java_mozilla_clean_
+	fi
+
 	fdo-mime_desktop_database_update
 }
 
@@ -360,6 +363,8 @@ java_get_plugin_dir_() {
 # Register a netscape java-plugin.
 
 install_mozilla_plugin() {
+	_install_mozilla_plugin_called=1
+
 	local plugin="${1}"
 	local variant="${2}"
 

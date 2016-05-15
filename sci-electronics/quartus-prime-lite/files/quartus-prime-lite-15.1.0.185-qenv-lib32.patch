@@ -1,0 +1,11 @@
+--- /opt/quartus-lite-15.1.0.185/quartus/adm/qenv.sh.org	2016-03-01 18:51:38.192388962 +0800
++++ /opt/quartus-lite-15.1.0.185/quartus/adm/qenv.sh	2016-02-25 09:22:28.580259994 +0800
+@@ -136,7 +136,7 @@
+ ##### Quartus path setup
+ 
+ export PATH=$QUARTUS_BINDIR:$PATH
+-export LD_LIBRARY_PATH=$QUARTUS_BINDIR:$LD_LIBRARY_PATH
++export LD_LIBRARY_PATH=$QUARTUS_BINDIR:$LD_LIBRARY_PATH:/opt/quartus-lite-15.1.0.185/modelsim_ase/lib32
+ 
+ 
+ # Add <qdir>/adm to path, it has some helper tools

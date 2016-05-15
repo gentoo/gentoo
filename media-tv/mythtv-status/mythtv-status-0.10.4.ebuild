@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -17,7 +17,7 @@ IUSE=""
 DEPEND="
 	dev-perl/libwww-perl
 	dev-perl/XML-LibXML
-	dev-perl/DateManip
+	dev-perl/Date-Manip
 	dev-perl/MIME-tools
 	dev-perl/Sys-SigAction
 	dev-perl/Config-Auto

@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>net-mail</herd>
-	<maintainer>
+	<maintainer type="person">
 		<email>polynomial-c@gentoo.org</email>
 		<name>Lars Wendler</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>net-mail@gentoo.org</email>
+		<name>Net-Mail</name>
 	</maintainer>
 	<use>
 		<flag name="archive">Enable archiving plugin</flag>
@@ -16,9 +19,6 @@
 		reporting to various services</flag>
 		<flag name="bogofilter">Build <pkg>mail-filter/bogofilter</pkg>
 			plugin</flag>
-		<flag name="dillo">Enables support for inline HTTP email viewing with a
-			plugin (which depends on the <pkg>www-client/dillo</pkg> 
-			browser)</flag>
 		<flag name="libcanberra">Enable sound notification in connection
 		with USE=notification</flag>
 		<flag name="libindicate">Enable notification through

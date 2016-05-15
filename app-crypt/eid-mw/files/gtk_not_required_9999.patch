@@ -12,48 +12,38 @@ index 1a605f7..6475886 100644
  xpipackage:
  	$(MAKE) -C plugins_tools/xpi xpipackage
 diff --git a/cardcomm/pkcs11/src/Makefile.am b/cardcomm/pkcs11/src/Makefile.am
-index b70e7f2..066c348 100644
+index 6e33315..fce4494 100644
 --- a/cardcomm/pkcs11/src/Makefile.am
 +++ b/cardcomm/pkcs11/src/Makefile.am
-@@ -165,30 +165,30 @@ libbeidpkcs11_la_SOURCES += \
+@@ -165,8 +165,6 @@ libbeidpkcs11_la_SOURCES += \
  	dialogs/dialogsgtk/single_dialog.c
  endif
  
 -libexec_PROGRAMS = beid-askpin beid-changepin beid-badpin beid-askaccess beid-spr-askpin beid-spr-changepin
-+#libexec_PROGRAMS = beid-askpin beid-changepin beid-badpin beid-askaccess beid-spr-askpin beid-spr-changepin
+-
+ if P11KIT
+ dist_p11kitcf_DATA = beid.module
+ install-exec-hook:
+@@ -176,28 +174,4 @@ install-exec-hook:
+ 		$(LN_S) $(libdir)/libbeidpkcs11.so.0 beidpkcs11.so
+ endif
  
 -beid_askpin_SOURCES = dialogs/dialogsgtk/parent.c dialogs/dialogsgtk/beid-askpin.c
 -beid_askpin_CPPFLAGS = -I$(srcdir)/dialogsgtk -I$(srcdir)/../common/src -I$(srcdir)/src @GTK_CFLAGS@
 -beid_askpin_LDADD = @GTK_LIBS@
-+#beid_askpin_SOURCES = dialogs/dialogsgtk/parent.c dialogs/dialogsgtk/beid-askpin.c
-+#beid_askpin_CPPFLAGS = -I$(srcdir)/dialogsgtk -I$(srcdir)/../common/src -I$(srcdir)/src @GTK_CFLAGS@
-+#beid_askpin_LDADD = @GTK_LIBS@
-+#
-+#beid_changepin_SOURCES = dialogs/dialogsgtk/parent.c dialogs/dialogsgtk/beid-changepin.c
-+#beid_changepin_CPPFLAGS = -I$(dialogsdir)/dialogsgtk -I$(dialogsdir)/../common/dialogs -I$(dialogsdir)/dialogs @GTK_CFLAGS@
-+#beid_changepin_LDADD = @GTK_LIBS@
- 
+-
 -beid_changepin_SOURCES = dialogs/dialogsgtk/parent.c dialogs/dialogsgtk/beid-changepin.c
 -beid_changepin_CPPFLAGS = -I$(dialogsdir)/dialogsgtk -I$(dialogsdir)/../common/dialogs -I$(dialogsdir)/dialogs @GTK_CFLAGS@
 -beid_changepin_LDADD = @GTK_LIBS@
-+#beid_badpin_SOURCES = dialogs/dialogsgtk/parent.c dialogs/dialogsgtk/beid-badpin.c
-+#beid_badpin_CPPFLAGS = -I$(dialogsdir)/dialogsgtk -I$(dialogsdir)/../common/dialogs -I$(dialogsdir)/dialogs @GTK_CFLAGS@
-+#beid_badpin_LDADD = @GTK_LIBS@
- 
+-
 -beid_badpin_SOURCES = dialogs/dialogsgtk/parent.c dialogs/dialogsgtk/beid-badpin.c
 -beid_badpin_CPPFLAGS = -I$(dialogsdir)/dialogsgtk -I$(dialogsdir)/../common/dialogs -I$(dialogsdir)/dialogs @GTK_CFLAGS@
 -beid_badpin_LDADD = @GTK_LIBS@
-+#beid_askaccess_SOURCES = dialogs/dialogsgtk/parent.c dialogs/dialogsgtk/beid-askaccess.c
-+#beid_askaccess_CPPFLAGS = -I$(dialogsdir)/dialogsgtk -I$(dialogsdir)/../common/dialogs -I$(dialogsdir)/dialogs @GTK_CFLAGS@
-+#beid_askaccess_LDADD = @GTK_LIBS@
- 
+-
 -beid_askaccess_SOURCES = dialogs/dialogsgtk/parent.c dialogs/dialogsgtk/beid-askaccess.c
 -beid_askaccess_CPPFLAGS = -I$(dialogsdir)/dialogsgtk -I$(dialogsdir)/../common/dialogs -I$(dialogsdir)/dialogs @GTK_CFLAGS@
 -beid_askaccess_LDADD = @GTK_LIBS@
-+#beid_spr_askpin_SOURCES = dialogs/dialogsgtk/parent.c dialogs/dialogsgtk/beid-spr-askpin.c
-+#beid_spr_askpin_CPPFLAGS = -I$(dialogsdir)/dialogsgtk -I$(dialogsdir)/../common/dialogs -I$(dialogsdir)/dialogs @GTK_CFLAGS@
-+#beid_spr_askpin_LDADD = @GTK_LIBS@
- 
+-
 -beid_spr_askpin_SOURCES = dialogs/dialogsgtk/parent.c dialogs/dialogsgtk/beid-spr-askpin.c
 -beid_spr_askpin_CPPFLAGS = -I$(dialogsdir)/dialogsgtk -I$(dialogsdir)/../common/dialogs -I$(dialogsdir)/dialogs @GTK_CFLAGS@
 -beid_spr_askpin_LDADD = @GTK_LIBS@
@@ -61,13 +51,10 @@ index b70e7f2..066c348 100644
 -beid_spr_changepin_SOURCES = dialogs/dialogsgtk/parent.c dialogs/dialogsgtk/beid-spr-changepin.c
 -beid_spr_changepin_CPPFLAGS = -I$(dialogsdir)/dialogsgtk -I$(dialogsdir)/../common/dialogs -I$(dialogsdir)/dialogs @GTK_CFLAGS@
 -beid_spr_changepin_LDADD = @GTK_LIBS@
-+#beid_spr_changepin_SOURCES = dialogs/dialogsgtk/parent.c dialogs/dialogsgtk/beid-spr-changepin.c
-+#beid_spr_changepin_CPPFLAGS = -I$(dialogsdir)/dialogsgtk -I$(dialogsdir)/../common/dialogs -I$(dialogsdir)/dialogs @GTK_CFLAGS@
-+#beid_spr_changepin_LDADD = @GTK_LIBS@
- 
+-
  pkgconfig_DATA=libbeidpkcs11.pc
 diff --git a/configure.ac b/configure.ac
-index 102c1c7..efdf0e2 100644
+index 6f4b833..ec7ae8f 100644
 --- a/configure.ac
 +++ b/configure.ac
 @@ -56,11 +56,6 @@ then

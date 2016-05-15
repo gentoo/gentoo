@@ -1,0 +1,14 @@
+Author: Ole Streicher <olebole@debian.org>
+Description: Remove trailing slash at the end of dir when moving files specified by wildcard
+Forwarded: https://sourceforge.net/p/gnudatalanguage/patches/97/
+--- a/src/pro/file_move.pro
++++ b/src/pro/file_move.pro
+@@ -31,7 +31,7 @@
+         res=FILE_SEARCH(dir, FILE_BASENAME(source[ii]), /fully)
+ 
+         for jj=0,N_ELEMENTS(res)-1 do begin
+-            if(FILE_DIRNAME(res[jj], /MARK_DIRECTORY) eq dir) then flist=[flist, res[jj]] ;
++            if(FILE_DIRNAME(res[jj]) eq dir) then flist=[flist, res[jj]] ;
+             ;print, 'dir ', dir, ' res ', FILE_DIRNAME(res[jj])
+         endfor
+ 

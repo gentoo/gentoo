@@ -3,7 +3,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-extra_commands="checkconfig"
+extra_commands="checkconfig reload"
 
 LOGDIR="/var/log/puppetlabs/puppetserver"
 RUNDIR="/run/puppetlabs/puppetserver"
@@ -17,7 +17,7 @@ checkconfig() {
         eerror "Missing INSTALL_DIR."
         eend 1
     fi
-    if [ ! -a $BOOTSTRAP_CONFIG ]; then
+    if [ ! -e $BOOTSTRAP_CONFIG ]; then
         eerror "Missing BOOTSTRAP_CONFIG."
         eend 1
     fi
@@ -63,3 +63,10 @@ stop() {
     start-stop-daemon --stop --pidfile "${RUNDIR}/puppetserver.pid"
     eend $?
 }
+
+reload() {
+    ebegin "Reloading Puppet Server"
+    start-stop-daemon --signal HUP --pidfile "${RUNDIR}/puppetserver.pid"
+    eend $?
+}
+

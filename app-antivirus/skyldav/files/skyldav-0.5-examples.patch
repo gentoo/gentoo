@@ -1,0 +1,11 @@
+diff -urN skyldav-0.5.orig/Makefile.am skyldav-0.5/Makefile.am
+--- skyldav-0.5.orig/Makefile.am	2015-02-15 20:32:57.000000000 +0100
++++ skyldav-0.5/Makefile.am	2016-01-21 14:11:14.883632470 +0100
+@@ -9,7 +9,6 @@
+ 	rm -rf doc/doxygen
+ 
+ install-data-local: \
+-  install-skyldav-examples \
+   install-skyldav-conf \
+   install-skyldavnotify-desktop
+ 

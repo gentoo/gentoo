@@ -30,7 +30,7 @@
 -*virtual/pager
 -*sys-apps/diffutils
 -*sys-apps/baselayout-prefix
--*app-shells/bash
+-*app-shells/bash:0
 -*virtual/package-manager
 -*virtual/ssh
 -*sys-devel/autoconf

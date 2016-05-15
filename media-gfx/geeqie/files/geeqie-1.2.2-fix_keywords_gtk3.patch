@@ -1,0 +1,12 @@
+--- a/src/bar_keywords.c	2015-05-23 14:20:43.000000000 +0200
++++ b/src/bar_keywords.c	2015-12-30 00:34:21.453531792 +0100
+@@ -1295,6 +1295,9 @@
+ 	g_object_set_data(G_OBJECT(pkd->widget), "pane_data", pkd);
+ 	g_signal_connect(G_OBJECT(pkd->widget), "destroy",
+ 			 G_CALLBACK(bar_pane_keywords_destroy), pkd);
++#if GTK_CHECK_VERSION(3,0,0)
++	gtk_widget_set_size_request(pkd->widget, -1, 400);
++#endif
+ 	gtk_widget_show(hbox);
+ 
+ 	scrolled = gtk_scrolled_window_new(NULL, NULL);

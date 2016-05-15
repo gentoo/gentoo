@@ -1,0 +1,79 @@
+--- launcher/launchers.in.orig	2015-09-11 14:02:04.252280131 +0100
++++ launcher/launchers.in	2015-12-18 23:06:35.721135526 +0000
+@@ -7,7 +7,7 @@
+ BINARY_LOCATION=@BIN_LOCATION@
+ SPLASH_LOCATION=@JAVAWS_SPLASH_LOCATION@
+ PROGRAM_NAME=@PROGRAM_NAME@
+-CP=@JRE@/lib/rt.jar:@JRE@/lib/jfxrt.jar
++CP=$(java-config -r)
+ 
+ CONFIG_HOME=$XDG_CONFIG_HOME
+ if [ "x$CONFIG_HOME" = "x" ] ; then
+--- plugin/icedteanp/IcedTeaNPPlugin.cc.orig	2015-09-11 14:02:04.219279754 +0100
++++ plugin/icedteanp/IcedTeaNPPlugin.cc	2015-12-19 22:35:23.479775591 +0000
+@@ -137,8 +137,7 @@
+ static DIR *data_directory_descriptor;
+ 
+ // Fully-qualified appletviewer default  executable and rt.jar
+-static const char* appletviewer_default_executable = ICEDTEA_WEB_JRE "/bin/java";
+-static const char* appletviewer_default_rtjar = ICEDTEA_WEB_JRE "/lib/rt.jar";
++static const char* appletviewer_default_executable = ICEDTEA_WEB_JAVA;
+ //javaws name and binary
+ static const char* javaws_bin_property = "-Dicedtea-web.bin.location=" JAVAWS_BIN;
+ static const char* javaws_name_property = "-Dicedtea-web.bin.name=" JAVAWS_NAME;
+@@ -298,7 +297,15 @@
+                   PLUGIN_ERROR("Your custom jre (/lib/rt.jar check) %s is not valid. Please fix %s in your %s. In attempt to run using default one. \n", custom_jre.c_str(), custom_jre_key.c_str(), default_file_ITW_deploy_props_name.c_str());
+             }
+       }
+-      return appletviewer_default_rtjar;      
++      gchar *stdout;
++      if (g_spawn_command_line_sync("java-config -r", &stdout, NULL, NULL, NULL)) {
++          std::string result = g_strchomp(stdout);
++          g_free(stdout);
++          return result;
++      } else {
++          PLUGIN_ERROR("Failed to query jre bootclasspath with java-config.\n");
++          return "";
++      }
+ }
+ 
+ static void cleanUpDir(){
+--- plugin/icedteanp/IcedTeaParseProperties.cc.orig	2015-09-11 14:02:04.220279765 +0100
++++ plugin/icedteanp/IcedTeaParseProperties.cc	2015-12-19 23:06:05.095409132 +0000
+@@ -151,7 +151,15 @@
+ }
+ 
+ string default_java_properties_file(){
+-	return  ICEDTEA_WEB_JRE "/lib/"+default_file_ITW_deploy_props_name;
++	gchar *stdout;
++	if (g_spawn_command_line_sync("java-config -o", &stdout, NULL, NULL, NULL)) {
++		string result = g_strchomp(stdout);
++		g_free(stdout);
++		return result+"/lib/"+default_file_ITW_deploy_props_name;
++	} else {
++		PLUGIN_ERROR("Failed to query jre location with java-config.\n");
++		return "";
++	}
+ }
+ 
+ 
+@@ -224,7 +232,7 @@
+ 				dest = custom_jre_file;
+ 				return true;
+ 			} 
+-		} else {
++		} else if (!default_java_file.empty()) {
+ 			if(IcedTeaPluginUtilities::file_exists(default_java_file)) {
+ 			dest = default_java_file;
+ 			return true;
+--- Makefile.am.orig	2015-09-11 14:02:04.245280051 +0100
++++ Makefile.am	2015-12-19 22:37:35.460518630 +0000
+@@ -353,7 +353,7 @@
+ 	  -DPLUGIN_VERSION="\"$(PLUGIN_VERSION)\"" \
+ 	  -DPACKAGE_URL="\"$(PACKAGE_URL)\"" \
+ 	  -DMOZILLA_VERSION_COLLAPSED="$(MOZILLA_VERSION_COLLAPSED)" \
+-	  -DICEDTEA_WEB_JRE="\"$(SYSTEM_JRE_DIR)\"" \
++	  -DICEDTEA_WEB_JAVA="\"$(JAVA)\"" \
+ 	  -DPLUGIN_BOOTCLASSPATH=$(PLUGIN_BOOTCLASSPATH) \
+ 	  $(GLIB_CFLAGS) \
+ 	  $(MOZILLA_CFLAGS) \

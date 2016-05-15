@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -15,7 +15,7 @@ RUBY_FAKEGEM_EXTRAINSTALL="assets public views"
 
 inherit ruby-fakegem
 
-DESCRIPTION="Generates a nice HTML report of your SimpleCov ruby code coverage results on Ruby 1.9"
+DESCRIPTION="Generates a HTML report of your SimpleCov ruby code coverage results"
 HOMEPAGE="https://github.com/colszowka/simplecov"
 LICENSE="MIT"
 

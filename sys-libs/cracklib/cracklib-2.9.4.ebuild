@@ -82,7 +82,7 @@ python_test() {
 multilib_src_install() {
 	default
 	# move shared libs to /
-	multilib_is_native_abi && gen_usr_ldscript -a crack
+	gen_usr_ldscript -a crack
 
 	do_python
 }

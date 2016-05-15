@@ -10,7 +10,6 @@ inherit perl-module
 
 DESCRIPTION="A client for the Bugzilla web services API."
 
-LICENSE="|| ( Artistic GPL-1 GPL-2 GPL-3 )"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
@@ -21,5 +20,5 @@ RDEPEND="
 	dev-perl/XML-Parser
 "
 DEPEND="${RDEPEND}
-	virtual/perl-ExtUtils-MakeMaker
+	dev-perl/Module-Build
 "

@@ -14,7 +14,7 @@ SRC_URI="http://www.msweet.org/files/project3/${MY_P}.tar.gz"
 
 LICENSE="Mini-XML"
 SLOT="0"
-KEYWORDS="amd64 ~arm ppc x86"
+KEYWORDS="amd64 ~arm ~hppa ppc ~ppc64 x86"
 IUSE="threads static-libs"
 
 DEPEND="virtual/pkgconfig"

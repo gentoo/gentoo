@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=2
+EAPI=5
 
 MOD_DESC="add co-op support and/or play against swarms of monsters"
 MOD_NAME="Last Man Standing"
@@ -20,7 +20,7 @@ RESTRICT="fetch bindist"
 
 pkg_nofetch() {
 	elog "Please download ${SRC_URI} from:"
-	elog "http://www.filefront.com/9934113"
+	elog "http://www.moddb.com/mods/last-man-standing-coop/downloads"
 	elog "and move it to ${DISTDIR}"
 }
 

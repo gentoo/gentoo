@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>java</herd>
+	<maintainer type="project">
+		<email>java@gentoo.org</email>
+		<name>Java</name>
+	</maintainer>
 	<longdescription lang="en">
 		JDiskReport enables you to understand how much space the files and
 		directories consume on your disk drives, and it helps you find obsolete
 		files and folders.
 	</longdescription>
 </pkgmetadata>
-

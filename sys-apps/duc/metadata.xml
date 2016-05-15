@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>NP-Hardass@gentoo.org</email>
+		<name>NP-Hardass</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>duc@zevv.nl</email>
+		<name>Ico Doornekamp</name>
+	</maintainer>
+	<use>
+		<flag name="cairo">Build support for exporting to PNG and PDF with <pkg>x11-libs/cairo</pkg></flag>
+		<flag name="gui">Build support for a graphical client</flag>
+		<flag name="leveldb">Use <pkg>dev-libs/leveldb</pkg> as the backend</flag>
+		<flag name="ncurses">Build support for the ncurses client</flag>
+		<flag name="sqlite">Use <pkg>dev-db/sqlite</pkg>:3 as the backend</flag>
+		<flag name="tokyocabinet">Use <pkg>dev-db/tokyocabinet</pkg> as the backend</flag>
+		<flag name="X">Use X11 for the GUI instead of OpenGL.  This is the recommended option</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">zevv/duc</remote-id>
+	</upstream>
+</pkgmetadata>

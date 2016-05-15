@@ -1,19 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>video</herd>
-  <maintainer>
+  <maintainer type="person">
     <email>lu_zero@gentoo.org</email>
   </maintainer>
 
+  <maintainer type="project">
+    <email>media-video@gentoo.org</email>
+    <name>Gentoo Video project</name>
+  </maintainer>
+
   <use>
-    <flag name='X'>
+    <flag name="X">
       Build the GTK+-based video viewer for aravis. This requires
       GStreamer and a few plugins but technically not the GST plugin
       for aravis.
     </flag>
 
-    <flag name='gstreamer'>
+    <flag name="gstreamer">
       Build the GStreamer plugin for aravis, but not the video viewer.
     </flag>
   </use>

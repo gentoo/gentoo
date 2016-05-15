@@ -1,5 +1,5 @@
---- libs/python/build/Jamfile.v2
-+++ libs/python/build/Jamfile.v2
+--- a/libs/python/build/Jamfile.v2
++++ b/libs/python/build/Jamfile.v2
 @@ -109,20 +109,7 @@
              <link>static:<define>BOOST_PYTHON_STATIC_LIB 
              <define>BOOST_PYTHON_SOURCE

@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -7,7 +7,7 @@ EAPI=5
 PLOCALES="de ru"
 inherit bash-completion-r1 eutils l10n
 
-DESCRIPTION="Search and query ebuilds, portage incl. local settings, ext. overlays, version changes, and more"
+DESCRIPTION="Search and query ebuilds, portage incl. local settings, ext. overlays and more"
 HOMEPAGE="https://github.com/vaeth/eix/"
 SRC_URI="https://dev.gentoo.org/~axs/distfiles/${P}.tar.xz"
 

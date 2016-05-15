@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -44,7 +44,7 @@ src_prepare() {
 		configure || die
 
 	if use ftdi ; then
-		local pc="libftdi$(has_version '=dev-embedded/libftdi-1*' && echo 1)"
+		local pc="libftdi$(has_version dev-embedded/libftdi:1 && echo 1)"
 		# Use libftdi-1 paths #460916
 		local libs=$($(tc-getPKG_CONFIG) --libs ${pc})
 		sed -i \

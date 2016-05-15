@@ -379,9 +379,9 @@ function handle_footer() {
 #
 BEGIN {
 	state = "header"
-	if (PORTDIR == "")
-		PORTDIR = "/usr/portage"
-	eclassdir = PORTDIR "/eclass"
+	if (ECLASSDIR == "")
+		ECLASSDIR = "/usr/portage/eclass"
+	eclassdir = ECLASSDIR
 	reporting_bugs = "Please report bugs via http://bugs.gentoo.org/"
 	vcs_url = "https://gitweb.gentoo.org/repo/gentoo.git/log/eclass/@ECLASS@"
 }

@@ -1,0 +1,45 @@
+Various gcc-5 fixes
+
+https://gcc.gnu.org/gcc-5/porting_to.html
+
+Signed-off-by: Markos Chandras <hwoarang@gentoo.org>
+Index: ushare-1.1a/src/trace.h
+===================================================================
+--- ushare-1.1a.orig/src/trace.h
++++ ushare-1.1a/src/trace.h
+@@ -29,7 +29,7 @@ typedef enum {
+ 
+ void print_log (log_level level, const char *format, ...)
+   __attribute__ ((format (printf, 2, 3)));
+-inline void start_log (void);
++extern inline void start_log (void);
+ 
+ /* log_info
+  * Normal print, to replace printf
+Index: ushare-1.1a/src/ushare.h
+===================================================================
+--- ushare-1.1a.orig/src/ushare.h
++++ ushare-1.1a/src/ushare.h
+@@ -127,6 +127,6 @@ struct action_event_t {
+   struct service_t *service;
+ };
+ 
+-inline void display_headers (void);
++extern inline void display_headers (void);
+ 
+ #endif /* _USHARE_H_ */
+Index: ushare-1.1a/src/ushare.c
+===================================================================
+--- ushare-1.1a.orig/src/ushare.c
++++ ushare-1.1a/src/ushare.c
+@@ -49,6 +49,10 @@
+ #include <ifaddrs.h>
+ #endif
+ 
++#ifdef HAVE_LOCALE_H
++#include <locale.h>
++#endif
++
+ #if (defined(__unix__) || defined(unix)) && !defined(USG)
+ #include <sys/param.h>
+ #endif

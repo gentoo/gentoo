@@ -1,0 +1,98 @@
+Fix implicit declarations, such as:
+
+main.c: In function ‘main’:
+main.c:45:2: warning: incompatible implicit declaration of built-in function ‘exit’
+  exit(1);
+  ^
+--- daudio-0.3/client/main.c
++++ daudio-0.3/client/main.c
+@@ -22,6 +22,7 @@
+ #include <sys/types.h>
+ #include <unistd.h>
+ #include <sched.h>
++#include <stdlib.h>
+ 
+ int main(int argc, char **argv) {
+     int s;
+@@ -50,7 +51,7 @@
+     
+     /* drop priveledges */
+     uid = getuid();
+-    seteuid(uid);
++    if(seteuid(uid)){};
+ 
+     set_default_options(void);
+ 
+--- daudio-0.3/client/net.c
++++ daudio-0.3/client/net.c
+@@ -27,6 +27,7 @@
+ #include <asm/unistd.h>
+ #include <mad.h>
+ #include <pthread.h>
++#include <stdlib.h>
+ 
+ #include "net.h"
+ #include "../common/frame.h"
+--- daudio-0.3/server/local.c
++++ daudio-0.3/server/local.c
+@@ -25,6 +25,7 @@
+ #include <errno.h>
+ #include <fcntl.h>
+ #include <netinet/in.h>
++#include <stdlib.h>
+ 
+ #include "timer.h"
+ #include "data.h"
+@@ -71,7 +72,7 @@
+     
+     /* drop priveleges */
+     uid = getuid();
+-    seteuid(uid);
++    if(seteuid(uid)){};
+     
+     current = bigbuf.buffer;
+ 
+--- daudio-0.3/server/main.c
++++ daudio-0.3/server/main.c
+@@ -25,6 +25,7 @@
+ #include <sys/types.h>
+ #include <unistd.h>
+ #include <signal.h>
++#include <stdlib.h>
+ 
+ int main () {
+     int r;
+@@ -40,19 +41,19 @@
+     uid = getuid();
+     r = d_init();
+     if(r == -1) {
+-	seteuid(uid);
++	if(seteuid(uid)){};
+ 	perror("d_init failed");
+ 	exit(1);
+     }
+     r = b_init();
+     if(r == -1) {
+-	seteuid(uid);
++	if(seteuid(uid)){};
+ 	perror("b_init failed");
+ 	exit(1);
+     }
+     r = t_init();
+     /* drop priveleges */
+-    seteuid(uid);
++    if(seteuid(uid)){};
+     if(r == -1) {
+ 	perror("t_init failed");
+ 	exit(1);
+--- daudio-0.3/server/timer.c
++++ daudio-0.3/server/timer.c
+@@ -124,7 +124,7 @@
+     
+     /* drop priveleges */
+     uid = getuid();
+-    seteuid(uid);
++    if(seteuid(uid)){};
+     
+     mytimer.it_value.tv_sec = 0;
+     mytimer.it_value.tv_usec = 0;

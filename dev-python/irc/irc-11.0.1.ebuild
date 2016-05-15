@@ -8,10 +8,10 @@ PYTHON_COMPAT=( python{2_7,3_3,3_4} )
 inherit distutils-r1
 
 DESCRIPTION="IRC client framework written in Python"
-HOMEPAGE="https://bitbucket.org/jaraco/irc https://pypi.python.org/pypi/irc"
+HOMEPAGE="https://github.com/jaraco/irc"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.zip"
 
-LICENSE="LGPL-2.1"
+LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="examples test"

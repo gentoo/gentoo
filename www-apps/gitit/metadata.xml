@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>haskell</herd>
-	<maintainer>
+	<maintainer type="project">
 		<email>haskell@gentoo.org</email>
 	</maintainer>
 	<longdescription>
 		Gitit is a wiki backed by a git, darcs, or mercurial
 		filestore.  Pages and uploaded files can be modified either
-		directly via the VCS&#39;s command-line tools or through
-		the wiki&#39;s web interface. Pandoc is used for markup
+		directly via the VCS's command-line tools or through
+		the wiki's web interface. Pandoc is used for markup
 		processing, so pages may be written in
 		(extended) markdown, reStructuredText, LaTeX, HTML,
 		or literate Haskell, and exported in ten different
@@ -20,7 +19,7 @@
 		
 		* plugins: dynamically loaded page
 		transformations written in Haskell (see
-		&quot;Network.Gitit.Interface&quot;)
+		"Network.Gitit.Interface")
 		
 		* conversion of TeX math to MathML for display in
 		web browsers
@@ -30,7 +29,7 @@
 		
 		* Atom feeds (site-wide and per-page)
 		
-		* a library, &quot;Network.Gitit&quot;, that makes it simple
+		* a library, "Network.Gitit", that makes it simple
 		to include a gitit wiki in any happstack application
 		
 		You can see a running demo at &lt;http://gitit.net&gt;.
@@ -38,7 +37,7 @@
 		For usage information:  @gitit --help@
 	</longdescription>
 	<use>
-		<flag name='network-uri'>Get Network.URI from the network-uri package.</flag>
+		<flag name="network-uri">Get Network.URI from the network-uri package.</flag>
 		<flag name="plugins">enables optional plugin runtime loader</flag>
 	</use>
 </pkgmetadata>

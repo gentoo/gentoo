@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>tex</herd>
-  <herd>sci</herd>
+  <maintainer type="project">
+    <email>tex@gentoo.org</email>
+    <name>Gentoo TeX Project</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>sci@gentoo.org</email>
+    <name>Gentoo Science Project</name>
+  </maintainer>
   <longdescription>
     The package provides a command \isotope for setting the atomic weight and
 	atomic number indications of isotopes. (The naive way of doing the job with

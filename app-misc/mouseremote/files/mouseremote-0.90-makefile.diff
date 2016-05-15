@@ -1,5 +1,5 @@
 --- MultiMouse/Makefile	1997-08-21 08:52:56.000000000 -0400
-+++ MultiMouse/Makefile.new	2010-08-13 00:05:47.000000000 -0400
++++ MultiMouse/Makefile	2010-08-13 00:05:47.000000000 -0400
 @@ -20,14 +20,13 @@
  	-DMOUSE_FIFO=\"$(FIFO)\"\
  	-DLOCKDIR=\"$(LOCKDIR)\"\

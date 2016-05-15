@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>leechcraft</herd>
+	<maintainer type="project">
+		<email>leechcraft@gentoo.org</email>
+		<name>LeechCraft</name>
+	</maintainer>
 	<longdescription>LeechCraft full package including all official plugins which are considered to be useful.</longdescription> 
 	<use>
 		<flag name="de">Install components, that allow using Leechcraft as Desktop Environment</flag>

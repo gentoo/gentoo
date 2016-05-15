@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>haskell</herd>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
 	<longdescription>
-		This library implements the \&quot;patience diff\&quot; algorithm, as well as the patience
+		This library implements the \"patience diff\" algorithm, as well as the patience
 		algorithm for the longest increasing subsequence problem.
 		
 		Patience diff computes the difference between two lists, for example the

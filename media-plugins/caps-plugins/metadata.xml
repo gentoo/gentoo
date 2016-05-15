@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>proaudio</herd>
+<maintainer type="project">
+	<email>proaudio@gentoo.org</email>
+	<name>Gentoo ProAudio Project</name>
+</maintainer>
 <longdescription>The CAPS Audio Plugin Suite - LADSPA plugin suite which includes DSP units emulating instrument amplifiers, stomp-box classics, versatile 'virtual analogue' oscillators, fractal oscillation, reverb, equalization and others</longdescription>
 </pkgmetadata>

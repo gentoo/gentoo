@@ -17,7 +17,7 @@ SRC_URI="https://raw.githubusercontent.com/wiki/SELinuxProject/selinux/files/rel
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64 ~arm ~arm64 ~mips x86"
 IUSE="debug"
 
 DEPEND=">=sys-libs/libsepol-${SEPOL_VER}

@@ -20,7 +20,6 @@ DEPEND="dev-lang/perl
 	sys-devel/gettext"
 
 RDEPEND="${DEPEND}
-	>=sys-apps/findutils-4.3.0
 	s3? ( dev-perl/Net-Amazon-S3
 		dev-perl/File-Slurp )"
 

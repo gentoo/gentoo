@@ -1,0 +1,77 @@
+Author: Ole Streicher <olebole@debian.org>
+Description: Use loadct in cgloadct if no file is specified.
+ GDL does not shipt with a color table "colors1.tbl", so in the case
+ that no file name is specified, fall back to loadct instead of trying to
+ load this file.
+--- a/cgloadct.pro
++++ b/cgloadct.pro
+@@ -86,8 +86,8 @@
+ ;       If this keyword is set to a named variable, the color table is returned as an 
+ ;       [NCOLORS,3] array and no colors are loaded in the display.
+ ;    filename: in, optional, type='string'
+-;       The name of a color table file to open. By default colors1.tbl in the IDL 
+-;       resource directory.
++;       The name of a color table file to open. By default the gdl standard
++;color table
+ ;    get_names: out, optional, type='string'
+ ;       If set to a named variable, the names of the color tables are returned
+ ;       and no colors are loaded in the display. Note that RGB_TABLE cannot be
+@@ -192,9 +192,8 @@
+       Catch, /CANCEL
+       Help, LAST_MESSAGE=1, OUTPUT=traceback
+       Help, Calls=callStack
+-      callingRoutine = (StrSplit(StrCompress(callStack[1])," ", /Extract))[0]
+-      Print,''
+-      Print, 'Traceback Report from ' + StrUpCase(callingRoutine) + ':'
++      Print,''+callStack
++      Print, 'Traceback Report from:'
+       Print, ''
+       FOR j=0,N_Elements(traceback)-1 DO Print, "     " + traceback[j]
+       void = Dialog_Message(traceback[0], /Error, TITLE='Trapped Error')
+@@ -236,11 +235,9 @@
+    IF N_Elements(clip) EQ 0 THEN clip = [0,255]
+    IF N_Elements(clip) EQ 1 THEN clip = [clip, 255]
+    clip = 0 > clip < 255
+-   IF N_Elements(file) EQ 0 THEN file = Filepath('colors1.tbl', SUBDIRECTORY=['resource', 'colors'])
+-   
+    ; Try to locate the brewer file. 
+    IF Keyword_Set(brewer) THEN BEGIN
+-       brewerfilepath = Filepath( ROOT_DIR=cgSourceDir(), 'fsc_brewer.tbl')
++       brewerfilepath = Filepath( ROOT_DIR='/usr/share/gnudatalanguage/coyote', 'fsc_brewer.tbl')
+        brewerFile = File_Search(brewerfilepath, Count=count)
+        IF count EQ 0 THEN BEGIN
+             Message, 'Cannot find the Brewer color table file "fsc_brewer.tbl."' + $
+@@ -257,6 +254,14 @@
+    IF N_Elements(ncolors) EQ 0 THEN ncolors = !D.TABLE_SIZE - bottom
+    reverse = KEYWORD_SET(reverse)
+ 
++   IF N_Elements(file) EQ 0 THEN BEGIN
++      loadct, table, get_names=get_names, ncolors=ncolors, bottom=bottom, $
++              silent=silent, rgb_table=ltable
++      len = N_Elements(ltable)/3
++      r = ltable[0:len-1]
++      g = ltable[len:2*len-1]
++      b = ltable[2*len:3*len-1]
++   ENDIF ELSE BEGIN
+    ; Open and read the color table files.
+    OPENR, lun, file, /GET_LUN
+    ntables = 0B
+@@ -284,6 +289,7 @@
+ 
+    ; Close the file.
+    FREE_LUN, lun
++   ENDELSE
+ 
+    ; Clip the colors.
+    r = r[clip[0]:clip[1]]
+--- a/xcolors.pro
++++ b/xcolors.pro
+@@ -838,7 +838,7 @@
+            END
+ 
+         'BREWER': BEGIN
+-           info.file = cgFindPathTo('fsc_brewer.tbl')
++           info.file = '/usr/share/gnudatalanguage/fsc_brewer.tbl'
+            info.brewer = 1
+            END
+    ENDCASE

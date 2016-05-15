@@ -1,0 +1,43 @@
+Author: Ole Streicher <olebole@debian.org>
+Description: Wild-quess workaround for access violations in prim/general/libsrc/calc.for
+ This is to hide the following problem:
+ .
+  ERROR: AddressSanitizer: stack-buffer-overflow on address 0x7fffe7377ec4 at pc 0x40fb5c bp 0x7fffe7377350 sp 0x7fffe7377348
+READ of size 4 at 0x7fffe7377ec4 thread T0
+    #0 0x40fb5b in opffw_ prim/general/libsrc/calc.f:129
+    #1 0x40900b in rarthm prim/general/src/rarthm.f:402
+    #2 0x4038ec in main prim/general/src/rarthm.f:456
+    #3 0x7fed23b91b44 in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x21b44)
+    #4 0x403c42 (prim/exec/rarthm.exe+0x403c42)
+
+Address 0x7fffe7377ec4 is located in stack of thread T0 at offset 1316 in frame
+    #0 0x40512f in rarthm prim/general/src/rarthm.f:1
+
+  This frame has 57 object(s):
+    [32, 36) 'uni'
+   [...]
+    [1184, 1188) 'rownoa'
+    [1248, 1252) 'rownob'
+    [1312, 1316) 'rowsiz' <== Memory access at offset 1316 overflows this variable
+    [1376, 1380) 'stat'
+    [1440, 1448) 'consta'
+    [1504, 1512) 'npixa'
+    [1568, 1576) 'npixb'
+    [1632, 1640) 'npixc'
+
+--- a/prim/general/src/rarthm.for
++++ b/prim/general/src/rarthm.for
+@@ -483,11 +483,11 @@
+       IF (OPERAT(1:1).NE.'Q') THEN
+          CALL OPFFW(OPERAT,MADRID(APNTR),MADRID(BPNTR),
+      +              MADRID(PNTRW),APIX,BPIX,CPIX,
+-     +              ROWSIZ,ROWSIZ,ROWSIZ)
++     +              NPIXA,NPIXB,NPIXC)
+       ELSE
+          CALL FN2FFW(OPERA(1:5),MADRID(APNTR),MADRID(BPNTR),
+      +               MADRID(PNTRW),APIX,BPIX,CPIX,
+-     +               ROWSIZ,ROWSIZ,ROWSIZ)
++     +               NPIXA,NPIXB,NPIXC)
+       ENDIF
+ C
+ C  put resulting row back into relevant ATOM

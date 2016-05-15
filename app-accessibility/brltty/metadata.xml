@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>accessibility</herd>
+<maintainer type="project">
+  <email>accessibility@gentoo.org</email>
+  <name>Gentoo Accessibility Project</name>
+ </maintainer>
  <use>
   <flag name="api">build brltty's application program interface</flag>
   <flag name="beeper">support the console tone generator</flag>

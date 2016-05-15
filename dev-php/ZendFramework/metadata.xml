@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>php</herd>
-	<maintainer>
+	<maintainer type="person">
 		<email>gurligebis@gentoo.org</email>
 		<name>Bjarke Istrup Pedersen</name>
 	</maintainer>
+	<maintainer type="project">
+		<email>php-bugs@gentoo.org</email>
+		<name>PHP</name>
+	</maintainer>
 	<use>
-		<flag name='cli'>Enables the CLI</flag>
-		<flag name='doc'>Installs the documentation</flag>
-		<flag name='examples'>Installs the examples</flag>
-		<flag name='minimal'>Installs the minimal version without Dojo toolkit, tests and demos</flag>
+		<flag name="cli">Enables the CLI</flag>
+		<flag name="doc">Installs the documentation</flag>
+		<flag name="examples">Installs the examples</flag>
+		<flag name="minimal">Installs the minimal version without Dojo toolkit, tests and demos</flag>
 	</use>
 </pkgmetadata>

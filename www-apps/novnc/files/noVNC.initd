@@ -17,6 +17,7 @@ depend() {
 }
 
 checkconfig() {
+  checkpath -d -m 0750 /var/log/noVNC
 	if [ ! -r /etc/conf.d/${SVCNAME} ]; then
 		eerror "No config file found: /etc/conf.d/${SVCNAME}"
 		return 1

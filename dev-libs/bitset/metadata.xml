@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>proxy-maintainers</herd>
-	<maintainer>
+	<maintainer type="person">
 		<email>bugs@bergstroem.nu</email>
 		<name>Johan Bergström</name>
 		<description>Maintainer. Assign bugs to him</description>
 	</maintainer>
-	<maintainer>
+	<maintainer type="person">
 		<email>pinkbyte@gentoo.org</email>
 		<name>Sergey Popov</name>
 		<description>Proxy maintainer. CC him on bugs</description>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
 	</maintainer>
 	<use>
 		<flag name="jemalloc">Use <pkg>dev-libs/jemalloc</pkg> for allocations</flag>

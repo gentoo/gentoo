@@ -17,3 +17,13 @@ index 6101f71..d66053d 100644
  
  LIBMEMS_H = \
  RepeatHash.h      MatchHashEntry.h \
+--- a/libMems/dmSML/util.c
++++ b/libMems/dmSML/util.c
+@@ -2,6 +2,7 @@
+ #include "config.h"
+ #endif
+ 
++#include <stdlib.h>
+ #include <stdio.h>
+ #include "libMems/dmSML/util.h"
+ 

@@ -1,9 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
-USE_RUBY="ruby19 ruby20 ruby21 ruby22"
+USE_RUBY="ruby20 ruby21 ruby22 ruby23"
 
 RUBY_FAKEGEM_RECIPE_TEST="rake"
 RUBY_FAKEGEM_RECIPE_DOC="none"
@@ -24,4 +24,5 @@ ruby_add_bdepend "test? ( >=dev-ruby/minitest-5 )"
 all_ruby_prepare() {
 	sed -i -e '/git ls-files/d' connection_pool.gemspec || die
 	sed -i -e '/bundler/d' Rakefile || die
+	sed -i -e "s/gem 'minitest'/gem 'minitest', '~> 5.0'/" test/helper.rb || die
 }

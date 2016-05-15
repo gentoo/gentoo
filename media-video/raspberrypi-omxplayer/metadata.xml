@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>fordfrog@gentoo.org</email>
+		<name>Miroslav Šulc</name>
+	</maintainer>
+	<longdescription>Command line media player for the Raspberry Pi</longdescription>
+	<upstream>
+		<remote-id type="github">popcornmix/omxplayer</remote-id>
+	</upstream>
+</pkgmetadata>

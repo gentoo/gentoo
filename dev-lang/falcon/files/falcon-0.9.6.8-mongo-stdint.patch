@@ -1,0 +1,36 @@
+From a64c0c3959a0f5e853daba2b35ca19459acf875e Mon Sep 17 00:00:00 2001
+From: Stanislas Marquis <stnsls@gmail.com>
+Date: Sat, 29 Jan 2011 12:27:50 +0100
+Subject: [PATCH] [mongo] Fix detection of stdint.h
+
+---
+ modules/native/mongodb/CMakeLists.txt |   12 +++++++++++-
+ 1 files changed, 11 insertions(+), 1 deletions(-)
+
+diff --git a/modules/native/mongodb/CMakeLists.txt b/modules/native/mongodb/CMakeLists.txt
+index bf2d869..e4d1df6 100644
+--- a/modules/native/mongodb/CMakeLists.txt
++++ b/modules/native/mongodb/CMakeLists.txt
+@@ -8,8 +8,18 @@ falcon_define_module( FALCON_MODULE mongo )
+ 
+ message( STATUS "Adding mongodb module" )
+ 
++##
++#   Check for stdint.h
++#
+ if ( NOT MSVC )
+-    option( MONGO_HAVE_STDINT "MongoDB problem with int64_t?" OFF )
++    find_file( STDINT_H stdint.h HINTS /usr/include )
++    if ( STDINT_H STREQUAL STDINT_H-NOTFOUND )
++        option( MONGO_HAVE_STDINT "MongoDB should use stdint.h" OFF )
++    else()
++        option( MONGO_HAVE_STDINT "MongoDB should use stdint.h" ON )
++    endif()
++    mark_as_advanced( STDINT_H )
++    mark_as_advanced( MONGO_HAVE_STDINT )
+ endif()
+ 
+ ##
+-- 
+1.7.9.1
+

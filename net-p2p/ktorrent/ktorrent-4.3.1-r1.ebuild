@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -34,7 +34,7 @@ fi
 inherit kde4-base
 
 DESCRIPTION="A BitTorrent program for KDE"
-HOMEPAGE="http://ktorrent.org/"
+HOMEPAGE="http://ktorrent.pwsp.net/"
 
 LICENSE="GPL-2"
 SLOT="4"
@@ -43,12 +43,12 @@ IUSE="+bwscheduler debug +downloadorder +infowidget +ipfilter +kross +logviewer
 +upnp webinterface +zeroconf"
 
 COMMONDEPEND="
-	<net-libs/libktorrent-${LIBKT_VERSION_MAX}
-	>=net-libs/libktorrent-${LIBKT_VERSION_MIN}
+	<net-libs/libktorrent-${LIBKT_VERSION_MAX}:4
+	>=net-libs/libktorrent-${LIBKT_VERSION_MIN}:4
 	infowidget? ( dev-libs/geoip )
 	mediaplayer? ( >=media-libs/taglib-1.5 )
 	plasma? ( $(add_kdebase_dep libtaskmanager) )
-	rss? ( $(add_kdebase_dep kdepimlibs) )
+	rss? ( $(add_kdeapps_dep kdepimlibs) )
 	shutdown? ( $(add_kdebase_dep libkworkspace) )
 "
 DEPEND="${COMMONDEPEND}

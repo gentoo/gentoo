@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -25,7 +25,7 @@ DEPEND="
 	kde? ( $(add_kdebase_dep kactivities) )
 	opera? (
 		app-crypt/qca:2[qt4(+)]
-		dev-libs/qoauth
+		dev-libs/qoauth:0
 	)
 "
 RDEPEND="

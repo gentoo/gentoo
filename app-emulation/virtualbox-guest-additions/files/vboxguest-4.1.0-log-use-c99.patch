@@ -1,7 +1,7 @@
 # https://bugs.gentoo.org/298988
 
---- vboxguest/Makefile
-+++ vboxguest/Makefile
+--- a/vboxguest/Makefile
++++ b/vboxguest/Makefile
 @@ -104,7 +104,7 @@
  
  MOD_DEFS = -DVBOX -DRT_OS_LINUX -DIN_RING0 -DIN_RT_R0 -DIN_GUEST \

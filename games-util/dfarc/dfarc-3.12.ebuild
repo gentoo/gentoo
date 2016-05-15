@@ -1,10 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 WX_GTK_VER="3.0"
-inherit gnome2-utils fdo-mime wxwidgets games
+inherit eutils gnome2-utils fdo-mime wxwidgets games
 
 DESCRIPTION="Frontend and .dmod installer for GNU FreeDink"
 HOMEPAGE="http://www.freedink.org/"
@@ -21,6 +21,10 @@ RDEPEND="
 	x11-libs/wxGTK:${WX_GTK_VER}[X]"
 DEPEND="${RDEPEND}
 	nls? ( >=dev-util/intltool-0.31 )"
+
+src_prepare() {
+	epatch "${FILESDIR}"/${P}-nowindres.patch
+}
 
 src_configure() {
 	egamesconf \

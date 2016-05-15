@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -6,17 +6,23 @@ EAPI=5
 
 inherit git-r3 golang-base systemd user
 
-KEYWORDS=""
+GO_PN="github.com/hashicorp/consul"
+
 DESCRIPTION="A tool for service discovery, monitoring and configuration"
 HOMEPAGE="http://www.consul.io"
-GO_PN="github.com/hashicorp/consul"
+SRC_URI=""
 EGIT_REPO_URI="git://${GO_PN}.git"
-LICENSE="MPL-2.0"
+
 SLOT="0"
+LICENSE="MPL-2.0"
+KEYWORDS=""
 IUSE="test web"
+
 RESTRICT="test"
 
-DEPEND=">=dev-lang/go-1.4:=
+DEPEND="
+	app-arch/zip
+	>=dev-lang/go-1.4:=
 	dev-go/go-crypto:=
 	test? ( dev-go/go-tools )
 	web? (
@@ -24,10 +30,11 @@ DEPEND=">=dev-lang/go-1.4:=
 		dev-ruby/uglifier
 	)"
 RDEPEND=""
-SRC_URI=""
 
 STRIP_MASK="*.a"
+
 S="${WORKDIR}/src/${GO_PN}"
+
 EGIT_CHECKOUT_DIR="${S}"
 
 pkg_setup() {
@@ -47,7 +54,7 @@ src_unpack() {
 	# Use latest versions of some packages, in case of incompatible
 	# API changes
 	rm -rf "${GOROOT}/src/${GO_PN%/*}" \
-		"${GOROOT}/pkg/linux_${ARCH}/${GO_PN%/*}" || die
+		"${GOROOT}/pkg/$(go env GOOS)_$(go env GOARCH)/${GO_PN%/*}" || die
 
 	# Fetch dependencies
 	emake deps
@@ -55,7 +62,7 @@ src_unpack() {
 	# Avoid interference from installed instances
 	while read -r path; do
 		rm -rf "${GOROOT}/src/${path#${WORKDIR}/src}" \
-		"${GOROOT}/pkg/linux_${ARCH}/${path#${WORKDIR}/src}" || die
+		"${GOROOT}/pkg/$(go env GOOS)_$(go env GOARCH)/${path#${WORKDIR}/src}" || die
 	done < <(find "${WORKDIR}"/src -maxdepth 3 -mindepth 3 -type d)
 }
 
@@ -80,7 +87,7 @@ src_install() {
 	local x
 
 	dobin bin/*
-	rm -rf bin
+	rm -rf bin || die
 
 	keepdir /etc/consul.d
 	insinto /etc/consul.d
@@ -100,17 +107,19 @@ src_install() {
 	newconfd "${FILESDIR}/consul.confd" "${PN}"
 	systemd_dounit "${FILESDIR}/consul.service"
 
-	find "${WORKDIR}"/{pkg,src} -name '.git*' -exec rm -rf {} \; 2>/dev/null
-	find "${WORKDIR}"/src/${GO_PN} -mindepth 1 -maxdepth 1 -type f -delete
+	egit_clean "${WORKDIR}"/{pkg,src}
+
+	find "${WORKDIR}"/src/${GO_PN} -mindepth 1 -maxdepth 1 -type f -delete || die
+
 	while read -r -d '' x; do
 		x=${x#${WORKDIR}/src}
-		[[ -d ${WORKDIR}/pkg/${KERNEL}_${ARCH}/${x} ||
-			-f ${WORKDIR}/pkg/${KERNEL}_${ARCH}/${x}.a ]] && continue
+		[[ -d ${WORKDIR}/pkg/$(go env GOOS)_$(go env GOARCH)/${x} ||
+			-f ${WORKDIR}/pkg/$(go env GOOS)_$(go env GOARCH)/${x}.a ]] && continue
 		rm -rf "${WORKDIR}"/src/${x}
 	done < <(find "${WORKDIR}"/src/${GO_PN} -mindepth 1 -maxdepth 1 -type d -print0)
 	insopts -m0644 -p # preserve timestamps for bug 551486
-	insinto /usr/lib/go/pkg/${KERNEL}_${ARCH}/${GO_PN%/*}
-	doins -r "${WORKDIR}"/pkg/${KERNEL}_${ARCH}/${GO_PN}
-	insinto /usr/lib/go/src/${GO_PN%/*}
+	insinto "$(get_golibdir)/pkg/$(go env GOOS)_$(go env GOARCH)/${GO_PN%/*}"
+	doins -r "${WORKDIR}"/pkg/$(go env GOOS)_$(go env GOARCH)/${GO_PN}
+	insinto "$(get_golibdir)/src/${GO_PN%/*}"
 	doins -r "${WORKDIR}"/src/${GO_PN}
 }

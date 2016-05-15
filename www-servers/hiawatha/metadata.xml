@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer>
+	<maintainer type="person">
 		<email>hasufell@gentoo.org</email>
 		<name>Julian Ospald</name>
 	</maintainer>
 	<use>
-		<flag name='cache'>Enable caching of content</flag>
-		<flag name='monitor'>Pull in www-apps/hiawatha-monitor</flag>
-		<flag name='rewrite'>Enable the rewrite toolkit</flag>
-		<flag name='ssl'>Enable TLS support via
+		<flag name="cache">Enable caching of content</flag>
+		<flag name="monitor">Pull in www-apps/hiawatha-monitor</flag>
+		<flag name="rewrite">Enable the rewrite toolkit</flag>
+		<flag name="ssl">Enable TLS support via
 			<pkg>net-libs/mbedtls</pkg></flag>
-		<flag name='tomahawk'>Enable Tomahawk control server</flag>
-		<flag name='xslt'>Enable XSLT support.
+		<flag name="tomahawk">Enable Tomahawk control server</flag>
+		<flag name="xslt">Enable XSLT support.
 			This is also needed for directory listings</flag>
-		<flag name='rproxy'>Enable reverse proxy support</flag>
+		<flag name="rproxy">Enable reverse proxy support</flag>
 	</use>
 	<upstream>
-		<remote-id type='github'>hsleisink/hiawatha</remote-id>
+		<remote-id type="github">hsleisink/hiawatha</remote-id>
 	</upstream>
 </pkgmetadata>

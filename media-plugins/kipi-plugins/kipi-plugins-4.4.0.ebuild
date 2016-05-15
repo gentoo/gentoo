@@ -43,7 +43,7 @@ COMMONDEPEND="
 	media-libs/libpng:0=
 	media-libs/tiff
 	virtual/jpeg
-	calendar?	( $(add_kdebase_dep kdepimlibs) )
+	calendar?	( $(add_kdeapps_dep kdepimlibs) )
 	crypt?		( app-crypt/qca:2[qt4(+)] )
 	ipod?		(
 			  media-libs/libgpod

@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer>
+  <maintainer type="person">
     <email>scarabeus@gentoo.org</email>
     <name>Tomáš Chvátal</name>
   </maintainer>
-  <herd>kde</herd>
+  <maintainer type="project">
+    <email>kde@gentoo.org</email>
+    <name>Gentoo KDE Project</name>
+  </maintainer>
   <upstream>
     <remote-id type="github">vpelcak/kde-scripts</remote-id>
   </upstream>

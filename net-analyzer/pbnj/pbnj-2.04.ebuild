@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -22,7 +22,7 @@ DEPEND="
 	dev-perl/Nmap-Parser
 	dev-perl/Text-CSV_XS
 	dev-perl/XML-Twig
-	dev-perl/yaml
+	dev-perl/YAML
 "
 RDEPEND="
 	${DEPEND}

@@ -1,17 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>netmon</herd>
-	<herd>proxy-maintainers</herd>
-	<maintainer>
+	<maintainer type="person">
 		<email>patrick@gentoo.org</email>
 		<name>Patrick Lauer</name>
 		<description>Maintainer</description>
 	</maintainer>
-	<maintainer>
+	<maintainer type="person">
 		<email>jason.r.wallace@gmail.com</email>
 		<name>Jason Wallace</name>
 		<description>Proxy maintainer. CC him on bugs</description>
+	</maintainer>
+	<maintainer type="project">
+		<email>netmon@gentoo.org</email>
+		<name>Gentoo network monitoring and analysis project</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription>
 		Snort is an open source network intrusion prevention and detection
@@ -31,104 +37,104 @@
 		<bugs-to>http://www.snort.org/snort-downloads/submit-a-bug/</bugs-to>
 	</upstream>
 	<use>
-		<flag name='control-socket'>
+		<flag name="control-socket">
 			Enables Snort's control socket.
 		</flag>
-		<flag name='dynamicplugin'>
+		<flag name="dynamicplugin">
 			Enable ability to dynamically load preprocessors, detection engine,
 			and rules library. This is required if you want to use shared 
 			object (SO) snort rules.
 		</flag>
-		<flag name='file-inspect'>
+		<flag name="file-inspect">
 			Enables extended file inspection capabilities.
 		</flag>
-		<flag name='gre'>
+		<flag name="gre">
 			Enable support for inspecting and processing Generic Routing 
 			Encapsulation (GRE) packet headders. Only needed if you are
 			monitoring GRE tunnels.
 		</flag>
-		<flag name='high-availability'>
+		<flag name="high-availability">
 			Enables high-availability state sharing.
 		</flag>
-		<flag name='inline-init-failopen'>
+		<flag name="inline-init-failopen">
 			Enables support to allow traffic to pass (fail-open) through
 			inline deployments while snort is starting and not ready to begin
 			inspecting traffic. If this option is not enabled, network
 			traffic will not pass (fail-closed) until snort has fully started
 			and is ready to perform packet inspection.
 		</flag>
-		<flag name='linux-smp-stats'>
+		<flag name="linux-smp-stats">
 			Enable accurate statistics reporting through /proc on systems with
 			multipule processors.
 		</flag>
-		<flag name='mpls'>
+		<flag name="mpls">
 			Enables support for processing and inspecting Multiprotocol Label 
 			Switching MPLS network network traffic. Only needed if you are
 			monitoring an MPLS network.
 		</flag>
-		<flag name='non-ether-decoders'>
+		<flag name="non-ether-decoders">
 			Enable decoding of non-ethernet protocols such as TokenRing, FDDI,
 			IPX, etc.
 		</flag>
-		<flag name='perfprofiling'>
+		<flag name="perfprofiling">
 			Enables support for preprocessor and rule performance profiling 
 			using the perfmonitor preprocessor.
 		</flag>
-		<flag name='ppm'>
+		<flag name="ppm">
 			Enables support for setting per rule or per packet latency limits.
 			Helps protect against introducing network latency with inline 
 			deployments.
 		</flag>
-		<flag name='react'>
+		<flag name="react">
 			Enables support for the react rule keyword. Supports interception,
 			termination, and redirection of HTTP connections.
 		</flag>
-		<flag name='shared-rep'>
+		<flag name="shared-rep">
 			Enables the use of shared memory for the Reputation Preprocessor
 			(Only available on Linux systems)
 		</flag>
-		<flag name='side-channel'>
+		<flag name="side-channel">
 			Enables Snort's the side channel.
 		</flag>
-		<flag name='sourcefire'>
+		<flag name="sourcefire">
 			Enables Sourcefire specific build options, which include
 			--enable-perfprofiling and --enable-ppm.
 		</flag>
-		<flag name='targetbased'>
+		<flag name="targetbased">
 			Enables support in snort for using a host attibute XML file 
 			(attribute_table.dtd). This file needs to be created by the user
 			and should define the IP address, operating system, and services
 			for all hosts on the monitored network. This is cumbersome, but
 			can improve intrusion detection accuracy.
 		</flag>
-		<flag name='reload-error-restart'>
+		<flag name="reload-error-restart">
 			Enables support for completely restarting snort if an error is 
 			detected durring a reload.
 		</flag>
-		<flag name='zlib'>
+		<flag name="zlib">
 			Enables HTTP inspection of compressed web traffic. Requires 
 			dynamicplugin be enabled.
 		</flag>
-		<flag name='active-response'>
+		<flag name="active-response">
 			Enables support for automatically sending TCP resets and ICMP 
 			unreachable messages to terminate connections. Used with inline
 			deployments.
 		</flag>
-		<flag name='normalizer'>
+		<flag name="normalizer">
 			Enables support for normalizing packets in inline deployments to
 			help minimize the chances of detection evasion.
 		</flag>
-		<flag name='flexresp3'>
+		<flag name="flexresp3">
 			Enables support for new flexable response preprocessor for enabling
 			connection tearing for inline deployments. Replaces flexresp and 
 			flexresp2.
 		</flag>
-		<flag name='paf'>
+		<flag name="paf">
 			Enables support for Protocol Aware Flushing. This allows Snort to
 			statefully scan a stream and reassemble a complete protocol data
 			unit regardless of segmentation.
 		</flag>
-		<flag name='large-pcap-64bit'>
+		<flag name="large-pcap-64bit">
 			Allows Snort to read pcap files that are larger than 2 GB. ONLY
 			VALID FOR 64bit SYSTEMS!
 		</flag>

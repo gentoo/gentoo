@@ -1,0 +1,11 @@
+--- Makefile.old
++++ Makefile
+@@ -30,7 +30,7 @@
+ ########
+ 
+ xbomb : $(OBJ)
+-	$(LINK) $(OBJ) -o $@ $(LIB) $(XLIB)
++	$(LINK) $(LDFLAGS) $(OBJ) -o $@ $(LIB) $(XLIB)
+ 
+ ########
+ 

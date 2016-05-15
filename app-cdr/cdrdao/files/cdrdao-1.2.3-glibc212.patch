@@ -1,7 +1,7 @@
 http://bugs.gentoo.org/332237
 
---- dao/ScsiIf-linux.cc
-+++ dao/ScsiIf-linux.cc
+--- cdrdao-1.2.3/dao/ScsiIf-linux.cc
++++ cdrdao-1.2.3/dao/ScsiIf-linux.cc
 @@ -30,6 +30,7 @@
  #include <asm/param.h>
  #include <scsi/scsi.h>

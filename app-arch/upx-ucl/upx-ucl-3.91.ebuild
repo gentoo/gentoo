@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -14,7 +14,7 @@ HOMEPAGE="http://upx.sourceforge.net/"
 SRC_URI="http://upx.sourceforge.net/download/${MY_P}.tar.bz2
 	lzma? ( mirror://sourceforge/sevenzip/lzma${LZMA_VER}.tar.bz2 )"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+ UPX-exception" # Read the exception before applying any patches
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~sparc ~x86 ~x86-fbsd"
 IUSE="lzma zlib"

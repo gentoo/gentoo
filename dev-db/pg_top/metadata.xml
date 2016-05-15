@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>postgresql</herd>
+	<maintainer type="project">
+		<email>pgsql-bugs@gentoo.org</email>
+		<name>PostgreSQL and Related Package Development</name>
+	</maintainer>
 	<longdescription lang="en">
 		pg_top is 'top' for PostgreSQL. It is derived from Unix Top. Similar to
 		top, pg_top allows you to monitor PostgreSQL processes.
 	</longdescription>
 </pkgmetadata>
-

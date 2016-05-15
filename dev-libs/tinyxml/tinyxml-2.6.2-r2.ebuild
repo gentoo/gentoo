@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=4
-inherit flag-o-matic toolchain-funcs eutils multilib
+inherit flag-o-matic toolchain-funcs eutils multilib versionator
 
 DESCRIPTION="a simple, small, C++ XML parser that can be easily integrating into other programs"
 HOMEPAGE="http://www.grinninglizard.com/tinyxml/index.html"
@@ -20,9 +20,8 @@ DEPEND="doc? ( app-doc/doxygen )"
 S="${WORKDIR}/${PN}"
 
 src_prepare() {
-	local major_v minor_v
-	major_v=$(echo ${PV} | cut -d \. -f 1)
-	minor_v=$(echo ${PV} | cut -d \. -f 2-3)
+	local major_v=$(get_major_version)
+	local minor_v=$(get_version_component_range 2-3)
 
 	sed -e "s:@MAJOR_V@:$major_v:" \
 	    -e "s:@MINOR_V@:$minor_v:" \

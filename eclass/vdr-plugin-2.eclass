@@ -90,7 +90,9 @@
 # @CODE
 
 # Applying your own local/user patches:
-# This is done by using the epatch_user() function of the eutils.eclass.
+# This is done by using the 
+# (EAPI = 4,5) epatch_user() function of the eutils.eclass,
+# (EAPI = 6) eapply_user function integrated in EAPI = 6.
 # Simply add your patches into one of these directories:
 # /etc/portage/patches/<CATEGORY>/<PF|P|PN>/
 # Quote: where the first of these three directories to exist will be the one to
@@ -98,11 +100,17 @@
 #
 # For more details about it please take a look at the eutils.class.
 
-inherit eutils flag-o-matic multilib toolchain-funcs unpacker
+[[ ${EAPI} == [45] ]] && inherit eutils multilib
+inherit flag-o-matic toolchain-funcs unpacker
 
 case ${EAPI:-0} in
-	4|5) ;;
+	4|5)
+	;;
+	6)
+	ewarn "EAPI 6 support for test purpose only, plz report bugs to vdr@gentoo.org"
+	;;
 	*) die "EAPI ${EAPI} unsupported."
+	;;
 esac
 
 EXPORT_FUNCTIONS pkg_setup src_unpack src_prepare src_compile src_install pkg_postinst pkg_postrm pkg_config
@@ -388,17 +396,10 @@ vdr-plugin-2_pkg_setup() {
 	fi
 
 	# Where should the plugins live in the filesystem
-	if has_version ">=media-video/vdr-1.7.34"; then
-		VDR_PLUGIN_DIR=$(pkg-config --variable=libdir vdr)
-	else
-		# obsolete, as we have only >=media-video/vdr-2
-		VDR_PLUGIN_DIR="/usr/$(get_libdir)/vdr/plugins"
-	fi
+	VDR_PLUGIN_DIR=$(pkg-config --variable=libdir vdr)
 
 	VDR_CHECKSUM_DIR="${VDR_PLUGIN_DIR%/plugins}/checksums"
 
-	# was /usr/lib/... some time ago
-	# since gentoo-vdr-scripts-0.3.6 it works with /usr/share/...
 	VDR_RC_DIR="/usr/share/vdr/rcscript"
 
 	# Pathes to includes
@@ -407,12 +408,7 @@ vdr-plugin-2_pkg_setup() {
 
 	TMP_LOCALE_DIR="${WORKDIR}/tmp-locale"
 
-	if has_version ">=media-video/vdr-1.7.34"; then
-		LOCDIR=$(pkg-config --variable=locdir vdr)
-	else
-		# obsolete, as we have only >=media-video/vdr-2
-		LOCDIR="/usr/share/locale"
-	fi
+	LOCDIR=$(pkg-config --variable=locdir vdr)
 
 	if ! has_vdr; then
 		# set to invalid values to detect abuses
@@ -428,15 +424,8 @@ vdr-plugin-2_pkg_setup() {
 		return
 	fi
 
-	if has_version ">=media-video/vdr-1.7.34"; then
-		VDRVERSION=$(awk -F'"' '/define VDRVERSION/ {print $2}' "${VDR_INCLUDE_DIR}"/config.h)
-		APIVERSION=$(pkg-config --variable=apiversion vdr)
-	else
-		# obsolete, as we have only >=media-video/vdr-2
-		VDRVERSION=$(awk -F'"' '/define VDRVERSION/ {print $2}' "${VDR_INCLUDE_DIR}"/config.h)
-		APIVERSION=$(awk -F'"' '/define APIVERSION/ {print $2}' "${VDR_INCLUDE_DIR}"/config.h)
-	[[ -z ${APIVERSION} ]] && APIVERSION="${VDRVERSION}"
-	fi
+	VDRVERSION=$(awk -F'"' '/define VDRVERSION/ {print $2}' "${VDR_INCLUDE_DIR}"/config.h)
+	APIVERSION=$(pkg-config --variable=apiversion vdr)
 
 	einfo "Compiling against"
 	einfo "\tvdr-${VDRVERSION} [API version ${APIVERSION}]"
@@ -464,7 +453,11 @@ vdr-plugin-2_src_util() {
 			;;
 		add_local_patch)
 			cd "${S}" || die "Could not change to plugin-source-directory!"
-			epatch_user
+			if [[ ${EAPI} == 6 ]]; then
+				eapply_user
+			else
+				epatch_user
+			fi
 			;;
 		patchmakefile)
 			cd "${S}" || die "Could not change to plugin-source-directory!"

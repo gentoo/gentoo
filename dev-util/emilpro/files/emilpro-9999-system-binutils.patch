@@ -1,0 +1,52 @@
+diff -Naur emilpro-9999-orig/CMakeLists.txt emilpro-9999/CMakeLists.txt
+--- emilpro-9999-orig/CMakeLists.txt	2016-03-29 14:30:48.017340585 -0400
++++ emilpro-9999/CMakeLists.txt	2016-03-29 14:31:21.335339797 -0400
+@@ -11,7 +11,6 @@
+ set (BASE_DIR ${CMAKE_CURRENT_SOURCE_DIR})
+ 
+ # Dependencies
+-include (${CMAKE_CURRENT_SOURCE_DIR}/cmake/BuildBinutils.cmake)
+ 
+ find_package (LibElf REQUIRED)
+ find_package (LibCapstone)
+@@ -40,10 +39,6 @@
+ pkg_check_modules(LIBCURL REQUIRED libcurl)
+ 
+ set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++0x -Wall -D_GLIBCXX_USE_NANOSLEEP -DPACKAGE=emilpro -DPACKAGE_VERSION=1 -pthread")
+-LINK_DIRECTORIES(
+-	${CMAKE_BINARY_DIR}/install-binutils/lib ${CMAKE_BINARY_DIR}/install-binutils/lib64
+-	${CMAKE_BINARY_DIR}/binutils/libiberty
+-	)
+ 
+ if (HAVE_BFD_MULTIARCH)
+ 	set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DHAVE_BFD_MULTIARCH")
+@@ -120,7 +115,6 @@
+ set_property(SOURCE src/emilpro.cc APPEND PROPERTY OBJECT_DEPENDS ${CMAKE_BINARY_DIR}/built_in_instruction_models.hh)
+ 
+ include_directories(
+-	${CMAKE_BINARY_DIR}/install-binutils/include/
+ 	src/gtk/include/
+ 	src/include/
+ 	${CMAKE_BINARY_DIR}
+@@ -143,9 +137,6 @@
+ 	tools/squash-instruction-models.cc
+ 	)
+ 
+-set_property(TARGET emilpro APPEND PROPERTY OBJECT_DEPENDS binutils)
+-set_property(TARGET tools/squash-instruction-models APPEND PROPERTY OBJECT_DEPENDS binutils)
+-
+ set (BASE_LIBS
+ 	${LIBELF_LIBRARIES}
+ 	opcodes
+diff -Naur emilpro-9999-orig/src/namemangler.cc emilpro-9999/src/namemangler.cc
+--- emilpro-9999-orig/src/namemangler.cc	2016-03-29 14:30:48.017340585 -0400
++++ emilpro-9999/src/namemangler.cc	2016-03-29 14:31:06.397340150 -0400
+@@ -1,7 +1,7 @@
+ #include <namemangler.hh>
+ 
+ #include <bfd.h>
+-#include <demangle.h>
++#include <libiberty/demangle.h>
+ 
+ using namespace emilpro;
+ 

@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -9,22 +9,24 @@ PYTHON_COMPAT=( python2_7 pypy )
 EHG_PROJECT="pypy"
 EHG_REPO_URI="https://bitbucket.org/pypy/pypy"
 EHG_REVISION="py3k"
-inherit check-reqs eutils mercurial multilib multiprocessing pax-utils python-any-r1 toolchain-funcs versionator
+inherit check-reqs eutils mercurial multilib multiprocessing pax-utils \
+	python-any-r1 toolchain-funcs versionator
 
-DESCRIPTION="A fast, compliant alternative implementation of the Python language"
+DESCRIPTION="A fast, compliant alternative implementation of Python 3"
 HOMEPAGE="http://pypy.org/"
 SRC_URI=""
 
 LICENSE="MIT"
 SLOT="0/$(get_version_component_range 1-2 ${PV})"
 KEYWORDS=""
-IUSE="bzip2 gdbm +jit low-memory ncurses sandbox shadowstack sqlite cpu_flags_x86_sse2 test tk"
+IUSE="bzip2 gdbm +jit libressl low-memory ncurses sandbox +shadowstack sqlite cpu_flags_x86_sse2 tk"
 
 RDEPEND=">=sys-libs/zlib-1.1.3:0=
 	virtual/libffi:0=
 	virtual/libintl:0=
 	dev-libs/expat:0=
-	dev-libs/openssl:0=[-bindist]
+	!libressl? ( dev-libs/openssl:0= )
+	libressl? ( dev-libs/libressl:= )
 	bzip2? ( app-arch/bzip2:0= )
 	gdbm? ( sys-libs/gdbm:0= )
 	ncurses? ( sys-libs/ncurses:0= )
@@ -158,31 +160,32 @@ src_compile() {
 	"${@}" || die "compile error"
 
 	#use doc && emake -C pypy/doc/ html
-	pax-mark m "${ED%/}${INSDESTTREE}/pypy-c"
+	pax-mark m pypy-c libpypy-c.so
 }
 
 src_install() {
+	local dest=/usr/$(get_libdir)/pypy3
 	einfo "Installing PyPy ..."
-	insinto "/usr/$(get_libdir)/pypy3"
+	insinto "${dest}"
 	doins -r include lib_pypy lib-python pypy-c libpypy-c.so
-	fperms a+x ${INSDESTTREE}/pypy-c ${INSDESTTREE}/libpypy-c.so
-	pax-mark m "${ED%/}${INSDESTTREE}/pypy-c" "${ED%/}${INSDESTTREE}/libpypy-c.so"
+	fperms a+x ${dest}/pypy-c ${dest}/libpypy-c.so
+	pax-mark m "${ED%/}${dest}/pypy-c" "${ED%/}${dest}/libpypy-c.so"
 	dosym ../$(get_libdir)/pypy3/pypy-c /usr/bin/pypy3
 	dodoc README.rst
 
 	if ! use gdbm; then
-		rm -r "${ED%/}${INSDESTTREE}"/lib_pypy/gdbm.py \
-			"${ED%/}${INSDESTTREE}"/lib-python/*3/test/test_gdbm.py || die
+		rm -r "${ED%/}${dest}"/lib_pypy/gdbm.py \
+			"${ED%/}${dest}"/lib-python/*3/test/test_gdbm.py || die
 	fi
 	if ! use sqlite; then
-		rm -r "${ED%/}${INSDESTTREE}"/lib-python/*3/sqlite3 \
-			"${ED%/}${INSDESTTREE}"/lib_pypy/_sqlite3.py \
-			"${ED%/}${INSDESTTREE}"/lib-python/*3/test/test_sqlite.py || die
+		rm -r "${ED%/}${dest}"/lib-python/*3/sqlite3 \
+			"${ED%/}${dest}"/lib_pypy/_sqlite3.py \
+			"${ED%/}${dest}"/lib-python/*3/test/test_sqlite.py || die
 	fi
 	if ! use tk; then
-		rm -r "${ED%/}${INSDESTTREE}"/lib-python/*3/{idlelib,tkinter} \
-			"${ED%/}${INSDESTTREE}"/lib_pypy/_tkinter \
-			"${ED%/}${INSDESTTREE}"/lib-python/*3/test/test_{tcl,tk,ttk*}.py || die
+		rm -r "${ED%/}${dest}"/lib-python/*3/{idlelib,tkinter} \
+			"${ED%/}${dest}"/lib_pypy/_tkinter \
+			"${ED%/}${dest}"/lib-python/*3/test/test_{tcl,tk,ttk*}.py || die
 	fi
 
 	# Install docs
@@ -190,8 +193,8 @@ src_install() {
 
 	einfo "Generating caches and byte-compiling ..."
 
-	local -x PYTHON=${ED%/}${INSDESTTREE}/pypy-c
-	local -x LD_LIBRARY_PATH="${ED%/}${INSDESTTREE}"
+	local -x PYTHON=${ED%/}${dest}/pypy-c
+	local -x LD_LIBRARY_PATH="${ED%/}${dest}"
 	# we can't use eclass function since PyPy is dumb and always gives
 	# paths relative to the interpreter
 	local PYTHON_SITEDIR=${EPREFIX}/usr/$(get_libdir)/pypy3/site-packages
@@ -223,16 +226,16 @@ src_install() {
 	local t
 	# all modules except tkinter output to .
 	# tkinter outputs to the correct dir ...
-	cd "${ED%/}${INSDESTTREE}"/lib_pypy || die
+	cd "${ED%/}${dest}"/lib_pypy || die
 	for t in "${cffi_targets[@]}"; do
 		# tkinter doesn't work via -m
 		"${PYTHON}" "_${t}_build.py" || die "Failed to build CFFI bindings for ${t}"
 	done
 
 	# Cleanup temporary objects
-	find "${ED%/}${INSDESTTREE}" -name "_cffi_*.[co]" -delete || die
-	find "${ED%/}${INSDESTTREE}" -type d -empty -delete || die
+	find "${ED%/}${dest}" -name "_cffi_*.[co]" -delete || die
+	find "${ED%/}${dest}" -type d -empty -delete || die
 
 	# compile the installed modules
-	python_optimize "${ED%/}${INSDESTTREE}"
+	python_optimize "${ED%/}${dest}"
 }

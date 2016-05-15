@@ -1,0 +1,14 @@
+--- gracer-0.1.5.orig/common/gr_texture.c
++++ gracer-0.1.5/common/gr_texture.c
+@@ -274,7 +274,11 @@
+   int index;
+   int width, height;
+ 
++#if (GIFLIB_MAJOR >= 5&& !(GIFLIB_MAJOR == 5 && GIFLIB_MINOR == 0))
++  file = DGifOpenFileName (filename, &i);
++#else
+   file = DGifOpenFileName (filename);
++#endif
+   if (!file)
+     return -1;
+ 

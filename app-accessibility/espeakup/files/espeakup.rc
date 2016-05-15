@@ -1,28 +1,13 @@
-#!/sbin/runscript
+#!/sbin/openrc-run
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+command=/usr/bin/espeakup
+command_args="${espeakup_opts:-${ESPEAKUP_OPTS}}"
+pidfile=/run/espeakup.pid
+
 depend() {
 	after modules
 	use alsasound pulseaudio
-}
-
-start() {
-	ebegin "Starting espeakup"
-	start-stop-daemon --start --exec /usr/bin/espeakup \
-		-- ${ESPEAKUP_OPTS}
-	eend $?
-}
-
-stop() {
-	ebegin "Stopping espeakup"
-	start-stop-daemon --stop --pidfile /var/run/espeakup.pid
-	eend $?
-}
-
-restart() {
-	svc_stop || exit 1
-	sleep 2
-	svc_start || exit 1
 }

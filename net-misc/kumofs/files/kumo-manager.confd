@@ -1,6 +1,0 @@
-# /etc/conf.d/kumo-manager: config file for /etc/init.d/kumo-manager
-
-#KUMO_MANAGER_HOSTNAME="${HOSTNAME}"
-
-#KUMO_MANAGER_OPTS="-p manager2"
-KUMO_MANAGER_OPTS=""

@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>games</herd>
+<maintainer type="project">
+	<email>games@gentoo.org</email>
+	<name>Gentoo Games Project</name>
+</maintainer>
 <longdescription>
 Power up your mana and help Corvus find the cure to a plague of epic dimensions -- and save the worlds of D'sparil before it's too late!  A high-powered and mystical three-dimensional environment will enthrall you, with spectacular sound and visual effects, non-stop action and adventure.  Prepare to be ensnared in the visual feast that is the worlds of D'sparil.  This is the demo version of the commercially-ported game.
 </longdescription>

@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -24,14 +24,14 @@ RDEPEND="
 	>=dev-perl/IO-Tty-1.08
 	dev-perl/Filter
 	dev-perl/FreezeThaw
-	dev-perl/yaml
+	dev-perl/YAML
 	>=dev-perl/TermReadKey-2.21
 	>=virtual/perl-Time-HiRes-1.59
 	ipv6? (
 		>=dev-perl/Socket6-0.14
 	)
 	tk? (
-		>=dev-perl/perl-tk-800.027
+		>=dev-perl/Tk-800.027
 	)
 	libwww? (
 		>=dev-perl/libwww-perl-5.79

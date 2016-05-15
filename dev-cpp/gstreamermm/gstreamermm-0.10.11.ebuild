@@ -8,7 +8,7 @@ GNOME2_LA_PUNT="yes"
 inherit flag-o-matic gnome2
 
 DESCRIPTION="C++ interface for GStreamer"
-HOMEPAGE="http://gstreamer.freedesktop.org/bindings/cplusplus.html"
+HOMEPAGE="https://gstreamer.freedesktop.org/bindings/cplusplus.html"
 
 LICENSE="LGPL-2.1"
 SLOT="0.10"

@@ -1,0 +1,28 @@
+From 99e5c17b5fe5a93066e81cc6fcc7ebf386cb6183 Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Mon, 29 Feb 2016 13:35:05 -0500
+Subject: [PATCH] include sys/sysmacros.h
+
+The major/minor macros are defined in sys/sysmacros.h.  This has
+historically been pulled in implicitly by sys/types.h, but C libs
+are moving away from that as they aren't in POSIX.  Use the header
+directly as defined by BSD systems.
+---
+ toys.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/toys.h b/toys.h
+index 8a29730..5e640a1 100644
+--- a/toys.h
++++ b/toys.h
+@@ -34,6 +34,7 @@
+ #include <sys/resource.h>
+ #include <sys/stat.h>
+ #include <sys/statvfs.h>
++#include <sys/sysmacros.h>
+ #include <sys/time.h>
+ #include <sys/times.h>
+ #include <sys/utsname.h>
+-- 
+2.6.2
+

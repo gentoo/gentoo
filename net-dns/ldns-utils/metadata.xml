@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer>
+  <maintainer type="person">
     <email>mschiff@gentoo.org</email>
     <name>Marc Schiffbauer</name>
   </maintainer>
@@ -12,8 +12,8 @@
   packets.
   </longdescription>
   <use>
-    <flag name='dane'>Enable DNS-based Authentication of Named Entities (DANE) support</flag>
-    <flag name='ecdsa'>Enable ECDSA support</flag>
-    <flag name='gost'>Enable GOST support</flag>
+    <flag name="dane">Enable DNS-based Authentication of Named Entities (DANE) support</flag>
+    <flag name="ecdsa">Enable ECDSA support</flag>
+    <flag name="gost">Enable GOST support</flag>
   </use>
 </pkgmetadata>

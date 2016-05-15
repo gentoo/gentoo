@@ -1,20 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>proxy-maintainers</herd>
-  <maintainer>
+  <maintainer type="person">
     <email>ultrabug@gentoo.org</email>
   </maintainer>
-  <maintainer>
+  <maintainer type="person">
     <email>robbat2@gentoo.org</email>
   </maintainer>
-  <maintainer>
+  <maintainer type="person">
     <email>lu_zero@gentoo.org</email>
   </maintainer>
-  <maintainer>
+  <maintainer type="person">
     <email>bugs@bergstroem.nu</email>
     <name>Johan Bergström</name>
     <description>Proxy-Maintainer, assign bugs</description>
+  </maintainer>
+  <maintainer type="project">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
   </maintainer>
   <use>
     <flag name="jemalloc">

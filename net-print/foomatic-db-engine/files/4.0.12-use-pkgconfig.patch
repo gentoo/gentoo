@@ -1,0 +1,35 @@
+https://bugs.linuxfoundation.org/show_bug.cgi?id=1339
+
+From: Brian Norris <computersforpeace@gmail.com>
+Date: Fri, 15 Jan 2016 11:12:03 -0800
+Subject: [PATCH] configure.ac: use pkg-config instead of xml2-config
+
+The former is much more standard, and libxml2 ships a .pc file.
+
+Leave libxml alone, since I haven't tested it, and it may not ship a .pc
+file.
+---
+ configure.ac | 8 +-------
+ 1 file changed, 1 insertion(+), 7 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 1562ee61b9d5..0ed5323ff2e7 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -22,12 +22,7 @@ dnl LIBS="$LIBS"
+ # Test for libxml
+ #
+ xml_version=
+-AC_PATH_PROG(XML2_CONFIG, xml2-config)
+-if test ! -z "$XML2_CONFIG"; then
+-        xml_version=libxml2
+-        XML_CFLAGS=`$XML2_CONFIG --cflags`
+-        XML_LIBS=`$XML2_CONFIG --libs`
+-fi
++PKG_CHECK_MODULES(XML, libxml-2.0, [xml_version=libxml2])
+ if test -z "$xml_version"; then
+         AC_PATH_PROG(XML_CONFIG, xml-config)
+         if test ! -z "$XML_CONFIG"; then
+-- 
+2.1.2
+

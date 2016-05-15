@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>python</herd>
-	<maintainer>
+	<maintainer type="person">
 		<email>hasufell@gentoo.org</email>
 		<name>Julian Ospald</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>python@gentoo.org</email>
+		<name>Python</name>
 	</maintainer>
 	<longdescription lang="en">
 		SIP SIMPLE client SDK is a Software Development Kit for easy

@@ -10,8 +10,6 @@ inherit selinux-policy-2
 
 DESCRIPTION="SELinux policy for automount"
 
-if [[ $PV == 9999* ]] ; then
-	KEYWORDS=""
-else
+if [[ ${PV} != 9999* ]] ; then
 	KEYWORDS="~amd64 ~x86"
 fi

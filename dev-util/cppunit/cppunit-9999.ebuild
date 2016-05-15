@@ -9,7 +9,7 @@ EGIT_REPO_URI="git://anongit.freedesktop.org/libreoffice/cppunit"
 inherit eutils flag-o-matic multilib-minimal
 
 DESCRIPTION="C++ port of the famous JUnit framework for unit testing"
-HOMEPAGE="http://www.freedesktop.org/wiki/Software/cppunit"
+HOMEPAGE="https://www.freedesktop.org/wiki/Software/cppunit"
 [[ ${PV} = 9999 ]] || SRC_URI="http://dev-www.libreoffice.org/src/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"

@@ -23,7 +23,7 @@ DEPEND="
 	>=dev-qt/qtsql-4.4:4[sqlite]
 	media-libs/phonon[qt4]
 	virtual/jpeg:0
-	exif? ( >=media-gfx/exiv2-0.17 )
+	exif? ( >=media-gfx/exiv2-0.17:= )
 	geolocation? ( $(add_kdeapps_dep marble) )
 	kipi? ( $(add_kdeapps_dep libkipi '' 4.9.58) )
 	raw? ( $(add_kdeapps_dep libkdcraw '' 4.9.58) )

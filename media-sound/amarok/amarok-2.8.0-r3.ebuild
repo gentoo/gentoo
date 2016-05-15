@@ -54,7 +54,7 @@ COMMONDEPEND="
 		$(add_kdeapps_dep audiocd-kio)
 	)
 	ipod? ( >=media-libs/libgpod-0.7.0[gtk] )
-	lastfm? ( >=media-libs/liblastfm-1.0.3 )
+	lastfm? ( >=media-libs/liblastfm-1.0.3[qt4(+)] )
 	mp3tunes? (
 		dev-libs/glib:2
 		dev-libs/libxml2
@@ -81,6 +81,7 @@ RDEPEND="${COMMONDEPEND}
 PATCHES=(
 	"${FILESDIR}/${P}-gmock-1.7.patch"
 	"${FILESDIR}/${P}-mysqld-rpath.patch"
+	"${FILESDIR}/${P}-taglib110.patch"
 )
 
 src_configure() {

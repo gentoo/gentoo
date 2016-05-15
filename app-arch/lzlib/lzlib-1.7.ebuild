@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -10,7 +10,7 @@ DESCRIPTION="Library for lzip compression"
 HOMEPAGE="http://www.nongnu.org/lzip/lzlib.html"
 SRC_URI="http://download.savannah.gnu.org/releases-noredirect/lzip/${PN}/${P}.tar.gz"
 
-LICENSE="GPL-3"
+LICENSE="libstdc++" # fancy form of GPL-2+ with library exception
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="static-libs"

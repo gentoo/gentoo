@@ -1,0 +1,45 @@
+diff --git a/ANNOUNCE b/ANNOUNCE
+index 7812eba..0018b37 100644
+--- a/ANNOUNCE
++++ b/ANNOUNCE
+@@ -1,6 +1,6 @@
+ 
+    ==============================================================
+-    The (Interactive) Glasgow Haskell Compiler -- version 7.10.2
++    The (Interactive) Glasgow Haskell Compiler -- version 7.10.3
+    ==============================================================
+ 
+ The GHC Team is pleased to announce a new minor release of GHC. This is a
+@@ -29,7 +29,7 @@ bug-fix release and contains a number of important fixes,
+ A more thorough list of the changes in the release can be found in the release
+ notes,
+ 
+-  http://haskell.org/ghc/docs/7.10.2/html/users_guide/release-7-10-2.html
++  http://haskell.org/ghc/docs/7.10.3/html/users_guide/release-7-10-3.html
+ 
+ 
+ How to get it
+diff --git a/docs/users_guide/intro.xml b/docs/users_guide/intro.xml
+index 3292334..fb7116e 100644
+--- a/docs/users_guide/intro.xml
++++ b/docs/users_guide/intro.xml
+@@ -309,6 +309,7 @@
+ 
+ &relnotes1;
+ &relnotes2;
++&relnotes3;
+ 
+ </chapter>
+ 
+diff --git a/docs/users_guide/ug-ent.xml.in b/docs/users_guide/ug-ent.xml.in
+index b696aad..3629e93 100644
+--- a/docs/users_guide/ug-ent.xml.in
++++ b/docs/users_guide/ug-ent.xml.in
+@@ -5,6 +5,7 @@
+ <!ENTITY intro          SYSTEM "intro.xml" >
+ <!ENTITY relnotes1      SYSTEM "7.10.1-notes.xml" >
+ <!ENTITY relnotes2      SYSTEM "7.10.2-notes.xml" >
++<!ENTITY relnotes3      SYSTEM "7.10.3-notes.xml" >
+ <!ENTITY using          SYSTEM "using.xml" >
+ <!ENTITY code-gens      SYSTEM "codegens.xml" >
+ <!ENTITY runtime        SYSTEM "runtime_control.xml" >

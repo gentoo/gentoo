@@ -13,6 +13,18 @@
 # @EXAMPLE:
 # "install_cert /foo/bar" installs ${ROOT}/foo/bar.{key,csr,crt,pem}
 
+# Guard against unsupported EAPIs.  We need EAPI >= 1 for slot dependencies.
+case "${EAPI:-0}" in
+	0)
+		die "${ECLASS}.eclass: EAPI=0 is not supported.  Please upgrade to EAPI >= 1."
+		;;
+	1|2|3|4|5|6)
+		;;
+	*)
+		die "${ECLASS}.eclass: EAPI=${EAPI} is not supported yet."
+		;;
+esac
+
 # @ECLASS-VARIABLE: SSL_CERT_MANDATORY
 # @DESCRIPTION:
 # Set to non zero if ssl-cert is mandatory for ebuild.
@@ -23,11 +35,18 @@
 # Use flag to append dependency to.
 : ${SSL_CERT_USE:=ssl}
 
-if [[ "${SSL_CERT_MANDATORY}" == "0" ]]; then
-	DEPEND="${SSL_CERT_USE}? ( dev-libs/openssl )"
-	IUSE="${SSL_CERT_USE}"
-else
-	DEPEND="dev-libs/openssl"
+# @ECLASS-VARIABLE: SSL_DEPS_SKIP
+# @DESCRIPTION:
+# Set to non zero to skip adding to DEPEND and IUSE.
+: ${SSL_DEPS_SKIP:=0}
+
+if [[ "${SSL_DEPS_SKIP}" == "0" ]]; then
+	if [[ "${SSL_CERT_MANDATORY}" == "0" ]]; then
+		DEPEND="${SSL_CERT_USE}? ( || ( dev-libs/openssl:0 dev-libs/libressl:0 ) )"
+		IUSE="${SSL_CERT_USE}"
+	else
+		DEPEND="|| ( dev-libs/openssl:0 dev-libs/libressl:0 )"
+	fi
 fi
 
 # @FUNCTION: gen_cnf
@@ -106,8 +125,12 @@ get_base() {
 gen_key() {
 	local base=$(get_base "$1")
 	ebegin "Generating ${SSL_BITS} bit RSA key${1:+ for CA}"
-	openssl genrsa -rand "${SSL_RANDOM}" \
-		-out "${base}.key" "${SSL_BITS}" &> /dev/null
+	if openssl version | grep -i libressl > /dev/null; then
+		openssl genrsa -out "${base}.key" "${SSL_BITS}" &> /dev/null
+	else
+		openssl genrsa -rand "${SSL_RANDOM}" \
+			-out "${base}.key" "${SSL_BITS}" &> /dev/null
+	fi
 	eend $?
 
 	return $?

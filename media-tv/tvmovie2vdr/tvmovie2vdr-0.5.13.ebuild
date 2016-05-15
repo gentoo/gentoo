@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -21,7 +21,7 @@ KEYWORDS="x86"
 IUSE=""
 
 DEPEND=">=media-video/vdr-1.2.0
-	>=dev-perl/DateManip-5.42a-r1
+	>=dev-perl/Date-Manip-5.42a-r1
 	>=virtual/perl-IO-Compress-1.22
 	>=dev-perl/Archive-Zip-1.14
 	>=dev-perl/Text-Iconv-1.4
@@ -31,7 +31,7 @@ DEPEND=">=media-video/vdr-1.2.0
 	>=dev-perl/HTML-TableContentParser-0.13
 	>=dev-perl/XML-Simple-DTDReader-0.03
 	>=media-gfx/imagemagick-6.2.2.3
-	dev-perl/DateManip
+	dev-perl/Date-Manip
 	dev-perl/XML-Simple-DTDReader"
 
 src_compile() {

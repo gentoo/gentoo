@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer>
+	<maintainer type="person">
 		<email>pva@gentoo.org</email>
 		<name>Peter Volkov</name>
 	</maintainer>
-	<herd>java</herd>
+	<maintainer type="project">
+		<email>java@gentoo.org</email>
+		<name>Java</name>
+	</maintainer>
 	<longdescription lang="en">
 	PlantUMLis a component that allows to quickly write: sequence diagram, use
 	case diagram, class diagram, activity diagram, component diagram, state

@@ -3,10 +3,9 @@
 # $Id$
 
 EAPI="5"
-
 GCONF_DEBUG="no"
 
-inherit gnome2 versionator
+inherit flag-o-matic gnome2 versionator
 
 MATE_BRANCH="$(get_version_component_range 1-2)"
 
@@ -42,4 +41,10 @@ DEPEND="${RDEPEND}
 	sys-devel/gettext:*
 	virtual/pkgconfig:*"
 
-DOCS="AUTHORS ChangeLog NEWS README"
+src_configure() {
+	# This is needed for this old version, current upstream versions
+	# finally append it themselves:
+	# https://github.com/mate-desktop/mate-system-monitor/commit/56594f6f10ba04aa51af976bc8339ea9ae54ea21
+	append-cxxflags -std=c++11
+	gnome2_src_configure
+}

@@ -1,0 +1,57 @@
+From 702a97fbb09bd7088a50f2b239016d1e32843c24 Mon Sep 17 00:00:00 2001
+From: Pavel Raiskup <praiskup@redhat.com>
+Date: Fri, 18 Sep 2015 10:36:43 +0200
+Subject: [PATCH] libtool: fix GCC linking with -specs=*
+
+References:
+https://bugzilla.redhat.com/show_bug.cgi?id=985592
+
+* build-aux/ltmain.in (func_mode_link): Pass -specs=*
+to the linker, Fedora uses this option for hardening.
+
+Signed-off-by: Pavel Raiskup <praiskup@redhat.com>
+---
+ build-aux/ltmain.in | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/build-aux/ltmain.in b/build-aux/ltmain.in
+index d5cf07a..0c40da0 100644
+--- a/build-aux/ltmain.in
++++ b/build-aux/ltmain.in
+@@ -5360,10 +5360,12 @@ func_mode_link ()
+       # -tp=*                Portland pgcc target processor selection
+       # --sysroot=*          for sysroot support
+       # -O*, -g*, -flto*, -fwhopr*, -fuse-linker-plugin GCC link-time optimization
++      # -specs=*             GCC specs files
+       # -stdlib=*            select c++ std lib with clang
+       -64|-mips[0-9]|-r[0-9][0-9]*|-xarch=*|-xtarget=*|+DA*|+DD*|-q*|-m*| \
+       -t[45]*|-txscale*|-p|-pg|--coverage|-fprofile-*|-F*|@*|-tp=*|--sysroot=*| \
+-      -O*|-g*|-flto*|-fwhopr*|-fuse-linker-plugin|-fstack-protector*|-stdlib=*)
++      -O*|-g*|-flto*|-fwhopr*|-fuse-linker-plugin|-fstack-protector*|-stdlib=*| \
++      -specs=*)
+         func_quote_for_eval "$arg"
+ 	arg=$func_quote_for_eval_result
+         func_append compile_command " $arg"
+
+patch the generated file too to keep help2man from generating man pages
+https://bugs.gentoo.org/556512
+
+--- a/build-aux/ltmain.sh
++++ b/build-aux/ltmain.sh
+@@ -5360,10 +5360,12 @@ func_mode_link ()
+       # -tp=*                Portland pgcc target processor selection
+       # --sysroot=*          for sysroot support
+       # -O*, -g*, -flto*, -fwhopr*, -fuse-linker-plugin GCC link-time optimization
++      # -specs=*             GCC specs files
+       # -stdlib=*            select c++ std lib with clang
+       -64|-mips[0-9]|-r[0-9][0-9]*|-xarch=*|-xtarget=*|+DA*|+DD*|-q*|-m*| \
+       -t[45]*|-txscale*|-p|-pg|--coverage|-fprofile-*|-F*|@*|-tp=*|--sysroot=*| \
+-      -O*|-g*|-flto*|-fwhopr*|-fuse-linker-plugin|-fstack-protector*|-stdlib=*)
++      -O*|-g*|-flto*|-fwhopr*|-fuse-linker-plugin|-fstack-protector*|-stdlib=*| \
++      -specs=*)
+         func_quote_for_eval "$arg"
+ 	arg=$func_quote_for_eval_result
+         func_append compile_command " $arg"
+-- 
+2.6.2
+

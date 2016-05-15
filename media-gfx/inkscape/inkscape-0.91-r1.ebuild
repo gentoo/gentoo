@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -16,7 +16,7 @@ SRC_URI="https://inkscape.global.ssl.fastly.net/media/resources/file/${P}.tar.bz
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~sparc-solaris ~x86-solaris"
+KEYWORDS="amd64 ~arm hppa ppc ppc64 x86 ~amd64-linux ~x86-linux ~sparc-solaris ~x86-solaris"
 IUSE="cdr dia dbus exif gnome imagemagick openmp postscript inkjar jpeg lcms nls spell static-libs visio wpg"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
@@ -43,7 +43,7 @@ COMMON_DEPEND="
 	media-libs/fontconfig
 	media-libs/freetype:2
 	media-libs/libpng:0
-	sci-libs/gsl
+	sci-libs/gsl:=
 	x11-libs/libX11
 	>=x11-libs/gtk+-2.10.7:2
 	>=x11-libs/pango-1.24

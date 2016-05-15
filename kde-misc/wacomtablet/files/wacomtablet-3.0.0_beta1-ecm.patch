@@ -1,0 +1,11 @@
+diff -ruN wacomtablet-3.0.0~beta1.orig/CMakeLists.txt wacomtablet-3.0.0~beta1/CMakeLists.txt
+--- wacomtablet-3.0.0~beta1.orig/CMakeLists.txt	2015-10-28 18:53:01.000000000 +0100
++++ wacomtablet-3.0.0~beta1/CMakeLists.txt	2016-04-20 17:41:06.087315610 +0200
+@@ -66,5 +66,5 @@
+ 
+ feature_summary(WHAT ALL INCLUDE_QUIET_PACKAGES FATAL_ON_MISSING_REQUIRED_PACKAGES)
+ 
+-include(MacroOptionalAddSubdirectory)
+-macro_optional_add_subdirectory( po )
++include(ECMOptionalAddSubdirectory)
++ecm_optional_add_subdirectory( po )

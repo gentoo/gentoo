@@ -9,7 +9,7 @@ KMNOMODULE="true"
 inherit kde4-meta prefix
 
 DESCRIPTION="Startkde script, which starts a complete KDE session, and associated scripts"
-KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm ~ppc ~ppc64 x86 ~amd64-linux ~x86-linux"
 IUSE="+wallpapers"
 
 # The KDE apps called from the startkde script.
@@ -17,7 +17,6 @@ IUSE="+wallpapers"
 RDEPEND="
 	$(add_kdebase_dep kcminit)
 	$(add_kdeapps_dep kdebase-runtime-meta)
-	wallpapers? ( || ( $(add_kdeapps_dep kde-wallpapers) kde-apps/kde-wallpapers:5 ) )
 	$(add_kdeapps_dep kfmclient)
 	$(add_kdeapps_dep knotify)
 	$(add_kdeapps_dep kreadconfig)
@@ -37,6 +36,7 @@ RDEPEND="
 	x11-apps/xrdb
 	x11-apps/xsetroot
 	x11-apps/xset
+	wallpapers? ( $(add_kdeapps_dep kde-wallpapers '' 15.08.3) )
 "
 
 KMEXTRACTONLY="

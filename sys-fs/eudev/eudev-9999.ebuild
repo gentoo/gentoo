@@ -1,11 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI="5"
 
 KV_min=2.6.39
-WANT_AUTOMAKE=1.13
 
 inherit autotools eutils linux-info multilib multilib-minimal user
 
@@ -14,7 +13,7 @@ if [[ ${PV} = 9999* ]]; then
 	inherit git-2
 else
 	SRC_URI="https://dev.gentoo.org/~blueness/${PN}/${P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
 fi
 
 DESCRIPTION="Linux dynamic and persistent device naming support (aka userspace devfs)"
@@ -62,7 +61,7 @@ pkg_pretend() {
 	ewarn
 	ewarn "As of 2013-01-29, ${P} provides the new interface renaming functionality,"
 	ewarn "as described in the URL below:"
-	ewarn "http://www.freedesktop.org/wiki/Software/systemd/PredictableNetworkInterfaceNames"
+	ewarn "https://www.freedesktop.org/wiki/Software/systemd/PredictableNetworkInterfaceNames"
 	ewarn
 	ewarn "This functionality is enabled BY DEFAULT because eudev has no means of synchronizing"
 	ewarn "between the default or user-modified choice of sys-fs/udev.  If you wish to disable"
@@ -194,7 +193,7 @@ pkg_postinst() {
 	if use hwdb && has_version 'sys-apps/hwids[udev]'; then
 		udevadm hwdb --update --root="${ROOT%/}"
 
-		# http://cgit.freedesktop.org/systemd/systemd/commit/?id=1fab57c209035f7e66198343074e9cee06718bda
+		# https://cgit.freedesktop.org/systemd/systemd/commit/?id=1fab57c209035f7e66198343074e9cee06718bda
 		# reload database after it has be rebuilt, but only if we are not upgrading
 		# also pass if we are -9999 since who knows what hwdb related changes there might be
 		if [[ ${REPLACING_VERSIONS%-r*} == ${PV} || -z ${REPLACING_VERSIONS} ]] && \
@@ -223,7 +222,7 @@ pkg_postinst() {
 	elog "         https://www.gentoo.org/doc/en/udev-guide.xml"
 	elog
 
-	# http://cgit.freedesktop.org/systemd/systemd/commit/rules/50-udev-default.rules?id=3dff3e00e044e2d53c76fa842b9a4759d4a50e69
+	# https://cgit.freedesktop.org/systemd/systemd/commit/rules/50-udev-default.rules?id=3dff3e00e044e2d53c76fa842b9a4759d4a50e69
 	# https://bugs.gentoo.org/246847
 	# https://bugs.gentoo.org/514174
 	enewgroup input
@@ -233,7 +232,7 @@ pkg_postinst() {
 		udevadm hwdb --update --root="${ROOT%/}"
 		# Only reload when we are not upgrading to avoid potential race w/ incompatible hwdb.bin and the running udevd
 		if [[ -z ${REPLACING_VERSIONS} ]]; then
-			# http://cgit.freedesktop.org/systemd/systemd/commit/?id=1fab57c209035f7e66198343074e9cee06718bda
+			# https://cgit.freedesktop.org/systemd/systemd/commit/?id=1fab57c209035f7e66198343074e9cee06718bda
 			if [[ ${ROOT} != "" ]] && [[ ${ROOT} != "/" ]]; then
 				return 0
 			fi

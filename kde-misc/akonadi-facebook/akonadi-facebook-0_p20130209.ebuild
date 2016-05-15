@@ -16,7 +16,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="debug"
 
 RDEPEND="
-	$(add_kdebase_dep kdepimlibs 'semantic-desktop(+)' 4.9.58)
+	$(add_kdeapps_dep kdepimlibs 'semantic-desktop(+)' 4.9.58)
 	dev-libs/qjson
 	net-libs/libkfbapi:4
 "

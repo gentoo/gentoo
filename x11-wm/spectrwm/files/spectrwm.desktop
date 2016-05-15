@@ -1,7 +1,0 @@
-[Desktop Entry]
-Name=spectrwm
-Comment=A lighweight tiling window manager
-Exec=/etc/X11/Sessions/spectrwm
-TryExec=spectrwm
-Icon=
-Type=Application

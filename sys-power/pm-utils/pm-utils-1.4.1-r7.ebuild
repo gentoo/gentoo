@@ -6,12 +6,12 @@ EAPI=5
 inherit eutils multilib
 
 DESCRIPTION="Suspend and hibernation utilities"
-HOMEPAGE="http://pm-utils.freedesktop.org/"
-SRC_URI="http://pm-utils.freedesktop.org/releases/${P}.tar.gz"
+HOMEPAGE="https://pm-utils.freedesktop.org/"
+SRC_URI="https://pm-utils.freedesktop.org/releases/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
 IUSE="alsa debug ntp video_cards_intel video_cards_radeon"
 
 vbetool="!video_cards_intel? ( sys-apps/vbetool )"

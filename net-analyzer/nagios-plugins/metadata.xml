@@ -1,44 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer>
+  <maintainer type="person">
       <email>andrew@ahamilto.net</email>
       <name>Andrew Hamilton</name>
       <description>Maintainer. Assign bugs to him.</description>
   </maintainer>
-  <maintainer>
+  <maintainer type="person">
       <email>creffett@gentoo.org</email>
       <name>Chris Reffett</name>
       <description>Proxy maintainer. CC him on bugs.</description>
   </maintainer>
-  <maintainer>
+  <maintainer type="person">
       <email>mjo@gentoo.org</email>
       <name>Michael Orlitzky</name>
       <description>Maintainer. CC him on bugs.</description>
   </maintainer>
-  <herd>proxy-maintainers</herd>
-  <herd>sysadmin</herd>
+  <maintainer type="project">
+      <email>proxy-maint@gentoo.org</email>
+      <name>Proxy Maintainers</name>
+  </maintainer>
+  <maintainer type="project">
+      <email>sysadmin@gentoo.org</email>
+      <name>Gentoo Sysadmin Project</name>
+  </maintainer>
   <use>
-    <flag name='nagios-dns'>
+    <flag name="nagios-dns">
       Install <pkg>net-dns/bind-tools</pkg> required for monitoring
       DNS servers. Disabling the flag does not remove any plugin file.
     </flag>
-    <flag name='nagios-game'>
+    <flag name="nagios-game">
       Install <pkg>games-util/qstat</pkg> required for monitoring FPS
       servers. Disabling the flag does not remove any plugin file.
     </flag>
-    <flag name='nagios-ping'>
+    <flag name="nagios-ping">
       Install <pkg>net-analyzer/fping</pkg> required for fancy ping
       monitoring. Disabling the flag does not remove any plugin file.
     </flag>
-    <flag name='ssh'>
+    <flag name="ssh">
       Install <pkg>net-misc/openssh</pkg> required for monitoring SSH
       servers. Disabling the flag does not remove any plugin file.
     </flag>
-    <flag name='snmp' restrict='&gt;=net-analyzer/nagios-plugins-1.4.16-r1'>
+    <flag name="snmp" restrict="&gt;=net-analyzer/nagios-plugins-1.4.16-r1">
       Install <pkg>dev-perl/Net-SNMP</pkg> required for monitoring
       SNMP values. Disabling the flag does not remove any plugin file.
     </flag>
   </use>
 </pkgmetadata>
-

@@ -1,0 +1,13 @@
+diff -rupN vmci-only/linux/driver.c vmci-only.new/linux/driver.c
+--- vmci-only/linux/driver.c	2015-11-03 19:27:55.000000000 -0500
++++ vmci-only.new/linux/driver.c	2016-03-16 21:30:47.646039829 -0400
+@@ -26,6 +26,9 @@
+ 
+ #include <linux/file.h>
+ #include <linux/fs.h>
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 2, 0)
++#include <linux/vmalloc.h>
++#endif
+ #include <linux/init.h>
+ #if defined(__x86_64__) && LINUX_VERSION_CODE < KERNEL_VERSION(2, 6, 12)
+ #   include <linux/ioctl32.h>

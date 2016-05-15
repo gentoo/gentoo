@@ -1,9 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
-inherit autotools eutils
+inherit autotools eutils flag-o-matic
 
 DESCRIPTION="Create, destroy, resize, check, copy partitions and file systems"
 HOMEPAGE="https://www.gnu.org/software/parted"
@@ -23,6 +23,7 @@ RDEPEND="
 	device-mapper? ( >=sys-fs/lvm2-2.02.45 )
 	readline? ( >=sys-libs/readline-5.2:0= )
 	selinux? ( sys-libs/libselinux )
+	elibc_uclibc? ( dev-libs/libiconv )
 "
 DEPEND="
 	${RDEPEND}
@@ -40,6 +41,7 @@ src_prepare() {
 }
 
 src_configure() {
+	use elibc_uclibc && append-libs -liconv
 	econf \
 		$(use_enable debug) \
 		$(use_enable device-mapper) \

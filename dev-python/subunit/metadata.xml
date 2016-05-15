@@ -1,9 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>bazaar</herd>
-	<herd>python</herd>
-	<herd>openstack</herd>
+	<maintainer type="project">
+		<email>bazaar@gentoo.org</email>
+		<name>Gentoo Bazaar Project</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>python@gentoo.org</email>
+		<name>Python</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>openstack@gentoo.org</email>
+		<name>Openstack</name>
+	</maintainer>
 	<upstream>
 		<remote-id type="launchpad">subunit</remote-id>
 	</upstream>

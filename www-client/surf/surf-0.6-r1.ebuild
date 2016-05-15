@@ -14,7 +14,7 @@ SLOT="0"
 KEYWORDS="amd64 x86"
 
 COMMON_DEPEND="
-	dev-libs/glib
+	dev-libs/glib:2
 	net-libs/libsoup
 	net-libs/webkit-gtk:2
 	x11-libs/gtk+:2

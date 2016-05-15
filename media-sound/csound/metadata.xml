@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>proaudio</herd>
+	<maintainer type="project">
+		<email>proaudio@gentoo.org</email>
+		<name>Gentoo ProAudio Project</name>
+	</maintainer>
 	<use>
 		<flag name="beats">Build the beats score frontend</flag>
 		<flag name="chua">Build the chua opcodes</flag>
@@ -19,6 +22,7 @@
 		<flag name="stk">Build the stk opcodes</flag>
 		<flag name="tcl">Build the tcl interface and clients</flag>
 		<flag name="utils">Build stand-alone executables for utilities that can also be used via `csound -U`</flag>
+		<flag name="websocket">Build the websocket opcode</flag>
 	</use>
 	<upstream>
 		<remote-id type="sourceforge">csound</remote-id>

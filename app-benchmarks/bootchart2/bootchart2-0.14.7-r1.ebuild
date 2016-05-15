@@ -36,6 +36,7 @@ S="${WORKDIR}"/${PN%2}-${PV}
 CONFIG_CHECK="~PROC_EVENTS ~TASKSTATS ~TASK_DELAY_ACCT ~TMPFS"
 
 src_prepare() {
+	epatch "${FILESDIR}"/${P}-sysmacros.patch #579922
 	tc-export CC
 	sed \
 		-e "/^install/s:py-install-compile::g" \

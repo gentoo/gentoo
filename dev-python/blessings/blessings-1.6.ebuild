@@ -1,10 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 
-PYTHON_COMPAT=( python2_7 python3_{3,4} )
+PYTHON_COMPAT=( python2_7 python3_{3,4,5} )
 
 inherit distutils-r1
 
@@ -17,9 +17,11 @@ LICENSE="MIT"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="test"
 
-DEPEND="dev-python/nose[${PYTHON_USEDEP}]"
-RDEPEND=""
+DEPEND="test? ( dev-python/nose[${PYTHON_USEDEP}] )"
 
 python_test() {
-	nosetests --verbosity=3 ${PN} || die
+	# The tests need an interactive terminal
+	# https://github.com/erikrose/blessings/issues/117
+	script -eqc "nosetests -w \"${BUILD_DIR}\"" /dev/null \
+		|| die "tests failed with ${EPYTHON}"
 }

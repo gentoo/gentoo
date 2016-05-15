@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -16,8 +16,8 @@ KEYWORDS="amd64 ppc x86"
 # This warrants USE examples
 IUSE=""
 
-DEPEND="dev-perl/perl-tk
-	dev-perl/DateManip
+DEPEND="dev-perl/Tk
+	dev-perl/Date-Manip
 	dev-perl/HTML-Parser
 	dev-perl/Finance-YahooQuote
 	dev-perl/libwww-perl"

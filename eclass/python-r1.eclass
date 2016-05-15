@@ -82,12 +82,6 @@ inherit multibuild python-utils-r1
 # @CODE
 # PYTHON_COMPAT=( python2_7 python3_{3,4} )
 # @CODE
-if ! declare -p PYTHON_COMPAT &>/dev/null; then
-	die 'PYTHON_COMPAT not declared.'
-fi
-if [[ $(declare -p PYTHON_COMPAT) != "declare -a"* ]]; then
-	die 'PYTHON_COMPAT must be an array.'
-fi
 
 # @ECLASS-VARIABLE: PYTHON_COMPAT_OVERRIDE
 # @INTERNAL
@@ -186,24 +180,17 @@ fi
 # @CODE
 
 _python_set_globals() {
-	local impls=()
-
 	PYTHON_DEPS=
 	local i PYTHON_PKG_DEP
-	for i in "${PYTHON_COMPAT[@]}"; do
-		_python_impl_supported "${i}" || continue
 
+	_python_set_impls
+
+	for i in "${_PYTHON_SUPPORTED_IMPLS[@]}"; do
 		python_export "${i}" PYTHON_PKG_DEP
 		PYTHON_DEPS+="python_targets_${i}? ( ${PYTHON_PKG_DEP} ) "
-
-		impls+=( "${i}" )
 	done
 
-	if [[ ${#impls[@]} -eq 0 ]]; then
-		die "No supported implementation in PYTHON_COMPAT."
-	fi
-
-	local flags=( "${impls[@]/#/python_targets_}" )
+	local flags=( "${_PYTHON_SUPPORTED_IMPLS[@]/#/python_targets_}" )
 	local optflags=${flags[@]/%/(-)?}
 
 	# A nice QA trick here. Since a python-single-r1 package has to have
@@ -212,7 +199,7 @@ _python_set_globals() {
 	# it should prevent developers from mistakenly depending on packages
 	# not supporting multiple Python implementations.
 
-	local flags_st=( "${impls[@]/#/-python_single_target_}" )
+	local flags_st=( "${_PYTHON_SUPPORTED_IMPLS[@]/#/-python_single_target_}" )
 	optflags+=,${flags_st[@]/%/(-)}
 
 	IUSE=${flags[*]}
@@ -246,9 +233,7 @@ _python_validate_useflags() {
 
 	local i
 
-	for i in "${PYTHON_COMPAT[@]}"; do
-		_python_impl_supported "${i}" || continue
-
+	for i in "${_PYTHON_SUPPORTED_IMPLS[@]}"; do
 		use "python_targets_${i}" && return 0
 	done
 
@@ -290,9 +275,7 @@ python_gen_usedep() {
 	local impl pattern
 	local matches=()
 
-	for impl in "${PYTHON_COMPAT[@]}"; do
-		_python_impl_supported "${impl}" || continue
-
+	for impl in "${_PYTHON_SUPPORTED_IMPLS[@]}"; do
 		for pattern; do
 			if [[ ${impl} == ${pattern} ]]; then
 				matches+=(
@@ -333,9 +316,7 @@ python_gen_useflags() {
 	local impl pattern
 	local matches=()
 
-	for impl in "${PYTHON_COMPAT[@]}"; do
-		_python_impl_supported "${impl}" || continue
-
+	for impl in "${_PYTHON_SUPPORTED_IMPLS[@]}"; do
 		for pattern; do
 			if [[ ${impl} == ${pattern} ]]; then
 				matches+=( "python_targets_${impl}" )
@@ -382,9 +363,7 @@ python_gen_cond_dep() {
 	local dep=${1}
 	shift
 
-	for impl in "${PYTHON_COMPAT[@]}"; do
-		_python_impl_supported "${impl}" || continue
-
+	for impl in "${_PYTHON_SUPPORTED_IMPLS[@]}"; do
 		for pattern; do
 			if [[ ${impl} == ${pattern} ]]; then
 				# substitute ${PYTHON_USEDEP} if used
@@ -396,6 +375,58 @@ python_gen_cond_dep() {
 				fi
 
 				matches+=( "python_targets_${impl}? ( ${dep} )" )
+				break
+			fi
+		done
+	done
+
+	echo "${matches[@]}"
+}
+
+# @FUNCTION: python_gen_impl_dep
+# @USAGE: [<requested-use-flags> [<impl-pattern>...]]
+# @DESCRIPTION:
+# Output a dependency on Python implementations with the specified USE
+# dependency string appended, or no USE dependency string if called
+# without the argument (or with empty argument). If any implementation
+# patterns are passed, the output dependencies will be generated only
+# for the implementations matching them.
+#
+# Use this function when you need to request different USE flags
+# on the Python interpreter depending on package's USE flags. If you
+# only need a single set of interpreter USE flags, just set
+# PYTHON_REQ_USE and use ${PYTHON_DEPS} globally.
+#
+# Example:
+# @CODE
+# PYTHON_COMPAT=( python{2_7,3_{3,4}} pypy )
+# RDEPEND="foo? ( $(python_gen_impl_dep 'xml(+)') )"
+# @CODE
+#
+# It will cause the variable to look like:
+# @CODE
+# RDEPEND="foo? (
+#   python_targets_python2_7? (
+#     dev-lang/python:2.7[xml(+)] )
+#	python_targets_pypy? (
+#     dev-python/pypy[xml(+)] ) )"
+# @CODE
+python_gen_impl_dep() {
+	debug-print-function ${FUNCNAME} "${@}"
+
+	local impl pattern
+	local matches=()
+
+	local PYTHON_REQ_USE=${1}
+	shift
+
+	local patterns=( "${@-*}" )
+	for impl in "${_PYTHON_SUPPORTED_IMPLS[@]}"; do
+		for pattern in "${patterns[@]}"; do
+			if [[ ${impl} == ${pattern} ]]; then
+				local PYTHON_PKG_DEP
+				python_export "${impl}" PYTHON_PKG_DEP
+				matches+=( "python_targets_${impl}? ( ${PYTHON_PKG_DEP} )" )
 				break
 			fi
 		done
@@ -460,12 +491,9 @@ _python_obtain_impls() {
 
 	MULTIBUILD_VARIANTS=()
 
-	for impl in "${_PYTHON_ALL_IMPLS[@]}"; do
-		if has "${impl}" "${PYTHON_COMPAT[@]}" \
-			&& use "python_targets_${impl}"
-		then
-			MULTIBUILD_VARIANTS+=( "${impl}" )
-		fi
+	for impl in "${_PYTHON_SUPPORTED_IMPLS[@]}"; do
+		has "${impl}" "${PYTHON_COMPAT[@]}" && \
+		use "python_targets_${impl}" && MULTIBUILD_VARIANTS+=( "${impl}" )
 	done
 }
 

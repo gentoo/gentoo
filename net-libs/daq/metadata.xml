@@ -1,36 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>proxy-maintainers</herd>
-<maintainer>
+<maintainer type="person">
   <email>jason.r.wallace@gmail.com</email>
   <name>Jason Wallace</name>
 </maintainer>
-<maintainer>
+<maintainer type="person">
   <email>patrick@gentoo.org</email>
   <name>Patrick Lauer</name>
 </maintainer>
-<herd>netmon</herd>
+<maintainer type="project">
+  <email>proxy-maint@gentoo.org</email>
+  <name>Proxy Maintainers</name>
+</maintainer>
+<maintainer type="project">
+  <email>netmon@gentoo.org</email>
+  <name>Gentoo network monitoring and analysis project</name>
+</maintainer>
 <longdescription>Data Acquisition library, for packet I/O with Snort 2.9 and later</longdescription>
 <use>
-	<flag name='afpacket'>
+	<flag name="afpacket">
 		Build the AFPacket data acquisition module. Functions similar to the PCAP 
 		module but with better performance. Snort can run unprivileged when using 
 		this module. AFpacket supports both inline and passive modes.
 	</flag>
-	<flag name='dump'>Build the Dump data acquisition module. The dump DAQ
+	<flag name="dump">Build the Dump data acquisition module. The dump DAQ
 		allows you to test the various inline mode features available in
 		2.9 Snort like injection and normalization.
 	</flag>
-	<flag name='pcap'>Build the PCAP data acquisition module.</flag>
-	<flag name='nfq'>
+	<flag name="pcap">Build the PCAP data acquisition module.</flag>
+	<flag name="nfq">
 		Build the NFQ data acquisition module. NFQ is the new way to process iptables 
 		packets for inline deployments. Snort can not run unprivileged when using this module.
 	</flag>
-	<flag name='ipq'>
+	<flag name="ipq">
 		Build the IPQ data acquisition module. IPQ is the old way to process iptables
 		packets for inline deployments. Snort can not run unprivileged when using this module.
 	</flag>
 </use>
 </pkgmetadata>
-

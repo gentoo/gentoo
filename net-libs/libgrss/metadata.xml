@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>gnome</herd>
-  <upstream>
+<upstream>
     <bugs-to>https://bugs.gnome.org</bugs-to>
     <changelog>https://git.gnome.org/browse/libgrss</changelog>
   </upstream>
-  <maintainer>
+  <maintainer type="person">
     <email>lxnay@gentoo.org</email>
     <name>Fabio Erculiani</name>
+  </maintainer>
+<maintainer type="project">
+    <email>gnome@gentoo.org</email>
+    <name>Gentoo GNOME Desktop</name>
   </maintainer>
 </pkgmetadata>

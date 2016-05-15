@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -19,7 +19,7 @@ RDEPEND="
 	dev-perl/File-Find-Rule
 	virtual/perl-Module-CoreList
 	dev-perl/Pod-Strip
-	dev-perl/yaml
+	dev-perl/YAML
 "
 DEPEND="${RDEPEND}
 	virtual/perl-ExtUtils-MakeMaker

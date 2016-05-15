@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>media-tv</herd>
-	<maintainer>
+	<maintainer type="person">
 		<email>tetromino@gentoo.org</email>
 		<name>Alexandre Rostovtsev</name>
 	</maintainer>
@@ -25,4 +24,3 @@
 	application transparent libv4lconvert conversion where necessary.
 	</longdescription>
 </pkgmetadata>
-

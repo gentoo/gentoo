@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-    <herd>mate</herd>
+    <maintainer type="project">
+        <email>mate@gentoo.org</email>
+        <name>Gentoo MATE Desktop</name>
+    </maintainer>
 	<use>
 		<flag name="mate">Install <pkg>x11-themes/mate-icon-theme</pkg> which 
 		is needed when this package is used in the MATE desktop 

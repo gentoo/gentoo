@@ -1,0 +1,41 @@
+use system libtdl from libtool instead of bundled one
+see http://www.flameeyes.eu/autotools-mythbuster/libtool/plugins.html
+bicatali@gentoo.org
+
+--- cpl-7.0.orig/configure.ac	2012-06-04 18:38:01.000000000 +0100
++++ cpl-7.0/configure.ac	2012-06-04 22:14:23.000000000 +0100
+@@ -60,8 +60,9 @@
+ AC_ENABLE_STATIC(yes)
+ AC_ENABLE_SHARED(yes)
+ 
+-AC_LIBLTDL_CONVENIENCE
+-AC_PROG_LIBTOOL
++LT_INIT([dlopen])
++LT_CONFIG_LTDL_DIR([libltdl])
++AC_LIB_LTDL
+ AC_SUBST(INCLTDL)
+ AC_SUBST(LIBLTDL)
+ AC_SUBST(LIBTOOL_DEPS)
+@@ -131,7 +135,6 @@
+ CPL_CONFIG_FUNC
+ 
+ # Configure subpackages
+-AC_CONFIG_SUBDIRS(libltdl)
+ 
+ if test ! x$"cpl_cv_with_system_cext" = xyes; then
+         AC_CONFIG_SUBDIRS([libcext])
+--- cpl-7.0.orig/Makefile.am
++++ cpl-7.0/Makefile.am
+@@ -25,11 +25,10 @@
+ DISTCLEANFILES = *~
+ 
+ if GASGANO_SUPPORT
+-libltdl = libltdl
+ cpljava = cpljava
+ endif
+ 
+-SUBDIRS = $(libltdl) $(libcext) cplcore cplui cpldrs cpldfs $(cpljava)
++SUBDIRS = $(libcext) cplcore cplui cpldrs cpldfs $(cpljava)
+ 
+ HTML_SUBDIRS = 
+ 

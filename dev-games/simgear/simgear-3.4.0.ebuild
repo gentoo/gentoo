@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -31,9 +31,11 @@ RDEPEND="${COMMON_DEPEND}
 
 DOCS=(AUTHORS ChangeLog NEWS README Thanks)
 
+PATCHES=( "${FILESDIR}/${P}-osg340_fixes.patch" )
+
 src_configure() {
 	local mycmakeargs=(
-		-ENABLE_PKGUTIL=OFF
+		-DENABLE_PKGUTIL=ON
 		-DENABLE_RTI=OFF
 		-DENABLE_SOUND=ON
 		-DSIMGEAR_HEADLESS=OFF

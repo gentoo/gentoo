@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer>
+  <maintainer type="person">
     <email>pacho@gentoo.org</email>
     <name>Pacho Ramos</name>
   </maintainer>
   <use>
+    <flag name="deprecated">Build deprecated plugins</flag>
+    <flag name="experimental">Build experimental plugins</flag>
+    <flag name="extra-tools">Install tools that upstream doesn't install on
+    purpose by default. All this tools shouldn't be used. Then, please
+    notify upstream about you still need them to let them know the
+    situation.</flag>
     <flag name="test-programs">Install tools for testing of
 			various Bluetooth functions</flag>
     <flag name="hid2hci">The HID proxying makes the keyboard / mouse show up

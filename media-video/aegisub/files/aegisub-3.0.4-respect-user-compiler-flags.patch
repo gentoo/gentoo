@@ -1,8 +1,8 @@
 diff --git a/aegisub/configure.ac b/aegisub/configure.ac
-index d961bd6..8922042 100644
+index d961bd6..e0bdc46 100644
 --- a/aegisub/configure.ac
 +++ b/aegisub/configure.ac
-@@ -157,23 +157,17 @@ AS_IF([test x$enable_compiler_flags != xno], [
+@@ -157,23 +157,18 @@ AS_IF([test x$enable_compiler_flags != xno], [
    AC_C_FLAG([-Wextra],[AC_C_FLAG([-W])])
    AC_C_FLAG([-Wno-unused-parameter])
    AC_C_FLAG([-std=gnu99])
@@ -12,10 +12,10 @@ index d961bd6..8922042 100644
    AC_CXX_FLAG([-Wextra],[AC_CXX_FLAG([-W])])
    AC_CXX_FLAG([-Wno-unused-parameter])
    AC_CXX_FLAG([-Wno-long-long])
--  AC_CXX_FLAG([-fno-strict-aliasing])
+   AC_CXX_FLAG([-fno-strict-aliasing])
 -  AC_CXX_FLAG([-pipe])
 -  AC_CXX_FLAG([-g])
- 
+
    # -O* messes with debugging.
    AS_IF([test x$enable_debug = xyes], [
      AC_C_FLAG([-O0])
@@ -27,4 +27,4 @@ index d961bd6..8922042 100644
 +    AC_CXX_FLAG([-g])
    ])
  ])
- 
+

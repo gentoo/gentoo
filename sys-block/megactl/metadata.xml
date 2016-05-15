@@ -2,7 +2,10 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<!-- used by infra, please do not non-maintainer drop -->
-	<herd>sysadmin</herd>
+	<maintainer type="project">
+		<email>sysadmin@gentoo.org</email>
+		<name>Gentoo Sysadmin Project</name>
+	</maintainer>
 	<longdescription>
 This project is a small collection of programs for examining configuration and
 status of LSI megaraid adapters, especially Dell PERC RAID adapters, and

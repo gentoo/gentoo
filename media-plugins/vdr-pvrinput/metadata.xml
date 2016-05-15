@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>media-tv</herd>
-		<maintainer>
+	<maintainer type="project">
 			<email>vdr@gentoo.org</email>
 			<name>Gentoo VDR Project</name>
 		</maintainer>
@@ -10,4 +9,3 @@
 		Plugin to use a PVR* card as input device for VDR	
 	</longdescription>
 </pkgmetadata>
-

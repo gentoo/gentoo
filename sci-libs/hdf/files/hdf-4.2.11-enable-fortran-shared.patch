@@ -1,0 +1,35 @@
+--- hdf-4.2.11.orig/configure.ac	2016-03-16 20:07:45.093493050 +0000
++++ hdf-4.2.11/configure.ac	2016-03-16 20:15:56.767311873 +0000
+@@ -224,20 +224,6 @@
+ ## Build static libraries by default. Furthermore, fortran shared libraries
+ ## are unsupported. Disallow a user from enabling both shared libraries and
+ ## fortran.
+-if test "X${enable_shared}" != "Xyes"; then
+-    enable_shared="no"
+-fi
+-
+-if test "X${enable_shared}" = "Xyes"; then
+-    if test "X${BUILD_FORTRAN}" = "Xyes"; then
+-        AC_MSG_ERROR([Cannot build shared fortran libraries. Please configure with --disable-fortran flag.])
+-    fi
+-fi
+-
+-AC_PROG_INSTALL
+-AC_PROG_LN_S
+-
+-AC_CHECK_PROGS([AR], [ar xar], [:], [$PATH])
+ 
+ AC_CHECK_PROGS([YACC], ['bison -y' byacc yacc], [none], [])
+ 
+@@ -847,11 +833,6 @@
+ ## ------------------------------------------------------------------------
+ ## Check to see if libtool has enabled shared libraries. Set a conditional
+ ## as some Makefiles will build based on availability of shared libraries.
+-if (./libtool --features | grep '^enable shared libraries' > /dev/null); then
+-  enable_shared=yes
+-else
+-  enable_shared=no
+-fi
+ 
+ ## ------------------------------------------------------------------------
+ ## Specify shared library extension the host machine should recognize.

@@ -32,11 +32,11 @@ S=${WORKDIR}
 dir=${GAMES_PREFIX_OPT}/${PN}
 Ddir=${D}/${dir}
 
+QA_PREBUILT="${dir:1}/*.so ${dir:1}/*-bin ${dir:1}/System/libSDL-1.2.so.0"
+
 src_unpack() {
-	unpack_makeself "${DISTDIR}"/ut2003demo-lnx-${PV}.sh.bin \
-		|| die "unpacking demo"
-	unzip "${DISTDIR}"/UT2003CrashFix.zip \
-		|| die "unpacking crash-fix"
+	unpack_makeself "${DISTDIR}"/ut2003demo-lnx-${PV}.sh.bin || die
+	unzip "${DISTDIR}"/UT2003CrashFix.zip || die
 	cd "${S}"
 	unpack ./setupstuff.tar.gz || die
 	unpack ./ut2003lnx_demo.tar.bz2 || die
@@ -64,29 +64,25 @@ src_install() {
 			-e 's/ViewportManager=WinDrv.WindowsClient/\;ViewportManager=WinDrv.WindowsClient/' \
 			-e 's/\;RenderDevice=OpenGLDrv.OpenGLRenderDevice/RenderDevice=OpenGLDrv.OpenGLRenderDevice/' \
 			-e 's/\;ViewportManager=SDLDrv.SDLClient/ViewportManager=SDLDrv.SDLClient/' \
-			"${Ddir}"/Benchmark/Stuff/${f} \
-			|| die "sed ${dir}/Benchmark/Stuff/${f} failed"
+			"${Ddir}"/Benchmark/Stuff/${f} || die
 	done
 
 	# Have the benchmarks run the nifty wrapper script rather than
 	# ../System/ut2003-bin directly
 	for f in "${Ddir}"/Benchmark/*-*.sh ; do
 		sed -i \
-			-e 's:\.\./System/ut2003-bin:../ut2003_demo:' "${f}" \
-			|| die "sed ${f} failed"
+			-e 's:\.\./System/ut2003-bin:../ut2003_demo:' "${f}" || die
 	done
 
 	# Wrapper and benchmark-scripts
-	dogamesbin "${FILESDIR}"/ut2003-demo || die "dogamesbin failed"
+	dogamesbin "${FILESDIR}"/ut2003-demo
 	exeinto "${dir}"/Benchmark
 	doexe "${FILESDIR}/"{benchmark,results.sh}
 	sed -i -e "s:GAMES_PREFIX_OPT:${GAMES_PREFIX_OPT}:" \
-		"${ED}/${GAMES_BINDIR}/${PN}" "${ED}/${dir}"/Benchmark/benchmark \
-		|| die "sed GAMES_PREFIX_OPT"
+		"${ED}/${GAMES_BINDIR}/${PN}" "${ED}/${dir}"/Benchmark/benchmark || die
 
 	# Here we apply DrSiN's crash patch
-	cp "${S}"/CrashFix/System/crashfix.u "${Ddir}"/System \
-		|| die "CrashFix failed"
+	cp "${S}"/CrashFix/System/crashfix.u "${Ddir}"/System || die
 
 ed "${Ddir}"/System/Default.ini >/dev/null 2>&1 <<EOT
 $

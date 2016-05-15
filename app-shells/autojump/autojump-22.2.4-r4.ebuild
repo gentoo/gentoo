@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -14,13 +14,18 @@ SRC_URI="https://github.com/joelthelion/${PN}/archive/release-v${PV}.tar.gz -> $
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~ppc ~ppc64"
+KEYWORDS="amd64 ~ppc ~ppc64 x86"
 IUSE="ipython test"
 
 # Not all tests pass. Need investigation.
 RESTRICT="test"
 RDEPEND="ipython? ( ${PYTHON_DEPS} )"
 DEPEND="test? ( dev-python/flake8 dev-python/tox )"
+
+PATCHES=(
+	"${FILESDIR}/${P}-fix-autojump.fish-bugs.patch"
+	"${FILESDIR}/${P}-fix-__aj_error-typo.patch"
+)
 
 src_prepare() {
 	sed -e "s: \(/etc/profile.d\): \"${EPREFIX}\1\":" \
@@ -33,8 +38,7 @@ src_prepare() {
 
 	# upstream fixes to the autojump.fish script; the first patch is needed for
 	# the second patch to apply
-	epatch "${FILESDIR}/autojump-22.4.4-fix-autojump.fish-bugs.patch"
-	epatch "${FILESDIR}/autojump-22.4.4-fix-__aj_error-typo.patch"
+	epatch "${PATCHES[@]}"
 }
 
 src_compile() {
@@ -42,8 +46,8 @@ src_compile() {
 }
 
 src_install() {
-	dobin bin/autojump
-	python_replicate_script "${ED}"/usr/bin/autojump
+	dobin bin/"${PN}"
+	python_replicate_script "${ED}"/usr/bin/"${PN}"
 
 	insinto /etc/profile.d
 	doins bin/"${PN}".sh

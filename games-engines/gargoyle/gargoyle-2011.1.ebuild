@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -10,7 +10,7 @@
 # don't apply. (Fonts are installed through dependencies instead.)
 
 EAPI=5
-inherit eutils multiprocessing toolchain-funcs gnome2-utils games
+inherit eutils flag-o-matic multiprocessing toolchain-funcs gnome2-utils games
 
 DESCRIPTION="An Interactive Fiction (IF) player supporting all major formats"
 HOMEPAGE="http://ccxvii.net/gargoyle/"
@@ -57,6 +57,7 @@ src_prepare() {
 	sed -i -e 's/Linux Libertine O/Linux Libertine/g' garglk/garglk.ini || die
 
 	epatch "${FILESDIR}"/${P}-desktopfile.patch
+	append-cflags -std=gnu89 # build with gcc5 (bug #573378)
 }
 
 src_compile() {

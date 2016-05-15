@@ -1,15 +1,18 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>proxy-maintainers</herd>
-	<maintainer>
+	<maintainer type="person">
 		<email>ultrabug@gentoo.org</email>
 		<name>Ultrabug</name>
 	</maintainer>
-	<maintainer>
+	<maintainer type="person">
 		<email>whissi@whissi.de</email>
 		<name>Thomas D. (Whissi)</name>
 		<description>Proxy-Maintainer, CC. bugs</description>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
 	</maintainer>
 	<use>
 		<flag name="rfc3195">

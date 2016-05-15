@@ -1,8 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
+
+inherit eutils
 
 DESCRIPTION="JavaScript display engine for LaTeX, MathML and AsciiMath"
 HOMEPAGE="http://www.mathjax.org/"
@@ -33,7 +35,7 @@ make_webconf() {
 }
 
 src_prepare() {
-	find . -name .gitignore -delete || die
+	egit_clean
 }
 
 src_install() {

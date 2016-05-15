@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -11,10 +11,12 @@ if [[ ${PV} != "9999" ]] ; then
 	EKEY_STATE="snap"
 fi
 
-inherit enlightenment toolchain-funcs multilib-minimal
+inherit enlightenment toolchain-funcs multilib-minimal eutils
 
 DESCRIPTION="Version 2 of an advanced replacement library for libraries like libXpm"
 HOMEPAGE="https://www.enlightenment.org/"
+
+KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x64-solaris ~x86-solaris"
 
 IUSE="bzip2 gif jpeg cpu_flags_x86_mmx mp3 png static-libs tiff X zlib"
 
@@ -31,11 +33,16 @@ RDEPEND="=media-libs/freetype-2*[${MULTILIB_USEDEP}]
 	)
 	mp3? ( >=media-libs/libid3tag-0.15.1b-r3[${MULTILIB_USEDEP}] )"
 DEPEND="${RDEPEND}
-	png? ( >=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}] )
+	>=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}]
 	X? (
 		>=x11-proto/xextproto-7.2.1-r1[${MULTILIB_USEDEP}]
 		>=x11-proto/xproto-7.0.24[${MULTILIB_USEDEP}]
 	)"
+
+src_prepare() {
+	epatch "${FILESDIR}"/${P}-headers.patch #563732
+	enlightenment_src_prepare
+}
 
 multilib_src_configure() {
 	# imlib2 has diff configure options for x86/amd64 mmx

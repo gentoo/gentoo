@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer>
+	<maintainer type="person">
 		<email>bircoph@gentoo.org</email>
 		<name>Andrew Savchenko</name>
 	</maintainer>
 	<use>
-		<flag name='assistant'>Turn on assistant compiling
+		<flag name="assistant">Turn on assistant compiling
 			(needs gtk enabled)</flag>
-		<flag name='gsm-nonstandard'>Support non-standard GSM frequencies
+		<flag name="gsm-nonstandard">Support non-standard GSM frequencies
 		</flag>
-		<flag name='sqlite'>Turn on compilation of message storage</flag>
-		<flag name='tools'>Compile tools</flag>
-		<flag name='video'>Enable video support (display/capture)</flag>
+		<flag name="sqlite">Turn on compilation of message storage</flag>
+		<flag name="tools">Compile tools</flag>
+		<flag name="video">Enable video support (display/capture)</flag>
 	</use>
 </pkgmetadata>

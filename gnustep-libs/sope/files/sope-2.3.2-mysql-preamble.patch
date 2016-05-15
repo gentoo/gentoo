@@ -1,0 +1,35 @@
+--- a/sope-gdl1/MySQL/GNUmakefile.preamble	2015-09-07 17:52:21.244429620 +0100
++++ b/sope-gdl1/MySQL/GNUmakefile.preamble	2015-09-07 17:54:16.586770809 +0100
+@@ -33,12 +33,12 @@
+ 
+ MySQL_BUNDLE_LIBS += \
+ 	-lGDLAccess	\
+-	`mysql_config --libs`
++	$(shell mysql_config --libs)
+ 
+ MySQLD_BUNDLE_LIBS += \
+ 	-lGDLAccess	\
+ 	-lEOControl	\
+-	`mysql_config --libs`
++	$(shell mysql_config --libs)
+ 
+ gdltest_TOOL_LIBS += \
+ 	-lGDLAccess	\
+@@ -46,14 +46,15 @@
+ 
+ # set compile flags and go
+ 
+-ADDITIONAL_CFLAGS += `mysql_config --cflags`
++ADDITIONAL_CFLAGS += $(shell mysql_config --cflags)
+ 
+ ADDITIONAL_INCLUDE_DIRS += \
+ 	-I../GDLAccess -I.. -I$(SOPE_ROOT)
+ 
+ ADDITIONAL_INCLUDE_DIRS += \
+ 	-I$(SOPE_ROOT)/sope-core/		\
+-	-I$(SOPE_ROOT)/sope-core/NGExtensions
++	-I$(SOPE_ROOT)/sope-core/NGExtensions   \
++	$(shell mysql_config --cflags)
+ 
+ 
+ # dependencies

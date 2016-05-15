@@ -1,4 +1,4 @@
-# Copyright 1999-2008 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -15,7 +15,7 @@ SRC_URI="${CLASS_URI}
 	doc? ( ${DOC_URI} )"
 LICENSE="sun-bcla-j2ee-deployment"
 SLOT="1.1"
-KEYWORDS="amd64 ~ppc x86 ~x86-fbsd"
+KEYWORDS="amd64 x86 ~x86-fbsd"
 IUSE="doc"
 DEPEND=">=virtual/jdk-1.4
 	app-arch/unzip"

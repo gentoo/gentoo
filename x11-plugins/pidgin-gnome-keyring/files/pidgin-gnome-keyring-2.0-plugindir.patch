@@ -1,0 +1,21 @@
+--- a/Makefile	2015-02-07 03:23:05.000000000 +0000
++++ b/Makefile	2016-04-28 09:53:59.915565380 +0000
+@@ -2,6 +2,7 @@
+ 
+ SECRETFLAGS = `pkg-config --libs --cflags libsecret-1`
+ PURPLEFLAGS = `pkg-config --cflags purple`
++PLUGINDIR = `pkg-config --variable=plugindir purple`
+ VERSION = $(shell cat VERSION)
+ ifeq ($(strip $(VERSION)),)
+ 	VERSION = `git describe --tags`
+@@ -18,8 +19,8 @@
+ 	${CC} ${CFLAGS} ${LDFLAGS} -Wall -I. -g -O2 ${TARGET}.c -o ${TARGET}.so -shared -fPIC -DPIC -ggdb ${PURPLEFLAGS} ${SECRETFLAGS} -DVERSION=\"${VERSION}\"
+ 
+ install: ${TARGET}.so
+-	mkdir -p ${DESTDIR}/usr/lib/purple-2/
+-	cp ${TARGET}.so ${DESTDIR}/usr/lib/purple-2/
++	mkdir -p ${DESTDIR}/$(PLUGINDIR)/
++	cp ${TARGET}.so ${DESTDIR}/$(PLUGINDIR)/
+ 
+ install_local: ${TARGET}.so
+ 	mkdir -p ~/.purple/plugins

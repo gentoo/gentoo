@@ -1,9 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
-inherit autotools games
+inherit autotools flag-o-matic games
 
 DESCRIPTION="ROM management tools and library"
 HOMEPAGE="http://mamory.sourceforge.net/"
@@ -15,7 +15,7 @@ KEYWORDS="amd64 ppc x86"
 IUSE=""
 
 DEPEND="dev-libs/expat"
-RDEPEND="${DEPEND}"
+RDEPEND=${DEPEND}
 
 src_prepare() {
 	# Make sure the system expat is used
@@ -34,6 +34,7 @@ src_prepare() {
 		common/Makefile.am || die
 
 	AT_M4DIR="config" eautoreconf
+	append-cflags -std=gnu89 # build with gcc5 (bug #570500)
 }
 
 src_configure() {

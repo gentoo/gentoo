@@ -16,9 +16,9 @@ VERSION_LVM='2.02.88'
 VERSION_UNIONFS_FUSE='0.24'
 VERSION_GPG='1.4.11'
 
-RH_HOME="ftp://sources.redhat.com/pub"
+RH_HOME="ftp://sourceware.org/pub"
 DM_HOME="https://people.redhat.com/~heinzm/sw/dmraid/src"
-BB_HOME="http://www.busybox.net/downloads"
+BB_HOME="https://busybox.net/downloads"
 
 COMMON_URI="${DM_HOME}/dmraid-${VERSION_DMRAID}.tar.bz2
 		${DM_HOME}/old/dmraid-${VERSION_DMRAID}.tar.bz2
@@ -38,7 +38,6 @@ then
 	inherit git-2 bash-completion-r1 eutils
 	S="${WORKDIR}/${PN}"
 	SRC_URI="${COMMON_URI}"
-	KEYWORDS="alpha arm hppa ia64 ppc ppc64 s390 sh sparc"
 else
 	inherit bash-completion-r1 eutils
 	SRC_URI="mirror://gentoo/${P}.tar.bz2

@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>net-mail</herd>
+<maintainer type="project">
+	<email>net-mail@gentoo.org</email>
+	<name>Net-Mail</name>
+</maintainer>
 <longdescription>
 	libsrs2 is the next generation SRS library from the original designer of
 	SRS. It implements the Sender Rewriting Scheme, a part of the SPF/SRS

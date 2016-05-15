@@ -1,34 +1,204 @@
-From fbb9dc6e291eaa058f3ef1cd93711265bfbfd162 Mon Sep 17 00:00:00 2001
-From: Heiko Becker <heirecka@exherbo.org>
-Date: Fri, 7 Nov 2014 00:11:02 +0100
-Subject: [PATCH] Workaround build failures with boost>=1.57 and moc
+Add include guards to all boost includes, as qt's moc trips
+over nested BOOST_JOIN macros:
+* AUTOGEN: error: process for /var/tmp/portage/media-libs/qt-gstreamer-1.2.0-r1/work/qt-gstreamer-1.2.0-4/src/QGst/moc_graphicsvideowidget.cpp failed:
+* usr/include/boost/type_traits/detail/has_binary_operator.hp:50: Parse error at "BOOST_JOIN"
+https://bugs.gentoo.org/show_bug.cgi?id=578906
 
-Otherwise I get the following error message:
-'usr/include/boost/type_traits/detail/has_binary_operator.hp:50:
-Parse error at "BOOST_JOIN"'. See
-https://bugreports.qt-project.org/browse/QTBUG-22829 for details.
-
-The old workaround to define BOOST_TT_HAS_OPERATOR_HPP_INCLUDED
-doesn't seem to work here.
----
- src/QGlib/connect.cpp | 2 ++
- 1 file changed, 2 insertions(+)
-
-diff --git a/src/QGlib/connect.cpp b/src/QGlib/connect.cpp
-index 9ff6fde..58a3367 100644
---- a/src/QGlib/connect.cpp
-+++ b/src/QGlib/connect.cpp
-@@ -21,8 +21,10 @@
+--- qt-gstreamer-1.2.0/codegen/generator.cpp
++++ qt-gstreamer-1.2.0/codegen/generator.cpp
+@@ -54,7 +54,9 @@
+         << "*/" << endl
+         << endl
+         << "#define INCLUDED_FROM_CODEGEN" << endl
++        << "#ifndef Q_MOC_RUN" << endl
+         << "#include <boost/static_assert.hpp>" << endl
++        << "#endif" << endl
+         << endl
+         << "#define REGISTER_TYPE_IMPLEMENTATION(T, GTYPE) \\" << endl
+         << "    namespace QGlib { \\" << endl
+--- qt-gstreamer-1.2.0/src/QGlib/connect.cpp
++++ qt-gstreamer-1.2.0/src/QGlib/connect.cpp
+@@ -20,10 +20,12 @@
+ #include <glib-object.h>
  #include <QtCore/QHash>
  #include <QtCore/QMutex>
++#ifndef Q_MOC_RUN
  #include <boost/multi_index_container.hpp>
-+#ifndef Q_MOC_RUN  // See: https://bugreports.qt-project.org/browse/QTBUG-22829
  #include <boost/multi_index/sequenced_index.hpp>
  #include <boost/multi_index/ordered_index.hpp>
-+#endif
  #include <boost/multi_index/member.hpp>
++#endif
  
  namespace QGlib {
--- 
-2.1.3
-
+ namespace Private {
+--- qt-gstreamer-1.2.0/src/QGlib/connect.h
++++ qt-gstreamer-1.2.0/src/QGlib/connect.h
+@@ -25,8 +25,10 @@
+ #include <QtCore/QSharedPointer>
+ #include <QtCore/QFlags>
+ #include <QtCore/QHash>
++#ifndef Q_MOC_RUN
+ #include <boost/type_traits.hpp>
+ #include <boost/utility/enable_if.hpp>
++#endif
+ 
+ namespace QGlib {
+ 
+--- qt-gstreamer-1.2.0/src/QGlib/connectimpl.h
++++ qt-gstreamer-1.2.0/src/QGlib/connectimpl.h
+@@ -26,7 +26,9 @@
+ # include "refpointer.h"
+ # include <QtCore/QList>
+ # include <stdexcept>
++#ifndef Q_MOC_RUN
+ # include <boost/type_traits.hpp>
++#endif
+ 
+ 
+ namespace QGlib {
+@@ -203,9 +205,11 @@
+ 
+ # else //QGLIB_HAVE_CXX0X
+ 
++#ifndef Q_MOC_RUN
+ #  include <boost/function.hpp>
+ #  include <boost/preprocessor.hpp>
+ #  include <boost/bind.hpp>
++#endif
+ 
+ // include the second part of this file as many times as QGLIB_CONNECT_MAX_ARGS specifies
+ #  define BOOST_PP_ITERATION_PARAMS_1 (3,(0, QGLIB_CONNECT_MAX_ARGS, "QGlib/connectimpl.h"))
+--- qt-gstreamer-1.2.0/src/QGlib/emitimpl.h
++++ qt-gstreamer-1.2.0/src/QGlib/emitimpl.h
+@@ -125,7 +125,9 @@
+ 
+ # else //QGLIB_HAVE_CXX0X
+ 
++#ifndef Q_MOC_RUN
+ #  include <boost/preprocessor.hpp>
++#endif
+ 
+ // include the second part of this file as many times as QGLIB_SIGNAL_MAX_ARGS specifies
+ #  define BOOST_PP_ITERATION_PARAMS_1 (3,(0, QGLIB_SIGNAL_MAX_ARGS, "QGlib/emitimpl.h"))
+--- qt-gstreamer-1.2.0/src/QGlib/gen.cpp
++++ qt-gstreamer-1.2.0/src/QGlib/gen.cpp
+@@ -19,7 +19,9 @@
+ */
+ 
+ #define INCLUDED_FROM_CODEGEN
++#ifndef Q_MOC_RUN
+ #include <boost/static_assert.hpp>
++#endif
+ 
+ #define REGISTER_TYPE_IMPLEMENTATION(T, GTYPE) \
+     namespace QGlib { \
+--- qt-gstreamer-1.2.0/src/QGlib/global.h
++++ qt-gstreamer-1.2.0/src/QGlib/global.h
+@@ -23,7 +23,9 @@
+ #endif
+ 
+ #include <QtCore/QtGlobal>
++#ifndef Q_MOC_RUN
+ #include <boost/config.hpp>
++#endif
+ 
+ /* defined by cmake when building this library */
+ #if defined(QtGLib_EXPORTS) || defined(Qt5GLib_EXPORTS)
+@@ -84,7 +86,9 @@
+ # define QGLIB_STATIC_ASSERT(expr, message) static_assert(expr, message)
+ # define QGLIB_HAVE_CXX0X_STATIC_ASSERT 1
+ #else
++#ifndef Q_MOC_RUN
+ # include <boost/static_assert.hpp>
++#endif
+ # define QGLIB_STATIC_ASSERT(expr, message) BOOST_STATIC_ASSERT(expr)
+ #endif
+ 
+--- qt-gstreamer-1.2.0/src/QGlib/refpointer.h
++++ qt-gstreamer-1.2.0/src/QGlib/refpointer.h
+@@ -23,8 +23,10 @@
+ #include "type.h"
+ #include "wrap.h"
+ #include <cstddef>
++#ifndef Q_MOC_RUN
+ #include <boost/type_traits.hpp>
+ #include <boost/utility/enable_if.hpp>
++#endif
+ #include <QtCore/QHash>
+ 
+ namespace QGlib {
+--- qt-gstreamer-1.2.0/src/QGlib/type.h
++++ qt-gstreamer-1.2.0/src/QGlib/type.h
+@@ -21,7 +21,9 @@
+ 
+ #include "global.h"
+ #include <QtCore/QList>
++#ifndef Q_MOC_RUN
+ #include <boost/mpl/if.hpp>
++#endif
+ 
+ /*
+  * This is a re-definition of GType inside the QGlib::Private namespace.
+--- qt-gstreamer-1.2.0/src/QGlib/value.cpp
++++ qt-gstreamer-1.2.0/src/QGlib/value.cpp
+@@ -19,7 +19,9 @@
+ #include "value.h"
+ #include "string.h"
+ #include <cstring>
++#ifndef Q_MOC_RUN
+ #include <boost/type_traits.hpp>
++#endif
+ #include <glib-object.h>
+ #include <QtCore/QDebug>
+ #include <QtCore/QReadWriteLock>
+--- qt-gstreamer-1.2.0/src/QGlib/value.h
++++ qt-gstreamer-1.2.0/src/QGlib/value.h
+@@ -23,8 +23,10 @@
+ #include "type.h"
+ #include "refpointer.h"
+ #include "error.h"
++#ifndef Q_MOC_RUN
+ #include <boost/mpl/if.hpp>
+ #include <boost/type_traits.hpp>
++#endif
+ #include <stdexcept>
+ #include <QtCore/QString>
+ #include <QtCore/QDebug>
+--- qt-gstreamer-1.2.0/src/QGst/bin.h
++++ qt-gstreamer-1.2.0/src/QGst/bin.h
+@@ -28,8 +28,10 @@
+ #endif
+ 
+ #if !QGLIB_HAVE_CXX0X
++#ifndef Q_MOC_RUN
+ # include <boost/preprocessor.hpp>
+ #endif
++#endif
+ 
+ namespace QGst {
+ 
+--- qt-gstreamer-1.2.0/src/QGst/element.h
++++ qt-gstreamer-1.2.0/src/QGst/element.h
+@@ -22,8 +22,10 @@
+ #include "clocktime.h"
+ 
+ #if !QGLIB_HAVE_CXX0X
++#ifndef Q_MOC_RUN
+ # include <boost/preprocessor.hpp>
+ #endif
++#endif
+ 
+ namespace QGst {
+ 
+--- qt-gstreamer-1.2.0/src/QGst/gen.cpp
++++ qt-gstreamer-1.2.0/src/QGst/gen.cpp
+@@ -19,7 +19,9 @@
+ */
+ 
+ #define INCLUDED_FROM_CODEGEN
++#ifndef Q_MOC_RUN
+ #include <boost/static_assert.hpp>
++#endif
+ 
+ #define REGISTER_TYPE_IMPLEMENTATION(T, GTYPE) \
+     namespace QGlib { \

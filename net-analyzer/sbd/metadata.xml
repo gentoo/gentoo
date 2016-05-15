@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>netmon</herd>
+	<maintainer type="project">
+		<email>netmon@gentoo.org</email>
+		<name>Gentoo network monitoring and analysis project</name>
+	</maintainer>
 	<longdescription>
 sbd is a Netcat-clone, designed to be portable and offer strong encryption. It
 features AES-CBC-128 + HMAC-SHA1 encryption (by Christophe Devine), program

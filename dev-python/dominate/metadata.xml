@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>sautier.louis@gmail.com</email>
+		<name>Louis Sautier</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="pypi">dominate</remote-id>
+		<remote-id type="github">Knio/dominate</remote-id>
+		<bugs-to>https://github.com/Knio/dominate/issues</bugs-to>
+	</upstream>
+	<longdescription lang="en">
+		Dominate is a Python library for creating and manipulating HTML documents using an elegant DOM API. It allows you to write HTML pages in pure Python very concisely, which eliminate the need to learn another template language, and to take advantage of the more powerful features of Python. 
+	</longdescription>
+</pkgmetadata>

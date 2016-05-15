@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -24,7 +24,7 @@ S=${WORKDIR}/${P/_/.}
 # GPL-2 for the init scripts
 LICENSE="HPND BSD GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh ~sparc x86"
+KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86"
 IUSE="bzip2 doc elf ipv6 libressl mfd-rewrites minimal perl python rpm selinux ssl tcpd X zlib lm_sensors ucd-compat pci netlink mysql"
 
 COMMON_DEPEND="
@@ -48,7 +48,7 @@ COMMON_DEPEND="
 	lm_sensors? ( sys-apps/lm_sensors )
 	netlink? ( dev-libs/libnl:3 )
 	mysql? ( virtual/mysql )
-	perl? ( dev-lang/perl:= )
+	perl? ( <dev-lang/perl-5.24.0:= )
 "
 DEPEND="
 	${COMMON_DEPEND}
@@ -57,7 +57,7 @@ DEPEND="
 RDEPEND="
 	${COMMON_DEPEND}
 	perl? (
-		X? ( dev-perl/perl-tk )
+		X? ( dev-perl/Tk )
 		!minimal? ( dev-perl/TermReadKey )
 	)
 	selinux? ( sec-policy/selinux-snmp )

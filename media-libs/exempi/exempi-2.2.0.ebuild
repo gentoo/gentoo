@@ -6,8 +6,8 @@ EAPI=4
 inherit autotools eutils
 
 DESCRIPTION="Exempi is a port of the Adobe XMP SDK to work on UNIX"
-HOMEPAGE="http://libopenraw.freedesktop.org/wiki/Exempi"
-SRC_URI="http://libopenraw.freedesktop.org/download/${P}.tar.gz"
+HOMEPAGE="https://libopenraw.freedesktop.org/wiki/Exempi"
+SRC_URI="https://libopenraw.freedesktop.org/download/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="2"

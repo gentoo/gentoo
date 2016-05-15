@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -14,7 +14,7 @@ SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE=""
 
-DEPEND="media-libs/libsdl:0[sound,opengl,video]
+DEPEND="media-libs/libsdl:0[sound,opengl,video,X]
 	media-libs/sdl-image[jpeg]
 	media-libs/sdl-mixer[vorbis]
 	!games-kids/memonix-bin"

@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>dotnet</herd>
-	<herd>gstreamer</herd>
+	<maintainer type="project">
+		<email>dotnet@gentoo.org</email>
+		<name>Gentoo Dotnet Project</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>gstreamer@gentoo.org</email>
+		<name>GStreamer package maintainers</name>
+	</maintainer>
 	<use>
 		<flag name="bpm">Build beats per minute detection extension</flag>
 		<flag name="cdda">Build with audio CD support</flag>

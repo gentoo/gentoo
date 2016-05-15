@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>ml</herd>
+<maintainer type="project">
+    <email>ml@gentoo.org</email>
+    <name>Gentoo ML Project</name>
+  </maintainer>
   <use>
     <flag name="parmap">Adds multi-core CPU support via <pkg>dev-ml/parmap</pkg>.</flag>
 	<flag name="zip">Adds support for handling zip files.</flag>

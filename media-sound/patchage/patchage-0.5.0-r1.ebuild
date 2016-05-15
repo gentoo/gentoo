@@ -6,7 +6,7 @@ EAPI=5
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE='threads(+)'
 
-inherit eutils waf-utils python-any-r1
+inherit eutils flag-o-matic waf-utils python-any-r1
 
 DESCRIPTION="Modular patch bay for audio and MIDI systems"
 HOMEPAGE="http://wiki.drobilla.net/Patchage"
@@ -38,6 +38,7 @@ src_prepare() {
 }
 
 src_configure() {
+	append-cxxflags -std=c++11
 	waf-utils_src_configure \
 		$(use debug && echo "--debug") \
 		$(use alsa || echo "--no-alsa") \

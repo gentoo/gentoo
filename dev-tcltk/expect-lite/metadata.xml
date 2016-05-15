@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>tcltk</herd>
-	<maintainer>
+	<maintainer type="person">
 		<email>vapier@gentoo.org</email>
+	</maintainer>
+	<maintainer type="project">
+		<email>tcltk@gentoo.org</email>
+		<name>Gentoo Tcltk Project</name>
 	</maintainer>
 	<use>
 		<flag name="debug">pull in packages needed for runtime interactive debugger</flag>

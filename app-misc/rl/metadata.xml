@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>shell-tools</herd>
-	<maintainer>
+	<maintainer type="person">
 		<email>swegener@gentoo.org</email>
 		<description>primary maintainer</description>
+	</maintainer>
+	<maintainer type="project">
+		<email>shell-tools@gentoo.org</email>
+		<name>Gentoo Shell Tools Project</name>
 	</maintainer>
 	<longdescription>randomize lines can be used to randomize the contents of text files or standard input.</longdescription>
 </pkgmetadata>

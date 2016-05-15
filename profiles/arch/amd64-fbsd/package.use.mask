@@ -32,10 +32,6 @@ media-plugins/gst-plugins-meta modplug vaapi
 # Masked kde USE flag until bug #509892 is fixed
 dev-vcs/subversion kde
 
-# Johannes Huber <johu@gentoo.org> (16 Apr 2014)
-# unkeyworded deps
-kde-base/nepomuk-core migrator
-
 # Pacho Ramos <pacho@gentoo.org> (02 Dec 2013)
 # Missing keywords, bug #493156
 media-libs/libgphoto2 serial

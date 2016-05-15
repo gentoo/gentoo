@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -65,6 +65,7 @@ DEPEND="${COMMON_DEPEND}
 		dev-python/numpydoc[${PYTHON_USEDEP}]
 		dev-python/xlwt[${PYTHON_USEDEP}]
 		dev-python/sphinx[${PYTHON_USEDEP}]
+		!~dev-python/sphinx-1.3.4
 		dev-texlive/texlive-latexextra
 		dev-texlive/texlive-fontsrecommended
 		dev-texlive/texlive-latexrecommended

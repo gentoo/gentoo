@@ -23,7 +23,7 @@ SLOT="4/4"
 IUSE="debug examples minimal semantic-desktop test"
 
 RDEPEND="
-	$(add_kdebase_dep kdepimlibs)
+	$(add_kdeapps_dep kdepimlibs)
 	semantic-desktop? ( $(add_kdebase_dep baloo) )
 "
 DEPEND="${RDEPEND}

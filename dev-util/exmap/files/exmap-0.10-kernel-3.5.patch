@@ -1,8 +1,0 @@
---- exmap-0.10/kernel/Makefile
-+++ exmap-0.10/kernel/Makefile
-@@ -10,4 +10,4 @@
- 	$(MAKE) -C ${KERNEL_DIR} M=$(CURDIR) modules
- 
- clean:
--	$(MAKE) -C ${KERNEL_DIR} M=$(CURDIR) clean
-+	#$(MAKE) -C ${KERNEL_DIR} M=$(CURDIR) clean

@@ -22,3 +22,5 @@ RDEPEND="${DEPEND}"
 
 # accessing network
 RESTRICT="test"
+
+PATCHES=( "${FILESDIR}/${P}-cmake.patch" )

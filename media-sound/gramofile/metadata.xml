@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>sound</herd>
+<maintainer type="project">
+	<email>sound@gentoo.org</email>
+	<name>Gentoo Sound project</name>
+</maintainer>
 <longdescription lang="en">
 GramoFile is intended primarily for transferring gramophone records to CDs, but
 has many other possible uses. It can record very long .wav files with a bargraph

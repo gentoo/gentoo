@@ -25,6 +25,7 @@ RDEPEND="
 	dev-ros/tf
 	x11-libs/fltk
 	sci-electronics/Stage
+	dev-ros/std_srvs[${CATKIN_MESSAGES_CXX_USEDEP}]
 "
 DEPEND="${RDEPEND}
 	test? ( dev-ros/rostest )

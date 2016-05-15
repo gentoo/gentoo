@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -13,7 +13,7 @@ SLOT="0"
 KEYWORDS="amd64 ~mips ppc x86 ~ppc-aix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
 IUSE="debug"
 
-RDEPEND="sys-libs/readline"
+RDEPEND="sys-libs/readline:0"
 DEPEND="${RDEPEND}"
 
 src_configure() {

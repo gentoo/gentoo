@@ -9,15 +9,18 @@ diff -Nur prng-3.0.2.orig/configure.ac prng-3.0.2/configure.ac
  
  dnl Checks for typedefs, structures, and compiler characteristics.
  AC_C_CONST
-@@ -39,6 +40,8 @@
+@@ -39,10 +40,7 @@
  dnl Checks for library functions.
  AC_CHECK_FUNCS(strtoul)
  
+-dnl Set flags for compiler
+-if test X"$GCC" = Xyes ; then
+-	AC_SUBST(AM_CFLAGS,"-Wall -fomit-frame-pointer")
+-fi
 +AC_CHECK_LIB([m], [pow])
-+
- dnl Set flags for compiler
- if test X"$GCC" = Xyes ; then
- 	AC_SUBST(AM_CFLAGS,"-Wall -fomit-frame-pointer")
+ 
+ AC_CONFIG_FILES([\
+         Makefile \
 diff -Nur prng-3.0.2.orig/examples/Makefile.am prng-3.0.2/examples/Makefile.am
 --- prng-3.0.2.orig/examples/Makefile.am	2010-10-16 18:47:52.000000000 +0100
 +++ prng-3.0.2/examples/Makefile.am	2010-10-16 18:48:08.000000000 +0100

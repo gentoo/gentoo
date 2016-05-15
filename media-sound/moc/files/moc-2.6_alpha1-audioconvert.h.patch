@@ -1,0 +1,20 @@
+Patch for building with latest FFmpeg 3.0
+https://bugs.gentoo.org/show_bug.cgi?id=575328
+
+Inspired by
+https://raw.githubusercontent.com/Homebrew/patches/1282e60/moc/moc-2.5.0.diff
+
+We can unconditionally depend on the existence of 'channel_layout.h',
+as even the oldest version in the Gentoo tree contains this header.
+
+--- moc-2.6-alpha1/decoder_plugins/ffmpeg/ffmpeg.c
++++ moc-2.6-alpha1/decoder_plugins/ffmpeg/ffmpeg.c
+@@ -66,7 +66,7 @@
+ GCC_DIAG_ON(deprecated-declarations)
+ #include <libavutil/mathematics.h>
+ #ifdef HAVE_AV_GET_CHANNEL_LAYOUT_NB_CHANNELS
+-#include <libavutil/audioconvert.h>
++#include <libavutil/channel_layout.h>
+ #endif
+ 
+ /* FFmpeg also likes common names, without that, our common.h and log.h

@@ -11,13 +11,13 @@ inherit perl-module eutils db-use
 DESCRIPTION="This module provides Berkeley DB interface for Perl"
 
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="alpha amd64 hppa ia64 ppc ppc64 sparc x86"
 IUSE="test"
 
 # Install DB_File if you want older support. BerkleyDB no longer
 # supports less than 2.0.
 
-RDEPEND=">=sys-libs/db-2.0"
+RDEPEND=">=sys-libs/db-2.0:*"
 DEPEND="${RDEPEND}
 	virtual/perl-ExtUtils-MakeMaker
 	test? ( dev-perl/Test-Pod )"

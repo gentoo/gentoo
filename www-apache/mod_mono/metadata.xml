@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>dotnet</herd>
+	<maintainer type="project">
+		<email>dotnet@gentoo.org</email>
+		<name>Gentoo Dotnet Project</name>
+	</maintainer>
 	<longdescription lang="en">
 		The module allows Apache (http://httpd.apache.org) to serve ASP.NET
 		pages by proxying the requests to a slightly modified version of our XSP

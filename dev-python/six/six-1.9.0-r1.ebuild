@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -18,14 +18,14 @@ KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh
 IUSE="doc test"
 
 DEPEND="
-	dev-python/setuptools[${PYTHON_USEDEP}]
 	doc? ( dev-python/sphinx )
 	test? ( dev-python/pytest[${PYTHON_USEDEP}] )"
 
 PATCHES=(
+	"${FILESDIR}"/1.10.0-no-setuptools.patch
 	"${FILESDIR}"/${PV}-mapping.patch
 	"${FILESDIR}"/${P}-winreg.patch
-	)
+)
 
 python_compile_all() {
 	use doc && emake -C documentation html
@@ -38,4 +38,17 @@ python_test() {
 python_install_all() {
 	use doc && local HTML_DOCS=( documentation/_build/html/ )
 	distutils-r1_python_install_all
+}
+
+pkg_preinst() {
+	# Remove this in the next version bump
+	_cleanup() {
+		local pyver=$("${PYTHON}" -c "from distutils.sysconfig import get_python_version; print(get_python_version())")
+		local egginfo="${ROOT%/}$(python_get_sitedir)/${P}-py${pyver}.egg-info"
+		if [[ -d ${egginfo} ]]; then
+			echo rm -r "${egginfo}"
+			rm -r "${egginfo}" || die "Failed to remove egg-info directory"
+		fi
+	}
+	python_foreach_impl _cleanup
 }

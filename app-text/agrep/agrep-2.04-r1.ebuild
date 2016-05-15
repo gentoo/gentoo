@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -10,7 +10,7 @@ SRC_URI="ftp://ftp.cs.arizona.edu/agrep/${P}.tar.Z"
 
 LICENSE="AGREP"
 SLOT="0"
-KEYWORDS="amd64 ~mips ppc ppc64 ~sparc x86 ~ppc-macos ~sparc-solaris"
+KEYWORDS="amd64 ~arm ~mips ppc ppc64 ~sparc x86 ~ppc-macos ~sparc-solaris"
 IUSE=""
 
 DEPEND=""

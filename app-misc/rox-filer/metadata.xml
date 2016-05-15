@@ -1,26 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>proxy-maintainers</herd>
-<maintainer>
+<maintainer type="person">
 	<email>ppurka@gmail.com</email>
 	<name>Punarbasu 'ppurka' Purkayastha</name>
-	<description>Primary Maintainer, Assign bugs</description>
+	<description>Proxy maintainer, Assign bugs</description>
 </maintainer>
-<maintainer>
+<maintainer type="person">
 	<email>forestmoonsilence@gmail.com</email>
 	<name>sitquietly</name>
 	<description>Co Maintainer, CC bugs</description>
 </maintainer>
+<maintainer type="project">
+	<email>proxy-maint@gentoo.org</email>
+	<name>Proxy Maintainers Project</name>
+</maintainer>
+
 <upstream>
 	<maintainer status="active">
 		<email>talex5@gmail.com</email>
 		<name>Thomas Leonard</name>
-		<description>Primary Author</description>
 	</maintainer>
 	<bugs-to>http://rox.sourceforge.net/desktop/lists</bugs-to>
 	<remote-id type="sourceforge">rox</remote-id>
 </upstream>
+
 <longdescription lang="en">
 	ROX-Filer is a fast and powerful graphical file manager for the
 	X Window System. You can use it as a small and fast filer within your

@@ -1,0 +1,69 @@
+Author: Ole Streicher <debian@liska.ath.cx>
+Description: Spellfixes to make lintian happy
+--- a/libwcs/fitsfile.c
++++ b/libwcs/fitsfile.c
+@@ -1583,7 +1583,7 @@
+ 	if (!access (filename, 0)) {
+ 	    fd = open (filename, O_WRONLY);
+ 	    if (fd < 3) {
+-		snprintf (fitserrmsg,79, "FITSWIMAGE:  file %s not writeable\n", filename);
++		snprintf (fitserrmsg,79, "FITSWIMAGE:  file %s not writable\n", filename);
+ 		return (0);
+ 		}
+ 	    }
+@@ -1622,7 +1622,7 @@
+ 	if (!access (filename, 0)) {
+ 	    fd = open (filename, O_WRONLY);
+ 	    if (fd < 3) {
+-		snprintf (fitserrmsg,79, "FITSWEXT:  file %s not writeable\n",
++		snprintf (fitserrmsg,79, "FITSWEXT:  file %s not writable\n",
+ 			 filename);
+ 		return (0);
+ 		}
+@@ -1884,7 +1884,7 @@
+     if (!access (filename, 0)) {
+ 	fdout = open (filename, O_WRONLY);
+ 	if (fdout < 3) {
+-	    snprintf (fitserrmsg,79, "FITSCIMAGE:  file %s not writeable\n", filename);
++	    snprintf (fitserrmsg,79, "FITSCIMAGE:  file %s not writable\n", filename);
+ 	    return (0);
+ 	    }
+ 	}
+@@ -1970,7 +1970,7 @@
+     if (!access (filename, 0)) {
+ 	fd = open (filename, O_WRONLY);
+ 	if (fd < 3) {
+-	    snprintf (fitserrmsg, 79, "FITSWHEAD:  file %s not writeable\n", filename);
++	    snprintf (fitserrmsg, 79, "FITSWHEAD:  file %s not writable\n", filename);
+ 	    return (0);
+ 	    }
+ 	}
+@@ -2072,7 +2072,7 @@
+     if (ext != NULL)
+ 	*ext = cext;
+     if (fd < 3) {
+-	snprintf (fitserrmsg, 79, "FITSWEXHEAD:  file %s not writeable\n", filename);
++	snprintf (fitserrmsg, 79, "FITSWEXHEAD:  file %s not writable\n", filename);
+ 	return (-1);
+ 	}
+ 
+--- a/libwcs/imhfile.c
++++ b/libwcs/imhfile.c
+@@ -896,7 +896,7 @@
+     if (!access (hdrname, 0)) {
+ 	fd = open (hdrname, O_WRONLY);
+ 	if (fd < 3) {
+-	    fprintf (stderr, "IRAFWIMAGE:  file %s not writeable\n", hdrname);
++	    fprintf (stderr, "IRAFWIMAGE:  file %s not writable\n", hdrname);
+ 	    return (0);
+ 	    }
+ 	}
+@@ -993,7 +993,7 @@
+     if (!access (pixname, 0)) {
+ 	fd = open (pixname, O_WRONLY);
+ 	if (fd < 3) {
+-	    fprintf (stderr, "IRAFWIMAGE:  file %s not writeable\n", pixname);
++	    fprintf (stderr, "IRAFWIMAGE:  file %s not writable\n", pixname);
+ 	    return (0);
+ 	    }
+ 	}

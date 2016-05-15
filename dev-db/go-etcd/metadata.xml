@@ -7,7 +7,7 @@
     <doc>https://godoc.org/github.com/coreos/go-etcd/etcd</doc>
     <remote-id type="github">coreos/go-etcd</remote-id>
   </upstream>
-  <maintainer>
+  <maintainer type="person">
     <email>zmedico@gentoo.org</email>
   </maintainer>
 </pkgmetadata>

@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -15,7 +15,7 @@ HOMEPAGE="https://glassfish.dev.java.net/javaee5/webtier/webtierhome.html"
 SRC_URI="http://central.maven.org/maven2/org/glassfish/javax.servlet/${PV}/${MY_P}-sources.jar"
 LICENSE="CDDL"
 SLOT="3.1.1"
-KEYWORDS="amd64 x86 ~ppc ~ppc64"
+KEYWORDS="amd64 ~ppc64 x86"
 
 DEPEND=">=virtual/jdk-1.6
 	app-arch/unzip"

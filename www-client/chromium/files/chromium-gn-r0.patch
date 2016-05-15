@@ -1,0 +1,93 @@
+diff --git a/tools/gn/bootstrap/bootstrap.py b/tools/gn/bootstrap/bootstrap.py
+index ac8adc8..f198833 100755
+--- a/tools/gn/bootstrap/bootstrap.py
++++ b/tools/gn/bootstrap/bootstrap.py
+@@ -118,6 +118,19 @@ def build_gn_with_ninja_manually(tempdir, options):
+   root_gen_dir = os.path.join(tempdir, 'gen')
+   mkdir_p(root_gen_dir)
+ 
++  if is_linux:
++    mkdir_p(os.path.join(root_gen_dir, 'base', 'allocator'))
++    with tempfile.NamedTemporaryFile() as f:
++      f.write('--flags USE_EXPERIMENTAL_ALLOCATOR_SHIM=true')
++      f.flush()
++
++      check_call([
++          os.path.join(SRC_ROOT, 'build', 'write_buildflag_header.py'),
++          '--output', 'base/allocator/features.h',
++          '--gen-dir', root_gen_dir,
++          '--definitions', f.name,
++      ])
++
+   if is_mac:
+     # //base/build_time.cc needs base/generated_build_date.h,
+     # and this file is only included for Mac builds.
+@@ -155,13 +168,18 @@ def write_ninja(path, root_gen_dir, options):
+     else:
+       cflags.extend(['-O2', '-g0'])
+ 
+-    cflags.extend(['-D_FILE_OFFSET_BITS=64', '-pthread', '-pipe'])
++    cflags.extend([
++        '-D_FILE_OFFSET_BITS=64',
++        '-pthread',
++        '-pipe',
++        '-fno-exceptions'
++    ])
+     cflags_cc.extend(['-std=c++11', '-Wno-c++11-narrowing'])
+ 
+   static_libraries = {
+-      'base': {'sources': [], 'tool': 'cxx'},
+-      'dynamic_annotations': {'sources': [], 'tool': 'cc'},
+-      'gn': {'sources': [], 'tool': 'cxx'},
++      'base': {'sources': [], 'tool': 'cxx', 'include_dirs': []},
++      'dynamic_annotations': {'sources': [], 'tool': 'cc', 'include_dirs': []},
++      'gn': {'sources': [], 'tool': 'cxx', 'include_dirs': []},
+   }
+ 
+   for name in os.listdir(GN_ROOT):
+@@ -181,6 +199,7 @@ def write_ninja(path, root_gen_dir, options):
+   ])
+   static_libraries['base']['sources'].extend([
+       'base/allocator/allocator_extension.cc',
++      'base/allocator/allocator_shim.cc',
+       'base/at_exit.cc',
+       'base/base_paths.cc',
+       'base/base_switches.cc',
+@@ -220,10 +239,11 @@ def write_ninja(path, root_gen_dir, options):
+       'base/metrics/bucket_ranges.cc',
+       'base/metrics/histogram.cc',
+       'base/metrics/histogram_base.cc',
+-      'base/metrics/histogram_persistence.cc',
+       'base/metrics/histogram_samples.cc',
+       'base/metrics/metrics_hashes.cc',
++      'base/metrics/persistent_histogram_allocator.cc',
+       'base/metrics/persistent_memory_allocator.cc',
++      'base/metrics/persistent_sample_map.cc',
+       'base/metrics/sample_map.cc',
+       'base/metrics/sample_vector.cc',
+       'base/metrics/sparse_histogram.cc',
+@@ -276,6 +296,8 @@ def write_ninja(path, root_gen_dir, options):
+       'base/timer/timer.cc',
+       'base/trace_event/heap_profiler_allocation_context.cc',
+       'base/trace_event/heap_profiler_allocation_context_tracker.cc',
++      'base/trace_event/heap_profiler_allocation_register.cc',
++      'base/trace_event/heap_profiler_heap_dump_writer.cc',
+       'base/trace_event/heap_profiler_stack_frame_deduplicator.cc',
+       'base/trace_event/heap_profiler_type_name_deduplicator.cc',
+       'base/trace_event/memory_allocator_dump.cc',
+@@ -328,6 +350,7 @@ def write_ninja(path, root_gen_dir, options):
+         'base/threading/thread_local_storage_posix.cc',
+         'base/threading/worker_pool_posix.cc',
+         'base/time/time_posix.cc',
++        'base/trace_event/heap_profiler_allocation_register_posix.cc',
+     ])
+     static_libraries['libevent'] = {
+         'sources': [
+@@ -362,6 +385,7 @@ def write_ninja(path, root_gen_dir, options):
+         'tool': 'cxx',
+     }
+     static_libraries['base']['sources'].extend([
++        'base/allocator/allocator_shim_default_dispatch_to_glibc.cc',
+         'base/memory/shared_memory_posix.cc',
+         'base/nix/xdg_util.cc',
+         'base/process/internal_linux.cc',

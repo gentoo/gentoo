@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>forensics</herd>
+	<maintainer type="project">
+		<email>forensics@gentoo.org</email>
+		<name>Gentoo Forensics Project</name>
+	</maintainer>
 	<upstream>
 		<remote-id type="sourceforge">dcfldd</remote-id>
 	</upstream>

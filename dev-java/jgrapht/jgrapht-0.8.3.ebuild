@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -12,7 +12,7 @@ DESCRIPTION="Graph library that is a simpler and faster alternative to JGraph"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 HOMEPAGE="http://jgrapht.sourceforge.net"
 
-KEYWORDS="amd64 ~ppc x86"
+KEYWORDS="amd64 x86"
 SLOT="0"
 LICENSE="LGPL-2.1"
 

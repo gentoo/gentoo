@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>netmon</herd>
+<maintainer type="project">
+	<email>netmon@gentoo.org</email>
+	<name>Gentoo network monitoring and analysis project</name>
+</maintainer>
 <longdescription>
 AirTraf 1.0 is a wireless sniffer that can detect and determine exactly what is
 being transmitted over 802.11 wireless networks. This open-source program

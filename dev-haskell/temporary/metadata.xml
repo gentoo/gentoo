@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>haskell</herd>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
 	<longdescription>
 		The functions for creating temporary files and directories in the base library are quite limited. The unixutils
-		package contains some good ones, but they aren&#39;t portable to Windows.
+		package contains some good ones, but they aren't portable to Windows.
 		This library just repackages the Cabal implementations of its own temporary file and folder functions so that
 		you can use them without linking against Cabal or depending on it being installed.
 	</longdescription>

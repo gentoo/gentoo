@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -26,6 +26,7 @@ src_prepare() {
 	sed \
 		-e "s:basedir = os.path.dirname(os.path.abspath(__file__)):basedir = '${EPREFIX}/usr/share/gitstats':g" \
 		-i gitstats || die "failed to fix static files path"
+	epatch "${FILESDIR}"/${P}-filter-invalid-unicode.patch
 }
 
 src_compile() {

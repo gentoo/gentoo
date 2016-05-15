@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-    <herd>postgresql</herd>
+    <maintainer type="project">
+        <email>pgsql-bugs@gentoo.org</email>
+        <name>PostgreSQL and Related Package Development</name>
+    </maintainer>
     <use>
-        <flag name='pg_legacytimestamp'>
+        <flag name="pg_legacytimestamp">
             Use double precision floating-point numbers instead of 64-bit
             integers for timestamp storage.
         </flag>
-        <flag name='server'>
+        <flag name="server">
             Disable to build and install the clients and libraries only.
         </flag>
-        <flag name='uuid'>
+        <flag name="uuid">
             Enable server side UUID generation (via
             <pkg>dev-libs/ossp-uuid</pkg>).
         </flag>

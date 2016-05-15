@@ -1,0 +1,18 @@
+The current version of libdvdcss has removed the dvdcss_interface_2 symbol so
+brasero incorrectly assumes it's the wrong version.
+
+https://bugzilla.redhat.com/show_bug.cgi?id=1193628
+
+diff -Naur brasero-3.12.1.orig/plugins/dvdcss/burn-dvdcss.c brasero-3.12.1/plugins/dvdcss/burn-dvdcss.c
+--- brasero-3.12.1.orig/plugins/dvdcss/burn-dvdcss.c	2015-11-12 09:48:53.782886516 -0600
++++ brasero-3.12.1/plugins/dvdcss/burn-dvdcss.c	2015-11-12 09:53:03.152656908 -0600
+@@ -95,9 +95,6 @@
+ 	if (!module)
+ 		goto error_doesnt_exist;
+ 
+-	if (!g_module_symbol (module, "dvdcss_interface_2", &address))
+-		goto error_version;
+-
+ 	if (!g_module_symbol (module, "dvdcss_open", &address))
+ 		goto error_version;
+ 	dvdcss_open = address;

@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="A client library for the Linux Infrared Remote Control (LIRC)"
 
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="test"
 
 RDEPEND="

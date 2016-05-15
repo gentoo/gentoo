@@ -1,0 +1,38 @@
+Suppress stripping.
+
+--- qemacs-orig/Makefile
++++ qemacs/Makefile
+@@ -168,7 +168,6 @@
+ qe$(EXE): qe_g$(EXE) Makefile
+ 	@rm -f $@
+ 	cp $< $@
+-	-$(STRIP) $@
+ 	@ls -l $@
+ 	@echo `size $@` `wc -c $@` qe $(OPTIONS) \
+ 		| cut -d ' ' -f 7-10,13,15-40 >> STATS
+@@ -183,7 +182,6 @@
+ tqe$(EXE): tqe_g$(EXE) Makefile
+ 	@rm -f $@
+ 	cp $< $@
+-	-$(STRIP) $@
+ 	@ls -l $@
+ 	@echo `size $@` `wc -c $@` tqe $(OPTIONS) \
+ 		| cut -d ' ' -f 7-10,13,15-40 >> STATS
+@@ -386,7 +384,7 @@
+ 	$(INSTALL) -m 755 -d $(DESTDIR)$(prefix)/bin
+ 	$(INSTALL) -m 755 -d $(DESTDIR)$(mandir)/man1
+ 	$(INSTALL) -m 755 -d $(DESTDIR)$(datadir)/qe
+-	$(INSTALL) -m 755 -s qe$(EXE) $(DESTDIR)$(prefix)/bin/qemacs$(EXE)
++	$(INSTALL) -m 755 qe$(EXE) $(DESTDIR)$(prefix)/bin/qemacs$(EXE)
+ 	ln -sf qemacs $(DESTDIR)$(prefix)/bin/qe$(EXE)
+ ifdef CONFIG_FFMPEG
+ 	ln -sf qemacs$(EXE) $(DESTDIR)$(prefix)/bin/ffplay$(EXE)
+@@ -394,7 +392,7 @@
+ 	$(INSTALL) -m 644 kmaps ligatures $(DESTDIR)$(datadir)/qe
+ 	$(INSTALL) -m 644 qe.1 $(DESTDIR)$(mandir)/man1
+ ifdef CONFIG_HTML
+-	$(INSTALL) -m 755 -s html2png$(EXE) $(DESTDIR)$(prefix)/bin
++	$(INSTALL) -m 755 html2png$(EXE) $(DESTDIR)$(prefix)/bin
+ endif
+ 
+ uninstall:

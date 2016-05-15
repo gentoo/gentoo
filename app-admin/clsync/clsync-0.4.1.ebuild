@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -33,7 +33,7 @@ REQUIRED_USE="
 	mhash? ( cluster )
 	seccomp? ( caps )
 "
-RDEPEND="
+CDEPEND="
 	dev-libs/glib:2
 	cgroups? ( dev-libs/libcgroup )
 	mhash? ( app-crypt/mhash )

@@ -40,7 +40,7 @@ DEPEND="
 	)
 	fluidsynth? ( media-sound/fluidsynth )
 	openal? ( media-libs/openal )
-	tools? ( sys-libs/ncurses )"
+	tools? ( sys-libs/ncurses:0 )"
 RDEPEND="${DEPEND}
 	!dedicated? (
 		snowberry? (

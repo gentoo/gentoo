@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -15,7 +15,7 @@ SRC_URI="http://www.jivesoftware.org/builds/${PN}/${MY_P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="2.2"
-KEYWORDS="amd64 ppc x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 COMMON_DEP="dev-java/xpp3"

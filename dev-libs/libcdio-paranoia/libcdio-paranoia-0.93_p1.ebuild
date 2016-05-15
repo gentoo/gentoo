@@ -7,7 +7,7 @@ MY_P=${PN}-10.2+${PV/_p/+}
 
 AUTOTOOLS_AUTORECONF=yes
 
-inherit eutils autotools-multilib
+inherit eutils autotools-multilib flag-o-matic
 
 DESCRIPTION="an advanced CDDA reader with error correction"
 HOMEPAGE="https://www.gnu.org/software/libcdio/"
@@ -18,7 +18,7 @@ SRC_URI="mirror://gnu/${PN%-*}/${MY_P}.tar.gz"
 # clause "or later" so we use LGPL-2.1 without +
 LICENSE="GPL-3+ GPL-2+ LGPL-2.1"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~x86-freebsd ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~x86-freebsd ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x86-solaris"
 IUSE="+cxx static-libs test"
 
 RDEPEND="app-eselect/eselect-cdparanoia
@@ -38,6 +38,8 @@ DOCS=( AUTHORS ChangeLog NEWS README THANKS )
 src_prepare() {
 	sed -i -e 's:AM_CONFIG_HEADER:AC_CONFIG_HEADERS:' configure.ac || die #466410
 	autotools-multilib_src_prepare
+
+	[[ ${CC} == *clang* ]] && append-flags -std=gnu89
 }
 
 src_configure() {
@@ -48,6 +50,8 @@ src_configure() {
 		--disable-cpp-progs
 		--with-cd-paranoia-name=libcdio-paranoia
 	)
+	# Darwin linker doesn't get this
+	[[ ${CHOST} == *-darwin* ]] && myeconfargs+=( --without-versioned-libs )
 	autotools-multilib_src_configure
 }
 

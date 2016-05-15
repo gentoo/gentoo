@@ -6,7 +6,7 @@
 	/ Data Box Information System) SOAP services as defined in Czech ISDS Act
 	(300/2008 Coll.) and implied documents.
 </longdescription>
-<maintainer>
+<maintainer type="person">
         <email>petr.pisar@atlas.cz</email>
         <name>Petr Pisar</name>
         <description>Proxy-Maintainer. Assign bugs to him</description>

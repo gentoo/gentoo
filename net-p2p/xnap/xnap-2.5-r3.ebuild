@@ -1,4 +1,4 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -7,7 +7,7 @@ HOMEPAGE="http://xnap.sf.net"
 SRC_URI="mirror://sourceforge/xnap/${P}r3.jar"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~ppc x86"
+KEYWORDS="x86"
 IUSE=""
 RDEPEND=">=virtual/jre-1.3"
 

@@ -1,0 +1,25 @@
+From 63def02823e631cd73b763541a87d7c480be799e Mon Sep 17 00:00:00 2001
+From: Jeremy Tan <jtanx@outlook.com>
+Date: Mon, 14 Mar 2016 12:25:45 +0800
+Subject: [PATCH] Spiros: Add dummy _SpiroCP2SplineSet when compiling without
+ Spiros.
+
+---
+ fontforge/spiro.c | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/fontforge/spiro.c b/fontforge/spiro.c
+index 629339a..bb2f36f 100644
+--- a/fontforge/spiro.c
++++ b/fontforge/spiro.c
+@@ -35,6 +35,10 @@
+ 
+ static int has_spiro = false;
+ 
++static SplineSet *_SpiroCP2SplineSet(spiro_cp *spiros) {
++	return NULL;
++}
++
+ SplineSet *SpiroCP2SplineSet(spiro_cp *spiros) {
+     return( NULL );
+ }

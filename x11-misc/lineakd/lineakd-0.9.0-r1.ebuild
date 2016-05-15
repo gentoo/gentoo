@@ -56,6 +56,6 @@ src_install() {
 pkg_postinst() {
 	elog
 	elog "evtest utility has not been installed. evtest can be found"
-	elog "in games-util/joystick."
+	elog "in app-misc/evtest."
 	elog
 }

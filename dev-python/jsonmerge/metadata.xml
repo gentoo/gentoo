@@ -5,7 +5,7 @@
 		<remote-id type="pypi">jsonmerge</remote-id>
 		<remote-id type="github">omergertel/jsonmerge</remote-id>
 	</upstream>
-	<maintainer>
+	<maintainer type="person">
 		<email>zmedico@gentoo.org</email>
 		<name>Zac Medico</name>
 	</maintainer>

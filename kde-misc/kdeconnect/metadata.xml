@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>kde</herd>
+	<maintainer type="project">
+		<email>kde@gentoo.org</email>
+		<name>Gentoo KDE Project</name>
+	</maintainer>
+	<use>
+		<flag name="app">Enable experimental kcapp frontend</flag>
+		<flag name="telepathy">Enable <pkg>net-libs/telepathy-qt</pkg> support to receive text messages and respond to them</flag>
+		<flag name="wayland">Enable kwin_wayland support for mousepad plugin using <pkg>kde-plasma/kwayland</pkg></flag>
+	</use>
 </pkgmetadata>

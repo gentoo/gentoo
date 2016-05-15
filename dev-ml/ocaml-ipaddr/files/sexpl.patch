@@ -1,0 +1,26 @@
+Index: ocaml-ipaddr-2.6.1/_tags
+===================================================================
+--- ocaml-ipaddr-2.6.1.orig/_tags
++++ ocaml-ipaddr-2.6.1/_tags
+@@ -23,7 +23,7 @@
+ "lib/ipaddr_unix.cmxs": use_ipaddr_unix
+ <lib/*.ml{,i}>: pkg_bytes
+ <lib/*.ml{,i}>: pkg_sexplib
+-<lib/*.ml{,i}>: pkg_sexplib.syntax
++<lib/*.ml{,i}>: pkg_pa_sexp_conv.syntax
+ <lib/*.ml{,i}>: pkg_unix
+ <lib/*.ml{,i}>: use_ipaddr
+ # Library ipaddr_top
+Index: ocaml-ipaddr-2.6.1/setup.ml
+===================================================================
+--- ocaml-ipaddr-2.6.1.orig/setup.ml
++++ ocaml-ipaddr-2.6.1/setup.ml
+@@ -6905,7 +6905,7 @@ let setup_t =
+                         [
+                            FindlibPackage ("bytes", None);
+                            FindlibPackage ("sexplib", None);
+-                           FindlibPackage ("sexplib.syntax", None)
++                           FindlibPackage ("pa_sexp_conv.syntax", None)
+                         ];
+                       bs_build_tools = [ExternalTool "ocamlbuild"];
+                       bs_c_sources = [];

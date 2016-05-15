@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>sci-biology</herd>
-  <herd>proxy-maintainers</herd>
-  <maintainer>
+  <maintainer type="person">
     <email>mmokrejs@gmail.com</email>
     <name>Martin Mokrejs</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>sci-biology@gentoo.org</email>
+    <name>Gentoo Biology Project</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
   </maintainer>
   <longdescription>BAM (Binary Alignment/Map) format is useful for storing large DNA sequence alignments. It is closely related to the text-based SAM format, but optimized for random-access. BamTools provides a fast, flexible C++ API for reading and writing BAM files.</longdescription>
   <upstream>

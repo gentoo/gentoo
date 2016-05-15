@@ -1,6 +1,0 @@
-# /etc/conf.d/speechd-up: config file for /etc/init.d/speechd-up
-
-# Niceness level at which to run speechd-up
-
-NICELEVEL=-5
-

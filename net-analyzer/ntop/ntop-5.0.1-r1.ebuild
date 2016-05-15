@@ -5,7 +5,7 @@
 EAPI=5
 PYTHON_COMPAT=( python2_7 )
 
-inherit autotools eutils user python-single-r1
+inherit autotools eutils multilib user python-single-r1
 
 DESCRIPTION="Network traffic analyzer with web interface"
 HOMEPAGE="http://www.ntop.org/products/ntop/"
@@ -50,8 +50,11 @@ pkg_setup() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-gentoo.patch
-	epatch "${FILESDIR}"/${P}-includes.patch
+	epatch \
+		"${FILESDIR}"/${P}-gentoo.patch \
+		"${FILESDIR}"/${P}-includes.patch \
+		"${FILESDIR}"/${P}-librrd.patch
+
 	cp /usr/share/aclocal/libtool.m4 libtool.m4.in
 	cat acinclude.m4.in libtool.m4.in acinclude.m4.ntop > acinclude.m4
 	eautoreconf
@@ -77,10 +80,16 @@ src_configure() {
 	econf
 	popd &>/dev/null || die
 
+	if has_version '<net-analyzer/rrdtool-1.6'; then
+		export RRD_LIB=-lrrd_th
+	else
+		export RRD_LIB=-lrrd
+	fi
+
 	econf \
 		$(use_enable snmp) \
 		$(use_with ssl) \
-		--with-rrd-home=/usr/lib
+		--with-rrd-home=/usr/$(get_libdir)
 
 }
 

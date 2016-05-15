@@ -1,0 +1,27 @@
+commit 1dc922cdd0798d5522331f1c98657f494d18c6b9
+Author: Derek Buitenhuis <derek.buitenhuis@gmail.com>
+Date:   Sun Dec 27 18:37:59 2015 -0500
+
+    track: Wrap C headers in extern "C" properly
+    
+    This fixes av_rescale being undefiend during linking with some
+    GCC versions (e.g. 4.8.4 on Ubuntu 14.04).
+    
+    Signed-off-by: Derek Buitenhuis <derek.buitenhuis@gmail.com>
+
+diff --git a/src/core/track.cpp b/src/core/track.cpp
+index 136bc21..23e57ad 100644
+--- a/src/core/track.cpp
++++ b/src/core/track.cpp
+@@ -25,9 +25,11 @@
+ 
+ #include <algorithm>
+ 
++extern "C" {
+ #include <libavutil/avutil.h>
+ #include <libavutil/common.h>
+ #include <libavutil/mathematics.h>
++}
+ 
+ namespace {
+ FrameInfo ReadFrame(ZipFile &stream, FrameInfo const& prev, const FFMS_TrackType TT) {

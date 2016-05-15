@@ -33,6 +33,7 @@ penmount - INPUT_DEVICES setting to build driver for penmount input devices
 roccat_arvo - INPUT_DEVICES setting to build driver for Roccat Arvo input devices
 roccat_isku - INPUT_DEVICES setting to build driver for Roccat Isku input devices
 roccat_iskufx - INPUT_DEVICES setting to build driver for Roccat Isku Fx input devices
+roccat_kiro - INPUT_DEVICES setting to build driver for Roccat Kiro input devices
 roccat_kone - INPUT_DEVICES setting to build driver for Roccat Kone input devices
 roccat_koneplus - INPUT_DEVICES setting to build driver for Roccat Kone[+] input devices
 roccat_konepure - INPUT_DEVICES setting to build driver for Roccat Kone Pure input devices
@@ -41,6 +42,7 @@ roccat_konepureoptical - INPUT_DEVICES setting to build driver for Roccat Kone P
 roccat_konextd - INPUT_DEVICES setting to build driver for Roccat KoneXTD input devices
 roccat_konextdoptical - INPUT_DEVICES setting to build driver for Roccat KoneXTD Optical input devices
 roccat_kovaplus - INPUT_DEVICES setting to build driver for Roccat Kova[+] input devices
+roccat_kova2016 - INPUT_DEVICES setting to build driver for Roccat Kova 2016 input devices
 roccat_lua - INPUT_DEVICES setting to build driver for Roccat Lua input devices
 roccat_nyth - INPUT_DEVICES setting to build driver for Roccat Nyth input devices
 roccat_pyra - INPUT_DEVICES setting to build driver for Roccat Pyra input devices

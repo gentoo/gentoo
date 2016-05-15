@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>media-optical</herd>
-	<maintainer>
+	<maintainer type="person">
 		<email>billie@gentoo.org</email>
 		<name>Daniel Pielmeier</name>
 	</maintainer>
 	<upstream>
 		<maintainer>
 			<email>joerg.schilling@fokus.fraunhofer.de</email>
-			<description>Upstream author, please CC on bugs</description>
+			<name>Jörg Schilling</name>
 		</maintainer>
 		<remote-id type="sourceforge">cdrtools</remote-id>
 	</upstream>

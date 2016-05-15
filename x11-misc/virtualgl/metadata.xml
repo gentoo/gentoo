@@ -1,18 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>proxy-maintainers</herd>
-	<maintainer>
+	<maintainer type="person">
 		<email>pacho@gentoo.org</email>
 		<name>Pacho Ramos</name>
 	</maintainer>
-	<maintainer>
+	<maintainer type="person">
 		<email>mva@mva.name</email>
 		<name>Vadim A. Misbakh-Soloviov</name>
 	</maintainer>
-	<maintainer>
+	<maintainer type="person">
 		<email>rei4dan@gmail.com</email>
 		<name>My Th</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription>
 	An open source package that gives any Unix or Linux remote display software

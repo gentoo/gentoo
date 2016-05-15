@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -30,7 +30,7 @@ RDEPEND=">=virtual/jdk-1.5
 	)"
 DEPEND="${RDEPEND}
 	dev-java/ant-nodeps:0
-	test? ( =dev-java/junit-4.10*:4
+	test? ( >=dev-java/junit-4.12:4
 			dev-java/hamcrest-core )
 	dev-java/ant-junit:0
 	>=dev-java/ant-ivy-2.2.0:2"

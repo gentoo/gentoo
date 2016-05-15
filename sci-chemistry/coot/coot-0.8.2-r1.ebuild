@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -16,7 +16,7 @@ MY_S_P=${MY_S2_P}-${PR/r/revision-}
 MY_PV=${PV}
 MY_P=${PN}-${MY_PV}
 
-DESCRIPTION="Crystallographic Object-Oriented Toolkit for model building, completion and validation"
+DESCRIPTION="Crystallographic Object-Oriented Toolkit"
 HOMEPAGE="https://www2.mrc-lmb.cam.ac.uk/Personal/pemsley/coot/"
 SRC_URI="
 	http://www2.mrc-lmb.cam.ac.uk/Personal/pemsley/coot/source/releases/${MY_P}.tar.gz

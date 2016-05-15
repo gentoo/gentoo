@@ -1,10 +1,12 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 
-inherit flag-o-matic libtool user autotools-utils
+AUTOTOOLS_AUTORECONF=1
+
+inherit autotools-utils eutils flag-o-matic libtool user
 
 DESCRIPTION="Generic framework to farm out work to other machines"
 HOMEPAGE="http://www.gearman.org/"
@@ -13,31 +15,38 @@ SRC_URI="https://launchpad.net/gearmand/trunk/${PV}/+download/${P}.tar.gz"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="debug tcmalloc +memcache drizzle sqlite tokyocabinet postgres"
+IUSE="debug tcmalloc +memcache sqlite tokyocabinet postgres"
 
 RDEPEND="dev-libs/libevent
 	>=dev-libs/boost-1.39:=[threads(+)]
 	|| ( >=sys-apps/util-linux-2.16 <sys-libs/e2fsprogs-libs-1.41.8 )
 	tcmalloc? ( dev-util/google-perftools )
 	memcache? ( >=dev-libs/libmemcached-0.47 )
-	drizzle? ( dev-db/drizzle )
 	sqlite? ( dev-db/sqlite:3 )
 	tokyocabinet? ( dev-db/tokyocabinet )
-	postgres? ( >=dev-db/postgresql-9.0 )"
+	postgres? ( >=dev-db/postgresql-9.0:* )"
 DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+	virtual/pkgconfig
+	>=sys-devel/boost-m4-0.4_p20160328"
 
 pkg_setup() {
 	enewuser gearmand -1 -1 /dev/null nogroup
 }
 
+src_prepare() {
+	# fixes bug 574558, which is due to an outdated bundled boost.m4
+	rm m4/boost.m4 || die
+	sed -i -e 's/AM_INIT_AUTOMAKE.*//g' m4/pandora_canonical.m4 || die
+	epatch -p1 "${FILESDIR}/${P}-stdbool-h.patch"
+	autotools-utils_src_prepare
+}
+
 src_configure() {
 	local myeconfargs=(
-		$(use_enable drizzle libdrizzle)
 		$(use_enable memcache libmemcached)
-		$(use_enable postgres libpq)
 		$(use_enable tcmalloc)
 		$(use_enable tokyocabinet libtokyocabinet)
+		$(use_with postgres postgresql)
 		$(use_with sqlite sqlite3)
 		--disable-mtmalloc
 		--disable-static

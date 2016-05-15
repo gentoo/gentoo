@@ -1,5 +1,5 @@
---- Modules/FindImageMagick.cmake
-+++ Modules/FindImageMagick.cmake
+--- a/Modules/FindImageMagick.cmake
++++ b/Modules/FindImageMagick.cmake
 @@ -147,17 +147,17 @@
      )
    if(component STREQUAL "Magick++")

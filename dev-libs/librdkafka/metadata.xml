@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>whissi@whissi.de</email>
+		<name>Thomas D. (Whissi)</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<upstream>
+		<bugs-to>https://github.com/edenhill/librdkafka/issues</bugs-to>
+		<remote-id type="github">edenhill/librdkafka</remote-id>
+	</upstream>
+</pkgmetadata>

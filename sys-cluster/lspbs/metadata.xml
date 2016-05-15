@@ -1,11 +1,17 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>cluster</herd>
-  <herd>proxy-maintainers</herd>
-  <maintainer>
+  <maintainer type="person">
     <email>j.spadavecchia@ed.ac.uk</email>
     <name>Joseph Spadavecchia</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>cluster@gentoo.org</email>
+    <name>Gentoo Cluster Project</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
   </maintainer>
   <longdescription>
     Lspbs is a lightweight alternative to the xpbsmon utility, which

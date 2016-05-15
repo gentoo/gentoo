@@ -6,8 +6,8 @@ EAPI=5
 inherit flag-o-matic
 
 DESCRIPTION="PulseAudio Preferences, configuration dialog for PulseAudio"
-HOMEPAGE="http://freedesktop.org/software/pulseaudio/paprefs"
-SRC_URI="http://freedesktop.org/software/pulseaudio/${PN}/${P}.tar.xz"
+HOMEPAGE="https://freedesktop.org/software/pulseaudio/paprefs"
+SRC_URI="https://freedesktop.org/software/pulseaudio/${PN}/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"

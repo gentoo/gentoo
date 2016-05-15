@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>x11</herd>
-  <maintainer>
+  <maintainer type="person">
     <email>naota@gentoo.org</email>
+  </maintainer>
+  <maintainer type="project">
+    <email>x11@gentoo.org</email>
+    <name>X11</name>
   </maintainer>
   <upstream>
     <remote-id type="github">BlueDragonX/xf86-input-mtrack</remote-id>

@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>crypto</herd>
+	<maintainer type="project">
+		<email>crypto@gentoo.org</email>
+		<name>Crypto</name>
+	</maintainer>
 	<use>
 		<flag name="asn1">Enable ASN.1 certificate support</flag>
 		<flag name="trust">Build the trust policy module</flag>

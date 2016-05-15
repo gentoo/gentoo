@@ -1,0 +1,8 @@
+diff -up avogadro-1.1.1/avogadro.pc.in.eigen avogadro-1.1.1/avogadro.pc.in
+--- avogadro-1.1.1/avogadro.pc.in.eigen	2013-12-06 09:50:04.000000000 -0600
++++ avogadro-1.1.1/avogadro.pc.in	2014-01-25 00:37:45.732007852 -0600
+@@ -9,3 +9,4 @@ Description: Avogadro libraries
+ Version: @Avogadro_VERSION_FULL@
+ Libs: -L${libdir} -lavogadro
+ Cflags: -I${pkgincludedir}
++Requires.private: eigen3

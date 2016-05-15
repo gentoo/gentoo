@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>freedesktop</herd>
   <use>
-    <flag name='jimtcl'>Use <pkg>dev-lang/jimtcl</pkg> instead of <pkg>dev-lang/tcl</pkg> for smaller memory footprint</flag>
+    <flag name="jimtcl">Use <pkg>dev-lang/jimtcl</pkg> instead of <pkg>dev-lang/tcl</pkg> for smaller memory footprint</flag>
   </use>
-  <maintainer>
+  <maintainer type="person">
     <email>rafaelmartins@gentoo.org</email>
     <name>Rafael G. Martins</name>
+  </maintainer>
+<maintainer type="project">
+    <email>freedesktop-bugs@gentoo.org</email>
+    <name>Gentoo Freedesktop Project</name>
   </maintainer>
 </pkgmetadata>

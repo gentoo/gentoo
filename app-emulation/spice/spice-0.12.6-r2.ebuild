@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -30,7 +30,7 @@ RDEPEND="
 	sasl? ( dev-libs/cyrus-sasl[static-libs(+)?] )"
 
 DEPEND="
-	>=app-emulation/spice-protocol-0.12.10
+	~app-emulation/spice-protocol-0.12.10
 	virtual/pkgconfig
 	$(python_gen_any_dep '
 		>=dev-python/pyparsing-1.5.6-r2[${PYTHON_USEDEP}]

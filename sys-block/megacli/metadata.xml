@@ -2,5 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<!-- used by infra, please do not non-maintainer drop -->
-	<herd>sysadmin</herd>
+	<maintainer type="project">
+		<email>sysadmin@gentoo.org</email>
+		<name>Gentoo Sysadmin Project</name>
+	</maintainer>
 </pkgmetadata>

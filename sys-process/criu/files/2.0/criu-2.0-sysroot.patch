@@ -1,0 +1,15 @@
+Using host headers when cross compiling is not a great idea.
+
+Index: criu-2.0/criu/Makefile
+===================================================================
+--- criu-2.0.orig/criu/Makefile
++++ criu-2.0/criu/Makefile
+@@ -51,7 +51,7 @@ ccflags-y		+= -iquote $(SRC_DIR)/criu/pi
+ ccflags-y		+= -iquote $(SRC_DIR)/criu/$(ARCH_DIR)
+ ccflags-y		+= -iquote $(SRC_DIR)/criu/$(ARCH_DIR)/include
+ ccflags-y		+= -iquote $(SRC_DIR)/
+-ccflags-y		+= -I/usr/include/libnl3
++ccflags-y		+= -I${SYSROOT}/usr/include/libnl3
+ 
+ export ccflags-y
+ 

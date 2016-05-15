@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>desktop-effects</herd>
+<maintainer type="project">
+    <email>desktop-effects@gentoo.org</email>
+    <name>Desktop effects</name>
+  </maintainer>
 <longdescription lang="en">
->Package with several compiz-fusion plugins:
+&gt;Package with several compiz-fusion plugins:
 addhelper, bench, crashhandler, cubecaps, cubereflex, extrawm, fadedesktop, firepaint, gears,
 goto-viewport, group, mblur, reflex, scalefilter, showdesktop, splash, trailfocus, widget.
 </longdescription>
@@ -14,4 +17,3 @@ goto-viewport, group, mblur, reflex, scalefilter, showdesktop, splash, trailfocu
     </flag>
   </use>
 </pkgmetadata>
-

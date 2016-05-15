@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer>
+	<maintainer type="person">
 		<email>vikraman@gentoo.org</email>
 		<name>Vikraman Choudhury</name>
 	</maintainer>
@@ -17,4 +17,3 @@
 		<remote-id type="pypi">httpie</remote-id>
 	</upstream>
 </pkgmetadata>
-

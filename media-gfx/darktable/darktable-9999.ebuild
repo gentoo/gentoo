@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -39,7 +39,7 @@ CDEPEND="
 	x11-libs/cairo
 	x11-libs/gtk+:3
 	x11-libs/pango
-	colord? ( x11-misc/colord:0= )
+	colord? ( x11-libs/colord-gtk:0= )
 	cups? ( net-print/cups )
 	flickr? ( media-libs/flickcurl )
 	geo? ( net-libs/libsoup:2.4 )

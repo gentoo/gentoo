@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -34,16 +34,19 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	app-text/docbook-xsl-stylesheets
 	sys-devel/gettext
-	doc? (
-		dev-python/sphinx[${PYTHON_USEDEP}]
-		>=dev-python/sphinxcontrib-issuetracker-0.11-r1[${PYTHON_USEDEP}]
-	)
+	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
 "
 
 PATCHES=(
 	"${FILESDIR}/${P}-templatesfix.patch"
 	"${FILESDIR}/${PN}-0.8.1-removedfeatures.patch"
 )
+
+python_prepare_all() {
+	distutils-r1_python_prepare_all
+
+	sed -i -e "s/, 'sphinxcontrib.issuetracker'//" doc/conf.py || die
+}
 
 python_compile_all() {
 	if use doc; then

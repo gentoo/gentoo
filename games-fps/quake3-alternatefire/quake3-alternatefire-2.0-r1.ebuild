@@ -2,15 +2,14 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=2
-
+EAPI=5
 MOD_DESC="adds unique new secondary attacks to weapons"
 MOD_NAME="Alternate Fire"
 MOD_DIR="alternatefire"
 
 inherit games games-mods
 
-HOMEPAGE="http://www.planetquake.com/alternatefire/"
+HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
 SRC_URI="mirror://quakeunity/modifications/alternatefire/alternatefire-${PV}.zip"
 
 LICENSE="freedist"

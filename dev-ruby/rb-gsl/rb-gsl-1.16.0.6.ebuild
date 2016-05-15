@@ -1,9 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
-USE_RUBY="ruby19 ruby20 ruby21 ruby22"
+USE_RUBY="ruby20 ruby21 ruby22 ruby23"
 
 RUBY_FAKEGEM_NAME="gsl"
 inherit ruby-fakegem multilib
@@ -20,16 +20,16 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE="doc"
 
-DEPEND+=" >=sci-libs/gsl-1.15"
-RDEPEND+=" >=sci-libs/gsl-1.15"
+DEPEND+=" >=sci-libs/gsl-1.15 <sci-libs/gsl-2.1"
+RDEPEND+=" >=sci-libs/gsl-1.15 <sci-libs/gsl-2.1"
 
 RUBY_S="${PN}-${P}"
 
 ruby_add_bdepend "dev-ruby/narray"
 ruby_add_rdepend "dev-ruby/narray"
 
-each_ruby_prepare() {
-	sed -i -e '/$CPPFLAGS =/a \$LDFLAGS = " -L#{narray_config} -l:narray.so "+$LDFLAGS' -e 's/src/lib/' ext/gsl_native/extconf.rb || die
+all_ruby_prepare() {
+	sed -i -e '/LOCAL_LIBS/ s: -l: -L#{path.gsub("src", "lib")} -l:' ext/gsl_native/extconf.rb || die
 }
 
 each_ruby_configure() {

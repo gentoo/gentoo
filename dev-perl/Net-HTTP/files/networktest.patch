@@ -1,0 +1,48 @@
+diff -Naur Net-HTTP-6.09/Makefile.PL Net-HTTP-6.09b/Makefile.PL
+--- Net-HTTP-6.09/Makefile.PL	2015-05-02 03:08:06.000000000 +0000
++++ Net-HTTP-6.09b/Makefile.PL	2016-03-01 03:52:01.412179572 +0000
+@@ -3,16 +3,6 @@
+ require 5.006002;
+ use strict;
+ use ExtUtils::MakeMaker;
+-use Getopt::Long qw(GetOptions);
+-GetOptions(\my %opt, 'live-tests',) or warn "Usage: $0 [--live-tests]\n";
+-
+-my $flag_file = "t/LIVE_TESTS";
+-if ($opt{"live-tests"}) {
+-    open(my $fh, ">", $flag_file) || die;
+-}
+-else {
+-    unlink($flag_file);
+-}
+ 
+ WriteMakefile(
+     NAME => 'Net::HTTP',
+diff -Naur Net-HTTP-6.09/t/apache-https.t Net-HTTP-6.09b/t/apache-https.t
+--- Net-HTTP-6.09/t/apache-https.t	2015-05-01 18:12:51.000000000 +0000
++++ Net-HTTP-6.09b/t/apache-https.t	2016-03-01 03:51:19.511547486 +0000
+@@ -1,8 +1,8 @@
+ #!perl -w
+ 
+ BEGIN {
+-    unless (-f "t/LIVE_TESTS" || -f "LIVE_TESTS") {
+-	print "1..0 # SKIP Live tests disabled; pass --live-tests to Makefile.PL to enable\n";
++  if ($ENV{NO_NETWORK_TESTING}) {
++	print "1..0 # SKIP Live tests disabled\n";
+ 	exit;
+     }
+     eval {
+diff -Naur Net-HTTP-6.09/t/apache.t Net-HTTP-6.09b/t/apache.t
+--- Net-HTTP-6.09/t/apache.t	2015-05-01 18:12:51.000000000 +0000
++++ Net-HTTP-6.09b/t/apache.t	2016-03-01 04:01:59.267131963 +0000
+@@ -1,8 +1,8 @@
+ #!perl -w
+ 
+ BEGIN {
+-    unless (-f "t/LIVE_TESTS" || -f "LIVE_TESTS") {
+-	print "1..0 # SKIP Live tests disabled; pass --live-tests to Makefile.PL to enable\n";
++  if( $ENV{NO_NETWORK_TESTING} ) {
++	print "1..0 # SKIP Live tests disabled\n";
+ 	exit;
+     }
+     eval {

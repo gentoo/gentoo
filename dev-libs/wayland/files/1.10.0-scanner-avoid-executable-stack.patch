@@ -1,0 +1,45 @@
+From f8f3e54aa7bc15871ca4296cbc16ae065b07de4e Mon Sep 17 00:00:00 2001
+From: Pekka Paalanen <pekka.paalanen@collabora.co.uk>
+Date: Wed, 2 Mar 2016 11:00:35 +0200
+Subject: [PATCH] scanner: avoid executable stack
+
+Before this patch:
+$ scanelf -lpqe ./wayland-scanner
+RWX --- ---  ./wayland-scanner
+
+That indicates the stack is executable, which is a bad thing for
+security. Wayland-scanner does not actually need an executable stack, it
+is just an oversight from using an .S file in the sources.
+
+Add a special incantation in dtddata.S to make it not cause the stack to
+become executable.
+
+Reported-by: Mart Raudsepp <leio@gentoo.org>
+Signed-off-by: Pekka Paalanen <pekka.paalanen@collabora.co.uk>
+Tested-by: Mart Raudsepp <leio@gentoo.org>
+---
+ src/dtddata.S | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+diff --git a/src/dtddata.S b/src/dtddata.S
+index 68e3435..ce51133 100644
+--- a/src/dtddata.S
++++ b/src/dtddata.S
+@@ -20,6 +20,14 @@
+  * CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+  */
+ 
++/*
++ * Avoid executable stack.
++ * from: https://wiki.gentoo.org/wiki/Hardened/GNU_stack_quickstart
++ */
++#if defined(__linux__) && defined(__ELF__)
++.section .note.GNU-stack,"",%progbits
++#endif
++
+ /* from: http://www.linuxjournal.com/content/embedding-file-executable-aka-hello-world-version-5967#comment-348129 */
+ 
+ .macro binfile name file
+-- 
+2.6.4
+

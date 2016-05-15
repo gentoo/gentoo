@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>leechcraft</herd>
+	<maintainer type="project">
+		<email>leechcraft@gentoo.org</email>
+		<name>LeechCraft</name>
+	</maintainer>
 	<use>
 		<flag name="fb2">Enable support for FictionBook format</flag>
 		<flag name="mobi">Enable support for MOBI format</flag>

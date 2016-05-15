@@ -11,8 +11,6 @@ if [[ ${PV} == 9999* ]]; then
 	EGIT_SOURCEDIR="${WORKDIR}/refpolicy"
 
 	inherit git-2
-
-	KEYWORDS=""
 else
 	SRC_URI="https://raw.githubusercontent.com/wiki/TresysTechnology/refpolicy/files/refpolicy-${PV}.tar.bz2
 			https://dev.gentoo.org/~swift/patches/selinux-base-policy/patchbundle-selinux-base-policy-${PVR}.tar.bz2"

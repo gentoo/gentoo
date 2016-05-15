@@ -1,0 +1,13 @@
+https://bugs.gentoo.org/580290
+
+--- a/src/client/misc.h
++++ b/src/client/misc.h
+@@ -36,7 +36,7 @@ struct COptions;
+ #endif
+ 
+ #ifndef makedev
+-  #define makedev(maj,min) (((maj) << 8) | min))
++  #define makedev(maj,min) (((maj) << 8) | (min))
+ #endif
+ 
+ // =======================================================

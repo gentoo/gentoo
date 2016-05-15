@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>tools-portage</herd>
-	<maintainer>
+	<maintainer type="person">
 		<email>fuzzyray@gentoo.org</email>
 		<name>Paul Varner</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>tools-portage@gentoo.org</email>
+		<name>Gentoo Portage tools team</name>
 	</maintainer>
 	<upstream>
 		<remote-id type="sourceforge">elogviewer</remote-id>

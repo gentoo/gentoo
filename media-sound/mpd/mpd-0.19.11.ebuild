@@ -223,6 +223,8 @@ src_install() {
 
 	newinitd "${FILESDIR}"/${PN}2.init ${PN}
 
+	systemd_newuserunit systemd/${PN}.service ${PN}.service
+
 	if use unicode; then
 		sed -i -e 's:^#filesystem_charset.*$:filesystem_charset "UTF-8":' \
 			"${ED}"/etc/mpd.conf || die "sed failed"

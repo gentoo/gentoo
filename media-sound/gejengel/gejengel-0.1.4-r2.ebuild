@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=5
 inherit autotools eutils multilib flag-o-matic
 
 DESCRIPTION="Lightweight audio player"
@@ -11,7 +11,7 @@ SRC_URI="https://${PN}.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="+alsa audioscrobbler debug dbus +ffmpeg flac libnotify mad openal pulseaudio syslog"
 
 RDEPEND="dev-cpp/gtkmm:2.4
@@ -42,7 +42,8 @@ src_prepare() {
 		"${FILESDIR}"/${P}-ffmpeg-1.patch \
 		"${FILESDIR}"/${P}-libav9.patch \
 		"${FILESDIR}"/${P}-ffmpeg2.patch \
-		"${FILESDIR}"/${PV}-flac_ln.patch
+		"${FILESDIR}"/${PV}-flac_ln.patch \
+		"${FILESDIR}"/bckport-debug.patch
 
 	# Remove Vesion and Encoding from the desktop file
 	sed -i -e "/Version/d" -e "/Encoding/d" \
@@ -53,6 +54,7 @@ src_prepare() {
 }
 
 src_configure() {
+	append-cxxflags -std=c++11
 	econf \
 		--disable-shared \
 		$(use_enable syslog logging) \

@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -36,6 +36,7 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
+		-DPYTHON_EXECUTABLE="${PYTHON}"
 		$(cmake-utils_use_find_package scripting BoostPython)
 	)
 

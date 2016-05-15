@@ -1,0 +1,30 @@
+commit 3a5d3b89ecb3a05b58ad8d160a35c0795daf0c9a
+Author: Jens John <dev@2ion.de>
+Date:   Sun Feb 7 20:35:17 2016 +0900
+
+Fix completion of --no-* patterned options
+---
+
+diff --git a/BUGS b/BUGS
+deleted file mode 100644
+index 337eb25..0000000
+--- a/BUGS
++++ /dev/null
+@@ -1,4 +0,0 @@
+-- Options of type 'Flag' with no default and no [nocfg] marker are
+-  not being completed correctly (exmaple: --no-audio). The completion
+-  wrongly suggests to complete them in the format --no-audio=*, but
+-  these options do not accept a yes/no flag.
+diff --git a/gen.sh b/gen.sh
+index 87e7e35..596f349 100755
+--- a/gen.sh
++++ b/gen.sh
+@@ -149,7 +149,7 @@ for line in $(mpv --list-options \
+         "$(printf "$template_case" "$key" "$tail")")
+       ;;
+     Flag)
+-      if [[ $line =~ \[nocfg\] || $line =~ \[global\] ]] ; then
++      if [[ $line =~ \[nocfg\] || $line =~ \[global\] || $key =~ --no- ]] ; then
+         _allkeys="$_allkeys $key"
+       else
+         _allkeys="$_allkeys ${key}="

@@ -7,7 +7,7 @@
     <doc>https://github.com/xetorthio/etcd-fs/blob/master/README.md</doc>
     <remote-id type="github">xetorthio/etcd-fs</remote-id>
   </upstream>
-  <maintainer>
+  <maintainer type="person">
     <email>zmedico@gentoo.org</email>
   </maintainer>
 </pkgmetadata>

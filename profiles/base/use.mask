@@ -74,6 +74,7 @@ kqemu
 lilo
 mmx
 mmxext
+mpx
 sse
 sse2
 sse3
@@ -100,6 +101,7 @@ cpu_flags_x86_fma3
 cpu_flags_x86_fma4
 cpu_flags_x86_mmx
 cpu_flags_x86_mmxext
+cpu_flags_x86_mpx
 cpu_flags_x86_padlock
 cpu_flags_x86_popcnt
 cpu_flags_x86_sse
@@ -188,6 +190,7 @@ video_cards_freedreno
 video_cards_omap
 video_cards_omapfb
 video_cards_tegra
+video_cards_vc4
 
 # linux-only drivers
 video_cards_qxl
@@ -272,7 +275,6 @@ coreaudio
 
 # Diego Pettenò <flameeyes@gentoo.org> (4 Jan 2007)
 # Mask the flags for PHP that are available only on x86
-sybase
 frontbase
 # Shared with amd64
 oci8
@@ -306,11 +308,6 @@ pam_console
 # The prefix USE flags should never be used on non prefix profiles
 prefix
 prefix-guest
-
-# Diego E. Pettenò <flameeyes@gentoo.org> (6 Dec 2009)
-#  on behalf of QA Team
-# Removal of pvm is scheduled for Februrary 4.
-pvm
 
 # Alex Legler <a3li@gentoo.org> (7 Dec 2009)
 # Rubinius is whitelisted on supported arches

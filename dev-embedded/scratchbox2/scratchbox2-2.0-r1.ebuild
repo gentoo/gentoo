@@ -10,8 +10,8 @@ MY_PN="${PN/cratch}"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="A cross-compilation toolkit designed to make embedded Linux application development easier"
-HOMEPAGE="http://www.freedesktop.org/wiki/Software/sbox2"
-SRC_URI="http://cgit.freedesktop.org/${MY_PN}/snapshot/${MY_P}.tar.bz2"
+HOMEPAGE="https://www.freedesktop.org/wiki/Software/sbox2"
+SRC_URI="https://cgit.freedesktop.org/${MY_PN}/snapshot/${MY_P}.tar.bz2"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

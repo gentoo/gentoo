@@ -1,6 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
+
+# Rick Farina <zerochaos@gentoo.org> (03 Feb 2016)
+# dev-libs/libusb[static-libs] requires libudev[static-libs] which is masked below
+dev-libs/libusb static-libs
 
 # Pacho Ramos <pacho@gentoo.org> (29 May 2014)
 # upower support is not needed on setups running systemd, also

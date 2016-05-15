@@ -7,8 +7,8 @@ EAPI=4
 inherit eutils libtool
 
 DESCRIPTION="A documentation metadata library"
-HOMEPAGE="http://rarian.freedesktop.org/"
-SRC_URI="http://${PN}.freedesktop.org/Releases/${P}.tar.gz"
+HOMEPAGE="https://rarian.freedesktop.org/"
+SRC_URI="https://${PN}.freedesktop.org/Releases/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

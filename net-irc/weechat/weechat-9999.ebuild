@@ -1,16 +1,16 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
-PYTHON_COMPAT=( python{2_7,3_3,3_4} )
+PYTHON_COMPAT=( python{2_7,3_3,3_4,3_5} )
 inherit eutils python-single-r1 multilib cmake-utils
 
 if [[ ${PV} == "9999" ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/weechat/weechat.git"
 else
-	SRC_URI="http://${PN}.org/files/src/${P}.tar.bz2"
+	SRC_URI="https://weechat.org/files/src/${P}.tar.bz2"
 	KEYWORDS="~amd64 ~ppc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux"
 fi
 
@@ -32,7 +32,7 @@ IUSE="doc nls +ssl test ${LANGS// / linguas_} ${SCRIPT_LANGS} ${PLUGINS} ${INTER
 RDEPEND="
 	dev-libs/libgcrypt:0=
 	net-misc/curl[ssl]
-	sys-libs/ncurses
+	sys-libs/ncurses:0=
 	sys-libs/zlib
 	charset? ( virtual/libiconv )
 	guile? ( dev-scheme/guile:12 )
@@ -40,7 +40,7 @@ RDEPEND="
 	nls? ( virtual/libintl )
 	perl? ( dev-lang/perl )
 	python? ( ${PYTHON_DEPS} )
-	ruby? ( >=dev-lang/ruby-1.9 )
+	ruby? ( || ( dev-lang/ruby:2.3 dev-lang/ruby:2.2 dev-lang/ruby:2.1 dev-lang/ruby:2.0 ) )
 	ssl? ( net-libs/gnutls )
 	spell? ( app-text/aspell )
 	tcl? ( >=dev-lang/tcl-8.4.15:0= )
@@ -106,7 +106,7 @@ src_configure() {
 		"-DENABLE_LARGEFILE=ON"
 		"-DENABLE_DEMO=OFF"
 		"-DENABLE_GTK=OFF"
-		"-DPYTHON_EXECUTABLE=${PYTHON}"
+		"-DENABLE_JAVASCRIPT=OFF"
 		$(cmake-utils_use_enable alias)
 		$(cmake-utils_use_enable doc)
 		$(cmake-utils_use_enable charset)
@@ -130,7 +130,14 @@ src_configure() {
 		$(cmake-utils_use_enable trigger)
 		$(cmake-utils_use_enable xfer)
 	)
-	[[ ${EPYTHON} == python3* ]] && mycmakeargs+=( $(cmake-utils_use_enable python PYTHON3) )
+
+	if use python; then
+		python_export PYTHON_LIBPATH
+		mycmakeargs+=(
+			-DPYTHON_EXECUTABLE="${PYTHON}"
+			-DPYTHON_LIBRARY="${PYTHON_LIBPATH}"
+		)
+	fi
 
 	cmake-utils_src_configure
 }

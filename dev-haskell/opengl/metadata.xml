@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>haskell</herd>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
 	<longdescription>
 		A Haskell binding for the OpenGL graphics system (GL, version 3.2) and its
 		accompanying utility library (GLU, version 1.3).
 		
-		OpenGL is the industry&#39;s most widely used and supported 2D and 3D graphics
+		OpenGL is the industry's most widely used and supported 2D and 3D graphics
 		application programming interface (API), incorporating a broad set of
 		rendering, texture mapping, special effects, and other powerful visualization
 		functions. For more information about OpenGL and its various extensions,

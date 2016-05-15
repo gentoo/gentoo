@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>media-tv</herd>
-		<maintainer>
+	<maintainer type="project">
   			<email>vdr@gentoo.org</email>
 			<name>Gentoo VDR Project</name>
 		</maintainer>
 		<use>
-			<flag name='dxr3'>Install logos for lower osd color depth on dxr3
+			<flag name="dxr3">Install logos for lower osd color depth on dxr3
 				cards</flag>
 		</use>
 </pkgmetadata>

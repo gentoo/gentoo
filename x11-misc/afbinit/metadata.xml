@@ -2,6 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 
-	<herd>sparc</herd>
-
+	<maintainer type="project">
+		<email>sparc@gentoo.org</email>
+		<name>Gentoo Linux SPARC Development</name>
+	</maintainer>
 </pkgmetadata>

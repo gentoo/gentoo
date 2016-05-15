@@ -17,7 +17,7 @@ SRC_URI="mirror://sourceforge/e2fsprogs/${PN}-${UP_PV}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~x86-freebsd ~amd64-linux ~arm-linux ~x86-linux ~m68k-mint ~x86-solaris"
+KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~amd64-fbsd ~x86-fbsd ~x86-freebsd ~amd64-linux ~arm-linux ~x86-linux ~m68k-mint ~x86-solaris"
 IUSE="nls static-libs"
 
 RDEPEND="!sys-libs/com_err
@@ -64,7 +64,7 @@ multilib_src_compile() {
 
 multilib_src_install() {
 	emake V=1 STRIP=: DESTDIR="${D}" install || die
-	multilib_is_native_abi && gen_usr_ldscript -a com_err ss $(usex kernel_linux '' 'uuid blkid')
+	gen_usr_ldscript -a com_err ss $(usex kernel_linux '' 'uuid blkid')
 	# configure doesn't have an option to disable static libs :/
 	use static-libs || find "${ED}" -name '*.a' -delete
 }

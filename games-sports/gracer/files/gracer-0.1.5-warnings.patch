@@ -1,0 +1,21 @@
+--- gracer-0.1.5.orig/src/glbind.c
++++ gracer-0.1.5/src/glbind.c
+@@ -142,7 +142,7 @@
+     return NULL;
+ 
+   entry = Tcl_FindHashEntry (&cache_hash, key);
+-  if (&entry)
++  if (!entry)
+     return NULL;
+ 
+   return Tcl_GetHashValue (entry);
+--- gracer-0.1.5.orig/src/joystick.c
++++ gracer-0.1.5/src/joystick.c
+@@ -20,6 +20,7 @@
+  */
+ 
+ #include <unistd.h>
++#include <string.h>
+ #include <errno.h>
+ #include <sys/types.h>
+ #include <sys/stat.h>

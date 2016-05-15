@@ -1,17 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-    <herd>netmon</herd>
-	<herd>proxy-maintainers</herd>
-    <maintainer>
+    <maintainer type="person">
         <email>patrick@gentoo.org</email>
         <name>Patrick Lauer</name>
         <description>Maintainer</description>
     </maintainer>
-    <maintainer>
+    <maintainer type="person">
         <email>jason.r.wallace@gmail.com</email>
         <name>Jason Wallace</name>
         <description>Proxy maintainer. CC him on bugs</description>
+    </maintainer>
+    <maintainer type="project">
+        <email>netmon@gentoo.org</email>
+        <name>Gentoo network monitoring and analysis project</name>
+    </maintainer>
+    <maintainer type="project">
+        <email>proxy-maint@gentoo.org</email>
+        <name>Proxy Maintainers</name>
     </maintainer>
     <longdescription>
 		Barnyard2 is a fork of the original barnyard project (which is no longer under development).
@@ -30,7 +36,7 @@
         <bugs-to>mailto:dev@securixlive.com</bugs-to>
     </upstream>
 	<use>
-		<flag name='gre'>Enable GRE support</flag>
-		<flag name='mpls'>Enable support for mpls networks</flag>
+		<flag name="gre">Enable GRE support</flag>
+		<flag name="mpls">Enable support for mpls networks</flag>
 	</use>
 </pkgmetadata>

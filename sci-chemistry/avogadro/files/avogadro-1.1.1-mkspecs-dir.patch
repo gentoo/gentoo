@@ -1,0 +1,12 @@
+diff -up avogadro-1.1.1/CMakeLists.txt.mkspecs-dir avogadro-1.1.1/CMakeLists.txt
+--- avogadro-1.1.1/CMakeLists.txt.mkspecs-dir	2014-01-24 23:43:01.618510517 -0600
++++ avogadro-1.1.1/CMakeLists.txt	2014-01-24 23:44:03.236844746 -0600
+@@ -547,7 +547,7 @@ if(QT_MKSPECS_DIR AND INSTALL_QMAKE_PRF)
+ #    )
+     install(FILES
+       "${CMAKE_CURRENT_BINARY_DIR}/avogadro.prf"
+-      DESTINATION "${CMAKE_INSTALL_PREFIX}/${QT_MKSPECS_RELATIVE}/features"
++      DESTINATION "${QT_MKSPECS_DIR}/features"
+     )
+ #  endif ("${QT_MKSPECS_DIR}" MATCHES ^$"${CMAKE_INSTALL_PREFIX}/")
+ else()

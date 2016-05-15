@@ -19,9 +19,13 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86 ~x86-linux ~x86-macos"
 IUSE=""
 
-DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
+DEPEND="
+	dev-python/setuptools[${PYTHON_USEDEP}]
+	dev-vcs/mercurial
+"
 RDEPEND="${DEPEND}
-	dev-vcs/subversion[${PYTHON_USEDEP}]"
+	dev-vcs/subversion[${PYTHON_USEDEP}]
+"
 
 pkg_setup() {
 	python-single-r1_pkg_setup

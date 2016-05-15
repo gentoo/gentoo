@@ -1,0 +1,14 @@
+Author: Ole Streicher <olebole@debian.org>
+Description: Remove the tests that require pytest-mpl
+ Pytest_mpl is (still) not available in Debian.
+ https://github.com/astrofrog/pytest-mpl
+--- a/setup.cfg
++++ b/setup.cfg
+@@ -11,7 +11,6 @@
+ minversion = 2.2
+ norecursedirs = build docs/_build
+ doctest_plus = enabled
+-addopts = --mpl --mpl-baseline-path=wcsaxes/tests/baseline_images
+ 
+ [ah_bootstrap]
+ auto_use = False

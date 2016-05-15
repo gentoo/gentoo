@@ -10,7 +10,7 @@ DESCRIPTION="Small event-driven (SAX-style) JSON parser"
 HOMEPAGE="https://lloyd.github.com/yajl/"
 SRC_URI="https://github.com/lloyd/yajl/tarball/${PV} -> ${P}.tar.gz"
 
-LICENSE="BSD"
+LICENSE="ISC"
 SLOT="0"
 KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ppc ppc64 sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="static-libs"

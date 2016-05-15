@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -13,10 +13,13 @@ LICENSE="GPL-2"
 KEYWORDS=" ~amd64 ~x86"
 IUSE=""
 
-DEPEND=">=media-libs/opencv-3.0.0[contrib]"
+DEPEND=">=media-libs/opencv-3.0.0:=[contrib]"
 RDEPEND="${DEPEND}"
 
-PATCHES=( "${FILESDIR}/${PN}-15.08.2-opencv3.patch" )
+PATCHES=(
+	"${FILESDIR}/${PN}-15.08.2-opencv3.patch"
+	"${FILESDIR}/${PN}-15.08.3-opencv3.1.patch"
+)
 
 src_configure() {
 	local mycmakeargs=(

@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -23,6 +23,8 @@ DEPEND="${RDEPEND}
 		x11-proto/xproto )
 	>=sys-apps/sed-4
 	sys-devel/bison"
+# test hangs forever, disabling it
+RESTRICT="test"
 
 src_prepare() {
 	# fix bugs 240005 and 243588
@@ -60,8 +62,7 @@ src_install() {
 	fi
 
 	doicon "${FILESDIR}"/xspim.svg || die
-	make_desktop_entry xspim xSPIM xspim "ComputerScience;Science;Education" \
-		"Comment=Graphical MIPS32 Assembly language emulator"
+	make_desktop_entry xspim xSPIM xspim "ComputerScience;Science;Education"
 
 	dohtml Documentation/SPIM.html || die
 	dodoc ChangeLog Documentation/BLURB README VERSION || die

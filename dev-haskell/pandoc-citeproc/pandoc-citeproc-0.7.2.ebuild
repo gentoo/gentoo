@@ -49,6 +49,10 @@ DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-1.12
 "
 
+src_prepare() {
+	epatch "${FILESDIR}"/${PN}-0.9-no-binutils.patch
+}
+
 src_configure() {
 	haskell-cabal_src_configure \
 		$(cabal_flag bibutils bibutils) \

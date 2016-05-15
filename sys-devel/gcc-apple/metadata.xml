@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>prefix</herd>
+  <maintainer type="project">
+    <email>prefix@gentoo.org</email>
+    <name>Gentoo Prefix</name>
+  </maintainer>
   <use>
-    <flag name="multislot">Allow for SLOTs to include minor version (3.3.4
-      instead of just 3.3)</flag>
+    <flag name="multislot">Allow for multiple versions to be emerged at once for same CTARGET</flag>
     <flag name="objc">Build support for the Objective C code language</flag>
     <flag name="objc++">Build support for the Objective C++ language</flag>
     <flag name="regression-test">Run the testsuite and install the results (requires FEATURES=test)</flag>

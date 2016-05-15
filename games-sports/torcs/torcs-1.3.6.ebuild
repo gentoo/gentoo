@@ -33,6 +33,7 @@ src_prepare() {
 		"${FILESDIR}"/${P}-no-automake.patch \
 		"${FILESDIR}"/${P}-as-needed.patch \
 		"${FILESDIR}"/${P}-flags.patch \
+		"${FILESDIR}"/${P}-format.patch \
 		"${FILESDIR}"/${P}-noXmuXt.patch
 	eautoreconf
 	ecvs_clean

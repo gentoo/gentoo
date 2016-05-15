@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -42,12 +42,12 @@ CDEPEND="
 	media-libs/liblqr
 	>=media-libs/libpgf-6.12.27
 	media-libs/libpng:0=
-	>=media-libs/opencv-3.0.0[contrib]
+	>=media-libs/opencv-3.0.0:=[contrib]
 	media-libs/phonon[qt4]
 	>=media-libs/tiff-3.8.2:0
 	virtual/jpeg:0
 	x11-libs/libX11
-	addressbook? ( $(add_kdebase_dep kdepimlibs) )
+	addressbook? ( $(add_kdeapps_dep kdepimlibs) )
 	gphoto2? ( media-libs/libgphoto2:= )
 	mysql? ( virtual/mysql )
 	semantic-desktop? ( $(add_kdebase_dep baloo '' 4.12.0) )
@@ -71,6 +71,8 @@ S="${WORKDIR}/${MY_P}/core"
 
 RESTRICT=test
 # bug 366505
+
+PATCHES=( "${FILESDIR}/${PN}-4.14.0-lensfun.patch" ) # bug 566624
 
 src_prepare() {
 	# just to make absolutely sure

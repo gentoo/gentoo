@@ -24,8 +24,7 @@ IUSE="bzip2 +cxx doc unicode zlib static-libs"
 RDEPEND="bzip2? ( app-arch/bzip2 )
 	zlib? ( sys-libs/zlib )"
 DEPEND="${RDEPEND}
-	virtual/pkgconfig
-	userland_GNU? ( >=sys-apps/findutils-4.4.0 )"
+	virtual/pkgconfig"
 
 S=${WORKDIR}/${MY_P}
 

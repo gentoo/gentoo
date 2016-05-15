@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit gnome2 multibuild python-r1
 
 DESCRIPTION="A collection of documentation utilities for the Gnome project"
-HOMEPAGE="https://live.gnome.org/GnomeDocUtils"
+HOMEPAGE="https://wiki.gnome.org/Projects/GnomeDocUtils"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"

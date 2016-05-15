@@ -1,10 +1,12 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
+
 PYTHON_COMPAT=( python2_7 )
-inherit multilib python-single-r1 cmake-utils vim-plugin
+
+inherit eutils multilib python-single-r1 cmake-utils vim-plugin
 
 if [[ ${PV} == 9999* ]] ; then
 	EGIT_REPO_URI="git://github.com/Valloric/YouCompleteMe.git"
@@ -54,14 +56,14 @@ src_configure() {
 
 src_test() {
 	# TODO: use system gmock/gtest
-	cd "${S}"/cpp
+	cd "${S}"/cpp || die
 	emake ycm_core_tests
 	cd ycm/tests || die
 	LD_LIBRARY_PATH="${EROOT}"/usr/$(get_libdir)/llvm \
 		"${S}"/cpp/ycm/tests/ycm_core_tests || die
 
-	cd "${S}"/python/ycm
-	nosetests || die
+	cd "${S}"/python/ycm || die
+	nosetests --verbose || die
 }
 
 src_install() {
@@ -79,10 +81,6 @@ src_install() {
 pkg_postinst() {
 	vim-plugin_pkg_postinst
 
-	if [[ -z ${REPLACING_VERSIONS} ]] ; then
-		elog
-		elog "optional dependencies:"
-		elog "  dev-python/jedi (better python autocompletion)"
-		elog
-	fi
+	[[ -z ${REPLACING_VERSIONS} ]] && \
+		optfeature "better python autocompletion" dev-python/jedi
 }

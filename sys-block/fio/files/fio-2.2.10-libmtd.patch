@@ -1,0 +1,12 @@
+diff -Nuar --exclude config.log fio-2.2.10/lib/libmtd.h fio-2.2.10.new/lib/libmtd.h
+--- fio-2.2.10/lib/libmtd.h	2016-01-26 18:02:07.000000000 -0800
++++ fio-2.2.10.new/lib/libmtd.h	2016-02-03 08:10:19.104693006 -0800
+@@ -29,6 +29,8 @@
+ extern "C" {
+ #endif
+ 
++#include <stdint.h>
++
+ /* Maximum MTD device name length */
+ #define MTD_NAME_MAX 127
+ /* Maximum MTD device type string length */

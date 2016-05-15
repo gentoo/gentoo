@@ -1,0 +1,27 @@
+diff -ru work.old/vmci-only/linux/driver.c work/vmci-only/linux/driver.c
+--- work.old/vmci-only/linux/driver.c	2015-09-14 21:07:49.751696932 +0200
++++ work/vmci-only/linux/driver.c	2015-09-14 22:10:48.015908198 +0200
+@@ -2467,8 +2467,6 @@
+ static void __exit
+ vmci_exit(void)
+ {
+-   int retval;
+-
+    if (guestDeviceInit) {
+       pci_unregister_driver(&vmci_driver);
+       vfree(data_buffer);
+@@ -2480,12 +2478,8 @@
+ 
+       VMCI_HostCleanup();
+ 
+-      retval = misc_deregister(&linuxState.misc);
+-      if (retval) {
+-         Warning(LGPFX "Module %s: error unregistering\n", VMCI_MODULE_NAME);
+-      } else {
+-         Log(LGPFX"Module %s: unloaded\n", VMCI_MODULE_NAME);
+-      }
++      misc_deregister(&linuxState.misc);
++      Log(LGPFX"Module %s: unloaded\n", VMCI_MODULE_NAME);
+ 
+       hostDeviceInit = FALSE;
+    }

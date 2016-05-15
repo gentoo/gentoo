@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -6,7 +6,7 @@ EAPI=5
 
 JAVA_PKG_IUSE="doc source"
 
-inherit eutils java-pkg-2 java-pkg-simple
+inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="Java library to generate markup language text such as HTML and XML"
 HOMEPAGE="http://jakarta.apache.org/ecs"
@@ -17,21 +17,27 @@ SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE=""
 
-CDEPEND="dev-java/jakarta-regexp:1.3
-	dev-java/xerces:2"
+CDEPEND="
+	dev-java/xerces:2
+	dev-java/jakarta-regexp:1.3"
 
-RDEPEND=">=virtual/jre-1.4
-	${CDEPEND}"
-DEPEND=">=virtual/jdk-1.4
-	${CDEPEND}"
+RDEPEND="
+	${CDEPEND}
+	>=virtual/jre-1.6"
+
+DEPEND="
+	${CDEPEND}
+	source? ( app-arch/zip )
+	>=virtual/jdk-1.6"
 
 S="${WORKDIR}/${P}-src"
 
-JAVA_ENCODING="iso8859-1"
+JAVA_ENCODING="ISO8859-1"
 JAVA_SRC_DIR="src/java"
+
 JAVA_GENTOO_CLASSPATH="xerces-2,jakarta-regexp-1.3"
 
 java_prepare() {
-	find "${S}" -name "*.jar" -delete || die
-	epatch "${FILESDIR}"/${PV}*.patch
+	java-pkg_clean
+	epatch "${FILESDIR}"/${P}-java7-enum.patch
 }

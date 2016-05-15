@@ -1,17 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>sci-electronics</herd>
-<herd>proxy-maintainers</herd>
-	<maintainer>
+<maintainer type="person">
 		<email>tomjbe@gentoo.org</email>
 		<name>Thomas Beierlein</name>
+	</maintainer>
+<maintainer type="project">
+		<email>sci-electronics@gentoo.org</email>
+		<name>Gentoo Electronics Project</name>
+	</maintainer>
+<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
 	</maintainer>
 <upstream>
 	<maintainer>
 		<email>neoklis.kyriazis@gmail.com</email>
 		<name>Neoklis Kyriazis</name>
-		<description>call sign: 5B4AZ</description>
 	</maintainer>
 </upstream>
 	<longdescription>

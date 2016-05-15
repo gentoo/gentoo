@@ -8,8 +8,8 @@ AUTOTOOLS_PRUNE_LIBTOOL_FILES=all
 inherit autotools-multilib
 
 DESCRIPTION="AudioProcessing library from the webrtc.org code base"
-HOMEPAGE="http://www.freedesktop.org/software/pulseaudio/webrtc-audio-processing/"
-SRC_URI="http://freedesktop.org/software/pulseaudio/${PN}/${P}.tar.xz"
+HOMEPAGE="https://www.freedesktop.org/software/pulseaudio/webrtc-audio-processing/"
+SRC_URI="https://freedesktop.org/software/pulseaudio/${PN}/${P}.tar.xz"
 
 LICENSE="BSD"
 SLOT="0"

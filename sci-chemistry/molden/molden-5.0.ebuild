@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -9,8 +9,8 @@ inherit eutils fortran-2 flag-o-matic toolchain-funcs
 MY_P="${PN}${PV}"
 
 DESCRIPTION="Display molecular density from GAMESS-UK, GAMESS-US, GAUSSIAN and Mopac/Ampac"
-HOMEPAGE="http://www.cmbi.kun.nl/~schaft/molden/molden.html"
-SRC_URI="ftp://ftp.cmbi.kun.nl/pub/molgraph/${PN}/${MY_P}.tar.gz"
+HOMEPAGE="http://www.cmbi.ru.nl/molden/"
+SRC_URI="ftp://ftp.cmbi.ru.nl/pub/molgraph/${PN}/${MY_P}.tar.gz"
 
 LICENSE="MOLDEN"
 SLOT="0"

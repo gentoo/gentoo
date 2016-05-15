@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -21,7 +21,7 @@ RDEPEND="${DEPEND}
 	media-sound/vorbis-tools
 	virtual/cdrtools
 	dev-perl/MP3-Info
-	dev-perl/ogg-vorbis-header
+	dev-perl/Ogg-Vorbis-Header
 	dev-perl/String-ShellQuote
 "
 

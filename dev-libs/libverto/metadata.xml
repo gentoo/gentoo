@@ -2,7 +2,7 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 <longdescription lang="en">Many applications and libraries are unable to write asynchronous code because they are unable to pick an event loop. This is particularly true of libraries who want to be useful to many applications who use loops that do not integrate with one another or which use home-grown loops. libverto provides a loop-neutral async api which allows the library to expose asynchronous interfaces and offload the choice of the main loop to the application.</longdescription>
-<maintainer>
+<maintainer type="person">
     <email>eras@gentoo.org</email>
     <name>Eray Aslan</name>
 </maintainer>

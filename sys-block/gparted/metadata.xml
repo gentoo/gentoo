@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>gnome</herd>
-	<maintainer>
+	<maintainer type="person">
 		<email>eva@gentoo.org</email>
+	</maintainer>
+	<maintainer type="project">
+		<email>gnome@gentoo.org</email>
+		<name>Gentoo GNOME Desktop</name>
 	</maintainer>
 	<longdescription lang="en">
 	GParted is the Gnome Partition Editor. It can create, grow, shrink, move and
@@ -24,7 +27,7 @@
 		<flag name="hfs">Include HFS support (<pkg>sys-fs/hfsutils</pkg>)</flag>
 		<flag name="jfs">Include JFS support (<pkg>sys-fs/jfsutils</pkg>)</flag>
 		<flag name="mdadm">Support for Linux software RAID.</flag>
-		<flag name="ntfs">Include NTFS support (<pkg>sys-fs/ntfs3g[ntfsprogs]</pkg>)</flag>
+		<flag name="ntfs">Include NTFS support (<pkg>sys-fs/ntfs3g</pkg>)</flag>
 		<flag name="reiser4">Include ReiserFS4 support
 		(<pkg>sys-fs/reiser4progs</pkg>)</flag>
 		<flag name="reiserfs">Include ReiserFS support

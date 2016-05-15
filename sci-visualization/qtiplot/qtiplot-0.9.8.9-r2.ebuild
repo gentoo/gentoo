@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -45,7 +45,7 @@ CDEPEND="
 	dev-libs/quazip
 	media-libs/libpng:=
 	sci-libs/alglib:=
-	sci-libs/gsl
+	<sci-libs/gsl-2
 	sci-libs/tamu_anova
 	latex? ( dev-tex/qtexengine )
 	mono? ( dev-dotnet/libgdiplus )

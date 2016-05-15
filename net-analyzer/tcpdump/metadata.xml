@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>netmon</herd>
+<maintainer type="project">
+	<email>netmon@gentoo.org</email>
+	<name>Gentoo network monitoring and analysis project</name>
+</maintainer>
 <use>
-	<flag name='smi'>Build with <pkg>net-libs/libsmi</pkg> to load MIBs on the fly to decode SNMP packets</flag>
-	<flag name='drop-root'>Drop privileges to tcpdump:tcpdump when run as root</flag>
+	<flag name="smi">Build with <pkg>net-libs/libsmi</pkg> to load MIBs on the fly to decode SNMP packets</flag>
+	<flag name="drop-root">Drop privileges to tcpdump:tcpdump when run as root</flag>
 </use>
 </pkgmetadata>

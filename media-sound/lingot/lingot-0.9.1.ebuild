@@ -20,7 +20,7 @@ RDEPEND="x11-libs/gtk+:2
 	dev-libs/glib:2
 	gnome-base/libglade:2.0
 	alsa? ( media-libs/alsa-lib )
-	jack? ( >=media-sound/jack-audio-connection-kit-0.102 )"
+	jack? ( virtual/jack )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	dev-util/intltool

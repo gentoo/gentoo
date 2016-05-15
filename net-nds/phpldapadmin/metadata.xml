@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>web-apps</herd>
-  <maintainer>
+  <maintainer type="person">
     <email>vostorga@gentoo.org</email>
     <name>Víctor Ostorga</name>
   </maintainer>
-  <maintainer>
+  <maintainer type="person">
     <email>jmbsvicetto@gentoo.org</email>
     <name>Jorge Manuel B. S. Vicetto</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>web-apps@gentoo.org</email>
+    <name>Gentoo Webapps</name>
   </maintainer>
   <longdescription>
   phpLDAPadmin is a web-based tool for managing all aspects of your LDAP server.

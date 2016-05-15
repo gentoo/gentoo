@@ -7,7 +7,7 @@ EAPI=5
 inherit autotools eutils linux-info git-r3
 
 DESCRIPTION="Minimalistic UEFI bootloader"
-HOMEPAGE="http://freedesktop.org/wiki/Software/gummiboot/"
+HOMEPAGE="https://freedesktop.org/wiki/Software/gummiboot/"
 EGIT_REPO_URI="git://anongit.freedesktop.org/${PN}"
 
 LICENSE="LGPL-2.1+"

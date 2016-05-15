@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>desktop-misc</herd>
+  <maintainer type="project">
+    <email>desktop-misc@gentoo.org</email>
+    <name>Gentoo Desktop Miscellaneous Project</name>
+  </maintainer>
   <upstream>
     <maintainer>
       <email>jwz@jwz.org</email>
@@ -9,7 +12,7 @@
     </maintainer>
   </upstream>
   <use>
-    <flag name='gdm'>Use gdmflexiserver from <pkg>gnome-base/gdm</pkg> instead of <pkg>x11-misc/lightdm</pkg></flag>
-    <flag name='new-login'>Enable user switching support using gdmflexiserver (<pkg>x11-misc/lightdm</pkg>) or kdmctl (<pkg>kde-base/kdm</pkg>)</flag>
+    <flag name="gdm">Use gdmflexiserver from <pkg>gnome-base/gdm</pkg> instead of <pkg>x11-misc/lightdm</pkg></flag>
+    <flag name="new-login">Enable user switching support using gdmflexiserver (<pkg>x11-misc/lightdm</pkg>) or kdmctl (<pkg>kde-base/kdm</pkg>)</flag>
   </use>
 </pkgmetadata>

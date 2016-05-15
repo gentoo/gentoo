@@ -1,0 +1,18 @@
+--- utilities/texstudio.desktop.old	2016-01-17 16:38:44.283878626 +0100
++++ utilities/texstudio.desktop	2016-01-17 16:39:08.374876711 +0100
+@@ -1,6 +1,5 @@
+ [Desktop Entry]
+ Categories=Office;Publishing;Qt;X-SuSE-Core-Office;X-Mandriva-Office-Publishing;X-Misc;
+-Encoding=UTF-8
+ Exec=texstudio %F
+ GenericName=LaTeX Editor
+ GenericName[fr]=Editeur LaTeX
+@@ -8,7 +7,7 @@
+ Comment[fr]=Environnement de développement LaTeX
+ Icon=texstudio
+ Keywords=LaTeX;TeX;editor;
+-MimeType=text/x-tex;
++MimeType=text/X-tex;
+ Name=TeXstudio
+ StartupNotify=false
+ Terminal=false

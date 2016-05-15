@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>netmon</herd>
+  <maintainer type="project">
+    <email>netmon@gentoo.org</email>
+    <name>Gentoo network monitoring and analysis project</name>
+  </maintainer>
   <use>
     <flag name="readpcap">Build nfcapd collector to read from pcap file instead ofnetwork data</flag>
     <flag name="compat15">Enable read support for nfdump data files created with nfdump 1.5.x</flag>

@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>video</herd>
-  <maintainer>
+  <maintainer type="project">
     <email>media-video@gentoo.org</email>
   </maintainer>
   <use>
@@ -33,9 +32,11 @@
     <flag name="toolame">Enable toolame MPEG-2 encoding</flag>
     <flag name="tremor">Enable internal support for Vorbis</flag>
     <flag name="twolame">Enable twolame MPEG-2 encoding</flag>
+    <flag name="vcd">Enables VCD support</flag>
     <flag name="vidix">Support for vidix video output</flag>
     <flag name="xanim">Enables support for xanim based codecs</flag>
     <flag name="xvmc">Enables X-Video Motion Compensation support</flag>
+    <flag name="yuv4mpeg">Enables yuv4mpeg video output</flag>
     <flag name="zoran">Enables ZR360[56]7/ZR36060 video output</flag>
   </use>
 </pkgmetadata>

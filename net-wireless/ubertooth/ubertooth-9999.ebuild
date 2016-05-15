@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -13,12 +13,13 @@ HOMEPAGE="http://ubertooth.sourceforge.net/"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="+bluez +specan +pcap +ubertooth1-firmware +udev"
-REQUIRED_USE="	specan? ( ${PYTHON_REQUIRED_USE} )"
+IUSE="+bluez +specan static-libs +pcap +ubertooth1-firmware +udev"
+REQUIRED_USE="specan? ( ${PYTHON_REQUIRED_USE} )"
 DEPEND="bluez? ( net-wireless/bluez:= )
-	>=net-libs/libbtbb-${PV}:=
+	>=net-libs/libbtbb-${PV}:=[static-libs?]
 	pcap? ( net-libs/libbtbb[pcap] )
 	specan? ( ${PYTHON_DEPS} )
+	static-libs? ( dev-libs/libusb[static-libs] )
 	virtual/libusb:1="
 RDEPEND="${DEPEND}
 	specan? ( >=dev-qt/qtgui-4.7.2:4
@@ -38,7 +39,7 @@ else
 	SRC_URI="https://github.com/greatscottgadgets/${PN}/releases/download/${MY_PV}/${PN}-${MY_PV}.tar.xz"
 	KEYWORDS="~amd64 ~arm ~x86"
 fi
-DESCRIPTION="An open source wireless development platform suitable for Bluetooth experimentation"
+DESCRIPTION="open source wireless development platform suitable for Bluetooth experimentation"
 
 #readd firmware building, but do it right
 #USE="-fortran -mudflap -nls -openmp -multilib" crossdev --without-headers --genv 'EXTRA_ECONF="--with-mode=thumb --with-cpu=cortex-m3 --with-float=soft"' -s4 -t arm-cortexm3-eabi
@@ -56,8 +57,9 @@ src_configure() {
 	mycmakeargs=(
 		$(cmake-utils_use_enable bluez USE_BLUEZ)
 		$(cmake-utils_use pcap USE_PCAP)
+		$(cmake-utils_use static-libs BUILD_STATIC_LIB)
 		$(cmake-utils_use_enable udev INSTALL_UDEV_RULES)
-		-DDISABLE_PYTHON=true
+		-DENABLE_PYTHON=false
 	)
 	if use udev; then
 		mycmakeargs+=(

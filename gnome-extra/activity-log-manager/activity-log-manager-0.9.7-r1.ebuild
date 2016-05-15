@@ -6,7 +6,6 @@ EAPI=5
 
 GNOME2_LA_PUNT="yes"
 VALA_MIN_API_VERSION="0.26" # Fails with 0.24, but works with 0.26 and older versions
-#VALA_MAX_API_VERSION="0.26" # build fails with vala-0.28
 WANT_AUTOMAKE=1.13
 
 inherit autotools eutils gnome2 vala versionator

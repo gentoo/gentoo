@@ -1,52 +1,68 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
-PLOCALES="cs de el en es fr it pl pt ro ru"
 
-inherit l10n qt4-r2 subversion
+inherit eutils fdo-mime gnome2-utils qmake-utils subversion
 
-DESCRIPTION="Qt4 application to design electric diagrams"
+MY_P=${PN}-${PV%0}-src
+
+DESCRIPTION="Qt5 application to design electric diagrams"
 HOMEPAGE="http://qelectrotech.org/"
 ESVN_REPO_URI="svn://svn.tuxfamily.org/svnroot/qet/qet/trunk"
 
-LICENSE="GPL-3"
+LICENSE="CC-BY-3.0 GPL-2+"
 SLOT="0"
 KEYWORDS=""
-
 IUSE="doc"
 
 RDEPEND="
-	dev-qt/designer:4
-	dev-qt/qtcore:4
-	dev-qt/qtgui:4
-	dev-qt/qtsql:4[sqlite]
-	dev-qt/qtsvg:4
+	dev-qt/qtcore:5
+	dev-qt/qtgui:5
+	dev-qt/qtnetwork:5
+	dev-qt/qtprintsupport:5
+	dev-qt/qtsql:5[sqlite]
+	dev-qt/qtsvg:5
+	dev-qt/qtwidgets:5
+	dev-qt/qtxml:5
 "
 DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen )
 "
 
-DOCS=(CREDIT ChangeLog README)
-PATCHES=(
-	"${FILESDIR}/${PN}-0.3-fix-paths.patch"
-)
+S=${WORKDIR}/${MY_P}
 
-qet_disable_translation() {
-	sed -i -e "/TRANSLATIONS +=/s: lang/qet_${1}.ts::" ${PN}.pro || die
-}
+DOCS=( CREDIT ChangeLog README )
 
 src_prepare() {
-	qt4-r2_src_prepare
-	l10n_for_each_disabled_locale_do qet_disable_translation
+	epatch "${FILESDIR}/${PN}-0.3-fix-paths.patch"
 }
 
+src_configure() {
+	eqmake5 ${PN}.pro
+}
 src_install() {
-	qt4-r2_src_install
+	emake INSTALL_ROOT="${D}" install
+
+	einstalldocs
 
 	if use doc; then
 		doxygen Doxyfile || die
 		dodoc -r doc/html
 	fi
+}
+
+pkg_preinst() {
+	gnome2_icon_savelist
+}
+
+pkg_postinst() {
+	fdo-mime_desktop_database_update
+	gnome2_icon_cache_update
+}
+
+pkg_postrm() {
+	fdo-mime_desktop_database_update
+	gnome2_icon_cache_update
 }

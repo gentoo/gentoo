@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -25,6 +25,7 @@ RDEPEND="
 	dev-lang/mlton
 	doc? (
 		virtual/latex-base
+		app-text/texi2html
 	)
 	emacs? (
 		virtual/emacs
@@ -45,7 +46,7 @@ PATCHES=(
 	)
 
 src_prepare() {
-	epatch ${PYTCHES[@]}
+	epatch ${PATCHES[@]}
 	sed \
 		-e "s@/usr/bin@${ROOT}usr/bin@g" \
 		-e "s@/usr/share@${ROOT}usr/share@" \

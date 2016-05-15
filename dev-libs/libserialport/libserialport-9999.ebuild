@@ -8,7 +8,7 @@ inherit eutils
 
 if [[ ${PV} == "9999" ]]; then
 	EGIT_REPO_URI="git://sigrok.org/${PN}"
-	inherit git-2 autotools
+	inherit git-r3 autotools
 else
 	SRC_URI="http://sigrok.org/download/source/${PN}/${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"

@@ -1,5 +1,5 @@
---- libs/locale/build/Jamfile.v2
-+++ libs/locale/build/Jamfile.v2
+--- a/libs/locale/build/Jamfile.v2
++++ b/libs/locale/build/Jamfile.v2
 @@ -58,8 +58,8 @@
  
  if $(ICU_LINK)

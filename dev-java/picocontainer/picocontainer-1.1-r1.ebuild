@@ -1,4 +1,4 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -10,7 +10,7 @@ SRC_URI="http://dist.codehaus.org/${PN}/distributions/${P}-src.tar.gz"
 
 LICENSE="BSD"
 SLOT="1"
-KEYWORDS="amd64 ppc x86"
+KEYWORDS="amd64 x86"
 IUSE="doc source"
 
 RDEPEND=">=virtual/jre-1.4"

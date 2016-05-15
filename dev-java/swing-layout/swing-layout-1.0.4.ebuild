@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -12,7 +12,7 @@ SRC_URI="https://swing-layout.dev.java.net/files/documents/2752/144673/${P}-src.
 
 LICENSE="LGPL-2.1"
 SLOT="1"
-KEYWORDS="amd64 ppc x86 ~x86-fbsd"
+KEYWORDS="amd64 x86 ~x86-fbsd"
 IUSE="doc source"
 
 DEPEND=">=virtual/jdk-1.4

@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -27,16 +27,17 @@ pkg_setup() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-1.9.25-linux2.6.patch
+	epatch "${FILESDIR}"/${PN}-1.9.25-linux_2.6.patch
 	epatch "${FILESDIR}"/${PN}-1.9.19-pic.patch #51698
 	epatch "${FILESDIR}"/${PN}-1.9.25-build.patch
-	epatch "${FILESDIR}"/${PN}-1.9.25-linux2.6.28.patch
+	epatch "${FILESDIR}"/${PN}-1.9.25-linux_2.6.28.patch
 	epatch "${FILESDIR}"/${PN}-1.9.25-glibc210.patch #274305
-	epatch "${FILESDIR}"/${PN}-1.9.25-linux2.6.36-r1.patch
-	epatch "${FILESDIR}"/${PN}-1.9.25-segfault.patch
-	epatch "${FILESDIR}"/${PN}-1.9.25-build2.patch
-	epatch "${FILESDIR}"/${PN}-1.9.25-qa.patch
-	epatch "${FILESDIR}"/${PN}-1.9.25-kernel3.4.patch
+	epatch "${FILESDIR}"/${PN}-1.9.25-linux_2.6.36-r1.patch
+	epatch "${FILESDIR}"/${PN}-1.9.25-fix_buffer.patch
+	epatch "${FILESDIR}"/${PN}-1.9.25-vga_reset.patch
+	epatch "${FILESDIR}"/${PN}-1.9.25-missing_include.patch
+	epatch "${FILESDIR}"/${PN}-1.9.25-linux_3.4.patch
+	epatch "${FILESDIR}"/${PN}-1.9.25-linux_3.9.patch #557052
 	sed -i -e '/linux\/smp_lock.h/d' kernel/svgalib_helper/main.c || die
 }
 

@@ -21,8 +21,8 @@ HOMEPAGE="http://x265.org/"
 
 LICENSE="GPL-2"
 # subslot = libx265 soname
-SLOT="0/68"
-IUSE="+10bit 12bit numa pic test"
+SLOT="0/80"
+IUSE="+10bit +12bit numa pic test"
 
 ASM_DEPEND=">=dev-lang/yasm-1.2.0"
 RDEPEND="numa? ( >=sys-process/numactl-2.0.10-r1[${MULTILIB_USEDEP}] )"
@@ -121,7 +121,7 @@ multilib_src_configure() {
 	local myabicmakeargs=(
 		$(cmake-utils_use_enable test TESTS)
 		$(multilib_is_native_abi || echo "-DENABLE_CLI=OFF")
-		-DCMAKE_DISABLE_FIND_PACKAGE_Numa=$(usex numa OFF ON)
+		-DENABLE_LIBNUMA=$(usex numa ON OFF)
 		-DLIB_INSTALL_DIR="$(get_libdir)"
 	)
 

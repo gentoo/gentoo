@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=5
-PYTHON_COMPAT=( python2_7 python3_3 python3_4 )
+PYTHON_COMPAT=( python2_7 python3_3 python3_4 python3_5 )
 DISTUTILS_IN_SOURCE_BUILD=1
 
 inherit distutils-r1
@@ -15,7 +15,7 @@ S="${WORKDIR}/${PN}-jurko-${PV}"
 
 LICENSE="LGPL-3"
 SLOT="0"
-KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm64 x86 ~amd64-linux ~x86-linux"
 IUSE="doc test"
 
 REQUIRED_USE="doc? ( $(python_gen_useflags python2_7) )"

@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>net-mail</herd>
+	<maintainer type="project">
+		<email>net-mail@gentoo.org</email>
+		<name>Net-Mail</name>
+	</maintainer>
 	<longdescription>
 		YoSucker allows you to download Yahoo mail to a local file or pipe it to procmail. It suppourts multiple accounts, encrypted passwords, transaction safe writes, and more.
 	</longdescription>

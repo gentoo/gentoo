@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>postgresql</herd>
-  <herd>sci-geosciences</herd>
+  <maintainer type="project">
+  <email>pgsql-bugs@gentoo.org</email>
+  <name>PostgreSQL and Related Package Development</name>
+  </maintainer>
+  <maintainer type="project">
+  <email>sci-geosciences@gentoo.org</email>
+  <name>Gentoo Geosciences Project</name>
+  </maintainer>
   <use>
 	<flag name="gtk">Build shp2pgsql-gui a graphical interface to shp2pgsql</flag>
   </use>

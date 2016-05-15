@@ -14,12 +14,10 @@ inherit intel-sdp
 DESCRIPTION="Intel C/C++ Compiler"
 HOMEPAGE="http://software.intel.com/en-us/articles/intel-composer-xe/"
 
-IUSE="eclipse linguas_ja"
+IUSE="linguas_ja"
 KEYWORDS="-* ~amd64 ~x86 ~amd64-linux ~x86-linux"
 
-DEPEND="
-	!dev-lang/ifc[linguas_ja]
-	eclipse? ( dev-util/eclipse-sdk )"
+DEPEND="!dev-lang/ifc[linguas_ja]"
 RDEPEND="${DEPEND}
 	~dev-libs/intel-common-${PV}[compiler,multilib=]"
 

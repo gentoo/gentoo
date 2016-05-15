@@ -12,3 +12,4 @@ ruby19 - Build with MRI Ruby 1.9.x
 ruby20 - Build with MRI Ruby 2.0.x
 ruby21 - Build with MRI Ruby 2.1.x
 ruby22 - Build with MRI Ruby 2.2.x
+ruby23 - Build with MRI Ruby 2.3.x

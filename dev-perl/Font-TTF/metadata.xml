@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>fonts</herd>
-  <herd>perl</herd>
+  <maintainer type="project">
+    <email>fonts@gentoo.org</email>
+    <name>Fonts</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
   <upstream>
     <remote-id type="cpan">Font-TTF</remote-id>
     <remote-id type="cpan-module">Font::TTF</remote-id>

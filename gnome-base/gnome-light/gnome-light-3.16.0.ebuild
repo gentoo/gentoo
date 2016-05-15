@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -51,7 +51,7 @@ pkg_pretend() {
 }
 
 pkg_postinst() {
-	# Remember people where to find our project information               
+	# Remember people where to find our project information
 	elog "Please remember to look at https://wiki.gentoo.org/wiki/Project:GNOME"
 	elog "for information about the project and documentation."
 }

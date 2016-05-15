@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -14,7 +14,7 @@ KEYWORDS="alpha amd64 arm ppc sparc x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86
 IUSE="acl test"
 
 RDEPEND=">=dev-libs/boehm-gc-7.2
-	sys-libs/ncurses
+	sys-libs/ncurses:0
 	acl? ( virtual/acl )"
 
 DEPEND="${RDEPEND}

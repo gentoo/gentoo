@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>cjk</herd>
+<maintainer type="project">
+  <email>cjk@gentoo.org</email>
+  <name>Cjk</name>
+</maintainer>
 <longdescription>
 Oniguruma is a regular expression library.  The characteristics of
 this library is that different character encoding for every regular

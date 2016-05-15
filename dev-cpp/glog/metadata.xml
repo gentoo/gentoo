@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer>
+	<maintainer type="person">
 		<email>vapier@gentoo.org</email>
 	</maintainer>
-	<herd>cpp</herd>
+	<maintainer type="project">
+		<email>cpp@gentoo.org</email>
+		<name>Gentoo C++ Project</name>
+	</maintainer>
 	<use>
 		<flag name="gflags">Use <pkg>dev-cpp/gflags</pkg> for flag parsing</flag>
 		<flag name="unwind">Use <pkg>sys-libs/libunwind</pkg> for stack unwinding instead of glibc/gcc (may be more reliable on x86_64)</flag>

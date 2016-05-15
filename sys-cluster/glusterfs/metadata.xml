@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>cluster</herd>
+  <maintainer type="project">
+    <email>cluster@gentoo.org</email>
+    <name>Gentoo Cluster Project</name>
+  </maintainer>
   <longdescription lang="en">
 		GlusterFS is a cluster file-system capable of scaling to several peta-bytes. It aggregates various storage bricks over Infiniband RDMA or TCP/IP interconnect into one large parallel network file system. GlusterFS is based on a stackable user space design without compromising performance.
 	</longdescription>
@@ -17,6 +20,6 @@
     <flag name="rsyslog">Install configuration snippet for <pkg>app-admin/rsyslog</pkg></flag>
     <flag name="qemu-block">Transparently create files as QCow2/QED images in the backend, including the possibility to snapshot.</flag>
     <flag name="systemtap">Enable support for <pkg>dev-util/systemtap</pkg></flag>
-    <flag name="tiering">Enable support for data classification/tiering (requires <pkg>dev-db/sqlite:3</pkg>)</flag>
+    <flag name="tiering">Enable support for data classification/tiering (requires <pkg>dev-db/sqlite</pkg> SLOT 3)</flag>
   </use>
 </pkgmetadata>

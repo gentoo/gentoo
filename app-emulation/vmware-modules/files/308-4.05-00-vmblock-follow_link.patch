@@ -1,0 +1,56 @@
+--- vmblock-only/linux/inode.c	2016-01-30 19:13:04.019947435 +0100
++++ vmblock-only/linux/inode.c.new	2016-01-30 19:13:56.226950354 +0100
+@@ -44,7 +44,9 @@
+ static int InodeOpReadlink(struct dentry *, char __user *, int);
+ #endif
+
+-#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 1, 99)
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 4, 99)
++static const char *InodeOpFollowlink(struct dentry *dentry, struct inode *inode, void **cookie);
++#elif LINUX_VERSION_CODE >= KERNEL_VERSION(4, 1, 99)
+ static const char *InodeOpFollowlink(struct dentry *dentry, void **cookie);
+ #elif LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 13)
+ static void *InodeOpFollowlink(struct dentry *dentry, struct nameidata *nd);
+@@ -63,7 +65,11 @@
+ struct inode_operations LinkInodeOps = {
+ #endif
+    .readlink    = InodeOpReadlink,
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 4, 99)
++   .get_link = InodeOpFollowlink,
++#else
+    .follow_link = InodeOpFollowlink,
++#endif
+ };
+
+ /*
+@@ -231,6 +237,9 @@
+ static int
+ #endif
+ InodeOpFollowlink(struct dentry *dentry,  // IN : dentry of symlink
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 4, 99)
++                  struct inode *inode,
++#endif
+ #if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 1, 99)
+                   void **cookie)          // OUT: stores opaque pointer
+ #else
+@@ -241,12 +250,20 @@
+    VMBlockInodeInfo *iinfo;
+
+    if (!dentry) {
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 4, 99)
++      ret = -ECHILD;
++#else
+       Warning("InodeOpReadlink: invalid args from kernel\n");
+       ret = -EINVAL;
++#endif
+       goto out;
+    }
+
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 4, 99)
++   iinfo = INODE_TO_IINFO(inode);
++#else
+    iinfo = INODE_TO_IINFO(dentry->d_inode);
++#endif
+    if (!iinfo) {
+       ret = -EINVAL;
+       goto out;

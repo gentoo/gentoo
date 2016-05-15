@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -17,7 +17,7 @@ SLOT="0"
 KEYWORDS="alpha amd64 ia64 ppc sparc x86"
 IUSE=""
 
-DEPEND="dev-perl/perl-tk"
+DEPEND="dev-perl/Tk"
 RDEPEND="${DEPEND}"
 
 PATCHES=( "${FILESDIR}/pTk-1.22.patch" )

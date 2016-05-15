@@ -1,12 +1,12 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 PYTHON_COMPAT=( python2_7 python3_{3,4,5} )
 
-inherit eutils mercurial python-r1 toolchain-funcs
+inherit python-r1 toolchain-funcs mercurial
 
 DESCRIPTION="Python extension module generator for C and C++ libraries"
 HOMEPAGE="http://www.riverbankcomputing.com/software/sip/intro https://pypi.python.org/pypi/SIP"
@@ -30,9 +30,10 @@ REQUIRED_USE="
 	|| ( $(python_gen_useflags 'python2*') )
 "
 
-src_prepare() {
-	epatch "${FILESDIR}"/${PN}-4.15.5-darwin.patch
+PATCHES=( "${FILESDIR}"/${PN}-4.18-darwin.patch )
+DOCS=( "${S}"/{ChangeLog,NEWS} )
 
+src_prepare() {
 	python_setup 'python2*'
 	"${PYTHON}" build.py prepare || die
 	if use doc; then
@@ -50,6 +51,8 @@ src_prepare() {
 		eerror
 		die "sub-slot sanity check failed"
 	fi
+
+	default
 }
 
 src_configure() {
@@ -57,9 +60,10 @@ src_configure() {
 		local myconf=(
 			"${PYTHON}"
 			"${S}"/configure.py
+			--bindir="${EPREFIX}/usr/bin"
 			--destdir="$(python_get_sitedir)"
 			--incdir="$(python_get_includedir)"
-			$(use debug && echo --debug)
+			$(usex debug --debug '')
 			AR="$(tc-getAR) cqs"
 			CC="$(tc-getCC)"
 			CFLAGS="${CFLAGS}"
@@ -86,11 +90,10 @@ src_compile() {
 
 src_install() {
 	installation() {
-		emake DESTDIR="${D}" install
+		default
 		python_optimize
 	}
 	python_foreach_impl run_in_build_dir installation
 
-	dodoc ChangeLog NEWS
 	use doc && dodoc -r doc/html
 }

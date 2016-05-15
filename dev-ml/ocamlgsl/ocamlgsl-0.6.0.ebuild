@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -16,7 +16,8 @@ KEYWORDS="amd64 ~ppc x86"
 IUSE="doc test"
 
 RDEPEND=">=dev-lang/ocaml-3.10:=
-	  sci-libs/gsl"
+	  sci-libs/gsl
+	  !dev-ml/gsl-ocaml"
 DEPEND="${RDEPEND}
 	  test? ( dev-ml/fort )"
 

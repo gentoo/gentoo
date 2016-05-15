@@ -11,7 +11,7 @@ SRC_URI="http://www.alessandropira.org/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~sparc ~x86 ~x86-fbsd"
+KEYWORDS="amd64 ~ppc ~sparc x86 ~x86-fbsd"
 IUSE=""
 
 DEPEND="sys-libs/ncurses:0"

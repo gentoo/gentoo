@@ -10,3 +10,8 @@
 USE="readline zlib ncurses ssl"
 
 FEATURES="collision-protect"
+
+# Python 3.5 is unmasked for us, build stuff by default, in particular
+# for bug #572502 where the default python is set to 3.5 for it was
+# built first.
+PYTHON_TARGETS="${PYTHON_TARGETS} python3_5"

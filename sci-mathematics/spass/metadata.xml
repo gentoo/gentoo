@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer>
+	<maintainer type="person">
 		<email>gienah@gentoo.org</email>
 	</maintainer>
-	<herd>sci-mathematics</herd>
+	<maintainer type="project">
+		<email>sci-mathematics@gentoo.org</email>
+		<name>Gentoo Mathematics Project</name>
+	</maintainer>
 	<longdescription lang="en">
 SPASS: An Automated Theorem Prover for First-Order Logic with Equality.
 </longdescription>

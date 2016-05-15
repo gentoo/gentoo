@@ -65,8 +65,7 @@ then
 fi
 
 DEPEND="${DEPEND}
-	virtual/pkgconfig
-	userland_GNU? ( >=sys-apps/findutils-4.4.0 )"
+	virtual/pkgconfig"
 
 # @FUNCTION: go-mono_src_unpack
 # @DESCRIPTION:

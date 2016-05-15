@@ -3,8 +3,7 @@
 # $Id$
 
 EAPI=5
-
-inherit base
+inherit eutils
 
 DESCRIPTION="relatively thin, simple and robust network communication layer on top of UDP"
 HOMEPAGE="http://enet.bespin.org/"
@@ -17,17 +16,11 @@ IUSE="static-libs"
 
 RDEPEND="!${CATEGORY}/${PN}:0"
 
-DOCS=( "ChangeLog" "README" )
-
 src_configure() {
-	econf \
-		--disable-dependency-tracking \
-		$(use_enable static-libs static)
+	econf $(use_enable static-libs static)
 }
 
 src_install() {
-	base_src_install
-	if ! use static-libs ; then
-		find "${D}" -type f -name '*.la' -exec rm {} + || die
-	fi
+	default
+	prune_libtool_files
 }

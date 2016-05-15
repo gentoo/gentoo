@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>java</herd>
+	<maintainer type="project">
+		<email>java@gentoo.org</email>
+		<name>Java</name>
+	</maintainer>
 	<upstream>
 		<remote-id type="github">jhy/jsoup</remote-id>
 	</upstream>
@@ -15,4 +18,3 @@
 		validating, to invalid tag-soup; jsoup will create a sensible parse tree.
 	</longdescription>
 </pkgmetadata>
-

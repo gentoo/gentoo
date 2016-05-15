@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -30,6 +30,11 @@ src_prepare() {
 
 src_configure() {
 	econf $(use_enable nls)
+}
+
+src_compile() {
+	# bug 570428
+	emake CFLAGS="${CFLAGS} -std=gnu89"
 }
 
 src_install() {

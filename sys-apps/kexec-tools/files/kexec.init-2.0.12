@@ -1,0 +1,175 @@
+#!/sbin/runscript
+# Copyright 1999-2016 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+# Set up some defaults.
+: "${LOAD_DURING_SHUTDOWN:=yes}"
+: "${BOOTPART:=/boot}"
+: "${DONT_MOUNT_BOOT:=no}"
+
+depend() {
+	need localmount
+}
+
+auto_prefix_bootpath() {
+	# Only auto-add prefix to relative paths.
+	case $1 in
+	*/*) echo "$1";;
+	*)   echo "${BOOTPART}/$1" ;;
+	esac
+}
+
+image_path() {
+	# Do no sanity checking if the user has set a value.
+	if [ -n "${KNAME}" ]; then
+		auto_prefix_bootpath "${KNAME}"
+		return
+	fi
+
+	local x kver="$(uname -r)" karch="$(uname -m)"
+	for x in \
+		"bzImage" \
+		"vmlinuz" \
+		"bzImage-${kver}" \
+		"vmlinuz-${kver}" \
+		"kernel-genkernel-${karch}-${kver}" \
+		"kernel-${kver}" \
+		"kernel-${karch}"; do
+		if [ -e "${BOOTPART}/${x}" ]; then
+			echo "${BOOTPART}/${x}"
+			return
+		fi
+	done
+
+	return 1
+}
+
+initrd_path() {
+	# Do no sanity checking if the user has set a value.
+	if [ -n "${INITRD}" ]; then
+		auto_prefix_bootpath "${INITRD}"
+		return 0
+	fi
+
+	local x kver="$(uname -r)" karch="$(uname -m)"
+	for x in \
+		"initrd" \
+		"initrd.img-${kver}" \
+		"initrd-${kver}.img" \
+		"initrd-${kver}" \
+		"initramfs-${kver}.img" \
+		"initramfs-genkernel-${karch}-${kver}"; do
+		if [ -e "${BOOTPART}/${x}" ]; then
+			echo "${BOOTPART}/${x}"
+			return 0
+		fi
+	done
+
+	return 1
+}
+
+mount_boot() {
+	[ "${DONT_MOUNT_BOOT}" != "no" ] && return 1
+	mountinfo -q "${BOOTPART}" && return 1
+
+	ebegin "Mounting ${BOOTPART}"
+	mount "${BOOTPART}"
+	eend $?
+}
+
+load_image() {
+	if [ "${KNAME}" = "-" ]; then
+		ebegin "Disabling kexec"
+		kexec -u
+		eend $?
+		return  # eend preserved $? for us.
+	fi
+
+	local img initrd="$(initrd_path)" mounted=false kparamopt initrdopt
+
+	if ! img="$(image_path)"; then
+		if mount_boot; then
+			if img="$(image_path)"; then
+				mounted=true
+				initrd="$(initrd_path)"
+			else
+				eerror "No kernel image found in ${BOOTPART}!"
+				umount "${BOOTPART}"
+				return 1
+			fi
+		else
+			eerror "No kernel image found in ${BOOTPART}!"
+			return 1
+		fi
+	fi
+
+	if [ -z "${ROOTPART}" ]; then
+		ROOTPART="$(readlink -f "$(sed -n '/^\/[^ ]* \/ / s,^\([^ ]*\).*,\1,p' /proc/mounts)")"
+	fi
+
+	if [ -z "${KPARAM}" ]; then
+		kparamopt="--reuse-cmdline"
+	fi
+
+	if [ -n "${initrd}" ]; then
+		initrdopt="--initrd=${initrd}"
+	fi
+
+	local msg
+	[ -n "${initrd}" ] && \
+		msg=" (with ${initrd})"
+	ebegin "Using kernel image ${img}${msg} for kexec"
+
+	kexec ${KEXEC_OPT_ARGS} ${kparamopt} \
+		-l "${img}" --append="root=${ROOTPART} ${KPARAM}" ${initrdopt}
+	local ret=$?
+
+	${mounted} && umount "${BOOTPART}"
+	eend ${ret}
+	return ${ret}
+}
+
+start() {
+	if [ "${LOAD_DURING_SHUTDOWN}" = "yes" ]; then
+		local mounted
+		if mount_boot; then
+			mounted=true
+		fi
+		if ! image_path >/dev/null; then
+			ewarn "Cannot find kernel image!"
+			ewarn "Please make sure a valid kernel image is present before reboot."
+			return 0
+		fi
+		if [ -n "${mounted}" ]; then
+			ebegin "Unmounting ${BOOTPART}"
+			umount "${BOOTPART}"
+			eend $?
+		fi
+		# $? is already set to the previous calls.
+		return
+	else
+		load_image
+	fi
+}
+
+stop() {
+	if ! yesno ${RC_REBOOT}; then
+		ebegin "Not rebooting; disabling kexec"
+		kexec -u
+		eend $?
+		return
+	fi
+
+	if [ -f /nokexec ]; then
+		ebegin "Rebooting; disabling kexec due to /nokexec"
+		rm -f /nokexec
+		kexec -u
+		eend $?
+		return
+	fi
+
+	if [ "${LOAD_DURING_SHUTDOWN}" = "yes" ]; then
+		load_image
+	fi
+}

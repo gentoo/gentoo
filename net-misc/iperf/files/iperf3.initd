@@ -1,0 +1,11 @@
+#!/sbin/runscript
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+description="IP bandwidth measurement server"
+command="/usr/bin/iperf3"
+
+command_background="yes"
+pidfile="/run/${SVCNAME}.pid"
+command_args="-s ${IPERF_OPTS}"

@@ -9,6 +9,6 @@ inherit vim-plugin
 DESCRIPTION="vim plugin: calendar window"
 HOMEPAGE="http://www.vim.org/scripts/script.php?script_id=52"
 LICENSE="vim"
-KEYWORDS="~amd64 ~mips ~ppc ~x86"
+KEYWORDS="amd64 ~mips ppc x86"
 
 VIM_PLUGIN_HELPFILES="${PN}.txt"

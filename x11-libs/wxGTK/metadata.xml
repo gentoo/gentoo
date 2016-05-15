@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>wxwidgets</herd>
-	<maintainer>
+	<maintainer type="project">
 		<email>wxwidgets@gentoo.org</email>
 		<description>All modifications to this package must be approved by the wxwidgets herd.</description>
 	</maintainer>

@@ -1,0 +1,69 @@
+commit 6ccb66159a9eee6ca114b11b70eb06f4ac6900d7
+Author: Jan Kara <jack@suse.cz>
+Date:   Mon Jan 4 15:36:27 2016 +0100
+
+    Print explicitely disabled options properly
+    
+    Currently we printed only an empty string when some build option was
+    disabled explicitely via --disable-foo. Print 'no' in that case as well.
+    
+    Signed-off-by: Jan Kara <jack@suse.cz>
+
+diff --git a/configure.ac b/configure.ac
+index 39631c4..3ba1386 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -74,7 +74,7 @@ AC_ARG_ENABLE([ldapmail],
+ AS_IF([test "x$enable_ldapmail" != "xno"], [
+     build_ldap="yes"
+     AC_CHECK_LIB([ldap], [ldap_initialize], [], [
+-        build_ldap=no
++        build_ldap="no"
+         AS_IF([test "x$enable_ldapmail" = "xyes"], [
+             AC_MSG_ERROR([LDAP support required but library not found.]);
+         ])
+@@ -84,6 +84,8 @@ AS_IF([test "x$enable_ldapmail" != "xno"], [
+         AC_DEFINE([USE_LDAP_MAIL_LOOKUP], 1, [Lookup email address using LDAP])
+         COMPILE_OPTS="$COMPILE_OPTS USE_LDAP_MAIL_LOOKUP"
+     ])
++], [
++    build_ldap="no"
+ ])
+ AC_SUBST(LDAP_LIBS)
+ 
+@@ -113,6 +115,8 @@ AS_IF([test "x$enable_ext2direct" != "xno"], [
+         AC_DEFINE([EXT2_DIRECT], 1, [Scanning of ext? filesystems using e2fslib])
+         COMPILE_OPTS="$COMPILE_OPTS EXT2_DIRECT"
+     ])
++], [
++   build_ext2direct="no"
+ ])
+ AC_SUBST(EXT2FS_CFLAGS)
+ AC_SUBST(EXT2FS_LIBS)
+@@ -141,6 +145,8 @@ AS_IF([test "x$enable_netlink" != "xno"], [
+             AC_MSG_ERROR([Required libnl3 libraries for quota netlink daemon not found.])
+         ])
+     ])
++], [
++    build_netlink="no"
+ ])
+ AM_CONDITIONAL([WITH_NETLINK], [test "x$build_netlink" != "xno"])
+ AC_SUBST(DBUS_CFLAGS)
+@@ -171,6 +177,8 @@ AS_IF([test "x$enable_libwrap" != "xno"], [
+         AC_DEFINE([HOSTS_ACCESS], 1, [Use hosts.allow and hosts.deny for access checking of rpc.rquotad])
+         COMPILE_OPTS="$COMPILE_OPTS HOSTS_ACCESS"
+     ])
++], [
++    build_libwrap="no"
+ ])
+ AC_SUBST(WRAP_LIBS)
+ 
+@@ -199,6 +207,8 @@ AS_IF([test x"$enable_rpc" != "xno"], [
+ 	AC_DEFINE([RPC], 1, [Support for RPC])
+ 	COMPILE_OPTS="$COMPILE_OPTS RPC"
+     ])
++], [
++    build_rpc="no"
+ ])
+ AM_CONDITIONAL([WITH_RPC], [test x"$build_rpc" != "xno"])
+ 

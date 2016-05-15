@@ -24,12 +24,14 @@ RDEPEND="dev-libs/elfutils
 	selinux? ( sys-libs/libselinux )
 	unwind? ( sys-libs/libunwind )"
 DEPEND="${RDEPEND}
+	sys-libs/binutils-libs
 	test? ( dev-util/dejagnu )"
 
 S=${WORKDIR}/${PN}-${LTRACE_V}
 
 src_prepare() {
 	epatch "${WORKDIR}"/debian/patches/[0-9]*
+	epatch "${FILESDIR}"/${PN}-0.7.3-test-protos.patch #bug 421649
 	sed -i '/^dist_doc_DATA/d' Makefile.am || die
 	eautoreconf
 }

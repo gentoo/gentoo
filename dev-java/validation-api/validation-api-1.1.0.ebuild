@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -14,11 +14,10 @@ SRC_URI="https://repo1.maven.org/maven2/javax/validation/${PN}/${PV}.Final/${P}.
 
 LICENSE="Apache-2.0"
 SLOT="1.0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 IUSE=""
 
 RDEPEND=">=virtual/jre-1.5"
-
 DEPEND=">=virtual/jdk-1.5
 	app-arch/unzip"

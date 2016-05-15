@@ -1,0 +1,27 @@
+Description: Use Debian packaged SeqAn library instead of copy in upstream source
+Author: Andreas Tille <tille@debian.org>
+Date: 2011-01-30
+Last-Update: 2013-04-18
+Reviewed-by: Ognyan Kulev <ogi@debian.org>
+
+--- a/Makefile
++++ b/Makefile
+@@ -5,9 +5,7 @@
+ prefix = /usr/local
+ bindir = $(prefix)/bin
+ 
+-SEQAN_DIR = SeqAn-1.1
+-SEQAN_INC = -I $(SEQAN_DIR)
+-INC = $(SEQAN_INC) -I third_party
++INC = `pkg-config --cflags seqan-1.4`
+ CPP = g++
+ CXX = $(CPP)
+ CC = gcc
+@@ -168,7 +166,6 @@
+                $(wildcard genomes/NC_008253.fna) \
+                $(wildcard reads/e_coli_1000.*) \
+                $(wildcard reads/e_coli_1000_*) \
+-               SeqAn-1.1 \
+                bowtie \
+                bowtie-build \
+                bowtie-inspect \

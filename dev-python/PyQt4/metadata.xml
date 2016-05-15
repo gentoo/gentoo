@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>qt</herd>
+	<maintainer type="project">
+		<email>qt@gentoo.org</email>
+		<name>Gentoo Qt Project</name>
+	</maintainer>
 	<use>
 		<flag name="X">Build bindings for the QtGui module</flag>
 		<flag name="dbus">Build bindings for the QtDBus module</flag>
@@ -26,6 +29,7 @@
 			<name>Phil Thompson</name>
 		</maintainer>
 		<bugs-to>mailto:pyqt@riverbankcomputing.com</bugs-to>
+		<doc>http://pyqt.sourceforge.net/Docs/PyQt4/</doc>
 		<remote-id type="pypi">PyQt4</remote-id>
 		<remote-id type="sourceforge">pyqt</remote-id>
 	</upstream>

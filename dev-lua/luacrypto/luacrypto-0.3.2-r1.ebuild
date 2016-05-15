@@ -13,10 +13,11 @@ SRC_URI="https://github.com/mkottman/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
+IUSE="libressl"
 
 RDEPEND="
 	>=dev-lang/lua-5.1:0
-	dev-libs/openssl:0"
+	!libressl? ( dev-libs/openssl:0 ) libressl? ( dev-libs/libressl:0 )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 

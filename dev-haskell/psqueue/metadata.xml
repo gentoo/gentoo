@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>haskell</herd>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
 	<longdescription>
 		A /priority search queue/ efficiently supports the
 		opperations of both a search tree and a priority queue. A
-		&#39;Binding&#39; is a product of a key and a priority.  Bindings
+		'Binding' is a product of a key and a priority.  Bindings
 		can be inserted, deleted, modified and queried in
 		logarithmic time, and the binding with the least priority
 		can be retrieved in constant time.  A queue can be built

@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -19,7 +19,7 @@ RDEPEND=">=app-crypt/gpgme-1
 	xmpp? ( net-libs/gloox )
 	qt4? ( dev-qt/qtgui:4 )
 	socks5? ( net-proxy/dante )
-	ssl? ( >=dev-libs/openssl-0.9.5a )
+	ssl? ( >=dev-libs/openssl-0.9.5a:0= )
 	xosd? ( x11-libs/xosd )
 	aosd? ( x11-libs/libaosd )"
 DEPEND="${RDEPEND}
@@ -57,7 +57,8 @@ src_configure() {
 		$(cmake-utils_use socks5 USE_SOCKS5)
 		$(cmake-utils_use ssl USE_OPENSSL)
 		-DUSE_FIFO=ON
-		-DBUILD_PLUGINS=ON"
+		-DBUILD_PLUGINS=ON
+		-DBUILD_TESTS=OFF"
 
 	cmake-utils_src_configure
 }

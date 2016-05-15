@@ -1,0 +1,36 @@
+commit e8d391eb7c3d2f4835705990d1ffaaa9084c31bb
+Author: Thomas Eschenbacher <Thomas.Eschenbacher@gmx.de>
+Date:   Mon Feb 29 06:01:02 2016 +0100
+
+    removed unneeded build and runtime dependencies
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index e669aff..eeaa6c4 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -211,13 +211,9 @@ FIND_PACKAGE(KF5 REQUIRED COMPONENTS
+     Crash
+     DBusAddons
+     DocTools
+-    GuiAddons
+     I18n
+     IconThemes
+-    Init
+     KIO
+-    Notifications
+-    Service
+     TextWidgets
+     XmlGui
+     WidgetsAddons
+diff --git a/kwave/CMakeLists.txt b/kwave/CMakeLists.txt
+index 8b2f6a3..4c72325 100644
+--- a/kwave/CMakeLists.txt
++++ b/kwave/CMakeLists.txt
+@@ -92,7 +92,6 @@ TARGET_LINK_LIBRARIES(kwave_core
+     KF5::I18n
+     KF5::IconThemes
+     KF5::KIOFileWidgets
+-    KF5::Service
+     KF5::XmlGui
+ )
+ 

@@ -1,9 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
-USE_RUBY="ruby19 ruby20 ruby21 ruby22"
+USE_RUBY="ruby20 ruby21 ruby22"
 
 inherit ruby-ng
 
@@ -17,7 +17,6 @@ KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x
 IUSE=""
 
 RDEPEND="
-	ruby_targets_ruby19? ( dev-ruby/ffi[ruby_targets_ruby19] )
 	ruby_targets_ruby20? ( dev-ruby/ffi[ruby_targets_ruby20] )
 	ruby_targets_ruby21? ( dev-ruby/ffi[ruby_targets_ruby21] )
 	ruby_targets_ruby22? ( dev-ruby/ffi[ruby_targets_ruby22] )

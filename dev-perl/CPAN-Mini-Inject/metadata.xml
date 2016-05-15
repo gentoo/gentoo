@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>perl</herd>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
   <longdescription>Provides the binary mcpani for adding a module to the repository for later inclusion in the CPAN Mini mirror.</longdescription>
   <upstream>
     <remote-id type="cpan">CPAN-Mini-Inject</remote-id>

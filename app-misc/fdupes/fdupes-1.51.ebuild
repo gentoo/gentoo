@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -17,7 +17,7 @@ SRC_URI="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~x64-macos"
 IUSE=""
 
 S="${WORKDIR}/${MY_P}"
@@ -26,7 +26,8 @@ src_prepare() {
 	epatch \
 		"${FILESDIR}"/${P}-makefile.patch \
 		"${FILESDIR}"/${PN}-1.50_pre2-compare-file.patch \
-		"${FILESDIR}"/${PN}-1.50_pre2-typo.patch
+		"${FILESDIR}"/${PN}-1.50_pre2-typo.patch \
+		"${FILESDIR}"/${P}-fix-stdin-lvalue.patch
 
 	append-lfs-flags
 }

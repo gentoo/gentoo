@@ -1,0 +1,33 @@
+# Bug #572658
+--- kit.orig/configure.in	2009-05-04 09:36:47.000000000 +0200
++++ kit/configure.in	2016-01-23 04:25:17.047720246 +0100
+@@ -16,6 +16,7 @@
+ AC_PROG_AWK
+ AC_PROG_YACC
+ AC_PROG_LEX
++PKG_PROG_PKG_CONFIG([0.22])
+ AC_PATH_PROGS(mgp_cv_path_perl, perl5 perl, no)
+ AC_SUBST(mgp_cv_path_perl)
+ AC_PATH_PROGS(mgp_cv_path_uuencode, uuencode, no)
+@@ -385,9 +386,9 @@
+     if test "$mgp_use_xft2" = "yes"; then
+   	  AC_MSG_CHECKING(for xft2 library..)
+ 	  AC_CHECK_LIB(Xft, XftFontOpen, 
+-		[LIBS="$LIBS -lXft -lfontconfig"
++		[LIBS="$LIBS -lXft `pkg-config --libs fontconfig`"
+ 		 AC_DEFINE(USE_XFT2) 
+-		 mgp_xft2_found=yes], [], [-lfontconfig])
++		 mgp_xft2_found=yes], [], [`pkg-config --libs fontconfig`])
+     fi
+   fi
+ fi
+@@ -507,6 +508,9 @@
+ 		AC_DEFINE(USE_M17N)
+ 		OPTFLAGS="$OPTFLAGS `m17n-config X --cflags`"
+ 		LIBS="$LIBS `m17n-config X --libs` -lm17n-core"
++		if test "x$ac_cv_header_fontconfig_fontconfig_h" = "xyes"; then
++			LIBS="$LIBS `pkg-config --libs fontconfig`"
++		fi
+ 	fi
+ fi
+ 

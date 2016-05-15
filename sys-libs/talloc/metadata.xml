@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>samba</herd>
-  <maintainer>
+  <maintainer type="person">
     <email>patrick@gentoo.org</email>
     <name>Patrick Lauer</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>samba@gentoo.org</email>
+    <name>Samba</name>
   </maintainer>
   <use>
     <flag name="compat">Enable extra compatibility stuff</flag>

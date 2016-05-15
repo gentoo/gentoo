@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
+EAPI=6
 POSTGRES_COMPAT=( 9.{0,1,2,3,4,5} )
 
 inherit autotools eutils versionator subversion
@@ -93,9 +93,11 @@ pkg_setup() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}/${PN}-2.1-ldflags.patch"
+#	epatch "${FILESDIR}/${PN}-2.1-ldflags.patch"
 #	epatch "${FILESDIR}/${PN}-2.0-arflags.patch"
 #	epatch "${FILESDIR}/${PN}-2.1.4-pkgconfig-json.patch"
+
+	eapply_user
 
 	local AT_M4DIR="macros"
 	eautoreconf

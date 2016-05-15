@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>sci</herd>
+<maintainer type="project">
+  <email>sci@gentoo.org</email>
+  <name>Gentoo Science Project</name>
+</maintainer>
 <longdescription lang="en">
   SuiteSparseQR is an implementation of the multifrontal sparse QR
   factorization method. Parallelism is exploited both in the BLAS and
@@ -10,8 +13,8 @@
   peak performance of a multicore computer.
 </longdescription>
 <use>
-  <flag name='metis'>Use <pkg>sci-libs/metis</pkg> or <pkg>sci-libs/parmetis</pkg> for partitioning</flag>
-  <flag name='tbb'>Enable multithreading with the Intel Threads
+  <flag name="metis">Use <pkg>sci-libs/metis</pkg> or <pkg>sci-libs/parmetis</pkg> for partitioning</flag>
+  <flag name="tbb">Enable multithreading with the Intel Threads
   Building Block <pkg>dev-cpp/tbb</pkg></flag>
 </use>
 </pkgmetadata>

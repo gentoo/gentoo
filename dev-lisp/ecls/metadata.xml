@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>common-lisp</herd>
+	<maintainer type="project">
+		<email>common-lisp@gentoo.org</email>
+		<name>Gentoo Common Lisp Project</name>
+	</maintainer>
 	<longdescription>
 ECL (Embeddable Common Lisp) is an implementation of the Common Lisp language as
 described in the X3J13 Ansi specification, featuring CLOS (Common Lisp Object

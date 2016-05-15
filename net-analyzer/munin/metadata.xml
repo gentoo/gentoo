@@ -1,7 +1,10 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>sysadmin</herd>
+  <maintainer type="project">
+    <email>sysadmin@gentoo.org</email>
+    <name>Gentoo Sysadmin Project</name>
+  </maintainer>
   <longdescription lang="en">
     Munin the tool surveys all your computers and remembers what it saw. It
     presents all the information in in graphs through a web interface. Its
@@ -72,7 +75,7 @@
     <flag name="ipv6">
       Add support for IPv6 in munin-node. IPv6 support for the master
       is always enabled, but the node requires a newer version of
-    <pkg>dev-perl/net-server</pkg>, capable of listening to IPv6
+    <pkg>dev-perl/Net-Server</pkg>, capable of listening to IPv6
       sockets.
     </flag>
     <flag name="syslog">

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer>
+<maintainer type="person">
   <email>ulm@gentoo.org</email>
 </maintainer>
 <longdescription>
@@ -18,6 +18,6 @@
   bit spartan, but it gets the job done.
 </longdescription>
 <use>
-  <flag name='ls-dos'>Install LS-DOS disk images for Model 4P</flag>
+  <flag name="ls-dos">Install LS-DOS disk images for Model 4P</flag>
 </use>
 </pkgmetadata>

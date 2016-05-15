@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>fonts</herd>
+  <maintainer type="project">
+    <email>fonts@gentoo.org</email>
+    <name>Fonts</name>
+  </maintainer>
   <longdescription lang="en">
     Galatia SIL is the second release of a Biblical Greek font package
     from SIL International. The typeface is almost identical to the

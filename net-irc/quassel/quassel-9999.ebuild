@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 inherit cmake-utils eutils pax-utils systemd user versionator
 
@@ -16,7 +16,8 @@ HOMEPAGE="http://quassel-irc.org/"
 LICENSE="GPL-3"
 KEYWORDS=""
 SLOT="0"
-IUSE="ayatana crypt dbus debug kde monolithic phonon postgres qt5 +server +ssl syslog webkit X"
+IUSE="ayatana crypt dbus debug kde monolithic phonon postgres qt5 +server
+snorenotify +ssl syslog webkit X"
 
 SERVER_RDEPEND="
 	qt5? (
@@ -53,6 +54,7 @@ GUI_RDEPEND="
 			kde-frameworks/sonnet:5
 		)
 		phonon? ( media-libs/phonon[qt5] )
+		snorenotify? ( >=x11-libs/snorenotify-0.7.0 )
 		webkit? ( dev-qt/qtwebkit:5 )
 	)
 	!qt5? (
@@ -63,7 +65,7 @@ GUI_RDEPEND="
 			dev-qt/qtdbus:4
 			kde? (
 				kde-base/kdelibs:4
-				kde-frameworks/oxygen-icons
+				kde-frameworks/oxygen-icons:*
 				ayatana? ( kde-misc/plasma-widget-message-indicator )
 			)
 		)
@@ -106,6 +108,7 @@ REQUIRED_USE="
 	phonon? ( || ( X monolithic ) )
 	postgres? ( || ( server monolithic ) )
 	qt5? ( !ayatana )
+	snorenotify? ( qt5 || ( X monolithic ) )
 	syslog? ( || ( server monolithic ) )
 	webkit? ( || ( X monolithic ) )
 "
@@ -127,15 +130,16 @@ src_configure() {
 		$(cmake-utils_use_find_package crypt QCA2-QT5)
 		$(cmake-utils_use_find_package dbus dbusmenu-qt)
 		$(cmake-utils_use_find_package dbus dbusmenu-qt5)
-		$(cmake-utils_use_with kde)
-		$(cmake-utils_use_with !kde OXYGEN)
-		$(cmake-utils_use_want monolithic MONO)
-		$(cmake-utils_use_find_package phonon)
+		-DWITH_KDE=$(usex kde)
+		-DWITH_OXYGEN=$(usex !kde)
+		-DWANT_MONO=$(usex monolithic)
+		$(cmake-utils_use_find_package phonon Phonon)
 		$(cmake-utils_use_find_package phonon Phonon4Qt5)
-		$(cmake-utils_use_use qt5)
-		$(cmake-utils_use_want server CORE)
-		$(cmake-utils_use_with webkit)
-		$(cmake-utils_use_want X QTCLIENT)
+		-DUSE_QT5=$(usex qt5)
+		-DWANT_CORE=$(usex server)
+		$(cmake-utils_use_find_package snorenotify LibsnoreQt5)
+		-DWITH_WEBKIT=$(usex webkit)
+		-DWANT_QTCLIENT=$(usex X)
 		-DEMBED_DATA=OFF
 		-DCMAKE_SKIP_RPATH=ON
 	)

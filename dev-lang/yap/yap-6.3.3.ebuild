@@ -1,12 +1,12 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=2
+EAPI=5
 
 inherit eutils flag-o-matic java-pkg-opt-2 multilib
 
-PATCHSET_VER="2"
+PATCHSET_VER="7"
 
 DESCRIPTION="YAP is a high-performance Prolog compiler"
 HOMEPAGE="http://www.dcc.fc.up.pt/~vsc/Yap/"
@@ -15,16 +15,16 @@ SRC_URI="http://www.dcc.fc.up.pt/~vsc/Yap/${P}.tar.gz
 
 LICENSE="Artistic LGPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc ~x86"
 IUSE="R debug doc examples gmp java mpi mysql odbc readline static threads"
 
 RDEPEND="sys-libs/zlib
-	gmp? ( dev-libs/gmp )
-	java? ( >=virtual/jdk-1.4 )
+	gmp? ( dev-libs/gmp:0 )
+	java? ( >=virtual/jdk-1.4:= )
 	mpi? ( virtual/mpi )
 	mysql? ( virtual/mysql )
 	odbc? ( dev-db/unixODBC )
-	readline? ( sys-libs/readline sys-libs/ncurses )
+	readline? ( sys-libs/readline:= sys-libs/ncurses:= )
 	R? ( dev-lang/R )"
 
 DEPEND="${RDEPEND}
@@ -47,9 +47,16 @@ src_configure() {
 	else
 		myddas_conf="--disable-myddas"
 	fi
+	if use mysql; then
+		myddas_conf="$myddas_conf yap_with_mysql=yes"
+	fi
+	if use odbc; then
+		myddas_conf="$myddas_conf yap_with_odbc=yes"
+	fi
 
 	econf \
 		--libdir=/usr/$(get_libdir) \
+		--disable-prism \
 		$(use_enable !static dynamic-loading) \
 		$(use_enable threads) \
 		$(use_enable threads pthread-locking) \

@@ -1,0 +1,36 @@
+From 3b08b907235c09ab84e3bb23d1e05fe5a1d1c00e Mon Sep 17 00:00:00 2001
+From: Manuel Zeise <mail@manuel-zeise.de>
+Date: Sun, 3 Jan 2016 16:54:05 +0100
+Subject: [PATCH] Switch for miniUPnPc API version 14 and above
+
+API version 14 of miniUPnPc has introduced a new TTL argument to
+upnpDiscover() with a recommended default value of 2. A new preprocessor
+statement evaluates the API version and selects the correct version of
+upnpDiscover() based on the API version.
+
+--- s25rttr-0.8.1/libutil/src/UPnP.cpp
++++ s25rttr-0.8.1/libutil/src/UPnP.cpp
+@@ -210,7 +210,11 @@
+ 	UPNPDev* devicelist = NULL;
+ #ifdef UPNPDISCOVER_SUCCESS
+ 	int upnperror = 0;
++#if (MINIUPNPC_API_VERSION >= 14) /* miniUPnPc API version 14 adds TTL parameter */
++	devicelist = upnpDiscover(2000, NULL, NULL, 0, 0 /* ipv6 */, 2, &upnperror);
++#else
+ 	devicelist = upnpDiscover(2000, NULL, NULL, 0, 0 /* ipv6 */, &upnperror);
++#endif
+ #else
+ 	devicelist = upnpDiscover(2000, NULL, NULL, 0);
+ #endif
+@@ -276,7 +280,11 @@
+ 	UPNPDev* devicelist = NULL;
+ #ifdef UPNPDISCOVER_SUCCESS
+ 	int upnperror = 0;
++#if (MINIUPNPC_API_VERSION >= 14) /* miniUPnPc API version 14 adds TTL parameter */
++	devicelist = upnpDiscover(2000, NULL, NULL, 0, 0 /* ipv6 */, 2, &upnperror);
++#else
+ 	devicelist = upnpDiscover(2000, NULL, NULL, 0, 0 /* ipv6 */, &upnperror);
++#endif
+ #else
+ 	devicelist = upnpDiscover(2000, NULL, NULL, 0);
+ #endif

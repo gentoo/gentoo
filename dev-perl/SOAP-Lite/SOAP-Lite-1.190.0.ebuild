@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -8,7 +8,7 @@ MODULE_AUTHOR=PHRED
 MODULE_VERSION=1.19
 inherit perl-module eutils
 
-DESCRIPTION="Simple and lightweight interface to the SOAP protocol (sic) both on client and server side"
+DESCRIPTION="Lightweight interface to the SOAP protocol both on client and server side"
 
 IUSE="ssl test xmpp"
 SLOT="0"
@@ -43,8 +43,7 @@ DEPEND="${RDEPEND}
 	)
 "
 
-#SRC_TEST="do parallel"
-# test fails because of \C deprecation warning
+SRC_TEST="do parallel"
 
 src_test() {
 	has_version '>=www-apache/mod_perl-2' && export MOD_PERL_API_VERSION=2

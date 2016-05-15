@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer>
+	<maintainer type="person">
 		<email>hasufell@gentoo.org</email>
 		<name>Julian Ospald</name>
 	</maintainer>
-	<natural-name>ConnMan-UI</natural-name>
 	<longdescription lang="en">
 	A full-featured GTK based trayicon UI for ConnMan.
 
@@ -21,6 +20,6 @@
 	</longdescription>
 	<upstream>
 		<bugs-to>https://github.com/tbursztyka/connman-ui/issues</bugs-to>
-		<remote-id type='github'>tbursztyka/connman-ui</remote-id>
+		<remote-id type="github">tbursztyka/connman-ui</remote-id>
 	</upstream>
 </pkgmetadata>

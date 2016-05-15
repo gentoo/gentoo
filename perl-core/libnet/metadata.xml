@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>perl</herd>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
   <longdescription>dev-perl/libnet provides the suite of basic Net:: modules (Net::Cmd, Net::Config, Net::Domain, Net::FTP, Net::NNTP, Net::Netrc, Net::POP3, Net::SMTP, and Net::Time as the key ones)</longdescription>
   <upstream>
     <remote-id type="cpan">libnet</remote-id>

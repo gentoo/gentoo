@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -9,12 +9,12 @@ inherit gnome2 systemd user versionator
 
 MY_PV=$(get_version_component_range 1-2)
 DESCRIPTION="A geoinformation D-Bus service"
-HOMEPAGE="http://freedesktop.org/wiki/Software/GeoClue"
-SRC_URI="http://www.freedesktop.org/software/${PN}/releases/${MY_PV}/${P}.tar.xz"
+HOMEPAGE="https://freedesktop.org/wiki/Software/GeoClue"
+SRC_URI="https://www.freedesktop.org/software/${PN}/releases/${MY_PV}/${P}.tar.xz"
 
 LICENSE="LGPL-2"
 SLOT="2.0"
-KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd"
+KEYWORDS="~alpha amd64 ~arm ~ia64 ~mips ~ppc ~ppc64 ~sparc x86 ~amd64-fbsd"
 IUSE="+introspection +modemmanager zeroconf"
 
 RDEPEND="
@@ -34,6 +34,10 @@ DEPEND="${RDEPEND}
 	sys-devel/gettext
 	virtual/pkgconfig
 "
+
+src_prepare() {
+	epatch "${FILESDIR}"/${P}-fix-GLIBC-features.patch
+}
 
 src_configure() {
 	# debug only affects CFLAGS

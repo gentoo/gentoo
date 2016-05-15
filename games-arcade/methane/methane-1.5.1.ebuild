@@ -1,15 +1,15 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
-inherit eutils games
+inherit eutils flag-o-matic games
 
 DESCRIPTION="Port from an old amiga game"
 HOMEPAGE="http://methane.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tgz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE=""
@@ -26,6 +26,7 @@ src_prepare() {
 
 	# fix weird parallel make issue wrt #450422
 	mkdir build || die
+	append-cxxflags -Wno-narrowing # build with gcc5 (bug #573788)
 }
 
 src_install() {

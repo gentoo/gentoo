@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>python</herd>
-  <maintainer>
+  <maintainer type="person">
     <email>grozin@gentoo.org</email>
     <name>Andrey Grozin</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>python@gentoo.org</email>
+    <name>Python</name>
   </maintainer>
   <longdescription lang="en">
   Spyder development environment and its PyQt4-based IDE tools:
@@ -19,6 +22,7 @@
     <flag name="pep8">Add support for <pkg>dev-python/pep8</pkg></flag>
     <flag name="pyflakes">Add support for <pkg>dev-python/pyflakes</pkg></flag>
     <flag name="pylint">Add support for <pkg>dev-python/pylint</pkg></flag>
+    <flag name="qtconsole">Add support for <pkg>dev-python/qtconsole</pkg></flag>
     <flag name="rope">Add support for <pkg>dev-python/rope</pkg></flag>
     <flag name="scipy">Add support for <pkg>sci-libs/scipy</pkg></flag>
     <flag name="sphinx">Add support for <pkg>dev-python/sphinx</pkg></flag>

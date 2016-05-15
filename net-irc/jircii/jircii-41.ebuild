@@ -1,4 +1,4 @@
-# Copyright 1999-2007 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -9,7 +9,7 @@ HOMEPAGE="http://jirc.hick.org/"
 SRC_URI="http://jirc.hick.org/download/jerkb${PV}.tgz"
 LICENSE="Artistic"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc x86"
+KEYWORDS="~amd64 x86"
 IUSE=""
 
 RDEPEND=">=virtual/jre-1.4"

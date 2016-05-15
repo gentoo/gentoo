@@ -1,0 +1,19 @@
+From 731f5f05f54065a67fa7c9f9bc8fe992390cb979 Mon Sep 17 00:00:00 2001
+From: Felix Hammer <f.hammer@web.de>
+Date: Fri, 7 Aug 2015 00:57:51 +0200
+Subject: [PATCH] Qt 5.5.0 patch for qtsingleapplication
+
+---
+ src/third_party/qtsingleapplication/qtlocalpeer.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+--- a/src/third_party/qtsingleapplication/qtlocalpeer.cpp
++++ b/src/third_party/qtsingleapplication/qtlocalpeer.cpp
+@@ -31,6 +31,7 @@
+ 
+ #include <QCoreApplication>
+ #include <QTime>
++#include <QDataStream>
+ 
+ #if defined(Q_OS_WIN)
+ #include <QLibrary>

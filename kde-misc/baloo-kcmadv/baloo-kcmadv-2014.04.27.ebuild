@@ -18,7 +18,7 @@ SLOT="4"
 IUSE=""
 
 DEPEND="
-	$(add_kdebase_dep baloo)
+	$(add_kdebase_dep baloo '-minimal(-)')
 	$(add_kdebase_dep kfilemetadata)
 	dev-libs/qjson
 	dev-libs/xapian

@@ -1,0 +1,39 @@
+Search for ncurses properly via pkg-config, in order to avoid breakage due to
+recent internal ncurses linking shuffling.
+
+* /usr/lib/gcc/x86_64-pc-linux-gnu/5.3.0/../../../../x86_64-pc-linux-gnu/bin/ld: CMakeFiles/yoshimi.dir/Misc/CmdInterface.cpp.o: undefined reference to symbol 'LINES'
+* /lib64/libtinfo.so.6: error adding symbols: DSO missing from command line
+
+--- yoshimi-1.3.8.2/src/CMakeLists.txt
++++ yoshimi-1.3.8.2/src/CMakeLists.txt
+@@ -196,6 +196,8 @@
+     HINTS ${Readline_ROOT_DIR}/lib
+ )
+ 
++find_package(PkgConfig REQUIRED)
++pkg_search_module(NCURSES REQUIRED ncurses)
+ if(Readline_INCLUDE_DIR AND Readline_LIBRARY AND Ncurses_LIBRARY)
+   set(READLINE_FOUND TRUE)
+ else(Readline_INCLUDE_DIR AND Readline_LIBRARY AND Ncurses_LIBRARY)
+@@ -462,7 +464,7 @@
+ 
+ add_executable (yoshimi ${ProgSources} main.cpp)
+ 
+-target_link_libraries (yoshimi ${ExternLibraries})
++target_link_libraries (yoshimi ${ExternLibraries} ${NCURSES_LIBRARIES})
+ 
+ install (TARGETS yoshimi RUNTIME DESTINATION bin)
+ 
+--- yoshimi-1.3.8.2/src/UI/WidgetPDialUI.fl
++++ yoshimi-1.3.8.2/src/UI/WidgetPDialUI.fl
+@@ -40,8 +40,8 @@
+     \#include <FL/Fl_Tooltip.H>
+     \#include <FL/Fl_Group.H>
+     \#include <FL/x.H>
+-    \#include <cairo/cairo.h>
+-    \#include <cairo/cairo-xlib.h>} {private global
++    \#include <cairo.h>
++    \#include <cairo-xlib.h>} {private global
+ } 
+ 
+ class TipWin {open : {public Fl_Menu_Window, MiscFuncs}

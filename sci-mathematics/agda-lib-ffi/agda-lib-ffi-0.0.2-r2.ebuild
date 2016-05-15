@@ -29,3 +29,8 @@ DEPEND="${RDEPEND}
 "
 
 S="${WORKDIR}/${AGDA_P}/ffi"
+
+src_prepare() {
+	cabal_chdeps \
+		'base >= 4.5.0.0 && < 4.9' 'base >= 4.5.0.0'
+}

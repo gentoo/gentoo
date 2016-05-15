@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -8,7 +8,7 @@ inherit common-lisp-3
 
 MY_P="v${PV}"
 
-DESCRIPTION="A library which provides Common Lisp implementations with knowledge about Unicode characters."
+DESCRIPTION="Provides Common Lisp implementations with knowledge about Unicode characters."
 HOMEPAGE="http://weitz.de/cl-unicode/"
 SRC_URI="https://github.com/edicl/${PN}/archive/${MY_P}.tar.gz -> ${P}.tar.gz"
 
@@ -17,7 +17,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc ~sparc ~x86"
 IUSE=""
 
-DEPEND="dev-lisp/flexi-streams"
+DEPEND="virtual/commonlisp
+		dev-lisp/flexi-streams"
 RDEPEND="dev-lisp/cl-ppcre"
 
 COMMONLISPS="sbcl clisp clozurecl cmucl ecls openmcl"

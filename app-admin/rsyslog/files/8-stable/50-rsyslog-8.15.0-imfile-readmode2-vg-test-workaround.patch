@@ -1,0 +1,30 @@
+Workaround for https://github.com/rsyslog/rsyslog/issues/746
+
+--- rsyslog-9999/tests/imfile-readmode2-vg.sh	2016-01-20 12:35:20.368238216 +0100
++++ rsyslog-9999/tests/imfile-readmode2-vg.sh	2016-01-20 12:36:14.357031527 +0100
+@@ -11,7 +11,7 @@ echo 'msgnum:0
+ echo 'msgnum:2' >> rsyslog.input
+ 
+ # sleep a little to give rsyslog a chance to begin processing
+-sleep 1
++sleep 10
+ 
+ # write some more lines (see https://github.com/rsyslog/rsyslog/issues/144)
+ echo 'msgnum:3
+@@ -19,14 +19,14 @@ echo 'msgnum:3
+ echo 'msgnum:5' >> rsyslog.input # this one shouldn't be written to the output file because of ReadMode 2
+ 
+ # give it time to finish
+-sleep 1
++sleep 10
+ 
+ . $srcdir/diag.sh shutdown-when-empty # shut down rsyslogd when done processing messages
+ . $srcdir/diag.sh wait-shutdown-vg    # we need to wait until rsyslogd is finished!
+ . $srcdir/diag.sh check-exit-vg
+ 
+ # give it time to write the output file
+-sleep 1
++sleep 10
+ 
+ ## check if we have the correct number of messages
+ 

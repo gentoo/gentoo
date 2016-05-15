@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -13,7 +13,7 @@ SRC_URI="http://hessian.caucho.com/download/${P}-src.jar"
 
 LICENSE="Apache-1.1"
 SLOT="4.0"
-KEYWORDS="amd64 ppc ppc64 x86"
+KEYWORDS="amd64 ppc64 x86"
 IUSE="doc source"
 
 CDEPEND="java-virtuals/servlet-api:3.0"

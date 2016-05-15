@@ -5,6 +5,11 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in use.mask
 
+# Tobias Klausmann <klausman@gentoo.org> (17 Mar 2016)
+# Webkit itself is enormous (~13h compile+test on our fastest dev machine), so
+# it will remain not-stable forever. Mask the USE flag accordingly.
+webkit
+
 # Pacho Ramos <pacho@gentoo.org> (17 Apr 2014)
 # Dropped stable keywords after the discussion caused by
 # Gnome 3.8/3.10 stabilization on this arch   

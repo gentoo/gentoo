@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer>
+<maintainer type="person">
 <email>jer@gentoo.org</email>
 <name>Jeroen Roovers</name>
 </maintainer>
 <use>
-<flag name='units_cur'>Install the units_cur python script that updates currencies</flag>
+<flag name="units_cur">Install the units_cur python script that updates currencies</flag>
 </use>
 </pkgmetadata>

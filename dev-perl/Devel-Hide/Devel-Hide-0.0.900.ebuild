@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="Forces the unavailability of specified Perl modules (for testing)"
 
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~hppa ~ppc ~x86"
+KEYWORDS="amd64 ~arm ~hppa ppc x86"
 IUSE="test"
 
 DEPEND="

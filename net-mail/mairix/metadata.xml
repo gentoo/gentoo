@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>net-mail</herd>
+	<maintainer type="project">
+		<email>net-mail@gentoo.org</email>
+		<name>Net-Mail</name>
+	</maintainer>
 	<use>
-		<flag name="gnus">Add support for the marks propagation feature in
-			<pkg>app-emacs/gnus</pkg></flag>
+		<flag name="gnus">Add support for the marks propagation feature
+			in GNUS (provided by <pkg>app-editors/emacs</pkg>
+			or <pkg>app-xemacs/gnus</pkg> for XEmacs users)</flag>
 	</use>
 	<upstream>
 		<remote-id type="sourceforge">mairix</remote-id>

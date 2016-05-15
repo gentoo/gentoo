@@ -48,7 +48,8 @@ RDEPEND="!mail-client/nmh
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
-REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
+REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )
+	servers? ( tcpd )"
 
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
@@ -58,18 +59,22 @@ src_prepare() {
 	# Disable bytecompilation of Python modules.
 	echo "#!/bin/sh" > build-aux/py-compile
 	epatch "${FILESDIR}/${PN}-2.99.98-readline-6.3.patch" #503954
+	epatch "${FILESDIR}/${PN}-tcp_wrappers.patch"
+	# bug 567976
+	sed -i -e /AM_GNU_GETTEXT_VERSION/s/0.18/0.19/ configure.ac || die
+	# add missing tests so that make check doesn't fail
+	cp "${FILESDIR}"/{hdr,nohdr,twomsg,weed}.at "${S}"/readmsg/tests || die
 	if use mysql; then
 		sed -i -e /^INCLUDES/"s:$:$(mysql_config --include):" \
 			sql/Makefile.am || die
-		eautoreconf
 	fi
+	eautoreconf
 }
 
 src_configure() {
 	append-flags -fno-strict-aliasing
 
 	# maildir is the Gentoo default
-	# but fails tests. So set it in config file instead.
 	econf MU_DEFAULT_SCHEME=maildir \
 		CURSES_LIBS="$($(tc-getPKG_CONFIG) --libs ncurses)" \
 		$(use_with berkdb berkeley-db) \
@@ -90,6 +95,7 @@ src_configure() {
 		$(use_enable threads pthread) \
 		$(use_with tokyocabinet) \
 		$(use_with kyotocabinet) \
+		$(use_with tcpd tcp-wrappers) \
 		$(use_enable servers build-servers) \
 		$(use_enable clients build-clients) \
 		--with-mail-spool=/var/spool/mail \

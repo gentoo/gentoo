@@ -10,6 +10,11 @@
 #
 
 
+# Bernard Cafarelli <voyageur@gentoo.org> (27 Jan 2016)
+# New llvm version, masked for testing
+=sys-devel/llvm-3.8.0*
+=sys-devel/clang-3.8.0*
+
 # Fabian Groffen <grobian@gentoo.org> (11 Feb 2014)
 # Fails to compile, bug #493464
 =sys-devel/autogen-5.18.1

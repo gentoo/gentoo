@@ -2,8 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=2
-
+EAPI=5
 MOD_DESC="Trickjumping challenges for Quake III"
 MOD_NAME="Defrag"
 MOD_DIR="defrag"
@@ -26,21 +25,21 @@ SRC_URI="http://q3defrag.org/files/defrag/defrag_${PV}.zip
 	http://www.german-defrag.de/files/defrag/defragpak11.zip"
 
 LICENSE="freedist"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc x86"
 IUSE="dedicated opengl"
 
 src_unpack() {
 	unpack defrag_${PV}.zip
-	cd ${MOD_DIR}
+	cd ${MOD_DIR} || die
 	unpack defragpak{1,2,3,4,5,7,8,9,10,11}.zip
 	unpack defragcpmpak01.zip
 	unpack df-extras002.zip
 }
 
 src_prepare() {
-	cd ${MOD_DIR}
+	cd ${MOD_DIR} || die
 	mv -f DeFRaG/* . || die
-	rm -rf DeFRaG
+	rm -rf DeFRaG || die
 	mv -f *.txt docs/ || die
-	rm -rf misc/{mirc-script,misc,tools}
+	rm -rf misc/{mirc-script,misc,tools} || die
 }

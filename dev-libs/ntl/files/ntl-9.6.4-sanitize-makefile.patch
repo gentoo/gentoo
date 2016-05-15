@@ -1,0 +1,160 @@
+--- ntl-9.6.4/src/DoConfig
++++ ntl-9.6.4/src/DoConfig
+@@ -24,14 +24,16 @@
+ 
+ 'LDFLAGS'     => '',
+ 'LDLIBS'      => '-lm',
++'PICFLAG'     => '-fPIC',
+ 'CPPFLAGS'    => '',
+ 
+-'DEF_PREFIX'  => '/usr/local',
++'DEF_PREFIX'  => '/usr',
+ 
+ 'PREFIX'      => '$(DEF_PREFIX)',
+ 'LIBDIR'      => '$(PREFIX)/lib',
+ 'INCLUDEDIR'  => '$(PREFIX)/include',
+ 'DOCDIR'      => '$(PREFIX)/share/doc',
++'SHMAKE'      => 'non-gld',
+ 
+ 'GMP_PREFIX'  => '$(DEF_PREFIX)',
+ 'GMP_INCDIR'  => '$(GMP_PREFIX)/include',
+--- ntl-9.6.4/src/mfile
++++ ntl-9.6.4/src/mfile
+@@ -113,6 +113,18 @@
+ # Set to off if you want to bypass the wizard; otherwise, set to on.
+ 
+ 
++###############################################################
++#
++# New addition for shared library building. With gcc you need to
++# choose the Position Indepent Code flag. You have a choice of 
++# -fpic better code but in rare case not available (ppc)
++# -fPIC slightly slower code but guaranted to work anywhere.
++#
++###############################################################
++
++PICFLAG=@{PICFLAG}
++
++
+ #################################################################
+ #
+ #  That's it!  You can ignore everything else in this file!
+@@ -144,6 +156,8 @@
+ 
+ OBJ=$(O19)
+ 
++SHOBJ=$(subst .o,.lo,$(OBJ))
++
+ # library source files
+ 
+ 
+@@ -317,6 +331,7 @@
+ 
+ LINK = $(CXX) $(NTL_INCLUDE) $(CPPFLAGS) $(CXXAUTOFLAGS) $(CXXFLAGS) $(LDFLAGS)
+ 
++.SUFFIXES: .lo
+ 
+ 
+ # 'make all' does a complete make, including all setup.
+@@ -325,11 +340,11 @@
+ # again.
+ 
+ all:
+-	make setup1
+-	make setup2
+-	make setup3
+-	make setup4
+-	make ntl.a
++	${MAKE} setup1
++	${MAKE} setup2
++	${MAKE} setup3
++	${MAKE} setup4
++	${MAKE} ntl.a
+ 	touch all
+ 
+ 
+@@ -378,16 +393,28 @@
+ lip.o:	lip.c g_lip_impl.h c_lip_impl.h 
+ 	$(LCOMP) $(COMPILE) $(GMP_OPT_INCDIR) lip.c
+ 
++lip.lo:	lip.c g_lip_impl.h c_lip_impl.h 
++	$(LCOMP) $(COMPILE) $(PICFLAG) $(GMP_OPT_INCDIR) lip.c -o lip.lo
++
+ ctools.o:	ctools.c
+ 	$(LCOMP) $(COMPILE) ctools.c
+ 
++ctools.lo:	ctools.c
++	$(LCOMP) $(COMPILE) $(PICFLAG) ctools.c -o ctools.lo
++
+ 
+ GetTime.o: GetTime.c 
+ 	$(LCOMP) $(COMPILE) GetTime.c
+ 
++GetTime.lo: GetTime.c 
++	$(LCOMP) $(COMPILE) $(PICFLAG) GetTime.c -o GetTime.lo
++
+ GetPID.o: GetPID.c 
+ 	$(LCOMP) $(COMPILE) GetPID.c
+ 
++GetPID.lo: GetPID.c 
++	$(LCOMP) $(COMPILE) $(PICFLAG) GetPID.c -o GetPID.lo
++
+ CheckCompile: CheckCompile.c
+ 	$(LINK) -o  CheckCompile CheckCompile.c $(LDLIBS)
+ 
+@@ -395,6 +422,9 @@
+ .c.o: 
+ 	$(LCOMP) $(COMPILE) $(GF2X_OPT_INCDIR) $<
+ 
++.c.lo: 
++	$(LCOMP) $(COMPILE) $(PICFLAG) $(GF2X_OPT_INCDIR) -o $@ $<
++
+ .c: 
+ @{LSTAT}	$(LINK) -o $@ $< ntl.a $(GMP_OPT_LIBDIR) $(GMP_OPT_LIB) $(GF2X_OPT_LIBDIR) $(GF2X_OPT_LIB) $(LDLIBS) #LSTAT
+ @{LSHAR}	$(LIBTOOL) --tag=CXX --mode=link $(LINK) -o $@ $< libntl.la #LSHAR
+@@ -408,7 +438,7 @@
+ 
+ check:
+ 	sh RemoveProg $(PROGS)
+-	make QuickTest
++	${MAKE} QuickTest
+ 	./QuickTest
+ 	sh RemoveProg QuickTest
+ 	sh TestScript
+@@ -465,20 +495,18 @@
+ #
+ #################################################################
+ 
+-clobber:	
++clobber:	clean
+ 	rm -f ntl.a mach_desc.h ../include/NTL/mach_desc.h  GetTime.c GetPID.c
+ 	sh ResetFeatures '..'
+ 	rm -f ../include/NTL/gmp_aux.h
+-	sh RemoveProg $(PROGS) MakeDesc $(AUXPROGS) gen_gmp_aux
+-	rm -f *.o
+-	rm -rf small
++	sh RemoveProg $(PROGS)
+ 	rm -f cfileout mfileout
+ 	rm -rf .libs *.lo libntl.la
+ 	rm -f all
+ 
+ clean:
+ 	sh RemoveProg $(PROGS) MakeDesc $(AUXPROGS) gen_gmp_aux
+-	rm -f *.o 
++	rm -f *.o *.lo
+ 	rm -rf small
+ @{LSHAR}	- $(LIBTOOL) --mode=clean rm -f libntl.la *.lo #LSHAR
+ 
+@@ -570,5 +598,11 @@
+ 	$(LINK) -o DispSettings DispSettings.c $(LDLIBS)
+ 
+ 
+-
++sharedso: DIRNAME $(SHOBJ)
++	$(LINK) $(PICFLAG) -shared -Wl,-soname,lib`cat DIRNAME`.so -o lib`cat DIRNAME`.so $(SHOBJ) $(GMP_OPT_LIBDIR) $(GMP_OPT_LIB) $(GF2X_OPT_LIBDIR) $(GF2X_OPT_LIB)
++	ln -s lib`cat DIRNAME`.so libntl.so
++
++shareddylib: DIRNAME $(SHOBJ)
++	$(LINK) $(PICFLAG) -dynamiclib -install_name $(LIBDIR)/lib`cat DIRNAME`.dylib -o lib`cat DIRNAME`.dylib $(SHOBJ) $(GMP_OPT_LIBDIR) $(GMP_OPT_LIB) $(GF2X_OPT_LIBDIR) $(GF2X_OPT_LIB)
++	ln -s lib`cat DIRNAME`.dylib libntl.dylib
+ 

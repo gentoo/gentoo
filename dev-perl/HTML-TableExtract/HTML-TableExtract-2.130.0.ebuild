@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="The Perl Table-Extract Module"
 
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~ppc ~ppc64 ~x86 ~x86-linux"
+KEYWORDS="alpha amd64 ppc ppc64 x86 ~x86-linux"
 IUSE=""
 
 RDEPEND="

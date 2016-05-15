@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer>
+  <maintainer type="person">
     <email>voyageur@gentoo.org</email>
     <name>Bernard Cafarelli</name>
   </maintainer>
@@ -11,7 +11,7 @@ An open source client for Windows NT Terminal Server and Windows 2000/2003 Termi
   <use>
     <flag name="kerberos">Enable CredSPP support + Kerberos authentication with <pkg>net-libs/libgssglue</pkg></flag>
     <flag name="pcsc-lite">Enable smartcard support with <pkg>sys-apps/pcsc-lite</pkg> driver</flag>
-	<flag name='xrandr'>Enable XRandR window extension support</flag>
+	<flag name="xrandr">Enable XRandR window extension support</flag>
   </use>
   <upstream>
     <remote-id type="sourceforge">rdesktop</remote-id>

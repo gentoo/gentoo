@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>php</herd>
+	<maintainer type="project">
+		<email>php-bugs@gentoo.org</email>
+		<name>PHP</name>
+	</maintainer>
 	<longdescription lang="en">PHP5 rewrite of HTTP_Request package.
 		Provides an easy way to perform HTTP requests.
 	</longdescription>
 	<use>
-		<flag name='curl'>Force dev-lang/php to be compiled with curl extension</flag>
-		<flag name='fileinfo'>Force dev-lang/php to be compiled with fileinfo extension</flag>
-		<flag name='ssl'>Force dev-lang/php to be compiled with ssl extension</flag>
-		<flag name='zlib'>Force dev-lang/php to be compiled with zlib extension</flag>
+		<flag name="curl">Force dev-lang/php to be compiled with curl extension</flag>
+		<flag name="fileinfo">Force dev-lang/php to be compiled with fileinfo extension</flag>
+		<flag name="ssl">Force dev-lang/php to be compiled with ssl extension</flag>
+		<flag name="zlib">Force dev-lang/php to be compiled with zlib extension</flag>
 	</use>
 </pkgmetadata>
-

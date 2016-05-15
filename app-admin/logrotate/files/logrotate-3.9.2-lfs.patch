@@ -1,0 +1,12 @@
+diff -Nuar a/configure.ac b/configure.ac
+--- a/configure.ac	2016-01-20 10:47:36.000000000 +0100
++++ b/configure.ac	2016-01-25 20:05:49.310052130 +0100
+@@ -10,6 +10,8 @@
+ AC_STRUCT_ST_BLKSIZE
+ AC_STRUCT_ST_BLOCKS
+ 
++AC_SYS_LARGEFILE
++
+ AC_CHECK_LIB([popt],[poptParseArgvString],,
+   AC_MSG_ERROR([libpopt required but not found]))
+ 

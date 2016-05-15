@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -23,7 +23,7 @@ RDEPEND="x11-libs/libXmu
 	>=x11-libs/motif-2.3:0
 	virtual/opengl
 	virtual/glu
-	szip? ( sci-libs/szip )
+	szip? ( virtual/szip )
 	hdf? ( sci-libs/hdf )
 	cdf? ( sci-libs/cdf )
 	netcdf? ( sci-libs/netcdf )

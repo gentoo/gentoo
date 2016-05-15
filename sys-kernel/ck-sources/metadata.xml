@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer>
+  <maintainer type="person">
     <email>yngwin@gentoo.org</email>
   </maintainer>
   <use>
-    <flag name='bfsonly'>BFS by itself vs the full ck patchset</flag>
-    <flag name='experimental'>Allow experimental code. Can break or degrade
+    <flag name="bfsonly">BFS by itself vs the full ck patchset</flag>
+    <flag name="experimental">Allow experimental code. Can break or degrade
       performance. (UNSUPPORTED)
     </flag>
-    <flag name='urwlocks'>Use upgradable read/write locks in place of the grq
+    <flag name="urwlocks">Use upgradable read/write locks in place of the grq
       spinlock. (EXPERIMENTAL)
     </flag>
-    <flag name='deblob'>Remove binary blobs from kernel sources to provide
+    <flag name="deblob">Remove binary blobs from kernel sources to provide
       libre license compliance.
     </flag>
   </use>

@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>toolchain</herd>
+<maintainer type="project">
+	<email>toolchain@gentoo.org</email>
+	<name>Gentoo Toolchain Project</name>
+</maintainer>
 <use>
-	<flag name='asm'>Enable use of hand optimized assembly routines (faster execution)</flag>
-	<flag name='pgo'>After building gmp, run some tests against to produce faster libraries -- this option will double the compile time</flag>
+	<flag name="asm">Enable use of hand optimized assembly routines (faster execution)</flag>
+	<flag name="pgo">After building gmp, run some tests against to produce faster libraries -- this option will double the compile time</flag>
 </use>
 </pkgmetadata>

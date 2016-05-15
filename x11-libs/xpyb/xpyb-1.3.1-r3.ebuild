@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -10,11 +10,11 @@ AUTOTOOLS_AUTORECONF=1
 inherit flag-o-matic xorg-2 python-r1
 
 #EGIT_REPO_URI="git://anongit.freedesktop.org/git/xcb/xpyb"
-SRC_URI="http://xcb.freedesktop.org/dist/${P}.tar.bz2"
+SRC_URI="https://xcb.freedesktop.org/dist/${P}.tar.bz2"
 DESCRIPTION="XCB-based Python bindings for the X Window System"
-HOMEPAGE="http://xcb.freedesktop.org/"
+HOMEPAGE="https://xcb.freedesktop.org/"
 
-KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd"
+KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd"
 IUSE="selinux"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 

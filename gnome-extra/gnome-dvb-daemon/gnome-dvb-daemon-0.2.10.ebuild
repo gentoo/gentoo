@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -10,9 +10,9 @@ VALA_MIN_API_VERSION="0.16"
 inherit eutils python gnome2 multilib vala
 
 DESCRIPTION="Setup your DVB devices, record and watch TV shows and browse EPG using GStreamer"
-HOMEPAGE="https://live.gnome.org/DVBDaemon"
+HOMEPAGE="https://wiki.gnome.org/action/show/Projects/DVBDaemon"
 
-LICENSE="GPL-2"
+LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="amd64"
 IUSE="nls totem vala"

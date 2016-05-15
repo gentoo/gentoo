@@ -1,3 +1,0 @@
-#!/bin/sh
-
-$(java-config --java) -classpath "$(java-config --classpath=gjdoc,antlr):$CLASSPATH" gnu.classpath.tools.gjdoc.Main ${1+"$@"}

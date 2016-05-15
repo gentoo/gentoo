@@ -1,5 +1,5 @@
---- SConstruct
-+++ SConstruct
+--- iulib-0.4/SConstruct
++++ iulib-0.4/SConstruct
 @@ -36,12 +36,25 @@
  
  ### Options exposed via SCons

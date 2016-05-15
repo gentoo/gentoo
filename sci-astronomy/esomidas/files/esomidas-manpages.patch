@@ -1,0 +1,54 @@
+Author: Ole Streicher <debian@liska.ath.cx>
+Description: Put the manpages in chapter "1" instead of "1L".
+ They are not local in Debian.
+--- a/system/unix/man1/gomidas.1
++++ b/system/unix/man1/gomidas.1
+@@ -2,7 +2,7 @@
+ .\" Copyright (c) 1989 European Southern Observatory.
+ .\" All rights reserved.  
+ .\"
+-.TH gomidas 1L "07 July 1993" MIDAS
++.TH gomidas 1 "07 July 1993" MIDAS
+ .SH NAME
+ gomidas \- Resume a MIDAS session.
+ .SH SYNOPSIS
+@@ -56,4 +56,4 @@
+ .IP "\fBMID_WORK\fp"
+ Startup directory for MIDAS containing previous MIDAS saved-session files.
+ .SH SEE ALSO
+-.IR inmidas(1L)
++.IR inmidas(1)
+--- a/system/unix/man1/helpmidas.1
++++ b/system/unix/man1/helpmidas.1
+@@ -2,7 +2,7 @@
+ .\" Copyright (c) 1989 European Southern Observatory.
+ .\" All rights reserved.  
+ .\"
+-.TH helpmidas 1L "07 July 1993" MIDAS
++.TH helpmidas 1 "07 July 1993" MIDAS
+ .SH NAME
+ helpmidas \- Standalone GUI help for MIDAS.
+ .SH SYNOPSIS
+@@ -71,4 +71,4 @@
+ .IP "\fBMID_WORK\fp"
+ Startup directory for MIDAS.
+ .SH SEE ALSO
+-.IR inmidas(1L),gomidas(1L)
++.IR inmidas(1),gomidas(1)
+--- a/system/unix/man1/inmidas.1
++++ b/system/unix/man1/inmidas.1
+@@ -2,7 +2,7 @@
+ .\" Copyright (c) 1989 European Southern Observatory.
+ .\" All rights reserved.  
+ .\"
+-.TH inmidas 1L "11 November 1994" MIDAS
++.TH inmidas 1 "11 November 1994" MIDAS
+ .SH NAME
+ inmidas \- MIDAS start-up procedure for users.
+ .SH SYNOPSIS
+@@ -145,4 +145,4 @@
+ .IP "\fBMID_WORK\fp"
+ Startup directory for MIDAS.
+ .SH SEE ALSO
+-.IR gomidas(1L)
++.IR gomidas(1)

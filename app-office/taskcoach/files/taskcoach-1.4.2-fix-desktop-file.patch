@@ -1,0 +1,23 @@
+From dd39524692896995daabc69c7090ecf66e64858e Mon Sep 17 00:00:00 2001
+From: Sebastian Pipping <sebastian@pipping.org>
+Date: Sun, 10 Jan 2016 01:34:13 +0100
+Subject: [PATCH] Fix .desktop file
+
+error: value "task;todo;reminder" for locale string list key "Keywords" in group "Desktop Entry" does not have a semicolon (';') as trailing character
+---
+ build.in/linux_common/taskcoach.desktop | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/build.in/linux_common/taskcoach.desktop b/build.in/linux_common/taskcoach.desktop
+index 9382b0b..b1a4bd1 100644
+--- a/build.in/linux_common/taskcoach.desktop
++++ b/build.in/linux_common/taskcoach.desktop
+@@ -7,4 +7,4 @@ Icon=taskcoach
+ Terminal=false
+ Type=Application
+ Categories=Office;Calendar;
+-Keywords=task;todo;reminder
++Keywords=task;todo;reminder;
+-- 
+2.7.0
+

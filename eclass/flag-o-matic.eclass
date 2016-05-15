@@ -63,7 +63,7 @@ setup-allowed-flags() {
 		# gcc 4.7
 		-mno-avx2 -mno-bmi2 -mno-fma -mno-lzcnt
 		# gcc 4.8
-		-mno-fxsr -mno-rtm -mno-xsave -mno-xsaveopt
+		-mno-fxsr -mno-hle -mno-rtm -mno-xsave -mno-xsaveopt
 		# gcc 4.9
 		-mno-avx512cd -mno-avx512er -mno-avx512f -mno-avx512pf -mno-sha
 	)

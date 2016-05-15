@@ -1,7 +1,10 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>ada</herd>
+	<maintainer type="project">
+		<email>ada@gentoo.org</email>
+		<name>Gentoo Resources for Ada</name>
+	</maintainer>
 	<longdescription>
 	Ada Semantic Interface Specification is a published international ISO 
 	standard (ISO/IEC 15291:1999). ASIS represents a compiler independent 

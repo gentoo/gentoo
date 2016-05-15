@@ -57,6 +57,6 @@ src_compile() {
 src_install() {
 	emake $(makeopts) install DESTDIR="${ED}"
 	dodoc *.txt
-	newdoc mkfs.ubifs/README README.mkfs.ubifs
+	newdoc ubifs-utils/mkfs.ubifs/README README.mkfs.ubifs
 	# TODO: check ubi-utils for docs+scripts
 }

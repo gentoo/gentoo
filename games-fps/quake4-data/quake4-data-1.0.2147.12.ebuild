@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+EAPI=5
 inherit eutils cdrom games
 
 DESCRIPTION="sequel to Quake 2, an id 3D first-person shooter"
@@ -32,20 +33,16 @@ src_install() {
 	insinto "${dir}"/q4base
 	einfo "Copying files from Disk 1..."
 	doins "${CDROM_ROOT}"/Setup/Data/q4base/pak01{0,1,2}.pk4 \
-		"${CDROM_ROOT}"/Setup/Data/q4base/zpak*.pk4 \
-		|| die "copying pak010->pak012 and zpack*"
+		"${CDROM_ROOT}"/Setup/Data/q4base/zpak*.pk4
 	cdrom_load_next_cd
 	einfo "Copying files from Disk 2..."
-	doins "${CDROM_ROOT}"/Setup/Data/q4base/pak00{1,2,3}.pk4 \
-		|| die "copying pak001->pak003"
+	doins "${CDROM_ROOT}"/Setup/Data/q4base/pak00{1,2,3}.pk4
 	cdrom_load_next_cd
 	einfo "Copying files from Disk 3..."
-	doins "${CDROM_ROOT}"/Setup/Data/q4base/pak00{4,5,6}.pk4 \
-		|| die "copying pak004->pak006"
+	doins "${CDROM_ROOT}"/Setup/Data/q4base/pak00{4,5,6}.pk4
 	cdrom_load_next_cd
 	einfo "Copying files from Disk 4..."
-	doins "${CDROM_ROOT}"/Setup/Data/q4base/pak00{7,8,9}.pk4 \
-		|| die "copying pak007->pak009"
+	doins "${CDROM_ROOT}"/Setup/Data/q4base/pak00{7,8,9}.pk4
 
 	find "${Ddir}" -exec touch '{}' +
 

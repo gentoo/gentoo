@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>games</herd>
+<maintainer type="project">
+	<email>games@gentoo.org</email>
+	<name>Gentoo Games Project</name>
+</maintainer>
 <longdescription>
 Enemy Territory is a first-person 3-D shooter based loosely on the original Wolfenstein series by id software.  The game takes place in North Africa and Europe during World War II and allows you to play as either the Axis or the Allies.  There are several classes of characters you can play, each with their own special abilities and weapon choices.  You can also gain proficiency in your specialties and increase your abilities by performing your class's specialized duties, which helps promote teamwork.  Enemy Territory was originally to be a single and milti-player add-on for Return to Castle Wofenstein, but John Carmack and company were not happy with the progress they had made on it, so instead, they released it as a multi-player stand-alone game.
 </longdescription>

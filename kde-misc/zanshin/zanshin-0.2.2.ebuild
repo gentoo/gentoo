@@ -17,7 +17,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="debug"
 
 RDEPEND="
-	$(add_kdebase_dep kdepim-runtime '' 4.6.0)
+	$(add_kdeapps_dep kdepim-runtime '' 4.6.0)
 	dev-libs/boost
 "
 DEPEND=${RDEPEND}

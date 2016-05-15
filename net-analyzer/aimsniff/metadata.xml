@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>netmon</herd>
+	<maintainer type="project">
+		<email>netmon@gentoo.org</email>
+		<name>Gentoo network monitoring and analysis project</name>
+	</maintainer>
 	<longdescription>aimsniff is a utility used for retrieving and storing AIM messages across a network.</longdescription>
 	<use>
 		<flag name="http">Install the WAS (Web AIM Sniff) frontend</flag>

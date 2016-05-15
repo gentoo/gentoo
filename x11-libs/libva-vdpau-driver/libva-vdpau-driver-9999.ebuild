@@ -14,12 +14,12 @@ AUTOTOOLS_AUTORECONF="yes"
 inherit autotools-multilib ${SCM}
 
 DESCRIPTION="VDPAU Backend for Video Acceleration (VA) API"
-HOMEPAGE="http://www.freedesktop.org/wiki/Software/vaapi"
+HOMEPAGE="https://www.freedesktop.org/wiki/Software/vaapi"
 if [ "${PV%9999}" != "${PV}" ] ; then # Live ebuild
 	SRC_URI=""
 	S="${WORKDIR}/${PN}"
 else
-	SRC_URI="http://www.freedesktop.org/software/vaapi/releases/libva-vdpau-driver/${P}.tar.bz2"
+	SRC_URI="https://www.freedesktop.org/software/vaapi/releases/libva-vdpau-driver/${P}.tar.bz2"
 fi
 
 LICENSE="GPL-2"

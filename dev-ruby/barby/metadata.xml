@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>ruby</herd>
+  <maintainer type="project">
+    <email>ruby@gentoo.org</email>
+    <name>Gentoo Ruby Project</name>
+  </maintainer>
   <use>
     <flag name="qrcode">
       Add support for QRCode 2D codes using
@@ -23,12 +26,6 @@
       Add support for writing images (PNG, PS, EPS and, if supported,
       PDF and SVG) using <pkg>dev-ruby/rcairo</pkg>. Not available on
       JRuby.
-    </flag>
-    <flag name="datamatrix">
-      Add support for datamatrix using <pkg>dev-ruby/semacode</pkg>.
-    </flag>
-    <flag name="pdf-writer">
-      Add support for writing PDFs using <pkg>dev-ruby/pdf-writer</pkg>.
     </flag>
   </use>
   <upstream>

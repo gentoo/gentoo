@@ -1,0 +1,29 @@
+diff --git a/php/Makefile.am b/php/Makefile.am
+index 5b50c0f..fad05c0 100644
+--- a/php/Makefile.am
++++ b/php/Makefile.am
+@@ -56,7 +56,7 @@ geos_la_CPPFLAGS = $(AM_CPPFLAGS) \
+ 	-I$(top_srcdir)/include
+ 
+ install: all
+-	$(INSTALL) -d "$(DESTDIR)"/`$(PHP_CONFIG) --extension-dir`
+-	$(INSTALL) -m 755 .libs/geos.so "$(DESTDIR)"/`php-config --extension-dir`
++	$(INSTALL) -d "$(DESTDIR)"`$(PHP_CONFIG) --extension-dir`
++	$(INSTALL) -m 755 .libs/geos.so "$(DESTDIR)"`$(PHP_CONFIG) --extension-dir`
+ 
+ endif
+diff --git a/php/Makefile.in b/php/Makefile.in
+index d8c343e..9485d0d 100644
+--- a/php/Makefile.in
++++ b/php/Makefile.in
+@@ -877,8 +877,8 @@ uninstall-am: uninstall-pkglibLTLIBRARIES
+ 
+ 
+ @ENABLE_PHP_TRUE@install: all
+-@ENABLE_PHP_TRUE@	$(INSTALL) -d "$(DESTDIR)"/`$(PHP_CONFIG) --extension-dir`
+-@ENABLE_PHP_TRUE@	$(INSTALL) -m 755 .libs/geos.so "$(DESTDIR)"/`php-config --extension-dir`
++@ENABLE_PHP_TRUE@	$(INSTALL) -d "$(DESTDIR)"`$(PHP_CONFIG) --extension-dir`
++@ENABLE_PHP_TRUE@	$(INSTALL) -m 755 .libs/geos.so "$(DESTDIR)"`$(PHP_CONFIG) --extension-dir`
+ 
+ # Tell versions [3.59,3.63) of GNU make to not export all variables.
+ # Otherwise a system limit (for SysV at least) may be exceeded.

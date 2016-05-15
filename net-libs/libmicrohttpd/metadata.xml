@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer>
+	<maintainer type="person">
 		<email>blueness@gentoo.org</email>
 		<name>Anthony G. Basile</name>
 	</maintainer>
 	<use>
-		<flag name='messages'>enable error messages</flag>
-		<flag name='epoll'>use epoll() system call</flag>
+		<flag name="messages">enable error messages</flag>
+		<flag name="epoll">use epoll() system call</flag>
 	</use>
 </pkgmetadata>
-

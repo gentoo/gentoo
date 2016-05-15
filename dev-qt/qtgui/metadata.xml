@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>qt</herd>
+	<maintainer type="project">
+		<email>qt@gentoo.org</email>
+		<name>Gentoo Qt Project</name>
+	</maintainer>
 	<use>
 		<flag name="egl">Enable EGL integration</flag>
 		<flag name="eglfs">Build the EGL Full Screen/Single Surface platform plugin</flag>
@@ -11,7 +14,6 @@
 		<flag name="gles2">Use GLES 2.0 or later instead of full OpenGL</flag>
 		<flag name="glib">Enable integration with the <pkg>dev-libs/glib</pkg> event loop</flag>
 		<flag name="gtkstyle">Build a widgets style that mimics the active GTK+ theme</flag>
-		<flag name="harfbuzz">Use <pkg>media-libs/harfbuzz</pkg> for text shaping</flag>
 		<flag name="ibus">Build the IBus input method plugin</flag>
 		<flag name="libinput">Enable support for input devices via <pkg>dev-libs/libinput</pkg></flag>
 		<flag name="qt3support">Enable the Qt3Support libraries for Qt4. Note that
@@ -27,4 +29,9 @@
 		<bugs-to>https://bugreports.qt.io/</bugs-to>
 		<doc>http://doc.qt.io/</doc>
 	</upstream>
+	<slots>
+		<subslots>
+			Must only be used by packages that are known to use private parts of the Qt API.
+		</subslots>
+	</slots>
 </pkgmetadata>

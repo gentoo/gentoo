@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer>
-    <email>jlec@gentoo.org</email>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
   </maintainer>
-  <herd>perl</herd>
   <upstream>
     <remote-id type="cpan">Test-Trap</remote-id>
     <remote-id type="cpan-module">Test::Trap</remote-id>

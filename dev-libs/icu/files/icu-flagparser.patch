@@ -1,0 +1,13 @@
+Index: source/tools/toolutil/flagparser.c
+===================================================================
+--- a/source/tools/toolutil/flagparser.c	(revision 38080)
++++ b/source/tools/toolutil/flagparser.c	(revision 38081)
+@@ -97,7 +97,7 @@
+ 
+     T_FileStream_close(f);
+     
+-    if (U_FAILURE(*status)) {
++    if (U_FAILURE(*status) && *status != U_BUFFER_OVERFLOW_ERROR) {
+         return -1;
+     }
+ 

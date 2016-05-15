@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -30,7 +30,7 @@ RDEPEND="
 	fltk? ( x11-libs/fltk:1 )
 	gif? ( media-libs/giflib )
 	glut? ( media-libs/freeglut )
-	gsl? ( sci-libs/gsl )
+	gsl? ( <sci-libs/gsl-2 )
 	hdf? ( sci-libs/hdf )
 	hdf5? ( >=sci-libs/hdf5-1.8[mpi=] )
 	jpeg? ( virtual/jpeg:0 )
@@ -81,6 +81,8 @@ src_prepare() {
 	# prevent sandbox violation
 	sed -i -e 's/update-mime-database/true/' udav/CMakeLists.txt || die
 	sed -i -e 's/update-desktop-database/true/' udav/CMakeLists.txt || die
+	# fix missing include, bug 564204
+	sed -i -e '/#include <QStringList>/i #include <QObject>' json/Backend.hpp || die
 
 	use python && append-cppflags -I"$(${EPYTHON} -c 'import numpy; print(numpy.get_include())')"
 	use wxwidgets && need-wxwidgets unicode

@@ -3,6 +3,7 @@ Description=Linux Infrared Remote Control
 After=network.target
 
 [Service]
+RuntimeDirectory=lirc
 ExecStart=/usr/sbin/lircd --nodaemon --driver=default --device=/dev/lirc0
 
 [Install]

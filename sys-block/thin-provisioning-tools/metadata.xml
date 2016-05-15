@@ -1,14 +1,17 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<!DOCTYPE pkgmetadata SYSTEM 'http://www.gentoo.org/dtd/metadata.dtd'>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>base-system</herd>
-<maintainer>
+<maintainer type="person">
 	<email>robbat2@gentoo.org</email>
 </maintainer>
-<longdescription lang='en'>
+<maintainer type="project">
+	<email>base-system@gentoo.org</email>
+	<name>Gentoo Base System</name>
+</maintainer>
+<longdescription lang="en">
 A suite of tools for thin provisioning on Linux.
 </longdescription>
 <upstream>
-	<remote-id type='github'>jthornber/thin-provisioning-tools</remote-id>
+	<remote-id type="github">jthornber/thin-provisioning-tools</remote-id>
 </upstream>
 </pkgmetadata>

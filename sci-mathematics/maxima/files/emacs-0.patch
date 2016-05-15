@@ -1,0 +1,32 @@
+--- maxima-5.37.3.orig/configure.ac
++++ maxima-5.37.3/configure.ac
+@@ -513,6 +513,17 @@
+ 	fi
+ fi
+ 
++AC_ARG_ENABLE(emacs,
++	[  --enable-emacs               Emacs support],
++	[case "${enableval}" in
++		yes) enable_emacs=true  ;;
++		no)  enable_emacs=false ;;
++		*) AC_MSG_ERROR(bad value ${enableval} for --enable-emacs) ;;
++	esac],
++	[enable_emacs=true])
++
++AM_CONDITIONAL(WANT_EMACS, test x$enable_emacs = xtrue)
++
+ dnl xgettext
+ AC_ARG_ENABLE(gettext,
+ 	[  --enable-gettext             Locale support],
+--- maxima-5.37.3.orig/interfaces/Makefile.am
++++ maxima-5.37.3/interfaces/Makefile.am
+@@ -1,5 +1,8 @@
++if WANT_EMACS
++   MAYBE_EMACS = emacs
++endif
+ if WANT_TK
+    MAYBE_XMAXIMA = xmaxima
+ endif
+-SUBDIRS = emacs $(MAYBE_XMAXIMA)
++SUBDIRS = $(MAYBE_EMACS) $(MAYBE_XMAXIMA)
+ EXTRA_DIST = bin/xmaxima.iss

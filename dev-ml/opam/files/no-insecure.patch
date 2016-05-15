@@ -1,0 +1,25 @@
+Description: remove insecure / no-check-certificate flags (see mail on opam-devel, #55 #2006)
+Author: Hannes Mehnert <hannes@mehnert.org>
+Applied-Upstream: 3d43295df3bb9e67e60801d319bf82c2c8a84d24
+---
+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+--- a/src/core/opamSystem.ml
++++ b/src/core/opamSystem.ml
+@@ -694,7 +694,7 @@
+   let retry = string_of_int OpamGlobals.download_retry in
+   let wget ~compress:_ ?checksum:_ dir src =
+     let wget_args = [
+-      "--content-disposition"; "--no-check-certificate";
++      "--content-disposition";
+       "-t"; retry;
+       src
+     ] in
+@@ -704,7 +704,7 @@
+   in
+   let curl command ~compress ?checksum:_ dir src =
+     let curl_args = [
+-      "--write-out"; "%{http_code}\\n"; "--insecure";
++      "--write-out"; "%{http_code}\\n";
+       "--retry"; retry; "--retry-delay"; "2";
+     ] @ (if compress then ["--compressed"] else []) @ [
+         "-OL"; src

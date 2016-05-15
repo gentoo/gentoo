@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>haskell</herd>
-	<herd>proxy-maintainers</herd>
-	<maintainer>
+	<maintainer type="project">
 		<email>haskell@gentoo.org</email>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription>
 		This package provides a general purpose Haskell XML library using Expat to
@@ -26,13 +28,13 @@
 		
 		If you want to do interactive I\/O, an obvious option is to use lazy parsing
 		with one of the lazy I\/O functions such as hGetContents.  However, this can be
-		problematic in some applications because it doesn&#39;t handle I\/O errors properly
+		problematic in some applications because it doesn't handle I\/O errors properly
 		and can give no guarantee of timely resource cleanup.  In these cases, chunked
 		I\/O is a better approach: Take a look at the /hexpat-enumerator/ package.
 		
-		/IO/ is filed under /Internal/ because it&#39;s low-level and most users won&#39;t want
+		/IO/ is filed under /Internal/ because it's low-level and most users won't want
 		it.  The other /Internal/ modules are re-exported by /Annotated/, /Tree/ and /Extended/,
-		so you won&#39;t need to import them directly.
+		so you won't need to import them directly.
 		
 		Credits to Iavor Diatchki and the @xml@ (XML.Light) package for /Proc/ and /Cursor/.
 		Thanks to the many contributors.
@@ -41,17 +43,17 @@
 		if you call a safe FFI callback from an unbound thread.  This can get out of
 		control in a busy application.  To avoid this, from version 0.19.1 we now delegate
 		processing to a single worker thread if the calling thread is not bound.
-		This essentially means that hexpat currently won&#39;t exploit multicores very well.
+		This essentially means that hexpat currently won't exploit multicores very well.
 		It also means that hexpat may be more efficient on threads spawned with forkOS
 		(to give you a bound thread) rather than forkIO.
 		
-		ChangeLog: 0.15 changes intended to fix a (rare) \&quot;error: a C finalizer called back into Haskell.\&quot;
+		ChangeLog: 0.15 changes intended to fix a (rare) \"error: a C finalizer called back into Haskell.\"
 		that seemed only to happen only on ghc6.12.X; 0.15.1 Fix broken Annotated parse;
 		0.16 switch from mtl to transformers; 0.17 fix mapNodeContainer &amp; rename some things.;
 		0.18 rename defaultEncoding to overrideEncoding. 0.18.3 formatG and indent were demanding list
 		items more than once (inefficient in chunked processing); 0.19 add Extended.hs;
 		0.19.1 fix a memory leak introduced in 0.19, delegate parsing to bound thread
-		if unbound (see note above); 0.19.2 include expat source code so \&#39;cabal install\&#39; just works
+		if unbound (see note above); 0.19.2 include expat source code so \'cabal install\' just works
 		on Linux, Mac and Windows (thanks Jacob Stanley); 0.19.3 fix misconfiguration of expat
 		which broke entity parsing; 0.19.4 bump version constraint for text; 0.19.5 bump text
 		to &lt; 0.12 and fix text-0.10.0.1 breakage; 0.19.6 dependency breakage with List;

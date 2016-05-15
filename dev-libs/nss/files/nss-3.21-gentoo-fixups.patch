@@ -1,6 +1,5 @@
-diff -urN a/nss/config/Makefile b/nss/config/Makefile
---- a/nss/config/Makefile	1969-12-31 18:00:00.000000000 -0600
-+++ b/nss/config/Makefile	2015-11-15 10:42:46.249578304 -0600
+--- nss/config/Makefile
++++ nss/config/Makefile
 @@ -0,0 +1,40 @@
 +CORE_DEPTH = ..
 +DEPTH      = ..
@@ -42,9 +41,8 @@ diff -urN a/nss/config/Makefile b/nss/config/Makefile
 +
 +dummy: all export libs
 +
-diff -urN a/nss/config/nss-config.in b/nss/config/nss-config.in
---- a/nss/config/nss-config.in	1969-12-31 18:00:00.000000000 -0600
-+++ b/nss/config/nss-config.in	2015-11-15 10:42:46.250578304 -0600
+--- nss/config/nss-config.in
++++ nss/config/nss-config.in
 @@ -0,0 +1,145 @@
 +#!/bin/sh
 +
@@ -191,9 +189,8 @@ diff -urN a/nss/config/nss-config.in b/nss/config/nss-config.in
 +      echo $libdirs
 +fi      
 +
-diff -urN a/nss/config/nss.pc.in b/nss/config/nss.pc.in
---- a/nss/config/nss.pc.in	1969-12-31 18:00:00.000000000 -0600
-+++ b/nss/config/nss.pc.in	2015-11-15 10:42:46.251578304 -0600
+--- nss/config/nss.pc.in
++++ nss/config/nss.pc.in
 @@ -0,0 +1,12 @@
 +prefix=@prefix@
 +exec_prefix=@exec_prefix@
@@ -207,9 +204,8 @@ diff -urN a/nss/config/nss.pc.in b/nss/config/nss.pc.in
 +Libs: -lssl3 -lsmime3 -lnss3 -lnssutil3
 +Cflags: -I${includedir}
 +
-diff -urN a/nss/Makefile b/nss/Makefile
---- a/nss/Makefile	2015-11-15 09:25:06.410786060 -0600
-+++ b/nss/Makefile	2015-11-15 10:42:46.252578304 -0600
+--- nss/Makefile
++++ nss/Makefile
 @@ -46,7 +46,7 @@
  # (7) Execute "local" rules. (OPTIONAL).                              #
  #######################################################################
@@ -232,9 +228,8 @@ diff -urN a/nss/Makefile b/nss/Makefile
  build_docs:
  	$(MAKE) -C $(CORE_DEPTH)/doc
  
-diff -urN a/nss/manifest.mn b/nss/manifest.mn
---- a/nss/manifest.mn	2015-11-15 09:25:06.411786060 -0600
-+++ b/nss/manifest.mn	2015-11-15 10:43:15.633576994 -0600
+--- nss/manifest.mn
++++ nss/manifest.mn
 @@ -10,4 +10,4 @@
  
  RELEASE = nss

@@ -1,0 +1,11 @@
+--- scripts/rc_init-pre.orig	2016-02-18 13:31:23.610276701 -0200
++++ scripts/rc_init-pre	2016-02-18 13:31:57.405275206 -0200
+@@ -77,7 +77,7 @@
+   return 0
+ }
+ 
+-[ -r /etc/init.d/functions.sh ] && . /etc/init.d/functions.sh
++[ -r /lib/gentoo/functions.sh ] && . /lib/gentoo/functions.sh
+ 
+ if [ -z "${1}" ]; then
+   log err "no internal runlevel provided"

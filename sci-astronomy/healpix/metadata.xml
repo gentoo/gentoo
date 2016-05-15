@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci-astronomy@gentoo.org</email>
+    <name>Gentoo Astronomy Project</name>
+  </maintainer>
+  <longdescription lang="en">
+  HEALPix is an acronym for Hierarchical Equal Area isoLatitude
+  Pixelization of a sphere. As suggested in the name, this pixelization produces a
+  subdivision of a spherical surface in which each pixel covers the same
+  surface area as every other pixel.
+</longdescription>
+  <upstream>
+    <remote-id type="sourceforge">healpix</remote-id>
+  </upstream>
+  <use>
+    <flag name="idl">Install healpix IDL/GDL routines</flag>
+  </use>
+</pkgmetadata>

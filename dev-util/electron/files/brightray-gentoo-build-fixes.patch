@@ -1,0 +1,81 @@
+From c9e2e0237170884bc1069a64f2635bb1ffc1b948 Mon Sep 17 00:00:00 2001
+From: Elvis Pranskevichus <elvis@magic.io>
+Date: Mon, 8 Feb 2016 15:14:58 -0500
+Subject: [PATCH] brightray build fixes
+
+---
+ brightray.gyp  |  5 +++--
+ brightray.gypi | 21 ++++++++-------------
+ 2 files changed, 11 insertions(+), 15 deletions(-)
+
+diff --git a/brightray.gyp b/brightray.gyp
+index d7120ea..6150318 100644
+--- a/brightray.gyp
++++ b/brightray.gyp
+@@ -9,6 +9,9 @@
+   'targets': [
+     {
+       'target_name': 'brightray',
++      'dependencies': [
++        '<(libchromiumcontent_src_dir)/chromiumcontent/chromiumcontent.gyp:chromiumcontent_all'
++      ],
+       'type': 'static_library',
+       'include_dirs': [
+         '.',
+@@ -100,8 +103,6 @@
+             }, {
+               'link_settings': {
+                 'libraries': [
+-                  # Link with ffmpeg.
+-                  '<(libchromiumcontent_dir)/libffmpeg.so',
+                   # Following libraries are required by libchromiumcontent:
+                   '-lasound',
+                   '-lcap',
+diff --git a/brightray.gypi b/brightray.gypi
+index 4513fa9..95bdfa1 100644
+--- a/brightray.gypi
++++ b/brightray.gypi
+@@ -1,9 +1,14 @@
+ {
+-  'includes': [
+-    'vendor/download/libchromiumcontent/filenames.gypi',
+-  ],
+   'variables': {
+     'libchromiumcontent_component%': 1,
++    'libchromiumcontent_src_dir': '<(DEPTH)',
++    'libchromiumcontent_shared_libraries_dir': '<(SHARED_INTERMEDIATE_DIR)',
++    'libchromiumcontent_static_libraries_dir': '<(SHARED_INTERMEDIATE_DIR)',
++    'libchromiumcontent_shared_libraries': [],
++    'libchromiumcontent_static_libraries': [],
++    'libchromiumcontent_shared_v8_libraries': [],
++    'libchromiumcontent_static_v8_libraries': [],
++    'pkg-config%': 'pkg-config',
+     'conditions': [
+       # The "libchromiumcontent_component" is defined when calling "gyp".
+       ['libchromiumcontent_component', {
+@@ -258,22 +263,12 @@
+         'conditions': [
+           ['OS=="linux"', {
+             'cflags': [
+-              '-O2',
+-              # Generate symbols, will be stripped later.
+-              '-g',
+-              # Don't emit the GCC version ident directives, they just end up
+-              # in the .comment section taking up binary size.
+-              '-fno-ident',
+               # Put data and code in their own sections, so that unused symbols
+               # can be removed at link time with --gc-sections.
+               '-fdata-sections',
+               '-ffunction-sections',
+             ],
+             'ldflags': [
+-              # Specifically tell the linker to perform optimizations.
+-              # See http://lwn.net/Articles/192624/ .
+-              '-Wl,-O1',
+-              '-Wl,--as-needed',
+               '-Wl,--gc-sections',
+             ],
+           }],  # OS=="linux"
+-- 
+2.7.3
+

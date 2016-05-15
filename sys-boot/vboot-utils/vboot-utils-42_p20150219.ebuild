@@ -35,6 +35,7 @@ S=${WORKDIR}
 
 src_prepare() {
 	epatch "${FILESDIR}"/${P}-cgpt-static.patch
+	epatch "${FILESDIR}"/${P}-sysmacros.patch #580554
 	sed -i \
 		-e 's: -Werror : :g' \
 		-e 's:${DESTDIR}/\(bin\|${LIBDIR}\):${DESTDIR}/usr/\1:g' \

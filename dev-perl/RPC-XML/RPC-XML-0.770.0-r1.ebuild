@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -21,7 +21,7 @@ RDEPEND="
 	>=dev-perl/libwww-perl-5.834.0
 	>=dev-perl/XML-LibXML-1.850.0
 	>=dev-perl/XML-Parser-2.310.0
-	dev-perl/net-server
+	dev-perl/Net-Server
 	>=virtual/perl-Scalar-List-Utils-1.200.0
 	dev-perl/URI
 "

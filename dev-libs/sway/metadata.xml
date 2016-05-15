@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>tajjada@gmail.com</email>
+		<name>Jasen Borisov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+		"SirCmpwn's Wayland window manager" is an i3-compatible window manager
+		for Wayland.
+
+		sway was created to fill the need of an i3-like window manager for
+		Wayland. The upstream i3 developers have no intention of porting i3 to
+		Wayland, and projects proposed by others ended up as vaporware. Many
+		thanks to the i3 folks for providing such a great piece of software, so
+		good that your users would rather write an entirely new window manager
+		from scratch that behaved *exactly* like i3 rather than switch to
+		something else.
+	</longdescription>
+	<use>
+		<flag name="gdk-pixbuf">Enable additional image format support via the gdk-pixbuf library.</flag>
+		<flag name="swaybar">Build 'swaybar': sway's status bar component.</flag>
+		<flag name="swaybg">Build 'swaybg': allows to set a desktop background image.</flag>
+		<flag name="swaygrab">Build 'swaygrab': allows taking screenshots or screencasts.</flag>
+		<flag name="swaylock">Build 'swaylock': sway's screen locker.</flag>
+		<flag name="swaymsg">Build 'swaymsg': tool for communicating with a running sway instance.</flag>
+		<flag name="wallpapers">Install sway's default wallpaper image.</flag>
+	</use>
+</pkgmetadata>

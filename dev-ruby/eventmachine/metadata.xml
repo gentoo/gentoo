@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>ruby</herd>
+<maintainer type="project">
+	<email>ruby@gentoo.org</email>
+	<name>Gentoo Ruby Project</name>
+</maintainer>
 <longdescription>
 Ruby/EventMachine is a fast, simple event-processing library for Ruby programs. It lets you write network clients and servers without handling sockets- all you do is send and receive data. Single-threaded socket engine- scalable and FAST!
 </longdescription>

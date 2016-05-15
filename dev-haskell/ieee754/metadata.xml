@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>haskell</herd>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
 	<longdescription>
 	Utilities for dealing with IEEE floating point numbers, ported from the Tangoi
 	math library; approximate and exact equality comparisons for general types. 
 	</longdescription>
-	<use>
-		<flag name="big_endian">Build for a big endian machine. Beware that only little endian machines have been tested.</flag>
-	</use>
 	<upstream>
 		<remote-id type="github">patperry/hs-ieee754</remote-id>
 	</upstream>

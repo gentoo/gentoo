@@ -1,0 +1,22 @@
+--- contest-0.61/Makefile
++++ contest-0.61/Makefile
+@@ -1,8 +1,8 @@
+ INSTPATH=/usr
+ BIN=$(INSTPATH)/bin
+ MAN=$(INSTPATH)/man
+-CC=gcc
+-CFLAGS= -W -Wall -Wpointer-arith -Wmissing-prototypes -Wmissing-declarations \
++CC?=gcc
++CFLAGS?= -W -Wall -Wpointer-arith -Wmissing-prototypes -Wmissing-declarations \
+ 	-g -O2
+ 
+ ifeq ($(shell uname),FreeBSD)
+@@ -14,7 +14,7 @@
+      list_load.o
+ 
+ contest: $(objs)
+-	$(CC) $(CFLAGS) -o $@ $(objs) $(KVM)
++	$(CC) $(LDFLAGS) $(CFLAGS) -o $@ $(objs) $(KVM)
+ contest.1.gz: contest.1
+ 	gzip -c contest.1 > contest.1.gz
+ install: contest contest.1.gz

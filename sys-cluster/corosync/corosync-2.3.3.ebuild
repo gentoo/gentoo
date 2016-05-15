@@ -10,7 +10,7 @@ MY_TREE="32ec81c"
 
 DESCRIPTION="OSI Certified implementation of a complete cluster engine"
 HOMEPAGE="http://www.corosync.org/"
-SRC_URI="https://github.com/corosync/corosync/tarball/v${PV} -> ${P}.tar.gz"
+SRC_URI="http://build.clusterlabs.org/corosync/releases/${P}.tar.gz"
 
 LICENSE="BSD-2 public-domain"
 SLOT="0"

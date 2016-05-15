@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -29,7 +29,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	$(python_gen_any_dep 'gnome-extra/zeitgeist[${PYTHON_USEDEP}]')
-	gnome-extra/zeitgeist
+	dev-util/automoc
 "
 
 python_check_deps() {

@@ -1,4 +1,4 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -16,7 +16,7 @@ IUSE="X"
 
 DEPEND="media-libs/libdvdread
 	media-video/lsdvd
-	X? ( dev-perl/perl-tk
+	X? ( dev-perl/Tk
 	dev-perl/Tk-JPEG-Lite
 	virtual/cdrtools
 	>=media-video/dvdauthor-0.6.5

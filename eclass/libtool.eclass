@@ -138,7 +138,7 @@ elibtoolize() {
 	local x
 	local dirs=()
 	local do_portage="no"
-	local do_reversedeps="no"
+	local do_reversedeps="yes"
 	local do_only_patches="no"
 	local do_uclibc="yes"
 	local deptoremove=

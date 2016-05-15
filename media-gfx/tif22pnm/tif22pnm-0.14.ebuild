@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=4
-inherit autotools eutils
+inherit autotools eutils flag-o-matic
 
 DESCRIPTION="tif22pnm and png22pnm command-line converters"
 HOMEPAGE="http://pts.szit.bme.hu/ https://code.google.com/p/sam2p/"
@@ -20,6 +20,7 @@ DEPEND="${RDEPEND}"
 
 src_prepare() {
 	epatch "${FILESDIR}"/${P}-gentoo.patch
+	epatch "${FILESDIR}"/${P}-math.patch
 	eautoreconf
 }
 

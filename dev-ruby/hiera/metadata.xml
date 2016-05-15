@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer>
+<maintainer type="person">
 <email>prometheanfire@gentoo.org</email>
 </maintainer>
-<herd>sysadmin</herd>
-<herd>ruby</herd>
+<maintainer type="project">
+<email>sysadmin@gentoo.org</email>
+<name>Gentoo Sysadmin Project</name>
+</maintainer>
+<maintainer type="project">
+<email>ruby@gentoo.org</email>
+<name>Gentoo Ruby Project</name>
+</maintainer>
 </pkgmetadata>

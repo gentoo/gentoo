@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>mythtv</herd>
+	<maintainer type="project">
+		<email>mythtv@gentoo.org</email>
+		<name>MythTV</name>
+	</maintainer>
 	<use>
 		<flag name="alsa">Allows MythTV to directly output sound to ALSA devices,
 		this is needed if you are using ALSA dmix or SPDIF. Note, you will have
@@ -42,6 +45,8 @@
 		that LCD.</flag>
 		<flag name="lirc">Adds LIRC support directly to MythTV allowing for built in
 		control via a LIRC device.</flag>
+		<flag name="mythlogserver">Enable support for syslog and file logging. Not
+		used with systemd.</flag>
 		<flag name="perl">Builds the perl bindings for MythTV. Allows you to write
 		scripts in Perl to control your MythTV setup or communicate with
 		it.</flag>

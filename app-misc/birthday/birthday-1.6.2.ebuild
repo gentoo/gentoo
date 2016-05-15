@@ -1,4 +1,4 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -18,8 +18,12 @@ src_unpack() {
 	cd "${S}"
 
 	# Don't strip, install in correct share dir and respect CFLAGS
-	sed -i -e "s:install -s:install:g" -e "s:#SHARE:SHARE:g" -e "s:-O2:${CFLAGS}:g" \
-		Makefile || die
+	sed \
+		-e "s:install -s:install:g" -e "s:#SHARE:SHARE:g" -e "s:-O2:${CFLAGS}:g" \
+		-i Makefile || die
+	sed \
+		-e 's:grep -v:grep --binary-files=text -v:g' \
+		-i runtest.sh || die
 }
 
 src_compile() {

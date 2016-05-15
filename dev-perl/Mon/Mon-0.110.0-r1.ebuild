@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -18,7 +18,7 @@ IUSE=""
 RDEPEND=">=net-analyzer/fping-2.2_beta1
 	>=dev-perl/Convert-BER-1.31
 	>=dev-perl/Net-Telnet-3.02
-	>=dev-perl/Period-1.20"
+	>=dev-perl/Time-Period-1.20"
 DEPEND="${RDEPEND}"
 
 mydoc="COPYING COPYRIGHT VERSION"

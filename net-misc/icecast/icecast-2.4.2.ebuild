@@ -58,7 +58,7 @@ src_install() {
 	dodoc AUTHORS README TODO HACKING NEWS conf/icecast.xml.dist
 	dohtml -A chm,hhc,hhp doc/*
 
-	newinitd "${FILESDIR}"/init.d.icecast-2 icecast
+	newinitd "${FILESDIR}"/${PN}.initd ${PN}
 	systemd_dounit "${FILESDIR}"/${PN}.service
 
 	insinto /etc/icecast2

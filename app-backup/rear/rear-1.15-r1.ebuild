@@ -14,9 +14,11 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64"
 
-IUSE="udev"
+IUSE="libressl udev"
 
-RDEPEND="dev-libs/openssl
+RDEPEND="
+	!libressl? ( dev-libs/openssl:0= )
+	libressl? ( dev-libs/libressl:0= )
 	net-dialup/mingetty
 	net-fs/nfs-utils
 	sys-apps/iproute2

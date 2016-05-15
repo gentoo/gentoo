@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>net-mail</herd>
+  <maintainer type="project">
+    <email>net-mail@gentoo.org</email>
+    <name>Net-Mail</name>
+  </maintainer>
   <use>
     <flag name="net">
       Enable support for network protocols (POP, IMAP and SMTP). If you
@@ -14,7 +17,7 @@
     </flag>
     <flag name="kerberos">
       If network is enabled, this adds support for GSSAPI login on IMAP
-      through <pkg>virtual/kerberos</pkg>.
+      through <pkg>virtual/krb5</pkg>.
     </flag>
   </use>
   <upstream>

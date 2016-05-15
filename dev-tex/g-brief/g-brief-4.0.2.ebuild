@@ -16,8 +16,17 @@ IUSE=""
 SLOT="0"
 KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 s390 sh sparc x86 ~amd64-fbsd ~x86-fbsd ~x86-freebsd ~amd64-linux ~ia64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
 
-RDEPEND="!>=app-text/tetex-2.96"
+RDEPEND="dev-texlive/texlive-langgerman"
 DEPEND="${RDEPEND}
 	app-arch/unzip"
 
 TEXMF="/usr/share/texmf-site"
+
+src_compile() {
+	# latex chokes if these file exist, bug #573374
+	rm -f g-brief.drv g-brief.cls g-brief.sty g-brief2.cls g-brief2.sty beispiel.tex beispiel2.tex
+	latex-package_src_compile
+	# Now that the source is processed, remove it so that it is not (wrongly)
+	# reprocessed at src_install.
+	rm -f g-brief.dtx
+}

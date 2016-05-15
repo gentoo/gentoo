@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>haskell</herd>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
 	<longdescription>
 		This package provides a pure interface for compressing and
 		decompressing streams of data represented as lazy
-		&#39;ByteString&#39;s. It uses the zlib C library so it has high
-		performance. It supports the \&quot;zlib\&quot;, \&quot;gzip\&quot; and \&quot;raw\&quot;
+		'ByteString's. It uses the zlib C library so it has high
+		performance. It supports the \"zlib\", \"gzip\" and \"raw\"
 		compression formats.
 		
 		It provides a convenient high level API suitable for most

@@ -13,7 +13,7 @@ OPENGL_REQUIRED="always"
 inherit python-single-r1 kde4-meta
 
 DESCRIPTION="Plasma: KDE desktop framework"
-KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm ~ppc ~ppc64 x86 ~amd64-linux ~x86-linux"
 IUSE="debug gps json +kdepim python qalculate"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
@@ -38,7 +38,7 @@ COMMONDEPEND="
 	x11-libs/libXrender
 	gps? ( >=sci-geosciences/gpsd-2.37 )
 	json? ( dev-libs/qjson )
-	kdepim? ( $(add_kdebase_dep kdepimlibs) )
+	kdepim? ( $(add_kdeapps_dep kdepimlibs) )
 	python? (
 		${PYTHON_DEPS}
 		>=dev-python/PyQt4-4.4.0[X,${PYTHON_USEDEP}]

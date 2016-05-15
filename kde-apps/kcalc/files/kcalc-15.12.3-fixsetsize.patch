@@ -1,0 +1,15 @@
+Fix issue where kcalc has a zero-sized window and appears not to start.
+
+Patch-by: Rex Dieter <rdieter@math.unl.edu>
+Gentoo-bug: 577782
+KDE-bug: 360105
+
+--- a/kcalc.cpp
++++ b/kcalc.cpp
+@@ -124,5 +124,5 @@ KCalculator::KCalculator(QWidget *parent
+	updateGeometry();
+
+-	setFixedSize(minimumSize());
++	if ( ! minimumSize().isEmpty() ) setFixedSize(minimumSize());
+
+	updateDisplay(UPDATE_FROM_CORE);

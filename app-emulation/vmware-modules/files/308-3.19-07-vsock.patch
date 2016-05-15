@@ -1,0 +1,13 @@
+Some parts of the iovec API were replaced by the similar message API. Refactoring the code to use that.
+diff -rupN vsock-only/linux/af_vsock.c vsock-only.new/linux/af_vsock.c
+--- vsock-only/linux/af_vsock.c	2015-05-05 11:26:05.145081792 -0400
++++ vsock-only.new/linux/af_vsock.c	2015-05-05 11:30:54.304097466 -0400
+@@ -4266,7 +4266,7 @@ VSockVmciDgramSendmsg(struct kiocb *kioc
+       goto out;
+    }
+ 
+-   memcpy_fromiovec(VMCI_DG_PAYLOAD(dg), msg->msg_iov, len);
++   memcpy_from_msg(VMCI_DG_PAYLOAD(dg), msg, len);
+ 
+    dg->dst = VMCI_MAKE_HANDLE(remoteAddr->svm_cid, remoteAddr->svm_port);
+    dg->src = VMCI_MAKE_HANDLE(vsk->localAddr.svm_cid, vsk->localAddr.svm_port);

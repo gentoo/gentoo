@@ -1,0 +1,12 @@
+diff -up avogadro-1.1.1/CMakeLists.txt.no-strip avogadro-1.1.1/CMakeLists.txt
+--- avogadro-1.1.1/CMakeLists.txt.no-strip	2014-01-24 23:14:44.473840038 -0600
++++ avogadro-1.1.1/CMakeLists.txt	2014-01-24 23:15:46.869166459 -0600
+@@ -114,7 +114,7 @@ if (CMAKE_COMPILER_IS_GNUCXX)
+   endif()
+   # Set up additional build flags for particular build types. These will be added to CMAKE_CXX_FLAGS,
+   # they will not replace them.
+-  set(CMAKE_CXX_FLAGS_RELEASE "-O2 -DNDEBUG -DQT_NO_DEBUG_OUTPUT -Wl,-s")
++  set(CMAKE_CXX_FLAGS_RELEASE "-O2 -DNDEBUG -DQT_NO_DEBUG_OUTPUT")
+   set(CMAKE_CXX_FLAGS_RELWITHDEBINFO
+     "${CMAKE_CXX_FLAGS_RELWITHDEBINFO} ${CMAKE_CXX_FLAGS_WARN}")
+   set(CMAKE_CXX_FLAGS_DEBUG   "-g3 -fno-inline ${CMAKE_CXX_FLAGS_WARN}")

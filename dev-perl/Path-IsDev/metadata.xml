@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Path-IsDev</remote-id>
+    <remote-id type="cpan-module">Path::IsDev</remote-id>
+    <remote-id type="cpan-module">Path::IsDev::Heuristic::Changelog</remote-id>
+    <remote-id type="cpan-module">Path::IsDev::Heuristic::DevDirMarker</remote-id>
+    <remote-id type="cpan-module">Path::IsDev::Heuristic::META</remote-id>
+    <remote-id type="cpan-module">Path::IsDev::Heuristic::MYMETA</remote-id>
+    <remote-id type="cpan-module">Path::IsDev::Heuristic::Makefile</remote-id>
+    <remote-id type="cpan-module">Path::IsDev::Heuristic::TestDir</remote-id>
+    <remote-id type="cpan-module">Path::IsDev::Heuristic::Tool::Dzil</remote-id>
+    <remote-id type="cpan-module">Path::IsDev::Heuristic::Tool::MakeMaker</remote-id>
+    <remote-id type="cpan-module">Path::IsDev::Heuristic::Tool::ModuleBuild</remote-id>
+    <remote-id type="cpan-module">Path::IsDev::Heuristic::VCS::Git</remote-id>
+    <remote-id type="cpan-module">Path::IsDev::HeuristicSet::Basic</remote-id>
+    <remote-id type="cpan-module">Path::IsDev::NegativeHeuristic::HomeDir</remote-id>
+    <remote-id type="cpan-module">Path::IsDev::NegativeHeuristic::IsDev::IgnoreFile</remote-id>
+    <remote-id type="cpan-module">Path::IsDev::NegativeHeuristic::PerlINC</remote-id>
+    <remote-id type="cpan-module">Path::IsDev::Object</remote-id>
+    <remote-id type="cpan-module">Path::IsDev::Result</remote-id>
+    <remote-id type="cpan-module">Path::IsDev::Role::Heuristic</remote-id>
+    <remote-id type="cpan-module">Path::IsDev::Role::HeuristicSet</remote-id>
+    <remote-id type="cpan-module">Path::IsDev::Role::HeuristicSet::Simple</remote-id>
+    <remote-id type="cpan-module">Path::IsDev::Role::Matcher::Child::BaseName::MatchRegexp</remote-id>
+    <remote-id type="cpan-module">Path::IsDev::Role::Matcher::Child::BaseName::MatchRegexp::File</remote-id>
+    <remote-id type="cpan-module">Path::IsDev::Role::Matcher::Child::Exists::Any</remote-id>
+    <remote-id type="cpan-module">Path::IsDev::Role::Matcher::Child::Exists::Any::Dir</remote-id>
+    <remote-id type="cpan-module">Path::IsDev::Role::Matcher::Child::Exists::Any::File</remote-id>
+    <remote-id type="cpan-module">Path::IsDev::Role::Matcher::FullPath::Is::Any</remote-id>
+    <remote-id type="cpan-module">Path::IsDev::Role::NegativeHeuristic</remote-id>
+  </upstream>
+</pkgmetadata>

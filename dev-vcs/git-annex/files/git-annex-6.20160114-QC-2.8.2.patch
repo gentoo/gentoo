@@ -1,0 +1,16 @@
+diff --git a/Utility/QuickCheck.hs b/Utility/QuickCheck.hs
+index cd408dd..9f60f23 100644
+--- a/Utility/QuickCheck.hs
++++ b/Utility/QuickCheck.hs
+@@ -9,2 +9,3 @@
+ {-# LANGUAGE TypeSynonymInstances #-}
++{-# LANGUAGE CPP #-}
+ 
+@@ -23,2 +24,3 @@ import Prelude
+ 
++#if ! MIN_VERSION_QuickCheck(2,8,2)
+ instance (Arbitrary k, Arbitrary v, Eq k, Ord k) => Arbitrary (M.Map k v) where
+@@ -28,2 +30,3 @@ instance (Arbitrary v, Eq v, Ord v) => Arbitrary (S.Set v) where
+ 	arbitrary = S.fromList <$> arbitrary
++#endif
+ 

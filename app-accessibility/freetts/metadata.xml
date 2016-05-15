@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>accessibility</herd>
-	<herd>java</herd>
+	<maintainer type="project">
+		<email>accessibility@gentoo.org</email>
+		<name>Gentoo Accessibility Project</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>java@gentoo.org</email>
+		<name>Java</name>
+	</maintainer>
 	<use>
 		<flag name="jsapi">build Java Speech API (JSAPI)</flag>
 		<flag name="mbrola">Adds support for mbrola voices</flag>

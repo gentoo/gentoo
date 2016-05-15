@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>tex</herd>
-<herd>common-lisp</herd>
+<maintainer type="project">
+	<email>tex@gentoo.org</email>
+	<name>Gentoo TeX Project</name>
+</maintainer>
+<maintainer type="project">
+	<email>common-lisp@gentoo.org</email>
+	<name>Gentoo Common Lisp Project</name>
+</maintainer>
 <longdescription lang="en">
 	 xindy is an index processor that can be used to generate book-like indexes
 	 for arbitrary document-preparation systems. This includes systems such as

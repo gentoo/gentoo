@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>net-mail</herd>
+<maintainer type="project">
+	<email>net-mail@gentoo.org</email>
+	<name>Net-Mail</name>
+</maintainer>
 <longdescription>libspf2 implements the Sender Policy Framework, a part of the SPF/SRS protocol pair. libspf2 is a library which allows email systems such as Sendmail, Postfix, Exim, Zmailer and MS Exchange to check SPF records and make sure that the email is authorized by the domain name that it is coming from. This prevents email forgery, commonly used by spammers, scammers and email viruses/worms.</longdescription>
 </pkgmetadata>

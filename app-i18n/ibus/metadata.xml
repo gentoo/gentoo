@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>cjk</herd>
+  <maintainer type="project">
+    <email>cjk@gentoo.org</email>
+    <name>Cjk</name>
+  </maintainer>
   <longdescription lang="en">
 IBus means Intelligent Input Bus. It is a new input framework for Linux OS. It provides
 full featured and user friendly input method user interface. It also may help
@@ -10,8 +13,6 @@ developers to develop input method easily.
   <use>
     <flag name="gconf">Enable support for <pkg>gnome-base/gconf</pkg></flag>
     <flag name="gtk3">Enable support for gtk+3</flag>
-    <flag name="vala">Enable support for <pkg>dev-lang/vala</pkg></flag>
-    <flag name="introspection">Use <pkg>dev-libs/gobject-introspection</pkg> for introspection</flag>
     <flag name="deprecated">install the deprecated ibus python library</flag>
   </use>
   <upstream>

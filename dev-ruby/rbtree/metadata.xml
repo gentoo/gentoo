@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>ruby</herd>
+<maintainer type="project">
+	<email>ruby@gentoo.org</email>
+	<name>Gentoo Ruby Project</name>
+</maintainer>
 <longdescription lang="en">
 RBTree is a sorted associative collection that is implemented with Red-Black Tree. The elements of RBTree are ordered and its interface is the almost same as Hash, so simply you can consider RBTree sorted Hash.
 </longdescription>

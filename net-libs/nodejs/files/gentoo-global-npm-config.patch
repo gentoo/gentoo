@@ -1,0 +1,40 @@
+commit 46ac7cd4229eac5e0182ab62b7ed844c24a8c52e
+Author: Johan Bergström <bugs@bergstroem.nu>
+Date:   Wed Feb 10 22:45:59 2016 +1100
+
+    npm: set global config folder to /etc/npm
+    
+    npm previously assumed that the global config path would be
+    based on $prefix/etc. Since gentoo installs nodejs into /usr,
+    this means we're also creating /usr/etc which is less desirable.
+    
+    This patch will likely never go upstream.
+
+diff --git a/deps/npm/lib/config/core.js b/deps/npm/lib/config/core.js
+index d1306eb..bd2ef89 100644
+--- a/deps/npm/lib/config/core.js
++++ b/deps/npm/lib/config/core.js
+@@ -150,16 +150,14 @@ function load_ (builtin, rc, cli, cb) {
+     // Eg, `npm config get globalconfig --prefix ~/local` should
+     // return `~/local/etc/npmrc`
+     // annoying humans and their expectations!
+-    if (conf.get('prefix')) {
+-      var etc = path.resolve(conf.get('prefix'), 'etc')
+-      mkdirp(etc, function () {
+-        defaults.globalconfig = path.resolve(etc, 'npmrc')
+-        defaults.globalignorefile = path.resolve(etc, 'npmignore')
+-        afterUserContinuation()
+-      })
+-    } else {
++
++    // gentoo deviates wrt global config; store in /etc/npm
++    var globalconfig = path.resolve('/etc', 'npm')
++    mkdirp(globalconfig, function () {
++      defaults.globalconfig = path.resolve(globalconfig, 'npmrc')
++      defaults.globalignorefile = path.resolve(globalconfig, 'npmignore')
+       afterUserContinuation()
+-    }
++    })
+   }
+ 
+   function afterUserContinuation () {

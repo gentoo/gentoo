@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -17,9 +17,9 @@ RESTRICT="mirror"
 LICENSE="AGPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="X acl cephfs clientonly +director fastlz glusterfs gnutls ipv6 jansson lmdb logwatch
-	mysql ndmp postgres python qt4 rados rados-striper readline scsi-crypto sql-pooling
-	+sqlite ssl static +storage-daemon tcpd vim-syntax"
+IUSE="X acl cephfs clientonly +director fastlz glusterfs gnutls ipv6 jansson lmdb libressl
+	logwatch mysql ndmp postgres python qt4 rados rados-striper readline scsi-crypto
+	sql-pooling +sqlite ssl static +storage-daemon tcpd vim-syntax"
 
 DEPEND="
 	!app-backup/bacula
@@ -52,7 +52,10 @@ DEPEND="
 		dev-libs/lzo[static-libs]
 		sys-libs/ncurses:=[static-libs]
 		ssl? (
-			!gnutls? ( dev-libs/openssl:0[static-libs] )
+			!gnutls? (
+				!libressl? ( dev-libs/openssl:0=[static-libs] )
+				libressl? ( dev-libs/libressl:0=[static-libs] )
+			)
 			gnutls? ( net-libs/gnutls[static-libs] )
 		)
 	)
@@ -60,7 +63,10 @@ DEPEND="
 		acl? ( virtual/acl )
 		dev-libs/lzo
 		ssl? (
-			!gnutls? ( dev-libs/openssl:0 )
+			!gnutls? (
+				!libressl? ( dev-libs/openssl:0= )
+				libressl? ( dev-libs/libressl:0= )
+			)
 			gnutls? ( net-libs/gnutls )
 		)
 		sys-libs/ncurses:=

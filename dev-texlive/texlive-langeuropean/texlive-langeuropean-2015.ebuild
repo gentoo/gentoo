@@ -27,5 +27,8 @@ DEPEND=">=dev-texlive/texlive-basic-2015
 !<dev-texlive/texlive-langother-2013
 !dev-texlive/texlive-langswedish
 !dev-texlive/texlive-langlithuanian
+!dev-texlive/texlive-langlatvian
+!dev-texlive/texlive-langlatin
+!dev-texlive/texlive-langnorwegian
 "
 RDEPEND="${DEPEND} "

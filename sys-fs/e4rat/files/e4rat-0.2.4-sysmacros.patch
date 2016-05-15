@@ -1,0 +1,13 @@
+https://sourceforge.net/p/e4rat/tickets/5/
+https://bugs.gentoo.org/580534
+
+--- a/src/common.hh
++++ b/src/common.hh
+@@ -20,6 +20,7 @@
+ #ifndef COMMON_HH
+ #define COMMON_HH
+ 
++#include <sys/sysmacros.h>
+ #include <linux/types.h>
+ #include <boost/filesystem.hpp>
+ #include <boost/regex.hpp>

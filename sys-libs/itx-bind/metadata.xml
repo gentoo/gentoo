@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer>
+<maintainer type="person">
 	<email>haubi@gentoo.org</email>
 	<name>Michael Haubenwallner</name>
 </maintainer>
@@ -10,4 +10,3 @@
 		is linked into a shared library, wrapping some symbols to more common names
 </longdescription>
 </pkgmetadata>
-

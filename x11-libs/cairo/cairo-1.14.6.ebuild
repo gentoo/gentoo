@@ -97,6 +97,7 @@ multilib_src_configure() {
 	[[ ${CHOST} == *-interix* ]] && append-flags -D_REENTRANT
 
 	use elibc_FreeBSD && myopts+=" --disable-symbol-lookup"
+	[[ ${CHOST} == *-darwin* ]] && myopts+=" --disable-symbol-lookup"
 
 	# TODO: remove this (and add USE-dep) when DirectFB is converted,
 	# bug #484248 -- but beware of the circular dep.

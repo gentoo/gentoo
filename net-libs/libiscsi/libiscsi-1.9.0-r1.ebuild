@@ -11,10 +11,10 @@ if [[ ${PV} = *9999* ]]; then
 	inherit git-2
 	SRC_URI=""
 	EGIT_REPO_URI="git://github.com/sahlberg/libiscsi.git"
-	KEYWORDS=""
+	KEYWORDS="~hppa ~ppc64"
 else
 	SRC_URI="https://github.com/sahlberg/libiscsi/archive/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="amd64 x86"
+	KEYWORDS="amd64 ~hppa ~ppc64 x86"
 fi
 
 DESCRIPTION="iscsi client library and utilities"

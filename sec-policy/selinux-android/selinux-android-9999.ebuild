@@ -10,9 +10,7 @@ inherit selinux-policy-2
 
 DESCRIPTION="SELinux policy for android"
 
-if [[ $PV == 9999* ]] ; then
-	KEYWORDS=""
-else
+if [[ ${PV} != 9999* ]] ; then
 	KEYWORDS="~amd64 ~x86"
 fi
 

@@ -3,6 +3,7 @@
 # $Id$
 
 EAPI="5"
+
 PYTHON_COMPAT=( python2_7 )
 
 inherit autotools-utils eutils python-r1
@@ -31,6 +32,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-79_78.diff
 	"${FILESDIR}"/${P}-poppler0.15.0-changes.patch
 	"${FILESDIR}"/${P}-poppler-0.18.0-minimal-fix.patch
+	"${FILESDIR}"/${P}-poppler-0.39.0-changes.patch
 )
 
 src_configure() {

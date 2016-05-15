@@ -98,8 +98,8 @@ fi
 
 
 DESCRIPTION="${BUILD_GST_PLUGINS} plugin for gstreamer"
-HOMEPAGE="http://gstreamer.freedesktop.org/"
-SRC_URI="http://gstreamer.freedesktop.org/src/${GST_ORG_MODULE}/${GST_ORG_MODULE}-${PV}.tar.${GST_TARBALL_SUFFIX}"
+HOMEPAGE="https://gstreamer.freedesktop.org/"
+SRC_URI="https://gstreamer.freedesktop.org/src/${GST_ORG_MODULE}/${GST_ORG_MODULE}-${PV}.tar.${GST_TARBALL_SUFFIX}"
 
 LICENSE="GPL-2"
 case ${GST_ORG_PVP} in

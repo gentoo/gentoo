@@ -1,0 +1,69 @@
+Author: Ole Streicher <debian@liska.ath.cx>
+Description: Fix several bugs that appear in during the mayhem tests.
+Bug: http://bugs.debian.org/715682
+Bug: http://bugs.debian.org/715755
+Bug: http://bugs.debian.org/715905
+Bug: http://bugs.debian.org/715956
+Bug: http://bugs.debian.org/715957
+--- a/getfits.c
++++ b/getfits.c
+@@ -108,6 +108,7 @@
+ 		usage ("Right ascension given but no declination");
+ 	    else {
+ 		strcpy (rastr, *av);
++		ac--;
+ 		strcpy (decstr, *++av);
+ 		ra0 = str2ra (rastr);
+ 		dec0 = str2dec (decstr);
+--- a/getpix.c
++++ b/getpix.c
+@@ -83,6 +83,7 @@
+     char *crange;       /* Column range string */
+     char *rstr;
+     char *dstr = NULL;
++    char rastr[32], decstr[32];
+     char *cstr;
+     int systemp;
+     int i;
+--- a/bincat.c
++++ b/bincat.c
+@@ -156,7 +156,7 @@
+ 	    if (ac < 3)
+ 		usage((char)0, "3 arguments needed for center coordinate");
+ 	    else {
+-		strcpy (rastr, *++av);
++		strcpy (rastr, *av);
+ 		ac--;
+ 		strcpy (decstr, *++av);
+ 		setcenter (rastr, decstr);
+--- a/cphead.c
++++ b/cphead.c
+@@ -137,7 +137,7 @@
+ 		    break;
+ 	
+ 		case 'w': /* Copy entire WCS */
+-		    nkwd1 = 87;
++		    nkwd1 = 236;
+ 		    if (nkwd + nkwd1 > maxnkwd) {
+ 			maxnkwd = nkwd + nkwd1 + 32;
+ 			kwdnew = (char **) calloc (maxnkwd, sizeof (void *));
+@@ -148,7 +148,7 @@
+ 			free (kwd);
+ 			kwd = kwdnew;
+ 			}
+-		    for (ikwd = nkwd; i < nkwd+nkwd1; i++) {
++		    for (ikwd = nkwd; ikwd < nkwd+nkwd1+32; ikwd++) {
+ 			kwd[ikwd] = (char *) calloc (32, 1);
+ 			}
+ 		    strcpy (kwd[nkwd], "RA");
+--- a/filext.c
++++ b/filext.c
+@@ -80,7 +80,7 @@
+ 		    ext = ext + 1;
+ 		}
+ 	    }
+-	printf ("%s\n", ext);
++	printf ("%s\n", (ext)?ext:"");
+ 	}
+ 
+     return (0);

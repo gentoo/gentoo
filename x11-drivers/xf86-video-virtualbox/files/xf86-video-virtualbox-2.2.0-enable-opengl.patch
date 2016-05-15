@@ -1,5 +1,5 @@
---- configure.orig	2009-04-11 19:30:06.000000000 +0200
-+++ configure	2009-04-11 20:46:05.000000000 +0200
+--- a/configure
++++ b/configure
 @@ -1955,8 +1955,8 @@
        HEADLESS=1
        WITH_SDL=0

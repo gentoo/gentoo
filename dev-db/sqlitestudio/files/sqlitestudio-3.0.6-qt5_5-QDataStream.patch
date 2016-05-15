@@ -1,0 +1,30 @@
+--- a/SQLiteStudio3/coreSQLiteStudio/db/db.cpp	2015-05-11 23:22:41.000000000 +0200
++++ b/SQLiteStudio3/coreSQLiteStudio/db/db.cpp	2016-01-20 02:21:00.350160645 +0100
+@@ -1,6 +1,7 @@
+ #include "db.h"
+ #include <QMetaEnum>
+ #include <QDebug>
++#include <QDataStream>
+ 
+ Db::Db()
+ {
+--- a/SQLiteStudio3/coreSQLiteStudio/common/utils.cpp	2015-05-11 23:22:41.000000000 +0200
++++ b/SQLiteStudio3/coreSQLiteStudio/common/utils.cpp	2016-01-20 01:46:22.113263710 +0100
+@@ -11,6 +11,7 @@
+ #include <QDebug>
+ #include <QRegularExpression>
+ #include <QDir>
++#include <QDataStream>
+ 
+ #ifdef Q_OS_LINUX
+ #include <sys/utsname.h>
+--- a/SQLiteStudio3/sqlitestudiocli/cli_config.h	2015-05-11 23:22:40.000000000 +0200
++++ b/SQLiteStudio3/sqlitestudiocli/cli_config.h	2016-01-20 02:45:11.393819294 +0100
+@@ -2,6 +2,7 @@
+ #define CLI_CONFIG_H
+ 
+ #include "config_builder.h"
++#include <QDataStream>
+ 
+ namespace CliResultsDisplay
+ {

@@ -7,8 +7,8 @@ EAPI=4
 inherit autotools-utils multilib
 
 DESCRIPTION="Helper library for	S3TC texture (de)compression"
-HOMEPAGE="http://cgit.freedesktop.org/~mareko/libtxc_dxtn/"
-SRC_URI="http://people.freedesktop.org/~cbrill/${PN}/${P}.tar.bz2"
+HOMEPAGE="https://cgit.freedesktop.org/~mareko/libtxc_dxtn/"
+SRC_URI="https://people.freedesktop.org/~cbrill/${PN}/${P}.tar.bz2"
 
 LICENSE="MIT"
 SLOT="0"

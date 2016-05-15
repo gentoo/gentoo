@@ -1,0 +1,12 @@
+--- a/Makefile
++++ b/Makefile
+@@ -87,7 +87,7 @@
+ AAREOBJECT = ${AAREDIR}/libapparmor_re.a
+ AAREOBJECTS = $(AAREOBJECT)
+ AARE_LDFLAGS = -static-libgcc -static-libstdc++ -L.
+-AALIB = -Wl,-Bstatic -lapparmor -Wl,-Bdynamic -lpthread
++AALIB = -Wl,-Bdynamic -lapparmor -Wl,-Bdynamic -lpthread
+ 
+ ifdef USE_SYSTEM
+   # Using the system libapparmor so Makefile dependencies can't be used
+

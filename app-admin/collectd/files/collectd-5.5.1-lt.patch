@@ -1,0 +1,60 @@
+[PATCH 2/3] Remove bundled libltdl
+
+---
+ Makefile.am  | 6 ------
+ configure.ac | 5 -----
+ 2 files changed, 11 deletions(-)
+
+diff --git a/Makefile.am b/Makefile.am
+index b79ea1c..d574601 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -1,11 +1,5 @@
+-ACLOCAL_AMFLAGS = -I libltdl/m4
+-
+ SUBDIRS =
+ 
+-if BUILD_INCLUDED_LTDL
+-SUBDIRS += libltdl
+-endif
+-
+ SUBDIRS += src bindings .
+ 
+ AM_CPPFLAGS = $(LTDLINCL)
+diff --git a/configure.ac b/configure.ac
+index b977a0a..78f3bee 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -2,7 +2,6 @@ dnl Process this file with autoconf to produce a configure script.
+ AC_INIT([collectd],[m4_esyscmd(./version-gen.sh)])
+ AC_CONFIG_SRCDIR(src/)
+ AC_CONFIG_HEADERS(src/config.h)
+-AC_CONFIG_AUX_DIR([libltdl/config])
+ 
+ dnl older automake's default of ARFLAGS=cru is noisy on newer binutils;
+ dnl we don't really need the 'u' even in older toolchains.  Then there is
+@@ -12,7 +11,6 @@ m4_divert_text([DEFAULTS], [: "${ARFLAGS=cr} ${AR_FLAGS=cr}"])
+ m4_ifdef([LT_PACKAGE_VERSION],
+ 	# libtool >= 2.2
+ 	[
+-	 LT_CONFIG_LTDL_DIR([libltdl])
+ 	 LT_INIT([dlopen])
+ 	 LTDL_INIT([convenience])
+ 	 AC_DEFINE(LIBTOOL_VERSION, 2, [Define to used libtool version.])
+@@ -24,13 +22,10 @@ m4_ifdef([LT_PACKAGE_VERSION],
+ 	 AC_SUBST(LTDLINCL)
+ 	 AC_SUBST(LIBLTDL)
+ 	 AC_LIBTOOL_DLOPEN
+-	 AC_CONFIG_SUBDIRS(libltdl)
+ 	 AC_DEFINE(LIBTOOL_VERSION, 1, [Define to used libtool version.])
+ 	]
+ )
+ 
+-AM_CONDITIONAL([BUILD_INCLUDED_LTDL], [test "x$LTDLDEPS" != "x"])
+-
+ AM_INIT_AUTOMAKE([tar-pax dist-bzip2 foreign])
+ m4_ifdef([AM_SILENT_RULES], [AM_SILENT_RULES([yes])])
+ AC_LANG(C)
+-- 
+2.7.1
+

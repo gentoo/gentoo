@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>xen</herd>
+<maintainer type="project">
+	<email>xen@gentoo.org</email>
+	<name>Gentoo Xen Project</name>
+</maintainer>
 </pkgmetadata>

@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>python</herd>
+	<maintainer type="project">
+		<email>python@gentoo.org</email>
+		<name>Python</name>
+	</maintainer>
 	<longdescription lang="en">xlwt is a library for generating spreadsheet files that are compatible
   with Excel 97/2000/XP/2003, OpenOffice.org Calc, and
   Gnumeric. xlwt has full support for Unicode. Excel spreadsheets can

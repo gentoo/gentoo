@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer>
+  <maintainer type="person">
     <email>tomka@gentoo.org</email>
     <name>Thomas Kahle</name>
   </maintainer>
-  <herd>sci-mathematics</herd>
+  <maintainer type="project">
+    <email>sci-mathematics@gentoo.org</email>
+    <name>Gentoo Mathematics Project</name>
+  </maintainer>
   <longdescription lang="en">
 4ti2 is a software package for algebraic, geometric and combinatorial problems
 on linear spaces and for toric ideals too.

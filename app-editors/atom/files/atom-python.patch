@@ -1,0 +1,10 @@
+--- ~atom.sh	2015-10-30 11:41:20.090417736 +0100
++++ atom.sh	2015-10-30 11:42:19.707553644 +0100
+@@ -92,6 +92,7 @@
+   fi
+ 
+   ATOM_HOME="${ATOM_HOME:-$HOME/.atom}"
++  export PYTHON=python2
+   mkdir -p "$ATOM_HOME"
+ 
+   : ${TMPDIR:=/tmp}

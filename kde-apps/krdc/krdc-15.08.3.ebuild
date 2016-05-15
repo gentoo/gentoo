@@ -9,14 +9,14 @@ inherit kde4-base
 
 DESCRIPTION="KDE remote desktop connection (RDP and VNC) client"
 HOMEPAGE="https://www.kde.org/applications/internet/krdc/"
-KEYWORDS=" ~amd64 ~x86"
+KEYWORDS=" amd64 x86"
 IUSE="debug jpeg +rdesktop telepathy vnc zeroconf"
 
 #nx? ( >=net-misc/nxcl-0.9-r1 ) disabled upstream, last checked 4.13.1
 
 DEPEND="
 	jpeg? ( virtual/jpeg:0 )
-	telepathy? ( >=net-libs/telepathy-qt-0.9 )
+	telepathy? ( >=net-libs/telepathy-qt-0.9[qt4] )
 	vnc? ( >=net-libs/libvncserver-0.9 )
 	zeroconf? ( net-dns/avahi )
 "

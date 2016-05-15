@@ -95,7 +95,7 @@ src_configure() {
 		python_foreach_impl vigra_configure
 	else
 		# required for docdir
-		_check_build_dir init
+		_cmake_check_build_dir init
 		vigra_configure
 	fi
 }

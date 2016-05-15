@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>haskell</herd>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
 	<longdescription>
-		\&quot;Coroutines done right\&quot;.  This library generalizes iteratees and coroutines
+		\"Coroutines done right\".  This library generalizes iteratees and coroutines
 		simply and elegantly.
 		
 		Advantages over traditional iteratee\/coroutine implementations:
 		
-		* /Concise API/: Use three simple commands: (&#39;&gt;-&gt;&#39;), &#39;request&#39;, and &#39;respond&#39;
+		* /Concise API/: Use three simple commands: ('&gt;-&gt;'), 'request', and 'respond'
 		
 		* /Bidirectionality/: Implement duplex channels
 		
@@ -25,8 +28,8 @@
 		
 		* /Extensive Documentation/: Second to none!
 		
-		Import &quot;Control.Proxy&quot; to use the library.
+		Import "Control.Proxy" to use the library.
 		
-		Read &quot;Control.Proxy.Tutorial&quot; for an extensive tutorial.
+		Read "Control.Proxy.Tutorial" for an extensive tutorial.
 	</longdescription>
 </pkgmetadata>

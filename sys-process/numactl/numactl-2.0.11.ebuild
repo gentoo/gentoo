@@ -13,7 +13,7 @@ SRC_URI="ftp://oss.sgi.com/www/projects/libnuma/download/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 # ARM lacks the __NR_migrate_pages syscall.
-KEYWORDS="~amd64 -arm ~ia64 ~mips ~ppc ~ppc64 ~x86 ~amd64-linux"
+KEYWORDS="amd64 -arm ia64 ~mips ppc ppc64 x86 ~amd64-linux"
 IUSE=""
 
 ECONF_SOURCE=${S}
@@ -21,6 +21,7 @@ ECONF_SOURCE=${S}
 src_prepare() {
 	epatch "${FILESDIR}"/${PN}-2.0.8-cpuid-pic.patch #456238
 	epatch "${FILESDIR}"/${PN}-2.0.10-numademo-cflags.patch #540856
+	epatch "${FILESDIR}"/${PN}-2.0.11-sysmacros.patch #580098
 	eautoreconf
 	# We need to copy the sources or else tests will fail
 	multilib_copy_sources

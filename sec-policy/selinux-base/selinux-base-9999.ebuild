@@ -11,13 +11,11 @@ if [[ ${PV} == 9999* ]]; then
 	EGIT_CHECKOUT_DIR="${WORKDIR}/refpolicy"
 
 	inherit git-r3
-
-	KEYWORDS=""
 else
 	SRC_URI="https://raw.githubusercontent.com/wiki/TresysTechnology/refpolicy/files/refpolicy-${PV}.tar.bz2
 			https://dev.gentoo.org/~swift/patches/selinux-base-policy/patchbundle-selinux-base-policy-${PVR}.tar.bz2"
 
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~mips ~x86"
 fi
 
 IUSE="doc +open_perms +peer_perms systemd +ubac +unconfined"

@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>sh</herd>
+<maintainer type="project">
+	<email>sh@gentoo.org</email>
+	<name>Gentoo Linux SuperH Development</name>
+</maintainer>
 </pkgmetadata>

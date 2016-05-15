@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -29,7 +29,7 @@ RDEPEND=">=media-video/vdr-1.2.6
 	virtual/perl-Time-HiRes
 	virtual/perl-IO-Compress
 	dev-perl/Config-Tiny
-	dev-perl/DateManip
+	dev-perl/Date-Manip
 	dev-perl/DBD-mysql
 	dev-perl/DBI
 	dev-perl/Digest-HMAC

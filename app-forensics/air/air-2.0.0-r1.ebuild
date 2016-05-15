@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -17,7 +17,7 @@ IUSE="crypt"
 COMMON_DEPEND="userland_GNU? ( sys-apps/coreutils )"
 
 DEPEND="${COMMON_DEPEND}
-	>=dev-perl/perl-tk-804.27.0
+	>=dev-perl/Tk-804.27.0
 	userland_GNU? ( app-arch/sharutils )"
 
 # TODO: air can utilize dc3dd, but it is not in portage ATM

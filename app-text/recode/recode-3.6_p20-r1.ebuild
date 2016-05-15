@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -31,6 +31,9 @@ RDEPEND=""
 S=${WORKDIR}/${MY_P}
 
 src_prepare() {
+	# fix #571106 by restoring pre-GCC5 inline semantics
+	append-cflags -std=gnu89
+
 	rm "${WORKDIR}"/debian/patches/series || die
 	epatch \
 		"${FILESDIR}/${MY_P}-gettextfix.diff" \

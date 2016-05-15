@@ -1,0 +1,32 @@
+diff -r -U2 colorama-0.3.6.orig/colorama/ansitowin32.py colorama-0.3.6/colorama/ansitowin32.py
+--- colorama-0.3.6.orig/colorama/ansitowin32.py	2015-12-14 09:09:52.000000000 +0100
++++ colorama-0.3.6/colorama/ansitowin32.py	2016-02-23 13:52:37.230415139 +0100
+@@ -14,4 +14,8 @@
+ 
+ 
++def is_stream_closed(stream):
++    return not hasattr(stream, 'closed') or stream.closed
++
++
+ def is_a_tty(stream):
+     return hasattr(stream, 'isatty') and stream.isatty()
+@@ -65,10 +69,10 @@
+         # should we strip ANSI sequences from our output?
+         if strip is None:
+-            strip = conversion_supported or (not wrapped.closed and not is_a_tty(wrapped))
++            strip = conversion_supported or (not is_stream_closed(wrapped) and not is_a_tty(wrapped))
+         self.strip = strip
+ 
+         # should we should convert ANSI sequences into win32 calls?
+         if convert is None:
+-            convert = conversion_supported and not wrapped.closed and is_a_tty(wrapped)
++            convert = conversion_supported and not is_stream_closed(wrapped) and is_a_tty(wrapped)
+         self.convert = convert
+ 
+@@ -146,5 +150,5 @@
+         if self.convert:
+             self.call_win32('m', (0,))
+-        elif not self.strip and not self.wrapped.closed:
++        elif not self.strip and not is_stream_closed(self.wrapped):
+             self.wrapped.write(Style.RESET_ALL)
+ 

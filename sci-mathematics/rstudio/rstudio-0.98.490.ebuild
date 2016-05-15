@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -16,7 +16,8 @@ GINVER=1.5
 
 DESCRIPTION="IDE for the R language"
 HOMEPAGE="http://www.rstudio.org"
-SRC_URI="https://github.com/rstudio/rstudio/archive/v${PV}.tar.gz -> ${P}.tar.gz
+SRC_URI="
+	https://github.com/rstudio/rstudio/archive/v${PV}.tar.gz -> ${P}.tar.gz
 	https://s3.amazonaws.com/rstudio-buildtools/gin-${GINVER}.zip
 	https://s3.amazonaws.com/rstudio-buildtools/gwt-${GWTVER}.zip
 	https://s3.amazonaws.com/rstudio-dictionaries/core-dictionaries.zip"
@@ -28,7 +29,8 @@ IUSE="dedicated server"
 
 QTVER=4.8
 QTSLOT=4
-RDEPEND=">=dev-lang/R-2.11.1
+RDEPEND="
+	>=dev-lang/R-2.11.1
 	>=dev-libs/boost-1.50:=
 	dev-libs/mathjax
 	dev-libs/openssl:0
@@ -63,9 +65,10 @@ src_unpack() {
 src_prepare() {
 	java-pkg-2_src_prepare
 
-	find . -name .gitignore -delete || die
+	egit_clean
 
-	epatch "${FILESDIR}"/${P}-prefs.patch \
+	epatch \
+		"${FILESDIR}"/${P}-prefs.patch \
 		"${FILESDIR}"/${P}-paths.patch \
 		"${FILESDIR}"/${P}-linker_flags.patch
 

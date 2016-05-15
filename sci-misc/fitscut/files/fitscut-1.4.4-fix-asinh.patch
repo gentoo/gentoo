@@ -1,0 +1,33 @@
+Author: Ole Streicher <olebole@debian.org>
+Description: Avoid NaN in asinh calculation.
+ Also, ignore NaN in histogram creation.
+--- a/histogram.c
++++ b/histogram.c
+@@ -83,8 +83,10 @@
+                                 ind = 0;
+                         else if (value > dmax)
+                                 ind = length-1;
+-                        else
++                        else if (isfinite(value))
+                                 ind = ceil ((value-dmin) / binsize);
++                        else
++                                continue;
+                         hist[ind] += 1.0;
+                 }
+         }
+--- a/image_scale.c
++++ b/image_scale.c
+@@ -326,8 +326,11 @@
+                         if (t > maxval)
+                                 maxval = t;
+                 }
+-
+-                weight = asinh (sum * nonlinearity) / (nonlinearity * sum);
++                if (sum * nonlinearity == 0.0) {
++                        weight = 1.0;
++                } else {
++                        weight = asinh (sum * nonlinearity) / (nonlinearity * sum);
++                }
+                 for (k = 0; k < Image->channels; k++) {
+                         if (Image->data[k] == NULL) 
+                                 continue;

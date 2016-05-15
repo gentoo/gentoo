@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -23,11 +23,11 @@ IUSE="static-libs"
 
 RDEPEND="
 	>=dev-libs/boost-1.51.0:=
-	>=dev-libs/libixion-0.9:=
+	=dev-libs/libixion-0.9*:=
 	sys-libs/zlib:=
 "
 DEPEND="${RDEPEND}
-	>=dev-util/mdds-0.8.1
+	>=dev-util/mdds-0.8.1:0
 "
 
 src_prepare() {

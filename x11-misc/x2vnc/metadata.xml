@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>desktop-misc</herd>
-<maintainer>
-  <email>maintainer-needed@gentoo.org</email>
+<maintainer type="project">
+	<email>desktop-misc@gentoo.org</email>
+	<name>Gentoo Desktop Miscellaneous Project</name>
 </maintainer>
 </pkgmetadata>

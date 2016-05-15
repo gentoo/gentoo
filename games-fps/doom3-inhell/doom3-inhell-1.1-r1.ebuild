@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=2
+EAPI=5
 
 MOD_DESC="Ultimate Doom-inspired levels for Doom 3"
 MOD_NAME="In Hell"

@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -13,7 +13,7 @@ SRC_URI="http://www.jgoodies.com/download/libraries/binding-${MY_V}.zip"
 
 LICENSE="BSD"
 SLOT="1.0"
-KEYWORDS="~amd64 ~ppc x86"
+KEYWORDS="~amd64 x86"
 IUSE=""
 
 DEPEND=">=virtual/jdk-1.4.2

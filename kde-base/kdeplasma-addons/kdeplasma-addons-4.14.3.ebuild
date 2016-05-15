@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -27,8 +27,8 @@ COMMON_DEPEND="
 	fcitx? ( app-i18n/fcitx[dbus(+)] )
 	ibus? ( app-i18n/ibus )
 	json? ( dev-libs/qjson )
-	kdepim? ( $(add_kdebase_dep kdepimlibs) )
-	oauth? ( dev-libs/qoauth )
+	kdepim? ( $(add_kdeapps_dep kdepimlibs) )
+	oauth? ( dev-libs/qoauth:0 )
 	qalculate? ( sci-libs/libqalculate )
 	qwt? ( x11-libs/qwt:5 )
 	scim? ( app-i18n/scim )

@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>haskell</herd>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
 	<longdescription>
 		Public Key cryptography
 		
@@ -9,9 +12,6 @@
 		
 		Also have primitive support for Diffie Hellman, and ElGamal encryption
 	</longdescription>
-	<use>
-		<flag name="benchmark">Build benchmarks.</flag>
-	</use>
 	<upstream>
 		<remote-id type="github">vincenthz/hs-crypto-pubkey</remote-id>
 	</upstream>

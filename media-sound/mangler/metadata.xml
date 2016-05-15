@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>sound</herd>
   <use>
     <flag name="espeak">Text to speech engine</flag>
     <flag name="g15">Logitech g15 lcd support</flag>
     <flag name="opus">Codec specialized for speech over the internet</flag>
   </use>
-  <maintainer>
+  <maintainer type="person">
     <email>prometheanfire@gentoo.org</email>
+  </maintainer>
+<maintainer type="project">
+    <email>sound@gentoo.org</email>
+    <name>Gentoo Sound project</name>
   </maintainer>
 </pkgmetadata>

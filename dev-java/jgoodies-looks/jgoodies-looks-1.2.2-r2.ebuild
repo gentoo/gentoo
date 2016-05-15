@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -17,11 +17,13 @@ SRC_URI="http://www.jgoodies.com/download/libraries/${MY_PN}-${MY_PV}.zip"
 
 LICENSE="BSD"
 SLOT="1.2"
-KEYWORDS="~amd64 ~ppc ~x86 ~x86-fbsd"
+KEYWORDS="amd64 x86 ~x86-fbsd"
 IUSE="doc"
 
-DEPEND=">=virtual/jdk-1.5
+DEPEND="
+	>=virtual/jdk-1.5
 	app-arch/unzip"
+
 RDEPEND=">=virtual/jre-1.5"
 
 S="${WORKDIR}/${MY_PN}-${PV}"
@@ -29,14 +31,16 @@ S="${WORKDIR}/${MY_PN}-${PV}"
 EANT_DOC_TARGET="javadoc"
 
 java_prepare() {
-	find -name "*.jar" -delete || die
-	cp "${FILESDIR}/build.xml" "${FILESDIR}/plastic.txt" "${S}" || die
+	java-pkg_clean
+
+	cp "${FILESDIR}/${P}-build.xml" "${S}"/build.xml || die
+	cp "${FILESDIR}/${P}-plastic.txt" "${S}"/plastic.txt || die
 
 	unzip ${MY_PN}-${PV}-src.zip || die
 }
 
 src_install() {
-	java-pkg_dojar ${MY_PN}.jar
+	java-pkg_dojar "${MY_PN}.jar"
 
 	dodoc RELEASE-NOTES.txt
 	use source && java-pkg_dosrc com

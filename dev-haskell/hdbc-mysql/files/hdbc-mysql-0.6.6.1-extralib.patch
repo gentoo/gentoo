@@ -1,0 +1,18 @@
+commit d53860f7edb75873e263111129c159802b2ac5a6
+Author: Satoshi Nakamura <snakamura@infoteria.com>
+Date:   Tue May 27 15:44:57 2014 +0900
+
+    Add mysqlclient to Extra-Libraries
+
+diff --git a/HDBC-mysql.cabal b/HDBC-mysql.cabal
+index 2d56d8b..6a8967a 100644
+--- a/HDBC-mysql.cabal
++++ b/HDBC-mysql.cabal
+@@ -32,6 +32,7 @@ library
+     time,
+     utf8-string
+   ghc-options:      -Wall
++  Extra-Libraries: mysqlclient
+ 
+ source-repository head
+   type:     git

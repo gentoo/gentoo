@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -86,6 +86,7 @@ RDEPEND="
 	<=dev-python/httplib2-0.9.2[${PYTHON_USEDEP}]
 	>=dev-python/requests-2.5.2[${PYTHON_USEDEP}]
 	!~dev-python/requests-2.8.0[${PYTHON_USEDEP}]
+	!~dev-python/requests-2.9.0[${PYTHON_USEDEP}]
 	<=dev-python/requests-2.8.1[${PYTHON_USEDEP}]
 	>=dev-python/jinja-2.6[${PYTHON_USEDEP}]
 	<=dev-python/jinja-2.8[${PYTHON_USEDEP}]
@@ -155,6 +156,9 @@ RDEPEND="
 	!~dev-python/oslo-messaging-3.1.0[${PYTHON_USEDEP}]
 	<=dev-python/oslo-messaging-3.0.0[${PYTHON_USEDEP}]
 	>=dev-python/oslo-middleware-2.8.0[${PYTHON_USEDEP}]
+	!~dev-python/oslo-middleware-3.0.0[${PYTHON_USEDEP}]
+	!~dev-python/oslo-middleware-3.1.0[${PYTHON_USEDEP}]
+	!~dev-python/oslo-middleware-3.2.0[${PYTHON_USEDEP}]
 	<=dev-python/oslo-middleware-3.3.0[${PYTHON_USEDEP}]
 	>=dev-python/oslo-policy-0.5.0[${PYTHON_USEDEP}]
 	<=dev-python/oslo-policy-1.1.0[${PYTHON_USEDEP}]
@@ -178,7 +182,7 @@ RDEPEND="
 	net-firewall/ipset
 	net-firewall/iptables
 	net-firewall/ebtables
-	openvswitch? ( <=net-misc/openvswitch-2.4.0 )
+	openvswitch? ( <=net-misc/openvswitch-2.5.9999 )
 	ipv6? ( net-misc/radvd )
 	dhcp? ( net-dns/dnsmasq[dhcp-tools] )"
 

@@ -1,0 +1,26 @@
+https://bugs.gentoo.org/563732
+
+From 521573be219f27c7bfebb57d5b0b994fdb316721 Mon Sep 17 00:00:00 2001
+From: Chloe Kudryavtsev <chloe.kudryavtsev@gmail.com>
+Date: Sat, 24 Oct 2015 23:38:53 -0400
+Subject: [PATCH] add time.h include to common.h for time_t
+
+---
+ src/lib/common.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/lib/common.h b/src/lib/common.h
+index 798965f..9053826 100644
+--- a/src/lib/common.h
++++ b/src/lib/common.h
+@@ -9,6 +9,7 @@
+ #include <config.h>
+ #include <string.h>
+ #include <math.h>
++#include <time.h>
+ #ifdef WITH_DMALLOC
+ #include <dmalloc.h>
+ #endif
+-- 
+2.6.2
+

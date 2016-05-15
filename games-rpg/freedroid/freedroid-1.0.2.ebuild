@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -15,12 +15,13 @@ KEYWORDS="amd64 ppc x86"
 IUSE=""
 
 DEPEND="media-libs/libsdl[joystick,sound,video]
-	virtual/jpeg
+	virtual/jpeg:0
 	sys-libs/zlib
 	media-libs/libpng:0
 	media-libs/sdl-image[jpeg,png]
 	media-libs/sdl-mixer[mod,vorbis]
 	media-libs/libvorbis"
+RDEPEND=${DEPEND}
 
 src_prepare() {
 	epatch "${FILESDIR}"/${P}-format.patch

@@ -1,15 +1,18 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<!DOCTYPE pkgmetadata SYSTEM 'http://www.gentoo.org/dtd/metadata.dtd'>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>base-system</herd>
+<maintainer type="project">
+	<email>base-system@gentoo.org</email>
+	<name>Gentoo Base System</name>
+</maintainer>
 <use>
-	<flag name='arp'>build the arp and rarp tools (for manipulating the ARP cache)</flag>
-	<flag name='hostname'>build the hostname and dnsdomainname tools</flag>
-	<flag name='old-output'>use old ifconfig output style (useful for when new output breaks scripts)</flag>
-	<flag name='plipconfig'>build the plipconfig tool (for working with old PLIP hardware)</flag>
-	<flag name='slattach'>build the slattach tool (for working with old serial ports)</flag>
+	<flag name="arp">build the arp and rarp tools (for manipulating the ARP cache)</flag>
+	<flag name="hostname">build the hostname and dnsdomainname tools</flag>
+	<flag name="old-output">use old ifconfig output style (useful for when new output breaks scripts)</flag>
+	<flag name="plipconfig">build the plipconfig tool (for working with old PLIP hardware)</flag>
+	<flag name="slattach">build the slattach tool (for working with old serial ports)</flag>
 </use>
 <upstream>
-	<remote-id type='sourceforge'>net-tools</remote-id>
+	<remote-id type="sourceforge">net-tools</remote-id>
 </upstream>
 </pkgmetadata>

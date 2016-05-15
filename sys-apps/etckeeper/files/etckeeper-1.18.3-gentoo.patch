@@ -1,0 +1,78 @@
+From 026fa7c012a8c44cadfa56f605c0671639a6b04c Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Manuel=20R=C3=BCger?= <manuel@rueg.eu>
+Date: Tue, 16 Feb 2016 00:19:07 +0100
+Subject: [PATCH] Support Gentoo's package managers
+
+
+diff --git a/Makefile b/Makefile
+index 70bddfa..6090a4e 100644
+--- a/Makefile
++++ b/Makefile
+@@ -58,7 +58,6 @@ ifeq ($(HIGHLEVEL_PACKAGE_MANAGER),zypper)
+ 	mkdir -p $(DESTDIR)$(prefix)/lib/zypp/plugins/commit
+ 	$(INSTALL) zypper-etckeeper.py $(DESTDIR)$(prefix)/lib/zypp/plugins/commit/zypper-etckeeper.py
+ endif
+-	-$(PYTHON) ./etckeeper-bzr/__init__.py install --root=$(DESTDIR) ${PYTHON_INSTALL_OPTS} || echo "** bzr support not installed"
+ 	echo "** installation successful"
+ 
+ clean: etckeeper.spec etckeeper.version
+diff --git a/etckeeper.conf b/etckeeper.conf
+index 0d268bd..81214c7 100644
+--- a/etckeeper.conf
++++ b/etckeeper.conf
+@@ -31,11 +31,21 @@ DARCS_COMMIT_OPTIONS="-a"
+ 
+ # The high-level package manager that's being used.
+ # (apt, pacman, pacman-g2, yum, dnf, zypper etc)
+-HIGHLEVEL_PACKAGE_MANAGER=apt
++#HIGHLEVEL_PACKAGE_MANAGER=apt
++
++# Gentoo specific:                                                                                                                                                                                                                                
++# For portage this is emerge
++# For paludis this is cave
++HIGHLEVEL_PACKAGE_MANAGER=emerge
+ 
+ # The low-level package manager that's being used.
+ # (dpkg, rpm, pacman, pacmatic, pacman-g2, etc)
+-LOWLEVEL_PACKAGE_MANAGER=dpkg
++#LOWLEVEL_PACKAGE_MANAGER=dpkg
++
++# Gentoo specific:
++# For portage this is qlist
++# For paludis this is cave
++LOWLEVEL_PACKAGE_MANAGER=qlist
+ 
+ # To push each commit to a remote, put the name of the remote here.
+ # (eg, "origin" for git). Space-separated lists of multiple remotes
+diff --git a/list-installed.d/50list-installed b/list-installed.d/50list-installed
+index 129447f..79d67f2 100755
+--- a/list-installed.d/50list-installed
++++ b/list-installed.d/50list-installed
+@@ -21,5 +21,9 @@ else
+ 		pacmatic -Q
+ 	elif [ "$LOWLEVEL_PACKAGE_MANAGER" = pkgng ]; then
+ 		pkg info -E "*"
++	elif [ "$LOWLEVEL_PACKAGE_MANAGER" = qlist ]; then
++		qlist -ICv
++	elif [ "$LOWLEVEL_PACKAGE_MANAGER" = cave ]; then
++		cave print-packages -r installed
+ 	fi
+ fi
+diff --git a/update-ignore.d/01update-ignore b/update-ignore.d/01update-ignore
+index 7347287..5dbb398 100755
+--- a/update-ignore.d/01update-ignore
++++ b/update-ignore.d/01update-ignore
+@@ -99,6 +99,10 @@ writefile () {
+ 		ignore "*.pacorig"
+ 		ignore "*.pacsave"
+ 		nl
++	elif [ "$LOWLEVEL_PACKAGE_MANAGER" = "qlist" -o "$LOWLEVEL_PACKAGE_MANAGER" = "cave" ]; then
++		comment "new and old versions of conffiles, stored by emerge"
++		ignore "._cfg*"
++		nl
+ 	fi
+ 	
+ 	comment "old versions of files"
+-- 
+2.7.1
+

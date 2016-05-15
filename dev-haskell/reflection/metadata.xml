@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>haskell</herd>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
 	<longdescription>
 		This package provides an implementation of the ideas presented in the paper
 		\"Functional Pearl: Implicit Configurations\" by Oleg Kiselyov and
@@ -45,7 +48,6 @@
 	</longdescription>
 	<use>
 		<flag name="template-haskell">Enable template haskell.</flag>
-		<flag name="th">Enable template haskell.</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">ekmett/reflection</remote-id>

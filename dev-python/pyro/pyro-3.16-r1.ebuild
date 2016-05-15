@@ -11,7 +11,7 @@ inherit distutils-r1
 MY_PN="Pyro"
 MY_P="${MY_PN}-${PV}"
 
-DESCRIPTION="Advanced and powerful Distributed Object Technology system written entirely in Python"
+DESCRIPTION="Distributed object middleware for Python (RPC)"
 HOMEPAGE="http://www.xs4all.nl/~irmen/pyro3/ https://pypi.python.org/pypi/Pyro"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 

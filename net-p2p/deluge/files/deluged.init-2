@@ -1,0 +1,54 @@
+#!/sbin/openrc-run
+# Copyright 1999-2013 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License, v2 or later
+# $Id$
+
+depend() {
+	need net
+}
+
+checkconfig() {
+	if [ "${DELUGED_USER}" = "" ] ; then
+		eerror "Please edit /etc/conf.d/deluged"
+		eerror "You have to specify a user to run deluged as, as we will not run it as root!"
+		eerror "Modify DELUGED_USER to your needs (you can also add a group, after a colon)"
+		return 1
+	fi
+	if ! getent passwd "${DELUGED_USER%:*}" >/dev/null ; then
+		eerror "Please edit /etc/conf.d/deluged"
+		eerror "Your user has to exist!"
+		return 1
+	fi
+	if [ "${DELUGED_USER%:*}" = "${DELUGED_USER}" ] ; then
+		return 0
+	else
+		if ! getent group "${DELUGED_USER#*:}" >/dev/null ; then
+			eerror "Please edit /etc/conf.d/deluged"
+			eerror "Your group has to exist too!"
+			return 1
+		fi
+	fi	
+	return 0
+}
+
+start() {
+	checkconfig || return $?
+	if [ "${DELUGED_HOME}" = "" ] ; then
+		DELUGED_USER_HOME=$(getent passwd "${DELUGED_USER%:*}" | cut -d ':' -f 6)
+	else
+		DELUGED_USER_HOME=${DELUGED_HOME}
+	fi
+	ebegin "Starting Deluged"
+	start-stop-daemon --start --user "${DELUGED_USER%:*}" \
+	--name deluged --pidfile /run/deluged.pid --background --make-pidfile \
+	${DELUGED_UMASK:+--umask ${DELUGED_UMASK}} \
+	--exec /usr/bin/deluged -e HOME="${DELUGED_USER_HOME}" -- --do-not-daemonize ${DELUGED_OPTS}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping Deluged"
+	start-stop-daemon --stop --user "${DELUGED_USER%:*}" \
+	--name deluged --pidfile /run/deluged.pid
+	eend $?
+}

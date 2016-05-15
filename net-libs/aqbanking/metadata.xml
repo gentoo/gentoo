@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer>
+  <maintainer type="person">
     <email>hanno@gentoo.org</email></maintainer>
   <use>
-    <flag name='chipcard'>Enable support for DDV/RSA-chipcards</flag>
-    <flag name='ebics'>Enable support for Electronic Banking Internet Communication Standard (EBICS)</flag>
+    <flag name="chipcard">Enable support for DDV/RSA-chipcards</flag>
+    <flag name="ebics">Enable support for Electronic Banking Internet Communication Standard (EBICS)</flag>
   </use>
 </pkgmetadata>

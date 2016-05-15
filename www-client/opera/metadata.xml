@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer>
+<maintainer type="person">
 <email>jer@gentoo.org</email>
 <name>Jeroen Roovers</name>
 </maintainer>
@@ -11,7 +11,7 @@ version runs on GNU/Linux and FreeBSD. Versions for Macintosh and
 Windows are also available.
 </longdescription>
 <use>
-<flag name='gtk'>Install support libraries and runtime dependencies to support GTK+/GNOME desktop integration</flag>
-<flag name='kde'>Install support libraries and runtime dependencies to support KDE desktop integration</flag>
+<flag name="gtk">Install support libraries and runtime dependencies to support GTK+/GNOME desktop integration</flag>
+<flag name="kde">Install support libraries and runtime dependencies to support KDE desktop integration</flag>
 </use>
 </pkgmetadata>

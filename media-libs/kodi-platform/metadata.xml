@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>fordfrog@gentoo.org</email>
+		<name>Miroslav Šulc</name>
+	</maintainer>
+	<longdescription>Kodi platform support library</longdescription>
+	<upstream>
+		<remote-id type="github">xbmc/kodi-platform</remote-id>
+	</upstream>
+</pkgmetadata>

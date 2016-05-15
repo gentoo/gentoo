@@ -1,0 +1,243 @@
+* Remove completely broken Qt handling, dating back to Qt3 days
+* Fix ancient C++ includes using '.h' suffixes
+* Fix warnings caused by not using 'const char*'
+
+--- splay-0.9.5.2/apps/Makefile.am
++++ splay-0.9.5.2/apps/Makefile.am
+@@ -1,4 +1,4 @@
+-bin_PROGRAMS = splay @XSPLAY@
++bin_PROGRAMS = splay
+ EXTRA_PROGRAMS =xsplay
+ splay_SOURCES =  common.cc splay.cc splay.h
+ xsplay_SOURCES = xsplay.cc functions.cc \
+@@ -17,7 +17,7 @@
+ INCLUDES = -I../libs  -I/usr/include/qt
+ xsplay_LDADD=-lqt $(LDADD)
+ 
+-man_MANS = splay.1 xsplay.1
++man_MANS = splay.1
+ EXTRA_DIST = $(man_MANS)
+ 
+ 
+--- splay-0.9.5.2/configure.ac
++++ splay-0.9.5.2/configure.ac
+@@ -15,7 +15,7 @@
+ AC_CHECK_LIB(id3, ID3Tag_New)
+ AC_CHECK_LIB(m, cos)
+ AC_CHECK_LIB(pthread,main,INCLUDEPTHREAD=1)
+-AC_CHECK_LIB(qt, main,XSPLAY=xsplay)
++
+ 
+ if test "$INCLUDEPTHREAD" = 1; then
+ 	LIBS="$LIBS -lpthread"
+--- splay-0.9.5.2/apps/common.cc
++++ splay-0.9.5.2/apps/common.cc
+@@ -34,7 +34,7 @@
+ int splay_threadnum=50;
+ #endif
+ 
+-char *splay_Sounderrors[SOUND_ERROR_UNKNOWN]=
++const char *splay_Sounderrors[SOUND_ERROR_UNKNOWN]=
+ { "Failed to open sound device.",
+   "Sound device is busy.",
+   "Buffersize of sound device is wrong.",
+--- splay-0.9.5.2/apps/splay.cc
++++ splay-0.9.5.2/apps/splay.cc
+@@ -16,20 +16,23 @@
+ 
+ #include <sys/types.h>
+ #include <sys/wait.h>
+-#include <iostream.h>
++#include <iostream>
+ 
+ #ifdef HAVE_LIBID3
+ #include <id3/tag.h>
+ #include <id3/misc_support.h>
+ #endif /* HAVE_LIBID3 */
+ 
+-#include <iomanip.h>
++#include <iomanip>
++
++using std::cout;
++using std::endl;
+ 
+ #include "mpegsound.h"
+ 
+ #include "splay.h"
+ 
+-static char *help=
++static const char *help=
+ "\t-2 : playing with half frequency.\n"
+ "\t-e : exit when playing is done. (only XSPLAY)\n"
+ "\t-f : display frame and time info (played and remaining).\n"
+--- splay-0.9.5.2/apps/splay.h
++++ splay-0.9.5.2/apps/splay.h
+@@ -20,7 +20,7 @@
+             splay_forcetomonoflag,
+             splay_frameinfo;
+ 
+-extern char *splay_Sounderrors[];
++extern const char *splay_Sounderrors[];
+ 
+ #ifdef PTHREADEDMPEG
+ extern int  splay_threadnum;
+--- splay-0.9.5.2/apps/xsplay.cc
++++ splay-0.9.5.2/apps/xsplay.cc
+@@ -29,8 +29,8 @@
+ #include <fcntl.h>
+ #include <string.h>
+ #include <unistd.h>
+-#include <iostream.h>
+-#include <iomanip.h>
++#include <iostream>
++#include <iomanip>
+ 
+ #include "mpegsound.h"
+ #include "xsplay.h"
+--- splay-0.9.5.2/libs/fileplayer.cc
++++ splay-0.9.5.2/libs/fileplayer.cc
+@@ -10,7 +10,7 @@
+ #endif
+ 
+ #include <string.h>
+-#include <iostream.h>
++#include <iostream>
+ #include <sys/types.h>
+ #include <sys/stat.h>
+ #include <fcntl.h>
+@@ -18,6 +18,10 @@
+ 
+ #include "mpegsound.h"
+ 
++using std::cout;
++using std::cerr;
++using std::endl;
++
+ // File player superclass
+ Fileplayer::Fileplayer()
+ {
+@@ -43,7 +47,7 @@
+   if(server)delete server;
+ }
+ 
+-bool Mpegfileplayer::openfile(char *filename,char *device)
++bool Mpegfileplayer::openfile(char *filename, const char *device)
+ {
+ // Player
+   if(device==NULL){
+@@ -188,7 +192,7 @@
+ 
+ void Mpegfileplayer::showverbose(int )
+ {
+-  static char *modestring[4]={"stereo","joint stereo","dual channel","mono"};
++  static const char *modestring[4]={"stereo","joint stereo","dual channel","mono"};
+ 
+   fprintf(stderr,"\tMPEG-%d Layer %d, %s,\n\t%dHz%s, %dkbit/s, ",
+ 	  server->getversion()+1,
+--- splay-0.9.5.2/libs/mpegsound.h
++++ splay-0.9.5.2/libs/mpegsound.h
+@@ -230,7 +230,7 @@
+   Soundplayer() {__errorcode=SOUND_ERROR_OK;};
+   virtual ~Soundplayer();
+ 
+-  virtual bool initialize(char *filename)                       =0;
++  virtual bool initialize(const char *filename)                       =0;
+   virtual void abort(void);
+   virtual int  getprocessed(void);
+ 
+@@ -255,7 +255,7 @@
+ public:
+   ~Rawtofile();
+ 
+-  bool initialize(char *filename);
++  bool initialize(const char *filename);
+   bool setsoundtype(int stereo,int samplesize,int speed);
+   bool putblock(void *buffer,int size);
+ 
+@@ -270,7 +270,7 @@
+ public:
+   ~Rawplayer();
+ 
+-  bool initialize(char *filename);
++  bool initialize(const char *filename);
+   void abort(void);
+   int  getprocessed(void);
+ 
+@@ -284,7 +284,7 @@
+   void setquota(int q){quota=q;};
+   int  getquota(void) {return quota;};
+ 
+-  static char *defaultdevice;
++  static const char *defaultdevice;
+   static int  setvolume(int volume);
+ 
+ private:
+@@ -573,7 +573,7 @@
+ 
+   int geterrorcode(void)        {return __errorcode;};
+ 
+-  virtual bool openfile(char *filename,char *device)=0;
++  virtual bool openfile(char *filename, const char *device)=0;
+   virtual void setforcetomono(bool flag)            =0;
+   virtual bool playing(int verbose,bool frameinfo, int startframe)                 =0;
+ 
+@@ -593,7 +593,7 @@
+   Mpegfileplayer();
+   ~Mpegfileplayer();
+ 
+-  bool openfile(char *filename,char *device);
++  bool openfile(char *filename, const char *device);
+   void setforcetomono(bool flag);
+   void setdownfrequency(int value);
+   bool playing(int verbose, bool frameinfo, int startframe);
+--- splay-0.9.5.2/libs/mpegtoraw.cc
++++ splay-0.9.5.2/libs/mpegtoraw.cc
+@@ -552,7 +552,7 @@
+ #endif
+ 
+ 
+-#include <iostream.h>
++#include <iostream>
+ // Convert mpeg to raw
+ bool Mpegtoraw::run(int frames)
+ {
+--- splay-0.9.5.2/libs/rawplayer.cc
++++ splay-0.9.5.2/libs/rawplayer.cc
+@@ -24,7 +24,7 @@
+ #define IOCTL(a,b,c)		(c = ioctl(a,b,c) )
+ #endif
+ 
+-char *Rawplayer::defaultdevice="/dev/dsp";
++const char *Rawplayer::defaultdevice="/dev/dsp";
+ 
+ /* Volume */
+ int Rawplayer::setvolume(int volume)
+@@ -57,7 +57,7 @@
+   close(audiohandle);
+ }
+ 
+-bool Rawplayer::initialize(char *filename)
++bool Rawplayer::initialize(const char *filename)
+ {
+   int flag;
+ 
+@@ -172,7 +172,7 @@
+ 
+   if(quota)
+     while(getprocessed()>quota)usleep(3);
+-  write(audiohandle,buffer,modifiedsize);
++  if(write(audiohandle,buffer,modifiedsize)) {}
+ 
+   return true;
+ }
+--- splay-0.9.5.2/libs/rawtofile.cc
++++ splay-0.9.5.2/libs/rawtofile.cc
+@@ -20,7 +20,7 @@
+   close(filehandle);
+ }
+ 
+-bool Rawtofile::initialize(char *filename)
++bool Rawtofile::initialize(const char *filename)
+ {
+   if(filename==NULL)filehandle=1;
+   else if((filehandle=creat(filename,0644))==-1)

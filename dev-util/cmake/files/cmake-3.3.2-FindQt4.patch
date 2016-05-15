@@ -10,8 +10,8 @@ Once qmake is found, it is queried for the correct location of all other items.
 
 Gentoo-bug: 547222
 
---- Modules/FindQt4.cmake
-+++ Modules/FindQt4.cmake
+--- a/Modules/FindQt4.cmake
++++ b/Modules/FindQt4.cmake
 @@ -482,13 +482,23 @@
  
    get_filename_component(qt_install_version "[HKEY_CURRENT_USER\\Software\\trolltech\\Versions;DefaultQtVersion]" NAME)

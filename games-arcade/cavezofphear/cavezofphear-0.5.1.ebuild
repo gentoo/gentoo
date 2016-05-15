@@ -14,7 +14,7 @@ SLOT="0"
 KEYWORDS="amd64 ppc ppc64 ~sparc x86 ~x86-fbsd"
 IUSE=""
 
-RDEPEND=">=sys-libs/ncurses-5"
+RDEPEND=">=sys-libs/ncurses-5:0"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 

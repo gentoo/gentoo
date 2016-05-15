@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>sci</herd>
-  <herd>java</herd>
-  <maintainer>
-    <email>jlec@gentoo.org</email>
-    <name>Justin Lecher</name>
+  <maintainer type="project">
+    <email>sci@gentoo.org</email>
+    <name>Gentoo Science Project</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>java@gentoo.org</email>
+    <name>Java</name>
   </maintainer>
   <use>
     <flag name="all-modules">Build all modules</flag>

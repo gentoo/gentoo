@@ -14,7 +14,7 @@ S="${WORKDIR}/tsg--${PN}-${CUSTOM_VERSION}"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="doc static-libs"
 
 RDEPEND=""

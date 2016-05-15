@@ -6,12 +6,12 @@ EAPI=5
 inherit flag-o-matic
 
 DESCRIPTION="Pulseaudio Volume Control, GTK based mixer for Pulseaudio"
-HOMEPAGE="http://freedesktop.org/software/pulseaudio/pavucontrol/"
-SRC_URI="http://freedesktop.org/software/pulseaudio/${PN}/${P}.tar.xz"
+HOMEPAGE="https://freedesktop.org/software/pulseaudio/pavucontrol/"
+SRC_URI="https://freedesktop.org/software/pulseaudio/${PN}/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
+KEYWORDS="amd64 ppc ~ppc64 ~sparc x86 ~x86-fbsd"
 IUSE="nls"
 
 RDEPEND="

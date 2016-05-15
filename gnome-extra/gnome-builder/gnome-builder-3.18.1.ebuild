@@ -5,6 +5,7 @@
 EAPI="5"
 GCONF_DEBUG="no"
 PYTHON_COMPAT=( python{3_3,3_4,3_5} )
+VALA_MIN_API_VERSION="0.30"
 VALA_USE_DEPEND="vapigen"
 
 inherit gnome2 python-single-r1 vala virtualx
@@ -14,7 +15,7 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Builder"
 
 LICENSE="GPL-3+ GPL-2+ LGPL-3+ LGPL-2+ MIT CC-BY-SA-3.0 CC0-1.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="+introspection python vala"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 

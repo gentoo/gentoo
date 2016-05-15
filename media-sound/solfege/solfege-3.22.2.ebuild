@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -9,7 +9,7 @@ PYTHON_REQ_USE="sqlite"
 inherit python-single-r1
 
 DESCRIPTION="GNU Solfege is a program written to help you practice ear training"
-HOMEPAGE="http://www.solfege.org"
+HOMEPAGE="https://www.gnu.org/software/solfege/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3"

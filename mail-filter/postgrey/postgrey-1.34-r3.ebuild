@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -18,7 +18,7 @@ IUSE="targrey"
 
 DEPEND=""
 RDEPEND=">=dev-lang/perl-5.6.0
-	dev-perl/net-server
+	dev-perl/Net-Server
 	dev-perl/IO-Multiplex
 	dev-perl/BerkeleyDB
 	dev-perl/Net-DNS

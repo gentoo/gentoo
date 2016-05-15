@@ -14,7 +14,7 @@ SRC_URI="http://www.nico.schottelius.org/software/${PN}/archives/${P}.tar.lzma"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~m68k ~mips ppc ppc64 s390 ~sh sparc x86"
+KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86"
 IUSE="selinux static-libs"
 
 RDEPEND=">=sys-libs/ncurses-5.9-r3[${MULTILIB_USEDEP}]
@@ -29,6 +29,7 @@ DEPEND=">=sys-libs/ncurses-5.9-r3[${MULTILIB_USEDEP}]
 	virtual/yacc"
 
 src_prepare() {
+	epatch "${FILESDIR}"/${P}-sysmacros.patch
 	# fix ABI values
 	sed -i \
 		-e '/^abi_lev=/s:=.*:=1:' \
@@ -61,7 +62,7 @@ multilib_src_install() {
 		install
 
 	dosym libgpm.so.1 /usr/$(get_libdir)/libgpm.so
-	multilib_is_native_abi && gen_usr_ldscript -a gpm
+	gen_usr_ldscript -a gpm
 }
 
 multilib_src_install_all() {

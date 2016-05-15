@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -12,10 +12,11 @@ SRC_URI="http://qx11grab.hjcms.de/downloads/${PV}/${P}.tar.xz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="libav kde opengl pulseaudio"
 
 RDEPEND="
+	dev-libs/qjson
 	>=dev-qt/qtcore-4.7.4:4
 	>=dev-qt/qtdbus-4.7.4:4
 	>=dev-qt/qtgui-4.7.4:4[accessibility]
@@ -36,6 +37,8 @@ DEPEND="${RDEPEND}
 	kde? ( dev-util/automoc )
 "
 PDEPEND="virtual/freedesktop-icon-theme"
+
+PATCHES=( "${FILESDIR}/${P}-ffmpeg3.patch" )
 
 src_prepare() {
 	cmake-utils_src_prepare

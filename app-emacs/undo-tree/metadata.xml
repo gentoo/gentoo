@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer>
+<maintainer type="person">
   <email>tomka@gentoo.org</email>
   <name>Thomas Kahle</name>
 </maintainer>
-<herd>emacs</herd>
+<maintainer type="project">
+  <email>gnu-emacs@gentoo.org</email>
+  <name>Gentoo GNU Emacs project</name>
+</maintainer>
 <longdescription lang="en">
   Emacs has a powerful undo system. Unlike the standard undo/redo system in
   most software, it allows you to recover *any* past state of a buffer

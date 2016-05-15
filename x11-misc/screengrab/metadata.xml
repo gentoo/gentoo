@@ -1,15 +1,16 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>qt</herd>
-	<upstream>
-		<remote-id type="google-code">screengrab-qt</remote-id>
-		<remote-id type="github">DOOMer/screengrab</remote-id>
-	</upstream>
+	<maintainer type="project">
+		<email>qt@gentoo.org</email>
+		<name>Gentoo Qt Project</name>
+	</maintainer>
 	<upstream>
 		<maintainer status="active">
 			<email>doomer3d@gmail.com</email>
 			<name>Artem Galichkin</name>
 		</maintainer>
+		<remote-id type="google-code">screengrab-qt</remote-id>
+		<remote-id type="github">DOOMer/screengrab</remote-id>
 	</upstream>
 </pkgmetadata>

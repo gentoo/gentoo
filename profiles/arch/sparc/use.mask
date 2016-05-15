@@ -30,8 +30,7 @@ xine
 nagios-game
 
 # Samuli Suominen <ssuominen@gentoo.org> (07 May 2012)
-# Missing keywording in www-client/firefox wrt #360427,
-# as used by, for example, x11-themes/gtk-engines-qtcurve
+# Missing keywording in www-client/firefox wrt #360427
 firefox
 mozilla
 thunderbird

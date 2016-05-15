@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM 'http://www.gentoo.org/dtd/metadata.dtd'>
+<pkgmetadata>
+    <maintainer type="project">
+        <email>proxy-maint@gentoo.org</email>
+        <name>Gentoo Proxy Maintainers Project</name>
+    </maintainer>
+    <maintainer type="person">
+        <email>rubin@xs4all.nl</email>
+        <name>Rubin Simons</name>
+        <description>Proxied maintainer; set to assignee in all bugs</description>
+    </maintainer>
+    <upstream>
+        <maintainer status="active">
+            <email>ken@pcbsd.org</email>
+            <name>Ken Moore</name>
+        </maintainer>
+        <remote-id type="github">pcbsd/lumina</remote-id>
+        <bugs-to>https://github.com/pcbsd/lumina/issues</bugs-to>
+        <doc lang="en">http://lumina-desktop.org/handbook/</doc>
+    </upstream>
+    <longdescription lang="en">The Lumina Desktop Environment is a lightweight system interface that is designed for use on any Unix-like operating system. It takes a plugin-based approach, allowing the entire interface to be assembled/arranged by each individual user as desired, with a system-wide default layout which was setup by the  system administrator. This allows every system (or user session) to be designed to maximize the individual user's productivity.
+
+    The Lumina desktop developers understand that the point of a computer system is to run applications, so Lumina was designed to require as few system dependencies/requirements as possible. This allows it to be used to revitalize older systems or to allow the user to run applications that may need a higher percentage of the system resources than were previously available with other desktop environments.
+
+    Lumina is created/distributed under the 3-clause BSD license, allowing it to be used by anyone, anywhere (including in proprietary distributions). It has been written from scratch in C++/Qt5 and is not based on any existing desktop's code-base. It also does not use any of the Linux-based desktop frameworks (ConsoleKit, PolicyKit, D-Bus, systemd, etc), instead using a simple built-in interface layer for communicating directly with the operating system.
+</longdescription>
+</pkgmetadata>

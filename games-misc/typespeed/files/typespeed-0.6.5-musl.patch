@@ -1,0 +1,15 @@
+diff -ur a/typespeed-0.6.5/src/typespeed.h b/typespeed-0.6.5/src/typespeed.h
+--- a/typespeed-0.6.5/src/typespeed.h	2008-08-13 15:36:51.000000000 +0100
++++ b/typespeed-0.6.5/src/typespeed.h	2016-01-01 10:41:54.919998820 +0100
+@@ -27,10 +27,10 @@
+ 
+ #include <stdint.h>
+ #include <stdio.h>
++#include <time.h>
+ 
+ #ifdef WIN32
+ 	#include <dirent.h>
+-	#include <time.h>
+ 
+ 	#ifndef MAXHOSTNAMELEN
+ 		#define MAXHOSTNAMELEN	256

@@ -1,8 +1,42 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 # This file requires >=portage-2.1.1
+
+# Ian Delaney <idella4@gentoo.org> (06 Apr 2016)
+# on behalf of Ilya Tumaykin <itumaykin+gentoo@gmail.com>
+# dev-libs/uchardet lacks ppc32 keyword. See bug #569114.
+media-video/mpv uchardet
+
+# Michael Palimaka <kensington@gentoo.org> (27 Mar 2016)
+# Requires unkeyworded dev-qt/qtwebkit
+dev-qt/designer webkit
+
+# Michael Palimaka <kensington@gentoo.org> (27 Mar 2016)
+# Requires unkeyworded dev-qt/qtmultimedia:5[widgets]
+sci-astronomy/stellarium sound
+
+# James Le Cuirot <chewi@gentoo.org) (30 Jan 2016)
+# scrollview requires Java, which is unsupported on ppc.
+app-text/tesseract scrollview
+
+# James Le Cuirot <chewi@gentoo.org> (12 Jan 2015)
+# Java is no longer supported on ppc.
+app-text/texlive pdfannotextractor
+dev-lang/logtalk fop
+gnome-extra/libgda reports
+net-analyzer/wireshark doc-pdf
+sci-misc/nco ncap2
+
+# Michael Weber <xmw@gentoo.org> (09 Jan 2016)
+# no ppc support in media-libs/glfw
+app-text/mupdf opengl
+
+# Ian Delaney <idella4@gentoo.org> (04 Jan 2016)
+# on behalf of Ilya Tumaykin <itumaykin+gentoo@gmail.com>
+# media-libs/libsdl2 lacks ppc32 keyword. See bug #508226.
+media-video/mpv sdl
 
 # Anthony G. Basile <blueness@gentoo.org> (26 Oct 2015)
 # Mask x265 on vlc for bug #564138

@@ -5,7 +5,7 @@
 EAPI=5
 GCONF_DEBUG="no"
 
-inherit autotools eutils gnome2
+inherit autotools eutils flag-o-matic gnome2
 
 DESCRIPTION="VMware's Incredibly Exciting Widgets"
 HOMEPAGE="http://view.sourceforge.net"
@@ -32,6 +32,7 @@ src_prepare() {
 }
 
 src_configure() {
+	append-cxxflags -std=c++11
 	gnome2_src_configure \
 		--enable-deprecated \
 		$(use_enable static-libs static)

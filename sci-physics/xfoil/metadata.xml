@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>sci-physics</herd>
-	<maintainer>
+	<maintainer type="person">
 		<email>robbat2@gentoo.org</email>
+	</maintainer>
+	<maintainer type="project">
+		<email>sci-physics@gentoo.org</email>
+		<name>Gentoo Physics Project</name>
 	</maintainer>
 	<longdescription lang="en">
   XFOIL is an interactive program for the design and analysis of subsonic isolated airfoils.

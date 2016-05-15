@@ -1,0 +1,48 @@
+- remove non-compatible xasprintf wrapper (compared to statement
+  expression version in libq/xasprintf.c
+- work around missing d_type/DT_DIR
+
+--- qcache.c
++++ qcache.c
+@@ -750,13 +750,21 @@
+ 
+ 		xasprintf(&catpath, "%s/dep/%s", portedb, data->overlay);
+ 		dir = opendir(catpath);
+-		while ((de = readdir(dir)))
++		while ((de = readdir(dir))) {
++#ifndef DT_DIR
++			struct stat s;
++			if (stat(de->d_name, &s))
++				continue;
++			if (S_ISDIR(s.st_mode) && de->d_name[0] != '.') {
++#else
+ 			if (de->d_type == DT_DIR && de->d_name[0] != '.') {
++#endif
+ 				bool ok;
+ 				allcats = add_set_unique(de->d_name, allcats, &ok);
+ 				if (ok)
+ 					++numcat;
+ 			}
++		}
+ 		closedir(dir);
+ 		free(catpath);
+ 
+--- libq/compat.c
++++ libq/compat.c
+@@ -20,16 +20,6 @@
+ 	return(off == NULL ? off : (char*)(big + (off - b)));
+ }
+ 
+-#undef  xasprintf
+-#define xasprintf(strp, fmt, args...) \
+-	do { /* xasprintf() */ \
+-		char str[BUFSIZ]; \
+-		if ((snprintf(str, sizeof(str)-1, fmt , ## args)) == -1) \
+-			err("Out of stack space?"); \
+-		str[sizeof(str)-1] = '\0'; \
+-		*strp = xstrdup(str); \
+-	} while (0)
+-
+ #elif defined(__hpux__) || defined(__MINT__)
+ 	/* must not include both dir.h and dirent.h on hpux11..11 & FreeMiNT */
+ #elif defined(__linux__)

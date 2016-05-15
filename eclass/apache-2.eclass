@@ -17,7 +17,13 @@ inherit autotools eutils flag-o-matic multilib ssl-cert user toolchain-funcs ver
 
 case ${EAPI:-0} in
 	0|1|2|3|4)
-		die "This eclass requires >=EAPI-5"
+		die "This eclass is banned for EAPI<5"
+	;;
+	5)
+		:;
+	;;
+	6)
+		die "This eclass is not yet ready for EAPI-6"
 	;;
 esac
 

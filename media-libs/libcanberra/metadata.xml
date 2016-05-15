@@ -1,32 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>gnome</herd>
-	<herd>sound</herd>
+	<maintainer type="project">
+		<email>gnome@gentoo.org</email>
+		<name>Gentoo GNOME Desktop</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>sound@gentoo.org</email>
+		<name>Gentoo Sound project</name>
+	</maintainer>
 	<longdescription>
 		A small and lightweight implementation of the XDG Sound Theme Specification
 		(http://0pointer.de/public/sound-theme-spec.html)
 	</longdescription>
 	<use>
-		<flag name='alsa'>Enables ALSA sound driver.</flag>
-		<flag name='gstreamer'>Enables gstreamer sound driver. Not useful when
+		<flag name="alsa">Enables ALSA sound driver.</flag>
+		<flag name="gstreamer">Enables gstreamer sound driver. Not useful when
 			alsa or pulseaudio is available.</flag>
-		<flag name='gtk'>Enables building of gtk+ helper library, gtk+ runtime
+		<flag name="gtk">Enables building of gtk+ helper library, gtk+ runtime
 			sound effects and the canberra-gtk-play utility. To enable the gtk+
 			sound effects add canberra-gtk-module to the colon separated list of
 			modules in the GTK_MODULES environment variable.</flag>
-		<flag name='gtk3'>Enables building of gtk+3 helper library, gtk+3
+		<flag name="gtk3">Enables building of gtk+3 helper library, gtk+3
 			runtime sound effects and the canberra-gtk-play utility. To enable
 			the gtk+3 sound effects add canberra-gtk-module to the colon
 			separated list of modules in the GTK_MODULES environment
 			variable.</flag>
-		<flag name='pulseaudio'>Enables PulseAudio sound driver that should be
+		<flag name="pulseaudio">Enables PulseAudio sound driver that should be
 			able to support positional event sounds. This is the preferred
 			choice for best sound events experience and picked by default if
 			compiled in and possible to use at runtime.</flag>
-		<flag name='sound'>Install x11-themes/sound-theme-freedesktop to get
+		<flag name="sound">Install x11-themes/sound-theme-freedesktop to get
 			sounds on Gnome and Xfce.</flag>
-		<flag name='tdb'>Enables Trivial Database support for caching
+		<flag name="tdb">Enables Trivial Database support for caching
 			purposes.</flag>
 	</use>
 </pkgmetadata>

@@ -6,14 +6,12 @@ EAPI=5
 inherit git-2 toolchain-funcs
 
 DESCRIPTION="Simple X selection printer"
-HOMEPAGE="http://tools.suckless.org/sselp"
-SRC_URI=""
+HOMEPAGE="http://tools.suckless.org/x/sselp"
 EGIT_REPO_URI="git://git.suckless.org/sselp"
 
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS=""
-IUSE=""
 
 DEPEND="x11-libs/libX11"
 RDEPEND="${DEPEND}"

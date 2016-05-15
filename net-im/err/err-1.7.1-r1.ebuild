@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -86,7 +86,7 @@ python_install() {
 	# Upstream requires images to be in site-packages directory,
 	# but does not install them at all!
 	if use qt4; then
-		local python_moduleroot=errbot
+		python_moduleinto errbot
 		python_domodule errbot/*.svg
 	fi
 }

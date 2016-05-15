@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>fonts</herd>
+	<maintainer type="project">
+		<email>fonts@gentoo.org</email>
+		<name>Fonts</name>
+	</maintainer>
 	<longdescription>Hunky Fonts are free TrueType fonts based on Bitstream's Vera fonts with additional letters for Baltic, Central European, South European and other languages, including Maori, Welsh and Esperanto.</longdescription>
 	<upstream>
 		<remote-id type="sourceforge">hunkyfonts</remote-id>

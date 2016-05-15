@@ -1,0 +1,57 @@
+diff -Nuar a/config.c b/config.c
+--- a/config.c	2016-01-25 19:50:48.840034001 +0100
++++ b/config.c	2016-01-25 19:54:37.170038598 +0100
+@@ -1,6 +1,6 @@
+ #include "queue.h"
+ /* Alloca is defined in stdlib.h in NetBSD */
+-#ifndef __NetBSD__
++#if !defined(__NetBSD__) && !defined(__FreeBSD__)
+ #include <alloca.h>
+ #endif
+ #include <limits.h>
+@@ -24,6 +24,10 @@
+ #include <fnmatch.h>
+ #include <sys/mman.h>
+ 
++#if !defined(PATH_MAX) && defined(__FreeBSD__)
++#include <sys/param.h>
++#endif
++
+ #include "basenames.h"
+ #include "log.h"
+ #include "logrotate.h"
+diff -Nuar a/logrotate.c b/logrotate.c
+--- a/logrotate.c	2016-01-20 10:47:36.000000000 +0100
++++ b/logrotate.c	2016-01-25 19:55:46.740039999 +0100
+@@ -1,6 +1,6 @@
+ #include "queue.h"
+ /* alloca() is defined in stdlib.h in NetBSD */
+-#ifndef __NetBSD__
++#if !defined(__NetBSD__) && !defined(__FreeBSD__)
+ #include <alloca.h>
+ #endif
+ #include <limits.h>
+@@ -26,6 +26,10 @@
+ #include <limits.h>
+ #endif
+ 
++#if !defined(PATH_MAX) && defined(__FreeBSD__)
++#include <sys/param.h>
++#endif
++
+ #include "basenames.h"
+ #include "log.h"
+ #include "logrotate.h"
+diff -Nuar a/Makefile b/Makefile
+--- a/Makefile	2016-01-20 10:47:36.000000000 +0100
++++ b/Makefile	2016-01-25 19:56:43.380041139 +0100
+@@ -22,7 +22,9 @@
+ 
+ ifeq ($(WITH_ACL),yes)
+ CFLAGS += -DWITH_ACL
++ifneq ($(OS_NAME),FreeBSD)
+ LOADLIBES += -lacl
++endif
+ # See pretest
+ TEST_ACL=1
+ else

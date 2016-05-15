@@ -13,7 +13,7 @@ inherit webapp eutils multilib user toolchain-funcs git-2
 DESCRIPTION="a fast web-interface for git repositories"
 HOMEPAGE="http://git.zx2c4.com/cgit/about"
 SRC_URI=""
-EGIT_REPO_URI="git://git.zx2c4.com/cgit"
+EGIT_REPO_URI="https://git.zx2c4.com/cgit"
 
 LICENSE="GPL-2"
 SLOT="0"

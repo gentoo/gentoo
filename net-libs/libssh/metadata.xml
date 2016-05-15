@@ -1,15 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>netmon</herd>
-<herd>kde</herd>
+<maintainer type="project">
+  <email>netmon@gentoo.org</email>
+  <name>Gentoo network monitoring and analysis project</name>
+</maintainer>
+<maintainer type="project">
+  <email>kde@gentoo.org</email>
+  <name>Gentoo KDE Project</name>
+</maintainer>
 <use>
-  <flag name='gcrypt'>Prefer <pkg>dev-libs/libgcrypt</pkg> over
+  <flag name="gcrypt">Prefer <pkg>dev-libs/libgcrypt</pkg> over
     <pkg>dev-libs/openssl</pkg> for encryption</flag>
-  <flag name='gssapi'>Enable gssapi support</flag>
-  <flag name='pcap'>Build with PCAP output support</flag>
-  <flag name='sftp'>Build with SFTP support</flag>
-  <flag name='ssh1'>Build with SSH1 support</flag>
-  <flag name='server'>Build with SSH server support</flag>
+  <flag name="gssapi">Enable gssapi support</flag>
+  <flag name="pcap">Build with PCAP output support</flag>
+  <flag name="sftp">Build with SFTP support</flag>
+  <flag name="ssh1">Build with SSH1 support</flag>
+  <flag name="server">Build with SSH server support</flag>
 </use>
 </pkgmetadata>

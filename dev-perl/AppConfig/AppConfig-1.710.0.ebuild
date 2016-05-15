@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="Perl5 module for reading configuration files and parsing command line arguments"
 
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~ppc-aix ~x86-fbsd ~x86-solaris"
+KEYWORDS="alpha amd64 arm ia64 ppc ppc64 sparc x86 ~ppc-aix ~x86-fbsd ~x86-solaris"
 IUSE="test"
 
 RDEPEND="

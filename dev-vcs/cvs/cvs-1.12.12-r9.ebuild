@@ -40,6 +40,7 @@ src_prepare() {
 	epatch "${FILESDIR}"/${P}-getdelim.patch # 314791
 	epatch "${FILESDIR}"/${PN}-1.12.12-rcs2log-coreutils.patch # 144114
 	epatch "${FILESDIR}"/${P}-mktime-x32.patch # 395641
+	epatch "${FILESDIR}"/${P}-mktime-configure.patch #220040 #570208
 	use server || elog "If you want any CVS server functionality, you MUST emerge with USE=server!"
 }
 

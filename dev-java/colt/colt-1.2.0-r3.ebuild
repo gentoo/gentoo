@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -7,14 +7,14 @@ JAVA_PKG_IUSE="source doc"
 
 inherit java-pkg-2 java-ant-2 eutils
 
-DESCRIPTION="A set of Open Source Libraries for High Performance Scientific and Technical Computing in Java"
+DESCRIPTION="Java Libraries for High Performance Scientific and Technical Computing"
 SRC_URI="http://dsd.lbl.gov/~hoschek/colt-download/releases/${P}.tar.gz"
 HOMEPAGE="http://www-itg.lbl.gov/~hoschek/colt/"
 
 LICENSE="colt"
 IUSE=""
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64 ~ppc64 x86"
 
 DEPEND=">=virtual/jdk-1.7"
 RDEPEND=">=virtual/jre-1.7"

@@ -1,0 +1,77 @@
+diff -Naur a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt	2016-03-07 10:36:38.000000000 +0100
++++ b/CMakeLists.txt	2016-04-16 11:54:15.499524812 +0200
+@@ -1,6 +1,7 @@
+ project(arcus)
+ cmake_minimum_required(VERSION 2.8.12)
+ 
++include(GNUInstallDirs)
+ include(CMakePackageConfigHelpers)
+ 
+ option(BUILD_PYTHON "Build " ON)
+@@ -14,10 +15,12 @@
+ 
+ if(BUILD_PYTHON)
+     set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake)
+-    if(APPLE OR WIN32)
+-        set(PYTHON_SITE_PACKAGES_DIR lib/python3.4/site-packages CACHE STRING "Directory to install Python bindings to")
+-    else()
+-        set(PYTHON_SITE_PACKAGES_DIR lib/python3/dist-packages CACHE STRING "Directory to install Python bindings to")
++    if(NOT PYTHON_SITE_PACKAGES_DIR)
++        if(APPLE OR WIN32)
++            set(PYTHON_SITE_PACKAGES_DIR lib/python${PYTHON_VERSION_MAJOR}.${PYTHON_VERSION_MINOR}/site-packages CACHE STRING "Directory to install Python bindings to")
++        else()
++            set(PYTHON_SITE_PACKAGES_DIR lib/python${PYTHON_VERSION_MAJOR}/dist-packages CACHE STRING "Directory to install Python bindings to")
++        endif()
+     endif()
+     find_package(SIP REQUIRED)
+     include_directories(python/ src/ ${PYTHON_INCLUDE_DIR} ${SIP_INCLUDE_DIR})
+@@ -57,7 +60,7 @@
+ set(ARCUS_VERSION 1.0.0)
+ set(ARCUS_SOVERSION 2)
+ 
+-set(CMAKE_INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}/lib")
++set(CMAKE_INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR}")
+ 
+ if(BUILD_STATIC)
+     add_library(Arcus STATIC ${arcus_SRCS})
+@@ -89,7 +92,7 @@
+ target_include_directories(Arcus PUBLIC
+     ${PROTOBUF_INCLUDE_DIR}
+     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/src>
+-    $<INSTALL_INTERFACE:include>
++    $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>
+ )
+ target_link_libraries(Arcus PUBLIC
+     ${PROTOBUF_LIBRARY}
+@@ -120,23 +123,23 @@
+ 
+ install(TARGETS Arcus
+     EXPORT Arcus-targets
+-    RUNTIME DESTINATION bin
+-    LIBRARY DESTINATION lib
+-    ARCHIVE DESTINATION lib
+-    PUBLIC_HEADER DESTINATION include/Arcus
++    RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
++    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
++    ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
++    PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/Arcus
+ )
+ 
+ install(EXPORT Arcus-targets
+-    DESTINATION lib/cmake/Arcus
++    DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/Arcus
+ )
+ 
+-configure_package_config_file(ArcusConfig.cmake.in ${CMAKE_BINARY_DIR}/ArcusConfig.cmake INSTALL_DESTINATION lib/cmake/Arcus)
++configure_package_config_file(ArcusConfig.cmake.in ${CMAKE_BINARY_DIR}/ArcusConfig.cmake INSTALL_DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/Arcus)
+ write_basic_package_version_file(${CMAKE_BINARY_DIR}/ArcusConfigVersion.cmake VERSION ${ARCUS_VERSION} COMPATIBILITY SameMajorVersion)
+ 
+ install(FILES
+     ${CMAKE_BINARY_DIR}/ArcusConfig.cmake
+     ${CMAKE_BINARY_DIR}/ArcusConfigVersion.cmake
+-    DESTINATION lib/cmake/Arcus
++    DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/Arcus
+ )
+ 
+ include(CPackConfig.cmake)

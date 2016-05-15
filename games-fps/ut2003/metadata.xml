@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>games</herd>
+<maintainer type="project">
+	<email>games@gentoo.org</email>
+	<name>Gentoo Games Project</name>
+</maintainer>
 <longdescription>
 Unreal Tounament 2003 is a first-person 3-D shooter and sequel to the 1999 Game of the Year, Unreal Tournament.  The game was ported to Linux by Ryan "icculus" Gordon under contract from Epic Games and the Linux installer was released in the retail box.  This game is commercial software and requires data from the original retail discs to play.  If you're interested in checking out the technology behind Unreal Tournament 2003, you can "emerge ut2003-demo" to get the playable demo.
 </longdescription>

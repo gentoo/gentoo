@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>nx</herd>
+	<maintainer type="person">
+		<email>voyageur@gentoo.org</email>
+		<name>Bernard Cafarelli</name>
+	</maintainer>
 	<longdescription>Enterprise Client is a free easy-to-use connection interface to allow quick access to your remote host where you have installed one of the NoMachine products. It's available for those who prefer just a standalone client application, rather than the NoMachine server/client app, either because regulatory requirements dictate that thin clients must install \“client-side\” software only, or simply because a scaled-down client app is your personal preference.</longdescription>
 </pkgmetadata>

@@ -1,9 +1,9 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
-USE_RUBY="ruby19 ruby20 ruby21"
+USE_RUBY="ruby20 ruby21"
 
 RUBY_FAKEGEM_EXTRADOC="README.md AUTHORS CONTRIBUTERS"
 
@@ -11,7 +11,7 @@ RUBY_FAKEGEM_EXTRAINSTALL="data"
 
 inherit ruby-fakegem
 
-DESCRIPTION="Yet-another-markdown-parser but fast, pure Ruby, using a strict syntax definition"
+DESCRIPTION="Yet-another-markdown-parser but fast, pure Ruby, using strict syntax definition"
 HOMEPAGE="http://kramdown.rubyforge.org/"
 
 LICENSE="MIT"

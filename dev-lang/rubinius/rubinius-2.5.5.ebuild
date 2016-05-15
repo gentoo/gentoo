@@ -15,7 +15,8 @@ SLOT="0"
 IUSE="+llvm"
 
 RDEPEND="
-	llvm? ( >=sys-devel/llvm-3.2 )
+	llvm? ( <sys-devel/llvm-3.6
+		>=sys-devel/llvm-3.2 )
 	dev-libs/openssl:0
 	sys-libs/ncurses
 	sys-libs/readline:0

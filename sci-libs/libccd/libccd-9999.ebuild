@@ -29,7 +29,7 @@ IUSE="double doc"
 RDEPEND=""
 DEPEND="${RDEPEND}
 	doc? ( dev-python/sphinx )"
-DOCS=( README )
+DOCS=( README.md )
 
 src_configure() {
 	local mycmakeargs=(

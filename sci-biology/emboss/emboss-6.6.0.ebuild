@@ -1,11 +1,12 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 
 AUTOTOOLS_AUTORECONF=1
-inherit autotools-utils emboss-r1 eutils readme.gentoo
+
+inherit autotools-utils emboss-r1 eutils readme.gentoo-r1
 
 DESCRIPTION="The European Molecular Biology Open Software Suite - A sequence analysis package"
 SRC_URI="ftp://emboss.open-bio.org/pub/EMBOSS/EMBOSS-${PV}.tar.gz"
@@ -58,4 +59,8 @@ src_install() {
 	# bug #115446). This change is documented in "README.gentoo".
 	mv "${ED}"/usr/share/EMBOSS/data/CODONS{,.orig} || \
 			die "Failed to move CODON directory."
+}
+
+pkg_postinst() {
+	readme.gentoo_print_elog
 }

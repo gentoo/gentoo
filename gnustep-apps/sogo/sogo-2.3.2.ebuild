@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -27,7 +27,7 @@ RDEPEND="
 	)
 "
 DEPEND="${RDEPEND}
-	>=gnustep-base/gnustep-make-2.6.2"
+	>=gnustep-base/gnustep-make-2.6.3"
 
 pkg_pretend() {
 	if use ssl && use gnutls && use libressl ; then

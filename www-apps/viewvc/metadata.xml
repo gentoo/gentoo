@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>web-apps</herd>
+	<maintainer type="project">
+		<email>web-apps@gentoo.org</email>
+		<name>Gentoo Webapps</name>
+	</maintainer>
 	<use>
 		<flag name="cvsgraph">Add <pkg>dev-vcs/cvsgraph</pkg> support to show graphical views of revisions and branches</flag>
 		<flag name="mod_wsgi">Add <pkg>www-apache/mod_wsgi</pkg> support</flag>

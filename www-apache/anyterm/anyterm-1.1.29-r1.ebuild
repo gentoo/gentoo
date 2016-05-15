@@ -1,10 +1,10 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
+EAPI=6
 
-inherit eutils flag-o-matic
+inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="A terminal anywhere"
 HOMEPAGE="http://anyterm.org/"
@@ -26,25 +26,30 @@ PATCHES=(
 )
 
 src_prepare() {
-	epatch "${PATCHES[@]}"
+	default
+
+	# Fix underlinking issue caused by recent boost versions
+	# depending on boost::system, Gentoo bug #579522
+	sed -e 's/\($(CXX) -o $@ $(LDFLAGS) $(OBJS) $(BLOBS) $(LINK_FLAGS)\)/\1 -lboost_system/' \
+		-i common.mk || die
 }
 
 src_compile() {
 	# this package uses `ld -r -b binary` and thus resulting executable contains
 	# executable stack
 	append-ldflags -Wl,-z,noexecstack
-	emake CC="$(tc-getCC)" CXX="$(tc-getCXX)" || die
+	emake CC="$(tc-getCC)" CXX="$(tc-getCXX)"
 }
 
 src_install() {
-	dosbin anytermd || die
-	dodoc CHANGELOG README || die
-	doman anytermd.1 || die
-	newinitd "${FILESDIR}/anyterm.init.d" anyterm || die
-	newconfd "${FILESDIR}/anyterm.conf.d" anyterm || die
+	dosbin anytermd
+	dodoc CHANGELOG README
+	doman anytermd.1
+	newinitd "${FILESDIR}/anyterm.init.d" anyterm
+	newconfd "${FILESDIR}/anyterm.conf.d" anyterm
 }
 
 pkg_postinst() {
-	elog "To proceed installation, read following:"
+	elog "To proceed with installation, read the following:"
 	elog "http://anyterm.org/1.1/install.html"
 }

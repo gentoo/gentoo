@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>gstreamer</herd>
+<maintainer type="project">
+	<email>gstreamer@gentoo.org</email>
+	<name>GStreamer package maintainers</name>
+</maintainer>
 <longdescription lang="en">
 	GStreamer plugin for capturing video source via firewire (IEEE1394 interface).
 

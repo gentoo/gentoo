@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>haskell</herd>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
 	<longdescription>
 		A general sequence representation with arbitrary
 		annotations, for use as a base for implementations of
@@ -9,7 +12,7 @@
 		in section 4 of
 		
 		* Ralf Hinze and Ross Paterson,
-		\&quot;Finger trees: a simple general-purpose data structure\&quot;,
+		\"Finger trees: a simple general-purpose data structure\",
 		/Journal of Functional Programming/ 16:2 (2006) pp 197-217.
 		&lt;http://www.soi.city.ac.uk/~ross/papers/FingerTree.html&gt;
 		

@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>ruby</herd>
-  <herd>netmon</herd>
+  <maintainer type="project">
+<email>ruby@gentoo.org</email>
+<name>Gentoo Ruby Project</name>
+  </maintainer>
+<maintainer type="project">
+<email>netmon@gentoo.org</email>
+<name>Gentoo network monitoring and analysis project</name>
+  </maintainer>
 <use>
-<flag name='graph'>Enable support for graphing functions</flag>
+<flag name="graph">Enable support for graphing functions</flag>
 </use>
 </pkgmetadata>

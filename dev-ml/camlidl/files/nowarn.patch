@@ -1,0 +1,13 @@
+Index: camlidl-1.05/compiler/Makefile
+===================================================================
+--- camlidl-1.05.orig/compiler/Makefile
++++ camlidl-1.05/compiler/Makefile
+@@ -29,7 +29,7 @@ PROG=camlidl$(EXE)
+ all: $(PROG)
+ 
+ $(PROG): $(OBJS)
+-	$(OCAMLC) -o $(PROG) $(OBJS)
++	$(OCAMLC) -w -a -o $(PROG) $(OBJS)
+ 
+ clean::
+ 	rm -f $(PROG)

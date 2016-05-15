@@ -1,10 +1,12 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
+
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="threads(+)"
+
 inherit python-single-r1 waf-utils
 
 DESCRIPTION="A set of C++ wrappers around the LV2 C API"
@@ -25,7 +27,9 @@ DEPEND="${RDEPEND}
 		media-gfx/graphviz )
 	virtual/pkgconfig"
 
-DOCS=( AUTHORS ChangeLog README )
+PATCHES=(
+	"${FILESDIR}/${P}-boost-system-underlinking.patch"
+)
 
 src_configure() {
 	local mywafconfargs=(
@@ -45,7 +49,7 @@ src_install() {
 
 	# It does not respect docdir properly, reported upstream
 	if use doc; then
-		mv "${ED}/usr/share/doc/${PF}/lvtk-1.0/html" "${ED}/usr/share/doc/${PF}/html"
-		rmdir "${ED}/usr/share/doc/${PF}/lvtk-1.0"
+		mv "${ED}/usr/share/doc/${PF}/lvtk-1.0/html" "${ED}/usr/share/doc/${PF}/html" || die
+		rmdir "${ED}/usr/share/doc/${PF}/lvtk-1.0" || die
 	fi
 }

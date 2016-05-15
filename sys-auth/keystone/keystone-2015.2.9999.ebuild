@@ -27,19 +27,6 @@ DEPEND="
 		${RDEPEND}
 		>=dev-python/bashate-0.2[${PYTHON_USEDEP}]
 		<=dev-python/bashate-0.3.2[${PYTHON_USEDEP}]
-		memcached? (
-			>=dev-python/python-memcached-1.48[${PYTHON_USEDEP}]
-			<=dev-python/python-memcached-1.57[${PYTHON_USEDEP}]
-		)
-		mongo? (
-			>=dev-python/pymongo-2.6.3[${PYTHON_USEDEP}]
-			<dev-python/pymongo-3.2[${PYTHON_USEDEP}]
-		)
-		ldap? (
-			>=dev-python/python-ldap-2.4[$(python_gen_usedep 'python2_7')]
-			<=dev-python/python-ldap-2.4.20[$(python_gen_usedep 'python2_7')]
-			~dev-python/ldappool-1.0[$(python_gen_usedep 'python2_7')]
-		)
 		>=dev-python/coverage-3.6[${PYTHON_USEDEP}]
 		<=dev-python/coverage-4.0.3[${PYTHON_USEDEP}]
 		>=dev-python/fixtures-1.3.1[${PYTHON_USEDEP}]
@@ -159,7 +146,21 @@ RDEPEND="
 	<dev-python/jsonschema-3.0.0[${PYTHON_USEDEP}]
 	~dev-python/pycadf-1.1.0[${PYTHON_USEDEP}]
 	<=dev-python/pycadf-2.0.1[${PYTHON_USEDEP}]
-	~dev-python/msgpack-0.4.6[${PYTHON_USEDEP}]"
+	~dev-python/msgpack-0.4.6[${PYTHON_USEDEP}]
+	memcached? (
+		>=dev-python/python-memcached-1.48[${PYTHON_USEDEP}]
+		<=dev-python/python-memcached-1.57[${PYTHON_USEDEP}]
+	)
+	mongo? (
+		>=dev-python/pymongo-2.6.3[${PYTHON_USEDEP}]
+		<dev-python/pymongo-3.2[${PYTHON_USEDEP}]
+	)
+	ldap? (
+		>=dev-python/python-ldap-2.4[$(python_gen_usedep 'python2_7')]
+		<=dev-python/python-ldap-2.4.20[$(python_gen_usedep 'python2_7')]
+		~dev-python/ldappool-1.0[$(python_gen_usedep 'python2_7')]
+	)
+	www-servers/uwsgi[python,${PYTHON_USEDEP}]"
 
 PATCHES=(
 )
@@ -200,7 +201,7 @@ python_install() {
 	doins etc/default_catalog.templates etc/policy.json
 	doins etc/policy.v3cloudsample.json etc/keystone-paste.ini
 	insinto /etc/keystone/httpd
-	doins httpd/keystone.py httpd/wsgi-keystone.conf
+	doins httpd/*
 
 	fowners keystone:keystone /etc/keystone /var/log/keystone
 }

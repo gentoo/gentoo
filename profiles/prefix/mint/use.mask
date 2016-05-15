@@ -43,7 +43,6 @@ sybase-ct
 rtc
 uclibc
 voodoo3
-pvm
 v4l
 
 # git doesn't work at this time, bug #339031\

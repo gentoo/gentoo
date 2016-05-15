@@ -1,9 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>cjk</herd>
-	<herd>tex</herd>
-	<herd>printing</herd>
+	<maintainer type="project">
+		<email>cjk@gentoo.org</email>
+		<name>Cjk</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>tex@gentoo.org</email>
+		<name>Gentoo TeX Project</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>printing@gentoo.org</email>
+		<name>Gentoo Printing Project</name>
+	</maintainer>
 	<longdescription lang="en">
 		The DVIPDFMx (formerly dvipdfm-cjk) project provides an eXtended
 		version of the dvipdfm, a DVI to PDF translator developed by Mark A.

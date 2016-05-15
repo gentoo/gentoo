@@ -155,16 +155,6 @@ diff -pur unzip60orig/unzip.c unzip60/unzip.c
  #ifdef MORE
     static ZCONST char Far ZipInfoUsageLine4[] =
       "  -M  page output through built-in \"more\"\n";
-@@ -570,8 +572,7 @@ Send bug reports using //www.info-zip.or
- #else /* !VMS */
- # ifdef COPYRIGHT_CLEAN
-    static ZCONST char Far UnzipUsageLine1[] = "\
--UnZip %d.%d%d%s of %s, by Info-ZIP.  Maintained by C. Spieler.  Send\n\
--bug reports using http://www.info-zip.org/zip-bug.html; see README for details.\
-+UnZip %d.%d%d%s of %s, by ALT Linux Team.  Original by Info-ZIP.\
- \n\n";
- # else
-    static ZCONST char Far UnzipUsageLine1[] = "\
 @@ -673,7 +674,9 @@ modifiers:\n\
    -j  junk paths (do not make directories)   -aa treat ALL files as text\n\
    -U  use escapes for all non-ASCII Unicode  -UU ignore any Unicode fields\n\

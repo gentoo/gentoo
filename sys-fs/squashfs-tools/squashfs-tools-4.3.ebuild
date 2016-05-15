@@ -27,24 +27,31 @@ DEPEND="${RDEPEND}"
 
 S="${WORKDIR}/squashfs${PV}/${PN}"
 
+src_prepare() {
+	epatch "${FILESDIR}"/${P}-sysmacros.patch
+}
+
+use10() { usex $1 1 2 ; }
+
 src_configure() {
 	# set up make command line variables in EMAKE_SQUASHFS_CONF
 	EMAKE_SQUASHFS_CONF=(
-		$(usex lzma LZMA_XZ_SUPPORT=1 LZMA_XS_SUPPORT=0)
-		$(usex lzo LZO_SUPPORT=1 LZO_SUPPORT=0)
-		$(usex lz4 LZ4_SUPPORT=1 LZ4_SUPPORT=0)
-		$(usex xattr XATTR_SUPPORT=1 XATTR_SUPPORT=0)
-		$(usex xz XZ_SUPPORT=1 XZ_SUPPORT=0)
+		LZMA_XZ_SUPPORT=$(use10 lzma)
+		LZO_SUPPORT=$(use10 lzo)
+		LZ4_SUPPORT=$(use10 lz4)
+		XATTR_SUPPORT=$(use10 xattr)
+		XZ_SUPPORT=$(use10 xz)
 	)
 
 	tc-export CC
 }
 
 src_compile() {
-	emake ${EMAKE_SQUASHFS_CONF[@]}
+	emake "${EMAKE_SQUASHFS_CONF[@]}"
 }
 
 src_install() {
 	dobin mksquashfs unsquashfs
-	dodoc ../README
+	cd ..
+	dodoc CHANGES PERFORMANCE.README pseudo-file.example README* OLD-READMEs/*
 }

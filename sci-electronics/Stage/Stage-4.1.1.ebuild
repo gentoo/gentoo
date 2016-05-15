@@ -30,7 +30,7 @@ RDEPEND="
 	dev-libs/libltdl:0
 	virtual/jpeg:0
 	media-libs/libpng:0=
-	x11-libs/fltk
+	x11-libs/fltk[opengl]
 	virtual/glu
 	virtual/opengl
 "

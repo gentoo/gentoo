@@ -1,3 +1,5 @@
+http://devel.aegisub.org/ticket/1898
+
 diff --git a/tools/respack.lua b/tools/respack.lua
 index 85955d1..1281ac2 100755
 --- a/tools/respack.lua
@@ -9,5 +11,5 @@ index 85955d1..1281ac2 100755
 -    local id = line:gsub('^.*/', ''):gsub('\.[a-z]+$', '')
 +    local id = line:gsub('^.*/', ''):gsub('%.[a-z]+$', '')
      out_cpp:write("const unsigned char " .. id .. "[] = {")
- 
+
      local len = 0

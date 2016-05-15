@@ -36,7 +36,7 @@ DEPEND="${RDEPEND}
 	sys-devel/gettext
 	virtual/pkgconfig"
 
-DOCS=( AUTHORS README package/snapper.changes )
+DOCS=( AUTHORS README.md package/snapper.changes )
 
 PATCHES=( "${FILESDIR}"/cron-confd.patch )
 

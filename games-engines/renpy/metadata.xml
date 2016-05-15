@@ -1,17 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>games</herd>
-	<herd>proxy-maintainers</herd>
-	<maintainer>
+	<maintainer type="person">
 		<email>hasufell@gentoo.org</email>
 		<name>Julian Ospald</name>
 		<description>Maintainer. Assign bugs to him</description>
 	</maintainer>
-	<maintainer>
+	<maintainer type="person">
 		<email>maksverver@geocities.com</email>
 		<name>Maks Verver</name>
 		<description>Proxy maintainer. CC him on bugs</description>
+	</maintainer>
+	<maintainer type="project">
+		<email>games@gentoo.org</email>
+		<name>Gentoo Games Project</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription>
 		Ren'Py is a free and cross-platform visual novel engine that
@@ -22,18 +28,17 @@
 		while its Python support allows for complex simulation games.
 	</longdescription>
 	<use>
-		<flag name='development'>Install IDE for game developers and
+		<flag name="development">Install IDE for game developers and
 			an empty game template</flag>
 	</use>
 	<upstream>
-		<maintainer status='active'>
+		<maintainer status="active">
 			<email>pytom@bishoujo.us</email>
 			<name>Tom Rothamel</name>
 		</maintainer>
 		<changelog>http://www.renpy.org/latest.html</changelog>
 		<bugs-to>https://github.com/renpy/renpy/issues</bugs-to>
 		<doc>http://renpy.org/wiki/renpy/doc</doc>
-		<remote-id type='github'>renpy/renpy</remote-id>
+		<remote-id type="github">renpy/renpy</remote-id>
 	</upstream>
 </pkgmetadata>
-

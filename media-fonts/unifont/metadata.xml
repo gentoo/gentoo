@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>fonts</herd>
-<herd>cjk</herd>
-<maintainer>
+<maintainer type="person">
 	<email>floppym@gentoo.org</email>
 	<name>Mike Gilbert</name>
+</maintainer>
+<maintainer type="project">
+	<email>fonts@gentoo.org</email>
+	<name>Fonts</name>
+</maintainer>
+<maintainer type="project">
+	<email>cjk@gentoo.org</email>
+	<name>Cjk</name>
 </maintainer>
 <use>
 	<flag name="fontforge">Use <pkg>media-gfx/fontforge</pkg> to build fonts from source</flag>

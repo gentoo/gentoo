@@ -1,0 +1,67 @@
+* Fix QA issues in desktop file
+* Make buildsystem respect CXX, CXXFLAGS and LDFLAGS
+https://bugs.gentoo.org/show_bug.cgi?id=334465
+
+--- bpmdetect/src/bpmdetect.desktop
++++ bpmdetect/src/bpmdetect.desktop
+@@ -2,7 +2,7 @@
+ Encoding=UTF-8
+ Name=BPMDetect
+ Exec=bpmdetect
+-Icon=bpmdetect-icon.png
++Icon=bpmdetect-icon
+ Type=Application
+ Comment=Automatic BPM detection utility
+-Categories=Application;AudioVideo;Audio:
++Categories=AudioVideo;Audio;
+--- bpmdetect/src/SConscript
++++ bpmdetect/src/SConscript
+@@ -1,5 +1,6 @@
+ #! /usr/bin/env python
+ import os, sys, glob
++import SCons.Util
+ 
+ if not sys.platform.startswith('win'):
+   BOLD   ="\033[1m"
+@@ -156,17 +157,18 @@
+     env.__delitem__('CPPPATH')
+   if env.has_key('CPPDEFINES'):
+     env.__delitem__('CPPDEFINES')
+-  if env.has_key('CXXFLAGS'):
+-    env.__delitem__('CXXFLAGS')
+   if env.has_key('LIBPATH'):
+     env.__delitem__('LIBPATH')
+   if env.has_key('LIBS'):
+     env.__delitem__('LIBS')
+-  if env.has_key('LINKFLAGS'):
+-    env.__delitem__('LINKFLAGS')
+   if env.has_key('QT3'):
+     env.__delitem__('QT3')
+ 
++  if os.environ.has_key('CXXFLAGS'):
++    env['CXXFLAGS'] += SCons.Util.CLVar(os.environ['CXXFLAGS'])
++  if os.environ.has_key('LDFLAGS'):
++    env['LINKFLAGS'] += SCons.Util.CLVar(os.environ['LDFLAGS'])
++
+   print BOLD + """
+ --------------------------------------------------""" + NORMAL
+   print "Use MinGW compiler                : ",
+@@ -189,7 +191,6 @@
+       env.Append(CXXFLAGS   = '-g')
+   else:
+     print 'no '
+-    env.Append(CXXFLAGS = '-O2' )
+     env.Append(CPPDEFINES = ['NDEBUG', 'NO_DEBUG'])
+     env['DEBUG'] = 0
+ 
+@@ -309,6 +310,10 @@
+   ( 'LINKFLAGS', 'linker flags'),
+   ( 'QT3', 'use qt3')
+ )
++if os.environ.has_key('CC'):
++  env['CC'] = os.environ['CC']
++if os.environ.has_key('CXX'):
++  env['CXX'] = os.environ['CXX']
+ opts.Update(env)
+ 
+ # to avoid an error message 'how to make target configure... ?'

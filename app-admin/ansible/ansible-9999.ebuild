@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -6,36 +6,42 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1 eutils git-r3 readme.gentoo
+inherit distutils-r1 eutils git-r3
 
-DESCRIPTION="Radically simple deployment, model-driven configuration management, and command execution framework"
+DESCRIPTION="Model-driven deployment, config management, and command execution framework"
 HOMEPAGE="http://ansible.com/"
-SRC_URI=""
+# the version here is special because upstream did a 2.0.0 release on accident one time...
 EGIT_REPO_URI="git://github.com/ansible/ansible.git"
 EGIT_BRANCH="devel"
 
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS=""
-IUSE="test"
+IUSE="keyczar test"
 
 RDEPEND="
-	dev-python/httplib2[${PYTHON_USEDEP}]
+	keyczar? ( dev-python/keyczar[${PYTHON_USEDEP}] )
+	dev-python/paramiko[${PYTHON_USEDEP}]
 	dev-python/jinja[${PYTHON_USEDEP}]
-	dev-python/keyczar[${PYTHON_USEDEP}]
-	>=dev-python/pycrypto-2.6[${PYTHON_USEDEP}]
 	dev-python/pyyaml[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]
+	>=dev-python/pycrypto-2.6[${PYTHON_USEDEP}]
+	dev-python/httplib2[${PYTHON_USEDEP}]
+	dev-python/six[${PYTHON_USEDEP}]
 	net-misc/sshpass
 	virtual/ssh
 "
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
+	>=dev-python/packaging-16.6[${PYTHON_USEDEP}]
 	test? (
 		${RDEPEND}
-		dev-python/mock[${PYTHON_USEDEP}]
 		dev-python/nose[${PYTHON_USEDEP}]
+		>=dev-python/mock-1.0.1[${PYTHON_USEDEP}]
+		<dev-python/mock-1.1[${PYTHON_USEDEP}]
 		dev-python/passlib[${PYTHON_USEDEP}]
+		dev-python/coverage[${PYTHON_USEDEP}]
+		dev-python/unittest2[${PYTHON_USEDEP}]
 		dev-vcs/git
 	)"
 
@@ -55,15 +61,4 @@ python_install_all() {
 	distutils-r1_python_install_all
 
 	doman docs/man/man1/*.1
-
-	newenvd "${FILESDIR}"/${PN}.env 95ansible
-}
-
-src_install() {
-	distutils-r1_src_install
-	readme.gentoo_create_doc
-}
-
-pkg_postinst() {
-	optfeature "Alternative ssh transport" dev-python/paramiko
 }

@@ -1,17 +1,18 @@
-From 6eaa9b0dc18e6ddff093c2e99a3c7d5eeb9c8f5d Mon Sep 17 00:00:00 2001
-From: Alexandre Rostovtsev <tetromino@gentoo.org>
-Date: Sun, 15 Mar 2015 14:42:25 -0400
-Subject: [PATCH] Backport some git master fixes for GL/GLU detection to 1.2.0
+Fix broken multilib gl and glu detection
+https://bugs.gentoo.org/543050
+https://bugs.gentoo.org/578482
 
----
- configure.in | 313 +++++++++--------------------------------------------------
- 1 file changed, 44 insertions(+), 269 deletions(-)
-
-diff --git a/configure.in b/configure.in
-index e5b678c..5aa1b7d 100644
---- a/configure.in
-+++ b/configure.in
-@@ -502,274 +502,58 @@ AC_SUBST([GDKGLEXT_WIN_EXTRA_DEFS])
+--- gtkglext-1.2.0/configure.in
++++ gtkglext-1.2.0/configure.in
+@@ -139,6 +139,7 @@
+ AC_ISC_POSIX
+ #AM_DISABLE_STATIC
+ AC_LIBTOOL_WIN32_DLL
++AC_PROG_CXX
+ AC_PROG_LIBTOOL
+ 
+ platform_win32=no
+@@ -502,275 +503,59 @@
  # Checks for OpenGL
  ##################################################
  
@@ -38,45 +39,23 @@ index e5b678c..5aa1b7d 100644
 -  GL_CFLAGS="-I$with_gl_includedir"
 -elif test "x$with_gl_prefix" != "xauto"; then
 -  GL_CFLAGS="-I$with_gl_prefix/include"
-+if test "x$gdktarget" = "xx11"; then
-+  with_gl=x
- fi
- 
+-fi
+-
 -if test "x$with_gl_libdir" != "xauto"; then
 -  GL_LDFLAGS="-L$with_gl_libdir"
 -elif test "x$with_gl_prefix" != "xauto"; then
 -  GL_LDFLAGS="-L$with_gl_prefix/lib"
-+AX_CHECK_GL
-+AS_IF([test X$no_gl = Xyes],
-+      [AC_MSG_FAILURE([OpenGL is required.])])
-+AX_CHECK_GLU
-+# FIXME: AX_CHECK_GLU's behavior diverges from common autoconf conventions
-+AM_CONDITIONAL([GLU],[test "$no_glu" != yes])
-+
-+# Checks for some types in gdk/GL/glxext.h
-+
-+# GLXFBConfigSGIX
-+GDKGLEXT_NEED_GLXFBCONFIGSGIX_TYPEDEF=no
-+AC_CHECK_TYPES([GLXFBConfigSGIX], , ,
-+               [#include <GL/glx.h>])
-+if test "x$ac_cv_type_GLXFBConfigSGIX" = "xno" ; then
-+  GDKGLEXT_NEED_GLXFBCONFIGSGIX_TYPEDEF=yes
- fi
- 
+-fi
+-
 -save_CPPFLAGS="$CPPFLAGS"
 -CPPFLAGS="$CPPFLAGS $GL_CFLAGS $WINDOWING_CFLAGS"
 -save_LIBS="$LIBS"
 -LIBS="$LIBS $GL_LDFLAGS $WINDOWING_LIBS $MATH_LIB"
 -
--if test "x$gdktarget" = "xx11"; then
+ if test "x$gdktarget" = "xx11"; then
 -  AC_CHECK_HEADERS([GL/glx.h], ,
 -                   [AC_MSG_ERROR([Cannot find GLX header])])
-+# GLXFBConfigIDSGIX
-+GDKGLEXT_NEED_GLXFBCONFIGIDSGIX_TYPEDEF=no
-+AC_CHECK_TYPES([GLXFBConfigIDSGIX], , ,
-+               [#include <GL/glx.h>])
-+if test "x$ac_cv_type_GLXFBConfigIDSGIX" = "xno" ; then
-+  GDKGLEXT_NEED_GLXFBCONFIGIDSGIX_TYPEDEF=yes
++  with_gl=x
  fi
  
 -AC_CHECK_HEADERS([GL/gl.h GL/glu.h], ,
@@ -294,6 +273,32 @@ index e5b678c..5aa1b7d 100644
 -dnl                GL_LIBS="-lglu32 $GL_LIBS",
 -dnl                AC_MSG_ERROR(Cannot find GLU library),
 -dnl                $GL_LIBS)
+-
++AX_CHECK_GL
++AS_IF([test X$no_gl = Xyes],
++      [AC_MSG_FAILURE([OpenGL is required.])])
++AX_CHECK_GLU
++# FIXME: AX_CHECK_GLU's behavior diverges from common autoconf conventions
++AM_CONDITIONAL([GLU],[test "$no_glu" != yes])
++
++# Checks for some types in gdk/GL/glxext.h
++
++# GLXFBConfigSGIX
++GDKGLEXT_NEED_GLXFBCONFIGSGIX_TYPEDEF=no
++AC_CHECK_TYPES([GLXFBConfigSGIX], , ,
++               [#include <GL/glx.h>])
++if test "x$ac_cv_type_GLXFBConfigSGIX" = "xno" ; then
++  GDKGLEXT_NEED_GLXFBCONFIGSGIX_TYPEDEF=yes
++fi
++
++# GLXFBConfigIDSGIX
++GDKGLEXT_NEED_GLXFBCONFIGIDSGIX_TYPEDEF=no
++AC_CHECK_TYPES([GLXFBConfigIDSGIX], , ,
++               [#include <GL/glx.h>])
++if test "x$ac_cv_type_GLXFBConfigIDSGIX" = "xno" ; then
++  GDKGLEXT_NEED_GLXFBCONFIGIDSGIX_TYPEDEF=yes
++fi
++
 +# GLXPbufferSGIX
 +GDKGLEXT_NEED_GLXPBUFFERSGIX_TYPEDEF=no
 +AC_CHECK_TYPES([GLXPbufferSGIX], , ,
@@ -301,13 +306,21 @@ index e5b678c..5aa1b7d 100644
 +if test "x$ac_cv_type_GLXPbufferSGIX" = "xno" ; then
 +  GDKGLEXT_NEED_GLXPBUFFERSGIX_TYPEDEF=yes
 +fi
- 
++
 +# GLXVideoSourceSGIX
 +GDKGLEXT_NEED_GLXVIDEOSOURCESGIX_TYPEDEF=no
 +AC_CHECK_TYPES([GLXVideoSourceSGIX], , ,
 +               [#include <GL/glx.h>])
 +if test "x$ac_cv_type_GLXVideoSourceSGIX" = "xno" ; then
 +  GDKGLEXT_NEED_GLXVIDEOSOURCESGIX_TYPEDEF=yes
++fi
++
++# __GLXextFuncPtr
++GDKGLEXT_NEED_GLXEXTFUNCPTR_TYPEDEF=no
++AC_CHECK_TYPES([__GLXextFuncPtr], , ,
++               [#include <GL/glx.h>])
++if test "x$ac_cv_type___GLXextFuncPtr" = "xno" ; then
++  GDKGLEXT_NEED_GLXEXTFUNCPTR_TYPEDEF=yes
  fi
  
 -dnl # if using mesa, check for xmesa.h
@@ -319,17 +332,11 @@ index e5b678c..5aa1b7d 100644
 -dnl   # force a failed check
 -dnl   AM_CONDITIONAL(ENABLE_XMESA_FX, test "no" = "yes")
 -dnl fi
-+# __GLXextFuncPtr
-+GDKGLEXT_NEED_GLXEXTFUNCPTR_TYPEDEF=no
-+AC_CHECK_TYPES([__GLXextFuncPtr], , ,
-+               [#include <GL/glx.h>])
-+if test "x$ac_cv_type___GLXextFuncPtr" = "xno" ; then
-+  GDKGLEXT_NEED_GLXEXTFUNCPTR_TYPEDEF=yes
-+fi
- 
+-
  # Checks for typedefs in gdk/GL/glext.h
  
-@@ -781,22 +565,13 @@ if test "x$ac_cv_type_GLhalfNV" = "xno" ; then
+ # GLhalfNV
+@@ -781,22 +566,13 @@
    GDKGLEXT_NEED_GLHALFNV_TYPEDEF=yes
  fi
  
@@ -353,6 +360,3 @@ index e5b678c..5aa1b7d 100644
  GDKGLEXT_DEP_CFLAGS="$GDKGLEXT_EXTRA_CFLAGS `$PKG_CONFIG --cflags $GDKGLEXT_PACKAGES`"
  GDKGLEXT_DEP_LIBS="$GDKGLEXT_EXTRA_LIBS `$PKG_CONFIG --libs $GDKGLEXT_PACKAGES` $MATH_LIB"
  AC_SUBST([GDKGLEXT_PACKAGES])
--- 
-2.3.2
-

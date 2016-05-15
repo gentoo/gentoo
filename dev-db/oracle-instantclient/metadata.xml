@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="person">
+  <email>haubi@gentoo.org</email>
+</maintainer>
+<longdescription>
+	Free, light-weight and easily installed Oracle Database libraries
+	and SDKs for building and connecting client applications to local
+	or remote Oracle Databases.
+</longdescription>
+<use>
+	<flag name="jdbc">Support for XA, Internationalization, and RowSet operations under JDBC.
+	</flag>
+	<flag name="odbc">Libraries for enabling ODBC applications.
+	</flag>
+	<flag name="sdk">Header files and an example makefile for developing Oracle applications.
+	</flag>
+	<flag name="sqlplus">Libraries and executable for running SQL*Plus.
+	</flag>
+	<flag name="tools">Workload Replay Client.
+	</flag>
+</use>
+</pkgmetadata>

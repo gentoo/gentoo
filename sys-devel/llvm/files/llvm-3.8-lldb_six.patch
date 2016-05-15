@@ -1,0 +1,13 @@
+diff -Naur llvm-3.8.0.src.orig/tools/lldb/scripts/Python/finishSwigPythonLLDB.py llvm-3.8.0.src/tools/lldb/scripts/Python/finishSwigPythonLLDB.py
+--- llvm-3.8.0.src.orig/tools/lldb/scripts/Python/finishSwigPythonLLDB.py	2015-12-11 16:43:36.000000000 +0100
++++ llvm-3.8.0.src/tools/lldb/scripts/Python/finishSwigPythonLLDB.py	2016-03-09 14:12:15.614483414 +0100
+@@ -720,9 +720,6 @@
+         bOk, strMsg = create_symlinks(vDictArgs, strFrameworkPythonDir)
+ 
+     if bOk:
+-        bOk, strMsg = copy_six(vDictArgs, strFrameworkPythonDir)
+-
+-    if bOk:
+         bOk, strMsg = copy_lldbpy_file_to_lldb_pkg_dir(vDictArgs,
+                                                        strFrameworkPythonDir,
+                                                        strCfgBldDir)

@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>games</herd>
+<maintainer type="project">
+	<email>games@gentoo.org</email>
+	<name>Gentoo Games Project</name>
+</maintainer>
 <longdescription lang="en">
 "Super Transbal 2" is the sequel of "Transball" and "Transball 2", Inspired in
 THRUST type of games (and concretely in ZARA THRUSTA for the Amiga 500). In each

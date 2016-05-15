@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>tcltk</herd>
-	<maintainer>
+	<maintainer type="project">
 		<email>tcltk@gentoo.org</email>
 		<description>TCL/TK Herd.</description>
 	</maintainer>

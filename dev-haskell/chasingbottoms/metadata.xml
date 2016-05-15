@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>haskell</herd>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
 	<longdescription>
 		Do you ever feel the need to test code involving bottoms (e.g. calls to
 		the @error@ function), or code involving infinite values? Then this
@@ -32,13 +35,13 @@
 		
 		Showing partial and infinite values (@\\\/!@ is join and @\/\\!@ is meet):
 		
-		[@&gt; approxShow 4 $ (True, bottom) \\\/! (bottom, \&#39;b\&#39;)@] @\&quot;Just (True, \&#39;b\&#39;)\&quot;@
+		[@&gt; approxShow 4 $ (True, bottom) \\\/! (bottom, \'b\')@] @\"Just (True, \'b\')\"@
 		
-		[@&gt; approxShow 4 $ (True, bottom) \/\\! (bottom, \&#39;b\&#39;)@] @\&quot;(_|_, _|_)\&quot;@
+		[@&gt; approxShow 4 $ (True, bottom) \/\\! (bottom, \'b\')@] @\"(_|_, _|_)\"@
 		
-		[@&gt; approxShow 4 $ ([1..\] :: [Int\])@] @\&quot;[1, 2, 3, _\&quot;@
+		[@&gt; approxShow 4 $ ([1..\] :: [Int\])@] @\"[1, 2, 3, _\"@
 		
-		[@&gt; approxShow 4 $ (cycle [bottom\] :: [Bool\])@] @\&quot;[_|_, _|_, _|_, _\&quot;@
+		[@&gt; approxShow 4 $ (cycle [bottom\] :: [Bool\])@] @\"[_|_, _|_, _|_, _\"@
 		
 		Approximately comparing infinite, partial values:
 		
@@ -47,16 +50,16 @@
 		[@&gt; approx 100 [2,4..\] \/=! approx 100 (filter even [bottom..\] :: [Int\])@] @True@
 		
 		The code above relies on the fact that @bottom@, just as @error
-		\&quot;...\&quot;@, @undefined@ and pattern match failures, yield
+		\"...\"@, @undefined@ and pattern match failures, yield
 		exceptions. Sometimes we are dealing with properly non-terminating
 		computations, such as the following example, and then it can be nice to
 		be able to apply a time-out:
 		
-		[@&gt; timeOut&#39; 1 (reverse [1..5\])@] @Value [5,4,3,2,1]@
+		[@&gt; timeOut' 1 (reverse [1..5\])@] @Value [5,4,3,2,1]@
 		
-		[@&gt; timeOut&#39; 1 (reverse [1..\])@] @NonTermination@
+		[@&gt; timeOut' 1 (reverse [1..\])@] @NonTermination@
 		
-		The time-out functionality can be used to treat \&quot;slow\&quot; computations as
+		The time-out functionality can be used to treat \"slow\" computations as
 		bottoms:
 		
 		[@&gt; let tweak = Tweak &amp;#x7b; approxDepth = Just 5, timeOutLimit = Just 2 &amp;#x7d;@]
@@ -86,8 +89,8 @@
 		[@ @] @Value ()@
 		
 		For the underlying theory and a larger example involving use of
-		QuickCheck, see the article \&quot;Chasing Bottoms, A Case Study in Program
-		Verification in the Presence of Partial and Infinite Values\&quot;
+		QuickCheck, see the article \"Chasing Bottoms, A Case Study in Program
+		Verification in the Presence of Partial and Infinite Values\"
 		(&lt;http://www.cse.chalmers.se/~nad/publications/danielsson-jansson-mpc2004.html&gt;).
 		
 		The code has been tested using GHC. Most parts can probably be

@@ -24,7 +24,7 @@ RDEPEND=""
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
-		${PYTHON_DEPS//sqlite?/sqlite}
+		$(python_gen_impl_dep sqlite)
 		dev-python/docutils[${PYTHON_USEDEP}]
 		<dev-python/numpy-1.9[$(python_gen_usedep 'python*')]
 		dev-python/pillow[${PYTHON_USEDEP}]

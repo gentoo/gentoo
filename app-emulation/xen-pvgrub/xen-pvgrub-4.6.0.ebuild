@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -27,7 +27,7 @@ DESCRIPTION="allows to boot Xen domU kernels from a menu.lst laying inside guest
 HOMEPAGE="http://xen.org/"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 -x86"
+KEYWORDS="amd64 x86"
 IUSE="custom-cflags"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
@@ -37,7 +37,7 @@ DEPEND="sys-devel/gettext
 	sys-apps/texinfo
 	x11-libs/pixman"
 
-RDEPEND=">=app-emulation/xen-4.2.1"
+RDEPEND=">=app-emulation/xen-tools-${PV}"
 
 pkg_setup() {
 	python-single-r1_pkg_setup

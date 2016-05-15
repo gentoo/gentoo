@@ -20,7 +20,7 @@ IUSE="debug"
 
 RDEPEND="
 	$(add_kdebase_dep baloo)
-	$(add_kdebase_dep kdepimlibs)
+	$(add_kdeapps_dep kdepimlibs)
 "
 DEPEND="${RDEPEND}
 	$(add_kdebase_dep kfilemetadata)

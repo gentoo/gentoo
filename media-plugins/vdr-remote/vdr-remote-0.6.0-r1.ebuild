@@ -12,7 +12,7 @@ SRC_URI="http://www.escape-edv.de/endriss/vdr/${P}.tgz"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="systemd"
 
 DEPEND=">=media-video/vdr-2.0.0"

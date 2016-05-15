@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>cpp</herd>
+<maintainer type="project">
+  <email>cpp@gentoo.org</email>
+  <name>Gentoo C++ Project</name>
+</maintainer>
 <longdescription>xerces-c is a C++ library specializing in XML parsing. It is released by the Apache Foundation</longdescription>
 <use>
-  <flag name='iconv'>Use iconv (<pkg>virtual/libiconv</pkg>) as message loader
+  <flag name="iconv">Use iconv (<pkg>virtual/libiconv</pkg>) as message loader
     and transcoder (in general it would be possible to use iconv only as
     message loader and something else like icu or the native method as
     transcoder and vice-versa, but this is a less common case and hard to
     handle)</flag>
-  <flag name='threads'>Enable threading support through pthread (or other
+  <flag name="threads">Enable threading support through pthread (or other
     libraries on AIX, IRIX, HPUX, Solars). Highly recommended</flag>
 </use>
 </pkgmetadata>

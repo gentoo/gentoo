@@ -1,8 +1,8 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="4"
+EAPI="5"
 if [[ ${PV} == *9999 ]] ; then
 	ESVN_REPO_URI="https://svn.enlightenment.org/svn/e/trunk/E16/e"
 	inherit subversion autotools
@@ -64,8 +64,7 @@ src_configure() {
 	econf \
 		$(use_enable nls) \
 		$(use_enable dbus) \
-		$(use_enable pulseaudio sound-pulse) \
-		--disable-sound-esound \
+		$(use_enable pulseaudio sound pulse) \
 		$(use_enable pango) \
 		$(use_enable xinerama) \
 		$(use_enable xrandr) \

@@ -1,0 +1,54 @@
+From 8e7ad3d50012688ca029d126cbc88251831fea88 Mon Sep 17 00:00:00 2001
+From: Dmitry Shachnev <mitya57@gmail.com>
+Date: Mon, 1 Feb 2016 00:05:30 +0300
+Subject: [PATCH 1/2] Set __qualname__ equal to __name__ on derived classes
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+To make output on Python ≥ 3.5 the same as on previous Python versions.
+
+This fixes #928.
+---
+ functional_tests/test_load_tests_from_test_case.py | 1 +
+ nose/util.py                                       | 1 +
+ unit_tests/test_xunit.py                           | 1 +
+ 3 files changed, 3 insertions(+)
+
+diff --git a/functional_tests/test_load_tests_from_test_case.py b/functional_tests/test_load_tests_from_test_case.py
+index 42f8563..13d0c8a 100644
+--- a/functional_tests/test_load_tests_from_test_case.py
++++ b/functional_tests/test_load_tests_from_test_case.py
+@@ -29,6 +29,7 @@ def setUp(self):
+                 pass
+             def tearDown(self):
+                 pass
++        Derived.__qualname__ = Derived.__name__
+         # must use nose loader here because the default loader in 2.3
+         # won't load tests from base classes
+         l = loader.TestLoader()
+diff --git a/nose/util.py b/nose/util.py
+index bfe1658..80ab1d4 100644
+--- a/nose/util.py
++++ b/nose/util.py
+@@ -643,6 +643,7 @@ class C(cls):
+         pass
+     C.__module__ = module
+     C.__name__ = cls.__name__
++    C.__qualname__ = cls.__name__
+     return C
+ 
+ 
+diff --git a/unit_tests/test_xunit.py b/unit_tests/test_xunit.py
+index 944d285..261436b 100644
+--- a/unit_tests/test_xunit.py
++++ b/unit_tests/test_xunit.py
+@@ -16,6 +16,7 @@ def mktest():
+     class TC(unittest.TestCase):
+         def runTest(self):
+             pass
++    TC.__qualname__ = TC.__name__
+     test = TC()
+     return test
+ 
+

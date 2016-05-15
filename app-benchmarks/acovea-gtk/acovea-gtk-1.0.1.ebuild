@@ -3,8 +3,7 @@
 # $Id$
 
 EAPI=5
-
-inherit autotools eutils
+inherit autotools eutils flag-o-matic
 
 DESCRIPTION="Analysis of Compiler Options via Evolutionary Algorithm GUI"
 HOMEPAGE="http://www.coyotegulch.com/products/acovea/"
@@ -22,12 +21,11 @@ DEPEND="${RDEPEND}"
 src_prepare() {
 	use unicode && epatch "${FILESDIR}"/${P}-unicode.patch
 	epatch "${FILESDIR}"/${P}-{libbrahe,libsigc,gcc4.3}.patch
-
-	eautorerconf
+	append-cxxflags -std=c++11
+	eautoreconf
 }
 
 src_install() {
-	DOCS=( ChangeLog NEWS README )
 	default
 	make_desktop_entry "${PN}" Acovea-gtk \
 		/usr/share/acovea-gtk/pixmaps/acovea_icon_064.png System

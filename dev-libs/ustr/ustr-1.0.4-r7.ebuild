@@ -26,38 +26,49 @@ src_prepare() {
 	multilib_copy_sources
 }
 
-multilib_src_compile() {
+_emake() {
 	emake \
 		AR="$(tc-getAR)" \
 		CC="$(tc-getCC)" \
-		CFLAGS="${CFLAGS}" \
+		CFLAGS="${CFLAGS} ${CPPFLAGS}" \
 		LDFLAGS="${LDFLAGS}" \
 		prefix="${EPREFIX}/usr" \
-		SHRDIR="/usr/share/${P}" \
+		libdir="${EPREFIX}/usr/$(get_libdir)" \
+		mandir="${EPREFIX}/usr/share/man" \
+		SHRDIR="${EPREFIX}/usr/share/${P}" \
+		DOCSHRDIR="${EPREFIX}/usr/share/doc/${PF}" \
 		HIDE= \
-		all-shared
+		"$@"
+}
+
+multilib_src_configure() {
+	# The included configure tests require execution.
+
+	# We require vsnprintf everywhere as it's in POSIX.
+	printf '#!/bin/sh\necho 0\n' > autoconf_vsnprintf
+	chmod a+rx autoconf_vsnprintf
+
+	# Always use stdint.h as it's in POSIX.
+	sed -i '/have_stdint_h=0/s:=0:=1:' Makefile || die
+
+	# Figure out the size of size_t.
+	printf '#include <sys/types.h>\nint main() { char buf[sizeof(size_t) - 8]; }\n' > sizet_test.c
+	 $(tc-getCC) ${CPPFLAGS} ${CFLAGS} -c sizet_test.c 2>/dev/null
+	printf '#!/bin/sh\necho %s\n' $(( $? == 0 )) > autoconf_64b
+	chmod a+rx autoconf_64b
+
+	# Generate the config file now to avoid bad makefile deps.
+	_emake ustr-import
+}
+
+multilib_src_compile() {
+	_emake all-shared
 }
 
 multilib_src_install() {
-	emake \
-		DESTDIR="${D}" \
-		prefix="${EPREFIX}/usr" \
-		libdir="${EPREFIX}/usr/$(get_libdir)" \
-		mandir="/usr/share/man" \
-		SHRDIR="/usr/share/${P}" \
-		DOCSHRDIR="/usr/share/doc/${PF}" \
-		HIDE= \
-		install
+	_emake DESTDIR="${D}" install
 }
 
 multilib_src_test() {
-	emake \
-		AR="$(tc-getAR)" \
-		CC="$(tc-getCC)" \
-		CFLAGS="${CFLAGS}" \
-		LDFLAGS="${LDFLAGS}" \
-		prefix="${EPREFIX}/usr" \
-		SHRDIR="/usr/share/${P}" \
-		HIDE= \
-		check
+	_emake check
 }

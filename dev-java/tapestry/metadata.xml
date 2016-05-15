@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>java</herd>
+<maintainer type="project">
+	<email>java@gentoo.org</email>
+	<name>Java</name>
+</maintainer>
 <longdescription lang="en">
 Tapestry is a powerful, open-source, all-Java framework for creating leading edge web applications in Java.
 
@@ -10,4 +13,3 @@ Tapestry reconceptualizes web application development in terms of objects, metho
 Tapestry is an alternative to scripting environments such as JavaServer Pages or Velocity. Tapestry goes far further, providing a complete framework for creating extremely dynamic applications with minimal amounts of coding.
 </longdescription>
 </pkgmetadata>
-

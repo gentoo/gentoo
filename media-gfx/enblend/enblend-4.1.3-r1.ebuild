@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -28,7 +28,7 @@ RDEPEND="
 	media-libs/plotutils[X]
 	media-libs/tiff:=
 	>=media-libs/vigra-1.8.0[openexr]
-	sci-libs/gsl
+	sci-libs/gsl:=
 	virtual/jpeg:0=
 	debug? ( dev-libs/dmalloc )
 	gpu? ( media-libs/freeglut )"

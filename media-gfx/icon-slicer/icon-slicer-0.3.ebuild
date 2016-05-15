@@ -5,8 +5,8 @@
 EAPI=2
 
 DESCRIPTION="utility for generating icon themes and libXcursor cursor themes"
-HOMEPAGE="http://www.freedesktop.org/software/icon-slicer/"
-SRC_URI="http://www.freedesktop.org/software/icon-slicer/releases/${P}.tar.gz"
+HOMEPAGE="https://www.freedesktop.org/software/icon-slicer/"
+SRC_URI="https://www.freedesktop.org/software/icon-slicer/releases/${P}.tar.gz"
 
 KEYWORDS="alpha amd64 ~hppa ia64 ppc sparc x86"
 LICENSE="GPL-2"

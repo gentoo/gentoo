@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer>
+<maintainer type="person">
   <email>hwoarang@gentoo.org</email>
   <name>Markos Chandras</name>
 </maintainer>
@@ -9,11 +9,11 @@
 	<flag name="acl"> Build and use the cifsidmap plugin</flag>
 	<flag name="augeas">Build internal configuration library</flag>
 	<flag name="locator">Install sssd's Kerberos plugin</flag>
-	<flag name='netlink'>Add support for netlink protocol via <pkg>dev-libs/libnl</pkg></flag>
-	<flag name='nfsv4'>Add support for the nfsv4 idmapd plugin provided by <pkg>net-libs/libnfsidmap</pkg></flag>
-	<flag name='manpages'>Build man pages with <pkg>dev-libs/libxslt</pkg></flag>
-	<flag name='autofs'>Build helper to let <pkg>net-fs/autofs</pkg> use sssd provided information</flag>
-	<flag name='ssh'>Build helper to let <pkg>net-misc/openssh</pkg> use sssd provided information</flag>
-	<flag name='sudo'>Build helper to let <pkg>app-admin/sudo</pkg> use sssd provided information</flag>
+	<flag name="netlink">Add support for netlink protocol via <pkg>dev-libs/libnl</pkg></flag>
+	<flag name="nfsv4">Add support for the nfsv4 idmapd plugin provided by <pkg>net-libs/libnfsidmap</pkg></flag>
+	<flag name="manpages">Build man pages with <pkg>dev-libs/libxslt</pkg></flag>
+	<flag name="autofs">Build helper to let <pkg>net-fs/autofs</pkg> use sssd provided information</flag>
+	<flag name="ssh">Build helper to let <pkg>net-misc/openssh</pkg> use sssd provided information</flag>
+	<flag name="sudo">Build helper to let <pkg>app-admin/sudo</pkg> use sssd provided information</flag>
 </use>
 </pkgmetadata>

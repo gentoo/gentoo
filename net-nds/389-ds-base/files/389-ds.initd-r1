@@ -1,0 +1,88 @@
+#!/sbin/runscript
+# Copyright 1999-2010 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+DIRSRV_EXEC="/usr/sbin/ns-slapd"
+PID_DIRECTORY="/var/run/dirsrv"
+DIRSRV_CONF_DIR="/etc/dirsrv"
+DS_INSTANCES=${DIRSRV_CONF_DIR}/slapd-*
+F389DS_INSTANCES=""
+
+depend() {
+	need net logger
+	use dns
+	provide dirsvr ldap
+}
+
+checkconfig() {
+	if [ -z "${DS_INSTANCES}" ]; then
+		eerror "389 Directory Server has not been configured."
+		eend 1
+		return 1
+	fi
+}
+
+start() {
+	checkconfig || return 1
+
+	for instance in ${DS_INSTANCES}; do
+		instance=$(basename ${instance})
+		# skip .removed instances, bug #338133
+		if [ "${instance%%.removed}" != "${instance}" ]; then
+			continue
+		fi
+		# Create the required directories in case they got nuked
+		mkdir -p /var/lock/dirsrv/${instance}
+		# This will probably break one day, we should be pulling out the suitespotuser from dse.ldif
+		chown dirsrv: /var/lock/dirsrv/${instance}
+		ebegin "Starting 389 Directory Server: instance ${instance}"
+		start-stop-daemon --start --quiet -m \
+			--pidfile ${PID_DIRECTORY}/${instance}.startpid \
+			--exec ${DIRSRV_EXEC} -- -D ${DIRSRV_CONF_DIR}/${instance} \
+			-i ${PID_DIRECTORY}/${instance}.pid \
+			-w ${PID_DIRECTORY}/${instance}.startpid
+		sts=${?}
+		eend ${sts}
+		if [ "${sts}" != "0" ]; then
+			return 1
+		fi
+	done
+}
+
+
+
+stop() {
+	checkconfig || return 1
+
+	for instance in ${DS_INSTANCES}; do
+		instance=$(basename ${instance})
+		if [ "${instance%%.removed}" != "${instance}" ]; then
+			continue
+		fi
+		ebegin "Stopping 389 Directory Server: instance ${instance}"
+		start-stop-daemon --stop --quiet \
+			--pidfile ${PID_DIRECTORY}/${instance}.pid \
+			--exec ${DIRSRV_EXEC}
+		eend ${?}
+	done
+}
+
+status() {
+	for instance in ${DS_INSTANCES}; do
+		instance=$(basename ${instance})
+		if [ "${instance%%.removed}" != "${instance}" ]; then
+			continue
+		fi
+		if [ -e ${PID_DIRECTORY}/${instance}.pid ]; then
+			pid=$(cat ${PID_DIRECTORY}/${instance}.pid)
+			if [ $(echo "$pid" | grep -c $pid) -ge 1 ]; then
+				einfo "389 Directory Server: instance ${instance} (pid $pid) running."
+			else
+				ewarn "389 Directory Server: instance ${instance} (pid $pid) NOT running."
+			fi
+		else
+			eerror "389 Directory Server: instance ${instance} is NOT running."
+		fi
+	done
+}

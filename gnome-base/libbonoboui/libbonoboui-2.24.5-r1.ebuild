@@ -10,7 +10,7 @@ GNOME_TARBALL_SUFFIX="bz2"
 inherit eutils gnome2 virtualx
 
 DESCRIPTION="User Interface part of libbonobo"
-HOMEPAGE="https://library.gnome.org/devel/libbonoboui/"
+HOMEPAGE="https://developer.gnome.org/libbonoboui/"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"

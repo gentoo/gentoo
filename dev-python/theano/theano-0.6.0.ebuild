@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -11,15 +11,14 @@ inherit distutils-r1 versionator
 MYPN=Theano
 MYP=${MYPN}-$(replace_version_separator 3 '')
 
-DESCRIPTION="Python library to define and optimize multi-dimensional arrays mathematical expressions"
+DESCRIPTION="Define and optimize multi-dimensional arrays mathematical expressions"
 HOMEPAGE="https://github.com/Theano/Theano"
-LICENSE="BSD"
-
 SRC_URI="mirror://pypi/${MYPN:0:1}/${MYPN}/${MYP}.tar.gz"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 
 SLOT="0"
+LICENSE="BSD"
 IUSE="test"
+KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 
 RDEPEND="sci-libs/scipy[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
@@ -29,5 +28,5 @@ DEPEND="${RDEPEND}
 S="${WORKDIR}/${MYP}"
 
 python_test() {
-	nosetests || die
+	nosetests --verbosity=3 || die
 }

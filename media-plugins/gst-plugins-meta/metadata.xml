@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>gnome</herd>
-<herd>gstreamer</herd>
+<maintainer type="project">
+	<email>gnome@gentoo.org</email>
+	<name>Gentoo GNOME Desktop</name>
+</maintainer>
+<maintainer type="project">
+	<email>gstreamer@gentoo.org</email>
+	<name>GStreamer package maintainers</name>
+</maintainer>
 <longdescription lang="en">
 This package pulls in various gstreamer plugins based on USE flags.  It's
 intended to be used as a runtime-depend for apps that need various gstreamer
@@ -10,12 +16,11 @@ plugins.  This will allow USE flags to be changed without re-compiling apps,
 since gstreamer plugins are all run-time dependencies.
 </longdescription>
 <use>
-	<flag name='http'>Enable http streaming via <pkg>net-libs/libsoup</pkg></flag>
-	<flag name='opus'>Enable Opus audio codec support</flag>
-	<flag name='libvisual'>Enable visualization effects via 
+	<flag name="http">Enable http streaming via <pkg>net-libs/libsoup</pkg></flag>
+	<flag name="opus">Enable Opus audio codec support</flag>
+	<flag name="libvisual">Enable visualization effects via 
 		<pkg>media-libs/libvisual</pkg></flag>
-	<flag name='vpx'>Enables vp8 codec support using libvpx, required to
+	<flag name="vpx">Enables vp8 codec support using libvpx, required to
 		play some HTML5 videos</flag>
 </use>
 </pkgmetadata>
-

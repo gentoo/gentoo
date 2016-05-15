@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>scheme</herd>
-	<maintainer>
+	<maintainer type="person">
 		<email>hkBst@gentoo.org</email>
 		<name>Marijn Schouten</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>scheme@gentoo.org</email>
+		<name>Gentoo Scheme Project</name>
 	</maintainer>
 	<longdescription lang="en">
 SLaTeX  is a Scheme program that allows you to write programs or program fragments ``as is'' in your TeX or LaTeX source. It is particularly geared to the programming languages Scheme and other Lisps, eg, Common Lisp. The formatting of the code includes assigning appropriate fonts and colors to the various tokens in the code (keywords, variables, constants, data), at the same time retaining the proper indentation when going to the non-monospace (non-typewriter) fonts provided by TeX. SLaTeX comes with two databases that recognize the identifier conventions of Scheme and Common Lisp respectively. These can be modified by the user with easy TeX commands. In addition, the user can tell SLaTeX to typeset certain identifiers as specially suited TeX expressions (ie, beyond just fonting them). All this is done without interfering with the identifier conventions of the language of the programming code. In sum, no change need be made to your (presumably running) program code in order to get a typeset version with a desired look: You can get a spectrum of styles ranging from no fonting through basic default fonting to various ``mathematical''-looking output for pedagogic or other reasons.

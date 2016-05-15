@@ -17,10 +17,11 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.zip"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="amd64 arm x86"
-IUSE=""
+IUSE="test"
 
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
+	dev-python/nose[${PYTHON_USEDEP}]
 	app-arch/unzip"
 RDEPEND="${DEPEND}"
 

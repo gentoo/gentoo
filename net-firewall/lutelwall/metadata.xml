@@ -1,12 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>netmon</herd>
-<herd>proxy-maintainers</herd>
-<maintainer>
+<maintainer type="person">
     <email>tomek@lutel.pl</email>
     <name>Tomek Lutelmowski</name>
     <description>LuteWall developer, third party maintainer</description>     
+</maintainer>
+<maintainer type="project">
+    <email>netmon@gentoo.org</email>
+    <name>Gentoo network monitoring and analysis project</name>
+</maintainer>
+<maintainer type="project">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
 </maintainer>
 <longdescription>
 LutelWall is high-level firewall configuration tool. It uses human-readable and easy 

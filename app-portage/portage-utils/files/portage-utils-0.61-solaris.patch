@@ -1,0 +1,27 @@
+qcache: work around missing d_type/DT_DIR
+
+--- qcache.c
++++ qcache.c
+@@ -750,13 +750,21 @@
+ 
+ 		xasprintf(&catpath, "%s/dep/%s", portedb, data->overlay);
+ 		dir = opendir(catpath);
+-		while ((de = readdir(dir)))
++		while ((de = readdir(dir))) {
++#ifndef DT_DIR
++			struct stat s;
++			if (stat(de->d_name, &s))
++				continue;
++			if (S_ISDIR(s.st_mode) && de->d_name[0] != '.') {
++#else
+ 			if (de->d_type == DT_DIR && de->d_name[0] != '.') {
++#endif
+ 				bool ok;
+ 				allcats = add_set_unique(de->d_name, allcats, &ok);
+ 				if (ok)
+ 					++numcat;
+ 			}
++		}
+ 		closedir(dir);
+ 		free(catpath);
+ 

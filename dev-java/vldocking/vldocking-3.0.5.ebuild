@@ -13,20 +13,21 @@ SRC_URI="https://github.com/cmadsen/${PN}/archive/${P}.zip"
 
 LICENSE="LGPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
-CDEPEND="dev-java/slf4j-log4j12:0
-	dev-java/slf4j-api:0
-"
+CDEPEND="
+	dev-java/slf4j-log4j12:0
+	dev-java/slf4j-api:0"
 
-RDEPEND=">=virtual/jre-1.6
+RDEPEND="
 	${CDEPEND}
-"
-DEPEND=">=virtual/jdk-1.6
+	>=virtual/jre-1.6"
+
+DEPEND="
+	${CDEPEND}
 	app-arch/unzip
-	${CDEPEND}
-"
+	>=virtual/jdk-1.6"
 
 JAVA_GENTOO_CLASSPATH="
 	slf4j-log4j12

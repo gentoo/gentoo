@@ -1,12 +1,12 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 
 if [[ ${PV} != *9999* ]]; then
-	SRC_URI="http://gstreamer.freedesktop.org/src/${PN}/${P}.tar.xz"
-	KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86"
+	SRC_URI="https://gstreamer.freedesktop.org/src/${PN}/${P}.tar.xz"
+	KEYWORDS="amd64 ~arm ppc ppc64 x86"
 else
 	GIT_ECLASS="git-r3"
 	EGIT_REPO_URI=( "git://anongit.freedesktop.org/gstreamer/${PN}" )
@@ -16,7 +16,7 @@ fi
 inherit cmake-utils ${GIT_ECLASS} multibuild
 
 DESCRIPTION="QtGStreamer provides C++ bindings for GStreamer with a Qt-style API"
-HOMEPAGE="http://gstreamer.freedesktop.org/modules/qt-gstreamer.html"
+HOMEPAGE="https://gstreamer.freedesktop.org/modules/qt-gstreamer.html"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
@@ -54,8 +54,8 @@ DEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}/${P}-boost157.patch"
 	"${FILESDIR}/${P}-gstreamer15.patch"
+	"${FILESDIR}/${P}-boost157.patch"
 )
 
 # bug 497880

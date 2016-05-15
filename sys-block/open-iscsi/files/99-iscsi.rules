@@ -1,1 +1,1 @@
-KERNEL=="sd*", SUBSYSTEMS=="block", RUN{program}="/etc/udev/scripts/iscsidev.sh"
+KERNEL=="sd*", SUBSYSTEMS=="block", RUN{program}+="/etc/udev/scripts/iscsidev.sh"

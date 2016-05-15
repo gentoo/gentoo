@@ -1,0 +1,32 @@
+From 882a4b3f83a4b5097da53670c720a26f4e2750eb Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Fridrich=20=C5=A0trba?= <fridrich.strba@bluewin.ch>
+Date: Sun, 13 Dec 2015 20:37:16 +0100
+Subject: [PATCH] Some boost 1.59 fixes
+
+Change-Id: I0054c977a6d8ff5a9b93c147578e890476365999
+---
+ src/lib/Makefile.am | 11 +++++++++--
+ 1 file changed, 9 insertions(+), 2 deletions(-)
+
+diff --git a/src/lib/Makefile.am b/src/lib/Makefile.am
+index 3f00cc5..e14fa8c 100644
+--- a/src/lib/Makefile.am
++++ b/src/lib/Makefile.am
+@@ -13,8 +13,16 @@ libcdr_@CDR_MAJOR_VERSION@_@CDR_MINOR_VERSION@_include_HEADERS = \
+ 	$(top_srcdir)/inc/libcdr/CDRDocument.h \
+ 	$(top_srcdir)/inc/libcdr/CMXDocument.h
+ 
+-AM_CXXFLAGS = -I$(top_srcdir)/inc $(REVENGE_CFLAGS) $(LCMS2_CFLAGS) $(ZLIB_CFLAGS) $(ICU_CFLAGS) $(DEBUG_CXXFLAGS) -DLIBCDR_BUILD=1
++AM_CXXFLAGS = -I$(top_srcdir)/inc \
++	$(REVENGE_CFLAGS) \
++	$(LCMS2_CFLAGS) \
++	$(ZLIB_CFLAGS) \
++	$(ICU_CFLAGS) \
++	$(DEBUG_CXXFLAGS) \
++	-DLIBCDR_BUILD=1 \
++	-DBOOST_ERROR_CODE_HEADER_ONLY \
++	-DBOOST_SYSTEM_NO_DEPRECATED
+ 
+ libcdr_@CDR_MAJOR_VERSION@_@CDR_MINOR_VERSION@_la_LIBADD  = $(REVENGE_LIBS) $(LCMS2_LIBS) $(ZLIB_LIBS) $(ICU_LIBS) @LIBCDR_WIN32_RESOURCE@
+ libcdr_@CDR_MAJOR_VERSION@_@CDR_MINOR_VERSION@_la_DEPENDENCIES = @LIBCDR_WIN32_RESOURCE@
+ libcdr_@CDR_MAJOR_VERSION@_@CDR_MINOR_VERSION@_la_LDFLAGS = $(version_info) -export-dynamic -no-undefined

@@ -1,0 +1,46 @@
+From 35b838b13e838cfe81bf565163bc892dd4347f68 Mon Sep 17 00:00:00 2001
+From: Thomas D.
+Date: Tue, 19 Apr 2016 00:00:00 +0200
+Subject: [PATCH 1/2] testbench: Add missing exit calls to
+ {faketime,privdrop}_common.sh
+
+"diag.sh exit" just cleans up so we still have to end the tests when skipping
+with a real exit on our own.
+---
+ tests/faketime_common.sh | 9 +++++----
+ tests/privdrop_common.sh | 1 +
+ 2 files changed, 6 insertions(+), 4 deletions(-)
+
+diff --git a/tests/faketime_common.sh b/tests/faketime_common.sh
+index 5e868bc..10e0128 100644
+--- a/tests/faketime_common.sh
++++ b/tests/faketime_common.sh
+@@ -26,8 +26,9 @@ fi
+ 
+ 
+ rsyslog_testbench_require_y2k38_support() {
+-  if [ -n "${RSYSLOG_TESTBENCH_Y2K38_INCOMPATIBLE}" ]; then
+-    echo "Skipping further tests because system doesn't support year 2038 ..."
+-    . $srcdir/diag.sh exit
+-  fi
++    if [ -n "${RSYSLOG_TESTBENCH_Y2K38_INCOMPATIBLE}" ]; then
++        echo "Skipping further tests because system doesn't support year 2038 ..."
++        . $srcdir/diag.sh exit
++        exit 0
++    fi
+ }
+diff --git a/tests/privdrop_common.sh b/tests/privdrop_common.sh
+index a0994ec..203a23b 100755
+--- a/tests/privdrop_common.sh
++++ b/tests/privdrop_common.sh
+@@ -52,6 +52,7 @@ rsyslog_testbench_setup_testuser() {
+ 		if [ -z "${testgroupname}" ]; then
+ 			echo "Skipping ... please set RSYSLOG_TESTUSER or make sure the user running the testbench has a primary group!"
+ 			. $srcdir/diag.sh exit
++			exit 0
+ 		else
+ 			has_testuser="${EUID}"
+ 		fi
+-- 
+2.8.1
+

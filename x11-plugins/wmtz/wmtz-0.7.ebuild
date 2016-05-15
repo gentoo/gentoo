@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -28,6 +28,9 @@ src_prepare() {
 
 	#Honour Gentoo LDFLAGS, see bug #337890.
 	sed -e "s/\$(FLAGS) -o wmtz/\$(LDFLAGS) -o wmtz/" -i Makefile
+
+	cd "${WORKDIR}"/${P} || die
+	epatch "${FILESDIR}"/${P}-list.patch
 }
 
 src_compile() {

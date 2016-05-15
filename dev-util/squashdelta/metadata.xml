@@ -4,7 +4,7 @@
 	<use>
 		<flag name="lz4">Enable support for LZ4 compression using <pkg>app-arch/lz4</pkg></flag>
 	</use>
-	<maintainer>
+	<maintainer type="person">
 		<email>mgorny@gentoo.org</email>
 		<name>Michał Górny</name>
 	</maintainer>

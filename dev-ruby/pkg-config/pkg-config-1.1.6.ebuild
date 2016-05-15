@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=5
-USE_RUBY="ruby19 ruby20 ruby21 ruby22"
+USE_RUBY="ruby19 ruby20 ruby21 ruby22 ruby23"
 
 RUBY_FAKEGEM_EXTRADOC="README.rdoc NEWS"
 
@@ -15,7 +15,7 @@ DESCRIPTION="A pkg-config implementation by Ruby"
 HOMEPAGE="https://github.com/rcairo/pkg-config"
 LICENSE="|| ( LGPL-2 LGPL-2.1 LGPL-3 )"
 
-KEYWORDS="amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ppc ppc64 x86"
 SLOT="0"
 IUSE="test"
 

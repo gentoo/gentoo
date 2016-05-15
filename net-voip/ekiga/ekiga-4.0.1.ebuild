@@ -16,7 +16,7 @@ HOMEPAGE="http://www.ekiga.org/"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ia64 ppc ppc64 ~sparc x86"
+KEYWORDS="alpha amd64 ia64 ppc ppc64 sparc x86"
 IUSE="avahi dbus debug doc eds gconf gnome gstreamer h323 kde kontact ldap
 libnotify cpu_flags_x86_mmx nls pulseaudio +shm static v4l xcap xv"
 
@@ -36,7 +36,7 @@ RDEPEND=">=dev-libs/glib-2.24.0:2
 		( >=gnome-base/libgnome-2.14.0
 		>=gnome-base/libgnomeui-2.14.0 ) ) )
 	gstreamer? ( >=media-libs/gst-plugins-base-0.10.21.3:0.10 )
-	kde? ( kontact? ( $(add_kdebase_dep kdepimlibs) ) )
+	kde? ( kontact? ( $(add_kdeapps_dep kdepimlibs) ) )
 	ldap? ( dev-libs/cyrus-sasl:2
 		net-nds/openldap )
 	libnotify? ( x11-libs/libnotify )

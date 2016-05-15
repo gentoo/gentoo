@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>proxy-maintainers</herd>
-<maintainer>
+<maintainer type="person">
 	<email>gert@gepe-biljarts.be</email>
 	<name>Gert Pellin</name>
 	<description>Proxy maintainer. Assign bugs to him.</description>
+</maintainer>
+<maintainer type="project">
+	<email>proxy-maint@gentoo.org</email>
+	<name>Proxy Maintainers</name>
 </maintainer>
 <longdescription lang="en">
 WebStorm is a lightweight yet powerful IDE, perfectly equipped for complex client-side development and server-side development with Node.js

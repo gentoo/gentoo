@@ -1,0 +1,28 @@
+commit 20a587d77636186edb044cd2b71d6d90fe98d232
+Author: Heiko Becker <heirecka@exherbo.org>
+Date:   Thu Sep 24 22:54:41 2015 +0200
+
+    qca-ossl: Fix build without SSLv3
+    
+    This fixes building with LibreSSL >= 2.3.0 which has removed support
+    for SSLv3 completely. As far as I know OpenSSL can be configured to
+    build without it, so it might be helpful there as well.
+    
+    REVIEW: 125386
+
+diff --git a/plugins/qca-ossl/qca-ossl.cpp b/plugins/qca-ossl/qca-ossl.cpp
+index cfb1e9f..b34ecc1 100644
+--- a/plugins/qca-ossl/qca-ossl.cpp
++++ b/plugins/qca-ossl/qca-ossl.cpp
+@@ -5403,9 +5403,11 @@ public:
+ 			ctx = SSL_CTX_new(SSLv2_client_method());
+ 			break;
+ #endif
++#ifndef OPENSSL_NO_SSL3_METHOD
+ 		case TLS::SSL_v3:
+ 			ctx = SSL_CTX_new(SSLv3_client_method());
+ 			break;
++#endif
+ 		case TLS::TLS_v1:
+ 			ctx = SSL_CTX_new(TLSv1_client_method());
+ 			break;

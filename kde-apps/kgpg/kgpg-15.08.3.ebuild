@@ -11,11 +11,11 @@ inherit kde4-base
 DESCRIPTION="KDE gpg keyring manager"
 HOMEPAGE="https://www.kde.org/applications/utilities/kgpg
 https://utils.kde.org/projects/kgpg"
-KEYWORDS=" ~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="debug"
 
 DEPEND="
-	$(add_kdebase_dep kdepimlibs)
+	$(add_kdeapps_dep kdepimlibs)
 "
 RDEPEND="${DEPEND}
 	app-crypt/gnupg

@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -12,7 +12,7 @@ inherit eutils distutils-r1 gnome2-utils
 MY_P="Electrum-${PV}"
 DESCRIPTION="User friendly Bitcoin client"
 HOMEPAGE="https://electrum.org/"
-SRC_URI="https://download.electrum.org/${MY_P}.tar.gz"
+SRC_URI="https://download.electrum.org/${PV}/${MY_P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -46,7 +46,7 @@ RDEPEND="
 	dev-python/pyasn1-modules[${PYTHON_USEDEP}]
 	dev-python/tlslite[${PYTHON_USEDEP}]
 	dev-python/qrcode[${PYTHON_USEDEP}]
-	dev-python/socksipy[${PYTHON_USEDEP}]
+	dev-python/PySocks[${PYTHON_USEDEP}]
 	dev-libs/protobuf[python,${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
 	gtk3? (

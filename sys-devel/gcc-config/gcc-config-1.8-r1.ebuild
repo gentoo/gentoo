@@ -16,6 +16,8 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
 IUSE=""
 
+RDEPEND=">=sys-apps/gentoo-functions-0.10"
+
 src_prepare() {
 	epatch "${FILESDIR}/${PN}-1.8-dont_source_functions_sh_from_etc_initd.patch" # 504118
 }

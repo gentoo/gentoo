@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>python</herd>
-  <maintainer>
+  <maintainer type="person">
     <email>xarthisius@gentoo.org</email>
     <name>Kacper Kowalik</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>python@gentoo.org</email>
+    <name>Python</name>
   </maintainer>
   <longdescription>Pika is a pure-Python implementation of the AMQP 0-9-1 protocol that tries to stay fairly independent of the underlying network support library. Pika was developed primarily for use with RabbitMQ, but should also work with other AMQP 0-9-1 brokers.</longdescription>
   <upstream>

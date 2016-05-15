@@ -30,6 +30,7 @@ python_prepare_all() {
 	local PATCHES=(
 		# Patch to fix confusion with localhost/127.0.0.1
 		"${FILESDIR}/${PN}-2.0.0-gentoo-test_fetchers.diff"
+		"${FILESDIR}"/"${P}-tests.patch"
 	)
 
 	# Disable broken tests from from examples/djopenid.
@@ -37,6 +38,8 @@ python_prepare_all() {
 	sed -e "s/django_failures =.*/django_failures = 0/" \
 		-e '/storetest/d' \
 		-i admin/runtests || die "sed admin/runtests failed"
+
+	rm -v openid/test/test_parsehtml.py || die
 
 	distutils-r1_python_prepare_all
 }

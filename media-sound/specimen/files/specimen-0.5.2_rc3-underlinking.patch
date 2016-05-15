@@ -1,5 +1,11 @@
---- configure.ac
-+++ configure.ac
+* Remove hardcoded CFLAGS
+* Fix underlinking issues
+  - missing -lm linkage (sin)
+  - missing -pthread linkage
+    -> https://bugs.gentoo.org/show_bug.cgi?id=561562
+
+--- specimen-0.5.2-rc3/configure.ac
++++ specimen-0.5.2-rc3/configure.ac
 @@ -1,10 +1,10 @@
  # -*- autoconf -*-
  # Process this file with autoconf to produce a configure script.
@@ -22,7 +28,7 @@
 -if test x$with_debug = xno; then
 -    CFLAGS="-O3"
 -else
-+if test x$with_debug != xno; then
++if test x$with_debug = xyes; then
      AC_DEFINE(DEBUG, 1, [[whether to display debugging output or not]])
  fi
  
@@ -45,21 +51,18 @@
  config_error="no"
  
  # gtk			   
-
---- src/Makefile.am
-+++ src/Makefile.am
-@@ -11,7 +11,7 @@
- specimen_SOURCES += lashdriver.c lashdriver.h                                                                                                                           
- endif
+@@ -122,7 +121,8 @@
+   fi
+ fi
  
--INCLUDES = \
-+AM_CPPFLAGS = \
- 	@ALSA_CFLAGS@ \
- 	@JACK_CFLAGS@ \
- 	@LIBSAMPLERATE_CFLAGS@ \
-
---- src/gui/Makefile.am
-+++ src/gui/Makefile.am
+-CC="$PTHREAD_CC"
++CFLAGS="$CFLAGS $PTHREAD_CFLAGS"
++LIBS="$LIBS $PTHREAD_CFLAGS"
+ 
+ # print build summary
+ AC_CONFIG_COMMANDS_POST([
+--- specimen-0.5.2-rc3/src/gui/Makefile.am
++++ specimen-0.5.2-rc3/src/gui/Makefile.am
 @@ -12,14 +12,14 @@
  paramselector.c paramselector.h patchlist.c patchlist.h midisection.c	\
  midisection.h channelsection.c channelsection.h
@@ -77,3 +80,14 @@
  endif
  
  libgui_a_CFLAGS = $(CFLAGS) -I.. -DINSTALLDIR=\"$(datadir)\"
+--- specimen-0.5.2-rc3/src/Makefile.am
++++ specimen-0.5.2-rc3/src/Makefile.am
+@@ -11,7 +11,7 @@
+ specimen_SOURCES += lashdriver.c lashdriver.h                                                                                                                           
+ endif
+ 
+-INCLUDES = \
++AM_CPPFLAGS = \
+ 	@ALSA_CFLAGS@ \
+ 	@JACK_CFLAGS@ \
+ 	@LIBSAMPLERATE_CFLAGS@ \

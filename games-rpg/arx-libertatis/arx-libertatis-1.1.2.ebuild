@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -35,6 +35,10 @@ DEPEND="${COMMON_DEPEND}
 	static? ( media-libs/glew[static-libs] )"
 
 DOCS=( README.md AUTHORS CHANGELOG )
+
+PATCHES=(
+	"${FILESDIR}"/${P}-cmake-3.5.patch
+)
 
 src_configure() {
 	# editor does not build

@@ -1,0 +1,20 @@
+--- configure.ac.orig	2015-09-11 14:02:04.250280108 +0100
++++ configure.ac	2016-02-18 09:36:04.684624293 +0000
+@@ -55,17 +55,6 @@
+ IT_SET_VERSION
+ IT_CHECK_XULRUNNER_VERSION
+ 
+-AC_CHECK_LIB(z, main,, [AC_MSG_ERROR("zlib not found - try installing zlib-devel")])
+-dnl Check for libX11 headers and libraries.
+-PKG_CHECK_MODULES(X11, x11,[X11_FOUND=yes],[X11_FOUND=no])
+-if test "x${X11_FOUND}" = xno
+-then
+-  AC_MSG_ERROR([Could not find x11 - \
+-  Try installing libX11-devel.])
+-fi
+-AC_SUBST(X11_CFLAGS)
+-AC_SUBST(X11_LIBS)
+-
+ dnl PR46074 (gcc) - Missing java.net cookie code required by IcedTea plugin
+ dnl IT563 - NetX uses sun.security code
+ dnl IT605 - NetX depends on sun.misc.HexDumpEncoder

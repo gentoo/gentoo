@@ -1,8 +1,7 @@
-<?xml version = '1.0' encoding = 'UTF-8'?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>net-dialup</herd>
-    <maintainer>
+  <maintainer type="person">
       <email>polynomial-c@gentoo.org</email>
       <name>Lars Wendler</name>
     </maintainer>
@@ -13,11 +12,11 @@
     networking).
   </longdescription>
   <use>
-    <flag name='isdn'>
+    <flag name="isdn">
       Linux-only: check status of ippp interfaces with ISDN-specific
       system calls.
     </flag>
-    <flag name='urandom'>
+    <flag name="urandom">
       Linux-only: use /dev/urandom (pseudo-random number generation)
       instead of the default use of random() PRNG.
     </flag>

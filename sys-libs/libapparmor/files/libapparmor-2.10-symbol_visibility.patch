@@ -1,0 +1,13 @@
+Adds an aditional symbol to allow dynamic linking.
+
+--- src/libapparmor.map
++++ src/libapparmor.map
+@@ -94,6 +94,7 @@
+ 		_aa_autoclose;
+ 		_aa_autofclose;
+ 		_aa_dirat_for_each;
++		_aa_asprintf;
+ 	local:
+ 		*;
+ };
+

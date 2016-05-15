@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>xbox</herd>
+<maintainer type="person">
+	<email>vapier@gentoo.org</email>
+</maintainer>
 <upstream>
-	<remote-id type='github'>graeme-hill/crossguid</remote-id>
+	<remote-id type="github">graeme-hill/crossguid</remote-id>
 </upstream>
 </pkgmetadata>

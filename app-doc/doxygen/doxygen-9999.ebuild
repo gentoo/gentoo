@@ -1,11 +1,11 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 PYTHON_COMPAT=( python{2_7,3_3,3_4} )
 
-inherit cmake-utils eutils fdo-mime flag-o-matic python-any-r1 qt4-r2
+inherit cmake-utils eutils fdo-mime flag-o-matic python-any-r1
 if [[ ${PV} = *9999* ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="git://github.com/doxygen/doxygen.git"
@@ -23,7 +23,7 @@ HOMEPAGE="http://www.doxygen.org/"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="clang debug doc dot doxysearch latex qt4 sqlite userland_GNU"
+IUSE="clang debug doc dot doxysearch latex qt5 sqlite userland_GNU"
 
 #missing SerbianCyrilic, JapaneseEn, KoreanEn, Chinesetraditional
 LANGS=(hy ar pt_BR ca zh cs de da eo es fa fi fr el hr hu id it ja ko lt mk
@@ -34,7 +34,7 @@ done
 
 RDEPEND="app-text/ghostscript-gpl
 	dev-lang/perl
-	media-libs/libpng
+	media-libs/libpng:0=
 	virtual/libiconv
 	clang? ( sys-devel/clang )
 	dot? (
@@ -43,7 +43,10 @@ RDEPEND="app-text/ghostscript-gpl
 	)
 	doxysearch? ( =dev-libs/xapian-1.2* )
 	latex? ( app-text/texlive[extra] )
-	qt4? ( dev-qt/qtgui:4 )
+	qt5? (
+		dev-qt/qtgui:5
+		dev-qt/qtwidgets:5
+	)
 	sqlite? ( dev-db/sqlite:3 )
 	"
 
@@ -56,7 +59,7 @@ DEPEND="sys-apps/sed
 	${RDEPEND}"
 
 # src_test() defaults to make -C testing but there is no such directory (bug #504448)
-RESTRICT="mirror test"
+RESTRICT="test"
 EPATCH_SUFFIX="patch"
 
 get_langs() {
@@ -83,7 +86,7 @@ get_langs() {
 				my_linguas+=(${lingua})
 		fi
 	done
-	f_langs="${my_linguas[@]}"
+	f_langs="${my_linguas[@]^^}"
 	echo ${f_langs// /;}
 }
 
@@ -102,10 +105,7 @@ src_prepare() {
 	# Call dot with -Teps instead of -Tps for EPS generation - bug #282150
 	sed -i -e '/addJob("ps"/ s/"ps"/"eps"/g' src/dot.cpp || die
 
-	# prefix search tools patch, plus OSX fixes
-	epatch "${FILESDIR}"/${PN}-1.8.9.1-empty-line-sigsegv.patch #454348
-
-	epatch "${FILESDIR}"/${P}-link_with_pthread.patch
+	epatch "${FILESDIR}"/${PN}-1.8.11-link_with_pthread.patch
 
 	# fix pdf doc
 	sed -i.orig -e "s:g_kowal:g kowal:" \
@@ -129,7 +129,7 @@ src_configure() {
 		$(cmake-utils_use clang use_libclang)
 		$(cmake-utils_use doc build_doc)
 		$(cmake-utils_use doxysearch build_search)
-		$(cmake-utils_use qt4 build_wizard)
+		$(cmake-utils_use qt5 build_wizard)
 		$(cmake-utils_use sqlite use_sqlite3)
 		)
 
@@ -140,9 +140,11 @@ src_compile() {
 	cmake-utils_src_compile
 
 	# generate html and pdf documents. errors here are not considered
-	# fatal, hence the ewarn message TeX's font caching in /var/cache/fonts
-	# causes sandbox warnings, so we allow it.
+	# fatal, hence the ewarn message.
+
 	if use doc; then
+		export VARTEXFONTS="${T}/fonts" # bug #564944
+
 		if ! use dot; then
 			sed -i -e "s/HAVE_DOT               = YES/HAVE_DOT    = NO/" \
 				{Doxyfile,doc/Doxyfile} \
@@ -153,7 +155,7 @@ src_compile() {
 }
 
 src_install() {
-	if use qt4; then
+	if use qt5; then
 		doicon "${DISTDIR}/doxywizard.png"
 		make_desktop_entry doxywizard "DoxyWizard ${PV}" \
 			"/usr/share/pixmaps/doxywizard.png" \

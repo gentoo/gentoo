@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -11,7 +11,7 @@ inherit gnome2 versionator
 MATE_BRANCH="$(get_version_component_range 1-2)"
 
 SRC_URI="http://pub.mate-desktop.org/releases/${MATE_BRANCH}/${P}.tar.xz"
-DESCRIPTION="A MATE specific DBUS session bus service that is used to bring up authentication dialogs"
+DESCRIPTION="A MATE specific DBUS service that is used to bring up authentication dialogs"
 HOMEPAGE="https://github.com/mate-desktop/mate-polkit"
 
 LICENSE="LGPL-2"

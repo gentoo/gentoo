@@ -1,0 +1,40 @@
+The rip_output_process function dereferenced a NULL
+pointer.  Core file examination showed that tmp_rinfo
+was NULL on line 2435.  Looking at the last diff
+associated with this commit, it was obvious that
+a formating mistake had been made in the loop over
+the route nodes list of possible paths.
+
+Signed-off-by: Donald Sharp <sharpd@cumulusnetworks.com>
+Reported-by: Sebastian Kricner <sebastian.kricner@tuxwave.net>
+---
+ ripd/ripd.c | 14 ++++++++------
+ 1 file changed, 8 insertions(+), 6 deletions(-)
+
+diff --git a/ripd/ripd.c b/ripd/ripd.c
+index 82b1ada..0beb0e6 100644
+--- a/ripd/ripd.c
++++ b/ripd/ripd.c
+@@ -2429,12 +2429,14 @@ rip_output_process (struct connected *ifc, struct sockaddr_in *to,
+ 	  struct rip_info *tmp_rinfo = NULL;
+ 
+ 	  for (ALL_LIST_ELEMENTS_RO (list, listnode, tmp_rinfo))
+-	    if (tmp_rinfo->type == ZEBRA_ROUTE_RIP  &&
+-	        tmp_rinfo->ifindex == ifc->ifp->ifindex)
+-	      rinfo->metric_out = RIP_METRIC_INFINITY;
+-	  if (tmp_rinfo->type == ZEBRA_ROUTE_CONNECT &&
+-              prefix_match((struct prefix *)p, ifc->address))
+-	    rinfo->metric_out = RIP_METRIC_INFINITY;
++            {
++	      if (tmp_rinfo->type == ZEBRA_ROUTE_RIP  &&
++	          tmp_rinfo->ifindex == ifc->ifp->ifindex)
++	        rinfo->metric_out = RIP_METRIC_INFINITY;
++	      if (tmp_rinfo->type == ZEBRA_ROUTE_CONNECT &&
++                prefix_match((struct prefix *)p, ifc->address))
++	        rinfo->metric_out = RIP_METRIC_INFINITY;
++            }
+ 	}
+ 	
+ 	/* Prepare preamble, auth headers, if needs be */
+-- 
+1.9.1

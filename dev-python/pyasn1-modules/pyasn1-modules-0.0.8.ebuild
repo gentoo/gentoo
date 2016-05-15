@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -24,9 +24,9 @@ DEPEND="${RDEPEND}
 python_test() {
 	echoit() { echo "$@"; "$@"; }
 	local exit_status=0 test
-	for test in test/*.sh; do
-		PATH="${S}/tools:${PATH}" \
-			echoit sh "${test}" || exit_status=1
+	cd tools || die
+	for test in ../test/*.sh; do
+		echoit sh "${test}" || exit_status=1
 	done
 	return ${exit_status}
 }

@@ -1,0 +1,21 @@
+commit 39393f8fc2d7c60dc093e9ea836077598dfbe955
+Author: KC Sivaramakrishnan <sk826@cl.cam.ac.uk>
+Date:   Wed Mar 23 11:23:26 2016 +0000
+
+    Fix make_float versioning
+
+diff --git a/src/batArray.mliv b/src/batArray.mliv
+index 025887f..c6bfd02 100644
+--- a/src/batArray.mliv
++++ b/src/batArray.mliv
+@@ -82,7 +82,9 @@ external make : int -> 'a -> 'a array = "caml_make_vect"
+     If the value of [x] is a floating-point number, then the maximum
+     size is only [Sys.max_array_length / 2].*)
+ 
+-val make_float : int -> float array
++##V>=4.3##val make_float : int -> float array
++##V=4.2##external make_float : int -> float array = "caml_make_float_vect"
++##V<4.2##val make_float : int -> float array
+ (** [Array.make_float n] returns a fresh float array of length [n],
+     with uninitialized data.
+ 

@@ -1,29 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>qt</herd>
-<use>
-	<flag name="bluetooth">Enable Bluetooth support in QtConnectivity and QtSystemInfo modules</flag>
-	<flag name="connectivity">Build the QtConnectivity module</flag>
-	<flag name="contacts">Build the QtContacts module</flag>
-	<flag name="feedback">Build the QtFeedback module</flag>
-	<flag name="gallery">Build the QtGallery module</flag>
-	<flag name="location">Build the QtLocation module</flag>
-	<flag name="messaging">Build the QtMessaging module</flag>
-	<flag name="multimedia">Build the QtMultimediaKit module</flag>
-	<flag name="networkmanager">Enable NetworkManager support in QtBearer and QtSystemInfo modules</flag>
-	<flag name="organizer">Build the QtOrganizer module</flag>
-	<flag name="publishsubscribe">Build the QtPublishSubscribe module</flag>
-	<flag name="pulseaudio">Enable PulseAudio support in QtMultimediaKit module</flag>
-	<flag name="qml">Build QML bindings</flag>
-	<flag name="sensors">Build the QtSensors module</flag>
-	<flag name="serviceframework">Build the QtServiceFramework module</flag>
-	<flag name="systeminfo">Build the QtSystemInfo module</flag>
-	<flag name="tools">Build various useful tools (e.g.: qcrmlgen, servicexmlgen, vsexplorer, ...)</flag>
-	<flag name="versit">Build the QtVersit module</flag>
-</use>
-<upstream>
-	<bugs-to>https://bugreports.qt.io/</bugs-to>
-	<doc>http://doc-snapshots.qt.io/qt-mobility/index.html</doc>
-</upstream>
+	<maintainer type="project">
+		<email>qt@gentoo.org</email>
+		<name>Gentoo Qt Project</name>
+	</maintainer>
+	<use>
+		<flag name="bluetooth">Enable Bluetooth support in QtConnectivity and QtSystemInfo modules</flag>
+		<flag name="connectivity">Build the QtConnectivity module</flag>
+		<flag name="contacts">Build the QtContacts module</flag>
+		<flag name="feedback">Build the QtFeedback module</flag>
+		<flag name="gallery">Build the QtGallery module</flag>
+		<flag name="location">Build the QtLocation module</flag>
+		<flag name="messaging">Build the QtMessaging module</flag>
+		<flag name="multimedia">Build the QtMultimediaKit module</flag>
+		<flag name="networkmanager">Enable NetworkManager support in QtBearer and QtSystemInfo modules</flag>
+		<flag name="organizer">Build the QtOrganizer module</flag>
+		<flag name="publishsubscribe">Build the QtPublishSubscribe module</flag>
+		<flag name="pulseaudio">Enable PulseAudio support in QtMultimediaKit module</flag>
+		<flag name="qml">Build QML bindings</flag>
+		<flag name="sensors">Build the QtSensors module</flag>
+		<flag name="serviceframework">Build the QtServiceFramework module</flag>
+		<flag name="systeminfo">Build the QtSystemInfo module</flag>
+		<flag name="tools">Build various useful tools (e.g.: qcrmlgen, servicexmlgen, vsexplorer, ...)</flag>
+		<flag name="versit">Build the QtVersit module</flag>
+	</use>
+	<upstream>
+		<bugs-to>https://bugreports.qt.io/</bugs-to>
+		<doc>http://doc-snapshots.qt.io/qt-mobility/index.html</doc>
+	</upstream>
 </pkgmetadata>

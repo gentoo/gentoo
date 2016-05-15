@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -17,7 +17,7 @@ KEYWORDS="amd64 ppc ppc64 x86"
 IUSE="examples"
 
 RDEPEND="dev-perl/Data-FormValidator
-	dev-perl/DateManip"
+	dev-perl/Date-Manip"
 DEPEND="${RDEPEND}"
 SRC_TEST="do"
 

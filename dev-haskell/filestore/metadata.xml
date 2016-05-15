@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>haskell</herd>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
 	<longdescription>
 		The filestore library provides an abstract interface for a versioning
 		file store, and modules that instantiate this interface.  Currently
@@ -9,7 +12,7 @@
 		or databases could be added.
 	</longdescription>
 	<use>
-		<flag name="maxcount">Make use of a recent (>= 2.3.0) Darcs feature which vastly improves the performance
+		<flag name="maxcount">Make use of a recent (&gt;= 2.3.0) Darcs feature which vastly improves the performance
 		of 'latest'.  You should disable this flag if you plan to use gitit with an
 		older version of Darcs, or 'latest' will raise an error.</flag>
 	</use>

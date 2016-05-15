@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer>
+	<maintainer type="person">
 		<email>wired@gentoo.org</email>
 		<name>Alex Alexander</name>
 	</maintainer>
-	<maintainer>
+	<maintainer type="person">
 		<email>hwoarang@gentoo.org</email>
 		<name>Markos Chandras</name>
 	</maintainer>
@@ -18,13 +18,12 @@
 		for every server that is suffering load problems.
 	</longdescription>
 	<use>
-		<flag name='libev'>Enable fdevent handler</flag>
-		<flag name='memcache'>Enable memcache support for mod_cml and
+		<flag name="libev">Enable fdevent handler</flag>
+		<flag name="memcache">Enable memcache support for mod_cml and
 			mod_trigger_b4_dl</flag>
-		<flag name='mmap'>Use mmap with files owned by lighttpd. This is a dangerous option as it may allow local users to trigger SIGBUS crashes.</flag>
-		<flag name='rrdtool'>Enable rrdtool support via mod_rrdtool</flag>
-		<flag name='uploadprogress'>Apply experimental patch for upload progress module</flag>
-		<flag name='webdav'>Enable webdav properties</flag>
+		<flag name="mmap">Use mmap with files owned by lighttpd. This is a dangerous option as it may allow local users to trigger SIGBUS crashes.</flag>
+		<flag name="rrdtool">Enable rrdtool support via mod_rrdtool</flag>
+		<flag name="uploadprogress">Apply experimental patch for upload progress module</flag>
+		<flag name="webdav">Enable webdav properties</flag>
 	</use>
 </pkgmetadata>
-

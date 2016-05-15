@@ -1,13 +1,16 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>gnome</herd>
+<maintainer type="project">
+  <email>gnome@gentoo.org</email>
+  <name>Gentoo GNOME Desktop</name>
+  </maintainer>
   <longdescription>
     Nemiver is an on going effort to write an easy to use standalone C/C++
 	debugger that integrates well in the GNOME environment.
   </longdescription>
   <use>
-	<flag name='memoryview'>Enable the optional hexadecimal memory inspection
+	<flag name="memoryview">Enable the optional hexadecimal memory inspection
 	with <pkg>app-editors/ghex</pkg>.</flag>
   </use>
 </pkgmetadata>

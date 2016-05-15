@@ -1,0 +1,63 @@
+diff -r 3300cb76cccd -r 2ec049e50ed8 libinterp/corefcn/utils.cc
+--- a/libinterp/corefcn/utils.cc        Tue Jul 07 19:09:35 2015 -0700
++++ b/libinterp/corefcn/utils.cc        Thu Jul 09 21:44:09 2015 -0400
+@@ -1379,7 +1379,7 @@
+ \n\
+ Implementation Note: Strings are first converted to double values before the\n\
+ checks for valid indices are made.  Unless a string contains the NULL\n\
+-character @nospell{\"\\0\"}, it will always be a valid index.\n\
++character @nospell{\"@xbackslashchar{}0\"}, it will always be a valid index.\n\
+ @end deftypefn")
+ {
+   octave_value retval;
+diff -r 3300cb76cccd -r 2ec049e50ed8 scripts/io/beep.m
+--- a/scripts/io/beep.m Tue Jul 07 19:09:35 2015 -0700
++++ b/scripts/io/beep.m Thu Jul 09 21:44:09 2015 -0400
+@@ -20,9 +20,9 @@
+ ## @deftypefn {Function File} {} beep ()
+ ## Produce a beep from the speaker (or visual bell).
+ ##
+-## This function sends the alarm character @qcode{"\a"} to the terminal.
+-## Depending on the user's configuration this may produce an audible beep,
+-## a visual bell, or nothing at all.
++## This function sends the alarm character @qcode{"@xbackslashchar{}a"} to
++## the terminal. Depending on the user's configuration this may produce an
++## audible beep, a visual bell, or nothing at all.
+ ## @seealso{puts, fputs, printf, fprintf}
+ ## @end deftypefn
+ 
+diff -r 2ec049e50ed8 -r 45d7be391982 doc/Makefile.am
+--- a/doc/Makefile.am   Thu Jul 09 21:44:09 2015 -0400
++++ b/doc/Makefile.am   Thu Jul 09 21:45:26 2015 -0400
+@@ -26,7 +26,6 @@
+ 
+ EXTRA_DIST = \
+   Makefile.am \
+-  texinfo.tex \
+   texmf.cnf
+ 
+ SUBDIRS = doxyhtml interpreter liboctave refcard
+diff -r 2ec049e50ed8 -r 45d7be391982 doc/interpreter/Makefile.am
+--- a/doc/interpreter/Makefile.am       Thu Jul 09 21:44:09 2015 -0400
++++ b/doc/interpreter/Makefile.am       Thu Jul 09 21:45:26 2015 -0400
+@@ -20,8 +20,6 @@
+ 
+ include $(top_srcdir)/build-aux/common.mk
+ 
+-TEXINFO_TEX = ../texinfo.tex
+-
+ ## Leading PATH_SEPARATOR required due to weak parsing by dvips (12/04/09)
+ TEXINPUTS := "$(PATH_SEPARATOR)$(srcdir)$(PATH_SEPARATOR)$(TEXINPUTS)$(PATH_SEPARATOR)"
+ export TEXINPUTS
+diff -r 2ec049e50ed8 -r 45d7be391982 doc/liboctave/Makefile.am
+--- a/doc/liboctave/Makefile.am Thu Jul 09 21:44:09 2015 -0400
++++ b/doc/liboctave/Makefile.am Thu Jul 09 21:45:26 2015 -0400
+@@ -20,8 +20,6 @@
+ 
+ include $(top_srcdir)/build-aux/common.mk
+ 
+-TEXINFO_TEX = ../texinfo.tex
+-
+ info_TEXINFOS = liboctave.texi
+ 
+ liboctave_TEXINFOS = \

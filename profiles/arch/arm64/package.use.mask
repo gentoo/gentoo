@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# Steev Klimaszewski <steev@gentoo.org> (04 March 2016)
+# Chromium uses an internal tcmalloc that doesn't support this arch yet.
+www-client/chromium tcmalloc
+
 # Mike Frysinger <vapier@gentoo.org> (17 Dec 2015)
 # The tlsdate seccomp logic is open-coded and doesn't support this arch yet.
 net-misc/tlsdate seccomp
@@ -44,10 +48,6 @@ gnome-base/gnome classic
 # Benda Xu <heroxbd@gentoo.org> (31 Oct 2013)
 # Missing keywords from dev-ml/lablgtk, bug #487722
 net-p2p/mldonkey gtk guionly
-
-# Tom Wijsman <TomWij@gentoo.org> (16 Oct 2013)
-# Mask luajit on ~media-video/mpv-0.2.0 because it only has amd64 x86 keywords. See bug #488318.
->=media-video/mpv-0.2.0 luajit
 
 # Pacho Ramos <pacho@gentoo.org> (22 Sep 2013)
 # Missing keywords, bug #484734
@@ -279,10 +279,6 @@ net-misc/mediatomb lastfm
 # Raúl Porcel <armin76@gentoo.org> (28 Mar 2010)
 # Needs kde-4 stable
 dev-vcs/subversion kde
-
-# Raúl Porcel <armin76@gentoo.org> (20 Jan 2010)
-# Needs mplayer
-kde-base/dolphin thumbnail
 
 # Markus Meier <maekke@gentoo.org> (27 Sep 2009)
 # mask media-gfx/imagemagick[autotrace] as autotrace is not keyworded

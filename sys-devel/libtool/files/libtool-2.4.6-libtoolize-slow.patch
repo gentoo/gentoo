@@ -1,0 +1,118 @@
+From 351a88feee66eda6ce33eb06acdebb8e9c6d6716 Mon Sep 17 00:00:00 2001
+From: Pavel Raiskup <praiskup@redhat.com>
+Date: Fri, 18 Sep 2015 23:17:07 +0200
+Subject: [PATCH] libtoolize: fix infinite recursion in m4
+
+Some projects use this construct in configure.ac:
+
+  m4_define([version], m4_include([version]))
+  pkg_version=version
+
+When the m4_include builtin is undefined (as was done in
+libtoolize and extract-trace scripts), the call to this 'version'
+macro enters an infinite recursion (until ENOMEM).  So rather
+re-define all potentially dangerous macros by empty strings,
+suggested by Eric Blake.
+
+While we are on it, merge the macro-"blacklist" with similar list
+implemented in gettext, except for 'm4_esyscmd'.  It's kept
+defined because we already trace AC_INIT macro for package
+version, while it is often specified by
+m4_esyscmd(git-version-gen).  Similarly to m4_include, m4_esyscmd
+might be opt-in-blacklisted in future.
+
+References:
+http://lists.gnu.org/archive/html/libtool/2015-09/msg00000.html
+https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=764580
+
+* gl/build-aux/extract-trace (_G_mini): Redefine trace-breaking
+macros to empty strings rather than undefining those.  Use 'dnl'
+for comments.
+* bootstrap: Likewise, sync with extract-trace.
+* NEWS: Document.
+* NO-THANKS: Mention Hiroyuki Sato.
+
+Signed-off-by: Pavel Raiskup <praiskup@redhat.com>
+---
+ NEWS                       |  4 ++++
+ NO-THANKS                  |  1 +
+ bootstrap                  | 42 +++++++++++++++++++++++++++---------------
+ gl/build-aux/extract-trace | 42 +++++++++++++++++++++++++++---------------
+ 4 files changed, 59 insertions(+), 30 deletions(-)
+
+diff --git a/gl/build-aux/extract-trace b/gl/build-aux/extract-trace
+index 315a32a..c6abd21 100755
+--- a/gl/build-aux/extract-trace
++++ b/gl/build-aux/extract-trace
+@@ -329,29 +329,41 @@ func_extract_trace ()
+     # arguments to Autocof functions, but without following
+     # 'm4_s?include' files.
+     _G_mini='
+-        # Initialisation.
++        dnl  Initialisation.
+         m4_changequote([,])
+         m4_define([m4_copy],   [m4_define([$2], m4_defn([$1]))])
+         m4_define([m4_rename], [m4_copy([$1], [$2])m4_undefine([$1])])
+ 
+-        # Disable these macros.
+-        m4_undefine([m4_dnl])
+-        m4_undefine([m4_include])
+-        m4_undefine([m4_m4exit])
+-        m4_undefine([m4_m4wrap])
+-        m4_undefine([m4_maketemp])
++        dnl  Replace macros which may abort m4 with a no-op variant.
++        m4_pushdef([m4_assert])
++        m4_pushdef([m4_exit])
++        m4_pushdef([m4_fatal])
++        m4_pushdef([m4_m4exit])
+ 
+-        # Copy and rename macros not handled by "m4 --prefix".
++        dnl  Replace macros that might break stderr of m4.
++        m4_pushdef([m4_errprint])
++        m4_pushdef([m4_errprintn])
++        m4_pushdef([m4_include])
++        m4_pushdef([m4_warn])
++
++        dnl  Avoid side-effects of tracing by extract-trace.
++        m4_pushdef([m4_maketemp])
++        m4_pushdef([m4_mkstemp])
++
++        dnl  TODO: reasons for this
++        m4_pushdef([m4_dnl])
++        m4_pushdef([m4_m4wrap])
++
++        dnl  Copy and rename macros not handled by "m4 --prefix".
+         m4_define([dnl],         [m4_builtin([dnl])])
+         m4_copy([m4_define],     [m4_defun])
+         m4_rename([m4_ifelse],   [m4_if])
+-        m4_ifdef([m4_mkstemp],   [m4_undefine([m4_mkstemp])])
+         m4_rename([m4_patsubst], [m4_bpatsubst])
+         m4_rename([m4_regexp],   [m4_bregexp])
+ 
+-        # "m4sugar.mini" - useful m4-time macros for dynamic arguments.
+-        # If we discover packages that need more m4 macros defined in
+-        # order to bootstrap correctly, add them here:
++        dnl  "m4sugar.mini" - useful m4-time macros for dynamic arguments.
++        dnl  If we discover packages that need more m4 macros defined in
++        dnl  order to bootstrap correctly, add them here:
+         m4_define([m4_bmatch],
+             [m4_if([$#], 0, [], [$#], 1, [], [$#], 2, [$2],
+                    [m4_if(m4_bregexp([$1], [$2]), -1,
+@@ -362,11 +374,11 @@ func_extract_trace ()
+         m4_define([m4_require], [$1])
+         m4_define([m4_shift3], [m4_shift(m4shift(m4shift($@)))])
+ 
+-        # "autoconf.mini" - things from autoconf macros we care about.
++        dnl  "autoconf.mini" - things from autoconf macros we care about.
+         m4_copy([m4_defun], [AC_DEFUN])
+ 
+-        # Dummy definitions for the macros we want to trace.
+-        # AM_INIT_AUTOMAKE at least produces no trace without this.
++        dnl  Dummy definitions for the macros we want to trace.
++        dnl  AM_INIT_AUTOMAKE at least produces no trace without this.
+     '
+ 
+     _G_save=$IFS
+-- 
+2.6.2
+

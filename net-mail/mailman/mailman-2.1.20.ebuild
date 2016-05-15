@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -20,10 +20,8 @@ IUSE="selinux"
 DEPEND="virtual/mta
 	virtual/cron
 	virtual/httpd-cgi
-	|| (
-		dev-python/dnspython:0
-		virtual/python-dnspython
-	)"
+	virtual/python-dnspython
+	"
 RDEPEND="${DEPEND}
 	selinux? ( sec-policy/selinux-mailman )
 "

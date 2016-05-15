@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>printing</herd>
+  <maintainer type="project">
+    <email>printing@gentoo.org</email>
+    <name>Gentoo Printing Project</name>
+  </maintainer>
   <use>
-    <flag name='lprng-compat'>
+    <flag name="lprng-compat">
       Do not install lp... binaries so cups and lprng can coexist.
     </flag>
-    <flag name='python'>
+    <flag name="python">
       Add support for the Python interpeter in the web server CGIs.
     </flag>
-    <flag name='java'>
+    <flag name="java">
       Add support for the Java interpeter in the web server CGIs.
     </flag>
   </use>

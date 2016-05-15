@@ -3,10 +3,6 @@
 # $Id$
 
 # Michael Haubenwallner <haubi@gentoo.org> (17 Feb 2015)
-# Fails to include "config.h" first in some sources.
-=sci-visualization/gnuplot-5.0.0
-
-# Michael Haubenwallner <haubi@gentoo.org> (17 Feb 2015)
 # Ships without gnulib module faccessat, necessary for AIX.
 =sys-devel/patch-2.7.4
 

@@ -1,9 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
-inherit autotools games
+inherit autotools eutils games
 
 DESCRIPTION="A program for playing the game of othello/reversi"
 HOMEPAGE="http://sirius.bitvis.nu/"
@@ -29,6 +29,7 @@ src_prepare() {
 		-e '/Categories/s/Application;//' \
 		sirius.desktop.in || die
 	mv configure.in configure.ac || die
+	epatch "${FILESDIR}"/${P}-format.patch
 	eautoreconf
 }
 

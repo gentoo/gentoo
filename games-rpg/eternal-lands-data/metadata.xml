@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>games</herd>
-<maintainer>
+<maintainer type="person">
   <email>rich0@gentoo.org</email>
   <name>Rich Freeman</name>
+</maintainer>
+<maintainer type="project">
+  <email>games@gentoo.org</email>
+  <name>Gentoo Games Project</name>
 </maintainer>
 <longdescription>Eternal Lands is a FREE MMORPG (massively multiplayer online
 	role playing game)</longdescription>
 <use>
-  <flag name='bloodsuckermaps'>Will install Bloodsucker's Maps in place of the official map files.</flag>
-  <flag name='music'>Adds in-game music.</flag>
-  <flag name='sound'>Adds in-game sound effects.</flag>
+  <flag name="bloodsuckermaps">Will install Bloodsucker's Maps in place of the official map files.</flag>
+  <flag name="music">Adds in-game music.</flag>
+  <flag name="sound">Adds in-game sound effects.</flag>
 </use>
 </pkgmetadata>

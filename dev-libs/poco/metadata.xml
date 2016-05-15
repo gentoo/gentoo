@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer>
+	<maintainer type="person">
 		<email>tommy@gentoo.org</email>
 		<name>Thomas Sachau (Tommy[D])</name>
 	</maintainer>
-	<herd>cpp</herd>
+	<maintainer type="project">
+		<email>cpp@gentoo.org</email>
+		<name>Gentoo C++ Project</name>
+	</maintainer>
 	<longdescription>
 POCO, the C++ Portable Components, is a collection of open source
 C++ class libraries that simplify and accelerate the development of

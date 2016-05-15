@@ -1,10 +1,10 @@
-# Config file for /etc/init.d/accel-pppd
+# Config file for accel-pppd
 
 # Pid file
-PID="/var/run/accel-ppp/accel-pppd.pid"
+ACCEL_PPPD_PID="/run/accel-ppp/accel-pppd.pid"
 
 # Directory for radius attributes
-RADATTR_DIR="/var/run/radattr"
+RADATTR_DIR="/run/radattr"
 
 # Daemon options
 ACCEL_PPPD_OPTS="-d -c /etc/accel-ppp.conf"

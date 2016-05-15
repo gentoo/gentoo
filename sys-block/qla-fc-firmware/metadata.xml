@@ -1,11 +1,14 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<!DOCTYPE pkgmetadata SYSTEM 'http://www.gentoo.org/dtd/metadata.dtd'>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>base-system</herd>
-<maintainer>
+<maintainer type="person">
 	<email>robbat2@gentoo.org</email>
 </maintainer>
-<longdescription lang='en'>
+<maintainer type="project">
+	<email>base-system@gentoo.org</email>
+	<name>Gentoo Base System</name>
+</maintainer>
+<longdescription lang="en">
 	QLogic Linux Fibre Channel HBA Firmware for ql2xxx cards.
 	This package contains snapshots of firmware releases from the QLogic FTP server. 
 </longdescription>

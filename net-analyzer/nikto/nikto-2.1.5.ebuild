@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -34,21 +34,24 @@ src_prepare() {
 src_compile() { :; }
 
 src_install() {
-	insinto /etc/nikto
-	doins nikto.conf
+	insinto "/etc/${PN}"
+	doins "${PN}.conf"
 
-	dobin nikto.pl
-	dosym nikto.pl /usr/bin/nikto
+	mv "${PN}.pl" "${PN}" || die
+	dobin "${PN}"
 
 	insinto /usr/share/nikto
 	doins -r plugins templates databases
 
-	NIKTO_PMS='JSON-PP.pm'
-	einfo "symlinking ${NIKTO_PMS} to ${VENDOR_LIB}"
+	local NIKTO_PMS=(
+		JSON-PP.pm
+	)
 
-	for _PM in ${NIKTO_PMS}; do
-		_TARGET=${VENDOR_LIB}/${_PM}
-		dosym /usr/share/nikto/plugins/${_PM} ${_TARGET}
+	einfo "Symlinking ${NIKTO_PMS[@]} to ${VENDOR_LIB}"
+
+	for _PM in "${NIKTO_PMS[@]}"; do
+		_TARGET="${VENDOR_LIB}/${_PM}"
+		dosym "/usr/share/nikto/plugins/${_PM}" "${_TARGET}"
 	done
 
 	dodoc docs/*.txt

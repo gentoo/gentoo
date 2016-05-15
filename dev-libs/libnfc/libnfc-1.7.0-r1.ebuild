@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -16,7 +16,7 @@ KEYWORDS="~amd64 ~arm ~x86"
 IUSE="doc pcsc-lite readline static-libs usb"
 
 RDEPEND="pcsc-lite? ( sys-apps/pcsc-lite )
-	readline? ( sys-libs/readline )
+	readline? ( sys-libs/readline:0 )
 	usb? ( virtual/libusb:0 )"
 DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen )"

@@ -1,0 +1,50 @@
+--- SSLConnectionManager.cpp.orig	2014-09-01 23:09:35.916376510 +0200
++++ SSLConnectionManager.cpp	2014-09-01 23:10:32.492515988 +0200
+@@ -95,13 +95,13 @@
+   } catch (SSLConnectionError &error) {
+     std::stringstream errorStream;
+     errorStream << "Got exception: " << error.what();
+-    std::string error = errorStream.str();    
+-    Logger::logError(error);
++    std::string errorStr = errorStream.str();    
++    Logger::logError(errorStr);
+   } catch (FirefoxUpdateException &error) {
+     std::stringstream errorStream;
+     errorStream << "Got exception: " << error.what();
+-    std::string error = errorStream.str();    
+-    Logger::logError(error);
++    std::string errorStr = errorStream.str();    
++    Logger::logError(errorStr);
+   }
+ }
+ 
+@@ -120,13 +120,13 @@
+   } catch (SSLConnectionError &error) {
+     std::stringstream errorStream;
+     errorStream << "Got exception: " << error.what();
+-    std::string error = errorStream.str();    
+-    Logger::logError(error);
++    std::string errorStr = errorStream.str();    
++    Logger::logError(errorStr);
+   } catch (FirefoxUpdateException &error) {
+     std::stringstream errorStream;
+     errorStream << "Got exception: " << error.what();
+-    std::string error = errorStream.str();    
+-    Logger::logError(error);
++    std::string errorStr = errorStream.str();    
++    Logger::logError(errorStr);
+   }
+ }
+ 
+@@ -151,9 +151,9 @@
+     } catch (SSLConnectionError &error) {
+       std::stringstream errorStream;
+       errorStream << "Got exception: " << error.what();
+-      std::string error = errorStream.str();
++      std::string errorStr = errorStream.str();
+ 
+-      Logger::logError(error);
++      Logger::logError(errorStr);
+     }
+   }
+ }

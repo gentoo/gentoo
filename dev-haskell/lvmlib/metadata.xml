@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>haskell</herd>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
 	<longdescription>
 		The Lazy Virtual Machine (LVM) defines a portable instruction set and file
 		format. It is specifically designed to execute languages with non-strict (or
@@ -9,6 +12,6 @@
 		compiling core programs into LVM instructions and a library. The LVM is used
 		as a backend for the Helium compiler. At the moment, one LVM runtime
 		implementation is available (written in C). More information about LVM can be
-		found in Chapter 6 of Daan Leijen&#39;s PhD Thesis, The Lambda Abroad.
+		found in Chapter 6 of Daan Leijen's PhD Thesis, The Lambda Abroad.
 	</longdescription>
 </pkgmetadata>

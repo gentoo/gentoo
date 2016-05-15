@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -15,10 +15,13 @@ SLOT="0"
 KEYWORDS="amd64 ia64 x86"
 
 RDEPEND="dev-libs/popt"
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	>=sys-kernel/linux-headers-3.18"
 
 src_prepare() {
 	epatch "${FILESDIR}/0.21-initializer.patch"
+	epatch "${FILESDIR}/0.21-nvme_ioctl.h.patch"
+	epatch_user
 }
 
 src_configure() {

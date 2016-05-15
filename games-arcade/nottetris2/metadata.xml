@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>games</herd>
-	<longdescription lang='en'>
+	<maintainer type="project">
+		<email>games@gentoo.org</email>
+		<name>Gentoo Games Project</name>
+	</maintainer>
+	<longdescription lang="en">
 		Not Tetris 2 is the spiritual successor of the classic Tetris
 		mixed with physics. The result is a fun spinoff in which blocks
 		are no longer bound to the usual grid. Blocks can be rotated and

@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>games</herd>
+<maintainer type="project">
+	<email>games@gentoo.org</email>
+	<name>Gentoo Games Project</name>
+</maintainer>
 <longdescription>
 King of the Hill (KOTH) is a multiplayer, networked artillery game of little tanks with really big weapons set out to destroy one another. Best-known games of this type include the classic DOS game "Scorched Earth: The Mother of All Games" and "Scorched Tanks" for the Amiga.
 </longdescription>

@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>net-p2p</herd>
-  <maintainer>
+  <maintainer type="person">
     <email>hwoarang@gentoo.org</email>
     <name>Markos Chandras</name>
   </maintainer>
@@ -11,4 +10,8 @@
     <remote-id type="sourceforge">libtorrent</remote-id>
     <remote-id type="github">arvidn/libtorrent</remote-id>
   </upstream>
+  <use>
+    <flag name="dht">Enable DHT (distributed hash table) support for
+      libtorrent</flag>
+  </use>
 </pkgmetadata>

@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -39,7 +39,7 @@ RDEPEND="
 	dev-perl/XML-DOM
 	dev-perl/XML-Twig
 	dev-perl/encoding-warnings
-	dev-perl/yaml
+	dev-perl/YAML
 	dev-perl/Switch
 	sci-visualization/gnuplot
 	virtual/perl-Data-Dumper
@@ -49,10 +49,10 @@ RDEPEND="
 	!dev-perl/Lab-Tools
 	debug? (
 		dev-lang/perl[ithreads]
-		dev-perl/wxperl
+		dev-perl/Wx
 	)
 	xpression? (
-		dev-perl/wxperl
+		dev-perl/Wx
 	)
 "
 DEPEND="

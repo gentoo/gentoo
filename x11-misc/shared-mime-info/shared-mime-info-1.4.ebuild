@@ -6,8 +6,8 @@ EAPI=5
 inherit eutils fdo-mime
 
 DESCRIPTION="The Shared MIME-info Database specification"
-HOMEPAGE="http://freedesktop.org/wiki/Software/shared-mime-info"
-SRC_URI="http://people.freedesktop.org/~hadess/${P}.tar.xz"
+HOMEPAGE="https://freedesktop.org/wiki/Software/shared-mime-info"
+SRC_URI="https://people.freedesktop.org/~hadess/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"

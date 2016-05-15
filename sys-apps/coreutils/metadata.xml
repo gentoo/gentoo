@@ -1,13 +1,16 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<!DOCTYPE pkgmetadata SYSTEM 'http://www.gentoo.org/dtd/metadata.dtd'>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>base-system</herd>
+<maintainer type="project">
+	<email>base-system@gentoo.org</email>
+	<name>Gentoo Base System</name>
+</maintainer>
 <use>
-	<flag name='hostname'>Build the hostname program</flag>
-	<flag name='kill'>Build the kill program</flag>
-	<flag name='multicall'>Build all tools into a single `coreutils` program akin to busybox to save space</flag>
+	<flag name="hostname">Build the hostname program</flag>
+	<flag name="kill">Build the kill program</flag>
+	<flag name="multicall">Build all tools into a single `coreutils` program akin to busybox to save space</flag>
 </use>
 <upstream>
-	<remote-id type='cpe'>cpe:/a:gnu:coreutils</remote-id>
+	<remote-id type="cpe">cpe:/a:gnu:coreutils</remote-id>
 </upstream>
 </pkgmetadata>

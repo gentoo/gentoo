@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=2
+EAPI=5
 #ECVS_SERVER="cvs.tenebrae.sourceforge.net:/cvsroot/tenebrae"
 #ECVS_MODULE="tenebrae_0"
 #inherit cvs
@@ -20,7 +20,7 @@ IUSE=""
 
 RDEPEND="virtual/opengl
 	virtual/glu
-	media-libs/libpng
+	media-libs/libpng:0
 	x11-libs/libXxf86vm
 	x11-libs/libXxf86dga"
 DEPEND="${RDEPEND}
@@ -53,19 +53,18 @@ src_prepare() {
 	sed \
 		-e "/^LDFLAGS/s:=:+=:" \
 		-e "s:-mpentiumpro -O6:${CFLAGS}:" \
-		Makefile.i386linux > Makefile \
-		|| die "sed failed"
+		Makefile.i386linux > Makefile || die
 }
 
 src_compile() {
 	cd "${S}"/tenebrae_0/linux
-	emake MASTER_DIR="${GAMES_DATADIR}/quake1" build_release || die
+	emake MASTER_DIR="${GAMES_DATADIR}/quake1" build_release
 }
 
 src_install() {
-	newgamesbin tenebrae_0/linux/release*/bin/tenebrae.run tenebrae || die
+	newgamesbin tenebrae_0/linux/release*/bin/tenebrae.run tenebrae
 	insinto "${GAMES_DATADIR}/quake1/tenebrae"
-	doins "${WORKDIR}"/tenebrae/* || die "doins data"
+	doins "${WORKDIR}"/tenebrae/*
 	dodoc tenebrae_0/linux/README "${WORKDIR}"/Tenebrae_Readme.txt
 	prepgamesdirs
 }

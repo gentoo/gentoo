@@ -12,7 +12,7 @@ app-arch/bzip2
 app-arch/gzip
 dev-libs/openssl
 app-arch/libarchive
-app-shells/bash
+app-shells/bash:0
 net-misc/rsync
 net-misc/wget
 sys-devel/autoconf

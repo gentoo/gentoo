@@ -25,13 +25,13 @@ SRC_URI="http://lynx.isc.org/current/${MY_P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~x64-freebsd ~x86-freebsd ~ia64-hpux ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
-IUSE="bzip2 cjk gnutls idn ipv6 nls ssl unicode"
+IUSE="bzip2 cjk gnutls idn ipv6 nls ssl unicode libressl"
 
 RDEPEND="sys-libs/ncurses:0=[unicode?]
 	sys-libs/zlib
 	nls? ( virtual/libintl )
 	ssl? (
-		!gnutls? ( >=dev-libs/openssl-0.9.8 )
+		!gnutls? ( !libressl? ( >=dev-libs/openssl-0.9.8 ) libressl? ( dev-libs/libressl ) )
 		gnutls? (
 			dev-libs/libgcrypt:0
 			>=net-libs/gnutls-2.6.4

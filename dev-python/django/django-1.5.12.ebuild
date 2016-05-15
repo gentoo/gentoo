@@ -27,7 +27,7 @@ RDEPEND="dev-python/pillow[${PYTHON_USEDEP}]
 	mysql? ( >=dev-python/mysql-python-1.2.3[${PY2_USEDEP}] )"
 DEPEND="${RDEPEND}
 	doc? ( >=dev-python/sphinx-1.0.7[${PYTHON_USEDEP}] )
-	test? ( ${PYTHON_DEPS//sqlite?/sqlite} )"
+	test? ( $(python_gen_impl_dep sqlite) )"
 
 REQUIRED_USE="mysql? ( $(python_gen_useflags python2_7) )
 		postgres? ( || ( $(python_gen_useflags 'python{2_7,3_2,3_3}') ) )"

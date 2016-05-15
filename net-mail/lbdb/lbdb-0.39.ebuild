@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -22,7 +22,7 @@ DEPEND="dev-libs/libvformat
 	crypt? ( app-crypt/gnupg )
 	nis? ( net-nds/yp-tools )"
 RDEPEND="${DEPEND}
-	pda? ( dev-perl/p5-Palm )
+	pda? ( dev-perl/Palm )
 	ldap? ( dev-perl/perl-ldap )"
 
 src_configure() {

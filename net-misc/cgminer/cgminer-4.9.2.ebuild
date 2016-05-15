@@ -31,7 +31,7 @@ DEPEND="virtual/pkgconfig
 src_configure() {
 	use hardened && append-cflags "-nopie"
 
-	# PKG_CHECK_MODULES needs PKG_CONFIG for --with-system-jansson. 
+	# PKG_CHECK_MODULES needs PKG_CONFIG for --with-system-jansson.
 	export PKG_CONFIG=/usr/bin/pkg-config
 	econf $(use_with ncurses curses) \
 		$(use_enable ants1) \

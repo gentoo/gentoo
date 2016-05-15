@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -17,16 +17,16 @@ KEYWORDS="amd64 ~arm ~mips ppc ppc64 x86"
 IUSE="allegro gif glut jpeg jpeg2k mng nvtt openexr opengl png sdl cpu_flags_x86_sse cpu_flags_x86_sse2 cpu_flags_x86_sse3 static-libs tiff xpm X"
 
 RDEPEND="allegro? ( media-libs/allegro:0 )
-	gif? ( media-libs/giflib )
+	gif? ( media-libs/giflib:= )
 	glut? ( media-libs/freeglut )
 	jpeg? ( virtual/jpeg:0 )
 	jpeg2k? ( media-libs/jasper )
-	mng? ( media-libs/libmng )
+	mng? ( media-libs/libmng:= )
 	nvtt? ( media-gfx/nvidia-texture-tools )
-	openexr? ( media-libs/openexr )
+	openexr? ( media-libs/openexr:= )
 	opengl? ( virtual/opengl
 		virtual/glu )
-	png? ( media-libs/libpng:0 )
+	png? ( media-libs/libpng:0= )
 	sdl? ( media-libs/libsdl )
 	tiff? ( media-libs/tiff:0 )
 	xpm? ( x11-libs/libXpm )

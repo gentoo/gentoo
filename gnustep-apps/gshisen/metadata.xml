@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>gnustep</herd>
+	<maintainer type="project">
+		<email>gnustep@gentoo.org</email>
+		<name>Gentoo GNUstep Project</name>
+	</maintainer>
 	<longdescription>GShisen is the first GNUstep game!
 The object of the game is to remove all tiles from the field. Only two matching tiles can be removed at a time. Two tiles can only be removed if they can be connected with at most three connected lines. Lines can be horizontal or vertical but not diagonal.
 Remember that lines may cross the empty border. If you are stuck, you can use the Hint feature to find two tiles which may be removed.</longdescription>

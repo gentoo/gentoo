@@ -10,7 +10,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit autotools eutils gnome2-utils python-single-r1 systemd user
 
 DESCRIPTION="Automatic bug detection and reporting tool"
-HOMEPAGE="https://fedorahosted.org/abrt/"
+HOMEPAGE="https://github.com/abrt/abrt/wiki/ABRT-Project"
 SRC_URI="https://fedorahosted.org/released/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"

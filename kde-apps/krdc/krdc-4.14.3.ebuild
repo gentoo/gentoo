@@ -16,7 +16,7 @@ IUSE="debug jpeg +rdesktop telepathy vnc zeroconf"
 
 DEPEND="
 	jpeg? ( virtual/jpeg:0 )
-	telepathy? ( >=net-libs/telepathy-qt-0.9 )
+	telepathy? ( >=net-libs/telepathy-qt-0.9[qt4] )
 	vnc? ( >=net-libs/libvncserver-0.9 )
 	zeroconf? ( net-dns/avahi )
 "

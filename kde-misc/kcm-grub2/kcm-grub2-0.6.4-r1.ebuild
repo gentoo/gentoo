@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -21,7 +21,7 @@ IUSE="+hwinfo imagemagick packagekit"
 COMMON_DEPEND="
 	hwinfo? ( sys-apps/hwinfo )
 	imagemagick? ( media-gfx/imagemagick )
-	packagekit? ( app-admin/packagekit-qt4 )
+	packagekit? ( <app-admin/packagekit-qt-0.9 )
 "
 DEPEND="${COMMON_DEPEND}
 	dev-util/automoc

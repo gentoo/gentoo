@@ -4,12 +4,11 @@
 <longdescription lang="en">
 OpenSMTPD is an implementation of the server-side SMTP protocol as defined by RFC 5321, with some additional standard extensions. It allows ordinary machines to exchange e-mails with other systems speaking the SMTP protocol.
 </longdescription>
-<maintainer>
+<maintainer type="person">
 <email>zx2c4@gentoo.org</email>
 <name>Jason A. Donenfeld</name>
 </maintainer>
 <use>
-<flag name='mta'>Enable this to install as system-wide MTA</flag>
+<flag name="mta">Enable this to install as system-wide MTA</flag>
 </use>
 </pkgmetadata>
-

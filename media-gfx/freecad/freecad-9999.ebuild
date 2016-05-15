@@ -17,7 +17,7 @@ SLOT="0"
 KEYWORDS=""
 IUSE=""
 
-COMMON_DEPEND="dev-cpp/eigen:3
+COMMON_DEPEND=">dev-cpp/eigen-3.2.2:3
 	dev-libs/boost
 	dev-libs/xerces-c[icu]
 	dev-python/matplotlib

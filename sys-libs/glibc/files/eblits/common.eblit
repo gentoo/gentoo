@@ -102,62 +102,82 @@ setup_target_flags() {
 			# Both sparc and sparc64 can use -fcall-used-g6.  -g7 is bad, though.
 			filter-flags "-fcall-used-g7"
 			append-flags "-fcall-used-g6"
-			filter-flags "-mvis"
 
-			GLIBCMAJOR=$(get_version_component_range 1 ${PV})
-			GLIBCMINOR=$(get_version_component_range 2 ${PV})
+			# If the CHOST is the basic one (e.g. not sparcv9-xxx already),
+			# try to pick a better one so glibc can use cpu-specific .S files.
+			# We key off the CFLAGS to get a good value.  Also need to handle
+			# version skew.
+			# We can't force users to set their CHOST to their exact machine
+			# as many of these are not recognized by config.sub/gcc and such :(.
+			# Note: If the mcpu values don't scale, we might try probing CPP defines.
+			# Note: Should we factor in -Wa,-AvXXX flags too ?  Or -mvis/etc... ?
 
-			# set CTARGET_OPT so glibc can use cpu-specific .S files for better performance
-			# - UltraSPARC T1 (niagara) support requires >= glibc 2.8
-			# - UltraSPARC T2 (niagara2) support requires >= glibc 2.7
-
-			if is_crosscompile || [[ ${PROFILE_ARCH} == "sparc64" ]] || { has_multilib_profile && ! tc-is-cross-compiler; } ; then
-				case ${ABI}:${CTARGET} in
-					sparc64:*|\
-					default:sparc64*)
-						filter-flags -Wa,-xarch -Wa,-A
-
-						if is-flagq "-mcpu=niagara2" && [[ ${GLIBCMAJOR}.${GLIBCMINOR} > 2.7 ]] ; then
-							CTARGET_OPT="sparc64v2-unknown-linux-gnu"
-							append-flags "-Wa,-xarch=v9b"
-							export ASFLAGS="${ASFLAGS} -Wa,-xarch=v9b"
-						elif { is-flagq "-mcpu=niagara" || is-flagq "-mcpu=niagara2" ; } && [[ ${GLIBCMAJOR}.${GLIBCMINOR} > 2.6 ]] ; then
-							CTARGET_OPT="sparc64v-unknown-linux-gnu"
-							append-flags "-Wa,-xarch=v9b"
-							export ASFLAGS="${ASFLAGS} -Wa,-xarch=v9b"
-						elif is-flagq "-mcpu=ultrasparc3" || is-flagq "-mcpu=niagara" || is-flagq "-mcpu=niagara2"; then
-							CTARGET_OPT="sparc64b-unknown-linux-gnu"
-							append-flags "-Wa,-xarch=v9b"
-							export ASFLAGS="${ASFLAGS} -Wa,-xarch=v9b"
-						else
-							CTARGET_OPT="sparc64-unknown-linux-gnu"
-							append-flags "-Wa,-xarch=v9a"
-							export ASFLAGS="${ASFLAGS} -Wa,-xarch=v9a"
-						fi
+			local cpu
+			case ${CTARGET} in
+			sparc64-*)
+				case $(get-flag mcpu) in
+				niagara[234])
+					if version_is_at_least 2.8 ; then
+						cpu="sparc64v2"
+					elif version_is_at_least 2.4 ; then
+						cpu="sparc64v"
+					elif version_is_at_least 2.2.3 ; then
+						cpu="sparc64b"
+					fi
 					;;
-					*)
-						if is-flagq "-mcpu=niagara2" && [[ ${GLIBCMAJOR}.${GLIBCMINOR} > 2.7 ]] ; then
-							CTARGET_OPT="sparcv9v2-unknown-linux-gnu"
-						elif { is-flagq "-mcpu=niagara" || is-flagq "-mcpu=niagara2" ; } && [[ ${GLIBCMAJOR}.${GLIBCMINOR} > 2.6 ]] ; then
-							CTARGET_OPT="sparcv9v-unknown-linux-gnu"
-						elif is-flagq "-mcpu=ultrasparc3" || is-flagq "-mcpu=niagara" || is-flagq "-mcpu=niagara2"; then
-							CTARGET_OPT="sparcv9b-unknown-linux-gnu"
-						else
-							CTARGET_OPT="sparcv9-unknown-linux-gnu"
-						fi
+				niagara)
+					if version_is_at_least 2.4 ; then
+						cpu="sparc64v"
+					elif version_is_at_least 2.2.3 ; then
+						cpu="sparc64b"
+					fi
+					;;
+				ultrasparc3)
+					cpu="sparc64b"
+					;;
+				*)
+					# We need to force at least v9a because the base build doesn't
+					# work with just v9.
+					# https://sourceware.org/bugzilla/show_bug.cgi?id=19477
+					[[ -z ${cpu} ]] && append-flags "-Wa,-xarch=v9a"
 					;;
 				esac
-			else
-				if is-flagq "-mcpu=niagara2" && [[ ${GLIBCMAJOR}.${GLIBCMINOR} > 2.7 ]] ; then
-					CTARGET_OPT="sparcv9v2-unknown-linux-gnu"
-				elif { is-flagq "-mcpu=niagara" || is-flagq "-mcpu=niagara2" ; } && [[ ${GLIBCMAJOR}.${GLIBCMINOR} > 2.6 ]] ; then
-					CTARGET_OPT="sparcv9v-unknown-linux-gnu"
-				elif is-flagq "-mcpu=ultrasparc3" || is-flagq "-mcpu=niagara" || is-flagq "-mcpu=niagara2"; then
-					CTARGET_OPT="sparcv9b-unknown-linux-gnu"
-				elif { is_crosscompile && want_nptl; } || is-flagq "-mcpu=ultrasparc2" || is-flagq "-mcpu=ultrasparc"; then
-					CTARGET_OPT="sparcv9-unknown-linux-gnu"
-				fi
-			fi
+				;;
+			sparc-*)
+				case $(get-flag mcpu) in
+				niagara[234])
+					if version_is_at_least 2.8 ; then
+						cpu="sparcv9v2"
+					elif version_is_at_least 2.4 ; then
+						cpu="sparcv9v"
+					elif version_is_at_least 2.2.3 ; then
+						cpu="sparcv9b"
+					else
+						cpu="sparcv9"
+					fi
+					;;
+				niagara)
+					if version_is_at_least 2.4 ; then
+						cpu="sparcv9v"
+					elif version_is_at_least 2.2.3 ; then
+						cpu="sparcv9b"
+					else
+						cpu="sparcv9"
+					fi
+					;;
+				ultrasparc3)
+					cpu="sparcv9b"
+					;;
+				v9|ultrasparc)
+					cpu="sparcv9"
+					;;
+				v8|supersparc|hypersparc|leon|leon3)
+					cpu="sparcv8"
+					;;
+				esac
+			;;
+			esac
+			[[ -n ${cpu} ]] && CTARGET_OPT="${cpu}-${CTARGET#*-}"
 		;;
 	esac
 }

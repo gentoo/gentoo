@@ -8,14 +8,12 @@ PYTHON_COMPAT=( python{2_7,3_3,3_4} )
 PYTHON_REQ_USE=threads
 inherit eutils vim-doc flag-o-matic fdo-mime versionator bash-completion-r1 prefix python-r1
 
-MY_PV=${PV//./-}
-
 if [[ ${PV} == 9999* ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/vim/vim.git"
-	EGIT_CHECKOUT_DIR=${WORKDIR}/vim-${MY_PV}
+	EGIT_CHECKOUT_DIR=${WORKDIR}/vim-${PV}
 else
-	SRC_URI="https://github.com/vim/vim/archive/v${MY_PV}.tar.gz -> vim-${PV}.tar.gz
+	SRC_URI="https://github.com/vim/vim/archive/v${PV}.tar.gz -> vim-${PV}.tar.gz
 		https://dev.gentoo.org/~radhermit/vim/vim-7.4.542-gentoo-patches.tar.bz2"
 	KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 sparc x86 ~x86-fbsd ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris"
 fi
@@ -77,7 +75,7 @@ DEPEND="${RDEPEND}
 	nls? ( sys-devel/gettext )
 "
 
-S=${WORKDIR}/vim-${MY_PV}
+S=${WORKDIR}/vim-${PV}
 
 pkg_setup() {
 	# people with broken alphabets run into trouble. bug 82186.

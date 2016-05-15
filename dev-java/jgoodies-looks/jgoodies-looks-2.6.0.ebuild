@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -18,15 +18,19 @@ SRC_URI="http://www.jgoodies.com/download/libraries/${MY_PN}/${MY_P}.zip"
 
 LICENSE="BSD"
 SLOT="2.6"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
-COMMON_DEPEND="dev-java/jgoodies-common:1.8"
-DEPEND=">=virtual/jdk-1.6
+CDEPEND="dev-java/jgoodies-common:1.8"
+
+RDEPEND="
+	${CDEPEND}
+	>=virtual/jre-1.6"
+
+DEPEND="
+	${CDEPEND}
 	app-arch/unzip
-	${COMMON_DEPEND}"
-RDEPEND=">=virtual/jre-1.6
-	${COMMON_DEPEND}"
+	>=virtual/jdk-1.6"
 
 S="${WORKDIR}"/${P}
 

@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>net-p2p</herd>
-  <herd>qt</herd>
-  <maintainer>
+  <maintainer type="person">
     <email>hwoarang@gentoo.org</email>
     <name>Markos Chandras</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>qt@gentoo.org</email>
+    <name>Gentoo Qt Project</name>
   </maintainer>
   <use>
     <flag name="webui">Enable the Web UI</flag>

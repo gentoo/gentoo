@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>freedesktop</herd>
+	<maintainer type="project">
+		<email>freedesktop-bugs@gentoo.org</email>
+		<name>Gentoo Freedesktop Project</name>
+	</maintainer>
 	<upstream>
 		<remote-id type="cpe">cpe:/a:libexpat:expat</remote-id>
 		<remote-id type="sourceforge">expat</remote-id>

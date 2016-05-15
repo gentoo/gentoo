@@ -1,0 +1,16 @@
+From e0683f4db0fb56f8139f78ca2e500b21ec2a67f0 Mon Sep 17 00:00:00 2001
+From: wmayer <wmayer@users.sourceforge.net>
+Date: Mon, 28 Dec 2015 13:54:40 +0100
+Subject: [PATCH] + fixes #0002347: freecad fails to build with Boost 1.60.0
+
+--- freecad-0.15.4671/src/Mod/Drawing/App/FeaturePage.cpp
++++ freecad-0.15.4671/src/Mod/Drawing/App/FeaturePage.cpp
+@@ -195,7 +195,7 @@
+             if (count < editText.size()) {
+                 // change values of editable texts
+                 boost::regex e2 ("(<text.*?freecad:editable=\""+what[1].str()+"\".*?<tspan.*?)>(.*?)(</tspan>)");
+-                boost::re_detail::string_out_iterator<std::string > out(newfragment);
++                std::back_insert_iterator<std::string> out(newfragment);
+                 boost::regex_replace(out, begin, what[0].second, e2, "$1>"+editText[count]+"$3");
+             }
+             count++;

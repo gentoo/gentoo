@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -25,6 +25,7 @@ S="${WORKDIR}/${MY_P}"
 BUILDDIR="${S}/js/src"
 
 RDEPEND=">=dev-libs/nspr-4.7.0
+	sys-libs/readline:0
 	x64-macos? ( dev-libs/jemalloc )"
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
@@ -77,31 +78,39 @@ src_configure() {
 		--enable-readline \
 		--enable-threadsafe \
 		--with-system-nspr \
+		--disable-optimize \
+		--disable-profile-guided-optimization \
 		$(use_enable debug) \
 		$(use_enable static-libs static) \
 		$(use_enable test tests)
 }
 
+cross_make() {
+	emake \
+		CFLAGS="${BUILD_CFLAGS}" \
+		CXXFLAGS="${BUILD_CXXFLAGS}" \
+		AR="${BUILD_AR}" \
+		CC="${BUILD_CC}" \
+		CXX="${BUILD_CXX}" \
+		RANLIB="${BUILD_RANLIB}" \
+		"$@"
+}
 src_compile() {
 	cd "${BUILDDIR}" || die
 	if tc-is-cross-compiler; then
-		make CFLAGS="" CXXFLAGS="" \
-			CC=$(tc-getBUILD_CC) CXX=$(tc-getBUILD_CXX) \
-			AR=$(tc-getBUILD_AR) RANLIB=$(tc-getBUILD_RANLIB) \
-			jscpucfg host_jsoplengen host_jskwgen || die
-		make CFLAGS="" CXXFLAGS="" \
-			CC=$(tc-getBUILD_CC) CXX=$(tc-getBUILD_CXX) \
-			AR=$(tc-getBUILD_AR) RANLIB=$(tc-getBUILD_RANLIB) \
-			-C config nsinstall || die
+		tc-export_build_env BUILD_{AR,CC,CXX,RANLIB}
+		cross_make jscpucfg host_jsoplengen host_jskwgen
+		cross_make -C config nsinstall
 		mv {,native-}jscpucfg || die
 		mv {,native-}host_jskwgen || die
 		mv {,native-}host_jsoplengen || die
 		mv config/{,native-}nsinstall || die
-		sed -e 's@./jscpucfg@./native-jscpucfg@' \
+		sed -i \
+			-e 's@./jscpucfg@./native-jscpucfg@' \
 			-e 's@./host_jskwgen@./native-host_jskwgen@' \
 			-e 's@./host_jsoplengen@./native-host_jsoplengen@' \
-			-i Makefile || die
-		sed -e 's@/nsinstall@/native-nsinstall@' -i config/config.mk || die
+			Makefile || die
+		sed -i -e 's@/nsinstall@/native-nsinstall@' config/config.mk || die
 		rm -f config/host_nsinstall.o \
 			config/host_pathsub.o \
 			host_jskwgen.o \

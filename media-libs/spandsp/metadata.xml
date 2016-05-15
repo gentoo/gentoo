@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer><email>chainsaw@gentoo.org</email></maintainer>
+<maintainer type="person"><email>chainsaw@gentoo.org</email></maintainer>
   <use>
-	<flag name='fixed-point'>Enable fixed point support</flag>
+	<flag name="fixed-point">Enable fixed point support</flag>
   </use>
 </pkgmetadata>

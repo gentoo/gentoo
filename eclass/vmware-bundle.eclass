@@ -72,11 +72,15 @@ vmware-bundle_extract-component() {
 		head -c$((component_manifestSize)) | xsltproc "${T}"/list-component-files.xsl - |
 		while read -r file_offset file_compressedSize file_uncompressedSize file_path ; do
 			if [[ ${file_path} ]] ; then
-				echo -n '.'
 				file_path="${dest}/${file_path}"
 				mkdir -p "$(dirname "${file_path}")" || die
-				tail -c+$((offset+component_dataOffset+file_offset+1)) "${component}" 2> /dev/null |
-					head -c$((file_compressedSize)) | gzip -cd > "${file_path}" || die
+				if [[ ${file_compressedSize} -gt 0 ]] ; then
+					echo -n '.'
+					tail -c+$((offset+component_dataOffset+file_offset+1)) "${component}" 2> /dev/null |
+						head -c$((file_compressedSize)) | gzip -cd > "${file_path}" || die
+				else
+					echo -n 'x'
+				fi
 			fi
 		done
 	echo

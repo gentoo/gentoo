@@ -4,7 +4,6 @@
 
 # @ECLASS: nvidia-driver.eclass
 # @MAINTAINER:
-# Tony Vroon <chainsaw@gentoo.org>
 # Jeroen Roovers <jer@gentoo.org>
 # @AUTHOR:
 # Original author: Doug Goldstein <cardoe@gentoo.org>
@@ -13,7 +12,7 @@
 # Provide useful messages for nvidia-drivers based on currently installed Nvidia
 # card. It inherits versionator.
 
-inherit readme.gentoo versionator
+inherit readme.gentoo-r1 versionator
 
 DEPEND="sys-apps/pciutils"
 

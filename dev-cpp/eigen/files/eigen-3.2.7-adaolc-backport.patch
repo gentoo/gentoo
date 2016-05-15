@@ -1,0 +1,40 @@
+# HG changeset patch
+# User Gael Guennebaud <g.gael@free.fr>
+# Date 1448895622 -3600
+# Node ID e515e2706d00294a5749db7832d10ea366b9389f
+# Parent  eb4bf011a2ea5fc4ddb0aa5332d6e616198ed886
+Update ADOL-C support.
+
+diff --git a/unsupported/Eigen/AdolcForward b/unsupported/Eigen/AdolcForward
+--- a/unsupported/Eigen/AdolcForward
++++ b/unsupported/Eigen/AdolcForward
+@@ -25,7 +25,7 @@
+ #ifndef NUMBER_DIRECTIONS
+ # define NUMBER_DIRECTIONS 2
+ #endif
+-#include <adolc/adouble.h>
++#include <adolc/adtl.h>
+ 
+ // adolc defines some very stupid macros:
+ #if defined(malloc)
+diff --git a/unsupported/test/forward_adolc.cpp b/unsupported/test/forward_adolc.cpp
+--- a/unsupported/test/forward_adolc.cpp
++++ b/unsupported/test/forward_adolc.cpp
+@@ -13,8 +13,6 @@
+ #define NUMBER_DIRECTIONS 16
+ #include <unsupported/Eigen/AdolcForward>
+ 
+-int adtl::ADOLC_numDir;
+-
+ template<typename Vector>
+ EIGEN_DONT_INLINE typename Vector::Scalar foo(const Vector& p)
+ {
+@@ -123,7 +121,7 @@
+ 
+ void test_forward_adolc()
+ {
+-  adtl::ADOLC_numDir = NUMBER_DIRECTIONS;
++  adtl::setNumDir(NUMBER_DIRECTIONS);
+ 
+   for(int i = 0; i < g_repeat; i++) {
+     CALL_SUBTEST(( adolc_forward_jacobian(TestFunc1<double,2,2>()) ));

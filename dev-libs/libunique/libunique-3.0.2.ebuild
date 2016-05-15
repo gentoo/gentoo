@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -10,7 +10,7 @@ GNOME2_LA_PUNT="yes"
 inherit gnome2 virtualx
 
 DESCRIPTION="a library for writing single instance application"
-HOMEPAGE="https://live.gnome.org/LibUnique"
+HOMEPAGE="https://wiki.gnome.org/Attic/LibUnique"
 
 LICENSE="LGPL-2.1"
 SLOT="3"

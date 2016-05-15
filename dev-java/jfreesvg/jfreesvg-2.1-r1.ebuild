@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -14,15 +14,18 @@ SRC_URI="mirror://sourceforge/jfreegraphics2d/${P}.zip"
 
 LICENSE="GPL-3"
 SLOT="2.1"
-KEYWORDS="amd64 ppc x86"
+KEYWORDS="amd64 x86"
 IUSE="debug"
 
-DEPEND=">=virtual/jdk-1.6
-	app-arch/unzip"
-RDEPEND=">=virtual/jre-1.6"
+DEPEND="
+	app-arch/unzip
+	>=virtual/jdk-1.6"
+
+RDEPEND="
+	>=virtual/jre-1.6"
 
 java_prepare() {
-	find "${WORKDIR}" -name '*.jar' -print -delete || die
+	java-pkg_clean
 }
 
 src_compile() {

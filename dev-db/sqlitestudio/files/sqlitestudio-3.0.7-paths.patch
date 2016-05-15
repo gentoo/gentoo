@@ -1,0 +1,22 @@
+--- a/Plugins/DbAndroid/DbAndroid.pro	2015-11-24 20:09:41.000000000 +0100
++++ a/Plugins/DbAndroid/DbAndroid.pro	2016-01-20 13:39:02.436869035 +0100
+@@ -6,7 +6,7 @@
+ 
+ QT += widgets network
+ 
+-include($$PWD/../../../sqlitestudio/SQLiteStudio3/plugins.pri)
++include($$PWD/../../SQLiteStudio3/plugins.pri)
+ 
+ TARGET = DbAndroid
+ TEMPLATE = lib
+--- a/Plugins/ScriptingTcl/ScriptingTcl.pro
++++ b/Plugins/ScriptingTcl/ScriptingTcl.pro
+@@ -35,7 +35,7 @@ linux: {
+ 
+     # Find tclConfig.sh
+     TCL_CONFIG_DIR = $$system(echo "puts [info library]" | tclsh)
+-    TCL_CONFIG = $$TCL_CONFIG_DIR/tclConfig.sh
++    TCL_CONFIG = $$TCL_CONFIG_DIR/../tclConfig.sh
+     message("Looking for $$TCL_CONFIG")
+     !exists($$TCL_CONFIG) {
+ 	# Debian case

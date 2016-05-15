@@ -6,8 +6,8 @@ EAPI=5
 inherit eutils flag-o-matic multilib autotools-multilib
 
 DESCRIPTION="Library of simple functions that are optimized for various CPUs"
-HOMEPAGE="http://liboil.freedesktop.org/"
-SRC_URI="http://liboil.freedesktop.org/download/${P}.tar.gz"
+HOMEPAGE="https://liboil.freedesktop.org/"
+SRC_URI="https://liboil.freedesktop.org/download/${P}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0.3"
@@ -41,6 +41,9 @@ src_configure() {
 	strip-flags
 	filter-flags -O?
 	append-flags -O2
+
+	# For use with Clang, which is the only compiler on OSX, bug #576646
+	[[ ${CHOST} == *-darwin* ]] && append-flags -fheinous-gnu-extensions
 
 	autotools-multilib_src_configure
 }

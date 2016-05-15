@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -10,7 +10,7 @@ inherit eutils python-single-r1 java-pkg-opt-2
 
 if [[ ${PV} == "9999" ]]; then
 	EGIT_REPO_URI="git://sigrok.org/${PN}"
-	inherit git-2 autotools
+	inherit git-r3 autotools
 else
 	SRC_URI="http://sigrok.org/download/source/${PN}/${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
@@ -29,7 +29,7 @@ LIB_DEPEND=">=dev-libs/glib-2.32.0[static-libs(+)]
 	>=dev-libs/libzip-0.8[static-libs(+)]
 	cxx? ( dev-cpp/glibmm:2[static-libs(+)] )
 	python? ( ${PYTHON_DEPS} >=dev-python/pygobject-3.0.0[${PYTHON_USEDEP}] )
-	ftdi? ( >=dev-embedded/libftdi-0.16[static-libs(+)] )
+	ftdi? ( >=dev-embedded/libftdi-0.16:=[static-libs(+)] )
 	parport? ( sys-libs/libieee1284[static-libs(+)] )
 	serial? ( dev-libs/libserialport[static-libs(+)] )
 	usb? ( virtual/libusb:1[static-libs(+)] )"

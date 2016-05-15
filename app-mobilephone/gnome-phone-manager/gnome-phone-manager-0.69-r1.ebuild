@@ -8,7 +8,7 @@ GNOME2_LA_PUNT="yes"
 
 inherit autotools eutils gnome2
 
-DESCRIPTION="A program created to allow you to control aspects of your mobile phone from your GNOME desktop"
+DESCRIPTION="Allows you to control aspects of your mobile phone from your GNOME desktop"
 HOMEPAGE="https://wiki.gnome.org/PhoneManager"
 
 LICENSE="GPL-2"

@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer>
-		<email>maintainer-needed@gentoo.org</email>
-	</maintainer>
 	<longdescription>
 	Firebird is a relational database offering many ANSI SQL standard 
 	features that runs on Linux, Windows, and a variety of Unix platforms.
@@ -19,4 +16,13 @@
 	<upstream>
 		<remote-id type="sourceforge">firebird</remote-id>
 	</upstream>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>bear1650@mail.ru</email>
+		<name>Andrey Matrosov</name>
+		<description>Proxied maintainer, assign bugs to him</description>
+	</maintainer>
 </pkgmetadata>

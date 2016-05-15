@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>sautier.louis@gmail.com</email>
+    <name>Louis Sautier</name>
+    <description>Proxied maintainer; set to assignee in all bugs</description>
+  </maintainer>
+  <maintainer type="project">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <maintainer type="person">
+    <email>djc@gentoo.org</email>
+    <name>Dirkjan Ochtman</name>
+  </maintainer>
+  <longdescription lang="en">
+	  Syncthing replaces proprietary sync and cloud services with something open, trustworthy and decentralized.
+	  Your data is your data alone and you deserve to choose where it is stored, if it is shared with some third party and how it's transmitted over the Internet.
+  </longdescription>
+  <upstream>
+    <remote-id type="github">syncthing/syncthing</remote-id>
+    <bugs-to>https://github.com/syncthing/syncthing/issues</bugs-to>
+  </upstream>
+</pkgmetadata>

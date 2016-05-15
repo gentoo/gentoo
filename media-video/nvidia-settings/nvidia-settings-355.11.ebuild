@@ -15,7 +15,8 @@ SLOT="0"
 KEYWORDS="-* ~amd64 ~x86 ~x86-fbsd"
 IUSE="examples gtk3"
 
-COMMON_DEPEND="x11-libs/gtk+:2
+COMMON_DEPEND="
+	x11-libs/gtk+:2
 	gtk3? ( x11-libs/gtk+:3 )
 	x11-libs/libX11
 	x11-libs/libXext

@@ -1,0 +1,96 @@
+diff -ur a/sooperlooper-1.7.3/src/control_osc.hpp b/sooperlooper-1.7.3/src/control_osc.hpp
+--- a/sooperlooper-1.7.3/src/control_osc.hpp	2013-10-18 18:37:39.000000000 +0300
++++ b/sooperlooper-1.7.3/src/control_osc.hpp	2015-12-05 01:40:01.848107565 +0200
+@@ -27,7 +27,7 @@
+ #include <list>
+ #include <utility>
+ 
+-#include <sigc++/object.h>
++#include <sigc++/trackable.h>
+ 
+ #include "event.hpp"
+ #include "event_nonrt.hpp"
+diff -ur a/sooperlooper-1.7.3/src/gui/app_frame.hpp b/sooperlooper-1.7.3/src/gui/app_frame.hpp
+--- a/sooperlooper-1.7.3/src/gui/app_frame.hpp	2014-02-03 18:52:15.000000000 +0200
++++ b/sooperlooper-1.7.3/src/gui/app_frame.hpp	2015-12-05 01:40:01.844774250 +0200
+@@ -26,7 +26,7 @@
+ #include <string>
+ #include <vector>
+ 
+-#include <sigc++/object.h>
++#include <sigc++/trackable.h>
+ #include <sigc++/signal.h>
+ #include <sigc++/connection.h>
+ 
+diff -ur a/sooperlooper-1.7.3/src/gui/config_panel.hpp b/sooperlooper-1.7.3/src/gui/config_panel.hpp
+--- a/sooperlooper-1.7.3/src/gui/config_panel.hpp	2013-10-18 18:37:39.000000000 +0300
++++ b/sooperlooper-1.7.3/src/gui/config_panel.hpp	2015-12-05 01:40:01.841440935 +0200
+@@ -26,7 +26,7 @@
+ 
+ #include <string>
+ #include <vector>
+-#include <sigc++/object.h>
++#include <sigc++/trackable.h>
+ 
+ class wxListCtrl;
+ class wxSpinCtrl;
+diff -ur a/sooperlooper-1.7.3/src/gui/keys_panel.hpp b/sooperlooper-1.7.3/src/gui/keys_panel.hpp
+--- a/sooperlooper-1.7.3/src/gui/keys_panel.hpp	2013-10-18 18:37:39.000000000 +0300
++++ b/sooperlooper-1.7.3/src/gui/keys_panel.hpp	2015-12-05 01:40:01.838107619 +0200
+@@ -26,7 +26,7 @@
+ 
+ #include <string>
+ #include <vector>
+-#include <sigc++/object.h>
++#include <sigc++/trackable.h>
+ 
+ class wxListCtrl;
+ 
+diff -ur a/sooperlooper-1.7.3/src/gui/latency_panel.hpp b/sooperlooper-1.7.3/src/gui/latency_panel.hpp
+--- a/sooperlooper-1.7.3/src/gui/latency_panel.hpp	2013-10-18 18:37:39.000000000 +0300
++++ b/sooperlooper-1.7.3/src/gui/latency_panel.hpp	2015-12-05 01:40:01.834774304 +0200
+@@ -26,7 +26,7 @@
+ 
+ #include <string>
+ #include <vector>
+-#include <sigc++/object.h>
++#include <sigc++/trackable.h>
+ 
+ class wxListCtrl;
+ 
+diff -ur a/sooperlooper-1.7.3/src/gui/main_panel.hpp b/sooperlooper-1.7.3/src/gui/main_panel.hpp
+--- a/sooperlooper-1.7.3/src/gui/main_panel.hpp	2014-02-04 18:39:55.000000000 +0200
++++ b/sooperlooper-1.7.3/src/gui/main_panel.hpp	2015-12-05 01:40:01.831440989 +0200
+@@ -26,7 +26,7 @@
+ #include <string>
+ #include <vector>
+ 
+-#include <sigc++/object.h>
++#include <sigc++/trackable.h>
+ #include <sigc++/signal.h>
+ #include <sigc++/connection.h>
+ 
+diff -ur a/sooperlooper-1.7.3/src/gui/midi_bind_panel.hpp b/sooperlooper-1.7.3/src/gui/midi_bind_panel.hpp
+--- a/sooperlooper-1.7.3/src/gui/midi_bind_panel.hpp	2013-10-18 18:37:39.000000000 +0300
++++ b/sooperlooper-1.7.3/src/gui/midi_bind_panel.hpp	2015-12-05 01:40:01.828107674 +0200
+@@ -26,7 +26,7 @@
+ 
+ #include <string>
+ #include <vector>
+-#include <sigc++/object.h>
++#include <sigc++/trackable.h>
+ #include <list>
+ 
+ #include <midi_bind.hpp>
+diff -ur a/sooperlooper-1.7.3/src/gui/prefs_dialog.hpp b/sooperlooper-1.7.3/src/gui/prefs_dialog.hpp
+--- a/sooperlooper-1.7.3/src/gui/prefs_dialog.hpp	2013-10-18 18:37:39.000000000 +0300
++++ b/sooperlooper-1.7.3/src/gui/prefs_dialog.hpp	2015-12-05 01:40:01.824774358 +0200
+@@ -26,7 +26,7 @@
+ 
+ #include <string>
+ #include <vector>
+-#include <sigc++/object.h>
++#include <sigc++/trackable.h>
+ 
+ class wxListCtrl;
+ class wxSpinCtrl;

@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>mythtv</herd>
+	<maintainer type="project">
+		<email>mythtv@gentoo.org</email>
+		<name>MythTV</name>
+	</maintainer>
 	<use>
 		<flag name="cdr">Allows MythMusic to burn CD-Rs</flag>
 		<flag name="exif">Allows MythGallery to read EXIF data from photos</flag>

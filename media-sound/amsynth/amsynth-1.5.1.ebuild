@@ -3,8 +3,7 @@
 # $Id$
 
 EAPI=5
-
-inherit autotools
+inherit autotools flag-o-matic
 
 DESCRIPTION="Virtual analogue synthesizer"
 HOMEPAGE="https://github.com/nixxcode/amsynth/"
@@ -12,7 +11,7 @@ SRC_URI="https://github.com/nixxcode/${PN}/archive/release-${PV}.tar.gz -> ${P}.
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc x86"
 IUSE="alsa dssi jack lash oss sndfile"
 
 RDEPEND="dev-cpp/gtkmm:2.4
@@ -41,6 +40,7 @@ src_prepare() {
 }
 
 src_configure() {
+	append-cxxflags -std=c++11
 	econf \
 		CFLAGS="" \
 		CXXFLAGS="${CXXFLAGS}" \

@@ -4,7 +4,7 @@
 
 # @ECLASS: qt4-build-multilib.eclass
 # @MAINTAINER:
-# Qt herd <qt@gentoo.org>
+# qt@gentoo.org
 # @AUTHOR:
 # Davide Pesavento <pesa@gentoo.org>
 # @BLURB: Eclass for Qt4 split ebuilds with multilib support.
@@ -189,6 +189,10 @@ qt4-build-multilib_src_prepare() {
 	if use ppc64; then
 		append-flags -mminimal-toc
 	fi
+
+	# Teach configure about gcc-6 and later
+	sed -i -e 's:5\*|:[5-9]*|:' \
+		configure || die "sed gcc version failed"
 
 	# Read also AR from the environment
 	sed -i -e 's/^SYSTEM_VARIABLES="/&AR /' \

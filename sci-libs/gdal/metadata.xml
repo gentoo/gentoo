@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>sci-geosciences</herd>
+  <maintainer type="project">
+    <email>sci-geosciences@gentoo.org</email>
+    <name>Gentoo Geosciences Project</name>
+  </maintainer>
   <longdescription>
 GDAL is the Geospatial Data Abstraction Library, a set of tools for
 converting between geospatial raster data formats (includes OGR for

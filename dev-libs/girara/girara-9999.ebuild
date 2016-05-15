@@ -12,7 +12,7 @@ HOMEPAGE="http://pwmt.org/projects/girara/"
 if ! [[ ${PV} == 9999* ]]; then
 SRC_URI="http://pwmt.org/projects/${PN}/download/${P}.tar.gz"
 fi
-EGIT_REPO_URI="git://git.pwmt.org/${PN}.git"
+EGIT_REPO_URI="https://git.pwmt.org/pwmt/${PN}.git"
 EGIT_BRANCH="develop"
 
 LICENSE="ZLIB"
@@ -25,7 +25,7 @@ fi
 IUSE="libnotify static-libs"
 
 RDEPEND=">=dev-libs/glib-2.28
-	>=x11-libs/gtk+-3.2:3
+	>=x11-libs/gtk+-3.4:3
 	!<${CATEGORY}/${PN}-0.1.6
 	libnotify? ( >=x11-libs/libnotify-0.7 )"
 DEPEND="${RDEPEND}

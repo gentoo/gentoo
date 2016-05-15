@@ -1,0 +1,11 @@
+--- game/songparser.hh.old	2016-04-19 21:57:29.594132735 +0200
++++ game/songparser.hh	2016-04-19 21:57:55.736682808 +0200
+@@ -33,7 +33,7 @@
+ 	Song& m_song;
+ 	std::stringstream m_ss;
+ 	unsigned int m_linenum;
+-	bool getline(std::string& line) { ++m_linenum; return std::getline(m_ss, line);}
++	bool getline(std::string& line) { ++m_linenum; return !std::getline(m_ss, line).fail();}
+ 	bool m_relative;
+ 	double m_gap;
+ 	double m_bpm;

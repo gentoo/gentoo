@@ -1,13 +1,14 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer>
+	<maintainer type="person">
 		<email>zlg@gentoo.org</email>
 		<name>Daniel Campbell</name>
 	</maintainer>
 	<upstream>
 		<maintainer status="active">
 			<email>ignorantguru@users.sourceforge.net</email>
+			<name>IgnorantGuru</name>
 		</maintainer>
 		<changelog>https://ignorantguru.github.com/spacefm/news.html</changelog>
 		<doc lang="en">https://github.com/IgnorantGuru/spacefm/wiki/</doc>
@@ -18,7 +19,7 @@
 	<use>
 		<flag name="gtk2">Support GTK+ 2.x instead of GTK+ 3.x</flag>
 		<flag name="gtk3">Support GTK+ 3.x instead of GTK+ 2.x</flag>
-		<flag name="video-thumbnails">Support video thumbnails with ffmpegthumbnailer</flag>
+		<flag name="video-thumbnails">Support video thumbnails with <pkg>media-video/ffmpegthumbnailer</pkg></flag>
 	</use>
 	<longdescription lang="en">
 		SpaceFM is a file manager with built-in VFS, optional udisks-based device 

@@ -1,7 +1,18 @@
-diff -Naurp primegen-0.97-orig/primegen.3 primegen-0.97/primegen.3
---- primegen-0.97-orig/primegen.3	2008-07-23 22:27:52.000000000 +0200
-+++ primegen-0.97/primegen.3	2008-07-23 22:26:52.000000000 +0200
-@@ -21,6 +21,9 @@ uint64 \fIbound\fR;
+Fix incorrect man page and include mention of the possibility
+of linking to a static libary only.
+https://bugs.gentoo.org/show_bug.cgi?id=562570
+
+--- primegen-0.97/primegen.3
++++ primegen-0.97/primegen.3
+@@ -14,13 +14,16 @@
+ .br
+ void \fBprimegen_skipto\fP(&\fIpg\fR,\fIbound\fR);
+ 
+-struct primegen \fIpg\fR;
++primegen \fIpg\fR;
+ .br
+ uint64 \fIbound\fR;
+ .SH DESCRIPTION
  The primegen library generates prime numbers in order:
  2, 3, 5, 7, etc.
  It can generate primes as large as 10^15.

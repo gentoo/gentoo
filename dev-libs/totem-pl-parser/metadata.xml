@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>gnome</herd>
+<maintainer type="project">
+	<email>gnome@gentoo.org</email>
+	<name>Gentoo GNOME Desktop</name>
+</maintainer>
 <use>
-	<flag name='archive'>Enables support for accessing media files in archives
+	<flag name="archive">Enables support for accessing media files in archives
 		transparently via <pkg>app-arch/libarchive</pkg></flag>
 	<flag name="quvi">Use <pkg>media-libs/libquvi</pkg> for parsing video
 		links</flag>

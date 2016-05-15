@@ -78,7 +78,6 @@ src_install() {
 	insinto /etc/xsp4
 	doins "${FILESDIR}"/systemd/mono.webapp
 	insinto /etc/xsp4/conf.d
-	doins "${FILESDIR}"/systemd/readme.txt
 	# mono-xsp4.service was original name from 
 	# https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=770458;filename=mono-xsp4.service;att=1;msg=5
 	# I think that using the same commands as in debian 

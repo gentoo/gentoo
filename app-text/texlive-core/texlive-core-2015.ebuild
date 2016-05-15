@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -124,7 +124,7 @@ RDEPEND="${COMMON_DEPEND}
 	>=app-text/dvipsk-5.995_p20150521
 	>=dev-tex/bibtexu-3.71_p20150521
 	virtual/perl-Getopt-Long
-	tk? ( dev-perl/perl-tk )"
+	tk? ( dev-perl/Tk )"
 
 S="${WORKDIR}/${P}_build"
 B="${WORKDIR}/${MY_PV}"

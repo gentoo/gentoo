@@ -1,0 +1,17 @@
+diff -Naur litecoin-0.10.2.2.orig/src/secp256k1/src/field_5x52_asm.asm litecoin-0.10.2.2/src/secp256k1/src/field_5x52_asm.asm
+--- litecoin-0.10.2.2.orig/src/secp256k1/src/field_5x52_asm.asm	2015-06-15 04:51:30.000000000 -0400
++++ litecoin-0.10.2.2/src/secp256k1/src/field_5x52_asm.asm	2016-01-03 08:35:26.438350565 -0500
+@@ -466,4 +466,12 @@
+ 	jmp common_exit_norm
+ 	end
+ 
+-	
++%ifidn __OUTPUT_FORMAT__,elf
++section .note.GNU-stack noalloc noexec nowrite progbits
++%endif
++%ifidn __OUTPUT_FORMAT__,elf32
++section .note.GNU-stack noalloc noexec nowrite progbits
++%endif
++%ifidn __OUTPUT_FORMAT__,elf64
++section .note.GNU-stack noalloc noexec nowrite progbits
++%endif

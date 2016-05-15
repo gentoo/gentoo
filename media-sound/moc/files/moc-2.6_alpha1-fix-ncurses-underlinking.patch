@@ -1,0 +1,180 @@
+Fix missing ncurses underlinking issue caused by broken detection mechanisms.
+https://bugs.gentoo.org/show_bug.cgi?id=521860
+
+--- moc-2.6-alpha1/configure.ac
++++ moc-2.6-alpha1/configure.ac
+@@ -340,17 +340,13 @@
+ 			  [Define if we have __attribute__ extension])])
+ 
+ dnl ncurses
+-MP_WITH_CURSES
+-if test -z "$CURSES_LIB"
+-then
+-	AC_MSG_ERROR([You need curses/ncurses library and header files.])
+-else
+-	AC_CHECK_LIB([$CURSES_LIB], [set_escdelay],
+-		AC_DEFINE([HAVE_SET_ESCDELAY], 1, [Define if you have set_escdelay.]),
+-		[AC_CHECK_FUNC([setenv], ,
+-			AC_MSG_ERROR([Required function setenv not found.]))])
+-	EXTRA_LIBS="$EXTRA_LIBS -l$CURSES_LIB"
+-fi
++AC_ARG_WITH([ncursesw],
++	AS_HELP_STRING([--without-ncursesw], [Don't use ncursesw (UTF-8 support)]))
++AS_IF([test "x$with_ncursesw" != "xno"],
++	[PKG_CHECK_MODULES([CURSES],[ncursesw])
++	AC_DEFINE([HAVE_NCURSESW], [1], [Define if you have ncursesw])],
++	[PKG_CHECK_MODULES([CURSES],[ncurses])
++	AC_DEFINE([HAVE_CURSES], [1], [Define if you have curses])])
+ 
+ dnl popt
+ AC_CHECK_LIB([popt], [poptGetContext], [true], [POPT_MISSING="yes"])
+--- moc-2.6-alpha1/interface_elements.c
++++ moc-2.6-alpha1/interface_elements.c
+@@ -37,11 +37,10 @@
+ # define _XOPEN_SOURCE_EXTENDED /* for wget_wch() */
+ #endif
+ 
+-#ifdef HAVE_NCURSESW_H
++#ifdef HAVE_NCURSESW
+ # include <ncursesw/curses.h>
+-#elif HAVE_NCURSES_H
+ # include <ncurses.h>
+-#elif HAVE_CURSES_H
++#elif HAVE_CURSES
+ # include <curses.h>
+ #endif
+ 
+--- moc-2.6-alpha1/interface_elements.h
++++ moc-2.6-alpha1/interface_elements.h
+@@ -1,11 +1,10 @@
+ #ifndef INTERFACE_ELEMENTS_H
+ #define INTERFACE_ELEMENTS_H
+ 
+-#ifdef HAVE_NCURSESW_H
++#ifdef HAVE_NCURSESW
+ # include <ncursesw/curses.h>
+-#elif HAVE_NCURSES_H
+ # include <ncurses.h>
+-#elif HAVE_CURSES_H
++#elif HAVE_CURSES
+ # include <curses.h>
+ #endif
+ 
+--- moc-2.6-alpha1/keys.c
++++ moc-2.6-alpha1/keys.c
+@@ -17,11 +17,10 @@
+ #include <strings.h>
+ #include <assert.h>
+ 
+-#ifdef HAVE_NCURSESW_H
++#ifdef HAVE_NCURSESW
+ # include <ncursesw/curses.h>
+-#elif HAVE_NCURSES_H
+ # include <ncurses.h>
+-#elif HAVE_CURSES_H
++#elif HAVE_CURSES
+ # include <curses.h>
+ #endif
+ 
+--- moc-2.6-alpha1/Makefile.am
++++ moc-2.6-alpha1/Makefile.am
+@@ -2,6 +2,7 @@
+ SUBDIRS = themes decoder_plugins
+ AM_CPPFLAGS = -DSYSTEM_THEMES_DIR=\"$(pkgdatadir)/themes\" \
+ 	      -DPLUGIN_DIR=\"$(plugindir)/$(DECODER_PLUGIN_DIR)\"
++AM_CFLAGS = @CURSES_CFLAGS@
+ 
+ bin_PROGRAMS = mocp
+ mocp_SOURCES = log.c \
+@@ -81,7 +82,7 @@
+ 		     jack.c \
+ 		     jack.h
+ man_MANS = mocp.1
+-mocp_LDADD = @EXTRA_OBJS@ -lltdl
++mocp_LDADD = @EXTRA_OBJS@ -lltdl @CURSES_LIBS@
+ mocp_DEPENDENCIES = @EXTRA_OBJS@
+ mocp_LDFLAGS = @EXTRA_LIBS@ $(RCC_LIBS) -export-dynamic
+ EXTRA_DIST = README_equalizer mocp.1 THANKS keymap.example Doxyfile \
+--- moc-2.6-alpha1/menu.c
++++ moc-2.6-alpha1/menu.c
+@@ -17,11 +17,10 @@
+ #include <stdlib.h>
+ #include <string.h>
+ 
+-#ifdef HAVE_NCURSESW_H
++#ifdef HAVE_NCURSESW
+ # include <ncursesw/curses.h>
+-#elif HAVE_NCURSES_H
+ # include <ncurses.h>
+-#elif HAVE_CURSES_H
++#elif HAVE_CURSES
+ # include <curses.h>
+ #endif
+ 
+--- moc-2.6-alpha1/menu.h
++++ moc-2.6-alpha1/menu.h
+@@ -1,11 +1,10 @@
+ #ifndef MENU_H
+ #define MENU_H
+ 
+-#ifdef HAVE_NCURSESW_H
++#ifdef HAVE_NCURSESW
+ # include <ncursesw/curses.h>
+-#elif HAVE_NCURSES_H
+ # include <ncurses.h>
+-#elif HAVE_CURSES_H
++#elif HAVE_CURSES
+ # include <curses.h>
+ #endif
+ 
+--- moc-2.6-alpha1/themes.c
++++ moc-2.6-alpha1/themes.c
+@@ -13,11 +13,10 @@
+ # include "config.h"
+ #endif
+ 
+-#ifdef HAVE_NCURSESW_H
++#ifdef HAVE_NCURSESW
+ # include <ncursesw/curses.h>
+-#elif HAVE_NCURSES_H
+ # include <ncurses.h>
+-#elif HAVE_CURSES_H
++#elif HAVE_CURSES
+ # include <curses.h>
+ #endif
+ 
+--- moc-2.6-alpha1/utf8.c
++++ moc-2.6-alpha1/utf8.c
+@@ -30,13 +30,13 @@
+ # include <langinfo.h>
+ #endif
+ 
+-#ifdef HAVE_NCURSESW_H
++#ifdef HAVE_NCURSESW
+ # include <ncursesw/curses.h>
+-#elif HAVE_NCURSES_H
+ # include <ncurses.h>
+-#else
++#elif HAVE_CURSES
+ # include <curses.h>
+ #endif
++
+ #include <assert.h>
+ #include <string.h>
+ #include <errno.h>
+--- moc-2.6-alpha1/utf8.h
++++ moc-2.6-alpha1/utf8.h
+@@ -1,11 +1,10 @@
+ #ifndef UTF8_H
+ #define UTF8_H
+ 
+-#ifdef HAVE_NCURSESW_H
++#ifdef HAVE_NCURSESW
+ # include <ncursesw/curses.h>
+-#elif HAVE_NCURSES_H
+ # include <ncurses.h>
+-#else
++#elif HAVE_CURSES
+ # include <curses.h>
+ #endif
+ 

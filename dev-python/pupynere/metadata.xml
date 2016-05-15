@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>sci</herd>
+	<maintainer type="project">
+		<email>sci@gentoo.org</email>
+		<name>Gentoo Science Project</name>
+	</maintainer>
 	<longdescription lang="en">Pupynere is a Python module for reading and writing NetCDF files,
     using the same API as Scientific.IO.NetCDF and pynetcdf.</longdescription>
 	<upstream>

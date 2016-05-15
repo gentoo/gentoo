@@ -1,0 +1,12 @@
+diff -Naur a/src/search.c b/src/search.c
+--- a/src/search.c	2015-11-29 21:43:12.000000000 +0100
++++ b/src/search.c	2016-01-31 19:11:54.847933060 +0100
+@@ -218,7 +218,7 @@
+ 	    r = m;
+     }
+ 
+-    if (l == r) {
++    if ((l == r) && (l <= bucket->r)) {
+ 	int i = sig->targets[l].i;
+ 	rs_block_sig_t *b = &(sig->block_sigs[i]);
+ 	if (weak_sum != b->weak_sum)

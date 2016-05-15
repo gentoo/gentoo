@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>gnome</herd>
+<maintainer type="project">
+		<email>gnome@gentoo.org</email>
+		<name>Gentoo GNOME Desktop</name>
+	</maintainer>
 	<longdescription lang="en">
 		Pinpoint is a simple presentation tool that hopes to avoid audience
 		death by bullet point and instead encourage presentations containing
 		beautiful images and small amounts of concise text in slides. 
 	</longdescription>
 </pkgmetadata>
-

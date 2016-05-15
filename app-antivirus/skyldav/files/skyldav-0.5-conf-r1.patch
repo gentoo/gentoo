@@ -1,0 +1,29 @@
+diff -urN skyldav-0.5.orig/examples/etc/skyldav.conf skyldav-0.5/examples/etc/skyldav.conf
+--- skyldav-0.5.orig/examples/etc/skyldav.conf	2015-02-15 20:32:57.000000000 +0100
++++ skyldav-0.5/examples/etc/skyldav.conf	2016-02-01 11:29:19.449054900 +0100
+@@ -19,14 +19,23 @@
+ 
+ # Directories that shall not be scanned (including subdirectories)
+ # EXCLUDE_PATH = /var/noscan, /opt/noscan
++# 
++# Exclude various portage directories for performance reasons
++EXCLUDE_PATH = /usr/portage, /var/cache/edb, /var/db/pkg, /var/tmp/portage, /var/tmp/binpkgs, /var/log/portage
+ 
+ # File systems that are local, virus scan results may be cached.
+ # LOCAL_FS = ext3, ext4, iso9660, tmpfs, vfat
+-LOCAL_FS = ext3, ext4, iso9660, tmpfs, vfat
++LOCAL_FS = ext2, ext3, ext4, xfs, zfs, btrfs, reiserfs, vfat, ntfs, iso9660, tmpfs
+ 
+ # File systems that shall not be marked for virus scan.
+ # NOMARK_FS = proc, sysfs
+-NOMARK_FS = proc, sysfs, cifs
++#
++# Do not exclude devtmpfs and configs, as userspace could write malware onto them.
++# CIFS is also known to cause problems due to a background daemon, so we exclude it here
++# (https://github.com/xypron/skyldav/commit/63b01b912d3eed80f3db92aec8647770546f5c1c).
++# Note that FUSE file systems are automatically excluded from scanning
++# (https://github.com/xypron/skyldav/issues/3).
++NOMARK_FS = proc, sysfs, devpts, debugfs, securityfs, cgroup, rpc_pipefs, mqueue, autofs, cifs
+ 
+ # Mounts that shall not be marked for virus scan.
+ # NOMARK_MNT = /mnt/noscan

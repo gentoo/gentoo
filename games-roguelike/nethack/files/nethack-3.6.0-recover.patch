@@ -1,0 +1,110 @@
+From c15cf56e61c908ce756d698a8afa3064030761b3 Mon Sep 17 00:00:00 2001
+From: Luis Ressel <aranea@aixah.de>
+Date: Fri, 18 Dec 2015 23:16:56 +0100
+Subject: [PATCH] doc: Rename recover to recover-nethack
+
+---
+ doc/recover.6 | 30 +++++++++++++++---------------
+ 1 file changed, 15 insertions(+), 15 deletions(-)
+
+diff --git a/doc/recover.6 b/doc/recover.6
+index 4c9f509..edd05e3 100644
+--- a/doc/recover.6
++++ b/doc/recover.6
+@@ -1,10 +1,10 @@
+-.TH RECOVER 6 "9 January 1993"
++.TH RECOVER-NETHACK 6 "9 January 1993"
+ .\" NetHack 3.6  recover.6	$NHDT-Date: 1432512786 2015/05/25 00:13:06 $  $NHDT-Branch: master $:$NHDT-Revision: 1.6 $
+ .UC 4
+ .SH NAME
+-recover \- recover a NetHack game interrupted by disaster
++recover-nethack \- recover a NetHack game interrupted by disaster
+ .SH SYNOPSIS
+-.B recover
++.B recover-nethack
+ [
+ .B \-d
+ .I directory
+@@ -22,7 +22,7 @@ so such games can be recovered at the point of the last level change.
+ The
+ .I base
+ options tell
+-.I recover
++.I recover-nethack
+ which files to process.
+ Each base option specifies recovery of a separate game.
+ .PP
+@@ -72,47 +72,47 @@ by a user number to avoid conflicts,
+ or "xlock" if the number of concurrent players is being limited.
+ It may be necessary to look in the playground to find the correct
+ base name of the interrupted game.
+-.I recover
++.I recover-nethack
+ will transform these level files into a save file of the same name as
+ .I nethack
+ would have used.
+ .PP
+ Since
+-.I recover
++.I recover-nethack
+ must be able to read and delete files from the playground
+ and create files in the save directory,
+ it has interesting interactions with game security.
+ Giving ordinary players access to
+-.I recover
++.I recover-nethack
+ through setuid or setgid is tantamount to leaving the playground
+ world-writable,
+ with respect to both cheating and messing up other players.
+ For a single-user system, this of course does not change anything,
+ so some of the microcomputer ports install
+-.I recover
++.I recover-nethack
+ by default.
+ .PP
+ For a multi-user system,
+ the game administrator may want to arrange for all .0 files in the
+-playground to be fed to recover when the host machine boots,
++playground to be fed to recover-nethack when the host machine boots,
+ and handle game crashes individually.
+ If the user population is sufficiently trustworthy,
+-.I recover
++.I recover-nethack
+ can be installed with the same permissions the
+ .I nethack
+ executable has.
+ In either case,
+-.I recover
++.I recover-nethack
+ is easily compiled from the distribution utility directory.
+ .SH NOTES
+ .PP
+ Like
+ .I nethack
+ itself,
+-.I recover
++.I recover-nethack
+ will overwrite existing savefiles of the same name.
+ Savefiles created by
+-.I recover
++.I recover-nethack
+ are uncompressed;
+ they may be compressed afterwards if desired,
+ but even a compression-using
+@@ -122,11 +122,11 @@ will find them in the uncompressed form.
+ nethack(6)
+ .SH BUGS
+ .PP
+-.I recover
++.I recover-nethack
+ makes no attempt to find out if a base name specifies a game in progress.
+ If multiple machines share a playground, this would be impossible to
+ determine.
+ .PP
+-.I recover
++.I recover-nethack
+ should be taught to use the nethack playground locking mechanism to
+ avoid conflicts.
+-- 
+2.6.4
+

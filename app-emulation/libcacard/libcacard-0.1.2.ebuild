@@ -1,8 +1,10 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=6
+
+inherit autotools eutils
 
 DESCRIPTION="Library for emulating CAC cards"
 HOMEPAGE="http://spice-space.org/"
@@ -17,6 +19,14 @@ RDEPEND=">=dev-libs/nss-3.13
 	>=sys-apps/pcsc-lite-1.8"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
+PATCHES=(
+	"${FILESDIR}/${P}-underlinking.patch"
+)
+
+src_prepare() {
+	default
+	eautoreconf
+}
 
 src_configure() {
 	# --enable-passthru works only on W$
@@ -26,5 +36,5 @@ src_configure() {
 
 src_install() {
 	default
-	use static-libs || rm "${D}"/usr/lib*/*.la
+	prune_libtool_files --all
 }

@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>openstack</herd>
-  <maintainer>
+  <maintainer type="person">
     <email>prometheanfire@gentoo.org</email>
     <name>Matthew Thode</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>openstack@gentoo.org</email>
+    <name>Openstack</name>
   </maintainer>
   <longdescription lang="en">
 	POSIX IPC primitives (semaphores, shared memory and message queues) for Python

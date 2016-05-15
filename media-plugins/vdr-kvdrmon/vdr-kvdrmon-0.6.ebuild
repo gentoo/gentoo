@@ -19,3 +19,12 @@ DEPEND=">=media-video/vdr-1.3.0"
 RDEPEND="${DEPEND}"
 
 PATCHES=( "${FILESDIR}/${P}-remove-menu-entry.diff" )
+
+src_prepare() {
+	vdr-plugin-2_src_prepare
+
+	if has_version ">=media-video/vdr-2.1.1"; then
+		sed -e "s/VideoDiskSpace/cVideoDirectory::VideoDiskSpace/" \
+		-i helpers.c
+	fi
+}

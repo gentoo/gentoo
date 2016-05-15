@@ -1,0 +1,20 @@
+--- makefile.orig	2016-01-09 12:51:10.260008241 +0100
++++ makefile	2016-01-09 12:52:04.666673549 +0100
+@@ -7,8 +7,6 @@
+ # see also ./make_pc for a simpler script not requiring make
+ # for 32-bit compilation, use ./make32
+ 
+-CC=gcc
+-CFLAGS=-O2 -DNXT	# on some systems add: -I/usr/include
+ 			# on a PC:    add -DPC
+ 			# on Solaris: add -DSOLARIS
+ 			# on a Mac:   add -DMAC
+@@ -37,7 +35,7 @@
+ 	tl_mem.o tl_rewrt.o tl_cache.o
+ 
+ spin:	$(SPIN_OS) $(TL_OS) spin.o
+-	$(CC) $(CFLAGS) -o spin spin.o $(SPIN_OS) $(TL_OS)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o spin spin.o $(SPIN_OS) $(TL_OS)
+ 
+ install: spin
+ 	cp spin /usr/local/bin

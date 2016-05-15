@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>proxy-maintainers</herd>
-	<maintainer>
+	<maintainer type="person">
 		<email>grobian@gentoo.org</email>
 		<name>Fabian Groffen</name>
 	</maintainer>
-	<maintainer>
+	<maintainer type="person">
 		<email>clabbe.montjoie@gmail.com</email>
 		<name>LABBE Corentin (Montjoie)</name>
 		<description>Maintainer. Assign bugs to him</description>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
 	</maintainer>
 	<upstream>
 		<remote-id type="cpe">cpe:/a:antiword_project:antiword</remote-id>

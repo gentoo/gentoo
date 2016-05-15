@@ -20,7 +20,7 @@ IUSE="test"
 RDEPEND="
 	>=dev-python/six-1.6.0[${PYTHON_USEDEP}]
 "
-DEPEND="${REDEPEND}
+DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
 		>=dev-python/nose-1.3.0[${PYTHON_USEDEP}]

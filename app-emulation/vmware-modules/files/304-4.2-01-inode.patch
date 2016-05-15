@@ -1,0 +1,46 @@
+--- vmblock-only/linux/inode.c.orig	2015-09-28 01:11:08.000000000 +0300
++++ vmblock-only/linux/inode.c	2015-09-28 01:14:32.318043465 +0300
+@@ -44,7 +44,9 @@
+ static int InodeOpReadlink(struct dentry *, char __user *, int);
+ #endif
+ 
+-#if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 13)
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 2, 0)
++static const char *InodeOpFollowlink(struct dentry *dentry, void **cookie);
++#elif LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 13)
+ static void *InodeOpFollowlink(struct dentry *dentry, struct nameidata *nd);
+ #else
+ static int InodeOpFollowlink(struct dentry *dentry, struct nameidata *nd);
+@@ -221,13 +223,15 @@
+  *----------------------------------------------------------------------------
+  */
+ 
+-#if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 13)
+-static void *
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 2, 0)
++static const char *InodeOpFollowlink(struct dentry *dentry, void **cookie)
++#elif LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 13)
++static void * InodeOpFollowlink(struct dentry *dentry,  // IN : dentry of symlink
++                  struct nameidata *nd)   // OUT: stores result
+ #else
+-static int
+-#endif
+-InodeOpFollowlink(struct dentry *dentry,  // IN : dentry of symlink
++static int InodeOpFollowlink(struct dentry *dentry,  // IN : dentry of symlink
+                   struct nameidata *nd)   // OUT: stores result
++#endif
+ {
+    int ret;
+    VMBlockInodeInfo *iinfo;
+@@ -244,7 +248,11 @@
+       goto out;
+    }
+ 
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 2, 0)
++    return *cookie = (char *)(iinfo->name);
++#else
+    nd_set_link(nd, iinfo->name);
++#endif
+ 
+ out:
+ #if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 13)

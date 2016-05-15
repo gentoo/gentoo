@@ -1,9 +1,6 @@
-diff --git Makefile.am Makefile.am
-new file mode 100644
-index 0000000..63ca53b
 --- /dev/null
 +++ Makefile.am
-@@ -0,0 +1,10 @@
+@@ -0,0 +1,8 @@
 +ACLOCAL_AMFLAGS = -I config
 +
 +lib_LTLIBRARIES = libiniparser.la
@@ -12,11 +9,6 @@ index 0000000..63ca53b
 +libiniparser_la_SOURCES = src/dictionary.c  src/iniparser.c
 +
 +include_HEADERS = src/dictionary.h  src/iniparser.h
-+
-+
-diff --git configure.ac configure.ac
-new file mode 100644
-index 0000000..1eac717
 --- /dev/null
 +++ configure.ac
 @@ -0,0 +1,24 @@
@@ -31,9 +23,9 @@ index 0000000..1eac717
 +SHARED_VERSION_INFO="0"
 +AC_SUBST(SHARED_VERSION_INFO)
 +
-+
 +# Checks for programs.
 +AC_PROG_CC
++AC_SYS_LARGEFILE
 +
 +LT_INIT
 +# Checks for header files.

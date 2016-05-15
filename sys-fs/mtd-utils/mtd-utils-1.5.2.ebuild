@@ -40,6 +40,10 @@ RDEPEND="!sys-fs/mtd
 DEPEND="${RDEPEND}
 	xattr? ( sys-apps/acl )"
 
+src_prepare() {
+	epatch "${FILESDIR}"/${P}-sysmacros.patch #580206
+}
+
 makeopts() {
 	# These affect build output, so keep it common between compile & install.
 	echo CROSS=${CHOST}- V=1

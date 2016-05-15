@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -14,7 +14,9 @@ SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE=""
 
+# wargus is needed for wartool (bug #578340)
 DEPEND="${RDEPEND}
+	games-strategy/wargus
 	media-sound/cdparanoia
 	media-sound/timidity++
 	media-video/ffmpeg2theora"

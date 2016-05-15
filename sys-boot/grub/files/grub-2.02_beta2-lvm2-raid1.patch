@@ -1,0 +1,68 @@
+From: Andrei Borzenkov <arvidjaar@gmail.com>
+Date: Thu, 19 Mar 2015 18:30:27 +0000 (+0300)
+Subject: core: add LVM RAID1 support
+X-Git-Url: http://git.savannah.gnu.org/gitweb/?p=grub.git;a=commitdiff_plain;h=527eeeeee6c8d3d8e3bb1fac408d47bb1dcbec95;hp=7c9309e50a124817e67de38b30c6291acecad560
+
+core: add LVM RAID1 support
+
+Closes 44534.
+---
+
+diff --git a/grub-core/disk/lvm.c b/grub-core/disk/lvm.c
+index 1e7f197..9b97004 100644
+--- a/grub-core/disk/lvm.c
++++ b/grub-core/disk/lvm.c
+@@ -577,13 +577,17 @@ grub_lvm_detect (grub_disk_t disk,
+ 		      if (is_pvmove)
+ 			seg->node_count = 1;
+ 		    }
+-		  else if (grub_memcmp (p, "raid", sizeof ("raid") - 1)
+-			   == 0 && (p[sizeof ("raid") - 1] >= '4'
+-				    && p[sizeof ("raid") - 1] <= '6')
++		  else if (grub_memcmp (p, "raid", sizeof ("raid") - 1) == 0
++			   && ((p[sizeof ("raid") - 1] >= '4'
++				&& p[sizeof ("raid") - 1] <= '6')
++			       || p[sizeof ("raid") - 1] == '1')
+ 			   && p[sizeof ("raidX") - 1] == '"')
+ 		    {
+ 		      switch (p[sizeof ("raid") - 1])
+ 			{
++			case '1':
++			  seg->type = GRUB_DISKFILTER_MIRROR;
++			  break;
+ 			case '4':
+ 			  seg->type = GRUB_DISKFILTER_RAID4;
+ 			  seg->layout = GRUB_RAID_LAYOUT_LEFT_ASYMMETRIC;
+@@ -608,16 +612,18 @@ grub_lvm_detect (grub_disk_t disk,
+ 			  goto lvs_segment_fail;
+ 			}
+ 
+-		      seg->stripe_size = grub_lvm_getvalue (&p, "stripe_size = ");
+-		      if (p == NULL)
++		      if (seg->type != GRUB_DISKFILTER_MIRROR)
+ 			{
++			  seg->stripe_size = grub_lvm_getvalue (&p, "stripe_size = ");
++			  if (p == NULL)
++			    {
+ #ifdef GRUB_UTIL
+-			  grub_util_info ("unknown stripe_size\n");
++			      grub_util_info ("unknown stripe_size\n");
+ #endif
+-			  goto lvs_segment_fail;
++			      goto lvs_segment_fail;
++			    }
+ 			}
+ 
+-
+ 		      seg->nodes = grub_zalloc (sizeof (seg->nodes[0])
+ 						* seg->node_count);
+ 
+@@ -625,7 +631,7 @@ grub_lvm_detect (grub_disk_t disk,
+ 		      if (p == NULL)
+ 			{
+ #ifdef GRUB_UTIL
+-			  grub_util_info ("unknown mirrors\n");
++			  grub_util_info ("unknown raids\n");
+ #endif
+ 			  goto lvs_segment_fail2;
+ 			}

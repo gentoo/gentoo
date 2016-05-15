@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>desktop-effects</herd>
+	<maintainer type="project">
+		<email>desktop-effects@gentoo.org</email>
+		<name>Desktop effects</name>
+	</maintainer>
 	<upstream>
 		<remote-id type="sourceforge">dz3d</remote-id>
 	</upstream>

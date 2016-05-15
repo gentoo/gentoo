@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>x11</herd>
+	<maintainer type="project">
+		<email>x11@gentoo.org</email>
+		<name>X11</name>
+	</maintainer>
 	<upstream>
 		<remote-id type="github">anholt/libepoxy</remote-id>
 	</upstream>

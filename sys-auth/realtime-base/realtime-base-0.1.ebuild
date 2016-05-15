@@ -7,7 +7,7 @@ EAPI=3
 inherit user
 
 DESCRIPTION="Sets up realtime scheduling"
-HOMEPAGE="http://www.jackaudio.org/linux_rt_config"
+HOMEPAGE="http://jackaudio.org/faq/linux_rt_config.html"
 SRC_URI=""
 
 LICENSE="public-domain"

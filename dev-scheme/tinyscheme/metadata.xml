@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>scheme</herd>
+	<maintainer type="project">
+		<email>scheme@gentoo.org</email>
+		<name>Gentoo Scheme Project</name>
+	</maintainer>
 	<longdescription lang="en">
 TinyScheme is a lightweight Scheme interpreter that implements as large a subset of R5RS as was possible without getting very large and complicated. It is meant to be used as an embedded scripting interpreter for other programs. As such, it does not offer IDEs or extensive toolkits although it does sport a small top-level loop, included conditionally. A lot of functionality in TinyScheme is included conditionally, to allow developers freedom in balancing features and footprint.
 	</longdescription>

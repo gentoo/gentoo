@@ -1,0 +1,13 @@
+Index: pxp-1.2.8/src/pxp-engine/pxp_document.ml
+===================================================================
+--- pxp-1.2.8.orig/src/pxp-engine/pxp_document.ml
++++ pxp-1.2.8/src/pxp-engine/pxp_document.ml
+@@ -3398,8 +3398,6 @@ let find_all_elements ?deeply eltype bas
+ ;;
+ 
+ 
+-exception Skip;;
+-
+ let map_tree ~pre ?(post=(fun x -> x)) base =
+   let rec map_rec n =
+     let n' = pre n in

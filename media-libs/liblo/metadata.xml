@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>sound</herd>
+	<maintainer type="project">
+		<email>sound@gentoo.org</email>
+		<name>Gentoo Sound project</name>
+	</maintainer>
 	<longdescription>liblo is an implementation of the Open Sound Control protocol for POSIX systems, started by Steve Harris.</longdescription>
 	<upstream>
 		<remote-id type="sourceforge">liblo</remote-id>

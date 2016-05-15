@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -23,7 +23,7 @@ DEPEND=">=www-servers/apache-2.2.9
 		postgres? ( dev-perl/DBD-Pg )
 		virtual/perl-Digest-MD5
 		dev-perl/JSON-XS
-		dev-perl/net-server
+		dev-perl/Net-Server
 		dev-perl/UNIVERSAL-require
 		dev-perl/Unix-Syslog
 		dev-perl/XML-LibXML

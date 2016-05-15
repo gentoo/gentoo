@@ -3,7 +3,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-SS_CONFIG="/etc/shadowsocks.json"
+SS_CONFIG="/etc/shadowsocks-libev/shadowsocks.json"
 
 SS_PIDFILE="/run/shadowsocks.pid"
 
@@ -26,10 +26,20 @@ checkconfig() {
         SS_COMMAND="/usr/bin/ss-server"
 	return 0
 	;;
+    redir)
+        SS_COMMAND="/usr/bin/ss-redir"
+	return 0
+	;;
+    tunnel)
+        SS_COMMAND="/usr/bin/ss-tunnel"
+	return 0
+	;;
     *)
     	eerror "please choose to run as server or client mode"
     	eerror "  server: rc-update add shadowsocks.server default"
     	eerror "  client: rc-update add shadowsocks.client default"
+	eerror "  client: rc-update add shadowsocks.redir default"
+	eerror "  client: rc-update add shadowsocks.tunnel default"
         return 1
     	;;
     esac

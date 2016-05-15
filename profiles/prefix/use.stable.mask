@@ -1,0 +1,8 @@
+# Copyright 1999-2016 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+# Re-enable python-3.5, we are fully ~arch, so avoid problems with
+# Portage like bug #572502
+-python_targets_python3_5
+-python_single_target_python3_5

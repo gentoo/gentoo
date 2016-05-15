@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>media-optical</herd>
-<maintainer>
+<maintainer type="person">
 <email>billie@gentoo.org</email>
 <name>Daniel Pielmeier</name>
 </maintainer>
 <use>
-<flag name='verbose-debug'>Enable verbose debug messages</flag>
+<flag name="verbose-debug">Enable verbose debug messages</flag>
 </use>
 </pkgmetadata>

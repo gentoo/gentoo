@@ -1,0 +1,45 @@
+--- rstudio-0.99.879-orig/src/gwt/build.xml	2016-02-12 09:24:39.000000000 +1100
++++ rstudio-0.99.879/src/gwt/build.xml	2016-02-20 00:25:39.458756693 +1100
+@@ -25,6 +25,7 @@
+    <property name="gwt.extra.args" value=""/>
+    <property name="gwt.main.module" value="org.rstudio.studio.RStudio"/>
+    <property name="ace.bin" value="src/org/rstudio/studio/client/workbench/views/source/editors/text/ace"/>
++   <property environment="env"/>
+ 
+    <path id="project.class.path">
+       <pathelement location="bin"/>
+@@ -101,8 +102,10 @@
+             <pathelement location="src"/>
+             <path refid="project.class.path"/>
+          </classpath>
++         <jvmarg value="-Duser.home=${env.T}"/>
+          <!-- add jvmarg -Xss16M or similar if you see a StackOverflowError -->
+          <jvmarg value="-Xmx1536M"/>
++         <jvmarg value="-Djava.util.prefs.userRoot=${env.T}"/>
+          <arg value="-war"/>
+          <arg value="www"/>
+          <arg value="-localWorkers"/>
+@@ -142,6 +145,7 @@
+             <pathelement location="src"/>
+             <path refid="project.class.path"/>
+          </classpath>
++         <jvmarg value="-Duser.home=${env.T}"/>
+          <jvmarg value="-Xmx2048M"/>
+          <arg value="-war"/>
+          <arg value="www"/>
+@@ -163,6 +167,7 @@
+             <pathelement location="src"/>
+             <path refid="project.class.path"/>
+          </classpath>
++         <jvmarg value="-Duser.home=${env.T}"/>
+          <jvmarg value="-Xmx2048M"/>
+       	<arg value="-src"/>
+       	<arg value = "src"/>
+@@ -194,6 +199,7 @@
+                   <pathelement location="src"/>
+                   <path refid="test.class.path"/>
+                </classpath>
++               <jvmarg value="-Duser.home=${env.T}"/>
+                <arg value="org.rstudio.studio.selenium.RStudioTestSuite"/>
+             </java>
+          </sequential>

@@ -62,6 +62,8 @@ gnustep-base_src_prepare() {
 			GNUmakefile
 		eend $?
 	fi
+
+	has ${EAPI:-0} 6 && default
 }
 
 gnustep-base_src_configure() {

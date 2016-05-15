@@ -1,4 +1,4 @@
-# Copyright 1999-2007 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -11,7 +11,7 @@ HOMEPAGE="http://yaggui.sourceforge.net/"
 SRC_URI="mirror://sourceforge/yaggui/${MY_P/y/Y}.zip"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc x86"
+KEYWORDS="~amd64 x86"
 IUSE=""
 
 COMMON_DEP="=dev-java/jgoodies-looks-1.2*"

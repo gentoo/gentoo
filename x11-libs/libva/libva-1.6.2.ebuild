@@ -15,20 +15,20 @@ AUTOTOOLS_AUTORECONF="yes"
 inherit autotools-multilib ${SCM} multilib
 
 DESCRIPTION="Video Acceleration (VA) API for Linux"
-HOMEPAGE="http://www.freedesktop.org/wiki/Software/vaapi"
+HOMEPAGE="https://www.freedesktop.org/wiki/Software/vaapi"
 if [ "${PV%9999}" != "${PV}" ] ; then # Live ebuild
 	SRC_URI=""
 	S="${WORKDIR}/${PN}"
 else
-	SRC_URI="http://www.freedesktop.org/software/vaapi/releases/libva/${P}.tar.bz2"
+	SRC_URI="https://www.freedesktop.org/software/vaapi/releases/libva/${P}.tar.bz2"
 fi
 
 LICENSE="MIT"
 SLOT="0"
 if [ "${PV%9999}" = "${PV}" ] ; then
-	KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+	KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
 else
-	KEYWORDS=""
+	KEYWORDS="x86"
 fi
 IUSE="+drm egl opengl vdpau wayland X"
 

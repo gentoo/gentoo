@@ -1,0 +1,27 @@
+From ea8de5d2ee58178381e5809e4d5fe79861e61b04 Mon Sep 17 00:00:00 2001
+From: Mike Gilbert <floppym@gentoo.org>
+Date: Sat, 5 Mar 2016 17:21:15 -0500
+Subject: [PATCH] [2.02] 10_linux: Fix grouping of tests for GRUB_DEVICE
+
+Commit 7290bb562 causes GRUB_DISABLE_LINUX_UUID to be ignored due to
+mixing of || and && operators. Add some parens to help with that.
+---
+ util/grub.d/10_linux.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/util/grub.d/10_linux.in b/util/grub.d/10_linux.in
+index 5a78513..de9044c 100644
+--- a/util/grub.d/10_linux.in
++++ b/util/grub.d/10_linux.in
+@@ -47,7 +47,7 @@ esac
+ # and mounting btrfs requires user space scanning, so force UUID in this case.
+ if [ "x${GRUB_DEVICE_UUID}" = "x" ] || [ "x${GRUB_DISABLE_LINUX_UUID}" = "xtrue" ] \
+     || ! test -e "/dev/disk/by-uuid/${GRUB_DEVICE_UUID}" \
+-    || test -e "${GRUB_DEVICE}" && uses_abstraction "${GRUB_DEVICE}" lvm; then
++    || ( test -e "${GRUB_DEVICE}" && uses_abstraction "${GRUB_DEVICE}" lvm ); then
+   LINUX_ROOT_DEVICE=${GRUB_DEVICE}
+ else
+   LINUX_ROOT_DEVICE=UUID=${GRUB_DEVICE_UUID}
+-- 
+2.7.2
+

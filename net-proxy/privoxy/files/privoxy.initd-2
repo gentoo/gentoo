@@ -1,0 +1,29 @@
+#!/sbin/runscript
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+CONFFILE=/etc/${SVCNAME}/config
+PIDFILE=/var/run/${SVCNAME}.pid
+
+depend() {
+	need net
+}
+
+start() {
+	if [ ! -f "${CONFFILE}" ]; then
+		eerror "Configuration file ${CONFFILE} not found!"
+		return 1
+	fi
+
+	ebegin "Starting ${SVCNAME}"
+	start-stop-daemon --start --quiet --exec /usr/sbin/privoxy --pidfile "${PIDFILE}" \
+		-- --pidfile "${PIDFILE}" --user privoxy.privoxy "${CONFFILE}" #2>/dev/null
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping ${SVCNAME}"
+	start-stop-daemon --stop --quiet --pidfile "${PIDFILE}"
+	eend $?
+}

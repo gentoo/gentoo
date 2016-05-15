@@ -22,6 +22,7 @@ DEPEND="${RDEPEND}
 	test? (
 		>=dev-perl/Test-Exception-0.310.0
 		>=dev-perl/Test-Warn-0.230.0
+		dev-perl/CGI
 	)
 "
 

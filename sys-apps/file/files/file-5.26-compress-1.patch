@@ -1,0 +1,53 @@
+From 52ae939467583ec499f6c62cdb406e8f982c0310 Mon Sep 17 00:00:00 2001
+From: Christos Zoulas <christos@zoulas.com>
+Date: Tue, 19 Apr 2016 13:39:19 +0000
+Subject: [PATCH] Fix compression code (Werner Fink)
+
+---
+ src/compress.c | 19 +++++++++++--------
+ 1 file changed, 11 insertions(+), 8 deletions(-)
+
+diff --git a/src/compress.c b/src/compress.c
+index f322445..0ebc837 100644
+--- a/src/compress.c
++++ b/src/compress.c
+@@ -231,9 +231,9 @@ file_zmagic(struct magic_set *ms, int fd, const char *name,
+ 				goto error;
+ 			DPRINTF("rv = %d\n", rv);
+ 			if ((ms->flags & MAGIC_COMPRESS_TRANSP) != 0)
+-				goto out;
++				break;
+ 			if (mime != MAGIC_MIME && mime != 0)
+-				goto out;
++				break;
+ 			if ((file_printf(ms,
+ 			    mime ? " compressed-encoding=" : " (")) == -1)
+ 				goto error;
+@@ -250,16 +250,19 @@ file_zmagic(struct magic_set *ms, int fd, const char *name,
+ 			}
+ 			if (!mime && file_printf(ms, ")") == -1)
+ 				goto error;
+-			goto out;
++			/*FALLTHROUGH*/
+ 		case NODATA:
+-			goto out;
++			break;
+ 		default:
+ 			abort();
++			/*NOTREACHED*/
++		error:
++			rv = -1;
++			break;
+ 		}
+ 	}
+-out:
+-	rv = 1;
+-error:
++	DPRINTF("rv = %d\n", rv);
++
+ #ifdef HAVE_SIGNAL_H
+ 	(void)signal(SIGPIPE, osigpipe);
+ #endif
+-- 
+2.7.4
+

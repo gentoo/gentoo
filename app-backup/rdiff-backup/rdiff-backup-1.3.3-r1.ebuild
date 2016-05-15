@@ -1,15 +1,17 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1
+inherit distutils-r1 versionator
+
+UPSTREAM_PV=$(replace_all_version_separators '-')
 
 DESCRIPTION="Local/remote mirroring+incremental backup"
-HOMEPAGE="http://rdiff-backup.nongnu.org/"
-SRC_URI="http://savannah.nongnu.org/download/${PN}/${P}.tar.gz"
+HOMEPAGE="https://github.com/sol1/rdiff-backup"
+SRC_URI="https://github.com/sol1/${PN}/archive/r${UPSTREAM_PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -17,7 +19,7 @@ KEYWORDS="alpha amd64 arm ~mips ppc ppc64 ~sh sparc x86 ~x86-interix ~amd64-linu
 IUSE="examples"
 
 DEPEND="
-	>=net-libs/librsync-0.9.7
+	net-libs/librsync:0/1
 "
 RDEPEND="
 	dev-python/pyxattr[${PYTHON_USEDEP}]

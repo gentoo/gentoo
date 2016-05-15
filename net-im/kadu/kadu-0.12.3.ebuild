@@ -4,7 +4,7 @@
 
 EAPI="4"
 
-inherit base cmake-utils flag-o-matic
+inherit cmake-utils flag-o-matic
 
 MY_P="${P/_/-}"
 

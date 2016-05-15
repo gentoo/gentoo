@@ -1,13 +1,24 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 # This file requires >=portage-2.1.1
 
+# Rick Farina <zerochaos@gentoo.org> (23 Mar 2016)
+# rspec:3 is not keyworded for x86 at this time
+=dev-ruby/bundler-audit-0.5.0 test
+
+# Mike Gilbert <floppym@gentoo.org> (03 Mar 2016)
+# google-chrome dropped x86 support
+app-admin/lastpass chrome
+
+# Mike Gilbert <floppym@gentoo.org> (03 Mar 2016)
+# chrome-binary-plugins dropped x86 support
+www-client/chromium widevine
+
 # Ian Delaney <idella4@gentoo.org> (02 Dec 2015)
 # mask revdeps of xen that emply a hypervisor in arch x86
 app-emulation/libvirt xen
-sys-cluster/nova xen
 app-emulation/ganeti xen
 
 # Nathan Phillip Brink <binki@gentoo.org> (26 Sep 2015)
@@ -110,8 +121,8 @@ sys-kernel/dracut -dracut_modules_biosdevname -dracut_modules_systemd
 gnome-extra/zeitgeist-datasources -chromium -tomboy
 
 # Christoph Jungans <ottxor@gentoo.org> (26 Dec 2012)
-# cuda/openmm/mkl works on x86/amd64 (masked in base)
-sci-chemistry/gromacs -cuda -mkl -openmm
+# cuda/mkl works on x86/amd64 (masked in base)
+sci-chemistry/gromacs -cuda -mkl
 
 # Diego Elio Pettenò <flameeyes@gentoo.org> (3 Nov 2012)
 # Unmask here, as it's masked in base.
@@ -155,6 +166,7 @@ gnustep-base/gnustep-make -libobjc2
 
 # Doug Goldstein <cardoe@gentoo.org> (17 Jan 2012)
 # The SPICE server is only supported on 64-bit platforms and not on 32-bit
+# https://lists.freedesktop.org/archives/spice-devel/2015-September/021846.html
 app-emulation/qemu	spice
 
 # Alexandre Rostovtsev <tetromino@gentoo.org> (09 Jan 2012)

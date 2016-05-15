@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer>
+	<maintainer type="person">
 		<email>kumba@gentoo.org</email>
 	</maintainer>
 
@@ -9,4 +9,3 @@
 		zerofree is a small utility designed to zero-out the free space on a filesystem.  It is especially useful for guests on a virtual machine before compacting their disk images.
 	</longdescription>
 </pkgmetadata>
-

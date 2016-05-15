@@ -1,20 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>fonts</herd>
-	<maintainer>
+	<maintainer type="person">
 		<email>yngwin@gentoo.org</email>
 		<name>Ben de Groot</name>
 	</maintainer>
-	<maintainer>
+	<maintainer type="person">
 		<email>polynomial-c@gentoo.org</email>
 		<name>Lars Wendler</name>
 	</maintainer>
-	<maintainer>
+	<maintainer type="project">
 		<email>multilib@gentoo.org</email>
 		<name>gx86-multilib project</name>
 		<description>Handling the bugs related to multilib support in the
 			package and related changes.</description>
+	</maintainer>
+	<maintainer type="project">
+		<email>fonts@gentoo.org</email>
+		<name>Fonts</name>
 	</maintainer>
 	<use>
 		<flag name="adobe-cff">Use Adobe CFF as default font-renderer</flag>

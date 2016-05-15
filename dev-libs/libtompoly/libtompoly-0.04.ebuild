@@ -7,8 +7,8 @@ EAPI="4"
 inherit toolchain-funcs multilib
 
 DESCRIPTION="portable ISO C library for polynomial basis arithmetic"
-HOMEPAGE="http://poly.libtomcrypt.org/"
-SRC_URI="http://poly.libtomcrypt.org/files/ltp-${PV}.tar.bz2"
+HOMEPAGE="http://www.libtom.org/"
+SRC_URI="https://github.com/libtom/libtompoly/releases/download/${PV}/ltp-${PV}.tar.bz2"
 
 LICENSE="WTFPL-2"
 SLOT="0"

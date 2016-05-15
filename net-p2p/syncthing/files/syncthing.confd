@@ -1,0 +1,24 @@
+# /etc/conf.d/syncthing: config file for /etc/init.d/syncthing
+
+# User and group as which to run
+#SYNCTHING_USER="syncthing"
+#SYNCTHING_GROUP="syncthing"
+
+# Configuration directory
+#SYNCTHING_HOMEDIR="/var/lib/syncthing"
+
+# Log file location
+#SYNCTHING_LOGFILE="/var/log/syncthing/syncthing.log"
+
+# umask used to create files
+# The default allows group access
+#SYNCTHING_UMASK=007
+
+# I/O nice level of syncthing
+#SYNCTHING_IONICE="0"
+
+# Nice level of syncthing
+#SYNCTHING_NICE="0"
+
+# Extra options for syncthing
+#SYNCTHING_OPTS=""

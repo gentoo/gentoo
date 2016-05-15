@@ -1,0 +1,53 @@
+From f03dff4c416d417238dcd625a24ea85e380e599c Mon Sep 17 00:00:00 2001
+From: Gokturk Yuksek <gokturk@binghamton.edu>
+Date: Sun, 3 Jan 2016 03:17:40 -0500
+Subject: [PATCH 1/1] applets/clock: add missing pkgconfig flags for
+ NetworkManager
+
+mate-panel-1.8 fails to compile with NetworkManager >=1.0.8 due to a
+missing include directive ('-I'). Substitute network manager CFLAGS
+and LIBS supplied by the pkgconfig macro in configure.ac and use it
+for applets/clock.
+
+Signed-off-by: Gokturk Yuksek <gokturk@binghamton.edu>
+---
+ applets/clock/Makefile.am | 2 ++
+ configure.ac              | 2 ++
+ 2 files changed, 4 insertions(+)
+
+diff --git a/applets/clock/Makefile.am b/applets/clock/Makefile.am
+index 950ecdd..bfb6b45 100644
+--- a/applets/clock/Makefile.am
++++ b/applets/clock/Makefile.am
+@@ -39,6 +39,7 @@ CLOCK_CPPFLAGS =						\
+ 	$(AM_CPPFLAGS)						\
+ 	$(LIBMATE_PANEL_APPLET_CFLAGS)				\
+ 	$(CLOCK_CFLAGS)						\
++	$(NETWORK_MANAGER_CFLAGS)				\
+ 	-I$(srcdir)/../../libmate-panel-applet			\
+ 	-I$(top_builddir)/libmate-panel-applet			\
+ 	-DMATELOCALEDIR=\""$(prefix)/$(DATADIRNAME)/locale"\"	\
+@@ -51,6 +52,7 @@ CLOCK_LDADD =						\
+ 	../../libmate-panel-applet/libmate-panel-applet-4.la	\
+ 	$(CLOCK_LIBS)					\
+ 	$(LIBMATE_PANEL_APPLET_LIBS)				\
++	$(NETWORK_MANAGER_LIBS)					\
+ 	libsystem-timezone.la				\
+ 	-lm
+ 
+diff --git a/configure.ac b/configure.ac
+index af5a422..6d1389e 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -156,6 +156,8 @@ else
+ fi
+ if test "x$HAVE_NETWORK_MANAGER" = "xyes" ; then
+     AC_DEFINE(HAVE_NETWORK_MANAGER, 1, [Defined if NetworkManager support is enabled])
++    AC_SUBST(NETWORK_MANAGER_CFLAGS)
++    AC_SUBST(NETWORK_MANAGER_LIBS)
+ fi
+ 
+ # Make it possible to compile the applets in-process
+-- 
+2.4.10
+

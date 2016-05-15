@@ -1,0 +1,12 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -191,7 +191,8 @@
+ 			AC_CHECK_HEADERS([ncurses.h],,[ncurses_found=no])
+ 			if test "$ncurses_found" = yes
+ 			then
+-				AC_CHECK_LIB([ncurses],[tputs],,[ncurses_found=no])
++				AC_CHECK_LIB([tinfo],[tputs],,
++					AC_CHECK_LIB([ncurses],[tputs],,[ncurses_found=no]))
+ 				if test "$ncurses_found" = yes
+ 				then
+ 					AC_DEFINE(BLASSIC_CONFIG_USE_NCURSES)

@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -14,7 +14,7 @@ SRC_URI="mirror://sourceforge/${PN}/EasyMock/${PV}/${P}.zip"
 
 LICENSE="|| ( MIT Apache-2.0 )"
 SLOT="3.2"
-KEYWORDS="amd64 x86 ppc ppc64"
+KEYWORDS="amd64 ppc64 x86"
 IUSE=""
 
 COMMON_DEPEND="

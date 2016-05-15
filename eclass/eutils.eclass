@@ -39,7 +39,7 @@ fi
 # Remove CVS directories recursiveley.  Useful when a source tarball contains
 # internal CVS directories.  Defaults to $PWD.
 ecvs_clean() {
-	[[ -z $* ]] && set -- .
+	[[ $# -eq 0 ]] && set -- .
 	find "$@" -type d -name 'CVS' -prune -print0 | xargs -0 rm -rf
 	find "$@" -type f -name '.cvs*' -print0 | xargs -0 rm -rf
 }
@@ -50,8 +50,18 @@ ecvs_clean() {
 # Remove .svn directories recursiveley.  Useful when a source tarball contains
 # internal Subversion directories.  Defaults to $PWD.
 esvn_clean() {
-	[[ -z $* ]] && set -- .
+	[[ $# -eq 0 ]] && set -- .
 	find "$@" -type d -name '.svn' -prune -print0 | xargs -0 rm -rf
+}
+
+# @FUNCTION: egit_clean
+# @USAGE: [list of dirs]
+# @DESCRIPTION:
+# Remove .git* directories/files recursiveley.  Useful when a source tarball
+# contains internal Git directories.  Defaults to $PWD.
+egit_clean() {
+	[[ $# -eq 0 ]] && set -- .
+	find "$@" -type d -name '.git*' -prune -print0 | xargs -0 rm -rf
 }
 
 # @FUNCTION: estack_push
@@ -99,7 +109,7 @@ estack_pop() {
 	if [[ -n ${_estack_retvar} ]] ; then
 		eval ${_estack_retvar}=\"\${${_estack_name}\[${_estack_i}\]}\"
 	fi
-	eval unset ${_estack_name}\[${_estack_i}\]
+	eval unset \"${_estack_name}\[${_estack_i}\]\"
 }
 
 # @FUNCTION: evar_push
@@ -679,7 +689,7 @@ edos2unix() {
 #           a full path to an icon
 # type:     what kind of application is this?
 #           for categories:
-#           http://standards.freedesktop.org/menu-spec/latest/apa.html
+#           https://specifications.freedesktop.org/menu-spec/latest/apa.html
 #           if unset, function tries to guess from package's category
 # fields:	extra fields to append to the desktop file; a printf string
 # @CODE
@@ -1721,7 +1731,7 @@ epatch_user() {
 
 	# don't clobber any EPATCH vars that the parent might want
 	local EPATCH_SOURCE check
-	for check in ${CATEGORY}/{${P}-${PR},${P},${PN}}{,:${SLOT}}; do
+	for check in ${CATEGORY}/{${P}-${PR},${P},${PN}}{,:${SLOT%/*}}; do
 		EPATCH_SOURCE=${EPATCH_USER_SOURCE}/${CTARGET}/${check}
 		[[ -r ${EPATCH_SOURCE} ]] || EPATCH_SOURCE=${EPATCH_USER_SOURCE}/${CHOST}/${check}
 		[[ -r ${EPATCH_SOURCE} ]] || EPATCH_SOURCE=${EPATCH_USER_SOURCE}/${check}

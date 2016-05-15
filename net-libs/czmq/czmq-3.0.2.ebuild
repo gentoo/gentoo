@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -8,7 +8,7 @@ AUTOTOOLS_AUTORECONF=true
 
 inherit autotools-utils
 
-DESCRIPTION=" High-level C Binding for ZeroMQ"
+DESCRIPTION="High-level C Binding for ZeroMQ"
 HOMEPAGE="http://czmq.zeromq.org"
 SRC_URI="http://download.zeromq.org/${P}.tar.gz"
 
@@ -22,10 +22,9 @@ RDEPEND="
 	net-libs/zeromq
 "
 DEPEND="${RDEPEND}
-	doc? (
-		app-text/asciidoc
-		app-text/xmlto
-	)"
+	app-text/asciidoc
+	app-text/xmlto
+"
 
 DOCS=( NEWS AUTHORS )
 
@@ -35,6 +34,11 @@ RESTRICT=test
 src_prepare() {
 	use test && AUTOTOOLS_IN_SOURCE_BUILD=1
 	sed -i -e 's|-Werror||g' configure.ac || die
+
+	cat >> src/Makemodule-local.am <<-EOF
+	src_libczmq_la_LDFLAGS += -pthread
+	EOF
+
 	autotools-utils_src_prepare
 }
 

@@ -3,6 +3,9 @@
 # $Id$
 
 EAPI=5
+
+inherit eutils
+
 DESCRIPTION="backend library for the maitretarot clients"
 HOMEPAGE="http://www.nongnu.org/maitretarot/"
 SRC_URI="http://savannah.nongnu.org/download/maitretarot/${PN}.pkg/${PV}/${P}.tar.bz2"
@@ -16,3 +19,7 @@ DEPEND="dev-libs/glib:2
 	dev-libs/libxml2
 	dev-games/libmaitretarot"
 RDEPEND=${DEPEND}
+
+src_prepare () {
+	epatch "${FILESDIR}"/${P}-format.patch
+}

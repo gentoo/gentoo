@@ -1,4 +1,4 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -36,6 +36,8 @@ src_prepare() {
 
 	#Honour Gentoo LDFLAGS - bug #335986
 	sed -i -e "s:\$(FLAGS) -o wmpop3lb:\$(LDFLAGS) -o wmpop3lb:" "wmpop3/Makefile"
+
+	epatch "${FILESDIR}"/${P}-list.patch
 }
 
 src_compile() {

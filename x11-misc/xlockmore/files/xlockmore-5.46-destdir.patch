@@ -1,0 +1,116 @@
+Use DESTDIR where necessary.
+
+--- xlockmore-5.46/modes/Makefile.in
++++ xlockmore-5.46/modes/Makefile.in
+@@ -325,7 +325,7 @@
+ 
+ MODULEFLAGS = @MODULEFLAGS@
+ @MODULES@MODULELIB = -ldl
+-DEF_MODULEPATH = $(prefix)/lib/X11/xlock/modules
++DEF_MODULEPATH = $(DESTDIR)$(prefix)/lib/X11/xlock/modules
+ @MODULES@MODULEDEF = -DDEF_MODULEPATH=\"$(DEF_MODULEPATH)\"
+ DEFINES = -DDEF_FILESEARCHPATH=\"$(xapploaddir)/%N%C%S:$(xapploaddir)/%N%S\" $(MODULEDEF) $(CHECKDEF)
+ DEFS = @DEFS@ $(DEFINES)
+@@ -600,15 +600,15 @@
+ 	@ $(ECHO) ""
+ 
+ install-program : xlock
+-	$(top_srcdir)/mkinstalldirs $(bindir)
+-	$(INSTALL_PROGRAM) $(INSTPGMFLAGS) $(UTILOBJDIR)xlock$(E) $(bindir)
++	$(top_srcdir)/mkinstalldirs $(DESTDIR)$(bindir)
++	$(INSTALL_PROGRAM) $(INSTPGMFLAGS) $(UTILOBJDIR)xlock$(E) $(DESTDIR)$(bindir)
+ 	@MODULES@mkdir -p $(DEF_MODULEPATH)
+ 	@MODULES@cp *.xlk $(DEF_MODULEPATH)
+ 	@MODULES@cp glx/*.xlk $(DEF_MODULEPATH)
+ 
+ install-man :
+-	$(top_srcdir)/mkinstalldirs $(mandir)
+-	$(INSTALL_DATA) $(UTILDIR)xlock.man $(mandir)/xlock.1
++	$(top_srcdir)/mkinstalldirs $(DESTDIR)$(mandir)
++	$(INSTALL_DATA) $(UTILDIR)xlock.man $(DESTDIR)$(mandir)/xlock.1
+ 
+ install-ad :
+ 	$(top_srcdir)/mkinstalldirs $(DESTDIR)$(xapploaddir)
+@@ -620,10 +620,10 @@
+ uninstall : uninstall-program uninstall-man uninstall-ad
+ 
+ uninstall-program :
+-	$(RM) $(bindir)/xlock$(E)
++	$(RM) $(DESTDIR)$(bindir)/xlock$(E)
+ 
+ uninstall-man :
+-	$(RM) $(mandir)/xlock.1
++	$(RM) $(DESTDIR)$(mandir)/xlock.1
+ 
+ uninstall-ad :
+ 	$(RM) $(DESTDIR)$(xapploaddir)/XLock
+--- xlockmore-5.46/xglock/Makefile.in
++++ xlockmore-5.46/xglock/Makefile.in
+@@ -117,26 +117,26 @@
+ 	@ $(ECHO) ""
+ 
+ install-program : xglock
+-	$(top_srcdir)/mkinstalldirs $(bindir)
+-	$(INSTALL_PROGRAM) xglock$(E) $(bindir)
++	$(top_srcdir)/mkinstalldirs $(DESTDIR)$(bindir)
++	$(INSTALL_PROGRAM) xglock$(E) $(DESTDIR)$(bindir)
+ 
+ install-man :
+ 
+ install-ad :
+-	$(top_srcdir)/mkinstalldirs $(datadir)/xlock
+-	$(INSTALL_PROGRAM) $(top_srcdir)/xglock/xglockrc $(datadir)/xlock/xglockrc
++	$(top_srcdir)/mkinstalldirs $(DESTDIR)$(datadir)/xlock
++	$(INSTALL_PROGRAM) $(top_srcdir)/xglock/xglockrc $(DESTDIR)$(datadir)/xlock/xglockrc
+ 
+ uninstall : @UNINSTALL_XGLOCK@
+ 
+ uninstall_xglock : uninstall-program uninstall-man uninstall-ad
+ 
+ uninstall-program :
+-	$(RM) $(bindir)/xglock$(E)
++	$(RM) $(DESTDIR)$(bindir)/xglock$(E)
+ 
+ uninstall-man :
+ 
+ uninstall-ad :
+-	$(RM) $(datadir)/xlock/xglockrc
++	$(RM) $(DESTDIR)$(datadir)/xlock/xglockrc
+ 
+ install.program : install-program
+ 
+--- xlockmore-5.46/xmlock/Makefile.in
++++ xlockmore-5.46/xmlock/Makefile.in
+@@ -119,26 +119,26 @@
+ 	@ $(ECHO) ""
+ 
+ install-program : xmlock
+-	$(top_srcdir)/mkinstalldirs $(bindir)
+-	$(INSTALL_PROGRAM) xmlock$(E) $(bindir)
++	$(top_srcdir)/mkinstalldirs $(DESTDIR)$(bindir)
++	$(INSTALL_PROGRAM) xmlock$(E) $(DESTDIR)$(bindir)
+ 
+ install-man :
+ 
+ install-ad :
+-	$(top_srcdir)/mkinstalldirs $(xapploaddir)
+-	$(INSTALL_DATA) $(top_srcdir)/xmlock/XmLock.ad $(xapploaddir)/XmLock
++	$(top_srcdir)/mkinstalldirs $(DESTDIR)$(xapploaddir)
++	$(INSTALL_DATA) $(top_srcdir)/xmlock/XmLock.ad $(DESTDIR)$(xapploaddir)/XmLock
+ 
+ uninstall : @UNINSTALL_XMLOCK@
+ 
+ uninstall_xmlock : uninstall-program uninstall-man uninstall-ad
+ 
+ uninstall-program :
+-	$(RM) $(bindir)/xmlock$(E)
++	$(RM) $(DESTDIR)$(bindir)/xmlock$(E)
+ 
+ uninstall-man :
+ 
+ uninstall-ad :
+-	$(RM) $(xapploaddir)/XmLock
++	$(RM) $(DESTDIR)$(xapploaddir)/XmLock
+ 
+ install.program : install-program
+ 

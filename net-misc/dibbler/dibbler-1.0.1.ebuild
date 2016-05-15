@@ -11,7 +11,7 @@ SRC_URI="http://klub.com.pl/dhcpv6/dibbler/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~mips ~x86"
+KEYWORDS="amd64 ~hppa ~mips ~x86"
 IUSE="doc"
 
 DEPEND="doc? ( || (

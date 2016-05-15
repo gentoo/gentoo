@@ -11,7 +11,7 @@ SRC_URI="https://mod-auth-external.googlecode.com/files/${P}.tar.gz"
 
 LICENSE="Apache-1.1"
 SLOT="2"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE=""
 need_apache2_4
 

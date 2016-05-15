@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -9,7 +9,7 @@
 EAPI="5"
 
 WANT_AUTOCONF="2.1"
-inherit autotools eutils toolchain-funcs
+inherit autotools eutils flag-o-matic toolchain-funcs
 
 DESCRIPTION="highly customizable open source text editor and application development system"
 HOMEPAGE="http://www.xemacs.org/"
@@ -62,6 +62,8 @@ src_unpack() {
 src_prepare() {
 	# see bug 58350, 102540 and 143580
 	epatch "${FILESDIR}"/xemacs-21.4.19-db.patch
+	# see bug 576512
+	epatch "${FILESDIR}"/xemacs-21.4.24-gcc5.patch
 
 	# Some binaries and man pages are installed under suffixed names
 	# to avoid collions with their GNU Emacs counterparts (see below).
@@ -163,10 +165,13 @@ src_configure() {
 	# Enabling modules will cause segfaults outside the XEmacs build directory
 	use ia64  && myconf="${myconf} --without-modules"
 
-	# fixes #552044, deprecation warnings fools header detection in configure 
+	# fixes #552044, deprecation warnings fools header detection in configure
 	myconf="${myconf} --cppflags=-Wno-cpp"
 
 	einfo "${myconf}"
+
+	# see bug 576512
+	append-cflags -std=gnu89
 
 	# Don't use econf because it uses options which this configure
 	# script does not understand (like --host).

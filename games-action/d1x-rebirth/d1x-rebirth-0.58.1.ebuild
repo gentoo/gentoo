@@ -19,7 +19,7 @@ SRC_URI="http://www.dxx-rebirth.com/download/dxx/${MY_P}.tar.gz
 
 LICENSE="D1X GPL-2 public-domain"
 SLOT="0"
-KEYWORDS="~amd64 x86"
+KEYWORDS="amd64 x86"
 IUSE="cdinstall debug demo ipv6 linguas_de +music opengl opl3-musicpack sc55-musicpack"
 REQUIRED_USE="?? ( cdinstall demo )
 	?? ( opl3-musicpack sc55-musicpack )

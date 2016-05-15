@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>tex</herd>
-  <herd>printing</herd>
+  <maintainer type="project">
+    <email>tex@gentoo.org</email>
+    <name>Gentoo TeX Project</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>printing@gentoo.org</email>
+    <name>Gentoo Printing Project</name>
+  </maintainer>
   <use>
     <flag name="emf">Enable <pkg>media-libs/libemf</pkg> support</flag>
     <flag name="flash">Enable <pkg>media-libs/ming</pkg> SWF support</flag>

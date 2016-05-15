@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>sci</herd>
-<herd>perl</herd>
+<maintainer type="project">
+  <email>sci@gentoo.org</email>
+  <name>Gentoo Science Project</name>
+</maintainer>
+<maintainer type="project">
+  <email>perl@gentoo.org</email>
+  <name>Gentoo Perl Project</name>
+</maintainer>
 <longdescription lang="en">
   This the only function of this module and it is exported by
   default. It takes a scalar, array or hash left-value as first

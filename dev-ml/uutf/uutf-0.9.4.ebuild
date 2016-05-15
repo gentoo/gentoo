@@ -18,6 +18,7 @@ IUSE="doc utftrip +ocamlopt test"
 RDEPEND=">=dev-lang/ocaml-3.12:=[ocamlopt?]
 	utftrip? ( dev-ml/cmdliner:= )"
 DEPEND="${RDEPEND}
+	dev-ml/ocamlbuild
 	test? ( dev-ml/cmdliner )"
 
 src_compile() {

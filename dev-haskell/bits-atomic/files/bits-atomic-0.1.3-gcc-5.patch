@@ -1,0 +1,610 @@
+diff --git a/Setup.hs b/Setup.hs
+index 46f5022..36c3aa9 100644
+--- a/Setup.hs
++++ b/Setup.hs
+@@ -1,19 +1,7 @@
+-{-# LANGUAGE CPP #-}
+-import Distribution.Simple
+-import Distribution.PackageDescription
+-import Distribution.Simple.LocalBuildInfo(LocalBuildInfo, buildDir)
+-import System.Cmd(system)
+-
+-ps :: String
+-#if mingw32_HOST_OS || mingw32_TARGET_OS
+-ps = ['\\']
+-#else
+-ps = ['/']
+-#endif
++#!/usr/bin/runhaskell
++module Main where
+ 
+-main = defaultMainWithHooks hooks
+-  where hooks = simpleUserHooks { runTests = runTests' }
++import Distribution.Simple
+ 
+-runTests' :: Args -> Bool -> PackageDescription -> LocalBuildInfo -> IO ()
+-runTests' _ _ _ lbi = system testprog >> return ()
+-  where testprog = (buildDir lbi) ++ ps ++ "test" ++ ps ++ "test"
++main :: IO ()
++main = defaultMain
+diff --git a/bits-atomic.cabal b/bits-atomic.cabal
+index 68da7f7..97b513f 100644
+--- a/bits-atomic.cabal
++++ b/bits-atomic.cabal
+@@ -43,3 +43,3 @@ Stability:          experimental
+ Build-Type:         Custom
+-Cabal-Version: >= 1.6
++Cabal-Version: >= 1.8
+ Extra-Source-Files: cbits/atomic-bitops-gcc.c cbits/atomic-bitops-gcc.h
+@@ -64,11 +64,6 @@ library
+ 
+-flag test
+-    description: Build test program.
+-    default:     False
+-
+-Executable test
+-    if flag(test)
+-        buildable:  True
+-        build-depends:   
+-                    base >= 4 && < 6, 
++test-suite test
++    Type:                 exitcode-stdio-1.0
++    build-depends:  bits-atomic,
++                    base >= 4 && < 6,
+                     QuickCheck, 
+@@ -78,6 +73,4 @@ Executable test
+                     test-framework
+-    else
+-        buildable:  False
+-    hs-source-dirs:  ., test
+-    other-modules:   Data.Bits.Atomic
++
++    hs-source-dirs:  test
+     main-is:         test.hs
+@@ -85,4 +78 @@ Executable test
+     GHC-Prof-Options: -auto-all
+-
+-    Include-Dirs:     cbits
+-    C-Sources:        cbits/atomic-bitops-gcc.c
+diff --git a/cbits/atomic-bitops-gcc.c b/cbits/atomic-bitops-gcc.c
+index 3f9d4ef..96ed076 100644
+--- a/cbits/atomic-bitops-gcc.c
++++ b/cbits/atomic-bitops-gcc.c
+@@ -5,39 +5,39 @@ void mem_barrier (void) {return __sync_synchronize ();}
+ /* 8-bit */
+-inline unsigned char fetch_and_add_8 (unsigned char *p, unsigned char v) {
++unsigned char fetch_and_add_8 (unsigned char *p, unsigned char v) {
+ 	return __sync_fetch_and_add (p, v);
+ }
+-inline unsigned char fetch_and_sub_8 (unsigned char *p, unsigned char v) {
++unsigned char fetch_and_sub_8 (unsigned char *p, unsigned char v) {
+ 	return __sync_fetch_and_sub (p, v);
+ }
+-inline unsigned char fetch_and_or_8 (unsigned char *p, unsigned char v) {
++unsigned char fetch_and_or_8 (unsigned char *p, unsigned char v) {
+ 	return __sync_fetch_and_or (p, v);
+ }
+-inline unsigned char fetch_and_and_8 (unsigned char *p, unsigned char v) {
++unsigned char fetch_and_and_8 (unsigned char *p, unsigned char v) {
+ 	return __sync_fetch_and_and (p, v);
+ }
+-inline unsigned char fetch_and_xor_8 (unsigned char *p, unsigned char v) {
++unsigned char fetch_and_xor_8 (unsigned char *p, unsigned char v) {
+ 	return __sync_fetch_and_xor (p, v);
+ }
+-inline unsigned char fetch_and_nand_8 (unsigned char *p, unsigned char v) {
++unsigned char fetch_and_nand_8 (unsigned char *p, unsigned char v) {
+ 	return __sync_fetch_and_nand (p, v);
+ }
+-inline unsigned char add_and_fetch_8 (unsigned char *p, unsigned char v) {
++unsigned char add_and_fetch_8 (unsigned char *p, unsigned char v) {
+ 	return __sync_add_and_fetch (p, v);
+ }
+-inline unsigned char sub_and_fetch_8 (unsigned char *p, unsigned char v) {
++unsigned char sub_and_fetch_8 (unsigned char *p, unsigned char v) {
+ 	return __sync_sub_and_fetch (p, v);
+ }
+-inline unsigned char or_and_fetch_8 (unsigned char *p, unsigned char v) {
++unsigned char or_and_fetch_8 (unsigned char *p, unsigned char v) {
+ 	return __sync_or_and_fetch (p, v);
+ }
+-inline unsigned char and_and_fetch_8 (unsigned char *p, unsigned char v) {
++unsigned char and_and_fetch_8 (unsigned char *p, unsigned char v) {
+ 	return __sync_and_and_fetch (p, v);
+ }
+-inline unsigned char xor_and_fetch_8 (unsigned char *p, unsigned char v) {
++unsigned char xor_and_fetch_8 (unsigned char *p, unsigned char v) {
+ 	return __sync_xor_and_fetch (p, v);
+ }
+-inline unsigned char nand_and_fetch_8 (unsigned char *p, unsigned char v) {
++unsigned char nand_and_fetch_8 (unsigned char *p, unsigned char v) {
+ 	return __sync_nand_and_fetch (p, v);
+ }
+-inline unsigned int
++unsigned int
+ bool_compare_and_swap_8 (unsigned char *p, unsigned char old, unsigned char new) {
+@@ -45,3 +45,3 @@ bool_compare_and_swap_8 (unsigned char *p, unsigned char old, unsigned char new)
+ }
+-inline unsigned char
++unsigned char
+ val_compare_and_swap_8 (unsigned char *p, unsigned char old, unsigned char new) {
+@@ -49,3 +49,3 @@ val_compare_and_swap_8 (unsigned char *p, unsigned char old, unsigned char new)
+ }
+-inline unsigned char lock_test_and_set_8 (unsigned char *p) {
++unsigned char lock_test_and_set_8 (unsigned char *p) {
+ 	// Only immediate 0/1 appear to be widely supported, so hardcode it
+@@ -60,39 +60,39 @@ void lock_release_8 (unsigned char *p) {
+ /* 16-bit */
+-inline unsigned short fetch_and_add_16 (unsigned short *p, unsigned short v) {
++unsigned short fetch_and_add_16 (unsigned short *p, unsigned short v) {
+ 	return __sync_fetch_and_add (p, v);
+ }
+-inline unsigned short fetch_and_sub_16 (unsigned short *p, unsigned short v) {
++unsigned short fetch_and_sub_16 (unsigned short *p, unsigned short v) {
+ 	return __sync_fetch_and_sub (p, v);
+ }
+-inline unsigned short fetch_and_or_16 (unsigned short *p, unsigned short v) {
++unsigned short fetch_and_or_16 (unsigned short *p, unsigned short v) {
+ 	return __sync_fetch_and_or (p, v);
+ }
+-inline unsigned short fetch_and_and_16 (unsigned short *p, unsigned short v) {
++unsigned short fetch_and_and_16 (unsigned short *p, unsigned short v) {
+ 	return __sync_fetch_and_and (p, v);
+ }
+-inline unsigned short fetch_and_xor_16 (unsigned short *p, unsigned short v) {
++unsigned short fetch_and_xor_16 (unsigned short *p, unsigned short v) {
+ 	return __sync_fetch_and_xor (p, v);
+ }
+-inline unsigned short fetch_and_nand_16 (unsigned short *p, unsigned short v) {
++unsigned short fetch_and_nand_16 (unsigned short *p, unsigned short v) {
+ 	return __sync_fetch_and_nand (p, v);
+ }
+-inline unsigned short add_and_fetch_16 (unsigned short *p, unsigned short v) {
++unsigned short add_and_fetch_16 (unsigned short *p, unsigned short v) {
+ 	return __sync_add_and_fetch (p, v);
+ }
+-inline unsigned short sub_and_fetch_16 (unsigned short *p, unsigned short v) {
++unsigned short sub_and_fetch_16 (unsigned short *p, unsigned short v) {
+ 	return __sync_sub_and_fetch (p, v);
+ }
+-inline unsigned short or_and_fetch_16 (unsigned short *p, unsigned short v) {
++unsigned short or_and_fetch_16 (unsigned short *p, unsigned short v) {
+ 	return __sync_or_and_fetch (p, v);
+ }
+-inline unsigned short and_and_fetch_16 (unsigned short *p, unsigned short v) {
++unsigned short and_and_fetch_16 (unsigned short *p, unsigned short v) {
+ 	return __sync_and_and_fetch (p, v);
+ }
+-inline unsigned short xor_and_fetch_16 (unsigned short *p, unsigned short v) {
++unsigned short xor_and_fetch_16 (unsigned short *p, unsigned short v) {
+ 	return __sync_xor_and_fetch (p, v);
+ }
+-inline unsigned short nand_and_fetch_16 (unsigned short *p, unsigned short v) {
++unsigned short nand_and_fetch_16 (unsigned short *p, unsigned short v) {
+ 	return __sync_nand_and_fetch (p, v);
+ }
+-inline unsigned int
++unsigned int
+ bool_compare_and_swap_16 (unsigned short *p, unsigned short old, unsigned short new) {
+@@ -100,3 +100,3 @@ bool_compare_and_swap_16 (unsigned short *p, unsigned short old, unsigned short
+ }
+-inline unsigned short
++unsigned short
+ val_compare_and_swap_16 (unsigned short *p, unsigned short old, unsigned short new) {
+@@ -104,3 +104,3 @@ val_compare_and_swap_16 (unsigned short *p, unsigned short old, unsigned short n
+ }
+-inline unsigned short lock_test_and_set_16 (unsigned short *p) {
++unsigned short lock_test_and_set_16 (unsigned short *p) {
+ 	// Only immediate 0/1 appear to be widely supported, so hardcode it
+@@ -115,39 +115,39 @@ void lock_release_16 (unsigned short *p) {
+ /* 32-bit */
+-inline unsigned int fetch_and_add_32 (unsigned int *p, unsigned int v) {
++unsigned int fetch_and_add_32 (unsigned int *p, unsigned int v) {
+ 	return __sync_fetch_and_add (p, v);
+ }
+-inline unsigned int fetch_and_sub_32 (unsigned int *p, unsigned int v) {
++unsigned int fetch_and_sub_32 (unsigned int *p, unsigned int v) {
+ 	return __sync_fetch_and_sub (p, v);
+ }
+-inline unsigned int fetch_and_or_32 (unsigned int *p, unsigned int v) {
++unsigned int fetch_and_or_32 (unsigned int *p, unsigned int v) {
+ 	return __sync_fetch_and_or (p, v);
+ }
+-inline unsigned int fetch_and_and_32 (unsigned int *p, unsigned int v) {
++unsigned int fetch_and_and_32 (unsigned int *p, unsigned int v) {
+ 	return __sync_fetch_and_and (p, v);
+ }
+-inline unsigned int fetch_and_xor_32 (unsigned int *p, unsigned int v) {
++unsigned int fetch_and_xor_32 (unsigned int *p, unsigned int v) {
+ 	return __sync_fetch_and_xor (p, v);
+ }
+-inline unsigned int fetch_and_nand_32 (unsigned int *p, unsigned int v) {
++unsigned int fetch_and_nand_32 (unsigned int *p, unsigned int v) {
+ 	return __sync_fetch_and_nand (p, v);
+ }
+-inline unsigned int add_and_fetch_32 (unsigned int *p, unsigned int v) {
++unsigned int add_and_fetch_32 (unsigned int *p, unsigned int v) {
+ 	return __sync_add_and_fetch (p, v);
+ }
+-inline unsigned int sub_and_fetch_32 (unsigned int *p, unsigned int v) {
++unsigned int sub_and_fetch_32 (unsigned int *p, unsigned int v) {
+ 	return __sync_sub_and_fetch (p, v);
+ }
+-inline unsigned int or_and_fetch_32 (unsigned int *p, unsigned int v) {
++unsigned int or_and_fetch_32 (unsigned int *p, unsigned int v) {
+ 	return __sync_or_and_fetch (p, v);
+ }
+-inline unsigned int and_and_fetch_32 (unsigned int *p, unsigned int v) {
++unsigned int and_and_fetch_32 (unsigned int *p, unsigned int v) {
+ 	return __sync_and_and_fetch (p, v);
+ }
+-inline unsigned int xor_and_fetch_32 (unsigned int *p, unsigned int v) {
++unsigned int xor_and_fetch_32 (unsigned int *p, unsigned int v) {
+ 	return __sync_xor_and_fetch (p, v);
+ }
+-inline unsigned int nand_and_fetch_32 (unsigned int *p, unsigned int v) {
++unsigned int nand_and_fetch_32 (unsigned int *p, unsigned int v) {
+ 	return __sync_nand_and_fetch (p, v);
+ }
+-inline unsigned int
++unsigned int
+ bool_compare_and_swap_32 (unsigned int *p, unsigned int old, unsigned int new) {
+@@ -155,3 +155,3 @@ bool_compare_and_swap_32 (unsigned int *p, unsigned int old, unsigned int new) {
+ }
+-inline unsigned int
++unsigned int
+ val_compare_and_swap_32 (unsigned int *p, unsigned int old, unsigned int new) {
+@@ -159,3 +159,3 @@ val_compare_and_swap_32 (unsigned int *p, unsigned int old, unsigned int new) {
+ }
+-inline unsigned int lock_test_and_set_32 (unsigned int *p) {
++unsigned int lock_test_and_set_32 (unsigned int *p) {
+ 	// Only immediate 0/1 appear to be widely supported, so hardcode it
+@@ -170,39 +170,39 @@ void lock_release_32 (unsigned int *p) {
+ /* 64-bit */
+-inline unsigned long long fetch_and_add_64 (unsigned long long *p, unsigned long long v) {
++unsigned long long fetch_and_add_64 (unsigned long long *p, unsigned long long v) {
+ 	return __sync_fetch_and_add (p, v);
+ }
+-inline unsigned long long fetch_and_sub_64 (unsigned long long *p, unsigned long long v) {
++unsigned long long fetch_and_sub_64 (unsigned long long *p, unsigned long long v) {
+ 	return __sync_fetch_and_sub (p, v);
+ }
+-inline unsigned long long fetch_and_or_64 (unsigned long long *p, unsigned long long v) {
++unsigned long long fetch_and_or_64 (unsigned long long *p, unsigned long long v) {
+ 	return __sync_fetch_and_or (p, v);
+ }
+-inline unsigned long long fetch_and_and_64 (unsigned long long *p, unsigned long long v) {
++unsigned long long fetch_and_and_64 (unsigned long long *p, unsigned long long v) {
+ 	return __sync_fetch_and_and (p, v);
+ }
+-inline unsigned long long fetch_and_xor_64 (unsigned long long *p, unsigned long long v) {
++unsigned long long fetch_and_xor_64 (unsigned long long *p, unsigned long long v) {
+ 	return __sync_fetch_and_xor (p, v);
+ }
+-inline unsigned long long fetch_and_nand_64 (unsigned long long *p, unsigned long long v) {
++unsigned long long fetch_and_nand_64 (unsigned long long *p, unsigned long long v) {
+ 	return __sync_fetch_and_nand (p, v);
+ }
+-inline unsigned long long add_and_fetch_64 (unsigned long long *p, unsigned long long v) {
++unsigned long long add_and_fetch_64 (unsigned long long *p, unsigned long long v) {
+ 	return __sync_add_and_fetch (p, v);
+ }
+-inline unsigned long long sub_and_fetch_64 (unsigned long long *p, unsigned long long v) {
++unsigned long long sub_and_fetch_64 (unsigned long long *p, unsigned long long v) {
+ 	return __sync_sub_and_fetch (p, v);
+ }
+-inline unsigned long long or_and_fetch_64 (unsigned long long *p, unsigned long long v) {
++unsigned long long or_and_fetch_64 (unsigned long long *p, unsigned long long v) {
+ 	return __sync_or_and_fetch (p, v);
+ }
+-inline unsigned long long and_and_fetch_64 (unsigned long long *p, unsigned long long v) {
++unsigned long long and_and_fetch_64 (unsigned long long *p, unsigned long long v) {
+ 	return __sync_and_and_fetch (p, v);
+ }
+-inline unsigned long long xor_and_fetch_64 (unsigned long long *p, unsigned long long v) {
++unsigned long long xor_and_fetch_64 (unsigned long long *p, unsigned long long v) {
+ 	return __sync_xor_and_fetch (p, v);
+ }
+-inline unsigned long long nand_and_fetch_64 (unsigned long long *p, unsigned long long v) {
++unsigned long long nand_and_fetch_64 (unsigned long long *p, unsigned long long v) {
+ 	return __sync_nand_and_fetch (p, v);
+ }
+-inline unsigned int
++unsigned int
+ bool_compare_and_swap_64 (unsigned long long *p, unsigned long long old, unsigned long long new) {
+@@ -210,3 +210,3 @@ bool_compare_and_swap_64 (unsigned long long *p, unsigned long long old, unsigne
+ }
+-inline unsigned long long
++unsigned long long
+ val_compare_and_swap_64 (unsigned long long *p, unsigned long long old, unsigned long long new) {
+@@ -214,3 +214,3 @@ val_compare_and_swap_64 (unsigned long long *p, unsigned long long old, unsigned
+ }
+-inline unsigned long long lock_test_and_set_64 (unsigned long long *p) {
++unsigned long long lock_test_and_set_64 (unsigned long long *p) {
+ 	// Only immediate 0/1 appear to be widely supported, so hardcode it
+@@ -225,39 +225,39 @@ void lock_release_64 (unsigned long long *p) {
+ /* Word-sized */
+-inline unsigned long fetch_and_add_word (unsigned long *p, unsigned long v) {
++unsigned long fetch_and_add_word (unsigned long *p, unsigned long v) {
+ 	return __sync_fetch_and_add (p, v);
+ }
+-inline unsigned long fetch_and_sub_word (unsigned long *p, unsigned long v) {
++unsigned long fetch_and_sub_word (unsigned long *p, unsigned long v) {
+ 	return __sync_fetch_and_sub (p, v);
+ }
+-inline unsigned long fetch_and_or_word (unsigned long *p, unsigned long v) {
++unsigned long fetch_and_or_word (unsigned long *p, unsigned long v) {
+ 	return __sync_fetch_and_or (p, v);
+ }
+-inline unsigned long fetch_and_and_word (unsigned long *p, unsigned long v) {
++unsigned long fetch_and_and_word (unsigned long *p, unsigned long v) {
+ 	return __sync_fetch_and_and (p, v);
+ }
+-inline unsigned long fetch_and_xor_word (unsigned long *p, unsigned long v) {
++unsigned long fetch_and_xor_word (unsigned long *p, unsigned long v) {
+ 	return __sync_fetch_and_xor (p, v);
+ }
+-inline unsigned long fetch_and_nand_word (unsigned long *p, unsigned long v) {
++unsigned long fetch_and_nand_word (unsigned long *p, unsigned long v) {
+ 	return __sync_fetch_and_nand (p, v);
+ }
+-inline unsigned long add_and_fetch_word (unsigned long *p, unsigned long v) {
++unsigned long add_and_fetch_word (unsigned long *p, unsigned long v) {
+ 	return __sync_add_and_fetch (p, v);
+ }
+-inline unsigned long sub_and_fetch_word (unsigned long *p, unsigned long v) {
++unsigned long sub_and_fetch_word (unsigned long *p, unsigned long v) {
+ 	return __sync_sub_and_fetch (p, v);
+ }
+-inline unsigned long or_and_fetch_word (unsigned long *p, unsigned long v) {
++unsigned long or_and_fetch_word (unsigned long *p, unsigned long v) {
+ 	return __sync_or_and_fetch (p, v);
+ }
+-inline unsigned long and_and_fetch_word (unsigned long *p, unsigned long v) {
++unsigned long and_and_fetch_word (unsigned long *p, unsigned long v) {
+ 	return __sync_and_and_fetch (p, v);
+ }
+-inline unsigned long xor_and_fetch_word (unsigned long *p, unsigned long v) {
++unsigned long xor_and_fetch_word (unsigned long *p, unsigned long v) {
+ 	return __sync_xor_and_fetch (p, v);
+ }
+-inline unsigned long nand_and_fetch_word (unsigned long *p, unsigned long v) {
++unsigned long nand_and_fetch_word (unsigned long *p, unsigned long v) {
+ 	return __sync_nand_and_fetch (p, v);
+ }
+-inline unsigned int
++unsigned int
+ bool_compare_and_swap_word (unsigned long *p, unsigned long old, unsigned long new) {
+@@ -265,3 +265,3 @@ bool_compare_and_swap_word (unsigned long *p, unsigned long old, unsigned long n
+ }
+-inline unsigned long
++unsigned long
+ val_compare_and_swap_word (unsigned long *p, unsigned long old, unsigned long new) {
+@@ -269,3 +269,3 @@ val_compare_and_swap_word (unsigned long *p, unsigned long old, unsigned long ne
+ }
+-inline unsigned long lock_test_and_set_word (unsigned long *p) {
++unsigned long lock_test_and_set_word (unsigned long *p) {
+ 	// Only immediate 0/1 appear to be widely supported, so hardcode it
+diff --git a/cbits/atomic-bitops-gcc.h b/cbits/atomic-bitops-gcc.h
+index f9eccc4..7e0ef15 100644
+--- a/cbits/atomic-bitops-gcc.h
++++ b/cbits/atomic-bitops-gcc.h
+@@ -6,19 +6,19 @@ void mem_barrier (void);
+ /* 8-bit */
+-inline unsigned char fetch_and_add_8 (unsigned char *, unsigned char );
+-inline unsigned char fetch_and_sub_8 (unsigned char *, unsigned char );
+-inline unsigned char fetch_and_or_8 (unsigned char *, unsigned char );
+-inline unsigned char fetch_and_and_8 (unsigned char *, unsigned char );
+-inline unsigned char fetch_and_xor_8 (unsigned char *, unsigned char );
+-inline unsigned char fetch_and_nand_8 (unsigned char *, unsigned char );
+-inline unsigned char add_and_fetch_8 (unsigned char *, unsigned char );
+-inline unsigned char sub_and_fetch_8 (unsigned char *, unsigned char );
+-inline unsigned char or_and_fetch_8 (unsigned char *, unsigned char );
+-inline unsigned char and_and_fetch_8 (unsigned char *, unsigned char );
+-inline unsigned char xor_and_fetch_8 (unsigned char *, unsigned char );
+-inline unsigned char nand_and_fetch_8 (unsigned char *, unsigned char );
+-inline unsigned int
++unsigned char fetch_and_add_8 (unsigned char *, unsigned char );
++unsigned char fetch_and_sub_8 (unsigned char *, unsigned char );
++unsigned char fetch_and_or_8 (unsigned char *, unsigned char );
++unsigned char fetch_and_and_8 (unsigned char *, unsigned char );
++unsigned char fetch_and_xor_8 (unsigned char *, unsigned char );
++unsigned char fetch_and_nand_8 (unsigned char *, unsigned char );
++unsigned char add_and_fetch_8 (unsigned char *, unsigned char );
++unsigned char sub_and_fetch_8 (unsigned char *, unsigned char );
++unsigned char or_and_fetch_8 (unsigned char *, unsigned char );
++unsigned char and_and_fetch_8 (unsigned char *, unsigned char );
++unsigned char xor_and_fetch_8 (unsigned char *, unsigned char );
++unsigned char nand_and_fetch_8 (unsigned char *, unsigned char );
++unsigned int
+ bool_compare_and_swap_8 (unsigned char *, unsigned char, unsigned char);
+-inline unsigned char
++unsigned char
+ val_compare_and_swap_8 (unsigned char *, unsigned char , unsigned char);
+-inline unsigned char lock_test_and_set_8 (unsigned char *);
++unsigned char lock_test_and_set_8 (unsigned char *);
+ void lock_release_8 (unsigned char *);
+@@ -26,19 +26,19 @@ void lock_release_8 (unsigned char *);
+ /* 16-bit */
+-inline unsigned short fetch_and_add_16 (unsigned short *, unsigned short );
+-inline unsigned short fetch_and_sub_16 (unsigned short *, unsigned short );
+-inline unsigned short fetch_and_or_16 (unsigned short *, unsigned short );
+-inline unsigned short fetch_and_and_16 (unsigned short *, unsigned short );
+-inline unsigned short fetch_and_xor_16 (unsigned short *, unsigned short );
+-inline unsigned short fetch_and_nand_16 (unsigned short *, unsigned short );
+-inline unsigned short add_and_fetch_16 (unsigned short *, unsigned short );
+-inline unsigned short sub_and_fetch_16 (unsigned short *, unsigned short );
+-inline unsigned short or_and_fetch_16 (unsigned short *, unsigned short );
+-inline unsigned short and_and_fetch_16 (unsigned short *, unsigned short );
+-inline unsigned short xor_and_fetch_16 (unsigned short *, unsigned short );
+-inline unsigned short nand_and_fetch_16 (unsigned short *, unsigned short );
+-inline unsigned int
++unsigned short fetch_and_add_16 (unsigned short *, unsigned short );
++unsigned short fetch_and_sub_16 (unsigned short *, unsigned short );
++unsigned short fetch_and_or_16 (unsigned short *, unsigned short );
++unsigned short fetch_and_and_16 (unsigned short *, unsigned short );
++unsigned short fetch_and_xor_16 (unsigned short *, unsigned short );
++unsigned short fetch_and_nand_16 (unsigned short *, unsigned short );
++unsigned short add_and_fetch_16 (unsigned short *, unsigned short );
++unsigned short sub_and_fetch_16 (unsigned short *, unsigned short );
++unsigned short or_and_fetch_16 (unsigned short *, unsigned short );
++unsigned short and_and_fetch_16 (unsigned short *, unsigned short );
++unsigned short xor_and_fetch_16 (unsigned short *, unsigned short );
++unsigned short nand_and_fetch_16 (unsigned short *, unsigned short );
++unsigned int
+ bool_compare_and_swap_16 (unsigned short *, unsigned short , unsigned short );
+-inline unsigned short
++unsigned short
+ val_compare_and_swap_16 (unsigned short *, unsigned short , unsigned short );
+-inline unsigned short lock_test_and_set_16 (unsigned short *);
++unsigned short lock_test_and_set_16 (unsigned short *);
+ void lock_release_16 (unsigned short *);
+@@ -47,19 +47,19 @@ void lock_release_16 (unsigned short *);
+ /* 32-bit */
+-inline unsigned int fetch_and_add_32 (unsigned int *, unsigned int );
+-inline unsigned int fetch_and_sub_32 (unsigned int *, unsigned int );
+-inline unsigned int fetch_and_or_32 (unsigned int *, unsigned int );
+-inline unsigned int fetch_and_and_32 (unsigned int *, unsigned int );
+-inline unsigned int fetch_and_xor_32 (unsigned int *, unsigned int );
+-inline unsigned int fetch_and_nand_32 (unsigned int *, unsigned int );
+-inline unsigned int add_and_fetch_32 (unsigned int *, unsigned int );
+-inline unsigned int sub_and_fetch_32 (unsigned int *, unsigned int );
+-inline unsigned int or_and_fetch_32 (unsigned int *, unsigned int );
+-inline unsigned int and_and_fetch_32 (unsigned int *, unsigned int );
+-inline unsigned int xor_and_fetch_32 (unsigned int *, unsigned int );
+-inline unsigned int nand_and_fetch_32 (unsigned int *, unsigned int );
+-inline unsigned int
++unsigned int fetch_and_add_32 (unsigned int *, unsigned int );
++unsigned int fetch_and_sub_32 (unsigned int *, unsigned int );
++unsigned int fetch_and_or_32 (unsigned int *, unsigned int );
++unsigned int fetch_and_and_32 (unsigned int *, unsigned int );
++unsigned int fetch_and_xor_32 (unsigned int *, unsigned int );
++unsigned int fetch_and_nand_32 (unsigned int *, unsigned int );
++unsigned int add_and_fetch_32 (unsigned int *, unsigned int );
++unsigned int sub_and_fetch_32 (unsigned int *, unsigned int );
++unsigned int or_and_fetch_32 (unsigned int *, unsigned int );
++unsigned int and_and_fetch_32 (unsigned int *, unsigned int );
++unsigned int xor_and_fetch_32 (unsigned int *, unsigned int );
++unsigned int nand_and_fetch_32 (unsigned int *, unsigned int );
++unsigned int
+ bool_compare_and_swap_32 (unsigned int *, unsigned int , unsigned int );
+-inline unsigned int
++unsigned int
+ val_compare_and_swap_32 (unsigned int *, unsigned int , unsigned int );
+-inline unsigned int lock_test_and_set_32 (unsigned int *);
++unsigned int lock_test_and_set_32 (unsigned int *);
+ void lock_release_32 (unsigned int *);
+@@ -67,19 +67,19 @@ void lock_release_32 (unsigned int *);
+ /* 64-bit */
+-inline unsigned long long fetch_and_add_64 (unsigned long long *, unsigned long long );
+-inline unsigned long long fetch_and_sub_64 (unsigned long long *, unsigned long long );
+-inline unsigned long long fetch_and_or_64 (unsigned long long *, unsigned long long );
+-inline unsigned long long fetch_and_and_64 (unsigned long long *, unsigned long long );
+-inline unsigned long long fetch_and_xor_64 (unsigned long long *, unsigned long long );
+-inline unsigned long long fetch_and_nand_64 (unsigned long long *, unsigned long long );
+-inline unsigned long long add_and_fetch_64 (unsigned long long *, unsigned long long );
+-inline unsigned long long sub_and_fetch_64 (unsigned long long *, unsigned long long );
+-inline unsigned long long or_and_fetch_64 (unsigned long long *, unsigned long long );
+-inline unsigned long long and_and_fetch_64 (unsigned long long *, unsigned long long );
+-inline unsigned long long xor_and_fetch_64 (unsigned long long *, unsigned long long );
+-inline unsigned long long nand_and_fetch_64 (unsigned long long *, unsigned long long );
+-inline unsigned int
++unsigned long long fetch_and_add_64 (unsigned long long *, unsigned long long );
++unsigned long long fetch_and_sub_64 (unsigned long long *, unsigned long long );
++unsigned long long fetch_and_or_64 (unsigned long long *, unsigned long long );
++unsigned long long fetch_and_and_64 (unsigned long long *, unsigned long long );
++unsigned long long fetch_and_xor_64 (unsigned long long *, unsigned long long );
++unsigned long long fetch_and_nand_64 (unsigned long long *, unsigned long long );
++unsigned long long add_and_fetch_64 (unsigned long long *, unsigned long long );
++unsigned long long sub_and_fetch_64 (unsigned long long *, unsigned long long );
++unsigned long long or_and_fetch_64 (unsigned long long *, unsigned long long );
++unsigned long long and_and_fetch_64 (unsigned long long *, unsigned long long );
++unsigned long long xor_and_fetch_64 (unsigned long long *, unsigned long long );
++unsigned long long nand_and_fetch_64 (unsigned long long *, unsigned long long );
++unsigned int
+ bool_compare_and_swap_64 (unsigned long long *, unsigned long long , unsigned long long );
+-inline unsigned long long
++unsigned long long
+ val_compare_and_swap_64 (unsigned long long *, unsigned long long , unsigned long long );
+-inline unsigned long long lock_test_and_set_64 (unsigned long long *);
++unsigned long long lock_test_and_set_64 (unsigned long long *);
+ void lock_release_64 (unsigned long long *);
+@@ -87,19 +87,19 @@ void lock_release_64 (unsigned long long *);
+ /* Word */
+-inline unsigned long fetch_and_add_word (unsigned long *, unsigned long );
+-inline unsigned long fetch_and_sub_word (unsigned long *, unsigned long );
+-inline unsigned long fetch_and_or_word (unsigned long *, unsigned long );
+-inline unsigned long fetch_and_and_word (unsigned long *, unsigned long );
+-inline unsigned long fetch_and_xor_word (unsigned long *, unsigned long );
+-inline unsigned long fetch_and_nand_word (unsigned long *, unsigned long );
+-inline unsigned long add_and_fetch_word (unsigned long *, unsigned long );
+-inline unsigned long sub_and_fetch_word (unsigned long *, unsigned long );
+-inline unsigned long or_and_fetch_word (unsigned long *, unsigned long );
+-inline unsigned long and_and_fetch_word (unsigned long *, unsigned long );
+-inline unsigned long xor_and_fetch_word (unsigned long *, unsigned long );
+-inline unsigned long nand_and_fetch_word (unsigned long *, unsigned long );
+-inline unsigned int
++unsigned long fetch_and_add_word (unsigned long *, unsigned long );
++unsigned long fetch_and_sub_word (unsigned long *, unsigned long );
++unsigned long fetch_and_or_word (unsigned long *, unsigned long );
++unsigned long fetch_and_and_word (unsigned long *, unsigned long );
++unsigned long fetch_and_xor_word (unsigned long *, unsigned long );
++unsigned long fetch_and_nand_word (unsigned long *, unsigned long );
++unsigned long add_and_fetch_word (unsigned long *, unsigned long );
++unsigned long sub_and_fetch_word (unsigned long *, unsigned long );
++unsigned long or_and_fetch_word (unsigned long *, unsigned long );
++unsigned long and_and_fetch_word (unsigned long *, unsigned long );
++unsigned long xor_and_fetch_word (unsigned long *, unsigned long );
++unsigned long nand_and_fetch_word (unsigned long *, unsigned long );
++unsigned int
+ bool_compare_and_swap_word (unsigned long *, unsigned long , unsigned long );
+-inline unsigned long
++unsigned long
+ val_compare_and_swap_word (unsigned long *, unsigned long , unsigned long );
+-inline unsigned long lock_test_and_set_word (unsigned long *);
++unsigned long lock_test_and_set_word (unsigned long *);
+ void lock_release_word (unsigned long *);
+diff --git a/test/test.hs b/test/test.hs
+index 8cf3cb2..38238b5 100644
+--- a/test/test.hs
++++ b/test/test.hs
+@@ -35,3 +35,3 @@ testPattern = 0xdeadbeef
+ 
+-type PolyTest = (AtomicBits a, Storable a, Integral a, Bounded a) => a -> Assertion
++type PolyTest = (AtomicBits a, Storable a, Integral a, Bounded a, Show a) => a -> Assertion
+ 
+@@ -50,3 +50,3 @@ testTypes _test = do
+ 
+-test_compareAndSwap :: (AtomicBits a, Storable a, Integral a, Bounded a) => 
++test_compareAndSwap :: (AtomicBits a, Storable a, Integral a, Bounded a, Show a) => 
+              a -> Assertion
+@@ -65,3 +65,3 @@ test_compareAndSwap_all = testTypes test_compareAndSwap
+ 
+-test_compareAndSwapBool :: (AtomicBits a, Storable a, Integral a, Bounded a) => 
++test_compareAndSwapBool :: (AtomicBits a, Storable a, Integral a, Bounded a, Show a) => 
+              a -> Assertion
+@@ -80,3 +80,3 @@ test_compareAndSwapBool_all = testTypes test_compareAndSwapBool
+ 
+-test_fetchAndAdd :: (AtomicBits a, Storable a, Integral a, Bounded a) => 
++test_fetchAndAdd :: (AtomicBits a, Storable a, Integral a, Bounded a, Show a) => 
+                  a -> Assertion
+@@ -98,3 +98,3 @@ test_fetchAndAdd_all = testTypes test_fetchAndAdd
+ 
+-test_fetchAndSub :: (AtomicBits a, Storable a, Integral a, Bounded a) => 
++test_fetchAndSub :: (AtomicBits a, Storable a, Integral a, Bounded a, Show a) => 
+                  a -> Assertion
+@@ -115,3 +115,3 @@ test_fetchAndSub_all = testTypes test_fetchAndSub
+ 
+-test_fetchAndXor :: (AtomicBits a, Storable a, Integral a, Bounded a) => 
++test_fetchAndXor :: (AtomicBits a, Storable a, Integral a, Bounded a, Show a) => 
+                  a -> Assertion
+@@ -127,3 +127,3 @@ test_fetchAndXor_all = testTypes test_fetchAndXor
+ 
+-test_subAndFetch :: (AtomicBits a, Storable a, Integral a, Bounded a) => 
++test_subAndFetch :: (AtomicBits a, Storable a, Integral a, Bounded a, Show a) => 
+                  a -> Assertion
+@@ -140,3 +140,3 @@ test_subAndFetch_all = testTypes test_subAndFetch
+ 
+-test_lockTestRelease :: (AtomicBits a, Storable a, Integral a, Bounded a) => 
++test_lockTestRelease :: (AtomicBits a, Storable a, Integral a, Bounded a, Show a) => 
+                  a -> Assertion

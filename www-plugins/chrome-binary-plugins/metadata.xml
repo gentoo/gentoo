@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>chromium</herd>
-	<maintainer>
+	<maintainer type="person">
 		<email>floppym@gentoo.org</email>
 		<name>Mike Gilbert</name>
 	</maintainer>
-	<maintainer>
+	<maintainer type="person">
 		<email>zx2c4@gentoo.org</email>
 		<name>Jason A. Donenfeld</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>chromium@gentoo.org</email>
+		<name>Chromium in Gentoo Project</name>
 	</maintainer>
 	<use>
 		<flag name="flash">Install Chrome's native Pepper Flash</flag>

@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer>
+	<maintainer type="person">
 		<email>lxnay@gentoo.org</email>
 		<name>Fabio Erculiani</name>
 	</maintainer>
 	<use>
-		<flag name='matter'>Pull in app-admin/matter</flag>
+		<flag name="matter">Pull in app-admin/matter</flag>
 	</use>
 </pkgmetadata>
-

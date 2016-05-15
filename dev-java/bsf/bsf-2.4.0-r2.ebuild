@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -12,20 +12,31 @@ HOMEPAGE="http://commons.apache.org/bsf/"
 SRC_URI="mirror://apache/jakarta/bsf/source/${PN}-src-${PV}.tar.gz"
 LICENSE="Apache-2.0"
 SLOT="2.3"
-KEYWORDS="amd64 x86 ~x86-fbsd ~x64-freebsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="amd64 x86 ppc64 ~x86-fbsd ~x64-freebsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 
 # If you add new ones, add them to ant-apache-bsf too for use dependencies
 IUSE="javascript python tcl"
 
-CDEPEND="dev-java/commons-logging:0
+CDEPEND="
+	python? (
+		dev-java/jython:2.7
+	)
+	javascript? (
+		dev-java/rhino:1.6
+	)
+	tcl? (
+		dev-java/jacl:0
+	)
 	dev-java/xalan:0
-	python? ( dev-java/jython:2.7 )
-	javascript? ( dev-java/rhino:1.6 )
-	tcl? ( dev-java/jacl:0 )"
-RDEPEND=">=virtual/jre-1.6
-	${CDEPEND}"
-DEPEND=">=virtual/jdk-1.6
-	${CDEPEND}"
+	dev-java/commons-logging:0"
+
+RDEPEND="
+	${CDEPEND}
+	>=virtual/jre-1.6"
+
+DEPEND="
+	${CDEPEND}
+	>=virtual/jdk-1.6"
 
 JAVA_ANT_REWRITE_CLASSPATH="yes"
 

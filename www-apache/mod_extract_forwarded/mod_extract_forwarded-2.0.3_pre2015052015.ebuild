@@ -12,7 +12,7 @@ SRC_URI="https://dev.gentoo.org/~pacho/maintainer-needed/${P}.tar.xz"
 
 LICENSE="Apache-1.1"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="mod_proxy"
 
 DEPEND=""

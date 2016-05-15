@@ -15,7 +15,7 @@ KEYWORDS="amd64 ~arm ppc ppc64 x86 ~amd64-linux ~x86-linux"
 IUSE="debug tidy"
 
 DEPEND="
-	$(add_kdebase_dep kdepimlibs)
+	$(add_kdeapps_dep kdepimlibs)
 	tidy? ( app-text/htmltidy )
 "
 RDEPEND="${DEPEND}"

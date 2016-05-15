@@ -14,7 +14,7 @@
  				if (t<0) t=themecount;
  				strncpy(val,themelist[(t-1)%themecount],MAXMENUVALUELENGTH);
 -				snprintf(options.theme,MAXMENUVALUELENGTH,themelist[(t-1)%themecount]);
-+				snprintf(options.theme,MAXTHEMENAMELENGTH,themelist[(t-1)%themecount]);
++				snprintf(options.theme,MAXTHEMENAMELENGTH,"%s",themelist[(t-1)%themecount]);
  			}
  			
  			settheme(options.theme);

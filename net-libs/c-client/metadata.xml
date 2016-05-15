@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-    <herd>net-mail</herd>
+    <maintainer type="project">
+		<email>net-mail@gentoo.org</email>
+		<name>Net-Mail</name>
+    </maintainer>
 	<use>
 		<flag name="doc">Install RFCs related to IMAP</flag>
-		<flag name='topal'>Enable support for <pkg>net-mail/topal</pkg>
+		<flag name="topal">Enable support for <pkg>net-mail/topal</pkg>
 		for use with <pkg>mail-client/alpine</pkg></flag>
-		<flag name='chappa'>Enable Eduardo Chappa's patches for use with
+		<flag name="chappa">Enable Eduardo Chappa's patches for use with
 		<pkg>mail-client/alpine</pkg> (mainly adds support for maildir)</flag>
 	</use>
 </pkgmetadata>

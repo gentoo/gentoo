@@ -1,0 +1,56 @@
+From c689bcafd3196aad22372e8056fe0ccb13c15f35 Mon Sep 17 00:00:00 2001
+From: Heiko Becker <heirecka@exherbo.org>
+Date: Fri, 12 Feb 2016 12:37:15 +0100
+Subject: Search for libsystemd first, fall back to libsystemd-journal
+
+systemd >= 209 merged the individual libraries libsystemd-journal,
+libsystemd-login, libsystemd-id128 and libsystemd-daemon into
+a single library, libsystemd. To ease the transition one could pass
+an option to its build to generate stub libraries and matching
+pkg-config files. With systemd >= 229 this option has now been
+removed, causing the build to fail when the journald option is
+enabled.
+
+Change-Id: I26670f207f1a9e79c16be5ce8c8a49353143c5ba
+Reviewed-by: Oswald Buddenhagen <oswald.buddenhagen@theqtcompany.com>
+Reviewed-by: Robin Burchell <robin.burchell@viroteck.net>
+---
+ config.tests/unix/journald/journald.pro | 6 +++++-
+ src/corelib/global/global.pri           | 5 ++++-
+ 2 files changed, 9 insertions(+), 2 deletions(-)
+
+diff --git a/config.tests/unix/journald/journald.pro b/config.tests/unix/journald/journald.pro
+index 2bb50ce..ea76564 100644
+--- a/config.tests/unix/journald/journald.pro
++++ b/config.tests/unix/journald/journald.pro
+@@ -1,6 +1,10 @@
+ SOURCES = journald.c
+ 
+ CONFIG += link_pkgconfig
+-PKGCONFIG_PRIVATE += libsystemd-journal
++
++packagesExist(libsystemd): \
++    PKGCONFIG_PRIVATE += libsystemd
++else: \
++    PKGCONFIG_PRIVATE += libsystemd-journal
+ 
+ CONFIG -= qt
+diff --git a/src/corelib/global/global.pri b/src/corelib/global/global.pri
+index aa4945f..dd84695 100644
+--- a/src/corelib/global/global.pri
++++ b/src/corelib/global/global.pri
+@@ -53,7 +53,10 @@ slog2 {
+ 
+ journald {
+     CONFIG += link_pkgconfig
+-    PKGCONFIG_PRIVATE += libsystemd-journal
++    packagesExist(libsystemd): \
++        PKGCONFIG_PRIVATE += libsystemd
++    else: \
++        PKGCONFIG_PRIVATE += libsystemd-journal
+     DEFINES += QT_USE_JOURNALD
+ }
+ 
+-- 
+2.8.1
+

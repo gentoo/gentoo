@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>haskell</herd>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
 	<longdescription>
 		Chell is a simple and intuitive library for automated testing. It natively
 		supports assertion-based testing, and can use companion libraries
@@ -15,17 +18,17 @@
 		import Test.Chell
 		
 		tests_Math :: Suite
-		tests_Math = suite \&quot;math\&quot;
+		tests_Math = suite \"math\"
 		&amp;#x20;   test_Addition
 		&amp;#x20;   test_Subtraction
 		
 		test_Addition :: Test
-		test_Addition = assertions \&quot;addition\&quot; $ do
+		test_Addition = assertions \"addition\" $ do
 		&amp;#x20;   $expect (equal (2 + 1) 3)
 		&amp;#x20;   $expect (equal (1 + 2) 3)
 		
 		test_Subtraction :: Test
-		test_Subtraction = assertions \&quot;subtraction\&quot; $ do
+		test_Subtraction = assertions \"subtraction\" $ do
 		&amp;#x20;   $expect (equal (2 - 1) 1)
 		&amp;#x20;   $expect (equal (1 - 2) (-1))
 		

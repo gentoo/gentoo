@@ -30,7 +30,7 @@ else
 fi
 
 LICENSE="kvirc"
-SLOT="4"
+SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="audiofile +dbus dcc_video +dcc_voice debug doc gsm +ipc ipv6 kde +nls oss +perl +phonon profile +python spell +ssl theora +transparency webkit"
 
@@ -102,7 +102,6 @@ src_configure() {
 		-DLIB_SUFFIX=${libdir#lib}
 		-DMANUAL_REVISION=${KVIRC_GIT_REVISION}
 		-DMANUAL_SOURCES_DATE=${KVIRC_GIT_SOURCES_DATE//-/}
-		-DWANT_COEXISTENCE=1
 		-DWANT_CRYPT=1
 		-DWANT_ENV_FLAGS=1
 		-DWANT_VERBOSE=1

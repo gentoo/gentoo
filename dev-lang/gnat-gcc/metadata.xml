@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>ada</herd>
+<maintainer type="project">
+    <email>ada@gentoo.org</email>
+    <name>Gentoo Resources for Ada</name>
+  </maintainer>
   <use>
     <flag name="lto">Add support for link-time optimizations (unsupported, use
       at your own risk).</flag>

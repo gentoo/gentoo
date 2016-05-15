@@ -58,6 +58,7 @@ DEPEND="${DEPEND_COMMON}
 src_prepare() {
 	epatch "${FILESDIR}"/${PN}-1.1.4-mtab-sym.patch
 	epatch "${FILESDIR}"/${PN}-1.2.8-cross-build.patch
+	epatch "${FILESDIR}"/${PN}-1.3.3-sysmacros.patch #579884
 
 	sed \
 		-e "/^sbindir/s:= := \"${EPREFIX}\":g" \

@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>gnustep</herd>
+<maintainer type="project">
+	<email>gnustep@gentoo.org</email>
+	<name>Gentoo GNUstep Project</name>
+</maintainer>
 <longdescription>
 Affiche is a little application that allows people to "stick" little notes on their computer desktop. It works well under GNUstep and under Apple Mac OS X.
 

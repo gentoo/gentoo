@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>java</herd>
+  <maintainer type="project">
+    <email>java@gentoo.org</email>
+    <name>Java</name>
+  </maintainer>
   <longdescription>This project contains Jackson extension component for reading and writing YAML encoded data. SnakeYAML library is used for low-level YAML parsing. This project adds necessary abstractions on top to make things work with other Jackson functionality.</longdescription>
   <upstream>
     <remote-id type="github">FasterXML/jackson-dataformat-yaml</remote-id>

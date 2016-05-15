@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer>
+	<maintainer type="project">
 		<email>prefix@gentoo.org</email>
 	</maintainer>
 	<use>
-		<flag name='prefix-chaining'>install in a chained Prefix environment</flag>
+		<flag name="prefix-chaining">install in a chained Prefix environment</flag>
 	</use>
 </pkgmetadata>

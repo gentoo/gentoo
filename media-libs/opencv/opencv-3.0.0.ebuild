@@ -1,11 +1,11 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
-PYTHON_COMPAT=( python{2_7,3_2,3_3,3_4} )
+PYTHON_COMPAT=( python{2_7,3_3,3_4} )
 
-inherit base toolchain-funcs cmake-utils python-single-r1 java-pkg-opt-2 java-ant-2
+inherit toolchain-funcs cmake-utils python-single-r1 java-pkg-opt-2 java-ant-2
 
 DESCRIPTION="A collection of algorithms and sample code for various computer vision problems"
 HOMEPAGE="http://opencv.org"
@@ -84,17 +84,14 @@ DEPEND="${RDEPEND}
 	java? ( >=virtual/jdk-1.6 )
 "
 
-PATCHES=(
-	"${FILESDIR}/${P}-gles.patch"
-)
-
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
 	java-pkg-opt-2_pkg_setup
 }
 
 src_prepare() {
-	base_src_prepare
+	epatch "${FILESDIR}/${P}-gles.patch" \
+		"${FILESDIR}/${P}-git-autodetect.patch"
 
 	# remove bundled stuff
 	rm -rf 3rdparty
@@ -103,7 +100,9 @@ src_prepare() {
 		CMakeLists.txt cmake/*cmake || die
 
 	#removing broken sample bug #558104
-	rm ../opencv_contrib-master/modules/ximgproc/samples/disparity_filtering.cpp
+	if use contrib; then
+		rm ../opencv_contrib-master/modules/ximgproc/samples/disparity_filtering.cpp || die
+	fi
 
 	java-pkg-opt-2_src_prepare
 }

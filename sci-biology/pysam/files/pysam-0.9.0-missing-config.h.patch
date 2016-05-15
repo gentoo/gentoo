@@ -1,0 +1,40 @@
+From 55f5d8ce51ad999123a779f31fcf0fecd60de9e6 Mon Sep 17 00:00:00 2001
+From: Andreas Heger <andreas.heger@gmail.com>
+Date: Mon, 21 Mar 2016 21:10:04 +0000
+Subject: [PATCH] {AH} create empty config.h for samtools if it does not exist,
+ fixes #245
+
+---
+ setup.py | 12 +++++++++++-
+ 1 file changed, 11 insertions(+), 1 deletion(-)
+
+diff --git a/setup.py b/setup.py
+index 7b59b69..2f00c37 100644
+--- a/setup.py
++++ b/setup.py
+@@ -155,7 +155,7 @@ def run_configure(option):
+             outf.write(
+                 "/* empty config.h created by pysam */\n")
+             outf.write(
+-                "/* conservative compilation options */")
++                "/* conservative compilation options */\n")
+ 
+ if HTSLIB_LIBRARY_DIR:
+     # linking against a shared, externally installed htslib version, no
+@@ -259,6 +259,16 @@ def run_configure(option):
+                "adding shared libcurl and libcrypto")
+         external_htslib_libraries.extend(["curl", "crypto"])
+ 
++# create empty config.h files if they have not been created automatically
++# or created by the user:
++for fn in "samtools/config.h", "htslib/config.h":
++    if not os.path.exists(fn):
++        with open(fn, "w") as outf:
++            outf.write(
++                "/* empty config.h created by pysam */\n")
++            outf.write(
++                "/* conservative compilation options */\n")
++
+ parts = ["samtools",
+          "bcftools",
+          "htslib",

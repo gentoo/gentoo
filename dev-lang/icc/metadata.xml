@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>sci</herd>
+  <maintainer type="project">
+    <email>sci@gentoo.org</email>
+    <name>Gentoo Science Project</name>
+  </maintainer>
   <longdescription lang="en">
   The Intel® C++ Compiler is a full featured C/C++ compiler for Intel
   based architectures. The compiler supports multi-threading, automatic
@@ -10,7 +13,4 @@
   documentation. The product can be installed as a non-commercial as
   well. License, terms of qualifications can be found on the web site.
 </longdescription>
-  <use>
-    <flag name="eclipse">Install the <pkg>dev-util/eclipse-sdk</pkg> plugins</flag>
-  </use>
 </pkgmetadata>

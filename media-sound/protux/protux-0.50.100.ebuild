@@ -1,4 +1,4 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -11,7 +11,7 @@ SRC_URI="http://${PN}.sourceforge.net/releases/${P}.tar.gz"
 IUSE="source"
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~ppc x86"
+KEYWORDS="~amd64 x86"
 
 DEPEND=">=virtual/jdk-1.5
 	source? ( app-arch/zip )"

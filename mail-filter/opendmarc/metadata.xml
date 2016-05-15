@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>net-mail</herd>
-	<maintainer>
+	<maintainer type="person">
 		<email>grobian@gentoo.org</email>
+	</maintainer>
+	<maintainer type="project">
+		<email>net-mail@gentoo.org</email>
+		<name>Net-Mail</name>
 	</maintainer>
 	<upstream>
 		<remote-id type="sourceforge">opendmarc</remote-id>
 	</upstream>
 	<use>
-		<flag name='spf'>Use the <pkg>mail-filter/libspf2</pkg>
+		<flag name="spf">Use the <pkg>mail-filter/libspf2</pkg>
 			for Sender Policy Framework checking</flag>
 	</use>
 </pkgmetadata>

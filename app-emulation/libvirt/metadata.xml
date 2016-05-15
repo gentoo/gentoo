@@ -1,23 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer>
+<maintainer type="person">
 	<email>tamiko@gentoo.org</email>
 	<name>Matthias Maier</name>
 	<description>Please assign bugs to me</description>
 </maintainer>
-<maintainer>
-	<email>cardoe@gentoo.org</email>
-	<name>Doug Goldstein</name>
+<maintainer type="project">
+	<email>virtualization@gentoo.org</email>
+	<name>Gentoo Virtualization Project</name>
 </maintainer>
-<herd>virtualization</herd>
 <use>
 	<!-- Pool backend flags -->
 	<flag name="iscsi">
 		Allow using an iSCSI remote storage server as pool for disk image storage
 	</flag>
 	<flag name="lvm">
-		Allow using the Logical Volume Manager (<pkg>sys-apps/lvm2</pkg>) as pool for disk image
+		Allow using the Logical Volume Manager (<pkg>sys-fs/lvm2</pkg>) as pool for disk image
 		storage
 	</flag>
 	<flag name="nfs">
@@ -48,7 +47,7 @@
 	</flag>
 	<flag name="virtualbox">
 		Support management of VirtualBox virtualisation (one of <pkg>app-emulation/virtualbox</pkg> or
-		<pkg>app-emulation/virtualbox-ose</pkg>)
+		<pkg>app-emulation/virtualbox-bin</pkg>)
 	</flag>
 	<flag name="phyp">
 		Support IBM HMC / IVM hypervisor via PHYP protocol

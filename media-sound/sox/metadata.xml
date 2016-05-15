@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>sound</herd>
+  <maintainer type="project">
+    <email>sound@gentoo.org</email>
+    <name>Gentoo Sound project</name>
+  </maintainer>
   <use>
     <flag name="amr">Enables Adaptive Multi-Rate Audio support</flag>
     <flag name="id3tag">Enables ID3 tagging with id3tag library</flag>

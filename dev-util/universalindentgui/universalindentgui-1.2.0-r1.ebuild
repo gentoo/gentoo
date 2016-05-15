@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -30,7 +30,7 @@ RDEPEND="${DEPEND}
 		app-text/htmltidy
 		perl? ( dev-lang/perl )
 	)
-	perl? ( dev-perl/perltidy )
+	perl? ( dev-perl/Perl-Tidy )
 	php? ( dev-php/PEAR-PHP_Beautifier )
 	ruby? ( dev-lang/ruby )
 	xml? ( dev-util/xmlindent )

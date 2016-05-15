@@ -1,0 +1,75 @@
+--- icon-v951src/ipl/cfuncs/Makefile
++++ icon-v951src/ipl/cfuncs/Makefile
+@@ -25,7 +25,7 @@
+ # library
+ 
+ $(FUNCLIB):	$(FUNCS) mklib.sh
+-		CC="$(CC)" CFLAGS="$(CFLAGS)" BIN="../../bin" \
++		CC="$(CC)" CFLAGS="$(CFLAGS)" LDFLAGS="$(LDFLAGS)" BIN="../../bin" \
+ 		    sh mklib.sh $(FUNCLIB) $(FUNCS)
+ $(FUNCS):	icall.h
+ 
+--- icon-v951src/ipl/cfuncs/mklib.sh
++++ icon-v951src/ipl/cfuncs/mklib.sh
+@@ -12,7 +12,7 @@
+ set -x
+ case "$SYS" in
+    Linux*|*BSD*|GNU*)
+-      $CC -shared -o $LIBNAME -fPIC "$@";;
++      $CC -shared -o $LIBNAME $CFLAGS $LDFLAGS -fPIC "$@";;
+    CYGWIN*)
+       # move the win32 import library for iconx.exe callbacks
+       # created when iconx.exe was built
+--- icon-v951src/ipl/packs/loadfunc/Makefile
++++ icon-v951src/ipl/packs/loadfunc/Makefile
+@@ -28,7 +28,7 @@
+ 		echo '$$define FUNCLIB "./$(FUNCLIB)"'	>libnames.icn
+ 
+ $(FUNCLIB):	$(FUNCS)
+-		CC="$(CC)" CFLAGS="$(CFLAGS)" BIN="../../../bin" \
++		CC="$(CC)" CFLAGS="$(CFLAGS)" LDFLAGS="$(LDFLAGS)" BIN="../../../bin" \
+ 			sh $(MKLIB) $(FUNCLIB) $(FUNCS)
+ 
+ 
+--- icon-v951src/src/common/Makefile
++++ icon-v951src/src/common/Makefile
+@@ -8,7 +8,7 @@
+ common:		$(OBJS) gpxmaybe
+ 
+ patchstr:	patchstr.c
+-		$(CC) $(CFLAGS) -o patchstr patchstr.c
++		$(CC) $(CFLAGS) $(LDFLAGS) -o patchstr patchstr.c
+ 
+ gpxmaybe:
+ 		-if [ "x$(XL)" != "x" ]; then $(MAKE) $(GDIR); fi
+@@ -25,7 +25,7 @@
+ 	  ../h/typedefs.h ../h/mproto.h ../h/cpuconf.h
+ 
+ ../h/arch.h:	infer.c
+-		$(CC) $(CFLAGS) -o infer infer.c
++		$(CC) $(CFLAGS) $(LDFLAGS) -o infer infer.c
+ 		./infer >../h/arch.h
+ 
+ identify.o: ../h/version.h
+--- icon-v951src/src/rtt/Makefile
++++ icon-v951src/src/rtt/Makefile
+@@ -22,7 +22,7 @@
+ 
+ 
+ rtt:	$(OBJ)
+-	$(CC) $(LDFLAGS) -o rtt $(OBJ)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o rtt $(OBJ)
+ 
+ library:	$(OBJ)
+ 		rm -rf rtt.a
+--- icon-v951src/src/runtime/Makefile
++++ icon-v951src/src/runtime/Makefile
+@@ -30,7 +30,7 @@
+ 
+ iconx: $(COBJS) $(XOBJS)
+ 	cd ../common; $(MAKE)
+-	$(CC) $(RLINK) -o iconx $(XOBJS) $(COBJS) $(XL) $(RLIBS) $(TLIBS)
++	$(CC) $(CFLAGS) $(LDFLAGS) $(RLINK) -o iconx $(XOBJS) $(COBJS) $(XL) $(RLIBS) $(TLIBS)
+ 	cp iconx ../../bin
+ 	strip $(SFLAGS) ../../bin/iconx$(EXE)
+ 

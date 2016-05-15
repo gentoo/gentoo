@@ -1,5 +1,5 @@
---- unix/Makefile.in
-+++ unix/Makefile.in
+--- a/unix/Makefile.in
++++ b/unix/Makefile.in
 @@ -468,7 +468,7 @@
  
  AQUA_HDRS = $(MAC_OSX_DIR)/tkMacOSX.h $(GENERIC_DIR)/tkIntXlibDecls.h

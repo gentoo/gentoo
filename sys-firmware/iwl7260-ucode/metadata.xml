@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer>
+  <maintainer type="person">
     <email>gienah@gentoo.org</email>
     <description>Feel free to bump and add yourself to the maintainer list,
     please bump sys-firmware/iwl3160-ucode and maybe

@@ -1,0 +1,40 @@
+diff --git a/src/Docks/GeoImageDock.cpp b/src/Docks/GeoImageDock.cpp
+index c05d09f..6afbfa8 100644
+--- a/src/Docks/GeoImageDock.cpp
++++ b/src/Docks/GeoImageDock.cpp
+@@ -12,13 +12,13 @@
+ #include <zbar/QZBarImage.h>
+ #endif
+ 
+-#include <QtWidgets/QInputDialog>
+-#include <QtWidgets/QMessageBox>
+-#include <QtWidgets/QProgressDialog>
++#include <QtGui/QInputDialog>
++#include <QtGui/QMessageBox>
++#include <QtGui/QProgressDialog>
+ #include <QtGui/QClipboard>
+-#include <QtWidgets/QRadioButton>
+-#include <QtWidgets/QTimeEdit>
+-#include <QtWidgets/QDialogButtonBox>
++#include <QtGui/QRadioButton>
++#include <QtGui/QTimeEdit>
++#include <QtGui/QDialogButtonBox>
+ #include <QFileDialog>
+ 
+ #include <QNetworkAccessManager>
+diff --git a/src/Docks/GeoImageDock.h b/src/Docks/GeoImageDock.h
+index ab7bbf6..a2606b0 100644
+--- a/src/Docks/GeoImageDock.h
++++ b/src/Docks/GeoImageDock.h
+@@ -4,9 +4,9 @@
+ #include "Document.h"
+ 
+ #include <QtGui/QPainter>
+-#include <QtWidgets/QDockWidget>
++#include <QtGui/QDockWidget>
+ #include <QtGui/QMouseEvent>
+-#include <QtWidgets/QShortcut>
++#include <QtGui/QShortcut>
+ #include <exiv2/image.hpp>
+ #include <exiv2/exif.hpp>
+ 

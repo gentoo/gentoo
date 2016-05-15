@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>proxy-maintainers</herd>
-	<maintainer>
+	<maintainer type="person">
 		<email>ThyArmageddon+Gentoo@Gmail.com</email>
 		<name>Elijah El Lazkani</name>
 	</maintainer>
-	<maintainer>
+	<maintainer type="person">
 		<email>tampakrap@gentoo.org</email>
 		<name>Theo Chatzimichos</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
 		SubDownloader is a program for automatic download/upload subtitles for

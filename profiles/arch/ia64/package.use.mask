@@ -2,6 +2,26 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# Justin Lecher <jlec@gentoo.org> (22 Feb 2016)
+# Missing test deps keyword #575366
+dev-cpp/eigen test
+
+# Mike Frysinger <vapier@gentoo.org> (21 Feb 2016)
+# Needs arch love for elementary. #575322
+media-libs/elementary javascript
+
+# Pacho Ramos <pacho@gentoo.org> (31 Jan 2016)
+# Missing keywords, bug #560382
+media-video/ffmpeg snappy
+
+# Michael Weber <xmw@gentoo.org> (09 Jan 2016)
+# no ia64 support in media-libs/glfw
+app-text/mupdf opengl
+
+# Mike Frysinger <vapier@gentoo.org> (22 Dec 2015)
+# Needs keywording. #569254
+net-firewall/iptables nftables
+
 # Justin Lecher <jlec@gentoo.org> (18 Nov 2015)
 # requires dev-python/restkit which requires
 # dev-python/socketpool which requires dev-python/gevent which requires
@@ -112,10 +132,6 @@ x11-drivers/xf86-video-ati glamor
 # Christoph Junghans <ottxor@gentoo.org> (21 Jul 2014)
 # Missing keywords on sci-libs/libcerf (bug 517726)
 sci-visualization/gnuplot libcerf
-
-# Markos Chandras <hwoarang@gentoo.org> (26 Apr 2014)
-# dev-libs/jansson is not keyworded for ia64. Bug #507428
-app-admin/ulogd json
 
 # Pacho Ramos <pacho@gentoo.org> (12 Apr 2014)
 # Missing keywords, bug #507490

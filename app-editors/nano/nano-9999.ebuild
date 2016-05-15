@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -6,8 +6,8 @@ EAPI="5"
 
 inherit eutils flag-o-matic
 if [[ ${PV} == "9999" ]] ; then
-	ESVN_REPO_URI="svn://svn.savannah.gnu.org/nano/trunk/nano"
-	inherit subversion autotools
+	EGIT_REPO_URI="git://git.sv.gnu.org/nano.git"
+	inherit git-r3 autotools
 else
 	MY_P=${PN}-${PV/_}
 	SRC_URI="http://www.nano-editor.org/dist/v${PV:0:3}/${MY_P}.tar.gz"

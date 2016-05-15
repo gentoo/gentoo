@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>gnome</herd>
+<maintainer type="project">
+	<email>gnome@gentoo.org</email>
+	<name>Gentoo GNOME Desktop</name>
+</maintainer>
 <use>
-	<flag name='fat'>Include FAT16/FAT32 support
+	<flag name="fat">Include FAT16/FAT32 support
 		(<pkg>sys-fs/dosfstools</pkg>)</flag>
 </use>
 </pkgmetadata>

@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>scheme</herd>
+<maintainer type="project">
+  <email>scheme@gentoo.org</email>
+  <name>Gentoo Scheme Project</name>
+</maintainer>
 <longdescription lang="en">
   Kawa is a full Scheme implementation. It implements almost all of R5RS,
   plus some extensions. By default, symbols are case sensitive. It is
@@ -10,18 +13,18 @@
   compiled code runs at reasonable speed.
 </longdescription>
 <use>
-  <flag name='awt'>Assume AWT is available</flag>
-  <flag name='echo2'>Enable support for the Echo2 web toolkit with
+  <flag name="awt">Assume AWT is available</flag>
+  <flag name="echo2">Enable support for the Echo2 web toolkit with
     <pkg>dev-java/echo2</pkg></flag>
-  <flag name='frontend'>Build "kawa" front-end program using
+  <flag name="frontend">Build "kawa" front-end program using
     <pkg>sys-libs/readline</pkg></flag> 
-  <flag name='jemacs'>Build JEmacs</flag>
-  <flag name='krl'>Build BRL emulation and KRL</flag>
-  <flag name='sax'>Assume SAX2 is available with <pkg>dev-java/sax</pkg></flag>
-  <flag name='servlets'>Build support for generating servlets with
+  <flag name="jemacs">Build JEmacs</flag>
+  <flag name="krl">Build BRL emulation and KRL</flag>
+  <flag name="sax">Assume SAX2 is available with <pkg>dev-java/sax</pkg></flag>
+  <flag name="servlets">Build support for generating servlets with
     <pkg>dev-java/servletapi</pkg></flag>
-  <flag name='swing'>Assume Swing is available</flag>
-  <flag name='swt'>Assume SWT is available with <pkg>dev-java/swt</pkg></flag>
-  <flag name='xqtests'>Support XQuery Test Suite</flag>
+  <flag name="swing">Assume Swing is available</flag>
+  <flag name="swt">Assume SWT is available with <pkg>dev-java/swt</pkg></flag>
+  <flag name="xqtests">Support XQuery Test Suite</flag>
 </use>
 </pkgmetadata>

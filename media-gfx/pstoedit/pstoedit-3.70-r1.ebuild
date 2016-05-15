@@ -16,7 +16,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd ~x8
 IUSE="emf flash imagemagick plotutils pptx static-libs"
 
 RDEPEND="
-	>=media-libs/gd-2.0.35-r1
+	>=media-libs/gd-2.0.35-r1:=
 	>=app-text/ghostscript-gpl-8.71-r1
 	emf? ( >=media-libs/libemf-1.0.3 )
 	flash? ( >=media-libs/ming-0.4.3 )

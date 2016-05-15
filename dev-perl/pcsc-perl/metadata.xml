@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>crypto</herd>
+	<maintainer type="project">
+		<email>crypto@gentoo.org</email>
+		<name>Crypto</name>
+	</maintainer>
 	<longdescription>A Perl Module for PC/SC SmartCard access (required for pcsc_scan and the gscriptor GUI).</longdescription>
 </pkgmetadata>

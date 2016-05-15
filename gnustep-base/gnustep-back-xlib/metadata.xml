@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>gnustep</herd>
+<maintainer type="project">
+	<email>gnustep@gentoo.org</email>
+	<name>Gentoo GNUstep Project</name>
+</maintainer>
 <longdescription>
 It is a back-end component for the GNUstep GUI Library.  The
 implementation of the GNUstep GUI Library is designed in two parts.  The
@@ -20,6 +23,6 @@ DPS functions required by the front-end system.
 This package installs a backend that supports X11.
 </longdescription>
 <use>
-	<flag name='xim'>Enable X11 XiM input method</flag>
+	<flag name="xim">Enable X11 XiM input method</flag>
 </use>
 </pkgmetadata>

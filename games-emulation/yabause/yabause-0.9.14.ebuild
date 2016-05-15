@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -28,7 +28,7 @@ RDEPEND="
 	)
 	qt5? (
 		dev-qt/qtcore:5
-		dev-qt/qtwidgets:5[opengl?]
+		dev-qt/qtwidgets:5
 		opengl? ( dev-qt/qtopengl:5 )
 	)
 	!qt5? (

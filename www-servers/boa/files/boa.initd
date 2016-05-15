@@ -1,0 +1,29 @@
+#!/sbin/openrc-run
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+# NB: Standard config is in /etc/boa/boa.conf
+# NB: Arguments to pass to boa are in /etc/conf.d/boa
+
+command=/usr/sbin/boa
+command_args="${BOA_OPTS}"
+pidfile="/run/boa.pid"
+
+depend() {
+	need net
+}
+
+start_pre() {
+	if [ -e /etc/conf.d/boa ] && [ -n "${BOA_OPTS}" ]; then
+		SR="$(echo ${BOA_OPTS} | awk '{ FS = " " } { print $2 }')"
+	else
+		SR=/etc/boa
+	fi
+
+	if [ ! -e ${SR}/boa.conf ] ; then
+		eerror "You need a ${SR}/boa.conf to run Boa"
+		eerror "There is a sample file in /usr/share/docs/boa"
+		return 1
+	fi
+}

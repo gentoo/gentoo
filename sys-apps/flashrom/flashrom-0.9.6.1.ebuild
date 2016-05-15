@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -26,7 +26,7 @@ nicnatsemi nicrealtek +ogp_spi rayer_spi
 COMMON_DEPEND="atahpt? ( sys-apps/pciutils )
 	dediprog? ( virtual/libusb:0 )
 	drkaiser? ( sys-apps/pciutils )
-	ft2232_spi? ( dev-embedded/libftdi )
+	ft2232_spi? ( dev-embedded/libftdi:0 )
 	gfxnvidia? ( sys-apps/pciutils )
 	internal? ( sys-apps/pciutils )
 	nic3com? ( sys-apps/pciutils )

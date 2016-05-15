@@ -1,0 +1,26 @@
+Index: camlzip-1.05/zip.ml
+===================================================================
+--- camlzip-1.05.orig/zip.ml
++++ camlzip-1.05/zip.ml
+@@ -73,8 +73,6 @@ type out_file =
+     mutable of_entries: entry list;
+     of_comment: string }
+ 
+-exception Error of string * string * string
+-
+ (* Return the position of the last occurrence of s1 in s2, or -1 if not
+    found. *)
+ 
+Index: camlzip-1.05/zlibstubs.c
+===================================================================
+--- camlzip-1.05.orig/zlibstubs.c
++++ camlzip-1.05/zlibstubs.c
+@@ -168,7 +168,7 @@ value camlzip_inflateEnd(value vzs)
+ 
+ value camlzip_update_crc32(value crc, value buf, value pos, value len)
+ {
+-  return caml_copy_int32(crc32((uint32) Int32_val(crc), 
++  return caml_copy_int32(crc32((uint32_t) Int32_val(crc), 
+                           &Byte_u(buf, Long_val(pos)),
+                           Long_val(len)));
+ }

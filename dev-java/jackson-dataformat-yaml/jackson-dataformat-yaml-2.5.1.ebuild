@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -19,7 +19,7 @@ IUSE="test"
 
 CDEPEND="~dev-java/jackson-${PV}:${SLOT}
 	~dev-java/jackson-databind-${PV}:${SLOT}
-	dev-java/snakeyaml:0"
+	>=dev-java/snakeyaml-1.16:0"
 RDEPEND=">=virtual/jre-1.5
 	${CDEPEND}"
 DEPEND=">=virtual/jdk-1.5

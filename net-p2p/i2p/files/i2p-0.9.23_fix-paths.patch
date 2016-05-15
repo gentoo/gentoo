@@ -1,0 +1,102 @@
+diff -Naur a/clients.config b/clients.config
+--- a/clients.config	2016-01-07 00:44:46.721273819 +0100
++++ b/clients.config	2016-01-07 00:44:52.185274122 +0100
+@@ -60,7 +60,7 @@
+ clientApp.4.name=Open Router Console in web browser at startup
+ clientApp.4.args=http://127.0.0.1:7657/
+ clientApp.4.delay=3
+-clientApp.4.startOnLoad=true
++clientApp.4.startOnLoad=false
+ 
+ # BOB bridge
+ clientApp.5.args=
+diff -Naur a/eepget b/eepget
+--- a/eepget	2016-01-07 00:44:46.721273819 +0100
++++ b/eepget	2016-01-07 00:44:52.186274123 +0100
+@@ -1,3 +1,3 @@
+ #!/bin/sh
+-I2P="%INSTALL_PATH"
++I2P="/usr/share/i2p"
+ java -cp "$I2P/lib/i2p.jar" net.i2p.util.EepGet "$@"
+diff -Naur a/i2prouter b/i2prouter
+--- a/i2prouter	2016-01-07 00:44:46.721273819 +0100
++++ b/i2prouter	2016-01-07 00:44:52.188274123 +0100
+@@ -28,20 +28,22 @@
+ # Note that (percent)INSTALL_PATH, (percent)USER_HOME,  and (percent)SYSTEM_java_io_tmpdir
+ # should have been replaced by the izpack installer.
+ # If you did not run the installer, replace them with the appropriate paths.
+-I2P="%INSTALL_PATH"
++USER_HOME="$HOME"
++SYSTEM_java_io_tmpdir="$USER_HOME/.i2p"
++I2P="/usr/share/i2p"
+ if [ "`uname -s`" = "Darwin" ]; then
+-   if [ -d "%USER_HOME/Library/Application Support" ]; then
+-       I2P_CONFIG_DIR="%USER_HOME/Library/Application Support/i2p"
++   if [ -d "$USER_HOME/Library/Application Support" ]; then
++       I2P_CONFIG_DIR="$USER_HOME/Library/Application Support/i2p"
+    else
+-       I2P_CONFIG_DIR="%USER_HOME/.i2p"
++       I2P_CONFIG_DIR="$USER_HOME/.i2p"
+    fi
+ else
+-    I2P_CONFIG_DIR="%USER_HOME/.i2p"
++    I2P_CONFIG_DIR="$USER_HOME/.i2p"
+ fi
+-I2PTEMP="%SYSTEM_java_io_tmpdir"
++I2PTEMP="$SYSTEM_java_io_tmpdir"
+ # PORTABLE installation:
+ # Use the following instead.
+-#I2PTEMP="%INSTALL_PATH"
++#I2PTEMP="/usr/share/i2p"
+ 
+ # Application
+ APP_NAME="i2p"
+diff -Naur a/runplain.sh b/runplain.sh
+--- a/runplain.sh	2016-01-07 00:44:46.721273819 +0100
++++ b/runplain.sh	2016-01-07 00:44:52.189274123 +0100
+@@ -11,8 +11,8 @@
+ # Note that (percent)INSTALL_PATH and (percent)SYSTEM_java_io_tmpdir
+ # should have been replaced by the izpack installer.
+ # If you did not run the installer, replace them with the appropriate path.
+-I2P="%INSTALL_PATH"
+-I2PTEMP="%SYSTEM_java_io_tmpdir"
++I2P="/usr/share/i2p"
++I2PTEMP="$SYSTEM_java_io_tmpdir"
+ 
+ # Having IPv6 enabled can cause problems with certain configurations. Changing the
+ # next value to true may help.
+diff -Naur a/wrapper.config b/wrapper.config
+--- a/wrapper.config	2016-01-07 00:44:46.714273818 +0100
++++ b/wrapper.config	2016-01-07 00:46:24.151279233 +0100
+@@ -60,13 +60,19 @@
+ # classes, or all the classes of i2p.jar, are in a different directory).
+ # Be sure there are no other duplicate classes.
+ #
+-wrapper.java.classpath.1=$INSTALL_PATH/lib/*.jar
++wrapper.java.classpath.1=/usr/share/i2p/lib/*.jar
++wrapper.java.classpath.2=/usr/share/tomcat-jstl-impl/lib/*.jar
++wrapper.java.classpath.3=/usr/share/tomcat-jstl-spec/lib/*.jar
++wrapper.java.classpath.4=/usr/share/java-service-wrapper/lib/*.jar
++wrapper.java.classpath.5=/usr/share/bcprov-1.50/lib/*.jar
++wrapper.java.classpath.6=/usr/share/jrobin/lib/*.jar
+ #  uncomment this to use the system classpath as well (e.g. to get tools.jar)
+ # wrapper.java.classpath.2=%CLASSPATH%
+ 
+ # Java Library Path (location of Wrapper.DLL or libwrapper.so)
+-wrapper.java.library.path.1=$INSTALL_PATH
+-wrapper.java.library.path.2=$INSTALL_PATH/lib
++wrapper.java.library.path.1=/usr/share/i2p
++wrapper.java.library.path.2=/usr/share/i2p/lib
++wrapper.java.library.path.3=/usr/lib/java-service-wrapper
+ 
+ # Java Bits.  On applicable platforms, tells the JVM to run in 32 or 64-bit mode.
+ wrapper.java.additional.auto_bits=TRUE
+@@ -74,7 +80,7 @@
+ # Java Additional Parameters
+ # Numbers must be consecutive (except for stripquotes)
+ wrapper.java.additional.1=-DloggerFilenameOverride=logs/log-router-@.txt
+-wrapper.java.additional.2=-Di2p.dir.base="$INSTALL_PATH"
++wrapper.java.additional.2=-Di2p.dir.base="/usr/share/i2p"
+ wrapper.java.additional.2.stripquotes=TRUE
+ 
+ # Prevent the JVM from exporting stats (and thereby causing hundreds of

@@ -8,8 +8,8 @@ PYTHON_COMPAT=( python{2_7,3_3,3_4,3_5} pypy )
 inherit distutils-r1
 
 DESCRIPTION="A Python module to deal with freedesktop.org specifications"
-HOMEPAGE="http://freedesktop.org/wiki/Software/pyxdg http://cgit.freedesktop.org/xdg/pyxdg/"
-SRC_URI="http://people.freedesktop.org/~takluyver/${P}.tar.gz"
+HOMEPAGE="https://freedesktop.org/wiki/Software/pyxdg https://cgit.freedesktop.org/xdg/pyxdg/"
+SRC_URI="https://people.freedesktop.org/~takluyver/${P}.tar.gz"
 
 LICENSE="LGPL-2"
 SLOT="0"

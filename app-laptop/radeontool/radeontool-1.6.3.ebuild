@@ -7,8 +7,8 @@ inherit eutils toolchain-funcs
 
 DESCRIPTION="Manage the backlight, external video output and registers of ATI Radeon graphics cards"
 
-HOMEPAGE="http://cgit.freedesktop.org/~airlied/radeontool/"
-SRC_URI="http://people.freedesktop.org/~airlied/${PN}/${P}.tar.bz2"
+HOMEPAGE="https://cgit.freedesktop.org/~airlied/radeontool/"
+SRC_URI="https://people.freedesktop.org/~airlied/${PN}/${P}.tar.bz2"
 
 LICENSE="ZLIB"
 SLOT="0"

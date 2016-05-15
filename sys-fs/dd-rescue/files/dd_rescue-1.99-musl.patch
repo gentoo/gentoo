@@ -1,0 +1,90 @@
+--- a/ffs.h	2016-02-09 03:37:14.422639513 +0000
++++ b/ffs.h	2016-02-09 03:38:59.843641094 +0000
+@@ -27,7 +27,8 @@
+ #ifdef HAVE_ENDIAN_H
+ #include <endian.h>
+ #endif
+-
++/* __WORDSIZE */
++#include <sys/reg.h>
+ 
+ #ifdef HAVE_FFS
+ # define myffs(x) ffs(x)
+--- a/fiemap.h	2016-02-09 03:45:05.550646582 +0000
++++ b/fiemap.h	2016-02-09 03:45:56.683647349 +0000
+@@ -31,3 +31,4 @@
+ 
+ #endif	/* _FIEMAPH */
+ 
++#include <sys/reg.h>
+--- a/libddr_hash.c	2016-02-09 03:49:16.334650345 +0000
++++ b/libddr_hash.c	2016-02-09 03:50:01.309651020 +0000
+@@ -32,6 +32,7 @@
+ #include <errno.h>
+ #include <unistd.h>
+ #include <fcntl.h>
++#include <sys/reg.h>
+ 
+ #include <netinet/in.h>	/* For ntohl/htonl */
+ #include <endian.h>
+--- a/libddr_lzo.c	2016-02-09 03:52:31.775653278 +0000
++++ b/libddr_lzo.c	2016-02-09 03:52:53.537653604 +0000
+@@ -26,6 +26,7 @@
+ #include <errno.h>
+ #include <netinet/in.h>
+ #include <sys/stat.h>
++#include <sys/reg.h>
+ #include <signal.h>
+ #include <lzo/lzo1x.h>
+ #include <lzo/lzo1y.h>
+--- a/libddr_null.c	2016-02-09 03:54:04.110654663 +0000
++++ b/libddr_null.c	2016-02-09 03:54:18.018654872 +0000
+@@ -10,6 +10,7 @@
+ #include "ddr_ctrl.h"
+ #include <string.h>
+ #include <stdlib.h>
++#include <sys/reg.h>
+ 
+ /* fwd decl */
+ extern ddr_plugin_t ddr_plug;
+--- a/sha512.h	2016-02-09 03:55:33.209656000 +0000
++++ b/sha512.h	2016-02-09 03:56:39.923657001 +0000
+@@ -2,6 +2,8 @@
+ #define _SHA512_H
+ 
+ #include "hash.h"
++/* __WORDSIZE */
++#include <sys/reg.h>
+ 
+ void sha512_init(hash_t *ctx);
+ void sha384_init(hash_t *ctx);
+--- a/fmt_no.h	2016-02-09 04:52:13.760707026 +0000
++++ b/fmt_no.h	2016-02-09 04:52:50.874707583 +0000
+@@ -1,4 +1,6 @@
+ /** Decl for int to str conversion with highlighting */
++#define _GNU_SOURCE
++#include <fcntl.h>
+ 
+ #ifndef _FMT_NO_H
+ #define _FMT_NO_H
+--- a/fstrim.h	2016-02-09 04:55:43.871710178 +0000
++++ b/fstrim.h	2016-02-09 04:56:11.270710590 +0000
+@@ -1,3 +1,6 @@
++#define _GNU_SOURCE
++#include <fcntl.h>
++
+ #ifndef _FSTRIM_H
+ #define _FSTRIM_H
+ 
+--- a/ddr_ctrl.h	2016-02-09 04:58:08.442712348 +0000
++++ b/ddr_ctrl.h	2016-02-09 04:58:50.842712984 +0000
+@@ -7,6 +7,9 @@
+  *  License: GNU GPLv2 or v3
+  */
+ 
++#define _GNU_SOURCE
++#include <fcntl.h>
++
+ #ifndef _DDR_CTRL_H
+ #define _DDR_CTRL_H
+ 

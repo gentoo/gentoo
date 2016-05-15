@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>haskell</herd>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
 	<longdescription>
 		This library provides a quick-and-dirty (but often effective)
-		method for extending Haskell&#39;s syntax using a custom
+		method for extending Haskell's syntax using a custom
 		preprocessor.  It parses Haskell into a bare-bones AST with just
 		enough knowledge of the syntax to preserve nesting, and then
 		allows transformations on the AST.

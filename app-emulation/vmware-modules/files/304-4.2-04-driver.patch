@@ -1,0 +1,50 @@
+--- vmci-only/linux/driver.c.orig	2015-09-28 01:33:04.416069896 +0300
++++ vmci-only/linux/driver.c	2015-09-28 01:34:32.814071997 +0300
+@@ -26,6 +26,7 @@
+ 
+ #include <linux/file.h>
+ #include <linux/fs.h>
++#include <linux/vmalloc.h>
+ #include <linux/init.h>
+ #if defined(__x86_64__) && LINUX_VERSION_CODE < KERNEL_VERSION(2, 6, 12)
+ #   include <linux/ioctl32.h>
+@@ -713,7 +714,7 @@
+ 
+    case IOCTL_VMCI_INIT_CONTEXT: {
+       VMCIInitBlock initBlock;
+-      VMCIHostUser user;
++      uid_t user;
+ 
+       retval = copy_from_user(&initBlock, (void *)ioarg, sizeof initBlock);
+       if (retval != 0) {
+@@ -736,7 +736,11 @@
+          goto init_release;
+       }
+ 
++#if LINUX_VERSION_CODE < KERNEL_VERSION(3, 13, 0)
+       user = current_uid();
++#else
++      user = from_kuid(&init_user_ns, current_uid());
++#endif
+       retval = VMCIContext_InitContext(initBlock.cid, initBlock.flags,
+                                        0 /* Unused */, vmciLinux->userVersion,
+                                        &user, &vmciLinux->context);
+
+@@ -1683,7 +1684,7 @@
+    /* This should be last to make sure we are done initializing. */
+    retval = pci_register_driver(&vmci_driver);
+    if (retval < 0) {
+-      vfree(data_buffer);
++      kvfree(data_buffer);
+       data_buffer = NULL;
+       return retval;
+    }
+@@ -2470,7 +2471,7 @@
+ 
+    if (guestDeviceInit) {
+       pci_unregister_driver(&vmci_driver);
+-      vfree(data_buffer);
++      kvfree(data_buffer);
+       guestDeviceInit = FALSE;
+    }
+ 

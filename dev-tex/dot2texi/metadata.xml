@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>tex</herd>
+<maintainer type="project">
+  <email>tex@gentoo.org</email>
+  <name>Gentoo TeX Project</name>
+</maintainer>
 <use>
-  <flag name='pgf'>Enable support for <pkg>dev-tex/pgf</pkg> (The TeX Portable
+  <flag name="pgf">Enable support for <pkg>dev-tex/pgf</pkg> (The TeX Portable
     Graphic Format)</flag>
-  <flag name='pstricks'>Enable pstricks support</flag>
+  <flag name="pstricks">Enable pstricks support</flag>
 </use>
 </pkgmetadata>

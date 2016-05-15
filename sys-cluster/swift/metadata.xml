@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>openstack</herd>
   <use>
     <flag name="account">adds swift account support</flag>
     <flag name="container">adds swift container support</flag>
@@ -9,9 +8,13 @@
     <flag name="object">adds swift object support</flag>
     <flag name="proxy">adds swift proxy support</flag>
   </use>
-  <maintainer>
+  <maintainer type="person">
     <email>prometheanfire@gentoo.org</email>
     <name>Matthew Thode</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>openstack@gentoo.org</email>
+    <name>Openstack</name>
   </maintainer>
   <longdescription lang="en">
     Swift is a highly available, distributed, eventually consistent object/blob

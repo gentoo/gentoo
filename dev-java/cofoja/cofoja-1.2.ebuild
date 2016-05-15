@@ -1,16 +1,16 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 
-JAVA_PKG_IUSE="source"
+JAVA_PKG_IUSE="doc source"
 
 inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="Contracts for Java"
 HOMEPAGE="https://github.com/nhatminhle/cofoja"
-SRC_URI="https://github.com/nhatminhle/${PN}/archive/v${PV}.zip"
+SRC_URI="https://github.com/nhatminhle/${PN}/archive/v${PV}.zip -> ${P}.zip"
 
 LICENSE="LGPL-2"
 SLOT="0"
@@ -27,6 +27,7 @@ DEPEND="
 
 RDEPEND="
 	${CDEPEND}
+	source? ( app-arch/zip )
 	>=virtual/jre-1.6"
 
 S="${WORKDIR}/${P}"

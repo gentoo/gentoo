@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>scheme</herd>
-	<maintainer>
+	<maintainer type="person">
 		<email>hkBst@gentoo.org</email>
 		<name>Marijn Schouten</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>scheme@gentoo.org</email>
+		<name>Gentoo Scheme Project</name>
 	</maintainer>
 	<longdescription lang="en">
 The guile-gtk project brings the power of Scheme to your graphical application.

@@ -1,11 +1,11 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 EGIT_REPO_URI="git://anongit.freedesktop.org/git/libreoffice/libvisio/"
-inherit base eutils
+inherit eutils
 [[ ${PV} == 9999 ]] && inherit autotools git-r3
 
 DESCRIPTION="Library parsing the visio documents"
@@ -25,6 +25,7 @@ RDEPEND="
 	sys-libs/zlib
 "
 DEPEND="${RDEPEND}
+	dev-lang/perl
 	>=dev-libs/boost-1.46
 	dev-util/gperf
 	sys-devel/libtool
@@ -34,8 +35,8 @@ DEPEND="${RDEPEND}
 "
 
 src_prepare() {
+	eapply_user
 	[[ -d m4 ]] || mkdir "m4"
-	base_src_prepare
 	[[ ${PV} == 9999 ]] && eautoreconf
 }
 

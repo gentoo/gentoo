@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -25,7 +25,7 @@ IUSE="test"
 RDEPEND="
 	dev-perl/Config-Simple
 	dev-perl/Exception-Class
-	dev-perl/perl-tk
+	dev-perl/Tk
 	dev-perl/Readonly
 	dev-perl/Test-DistManifest
 	dev-perl/Test-Pod

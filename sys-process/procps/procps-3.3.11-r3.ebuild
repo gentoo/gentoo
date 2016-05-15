@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit eutils toolchain-funcs
+inherit eutils toolchain-funcs flag-o-matic
 
 DESCRIPTION="standard informational utilities and process-handling tools"
 # http://packages.debian.org/sid/procps
@@ -48,6 +48,8 @@ src_prepare() {
 }
 
 src_configure() {
+	# http://www.freelists.org/post/procps/PATCH-enable-transparent-large-file-support
+	append-lfs-flags #471102
 	econf \
 		--docdir='$(datarootdir)'/doc/${PF} \
 		$(use_enable kill) \

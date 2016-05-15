@@ -1,0 +1,35 @@
+# HG changeset patch
+# User Roman Telezhynskyi <kroluku@gmail.com>
+# Date 1455906661 -7200
+# Branch develop
+# Node ID 8edb1b0f161a5f472a0e6a8a8b5b8a1ae7cf33c5
+# Parent  42a73e7a17757ce9d12e16f616a41f52efdf4b91
+CONFIG key to disable building tests.
+
+diff --git a/src/src.pro b/src/src.pro
+--- a/src/src.pro
++++ b/src/src.pro
+@@ -1,8 +1,17 @@
+ TEMPLATE = subdirs
+-SUBDIRS = \
+-    libs \
+-    app \
+-    test
+ 
+-app.depends = libs
+-test.depends = libs
++noTests{ # For enable run qmake with CONFIG+=noTests
++	SUBDIRS = \
++		libs \
++		app
++
++} else {
++	SUBDIRS = \
++		libs \
++		app \
++		test
++
++	test.depends = libs
++}
++
++app.depends = libs 

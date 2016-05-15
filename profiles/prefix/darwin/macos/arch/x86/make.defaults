@@ -8,3 +8,5 @@ DEFAULT_ABI="x86"
 ABI="x86"
 IUSE_IMPLICIT="abi_x86_32"
 LIBDIR_x86="lib"
+# We use Clang, let it figure out what is the best to use
+CFLAGS="-march=native"

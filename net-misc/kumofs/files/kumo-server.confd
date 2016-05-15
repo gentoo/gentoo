@@ -1,6 +1,0 @@
-# /etc/conf.d/kumo-server: config file for /etc/init.d/kumo-server
-
-#KUMO_SERVER_HOSTNAME="${HOSTNAME}"
-
-#KUMO_SERVER_OPTS="-m manager1 -p manager2 -s /var/lib/kumofs/kumodb.tch"
-KUMO_SERVER_OPTS="-m ${HOSTNAME} -s /var/lib/kumofs/kumodb.tch"

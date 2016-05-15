@@ -1,0 +1,28 @@
+diff --git a/sys/boot/efi/libefi/Makefile b/sys/boot/efi/libefi/Makefile
+index fc66e01..470453d 100644
+--- a/sys/boot/efi/libefi/Makefile
++++ b/sys/boot/efi/libefi/Makefile
+@@ -17,9 +17,6 @@ CFLAGS+= -I${.CURDIR}/../../../../lib/libstand
+ # Pick up the bootstrap header for some interface items
+ CFLAGS+= -I${.CURDIR}/../../common
+ 
+- 
+-# Suppress warning from clang for FreeBSD %b and %D formats
+-CFLAGS+= -fformat-extensions
+ CFLAGS+= -DTERM_EMU
+ 
+ .include <bsd.lib.mk>
+diff --git a/sys/boot/i386/libi386/Makefile b/sys/boot/i386/libi386/Makefile
+index 24cc4c1..e5d2bae 100644
+--- a/sys/boot/i386/libi386/Makefile
++++ b/sys/boot/i386/libi386/Makefile
+@@ -55,9 +55,6 @@ CFLAGS+=	-I${.CURDIR}/../../common -I${.CURDIR}/../common \
+ # the location of libstand
+ CFLAGS+=	-I${.CURDIR}/../../../../lib/libstand/
+ 
+-# Suppress warning from clang for FreeBSD %b and %D formats
+-CFLAGS+= -fformat-extensions
+-
+ .if ${MACHINE_CPUARCH} == "amd64"
+ CLEANFILES+=	machine
+ machine:

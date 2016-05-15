@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -19,7 +19,7 @@ IUSE="test"
 
 RDEPEND="
 	>=dev-python/httplib2-0.8[${PYTHON_USEDEP}]
-	dev-python/oauth2client[${PYTHON_USEDEP}]
+	<dev-python/oauth2client-2[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	dev-python/uritemplate[${PYTHON_USEDEP}]
 	"

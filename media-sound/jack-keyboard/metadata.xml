@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>proaudio</herd>
+<maintainer type="project">
+	<email>proaudio@gentoo.org</email>
+	<name>Gentoo ProAudio Project</name>
+</maintainer>
 <longdescription lang="en">
 	jack-keyboard is a virtual MIDI keyboard - a program that allows you to send
 	JACK MIDI events (play ;-) using your PC keyboard. It's somewhat similar to

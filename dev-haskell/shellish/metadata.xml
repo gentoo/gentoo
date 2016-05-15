@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>haskell</herd>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
 	<longdescription>
 		The shellisg package provides a single module for convenient
-		\&quot;systems\&quot; programming in Haskell, similar in spirit to POSIX
+		\"systems\" programming in Haskell, similar in spirit to POSIX
 		shells or PERL.
 		
 		* Elegance and safety is sacrificed for conciseness and

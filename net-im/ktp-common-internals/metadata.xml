@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
-<pkgmetadata>
-	<herd>kde</herd>
-	<use>
-		<flag name="otr">Enable support for encrypted conversations using Off-The-Records messaging</flag>
-	</use>
-</pkgmetadata>

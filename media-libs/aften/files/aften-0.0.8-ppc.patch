@@ -1,7 +1,7 @@
 Index: libaften/ppc/ppc_cpu_caps.h
 ===================================================================
---- libaften/ppc/ppc_cpu_caps.h
-+++ libaften/ppc/ppc_cpu_caps.h
+--- aften-0.0.8/libaften/ppc/ppc_cpu_caps.h
++++ aften-0.0.8/libaften/ppc/ppc_cpu_caps.h
 @@ -20,6 +20,7 @@
  #ifndef PPC_CPU_CAPS_H
  #define PPC_CPU_CAPS_H
@@ -12,8 +12,8 @@ Index: libaften/ppc/ppc_cpu_caps.h
  
 Index: libaften/ppc/mdct_altivec.c
 ===================================================================
---- libaften/ppc/mdct_altivec.c	(revision 659)
-+++ libaften/ppc/mdct_altivec.c	(revision 660)
+--- aften-0.0.8/libaften/ppc/mdct_altivec.c	(revision 659)
++++ aften-0.0.8/libaften/ppc/mdct_altivec.c	(revision 660)
 @@ -47,11 +47,11 @@
  #include "mem.h"
  
@@ -58,8 +58,8 @@ Index: libaften/ppc/mdct_altivec.c
  
 Index: libaften/ppc/altivec_common.h
 ===================================================================
---- libaften/ppc/altivec_common.h	(revision 659)
-+++ libaften/ppc/altivec_common.h	(revision 660)
+--- aften-0.0.8/libaften/ppc/altivec_common.h	(revision 659)
++++ aften-0.0.8/libaften/ppc/altivec_common.h	(revision 660)
 @@ -28,11 +28,23 @@
  typedef vector unsigned int   vec_u32_t;
  typedef vector signed int     vec_s32_t;
@@ -84,8 +84,8 @@ Index: libaften/ppc/altivec_common.h
  
  static inline vector float vec_ld_float(const float *a)
  {
---- ppc_cpu_caps.bak	2007-12-23 17:13:33.000000000 +0000
-+++ libaften/ppc/ppc_cpu_caps.c	2007-12-23 17:13:43.000000000 +0000
+--- aften-0.0.8/ppc_cpu_caps.bak	2007-12-23 17:13:33.000000000 +0000
++++ aften-0.0.8/libaften/ppc/ppc_cpu_caps.c	2007-12-23 17:13:43.000000000 +0000
 @@ -81,7 +81,7 @@
          //Attempt to use AltiVec
          if(!sigsetjmp(g_env, 0))

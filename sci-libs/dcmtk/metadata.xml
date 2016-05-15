@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>sci-biology</herd>
-  <maintainer>
+  <maintainer type="project">
     <email>sci-biology@gentoo.org</email>
   </maintainer>
   <longdescription>DICOM ToolKit core medical imaging library and tools</longdescription>

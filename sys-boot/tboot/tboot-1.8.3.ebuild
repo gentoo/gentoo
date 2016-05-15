@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -6,14 +6,14 @@ EAPI=5
 
 inherit flag-o-matic mount-boot
 
-DESCRIPTION="A module that uses Intel(R) Trusted Execution Technology to perform a measured and verified boot"
+DESCRIPTION="Performs a measured and verified boot using Intel Trusted Execution Technology"
 HOMEPAGE="http://sourceforge.net/projects/tboot/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 -*"
-IUSE="custom-cflags"
+IUSE="custom-cflags selinux"
 
 RESTRICT="test" # test is restricted because it requires patching the kernel src
 
@@ -21,7 +21,8 @@ DEPEND="app-crypt/trousers
 app-crypt/tpm-tools"
 
 RDEPEND="${DEPEND}
-sys-boot/grub:2"
+sys-boot/grub:2
+selinux? ( sec-policy/selinux-tboot )"
 
 DOCS=(README COPYING CHANGELOG)
 

@@ -1,5 +1,5 @@
---- Makefile.in.orig	2010-06-03 21:02:14.000000000 +0100
-+++ Makefile.in	2010-06-03 21:02:49.000000000 +0100
+--- orpie-1.5.1/Makefile.in.orig	2010-06-03 21:02:14.000000000 +0100
++++ orpie-1.5.1/Makefile.in	2010-06-03 21:02:49.000000000 +0100
 @@ -38,7 +38,7 @@
  CURSES_LIB = @CURSES_LIB@
  GSL_LIB    = @GSL_LIB@

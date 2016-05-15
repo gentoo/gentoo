@@ -66,6 +66,6 @@ pkg_postinst() {
 	fi
 	ewarn "If something does not work for you with this setup please"
 	ewarn "complain to bugs.gentoo.org"
-	einfo "Note: There is also the native sshfs-fuse implementation now"
+	einfo "Note: There is also the native sshfs implementation now"
 	use amd64 && ewarn "lufs-sshfs does not work on amd64 and is disabled there."
 }

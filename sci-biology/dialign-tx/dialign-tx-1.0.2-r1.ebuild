@@ -22,7 +22,8 @@ S=${WORKDIR}/${MY_P}
 src_prepare() {
 	sed -e "s/\$(CC) -o/\$(CC) \$(LDFLAGS) -o/" \
 		-i source/Makefile || die #336533
-	epatch "${FILESDIR}"/${P}-implicits.patch
+	epatch	"${FILESDIR}"/${P}-implicits.patch \
+		"${FILESDIR}"/${P}-modernize.patch
 }
 
 src_compile() {

@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>gnustep</herd>
+	<maintainer type="project">
+		<email>gnustep@gentoo.org</email>
+		<name>Gentoo GNUstep Project</name>
+	</maintainer>
 	<longdescription>Battery monitor is a small utility that displays the status of your laptop battery (charge/discharge and status). I works best with linux 2.6 kernels and ACPI, but now has also support for 2.4 kernels and APM</longdescription>
 </pkgmetadata>

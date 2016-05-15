@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -14,12 +14,17 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
 
-DEPEND=">=net-mail/dovecot-2.1.16"
-RDEPEND="${DEPEND}"
+RDEPEND=">=net-mail/dovecot-2.1.16"
+DEPEND="${RDEPEND}
+	app-text/txt2man"
 
 DOCS=( README )
 
 src_prepare() {
+	# use system txt2man
+	rm doc/txt2man || die
+	sed -i 's#./txt2man#txt2man#' doc/Makefile || die
+
 	AT_M4DIR="m4" eautoreconf
 }
 

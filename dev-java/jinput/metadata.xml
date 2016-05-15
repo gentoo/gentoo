@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>java</herd>
+  <maintainer type="project">
+    <email>java@gentoo.org</email>
+    <name>Java</name>
+  </maintainer>
   <longdescription>The JInput Project hosts an implementation of an API for game controller discovery and polled input. It is part of a suite of open-source technologies initiated by the Game Technology Group at Sun Microsystems with intention of making the development of high performance games in Java a reality.</longdescription>
   <upstream>
     <remote-id type="github">jinput/jinput</remote-id>

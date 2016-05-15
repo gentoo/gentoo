@@ -16,7 +16,7 @@ LICENSE="GPL-2+ LGPL-2+"
 SLOT="0"
 IUSE="+bluetooth +networkmanager +nls -openrc-force"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
-KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc x86"
 
 # libXfixes-5.0 needed for pointer barriers
 # FIXME:
@@ -195,6 +195,12 @@ pkg_postinst() {
 		elog "llvmpipe is used as fallback when no 3D acceleration"
 		elog "is available. You will need to enable llvm USE for"
 		elog "media-libs/mesa."
+	fi
+
+	# https://bugs.gentoo.org/show_bug.cgi?id=563084
+	if has_version "x11-drivers/nvidia-drivers[-kms]"; then
+		ewarn "You will need to enable kms support in x11-drivers/nvidia-drivers,"
+		ewarn "otherwise Gnome will fail to start"
 	fi
 
 	if ! systemd_is_booted; then

@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -18,23 +18,22 @@ KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc
 IUSE="doc test"
 
 DEPEND="
-	dev-python/setuptools[${PYTHON_USEDEP}]
 	doc? ( dev-python/sphinx )
 	test? ( >=dev-python/pytest-2.2.0[${PYTHON_USEDEP}] )"
 
 PATCHES=(
+	"${FILESDIR}"/1.10.0-no-setuptools.patch
 	"${FILESDIR}"/1.9.0-mapping.patch
-	)
+)
 
-pkg_setup() {
-	six_dir_check() {
-		local dir="${ROOT%/}$(python_get_sitedir)"/six
-		if [[ -d "${dir}" ]]; then
-			die "${PN} doesn't work if ${dir} is a directory #546730"
-		fi
-	}
-	python_foreach_impl six_dir_check
-}
+if [[ ${PV} != 1.10.0 ]]; then
+	# There is no longer a circular dep with setuptools, so please do the following
+	# Drop 1.10.0-no-setuptools.patch
+	# Add a dependency on dev-python/setuptools[${PYTHON_USEDEP}]
+	# Remove pkg_preinst
+	# Thanks! - Mike Gilbert (floppym)
+	die "Please read the ebuild for notes on this version bump"
+fi
 
 python_prepare_all() {
 	# https://bitbucket.org/gutworth/six/issues/139/
@@ -57,4 +56,17 @@ python_test() {
 python_install_all() {
 	use doc && local HTML_DOCS=( documentation/_build/html/ )
 	distutils-r1_python_install_all
+}
+
+pkg_preinst() {
+	# Remove this in the next version bump
+	_cleanup() {
+		local pyver=$("${PYTHON}" -c "from distutils.sysconfig import get_python_version; print(get_python_version())")
+		local egginfo="${ROOT%/}$(python_get_sitedir)/${P}-py${pyver}.egg-info"
+		if [[ -d ${egginfo} ]]; then
+			echo rm -r "${egginfo}"
+			rm -r "${egginfo}" || die "Failed to remove egg-info directory"
+		fi
+	}
+	python_foreach_impl _cleanup
 }

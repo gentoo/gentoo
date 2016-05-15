@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>graphics</herd>
-  <maintainer>
-    <email>jlec@gentoo.org</email>
-    <name>Justin Lecher</name>
+  <maintainer type="project">
+    <email>graphics@gentoo.org</email>
+    <name>Gentoo Graphics Project</name>
   </maintainer>
   <longdescription>
 The Cg Toolkit provides a compiler for the Cg language, runtime libraries for

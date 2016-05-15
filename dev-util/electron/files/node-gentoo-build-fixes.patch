@@ -1,0 +1,50 @@
+From 668a003706d57c3e7a460e2fce5d110fe9737a62 Mon Sep 17 00:00:00 2001
+From: Elvis Pranskevichus <elvis@magic.io>
+Date: Wed, 10 Feb 2016 14:45:13 -0500
+Subject: [PATCH] Parametrize v8.gyp location
+
+---
+ node.gyp         | 5 +++--
+ tools/install.py | 3 +++
+ 2 files changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/node.gyp b/node.gyp
+index d431210..fea5e07 100644
+--- a/node.gyp
++++ b/node.gyp
+@@ -1,6 +1,7 @@
+ {
+   'variables': {
+     'v8_use_snapshot%': 'false',
++    'v8_gyp_path%': 'deps/v8/tools/gyp/v8.gyp',
+     'node_use_dtrace%': 'false',
+     'node_use_lttng%': 'false',
+     'node_use_etw%': 'false',
+@@ -89,8 +90,8 @@
+       'dependencies': [
+         'node_js2c#host',
+         'deps/cares/cares.gyp:cares',
+-        # 'deps/v8/tools/gyp/v8.gyp:v8',
+-        # 'deps/v8/tools/gyp/v8.gyp:v8_libplatform'
++        '<(v8_gyp_path):v8',
++        '<(v8_gyp_path):v8_libplatform'
+       ],
+ 
+       'include_dirs': [
+diff --git a/tools/install.py b/tools/install.py
+index cb86c65..ee85e33 100755
+--- a/tools/install.py
++++ b/tools/install.py
+@@ -207,6 +207,9 @@ def run(args):
+   if os.environ.get('HEADERS_ONLY'):
+     if cmd == 'install': return headers(install)
+     if cmd == 'uninstall': return headers(uninstall)
++  elif os.environ.get('NPM_ONLY'):
++    if cmd == 'install': return npm_files(install)
++    if cmd == 'uninstall': return npm_files(uninstall)
+   else:
+     if cmd == 'install': return files(install)
+     if cmd == 'uninstall': return files(uninstall)
+-- 
+2.7.3
+

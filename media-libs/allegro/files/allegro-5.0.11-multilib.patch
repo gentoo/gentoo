@@ -1,0 +1,10 @@
+--- CMakeLists.txt.old	2013-06-16 10:16:08.000000000 +0600
++++ CMakeLists.txt	2016-02-25 14:32:40.350446191 +0500
+@@ -560,7 +560,6 @@
+ endif(SUPPORT_X11 AND NOT SUPPORT_OPENGL)
+ 
+ if(SUPPORT_X11)
+-    set(CMAKE_REQUIRED_LIBRARIES ${X11_LIBRARIES})
+ 
+     check_library_exists(Xcursor XcursorImageCreate "" CAN_XCURSOR)
+     if(CAN_XCURSOR)

@@ -1,10 +1,11 @@
-# Copyright 2007-2010 Gentoo Foundation.
+# Copyright 2007-2016 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 # This file contains descriptions of APACHE2_MODULES USE_EXPAND flags.
 
 # Keep it sorted.
+access_compat - Backwards-compatibility for obsolete authorization directives
 actions - Provides for executing CGI scripts based on media type or request method
 alias - Provides for mapping different parts of the host filesystem in the document tree and for URL redirection
 asis - Sends files that contain their own HTTP headers
@@ -12,10 +13,12 @@ auth_basic - Basic authentication
 auth_digest - User authentication using MD5 Digest Authentication
 authn_alias - Provides the ability to create extended authentication providers based on actual providers
 authn_anon - Allows "anonymous" user access to authenticated areas
+authn_core - Provides core authentication capabilities
 authn_dbd - User authentication using an SQL database
 authn_dbm - User authentication using DBM files
 authn_default - Authentication fallback module
 authn_file - User authentication using text files
+authz_core - Provides core authorization capabilities
 authz_dbm - Group authorization using DBM files
 authz_default - Authorization fallback module
 authz_groupfile - Group authorization using plaintext files
@@ -24,10 +27,11 @@ authz_owner - Authorization based on file ownership
 authz_user - User Authorization
 autoindex - Generates directory indexes, automatically, similar to the Unix ls command
 cache - Content cache keyed to URIs
+cache_disk - Disk based storage module for the HTTP caching filter
 cern_meta - CERN httpd metafile semantics
-charset_lite - Specify character set translation or recoding
 cgi - Enable CGI module (used by non-multithreaded MPMs, for eg. prefork)
 cgid - Enable CGI module (used by multithreaded MPMs, for eg. worker)
+charset_lite - Specify character set translation or recoding
 dav - Distributed Authoring and Versioning (WebDAV) functionality
 dav_fs - filesystem provider for mod_dav
 dav_lock - generic locking module for mod_dav
@@ -46,6 +50,10 @@ ident - RFC 1413 ident lookups
 imagemap - Server-side imagemap processing
 include - Server-parsed html documents (Server Side Includes)
 info - Provides a comprehensive overview of the server configuration
+lbmethod_bybusyness - Pending Request Counting load balancer scheduler algorithm for mod_proxy_balancer
+lbmethod_byrequests - Request Counting load balancer scheduler algorithm for mod_proxy_balancer
+lbmethod_bytraffic - Weighted Traffic Counting load balancer scheduler algorithm for mod_proxy_balancer
+lbmethod_heartbeat - Heartbeat Traffic Counting load balancer scheduler algorithm for mod_proxy_balancer
 log_config - Logging of the requests made to the server
 log_forensic - Forensic Logging of the requests made to the server
 logio - Logging of input and output bytes per request
@@ -57,16 +65,23 @@ proxy - HTTP/1.1 proxy/gateway server
 proxy_ajp - AJP support module for mod_proxy
 proxy_balancer - mod_proxy extension for load balancing
 proxy_connect - mod_proxy extension for CONNECT request handling
+proxy_fcgi - FastCGI support module for mod_proxy
 proxy_ftp - FTP support module for mod_proxy
 proxy_http - HTTP support module for mod_proxy
 proxy_scgi - SCGI gateway module for mod_proxy
-rewrite - Provides a rule-based rewriting engine to rewrite requested URLs on the fly
+proxy_wstunnel - Websockets support module for mod_proxy
+ratelimit - Bandwidth Rate Limiting for Clients
+remoteip - Replaces the original client IP address for the connection with the useragent IP address list presented by a proxies or a load balancer via the request headers
 reqtimeout - Set timeout and minimum data rate for receiving requests
+rewrite - Provides a rule-based rewriting engine to rewrite requested URLs on the fly
 setenvif - Allows the setting of environment variables based on characteristics of the request
+slotmem_shm - Slot-based shared memory provider
+socache_shmcb - Cyclic buffer shared-memory-based shared object cache provider
 speling - Attempts to correct mistaken URLs that users might have entered by ignoring capitalization and by allowing up to one misspelling
 status - Provides information on server activity and performance
 substitute - Perform search and replace operations on response bodies
 unique_id - Provides an environment variable with a unique identifier for each request
+unixd - Basic (required) security for Unix-family platforms
 userdir - User-specific directories
 usertrack - Clickstream logging of user activity on a site
 version - Version dependent configuration

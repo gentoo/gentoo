@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit eutils git-2 multilib toolchain-funcs
+inherit eutils flag-o-matic git-2 multilib toolchain-funcs
 
 DESCRIPTION="a lightweight PDF viewer and toolkit written in portable C"
 HOMEPAGE="http://mupdf.com/"
@@ -38,6 +38,8 @@ DEPEND="${RDEPEND}
 		x11-libs/libxcb[static-libs] )"
 
 src_prepare() {
+	use hppa && append-cflags -ffunction-sections
+
 	rm -rf thirdparty || die
 
 	epatch \

@@ -1,0 +1,24 @@
+Author: Ole Streicher <olebole@debian.org>
+Description: Use predefined MIDVERS and MIDASHOME in cleanmidas
+ Cleanmidas assumes the the parent directory of "15FEBpl1.1" is "midas",
+ which is not required in the installation guide.
+--- a/system/unix/cleanmidas
++++ b/system/unix/cleanmidas
+@@ -54,11 +54,13 @@
+         [ $answer = y ]
+ }
+ 
+-
+ MID_HERE=`pwd`
+-MIDVERS=`echo $MID_HERE | sed 's/^.*midas\/\([^\/]*\).*$/\1/'`
+-MIDASHOME=`echo $MID_HERE | sed 's/\/'$MIDVERS'.*$//'`
+-
++if [ -z "$MIDVERS" ] ; then
++  MIDVERS=`echo $MID_HERE | sed 's/^.*midas\/\([^\/]*\).*$/\1/'`
++fi
++if [ -z "$MIDASHOME" ] ; then
++  MIDASHOME=`echo $MID_HERE | sed 's/\/'$MIDVERS'.*$//'`
++fi
+ MID_HOME=$MIDASHOME/$MIDVERS
+ 
+ export MIDASHOME MIDVERS

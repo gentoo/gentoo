@@ -6,8 +6,8 @@ EAPI=5
 inherit bash-completion-r1 eutils linux-info systemd udev
 
 DESCRIPTION="Daemon providing interfaces to work with storage devices"
-HOMEPAGE="http://www.freedesktop.org/wiki/Software/udisks"
-SRC_URI="http://udisks.freedesktop.org/releases/${P}.tar.bz2"
+HOMEPAGE="https://www.freedesktop.org/wiki/Software/udisks"
+SRC_URI="https://udisks.freedesktop.org/releases/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="2"

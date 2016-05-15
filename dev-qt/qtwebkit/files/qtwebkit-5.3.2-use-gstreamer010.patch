@@ -1,5 +1,5 @@
---- Tools/qmake/mkspecs/features/features.prf	2014-09-27 11:09:50.010617142 +0100
-+++ Tools/qmake/mkspecs/features/features.prf	2014-09-27 11:17:10.741678989 +0100
+--- a/Tools/qmake/mkspecs/features/features.prf	2014-09-27 11:09:50.010617142 +0100
++++ b/Tools/qmake/mkspecs/features/features.prf	2014-09-27 11:17:10.741678989 +0100
 @@ -96,14 +96,8 @@
      use?(3d_graphics): WEBKIT_CONFIG += webgl
  

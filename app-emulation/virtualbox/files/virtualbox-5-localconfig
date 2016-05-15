@@ -43,3 +43,5 @@ VBOX_WITH_KCHMVIEWER :=
 ## don't build with -Werror
 VBOX_WITH_WARNINGS_AS_ERRORS :=
 
+## fix compilation with USE="doc" (Gentoo bug #554932)
+VBOX_PATH_DOCBOOK_DTD   := /usr/share/sgml/docbook/sgml-dtd-4.4

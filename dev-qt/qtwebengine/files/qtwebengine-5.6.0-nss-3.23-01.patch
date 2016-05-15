@@ -1,0 +1,59 @@
+From 0a385bb01d9cf060fae4c9d350ee98561654df96 Mon Sep 17 00:00:00 2001
+From: Kai Koehne <kai.koehne@theqtcompany.com>
+Date: Thu, 24 Mar 2016 12:34:25 +0100
+Subject: [PATCH] [backport] Call EnsureNSSHttpIOInit in the chimera build.
+
+Otherwise we end up using the default NSS client and not
+SystemURLRequestContext.
+
+This is a minimal fix to be merged onto release branches.
+A follow-up will revise this to be somewhat less error-prone.
+
+BUG=539520
+TEST=Open about:net-internals on Linux or Chrome OS
+     Visit https://incomplete-chain.badssl.com/ in a new tab
+     The Events tab of about:net-internals should show a fetch for http://crt.comodoca.com/COMODORSADomainValidationSecureServerCA.crt
+
+Review URL: https://codereview.chromium.org/1384343002
+
+Task-number: QTBUG-51890
+Task-number: QTBUG-52068
+Change-Id: I567d5cd5e6d4e53b833699e67c45f3bdfc52953d
+Reviewed-by: Joerg Bornemann <joerg.bornemann@theqtcompany.com>
+Reviewed-by: Allan Sandfeld Jensen <allan.jensen@theqtcompany.com>
+---
+ chromium/net/socket/ssl_client_socket_openssl.cc | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
+
+diff --git a/src/3rdparty/chromium/net/socket/ssl_client_socket_openssl.cc b/src/3rdparty/chromium/net/socket/ssl_client_socket_openssl.cc
+index 5489ead..dc9b3ff 100644
+--- a/src/3rdparty/chromium/net/socket/ssl_client_socket_openssl.cc
++++ b/src/3rdparty/chromium/net/socket/ssl_client_socket_openssl.cc
+@@ -57,6 +57,10 @@
+ #include "net/ssl/ssl_platform_key.h"
+ #endif
+ 
++#if defined(USE_NSS_CERTS) || defined(OS_IOS)
++#include "net/cert_net/nss_ocsp.h"
++#endif
++
+ namespace net {
+ 
+ namespace {
+@@ -795,6 +799,14 @@ int SSLClientSocketOpenSSL::Init() {
+   DCHECK(!ssl_);
+   DCHECK(!transport_bio_);
+ 
++#if defined(USE_NSS_CERTS) || defined(OS_IOS)
++  if (ssl_config_.cert_io_enabled) {
++    // TODO(davidben): Move this out of SSLClientSocket. See
++    // https://crbug.com/539520.
++    EnsureNSSHttpIOInit();
++  }
++#endif
++
+   SSLContext* context = SSLContext::GetInstance();
+   crypto::OpenSSLErrStackTracer err_tracer(FROM_HERE);
+ 
+-- 
+2.7.4

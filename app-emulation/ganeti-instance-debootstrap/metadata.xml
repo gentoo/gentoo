@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>virtualization</herd>
+	<maintainer type="project">
+		<email>virtualization@gentoo.org</email>
+		<name>Gentoo Virtualization Project</name>
+	</maintainer>
 	<longdescription lang="en">This is a guest OS definition for Ganeti (https://code.google.com/p/ganeti).
 	It will install a minimal version of Debian or Ubuntu via debootstrap (thus
 	it requires network access). This only works if you have a Debian-based node

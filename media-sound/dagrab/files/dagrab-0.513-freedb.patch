@@ -1,5 +1,5 @@
---- dagrab.1
-+++ dagrab.1
+--- dagrab-S0.513/dagrab.1
++++ dagrab-S0.513/dagrab.1
 @@ -209,7 +209,7 @@
  .B -H
  .I [host][:port]
@@ -9,8 +9,8 @@
  .RE
  
  .B -D
---- const.h
-+++ const.h
+--- dagrab-S0.513/const.h
++++ dagrab-S0.513/const.h
 @@ -18,9 +18,9 @@
  #define BLEN		1024	/* length in chars of command/trackname */
  #define OVERLAP		1	/* minimum number of sectors for overlapping */

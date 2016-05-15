@@ -20,7 +20,7 @@ RDEPEND="virtual/ssh
 	x11-libs/libICE"
 
 DEPEND="${RDEPEND}
-	x11-misc/imake
+	>=x11-misc/imake-1.0.7
 	app-text/rman"
 
 src_compile() {

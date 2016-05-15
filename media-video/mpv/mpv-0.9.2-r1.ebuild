@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -19,7 +19,7 @@ if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
 else
 	SRC_URI+=" https://github.com/mpv-player/mpv/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="alpha amd64 ~arm ~arm64 hppa ppc ppc64 ~sparc ~x86 ~amd64-linux"
+	KEYWORDS="alpha amd64 ~arm hppa ppc ppc64 ~sparc ~x86 ~amd64-linux"
 	DOCS+=( RELEASE_NOTES )
 fi
 
@@ -50,7 +50,10 @@ REQUIRED_USE="
 
 RDEPEND="
 	libav? ( >=media-video/libav-11:0=[encode?,threads,vaapi?,vdpau?] )
-	!libav? ( >=media-video/ffmpeg-2.4.0:0=[encode?,threads,vaapi?,vdpau?] )
+	!libav? (
+		>=media-video/ffmpeg-2.4.0:0=[encode?,threads,vaapi?,vdpau?]
+		<media-video/ffmpeg-3.0
+	)
 	sys-libs/zlib
 	X? (
 		x11-libs/libX11

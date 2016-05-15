@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=2
+EAPI=5
 
 MOD_DESC="multiplayer driving mod focusing on fun driving"
 MOD_NAME="UnWheel"
@@ -10,9 +10,9 @@ MOD_DIR="unwheel"
 
 inherit games games-mods
 
-HOMEPAGE="http://unwheel.beyondunreal.com/"
+HOMEPAGE="http://www.moddb.com/mods/unwheel"
 SRC_URI="unwheel_r5.zip
-	UnWheel-R5_BonusPack-Volume_1.zip"
+	unwheelcbpvol1.zip"
 
 LICENSE="GameFront"
 KEYWORDS="amd64 x86"
@@ -27,7 +27,7 @@ pkg_nofetch() {
 }
 
 src_unpack() {
-	mkdir ${MOD_DIR}
-	cd ${MOD_DIR}
+	mkdir ${MOD_DIR} || die
+	cd ${MOD_DIR} || die
 	unpack ${A}
 }

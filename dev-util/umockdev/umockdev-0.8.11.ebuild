@@ -25,3 +25,7 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 RESTRICT="test"
+
+PATCHES=(
+	"${FILESDIR}"/${P}-sysmacros.patch #579988
+)

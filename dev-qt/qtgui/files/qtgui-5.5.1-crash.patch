@@ -1,0 +1,34 @@
+From 79447068579ea93d616d840bb8cbbf8adb1ed6ec Mon Sep 17 00:00:00 2001
+From: Nicolas Capens <capn@google.com>
+Date: Tue, 10 Nov 2015 00:03:34 -0500
+Subject: Fix potential division by zero.
+
+In a Chrome Remote Desktop session the htotal and/or vtotal timings
+can be zero and lead to a SIGFPE exception.
+
+Task-number: QTBUG-49322
+Change-Id: Id530335cc760d1938ed888ad095427fcf32c651d
+Reviewed-by: Oswald Buddenhagen <oswald.buddenhagen@theqtcompany.com>
+Reviewed-by: Nicolas Capens <nicolas.capens@gmail.com>
+Reviewed-by: Gatis Paeglis <gatis.paeglis@theqtcompany.com>
+---
+ src/plugins/platforms/xcb/qxcbscreen.cpp | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/src/plugins/platforms/xcb/qxcbscreen.cpp b/src/plugins/platforms/xcb/qxcbscreen.cpp
+index 2a53b18..0e99d58 100644
+--- a/src/plugins/platforms/xcb/qxcbscreen.cpp
++++ b/src/plugins/platforms/xcb/qxcbscreen.cpp
+@@ -558,7 +558,8 @@ void QXcbScreen::updateRefreshRate(xcb_randr_mode_t mode)
+         for (; modesIter.rem; xcb_randr_mode_info_next(&modesIter)) {
+             xcb_randr_mode_info_t *modeInfo = modesIter.data;
+             if (modeInfo->id == mode) {
+-                m_refreshRate = modeInfo->dot_clock / (modeInfo->htotal * modeInfo->vtotal);
++                const uint32_t dotCount = modeInfo->htotal * modeInfo->vtotal;
++                m_refreshRate = (dotCount != 0) ? modeInfo->dot_clock / dotCount : 0;
+                 m_mode = mode;
+                 break;
+             }
+-- 
+cgit v0.11.0
+

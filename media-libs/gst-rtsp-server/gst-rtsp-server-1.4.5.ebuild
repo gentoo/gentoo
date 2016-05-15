@@ -7,7 +7,7 @@ EAPI=5
 inherit eutils gstreamer
 
 DESCRIPTION="A GStreamer based RTSP server"
-HOMEPAGE="http://people.freedesktop.org/~wtay/"
+HOMEPAGE="https://people.freedesktop.org/~wtay/"
 
 LICENSE="LGPL-2"
 KEYWORDS="amd64 x86"

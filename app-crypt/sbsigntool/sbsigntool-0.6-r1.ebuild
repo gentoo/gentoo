@@ -20,6 +20,7 @@ RDEPEND="dev-libs/openssl
 DEPEND="${RDEPEND}
 	sys-apps/help2man
 	sys-boot/gnu-efi
+	sys-libs/binutils-libs
 	virtual/pkgconfig"
 
 src_prepare() {

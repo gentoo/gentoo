@@ -1,7 +1,16 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+
+# Fabian Groffen <grobian@gentoo.org> (06 Apr 2016)
+# dev-libs/re2 needs love, bug #563932
+app-misc/sphinx re2
+
+# Fabian Groffen <grobian@gentoo.org> (23 Feb 2016)
+# luajit doesn't compile due to relocation problems
+~app-text/texlive-core-2015 luajittex
+~dev-texlive/texlive-basic-2015 luajittex
 
 # Fabian Groffen <grobian@gentoo.org> (26 May 2015)
 # Avoid pulling in broken and unnecessary ossp-uuid, bug #324527

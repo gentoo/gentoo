@@ -161,7 +161,6 @@ sci-biology/foldingathome
 sci-chemistry/cara-bin
 sci-chemistry/cyana
 sci-chemistry/icm
-sci-chemistry/icm-browser
 sci-chemistry/mars
 sci-electronics/eagle
 sci-libs/ipp

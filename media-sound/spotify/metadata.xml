@@ -4,11 +4,10 @@
   <use>
     <flag name="pax_kernel">Triggers a paxmarking of the main Spotify binary</flag>
   </use>
-<maintainer>
+<maintainer type="person">
 <email>prometheanfire@gentoo.org</email>
 <name>Matthew Thode</name>
 </maintainer>
 <longdescription lang="en">
 </longdescription>
 </pkgmetadata>
-

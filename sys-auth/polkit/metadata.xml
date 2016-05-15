@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>freedesktop</herd>
-	<maintainer>
+	<maintainer type="project">
 		<email>freedesktop-bugs@gentoo.org</email>
 	</maintainer>
 	<use>
-		<flag name='systemd'>Use <pkg>sys-apps/systemd</pkg> instead of <pkg>sys-auth/consolekit</pkg> for session tracking</flag>
+		<flag name="systemd">Use <pkg>sys-apps/systemd</pkg> instead of <pkg>sys-auth/consolekit</pkg> for session tracking</flag>
 	</use>
 </pkgmetadata>

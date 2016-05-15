@@ -1,0 +1,35 @@
+From 958cdd5117cd2056076edc6cc52af1a3a929d262 Mon Sep 17 00:00:00 2001
+From: Rui Matos <tiagomatos@gmail.com>
+Date: Fri, 3 Jul 2015 18:01:14 +0200
+Subject: monitor-manager: Fix the max potential number of logical monitors
+
+The max potential number of logical monitors (i.e. MetaMonitorInfos)
+is the number of CRTCs, not the number of outputs.
+
+In cases where we have more enabled CRTCs than connected outputs we
+would end up appending more MetaMonitorInfos to the GArray than the
+size it was initialized with which means the array would get
+re-allocated rendering invalid some MetaCRTC->logical_monitor pointers
+assigned previously and thus ending in crashes later on.
+
+https://bugzilla.gnome.org/show_bug.cgi?id=751638
+---
+ src/backends/meta-monitor-manager.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/backends/meta-monitor-manager.c b/src/backends/meta-monitor-manager.c
+index 38ccc72..56a52bb 100644
+--- a/src/backends/meta-monitor-manager.c
++++ b/src/backends/meta-monitor-manager.c
+@@ -178,7 +178,7 @@ make_logical_config (MetaMonitorManager *manager)
+   unsigned int i, j;
+ 
+   monitor_infos = g_array_sized_new (FALSE, TRUE, sizeof (MetaMonitorInfo),
+-                                     manager->n_outputs);
++                                     manager->n_crtcs);
+ 
+   /* Walk the list of MetaCRTCs, and build a MetaMonitorInfo
+      for each of them, unless they reference a rectangle that
+-- 
+cgit v0.11.2
+

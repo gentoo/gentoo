@@ -1,0 +1,186 @@
+--- a/src/core/osutils.cc	2016-02-04 23:47:31.071246925 +0000
++++ b/src/core/osutils.cc	2016-02-04 23:54:17.125253018 +0000
+@@ -9,6 +9,7 @@
+ #include <dirent.h>
+ #include <limits.h>
+ #include <stdlib.h>
++#include <stdint.h>
+ #include <string.h>
+ #include <regex.h>
+ #include <ctype.h>
+@@ -496,48 +497,48 @@
+ 
+ unsigned short be_short(const void * from)
+ {
+-  __uint8_t *p = (__uint8_t*)from;
++  uint8_t *p = (uint8_t*)from;
+ 
+-  return ((__uint16_t)(p[0]) << 8) +
+-    (__uint16_t)p[1];
++  return ((uint16_t)(p[0]) << 8) +
++    (uint16_t)p[1];
+ }
+ 
+ 
+ unsigned short le_short(const void * from)
+ {
+-  __uint8_t *p = (__uint8_t*)from;
++  uint8_t *p = (uint8_t*)from;
+ 
+-  return ((__uint16_t)(p[1]) << 8) +
+-    (__uint16_t)p[0];
++  return ((uint16_t)(p[1]) << 8) +
++    (uint16_t)p[0];
+ }
+ 
+ 
+ unsigned long be_long(const void * from)
+ {
+-  __uint8_t *p = (__uint8_t*)from;
++  uint8_t *p = (uint8_t*)from;
+ 
+-  return ((__uint32_t)(p[0]) << 24) +
+-    ((__uint32_t)(p[1]) << 16) +
+-    ((__uint32_t)(p[2]) << 8) +
+-    (__uint32_t)p[3];
++  return ((uint32_t)(p[0]) << 24) +
++    ((uint32_t)(p[1]) << 16) +
++    ((uint32_t)(p[2]) << 8) +
++    (uint32_t)p[3];
+ }
+ 
+ 
+ unsigned long le_long(const void * from)
+ {
+-  __uint8_t *p = (__uint8_t*)from;
++  uint8_t *p = (uint8_t*)from;
+ 
+-  return ((__uint32_t)(p[3]) << 24) +
+-    ((__uint32_t)(p[2]) << 16) +
+-    ((__uint32_t)(p[1]) << 8) +
+-    (__uint32_t)p[0];
++  return ((uint32_t)(p[3]) << 24) +
++    ((uint32_t)(p[2]) << 16) +
++    ((uint32_t)(p[1]) << 8) +
++    (uint32_t)p[0];
+ 
+ }
+ 
+ 
+ unsigned long long be_longlong(const void * from)
+ {
+-  __uint8_t *p = (__uint8_t*)from;
++  uint8_t *p = (uint8_t*)from;
+ 
+   return ((unsigned long long)(p[0]) << 56) +
+     ((unsigned long long)(p[1]) << 48) +
+@@ -552,7 +553,7 @@
+ 
+ unsigned long long le_longlong(const void * from)
+ {
+-  __uint8_t *p = (__uint8_t*)from;
++  uint8_t *p = (uint8_t*)from;
+ 
+   return ((unsigned long long)(p[7]) << 56) +
+     ((unsigned long long)(p[6]) << 48) +
+--- a/src/core/device-tree.cc	2016-02-05 00:02:15.539260197 +0000
++++ b/src/core/device-tree.cc	2016-02-05 00:38:50.523293133 +0000
+@@ -16,6 +16,7 @@
+ #include <sys/stat.h>
+ #include <fcntl.h>
+ #include <stdlib.h>
++#include <stdint.h>
+ #include <stdio.h>
+ #include <string.h>
+ #include <unistd.h>
+@@ -24,13 +25,13 @@
+ __ID("@(#) $Id: device-tree.cc 2433 2012-01-10 22:01:30Z lyonel $");
+ 
+ #define DIMMINFOSIZE 0x80
+-typedef __uint8_t dimminfo_buf[DIMMINFOSIZE];
++typedef uint8_t dimminfo_buf[DIMMINFOSIZE];
+ 
+ struct dimminfo
+ {
+-  __uint8_t version3;
++  uint8_t version3;
+   char serial[16];
+-  __uint16_t version1, version2;
++  uint16_t version1, version2;
+ };
+ 
+ #define DEVICETREE "/proc/device-tree"
+--- a/src/core/pci.cc	2016-02-05 06:02:38.744584655 +0000
++++ b/src/core/pci.cc	2016-02-05 06:02:20.471584381 +0000
+@@ -7,6 +7,7 @@
+ #include <sys/stat.h>
+ #include <fcntl.h>
+ #include <stdint.h>
++#include <libgen.h>
+ #include <unistd.h>
+ #include <stdio.h>
+ #include <string.h>
+@@ -1131,9 +1132,9 @@
+           string drivername = readlink(string(devices[i]->d_name)+"/driver");
+           string modulename = readlink(string(devices[i]->d_name)+"/driver/module");
+ 
+-          device->setConfig("driver", basename(drivername.c_str()));
++          device->setConfig("driver", basename(const_cast<char *>(drivername.c_str())));
+           if(exists(modulename))
+-            device->setConfig("module", basename(modulename.c_str()));
++            device->setConfig("module", basename(const_cast<char *>(modulename.c_str())));
+ 
+           if(exists(string(devices[i]->d_name)+"/rom"))
+           {
+--- a/src/core/network.cc	2016-02-05 02:20:31.174384674 +0000
++++ b/src/core/network.cc	2016-02-05 02:21:27.940385526 +0000
+@@ -31,6 +31,7 @@
+ #include <fcntl.h>
+ #include <unistd.h>
+ #include <stdio.h>
++#include <stdint.h>
+ #include <string.h>
+ #include <string>
+ #include <sys/types.h>
+@@ -49,9 +50,9 @@
+ #define SIOCETHTOOL     0x8946
+ #endif
+ typedef unsigned long long u64;
+-typedef __uint32_t u32;
+-typedef __uint16_t u16;
+-typedef __uint8_t u8;
++typedef uint32_t u32;
++typedef uint16_t u16;
++typedef uint8_t u8;
+ 
+ struct ethtool_cmd
+ {
+--- a/src/core/cpufreq.cc	2016-02-05 02:24:29.199388245 +0000
++++ b/src/core/cpufreq.cc	2016-02-05 02:26:03.283389657 +0000
+@@ -14,6 +14,7 @@
+ #include <sys/types.h>
+ #include <sys/stat.h>
+ #include <fcntl.h>
++#include <limits.h>
+ #include <stdio.h>
+ #include <unistd.h>
+ #include <dirent.h>
+--- a/src/core/abi.cc	2016-02-05 06:13:46.072594669 +0000
++++ b/src/core/abi.cc	2016-02-05 06:14:19.320595168 +0000
+@@ -11,6 +11,7 @@
+ #include <unistd.h>
+ #include <stdlib.h>
+ #include <dirent.h>
++#include <limits.h>
+ 
+ __ID("@(#) $Id: mem.cc 1352 2006-05-27 23:54:13Z ezix $");
+ 
+@@ -19,7 +20,7 @@
+ bool scan_abi(hwNode & system)
+ {
+   // are we compiled as 32- or 64-bit process ?
+-  system.setWidth(sysconf(_SC_LONG_BIT));
++  system.setWidth(sysconf(LONG_BIT));
+ 
+   pushd(PROC_SYS);
+ 

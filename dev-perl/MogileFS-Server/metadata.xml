@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>robbat2@gentoo.org</email>
+    <description>Primary Maintainer</description>
+  </maintainer>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">MogileFS-Server</remote-id>
+    <remote-id type="cpan-module">Mgd</remote-id>
+    <remote-id type="cpan-module">MogPath</remote-id>
+    <remote-id type="cpan-module">MogileFS</remote-id>
+    <remote-id type="cpan-module">MogileFS::Checksum</remote-id>
+    <remote-id type="cpan-module">MogileFS::Class</remote-id>
+    <remote-id type="cpan-module">MogileFS::Config</remote-id>
+    <remote-id type="cpan-module">MogileFS::Connection::Client</remote-id>
+    <remote-id type="cpan-module">MogileFS::Connection::Mogstored</remote-id>
+    <remote-id type="cpan-module">MogileFS::Connection::Worker</remote-id>
+    <remote-id type="cpan-module">MogileFS::DevFID</remote-id>
+    <remote-id type="cpan-module">MogileFS::Device</remote-id>
+    <remote-id type="cpan-module">MogileFS::DeviceState</remote-id>
+    <remote-id type="cpan-module">MogileFS::Domain</remote-id>
+    <remote-id type="cpan-module">MogileFS::Exception</remote-id>
+    <remote-id type="cpan-module">MogileFS::FID</remote-id>
+    <remote-id type="cpan-module">MogileFS::Factory</remote-id>
+    <remote-id type="cpan-module">MogileFS::Factory::Class</remote-id>
+    <remote-id type="cpan-module">MogileFS::Factory::Device</remote-id>
+    <remote-id type="cpan-module">MogileFS::Factory::Domain</remote-id>
+    <remote-id type="cpan-module">MogileFS::Factory::Host</remote-id>
+    <remote-id type="cpan-module">MogileFS::HTTPFile</remote-id>
+    <remote-id type="cpan-module">MogileFS::Host</remote-id>
+    <remote-id type="cpan-module">MogileFS::IOStatWatch::Client</remote-id>
+    <remote-id type="cpan-module">MogileFS::IOStatWatcher</remote-id>
+    <remote-id type="cpan-module">MogileFS::ProcManager</remote-id>
+    <remote-id type="cpan-module">MogileFS::Rebalance</remote-id>
+    <remote-id type="cpan-module">MogileFS::ReplicationPolicy</remote-id>
+    <remote-id type="cpan-module">MogileFS::ReplicationPolicy::MultipleHosts</remote-id>
+    <remote-id type="cpan-module">MogileFS::ReplicationPolicy::Union</remote-id>
+    <remote-id type="cpan-module">MogileFS::ReplicationRequest</remote-id>
+    <remote-id type="cpan-module">MogileFS::Server</remote-id>
+    <remote-id type="cpan-module">MogileFS::Store</remote-id>
+    <remote-id type="cpan-module">MogileFS::Store::MySQL</remote-id>
+    <remote-id type="cpan-module">MogileFS::Store::Postgres</remote-id>
+    <remote-id type="cpan-module">MogileFS::Store::SQLite</remote-id>
+    <remote-id type="cpan-module">MogileFS::Test</remote-id>
+    <remote-id type="cpan-module">MogileFS::Util</remote-id>
+    <remote-id type="cpan-module">MogileFS::Worker</remote-id>
+    <remote-id type="cpan-module">MogileFS::Worker::Delete</remote-id>
+    <remote-id type="cpan-module">MogileFS::Worker::Fsck</remote-id>
+    <remote-id type="cpan-module">MogileFS::Worker::JobMaster</remote-id>
+    <remote-id type="cpan-module">MogileFS::Worker::Monitor</remote-id>
+    <remote-id type="cpan-module">MogileFS::Worker::Query</remote-id>
+    <remote-id type="cpan-module">MogileFS::Worker::Reaper</remote-id>
+    <remote-id type="cpan-module">MogileFS::Worker::Replicate</remote-id>
+    <remote-id type="cpan-module">Mogstored::ChildProcess</remote-id>
+    <remote-id type="cpan-module">Mogstored::ChildProcess::DiskUsage</remote-id>
+    <remote-id type="cpan-module">Mogstored::ChildProcess::IOStat</remote-id>
+    <remote-id type="cpan-module">Mogstored::FIDStatter</remote-id>
+    <remote-id type="cpan-module">Mogstored::HTTPServer</remote-id>
+    <remote-id type="cpan-module">Mogstored::HTTPServer::Apache</remote-id>
+    <remote-id type="cpan-module">Mogstored::HTTPServer::Lighttpd</remote-id>
+    <remote-id type="cpan-module">Mogstored::HTTPServer::None</remote-id>
+    <remote-id type="cpan-module">Mogstored::HTTPServer::Perlbal</remote-id>
+    <remote-id type="cpan-module">Mogstored::SideChannelClient</remote-id>
+    <remote-id type="cpan-module">Mogstored::SideChannelListener</remote-id>
+    <remote-id type="cpan-module">Mogstored::TaskQueue</remote-id>
+    <remote-id type="cpan-module">MogstoredHandle</remote-id>
+    <remote-id type="cpan-module">ProcessHandle</remote-id>
+    <remote-id type="cpan-module">TrackerHandle</remote-id>
+  </upstream>
+</pkgmetadata>

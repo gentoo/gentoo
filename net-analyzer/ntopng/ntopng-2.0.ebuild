@@ -1,9 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
-inherit autotools user
+inherit autotools eutils user
 
 DESCRIPTION="Network traffic analyzer with web interface"
 HOMEPAGE="http://www.ntop.org/"
@@ -27,7 +27,26 @@ RDEPEND="${DEPEND}
 
 src_prepare() {
 	cat "${S}/configure.seed" | sed "s/@VERSION@/${PV}/g" | sed "s/@SHORT_VERSION@/${PV}/g" > "${S}/configure.ac"
+	epatch "${FILESDIR}/${P}-dont-build-ndpi.patch"
 	eautoreconf
+
+	cd "${S}/nDPI"
+	eautoreconf
+}
+
+src_configure() {
+	cd "${S}/nDPI"
+	econf
+	cd "${S}"
+	econf
+}
+
+src_compile() {
+	cd "${S}/nDPI"
+	emake
+
+	cd "${S}"
+	emake
 }
 
 src_install() {

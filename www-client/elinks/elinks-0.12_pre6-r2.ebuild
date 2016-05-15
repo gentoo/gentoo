@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -23,8 +23,8 @@ DEPEND="
 	bzip2? ( >=app-arch/bzip2-1.0.2 )
 	gc? ( dev-libs/boehm-gc )
 	ssl? (
-		!libressl? ( dev-libs/openssl:0 )
-		libressl? ( dev-libs/libressl )
+		!libressl? ( dev-libs/openssl:0= )
+		libressl? ( dev-libs/libressl:0= )
 	)
 	xml? ( >=dev-libs/expat-1.95.4 )
 	X? ( x11-libs/libX11 x11-libs/libXt )

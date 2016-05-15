@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -7,8 +7,8 @@ PYTHON_COMPAT=( python{2_7,3_3,3_4} )
 
 inherit distutils-r1
 
-DESCRIPTION="A tool to generate a static blog, with restructured text (or markdown) input files"
-HOMEPAGE="http://pelican.notmyidea.org/ https://pypi.python.org/pypi/pelican"
+DESCRIPTION="A tool to generate a static blog, with restructured text or markdown input files"
+HOMEPAGE="http://blog.getpelican.com/ https://pypi.python.org/pypi/pelican"
 SRC_URI="https://github.com/getpelican/pelican/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="AGPL-3"

@@ -73,7 +73,7 @@ HASKELL_CABAL_EXPF="pkg_setup src_compile src_test src_install pkg_postinst pkg_
 QA_CONFIGURE_OPTIONS+=" --with-compiler --with-hc --with-hc-pkg --with-gcc"
 
 case "${EAPI:-0}" in
-	2|3|4|5) HASKELL_CABAL_EXPF+=" src_configure" ;;
+	2|3|4|5|6) HASKELL_CABAL_EXPF+=" src_configure" ;;
 	*) ;;
 esac
 
@@ -185,7 +185,9 @@ cabal-bootstrap() {
 	elif [[ -f "${S}/Setup.hs" ]]; then
 		setupmodule="${S}/Setup.hs"
 	else
-		die "No Setup.lhs or Setup.hs found"
+		eqawarn "No Setup.lhs or Setup.hs found. Either add Setup.hs to package or call cabal-mksetup from ebuild"
+		cabal-mksetup
+		setupmodule="${S}/Setup.hs"
 	fi
 
 	if [[ -z "${CABAL_BOOTSTRAP}" && -z "${CABAL_FROM_GHC}" ]] && ! ghc-sanecabal "${CABAL_MIN_VERSION}"; then

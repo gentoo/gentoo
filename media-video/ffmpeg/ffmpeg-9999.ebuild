@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
+EAPI=6
 
 # Subslot: libavutil major.libavcodec major.libavformat major
 # Since FFmpeg ships several libraries, subslot is kind of limited here.
@@ -17,7 +17,7 @@ FFMPEG_SUBSLOT=55.57.57
 
 SCM=""
 if [ "${PV#9999}" != "${PV}" ] ; then
-	SCM="git-2"
+	SCM="git-r3"
 	EGIT_REPO_URI="git://source.ffmpeg.org/ffmpeg.git"
 fi
 
@@ -47,10 +47,6 @@ LICENSE="
 		!gpl? ( LGPL-3 )
 	)
 	encode? (
-		aac? (
-			gpl? ( GPL-3 )
-			!gpl? ( LGPL-3 )
-		)
 		amrenc? (
 			gpl? ( GPL-3 )
 			!gpl? ( LGPL-3 )
@@ -67,7 +63,7 @@ fi
 # or $(use_enable foo foo) if no :bar is set.
 # foo is added to IUSE.
 FFMPEG_FLAG_MAP=(
-		+bzip2:bzlib cpudetection:runtime-cpudetect debug doc gcrypt gnutls gmp
+		+bzip2:bzlib cpudetection:runtime-cpudetect debug gcrypt gnutls gmp
 		+gpl +hardcoded-tables +iconv lzma +network openssl +postproc
 		samba:libsmbclient sdl:ffplay sdl vaapi vdpau X:xlib xcb:libxcb
 		xcb:libxcb-shm xcb:libxcb-xfixes +zlib
@@ -79,7 +75,7 @@ FFMPEG_FLAG_MAP=(
 		# decoders
 		amr:libopencore-amrwb amr:libopencore-amrnb fdk:libfdk-aac
 		jpeg2k:libopenjpeg bluray:libbluray celt:libcelt gme:libgme gsm:libgsm
-		mmal modplug:libmodplug opus:libopus quvi:libquvi librtmp ssh:libssh
+		mmal modplug:libmodplug opus:libopus libilbc librtmp ssh:libssh
 		schroedinger:libschroedinger speex:libspeex vorbis:libvorbis vpx:libvpx
 		zvbi:libzvbi
 		# libavfilter options
@@ -94,14 +90,14 @@ FFMPEG_FLAG_MAP=(
 
 # Same as above but for encoders, i.e. they do something only with USE=encode.
 FFMPEG_ENCODER_FLAG_MAP=(
-	aac:libvo-aacenc amrenc:libvo-amrwbenc mp3:libmp3lame
-	aacplus:libaacplus faac:libfaac kvazaar:libkvazaar nvenc:nvenc
+	amrenc:libvo-amrwbenc mp3:libmp3lame
+	faac:libfaac kvazaar:libkvazaar nvenc:nvenc
 	openh264:libopenh264 snappy:libsnappy theora:libtheora twolame:libtwolame
 	wavpack:libwavpack webp:libwebp x264:libx264 x265:libx265 xvid:libxvid
 )
 
 IUSE="
-	alsa +encode examples jack libressl oss pic static-libs test v4l
+	alsa doc +encode jack oss pic static-libs test v4l
 	${FFMPEG_FLAG_MAP[@]%:*}
 	${FFMPEG_ENCODER_FLAG_MAP[@]%:*}
 "
@@ -167,13 +163,11 @@ RDEPEND="
 	celt? ( >=media-libs/celt-0.11.1-r1[${MULTILIB_USEDEP}] )
 	chromaprint? ( >=media-libs/chromaprint-1.2-r1[${MULTILIB_USEDEP}] )
 	encode? (
-		aac? ( >=media-libs/vo-aacenc-0.1.3[${MULTILIB_USEDEP}] )
-		aacplus? ( >=media-libs/libaacplus-2.0.2-r1[${MULTILIB_USEDEP}] )
 		amrenc? ( >=media-libs/vo-amrwbenc-0.1.2-r1[${MULTILIB_USEDEP}] )
 		faac? ( >=media-libs/faac-1.28-r3[${MULTILIB_USEDEP}] )
 		kvazaar? ( media-libs/kvazaar[${MULTILIB_USEDEP}] )
 		mp3? ( >=media-sound/lame-3.99.5-r1[${MULTILIB_USEDEP}] )
-		nvenc? ( >=media-video/nvenc-5 )
+		nvenc? ( media-video/nvidia_video_sdk )
 		openh264? ( >=media-libs/openh264-1.4.0-r1[${MULTILIB_USEDEP}] )
 		snappy? ( >=app-arch/snappy-1.1.2-r1[${MULTILIB_USEDEP}] )
 		theora? (
@@ -207,10 +201,11 @@ RDEPEND="
 		>=media-libs/libdc1394-2.2.1[${MULTILIB_USEDEP}]
 		>=sys-libs/libraw1394-2.1.0-r1[${MULTILIB_USEDEP}]
 	)
-	jack? ( >=media-sound/jack-audio-connection-kit-0.121.3-r1[${MULTILIB_USEDEP}] )
-	jpeg2k? ( >=media-libs/openjpeg-1.5.0:0[${MULTILIB_USEDEP}] )
+	jack? ( virtual/jack[${MULTILIB_USEDEP}] )
+	jpeg2k? ( >=media-libs/openjpeg-2:2[${MULTILIB_USEDEP}] )
 	libass? ( >=media-libs/libass-0.10.2[${MULTILIB_USEDEP}] )
 	libcaca? ( >=media-libs/libcaca-0.99_beta18-r1[${MULTILIB_USEDEP}] )
+	libilbc? ( >=media-libs/libilbc-2[${MULTILIB_USEDEP}] )
 	libsoxr? ( >=media-libs/soxr-0.1.0[${MULTILIB_USEDEP}] )
 	libv4l? ( >=media-libs/libv4l-0.9.5[${MULTILIB_USEDEP}] )
 	lzma? ( >=app-arch/xz-utils-5.0.5-r1[${MULTILIB_USEDEP}] )
@@ -218,13 +213,9 @@ RDEPEND="
 	modplug? ( >=media-libs/libmodplug-0.8.8.4-r1[${MULTILIB_USEDEP}] )
 	openal? ( >=media-libs/openal-1.15.1[${MULTILIB_USEDEP}] )
 	opengl? ( >=virtual/opengl-7.0-r1[${MULTILIB_USEDEP}] )
-	openssl? (
-		!libressl? ( >=dev-libs/openssl-1.0.1h-r2:0[${MULTILIB_USEDEP}] )
-		libressl? ( dev-libs/libressl[${MULTILIB_USEDEP}] )
-	)
+	openssl? ( >=dev-libs/openssl-1.0.1h-r2:0[${MULTILIB_USEDEP}] )
 	opus? ( >=media-libs/opus-1.0.2-r2[${MULTILIB_USEDEP}] )
 	pulseaudio? ( >=media-sound/pulseaudio-2.1-r1[${MULTILIB_USEDEP}] )
-	quvi? ( media-libs/libquvi:0.4[${MULTILIB_USEDEP}] )
 	librtmp? ( >=media-video/rtmpdump-2.4_p20131018[${MULTILIB_USEDEP}] )
 	rubberband? ( >=media-libs/rubberband-1.8.1-r1[${MULTILIB_USEDEP}] )
 	samba? ( >=net-fs/samba-3.6.23-r1[${MULTILIB_USEDEP}] )
@@ -256,17 +247,11 @@ RDEPEND="
 
 DEPEND="${RDEPEND}
 	>=sys-devel/make-3.81
-	doc? ( app-text/texi2html )
-	fontconfig? ( >=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}] )
-	gnutls? ( >=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}] )
-	ieee1394? ( >=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}] )
+	doc? ( sys-apps/texinfo )
+	>=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}]
 	ladspa? ( >=media-libs/ladspa-sdk-1.13-r2[${MULTILIB_USEDEP}] )
-	libv4l? ( >=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}] )
 	cpu_flags_x86_mmx? ( >=dev-lang/yasm-1.2 )
-	librtmp? ( >=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}] )
-	schroedinger? ( >=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}] )
 	test? ( net-misc/wget sys-devel/bc )
-	truetype? ( >=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}] )
 	v4l? ( sys-kernel/linux-headers )
 "
 
@@ -280,7 +265,6 @@ GPL_REQUIRED_USE="
 	frei0r? ( gpl )
 	cdio? ( gpl )
 	samba? ( gpl )
-	zvbi? ( gpl )
 	encode? (
 		x264? ( gpl )
 		x265? ( gpl )
@@ -295,7 +279,7 @@ REQUIRED_USE="
 	${GPL_REQUIRED_USE}
 	${CPU_REQUIRED_USE}"
 RESTRICT="
-	encode? ( faac? ( bindist ) aacplus? ( bindist ) nvenc? ( bindist ) )
+	encode? ( faac? ( bindist ) )
 	gpl? ( openssl? ( bindist ) fdk? ( bindist ) )
 "
 
@@ -309,7 +293,7 @@ src_prepare() {
 	if [[ "${PV%_p*}" != "${PV}" ]] ; then # Snapshot
 		export revision=git-N-${FFMPEG_REVISION}
 	fi
-	epatch_user
+	default
 }
 
 multilib_src_configure() {
@@ -324,10 +308,10 @@ multilib_src_configure() {
 		ffuse+=( "${FFMPEG_ENCODER_FLAG_MAP[@]}" )
 
 		# Licensing.
-		if use aac || use amrenc ; then
+		if use amrenc ; then
 			myconf+=( --enable-version3 )
 		fi
-		if use aacplus || use faac || use nvenc ; then
+		if use faac ; then
 			myconf+=( --enable-nonfree )
 		fi
 	else
@@ -385,11 +369,14 @@ multilib_src_configure() {
 	# We need to do this so that features of that CPU will be better used
 	# If they contain an unknown CPU it will not hurt since ffmpeg's configure
 	# will just ignore it.
-	for i in $(get-flag mcpu) $(get-flag march) $(get-flag mtune) ; do
+	for i in $(get-flag mcpu) $(get-flag march) ; do
 		[[ ${i} = native ]] && i="host" # bug #273421
 		myconf+=( --cpu=${i} )
 		break
 	done
+
+	# LTO support, bug #566282
+	is-flagq "-flto*" && myconf+=( "--enable-lto" )
 
 	# Mandatory configuration
 	myconf=(
@@ -406,7 +393,7 @@ multilib_src_configure() {
 			*freebsd*)
 				myconf+=( --target-os=freebsd )
 				;;
-			mingw32*)
+			*mingw32*)
 				myconf+=( --target-os=mingw32 )
 				;;
 			*linux*)
@@ -415,16 +402,24 @@ multilib_src_configure() {
 		esac
 	fi
 
+	# doc
+	myconf+=(
+		$(multilib_native_use_enable doc)
+		$(multilib_native_use_enable doc htmlpages)
+		$(multilib_native_enable manpages)
+	)
+
 	set -- "${S}/configure" \
 		--prefix="${EPREFIX}/usr" \
 		--libdir="${EPREFIX}/usr/$(get_libdir)" \
 		--shlibdir="${EPREFIX}/usr/$(get_libdir)" \
+		--docdir="${EPREFIX}/usr/share/doc/${PF}/html" \
 		--mandir="${EPREFIX}/usr/share/man" \
 		--enable-shared \
 		--cc="$(tc-getCC)" \
 		--cxx="$(tc-getCXX)" \
 		--ar="$(tc-getAR)" \
-		--optflags=" " \
+		--optflags="${CFLAGS}" \
 		$(use_enable static-libs static) \
 		"${myconf[@]}"
 	echo "${@}"
@@ -444,7 +439,7 @@ multilib_src_compile() {
 }
 
 multilib_src_install() {
-	emake V=1 DESTDIR="${D}" install install-man
+	emake V=1 DESTDIR="${D}" install install-doc
 
 	if multilib_is_native_abi; then
 		for i in "${FFTOOLS[@]}" ; do
@@ -458,11 +453,6 @@ multilib_src_install() {
 multilib_src_install_all() {
 	dodoc Changelog README.md CREDITS doc/*.txt doc/APIchanges
 	[ -f "RELEASE_NOTES" ] && dodoc "RELEASE_NOTES"
-	use doc && dohtml -r doc/*
-	if use examples ; then
-		dodoc -r doc/examples
-		docompress -x /usr/share/doc/${PF}/examples
-	fi
 }
 
 multilib_src_test() {

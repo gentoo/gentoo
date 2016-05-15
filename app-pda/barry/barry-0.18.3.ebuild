@@ -1,9 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
-inherit bash-completion-r1 eutils gnome2-utils udev
+inherit bash-completion-r1 eutils flag-o-matic gnome2-utils udev
 
 DESCRIPTION="Sync, backup, program management, and charging for BlackBerry devices"
 HOMEPAGE="http://www.netdirect.ca/software/packages/barry/"
@@ -36,6 +36,10 @@ DEPEND="${RDEPEND}
 DOCS=( AUTHORS ChangeLog KnownBugs NEWS README TODO )
 
 src_prepare() {
+	epatch "${FILESDIR}"/${PN}-0.18.4-shared_ptr.patch
+
+	append-cxxflags -std=c++11
+
 	sed -i -e 's:plugdev:usb:g' "${S}"/udev/99-blackberry-perms.rules || die
 	sed -i -e '/Icon/s:=.*:=barry:' "${S}"/menu/*.desktop || die
 }

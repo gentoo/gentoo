@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="A Simple totally OO CGI interface that is CGI.pm compliant"
 
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="alpha amd64 ~hppa ia64 ppc ppc64 sparc x86"
 IUSE="test"
 
 RDEPEND=""

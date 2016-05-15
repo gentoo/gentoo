@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -20,7 +20,7 @@ IUSE=""
 
 RDEPEND="dev-perl/Inline
 	dev-perl/TimeDate
-	dev-perl/DateManip
+	dev-perl/Date-Manip
 	virtual/perl-Digest-MD5
 	>=dev-perl/Mail-Mbox-MessageParser-1.40.01"
 DEPEND="${RDEPEND}"

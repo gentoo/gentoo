@@ -1,0 +1,16 @@
+ setup.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/setup.py b/setup.py
+index 0a2dac3..b7ad412 100644
+--- a/setup.py
++++ b/setup.py
+@@ -42,7 +42,7 @@ setup(name='urllib3',
+       url='http://urllib3.readthedocs.org/',
+       license='MIT',
+       packages=['urllib3',
+-                'urllib3.packages', 'urllib3.packages.ssl_match_hostname',
++                'urllib3.packages',
+                 'urllib3.contrib', 'urllib3.util',
+                 ],
+       requires=[],

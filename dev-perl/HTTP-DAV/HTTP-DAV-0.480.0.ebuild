@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="A WebDAV client library for Perl5"
 
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc x86"
 IUSE=""
 
 RDEPEND="

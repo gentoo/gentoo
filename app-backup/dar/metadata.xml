@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer>
+	<maintainer type="person">
 		<email>rich0@gentoo.org</email>
 	</maintainer>
 	<longdescription>
@@ -16,6 +16,7 @@ operations, including with ssh.
 		<flag name="dar64">Enables --enable-mode=64 option, which replace infinite
 		by 64 bit integers</flag>
 		<flag name="gcrypt">Enables strong encryption support</flag>
+		<flag name="gpgme">Enables usage of asymetric crypto algorithms</flag>
 	</use>
 	<upstream>
 		<remote-id type="sourceforge">dar</remote-id>

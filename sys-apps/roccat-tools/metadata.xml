@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>proxy-maintainers</herd>
-	<maintainer>
+	<maintainer type="person">
 		<email>dpisklov@gmail.com</email>
 		<name>Dmitry Pisklov</name>
 		<description>Proxy maintainer. Assign bugs to him</description>
 	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
 	<use>
 		<flag name="lua">Build support for Lua scripting for RyosMKPro ripple effects</flag>
-		<flag name="lua51">Build support for Lua scripting for RyosMKPro ripple effects - support lua 5.1</flag>
-		<flag name="lua52">Build support for Lua scripting for RyosMKPro ripple effects - support lua 5.2</flag>
 	</use>
 	<upstream>
 		<remote-id type="sourceforge">roccat</remote-id>

@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>gnome</herd>
+<maintainer type="project">
+	<email>gnome@gentoo.org</email>
+	<name>Gentoo GNOME Desktop</name>
+</maintainer>
 <use>
-	<flag name='mathml'>Install additional fonts for proper mathml
+	<flag name="mathml">Install additional fonts for proper mathml
 	support.</flag>
-	<flag name='t1lib'>Enable <pkg>media-libs/t1lib</pkg> support</flag>
+	<flag name="t1lib">Enable <pkg>media-libs/t1lib</pkg> support</flag>
 </use>
 </pkgmetadata>

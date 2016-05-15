@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 EAPI=5
@@ -11,7 +11,7 @@ HOMEPAGE="http://www.oracle.com/technetwork/java/javaee/jta/index.html"
 SRC_URI="${JTA_ZIP}"
 LICENSE="sun-bcla-jta"
 SLOT=0
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~x86-macos"
+KEYWORDS="~amd64 ~ppc64 ~x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~x86-macos"
 IUSE=""
 DEPEND=">=app-arch/unzip-5.50-r1
 >=virtual/jdk-1.5"

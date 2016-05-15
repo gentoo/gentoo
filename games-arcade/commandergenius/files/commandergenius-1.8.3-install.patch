@@ -1,0 +1,20 @@
+--- CGenius-1.8.0.0-Release-Source.orig/src/install.cmake
++++ CGenius-1.8.0.0-Release-Source/src/install.cmake
+@@ -22,7 +22,7 @@
+ 
+ # This will copy the resources files to the proper directory
+ IF(IS_DIRECTORY "${CMAKE_SOURCE_DIR}/vfsroot")
+-	INSTALL(DIRECTORY vfsroot/ 
++	INSTALL(DIRECTORY ${CMAKE_SOURCE_DIR}vfsroot/ 
+ 		DESTINATION ${DATADIR})
+ ENDIF(IS_DIRECTORY "${CMAKE_SOURCE_DIR}/vfsroot")
+ 
+@@ -31,7 +31,7 @@
+ 	DESTINATION ${DOCDIR})
+ 
+ # This will copy the readme file. 
+-INSTALL(FILES changelog.txt 
++INSTALL(FILES ${CMAKE_SOURCE_DIR}/changelog.txt 
+ 	DESTINATION ${DOCDIR})
+ 
+ # Windows might not have those dlls so we ship them with the packages

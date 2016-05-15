@@ -1,0 +1,63 @@
+Index: nedit-5.5/source/file.c
+===================================================================
+--- nedit-5.5.orig/source/file.c	2004-08-24 11:37:24.000000000 +0200
++++ nedit-5.5/source/file.c	2010-03-27 18:44:01.000000000 +0100
+@@ -1314,7 +1314,7 @@
+ */
+ void PrintString(const char *string, int length, Widget parent, const char *jobName)
+ {
+-    char tmpFileName[L_tmpnam];    /* L_tmpnam defined in stdio.h */
++    char *tmpFileName=strdup("/tmp/neditXXXXXX");
+     FILE *fp;
+     int fd;
+ 
+@@ -1325,14 +1325,10 @@
+ 	    1. Create a filename
+ 	    2. Open the file with the O_CREAT|O_EXCL flags
+ 	So all an attacker can do is a DoS on the print function. */
+-    tmpnam(tmpFileName);
++    fd = mkstemp(tmpFileName);
+ 
+     /* open the temporary file */
+-#ifdef VMS
+-    if ((fp = fopen(tmpFileName, "w", "rfm = stmlf")) == NULL)
+-#else
+-    if ((fd = open(tmpFileName, O_CREAT|O_EXCL|O_WRONLY, S_IRUSR | S_IWUSR)) < 0 || (fp = fdopen(fd, "w")) == NULL)
+-#endif /* VMS */
++    if ((fp = fdopen(fd, "w")) == NULL)
+     {
+         DialogF(DF_WARN, parent, 1, "Error while Printing",
+                 "Unable to write file for printing:\n%s", "OK",
+@@ -1346,7 +1342,7 @@
+     
+     /* write to the file */
+ #ifdef IBM_FWRITE_BUG
+-    write(fileno(fp), string, length);
++    write(fd, string, length);
+ #else
+     fwrite(string, sizeof(char), length, fp);
+ #endif
+@@ -1356,6 +1352,7 @@
+                 "%s not printed:\n%s", "OK", jobName, errorString());
+         fclose(fp); /* should call close(fd) in turn! */
+         remove(tmpFileName);
++	free(tmpFileName);
+         return;
+     }
+     
+@@ -1366,6 +1363,7 @@
+                 "Error closing temp. print file:\n%s", "OK",
+                 errorString());
+         remove(tmpFileName);
++	free(tmpFileName);
+         return;
+     }
+ 
+@@ -1377,6 +1375,7 @@
+     PrintFile(parent, tmpFileName, jobName);
+     remove(tmpFileName);
+ #endif /*VMS*/
++    free(tmpFileName);
+     return;
+ }
+ 

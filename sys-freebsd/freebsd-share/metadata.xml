@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>bsd</herd>
+  <maintainer type="project">
+    <email>bsd@gentoo.org</email>
+    <name>BSD Project</name>
+  </maintainer>
   <use>
-	<flag name='isdn'>Enable ISDN support</flag>
-    <flag name='zfs'>Enable ZFS support.</flag>
+	<flag name="isdn">Enable ISDN support</flag>
+    <flag name="zfs">Enable ZFS support.</flag>
   </use>
 </pkgmetadata>

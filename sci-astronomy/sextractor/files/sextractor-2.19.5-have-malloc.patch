@@ -1,0 +1,32 @@
+Author: Justin Pryzby <justinpryzby@users.sf.net>
+Description: (guess) Define rpl_malloc if not there.
+--- a/src/misc.c
++++ b/src/misc.c
+@@ -34,6 +34,8 @@
+ #include	<time.h>
+ #include	<sys/time.h>
+ 
++#include <sys/types.h>
++
+ #include	"define.h"
+ #include	"globals.h"
+ 
+@@ -153,3 +155,18 @@
+   }
+ 
+ 
++#if !HAVE_MALLOC
++#undef malloc
++
++// Allocate an N-byte block of memory from the heap.  If N is zero,
++// allocate a 1-byte block.
++void *rpl_malloc(size_t n)
++{
++	void *malloc();
++	if (0==n) {
++		n = 1;
++	}
++
++	return malloc(n);
++}
++#endif

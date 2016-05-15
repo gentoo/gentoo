@@ -13,7 +13,7 @@ SRC_URI="https://minted.googlecode.com/files/${PN}-v${PV}.zip"
 SLOT="0"
 LICENSE="BSD"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
-IUSE=""
+IUSE="doc"
 
 DEPEND="app-arch/unzip"
 RDEPEND="
@@ -23,6 +23,7 @@ RDEPEND="
 S="${WORKDIR}"/
 
 src_install() {
+	LATEX_DOC_ARGUMENTS='-shell-escape'
 	latex-package_src_install
 	dodoc README
 }

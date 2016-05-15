@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -21,8 +21,8 @@ RDEPEND="
 	x11-libs/libXext
 	x11-libs/libXrender
 	png?  ( >=media-libs/libpng-1.4:0 )
-	jpeg? ( virtual/jpeg )
-	gif?  ( media-libs/giflib )
+	jpeg? ( virtual/jpeg:= )
+	gif?  ( <media-libs/giflib-5 )
 	svg? ( gnome-base/librsvg )
 	tiff? ( media-libs/tiff:0 )
 	truetype? ( media-libs/freetype )"

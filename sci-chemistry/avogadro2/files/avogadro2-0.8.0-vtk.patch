@@ -1,0 +1,142 @@
+commit 23a9474aad8eba503bcfe54584fd7cad106bda17
+Author: Marcus D. Hanwell <marcus.hanwell@kitware.com>
+Date:   Mon Sep 21 12:03:07 2015 -0400
+
+    Made VTK truly optional for Avogadro application
+
+diff --git a/avogadro/CMakeLists.txt b/avogadro/CMakeLists.txt
+index 90534ea..24bdd46 100644
+--- a/avogadro/CMakeLists.txt
++++ b/avogadro/CMakeLists.txt
+@@ -8,6 +8,7 @@ option(USE_VTK "Build with VTK support" OFF)
+ if(USE_VTK)
+   find_package(VTK COMPONENTS vtkGUISupportQt vtkRenderingOpenGL REQUIRED)
+   include(${VTK_USE_FILE})
++  add_definitions(-DAVO_USE_VTK)
+ endif()
+ 
+ if(MSVC)
+diff --git a/avogadro/mainwindow.cpp b/avogadro/mainwindow.cpp
+index a1c09e8..8fe3038 100644
+--- a/avogadro/mainwindow.cpp
++++ b/avogadro/mainwindow.cpp
+@@ -81,7 +81,9 @@
+ # include <molequeue/client/client.h>
+ #endif // Avogadro_ENABLE_RPC
+ 
+-#include <avogadro/vtk/vtkglwidget.h>
++#ifdef AVO_USE_VTK
++# include <avogadro/vtk/vtkglwidget.h>
++#endif
+ 
+ namespace Avogadro {
+ 
+@@ -198,8 +200,10 @@ using QtGui::ToolPluginFactory;
+ using QtGui::ExtensionPlugin;
+ using QtGui::ExtensionPluginFactory;
+ using QtOpenGL::GLWidget;
+-using VTK::vtkGLWidget;
+ using QtPlugins::PluginManager;
++#ifdef AVO_USE_VTK
++using VTK::vtkGLWidget;
++#endif
+ 
+ MainWindow::MainWindow(const QStringList &fileNames, bool disableSettings)
+   : m_molecule(NULL),
+@@ -434,9 +438,11 @@ void MainWindow::setMolecule(Molecule *mol)
+   if (GLWidget *glWidget = qobject_cast<QtOpenGL::GLWidget *>(w)) {
+     setWidgetMolecule(glWidget, mol);
+   }
++#ifdef AVO_USE_VTK
+   else if (vtkGLWidget *vtkWidget = qobject_cast<vtkGLWidget *>(w)) {
+     setWidgetMolecule(vtkWidget, mol);
+   }
++#endif
+ }
+ 
+ void MainWindow::markMoleculeDirty()
+@@ -831,6 +837,7 @@ void MainWindow::viewActivated(QWidget *widget)
+       m_moleculeModel->setActiveMolecule(m_molecule);
+     }
+   }
++#ifdef AVO_USE_VTK
+   else if (vtkGLWidget *vtkWidget = qobject_cast<vtkGLWidget*>(widget)) {
+     bool firstRun = populatePluginModel(vtkWidget->sceneModel());
+     m_sceneTreeView->setModel(&vtkWidget->sceneModel());
+@@ -851,6 +858,7 @@ void MainWindow::viewActivated(QWidget *widget)
+       m_moleculeModel->setActiveMolecule(m_molecule);
+     }
+   }
++#endif
+   updateWindowTitle();
+   activeMoleculeEdited();
+ }
+@@ -1194,14 +1202,18 @@ void MainWindow::setActiveDisplayTypes(QStringList displayTypes)
+ {
+   ScenePluginModel *scenePluginModel(NULL);
+   GLWidget *glWidget(NULL);
++#ifdef AVO_USE_VTK
+   VTK::vtkGLWidget *vtkWidget(NULL);
++#endif
+   if ((glWidget = qobject_cast<GLWidget *>(m_multiViewWidget->activeWidget()))) {
+     scenePluginModel = &glWidget->sceneModel();
+   }
++#ifdef AVO_USE_VTK
+   else if ((vtkWidget =
+            qobject_cast<VTK::vtkGLWidget *>(m_multiViewWidget->activeWidget()))) {
+     scenePluginModel = &vtkWidget->sceneModel();
+   }
++#endif
+ 
+   foreach (ScenePlugin *scene, scenePluginModel->scenePlugins())
+     scene->setEnabled(false);
+@@ -1211,8 +1223,10 @@ void MainWindow::setActiveDisplayTypes(QStringList displayTypes)
+         scene->setEnabled(true);
+   if (glWidget)
+     glWidget->updateScene();
++#ifdef AVO_USE_VTK
+   else if (vtkWidget)
+     vtkWidget->updateScene();
++#endif
+ }
+ 
+ void MainWindow::undoEdit()
+diff --git a/avogadro/viewfactory.cpp b/avogadro/viewfactory.cpp
+index 28009be..15c6a44 100644
+--- a/avogadro/viewfactory.cpp
++++ b/avogadro/viewfactory.cpp
+@@ -17,7 +17,9 @@
+ #include "viewfactory.h"
+ 
+ #include <avogadro/qtopengl/glwidget.h>
+-#include <avogadro/vtk/vtkglwidget.h>
++#ifdef AVO_USE_VTK
++# include <avogadro/vtk/vtkglwidget.h>
++#endif
+ 
+ namespace Avogadro {
+ 
+@@ -31,15 +33,22 @@ ViewFactory::~ViewFactory()
+ 
+ QStringList ViewFactory::views() const
+ {
+-  return QStringList() << "3D View" << "VTK";
++  QStringList views;
++  views << "3D View";
++#ifdef AVO_USE_VTK
++  views << "VTK";
++#endif
++  return views;
+ }
+ 
+ QWidget * ViewFactory::createView(const QString &view)
+ {
+   if (view == "3D View")
+     return new QtOpenGL::GLWidget;
++#ifdef AVO_USE_VTK
+   else if (view == "VTK")
+     return new VTK::vtkGLWidget;
++#endif
+   return NULL;
+ }
+ 

@@ -1,9 +1,9 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
-inherit eutils games
+inherit eutils flag-o-matic games
 
 DESCRIPTION="city/country simulation game for X and Linux SVGALib"
 HOMEPAGE="http://lincity.sourceforge.net/"
@@ -24,6 +24,7 @@ DEPEND="${RDEPEND}
 
 src_prepare() {
 	epatch "${FILESDIR}"/${P}-build.patch
+	append-cflags -std=gnu89 # build with gcc5 (bug #570574)
 }
 
 src_configure() {

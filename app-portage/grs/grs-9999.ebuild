@@ -1,8 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI="5"
+
+inherit linux-info
 
 PYTHON_COMPAT=( python3_4 )
 
@@ -37,6 +39,12 @@ RDEPEND="
 		sys-kernel/genkernel
 		sys-kernel/genkernel-next
 	)"
+
+pkg_setup() {
+	local CONFIG_CHECK="~CGROUPS"
+	local ERROR_CGROUPS="WARNING: grsrun requires CONFIG_CGROUPS enabled in the kernel."
+	linux-info_pkg_setup
+}
 
 src_install() {
 	distutils-r1_src_install

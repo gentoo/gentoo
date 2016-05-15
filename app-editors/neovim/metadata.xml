@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>vim</herd>
+  <maintainer type="project">
+    <email>vim@gentoo.org</email>
+    <name>Gentoo Vim Project</name>
+  </maintainer>
   <use>
-    <flag name='nvimpager'>Install nvimpager symlink to less.sh macro</flag>
+    <flag name="nvimpager">Install nvimpager symlink to less.sh macro</flag>
     <flag name="jemalloc">Use <pkg>dev-libs/jemalloc</pkg> for allocations</flag>
   </use>
   <upstream>

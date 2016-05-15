@@ -1,0 +1,44 @@
+From 62f320e6bb09b4e6454e6a49dc3a844b13b9cc34 Mon Sep 17 00:00:00 2001
+From: Allison Ryan Lortie <desrt@desrt.ca>
+Date: Tue, 26 Apr 2016 10:39:42 +0200
+Subject: [PATCH] GContextSpecificGroup: detach sources
+
+GContextSpecificGroup has been somewhat broken for a rather long time:
+when we remove the last reference on an object held in the group, we try
+to clean up the source, but fail to actually remove it from the
+mainloop.
+
+We will soon stop emitting signals on the source (due to it having been
+removed from the hash table) but any "in flight" signals will still be
+delivered on the source, which continues to exist.  This is a problem if
+the event is being delivered just as the object is being destroyed.
+
+This also means that we leave the source attached to the mainloop
+forever (and next time will create a new one)...
+
+This is demonstrated with the GtkAppChooser dialog which writes an
+update to the mimeapps.list file just as it is closing, triggering the
+app info monitor to fire just as it is being destroyed.
+
+Karl Tomlinson correctly analysed the problem and proposed this fix.
+
+https://bugzilla.gnome.org/show_bug.cgi?id=762994
+---
+ gio/gcontextspecificgroup.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/gio/gcontextspecificgroup.c b/gio/gcontextspecificgroup.c
+index b0eb279..211d765 100644
+--- a/gio/gcontextspecificgroup.c
++++ b/gio/gcontextspecificgroup.c
+@@ -234,6 +234,7 @@ g_context_specific_group_remove (GContextSpecificGroup *group,
+ 
+   g_assert (css->instance == instance);
+ 
++  g_source_destroy ((GSource *) css);
+   g_source_unref ((GSource *) css);
+   g_main_context_unref (context);
+ }
+-- 
+2.8.1
+

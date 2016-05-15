@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer>
+	<maintainer type="person">
 		<email>wired@gentoo.org</email>
 		<name>Alex Alexander</name>
 	</maintainer>
-	<maintainer>
+	<maintainer type="person">
 		<email>hwoarang@gentoo.org</email>
 		<name>Markos Chandras</name>
 	</maintainer>
 	<use>
-		<flag name='deblob'>Remove binary blobs from kernel sources to provide libre license compliance.</flag>
-		<flag name='experimental'>Apply patches that are considered experimental. For more information,
+		<flag name="deblob">Remove binary blobs from kernel sources to provide libre license compliance.</flag>
+		<flag name="experimental">Apply patches that are considered experimental. For more information,
 			check out the ChangeLog or the ebuild that interests you.</flag>
 	</use>
 	<upstream>

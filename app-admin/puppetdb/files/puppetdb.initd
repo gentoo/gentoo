@@ -17,7 +17,7 @@ checkconfig() {
         eerror "Missing INSTALL_DIR."
         eend 1
     fi
-    if [ ! -a $BOOTSTRAP_CONFIG ]; then
+    if [ ! -e $BOOTSTRAP_CONFIG ]; then
         eerror "Missing BOOTSTRAP_CONFIG."
         eend 1
     fi

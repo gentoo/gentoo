@@ -1,0 +1,13 @@
+Author: Ole Streicher <olebole@debian.org>
+Description: Add /usr/include/X11 to the X11 include paths
+--- a/install/unix/install1
++++ b/install/unix/install1
+@@ -615,7 +615,7 @@
+   x11incl="found"
+ else
+   ed_moptions delete X11INC >/dev/null
+-  x11inclpth='/usr/openwin/include /usr/include/X11R6 /usr/include/X11R5 /usr/X11R6/include /usr/X11R6/include/X11 /usr/X11R5/include /usr/local/include /include /usr/X/include /opt/X-local/include'
++  x11inclpth='/usr/include/X11 /usr/include/X11R6 /usr/include/X11R5 /usr/X11R6/include /usr/X11R6/include/X11 /usr/X11R5/include /usr/local/include /include /usr/X/include /opt/X-local/include'
+   for dir in $x11inclpth
+   do
+     if [ ! -d $dir ]; then

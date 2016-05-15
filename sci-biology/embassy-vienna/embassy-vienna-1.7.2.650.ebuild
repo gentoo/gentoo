@@ -8,8 +8,13 @@ EBO_DESCRIPTION="Vienna RNA package - RNA folding"
 
 AUTOTOOLS_AUTORECONF=1
 
-inherit emboss-r1
+inherit emboss-r1 flag-o-matic
 
 KEYWORDS="amd64 ~ppc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 
 PATCHES=( "${FILESDIR}"/${P}_fix-build-system.patch )
+
+src_configure() {
+	append-cflags -std=gnu89
+	emboss-r1_src_configure
+}

@@ -1,9 +1,9 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
-inherit eutils gnome2-utils games
+inherit eutils gnome2-utils eutils games
 
 MY_PN=alienarena-7.66
 DESCRIPTION="Fast-paced multiplayer deathmatch game"
@@ -13,7 +13,7 @@ SRC_URI="http://icculus.org/alienarena/Files/${MY_PN}-linux${PV}.tar.gz
 
 LICENSE="GPL-2 free-noncomm"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="dedicated +dga +vidmode +zlib"
 
 UIRDEPEND="virtual/jpeg:0
@@ -34,6 +34,10 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 S=${WORKDIR}/${MY_PN/_/.}
+
+src_prepare() {
+	epatch "${FILESDIR}"/${P}-format.patch
+}
 
 src_configure() {
 	egamesconf \

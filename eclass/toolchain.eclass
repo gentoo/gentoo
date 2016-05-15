@@ -104,6 +104,7 @@ INCLUDEPATH=${TOOLCHAIN_INCLUDEPATH:-${LIBPATH}/include}
 
 if is_crosscompile ; then
 	BINPATH=${TOOLCHAIN_BINPATH:-${PREFIX}/${CHOST}/${CTARGET}/gcc-bin/${GCC_CONFIG_VER}}
+	HOSTLIBPATH=${PREFIX}/${CHOST}/${CTARGET}/lib/${GCC_CONFIG_VER}
 else
 	BINPATH=${TOOLCHAIN_BINPATH:-${PREFIX}/${CTARGET}/gcc-bin/${GCC_CONFIG_VER}}
 fi
@@ -151,22 +152,14 @@ if [[ ${PN} != "kgcc64" && ${PN} != gcc-* ]] ; then
 	# versions which we dropped.  Since graphite was also experimental in
 	# the older versions, we don't want to bother supporting it.  #448024
 	tc_version_is_at_least 4.8 && IUSE+=" graphite" IUSE_DEF+=( sanitize )
-	tc_version_is_at_least 4.9 && IUSE+=" cilk"
-	tc_version_is_at_least 5.0 && IUSE+=" jit"
+	tc_version_is_at_least 4.9 && IUSE+=" cilk +vtv"
+	tc_version_is_at_least 5.0 && IUSE+=" jit mpx"
 	tc_version_is_at_least 6.0 && IUSE+=" pie +ssp"
 fi
 
 IUSE+=" ${IUSE_DEF[*]/#/+}"
 
-# Support upgrade paths here or people get pissed
-if ! tc_version_is_at_least 4.7 || is_crosscompile || use multislot || [[ ${GCC_PV} == *_alpha* ]] ; then
-	SLOT="${GCC_CONFIG_VER}"
-elif ! tc_version_is_at_least 5.0 ; then
-	SLOT="${GCC_BRANCH_VER}"
-else
-	# Upstream changed versioning w/gcc-5+, so SLOT matches major only. #555164
-	SLOT="${GCCMAJOR}"
-fi
+SLOT="${GCC_CONFIG_VER}"
 
 #---->> DEPEND <<----
 
@@ -1172,6 +1165,17 @@ toolchain_src_configure() {
 		confgcc+=( $(use_enable cilk libcilkrts) )
 	fi
 
+	if in_iuse mpx ; then
+		confgcc+=( $(use_enable mpx libmpx) )
+	fi
+
+	if in_iuse vtv ; then
+		confgcc+=(
+			$(use_enable vtv vtable-verify)
+			$(use_enable vtv libvtv)
+		)
+	fi
+
 	# newer gcc's come with libquadmath, but only fortran uses
 	# it, so auto punt it when we don't care
 	if tc_version_is_at_least 4.6 && ! is_fortran ; then
@@ -1691,14 +1695,18 @@ toolchain_src_install() {
 			ln -sf ${CTARGET}-${x} ${CTARGET}-${x}-${GCC_CONFIG_VER}
 		fi
 	done
-	# Clear out the main go binaries as we don't want to clobber dev-lang/go
+	# Rename the main go binaries as we don't want to clobber dev-lang/go
 	# when gcc-config runs. #567806
 	if tc_version_is_at_least 5 && is_go ; then
-		rm -f go gofmt
+		for x in go gofmt; do
+			mv ${x} ${x}-${GCCMAJOR} || die
+		done
 	fi
 
 	# Now do the fun stripping stuff
 	env RESTRICT="" CHOST=${CHOST} prepstrip "${D}${BINPATH}"
+	is_crosscompile && \
+		env RESTRICT="" CHOST=${CHOST} prepstrip "${D}/${HOSTLIBPATH}"
 	env RESTRICT="" CHOST=${CTARGET} prepstrip "${D}${LIBPATH}"
 	# gcc used to install helper binaries in lib/ but then moved to libexec/
 	[[ -d ${D}${PREFIX}/libexec/gcc ]] && \
@@ -1737,12 +1745,48 @@ toolchain_src_install() {
 	if ! is_crosscompile ; then
 		insinto "${DATAPATH}"
 		newins "${GCC_FILESDIR}"/awk/fixlafiles.awk-no_gcc_la fixlafiles.awk || die
-		find "${D}/${LIBPATH}" -name libstdc++.la -type f -delete
-		find "${D}/${LIBPATH}" -name 'lib*san.la' -type f -delete #487550 #546700
 		exeinto "${DATAPATH}"
 		doexe "${GCC_FILESDIR}"/fix_libtool_files.sh || die
 		doexe "${GCC_FILESDIR}"/c{89,99} || die
 	fi
+
+	# libstdc++.la: Delete as it doesn't add anything useful: g++ itself
+	# handles linkage correctly in the dynamic & static case.  It also just
+	# causes us pain: any C++ progs/libs linking with libtool will gain a
+	# reference to the full libstdc++.la file which is gcc version specific.
+	# libstdc++fs.la: It doesn't link against anything useful.
+	# libsupc++.la: This has no dependencies.
+	# libcc1.la: There is no static library, only dynamic.
+	# libcc1plugin.la: Same as above, and it's loaded via dlopen.
+	# libgomp.la: gcc itself handles linkage (libgomp.spec).
+	# libgomp-plugin-*.la: Same as above, and it's an internal plugin only
+	# loaded via dlopen.
+	# libgfortran.la: gfortran itself handles linkage correctly in the
+	# dynamic & static case (libgfortran.spec). #573302
+	# libgfortranbegin.la: Same as above, and it's an internal lib.
+	# libmpx.la: gcc itself handles linkage correctly (libmpx.spec).
+	# libmpxwrappers.la: See above.
+	# libitm.la: gcc itself handles linkage correctly (libitm.spec).
+	# libvtv.la: gcc itself handles linkage correctly.
+	# lib*san.la: Sanitizer linkage is handled internally by gcc, and they
+	# do not support static linking. #487550 #546700
+	find "${D}/${LIBPATH}" \
+		'(' \
+			-name libstdc++.la -o \
+			-name libstdc++fs.la -o \
+			-name libsupc++.la -o \
+			-name libcc1.la -o \
+			-name libcc1plugin.la -o \
+			-name 'libgomp.la' -o \
+			-name 'libgomp-plugin-*.la' -o \
+			-name libgfortran.la -o \
+			-name libgfortranbegin.la -o \
+			-name libmpx.la -o \
+			-name libmpxwrappers.la -o \
+			-name libitm.la -o \
+			-name libvtv.la -o \
+			-name 'lib*san.la' \
+		')' -type f -delete
 
 	# Use gid of 0 because some stupid ports don't have
 	# the group 'root' set to gid 0.  Send to /dev/null
@@ -1779,6 +1823,17 @@ gcc_movelibs() {
 	# older versions of gcc did not support --print-multi-os-directory
 	tc_version_is_at_least 3.2 || return 0
 
+	# For non-target libs which are for CHOST and not CTARGET, we want to
+	# move them to the compiler-specific CHOST internal dir.  This is stuff
+	# that you want to link against when building tools rather than building
+	# code to run on the target.
+	if tc_version_is_at_least 5 && is_crosscompile ; then
+		dodir "${HOSTLIBPATH}"
+		mv "${D}"/usr/$(get_libdir)/libcc1* "${D}${HOSTLIBPATH}" || die
+	fi
+
+	# For all the libs that are built for CTARGET, move them into the
+	# compiler-specific CTARGET internal dir.
 	local x multiarg removedirs=""
 	for multiarg in $($(XGCC) -print-multi-lib) ; do
 		multiarg=${multiarg#*;}
@@ -2042,26 +2097,36 @@ do_gcc_config() {
 		return 0
 	fi
 
-	local current_gcc_config="" current_specs="" use_specs=""
+	local current_gcc_config target
 
 	current_gcc_config=$(env -i ROOT="${ROOT}" gcc-config -c ${CTARGET} 2>/dev/null)
 	if [[ -n ${current_gcc_config} ]] ; then
+		local current_specs use_specs
 		# figure out which specs-specific config is active
 		current_specs=$(gcc-config -S ${current_gcc_config} | awk '{print $3}')
 		[[ -n ${current_specs} ]] && use_specs=-${current_specs}
-	fi
-	if [[ -n ${use_specs} ]] && \
-	   [[ ! -e ${ROOT}/etc/env.d/gcc/${CTARGET}-${GCC_CONFIG_VER}${use_specs} ]]
-	then
-		ewarn "The currently selected specs-specific gcc config,"
-		ewarn "${current_specs}, doesn't exist anymore. This is usually"
-		ewarn "due to enabling/disabling hardened or switching to a version"
-		ewarn "of gcc that doesnt create multiple specs files. The default"
-		ewarn "config will be used, and the previous preference forgotten."
-		use_specs=""
+
+		if [[ -n ${use_specs} ]] && \
+		   [[ ! -e ${ROOT}/etc/env.d/gcc/${CTARGET}-${GCC_CONFIG_VER}${use_specs} ]]
+		then
+			ewarn "The currently selected specs-specific gcc config,"
+			ewarn "${current_specs}, doesn't exist anymore. This is usually"
+			ewarn "due to enabling/disabling hardened or switching to a version"
+			ewarn "of gcc that doesnt create multiple specs files. The default"
+			ewarn "config will be used, and the previous preference forgotten."
+			use_specs=""
+		fi
+
+		target="${CTARGET}-${GCC_CONFIG_VER}${use_specs}"
+	else
+		# The curent target is invalid.  Attempt to switch to a valid one.
+		# Blindly pick the latest version.  #529608
+		# TODO: Should update gcc-config to accept `-l ${CTARGET}` rather than
+		# doing a partial grep like this.
+		target=$(gcc-config -l 2>/dev/null | grep " ${CTARGET}-[0-9]" | tail -1 | awk '{print $2}')
 	fi
 
-	gcc-config ${CTARGET}-${GCC_CONFIG_VER}${use_specs}
+	gcc-config "${target}"
 }
 
 should_we_gcc_config() {

@@ -7,8 +7,10 @@ EAPI=5
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="ncurses,readline"
 
+PLOCALES="de_DE fr_FR hu it tr zh_CN"
+
 inherit eutils flag-o-matic linux-info toolchain-funcs multilib python-r1 \
-	user udev fcaps readme.gentoo pax-utils
+	user udev fcaps readme.gentoo pax-utils l10n
 
 BACKPORTS=
 
@@ -82,8 +84,8 @@ SOFTMMU_LIB_DEPEND="${COMMON_LIB_DEPEND}
 	fdt? ( >=sys-apps/dtc-1.4.0[static-libs(+)] )
 	glusterfs? ( >=sys-cluster/glusterfs-3.4.0[static-libs(+)] )
 	gnutls? (
-		dev-libs/nettle[static-libs(+)]
-		>=net-libs/gnutls-3.0[static-libs(+)]
+		dev-libs/nettle:=[static-libs(+)]
+		>=net-libs/gnutls-3.0:=[static-libs(+)]
 	)
 	gtk? (
 		gtk2? (
@@ -212,11 +214,14 @@ QA_WX_LOAD="usr/bin/qemu-i386
 DOC_CONTENTS="If you don't have kvm compiled into the kernel, make sure
 you have the kernel module loaded before running kvm. The easiest way to
 ensure that the kernel module is loaded is to load it on boot.\n
-For AMD CPUs the module is called 'kvm-amd'\n
-For Intel CPUs the module is called 'kvm-intel'\n
-Please review /etc/conf.d/modules for how to load these\n\n
+For AMD CPUs the module is called 'kvm-amd'.\n
+For Intel CPUs the module is called 'kvm-intel'.\n
+Please review /etc/conf.d/modules for how to load these.\n\n
 Make sure your user is in the 'kvm' group\n
-Just run 'gpasswd -a <USER> kvm', then have <USER> re-login."
+Just run 'gpasswd -a <USER> kvm', then have <USER> re-login.\n\n
+For brand new installs, the default permissions on /dev/kvm might not let you
+access it.  You can tell udev to reset ownership/perms:\n
+udevadm trigger -c add /dev/kvm"
 
 qemu_support_kvm() {
 	if use qemu_softmmu_targets_x86_64 || use qemu_softmmu_targets_i386 \
@@ -295,6 +300,29 @@ check_targets() {
 	popd >/dev/null
 }
 
+handle_locales() {
+	# Make sure locale list is kept up-to-date.
+	local detected sorted
+	detected=$(echo $(cd po && printf '%s\n' *.po | grep -v messages.po | sed 's:.po$::' | sort -u))
+	sorted=$(echo $(printf '%s\n' ${PLOCALES} | sort -u))
+	if [[ ${sorted} != "${detected}" ]] ; then
+		eerror "The ebuild needs to be kept in sync."
+		eerror "PLOCALES: ${sorted}"
+		eerror " po/*.po: ${detected}"
+		die "sync PLOCALES"
+	fi
+
+	# Deal with selective install of locales.
+	if use nls ; then
+		# Delete locales the user does not want. #577814
+		rm_loc() { rm po/$1.po || die; }
+		l10n_for_each_disabled_locale_do rm_loc
+	else
+		# Cheap hack to disable gettext .mo generation.
+		rm -f po/*.po
+	fi
+}
+
 src_prepare() {
 	check_targets IUSE_SOFTMMU_TARGETS softmmu
 	check_targets IUSE_USER_TARGETS linux-user
@@ -303,9 +331,6 @@ src_prepare() {
 	sed -i -r \
 		-e 's/^(C|OP_C|HELPER_C)FLAGS=/\1FLAGS+=/' \
 		Makefile Makefile.target || die
-
-	# Cheap hack to disable gettext .mo generation.
-	use nls || rm -f po/*.po
 
 	epatch "${FILESDIR}"/qemu-2.5.0-cflags.patch
 	[[ -n ${BACKPORTS} ]] && \
@@ -319,6 +344,9 @@ src_prepare() {
 	MAKEOPTS+=" V=1"
 
 	epatch_user
+
+	# Run after we've applied all patches.
+	handle_locales
 }
 
 ##

@@ -1,0 +1,132 @@
+Backport from upstream fixing runtime failure with python-2.
+
+https://bugs.launchpad.net/apparmor/+bug/1513880
+
+--- a/apparmor/common.py
++++ b/apparmor/common.py
+@@ -245,6 +245,15 @@
+         return False
+     return True
+ 
++def type_is_str(var):
++    ''' returns True if the given variable is a str (or unicode string when using python 2)'''
++    if type(var) == str:
++        return True
++    elif sys.version_info[0] < 3 and type(var) == unicode:  # python 2 sometimes uses the 'unicode' type
++        return True
++    else:
++        return False
++
+ class DebugLogger(object):
+     def __init__(self, module_name=__name__):
+         self.debugging = False
+
+--- a/apparmor/rule/capability.py
++++ b/apparmor/rule/capability.py
+@@ -14,7 +14,7 @@
+ # ----------------------------------------------------------------------
+ 
+ from apparmor.regex import RE_PROFILE_CAP
+-from apparmor.common import AppArmorBug, AppArmorException
++from apparmor.common import AppArmorBug, AppArmorException, type_is_str
+ from apparmor.rule import BaseRule, BaseRuleset, parse_modifiers
+ import re
+ 
+@@ -47,7 +47,7 @@
+             self.all_caps = True
+             self.capability = set()
+         else:
+-            if type(cap_list) == str:
++            if type_is_str(cap_list):
+                 self.capability = {cap_list}
+             elif type(cap_list) == list and len(cap_list) > 0:
+                 self.capability = set(cap_list)
+
+--- a/apparmor/rule/change_profile.py
++++ b/apparmor/rule/change_profile.py
+@@ -14,7 +14,7 @@
+ # ----------------------------------------------------------------------
+ 
+ from apparmor.regex import RE_PROFILE_CHANGE_PROFILE, strip_quotes
+-from apparmor.common import AppArmorBug, AppArmorException
++from apparmor.common import AppArmorBug, AppArmorException, type_is_str
+ from apparmor.rule import BaseRule, BaseRuleset, parse_modifiers, quote_if_needed
+ 
+ # setup module translations
+@@ -48,7 +48,7 @@
+         self.all_execconds = False
+         if execcond == ChangeProfileRule.ALL:
+             self.all_execconds = True
+-        elif type(execcond) == str:
++        elif type_is_str(execcond):
+             if not execcond.strip():
+                 raise AppArmorBug('Empty exec condition in change_profile rule')
+             elif execcond.startswith('/') or execcond.startswith('@'):
+@@ -62,7 +62,7 @@
+         self.all_targetprofiles = False
+         if targetprofile == ChangeProfileRule.ALL:
+             self.all_targetprofiles = True
+-        elif type(targetprofile) == str:
++        elif type_is_str(targetprofile):
+             if targetprofile.strip():
+                 self.targetprofile = targetprofile
+             else:
+
+--- a/apparmor/rule/network.py
++++ b/apparmor/rule/network.py
+@@ -16,7 +16,7 @@
+ import re
+ 
+ from apparmor.regex import RE_PROFILE_NETWORK
+-from apparmor.common import AppArmorBug, AppArmorException
++from apparmor.common import AppArmorBug, AppArmorException, type_is_str
+ from apparmor.rule import BaseRule, BaseRuleset, parse_modifiers
+ 
+ # setup module translations
+@@ -66,7 +66,7 @@
+         self.all_domains = False
+         if domain == NetworkRule.ALL:
+             self.all_domains = True
+-        elif type(domain) == str:
++        elif type_is_str(domain):
+             if domain in network_domain_keywords:
+                 self.domain = domain
+             else:
+@@ -78,7 +78,7 @@
+         self.all_type_or_protocols = False
+         if type_or_protocol == NetworkRule.ALL:
+             self.all_type_or_protocols = True
+-        elif type(type_or_protocol) == str:
++        elif type_is_str(type_or_protocol):
+             if type_or_protocol in network_protocol_keywords:
+                 self.type_or_protocol = type_or_protocol
+             elif type_or_protocol in network_type_keywords:
+
+--- a/apparmor/rule/rlimit.py
++++ b/apparmor/rule/rlimit.py
+@@ -16,7 +16,7 @@
+ import re
+ 
+ from apparmor.regex import RE_PROFILE_RLIMIT, strip_quotes
+-from apparmor.common import AppArmorBug, AppArmorException
++from apparmor.common import AppArmorBug, AppArmorException, type_is_str
+ from apparmor.rule import BaseRule, BaseRuleset, parse_comment, quote_if_needed
+ 
+ # setup module translations
+@@ -57,7 +57,7 @@
+         if audit or deny or allow_keyword:
+             raise AppArmorBug('The audit, allow or deny keywords are not allowed in rlimit rules.')
+ 
+-        if type(rlimit) == str:
++        if type_is_str(rlimit):
+             if rlimit in rlimit_all:
+                 self.rlimit = rlimit
+             else:
+@@ -70,7 +70,7 @@
+         self.all_values = False
+         if value == RlimitRule.ALL:
+             self.all_values = True
+-        elif type(value) == str:
++        elif type_is_str(value):
+             if not value.strip():
+                 raise AppArmorBug('Empty value in rlimit rule')

@@ -225,7 +225,8 @@ ghc-package-exists() {
 }
 
 # @FUNCTION: check-for-collisions
-# @DESCRIPTION: makes sure no packages
+# @DESCRIPTION:
+# makes sure no packages
 # have the same version as initial package setup
 check-for-collisions() {
 	local localpkgconf=$1

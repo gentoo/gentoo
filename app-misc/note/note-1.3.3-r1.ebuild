@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -19,7 +19,7 @@ DEPEND="dev-perl/TermReadKey
 	dev-perl/Term-ReadLine-Perl
 	virtual/perl-Storable
 	dev-perl/Config-General
-	crypt? ( dev-perl/crypt-cbc
+	crypt? ( dev-perl/Crypt-CBC
 		dev-perl/Crypt-Blowfish
 		dev-perl/Crypt-DES )
 	mysql? ( virtual/mysql

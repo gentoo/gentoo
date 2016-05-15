@@ -1,17 +1,18 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 WX_GTK_VER="3.0"
-inherit cmake-utils wxwidgets gnome2-utils fdo-mime games
+CMAKE_MAKEFILE_GENERATOR=emake
+inherit cmake-utils wxwidgets flag-o-matic gnome2-utils fdo-mime games
 
 if [[ ${PV} == 9999 ]]; then
 	ESVN_REPO_URI="https://svn.code.sf.net/p/vbam/code/trunk"
 	inherit subversion
 else
 	SRC_URI="https://dev.gentoo.org/~radhermit/distfiles/${P}.tar.xz"
-	KEYWORDS="amd64 ~x86"
+	KEYWORDS="amd64 x86"
 fi
 
 DESCRIPTION="Game Boy, GBC, and GBA emulator forked from VisualBoyAdvance"
@@ -60,6 +61,8 @@ src_prepare() {
 }
 
 src_configure() {
+	# Bug #568792
+	append-cxxflags -std=c++11 -fpermissive
 	local mycmakeargs=(
 		$(cmake-utils_use_enable cairo CAIRO)
 		$(cmake-utils_use_enable ffmpeg FFMPEG)

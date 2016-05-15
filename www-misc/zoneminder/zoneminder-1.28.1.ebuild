@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -42,7 +42,7 @@ DEPEND="
 	dev-lang/php[apache2,cgi,curl,inifile,pdo,mysql,mysqli,sockets]
 	dev-libs/libpcre
 	dev-perl/Archive-Zip
-	dev-perl/DateManip
+	dev-perl/Date-Manip
 	dev-perl/DBD-mysql
 	dev-perl/DBI
 	dev-perl/URI-Encode

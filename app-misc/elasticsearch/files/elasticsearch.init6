@@ -1,0 +1,102 @@
+#!/sbin/runscript
+
+name="Elasticsearch"
+description="Elasticsearch Server"
+
+ES_INSTANCE=${SVCNAME#*.}
+PID_DIR=${PID_DIR:="/run/elasticsearch"}
+
+if [ -n "${ES_INSTANCE}" ] && [ ${SVCNAME} != "elasticsearch" ]; then
+	PIDFILE="${PID_DIR}/elasticsearch.${ES_INSTANCE}.pid"
+	ES_BASE_PATH="/var/lib/elasticsearch/${ES_INSTANCE}"
+	CONF_DIR="/etc/elasticsearch/${ES_INSTANCE}"
+	LOG_DIR="/var/log/elasticsearch/${ES_INSTANCE}"
+else
+	PIDFILE="${PID_DIR}/elasticsearch.pid"
+	ES_BASE_PATH="/var/lib/elasticsearch/_default"
+	CONF_DIR="/etc/elasticsearch"
+	LOG_DIR="/var/log/elasticsearch/_default"
+fi
+
+ES_HOME=${ES_HOME:="/usr/share/elasticsearch"}
+ES_USER=${ES_USER:="elasticsearch"}
+ES_GROUP=${ES_GROUP:="elasticsearch"}
+ES_GC_LOG_FILE=${ES_GC_LOG_FILE:="${LOG_DIR}/gc.log"}
+MAX_OPEN_FILES=${MAX_OPEN_FILES:=65535}
+MAX_MAP_COUNT=${MAX_MAP_COUNT:=262144}
+
+DATA_DIR="${ES_BASE_PATH}/data"
+
+if [ -f "${CONF_DIR}/elasticsearch.in.sh" ]; then
+    ES_INCLUDE="${CONF_DIR}/elasticsearch.in.sh"
+fi
+
+export ES_INCLUDE
+export JAVA_OPTS
+export ES_JAVA_OPTS
+export ES_HEAP_SIZE
+export ES_HEAP_NEWSIZE
+export ES_DIRECT_SIZE
+export ES_GC_LOG_FILE
+export ES_STARTUP_SLEEP_TIME
+
+server_command="/usr/share/elasticsearch/bin/elasticsearch"
+server_args="-d -p ${PIDFILE} --default.path.home=${ES_HOME} --default.path.logs=${LOG_DIR} --default.path.data=${DATA_DIR} --default.path.conf=${CONF_DIR}"
+
+depend() {
+	use net
+}
+
+start() {
+	local conf
+	local conf_file
+	for conf in elasticsearch.yml logging.yml; do
+		conf_file="${CONF_DIR}/${conf}"
+		if [ ! -f "${conf_file}" ]; then
+			eerror "${conf_file} must be copied into place"
+			return 1
+		fi
+	done
+
+	if [ -n "${MAX_LOCKED_MEMORY}" -a -z "${ES_HEAP_SIZE}" ]; then
+		eerror "MAX_LOCKED_MEMORY is set - ES_HEAP_SIZE must also be set"
+		return 1
+	fi
+
+	if [ -n "${MAX_MAP_COUNT}" -a -f /proc/sys/vm/max_map_count ]; then
+		sysctl -q -w vm.max_map_count=${MAX_MAP_COUNT}
+	fi
+
+	ebegin "Starting ${SVCNAME}"
+
+	if [ -n "${MAX_LOCKED_MEMORY}" ]; then
+		rc_ulimit="${rc_ulimit} -l ${MAX_LOCKED_MEMORY}"
+	fi
+
+	if [ -n "${MAX_OPEN_FILES}" ]; then
+		rc_ulimit="${rc_ulimit} -n ${MAX_OPEN_FILES}"
+	fi
+
+	checkpath -d -o "${ES_USER}:${ES_GROUP}" -m750 "/var/lib/elasticsearch"
+	checkpath -d -o "${ES_USER}:${ES_GROUP}" -m750 "/var/log/elasticsearch"
+	checkpath -d -o "${ES_USER}:${ES_GROUP}" -m750 "${PID_DIR}"
+	checkpath -d -o "${ES_USER}:${ES_GROUP}" -m750 "${ES_BASE_PATH}"
+	checkpath -d -o "${ES_USER}:${ES_GROUP}" -m750 "${LOG_DIR}"
+
+	start-stop-daemon --start \
+		--background \
+		--chdir "${ES_HOME}" \
+		--user="${ES_USER}" \
+		--pidfile="${PIDFILE}" \
+		--exec ${server_command} -- ${server_args}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping ${SVCNAME}"
+	start-stop-daemon --stop \
+		--pidfile=${PIDFILE} \
+		--user="${ES_USER}" \
+		--retry=TERM/20
+	eend $?
+}

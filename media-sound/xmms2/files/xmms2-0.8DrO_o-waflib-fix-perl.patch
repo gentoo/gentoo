@@ -9,6 +9,7 @@ Use xsubpp from @INC instead of bundled one with perl.
 
 Original bug: https://bugs.gentoo.org/380469
 Related: https://bugs.gentoo.org/378783
+Updated for perl-5.20.2: https://bugs.gentoo.org/578778
 diff --git a/waflib/Tools/perl.py b/waflib/Tools/perl.py
 index 2c69fe5..a75b069 100644
 --- a/waflib/Tools/perl.py
@@ -19,8 +20,8 @@ index 2c69fe5..a75b069 100644
  	env['CFLAGS_PERLEXT']=read_out(" -MConfig -e'print \"$Config{ccflags} $Config{cccdlflags}\"'")
 -	env['XSUBPP']=read_out(" -MConfig -e'print \"$Config{privlib}/ExtUtils/xsubpp$Config{exe_ext}\"'")
 -	env['EXTUTILS_TYPEMAP']=read_out(" -MConfig -e'print \"$Config{privlib}/ExtUtils/typemap\"'")
-+	env["XSUBPP"]           = read_out(" -MModule::Build -e'print Module::Build::ModuleInfo->find_module_by_name(\"ExtUtils::xsubpp\")'")
-+	env["EXTUTILS_TYPEMAP"] = read_out(" -MModule::Build -e'print Module::Build::ModuleInfo->find_module_by_name(\"ExtUtils::typemap\")'")
++	env["XSUBPP"]           = read_out(" -MModule::Metadata -e'print Module::Metadata->find_module_by_name(\"ExtUtils::xsubpp\")'")
++	env["EXTUTILS_TYPEMAP"] = read_out(" -MModule::Metadata -e'print Module::Metadata->find_module_by_name(\"ExtUtils::typemap\")'")
  	if not getattr(Options.options,'perlarchdir',None):
  		env['ARCHDIR_PERL']=self.cmd_and_log(perl+" -MConfig -e'print $Config{sitearch}'")
  	else:

@@ -1,0 +1,11 @@
+--- a/kencfs.desktop
++++ b/kencfs.desktop
+@@ -2,7 +2,7 @@
+ Name=KEncFS
+ Exec=kencfs
+ Icon=kencfs/kencfs-icon
+-Categories=System;Security
++Categories=Qt;KDE;System;Security;
+ Terminal=false
+ Type=Application
+ StartupNotify=false

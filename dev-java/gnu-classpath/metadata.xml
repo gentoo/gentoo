@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>java</herd>
+	<maintainer type="project">
+		<email>java@gentoo.org</email>
+		<name>Java</name>
+	</maintainer>
 	<use>
 		<flag name="alsa">Build with ALSA javax.sound.midi provider</flag>
 		<flag name="dssi">Build with DSSI javax.sound.midi provider</flag>
@@ -14,4 +17,3 @@
 		<flag name="xml">Build with native XML backend</flag>
 	</use>
 </pkgmetadata>
-

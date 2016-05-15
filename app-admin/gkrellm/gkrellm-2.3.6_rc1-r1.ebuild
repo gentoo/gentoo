@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -10,11 +10,14 @@ MY_P="${P/_/-}"
 
 DESCRIPTION="Single process stack of various system monitors"
 HOMEPAGE="http://www.gkrellm.net/"
-SRC_URI="http://gkrellm.srcbox.net/${MY_P}.tar.bz2"
+SRC_URI="
+	http://gkrellm.srcbox.net/${MY_P}.tar.bz2
+	https://dev.gentoo.org/~jlec/distfiles/${P}-update_german_translation.patch.xz
+	"
 
 LICENSE="GPL-3"
 SLOT="2"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux"
 IUSE="gnutls hddtemp libressl lm_sensors nls ntlm ssl kernel_FreeBSD X"
 
 RDEPEND="
@@ -24,7 +27,7 @@ RDEPEND="
 	!gnutls? (
 		ssl? (
 			!libressl? ( dev-libs/openssl:0= )
-			libressl? ( dev-libs/libressl:= )
+			libressl? ( dev-libs/libressl:0= )
 		)
 	)
 	lm_sensors? ( sys-apps/lm_sensors )
@@ -50,7 +53,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-fix_gtk_deprecation_warning.patch
 	"${FILESDIR}"/${P}-fix_copypaste_error.patch
 	"${FILESDIR}"/${P}-avoid_possible_busy_loop.patch
-	"${FILESDIR}"/${P}-update_german_translation.patch.xz
+	"${WORKDIR}"/${P}-update_german_translation.patch
 )
 
 S="${WORKDIR}/${MY_P}"

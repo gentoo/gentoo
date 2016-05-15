@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer>
+	<maintainer type="person">
 		<email>radhermit@gentoo.org</email>
 		<name>Tim Harder</name>
 	</maintainer>
@@ -20,7 +20,7 @@
 		current active view.
 	</longdescription>
 	<use>
-		<flag name='xrandr'>Enable support for the X RandR extension</flag>
-		<flag name='xtest'>Enable support for the XTest extension</flag>
+		<flag name="xrandr">Enable support for the X RandR extension</flag>
+		<flag name="xtest">Enable support for the XTest extension</flag>
 	</use>
 </pkgmetadata>

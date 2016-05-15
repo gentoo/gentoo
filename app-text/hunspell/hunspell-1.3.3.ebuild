@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -23,21 +23,12 @@ DEPEND="${RDEPEND}
 	sys-devel/gettext"
 
 # describe properly mi
-LANGS="af bg ca cs cy da de el en eo es et fo fr ga gl he hr hu ia id is it km
-ku lt lv mk ms nb nl nn pl pt pt_BR ro ru sk sl sq sv sw tn uk zu"
+LANGS="af bg ca cs cy da de de_1901 el en eo es et fo fr ga gl he hr hu ia id
+is it km ku lt lv mk ms nb nl nn pl pt pt_BR ro ru sk sl sq sv sw tn uk zu"
 
 DICT_DEP="app-dicts/myspell-en"
 for lang in ${LANGS}; do
-	if [[ ${lang} == de ]] ; then
-		DICT_DEP+=" linguas_de? (
-			|| (
-				app-dicts/myspell-de
-				app-dicts/myspell-de-alt
-			)
-		)"
-	else
-		DICT_DEP+=" linguas_${lang}? ( app-dicts/myspell-${lang/pt_BR/pt-br} )"
-	fi
+	DICT_DEP+=" linguas_${lang}? ( app-dicts/myspell-${lang/pt_BR/pt-br} )"
 	IUSE+=" linguas_${lang}"
 done
 PDEPEND="${DICT_DEP}"

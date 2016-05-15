@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Net-SFTP</remote-id>
+    <remote-id type="cpan-module">Net::SFTP</remote-id>
+    <remote-id type="cpan-module">Net::SFTP::Attributes</remote-id>
+    <remote-id type="cpan-module">Net::SFTP::Buffer</remote-id>
+    <remote-id type="cpan-module">Net::SFTP::Constants</remote-id>
+    <remote-id type="cpan-module">Net::SFTP::Util</remote-id>
+  </upstream>
+</pkgmetadata>

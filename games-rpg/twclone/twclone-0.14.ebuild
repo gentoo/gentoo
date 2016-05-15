@@ -1,9 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
-inherit games eutils
+inherit eutils games
 
 MY_P="${PN}-source-${PV}"
 DESCRIPTION="Clone of BBS Door game Trade Wars 2002"

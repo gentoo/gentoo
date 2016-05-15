@@ -43,9 +43,9 @@ get_libdirs() {
 		[[ -L ${EROOT}/usr/${dir} ]] && continue
 		ls "${EROOT}"/usr/${dir}/liblua*.* > /dev/null 2>&1 || continue
 
-		libdirs+=' '/usr/${dir}
+		libdirs+=' '${EPREFIX}/usr/${dir}
 	done
-	echo ${libdirs:-/usr/lib}
+	echo ${libdirs:-${EPREFIX}/usr/lib}
 }
 
 find_targets() {

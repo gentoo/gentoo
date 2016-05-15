@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer>
+	<maintainer type="person">
 		<email>robbat2@gentoo.org</email>
 		<name>Robin H. Johnson</name>
 	</maintainer>
@@ -9,4 +9,3 @@
 		The SI6 Networks' IPv6 toolkit is a set of IPv6 security/trouble-shooting tools, that can send arbitrary IPv6-based packets.
 	</longdescription>
 </pkgmetadata>
-

@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>crypto</herd>
-  <maintainer>
+  <maintainer type="person">
     <email>flameeyes@gentoo.org</email>
   </maintainer>
+  <maintainer type="project">
+    <email>crypto@gentoo.org</email>
+    <name>Crypto</name>
+  </maintainer>
   <upstream>
-    <remote-id type="github">Yubico/libykneomgr</remote-id>
+    <remote-id type="github">Yubico/yubikey-neo-manager</remote-id>
     <remote-id type="pypi">yubikey-neo-manager</remote-id>
-    <bugs-to>https://github.com/Yubico/libykneomgr/issues</bugs-to>
+    <bugs-to>https://github.com/Yubico/yubikey-neo-manager/issues</bugs-to>
   </upstream>
 </pkgmetadata>

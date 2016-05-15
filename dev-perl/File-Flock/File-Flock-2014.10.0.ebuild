@@ -12,7 +12,7 @@ inherit perl-module
 DESCRIPTION="flock() wrapper.  Auto-create locks"
 
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="alpha amd64 ia64 ppc ppc64 sparc x86"
 IUSE="test"
 
 SRC_TEST="do"
@@ -25,6 +25,7 @@ RDEPEND="
 	virtual/perl-Time-HiRes
 "
 DEPEND="${RDEPEND}
+	dev-perl/Module-Build
 	dev-perl/File-Slurp
 	test? ( dev-perl/Test-SharedFork )
 "

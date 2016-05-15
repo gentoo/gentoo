@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>sci-chemistry</herd>
+<maintainer type="project">
+  <email>sci-chemistry@gentoo.org</email>
+  <name>Gentoo Chemistry Project</name>
+</maintainer>
 <longdescription>
 Ghemical supports both quantum-mechanics (semi-empirical and ab initio) models 
 and molecular mechanics models (there is an experimental Tripos 5.2-like force 
@@ -10,9 +13,9 @@ included. Geometry optimization, molecular dynamics and a large set of
 visualization tools are currently available.
 </longdescription>
 <use>
-  <flag name='mopac7'>Use <pkg>sci-chemistry/mopac7</pkg> for semi-empirical
+  <flag name="mopac7">Use <pkg>sci-chemistry/mopac7</pkg> for semi-empirical
     calculations</flag>
-  <flag name='mpqc'>Use <pkg>sci-chemistry/mpqc</pkg> for quantum-mechanical
+  <flag name="mpqc">Use <pkg>sci-chemistry/mpqc</pkg> for quantum-mechanical
     calculations</flag>
 </use>
 </pkgmetadata>

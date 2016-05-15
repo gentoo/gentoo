@@ -32,7 +32,7 @@ RDEPEND="
 	x11-libs/libX11
 	x11-libs/libXtst
 	x11-libs/qwt:6
-	kdepim? ( kde-base/kdepimlibs:4 )
+	kdepim? ( kde-apps/kdepimlibs:4 )
 	libsamplerate? ( media-libs/libsamplerate )
 	nls? (
 		kde-apps/kde4-l10n
@@ -51,11 +51,12 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	nls? ( sys-devel/gettext )"
 
-src_prepare() {
-	epatch "${FILESDIR}"/${P}-libdir.patch \
-		"${FILESDIR}"/${P}-linguas.patch \
-		"${FILESDIR}"/${P}-sphinx.patch
-}
+PATCHES=(
+	"${FILESDIR}"/${P}-libdir.patch
+	"${FILESDIR}"/${P}-linguas.patch
+	"${FILESDIR}"/${P}-sphinx.patch
+	"${FILESDIR}"/${P}-opencv-include.patch
+)
 
 src_configure() {
 	local mycmakeargs=(

@@ -1,0 +1,12 @@
+--- a/configure.ac	2015-07-25 09:29:53.000000000 +0200
++++ b/configure.ac	2016-02-07 00:19:30.534383076 +0100
+@@ -317,6 +317,9 @@
+ )
+ AS_IF([test "x$enable_tests" = "xyes"], [
+     PKG_CHECK_MODULES([CPPUNIT], [cppunit])
++    PKG_CHECK_MODULES([REVENGE_STREAM],[
++        librevenge-stream-0.0
++    ])
+ ], [])
+ AC_SUBST([CPPUNIT_CFLAGS])
+ AC_SUBST([CPPUNIT_LIBS])

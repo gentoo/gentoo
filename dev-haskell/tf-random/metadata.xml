@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>haskell</herd>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
 	<longdescription>
 		This package contains an implementation of a high-quality splittable pseudorandom number generator. The generator is based on a cryptographic hash function built on top of the ThreeFish block cipher. See the paper /Splittable Pseudorandom Number Generators Using Cryptographic Hashing/ by Claessen, PaBka for details and the rationale of the design.
 		
 		The package provides the following:
 		
-		* A splittable PRNG that implements the standard &#39;System.Random.RandomGen&#39; class.
+		* A splittable PRNG that implements the standard 'System.Random.RandomGen' class.
 		
-		* The generator also implements an alternative version of the &#39;System.Random.TF.Gen.RandomGen&#39; class (exported from &quot;System.Random.TF.Gen&quot;), which requires the generator to return pseudorandom integers from the full 32-bit range, and contains an n-way split function.
+		* The generator also implements an alternative version of the 'System.Random.TF.Gen.RandomGen' class (exported from "System.Random.TF.Gen"), which requires the generator to return pseudorandom integers from the full 32-bit range, and contains an n-way split function.
 		
 		* An alternative version of the @Random@ class is provided, which is linked to the new @RandomGen@ class, together with @Random@ instances for some integral types.
 		

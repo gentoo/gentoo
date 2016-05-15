@@ -1,0 +1,126 @@
+diff --git a/citeproc-hs.cabal b/citeproc-hs.cabal
+index 542f893..606ec05 100644
+--- a/citeproc-hs.cabal
++++ b/citeproc-hs.cabal
+@@ -119,3 +119,3 @@ library
+     build-depends:    containers, directory, mtl, json, utf8-string,
+-                      bytestring, filepath, pandoc-types >= 1.8 && < 1.13
++                      bytestring, filepath, pandoc-types >= 1.8
+ 
+diff --git a/src/Text/CSL/Output/Pandoc.hs b/src/Text/CSL/Output/Pandoc.hs
+index 0f2cdfb..74e698f 100644
+--- a/src/Text/CSL/Output/Pandoc.hs
++++ b/src/Text/CSL/Output/Pandoc.hs
+@@ -1,2 +1,2 @@
+-{-# LANGUAGE PatternGuards, DeriveDataTypeable #-}
++{-# LANGUAGE PatternGuards, DeriveDataTypeable, CPP #-}
+ -----------------------------------------------------------------------------
+@@ -78,2 +78,10 @@ tailFO (f:fs)
+ 
++#if MIN_VERSION_pandoc_types(1,16,0)
++#    define P16_ATTRS nullAttr
++#    define P16_ATTRS_ _attrs
++#else
++#    define P16_ATTRS
++#    define P16_ATTRS_
++#endif
++
+ renderFo :: Style -> FormattedOutput -> [Inline]
+@@ -85,3 +93,3 @@ renderFo sty fo
+     | FO     fm xs <- fo = toPandoc fm $ rest xs
+-    | FUrl u fm    <- fo = toPandoc fm [Link (toStr $ snd u) u]
++    | FUrl u fm    <- fo = toPandoc fm [Link P16_ATTRS (toStr $ snd u) u]
+     | otherwise = []
+@@ -109,3 +117,3 @@ renderFo sty fo
+       setCase' f i
+-          | Link s r <- i = Link (map (setCase f) s) r
++          | Link P16_ATTRS_ s r <- i = Link P16_ATTRS_ (map (setCase f) s) r
+           | otherwise     = setCase f i
+@@ -148,3 +156,3 @@ renderFo sty fo
+       rmZeros = dropWhile (== '0')
+-      escape s x = Link x (s,s) -- we use a link to store some data
++      escape s x = Link P16_ATTRS x (s,s) -- we use a link to store some data
+ 
+@@ -181,3 +189,4 @@ clean s b (i:is)
+     | Strong      x <- i = split (isLink' "strong"  ) (return . Strong     ) x ++ clean s b is
+-    | Link      x t <- i = clean' s b (Link x t : clean s b is)
++    | Link P16_ATTRS_ x t <- i = clean'
++                                        s b (Link P16_ATTRS_ x t : clean s b is)
+     | otherwise          = clean' s b (i        : clean s b is)
+@@ -185,10 +194,10 @@ clean s b (i:is)
+       unwrap f ls
+-          | Link x _ : _ <- ls = clean' s b x
+-          |        _ : _ <- ls = f ls
++          | Link P16_ATTRS_ x _ : _ <- ls = clean' s b x
++          |                   _ : _ <- ls = f ls
+           | otherwise          = []
+       isLink l il
+-          | Link _ (x,y) <- il = x == l && x == y
++          | Link P16_ATTRS_ _ (x,y) <- il = x == l && x == y
+           | otherwise          = False
+       isLink' l il
+-          | Link _ (x,y) <- il = (x == l || x == "nodecor") && x == y
++          | Link P16_ATTRS_ _ (x,y) <- il = (x == l || x == "nodecor") && x == y
+           | otherwise          = False
+@@ -201,3 +210,3 @@ clean' _ _   []  = []
+ clean' s b (i:is)
+-    | Link inls (y,z) <- i, y == "inquote"
++    | Link P16_ATTRS_ inls (y,z) <- i, y == "inquote"
+     , y == z    = case headInline is of
+@@ -235,7 +244,7 @@ flipFlop (i:is)
+             reverseEmph' e
+-                | bo, Emph inls <- e = Link (reverseEmph False inls) ("emph","emph")
++                | bo, Emph inls <- e = Link P16_ATTRS (reverseEmph False inls) ("emph","emph")
+                 | Emph     inls <- e = Emph (reverseEmph True  inls)
+-                | Link ls (x,y) <- e = if x == "nodecor" && x == y
+-                                       then Link ls ("emph","emph")
+-                                       else e
++                | Link P16_ATTRS_ ls (x,y) <- e = if x == "nodecor" && x == y
++                                                  then Link P16_ATTRS_ ls ("emph","emph")
++                                                  else e
+                 | otherwise          = e
+@@ -244,7 +253,7 @@ flipFlop (i:is)
+             reverseStrong' e
+-                | bo, Strong inls <- e = Link   (reverseStrong False inls) ("strong","strong")
++                | bo, Strong inls <- e = Link P16_ATTRS  (reverseStrong False inls) ("strong","strong")
+                 | Strong     inls <- e = Strong (reverseStrong True  inls)
+-                | Link   ls (x,y) <- e = if x == "nodecor" && x == y
+-                                         then Link ls ("strong","strong")
+-                                         else e
++                | Link P16_ATTRS_  ls (x,y) <- e = if x == "nodecor" && x == y
++                                                     then Link P16_ATTRS_ ls ("strong","strong")
++                                                     else e
+                 | otherwise            = e
+@@ -306,3 +315,3 @@ initInline (i:[])
+     | Strikeout   is <- i = return $ Strikeout   (initInline is)
+-    | Link      is t <- i = return $ Link        (initInline is) t
++    | Link P16_ATTRS_ is t <- i = return $ Link P16_ATTRS_ (initInline is) t
+     | otherwise           = []
+@@ -336,3 +345,3 @@ mapHeadInline f (i:xs)
+     | Strikeout   is <- i = Strikeout   (mapHeadInline f is)   : xs
+-    | Link      is t <- i = Link        (mapHeadInline f is) t : xs
++    | Link P16_ATTRS_ is t <- i = Link P16_ATTRS_ (mapHeadInline f is) t : xs
+     | otherwise           = i : xs
+@@ -348,3 +357,3 @@ getInline i
+     | SmallCaps   is <- i = is
+-    | Link      is _ <- i = is
++    | Link P16_ATTRS_ is _ <- i = is
+     | otherwise           = []
+diff --git a/src/Text/CSL/Test.hs b/src/Text/CSL/Test.hs
+index 1a470cf..2d9befa 100644
+--- a/src/Text/CSL/Test.hs
++++ b/src/Text/CSL/Test.hs
+@@ -166,2 +166,8 @@ pandocBib s
+ 
++#if MIN_VERSION_pandoc_types(1,16,0)
++#    define P16_ATTRS_ _attrs
++#else
++#    define P16_ATTRS_
++#endif
++
+ pandocToHTML :: [Inline] -> String
+@@ -179,3 +185,3 @@ pandocToHTML (i:xs)
+                               SingleQuote -> "‘" ++ pandocToHTML is ++ "’" ++ pandocToHTML xs
+-    | Link     is x  <- i = case snd x of
++    | Link P16_ATTRS_ is x  <- i = case snd x of
+                               "emph"     -> "<span style=\"font-style:normal;\">" ++

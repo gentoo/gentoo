@@ -1,20 +1,15 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-if [[ ${PV} == 9999 ]]; then
-	AUTOTOOLS_AUTORECONF=1
-	GRUB_AUTOGEN=1
+if [[ ${PV} == 9999  ]]; then
+	PYTHON_COMPAT=( python{2_7,3_3,3_4,3_5} )
+	inherit autotools python-any-r1
 fi
 
-if [[ -n ${GRUB_AUTOGEN} ]]; then
-	PYTHON_COMPAT=( python{2_7,3_3,3_4} )
-	inherit python-any-r1
-fi
-
-inherit autotools-utils bash-completion-r1 eutils flag-o-matic mount-boot multibuild pax-utils toolchain-funcs versionator
+inherit autotools bash-completion-r1 flag-o-matic multibuild pax-utils toolchain-funcs versionator
 
 if [[ ${PV} != 9999 ]]; then
 	if [[ ${PV} == *_alpha* || ${PV} == *_beta* || ${PV} == *_rc* ]]; then
@@ -29,15 +24,19 @@ if [[ ${PV} != 9999 ]]; then
 		S=${WORKDIR}/${P%_*}
 	fi
 	KEYWORDS="~amd64 ~x86"
-	PATCHES=()
 else
 	inherit git-r3
 	EGIT_REPO_URI="git://git.sv.gnu.org/grub.git
 		http://git.savannah.gnu.org/r/grub.git"
 fi
 
-DEJAVU=dejavu-sans-ttf-2.34
-UNIFONT=unifont-7.0.06
+PATCHES=(
+	"${FILESDIR}"/gfxpayload.patch
+	"${FILESDIR}"/grub-2.02_beta2-KERNEL_GLOBS.patch
+)
+
+DEJAVU=dejavu-sans-ttf-2.35
+UNIFONT=unifont-8.0.01
 SRC_URI+=" fonts? ( mirror://gnu/unifont/${UNIFONT}/${UNIFONT}.pcf.gz )
 	themes? ( mirror://sourceforge/dejavu/${DEJAVU}.zip )"
 
@@ -46,7 +45,7 @@ HOMEPAGE="https://www.gnu.org/software/grub/"
 
 # Includes licenses for dejavu and unifont
 LICENSE="GPL-3 fonts? ( GPL-2-with-font-exception ) themes? ( BitstreamVera )"
-SLOT="2"
+SLOT="2/${PVR}"
 IUSE="debug device-mapper doc efiemu +fonts mount +multislot nls static sdl test +themes truetype libzfs"
 
 GRUB_ALL_PLATFORMS=( coreboot efi-32 efi-64 emu ieee1275 loongson multiboot qemu qemu-mips pc uboot xen )
@@ -136,11 +135,11 @@ src_unpack() {
 	if [[ ${PV} == 9999 ]]; then
 		git-r3_src_unpack
 	fi
-	default_src_unpack
+	default
 }
 
 src_prepare() {
-	[[ ${PATCHES} ]] && epatch "${PATCHES[@]}"
+	default
 
 	sed -i -e /autoreconf/d autogen.sh || die
 
@@ -149,24 +148,20 @@ src_prepare() {
 		sed -i -e 's/^\* GRUB:/* GRUB2:/' -e 's/(grub)/(grub2)/' docs/grub.texi || die
 	fi
 
-	epatch_user
-
-	if [[ -n ${GRUB_AUTOGEN} ]]; then
+	if [[ ${PV} == 9999 ]]; then
 		python_setup
 		bash autogen.sh || die
-	fi
-
-	if [[ -n ${AUTOTOOLS_AUTORECONF} ]]; then
-		autopoint() { return 0; }
+		autopoint() { :; }
 		eautoreconf
 	fi
 }
 
-setup_fonts() {
-	ln -s "${WORKDIR}/${UNIFONT}.pcf" unifont.pcf || die
-	if use themes; then
-		ln -s "${WORKDIR}/${DEJAVU}/ttf/DejaVuSans.ttf" DejaVuSans.ttf || die
-	fi
+grub_do() {
+	multibuild_foreach_variant run_in_build_dir "$@"
+}
+
+grub_do_once() {
+	multibuild_for_best_variant run_in_build_dir "$@"
 }
 
 grub_configure() {
@@ -196,7 +191,6 @@ grub_configure() {
 		--libdir="${EPREFIX}"/usr/lib
 		--htmldir="${EPREFIX}"/usr/share/doc/${PF}/html
 		$(use_enable debug mm-debug)
-		$(use_enable debug grub-emu-usb)
 		$(use_enable device-mapper)
 		$(use_enable mount grub-mount)
 		$(use_enable nls)
@@ -214,10 +208,26 @@ grub_configure() {
 		myeconfargs+=( --program-transform-name="s,grub,grub2," )
 	fi
 
-	mkdir -p "${BUILD_DIR}" || die
-	run_in_build_dir setup_fonts
+	# Set up font symlinks
+	ln -s "${WORKDIR}/${UNIFONT}.pcf" unifont.pcf || die
+	if use themes; then
+		ln -s "${WORKDIR}/${DEJAVU}/ttf/DejaVuSans.ttf" DejaVuSans.ttf || die
+	fi
 
-	autotools-utils_src_configure
+	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
+}
+
+grub_get_platforms() {
+	MULTIBUILD_VARIANTS=()
+	local platform
+	for platform in "${GRUB_ALL_PLATFORMS[@]}"; do
+		if use "grub_platforms_${platform}"; then
+			MULTIBUILD_VARIANTS+=( "${platform}" )
+		fi
+	done
+	if (( ${#MULTIBUILD_VARIANTS[@]} == 0 )); then
+		MULTIBUILD_VARIANTS=( guessed )
+	fi
 }
 
 src_configure() {
@@ -241,32 +251,29 @@ src_configure() {
 	tc-export BUILD_CC # Bug 485592
 
 	# Portage will take care of cleaning up GRUB_PLATFORMS
-	MULTIBUILD_VARIANTS=( ${GRUB_PLATFORMS:-guessed} )
-	multibuild_parallel_foreach_variant grub_configure
+	grub_get_platforms
+	grub_do grub_configure
 }
 
 src_compile() {
 	# Sandbox bug 404013.
 	use libzfs && addpredict /etc/dfs:/dev/zfs
 
-	multibuild_foreach_variant autotools-utils_src_compile
-
-	use doc && multibuild_for_best_variant \
-		autotools-utils_src_compile -C docs html
+	grub_do emake
+	use doc && grub_do_once emake -C docs html
 }
 
 src_test() {
 	# The qemu dependency is a bit complex.
 	# You will need to adjust QEMU_SOFTMMU_TARGETS to match the cpu/platform.
-	multibuild_foreach_variant autotools-utils_src_test
+	grub_do emake check
 }
 
 src_install() {
-	multibuild_foreach_variant autotools-utils_src_install \
-		bashcompletiondir="$(get_bashcompdir)"
+	grub_do emake install DESTDIR="${D}" bashcompletiondir="$(get_bashcompdir)"
+	use doc && grub_do_once emake -C docs install-html DESTDIR="${D}"
 
-	use doc && multibuild_for_best_variant run_in_build_dir \
-		emake -C docs DESTDIR="${D}" install-html
+	einstalldocs
 
 	if use multislot; then
 		mv "${ED%/}"/usr/share/info/grub{,2}.info || die
@@ -277,20 +284,6 @@ src_install() {
 }
 
 pkg_postinst() {
-	mount-boot_mount_boot_partition
-
-	if [[ -e "${ROOT%/}/boot/grub2/grub.cfg"  ]]; then
-		ewarn "The grub directory has changed from /boot/grub2 to /boot/grub."
-		ewarn "Please run grub2-install and grub2-mkconfig -o /boot/grub/grub.cfg."
-
-		if [[ ! -e "${ROOT%/}/boot/grub/grub.cfg" ]]; then
-			mkdir -p "${ROOT%/}/boot/grub"
-			ln -s ../grub2/grub.cfg "${ROOT%/}/boot/grub/grub.cfg"
-		fi
-	fi
-
-	mount-boot_pkg_postinst
-
 	elog "For information on how to configure GRUB2 please refer to the guide:"
 	elog "    https://wiki.gentoo.org/wiki/GRUB2_Quick_Start"
 

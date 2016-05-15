@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -15,7 +15,7 @@ elif [[ *"${PV}" == *"_pre"* ]] ; then
 	EKEY_STATE="snap"
 else
 	SRC_URI="https://download.enlightenment.org/rel/libs/${PN}/${MY_P}.tar.xz"
-	EKEY_STATE="snap"
+	EKEY_STATE="release"
 fi
 
 inherit enlightenment pax-utils
@@ -23,7 +23,7 @@ inherit enlightenment pax-utils
 DESCRIPTION="Enlightenment Foundation Libraries all-in-one package"
 
 LICENSE="BSD-2 GPL-2 LGPL-2.1 ZLIB"
-IUSE="+bmp debug drm +eet egl fbcon +fontconfig fribidi gif gles glib gnutls gstreamer harfbuzz +ico ibus jpeg2k libressl neon oldlua opengl ssl physics pixman +png +ppm +psd pulseaudio scim sdl sound systemd tga tiff tslib v4l2 valgrind wayland webp X xim xine xpm"
+IUSE="+bmp debug drm +eet egl fbcon +fontconfig fribidi gif gles glib gnutls gstreamer harfbuzz +ico ibus jpeg2k libressl neon oldlua opengl ssl physics pixman +png +ppm +psd pulseaudio scim sdl sound systemd tga tiff tslib v4l valgrind wayland webp X xim xine xpm"
 
 REQUIRED_USE="
 	pulseaudio?	( sound )
@@ -50,7 +50,7 @@ RDEPEND="
 	gnutls? ( net-libs/gnutls )
 	!gnutls? (
 		ssl? (
-			!libressl? ( dev-libs/openssl:0 )
+			!libressl? ( dev-libs/openssl:0= )
 			libressl? ( dev-libs/libressl )
 		)
 	)
@@ -62,7 +62,7 @@ RDEPEND="
 	ibus? ( app-i18n/ibus )
 	jpeg2k? ( media-libs/openjpeg:0 )
 	!oldlua? ( >=dev-lang/luajit-2.0.0 )
-	oldlua? ( dev-lang/lua )
+	oldlua? ( dev-lang/lua:* )
 	physics? ( >=sci-physics/bullet-2.80 )
 	pixman? ( x11-libs/pixman )
 	png? ( media-libs/libpng:0= )
@@ -74,7 +74,7 @@ RDEPEND="
 	)
 	sound? ( media-libs/libsndfile )
 	systemd? ( sys-apps/systemd )
-	tiff? ( media-libs/tiff:0 )
+	tiff? ( media-libs/tiff:0= )
 	tslib? ( x11-libs/tslib )
 	valgrind? ( dev-util/valgrind )
 	wayland? (
@@ -115,7 +115,7 @@ RDEPEND="
 	sys-apps/dbus
 	>=sys-apps/util-linux-2.20.0
 	sys-libs/zlib
-	virtual/jpeg
+	virtual/jpeg:0=
 
 	!dev-libs/ecore
 	!dev-libs/edbus
@@ -230,7 +230,7 @@ src_configure() {
 		$(use_enable tga image-loader-tga)
 		$(use_enable tiff image-loader-tiff)
 		$(use_enable tslib)
-		$(use_enable v4l2)
+		$(use_enable v4l v4l2)
 		$(use_enable valgrind)
 		$(use_enable wayland)
 		$(use_enable webp image-loader-webp)

@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>haskell</herd>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
 	<longdescription>
 		A Template Haskell deriver for unboxed vectors, given a pair of coercion
 		functions to and from some existing type with an Unbox instance.
 		
-		Refer to &quot;Data.Vector.Unboxed.Deriving&quot; for documentation and examples.
+		Refer to "Data.Vector.Unboxed.Deriving" for documentation and examples.
 	</longdescription>
 </pkgmetadata>

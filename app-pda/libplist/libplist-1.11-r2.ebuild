@@ -1,10 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 PYTHON_COMPAT=( python{2_7,3_3,3_4,3_5} )
-inherit eutils python-r1
+inherit autotools eutils python-r1
 
 DESCRIPTION="Support library to deal with Apple Property Lists (Binary & XML)"
 HOMEPAGE="http://www.libimobiledevice.org/"
@@ -40,8 +40,12 @@ src_configure() {
 		popd >/dev/null || die
 	}
 
+	do_configure_python() {
+		PYTHON_LDFLAGS="$(python_get_LIBS)" do_configure "$@"
+	}
+
 	do_configure --without-cython
-	use python && python_foreach_impl do_configure
+	use python && python_foreach_impl do_configure_python
 }
 
 src_compile() {

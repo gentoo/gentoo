@@ -8,7 +8,7 @@
 		<remote-id type="github">android/platform_system_core</remote-id>
 		<remote-id type="launchpad">ubuntu</remote-id>
 	</upstream>
-	<maintainer>
+	<maintainer type="person">
 		<email>zmedico@gentoo.org</email>
 		<name>Zac Medico</name>
 	</maintainer>

@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -15,7 +15,7 @@ SRC_URI="mirror://gentoo/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm ppc ppc64 sparc x86 ~amd64-fbsd ~x86-fbsd"
+KEYWORDS="amd64 ~arm ppc64 sparc x86 ~amd64-fbsd ~x86-fbsd"
 IUSE=""
 
 python_prepare_all() {

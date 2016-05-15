@@ -1,6 +1,0 @@
-#!/bin/sh
-# Copyright 1999-2004 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# Written by Robin H. Johnson <robbat2@gentoo.org>
-# 16 Feb 2004
-/usr/bin/make -f /usr/share/nss-db/db-Makefile all

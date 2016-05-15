@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>qt</herd>
-	<herd>net-news</herd>
+	<!-- maintainer-needed -->
 	<upstream>
 		<remote-id type="sourceforge">nzb</remote-id>
 		<bugs-to>http://sourceforge.net/tracker/?group_id=113793</bugs-to>

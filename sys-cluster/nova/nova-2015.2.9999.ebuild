@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -16,11 +16,10 @@ EGIT_BRANCH="stable/liberty"
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS=""
-IUSE="+compute compute-only iscsi +kvm +memcached mysql +novncproxy openvswitch postgres +rabbitmq sqlite test xen"
+IUSE="+compute compute-only iscsi +memcached mysql +novncproxy openvswitch postgres +rabbitmq sqlite test"
 REQUIRED_USE="
 	!compute-only? ( || ( mysql postgres sqlite ) )
-	compute-only? ( compute !rabbitmq !memcached !mysql !postgres !sqlite )
-	compute? ( ^^ ( kvm xen ) )"
+	compute-only? ( compute !rabbitmq !memcached !mysql !postgres !sqlite )"
 
 CDEPEND=">=dev-python/pbr-1.8[${PYTHON_USEDEP}]"
 # need to package dev-python/sphinxcontrib-seqdiag
@@ -149,6 +148,7 @@ RDEPEND="
 	<=dev-python/python-barbicanclient-3.3.0[${PYTHON_USEDEP}]
 	>=dev-python/requests-2.5.2[${PYTHON_USEDEP}]
 	!~dev-python/requests-2.8.0[${PYTHON_USEDEP}]
+	!~dev-python/requests-2.9.0[${PYTHON_USEDEP}]
 	<=dev-python/requests-2.8.1[${PYTHON_USEDEP}]
 	>=dev-python/six-1.9.0[${PYTHON_USEDEP}]
 	<=dev-python/six-1.10.0[${PYTHON_USEDEP}]
@@ -195,6 +195,9 @@ RDEPEND="
 	>=dev-python/rfc3986-0.2.0[${PYTHON_USEDEP}]
 	<=dev-python/rfc3986-0.3.1[${PYTHON_USEDEP}]
 	>=dev-python/oslo-middleware-2.8.0[${PYTHON_USEDEP}]
+	!~dev-python/oslo-middleware-3.0.0[${PYTHON_USEDEP}]
+	!~dev-python/oslo-middleware-3.1.0[${PYTHON_USEDEP}]
+	!~dev-python/oslo-middleware-3.2.0[${PYTHON_USEDEP}]
 	<=dev-python/oslo-middleware-3.3.0[${PYTHON_USEDEP}]
 	>=dev-python/psutil-1.1.1[${PYTHON_USEDEP}]
 	<dev-python/psutil-2.0.0[${PYTHON_USEDEP}]
@@ -208,7 +211,7 @@ RDEPEND="
 	app-emulation/libvirt[iscsi?]
 	novncproxy? ( www-apps/novnc )
 	sys-apps/iproute2
-	openvswitch? ( <=net-misc/openvswitch-2.4.0 )
+	openvswitch? ( <=net-misc/openvswitch-2.5.9999 )
 	rabbitmq? ( net-misc/rabbitmq-server )
 	memcached? ( net-misc/memcached
 	<=dev-python/python-memcached-1.57 )
@@ -217,9 +220,8 @@ RDEPEND="
 	net-misc/bridge-utils
 	compute? (
 		app-cdr/cdrkit
-		kvm? ( app-emulation/qemu )
-		xen? ( app-emulation/xen
-			   app-emulation/xen-tools )
+		sys-fs/dosfstools
+		app-emulation/qemu
 	)
 	iscsi? (
 		sys-fs/lsscsi

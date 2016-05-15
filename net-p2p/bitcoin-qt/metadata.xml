@@ -1,12 +1,11 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>proxy-maintainers</herd>
-	<maintainer>
+	<maintainer type="person">
 		<email>blueness@gentoo.org</email>
 		<name>Anthony G. Basile</name>
 	</maintainer>
-	<maintainer>
+	<maintainer type="person">
 		<email>luke-jr+gentoobugs@utopios.org</email>
 		<name>Luke Dashjr</name>
 	</maintainer>
@@ -17,8 +16,11 @@
 		<flag name="bitcoin_policy_dcmp">Data Carrier Multi-Push policy: Your node will assist transactions with multiple pushes in their data carrier (if any)</flag>
 		<flag name="bitcoin_policy_rbf">Replace By Fee policy: Your node will preferentially mine and relay transactions paying the highest fee, regardless of receive order</flag>
 		<flag name="bitcoin_policy_spamfilter">Enhanced spam filter policy: Notorious spammers will not be assisted by your node</flag>
+		<flag name="http">Enable support for the JSON-RPC and REST HTTP server (builtin net-p2p/bitcoind)</flag>
+		<flag name="libevent">Use dev-libs/libevent</flag>
 		<flag name="ljr">Enable Luke Dashjr's patches</flag>
 		<flag name="qrcode">Enable generation of QR Codes for receiving payments</flag>
+		<flag name="tor">Enable automatic configuration of a Tor hidden service</flag>
 		<flag name="upnp">Enable Universal Plug and Play</flag>
 		<flag name="wallet">Enable wallet support</flag>
 		<flag name="xt">Enable Mike Hearn's Bitcoin XT patches</flag>

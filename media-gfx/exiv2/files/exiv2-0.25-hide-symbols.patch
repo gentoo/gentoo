@@ -1,0 +1,97 @@
+Index: a/samples/CMakeLists.txt
+===================================================================
+--- a/samples/CMakeLists.txt	(revision 3972)
++++ b/samples/CMakeLists.txt	(revision 3973)
+@@ -52,7 +52,7 @@
+     STRING( REPLACE ".cpp" "" target ${entry})
+     ADD_EXECUTABLE( ${target} ${target}.cpp )
+     ADD_TEST( ${target}_test ${target} )
+-    TARGET_LINK_LIBRARIES( ${target} exiv2lib )
++    TARGET_LINK_LIBRARIES( ${target} PRIVATE exiv2lib ${EXPAT_LIBRARIES})
+     #INSTALL( TARGETS ${target} ${INSTALL_TARGET_STANDARD_ARGS} )
+ ENDFOREACH(entry ${SAMPLES})
+ 
+Index: a/src/CMakeLists.txt
+===================================================================
+--- a/src/CMakeLists.txt	(revision 3972)
++++ b/src/CMakeLists.txt	(revision 3973)
+@@ -240,20 +240,20 @@
+ 
+ if ( MSVC )
+     source_group("Header Files" FILES ${LIBEXIV2_HDR} )
+-    TARGET_LINK_LIBRARIES( exiv2lib ${EXPAT_LIBRARIES} )
++    TARGET_LINK_LIBRARIES( exiv2lib PRIVATE ${EXPAT_LIBRARIES} )
+     source_group("Header Files" FILES ${LIBCURL_HDR} )
+-    TARGET_LINK_LIBRARIES( exiv2lib ${CURL_LIBRARIES} )
++    TARGET_LINK_LIBRARIES( exiv2lib PRIVATE ${CURL_LIBRARIES} )
+     source_group("Header Files" FILES ${SSH_HDR} )
+-    TARGET_LINK_LIBRARIES( exiv2lib ${SSH_LIBRARIES} )
++    TARGET_LINK_LIBRARIES( exiv2lib PRIVATE ${SSH_LIBRARIES} )
+ else()
+     if ( NOT MINGW )
+-        TARGET_LINK_LIBRARIES( exiv2lib dl ${EXPAT_LIBRARIES} )
+-        TARGET_LINK_LIBRARIES( exiv2lib dl ${CURL_LIBRARIES} )
+-        TARGET_LINK_LIBRARIES( exiv2lib dl ${SSH_LIBRARIES} )
++        TARGET_LINK_LIBRARIES( exiv2lib PRIVATE dl ${EXPAT_LIBRARIES} )
++        TARGET_LINK_LIBRARIES( exiv2lib PRIVATE dl ${CURL_LIBRARIES} )
++        TARGET_LINK_LIBRARIES( exiv2lib PRIVATE dl ${SSH_LIBRARIES} )
+     else()
+-        TARGET_LINK_LIBRARIES( exiv2lib    ${EXPAT_LIBRARIES} )
+-        TARGET_LINK_LIBRARIES( exiv2lib    ${CURL_LIBRARIES} )
+-        TARGET_LINK_LIBRARIES( exiv2lib    ${SSH_LIBRARIES} )
++        TARGET_LINK_LIBRARIES( exiv2lib PRIVATE ${EXPAT_LIBRARIES} )
++        TARGET_LINK_LIBRARIES( exiv2lib PRIVATE ${CURL_LIBRARIES} )
++        TARGET_LINK_LIBRARIES( exiv2lib PRIVATE ${SSH_LIBRARIES} )
+     endif()
+ endif()
+ 
+@@ -262,33 +262,33 @@
+     if  ( MSVC )
+         LINK_DIRECTORIES(${LIBRARY_OUTPUT_PATH}/$(ConfigurationName))
+     endif(MSVC)
+-    TARGET_LINK_LIBRARIES( exiv2lib xmp )
++    TARGET_LINK_LIBRARIES( exiv2lib PRIVATE xmp )
+ ENDIF()
+ 
+ IF( EXIV2_ENABLE_PNG )
+     IF( ZLIB_FOUND )
+         IF( MSVC )
+             if ( EXIV2_ENABLE_SHARED )
+-                TARGET_LINK_LIBRARIES( exiv2lib optimized ${ZLIB_LIBRARIES} debug ${ZLIB_LIBRARIES}d )
++                TARGET_LINK_LIBRARIES( exiv2lib PRIVATE optimized ${ZLIB_LIBRARIES}.lib debug ${ZLIB_LIBRARIES}d.lib )
+             else()
+-                TARGET_LINK_LIBRARIES( exiv2lib optimized zlibstatic.lib debug zlibstaticd.lib )
++                TARGET_LINK_LIBRARIES( exiv2lib PRIVATE optimized zlibstatic.lib debug zlibstaticd.lib )
+             endif()
+         ELSE()
+-            TARGET_LINK_LIBRARIES( exiv2lib ${ZLIB_LIBRARIES} )
++            TARGET_LINK_LIBRARIES( exiv2lib PRIVATE ${ZLIB_LIBRARIES} )
+         ENDIF()
+     ENDIF()
+ ENDIF()
+ 
+ IF( EXIV2_ENABLE_NLS )
+-    TARGET_LINK_LIBRARIES( exiv2lib ${LIBINTL_LIBRARIES} )
++    TARGET_LINK_LIBRARIES( exiv2lib PRIVATE ${LIBINTL_LIBRARIES} )
+ ENDIF( EXIV2_ENABLE_NLS )
+ 
+ IF( ICONV_FOUND )
+-    TARGET_LINK_LIBRARIES( exiv2lib ${ICONV_LIBRARIES} )
++    TARGET_LINK_LIBRARIES( exiv2lib PRIVATE ${ICONV_LIBRARIES} )
+ ENDIF( ICONV_FOUND )
+ 
+ IF (CYGWIN OR MINGW)
+-    TARGET_LINK_LIBRARIES( exiv2lib psapi )
++    TARGET_LINK_LIBRARIES( exiv2lib PRIVATE psapi )
+ ENDIF(CYGWIN OR MINGW)
+ 
+ 
+@@ -303,7 +303,7 @@
+ # ******************************************************************************
+ # connection test application
+ ADD_EXECUTABLE( conntest ${CONNTEST} )
+-TARGET_LINK_LIBRARIES( conntest exiv2lib )
++TARGET_LINK_LIBRARIES( conntest PRIVATE exiv2lib ${CURL_LIBRARIES} ${SSH_LIBRARIES})
+ 
+ # ******************************************************************************
+ # exifprint application

@@ -9,7 +9,7 @@ KDE_LINGUAS="cs de el es fr it ja lt pt_BR ro ru"
 KDE_LINGUAS_LIVE_OVERRIDE="true"
 inherit flag-o-matic kde4-base
 
-DESCRIPTION="KDESvn is a frontend to the subversion vcs"
+DESCRIPTION="A frontend to the subversion vcs"
 HOMEPAGE="http://kdesvn.alwins-world.de/"
 if [[ ${PV} != 9999* ]]; then
 	SRC_URI="http://kdesvn.alwins-world.de/downloads/${P}.tar.bz2"
@@ -31,7 +31,10 @@ RDEPEND="${DEPEND}
 	!kde-apps/kdesdk-kioslaves:4[subversion(+)]
 "
 
-PATCHES=( "${FILESDIR}/${P}-bug-address.patch" )
+PATCHES=(
+	"${FILESDIR}/${P}-bug-address.patch"
+	"${FILESDIR}/${P}-cmake.patch"
+)
 
 src_configure() {
 	append-cppflags -DQT_THREAD_SUPPORT

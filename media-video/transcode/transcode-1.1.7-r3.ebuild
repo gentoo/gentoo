@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 inherit eutils libtool multilib
 
 DESCRIPTION="A suite of utilities for transcoding video and audio codecs in different containers"
@@ -22,8 +22,8 @@ RDEPEND="
 	dv? ( media-libs/libdv )
 	dvd? ( media-libs/libdvdread )
 	iconv? ( virtual/libiconv )
-	imagemagick? ( media-gfx/imagemagick )
-	jpeg? ( virtual/jpeg )
+	imagemagick? ( media-gfx/imagemagick:= )
+	jpeg? ( virtual/jpeg:= )
 	lzo? ( >=dev-libs/lzo-2 )
 	mjpeg? ( media-video/mjpegtools )
 	mp3? ( media-sound/lame )
@@ -55,19 +55,25 @@ REQUIRED_USE="
 	nuv? ( lzo )
 	"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-ffmpeg.patch
+	"${FILESDIR}"/${P}-ffmpeg-0.10.patch
+	"${FILESDIR}"/${P}-ffmpeg-0.11.patch
+	"${FILESDIR}"/${P}-preset-free.patch
+	"${FILESDIR}"/${P}-libav-9.patch
+	"${FILESDIR}"/${P}-libav-10.patch
+	"${FILESDIR}"/${P}-preset-force.patch
+	"${FILESDIR}"/${P}-ffmpeg2.patch
+	"${FILESDIR}"/${P}-freetype251.patch
+	"${FILESDIR}"/${P}-ffmpeg24.patch
+)
+
 src_prepare() {
-	epatch \
-		"${FILESDIR}"/${P}-ffmpeg.patch \
-		"${FILESDIR}"/${P}-ffmpeg-0.10.patch \
-		"${FILESDIR}"/${P}-ffmpeg-0.11.patch \
-		"${FILESDIR}"/${P}-preset-free.patch \
-		"${FILESDIR}"/${P}-libav-9.patch \
-		"${FILESDIR}"/${P}-libav-10.patch \
-		"${FILESDIR}"/${P}-preset-force.patch \
-		"${FILESDIR}"/${P}-ffmpeg2.patch \
-		"${FILESDIR}"/${P}-freetype251.patch \
-		"${FILESDIR}"/${P}-ffmpeg24.patch
-	has_version '>=media-video/ffmpeg-2.8' && epatch "${FILESDIR}"/${P}-ffmpeg29.patch
+	if has_version '>=media-video/ffmpeg-2.8' ; then
+		PATCHES+=( "${FILESDIR}"/${P}-ffmpeg29.patch )
+	fi
+
+	default
 
 	elibtoolize
 }
@@ -120,5 +126,5 @@ src_configure() {
 src_install() {
 	emake DESTDIR="${D}" docsdir=/usr/share/doc/${PF} install
 	dodoc AUTHORS ChangeLog README STYLE TODO
-	find "${ED}"usr -name '*.la' -exec rm -f {} +
+	prune_libtool_files --all
 }

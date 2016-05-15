@@ -1,10 +1,13 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>net-mail</herd>
-        <maintainer>
+	<maintainer type="person">
           <email>vikraman@gentoo.org</email>
           <name>Vikraman Choudhury</name>
+        </maintainer>
+	<maintainer type="project">
+          <email>net-mail@gentoo.org</email>
+          <name>Net-Mail</name>
         </maintainer>
 	<longdescription lang="en">'mu' is a set of command-line tools for Linux/Unix that enable you to quickly find the e-mails you
 are looking for, assuming that you store your e-mails in Maildirs.  It also includes an emacs based mail client mu4e.</longdescription>

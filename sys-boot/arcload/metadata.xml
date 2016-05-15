@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>mips</herd>
+	<maintainer type="project">
+		<email>mips@gentoo.org</email>
+		<name>Gentoo/MIPS Port</name>
+	</maintainer>
 	<longdescription>
 		ARCLoad - SGI Multi-bootloader.  Able to bootload many different SGI Systems.
 	</longdescription>
 </pkgmetadata>
-

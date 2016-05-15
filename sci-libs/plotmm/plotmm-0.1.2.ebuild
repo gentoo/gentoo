@@ -2,9 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="2"
-
-inherit eutils
+EAPI=5
+inherit eutils flag-o-matic
 
 DESCRIPTION="Plot widget for GTKmm"
 HOMEPAGE="http://plotmm.sourceforge.net/"
@@ -17,7 +16,7 @@ IUSE="doc examples"
 
 RDEPEND="dev-cpp/gtkmm:2.4"
 DEPEND="${RDEPEND}
-		virtual/pkgconfig"
+	virtual/pkgconfig"
 
 # NOTES:
 # somewhat, there is a dep on libsigc++ but it's much more via gtkmm
@@ -31,17 +30,15 @@ src_prepare() {
 }
 
 src_configure() {
+	append-cxxflags -std=c++11
 	econf \
 		--disable-maintainer-mode \
-		--disable-dependency-tracking \
 		--enable-fast-install \
 		--disable-libtool-lock
 }
 
 src_install() {
-	emake DESTDIR="${D}" install || die "emake install failed"
-
-	dodoc AUTHORS ChangeLog NEWS README || die "dodoc failed"
+	default
 
 	if use doc; then
 		dohtml -r doc/html/* || die "dohtml failed"

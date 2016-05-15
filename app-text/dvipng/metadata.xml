@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>tex</herd>
-	<herd>emacs</herd>
-	<longdescription>
+<maintainer type="project">
+  <email>tex@gentoo.org</email>
+  <name>Gentoo TeX Project</name>
+</maintainer>
+<maintainer type="project">
+  <email>emacs@gentoo.org</email>
+  <name>Gentoo Emacs project</name>
+</maintainer>
+<longdescription>
   This program makes PNG and/or GIF graphics from DVI files as obtained
   from TeX and its relatives.
 
@@ -17,11 +23,11 @@
   (X)Emacs. Yes, you get to see your formulas in the (X)Emacs buffer, see
   &lt;https://www.gnu.org/software/auctex/preview-latex.html&gt;.
 </longdescription>
-	<use>
-		<flag name="t1lib">Enable support for T1lib font rendering
+<use>
+  <flag name="t1lib">Enable support for T1lib font rendering
     (<pkg>media-libs/t1lib</pkg>)</flag>
-	</use>
-	<upstream>
-		<remote-id type="sourceforge">dvipng</remote-id>
-	</upstream>
+</use>
+<upstream>
+  <remote-id type="sourceforge">dvipng</remote-id>
+</upstream>
 </pkgmetadata>

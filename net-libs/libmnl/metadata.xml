@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>netmon</herd>
+<maintainer type="project">
+	<email>netmon@gentoo.org</email>
+	<name>Gentoo network monitoring and analysis project</name>
+</maintainer>
 <longdescription lang="en">
 	libmnl is a minimalistic user-space library oriented to Netlink developers.
 	There are a lot of common tasks in parsing, validating, constructing of both
@@ -10,4 +13,3 @@
 	avoid re-inventing the wheel.
 </longdescription>
 </pkgmetadata>
-

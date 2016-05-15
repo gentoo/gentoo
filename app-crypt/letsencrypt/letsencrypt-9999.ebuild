@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -24,12 +24,12 @@ SLOT="0"
 IUSE="test"
 
 RDEPEND=">=app-crypt/acme-${PV}[${PYTHON_USEDEP}]
-	dev-python/configargparse[${PYTHON_USEDEP}]
+	>=dev-python/configargparse-0.10.0[${PYTHON_USEDEP}]
 	dev-python/configobj[${PYTHON_USEDEP}]
 	>=dev-python/cryptography-0.7[${PYTHON_USEDEP}]
 	dev-python/mock[${PYTHON_USEDEP}]
 	dev-python/parsedatetime[${PYTHON_USEDEP}]
-	>=dev-python/psutil-2.1.0[${PYTHON_USEDEP}]
+	>=dev-python/psutil-3.0.1[${PYTHON_USEDEP}]
 	>=dev-python/pyopenssl-0.15[${PYTHON_USEDEP}]
 	dev-python/pyrfc3339[${PYTHON_USEDEP}]
 	>=dev-python/pythondialog-3.2.2:python-2[${PYTHON_USEDEP}]
@@ -42,5 +42,5 @@ DEPEND="test? ( ${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]"
 
 python_test() {
-	nosetests -w ${PN}/tests || die
+	nosetests certbot || die
 }

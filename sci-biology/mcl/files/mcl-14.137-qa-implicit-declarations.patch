@@ -1,0 +1,27 @@
+Fix QA issues related to implicit declarations.
+
+* QA Notice: Package triggers severe warnings which indicate that it
+*            may exhibit random runtime failures.
+* clmadjust.c:184:10: warning: implicit declaration of function ‘mcxFree’ [-Wimplicit-function-declaration]
+* mcxi.c:42:16: warning: implicit declaration of function ‘isatty’ [-Wimplicit-function-declaration]
+
+--- mcl-14-137/src/shcl/clmadjust.c
++++ mcl-14-137/src/shcl/clmadjust.c
+@@ -14,6 +14,7 @@
+ #include "report.h"
+ #include "clmadjust.h"
+ 
++#include "util/alloc.h"
+ #include "util/io.h"
+ #include "util/types.h"
+ #include "util/err.h"
+--- mcl-14-137/src/shmcx/mcxi.c
++++ mcl-14-137/src/shmcx/mcxi.c
+@@ -8,6 +8,7 @@
+ */
+ 
+ #include <stdio.h>
++#include <unistd.h>
+ 
+ #include "stack.h"
+ #include "glob.h"

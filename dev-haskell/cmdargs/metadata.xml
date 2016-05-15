@@ -1,22 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>haskell</herd>
+	<maintainer type="project">
+		<email>haskell@gentoo.org</email>
+		<name>Gentoo Haskell</name>
+	</maintainer>
 	<longdescription>
 		This library provides an easy way to define command line parsers. Most users
-		will want to use the &quot;System.Console.CmdArgs.Implicit&quot; module, whose
+		will want to use the "System.Console.CmdArgs.Implicit" module, whose
 		documentation contains an example.
 		
-		* &quot;System.Console.CmdArgs.Explicit&quot; provides a way to write command line
+		* "System.Console.CmdArgs.Explicit" provides a way to write command line
 		parsers for both single mode programs (most programs) and multiple
 		mode programs (e.g. darcs or cabal). Parsers are defined by constructing
 		a data structure.
 		
-		* &quot;System.Console.CmdArgs.Implicit&quot; provides a way to concisely define
+		* "System.Console.CmdArgs.Implicit" provides a way to concisely define
 		command line parsers, up to three times shorter than getopt. These parsers
 		are translated into the Explicit data type.
 		
-		* &quot;System.Console.CmdArgs.GetOpt&quot; provides a wrapper allowing compatiblity
+		* "System.Console.CmdArgs.GetOpt" provides a wrapper allowing compatiblity
 		with existing getopt parsers, mapping to the Explicit data type.
 		
 		For a general reference on what command line flags are commonly used,

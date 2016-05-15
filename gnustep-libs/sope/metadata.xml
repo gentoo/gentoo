@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>gnustep</herd>
-	<maintainer>
+	<maintainer type="person">
 		<email>hasufell@gentoo.org</email>
 		<name>Julian Ospald</name>
 	</maintainer>
-	<maintainer>
+	<maintainer type="person">
 		<email>xmw@gentoo.org</email>
 		<name>Michael Weber</name>
 	</maintainer>
+	<maintainer type="project">
+		<email>gnustep@gentoo.org</email>
+		<name>Gentoo GNUstep Project</name>
+	</maintainer>
 	<upstream>
-		<remote-id type='github'>inverse-inc/sope</remote-id>
+		<remote-id type="github">inverse-inc/sope</remote-id>
 	</upstream>
 </pkgmetadata>

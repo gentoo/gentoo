@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>net-news</herd>
-	<maintainer>
+	<maintainer type="person">
 		<email>swegener@gentoo.org</email>
 		<name>Sven Wegener</name>
 	</maintainer>
@@ -12,5 +11,7 @@
 	</use>
 	<upstream>
 		<remote-id type="sourceforge">nzbget</remote-id>
+		<remote-id type="github">nzbget/nzbget</remote-id>
+		<bugs-to>https://github.com/nzbget/nzbget/issues</bugs-to>
 	</upstream>
 </pkgmetadata>

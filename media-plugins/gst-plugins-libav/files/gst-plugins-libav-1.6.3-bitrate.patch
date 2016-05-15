@@ -1,0 +1,49 @@
+commit 46fb2e9f11820190f2e173f4ebd83f0d15adea40
+Author: Sebastian Dröge <sebastian@centricular.com>
+Date:   Sat Jan 16 16:40:52 2016 +0200
+
+    libav: Bitrate field changed from int to int64_t, fix compiler warnings
+    
+    Cast it to a gint64 for now though, as otherwise we will fail compilation
+    with ffmpeg 2.8.
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=757498
+
+diff --git a/ext/libav/gstavaudenc.c b/ext/libav/gstavaudenc.c
+index 64d7011..9a8e690 100644
+--- a/ext/libav/gstavaudenc.c
++++ b/ext/libav/gstavaudenc.c
+@@ -269,8 +269,9 @@ gst_ffmpegaudenc_set_format (GstAudioEncoder * encoder, GstAudioInfo * info)
+     ffmpegaudenc->context->bit_rate = ffmpegaudenc->bitrate;
+     ffmpegaudenc->context->bit_rate_tolerance = ffmpegaudenc->bitrate;
+   } else {
+-    GST_INFO_OBJECT (ffmpegaudenc, "Using avcontext default bitrate %d",
+-        ffmpegaudenc->context->bit_rate);
++    GST_INFO_OBJECT (ffmpegaudenc,
++        "Using avcontext default bitrate %" G_GINT64_FORMAT,
++        (gint64) ffmpegaudenc->context->bit_rate);
+   }
+ 
+   /* RTP payload used for GOB production (for Asterisk) */
+diff --git a/ext/libav/gstavcodecmap.c b/ext/libav/gstavcodecmap.c
+index 2f8dc8a..966c9b8 100644
+--- a/ext/libav/gstavcodecmap.c
++++ b/ext/libav/gstavcodecmap.c
+@@ -2357,6 +2357,7 @@ gst_ffmpeg_caps_to_smpfmt (const GstCaps * caps,
+   GstStructure *structure;
+   const gchar *fmt;
+   GstAudioFormat format = GST_AUDIO_FORMAT_UNKNOWN;
++  gint bitrate;
+ 
+   g_return_if_fail (gst_caps_get_size (caps) == 1);
+ 
+@@ -2365,7 +2366,8 @@ gst_ffmpeg_caps_to_smpfmt (const GstCaps * caps,
+   gst_structure_get_int (structure, "channels", &context->channels);
+   gst_structure_get_int (structure, "rate", &context->sample_rate);
+   gst_structure_get_int (structure, "block_align", &context->block_align);
+-  gst_structure_get_int (structure, "bitrate", &context->bit_rate);
++  gst_structure_get_int (structure, "bitrate", &bitrate);
++  context->bit_rate = bitrate;
+ 
+   if (!raw)
+     return;

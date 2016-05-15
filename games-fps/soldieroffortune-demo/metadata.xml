@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>games</herd>
+<maintainer type="project">
+	<email>games@gentoo.org</email>
+	<name>Gentoo Games Project</name>
+</maintainer>
 <longdescription>
 Soldier of Fortune is a first-person 3-D shooter based on the mercenary trade.  You play as John, an ex-military mercinary who still has plenty of good friends on the inside.  For a wad of bucks, you'll do the job -- no cares, no worries. Just get the gun, play for keeps, get paid, on to the next one -- that's your life. That's what you do. And you're good at it, one of the best even. But now is the time for your biggest challenge ever.  This is the demo version of the game.
 </longdescription>

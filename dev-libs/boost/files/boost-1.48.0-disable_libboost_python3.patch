@@ -1,5 +1,5 @@
---- libs/python/build/Jamfile.v2
-+++ libs/python/build/Jamfile.v2
+--- a/libs/python/build/Jamfile.v2
++++ b/libs/python/build/Jamfile.v2
 @@ -39,23 +39,6 @@
      PYTHON_ID = [ regex.replace $(python-id) "[*\\/:\"\']" "_" ] ;
  }

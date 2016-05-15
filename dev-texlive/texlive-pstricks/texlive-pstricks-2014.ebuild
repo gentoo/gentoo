@@ -19,6 +19,7 @@ DEPEND=">=dev-texlive/texlive-basic-2014
 >=dev-texlive/texlive-genericrecommended-2014
 "
 RDEPEND="${DEPEND} dev-texlive/texlive-genericrecommended
+dev-tex/pgf
 "
 TEXLIVE_MODULE_BINSCRIPTS="
 	texmf-dist/scripts/pst2pdf/pst2pdf.pl

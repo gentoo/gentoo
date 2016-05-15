@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer>
+<maintainer type="person">
   <email>gienah@gentoo.org</email>
   <name>Mark Wright</name>
 </maintainer>
-<herd>sci-mathematics</herd>
-<longdescription lang='en'>
+<maintainer type="project">
+  <email>sci-mathematics@gentoo.org</email>
+  <name>Gentoo Mathematics Project</name>
+</maintainer>
+<longdescription lang="en">
 CVC3 is an automatic theorem prover for Satisfiability Modulo Theories
 (SMT) problems. It can be used to prove the validity (or, dually, the
 satisfiability) of first-order formulas in a large number of built-in
@@ -32,9 +35,9 @@ and has a wide variety of features including:
         purposes (see license).
 </longdescription>
 <use>
-  <flag name='isabelle'>Add integration support for the Isabelle/HOL
+  <flag name="isabelle">Add integration support for the Isabelle/HOL
   theorem prover.</flag>
-  <flag name='zchaff'>Use the SAT solver zchaff whose copyright is
+  <flag name="zchaff">Use the SAT solver zchaff whose copyright is
   owned by Princeton University and is more restrictive (see zchaff
   license).
   </flag>

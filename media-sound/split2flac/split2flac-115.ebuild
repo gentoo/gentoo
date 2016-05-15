@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -9,7 +9,7 @@ EGIT_REPO_URI="https://github.com/ftrvxmtrx/split2flac.git"
 inherit bash-completion-r1
 [[ ${PV} == *9999* ]] && inherit git-2
 
-DESCRIPTION="sh script to split one big APE/FLAC/WV/WAV audio image with CUE sheet into tracks"
+DESCRIPTION="sh script to split an APE/FLAC/WV/WAV audio image with CUE sheet into tracks"
 HOMEPAGE="https://github.com/ftrvxmtrx/split2flac"
 [[ ${PV} == *9999* ]] || \
 SRC_URI="https://github.com/ftrvxmtrx/split2flac/archive/${PV}.tar.gz -> ${P}.tar.gz"

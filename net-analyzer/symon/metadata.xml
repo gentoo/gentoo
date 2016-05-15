@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>netmon</herd>
+	<maintainer type="project">
+		<email>netmon@gentoo.org</email>
+		<name>Gentoo network monitoring and analysis project</name>
+	</maintainer>
 	<use>
-		<flag name='perl'>Enables a generic perl symux client</flag>
-		<flag name='symon'>Enables the system monitor. Offers no functionality
+		<flag name="perl">Enables a generic perl symux client</flag>
+		<flag name="symon">Enables the system monitor. Offers no functionality
 		but monitoring and forwarding of measured data</flag>
-		<flag name='symux'>Enables the multiplexer which stores incoming symon
+		<flag name="symux">Enables the multiplexer which stores incoming symon
 		streams on disk in RRD (<pkg>net-analyzer/rrdtool</pkg>) files</flag>
 	</use>
 </pkgmetadata>

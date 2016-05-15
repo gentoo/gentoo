@@ -1,5 +1,5 @@
---- Makefile~	2007-06-24 15:41:58 -0600
-+++ Makefile	2007-06-24 15:42:43 -0600
+--- xv-3.10a/Makefile~	2007-06-24 15:41:58 -0600
++++ xv-3.10a/Makefile	2007-06-24 15:42:43 -0600
 @@ -176,16 +176,16 @@
  ### if, for whatever reason, you're unable to get the JasPer JPEG-2000 library
  ### to compile on your machine, *COMMENT OUT* the following lines

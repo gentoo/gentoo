@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>mysql</herd>
-	<maintainer>
+	<maintainer type="person">
 		<email>idl0r@gentoo.org</email>
 		<name>Christian Ruppert</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>mysql-bugs@gentoo.org</email>
+		<name>MySQL</name>
 	</maintainer>
 	<longdescription>Percona Toolkit, formerly Maatkit and Aspersa, formerly MySQL Toolkit,
 		is a collection of command-line utilities that provide missing

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>wizardedit@gentoo.org</email>
+    <name>Austin English</name>
+  </maintainer>
+  <longdescription>
+  'git-remote-hg' is the semi-official Mercurial bridge from Git project,
+  once installed, it allows you to clone, fetch and push to and from
+  Mercurial repositories as if they were Git ones.
+  </longdescription>
+  <upstream>
+	<remote-id type="github">felipec/git-remote-hg</remote-id>
+  </upstream>
+</pkgmetadata>

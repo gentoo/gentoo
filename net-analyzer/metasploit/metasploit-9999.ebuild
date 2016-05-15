@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -48,14 +48,15 @@ RUBY_COMMON_DEPEND="virtual/ruby-ssl
 	dev-ruby/json
 	dev-ruby/kissfft
 	dev-ruby/metasm:1.0.2
-	dev-ruby/metasploit_data_models:1.2.9
+	dev-ruby/metasploit_data_models:1.2.10
 	dev-ruby/meterpreter_bins:0.0.22
-	dev-ruby/metasploit-payloads:1.0.19
+	dev-ruby/metasploit-payloads:1.0.22
 	dev-ruby/metasploit-credential:1.0.1
 	>=dev-ruby/metasploit-concern-1.0.0:1.0
 	>=dev-ruby/metasploit-model-1.0.0:1.0
 	dev-ruby/msgpack
 	dev-ruby/nokogiri
+	dev-ruby/openssl-ccm:1.2.1
 	dev-ruby/recog:2.0.14
 	=dev-ruby/rkelly-remix-0.0.6
 	dev-ruby/sqlite3
@@ -145,9 +146,6 @@ all_ruby_prepare() {
 	#epatch "${FILESDIR}/agix_psexec_pull-2657.patch"
 	epatch_user
 
-	#unbundle johntheripper, at least it now defaults to running the system version
-	rm -r data/john/run.*
-	rm -r data/john/src.tar.bz2
 	#remove random "cpuinfo" binaries which a only needed to detect which bundled john to run
 	rm -r data/cpuinfo
 

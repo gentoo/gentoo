@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>sci-electronics</herd>
+  <maintainer type="project">
+    <email>sci-electronics@gentoo.org</email>
+    <name>Gentoo Electronics Project</name>
+  </maintainer>
   <longdescription>
   Petrify is a tool for synthesis of Petri nets and asynchronous controllers.
   Petrify is able to obtain Petri nets with some specific properties: pure, free

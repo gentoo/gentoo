@@ -1,0 +1,24 @@
+#!/sbin/runscript
+
+depend() {
+	need net
+}
+
+checkconfig() {
+	if [ ! -f /etc/${SVCNAME}/${SVCNAME}.conf ] ; then
+		eerror "No /etc/${SVCNAME}/${SVCNAME}.conf file exists!"
+	fi
+}
+
+start() {
+	checkconfig || return 1
+	ebegin "Starting ${SVCNAME}"
+	start-stop-daemon --start --exec /usr/sbin/${SVCNAME} --background --make-pidfile --pidfile /var/run/${SVCNAME}.pid -- --config-file /etc/${SVCNAME}/${SVCNAME}.conf
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping ${SVCNAME}"
+	start-stop-daemon --stop --exec /usr/sbin/${SVCNAME} --pidfile /var/run/${SVCNAME}.pid
+	eend $?
+}

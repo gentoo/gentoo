@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>sci-geosciences</herd>
-<longdescription lang='en'>
+<maintainer type="project">
+  <email>sci-geosciences@gentoo.org</email>
+  <name>Gentoo Geosciences Project</name>
+</maintainer>
+<longdescription lang="en">
   GSHHS is a high-resolution shoreline data set amalgamated from two
   databases in the public domain.  This package contains access
   software and routines to facilitate decimation based on a standard

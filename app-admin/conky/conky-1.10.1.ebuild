@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -30,7 +30,7 @@ DEPEND_COMMON="
 		lua-rsvg? (
 			>=dev-lua/toluapp-1.0.93
 			gnome-base/librsvg )
-		nvidia? ( media-video/nvidia-settings )
+		nvidia? ( || ( x11-drivers/nvidia-drivers[tools,static-libs] media-video/nvidia-settings ) )
 		truetype? ( x11-libs/libXft >=media-libs/freetype-2 )
 		x11-libs/libX11
 		x11-libs/libXdamage
@@ -69,13 +69,15 @@ DEPEND="
 
 CONFIG_CHECK=~IPV6
 
-DOCS=( README TODO ChangeLog NEWS AUTHORS )
+DOCS=( README.md TODO ChangeLog NEWS AUTHORS )
 
 pkg_setup() {
 	use ipv6 && linux-info_pkg_setup
 }
 
 src_prepare() {
+	epatch "${FILESDIR}/${P}-includewlan.patch"
+
 	# Allow user patches #478482
 	epatch_user
 }
@@ -139,7 +141,8 @@ src_configure() {
 		-DBUILD_BUILTIN_CONFIG=ON
 		-DBUILD_OLD_CONFIG=ON
 		-DBUILD_I18N=ON
-		-DMAINTAINER_MODE=ON
+		-DMAINTAINER_MODE=OFF
+		-DRELEASE=ON
 		-DBUILD_AUDACIOUS_LEGACY=OFF
 		-DBUILD_BMPX=OFF
 		-DDOC_PATH=/usr/share/doc/${PF}

@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>toolchain</herd>
+<maintainer type="project">
+ <email>toolchain@gentoo.org</email>
+ <name>Gentoo Toolchain Project</name>
+</maintainer>
 <use>
- <flag name='client'>Install the main "gdb" program (most people want this)</flag>
- <flag name='lzma'>Support lzma compression in ELF debug info</flag>
- <flag name='multitarget'>Support all known targets in one gdb binary</flag>
- <flag name='python'>Enable support for the new internal scripting language, as well as extended pretty printers</flag>
- <flag name='server'>Install the "gdbserver" program (useful for embedded/remote targets)</flag>
+ <flag name="client">Install the main "gdb" program (most people want this)</flag>
+ <flag name="lzma">Support lzma compression in ELF debug info</flag>
+ <flag name="multitarget">Support all known targets in one gdb binary</flag>
+ <flag name="python">Enable support for the new internal scripting language, as well as extended pretty printers</flag>
+ <flag name="server">Install the "gdbserver" program (useful for embedded/remote targets)</flag>
 </use>
 <upstream>
  <remote-id type="cpe">cpe:/a:gnu:gdb</remote-id>

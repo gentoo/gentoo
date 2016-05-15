@@ -26,7 +26,7 @@ IUSE="emacs"
 DEPEND=">=sys-devel/m4-1.4.16
 	>=dev-lang/perl-5.6"
 RDEPEND="${DEPEND}
-	!~sys-devel/${P}:0
+	!~sys-devel/${P}:2.5
 	>=sys-devel/autoconf-wrapper-13"
 [[ ${PV} == "9999" ]] && DEPEND+=" >=sys-apps/texinfo-4.3"
 PDEPEND="emacs? ( app-emacs/autoconf-mode )"

@@ -5,7 +5,7 @@ index d961bd6..17df012 100644
 @@ -369,7 +369,7 @@ AC_ARG_WITH(lua,
              AS_HELP_STRING([--without-lua],
                             [build without lua 5.1 (auto4)]))
- 
+
 -AS_IF([test x$with_lua = xno], [$with_auto4_lua="no"; lua_disabled="(disabled)"], [
 +AS_IF([test x$with_lua = xno], [with_auto4_lua="no"; lua_disabled="(disabled)"], [
    # First try pkg-config with several names

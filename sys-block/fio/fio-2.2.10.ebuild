@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -18,15 +18,17 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~ia64 ~ppc ~ppc64 ~x86"
 IUSE="aio glusterfs gnuplot gtk numa rbd rdma static zlib"
 
-DEPEND="aio? ( dev-libs/libaio )
-	glusterfs? ( sys-cluster/glusterfs )
+# GTK+:2 does not offer static libaries
+# numactl always includes static libraries
+DEPEND="aio? ( static? ( dev-libs/libaio[static-libs(+)] ) !static? ( dev-libs/libaio ) )
+	glusterfs? ( static? ( sys-cluster/glusterfs[static-libs(+)] ) !static? ( sys-cluster/glusterfs ) )
 	gtk? (
-		dev-libs/glib:2
+		static? ( dev-libs/glib:2[static-libs(+)] ) !static? ( dev-libs/glib:2 )
 		x11-libs/gtk+:2
 	)
 	numa? ( sys-process/numactl )
-	rbd? ( sys-cluster/ceph )
-	zlib? ( sys-libs/zlib )"
+	rbd? ( static? ( sys-cluster/ceph[static-libs(+)] ) !static? ( sys-cluster/ceph ) )
+	zlib? ( static? ( sys-libs/zlib[static-libs(+)] ) !static? ( sys-libs/zlib ) )"
 RDEPEND="${DEPEND}
 	gnuplot? (
 		sci-visualization/gnuplot
@@ -36,6 +38,7 @@ RDEPEND="${DEPEND}
 S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
+	epatch "${FILESDIR}"/fio-2.2.10-libmtd.patch
 	sed -i '/^DEBUGFLAGS/s: -D_FORTIFY_SOURCE=2::g' Makefile || die
 	epatch_user
 

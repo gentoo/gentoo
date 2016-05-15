@@ -1,0 +1,11 @@
+--- src/gui_user.c.old	2016-02-04 21:21:15.141455597 +0100
++++ src/gui_user.c	2016-02-04 21:21:31.016156493 +0100
+@@ -820,7 +820,7 @@
+ 
+     dialog = gtk_message_dialog_new(GTK_WINDOW(user->gui_user.g_window), 
+                 GTK_DIALOG_DESTROY_WITH_PARENT, GTK_MESSAGE_INFO, 
+-                GTK_BUTTONS_CLOSE, msg);
++                GTK_BUTTONS_CLOSE, "%s", msg);
+                 
+     gtk_window_set_transient_for(GTK_WINDOW(user->gui_user.g_window), 
+                                  GTK_WINDOW(dialog));

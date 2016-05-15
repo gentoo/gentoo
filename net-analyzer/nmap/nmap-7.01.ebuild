@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -19,7 +19,7 @@ SRC_URI="
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x86-solaris"
+KEYWORDS="alpha amd64 arm ~arm64 hppa ~ia64 ~mips ~ppc ppc64 ~s390 ~sh sparc x86 ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x86-solaris"
 
 IUSE="ipv6 libressl +nse system-lua ncat ndiff nls nmap-update nping ssl zenmap"
 NMAP_LINGUAS=( de fr hi hr it ja pl pt_BR ru zh )
@@ -96,6 +96,11 @@ src_prepare() {
 		-e '/^ALL_LINGUAS =/{s|$| id|g;s|jp|ja|g}' \
 		Makefile.in || die
 
+	sed -i \
+		-e '/rm -f $@/d' \
+		$(find . -name Makefile.in) \
+		|| die
+
 	# Fix desktop files wrt bug #432714
 	sed -i \
 		-e '/^Encoding/d' \
@@ -126,6 +131,15 @@ src_configure() {
 }
 
 src_compile() {
+	local directory
+	for directory in . libnetutil nsock/src \
+		$(usex ncat ncat '') \
+		$(usex nmap-update nmap-update '') \
+		$(usex nping nping '')
+	do
+		emake -C "${directory}" makefile.dep
+	done
+
 	emake \
 		AR=$(tc-getAR) \
 		RANLIB=$(tc-getRANLIB)

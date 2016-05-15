@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer>
+	<maintainer type="person">
 		<email>mgorny@gentoo.org</email>
 		<name>Michał Górny</name>
 	</maintainer>
 	<use>
-		<flag name='cdio'>Use libcdio for CD support</flag>
-		<flag name='sdl'>Use SDL sound backend (other parts of SDL are used unconditionally)</flag>
+		<flag name="cdio">Use libcdio for CD support</flag>
+		<flag name="sdl">Use SDL sound backend (other parts of SDL are used unconditionally)</flag>
 	</use>
 </pkgmetadata>

@@ -2,8 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=2
-
+EAPI=5
 MOD_DESC="Star Wars mod"
 MOD_NAME="Troopers"
 MOD_DIR="Troopers"
@@ -11,7 +10,7 @@ MOD_ICON="Help/Troopers.ico"
 
 inherit games games-mods
 
-HOMEPAGE="http://www.ut2004troopers.com/"
+HOMEPAGE="http://www.moddb.com/mods/troopers-dawn-of-destiny/"
 SRC_URI="troopersversion${PV/.}zip.zip"
 
 LICENSE="freedist"
@@ -21,7 +20,7 @@ RESTRICT="fetch"
 
 pkg_nofetch() {
 	elog "Please download ${SRC_URI} from:"
-	elog "http://www.atomicgamer.com/file.php?id=65532"
+	elog "${HOMEPAGE}"
 	elog "and move it to ${DISTDIR}"
 }
 

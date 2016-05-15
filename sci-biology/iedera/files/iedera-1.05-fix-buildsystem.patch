@@ -1,0 +1,16 @@
+iedera sets default flags that override user {C,CXX,LD}FLAGS
+
+--- iedera-1.05/configure.ac
++++ iedera-1.05/configure.ac
+@@ -4,11 +4,5 @@
+ AC_PROG_INSTALL
+ AC_PROG_CXX
+ AC_HEADER_STDC
+-CFLAGS="$CFLAGS $UNAME_DEFS -O3 -pipe -funroll-loops -Wall"
+-CXXFLAGS="$CFLAGS"
+-LDFLAGS="$LDFLAGS -lm"
+-AC_SUBST(CFLAGS)
+-AC_SUBST(CXXFLAGS)
+-AC_SUBST(LDFLAGS)
+ AC_CONFIG_FILES([Makefile])
+ AC_OUTPUT

@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -8,7 +8,7 @@ if [[ ${PV} == "9999" ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="http://root.cern.ch/git/root.git"
 else
-	SRC_URI="ftp://root.cern.ch/${PN}/${PN}_v${PV}.source.tar.gz"
+	SRC_URI="https://root.cern.ch/download/${PN}_v${PV}.source.tar.gz"
 	KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 fi
 
@@ -18,7 +18,7 @@ inherit elisp-common eutils fdo-mime fortran-2 multilib python-single-r1 \
 	toolchain-funcs user versionator
 
 DESCRIPTION="C++ data analysis framework and interpreter from CERN"
-HOMEPAGE="http://root.cern.ch/"
+HOMEPAGE="https://root.cern.ch"
 
 SLOT="0/$(get_version_component_range 1-3 ${PV})"
 LICENSE="LGPL-2.1 freedist MSttfEULA LGPL-3 libpng UoI-NCSA"
@@ -126,16 +126,19 @@ die_compiler() {
 # $3 - clang++
 # $4 - icc/icpc
 check_compiler() {
-	local ver
+	local cur ver
 	case "$(tc-getCXX)" in
 		*clang++*)
 			ver="$(best_version sys-devel/clang | sed 's:sys-devel/clang-::')"
+			cur="$3"
 		;;
 		*g++*)
 			ver="$(gcc-version)"
+			cur="$2"
 		;;
 		*icc*|*icpc*)
 			ver="$(best_version dev-lang/icc | sed 's:dev-lang/icc-::')"
+			cur="$4"
 		;;
 		*)
 			ewarn "You are using an unsupported compiler."
@@ -143,7 +146,7 @@ check_compiler() {
 			return 0
 		;;
 	esac
-	version_is_at_least "$3" "${ver}" || die_compiler "$1" "$2" "$3" "$4" "${ver}"
+	version_is_at_least "${cur}" "${ver}" || die_compiler "$1" "$2" "$3" "$4" "${ver}"
 }
 
 pkg_setup() {

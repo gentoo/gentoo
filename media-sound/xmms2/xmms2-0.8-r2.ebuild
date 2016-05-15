@@ -8,7 +8,7 @@ inherit eutils python toolchain-funcs
 
 MY_P="${P}DrO_o"
 
-DESCRIPTION="X(cross)platform Music Multiplexing System. The new generation of the XMMS player"
+DESCRIPTION="X(cross)platform Music Multiplexing System. Next generation of the XMMS player"
 HOMEPAGE="http://xmms2.org/wiki/Main_Page"
 SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.bz2"
 LICENSE="GPL-2 LGPL-2.1"
@@ -19,7 +19,7 @@ KEYWORDS="alpha amd64 ppc x86"
 IUSE="aac airplay +alsa ao asf avahi cdda curl cxx ffmpeg flac gvfs ices
 jack mac mlib-update mms +mad modplug mp3 mp4 musepack ofa oss
 perl phonehome pulseaudio python ruby
-samba +server sid sndfile speex test +vorbis vocoder wavpack xml"
+samba +server sid sndfile speex test valgrind +vorbis vocoder wavpack xml"
 
 RDEPEND="server? (
 		>=dev-db/sqlite-3.3.4
@@ -70,9 +70,11 @@ RDEPEND="server? (
 DEPEND="${RDEPEND}
 	dev-lang/python
 	python? ( dev-python/pyrex )
-	perl? ( dev-perl/Module-Build )
+	perl? ( dev-perl/Module-Build
+		virtual/perl-Module-Metadata )
 	virtual/pkgconfig
-	test? ( dev-util/cunit )
+	test? ( dev-util/cunit
+		valgrind? ( dev-util/valgrind ) )
 	"
 
 S="${WORKDIR}/${MY_P}"
@@ -105,7 +107,7 @@ pkg_setup() {
 src_prepare() {
 	./waf # inflate waf
 	cd .waf* || die
-	epatch "${FILESDIR}/${PN}"-0.8DrO_o-waflib-fix-perl.patch
+	epatch "${FILESDIR}/${PN}"-0.8DrO_o-waflib-fix-perl.patch #578778
 	cd "${S}"
 	epatch "${FILESDIR}/${P}"-ffmpeg-0.11.patch #443256
 	epatch "${FILESDIR}/${P}"-libav-9-p2.patch #443256
@@ -115,6 +117,15 @@ src_prepare() {
 	epatch "${FILESDIR}/${P}"-ffmpeg2.patch #536232
 	epatch "${FILESDIR}/${P}"-cpython.patch
 	epatch "${FILESDIR}/${P}"-modpug.patch #536046
+	epatch "${FILESDIR}/${P}"-audio4-p1.patch #540890
+	epatch "${FILESDIR}/${P}"-audio4-p2.patch
+	epatch "${FILESDIR}/${P}"-audio4-p3.patch
+	epatch "${FILESDIR}/${P}"-audio4-p4.patch
+	epatch "${FILESDIR}/${P}"-audio4-p5.patch
+	epatch "${FILESDIR}/${P}"-audio4-p6.patch
+	epatch "${FILESDIR}/${P}"-audio4-p7.patch
+	epatch "${FILESDIR}/${P}"-rtvg.patch #424377
+	epatch "${FILESDIR}/${P}"-samba-4.patch
 
 	if has_version dev-libs/libcdio-paranoia; then
 		sed -i -e 's:cdio/cdda.h:cdio/paranoia/cdda.h:' src/plugins/cdda/cdda.c || die
@@ -234,6 +245,7 @@ src_configure() {
 	# pass them explicitely even if empty as we try to avoid magic deps
 	waf_params+=" --with-optionals=${optionals:1}" # skip first ',' if yet
 	waf_params+=" --with-plugins=${plugins:1}"
+	waf_params+=" $(use_with valgrind)"
 
 	CC="$(tc-getCC)"         \
 	CPP="$(tc-getCPP)"       \

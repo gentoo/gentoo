@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>bsd</herd>
+<maintainer type="project">
+    <email>bsd@gentoo.org</email>
+    <name>BSD Project</name>
+  </maintainer>
   <use>
-    <flag name='build-kernel'>Build and install a kernel (recommended).</flag>
-    <flag name='dtrace'>Enable DTrace support.</flag>
-    <flag name='zfs'>Enable ZFS support.</flag>
+    <flag name="build-kernel">Build and install a kernel (recommended).</flag>
+    <flag name="dtrace">Enable DTrace support.</flag>
+    <flag name="zfs">Enable ZFS support.</flag>
   </use>
 </pkgmetadata>

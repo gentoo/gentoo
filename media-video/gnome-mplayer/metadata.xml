@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>video</herd>
-  <maintainer>
+  <maintainer type="project">
     <email>media-video@gentoo.org</email>
   </maintainer>
   <use>
-    <flag name='dconf'>Enable support for <pkg>gnome-base/dconf</pkg></flag>
-    <flag name='gda'>Enable support for <pkg>gnome-extra/libgda</pkg></flag>
+    <flag name="dconf">Enable support for <pkg>gnome-base/dconf</pkg></flag>
+    <flag name="gda">Enable support for <pkg>gnome-extra/libgda</pkg></flag>
   </use>
 </pkgmetadata>

@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -13,7 +13,7 @@ SLOT="0"
 KEYWORDS="amd64 x86"
 
 RDEPEND="dev-lang/perl
-	 dev-perl/perl-tk
+	 dev-perl/Tk
 	 app-accessibility/sphinx2
 	 app-accessibility/festival
 	 app-accessibility/mbrola"

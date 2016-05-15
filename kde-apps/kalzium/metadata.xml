@@ -5,5 +5,8 @@
 		<flag name="editor">Enable the embedded molecule editor/viewer</flag>
 		<flag name="solver">Enable the equation solver</flag>
 	</use>
-	<herd>kde</herd>
+	<maintainer type="project">
+		<email>kde@gentoo.org</email>
+		<name>Gentoo KDE Project</name>
+	</maintainer>
 </pkgmetadata>

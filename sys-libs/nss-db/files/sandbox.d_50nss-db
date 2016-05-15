@@ -1,1 +1,0 @@
-SANDBOX_PREDICT="/var/db/aliases.db:/var/db/automount.db:/var/db/bootparams.db:/var/db/ethers.db:/var/db/group.db:/var/db/hosts.db:/var/db/netgroup.db:/var/db/netmasks.db:/var/db/networks.db:/var/db/passwd.db:/var/db/protocols.db:/var/db/rpc.db:/var/db/services.db:/var/db/shadow.db"

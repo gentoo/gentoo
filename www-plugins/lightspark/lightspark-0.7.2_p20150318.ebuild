@@ -21,6 +21,7 @@ RDEPEND=">=dev-cpp/libxmlpp-2.33.1:2.6
 	media-libs/libpng
 	media-libs/libsdl
 	>=sys-devel/gcc-4.6.0[cxx]
+	<sys-devel/llvm-3.7
 	>=sys-devel/llvm-3.4
 	x11-libs/cairo
 	x11-libs/gtk+:2

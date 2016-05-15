@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <herd>kde</herd>
-  <herd>sound</herd>
+  <maintainer type="project">
+    <email>kde@gentoo.org</email>
+    <name>Gentoo KDE Project</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>sound@gentoo.org</email>
+    <name>Gentoo Sound project</name>
+  </maintainer>
   <use>
-    <flag name='acoustid'>Enable support for acoustic fingerprinting plugin using
+    <flag name="acoustid">Enable support for acoustic fingerprinting plugin using
       (<pkg>media-libs/chromaprint</pkg>)</flag>
 	<flag name="phonon">Enable sound support via <pkg>media-libs/phonon</pkg> or <pkg>dev-qt/qtphonon</pkg></flag>
   </use>

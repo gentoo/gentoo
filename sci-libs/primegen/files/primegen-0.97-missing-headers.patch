@@ -1,5 +1,5 @@
---- eratspeed.c.orig	2009-03-27 09:16:52.000000000 -0300
-+++ eratspeed.c	2009-03-27 09:18:29.000000000 -0300
+--- primegen-0.97/eratspeed.c.orig	2009-03-27 09:16:52.000000000 -0300
++++ primegen-0.97/eratspeed.c	2009-03-27 09:18:29.000000000 -0300
 @@ -1,6 +1,8 @@
  #define B32 1001
  #define B (B32 * 32)
@@ -9,32 +9,32 @@
  #include "timing.h"
  #include "uint32.h"
  
---- primegaps.c.orig	2009-03-27 09:17:07.000000000 -0300
-+++ primegaps.c	2009-03-27 09:17:19.000000000 -0300
+--- primegen-0.97/primegaps.c.orig	2009-03-27 09:17:07.000000000 -0300
++++ primegen-0.97/primegaps.c	2009-03-27 09:17:19.000000000 -0300
 @@ -1,4 +1,5 @@
  #include <math.h>
 +#include <stdio.h>
  #include "primegen.h"
  
  primegen pg;
---- primes.c.orig	2009-03-27 09:19:08.000000000 -0300
-+++ primes.c	2009-03-27 09:19:14.000000000 -0300
+--- primegen-0.97/primes.c.orig	2009-03-27 09:19:08.000000000 -0300
++++ primegen-0.97/primes.c	2009-03-27 09:19:14.000000000 -0300
 @@ -1,4 +1,5 @@
  #include <stdio.h>
 +#include <stdlib.h>
  #include "primegen.h"
  #include "fs64.h"
  
---- primespeed.c.orig	2009-03-27 09:17:41.000000000 -0300
-+++ primespeed.c	2009-03-27 09:18:54.000000000 -0300
+--- primegen-0.97/primespeed.c.orig	2009-03-27 09:17:41.000000000 -0300
++++ primegen-0.97/primespeed.c	2009-03-27 09:18:54.000000000 -0300
 @@ -1,3 +1,5 @@
 +#include <stdio.h>
 +#include <stdlib.h>
  #include "timing.h"
  #include "primegen.h"
  #include "primegen_impl.h"
---- error.h.orig	2009-09-11 19:40:53.000000000 +0100
-+++ error.h	2009-09-11 19:41:02.000000000 +0100
+--- primegen-0.97/error.h.orig	2009-09-11 19:40:53.000000000 +0100
++++ primegen-0.97/error.h	2009-09-11 19:41:02.000000000 +0100
 @@ -1,7 +1,7 @@
  #ifndef ERROR_H
  #define ERROR_H

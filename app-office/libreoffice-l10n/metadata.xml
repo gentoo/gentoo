@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>office</herd>
+	<maintainer type="project">
+		<email>office@gentoo.org</email>
+		<name>Gentoo Office project</name>
+	</maintainer>
 	<use>
 		<flag name="offlinehelp">Install help files locally instead of using the LibreOffice Wiki</flag>
 		<flag name="linguas_ca_valencia">Catalan locale (Valencia)</flag>

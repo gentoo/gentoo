@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -21,8 +21,8 @@ IUSE="doc ftdi ncurses readline"
 
 RDEPEND="virtual/libusb:1
 	virtual/libusb:0
-	ftdi? ( dev-embedded/libftdi )
-	ncurses? ( sys-libs/ncurses )
+	ftdi? ( dev-embedded/libftdi:= )
+	ncurses? ( sys-libs/ncurses:= )
 	readline? ( sys-libs/readline )"
 DEPEND="${RDEPEND}"
 

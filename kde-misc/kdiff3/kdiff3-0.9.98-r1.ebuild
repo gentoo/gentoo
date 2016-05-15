@@ -9,7 +9,7 @@ if [[ ${PV} != *9999* ]]; then
 	gl hi hne hr hu is it ja ka lt mai ml nb nds nl nn pl pt pt_BR ro ru rw sk
 	sv ta tg tr ug uk zh_CN zh_TW"
 	SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
-	KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux"
+	KEYWORDS="amd64 ~ppc ~x86 ~amd64-linux"
 	KDE_HANDBOOK="optional"
 else
 	KEYWORDS=""

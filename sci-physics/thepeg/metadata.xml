@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>sci-physics</herd>
-<maintainer>
+<maintainer type="person">
   <email>jauhien@gentoo.org</email>
+</maintainer>
+<maintainer type="project">
+  <email>sci-physics@gentoo.org</email>
+  <name>Gentoo Physics Project</name>
 </maintainer>
 <longdescription>
   Toolkit for High Energy Physics Event Generation.
@@ -13,12 +16,12 @@
   of the toolkit and which can be used by any event generator model.
 </longdescription>
 <use>
-  <flag name='c++11'>Build ThePEG using the C++11 standard.
+  <flag name="c++11">Build ThePEG using the C++11 standard.
   Experimental feature, not for production use.</flag>
-  <flag name='fastjet'>Adds support for <pkg>sci-physics/fastjet</pkg></flag>
-  <flag name='hepmc'>Adds support for High Energy Physics Monte Carlo
+  <flag name="fastjet">Adds support for <pkg>sci-physics/fastjet</pkg></flag>
+  <flag name="hepmc">Adds support for High Energy Physics Monte Carlo
 	  Generators <pkg>sci-physics/hepmc</pkg></flag>
-  <flag name='lhapdf'>Adds support for <pkg>sci-physics/lhapdf</pkg></flag>
-  <flag name='rivet'>Adds support for <pkg>sci-physics/rivet</pkg></flag>
+  <flag name="lhapdf">Adds support for <pkg>sci-physics/lhapdf</pkg></flag>
+  <flag name="rivet">Adds support for <pkg>sci-physics/rivet</pkg></flag>
 </use>
 </pkgmetadata>

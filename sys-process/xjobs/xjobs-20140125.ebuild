@@ -5,7 +5,7 @@
 EAPI=5
 
 DESCRIPTION="Reads commands line by line and executes them in parallel"
-HOMEPAGE="http://www.maier-komor.de/${PN}.html"
+HOMEPAGE="http://www.maier-komor.de/xjobs.html"
 SRC_URI="http://www.maier-komor.de/${PN}/${P}.tgz"
 
 LICENSE="GPL-2"

@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -10,11 +10,11 @@ inherit java-pkg-2 java-ant-2
 
 DESCRIPTION="Guice is a lightweight dependency injection framework for Java 5 and above"
 HOMEPAGE="https://github.com/google/guice/"
-SRC_URI="https://github.com/google/${PN}/archive/${PV}.zip"
+SRC_URI="https://github.com/google/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="4"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 IUSE=""
 

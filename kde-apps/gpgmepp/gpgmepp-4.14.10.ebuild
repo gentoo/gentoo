@@ -9,7 +9,7 @@ EGIT_BRANCH="KDE/4.14"
 inherit kde4-base
 
 DESCRIPTION="C++ bindings for gpgme"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 LICENSE="LGPL-2.1"
 IUSE="debug"
 
@@ -21,7 +21,7 @@ DEPEND="
 # boost is not linked to, but headers which include it are installed
 # bug #418071
 RDEPEND="${DEPEND}
-	!kde-base/kdepimlibs:4
+	!kde-apps/kdepimlibs:4
 "
 
 PATCHES=( "${FILESDIR}/kdepimlibs-4.9.1-boostincludes.patch" )

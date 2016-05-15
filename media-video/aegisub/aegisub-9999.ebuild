@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -9,7 +9,7 @@ AUTOTOOLS_IN_SOURCE_BUILD=1
 PLOCALES="ar bg ca cs da de el es eu fa fi fr_FR gl hu id it ja ko nl pl pt_BR pt_PT ru sr_RS@latin sr_RS uk_UA vi zh_CN zh_TW"
 WX_GTK_VER="3.0"
 
-inherit autotools-utils fdo-mime gnome2-utils l10n toolchain-funcs wxwidgets git-2
+inherit autotools-utils fdo-mime flag-o-matic gnome2-utils l10n wxwidgets git-2
 
 DESCRIPTION="Advanced subtitle editor"
 HOMEPAGE="http://www.aegisub.org/"
@@ -18,31 +18,36 @@ EGIT_REPO_URI="git://github.com/Aegisub/Aegisub.git"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
-IUSE="alsa debug +ffmpeg +fftw openal oss portaudio pulseaudio spell"
+IUSE="alsa debug +ffmpeg +fftw openal oss portaudio pulseaudio spell +uchardet"
 
 # configure.ac specifies minimal versions for some of the dependencies below.
-# However, most of these minimal versions date back to 2006-2010 yy.
+# However, most of these minimal versions date back to 2006-2012 yy.
 # Such version specifiers are meaningless nowadays, so they are omitted.
+#
+# aegisub bundles luabins (https://github.com/agladysh/luabins).
+# Unfortunately, luabins upstream is practically dead since 2010.
+# Thus unbundling luabins is not worth the effort.
 RDEPEND="
-	>=dev-lang/luajit-2.0.4:2=
-	>=dev-libs/boost-1.50.0:=[icu,nls,threads]
-	>=dev-libs/icu-4.8.1.1:=
-	>=x11-libs/wxGTK-3.0.0:${WX_GTK_VER}[X,opengl,debug?]
+	dev-lang/luajit:2[lua52compat]
+	dev-libs/boost:=[icu,nls,threads]
+	dev-libs/icu:=
 	media-libs/fontconfig
 	media-libs/freetype
-	media-libs/libass[fontconfig]
+	media-libs/libass:=[fontconfig]
 	virtual/libiconv
 	virtual/opengl
+	x11-libs/wxGTK:${WX_GTK_VER}[X,opengl,debug?]
 
 	alsa? ( media-libs/alsa-lib )
 	openal? ( media-libs/openal )
 	portaudio? ( =media-libs/portaudio-19* )
 	pulseaudio? ( media-sound/pulseaudio )
 
-	ffmpeg? ( >=media-libs/ffmpegsource-2.16:= )
+	ffmpeg? ( media-libs/ffmpegsource:= )
 	fftw? ( >=sci-libs/fftw-3.3:= )
 
 	spell? ( app-text/hunspell )
+	uchardet? ( dev-libs/uchardet )
 "
 DEPEND="${RDEPEND}
 	oss? ( virtual/os-headers )
@@ -54,14 +59,9 @@ REQUIRED_USE="
 	|| ( alsa openal oss portaudio pulseaudio )
 "
 
-# aegisub also bundles luabins (https://github.com/agladysh/luabins).
-# Unfortunately, luabins upstream is dead since 2011.
-# Thus unbundling luabins is not worth the effort.
 PATCHES=(
-	"${FILESDIR}/${PN}-3.2.2-fix-lua-regexp.patch"
-	"${FILESDIR}/${P}-unbundle-luajit.patch"
-	"${FILESDIR}/${P}-add-missing-pthread-flags.patch"
-	"${FILESDIR}/${P}-respect-user-compiler-flags.patch"
+	"${FILESDIR}/${PN}-3.2.2_p20160306-fix-luajit-unbundling.patch"
+	"${FILESDIR}/${PN}-3.2.2_p20160306-respect-user-compiler-flags.patch"
 )
 
 pkg_pretend() {
@@ -71,14 +71,15 @@ pkg_pretend() {
 }
 
 src_prepare() {
-	cp /usr/share/gettext/config.rpath . || die
-
 	remove_locale() {
 		rm "po/${1}.po" || die
 	}
 
 	l10n_find_plocales_changes 'po' '' '.po'
 	l10n_for_each_disabled_locale_do remove_locale
+
+	# See http://devel.aegisub.org/ticket/1914
+	config_rpath_update "${S}/config.rpath"
 
 	autotools-utils_src_prepare
 }
@@ -88,6 +89,7 @@ src_configure() {
 	use openal && export agi_cv_with_openal="yes"
 	local myeconfargs=(
 		--disable-update-checker
+		--with-system-luajit
 		$(use_enable debug)
 		$(use_with alsa)
 		$(use_with ffmpeg ffms2)
@@ -97,6 +99,7 @@ src_configure() {
 		$(use_with portaudio)
 		$(use_with pulseaudio libpulse)
 		$(use_with spell hunspell)
+		$(use_with uchardet)
 	)
 	autotools-utils_src_configure
 }

@@ -5,30 +5,29 @@
 
 This is the example metadata file.
 The root element of this file is <pkgmetadata>. Within this element a
-number of subelements are allowed: herd, maintainer, and
-longdescription. herd is a required subelement.
+number of subelements are allowed, the most common being maintainer.
 
 For a full description look at:
 https://devmanual.gentoo.org/ebuild-writing/misc-files/metadata/
-
 
 Before committing, please remove the comments from this file. They are
 not relevant for general metadata.xml files.
 -->
 <pkgmetadata>
-<!-- <herd>some-herd</herd> -->
-<maintainer>
-	<email>@gentoo.org</email>
-<!--  <description>Description of the maintainership</description> -->
+<maintainer type="person">
+	<email>exampledev@gentoo.org</email>
+	<description>Primary maintainer</description>
 </maintainer>
-<!-- <longdescription>Long description of the package</longdescription> -->
-<!--
+<maintainer type="project">
+	<email>exampleproject@gentoo.org</email>
+	<name>Gentoo Example Project</name>
+</maintainer>
+<longdescription>Long description of the package</longdescription>
 <use>
+	<flag name="aspell">Uses <pkg>app-text/aspell</pkg> for spell checking.
+		Requires an installed dictionary from <cat>app-dicts</cat></flag>
 	<flag name="flag">Description of how USE='flag' affects this package</flag>
 	<flag name="userland_GNU">Description of how USERLAND='GNU' affects this
 		package</flag>
-	<flag name="aspell">Uses <pkg>app-text/aspell</pkg> for spell checking.
-		Requires an installed dictionary from <cat>app-dicts</cat></flag>
 </use>
--->
 </pkgmetadata>

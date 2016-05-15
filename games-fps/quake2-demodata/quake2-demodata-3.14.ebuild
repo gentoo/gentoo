@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 EAPI=5
@@ -19,39 +19,11 @@ KEYWORDS="~alpha ~amd64 ~ia64 ppc sparc x86 ~x86-fbsd"
 IUSE="symlink"
 
 RDEPEND=""
-DEPEND="app-arch/unzip"
+DEPEND="app-arch/unzip
+	!games-fps/quake2-data" # games-fps/quake2-data already includes the demo data
 
 S=${WORKDIR}
 dir=${GAMES_DATADIR}/${MY_PN}
-
-pkg_setup() {
-	games_pkg_setup
-
-	local alert_user
-
-	if ! use symlink ; then
-		ewarn "The 'symlink' USE flag is needed for Quake 2 clients"
-		ewarn "to easily play the demo data."
-		echo
-		alert_user=y
-	fi
-
-	if has_version "games-fps/quake2-data" ; then
-		ewarn "games-fps/quake2-data already includes the demo data,"
-		ewarn "so this installation is not very useful."
-		echo
-		if use symlink ; then
-			eerror "The symlink for the demo data conflicts with the cdinstall data"
-			die "Remove the 'symlink' USE flag for this package"
-		fi
-		alert_user=y
-	fi
-
-	if [[ -n "${alert_user}" ]] ; then
-		ebeep
-		epause
-	fi
-}
 
 src_unpack() {
 	unpack_zip ${A}
