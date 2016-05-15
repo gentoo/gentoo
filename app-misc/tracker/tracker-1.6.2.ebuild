@@ -141,6 +141,9 @@ src_prepare() {
 	# Ensure embedded sqlite.h is in the include path (from 1.6 branch)
 	epatch "${FILESDIR}"/${P}-include-path.patch
 
+	# embedded sqlite underlinking, https://bugzilla.gnome.org/show_bug.cgi?id=766487
+	epatch "${FILESDIR}"/${P}-sqlite-underlinking.patch
+
 	eautoreconf # See bug #367975
 	gnome2_src_prepare
 	vala_src_prepare
