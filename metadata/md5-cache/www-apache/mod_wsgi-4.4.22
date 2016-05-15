@@ -10,5 +10,5 @@ RDEPEND==www-servers/apache-2*
 SLOT=0
 SRC_URI=https://github.com/GrahamDumpleton/mod_wsgi/archive/4.4.22.tar.gz -> mod_wsgi-4.4.22.tar.gz
 _eclass_exported_funcs=pkg_postinst:apache-module pkg_setup:python-single-r1 src_configure:- src_compile:- src_install:apache-module
-_eclasses_=apache-module	5e66430013d92dfe0bf8672b05319b6d	depend.apache	e3c541cb90838388f81620d630c28f41	eutils	792f83d5ec9536cb5ccef375469d8bde	multilib	d062ae4ba2fc40a19c11de2ad89b6616	python-single-r1	2ebea8fbab356d63110245129a67a6dd	python-utils-r1	00f984fbfe2fde78b718d7a0cfe1dddd	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_eclasses_=apache-module	5e66430013d92dfe0bf8672b05319b6d	depend.apache	e3c541cb90838388f81620d630c28f41	eutils	792f83d5ec9536cb5ccef375469d8bde	multilib	d062ae4ba2fc40a19c11de2ad89b6616	python-single-r1	2ebea8fbab356d63110245129a67a6dd	python-utils-r1	13d5b02ea59b21da41c77c9294f3b7f7	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
 _md5_=0d1ad84fff8f5aaec46fca46bc794476

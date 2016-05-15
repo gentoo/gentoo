@@ -10,5 +10,5 @@ RESTRICT=binchecks strip
 SLOT=3.4.9999
 SRC_URI=https://www.kernel.org/pub/linux/kernel/v3.x/linux-3.4.tar.xz
 _eclass_exported_funcs=pkg_preinst:subversion pkg_postrm:- pkg_postinst:- pkg_setup:kernel-2 src_unpack:- src_prepare:- src_compile:kernel-2 src_test:kernel-2 src_install:kernel-2
-_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	git-r3	ef66dfc3db09f327af21cf32f140fb2b	kernel-2	f745fe70cd0e35af07412905687b9a7f	multilib	d062ae4ba2fc40a19c11de2ad89b6616	python-any-r1	8eb13cdf35f6e43c48107b911900b2cc	python-utils-r1	00f984fbfe2fde78b718d7a0cfe1dddd	subversion	4fee0a764150bb4dda27ed4d2c4ed7ce	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	git-r3	ef66dfc3db09f327af21cf32f140fb2b	kernel-2	f745fe70cd0e35af07412905687b9a7f	multilib	d062ae4ba2fc40a19c11de2ad89b6616	python-any-r1	8eb13cdf35f6e43c48107b911900b2cc	python-utils-r1	13d5b02ea59b21da41c77c9294f3b7f7	subversion	4fee0a764150bb4dda27ed4d2c4ed7ce	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=c14cb6aa9f4f8082a9ecf8b1dbba25d0

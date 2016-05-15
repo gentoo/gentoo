@@ -10,5 +10,5 @@ RDEPEND=>=sys-libs/libselinux-2.4:=[python] >=sys-libs/glibc-2.4 >=sys-libs/libc
 SLOT=0
 SRC_URI=https://raw.githubusercontent.com/wiki/SELinuxProject/selinux/files/releases/20150202/policycoreutils-2.4.tar.gz https://dev.gentoo.org/~perfinion/distfiles/policycoreutils-extra-1.34.tar.bz2
 _eclass_exported_funcs=pkg_postinst:- src_prepare:- src_compile:- src_install:-
-_eclasses_=bash-completion-r1	acf715fa09463f043fbfdc1640f3fb85	eutils	792f83d5ec9536cb5ccef375469d8bde	multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	d062ae4ba2fc40a19c11de2ad89b6616	python-r1	0f6937650a475d673baa5d0c8c0b37b3	python-utils-r1	00f984fbfe2fde78b718d7a0cfe1dddd	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_eclasses_=bash-completion-r1	acf715fa09463f043fbfdc1640f3fb85	eutils	792f83d5ec9536cb5ccef375469d8bde	multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	d062ae4ba2fc40a19c11de2ad89b6616	python-r1	0f6937650a475d673baa5d0c8c0b37b3	python-utils-r1	13d5b02ea59b21da41c77c9294f3b7f7	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
 _md5_=93df0dc1b383cda4be8020873426d114

@@ -10,5 +10,5 @@ RDEPEND=!gcrypt? ( !libressl? ( dev-libs/openssl:0 ) libressl? ( dev-libs/libres
 SLOT=0
 SRC_URI=http://linuxwireless.org/download/crda/crda-3.18.tar.xz mirror://kernel/software/network/crda/crda-3.18.tar.xz
 _eclass_exported_funcs=pkg_setup:python-any-r1 src_prepare:- src_compile:- src_test:- src_install:-
-_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	multilib	d062ae4ba2fc40a19c11de2ad89b6616	python-any-r1	8eb13cdf35f6e43c48107b911900b2cc	python-utils-r1	00f984fbfe2fde78b718d7a0cfe1dddd	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	udev	73058269b3e70e34e084fa3981282338
+_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	multilib	d062ae4ba2fc40a19c11de2ad89b6616	python-any-r1	8eb13cdf35f6e43c48107b911900b2cc	python-utils-r1	13d5b02ea59b21da41c77c9294f3b7f7	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	udev	73058269b3e70e34e084fa3981282338
 _md5_=0a45adbfce848f14a1b1b0f74f1c6146
