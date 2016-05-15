@@ -395,6 +395,7 @@ app-backup/spideroak-bin 5.1.8-r2 5.2.0 6.0.1 6.1.3: Secure free online backup, 
 app-backup/tarsnap 1.0.35: Online backups for the truly paranoid
 app-backup/tob 0.26-r2: A general driver for making and maintaining backups
 app-backup/tsm 7.1.0.0-r1 7.1.0.3 7.1.1.4 7.1.2.0 7.1.2.3 7.1.3.1 7.1.3.1-r1 7.1.3.2 7.1.4.4: Tivoli Storage Manager (TSM) Backup/Archive (B/A) Client and API
+app-backup/untangle-https-backup 0.0.4: Back up Untangle configurations via the web admin UI
 app-backup/vzdump 1.2: A utility to make consistent snapshots of running OpenVZ containers
 app-benchmarks/acovea 5.1.1 5.1.1-r1: Analysis of Compiler Options via Evolutionary Algorithm
 app-benchmarks/acovea-gtk 1.0.1: Analysis of Compiler Options via Evolutionary Algorithm GUI

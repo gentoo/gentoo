@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=python_targets_python3_3? ( >=dev-lang/python-3.3.2-r2:3.3[ssl(+)] ) python_targets_python3_4? ( dev-lang/python:3.4[ssl(+)] ) python_targets_python3_5? ( dev-lang/python:3.5[ssl(+)] ) >=dev-lang/python-exec-2:=[python_targets_python3_3(-)?,python_targets_python3_4(-)?,python_targets_python3_5(-)?,-python_single_target_python3_3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-)]
+DESCRIPTION=Back up Untangle configurations via the web admin UI
+EAPI=6
+HOMEPAGE=http://michael.orlitzky.com/code/untangle-https-backup.php
+IUSE=python_targets_python3_3 python_targets_python3_4 python_targets_python3_5
+KEYWORDS=~amd64 ~x86
+LICENSE=AGPL-3
+RDEPEND=python_targets_python3_3? ( >=dev-lang/python-3.3.2-r2:3.3[ssl(+)] ) python_targets_python3_4? ( dev-lang/python:3.4[ssl(+)] ) python_targets_python3_5? ( dev-lang/python:3.5[ssl(+)] ) >=dev-lang/python-exec-2:=[python_targets_python3_3(-)?,python_targets_python3_4(-)?,python_targets_python3_5(-)?,-python_single_target_python3_3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-)]
+REQUIRED_USE=|| ( python_targets_python3_3 python_targets_python3_4 python_targets_python3_5 )
+SLOT=0
+SRC_URI=http://michael.orlitzky.com/code/releases/untangle-https-backup-0.0.4.tar.gz
+_eclass_exported_funcs=src_prepare:distutils-r1 src_configure:distutils-r1 src_compile:distutils-r1 src_test:distutils-r1 src_install:-
+_eclasses_=distutils-r1	0af33659915efd4b147c76251893f652	multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	d062ae4ba2fc40a19c11de2ad89b6616	multiprocessing	e32940a7b2a9992ad217eccddb84d548	python-r1	0f6937650a475d673baa5d0c8c0b37b3	python-utils-r1	13d5b02ea59b21da41c77c9294f3b7f7	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=81d7cba9996f12f7f234a4a43d289f21
