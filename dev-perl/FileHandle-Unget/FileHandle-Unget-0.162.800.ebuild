@@ -19,6 +19,7 @@ RDEPEND=">=virtual/perl-Scalar-List-Utils-1.140.0"
 DEPEND="${RDEPEND}
 	>=virtual/perl-ExtUtils-MakeMaker-6.360.0
 	dev-perl/File-Slurp
+	dev-perl/URI
 	test? ( virtual/perl-Test-Simple )
 "
 
