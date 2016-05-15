@@ -11,13 +11,13 @@ PYTHON_COMPAT=(
 )
 PYTHON_REQ_USE='bzip2(+)'
 
-inherit distutils-r1 git-r3 multilib
+inherit distutils-r1 multilib
 
 DESCRIPTION="Portage is the package management and distribution system for Gentoo"
 HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Portage"
 
 LICENSE="GPL-2"
-KEYWORDS=""
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
 SLOT="0"
 IUSE="build doc epydoc +ipc linguas_ru selinux xattr"
 
@@ -74,8 +74,9 @@ prefix_src_archives() {
 	done
 }
 
-EGIT_REPO_URI="git://anongit.gentoo.org/proj/portage.git
-	https://github.com/gentoo/portage.git"
+TARBALL_PV=${PV}
+SRC_URI="mirror://gentoo/${PN}-${TARBALL_PV}.tar.bz2
+	$(prefix_src_archives ${PN}-${TARBALL_PV}.tar.bz2)"
 
 pkg_setup() {
 	use epydoc && DISTUTILS_ALL_SUBPHASE_IMPLS=( python2.7 )
@@ -187,7 +188,7 @@ python_install_all() {
 	fi
 
 	# Due to distutils/python-exec limitations
-	# they must be installed to /usr/bin.
+	# these must be installed to /usr/bin.
 	local sbin_relocations='archive-conf dispatch-conf emaint env-update etc-update fixpackages regenworld'
 	einfo "Moving admin scripts to the correct directory"
 	dodir /usr/sbin
@@ -217,12 +218,146 @@ pkg_preinst() {
 	if chown portage:portage "${ED}"var/log/portage{,/elog} 2>/dev/null ; then
 		chmod g+s,ug+rwx "${ED}"var/log/portage{,/elog}
 	fi
+
+	if has_version "<${CATEGORY}/${PN}-2.1.13" || \
+		{
+			has_version ">=${CATEGORY}/${PN}-2.2_rc0" && \
+			has_version "<${CATEGORY}/${PN}-2.2.0_alpha189"
+		} ; then
+		USERPRIV_UPGRADE=true
+		USERSYNC_UPGRADE=true
+		REPOS_CONF_UPGRADE=true
+		REPOS_CONF_SYNC=
+		type -P portageq >/dev/null 2>&1 && \
+			REPOS_CONF_SYNC=$("$(type -P portageq)" envvar SYNC)
+	else
+		USERPRIV_UPGRADE=false
+		USERSYNC_UPGRADE=false
+		REPOS_CONF_UPGRADE=false
+	fi
+}
+
+get_ownership() {
+	case ${USERLAND} in
+		BSD)
+			stat -f '%Su:%Sg' "${1}"
+			;;
+		*)
+			stat -c '%U:%G' "${1}"
+			;;
+	esac
+}
+
+new_config_protect() {
+	# Generate a ._cfg file even if the target file
+	# does not exist, ensuring that the user will
+	# notice the config change.
+	local basename=${1##*/}
+	local dirname=${1%/*}
+	local i=0
+	while true ; do
+		local filename=$(
+			echo -n "${dirname}/._cfg"
+			printf "%04d" ${i}
+			echo -n "_${basename}"
+		)
+		[[ -e ${filename} ]] || break
+		(( i++ ))
+	done
+	echo "${filename}"
 }
 
 pkg_postinst() {
+
+	if ${REPOS_CONF_UPGRADE} ; then
+		einfo "Generating repos.conf"
+		local repo_name=
+		[[ -f ${PORTDIR}/profiles/repo_name ]] && \
+			repo_name=$(< "${PORTDIR}/profiles/repo_name")
+		if [[ -z ${REPOS_CONF_SYNC} ]] ; then
+			REPOS_CONF_SYNC=$(grep "^sync-uri =" "${EROOT:-${ROOT}}usr/share/portage/config/repos.conf")
+			REPOS_CONF_SYNC=${REPOS_CONF_SYNC##* }
+		fi
+		local sync_type=
+		[[ ${REPOS_CONF_SYNC} == git://* ]] && sync_type=git
+
+		if [[ ${REPOS_CONF_SYNC} == cvs://* ]]; then
+			sync_type=cvs
+			REPOS_CONF_SYNC=${REPOS_CONF_SYNC#cvs://}
+		fi
+
+		cat <<-EOF > "${T}/repos.conf"
+		[DEFAULT]
+		main-repo = ${repo_name:-gentoo}
+
+		[${repo_name:-gentoo}]
+		location = ${PORTDIR:-${EPREFIX}/usr/portage}
+		sync-type = ${sync_type:-rsync}
+		sync-uri = ${REPOS_CONF_SYNC}
+		EOF
+
+		[[ ${sync_type} == cvs ]] && echo "sync-cvs-repo = $(<"${PORTDIR}/CVS/Repository")" >> "${T}/repos.conf"
+
+		local dest=${EROOT:-${ROOT}}etc/portage/repos.conf
+		if [[ ! -f ${dest} ]] && mkdir -p "${dest}" 2>/dev/null ; then
+			dest=${EROOT:-${ROOT}}etc/portage/repos.conf/${repo_name:-gentoo}.conf
+		fi
+		# Don't install the config update if the desired repos.conf directory
+		# and config file exist, since users may accept it blindly and break
+		# their config (bug #478726).
+		[[ -e ${EROOT:-${ROOT}}etc/portage/repos.conf/${repo_name:-gentoo}.conf ]] || \
+			mv "${T}/repos.conf" "$(new_config_protect "${dest}")"
+
+		if [[ ${PORTDIR} == ${EPREFIX}/usr/portage ]] ; then
+			einfo "Generating make.conf PORTDIR setting for backward compatibility"
+			for dest in "${EROOT:-${ROOT}}etc/make.conf" "${EROOT:-${ROOT}}etc/portage/make.conf" ; do
+				[[ -e ${dest} ]] && break
+			done
+			[[ -d ${dest} ]] && dest=${dest}/portdir.conf
+			rm -rf "${T}/make.conf"
+			[[ -f ${dest} ]] && cat "${dest}" > "${T}/make.conf"
+			cat <<-EOF >> "${T}/make.conf"
+
+			# Set PORTDIR for backward compatibility with various tools:
+			#   gentoo-bashcomp - bug #478444
+			#   euse - bug #474574
+			#   euses and ufed - bug #478318
+			PORTDIR="${EPREFIX}/usr/portage"
+			EOF
+			mkdir -p "${dest%/*}"
+			mv "${T}/make.conf" "$(new_config_protect "${dest}")"
+		fi
+	fi
+
+	local distdir=${PORTAGE_ACTUAL_DISTDIR-${DISTDIR}}
+
+	if ${USERSYNC_UPGRADE} && \
+		[[ -d ${PORTDIR} && -w ${PORTDIR} ]] ; then
+		local ownership=$(get_ownership "${PORTDIR}")
+		if [[ -n ${ownership} ]] ; then
+			einfo "Adjusting PORTDIR permissions for usersync"
+			find "${PORTDIR}" -path "${distdir%/}" -prune -o \
+				! \( -user "${ownership%:*}" -a -group "${ownership#*:}" \) \
+				-exec chown "${ownership}" {} +
+		fi
+	fi
+
+	# Do this last, since it could take a long time if there
+	# are lots of live sources, and the user may be tempted
+	# to kill emerge while it is running.
+	if ${USERPRIV_UPGRADE} && \
+		[[ -d ${distdir} && -w ${distdir} ]] ; then
+		local ownership=$(get_ownership "${distdir}")
+		if [[ ${ownership#*:} == portage ]] ; then
+			einfo "Adjusting DISTDIR permissions for userpriv"
+			find "${distdir}" -mindepth 1 -maxdepth 1 -type d -uid 0 \
+				-exec chown -R portage:portage {} +
+		fi
+	fi
+
 	einfo ""
 	einfo "This release of portage NO LONGER contains the repoman code base."
-	einfo "Repoman now has it's own ebuild and release package."
+	einfo "Repoman has it's own ebuild and release package."
 	einfo "For repoman functionality please emerge app-portage/repoman"
 	einfo "Please report any bugs you may encounter."
 	einfo ""
