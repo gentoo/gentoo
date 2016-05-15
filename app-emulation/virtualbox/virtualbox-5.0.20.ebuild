@@ -20,7 +20,7 @@ HOMEPAGE="http://www.virtualbox.org/"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="alsa doc headless java libressl lvm pam pulseaudio +opengl python +qt4 +sdk +udev vboxwebsrv vnc"
+IUSE="alsa debug doc headless java libressl lvm pam pulseaudio +opengl python +qt4 +sdk +udev vboxwebsrv vnc"
 
 RDEPEND="!app-emulation/virtualbox-bin
 	~app-emulation/virtualbox-modules-${PV}
@@ -182,6 +182,7 @@ src_prepare() {
 src_configure() {
 	local myconf
 	use alsa       || myconf+=( --disable-alsa )
+	use debug      && myconf+=( --build-debug )
 	use doc        || myconf+=( --disable-docs )
 	use java       || myconf+=( --disable-java )
 	use lvm        || myconf+=( --disable-devmapper )
@@ -230,7 +231,9 @@ src_compile() {
 }
 
 src_install() {
-	cd "${S}"/out/linux.${ARCH}/release/bin || die
+	local binpath="release"
+	use debug && binpath="debug"
+	cd "${S}"/out/linux.${ARCH}/${binpath}/bin || die
 
 	local vbox_inst_path="/usr/$(get_libdir)/${PN}" each fwfile
 
