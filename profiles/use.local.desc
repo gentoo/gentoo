@@ -8306,7 +8306,7 @@ x11-terms/mlterm:ibus - Enable app-i18n/ibus support
 x11-terms/mlterm:libssh2 - Enable net-libs/libssh2 support
 x11-terms/mlterm:regis - Enable ReGIS support
 x11-terms/mlterm:scim - Enable app-i18n/scim support
-x11-terms/mlterm:skk - Enable SKK support (vitrual/skkserv or app-i18n/skk-jisyo)
+x11-terms/mlterm:skk - Enable SKK support (virtual/skkserv or app-i18n/skk-jisyo)
 x11-terms/mlterm:uim - Enable app-i18n/uim support
 x11-terms/mlterm:utempter - Enable sys-libs/libutempter support
 x11-terms/mrxvt:menubar - Enable mrxvt menubar
