@@ -52,23 +52,17 @@ net-libs/libproxy -kde
 
 # Allow certain KDE 4 components to be coinstalled with Plasma 5
 <dev-util/kdevelop-4.8.0 -gdbui
-kde-apps/kcontrol -handbook
 kde-apps/kde-meta:4 -kdepim minimal
 kde-apps/kde-wallpapers minimal
 kde-apps/kde4-l10n minimal
-kde-apps/kdeartwork-meta minimal
-kde-apps/kdebase-kioslaves minimal
 kde-apps/kdebase-meta:4 minimal
 kde-apps/kdebase-runtime-meta:4 -crash-reporter minimal
-kde-apps/kdesu -handbook
-kde-apps/knetattach -handbook
 kde-apps/kwalletmanager:4 minimal
 kde-apps/libkipi:4 minimal
 kde-apps/libksane:4 minimal
 kde-apps/solid-runtime -bluetooth
 kde-base/baloo minimal
 kde-base/kactivities minimal
-kde-base/systemsettings -handbook
 net-libs/libkpeople:4 minimal
 net-p2p/ktorrent:4 -plasma
 sys-auth/polkit-kde-agent minimal
