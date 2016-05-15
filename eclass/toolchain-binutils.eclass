@@ -180,6 +180,16 @@ tc-binutils_apply_patches() {
 			eend $?
 		done
 	fi
+
+	# fix emulations issues if possible #580614
+	if [[ -e ${FILESDIR}/binutils-configure-target.patch ]] ; then
+		einfo "Fixing emulations issues in configure target files"
+		ebegin "  Updating ld/configure.tgt"
+		patch "ld/configure.tgt" "${FILESDIR}"/binutils-configure-target.patch >& "${T}"/configure-target-patch.log \
+				|| eerror "Please file a bug about this"
+		eend $?
+	fi
+
 	# fix conflicts with newer glibc #272594
 	if [[ -e libiberty/testsuite/test-demangle.c ]] ; then
 		sed -i 's:\<getline\>:get_line:g' libiberty/testsuite/test-demangle.c

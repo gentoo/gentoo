@@ -1,0 +1,18 @@
+--- ld/configure.tgt.orig	2016-05-15 07:49:39.661039407 +0000
++++ ld/configure.tgt	2016-05-15 08:15:24.441045822 +0000
+@@ -586,10 +586,13 @@
+ 			esac
+ 			case "${targ}" in
+ 			powerpc*le-*)
+-				for z in targ_emul targ_extra_emuls targ_extra_libpath targ64_extra_emuls targ64_extra_libpath
++				for z in targ_extra_emuls targ_extra_libpath targ64_extra_emuls targ64_extra_libpath
+ 				do
+-				  eval ${z}=\"`eval echo \\$${z} | sed -e 's/ppc/lppc/g'`\"
++				  eval ${z}+=\" `eval echo \\$${z} | sed -e 's/ppc/lppc/g'`\"
+ 				done
++				eval targ_extra_emuls+=\" \$targ_emul\"
++				eval targ_emul=\"`eval echo \\$targ_emul | sed -e 's/ppc/lppc/g'`\"
++
+ 			esac ;;
+ powerpc-*-nto*)         targ_emul=elf32ppcnto ;;
+ powerpcle-*-nto*)       targ_emul=elf32lppcnto ;;
