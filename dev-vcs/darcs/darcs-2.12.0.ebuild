@@ -43,7 +43,7 @@ RDEPEND=">=dev-haskell/async-2.0.1.4:=[profile?] <dev-haskell/async-2.2:=[profil
 	>=dev-haskell/regex-compat-tdfa-0.95.1:=[profile?] <dev-haskell/regex-compat-tdfa-0.96:=[profile?]
 	>=dev-haskell/sandi-0.2:=[profile?] <dev-haskell/sandi-0.4:=[profile?]
 	>=dev-haskell/tar-0.4:=[profile?] <dev-haskell/tar-0.6:=[profile?]
-	>=dev-haskell/text-0.11.3.1:=[profile?] <dev-haskell/text-1.3:=[profile?]
+	>=dev-haskell/text-1.2.1.3:=[profile?] <dev-haskell/text-1.3:=[profile?]
 	>=dev-haskell/transformers-compat-0.4:=[profile?] <dev-haskell/transformers-compat-0.6:=[profile?]
 	>=dev-haskell/unix-compat-0.1.2:=[profile?] <dev-haskell/unix-compat-0.5:=[profile?]
 	>=dev-haskell/utf8-string-0.3.6:=[profile?] <dev-haskell/utf8-string-1.1:=[profile?]
