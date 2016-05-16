@@ -5014,7 +5014,7 @@ dev-ml/async_extra 113.24.00 113.33.00: Jane Street Capital's asynchronous execu
 dev-ml/async_kernel 113.24.00 113.33.00: Jane Street Capital's asynchronous execution library (core)
 dev-ml/async_rpc_kernel 113.24.00 113.33.00: Platform-independent core of Async RPC library
 dev-ml/async_unix 113.24.00 113.33.00: Jane Street Capital's asynchronous execution library (unix)
-dev-ml/batteries 2.4.0: The community-maintained foundation library for your OCaml projects
+dev-ml/batteries 2.4.0 2.5.2: The community-maintained foundation library for your OCaml projects
 dev-ml/bignum 113.24.00 113.33.00: Core-flavoured wrapper around zarith's arbitrary-precision rationals
 dev-ml/bin-prot 113.24.00 113.33.00: A binary protocol generator
 dev-ml/biniou 1.0.9: A binary data serialization format inspired by JSON for OCaml
