@@ -1,0 +1,54 @@
+https://bugs.gentoo.org/581346
+
+From d343892fbd0605a9375ff1ae0467aa320a404b12 Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Sat, 7 May 2016 19:41:40 -0400
+Subject: [PATCH] fix include errors w/AX_CXX_COMPILE_STDCXX_1[14]
+
+The search path for `include` is the current working directory, so trying
+to include other m4 files directly only works if they live in the same dir
+as where you're running `aclocal`.  Otherwise we end up with errors like:
+	$ cd lcd4linux-0.10.1-RC2
+	$ aclocal
+	/usr/share/aclocal/ax_cxx_compile_stdcxx_14.m4:32: file 'ax_cxx_compile_stdcxx.m4' does not exist
+
+Use the AX_REQUIRE_DEFINED macro instead to make sure the macro we want
+exists.
+---
+ m4/ax_cxx_compile_stdcxx_11.m4 | 5 ++---
+ m4/ax_cxx_compile_stdcxx_14.m4 | 5 ++---
+ 2 files changed, 4 insertions(+), 6 deletions(-)
+
+diff --git a/m4/ax_cxx_compile_stdcxx_11.m4 b/m4/ax_cxx_compile_stdcxx_11.m4
+index 3dd5cf9..0aadeaf 100644
+--- a/m4/ax_cxx_compile_stdcxx_11.m4
++++ b/m4/ax_cxx_compile_stdcxx_11.m4
+@@ -33,8 +33,7 @@
+ #   and this notice are preserved. This file is offered as-is, without any
+ #   warranty.
+ 
+-#serial 16
+-
+-include([ax_cxx_compile_stdcxx.m4])
++#serial 17
+ 
++AX_REQUIRE_DEFINED([AX_CXX_COMPILE_STDCXX])
+ AC_DEFUN([AX_CXX_COMPILE_STDCXX_11], [AX_CXX_COMPILE_STDCXX([11], [$1], [$2])])
+diff --git a/m4/ax_cxx_compile_stdcxx_14.m4 b/m4/ax_cxx_compile_stdcxx_14.m4
+index 6d2123a..51123f2 100644
+--- a/m4/ax_cxx_compile_stdcxx_14.m4
++++ b/m4/ax_cxx_compile_stdcxx_14.m4
+@@ -28,8 +28,7 @@
+ #   and this notice are preserved. This file is offered as-is, without any
+ #   warranty.
+ 
+-#serial 3
+-
+-include([ax_cxx_compile_stdcxx.m4])
++#serial 4
+ 
++AX_REQUIRE_DEFINED([AX_CXX_COMPILE_STDCXX])
+ AC_DEFUN([AX_CXX_COMPILE_STDCXX_14], [AX_CXX_COMPILE_STDCXX([14], [$1], [$2])])
+-- 
+2.8.2
+
