@@ -53,6 +53,10 @@ src_prepare() {
 		-i extras/f2fs_utils/f2fs_utils.c  || die
 	mv arch/*/trunk/Makefile ./ || die
 	sed -i '1i#include <sys/sysmacros.h>' core/adb/usb_linux.c || die #580058
+	sed -e 's|^#include <sys/cdefs.h>$|/*\0*/|' \
+		-e 's|^__BEGIN_DECLS$|#ifdef __cplusplus\nextern "C" {\n#endif|' \
+		-e 's|^__END_DECLS$|#ifdef __cplusplus\n}\n#endif|' \
+		-i extras/ext4_utils/sha1.{c,h} || die #580686
 	tc-export CC
 }
 
