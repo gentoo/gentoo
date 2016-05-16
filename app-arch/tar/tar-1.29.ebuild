@@ -1,8 +1,8 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=5
 
 inherit flag-o-matic eutils
 
@@ -14,13 +14,13 @@ SRC_URI="mirror://gnu/tar/${P}.tar.bz2
 LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~amd64-fbsd ~x86-fbsd ~x64-freebsd ~x86-freebsd ~hppa-hpux ~ia64-hpux ~x86-interix ~amd64-linux ~arm-linux ~ia64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
-IUSE="acl minimal nls selinux static userland_GNU xattr"
+IUSE="acl elibc_glibc minimal nls selinux static userland_GNU xattr"
 
 RDEPEND="acl? ( virtual/acl )
 	selinux? ( sys-libs/libselinux )"
 DEPEND="${RDEPEND}
 	nls? ( >=sys-devel/gettext-0.10.35 )
-	xattr? ( sys-apps/attr )"
+	xattr? ( elibc_glibc? ( sys-apps/attr ) )"
 
 src_prepare() {
 	if ! use userland_GNU ; then
@@ -46,7 +46,7 @@ src_configure() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" install
+	default
 
 	local p=$(usex userland_GNU "" "g")
 	if [[ -z ${p} ]] ; then
@@ -63,7 +63,6 @@ src_install() {
 		dosym tar /bin/gtar
 	fi
 
-	dodoc AUTHORS ChangeLog* NEWS README* THANKS
 	mv "${ED}"/usr/sbin/${p}backup{,-tar} || die
 	mv "${ED}"/usr/sbin/${p}restore{,-tar} || die
 
