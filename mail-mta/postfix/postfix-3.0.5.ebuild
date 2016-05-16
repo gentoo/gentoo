@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -25,7 +25,7 @@ IUSE="+berkdb cdb doc dovecot-sasl +eai hardened ldap ldap-bind libressl lmdb me
 DEPEND=">=dev-libs/libpcre-3.4
 	dev-lang/perl
 	berkdb? ( >=sys-libs/db-3.2:* )
-	cdb? ( || ( >=dev-db/tinycdb-0.76 >=dev-db/cdb-0.75-r1 ) )
+	cdb? ( || ( >=dev-db/tinycdb-0.76 >=dev-db/cdb-0.75-r4 ) )
 	eai? ( dev-libs/icu:= )
 	ldap? ( net-nds/openldap )
 	ldap-bind? ( net-nds/openldap[sasl] )
@@ -36,7 +36,7 @@ DEPEND=">=dev-libs/libpcre-3.4
 	sasl? (  >=dev-libs/cyrus-sasl-2 )
 	sqlite? ( dev-db/sqlite:3 )
 	ssl? (
-		!libressl? ( >=dev-libs/openssl-0.9.6g:0 )
+		!libressl? ( dev-libs/openssl:0 )
 		libressl? ( dev-libs/libressl )
 	)"
 
@@ -82,11 +82,6 @@ src_prepare() {
 
 	# change default paths to better comply with portage standard paths
 	sed -i -e "s:/usr/local/:/usr/:g" conf/master.cf || die "sed failed"
-
-	sed -i -e "/readme_directory\/CONNECTION_CACHE_README/ i\
-	\$readme_directory\/COMPATIBILITY_README:f:root:-:644" conf/postfix-files
-	sed -i -e "/html_directory\/CONNECTION_CACHE_README/ i\
-	\$html_directory\/COMPATIBILITY_README.html:f:root:-:644" conf/postfix-files
 
 	epatch_user
 }
@@ -200,7 +195,7 @@ src_configure() {
 	sed -i -e "/^RANLIB/s/ranlib/$(tc-getRANLIB)/g" "${S}"/makedefs
 	sed -i -e "/^AR/s/ar/$(tc-getAR)/g" "${S}"/makedefs
 
-	emake makefiles shared=yes dynamicmaps=no \
+	emake makefiles shared=yes dynamicmaps=no pie=yes \
 		shlib_directory="/usr/$(get_libdir)/postfix/MAIL_VERSION" \
 		DEBUG="" CC="$(tc-getCC)" OPT="${CFLAGS}" CCARGS="${mycc}" AUXLIBS="${mylibs}" \
 		AUXLIBS_CDB="${AUXLIBS_CDB}" AUXLIBS_LDAP="${AUXLIBS_LDAP}" \
