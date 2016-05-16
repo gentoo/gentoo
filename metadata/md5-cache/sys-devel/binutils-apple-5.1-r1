@@ -1,14 +1,13 @@
 DEFINED_PHASES=compile configure install postinst prepare test
 DEPEND=sys-devel/binutils-config lto? ( sys-devel/llvm ) libcxx? ( sys-libs/libcxx ) test? ( >=dev-lang/perl-5.8.8 ) || ( >=sys-devel/gcc-apple-4.2.1 sys-devel/llvm ) libcxx? ( sys-devel/llvm )
-DESCRIPTION=Darwin assembler as(1) and static linker ld(1), Xcode Tools 6.3
-EAPI=5
+DESCRIPTION=Darwin assembler as(1) and static linker ld(1), Xcode Tools 5.1
+EAPI=3
 HOMEPAGE=http://www.opensource.apple.com/darwinsource/
-IUSE=lto test libcxx
-KEYWORDS=~x64-macos ~x86-macos
+IUSE=lto test libcxx multitarget
 LICENSE=APSL-2
 RDEPEND=sys-devel/binutils-config lto? ( sys-devel/llvm ) libcxx? ( sys-libs/libcxx )
-SLOT=6
-SRC_URI=http://www.opensource.apple.com/tarballs/ld64/ld64-242.tar.gz http://www.opensource.apple.com/tarballs/cctools/cctools-870.tar.gz http://www.opensource.apple.com/tarballs/dyld/dyld-353.2.1.tar.gz http://www.opensource.apple.com/tarballs/libunwind/libunwind-35.3.tar.gz
+SLOT=5
+SRC_URI=http://www.opensource.apple.com/tarballs/ld64/ld64-236.3.tar.gz http://www.opensource.apple.com/tarballs/cctools/cctools-855.tar.gz http://www.opensource.apple.com/tarballs/dyld/dyld-353.2.1.tar.gz http://www.opensource.apple.com/tarballs/libunwind/libunwind-35.3.tar.gz http://dev.gentoo.org/~grobian/distfiles/binutils-apple-patches-4.3-r0.tar.bz2 http://dev.gentoo.org/~grobian/distfiles/binutils-apple-patches-5.1-r0.tar.bz2
 _eclass_exported_funcs=pkg_postinst:- src_prepare:- src_configure:- src_compile:- src_test:- src_install:-
 _eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	flag-o-matic	d270fa247153df66074f795fa42dba3e	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
-_md5_=6f1441b92a6d4aee43b9432f79552b4c
+_md5_=7fc356eca85af0f5fc3d9787f04f647d

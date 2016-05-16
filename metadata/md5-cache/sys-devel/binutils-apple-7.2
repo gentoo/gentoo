@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst prepare test
+DEPEND=sys-devel/binutils-config app-arch/xar sys-devel/llvm sys-libs/libcxx test? ( >=dev-lang/perl-5.8.8 )
+DESCRIPTION=Darwin assembler as(1) and static linker ld(1), Xcode Tools 7.2
+EAPI=5
+HOMEPAGE=http://www.opensource.apple.com/darwinsource/
+IUSE=test multitarget
+LICENSE=APSL-2
+RDEPEND=sys-devel/binutils-config app-arch/xar sys-devel/llvm sys-libs/libcxx
+SLOT=7
+SRC_URI=http://www.opensource.apple.com/tarballs/ld64/ld64-253.9.tar.gz http://www.opensource.apple.com/tarballs/cctools/cctools-877.8.tar.gz http://www.opensource.apple.com/tarballs/dyld/dyld-360.18.tar.gz http://www.opensource.apple.com/tarballs/libunwind/libunwind-35.3.tar.gz http://dev.gentoo.org/~grobian/distfiles/binutils-apple-patches-4.3-r0.tar.bz2 http://dev.gentoo.org/~grobian/distfiles/binutils-apple-patches-5.1-r0.tar.bz2 http://dev.gentoo.org/~grobian/distfiles/binutils-apple-patches-6.1-r0.tar.bz2 http://dev.gentoo.org/~grobian/distfiles/binutils-apple-patches-6.3-r0.tar.bz2 http://dev.gentoo.org/~grobian/distfiles/binutils-apple-patches-7.0-r0.tar.bz2
+_eclass_exported_funcs=pkg_postinst:- src_prepare:- src_configure:- src_compile:- src_test:- src_install:-
+_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	flag-o-matic	d270fa247153df66074f795fa42dba3e	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=8b0f428ab7fce5955308ab7bcdf4b7dd

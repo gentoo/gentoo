@@ -7532,6 +7532,7 @@ sys-devel/binutils:multislot - Allow for multiple versions of binutils to be eme
 sys-devel/binutils:multitarget - Adds support to binutils for cross compiling (does not work with gas)
 sys-devel/binutils-apple:libcxx - Add support for libcxx
 sys-devel/binutils-apple:lto - Add support for Link-Time Optimization with LLVM
+sys-devel/binutils-apple:multitarget - Compile for non-standard target architectures (ppc and ppc64) -- experimental, Gentoo only
 sys-devel/binutils-hppa64:multislot - Allow for multiple versions of binutils to be emerged at once for same CTARGET
 sys-devel/binutils-hppa64:multitarget - Adds support to binutils for cross compiling (does not work with gas)
 sys-devel/clang:multitarget - Build all host targets (default: host only)
