@@ -17,11 +17,15 @@ HOMEPAGE="http://www.opensource.apple.com/darwinsource/"
 SRC_URI="http://www.opensource.apple.com/tarballs/ld64/${LD64}.tar.gz
 	http://www.opensource.apple.com/tarballs/cctools/${CCTOOLS}.tar.gz
 	http://www.opensource.apple.com/tarballs/dyld/${DYLD}.tar.gz
-	http://www.opensource.apple.com/tarballs/libunwind/${LIBUNWIND}.tar.gz"
+	http://www.opensource.apple.com/tarballs/libunwind/${LIBUNWIND}.tar.gz
+	http://dev.gentoo.org/~grobian/distfiles/${PN}-patches-4.3-r0.tar.bz2
+	http://dev.gentoo.org/~grobian/distfiles/${PN}-patches-5.1-r0.tar.bz2
+	http://dev.gentoo.org/~grobian/distfiles/${PN}-patches-6.1-r0.tar.bz2
+	http://dev.gentoo.org/~grobian/distfiles/${PN}-patches-6.3-r0.tar.bz2"
 
 LICENSE="APSL-2"
-KEYWORDS="~x64-macos ~x86-macos"
-IUSE="lto test libcxx"
+#KEYWORDS="~x64-macos ~x86-macos"  # in progress 582782
+IUSE="lto test libcxx multitarget"
 
 RDEPEND="sys-devel/binutils-config
 	lto? ( sys-devel/llvm )
@@ -57,21 +61,36 @@ fi
 S=${WORKDIR}
 
 src_prepare() {
-	cd "${S}"/${LD64}/src
-	cp "${FILESDIR}"/ld64-136-compile_stubs.h ld/compile_stubs.h
-	cp "${FILESDIR}"/ld64-236.3-Makefile Makefile
+	if use multitarget ; then
+		ewarn "You have enabled support for non-standard target architectures"
+		ewarn "using USE=multitarget. This includes experimental support for"
+		ewarn "ppc and ppc64 which is a community forward-port from the last"
+		ewarn "version of ld64 to officially support PPC."
 
-	epatch "${FILESDIR}"/ld64-236.3-nolto.patch
-	epatch "${FILESDIR}"/ld64-241.9-extraneous-includes.patch
-	epatch "${FILESDIR}"/ld64-241.9-atomic-volatile.patch
-	epatch "${FILESDIR}"/ld64-236.3-crashreporter.patch
-	epatch "${FILESDIR}"/ld64-242-gcc.patch
-	epatch "${FILESDIR}"/ld64-236.3-constant-types.patch
-	epatch "${FILESDIR}"/ld64-241.9-nosnapshots.patch
-	epatch "${FILESDIR}"/ld64-242-noarm.patch
-	epatch "${FILESDIR}"/ld64-241.9-register-names.patch
-	epatch "${FILESDIR}"/ld64-241.9-get-comm-align.patch
-	epatch "${FILESDIR}"/ld64-241.9-cc_md5.patch
+		if [[ ${CHOST} == powerpc*-darwin* ]] ; then
+			ewarn "HERE BE DRAGONS! Your system seems to be PPC which means that"
+			ewarn "the actual usability of your Gentoo programs will depend on the"
+			ewarn "above-mentioned experimental PPC support in the linker. Be"
+			ewarn "sure to keep a known-to-work version like ${PN}-3.2.6 around!"
+		fi
+	fi
+
+	cd "${S}"/${LD64}/src
+	cp "${S}"/ld64-136-compile_stubs.h ld/compile_stubs.h
+	cp "${S}"/ld64-236.3-Makefile-2 Makefile
+
+	epatch "${S}"/ld64-236.3-nolto.patch
+	epatch "${S}"/ld64-241.9-extraneous-includes.patch
+	epatch "${S}"/ld64-241.9-osatomic.patch
+	epatch "${S}"/ld64-236.3-crashreporter.patch
+	epatch "${S}"/ld64-241.9-nosnapshots.patch
+	epatch "${S}"/ld64-242-ppc.patch
+	epatch "${S}"/ld64-236.3-constant-types-2.patch
+	epatch "${S}"/ld64-242-gcc-2.patch
+	epatch "${S}"/ld64-241.9-register-names.patch
+	epatch "${S}"/ld64-241.9-get-comm-align.patch
+	epatch "${S}"/ld64-241.9-cc_md5.patch
+	epatch "${S}"/ld64-253.3-delete-warning.patch
 
 	# provide missing headers from libunwind and dyld
 	mkdir -p include/{mach,mach-o/arm} || die
@@ -89,7 +108,7 @@ src_prepare() {
 	cp ../../${CCTOOLS}/include/mach/machine.h include/mach/machine.h
 	# add alias for newer identifiers, because ld64 uses both but cctools
 	# header only defines the older
-	epatch "${FILESDIR}"/ld64-236.3-missing-cputypes.patch
+	epatch "${S}"/ld64-236.3-missing-cputypes.patch
 
 	# mimic OS X Leopard-style Availability.h macros for libunwind.h on
 	# older systems
@@ -99,20 +118,28 @@ src_prepare() {
 	local VER_STR="\"@(#)PROGRAM:ld  PROJECT:${LD64} (Gentoo ${PN}-${PVR})\\n\""
 	echo "char ldVersionString[] = ${VER_STR};" > version.cpp
 
-	epatch "${FILESDIR}"/ld64-123.2-debug-backtrace.patch
+	epatch "${S}"/ld64-123.2-debug-backtrace.patch
+	if [[ ${CHOST} == powerpc*-darwin* ]] ; then
+		epatch "${S}"/ld64-123.2-darwin8-no-mlong-branch-warning.patch
+		epatch "${S}"/ld64-127.2-thread_state.patch
+	fi
 
 	cd "${S}"/${CCTOOLS}
-	epatch "${FILESDIR}"/${PN}-4.5-as.patch
-	epatch "${FILESDIR}"/${PN}-5.1-as-dir.patch
-	epatch "${FILESDIR}"/${PN}-5.1-ranlib.patch
-	epatch "${FILESDIR}"/${PN}-3.1.1-libtool-ranlib.patch
-	epatch "${FILESDIR}"/${PN}-3.1.1-no-headers.patch
-	epatch "${FILESDIR}"/${PN}-4.0-no-oss-dir.patch
-	epatch "${FILESDIR}"/cctools-839-intel-retf.patch
-	epatch "${FILESDIR}"/${PN}-5.1-extraneous-includes.patch
-	epatch "${FILESDIR}"/${PN}-5.1-otool-stdc.patch
-	epatch "${FILESDIR}"/${PN}-5.1-constant-types.patch
-	epatch "${FILESDIR}"/${PN}-5.1-strnlen.patch
+	epatch "${S}"/${PN}-4.5-as.patch
+	epatch "${S}"/${PN}-5.1-as-dir.patch
+	epatch "${S}"/${PN}-5.1-ranlib.patch
+	epatch "${S}"/${PN}-3.1.1-libtool-ranlib.patch
+	epatch "${S}"/${PN}-3.1.1-no-headers.patch
+	epatch "${S}"/${PN}-4.0-no-oss-dir.patch
+	epatch "${S}"/cctools-839-intel-retf.patch
+	epatch "${S}"/${PN}-5.1-extraneous-includes.patch
+	epatch "${S}"/${PN}-5.1-otool-stdc.patch
+	epatch "${S}"/${PN}-5.1-constant-types.patch
+	epatch "${S}"/${PN}-5.1-strnlen.patch
+	epatch "${S}"/${PN}-5.1-ppc.patch
+	epatch "${S}"/${PN}-5.1-thread-state-redefined.patch
+	epatch "${S}"/${PN}-5.1-makefile-target-warning.patch
+	epatch "${S}"/${PN}-6.3-lto-prefix.patch
 	cp ../${LD64}/src/other/prune_trie.h include/mach-o/ || die
 
 	# do not build profileable libstuff to save compile time
@@ -165,12 +192,8 @@ src_prepare() {
 }
 
 src_configure() {
-	CCTOOLS_LTO=
-	LD64_LTO=0
-	if use lto ; then
-		CCTOOLS_LTO="-DLTO_SUPPORT"
-		LD64_LTO=1
-	fi
+	ENABLE_LTO=0
+	use lto && ENABLE_LTO=1
 
 	if [[ ${CXX} == *clang* ]] ; then
 		if use libcxx ; then
@@ -202,20 +225,32 @@ src_configure() {
 		CCTOOLS_OFLAG="-D__DARWIN_UNIX03=1"
 	fi
 
+	# if compiling with USE multitarget, extract all the known arches from
+	# create_configure and pass them back to it
+	creco=${LD64}/src/create_configure
+	ARCHS_TO_SUPPORT=""
+	if use multitarget ; then
+		ARCHS_TO_SUPPORT="$(grep KNOWN_ARCHS= $creco | \
+			cut -d\" -f2 | tr ',' ' ')"
+	fi
+
 	# Create configure.h for ld64 with SUPPORT_ARCH_<arch> defines in it.
-	# RC_SUPPORTED_ARCHS="i386 x86_64 x86_64h armv6 ..." can be used to
-	# override architectures (there are more arms to add) but we configure
-	# with the default to be in line with Xcode's ld.
 	DERIVED_FILE_DIR=${LD64}/src \
-		RC_SUPPORTED_ARCHS="" \
-		${LD64}/src/create_configure
+		RC_SUPPORTED_ARCHS="$ARCHS_TO_SUPPORT" \
+		$creco
+
+	# do not depend on MachOFileAbstraction.hpp to define
+	# SUPPORT_ARCH_arm_any because that's not included by every file where
+	# our ppc/arm-optional patch uses it, ld.hpp in particular
+	grep "SUPPORT_ARCH_armv[0-9]" ${LD64}/src/configure.h >/dev/null && \
+		echo "#define SUPPORT_ARCH_arm_any 1" >> ${LD64}/src/configure.h
 }
 
 compile_ld64() {
 	einfo "building ${LD64}"
 	cd "${S}"/${LD64}/src
 	emake \
-		LTO=${LD64_LTO} \
+		LTO=${ENABLE_LTO} \
 		|| die "emake failed for ld64"
 	use test && emake build_test
 }
@@ -231,7 +266,7 @@ compile_cctools() {
 	emake \
 		LIB_PRUNETRIE="-L../../${LD64}/src -lprunetrie" \
 		EFITOOLS= \
-		LTO="${CCTOOLS_LTO}" \
+		ENABLE_LTO="${ENABLE_LTO}" \
 		COMMON_SUBDIRS='libstuff ar misc otool' \
 		SUBDIRS_32= \
 		LEGACY= \
