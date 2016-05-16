@@ -9,5 +9,5 @@ RDEPEND==virtual/ada-1995*
 SLOT=0
 SRC_URI=mirror://gentoo/glade-2006.0.tar.bz2
 _eclass_exported_funcs=pkg_postinst:- pkg_setup:gnat src_unpack:- src_compile:gnat src_install:-
-_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	flag-o-matic	d270fa247153df66074f795fa42dba3e	gnat	fbe75d73c10064a548c4ce9dbf3c05f4	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	flag-o-matic	d270fa247153df66074f795fa42dba3e	gnat	dc6d19d4b9c18780c53f7db0eae49984	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
 _md5_=b2a4ad1c93bdb01a25ec005d519ef058
