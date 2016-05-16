@@ -18,8 +18,8 @@ SRC_URI="http://www.opensource.apple.com/tarballs/ld64/${LD64}.tar.gz
 	http://www.opensource.apple.com/tarballs/cctools/${CCTOOLS}.tar.gz
 	http://www.opensource.apple.com/tarballs/dyld/${DYLD}.tar.gz
 	http://www.opensource.apple.com/tarballs/libunwind/${LIBUNWIND}.tar.gz
-	http://dev.gentoo.org/~grobian/distfiles/${PN}-patches-4.3-r0.tar.bz2
-	http://dev.gentoo.org/~grobian/distfiles/${PN}-patches-5.1-r0.tar.bz2"
+	http://dev.gentoo.org/~grobian/distfiles/${PN}-patches-4.3-r1.tar.bz2
+	http://dev.gentoo.org/~grobian/distfiles/${PN}-patches-5.1-r1.tar.bz2"
 
 LICENSE="APSL-2"
 #KEYWORDS="~x64-macos ~x86-macos"  # in progress 582782

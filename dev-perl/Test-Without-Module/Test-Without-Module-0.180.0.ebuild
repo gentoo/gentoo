@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="Test fallback behaviour in absence of modules"
 
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="~amd64 ~arm ~ppc ~x86"
 IUSE="test"
 
 DEPEND="
