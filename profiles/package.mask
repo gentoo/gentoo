@@ -30,6 +30,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Joerg Bornkessel <hd_brummy@gentoo.org> (16 May 2016)
+# Masked for removal. Dead on upstream
+# wrt bug 185947
+=media-tv/tvmovie2vdr-0.5.13
+
 # David Seifert <soap@gentoo.org> (15 May 2016)
 # Masked for removal. Deprecated, relies on ancient CUDA APIs,
 # does not build with current CUDA releases. See bug #583068.
