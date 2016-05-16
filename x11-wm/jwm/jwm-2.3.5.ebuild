@@ -6,7 +6,7 @@ EAPI=6
 inherit eutils
 
 DESCRIPTION="Very fast and lightweight still powerful window manager for X"
-HOMEPAGE="http://joewing.net/programs/jwm/"
+HOMEPAGE="http://joewing.net/projects/jwm/"
 SRC_URI="http://joewing.net/projects/${PN}/releases/${P}.tar.xz"
 
 LICENSE="GPL-2"
