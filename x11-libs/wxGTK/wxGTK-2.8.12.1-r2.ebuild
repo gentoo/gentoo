@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -29,7 +29,7 @@ RDEPEND="
 		dev-libs/glib:2[${MULTILIB_USEDEP}]
 		media-libs/libpng:0=[${MULTILIB_USEDEP}]
 		sys-libs/zlib[${MULTILIB_USEDEP}]
-		virtual/jpeg:=[${MULTILIB_USEDEP}]
+		virtual/jpeg:0=[${MULTILIB_USEDEP}]
 		x11-libs/gtk+:2[${MULTILIB_USEDEP}]
 		x11-libs/libSM[${MULTILIB_USEDEP}]
 		x11-libs/libXinerama[${MULTILIB_USEDEP}]
@@ -44,8 +44,8 @@ RDEPEND="
 		tiff?   ( media-libs/tiff:0[${MULTILIB_USEDEP}] )
 		)
 	aqua? (
-		>=x11-libs/gtk+-2.4:2[aqua=,${MULTILIB_USEDEP}]
-		virtual/jpeg:=[${MULTILIB_USEDEP}]
+		x11-libs/gtk+:2[aqua=,${MULTILIB_USEDEP}]
+		virtual/jpeg:0=[${MULTILIB_USEDEP}]
 		tiff?   ( media-libs/tiff:0[${MULTILIB_USEDEP}] )
 		)"
 

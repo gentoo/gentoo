@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -26,7 +26,7 @@ RDEPEND="
 		>=dev-libs/glib-2.22:2
 		media-libs/libpng:0=
 		sys-libs/zlib
-		virtual/jpeg
+		virtual/jpeg:0=
 		>=x11-libs/gtk+-2.18:2
 		x11-libs/gdk-pixbuf
 		x11-libs/libSM
@@ -41,8 +41,8 @@ RDEPEND="
 		webkit? ( net-libs/webkit-gtk:2 )
 		)
 	aqua? (
-		>=x11-libs/gtk+-2.4[aqua=]
-		virtual/jpeg
+		x11-libs/gtk+:2[aqua=]
+		virtual/jpeg:0=
 		tiff?   ( media-libs/tiff:0 )
 		)"
 
