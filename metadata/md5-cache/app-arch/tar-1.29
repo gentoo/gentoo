@@ -1,14 +1,14 @@
 DEFINED_PHASES=configure install prepare
-DEPEND=acl? ( virtual/acl ) selinux? ( sys-libs/libselinux ) nls? ( >=sys-devel/gettext-0.10.35 ) xattr? ( sys-apps/attr )
+DEPEND=acl? ( virtual/acl ) selinux? ( sys-libs/libselinux ) nls? ( >=sys-devel/gettext-0.10.35 ) xattr? ( elibc_glibc? ( sys-apps/attr ) )
 DESCRIPTION=Use this to make tarballs :)
-EAPI=4
+EAPI=5
 HOMEPAGE=https://www.gnu.org/software/tar/
-IUSE=acl minimal nls selinux static userland_GNU xattr
+IUSE=acl elibc_glibc minimal nls selinux static userland_GNU xattr
 KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~amd64-fbsd ~x86-fbsd ~x64-freebsd ~x86-freebsd ~hppa-hpux ~ia64-hpux ~x86-interix ~amd64-linux ~arm-linux ~ia64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
 LICENSE=GPL-3+
 RDEPEND=acl? ( virtual/acl ) selinux? ( sys-libs/libselinux )
 SLOT=0
-SRC_URI=mirror://gnu/tar/tar-1.28.tar.bz2 mirror://gnu-alpha/tar/tar-1.28.tar.bz2
+SRC_URI=mirror://gnu/tar/tar-1.29.tar.bz2 mirror://gnu-alpha/tar/tar-1.29.tar.bz2
 _eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
 _eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	flag-o-matic	d270fa247153df66074f795fa42dba3e	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
-_md5_=4ba2be76322bb3c198e08fa5b9531158
+_md5_=a1ca5e02b19a072f26002dd6c4e313ba
