@@ -1184,7 +1184,7 @@ app-emacs/limit 1.14.10_pre200811252332: Library about Internet Message, for IT 
 app-emacs/lookup 1.4.1: An interface to search CD-ROM books and network dictionaries
 app-emacs/lua-mode 20130419: An Emacs major mode for editing Lua scripts
 app-emacs/lyskom-elisp-client 0.48_p20131231: Elisp client for the LysKOM conference system
-app-emacs/magit 1.2.2 2.4.1 2.5.0 2.6.0 2.6.1: A Git porcelain inside Emacs
+app-emacs/magit 1.2.2 2.6.1 2.6.2: A Git porcelain inside Emacs
 app-emacs/mailcrypt 3.5.9: Provides a simple interface to public key cryptography with OpenPGP
 app-emacs/markdown-mode 1.8.1-r1 2.0: Major mode for editing Markdown-formatted text files
 app-emacs/matlab 3.3.2_pre20130829: Major modes for MATLAB .m and .tlc files
@@ -8863,7 +8863,7 @@ dev-ruby/flog 4.3.2: Flog reports the most tortured code in an easy to read pain
 dev-ruby/forgery 0.6.0: Easy and customizable generation of forged data
 dev-ruby/fuubar 2.0.0: Instafailing RSpec progress bar formatter
 dev-ruby/fxruby 1.6.29 1.6.29-r1: Ruby language binding to the FOX GUI toolkit
-dev-ruby/gettext_i18n_rails 1.4.0 1.5.0: FastGettext / Rails integration
+dev-ruby/gettext_i18n_rails 1.4.0 1.5.0 1.7.0: FastGettext / Rails integration
 dev-ruby/gh 0.14.0: multi-layer client for the github api v3
 dev-ruby/gherkin 2.12.0-r2 2.12.0-r3 2.12.2 3.2.0: Fast Gherkin lexer and parser
 dev-ruby/gherkin3 3.1.2: Fast Gherkin lexer and parser
