@@ -4507,7 +4507,7 @@ dev-libs/crossguid 0_pre20150817: Lightweight cross platform C++ GUID/UUID libra
 dev-libs/cryptlib 3.4.0-r1: Powerful security toolkit for adding encryption to software
 dev-libs/crypto++ 5.6.2-r3: C++ class library of cryptographic schemes
 dev-libs/cvector 1.0.3-r1 1.0.3.1: An ANSI C implementation of dynamic arrays to provide a crude approximation to the C++ vector class
-dev-libs/cxxtools 1.4.8 2.2.1: Collection of general purpose C++-classes
+dev-libs/cxxtools 2.2.1: Collection of general purpose C++-classes
 dev-libs/cyberjack 3.99.5_p03-r1 3.99.5_p09: REINER SCT cyberJack pinpad/e-com USB user space driver library
 dev-libs/cygwin 1.5.25.15: Linux-like environment for Windows
 dev-libs/cyrus-imap-dev 2.4.16 2.4.17 2.4.17-r1: Developer support for the Cyrus IMAP Server
@@ -4909,7 +4909,7 @@ dev-libs/sway 0.6 9999: i3-compatible Wayland window manager
 dev-libs/syncdir 1.0-r1: Provides an alternate implementation for open, link, rename, and unlink
 dev-libs/tinyxml 2.6.2-r2: a simple, small, C++ XML parser that can be easily integrating into other programs
 dev-libs/tinyxml2 1.0.9_p20121123 2.2.0: A simple, small, efficient, C++ XML parser
-dev-libs/tntnet 1.6.3 2.2.1: Modular, multithreaded webapplicationserver extensible with C++
+dev-libs/tntnet 2.2.1: Modular, multithreaded webapplicationserver extensible with C++
 dev-libs/totem-pl-parser 3.10.5 3.10.6: Playlist parsing library
 dev-libs/tre 0.8.0: Lightweight, robust, and efficient POSIX compliant regexp matching library
 dev-libs/tvision 2.1.0_pre2-r3: Text User Interface that implements the well known CUA widgets
