@@ -1,0 +1,10 @@
+--- a/scripts/run.py
++++ b/scripts/run.py
+@@ -20,6 +20,7 @@ import subprocess
+ 
+ def run(cmd):
+ 	cmd = "sh -c \"" + cmd.replace ("\"", "\\\"") + "\""
++	print(cmd)
+ 	process = subprocess.Popen (cmd, shell=True)
+ 	process.communicate()[0]
+ 	if not process.returncode == 0:
