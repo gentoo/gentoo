@@ -12298,7 +12298,7 @@ media-gfx/w3mimgfb 0.9.1: Image viewer for w3m under frame buffer environment
 media-gfx/wally 2.4.5: A Qt4/KDE4 wallpaper changer
 media-gfx/wings 1.1.1: excellent 3D polygon mesh modeler
 media-gfx/wkhtmltopdf 0.12.1.2 0.12.2.1: Convert html to pdf (and various image formats) using webkit
-media-gfx/xdot 0.5: Interactive viewer for Graphviz dot files
+media-gfx/xdot 0.5 0.6 0.7: Interactive viewer for Graphviz dot files
 media-gfx/xfig 3.2.5c: A menu-driven tool to draw and manipulate objects interactively in an X window
 media-gfx/xli 1.17.0-r5: X Load Image: view images or load them to root window
 media-gfx/xloadimage 4.1-r11: utility to view many different types of images under X11
