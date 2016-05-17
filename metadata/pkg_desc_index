@@ -16972,7 +16972,7 @@ sys-devel/sparse 0.4.3 0.4.4 0.5.0 9999: C semantic parser
 sys-devel/systemd-m4 9999: autoconf macros for packages using systemd
 sys-devel/ucpp 1.3.4 9999: A quick and light preprocessor, but anyway fully compliant to C99
 sys-firmware/alsa-firmware 1.0.28 1.0.29: Advanced Linux Sound Architecture firmware
-sys-firmware/amdgpu-ucode 20150803 20160331: Microcode for C.Islands/V.Islands/A.Islands Radeon GPUs and APUs
+sys-firmware/amdgpu-ucode 20160331 20160616: Microcode for C.Islands/V.Islands/A.Islands Radeon GPUs and APUs
 sys-firmware/atmel-firmware 1.3-r1: Firmware and config for atmel and atmel_cs wlan drivers included in linux 2.6
 sys-firmware/b43-firmware 5.100.138 6.30.163.46: broadcom firmware for b43 LP PHY and >=linux-3.2
 sys-firmware/b43legacy-firmware 3.130.20.0: broadcom firmware for b43legacy/bcm43xx
@@ -16990,7 +16990,7 @@ sys-firmware/iwl6030-ucode 17.168.5.2 18.168.6.1: Intel (R) Wireless WiFi Advanc
 sys-firmware/iwl6050-ucode 9.201.4.1 41.28.5.1: Intel (R) Wireless WiFi Link 6250-AGN ucode
 sys-firmware/iwl7260-ucode 0.7.1.22 0.8.15.22 0.8.24.22 0.9.214.23 0.9.228.25 0.10.11.23 0.10.15.23 0.12.16.25 0.12.17.25 0.13.30.25 0.15.227938 0.16.242414: Firmware for Intel (R) Dual Band Wireless-AC 7260
 sys-firmware/nvidia-firmware 325.15 340.32: Kernel and mesa firmware for nouveau (video accel and pgraph)
-sys-firmware/radeon-ucode 20140204 20140430 20140823 20150511 20160331: IRQ microcode for r6xx/r7xx/Evergreen/N.Islands/S.Islands Radeon GPUs and APUs
+sys-firmware/radeon-ucode 20150511 20160331 20160616: IRQ microcode for r6xx/r7xx/Evergreen/N.Islands/S.Islands Radeon GPUs and APUs
 sys-firmware/seabios 1.7.5 1.7.5-r1 1.8.2: Open Source implementation of a 16-bit x86 BIOS
 sys-firmware/sgabios 0.1_pre8: serial graphics adapter bios option rom for x86
 sys-firmware/sigrok-firmware-fx2lafw 0.1.2 9999: open-source firmware for Cypress FX2 chips which makes them usable as simple logic analyzer hardware
@@ -17190,7 +17190,7 @@ sys-kernel/hardened-sources 4.3.3-r4 4.4.2 4.4.8-r1 4.5.3-r1 4.5.4 4.5.4-r1 4.5.
 sys-kernel/kccmp 0.3: A simple tool for comparing two linux kernel .config files
 sys-kernel/kergen 0.1.1 0.1.3: Kernel config generator
 sys-kernel/linux-docs 3.4.104 3.10.58 3.12.30 3.14.22 4.1.12 4.2.5 4.3: Developer documentation generated from the Linux kernel
-sys-kernel/linux-firmware 20151207 20160223 20160331 99999999: Linux firmware files
+sys-kernel/linux-firmware 20151207 20160223 20160331 20160616 99999999: Linux firmware files
 sys-kernel/linux-headers 2.4.33.3 2.4.36 3.18 4.3 4.4 4.5 4.6: Linux system headers
 sys-kernel/mips-sources 4.2.8 4.3.3: Linux-Mips GIT sources for MIPS-based machines, dated 20151126
 sys-kernel/openvz-sources 2.6.32.108.5 2.6.32.108.8 2.6.32.111.12 2.6.32.112.15 2.6.32.113.11: Kernel sources with OpenVZ patchset

@@ -1,13 +1,12 @@
 DEFINED_PHASES=install postinst setup
-DESCRIPTION=Microcode for V.Islands Radeon GPUs and APUs
+DESCRIPTION=IRQ microcode for r6xx/r7xx/Evergreen/N.Islands/S.Islands Radeon GPUs and APUs
 EAPI=5
 HOMEPAGE=https://people.freedesktop.org/~agd5f/radeon_ucode/
-IUSE=legacy
 KEYWORDS=~amd64 ~x86
 LICENSE=radeon-ucode
-RDEPEND=legacy? ( !sys-firmware/radeon-ucode ) !>sys-kernel/linux-firmware-20150812[-savedconfig]
+RDEPEND=!sys-kernel/linux-firmware[-savedconfig]
 SLOT=0
-SRC_URI=mirror://gentoo/amdgpu-ucode-20150803.tar.xz
+SRC_URI=mirror://gentoo/radeon-ucode-20160616.tar.xz
 _eclass_exported_funcs=pkg_postinst:- pkg_setup:linux-info src_install:-
 _eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	linux-info	fd1e29abbb02cbc49f1a14299846e9c4	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=f8b96e4d09f38e329cd081bea0be86e1
+_md5_=dcd4e891fbef10383ce40ace05d01cfc
