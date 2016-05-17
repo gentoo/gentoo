@@ -44,8 +44,7 @@
     
     <code>
       # emerge --sync
-      # emerge --ask --oneshot --verbose
-      "&gt;=www-client/chromium-50.0.2661.102"
+      # emerge --ask --oneshot --verbose "&gt;=www-client/chromium-50.0.2661.102"
     </code>
     
   </resolution>
