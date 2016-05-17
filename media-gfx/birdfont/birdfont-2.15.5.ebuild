@@ -3,8 +3,8 @@
 
 EAPI="5"
 
-PYTHON_COMPAT=( python2_7 )
-PLOCALES="cs de el es fr id it nb nl oc pl pt_BR pt ru sk sr sv tr uk"
+PYTHON_COMPAT=( python{2_7,3_3,3_4,3_5} )
+PLOCALES="cs de it sv"
 
 inherit python-any-r1 vala l10n toolchain-funcs multilib eutils
 
@@ -17,14 +17,18 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="gtk nls"
 
-RDEPEND="dev-libs/libgee:0.8=
+RDEPEND="dev-db/sqlite:3
+	dev-libs/libgee:0.8=
 	dev-libs/glib:2
+	media-libs/fontconfig
 	media-libs/freetype:2
+	media-libs/libxmlbird
 	x11-libs/gdk-pixbuf:2
 	gtk? (
 		net-libs/libsoup:2.4
 		net-libs/webkit-gtk:3=
 		x11-libs/cairo
+		x11-libs/gdk-pixbuf:2
 		x11-libs/gtk+:3
 		x11-libs/libnotify
 	)"
@@ -37,22 +41,16 @@ src_prepare() {
 	vala_src_prepare
 
 	epatch "${FILESDIR}"/${PN}-2.5.1-verbose.patch
-
-	# The webkit we use requires gtk 3, so fix our deps too.
-	# Upstream has already made this fix for newer versions.
-	sed -i \
-		-e '/pkg-config/s:gtk+-2.0:gtk+-3.0:' \
-		scripts/build.py || die
+	epatch "${FILESDIR}"/${PN}-2.15.5-configure-valac.patch
 
 	sed -i \
 		-e "s:pkg-config:$(tc-getPKG_CONFIG):" \
-		configure scripts/{bavala,build,linux_build}.py || die
+		configure dodo.py || die
+}
 
-	# Respect custom valac even during configure time.
-	# https://github.com/johanmattssonm/birdfont/pull/18
-	sed -i \
-		-e "s:valac:${VALAC}:" \
-		configure || die
+v() {
+	echo "$@"
+	"$@" || die
 }
 
 src_configure() {
@@ -66,33 +64,25 @@ src_configure() {
 		rm po/*.po || die
 	fi
 
-	./configure \
+	v ./configure \
 		--prefix "${EPREFIX}/usr" \
 		--gtk $(usex gtk True False) \
 		--gee gee-0.8 \
-		|| die
-
-	# Hack out gtk build when it's disabled.
-	# Upstream has already fixed this for newer versions.
-	use gtk || sed -i '/^build.birdfont_gtk/d' scripts/linux_build.py
+		--valac "${VALAC}" \
+		--cc "$(tc-getCC)" \
+		--cflags "${CFLAGS} ${CPPFLAGS}" \
+		--ldflags "${LDFLAGS}"
 }
 
 src_compile() {
-	./scripts/linux_build.py \
-		--prefix "${EPREFIX}/usr" \
-		--cc "$(tc-getCC)" \
-		--cflags "${CFLAGS} ${CPPFLAGS}" \
-		--ldflags "${LDFLAGS}" \
-		--valac "${VALAC}" \
-		|| die
+	v ./build.py
 }
 
 src_install() {
-	./install.py \
+	v ./install.py \
 		--dest "${D}" \
 		--nogzip \
 		--libdir "$(get_libdir)" \
-		--manpages-directory "/share/man/man1" \
-		|| die
-	dodoc NEWS README
+		--manpages-directory "/share/man/man1"
+	dodoc NEWS README.md
 }
