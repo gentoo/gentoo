@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile configure install prepare
+DESCRIPTION=The Drive Trust Alliance Self Encrypting Drive Utility
+EAPI=5
+HOMEPAGE=https://github.com/Drive-Trust-Alliance/sedutil
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3+
+SLOT=0
+SRC_URI=https://github.com/Drive-Trust-Alliance/sedutil/archive/1.12.tar.gz -> sedutil-1.12.tar.gz
+_eclass_exported_funcs=src_prepare:- src_configure:- src_compile:- src_install:-
+_eclasses_=multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=60e921fc0c2c8fbc05e1474ebd74249c
