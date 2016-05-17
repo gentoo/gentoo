@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=sys-libs/zlib sys-libs/readline:= >=dev-libs/glib-2.6.1 nls? ( >=sys-devel/gettext-0.14.1 ) dev-util/ninja >=dev-util/cmake-2.8.12
+DESCRIPTION=Console version of Stardict program
+EAPI=6
+HOMEPAGE=http://sdcv.sourceforge.net
+IUSE=darkterm nls linguas_cs linguas_fr linguas_ru linguas_sk linguas_uk linguas_zh_CN linguas_zh_TW
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=sys-libs/zlib sys-libs/readline:= >=dev-libs/glib-2.6.1
+SLOT=0
+SRC_URI=mirror://sourceforge/sdcv/sdcv-0.5.0-beta2-Source.tar.bz2
+_eclass_exported_funcs=src_prepare:- src_configure:- src_compile:- src_test:cmake-utils src_install:-
+_eclasses_=cmake-utils	422bbd1bee2557490177a34dbe0a662b	eutils	792f83d5ec9536cb5ccef375469d8bde	flag-o-matic	d270fa247153df66074f795fa42dba3e	l10n	e26ea0642846685782f1813642e7ff0f	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=ee35e010f0c8f4a4771972a9b9791d7f

@@ -2179,7 +2179,7 @@ app-shells/zsh 5.0.5 5.0.7-r1 5.0.7-r2 5.0.8 5.1.1 5.2 9999: UNIX Shell similar 
 app-shells/zsh-completions 0.17.0 0.18.0 9999: Additional completion definitions for Zsh
 app-text/7plus 2.25: An encoder for packet radio
 app-text/XML-Schema-learner 1.0.0 1.0.1: Algorithmic inferencing of XML schema definitions and DTDs
-app-text/a2ps 4.14-r3: Any to PostScript filter
+app-text/a2ps 4.14-r3 4.14-r4: Any to PostScript filter
 app-text/acroread 9.5.5-r3: Adobe's PDF reader
 app-text/active-dvi 1.10.2-r1: A DVI previewer and a presenter for slides written in LaTeX
 app-text/adiff 1.4: wordwise diff
@@ -2418,7 +2418,7 @@ app-text/sablotron 1.0.3: An XSLT Parser in C++
 app-text/sary 1.2.0-r1: Sary: suffix array library and tools
 app-text/scrollkeeper 9999-r1: Dummy scrollkeeper for testing rarian
 app-text/scrollkeeper-dtd 1.0: DTD from the Scrollkeeper package
-app-text/sdcv 0.4.2 0.5.0_beta2: Console version of Stardict program
+app-text/sdcv 0.4.2 0.5.0_beta2 0.5.0_beta2-r1: Console version of Stardict program
 app-text/searchmonkey 0.8.1 2.0.0: Powerful text searches using regular expressions
 app-text/sgml-common 0.6.3-r5: Base ISO character entities and utilities for SGML
 app-text/sgmltools-lite 3.0.3-r14: Python interface to SGML software in a DocBook/OpenJade env
