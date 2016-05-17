@@ -6,6 +6,10 @@
 		<name>Andrew Savchenko</name>
 	</maintainer>
 	<longdescription>sdcv - console version of StarDict program.</longdescription>
+	<use>
+		<flag name="darkterm">Improve readability of color output on terminals with
+		dark background.</flag>
+	</use>
 	<upstream>
 		<remote-id type="sourceforge">sdcv</remote-id>
 	</upstream>
