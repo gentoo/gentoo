@@ -5660,7 +5660,7 @@ dev-perl/GStreamer-Interfaces 0.60.0-r1: Perl interface to the GStreamer Interfa
 dev-perl/Gearman 1.120.0: Gearman distributed job system, client and worker libraries
 dev-perl/Gearman-Client-Async 0.940.0-r1: Asynchronous client module for Gearman for Danga::Socket applications
 dev-perl/Gearman-Server 1.120.0: Gearman distributed job system - worker/client connector
-dev-perl/Gentoo-App-Pram 0.1.0: Readily merge Pull Requests from Github
+dev-perl/Gentoo-App-Pram 0.1.0: Readily merge Pull Requests from the Gentoo Github repository
 dev-perl/Gentoo-PerlMod-Version 0.8.0: Convert arbitrary Perl Modules' versions into normalised Gentoo versions
 dev-perl/Geo-IP 1.450.0: Look up country by IP Address
 dev-perl/Geography-Countries 2009041301.0.0-r1: 2-letter, 3-letter, and numerical codes for countries
@@ -7373,6 +7373,7 @@ dev-python/kaa-base 0.6.0-r1: Basic Framework for all Kaa Python Modules
 dev-python/kaa-display 0.1.0 0.1.0-r1: Python API providing Low level support for various displays, such as X11 or framebuffer
 dev-python/kaa-imlib2 0.2.3-r1 0.2.3-r2: Imlib2 wrapper for Python
 dev-python/kaa-metadata 0.7.7-r1: Powerful media metadata parser for media files in Python, successor of MMPython
+dev-python/kafka-python 1.1.1: Kafka protocol support in Python
 dev-python/kazoo 1.3.1 2.0 2.2.1: A high-level Python library that makes it easier to use Apache Zookeeper
 dev-python/keepassx 0.0.3 0.1.0: Python API and CLI for KeePassX
 dev-python/keyczar 0.71c 0.715: Toolkit for safe and simple cryptography

@@ -2359,6 +2359,7 @@ dev-python/ipython:nbconvert - Enable support for converting notebooks to variou
 dev-python/ipython:notebook - Install requirements for the web notebook based on www-servers/tornado
 dev-python/ipython:octave - Enable octave bridge via dev-python/oct2py
 dev-python/kaa-base:tls - SSL/TLS support via dev-python/tlslite
+dev-python/kafka-python:snappy - Install snappy compression/decompression support
 dev-python/kazoo:gevent - Enable support for the gevent based handler
 dev-python/kombu:amqplib - Enable amqplib support
 dev-python/kombu:msgpack - Enables MessagePack (de)serializer for Python
