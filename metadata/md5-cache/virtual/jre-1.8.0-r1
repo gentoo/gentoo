@@ -1,8 +1,8 @@
 DEFINED_PHASES=-
 DESCRIPTION=Virtual for Java Runtime Environment (JRE)
 EAPI=6
-KEYWORDS=~amd64 ~arm ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc64-solaris ~x64-solaris
+KEYWORDS=amd64 ~arm ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc64-solaris ~x64-solaris
 RDEPEND=|| ( virtual/jdk:1.8 dev-java/oracle-jre-bin:1.8 )
 SLOT=1.8
 _eclass_exported_funcs=-
-_md5_=e14dc002bd1b886d82a512d23738f618
+_md5_=5b84bdca7a98b2f89c2191d5e581c4ff

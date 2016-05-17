@@ -1389,7 +1389,7 @@ app-eselect/eselect-fontconfig 1.0 1.1 1.1-r1: An eselect module to manage /etc/
 app-eselect/eselect-gnat 1.3-r1 1.4 1.4-r1 1.5: gnat module for eselect
 app-eselect/eselect-gnome-shell-extensions 20120911: Manages system defaults for GNOME Shell extensions
 app-eselect/eselect-infinality 1: Eselect module to choose an infinality font configuration style
-app-eselect/eselect-java 0.1.0 0.1.0-r1 0.2.0: A set of eselect modules for Java
+app-eselect/eselect-java 0.2.0: A set of eselect modules for Java
 app-eselect/eselect-lapack 0.1: LAPACK module for eselect
 app-eselect/eselect-lcdfilter 1 2: Eselect module to choose Freetype infinality-enhanced LCD filtering settings
 app-eselect/eselect-lib-bin-symlink 0.1 0.1.1 9999: An eselect library to manage executable symlinks
@@ -3938,7 +3938,7 @@ dev-java/ical4j 1.0.5: a Java library for handling iCalendar data streams
 dev-java/icedtea 3.0.1 7.2.6.6: A harness to build OpenJDK using Free Software build tools and dependencies
 dev-java/icedtea-bin 3.0.1 7.2.6.5 7.2.6.6-r1: A Gentoo-made binary build of the IcedTea JDK
 dev-java/icedtea-sound 1.0.1: Plugins for javax.sound
-dev-java/icedtea-web 1.5.1-r1 1.6.1-r1: FOSS Java browser plugin and Web Start implementation
+dev-java/icedtea-web 1.6.1-r1: FOSS Java browser plugin and Web Start implementation
 dev-java/icu4j 54.1.1 55.1: A set of Java libraries providing Unicode and Globalization support
 dev-java/idm-console-framework 1.1.7: A Java Management Console framework used for remote server management
 dev-java/ini4j 0.5.1: Simple Java API Windows style .ini file handling
@@ -4190,8 +4190,8 @@ dev-java/offo-hyphenation 2.0: Hyphenation patterns for Apache Fop
 dev-java/ognl 3.0.8: Object-Graph Navigation Language: get/set properties of objects
 dev-java/opencsv 2.3: A very simple csv (comma-separated values) parser library for Java
 dev-java/oracle-javamail 1.5.2 1.5.5: A Java-based framework to build multiplatform mail and messaging applications
-dev-java/oracle-jdk-bin 1.7.0.80 1.8.0.91 1.8.0.92: Oracle's Java SE Development Kit
-dev-java/oracle-jre-bin 1.7.0.80 1.8.0.92: Oracle's Java SE Runtime Environment
+dev-java/oracle-jdk-bin 1.8.0.91 1.8.0.92: Oracle's Java SE Development Kit
+dev-java/oracle-jre-bin 1.8.0.92: Oracle's Java SE Runtime Environment
 dev-java/oscache 2.0.2-r3: OSCache is a widely used, high performance J2EE caching framework
 dev-java/osgi-compendium 4.3.1: OSGi Service Platform Compendium API (Companion Code)
 dev-java/osgi-core-api 5.0.0 5.0.0-r1: OSGi Service Platform Core API (Companion Code)
@@ -17401,9 +17401,9 @@ virtual/httpd-php 5.5 5.6 7.0: Virtual to provide PHP-enabled webservers
 virtual/imap-c-client 0 1: Virtual for IMAP c-client
 virtual/inetd 0: Virtual for the internet super-server daemon
 virtual/jack 0: Virtual for JACK Audio Connection Kit
-virtual/jdk 1.7.0-r1 1.8.0-r3: Virtual for Java Development Kit (JDK)
+virtual/jdk 1.7.0-r2 1.8.0-r3: Virtual for Java Development Kit (JDK)
 virtual/jpeg 0-r2 62: A virtual for the libjpeg.so.62 ABI for binary-only programs
-virtual/jre 1.7.0-r1 1.8.0-r1: Virtual for Java Runtime Environment (JRE)
+virtual/jre 1.7.0-r2 1.8.0-r1: Virtual for Java Runtime Environment (JRE)
 virtual/krb5 0 0-r1: Virtual for Kerberos V implementation
 virtual/lapack 3.0 3.1: Virtual for Linear Algebra Package FORTRAN 77 (LAPACK) implementation
 virtual/latex-base 1.0: Virtual for basic LaTeX binaries
