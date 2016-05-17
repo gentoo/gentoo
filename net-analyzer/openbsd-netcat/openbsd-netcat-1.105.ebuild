@@ -11,7 +11,7 @@ SRC_URI="http://http.debian.net/debian/pool/main/n/netcat-openbsd/netcat-openbsd
 LICENSE="BSD"
 SLOT="0"
 
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~x86 ~amd64-linux ~x64-macos"
 
 DEPEND="virtual/pkgconfig"
 RDEPEND="dev-libs/libbsd"
