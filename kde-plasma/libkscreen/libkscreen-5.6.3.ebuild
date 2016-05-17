@@ -14,7 +14,7 @@ KEYWORDS="~amd64 ~arm ~x86"
 IUSE="X"
 
 DEPEND="
-	$(add_plasma_dep kwayland)
+	$(add_frameworks_dep kwayland)
 	$(add_qt_dep qtdbus)
 	$(add_qt_dep qtgui)
 	$(add_qt_dep qtx11extras)
