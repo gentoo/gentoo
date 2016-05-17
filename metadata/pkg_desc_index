@@ -9950,7 +9950,7 @@ dev-vcs/git-bzr-ng 0_pre20120130 0_pre20120822: Git subcommand providing a bidir
 dev-vcs/git-cola 2.2.1 2.3 2.4: The highly caffeinated git GUI
 dev-vcs/git-crypt 0.3 0.4 0.5.0: transparent file encryption in git
 dev-vcs/git-deploy 6.0.1_p20131024: make deployments so easy that you'll let new hires do them on their first day
-dev-vcs/git-flow 1.8.0-r1 1.8.0-r2 1.9.1: Git extensions to provide high-level repository operations
+dev-vcs/git-flow 1.9.1: Git extensions to provide high-level repository operations
 dev-vcs/git-imerge 0.7.0: Incremental merge for git
 dev-vcs/git-mailz 0.12 0.14: Send a collection of patches as emails
 dev-vcs/git-mantle 0.6: Generate an overview of changes on a branch
