@@ -328,6 +328,7 @@ src_prepare() {
 		Makefile Makefile.target || die
 
 	epatch "${FILESDIR}"/qemu-2.5.0-cflags.patch
+	epatch "${FILESDIR}"/${PN}-2.5.0-sysmacros.patch
 
 	# Fix ld and objcopy being called directly
 	tc-export AR LD OBJCOPY
