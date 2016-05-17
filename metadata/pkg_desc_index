@@ -11172,7 +11172,7 @@ kde-apps/kde-apps-meta 15.08.3-r3 15.12.3-r2 15.12.3-r3: Meta package for the KD
 kde-apps/kde-base-artwork 4.14.3 15.08.3: KDE base artwork
 kde-apps/kde-dev-scripts 4.14.3 15.12.3: KDE Development Scripts
 kde-apps/kde-dev-utils 4.14.3 15.08.3 15.12.3: KDE Development Utilities
-kde-apps/kde-l10n 15.12.3-r1: KDE internationalization package
+kde-apps/kde-l10n 15.12.3-r2: KDE internationalization package
 kde-apps/kde-meta 4.14.3 4.14.3-r1 15.08.3 15.12.3: Merge this to pull in all KDE Plasma and Applications packages
 kde-apps/kde-wallpapers 4.14.3 15.08.3 15.08.3-r2: KDE wallpapers
 kde-apps/kde4-l10n 4.14.3 4.14.3-r1 15.08.3-r2 15.12.3-r1: KDE internationalization package
