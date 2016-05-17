@@ -10,5 +10,5 @@ RDEPEND=>=media-libs/glew-1.10 >=media-libs/libsfml-2.1 >=net-libs/miniupnpc-1.8
 SLOT=0
 SRC_URI=https://github.com/dolphin-emu/dolphin/archive/5.0-rc.zip -> dolphin-5.0.zip
 _eclass_exported_funcs=pkg_pretend:- pkg_preinst:games pkg_postinst:- pkg_setup:games src_unpack:base src_prepare:- src_configure:- src_compile:- src_test:cmake-utils src_install:-
-_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	cmake-utils	422bbd1bee2557490177a34dbe0a662b	eutils	792f83d5ec9536cb5ccef375469d8bde	flag-o-matic	d270fa247153df66074f795fa42dba3e	games	2cf0d67d765e6358b435ccda30c13ad8	multilib	d062ae4ba2fc40a19c11de2ad89b6616	pax-utils	ecf634cba91bb9591a8fdb6f6145f1bb	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	user	906f3c8eb3a2350a4f1191a89baa3e46	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	wxwidgets	9b34ce3ca77f4e418e8fd9951c4c1cb1
+_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	cmake-utils	de231a665c92c701abbbfd733eee5391	eutils	792f83d5ec9536cb5ccef375469d8bde	flag-o-matic	d270fa247153df66074f795fa42dba3e	games	2cf0d67d765e6358b435ccda30c13ad8	multilib	d062ae4ba2fc40a19c11de2ad89b6616	pax-utils	ecf634cba91bb9591a8fdb6f6145f1bb	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	user	906f3c8eb3a2350a4f1191a89baa3e46	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	wxwidgets	9b34ce3ca77f4e418e8fd9951c4c1cb1
 _md5_=331118f8a6b09b660623d564e1681b71

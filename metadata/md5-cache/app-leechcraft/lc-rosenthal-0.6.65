@@ -9,5 +9,5 @@ RDEPEND=~app-leechcraft/lc-core-0.6.65 app-text/hunspell
 SLOT=0
 SRC_URI=http://dist.leechcraft.org/LeechCraft/0.6.65/leechcraft-0.6.65.tar.xz
 _eclass_exported_funcs=pkg_pretend:leechcraft src_prepare:cmake-utils src_configure:cmake-utils src_compile:cmake-utils src_test:cmake-utils src_install:cmake-utils
-_eclasses_=cmake-utils	422bbd1bee2557490177a34dbe0a662b	eutils	792f83d5ec9536cb5ccef375469d8bde	flag-o-matic	d270fa247153df66074f795fa42dba3e	leechcraft	31c814e6a5231038f3abd13d747fefaf	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=cmake-utils	de231a665c92c701abbbfd733eee5391	eutils	792f83d5ec9536cb5ccef375469d8bde	flag-o-matic	d270fa247153df66074f795fa42dba3e	leechcraft	31c814e6a5231038f3abd13d747fefaf	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=cdca6ff4f7113a37228bf69e0d22d1e6
