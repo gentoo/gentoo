@@ -9716,7 +9716,7 @@ dev-util/idea-ultimate 14.1.7.141.3058.30 15.0.6.143.2370.31 2016.1.2.145.971.21
 dev-util/idutils 4.2 4.5 4.6: Fast, high-capacity, identifier database tool
 dev-util/igprof 5.9.11: Ignominous Profiler for analysing application memory and performance characteristics
 dev-util/imediff2 1.1.2-r3: An interactive, user friendly 2-way merge tool in text mode
-dev-util/include-what-you-use 3.5 3.6 3.7-r1: find unused include directives in C/C++ programs
+dev-util/include-what-you-use 3.5 3.6 3.7-r1 3.8: find unused include directives in C/C++ programs
 dev-util/indent 2.2.11-r1: Indent program source files
 dev-util/injectso 0.2-r1: Inject shared libraries into running processes under Solaris and Linux
 dev-util/insight 6.8.1-r1: A graphical interface to the GNU debugger
