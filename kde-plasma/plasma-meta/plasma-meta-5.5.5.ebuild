@@ -27,7 +27,6 @@ RDEPEND="
 	$(add_plasma_dep kscreenlocker)
 	$(add_plasma_dep ksshaskpass)
 	$(add_plasma_dep ksysguard)
-	$(add_plasma_dep kwayland)
 	$(add_plasma_dep kwayland-integration)
 	$(add_plasma_dep kwin)
 	$(add_plasma_dep kwrited)

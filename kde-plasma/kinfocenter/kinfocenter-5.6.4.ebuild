@@ -53,7 +53,7 @@ COMMON_DEPEND="
 	)
 	pci? ( sys-apps/pciutils )
 	samba? ( net-fs/samba[server(+)] )
-	wayland? ( $(add_plasma_dep kwayland) )
+	wayland? ( $(add_frameworks_dep kwayland) )
 "
 DEPEND="${COMMON_DEPEND}
 	$(add_frameworks_dep plasma)

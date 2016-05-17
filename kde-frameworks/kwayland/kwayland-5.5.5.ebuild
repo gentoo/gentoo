@@ -9,17 +9,20 @@ inherit kde5
 
 DESCRIPTION="Qt-style client and server library wrapper for Wayland libraries"
 HOMEPAGE="https://projects.kde.org/projects/kde/workspace/kwayland"
+SRC_URI="mirror://kde/stable/plasma/${PV}/${P}.tar.xz"
 
 LICENSE="LGPL-2.1"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm ~x86"
 IUSE=""
 
 DEPEND="
-	>=dev-libs/wayland-1.7.0
 	$(add_qt_dep qtgui)
+	>=dev-libs/wayland-1.7.0
 	media-libs/mesa[egl]
 "
-RDEPEND="${DEPEND}"
+RDEPEND="${DEPEND}
+	!kde-plasma/kwayland
+"
 
 # All failing, i guess we need a virtual wayland server
 RESTRICT="test"
