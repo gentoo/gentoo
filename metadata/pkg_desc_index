@@ -18152,7 +18152,7 @@ x11-libs/vte 0.28.2-r207 0.36.5 0.40.2 0.42.4 0.42.5: Library providing a virtua
 x11-libs/wxGTK 2.8.12.1-r1 2.8.12.1-r2 2.9.4.1-r1 3.0.2.0-r1 3.0.2.0-r2 3.0.2.0-r300: GTK+ version of wxWidgets, a cross-platform C++ GUI toolkit
 x11-libs/xbae 4.60.4: Motif-based widget to display a grid of cells as a spreadsheet
 x11-libs/xcb-util 0.4.0: X C-language Bindings sample implementations
-x11-libs/xcb-util-cursor 0.1.1-r1 0.1.2: X C-language Bindings sample implementations
+x11-libs/xcb-util-cursor 0.1.1-r1 0.1.2 0.1.3: X C-language Bindings sample implementations
 x11-libs/xcb-util-image 0.4.0: X C-language Bindings sample implementations
 x11-libs/xcb-util-keysyms 0.4.0: X C-language Bindings sample implementations
 x11-libs/xcb-util-renderutil 0.3.9-r1: X C-language Bindings sample implementations
@@ -18687,7 +18687,7 @@ x11-proto/xf86miscproto 0.9.3: X.Org XF86Misc protocol headers
 x11-proto/xf86rushproto 1.1.2-r1: X.Org XF86Rush protocol headers
 x11-proto/xf86vidmodeproto 2.3.1-r1: X.Org XF86VidMode protocol headers
 x11-proto/xineramaproto 1.2.1-r1: X.Org Xinerama protocol headers
-x11-proto/xproto 7.0.27 7.0.28: X.Org xproto protocol headers
+x11-proto/xproto 7.0.27 7.0.28 7.0.29: X.Org xproto protocol headers
 x11-terms/aterm 1.0.1-r2: A terminal emulator with transparency support as well as rxvt backwards compatibility
 x11-terms/eterm 0.9.5 0.9.6 9999: A vt102 terminal emulator for X
 x11-terms/evilvte 0.5.1 0.5.2_pre1: VTE based, super lightweight terminal emulator
