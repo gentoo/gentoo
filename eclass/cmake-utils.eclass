@@ -87,7 +87,6 @@ _CMAKE_UTILS_ECLASS=1
 # Warn about variables that are declared on the command line
 # but not used. Might give false-positives.
 # "no" to disable (default) or anything else to enable.
-: ${CMAKE_WARN_UNUSED_CLI:=no}
 
 # @ECLASS-VARIABLE: PREFIX
 # @DESCRIPTION:
@@ -113,7 +112,8 @@ _CMAKE_UTILS_ECLASS=1
 # Should be set by user in a per-package basis in /etc/portage/package.env.
 
 case ${EAPI} in
-	2|3|4|5|6) : ;;
+	2|3|4|5) : ${CMAKE_WARN_UNUSED_CLI:=no} ;;
+	6) : ${CMAKE_WARN_UNUSED_CLI:=yes} ;;
 	*) die "EAPI=${EAPI:-0} is not supported" ;;
 esac
 
