@@ -9,7 +9,7 @@ MODULE_VERSION=0.001000
 
 inherit perl-module
 
-DESCRIPTION="Readily merge Pull Requests from Github"
+DESCRIPTION="Readily merge Pull Requests from the Gentoo Github repository"
 HOMEPAGE="https://github.com/monsieurp/Gentoo-App-Pram"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
@@ -19,6 +19,7 @@ RDEPEND=""
 DEPEND="
 	dev-perl/Module-Build-Tiny
 	dev-perl/File-Which
+	dev-vcs/git
 	${RDEPEND}"
 
 SRC_TEST="do"
