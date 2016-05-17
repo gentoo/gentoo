@@ -85,11 +85,6 @@ python_install_all() {
 	docompress -x /usr/share/doc/${PF}/contrib
 	doman doc/*.?
 
-	cat > "${T}/80mercurial" <<-EOF
-HG="${EPREFIX}/usr/bin/hg"
-EOF
-	doenvd "${T}/80mercurial"
-
 	insinto /etc/mercurial/hgrc.d
 	doins "${FILESDIR}/cacerts.rc"
 }
