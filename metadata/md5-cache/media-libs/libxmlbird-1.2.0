@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install prepare setup
+DESCRIPTION=XML parser written in Vala
+EAPI=5
+HOMEPAGE=https://birdfont.org/xmlbird.php
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RESTRICT=test
+SLOT=0
+SRC_URI=https://birdfont.org/xmlbird-releases/libxmlbird-1.2.0.tar.xz
+_eclass_exported_funcs=pkg_setup:python-any-r1 src_prepare:- src_configure:- src_compile:- src_install:-
+_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	multilib	d062ae4ba2fc40a19c11de2ad89b6616	python-any-r1	8eb13cdf35f6e43c48107b911900b2cc	python-utils-r1	13d5b02ea59b21da41c77c9294f3b7f7	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	vala	f946609697ad4b4b1d85b997f0c70204
+_md5_=526bcc54d7c9d4cb3d51da51434fc8bb
