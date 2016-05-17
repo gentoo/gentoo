@@ -3442,7 +3442,7 @@ kde-misc/kcm-grub2:imagemagick - Create splash images compatible with GRUB2
 kde-misc/kcm-grub2:packagekit - Add support for packagekit integration
 kde-misc/kdeconnect:app - Enable experimental kcapp frontend
 kde-misc/kdeconnect:telepathy - Enable net-libs/telepathy-qt support to receive text messages and respond to them
-kde-misc/kdeconnect:wayland - Enable kwin_wayland support for mousepad plugin using kde-plasma/kwayland
+kde-misc/kdeconnect:wayland - Enable kwin_wayland support for mousepad plugin using kde-frameworks/kwayland
 kde-misc/kepas:oscar - Enables ICQ (AIM) support.
 kde-misc/kimtoy:scim - Enable Smart Common Input Method support
 kde-misc/krusader:bookmarks - Add dependency on bookmark package.

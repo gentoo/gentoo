@@ -11508,7 +11508,7 @@ kde-frameworks/ktexteditor 5.18.0 5.21.0 5.22.0: Framework providing a full text
 kde-frameworks/ktextwidgets 5.18.0 5.21.0 5.22.0: Framework providing an assortment of widgets for displaying and editing text
 kde-frameworks/kunitconversion 5.18.0 5.21.0 5.22.0: Framework for converting units
 kde-frameworks/kwallet 5.18.0 5.21.0 5.22.0: Framework providing desktop-wide storage for passwords
-kde-frameworks/kwayland 5.22.0: Qt-style client and server library wrapper for Wayland libraries
+kde-frameworks/kwayland 5.5.5 5.22.0: Qt-style client and server library wrapper for Wayland libraries
 kde-frameworks/kwidgetsaddons 5.18.0 5.21.0 5.22.0: An assortment of high-level widgets for common tasks
 kde-frameworks/kwindowsystem 5.18.0 5.21.0 5.22.0: Framework providing access to properties and features of the window manager
 kde-frameworks/kxmlgui 5.18.0 5.21.0 5.22.0: Framework for managing menu and toolbar actions in an abstract way
@@ -11652,7 +11652,6 @@ kde-plasma/kscreenlocker 5.5.5 5.6.3 5.6.4: Library and components for secure lo
 kde-plasma/ksshaskpass 5.5.5 5.6.3 5.6.4: KDE implementation of ssh-askpass with Kwallet integration
 kde-plasma/ksysguard 5.5.5 5.6.3 5.6.4: Network-enabled task manager and system monitor
 kde-plasma/kwallet-pam 5.5.5 5.6.3 5.6.4-r1: KWallet PAM module to not enter password again
-kde-plasma/kwayland 5.5.5 5.6.3 5.6.4: Qt-style client and server library wrapper for Wayland libraries
 kde-plasma/kwayland-integration 5.5.5 5.6.3 5.6.4: Provides integration plugins for various KDE frameworks for Wayland
 kde-plasma/kwin 5.5.5 5.6.3 5.6.4: KDE window manager
 kde-plasma/kwrited 5.5.5 5.6.3 5.6.4: KDE daemon listening for wall and write messages
