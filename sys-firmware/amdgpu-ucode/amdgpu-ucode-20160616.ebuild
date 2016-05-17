@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -6,9 +6,10 @@ EAPI=5
 
 inherit linux-info
 
-DESCRIPTION="Microcode for V.Islands Radeon GPUs and APUs"
+DESCRIPTION="Microcode for C.Islands/V.Islands/A.Islands Radeon GPUs and APUs"
 HOMEPAGE="https://people.freedesktop.org/~agd5f/radeon_ucode/"
-SRC_URI="mirror://gentoo/${P}.tar.xz"
+SRC_URI="mirror://gentoo/${P}.tar.xz
+	legacy? ( mirror://gentoo/${P/amdgpu/radeon}.tar.xz )"
 
 LICENSE="radeon-ucode"
 SLOT="0"
@@ -18,27 +19,25 @@ IUSE="legacy"
 RDEPEND="legacy? ( !sys-firmware/radeon-ucode )
 	!>sys-kernel/linux-firmware-20150812[-savedconfig]"
 
-S=${WORKDIR}/radeon_ucode
+S=${WORKDIR}/amdgpu
 
 AMDGPU_LEGACY_CIK="bonaire hawaii kabini kaveri mullins"
 
 src_install() {
-	local directory files legacyfiles
+	local chip files legacyfiles
 	if use legacy; then
-		for directory in ${AMDGPU_LEGACY_CIK}; do
-			legacyfiles+=( ${directory}/*.bin )
+		pushd ../radeon || die
+		for chip in ${AMDGPU_LEGACY_CIK}; do
+			legacyfiles+=( ${chip}*.bin )
 		done
 		insinto /lib/firmware/radeon
 		doins ${legacyfiles[@]}
+		popd
 	fi
-	for directory in */; do
-		if [[ ${AMDGPU_LEGACY_CIK} != *${directory%/}* ]]; then
-			files+=( ${directory}/*.bin )
-		fi
-	done
+	files=( *.bin )
 	insinto /lib/firmware/amdgpu
 	doins ${files[@]}
-	FILES=( ${files[@]/*\//amdgpu/} ${legacyfiles[@]/*\//radeon/} )
+	FILES=( ${files[@]/#/amdgpu/} ${legacyfiles[@]/#/radeon/} )
 }
 
 pkg_postinst() {

@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -17,7 +17,7 @@ IUSE=""
 
 RDEPEND="!sys-kernel/linux-firmware[-savedconfig]"
 
-S=${WORKDIR}/${PN/-/_}
+S=${WORKDIR}/radeon
 
 src_install() {
 	insinto /lib/firmware/radeon
