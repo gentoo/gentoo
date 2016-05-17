@@ -17213,7 +17213,7 @@ sys-libs/efivar 0.21 0.23: Tools and library to manipulate EFI variables
 sys-libs/fortify-headers 0.6 0.7 9999: A standalone implementation of fortify source.
 sys-libs/freeipmi 1.2.2 1.4.3 1.4.8 1.5.1: Provides Remote-Console and System Management Software as per IPMI v1.5/2.0
 sys-libs/fts-standalone 0.2: Standalone fts library for use with musl
-sys-libs/gdbm 1.8.3-r3 1.8.3-r4 1.9.1-r2 1.10 1.10-r1 1.11: Standard GNU database libraries
+sys-libs/gdbm 1.11 1.12: Standard GNU database libraries
 sys-libs/glibc 2.17 2.18-r1 2.19-r1 2.20-r2 2.21-r2 2.22-r4 2.23-r1 2.23-r2 9999: GNU libc6 (also called glibc2) C library
 sys-libs/gpm 1.20.7-r2: Console-based mouse driver
 sys-libs/gwenhywfar 4.3.3 4.12.0_beta 4.13.1 4.15.3: A multi-platform helper library for other libraries
