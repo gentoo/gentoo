@@ -1,8 +1,8 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="4"
+EAPI=5
 
 inherit flag-o-matic libtool multilib multilib-minimal
 
@@ -46,7 +46,7 @@ multilib_src_configure() {
 		--with-gdbm183-libdir="${EX_S}/.libs" \
 		--with-gdbm183-includedir="${EX_S}" \
 		$(use_enable berkdb libgdbm-compat) \
-		$(multilib_is_native_abi && use_enable exporter gdbm-export) \
+		$(multilib_native_use_enable exporter gdbm-export) \
 		$(use_enable nls) \
 		$(use_enable static-libs static)
 }
