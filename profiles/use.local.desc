@@ -4314,11 +4314,8 @@ media-sound/beets:mpdstats - Enable support for collecting statistic about liste
 media-sound/beets:opus - Enable opus support in gstreamer-based replaygain
 media-sound/beets:replaygain - Enable support for Replay Gain metadata calculation during import
 media-sound/beets:web - Enable embedded webserver support through dev-python/flask
-media-sound/cantata:dynamic - Enable support for dynamic playlists
 media-sound/cantata:http-server - Enable internal HTTP server to play non-MPD files
-media-sound/cantata:online-services - Enable support for online services (Jamendo, Magnatune, SoundCloud, and Podcasts)
 media-sound/cantata:replaygain - Enable ReplayGain support, for relative volume adjustments
-media-sound/cantata:streams - Enable support for streams tab (to save favourite streams, and search for others)
 media-sound/clementine:amazoncloud - Enable Amazon cloud drive support
 media-sound/clementine:box - Enable filesharing via Box.com
 media-sound/clementine:dropbox - Enable Dropbox support
