@@ -122,6 +122,10 @@ EOF
 			sed -i -e '/add_subdirectory(docs)/ s/^/#DONT/' {} + || die
 	fi
 
+	# Remove scripted translations (part of kde-frameworks/ki18n)
+	find -mindepth 5 -maxdepth 5 -type f -name CMakeLists.txt -exec \
+		sed -i -e "/add_subdirectory( *frameworks *)/ s/^/#DONT/" {} + || die
+
 	# Remove kdepim translations (part of kde-apps/kdepim-l10n)
 	for subdir in kdepim kdepimlibs kdepim-runtime pim; do
 		find -mindepth 5 -maxdepth 5 -type f -name CMakeLists.txt -exec \
