@@ -8,5 +8,5 @@ LICENSE=BSD
 RDEPEND=dev-ros/sensor_msgs[ros_messages_cxx(-)] dev-libs/boost:=[python] dev-ros/rosconsole >=dev-cpp/yaml-cpp-0.5 dev-util/catkin dev-python/empy
 SLOT=0
 _eclass_exported_funcs=src_unpack:git-r3 src_prepare:ros-catkin src_configure:ros-catkin src_compile:ros-catkin src_test:ros-catkin src_install:ros-catkin
-_eclasses_=cmake-utils	de231a665c92c701abbbfd733eee5391	eutils	792f83d5ec9536cb5ccef375469d8bde	flag-o-matic	d270fa247153df66074f795fa42dba3e	git-r3	ef66dfc3db09f327af21cf32f140fb2b	multilib	d062ae4ba2fc40a19c11de2ad89b6616	ros-catkin	8b7e3d7128bd81dfe56a947e63201e78	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=cmake-utils	d6c1714cc58fd2168bf150f2a01f3801	eutils	792f83d5ec9536cb5ccef375469d8bde	flag-o-matic	d270fa247153df66074f795fa42dba3e	git-r3	ef66dfc3db09f327af21cf32f140fb2b	multilib	d062ae4ba2fc40a19c11de2ad89b6616	ros-catkin	8b7e3d7128bd81dfe56a947e63201e78	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=cc5b1da4fab497d7f3b1314153823f01
