@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare setup test unpack
+DEPEND=>=sys-apps/sed-4 sys-devel/make >=dev-util/cmake-2.8.12 dev-util/automoc virtual/pkgconfig !aqua? ( >=x11-libs/libXtst-1.1.0 x11-proto/xf86vidmodeproto ) dev-lang/perl >=dev-qt/qt3support-4.8.5:4[accessibility] >=dev-qt/qtcore-4.8.5:4[qt3support,ssl] >=dev-qt/qtdbus-4.8.5:4 >=dev-qt/designer-4.8.5:4 >=dev-qt/qtgui-4.8.5:4[accessibility,dbus(+)] >=dev-qt/qtscript-4.8.5:4 >=dev-qt/qtsql-4.8.5:4[qt3support] >=dev-qt/qtsvg-4.8.5:4 >=dev-qt/qttest-4.8.5:4 >=dev-qt/qtwebkit-4.8.5:4 >=kde-base/kdelibs-4.14.3:4[aqua=]
+DESCRIPTION=Library to support mobipocket ebooks
+EAPI=6
+HOMEPAGE=https://www.kde.org/
+IUSE=debug aqua
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=!kde-base/kdegraphics-mobipocket:4 kde-frameworks/oxygen-icons dev-lang/perl >=dev-qt/qt3support-4.8.5:4[accessibility] >=dev-qt/qtcore-4.8.5:4[qt3support,ssl] >=dev-qt/qtdbus-4.8.5:4 >=dev-qt/designer-4.8.5:4 >=dev-qt/qtgui-4.8.5:4[accessibility,dbus(+)] >=dev-qt/qtscript-4.8.5:4 >=dev-qt/qtsql-4.8.5:4[qt3support] >=dev-qt/qtsvg-4.8.5:4 >=dev-qt/qttest-4.8.5:4 >=dev-qt/qtwebkit-4.8.5:4 >=kde-base/kdelibs-4.14.3:4[aqua=]
+SLOT=4/16.04
+SRC_URI=mirror://kde/stable/applications/16.04.1/src/kdegraphics-mobipocket-16.04.1.tar.xz
+_eclass_exported_funcs=pkg_preinst:kde4-base pkg_postrm:kde4-base pkg_postinst:kde4-base pkg_setup:kde4-base src_unpack:kde4-base src_prepare:kde4-base src_configure:kde4-base src_compile:kde4-base src_test:kde4-base src_install:kde4-base
+_eclasses_=cmake-utils	de231a665c92c701abbbfd733eee5391	eutils	792f83d5ec9536cb5ccef375469d8bde	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	flag-o-matic	d270fa247153df66074f795fa42dba3e	gnome2-utils	c6dcdf3a2c22b578b16adb945dc85c35	kde4-base	497e7beacd4cbf96e4a5082eaa5d75fb	kde4-functions	88bc45dff8c885002aca6e4c0adbe541	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	virtualx	86c9305a59b3e0459e7fbef3a5f30b96	xdg-utils	e2b2bd56125ce8cf59ce30c642b59d48
+_md5_=a335f7546c286f122e0fe00713b5fdda
