@@ -11407,7 +11407,7 @@ kde-base/kdebase-cursors 4.11.19 4.11.22: oxygen cursors from kdebase
 kde-base/kdebase-pam 9 10: pam.d files used by several KDE components
 kde-base/kdebase-startkde 4.11.19 4.11.22 4.11.22-r1: Startkde script, which starts a complete KDE session, and associated scripts
 kde-base/kdebindings-meta 4.14.3: KDE bindings - merge this to pull in all kdebindings-derived packages
-kde-base/kdelibs 4.14.8 4.14.16 4.14.18 4.14.19: KDE libraries needed by all KDE programs
+kde-base/kdelibs 4.14.8 4.14.16 4.14.20: KDE libraries needed by all KDE programs
 kde-base/kdeplasma-addons 4.14.3 4.14.3-r1: Extra Plasma applets and engines
 kde-base/kdm 4.11.19 4.11.22: KDE login manager, similar to xdm and gdm
 kde-base/kephal 4.11.19 4.11.22: Allows handling of multihead systems via the XRandR extension
