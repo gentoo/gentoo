@@ -11482,7 +11482,7 @@ kde-frameworks/kfilemetadata 5.18.0 5.21.0 5.22.0: Library for extracting file m
 kde-frameworks/kglobalaccel 5.18.0 5.21.0 5.22.0: Framework to handle global shortcuts
 kde-frameworks/kguiaddons 5.18.0 5.21.0 5.22.0: Framework providing assorted high-level user interface components
 kde-frameworks/khtml 5.18.0 5.21.0 5.22.0: KHTML web rendering engine
-kde-frameworks/ki18n 5.18.0 5.21.0 5.22.0: Framework based on Gettext for internationalizing user interface text
+kde-frameworks/ki18n 5.18.0 5.21.0 5.22.1: Framework based on Gettext for internationalizing user interface text
 kde-frameworks/kiconthemes 5.18.0 5.21.0 5.22.0: Framework for icon theming and configuration
 kde-frameworks/kidletime 5.18.0 5.21.0 5.22.0: Framework for detection and notification of device idle time
 kde-frameworks/kimageformats 5.18.0 5.21.0 5.22.0: Framework providing additional format plugins for Qt's image I/O system
