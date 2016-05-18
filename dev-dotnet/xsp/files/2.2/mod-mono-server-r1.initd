@@ -1,4 +1,4 @@
-#!/sbin/runscript
+#!/sbin/openrc-run
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id: mod-mono-server-r1.initd,v 1.1 2012/01/22 12:54:29 pacho Exp $
