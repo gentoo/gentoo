@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install prepare setup test
+DEPEND=sys-devel/make >=dev-util/cmake-2.8.12
+DESCRIPTION=Provides integration with GNOME Shell extensions repository for Chrome browser
+EAPI=6
+HOMEPAGE=https://wiki.gnome.org/Projects/GnomeShellIntegrationForChrome
+IUSE=python_targets_python2_7 python_targets_python3_3 python_targets_python3_4 python_targets_python3_5 python_single_target_python2_7 python_single_target_python3_3 python_single_target_python3_4 python_single_target_python3_5
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3+
+RDEPEND=python_single_target_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) python_single_target_python3_3? ( >=dev-lang/python-3.3.2-r2:3.3 ) python_single_target_python3_4? ( dev-lang/python:3.4 ) python_single_target_python3_5? ( dev-lang/python:3.5 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,python_targets_python3_3(-)?,python_targets_python3_4(-)?,python_targets_python3_5(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),python_single_target_python2_7(+)?,python_single_target_python3_3(+)?,python_single_target_python3_4(+)?,python_single_target_python3_5(+)?] gnome-base/gnome-shell
+REQUIRED_USE=^^ ( python_single_target_python2_7 python_single_target_python3_3 python_single_target_python3_4 python_single_target_python3_5 ) python_single_target_python2_7? ( python_targets_python2_7 ) python_single_target_python3_3? ( python_targets_python3_3 ) python_single_target_python3_4? ( python_targets_python3_4 ) python_single_target_python3_5? ( python_targets_python3_5 )
+SLOT=0
+SRC_URI=mirror://gnome/sources/chrome-gnome-shell/6/chrome-gnome-shell-6.tar.xz
+_eclass_exported_funcs=pkg_setup:python-single-r1 src_prepare:cmake-utils src_configure:- src_compile:cmake-utils src_test:cmake-utils src_install:cmake-utils
+_eclasses_=cmake-utils	de231a665c92c701abbbfd733eee5391	eutils	792f83d5ec9536cb5ccef375469d8bde	flag-o-matic	d270fa247153df66074f795fa42dba3e	multilib	d062ae4ba2fc40a19c11de2ad89b6616	python-single-r1	2ebea8fbab356d63110245129a67a6dd	python-utils-r1	13d5b02ea59b21da41c77c9294f3b7f7	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=da8522158f47f3bb5bb1c02d78444aa4

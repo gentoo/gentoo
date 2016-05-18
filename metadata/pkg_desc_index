@@ -10969,7 +10969,7 @@ gnome-extra/assogiate 0.2.1 0.2.1-r1: assoGiate is an editor of the file types d
 gnome-extra/avant-window-navigator 0.4.2: A dock-like bar which sits at the bottom of the screen
 gnome-extra/avant-window-navigator-extras 0.4.0: Applets for the Avant Window Navigator
 gnome-extra/cameramonitor 0.3.2: Local Webcam monitoring in system tray
-gnome-extra/chrome-gnome-shell 5.2: Provides integration with GNOME Shell extensions repository for Chrome browser
+gnome-extra/chrome-gnome-shell 6: Provides integration with GNOME Shell extensions repository for Chrome browser
 gnome-extra/cinnamon 2.6.13 2.8.4 2.8.6: A fork of GNOME Shell with layout similar to GNOME 2
 gnome-extra/cinnamon-control-center 2.6.0-r1 2.8.1: Cinnamons's main interface to configure various aspects of the desktop
 gnome-extra/cinnamon-desktop 2.6.5 2.8.0: A collection of libraries and utilites used by Cinnamon
