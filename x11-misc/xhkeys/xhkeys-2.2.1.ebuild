@@ -26,6 +26,7 @@ DEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${P}-linux_headers.patch
+	"${FILESDIR}"/${P}-CC.patch
 )
 
 src_install() {
