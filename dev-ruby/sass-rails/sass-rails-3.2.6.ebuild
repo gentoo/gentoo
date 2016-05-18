@@ -15,7 +15,7 @@ HOMEPAGE="https://github.com/rails/sass-rails"
 
 LICENSE="MIT"
 SLOT="3.2"
-KEYWORDS="~amd64 ~arm ~x86 ~x64-macos ~x86-solaris"
+KEYWORDS="~amd64 ~arm ~x86 ~amd64-linux ~x64-macos ~x86-solaris"
 
 IUSE=""
 
