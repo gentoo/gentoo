@@ -10887,7 +10887,7 @@ games-strategy/wargus 2.3.0: Warcraft II for the Stratagus game engine
 games-strategy/wargus-data 0: Warcraft II data for wargus (needs DOS CD)
 games-strategy/warmux 11.04.1: A free Worms clone
 games-strategy/warzone2100 3.1.2 3.1.3 3.1.5: 3D real-time strategy game
-games-strategy/wesnoth 1.12.5: Battle for Wesnoth - A fantasy turn-based strategy game
+games-strategy/wesnoth 1.12.5 1.12.6: Battle for Wesnoth - A fantasy turn-based strategy game
 games-strategy/widelands 0.17 0.18: A game similar to Settlers 2
 games-strategy/xbattleai 1.2.2-r1: A multi-player game of strategy and coordination
 games-util/antimicro 2.10.1 2.20.2: Map keyboard and mouse buttons to gamepad buttons
