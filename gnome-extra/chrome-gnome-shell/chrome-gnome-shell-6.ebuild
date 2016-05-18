@@ -4,7 +4,9 @@
 
 EAPI=6
 
-inherit cmake-utils
+PYTHON_COMPAT=( python2_7 python3_{3,4,5} )
+
+inherit cmake-utils python-single-r1
 
 DESCRIPTION="Provides integration with GNOME Shell extensions repository for Chrome browser"
 HOMEPAGE="https://wiki.gnome.org/Projects/GnomeShellIntegrationForChrome"
@@ -12,16 +14,18 @@ SRC_URI="mirror://gnome/sources/${PN}/${PV}/${P}.tar.xz"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-RDEPEND="
-	dev-lang/python:2.7
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+
+RDEPEND="${PYTHON_DEPS}
 	gnome-base/gnome-shell
 "
-DEPEND=""
 
 src_configure() {
+	python_fix_shebang ./connector
+
 	local mycmakeargs=( -DBUILD_EXTENSION=OFF )
 	cmake-utils_src_configure
 }
