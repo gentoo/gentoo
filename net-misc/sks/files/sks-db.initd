@@ -1,4 +1,4 @@
-#!/sbin/runscript
+#!/sbin/openrc-run
 source /etc/conf.d/sks
 
 command=/usr/bin/sks
