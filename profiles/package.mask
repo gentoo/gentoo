@@ -349,11 +349,6 @@ dev-java/jcs
 # Mask live ebuild
 =net-im/mcabber-9999
 
-# Sergey Popov <pinkbyte@gentoo.org> (20 Jan 2016)
-# Mask new versions of Boost - they are known to cause breakages
-~dev-util/boost-build-1.59.0
-~dev-libs/boost-1.59.0
-
 # Mike Frysinger <vapier@gentoo.org> (18 Jan 2016)
 # Force people to migrate to the new combined libraries:
 # media-libs/elementary & dev-libs/efl. #571796
