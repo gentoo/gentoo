@@ -2536,6 +2536,10 @@
       <role>Git</role>
     </member>
     <member>
+      <email>djc@gentoo.org</email>
+      <name>Dirkjan Ochtman</name>
+    </member>
+    <member>
       <email>idl0r@gentoo.org</email>
       <name>Christian Ruppert</name>
       <role>Git, Infra liaison</role>
