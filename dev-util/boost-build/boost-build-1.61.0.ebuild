@@ -6,7 +6,7 @@ EAPI="6"
 
 RESTRICT="test"
 
-PYTHON_COMPAT=( python{2_7,3_4,3_5} )
+PYTHON_COMPAT=( python2_7 )
 inherit eutils flag-o-matic python-single-r1 toolchain-funcs versionator
 
 MY_PV="$(replace_all_version_separators _)"
@@ -85,7 +85,7 @@ src_configure() {
 		# replace versions by user-selected one (TODO: fix this when slot-op
 		# deps are available to always match the best version available)
 		sed -i \
-			-e "s|2.7 2.6 2.5 2.4 2.3 2.2|${EPYTHON#python}|" \
+			-e "s|27 26 25 24 23 22|${EPYTHON#python}|" \
 			engine/build.jam || die "sed failed"
 	fi
 }
