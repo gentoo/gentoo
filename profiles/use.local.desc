@@ -745,7 +745,6 @@ app-emulation/x48:readline - Enables support for libreadline
 app-emulation/xe-guest-utilities:xenstore - Use xenstore binaries bundled by Citrix instead of building app-emulation/xen-tools
 app-emulation/xen:efi - Adds efi boot support, requires LDFLAG -melf_x86_64 for amd64
 app-emulation/xen:flask - Enable the Flask XSM module from NSA
-app-emulation/xen:xsm - Enable the Xen Security Modules (XSM)
 app-emulation/xen-tools:api - Build the C libxenapi bindings
 app-emulation/xen-tools:flask - Enable the Flask XSM module from NSA
 app-emulation/xen-tools:hvm - Enable support for hardware based virtualization (VT-x,AMD-v)
