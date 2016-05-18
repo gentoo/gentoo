@@ -2,9 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-PYTHON_COMPAT=(python2_7 python3_{3,4} )
+PYTHON_COMPAT=( python2_7 python3_{3,4,5} )
 
 inherit distutils-r1
 
@@ -18,7 +18,6 @@ KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE=""
 
 RDEPEND="
-	dev-python/pygments[${PYTHON_USEDEP}]
 	>=dev-python/six-1.9.0[${PYTHON_USEDEP}]
 	dev-python/wcwidth[${PYTHON_USEDEP}]
 "
