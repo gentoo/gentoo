@@ -2546,6 +2546,11 @@
       <role>Git</role>
     </member>
     <member>
+      <email>nicolasbock@gentoo.org</email>
+      <name>Nicolas Bock</name>
+      <role>Git</role>
+    </member>
+    <member>
       <email>robbat2@gentoo.org</email>
       <name>Robin Johnson</name>
       <role>Git</role>
