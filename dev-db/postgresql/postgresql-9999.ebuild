@@ -12,7 +12,7 @@ inherit eutils flag-o-matic git-2 linux-info multilib pam prefix \
 KEYWORDS=""
 
 # Fix if needed
-SLOT="9.6"
+SLOT="9.7"
 
 EGIT_REPO_URI="git://git.postgresql.org/git/postgresql.git"
 
