@@ -10847,7 +10847,7 @@ games-strategy/dopewars 1.5.12-r2: Re-Write of the game Drug Wars
 games-strategy/dunelegacy 0.96.3: Updated clone of Westood Studios' Dune2
 games-strategy/endless-sky 0.8.11-r1: Space exploration, trading & combat in the tradition of Terminal Velocity
 games-strategy/freeciv 2.5.3: multiplayer strategy game (Civilization Clone)
-games-strategy/freecol 0.11.5: An open source clone of the game Colonization
+games-strategy/freecol 0.11.5 0.11.6: An open source clone of the game Colonization
 games-strategy/freeorion 0.4.5_pre 0.4.5: A free turn-based space empire and galactic conquest game
 games-strategy/freesynd 0.7.1: A cross-platform reimplementation of engine for the classic Bullfrog game, Syndicate
 games-strategy/galaxyhack 1.74: Multiplayer AI script based strategy game
@@ -12995,7 +12995,7 @@ media-radio/qrq 0.3.1: Yet another CW trainer for Linux/Unix
 media-radio/qsstv 8.2.9 8.2.10 8.2.11 8.2.12: Amateur radio SSTV software
 media-radio/radiotray 0.7.3-r2 9999: Online radio streaming player
 media-radio/svxlink 15.11: Multi Purpose Voice Services System, including Qtel for EchoLink
-media-radio/tlf 1.2.2 1.2.3: Console-mode amateur radio contest logger
+media-radio/tlf 1.2.2 1.2.3 1.2.4.1: Console-mode amateur radio contest logger
 media-radio/tucnak2 2.48: Amateur Radio VHF Contest Logbook
 media-radio/unixcw 3.4.2 3.5.0: A package of programs that fit together to form a morse code tutor program
 media-radio/wspr 2.00-r2 3.01 3.01-r1: Weak Signal Propagation Reporter
