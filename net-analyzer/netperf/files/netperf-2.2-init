@@ -1,4 +1,4 @@
-#!/sbin/runscript
+#!/sbin/openrc-run
 #
 # init.d script for net-analyzer/netperf's netserver
 #
