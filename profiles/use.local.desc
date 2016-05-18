@@ -6044,6 +6044,7 @@ net-misc/cgminer:sp30 - Enable support for Spondoolies SP30
 net-misc/cgminer:spondoolies - Enable support for Spondoolies
 net-misc/chrony:adns - Support for asynchronous DNS
 net-misc/chrony:cmdmon - Support for command and monitoring
+net-misc/chrony:html - Install HTML documentation
 net-misc/chrony:ntp - Support for the Network Time Protocol (NTP)
 net-misc/chrony:phc - Support for the PTP (Precision Time Protocol) Hardware Clock (PHC) interface
 net-misc/chrony:pps - Support for the Linux Pulse Per Second (PPS) interface
