@@ -1,18 +1,18 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
-inherit eutils cmake-utils gnome2-utils vcs-snapshot user games
+EAPI=6
+inherit cmake-utils eutils gnome2-utils user vcs-snapshot
 
 DESCRIPTION="An InfiniMiner/Minecraft inspired game"
 HOMEPAGE="http://minetest.net/"
-SRC_URI="https://github.com/minetest/minetest/tarball/${PV} -> ${P}.tar.gz"
+SRC_URI="https://github.com/${PN}/${PN}/tarball/${PV} -> ${P}.tar.gz"
 
-LICENSE="LGPL-2.1+ CC-BY-SA-3.0"
+LICENSE="LGPL-2.1+ CC-BY-SA-3.0 OFL-1.1 Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 x86"
-IUSE="+curl dedicated leveldb luajit nls redis +server +sound +truetype"
+KEYWORDS="~amd64 ~x86"
+IUSE="+curl dedicated doc +leveldb luajit ncurses nls redis +server +sound spatial +truetype"
 
 RDEPEND="dev-db/sqlite:3
 	sys-libs/zlib
@@ -20,8 +20,9 @@ RDEPEND="dev-db/sqlite:3
 	!dedicated? (
 		app-arch/bzip2
 		>=dev-games/irrlicht-1.8-r2
+		dev-libs/gmp:0
 		media-libs/libpng:0
-		virtual/jpeg
+		virtual/jpeg:0
 		virtual/opengl
 		x11-libs/libX11
 		x11-libs/libXxf86vm
@@ -34,72 +35,55 @@ RDEPEND="dev-db/sqlite:3
 	)
 	leveldb? ( dev-libs/leveldb )
 	luajit? ( dev-lang/luajit:2 )
-	!luajit? ( >=dev-lang/lua-5.1.4[deprecated] )
+	ncurses? ( sys-libs/ncurses:0 )
 	nls? ( virtual/libintl )
-	redis? ( dev-libs/hiredis )"
+	redis? ( dev-libs/hiredis )
+	spatial? ( sci-libs/libspatialindex )"
 DEPEND="${RDEPEND}
 	>=dev-games/irrlicht-1.8-r2
+	doc? ( app-doc/doxygen media-gfx/graphviz )
 	nls? ( sys-devel/gettext )"
 
 pkg_setup() {
-	games_pkg_setup
-
 	if use server || use dedicated ; then
-		enewuser ${PN} -1 -1 /var/lib/${PN} ${GAMES_GROUP}
+		enewgroup ${PN}
+		enewuser ${PN} -1 -1 /var/lib/${PN} ${PN}
 	fi
-}
-
-src_unpack() {
-	vcs-snapshot_src_unpack
 }
 
 src_prepare() {
-	epatch \
-		"${FILESDIR}"/${P}-shared-irrlicht.patch \
-		"${FILESDIR}"/${P}-as-needed.patch \
-		"${FILESDIR}"/${P}-system-lua.patch
-
-	# correct gettext behavior
-	if [[ -n "${LINGUAS+x}" ]] ; then
-		for i in $(cd po ; echo *) ; do
-			if ! has ${i} ${LINGUAS} ; then
-				rm -r po/${i} || die
-			fi
-		done
-	fi
-
-	# jthread is modified
-	# json is modified
-	rm -r src/{lua,sqlite} || die
-
+	eapply_user
 	# set paths
 	sed \
-		-e "s#@BINDIR@#${GAMES_BINDIR}#g" \
-		-e "s#@GROUP@#${GAMES_GROUP}#g" \
+		-e "s#@BINDIR@#/usr/bin#g" \
+		-e "s#@GROUP@#${PN}#g" \
 		"${FILESDIR}"/minetestserver.confd > "${T}"/minetestserver.confd || die
 }
 
 src_configure() {
 	local mycmakeargs=(
-		$(usex dedicated "-DBUILD_SERVER=ON -DBUILD_CLIENT=OFF" "$(cmake-utils_use_build server SERVER) -DBUILD_CLIENT=ON")
-		-DCUSTOM_BINDIR="${GAMES_BINDIR}"
+		-DBUILD_CLIENT=$(usex !dedicated)
+		-DCUSTOM_BINDIR="/usr/bin"
 		-DCUSTOM_DOCDIR="/usr/share/doc/${PF}"
-		-DCUSTOM_LOCALEDIR="/usr/share/locale"
-		-DCUSTOM_SHAREDIR="${GAMES_DATADIR}/${PN}"
-		$(cmake-utils_use_enable curl CURL)
-		$(cmake-utils_use_enable truetype FREETYPE)
-		$(cmake-utils_use_enable nls GETTEXT)
+		-DCUSTOM_LOCALEDIR="/usr/share/${PN}/locale"
+		-DCUSTOM_SHAREDIR="/usr/share/${PN}"
+		-DCUSTOM_EXAMPLE_CONF_DIR="/usr/share/doc/${PF}"
+		-DENABLE_CURL=$(usex curl)
+		-DENABLE_FREETYPE=$(usex truetype)
+		-DENABLE_GETTEXT=$(usex nls)
 		-DENABLE_GLES=0
-		$(cmake-utils_use_enable leveldb LEVELDB)
-		$(cmake-utils_use_enable redis REDIS)
-		$(cmake-utils_use_enable sound SOUND)
-		$(cmake-utils_use !luajit DISABLE_LUAJIT)
+		-DENABLE_LEVELDB=$(usex leveldb)
+		-DENABLE_REDIS=$(usex redis)
+		-DENABLE_SPATIAL=$(usex spatial)
+		-DENABLE_SOUND=$(usex sound)
+		-DENABLE_LUAJIT=$(usex luajit)
+		-DENABLE_CURSES=$(usex ncurses)
 		-DRUN_IN_PLACE=0
-		-DWITH_BUNDLED_LUA=0
-		$(use dedicated && {
-			echo "-DIRRLICHT_SOURCE_DIR=/the/irrlicht/source"
-			echo "-DIRRLICHT_INCLUDE_DIR=/usr/include/irrlicht"
-		})
+	)
+
+	use dedicated && mycmakeargs+=(
+		-DIRRLICHT_SOURCE_DIR=/the/irrlicht/source
+		-DIRRLICHT_INCLUDE_DIR=/usr/include/irrlicht
 	)
 
 	cmake-utils_src_configure
@@ -107,6 +91,10 @@ src_configure() {
 
 src_compile() {
 	cmake-utils_src_compile
+
+	if use doc ; then
+		cmake-utils_src_compile doc
+	fi
 }
 
 src_install() {
@@ -117,16 +105,17 @@ src_install() {
 		newconfd "${T}"/minetestserver.confd minetest-server
 	fi
 
-	prepgamesdirs
+	if use doc ; then
+		cd "${CMAKE_BUILD_DIR}"/doc || die
+		dodoc -r html
+	fi
 }
 
 pkg_preinst() {
-	games_pkg_preinst
 	gnome2_icon_savelist
 }
 
 pkg_postinst() {
-	games_pkg_postinst
 	gnome2_icon_cache_update
 
 	if ! use dedicated ; then

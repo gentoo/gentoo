@@ -113,8 +113,7 @@ src_prepare() {
 	epatch \
 		"${FILESDIR}"/${PN}-7.30.0-prefix.patch \
 		"${FILESDIR}"/${PN}-respect-cflags-3.patch \
-		"${FILESDIR}"/${PN}-fix-gnutls-nettle.patch \
-		"${FILESDIR}"/${P}-libressl.patch
+		"${FILESDIR}"/${PN}-fix-gnutls-nettle.patch
 
 	sed -i '/LD_LIBRARY_PATH=/d' configure.ac || die #382241
 

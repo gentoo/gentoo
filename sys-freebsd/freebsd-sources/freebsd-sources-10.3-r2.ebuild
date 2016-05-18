@@ -13,7 +13,9 @@ LICENSE="BSD zfs? ( CDDL )"
 IUSE="+build-kernel debug dtrace zfs"
 
 # Security Advisory and Errata patches.
-UPSTREAM_PATCHES=( "EN-16:07/ipi.patch"
+UPSTREAM_PATCHES=( "SA-16:18/atkbd.patch"
+	"SA-16:19/sendmsg.patch"
+	"EN-16:07/ipi.patch"
 	"EN-16:08/zfs.patch" )
 
 if [[ ${PV} != *9999* ]]; then
