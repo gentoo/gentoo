@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install preinst prepare setup unpack
+DEPEND=build-kernel? ( dtrace? ( >=sys-freebsd/freebsd-cddl-9.2_rc1 ) >=sys-freebsd/freebsd-usbin-9.1 =sys-freebsd/freebsd-mk-defs-10.2* ) virtual/pmake virtual/pmake
+DESCRIPTION=FreeBSD kernel sources
+EAPI=5
+HOMEPAGE=http://www.freebsd.org/
+IUSE=+build-kernel debug dtrace zfs profile
+KEYWORDS=~amd64-fbsd ~sparc-fbsd ~x86-fbsd
+LICENSE=BSD
+RDEPEND=dtrace? ( >=sys-freebsd/freebsd-cddl-9.2_rc1 ) =sys-freebsd/freebsd-mk-defs-10.2* !sys-freebsd/virtio-kmod !sys-fs/fuse4bsd !<sys-freebsd/freebsd-sources-9.2_beta1
+RESTRICT=strip binchecks
+SLOT=0
+SRC_URI=mirror://freebsd/releases/i386/10.2-RELEASE/src.txz -> freebsd-src-10.2.tar.xz https://security.freebsd.org/patches/SA-16:01/sctp.patch -> freebsd-sources-SA-1601-sctp.patch https://security.freebsd.org/patches/SA-16:03/linux.patch -> freebsd-sources-SA-1603-linux.patch https://security.freebsd.org/patches/SA-16:04/linux.patch -> freebsd-sources-SA-1604-linux.patch https://security.freebsd.org/patches/SA-16:05/tcp.patch -> freebsd-sources-SA-1605-tcp.patch https://security.freebsd.org/patches/SA-16:10/linux.patch -> freebsd-sources-SA-1610-linux.patch https://security.freebsd.org/patches/SA-16:15/sysarch.patch -> freebsd-sources-SA-1615-sysarch.patch https://security.freebsd.org/patches/SA-16:18/atkbd.patch -> freebsd-sources-SA-1618-atkbd.patch https://security.freebsd.org/patches/SA-16:19/sendmsg.patch -> freebsd-sources-SA-1619-sendmsg.patch https://security.freebsd.org/patches/EN-15:19/kqueue.patch -> freebsd-sources-EN-1519-kqueue.patch https://security.freebsd.org/patches/EN-15:20/vm.patch -> freebsd-sources-EN-1520-vm.patch https://security.freebsd.org/patches/EN-16:01/filemon.patch -> freebsd-sources-EN-1601-filemon.patch https://security.freebsd.org/patches/EN-16:02/pf-10.2.patch -> freebsd-sources-EN-1602-pf-10.2.patch https://security.freebsd.org/patches/EN-16:04/hyperv.patch -> freebsd-sources-EN-1604-hyperv.patch https://security.freebsd.org/patches/EN-16:05/hv_netvsc.patch -> freebsd-sources-EN-1605-hv_netvsc.patch https://security.freebsd.org/patches/EN-16:07/ipi.patch -> freebsd-sources-EN-1607-ipi.patch https://security.freebsd.org/patches/EN-16:08/zfs.patch -> freebsd-sources-EN-1608-zfs.patch
+_eclass_exported_funcs=pkg_preinst:- pkg_setup:- src_unpack:freebsd src_prepare:- src_configure:- src_compile:- src_install:-
+_eclasses_=bsdmk	2d20496ff432a0ca089345cf400e5c87	eutils	792f83d5ec9536cb5ccef375469d8bde	flag-o-matic	d270fa247153df66074f795fa42dba3e	freebsd	f8e66e6d6da923be35831f93abf8742b	multilib	d062ae4ba2fc40a19c11de2ad89b6616	portability	bb1a0ed8ea152b957d17339f01d4d7f5	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=3d6f72d9db838ae4c4a36b1501e2b570

@@ -10045,8 +10045,8 @@ games-action/koth 0.8.0: Multiplayer, networked game of little tanks with really
 games-action/lugaru 9999 20151204: 3D arcade with unique fighting system and anthropomorphic characters
 games-action/luola 1.3.2: A 2D multiplayer arcade game resembling V-Wing
 games-action/maelstrom 3.0.6-r2: An asteroids battle game
-games-action/minetest 0.4.10-r1 0.4.10-r2 0.4.13: An InfiniMiner/Minecraft inspired game
-games-action/minetest_game 0.4.10 0.4.13: The main game for the Minetest game engine
+games-action/minetest 0.4.13 0.4.14: An InfiniMiner/Minecraft inspired game
+games-action/minetest_game 0.4.13 0.4.14: The main game for the Minetest game engine
 games-action/moon-buggy 1.0.51: A simple console game, where you drive a car across the moon's surface
 games-action/mutantstorm-demo 1.33: shoot through crazy psychedelic 3D environments
 games-action/nighthawk 2.2: A tribute to Paradroid by Andrew Braybrook
@@ -14574,7 +14574,7 @@ net-misc/connman-gtk 1.0: GTK GUI for Connman
 net-misc/connman-ui 9999: A full-featured GTK based trayicon UI for ConnMan
 net-misc/corkscrew 2.0: a tool for tunneling SSH through HTTP proxies
 net-misc/csync 0.50.0: lightweight file synchronizer utility
-net-misc/curl 7.45.0 7.47.1 7.48.0: A Client that groks URLs
+net-misc/curl 7.45.0 7.47.1 7.49.0: A Client that groks URLs
 net-misc/dahdi 2.10.0.1 2.10.0.1-r1 2.10.1 2.10.2-r2 2.11.1: Kernel modules for Digium compatible hardware (formerly known as Zaptel)
 net-misc/dahdi-tools 2.6.2 2.8.0 2.9.0.1 2.10.0 2.10.1 2.10.2: Userspace tools to configure the kernel modules from net-misc/dahdi
 net-misc/datapipe 1.0-r1: bind a local port and connect it to a remote socket
@@ -17012,7 +17012,7 @@ sys-freebsd/freebsd-pf 8.2 9.1 10.2 10.3: FreeBSD's base system libraries
 sys-freebsd/freebsd-rescue 8.2 9.1 10.2 10.3: FreeBSD's rescue binaries
 sys-freebsd/freebsd-sbin 8.2-r1 9.1 10.2 10.3: FreeBSD sbin utils
 sys-freebsd/freebsd-share 8.2 9.1 10.2 10.3: FreeBSD shared tools/files
-sys-freebsd/freebsd-sources 8.2-r2 9.1-r3 9.1-r9 10.2-r5 10.3-r1: FreeBSD kernel sources
+sys-freebsd/freebsd-sources 8.2-r2 9.1-r3 9.1-r9 10.2-r6 10.3-r2: FreeBSD kernel sources
 sys-freebsd/freebsd-ubin 8.2-r1 9.1-r2 9.1-r3 10.2-r1 10.3: FreeBSD's base system source for /usr/bin
 sys-freebsd/freebsd-usbin 8.2-r2 9.1-r1 10.2-r4 10.3: FreeBSD /usr/sbin tools
 sys-freebsd/ubin-wrappers 0: /usr/bin wrapper scripts for FreeBSD script compatibility
