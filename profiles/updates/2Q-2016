@@ -25,3 +25,4 @@ move dev-perl/yaml dev-perl/YAML
 move app-dicts/myspell-de-alt app-dicts/myspell-de_1901
 move media-gfx/dispcalgui media-gfx/displaycal
 move kde-plasma/kwayland kde-frameworks/kwayland
+move x11-themes/xcursor-neutral x11-themes/neutral-xcursors
