@@ -29,6 +29,6 @@ PATCHES=(
 )
 
 src_install() {
-	dobin xhkeys xhkconf || die
+	dobin xhkeys xhkconf
 	dodoc README VERSION
 }
