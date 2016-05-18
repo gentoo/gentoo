@@ -7179,6 +7179,7 @@ dev-python/feedgenerator 1.6 1.7 1.8: Standalone version of django.utils.feedgen
 dev-python/feedparser 5.1.3-r2 5.2.1: Parse RSS and Atom feeds in Python
 dev-python/fexpect 0.2: Extension for fabric to handle prompts through pexpect
 dev-python/figleaf 0.6.1-r1: Code coverage tool
+dev-python/filemagic 1.6: A Python API for libmagic, the library behind the Unix file command
 dev-python/fixtures 0.3.14-r2 1.2.0 1.3.0 1.3.1-r1 1.4.0: Fixtures, reusable state for writing clean tests and more
 dev-python/flake8 2.0-r1 2.1.0 2.2.5 2.4.1-r1 2.5.0 2.5.1 2.5.4: A wrapper around PyFlakes, pep8 & mccabe
 dev-python/flaky 2.4.0 2.4.1 3.0.1 3.0.3 3.1.0: Plugin for nose or py.test that automatically reruns flaky tests
@@ -13021,7 +13022,7 @@ media-sound/alsa-utils 1.0.29 1.1.0 1.1.1: Advanced Linux Sound Architecture Uti
 media-sound/alsamixer-app 0.1: AlsaMixer.app is a simple mixer dockapp
 media-sound/alsamixergui 0.9.0.1.2-r4: FLTK based amixer Frontend
 media-sound/alsaplayer 0.99.81: A heavily multi-threaded pluggable audio player
-media-sound/amarok 2.8.0-r3 2.8.90-r1: Advanced audio player based on KDE framework
+media-sound/amarok 2.8.0-r3 2.8.90-r2: Advanced audio player based on KDE framework
 media-sound/ams 2.0.1 2.1.1: Alsa Modular Software Synthesizer
 media-sound/amsynth 1.3.2 1.5.1 1.6.4: Virtual analogue synthesizer
 media-sound/apetag 1.12: Command-line ape 2.0 tagger
