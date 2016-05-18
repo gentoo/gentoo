@@ -17,6 +17,9 @@ dev-libs/libpcre pcre16
 # Required by media-gfx/graphviz which is required by kde-apps/kcachegrind
 media-libs/gd fontconfig
 
+# Required by kde-apps/kate[addons]
+dev-libs/libgit2 threads
+
 # Required by kde-apps/ktp-text-ui
 kde-apps/ktp-common-internals otr
 
