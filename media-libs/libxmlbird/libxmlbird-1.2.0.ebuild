@@ -5,7 +5,7 @@ EAPI="5"
 
 PYTHON_COMPAT=( python{2_7,3_3,3_4,3_5} )
 
-inherit python-any-r1 vala toolchain-funcs multilib eutils
+inherit python-any-r1 vala toolchain-funcs multilib eutils multiprocessing
 
 DESCRIPTION="XML parser written in Vala"
 HOMEPAGE="https://birdfont.org/xmlbird.php"
@@ -19,10 +19,12 @@ IUSE=""
 # The test build logic needs work.  Doesn't respect compiler settings.
 RESTRICT="test"
 
+DEPEND="${PYTHON_DEPS}
+	$(python_gen_any_dep 'dev-python/doit[${PYTHON_USEDEP}]')"
+
 src_prepare() {
 	vala_src_prepare
 
-	epatch "${FILESDIR}"/${PN}-1.2.0-verbose.patch
 	epatch "${FILESDIR}"/${PN}-1.2.0-configure-valac.patch
 	epatch "${FILESDIR}"/${PN}-1.2.0-libdir.patch
 
@@ -50,7 +52,7 @@ src_configure() {
 }
 
 src_compile() {
-	v ./build.py
+	v doit run -n $(makeopts_jobs)
 }
 
 src_install() {
