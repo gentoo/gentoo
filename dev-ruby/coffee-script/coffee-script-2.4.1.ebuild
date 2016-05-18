@@ -16,7 +16,7 @@ HOMEPAGE="https://github.com/rails/ruby-coffee-script https://github.com/rails/c
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~arm x86 ~x64-macos"
+KEYWORDS="amd64 ~arm x86 ~amd64-linux ~x64-macos"
 
 IUSE=""
 
