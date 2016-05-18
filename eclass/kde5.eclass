@@ -196,6 +196,11 @@ case ${KDE_AUTODEPS} in
 		RDEPEND+=" >=kde-frameworks/kf-env-4"
 		COMMONDEPEND+=" $(add_qt_dep qtcore)"
 
+		# all packages need breeze/oxygen icons for basic iconset, bug #564838
+		if [[ ${PN} != breeze-icons && ${PN} != oxygen-icons ]]; then
+			RDEPEND+=" || ( $(add_frameworks_dep breeze-icons) kde-frameworks/oxygen-icons:* )"
+		fi
+
 		case ${CATEGORY} in
 			kde-frameworks | \
 			kde-plasma)
