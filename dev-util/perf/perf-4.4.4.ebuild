@@ -76,7 +76,7 @@ pkg_setup() {
 src_unpack() {
 	local paths=(
 		tools/arch tools/build tools/include tools/lib tools/perf tools/scripts
-		include lib "arch/*/lib"
+		include lib "arch/*/include" "arch/*/lib"
 	)
 
 	# We expect the tar implementation to support the -j option (both
