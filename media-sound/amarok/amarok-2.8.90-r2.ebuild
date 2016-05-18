@@ -76,6 +76,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-2.8.0-taglib110.patch"
 	"${FILESDIR}/${P}-mysql-embedded.patch"
 	"${FILESDIR}/${P}-mysqld-rpath.patch"
+	"${FILESDIR}/${P}-scriptconsole.patch"
 )
 
 src_configure() {
