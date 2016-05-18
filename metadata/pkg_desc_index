@@ -1923,7 +1923,7 @@ app-misc/terminal-colors 2.0 2.1 2.2: A tool to display color charts for 8, 16, 
 app-misc/timestamp 1.1: A text filtering pipe that marks each line with a timestamp
 app-misc/tkpasman 2.2b: A useful and reliable personal password manager, written in Tcl/Tk
 app-misc/tmate 2.2.0-r1: Instant terminal sharing
-app-misc/tmux 2.1 2.1-r1 9999: Terminal multiplexer
+app-misc/tmux 2.1 9999: Terminal multiplexer
 app-misc/tmux-mem-cpu-load 2.2.1-r1 9999: CPU, RAM memory, and load monitor for use with tmux
 app-misc/toilet 0.3: The Other Implementations letters. Figlet replacement
 app-misc/tomboy 1.14.1: Desktop note-taking application
