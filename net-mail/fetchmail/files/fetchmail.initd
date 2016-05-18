@@ -1,4 +1,4 @@
-#!/sbin/runscript
+#!/sbin/openrc-run
 
 piddir=${pid_dir:-/var/run/fetchmail}
 pid_file=${piddir}/${RC_SVCNAME}.pid
