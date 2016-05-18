@@ -87,7 +87,8 @@ src_configure() {
 }
 
 src_compile() {
-	emake all docs
+	emake all docs $(usex html '' 'ADOC=true')
+
 }
 
 src_install() {
