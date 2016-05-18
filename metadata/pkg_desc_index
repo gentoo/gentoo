@@ -16817,7 +16817,7 @@ sys-boot/getdvhoff 0.12-r1: Utility for use on LiveCDs to calculate offset of th
 sys-boot/gnu-efi 3.0a-r1 3.0g 3.0i 3.0s 3.0u 3.0.2 3.0.3: Library for build EFI Applications
 sys-boot/grub 0.97-r16 0.97-r17 2.02_beta2-r8 2.02_beta2-r9 2.02_beta3-r1 9999-r1: GNU GRUB boot loader
 sys-boot/grub-static 0.96-r1 0.97 0.97-r6 0.97-r9 0.97-r10 0.97-r12: GNU GRUB Legacy boot loader (static build)
-sys-boot/gummiboot 45 48 9999: Minimalistic UEFI bootloader
+sys-boot/gummiboot 45 48: Minimalistic UEFI bootloader
 sys-boot/lilo 22.8-r2 23.2-r2 24.0-r1 24.1 24.2: Standard Linux boot loader
 sys-boot/makebootfat 1.4: Command line utility able to create bootable USB disks
 sys-boot/mbr 1.1.11: A replacement master boot record for IBM-PC compatible computers
