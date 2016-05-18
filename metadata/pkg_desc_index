@@ -5297,6 +5297,7 @@ dev-perl/Cairo 1.106.0: Perl interface to the cairo library
 dev-perl/Calendar-Simple 1.210.0-r1: Perl extension to create simple calendars
 dev-perl/Canary-Stability 2006: Canary to check perl compatibility for schmorp's modules
 dev-perl/Capture-Tiny 0.300.0 0.360.0: Capture STDOUT and STDERR from Perl, XS or external programs
+dev-perl/Carp-Always 0.130.0: Warns and dies noisily with stack backtraces
 dev-perl/Carp-Assert 0.210.0: Executable comments in carp
 dev-perl/Carp-Assert-More 1.140.0: convenience wrappers around Carp::Assert
 dev-perl/Carp-Clan 6.40.0-r1: Report errors from perspective of caller of a clan of modules
@@ -5807,7 +5808,7 @@ dev-perl/LWP-UserAgent-Cached 0.60.0: LWP::UserAgent with simple caching mechani
 dev-perl/LWP-UserAgent-Determined 1.70.0: A virtual browser that retries errors
 dev-perl/LWPx-ParanoidAgent 1.100.0: Subclass of LWP::UserAgent that protects you from harm
 dev-perl/LaTeX-Driver 0.200.4: Perl encapsulation of invoking the Latex programs
-dev-perl/LaTeX-Encode 0.91.6: Encode characters for LaTeX formatting
+dev-perl/LaTeX-Encode 0.91.6 0.91.6-r1: Encode characters for LaTeX formatting
 dev-perl/LaTeX-Table 1.0.6: Perl extension for the automatic generation of LaTeX tables
 dev-perl/Lab-Measurement 3.410.0 3.500.0 9999: Measurement control and automation with Perl
 dev-perl/Lchown 1.10.0-r1: Use the lchown(2) system call from Perl
@@ -6271,10 +6272,10 @@ dev-perl/Template-Toolkit 2.250.0-r1 2.260.0: The Template Toolkit
 dev-perl/Template-XML 2.170.0-r1: XML plugins for the Template Toolkit
 dev-perl/Term-ANSIScreen 1.500.0-r1: Terminal control using ANSI escape sequences
 dev-perl/Term-Encoding 0.20.0: Detect encoding of the current terminal
-dev-perl/Term-ProgressBar 2.140.0-r1 2.150.0 2.160.0 2.170.0: Perl module for Term-ProgressBar
+dev-perl/Term-ProgressBar 2.150.0 2.170.0: Perl module for Term-ProgressBar
 dev-perl/Term-ProgressBar-Quiet 0.310.0: Provide a progress meter if run interactively
 dev-perl/Term-ProgressBar-Simple 0.30.0: Simple progess bars
-dev-perl/Term-ReadLine-Gnu 1.200.0-r2 1.226.0 1.270.0 1.310.0: GNU Readline XS library wrapper
+dev-perl/Term-ReadLine-Gnu 1.200.0-r2 1.310.0: GNU Readline XS library wrapper
 dev-perl/Term-ReadLine-Perl 1.30.300-r1: Quick implementation of readline utilities
 dev-perl/Term-ReadLine-TTYtter 1.4: Quick implementation of readline utilities for ttytter
 dev-perl/Term-ReadPassword 0.110.0-r1: Term::ReadPassword - Asking the user for a password
