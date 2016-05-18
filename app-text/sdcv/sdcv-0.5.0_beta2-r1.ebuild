@@ -58,6 +58,9 @@ src_compile() {
 }
 
 src_install() {
+	# with USE=nls, but empty intersection of LINGUAS and list of
+	# supported translations, this directory is required, see bug 583386
+	# failure is ok here (e.g. if dir exists)
+	mkdir "${BUILD_DIR}/locale"
 	cmake-utils_src_install
-	dodoc AUTHORS NEWS
 }
