@@ -6,7 +6,7 @@ EAPI="5"
 PYTHON_COMPAT=( python{2_7,3_3,3_4,3_5} )
 PLOCALES="cs de it sv"
 
-inherit python-any-r1 vala l10n toolchain-funcs multilib eutils
+inherit python-any-r1 vala l10n toolchain-funcs multilib eutils multiprocessing
 
 DESCRIPTION="free font editor which lets you create vector graphics and export TTF, EOT and SVG fonts"
 HOMEPAGE="https://birdfont.org/"
@@ -34,13 +34,13 @@ RDEPEND="dev-db/sqlite:3
 	)"
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
+	$(python_gen_any_dep 'dev-python/doit[${PYTHON_USEDEP}]')
 	$(vala_depend)
 	nls? ( sys-devel/gettext )"
 
 src_prepare() {
 	vala_src_prepare
 
-	epatch "${FILESDIR}"/${PN}-2.5.1-verbose.patch
 	epatch "${FILESDIR}"/${PN}-2.15.5-configure-valac.patch
 
 	sed -i \
@@ -75,7 +75,7 @@ src_configure() {
 }
 
 src_compile() {
-	v ./build.py
+	v doit run -n $(makeopts_jobs)
 }
 
 src_install() {
