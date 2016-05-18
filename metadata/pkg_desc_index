@@ -18802,6 +18802,7 @@ x11-themes/mate-icon-theme-faenza 1.8.0 1.10.1: Faenza icon theme, that was adap
 x11-themes/mate-themes 1.8.1 1.10.5-r161 1.10.5-r181: A set of MATE themes, with sets for users with limited or low vision
 x11-themes/mate-themes-meta 1.10: Meta package to facilitate easy use of x11-themes/mate-themes
 x11-themes/murrine-themes 0.98.0: Themes for the Murrine GTK+2 Cairo Engine
+x11-themes/neutral-xcursors 1.20 20150106: A family of smoothed and shadowed cursors that resemble the standard X ones
 x11-themes/nimbus 0.1.7-r1: The default OpenSolaris theme (GTK+ 2.x engine, icon- and metacity theme)
 x11-themes/nitrogen 3.3.3: A window decoration for KDE
 x11-themes/noia 1.0-r1: The Noia icon theme
@@ -18846,7 +18847,6 @@ x11-themes/vdrgraphtft-poetter 0.3.2: GraphTFT theme: Poetter
 x11-themes/verne-backgrounds 15.91.0.1: Fedora official background artwork
 x11-themes/windowmaker-themes 0.1: Collection of Window Maker themes
 x11-themes/wm-icons 0.4.0_pre1-r1 0.4.0: A Large Assortment of Beutiful Themed Icons, Created with FVWM in mind
-x11-themes/xcursor-neutral 1.20: "Neutral_Plus", the standard X.Org mouse cursor with shadows and animations
 x11-themes/xcursor-themes 1.0.4: X.Org cursor themes: whiteglass, redglass and handhelds
 x11-themes/xfce-gant-icon-theme 3.9_p6: Xfce Gant Icon Theme
 x11-themes/xfwm4-themes 4.10.0: Additional themes for the Xfce window manager
