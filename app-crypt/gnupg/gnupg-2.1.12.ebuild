@@ -1,10 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI="5"
 
-inherit eutils autotools flag-o-matic toolchain-funcs
+inherit eutils flag-o-matic toolchain-funcs
 
 DESCRIPTION="The GNU Privacy Guard, a GPL OpenPGP implementation"
 HOMEPAGE="http://www.gnupg.org/"
@@ -13,17 +13,17 @@ SRC_URI="mirror://gnupg/gnupg/${MY_P}.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
-IUSE="bzip2 doc +gnutls ldap nls readline static selinux smartcard tofu tools usb"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
+IUSE="bzip2 doc +gnutls ldap nls readline selinux smartcard tofu tools usb"
 
 COMMON_DEPEND_LIBS="
 	dev-libs/npth
 	>=dev-libs/libassuan-2.4.1
 	>=dev-libs/libgcrypt-1.6.2[threads]
-	>=dev-libs/libgpg-error-1.17
+	>=dev-libs/libgpg-error-1.21
 	>=dev-libs/libksba-1.2.0
 	>=net-misc/curl-7.10
-	gnutls? ( >=net-libs/gnutls-3.0 )
+	gnutls? ( >=net-libs/gnutls-3.0:0= )
 	sys-libs/zlib
 	ldap? ( net-nds/openldap )
 	bzip2? ( app-arch/bzip2 )
@@ -37,41 +37,24 @@ COMMON_DEPEND_BINS="app-crypt/pinentry
 # Existence of executables is checked during configuration.
 DEPEND="${COMMON_DEPEND_LIBS}
 	${COMMON_DEPEND_BINS}
-	static? (
-		>=dev-libs/libassuan-2[static-libs]
-		>=dev-libs/libgcrypt-1.6.2[static-libs]
-		>=dev-libs/libgpg-error-1.17[static-libs]
-		>=dev-libs/libksba-1.0.7[static-libs]
-		dev-libs/npth[static-libs]
-		>=net-misc/curl-7.10[static-libs]
-		sys-libs/zlib[static-libs]
-		bzip2? ( app-arch/bzip2[static-libs] )
-	)
 	nls? ( sys-devel/gettext )
 	doc? ( sys-apps/texinfo )"
 
-RDEPEND="!static? ( ${COMMON_DEPEND_LIBS} )
+RDEPEND="${COMMON_DEPEND_LIBS}
 	${COMMON_DEPEND_BINS}
 	selinux? ( sec-policy/selinux-gpg )
 	nls? ( virtual/libintl )"
 
-REQUIRED_USE="smartcard? ( !static )"
-
 S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
-	epatch "${FILESDIR}/${P}-pkg-config.patch"
+	epatch "${FILESDIR}/${P}-fix-signature-checking.patch" \
+		"${FILESDIR}/${PN}-2.1-fix-gentoo-dash-issue.patch"
 	epatch_user
-	eautoreconf
 }
 
 src_configure() {
 	local myconf=()
-
-	# 'USE=static' support was requested:
-	# gnupg1: bug #29299
-	# gnupg2: bug #159623
-	use static && append-ldflags -static
 
 	if use smartcard; then
 		myconf+=(
@@ -89,7 +72,8 @@ src_configure() {
 	fi
 
 	# glib fails and picks up clang's internal stdint.h causing weird errors
-	[[ ${CC} == clang ]] && export gl_cv_absolute_stdint_h=/usr/include/stdint.h
+	[[ ${CC} == *clang ]] && \
+		export gl_cv_absolute_stdint_h=/usr/include/stdint.h
 
 	econf \
 		--docdir="${EPREFIX}/usr/share/doc/${PF}" \
@@ -105,13 +89,6 @@ src_configure() {
 		$(use_with readline) \
 		$(use_enable tofu) \
 		CC_FOR_BUILD="$(tc-getBUILD_CC)"
-
-		# The pkg-config patch specific to 2.1.10 is causing an eautoreconf 
-		# it shows up as being a developer version and with "unknown" suffix
-		# we remove this explicitly for the 2.1.10 release as it does not contain
-		# unstable code
-		sed -i "s/#define IS_DEVELOPMENT_VERSION 1//" config.h || die
-		sed -i "s/2.1.10-unknown/2.1.10/" config.h || die
 }
 
 src_compile() {
