@@ -22,5 +22,6 @@ DEPEND="
 	$(add_qt_dep qtxml)
 "
 RDEPEND="${DEPEND}
-	!kde-apps/libkipi:4[-minimal(-)]
+	!<kde-apps/libkipi-15.08.3-r1:4
+	!kde-base/legacy-icons
 "
