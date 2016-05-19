@@ -22,5 +22,6 @@ DEPEND="
 	media-gfx/sane-backends
 "
 RDEPEND="${DEPEND}
-	!kde-apps/libksane:4[-minimal(-)]
+	!<kde-apps/libksane-15.08.3-r1:4
+	!kde-base/legacy-icons
 "
