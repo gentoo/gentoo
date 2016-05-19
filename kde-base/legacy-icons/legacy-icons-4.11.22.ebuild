@@ -15,7 +15,8 @@ IUSE=""
 DEPEND=""
 RDEPEND="
 	!<kde-base/systemsettings-4.11.22-r1:4
-	!>=kde-frameworks/oxygen-icons-5.19.0:5
+	!=kde-frameworks/oxygen-icons-5.19.0:5
+	!=kde-frameworks/oxygen-icons-5.20.0:5
 "
 
 S="${WORKDIR}"
