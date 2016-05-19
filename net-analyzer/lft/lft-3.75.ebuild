@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -22,5 +22,5 @@ RDEPEND="
 DOCS=( CHANGELOG README TODO )
 
 src_prepare() {
-	sed -i Makefile.in -e '/[Ss]trip/d' || die
+	sed -i Makefile.in -e 's:strip:true:g' || die
 }
