@@ -30,6 +30,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Göktürk Yüksek <gokturk@gentoo.org> (23 May 2016)
+# Replaced by app-admin/lastpass-binary-component.
+# Masked for removal in 30 days.
+app-admin/lastpass
+
 # Luca Barbato <lu_zero@gentoo.org> (23 May 2016)
 # Masked for testing, vlc-2.2 configure rejects it.
 =media-video/libav-12*
