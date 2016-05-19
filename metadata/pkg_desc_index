@@ -11347,7 +11347,7 @@ kde-apps/kurifilter-plugins 4.14.3 15.08.3 15.12.3 16.04.1: KDE: Plugins to mana
 kde-apps/kuser 4.14.3 15.08.3 15.12.3 16.04.1: KDE application that helps you manage system users
 kde-apps/kwalletd 4.14.3-r2 15.08.3 15.12.3 16.04.1: KDE Password Server
 kde-apps/kwalletd-pam 5.5.5: KWallet PAM module to not enter password again
-kde-apps/kwalletmanager 4.14.3 15.04.3 15.12.3 16.04.1: KDE Wallet management tool
+kde-apps/kwalletmanager 4.14.3 15.04.3 15.04.3-r1 15.12.3 16.04.1: KDE Wallet management tool
 kde-apps/kwordquiz 4.14.3 15.12.3-r1 16.04.1: A powerful flashcard and vocabulary learning program
 kde-apps/kwrite 4.14.3 15.12.3 16.04.1: KDE simple text editor
 kde-apps/libkcddb 4.14.3 15.08.3 15.12.3 16.04.1: KDE library for CDDB
@@ -11360,13 +11360,13 @@ kde-apps/libkeduvocdocument 15.12.3 16.04.1: Library for reading/writing KVTML
 kde-apps/libkexiv2 4.14.3 15.08.3 15.12.3 16.04.1: KDE Image Plugin Interface: an exiv2 library wrapper
 kde-apps/libkface 4.4.0 4.12.0 15.08.3 15.12.3 16.04.1: Qt/C++ wrapper around LibFace to perform face recognition and detection
 kde-apps/libkgeomap 4.4.0 4.12.0 15.08.3 15.12.3 16.04.1: Wrapper library for world map components as marble, openstreetmap and googlemap
-kde-apps/libkipi 4.14.3 15.08.3 15.12.3 16.04.1: A library for image plugins accross KDE applications
+kde-apps/libkipi 4.14.3 15.08.3 15.08.3-r1 15.12.3 16.04.1: A library for image plugins accross KDE applications
 kde-apps/libkleo 4.4.2015.06 4.4.2016.01: KDE library for encryption handling
 kde-apps/libkmahjongg 4.14.3 15.12.3 16.04.1: Mahjongg library based on Qt/KDE Frameworks
 kde-apps/libkomparediff2 4.14.3 15.12.3 16.04.1: KDE library to compare files and strings
 kde-apps/libkonq 4.14.3 15.08.3 15.12.3 16.04.1: The embeddable part of konqueror
 kde-apps/libkpgp 4.4.2015.06 4.4.2016.01: KDE pgp abstraction library
-kde-apps/libksane 4.14.3 15.08.3 15.12.3 16.04.1: SANE Library interface based on KDE Frameworks
+kde-apps/libksane 4.14.3 15.08.3 15.08.3-r1 15.12.3 16.04.1: SANE Library interface based on KDE Frameworks
 kde-apps/lokalize 4.14.3 15.12.3 16.04.1: KDE Applications 5 translation tool
 kde-apps/lskat 4.14.3 15.08.3 15.12.3 16.04.1: Skat game by KDE
 kde-apps/marble 4.14.3 15.12.3 16.04.1: Generic geographical map widget
@@ -11433,7 +11433,7 @@ kde-base/ksysguard 4.11.19 4.11.22: KSysguard is a network enabled task manager 
 kde-base/ksystraycmd 4.11.19 4.11.22: Ksystraycmd embeds applications given as argument into the system tray
 kde-base/kwin 4.11.19 4.11.22: KDE window manager
 kde-base/kwrited 4.11.19 4.11.22: KDE daemon listening for wall and write messages
-kde-base/legacy-icons 4.11.22: KDE legacy icons
+kde-base/legacy-icons 4.11.22 4.11.22-r1: KDE legacy icons
 kde-base/libkgreeter 4.11.19 4.11.22: Conversation widgets for KDM greeter
 kde-base/libkworkspace 4.11.19 4.11.22: A library for KDE desktop applications
 kde-base/liboxygenstyle 4.11.19 4.11.22: Library to support the Oxygen style in KDE
