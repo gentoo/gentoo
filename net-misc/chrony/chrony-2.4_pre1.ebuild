@@ -11,7 +11,7 @@ SRC_URI="http://download.tuxfamily.org/${PN}/${P/_/-}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~hppa ~ppc64"
 IUSE="caps +cmdmon html ipv6 libedit +ntp +phc +pps readline +refclock +rtc selinux +adns"
 REQUIRED_USE="
 	?? ( libedit readline )

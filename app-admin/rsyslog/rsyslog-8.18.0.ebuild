@@ -46,7 +46,7 @@ else
 		unset _tmp_last_index
 		unset _tmp_suffix
 	else
-		KEYWORDS="~arm ~amd64 ~x86"
+		KEYWORDS="~amd64 ~arm ~hppa ~x86"
 	fi
 
 	SRC_URI="

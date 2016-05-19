@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=5
 inherit eutils
 
 DESCRIPTION="GNU utility to convert program --help output to a man page"
@@ -20,9 +20,17 @@ DEPEND=${RDEPEND}
 
 DOCS="debian/changelog NEWS README THANKS" #385753
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.46.1-linguas.patch
+)
+
 src_prepare() {
-	epatch \
-		"${FILESDIR}"/${PN}-1.46.1-linguas.patch
+	if [[ ${CHOST} == *-darwin* ]] ; then
+		sed -i \
+			-e 's/-shared/-bundle/' \
+			Makefile.in || die
+	fi
+	epatch "${PATCHES[@]}"
 }
 
 src_configure() {
