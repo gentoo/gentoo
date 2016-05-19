@@ -2300,7 +2300,7 @@ app-text/htmlinc 1.0_beta1 1.0_beta1-r2: HTML Include System by Ulli Meybohm
 app-text/htmlrecode 1.3.1: Recodes HTML file using a new character set
 app-text/htmltidy 20090325-r1: Tidy the layout and correct errors in HTML and XML documents
 app-text/htp 1.16-r1: An HTML preprocessor
-app-text/hunspell 1.3.3: Hunspell spell checker - an improved replacement for myspell in OOo
+app-text/hunspell 1.3.3 1.3.4 1.4.1: Hunspell spell checker - an improved replacement for myspell in OOo
 app-text/hyperestraier 1.4.13: a full-text search system for communities
 app-text/info2html 2.0: Converts GNU .info files to HTML
 app-text/iso-codes 3.61 3.63 3.64 3.65 3.67: ISO language, territory, currency, script codes and their translations
