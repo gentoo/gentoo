@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -28,7 +28,8 @@ DEPEND="${RDEPEND}
 	dev-util/cmake"
 
 python_prepare_all() {
-	sed -i -e 's/-flto$/-flto -fPIC/' ffi/Makefile.linux || die
+	sed -i -e 's/-flto$/-flto -fPIC/' \
+		-e 's/-static-libstdc++ //' ffi/Makefile.linux || die
 
 	# disable test using installed instance to read version info
 	sed -e 's:test_version:_&:' -i llvmlite/tests/test_binding.py || die
