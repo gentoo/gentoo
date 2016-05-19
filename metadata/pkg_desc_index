@@ -9665,8 +9665,11 @@ dev-util/diffstat 1.60 1.61: Display a histogram of diff changes
 dev-util/diffuse 0.4.6 0.4.7-r1 0.4.8: A graphical tool to compare and merge text files
 dev-util/dirdiff 2.1-r2: A tool for differing and merging directories
 dev-util/dissembler 0.9: polymorphs bytecode to a printable ASCII string
+dev-util/distro-info 0.14: Provides information about the Debian distributions' releases
+dev-util/distro-info-data 0.29: Information about the Debian distributions' releases (data files)
 dev-util/dmake 4.12.2: Improved make
 dev-util/dogtail 0.9.0-r2 0.9.9: GUI test tool and automation framework using accessibility framework
+dev-util/dput-ng 1.10: Next generation Debian package upload tool
 dev-util/dropwatch 1.4-r1: A utility to interface to the kernel to monitor for dropped network packets
 dev-util/duma 2.5.13 2.5.15-r1: DUMA (Detect Unintended Memory Access) is a memory debugging library
 dev-util/dwarves 1.10_p20140618 9999: pahole (Poke-a-Hole) and other DWARF2 utilities
