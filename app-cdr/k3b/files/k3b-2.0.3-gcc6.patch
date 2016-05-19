@@ -1,0 +1,98 @@
+From da6373a3e1ae9199ee50e326fe296c03b50625ae Mon Sep 17 00:00:00 2001
+From: "P. Levine" <nsane457@gmail.com>
+Date: Sat, 14 May 2016 18:57:24 +0200
+Subject: [PATCH] Fix narrowing conversions from 'int' to 'const char' inside {
+ }.
+
+Please provide a proper git patch including author information next time ...
+
+BUGS: 363078
+FIXED-IN: 2.0.4
+---
+ libk3b/projects/k3bcdrdaowriter.cpp             |  2 +-
+ libk3b/tools/k3bwavefilewriter.cpp              | 22 +++++++++++-----------
+ plugins/encoder/external/k3bexternalencoder.cpp | 22 +++++++++++-----------
+ 3 files changed, 23 insertions(+), 23 deletions(-)
+
+diff --git a/libk3b/projects/k3bcdrdaowriter.cpp b/libk3b/projects/k3bcdrdaowriter.cpp
+index 4eebdf8..bca1407 100644
+--- a/libk3b/projects/k3bcdrdaowriter.cpp
++++ b/libk3b/projects/k3bcdrdaowriter.cpp
+@@ -908,7 +908,7 @@ void K3b::CdrdaoWriter::parseCdrdaoWrote( const QString& line )
+ 
+ void K3b::CdrdaoWriter::parseCdrdaoMessage()
+ {
+-    static const char msgSync[] = { 0xff, 0x00, 0xff, 0x00 };
++    static const char msgSync[] = { (char)0xff, (char)0x00, (char)0xff, (char)0x00 };
+     unsigned int avail = m_comSock->bytesAvailable();
+     unsigned int msgs = avail / ( sizeof(msgSync)+d->progressMsgSize );
+     unsigned int count = 0;
+diff --git a/libk3b/tools/k3bwavefilewriter.cpp b/libk3b/tools/k3bwavefilewriter.cpp
+index c51781f..6772f6c 100644
+--- a/libk3b/tools/k3bwavefilewriter.cpp
++++ b/libk3b/tools/k3bwavefilewriter.cpp
+@@ -111,17 +111,17 @@ void K3b::WaveFileWriter::writeEmptyHeader()
+ {
+     static const char riffHeader[] =
+         {
+-            0x52, 0x49, 0x46, 0x46, // 0  "RIFF"
+-            0x00, 0x00, 0x00, 0x00, // 4  wavSize
+-            0x57, 0x41, 0x56, 0x45, // 8  "WAVE"
+-            0x66, 0x6d, 0x74, 0x20, // 12 "fmt "
+-            0x10, 0x00, 0x00, 0x00, // 16
+-            0x01, 0x00, 0x02, 0x00, // 20
+-            0x44, 0xac, 0x00, 0x00, // 24
+-            0x10, 0xb1, 0x02, 0x00, // 28
+-            0x04, 0x00, 0x10, 0x00, // 32
+-            0x64, 0x61, 0x74, 0x61, // 36 "data"
+-            0x00, 0x00, 0x00, 0x00  // 40 byteCount
++            (char)0x52, (char)0x49, (char)0x46, (char)0x46, // 0  "RIFF"
++            (char)0x00, (char)0x00, (char)0x00, (char)0x00, // 4  wavSize
++            (char)0x57, (char)0x41, (char)0x56, (char)0x45, // 8  "WAVE"
++            (char)0x66, (char)0x6d, (char)0x74, (char)0x20, // 12 "fmt "
++            (char)0x10, (char)0x00, (char)0x00, (char)0x00, // 16
++            (char)0x01, (char)0x00, (char)0x02, (char)0x00, // 20
++            (char)0x44, (char)0xac, (char)0x00, (char)0x00, // 24
++            (char)0x10, (char)0xb1, (char)0x02, (char)0x00, // 28
++            (char)0x04, (char)0x00, (char)0x10, (char)0x00, // 32
++            (char)0x64, (char)0x61, (char)0x74, (char)0x61, // 36 "data"
++            (char)0x00, (char)0x00, (char)0x00, (char)0x00  // 40 byteCount
+         };
+ 
+     m_outputStream.writeRawData( riffHeader, 44 );
+diff --git a/plugins/encoder/external/k3bexternalencoder.cpp b/plugins/encoder/external/k3bexternalencoder.cpp
+index 388d181..d365905 100644
+--- a/plugins/encoder/external/k3bexternalencoder.cpp
++++ b/plugins/encoder/external/k3bexternalencoder.cpp
+@@ -39,17 +39,17 @@ Q_DECLARE_METATYPE( QProcess::ExitStatus )
+ 
+ static const char s_riffHeader[] =
+ {
+-    0x52, 0x49, 0x46, 0x46, // 0  "RIFF"
+-    0x00, 0x00, 0x00, 0x00, // 4  wavSize
+-    0x57, 0x41, 0x56, 0x45, // 8  "WAVE"
+-    0x66, 0x6d, 0x74, 0x20, // 12 "fmt "
+-    0x10, 0x00, 0x00, 0x00, // 16
+-    0x01, 0x00, 0x02, 0x00, // 20
+-    0x44, 0xac, 0x00, 0x00, // 24
+-    0x10, 0xb1, 0x02, 0x00, // 28
+-    0x04, 0x00, 0x10, 0x00, // 32
+-    0x64, 0x61, 0x74, 0x61, // 36 "data"
+-    0x00, 0x00, 0x00, 0x00  // 40 byteCount
++    (char)0x52, (char)0x49, (char)0x46, (char)0x46, // 0  "RIFF"
++    (char)0x00, (char)0x00, (char)0x00, (char)0x00, // 4  wavSize
++    (char)0x57, (char)0x41, (char)0x56, (char)0x45, // 8  "WAVE"
++    (char)0x66, (char)0x6d, (char)0x74, (char)0x20, // 12 "fmt "
++    (char)0x10, (char)0x00, (char)0x00, (char)0x00, // 16
++    (char)0x01, (char)0x00, (char)0x02, (char)0x00, // 20
++    (char)0x44, (char)0xac, (char)0x00, (char)0x00, // 24
++    (char)0x10, (char)0xb1, (char)0x02, (char)0x00, // 28
++    (char)0x04, (char)0x00, (char)0x10, (char)0x00, // 32
++    (char)0x64, (char)0x61, (char)0x74, (char)0x61, // 36 "data"
++    (char)0x00, (char)0x00, (char)0x00, (char)0x00  // 40 byteCount
+ };
+ 
+ 
+-- 
+2.8.2
+
