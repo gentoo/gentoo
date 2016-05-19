@@ -17193,7 +17193,7 @@ sys-kernel/cryptodev 1.7: device that allows access to Linux kernel cryptographi
 sys-kernel/dracut 034-r4 040-r3 041-r3 043-r2 044: Generic initramfs generation tool
 sys-kernel/genkernel 3.4.45.1 3.4.48 3.4.49.2 3.4.50 3.4.51.4 3.4.52.2 3.4.52.3 3.4.52.4 3.4.52.4-r1 3.5.0.0 3.5.0.1 3.5.0.2 9999: Gentoo automatic kernel building scripts
 sys-kernel/genkernel-next 35 55 60 63 64: Gentoo automatic kernel building scripts, reloaded
-sys-kernel/gentoo-sources 3.4.110 3.4.111 3.4.112 3.4.9999 3.10.95 3.10.101 3.12.52-r1 3.12.57 3.12.58 3.12.59 3.12.9999 3.14.58-r1 3.14.69 3.18.25-r1 3.18.33 4.1.15-r1 4.1.24 4.4.6 4.4.7 4.4.8 4.4.9 4.4.10 4.5.0-r1 4.5.1 4.5.2 4.5.3 4.5.4 4.6.0: Full sources including the Gentoo patchset for the 4.6 kernel tree
+sys-kernel/gentoo-sources 3.4.110 3.4.111 3.4.112 3.4.9999 3.10.95 3.10.101 3.12.52-r1 3.12.57 3.12.58 3.12.59 3.12.9999 3.14.58-r1 3.14.69 3.14.70 3.18.25-r1 3.18.33 4.1.15-r1 4.1.24 4.4.6 4.4.7 4.4.8 4.4.9 4.4.10 4.5.0-r1 4.5.1 4.5.2 4.5.3 4.5.4 4.6.0: Full sources including the Gentoo patchset for the 4.6 kernel tree
 sys-kernel/git-sources 4.6_rc1 4.6_rc2 4.6_rc3 4.6_rc4 4.6_rc5 4.6_rc6 4.6_rc7: The very latest -git version of the Linux kernel
 sys-kernel/hardened-sources 4.3.3-r4 4.4.2 4.4.8-r1 4.5.3-r1 4.5.4 4.5.4-r1 4.5.4-r2: Hardened kernel sources (kernel series 4.5)
 sys-kernel/kccmp 0.3: A simple tool for comparing two linux kernel .config files
@@ -17771,7 +17771,7 @@ www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
 www-client/netsurf 3.4 3.5: a free, open source web browser
 www-client/opera 12.16_p1860-r1 37.0.2178.32 37.0.2178.43: A fast and secure web browser
 www-client/opera-beta 37.0.2178.31 38.0.2220.11 38.0.2220.12: A fast and secure web browser
-www-client/opera-developer 38.0.2205.0 38.0.2213.0 39.0.2226.0: A fast and secure web browser
+www-client/opera-developer 39.0.2226.0 39.0.2234.0: A fast and secure web browser
 www-client/otter 0.9.09 0.9.10 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
 www-client/phantomjs 1.9.8 2.0.0 2.0.0-r1: A headless WebKit scriptable with a JavaScript API
 www-client/pybugz 0.11.1 0.12.1 9999: Command line interface to (Gentoo) Bugzilla
