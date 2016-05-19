@@ -2,11 +2,11 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>cynede@gentoo.org</email>
-	</maintainer>
-	<maintainer type="person">
 		<email>elvis@magic.io</email>
 		<name>Elvis Pranskevichus</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>cynede@gentoo.org</email>
 	</maintainer>
 	<maintainer type="project">
 		<email>proxy-maint@gentoo.org</email>
