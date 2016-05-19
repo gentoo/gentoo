@@ -6281,14 +6281,14 @@ dev-perl/Term-ReadLine-TTYtter 1.4: Quick implementation of readline utilities f
 dev-perl/Term-ReadPassword 0.110.0-r1: Term::ReadPassword - Asking the user for a password
 dev-perl/Term-Screen 1.30.0-r1 1.50.0: A simple Term::Cap based screen positioning module
 dev-perl/Term-ScreenColor 1.200.0-r1: A Term::Screen based screen positioning and coloring module
-dev-perl/Term-Shell 0.30.0-r1 0.90: A simple command-line shell framework
+dev-perl/Term-Shell 0.90: A simple command-line shell framework
 dev-perl/Term-ShellUI 0.920.0-r1: A fully-featured shell-like command line environment
 dev-perl/TermReadKey 2.300.200-r1 2.330.0: Change terminal modes, and perform non-blocking reads
 dev-perl/Test-Assert 0.50.400-r1: Assertion methods for those who like JUnit
 dev-perl/Test-Base 0.600.0-r1 0.880.0: A Data Driven Testing Framework
 dev-perl/Test-CPAN-Meta 0.250.0: Validate your CPAN META.yml file
-dev-perl/Test-CheckDeps 0.2.0 0.10.0: Check for presence of dependencies
-dev-perl/Test-Class 0.390.0-r1 0.480.0 0.500.0: Easily create test classes in an xUnit/JUnit style
+dev-perl/Test-CheckDeps 0.10.0: Check for presence of dependencies
+dev-perl/Test-Class 0.390.0-r1 0.500.0: Easily create test classes in an xUnit/JUnit style
 dev-perl/Test-ClassAPI 1.60.0-r1: Provides basic first-pass API testing for large class trees
 dev-perl/Test-CleanNamespaces 0.180.0: Check for uncleaned imports
 dev-perl/Test-Command 0.80.0-r1 0.110.0: Test routines for external commands
