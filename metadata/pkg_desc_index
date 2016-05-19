@@ -16566,6 +16566,7 @@ sys-apps/memtest86+ 2.01 4.00 4.20-r1 4.20-r2 5.01-r1: Memory tester based on me
 sys-apps/memtester 4.2.2 4.3.0: userspace utility for testing the memory subsystem for faults
 sys-apps/microcode-ctl 1.23 1.27 1.28 1.28-r1: Intel processor microcode update utility
 sys-apps/microcode-data 20140430 20140624 20140913 20150121 20150121-r1 20151106: Intel IA32 microcode update data
+sys-apps/miller 4.0.0: A tool like sed, awk, cut, join, and sort for name-indexed data (CSV, JSON, ..)
 sys-apps/minised 1.13 1.14: a smaller, cheaper, faster SED implementation
 sys-apps/miscfiles 1.4.2-r1 1.5 1.5-r1: Miscellaneous files
 sys-apps/mlocate 0.26-r1: Merging locate is an utility to index and quickly search for files
