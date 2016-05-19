@@ -360,7 +360,7 @@ case ${KDE_HANDBOOK} in
 	optional)
 		case ${PN} in
 			kcontrol | kdesu | knetattach)
-				_IUSE+=" handbook"
+				IUSE+=" handbook"
 				;;
 			*)
 				IUSE+=" +handbook"
