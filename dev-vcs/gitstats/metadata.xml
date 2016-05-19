@@ -2,7 +2,7 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>gokturk@binghamton.edu</email>
+		<email>gokturk@gentoo.org</email>
 		<name>Göktürk Yüksek</name>
 	</maintainer>
 	<maintainer type="person">
@@ -12,10 +12,6 @@
 	<maintainer type="person">
 		<email>NP-Hardass@gentoo.org</email>
 		<name>NP-Hardass</name>
-	</maintainer>
-	<maintainer type="project">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Proxy Maintainers</name>
 	</maintainer>
   <upstream>
     <remote-id type="sourceforge">gitstats</remote-id>
