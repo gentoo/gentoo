@@ -38,5 +38,6 @@ DEPEND="
 	$(add_qt_dep qtxml)
 "
 RDEPEND="${DEPEND}
-	!kde-apps/kwalletmanager:4[-minimal(-)]
+	!<kde-apps/kwalletmanager-15.04.3-r1:4
+	!kde-base/legacy-icons
 "
