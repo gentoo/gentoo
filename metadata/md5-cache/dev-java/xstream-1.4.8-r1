@@ -4,11 +4,11 @@ DESCRIPTION=A text-processing Java API that serialize objects to XML and back ag
 EAPI=5
 HOMEPAGE=http://x-stream.github.io
 IUSE=elibc_FreeBSD doc source elibc_FreeBSD
-KEYWORDS=~amd64 ~x86
+KEYWORDS=amd64 x86
 LICENSE=BSD
 RDEPEND=dev-java/kxml:2 dev-java/xom:0 dev-java/xpp3:0 dev-java/cglib:3 dev-java/dom4j:1 dev-java/jdom:2 dev-java/jdom:1.0 dev-java/joda-time:0 dev-java/jettison:0 >=virtual/jre-1.8 >=dev-java/java-config-2.2.0-r3 source? ( app-arch/zip )
 SLOT=0
 SRC_URI=http://central.maven.org/maven2/com/thoughtworks/xstream/xstream/1.4.8/xstream-1.4.8-sources.jar
 _eclass_exported_funcs=pkg_preinst:java-pkg-2 pkg_setup:java-pkg-2 src_prepare:java-pkg-2 src_compile:java-pkg-simple src_install:java-pkg-simple
 _eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	java-pkg-2	b02dc1e46b3648e467b5fbdf7857cf28	java-pkg-simple	bdf24e52707f01512ffea6d3aa05425b	java-utils-2	9a25f292ff66f8c2c00100ac0b15c54f	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=ff11e3a1dd6c44e04e192f9ed08268c9
+_md5_=c7410cb1d84de837d6d806ff60d8413d
