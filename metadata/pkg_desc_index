@@ -14646,7 +14646,7 @@ net-misc/httptunnel 3.3-r2: httptunnel can create IP tunnels through firewalls/p
 net-misc/httptype 1.3.9-r1: Returns the http host software of a website
 net-misc/htun 0.9.6: Project to tunnel IP traffic over HTTP
 net-misc/hylafaxplus 5.5.4-r1 5.5.5: Enterprise client-server fax package for class 1 and 2 fax modems
-net-misc/i2pd 2.5.0-r4 2.5.1-r3 2.6.0-r1 2.6.0-r2 2.6.0-r3: A C++ daemon for accessing the I2P anonymous network
+net-misc/i2pd 2.5.0-r4 2.5.1-r3 2.6.0-r1 2.6.0-r2 2.6.0-r3 2.7.0: A C++ daemon for accessing the I2P anonymous network
 net-misc/iaxmodem 1.2.0-r1 1.3.0-r1: Software modem that uses an IAX channel instead of a traditional phone line
 net-misc/icaclient 13.3.0.344519 13.3.0.344519-r1: ICA Client for Citrix Presentation servers
 net-misc/icecast 2.4.2 2.4.3: An opensource alternative to shoutcast that supports mp3, ogg (vorbis/theora) and aac streaming
