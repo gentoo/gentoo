@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst prepare test
+DEPEND=app-arch/bzip2 dev-libs/libxml2:2 sys-libs/zlib virtual/libiconv clucene? ( >=dev-cpp/clucene-0.9.21[-debug] ) dbus? ( sys-apps/dbus qt4? ( dev-qt/qtdbus:4 ) ) exif? ( media-gfx/exiv2:= ) fam? ( virtual/fam ) ffmpeg? ( libav? ( media-video/libav:0= ) !libav? ( media-video/ffmpeg:0= ) ) log? ( >=dev-libs/log4cxx-0.10.0 ) qt4? ( dev-qt/qtcore:4 dev-qt/qtgui:4 ) test? ( dev-util/cppunit ) sys-devel/make >=dev-util/cmake-2.8.12
+DESCRIPTION=Fast crawling desktop search engine with Qt4 GUI
+EAPI=6
+HOMEPAGE=https://projects.kde.org/projects/kdesupport/strigi/strigi
+IUSE=clucene +dbus debug exif fam ffmpeg +inotify libav log +qt4 test
+KEYWORDS=~amd64 ~arm ~ppc ~ppc64 ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux
+LICENSE=GPL-2
+RDEPEND=app-arch/bzip2 dev-libs/libxml2:2 sys-libs/zlib virtual/libiconv clucene? ( >=dev-cpp/clucene-0.9.21[-debug] ) dbus? ( sys-apps/dbus qt4? ( dev-qt/qtdbus:4 ) ) exif? ( media-gfx/exiv2:= ) fam? ( virtual/fam ) ffmpeg? ( libav? ( media-video/libav:0= ) !libav? ( media-video/ffmpeg:0= ) ) log? ( >=dev-libs/log4cxx-0.10.0 ) qt4? ( dev-qt/qtcore:4 dev-qt/qtgui:4 )
+SLOT=0
+SRC_URI=http://www.vandenoever.info/software/strigi/strigi-0.7.8.tar.bz2
+_eclass_exported_funcs=pkg_postinst:- src_prepare:cmake-utils src_configure:- src_compile:cmake-utils src_test:cmake-utils src_install:cmake-utils
+_eclasses_=cmake-utils	d6c1714cc58fd2168bf150f2a01f3801	eutils	792f83d5ec9536cb5ccef375469d8bde	flag-o-matic	d270fa247153df66074f795fa42dba3e	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=8e0eab3742e2c5d2b875543ada824b4d

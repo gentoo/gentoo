@@ -1908,7 +1908,7 @@ app-misc/specto 0.4.1-r1: watch configurable events and trigger notifications
 app-misc/sphinx 0.9.9 2.0.10 2.1.8 2.1.9 2.2.10: Full-text search engine with support for MySQL and PostgreSQL
 app-misc/splitvt 1.6.6-r2: Splitting terminals into two shells
 app-misc/srm 1.2.11-r2 1.2.15: A command-line compatible rm which destroys file contents before unlinking
-app-misc/strigi 0.7.8-r1: Fast crawling desktop search engine with Qt4 GUI
+app-misc/strigi 0.7.8-r1 0.7.8-r2: Fast crawling desktop search engine with Qt4 GUI
 app-misc/subsurface 3.1.1 4.2 9999: An open source dive log program
 app-misc/supercat 0.5.5-r1: A text file colorizer using powerful regular expressions
 app-misc/symlinks 1.4 1.4-r2: Scans for and fixes broken or messy symlinks
