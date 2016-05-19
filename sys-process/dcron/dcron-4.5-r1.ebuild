@@ -39,8 +39,8 @@ src_install() {
 	doins extra/prune-cronstamps
 	dodoc extra/run-cron extra/root.crontab
 
-	newinitd "${FILESDIR}"/dcron.init-4.5 dcron
-	newconfd "${FILESDIR}"/dcron.confd-4.4 dcron
+	newinitd "${FILESDIR}"/dcron.init dcron
+	newconfd "${FILESDIR}"/dcron.confd dcron
 	systemd_dounit "${FILESDIR}"/dcron.service
 
 	insinto /etc/logrotate.d
