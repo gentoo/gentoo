@@ -9384,7 +9384,7 @@ dev-tex/bibtexu 3.71_p20120701 3.71_p20130530 3.71_p20140525 3.71_p20150521: 8-b
 dev-tex/catdvi 0.14-r1: DVI to plain text translator
 dev-tex/cdcover 1.3b: LaTeX package used to create CD case covers
 dev-tex/chktex 1.7.1 1.7.2 1.7.3 1.7.4 1.7.5: Checks latex source for common mistakes
-dev-tex/circuit_macros 8.3.2: M4 Macros for Electric circuit diagrams in TeX or LaTeX
+dev-tex/circuit_macros 8.3.2 8.4: M4 Macros for Electric circuit diagrams in TeX or LaTeX
 dev-tex/cjk-latex 4.8.3-r1 4.8.4: A LaTeX 2e macro package which enables the use of CJK scripts in various encodings
 dev-tex/cpp2latex 2.3-r1: A program to convert C++ code to LaTeX source
 dev-tex/crosstex 0.6: CrossTeX - object oriented BibTeX replacement
