@@ -30,6 +30,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Lars Wendler <polynomial-c@gentoo.org> (19 May 2016)
+# Masked until all reverse dependencies have been fixed.
+# See tracker bug https://bugs.gentoo.org/583478
+>=app-text/hunspell-1.4.0
+
 # Joerg Bornkessel <hd_brummy@gentoo.org> (16 May 2016)
 # Masked for removal. Dead on upstream
 # wrt bug 185947
