@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -7,7 +7,7 @@ inherit eutils autotools
 DESCRIPTION="Library for overlaying text in X-Windows X-On-Screen-Display plus binary for sending text from CLI"
 HOMEPAGE="https://sourceforge.net/projects/libxosd/"
 SRC_URI="mirror://debian/pool/main/x/xosd/${PN}_${PV}.orig.tar.gz
-	mirror://debian/pool/main/x/xosd/${PN}_${PV}-1.diff.gz
+	https://dev.gentoo.org/~jer/${PN}_${PV}-1.diff.gz
 	http://digilander.libero.it/dgp85/gentoo/${PN}-gentoo-m4-1.tar.bz2"
 
 LICENSE="GPL-2"
