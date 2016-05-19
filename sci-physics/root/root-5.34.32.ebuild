@@ -340,6 +340,10 @@ src_configure() {
 }
 
 src_compile() {
+	# The build system does not handle the dependency of bin/rmkdepend correctly,
+	# preventing it to be called in parallel.  Build bin/rmkdepend explicitly
+	# first to circumvent the problem.
+	emake bin/rmkdepend
 	emake \
 		OPT="${CXXFLAGS}" \
 		F77OPT="${FFLAGS}" \
