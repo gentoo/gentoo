@@ -16848,7 +16848,7 @@ sys-boot/silo 1.4.14_p20100228 1.4.14_p20120226 1.4.14_p20120819: SPARC/UltraSPA
 sys-boot/syslinux 3.86 4.07 5.10 6.03 6.04_pre1: SYSLINUX, PXELINUX, ISOLINUX, EXTLINUX and MEMDISK bootloaders
 sys-boot/systemrescuecd-x86-grub 0.1: Grub menu entries for the .iso image of systemrescuecd-x86
 sys-boot/tboot 1.8.3: Performs a measured and verified boot using Intel Trusted Execution Technology
-sys-boot/unetbootin 608 619: UNetbootin installs Linux/BSD distributions to a partition or USB drive
+sys-boot/unetbootin 608 619 625: UNetbootin installs Linux/BSD distributions to a partition or USB drive
 sys-boot/vboot-utils 1.0_p20130222 42_p20150219 51_p20160427: Chrome OS verified boot tools
 sys-boot/winusb 1.0.11: Creates windows installer on usb media from an iso image
 sys-boot/yaboot 1.3.14-r2 1.3.16 1.3.17-r2: PPC Bootloader
