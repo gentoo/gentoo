@@ -8927,7 +8927,7 @@ dev-ruby/kissfft 0.0.2: ruby interface to kissfft
 dev-ruby/kramdown 1.4.2 1.10.0 1.11.1: Yet-another-markdown-parser but fast, pure Ruby, using strict syntax definition
 dev-ruby/launchy 2.4.3: Helper class for launching cross-platform applications
 dev-ruby/lemon 0.9.1: Lemon is a unit testing framework
-dev-ruby/letter_opener 1.4.0 1.4.1: Preview mail in the browser instead of sending
+dev-ruby/letter_opener 1.4.1: Preview mail in the browser instead of sending
 dev-ruby/levenshtein 0.2.2-r2: Levenshtein distance algorithm
 dev-ruby/libxml 2.8.0-r1: Ruby libxml with a user friendly API, akin to REXML
 dev-ruby/liquid 2.6.2 3.0.4 3.0.6: Template engine for Ruby
@@ -8951,7 +8951,7 @@ dev-ruby/map 6.5.5 6.6.0: A string/symbol indifferent ordered hash that works in
 dev-ruby/maruku 0.7.2 0.7.2-r1: A Markdown-superset interpreter written in Ruby
 dev-ruby/mash 0.1.1-r2: Mash is an extended Hash that gives simple pseudo-object functionality
 dev-ruby/matchy 0.5.2-r1: RSpec-esque matchers for use in Test::Unit
-dev-ruby/maxitest 1.5.6 1.5.7: Minitest + all the features you always wanted
+dev-ruby/maxitest 1.5.6 1.5.7 2.0.1: Minitest + all the features you always wanted
 dev-ruby/mecab-ruby 0.996-r1: Ruby binding for MeCab
 dev-ruby/mechanize 2.7.3 2.7.3-r1 2.7.4: A Ruby library used for automating interaction with websites
 dev-ruby/memcache-client 1.8.5-r1 1.8.5-r2: A ruby library for accessing memcached
@@ -8969,7 +8969,7 @@ dev-ruby/metasploit-payloads 1.0.15 1.0.19 1.0.21 1.0.22: Compiled binaries for 
 dev-ruby/metasploit_data_models 1.2.9 1.2.10: The database layer for Metasploit
 dev-ruby/meterpreter_bins 0.0.22: Compiled binaries for Metasploit's Meterpreter
 dev-ruby/method_source 0.8.2-r3: Retrieve the source code for a method
-dev-ruby/mime-types 1.25.1 2.6.2 3.0: Provides a mailcap-like MIME Content-Type lookup for Ruby
+dev-ruby/mime-types 1.25.1 2.6.2 3.0 3.0-r1: Provides a mailcap-like MIME Content-Type lookup for Ruby
 dev-ruby/mime-types-data 3.2015.1120 3.2016.0221: Registry for information about MIME media type definitions
 dev-ruby/mimemagic 0.3.1: Fast mime detection by extension or content
 dev-ruby/mini_magick 4.4.0: Manipulate images with minimal use of memory
@@ -8984,7 +8984,7 @@ dev-ruby/moneta 0.8.0: A unified interface to key/value stores
 dev-ruby/mongo 1.12.0 2.0.6: A Ruby driver for MongoDB
 dev-ruby/mongoid 2.8.1: ODM (Object Document Mapper) Framework for MongoDB
 dev-ruby/msgpack 0.7.4 0.7.5 0.7.6: Binary-based efficient data interchange format for ruby binding
-dev-ruby/multi_json 1.9.3 1.11.2 1.11.3 1.12.0: A gem to provide swappable JSON backends
+dev-ruby/multi_json 1.9.3 1.11.2 1.11.3 1.12.0 1.12.1: A gem to provide swappable JSON backends
 dev-ruby/multi_test 0.1.1 0.1.2: A uniform interface for Ruby testing libraries
 dev-ruby/multi_xml 0.5.4-r1 0.5.4-r2 0.5.5: A generic swappable back-end for XML parsing
 dev-ruby/multipart-post 2.0.0-r1: Adds a streamy multipart form post capability to Net::HTTP
@@ -9252,7 +9252,7 @@ dev-ruby/thread_order 1.1.0: Test helper for ordering threaded code
 dev-ruby/thread_safe 0.3.5: A collection of thread-safe versions of common core Ruby classes
 dev-ruby/tidy-ext 0.1.14-r1 0.1.14-r2: W3C HTML Tidy library implemented as a Ruby extension
 dev-ruby/tidy_table 0.0.5-r4: Tool to convert an array of struct into an HTML table
-dev-ruby/tilt 1.4.1 1.4.1-r2 2.0.2 2.0.3: Thin interface over template engines to make their usage as generic as possible
+dev-ruby/tilt 1.4.1 1.4.1-r2 2.0.2 2.0.3 2.0.4: Thin interface over template engines to make their usage as generic as possible
 dev-ruby/timecop 0.7.1 0.8.0 0.8.1: A gem providing 'time travel' and 'time freezing' capabilities
 dev-ruby/timers 4.0.1 4.1.0 4.1.1: Pure Ruby one-shot and periodic timers
 dev-ruby/tins 0.13.1 1.6.0 1.8.2 1.9.0 1.10.1: All the stuff that isn't good enough for a real library
