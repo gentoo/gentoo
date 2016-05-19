@@ -1,0 +1,15 @@
+[Unit]
+Description=Linux Container %I
+After=network.target
+Wants=lxcfs.service
+
+[Service]
+Restart=always
+ExecStartPre=/usr/libexec/lxc/lxc-devsetup
+ExecStart=/usr/bin/lxc-start -n %i -F
+ExecReload=/usr/bin/lxc-restart -n %i
+ExecStop=/usr/bin/lxc-stop -n %i
+Delegate=yes
+
+[Install]
+WantedBy=multi-user.target
