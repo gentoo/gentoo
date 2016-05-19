@@ -13,7 +13,7 @@ HOMEPAGE="http://x-stream.github.io"
 SRC_URI="http://central.maven.org/maven2/com/thoughtworks/${PN}/${PN}/${PV}/${P}-sources.jar"
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 CDEPEND="
 	dev-java/kxml:2
