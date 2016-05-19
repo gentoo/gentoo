@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="4"
+EAPI="5"
 
 inherit eutils versionator
 
@@ -40,14 +40,11 @@ src_prepare() {
 	export WANT_AUTOCONF=2.5
 	epatch "${FILESDIR}"/${PN}-1.15-perl-escape-curly-bracket.patch
 	epatch "${FILESDIR}"/${PN}-1.15-mdate-tz.patch #520818 #574492
+	sed -i -e "/APIVERSION=/s:=.*:=${SLOT}:" configure || die
 }
 
 src_configure() {
 	econf --docdir="\$(datarootdir)/doc/${PF}"
-}
-
-src_compile() {
-	emake APIVERSION="${SLOT}" pkgvdatadir="/usr/share/${PN}-${SLOT}"
 }
 
 src_test() {
@@ -84,13 +81,11 @@ slot_info_pages() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" install \
-		APIVERSION="${SLOT}" pkgvdatadir="/usr/share/${PN}-${SLOT}"
+	default
+
 	slot_info_pages
 	rm "${ED}"/usr/share/aclocal/README || die
 	rmdir "${ED}"/usr/share/aclocal || die
-	dodoc AUTHORS ChangeLog NEWS README THANKS
-
 	rm \
 		"${ED}"/usr/bin/{aclocal,automake} \
 		"${ED}"/usr/share/man/man1/{aclocal,automake}.1 || die
