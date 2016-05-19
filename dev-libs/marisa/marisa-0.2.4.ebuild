@@ -59,7 +59,7 @@ src_configure() {
 
 	if use python; then
 		pushd bindings/python || die
-		distutils-r1_src_prepare
+		distutils-r1_src_configure
 		popd || die
 	fi
 }
