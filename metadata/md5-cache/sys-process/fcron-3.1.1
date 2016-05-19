@@ -6,9 +6,9 @@ HOMEPAGE=http://fcron.free.fr/
 IUSE=debug pam selinux linguas_fr +system-crontab readline
 KEYWORDS=amd64 arm hppa ia64 ~mips ppc sparc x86 ~x86-fbsd
 LICENSE=GPL-2
-RDEPEND=selinux? ( sys-libs/libselinux ) pam? ( virtual/pam ) readline? ( sys-libs/readline ) app-shells/bash >=app-misc/editor-wrapper-3 pam? ( >=sys-auth/pambase-20100310 ) >=sys-process/cronbase-0.3.2 !sys-process/vixie-cron !sys-process/bcron !sys-process/cronie !sys-process/dcron
+RDEPEND=selinux? ( sys-libs/libselinux ) pam? ( virtual/pam ) readline? ( sys-libs/readline ) >=app-misc/editor-wrapper-3 pam? ( >=sys-auth/pambase-20100310 ) >=sys-process/cronbase-0.3.2 !sys-process/vixie-cron !sys-process/bcron !sys-process/cronie !sys-process/dcron
 SLOT=0
 SRC_URI=http://fcron.free.fr/archives/fcron-3.1.1.src.tar.gz
 _eclass_exported_funcs=pkg_postinst:- pkg_setup:- src_prepare:- src_configure:- src_compile:- src_install:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	cron	3d3a6a85df42b2dbf24b5f9b97b0f55c	eutils	792f83d5ec9536cb5ccef375469d8bde	flag-o-matic	d270fa247153df66074f795fa42dba3e	libtool	4890219c51da247200223277f993e054	multilib	d062ae4ba2fc40a19c11de2ad89b6616	pam	3ecd5b75e39b0bb05a3183c08fcdfdb4	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	user	906f3c8eb3a2350a4f1191a89baa3e46
-_md5_=103bcd8c14e1836edfc0e19a5c0e4bfc
+_md5_=1cd303429c0052533f85dde86d43e3ae
