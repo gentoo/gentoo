@@ -9,7 +9,7 @@ inherit kde5
 
 DESCRIPTION="Framework for managing bookmarks stored in XBEL format"
 LICENSE="LGPL-2+"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm ~x86"
 IUSE="nls"
 
 RDEPEND="

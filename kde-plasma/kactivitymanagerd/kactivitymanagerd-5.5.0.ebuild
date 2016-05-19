@@ -10,7 +10,7 @@ DESCRIPTION="System service to manage user's activities, track the usage pattern
 SRC_URI="mirror://kde/stable/kactivities/${P}.tar.xz"
 
 LICENSE="|| ( GPL-2 GPL-3 )"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm ~x86"
 IUSE=""
 
 COMMON_DEPEND="

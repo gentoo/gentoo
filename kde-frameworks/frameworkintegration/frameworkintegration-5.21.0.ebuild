@@ -9,7 +9,7 @@ inherit kde5
 
 DESCRIPTION="Framework for integrating Qt applications with KDE workspaces"
 LICENSE="LGPL-2+"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm ~x86"
 IUSE="X"
 
 RDEPEND="
