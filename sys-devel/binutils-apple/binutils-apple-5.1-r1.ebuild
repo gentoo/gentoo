@@ -19,10 +19,10 @@ SRC_URI="http://www.opensource.apple.com/tarballs/ld64/${LD64}.tar.gz
 	http://www.opensource.apple.com/tarballs/dyld/${DYLD}.tar.gz
 	http://www.opensource.apple.com/tarballs/libunwind/${LIBUNWIND}.tar.gz
 	http://dev.gentoo.org/~grobian/distfiles/${PN}-patches-4.3-r1.tar.bz2
-	http://dev.gentoo.org/~grobian/distfiles/${PN}-patches-5.1-r1.tar.bz2"
+	http://dev.gentoo.org/~grobian/distfiles/${PN}-patches-5.1-r2.tar.bz2"
 
 LICENSE="APSL-2"
-#KEYWORDS="~x64-macos ~x86-macos"  # in progress 582782
+KEYWORDS="~x64-macos ~x86-macos"
 IUSE="lto test libcxx multitarget"
 
 RDEPEND="sys-devel/binutils-config
@@ -145,7 +145,7 @@ src_prepare() {
 	epatch "${S}"/${PN}-5.1-ppc.patch
 	epatch "${S}"/${PN}-5.1-thread-state-redefined.patch
 	epatch "${S}"/${PN}-5.1-makefile-target-warning.patch
-	epatch "${S}"/${PN}-6.3-lto-prefix.patch
+	epatch "${S}"/${PN}-5.1-lto-prefix.patch
 	cp ../${LD64}/src/other/prune_trie.h include/mach-o/ || die
 
 	# do not build profileable libstuff to save compile time
