@@ -78,12 +78,13 @@ src_install() {
 	emake DESTDIR="${D}" PREFIX="${EPREFIX}/usr" \
 		install $(usex gtk 'install-gui' '')
 
-	newicon -s scalable src/gui/artwork/logo.svg ${PN}.svg
-
 	local DOCS=( README.md docs/* )
 	einstalldocs
 
-	make_desktop_entry \
-		"${EPREFIX}"/usr/sbin/gtk-lshw \
-		"${DESCRIPTION}"
+	if use gtk ; then
+		newicon -s scalable src/gui/artwork/logo.svg gtk-lshw.svg
+		make_desktop_entry \
+			"${EPREFIX}"/usr/sbin/gtk-lshw \
+			"${DESCRIPTION}"
+	fi
 }
