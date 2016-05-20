@@ -73,6 +73,8 @@ src_prepare() {
 	epatch "${FILESDIR}"/${PN}-3.15-dynamic-libs.patch
 	epatch "${FILESDIR}"/${PN}-3.15-libgpsd.patch
 	epatch "${FILESDIR}"/${PN}-3.15-broken-install.patch
+	epatch "${FILESDIR}"/${PN}-3.15-timebase.patch
+	epatch "${FILESDIR}"/${PN}-3.16-sysmacros.patch #581740
 
 	# Avoid useless -L paths to the install dir
 	sed -i \

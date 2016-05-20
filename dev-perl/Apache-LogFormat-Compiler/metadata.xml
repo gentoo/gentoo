@@ -5,4 +5,8 @@
     <email>perl@gentoo.org</email>
     <name>Gentoo Perl Project</name>
   </maintainer>
+  <upstream>
+    <remote-id type="cpan">Apache-LogFormat-Compiler</remote-id>
+    <remote-id type="cpan-module">Apache::LogFormat::Compiler</remote-id>
+  </upstream>
 </pkgmetadata>

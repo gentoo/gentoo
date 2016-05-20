@@ -14,7 +14,7 @@ SLOT="0"
 KEYWORDS="amd64 ppc64 x86"
 IUSE=""
 
-DEPEND=""
+RDEPEND="!!net-fs/ncpfs" # conflicts on manpages
 
 S=${WORKDIR}/${P/-utils}
 
@@ -22,6 +22,7 @@ src_prepare() {
 	sed -i "s:-O2 -Wall:${CFLAGS}:" "${S}"/Makefile
 	eapply "${FILESDIR}"/${P}-makefile.patch
 	eapply "${FILESDIR}"/${P}-proc.patch #67642
+	eapply "${FILESDIR}"/${P}-gcc-warnings.patch
 
 	default
 }
@@ -31,5 +32,6 @@ src_install() {
 	newconfd "${FILESDIR}"/ipx.confd ipx
 	newinitd "${FILESDIR}"/ipx.init ipx
 
+	into /sbin
 	default
 }

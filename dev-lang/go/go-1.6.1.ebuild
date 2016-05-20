@@ -80,6 +80,11 @@ if [[ ${PV} != 9999 ]]; then
 	S="${WORKDIR}"/go
 fi
 
+PATCHES=(
+# patch for #581072
+	"${FILESDIR}"/${P}-gdb-no-shell.patch
+)
+
 go_arch()
 {
 	# By chance most portage arch names match Go

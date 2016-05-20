@@ -6,11 +6,8 @@
 		<name>Gentoo KDE Project</name>
 	</maintainer>
 	<use>
-		<flag name="dynamic">Enable support for dynamic playlists</flag>
 		<flag name="http-server">Enable internal HTTP server to play non-MPD files</flag>
-		<flag name="online-services">Enable support for online services (Jamendo, Magnatune, SoundCloud, and Podcasts)</flag>
 		<flag name="replaygain">Enable ReplayGain support, for relative volume adjustments</flag>
-		<flag name="streams">Enable support for streams tab (to save favourite streams, and search for others)</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">cdrummond/cantata</remote-id>

@@ -81,7 +81,7 @@ src_install() {
 		pushd "${BUILD_DIR}"/swig/python > /dev/null
 		distutils-r1_src_install
 
-		python_moduleroot=LibAppArmor
+		python_moduleinto LibAppArmor
 		python_foreach_impl python_domodule __init__.py
 		popd > /dev/null
 	fi

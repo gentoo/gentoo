@@ -15,7 +15,7 @@ SRC_URI="https://www.normaliz.uni-osnabrueck.de/wp-content/uploads/2016/04/Norma
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm ~x86"
 IUSE="doc extras openmp"
 
 RDEPEND="dev-libs/gmp[cxx]"

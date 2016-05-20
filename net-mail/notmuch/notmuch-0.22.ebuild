@@ -154,7 +154,7 @@ src_install() {
 
 	if use nmbug; then
 		dobin devel/nmbug/nmbug
-		dobin devel/nmbug/nmbug-status
+		dobin devel/nmbug/notmuch-report
 	fi
 
 	if use mutt; then

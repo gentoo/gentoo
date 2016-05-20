@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x64-macos"
+KEYWORDS="~amd64 ~amd64-linux ~x64-macos"
 IUSE=""
 
 DEPEND="sys-libs/readline:*"

@@ -384,7 +384,6 @@ multilib_src_configure() {
 		-DINSTALL_MANDIR=share/man
 		-DINSTALL_MYSQLDATADIR=${EPREFIX}/var/lib/mysql
 		-DINSTALL_MYSQLSHAREDIR=share/mysql
-		-DINSTALL_MYSQLTESTDIR=share/mysql/mysql-test
 		-DINSTALL_PLUGINDIR=$(get_libdir)/mysql/plugin
 		-DINSTALL_SBINDIR=sbin
 		-DINSTALL_SCRIPTDIR=share/mysql/scripts
@@ -403,6 +402,12 @@ multilib_src_configure() {
 		-DINSTALL_SYSTEMD_UNITDIR="$(systemd_get_systemunitdir)"
 		-DENABLE_STATIC_LIBS=$(usex static-libs)
 	)
+
+	if use test ; then
+		mycmakeargs+=( -DINSTALL_MYSQLTESTDIR=share/mysql/mysql-test )
+	else
+		mycmakeargs+=( -DINSTALL_MYSQLTESTDIR='' )
+	fi
 
 	if in_iuse systemd ; then
 		mycmakeargs+=( -DWITH_SYSTEMD=$(usex systemd) )
@@ -537,11 +542,16 @@ mysql-multilib-r1_src_install() {
 multilib_src_install() {
 	debug-print-function ${FUNCNAME} "$@"
 
-	if multilib_is_native_abi; then
-		# Make sure the vars are correctly initialized
-		mysql_init_vars
+	cmake-utils_src_install
+	# Make sure the vars are correctly initialized
+	mysql_init_vars
 
-		cmake-utils_src_install
+	# Remove an unnecessary, private config header which will never match between ABIs and is not meant to be used
+	if [[ -f "${D}${MY_INCLUDEDIR}/private/config.h" ]] ; then
+		rm "${D}${MY_INCLUDEDIR}/private/config.h" || die
+	fi
+
+	if multilib_is_native_abi; then
 
 		# Convenience links
 		einfo "Making Convenience links for mysqlcheck multi-call binary"
@@ -627,7 +637,6 @@ multilib_src_install() {
 			fi
 		done
 	else
-		cmake-utils_src_install
 		if [[ "${PN}" == "mariadb" ]] && use server ; then
 			insinto /usr/include/mysql/private
 			doins "${S}"/sql/*.h

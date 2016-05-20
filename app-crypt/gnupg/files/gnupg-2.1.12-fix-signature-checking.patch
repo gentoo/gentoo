@@ -1,0 +1,50 @@
+From 83a90a916e8e2f8e44c3b11d11e1dd75f65a87fb Mon Sep 17 00:00:00 2001
+From: NIIBE Yutaka <gniibe@fsij.org>
+Date: Wed, 11 May 2016 19:27:03 +0900
+Subject: [PATCH 1/1] g10: Fix signature checking.
+
+* g10/sig-check.c (check_signature_over_key_or_uid): Fix call to
+walk_kbnode.
+
+--
+
+Thanks to Vincent Brillault (Feandil).
+
+GnuPG-bug-id: 2351
+Signed-off-by: NIIBE Yutaka <gniibe@fsij.org>
+---
+ g10/sig-check.c | 13 +++++++++----
+ 1 file changed, 9 insertions(+), 4 deletions(-)
+
+diff --git a/g10/sig-check.c b/g10/sig-check.c
+index 290f19a..7000b48 100644
+--- a/g10/sig-check.c
++++ b/g10/sig-check.c
+@@ -797,15 +797,20 @@ check_signature_over_key_or_uid (PKT_public_key *signer,
+             *is_selfsig = 1;
+         }
+       else
+-        /* See if one of the subkeys was the signer (although this is
+-           extremely unlikely).  */
+         {
+           kbnode_t ctx = NULL;
+           kbnode_t n;
+ 
+-          while ((n = walk_kbnode (kb, &ctx, PKT_PUBLIC_SUBKEY)))
++          /* See if one of the subkeys was the signer (although this
++             is extremely unlikely).  */
++          while ((n = walk_kbnode (kb, &ctx, 0)))
+             {
+-              PKT_public_key *subk = n->pkt->pkt.public_key;
++              PKT_public_key *subk;
++
++              if (n->pkt->pkttype != PKT_PUBLIC_SUBKEY)
++                continue;
++
++              subk = n->pkt->pkt.public_key;
+               if (sig->keyid[0] == subk->keyid[0]
+                   && sig->keyid[1] == subk->keyid[1])
+                 /* Issued by a subkey.  */
+-- 
+2.8.0.rc3
+

@@ -39,14 +39,14 @@ DEPEND="${RDEPEND}
 	dev-python/docutils:0
 	virtual/pkgconfig:*"
 
-G2CONF="${G2CONF} $(use_enable debug) --disable-static"
-
 CONFIG_CHECK="~INOTIFY_USER"
 
 pkg_setup () {
 	python-single-r1_pkg_setup
 	check_extra_config
 	enewgroup dropbox
+
+	G2CONF="${G2CONF} $(use_enable debug) --disable-static"
 }
 
 src_prepare() {

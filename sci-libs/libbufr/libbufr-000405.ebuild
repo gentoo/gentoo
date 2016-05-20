@@ -17,7 +17,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 # needs someone to test on these: ~alpha ~hppa ~ia64 ~sparc etc ...
 
-IUSE="debug doc examples lto"
+IUSE="debug doc examples"
 
 RDEPEND="
 	virtual/fortran
@@ -26,10 +26,6 @@ RDEPEND="
 DEPEND="sys-apps/findutils"
 
 S=${WORKDIR}/${MY_P}
-
-if use lto; then
-	RESTRICT="strip"
-fi
 
 pkg_setup() {
 	fortran-2_pkg_setup
@@ -114,11 +110,6 @@ src_compile() {
 	export STRIP="/bin/true"
 	TC_FLAGS="CC=$CC FC=$FC AR=$AR RANLIB=$RANLIB"
 	ARFLAGS="rv"
-
-	if use lto; then
-		PLUGIN_PATH="--plugin=$(gcc -print-prog-name=liblto_plugin.so)"
-		tc-ld-is-gold && ARFLAGS="rv ${PLUGIN_PATH}"
-	fi
 
 	# emake won't work with this fossil...
 	BUFRFLAGS="ARCH=$target R64=$R64 CNAME=$CNAME"

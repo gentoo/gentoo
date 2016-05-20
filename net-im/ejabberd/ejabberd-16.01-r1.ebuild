@@ -185,7 +185,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~ia64 ~ppc ~sparc ~x86"
 EJABBERD_MODULES="mod_bosh mod_irc mod_muc mod_proxy65 mod_pubsub"
-IUSE="captcha debug elixir +iconv +lager ldap mssql mysql odbc pam postgres redis riak sqlite ssl tools +zlib ${EJABBERD_MODULES}"
+IUSE="captcha debug elixir +iconv +lager ldap libressl mssql mysql odbc pam postgres redis riak sqlite ssl tools +zlib ${EJABBERD_MODULES}"
 
 DEPEND=">=net-im/jabber-base-0.01
 	>=dev-libs/expat-1.95
@@ -193,7 +193,8 @@ DEPEND=">=net-im/jabber-base-0.01
 	>=dev-lang/erlang-17.1[ssl]
 	odbc? ( dev-db/unixODBC[-minimal] )
 	ldap? ( =net-nds/openldap-2* )
-	dev-libs/openssl:0
+	!libressl? ( dev-libs/openssl:0= )
+	libressl? ( dev-libs/libressl:0= )
 	captcha? ( media-gfx/imagemagick[truetype,png] )
 	zlib? ( >=sys-libs/zlib-1.2.3 )"
 RDEPEND="${DEPEND}

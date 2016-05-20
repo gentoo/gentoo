@@ -14,6 +14,7 @@
     Animated sprite editor and pixel art tool
   </longdescription>
   <use>
+    <flag name="gtk3">Enable support for the experimental native GTK File Dialog</flag>
     <flag name="memleak">Enable memory-leaks detector (only for developers)</flag>
     <flag name="static">Link against static version of C and C++ runtimes</flag>
     <flag name="webp">Enable webp image format support</flag>

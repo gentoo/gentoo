@@ -18,6 +18,7 @@ RDEPEND="
 	dev-ros/test_tf2
 	dev-ros/tf2
 	dev-ros/tf2_bullet
+	dev-ros/tf2_eigen
 	dev-ros/tf2_geometry_msgs
 	dev-ros/tf2_kdl
 	dev-ros/tf2_msgs

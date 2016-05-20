@@ -165,7 +165,7 @@ COMMON_DEPEND="
 	firebird? ( >=dev-db/firebird-2.5 )
 	gltf? ( media-libs/libgltf )
 	gtk? (
-		x11-libs/gdk-pixbuf[X]
+		x11-libs/gdk-pixbuf
 		>=x11-libs/gtk+-2.24:2
 	)
 	gtk3? (

@@ -19,7 +19,7 @@ RDEPEND="dev-lang/perl"
 src_prepare() {
 	default
 
-	eapply "${FILESDIR}"/${PV}-pidfile.patch
+	eapply -p0 "${FILESDIR}"/${PV}-pidfile.patch
 	sed -i \
 		-e 's:/usr/local:/usr:' \
 		-e 's:service ident:service auth:' \

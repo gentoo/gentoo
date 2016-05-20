@@ -15,8 +15,10 @@ LICENSE="GPL-2"
 SLOT="0"
 IUSE="html csv"
 
-DEPEND="sys-libs/ncurses:0=
-	>=sys-apps/net-tools-1.60-r1"
+DEPEND="
+	sys-libs/ncurses:0=
+	>=sys-apps/net-tools-1.60-r1
+"
 RDEPEND="${DEPEND}"
 
 PATCHES=(
@@ -31,8 +33,8 @@ src_prepare() {
 
 src_configure() {
 	econf \
-		--enable-ncurses \
-		--with-procnetdev \
+		$(use_enable csv) \
 		$(use_enable html) \
-		$(use_enable csv)
+		--enable-ncurses \
+		--with-procnetdev
 }

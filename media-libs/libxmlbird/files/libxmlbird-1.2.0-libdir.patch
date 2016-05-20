@@ -1,0 +1,159 @@
+From 661c84d232e8d22978dd0220f7860b149c19f2e4 Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Tue, 17 May 2016 17:37:53 -0400
+Subject: [PATCH] configure: respect libdir at build time
+
+The xmlbird.pc file encodes the libdir in it, so make sure we have it
+at configure & build time.  That means moving the flag from install to
+configure and the config module.
+
+Also clean up the code a bit so `--libdir lib64` doesn't break things.
+It previously assumed that the argument always had a leading slash.
+---
+ configure             | 19 ++++++++++++++++++-
+ install.py            | 39 +++++++++++----------------------------
+ scripts/configfile.py |  3 ++-
+ scripts/pkgconfig.py  |  2 +-
+ 4 files changed, 32 insertions(+), 31 deletions(-)
+
+diff --git a/configure b/configure
+index 4bbd9d5..ed64f66 100755
+--- a/configure
++++ b/configure
+@@ -51,6 +51,7 @@ def configure(valac):
+ 
+ parser = OptionParser()
+ parser.add_option('-p', '--prefix', dest='prefix', help='Install prefix', metavar='PREFIX')
++parser.add_option('-l', '--libdir', dest='libdir', help='path to directory for shared libraries (lib or lib64).', metavar='LIBDIR')
+ parser.add_option('-d', '--dest', dest='dest', help='Install to this directory', metavar='DEST')
+ parser.add_option('-c', '--cc', dest='cc', help='C compiler', metavar='CC')
+ parser.add_option('-v', '--valac', dest='valac', help='Vala compiler', metavar='VALAC')
+@@ -93,7 +94,22 @@ if not options.prefix:
+ 		options.prefix = '${DESTDIR}${PREFIX}'
+ 	else:
+ 		options.prefix = '/usr'
+-		
++
++if not options.libdir:
++	if platform.dist()[0] == 'Ubuntu' or platform.dist()[0] == 'Debian':
++		process = subprocess.Popen(['dpkg-architecture', '-qDEB_HOST_MULTIARCH'], stdout=subprocess.PIPE)
++		out, err = process.communicate()
++		options.libdir = 'lib/' + out.decode('UTF-8').rstrip('\n')
++	else:
++		p = platform.machine()
++		if p == 'i386' or p == 's390' or p == 'ppc' or p == 'armv7hl':
++			options.libdir = 'lib'
++		elif p == 'x86_64' or p == 's390x' or p == 'ppc64':
++			options.libdir = 'lib64'
++		else:
++			options.libdir = 'lib'
++options.libdir = '/' + options.libdir.lstrip('/')
++
+ if not options.dest:
+ 	options.dest = ''
+ if not options.cc:
+@@ -108,6 +124,7 @@ else:
+ configure(options.valac)
+ 
+ configfile.write_compile_parameters(options.prefix,
++									options.libdir,
+ 									options.dest,
+ 									options.cc,
+ 									options.valac,
+diff --git a/install.py b/install.py
+index d3d3007..d8b995b 100755
+--- a/install.py
++++ b/install.py
+@@ -62,7 +62,6 @@ def link (dir, file, linkname):
+ 	run ('cd ' + dest + prefix + dir + ' && ln -sf ' + file + ' ' + linkname)
+ 
+ parser = OptionParser()
+-parser.add_option ("-l", "--libdir", dest="libdir", help="path to directory for shared libraries (lib or lib64).")
+ parser.add_option ("-d", "--dest", dest="dest", help="install to this directory", metavar="DEST")
+ 
+ (options, args) = parser.parse_args()
+@@ -73,40 +72,24 @@ if not options.dest:
+ prefix = config.PREFIX
+ dest = options.dest
+ 
+-if not options.libdir:	
+-	if platform.dist()[0] == 'Ubuntu' or platform.dist()[0] == 'Debian':
+-		process = subprocess.Popen(['dpkg-architecture', '-qDEB_HOST_MULTIARCH'], stdout=subprocess.PIPE)
+-		out, err = process.communicate()
+-		libdir = '/lib/' + out.decode('UTF-8').rstrip ('\n')
+-	else:
+-		p = platform.machine()
+-		if p == 'i386' or p == 's390' or p == 'ppc' or p == 'armv7hl':
+-			libdir = '/lib'
+-		elif p == 'x86_64' or p == 's390x' or p == 'ppc64':
+-			libdir = '/lib64'
+-		else:
+-			libdir = '/lib'
+-else:
+-	libdir = options.libdir
+-
+ if "openbsd" in sys.platform:
+-	install ('build/bin/libxmlbird.so.' + '${LIBxmlbird_VERSION}', '/lib', 644)
++	install ('build/bin/libxmlbird.so.' + '${LIBxmlbird_VERSION}', config.LIBDIR, 644)
+ elif os.path.isfile ('build/bin/libxmlbird.so.' + version.LIBXMLBIRD_SO_VERSION):
+-	install ('build/bin/libxmlbird.so.' + version.LIBXMLBIRD_SO_VERSION, libdir, 644)
+-	link (libdir, 'libxmlbird.so.' + version.LIBXMLBIRD_SO_VERSION, ' libxmlbird.so.' + version.LIBXMLBIRD_SO_VERSION_MAJOR)
+-	link (libdir, 'libxmlbird.so.' + version.LIBXMLBIRD_SO_VERSION, ' libxmlbird.so')
++	install ('build/bin/libxmlbird.so.' + version.LIBXMLBIRD_SO_VERSION, config.LIBDIR, 644)
++	link (config.LIBDIR, 'libxmlbird.so.' + version.LIBXMLBIRD_SO_VERSION, ' libxmlbird.so.' + version.LIBXMLBIRD_SO_VERSION_MAJOR)
++	link (config.LIBDIR, 'libxmlbird.so.' + version.LIBXMLBIRD_SO_VERSION, ' libxmlbird.so')
+ elif os.path.isfile ('build/libxmlbird.so.' + version.LIBXMLBIRD_SO_VERSION):
+-	install ('build/libxmlbird.so.' + version.LIBXMLBIRD_SO_VERSION, libdir, 644)
+-	link (libdir, 'libxmlbird.so.' + version.LIBXMLBIRD_SO_VERSION, ' libxmlbird.so.' + version.LIBXMLBIRD_SO_VERSION_MAJOR)
+-	link (libdir, 'libxmlbird.so.' + version.LIBXMLBIRD_SO_VERSION, ' libxmlbird.so')
++	install ('build/libxmlbird.so.' + version.LIBXMLBIRD_SO_VERSION, config.LIBDIR, 644)
++	link (config.LIBDIR, 'libxmlbird.so.' + version.LIBXMLBIRD_SO_VERSION, ' libxmlbird.so.' + version.LIBXMLBIRD_SO_VERSION_MAJOR)
++	link (config.LIBDIR, 'libxmlbird.so.' + version.LIBXMLBIRD_SO_VERSION, ' libxmlbird.so')
+ elif os.path.isfile ('build/bin/libxmlbird.' + version.LIBXMLBIRD_SO_VERSION + '.dylib'):
+-	install ('build/bin/libxmlbird-' + version.LIBXMLBIRD_SO_VERSION + '.dylib', libdir, 644)
+-	link (libdir, 'libxmlbird-' + version.LIBXMLBIRD_SO_VERSION + '.dylib', ' libxmlbird.dylib.' + version.LIBXMLBIRD_SO_VERSION_MAJOR)
+-	link (libdir, 'libxmlbird-' + version.LIBXMLBIRD_SO_VERSION + '.dylib', ' libxmlbird.dylib')
++	install ('build/bin/libxmlbird-' + version.LIBXMLBIRD_SO_VERSION + '.dylib', config.LIBDIR, 644)
++	link (config.LIBDIR, 'libxmlbird-' + version.LIBXMLBIRD_SO_VERSION + '.dylib', ' libxmlbird.dylib.' + version.LIBXMLBIRD_SO_VERSION_MAJOR)
++	link (config.LIBDIR, 'libxmlbird-' + version.LIBXMLBIRD_SO_VERSION + '.dylib', ' libxmlbird.dylib')
+ else:
+ 	print ("Can't find libxmlbird.")
+ 	exit (1)
+ 
+ install ('build/xmlbird/xmlbird.h', '/include', 644)
+ install ('build/xmlbird.vapi', '/share/vala/vapi', 644)
+-install ('build/xmlbird.pc', libdir + '/pkgconfig', 644)
++install ('build/xmlbird.pc', config.LIBDIR + '/pkgconfig', 644)
+diff --git a/scripts/configfile.py b/scripts/configfile.py
+index 71c1e20..4a88585 100755
+--- a/scripts/configfile.py
++++ b/scripts/configfile.py
+@@ -1,10 +1,11 @@
+ #!/usr/bin/python3
+ 
+-def write_compile_parameters (prefix, dest, cc, valac, non_null,
++def write_compile_parameters (prefix, libdir, dest, cc, valac, non_null,
+                               valacflags, cflags, ldflags):
+     f = open('./scripts/config.py', 'w+')
+     f.write("#!/usr/bin/python3\n")
+     f.write("PREFIX =  \"" + prefix + "\"\n")
++    f.write("LIBDIR =  \"" + libdir + "\"\n")
+     f.write("DEST = \"" + dest + "\"\n")
+     f.write("CC = \"" + cc + "\"\n")
+     f.write("VALAC = \"" + valac + "\"\n")
+diff --git a/scripts/pkgconfig.py b/scripts/pkgconfig.py
+index c080234..c79c413 100644
+--- a/scripts/pkgconfig.py
++++ b/scripts/pkgconfig.py
+@@ -6,7 +6,7 @@ def generate_pkg_config_file():
+         f.write("prefix=" + config.PREFIX + "\n")
+         f.write("""exec_prefix=${prefix}
+ includedir=${prefix}/include
+-libdir=${exec_prefix}/lib
++libdir=${exec_prefix}""" + config.LIBDIR + """
+ 
+ Name: xmlbird
+ Description: XML parser
+-- 
+2.8.2
+

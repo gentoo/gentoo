@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -24,6 +24,7 @@ DEPEND="${RDEPEND}
 PDEPEND="app-i18n/sunpinyin-data"
 
 src_prepare() {
+	epatch "${FILESDIR}"/${PN}-2.0.4-pod2man.patch
 	epatch_user
 }
 
@@ -40,7 +41,7 @@ src_compile() {
 }
 
 src_install() {
-	escons --install-sandbox="${ED}" install
+	escons --install-sandbox="${D}" install
 	rm -rf "${D}"/usr/share/doc/${PN} || die
 	dodoc doc/{README,SLM-inst.mk,SLM-train.mk}
 }

@@ -2,10 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-# Ignore rudimentary et, uz@Latn, zh_TW translation(s)
-PLOCALES="cs_CZ cs de es_MX es fr gl hu it ja_JP lt nb pl_PL pl pt_BR pt_PT ro_RO ru sr tr uk zh_CN"
+# Ignore rudimentary et, uz@Latn, zh_TW translation(s).
+PLOCALES="cs cs_CZ de es es_MX fr gl hu it ja_JP lt nb pl pl_PL pt_BR pt_PT ro_RO ru sr tr uk zh_CN"
 
 inherit cmake-utils fdo-mime gnome2-utils l10n virtualx git-r3
 
@@ -13,7 +13,7 @@ DESCRIPTION="Extracts audio tracks from an audio CD image to separate tracks"
 HOMEPAGE="https://flacon.github.io/"
 EGIT_REPO_URI="git://github.com/${PN}/${PN}.git"
 
-LICENSE="LGPL-2.1"
+LICENSE="LGPL-2.1+"
 SLOT="0"
 KEYWORDS=""
 IUSE="aac flac mac mp3 opus qt4 qt5 replaygain test tta vorbis wavpack"
@@ -48,12 +48,18 @@ RDEPEND="${COMMON_DEPEND}
 DEPEND="${COMMON_DEPEND}
 	virtual/pkgconfig
 	qt5? ( dev-qt/linguist-tools:5 )
+	test? (
+		qt4? ( dev-qt/qttest:4 )
+		qt5? ( dev-qt/qttest:5 )
+	)
 "
 
 REQUIRED_USE="^^ ( qt4 qt5 )"
 
 src_prepare() {
-	# Ignore rudimentary et, uz@Latn, zh_TW translation(s)
+	cmake-utils_src_prepare
+
+	# Ignore rudimentary et, uz@Latn, zh_TW translation(s).
 	rm "translations/${PN}_uz@Latn.desktop" || die
 	rm "translations/${PN}"_{et,zh_TW}.ts || die
 
@@ -63,8 +69,6 @@ src_prepare() {
 
 	l10n_find_plocales_changes 'translations' "${PN}_" '.ts'
 	l10n_for_each_disabled_locale_do remove_locale
-
-	cmake-utils_src_prepare
 }
 
 src_configure() {

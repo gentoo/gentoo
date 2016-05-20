@@ -42,9 +42,6 @@ PDEPEND="~media-libs/avidemux-plugins-${PV}:${SLOT}[opengl?,qt4?]"
 
 S="${WORKDIR}/${MY_P}"
 
-processes="buildCli:avidemux/cli"
-use qt4 && processes+=" buildQt4:avidemux/qt4"
-
 src_prepare() {
 	cmake-utils_src_prepare
 
@@ -80,6 +77,9 @@ src_configure() {
 	if use debug ; then
 		mycmakeargs+=" -DVERBOSE=1 -DCMAKE_BUILD_TYPE=Debug -DADM_DEBUG=1"
 	fi
+
+	processes="buildCli:avidemux/cli"
+	use qt4 && processes+=" buildQt4:avidemux/qt4"
 
 	for process in ${processes} ; do
 		local build="${process%%:*}"

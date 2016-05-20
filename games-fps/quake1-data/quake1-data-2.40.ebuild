@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -20,19 +20,9 @@ KEYWORDS="amd64 ~ia64 ppc x86"
 IUSE=""
 
 DEPEND="app-arch/lha"
-RDEPEND=""
+RDEPEND="!games-fps/quake1-demodata[symlink]"
 
 S=${WORKDIR}
-
-pkg_setup() {
-	games_pkg_setup
-
-	if has_version games-fps/quake1-demodata && \
-	   ! has_version "games-fps/quake1-demodata[symlink]" ; then
-		eerror "The symlink for the demo data conflicts with the cdinstall data"
-		die "Unmerge games-fps/quake1-demodata to remove the conflict"
-	fi
-}
 
 src_unpack() {
 	export CDROM_NAME_SET=("Existing Install" "Quake CD (1.01)" "Ultimate Quake Collection" "Quake CD (newer)")

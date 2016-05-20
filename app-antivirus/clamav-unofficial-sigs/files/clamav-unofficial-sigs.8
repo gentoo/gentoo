@@ -1,0 +1,75 @@
+
+.\" Manual page for eXtremeSHOK.com ClamAV Unofficial Signature Updater
+.TH clamav-unofficial-sigs 8 "07 May 2016" "Version: 5.3.0" "SCRIPT COMMANDS"
+.SH NAME
+clamav-unofficial-sigs \- Download, test, and install third-party ClamAV signature databases.
+.SH SYNOPSIS
+.B clamav-unofficial-sigs
+.RI [ options ]
+.SH DESCRIPTION
+\fBclamav-unofficial-sigs\fP provides a simple way to download, test, and update third-party signature databases provided by Sanesecurity, FOXHOLE, OITC, Scamnailer, BOFHLAND, CRDF, Porcupine, Securiteinfo, MalwarePatrol, Yara-Rules Project, etc. It will also generate and install cron, logrotate, and man files.
+.SH UPDATES
+Script updates can be found at: \fBhttps://github.com/extremeshok/clamav-unofficial-sigs\fP
+.SH OPTIONS
+This script follows the standard GNU command line syntax.
+.LP
+\fB Usage: clamav\-unofficial\-sigs.sh \fR [OPTION] [PATH|FILE]
+.TP
+\fB \-c, \-\-config \fR Use a specific configuration file or directory   eg: '\-c /your/dir' or ' \-c /your/file.name'    Note: If a directory is specified the directory must contain atleast:    master.conf, os.conf or user.conf   Default Directory: configgentoo
+.TP 
+\fB \-F, \-\-force \fR Force all databases to be downloaded, could cause ip to be blocked
+.TP 
+\fB \-h, \-\-help \fR Display this script's help and usage information
+.TP 
+\fB \-V, \-\-version \fR Output script version and date information
+.TP 
+\fB \-v, \-\-verbose \fR Be verbose, enabled when not run under cron
+.TP 
+\fB \-s, \-\-silence \fR Only output error messages, enabled when run under cron
+.TP 
+\fB \-d, \-\-decode\-sig \fR Decode a third\-party signature either by signature name   (eg: Sanesecurity.Junk.15248) or hexadecimal string.   This flag will 'NOT' decode image signatures
+.TP 
+\fB \-e, \-\-encode\-string \fR Hexadecimal encode an entire input string that can   be used in any '*.ndb' signature database file
+.TP 
+\fB \-f, \-\-encode\-formatted \fR Hexadecimal encode a formatted input string containing   signature spacing fields '{}, (), *', without encoding   the spacing fields, so that the encoded signature   can be used in any '*.ndb' signature database file
+.TP 
+\fB \-g, \-\-gpg\-verify \fR GPG verify a specific Sanesecurity database file   eg: '\-g filename.ext' (do not include file path)
+.TP 
+\fB \-i, \-\-information \fR Output system and configuration information for   viewing or possible debugging purposes
+.TP 
+\fB \-m, \-\-make\-database \fR Make a signature database from an ascii file containing   data strings, with one data string per line.  Additional   information is provided when using this flag
+.TP 
+\fB \-t, \-\-test\-database \fR Clamscan integrity test a specific database file   eg: '\-s filename.ext' (do not include file path)
+.TP 
+\fB \-o, \-\-output\-triggered \fR If HAM directory scanning is enabled in the script's   configuration file, then output names of any third\-party   signatures that triggered during the HAM directory scan
+.TP 
+\fB \-w, \-\-whitelist \fR Adds a signature whitelist entry in the newer ClamAV IGN2   format to 'my\-whitelist.ign2' in order to temporarily resolve   a false\-positive issue with a specific third\-party signature.   Script added whitelist entries will automatically be removed   if the original signature is either modified or removed from   the third\-party signature database
+.TP 
+\fB \-\-check\-clamav \fR If ClamD status check is enabled and the socket path is correctly   specifiedthen test to see if clamd is running or not
+.TP 
+\fB \-\-install\-all \fR Install and generate the cron, logroate and man files, autodetects the values   based on your config files
+.TP
+\fB \-\-install\-cron \fR Install and generate the cron file, autodetects the values   based on your config files
+.TP 
+\fB \-\-install\-logrotate \fR Install and generate the logrotate file, autodetects the   values based on your config files
+.TP 
+\fB \-\-install\-man \fR Install and generate the man file, autodetects the   values based on your config files
+.TP 
+\fB \-\-remove\-script \fR Remove the clamav\-unofficial\-sigs script and all of   its associated files and databases from the system
+.TP 
+.SH SEE ALSO
+.BR clamd (8),
+.BR clamscan (1)
+.SH COPYRIGHT
+Copyright (c) Adrian Jon Kriel :: admin@extremeshok.com
+.TP
+You are free to use, modify and distribute, however you may not remove this notice.
+.SH LICENSE
+BSD (Berkeley Software Distribution)
+.SH BUGS
+Report bugs to \fBhttps://github.com/extremeshok/clamav-unofficial-sigs\fP
+.SH AUTHOR
+Adrian Jon Kriel :: admin@extremeshok.com
+Originially based on Script provide by Bill Landry
+
+

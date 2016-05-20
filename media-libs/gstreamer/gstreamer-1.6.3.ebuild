@@ -30,6 +30,10 @@ DEPEND="${RDEPEND}
 "
 # gtk-doc-am to install API docs
 
+src_prepare() {
+	epatch "${FILESDIR}"/${P}-fix-strsignal.patch #577312
+}
+
 src_configure() {
 	if [[ ${CHOST} == *-interix* ]] ; then
 		export ac_cv_lib_dl_dladdr=no

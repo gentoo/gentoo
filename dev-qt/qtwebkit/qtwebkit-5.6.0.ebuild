@@ -67,6 +67,7 @@ DEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}/${PN}-5.4.2-system-leveldb.patch"
+	"${FILESDIR}/${PN}-5.6.0-pthread.patch" # bug 581282
 )
 
 src_prepare() {

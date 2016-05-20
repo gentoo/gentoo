@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# Mike Frysinger <vapier@gentoo.org> (08 May 2016)
+# This target supports VTV #547040.
+>=sys-devel/gcc-6 -vtv
+
 # Mike Frysinger <vapier@gentoo.org> (22 Mar 2016)
 # This target supports ASAN/etc... #504200.
 >=sys-devel/gcc-5 -sanitize

@@ -1,10 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=5
 
-inherit multilib autotools flag-o-matic user git-2
+inherit multilib autotools flag-o-matic user linux-info git-2
 
 DESCRIPTION="Robust and highly flexible tunneling application compatible with many OSes"
 EGIT_REPO_URI="https://github.com/OpenVPN/${PN}.git"
@@ -13,10 +13,11 @@ HOMEPAGE="http://openvpn.net/"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="examples down-root iproute2 +lzo pam passwordsave pkcs11 +plugins polarssl selinux socks +ssl static systemd userland_BSD"
+IUSE="examples down-root iproute2 libressl +lzo pam passwordsave pkcs11 +plugins polarssl selinux socks +ssl static systemd userland_BSD"
 
 REQUIRED_USE="static? ( !plugins !pkcs11 )
-			polarssl? ( ssl )
+			polarssl? ( ssl !libressl )
+			pkcs11? ( ssl )
 			!plugins? ( !pam !down-root )"
 
 DEPEND="
@@ -25,7 +26,11 @@ DEPEND="
 	)
 	pam? ( virtual/pam )
 	ssl? (
-		!polarssl? ( >=dev-libs/openssl-0.9.7 ) polarssl? ( >=net-libs/polarssl-1.2.10 )
+		!polarssl? (
+			!libressl? ( >=dev-libs/openssl-0.9.7:* )
+			libressl? ( dev-libs/libressl )
+		)
+		polarssl? ( >=net-libs/polarssl-1.3.8 )
 	)
 	lzo? ( >=dev-libs/lzo-1.07 )
 	pkcs11? ( >=dev-libs/pkcs11-helper-1.11 )
@@ -33,6 +38,12 @@ DEPEND="
 RDEPEND="${DEPEND}
 	selinux? ( sec-policy/selinux-openvpn )
 "
+
+CONFIG_CHECK="~TUN"
+
+pkg_setup()  {
+	linux-info_pkg_setup
+}
 
 src_prepare() {
 	eautoreconf

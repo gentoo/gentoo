@@ -17,19 +17,17 @@ KEYWORDS="~amd64 ~ppc ~x86 ~x86-fbsd ~x86-freebsd ~amd64-linux ~arm-linux ~x86-l
 IUSE="lua"
 
 RDEPEND="dev-libs/glib:=
-	x11-libs/cairo:*
-	>=x11-libs/gtk+-2.0:*
-	x11-libs/gdk-pixbuf:*
-	x11-libs/pango:*
+	x11-libs/cairo
+	>=x11-libs/gtk+-2.0:2=
+	x11-libs/gdk-pixbuf
+	x11-libs/pango
 	lua? ( >=dev-lang/lua-5:= )"
 DEPEND="${RDEPEND}
-	virtual/pkgconfig
-	>=sys-apps/sed-4"
+	virtual/pkgconfig"
 
 S="${WORKDIR}/${PN}/gtk"
 
 src_prepare() {
-	cd "${WORKDIR}/scintilla/gtk"
 	sed -i makefile \
 		-e "s#^CXXFLAGS=#CXXFLAGS=${CXXFLAGS} #" \
 		-e "s#^\(CXXFLAGS=.*\)-Os#\1#" \

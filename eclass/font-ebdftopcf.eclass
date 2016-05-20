@@ -17,9 +17,6 @@ IUSE="X"
 DEPEND="X? ( media-gfx/ebdftopcf )"
 RDEPEND=""
 
-use X && FONT_SUFFIX="pcf.gz"
-use X || FONT_SUFFIX="bdf"
-
 #
 # Public functions
 #
@@ -37,6 +34,9 @@ ebdftopcf() {
 # Public inheritable functions
 #
 font-ebdftopcf_src_compile() {
+	use X && FONT_SUFFIX="pcf.gz"
+	use X || FONT_SUFFIX="bdf"
+
 	if use X; then
 		[ -z "${BDFFILES}" ] && BDFFILES="$(find . -name '*.bdf')"
 		ebdftopcf ${BDFFILES}

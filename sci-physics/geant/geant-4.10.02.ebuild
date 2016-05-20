@@ -41,6 +41,7 @@ PDEPEND="
 S="${WORKDIR}/${MYP}"
 
 src_prepare() {
+	epatch -p1 "${FILESDIR}/${P}-std-isnan.patch"
 	use examples || epatch "${FILESDIR}"/${PN}-${PV1}.${PV2}.${SPV3}-no-examples.patch
 }
 

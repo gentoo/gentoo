@@ -1,4 +1,4 @@
-#!/sbin/runscript
+#!/sbin/openrc-run
 #
 # Generic start/stop script for MIMEDefang.  Should work on most
 # flavors of UNIX.

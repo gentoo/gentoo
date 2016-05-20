@@ -10,7 +10,7 @@ USE_PHP="php5-5 php5-6 php7-0"
 
 inherit php-ext-pecl-r2
 
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 DESCRIPTION="PHP wrapper for the ImageMagick library"
 LICENSE="PHP-3.01"

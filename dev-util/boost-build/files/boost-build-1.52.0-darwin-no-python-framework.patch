@@ -1,8 +1,8 @@
 Don't look for the framework path, we build Python the UNIX way for
 Gentoo Prefix
 
---- engine/build.jam
-+++ engine/build.jam
+--- a/engine/build.jam
++++ b/engine/build.jam
 @@ -82,11 +82,6 @@
          }
          --python-lib = $(--python-lib[1]) ;

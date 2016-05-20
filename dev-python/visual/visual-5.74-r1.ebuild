@@ -24,7 +24,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RDEPEND="${PYTHON_DEPS}
 	>=dev-cpp/gtkglextmm-1.2
 	dev-cpp/libglademm
-	>=dev-libs/boost-1.48[python,${PYTHON_USEDEP}]
+	>=dev-libs/boost-1.48:=[threads,python,${PYTHON_USEDEP}]
 	dev-python/numpy[${PYTHON_USEDEP}]
 	dev-python/polygon:2[${PYTHON_USEDEP}]
 	dev-python/ttfquery[${PYTHON_USEDEP}]"

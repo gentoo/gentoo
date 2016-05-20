@@ -1,0 +1,11 @@
+diff -Naur w3m-0.5.3.orig/config.h.in w3m-0.5.3/config.h.in
+--- w3m-0.5.3.orig/config.h.in	2011-01-04 04:22:19.000000000 -0500
++++ w3m-0.5.3/config.h.in	2016-05-11 18:23:00.195439897 -0400
+@@ -84,7 +84,6 @@
+ #undef INET6
+ #undef HAVE_SOCKLEN_T
+ #undef HAVE_OLD_SS_FAMILY
+-#define USE_EGD
+ #define ENABLE_REMOVE_TRAILINGSPACES
+ #undef MENU_THIN_FRAME
+ #undef USE_RAW_SCROLL

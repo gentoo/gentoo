@@ -1,0 +1,87 @@
+--- a/bin/Makefile.am
++++ b/bin/Makefile.am
+@@ -30,7 +30,6 @@
+ LDADD = $(DEPS_LIBS)
+ 
+ #Add extra debug info for gdb
+-AM_CFLAGS = -ggdb 
+ 
+ # libnfdump sources
+ common =  nf_common.c nf_common.h 
+@@ -65,30 +64,36 @@
+ 
+ nfdump_SOURCES = nfdump.c nfdump.h nfstat.c nfstat.h nfexport.c nfexport.h  \
+ 	$(nflowcache) $(nfprof)
++nfdump_DEPENDENCIES = libnfdump.la
+ nfdump_LDADD = -lnfdump
+ 
+ nfreplay_SOURCES = nfreplay.c $(nfprof) \
+ 	$(nfnet) $(collector) $(nfv1) $(nfv9) $(nfv5v7) $(ipfix)
++nfreplay_DEPENDENCIES = libnfdump.la
+ nfreplay_LDADD = -lnfdump
+ 
+ nfprofile_SOURCES = nfprofile.c profile.c profile.h $(nfstatfile) 
++nfprofile_DEPENDENCIES = libnfdump.la
+ nfprofile_LDADD = -lnfdump -lrrd
+ 
+ nftrack_SOURCES = ../extra/nftrack/nftrack.c \
+ 	../extra/nftrack/nftrack_rrd.c ../extra/nftrack/nftrack_rrd.h \
+ 	../extra/nftrack/nftrack_stat.c ../extra/nftrack/nftrack_stat.h 
+ nftrack_CFLAGS = -I ../extra/nftrack
++nftrack_DEPENDENCIES = libnfdump.la
+ nftrack_LDADD = -lnfdump -lrrd
+ 
+ nfcapd_SOURCES = nfcapd.c \
+ 	$(nfstatfile) $(launch) \
+ 	$(nfnet) $(collector) $(nfv1) $(nfv5v7) $(nfv9) $(ipfix) $(bookkeeper) $(expire)
++nfcapd_DEPENDENCIES = libnfdump.la
+ nfcapd_LDADD = -lnfdump 
+ 
+ nfpcapd_SOURCES = nfpcapd.c \
+ 	$(pcaproc) $(netflow_pcap) \
+ 	$(nfstatfile) $(launch) \
+ 	$(nfnet) $(collector) $(bookkeeper) $(expire) $(content)
++nfpcapd_DEPENDENCIES = libnfdump.la
+ nfpcapd_LDADD = -lnfdump 
+ 
+ if READPCAP
+@@ -107,6 +112,7 @@
+ sfcapd_SOURCES = sfcapd.c sflow.c sflow.h sflow_proto.h \
+ 	$(nfstatfile) $(launch) \
+ 	$(nfnet) $(collector) $(bookkeeper) $(expire)
++sfcapd_DEPENDENCIES = libnfdump.la
+ sfcapd_LDADD = -lnfdump 
+ 
+ if READPCAP
+@@ -116,25 +122,31 @@
+ endif
+ 
+ nfreader_SOURCES = nfreader.c 
++nfreader_DEPENDENCIES = libnfdump.la
+ nfreader_LDADD = -lnfdump 
+ 
+ nfanon_SOURCES = nfanon.c $(anon)
++nfanon_DEPENDENCIES = libnfdump.la
+ nfanon_LDADD = -lnfdump 
+ 
+ nfgen_SOURCES = nfgen.c 
++nfgen_DEPENDENCIES = libnfdump.la
+ nfgen_LDADD = -lnfdump 
+ 
+ nfexpire_SOURCES = nfexpire.c \
+ 	$(bookkeeper) $(expire) $(nfstatfile)
++nfexpire_DEPENDENCIES = libnfdump.la
+ nfexpire_LDADD = -lnfdump @FTS_OBJ@
+ 
+ nftest_SOURCES = nftest.c 
++nftest_DEPENDENCIES = libnfdump.la
+ nftest_LDADD = -lnfdump 
+ nftest_DEPENDENCIES = nfgen
+ 
+ if FT2NFDUMP
+ ft2nfdump_SOURCES = ft2nfdump.c 
+ ft2nfdump_CFLAGS = @FT_INCLUDES@
++ft2nfdump_DEPENDENCIES = libnfdump.la
+ ft2nfdump_LDADD = -lnfdump -lft -lz
+ ft2nfdump_LDADD += @FT_LDFLAGS@
+ endif

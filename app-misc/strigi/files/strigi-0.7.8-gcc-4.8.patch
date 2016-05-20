@@ -1,5 +1,5 @@
---- libstreams/include/strigi/bufferedstream.h
-+++ libstreams/include/strigi/bufferedstream.h
+--- a/libstreams/include/strigi/bufferedstream.h
++++ b/libstreams/include/strigi/bufferedstream.h
 @@ -34,7 +34,7 @@
   * BufferedStream will do the rest.
   */

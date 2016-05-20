@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# Jeroen Roovers <jer@gentoo.org> (19 May 2016)
+# pulls in many dev-ruby/asciidoctor dependencies (bug #583390)
+net-misc/chrony html
+
 # Patrice Clement <monsieurp@gentoo.org> (08 Feb 2016)
 # I would need to keyword an awful lot of packages on ppc64
 # that would need Java 7 otherwise.

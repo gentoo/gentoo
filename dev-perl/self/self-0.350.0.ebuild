@@ -15,14 +15,14 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
 
-DEPEND="
+RDEPEND="
 	>=dev-perl/B-Hooks-Parser-0.80.0
 	>=dev-perl/B-OPCheck-0.270.0
 	>=dev-perl/Devel-Declare-0.3.4
 	>=dev-perl/PadWalker-1.930.0
 	dev-perl/Sub-Exporter
 "
-RDEPEND="${DEPEND}
+DEPEND="${RDEPEND}
 	>=virtual/perl-ExtUtils-MakeMaker-6.590.0
 	test? ( >=virtual/perl-Test-Simple-0.420.0 )
 "

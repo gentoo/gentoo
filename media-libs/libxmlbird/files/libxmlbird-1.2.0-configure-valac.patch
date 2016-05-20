@@ -1,0 +1,62 @@
+https://github.com/johanmattssonm/xmlbird/pull/5
+
+From 67864656d7446b067a388c6fd2f059322d7047f0 Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Tue, 17 May 2016 17:00:05 -0400
+Subject: [PATCH] configure/test: respect --valac option
+
+Make sure we don't still test `valac` when the compiler has been set to
+a specific version/path.
+---
+ configure        | 6 +++---
+ scripts/tests.py | 4 ++--
+ 2 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/configure b/configure
+index f80559f..4bbd9d5 100755
+--- a/configure
++++ b/configure
+@@ -44,8 +44,8 @@ def test_library_version (lib):
+ 	process.communicate()[0]
+ 	return process.returncode == 0
+ 
+-def configure ():	
+-	if not test_program_version ("valac", 0, 16, 0):
++def configure(valac):
++	if not test_program_version(valac, 0, 16, 0):
+ 		print (FAIL + "valac is too old." + ENDC)
+ 		exit (1)
+ 
+@@ -105,7 +105,7 @@ if not options.nonnull:
+ else:
+ 	options.nonnull = True
+ 	
+-configure()
++configure(options.valac)
+ 
+ configfile.write_compile_parameters(options.prefix,
+ 									options.dest,
+diff --git a/scripts/tests.py b/scripts/tests.py
+index 7281e05..88483f1 100644
+--- a/scripts/tests.py
++++ b/scripts/tests.py
+@@ -1,6 +1,6 @@
+ #!/usr/bin/python3
+ import subprocess
+-from scripts.config import PREFIX
++from scripts.config import (PREFIX, VALAC)
+ from scripts.run import run
+ from scripts.version import LIBXMLBIRD_SO_VERSION
+ 
+@@ -32,7 +32,7 @@ def build_tests():
+     run ("mkdir -p build/tests");
+ 
+     for test in tests:
+-        run ("valac --ccode --pkg=posix --pkg=xmlbird --vapidir=./build "
++        run (VALAC + " --ccode --pkg=posix --pkg=xmlbird --vapidir=./build "
+              + "--directory=./build tests/" + test + ".vala tests/Test.vala");
+ 
+         run ("""gcc -fPIC -c \
+-- 
+2.8.2
+

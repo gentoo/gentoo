@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="Generate SQL from Perl data structures"
 
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86 ~ppc-aix ~ppc-macos ~x86-solaris"
+KEYWORDS="amd64 ~ppc ~x86 ~ppc-aix ~ppc-macos ~x86-solaris"
 IUSE="test"
 
 RDEPEND="

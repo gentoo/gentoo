@@ -12,11 +12,12 @@ SRC_URI="mirror://sourceforge/podofo/${P}.tar.gz"
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc ~x86"
-IUSE="+boost idn debug test"
+IUSE="+boost idn libressl debug test"
 
 RDEPEND="dev-lang/lua:=
 	idn? ( net-dns/libidn:= )
-	dev-libs/openssl:0=
+	!libressl? ( dev-libs/openssl:0= )
+	libressl? ( dev-libs/libressl:0= )
 	media-libs/fontconfig:=
 	media-libs/freetype:2=
 	virtual/jpeg:0=

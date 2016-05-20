@@ -1,0 +1,15 @@
+diff --git a/tests/DBusTests/Util.hs b/tests/DBusTests/Util.hs
+index cc83cef..972afb1 100644
+--- a/tests/DBusTests/Util.hs
++++ b/tests/DBusTests/Util.hs
+@@ -1,2 +1,2 @@
+-{-# LANGUAGE TemplateHaskell #-}
++{-# LANGUAGE TemplateHaskell, CPP #-}
+ 
+@@ -194,4 +194,6 @@ countFileDescriptors = liftIO io where
+ 
++#if ! MIN_VERSION_QuickCheck(2,8,2)
+ instance (Arbitrary a, Ord a) => Arbitrary (Data.Set.Set a) where
+ 	arbitrary = fmap Data.Set.fromList arbitrary
++#endif
+ 

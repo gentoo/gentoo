@@ -30,6 +30,53 @@
 
 #--- END OF EXAMPLES ---
 
+# Lars Wendler <polynomial-c@gentoo.org> (19 May 2016)
+# Masked until all reverse dependencies have been fixed.
+# See tracker bug https://bugs.gentoo.org/583478
+>=app-text/hunspell-1.4.0
+
+# Joerg Bornkessel <hd_brummy@gentoo.org> (16 May 2016)
+# Masked for removal. Dead on upstream
+# wrt bug 185947
+=media-tv/tvmovie2vdr-0.5.13
+
+# David Seifert <soap@gentoo.org> (15 May 2016)
+# Masked for removal. Deprecated, relies on ancient CUDA APIs,
+# does not build with current CUDA releases. See bug #583068.
+sci-libs/torch
+
+# Sergei Trofimovich <slyfox@gentoo.org> (14 May 2016)
+# Masked for removal. Deprecated, use dev-haskell/tls instead.
+dev-haskell/tls-extra
+
+# Alon Bar-Lev <alonbl@gentoo.org) (13 May 2016)
+# Force gnutls-3.4 testing so we can stabilize it.
+>=net-libs/gnutls-3.5.0
+
+# Ian Delaney <idella4@gentoo.org> (12 May 2016)
+# on behalf of Ilya Tumaykin <itumaykin+gentoo@gmail.com>
+# Missing dev-python/rarfile-2.7 dependency. See bug #582500.
+~media-video/subliminal-2.0_rc1
+
+# Sergei Trofimovich <slyfox@gentoo.org> (11 May 2016)
+# Mask standalone hpc. dev-lang/ghc provides bundled hpc.
+dev-haskell/hpc
+
+# Michael Palimaka <kensington@gentoo.org> (11 May 2016)
+# Contents of tarball do not match package version.
+=kde-apps/khelpcenter-5.6.4
+
+# Michael Weber <xmw@gentoo.org> (08 May 2016)
+# Replaced by net-libs/libhubbub.
+# Masked for removal in 30 days. Bug #582382.
+net-libs/hubbub
+
+# Michael Palimaka <kensington@gentoo.org> (05 May 2016)
+# Doesn't compile against latest media-libs/spandsp.
+# Not needed anymore for Asterisk 1.6.
+# Masked for removal in 30 days. Bug #575778.
+net-misc/asterisk-spandsp_codec_g726
+
 # Maciej Mrozowski <reavertm@gentoo.org> (3 May 2016)
 # Mask until >=net-libs/qxmpp-0.8.3 is provided with qt5 support.
 =net-im/kadu-3.0
@@ -134,39 +181,6 @@ dev-java/freehep-xml
 >=media-plugins/mythplugins-0.28
 >=www-apps/mythweb-0.28
 
-# Andreas K. Hüttel <dilfridge@gentoo.org> (16 Apr 2016)
-# Work in progress. Do not unmask! Unmasking these ebuilds
-# is like fiddling with the infinite improbability drive;
-# expect unexpected, weird, and potentially fatal results.
-=dev-lang/perl-5.24*
-
-# Michael Sterrett <mr_bones_@gentoo.org> (06 Apr 2016)
-# These pin an old crufty version of media-libs/libsfml
-# and aren't used by anything in the tree.
-# Masked for removal on 20160506
-media-libs/csfml
-dev-python/pysfml
-
-# Michael Palimaka <kensington@gentoo.org> (07 Apr 2016)
-# Obsolete. Merged into media-libs/libexif.
-# Masked for removal in 30 days.
-media-libs/libmnote
-
-# Michael Palimaka <kensington@gentoo.org> (06 Apr 2016)
-# Fails to build. Dead upstream. Bug #579020.
-# Masked for removal in 30 days.
-net-libs/libqinfinity
-
-# Michael Palimaka <kensington@gentoo.org> (06 Apr 2016)
-# Fails to build. Dead upstream. Masked for removal in 30 days.
-kde-misc/kte-collaborative
-
-# David Seifert <soap@gentoo.org> (05 Apr 2016)
-# No upstream release since 2007, no revdeps in tree,
-# version in tree outdated, bug #454702.
-# Masking for removal in 30 days
-dev-libs/ptypes
-
 # Patrick Lauer <patrick@gentoo.org> (05 Apr 2016)
 # --configtest is broken, mask until 2.3.1 release
 =app-admin/logstash-bin-2.3.0*
@@ -241,6 +255,7 @@ dev-vcs/statcvs
 >=dev-ml/camlp4-4.03
 >=dev-ml/ppx_tools-4.03
 >=dev-ml/labltk-8.06.1
+>=dev-ml/parmap-1.0_rc7-r1
 
 # Patrice Clement <monsieurp@gentoo.org> (29 Feb 2016)
 # Duplicate of dev-libs/libedit.
@@ -255,10 +270,6 @@ dev-lang/niecza-bin
 # Eray Aslan <eras@gentoo.org> (22 Feb 2016)
 # Mask experimental software
 =mail-mta/postfix-3.2*
-
-# Yixun Lan <dlan@gentoo.org> (16 Feb 2016)
-# Mask early development version, leave only upstream stable version
->=sys-cluster/ceph-10
 
 # Sergey Popov <pinkbyte@gentoo.org> (15 Feb 2016)
 # Security mask, wrt bug #519730
@@ -291,16 +302,6 @@ dev-java/jcs
 # Mask live ebuild
 =net-im/mcabber-9999
 
-# Bernard Cafarelli <voyageur@gentoo.org> (27 Jan 2016)
-# New llvm version, masked for testing
-=sys-devel/llvm-3.8.0*
-=sys-devel/clang-3.8.0*
-
-# Sergey Popov <pinkbyte@gentoo.org> (20 Jan 2016)
-# Mask new versions of Boost - they are known to cause breakages
-~dev-util/boost-build-1.59.0
-~dev-libs/boost-1.59.0
-
 # Mike Frysinger <vapier@gentoo.org> (18 Jan 2016)
 # Force people to migrate to the new combined libraries:
 # media-libs/elementary & dev-libs/efl. #571796
@@ -321,12 +322,6 @@ media-libs/emotion
 media-libs/ethumb
 media-libs/evas
 x11-plugins/echievements
-
-# Sergei Trofimovich <slyfox@gentoo.org> (19 Jan 2016)
-# Mask broken package. Exposes badly designed API
-# that can't be transparently used in ghc-7.8 and
-# ghc-7.10, bug #561122
-dev-haskell/extra:0
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (9 Jan 2016)
 # Errorneously added. Is already in perl-core. Please uninstall.
@@ -358,16 +353,6 @@ www-apps/389-dsgw
 # Anthony G. Basile <blueness@gentoo.org> (06 Dec 2015)
 # Masked until we deal with SSLv3, bug #567554
 =dev-libs/libressl-2.3*
-
-# Brian Evans <grknight@gentoo.org> (02 Dec 2015)
-# All current targets are masked.
-<dev-php/pecl-taint-1.99.99
-
-# Brian Evans <grknight@gentoo.org> (02 Dec 2015)
-# PHP 5.4 is End Of Life and will not receive any further updates
-# Please migrate to 5.5 or, preferably 5.6.
-dev-lang/php:5.4
-~virtual/httpd-php-5.4
 
 # Michał Górny <mgorny@gentoo.org> (30 Oct 2015)
 # Uses unsafe ioctls that could result in data corruption. Upstream
@@ -441,11 +426,6 @@ dev-libs/iniparser:4
 # Has race condition / failure modes that make systems unusable
 # See #551724 and duplicates
 =sys-fs/udev-init-scripts-29
-
-# Patrick Lauer <patrick@gentoo.org> (10 Apr 2015)
-# Breaks pretty much all consumers, like samba
-# Mask until it's more usable
->=net-libs/gnutls-3.4.0
 
 # Michał Górny <mgorny@gentoo.org> (28 Mar 2015)
 # on behalf of gx86-multilib project <multilib@gentoo.org>
@@ -709,11 +689,6 @@ app-portage/g-ctan
 # Masked to ensure users are aware before they install.
 app-text/cuneiform
 
-# Tom Wijsman <TomWij@gentoo.org> (12 Mar 2013)
-# 2.5.* has known security and other issues due to an affected
-# bundled ffmpeg, see bugs #446468 and #444262.
-<media-video/avidemux-2.6.2
-
 # Rick Farina <zerochaos@gentoo.org> (21 Dec 2012)
 # madwifi has been replaced by ath5k and ath9k in kernel
 # drivers and is subject to numerous long standing bugs
@@ -765,11 +740,6 @@ net-analyzer/ncrack
 # Not ready for public consumption, clashes with current mesa-git
 media-libs/shivavg
 
-# Stefan Briesenick <sbriesen@gentoo.org> (21 Jul 2010)
-# doesn't compile against latest media-libs/spandsp.
-# not needed anymore for Asterisk 1.6.
-net-misc/asterisk-spandsp_codec_g726
-
 # Mike Frysinger <vapier@gentoo.org> (07 Mar 2010)
 # Very old packages that people should have upgraded away from
 # long ago.  Courtesy mask ... time to upgrade.
@@ -788,7 +758,6 @@ sys-auth/pam_keystore
 # live ebuilds, nor the availability of the server hosting them. As
 # per QA team policy, all these need to be kept masked by default, if
 # available in the tree.
-~app-i18n/skk-jisyo-9999
 =app-misc/sleepyhead-9999
 app-portage/layman-dbtools
 =www-plugins/google-talkplugin-9999

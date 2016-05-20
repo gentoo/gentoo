@@ -1,0 +1,30 @@
+List control emails do not include customheaders, and can lead to RBL issues
+for forged senders.
+
+Signed-off-by: Robin H. Johnson <robbat2@gentoo.org>
+
+diff -Nuar --exclude '*~' mlmmj-1.2.19.0.orig/src/mlmmj-process.c mlmmj-1.2.19.0/src/mlmmj-process.c
+--- mlmmj-1.2.19.0.orig/src/mlmmj-process.c	2014-03-23 17:57:24.000000000 -0700
++++ mlmmj-1.2.19.0/src/mlmmj-process.c	2016-05-04 13:50:26.034174788 -0700
+@@ -702,8 +702,19 @@
+ 						    "output mail file");
+ 				exit(EXIT_FAILURE);
+ 			}
+-			if(do_all_the_voodoo_here(rawmailfd, donemailfd, -1,
+-					-1, delheaders,
++			/* hdrfd is checked in do_all_the_voodoo_here(), because the
++			 * customheaders file might not exist */
++			headerfilename = concatstr(2, listdir, "/control/customheaders");
++			hdrfd = open(headerfilename, O_RDONLY);
++			myfree(headerfilename);
++
++			/* footfd is checked in do_all_the_voodoo_here(), see above */
++			footerfilename = concatstr(2, listdir, "/control/footer");
++			footfd = open(footerfilename, O_RDONLY);
++			myfree(footerfilename);
++
++			if(do_all_the_voodoo_here(rawmailfd, donemailfd, hdrfd,
++					footfd, delheaders,
+ 					NULL, &allheaders, NULL) < 0) {
+ 				log_error(LOG_ARGS, "do_all_the_voodoo_here");
+ 				exit(EXIT_FAILURE);

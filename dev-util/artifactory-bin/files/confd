@@ -1,0 +1,5 @@
+ARTIFACTORY_HOME=/opt/artifactory
+ARTIFACTORY_PID=$ARTIFACTORY_HOME/run/artifactory.pid
+ARTIFACTORY_USER=artifactory
+JAVA_OPTIONS="-server -Xms2g -Xmx8g -Xss256k -XX:PermSize=128m -XX:MaxPermSize=256m -XX:+UseG1GC"
+TOMCAT_HOME=$ARTIFACTORY_HOME/tomcat

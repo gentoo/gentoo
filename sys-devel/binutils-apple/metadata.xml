@@ -8,5 +8,8 @@
 	<use>
 		<flag name="lto">Add support for Link-Time Optimization with LLVM</flag>
 		<flag name="libcxx">Add support for libcxx</flag>
+		<flag name="multitarget">Compile for non-standard target
+			architectures (ppc and ppc64) -- experimental, Gentoo
+			only</flag>
 	</use>
 </pkgmetadata>

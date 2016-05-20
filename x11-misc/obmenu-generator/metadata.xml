@@ -4,6 +4,7 @@
 	<upstream>
 		<maintainer status="active">
 			<email>trizenx@gmail.com</email>
+			<name>Daniel Șuteu</name>
 		</maintainer>
 		<remote-id type="github">trizen/obmenu-generator</remote-id>
 	</upstream>

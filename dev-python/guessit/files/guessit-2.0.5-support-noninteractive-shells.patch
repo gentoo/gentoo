@@ -1,0 +1,22 @@
+commit e43ef015ae88c43fa39274a23515adbe22ba2b2a
+Author: Ilya Tumaykin <itumaykin@gmail.com>
+Date:   Tue May 10 08:06:13 2016 +0300
+
+options: fix StrOptType for non-interactive shells on Python 2
+
+Closes: https://github.com/guessit-io/guessit/issues/293
+---
+
+diff --git a/guessit/options.py b/guessit/options.py
+index 3d60ef9..41ba143 100644
+--- a/guessit/options.py
++++ b/guessit/options.py
+@@ -11,7 +11,7 @@ import six
+
+
+ if six.PY2:
+-    StrOptType = lambda s: unicode(s, sys.stdin.encoding)  # pylint:disable=undefined-variable
++    StrOptType = lambda s: unicode(s, sys.stdin.encoding) if sys.stdin.isatty() else unicode(s, 'UTF-8')  # pylint:disable=undefined-variable
+ else:
+     StrOptType = str  # pylint:disable=redefined-variable-type
+

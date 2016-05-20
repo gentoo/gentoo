@@ -15,7 +15,7 @@ HOMEPAGE="https://github.com/flavorjones/loofah"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86 ~amd64-linux"
 IUSE=""
 
 ruby_add_rdepend ">=dev-ruby/nokogiri-1.5.9"

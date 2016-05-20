@@ -15,7 +15,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="+jit"
 
-DEPEND="dev-libs/openssl:0
+DEPEND="dev-libs/openssl:0[-bindist]
 		jit? (
 			dev-libs/libpcre[jit]
 			dev-lang/luajit:2

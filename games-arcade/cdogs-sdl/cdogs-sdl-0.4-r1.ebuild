@@ -18,7 +18,7 @@ IUSE=""
 
 DEPEND="media-libs/libsdl[video]
 	media-libs/sdl-mixer"
-RDPEND=${DEPEND}
+RDEPEND=${DEPEND}
 
 S=${WORKDIR}/${P}/src
 

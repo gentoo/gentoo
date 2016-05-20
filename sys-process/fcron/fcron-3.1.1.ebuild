@@ -21,9 +21,7 @@ DEPEND="selinux? ( sys-libs/libselinux )
 	pam? ( virtual/pam )
 	readline? ( sys-libs/readline )"
 
-# see bug 282214 for the reason to depend on bash
 RDEPEND="${DEPEND}
-	app-shells/bash
 	>=app-misc/editor-wrapper-3
 	pam? ( >=sys-auth/pambase-20100310 )"
 

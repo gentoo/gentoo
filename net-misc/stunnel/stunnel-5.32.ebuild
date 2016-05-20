@@ -40,6 +40,9 @@ src_prepare() {
 	sed -i -e "s/^install-data-local:/do-not-run-this:/" \
 		tools/Makefile.in || die "sed failed"
 
+	# libressl compat
+	epatch "${FILESDIR}"/stunnel-compat-libressl.patch
+
 	echo "CONFIG_PROTECT=\"/etc/stunnel/stunnel.conf\"" > "${T}"/20stunnel
 }
 

@@ -15,8 +15,8 @@ IUSE=""
 
 DEPEND="
 	$(add_frameworks_dep kidletime)
+	$(add_frameworks_dep kwayland '' 5.5.5)
 	$(add_frameworks_dep kwindowsystem)
-	$(add_plasma_dep kwayland)
 	$(add_qt_dep qtgui)
 	$(add_qt_dep qtwidgets)
 "

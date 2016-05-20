@@ -4,7 +4,7 @@
 
 EAPI=6
 
-inherit eutils user
+inherit user
 
 DESCRIPTION="Scripts necessary for use of vdr as a set-top-box"
 HOMEPAGE="https://www.gentoo.org/"
@@ -22,8 +22,6 @@ RDEPEND="nvram? ( sys-power/nvram-wakeup )
 
 VDR_HOME=/var/vdr
 
-DOCS=( README* TODO ChangeLog )
-
 pkg_setup() {
 	enewgroup vdr
 
@@ -34,15 +32,9 @@ pkg_setup() {
 	enewuser vdr -1 /bin/bash "${VDR_HOME}" vdr,video,audio,cdrom
 }
 
-src_prepare() {
-	# moved into own package
-	sed -e '/SUBDIRS =/s# bin # #' -i usr/Makefile
-	sed -e '/all:/s#compile##' -i Makefile
-
-	eapply_user
-}
-
 src_install() {
+	local DOCS=( README* TODO ChangeLog )
+
 	default
 
 	# create necessary directories

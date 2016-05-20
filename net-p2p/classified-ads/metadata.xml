@@ -33,6 +33,7 @@
 	<upstream>
                 <maintainer status="active">
                         <email>antti.jarvinen@katiska.org</email>
+                        <name>Antti Järvinen</name>
                 </maintainer>
                 <changelog>https://github.com/operatornormal/classified-ads/commits/master</changelog>
 		<bugs-to>https://github.com/operatornormal/classified-ads/issues</bugs-to>

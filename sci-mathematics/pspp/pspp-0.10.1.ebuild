@@ -22,7 +22,7 @@ RDEPEND="
 	sys-libs/readline:0=
 	sys-libs/zlib:0=
 	virtual/libiconv
-	cairo? ( x11-libs/cairo:0= )
+	cairo? ( x11-libs/cairo:0=[svg] )
 	emacs? ( virtual/emacs )
 	gtk? (
 			x11-libs/gtk+:3=

@@ -15,7 +15,7 @@ SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="+with-conduit"
 
 RDEPEND=">=dev-lang/ghc-7.8.2:=
@@ -30,6 +30,11 @@ DEPEND="${RDEPEND}
 		dev-haskell/tasty-quickcheck
 		dev-haskell/tasty-th )
 "
+
+src_prepare() {
+	cabal_chdeps \
+		'base >= 4.7 && <4.9' 'base >= 4.7'
+}
 
 src_configure() {
 	haskell-cabal_src_configure \

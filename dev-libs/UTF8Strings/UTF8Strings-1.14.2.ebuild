@@ -11,5 +11,5 @@ HOMEPAGE="http://grigory.info/${PN}.About.html"
 SRC_URI="http://grigory.info/distfiles/${P}.tar.bz2"
 
 LICENSE="GPL-3"
-KEYWORDS="~amd64 ~mips ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~mips ~x86 ~amd64-linux ~x86-linux"
 SLOT="0"

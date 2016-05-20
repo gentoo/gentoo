@@ -1,4 +1,4 @@
-#!/sbin/runscript
+#!/sbin/openrc-run
 # $Id$
 
 REDIS_DIR=${REDIS_DIR:-/var/lib/redis}

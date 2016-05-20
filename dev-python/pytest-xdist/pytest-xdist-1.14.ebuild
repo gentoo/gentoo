@@ -24,7 +24,8 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
-	"
+	app-arch/unzip
+"
 
 python_test() {
 	find -name __pycache__ -exec rm -r '{}' + || die

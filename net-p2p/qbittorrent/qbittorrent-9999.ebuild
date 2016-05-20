@@ -4,7 +4,7 @@
 
 EAPI=6
 
-inherit qmake-utils
+inherit flag-o-matic qmake-utils
 
 DESCRIPTION="BitTorrent client in C++ and Qt"
 HOMEPAGE="http://www.qbittorrent.org/"
@@ -58,6 +58,12 @@ DEPEND="${RDEPEND}
 DOCS=(AUTHORS Changelog CONTRIBUTING.md README.md TODO)
 
 src_configure() {
+	# workaround build issue with older boost
+	# https://github.com/qbittorrent/qBittorrent/issues/4112
+	if has_version '<dev-libs/boost-1.58'; then
+		append-cppflags -DBOOST_NO_CXX11_REF_QUALIFIERS
+	fi
+
 	econf \
 		--with-qjson=system \
 		--with-qtsingleapplication=system \

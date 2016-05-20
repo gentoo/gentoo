@@ -4,6 +4,10 @@
 
 # DON'T TOUCH THIS FILE. Instead, file a bug and assign it to <hppa@gentoo.org>.
 
+# Jeroen Roovers <jer@gentoo.org> (19 May 2016)
+# pulls in many dev-ruby/asciidoctor dependencies (bug #583390)
+net-misc/chrony html
+
 # Mike Frysinger <vapier@gentoo.org> (21 Feb 2016)
 # Needs arch love for elementary. #575322
 media-libs/elementary javascript

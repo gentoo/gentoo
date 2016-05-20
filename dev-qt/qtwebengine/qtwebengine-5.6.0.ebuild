@@ -25,8 +25,8 @@ RDEPEND="
 	~dev-qt/qtnetwork-${PV}
 	~dev-qt/qtwebchannel-${PV}[qml]
 	dev-libs/expat
-	dev-libs/jsoncpp
-	dev-libs/libevent
+	dev-libs/jsoncpp:=
+	dev-libs/libevent:=
 	dev-libs/libxml2
 	dev-libs/libxslt
 	media-libs/alsa-lib
@@ -35,15 +35,17 @@ RDEPEND="
 	media-libs/freetype
 	media-libs/harfbuzz:=
 	media-libs/libpng:0=
-	>=media-libs/libvpx-1.4
-	media-libs/libwebp
+	>=media-libs/libvpx-1.4:=
+	media-libs/libwebp:=
+	media-libs/mesa
 	media-libs/opus
 	media-libs/speex
-	net-libs/libsrtp
+	net-libs/libsrtp:=
 	sys-apps/dbus
 	sys-apps/pciutils
 	sys-libs/libcap
-	sys-libs/zlib
+	sys-libs/zlib[minizip]
+	x11-libs/libdrm
 	x11-libs/libX11
 	x11-libs/libXcomposite
 	x11-libs/libXcursor
@@ -78,15 +80,15 @@ src_prepare() {
 	qt_use_disable_mod geolocation positioning \
 		src/core/core_common.pri \
 		src/core/core_gyp_generator.pro
-	qt_use_disable_mod widgets widgets \
-		src/src.pro \
-		tests/quicktestbrowser/quicktestbrowser.pro
+
+	qt_use_disable_mod widgets widgets src/src.pro
 
 	qt5-build_src_prepare
 }
 
 src_configure() {
-	export NINJA_PATH="/usr/bin/ninja"
+	export NINJA_PATH=/usr/bin/ninja
+
 	local myqmakeargs=(
 		$(usex bindist '' 'WEBENGINE_CONFIG+=use_proprietary_codecs')
 		$(usex system-ffmpeg 'WEBENGINE_CONFIG+=use_system_ffmpeg' '')

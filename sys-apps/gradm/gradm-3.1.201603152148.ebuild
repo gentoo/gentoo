@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
+EAPI="6"
 inherit flag-o-matic toolchain-funcs versionator eutils udev
 
 MY_PV="$(replace_version_separator 2 -)"
@@ -27,6 +27,7 @@ S=${WORKDIR}/${PN}
 src_prepare() {
 	epatch "${FILESDIR}"/respect-gentoo-env-r3.patch
 	sed -i -e "s:/lib/udev:$(get_udevdir):" Makefile || die
+	eapply_user
 }
 
 src_compile() {

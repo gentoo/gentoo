@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -46,15 +46,15 @@ pkg_setup() {
 				linux_chkconfig_module ${module} || ewarn "${module} needs to be built as module (builtin doesn't work)"
 		done
 		fi
-                if use infiniband; then
-                        for module in ${INFINIBAND_MODULES}; do
-                                linux_chkconfig_module ${module} || ewarn "${module} needs to be built as module (builtin doesn't work)"
-                done
+		if use infiniband; then
+			for module in ${INFINIBAND_MODULES}; do
+				linux_chkconfig_module ${module} || ewarn "${module} needs to be built as module (builtin doesn't work)"
+		done
 		fi
-                if use rdma; then
-                        for module in ${RDMA_MODULES}; do
-                                linux_chkconfig_module ${module} || ewarn "${module} needs to be built as module (builtin doesn't work)"$
-                done
+		if use rdma; then
+			for module in ${RDMA_MODULES}; do
+				linux_chkconfig_module ${module} || ewarn "${module} needs to be built as module (builtin doesn't work)"$
+			done
 		fi
 	fi
 }

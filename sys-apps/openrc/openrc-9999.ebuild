@@ -2,9 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-inherit eutils flag-o-matic multilib pam toolchain-funcs
+inherit flag-o-matic pam toolchain-funcs
 
 DESCRIPTION="OpenRC manages the services, startup and shutdown of a host"
 HOMEPAGE="https://github.com/openrc/openrc/"
@@ -65,7 +65,7 @@ src_prepare() {
 	fi
 
 	# Allow user patches to be applied without modifying the ebuild
-	epatch_user
+	eapply_user
 }
 
 src_compile() {
@@ -147,8 +147,9 @@ src_install() {
 	insinto /etc/logrotate.d
 	newins "${FILESDIR}"/openrc.logrotate openrc
 
-	# install the gentoo pam.d file
+	# install gentoo pam.d files
 	newpamd "${FILESDIR}"/start-stop-daemon.pam start-stop-daemon
+	newpamd "${FILESDIR}"/start-stop-daemon.pam supervise-daemon
 
 	# install documentation
 	dodoc ChangeLog *.md
@@ -278,6 +279,13 @@ pkg_postinst() {
 			cp -RPp "${EROOT}"usr/share/${PN}/runlevels/shutdown/* \
 				"${EROOT}"etc/runlevels/shutdown
 		fi
+	fi
+
+	# Added for 0.21
+	if [[ ! -e "${EROOT}"etc/runlevels/nonetwork ]]; then
+		einfo "copying default nonetwork runlevel"
+		cp -RPp "${EROOT}"usr/share/${PN}/runlevels/nonetwork \
+			"${EROOT}"etc/runlevels
 	fi
 
 	if use hppa; then

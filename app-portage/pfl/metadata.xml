@@ -8,6 +8,7 @@
 	<upstream>
 		<maintainer>
 			<email>bugs@portagefilelist.de</email>
+			<name>Daniel Buschke</name>
 		</maintainer>
 	</upstream>
 	<use>

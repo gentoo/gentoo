@@ -160,7 +160,7 @@ KDE_HANDBOOK="${KDE_HANDBOOK:-never}"
 # translations. (Mostly all kde ebuilds does not ship documentation
 # and translations in live ebuilds)
 if [[ ${KDE_BUILD_TYPE} == live && -z ${KDE_LINGUAS_LIVE_OVERRIDE} ]]; then
-	# Kdebase actualy provides the handbooks even for live stuff
+	# Kdebase actually provides the handbooks even for live stuff
 	[[ ${KDEBASE} == kde-base ]] || KDE_HANDBOOK=never
 	KDE_LINGUAS=""
 fi
@@ -358,11 +358,14 @@ case ${KDE_HANDBOOK} in
 		[[ ${PN} != kdelibs ]] && kderdepend+=" ${kdehandbookrdepend}"
 		;;
 	optional)
-		if [[ ${PN} == kdesu ]] ; then
-			IUSE+=" handbook"
-		else
-			IUSE+=" +handbook"
-		fi
+		case ${PN} in
+			kcontrol | kdesu | knetattach)
+				IUSE+=" handbook"
+				;;
+			*)
+				IUSE+=" +handbook"
+				;;
+		esac
 		kdedepend+=" handbook? ( ${kdehandbookdepend} )"
 		[[ ${PN} != kdelibs ]] && kderdepend+=" handbook? ( ${kdehandbookrdepend} )"
 		;;

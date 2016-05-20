@@ -16,7 +16,6 @@
 		<flag name="hash">Enable the hash extension</flag>
 		<flag name="json">Enable JSON support</flag>
 		<flag name="ldap-sasl">Add SASL support for the PHP LDAP extension</flag>
-		<flag name="mysqlnd">Use native driver for mysql, mysqli, PDO_Mysql</flag>
 		<flag name="libmysqlclient">Use libmyslclient driver for mysql, mysqli, PDO_Mysql (not recommended)</flag>
 		<flag name="intl">Enables the intl extension for extended internalization support</flag>
 		<flag name="opcache">Enables built-in opcode cache, replacing pecl-apc et.al</flag>

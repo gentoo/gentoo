@@ -18,6 +18,7 @@
 	<upstream>
 		<maintainer status="active">
 			<email>trizenx@gmail.com</email>
+			<name>Daniel Șuteu</name>
 		</maintainer>
 		<bugs-to>https://github.com/trizen/youtube-viewer/issues</bugs-to>
 		<remote-id type="github">trizen/youtube-viewer</remote-id>
