@@ -8,5 +8,5 @@ LICENSE=metapackage
 RDEPEND=>=kde-apps/kate-15.12.3 >=kde-apps/kdeadmin-meta-15.12.3 >=kde-apps/kdecore-meta-15.12.3 >=kde-apps/kdeedu-meta-15.12.3 >=kde-apps/kdegames-meta-15.12.3 >=kde-apps/kdegraphics-meta-15.12.3 >=kde-apps/kdemultimedia-meta-15.12.3 >=kde-apps/kdenetwork-meta-15.12.3 >=kde-apps/kdetoys-meta-15.08.3 >=kde-apps/kdeutils-meta-15.12.3 accessibility? ( >=kde-apps/kdeaccessibility-meta-15.12.3 ) nls? ( >=kde-apps/kde-l10n-15.12.3 >=kde-apps/kde4-l10n-15.12.3[minimal] ) pim? ( >=kde-apps/kdepim-meta-4.4.2015:4 ) sdk? ( >=kde-apps/kdesdk-meta-15.12.3 >=kde-apps/kdewebdev-meta-15.08.3 ) !minimal? ( >=kde-apps/kdeartwork-meta-15.08.3 ) !kde-apps/kde-apps-meta:4
 SLOT=5
 _eclass_exported_funcs=-
-_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	kde5-functions	5a16fff4e20c6516fa24e1a2f3ebce1e	kde5-meta-pkg	c6e74f0a7a02a16639c5a863fe7df50c	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	kde5-functions	664f1e251ae4f3902015f39e2a216329	kde5-meta-pkg	c6e74f0a7a02a16639c5a863fe7df50c	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=6598d5adabb94a7a5a725b28862215c3
