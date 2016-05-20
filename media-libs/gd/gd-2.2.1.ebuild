@@ -41,6 +41,7 @@ multilib_src_configure() {
 	# don't care about on Gentoo systems.
 	ECONF_SOURCE=${S} \
 	econf \
+		--disable-werror \
 		--without-x \
 		--without-liq \
 		$(use_enable static-libs static) \
