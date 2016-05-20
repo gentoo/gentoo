@@ -50,19 +50,13 @@ src_compile() {
 	tc-export CC CXX AR
 	use static && append-ldflags -static
 
-	local sqlite=$(usex sqlite 1 0)
-
-	emake SQLITE=$sqlite all
-	if use gtk ; then
-		emake SQLITE=$sqlite gui
-	fi
+	emake SQLITE=$(usex sqlite 1 0) all $(usex gtk 'gui' '')
 }
 
 src_install() {
-	emake DESTDIR="${D}" PREFIX="${EPREFIX}/usr" install
+	emake DESTDIR="${D}" PREFIX="${EPREFIX}/usr" install $(usex gtk 'install-gui' '')
 	dodoc README docs/*
 	if use gtk ; then
-		emake DESTDIR="${D}" PREFIX="${EPREFIX}/usr" install-gui
 		make_desktop_entry /usr/sbin/gtk-lshw "Hardware Lister" "/usr/share/lshw/artwork/logo.svg"
 	fi
 }
