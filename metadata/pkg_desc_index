@@ -14806,7 +14806,7 @@ net-misc/qtm 1.3.17: Qt4 blogging client
 net-misc/quagga 0.99.23.1 0.99.24.1-r1 1.0.20160315-r1: A free routing daemon replacing Zebra supporting RIP, OSPF and BGP
 net-misc/quickshare 1.0: A simple HTTP server with a GUI which allows for easy sharing of files
 net-misc/r8168 8.040.00 8.041.00-r1: r8168 driver for Realtek 8111/8168 PCI-E NICs
-net-misc/rabbitmq-server 3.2.4 3.3.4 3.5.4 3.5.7 3.6.0 3.6.1: RabbitMQ is a high-performance AMQP-compliant message broker written in Erlang
+net-misc/rabbitmq-server 3.2.4 3.3.4 3.5.4 3.5.7 3.6.0 3.6.1 3.6.2: RabbitMQ is a high-performance AMQP-compliant message broker written in Erlang
 net-misc/raccess 0.7: Remote Access Session is an systems security analyzer
 net-misc/radvd 1.9.8 2.12 2.13: Linux IPv6 Router Advertisement Daemon
 net-misc/rancid 2.3.8: Really Awesome New Cisco confIg Differ
