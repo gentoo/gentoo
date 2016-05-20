@@ -14078,7 +14078,7 @@ net-ftp/ftp 0.17-r7 0.17.23.0.2.1: Standard Linux FTP client
 net-ftp/ftpbase 0.01-r2: FTP layout package
 net-ftp/gftp 2.0.19-r2: Gnome based FTP Client
 net-ftp/gproftpd 8.3.2-r1: GTK frontend to proftpd
-net-ftp/lftp 4.6.5 4.7.0 4.7.1 9999: A sophisticated ftp/sftp/http/https/torrent client and file transfer program
+net-ftp/lftp 4.6.5 4.7.0 4.7.1 4.7.2 9999: A sophisticated ftp/sftp/http/https/torrent client and file transfer program
 net-ftp/linksys-tftp 1.2.1-r3: TFTP client suitable for uploading to the Linksys WRT54G Wireless Router
 net-ftp/ncftp 3.2.5-r3: An extremely configurable ftp client
 net-ftp/netkit-ftpd 0.17-r9: The netkit FTP server with optional SSL support
