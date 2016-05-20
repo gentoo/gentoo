@@ -4120,7 +4120,7 @@ dev-java/jython 2.7.0: An implementation of Python written in Java
 dev-java/jzlib 1.0.7-r2 1.1.1 1.1.3: JZlib is a re-implementation of zlib in pure Java
 dev-java/kryo 2.24.0: Fast, efficient Java serialization and cloning
 dev-java/kunststoff 2.0.2-r1: Kunststoff Look&Feel
-dev-java/kxml 2.3.0: Small XML pull parser for constrained environments such as Applets, Personal Java or MIDP devices
+dev-java/kxml 2.3.0: Small XML Pull Parser
 dev-java/l2fprod-common 7.3-r2: Java/Swing GUI components and libraries for building desktop applications
 dev-java/laf-plugin 0.2-r1: A generic plugin framework for look-and-feels
 dev-java/ldapsdk 4.1.7-r4: Netscape Directory SDK for Java
