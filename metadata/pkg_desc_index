@@ -493,7 +493,7 @@ app-cdr/xcdroast 0.98_alpha16 0.98_alpha16-r1: Lightweight cdrtools front-end fo
 app-cdr/xdvdfs-tools 2.1-r1: Tools for manipulating Xbox ISO images
 app-cdr/xfburn 0.5.2 0.5.4: GTK+ based CD and DVD burning application
 app-crypt/WiRouterKeyRec 1.1.2: Recovery tool for wpa passphrase
-app-crypt/acme 0.1.0 0.5.0 0.6.0 9999: An implementation of the ACME protocol
+app-crypt/acme 0.1.0 0.6.0 9999: An implementation of the ACME protocol
 app-crypt/acr38u 1.7.11-r1 1.7.11-r3: Non CCID driver for ACR38 AC1038-based Smart Card Reader
 app-crypt/aescrypt 3.0.6b: Advanced file encryption using AES
 app-crypt/aespipe 2.3e 2.4c-r1 2.4d: Encrypts data from stdin to stdout
@@ -508,6 +508,8 @@ app-crypt/bsign 0.4.5 0.4.5-r1: embed secure hashes (SHA1) and digital signature
 app-crypt/cardpeek 0.7.2 0.8.4: Tool to read the contents of smartcards
 app-crypt/ccid 1.4.15 1.4.18 1.4.20 1.4.22: CCID free software driver
 app-crypt/ccrypt 1.9 1.10: Encryption and decryption
+app-crypt/certbot 0.6.0 9999: Let's encrypt client to automate deployment of X.509 certificates
+app-crypt/certbot-apache 9999: Apache plugin for certbot (Let's Encrypt Client)
 app-crypt/chntpw 110511 140201: Offline Windows NT Password & Registry Editor
 app-crypt/ckpass 0.2: An ncurses based password database client that is compatible with KeePass 1.x format databases
 app-crypt/codecrypt 1.4.1 1.6 1.7.2 1.7.5: Post-quantum cryptography tool
@@ -552,8 +554,6 @@ app-crypt/keybase 0.8.13 0.8.18 0.8.22 0.8.23 0.8.24 0.8.25 1.0.8.0 1.0.9.0 1.0.
 app-crypt/keylookup 2.2 2.2-r9999: A tool to fetch PGP keys from keyservers
 app-crypt/keynote 2.3-r3: The KeyNote Trust-Management System
 app-crypt/kstart 4.1: Modified versions of kinit for refreshing kerberos tickets automatically
-app-crypt/letsencrypt 0.5.0 9999: Let's encrypt client to automate deployment of X.509 certificates
-app-crypt/letsencrypt-apache 9999: Apache plugin for letsencrypt
 app-crypt/libscrypt 1.19 1.20: Shared library to impliment the scrypt algorithm. See http://www.tarsnap.com/scrypt.html.
 app-crypt/libsecret 0.18.3 0.18.4 0.18.5: GObject library for accessing the freedesktop.org Secret Service API
 app-crypt/libu2f-host 1.0.0 1.0.0-r1 1.1.0 1.1.1: Yubico Universal 2nd Factor (U2F) Host C Library
