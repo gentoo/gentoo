@@ -1,0 +1,8 @@
+__init__.py for entrypoints by Marius Brehler <marbre@linux.sungazer.de>.
+
+Patch by Marius Brehler <marbrbre@linux.sungazer.de>.
+--- /dev/null
++++ b/entrypoints/__init__.py
+@@ -0,0 +1 @@
++from .entrypoints import *
+\ No newline at end of file
