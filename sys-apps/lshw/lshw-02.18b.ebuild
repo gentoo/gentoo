@@ -24,12 +24,13 @@ IUSE="gtk sqlite static"
 
 REQUIRED_USE="static? ( !gtk )"
 
-RDEPEND="gtk? ( x11-libs/gtk+:2 )
+CDEPEND="
+	gtk? ( x11-libs/gtk+:2 )
 	sqlite? ( dev-db/sqlite:3 )"
-DEPEND="${RDEPEND}
+DEPEND="${CDEPEND}
 	gtk? ( virtual/pkgconfig )
 	sqlite? ( virtual/pkgconfig )"
-RDEPEND="${RDEPEND}
+RDEPEND="${CDEPEND}
 	sys-apps/hwids"
 
 S="${WORKDIR}/${MY_P}"
