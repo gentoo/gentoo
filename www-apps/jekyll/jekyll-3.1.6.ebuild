@@ -19,30 +19,29 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE="test"
 
-ruby_add_rdepend "dev-ruby/colorator
+ruby_add_rdepend "<dev-ruby/colorator-1.0
 	>=dev-ruby/kramdown-1.3
 	>=dev-ruby/liquid-3.0:3
 	>=dev-ruby/mercenary-0.3.3
-	>=dev-ruby/safe_yaml-1
+	>=dev-ruby/safe_yaml-1.0
 	>=dev-ruby/rouge-1.7
 	>=www-apps/jekyll-sass-converter-1.0
 	>=www-apps/jekyll-watch-1.1"
 
 ruby_add_bdepend "test? (
-		dev-ruby/activesupport:3.2
+		dev-ruby/rspec-mocks
 		dev-ruby/launchy
-		>=dev-ruby/maruku-0.7
 		dev-ruby/mime-types:0
-		=dev-ruby/rdiscount-1.6*
+		>=dev-ruby/rdiscount-2.0
 		>=dev-ruby/redcloth-4.2.1
 		>=dev-ruby/rouge-1.7
-		dev-ruby/rr
 		>=dev-ruby/shoulda-3
 		dev-ruby/test-unit:2 )"
 
 all_ruby_prepare() {
 	sed -i -e "/simplecov/,+5d"\
 		-e "1igem 'test-unit'"\
+		-e "1igem 'minitest', '~> 5.0'"\
 		-e "/reporters/d"\
 		-e "/profile/d"\
 		-e "/Reporters/,+4d" test/helper.rb || die
