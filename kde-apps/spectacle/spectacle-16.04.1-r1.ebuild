@@ -40,6 +40,8 @@ RDEPEND="${DEPEND}
 	!kde-apps/ksnapshot
 "
 
+PATCHES=( "${FILESDIR}/${P}-hotkeys.patch" )
+
 src_configure() {
 	local mycmakeargs=(
 		$(cmake-utils_use_find_package kipi KF5Kipi)
