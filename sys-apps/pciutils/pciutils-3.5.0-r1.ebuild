@@ -42,7 +42,8 @@ switch_config() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-3.1.9-static-pc.patch
+	epatch "${FILESDIR}"/${PN}-3.1.9-static-pc.patch \
+		"${FILESDIR}"/${PN}-3.5.0-expose-pci_init_v30.patch
 
 	if use static-libs ; then
 		cp -pPR "${S}" "${S}.static" || die
