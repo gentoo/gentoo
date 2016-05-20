@@ -27,3 +27,4 @@ move media-gfx/dispcalgui media-gfx/displaycal
 move kde-plasma/kwayland kde-frameworks/kwayland
 move x11-themes/xcursor-neutral x11-themes/neutral-xcursors
 move kde-base/kdebindings-meta kde-apps/kdebindings-meta
+move app-crypt/letsencrypt app-crypt/certbot
