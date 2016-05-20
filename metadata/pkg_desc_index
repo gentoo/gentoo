@@ -14020,7 +14020,7 @@ net-firewall/conntrack-tools 1.4.2 1.4.3: Connection tracking userspace tools
 net-firewall/dshieldpy 3.2-r1: Python script to submit firewall logs to dshield.org
 net-firewall/ebtables 2.0.10.4 2.0.10.4-r1: Utility that enables basic Ethernet frame filtering on a Linux bridge, MAC NAT and brouting
 net-firewall/ferm 2.2: Command line util for managing firewall rules
-net-firewall/firehol 2.0.3-r1 2.0.4 3.0.1: iptables firewall generator
+net-firewall/firehol 2.0.3-r1 2.0.4 3.0.1 3.0.1-r1: iptables firewall generator
 net-firewall/firewalld 0.3.10 0.3.13 0.3.14.2 0.4.0: A firewall daemon with D-BUS interface providing a dynamic firewall
 net-firewall/fwanalog 0.6.4: Script to parse firewall logs and analyze them with Analog
 net-firewall/fwbuilder 5.0.1.3592-r1 5.3.6: A firewall GUI
@@ -14239,7 +14239,7 @@ net-libs/glib-networking 2.44.0 2.46.1: Network-related giomodules for glib
 net-libs/gloox 1.0.9 1.0.13 1.0.14 1.0.14-r1: A portable high-level Jabber/XMPP library for C++
 net-libs/gnet 2.0.8-r2: A simple network library
 net-libs/gnome-online-accounts 3.16.4.1 3.18.3 3.18.4: GNOME framework for accessing online accounts
-net-libs/gnutls 3.3.17.1 3.3.22 3.4.11 3.5.0: A TLS 1.2 and SSL 3.0 implementation for the GNU project
+net-libs/gnutls 3.3.17.1 3.3.22 3.3.23 3.4.11 3.4.12 3.5.0: A TLS 1.2 and SSL 3.0 implementation for the GNU project
 net-libs/gsnmp 0.3.0: An SNMP library based on glib and gnet
 net-libs/gsoap 2.7.17 2.7.17-r2 2.8.23 2.8.27 2.8.28 2.8.29 2.8.30 2.8.31: A cross-platform open source C and C++ SDK for SOAP/XML Web services
 net-libs/gssdp 0.14.11 0.14.13 0.14.14: A GObject-based API for handling resource discovery and announcement over SSDP
