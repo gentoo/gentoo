@@ -32,6 +32,7 @@ start_emperor() {
 	[ -z "${UWSGI_DIR}" ] && UWSGI_DIR="/"
 	[ -z "${UWSGI_USER}" ] && UWSGI_USER="root"
 	[ -z "${UWSGI_GROUP}" ] && UWSGI_GROUP="root"
+	[ -z "${UWSGI_EMPEROR_PIDPATH_MODE}" ] && UWSGI_EMPEROR_PIDPATH_MODE=0770
 
 	if [ -n "${UWSGI_EXTRA_OPTIONS}" ]; then
 		OPTIONS="${OPTIONS} ${UWSGI_EXTRA_OPTIONS}"
@@ -60,6 +61,7 @@ start_app() {
 	[ -z "${UWSGI_DIR}" ] && UWSGI_DIR="/"
 	[ -z "${UWSGI_USER}" ] && UWSGI_USER="root"
 	[ -z "${UWSGI_GROUP}" ] && UWSGI_GROUP="root"
+	[ -z "${UWSGI_PIDPATH_MODE}" ] && UWSGI_PIDPATH_MODE=0750
 
 	if [ -n "${UWSGI_EXTRA_OPTIONS}" ]; then
 		OPTIONS="${OPTIONS} ${UWSGI_EXTRA_OPTIONS}"
