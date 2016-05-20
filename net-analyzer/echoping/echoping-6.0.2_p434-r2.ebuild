@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -16,11 +16,11 @@ IUSE="gnutls http icp idn priority smtp ssl tos postgres ldap"
 RESTRICT="test"
 
 RDEPEND="idn? ( net-dns/libidn )
-	postgres? ( dev-db/postgresql )
+	postgres? ( dev-db/postgresql:* )
 	ldap? ( net-nds/openldap )
 	ssl? (
-		gnutls? ( >=net-libs/gnutls-1.0.17 )
-		!gnutls? ( >=dev-libs/openssl-0.9.7d )
+		gnutls? ( >=net-libs/gnutls-3.3:= )
+		!gnutls? ( >=dev-libs/openssl-0.9.7d:= )
 	)"
 DEPEND="${RDEPEND}
 	>=sys-devel/libtool-2"
@@ -31,6 +31,8 @@ DOCS=( README AUTHORS ChangeLog DETAILS NEWS TODO )
 
 src_prepare() {
 	epatch "${FILESDIR}"/${PN}-6.0.2_p434-fix_implicit_declarations.patch
+	epatch "${FILESDIR}"/${PN}-6.0.2_p434-gnutls_certificate_type_set_priority.patch
+	epatch "${FILESDIR}"/${PN}-6.0.2_p434-gnutls_session.patch
 
 	eautoreconf
 }
