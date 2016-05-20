@@ -40,10 +40,10 @@ src_configure() {
 
 		-DWLC_BUILD_STATIC=$(usex static-libs)
 
+		-DWLC_X11_SUPPORT=$(usex X)
+
 		$(cmake-utils_use_find_package systemd Systemd)
 		$(cmake-utils_use_find_package systemd Dbus)
-		$(cmake-utils_use_find_package X X11)
-		$(cmake-utils_use_find_package X XCB)
 	)
 
 	cmake-utils_src_configure
