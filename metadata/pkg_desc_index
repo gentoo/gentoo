@@ -3361,7 +3361,7 @@ dev-haskell/glob 0.7.5: Globbing library
 dev-haskell/gluraw 1.2.0.0 1.3.0.0 1.4.0.1 1.5.0.1: A raw binding for the OpenGL graphics system
 dev-haskell/glut 2.1.1.2 2.3.1.0 2.4.0.0 2.5.1.1 2.7.0.1: A binding for the OpenGL Utility Toolkit
 dev-haskell/gnuidn 0.2.1 0.2.2: Bindings for GNU IDN
-dev-haskell/gnutls 0.1.6: Bindings for GNU libgnutls
+dev-haskell/gnutls 0.2: Bindings for GNU libgnutls
 dev-haskell/graphviz 2999.18.0.2-r1: Bindings to Graphviz for graph visualisation
 dev-haskell/groupoids 3.0.1.1 4.0: This package has been absorbed into semigroupoids 4.0
 dev-haskell/gsasl 0.3.6: Bindings for GNU libgsasl
