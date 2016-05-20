@@ -12108,7 +12108,7 @@ media-gfx/exiftags 1.01: Extracts JPEG EXIF headers from digital camera photos
 media-gfx/exiv2 0.24-r1 0.25-r1 0.25-r2: EXIF, IPTC and XMP metadata C++ library and command line utility
 media-gfx/farbfeld 1 2 9999: farbfeld simple image format tools
 media-gfx/fbgrab 1.0-r2 1.3: Framebuffer screenshot utility
-media-gfx/fbida 2.10 2.10-r1 2.11 2.12: Image viewers for the framebuffer console (fbi) and X11 (ida)
+media-gfx/fbida 2.10 2.12: Image viewers for the framebuffer console (fbi) and X11 (ida)
 media-gfx/fblogo 0.5.2: Creates images to substitute Linux boot logo
 media-gfx/fbv 1.0b: simple program to view pictures on a linux framebuffer device
 media-gfx/feh 2.9.3 2.10 2.11 2.12 2.12.1 2.13.1 2.14: A fast, lightweight imageviewer using imlib2
@@ -14078,7 +14078,7 @@ net-ftp/ftp 0.17-r7 0.17.23.0.2.1: Standard Linux FTP client
 net-ftp/ftpbase 0.01-r2: FTP layout package
 net-ftp/gftp 2.0.19-r2: Gnome based FTP Client
 net-ftp/gproftpd 8.3.2-r1: GTK frontend to proftpd
-net-ftp/lftp 4.6.5 4.7.0 4.7.1 4.7.2 9999: A sophisticated ftp/sftp/http/https/torrent client and file transfer program
+net-ftp/lftp 4.6.5 4.7.1 4.7.2 9999: A sophisticated ftp/sftp/http/https/torrent client and file transfer program
 net-ftp/linksys-tftp 1.2.1-r3: TFTP client suitable for uploading to the Linksys WRT54G Wireless Router
 net-ftp/ncftp 3.2.5-r3: An extremely configurable ftp client
 net-ftp/netkit-ftpd 0.17-r9: The netkit FTP server with optional SSL support
