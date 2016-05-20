@@ -1,0 +1,25 @@
+From df84ed53f92c844ca98ef3b0a8bc9b4308eee816 Mon Sep 17 00:00:00 2001
+From: Boudhayan Gupta <me@BaloneyGeek.com>
+Date: Fri, 20 May 2016 21:40:19 +0530
+Subject: [PATCH] Fix invalid KHotkeys file version
+
+BUG: 362257
+---
+ desktop/spectacle.khotkeys | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/desktop/spectacle.khotkeys b/desktop/spectacle.khotkeys
+index b28fe37..d83d0c7 100644
+--- a/desktop/spectacle.khotkeys
++++ b/desktop/spectacle.khotkeys
+@@ -1,6 +1,6 @@
+ [Main]
+ ImportId=spectacle
+-Version=3
++Version=2
+ 
+ [Data]
+ DataCount=1
+-- 
+2.8.2
+
