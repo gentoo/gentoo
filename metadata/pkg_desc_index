@@ -11200,7 +11200,7 @@ kde-apps/kdebase-menu 4.14.3 15.08.3 15.12.3 16.04.1: KDE Menu query tool
 kde-apps/kdebase-menu-icons 4.14.3 15.08.3 15.12.3 16.04.1: KDE menu icons
 kde-apps/kdebase-meta 4.14.3 4.14.3-r2 15.08.3-r2 15.12.3 16.04.1: Transitional package to pull in plasma-meta plus basic applications
 kde-apps/kdebase-runtime-meta 4.14.3 15.08.3-r2 15.12.3 16.04.1: Merge this to pull in all kdebase-runtime-derived packages
-kde-apps/kdebindings-meta 16.04.1 16.04.49.9999 9999: KDE bindings - merge this to pull in all kdebindings-derived packages
+kde-apps/kdebindings-meta 4.14.3 16.04.1 16.04.49.9999 9999: KDE bindings - merge this to pull in all kdebindings-derived packages
 kde-apps/kdebugdialog 4.14.3 15.08.3 15.12.3 16.04.1: Dialog box for setting preferences for debug output
 kde-apps/kdebugsettings 15.12.3 16.04.1: Application to enable/disable qCDebug
 kde-apps/kdecore-meta 15.08.3-r1 15.12.3 16.04.1: kdecore - merge this to pull in the most basic applications
@@ -11411,7 +11411,6 @@ kde-base/kde-env 4.14.3: Environment setting required for all KDE4 apps to run
 kde-base/kdebase-cursors 4.11.19 4.11.22: oxygen cursors from kdebase
 kde-base/kdebase-pam 9 10: pam.d files used by several KDE components
 kde-base/kdebase-startkde 4.11.19 4.11.22 4.11.22-r1: Startkde script, which starts a complete KDE session, and associated scripts
-kde-base/kdebindings-meta 4.14.3: KDE bindings - merge this to pull in all kdebindings-derived packages
 kde-base/kdelibs 4.14.8 4.14.16 4.14.20: KDE libraries needed by all KDE programs
 kde-base/kdeplasma-addons 4.14.3 4.14.3-r1: Extra Plasma applets and engines
 kde-base/kdm 4.11.19 4.11.22: KDE login manager, similar to xdm and gdm

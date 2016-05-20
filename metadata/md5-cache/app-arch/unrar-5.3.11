@@ -2,11 +2,11 @@ DEFINED_PHASES=compile configure install prepare
 DESCRIPTION=Uncompress rar files
 EAPI=5
 HOMEPAGE=http://www.rarlab.com/rar_add.htm
-KEYWORDS=~alpha amd64 arm ~arm64 ~hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x86-solaris
+KEYWORDS=~alpha amd64 arm ~arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x86-solaris
 LICENSE=unRAR
 RDEPEND=!<=app-arch/unrar-gpl-0.0.1_p20080417
 SLOT=0
 SRC_URI=http://www.rarlab.com/rar/unrarsrc-5.3.11.tar.gz
 _eclass_exported_funcs=src_prepare:- src_configure:- src_compile:- src_install:-
 _eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	flag-o-matic	d270fa247153df66074f795fa42dba3e	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
-_md5_=db53797607da54332fe3310786c43dde
+_md5_=433d903a6056128b82fb47388596f562
