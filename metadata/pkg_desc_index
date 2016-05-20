@@ -9949,7 +9949,7 @@ dev-vcs/darcs 2.8.4-r6 2.10.1 2.10.3-r1 2.12.0: a distributed, interactive, smar
 dev-vcs/easygit 1.6.5.5: Easy GIT is a wrapper for git, designed to make git easy to learn and use
 dev-vcs/fossil 1.34 20150119112900: Simple, high-reliability, source control management, and more
 dev-vcs/giggle 0.7-r1: GTK+ Frontend for GIT
-dev-vcs/git 2.4.11 2.5.5 2.6.6 2.7.3-r1 2.7.4 2.8.1 2.8.2 2.8.2-r1 9999 9999-r1 9999-r2 9999-r3: stupid content tracker: distributed VCS designed for speed and efficiency
+dev-vcs/git 2.4.11 2.5.5 2.6.6 2.7.3-r1 2.7.4 2.8.2-r1 2.8.3 9999 9999-r1 9999-r2 9999-r3: stupid content tracker: distributed VCS designed for speed and efficiency
 dev-vcs/git-annex 6.20160126 6.20160318 6.20160419: manage files with git, without checking their contents into git
 dev-vcs/git-bz 0.12.04.26 0.12.12.15 9999: Bugzilla subcommand for git
 dev-vcs/git-bzr-ng 0_pre20120130 0_pre20120822: Git subcommand providing a bidirectional bridge to Bazaar repositories
@@ -13644,8 +13644,8 @@ net-analyzer/bwbar 1.2.3: The kernel.org "Current bandwidth utilization" bar
 net-analyzer/bwm-ng 0.6-r1 0.6.1-r1: Bandwidth Monitor NG is a small and simple console-based bandwidth monitor
 net-analyzer/bwmon 1.3-r2: Simple ncurses bandwidth monitor
 net-analyzer/bwping 1.7-r1 1.8: A tool to measure bandwidth and RTT between two hosts using ICMP
-net-analyzer/cacti 0.8.8e 0.8.8f 0.8.8f-r1 0.8.8g 0.8.8h: Cacti is a complete frontend to rrdtool
-net-analyzer/cacti-spine 0.8.8e 0.8.8f 0.8.8g 0.8.8h: Spine is a fast poller for Cacti (formerly known as Cactid)
+net-analyzer/cacti 0.8.8f-r1 0.8.8h: Cacti is a complete frontend to rrdtool
+net-analyzer/cacti-spine 0.8.8e 0.8.8h: Spine is a fast poller for Cacti (formerly known as Cactid)
 net-analyzer/calamaris 2.59 2.99.4.0: Calamaris parses the logfiles of a wide variety of Web proxy servers and generates reports
 net-analyzer/carl 0.9-r1: An rsync logfile analyzer
 net-analyzer/cbm 0.1-r1: Display the current traffic on all network devices
@@ -13664,7 +13664,7 @@ net-analyzer/dnstracer 1.9-r1: Determines where a given nameserver gets its info
 net-analyzer/dosdetector 20060621 20060621-r1: Tool to analyze and detect suspicious traffic from IP and alert about it
 net-analyzer/driftnet 0.1.6_p20090401 0.1.6_p20090401-r1: A program which listens to network traffic and picks out images from TCP streams it observes
 net-analyzer/dsniff 2.4_beta1-r4 2.4_beta1-r7 2.4_beta1-r8: A collection of tools for network auditing and penetration testing
-net-analyzer/echoping 6.0.2_p434 6.0.2_p434-r1: Small program to test performances of remote servers
+net-analyzer/echoping 6.0.2_p434 6.0.2_p434-r2: Small program to test performances of remote servers
 net-analyzer/egressor 1.0-r2: tool for checking router configuration
 net-analyzer/etherape 0.9.13 0.9.14: A graphical network monitor for Unix modeled after etherman
 net-analyzer/ethloop 10-r3: Local simulator for testing Linux QoS disciplines
