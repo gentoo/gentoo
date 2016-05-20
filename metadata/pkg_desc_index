@@ -17723,7 +17723,7 @@ www-apps/phpmp 0.11.0-r1: phpMp is a client program for Music Player Daemon (mpd
 www-apps/phprojekt 6.1.2: Project management and coordination system
 www-apps/phpsysinfo 3.2.2 3.2.3: phpSysInfo is a nice package that will display your system stats via PHP
 www-apps/phpwebsite 0.10.2 1.7.2: phpWebSite Content Management System
-www-apps/piwigo 2.8.0: a photo gallery software for the web
+www-apps/piwigo 2.8.0 2.8.1: a photo gallery software for the web
 www-apps/polarblog 1.11.1: PolarBlog is an open source embedded weblog solution
 www-apps/postfixadmin 2.3.8: Web Based Management tool for Postfix style virtual domains and users
 www-apps/pyblosxom 1.4.3: PyBlosxom is a lightweight weblog system
