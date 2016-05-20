@@ -397,7 +397,7 @@ kde5_src_prepare() {
 
 	# enable only the requested translations
 	# when required
-	if [[ -d po ]] ; then
+	if [[ -d po && -v LINGUAS ]] ; then
 		pushd po > /dev/null || die
 		for lang in *; do
 			if [[ -d ${lang} ]] && ! has ${lang} ${LINGUAS} ; then
