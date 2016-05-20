@@ -1372,9 +1372,9 @@ app-emulation/wine 1.6.2 1.6.2-r1 1.7.3-r1 1.7.4-r1 1.7.8-r1 1.7.9-r1 1.7.10-r1 
 app-emulation/winetricks 20160425 99999999: Easy way to install DLLs needed to work around problems in Wine
 app-emulation/x48 0.6.4: HP48 Calculator Emulator
 app-emulation/xe-guest-utilities 5.6.0_p595 6.1.0_p1033 6.2.0_p1120: XenServer Virtual Machine Tools
-app-emulation/xen 4.6.0-r9 4.6.0-r10 4.6.1 4.6.1-r1: The Xen virtual machine monitor
+app-emulation/xen 4.6.0-r9 4.6.0-r10 4.6.1 4.6.1-r1 4.6.1-r2: The Xen virtual machine monitor
 app-emulation/xen-pvgrub 4.6.0 4.6.1: allows to boot Xen domU kernels from a menu.lst laying inside guest filesystem
-app-emulation/xen-tools 4.6.0-r9 4.6.0-r10 4.6.0-r11 4.6.1 4.6.1-r1 4.6.1-r2: Xen tools including QEMU and xl
+app-emulation/xen-tools 4.6.0-r9 4.6.0-r10 4.6.0-r11 4.6.1 4.6.1-r1 4.6.1-r2 4.6.1-r3: Xen tools including QEMU and xl
 app-emulation/xtrs 4.9d-r3: Radio Shack TRS-80 emulator
 app-eselect/eselect-audicle 1.0.1: Manages the /usr/bin/audicle symlink
 app-eselect/eselect-awk 0.2: Manages the {,/usr}/bin/awk symlink
