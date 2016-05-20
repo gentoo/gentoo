@@ -11393,7 +11393,7 @@ kde-apps/renamedlg-plugins 4.14.3 15.08.3 15.12.3 16.04.1: KDE RenameDlg plugins
 kde-apps/rocs 4.14.3 15.12.3 16.04.1: Interface to work with Graph Theory
 kde-apps/signon-kwallet-extension 15.12.3 16.04.1: KWallet extension for signond
 kde-apps/solid-runtime 4.14.3 15.08.3 15.12.3 16.04.1: KDE SC solid runtime modules (autoeject, automounter and others)
-kde-apps/spectacle 15.12.3 16.04.1: Screenshot capture utility
+kde-apps/spectacle 15.12.3 16.04.1-r1: Screenshot capture utility
 kde-apps/step 4.14.3 15.12.3 16.04.1: Interactive physics simulator
 kde-apps/superkaramba 4.14.3 15.08.3: A tool to create interactive applets for the KDE desktop
 kde-apps/svgpart 4.14.3 15.08.3 15.12.3 16.04.1: Svgpart is a kpart for viewing SVGs
