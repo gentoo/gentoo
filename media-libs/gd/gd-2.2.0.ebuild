@@ -1,13 +1,13 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=6
 
-inherit libtool multilib-minimal
+inherit eutils libtool multilib-minimal
 
 DESCRIPTION="A graphics library for fast image creation"
 HOMEPAGE="http://libgd.org/ http://www.boutell.com/gd/"
-SRC_URI="https://bitbucket.org/libgd/gd-libgd/downloads/lib${P}.tar.xz"
+SRC_URI="https://github.com/libgd/libgd/releases/download/${P}/lib${P}.tar.xz"
 
 LICENSE="gd IJG HPND BSD"
 SLOT="2/3"
@@ -31,6 +31,7 @@ DEPEND="${RDEPEND}
 S="${WORKDIR}/lib${P}"
 
 src_prepare() {
+	default
 	elibtoolize  # for shared library on Solaris
 }
 
