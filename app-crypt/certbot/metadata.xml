@@ -6,6 +6,6 @@
 		<name>Manuel Rüger</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">letsencrypt/letsencrypt</remote-id>
+		<remote-id type="github">certbot/certbot</remote-id>
 	</upstream>
 </pkgmetadata>
