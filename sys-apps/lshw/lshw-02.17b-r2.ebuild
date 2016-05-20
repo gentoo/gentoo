@@ -3,7 +3,10 @@
 # $Id$
 
 EAPI=5
-inherit flag-o-matic eutils toolchain-funcs
+
+PLOCALES='fr'
+
+inherit flag-o-matic eutils toolchain-funcs l10n
 
 MAJ_PV=${PV:0:${#PV}-1}
 MIN_PVE=${PV:0-1}
@@ -36,19 +39,11 @@ src_prepare() {
 		"${FILESDIR}"/${P}-gentoo.patch \
 		"${FILESDIR}"/${P}-fat.patch \
 		"${FILESDIR}"/${P}-musl.patch
-	# correct gettext behavior
-	if [[ -n "${LINGUAS+x}" ]] ; then
-		local langs
 
-		for i in $(cd src/po ; echo *.po | sed 's/\.po//') ; do
-			if has ${i} ${LINGUAS} ; then
-				langs+=" ${i}"
-			fi
-		done
-		sed -i \
-			-e "/^LANGUAGES =/ s/=.*/= $langs/" \
-			src/po/Makefile || die
-	fi
+	l10n_find_plocales_changes "src/po" "" ".po" || die
+	sed -i \
+		-e "/^LANGUAGES =/ s/=.*/= $(l10n_get_locales)/" \
+		src/po/Makefile || die
 }
 
 src_compile() {
