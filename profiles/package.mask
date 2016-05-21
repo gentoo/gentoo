@@ -30,6 +30,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Kent Fredric <kentfredric@gmail.com> (15 May 2016)
+# Andreas K. Hüttel <dilfridge@gentoo.org> (21 May 2016)
+# Has been broken since app-arch/rar-5.0.0 due to List()
+# format changing. Will require upstream revision bump
+# or some helpful person to supply a parser patch.
+# Bug #483888
+<=dev-perl/Archive-Rar-2.20.0-r1
+
 # Lars Wendler <polynomial-c@gentoo.org> (19 May 2016)
 # Masked until all reverse dependencies have been fixed.
 # See tracker bug https://bugs.gentoo.org/583478

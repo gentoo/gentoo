@@ -1,11 +1,11 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-MODULE_AUTHOR=ZOFFIX
-MODULE_VERSION=1.003
+DIST_AUTHOR=ZOFFIX
+DIST_VERSION=1.003
 inherit perl-module
 
 DESCRIPTION="Paste on www.pastebin.com without API keys"
@@ -22,9 +22,14 @@ DEPEND="${RDEPEND}
 	dev-perl/Module-Build
 	test? (
 		virtual/perl-Test-Simple
-		dev-perl/Test-Pod
-		dev-perl/Test-Pod-Coverage
 	)
 "
 
-SRC_TEST="do"
+src_test() {
+	local my_test_control=${DIST_TEST_OVERRIDE:-${DIST_TEST:-do parallel}}
+	if ! has network ${my_test_control} ; then
+		einfo "Supressing Network Test without DIST_TEST_OVERRIDE =~ network"
+		perl_rm_files t/01-paste.t
+	fi
+	perl-module_src_test
+}
