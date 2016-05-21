@@ -84,11 +84,6 @@
       <role>Member (Security bugs primarily)</role>
     </member>
     <member>
-      <email>armin76@gentoo.org</email>
-      <name>Raúl Porcel</name>
-      <role>Member (Gentoo/ARM)</role>
-    </member>
-    <member>
       <email>blueness@gentoo.org</email>
       <name>Anthony G. Basile</name>
       <role>Member (Gentoo/ARM)</role>
@@ -185,11 +180,6 @@
       <email>ago@gentoo.org</email>
       <name>Agostino Sarubbo</name>
       <role>Member ( Security bugs primarily )</role>
-    </member>
-    <member>
-      <email>armin76@gentoo.org</email>
-      <name>Raúl Porcel</name>
-      <role>Member ( Porting, Security )</role>
     </member>
     <member is-lead="1">
       <email>klausman@gentoo.org</email>
@@ -1686,11 +1676,6 @@
       <email>ago@gentoo.org</email>
       <name>Agostino Sarubbo</name>
       <role>Member ( Security bugs primarily )</role>
-    </member>
-    <member is-lead="1">
-      <email>armin76@gentoo.org</email>
-      <name>Raúl Porcel</name>
-      <role>Lead ( Gentoo/IA-64 )</role>
     </member>
     <member>
       <email>hattya@gentoo.org</email>
@@ -3429,11 +3414,6 @@
     <subproject ref="catalyst@gentoo.org"/>
     <subproject ref="grs@gentoo.org"/>
     <member>
-      <email>armin76@gentoo.org</email>
-      <name>Raúl Porcel</name>
-      <role>Alpha/IA64/SPARC Release Coordinator</role>
-    </member>
-    <member>
       <email>blueness@gentoo.org</email>
       <name>Anthony G. Basile</name>
       <role>Hardened/UCLIBC Release Coordinator</role>
@@ -3620,11 +3600,6 @@
       <name>Agostino Sarubbo</name>
       <role>Member ( Gentoo/s390 )</role>
     </member>
-    <member is-lead="1">
-      <email>armin76@gentoo.org</email>
-      <name>Raúl Porcel</name>
-      <role>Member ( Gentoo/s390 )</role>
-    </member>
     <member>
       <email>pinkbyte@gentoo.org</email>
       <name>Sergey Popov</name>
@@ -3666,11 +3641,6 @@
       <email>ago@gentoo.org</email>
       <name>Agostino Sarubbo</name>
       <role>Member ( Security bugs primarily )</role>
-    </member>
-    <member is-lead="1">
-      <email>armin76@gentoo.org</email>
-      <name>Raúl Porcel</name>
-      <role>Lead ( Gentoo/SPARC )</role>
     </member>
     <member>
       <email>jer@gentoo.org</email>
@@ -3983,16 +3953,12 @@
   </project>
   <project>
     <email>sh@gentoo.org</email>
-    <name>Gentoo Linux SuperH Development</name>
+    <name>Gentoo Linux SuperH (sh) Development</name>
     <url>https://wiki.gentoo.org/wiki/Project:SuperH</url>
     <description>The SuperH Development Project is devoted to keeping Gentoo in good shape on the SuperH architecture.</description>
     <member>
       <email>ago@gentoo.org</email>
       <name>Agostino Sarubbo</name>
-    </member>
-    <member>
-      <email>armin76@gentoo.org</email>
-      <name>Raúl Porcel</name>
     </member>
     <member is-lead="1">
       <email>vapier@gentoo.org</email>
@@ -4203,10 +4169,6 @@
       <email>williamh@gentoo.org</email>
       <name>William Hubbs</name>
     </member>
-    <member>
-      <email>zzam@gentoo.org</email>
-      <name>Matthias Schwarzott</name>
-    </member>
   </project>
   <project>
     <email>undertakers@gentoo.org</email>
@@ -4246,11 +4208,6 @@
     <member>
       <email>idl0r@gentoo.org</email>
       <name>Christian Ruppert</name>
-      <role>Member</role>
-    </member>
-    <member>
-      <email>zzam@gentoo.org</email>
-      <name>Matthias Schwarzott</name>
       <role>Member</role>
     </member>
   </project>
@@ -4296,11 +4253,6 @@
       <email>yngwin@gentoo.org</email>
       <name>Ben de Groot</name>
       <role>Member ( SMPlayer and dependencies )</role>
-    </member>
-    <member>
-      <email>zzam@gentoo.org</email>
-      <name>Matthias Schwarzott</name>
-      <role>Member ( DVB, VDR )</role>
     </member>
   </project>
   <project>
@@ -4542,11 +4494,6 @@
       <email>ago@gentoo.org</email>
       <name>Agostino Sarubbo</name>
       <role>Developer (Security bugs primarily)</role>
-    </member>
-    <member>
-      <email>armin76@gentoo.org</email>
-      <name>Raúl Porcel</name>
-      <role>Developer (Gentoo/x86)</role>
     </member>
     <member is-lead="1">
       <email>jdhore@gentoo.org</email>
