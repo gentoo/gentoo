@@ -17,7 +17,7 @@ fi
 DESCRIPTION="simple command-line tool to talk to serial devices"
 HOMEPAGE="https://github.com/BGO-OD/serialtalk"
 
-LICENSE="GPL-3"
+LICENSE="GPL-3+"
 SLOT="0"
 
 src_install() {
