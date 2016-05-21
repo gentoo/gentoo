@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 inherit webapp depend.apache eutils
 
@@ -95,6 +95,7 @@ src_prepare() {
 
 	# Remove bundled perl modules
 	rm -r lib/ || die
+	eapply_user
 }
 
 src_test() {
