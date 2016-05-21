@@ -5205,7 +5205,7 @@ dev-perl/Apache-SizeLimit 0.970.0-r1: Graceful exit for large children
 dev-perl/Apache-Test 1.380.0-r1 1.390.0: Test.pm wrapper with helpers for testing Apache
 dev-perl/Apache2-AuthenNTLM 0.20.0-r1: Apache2::AuthenNTLM - Perform Microsoft NTLM and Basic User Authentication
 dev-perl/App-CLI 0.313.0-r1: Dispatcher module for command line interface programs
-dev-perl/App-Nopaste 1.4.0: Easy access to any pastebin
+dev-perl/App-Nopaste 1.4.0-r1: Easy access to any pastebin
 dev-perl/App-cpanminus 1.703.900 1.704.0: Get, unpack, build and install modules from CPAN
 dev-perl/App-perlbrew 0.730.0 0.740.0 0.750.0: Manage perl installations in your $HOME
 dev-perl/AppConfig 1.710.0: Perl5 module for reading configuration files and parsing command line arguments
@@ -6292,8 +6292,8 @@ dev-perl/Test-Class 0.390.0-r1 0.500.0: Easily create test classes in an xUnit/J
 dev-perl/Test-ClassAPI 1.60.0-r1: Provides basic first-pass API testing for large class trees
 dev-perl/Test-CleanNamespaces 0.180.0: Check for uncleaned imports
 dev-perl/Test-Command 0.80.0-r1 0.110.0: Test routines for external commands
-dev-perl/Test-Command-Simple 0.040.0 0.50.0: Test external commands (nearly) as easily as loaded modules
-dev-perl/Test-Deep 0.110.0-r2 0.115.0-r1 0.117.0 1.120.0: Extremely flexible deep comparison testing
+dev-perl/Test-Command-Simple 0.50.0: Test external commands (nearly) as easily as loaded modules
+dev-perl/Test-Deep 0.110.0-r2 1.120.0: Extremely flexible deep comparison testing
 dev-perl/Test-Dependencies 0.120.0: Ensure that your Makefile.PL specifies all module dependencies
 dev-perl/Test-Differences 0.610.0-r1 0.630.0 0.640.0: Test strings and data structures and show differences if not ok
 dev-perl/Test-DistManifest 1.12.0-r1 1.14.0: Author test that validates a package MANIFEST
