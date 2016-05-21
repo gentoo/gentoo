@@ -18,7 +18,7 @@ HOMEPAGE="https://github.com/lautis/uglifier"
 
 LICENSE="MIT"
 SLOT="3"
-KEYWORDS="~amd64 ~amd64-linux"
+KEYWORDS="~amd64 ~arm ~amd64-linux"
 
 IUSE="test"
 
