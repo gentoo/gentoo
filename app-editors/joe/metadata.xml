@@ -5,8 +5,8 @@
             <email>amynka@gentoo.org</email>
 </maintainer>
 <maintainer type="project">
-  <email>gnu-emacs@gentoo.org</email>
-  <name>Gentoo GNU Emacs project</name>
+  <email>emacs@gentoo.org</email>
+  <name>Gentoo Emacs project</name>
 </maintainer>
 <longdescription>
   JOE (Joe's own editor) has the feel of most IBM PC text editors: The
@@ -16,10 +16,10 @@
   optimizations, simple installation, and all of the UNIX-integration features
   of VI.
 </longdescription> 
- <use>
-    <flag name="xterm">Enable full xterm clipboard support</flag>
-  </use>
-  <upstream>
-    <remote-id type="sourceforge">joe-editor</remote-id>
-  </upstream>
+<use>
+  <flag name="xterm">Enable full xterm clipboard support</flag>
+</use>
+<upstream>
+  <remote-id type="sourceforge">joe-editor</remote-id>
+</upstream>
 </pkgmetadata>
