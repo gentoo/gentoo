@@ -11,5 +11,5 @@ REQUIRED_USE=python_targets_python2_7
 SLOT=0
 SRC_URI=https://github.com/giuspen/cherrytree/archive/0.36.9.tar.gz -> cherrytree-0.36.9.tar.gz
 _eclass_exported_funcs=pkg_postinst:- pkg_setup:python-single-r1 src_prepare:distutils-r1 src_configure:distutils-r1 src_compile:distutils-r1 src_test:distutils-r1 src_install:distutils-r1
-_eclasses_=distutils-r1	0af33659915efd4b147c76251893f652	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	l10n	e26ea0642846685782f1813642e7ff0f	multilib	d062ae4ba2fc40a19c11de2ad89b6616	python-single-r1	2ebea8fbab356d63110245129a67a6dd	python-utils-r1	13d5b02ea59b21da41c77c9294f3b7f7	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_eclasses_=distutils-r1	04aa676883ff2a2644f619d9e5ef479a	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	l10n	e26ea0642846685782f1813642e7ff0f	multilib	d062ae4ba2fc40a19c11de2ad89b6616	python-single-r1	2ebea8fbab356d63110245129a67a6dd	python-utils-r1	13d5b02ea59b21da41c77c9294f3b7f7	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
 _md5_=e74f7e02334d8c4e55c85b945ab30d08

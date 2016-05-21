@@ -87,7 +87,7 @@ app-admin/diradm 2.9.7.1: diradm is a nearly complete nss/shadow suite for manag
 app-admin/drush 6.5.0 6.7.0: Command line shell and scripting interface for Drupal
 app-admin/durep 0.9-r4: A perl script designed for monitoring disk usage in a more visual way than du
 app-admin/ec2-ami-tools 1.5.6: These command-line tools serve as the client interface to the Amazon EC2 web service
-app-admin/eclean-kernel 0.4 0.4.1 9999: Remove outdated built kernels
+app-admin/eclean-kernel 0.4 0.4.1 0.4.2 9999: Remove outdated built kernels
 app-admin/elektra 0.7.1-r5 0.8.12 0.8.15 9999: Framework to store config parameters in hierarchical key-value pairs
 app-admin/emacs-updater 1.13 1.14: Rebuild Emacs packages
 app-admin/entr 3.5: Run arbitrary commands when files change
@@ -6487,6 +6487,7 @@ dev-perl/XML-Encoding 2.80.0-r1 2.90.0: Perl Module that parses encoding map XML
 dev-perl/XML-Entities 1.0.100 1.0.200: Decode strings with XML entities
 dev-perl/XML-Fast 0.110.0-r1: Simple and very fast XML to hash conversion
 dev-perl/XML-Feed 0.520.0 0.530.0: Syndication feed parser and auto-discovery
+dev-perl/XML-FeedPP 0.430.0: Parse/write/merge/edit RSS/RDF/Atom syndication feeds
 dev-perl/XML-Filter-BufferText 1.10.0-r1: Filter to put all characters() in one event
 dev-perl/XML-Filter-DOMFilter-LibXML 0.20.0-r1 0.40.0: SAX Filter allowing DOM processing of selected subtrees
 dev-perl/XML-Generator 1.40.0-r1: Perl XML::Generator - A module to help in generating XML documents
