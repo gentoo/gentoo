@@ -1,11 +1,11 @@
-DEFINED_PHASES=compile install prepare
+DEFINED_PHASES=compile install
 DESCRIPTION=PALO : PArisc Linux Loader
-EAPI=5
+EAPI=6
 HOMEPAGE=http://parisc-linux.org/ https://parisc.wiki.kernel.org/
 KEYWORDS=-* hppa
 LICENSE=GPL-2
 SLOT=0
 SRC_URI=mirror://debian/pool/main/p/palo/palo_1.95.tar.xz
-_eclass_exported_funcs=src_prepare:- src_compile:- src_install:-
+_eclass_exported_funcs=src_compile:- src_install:-
 _eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	flag-o-matic	d270fa247153df66074f795fa42dba3e	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
-_md5_=ba16a505d2827b8b5f5519a8c0918b62
+_md5_=6fc985501c1c85dc436a016f50116aef
