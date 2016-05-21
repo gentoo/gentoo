@@ -5237,17 +5237,17 @@ dev-perl/Authen-SCRAM 0.5.0: Salted Challenge Response Authentication Mechanism 
 dev-perl/Authen-Simple 0.500.0: Simple Authentication
 dev-perl/Authen-Simple-Passwd 0.600.0: Simple Passwd authentication
 dev-perl/AutoXS-Header 1.20.0-r1: Container for the AutoXS header files
-dev-perl/B-Hooks-EndOfScope 0.120.0-r1 0.150.0: Execute code after a scope finished compilation
+dev-perl/B-Hooks-EndOfScope 0.120.0-r1 0.150.0 0.200.0: Execute code after a scope finished compilation
 dev-perl/B-Hooks-OP-Check 0.190.0-r1: Wrap OP check callbacks
 dev-perl/B-Hooks-Parser 0.160.0: Interface to perls parser variables
 dev-perl/B-Keywords 1.140.0 1.150.0: Lists of reserved barewords and symbol names
 dev-perl/B-OPCheck 0.300.0: PL_check hacks using Perl callbacks
 dev-perl/B-Utils 0.270.0: Helper functions for op tree manipulation
-dev-perl/BSD-Resource 1.290.800: Perl module for BSD process resource limit and priority functions
+dev-perl/BSD-Resource 1.290.800 1.290.900: Perl module for BSD process resource limit and priority functions
 dev-perl/BZ-Client 1.72.0: A client for the Bugzilla web services API.
 dev-perl/Benchmark-Timer 0.710.700: Perl code benchmarking tool
 dev-perl/BerkeleyDB 0.550.0: This module provides Berkeley DB interface for Perl
-dev-perl/Bio-ASN1-EntrezGene 1.91.0-r1: Regular expression-based Perl Parser for NCBI Entrez Gene
+dev-perl/Bio-ASN1-EntrezGene 1.91.0-r1 1.700.0: Regular expression-based Perl Parser for NCBI Entrez Gene
 dev-perl/Bio-Das 1.170.0-r1: Interface to Distributed Annotation System
 dev-perl/Bio-Graphics 2.390.0: Generate images from Bio::Seq objects for visualization purposes
 dev-perl/Bio-SamTools 1.410.0 1.420.0: Read SAM/BAM database files
@@ -5255,11 +5255,11 @@ dev-perl/Bit-Vector 7.400.0: Efficient bit vector, set of integers and big int m
 dev-perl/Bit-Vector-Minimal 1.300.0-r1: Object-oriented wrapper around vec()
 dev-perl/Boulder 1.300.0-r1: An API for hierarchical tag/value structures
 dev-perl/Business-FedEx-DirectConnect 1.10.0-r1: Interface to FedEx Ship Manager Direct
-dev-perl/Business-ISBN 2.50.0-r1: Work with ISBN as objects
-dev-perl/Business-ISBN-Data 20140910.2.0: Data pack for Business::ISBN
+dev-perl/Business-ISBN 2.50.0-r1 2.90.200_rc: Work with ISBN as objects
+dev-perl/Business-ISBN-Data 20140910.2.0 20140910.3.0: Data pack for Business::ISBN
 dev-perl/Business-ISMN 1.130.0: International Standard Music Numbers
 dev-perl/Business-ISSN 0.910.0-r1: Object and functions to work with International Standard Serial Numbers
-dev-perl/Business-Tax-VAT-Validation 1.20.0: A class for european VAT numbers validation
+dev-perl/Business-Tax-VAT-Validation 1.20.0 1.100.0: A class for european VAT numbers validation
 dev-perl/Business-UPS 2.10.0-r1: A UPS Interface Module
 dev-perl/CDB_File 0.980.0: Tie to CDB (Bernstein's constant DB) files
 dev-perl/CDDB 1.222.0-r1: high-level interface to cddb/freedb protocol
@@ -5813,7 +5813,7 @@ dev-perl/LaTeX-Table 1.0.6: Perl extension for the automatic generation of LaTeX
 dev-perl/Lab-Measurement 3.410.0 3.500.0 9999: Measurement control and automation with Perl
 dev-perl/Lchown 1.10.0-r1: Use the lchown(2) system call from Perl
 dev-perl/Lexical-Persistence 1.23.0: Bind lexicals to persistent data
-dev-perl/Lexical-SealRequireHints 0.9.0: Prevent leakage of lexical hints
+dev-perl/Lexical-SealRequireHints 0.9.0 0.10.0: Prevent leakage of lexical hints
 dev-perl/Lingua-EN-Inflect 1.899.0: Perl module to pluralize English words
 dev-perl/Lingua-EN-NameCase 1.190.0: Correctly case a person's name from UPERCASE or lowcase
 dev-perl/Lingua-EN-NameParse 1.330.0: routines for manipulating a person's name
@@ -5937,6 +5937,7 @@ dev-perl/MogileFS-Client-Async 0.030.0-r1: MogileFS Client using AnyEvent non-bl
 dev-perl/MogileFS-Network 0.060.0-r1: Network awareness and extensions for MogileFS::Server
 dev-perl/MogileFS-Server 2.700.0-r2: Server for the MogileFS distributed file system
 dev-perl/MogileFS-Utils 2.290.0: Server for the MogileFS distributed file system
+dev-perl/Mojolicious 6.610.0: Real-time web framework
 dev-perl/Mon 0.110.0-r1: A Monitor Perl Module
 dev-perl/MongoDB 0.708.3.0 1.2.2: Official MongoDB Driver for Perl
 dev-perl/Monitoring-Plugin 0.390.0: Modules to streamline Nagios, Icinga, Shinken, etc. plugins
@@ -6453,7 +6454,7 @@ dev-perl/WWW-Curl 4.150.0-r1 4.170.0: Perl extension interface for libcurl
 dev-perl/WWW-Dict-Leo-Org 1.360.0 1.370.0 1.390.0 1.400.0: Commandline interface to http://dict.leo.org/
 dev-perl/WWW-Mechanize 1.730.0-r1 1.750.0: Handy web browsing in a Perl object
 dev-perl/WWW-Mechanize-FormFiller 0.100.0-r1 0.110.0: Framework to automate HTML forms
-dev-perl/WWW-Pastebin-PastebinCom-Create 0.4.0-r1 1.3.0: Paste on www.pastebin.com without API keys
+dev-perl/WWW-Pastebin-PastebinCom-Create 1.3.0-r1: Paste on www.pastebin.com without API keys
 dev-perl/WWW-RobotRules 6.20.0: Parse /robots.txt file
 dev-perl/WWW-Shorten 3.30.0-r1 3.93.0: Interface to URL shortening sites
 dev-perl/Want 0.210.0-r1 0.260.0 0.290.0: A generalisation of wantarray

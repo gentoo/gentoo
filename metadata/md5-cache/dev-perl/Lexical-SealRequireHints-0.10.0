@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=!<dev-perl/B-Hooks-OP-Check-0.190.0 dev-perl/Module-Build test? ( >=virtual/perl-Test-Simple-0.410.0 ) dev-lang/perl:=
+DESCRIPTION=Prevent leakage of lexical hints
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/Lexical-SealRequireHints/
+IUSE=test
+KEYWORDS=~amd64 ~x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=!<dev-perl/B-Hooks-OP-Check-0.190.0 dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/Z/ZE/ZEFRAM/Lexical-SealRequireHints-0.010.tar.gz
+_eclass_exported_funcs=src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:- src_install:perl-module
+_eclasses_=multiprocessing	e32940a7b2a9992ad217eccddb84d548	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	c584f9e0fe426f3dcc2c46c6f7cb95ce
+_md5_=8fe980b1e2f57a4cff156f007b48fc49
