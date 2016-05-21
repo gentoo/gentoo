@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -21,6 +21,7 @@ RDEPEND="
 	virtual/perl-File-Temp
 	dev-perl/Getopt-Long-Descriptive
 	dev-perl/JSON
+	dev-perl/JSON-MaybeXS
 	dev-perl/Module-Pluggable
 	dev-perl/Module-Runtime
 	dev-perl/URI
