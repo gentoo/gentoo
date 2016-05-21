@@ -30,6 +30,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas K. Hüttel <dilfridge@gentoo.org> (21 May 2016)
+# Unmaintained since 2011, needs old webkit-gtk:2 slot that has
+# security issues, no consumers in tree, bug 573092
+# Removal in 30 days
+dev-perl/Gtk2-WebKit
+
 # Kent Fredric <kentfredric@gmail.com> (15 May 2016)
 # Andreas K. Hüttel <dilfridge@gentoo.org> (21 May 2016)
 # Has been broken since app-arch/rar-5.0.0 due to List()
