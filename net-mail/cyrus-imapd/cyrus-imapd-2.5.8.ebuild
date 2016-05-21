@@ -1,9 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
-inherit autotools eutils multilib pam ssl-cert user toolchain-funcs
+EAPI=6
+inherit autotools multilib pam ssl-cert user toolchain-funcs
 
 MY_P=${P/_/}
 
@@ -36,7 +36,7 @@ DEPEND="sys-libs/zlib
 	postgres? ( dev-db/postgresql:* )
 	snmp? ( >=net-analyzer/net-snmp-5.2.2-r1 )
 	sqlite? ( dev-db/sqlite:3 )
-	ssl? ( >=dev-libs/openssl-1.0.1e:* )
+	ssl? ( >=dev-libs/openssl-1.0.1e:0[-bindist] )
 	tcpd? ( >=sys-apps/tcp-wrappers-7.6 snmp? ( net-analyzer/net-snmp[tcpd=] ) )"
 
 # all blockers really needed?
@@ -56,7 +56,7 @@ pkg_setup() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}/${PN}-db.patch"
+	eapply -p0 "${FILESDIR}/${PN}-db.patch"
 	# Fix master(8)->cyrusmaster(8) manpage.
 	for i in `grep -rl -e 'master\.8' -e 'master(8)' "${S}"` ; do
 		sed -i -e 's:master\.8:cyrusmaster.8:g' \
@@ -73,6 +73,7 @@ src_prepare() {
 	sed -i -e '/lock.h/s:lock.h:afs/lock.h:' \
 		ptclient/afskrb.c || die
 
+	eapply_user
 	eautoreconf
 }
 
@@ -122,9 +123,7 @@ src_install() {
 	emake DESTDIR="${D}" INSTALLDIRS=vendor install
 
 	dodoc README*
-	dohtml doc/*.html
-	docinto text
-	dodoc doc/text/*
+	dodoc -r doc
 	cp doc/cyrusv2.mc "${D}/usr/share/doc/${PF}/html"
 	cp -r contrib tools "${D}/usr/share/doc/${PF}"
 	rm -f doc/text/Makefile*
