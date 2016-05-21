@@ -15,7 +15,7 @@ HOMEPAGE="https://github.com/Ultimaker/Cura"
 SRC_URI="https://github.com/Ultimaker/${MY_PN}/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
 KEYWORDS="~amd64 ~x86"
 
-LICENSE="AGPL-3"
+LICENSE="AGPL-3+"
 SLOT="0"
 IUSE="+usb"
 
