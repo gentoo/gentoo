@@ -4796,7 +4796,7 @@ dev-libs/libwbxml 0.11.2: Library and tools to parse, encode and handle WBXML do
 dev-libs/libx86 1.1-r2 1.1-r3 1.1-r4: A hardware-independent library for executing real-mode x86 code
 dev-libs/libx86emu 1.1: A library for emulating x86
 dev-libs/libxdg-basedir 1.2.0-r1: Small library to access XDG Base Directories Specification paths
-dev-libs/libxdiff 0.23 0.23-r1: Library for creating diff files
+dev-libs/libxdiff 0.23-r1: Library for creating diff files
 dev-libs/libxls 0.3.0_pre107: A library which can read Excel (xls) files
 dev-libs/libxml2 2.9.2-r4 2.9.3: Version 2 of the library to manipulate XML files
 dev-libs/libxr 1.0: Cross-platform XML-RPC client/server library written in C
@@ -14385,7 +14385,7 @@ net-libs/ptlib 2.10.11 2.12.9 2.12.9-r1: Network focused portable C++ class libr
 net-libs/qmf 4.0.3: The Qt Messaging Framework
 net-libs/qtweetlib 0.5 9999: Qt based Twitter library
 net-libs/qxmpp 0.7.4 0.7.5 0.7.6 0.7.6-r1 0.8.0 0.8.2 9999: A cross-platform C++ XMPP client library based on the Qt framework
-net-libs/rabbitmq-c 0.3.0 0.5.0: RabbitMQ C client
+net-libs/rabbitmq-c 0.5.0: RabbitMQ C client
 net-libs/rb_libtorrent 0.16.17 0.16.17-r2 0.16.19 1.0.7 1.0.8 1.0.9 1.0.9-r1: C++ BitTorrent implementation focusing on efficiency and scalability
 net-libs/rest 0.7.93 0.7.93-r1: Helper library for RESTful services
 net-libs/ripe-atlas-sagan 1.1.8 1.1.10: A parsing library for RIPE Atlas result strings
