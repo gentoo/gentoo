@@ -4,15 +4,15 @@
 
 EAPI=6
 
-inherit fdo-mime git-r3
+inherit fdo-mime
 
 DESCRIPTION="Minimal image viewer designed for tiling window manager users"
 HOMEPAGE="https://github.com/eXeC64/imv"
-EGIT_REPO_URI="https://github.com/eXeC64/imv.git"
+SRC_URI="https://github.com/eXeC64/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="test"
 
 RDEPEND="
