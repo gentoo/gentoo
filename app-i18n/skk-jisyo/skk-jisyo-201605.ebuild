@@ -16,7 +16,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~hppa ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris"
 IUSE="cdb"
 
-DEPEND="sys-apps/gawk
+DEPEND="virtual/awk
 	cdb? (
 		|| (
 			dev-db/tinycdb
@@ -40,7 +40,7 @@ src_compile() {
 			cdbmake="cdb -c"
 		fi
 		for f in {,zipcode/}${MY_PN}.*; do
-			LC_ALL=C gawk '
+			LC_ALL=C awk '
 				/^[^;]/ {
 					s = substr($0, index($0, " ") + 1)
 					print "+" length($1) "," length(s) ":" $1 "->" s

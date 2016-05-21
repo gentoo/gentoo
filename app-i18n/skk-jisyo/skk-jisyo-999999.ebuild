@@ -23,7 +23,7 @@ IUSE="cdb"
 
 DEPEND="${RUBY_DEPS}
 	app-i18n/skktools
-	sys-apps/gawk
+	virtual/awk
 	cdb? (
 		|| (
 			dev-db/tinycdb
@@ -59,7 +59,7 @@ src_compile() {
 			cdbmake="cdb -c"
 		fi
 		for f in {,zipcode/}${MY_PN}.*; do
-			LC_ALL=C gawk '
+			LC_ALL=C awk '
 				/^[^;]/ {
 					s = substr($0, index($0, " ") + 1)
 					print "+" length($1) "," length(s) ":" $1 "->" s
