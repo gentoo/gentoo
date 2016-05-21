@@ -1,8 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>zzam@gentoo.org</email>
-		<name>Matthias Schwarzott</name>
-	</maintainer>
 </pkgmetadata>
