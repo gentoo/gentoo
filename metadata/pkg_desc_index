@@ -13402,7 +13402,7 @@ media-sound/wildmidi 0.2.3.5 0.3.6 0.3.7 0.3.8: Midi processing library and a mi
 media-sound/wmsound-data 1.0.0: A bunch of sounds for WindowMaker Sound Server
 media-sound/xfmpc 0.2.2: Music Player Daemon (MPD) client for the Xfce desktop environment
 media-sound/xineadump 0.1-r1: Utility for Xine decoding support in transKode
-media-sound/xmms2 0.8-r2 0.8-r3: X(cross)platform Music Multiplexing System. Next generation of the XMMS player
+media-sound/xmms2 0.8-r2 0.8-r3 0.8-r4: X(cross)platform Music Multiplexing System. Next generation of the XMMS player
 media-sound/xmms2-scrobbler 0.4.0: XMMS2 AudioScrobbler client
 media-sound/xnoise 0.2.21 9999: A media player for Gtk+ with a slick GUI, great speed and lots of features
 media-sound/xwax 1.5: Digital vinyl emulation software
