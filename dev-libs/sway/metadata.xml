@@ -22,7 +22,10 @@
 		something else.
 	</longdescription>
 	<use>
-		<flag name="gdk-pixbuf">Enable additional image format support via the gdk-pixbuf library.</flag>
+		<flag name="gdk-pixbuf">
+			Enable additional image format support via the
+			<pkg>x11-libs/gdk-pixbuf</pkg> library.
+		</flag>
 		<flag name="swaybar">Build 'swaybar': sway's status bar component.</flag>
 		<flag name="swaybg">Build 'swaybg': allows to set a desktop background image.</flag>
 		<flag name="swaygrab">Build 'swaygrab': allows taking screenshots or screencasts.</flag>
