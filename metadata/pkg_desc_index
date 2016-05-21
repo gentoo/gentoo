@@ -6300,11 +6300,11 @@ dev-perl/Test-Differences 0.610.0-r1 0.630.0 0.640.0: Test strings and data stru
 dev-perl/Test-DistManifest 1.12.0-r1 1.14.0: Author test that validates a package MANIFEST
 dev-perl/Test-Distribution 2.0.0-r1: perform tests on all modules of a distribution
 dev-perl/Test-EOL 1.600.0: Check the correct line endings in your project
-dev-perl/Test-Exception 0.320.0-r1 0.380.0 0.400.0 0.430.0: Test functions for exception based code
+dev-perl/Test-Exception 0.320.0-r1 0.430.0: Test functions for exception based code
 dev-perl/Test-FailWarnings 0.8.0: Add test failures if warnings are caught
 dev-perl/Test-Fatal 0.10.0-r1 0.14.0: Incredibly simple helpers for testing code with exceptions
 dev-perl/Test-File-ShareDir 1.1.1-r1: Create a Fake ShareDir for your modules for testing.
-dev-perl/Test-Inline 2.212.0-r1 2.213.0-r1: Inline test suite support for Perl
+dev-perl/Test-Inline 2.213.0-r1: Inline test suite support for Perl
 dev-perl/Test-Inter 1.30.0-r1 1.60.0: Framework for more readable interactive test scripts
 dev-perl/Test-LeakTrace 0.150.0: Traces memory leaks
 dev-perl/Test-LongString 0.150.0-r1 0.170.0: A library to test long strings
