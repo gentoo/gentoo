@@ -2587,10 +2587,6 @@
       <email>mjo@gentoo.org</email>
       <name>Michael Orlitzky</name>
     </member>
-    <member is-lead="1">
-      <email>olemarkus@gentoo.org</email>
-      <name>Ole Markus With</name>
-    </member>
   </project>
   <project>
     <email>pms-bugs@gentoo.org</email>
@@ -3989,10 +3985,6 @@
     <member>
       <email>robbat2@gentoo.org</email>
       <name>Robin Johnson</name>
-    </member>
-    <member>
-      <email>tampakrap@gmail.com</email>
-      <name>Theo Chatzimichos</name>
     </member>
   </project>
   <project>
