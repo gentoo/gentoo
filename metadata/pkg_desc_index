@@ -17697,7 +17697,7 @@ www-apps/jekyll-sass-converter 1.4.0: A basic Sass converter for Jekyll
 www-apps/jekyll-sitemap 0.10.0: Automatically generate a sitemap.xml for your Jekyll site
 www-apps/jekyll-watch 1.3.1: Rebuild your Jekyll site when a file changes with the --watch switch
 www-apps/joomla 3.4.8: A powerful Open Source Content Management System
-www-apps/kibana-bin 4.1.6 4.4.2 4.5.0: Explore and visualize data
+www-apps/kibana-bin 4.1.7 4.5.1: Explore and visualize data
 www-apps/klaus 0.8.0 0.9.1: A simple, easy-to-set-up Git web viewer
 www-apps/liquid_feedback_core 2.2.3 2.2.6 3.0.4: Internet platforms for proposition development and decision making
 www-apps/liquid_feedback_frontend 2.2.2 2.2.7 3.0.6: Internet platforms for proposition development and decision making
