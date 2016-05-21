@@ -5265,7 +5265,7 @@ dev-perl/CDB_File 0.980.0: Tie to CDB (Bernstein's constant DB) files
 dev-perl/CDDB 1.222.0-r1: high-level interface to cddb/freedb protocol
 dev-perl/CDDB-File 1.50.0-r1: Parse a CDDB/freedb data file
 dev-perl/CDDB_get 2.280.0-r1: Read the CDDB entry for an audio CD in your drive
-dev-perl/CGI 4.220.0 4.220.0-r1 4.250.0: Simple Common Gateway Interface Class
+dev-perl/CGI 4.220.0 4.250.0: Simple Common Gateway Interface Class
 dev-perl/CGI-Ajax 0.707.0: a perl-specific system for writing Asynchronous web applications
 dev-perl/CGI-Builder 1.360.0-r1: Framework to build simple or complex web-apps
 dev-perl/CGI-Compile 0.210.0: Compile .cgi scripts to a code reference like ModPerl::Registry
