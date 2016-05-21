@@ -11413,7 +11413,7 @@ kde-base/kde-env 4.14.3: Environment setting required for all KDE4 apps to run
 kde-base/kdebase-cursors 4.11.19 4.11.22: oxygen cursors from kdebase
 kde-base/kdebase-pam 9 10: pam.d files used by several KDE components
 kde-base/kdebase-startkde 4.11.19 4.11.22 4.11.22-r1: Startkde script, which starts a complete KDE session, and associated scripts
-kde-base/kdelibs 4.14.8 4.14.16 4.14.20: KDE libraries needed by all KDE programs
+kde-base/kdelibs 4.14.8 4.14.16 4.14.20 4.14.20-r1: KDE libraries needed by all KDE programs
 kde-base/kdeplasma-addons 4.14.3 4.14.3-r1: Extra Plasma applets and engines
 kde-base/kdm 4.11.19 4.11.22: KDE login manager, similar to xdm and gdm
 kde-base/kephal 4.11.19 4.11.22: Allows handling of multihead systems via the XRandR extension
@@ -15036,7 +15036,7 @@ net-p2p/rtorrent 0.9.3 0.9.4-r1 0.9.6: BitTorrent Client using libtorrent
 net-p2p/saku 3.11.0-r1: a clone of P2P anonymous BBS shinGETsu
 net-p2p/smet2html 0.1: Convert eDonkey2000 server.met to html
 net-p2p/soulseek-qt 20131106-r1: Official binary Qt SoulSeek client
-net-p2p/syncthing 0.12.23 0.12.24: Open Source Continuous File Synchronization
+net-p2p/syncthing 0.12.25: Open Source Continuous File Synchronization
 net-p2p/syrep 0.9: A generic file repository synchronization tool
 net-p2p/torrentinfo 1.8.6: A torrent file parser
 net-p2p/transmission 2.84-r4 2.84-r5 2.90-r1 2.92: A Fast, Easy and Free BitTorrent client
