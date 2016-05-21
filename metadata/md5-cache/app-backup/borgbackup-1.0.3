@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-python/setuptools_scm[python_targets_python3_4(-)?,-python_single_target_python3_4(-)] dev-python/cython[python_targets_python3_4(-)?,-python_single_target_python3_4(-)] !!app-office/borg app-arch/lz4 dev-python/msgpack[python_targets_python3_4(-)?,-python_single_target_python3_4(-)] !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) fuse? ( dev-python/llfuse[python_targets_python3_4(-)?,-python_single_target_python3_4(-)] ) python_targets_python3_4? ( dev-lang/python:3.4 ) >=dev-lang/python-exec-2:=[python_targets_python3_4(-)?,-python_single_target_python3_4(-)]
+DESCRIPTION=Deduplicating backup program with compression and authenticated encryption.
+EAPI=5
+HOMEPAGE=https://borgbackup.readthedocs.io/
+IUSE=libressl +fuse python_targets_python3_4
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD
+RDEPEND=!!app-office/borg app-arch/lz4 dev-python/msgpack[python_targets_python3_4(-)?,-python_single_target_python3_4(-)] !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) fuse? ( dev-python/llfuse[python_targets_python3_4(-)?,-python_single_target_python3_4(-)] ) python_targets_python3_4? ( dev-lang/python:3.4 ) >=dev-lang/python-exec-2:=[python_targets_python3_4(-)?,-python_single_target_python3_4(-)]
+REQUIRED_USE=|| ( python_targets_python3_4 )
+SLOT=0
+SRC_URI=mirror://pypi/b/borgbackup/borgbackup-1.0.3.tar.gz
+_eclass_exported_funcs=src_prepare:distutils-r1 src_configure:distutils-r1 src_compile:distutils-r1 src_test:distutils-r1 src_install:distutils-r1
+_eclasses_=distutils-r1	0af33659915efd4b147c76251893f652	eutils	792f83d5ec9536cb5ccef375469d8bde	multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	d062ae4ba2fc40a19c11de2ad89b6616	multiprocessing	e32940a7b2a9992ad217eccddb84d548	python-r1	0f6937650a475d673baa5d0c8c0b37b3	python-utils-r1	13d5b02ea59b21da41c77c9294f3b7f7	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=2b38f2c1c75396b6eeaca304387e43d6
