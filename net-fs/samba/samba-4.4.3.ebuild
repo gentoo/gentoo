@@ -75,6 +75,7 @@ DEPEND="${CDEPEND}
 RDEPEND="${CDEPEND}
 	client? ( net-fs/cifs-utils[ads?] )
 	selinux? ( sec-policy/selinux-samba )
+	!dev-perl/Parse-Yapp
 "
 
 REQUIRED_USE="addc? ( gnutls !system-mitkrb5 )
