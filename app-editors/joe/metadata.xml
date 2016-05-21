@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="person">
-    <email>tomk@gentoo.org</email>
-    <name>Tom Knight</name>
-  </maintainer>
-  <longdescription>
+<longdescription>
   JOE (Joe's own editor) has the feel of most IBM PC text editors: The
   key-sequences are reminiscent of WordStar and Turbo-C. JOE is much more
   powerful than those editors, however. JOE has all of the features a UNIX
