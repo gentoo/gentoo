@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation.
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -38,9 +38,9 @@ ca - Catalan locale
 ca@valencia - Catalan locale (Valencia)
 ca_ES - Catalan locale for Spain
 ca_XV - Asturian and Catalan locale (Valencia)
-ckb - Kurdish (Sorani)
+ckb - Kurdish (Sorani) locale
 cmn - Chinese (Mandarin) locale
-co - Corsican 
+co - Corsican locale
 crh - Crimean Tatar (Crimean Turkish) locale
 cs - Czech locale
 cs_CZ - Czech locale for Czech Republic
@@ -96,7 +96,7 @@ fr - French locale
 fr_CA - French locale for Canada
 fr_FR - French locale for France
 frp - Franco-Provençal locale
-fur - Friullian
+fur - Friullian locale
 fy - Frisian locale
 fy_NL - Frisian language locale for the Netherlands
 ga - Irish locale
@@ -148,7 +148,7 @@ ksw - S'gaw Karen locale
 ku - Kurdish (latin) locale
 ky - Kyrgyz (Kirghiz) locale
 ky_KG -  Kyrgyz (Kirghiz) locale for Kyrgyzstan
-la - Latin2 locale
+la - Latin locale
 lb - Luxembourgish locale
 lg - Ganda locale
 li - Limburgian locale
@@ -214,7 +214,7 @@ rue - Rusyn locale
 rw - Kinyarwanda locale
 sa - Sanskrit locale
 sa_IN - Sanskrit locale for India
-sah - Sakha (Yakut)
+sah - Sakha (Yakut) locale
 sat - Santali locale
 sco - Scots locale
 sd - Sindhi locale
