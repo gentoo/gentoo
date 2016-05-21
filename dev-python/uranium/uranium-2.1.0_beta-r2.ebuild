@@ -14,7 +14,7 @@ DESCRIPTION="A Python framework for building 3D printing related applications"
 HOMEPAGE="https://github.com/Ultimaker/Uranium"
 SRC_URI="https://github.com/Ultimaker/${MY_PN}/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="AGPL-3"
+LICENSE="AGPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="doc test"
