@@ -2,9 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 <maintainer type="person">
-<email>matsuu@gentoo.org</email>
-</maintainer>
-<maintainer type="person">
 <email>pva@gentoo.org</email>
 <name>Peter Volkov</name>
 </maintainer>
