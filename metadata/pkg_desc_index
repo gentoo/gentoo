@@ -11988,7 +11988,7 @@ media-fonts/monafont 2.90-r2: Japanese bitmap and TrueType fonts suitable for br
 media-fonts/monoid 0.60 0.61: Open source coding font
 media-fonts/montecarlo 0: monospace font, created by programmers, for programmers
 media-fonts/mplus-fonts 2.2.4: M+ Japanese bitmap fonts
-media-fonts/mplus-outline-fonts 0_pre059 0_pre060: M+ Japanese outline fonts
+media-fonts/mplus-outline-fonts 0_pre059 0_pre060 0_pre061: M+ Japanese outline fonts
 media-fonts/nanum 3.0: The Nanum Korean fonts distributed by Naver
 media-fonts/nanumfont 2.0 2.0-r1: Korean monospace font distributed by NHN
 media-fonts/nepali-fonts 1-r1: a collection of fonts for Nepali users
@@ -17656,7 +17656,7 @@ www-apache/pwauth 2.3.10: A Unix Web Authenticator
 www-apps/389-dsgw 1.1.10: 389 Directory Server Gateway Web Application
 www-apps/Apache-Gallery 1.0_rc3-r1: Apache gallery for mod_perl
 www-apps/agendav 1.2.6.2: multilanguage CalDAV web client
-www-apps/airdcpp-webui 1.0.3 1.0.4 1.0.5: Web interface for airdcpp-webclient
+www-apps/airdcpp-webui 1.0.4 1.0.5 1.0.6: Web interface for airdcpp-webclient
 www-apps/ampache 3.8.1 3.8.2: PHP-based tool for managing,updating and playing audio files via a web interface
 www-apps/b2evolution 4.1.7: Multilingual multiuser multi-blog engine
 www-apps/baikal 0.2.4 0.2.7 0.3.5 0.4.4: Lightweight CalDAV+CardDAV server
