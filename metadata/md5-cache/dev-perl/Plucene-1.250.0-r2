@@ -1,13 +1,14 @@
 DEFINED_PHASES=compile configure install prepare test unpack
-DEPEND=virtual/perl-Memoize dev-perl/Tie-Array-Sorted dev-perl/Encode-compat dev-perl/File-Slurp dev-perl/Class-Virtual dev-perl/Class-Accessor virtual/perl-Time-Piece virtual/perl-File-Spec >=virtual/perl-Scalar-List-Utils-1.13 dev-perl/Lingua-Stem dev-perl/Bit-Vector-Minimal dev-perl/IO-stringy >=virtual/perl-Test-Harness-2.30 >=dev-perl/Module-Build-0.28 dev-lang/perl:=[-build(-)]
+DEPEND=>=dev-perl/Bit-Vector-Minimal-1.0.0 virtual/perl-Carp >=dev-perl/Class-Accessor-0.180.0 >=dev-perl/Class-Virtual-0.30.0 virtual/perl-Encode virtual/perl-File-Spec virtual/perl-IO dev-perl/Lingua-Stem >=virtual/perl-Scalar-List-Utils-1.130.0 >=virtual/perl-Memoize-1.10.0 >=dev-perl/Tie-Array-Sorted-1.100.0 virtual/perl-Time-Piece dev-perl/Encode-compat dev-perl/File-Slurp dev-perl/IO-stringy >=dev-perl/Module-Build-0.280.0 test? ( >=virtual/perl-Test-Harness-2.300.0 ) dev-lang/perl:=[-build(-)]
 DESCRIPTION=Plucene - the Perl lucene port
 EAPI=5
 HOMEPAGE=http://search.cpan.org/dist/Plucene/
+IUSE=test
 KEYWORDS=amd64 ~ppc ~x86
 LICENSE=|| ( Artistic GPL-1+ )
-RDEPEND=virtual/perl-Memoize dev-perl/Tie-Array-Sorted dev-perl/Encode-compat dev-perl/File-Slurp dev-perl/Class-Virtual dev-perl/Class-Accessor virtual/perl-Time-Piece virtual/perl-File-Spec >=virtual/perl-Scalar-List-Utils-1.13 dev-perl/Lingua-Stem dev-perl/Bit-Vector-Minimal dev-perl/IO-stringy dev-lang/perl:=[-build(-)]
+RDEPEND=>=dev-perl/Bit-Vector-Minimal-1.0.0 virtual/perl-Carp >=dev-perl/Class-Accessor-0.180.0 >=dev-perl/Class-Virtual-0.30.0 virtual/perl-Encode virtual/perl-File-Spec virtual/perl-IO dev-perl/Lingua-Stem >=virtual/perl-Scalar-List-Utils-1.130.0 >=virtual/perl-Memoize-1.10.0 >=dev-perl/Tie-Array-Sorted-1.100.0 virtual/perl-Time-Piece dev-perl/Encode-compat dev-perl/File-Slurp dev-perl/IO-stringy dev-lang/perl:=[-build(-)]
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/T/TM/TMTM/Plucene-1.25.tar.gz
 _eclass_exported_funcs=src_unpack:perl-module src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:-
 _eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	multilib	d062ae4ba2fc40a19c11de2ad89b6616	multiprocessing	e32940a7b2a9992ad217eccddb84d548	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	c584f9e0fe426f3dcc2c46c6f7cb95ce	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	unpacker	45d07319df5f40ee6af58418b0f930be
-_md5_=035b10c2c6025353ffbc3e5679d637b8
+_md5_=73c03efc64b2027b46997cebf9e011c3
