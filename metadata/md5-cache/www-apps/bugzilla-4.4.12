@@ -1,0 +1,15 @@
+DEFINED_PHASES=install postinst prepare prerm setup test
+DEPEND=test? ( dev-perl/Pod-Coverage:* >=dev-lang/perl-5.10.1:* >=dev-perl/CGI-3.510:* virtual/perl-Digest-SHA:* >=dev-perl/DateTime-0.50:* >=dev-perl/DateTime-TimeZone-0.71:* >=dev-perl/DBI-1.601:* >=dev-perl/Template-Toolkit-2.22:* >=dev-perl/Email-Send-2.190:* >=dev-perl/Email-MIME-1.904:* dev-perl/URI:* >=dev-perl/List-MoreUtils-0.32:* dev-perl/Math-Random-ISAAC:* ) modperl? ( =www-servers/apache-2* ) || ( virtual/httpd-cgi virtual/httpd-fastcgi ) >=app-admin/webapp-config-1.50.15
+DESCRIPTION=Bugzilla is the Bug-Tracking System from the Mozilla project
+EAPI=6
+HOMEPAGE=https://www.bugzilla.org
+IUSE=modperl extras graphviz mysql postgres sqlite test modperl vhosts
+KEYWORDS=~amd64 ~x86
+LICENSE=MPL-2.0
+RDEPEND=virtual/httpd-cgi:* >=dev-lang/perl-5.10.1:* >=dev-perl/CGI-3.510:* virtual/perl-Digest-SHA:* >=dev-perl/DateTime-0.50:* >=dev-perl/DateTime-TimeZone-0.71:* >=dev-perl/DBI-1.601:* >=dev-perl/Template-Toolkit-2.22:* >=dev-perl/Email-Send-2.190:* >=dev-perl/Email-MIME-1.904:* dev-perl/URI:* >=dev-perl/List-MoreUtils-0.32:* dev-perl/Math-Random-ISAAC:* postgres? ( >=dev-perl/DBD-Pg-1.49:* ) mysql? ( >=dev-perl/DBD-mysql-4.00.5:* ) sqlite? ( >=dev-perl/DBD-SQLite-1.29:* ) extras? ( >=dev-perl/GD-2.35[png,truetype] >=dev-perl/Chart-2.4.1:* dev-perl/Template-GD:* dev-perl/GDTextUtil:* dev-perl/GDGraph:* dev-perl/XML-Twig:* >=dev-perl/MIME-tools-5.427:* dev-perl/libwww-perl:* >=dev-perl/PatchReader-0.9.6:* dev-perl/perl-ldap:* dev-perl/RadiusPerl:* dev-perl/Authen-SASL:* >=dev-perl/SOAP-Lite-0.712:* dev-perl/JSON-RPC:* >=dev-perl/JSON-XS-2.0:* dev-perl/Test-Taint:* >=dev-perl/HTML-Parser-3.67:* dev-perl/HTML-Scrubber:* >=virtual/perl-Encode-2.21:* dev-perl/Encode-Detect:* dev-perl/Email-MIME-Attachment-Stripper:* dev-perl/Email-Reply:* dev-perl/TheSchwartz:* dev-perl/Daemon-Generic:* dev-perl/File-MimeInfo:* || ( media-gfx/imagemagick[perl] media-gfx/graphicsmagick[imagemagick,perl] ) dev-perl/MIME-tools:* ) modperl? ( www-apache/mod_perl:1 >=dev-perl/Apache-SizeLimit-0.96:* ) graphviz? ( media-gfx/graphviz:* ) modperl? ( =www-servers/apache-2* ) >=app-admin/webapp-config-1.50.15
+REQUIRED_USE=|| ( mysql postgres sqlite )
+SLOT=4.4.12
+SRC_URI=https://ftp.mozilla.org/pub/mozilla.org/webtools/bugzilla-4.4.12.tar.gz
+_eclass_exported_funcs=pkg_prerm:webapp pkg_postinst:webapp pkg_setup:- src_prepare:- src_test:- src_install:-
+_eclasses_=depend.apache	e3c541cb90838388f81620d630c28f41	eutils	792f83d5ec9536cb5ccef375469d8bde	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	webapp	42c6ef7af496b228f9854b3c81e4b226
+_md5_=f109fabb2d19e59e5175b97438f0acf0
