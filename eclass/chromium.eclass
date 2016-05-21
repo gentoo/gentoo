@@ -64,23 +64,11 @@ if [[ ${CHROMIUM_LANGS} ]]; then
 fi
 
 _chromium_crlang() {
-	local x
-	for x in "$@"; do
-		case $x in
-			es_LA) echo es-419 ;;
-			*) echo "${x/_/-}" ;;
-		esac
-	done
+	echo "${@/_/-}"
 }
 
 _chromium_syslang() {
-	local x
-	for x in "$@"; do
-		case $x in
-			es-419) echo es_LA ;;
-			*) echo "${x/-/_}" ;;
-		esac
-	done
+	echo "${@/-/_}"
 }
 
 _chromium_strip_pak() {
