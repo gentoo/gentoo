@@ -16581,7 +16581,7 @@ sys-apps/moreutils 0.50 0.51 0.52 0.53 0.54 0.55 0.56 0.57 0.58: a growing colle
 sys-apps/most 5.0.0a-r1: Paging program that displays, one windowful at a time, the contents of a file
 sys-apps/mount-gtk 1.4.2: GTK+ based UDisks2 frontend
 sys-apps/mouseemu 0.12 0.15: Emulates scrollwheel, right- & left-click for one-button mice/touchpads
-sys-apps/msr-tools 1.2: Utilities allowing the read and write of CPU model-specific registers (MSR)
+sys-apps/msr-tools 1.2 1.3: Utilities allowing the read and write of CPU model-specific registers (MSR)
 sys-apps/mtree 1.0 1.0.1: Directory hierarchy mapping tool from FreeBSD
 sys-apps/nawk 20121220-r2: Brian Kernighan's pattern scanning and processing language
 sys-apps/nca 0.9.0-r1: Network Console on Acid
