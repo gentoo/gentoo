@@ -2,21 +2,22 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 inherit golang-build
 
 KEYWORDS="~amd64"
 EGO_PN="github.com/odeke-em/drive/..."
 EGIT_COMMIT="v${PV}"
 SRC_URI="https://${EGO_PN%/*}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz
-https://github.com/boltdb/bolt/archive/2f846c3551b76d7710f159be840d66c3d064abbe.tar.gz -> bolt-2f846c3551b76d7710f159be840d66c3d064abbe.tar.gz
-https://github.com/cheggaaa/pb/archive/c089c0e183064d83038db7c2ae1b711fb2e747a4.tar.gz -> pb-c089c0e183064d83038db7c2ae1b711fb2e747a4.tar.gz
+https://github.com/GoogleCloudPlatform/gcloud-golang/archive/426f71cccabdf34d0fd67fc49e25038c8f49a0bb.tar.gz -> gcloud-golang-426f71cccabdf34d0fd67fc49e25038c8f49a0bb.tar.gz
+https://github.com/boltdb/bolt/archive/dfb21201d9270c1082d5fb0f07f500311ff72f18.tar.gz -> bolt-dfb21201d9270c1082d5fb0f07f500311ff72f18.tar.gz
+https://github.com/cheggaaa/pb/archive/c1f48d5ce4f292dfb775ef52aaedd15be323510d.tar.gz -> pb-c1f48d5ce4f292dfb775ef52aaedd15be323510d.tar.gz
 https://github.com/codegangsta/inject/archive/33e0aa1cb7c019ccc3fbe049a8262a6403d30504.tar.gz -> inject-33e0aa1cb7c019ccc3fbe049a8262a6403d30504.tar.gz
-https://github.com/golang/net/archive/b6d7b1396ec874c3b00f6c84cd4301a17c56c8ed.tar.gz -> go-net-0_pre20160216.tar.gz
-https://github.com/golang/oauth2/archive/2cd4472c321b6cba78e029d99f0e7fe51032fd21.tar.gz -> go-oauth2-0_pre20160222.tar.gz
-https://github.com/go-martini/martini/archive/dafdd96c12087352f3cf407b8f2a058028edf715.tar.gz -> martini-dafdd96c12087352f3cf407b8f2a058028edf715.tar.gz
-https://github.com/GoogleCloudPlatform/gcloud-golang/archive/872c736f496c2ba12786bedbb8325576bbdb33cf.tar.gz -> gcloud-golang-872c736f496c2ba12786bedbb8325576bbdb33cf.tar.gz
-https://github.com/google/google-api-go-client/archive/fceeaa645c4015c833842e6ed6052b2dda667079.tar.gz -> google-api-go-client-fceeaa645c4015c833842e6ed6052b2dda667079.tar.gz
+https://github.com/go-martini/martini/archive/0c6ad5903d2bf9337762caa9c357247279c230c3.tar.gz -> martini-0c6ad5903d2bf9337762caa9c357247279c230c3.tar.gz
+https://github.com/golang/crypto/archive/5bcd134fee4dd1475da17714aac19c0aa0142e2f.tar.gz -> crypto-5bcd134fee4dd1475da17714aac19c0aa0142e2f.tar.gz
+https://github.com/golang/net/archive/0c607074acd38c5f23d1344dfe74c977464d1257.tar.gz -> net-0c607074acd38c5f23d1344dfe74c977464d1257.tar.gz
+https://github.com/golang/oauth2/archive/c406a4cc4ba462e5dc2f16225c5bd9488f9cbe10.tar.gz -> oauth2-c406a4cc4ba462e5dc2f16225c5bd9488f9cbe10.tar.gz
+https://github.com/google/google-api-go-client/archive/7059a7f3d456870ff1e8424a6b1f62abe5f95f36.tar.gz -> google-api-go-client-7059a7f3d456870ff1e8424a6b1f62abe5f95f36.tar.gz
 https://github.com/martini-contrib/binding/archive/8aaceec3b52c275477f32c95ea5c6e8ccaba04c5.tar.gz -> binding-8aaceec3b52c275477f32c95ea5c6e8ccaba04c5.tar.gz
 https://github.com/mattn/go-isatty/archive/56b76bdf51f7708750eac80fa38b952bb9f32639.tar.gz -> go-isatty-56b76bdf51f7708750eac80fa38b952bb9f32639.tar.gz
 https://github.com/odeke-em/cache/archive/baf8e436bc97557118cb0bf118ab8ac6aeeda381.tar.gz -> cache-baf8e436bc97557118cb0bf118ab8ac6aeeda381.tar.gz
@@ -24,7 +25,8 @@ https://github.com/odeke-em/cli-spinner/archive/610063bb4aeef25f7645b3e608045665
 https://github.com/odeke-em/command/archive/91ca5ec5e9a1bc2668b1ccbe0967e04a349e3561.tar.gz -> command-91ca5ec5e9a1bc2668b1ccbe0967e04a349e3561.tar.gz
 https://github.com/odeke-em/exponential-backoff/archive/96e25d36ae36ad09ac02cbfe653b44c4043a8e09.tar.gz -> exponential-backoff-96e25d36ae36ad09ac02cbfe653b44c4043a8e09.tar.gz
 https://github.com/odeke-em/extractor/archive/801861aedb854c7ac5e1329e9713023e9dc2b4d4.tar.gz -> extractor-801861aedb854c7ac5e1329e9713023e9dc2b4d4.tar.gz
-https://github.com/odeke-em/go-utils/archive/f9f5791e018b45dfdc4925be1e7b9728e637c4bf.tar.gz -> go-utils-f9f5791e018b45dfdc4925be1e7b9728e637c4bf.tar.gz
+https://github.com/odeke-em/go-utils/archive/005c88c5a078d550187a80d9f90b3694223a920d.tar.gz -> go-utils-005c88c5a078d550187a80d9f90b3694223a920d.tar.gz
+https://github.com/odeke-em/go-uuid/archive/b211d769a9aaba5b2b8bdbab5de3c227116f3c39.tar.gz -> go-uuid-b211d769a9aaba5b2b8bdbab5de3c227116f3c39.tar.gz
 https://github.com/odeke-em/log/archive/cad53c4565a0b0304577bd13f3862350bdc5f907.tar.gz -> log-cad53c4565a0b0304577bd13f3862350bdc5f907.tar.gz
 https://github.com/odeke-em/meddler/archive/d2b51d2b40e786ab5f810d85e65b96404cf33570.tar.gz -> meddler-d2b51d2b40e786ab5f810d85e65b96404cf33570.tar.gz
 https://github.com/odeke-em/pretty-words/archive/9d37a7fcb4ae6f94b288d371938482994458cecb.tar.gz -> pretty-words-9d37a7fcb4ae6f94b288d371938482994458cecb.tar.gz
@@ -42,10 +44,11 @@ IUSE=""
 get_archive_go_package() {
 	local archive=${1} uri x
 	case ${archive} in
-		go-oauth2-*) echo "oauth2-* golang.org/x/oauth2"; return;;
+		oauth2-*) echo "oauth2-* golang.org/x/oauth2"; return;;
 		google-api-go-client-*) echo "google-api-go-client-* google.golang.org/api"; return;;
 		gcloud-golang-*) echo "gcloud-golang-* google.golang.org/cloud"; return;;
-		go-net-*) echo "net-* golang.org/x/net"; return;;
+		net-*) echo "net-* golang.org/x/net"; return;;
+		crypto-*) echo "crypto-* golang.org/x/crypto"; return;;
 	esac
 	for x in ${SRC_URI}; do
 		if [[ ${x} == http* ]]; then
@@ -89,6 +92,7 @@ src_unpack() {
 }
 
 src_prepare() {
+	default
 	rm -rf "${S}/src/${EGO_PN%/*}/drive-gen/Godeps/_workspace" || die
 }
 
