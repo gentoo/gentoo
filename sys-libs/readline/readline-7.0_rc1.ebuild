@@ -108,7 +108,7 @@ multilib_src_configure() {
 	ECONF_SOURCE=${S} \
 	econf \
 		--cache-file="${BUILD_DIR}"/config.cache \
-		--docdir=/usr/share/doc/${PF} \
+		--docdir='$(datarootdir)'/doc/${PF} \
 		--with-curses \
 		$(use_enable static-libs static)
 
