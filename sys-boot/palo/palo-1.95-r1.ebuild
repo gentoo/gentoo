@@ -11,7 +11,7 @@ SRC_URI="mirror://debian/pool/main/p/${PN}/${P/-/_}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="-* ~hppa"
+KEYWORDS="-* hppa"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.95-toolchain.patch
