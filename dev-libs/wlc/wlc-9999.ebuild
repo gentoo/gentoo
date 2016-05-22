@@ -31,6 +31,7 @@ RDEPEND="virtual/opengl
 		systemd? ( sys-apps/systemd sys-apps/dbus )"
 
 DEPEND="${RDEPEND}
+		virtual/pkgconfig
 		dev-libs/wayland-protocols"
 
 src_configure() {
