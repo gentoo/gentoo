@@ -335,11 +335,6 @@ dev-ruby/activerecord sqlite3
 # masking zephyr USE on pidgin
 net-im/pidgin zephyr
 
-=dev-java/ibm-jdk-bin-1.5* -nsplugin
-=dev-java/ibm-jre-bin-1.5* -nsplugin
-=dev-java/ibm-jdk-bin-1.6* -nsplugin
-=dev-java/ibm-jre-bin-1.6* -nsplugin
-
 # Joseph Jezak <josejx@gentoo.org> (28 Jun 2007)
 # Masked Parallel LCD devices for bug #180683
 # app-misc/lcd4linux

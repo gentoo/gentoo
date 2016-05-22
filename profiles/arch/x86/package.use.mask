@@ -235,10 +235,6 @@ www-client/firefox -ipc
 # x86 platforms works
 sys-power/pm-utils -video_cards_intel -video_cards_radeon
 
-# Vlastimil Babka <caster@gentoo.org> (31 Mar 2010)
->=dev-java/ibm-jdk-bin-1.5 -nsplugin
->=dev-java/ibm-jre-bin-1.5 -nsplugin
-
 # Jim Ramsay <lack@gentoo.org> (24 March 2011)
 # '64bit' '32bit' 'nspluginwrapper' are for amd64 only
 www-plugins/adobe-flash 32bit 64bit
@@ -268,11 +264,6 @@ app-text/enchant -zemberek
 
 x11-terms/eterm sse2
 x11-terms/eterm cpu_flags_x86_sse2
-
-# Christian Faulhammer <opfer@gentoo.org> (14 Jan 2008)
-# only works on x86
-dev-java/ibm-jdk-bin -alsa
-dev-java/ibm-jre-bin -alsa
 
 # Steve Dibb <beandog@gentoo.org> (29 Sept 2008)
 media-video/mplayer -cpudetection -custom-cpuopts -bindist
