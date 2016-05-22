@@ -6085,7 +6085,7 @@ dev-perl/PPI-PowerToys 0.140.0: A handy collection of small PPI-based utilities
 dev-perl/PPIx-EditorTools 0.190.0: Utility methods and base class for manipulating Perl via PPI
 dev-perl/PPIx-Regexp 0.33.0 0.48.0: Represent a regular expression of some sort
 dev-perl/PPIx-Utilities 1.1.0-r1: Extensions to PPI
-dev-perl/Package-DeprecationManager 0.130.0-r1 0.150.0 0.160.0: Manage deprecation warnings for your distribution
+dev-perl/Package-DeprecationManager 0.150.0 0.160.0: Manage deprecation warnings for your distribution
 dev-perl/Package-Stash 0.360.0-r1 0.370.0: Routines for manipulating stashes
 dev-perl/Package-Stash-XS 0.280.0: Faster and more correct implementation of the Package::Stash API
 dev-perl/Package-Variant 1.3.2: Parameterizable packages
