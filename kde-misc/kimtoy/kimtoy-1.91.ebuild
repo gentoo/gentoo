@@ -48,13 +48,19 @@ COMMON_DEPEND="
 	semantic-desktop? ( $(add_frameworks_dep kfilemetadata) )
 "
 DEPEND="${COMMON_DEPEND}
-	sys-devel/gettext
 	x11-misc/shared-mime-info
 "
 RDEPEND="${COMMON_DEPEND}
 	!kde-misc/kimtoy:4
 	>=app-i18n/fcitx-4.0
 "
+
+src_prepare() {
+	kde5_src_prepare
+
+	# bug 581736
+	cmake_comment_add_subdirectory po
+}
 
 src_configure() {
 	local mycmakeargs=(
