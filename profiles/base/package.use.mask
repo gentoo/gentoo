@@ -863,20 +863,12 @@ dev-python/kaa-base tls
 # Java is not supported in most of the arches enchant is keyworded
 app-text/enchant zemberek
 
-dev-java/ibm-jdk-bin nsplugin
-dev-java/ibm-jre-bin nsplugin
-
 # These are for BSD only
 net-proxy/squid ipf-transparent pf-transparent
 app-admin/sshguard ipfilter
 
 # Linking against libnfsidmap requires libs in /usr #149472
 sys-apps/acl nfs
-
-# Christian Faulhammer <opfer@gentoo.org> (14 Jan 2008)
-# only works on x86, where this will be unmasked
-dev-java/ibm-jdk-bin alsa
-dev-java/ibm-jre-bin alsa
 
 # Raúl Porcel <armin76@gentoo.org> (09 Nov 2008)
 # CPU opts: This needs amd64, x86 and ppc on some of them
