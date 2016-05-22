@@ -7348,7 +7348,7 @@ dev-python/jaraco-text 1.6.3: Text utilities used by other projects by developer
 dev-python/jaraco-utils 10.0.2: General utility modules that supply commonly-used functionality
 dev-python/jaxml 3.02-r1: XML generator written in Python
 dev-python/jdcal 1.0 1.2: Julian dates from proleptic Gregorian and Julian calendars
-dev-python/jedi 0.8.1-r2 0.9.0: Awesome autocompletion library for python
+dev-python/jedi 0.9.0: Autocompletion library for Python
 dev-python/jellyfish 0.5.1 0.5.2: Python module for doing approximate and phonetic matching of strings
 dev-python/jenkins-autojobs 0.14.3: Scripts for automatically creating Jenkins jobs from scm branches
 dev-python/jenkins-webapi 0.3.2 0.4.0-r1 0.5.0: Module for interacting with the Jenkins CI server

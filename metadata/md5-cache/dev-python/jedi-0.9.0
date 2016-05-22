@@ -1,15 +1,16 @@
 DEFINED_PHASES=compile configure install prepare test
 DEPEND=dev-python/setuptools[python_targets_python2_7(-)?,python_targets_python3_3(-)?,python_targets_python3_4(-)?,python_targets_python3_5(-)?,-python_single_target_python2_7(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-)] doc? ( dev-python/sphinx ) test? ( dev-python/pytest[python_targets_python2_7(-)?,python_targets_python3_3(-)?,python_targets_python3_4(-)?,python_targets_python3_5(-)?,-python_single_target_python2_7(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-)] ) python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) python_targets_python3_3? ( >=dev-lang/python-3.3.2-r2:3.3 ) python_targets_python3_4? ( dev-lang/python:3.4 ) python_targets_python3_5? ( dev-lang/python:3.5 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,python_targets_python3_3(-)?,python_targets_python3_4(-)?,python_targets_python3_5(-)?,-python_single_target_python2_7(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-)]
-DESCRIPTION=Awesome autocompletion library for python
+DESCRIPTION=Autocompletion library for Python
 EAPI=5
 HOMEPAGE=https://github.com/davidhalter/jedi
 IUSE=doc test python_targets_python2_7 python_targets_python3_3 python_targets_python3_4 python_targets_python3_5
-KEYWORDS=~amd64 ~x86
+KEYWORDS=amd64 x86
 LICENSE=MIT
 RDEPEND=python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) python_targets_python3_3? ( >=dev-lang/python-3.3.2-r2:3.3 ) python_targets_python3_4? ( dev-lang/python:3.4 ) python_targets_python3_5? ( dev-lang/python:3.5 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,python_targets_python3_3(-)?,python_targets_python3_4(-)?,python_targets_python3_5(-)?,-python_single_target_python2_7(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-)]
 REQUIRED_USE=|| ( python_targets_python2_7 python_targets_python3_3 python_targets_python3_4 python_targets_python3_5 )
+RESTRICT=test
 SLOT=0
 SRC_URI=mirror://pypi/j/jedi/jedi-0.9.0.tar.gz
 _eclass_exported_funcs=src_prepare:distutils-r1 src_configure:distutils-r1 src_compile:distutils-r1 src_test:distutils-r1 src_install:distutils-r1
 _eclasses_=distutils-r1	04aa676883ff2a2644f619d9e5ef479a	eutils	792f83d5ec9536cb5ccef375469d8bde	multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	d062ae4ba2fc40a19c11de2ad89b6616	multiprocessing	e32940a7b2a9992ad217eccddb84d548	python-r1	0f6937650a475d673baa5d0c8c0b37b3	python-utils-r1	13d5b02ea59b21da41c77c9294f3b7f7	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
-_md5_=9ec0fa1e2bbf7dfd4c28a8e1ecd600d4
+_md5_=ed6dd6e9a215ef29bc1236e07e624648
