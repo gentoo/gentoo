@@ -5,10 +5,6 @@
 	<email>mysql-bugs@gentoo.org</email>
     <name>MySQL</name>
   </maintainer>
-  <maintainer type="person">
-    <email>hasufell@gentoo.org</email>
-    <description>Libressl issues. Only assign if it's a direct Libressl issue. Do not directly assign for anything else</description>
-  </maintainer>
 <!-- 
 Please note that this list is shared between the following packages:
 dev-db/mysql
