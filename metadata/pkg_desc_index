@@ -2090,7 +2090,7 @@ app-portage/distpatch 0.1.1: Distfile Patching Support for Gentoo Linux (tools)
 app-portage/eclass-manpages 20150814 20150814-r1: collection of Gentoo eclass manpages
 app-portage/eix 0.30.4 0.30.10 0.30.11 0.31.4 0.31.6 0.31.7 0.31.7-r1: Search and query ebuilds, portage incl. local settings, ext. overlays and more
 app-portage/elogv 0.7.6.1-r1 0.7.6.2 0.7.6.3 0.7.6.4 0.7.6.5 0.7.6.6: Curses based utility to parse the contents of elogs created by Portage
-app-portage/elogviewer 0.6.2-r3 2.1-r1 2.1-r2 2.6 2.6-r1: Elog viewer for Gentoo
+app-portage/elogviewer 0.6.2-r3 2.1-r1 2.1-r2 2.6 2.6-r1 2.6-r2: Elog viewer for Gentoo
 app-portage/emerge-delta-webrsync 3.6.2 3.7.1 3.7.2-r1 3.7.3: emerge-webrsync using patches to minimize bandwidth
 app-portage/epkg 0.2 0.3 0.4: A simple portage wrapper which works like other package managers
 app-portage/epm 1.40 9999: rpm workalike for Gentoo Linux
