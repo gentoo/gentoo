@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 inherit cmake-utils depend.apache eutils systemd toolchain-funcs user
 
 DESCRIPTION="Distributed, general purpose, network monitoring engine"
@@ -37,6 +37,8 @@ RDEPEND="
 	studio? ( x11-libs/wxGTK:2.9 )"
 
 REQUIRED_USE="!minimal? ( || ( mysql postgres ) )"
+
+PATCHES=( "${FILESDIR}/logrotate.patch" )
 
 want_apache2
 
