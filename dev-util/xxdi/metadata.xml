@@ -6,11 +6,6 @@
 		<name>Greg Kroah-Hartman</name>
 		<description>Maintainer, assign bugs to him.</description>
 	</maintainer>
-	<maintainer type="person">
-		<email>hasufell@gentoo.org</email>
-		<name>Julian Ospald</name>
-		<description>Backup maintainer, CC him on bugs.</description>
-	</maintainer>
 	<longdescription lang="en">
 		xxdi.pl is a perl script that implements vim's 'xxd -i' mode
 		so that packages do not have to use all of vim just to get this
