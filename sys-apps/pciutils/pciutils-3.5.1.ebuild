@@ -31,6 +31,10 @@ RDEPEND="${DEPEND}
 DEPEND="${DEPEND}
 	kmod? ( virtual/pkgconfig )"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-3.1.9-static-pc.patch
+)
+
 MULTILIB_WRAPPED_HEADERS=( /usr/include/pci/config.h )
 
 switch_config() {
@@ -42,8 +46,7 @@ switch_config() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-3.1.9-static-pc.patch \
-		"${FILESDIR}"/${PN}-3.5.0-expose-pci_init_v30.patch
+	epatch "${PATCHES[@]}"
 
 	if use static-libs ; then
 		cp -pPR "${S}" "${S}.static" || die
