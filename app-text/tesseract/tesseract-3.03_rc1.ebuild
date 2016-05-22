@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -36,7 +36,7 @@ SRC_URI="https://dev.gentoo.org/~tomka/files/${PN}-3.03-rc1.tar.gz
 	linguas_hu? ( ${URI_PREFIX}/hun.traineddata.gz )
 	linguas_id? ( ${URI_PREFIX}/ind.traineddata.gz )
 	linguas_it? ( ${URI_PREFIX}/ita.traineddata.gz )
-	linguas_jp? ( ${URI_PREFIX}/jpn.traineddata.gz )
+	linguas_ja? ( ${URI_PREFIX}/jpn.traineddata.gz )
 	linguas_ko? ( ${URI_PREFIX}/kor.traineddata.gz )
 	linguas_lt? ( ${URI_PREFIX}/lit.traineddata.gz )
 	linguas_lv? ( ${URI_PREFIX}/lav.traineddata.gz )
@@ -66,7 +66,7 @@ LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~alpha amd64 ~arm ~mips ~ppc ppc64 ~sparc ~x86"
 
-IUSE="doc examples jpeg png tiff -webp +scrollview static-libs linguas_ar linguas_bg linguas_ca linguas_chr linguas_cs linguas_de linguas_da linguas_el linguas_es linguas_fi linguas_fr linguas_he linguas_hi linguas_hu linguas_id linguas_it linguas_jp linguas_ko linguas_lt linguas_lv linguas_nl linguas_no linguas_pl linguas_pt linguas_ro linguas_ru linguas_sk linguas_sl linguas_sr linguas_sv linguas_th linguas_tl linguas_tr linguas_uk linguas_vi linguas_zh_CN linguas_zh_TW osd"
+IUSE="doc examples jpeg png tiff -webp +scrollview static-libs linguas_ar linguas_bg linguas_ca linguas_chr linguas_cs linguas_de linguas_da linguas_el linguas_es linguas_fi linguas_fr linguas_he linguas_hi linguas_hu linguas_id linguas_it linguas_ja linguas_ko linguas_lt linguas_lv linguas_nl linguas_no linguas_pl linguas_pt linguas_ro linguas_ru linguas_sk linguas_sl linguas_sr linguas_sv linguas_th linguas_tl linguas_tr linguas_uk linguas_vi linguas_zh_CN linguas_zh_TW osd"
 
 DEPEND=">=media-libs/leptonica-1.70[zlib,tiff?,jpeg?,png?,webp?]"
 RDEPEND="${DEPEND}"
