@@ -23,7 +23,7 @@ IUSE=""
 
 DEPEND="app-arch/unzip
 	app-admin/chrpath"
-RDEPEND=""
+RDEPEND="=sys-libs/ncurses-5*"
 
 S=${WORKDIR}
 

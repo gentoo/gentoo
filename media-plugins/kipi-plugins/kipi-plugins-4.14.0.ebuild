@@ -10,11 +10,9 @@ EAPI=5
 
 OPENGL_REQUIRED="optional"
 KDE_HANDBOOK="optional"
-KDE_LINGUAS="af ar az be bg bn br bs ca cs csb cy da de el en_GB eo es et eu fa
-fi fo fr fy ga gl ha he hi hr hsb hu id is it ja ka kk km ko ku lb lo lt lv mi
-mk mn ms mt nb nds ne nl nn nso oc pa pl pt pt_BR ro ru rw se sk sl sq sr
-sr@Latn ss sv ta te tg th tr tt uk uz uz@cyrillic ven vi wa xh zh_CN zh_HK zh_TW
-zu"
+KDE_LINGUAS="ar be bg bs ca cs da de el en_GB eo es et eu fi fr ga gl he hi hr
+hu id is it ja km ko lt lv ms nb nds nl nn oc pa pl pt pt_BR ro ru se sk sl sq
+sv th tr uk zh_CN zh_TW"
 inherit flag-o-matic kde4-base
 
 MY_PV=${PV/_/-}

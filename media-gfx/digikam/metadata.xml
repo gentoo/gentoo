@@ -11,8 +11,5 @@
 	<flag name="themedesigner">Build the digikam theme designer</flag>
 	<flag name="thumbnails">Enable thumbnails database support</flag>
 	<flag name="video">Pull in mplayerthumbs to enable video thumbnails</flag>
-	<flag name="linguas_ha">Hausa translation</flag>
-	<flag name="linguas_mi">Maori translation</flag>
-	<flag name="linguas_ven">Venda translation</flag>
 </use>
 </pkgmetadata>
