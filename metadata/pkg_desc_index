@@ -4667,7 +4667,7 @@ dev-libs/libgdata 0.17.3 0.17.4 0.17.4-r1: GLib-based library for accessing onli
 dev-libs/libgee 0.6.7 0.6.8 0.14.0 0.16.1 0.18.0: GObject-based interfaces and classes for commonly used data structures
 dev-libs/libgit2 0.20.0-r1 0.21.5 0.22.3 0.23.2-r1 0.23.3 0.23.4 0.24.0 9999: A linkable library for Git
 dev-libs/libgit2-glib 0.22.8 0.23.10-r1 0.24.0: Git library for GLib
-dev-libs/libgpg-error 1.13 1.18 1.19 1.20 1.21: Contains error handling functions used by GnuPG software
+dev-libs/libgpg-error 1.13 1.18 1.19 1.20 1.21 1.22: Contains error handling functions used by GnuPG software
 dev-libs/libgringotts 1.2.1: Needed by Gringotts
 dev-libs/libgudev 230: GObject bindings for libudev
 dev-libs/libgusb 0.2.7 0.2.8: GObject wrapper for libusb
@@ -16599,7 +16599,7 @@ sys-apps/pacman 4.0.1 4.0.3 4.0.3-r1: Archlinux's binary package manager
 sys-apps/paludis 1.4.2-r1 2.0.0 2.2.0 2.2.0-r2 2.4.0 2.4.0_p20160112 2.6.0 9999: paludis, the other package mangler
 sys-apps/paxctl 0.7-r2 0.8 0.9: Manages various PaX related program header flags for Elf32, Elf64, binaries
 sys-apps/paxctld 1.0 1.0.1 1.1: PaX flags maintenance daemon
-sys-apps/pciutils 3.3.1 3.4.1 3.5.0-r1: Various utilities dealing with the PCI bus
+sys-apps/pciutils 3.3.1 3.4.1 3.5.1: Various utilities dealing with the PCI bus
 sys-apps/pcmciautils 018_p8 018_p8-r1: PCMCIA userspace utilities for Linux
 sys-apps/pcsc-lite 1.8.12-r1 1.8.13 1.8.13-r1 1.8.14 1.8.15 1.8.16 1.8.16-r1: PC/SC Architecture smartcard middleware library
 sys-apps/pcsc-slb-rf72-drv 1.1.0-r1 1.1.0-r2: Schlumberger Reflex 72 Serial Smartcard Reader
