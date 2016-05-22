@@ -7484,7 +7484,7 @@ dev-python/mwlib-rl 0.14.5 0.14.6: Generate pdfs from mediawiki markup
 dev-python/myghty 1.2-r1: Template and view-controller framework derived from HTML::Mason
 dev-python/myghtyutils 0.52-r1: Set of utility classes used by Myghty templating
 dev-python/mygpoclient 1.7-r1: A gpodder.net client library
-dev-python/mypy 0.2.0 0.2.0-r1: Optional static typing for Python
+dev-python/mypy 0.2.0 0.2.0-r1 0.4.1: Optional static typing for Python
 dev-python/mysql-connector-python 2.0.3 2.1.1 2.1.3: Python client library for MariaDB/MySQL
 dev-python/mysql-python 1.2.3-r1 1.2.5 1.2.5-r1: Python interface to MySQL
 dev-python/mysqlclient 1.3.6 1.3.7: Fork of MySQL-python
