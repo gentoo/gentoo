@@ -315,7 +315,7 @@ src_install () {
 	EOF
 	elisp-site-file-install "${T}/${SITEFILE}" || die
 
-	dodoc README BUGS #CONTRIBUTE
+	dodoc README BUGS CONTRIBUTE
 
 	if use aqua; then
 		dodir /Applications/Gentoo
