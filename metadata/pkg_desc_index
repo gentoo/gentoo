@@ -12163,7 +12163,7 @@ media-gfx/icc_examin 0.54 0.55 0.55-r1 9999: Viewer for ICC and CGATS profiles, 
 media-gfx/icon-slicer 0.3: utility for generating icon themes and libXcursor cursor themes
 media-gfx/icoutils 0.31.0: A set of programs for extracting and converting images in icon and cursor files (.ico, .cur)
 media-gfx/igal 2.0: Static HTML image gallery generator
-media-gfx/imagemagick 6.9.0.3 6.9.1.8 6.9.2.10 6.9.3.10 6.9.4.1 7.0.1.5: A collection of tools and libraries for many image formats
+media-gfx/imagemagick 6.9.0.3 6.9.1.8 6.9.2.10 6.9.3.10 6.9.4.1 6.9.4.4 7.0.1.6: A collection of tools and libraries for many image formats
 media-gfx/imageworsener 0.9.2 1.0.0 1.2.0: Utility for image scaling and processing
 media-gfx/imv 2.1.0 9999: Minimal image viewer designed for tiling window manager users
 media-gfx/inkscape 0.48.5-r1 0.91 0.91-r1: A SVG based generic vector-drawing program
@@ -14570,7 +14570,7 @@ net-misc/cgminer 4.7.0 4.8.0 4.9.0 4.9.1 4.9.2: Bitcoin CPU/GPU/FPGA/ASIC miner 
 net-misc/cgterm 1.6: Connect to C64 telnet BBS's with the correct colours and font
 net-misc/charm 1.9.1 1.9.2-r1: A text based livejournal client
 net-misc/chrome-remote-desktop 47.0.2526.18 49.0.2623.40 50.0.2661.22: access remote computers via Chrome!
-net-misc/chrony 2.2.1 2.3 2.4_pre1 9999: NTP client and server programs
+net-misc/chrony 2.2.1 2.3 2.4_pre1 2.4_pre1-r1 9999: NTP client and server programs
 net-misc/clamz 0.4 0.5: Command-line downloader for the Amazon.com MP3 music store
 net-misc/clipgrab 3.4.9-r1 3.4.11 3.5.6: Download from various internet video services like Youtube etc.
 net-misc/clockspeed 0.62-r6: A simple Network Time Protocol (NTP) client
@@ -16972,7 +16972,7 @@ sys-devel/kgcc64 3.4.6 4.1.2 4.2.4 4.3.5 4.4.5 4.4.6 4.5.3 4.5.4 4.6.3 4.6.4 4.7
 sys-devel/libtool 2.4.2-r1 2.4.4 2.4.5 2.4.6 2.4.6-r1 2.4.6-r2 9999: A shared library tool for developers
 sys-devel/llvm 3.3-r3 3.4.2 3.5.0 3.5.2 3.6.2 3.7.1-r2 3.8.0-r2 9999: Low Level Virtual Machine
 sys-devel/m4 1.4.16 1.4.17: GNU macro processor
-sys-devel/make 3.80-r4 3.81-r2 3.82-r4 4.0-r1 4.1-r1: Standard tool to compile source trees
+sys-devel/make 3.80-r4 3.81-r2 3.82-r4 4.0-r1 4.1-r1 4.2: Standard tool to compile source trees
 sys-devel/multilib-gcc-wrapper 0: Wrappers for gcc tools to be used on non-native CHOSTs
 sys-devel/native-cctools 1 2 4: Host OS native assembler as and static linker ld
 sys-devel/parity 1.2.4 1.2.5 1.2.6 9999: An Interix to native Win32 Cross-Compiler Tool (requires Visual Studio)
@@ -17362,7 +17362,7 @@ sys-process/minit 0.9.1 0.10: a small yet feature-complete init
 sys-process/nmon 15g 15h 16d: Nigel's performance MONitor for CPU, memory, network, disks, etc...
 sys-process/numactl 2.0.9 2.0.10-r2 2.0.11: Utilities and libraries for NUMA systems
 sys-process/numad 0.5 0.5-r1 0.5-r2 9999: The NUMA daemon that manages application locality
-sys-process/parallel 20150522 20150622 20150822 20151222 20160222: A shell tool for executing jobs in parallel locally or on remote machines
+sys-process/parallel 20150522 20160222 20160522: A shell tool for executing jobs in parallel locally or on remote machines
 sys-process/pidof-bsd 20050501-r4: pidof(1) utility for *BSD
 sys-process/pkill-darwin 1.0: pgrep(1) and pkill(1) for Darwin
 sys-process/prll 0.6.2: A utility for parallelizing execution of shell functions
