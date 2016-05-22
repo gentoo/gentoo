@@ -14703,7 +14703,7 @@ net-misc/lksctp-tools 1.0.13 1.0.16: Tools for Linux Kernel Stream Control Trans
 net-misc/lldpd 0.7.11-r3 0.7.13 0.9.1: Implementation of IEEE 802.1ab (LLDP)
 net-misc/logmein-hamachi 2.1.0.139: LogMeIn Hamachi VPN tunneling engine
 net-misc/mdidentd 1.04c-r1: This is an identd with provides registering of idents
-net-misc/mediatomb 0.12.1-r7 0.12.1-r8 0.12.2_pre20150118 0.12.2_pre20150118-r1: MediaTomb is an open source UPnP MediaServer
+net-misc/mediatomb 0.12.1-r8 0.12.2_pre20160522: MediaTomb is an open source UPnP MediaServer
 net-misc/megatools 1.9.95 1.9.96 1.9.97: Command line tools and C library for accessing Mega cloud storage
 net-misc/memcached 1.2.6-r1 1.2.8-r1 1.3.3-r5 1.4.17 1.4.17-r3 1.4.24 1.4.25: High-performance, distributed memory object caching system
 net-misc/mico 2.3.13-r7 9999: A freely available and fully compliant implementation of the CORBA standard
