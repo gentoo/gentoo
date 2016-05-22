@@ -106,11 +106,6 @@ dev-haskell/tls-extra
 # Force gnutls-3.4 testing so we can stabilize it.
 >=net-libs/gnutls-3.5.0
 
-# Ian Delaney <idella4@gentoo.org> (12 May 2016)
-# on behalf of Ilya Tumaykin <itumaykin+gentoo@gmail.com>
-# Missing dev-python/rarfile-2.7 dependency. See bug #582500.
-~media-video/subliminal-2.0_rc1
-
 # Sergei Trofimovich <slyfox@gentoo.org> (11 May 2016)
 # Mask standalone hpc. dev-lang/ghc provides bundled hpc.
 dev-haskell/hpc
