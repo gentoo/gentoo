@@ -527,3 +527,7 @@ media-video/vlc projectm chromaprint opencv
 # Ultrabug <ultrabug@gentoo.org) (05 Sept 2011)
 # missing keyword for net-libs/zeromq
 app-admin/rsyslog zeromq
+
+# Ian Whyman <thev00d00@gentoo.org> (22 May 2016)
+# RPI support on arm
+dev-libs/libcec -raspberry-pi

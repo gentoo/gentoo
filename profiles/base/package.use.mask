@@ -890,3 +890,7 @@ media-video/vlc direct2d directx dshow dxva2 waveout wingdi
 media-video/vlc audioqueue ios-vout macosx macosx-audio macosx-dialog-provider macosx-eyetv macosx-quartztext macosx-qtkit macosx-vout
 # media-library does not build
 media-video/vlc media-library
+
+# Ian Whyman <thev00d00@gentoo.org> (22 May 2016)
+# Mask raspberry-pi except on arm.
+dev-libs/libcec raspberry-pi
