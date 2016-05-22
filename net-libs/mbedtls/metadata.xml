@@ -5,10 +5,6 @@
 		<email>blueness@gentoo.org</email>
 		<name>Anthony G. Basile</name>
 	</maintainer>
-	<maintainer type="person">
-		<email>hasufell@gentoo.org</email>
-		<name>Julian Ospald</name>
-	</maintainer>
 	<longdescription lang="en">
 		The aim of the mbed TLS project is to provide a quality, open-source
 		cryptographic library written in C and targeted at embedded systems.

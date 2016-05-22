@@ -2,11 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>hasufell@gentoo.org</email>
-		<name>Julian Ospald</name>
-		<description>Primary maintainer, assign him on bugs.</description>
-	</maintainer>
-	<maintainer type="person">
 		<email>zoltan@sinustrom.info</email>
 		<name>Zoltan Puskas</name>
 		<description>Proxied maintainer, CC him on bugs.</description>
