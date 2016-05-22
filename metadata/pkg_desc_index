@@ -13518,7 +13518,7 @@ media-video/kffmpegthumbnailer 1.1.0-r3: KDE thumbnailer based on ffmpegthumbnai
 media-video/kino 1.3.4: Kino is a non-linear DV editor for GNU/Linux
 media-video/kmplayer 0.11.3d-r3 0.11.5: Video player plugin for Konqueror and basic MPlayer frontend
 media-video/kplayer 0.7.2-r1: KPlayer is a KDE media player based on mplayer
-media-video/libav 9.14 9.17 11.3 11.3-r1 11.4 11.6 11.9999 9999: Complete solution to record, convert and stream audio and video
+media-video/libav 9.14 9.17 11.3 11.3-r1 11.4 11.6 11.9999 12_pre20160522 9999: Complete solution to record, convert and stream audio and video
 media-video/lives 1.4.6: LiVES is a Video Editing System
 media-video/loopy 0.5.3: Simple video player for KDE
 media-video/lsdvd 0.17: Utility for getting info out of DVDs
