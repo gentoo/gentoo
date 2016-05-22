@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -30,7 +30,8 @@ DEPEND="!=sci-libs/openfoam-${MY_PV}*
 	!=sci-libs/openfoam-wmake-${MY_PV}*
 	sci-visualization/opendx
 	virtual/mpi"
-RDEPEND="${DEPEND}"
+RDEPEND="${DEPEND}
+	=sys-libs/ncurses-5*"
 
 S=${WORKDIR}/${MY_P}
 INSDIR="/usr/$(get_libdir)/${MY_PN}/${MY_P}"
