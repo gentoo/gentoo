@@ -30,6 +30,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Johannes Huber <johu@gentoo.org> (22 May 2016)
+# Masked for removal in 30 days. Declared as dead by
+# upstream in 2015. Last release with KDE Applications 15.08.3. 
+# Exported to user maintained overlay kde-sunset.
+kde-apps/amor
+kde-apps/kdetoys-meta
+kde-apps/ktux
+
 # Andreas K. Hüttel <dilfridge@gentoo.org> (21 May 2016)
 # Unmaintained since 2011, needs old webkit-gtk:2 slot that has
 # security issues, no consumers in tree, bug 573092
