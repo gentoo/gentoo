@@ -1912,7 +1912,6 @@ app-misc/strigi 0.7.8-r1 0.7.8-r2: Fast crawling desktop search engine with Qt4 
 app-misc/subsurface 3.1.1 4.2 9999: An open source dive log program
 app-misc/supercat 0.5.5-r1: A text file colorizer using powerful regular expressions
 app-misc/symlinks 1.4 1.4-r2: Scans for and fixes broken or messy symlinks
-app-misc/tablix 0.3.5-r1: Tablix is a powerful free software kernel for solving general timetabling problems
 app-misc/tails-installer 4.4.8: A graphical tool to install or upgrade Tails on a USB stick from an ISO image
 app-misc/task 2.4.4 2.5.0 2.5.1: Taskwarrior is a command-line todo list manager
 app-misc/taskd 1.1.0-r1: the server part of Taskwarrior, a command-line todo list manager
