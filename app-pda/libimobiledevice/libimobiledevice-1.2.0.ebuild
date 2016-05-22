@@ -38,6 +38,10 @@ DOCS=( AUTHORS NEWS README )
 
 BUILD_DIR="${S}_build"
 
+src_prepare() {
+	epatch "${FILESDIR}/gnutls-3.4.patch"
+}
+
 src_configure() {
 	local ECONF_SOURCE=${S}
 
