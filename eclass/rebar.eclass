@@ -30,7 +30,7 @@ case "${EAPI:-0}" in
 		;;
 esac
 
-EXPORT_FUNCTIONS src_prepare src_compile src_install
+EXPORT_FUNCTIONS src_prepare src_compile src_test src_install
 
 RDEPEND="dev-lang/erlang"
 DEPEND="${RDEPEND}
@@ -196,6 +196,15 @@ rebar_src_compile() {
 	debug-print-function ${FUNCNAME} "${@}"
 
 	erebar compile
+}
+
+# @FUNCTION: rebar_src_test
+# @DESCRIPTION:
+# Run unit tests.
+rebar_src_test() {
+	debug-print-function ${FUNCNAME} "${@}"
+
+	erebar eunit
 }
 
 # @FUNCTION: rebar_src_install
