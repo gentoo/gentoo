@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 DESCRIPTION="A shell tool for executing jobs in parallel locally or on remote machines"
 HOMEPAGE="https://www.gnu.org/software/parallel/"
@@ -13,7 +13,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE=""
 
-RDEPEND="dev-lang/perl
+RDEPEND="dev-lang/perl:=
 	dev-perl/Devel-Size
 	virtual/perl-Data-Dumper
 	virtual/perl-File-Temp
