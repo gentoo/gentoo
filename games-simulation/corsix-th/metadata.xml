@@ -4,11 +4,8 @@
 	<use>
 		<flag name="ffmpeg">Use ffmpeg for playing in-game cutscenes.</flag>
 		<flag name="opengl">Use OpenGL for rendering.</flag>
-		<flag name="sdl">Use SDL for rendering.</flag>
 		<flag name="sound">Use SDL mixer for in-game sound.</flag>
-		<flag name="mapeditor">Build the map editor (needs opengl enabled!).
-		</flag>
-		<flag name="midi">Use SDL mixer and timidity for in-game music.</flag>
+		<flag name="mapeditor">Build the map editor (needs opengl enabled!).</flag>
 		<flag name="truetype">Use high quality fonts.</flag>
 	</use>
 	<longdescription>
