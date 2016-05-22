@@ -1,24 +1,23 @@
 certificate version 0.1
-pusher Michael Palimaka <kensington@gentoo.org> 1463940664 +1000
-pushee git+ssh://git.gentoo.org/repo/gentoo
-nonce 1463940662-4e20c3a35648f2de1a00
+pusher Jonathan Callen <jcallen@gentoo.org> 1463941110 -0400
+pushee git+ssh://git.gentoo.org/repo/gentoo.git
+nonce 1463941110-cbc5f4f1f665a4a46ea4
 
-58000a346bd2cbdc65b0bac49e5fccccc4752524 cda16cfe8e6f32d781225ee39f308b4573799cca refs/heads/master
+cda16cfe8e6f32d781225ee39f308b4573799cca 8f03ce74bb3b186b57b9caacc0be5d58fb71086e refs/heads/master
 -----BEGIN PGP SIGNATURE-----
-Version: GnuPG v2.0
+Version: GnuPG v2
 
-iQJiBAABCgBMBQJXQfY4RRSAAAAAABQAKGlzc3Vlci1mcHJAbm90YXRpb25zOTc5
-MTY5NkQ3RDM3NkRBN0U5QjZGMTUwMDZCMUYzOERDQTQ1QTFFQwAKCRAGsfONykWh
-7IYoD/9kd1IQnvXsECQvixOf1wOXgPmNW5anXazc38dBc08o9H/IvVmw9oRGnvWo
-oXgzcrOPHWv9byBiBu72qzFBWSGd7WbDvUnI0YXflDYphBgOLnOqQsKQ45Zt3RiE
-5OTybg+Gqp6u3cqQ3TCGixURY4ZtzkXWUb69Cidp/9vMhtpfQOci1NAeR+Q2txB2
-+z1DM8OHUY/X8D6I4TsxbSSbrE+fVkalEMEd6YpSM+ZEn1LvEjKn2mXA3elt/CWF
-ZanurxrNBOxitcYJL6aXKjhsKv8zP3nwWAu3UTwERi/44nDppVxgPzowgmLp7Jh6
-0Cisu2PxybowG2DzyNV8o8xEoUkO2a9wx4J1IkghWNMMCpU0o5MpruE9wxlYvBCG
-v5qD8pJoM+Gkc5U7ruwoTNQCt9aM+yzLVaWsC5VsOaPG7xiE4/ff9HMAE1r5Tq+d
-eoDuLS67wxv20DilUTz2rV7F/Op/Cm0MR/azXl1S16gKDYpHmTJa+JBEa1YbAII0
-GuWJdVFfVW/iyzg4iR42obGOMTN+9/zvnPMbmPF6Xhcbh7fiPj2RM1lY2WeI7yfA
-ofTSCeVZiSlT/cju+kJpag1hVgoBUFwkZ0GP+doFCiPSyplKN/KVyl8a1fRR42W8
-ogHBaNQ1qy351ExYyPTw09vET+UbPlpH+w5+f146y5OYGdYlCA==
-=8vTx
+iQIcBAABCgAGBQJXQff2AAoJEEIQbvYRB3mgNakP/iVvtCycJeaxmNCYNDarFdMy
+oOgxqAtsRbNNYNrvXvdmqOjmMIqX9FcC4Bvyqtjo44hHGYuFWSBz157lREY/Q2mJ
+sAg6k79Ruessmj7gRTrRnq8uRSyouAMMXg2uTlAqGJqNTqp7xEyhZD3bF4qyfe/a
++A8iDDDViZ2pVcjZxnDzPwMtNXO6A2owyNgYT/V1EW3L/cLzge0WEc90+sc7XqrQ
+tPFg1pAdS2WU5kZ4TBVjMcOSGXnD1cjjaZlZYxqgWz+vl4F/qHhrLsheRSyCKjPm
+r9q49+zqAIm3MSpJP1kofDdSkW8bNV7Cl0VQYrWu3VYgbUzgVqSEOJVbYZugd42C
+gADQXuWVCxYIK7f6y8lwgGZ8GHCjNhaAw9icD6ZVWhixFyRGy/q822F6pLTrYWA5
+OObhTwvNn8Js2qiX2SsdRz03r1ahU/T1sjicCZIgzl/piczD/yfwm+BUmGW/J6rR
+SYDSPesF2wMv7LsGD05qKrQ0GDvh/FCRqOTzOKd6V6Obzhb5fQ43xV6D3LH4RebF
+rZYKpeXGoJWfV5iXthuBupbUUvT+howPixWXaZaYNAE+4iA9fksPfzOo06mORpO9
+gIetotFoNElYpRzGbHFl9jfVhK+SX4AxT8IMjh3V4Gz1tyUAKSmXvMHz9sdNdrrs
+yTsBXPfzrprYFGZMvuP4
+=hwiZ
 -----END PGP SIGNATURE-----
