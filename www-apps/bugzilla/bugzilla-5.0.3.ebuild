@@ -119,10 +119,10 @@ src_install () {
 	        fperms +x "${f#${D}}"
 	done
 
-	fperms u+x "${D}${MY_HTDOCSDIR}"/jobqueue.pl || die
+	fperms u+x "${MY_HTDOCSDIR}"/jobqueue.pl
 
 	# configuration must be executable
-	fperms u+x "${D}${MY_HTDOCSDIR}"/checksetup.pl || die
+	fperms u+x "${MY_HTDOCSDIR}"/checksetup.pl
 
 	# bug 487476
 	mkdir "${D}${MY_HTDOCSDIR}"/lib || die
