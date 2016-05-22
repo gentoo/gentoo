@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=5
-USE_RUBY="ruby20 ruby21"
+USE_RUBY="ruby20 ruby21 ruby22"
 
 RUBY_FAKEGEM_TASK_DOC=""
 
@@ -17,7 +17,7 @@ KEYWORDS="~amd64"
 SLOT="0"
 IUSE=""
 
-ruby_add_rdepend ">=dev-ruby/actionpack-4.0.0"
+ruby_add_rdepend ">=dev-ruby/actionpack-4.0.0:*"
 
 ruby_add_bdepend "test? ( >=dev-ruby/activerecord-4.0.0
 	dev-ruby/mocha )"
