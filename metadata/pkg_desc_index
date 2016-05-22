@@ -6867,7 +6867,7 @@ dev-python/addons 0.7: Dynamically extend other objects (formerly ObjectRoles)
 dev-python/adns-python 1.2.1-r1: Python bindings for ADNS
 dev-python/adodb-py 2.20-r1: Active Data Objects Data Base library for Python
 dev-python/aioeventlet 0.4 0.5.1: asyncio event loop scheduling callbacks in eventlet
-dev-python/aiohttp 0.19.0 0.20.2 0.21.4 0.21.5: http client/server for asyncio
+dev-python/aiohttp 0.20.2 0.21.4 0.21.5 0.21.6: http client/server for asyncio
 dev-python/alabaster 0.7.6 0.7.7: A configurable sidebar-enabled Sphinx theme
 dev-python/aldryn-bootstrap3 0.5.1: django CMS plugins for bootstrap3 markup
 dev-python/alembic 0.7.7 0.8.2 0.8.4 0.8.5 0.8.6: database migrations tool, written by the author of SQLAlchemy
@@ -6952,7 +6952,7 @@ dev-python/blz 0.6.2: Chunked, compressed, Python data container for memory and 
 dev-python/bokeh 0.7.1 0.10.0 0.11.0 0.11.1: Statistical and novel interactive HTML plots for Python
 dev-python/boto 2.27.0 2.31.1 2.34.0 2.35.1 2.38.0 2.39.0: Amazon Web Services API
 dev-python/boto3 1.2.1 1.2.3 1.3.0: The AWS SDK for Python
-dev-python/botocore 1.3.22 1.4.10 1.4.11 1.4.17: Low-level, data-driven core of boto 3.
+dev-python/botocore 1.3.22 1.4.11 1.4.17 1.4.19: Low-level, data-driven core of boto 3.
 dev-python/bottle 0.12.7 0.12.8 0.12.9: A fast and simple micro-framework for small web-applications
 dev-python/bottleneck 0.8.0 1.0.0: Fast NumPy array functions written in Cython
 dev-python/bpython 0.13.2 0.14 0.14.2 0.15: Syntax highlighting and autocompletion for the Python interpreter
@@ -7157,6 +7157,7 @@ dev-python/empy 3.3-r1 3.3.2: A powerful and robust templating system for Python
 dev-python/enable 4.4.1 4.5.1: Enthought Tool Suite: Drawing and interaction packages
 dev-python/enaml 0.6.8-r1 0.9.8: Enthought Tool Suite: framework for writing declarative interfaces
 dev-python/encore 0.3 0.4.0 0.5.1: Enthought Tool Suite: collection of core-level utility modules
+dev-python/entrypoints 0.2.1: Discover and load entry points from installed packages
 dev-python/enum34 1.0.4 1.1.2 1.1.3: Python 3.4 Enum backported
 dev-python/envisage 4.4.0: Enthought Tool Suite: Extensible application framework
 dev-python/envoy 0.0.3: Simple API for running external processes
@@ -7476,6 +7477,7 @@ dev-python/mox3 0.7.0 0.7.0-r1 0.10.0 0.12.0: Mock object framework for Python
 dev-python/mpi4py 1.3.1 2.0.0: Message Passing Interface for Python
 dev-python/mpmath 0.18 0.19 0.19-r1: Python library for arbitrary-precision floating-point arithmetic
 dev-python/msgpack 0.4.6 0.4.7: MessagePack (de)serializer for Python
+dev-python/multidict 1.1.0_alpha6: multidict implementation
 dev-python/multipledispatch 0.4.6 0.4.7 0.4.8: RESTful HTTP Content Negotiation for Flask, Bottle, web.py and webapp2
 dev-python/munkres 1.0.5.4-r2: Module implementing munkres algorithm for the Assignment Problem
 dev-python/mwlib 0.15.15: Tools for parsing Mediawiki content to other formats
@@ -7493,7 +7495,7 @@ dev-python/naima 0.7.1: Python package for gamma-ray astronomy
 dev-python/natgrid 0.2.1-r2: Matplotlib toolkit for gridding irreguraly spaced data
 dev-python/natsort 3.4.0 4.0.3 4.0.4: Natural sorting for Python
 dev-python/nautilus-python 1.1-r1 1.1-r2: Python bindings for the Nautilus file manager
-dev-python/nbconvert 4.1.0: Converting Jupyter Notebooks
+dev-python/nbconvert 4.1.0 4.2.0: Converting Jupyter Notebooks
 dev-python/nbformat 4.0.1: Reference implementation of the Jupyter Notebook format
 dev-python/ndg-httpsclient 0.4.0: Provides enhanced HTTPS support for httplib and urllib2 using PyOpenSSL
 dev-python/neovim-python-client 0.0.37 0.0.38 0.1.0 0.1.2 0.1.5 0.1.7: Python client for Neovim
@@ -7516,7 +7518,7 @@ dev-python/nose2 0.6.4: nose2 is the next generation of nicer testing for Python
 dev-python/nose_fixes 1.3: A plugin to make nose behave better
 dev-python/nosehtmloutput 0.0.4-r1 0.0.5: Nose plugin to produce test results in html
 dev-python/nosexcover 1.0.10: Extends nose.plugins.cover to add Cobertura-style XML reports
-dev-python/notebook 4.0.6 4.1.0: Jupyter Interactive Notebook
+dev-python/notebook 4.0.6 4.1.0 4.2.0: Jupyter Interactive Notebook
 dev-python/notify-python 0.1.1-r3: Python bindings for libnotify
 dev-python/numba 0.18.2 0.19.2 0.20.0 0.22.1 0.23.1 0.24.0 0.25.0: NumPy aware dynamic Python compiler using LLVM
 dev-python/numdisplay 1.6.0-r1: Python package for interactively displaying FITS arrays
