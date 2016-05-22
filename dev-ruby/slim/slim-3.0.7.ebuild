@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=5
-USE_RUBY="ruby20 ruby21"
+USE_RUBY="ruby20 ruby21 ruby22"
 
 RUBY_FAKEGEM_EXTRADOC="CHANGES README.md"
 
@@ -20,8 +20,8 @@ KEYWORDS="~amd64"
 SLOT="0"
 IUSE="doc"
 
-ruby_add_rdepend ">=dev-ruby/tilt-1.3.3:0
-	>=dev-ruby/temple-0.6.6:0"
+ruby_add_rdepend ">=dev-ruby/tilt-1.3.3:* <dev-ruby/tilt-2.1:*
+	>=dev-ruby/temple-0.7.3:0.7"
 
 ruby_add_bdepend "doc? ( dev-ruby/yard dev-ruby/redcarpet )"
 
@@ -38,5 +38,8 @@ all_ruby_prepare() {
 		-e '/test_render_with_wiki/,/^  end/ s:^:#:' \
 		-e '/test_render_with_creole/,/^  end/ s:^:#:' \
 		-e '/test_render_with_org/,/^  end/ s:^:#:' test/core/test_embedded_engines.rb || die
+}
 
+each_ruby_prepare() {
+	sed -i -e '/Open3/ s:ruby:'${RUBY}':' test/core/test_commands.rb || die
 }
