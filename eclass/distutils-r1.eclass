@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -315,11 +315,13 @@ _distutils-r1_disable_ez_setup() {
 distutils-r1_python_prepare_all() {
 	debug-print-function ${FUNCNAME} "${@}"
 
-	if [[ ${EAPI} != [45] ]]; then
-		default
-	else
-		[[ ${PATCHES} ]] && epatch "${PATCHES[@]}"
-		epatch_user
+	if [[ ! ${DISTUTILS_OPTIONAL} ]]; then
+		if [[ ${EAPI} != [45] ]]; then
+			default
+		else
+			[[ ${PATCHES} ]] && epatch "${PATCHES[@]}"
+			epatch_user
+		fi
 	fi
 
 	# by default, use in-source build if python_prepare() is used
@@ -588,9 +590,11 @@ distutils-r1_python_install_all() {
 	if declare -p EXAMPLES &>/dev/null; then
 		[[ ${EAPI} != [45] ]] && die "EXAMPLES are banned in EAPI ${EAPI}"
 
-		local INSDESTTREE=/usr/share/doc/${PF}/examples
-		doins -r "${EXAMPLES[@]}"
-		docompress -x "${INSDESTTREE}"
+		(
+			docinto examples
+			dodoc -r "${EXAMPLES[@]}"
+		)
+		docompress -x "/usr/share/doc/${PF}/examples"
 	fi
 
 	_DISTUTILS_DEFAULT_CALLED=1
@@ -627,12 +631,6 @@ distutils-r1_run_phase() {
 	# not valid then associates a NullImporter object to ${BUILD_DIR}/lib storing it
 	# in the sys.path_importer_cache)
 	mkdir -p "${BUILD_DIR}/lib" || die
-
-	# We need separate home for each implementation, for .pydistutils.cfg.
-	if [[ ! ${DISTUTILS_SINGLE_IMPL} ]]; then
-		local -x HOME=${HOME}/${EPYTHON}
-		mkdir -p "${HOME}" || die
-	fi
 
 	# Set up build environment, bug #513664.
 	local -x AR=${AR} CC=${CC} CPP=${CPP} CXX=${CXX}

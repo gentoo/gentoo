@@ -19,7 +19,7 @@ IUSE="+edit gpm mclib nls samba sftp +slang spell test X +xdg"
 
 REQUIRED_USE="spell? ( edit )"
 
-RDEPEND=">=dev-libs/glib-2.8:2
+RDEPEND=">=dev-libs/glib-2.26.0:2
 	gpm? ( sys-libs/gpm )
 	kernel_linux? ( sys-fs/e2fsprogs )
 	samba? ( net-fs/samba )
@@ -38,8 +38,6 @@ DEPEND="${RDEPEND}
 	nls? ( sys-devel/gettext )
 	test? ( dev-libs/check )
 	"
-
-[[ -n ${LIVE_EBUILD} ]] && DEPEND="${DEPEND} dev-vcs/cvs" # needed only for SCM source tree (autopoint uses cvs)
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-4.8.13-tinfo.patch

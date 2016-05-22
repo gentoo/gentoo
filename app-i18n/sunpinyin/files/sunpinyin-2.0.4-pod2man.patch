@@ -1,0 +1,17 @@
+From: Guo Yixuan <culu.gyx@gmail.com>
+Bug: https://code.google.com/archive/p/sunpinyin/issues/327
+Gentoo-Bug: 553796
+
+diff --git a/man/SConscript b/man/SConscript
+index f3ebd03..e1551eb 100644
+--- a/man/SConscript
++++ b/man/SConscript
+@@ -1,7 +1,7 @@
+ import os
+ Import('env')
+ 
+-pod2man = Builder(action = 'pod2man < $SOURCE > $TARGET')
++pod2man = Builder(action = 'pod2man $SOURCE $TARGET')
+ env.Append(BUILDERS = {'Man': pod2man})
+ 
+ env.Man('mmseg.1', 'mmseg.pod')

@@ -5,6 +5,23 @@
 # This file requires >=portage-2.1.1
 # New entries go on top.
 
+# Michał Górny <mgorny@gentoo.org> (14 May 2016)
+# (on behalf of QA team)
+# sys-devel/gcc[jit]:
+# - violates strict multilib rules, #569608
+# - causes collisions between multiple gcc versions, #583010
+# Masking the flag until it is fixed.
+sys-devel/gcc jit
+
+# Mike Frysinger <vapier@gentoo.org> (08 May 2016)
+# Most targets do not support VTV #547040.
+sys-devel/gcc vtv
+
+# Matthew Brewer <tomboy64@sina.cn> (08 May 2016)
+# Upstream supports using Clang's address sanitizer, but apparently
+# invokes it wrong.
+dev-lang/moarvm asan
+
 # Michael Palimaka <kensington@gentoo.org> (05 May 2016)
 # Doesn't work
 media-libs/openimageio python
@@ -146,7 +163,7 @@ sci-libs/gdal ruby
 # See bug #547834
 <sys-apps/paludis-2.4.0 ruby
 # See bug #480574
-media-libs/mlt ruby
+<media-libs/mlt-6.2.0 ruby
 
 # Andreas K. Huettel <dilfridge@gentoo.org> (1 Sep 2015)
 # Currently broken upstream. We still hope it will get fixed.
@@ -873,3 +890,7 @@ media-video/vlc direct2d directx dshow dxva2 waveout wingdi
 media-video/vlc audioqueue ios-vout macosx macosx-audio macosx-dialog-provider macosx-eyetv macosx-quartztext macosx-qtkit macosx-vout
 # media-library does not build
 media-video/vlc media-library
+
+# Ian Whyman <thev00d00@gentoo.org> (22 May 2016)
+# Mask raspberry-pi except on arm.
+dev-libs/libcec raspberry-pi

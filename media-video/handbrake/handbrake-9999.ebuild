@@ -98,6 +98,9 @@ src_prepare() {
 
 	default
 
+	# Get rid of libav specific code when using ffmpeg
+	use libav || eapply -R "${FILESDIR}/${PN}-0.10.3-nolibav.patch"
+
 	cd "${S}/gtk"
 	# Don't run autogen.sh.
 	sed -i '/autogen.sh/d' module.rules || die "Removing autogen.sh call failed"
@@ -140,14 +143,12 @@ pkg_postinst() {
 		einfo ""
 		einfo "For the GTK+ version of HandBrake, you can run \`ghb\`."
 	fi
+
+	gnome2_icon_cache_update
 }
 
 pkg_preinst() {
 	gnome2_icon_savelist
-}
-
-pkg_postinst() {
-	gnome2_icon_cache_update
 }
 
 pkg_postrm() {

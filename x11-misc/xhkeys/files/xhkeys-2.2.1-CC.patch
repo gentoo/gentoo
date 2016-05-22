@@ -1,0 +1,15 @@
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -127,10 +127,10 @@
+ xhkeys_mixer.lo: xhkeys_mixer.c plugin_common.h xhkeys_plugin.h
+ 
+ xhkeys_cdaudio.so: $(MODULES_CDAUDIO) 
+-	gcc -shared -Wl,-soname,xhkeys_cdaudio.so -o xhkeys_cdaudio.so $(MODULES_CDAUDIO)
++	$(CC) -shared -Wl,-soname,xhkeys_cdaudio.so -o xhkeys_cdaudio.so $(MODULES_CDAUDIO)
+ 
+ xhkeys_mixer.so: $(MODULES_MIXER) 
+-	gcc -shared -Wl,-soname,xhkeys_mixer.so -o xhkeys_mixer.so $(MODULES_MIXER)
++	$(CC) -shared -Wl,-soname,xhkeys_mixer.so -o xhkeys_mixer.so $(MODULES_MIXER)
+ 
+ %.lo: %.c 
+ 	$(CC) -c $(CFLAGS_LO) $< -o $@

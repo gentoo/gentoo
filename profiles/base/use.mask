@@ -74,6 +74,7 @@ kqemu
 lilo
 mmx
 mmxext
+mpx
 sse
 sse2
 sse3
@@ -100,6 +101,7 @@ cpu_flags_x86_fma3
 cpu_flags_x86_fma4
 cpu_flags_x86_mmx
 cpu_flags_x86_mmxext
+cpu_flags_x86_mpx
 cpu_flags_x86_padlock
 cpu_flags_x86_popcnt
 cpu_flags_x86_sse

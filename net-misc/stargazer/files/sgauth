@@ -1,4 +1,4 @@
-#!/sbin/runscript
+#!/sbin/openrc-run
 
 DAEMON=/usr/sbin/sgauth
 SGAUTH_OPTS="/etc/stargazer/sgauth.conf"

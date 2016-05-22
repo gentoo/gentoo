@@ -179,7 +179,7 @@ src_prepare() {
 		# Install clang runtime into /usr/lib/clang
 		# https://llvm.org/bugs/show_bug.cgi?id=23792
 		eapply "${FILESDIR}"/cmake/clang-0001-Install-clang-runtime-into-usr-lib-without-suffix-3.8.patch
-		eapply "${FILESDIR}"/cmake/compiler-rt-0001-cmake-Install-compiler-rt-into-usr-lib-without-suffi.patch
+		eapply "${FILESDIR}"/cmake/compiler-rt-3.9-cmake-Install-compiler-rt-into-usr-lib-without-suffi.patch
 
 		# Make it possible to override CLANG_LIBDIR_SUFFIX
 		# (that is used only to find LLVMgold.so)
@@ -213,7 +213,7 @@ multilib_src_configure() {
 	if use multitarget; then
 		targets=all
 	else
-		targets='host;BPF;CppBackend'
+		targets='host;BPF'
 		use video_cards_radeon && targets+=';AMDGPU'
 	fi
 

@@ -8,8 +8,9 @@
 	<upstream>
 		<maintainer status="active">
 			<email>mimasgpc@free.fr</email>
+			<name>mimas</name>
 		</maintainer>
-		<doc lang="en">http://mimasgpc.free.fr/openbox-menu_en.html</doc>
+		<doc lang="en">https://bitbucket.org/fabriceT/openbox-menu</doc>
 		<remote-id type="bitbucket">fabriceT/openbox-menu</remote-id>
 	</upstream>
 	<use>

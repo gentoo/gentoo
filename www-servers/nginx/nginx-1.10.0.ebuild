@@ -66,10 +66,10 @@ HTTP_AUTH_PAM_MODULE_URI="https://github.com/stogh/ngx_http_auth_pam_module/arch
 HTTP_AUTH_PAM_MODULE_WD="${WORKDIR}/ngx_http_auth_pam_module-${HTTP_AUTH_PAM_MODULE_PV}"
 
 # http_upstream_check (https://github.com/yaoweibin/nginx_upstream_check_module, BSD license)
-HTTP_UPSTREAM_CHECK_MODULE_PV="0.3.0"
+HTTP_UPSTREAM_CHECK_MODULE_PV="0.3.0-10-g10782ea"
 HTTP_UPSTREAM_CHECK_MODULE_P="ngx_http_upstream_check-${HTTP_UPSTREAM_CHECK_MODULE_PV}"
 HTTP_UPSTREAM_CHECK_MODULE_URI="https://github.com/yaoweibin/nginx_upstream_check_module/archive/v${HTTP_UPSTREAM_CHECK_MODULE_PV}.tar.gz"
-HTTP_UPSTREAM_CHECK_MODULE_WD="${WORKDIR}/nginx_upstream_check_module-${HTTP_UPSTREAM_CHECK_MODULE_PV}"
+HTTP_UPSTREAM_CHECK_MODULE_WD="${WORKDIR}/nginx_upstream_check_module-10782eaff51872a8f44e65eed89bbe286004bcb1"
 
 # http_metrics (https://github.com/zenops/ngx_metrics, BSD license)
 HTTP_METRICS_MODULE_PV="0.1.1"
@@ -328,10 +328,7 @@ src_prepare() {
 	eapply "${FILESDIR}/${PN}-1.4.1-fix-perl-install-path.patch"
 
 	if use nginx_modules_http_upstream_check; then
-		eapply -p0 "${FILESDIR}/check-1.9.2".patch
-		pushd "${HTTP_UPSTREAM_CHECK_MODULE_WD}" >/dev/null
-		eapply -p1 "${FILESDIR}/check-0.3.0-segfault-on-reload".patch
-		popd >/dev/null
+		eapply -p0 "${HTTP_UPSTREAM_CHECK_MODULE_WD}/check_1.9.2+".patch
 	fi
 
 	if use nginx_modules_http_lua; then

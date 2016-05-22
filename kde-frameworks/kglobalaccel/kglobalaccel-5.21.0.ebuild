@@ -8,7 +8,7 @@ VIRTUALX_REQUIRED="test"
 inherit kde5
 
 DESCRIPTION="Framework to handle global shortcuts"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm ~x86"
 LICENSE="LGPL-2+"
 IUSE="nls"
 

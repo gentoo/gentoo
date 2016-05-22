@@ -11,6 +11,6 @@ inherit perl-module
 DESCRIPTION="Utility for looking for perl objects that are not reclaimed"
 
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm ~x86"
 
 DEPEND="virtual/perl-ExtUtils-MakeMaker"

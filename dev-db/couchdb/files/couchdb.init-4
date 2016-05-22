@@ -1,4 +1,4 @@
-#!/sbin/runscript
+#!/sbin/openrc-run
 # Copyright 1999-2013 Dirkjan Ochtman
 # Distributed under the terms of the Apache License, Version 2.0
 

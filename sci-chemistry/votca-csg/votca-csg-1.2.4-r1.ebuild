@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -31,10 +31,10 @@ KEYWORDS="amd64 x86 ~amd64-linux ~x86-macos"
 RDEPEND="~sci-libs/votca-tools-${PV}
 	gromacs? ( sci-chemistry/gromacs:= )
 	dev-lang/perl
-	app-shells/bash"
+	app-shells/bash:0"
 
 DEPEND="${RDEPEND}
-	doc? ( || ( <app-doc/doxygen-1.7.6.1[-nodot] >=app-doc/doxygen-1.7.6.1[dot] ) )
+	doc? ( >=app-doc/doxygen-1.7.6.1[dot] )
 	>=app-text/txt2tags-2.5
 	virtual/pkgconfig"
 

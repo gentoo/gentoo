@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=5
-PYTHON_COMPAT=( python{3_3,3_4} )
+PYTHON_COMPAT=( python{3_3,3_4,3_5} )
 inherit distutils-r1
 
 DESCRIPTION="Compiler of NML files into grf/nfo files"
@@ -12,7 +12,7 @@ SRC_URI="http://bundles.openttdcoop.org/nml/releases/${PV}/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~x86"
+KEYWORDS="amd64 ~arm ~ppc ~x86"
 
 RDEPEND="dev-python/pillow[zlib,${PYTHON_USEDEP}]
 	dev-python/ply[${PYTHON_USEDEP}]"

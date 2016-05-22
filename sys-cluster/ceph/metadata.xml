@@ -20,6 +20,7 @@ Ceph is a distributed network file system designed to provide excellent performa
 </longdescription>
   <use>
     <flag name="cryptopp">Use <pkg>dev-libs/crypto++</pkg> for cryptography</flag>
+    <flag name="cephfs">Build support for cephfs, a POSIX compatible filesystem built on top of ceph</flag>
     <flag name="fuse">Build fuse client</flag>
     <flag name="libatomic">Use libatomic instead of builtin atomic operations</flag>
     <flag name="libaio">Use libaio as asynchronous input/output library</flag>

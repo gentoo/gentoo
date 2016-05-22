@@ -8,6 +8,6 @@
 	<use>
 		<flag name="app">Enable experimental kcapp frontend</flag>
 		<flag name="telepathy">Enable <pkg>net-libs/telepathy-qt</pkg> support to receive text messages and respond to them</flag>
-		<flag name="wayland">Enable kwin_wayland support for mousepad plugin using <pkg>kde-plasma/kwayland</pkg></flag>
+		<flag name="wayland">Enable kwin_wayland support for mousepad plugin using <pkg>kde-frameworks/kwayland</pkg></flag>
 	</use>
 </pkgmetadata>

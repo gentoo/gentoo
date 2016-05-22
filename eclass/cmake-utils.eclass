@@ -87,7 +87,6 @@ _CMAKE_UTILS_ECLASS=1
 # Warn about variables that are declared on the command line
 # but not used. Might give false-positives.
 # "no" to disable (default) or anything else to enable.
-: ${CMAKE_WARN_UNUSED_CLI:=no}
 
 # @ECLASS-VARIABLE: PREFIX
 # @DESCRIPTION:
@@ -113,7 +112,8 @@ _CMAKE_UTILS_ECLASS=1
 # Should be set by user in a per-package basis in /etc/portage/package.env.
 
 case ${EAPI} in
-	2|3|4|5|6) : ;;
+	2|3|4|5) : ${CMAKE_WARN_UNUSED_CLI:=no} ;;
+	6) : ${CMAKE_WARN_UNUSED_CLI:=yes} ;;
 	*) die "EAPI=${EAPI:-0} is not supported" ;;
 esac
 
@@ -161,7 +161,7 @@ _cmake_use_me_now() {
 	local arg=$2
 	[[ ! -z $3 ]] && arg=$3
 
-	[[ ${EAPI} == [2345] ]] || die "${FUNCNAME[1]} is banned in EAPI 6 and later: use -D$1${arg}=\"\$(usex $2)\" instead"
+	[[ ${EAPI} == [2345] ]] || die "${FUNCNAME[1]} is banned in EAPI 6 and later"
 
 	local uper capitalised x
 	[[ -z $2 ]] && die "cmake-utils_use-$1 <USE flag> [<flag name>]"
@@ -184,7 +184,7 @@ _cmake_use_me_now_inverted() {
 	[[ ! -z $3 ]] && arg=$3
 
 	if [[ ${EAPI} != [2345] && "${FUNCNAME[1]}" != cmake-utils_use_find_package ]] ; then
-		die "${FUNCNAME[1]} is banned in EAPI 6 and later: use -D$1${arg}=\"\$(usex $2)\" instead"
+		die "${FUNCNAME[1]} is banned in EAPI 6 and later"
 	fi
 
 	local uper capitalised x

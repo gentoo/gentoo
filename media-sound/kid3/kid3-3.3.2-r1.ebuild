@@ -16,7 +16,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="4"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="acoustid flac kde mp3 mp4 +phonon +taglib vorbis"
 
 REQUIRED_USE="flac? ( vorbis )"

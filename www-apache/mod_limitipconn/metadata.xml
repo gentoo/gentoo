@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>tomk@gentoo.org</email>
-		<name>Tom Knight</name>
-	</maintainer>
 	<longdescription>
 	  Apache module to limit the maximum number of simultaneous
 	  connections per IP address. Allows inclusion and exclusion of files

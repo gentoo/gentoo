@@ -2,10 +2,12 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 <maintainer type="person">
- <email>vapier@gentoo.org</email>
+	<email>vapier@gentoo.org</email>
 </maintainer>
 <maintainer type="project">
- <email>cron-bugs@gentoo.org</email>
- <name>Gentoo Cron Project</name>
+	<email>cron-bugs@gentoo.org</email>
 </maintainer>
+<upstream>
+	<remote-id type="github">dubiousjim/dcron</remote-id>
+</upstream>
 </pkgmetadata>

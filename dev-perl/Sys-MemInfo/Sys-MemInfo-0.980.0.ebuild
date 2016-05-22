@@ -14,3 +14,5 @@ LICENSE="LGPL-2.1 ${LICENSE}"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
 IUSE=""
+
+SRC_TEST=do

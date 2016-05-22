@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -14,7 +14,7 @@ SRC_URI="mirror://apache/jakarta/jmeter/source/jakarta-${P}_src.tgz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 IUSE="beanshell"
 
@@ -60,7 +60,7 @@ src_compile() {
 }
 
 src_install() {
-	DIROPTIONS="--mode=0775"
+	diropts --mode=0775
 	dodir /opt/${PN}
 	local dest="${D}/opt/${PN}/"
 	cp -pPR bin/ lib/ "${dest}" || die

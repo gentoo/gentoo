@@ -5,7 +5,7 @@
 EAPI=6
 
 DESCRIPTION="Web interface for airdcpp-webclient"
-HOMEPAGE="https://www.npmjs.com/package/airdcpp-webui"
+HOMEPAGE="https://airdcpp-web.github.io/"
 SRC_URI="https://registry.npmjs.org/${PN}/-/${P}.tgz"
 
 KEYWORDS="~amd64 ~x86"

@@ -11,7 +11,7 @@ inherit kde4-meta
 
 DESCRIPTION="The embeddable part of konqueror"
 KEYWORDS=" ~amd64 ~x86"
-IUSE="debug minimal"
+IUSE="debug"
 RESTRICT="test"
 
 KMSAVELIBS="true"

@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -31,5 +31,6 @@ DEPEND="${RDEPEND}
 
 src_prepare() {
 	cabal_chdeps \
-		'HUnit                >= 1.2.2 && < 1.3' 'HUnit                >= 1.2.2'
+		'HUnit                >= 1.2.2 && < 1.3' 'HUnit                >= 1.2.2' \
+		'base                 >= 4.4   && < 4.9' 'base                 >= 4.4'
 }

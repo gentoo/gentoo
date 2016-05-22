@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -165,7 +165,7 @@ src_compile() {
 	"${@}" || die "compile error"
 
 	use doc && emake -C pypy/doc/ html
-	pax-mark m "${ED%/}${INSDESTTREE}/pypy-c"
+	pax-mark m pypy-c libpypy-c.so
 }
 
 src_test() {
@@ -176,27 +176,28 @@ src_test() {
 }
 
 src_install() {
+	local dest=/usr/$(get_libdir)/pypy
 	einfo "Installing PyPy ..."
-	insinto "/usr/$(get_libdir)/pypy"
+	insinto "${dest}"
 	doins -r include lib_pypy lib-python pypy-c libpypy-c.so
-	fperms a+x ${INSDESTTREE}/pypy-c ${INSDESTTREE}/libpypy-c.so
-	pax-mark m "${ED%/}${INSDESTTREE}/pypy-c" "${ED%/}${INSDESTTREE}/libpypy-c.so"
+	fperms a+x ${dest}/pypy-c ${dest}/libpypy-c.so
+	pax-mark m "${ED%/}${dest}/pypy-c" "${ED%/}${dest}/libpypy-c.so"
 	dosym ../$(get_libdir)/pypy/pypy-c /usr/bin/pypy
 	dodoc README.rst
 
 	if ! use gdbm; then
-		rm -r "${ED%/}${INSDESTTREE}"/lib_pypy/gdbm.py \
-			"${ED%/}${INSDESTTREE}"/lib-python/*2.7/test/test_gdbm.py || die
+		rm -r "${ED%/}${dest}"/lib_pypy/gdbm.py \
+			"${ED%/}${dest}"/lib-python/*2.7/test/test_gdbm.py || die
 	fi
 	if ! use sqlite; then
-		rm -r "${ED%/}${INSDESTTREE}"/lib-python/*2.7/sqlite3 \
-			"${ED%/}${INSDESTTREE}"/lib_pypy/_sqlite3.py \
-			"${ED%/}${INSDESTTREE}"/lib-python/*2.7/test/test_sqlite.py || die
+		rm -r "${ED%/}${dest}"/lib-python/*2.7/sqlite3 \
+			"${ED%/}${dest}"/lib_pypy/_sqlite3.py \
+			"${ED%/}${dest}"/lib-python/*2.7/test/test_sqlite.py || die
 	fi
 	if ! use tk; then
-		rm -r "${ED%/}${INSDESTTREE}"/lib-python/*2.7/{idlelib,lib-tk} \
-			"${ED%/}${INSDESTTREE}"/lib_pypy/_tkinter \
-			"${ED%/}${INSDESTTREE}"/lib-python/*2.7/test/test_{tcl,tk,ttk*}.py || die
+		rm -r "${ED%/}${dest}"/lib-python/*2.7/{idlelib,lib-tk} \
+			"${ED%/}${dest}"/lib_pypy/_tkinter \
+			"${ED%/}${dest}"/lib-python/*2.7/test/test_{tcl,tk,ttk*}.py || die
 	fi
 
 	# Install docs
@@ -204,8 +205,8 @@ src_install() {
 
 	einfo "Generating caches and byte-compiling ..."
 
-	local -x PYTHON=${ED%/}${INSDESTTREE}/pypy-c
-	local -x LD_LIBRARY_PATH="${ED%/}${INSDESTTREE}"
+	local -x PYTHON=${ED%/}${dest}/pypy-c
+	local -x LD_LIBRARY_PATH="${ED%/}${dest}"
 	# we can't use eclass function since PyPy is dumb and always gives
 	# paths relative to the interpreter
 	local PYTHON_SITEDIR=${EPREFIX}/usr/$(get_libdir)/pypy/site-packages
@@ -237,16 +238,16 @@ src_install() {
 	local t
 	# all modules except tkinter output to .
 	# tkinter outputs to the correct dir ...
-	cd "${ED%/}${INSDESTTREE}"/lib_pypy || die
+	cd "${ED%/}${dest}"/lib_pypy || die
 	for t in "${cffi_targets[@]}"; do
 		# tkinter doesn't work via -m
 		"${PYTHON}" "_${t}_build.py" || die "Failed to build CFFI bindings for ${t}"
 	done
 
 	# Cleanup temporary objects
-	find "${ED%/}${INSDESTTREE}" -name "_cffi_*.[co]" -delete || die
-	find "${ED%/}${INSDESTTREE}" -type d -empty -delete || die
+	find "${ED%/}${dest}" -name "_cffi_*.[co]" -delete || die
+	find "${ED%/}${dest}" -type d -empty -delete || die
 
 	# compile the installed modules
-	python_optimize "${ED%/}${INSDESTTREE}"
+	python_optimize "${ED%/}${dest}"
 }

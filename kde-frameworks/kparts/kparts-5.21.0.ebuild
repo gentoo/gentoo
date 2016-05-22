@@ -9,7 +9,7 @@ inherit kde5
 
 DESCRIPTION="Framework providing elaborate user-interface components"
 LICENSE="LGPL-2+"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm ~x86"
 IUSE=""
 
 RDEPEND="

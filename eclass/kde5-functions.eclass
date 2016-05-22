@@ -17,16 +17,16 @@ inherit toolchain-funcs versionator
 
 # @ECLASS-VARIABLE: EAPI
 # @DESCRIPTION:
-# Currently EAPI 5 and 6 is supported.
+# Currently EAPI 6 is supported.
 case ${EAPI} in
-	5|6) ;;
+	6) ;;
 	*) die "EAPI=${EAPI:-0} is not supported" ;;
 esac
 
 # @ECLASS-VARIABLE: FRAMEWORKS_MINIMAL
 # @DESCRIPTION:
 # Minimal Frameworks version to require for the package.
-: ${FRAMEWORKS_MINIMAL:=5.18.0}
+: ${FRAMEWORKS_MINIMAL:=5.21.0}
 
 # @ECLASS-VARIABLE: PLASMA_MINIMAL
 # @DESCRIPTION:

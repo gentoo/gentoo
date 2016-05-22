@@ -1,0 +1,14 @@
+diff --git a/tests/Game/Goatee/CommonTest.hs b/tests/Game/Goatee/CommonTest.hs
+index bf27662..33e4f24 100644
+--- a/tests/Game/Goatee/CommonTest.hs
++++ b/tests/Game/Goatee/CommonTest.hs
+@@ -1 +1,2 @@
++{-# LANGUAGE FlexibleContexts #-}
+ -- This file is part of Goatee.
+diff --git a/tests/Game/Goatee/Lib/MonadTest.hs b/tests/Game/Goatee/Lib/MonadTest.hs
+index c5b505f..bf10f4e 100644
+--- a/tests/Game/Goatee/Lib/MonadTest.hs
++++ b/tests/Game/Goatee/Lib/MonadTest.hs
+@@ -1 +1,2 @@
++{-# LANGUAGE FlexibleContexts #-}
+ -- This file is part of Goatee.

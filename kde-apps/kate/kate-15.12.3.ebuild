@@ -48,7 +48,7 @@ DEPEND="
 		$(add_frameworks_dep plasma)
 		$(add_frameworks_dep threadweaver)
 		$(add_qt_dep qtsql)
-		>=dev-libs/libgit2-0.22.0:=
+		>=dev-libs/libgit2-0.22.0:=[threads]
 	)
 "
 RDEPEND="${DEPEND}"

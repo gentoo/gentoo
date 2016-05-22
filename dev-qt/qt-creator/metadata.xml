@@ -30,6 +30,8 @@
 		<flag name="qnx">Build plugin for QNX devices</flag>
 		<flag name="systemd">Add support for retrieving application output from journald</flag>
 		<flag name="valgrind">Add support for memory debugging using <pkg>dev-util/valgrind</pkg></flag>
+		<flag name="webengine">Use <pkg>dev-qt/qtwebengine</pkg> to view documentation</flag>
+		<flag name="webkit">Use <pkg>dev-qt/qtwebkit</pkg> to view documentation</flag>
 		<flag name="winrt">Build plugin for WinRT devices</flag>
 	</use>
 	<upstream>

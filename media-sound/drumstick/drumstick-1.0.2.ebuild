@@ -36,6 +36,8 @@ DEPEND="${RDEPEND}
 
 DOCS=( AUTHORS ChangeLog NEWS README TODO )
 
+PATCHES=( "${FILESDIR}/${P}-gcc6.patch" )
+
 src_configure() {
 	local mycmakeargs=(
 		$(cmake-utils_use_find_package doc Doxygen)

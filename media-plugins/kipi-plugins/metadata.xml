@@ -16,9 +16,5 @@
 		<flag name="redeyes">Add redeyes removal support</flag>
 		<flag name="videoslideshow">Build videoslideshow plugin</flag>
 		<flag name="vkontakte">Build plugin for vkontakte.ru</flag>
-		<flag name="linguas_ha">Hausa translation</flag>
-		<flag name="linguas_mi">Maori translation</flag>
-		<flag name="linguas_tt">?? translation</flag>
-		<flag name="linguas_ven">Venda translation</flag>
 	</use>
 </pkgmetadata>

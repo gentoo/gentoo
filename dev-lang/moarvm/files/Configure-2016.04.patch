@@ -1,0 +1,145 @@
+diff --git a/Configure.pl b/Configure.pl
+index 72a5dad..f829d5c 100755
+--- a/Configure.pl
++++ b/Configure.pl
+@@ -32,7 +32,7 @@ GetOptions(\%args, qw(
+     os=s shell=s toolchain=s compiler=s
+     ar=s cc=s ld=s make=s has-sha has-libuv
+     static has-libtommath has-libatomic_ops
+-    has-dyncall has-libffi
++    has-dyncall has-libffi pkgconfig=s
+     build=s host=s big-endian jit! enable-jit lua=s has-dynasm
+     prefix=s bindir=s libdir=s mastdir=s make-install asan ubsan),
+     'no-optimize|nooptimize' => sub { $args{optimize} = 0 },
+@@ -99,6 +99,7 @@ $config{config} = join ' ', map { / / ? "\"$_\"" : $_ } @args;
+ $config{osname} = $^O;
+ $config{osvers} = $Config{osvers};
+ $config{lua} = $args{lua} // './3rdparty/dynasm/minilua@exe@';
++$config{pkgconfig} = $args{pkgconfig} // '/usr/bin/pkg-config';
+ 
+ # set options that take priority over all others
+ my @keys = qw( ar cc ld make );
+@@ -164,12 +165,33 @@ if (-e '3rdparty/libuv/src/unix/threadpool' . $defaults{obj}
+     system($defaults{make}, 'realclean')
+ }
+ 
++# test whether pkg-config works
++if (-e "$config{pkgconfig}") {
++    print("\nTesting pkgconfig ... ");
++    system("$config{pkgconfig}", "--version");
++    if ( $? == 0 ) {
++        $config{pkgconfig_works} = 1;
++    } else {
++        $config{pkgconfig_works} = 0;
++    }
++}
++
+ # conditionally set include dirs and install rules
+ $config{cincludes} //= '';
+ $config{install}   //= '';
+ if ($args{'has-libuv'}) {
+     $defaults{-thirdparty}->{uv} = undef;
+     unshift @{$config{usrlibs}}, 'uv';
++    if ($config{pkgconfig_works}) {
++        my $result = `$config{pkgconfig} --cflags libuv`;
++        if ( $? == 0 ) {
++            $result =~ s/\n/ /g;
++            $config{cincludes} .= ' ' . "$result";
++            print("Adding extra include for libuv: $result\n");
++        } else {
++            print("Error occured when running $config{pkgconfig} --cflags libuv.\n");
++        }
++    }
+ }
+ else {
+     $config{cincludes} .= ' ' . $defaults{ccinc} . '3rdparty/libuv/include'
+@@ -181,6 +203,16 @@ else {
+ if ($args{'has-libatomic_ops'}) {
+     $defaults{-thirdparty}->{lao} = undef;
+     unshift @{$config{usrlibs}}, 'atomic_ops';
++    if ($config{pkgconfig_works}) {
++        my $result = `$config{pkgconfig} --cflags atomic_ops`;
++        if ( $? == 0 ) {
++            $result =~ s/\n/ /g;
++            $config{cincludes} .= ' ' . "$result";
++            print("Adding extra include for atomic_ops: $result\n");
++        } else {
++            print("Error occured when running $config{pkgconfig} --cflags atomic_ops.\n");
++        }
++    }
+ }
+ else {
+     $config{cincludes} .= ' ' . $defaults{ccinc} . '3rdparty/libatomic_ops/src';
+@@ -216,7 +248,8 @@ if ($args{'has-libtommath'}) {
+ }
+ else {
+     $config{cincludes} .= ' ' . $defaults{ccinc} . '3rdparty/libtommath';
+-    $config{install}   .= "\t\$(CP) 3rdparty/libtommath/*.h \$(DESTDIR)\$(PREFIX)/include/libtommath\n";
++    $config{install}   .= "\t\$(MKPATH) \$(DESTDIR)\$(PREFIX)/include/libtommath\n"
++                        . "\t\$(CP) 3rdparty/libtommath/*.h \$(DESTDIR)\$(PREFIX)/include/libtommath\n";
+ }
+ 
+ if ($args{'has-dynasm'}) {
+@@ -232,6 +265,16 @@ if ($args{'has-libffi'}) {
+     $config{nativecall_backend} = 'libffi';
+     unshift @{$config{usrlibs}}, 'ffi';
+     push @{$config{defs}}, 'HAVE_LIBFFI';
++    if ($config{pkgconfig_works}) {
++        my $result = `$config{pkgconfig} --cflags libffi`;
++        if ( $? == 0 ) {
++            $result =~ s/\n/ /g;
++            $config{cincludes} .= ' ' . "$result";
++            print("Adding extra include for libffi: $result\n");
++        } else {
++            print("Error occured when running $config{pkgconfig} --cflags libffi.\n");
++        }
++    }
+ }
+ elsif ($args{'has-dyncall'}) {
+     unshift @{$config{usrlibs}}, 'dyncall_s', 'dyncallback_s', 'dynload_s';
+@@ -364,6 +407,7 @@ my $order = $config{be} ? 'big endian' : 'little endian';
+ print "\n", <<TERM, "\n";
+         make: $config{make}
+      compile: $config{cc} $config{cflags}
++    includes: $config{cincludes}
+         link: $config{ld} $config{ldflags}
+         libs: $config{ldlibs}
+ 
+@@ -873,6 +917,10 @@ Build and install MoarVM in addition to configuring it.
+ 
+ =item --has-libffi
+ 
++=item --pkgconfig=/path/to/pkgconfig/executable
++
++Provide path to the pkgconfig executable. Default: /usr/bin/pkg-config
++
+ =item --no-jit
+ 
+ Disable JIT compiler, which is enabled by default to JIT-compile hot frames.
+diff --git a/build/Makefile.in b/build/Makefile.in
+index 56a4c8a..b94e847 100644
+--- a/build/Makefile.in
++++ b/build/Makefile.in
+@@ -454,9 +454,6 @@ install: all
+ 	$(CP) src/strings/*.h $(DESTDIR)$(PREFIX)/include/moar/strings
+ 	$(CP) src/jit/*.h $(DESTDIR)$(PREFIX)/include/moar/jit
+ 	$(CP) src/instrument/*.h $(DESTDIR)$(PREFIX)/include/moar/instrument
+-	$(MKPATH) $(DESTDIR)$(PREFIX)/include/libuv
+-	$(MKPATH) $(DESTDIR)$(PREFIX)/include/libtommath
+-	$(CP) 3rdparty/libuv/include/*.h $(DESTDIR)$(PREFIX)/include/libuv
+ @install@
+ 
+ lib: @moar@
+diff --git a/build/setup.pm b/build/setup.pm
+index 324cc88..c87d79e 100755
+--- a/build/setup.pm
++++ b/build/setup.pm
+@@ -125,7 +125,7 @@ our %TC_POSIX = (
+     ccshared   => '-fPIC',
+     ldshared   => '-shared @ccshared@',
+     moarshared => '',
+-    ldrpath    => '-Wl,-rpath,@libdir@ -Wl,-rpath,@prefix@/share/perl6/site/lib',
++    ldrpath    => '-Wl,-rpath,/@libdir@ -Wl,-rpath,@prefix@/share/perl6/site/lib',
+ 
+     arflags => 'rcs',
+     arout   => '',

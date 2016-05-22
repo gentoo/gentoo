@@ -195,6 +195,7 @@ maildir - Add support for maildir (~/.maildir) style mail spools
 matroska - Add support for the matroska container format (extensions .mkv, .mka and .mks)
 matrox - Add Matrox MGA support to mplayer
 mbox - Add support for mbox (/var/spool/mail) style mail spools
+memcached - Add support for memcached
 memlimit - Add memory usage limiting in supporting programs
 mhash - Add support for the mhash library
 migemo - Enable migemo support for Japanese

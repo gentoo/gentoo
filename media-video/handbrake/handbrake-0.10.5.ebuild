@@ -143,14 +143,12 @@ pkg_postinst() {
 		einfo ""
 		einfo "For the GTK+ version of HandBrake, you can run \`ghb\`."
 	fi
+
+	gnome2_icon_cache_update
 }
 
 pkg_preinst() {
 	gnome2_icon_savelist
-}
-
-pkg_postinst() {
-	gnome2_icon_cache_update
 }
 
 pkg_postrm() {

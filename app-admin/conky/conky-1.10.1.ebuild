@@ -76,7 +76,8 @@ pkg_setup() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}/${P}-includewlan.patch"
+	epatch "${FILESDIR}/${P}-includewlan.patch" \
+		"${FILESDIR}/${P}-ncurses-tinfo.patch"
 
 	# Allow user patches #478482
 	epatch_user

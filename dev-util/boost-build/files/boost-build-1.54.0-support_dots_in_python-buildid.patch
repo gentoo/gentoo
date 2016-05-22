@@ -1,5 +1,5 @@
---- tools/common.jam.orig	2013-08-27 12:13:56.865158748 +0400
-+++ tools/common.jam	2013-08-27 12:15:08.760162210 +0400
+--- a/tools/common.jam
++++ b/tools/common.jam
 @@ -763,7 +763,15 @@
          switch $(f:G)
          {

@@ -34,7 +34,7 @@ SRC_URI="https://github.com/${MY_PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
 	linguas_hu? ( ${URI_PREFIX}hun.traineddata -> hun.traineddata-${PV} )
 	linguas_id? ( ${URI_PREFIX}ind.traineddata -> ind.traineddata-${PV} )
 	linguas_it? ( ${URI_PREFIX}ita.traineddata -> ita.traineddata-${PV} )
-	linguas_jp? ( ${URI_PREFIX}jpn.traineddata -> jpn.traineddata-${PV} )
+	linguas_ja? ( ${URI_PREFIX}jpn.traineddata -> jpn.traineddata-${PV} )
 	linguas_ko? ( ${URI_PREFIX}kor.traineddata -> kor.traineddata-${PV} )
 	linguas_lt? ( ${URI_PREFIX}lit.traineddata -> lit.traineddata-${PV} )
 	linguas_lv? ( ${URI_PREFIX}lav.traineddata -> lav.traineddata-${PV} )
@@ -63,7 +63,7 @@ LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~ppc ~ppc64 ~sparc ~x86"
 
-IUSE="doc examples jpeg math opencl osd png +scrollview static-libs tiff training -webp linguas_ar linguas_bg linguas_ca linguas_chr linguas_cs linguas_de linguas_da linguas_el linguas_es linguas_fi linguas_fr linguas_he linguas_hi linguas_hu linguas_id linguas_it linguas_jp linguas_ko linguas_lt linguas_lv linguas_nl linguas_no linguas_pl linguas_pt linguas_ro linguas_ru linguas_sk linguas_sl linguas_sr linguas_sv linguas_th linguas_tl linguas_tr linguas_uk linguas_vi linguas_zh_CN linguas_zh_TW"
+IUSE="doc examples jpeg math opencl osd png +scrollview static-libs tiff training -webp linguas_ar linguas_bg linguas_ca linguas_chr linguas_cs linguas_de linguas_da linguas_el linguas_es linguas_fi linguas_fr linguas_he linguas_hi linguas_hu linguas_id linguas_it linguas_ja linguas_ko linguas_lt linguas_lv linguas_nl linguas_no linguas_pl linguas_pt linguas_ro linguas_ru linguas_sk linguas_sl linguas_sr linguas_sv linguas_th linguas_tl linguas_tr linguas_uk linguas_vi linguas_zh_CN linguas_zh_TW"
 
 # With opencl USE=tiff is necessary in leptonica
 CDEPEND=">=media-libs/leptonica-1.71:=[zlib,tiff?,jpeg?,png?,webp?]

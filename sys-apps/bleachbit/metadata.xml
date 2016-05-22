@@ -5,6 +5,15 @@
 		<email>dastergon@gentoo.org</email>
 		<name>Pavlos Ratis</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>christian.tietz@mailbox.org</email>
+		<name>Christian Tietz</name>
+		<description>Proxy Maintainer</description>
+	</maintainer>	
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
 	<upstream>
 		<remote-id type="sourceforge">bleachbit</remote-id>
 		<bugs-to>https://bugs.launchpad.net/bleachbit</bugs-to>

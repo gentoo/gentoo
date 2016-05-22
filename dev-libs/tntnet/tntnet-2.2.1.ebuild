@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -22,7 +22,7 @@ RDEPEND=">=dev-libs/cxxtools-2.2.1
 			>=net-libs/gnutls-1.2.0
 			dev-libs/libgcrypt:0
 		)
-		!gnutls? ( dev-libs/openssl )
+		!gnutls? ( dev-libs/openssl:* )
 	)"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig

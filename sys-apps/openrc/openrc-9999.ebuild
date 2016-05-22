@@ -147,8 +147,9 @@ src_install() {
 	insinto /etc/logrotate.d
 	newins "${FILESDIR}"/openrc.logrotate openrc
 
-	# install the gentoo pam.d file
+	# install gentoo pam.d files
 	newpamd "${FILESDIR}"/start-stop-daemon.pam start-stop-daemon
+	newpamd "${FILESDIR}"/start-stop-daemon.pam supervise-daemon
 
 	# install documentation
 	dodoc ChangeLog *.md
@@ -278,6 +279,13 @@ pkg_postinst() {
 			cp -RPp "${EROOT}"usr/share/${PN}/runlevels/shutdown/* \
 				"${EROOT}"etc/runlevels/shutdown
 		fi
+	fi
+
+	# Added for 0.21
+	if [[ ! -e "${EROOT}"etc/runlevels/nonetwork ]]; then
+		einfo "copying default nonetwork runlevel"
+		cp -RPp "${EROOT}"usr/share/${PN}/runlevels/nonetwork \
+			"${EROOT}"etc/runlevels
 	fi
 
 	if use hppa; then

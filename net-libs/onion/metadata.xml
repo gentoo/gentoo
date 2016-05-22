@@ -9,6 +9,7 @@
     <flag name="libev">Use <pkg>dev-libs/libev</pkg> as thread poller instead of Linux's epoll.</flag>
     <flag name="libevent">Use <pkg>dev-libs/libevent</pkg> as thread poller instead of libev or Linux's epoll.</flag>
     <flag name="boehm-gc">Add <pkg>dev-libs/boehm-gc</pkg> support for memory allocations.</flag>
+	<flag name="redis">Add support for redis sessions.</flag>
   </use>
   <upstream>
     <remote-id type="github">davidmoreno/onion</remote-id>

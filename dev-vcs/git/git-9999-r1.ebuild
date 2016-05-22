@@ -27,7 +27,7 @@ MY_P="${PN}-${MY_PV}"
 
 DOC_VER=${MY_PV}
 
-DESCRIPTION="GIT - the stupid content tracker, the revision control system heavily used by the Linux kernel team"
+DESCRIPTION="stupid content tracker: distributed VCS designed for speed and efficiency"
 HOMEPAGE="http://www.git-scm.com/"
 if [[ ${PV} != *9999 ]]; then
 	SRC_URI_SUFFIX="xz"
@@ -540,7 +540,7 @@ src_install() {
 	if use !prefix ; then
 		newinitd "${FILESDIR}"/git-daemon-r1.initd git-daemon
 		newconfd "${FILESDIR}"/git-daemon.confd git-daemon
-		systemd_newunit "${FILESDIR}/git-daemon_at.service" "git-daemon@.service"
+		systemd_newunit "${FILESDIR}/git-daemon_at-r1.service" "git-daemon@.service"
 		systemd_dounit "${FILESDIR}/git-daemon.socket"
 	fi
 

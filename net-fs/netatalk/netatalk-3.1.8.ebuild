@@ -58,6 +58,7 @@ REQUIRED_USE="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.1.7-gentoo.patch
+	"${FILESDIR}"/${PN}-3.1.8-disable-ld-library-path.patch #564350
 )
 
 src_prepare() {
@@ -74,18 +75,11 @@ src_configure() {
 
 	append-flags -fno-strict-aliasing
 
-	if use acl; then
-		myeconfargs+=( --with-acls $(use_with ldap) )
-	else
-		myeconfargs+=( --without-acls --without-ldap )
-	fi
-
 	# Ignore --with-init-style=gentoo, we install the init.d by hand and we avoid having
 	# to sed the Makefiles to not do rc-update.
 	# TODO:
 	# systemd : --with-init-style=systemd
 	myeconfargs+=(
-		--disable-silent-rules
 		$(use_enable avahi zeroconf)
 		$(use_enable debug)
 		$(use_enable debug debugging)
@@ -94,8 +88,10 @@ src_configure() {
 		$(use_enable kerberos krbV-uam)
 		$(use_enable quota)
 		$(use_enable tcpd tcp-wrappers)
+		$(use_with acl acls)
 		$(use_with cracklib)
 		$(use_with dbus afpstats)
+		$(use_with ldap)
 		$(use_with pam)
 		$(use_with samba smbsharemodes)
 		$(use_with shadow)

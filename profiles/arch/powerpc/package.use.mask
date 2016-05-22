@@ -285,7 +285,7 @@ app-cdr/brasero vcd
 
 # Brent Baude <ranger@gentoo.org> (25 June 2011)
 # kde-base/krossjava fails to build on ppc
-kde-base/kdebindings-meta java
+kde-apps/kdebindings-meta java
 
 # Doug Goldstein <cardoe@gentoo.org> (27 May 2011)
 # app-emulation/spice, app-emulation/xen, and sys-cluster/ceph

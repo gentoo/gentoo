@@ -10,7 +10,7 @@ inherit eutils multilib autotools python-single-r1
 MY_P=${P/_rc/-RC}
 
 DESCRIPTION="Shows system and ISDN information on an external display or in a X11 window"
-HOMEPAGE="http://ssl.bulix.org/projects/lcd4linux"
+HOMEPAGE="https://lcd4linux.bulix.org/"
 SRC_URI="mirror://gentoo/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"

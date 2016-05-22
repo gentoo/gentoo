@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -19,7 +19,7 @@ IUSE="static-libs"
 
 RDEPEND="
 	media-libs/libsndfile
-	>=sys-libs/readline-0.6.2
+	>=sys-libs/readline-0.6.2:0=
 	x11-libs/gtk+:3"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"

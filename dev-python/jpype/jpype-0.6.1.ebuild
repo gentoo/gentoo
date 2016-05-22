@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 python3_{3,4,5} )
 
 inherit java-pkg-2 distutils-r1
 
-DESCRIPTION="JPype is an effort to allow Python programs full access to Java class libraries"
+DESCRIPTION="JPype is an effort to allow Python programs full access to Java class librairies"
 HOMEPAGE="https://github.com/originell/jpype"
 SRC_URI="https://github.com/originell/${PN}/archive/v${PV}.zip -> ${P}.zip"
 

@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -220,27 +220,10 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
-	einfo "This version of portage now has the new plugin-sync system"
-	einfo "An additional 'auto-sync = yes' setting is needed for each repo"
-	einfo "you wish 'emerge --sync' to sync"
-	einfo "The default setting is 'no'"
-	einfo "The primary sync action is now controlled via the emaint command"
-	einfo "The emaint sync module is more flexible in its capabilities"
-	einfo "It is similar to layman's -s and -S options"
 	einfo ""
-	einfo " 'emerge --sync' is now equivalent to 'emaint sync -a'"
-	einfo ""
-	einfo "run 'emaint sync --auto' to sync all auto-sync enabled repos"
-	einfo " options are:"
-	einfo "    -A, --allrepos  Sync all repos that have a sync-url defined"
-	einfo "    -a, --auto      Sync auto-sync enabled repos only"
-	einfo "    -r REPO, --repo REPO  Sync the specified repo"
-	einfo "                          even if 'auto-sync = no' is set"
-	einfo ""
-	einfo "Currently installed sync-type modules include:"
-	einfo "    rsync, git, cvs, svn, websync"
-	einfo "    the websync module currently runs emerge-webrsync for you"
-	einfo ""
-	einfo "For sync module specifications: https://wiki.gentoo.org/wiki/Project:Portage/Sync"
+	einfo "This release of portage NO LONGER contains the repoman code base."
+	einfo "Repoman now has it's own ebuild and release package."
+	einfo "For repoman functionality please emerge app-portage/repoman"
+	einfo "Please report any bugs you may encounter."
 	einfo ""
 }

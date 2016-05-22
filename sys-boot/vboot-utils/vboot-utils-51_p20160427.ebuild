@@ -35,7 +35,6 @@ S=${WORKDIR}
 
 src_prepare() {
 	sed -i \
-		-e 's: -Werror : :g' \
 		-e 's:${DESTDIR}/\(bin\|${LIBDIR}\):${DESTDIR}/usr/\1:g' \
 		-e 's:${DESTDIR}/default:${DESTDIR}/etc/default:g' \
 		Makefile || die
@@ -50,6 +49,7 @@ _emake() {
 		HOST_ARCH=${arch} \
 		LIBDIR="$(get_libdir)" \
 		DEBUG_FLAGS= \
+		WERROR= \
 		MINIMAL=$(usev minimal) \
 		STATIC=$(usev static) \
 		$(usex elibc_musl HAVE_MUSL=1 "") \

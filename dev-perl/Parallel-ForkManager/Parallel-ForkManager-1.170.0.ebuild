@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="A simple parallel processing fork manager"
 
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~sparc ~x86 ~sparc-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 ~ia64 ~ppc ~sparc ~x86 ~sparc-solaris ~x86-solaris"
 IUSE="test minimal examples"
 
 RDEPEND="
