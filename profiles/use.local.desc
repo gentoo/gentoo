@@ -1219,7 +1219,7 @@ app-text/stardict:pronounce - Install WyabdcRealPeopleTTS package (it is just ma
 app-text/stardict:qqwry - Enable QQWry plugin, which provides information (in Chinese language) about geographical positions, owner, etc. for IP addresses
 app-text/stardict:tools - Build and install the extra stardict tools
 app-text/tesseract:linguas_chr - Enable support for the Cherokee language.
-app-text/tesseract:linguas_jp - Enable support for Japanese.
+app-text/tesseract:linguas_ja - Enable support for Japanese.
 app-text/tesseract:math - Enable support for recognition of equations.
 app-text/tesseract:opencl - Enable opencl support for speedup using GPU computation.
 app-text/tesseract:osd - Enable support orientation and script detection.
@@ -3093,9 +3093,7 @@ games-rpg/to-the-moon:bundled-libs - Use bundled libraries
 games-rpg/valyriatear:editor - Compile the Qt editor along with the game
 games-simulation/corsix-th:ffmpeg - Use ffmpeg for playing in-game cutscenes.
 games-simulation/corsix-th:mapeditor - Build the map editor (needs opengl enabled!).
-games-simulation/corsix-th:midi - Use SDL mixer and timidity for in-game music.
 games-simulation/corsix-th:opengl - Use OpenGL for rendering.
-games-simulation/corsix-th:sdl - Use SDL for rendering.
 games-simulation/corsix-th:sound - Use SDL mixer for in-game sound.
 games-simulation/corsix-th:truetype - Use high quality fonts.
 games-simulation/flightgear:dbus - Enable screensaver DBus interaction
