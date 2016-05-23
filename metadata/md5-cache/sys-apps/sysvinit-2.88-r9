@@ -4,11 +4,11 @@ DESCRIPTION=/sbin/init - parent of all processes
 EAPI=5
 HOMEPAGE=http://savannah.nongnu.org/projects/sysvinit
 IUSE=selinux ibm static kernel_FreeBSD
-KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 hppa ~ia64 ~m68k ~mips ~ppc ppc64 ~s390 ~sh ~sparc ~x86
 LICENSE=GPL-2
 RDEPEND=selinux? ( >=sys-libs/libselinux-1.28 ) selinux? ( sec-policy/selinux-shutdown )
 SLOT=0
 SRC_URI=mirror://nongnu/sysvinit/sysvinit-2.88dsf.tar.bz2
 _eclass_exported_funcs=pkg_postinst:- src_prepare:- src_compile:- src_install:-
 _eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	flag-o-matic	d270fa247153df66074f795fa42dba3e	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
-_md5_=e068be87bf49674cc757b0a069c15589
+_md5_=379004eaaaecc8d41cbdc71cc3dbeb96

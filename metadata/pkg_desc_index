@@ -13872,7 +13872,7 @@ net-analyzer/sslscan 1.11.3 1.11.4: Fast SSL configuration scanner
 net-analyzer/sslsniff 0.8-r2: MITM all SSL connections on a LAN and dynamically generates certs
 net-analyzer/ssmping 0.9.1: Tool for testing multicast connectivity
 net-analyzer/suricata 2.0.11 3.0.1: High performance Network IDS, IPS and Network Security Monitoring engine
-net-analyzer/symon 2.86-r1 2.87: Performance and information monitoring tool
+net-analyzer/symon 2.87: Performance and information monitoring tool
 net-analyzer/synscan 5.01: A fast asynchronous half-open TCP portscanner
 net-analyzer/syweb 0.65: Web frontend to symon
 net-analyzer/tcpdump 4.7.4 4.7.4-r1 9999: A Tool for network monitoring and data acquisition
