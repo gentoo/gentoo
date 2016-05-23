@@ -4,6 +4,8 @@
 
 EAPI=5
 
+inherit toolchain-funcs
+
 DESCRIPTION="NVM-Express user space tooling for Linux"
 HOMEPAGE="https://github.com/linux-nvme/nvme-cli"
 EGIT_COMMIT="709571d77bf618921fd719253da677742c673d06"
@@ -22,6 +24,10 @@ src_prepare() {
 		-i Makefile || die
 	sed 's|/usr/local|$(DESTDIR)/$(PREFIX)/share|' \
 		-i Documentation/Makefile || die
+}
+
+src_compile() {
+	emake CC="$(tc-getCC)"
 }
 
 src_install() {
