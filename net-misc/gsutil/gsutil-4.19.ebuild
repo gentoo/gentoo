@@ -26,8 +26,7 @@ RDEPEND="${PYTHON_DEPS}
 	>=dev-python/pyopenssl-0.13[${PYTHON_USEDEP}]
 	>=dev-python/gcs-oauth2-boto-plugin-1.12[${PYTHON_USEDEP}]
 	>=dev-python/google-apitools-0.5.2[${PYTHON_USEDEP}]
-	>=dev-python/oauth2client-1.5.2[${PYTHON_USEDEP}]
-	<dev-python/oauth2client-2
+	dev-python/oauth2client[${PYTHON_USEDEP}]
 	>=dev-python/python-gflags-2.0[${PYTHON_USEDEP}]
 	>=dev-python/retry-decorator-1.0.0[${PYTHON_USEDEP}]
 	>=dev-python/six-1.9.0[${PYTHON_USEDEP}]
