@@ -51,6 +51,7 @@ pkg_setup() {
 
 src_prepare() {
 	epatch "${FILESDIR}"/${P}-progress-bar-segv.patch
+	epatch "${FILESDIR}"/${P}-gnulib-cygwin-sys_select.patch
 }
 
 src_configure() {
