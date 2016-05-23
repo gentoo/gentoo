@@ -22,8 +22,9 @@ IUSE="dbus nls test"
 
 # pugixml 1.7 minimal dependency is for c++11 proper configuration
 RDEPEND=">=app-eselect/eselect-wxwidgets-0.7-r1
+	>=dev-libs/nettle-3.1:=
 	>=dev-db/sqlite-3.7
-	>=dev-libs/libfilezilla-0.4.0
+	>=dev-libs/libfilezilla-0.5.0
 	>=dev-libs/pugixml-1.7
 	net-dns/libidn
 	>=net-libs/gnutls-3.1.12
