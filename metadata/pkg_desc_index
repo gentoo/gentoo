@@ -13020,7 +13020,7 @@ media-sound/aacgain 1.9: AACGain normalizes the volume of digital music files us
 media-sound/aacplusenc 0.17.5: High-Efficiency AAC (AAC+) Encoder
 media-sound/abcde 2.5.4-r1 2.7 2.7.1: A command line CD encoder
 media-sound/abcm2ps 6.6.22 8.5.2 8.8.3 8.8.4: A program to convert abc files to Postscript files
-media-sound/abcmidi 2014.12.25 2015.02.22 2015.08.25: Programs for processing ABC music notation files
+media-sound/abcmidi 2015.08.25 2016.05.05: Programs for processing ABC music notation files
 media-sound/adplay 1.7: A console player for AdLib music
 media-sound/aeolus 0.9.0: A synthesised pipe organ emulator
 media-sound/alac_decoder 0.1.3 0.2.0: Basic decoder for Apple Lossless Audio Codec files (ALAC)
@@ -13066,7 +13066,7 @@ media-sound/cdparanoia 3.10.2-r6: an advanced CDDA reader with error correction
 media-sound/cdplay 1.0: a commandline CD Player
 media-sound/cdstatus 0.97.03: Tool for diagnosing cdrom drive and digital data (audio) extraction
 media-sound/cdtool 2.1.8-r1: collection of command-line utilities to control cdrom devices
-media-sound/chordii 4.3 4.5.1: A guitar music typesetter
+media-sound/chordii 4.5.1 4.5.3: A guitar music typesetter
 media-sound/christine 0.7.0: A simple gstreamer based media player
 media-sound/chuck 1.2.1.2 1.3.5.1: Strongly-timed, concurrent, and on-the-fly audio programming language
 media-sound/clementine 1.2.3 1.3.1 9999: A modern music player and library organizer based on Amarok 1.4 and Qt4
@@ -13408,7 +13408,7 @@ media-sound/xmms2 0.8-r2 0.8-r3 0.8-r4: X(cross)platform Music Multiplexing Syst
 media-sound/xmms2-scrobbler 0.4.0: XMMS2 AudioScrobbler client
 media-sound/xnoise 0.2.21 9999: A media player for Gtk+ with a slick GUI, great speed and lots of features
 media-sound/xwax 1.5: Digital vinyl emulation software
-media-sound/yoshimi 1.3.2 1.3.5.2 1.3.8.2-r1: A software synthesizer based on ZynAddSubFX
+media-sound/yoshimi 1.3.2 1.3.5.2 1.3.8.2-r1 1.3.9: A software synthesizer based on ZynAddSubFX
 media-sound/zynaddsubfx 2.4.3 2.5.0 2.5.1 2.5.2 2.5.4: ZynAddSubFX is an opensource software synthesizer
 media-tv/channeleditor 1.9.2.1-r1: Editor for VDR channels.conf
 media-tv/dvbstream 0.7_pre20080516: simple command line tools for DVB cards. Includes a RTP multicast stream server
