@@ -16973,7 +16973,7 @@ sys-devel/kgcc64 3.4.6 4.1.2 4.2.4 4.3.5 4.4.5 4.4.6 4.5.3 4.5.4 4.6.3 4.6.4 4.7
 sys-devel/libtool 2.4.2-r1 2.4.4 2.4.5 2.4.6 2.4.6-r1 2.4.6-r2 9999: A shared library tool for developers
 sys-devel/llvm 3.3-r3 3.4.2 3.5.0 3.5.2 3.6.2 3.7.1-r2 3.8.0-r2 9999: Low Level Virtual Machine
 sys-devel/m4 1.4.16 1.4.17: GNU macro processor
-sys-devel/make 3.80-r4 3.81-r2 3.82-r4 4.0-r1 4.1-r1 4.2: Standard tool to compile source trees
+sys-devel/make 3.80-r4 3.81-r2 3.82-r4 4.0-r1 4.1-r1 4.2 4.2-r1: Standard tool to compile source trees
 sys-devel/multilib-gcc-wrapper 0: Wrappers for gcc tools to be used on non-native CHOSTs
 sys-devel/native-cctools 1 2 4: Host OS native assembler as and static linker ld
 sys-devel/parity 1.2.4 1.2.5 1.2.6 9999: An Interix to native Win32 Cross-Compiler Tool (requires Visual Studio)
