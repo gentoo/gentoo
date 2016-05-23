@@ -5,6 +5,10 @@
 # This file requires >=portage-2.1.1
 # New entries go on top.
 
+# Christoph Junghans <ottxor@gentoo.org> (23 May 2016)
+# =dev-libs/libressl-2.3 is masked
+net-misc/openntpd libressl
+
 # Michał Górny <mgorny@gentoo.org> (14 May 2016)
 # (on behalf of QA team)
 # sys-devel/gcc[jit]:
