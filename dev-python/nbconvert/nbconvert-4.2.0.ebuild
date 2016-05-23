@@ -31,6 +31,7 @@ DEPEND="${RDEPEND}
 		dev-python/ipython[${PYTHON_USEDEP}]
 		dev-python/jupyter_client[${PYTHON_USEDEP}]
 		dev-python/sphinx[${PYTHON_USEDEP}]
+		dev-python/nbsphinx[${PYTHON_USEDEP}]
 		app-text/pandoc
 	)
 	test? (
