@@ -30,9 +30,18 @@
 
 #--- END OF EXAMPLES ---
 
+# Göktürk Yüksek <gokturk@gentoo.org> (23 May 2016)
+# Replaced by app-admin/lastpass-binary-component.
+# Masked for removal in 30 days.
+app-admin/lastpass
+
+# Luca Barbato <lu_zero@gentoo.org> (23 May 2016)
+# Masked for testing, vlc-2.2 configure rejects it.
+=media-video/libav-12*
+
 # Johannes Huber <johu@gentoo.org> (22 May 2016)
 # Masked for removal in 30 days. Declared as dead by
-# upstream in 2015. Last release with KDE Applications 15.08.3. 
+# upstream in 2015. Last release with KDE Applications 15.08.3.
 # Exported to user maintained overlay kde-sunset.
 kde-apps/amor
 kde-apps/kdetoys-meta

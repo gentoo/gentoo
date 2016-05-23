@@ -36,6 +36,8 @@ src_prepare() {
 	find . -name Makefile.am -exec sed -i -e '/CFLAGS/s:-g -O2::' {} + || die
 	# https://bugs.gentoo.org/509886
 	use elibc_uclibc && { sed -i -e 's:oldapi queue_timer:queue_timer:' test/Makefile.am || die; }
+	# https://bugs.gentoo.org/545950
+	sed -i -e '5s:^$:\nAM_CPPFLAGS = -I$(top_srcdir)/include:' test/lsb/Makefile.am || die
 	default
 	eautoreconf
 }

@@ -301,9 +301,8 @@ x86-winnt		prefix/windows/winnt/6.0/x86			exp
 x86-winnt		prefix/windows/winnt/6.1/x86			exp
 
 # Cygwin Profiles
-x86-cygwin		prefix/windows/cygwin/1.7/x86			exp
-x86-cygwin		prefix/windows/cygwin/2.0/x86			exp
-x64-cygwin		prefix/windows/cygwin/2.0/x64			exp
+x86-cygwin		prefix/windows/cygwin/x86			exp
+x64-cygwin		prefix/windows/cygwin/x64			exp
 
 # HP-UX Profiles
 ia64-hpux		prefix/hpux/B.11.23/ia64			exp

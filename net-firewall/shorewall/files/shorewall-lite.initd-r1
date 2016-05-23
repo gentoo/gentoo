@@ -35,7 +35,7 @@ status() {
 		mark_service_started "${SVCNAME}"
 		return 0
 	else
-		einfo 'status: stopped'	
+		einfo 'status: stopped'
 		mark_service_stopped "${SVCNAME}"
 		return 3
 	fi

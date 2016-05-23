@@ -29,6 +29,7 @@ DEPEND="
 RDEPEND="
 	dev-lang/python-exec:2
 	=sys-apps/portage-9999
+	>=dev-python/lxml-3.6.0
 	"
 
 SRC_ARCHIVES="https://dev.gentoo.org/~dolsen/releases/repoman"

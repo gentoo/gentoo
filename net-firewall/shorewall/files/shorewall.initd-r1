@@ -40,7 +40,7 @@ status() {
 		mark_service_started "${SVCNAME}"
 		return 0
 	else
-		einfo 'status: stopped'	
+		einfo 'status: stopped'
 		mark_service_stopped "${SVCNAME}"
 		return 3
 	fi
@@ -49,7 +49,7 @@ status() {
 start() {
 	ebegin "Starting shorewall"
 	${command} ${OPTIONS} start ${STARTOPTIONS} 1>/dev/null
-	eend $? 
+	eend $?
 }
 
 stop() {

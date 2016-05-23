@@ -35,13 +35,13 @@ RDEPEND="
 
 src_prepare() {
 	# Fix path in launcher script
-	sed -i "s:/usr/share/games/$PN:/opt/$PN:" usr/bin/$PN
+	sed -i "s:/usr/share/games/$PN:/opt/$PN:" usr/bin/$PN || die
 
 	# Add missing trailing semicolon to .desktop MimeType entry
-	sed -i '/MimeType=/{/;$/!{s/$/;/}}' usr/share/applications/${PN}.desktop
+	sed -i '/MimeType=/{/;$/!{s/$/;/}}' usr/share/applications/${PN}.desktop || die
 
 	# Fix path to launcher script
-	sed -i "s:/usr/bin/$PN:/opt/bin/$PN:" usr/share/applications/${PN}.desktop
+	sed -i "s:/usr/bin/$PN:/opt/bin/$PN:" usr/share/applications/${PN}.desktop || die
 
 	xdg_src_prepare
 
