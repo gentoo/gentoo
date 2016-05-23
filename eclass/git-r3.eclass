@@ -165,6 +165,32 @@ fi
 #
 # EGIT_CHECKOUT_DIR=${WORKDIR}/${P}
 
+# @ECLASS-VARIABLE: EGIT_SUBMODULES
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# An array of inclusive and exclusive wildcards on submodule names,
+# stating which submodules are fetched and checked out. Exclusions
+# start with '-', and exclude previously matched submodules.
+#
+# If unset, all submodules are enabled. Empty list disables all
+# submodules. In order to use an exclude-only list, start the array
+# with '*'.
+#
+# Remember that wildcards need to be quoted in order to prevent filename
+# expansion.
+#
+# Examples:
+# @CODE
+# # Disable all submodules
+# EGIT_SUBMODULES=()
+#
+# # Include only foo and bar
+# EGIT_SUBMODULES=( foo bar )
+#
+# # Use all submodules except for test-* but include test-lib
+# EGIT_SUBMODULES=( '*' '-test-*' test-lib )
+# @CODE
+
 # @FUNCTION: _git-r3_env_setup
 # @INTERNAL
 # @DESCRIPTION:
@@ -205,6 +231,11 @@ _git-r3_env_setup() {
 			die "Invalid EGIT_MIN_CLONE_TYPE=${EGIT_MIN_CLONE_TYPE}"
 	esac
 
+	if [[ ${EGIT_SUBMODULES[@]+1} && $(declare -p EGIT_SUBMODULES) != "declare -a"* ]]
+	then
+		die 'EGIT_SUBMODULES must be an array.'
+	fi
+
 	local esc_pn livevar
 	esc_pn=${PN//[-+]/_}
 
@@ -243,7 +274,8 @@ _git-r3_env_setup() {
 	if [[ ${EGIT_HAS_SUBMODULES} ]]; then
 		eerror "EGIT_HAS_SUBMODULES has been removed. The eclass no longer needs"
 		eerror "to switch the clone type in order to support submodules and therefore"
-		eerror "submodules are detected and fetched automatically."
+		eerror "submodules are detected and fetched automatically. If you need to"
+		eerror "disable or filter submodules, see EGIT_SUBMODULES."
 		die "EGIT_HAS_SUBMODULES is no longer necessary."
 	fi
 
@@ -356,6 +388,26 @@ _git-r3_set_submodules() {
 
 		l=${l#submodule.}
 		local subname=${l%%.url=*}
+
+		# filter out on EGIT_SUBMODULES
+		if declare -p EGIT_SUBMODULES &>/dev/null; then
+			local p l_res res=
+			for p in "${EGIT_SUBMODULES[@]}"; do
+				if [[ ${p} == -* ]]; then
+					p=${p#-}
+					l_res=
+				else
+					l_res=1
+				fi
+
+				[[ ${subname} == ${p} ]] && res=${l_res}
+			done
+
+			if [[ ! ${res} ]]; then
+				einfo "Skipping submodule \e[1m${subname}\e[22m"
+				continue
+			fi
+		fi
 
 		# skip modules that have 'update = none', bug #487262.
 		local upd=$(echo "${data}" | git config -f /dev/fd/0 \
