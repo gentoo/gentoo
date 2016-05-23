@@ -36,6 +36,12 @@ pkg_setup() {
 	python-single-r1_pkg_setup
 }
 
+src_prepare() {
+	#582770 don't use static libstdc++
+	sed -i -e '21,33d' src/cc/CMakeLists.txt || die
+	default
+}
+
 src_configure() {
 	local mycmakeargs=(
 		-DREVISION=${PV%%_*}
