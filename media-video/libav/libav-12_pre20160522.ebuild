@@ -26,6 +26,8 @@ fi
 # 9999 does not have fate-*.tar.xz
 [[ ${PV%9999} != "" ]] && SRC_URI+=" test? ( https://dev.gentoo.org/~lu_zero/libav/fate-${PV%%.*}.tar.xz )"
 
+S="${WORKDIR}/libav-12_pre201605022"
+
 LICENSE="LGPL-2.1  gpl? ( GPL-3 )"
 SLOT="0/12"
 [[ ${PV} == *9999 ]] || KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64
