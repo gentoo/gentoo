@@ -11,7 +11,7 @@ HOMEPAGE="https://github.com/Cloudef/wlc"
 
 EGIT_REPO_URI="https://github.com/Cloudef/wlc.git"
 
-LICENSE="MIT"
+LICENSE="MIT ZLIB"
 SLOT="0"
 KEYWORDS=""
 IUSE="X static-libs systemd"
