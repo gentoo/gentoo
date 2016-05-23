@@ -9568,7 +9568,7 @@ dev-util/appdata-tools 0.1.7 0.1.8-r1: CLI designed to validate AppData descript
 dev-util/appinventor 1.1: MIT App Inventor Setup package
 dev-util/archdiff 1.1.6: Utility to view the differences between two source code archives
 dev-util/argouml 0.34: Modelling tool that helps you do your design using UML
-dev-util/artifactory-bin 4.7.6 4.7.7: The world's most advanced repository manager for maven
+dev-util/artifactory-bin 4.7.6 4.7.7 4.8.0: The world's most advanced repository manager for maven
 dev-util/aruba 0.5.4-r1 0.6.2 0.7.4 0.8.1: Cucumber steps for driving out command line applications
 dev-util/as11 1.0: Motorola's AS11 Assembler for the 68HC11
 dev-util/astyle 2.04-r1 2.05.1: Artistic Style is a reindenter and reformatter of C++, C and Java source code
