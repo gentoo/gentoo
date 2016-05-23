@@ -1,6 +1,5 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 inherit eutils linux-info udev toolchain-funcs libtool
@@ -13,7 +12,8 @@ HOMEPAGE="http://www.tuxera.com/community/ntfs-3g-download/"
 SRC_URI="http://tuxera.com/opensource/${MY_P}.tgz"
 
 LICENSE="GPL-2"
-SLOT="0/86"
+# The subslot matches the SONAME major #.
+SLOT="0/87"
 KEYWORDS="~alpha ~amd64 ~arm ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~arm-linux ~x86-linux"
 IUSE="acl debug +external-fuse ntfsdecrypt +ntfsprogs static-libs suid xattr"
 
@@ -50,6 +50,11 @@ pkg_setup() {
 
 src_prepare() {
 	epatch "${PATCHES[@]}"
+	# Keep the symlinks in the same place we put the main binaries.
+	# Having them in / when all the progs are in /usr is pointless.
+	sed -i \
+		-e 's:/sbin:$(sbindir):g' \
+		{ntfsprogs,src}/Makefile.in || die #578336
 	# Note: patches apply to Makefile.in, so don't run autotools here.
 	elibtoolize
 }
@@ -60,7 +65,6 @@ src_configure() {
 		--prefix="${EPREFIX}"/usr \
 		--exec-prefix="${EPREFIX}"/usr \
 		--docdir="${EPREFIX}"/usr/share/doc/${PF} \
-		--exec-prefix="${EPREFIX}"/usr \
 		$(use_enable debug) \
 		--enable-ldscript \
 		--disable-ldconfig \
