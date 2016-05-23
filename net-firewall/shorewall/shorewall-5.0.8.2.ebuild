@@ -145,7 +145,7 @@ pkg_pretend() {
 }
 
 pkg_setup() {
-	if [ -n "${DIGEST}" ]; then
+	if [[ -n "${DIGEST}" ]]; then
 		einfo "Unsetting environment variable \"DIGEST\" to prevent conflicts with package's \"install.sh\" script ..."
 		unset DIGEST
 	fi
@@ -222,9 +222,9 @@ src_prepare() {
 
 		eprefixify "${S}"/${MY_PN_INIT}/init.gentoo.sh
 
-		cd "${S}"/${MY_PN_INIT}
+		cd "${S}"/${MY_PN_INIT} || die
 		eapply -p2 "${FILESDIR}"/shorewall-init-01_remove-ipset-functionality.patch
-		cd "${S}"
+		cd "${S}" || die
 	fi
 
 	# shorewall-docs-html
@@ -291,21 +291,21 @@ src_install() {
 		DESTDIR="${D%/}" ${MY_PN_INIT}/install.sh shorewallrc.gentoo || die "${MY_PN_INIT}/install.sh failed"
 		dodoc "${S}"/${MY_PN_INIT}/shorewall-init.README.Gentoo.txt
 
-		if [ -f "${D}etc/logrotate.d/shorewall-init" ]; then
+		if [[ -f "${D}etc/logrotate.d/shorewall-init" ]]; then
 			# On Gentoo, shorewall-init will not create shorewall-ifupdown.log,
 			# so we don't need a logrotate configuration file for shorewall-init
 			einfo "Removing unused \"${D}etc/logrotate.d/shorewall-init\" ..."
 			rm -rf "${D}"etc/logrotate.d/shorewall-init || die "Removing \"${D}etc/logrotate.d/shorewall-init\" failed"
 		fi
 
-		if [ -d "${D}etc/NetworkManager" ]; then
+		if [[ -d "${D}etc/NetworkManager" ]]; then
 			# On Gentoo, we don't support NetworkManager
 			# so we don't need this folder at all
 			einfo "Removing unused \"${D}etc/NetworkManager\" ..."
 			rm -rf "${D}"etc/NetworkManager || die "Removing \"${D}etc/NetworkManager\" failed"
 		fi
 
-		if [ -f "${D}usr/share/shorewall-init/ifupdown" ]; then
+		if [[ -f "${D}usr/share/shorewall-init/ifupdown" ]]; then
 			# This script isn't supported on Gentoo
 			rm -rf "${D}"usr/share/shorewall-init/ifupdown || die "Removing \"${D}usr/share/shorewall-init/ifupdown\" failed"
 		fi

@@ -4,7 +4,7 @@
 
 EAPI=6
 
-inherit autotools linux-info systemd
+inherit autotools eutils linux-info systemd
 
 DESCRIPTION="An enhanced multi-threaded syslogd with database support and more"
 HOMEPAGE="http://www.rsyslog.com/"
@@ -121,7 +121,7 @@ src_unpack() {
 	if use doc; then
 		if [[ ${PV} == "9999" ]]; then
 			local _EGIT_BRANCH=
-			if [ -n "${EGIT_BRANCH}" ]; then
+			if [[ -n "${EGIT_BRANCH}" ]]; then
 				# Cannot use rsyslog commits/branches for documentation repository
 				_EGIT_BRANCH=${EGIT_BRANCH}
 				unset EGIT_BRANCH
@@ -130,7 +130,7 @@ src_unpack() {
 			git-r3_fetch "${DOC_REPO_URI}"
 			git-r3_checkout "${DOC_REPO_URI}" "${S}"/docs
 
-			if [ -n "${_EGIT_BRANCH}" ]; then
+			if [[ -n "${_EGIT_BRANCH}" ]]; then
 				# Restore previous EGIT_BRANCH information
 				EGIT_BRANCH=${_EGIT_BRANCH}
 			fi
@@ -269,7 +269,7 @@ src_test() {
 	if ! emake --jobs 1 check; then
 		eerror "Test suite failed! :("
 
-		if [ -z "${_has_increased_ulimit}" ]; then
+		if [[ -z "${_has_increased_ulimit}" ]]; then
 			eerror "Probably because open file limit couldn't be set to 3072."
 		fi
 
@@ -319,7 +319,7 @@ src_install() {
 		doins plugins/ompgsql/createDB.sql
 	fi
 
-	find "${ED}"usr/lib* -name '*.la' -delete || die
+	prune_libtool_files
 }
 
 pkg_postinst() {
@@ -376,13 +376,13 @@ pkg_config() {
 
 	# Make sure the certificates directory exists
 	local CERTDIR="${EROOT}/etc/ssl/${PN}"
-	if [ ! -d "${CERTDIR}" ]; then
+	if [[ ! -d "${CERTDIR}" ]]; then
 		mkdir "${CERTDIR}" || die
 	fi
 	einfo "Your certificates will be stored in ${CERTDIR}"
 
 	# Create a default CA if needed
-	if [ ! -f "${CERTDIR}/${PN}_ca.cert.pem" ]; then
+	if [[ ! -f "${CERTDIR}/${PN}_ca.cert.pem" ]]; then
 		einfo "No CA key and certificate found in ${CERTDIR}, creating them for you..."
 		certtool --generate-privkey \
 			--outfile "${CERTDIR}/${PN}_ca.privkey.pem" &>/dev/null
