@@ -1,0 +1,3 @@
+# Options to pass to syncthing-relaysrv
+# see syncthing-relaysrv --help for more information
+SR_OPTS=
