@@ -34,6 +34,7 @@ DOCS="AUTHORS ChangeLog CREDITS README"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2014.2.15-no-split-usr.patch
+	"${FILESDIR}"/${PN}-2016.2.22-sysmacros.patch #580136
 )
 
 pkg_setup() {
