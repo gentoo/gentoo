@@ -14713,7 +14713,7 @@ net-misc/mikutter 3.2.7 3.3.5 9999: Simple, powerful and moeful twitter client
 net-misc/mindterm 3.4: A Java SSH Client
 net-misc/minidlna 1.1.4 1.1.5 1.1.5-r1: DLNA/UPnP-AV compliant media server
 net-misc/minissdpd 1.5.20160301: MiniSSDP Daemon
-net-misc/miniupnpd 1.10_pre20150721 1.10_pre20160222 2.0: MiniUPnP IGD Daemon
+net-misc/miniupnpd 2.0: MiniUPnP IGD Daemon
 net-misc/miredo 1.2.5-r2 1.2.6: Miredo is an open-source Teredo IPv6 tunneling software
 net-misc/mknbi 1.4.4: Utility for making tagged kernel images useful for netbooting
 net-misc/mobile-broadband-provider-info 20120614 20151214: Database of mobile broadband service providers
