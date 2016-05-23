@@ -1,0 +1,43 @@
+include the headers that define major/minor/makedev in more places
+
+https://bugs.gentoo.org/580136
+
+--- a/libntfs-3g/ioctl.c
++++ b/libntfs-3g/ioctl.c
+@@ -57,6 +57,12 @@
+ #ifdef HAVE_SYS_TYPES_H
+ #include <sys/types.h>
+ #endif
++#ifdef HAVE_SYS_MKDEV_H
++#include <sys/mkdev.h>
++#endif
++#ifdef HAVE_SYS_SYSMACROS_H
++#include <sys/sysmacros.h>
++#endif
+ 
+ #ifdef HAVE_SYS_STAT_H
+ #include <sys/stat.h>
+--- a/src/lowntfs-3g.c
++++ b/src/lowntfs-3g.c
+@@ -76,6 +76,9 @@
+ #ifdef HAVE_SYS_MKDEV_H
+ #include <sys/mkdev.h>
+ #endif
++#ifdef HAVE_SYS_SYSMACROS_H
++#include <sys/sysmacros.h>
++#endif
+ 
+ #if defined(__APPLE__) || defined(__DARWIN__)
+ #include <sys/dirent.h>
+--- a/src/ntfs-3g.c
++++ b/src/ntfs-3g.c
+@@ -75,6 +75,9 @@
+ #ifdef HAVE_SYS_MKDEV_H
+ #include <sys/mkdev.h>
+ #endif
++#ifdef HAVE_SYS_SYSMACROS_H
++#include <sys/sysmacros.h>
++#endif
+ 
+ #if defined(__APPLE__) || defined(__DARWIN__)
+ #include <sys/dirent.h>
