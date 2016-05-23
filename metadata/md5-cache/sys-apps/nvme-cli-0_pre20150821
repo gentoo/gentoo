@@ -1,4 +1,4 @@
-DEFINED_PHASES=install prepare
+DEFINED_PHASES=compile install prepare
 DEPEND=sys-libs/libcap
 DESCRIPTION=NVM-Express user space tooling for Linux
 EAPI=5
@@ -8,5 +8,6 @@ LICENSE=GPL-2
 RDEPEND=sys-libs/libcap
 SLOT=0
 SRC_URI=https://github.com/linux-nvme/nvme-cli/archive/709571d77bf618921fd719253da677742c673d06.tar.gz -> nvme-cli-0_pre20150821.tar.gz
-_eclass_exported_funcs=src_prepare:- src_install:-
-_md5_=17a7953ab7f6184884046f6d1a951403
+_eclass_exported_funcs=src_prepare:- src_compile:- src_install:-
+_eclasses_=multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=1199e871fd69a645cc92d992a822f59c
