@@ -6763,7 +6763,7 @@ dev-php/mmslib 0.97: library for encoding, decoding, and sending MMSes
 dev-php/mockery 0.9.0: Simple yet flexible PHP mock object framework for use in unit testing
 dev-php/onphp 1.0.10: onPHP is the LGPL'ed multi-purpose object-oriented PHP framework
 dev-php/pear 1.9.4 1.9.5 1.10.1: PEAR - PHP Extension and Application Repository
-dev-php/pecl-amqp 1.4.0: PHP Bindings for AMQP 0-9-1 compatible brokers
+dev-php/pecl-amqp 1.4.0 1.7.0: PHP Bindings for AMQP 0-9-1 compatible brokers
 dev-php/pecl-apcu 4.0.7-r1 4.0.8 4.0.10 5.1.2: Stripped down version of APC supporting only user cache
 dev-php/pecl-apcu_bc 1.0.3: Provides APC backwards compatibility functions via APCu
 dev-php/pecl-bbcode 1.0.3_beta1-r1: A quick and efficient BBCode Parsing Library
@@ -6802,7 +6802,7 @@ dev-php/pecl-stomp 1.0.8: PHP extension to communicate with Stomp compliant Mess
 dev-php/pecl-svn 1.0.3: PHP Bindings for the Subversion Revision control system
 dev-php/pecl-taint 2.0.0_beta 2.0.1_beta: Extension used for detecting XSS codes(tainted string)
 dev-php/pecl-timezonedb 2014.7 2015.7: Timezone Database to be used with PHP's date and time functions
-dev-php/pecl-translit 0.6.1-r1: Transliterates non-latin character sets to latin
+dev-php/pecl-translit 0.6.1-r1 0.6.2: Transliterates non-latin character sets to latin
 dev-php/pecl-uploadprogress 1.0.3.1-r1 1.0.3.1-r2: An extension to track progress of a file upload
 dev-php/pecl-uuid 1.0.3-r2 1.0.4: A wrapper around libuuid
 dev-php/pecl-xdiff 1.5.2-r3 2.0.0: PHP extension for generating diff files
