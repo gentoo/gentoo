@@ -2204,7 +2204,7 @@ app-text/binfind 0.0.3: binfind searches files for a byte sequence specified on 
 app-text/blahtexml 0.9: TeX-to-MathML converter
 app-text/blogc 0.9.0 9999: A blog compiler
 app-text/bogosort 0.4.2-r1: A file sorting program which uses the bogosort algorithm
-app-text/build-docbook-catalog 1.19.1 1.20: DocBook XML catalog auto-updater
+app-text/build-docbook-catalog 1.19.1 1.20 1.21: DocBook XML catalog auto-updater
 app-text/c2ps 4.0: Generates a beautified ps document from a source file (c/c++)
 app-text/calibre 1.20 2.35.0-r2 2.47.0 2.55.0: Ebook management application
 app-text/catdoc 0.94.4 0.94.4-r1: Converter for Microsoft Word, Excel, PowerPoint and RTF files to text
