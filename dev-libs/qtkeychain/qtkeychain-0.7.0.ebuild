@@ -11,7 +11,7 @@ HOMEPAGE="https://github.com/frankosterfeld/qtkeychain"
 SRC_URI="https://github.com/frankosterfeld/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
-SLOT="0"
+SLOT="0/1"
 KEYWORDS="~amd64 ~x86"
 IUSE="+qt4 qt5"
 
