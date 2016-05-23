@@ -38,7 +38,7 @@ DEPEND="
 		app-crypt/qca:2[qt4(+)]
 		>=dev-libs/libattica-0.4.0
 		dev-libs/qjson
-		dev-libs/qtkeychain[qt4]
+		dev-libs/qtkeychain:=[qt4]
 		dev-libs/quazip[qt4]
 		dev-qt/designer:4
 		dev-qt/qtcore:4
@@ -54,7 +54,7 @@ DEPEND="
 	)
 	qt5? (
 		app-crypt/qca:2[qt5(+)]
-		dev-libs/qtkeychain[qt5]
+		dev-libs/qtkeychain:=[qt5]
 		dev-libs/quazip[qt5]
 		dev-qt/designer:5
 		dev-qt/qtcore:5
