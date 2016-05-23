@@ -13807,7 +13807,7 @@ net-analyzer/ntopng 1.2.1 2.0: Network traffic analyzer with web interface
 net-analyzer/nttcp 1.47-r1 1.47-r3: tool to test TCP and UDP throughput
 net-analyzer/odhcploc 20111021: Open DHCP Locator
 net-analyzer/oinkmaster 2.0: Rule management for SNORT
-net-analyzer/openbsd-netcat 1.84 1.105: the OpenBSD network swiss army knife
+net-analyzer/openbsd-netcat 1.84 1.105 1.105-r1: The OpenBSD network swiss army knife
 net-analyzer/openvas 8.0.5-r1: A remote security scanner
 net-analyzer/openvas-cli 1.4.3: A remote security scanner for Linux (OpenVAS-cli)
 net-analyzer/openvas-libraries 8.0.5: A remote security scanner for Linux (openvas-libraries)
@@ -17115,7 +17115,7 @@ sys-fs/mtpfs 1.0 1.1 1.1-r1 1.1-r2 1.1-r3: A FUSE filesystem providing access to
 sys-fs/multipath-tools 0.5.0-r1: Device mapper target autoconfig
 sys-fs/ncdu 1.11: NCurses Disk Usage
 sys-fs/nilfs-utils 2.1.5-r1 2.1.6 2.2.2: A New Implementation of a Log-structured File System for Linux
-sys-fs/ntfs3g 2014.2.15 2014.2.15-r1 2015.3.14 2016.2.22: Open source read-write NTFS driver that runs under FUSE
+sys-fs/ntfs3g 2014.2.15 2014.2.15-r1 2015.3.14 2016.2.22-r1: Open source read-write NTFS driver that runs under FUSE
 sys-fs/obexfs 0.11 0.12: FUSE filesystem interface for ObexFTP
 sys-fs/ocfs2-tools 1.8.2-r1: Support programs for the Oracle Cluster Filesystem 2
 sys-fs/owfs 2.7_p21-r4 3.1_p1: Access 1-Wire devices like a filesystem

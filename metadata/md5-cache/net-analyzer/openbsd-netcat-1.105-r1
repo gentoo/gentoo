@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install postinst
+DEPEND=virtual/pkgconfig
+DESCRIPTION=The OpenBSD network swiss army knife
+EAPI=6
+HOMEPAGE=http://www.openbsd.org/cgi-bin/cvsweb/src/usr.bin/nc/
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x64-macos
+LICENSE=BSD
+RDEPEND=dev-libs/libbsd !net-analyzer/netcat !net-analyzer/netcat6
+SLOT=0
+SRC_URI=http://http.debian.net/debian/pool/main/n/netcat-openbsd/netcat-openbsd_1.105.orig.tar.gz http://http.debian.net/debian/pool/main/n/netcat-openbsd/netcat-openbsd_1.105-7.debian.tar.gz
+_eclass_exported_funcs=pkg_postinst:- src_compile:- src_install:-
+_eclasses_=multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=a75bf4904d60e04ebc9e3326188d00c6
