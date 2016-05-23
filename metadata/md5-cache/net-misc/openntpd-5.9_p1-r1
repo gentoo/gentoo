@@ -1,14 +1,14 @@
 DEFINED_PHASES=configure install postinst prepare setup
-DEPEND=!<=net-misc/ntp-4.2.0-r2 !net-misc/ntp[-openntpd] libressl? ( dev-libs/libressl ) virtual/pkgconfig
+DEPEND=!<=net-misc/ntp-4.2.0-r2 !net-misc/ntp[-openntpd] libressl? ( >=dev-libs/libressl-2.3.2 ) virtual/pkgconfig
 DESCRIPTION=Lightweight NTP server ported from OpenBSD
 EAPI=5
 HOMEPAGE=http://www.openntpd.org/
 IUSE=libressl selinux
 KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd
 LICENSE=BSD GPL-2
-RDEPEND=!<=net-misc/ntp-4.2.0-r2 !net-misc/ntp[-openntpd] libressl? ( dev-libs/libressl ) selinux? ( sec-policy/selinux-ntp )
+RDEPEND=!<=net-misc/ntp-4.2.0-r2 !net-misc/ntp[-openntpd] libressl? ( >=dev-libs/libressl-2.3.2 ) selinux? ( sec-policy/selinux-ntp )
 SLOT=0
 SRC_URI=mirror://openbsd/OpenNTPD/openntpd-5.9p1.tar.gz
 _eclass_exported_funcs=pkg_postinst:- pkg_setup:- src_prepare:- src_configure:- src_install:-
 _eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	multilib	d062ae4ba2fc40a19c11de2ad89b6616	systemd	3165c885f3c71ffae7a867d931fb0e07	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	user	906f3c8eb3a2350a4f1191a89baa3e46
-_md5_=9228f9e534501ab53f5544f216414459
+_md5_=6be26870b27a62b10888b0faef1b4e9b
