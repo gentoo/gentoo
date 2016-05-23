@@ -1,0 +1,139 @@
+From 9bb994e8319c2b153cd3d6d61e2c2882895e7c3a Mon Sep 17 00:00:00 2001
+From: Joe Crayne <oh.hello.joe@gmail.com>
+Date: Sat, 21 May 2016 21:26:00 +0000
+Subject: [SV 44742] Fix double-colon rules plus parallel builds.
+
+* remake.c (update_file): Don't update double-colon target status
+if we're still building targets.
+(ftime_t): Don't propagate timestamps for double-colon targets that
+we've not examined yet.
+* tests/scripts/features/double_colon: Add parallel build tests.
+
+Copyright-paperwork-exempt: yes
+---
+diff --git a/remake.c b/remake.c
+index 63ee648..df1a9e0 100644
+--- a/remake.c
++++ b/remake.c
+@@ -320,7 +320,7 @@ update_file (struct file *file, unsigned int depth)
+             && !f->dontcare && f->no_diag))
+         {
+           DBF (DB_VERBOSE, _("Pruning file '%s'.\n"));
+-          return f->command_state == cs_finished ? f->update_status : 0;
++          return f->command_state == cs_finished ? f->update_status : us_success;
+         }
+     }
+ 
+@@ -344,12 +344,9 @@ update_file (struct file *file, unsigned int depth)
+ 
+       if (f->command_state == cs_running
+           || f->command_state == cs_deps_running)
+-        {
+-          /* Don't run the other :: rules for this
+-             file until this rule is finished.  */
+-          status = us_success;
+-          break;
+-        }
++        /* Don't run other :: rules for this target until
++           this rule is finished.  */
++        return us_success;
+ 
+       if (new > status)
+         status = new;
+@@ -1274,6 +1271,7 @@ FILE_TIMESTAMP
+ f_mtime (struct file *file, int search)
+ {
+   FILE_TIMESTAMP mtime;
++  int propagate_timestamp;
+ 
+   /* File's mtime is not known; must get it from the system.  */
+ 
+@@ -1450,10 +1448,13 @@ f_mtime (struct file *file, int search)
+         }
+     }
+ 
+-  /* Store the mtime into all the entries for this file.  */
++  /* Store the mtime into all the entries for this file for which it is safe
++     to do so: avoid propagating timestamps to double-colon rules that haven't
++     been examined so they're run or not based on the pre-update timestamp.  */
+   if (file->double_colon)
+     file = file->double_colon;
+ 
++  propagate_timestamp = file->updated;
+   do
+     {
+       /* If this file is not implicit but it is intermediate then it was
+@@ -1465,7 +1466,8 @@ f_mtime (struct file *file, int search)
+           && !file->tried_implicit && file->intermediate)
+         file->intermediate = 0;
+ 
+-      file->last_mtime = mtime;
++      if (file->updated == propagate_timestamp)
++        file->last_mtime = mtime;
+       file = file->prev;
+     }
+   while (file != 0);
+diff --git a/tests/scripts/features/double_colon b/tests/scripts/features/double_colon
+index 1097775..80ddb31 100644
+--- a/tests/scripts/features/double_colon
++++ b/tests/scripts/features/double_colon
+@@ -151,8 +151,7 @@ two');
+ 
+ unlink('result','one','two');
+ 
+-# TEST 10: check for proper backslash handling
+-#          Savannah bug #33399
++# TEST 10: SV 33399 : check for proper backslash handling
+ 
+ run_make_test('
+ a\ xb :: ; @echo one
+@@ -160,5 +159,47 @@ a\ xb :: ; @echo two
+ ',
+               '', "one\ntwo\n");
+ 
++# Test 11: SV 44742 : All double-colon rules should be run in parallel build.
++
++run_make_test('result :: 01
++	@echo update
++	@touch $@
++result :: 02
++	@echo update
++	@touch $@
++result :: 03
++	@echo update
++	@touch $@
++result :: 04
++	@echo update
++	@touch $@
++result :: 05
++	@echo update
++	@touch $@
++01 02 03 04 05:
++	@touch 01 02 03 04 05
++',
++              '-j10 result', "update\nupdate\nupdate\nupdate\nupdate\n");
++
++unlink('result', '01', '02', '03', '04', '05');
++
++# Test 12: SV 44742 : Double-colon rules with parallelism
++
++run_make_test('
++root: all
++	echo root
++all::
++	echo all_one
++all:: 3
++	echo all_two
++%:
++	sleep $*
++',
++              '-rs -j2 1 2 root', "all_one\nall_two\nroot\n");
++
+ # This tells the test driver that the perl test script executed properly.
+ 1;
++
++### Local Variables:
++### eval: (setq whitespace-action (delq 'auto-cleanup whitespace-action))
++### End:
+--
+cgit v0.9.0.2
