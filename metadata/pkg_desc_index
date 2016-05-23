@@ -4872,7 +4872,7 @@ dev-libs/qof 0.8.8-r1: A Query Object Framework
 dev-libs/qqwing 1.3.3 1.3.4: Sudoku puzzle generator and solver
 dev-libs/qrosscore 0.3.1 9999: KDE-free version of Kross (core libraries and Qt Script backend)
 dev-libs/qrosspython 0.3.1 9999: Python scripting backend for Qross
-dev-libs/qtkeychain 0.5.0 0.5.0-r1 0.6.2: Qt API for storing passwords securely
+dev-libs/qtkeychain 0.5.0 0.5.0-r1 0.6.2 0.7.0: Qt API for storing passwords securely
 dev-libs/quantlib 1.6 1.7.1: A comprehensive software framework for quantitative finance
 dev-libs/quazip 0.7.1: A simple C++ wrapper over Gilles Vollant's ZIP/UNZIP package
 dev-libs/radlib 2.12.0-r1: Rapid Application Development Library
