@@ -8,8 +8,8 @@ KEYWORDS=~amd64 ~arm ~x86
 LICENSE=AGPL-3
 RDEPEND=dev-lang/php[curl?,filter,gd,hash,json,mysql?,pdo,postgres?,session,simplexml,sqlite?,xmlwriter,zip] virtual/httpd-php >=app-admin/webapp-config-1.50.15
 REQUIRED_USE=|| ( mysql postgres sqlite )
-SLOT=7.0.12
-SRC_URI=http://download.owncloud.org/community/owncloud-7.0.12.tar.bz2 -> owncloud-7.0.12.tar.bz2
+SLOT=7.0.15
+SRC_URI=http://download.owncloud.org/community/owncloud-7.0.15.tar.bz2 -> owncloud-7.0.15.tar.bz2
 _eclass_exported_funcs=pkg_prerm:webapp pkg_postinst:webapp pkg_setup:- src_prepare:- src_install:-
 _eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	webapp	42c6ef7af496b228f9854b3c81e4b226
-_md5_=2e3ec8dd255b8ca743dff1ef3168935e
+_md5_=b94e76cde16c3c2144c767532051e1a2
