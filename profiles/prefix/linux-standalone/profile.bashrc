@@ -1,7 +1,7 @@
 # RAP specific patches that is pending upstream.
 # binutils: http://article.gmane.org/gmane.comp.gnu.binutils/67593
 
-if [[ ${CATEGORY}/${PN} == sys-devel/gcc && ${EBUILD_PHASE} == prepare ]]; then
+if [[ ${CATEGORY}/${PN} == sys-devel/gcc && ${EBUILD_PHASE} == configure ]]; then
     cd "${S}"
     einfo "Prefixifying glibc dynamic linker..."
     for h in gcc/config/*/linux*.h; do
