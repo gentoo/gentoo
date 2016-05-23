@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=doc? ( app-doc/doxygen ) tools? ( app-text/xmlto ) sys-devel/make >=dev-util/cmake-2.8.12
+DESCRIPTION=RabbitMQ C client
+EAPI=6
+HOMEPAGE=https://github.com/alanxz/rabbitmq-c
+IUSE=doc libressl test +ssl static-libs tools
+KEYWORDS=~amd64 ~arm ~hppa ~x86
+LICENSE=MIT
+RDEPEND=ssl? ( libressl? ( dev-libs/libressl:= ) !libressl? ( dev-libs/openssl:0= ) ) tools? ( dev-libs/popt )
+REQUIRED_USE=test? ( static-libs )
+SLOT=0/4
+SRC_URI=https://github.com/alanxz/rabbitmq-c/archive/v0.8.0.zip -> rabbitmq-c-v0.8.0.zip
+_eclass_exported_funcs=src_prepare:cmake-utils src_configure:- src_compile:cmake-utils src_test:cmake-utils src_install:cmake-utils
+_eclasses_=cmake-utils	d6c1714cc58fd2168bf150f2a01f3801	eutils	792f83d5ec9536cb5ccef375469d8bde	flag-o-matic	d270fa247153df66074f795fa42dba3e	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=c4e707872da5189a9998f2bab1ffd180
