@@ -17,7 +17,7 @@ IUSE="libressl selinux"
 
 DEPEND="!<=net-misc/ntp-4.2.0-r2
 	!net-misc/ntp[-openntpd]
-	libressl? ( dev-libs/libressl )"
+	libressl? ( >=dev-libs/libressl-2.3.2 )"
 RDEPEND="${DEPEND}
 	selinux? ( sec-policy/selinux-ntp )"
 
