@@ -4,7 +4,7 @@ DESCRIPTION=An embedded Perl interpreter for Apache2
 EAPI=5
 HOMEPAGE=https://projects.apache.org/projects/mod_perl.html
 IUSE=debug
-KEYWORDS=~alpha amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86
+KEYWORDS=alpha amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86
 LICENSE=GPL-2
 PDEPEND=>=dev-perl/Apache-Reload-0.11 >=dev-perl/Apache-SizeLimit-0.95
 RDEPEND=>=dev-perl/Apache-Test-1.360 >=dev-perl/CGI-3.08 dev-lang/perl[ithreads] www-servers/apache =www-servers/apache-2* dev-lang/perl:=[-build(-)]
@@ -12,4 +12,4 @@ SLOT=1
 SRC_URI=http://dev.gentoo.org/~dilfridge/distfiles/mod_perl-2.0.10_pre201601.tar.gz
 _eclass_exported_funcs=pkg_postinst:- pkg_setup:depend.apache src_unpack:perl-module src_prepare:- src_configure:- src_compile:perl-module src_test:- src_install:-
 _eclasses_=apache-module	5e66430013d92dfe0bf8672b05319b6d	depend.apache	e3c541cb90838388f81620d630c28f41	eutils	792f83d5ec9536cb5ccef375469d8bde	multilib	d062ae4ba2fc40a19c11de2ad89b6616	multiprocessing	e32940a7b2a9992ad217eccddb84d548	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	c584f9e0fe426f3dcc2c46c6f7cb95ce	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	unpacker	45d07319df5f40ee6af58418b0f930be
-_md5_=5cac52e9eb9fdb6c6e3c641ab4e5e00d
+_md5_=1a1ccf82f308eaf89a97e32e9d485de0
