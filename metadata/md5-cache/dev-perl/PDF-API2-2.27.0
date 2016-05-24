@@ -4,11 +4,11 @@ DESCRIPTION=Facilitates the creation and modification of PDF files
 EAPI=6
 HOMEPAGE=http://search.cpan.org/dist/PDF-API2/
 IUSE=examples
-KEYWORDS=amd64 ~ppc ~ppc64 ~x86
+KEYWORDS=amd64 ~ppc ~ppc64 x86
 LICENSE=LGPL-2.1
 RDEPEND=>=virtual/perl-IO-Compress-1.0.0 dev-perl/Font-TTF dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/S/SS/SSIMMS/PDF-API2-2.027.tar.gz
 _eclass_exported_funcs=src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:- src_install:-
 _eclasses_=multiprocessing	e32940a7b2a9992ad217eccddb84d548	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	c584f9e0fe426f3dcc2c46c6f7cb95ce
-_md5_=1c27f1f73ed51659057df8fe2833c65c
+_md5_=89d3f2f281fda6f75d0d77534ef5a3eb

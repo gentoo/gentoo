@@ -6061,12 +6061,12 @@ dev-perl/Ogg-Vorbis-Header 0.30.0-r1: An object-oriented interface to Ogg Vorbis
 dev-perl/Ogg-Vorbis-Header-PurePerl 1.0.0-r1: Object-oriented interface to Ogg Vorbis information and comment fields
 dev-perl/Olson-Abbreviations 0.40.0: Globally unique timezones abbreviation handling
 dev-perl/OpenGL 0.670.3 0.670.400: Perl interface providing graphics display using OpenGL
-dev-perl/PAR 1.7.0-r1 1.10.0: Perl Archive Toolkit
+dev-perl/PAR 1.10.0: Perl Archive Toolkit
 dev-perl/PAR-Dist 0.490.0-r1: Create and manipulate PAR distributions
 dev-perl/PBKDF2-Tiny 0.5.0: Minimalist PBKDF2 (RFC 2898) with HMAC-SHA1 or HMAC-SHA2
 dev-perl/PBS-Client 0.110.0: Perl interface to submit jobs to PBS (Portable Batch System)
-dev-perl/PDF-API2 2.20.0 2.27.0: Facilitates the creation and modification of PDF files
-dev-perl/PDF-Create 1.60.0-r1 1.290.0: Create PDF documents in Perl
+dev-perl/PDF-API2 2.27.0: Facilitates the creation and modification of PDF files
+dev-perl/PDF-Create 1.290.0: Create PDF documents in Perl
 dev-perl/PDL 2.4.11: Perl Data Language for scientific computing
 dev-perl/PGPLOT 2.210.0: allow subroutines in the PGPLOT graphics library to be called from Perl
 dev-perl/PHP-Serialization 0.340.0-r1: Convert PHP's serialize() into the equivalent Perl structure, and vice versa
@@ -6088,7 +6088,7 @@ dev-perl/PPIx-EditorTools 0.190.0: Utility methods and base class for manipulati
 dev-perl/PPIx-Regexp 0.33.0 0.48.0: Represent a regular expression of some sort
 dev-perl/PPIx-Utilities 1.1.0-r1: Extensions to PPI
 dev-perl/Package-DeprecationManager 0.150.0 0.160.0: Manage deprecation warnings for your distribution
-dev-perl/Package-Stash 0.360.0-r1 0.370.0: Routines for manipulating stashes
+dev-perl/Package-Stash 0.370.0: Routines for manipulating stashes
 dev-perl/Package-Stash-XS 0.280.0: Faster and more correct implementation of the Package::Stash API
 dev-perl/Package-Variant 1.3.2: Parameterizable packages
 dev-perl/PadWalker 2.100.0 2.200.0: play with other peoples' lexical variables
@@ -6097,7 +6097,7 @@ dev-perl/Palm-PDB 1.400.0: Parse Palm database files
 dev-perl/Pango 1.224.0-r1 1.227.0: Layout and render international text
 dev-perl/Panotools-Script 0.280.0-r2: A perl module for reading, writing, and manipulating hugin script files
 dev-perl/ParaDNS 2.0.0-r1: a DNS lookup class for the Danga::Socket framework
-dev-perl/Parallel-ForkManager 1.20.0-r1 1.170.0 1.180.0: A simple parallel processing fork manager
+dev-perl/Parallel-ForkManager 1.170.0 1.180.0: A simple parallel processing fork manager
 dev-perl/Parallel-Prefork 0.180.0: A simple prefork server framework
 dev-perl/Params-Classify 0.13.0-r1: Argument type classification
 dev-perl/Params-Util 1.60.0-r1: Utility functions to aid in parameter checking
@@ -6121,7 +6121,7 @@ dev-perl/Perl-Critic-Dynamic 0.50.0-r1: Base class for dynamic Policies
 dev-perl/Perl-Critic-Nits 1.0.0-r1: policies of nits I like to pick
 dev-perl/Perl-Critic-Policy-Dynamic-NoIndirect 0.60.0-r1: Perl::Critic policy against indirect method calls
 dev-perl/Perl-Tags 0.280.0-r2 0.320.0: Generate (possibly exuberant) Ctags style tags for Perl sourcecode
-dev-perl/Perl-Tidy 20130922.0.0 20140711.0.0 20160302.0.0: Perl script indenter and beautifier
+dev-perl/Perl-Tidy 20160302.0.0: Perl script indenter and beautifier
 dev-perl/Perl-Unsafe-Signals 0.30.0: Allow unsafe handling of signals in selected blocks
 dev-perl/Perl6-Junction 1.600.0: Perl6 style Junction operators in Perl5
 dev-perl/PerlIO-Layers 0.10.0 0.11.0: Querying your filehandle's capabilities
