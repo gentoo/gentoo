@@ -10377,7 +10377,7 @@ games-engines/gemrb 0.8.3: Reimplementation of the Infinity engine
 games-engines/love 0.7.2-r1 0.8.0 9999: A framework for 2D games in Lua
 games-engines/nazghul 0.7.1: A computer role-playing game (CRPG) engine with game called HaximA
 games-engines/odamex 0.7.0: An online multiplayer, free software engine for Doom and Doom II
-games-engines/openmw 0.36.1: An open source reimplementation of TES III: Morrowind
+games-engines/openmw 0.36.1 0.39.0: An open source reimplementation of TES III: Morrowind
 games-engines/openxcom 1.0.0 9999: An open-source reimplementation of the popular UFO: Enemy Unknown
 games-engines/qtads 2.1.6 2.1.7: Multimedia interpreter for TADS text adventures
 games-engines/renpy 6.15.7 6.16.5 6.17.7 6.18.3 6.99.6: Visual novel engine written in python
@@ -10885,7 +10885,7 @@ games-strategy/mindrover-demo 1.07b: Control a robot as it races across Europa
 games-strategy/naev 0.6.0 0.6.1: A 2D space trading and combat game, in a similar vein to Escape Velocity
 games-strategy/netherearth 0.52: A remake of the SPECTRUM game Nether Earth
 games-strategy/netpanzer 0.8.2: Fast-action multiplayer strategic network game
-games-strategy/openra 20120630-r1 20130514-r2 20131223-r2 20140608-r1 20140722-r1 20141029-r2: A free RTS engine supporting games like Command & Conquer and Red Alert
+games-strategy/openra 20140722-r1 20141029-r2: A free RTS engine supporting games like Command & Conquer and Red Alert
 games-strategy/outerspace 0.5.68: on-line strategy game taking place in the dangerous universe
 games-strategy/s25rttr 0.8.1-r1 0.8.1-r2: Open Source remake of The Settlers II game (needs original game files)
 games-strategy/scorched3d 44-r1: Multi-player tank battle in 3D (OpenGL)

@@ -3143,7 +3143,6 @@ games-strategy/megaglest:tools - Build model import/export tools
 games-strategy/megaglest:unicode - Use unicode strings for wxwidgets
 games-strategy/megaglest:wxuniversal - Use the wxUniversal port which implements the various GUI controls by drawing them itself
 games-strategy/naev:mixer - Enables media-libs/sdl-mixer sound backend in addition to media-libs/openal one.
-games-strategy/openra:cg - NVIDIA toolkit plugin
 games-strategy/openra:tools - Install some development tools such as editor.
 games-strategy/s25rttr:glfw - Compile another video driver based on media-libs/glfw.
 games-strategy/seven-kingdoms:network - Enable support for multiplayer via media-libs/sdl-net
