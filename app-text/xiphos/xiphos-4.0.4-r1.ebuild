@@ -26,7 +26,7 @@ RDEPEND="${PYTHON_DEPS}
 	gnome-base/gconf[${PYTHON_USEDEP}]
 	gnome-extra/gtkhtml:4.0
 	>=gnome-extra/libgsf-1.14
-	net-libs/webkit-gtk:3
+	net-libs/webkit-gtk:4
 	x11-libs/gtk+:3
 	dbus? ( dev-libs/dbus-glib )
 "
@@ -63,6 +63,7 @@ src_configure() {
 		./waf -v \
 			--prefix=/usr \
 			--gtk=3 \
+			--enable-webkit2 \
 			--debug-level=$(use debug && echo debug || echo release) \
 			$(use dbus || echo --disable-dbus) \
 			configure || die
