@@ -30,6 +30,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Alexis Ballier <aballier@gentoo.org> (24 May 2016)
+# API change, breaks e.g. js_of_ocaml
+>=dev-ml/tyxml-4
+
 # Michał Górny <mgorny@gentoo.org> (24 May 2016)
 # No longer maintained upstream, no longer works with libzpaq-7*.
 # Masked for removal in 30 days.
@@ -291,7 +295,7 @@ dev-vcs/statcvs
 # Breaks some of its rev deps, still in beta stage
 >=dev-lang/ocaml-4.03_beta
 >=dev-ml/camlp4-4.03
->=dev-ml/ppx_tools-4.03
+>=dev-ml/ppx_tools-5.0.4.03
 >=dev-ml/labltk-8.06.1
 >=dev-ml/parmap-1.0_rc7-r1
 
