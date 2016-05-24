@@ -5,6 +5,10 @@
     <email>polynomial-c@gentoo.org</email>
     <name>Lars Wendler</name>
   </maintainer>
+  <maintainer type="person">
+    <email>mgorny@gentoo.org</email>
+    <name>Michał Górny</name>
+  </maintainer>
   <longdescription lang="en">
 		Lziprecover is a data recovery tool and decompressor for files in the lzip 
 		compressed data format (.lz), able to repair slightly damaged files, 

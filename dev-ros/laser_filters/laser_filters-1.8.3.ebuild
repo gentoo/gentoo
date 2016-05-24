@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -19,7 +19,6 @@ RDEPEND="
 	dev-libs/boost:=
 	dev-ros/sensor_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-ros/tf
-	dev-cpp/eigen:3
 	dev-ros/angles
 	dev-ros/filters
 	dev-ros/laser_geometry
