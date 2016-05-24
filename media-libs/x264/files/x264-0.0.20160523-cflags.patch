@@ -1,0 +1,40 @@
+Index: x264-9999/configure
+===================================================================
+--- x264-9999.orig/configure
++++ x264-9999/configure
+@@ -667,8 +667,6 @@ case $host_cpu in
+             if [[ "$asm" == auto && "$CFLAGS" != *-mfpmath* ]]; then
+                 CFLAGS="$CFLAGS -mfpmath=sse -msse -msse2"
+             fi
+-            CFLAGS="-m32 $CFLAGS"
+-            LDFLAGS="-m32 $LDFLAGS"
+         fi
+         if [ "$SYS" = MACOSX ]; then
+             ASFLAGS="$ASFLAGS -f macho32 -DPREFIX"
+@@ -687,13 +685,8 @@ case $host_cpu in
+         AS_EXT=".asm"
+         ASFLAGS="$ASFLAGS -DARCH_X86_64=1 -I\$(SRCPATH)/common/x86/"
+         stack_alignment=16
+-        [ $compiler = GNU ] && CFLAGS="-m64 $CFLAGS" && LDFLAGS="-m64 $LDFLAGS"
+         if [ "$SYS" = MACOSX ]; then
+             ASFLAGS="$ASFLAGS -f macho64 -DPIC -DPREFIX"
+-            if cc_check '' "-arch x86_64"; then
+-                CFLAGS="$CFLAGS -arch x86_64"
+-                LDFLAGS="$LDFLAGS -arch x86_64"
+-            fi
+         elif [ "$SYS" = WINDOWS -o "$SYS" = CYGWIN ]; then
+             ASFLAGS="$ASFLAGS -f win64"
+             if [ $compiler = GNU ]; then
+@@ -1173,10 +1166,10 @@ if [ "$strip" = "yes" ]; then
+ fi
+ 
+ if [ "$debug" = "yes" ]; then
+-    CFLAGS="-O1 -g $CFLAGS"
++    CFLAGS="$CFLAGS"
+     RCFLAGS="$RCFLAGS -DDEBUG"
+ else
+-    CFLAGS="-O3 -ffast-math $CFLAGS"
++    CFLAGS="-ffast-math $CFLAGS"
+ fi
+ 
+ if cc_check '' -fno-tree-vectorize ; then
