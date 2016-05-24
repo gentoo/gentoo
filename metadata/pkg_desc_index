@@ -4491,6 +4491,7 @@ dev-libs/btparse 0.33 0.35: A C library to parse Bibtex files
 dev-libs/btparser 0.24 0.25 0.26: Parser and analyzer for backtraces produced by GDB
 dev-libs/busybee 0.5.2 0.6.0 0.7.0: A messaging abstraction on top of TCP sockets used in HyperDex
 dev-libs/c-blosc 1.3.2 1.3.5 1.5.3: Blocking, shuffling and lossless compression library
+dev-libs/c-capnproto 0.1: C library/compiler for the Cap'n Proto serialization/RPC protocol
 dev-libs/capnproto 0.5.3: RPC/Serialization system with capabilities support
 dev-libs/cdk 5.0.20131107 5.0.20141106: A library of curses widgets
 dev-libs/cgicc 3.2.9 3.2.10: A C++ class library for writing CGI applications
@@ -7831,7 +7832,7 @@ dev-python/pyro 3.16-r1 4.25 4.39 4.40 4.41: Distributed object middleware for P
 dev-python/pyroma 1.7: Test project's packaging friendliness
 dev-python/pyrqlite 2.0 9999: Python client for rqlite
 dev-python/pyrsistent 0.11.12: Persistent/Functional/Immutable data structures
-dev-python/pyrtf 0.45-r1: A set of Python classes that make it possible to produce RTF documents from Python programs
+dev-python/pyrtf 0.45-r1 0.45-r2: Python library to produce RTF documents
 dev-python/pysaml2 2.1.0 3.0.0: Python implementation of SAML Version 2 to be used in a WSGI environment
 dev-python/pyscaffold 2.4.1 2.4.4: Tool for easily putting up the scaffold of a Python project
 dev-python/pyscard 1.9.1 1.9.2: Smart cards support in python
@@ -18460,7 +18461,7 @@ x11-misc/xplanetFX 2.6.4 2.6.6 2.6.7: GUI to configure, run or daemonize xplanet
 x11-misc/xrestop 0.4: 'Top' like statistics of X11 client's server side resource usage
 x11-misc/xrmap 2.33-r1: a X client for generating images of the Earth and manipulating the CIA World data bank
 x11-misc/xrootconsole 0.6: A utility that displays its input in a text box on your root window
-x11-misc/xscreensaver 5.34: A modular screen saver and locker for the X Window System
+x11-misc/xscreensaver 5.34 5.35: A modular screen saver and locker for the X Window System
 x11-misc/xscreensaver-app 2.3-r2 2.3-r3: XScreenSaver dockapp for the Window Maker window manager
 x11-misc/xsel 1.2.0: XSel is a command-line program for getting and setting the contents of the X selection
 x11-misc/xsensors 0.70: A hardware health information viewer, interface to lm-sensors
