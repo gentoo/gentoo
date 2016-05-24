@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
+DESCRIPTION=Administration tool for disaster recovery of PostgreSQL servers
+EAPI=5
+HOMEPAGE=http://www.pgbarman.org
+IUSE=python_targets_python2_7
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=dev-python/argh[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] >=dev-python/psycopg-2[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/python-dateutil[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/argcomplete[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] net-misc/rsync dev-db/postgresql[server] python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
+REQUIRED_USE=|| ( python_targets_python2_7 )
+SLOT=0
+SRC_URI=http://downloads.sourceforge.net/project/pgbarman/1.6.1/barman-1.6.1.tar.gz
+_eclass_exported_funcs=src_prepare:distutils-r1 src_configure:distutils-r1 src_compile:distutils-r1 src_test:distutils-r1 src_install:distutils-r1
+_eclasses_=distutils-r1	04aa676883ff2a2644f619d9e5ef479a	eutils	792f83d5ec9536cb5ccef375469d8bde	multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	d062ae4ba2fc40a19c11de2ad89b6616	multiprocessing	e32940a7b2a9992ad217eccddb84d548	python-r1	0f6937650a475d673baa5d0c8c0b37b3	python-utils-r1	13d5b02ea59b21da41c77c9294f3b7f7	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=46330a47119181992cbee20f07b717d6
