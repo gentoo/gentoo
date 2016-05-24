@@ -5070,6 +5070,7 @@ dev-ml/labltk 8.06.0 8.06.1: OCaml interface to the Tcl/Tk GUI framework
 dev-ml/lambda-term 1.9 1.10: A cross-platform library for manipulating the terminal
 dev-ml/lwt 2.4.3 2.5.1 2.5.2: Cooperative light-weight thread library for OCaml
 dev-ml/macaque 0.7.2 0.7.4: DSL for SQL Queries in Caml
+dev-ml/markup 0.7.2: Error-recovering streaming HTML5 and XML parsers
 dev-ml/menhir 20151112 20160303 20160504: LR(1) parser generator for the OCaml language
 dev-ml/mirage-profile 0.5 0.6 0.6.1 0.7.0-r1: Collect profiling information
 dev-ml/mongo 0.67.2: An ocaml driver for mongodb
@@ -5148,7 +5149,7 @@ dev-ml/ppx_pipebang 113.24.00 113.33.00: A ppx rewriter that inlines reverse app
 dev-ml/ppx_sexp_conv 113.24.00 113.33.00: Support Library for type-driven code generators
 dev-ml/ppx_sexp_message 113.24.00 113.33.00: A ppx rewriter for easy construction of s-expressions
 dev-ml/ppx_sexp_value 113.24.00 113.33.00: Standard library for ppx rewriters
-dev-ml/ppx_tools 4.02.3 4.03.0: Tools for authors of ppx rewriters
+dev-ml/ppx_tools 4.02.3 5.0.4.02.0 5.0.4.03.0: Tools for authors of ppx rewriters
 dev-ml/ppx_type_conv 113.24.00 113.33.00: Support Library for type-driven code generators
 dev-ml/ppx_typerep_conv 113.24.00 113.33.00: Generation of runtime types from type declarations
 dev-ml/ppx_variants_conv 113.24.00 113.33.00: Generation of accessor and iteration functions for ocaml variant types
@@ -5166,7 +5167,7 @@ dev-ml/type-conv 112.01.02 113.00.00 113.00.02: Mini library required for some o
 dev-ml/typehashlib 109.15.02: Syntax extension for deriving 'typehash' functions automatically
 dev-ml/typerep 113.24.00: Library for creating runtime representation of OCaml types
 dev-ml/typerep_extended 113.24.00 113.33.00: Runtime types for OCaml (Extended)
-dev-ml/tyxml 3.5.0 3.6.0: A libary to build xml trees typechecked by OCaml
+dev-ml/tyxml 3.5.0 3.6.0 4.0.0: A libary to build xml trees typechecked by OCaml
 dev-ml/ulex 1.1: A lexer generator for unicode
 dev-ml/utop 1.18.2 1.19 1.19.1 1.19.2: A new toplevel for OCaml with completion and colorization
 dev-ml/uuidm 0.9.5: OCaml module implementing 128 bits universally unique identifiers
@@ -13234,7 +13235,7 @@ media-sound/mpd 0.19.10 0.19.11 0.19.12 0.19.14: The Music Player Daemon (mpd)
 media-sound/mpdas 0.4.0-r1 0.4.1: An AudioScrobbler client for MPD written in C++
 media-sound/mpdscribble 0.22: An MPD client that submits information to Audioscrobbler
 media-sound/mpfc 1.3.7-r1 1.3.8.1 1.3.8.1-r1 1.3.8.1-r2: Music Player For Console
-media-sound/mpg123 1.18.1 1.22.4 1.23.2 1.23.3: a realtime MPEG 1.0/2.0/2.5 audio player for layers 1, 2 and 3
+media-sound/mpg123 1.18.1 1.22.4 1.23.3 1.23.4: a realtime MPEG 1.0/2.0/2.5 audio player for layers 1, 2 and 3
 media-sound/mpg321 0.3.1-r1 0.3.2: A realtime MPEG 1.0/2.0/2.5 audio player for layers 1, 2 and 3
 media-sound/mplay 0.80: A Curses front-end for mplayer
 media-sound/mserv 0.35-r1: Jukebox-style music server
@@ -13613,7 +13614,7 @@ media-video/vdrsync 0.1.3_pre050322-r1: converting vdr-recordings to mpeg2, dvd 
 media-video/vdrtools-genindex 0.1.3-r1: VDR: genindex Script
 media-video/videocut 0.2.0: A program to create compositions from video files
 media-video/videotrans 1.6.1 1.6.1-r1: A package to convert movies to DVD format and to build DVDs with
-media-video/vlc 2.2.1-r1 2.2.2 2.2.9999 9999: VLC media player - Video player and streamer
+media-video/vlc 2.2.1-r1 2.2.2 2.2.3 2.2.9999 9999: VLC media player - Video player and streamer
 media-video/vobcopy 1.2.0: copies DVD .vob files to harddisk, decrypting them on the way
 media-video/vstrip 0.8f: A program to split non-css dvd vobs into individual chapters
 media-video/x264-encoder 0.0.20140308 0.0.20151011 9999: A free commandline encoder for X264/AVC streams
@@ -17298,7 +17299,7 @@ sys-libs/rvm 1.12 1.16 1.17: Recoverable Virtual Memory (used by Coda)
 sys-libs/slang 2.2.4 2.2.4-r1 2.3.0: A multi-platform programmer's library designed to allow a developer to create robust software
 sys-libs/suacomp 0.6.13 0.6.14 9999: library wrapping the interix lib-c to make it less buggy
 sys-libs/system-config-base 1-r1: system-config-* layout package
-sys-libs/talloc 2.1.5 2.1.5-r1 2.1.6: Samba talloc library
+sys-libs/talloc 2.1.5 2.1.6 2.1.7: Samba talloc library
 sys-libs/tdb 1.3.8 1.3.9: A simple database API
 sys-libs/tevent 0.9.26 0.9.27 0.9.28: Samba tevent library
 sys-libs/timezone-data 2016a 2016c 2016d: Timezone data (/usr/share/zoneinfo) and utilities (tzselect/zic/zdump)
