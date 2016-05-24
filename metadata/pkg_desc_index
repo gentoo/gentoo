@@ -1077,9 +1077,9 @@ app-editors/vim 7.4.769 7.4.1583 7.4.1821 9999: Vim, an improved vi-style text e
 app-editors/vim-core 7.4.769 7.4.1583 7.4.1821 9999: vim and gvim shared files
 app-editors/vim-qt 20150102-r1: Qt GUI version of the Vim text editor
 app-editors/wily 1.0-r1: An emulation of ACME, Plan9's hybrid window system, shell and editor for programmers
-app-editors/wxhexeditor 0.22 0.23: A cross-platform hex editor designed specially for large files
+app-editors/wxhexeditor 0.23: A cross-platform hex editor designed specially for large files
 app-editors/xemacs 21.4.22-r4 21.4.24 21.5.31 21.5.33 21.5.34-r2 21.5.34-r3 21.5.34-r4: highly customizable open source text editor and application development system
-app-editors/xmlcopyeditor 1.2.0.12 1.2.1.3: XML Copy Editor is a fast, free, validating XML editor
+app-editors/xmlcopyeditor 1.2.1.3: XML Copy Editor is a fast, free, validating XML editor
 app-editors/xvile 9.8k 9.8n 9.8o 9.8p: VI Like Emacs -- yet another full-featured vi clone
 app-editors/yudit 2.9.2 2.9.6: Free (Y)unicode text editor for all unices
 app-editors/zile 2.3.24-r1 2.4.11: Zile is a small Emacs clone
@@ -1538,7 +1538,7 @@ app-i18n/multiskkserv 20100128: SKK server that handles multiple dictionaries
 app-i18n/nabi 0.15 0.17 0.99.11: Simple Hanguk X Input Method
 app-i18n/nkf 2.1.3 2.1.3-r1: Network Kanji code conversion Filter with UTF-8/16 support
 app-i18n/opencc 0.2.0 0.3.0_pre20120819 0.3.0_pre20120819-r1 0.4.3: Libraries for conversion between Traditional and Simplified Chinese
-app-i18n/poedit 1.5.5 1.8.3 1.8.5 1.8.7: GUI editor for gettext translations files
+app-i18n/poedit 1.5.5 1.8.5 1.8.7: GUI editor for gettext translations files
 app-i18n/pology 0.11-r1 0.12 9999: A framework for custom processing of PO files
 app-i18n/pyzy 0.1.0 0.1.0-r1: The Chinese PinYin and Bopomofo conversion library
 app-i18n/qimhangul 0.2.0: a qt-based imhangul
@@ -1788,7 +1788,7 @@ app-misc/gnomecatalog 0.3.4.2-r1: Cataloging software for CDs and DVDs
 app-misc/gnote 3.16.2 3.18.0-r1 3.18.1: Desktop note-taking application
 app-misc/gnuit 4.9.5-r2: GNU Interactive Tools - increase speed and efficiency of most daily tasks
 app-misc/gnutu 2.5: GNU Student's Timetable for polish users
-app-misc/golly 2.4 2.4-r1 2.5 2.6 2.7 2.7-r1: simulator for Conway's Game of Life and other cellular automata
+app-misc/golly 2.4-r1 2.7-r1: simulator for Conway's Game of Life and other cellular automata
 app-misc/goobook 1.8 1.9: Google Contacts wrapper for mutt
 app-misc/gourmet 0.17.4 0.17.4-r1: Recipe Organizer and Shopping List Generator for Gnome
 app-misc/grabcartoons 2.8.4_p20141112 9999: Comic-summarizing utility
@@ -2942,7 +2942,7 @@ dev-db/percona-toolkit 2.2.11 2.2.15 2.2.17: Advanced command-line tools to perf
 dev-db/pg_activity 1.2.0: Realtime PostgreSQL database server monitoring tool
 dev-db/pg_top 3.6.2-r1 3.7.0: 'top' for PostgreSQL
 dev-db/pgadmin3 1.18.1 1.20.0 1.20.0-r1 1.20.0-r2 1.22.0 1.22.1 1.22.1-r1: wxWidgets GUI for PostgreSQL
-dev-db/pgagent 3.3.0 3.4.0 3.4.0-r1: pgAgent is a job scheduler for PostgreSQL
+dev-db/pgagent 3.4.0 3.4.0-r1: pgAgent is a job scheduler for PostgreSQL
 dev-db/pgbadger 6.2 6.4 7.0: pgBadger is a PostgreSQL log analyzer.
 dev-db/pgbouncer 1.5.4 1.5.4-r1 1.5.5 1.7.2: Lightweight connection pooler for PostgreSQL
 dev-db/pgmemcache 2.1.2 2.2.0 2.3.0: A PostgreSQL API based on libmemcached to interface with memcached
@@ -2979,7 +2979,7 @@ dev-db/tora 3.0.0_pre20140929-r1 9999: TOra - Toolkit For Oracle
 dev-db/unixODBC 2.3.2-r1 2.3.2-r2 2.3.4: A complete ODBC driver manager
 dev-db/vbisam 2.0: replacement for IBM's C-ISAM
 dev-db/vsqlite++ 0.3.13-r1: VSQLite++ - A welldesigned and portable SQLite3 Wrapper for C++
-dev-db/wxsqlite3 3.0.6.1-r1 3.2.1-r1: C++ wrapper around the public domain SQLite 3.x database
+dev-db/wxsqlite3 3.2.1-r1: C++ wrapper around the public domain SQLite 3.x database
 dev-db/xbase 3.1.2: xbase (i.e. dBase, FoxPro, etc.) compatible C++ class library
 dev-db/xbsql 0.11-r2: An SQL Wrapper for the XBase library
 dev-db/xtrabackup-bin 2.2.5 2.4.1: MySQL hot backup software. non-blocking backups for InnoDB/XtraDB databases
@@ -3096,7 +3096,7 @@ dev-embedded/u-boot-tools 2013.07 2014.01 2015.01 2015.04 2016.03: utilities for
 dev-embedded/uisp 20050207-r1: tool for AVR microcontrollers which can interface to many hardware in-system programmers
 dev-embedded/upslug2 11: util for flashing NSLU2 machines remotely
 dev-embedded/urjtag 0.10 0.10-r1 9999: tool for communicating over JTAG with flash chips, CPUs, and many more (fork of openwince jtag)
-dev-embedded/usbprog 0.2.0 0.2.0-r1: flashtool for the multi purpose programming adapter usbprog
+dev-embedded/usbprog 0.2.0-r1: flashtool for the multi purpose programming adapter usbprog
 dev-embedded/zmac 1.3: Z80 macro cross-assembler
 dev-games/KXL 1.1.7-r2: Development Library for making games for X
 dev-games/aseprite 0.9.5-r1 1.1.4.1 1.1.5.1: Animated sprite editor & pixel art tool
@@ -3698,8 +3698,8 @@ dev-haskell/wl-pprint 1.2: The Wadler/Leijen Pretty Printer
 dev-haskell/wl-pprint-text 1.1.0.4: A Wadler/Leijen Pretty Printer for Text values
 dev-haskell/word8 0.1.2: Word8 library
 dev-haskell/wx 0.13.2.3 0.90.1.0 0.92.2.0: wxHaskell
-dev-haskell/wxc 0.90.1.1 0.92.2.0: wxHaskell C++ wrapper
-dev-haskell/wxcore 0.13.2.3-r1 0.90.1.1 0.92.2.0: wxHaskell core
+dev-haskell/wxc 0.92.2.0: wxHaskell C++ wrapper
+dev-haskell/wxcore 0.92.2.0: wxHaskell core
 dev-haskell/wxdirect 0.13.1.3 0.90.1.1 0.92.2.0: helper tool for building wxHaskell
 dev-haskell/x11 1.6.1.1 1.6.1.2: A binding to the X11 graphics library
 dev-haskell/x11-xft 0.3.1 0.3.1-r1: Bindings to the Xft, X Free Type interface library, and some Xrender parts
@@ -4368,7 +4368,7 @@ dev-lang/falcon 0.9.6.8: An open source general purpose untyped language written
 dev-lang/ferite 1.1.17-r1: A clean, lightweight, object oriented scripting language
 dev-lang/fpc 2.6.4 3.0.0: Free Pascal Compiler
 dev-lang/fsharp 3.1.1.31 4.0.0.4: The F# Compiler
-dev-lang/gdl 0.9.5-r1 0.9.5-r2 0.9.6-r1: GNU Data Language
+dev-lang/gdl 0.9.6-r1: GNU Data Language
 dev-lang/gforth 0.7.3: GNU Forth is a fast and portable implementation of the ANSI Forth language
 dev-lang/ghc 7.4.2 7.6.3-r1 7.8.3 7.8.4 7.10.2 7.10.2-r1 7.10.3: The Glasgow Haskell Compiler
 dev-lang/gnat-gcc 3.4.6 4.1.2 4.2.3 4.3.5 4.3.6 4.3.6-r1 4.4.7 4.4.7-r1 4.5.4 4.5.4-r1 4.6.4 4.6.4-r1: GNAT Ada Compiler - gcc version
@@ -6468,7 +6468,7 @@ dev-perl/WebService-MusicBrainz 0.930.0-r1: Web service API to MusicBrainz datab
 dev-perl/WordNet-QueryData 1.490.0-r1: Direct perl interface to WordNet database
 dev-perl/Wx 0.992.700-r1 0.992.800: Perl bindings for wxGTK
 dev-perl/Wx-GLCanvas 0.90.0: interface to wxWidgets' OpenGL canvas
-dev-perl/Wx-Perl-ProcessStream 0.320.0-r1 0.320.0-r2: access IO of external processes via events
+dev-perl/Wx-Perl-ProcessStream 0.320.0-r2: access IO of external processes via events
 dev-perl/Wx-Scintilla 0.390.0-r1 0.390.0-r2: Scintilla source code editing component for wxWidgets
 dev-perl/X-Osd 0.700.0-r1: Perl glue to libxosd (X OnScreen Display)
 dev-perl/X11-FreeDesktop-DesktopEntry 0.40.0-r1: An interface to Freedesktop.org .desktop files
