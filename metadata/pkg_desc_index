@@ -16600,7 +16600,7 @@ sys-apps/netplug 1.2.9.2-r1: Brings up/down ethernet ports automatically with ca
 sys-apps/newrelic-sysmond 1.1.2.124-r1: NewRelic System Monitor
 sys-apps/noexec 1.1.0: a package for preventing processes from using exec system calls
 sys-apps/nvme-cli 0_pre20150821 0.6: NVM-Express user space tooling for Linux
-sys-apps/openrc 0.13.11 0.14 0.15 0.15.1 0.16 0.16.1 0.16.2 0.16.3 0.16.4 0.17 0.18.3 0.18.4 0.19.1 0.20.4 0.20.5 9999: OpenRC manages the services, startup and shutdown of a host
+sys-apps/openrc 0.13.11 0.14 0.15 0.15.1 0.16 0.16.1 0.16.2 0.16.3 0.16.4 0.17 0.18.3 0.18.4 0.19.1 0.20.4 0.20.5 0.21 9999: OpenRC manages the services, startup and shutdown of a host
 sys-apps/pacman 4.0.1 4.0.3 4.0.3-r1: Archlinux's binary package manager
 sys-apps/paludis 1.4.2-r1 2.0.0 2.2.0 2.2.0-r2 2.4.0 2.4.0_p20160112 2.6.0 9999: paludis, the other package mangler
 sys-apps/paxctl 0.7-r2 0.8 0.9: Manages various PaX related program header flags for Elf32, Elf64, binaries
