@@ -27,6 +27,9 @@ src_prepare() {
 	epatch "${FILESDIR}"/${P}-texi.patch
 	epatch "${FILESDIR}"/${P}-destdir.patch
 
+	sed -i -e "/math.h/d" coms.c
+	sed -i -e "/math.h/d" graphics.c
+
 	WX_GTK_VER=2.8 need-wxwidgets unicode
 	sed -i -e "s_/usr/local/bin/wx-config_${WX_CONFIG}_g" configure-gtk || die
 	sed -i -e 's_--host=gtk__g' configure-gtk || die
