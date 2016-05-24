@@ -17226,7 +17226,7 @@ sys-libs/db 1.85-r3 3.2.9_p2 4.2.52_p5-r1 4.3.29_p1-r1 4.4.20_p4-r1 4.5.20_p2-r1
 sys-libs/e2fsprogs-libs 1.42.13 1.43: e2fsprogs libraries (common error and subsystem)
 sys-libs/efivar 0.21 0.23: Tools and library to manipulate EFI variables
 sys-libs/fortify-headers 0.6 0.7 9999: A standalone implementation of fortify source.
-sys-libs/freeipmi 1.2.2 1.4.3 1.4.8 1.5.1: Provides Remote-Console and System Management Software as per IPMI v1.5/2.0
+sys-libs/freeipmi 1.2.2 1.4.3 1.4.8 1.5.1 1.5.2: Provides Remote-Console and System Management Software as per IPMI v1.5/2.0
 sys-libs/fts-standalone 0.2: Standalone fts library for use with musl
 sys-libs/gdbm 1.11 1.12: Standard GNU database libraries
 sys-libs/glibc 2.17 2.18-r1 2.19-r1 2.20-r2 2.21-r2 2.22-r4 2.23-r1 2.23-r2 9999: GNU libc6 (also called glibc2) C library
