@@ -1,49 +1,57 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
+EAPI="6"
 
-inherit bash-completion-r1 eutils
+inherit bash-completion-r1
 
 DESCRIPTION="A download utility with segmented downloading with BitTorrent support"
 HOMEPAGE="http://aria2.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
+SRC_URI="https://github.com/tatsuhiro-t/${PN}/releases/download/release-${PV}/${P}.tar.xz"
 
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
+KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
 SLOT="0"
-IUSE="adns bittorrent +gnutls +libxml2 metalink +nettle nls sqlite scripts ssl test xmlrpc"
+IUSE="adns bittorrent +gnutls jemalloc libuv +libxml2 metalink +nettle nls sqlite scripts ssh ssl tcmalloc test xmlrpc"
 
-CDEPEND="sys-libs/zlib
+CDEPEND="sys-libs/zlib:0=
 	ssl? (
 		app-misc/ca-certificates
-		gnutls? ( >=net-libs/gnutls-1.2.9 )
-		!gnutls? ( dev-libs/openssl ) )
-	adns? ( >=net-dns/c-ares-1.5.0 )
+		gnutls? ( >=net-libs/gnutls-1.2.9:0= )
+		!gnutls? ( dev-libs/openssl:0= ) )
+	adns? ( >=net-dns/c-ares-1.5.0:0= )
 	bittorrent? (
 		ssl? (
 			gnutls? (
-				nettle? ( >=dev-libs/nettle-2.4[gmp] >=dev-libs/gmp-5 )
-				!nettle? ( >=dev-libs/libgcrypt-1.2.2:0 ) ) )
+				nettle? ( >=dev-libs/nettle-2.4:0=[gmp] >=dev-libs/gmp-5:0= )
+				!nettle? ( >=dev-libs/libgcrypt-1.2.2:0= ) ) )
 		!ssl? (
-			nettle? ( >=dev-libs/nettle-2.4[gmp] >=dev-libs/gmp-5 )
-			!nettle? ( >=dev-libs/libgcrypt-1.2.2:0 ) ) )
+			nettle? ( >=dev-libs/nettle-2.4:0=[gmp] >=dev-libs/gmp-5:0= )
+			!nettle? ( >=dev-libs/libgcrypt-1.2.2:0= ) ) )
+	jemalloc? ( dev-libs/jemalloc )
+	libuv? ( dev-libs/libuv:0= )
 	metalink? (
-		libxml2? ( >=dev-libs/libxml2-2.6.26 )
-		!libxml2? ( dev-libs/expat ) )
-	sqlite? ( dev-db/sqlite:3 )
+		libxml2? ( >=dev-libs/libxml2-2.6.26:2= )
+		!libxml2? ( dev-libs/expat:0= ) )
+	sqlite? ( dev-db/sqlite:3= )
+	ssh? ( net-libs/libssh2:= )
+	tcmalloc? ( dev-util/google-perftools )
 	xmlrpc? (
-		libxml2? ( >=dev-libs/libxml2-2.6.26 )
-		!libxml2? ( dev-libs/expat ) )"
+		libxml2? ( >=dev-libs/libxml2-2.6.26:2= )
+		!libxml2? ( dev-libs/expat:0= ) )"
 
 DEPEND="${CDEPEND}
+	app-arch/xz-utils
 	virtual/pkgconfig
 	nls? ( sys-devel/gettext )
-	test? ( >=dev-util/cppunit-1.12.0 )"
+	test? ( >=dev-util/cppunit-1.12.0:0 )"
 RDEPEND="${CDEPEND}
 	nls? ( virtual/libiconv virtual/libintl )
 	scripts? ( dev-lang/ruby )"
+
+REQUIRED_USE="jemalloc? ( !tcmalloc )
+	tcmalloc? ( !jemalloc )"
 
 pkg_setup() {
 	if use scripts && use !xmlrpc && use !metalink; then
@@ -53,25 +61,31 @@ pkg_setup() {
 }
 
 src_prepare() {
-	epatch_user
+	default
 	sed -i -e "s|/tmp|${T}|" test/*.cc test/*.txt || die "sed failed"
 }
 
 src_configure() {
-	# Notes:
-	# - always enable gzip/http compression since zlib should always be available anyway
-	# - always enable epoll since we can assume kernel 2.6.x
-	# - other options for threads: solaris, pth, win32
 	local myconf=(
-		--enable-epoll
-		--enable-threads=posix
+		# threads, epoll: check for best portability
+
+		# do not try to compile and run a test LIBXML program
+		--disable-xmltest
+		# enable the shared library
+		--enable-libaria2
+		# zlib should always be available anyway
 		--with-libz
 		--with-ca-bundle="${EPREFIX}/etc/ssl/certs/ca-certificates.crt"
-		$(use_enable nls)
-		$(use_enable metalink)
-		$(use_with sqlite sqlite3)
+
+		# optional features
 		$(use_enable bittorrent)
+		$(use_enable metalink)
+		$(use_enable nls)
+		$(use_with sqlite sqlite3)
 		$(use_with adns libcares)
+		$(use_with libuv)
+		$(use_with jemalloc)
+		$(use_with tcmalloc)
 	)
 
 	# SSL := gnutls / openssl

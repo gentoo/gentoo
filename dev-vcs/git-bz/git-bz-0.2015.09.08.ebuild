@@ -6,30 +6,22 @@ EAPI=6
 PYTHON_COMPAT=( python2_7 pypy )
 PYTHON_REQ_USE='sqlite'
 
-EGIT_REPO_URI="git://git.fishsoup.net/${PN}
-	http://git.fishsoup.net/cgit/${PN}"
-inherit git-r3 python-single-r1
+inherit python-single-r1
 
 DESCRIPTION="Bugzilla subcommand for git"
 HOMEPAGE="http://www.fishsoup.net/software/git-bz/"
-SRC_URI=""
+SRC_URI="http://dev.gentoo.org/~mgorny/dist/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND="dev-vcs/git"
-DEPEND="app-text/asciidoc
-	app-text/xmlto"
 
 src_configure() {
 	# custom script
 	./configure --prefix="${EPREFIX}/usr" || die
-}
-
-src_compile() {
-	emake ${PN}.1
 }
 
 src_install() {

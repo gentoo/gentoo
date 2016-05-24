@@ -5,7 +5,7 @@
 EAPI="6"
 
 PYTHON_COMPAT=( python{2_7,3_4,3_5} )
-inherit gnome2-utils linux-info python-single-r1 systemd
+inherit gnome2-utils linux-info python-single-r1
 
 DESCRIPTION="Simple and intuitive GTK+ Bluetooth Manager"
 HOMEPAGE="https://github.com/blueman-project/blueman"
@@ -25,7 +25,7 @@ IUSE="appindicator network nls policykit pulseaudio thunar"
 
 COMMON_DEPEND="
 	dev-python/pygobject:3
-	>=net-wireless/bluez-5:=
+	>=net-wireless/bluez-4.61:=
 	${PYTHON_DEPS}"
 DEPEND="${COMMON_DEPEND}
 	dev-python/cython[${PYTHON_USEDEP}]
@@ -44,6 +44,7 @@ RDEPEND="${COMMON_DEPEND}
 	)
 	appindicator? ( dev-libs/libappindicator:3[introspection] )
 	network? (
+		net-dns/avahi[autoipd]
 		net-firewall/iptables
 		sys-apps/net-tools
 		|| (
@@ -55,7 +56,6 @@ RDEPEND="${COMMON_DEPEND}
 	policykit? ( sys-auth/polkit )
 	pulseaudio? ( media-sound/pulseaudio[bluetooth] )
 	thunar? ( xfce-base/thunar )
-	!net-wireless/gnome-bluetooth
 "
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
@@ -74,24 +74,21 @@ pkg_setup() {
 }
 
 src_prepare() {
+	local PATCHES=(
+		"${FILESDIR}/${PN}-2.0-set-codeset-for-gettext-to-UTF-8-always.patch"
+	)
 	default
 	[[ ${PV} == 9999 ]] && eautoreconf
 }
 
 src_configure() {
-	local myconf=(
-		--docdir=/usr/share/doc/${PF}
-		--disable-runtime-deps-check
-		--disable-static
-		# TODO: replace upstream with sane system/user unitdir getters
-		--with-systemdunitdir="$(systemd_get_utildir)"
-		$(use_enable appindicator)
-		$(use_enable policykit polkit)
-		$(use_enable nls)
-		$(use_enable pulseaudio)
+	econf \
+		--docdir=/usr/share/doc/${PF} \
+		--disable-runtime-deps-check \
+		--disable-static \
+		$(use_enable policykit polkit) \
+		$(use_enable nls) \
 		$(use_enable thunar thunar-sendto)
-	)
-	econf "${myconf[@]}"
 }
 
 src_install() {
@@ -99,6 +96,9 @@ src_install() {
 
 	python_fix_shebang "${D}"
 	rm "${D}"/$(python_get_sitedir)/*.la || die
+
+	use appindicator || { rm "${D}"/$(python_get_sitedir)/${PN}/plugins/applet/AppIndicator.py* || die; }
+	use pulseaudio || { rm "${D}"/$(python_get_sitedir)/${PN}/{main/Pulse*.py*,plugins/manager/Pulse*.py*} || die; }
 }
 
 pkg_preinst() {

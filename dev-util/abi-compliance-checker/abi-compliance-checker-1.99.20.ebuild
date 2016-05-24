@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 DESCRIPTION="A tool for checking backward compatibility of a C/C++ library"
 HOMEPAGE="http://ispras.linuxbase.org/index.php/ABI_compliance_checker"
@@ -15,6 +15,7 @@ IUSE=""
 
 DEPEND="dev-lang/perl"
 RDEPEND="${DEPEND}
+	dev-util/abi-dumper
 	dev-util/ctags"
 
 src_compile() {
@@ -23,5 +24,5 @@ src_compile() {
 
 src_install() {
 	mkdir -p "${D}"/usr || die
-	perl Makefile.pl --install --prefix=/usr --destdir="${D}" || die
+	perl Makefile.pl --install --prefix="${EPREFIX}"/usr --destdir="${D}" || die
 }
