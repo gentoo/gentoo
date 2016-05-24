@@ -6312,15 +6312,15 @@ dev-perl/Test-LeakTrace 0.150.0: Traces memory leaks
 dev-perl/Test-LongString 0.150.0-r1 0.170.0: A library to test long strings
 dev-perl/Test-Manifest 1.230.0-r1 2.20.0: Interact with a t/test_manifest file
 dev-perl/Test-Memory-Cycle 1.40.0-r1 1.60.0: Check for memory leaks and circular memory references
-dev-perl/Test-Mock-LWP-Dispatch 0.60.0 0.80.0: Mocks LWP::UserAgent and dispatches your requests/responses
+dev-perl/Test-Mock-LWP-Dispatch 0.80.0: Mocks LWP::UserAgent and dispatches your requests/responses
 dev-perl/Test-MockModule 0.50.0-r2 0.110.0: Override subroutines in a module for unit testing
 dev-perl/Test-MockObject 1.201.203.10-r1 1.201.505.270: Perl extension for emulating troublesome interfaces
 dev-perl/Test-MockRandom 1.10.0: Replaces random number generation with non-random number generation
-dev-perl/Test-MockTime 0.130.0 0.150.0: Replaces actual time with simulated time
+dev-perl/Test-MockTime 0.150.0: Replaces actual time with simulated time
 dev-perl/Test-Most 0.310.0-r1 0.340.0: Most commonly needed test functions and features
 dev-perl/Test-NoTabs 1.400.0: Check the presence of tabs in your project
 dev-perl/Test-NoWarnings 1.40.0-r2: Make sure you didn't emit any warnings while testing
-dev-perl/Test-Number-Delta 1.30.0-r1 1.40.0 1.60.0: Compare the difference between numbers against a given tolerance
+dev-perl/Test-Number-Delta 1.40.0 1.60.0: Compare the difference between numbers against a given tolerance
 dev-perl/Test-Object 0.70.0-r1: Thoroughly testing objects via registered handlers
 dev-perl/Test-Output 1.30.0: Utilities to test STDOUT and STDERR messages
 dev-perl/Test-Perl-Critic 1.20.0-r1 1.30.0: Use Perl::Critic in test programs
