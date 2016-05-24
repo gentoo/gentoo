@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 PYTHON_COMPAT=( python2_7 )
 
 inherit cmake-utils python-any-r1
@@ -26,11 +26,6 @@ DEPEND="
 	)"
 RDEPEND=""
 
-PATCHES=(
-	# fix broken path subst in .pc file
-	"${FILESDIR}"/jsoncpp-1.6.2-fix-pkgconfig.patch
-)
-
 pkg_setup() {
 	if use doc || use test; then
 		python-any-r1_pkg_setup
@@ -44,9 +39,12 @@ src_configure() {
 		-DJSONCPP_WITH_CMAKE_PACKAGE=ON
 
 		-DBUILD_SHARED_LIBS=ON
+		-DBUILD_STATIC_LIBS=OFF
 		# Follow Debian, Ubuntu, Arch convention for headers location
 		# bug #452234
 		-DINCLUDE_INSTALL_DIR="${EPREFIX}"/usr/include/jsoncpp
+		# Disable implicit ccache use
+		-DCCACHE_FOUND=OFF
 	)
 
 	cmake-utils_src_configure
@@ -68,6 +66,7 @@ src_install() {
 	cmake-utils_src_install
 
 	if use doc; then
-		dohtml dist/doxygen/jsoncpp*/*
+		docinto html
+		dodoc -r dist/doxygen/jsoncpp*/.
 	fi
 }
