@@ -30,6 +30,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam Jorna <wraeth@gentoo.org> (24 May 2016)
+# Deprecated in favour of sci-geosciences/qmapshack.
+# See bugs 561788 and 582262
+# Masked for removal in 30 days.
+sci-geosciences/qlandkartegt
+sci-geosciences/qlandkartegt-garmindev
+
 # Göktürk Yüksek <gokturk@gentoo.org> (23 May 2016)
 # Replaced by app-admin/lastpass-binary-component.
 # Masked for removal in 30 days.
