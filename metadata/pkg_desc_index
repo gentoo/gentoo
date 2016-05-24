@@ -4596,7 +4596,7 @@ dev-libs/keybinder 0.3.0-r200 0.3.0-r201 0.3.0-r300 0.3.1-r200 0.3.1-r300: A lib
 dev-libs/klibc 1.5.25 2.0.2 2.0.2-r1 2.0.3 2.0.3-r1 2.0.4: A minimal libc subset for use with initramfs
 dev-libs/kpathsea 6.1.0_p20120701 6.1.1_p20130530 6.2.0_p20140525 6.2.1_p20150521: Library implementing generic path searching, configuration, and TeX-specific file searching
 dev-libs/kqoauth 0.98 0.98-r1: Library for Qt that implements the OAuth 1.0 authentication specification
-dev-libs/leatherman 0.4.2 0.6.2 0.6.3 0.7.0: A C++ toolkit
+dev-libs/leatherman 0.4.2 0.6.2 0.6.3 0.7.1: A C++ toolkit
 dev-libs/legousbtower 0.5.4: The lego mindstorms usb tower headers and/or modules
 dev-libs/leveldb 1.9.0-r5 1.9.0-r6 1.10.0-r1 1.11.0-r1 1.12.0-r1 1.13.0-r1 1.14.0 1.15.0 1.15.0-r1 1.17 1.18 1.18-r1: a fast key-value storage library written at Google
 dev-libs/libIDL 0.8.14: CORBA tree builder
@@ -7593,7 +7593,7 @@ dev-python/pathtools 0.1.2: Pattern matching and various utilities for file syst
 dev-python/patsy 0.4.1: Python module to describe statistical models and design matrices
 dev-python/paver 1.2.3 1.2.4: Python-based software project scripting tool along the lines of Make
 dev-python/pbkdf2 1.3: Implementation of the password-based key derivation function, PBKDF2, specified in RSA PKCS#5 v2.0
-dev-python/pbr 0.8.2-r1 1.8.1 1.8.1-r1 1.9.1: Inject some useful and sensible default behaviors into setuptools
+dev-python/pbr 0.8.2-r1 1.8.1 1.8.1-r1 1.9.1 1.10.0: Inject some useful and sensible default behaviors into setuptools
 dev-python/pdfrw 0.1 0.2: PDF file reader/writer library
 dev-python/pdoc 0.3.1: A simple program and library to auto generate API documentation for Python modules
 dev-python/peak-rules 0.5: Generic functions and business rules support systems
@@ -14729,7 +14729,7 @@ net-misc/mrouted 3.9.5-r1: IP multicast routing daemon
 net-misc/mulk 0.6.0 0.7.0: Download agent similar to wget/curl
 net-misc/nat-traverse 0.6: Traverse NAT gateways with the Use of UDP
 net-misc/ncp 1.2.4: utility for copying files in a LAN (npoll, npush)
-net-misc/ndisc6 0.9.9 0.9.9-r2 1.0.2: Recursive DNS Servers discovery Daemon (rdnssd) for IPv6
+net-misc/ndisc6 0.9.9 0.9.9-r2 1.0.2 1.0.2-r1 1.0.3: Recursive DNS Servers discovery Daemon (rdnssd) for IPv6
 net-misc/ndppd 0.2.3: Proxies NDP messages between interfaces
 net-misc/nemesis 1.4 1.4-r1: A commandline-based, portable human IP stack for UNIX/Linux
 net-misc/netctl 1.9 1.10 1.11 9999: Profile based network connection tool from Arch Linux
