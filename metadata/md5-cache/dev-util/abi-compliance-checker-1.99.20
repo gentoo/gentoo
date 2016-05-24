@@ -9,4 +9,4 @@ RDEPEND=dev-lang/perl dev-util/abi-dumper dev-util/ctags
 SLOT=0
 SRC_URI=https://github.com/lvc/abi-compliance-checker/archive/1.99.20.tar.gz -> abi-compliance-checker-1.99.20.tar.gz
 _eclass_exported_funcs=src_compile:- src_install:-
-_md5_=fb57326c5e4d0af6cb3db67b070b1969
+_md5_=5c70ab8e8b24ca861c42e86735142b11
