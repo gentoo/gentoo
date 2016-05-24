@@ -7,7 +7,7 @@ EAPI=6
 inherit kde5-meta-pkg
 
 DESCRIPTION="kdenetwork - merge this to pull in all kdenetwork-derived packages"
-KEYWORDS=" ~amd64 ~x86"
+KEYWORDS=" amd64 ~x86"
 IUSE="ppp"
 
 # FIXME: Add back when ready
