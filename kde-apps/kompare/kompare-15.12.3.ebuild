@@ -10,7 +10,7 @@ inherit kde5
 DESCRIPTION="A program to view the differences between files"
 HOMEPAGE="https://www.kde.org/applications/development/kompare
 http://www.caffeinated.me.uk/kompare"
-KEYWORDS=" ~amd64 ~x86"
+KEYWORDS=" amd64 ~x86"
 IUSE=""
 
 DEPEND="

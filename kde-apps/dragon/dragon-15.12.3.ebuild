@@ -9,7 +9,7 @@ inherit kde5
 
 DESCRIPTION="A simple video player"
 HOMEPAGE="https://www.kde.org/applications/multimedia/dragonplayer"
-KEYWORDS=" ~amd64 ~x86"
+KEYWORDS=" amd64 ~x86"
 IUSE=""
 
 RDEPEND="

@@ -13,7 +13,7 @@ HOMEPAGE="
 	https://www.kde.org/applications/games/kbounce/
 	https://games.kde.org/game.php?game=kbounce
 "
-KEYWORDS=" ~amd64 ~x86"
+KEYWORDS=" amd64 ~x86"
 IUSE=""
 
 DEPEND="
