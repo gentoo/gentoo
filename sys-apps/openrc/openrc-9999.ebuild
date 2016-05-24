@@ -279,13 +279,10 @@ pkg_postinst() {
 			cp -RPp "${EROOT}"usr/share/${PN}/runlevels/shutdown/* \
 				"${EROOT}"etc/runlevels/shutdown
 		fi
-	fi
-
-	# Added for 0.21
-	if [[ ! -e "${EROOT}"etc/runlevels/nonetwork ]]; then
-		einfo "copying default nonetwork runlevel"
-		cp -RPp "${EROOT}"usr/share/${PN}/runlevels/nonetwork \
-			"${EROOT}"etc/runlevels
+		if [[ ! -e "${EROOT}"etc/runlevels/nonetwork/local ]]; then
+			cp -RPp "${EROOT}"usr/share/${PN}/runlevels/nonetwork \
+				"${EROOT}"etc/runlevels
+		fi
 	fi
 
 	if use hppa; then
