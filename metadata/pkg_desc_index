@@ -2874,7 +2874,7 @@ dev-db/db-je 3.3.75: Berkeley DB JE is a high performance, transactional storage
 dev-db/dbmodel 0.3: Qt4 tool for drawing entity-relational diagrams
 dev-db/etcd 2.0.10-r1 2.2.1 2.2.5: A highly-available key value store for shared configuration and service discovery
 dev-db/firebird 2.5.3.26780.0-r3: A relational database offering many ANSI SQL:2003 and some SQL:2008 features
-dev-db/freetds 0.91 0.91-r1: Tabular Datastream Library
+dev-db/freetds 0.91 0.91-r1 1.00: Tabular Datastream Library
 dev-db/gigabase 3.83-r1: OO-DBMS with interfaces for C/C++/Java/PHP/Perl
 dev-db/go-etcd 0_p20141013-r1 2.0.0 2.0.0-r1: Go client library for etcd
 dev-db/gqlplus 1.16: a front-end for Oracle program sqlplus with command-line editing
@@ -8884,12 +8884,12 @@ dev-ruby/gruff 0.6.0: Beautiful graphs for one or multiple datasets
 dev-ruby/haml 4.0.7: A ruby web page templating engine
 dev-ruby/haml-rails 0.9.0: Provides Haml generators for Rails 4
 dev-ruby/hashdiff 0.3.0: Simple Hash extension to make working with nested hashes easier
-dev-ruby/hashery 2.1.1 2.1.2: The Hashery is a tight collection of Hash-like classes
+dev-ruby/hashery 2.1.2: The Hashery is a tight collection of Hash-like classes
 dev-ruby/hashicorp-checkpoint 0.1.4: Internal HashiCorp service to check version information
 dev-ruby/hashie 2.1.2-r1 3.4.3 3.4.4: Hashie is a small collection of tools that make hashes more powerful
 dev-ruby/hashr 0.0.22 1.0.0 2.0.0: Simple Hash extension to make working with nested hashes easier
 dev-ruby/heredoc_unindent 1.2.0: Removes leading whitespace from Ruby heredocs
-dev-ruby/hiera 1.3.4 1.3.4-r1 2.0.0 3.0.1-r1 3.0.5 3.0.6 3.1.0 3.1.1 3.1.2: A simple pluggable Hierarchical Database
+dev-ruby/hiera 1.3.4 1.3.4-r1 2.0.0 3.0.1-r1 3.0.5 3.0.6 3.1.0 3.1.1 3.1.2 3.2.0: A simple pluggable Hierarchical Database
 dev-ruby/hiera-eyaml 2.0.8: Encrypted YAML backend for hiera
 dev-ruby/hiera-eyaml-gpg 0.4 0.5 0.6: A GPG backend for hiera-eyaml
 dev-ruby/hiera-eyaml-plaintext 0.6: A plaintext backend for hiera-eyaml
@@ -8977,7 +8977,7 @@ dev-ruby/mime-types-data 3.2015.1120 3.2016.0221 3.2016.0521: Registry for infor
 dev-ruby/mimemagic 0.3.1: Fast mime detection by extension or content
 dev-ruby/mini_magick 4.4.0: Manipulate images with minimal use of memory
 dev-ruby/mini_shoulda 0.5.0-r1: A minimal shoulda DSL built on top of MiniTest::Spec
-dev-ruby/minitest 4.7.5-r1 4.7.5-r2 5.3.3-r1 5.5.1 5.8.3 5.8.4: minitest/unit is a small and fast replacement for ruby's huge and slow test/unit
+dev-ruby/minitest 4.7.5-r1 4.7.5-r2 5.3.3-r1 5.5.1 5.8.3 5.8.4 5.9.0: minitest/unit is a small and fast replacement for ruby's huge and slow test/unit
 dev-ruby/minitest-bonus-assertions 2.0: Bonus assertions for minitest
 dev-ruby/minitest-pretty_diff 0.1: Pretty-print hashes and arrays before diffing them in MiniTest
 dev-ruby/mixlib-shellout 2.2.5 2.2.6: Run external commands on Unix or Windows
@@ -9157,13 +9157,13 @@ dev-ruby/ruby-mp3info 0.8.8 0.8.9: A pure Ruby library for access to mp3 files (
 dev-ruby/ruby-net-ldap 0.14.0: Pure ruby LDAP client implementation
 dev-ruby/ruby-oci8 2.1.7 2.1.7-r1 2.1.8 2.2.1: A Ruby library for Oracle OCI8
 dev-ruby/ruby-odbc 0.99997-r1: RubyODBC - For accessing ODBC data sources from the Ruby language
-dev-ruby/ruby-oembed 0.9.0 0.10.0: An oEmbed consumer library written in Ruby.
+dev-ruby/ruby-oembed 0.9.0 0.10.0 0.10.1: An oEmbed consumer library written in Ruby.
 dev-ruby/ruby-ole 1.2.11.8 1.2.12: Ruby library for easy read/write access to OLE compound documents
 dev-ruby/ruby-opengl 0.8.0 0.9.2: OpenGL / GLUT bindings for ruby
 dev-ruby/ruby-openid 2.7.0: A robust library for verifying and serving OpenID identities
 dev-ruby/ruby-pango 2.2.3 2.2.3-r1 2.2.5 3.0.7: Ruby Pango bindings
 dev-ruby/ruby-poppler 2.2.3 2.2.3-r1 2.2.5 3.0.7 3.0.7-r1: Ruby poppler-glib bindings
-dev-ruby/ruby-prof 0.15.8-r1 0.15.9: A module for profiling Ruby code
+dev-ruby/ruby-prof 0.15.9: A module for profiling Ruby code
 dev-ruby/ruby-progressbar 1.4.2 1.4.2-r1 1.7.5: A Text Progress Bar Library for Ruby
 dev-ruby/ruby-rc4 0.1.5-r2: A pure Ruby implementation of the Rc4 algorithm
 dev-ruby/ruby-romkan 0.4-r6: A Romaji <-> Kana conversion library for Ruby
