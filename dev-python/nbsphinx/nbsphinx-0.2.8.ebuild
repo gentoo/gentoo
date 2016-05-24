@@ -12,7 +12,7 @@ DESCRIPTION="Jupyter Notebook Tools for Sphinx"
 HOMEPAGE="https://github.com/spatialaudio/nbsphinx/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
-LICENSE="BSD"
+LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="doc test"
