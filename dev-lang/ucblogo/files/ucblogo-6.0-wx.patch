@@ -1,0 +1,71 @@
+diff -Nuar a/wxTerminal.cpp b/wxTerminal.cpp
+--- a/wxTerminal.cpp	2008-09-14 06:57:09.000000000 +0200
++++ b/wxTerminal.cpp	2015-05-18 09:27:38.559993795 +0200
+@@ -938,7 +938,7 @@
+   //dc.GetTextExtent("(", &dummy, ch);
+ 
+   int descent, extlead; 
+-  dc.GetTextExtent("M", cw, ch, &descent, &extlead);
++  dc.GetTextExtent(wxString("M", wxConvUTF8, wxSTRING_MAXLEN), cw, ch, &descent, &extlead);
+   //for the tails of g's and y's, if needed.
+ #ifdef __WXMSW__
+     *ch += descent + extlead + 1;
+@@ -2202,8 +2202,8 @@
+   lpos.offset = 0;
+   wxterm_charpos pos_1 = line_of(lpos);
+   
+-    fprintf(stderr, "WXTERMINAL STATS: \n  width: %d, height: %d, \n cw: %d, ch: %d \n x_max: %d, y_max: %d \n cursor_x: %d, cursor_y: %d \n last_logo_x : %d, last_logo_y: %d \ncurr_charpos buf %d offset %d  \ncurr_line buf %d offset %d\n", m_width, m_height, m_charWidth, m_charHeight, x_max, y_max,cursor_x, cursor_y, last_logo_x, last_logo_y,(int)curr_char_pos.buf, curr_char_pos.offset, (int)curr_line_pos.buf, curr_line_pos.offset);
+-    fprintf(stderr, "WXTERMINAL CHARACTER BUFFER\n###############\n");
++    //fprintf(stderr, "WXTERMINAL STATS: \n  width: %d, height: %d, \n cw: %d, ch: %d \n x_max: %d, y_max: %d \n cursor_x: %d, cursor_y: %d \n last_logo_x : %d, last_logo_y: %d \ncurr_charpos buf %d offset %d  \ncurr_line buf %d offset %d\n", m_width, m_height, m_charWidth, m_charHeight, x_max, y_max,cursor_x, cursor_y, last_logo_x, last_logo_y,(int)curr_char_pos.buf, curr_char_pos.offset, (int)curr_line_pos.buf, curr_line_pos.offset);
++    //fprintf(stderr, "WXTERMINAL CHARACTER BUFFER\n###############\n");
+   while(char_of(pos_1) != '\0') {
+     if(char_of(pos_1) == '\n') {
+       fprintf(stderr, "\\n\n");
+@@ -2218,7 +2218,7 @@
+     fprintf(stderr, "\n#############\n");
+     fprintf(stderr, "WXTERMINAL LINE BUFFER\n##############\n");
+   for(int i = 0; i <= y_max; i++) {
+-    fprintf(stderr, "LINE %d: buf: %d, offset: %d, len: %d\n", i,(int)line_of(lpos).buf, line_of(lpos).offset, line_of(lpos).line_length);
++    //fprintf(stderr, "LINE %d: buf: %d, offset: %d, len: %d\n", i,(int)line_of(lpos).buf, line_of(lpos).offset, line_of(lpos).line_length);
+     inc_linepos(lpos);
+   }
+     fprintf(stderr, "\n#############\n\n");
+diff -Nuar a/wxTurtleGraphics.cpp b/wxTurtleGraphics.cpp
+--- a/wxTurtleGraphics.cpp	2008-09-14 01:23:42.000000000 +0200
++++ b/wxTurtleGraphics.cpp	2015-05-18 09:29:13.949993259 +0200
+@@ -558,7 +558,7 @@
+ extern "C" void wx_get_label_size(int *w, int *h) {
+     /* returns size in pixels; converted to turtle steps in wxterm.c */
+   int descent, extlead;
+-  m_memDC->GetTextExtent("M", w, h, &descent, &extlead);  
++  m_memDC->GetTextExtent(wxString("M", wxConvUTF8, wxSTRING_MAXLEN), w, h, &descent, &extlead);  
+ }
+ 
+ extern "C" void wx_adjust_label_height() {
+@@ -573,7 +573,7 @@
+     label_font.SetPointSize(font_size);
+ 
+     m_memDC->SetFont(label_font);	
+-    m_memDC->GetTextExtent("M", &cw, &ch, &descent, &extlead);
++    m_memDC->GetTextExtent(wxString("M", wxConvUTF8, wxSTRING_MAXLEN), &cw, &ch, &descent, &extlead);
+ 
+     //now... first figure out whether we undershot or overshot...
+     //this determines which direction to change the size
+@@ -592,7 +592,7 @@
+ 	    }
+ 	    if (expected == 100) break;
+ 	    m_memDC->SetFont(tmp_font);	
+-	    m_memDC->GetTextExtent("M", &cw, &tmp_height, &descent, &extlead);
++	    m_memDC->GetTextExtent(wxString("M", wxConvUTF8, wxSTRING_MAXLEN), &cw, &tmp_height, &descent, &extlead);
+ 
+ 	    if(tmp_height >= px_height) break;
+ 
+@@ -611,7 +611,7 @@
+ 	    }
+ 	    if (expected == 2) break;
+ 	    m_memDC->SetFont(tmp_font);	
+-	    m_memDC->GetTextExtent("M", &cw, &tmp_height, &descent, &extlead);
++	    m_memDC->GetTextExtent(wxString("M", wxConvUTF8, wxSTRING_MAXLEN), &cw, &tmp_height, &descent, &extlead);
+ 
+ 	    if(tmp_height <= px_height) break;
+ 
