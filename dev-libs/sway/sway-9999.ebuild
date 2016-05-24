@@ -28,6 +28,7 @@ RDEPEND="=dev-libs/wlc-9999[systemd=]
 		gdk-pixbuf? ( x11-libs/gdk-pixbuf[jpeg] )"
 
 DEPEND="${RDEPEND}
+	virtual/pkgconfig
 		app-text/asciidoc"
 
 src_prepare() {
