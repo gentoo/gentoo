@@ -30,6 +30,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (24 May 2016)
+# No longer maintained upstream, no longer works with libzpaq-7*.
+# Masked for removal in 30 days.
+app-arch/zpipe
+
 # Sam Jorna <wraeth@gentoo.org> (24 May 2016)
 # Deprecated in favour of sci-geosciences/qmapshack.
 # See bugs 561788 and 582262
