@@ -15,7 +15,7 @@ SRC_URI="http://www.cscapes.org/download/${MYPN}/${MYPN}-${PV}.tar.gz"
 
 SLOT="0"
 IUSE="openmp static-libs"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~x86 ~amd64-linux ~x86-linux"
 
 RDEPEND=""
 DEPEND="${RDEPEND}"
