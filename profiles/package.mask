@@ -30,6 +30,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Alexis Ballier <aballier@gentoo.org> (24 May 2016)
+# API change, breaks e.g. js_of_ocaml
+>=dev-ml/tyxml-4
+
 # Michał Górny <mgorny@gentoo.org> (24 May 2016)
 # No longer maintained upstream, no longer works with libzpaq-7*.
 # Masked for removal in 30 days.
