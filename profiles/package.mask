@@ -168,11 +168,6 @@ dev-java/charva
 dev-java/jakarta-slide-webdavclient
 dev-java/xml-im-exporter
 
-# Alex Brandt <alunduil@gentoo.org> (23 Apr 2016)
-# Contains collisions with dev-python/ipaddress.  See #580388 for more details.
-# Masked for removal in 30 days.
-dev-python/py2-ipaddress
-
 # Michael Sterrett <mr_bones_@gentoo.org> (19 Apr 2016)
 # No release in 6 years and segfaults on modern systems. (bug #311809)
 # Masked for removal on 20160519
