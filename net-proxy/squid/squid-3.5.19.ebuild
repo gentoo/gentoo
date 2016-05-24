@@ -1,9 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
-inherit autotools eutils linux-info pam toolchain-funcs user versionator
+EAPI=6
+inherit autotools linux-info pam toolchain-funcs user versionator
 
 DESCRIPTION="A full-featured web proxy cache"
 HOMEPAGE="http://www.squid-cache.org/"
@@ -35,7 +35,6 @@ COMMON_DEPEND="caps? ( >=sys-libs/libcap-2.16 )
 	dev-libs/libltdl:0"
 DEPEND="${COMMON_DEPEND}
 	ecap? ( virtual/pkgconfig )
-	sys-apps/ed
 	test? ( dev-util/cppunit )"
 RDEPEND="${COMMON_DEPEND}
 	samba? ( net-fs/samba )
@@ -61,7 +60,7 @@ pkg_setup() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}/${PN}-3.5.7-gentoo.patch"
+	eapply "${FILESDIR}/${PN}-3.5.7-gentoo.patch"
 	sed -i -e 's:/usr/local/squid/etc:/etc/squid:' \
 		INSTALL QUICKSTART \
 		scripts/fileno-to-pathname.pl \
@@ -96,8 +95,7 @@ src_prepare() {
 	sed -i -e 's:_LTDL_SETUP:LTDL_INIT([installable]):' \
 		libltdl/configure.ac || die
 
-	epatch_user
-
+	eapply_user
 	eautoreconf
 }
 
@@ -222,7 +220,7 @@ src_install() {
 	newdoc helpers/external_acl/kerberos_ldap_group/README README.kerberos_ldap_group
 	newdoc tools/purge/README README.purge
 	newdoc tools/helper-mux.README README.helper-mux
-	dohtml RELEASENOTES.html
+	dodoc RELEASENOTES.html
 
 	newpamd "${FILESDIR}/squid.pam" squid
 	newconfd "${FILESDIR}/squid.confd-r1" squid

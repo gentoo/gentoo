@@ -14,7 +14,7 @@ SRC_URI="http://www.kaffe.org/~stuart/japi/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 RESTRICT="test"
@@ -27,7 +27,6 @@ RDEPEND="
 
 DEPEND="
 	${CDEPEND}
-	app-arch/unzip
 	>=virtual/jdk-1.6"
 
 S="${WORKDIR}/${P}"
