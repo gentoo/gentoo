@@ -8,7 +8,7 @@ inherit kde5-meta-pkg
 
 DESCRIPTION="kdegraphics - merge this to pull in all kdegraphics-derived packages"
 HOMEPAGE="https://www.kde.org/applications/graphics/"
-KEYWORDS=" ~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="scanner"
 
 RDEPEND="

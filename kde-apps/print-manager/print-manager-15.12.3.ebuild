@@ -7,7 +7,7 @@ EAPI=6
 inherit kde5
 
 DESCRIPTION="Manage print jobs and printers in Plasma"
-KEYWORDS=" ~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="+gtk"
 
 DEPEND="

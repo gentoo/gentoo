@@ -11,7 +11,7 @@ inherit kde5
 
 DESCRIPTION="Nonogram logic game for KDE"
 HOMEPAGE="https://games.kde.org/game.php?game=picmi"
-KEYWORDS=" ~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE=""
 
 DEPEND="

@@ -12,7 +12,7 @@ inherit kde5
 DESCRIPTION="Interface to work with Graph Theory"
 HOMEPAGE="https://www.kde.org/applications/education/rocs
 https://edu.kde.org/applications/mathematics/rocs"
-KEYWORDS=" ~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE=""
 
 RDEPEND="

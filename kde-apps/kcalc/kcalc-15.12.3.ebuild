@@ -12,7 +12,7 @@ inherit kde5
 DESCRIPTION="KDE calculator"
 HOMEPAGE="https://www.kde.org/applications/utilities/kcalc
 https://utils.kde.org/projects/kcalc"
-KEYWORDS=" ~amd64 ~x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND="
