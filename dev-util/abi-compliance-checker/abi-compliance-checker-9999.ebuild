@@ -35,6 +35,7 @@ src_compile() {
 }
 
 src_install() {
-	mkdir -p "${D}"/usr || die
+	dodir /usr
 	perl Makefile.pl --install --prefix="${EPREFIX}"/usr --destdir="${D}" || die
+	einstalldocs
 }
