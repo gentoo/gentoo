@@ -4,11 +4,11 @@ DESCRIPTION=Tactical one or two player game
 EAPI=6
 HOMEPAGE=https://www.kde.org/applications/games/kjumpingcube/ https://games.kde.org/game.php?game=kjumpingcube
 IUSE=debug +handbook selinux
-KEYWORDS=~amd64 ~x86
+KEYWORDS=amd64 ~x86
 LICENSE=GPL-2
 RDEPEND=>=kde-frameworks/kconfig-5.21.0:5 >=kde-frameworks/kconfigwidgets-5.21.0:5 >=kde-frameworks/kcoreaddons-5.21.0:5 >=kde-frameworks/kdelibs4support-5.21.0:5 >=kde-frameworks/ki18n-5.21.0:5 >=kde-frameworks/kwidgetsaddons-5.21.0:5 >=kde-frameworks/kxmlgui-5.21.0:5 >=kde-apps/libkdegames-15.12.3:5 >=dev-qt/qtgui-5.5.1:5 >=dev-qt/qtsvg-5.5.1:5 >=dev-qt/qtwidgets-5.5.1:5 >=kde-frameworks/kf-env-3 !kde-apps/kjumpingcube:4 selinux? ( sec-policy/selinux-games ) >=dev-qt/qtcore-5.5.1:5
 SLOT=5
 SRC_URI=mirror://kde/stable/applications/15.12.3/src/kjumpingcube-15.12.3.tar.xz
 _eclass_exported_funcs=pkg_pretend:kde5 pkg_preinst:kde5 pkg_postrm:kde5 pkg_postinst:kde5 pkg_setup:kde5 src_unpack:kde5 src_prepare:kde5 src_configure:kde5 src_compile:kde5 src_test:kde5 src_install:kde5
 _eclasses_=cmake-utils	d6c1714cc58fd2168bf150f2a01f3801	eutils	792f83d5ec9536cb5ccef375469d8bde	flag-o-matic	d270fa247153df66074f795fa42dba3e	gnome2-utils	c6dcdf3a2c22b578b16adb945dc85c35	kde5	21d16de16b973609ba860715a3d5c397	kde5-functions	664f1e251ae4f3902015f39e2a216329	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	virtualx	86c9305a59b3e0459e7fbef3a5f30b96	xdg	a5c4c5ce4f5ce9a2e777f5d9a40a8723	xdg-utils	e2b2bd56125ce8cf59ce30c642b59d48
-_md5_=244c10ea881fe45c6cb444d1bbcf49bd
+_md5_=e1aa6d2629ebbdecf0fec521853fbc52
