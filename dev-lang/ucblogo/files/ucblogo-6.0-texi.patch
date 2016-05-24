@@ -1,0 +1,48 @@
+diff -Nuar a/docs/usermanual.texi b/docs/usermanual.texi
+--- a/docs/usermanual.texi	2008-09-03 22:20:15.000000000 +0200
++++ b/docs/usermanual.texi	2015-05-18 09:51:18.419985819 +0200
+@@ -371,7 +371,7 @@
+ list, one word per argument; the buried variable @code{COMMAND.LINE} contains
+ that list of arguments, or the empty list if there are none.  On my Linux
+ system, if the first line of an executable shell script is
+-@w{@t{#!/usr/local/bin/logo -}} (note the hyphen) then the script can be given
++@w{@t{#!/usr/bin/logo -}} (note the hyphen) then the script can be given
+ command line arguments and they all end up in @code{:COMMAND.LINE} along with
+ the script's path.  Experiment.
+ 
+@@ -479,7 +479,7 @@
+ comment.  Unix users can therefore write a file containing Logo commands,
+ starting with the line
+ @example
+-#! /usr/local/bin/logo
++#! /usr/bin/logo
+ @end example
+ (or wherever your Logo executable lives) and the file will be executable
+ directly from the shell.
+@@ -2875,7 +2875,7 @@
+ 
+ 
+ @node  AND, OR, LOGICAL OPERATIONS, LOGICAL OPERATIONS
+-@unnumberedsubsec and
++@unnumberedsec and
+ @cindex and
+ 
+ @example
+@@ -6766,7 +6766,7 @@
+ @end menu
+ 
+ @node dMACRO, dDEFMACRO, MACROS, MACROS
+-@unnumberedsubsec .macro
++@unnumberedsec .macro
+ @cindex .macro
+ @cindex .defmacro
+ 
+@@ -7128,7 +7128,7 @@
+ 
+ @node ALLOWGETSET, BUTTONACT, SPECIAL VARIABLES, SPECIAL VARIABLES
+ @comment  node-name,  next,  previous,  up
+-@unnumberedsubsec allowgetset
++@unnumberedsec allowgetset
+ @cindex allowgetset
+ 
+ @example
