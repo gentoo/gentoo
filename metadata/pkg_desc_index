@@ -7662,7 +7662,6 @@ dev-python/py-gfm 0.1.1: Github-Flavored Markdown for Python-Markdown
 dev-python/py-notify 0.3.1-r1: Tools for implementing the Observer programming pattern in Python
 dev-python/py-smbpasswd 1.0.1 1.0.1-r1: This module can generate both LANMAN and NT password hashes, suitable for use with Samba
 dev-python/py-xmlrpc 0.8.8.3-r1 0.9: Fast XML-RPC implementation for Python
-dev-python/py2-ipaddress 3.4.1: Python 2.6 backport of 3.4's ipaddress module
 dev-python/py2neo 2.0.8: A simple and pragmatic library which accesses the Neo4j graph database
 dev-python/py2play 0.1.10-r1: A Peer To Peer network game engine
 dev-python/pyClamd 0.3.10 0.3.17: python interface to Clamd (Clamav daemon)
