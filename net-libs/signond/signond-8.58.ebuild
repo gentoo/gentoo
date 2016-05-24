@@ -12,7 +12,7 @@ SRC_URI="https://gitlab.com/accounts-sso/signond/repository/archive.tar.gz?ref=V
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm ~x86"
 IUSE="doc test"
 
 RESTRICT="test"
