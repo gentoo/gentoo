@@ -291,7 +291,7 @@ dev-vcs/statcvs
 # Breaks some of its rev deps, still in beta stage
 >=dev-lang/ocaml-4.03_beta
 >=dev-ml/camlp4-4.03
->=dev-ml/ppx_tools-4.03
+>=dev-ml/ppx_tools-5.0.4.03
 >=dev-ml/labltk-8.06.1
 >=dev-ml/parmap-1.0_rc7-r1
 
