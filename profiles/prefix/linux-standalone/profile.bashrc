@@ -1,6 +1,9 @@
 # RAP specific patches that is pending upstream.
 # binutils: http://article.gmane.org/gmane.comp.gnu.binutils/67593
 
+# Disable RAP trick using bootstrap stage2
+[[ -z ${BOOTSTRAP_RAP_STAGE2} ]] || return 0
+
 if [[ ${CATEGORY}/${PN} == sys-devel/gcc && ${EBUILD_PHASE} == configure ]]; then
     cd "${S}"
     einfo "Prefixifying glibc dynamic linker..."
