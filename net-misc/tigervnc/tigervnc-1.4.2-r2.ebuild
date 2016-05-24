@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -22,7 +22,7 @@ SRC_URI="https://github.com/TigerVNC/tigervnc/archive/v${PV}.tar.gz -> ${P}.tar.
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm hppa ~ia64 ~mips ~ppc ppc64 ~sh ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 arm hppa ~ia64 ~mips ~ppc ppc64 ~sh ~sparc ~x86"
 IUSE="gnutls java nptl +opengl pam server +xorgmodule"
 
 RDEPEND="virtual/jpeg:0
