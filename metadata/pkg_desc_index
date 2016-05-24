@@ -2949,7 +2949,7 @@ dev-db/pgpool2 3.2.5 3.3.6 3.3.7 3.3.8 9999: Connection pool server for PostgreS
 dev-db/pgrouting 2.0.0: pgRouting extends PostGIS and PostgreSQL with geospatial routing functionality.
 dev-db/pgtap 0.93.0: Unit testing for PostgreSQL
 dev-db/pgxnclient 1.2-r1 1.2.1: PostgreSQL Extension Network Client
-dev-db/phpmyadmin 4.0.10.15 4.4.15.5 4.5.4.1 4.5.5.1 4.6.0: Web-based administration for MySQL database in PHP
+dev-db/phpmyadmin 4.0.10.15 4.4.15.5 4.5.5.1 4.6.0 4.6.1: Web-based administration for MySQL database in PHP
 dev-db/phppgadmin 5.1 9999: Web-based administration for Postgres database in php
 dev-db/postgis 2.0.3 2.0.6 2.1.1 2.1.8 2.2.0 2.2.1 2.2.2 9999: Geographic Objects for PostgreSQL
 dev-db/postgresql 9.0.23-r1 9.1.19-r1 9.1.20 9.1.21 9.1.22 9.2.14-r1 9.2.15 9.2.16 9.2.17 9.3.10-r1 9.3.10-r2 9.3.11 9.3.12 9.3.13 9.4.5-r1 9.4.5-r2 9.4.6 9.4.7 9.4.8 9.5.1 9.5.2 9.5.3 9.6_beta1 9999: PostgreSQL RDBMS
@@ -7190,7 +7190,7 @@ dev-python/flask 0.10.1-r1 0.10.1-r2 9999: A microframework based on Werkzeug, J
 dev-python/flask-admin 1.0.6 1.1.0 1.2.0 1.4.0: Simple and extensible admin interface framework for Flask
 dev-python/flask-appconfig 0.11.1: Configures Flask applications in a canonical way
 dev-python/flask-babel 0.8-r1 0.9 0.10.0: i18n and l10n support for Flask based on Babel and pytz
-dev-python/flask-bootstrap 3.3.5.7: An extension that includes Bootstrap in your project, without boilerplate code
+dev-python/flask-bootstrap 3.3.5.7 3.3.6.0: An extension that includes Bootstrap in your project, without boilerplate code
 dev-python/flask-cors 1.8.0 1.9.0 2.1.0: A Flask extension for Cross Origin Resource Sharing (CORS)
 dev-python/flask-dashed 0.1b_p2: Admin app framework for flask
 dev-python/flask-debug 0.4.3: Configures Flask applications in a canonical way
