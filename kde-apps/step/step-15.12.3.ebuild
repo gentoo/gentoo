@@ -10,7 +10,7 @@ inherit kde5
 
 DESCRIPTION="Interactive physics simulator"
 HOMEPAGE="https://edu.kde.org/step"
-KEYWORDS=" ~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="+gsl +qalculate"
 
 DEPEND="
