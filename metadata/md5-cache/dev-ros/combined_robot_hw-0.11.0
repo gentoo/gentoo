@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-ros/hardware_interface dev-ros/pluginlib dev-ros/roscpp sys-devel/make >=dev-util/cmake-2.8.12 dev-util/catkin dev-python/empy
+DESCRIPTION=Combined Robot HW class
+EAPI=5
+HOMEPAGE=http://wiki.ros.org/combined_robot_hw
+IUSE=test
+KEYWORDS=~amd64
+LICENSE=BSD
+RDEPEND=dev-ros/hardware_interface dev-ros/pluginlib dev-ros/roscpp dev-util/catkin dev-python/empy
+SLOT=0
+SRC_URI=https://github.com/ros-controls/ros_control/archive/0.11.0.tar.gz -> ros_control-0.11.0.tar.gz
+_eclass_exported_funcs=src_prepare:ros-catkin src_configure:ros-catkin src_compile:ros-catkin src_test:ros-catkin src_install:ros-catkin
+_eclasses_=cmake-utils	d6c1714cc58fd2168bf150f2a01f3801	eutils	792f83d5ec9536cb5ccef375469d8bde	flag-o-matic	d270fa247153df66074f795fa42dba3e	multilib	d062ae4ba2fc40a19c11de2ad89b6616	ros-catkin	8b7e3d7128bd81dfe56a947e63201e78	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=a3d58cb43425332f5fae0263882d54f8
