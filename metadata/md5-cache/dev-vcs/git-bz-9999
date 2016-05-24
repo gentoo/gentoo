@@ -1,12 +1,12 @@
-DEFINED_PHASES=compile configure install setup unpack
+DEFINED_PHASES=compile configure install postinst setup unpack
 DEPEND=app-text/asciidoc app-text/xmlto >=dev-vcs/git-1.8.2.1
 DESCRIPTION=Bugzilla subcommand for git
-EAPI=5
+EAPI=6
 HOMEPAGE=http://www.fishsoup.net/software/git-bz/
 IUSE=python_targets_pypy python_targets_python2_7 python_single_target_pypy python_single_target_python2_7
 LICENSE=GPL-2
 RDEPEND=dev-vcs/git
 SLOT=0
-_eclass_exported_funcs=pkg_setup:python-single-r1 src_unpack:git-r3 src_configure:- src_compile:- src_install:-
+_eclass_exported_funcs=pkg_postinst:- pkg_setup:python-single-r1 src_unpack:git-r3 src_configure:- src_compile:- src_install:-
 _eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	git-r3	ef66dfc3db09f327af21cf32f140fb2b	multilib	d062ae4ba2fc40a19c11de2ad89b6616	python-single-r1	2ebea8fbab356d63110245129a67a6dd	python-utils-r1	13d5b02ea59b21da41c77c9294f3b7f7	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
-_md5_=374b1382429d75efbf68e8eec361b6c4
+_md5_=0f633bba2133d2a8e9de6d01f649c3cf
