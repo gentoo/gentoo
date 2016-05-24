@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -15,6 +15,8 @@ SLOT="0"
 IUSE=""
 
 RDEPEND="
+	dev-ros/combined_robot_hw
+	dev-ros/combined_robot_hw_tests
 	dev-ros/controller_interface
 	dev-ros/controller_manager
 	dev-ros/controller_manager_msgs

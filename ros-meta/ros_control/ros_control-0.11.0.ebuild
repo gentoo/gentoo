@@ -15,6 +15,8 @@ SLOT="0"
 IUSE=""
 
 RDEPEND="
+	dev-ros/combined_robot_hw
+	dev-ros/combined_robot_hw_tests
 	dev-ros/controller_interface
 	dev-ros/controller_manager
 	dev-ros/controller_manager_msgs
