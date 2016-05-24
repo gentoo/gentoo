@@ -6,10 +6,10 @@ HOMEPAGE=http://sabre.io/baikal/
 IUSE=+mysql sqlite vhosts
 KEYWORDS=~amd64 ~arm
 LICENSE=GPL-3
-RDEPEND=>=dev-lang/php-5.5[ctype,filter,pdo,session,xml,xmlreader,xmlwriter,mysql?,sqlite?] mysql? ( virtual/mysql ) sqlite? ( dev-db/sqlite ) virtual/httpd-php >=app-admin/webapp-config-1.50.15
+RDEPEND=>=dev-lang/php-5.5[ctype,filter,json,pdo,session,xml,xmlreader,xmlwriter,mysql?,sqlite?] mysql? ( virtual/mysql ) sqlite? ( dev-db/sqlite ) virtual/httpd-php >=app-admin/webapp-config-1.50.15
 REQUIRED_USE=|| ( mysql sqlite )
 SLOT=0.4.4
 SRC_URI=https://github.com/fruux/Baikal/releases/download/0.4.4/baikal-0.4.4.zip
 _eclass_exported_funcs=pkg_prerm:webapp pkg_postinst:webapp pkg_setup:webapp src_install:-
 _eclasses_=webapp	42c6ef7af496b228f9854b3c81e4b226
-_md5_=4e9b32ae221ae277d392b140e3d264f3
+_md5_=e473d07b17d7e84ee5d50931a83b9c48
