@@ -7,7 +7,7 @@ EAPI=6
 inherit kde5-meta-pkg
 
 DESCRIPTION="KDE WebDev - merge this to pull in all kdewebdev-derived packages"
-KEYWORDS=" ~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE=""
 
 # FIXME: Add back when ported
