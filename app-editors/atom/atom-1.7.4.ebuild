@@ -17,7 +17,7 @@ NAN_V=2.0.9
 # Keep dep versions in sync with atom/package.json
 CACHED_RUN_IN_THIS_CONTEXT_V=0.4.1
 GIT_UTILS_V=4.1.2
-NODEGIT_V=0.12.0
+NODEGIT_V=0.12.2
 NODE_NSLOG_V=3.0.0
 NODE_ONIGURUMA_V=5.1.2
 NODE_PATHWATCHER_V=6.2.4
@@ -54,9 +54,12 @@ NODEGIT_PROMISE_V=4.0.0
 ASAP_V=2.0.3
 OBJECT_ASSIGN_V=4.0.1
 
+ASAR_V=0.10.0
+
 # The x86_64 arch below is irrelevant, as we will rebuild all binary packages.
 SRC_URI="
 	https://github.com/${PN}/${PN}/releases/download/v${MY_PV}/atom.x86_64.rpm -> atom-${MY_PV}.rpm
+	https://github.com/elprans/asar/releases/download/v${ASAR_V}-gentoo/asar-build.tar.gz -> asar-${ASAR_V}.tar.gz
 	https://github.com/nodejs/nan/archive/v${NAN_V}.tar.gz -> nodejs-nan-${NAN_V}.tar.gz
 	https://github.com/atom/cached-run-in-this-context/archive/v${CACHED_RUN_IN_THIS_CONTEXT_V}.tar.gz -> atom-cached-run-in-this-context-${CACHED_RUN_IN_THIS_CONTEXT_V}.tar.gz
 	https://github.com/atom/node-ctags/archive/v${NODE_CTAGS_V}.tar.gz -> atom-node-ctags-${NODE_CTAGS_V}.tar.gz
@@ -187,6 +190,7 @@ src_unpack() {
 
 src_prepare() {
 	local install_dir="$(get_install_dir)"
+	local suffix="$(get_install_suffix)"
 	local patch binmod _s nan_s="${WORKDIR}/nan-${NAN_V}"
 
 	cd "${S}/usr/share/atom/resources/app" || die
@@ -266,6 +270,19 @@ src_prepare() {
 	ln -s "${WORKDIR}/$(package_dir node-klaw)" "${_s}/node_modules/klaw" || die
 	ln -s "${WORKDIR}/$(package_dir rimraf)" "${_s}/node_modules/rimraf" || die
 
+	# Unpack app.asar
+	_s="${WORKDIR}/$(package_dir asar)"
+	"${_s}"/node_modules/asar/bin/asar \
+		extract "${S}/usr/share/atom/resources/app.asar" \
+				"${S}/build/app.asar" || die
+
+	cd "${S}" || die
+
+	epatch "${FILESDIR}/atom-apm-path.patch"
+
+	sed -i -e "s|{{ATOM_SUFFIX}}|${suffix}|g" \
+		"${S}/build/app.asar/src/config-schema.js" || die
+
 	eapply_user
 }
 
@@ -304,6 +321,12 @@ src_compile() {
 		mkdir -p "${S}/build/modules/${x}"
 		cp build/Release/*.node "${S}/build/modules/${x}"
 	done
+
+	# Re-pack app.asar
+	_s="${WORKDIR}/$(package_dir asar)"
+	"${_s}"/node_modules/asar/bin/asar \
+		pack "${S}/build/app.asar" \
+             "${S}/usr/share/atom/resources/app.asar" || die
 }
 
 _fix_binmods() {
