@@ -27,8 +27,8 @@ S=${WORKDIR}
 
 QA_PRESTRIPPED="opt/xmind/XMind/libcairo-swt.so"
 QA_FLAGS_IGNORED="
-	opt/xmind/Commons/plugins/org.eclipse.equinox.launcher.gtk.linux.x86_64_1.1.200.v20120522-1813/eclipse_1502.so
-	opt/xmind/Commons/plugins/org.eclipse.equinox.launcher.gtk.linux.x86_1.1.200.v20120522-1813/eclipse_1502.so
+	opt/xmind/Commons/plugins/org.eclipse.equinox.launcher.gtk.linux.x86_64_1.1.300.v20150602-1417/eclipse_1612.so
+	opt/xmind/Commons/plugins/org.eclipse.equinox.launcher.gtk.linux.x86_1.1.300.v20150602-1417/eclipse_1612.so
 	opt/xmind/XMind/libcairo-swt.so
 	opt/xmind/XMind/XMind
 "
@@ -49,6 +49,7 @@ src_configure() {
 		-e '/\.\.\/Commons\/data\/workspace-cathy/d' \
 		-e 's/\.\.\/Commons/\/opt\/xmind\/Commons/g' \
 		-i XMind/XMind.ini || die
+	echo '-vmargs' >> XMind/XMind.ini || die
 	echo '-Dosgi.instance.area=@user.home/.xmind/workspace-cathy' >> XMind/XMind.ini || die
 	echo '-Dosgi.configuration.area=@user.home/.xmind/configuration-cathy' >> XMind/XMind.ini || die
 }
