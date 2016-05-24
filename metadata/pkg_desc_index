@@ -2808,6 +2808,7 @@ dev-cpp/antlr-cpp 2.7.7: The ANTLR 2 C++ Runtime
 dev-cpp/asio 1.4.5 1.4.8-r1 1.10.6: Asynchronous Network Library
 dev-cpp/atkmm 2.22.7-r1 2.24.1 2.24.2: C++ interface for the ATK library
 dev-cpp/cairomm 1.10.0-r1 1.12.0 1.12.0-r1: C++ bindings for the Cairo vector graphics library
+dev-cpp/catch 1.5.0 9999: Modern C++ header-only framework for unit-tests
 dev-cpp/clucene 2.3.3.4-r5 2.3.3.4-r6: High-performance, full-featured text search engine based off of lucene in C++
 dev-cpp/commoncpp2 1.8.1-r1: C++ framework offering portable support for threading, sockets, file access, daemons, persistence, serial I/O, XML parsing, and system services
 dev-cpp/ctemplate 2.2 2.2_p129 2.3: A simple but powerful template language for C++
@@ -2836,7 +2837,7 @@ dev-cpp/libglademm 2.6.7-r1 2.6.7-r2: C++ bindings for libglade
 dev-cpp/libgnomecanvasmm 2.26.0-r1: C++ bindings for libgnomecanvas
 dev-cpp/libgnomemm 2.30.0 2.30.0-r1: C++ bindings for libgnome
 dev-cpp/libgnomeuimm 2.28.0-r1 2.28.0-r2: C++ bindings for libgnomeui
-dev-cpp/libjson-rpc-cpp 0.5.0 9999: JSON-RPC (1.0 & 2.0) framework for C++
+dev-cpp/libjson-rpc-cpp 0.5.0 0.6.0 9999: JSON-RPC (1.0 & 2.0) framework for C++
 dev-cpp/libmcpp 2.7.2-r1: A portable C++ preprocessor
 dev-cpp/libxmlpp 2.38.1 2.40.1: C++ wrapper for the libxml2 XML parser library
 dev-cpp/libxsd-frontend 1.18.0-r3: A compiler frontend for the W3C XML Schema definition language
@@ -4449,7 +4450,7 @@ dev-lang/teyjus 2.0.2: Higher-order logic programming language Lambda Prolog
 dev-lang/tinycobol 0.65.9: COBOL for linux
 dev-lang/tk 8.5.17 8.5.17-r100 8.6.4-r1 8.6.5: Tk Widget Set
 dev-lang/tuprolog 2.4.0_rc5 2.7.2 2.9.0 2.9.2: tuProlog is a light-weight Prolog for Internet applications and infrastructures
-dev-lang/ucblogo 5.5 5.5-r1: a reflective, functional programming language
+dev-lang/ucblogo 5.5 5.5-r1 6.0: a reflective, functional programming language
 dev-lang/vala 0.22.1 0.26.2 0.28.1 0.30.1 0.32.0: Compiler for the GObject type system
 dev-lang/whitespace 0.3 0.4: Whitespace, an esoteric programming language
 dev-lang/xsb 3.3.6 3.3.7 3.5.0 3.6.0: XSB is a logic programming and deductive database system
