@@ -15858,7 +15858,7 @@ sci-libs/idlcoyote 20160321: GDL library from D. Fannings IDL courses
 sci-libs/idlmarkwardt 20130418: Craig Markwardt IDL procedures (MPFIT, CMSVLIB, etc)
 sci-libs/ignition-math 1.0.0 2.2.2 2.3.0: A small, fast, and high performance math library for robot applications
 sci-libs/inchi 1.04: A program and library for generating standard and non-standard InChI and InChIKeys
-sci-libs/indilib 0.9.9 1.0.0 1.1.0: INDI Astronomical Control Protocol library
+sci-libs/indilib 0.9.9 1.1.0 1.2.0: INDI Astronomical Control Protocol library
 sci-libs/io_lib 1.10.1 1.11.2.1 1.12.5 1.13.2 1.14.7: General purpose trace and experiment file reading/writing interface
 sci-libs/ipopt 3.11.7 3.11.8: Interior-Point Optimizer for large-scale nonlinear optimization
 sci-libs/ipp 7.1.0.079 7.1.1.117 7.1.1.146 7.1.1.192 8.0.1.080 8.2.0.090 8.2.1.164 8.2.2.187: Intel Integrated Performance Primitive library for multimedia and data processing
