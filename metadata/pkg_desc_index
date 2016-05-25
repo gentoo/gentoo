@@ -8764,7 +8764,7 @@ dev-ruby/bsearch 1.5.0-r2: A binary search library for Ruby
 dev-ruby/bson 1.12.0 3.2.4 3.2.6: A Ruby BSON implementation for MongoDB. (Includes binary C-based extension.)
 dev-ruby/buftok 0.2.0-r1: Statefully split input data by a specifiable token
 dev-ruby/builder 3.0.4-r1 3.0.4-r2 3.1.4 3.2.2 3.2.2-r1: A builder to facilitate programatic generation of XML markup
-dev-ruby/bundler 1.8.9 1.9.10 1.10.6 1.11.2: An easy way to vendor gem dependencies
+dev-ruby/bundler 1.8.9 1.11.2 1.12.4: An easy way to vendor gem dependencies
 dev-ruby/bundler-audit 0.4.0 0.5.0: Provides patch-level verification for Bundled apps
 dev-ruby/bunny 2.3.0 2.3.1: Another synchronous Ruby AMQP client
 dev-ruby/calendar_date_select 2.1.2: A popular and flexible JavaScript DatePicker for RubyOnRails
@@ -9162,7 +9162,7 @@ dev-ruby/ruby-net-ldap 0.14.0: Pure ruby LDAP client implementation
 dev-ruby/ruby-oci8 2.1.7 2.1.7-r1 2.1.8 2.2.1: A Ruby library for Oracle OCI8
 dev-ruby/ruby-odbc 0.99997-r1: RubyODBC - For accessing ODBC data sources from the Ruby language
 dev-ruby/ruby-oembed 0.9.0 0.10.0 0.10.1: An oEmbed consumer library written in Ruby.
-dev-ruby/ruby-ole 1.2.11.8 1.2.12: Ruby library for easy read/write access to OLE compound documents
+dev-ruby/ruby-ole 1.2.12: Ruby library for easy read/write access to OLE compound documents
 dev-ruby/ruby-opengl 0.8.0 0.9.2: OpenGL / GLUT bindings for ruby
 dev-ruby/ruby-openid 2.7.0: A robust library for verifying and serving OpenID identities
 dev-ruby/ruby-pango 2.2.3 2.2.3-r1 2.2.5 3.0.7: Ruby Pango bindings

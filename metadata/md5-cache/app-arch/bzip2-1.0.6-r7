@@ -3,11 +3,11 @@ DESCRIPTION=A high-quality data compressor used extensively by Gentoo Linux
 EAPI=4
 HOMEPAGE=http://www.bzip.org/
 IUSE=static static-libs abi_x86_32 abi_x86_64 abi_x86_x32 abi_mips_n32 abi_mips_n64 abi_mips_o32 abi_ppc_32 abi_ppc_64 abi_s390_32 abi_s390_64
-KEYWORDS=~alpha ~amd64 ~arm ~arm64 hppa ~ia64 ~m68k ~mips ~ppc ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd
+KEYWORDS=alpha ~amd64 ~arm ~arm64 hppa ~ia64 ~m68k ~mips ~ppc ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd
 LICENSE=BZIP2
 RDEPEND=abi_x86_32? ( !<=app-emulation/emul-linux-x86-baselibs-20130224 !app-emulation/emul-linux-x86-baselibs[-abi_x86_32(-)] )
 SLOT=0
 SRC_URI=http://www.bzip.org/1.0.6/bzip2-1.0.6.tar.gz
 _eclass_exported_funcs=src_prepare:- src_configure:multilib-minimal src_compile:multilib-minimal src_test:multilib-minimal src_install:multilib-minimal
 _eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	d062ae4ba2fc40a19c11de2ad89b6616	multilib-build	8fe2e81aeb36cdf8a6cc5f50443879cc	multilib-minimal	0224dee31c0f98405d572e14ad6dee65	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
-_md5_=5f962bd4a018b8d4d8ab07088ed3ca71
+_md5_=6d6d85ca22fd122cef9819af609780ec

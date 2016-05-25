@@ -4,11 +4,11 @@ DESCRIPTION=High speed arbitrary size integer math
 EAPI=6
 HOMEPAGE=http://search.cpan.org/dist/Math-GMP/
 IUSE=test
-KEYWORDS=~amd64 ~x86
+KEYWORDS=~alpha ~amd64 ~x86
 LICENSE=LGPL-2
 RDEPEND=virtual/perl-AutoLoader virtual/perl-Carp virtual/perl-Exporter dev-libs/gmp:0 dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/S/SH/SHLOMIF/Math-GMP-2.11.tar.gz
 _eclass_exported_funcs=src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
 _eclasses_=multiprocessing	e32940a7b2a9992ad217eccddb84d548	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	c584f9e0fe426f3dcc2c46c6f7cb95ce
-_md5_=9cfc438f56aa1e8fd86fd78f04d8cb62
+_md5_=e4059d499a5bcf1bf40a4bf0ae5ba1ef

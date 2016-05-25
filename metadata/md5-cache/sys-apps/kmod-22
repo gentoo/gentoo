@@ -4,7 +4,7 @@ DESCRIPTION=library and tools for managing linux kernel modules
 EAPI=5
 HOMEPAGE=https://git.kernel.org/?p=utils/kernel/kmod/kmod.git
 IUSE=debug doc lzma python static-libs +tools zlib python_targets_python2_7 python_targets_python3_3 python_targets_python3_4
-KEYWORDS=~alpha amd64 arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86
+KEYWORDS=alpha amd64 arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86
 LICENSE=LGPL-2
 RDEPEND=!sys-apps/module-init-tools !sys-apps/modutils !<sys-apps/openrc-0.13.8 !<sys-apps/systemd-216-r3 lzma? ( >=app-arch/xz-utils-5.0.4-r1 ) python? ( python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) python_targets_python3_3? ( >=dev-lang/python-3.3.2-r2:3.3 ) python_targets_python3_4? ( dev-lang/python:3.4 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,python_targets_python3_3(-)?,python_targets_python3_4(-)?,-python_single_target_python2_7(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-)] ) zlib? ( >=sys-libs/zlib-1.2.6 )
 REQUIRED_USE=python? ( || ( python_targets_python2_7 python_targets_python3_3 python_targets_python3_4 ) )
@@ -13,4 +13,4 @@ SLOT=0
 SRC_URI=mirror://kernel/linux/utils/kernel/kmod/kmod-22.tar.xz
 _eclass_exported_funcs=pkg_postinst:- src_prepare:- src_configure:- src_compile:- src_install:-
 _eclasses_=bash-completion-r1	acf715fa09463f043fbfdc1640f3fb85	eutils	792f83d5ec9536cb5ccef375469d8bde	libtool	4890219c51da247200223277f993e054	multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	d062ae4ba2fc40a19c11de2ad89b6616	python-r1	0f6937650a475d673baa5d0c8c0b37b3	python-utils-r1	13d5b02ea59b21da41c77c9294f3b7f7	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
-_md5_=8d70adbfe5d1ea9c1ba2859eb933e3ae
+_md5_=6c33c492163f4914a7a317dc2054bb33
