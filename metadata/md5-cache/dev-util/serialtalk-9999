@@ -3,8 +3,8 @@ DEPEND=sys-devel/make >=dev-util/cmake-2.8.12 >=dev-vcs/git-1.8.2.1
 DESCRIPTION=simple command-line tool to talk to serial devices
 EAPI=6
 HOMEPAGE=https://github.com/BGO-OD/serialtalk
-LICENSE=GPL-3
+LICENSE=GPL-3+
 SLOT=0
 _eclass_exported_funcs=src_unpack:git-r3 src_prepare:cmake-utils src_configure:cmake-utils src_compile:cmake-utils src_test:cmake-utils src_install:-
 _eclasses_=cmake-utils	d6c1714cc58fd2168bf150f2a01f3801	eutils	792f83d5ec9536cb5ccef375469d8bde	flag-o-matic	d270fa247153df66074f795fa42dba3e	git-r3	ef66dfc3db09f327af21cf32f140fb2b	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=627f12b221a32b66de3921fde97195cf
+_md5_=8d7e8dc75f04b81b9700a9b974495426

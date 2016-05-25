@@ -14185,7 +14185,7 @@ net-irc/irker 2.9 2.11 2.12 2.13 2.15 2.16: Submission tools for IRC notificatio
 net-irc/iroffer-dinoex 3.29: IRC fileserver using DCC
 net-irc/irssi 0.8.17 0.8.18 0.8.19 9999: A modular textUI IRC client with IPv6 support
 net-irc/irssi-otr 1.0.0-r1: Off-The-Record messaging (OTR) for irssi
-net-irc/irssi-xmpp 0.52: An irssi plugin providing Jabber/XMPP support
+net-irc/irssi-xmpp 0.52 0.53: An irssi plugin providing Jabber/XMPP support
 net-irc/irssistats 0.75: Generates HTML IRC stats based on irssi logs
 net-irc/jircii 41: jIRCii - IRC client written in Java
 net-irc/konversation 1.6: A user friendly IRC Client

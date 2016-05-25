@@ -13,4 +13,4 @@ SLOT=0
 SRC_URI=mirror://debian/pool/main/d/dput-ng/dput-ng_1.10.tar.xz
 _eclass_exported_funcs=pkg_setup:python-single-r1 src_prepare:distutils-r1 src_configure:distutils-r1 src_compile:- src_test:distutils-r1 src_install:-
 _eclasses_=bash-completion-r1	acf715fa09463f043fbfdc1640f3fb85	distutils-r1	04aa676883ff2a2644f619d9e5ef479a	multilib	d062ae4ba2fc40a19c11de2ad89b6616	python-single-r1	2ebea8fbab356d63110245129a67a6dd	python-utils-r1	13d5b02ea59b21da41c77c9294f3b7f7	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
-_md5_=ecd2100beef29a57b8772d6ba26b7dec
+_md5_=548f5d45b3df70391752248d37d3205a
