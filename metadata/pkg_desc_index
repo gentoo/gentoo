@@ -12367,7 +12367,7 @@ media-libs/embree 2.8.0: Collection of high-performance ray tracing kernels
 media-libs/emfengine 0.8: Native vector graphics file format on Windows
 media-libs/esdl 1.0.1 1.2: Erlang bindings for the SDL library
 media-libs/exempi 2.2.0 2.2.1: Exempi is a port of the Adobe XMP SDK to work on UNIX
-media-libs/exiftool 10.10 10.15 10.16: Read and write meta information in image, audio and video files
+media-libs/exiftool 10.10 10.15 10.16 10.17: Read and write meta information in image, audio and video files
 media-libs/faac 1.28-r3 1.28-r4: Free MPEG-4 audio codecs by AudioCoding.com
 media-libs/faad2 2.7-r3: AAC audio decoding library
 media-libs/fdk-aac 0.1.1 0.1.2 0.1.3 0.1.4: Fraunhofer AAC codec library
