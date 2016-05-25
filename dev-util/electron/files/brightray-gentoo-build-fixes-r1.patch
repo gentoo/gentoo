@@ -1,28 +1,38 @@
-From c9e2e0237170884bc1069a64f2635bb1ffc1b948 Mon Sep 17 00:00:00 2001
+From e2aabe2618ee91c3f6e817c72370573f45c8b20e Mon Sep 17 00:00:00 2001
 From: Elvis Pranskevichus <elvis@magic.io>
 Date: Mon, 8 Feb 2016 15:14:58 -0500
 Subject: [PATCH] brightray build fixes
 
 ---
- brightray.gyp  |  5 +++--
+ brightray.gyp  | 32 +++++++++++++++++++++++++++++---
  brightray.gypi | 21 ++++++++-------------
- 2 files changed, 11 insertions(+), 15 deletions(-)
+ 2 files changed, 37 insertions(+), 16 deletions(-)
 
 diff --git a/brightray.gyp b/brightray.gyp
-index d7120ea..6150318 100644
+index d7120ea..b23c1eb 100644
 --- a/brightray.gyp
 +++ b/brightray.gyp
-@@ -9,6 +9,9 @@
+@@ -1,7 +1,7 @@
+ {
+   'variables': {
+     # The libraries brightray will be compiled to.
+-    'linux_system_libraries': 'gtk+-2.0 libnotify dbus-1 x11 xi xcursor xdamage xrandr xcomposite xext xfixes xrender xtst gconf-2.0 gmodule-2.0 nss'
++    'linux_system_libraries': 'gtk+-2.0 libnotify dbus-1 x11 xi xcursor xdamage xrandr xcomposite xext xfixes xrender xtst gmodule-2.0 nss'
+   },
+   'includes': [
+     'filenames.gypi',
+@@ -9,6 +9,10 @@
    'targets': [
      {
        'target_name': 'brightray',
 +      'dependencies': [
++        'gconf',
 +        '<(libchromiumcontent_src_dir)/chromiumcontent/chromiumcontent.gyp:chromiumcontent_all'
 +      ],
        'type': 'static_library',
        'include_dirs': [
          '.',
-@@ -100,8 +103,6 @@
+@@ -100,8 +104,6 @@
              }, {
                'link_settings': {
                  'libraries': [
@@ -31,6 +41,36 @@ index d7120ea..6150318 100644
                    # Following libraries are required by libchromiumcontent:
                    '-lasound',
                    '-lcap',
+@@ -274,5 +276,29 @@
+         }],  # OS=="win"
+       ],
+     },
++    {
++      'target_name': 'gconf',
++      'type': 'none',
++      'conditions': [
++        ['use_gconf==1 and _toolset=="target"', {
++          'direct_dependent_settings': {
++            'cflags': [
++              '<!@(<(pkg-config) --cflags gconf-2.0)',
++            ],
++            'defines': [
++              'USE_GCONF',
++            ],
++          },
++          'link_settings': {
++            'ldflags': [
++              '<!@(<(pkg-config) --libs-only-L --libs-only-other gconf-2.0)',
++            ],
++            'libraries': [
++              '<!@(<(pkg-config) --libs-only-l gconf-2.0)',
++            ],
++          },
++        }],
++      ],
++    },
+   ],
+ }
 diff --git a/brightray.gypi b/brightray.gypi
 index 4513fa9..95bdfa1 100644
 --- a/brightray.gypi
