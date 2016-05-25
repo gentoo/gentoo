@@ -32,7 +32,7 @@ pkg_setup() {
 }
 
 src_compile() {
-	cd "src/${EGO_PN}"
+	cd "src/${EGO_PN}" || die "build failed"
 	export GOPATH="$(pwd)/Godeps/_workspace"
 	go build -i -v -ldflags -w -o ${BINARY} || die "build failed"
 }
