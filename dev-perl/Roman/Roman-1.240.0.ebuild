@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -13,7 +13,7 @@ inherit perl-module
 DESCRIPTION="Perl module for conversion between Roman and Arabic numerals"
 
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~mips ~s390 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm ~arm64 ~mips ~s390 x86 ~amd64-linux ~x86-linux"
 IUSE="test"
 
 DEPEND="test? (
