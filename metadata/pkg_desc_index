@@ -14359,7 +14359,7 @@ net-libs/libtorrent 0.13.3 0.13.4 0.13.6: BitTorrent library written in C++ for 
 net-libs/libtrace 3.0.22: A library and tools for trace processing
 net-libs/libupnp 1.6.18 1.6.18-r1 1.6.19: An Portable Open Source UPnP Development Kit
 net-libs/libvncserver 0.9.10-r3 0.9.10-r4 0.9.10_p20160127: library for creating vnc servers
-net-libs/libwebsockets 1.4 1.6.0 1.7.6: canonical libwebsockets.org websocket library
+net-libs/libwebsockets 1.4 1.6.0 1.7.6 1.7.8: canonical libwebsockets.org websocket library
 net-libs/libwhisker 2.5-r1: Perl module geared to HTTP testing
 net-libs/libyahoo2 1.0.1: interface to the new Yahoo! Messenger protocol
 net-libs/libzapojit 0.0.3: GLib/GObject wrapper for the SkyDrive and Hotmail REST APIs
