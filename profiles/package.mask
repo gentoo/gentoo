@@ -170,12 +170,6 @@ dev-lang/dmd-bin
 # Security mask of older branches, wrt bug #5567810
 <dev-vcs/subversion-1.8
 
-# James Le Cuirot <chewi@gentoo.org> (25 Apr 2016)
-# Long dead upstream and no longer needed. Removal in 30 days.
-dev-java/charva
-dev-java/jakarta-slide-webdavclient
-dev-java/xml-im-exporter
-
 # Michael Sterrett <mr_bones_@gentoo.org> (19 Apr 2016)
 # No release in 6 years and segfaults on modern systems. (bug #311809)
 # Masked for removal on 20160519
