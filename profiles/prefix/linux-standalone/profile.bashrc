@@ -30,3 +30,26 @@ if [[ ${CATEGORY}/${PN} == sys-devel/binutils && ${EBUILD_PHASE} == prepare ]]; 
 	ld/configure.tgt || eerror "Please file a bug about this"
     eend $?
 fi
+
+if [[ ${CATEGORY}/${PN} == sys-libs/glibc && ${EBUILD_PHASE} == configure ]]; then
+    cd "${S}"
+    einfo "Prefixifying hardcoded path"
+    
+    for f in libio/iopopen.c \
+		 shadow/lckpwdf.c resolv/{netdb,resolv}.h \
+		 nis/nss_compat/compat-{grp,initgroups,{,s}pwd}.c \
+		 nss/{bug-erange,nss_files/files-init{,groups}}.c \
+		 sysdeps/{{generic,unix/sysv/linux}/paths.h,posix/system.c}
+    do
+	ebegin "  Updating $f"
+	sed -i -r \
+	    -e "s,([:\"])/(etc|usr|bin|var),\1${EPREFIX}/\2,g" \
+	    $f || eerror "Please file a bug about this"
+	eend $?
+    done
+    ebegin "  Updating nss/db-Makefile"
+    sed -i -r \
+	-e "s,/(etc|var),${EPREFIX}/\1,g" \
+	nss/db-Makefile || eerror "Please file a bug about this"
+    eend $?
+fi
