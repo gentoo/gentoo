@@ -3871,29 +3871,13 @@ dev-java/flyingsaucer 7-r2: 100% Java XHTML+CSS renderer
 dev-java/fontbox 1.7.1 1.8.11: An open source Java library for parsing font files
 dev-java/fop 2.0-r2: Formatting Objects Processor is a print formatter driven by XSL
 dev-java/forehead 1.0_beta5-r2: A framework to assist in controlling the run-time ClassLoader
-dev-java/freehep-export 2.1.1: High Energy Physics Java library - FreeHEP Export and Save As Library
-dev-java/freehep-graphics2d 2.1.1: High Energy Physics Java library - FreeHEP Graphics 2D Library
-dev-java/freehep-graphicsio 2.1.1: High Energy Physics Java library - FreeHEP GraphicsIO Base Library
-dev-java/freehep-graphicsio-emf 2.1.1: High Energy Physics Java library - FreeHEP Enhanced Metafile Format Driver
-dev-java/freehep-graphicsio-java 2.1.1: High Energy Physics Java library - FreeHEP Java Driver
-dev-java/freehep-graphicsio-pdf 2.1.1: High Energy Physics Java library - FreeHEP Portable Document Format Driver
-dev-java/freehep-graphicsio-ps 2.1.1: High Energy Physics Java library - FreeHEP (Encapsulated) PostScript Driver
-dev-java/freehep-graphicsio-svg 2.1.1: High Energy Physics Java library - FreeHEP Scalable Vector Graphics Driver
-dev-java/freehep-graphicsio-swf 2.1.1: High Energy Physics Java library - FreeHEP SWF (Flash) Driver
-dev-java/freehep-graphicsio-tests 2.1.1: High Energy Physics Java library - FreeHEP GraphicsIO Test Library
-dev-java/freehep-io 2.0.2: High Energy Physics Java library - FreeHEP I/O Library
-dev-java/freehep-mcfio 2.0.1: High Energy Physics Java library - FreeHEP MCFIO Library
-dev-java/freehep-misc-deps 0.1: High Energy Physics Java library
-dev-java/freehep-parameterdatabase 2.0: High Energy Physics Java library - FreeHEP Parameter and Settings Database
-dev-java/freehep-record 2.0: High Energy Physics Java library - FreeHEP Record Manipulation Library
-dev-java/freehep-rootio 2.0.9: High Energy Physics Java library - FreeHEP ROOT IO Reader and Writer
-dev-java/freehep-rtti 2.0.1: High Energy Physics Java library - Runtime Type Identification Object Model and API
-dev-java/freehep-sio 2.0: High Energy Physics Java library - FreeHEP SIO Library
-dev-java/freehep-stdhep 2.0.2: High Energy Physics Java library - FreeHEP STDHep IO Library
-dev-java/freehep-swing 2.0.3: High Energy Physics Java library - FreeHEP Swing Extensions
-dev-java/freehep-util 2.0.2: High Energy Physics Java library - FreeHEP Utility Library
-dev-java/freehep-xdr 2.0.3: High Energy Physics Java library - FreeHEP XDR Library
-dev-java/freehep-xml 2.1.2: High Energy Physics Java library - FreeHEP XML Library
+dev-java/freehep-graphics2d 2.4: High Energy Physics Java library - FreeHEP Graphics 2D Library
+dev-java/freehep-graphicsbase 2.4: High Energy Physics Java library - FreeHEP Graphics Base Library
+dev-java/freehep-graphicsio 2.4: High Energy Physics Java library - FreeHEP GraphicsIO Base Library
+dev-java/freehep-graphicsio-emf 2.4: High Energy Physics Java library - FreeHEP Enhanced Metafile Format Driver
+dev-java/freehep-graphicsio-svg 2.4: High Energy Physics Java library - FreeHEP Scalable Vector Graphics Driver
+dev-java/freehep-graphicsio-tests 2.4: High Energy Physics Java library - FreeHEP GraphicsIO Test Library
+dev-java/freehep-io 2.2.2: High Energy Physics Java library - FreeHEP I/O Library
 dev-java/freemarker 2.3.13-r2: FreeMarker is a tool to generate text output based on templates
 dev-java/fscript 1.17-r1: Java based scripting engine designed to be embedded into other Java applications
 dev-java/gcj-jdk 4.9.3: Java wrappers around GCJ
