@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python{2_7,3_3,3_4,3_5} )
 SCM=""
 if [ "${PV#9999}" != "${PV}" ] ; then
 	SCM="git-r3"
-	EGIT_REPO_URI="http://github.com/ros-infrastructure/rospkg"
+	EGIT_REPO_URI="https://github.com/ros-infrastructure/rospkg"
 fi
 
 inherit ${SCM} distutils-r1
@@ -23,7 +23,7 @@ if [ "${PV#9999}" != "${PV}" ] ; then
 	EGIT_CHECKOUT_DIR="${S}"
 else
 	SRC_URI="http://download.ros.org/downloads/${PN}/${P}.tar.gz
-		http://github.com/ros-infrastructure/rospkg/archive/${PV}.tar.gz -> ${P}.tar.gz
+		https://github.com/ros-infrastructure/rospkg/archive/${PV}.tar.gz -> ${P}.tar.gz
 	"
 	KEYWORDS="~amd64 ~arm"
 fi

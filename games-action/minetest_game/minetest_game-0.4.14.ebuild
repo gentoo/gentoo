@@ -6,7 +6,7 @@ EAPI=6
 inherit vcs-snapshot
 
 DESCRIPTION="The main game for the Minetest game engine"
-HOMEPAGE="http://github.com/minetest/minetest_game"
+HOMEPAGE="https://github.com/minetest/minetest_game"
 SRC_URI="https://github.com/minetest/${PN}/tarball/${PV} -> ${P}.tar.gz"
 
 LICENSE="GPL-2 CC-BY-SA-3.0"

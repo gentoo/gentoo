@@ -12,7 +12,7 @@ DESCRIPTION="Python to GNU Octave bridge"
 HOMEPAGE="
 	https://pypi.python.org/pypi/oct2py
 	http://pythonhosted.org/oct2py/
-	http://github.com/blink1073/oct2py"
+	https://github.com/blink1073/oct2py"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
