@@ -6058,7 +6058,7 @@ dev-perl/POE-Component-Client-Keepalive 0.272.0: Manage connections, with keep-a
 dev-perl/POE-Component-IKC 0.240.200: Inter-Kernel Communication for POE
 dev-perl/POE-Component-PreforkDispatch 0.101.0-r1: Preforking task dispatcher
 dev-perl/POE-Component-Resolver 0.921.0: A non-blocking getaddrinfo() resolver
-dev-perl/POE-Test-Loops 1.353.0-r1 1.360.0: Reusable tests for POE::Loop authors
+dev-perl/POE-Test-Loops 1.360.0: Reusable tests for POE::Loop authors
 dev-perl/POE-XS-Loop-EPoll 1.3.0: An XS implementation of POE::Loop, using Linux epoll(2)
 dev-perl/POE-XS-Loop-Poll 1.0.0-r1: An XS implementation of POE::Loop, using poll(2)
 dev-perl/POE-XS-Queue-Array 0.6.0-r1: An XS implementation of POE::Queue::Array
@@ -6128,12 +6128,12 @@ dev-perl/Pod-Strip 1.20.0: Remove POD from Perl code
 dev-perl/Pod-Tests 1.190.0-r1: Extracts embedded tests and code examples from POD
 dev-perl/PortageXS 0.02.10-r4 0.2.10-r5 0.2.12-r1: Portage abstraction layer for perl
 dev-perl/PostScript 0.60.0-r1: An object that may be used to construct a block of text in PostScript
-dev-perl/PostScript-Simple 0.70.0-r1 0.90.0: Allows you to have a simple method of writing PostScript files from Perl
+dev-perl/PostScript-Simple 0.90.0: Allows you to have a simple method of writing PostScript files from Perl
 dev-perl/Probe-Perl 0.10.0-r1 0.30.0: Information about the currently running perl
 dev-perl/Proc-Background 1.100.0-r1: Generic interface to background process management
-dev-perl/Proc-Daemon 0.140.0-r1 0.230.0: Run Perl program as a daemon process
+dev-perl/Proc-Daemon 0.230.0: Run Perl program as a daemon process
 dev-perl/Proc-ProcessTable 0.480.0 0.530.0: Unix process table information
-dev-perl/Proc-Simple 1.310.0-r1 1.320.0: Launch and control background processes
+dev-perl/Proc-Simple 1.320.0: Launch and control background processes
 dev-perl/Proc-Wait3 0.50.0: Perl extension for wait3 system call
 dev-perl/Proc-WaitStat 1.0.0-r1: Interpret and act on wait() status values
 dev-perl/Quota 1.7.0 1.7.2: Perl interface to file system quotas
@@ -6143,7 +6143,7 @@ dev-perl/RRD-Simple 1.440.0-r1: Simple interface to create and store data in RRD
 dev-perl/RTF-Writer 1.110.0-r2: RTF::Writer - for generating documents in Rich Text Format
 dev-perl/RadiusPerl 0.220.0-r1: Communicate with a Radius server from Perl
 dev-perl/Rcs 1.50.0-r1: Perl bindings for Revision Control System
-dev-perl/Readonly 1.30.0-r1 2.0.0 2.10.0: Facility for creating read-only scalars, arrays, hashes
+dev-perl/Readonly 2.0.0 2.10.0: Facility for creating read-only scalars, arrays, hashes
 dev-perl/Readonly-XS 1.50.0-r1: Companion module for Readonly.pm, to speed up read-only scalar variables
 dev-perl/Redis 1.976.0: Perl binding for Redis database
 dev-perl/RedisDB 2.360.0: Perl extension to access redis database
@@ -6155,7 +6155,7 @@ dev-perl/Regexp-Shellish 0.930.0-r1: Regexp::Shellish - Shell-like regular expre
 dev-perl/Return-Value 1.666.1-r1: Polymorphic Return Values
 dev-perl/Role-Basic 0.130.0: Just roles. Nothing else
 dev-perl/Role-Tiny 2.0.1: Roles. Like a nouvelle cuisine portion size slice of Moose
-dev-perl/Roman 1.230.0-r1 1.240.0: Perl module for conversion between Roman and Arabic numerals
+dev-perl/Roman 1.240.0: Perl module for conversion between Roman and Arabic numerals
 dev-perl/Router-Simple 0.140.0-r1 0.170.0: Simple HTTP router
 dev-perl/SDL 2.546: Simple DirectMedia Layer (SDL) bindings for perl
 dev-perl/SGMLSpm 1.03-r7 1.1-r1: Perl library for parsing the output of nsgmls
