@@ -7,7 +7,7 @@
 slot_info_pages() {
 	[[ ${SLOT} == "0" ]] && return
 
-	pushd "${D}"/usr/share/info >/dev/null
+	pushd "${ED}"/usr/share/info >/dev/null
 	rm -f dir
 
 	# Rewrite all the references to other pages.
