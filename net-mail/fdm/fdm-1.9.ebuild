@@ -8,7 +8,7 @@ inherit eutils multilib toolchain-funcs user
 
 DESCRIPTION="fetch, filter and deliver mail"
 HOMEPAGE="https://github.com/nicm/fdm"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://github.com/nicm/fdm/releases/download/${PV}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
