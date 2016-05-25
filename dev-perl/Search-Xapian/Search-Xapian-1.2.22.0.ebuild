@@ -14,7 +14,7 @@ DESCRIPTION="Perl XS frontend to the Xapian C++ search library"
 
 LICENSE="|| ( Artistic GPL-1 GPL-2 GPL-3 )"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~ia64 ~mips ~ppc ~ppc64 ~sparc x86"
+KEYWORDS="alpha amd64 arm ~ia64 ~mips ~ppc ~ppc64 ~sparc x86"
 IUSE="examples"
 
 RDEPEND="dev-libs/xapian:0/1.2.22
