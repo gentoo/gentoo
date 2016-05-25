@@ -1,0 +1,10 @@
+--- a/autotools/check-man-warnings	2015-12-03 19:50:34.000000000 +0000
++++ b/autotools/check-man-warnings	2016-05-22 11:19:31.678635696 +0000
+@@ -35,6 +35,6 @@
+ 	loc="en_US.UTF-8"
+ fi
+ 
+-! LANG="$loc" LC_ALL="$loc" MANWIDTH=80 \
++LANG="$loc" LC_ALL="$loc" MANWIDTH=80 \
+   man --warnings --encoding=utf8 --local-file "$1" 2>&1 >/dev/null | \
+   grep -v -e "cannot adjust line" -e "can't break line" | \
