@@ -30,6 +30,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Johannes Huber <johu@gentoo.org> (25 May 2016)
+# Masked for removal in 30 days. Declared as dead by
+# upstream in 2015. Last release with KDE Applications 15.04.3.
+# Exported to user maintained overlay kde-sunset.
+kde-apps/pairs
+
 # Alexis Ballier <aballier@gentoo.org> (24 May 2016)
 # API change, breaks e.g. js_of_ocaml
 >=dev-ml/tyxml-4
