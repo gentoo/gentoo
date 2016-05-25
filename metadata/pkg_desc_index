@@ -1750,7 +1750,7 @@ app-misc/dvtm 0.8 0.11 0.14 9999: Dynamic virtual terminal manager
 app-misc/editor-wrapper 4: Wrapper scripts that will execute EDITOR or PAGER
 app-misc/egads 0.9.5: Entropy Gathering And Distribution System
 app-misc/eid-viewer-bin 4.0.7_p184 4.1.9: Graphical interface to the Belgian Electronic Identity Card
-app-misc/elasticsearch 1.7.4 1.7.5 2.1.1 2.1.2 2.2.0 2.2.2 2.3.0 2.3.1 2.3.2: Open Source, Distributed, RESTful, Search Engine
+app-misc/elasticsearch 1.7.4 1.7.5 2.1.1 2.1.2 2.2.0 2.2.2 2.3.0 2.3.1 2.3.2 2.3.3: Open Source, Distributed, RESTful, Search Engine
 app-misc/email2trac 2.6.2-r1 2.8.4 2.8.8: Utilities to convert emails to trac tickets
 app-misc/emelfm2 0.8.1 0.9.1 0.9.1-r1: A file manager that implements the popular two-pane design
 app-misc/empty 0.6.19b: Small shell utility, similar to expect(1)
@@ -11257,7 +11257,7 @@ kde-apps/kglobalaccel 4.14.3 15.08.3 15.12.3 16.04.1: KDE's Global Shortcut Daem
 kde-apps/kgoldrunner 4.14.3 15.08.3 15.12.3 16.04.1: Game of action and puzzle solving by KDE
 kde-apps/kgpg 4.14.3 4.14.3-r1 15.08.3 15.12.3 16.04.1: KDE gpg keyring manager
 kde-apps/khangman 4.14.3 15.12.3 16.04.1: Classical hangman game by KDE
-kde-apps/khelpcenter 4.14.3 5.5.5 5.5.5-r1 5.6.2-r1 16.04.1: The KDE Help Center
+kde-apps/khelpcenter 4.14.3 5.5.5-r1 5.6.2-r1 16.04.1: The KDE Help Center
 kde-apps/kiconfinder 4.14.3 15.08.3 15.12.3 16.04.1: Finds an icon based on its name
 kde-apps/kig 4.14.3 15.12.3 16.04.1: KDE Interactive Geometry tool
 kde-apps/kigo 4.14.3 15.08.3 15.12.3 16.04.1: Go game by KDE

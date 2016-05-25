@@ -4,11 +4,11 @@ DESCRIPTION=GTK+ based fast and lightweight IDE
 EAPI=5
 HOMEPAGE=http://www.geany.org
 IUSE=gtk3 +vte
-KEYWORDS=~alpha amd64 arm ia64 ~ppc ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux
+KEYWORDS=alpha amd64 arm ia64 ~ppc ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux
 LICENSE=GPL-2+ HPND
 RDEPEND=>=dev-libs/glib-2.28:2 !gtk3? ( >=x11-libs/gtk+-2.24:2 ) gtk3? ( >=x11-libs/gtk+-3.0:3 ) vte? ( x11-libs/vte:0 )
 SLOT=0
 SRC_URI=http://download.geany.org/geany-1.25.tar.bz2
 _eclass_exported_funcs=pkg_preinst:- pkg_postrm:- pkg_postinst:- pkg_setup:- src_prepare:- src_configure:- src_install:-
 _eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	gnome2-utils	c6dcdf3a2c22b578b16adb945dc85c35	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	xdg-utils	e2b2bd56125ce8cf59ce30c642b59d48
-_md5_=7ea51ed09322e4b8a89a295c2a52d766
+_md5_=8650625bb301c54aa564b2b95c02241a
