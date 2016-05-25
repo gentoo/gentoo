@@ -79,7 +79,7 @@ KMLOADLIBS="kdepim-common-libs"
 
 src_configure() {
 	# Bug 308903
-	use ppc64 && append-flags -mminimal-toc
+	use ~ppc64 && append-flags -mminimal-toc
 
 	kde4-meta_src_configure
 }
