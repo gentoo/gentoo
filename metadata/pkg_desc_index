@@ -8142,7 +8142,7 @@ dev-python/strict-rfc3339 0.6: Strict, simple, lightweight RFC3339 functions
 dev-python/stripogram 1.5-r1: Strip-o-Gram HTML Conversion Library
 dev-python/stsci-distutils 0.3.7: Utilities used to package some of STScI's Python projects
 dev-python/stsci-sphinxext 1.2.1: Tools and templates to customize Sphinx for STScI projects
-dev-python/subunit 1.1.0 1.2.0: A streaming protocol for test results
+dev-python/subunit 1.1.0 1.2.0-r1: A streaming protocol for test results
 dev-python/subvertpy 0.9.1: Alternative Python bindings for Subversion
 dev-python/suds 0.4-r1 0.6 0.6-r1: Lightweight SOAP client (Jurko's fork) (py3 support) (active development)
 dev-python/sudsds 1.0.1-r1: Lightweight SOAP client - Czech NIC labs fork
