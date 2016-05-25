@@ -12,7 +12,7 @@ inherit flag-o-matic kde4-meta
 
 DESCRIPTION="Email component of Kontact, the integrated personal information manager of KDE"
 HOMEPAGE="https://www.kde.org/applications/internet/kmail/"
-KEYWORDS="amd64 ~arm ppc ppc64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm ~ppc ~ppc64 x86 ~amd64-linux ~x86-linux"
 IUSE="debug"
 
 DEPEND="
@@ -76,7 +76,7 @@ KMLOADLIBS="kdepim-common-libs"
 
 src_configure() {
 	# Bug 308903
-	use ppc64 && append-flags -mminimal-toc
+	use ~ppc64 && append-flags -mminimal-toc
 
 	kde4-meta_src_configure
 }
