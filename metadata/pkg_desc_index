@@ -3697,7 +3697,7 @@ dev-haskell/warp-tls 3.0.4.2 3.1.5: HTTP over TLS support for Warp via the TLS p
 dev-haskell/wl-pprint 1.2: The Wadler/Leijen Pretty Printer
 dev-haskell/wl-pprint-text 1.1.0.4: A Wadler/Leijen Pretty Printer for Text values
 dev-haskell/word8 0.1.2: Word8 library
-dev-haskell/wx 0.13.2.3 0.90.1.0 0.92.2.0: wxHaskell
+dev-haskell/wx 0.92.2.0: wxHaskell
 dev-haskell/wxc 0.92.2.0: wxHaskell C++ wrapper
 dev-haskell/wxcore 0.13.2.3-r1 0.92.2.0: wxHaskell core
 dev-haskell/wxdirect 0.13.1.3 0.90.1.1 0.92.2.0: helper tool for building wxHaskell
@@ -16944,7 +16944,7 @@ sys-cluster/zookeepercli 1.0.10: Simple, lightweight, dependable CLI for ZooKeep
 sys-devel/autoconf 2.13 2.59-r7 2.61-r2 2.62-r1 2.63-r1 2.64 2.65-r1 2.67 2.68 2.69 2.69-r1 2.69-r2 9999: Used to create autoconfiguration files
 sys-devel/autoconf-archive 2015.02.04 2015.02.24 2015.09.25 2016.03.20-r1: GNU Autoconf Macro Archive
 sys-devel/autoconf-wrapper 13: wrapper for autoconf to manage multiple autoconf versions
-sys-devel/autogen 5.15 5.17.3 5.17.4 5.18.1 5.18.2 5.18.4: Program and text file generation
+sys-devel/autogen 5.18.4: Program and text file generation
 sys-devel/automake 1.4_p6-r2 1.5-r2 1.6.3-r2 1.7.9-r3 1.8.5-r5 1.9.6-r4 1.10.3-r1 1.10.3-r2 1.11.6-r1 1.11.6-r2 1.12.6 1.12.6-r1 1.13.4 1.13.4-r1 1.14.1 1.14.1-r1 1.15 1.15-r1 1.15-r2 9999: Used to generate Makefile.in from Makefile.am
 sys-devel/automake-wrapper 10: wrapper for automake to manage multiple automake versions
 sys-devel/bc 1.06.95 1.06.95-r1 1.06.95-r2: Handy console-based calculator utility
@@ -17151,7 +17151,7 @@ sys-fs/static-dev 0.1: A skeleton, statically managed /dev
 sys-fs/sysfsutils 2.1.0: System Utilities Based on Sysfs
 sys-fs/traydevice 1.6.2-r1: A little desktop application displaying systray icon for UDisks
 sys-fs/treesize 0.54.1: A disk consumption analyzing tool
-sys-fs/udev 216 225 228 229-r2 9999: Linux dynamic and persistent device naming support (aka userspace devfs)
+sys-fs/udev 216 225 228 229-r2 230 9999: Linux dynamic and persistent device naming support (aka userspace devfs)
 sys-fs/udev-init-scripts 27 29 30 9999: udev startup scripts for openrc
 sys-fs/udftools 1.0.0b-r9 1.0.0b-r10 1.1: Ben Fennema's tools for packet writing and the UDF filesystem
 sys-fs/udiskie 0.6.2 0.6.4 1.1.1: An automatic disk mounting service using udisks
