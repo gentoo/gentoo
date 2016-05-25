@@ -9,7 +9,7 @@ KMNAME="kde-runtime"
 KMMODULE="kioslave"
 inherit kde4-meta
 
-KEYWORDS=" ~amd64 ~x86"
+KEYWORDS=" amd64 ~x86"
 DESCRIPTION="KDE VFS framework - kioslaves present a filesystem-like view of arbitrary data"
 IUSE="+bzip2 exif debug lzma openexr samba +sftp"
 
