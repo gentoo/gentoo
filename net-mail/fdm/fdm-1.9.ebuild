@@ -25,14 +25,6 @@ pkg_setup() {
 	enewuser _fdm
 }
 
-src_prepare() {
-	rm Makefile || die
-	sed -e '/^FDEBUG=/s:=.*:=:' \
-		-e "/ifdef COURIER/aLIBS+=-L${EROOT}usr/$(get_libdir)/courier-authlib" \
-		-e '/CPPFLAGS/s: -I/usr/local/include : :' \
-		-i GNUmakefile || die
-}
-
 src_compile() {
 	emake CC="$(tc-getCC)" \
 		COURIER=$(use courierauth && echo 1) \
