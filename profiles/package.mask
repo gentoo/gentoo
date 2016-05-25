@@ -30,6 +30,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Mike Gilbert <floppym@gentoo.org> (25 May 2016)
+# Causes build failures in unrelated packages due to invasive
+# monkey-patching of easy_install (dev-python/setuptools).
+# Remove this package in 30 days.
+# Bug: https://bugs.gentoo.org/575844
+dev-python/buildutils
+
 # Johannes Huber <johu@gentoo.org> (25 May 2016)
 # Masked for removal in 30 days. Declared as dead by
 # upstream in 2015. Last release with KDE Applications 15.04.3.
