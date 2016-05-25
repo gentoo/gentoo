@@ -4,15 +4,17 @@
 
 EAPI=5
 
-USE_RUBY="ruby20 ruby21 ruby22"
+USE_RUBY="ruby20 ruby21 ruby22 ruby23"
 
 #RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 
 # No documentation task
 RUBY_FAKEGEM_TASK_DOC=""
-RUBY_FAKEGEM_EXTRADOC="README.md CHANGELOG.md ISSUES.md UPGRADING.md"
+RUBY_FAKEGEM_EXTRADOC="README.md CHANGELOG.md ISSUES.md"
 
 RUBY_FAKEGEM_GEMSPEC="${PN}.gemspec"
+
+RUBY_FAKEGEM_BINDIR="exe"
 
 inherit ruby-fakegem
 
