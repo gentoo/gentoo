@@ -26,4 +26,3 @@ src_install() {
 	doins -r binaries/data/*
 	prepgamesdirs
 }
-
