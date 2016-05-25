@@ -3428,7 +3428,7 @@ dev-haskell/http-client 0.2.2.2 0.3.3.2 0.4.18.1 0.4.26.2 0.4.28: An HTTP client
 dev-haskell/http-client-conduit 0.2.0.1 0.3.0: Frontend support for using http-client with conduit (deprecated)
 dev-haskell/http-client-multipart 0.2.0.0 0.3.0.0: Generate multipart uploads for http-client. (deprecated)
 dev-haskell/http-client-tls 0.2.2 0.2.4: http-client backend using the connection package and tls library
-dev-haskell/http-conduit 2.1.8 2.1.10.1: HTTP client package with conduit interface and HTTPS support
+dev-haskell/http-conduit 2.1.7.2 2.1.8 2.1.10.1: HTTP client package with conduit interface and HTTPS support
 dev-haskell/http-date 0.0.6.1: HTTP Date parser/formatter
 dev-haskell/http-reverse-proxy 0.1.1.6 0.2.0 0.4.3: Reverse proxy HTTP requests, either over raw sockets or with WAI
 dev-haskell/http-types 0.8.6: Generic HTTP types for Haskell (for both client and server code)
