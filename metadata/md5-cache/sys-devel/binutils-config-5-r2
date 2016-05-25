@@ -7,4 +7,5 @@ LICENSE=GPL-2
 RDEPEND=sys-apps/gentoo-functions !<app-admin/eselect-1.4.5
 SLOT=0
 _eclass_exported_funcs=pkg_preinst:- src_install:-
-_md5_=22754fdf973c1b42ce7f0414e3718b54
+_eclasses_=prefix	e7f2b9c6e57342e5d25eac22fce23062
+_md5_=facd3db540b914f75b32403a33d6081f
