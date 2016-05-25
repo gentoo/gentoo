@@ -6,8 +6,6 @@
 		<name>Gentoo KDE Project</name>
 	</maintainer>
 	<use>
-		<flag name="crash-reporter">Builds a gui tool to submit crash information to the upstream backtracker</flag>
-		<flag name="minimal">Install a Plasma 5 compatible subset of the package</flag>
 		<flag name="oldwallet">Install <pkg>kde-apps/kwalletd</pkg> on a minimal setup for migration purposes</flag>
 	</use>
 </pkgmetadata>
