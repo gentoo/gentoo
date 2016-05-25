@@ -17,12 +17,6 @@ IUSE=""
 DEPEND="sys-devel/flex"
 RDEPEND=""
 
-src_prepare() {
-	epatch "${FILESDIR}"/0.8.2-gcc44.patch \
-		"${FILESDIR}"/0.8.2-openssl-1.patch \
-		"${FILESDIR}"/${PV}-gcc46.patch
-}
-
 src_compile() {
 	emake -j1 || die #281069
 }
