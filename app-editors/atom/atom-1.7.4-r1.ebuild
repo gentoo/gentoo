@@ -279,6 +279,7 @@ src_prepare() {
 	cd "${S}" || die
 
 	epatch "${FILESDIR}/atom-apm-path.patch"
+	epatch "${FILESDIR}/asar-require.patch"
 
 	sed -i -e "s|{{ATOM_SUFFIX}}|${suffix}|g" \
 		"${S}/build/app.asar/src/config-schema.js" || die
