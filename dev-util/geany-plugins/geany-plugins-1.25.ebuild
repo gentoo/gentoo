@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -14,7 +14,7 @@ SRC_URI="http://plugins.geany.org/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ia64 ~ppc ppc64 ~sparc ~x86"
+KEYWORDS="alpha amd64 arm ia64 ~ppc ppc64 ~sparc ~x86"
 IUSE="+autoclose +automark +commander ctags debugger +defineformat devhelp enchant git gpg gtkspell lua markdown multiterm nls +overview python scope soup webkit"
 
 LINGUAS="be ca da de es fr gl ja pt pt_BR ru tr zh_CN"
