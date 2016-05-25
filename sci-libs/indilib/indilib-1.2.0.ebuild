@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 MY_PN="lib${PN/lib/}"
 
@@ -31,15 +31,11 @@ DEPEND="${RDEPEND}
 
 DOCS=( AUTHORS ChangeLog README TODO )
 
-PATCHES=(
-	"${FILESDIR}/${PN}-0.9.8.1-symlinks.patch"
-)
-
-S=${WORKDIR}/${MY_PN}-${PV}
+S=${WORKDIR}/${MY_PN}_${PV}
 
 src_configure() {
 	local mycmakeargs=(
-		-DUDEVRULES_INSTALL_DIR=$(get_udevdir)
+		-DUDEVRULES_INSTALL_DIR="$(get_udevdir)"
 	)
 
 	cmake-utils_src_configure
