@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -32,7 +32,6 @@ RDEPEND="
 	$(add_kdeapps_dep kwordquiz)
 	$(add_kdeapps_dep libkdeedu)
 	$(add_kdeapps_dep marble)
-	$(add_kdeapps_dep pairs)
 	$(add_kdeapps_dep parley)
 	$(add_kdeapps_dep rocs)
 	$(add_kdeapps_dep step)
