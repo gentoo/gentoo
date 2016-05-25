@@ -1,17 +1,24 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-inherit multilib
+# Needed for perl_rm_files in src_prepare() only.
+inherit perl-functions
 
-DESCRIPTION="check_rbl is a Nagios plugin that fails if a host is blacklisted"
-HOMEPAGE="https://svn.id.ethz.ch/projects/nagios_plugins/wiki/check_rbl"
+DESCRIPTION="Monitor whether or not a host is blacklisted"
+HOMEPAGE="https://github.com/matteocorti/check_rbl"
 
 MY_P="${P/nagios-/}"
 
-SRC_URI="https://svn.id.ethz.ch/projects/nagios_plugins/downloads/${MY_P}.tar.gz"
+# We rename the tarball here because the upstream source changed without
+# a new release. That change happens to fix bug #583966, so we do want
+# the newer tarball. But I think, without the rename, that user might
+# have gotten a checksum failure.
+SRC_URI="${HOMEPAGE}/releases/download/v${PV}/${MY_P}.tar.gz
+	-> ${MY_P}-r1.tar.gz"
+
 LICENSE="GPL-3"
 SLOT="0"
 
@@ -39,6 +46,17 @@ DEPEND="${RDEPEND}"
 
 S="${WORKDIR}/${MY_P}"
 
+src_prepare() {
+	default
+
+	# The copy of version.pm that upstream ships causes problems and
+	# isn't necessary. They probably shouldn't be shipping it at all.
+	# See bug #583966 for more information. You should check on
+	# https://github.com/matteocorti/check_rbl/issues/6 every once
+	# in a while to see if this can be removed.
+	perl_rm_files inc/version.pm
+}
+
 src_configure() {
 	perl Makefile.PL INSTALLDIRS=vendor || die
 }
@@ -47,7 +65,8 @@ src_install() {
 	default
 
 	local nagiosplugindir=/usr/$(get_libdir)/nagios/plugins
-	# move this aftertime as it's a bit strange otherwise
+
+	# It's simplest to move this file after it's been installed.
 	dodir "${nagiosplugindir}"
 	mv "${D}"/usr/bin/check_rbl "${D}"/"${nagiosplugindir}" || die
 }
