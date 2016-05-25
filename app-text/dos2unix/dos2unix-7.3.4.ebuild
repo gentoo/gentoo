@@ -1,10 +1,12 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-inherit eutils toolchain-funcs
+PLOCALES="da de eo es fr hu ja nb nl pl pt_BR ru sr sv uk vi zh_CN zh_TW"
+
+inherit l10n toolchain-funcs
 
 DESCRIPTION="Convert DOS or MAC text files to UNIX format or vice versa"
 HOMEPAGE="http://www.xs4all.nl/~waterlan/dos2unix.html http://sourceforge.net/projects/dos2unix/"
@@ -27,7 +29,28 @@ DEPEND="
 	test? ( virtual/perl-Test-Simple )
 	dev-lang/perl"
 
+handle_locales() {
+	# Make sure locale list is kept up-to-date.
+	local detected sorted
+	detected=$(echo $(printf '%s\n' */*.po | sed -e 's:.*/::' -e 's:.po$::' | sort -u))
+	sorted=$(echo $(printf '%s\n' ${PLOCALES} | sort -u))
+	if [[ ${sorted} != "${detected}" ]] ; then
+		eerror "The ebuild needs to be kept in sync."
+		eerror "PLOCALES: ${sorted}"
+		eerror "po*/*.po: ${detected}"
+		die "sync PLOCALES"
+	fi
+
+	# Deal with selective install of locales.
+	rm_loc() { rm po*/$1.po || die; }
+	l10n_for_each_disabled_locale_do rm_loc
+}
+
 src_prepare() {
+	default
+
+	handle_locales
+
 	sed \
 		-e '/^LDFLAGS/s|=|+=|' \
 		-e '/CFLAGS_OS \+=/d' \
