@@ -26,5 +26,8 @@ src_prepare() {
 
 src_install() {
 	default
+	# because stupid
+	insinto /usr/include
+	doins include/{cauchy,galois,liberation,reed_sol}.h
 	prune_libtool_files
 }
