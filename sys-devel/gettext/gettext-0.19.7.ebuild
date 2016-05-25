@@ -57,7 +57,7 @@ multilib_src_configure() {
 	local myconf=(
 		# switches common to runtime and top-level
 		--cache-file="${BUILD_DIR}"/config.cache
-		--docdir="/usr/share/doc/${PF}"
+		--docdir="\$(datarootdir)/doc/${PF}"
 
 		# Emacs support is now in a separate package
 		--without-emacs
