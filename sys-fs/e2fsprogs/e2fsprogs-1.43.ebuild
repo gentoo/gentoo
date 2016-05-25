@@ -20,10 +20,11 @@ SRC_URI="mirror://sourceforge/e2fsprogs/${PN}-${UP_PV}.tar.xz
 LICENSE="GPL-2 BSD"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 -x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~m68k-mint"
-IUSE="nls static-libs elibc_FreeBSD"
+IUSE="fuse nls static-libs elibc_FreeBSD"
 
 RDEPEND="~sys-libs/${PN}-libs-${PV}
 	>=sys-apps/util-linux-2.16
+	fuse? ( sys-fs/fuse )
 	nls? ( virtual/libintl )"
 DEPEND="${RDEPEND}
 	nls? ( sys-devel/gettext )
@@ -71,6 +72,7 @@ src_configure() {
 		$(tc-is-static-only || echo --enable-elf-shlibs) \
 		$(tc-has-tls || echo --disable-tls) \
 		--without-included-gettext \
+		$(use_enable fuse fuse2fs) \
 		$(use_enable nls) \
 		--disable-libblkid \
 		--disable-libuuid \
