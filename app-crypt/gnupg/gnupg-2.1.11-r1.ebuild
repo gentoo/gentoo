@@ -61,6 +61,7 @@ S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
 	epatch "${FILESDIR}/${P}-tests.patch"
+	epatch "${FILESDIR}/${P}-fix-bashism.patch"
 	epatch_user
 }
 

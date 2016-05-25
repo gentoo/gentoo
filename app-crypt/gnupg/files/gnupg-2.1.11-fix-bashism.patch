@@ -1,0 +1,12 @@
+diff -Naur tests.old/openpgp/mds.test tests/openpgp/mds.test
+--- tests.old/openpgp/mds.test	2016-05-03 13:13:11.373313389 +0200
++++ tests/openpgp/mds.test	2016-05-03 13:13:31.886755059 +0200
+@@ -63,7 +63,7 @@
+ 
+ [ "$failed" != "" ] && error "$failed failed for empty string"
+ 
+-echo_n "abcdefghijklmnopqrstuvwxyz" | $GPG --with-colons --print-mds >y
++printf "abcdefghijklmnopqrstuvwxyz" | $GPG --with-colons --print-mds >y
+ if have_hash_algo "MD5"; then
+   test_one ":1:"    "C3FCD3D76192E4007DFB496CCA67E13B"
+ fi
