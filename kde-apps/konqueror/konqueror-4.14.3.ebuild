@@ -13,7 +13,7 @@ HOMEPAGE="
 	https://www.kde.org/applications/internet/konqueror/
 	http://konqueror.org/
 "
-KEYWORDS="amd64 ~arm ppc ppc64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm ~ppc ~ppc64 x86 ~amd64-linux ~x86-linux"
 IUSE="+bookmarks debug svg"
 # 4 of 4 tests fail. Last checked for 4.0.3
 RESTRICT="test"

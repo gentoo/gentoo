@@ -14,7 +14,7 @@ inherit kde4-base
 
 DESCRIPTION="Okular is a universal document viewer based on KPDF for KDE 4"
 HOMEPAGE="https://okular.kde.org https://www.kde.org/applications/graphics/okular"
-KEYWORDS="amd64 ~arm ppc ppc64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm ~ppc ~ppc64 x86 ~amd64-linux ~x86-linux"
 IUSE="chm crypt debug djvu dpi ebook +jpeg mobi +postscript +pdf +tiff"
 
 DEPEND="
