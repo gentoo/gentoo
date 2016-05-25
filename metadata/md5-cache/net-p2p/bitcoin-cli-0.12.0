@@ -10,5 +10,5 @@ RDEPEND=!libressl? ( dev-libs/openssl:0[-bindist] ) libressl? ( dev-libs/libress
 SLOT=0
 SRC_URI=https://github.com/bitcoin/bitcoin/archive/188ca9c305d3dd0fb462b9d6a44048b1d99a05f3.tar.gz -> bitcoin-v0.12.0.tgz http://bitcoinknots.org/files/0.12.x/0.12.0.knots20160226/test/rc1/bitcoin-0.12.0.knots20160226.rc1.patches.txz -> bitcoin-0.12.0.knots20160226.rc1.patches.tar.xz
 _eclass_exported_funcs=pkg_pretend:bitcoincore src_prepare:- src_configure:- src_test:bitcoincore src_install:-
-_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	bash-completion-r1	acf715fa09463f043fbfdc1640f3fb85	bitcoincore	403e9a7452e772482613908f7fb6ec35	db-use	a4966c7f4f7df444ead1212848c13cc9	eutils	792f83d5ec9536cb5ccef375469d8bde	libtool	4890219c51da247200223277f993e054	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	bash-completion-r1	acf715fa09463f043fbfdc1640f3fb85	bitcoincore	6326a43499bd9e89bdb2c65eec67b3f9	db-use	a4966c7f4f7df444ead1212848c13cc9	eutils	792f83d5ec9536cb5ccef375469d8bde	libtool	4890219c51da247200223277f993e054	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=7229f39254582038555bf798c09d6387
