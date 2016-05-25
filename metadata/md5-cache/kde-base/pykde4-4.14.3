@@ -4,7 +4,7 @@ DESCRIPTION=Python bindings for KDE4
 EAPI=5
 HOMEPAGE=https://techbase.kde.org/Development/Languages/Python
 IUSE=akonadi debug doc examples test python_targets_python2_7 python_targets_python3_3 python_targets_python3_4 aqua
-KEYWORDS=amd64 ~arm ppc ppc64 x86 ~amd64-linux ~x86-linux
+KEYWORDS=amd64 ~arm ~ppc ~ppc64 x86 ~amd64-linux ~x86-linux
 LICENSE=GPL-2
 RDEPEND=python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7[threads] ) python_targets_python3_3? ( >=dev-lang/python-3.3.2-r2:3.3[threads] ) python_targets_python3_4? ( dev-lang/python:3.4[threads] ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,python_targets_python3_3(-)?,python_targets_python3_4(-)?,-python_single_target_python2_7(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-)] >=dev-python/PyQt4-4.11.1[python_targets_python2_7(-)?,python_targets_python3_3(-)?,python_targets_python3_4(-)?,-python_single_target_python2_7(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),dbus,declarative,script,sql,svg,webkit,X] >=dev-python/sip-4.16.2:=[python_targets_python2_7(-)?,python_targets_python3_3(-)?,python_targets_python3_4(-)?,-python_single_target_python2_7(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-)] >=kde-base/kdelibs-4.14.3:4[aqua=,opengl] akonadi? ( >=kde-apps/kdepimlibs-4.14.3:4[aqua=] ) kde-frameworks/oxygen-icons >=dev-qt/qtopengl-4.8.5:4 dev-lang/perl >=dev-qt/qt3support-4.8.5:4[accessibility] >=dev-qt/qtcore-4.8.5:4[qt3support,ssl] >=dev-qt/qtdbus-4.8.5:4 >=dev-qt/designer-4.8.5:4 >=dev-qt/qtgui-4.8.5:4[accessibility,dbus(+)] >=dev-qt/qtscript-4.8.5:4 >=dev-qt/qtsql-4.8.5:4[qt3support] >=dev-qt/qtsvg-4.8.5:4 >=dev-qt/qttest-4.8.5:4 >=dev-qt/qtwebkit-4.8.5:4 >=kde-base/kdelibs-4.14.3:4[aqua=]
 REQUIRED_USE=|| ( python_targets_python2_7 python_targets_python3_3 python_targets_python3_4 )
@@ -12,4 +12,4 @@ SLOT=4/4.14
 SRC_URI=mirror://kde/stable/4.14.3/src/pykde4-4.14.3.tar.xz
 _eclass_exported_funcs=pkg_preinst:kde4-base pkg_postrm:kde4-base pkg_postinst:- pkg_setup:- src_unpack:kde4-base src_prepare:- src_configure:- src_compile:- src_test:- src_install:-
 _eclasses_=cmake-utils	d6c1714cc58fd2168bf150f2a01f3801	eutils	792f83d5ec9536cb5ccef375469d8bde	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	flag-o-matic	d270fa247153df66074f795fa42dba3e	gnome2-utils	c6dcdf3a2c22b578b16adb945dc85c35	kde4-base	b4717e51c1794e3767ca15f9571c80a5	kde4-functions	88bc45dff8c885002aca6e4c0adbe541	multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	d062ae4ba2fc40a19c11de2ad89b6616	portability	bb1a0ed8ea152b957d17339f01d4d7f5	python-r1	0f6937650a475d673baa5d0c8c0b37b3	python-utils-r1	13d5b02ea59b21da41c77c9294f3b7f7	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	virtualx	86c9305a59b3e0459e7fbef3a5f30b96	xdg-utils	e2b2bd56125ce8cf59ce30c642b59d48
-_md5_=4bedc57d38c58b5076f71f3bf598c726
+_md5_=2d1e76358faba1ca5f3cc922d9938bca
