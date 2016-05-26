@@ -62,7 +62,6 @@ css - Enable reading of encrypted DVDs
 ctype - Enable ctype functions
 cups - Add support for CUPS (Common Unix Printing System)
 curl - Add support for client-side URL transfer library
-curlwrappers - Add support for using curl in streams
 custom-cflags - Build with user-specified CFLAGS (unsupported)
 cvs - Enable CVS (Concurrent Versions System) integration
 cxx - Build support for C++ (bindings, extra libraries, code generation, ...)
