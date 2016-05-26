@@ -13,7 +13,7 @@ DESCRIPTION="Perl Module for Palm Pilots"
 
 SLOT="0"
 LICENSE="Artistic"
-KEYWORDS="alpha amd64 ppc x86"
+KEYWORDS="amd64 ppc x86"
 IUSE="test"
 
 DEPEND="
