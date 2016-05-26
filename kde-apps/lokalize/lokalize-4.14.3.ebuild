@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -22,7 +22,6 @@ DEPEND="
 	>=dev-qt/qtsql-4.5.0:4[sqlite]
 "
 RDEPEND="${DEPEND}
-	$(add_kdeapps_dep kdesdk-strigi-analyzer)
 	$(add_kdebase_dep krosspython "${PYTHON_USEDEP}")
 	$(add_kdebase_dep pykde4 "${PYTHON_USEDEP}")
 "
