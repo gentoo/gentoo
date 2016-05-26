@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -26,7 +26,7 @@ PATCHES=( "${FILESDIR}/${P}-indilib100.patch" )
 
 src_configure() {
 	# Bug 308903
-	use ~ppc64 && append-flags -mminimal-toc
+	use ppc64 && append-flags -mminimal-toc
 
 	local mycmakeargs=(
 		$(cmake-utils_use_with fits CFitsio)
