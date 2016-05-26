@@ -552,7 +552,6 @@ app-editors/xemacs:dnd - Enables support for the x11-libs/dnd drag-n-drop librar
 app-editors/xemacs:eolconv - Support detection and translation of newline conventions
 app-editors/xemacs:pop - Support POP for mail retrieval
 app-editors/xemacs:xim - Enable X11 XiM input method
-app-editors/xmlcopyeditor:guidexml - Install GuideXML templates to work with Gentoo official docs
 app-editors/zile:valgrind - Enable usage of dev-util/valgrind in tests
 app-emacs/anything:extensions - Install optional extensions
 app-emacs/auctex:preview-latex - Use bundled preview-latex
