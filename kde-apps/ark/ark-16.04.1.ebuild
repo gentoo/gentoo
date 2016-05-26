@@ -41,6 +41,9 @@ DEPEND="${RDEPEND}
 	sys-devel/gettext
 "
 
+# bug #560548, last checked with 16.04.1
+RESTRICT="test"
+
 src_configure() {
 	local mycmakeargs=(
 		$(cmake-utils_use_find_package bzip2 BZip2)
