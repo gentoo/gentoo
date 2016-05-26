@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -32,8 +32,8 @@ RDEPEND="
 	dev-db/sqlite:3
 	luajit? ( >=dev-lang/luajit-2.0.0 )
 	sys-libs/zlib
-	!ncurses? ( !tiles? ( sys-libs/ncurses ) )
-	ncurses? ( sys-libs/ncurses )
+	!ncurses? ( !tiles? ( sys-libs/ncurses:0 ) )
+	ncurses? ( sys-libs/ncurses:0 )
 	tiles? (
 		media-fonts/dejavu
 		media-libs/freetype:2
@@ -49,7 +49,7 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	virtual/yacc
 	tiles? (
-		sys-libs/ncurses
+		sys-libs/ncurses:0
 	)"
 
 S=${WORKDIR}/${MY_P}/source
