@@ -4,11 +4,11 @@ DESCRIPTION=powerful replacement for inetd
 EAPI=5
 HOMEPAGE=http://www.xinetd.org/ https://github.com/xinetd-org/xinetd
 IUSE=perl rpc tcpd
-KEYWORDS=~alpha amd64 arm ~arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd
+KEYWORDS=alpha amd64 arm ~arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd
 LICENSE=BSD
 RDEPEND=tcpd? ( >=sys-apps/tcp-wrappers-7.6-r2 ) rpc? ( net-libs/libtirpc:= ) perl? ( dev-lang/perl )
 SLOT=0
 SRC_URI=http://www.xinetd.org/xinetd-2.3.15.tar.gz
 _eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
 _eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	flag-o-matic	d270fa247153df66074f795fa42dba3e	multilib	d062ae4ba2fc40a19c11de2ad89b6616	systemd	3165c885f3c71ffae7a867d931fb0e07	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
-_md5_=b7981582ad37b031d657b2b0a4c32444
+_md5_=6135bedcd4f968120f7feae459ee7f29
