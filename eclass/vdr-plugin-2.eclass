@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -90,7 +90,7 @@
 # @CODE
 
 # Applying your own local/user patches:
-# This is done by using the 
+# This is done by using the
 # (EAPI = 4,5) epatch_user() function of the eutils.eclass,
 # (EAPI = 6) eapply_user function integrated in EAPI = 6.
 # Simply add your patches into one of these directories:
@@ -104,10 +104,7 @@
 inherit flag-o-matic toolchain-funcs unpacker
 
 case ${EAPI:-0} in
-	4|5)
-	;;
-	6)
-	ewarn "EAPI 6 support for test purpose only, plz report bugs to vdr@gentoo.org"
+	4|5|6)
 	;;
 	*) die "EAPI ${EAPI} unsupported."
 	;;
@@ -145,6 +142,7 @@ fi
 #   Called from src_install
 #   file maintained by normal portage-methods
 create_plugindb_file() {
+	#ToDo: rename this to vdr_...
 	local NEW_VDRPLUGINDB_DIR=/usr/share/vdr/vdrplugin-rebuild/
 	local DB_FILE="${NEW_VDRPLUGINDB_DIR}/${CATEGORY}-${PF}"
 	insinto "${NEW_VDRPLUGINDB_DIR}"
@@ -156,6 +154,7 @@ create_plugindb_file() {
 #		EBUILD=${CATEGORY}/${PN}
 #		EBUILD_V=${PVR}
 #	EOT
+#	obsolet? fix me later...
 	{
 		echo "VDRPLUGIN_DB=1"
 		echo "CREATOR=ECLASS"
@@ -166,6 +165,7 @@ create_plugindb_file() {
 }
 
 create_header_checksum_file() {
+	#ToDo: rename this to vdr_...
 	# Danger: Not using $ROOT here, as compile will also not use it !!!
 	# If vdr in $ROOT and / differ, plugins will not run anyway
 
@@ -232,6 +232,7 @@ vdr_patchmakefile() {
 	#sed -i Makefile \
 	#	-e "s:^DVBDIR.*$:DVBDIR = ${DVB_INCLUDE_DIR}:" \
 	#	-e 's:-I$(DVBDIR)/include:-I$(DVBDIR):'
+	# obsolet? fix me later...
 
 	if ! grep -q APIVERSION Makefile; then
 		ebegin "  Converting to APIVERSION"
@@ -260,6 +261,7 @@ vdr_patchmakefile() {
 }
 
 dev_check() {
+	# ToDo: rename this to vdr_...; IMPORTANT: check availabel plugins, if we use this function in the tree...
 	# A lot useful debug infos
 	# set VDR_MAINTAINER_MODE="1" in make.conf
 	if [[ -n ${VDR_MAINTAINER_MODE} ]]; then
@@ -268,6 +270,7 @@ dev_check() {
 }
 
 gettext_missing() {
+	#ToDo: rename this to vdr_...
 	# plugins without converting to gettext
 
 	local GETTEXT_MISSING=$( grep xgettext Makefile )
@@ -277,6 +280,7 @@ gettext_missing() {
 }
 
 detect_po_dir() {
+	# ToDo: rename this to vdr_...
 	# helper function
 
 	[[ -f po ]] && local po_dir="${S}"
@@ -287,9 +291,10 @@ detect_po_dir() {
 }
 
 linguas_support() {
+	# ToDo: rename this to vdr_...
 #	Patching Makefile for linguas support.
 #	Only locales, enabled through the LINGUAS (make.conf) variable will be
-#	"compiled" and installed.
+#	compiled and installed.
 
 	einfo "Patching for Linguas support"
 	einfo "available Languages for ${P} are:"
@@ -311,12 +316,9 @@ linguas_support() {
 vdr_i18n() {
 # 	i18n handling was deprecated since >=media-video/vdr-1.5.9,
 #	finally with >=media-video/vdr-1.7.27 it has been dropped entirely and some
-#	plugins will fail to "compile" because they're still using the old variant.
+#	plugins will fail to compile because they're still using the old variant.
 #	Simply remove the i18n.o object from Makefile (OBJECT) and
 #	remove "static const tI18nPhrase*" from i18n.h.
-#
-#	Plugins that are still using the old method will be pmasked until they're
-#	fixed or in case of maintainer timeout they'll be masked for removal.
 
 	gettext_missing
 
@@ -348,6 +350,7 @@ vdr_i18n() {
 }
 
 remove_i18n_include() {
+	# ToDo: rename this to vdr_...; IMPORTANT!!! We use this in the tree
 	# remove uneeded i18.n includes
 
 	local f
@@ -391,6 +394,7 @@ vdr-plugin-2_pkg_setup() {
 
 	# Plugins need to be compiled with position independent code, otherwise linking
 	# VDR against it will fail
+	# depricated if fi, as we have only >=vdr-2 in the tree, fix me later...
 	if has_version ">=media-video/vdr-1.7.13"; then
 		append-cxxflags -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE
 	fi
@@ -452,15 +456,15 @@ vdr-plugin-2_src_util() {
 			unpacker_src_unpack
 			;;
 		add_local_patch)
-			cd "${S}" || die "Could not change to plugin-source-directory!"
-			if [[ ${EAPI} == 6 ]]; then
+			cd "${S}" || die "Could not change to plugin-source-directory (src_util)"
+			if [[ ${EAPI} != [45] ]]; then
 				eapply_user
 			else
 				epatch_user
 			fi
 			;;
 		patchmakefile)
-			cd "${S}" || die "Could not change to plugin-source-directory!"
+			cd "${S}" || die "Could not change to plugin-source-directory (src_util)"
 			vdr_patchmakefile
 			;;
 		i18n)
@@ -500,7 +504,9 @@ vdr-plugin-2_src_prepare() {
 		die "vdr-plugin-2_src_prepare not called!"
 	fi
 
-	[[ ${PATCHES[@]} ]] && epatch "${PATCHES[@]}"
+	[[ ${EAPI} == [45] ]] && [[ ${PATCHES[@]} ]] && epatch "${PATCHES[@]}"
+	[[ ${EAPI} != [45] ]] && [[ ${PATCHES[@]} ]] && eapply "${PATCHES[@]}"
+
 	debug-print "$FUNCNAME: applying user patches"
 
 	vdr-plugin-2_src_util prepare
@@ -520,16 +526,14 @@ vdr-plugin-2_src_compile() {
 				eerror "Please report this at bugs.gentoo.org."
 				die "vdr-plugin-2_src_compile not called!"
 			fi
-			cd "${S}"
+			cd "${S}" || die "could not change to plugin source directory (src_compile)"
 
-			BUILD_TARGETS=${BUILD_TARGETS:-${VDRPLUGIN_MAKE_TARGET:-all }}
-				emake ${BUILD_PARAMS} \
-					${BUILD_TARGETS} \
-					LOCALEDIR="${TMP_LOCALE_DIR}" \
-					LOCDIR="${TMP_LOCALE_DIR}" \
-					LIBDIR="${S}" \
-					TMPDIR="${T}" \
-					|| die "emake failed"
+			emake all ${BUILD_PARAMS} \
+				LOCALEDIR="${TMP_LOCALE_DIR}" \
+				LOCDIR="${TMP_LOCALE_DIR}" \
+				LIBDIR="${S}" \
+				TMPDIR="${T}" \
+				|| die "emake all failed"
 			;;
 		esac
 
@@ -546,7 +550,7 @@ vdr-plugin-2_src_install() {
 		die "vdr-plugin-2_src_install not called!"
 	fi
 
-	cd "${WORKDIR}"
+	cd "${WORKDIR}" || die "could not change to plugin workdir directory (src_install)"
 
 	if [[ -n ${VDR_MAINTAINER_MODE} ]]; then
 		local mname="${P}-Makefile"
@@ -566,16 +570,15 @@ vdr-plugin-2_src_install() {
 
 	fi
 
-	cd "${S}"
+	cd "${S}" || die "could not change to plugin source directory (src_install)"
 
 	local SOFILE_STRING=$(grep SOFILE Makefile)
 	if [[ -n ${SOFILE_STRING} ]]; then
-		BUILD_TARGETS=${BUILD_TARGETS:-${VDRPLUGIN_MAKE_TARGET:-install }}
-		einstall ${BUILD_PARAMS} \
-			${BUILD_TARGETS} \
-			TMPDIR="${T}" \
-			DESTDIR="${D}" \
-			|| die "einstall (makefile target) failed"
+		emake install \
+		${BUILD_PARAMS} \
+		TMPDIR="${T}" \
+		DESTDIR="${D}" \
+		|| die "emake install (makefile target) failed"
 	else
 		dev_check "Plugin use still the old Makefile handling"
 		insinto "${VDR_PLUGIN_DIR}"
@@ -584,7 +587,7 @@ vdr-plugin-2_src_install() {
 
 	if [[ -d ${TMP_LOCALE_DIR} ]]; then
 		einfo "Installing locales"
-		cd "${TMP_LOCALE_DIR}"
+		cd "${TMP_LOCALE_DIR}" || die "could not change to TMP_LOCALE_DIR"
 
 		local linguas
 		for linguas in ${LINGUAS[*]}; do
@@ -593,7 +596,7 @@ vdr-plugin-2_src_install() {
 		done
 	fi
 
-	cd "${D}/usr/$(get_libdir)/vdr/plugins"
+	cd "${D}/usr/$(get_libdir)/vdr/plugins" || die "could not change to D/usr/libdir/vdr/plugins"
 
 	# create list of all created plugin libs
 	vdr_plugin_list=""
@@ -604,14 +607,19 @@ vdr-plugin-2_src_install() {
 		vdr_plugin_list="${vdr_plugin_list} ${p_name}"
 	done
 
-	cd "${S}"
+	cd "${S}" || die "could not change to plugin source directory (src_install)"
 
 	create_header_checksum_file ${vdr_plugin_list}
 	create_plugindb_file ${vdr_plugin_list}
 
-	local docfile
-	for docfile in README* HISTORY CHANGELOG; do
-		[[ -f ${docfile} ]] && dodoc ${docfile}
+	local commondoc=( README* HISTORY CHANGELOG )
+	for docfile in "${commondoc[@]}"; do
+		if [[ ${EAPI} == "6" ]]; then
+			local DOCS="${DOCS} ${docfile}"
+			[[ -f ${docfile} ]] && einstalldocs "${DOCS[@]}"
+		else
+			[[ -f ${docfile} ]] && dodoc ${docfile}
+		fi
 	done
 
 	# if VDR_CONFD_FILE is empty and ${FILESDIR}/confd exists take it
