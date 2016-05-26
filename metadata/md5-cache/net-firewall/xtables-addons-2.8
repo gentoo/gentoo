@@ -1,6 +1,6 @@
 DEFINED_PHASES=compile configure install postinst postrm preinst prepare setup
 DEPEND=>=net-firewall/iptables-1.4.5 virtual/linux-sources kernel_linux? ( virtual/modutils ) sys-apps/sed kernel_linux? ( virtual/linux-sources )
-DESCRIPTION=extensions not yet accepted in the main kernel/iptables (patch-o-matic(-ng) successor)
+DESCRIPTION=iptables extensions not yet accepted in the main kernel
 EAPI=5
 HOMEPAGE=http://xtables-addons.sourceforge.net/
 IUSE=modules xtables_addons_quota2 xtables_addons_psd xtables_addons_pknock xtables_addons_lscan xtables_addons_length2 xtables_addons_ipv4options xtables_addons_ipp2p xtables_addons_iface xtables_addons_gradm xtables_addons_geoip xtables_addons_fuzzy xtables_addons_condition xtables_addons_tarpit xtables_addons_sysrq xtables_addons_logmark xtables_addons_ipmark xtables_addons_echo xtables_addons_dnetmap xtables_addons_dhcpmac xtables_addons_delude xtables_addons_chaos xtables_addons_account kernel_linux
@@ -11,4 +11,4 @@ SLOT=0
 SRC_URI=mirror://sourceforge/xtables-addons/xtables-addons-2.8.tar.xz
 _eclass_exported_funcs=pkg_preinst:linux-mod pkg_postrm:linux-mod pkg_postinst:linux-mod pkg_setup:- src_prepare:- src_configure:- src_compile:- src_install:-
 _eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	linux-info	fd1e29abbb02cbc49f1a14299846e9c4	linux-mod	4755518412586c2fd655ff6e55780bcb	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=80e5b376e458dc770208ba85b6e1f6c5
+_md5_=63939c172811fecad5d345b4e519f5fc
