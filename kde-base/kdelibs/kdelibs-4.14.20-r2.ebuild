@@ -33,7 +33,6 @@ REQUIRED_USE="
 RESTRICT="test"
 
 COMMONDEPEND="
-	>=app-misc/strigi-0.7.7
 	app-text/docbook-xml-dtd:4.2
 	app-text/docbook-xsl-stylesheets
 	>=dev-libs/libattica-0.4.2
@@ -134,6 +133,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-4.9.3-werror.patch"
 	"${FILESDIR}/${PN}-4.10.0-udisks.patch"
 	"${FILESDIR}/${PN}-4.14.20-FindQt4.patch"
+	"${FILESDIR}/${PN}-4.14.20-strigi-optional.patch"
 )
 
 pkg_pretend() {
@@ -192,6 +192,7 @@ src_configure() {
 		-DBUILD_libkactivities=OFF
 		-DWITH_Soprano=OFF
 		-DWITH_SharedDesktopOntologies=OFF
+		-DCMAKE_DISABLE_FIND_PACKAGE_Strigi=ON
 		-DBUILD_doc=$(usex handbook)
 		-DHAVE_X86_3DNOW=$(usex cpu_flags_x86_3dnow)
 		-DHAVE_PPC_ALTIVEC=$(usex altivec)
