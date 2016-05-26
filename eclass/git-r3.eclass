@@ -343,7 +343,7 @@ _git-r3_set_gitdir() {
 
 	GIT_DIR=${EGIT3_STORE_DIR}/${repo_name}
 
-	if [[ ! -d ${EGIT3_STORE_DIR} ]]; then
+	if [[ ! -d ${EGIT3_STORE_DIR} && ! ${EVCS_OFFLINE} ]]; then
 		(
 			addwrite /
 			mkdir -p "${EGIT3_STORE_DIR}"
@@ -352,6 +352,14 @@ _git-r3_set_gitdir() {
 
 	addwrite "${EGIT3_STORE_DIR}"
 	if [[ ! -d ${GIT_DIR} ]]; then
+		if [[ ${EVCS_OFFLINE} ]]; then
+			eerror "A clone of the following repository is required to proceed:"
+			eerror "  ${1}"
+			eerror "However, networking activity has been disabled using EVCS_OFFLINE and there"
+			eerror "is no local clone available."
+			die "No local clone of ${1}. Unable to proceed with EVCS_OFFLINE."
+		fi
+
 		local saved_umask
 		if [[ ${EVCS_UMASK} ]]; then
 			saved_umask=$(umask)
