@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 PYTHON_COMPAT=( python{2_7,3_4,3_5} )
 
@@ -31,13 +31,6 @@ DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 "
 
 S="${WORKDIR}/${MY_PN}-${PV}"
-
-python_prepare_all() {
-	if use test && has_version "${CATEGORY}/${PN}"; then
-		die "Ensure $PN is not already installed or the test suite will fail"
-	fi
-	distutils-r1_python_prepare_all
-}
 
 python_test() {
 	PYTHONPATH=. py.test || die "tests failed with ${EPYTHON}"
