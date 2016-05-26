@@ -49,7 +49,3 @@ sys-boot/grub libzfs
 # Tom Wijsman <TomWij@gentoo.org> (06 Feb 2014)
 # [QA] Masked jit USE flag on www-apps/cgit as dev-lang/luajit is not stable.
 www-apps/cgit jit
-
-# Ben de Groot <yngwin@gentoo.org (19 Apr 2015)
-# >=opus-1.0.3 is still not stable (bug 500868)
-media-video/vlc opus
