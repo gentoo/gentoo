@@ -31,6 +31,11 @@
 #--- END OF EXAMPLES ---
 
 # Michael Palimaka <kensington@gentoo.org> (26 May 2016)
+# No longer developed by upstream. No revdeps.
+# Masked for removal in 30 days. Bug 583776.
+dev-libs/hammer
+
+# Michael Palimaka <kensington@gentoo.org> (26 May 2016)
 # Depends on vulnerable slot of net-libs/webkit-gtk.
 # Dead upstream. Unmaintained. Masked for removal in 30 days.
 # Bug 584186.
@@ -127,10 +132,6 @@ dev-haskell/tls-extra
 # Sergei Trofimovich <slyfox@gentoo.org> (11 May 2016)
 # Mask standalone hpc. dev-lang/ghc provides bundled hpc.
 dev-haskell/hpc
-
-# Michael Palimaka <kensington@gentoo.org> (11 May 2016)
-# Contents of tarball do not match package version.
-=kde-apps/khelpcenter-5.6.4
 
 # Michael Weber <xmw@gentoo.org> (08 May 2016)
 # Replaced by net-libs/libhubbub.
