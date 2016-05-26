@@ -13,7 +13,7 @@ SRC_URI="http://www.enterprisedt.com/products/edtftpj/download/${P}.zip"
 HOMEPAGE="http://enterprisedt.com/products/edtftpnet"
 LICENSE="LGPL-2.1+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="examples"
 
 DEPEND=">=virtual/jdk-1.7
