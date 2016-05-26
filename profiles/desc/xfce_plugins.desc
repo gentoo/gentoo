@@ -12,4 +12,3 @@ clock - Build xfce4-orageclock-plugin for panel
 multiload-nandhp - Build a port of the GNOME multiload applet for panel
 power - Build power management plug-in for panel
 trash - Build thunar-tpa (trash) plugin for panel
-xmonad - Build xmonad-log-applet for panel
