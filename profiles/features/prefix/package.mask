@@ -13,10 +13,6 @@
 # fails to link wrt libiconv
 =sys-apps/coreutils-8.20
 
-# Benda Xu <heroxbd@gentoo.org> (07 Aug 2012)
-# mask revision for testing out openrc. bug #415895. 
-=sys-apps/baselayout-prefix-1.12.14-r1
-
 # Fabian Groffen <grobian@gentoo.org> (01 Aug 2012)
 # Causes spurious errors due to considering some small files being
 # binary, bug #425668, comment #21.
