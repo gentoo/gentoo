@@ -343,7 +343,7 @@ _git-r3_set_gitdir() {
 
 	GIT_DIR=${EGIT3_STORE_DIR}/${repo_name}
 
-	if [[ ! -d ${EGIT3_STORE_DIR} ]]; then
+	if [[ ! -d ${EGIT3_STORE_DIR} && ! ${EVCS_OFFLINE} ]]; then
 		(
 			addwrite /
 			mkdir -p "${EGIT3_STORE_DIR}"
@@ -352,6 +352,14 @@ _git-r3_set_gitdir() {
 
 	addwrite "${EGIT3_STORE_DIR}"
 	if [[ ! -d ${GIT_DIR} ]]; then
+		if [[ ${EVCS_OFFLINE} ]]; then
+			eerror "A clone of the following repository is required to proceed:"
+			eerror "  ${1}"
+			eerror "However, networking activity has been disabled using EVCS_OFFLINE and there"
+			eerror "is no local clone available."
+			die "No local clone of ${1}. Unable to proceed with EVCS_OFFLINE."
+		fi
+
 		local saved_umask
 		if [[ ${EVCS_UMASK} ]]; then
 			saved_umask=$(umask)
@@ -517,8 +525,6 @@ _git-r3_is_local_repo() {
 git-r3_fetch() {
 	debug-print-function ${FUNCNAME} "$@"
 
-	[[ ${EVCS_OFFLINE} ]] && return
-
 	local repos
 	if [[ ${1} ]]; then
 		repos=( ${1} )
@@ -553,132 +559,143 @@ git-r3_fetch() {
 		umask "${EVCS_UMASK}" || die "Bad options to umask: ${EVCS_UMASK}"
 	fi
 	for r in "${repos[@]}"; do
-		einfo "Fetching \e[1m${r}\e[22m ..."
+		if [[ ! ${EVCS_OFFLINE} ]]; then
+			einfo "Fetching \e[1m${r}\e[22m ..."
 
-		local fetch_command=( git fetch "${r}" )
-		local clone_type=${EGIT_CLONE_TYPE}
+			local fetch_command=( git fetch "${r}" )
+			local clone_type=${EGIT_CLONE_TYPE}
 
-		if [[ ${r} == https://* ]] && ! ROOT=/ has_version 'dev-vcs/git[curl]'; then
-			eerror "git-r3: fetching from https:// requested. In order to support https,"
-			eerror "dev-vcs/git needs to be built with USE=curl. Example solution:"
-			eerror
-			eerror "	echo dev-vcs/git curl >> /etc/portage/package.use"
-			eerror "	emerge -1v dev-vcs/git"
-			die "dev-vcs/git built with USE=curl required."
-		fi
+			if [[ ${r} == https://* ]] && ! ROOT=/ has_version 'dev-vcs/git[curl]'; then
+				eerror "git-r3: fetching from https:// requested. In order to support https,"
+				eerror "dev-vcs/git needs to be built with USE=curl. Example solution:"
+				eerror
+				eerror "	echo dev-vcs/git curl >> /etc/portage/package.use"
+				eerror "	emerge -1v dev-vcs/git"
+				die "dev-vcs/git built with USE=curl required."
+			fi
 
-		if [[ ${clone_type} == mirror ]]; then
-			fetch_command+=(
-				--prune
-				# mirror the remote branches as local branches
-				"+refs/heads/*:refs/heads/*"
-				# pull tags explicitly in order to prune them properly
-				"+refs/tags/*:refs/tags/*"
-				# notes in case something needs them
-				"+refs/notes/*:refs/notes/*"
-				# and HEAD in case we need the default branch
-				# (we keep it in refs/git-r3 since otherwise --prune interferes)
-				"+HEAD:refs/git-r3/HEAD"
-			)
-		else # single or shallow
-			local fetch_l fetch_r
+			if [[ ${clone_type} == mirror ]]; then
+				fetch_command+=(
+					--prune
+					# mirror the remote branches as local branches
+					"+refs/heads/*:refs/heads/*"
+					# pull tags explicitly in order to prune them properly
+					"+refs/tags/*:refs/tags/*"
+					# notes in case something needs them
+					"+refs/notes/*:refs/notes/*"
+					# and HEAD in case we need the default branch
+					# (we keep it in refs/git-r3 since otherwise --prune interferes)
+					"+HEAD:refs/git-r3/HEAD"
+				)
+			else # single or shallow
+				local fetch_l fetch_r
 
-			if [[ ${remote_ref} == HEAD ]]; then
-				# HEAD
-				fetch_l=HEAD
-			elif [[ ${remote_ref} == refs/* ]]; then
-				# regular branch, tag or some other explicit ref
-				fetch_l=${remote_ref}
-			else
-				# tag or commit id...
-				# let ls-remote figure it out
-				local tagref=$(git ls-remote "${r}" "refs/tags/${remote_ref}")
-
-				# if it was a tag, ls-remote obtained a hash
-				if [[ ${tagref} ]]; then
-					# tag
-					fetch_l=refs/tags/${remote_ref}
+				if [[ ${remote_ref} == HEAD ]]; then
+					# HEAD
+					fetch_l=HEAD
+				elif [[ ${remote_ref} == refs/* ]]; then
+					# regular branch, tag or some other explicit ref
+					fetch_l=${remote_ref}
 				else
-					# commit id
-					# so we need to fetch the whole branch
-					if [[ ${branch} ]]; then
-						fetch_l=${branch}
-					else
-						fetch_l=HEAD
-					fi
+					# tag or commit id...
+					# let ls-remote figure it out
+					local tagref=$(git ls-remote "${r}" "refs/tags/${remote_ref}")
 
-					# fetching by commit in shallow mode? can't do.
-					if [[ ${clone_type} == shallow ]]; then
-						clone_type=single
+					# if it was a tag, ls-remote obtained a hash
+					if [[ ${tagref} ]]; then
+						# tag
+						fetch_l=refs/tags/${remote_ref}
+					else
+						# commit id
+						# so we need to fetch the whole branch
+						if [[ ${branch} ]]; then
+							fetch_l=${branch}
+						else
+							fetch_l=HEAD
+						fi
+
+						# fetching by commit in shallow mode? can't do.
+						if [[ ${clone_type} == shallow ]]; then
+							clone_type=single
+						fi
 					fi
+				fi
+
+				if [[ ${fetch_l} == HEAD ]]; then
+					fetch_r=refs/git-r3/HEAD
+				else
+					fetch_r=${fetch_l}
+				fi
+
+				fetch_command+=(
+					"+${fetch_l}:${fetch_r}"
+				)
+
+				if [[ ${clone_type} == single+tags ]]; then
+					fetch_command+=(
+						# pull tags explicitly as requested
+						"+refs/tags/*:refs/tags/*"
+					)
 				fi
 			fi
 
-			if [[ ${fetch_l} == HEAD ]]; then
-				fetch_r=refs/git-r3/HEAD
-			else
-				fetch_r=${fetch_l}
+			if [[ ${clone_type} == shallow ]]; then
+				if _git-r3_is_local_repo; then
+					# '--depth 1' causes sandbox violations with local repos
+					# bug #491260
+					clone_type=single
+				elif [[ ! $(git rev-parse --quiet --verify "${fetch_r}") ]]
+				then
+					# use '--depth 1' when fetching a new branch
+					fetch_command+=( --depth 1 )
+				fi
+			else # non-shallow mode
+				if [[ -f ${GIT_DIR}/shallow ]]; then
+					fetch_command+=( --unshallow )
+				fi
 			fi
 
-			fetch_command+=(
-				"+${fetch_l}:${fetch_r}"
-			)
+			set -- "${fetch_command[@]}"
+			echo "${@}" >&2
+			"${@}" || continue
 
-			if [[ ${clone_type} == single+tags ]]; then
-				fetch_command+=(
-					# pull tags explicitly as requested
-					"+refs/tags/*:refs/tags/*"
-				)
-			fi
-		fi
-
-		if [[ ${clone_type} == shallow ]]; then
-			if _git-r3_is_local_repo; then
-				# '--depth 1' causes sandbox violations with local repos
-				# bug #491260
-				clone_type=single
-			elif [[ ! $(git rev-parse --quiet --verify "${fetch_r}") ]]
-			then
-				# use '--depth 1' when fetching a new branch
-				fetch_command+=( --depth 1 )
-			fi
-		else # non-shallow mode
-			if [[ -f ${GIT_DIR}/shallow ]]; then
-				fetch_command+=( --unshallow )
-			fi
-		fi
-
-		set -- "${fetch_command[@]}"
-		echo "${@}" >&2
-		if "${@}"; then
 			if [[ ${clone_type} == mirror || ${fetch_l} == HEAD ]]; then
 				# update our HEAD to match our remote HEAD ref
 				git symbolic-ref HEAD refs/git-r3/HEAD \
 						|| die "Unable to update HEAD"
 			fi
+		fi
 
-			# now let's see what the user wants from us
-			local full_remote_ref=$(
-				git rev-parse --verify --symbolic-full-name "${remote_ref}"
-			)
+		# now let's see what the user wants from us
+		local full_remote_ref=$(
+			git rev-parse --verify --symbolic-full-name "${remote_ref}"
+		)
 
-			if [[ ${full_remote_ref} ]]; then
-				# when we are given a ref, create a symbolic ref
-				# so that we preserve the actual argument
-				set -- git symbolic-ref "${local_ref}" "${full_remote_ref}"
+		if [[ ${full_remote_ref} ]]; then
+			# when we are given a ref, create a symbolic ref
+			# so that we preserve the actual argument
+			set -- git symbolic-ref "${local_ref}" "${full_remote_ref}"
+		else
+			# otherwise, we were likely given a commit id
+			set -- git update-ref --no-deref "${local_ref}" "${remote_ref}"
+		fi
+
+		echo "${@}" >&2
+		if ! "${@}"; then
+			if [[ ${EVCS_OFFLINE} ]]; then
+				eerror "A clone of the following repository is required to proceed:"
+				eerror "  ${r}"
+				eerror "However, networking activity has been disabled using EVCS_OFFLINE and the local"
+				eerror "clone does not have requested ref:"
+				eerror "  ${remote_ref}"
+				die "Local clone of ${r} does not have requested ref: ${remote_ref}. Unable to proceed with EVCS_OFFLINE."
 			else
-				# otherwise, we were likely given a commit id
-				set -- git update-ref --no-deref "${local_ref}" "${remote_ref}"
-			fi
-
-			echo "${@}" >&2
-			if ! "${@}"; then
 				die "Referencing ${remote_ref} failed (wrong ref?)."
 			fi
-
-			success=1
-			break
 		fi
+
+		success=1
+		break
 	done
 	if [[ ${saved_umask} ]]; then
 		umask "${saved_umask}" || die
@@ -763,11 +780,7 @@ git-r3_checkout() {
 	einfo "Checking out \e[1m${repos[0]}\e[22m to \e[1m${out_dir}\e[22m ..."
 
 	if ! git cat-file -e refs/git-r3/"${local_id}"/__main__; then
-		if [[ ${EVCS_OFFLINE} ]]; then
-			die "No local clone of ${repos[0]}. Unable to work with EVCS_OFFLINE."
-		else
-			die "Logic error: no local clone of ${repos[0]}. git-r3_fetch not used?"
-		fi
+		die "Logic error: no local clone of ${repos[0]}. git-r3_fetch not used?"
 	fi
 	local remote_ref=$(
 		git symbolic-ref --quiet refs/git-r3/"${local_id}"/__main__

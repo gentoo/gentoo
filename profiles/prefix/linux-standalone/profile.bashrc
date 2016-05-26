@@ -22,17 +22,13 @@ if [[ ${CATEGORY}/${PN} == sys-devel/gcc && ${EBUILD_PHASE} == configure ]]; the
     sed -i 's/--sysroot=%R//' \
 	gcc/gcc.c || eerror "Please file a bug about this"
     eend $?
-fi
-
-if [[ ${CATEGORY}/${PN} == sys-devel/binutils && ${EBUILD_PHASE} == prepare ]]; then
+elif [[ ${CATEGORY}/${PN} == sys-devel/binutils && ${EBUILD_PHASE} == prepare ]]; then
     cd "${S}"
     ebegin "Prefixifying native library path"
     sed -i -r "/NATIVE_LIB_DIRS/s,((/usr(/local|)|)/lib),${EPREFIX}\1,g" \
 	ld/configure.tgt || eerror "Please file a bug about this"
     eend $?
-fi
-
-if [[ ${CATEGORY}/${PN} == sys-libs/glibc && ${EBUILD_PHASE} == configure ]]; then
+elif [[ ${CATEGORY}/${PN} == sys-libs/glibc && ${EBUILD_PHASE} == configure ]]; then
     cd "${S}"
     einfo "Prefixifying hardcoded path"
     
@@ -53,9 +49,7 @@ if [[ ${CATEGORY}/${PN} == sys-libs/glibc && ${EBUILD_PHASE} == configure ]]; th
 	-e "s,/(etc|var),${EPREFIX}/\1,g" \
 	nss/db-Makefile || eerror "Please file a bug about this"
     eend $?
-fi
-
-if [[ ${CATEGORY}/${PN} == dev-lang/python && ${EBUILD_PHASE} == configure ]]; then
+elif [[ ${CATEGORY}/${PN} == dev-lang/python && ${EBUILD_PHASE} == configure ]]; then
     # Guide h2py to look into glibc of Prefix
     ebegin "Guide h2py to look into Prefix"
     export include="${EPREFIX}"/usr/include
