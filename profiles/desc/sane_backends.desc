@@ -62,10 +62,8 @@ mustek_usb2 - SANE_BACKENDS setting for building the mustek_usb2 backend
 nec - SANE_BACKENDS setting for building the nec backend
 net - SANE_BACKENDS setting for building the net backend
 niash - SANE_BACKENDS setting for building the niash backend
-nothing - SANE_BACKENDS setting if you want no backend at all
 p5 - SANE_BACKENDS setting for building the p5 backend
 pie - SANE_BACKENDS setting for building the pie backend
-pint - SANE_BACKENDS setting for building the pint backend
 pixma - SANE_BACKENDS setting for building the pixma backend
 plustek - SANE_BACKENDS setting for building the plustek backend
 plustek_pp - SANE_BACKENDS setting for building the plustek_pp backend
