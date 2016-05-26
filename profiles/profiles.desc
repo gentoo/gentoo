@@ -336,6 +336,6 @@ x64-openbsd		prefix/bsd/openbsd/4.2/x64			exp
 x86-netbsd		prefix/bsd/netbsd/4.0/x86			exp
 
 # FreeMiNT
-#m68k-mint		prefix/mint/m68k				exp
+m68k-mint		prefix/mint/m68k				exp
 
 # vim: set ts=8:
