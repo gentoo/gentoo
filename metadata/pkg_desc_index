@@ -8530,7 +8530,7 @@ dev-ros/resource_retriever 1.11.6 1.12.0 9999: Retrieves data from url-format fi
 dev-ros/rgbd_launch 2.2.0 2.2.1 9999: Launch files to open an RGBD device
 dev-ros/robot_pose_ekf 1.13.0 1.13.1 1.14.0 9999: Estimate the 3D pose of a robot, based on (partial) pose measurements coming from different sources
 dev-ros/robot_pose_publisher 0.2.4 9999: A Simple Node to Publish the Robot's Position Relative to the Map using TFs
-dev-ros/robot_state_publisher 1.10.4 1.12.0 1.12.1 1.13.0 9999: Package for publishing the state of a robot to tf
+dev-ros/robot_state_publisher 1.13.0 1.13.1 9999: Package for publishing the state of a robot to tf
 dev-ros/rosapi 0.7.13 0.7.14 9999: Provides service calls for getting ros meta-information, like list of topics, services, params, etc.
 dev-ros/rosauth 0.1.7 9999: Server Side tools for Authorization and Authentication of ROS Clients
 dev-ros/rosbag 1.11.14 1.11.15 1.11.16 1.11.17 1.12.0 1.12.1 9999: Set of tools for recording from and playing back to ROS topics
@@ -9834,8 +9834,8 @@ dev-util/regexxer 0.10: An interactive tool for performing search and replace op
 dev-util/rej 0.16: A utility for solving diff/patch rejects
 dev-util/reswrap 3.2.0 4.0.0: Utility to wrap icon resources into C++ code, from the FOX Toolkit
 dev-util/rootstrap 0.3.24 0.3.24_p5-r1: A tool for building complete Linux filesystem images
-dev-util/rosdep 0.11.4 9999: Command-line tool for installing ROS system dependencies
-dev-util/rosinstall 0.7.6 0.7.7 9999: Command-line tools for maintaining a workspace of projects for ROS
+dev-util/rosdep 0.11.4 0.11.5 9999: Command-line tool for installing ROS system dependencies
+dev-util/rosinstall 0.7.6 0.7.7 0.7.8 9999: Command-line tools for maintaining a workspace of projects for ROS
 dev-util/rosinstall_generator 0.1.11 9999: Generates rosinstall files containing information about repositories with ROS packages/stacks
 dev-util/rpmdevtools 8.3 8.3-r1 8.5: Collection of rpm packaging related utilities
 dev-util/sasm 2.2 9999: Simple crossplatform IDE for NASM assembly language
