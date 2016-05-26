@@ -328,7 +328,7 @@ _git-r3_set_gitdir() {
 		git/*) repo_name=${repo_name#git/};;
 		# gentoo.org
 		gitroot/*) repo_name=${repo_name#gitroot/};;
-		# google code, sourceforge
+		# sourceforge
 		p/*) repo_name=${repo_name#p/};;
 		# kernel.org
 		pub/scm/*) repo_name=${repo_name#pub/scm/};;
@@ -565,22 +565,6 @@ git-r3_fetch() {
 			eerror "	echo dev-vcs/git curl >> /etc/portage/package.use"
 			eerror "	emerge -1v dev-vcs/git"
 			die "dev-vcs/git built with USE=curl required."
-		fi
-
-		if [[ ${r} == https://code.google.com/* ]]; then
-			# Google Code has special magic on top of git that:
-			# 1) can't handle shallow clones at all,
-			# 2) fetches duplicately when tags are pulled in with branch
-			# so automatically switch to single+tags mode.
-			if [[ ${clone_type} == shallow ]]; then
-				einfo "  Google Code does not support shallow clones"
-				einfo "  using \e[1mEGIT_CLONE_TYPE=single+tags\e[22m"
-				clone_type=single+tags
-			elif [[ ${clone_type} == single ]]; then
-				einfo "  git-r3: Google Code does not send tags properly in 'single' mode"
-				einfo "  using \e[1mEGIT_CLONE_TYPE=single+tags\e[22m"
-				clone_type=single+tags
-			fi
 		fi
 
 		if [[ ${clone_type} == mirror ]]; then
