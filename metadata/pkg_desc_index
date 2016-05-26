@@ -8745,7 +8745,7 @@ dev-ruby/bsearch 1.5.0-r2: A binary search library for Ruby
 dev-ruby/bson 1.12.0 3.2.4 3.2.6: A Ruby BSON implementation for MongoDB. (Includes binary C-based extension.)
 dev-ruby/buftok 0.2.0-r1: Statefully split input data by a specifiable token
 dev-ruby/builder 3.0.4-r1 3.0.4-r2 3.1.4 3.2.2 3.2.2-r1: A builder to facilitate programatic generation of XML markup
-dev-ruby/bundler 1.8.9 1.11.2 1.12.4: An easy way to vendor gem dependencies
+dev-ruby/bundler 1.8.9 1.9.10 1.10.6 1.11.2 1.12.4: An easy way to vendor gem dependencies
 dev-ruby/bundler-audit 0.4.0 0.5.0: Provides patch-level verification for Bundled apps
 dev-ruby/bunny 2.3.0 2.3.1: Another synchronous Ruby AMQP client
 dev-ruby/calendar_date_select 2.1.2: A popular and flexible JavaScript DatePicker for RubyOnRails
@@ -8815,7 +8815,7 @@ dev-ruby/deprecated 3.0.1-r2: A Ruby library for handling deprecated code
 dev-ruby/descendants_tracker 0.0.4: Module that adds descendant tracking to a class
 dev-ruby/did_you_mean 1.0.0 1.0.1: 'did you mean?'experience in Ruby
 dev-ruby/diff-lcs 1.2.5 1.2.5-r1: Use the McIlroy-Hunt LCS algorithm to compute differences
-dev-ruby/dnsruby 1.59.1 1.59.2: A pure Ruby DNS client library
+dev-ruby/dnsruby 1.59.1 1.59.2 1.59.3: A pure Ruby DNS client library
 dev-ruby/docile 1.1.5: Turns any Ruby object into a DSL
 dev-ruby/domain_name 0.5.24 0.5.25 0.5.20160309 0.5.20160310: Domain Name manipulation library for Ruby
 dev-ruby/dotenv 2.1.0 2.1.1: Loads environment variables from .env into ENV
