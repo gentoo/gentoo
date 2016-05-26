@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -20,8 +20,8 @@ IUSE="cairo test"
 RDEPEND="
 	app-forensics/afflib
 	dev-libs/boost
-	dev-libs/openssl
-	net-libs/http-parser
+	dev-libs/openssl:=
+	net-libs/http-parser:=
 	net-libs/libpcap
 	sys-libs/zlib
 	cairo? (
