@@ -6,7 +6,6 @@
 		<name>Gentoo KDE Project</name>
 	</maintainer>
 	<use>
-		<flag name="fits">Enable support for the FITS image format through cfitsio</flag>
 		<flag name="indi">Enable support for Astronomical control library using libindi</flag>
 		<flag name="wcs">Enable support for World Coordinate System library using wcslib</flag>
 		<flag name="xplanet">Enable support for Xplanet</flag>
