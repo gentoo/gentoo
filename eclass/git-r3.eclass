@@ -165,6 +165,32 @@ fi
 #
 # EGIT_CHECKOUT_DIR=${WORKDIR}/${P}
 
+# @ECLASS-VARIABLE: EGIT_SUBMODULES
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# An array of inclusive and exclusive wildcards on submodule names,
+# stating which submodules are fetched and checked out. Exclusions
+# start with '-', and exclude previously matched submodules.
+#
+# If unset, all submodules are enabled. Empty list disables all
+# submodules. In order to use an exclude-only list, start the array
+# with '*'.
+#
+# Remember that wildcards need to be quoted in order to prevent filename
+# expansion.
+#
+# Examples:
+# @CODE
+# # Disable all submodules
+# EGIT_SUBMODULES=()
+#
+# # Include only foo and bar
+# EGIT_SUBMODULES=( foo bar )
+#
+# # Use all submodules except for test-* but include test-lib
+# EGIT_SUBMODULES=( '*' '-test-*' test-lib )
+# @CODE
+
 # @FUNCTION: _git-r3_env_setup
 # @INTERNAL
 # @DESCRIPTION:
@@ -205,6 +231,11 @@ _git-r3_env_setup() {
 			die "Invalid EGIT_MIN_CLONE_TYPE=${EGIT_MIN_CLONE_TYPE}"
 	esac
 
+	if [[ ${EGIT_SUBMODULES[@]+1} && $(declare -p EGIT_SUBMODULES) != "declare -a"* ]]
+	then
+		die 'EGIT_SUBMODULES must be an array.'
+	fi
+
 	local esc_pn livevar
 	esc_pn=${PN//[-+]/_}
 
@@ -243,7 +274,8 @@ _git-r3_env_setup() {
 	if [[ ${EGIT_HAS_SUBMODULES} ]]; then
 		eerror "EGIT_HAS_SUBMODULES has been removed. The eclass no longer needs"
 		eerror "to switch the clone type in order to support submodules and therefore"
-		eerror "submodules are detected and fetched automatically."
+		eerror "submodules are detected and fetched automatically. If you need to"
+		eerror "disable or filter submodules, see EGIT_SUBMODULES."
 		die "EGIT_HAS_SUBMODULES is no longer necessary."
 	fi
 
@@ -357,6 +389,26 @@ _git-r3_set_submodules() {
 		l=${l#submodule.}
 		local subname=${l%%.url=*}
 
+		# filter out on EGIT_SUBMODULES
+		if declare -p EGIT_SUBMODULES &>/dev/null; then
+			local p l_res res=
+			for p in "${EGIT_SUBMODULES[@]}"; do
+				if [[ ${p} == -* ]]; then
+					p=${p#-}
+					l_res=
+				else
+					l_res=1
+				fi
+
+				[[ ${subname} == ${p} ]] && res=${l_res}
+			done
+
+			if [[ ! ${res} ]]; then
+				einfo "Skipping submodule \e[1m${subname}\e[22m"
+				continue
+			fi
+		fi
+
 		# skip modules that have 'update = none', bug #487262.
 		local upd=$(echo "${data}" | git config -f /dev/fd/0 \
 			submodule."${subname}".update)
@@ -432,42 +484,6 @@ _git-r3_is_local_repo() {
 	local uri=${1}
 
 	[[ ${uri} == file://* || ${uri} == /* ]]
-}
-
-# @FUNCTION: _git-r3_find_head
-# @USAGE: <head-ref>
-# @INTERNAL
-# @DESCRIPTION:
-# Given a ref to which remote HEAD was fetched, try to find
-# a branch matching the commit. Expects 'git show-ref'
-# or 'git ls-remote' output on stdin.
-_git-r3_find_head() {
-	debug-print-function ${FUNCNAME} "$@"
-
-	local head_ref=${1}
-	local head_hash=$(git rev-parse --verify "${1}" || die)
-	local matching_ref
-
-	# TODO: some transports support peeking at symbolic remote refs
-	# find a way to use that rather than guessing
-
-	# (based on guess_remote_head() in git-1.9.0/remote.c)
-	local h ref
-	while read h ref; do
-		# look for matching head
-		if [[ ${h} == ${head_hash} ]]; then
-			# either take the first matching ref, or master if it is there
-			if [[ ! ${matching_ref} || ${ref} == refs/heads/master ]]; then
-				matching_ref=${ref}
-			fi
-		fi
-	done
-
-	if [[ ! ${matching_ref} ]]; then
-		die "Unable to find a matching branch for remote HEAD (${head_hash})"
-	fi
-
-	echo "${matching_ref}"
 }
 
 # @FUNCTION: git-r3_fetch
@@ -651,26 +667,10 @@ git-r3_fetch() {
 		set -- "${fetch_command[@]}"
 		echo "${@}" >&2
 		if "${@}"; then
-			if [[ ${clone_type} == mirror ]]; then
-				# find remote HEAD and update our HEAD properly
-				git symbolic-ref HEAD \
-					"$(_git-r3_find_head refs/git-r3/HEAD \
-						< <(git show-ref --heads || die))" \
+			if [[ ${clone_type} == mirror || ${fetch_l} == HEAD ]]; then
+				# update our HEAD to match our remote HEAD ref
+				git symbolic-ref HEAD refs/git-r3/HEAD \
 						|| die "Unable to update HEAD"
-			else # single or shallow
-				if [[ ${fetch_l} == HEAD ]]; then
-					# find out what branch we fetched as HEAD
-					local head_branch=$(_git-r3_find_head \
-						refs/git-r3/HEAD \
-						< <(git ls-remote --heads "${r}" || die))
-
-					# and move it to its regular place
-					git update-ref --no-deref "${head_branch}" \
-						refs/git-r3/HEAD \
-						|| die "Unable to sync HEAD branch ${head_branch}"
-					git symbolic-ref HEAD "${head_branch}" \
-						|| die "Unable to update HEAD"
-				fi
 			fi
 
 			# now let's see what the user wants from us
@@ -806,9 +806,7 @@ git-r3_checkout() {
 		# setup 'alternates' to avoid copying objects
 		echo "${orig_repo}/objects" > "${GIT_DIR}"/objects/info/alternates || die
 		# now copy the refs
-		# [htn]* safely catches heads, tags, notes without complaining
-		# on non-existing ones, and omits internal 'git-r3' ref
-		cp -R "${orig_repo}"/refs/[htn]* "${GIT_DIR}"/refs/ || die
+		cp -R "${orig_repo}"/refs/* "${GIT_DIR}"/refs/ || die
 
 		# (no need to copy HEAD, we will set it via checkout)
 
