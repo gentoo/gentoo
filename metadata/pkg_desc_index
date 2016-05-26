@@ -15036,7 +15036,6 @@ net-p2p/valknut 0.4.9: A open source cross platform client for the Direct Connec
 net-p2p/vuze 4.8.1.2-r1 5.3.0.0 5.6.0.0: BitTorrent client in Java, formerly called Azureus
 net-p2p/vuze-coreplugins 4.8.1.2 5.3.0.0 5.6.0.0: Core plugins for Vuze that are included in upstream distribution
 net-p2p/xnap 2.5-r3: A P2P framework and client
-net-p2p/yaggui 0.9.2: Yet Another Gift GUI in java
 net-print/adobeps 1.0.6-r1: Adobe PostScript drivers for Windows for use with CUPS
 net-print/apsfilter 7.2.5 7.2.8: Apsfilter Prints So Fine, It Leads To Extraordinary Results
 net-print/c2esp 25c 26: A cups filter for Kodak ESP printers
