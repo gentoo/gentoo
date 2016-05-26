@@ -7,3 +7,6 @@
 # Man pages are not essential.
 -*sys-apps/man-pages
 -*virtual/man
+
+# A service manager is not essential.
+-*virtual/service-manager
