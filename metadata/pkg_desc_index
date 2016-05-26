@@ -3855,7 +3855,7 @@ dev-java/ecj-gcj 3.5.2-r3 3.6-r1 4.2.1-r2 4.4.2: A subset of Eclipse Compiler fo
 dev-java/eclipse-ecj 4.2.1 4.4.2-r1 4.5.1: Eclipse Compiler for Java
 dev-java/eclipsito 0_pre20130713: A small subset of Eclipse core libraries for modular applications
 dev-java/ecs 1.4.2-r2: Java library to generate markup language text such as HTML and XML
-dev-java/edtftpj 2.0.4 2.4.0: FTP client library written in Java
+dev-java/edtftpj 2.4.0: FTP client library written in Java
 dev-java/ehcache 1.2.4-r3 1.2.4-r4: Ehcache is a pure Java, fully-featured, in-process cache
 dev-java/emma 2.0.5312-r2: a free Java code coverage tool
 dev-java/fastinfoset 1.2.11: Fast Infoset specifies a standardized binary encoding for the XML Information Sets
@@ -7326,7 +7326,7 @@ dev-python/jaraco-classes 1.2 1.3: Classes used by other projects by developer j
 dev-python/jaraco-collections 1.3.1 1.3.2: Models and classes to supplement the stdlib collections module
 dev-python/jaraco-functools 1.9 1.11: Additional functions used by other projects by developer jaraco
 dev-python/jaraco-itertools 1.7.1: Additional functions used by other projects by developer jaraco
-dev-python/jaraco-logging 1.3.1: Additional facilities to supplement Python's stdlib logging module
+dev-python/jaraco-logging 1.3.1 1.5: Additional facilities to supplement Python's stdlib logging module
 dev-python/jaraco-stream 1.1: Routines for handling streaming data
 dev-python/jaraco-text 1.6.3: Text utilities used by other projects by developer jaraco
 dev-python/jaraco-utils 10.0.2: General utility modules that supply commonly-used functionality
@@ -16682,7 +16682,7 @@ sys-auth/fprint_demo 0.4: a simple GTK+ application to demonstrate and test libf
 sys-auth/fprintd 0.2.0-r1 0.4.1 0.5.0 0.5.1 0.6.0: D-Bus service to access fingerprint readers
 sys-auth/google-authenticator 1.01_pre20160307231538 9999: PAM Module for two step verification via mobile platform
 sys-auth/icmpdn 0.4: ICMP Domain Name utilities & NSS backend
-sys-auth/keystone 8.0.1-r1 8.1.0 9.0.0-r1 2015.2.9999 2016.1.9999: The Openstack authentication, authorization, and service catalog
+sys-auth/keystone 8.0.1-r1 8.1.0 8.1.2 9.0.0-r1 9.0.2 2015.2.9999 2016.1.9999: The Openstack authentication, authorization, and service catalog
 sys-auth/libfprint 0.4.0 0.5.0-r1 0.5.1-r1 0.6.0-r2: library to add support for consumer fingerprint readers
 sys-auth/libnss-cache 0.1-r1 0.10.1 0.10.2: libnss-cache is a library that serves nss lookups
 sys-auth/libnss-mysql 1.5_p20060915-r2 1.5_p20060915-r3: NSS MySQL Library
