@@ -30,6 +30,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michael Palimaka <kensington@gentoo.org> (26 May 2016)
+# Depends on vulnerable slot of net-libs/webkit-gtk.
+# Dead upstream. Unmaintained. Masked for removal in 30 days.
+# Bug 584186.
+www-client/luakit
+
 # Chris Reffett <creffett@gentoo.org> (25 May 2016)
 # The webkit-gtk:4 backend for Xiphos has known text display issues.
 # Use at your own risk.
