@@ -1,3 +1,4 @@
+# -*- mode: shell-script; -*-
 # RAP specific patches that is pending upstream.
 # binutils: http://article.gmane.org/gmane.comp.gnu.binutils/67593
 
@@ -36,7 +37,7 @@ if [[ ${CATEGORY}/${PN} == sys-libs/glibc && ${EBUILD_PHASE} == configure ]]; th
     einfo "Prefixifying hardcoded path"
     
     for f in libio/iopopen.c \
-		 shadow/lckpwdf.c resolv/{netdb,resolv}.h \
+		 shadow/lckpwdf.c resolv/{netdb,resolv}.h elf/rtld.c \
 		 nis/nss_compat/compat-{grp,initgroups,{,s}pwd}.c \
 		 nss/{bug-erange,nss_files/files-init{,groups}}.c \
 		 sysdeps/{{generic,unix/sysv/linux}/paths.h,posix/system.c}
@@ -51,5 +52,14 @@ if [[ ${CATEGORY}/${PN} == sys-libs/glibc && ${EBUILD_PHASE} == configure ]]; th
     sed -i -r \
 	-e "s,/(etc|var),${EPREFIX}/\1,g" \
 	nss/db-Makefile || eerror "Please file a bug about this"
+    eend $?
+fi
+
+if [[ ${CATEGORY}/${PN} == dev-lang/python && ${EBUILD_PHASE} == configure ]]; then
+    # Guide h2py to look into glibc of Prefix
+    ebegin "Guide h2py to look into Prefix"
+    export include="${EPREFIX}"/usr/include
+    sed -i -r \
+	-e "s,/usr/include,\"${EPREFIX}\"/usr/include,g" "${S}"/Lib/plat-linux*/regen
     eend $?
 fi
