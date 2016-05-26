@@ -240,17 +240,17 @@ _git-r3_env_setup() {
 	esc_pn=${PN//[-+]/_}
 
 	livevar=${esc_pn}_LIVE_REPO
-	EGIT_REPO_URI=${!livevar:-${EGIT_REPO_URI}}
+	EGIT_REPO_URI=${!livevar-${EGIT_REPO_URI}}
 	[[ ${!livevar} ]] \
 		&& ewarn "Using ${livevar}, no support will be provided"
 
 	livevar=${esc_pn}_LIVE_BRANCH
-	EGIT_BRANCH=${!livevar:-${EGIT_BRANCH}}
+	EGIT_BRANCH=${!livevar-${EGIT_BRANCH}}
 	[[ ${!livevar} ]] \
 		&& ewarn "Using ${livevar}, no support will be provided"
 
 	livevar=${esc_pn}_LIVE_COMMIT
-	EGIT_COMMIT=${!livevar:-${EGIT_COMMIT}}
+	EGIT_COMMIT=${!livevar-${EGIT_COMMIT}}
 	[[ ${!livevar} ]] \
 		&& ewarn "Using ${livevar}, no support will be provided"
 
