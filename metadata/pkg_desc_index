@@ -13862,7 +13862,7 @@ net-analyzer/symon 2.87: Performance and information monitoring tool
 net-analyzer/synscan 5.01: A fast asynchronous half-open TCP portscanner
 net-analyzer/syweb 0.65: Web frontend to symon
 net-analyzer/tcpdump 4.7.4 4.7.4-r1 9999: A Tool for network monitoring and data acquisition
-net-analyzer/tcpflow 1.4.4_p3 1.4.5_p1: A tool for monitoring, capturing and storing TCP connections flows
+net-analyzer/tcpflow 1.4.4_p3 1.4.5_p1-r1: A tool for monitoring, capturing and storing TCP connections flows
 net-analyzer/tcping 1.3.5: Ping implementation that uses the TCP protocol
 net-analyzer/tcpreen 1.4.4: TCP network re-engineering tool
 net-analyzer/tcpreplay 4.1.1: a suite of utilities for editing and replaying previously captured network traffic
