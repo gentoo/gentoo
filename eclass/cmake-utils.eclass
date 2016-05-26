@@ -659,12 +659,28 @@ _ninjaopts_from_makeopts() {
 	set -- ${MAKEOPTS}
 	while (( $# )); do
 		case $1 in
-			-j|-l|-k)
-				ninjaopts+=( $1 $2 )
-				shift 2
+			-j|-l)
+				if [[ $# -eq 1 || $2 == -* ]]; then
+					if [[ $1 == -j ]]; then
+						# absurdly high job limit
+						ninjaopts+=( $1 9999 )
+					else # -l
+						# remove load limit (like make does for -l)
+						ninjaopts+=( $1 0 )
+					fi
+					shift 1
+				else
+					ninjaopts+=( $1 $2 )
+					shift 2
+				fi
 				;;
-			-j*|-l*|-k*)
+			-j*|-l*)
 				ninjaopts+=( $1 )
+				shift 1
+				;;
+			-k)
+				# -k 0 = any number of tasks can fail
+				ninjaopts+=( $1 0 )
 				shift 1
 				;;
 			*) shift ;;
