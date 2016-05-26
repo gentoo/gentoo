@@ -1,0 +1,8 @@
+diff -Naur kding-0.6.orig/CMakeLists.txt kding-0.6/CMakeLists.txt
+--- kding-0.6.orig/CMakeLists.txt	2009-09-20 14:09:48.000000000 +0200
++++ kding-0.6/CMakeLists.txt	2016-05-26 19:03:47.146777630 +0200
+@@ -1,3 +1,4 @@
++cmake_minimum_required(VERSION 2.8.12 FATAL_ERROR)
+ project(kding)
+ 
+ find_package(KDE4 REQUIRED)
