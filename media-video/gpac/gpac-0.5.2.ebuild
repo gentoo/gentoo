@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -7,10 +7,10 @@ EAPI=4
 if [[ ${PV} == *9999 ]] ; then
 	SCM="git-r3"
 	EGIT_REPO_URI="https://github.com/gpac/gpac"
-	KEYWORDS=""
+	KEYWORDS="alpha"
 else
 	SRC_URI="https://github.com/gpac/gpac/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~alpha amd64 ppc ppc64 sparc x86 ~x86-fbsd"
+	KEYWORDS="alpha amd64 ppc ppc64 sparc x86 ~x86-fbsd"
 fi
 
 inherit eutils flag-o-matic multilib toolchain-funcs ${SCM}
