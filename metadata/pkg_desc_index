@@ -11762,7 +11762,7 @@ mail-filter/libspf2 1.2.9-r3 1.2.10: libspf2 implements the Sender Policy Framew
 mail-filter/libsrs2 1.0.18: libsrs2 is the next generation Sender Rewriting Scheme library
 mail-filter/libsrs_alt 1.0: Sender Rewriting Scheme library
 mail-filter/maildrop 2.6.0 2.8.3: Mail delivery agent/filter
-mail-filter/mailfilter 0.8.2: Mailfilter is a utility to get rid of unwanted spam mails
+mail-filter/mailfilter 0.8.2 0.8.4: Mailfilter is a utility to get rid of unwanted spam mails
 mail-filter/mapson 3.3: A challenge/response-based white-list spam filter
 mail-filter/milter-regex 1.9: A milter-based regular expression filter
 mail-filter/mimedefang 2.73 2.74 2.75: Antispam, antivirus and other customizable filtering for MTAs with Milter support
