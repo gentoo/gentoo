@@ -1,0 +1,3 @@
+# Benda Xu <heroxbd@gentoo.org> (26 May 2016)
+# baselayout-prefix breaks openrc and directory layout.
+sys-apps/baselayout-prefix
