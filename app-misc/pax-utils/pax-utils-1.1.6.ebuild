@@ -54,5 +54,5 @@ src_test() {
 }
 
 src_install() {
-	_emake DESTDIR="${ED}" PKGDOCDIR='$(DOCDIR)'/${PF} install
+	_emake DESTDIR="${D}" PKGDOCDIR='$(DOCDIR)'/${PF} install
 }
