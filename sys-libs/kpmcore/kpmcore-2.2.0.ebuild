@@ -4,35 +4,33 @@
 
 EAPI=6
 
-KDE_HANDBOOK="forceoptional"
 inherit kde5
 
-DESCRIPTION="KDE utility for management of partitions and file systems"
+DESCRIPTION="Library for managing partitions"
 HOMEPAGE="https://www.kde.org/applications/system/kdepartitionmanager"
 SRC_URI="mirror://kde/stable/${PN}/${PV}/src/${P}.tar.xz"
 
 LICENSE="GPL-3"
+SLOT="5/3"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-DEPEND="
-	$(add_frameworks_dep kconfig)
-	$(add_frameworks_dep kconfigwidgets)
+CDEPEND="
 	$(add_frameworks_dep kcoreaddons)
-	$(add_frameworks_dep kcrash)
 	$(add_frameworks_dep ki18n)
 	$(add_frameworks_dep kiconthemes)
 	$(add_frameworks_dep kio)
-	$(add_frameworks_dep kjobwidgets)
 	$(add_frameworks_dep kservice)
 	$(add_frameworks_dep kwidgetsaddons)
-	$(add_frameworks_dep kxmlgui)
 	$(add_qt_dep qtgui)
 	$(add_qt_dep qtwidgets)
+	dev-libs/libatasmart
 	sys-apps/util-linux
-	<sys-libs/kpmcore-2.2.0:5=
+	>=sys-block/parted-3
 "
-RDEPEND="${DEPEND}
-	$(add_plasma_dep kde-cli-tools kdesu 5.5.2)
-	!sys-block/partitionmanager:0
+DEPEND="${CDEPEND}
+	virtual/pkgconfig
+"
+RDEPEND="${CDEPEND}
+	!<sys-block/partitionmanager-2.0.0
 "
