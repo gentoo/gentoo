@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -11,7 +11,7 @@ SRC_URI="http://downloads.sourceforge.net/project/kpcli/${P}.pl"
 LICENSE="|| ( Artistic GPL-1+ )"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
+IUSE="X"
 
 DEPEND=""
 RDEPEND="
@@ -29,6 +29,7 @@ RDEPEND="
 	virtual/perl-Data-Dumper
 	virtual/perl-Term-ANSIColor
 	virtual/perl-Carp
+	X? ( dev-perl/Clipboard )
 "
 
 src_unpack() {
