@@ -4,7 +4,7 @@
 
 EAPI=6
 
-inherit eutils fdo-mime
+inherit fdo-mime
 
 DESCRIPTION="Minimal image viewer designed for tiling window manager users"
 HOMEPAGE="https://github.com/eXeC64/imv"
@@ -13,6 +13,7 @@ SRC_URI="https://github.com/eXeC64/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
+RESTRICT="test"
 
 RDEPEND="
 	!sys-apps/renameutils
@@ -23,10 +24,6 @@ RDEPEND="
 "
 
 DEPEND="${RDEPEND}"
-
-src_install() {
-	emake DESTDIR="${D}" install
-}
 
 pkg_postinst() {
 	fdo-mime_desktop_database_update
