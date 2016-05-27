@@ -2439,7 +2439,7 @@ app-text/texi2html 5.0-r1: Perl script that converts Texinfo to HTML
 app-text/texlive 2012 2013 2014 2015: A complete TeX distribution
 app-text/texlive-core 2012 2012-r1 2012-r3 2013-r1 2013-r3 2014 2014-r1 2014-r3 2014-r4 2015: A complete TeX distribution
 app-text/tidy-html5 5.1.9 5.2.0: Tidy the layout and correct errors in HTML, HTML5 and XML documents
-app-text/tkinfo 2.8: Info Browser in TK
+app-text/tkinfo 2.8 2.8-r1: Info Browser in TK
 app-text/tkman 2.2-r1: TkMan man and info page browser
 app-text/tofrodos 1.7.12a: text file conversion utility that converts ASCII files between the MSDOS format and the Unix format
 app-text/tokyodystopia 0.9.15: A fulltext search engine for Tokyo Cabinet
@@ -6224,7 +6224,7 @@ dev-perl/Sub-Exporter 0.987.0: A sophisticated exporter for custom-built routine
 dev-perl/Sub-Exporter-ForMethods 0.100.52: Helper routines for using Sub::Exporter to build methods
 dev-perl/Sub-Exporter-Progressive 0.1.11: Only use Sub::Exporter if you need it
 dev-perl/Sub-Identify 0.40.0-r1 0.120.0: Retrieve names of code references
-dev-perl/Sub-Install 0.926.0-r1 0.928.0: Install subroutines into packages easily
+dev-perl/Sub-Install 0.928.0: Install subroutines into packages easily
 dev-perl/Sub-Name 0.50.0-r1 0.150.0: (Re)name a sub
 dev-perl/Sub-Override 0.90.0: Perl extension for easily overriding subroutines
 dev-perl/Sub-Uplevel 0.250.0: Apparently run a function in a higher stack frame
