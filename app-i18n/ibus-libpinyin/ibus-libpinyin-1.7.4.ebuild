@@ -15,15 +15,16 @@ SRC_URI="https://github.com/libpinyin/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="boost opencc lua"
 
 DEPEND="sys-apps/sed"
-RDEPEND=">=app-i18n/ibus-1.4[python,${PYTHON_USEDEP}]
+RDEPEND=">=app-i18n/ibus-1.5.4[python,${PYTHON_USEDEP}]
 	dev-python/pygtk[${PYTHON_USEDEP}]
-	=app-i18n/libpinyin-1.0.0
+	>=app-i18n/libpinyin-1.2.91
 	app-i18n/pyzy
 	boost? ( >=dev-libs/boost-1.39 )
+	opencc? ( >=app-i18n/opencc-1.0.0 )
 	lua? ( >=dev-lang/lua-5.1 )"
 
 DOCS=( AUTHORS ChangeLog NEWS README )
