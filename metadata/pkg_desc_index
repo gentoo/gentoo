@@ -8757,7 +8757,7 @@ dev-ruby/celluloid 0.16.0-r1 0.17.3: Provides a simple and natural way to build 
 dev-ruby/celluloid-essentials 0.20.5: Provides a simple and natural way to build fault-tolerant concurrent programs
 dev-ruby/celluloid-extras 0.20.5: Provides a simple and natural way to build fault-tolerant concurrent programs
 dev-ruby/celluloid-fsm 0.20.5: Provides a simple and natural way to build fault-tolerant concurrent programs
-dev-ruby/celluloid-io 0.16.2: Evented IO for Celluloid actors
+dev-ruby/celluloid-io 0.16.2 0.17.3: Evented IO for Celluloid actors
 dev-ruby/celluloid-pool 0.20.5: Provides a simple and natural way to build fault-tolerant concurrent programs
 dev-ruby/celluloid-supervision 0.20.5: Provides a simple and natural way to build fault-tolerant concurrent programs
 dev-ruby/certificate_authority 0.1.6: Managing the core functions outlined in RFC-3280 for PKI
