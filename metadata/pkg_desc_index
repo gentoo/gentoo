@@ -6227,7 +6227,7 @@ dev-perl/Sub-Identify 0.40.0-r1 0.120.0: Retrieve names of code references
 dev-perl/Sub-Install 0.926.0-r1 0.928.0: Install subroutines into packages easily
 dev-perl/Sub-Name 0.50.0-r1 0.150.0: (Re)name a sub
 dev-perl/Sub-Override 0.90.0: Perl extension for easily overriding subroutines
-dev-perl/Sub-Uplevel 0.240.0-r1 0.250.0: Apparently run a function in a higher stack frame
+dev-perl/Sub-Uplevel 0.250.0: Apparently run a function in a higher stack frame
 dev-perl/Switch 2.160.0-r1 2.170.0: A switch statement for Perl
 dev-perl/Symbol-Global-Name 0.50.0: Finds name and type of a global variable
 dev-perl/Symbol-Util 0.20.300-r1: Additional utils for Perl symbols manipulation
