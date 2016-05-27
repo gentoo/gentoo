@@ -35,12 +35,12 @@ CONFIG_CHECK="~CHECKPOINT_RESTORE ~NAMESPACES ~PID_NS ~FHANDLE ~EVENTFD ~EPOLL ~
 
 RESTRICT="test"
 
-src_prepare() {
-	epatch "${FILESDIR}"/${PV}/${P}-flags.patch
-	epatch "${FILESDIR}"/${PV}/${P}-makefile.patch
-	epatch "${FILESDIR}"/2.0/${PN}-2.0-automagic-libbsd.patch
-	epatch "${FILESDIR}"/2.0/${PN}-2.0-sysroot.patch
-}
+PATCHES=(
+	"${FILESDIR}"/${PV}/${P}-flags.patch
+	"${FILESDIR}"/${PV}/${P}-makefile.patch
+	"${FILESDIR}"/2.0/${PN}-2.0-automagic-libbsd.patch
+	"${FILESDIR}"/2.0/${PN}-2.0-sysroot.patch
+)
 
 criu_arch() {
 	# criu infers the arch from $(uname -m).  We never want this to happen.
