@@ -1,0 +1,15 @@
+DEFINED_PHASES=configure install
+DEPEND=>=sys-apps/dbus-1.4 >=dev-libs/glib-2.32 net-misc/mobile-broadband-provider-info bluetooth? ( >=net-wireless/bluez-4.99 ) udev? ( virtual/udev ) examples? ( dev-python/dbus-python ) tools? ( virtual/libusb:1 ) virtual/pkgconfig virtual/pkgconfig
+DESCRIPTION=Open Source mobile telephony (GSM/UMTS) daemon
+EAPI=6
+HOMEPAGE=http://ofono.org/
+IUSE=+atmodem bluetooth +cdmamodem +datafiles doc dundee examples +isimodem +phonesim +provision +qmimodem threads tools +udev upower
+KEYWORDS=~amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc ~x86
+LICENSE=GPL-2
+RDEPEND=>=sys-apps/dbus-1.4 >=dev-libs/glib-2.32 net-misc/mobile-broadband-provider-info bluetooth? ( >=net-wireless/bluez-4.99 ) udev? ( virtual/udev ) examples? ( dev-python/dbus-python ) tools? ( virtual/libusb:1 )
+REQUIRED_USE=dundee? ( bluetooth )
+SLOT=0
+SRC_URI=mirror://kernel/linux/network/ofono/ofono-1.18.tar.xz
+_eclass_exported_funcs=src_configure:- src_install:-
+_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	multilib	d062ae4ba2fc40a19c11de2ad89b6616	systemd	3165c885f3c71ffae7a867d931fb0e07	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=7b9fa85a9d02cc67de8098e9eec406fd

@@ -2020,7 +2020,7 @@ app-office/libreoffice-bin 5.0.5.2-r1 5.1.2.2-r1: A full office productivity sui
 app-office/libreoffice-bin-debug 5.0.5.2-r1 5.1.2.2-r1: LibreOffice, a full office productivity suite. Binary package, debug info
 app-office/libreoffice-l10n 5.0.5.2 5.1.2.2: Translations for the Libreoffice suite
 app-office/lotus-notes 8.5.3: Commercial fork of openoffice.org with extra features for company usage
-app-office/lyx 2.0.8.1 2.1.3 2.1.4: WYSIWYM frontend for LaTeX, DocBook, etc.
+app-office/lyx 2.0.8.1 2.1.4 2.2.0: WYSIWYM frontend for LaTeX, DocBook, etc.
 app-office/magicpoint 1.13a_p20121015: An X11 based presentation tool
 app-office/mdbtools 0.7.1 0.7.1-r1: A set of libraries and utilities for reading Microsoft Access database (MDB) files
 app-office/multitalk 1.4: A new type of presentation program
@@ -11197,7 +11197,7 @@ kde-apps/kdeedu-data 15.12.3-r1 16.04.1: Shared icons, artwork and data files fo
 kde-apps/kdeedu-meta 4.14.3 15.12.3-r1 16.04.1: KDE educational apps - merge this to pull in all kdeedu-derived packages
 kde-apps/kdegames-meta 4.14.3 15.08.3 15.12.3 16.04.1: kdegames - merge this to pull in all kdegames-derived packages
 kde-apps/kdegraphics-meta 4.14.3 15.08.3 15.12.3 16.04.1: kdegraphics - merge this to pull in all kdegraphics-derived packages
-kde-apps/kdegraphics-mobipocket 4.14.3 15.08.3 15.12.3 16.04.1: Library to support mobipocket ebooks
+kde-apps/kdegraphics-mobipocket 4.14.3-r1 15.08.3-r1 15.12.3-r1 16.04.1-r1: Library to support mobipocket ebooks
 kde-apps/kdemultimedia-meta 4.14.3 15.08.3-r1 15.12.3 16.04.1: kdemultimedia - merge this to pull in all kdemultimedia-derived packages
 kde-apps/kdenetwork-filesharing 4.14.3 15.08.3 15.12.3 16.04.1: kcontrol filesharing config module for SMB
 kde-apps/kdenetwork-meta 4.14.3 15.08.3-r1 15.12.3-r1 15.12.3-r2 16.04.1: kdenetwork - merge this to pull in all kdenetwork-derived packages
@@ -14749,7 +14749,7 @@ net-misc/nut-monitor 1.3-r2: A graphical application to monitor and manage UPSes
 net-misc/nx 3.5.0.30 3.5.0.32: NX compression technology core libraries
 net-misc/nxplayer 5.0.63.3 5.1.7.6 5.1.24.1: Client for NoMachine remote servers
 net-misc/ocsync 0.90.4: A file synchronizer especially designed for you, the normal user
-net-misc/ofono 1.16 1.17: Open Source mobile telephony (GSM/UMTS) daemon
+net-misc/ofono 1.16 1.17 1.18: Open Source mobile telephony (GSM/UMTS) daemon
 net-misc/oidentd 2.0.8-r5: Another (RFC1413 compliant) ident daemon
 net-misc/olsrd 0.6.4-r1 0.9.0.2: An implementation of the Optimized Link State Routing protocol
 net-misc/omniORB 4.1.4-r2: A robust, high-performance CORBA 2 ORB
@@ -17327,7 +17327,7 @@ sys-process/at 3.1.16 3.1.18-r1: Queues jobs for later execution
 sys-process/atop 1.27_p3 2.0.2 2.1 2.2: Resource-specific view of processes
 sys-process/audit 1.7.18 2.0.5 2.1.3-r1 2.2.2-r2 2.2.2-r3 2.4.1 2.4.1-r1 2.4.3 2.4.3-r1: Userspace utilities for storing and processing auditing records
 sys-process/bcron 0.09 0.09-r2 0.10: A new cron system designed with secure operations in mind by Bruce Guenter
-sys-process/criu 1.6.1 1.7.2 1.8 2.0-r1 2.1: utility to checkpoint/restore a process tree
+sys-process/criu 1.8 2.1 2.2: utility to checkpoint/restore a process tree
 sys-process/cronbase 0.3.7-r1: base for all cron ebuilds
 sys-process/cronie 1.5.0 1.5.0-r1: Cronie is a standard UNIX daemon cron based on the original vixie-cron
 sys-process/cronutils 1.5 1.9: Utilities to assist running batch processing jobs
