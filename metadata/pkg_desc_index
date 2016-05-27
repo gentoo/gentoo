@@ -16778,7 +16778,7 @@ sys-block/nwutil 1.4 1.8: Netwinder hardware utilities
 sys-block/open-iscsi 2.0.872-r2 2.0.872-r3 2.0.873 2.0.873-r1 2.0.873-r2: Open-iSCSI is a high performance, transport independent, multi-platform implementation of RFC3720
 sys-block/parted 2.4 3.1-r1 3.2 3.2-r1: Create, destroy, resize, check, copy partitions and file systems
 sys-block/partimage 0.6.9: Console-based application to efficiently save raw partition data to an image file
-sys-block/partitionmanager 2.1.0 2.1.0-r1: KDE utility for management of partitions and file systems
+sys-block/partitionmanager 2.1.0 2.1.0-r1 2.2.0: KDE utility for management of partitions and file systems
 sys-block/qla-fc-firmware 20101015: QLogic Linux Fibre Channel HBA Firmware for ql2xxx cards
 sys-block/raid-check 20140719-r1: Script to do "scrubbing" on software RAID systems
 sys-block/rts5229 1.07-r6: PCIE RTS5229 card reader driver for Linux
@@ -17218,7 +17218,7 @@ sys-libs/glibc 2.17 2.18-r1 2.19-r1 2.20-r2 2.21-r2 2.22-r4 2.23-r1 2.23-r2 9999
 sys-libs/gpm 1.20.7-r2: Console-based mouse driver
 sys-libs/gwenhywfar 4.3.3 4.12.0_beta 4.13.1 4.15.3: A multi-platform helper library for other libraries
 sys-libs/itx-bind 0.1-r2: the bind library for interix
-sys-libs/kpmcore 2.1.0 2.1.0-r1: Library for managing partitions
+sys-libs/kpmcore 2.1.0 2.1.0-r1 2.2.0: Library for managing partitions
 sys-libs/ldb 1.1.24 1.1.25 1.1.26: An LDAP-like embedded database
 sys-libs/lib-compat 1.4.2-r1: Compatibility C++ and libc5 and libc6 libraries for very old programs
 sys-libs/lib-compat-loki 0.2-r1: Compatibility libc6 libraries for Loki games
@@ -17729,7 +17729,7 @@ www-apps/trac-accountmanager 0.4.2-r1 0.4.4: A Trac plugin for manage user accou
 www-apps/trac-downloads 0.3_p9282: Project release downloads plugin for Trac
 www-apps/trac-mercurial 0.12.0.29_pre10899 1.0.0.3_pre20130206: A Mercurial plugin for Trac
 www-apps/trac-tags 0.6: Tags plugin for Trac
-www-apps/tt-rss 20150924 20160124: Tiny Tiny RSS - A web-based news feed (RSS/Atom) aggregator using AJAX
+www-apps/tt-rss 20160124 20160527: Tiny Tiny RSS - A web-based news feed (RSS/Atom) aggregator using AJAX
 www-apps/venus 20100911: A feed aggregator application
 www-apps/viewvc 1.1.20: ViewVC, a web interface to CVS and Subversion
 www-apps/webdavcgi 0.8.3 0.8.4: A Perl CGI for accessing and sharing files, or calendar/addressbooks via WebDAV
