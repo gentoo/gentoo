@@ -8725,9 +8725,9 @@ dev-ruby/async_sinatra 1.2.1: Asynchronous response API for Sinatra and Thin
 dev-ruby/atomic 1.1.16 1.1.99: An atomic reference implementation for JRuby, Rubinius, and MRI
 dev-ruby/awesome_print 1.6.1: Library to pretty print Ruby objects in full color with proper indentation
 dev-ruby/aws-s3 0.6.3: Client library for Amazon's Simple Storage Service's REST API
-dev-ruby/aws-sdk 1.66.0 2.2.5 2.2.18: Official SDK for Amazon Web Services
-dev-ruby/aws-sdk-core 2.2.5 2.2.18: Official SDK for Amazon Web Services
-dev-ruby/aws-sdk-resources 2.2.5 2.2.18: Official SDK for Amazon Web Services
+dev-ruby/aws-sdk 1.66.0 2.2.5 2.2.18 2.2.37: Official SDK for Amazon Web Services
+dev-ruby/aws-sdk-core 2.2.5 2.2.18 2.2.37: Official SDK for Amazon Web Services
+dev-ruby/aws-sdk-resources 2.2.5 2.2.18 2.2.37: Official SDK for Amazon Web Services
 dev-ruby/backports 3.6.7 3.6.8: Backports of Ruby features for older Ruby
 dev-ruby/bacon 1.2.0-r2: Small RSpec clone weighing less than 350 LoC
 dev-ruby/barby 0.6.3-r1 0.6.4: Ruby barcode generator that doesn't rely on 3rd party libraries
