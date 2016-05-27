@@ -1,8 +1,8 @@
 diff --git a/Makefile.install b/Makefile.install
-index 6fcf25e..103373b 100644
+index b3f5551..2349107 100644
 --- a/Makefile.install
 +++ b/Makefile.install
-@@ -5,23 +5,10 @@ PREFIX		?= /usr/local
+@@ -6,23 +6,10 @@ BINDIR		?= $(PREFIX)/bin
  SBINDIR		?= $(PREFIX)/sbin
  MANDIR		?= $(PREFIX)/share/man
  SYSTEMDUNITDIR	?= $(PREFIX)/lib/systemd/system/
@@ -24,49 +24,49 @@ index 6fcf25e..103373b 100644
 -        endif
 -endif
 -
- export SBINDIR MANDIR SYSTEMDUNITDIR LOGROTATEDIR
+ export BINDIR SBINDIR MANDIR SYSTEMDUNITDIR LOGROTATEDIR
  export INCLUDEDIR LIBDIR DESTDIR PREFIX
  
 diff --git a/lib/Makefile b/lib/Makefile
-index 0cd59a1..63bdaba 100644
+index f1c0821..3bef265 100644
 --- a/lib/Makefile
 +++ b/lib/Makefile
-@@ -20,10 +20,12 @@ PHONY += lib-c
- 
+@@ -25,8 +25,12 @@ lib-c: c/$(CRIU_SO)
  #
  # Python bindings.
-+ifeq ($(PYCRIU),yes)
  lib-py:
++ifeq ($(PYCRIU),yes)
  	$(call msg-gen, $@)
  	$(Q) $(MAKE) -C py all
- PHONY += lib-py
++else
++	$(Q) echo "no py criu"
 +endif
+ .PHONY: lib-py
  
- clean:
- 	$(call msg-clean, lib-c)
-@@ -37,7 +39,7 @@ all: $(PHONY)
- 	@true
- PHONY += all
+ all: lib-c lib-py
+@@ -43,7 +47,7 @@ clean:
+ 	$(Q) $(RM) -r build usr
+ .PHONY: clean
  
 -install: lib-c lib-py ../crit/crit c/criu.pc.in
 +install: lib-c ../crit/crit c/criu.pc.in
  	$(E) "  INSTALL " $(CRIU_SO)
  	$(Q) mkdir -p $(DESTDIR)$(LIBDIR)
  	$(Q) install -m 755 c/$(CRIU_SO) $(DESTDIR)$(LIBDIR)/$(CRIU_SO).$(CRIU_SO_VERSION_MAJOR).$(CRIU_SO_VERSION_MINOR)
-@@ -49,8 +51,6 @@ install: lib-c lib-py ../crit/crit c/criu.pc.in
+@@ -55,8 +59,6 @@ install: lib-c lib-py ../crit/crit c/criu.pc.in
  	$(Q) mkdir -p $(DESTDIR)$(LIBDIR)/pkgconfig
  	$(Q) sed -e 's,@version@,$(CRIU_VERSION),' -e 's,@libdir@,$(LIBDIR),' -e 's,@includedir@,$(dir $(INCLUDEDIR)),' c/criu.pc.in > c/criu.pc
  	$(Q) install -m 644 c/criu.pc $(DESTDIR)$(LIBDIR)/pkgconfig
 -	$(E) "  INSTALL " crit
--	$(Q) python ../scripts/crit-setup.py install --root=$(DESTDIR) --prefix=$(PREFIX)
+-	$(Q) python ../scripts/crit-setup.py install --root=$(DESTDIR) --prefix=$(PREFIX) --record $(CRIT_SETUP_FILES)
  .PHONY: install
  
- .PHONY: $(PHONY) clean
+ uninstall:
 diff --git a/scripts/nmk/scripts/build.mk b/scripts/nmk/scripts/build.mk
-index 10a5d44..ffe2a3c 100644
+index bd40944..3cfbffa 100644
 --- a/scripts/nmk/scripts/build.mk
 +++ b/scripts/nmk/scripts/build.mk
-@@ -43,7 +43,7 @@ builtin-name	:= $(strip $(builtin-name))
+@@ -87,7 +87,7 @@ builtin-name	:= $(strip $(builtin-name))
  
  #
  # Link flags.
@@ -74,4 +74,4 @@ index 10a5d44..ffe2a3c 100644
 +ld_flags	:= $(strip $(RAW_LDFLAGS) $(ldflags-y))
  
  #
- # Prepare targets.
+ # $(obj) related rules.

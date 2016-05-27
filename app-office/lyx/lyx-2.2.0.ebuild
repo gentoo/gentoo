@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -14,28 +14,30 @@ FONT_S="${S}/lib/fonts"
 FONT_SUFFIX="ttf"
 DESCRIPTION="WYSIWYM frontend for LaTeX, DocBook, etc."
 HOMEPAGE="http://www.lyx.org/"
-SRC_URI="ftp://ftp.lyx.org/pub/lyx/stable/2.1.x/${MY_P}.tar.xz
-	ftp://ftp.lyx.org/pub/lyx/devel/lyx-2.1/${MY_P}/${MY_P}.tar.xz"
+SRC_URI="ftp://ftp.lyx.org/pub/lyx/stable/2.2.x/${MY_P}.tar.xz
+	ftp://ftp.lyx.org/pub/lyx/devel/lyx-2.2/${MY_P}/${MY_P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 hppa ia64 ppc ppc64 sparc x86 ~x64-macos ~x86-macos"
-IUSE="cups debug nls +latex monolithic-build html rtf dot docbook dia subversion rcs svg gnumeric +hunspell aspell enchant"
+KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x64-macos ~x86-macos"
+IUSE="cups debug nls +latex monolithic-build html rtf dot docbook dia subversion rcs svg gnumeric +hunspell aspell enchant +qt4 qt5"
 
-LANGS="ar ca cs de da el en es eu fi fr gl he hu ia id it ja nb nn pl pt ro ru sk sr sv tr uk zh_CN zh_TW"
+LANGS="ar ca cs da de el en es eu fi fr gl he hu ia id it ja nb nn pl pt_BR pt_PT ro ru sk sr sv tr uk zh_CN zh_TW"
 
 for X in ${LANGS}; do
 	IUSE="${IUSE} linguas_${X}"
 done
 
-REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}
+	qt4? ( !qt5 )
+	qt5? ( !qt4 )"
 
 DOCS=( ANNOUNCE NEWS README RELEASE-NOTES UPGRADING )
 
-COMMONDEPEND="dev-qt/qtgui:4
-	dev-qt/qtcore:4
-	>=dev-libs/boost-1.34:=
-	${PYTHON_DEPS}"
+COMMONDEPEND=">=dev-libs/boost-1.34:=
+	${PYTHON_DEPS}
+	qt4? ( dev-qt/qtgui:4 dev-qt/qtcore:4 dev-qt/qtsvg:4 )
+	qt5? ( dev-qt/qtgui:5 dev-qt/qtcore:5 dev-qt/qtwidgets:5 dev-qt/qtx11extras:5 dev-qt/qtsvg:5 )"
 
 RDEPEND="${COMMONDEPEND}
 	dev-texlive/texlive-fontsextra
@@ -93,12 +95,23 @@ pkg_setup() {
 src_prepare() {
 	epatch "${FILESDIR}"/2.1-python.patch
 	sed "s:python -tt:${EPYTHON} -tt:g" -i lib/configure.py || die
+	if use qt4; then
+		export QT_SELECT=qt4
+	elif use qt5; then
+		export QT_SELECT=qt5
+	fi
 }
 
 src_configure() {
 	tc-export CXX
 	#bug 221921
 	export VARTEXFONTS=${T}/fonts
+	local qt_flag=""
+	if use qt4; then
+		qt_flag=""
+	elif use qt5; then
+		qt_flag="--enable-qt5"
+	fi
 
 	econf \
 		$(use_enable nls) \
@@ -107,6 +120,7 @@ src_configure() {
 		$(use_with hunspell) \
 		$(use_with aspell) \
 		$(use_with enchant) \
+		${qt_flag} \
 		--without-included-boost \
 		--disable-stdlib-debug \
 		--with-packaging=posix
