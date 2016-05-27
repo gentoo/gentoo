@@ -4528,7 +4528,7 @@ dev-libs/fstrm 0.2.0-r1: Frame Streams implementation in C
 dev-libs/g-wrap 1.9.11 1.9.13 1.9.14: A tool for exporting C libraries into Scheme
 dev-libs/gdl 3.16.0 3.18.0: GNOME docking library
 dev-libs/gecode 3.7.3: Gecode is an environment for developing constraint-based systems and applications
-dev-libs/geoip 1.6.6 1.6.7 1.6.9: GeoIP Legacy C API
+dev-libs/geoip 1.6.9: GeoIP Legacy C API
 dev-libs/gf-complete 0.0.0 2.0.0: A Comprehensive Open Source Library for Galois Field Arithmetic
 dev-libs/gf2x 1.0-r1 1.1: C/C++ routines for fast arithmetic in GF(2)[x]
 dev-libs/girara 0.2.2 0.2.3 0.2.4 0.2.5 9999: A library that implements a user interface that focuses on simplicity and minimalism
