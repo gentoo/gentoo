@@ -164,7 +164,7 @@ app-admin/pass 1.6.5 9999: Stores, retrieves, generates, and synchronizes passwo
 app-admin/passook 20121001: Password generator capable of generating pronounceable and/or secure passwords
 app-admin/passwordsafe 0.98.1_beta: Password manager with wxGTK based frontend
 app-admin/paxtest 0.9.14: PaX regression test suite
-app-admin/perl-cleaner 2.19 2.20 2.21 9999: User land tool for cleaning up old perl installs
+app-admin/perl-cleaner 2.20 2.21 9999: User land tool for cleaning up old perl installs
 app-admin/petrovich 1.0.0: Filesystem Integrity Checker
 app-admin/phpsyslogng 2.9.8m-r1: php-syslog-ng is a log monitor designed to easily manage logs from many hosts
 app-admin/pprocm 1.0-r1: a ncurses which monitors the CPU, disk, network and memory usage
@@ -6066,7 +6066,7 @@ dev-perl/POSIX-strftime-Compiler 0.410.0: GNU C library compatible strftime for 
 dev-perl/PPI 1.220: Parse, Analyze and Manipulate Perl (without perl)
 dev-perl/PPI-PowerToys 0.140.0: A handy collection of small PPI-based utilities
 dev-perl/PPIx-EditorTools 0.190.0: Utility methods and base class for manipulating Perl via PPI
-dev-perl/PPIx-Regexp 0.33.0 0.48.0: Represent a regular expression of some sort
+dev-perl/PPIx-Regexp 0.48.0: Represent a regular expression of some sort
 dev-perl/PPIx-Utilities 1.1.0-r1: Extensions to PPI
 dev-perl/Package-DeprecationManager 0.150.0 0.160.0: Manage deprecation warnings for your distribution
 dev-perl/Package-Stash 0.370.0: Routines for manipulating stashes
@@ -6184,7 +6184,7 @@ dev-perl/Set-Crontab 1.30.0: Expand crontab(5)-style integer lists
 dev-perl/Set-Infinite 0.650.0-r1: Sets of intervals
 dev-perl/Set-IntSpan 1.190.0-r1: Manages sets of integers
 dev-perl/Set-Object 1.310.0 1.350.0: set of objects and strings
-dev-perl/Set-Scalar 1.280.0 1.290.0: Scalar set operations
+dev-perl/Set-Scalar 1.290.0: Scalar set operations
 dev-perl/Shell 0.720.0 0.730.0: Run shell commands transparently within perl
 dev-perl/Shell-EnvImporter 1.70.0-r1 1.70.0-r2: Import environment variable changes from external commands or shell scripts
 dev-perl/ShipIt 0.600.0: Software Release Tool
