@@ -8884,7 +8884,7 @@ dev-ruby/hipchat 1.5.2 1.5.3: Ruby library to interact with HipChat
 dev-ruby/hitimes 1.2.2 1.2.3 1.2.4: A fast, high resolution timer library
 dev-ruby/hoe 3.13.0-r1 3.13.1 3.14.1: Hoe extends rake to provide full project automation
 dev-ruby/hoe-seattlerb 1.3.2-r1 1.3.3 1.3.4: Hoe plugins providing tasks used by seattle.rb
-dev-ruby/hpricot 0.8.6-r2 0.8.6-r3: A fast and liberal HTML parser for Ruby
+dev-ruby/hpricot 0.8.6-r2 0.8.6-r4: A fast and liberal HTML parser for Ruby
 dev-ruby/html2haml 2.0.0: Convert HTML and HTML+Erb to Haml
 dev-ruby/htmlentities 4.3.4: A simple library for encoding/decoding entities in (X)HTML documents
 dev-ruby/http 0.6.3 0.6.3-r1 0.9.8 1.0.2 2.0.0 2.0.1: An easy-to-use client library for making requests from Ruby
