@@ -34,7 +34,6 @@ image_filter - This module is a filter for transforming JPEG, GIF and PNG images
 limit_conn - This module makes it possible to limit the number of simultaneous connections for the assigned session
 limit_req - This module allows you to limit the number of requests for a given session.
 limit_conn - This module makes it possible to limit the number of simultaneous connections for the assigned session
-limit_zone - This module makes it possible to limit the number of simultaneous connections for the assigned session
 lua - Embed the power of Lua into nginx
 map - This module allows you to classify, or map a set of values into a different set of values and store the result in a variable.
 memc - An extended version of the standard memcached module that supports set, add, delete, and many more memcached commands.
@@ -43,10 +42,8 @@ metrics - Module to export various metrics in easy-parseable JSON.
 mogilefs - Enable support for MogileFS.
 mp4 - This module adds pseudo-streaming
 naxsi - An open source, high performance, low rules maintenance, Web Application Firewall module for Nginx.
-passenger - Passenger makes deployment of Ruby web applications a breeze.
 perl - This module makes it possible to execute Perl directly within Nginx and call Perl via SSI.
 proxy - This module makes it possible to transfer requests to another server.
-push - External module turning Nginx into an adept HTTP Push and Comet server.
 push_stream - Push Stream module, supporting EventSource, WebSocket, Long Polling, and Forever Iframe.
 random_index - Pick a random directory index from a directory.
 realip - This module allows to change the client's IP address to value from request header (e. g. X-Real-IP or X-Forwarded-For).
@@ -63,7 +60,6 @@ spdy - This module provides an SPDY implementation. (Deprecated, use IUSE="http2
 sticky - Module to always forward clients to the same upstream server (via sticky cookies)
 stub_status - This module provides the ability to get some status from nginx.
 sub - This module can search and replace text in the nginx response.
-upload - Enable support for handling file uploads using multipart/form-data encoding
 upload_progress - This module adds the ability to track POST upload progress via JSON API
 upstream_check - Add health check support for upstream servers.
 upstream_ip_hash - This module provides the ability to distribute upstream requests based on the IP-address of the client.

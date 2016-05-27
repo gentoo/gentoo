@@ -8,27 +8,18 @@
 
 acecad - INPUT_DEVICES setting to build driver for acecad input devices
 aiptek - INPUT_DEVICES setting to build driver for aiptek input devices
-calcomp - INPUT_DEVICES setting to build driver for calcomp input devices
-digitaledge - INPUT_DEVICES setting to build driver for digitaledge input devices
-dmc - INPUT_DEVICES setting to build driver for dmc input devices
 dynapro - INPUT_DEVICES setting to build driver for dynapro input devices
 elo2300 - INPUT_DEVICES setting to build driver for elo2300 input devices
 elographics - INPUT_DEVICES setting to build driver for elographics input devices
 evdev - INPUT_DEVICES setting to build driver for evdev input devices
 fpit - INPUT_DEVICES setting to build driver for fpit input devices
 hyperpen - INPUT_DEVICES setting to build driver for hyperpen input devices
-jamstudio - INPUT_DEVICES setting to build driver for jamstudio input devices
 joystick - INPUT_DEVICES setting to build driver for joystick input devices
 keyboard - INPUT_DEVICES setting to build driver for keyboard input devices
 libinput - INPUT_DEVICES setting to build driver for libinput input devices
 lirc - INPUT_DEVICES setting to build driver for LIRC input devices (i.e. infra-red remote control)
-magellan - INPUT_DEVICES setting to build driver for magellan input devices
-magictouch - INPUT_DEVICES setting to build driver for magictouch input devices
-microtouch - INPUT_DEVICES setting to build driver for microtouch input devices
 mouse - INPUT_DEVICES setting to build driver for mouse input devices
 mutouch - INPUT_DEVICES setting to build driver for mutouch input devices
-none - INPUT_DEVICES setting to build no drivers (useful when using binary drivers)
-palmax - INPUT_DEVICES setting to build driver for palmax input devices
 penmount - INPUT_DEVICES setting to build driver for penmount input devices
 roccat_arvo - INPUT_DEVICES setting to build driver for Roccat Arvo input devices
 roccat_isku - INPUT_DEVICES setting to build driver for Roccat Isku input devices
@@ -50,13 +41,8 @@ roccat_savu - INPUT_DEVICES setting to build driver for Roccat Savu input device
 roccat_ryosmk - INPUT_DEVICES setting to build driver for Roccat RyosMK Pro input devices
 roccat_ryostkl - INPUT_DEVICES setting to build driver for Roccat RyosMK Pro input devices
 roccat_tyon - INPUT_DEVICES setting to build driver for Roccat Tyon input devices
-spaceorb - INPUT_DEVICES setting to build driver for spaceorb input devices
-summa - INPUT_DEVICES setting to build driver for summa input devices
 synaptics - INPUT_DEVICES setting to build driver for synaptics input devices
-tek4957 - INPUT_DEVICES setting to build driver for tek4957 input devices
 tslib - INPUT_DEVICES setting to build driver for tslib input devices
-ur98 - INPUT_DEVICES setting to build driver for ur98 input devices
-virtualbox - INPUT_DEVICES setting to build driver for virtualbox input emulation
 vmmouse - INPUT_DEVICES setting to build driver for vmmouse input devices
 void - INPUT_DEVICES setting to build driver for void/dummy input devices
 wacom - INPUT_DEVICES setting to build driver for wacom input devices
