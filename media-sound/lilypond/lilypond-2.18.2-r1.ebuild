@@ -29,9 +29,11 @@ RDEPEND=">=app-text/ghostscript-gpl-8.15
 DEPEND="${RDEPEND}
 	app-text/t1utils
 	dev-lang/perl
+	dev-libs/kpathsea
+	>=dev-texlive/texlive-metapost-2013
 	|| (
-		( >=dev-texlive/texlive-metapost-2013 >=dev-tex/metapost-1.803 )
-		<dev-texlive/texlive-metapost-2013
+		>=app-text/texlive-core-2013
+		>=dev-tex/metapost-1.803
 	)
 	virtual/pkgconfig
 	media-gfx/fontforge[png]
@@ -118,7 +120,7 @@ src_install () {
 
 	python_fix_shebang "${ED}"
 
-	dodoc AUTHORS.txt HACKING NEWS.txt README.txt
+	dodoc AUTHORS.txt NEWS.txt README.txt
 }
 
 pkg_postinst() {
