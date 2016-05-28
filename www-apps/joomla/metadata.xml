@@ -11,10 +11,6 @@
     <name>Olivier Huber</name>
     <description>Co Maintainer, CC bugs</description>
   </maintainer>
-  <maintainer type="person">
-    <email>fauli@gentoo.org</email>
-    <name>Christian Faulhammer</name>
-  </maintainer>
   <maintainer type="project">
     <email>web-apps@gentoo.org</email>
     <name>Gentoo Webapps</name>
