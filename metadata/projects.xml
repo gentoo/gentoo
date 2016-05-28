@@ -369,11 +369,6 @@
       <name>Amy Winston</name>
       <role>Member</role>
     </member>
-    <member>
-      <email>fauli@gentoo.org</email>
-      <name>Christian Faulhammer</name>
-      <role>Member</role>
-    </member>
   </project>
   <project>
     <email>sci-biology@gentoo.org</email>
@@ -1012,11 +1007,6 @@
     <subproject ref="gnu-emacs@gentoo.org" inherit-members="1"/>
     <subproject ref="xemacs@gentoo.org" inherit-members="1"/>
     <member>
-      <email>fauli@gentoo.org</email>
-      <name>Christian Faulhammer</name>
-      <role>Developer (Emacs maintainer)</role>
-    </member>
-    <member>
       <email>graaff@gentoo.org</email>
       <name>Hans de Graaff</name>
       <role>Developer (Emacs maintainer)</role>
@@ -1355,11 +1345,6 @@
     <name>Gentoo GNU Emacs project</name>
     <url>https://wiki.gentoo.org/wiki/Project:GNU_Emacs</url>
     <description>The Gentoo GNU Emacs project handles GNU Emacs and related packages in the Gentoo package tree.</description>
-    <member>
-      <email>fauli@gentoo.org</email>
-      <name>Christian Faulhammer</name>
-      <role>Developer</role>
-    </member>
     <member>
       <email>graaff@gentoo.org</email>
       <name>Hans de Graaff</name>
