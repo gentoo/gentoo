@@ -13036,7 +13036,7 @@ media-sound/audiotag 0.19: A command-line tool for mass tagging/renaming of audi
 media-sound/aumix 2.9.1: Aumix volume/mixer control program
 media-sound/awesfx 0.5.1d 0.5.1e: AWE32 Sound Driver Utility Programs
 media-sound/aylet 0.5: Aylet plays music files in the .ay format
-media-sound/banshee 2.6.1 2.6.2: Import, organize, play, and share your music using a simple and powerful interface
+media-sound/banshee 2.6.2 2.6.2-r1: Import, organize, play, and share your music using a simple and powerful interface
 media-sound/baudline 1.08-r1: A time-frequency browser designed for scientific visualization of the spectral domain
 media-sound/beets 1.3.3-r1 1.3.13: A media library management system for obsessive-compulsive music geeks
 media-sound/bempc 0.11: Qt4 MPD client with experimental UI
