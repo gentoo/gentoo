@@ -15,7 +15,7 @@ else
 	SRC_URI="https://github.com/pkgcore/${PN}/releases/download/v${PV}/${P}.tar.gz"
 fi
 
-DESCRIPTION="Miscellaneous python utility code"
+DESCRIPTION="misc common functionality and useful optimizations"
 HOMEPAGE="https://github.com/pkgcore/snakeoil"
 
 LICENSE="BSD"
