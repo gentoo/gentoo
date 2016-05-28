@@ -871,10 +871,6 @@
       <email>ulm@gentoo.org</email>
       <name>Ulrich Müller</name>
     </member>
-    <member>
-      <email>yngwin@gentoo.org</email>
-      <name>Ben de Groot</name>
-    </member>
   </project>
   <project>
     <email>gentoo-doc@gentoo.org</email>
@@ -1934,10 +1930,6 @@
     <member>
       <email>mrueg@gentoo.org</email>
       <name>Manuel Rüger</name>
-    </member>
-    <member>
-      <email>yngwin@gentoo.org</email>
-      <name>Ben de Groot</name>
     </member>
   </project>
   <project>
@@ -3044,10 +3036,6 @@
       <email>sping@gentoo.org</email>
       <name>Sebastian Pipping</name>
     </member>
-    <member>
-      <email>yngwin@gentoo.org</email>
-      <name>Ben de Groot</name>
-    </member>
   </project>
   <project>
     <email>python@gentoo.org</email>
@@ -3209,11 +3197,6 @@
     <member>
       <email>wired@gentoo.org</email>
       <name>Alex Alexander</name>
-      <role>Developer</role>
-    </member>
-    <member>
-      <email>yngwin@gentoo.org</email>
-      <name>Ben de Groot</name>
       <role>Developer</role>
     </member>
     <member>
@@ -4201,11 +4184,6 @@
       <name>Samuli Suominen</name>
       <role>Member ( misc )</role>
     </member>
-    <member>
-      <email>yngwin@gentoo.org</email>
-      <name>Ben de Groot</name>
-      <role>Member ( SMPlayer and dependencies )</role>
-    </member>
   </project>
   <project>
     <email>vim@gentoo.org</email>
@@ -4313,10 +4291,6 @@
       <email>nightmorph@gentoo.org</email>
       <name>Joshua Saddler</name>
     </member>
-    <member>
-      <email>yngwin@gentoo.org</email>
-      <name>Ben de Groot</name>
-    </member>
   </project>
   <project>
     <email>wiki@gentoo.org</email>
@@ -4352,11 +4326,6 @@
       <email>polynomial-c@gentoo.org</email>
       <name>Lars Wendler</name>
       <role>Banling</role>
-    </member>
-    <member>
-      <email>yngwin@gentoo.org</email>
-      <name>Ben de Groot</name>
-      <role>Member</role>
     </member>
   </project>
   <project>
