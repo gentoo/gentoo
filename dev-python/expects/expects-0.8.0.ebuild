@@ -1,17 +1,15 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 PYTHON_COMPAT=( python2_7 python3_4 )
 
-inherit distutils-r1 vcs-snapshot
-
-MY_PV=${PV/_/}
+inherit distutils-r1
 
 DESCRIPTION="Expressive and extensible TDD/BDD assertion library for Python"
 HOMEPAGE="https://github.com/jaimegildesagredo/expects"
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${PN}-${MY_PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
