@@ -7155,8 +7155,8 @@ dev-python/etsproxy 0.1.2-r1: Enthought Tool Suite: Proxy modules for backwards 
 dev-python/eunuchs 20050320.1-r1: Missing manly parts of UNIX API for Python
 dev-python/eventlet 0.13.0 0.15.2 0.17.1 0.17.4 0.18.3 0.18.4: Highly concurrent networking library
 dev-python/execnet 1.2.0-r2 1.4.1: Rapid multi-Python deployment
-dev-python/expects 0.4.2 0.8.0_rc2 0.8.0_rc4 0.8.0_rc5: Expressive and extensible TDD/BDD assertion library for Python
-dev-python/extras 0.0.3: Useful extra bits for Python that should be in the standard library
+dev-python/expects 0.4.2 0.8.0_rc2 0.8.0_rc5 0.8.0: Expressive and extensible TDD/BDD assertion library for Python
+dev-python/extras 0.0.3 1.0.0: Useful extra bits for Python that should be in the standard library
 dev-python/extremes 1.1.1: Production-quality 'Min' and 'Max' objects
 dev-python/eyeD3 0.7.5: Module for manipulating ID3 (v1 + v2) tags in Python
 dev-python/fabric 1.10.0-r1 1.10.1 1.10.2-r1 1.11.1: A simple pythonic tool for remote execution and deployment
@@ -8166,7 +8166,7 @@ dev-python/testpath 0.2 0.3: Test utilities for code working with files and comm
 dev-python/testrepository 0.0.18-r1 0.0.20: A repository of test results
 dev-python/testresources 0.2.7-r2 1.0.0: A pyunit extension for managing expensive test resources
 dev-python/testscenarios 0.4-r5 0.5.0: A pyunit extension for dependency injection
-dev-python/testtools 0.9.36 1.8.0 1.8.1 1.9.0 2.0.0: Extensions to the Python standard library unit testing framework
+dev-python/testtools 0.9.36 1.8.0 1.8.1 1.9.0 2.0.0 2.2.0: Extensions to the Python standard library unit testing framework
 dev-python/texttable 0.8.1 0.8.2 0.8.3: module for creating simple ASCII tables
 dev-python/tgmochikit 1.4.2-r1: MochiKit packaged as TurboGears widgets
 dev-python/theano 0.6.0 0.7.0: Define and optimize multi-dimensional arrays mathematical expressions
@@ -16640,7 +16640,7 @@ sys-apps/stroke 0.1.3: A powerful tool to change file timestamps (including ctim
 sys-apps/superiotool 6637 99999999: util to detect Super I/O chips and functionality
 sys-apps/syscriptor 1.5.15: display misc information about your hardware
 sys-apps/syslog-notify 0.2: Notifications for syslog entries via libnotify
-sys-apps/systemd 218-r5 226-r2 228-r1 229 229-r100 9999: System and service manager for Linux
+sys-apps/systemd 218-r5 226-r2 228-r1 229 229-r100 230 9999: System and service manager for Linux
 sys-apps/systemd-readahead 216: Split of readahead systemd implementation
 sys-apps/systemd-sysv-utils 208 212 215 216 217: sysvinit compatibility symlinks and manpages
 sys-apps/sysvinit 2.88-r7 2.88-r9: /sbin/init - parent of all processes
