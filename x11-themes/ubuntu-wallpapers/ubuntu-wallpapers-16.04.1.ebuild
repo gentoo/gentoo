@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 DESCRIPTION="Ubuntu wallpapers"
 HOMEPAGE="https://launchpad.net/ubuntu/+source/ubuntu-wallpapers"
@@ -17,7 +17,7 @@ DEPEND=""
 
 S="${WORKDIR}/${MY_P/_/-}"
 
-SLOT=0
+SLOT="0"
 
 src_compile() { :; }
 src_test() { :; }
@@ -34,5 +34,5 @@ src_install() {
 		newins ${i} ${i/.in/}
 	done
 
-	dodoc AUTHORS
+	einstalldocs
 }
