@@ -966,7 +966,7 @@ app-doc/edox-data 0.16.8.0.2: The Enlightenment online help
 app-doc/elisp-manual 18.1.03 19.2.4.2 20.2.5 21.2.8-r2 22.2.9 23.4 24.5: The GNU Emacs Lisp Reference Manual
 app-doc/geant-docs 4.9.6 4.10.0 4.10.1 4.10.2: User documentation for Geant4 physics simulation toolkit
 app-doc/gimp-help 2.6.1: GNU Image Manipulation Program help files
-app-doc/gnucash-docs 2.6.9 2.6.11: Documentation package for GnuCash
+app-doc/gnucash-docs 2.6.11 2.6.12: Documentation package for GnuCash
 app-doc/halibut 1.0 1.1: yet another free document preparation system
 app-doc/jargon 4.4.7: A compendium of hacker slang illuminating many aspects of hackish tradition, folklore, and humor
 app-doc/kicad-doc 4.0.1 4.0.2: Electronic Schematic and PCB design tools manuals
@@ -1023,7 +1023,7 @@ app-editors/focuswriter 1.5.5: A fullscreen and distraction-free word processor
 app-editors/fte 20051115-r3 20110708: Lightweight text-mode editor
 app-editors/gedit 3.16.4 3.18.2 3.18.3: A text editor for the GNOME desktop
 app-editors/gedit-plugins 3.16.0 3.18.0: Official plugins for gedit
-app-editors/ghex 3.10.1 3.18.0: GNOME hexadecimal editor
+app-editors/ghex 3.18.0 3.18.1: GNOME hexadecimal editor
 app-editors/ghostwriter 1.2.5: A cross-platform, aesthetic, distraction-free Markdown editor
 app-editors/gobby 0.4.13 0.4.13-r1 0.4.94: GTK-based collaborative editor
 app-editors/gummi 0.6.6 9999: Simple LaTeX editor for GTK+ users
@@ -2000,9 +2000,9 @@ app-office/dia 0.97.3_pre20140417-r1 0.97.3: Diagram/flowchart creation program
 app-office/dia2code 0.8.7: Convert UML diagrams produced with Dia to various source code flavours
 app-office/eqe 1.3.0: A small LaTeX editor that produces images, with drag and drop support
 app-office/geierlein 0.8.0 0.9.1: Submit tax forms (Umsatzsteuervoranmeldung) to German ELSTER
-app-office/glabels 3.2.0 3.2.1: Program for creating labels and business cards
-app-office/gnucash 2.6.9 2.6.10 2.6.11: A personal finance manager
-app-office/gnumeric 1.12.27 1.12.28: The GNOME Spreadsheet
+app-office/glabels 3.2.1 3.4.0: Program for creating labels and business cards
+app-office/gnucash 2.6.11 2.6.12: A personal finance manager
+app-office/gnumeric 1.12.27 1.12.29: The GNOME Spreadsheet
 app-office/grisbi 1.0.0: Grisbi is a personal accounting application for Linux
 app-office/gtg 0.3 0.3.1: Personal organizer for the GNOME desktop environment
 app-office/gtimelog 0.8.0 0.8.1: A small Gtk+ application for keeping track of your time
@@ -9636,7 +9636,7 @@ dev-util/cunit 2.1_p2-r1 2.1_p3: C Unit Test Framework
 dev-util/cutils 1.6-r4: C language utilities
 dev-util/cwdiff 0.2.8 0.3.0 0.3.1 0.4.0: A script that wraps wdiff to support directories and colorize the output
 dev-util/cyclo 2.1.0: Computes cyclomatic complexity metrics on C source code.
-dev-util/d-feet 0.3.9 0.3.10: D-Feet is a powerful D-Bus debugger
+dev-util/d-feet 0.3.10 0.3.11: D-Feet is a powerful D-Bus debugger
 dev-util/dbus-test-runner 12.10.1: Run executables under a new DBus session for testing
 dev-util/ddd 3.3.12-r3 3.3.12-r4: Graphical front-end for command-line debuggers
 dev-util/debhelper 9.20150101 9.20160403: Collection of programs that can be used to automate common tasks in debian/rules
@@ -9751,7 +9751,7 @@ dev-util/lttng-ust 2.6.5 2.7.1: Linux Trace Toolkit - UST library
 dev-util/makeheaders 0_p4: simple utility that will automatically generate header files
 dev-util/makepp 1.18 1.40.1a 1.50_pre110621 2.0-r1 2.0.98.4 2.0.98.5: GNU make replacement
 dev-util/mdds 0.10.3 0.11.2-r1 0.12.0 0.12.1 1.1.0 9999: A collection of multi-dimensional data structure and indexing algorithm
-dev-util/meld 3.14.2: A graphical diff and merge tool
+dev-util/meld 3.14.2 3.16.0: A graphical diff and merge tool
 dev-util/memprof 0.6.2-r1: Profiling and leak detection tool
 dev-util/metro 1.5.1: release metatool used for creating Gentoo and Funtoo releases
 dev-util/min-cscope 16.1.0: Interactively examine a C program
@@ -11716,7 +11716,7 @@ mail-client/cone 0.89 0.90 0.90-r1 0.92: CONE: COnsole News reader and Emailer
 mail-client/drac 1.12-r1: A robust implementation of POP-before-SMTP
 mail-client/etpan-ng 0.7.1-r1: etPan is a console mail client that is based on libEtPan
 mail-client/evolution 3.18.5.1 3.18.5.2: Integrated mail, addressbook and calendaring functionality
-mail-client/geary 0.6.3-r1 0.6.5 0.10.0: A lightweight, easy-to-use, feature-rich email client
+mail-client/geary 0.10.0 0.11.0: A lightweight, easy-to-use, feature-rich email client
 mail-client/hap 3.7-r1: A terminal mail notification program (replacement for biff)
 mail-client/mail-notification 5.4-r8 5.4-r9: Status icon informing about new mail
 mail-client/mailx 8.1.2.20050715-r6 8.1.2.20050715-r7: The /bin/mail program, which is used to send mail via shell scripts
@@ -12088,7 +12088,7 @@ media-gfx/enblend 4.1.3-r1: Image Blending with Multiresolution Splines
 media-gfx/engauge 5.2: Convert an image file showing a graph or map into numbers
 media-gfx/entangle 0.6.0: Tethered Camera Control & Capture
 media-gfx/eog 3.16.3 3.18.1 3.18.2: The Eye of GNOME image viewer
-media-gfx/eog-plugins 3.16.2 3.16.3: Eye of GNOME plugins
+media-gfx/eog-plugins 3.16.3 3.16.4: Eye of GNOME plugins
 media-gfx/eom 1.8.1 1.10.5-r2: The MATE image viewer
 media-gfx/esci-interpreter-gt-s80 0.2.1.1: Epson GT-S50 and GT-S80 scanner plugins for SANE 'epkowa' backend
 media-gfx/evoluspencil 2.0.5: A simple GUI prototyping tool to create mockups
@@ -12262,7 +12262,7 @@ media-gfx/sane-frontends 1.0.14: Scanner Access Now Easy
 media-gfx/scantailor 0.9.10 0.9.11.1: A interactive post-processing tool for scanned pages
 media-gfx/scrot 0.8-r1 0.8_p13 0.8_p13-r1: Screen capture utility using imlib2 library
 media-gfx/sfftobmp 3.1.2-r1: sff to bmp converter
-media-gfx/shotwell 0.22.0 0.22.0-r1: Open source photo manager for GNOME
+media-gfx/shotwell 0.22.0 0.22.0-r1 0.23.1: Open source photo manager for GNOME
 media-gfx/simple-scan 3.16.2 3.18.2: Simple document scanning utility
 media-gfx/skencil 0.6.18_pre20080519 1.0_alpha784: Interactive X11 vector drawing program
 media-gfx/slic3r 1.1.7 1.2.9-r2 9999: A mesh slicer to generate G-code for fused-filament-fabrication (3D printers)
@@ -14100,7 +14100,7 @@ net-im/cpop 0.0.4-r1: GTK+ network popup message client. Compatible with the jpo
 net-im/dianara 1.3.1-r1 1.3.3: Qt-based client for the pump.io distributed social network
 net-im/ejabberd 2.1.13-r2 15.03-r1 16.01-r1: The Erlang Jabber Daemon
 net-im/ekg2 0.3.1-r2 9999: Text-based, multi-protocol instant messenger
-net-im/empathy 3.12.10 3.12.11: Telepathy instant messaging and video/audio call client for GNOME
+net-im/empathy 3.12.11 3.12.12: Telepathy instant messaging and video/audio call client for GNOME
 net-im/err 1.7.1-r1: Plugin based XMPP chatbot designed to be easily deployable, extensible and maintainable
 net-im/gajim 0.16.5: Jabber client written in PyGTK
 net-im/gg-transport 2.2.4-r1: Gadu-Gadu transport for Jabber
@@ -14233,9 +14233,9 @@ net-libs/gnome-online-accounts 3.16.4.1 3.18.3 3.18.4: GNOME framework for acces
 net-libs/gnutls 3.3.17.1 3.3.22 3.3.23 3.4.11 3.4.12 3.5.0: A TLS 1.2 and SSL 3.0 implementation for the GNU project
 net-libs/gsnmp 0.3.0: An SNMP library based on glib and gnet
 net-libs/gsoap 2.7.17 2.7.17-r2 2.8.23 2.8.31 2.8.32: A cross-platform open source C and C++ SDK for SOAP/XML Web services
-net-libs/gssdp 0.14.11 0.14.13 0.14.14: A GObject-based API for handling resource discovery and announcement over SSDP
+net-libs/gssdp 0.14.14 0.14.15: A GObject-based API for handling resource discovery and announcement over SSDP
 net-libs/gtk-vnc 0.5.3 0.5.4: VNC viewer widget for GTK
-net-libs/gupnp 0.20.14 0.20.15 0.20.16: An object-oriented framework for creating UPnP devs and control points
+net-libs/gupnp 0.20.16 0.20.17: An object-oriented framework for creating UPnP devs and control points
 net-libs/gupnp-av 0.12.7 0.12.8: Utility library aiming to ease the handling UPnP A/V profiles
 net-libs/gupnp-igd 0.2.2-r1 0.2.3-r1 0.2.4: Library to handle UPnP IGD port mapping for GUPnP
 net-libs/gupnp-ui 0.1.1: Collection of simple GTK+ widgets on top of GUPnP
@@ -14376,7 +14376,7 @@ net-libs/qtweetlib 0.5 9999: Qt based Twitter library
 net-libs/qxmpp 0.7.4 0.7.5 0.7.6 0.7.6-r1 0.8.0 0.8.2 9999: A cross-platform C++ XMPP client library based on the Qt framework
 net-libs/rabbitmq-c 0.5.0 0.8.0: RabbitMQ C client
 net-libs/rb_libtorrent 0.16.17 0.16.17-r2 0.16.19 1.0.7 1.0.8 1.0.9 1.0.9-r1: C++ BitTorrent implementation focusing on efficiency and scalability
-net-libs/rest 0.7.93 0.7.93-r1: Helper library for RESTful services
+net-libs/rest 0.7.93 0.7.93-r1 0.8.0: Helper library for RESTful services
 net-libs/ripe-atlas-sagan 1.1.8 1.1.10: A parsing library for RIPE Atlas result strings
 net-libs/roadrunner 0.9.1: RoadRunner library provides API for using Blocks Extensible Exchange Protocol
 net-libs/rpc2 2.0 2.8 2.10: Remote procedure call package for IP/UDP (used by Coda)
@@ -14622,7 +14622,7 @@ net-misc/gsasl 1.8.0-r1: The GNU SASL client, server, and library
 net-misc/gsutil 3.42 4.18 4.19: command line tool for interacting with cloud storage services
 net-misc/gtkvncviewer 0.4: A small GTK tool to connect to VNC servers
 net-misc/guacamole-server 0.9.9: This is the proxy-daemon used by www-apps/guacamole
-net-misc/gupnp-tools 0.8.10 0.8.11: Free replacements of Intel UPnP tools that use GUPnP
+net-misc/gupnp-tools 0.8.11 0.8.12: Free replacements of Intel UPnP tools that use GUPnP
 net-misc/gvrpcd 1.3: A program for announcing VLANs using GVRP
 net-misc/gwget 1.0.4: GTK2 WGet Frontend
 net-misc/gwhois 20120626: generic whois
@@ -17746,7 +17746,7 @@ www-client/dillo 3.0.4 3.0.4.1 3.0.5 3.0.5-r1: Lean FLTK based web browser
 www-client/dooble 1.55: A Secure and Open Source Web Browser
 www-client/dwb 2014.03.07-r1 9999: Dynamic web browser based on WebKit and GTK+
 www-client/elinks 0.12_pre6-r1 0.12_pre6-r2 9999: Advanced and well-established text-mode web browser
-www-client/epiphany 3.18.4 3.18.6: GNOME webbrowser based on Webkit
+www-client/epiphany 3.18.4 3.18.7: GNOME webbrowser based on Webkit
 www-client/fetch 1.0-r1 1.0-r2: HTTP download tool built atop the HTTP fetcher library
 www-client/firefox 38.7.0 38.8.0 45.1.0 46.0: Firefox Web Browser
 www-client/firefox-bin 38.8.0 45.1.0 46.0: Firefox Web Browser
@@ -18038,7 +18038,7 @@ x11-libs/gksu 2.0.2-r1: A gtk+ frontend for libgksu
 x11-libs/gl2ps 1.3.8: OpenGL to PostScript printing library
 x11-libs/glamor 0.6.0 0.6.0-r1: OpenGL based 2D rendering acceleration library
 x11-libs/gnome-pty-helper 0.36.3 0.38.3 0.40.2: GNOME Setuid helper for opening ptys
-x11-libs/goffice 0.8.17-r2 0.10.27 0.10.28: A library of document-centric objects and utilities
+x11-libs/goffice 0.8.17-r2 0.10.27 0.10.29: A library of document-centric objects and utilities
 x11-libs/goocanvas 1.0.0 2.0.2: Canvas widget for GTK+ using the cairo 2D library for drawing
 x11-libs/gtk+ 1.2.10-r13 2.24.28-r1 2.24.29 2.24.30 3.16.7 3.18.7 3.18.9: Gimp ToolKit +
 x11-libs/gtk+extra 3.0.5 3.2.0: Useful Additional GTK+ widgets
@@ -18048,7 +18048,7 @@ x11-libs/gtkglarea 2.0.1-r1 2.1.0: OpenGL canvas and context provider for GTK+
 x11-libs/gtkglext 1.2.0-r2 1.2.0-r3: GL extensions for Gtk+ 2.0
 x11-libs/gtkhotkey 0.2.1: Cross platform library for using desktop wide hotkeys
 x11-libs/gtkmathview 0.8.0-r2: Rendering engine for MathML documents
-x11-libs/gtksourceview 2.10.5-r3 3.16.1 3.18.1 3.18.2: A text widget implementing syntax highlighting and other features
+x11-libs/gtksourceview 2.10.5-r3 3.16.1 3.18.2 3.18.3: A text widget implementing syntax highlighting and other features
 x11-libs/guile-gtk 2.1-r2: GTK+ bindings for guile
 x11-libs/hippo-canvas 0.3.0-r2: A canvas library based on GTK+ 2, Cairo, and Pango
 x11-libs/ige-mac-integration 0.8.2 9999: GTK+ bindings for Mac OS X specific tasks
