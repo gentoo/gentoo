@@ -4,17 +4,15 @@
 
 EAPI=6
 
-inherit cmake-utils bash-completion-r1 git-r3
+inherit cmake-utils bash-completion-r1
 
 DESCRIPTION="Open Source Flight Simulator"
 HOMEPAGE="http://www.flightgear.org/"
-EGIT_REPO_URI="git://git.code.sf.net/p/${PN}/${PN}
-	git://mapserver.flightgear.org/${PN}"
-EGIT_BRANCH="next"
+SRC_URI="mirror://sourceforge/flightgear/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="dbus debug examples qt5 test +udev +utils vim-syntax"
 
 COMMON_DEPEND="

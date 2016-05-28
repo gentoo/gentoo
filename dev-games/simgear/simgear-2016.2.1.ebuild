@@ -4,16 +4,14 @@
 
 EAPI=6
 
-inherit eutils cmake-utils git-r3
+inherit eutils cmake-utils
 
 DESCRIPTION="Development library for simulation games"
 HOMEPAGE="http://www.simgear.org/"
-EGIT_REPO_URI="git://git.code.sf.net/p/flightgear/${PN}
-	git://mapserver.flightgear.org/${PN}"
-EGIT_BRANCH="next"
+SRC_URI="mirror://sourceforge/flightgear/${P}.tar.bz2"
 
 LICENSE="GPL-2"
-KEYWORDS=""
+KEYWORDS="~amd64 ~ppc ~x86"
 SLOT="0"
 IUSE="+dns debug subversion test"
 

@@ -1,0 +1,144 @@
+From 2b15b6b8adce06107866fff0028503c1b92b0de4 Mon Sep 17 00:00:00 2001
+From: Maciej Mrozowski <reavertm@gmail.com>
+Date: Thu, 26 May 2016 02:24:19 +0200
+Subject: [PATCH] Add SYSTEM_UDNS CMake option. Remove spurious EXPAT_LIBRARIES
+ linking when using bundled expat.
+
+---
+ 3rdparty/CMakeLists.txt     |  2 +-
+ CMakeLists.txt              | 19 ++++++++++++++-----
+ CMakeModules/FindUdns.cmake | 42 ++++++++++++++++++++++++++++++++++++++++++
+ simgear/CMakeLists.txt      | 11 ++++++++++-
+ 4 files changed, 67 insertions(+), 7 deletions(-)
+ create mode 100644 CMakeModules/FindUdns.cmake
+
+diff --git a/3rdparty/CMakeLists.txt b/3rdparty/CMakeLists.txt
+index e9b5282..a03a82d 100644
+--- a/3rdparty/CMakeLists.txt
++++ b/3rdparty/CMakeLists.txt
+@@ -4,6 +4,6 @@ endif()
+ 
+ add_subdirectory(utf8)
+ 
+-if (ENABLE_DNS)
++if (ENABLE_DNS AND NOT SYSTEM_UDNS)
+ 	add_subdirectory(udns)
+ endif()
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index a67d65e..7de1a0a 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -114,12 +114,14 @@ endif()
+ 
+ if (NOT MSVC)
+ option(SIMGEAR_SHARED   "Set to ON to build SimGear as a shared library/framework" OFF)
+-option(SYSTEM_EXPAT     "Set to ON to build SimGear using the system libExpat" OFF)
++option(SYSTEM_EXPAT     "Set to ON to build SimGear using the system expat library" OFF)
++option(SYSTEM_UDNS      "Set to ON to build SimGear using the system udns library" OFF)
+ else()
+ # Building SimGear DLLs is currently not supported for MSVC.
+ set(SIMGEAR_SHARED OFF)
+-# Using a system expat is currently not supported for MSVC - it would require shared simgear (DLL).
++# Using external 3rd party libraries is currently not supported for MSVC - it would require shared simgear (DLL).
+ set(SYSTEM_EXPAT OFF)
++set(SYSTEM_UDNS OFF)
+ endif()
+ 
+ option(SIMGEAR_HEADLESS "Set to ON to build SimGear without GUI/graphics support" OFF)
+@@ -426,9 +428,16 @@ endif()
+ install (FILES ${PROJECT_BINARY_DIR}/simgear/simgear_config.h  DESTINATION include/simgear/)
+ 
+ include_directories(3rdparty/utf8/source)
+-if (ENABLE_DNS)
+-    message(STATUS "DNS resolver: ENABLED")
+-    include_directories(3rdparty/udns)
++
++if(ENABLE_DNS)
++    if(SYSTEM_UDNS)
++        message(STATUS "Requested to use system udns library, forcing SIMGEAR_SHARED to true")
++        set(SIMGEAR_SHARED ON)
++        find_package(Udns REQUIRED)
++    else()
++        message(STATUS "DNS resolver: ENABLED")
++        include_directories(3rdparty/udns)
++    endif()
+ else()
+     message(STATUS "DNS resolver: DISABLED")
+ endif()
+diff --git a/CMakeModules/FindUdns.cmake b/CMakeModules/FindUdns.cmake
+new file mode 100644
+index 0000000..a436361
+--- /dev/null
++++ b/CMakeModules/FindUdns.cmake
+@@ -0,0 +1,42 @@
++# - Try to find UDNS library
++# Once done this will define
++#
++#  UDNS_FOUND - system has UDNS
++#  UDNS_INCLUDE_DIRS - the UDNS include directory
++#  UDNS_LIBRARIES - Link these to use UDNS
++#  UDNS_DEFINITIONS - Compiler switches required for using UDNS
++#
++#  Copyright (c) 2016 Maciej Mrozowski <reavertm@gmail.com>
++#
++# Distributed under the Boost Software License, Version 1.0.
++# (See accompanying file LICENSE_1_0.txt or copy at
++# http://www.boost.org/LICENSE_1_0.txt)
++
++
++if (UDN_LIBRARIES AND UDN_INCLUDE_DIRS)
++  # in cache already
++  set(UDNS_FOUND TRUE)
++else ()
++  set(UDNS_DEFINITIONS "")
++
++  find_path(UDNS_INCLUDE_DIRS NAMES udns.h)
++  find_library(UDNS_LIBRARIES NAMES udns)
++
++  if (UDNS_INCLUDE_DIRS AND UDNS_LIBRARIES)
++    set(UDNS_FOUND TRUE)
++  endif ()
++
++  if (UDNS_FOUND)
++    if (NOT Udns_FIND_QUIETLY)
++      message(STATUS "Found UDNS: ${UDNS_LIBRARIES}")
++    endif ()
++  else ()
++    if (Udns_FIND_REQUIRED)
++      message(FATAL_ERROR "Could not find UDNS")
++    endif ()
++  endif ()
++
++  # show the UDNS_INCLUDE_DIRS and UDNS_LIBRARIES variables only in the advanced view
++  mark_as_advanced(UDNS_INCLUDE_DIRS UDNS_LIBRARIES)
++
++endif ()
+diff --git a/simgear/CMakeLists.txt b/simgear/CMakeLists.txt
+index 5976833..516ea6c 100644
+--- a/simgear/CMakeLists.txt
++++ b/simgear/CMakeLists.txt
+@@ -128,11 +128,20 @@ target_link_libraries(SimGearCore
+     ${ZLIB_LIBRARY}
+     ${RT_LIBRARY}
+     ${DL_LIBRARY}
+-    ${EXPAT_LIBRARIES}
+     ${CMAKE_THREAD_LIBS_INIT}
+     ${COCOA_LIBRARY}
+     ${CURL_LIBRARIES})
+ 
++if(SYSTEM_EXPAT)
++    target_link_libraries(SimGearCore
++        ${EXPAT_LIBRARIES})
++endif()
++
++if(ENABLE_DNS AND SYSTEM_UDNS)
++    target_link_libraries(SimGearCore
++        ${UDNS_LIBRARIES})
++endif()
++
+ if(NOT SIMGEAR_HEADLESS)
+     target_link_libraries(SimGearScene
+         SimGearCore
+-- 
+2.7.3
+
