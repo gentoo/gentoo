@@ -1,9 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
-GCONF_DEBUG="no"
+EAPI="6"
 GNOME2_LA_PUNT="yes"
 
 inherit gnome2
@@ -16,7 +15,6 @@ SLOT="0.10"
 KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~x64-solaris"
 IUSE="+introspection"
 
-# Build fails with -gtk
 # FIXME: add lasem to tree
 RDEPEND="
 	>=app-text/libspectre-0.2.6:=

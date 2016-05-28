@@ -2,8 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
-GCONF_DEBUG="yes"
+EAPI=6
 GNOME2_LA_PUNT="yes"
 
 inherit eutils gnome2 virtualx
@@ -74,15 +73,7 @@ src_configure() {
 		$(use_enable test tests)
 }
 
-src_compile() {
-	# needed to avoid "Command line `dbus-launch ...' exited with non-zero exit status 1"
-	unset DISPLAY
-	gnome2_src_compile
-}
-
 src_test() {
 	"${EROOT}${GLIB_COMPILE_SCHEMAS}" --allow-any-name "${S}/data" || die
-
-	unset DISPLAY
 	GSETTINGS_SCHEMA_DIR="${S}/data" Xemake check
 }

@@ -1,10 +1,8 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
-GCONF_DEBUG="no"
-
+EAPI=6
 inherit gnome2
 
 DESCRIPTION="GNOME hexadecimal editor"
@@ -12,7 +10,7 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Ghex"
 
 LICENSE="GPL-2+ FDL-1.1+"
 SLOT="2"
-KEYWORDS="amd64 ~arm ~ppc x86 ~x86-interix ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~arm ~ppc ~x86 ~x86-interix ~amd64-linux ~x86-linux"
 IUSE=""
 
 RDEPEND="

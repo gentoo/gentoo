@@ -1,9 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
-GCONF_DEBUG="no"
+EAPI="6"
 VALA_USE_DEPEND="vapigen"
 # FIXME: Claims to works with python3 but appears to be wishful thinking
 PYTHON_COMPAT=( python2_7 )
@@ -16,31 +15,29 @@ HOMEPAGE="https://wiki.gnome.org/Projects/GUPnP"
 
 LICENSE="LGPL-2"
 SLOT="0/4"
-KEYWORDS="~alpha amd64 ~arm hppa ~ia64 ~ppc ppc64 ~sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="connman +introspection kernel_linux networkmanager"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
-	?? ( connman networkmanager )"
+	?? ( connman networkmanager )
+"
 
 # prefix: uuid dependency can be adapted to non-linux platforms
-RDEPEND="
-	${PYTHON_DEPS}
-	>=net-libs/gssdp-0.14.7:0=[introspection?,${MULTILIB_USEDEP}]
+RDEPEND="${PYTHON_DEPS}
+	>=net-libs/gssdp-0.14.15:0=[introspection?,${MULTILIB_USEDEP}]
 	>=net-libs/libsoup-2.48.0:2.4[introspection?,${MULTILIB_USEDEP}]
 	>=dev-libs/glib-2.40:2[${MULTILIB_USEDEP}]
 	>=dev-libs/libxml2-2.9.1-r4[${MULTILIB_USEDEP}]
-	|| (
-		>=sys-apps/util-linux-2.24.1-r3[${MULTILIB_USEDEP}]
-		<sys-libs/e2fsprogs-libs-1.41.8[${MULTILIB_USEDEP}] )
+	>=sys-apps/util-linux-2.24.1-r3[${MULTILIB_USEDEP}]
 	introspection? (
-			>=dev-libs/gobject-introspection-0.6.4
+			>=dev-libs/gobject-introspection-1.36:=
 			$(vala_depend) )
 	connman? ( >=dev-libs/glib-2.34.3:2[${MULTILIB_USEDEP}] )
 	networkmanager? ( >=dev-libs/glib-2.34.3:2[${MULTILIB_USEDEP}] )
 	!net-libs/gupnp-vala
 "
 DEPEND="${RDEPEND}
-	>=dev-util/gtk-doc-am-1
+	>=dev-util/gtk-doc-am-1.14
 	sys-devel/gettext
 	>=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}]
 "

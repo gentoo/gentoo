@@ -1,9 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
-GCONF_DEBUG="no"
+EAPI=6
 GNOME2_LA_PUNT="yes"
 PYTHON_COMPAT=( python2_7 python3_{3,4} )
 
@@ -14,17 +13,15 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Empathy"
 
 LICENSE="GPL-2 CC-BY-SA-3.0 FDL-1.3 LGPL-2.1"
 SLOT="0"
-
 IUSE="debug +geoloc gnome gnome-online-accounts +map spell test +v4l"
-
-KEYWORDS="~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc x86 ~x86-linux"
+KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-linux"
 
 # False positives caused by nested configure scripts
 QA_CONFIGURE_OPTIONS=".*"
 
 # gdk-pixbuf and pango extensively used in libempathy-gtk
 COMMON_DEPEND="
-	>=dev-libs/glib-2.37.6:2
+	>=dev-libs/glib-2.37.6:2[dbus]
 	x11-libs/gdk-pixbuf:2
 	>=x11-libs/gtk+-3.9.4:3
 	x11-libs/pango
@@ -58,7 +55,7 @@ COMMON_DEPEND="
 	geoloc? (
 		>=app-misc/geoclue-2.1:2.0
 		>=sci-geosciences/geocode-glib-3.10 )
-	gnome-online-accounts? ( >=net-libs/gnome-online-accounts-3.5.1 )
+	gnome-online-accounts? ( >=net-libs/gnome-online-accounts-3.5.1:= )
 	map? (
 		>=media-libs/clutter-1.7.14:1.0
 		>=media-libs/clutter-gtk-0.90.3:1.0
@@ -77,7 +74,7 @@ RDEPEND="${COMMON_DEPEND}
 	media-libs/gst-plugins-base:1.0
 	net-im/telepathy-connection-managers
 	!<net-voip/telepathy-rakia-0.7
-	x11-themes/gnome-icon-theme-symbolic
+	x11-themes/adwaita-icon-theme
 	gnome? ( gnome-extra/gnome-contacts )
 "
 DEPEND="${COMMON_DEPEND}
@@ -85,6 +82,7 @@ DEPEND="${COMMON_DEPEND}
 	dev-libs/libxml2:2
 	dev-libs/libxslt
 	>=dev-util/intltool-0.50.0
+	dev-util/itstool
 	virtual/pkgconfig
 	test? (
 		sys-apps/grep
@@ -98,7 +96,9 @@ pkg_setup() {
 }
 
 src_prepare() {
+	# https://bugzilla.gnome.org/show_bug.cgi?id=685837
 	epatch "${FILESDIR}/${PN}-3.12.7-Fix-parallel-build-in-extensions.patch"
+
 	eautoreconf
 	gnome2_src_prepare
 }
@@ -118,8 +118,7 @@ src_configure() {
 		$(use_enable map) \
 		$(use_enable spell) \
 		$(use_enable v4l gudev) \
-		$(use_with v4l cheese) \
-		ITSTOOL=$(type -P true)
+		$(use_with v4l cheese)
 }
 
 src_test() {

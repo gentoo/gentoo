@@ -1,9 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
-GCONF_DEBUG="no"
+EAPI="6"
 VALA_MIN_API_VERSION="0.24"
 VALA_USE_DEPEND="vapigen"
 
@@ -14,11 +13,12 @@ HOMEPAGE="https://wiki.gnome.org/Projects/GtkSourceView"
 
 LICENSE="GPL-2+ LGPL-2.1+"
 SLOT="3.0/3"
+
 IUSE="glade +introspection vala"
 REQUIRED_USE="vala? ( introspection )"
+
 KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~x86-freebsd ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos ~x86-solaris"
 
-# Note: has native OSX support, prefix teams, attack!
 RDEPEND="
 	>=dev-libs/glib-2.44:2
 	>=dev-libs/libxml2-2.6:2
@@ -53,7 +53,6 @@ src_test() {
 }
 
 src_install() {
-	DOCS="AUTHORS HACKING MAINTAINERS NEWS README"
 	gnome2_src_install
 
 	insinto /usr/share/${PN}-3.0/language-specs

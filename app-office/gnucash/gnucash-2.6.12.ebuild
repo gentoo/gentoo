@@ -2,12 +2,11 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
-GCONF_DEBUG="no"
+EAPI="6"
 GNOME2_LA_PUNT="yes"
 PYTHON_COMPAT=( python2_7 )
 
-inherit autotools eutils gnome2 python-single-r1
+inherit gnome2 python-single-r1
 
 DESCRIPTION="A personal finance manager"
 HOMEPAGE="http://www.gnucash.org/"
@@ -15,7 +14,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="amd64 ~ppc ~ppc64 x86"
+KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 IUSE="chipcard debug +doc gnome-keyring hbci mysql ofx postgres python quotes sqlite"
 
 # FIXME: rdepend on dev-libs/qof when upstream fix their mess (see configure.ac)
@@ -49,10 +48,10 @@ RDEPEND="
 	mysql? ( dev-db/libdbi dev-db/libdbi-drivers[mysql] )
 "
 DEPEND="${RDEPEND}
-	virtual/pkgconfig
 	dev-util/intltool
 	gnome-base/gnome-common
 	sys-devel/libtool
+	virtual/pkgconfig
 "
 PDEPEND="doc? ( >=app-doc/gnucash-docs-2.2.0 )"
 
@@ -63,11 +62,6 @@ pkg_setup() {
 src_prepare() {
 	# Skip test that needs some locales to be present
 	sed -i -e '/test_suite_gnc_date/d' src/libqof/qof/test/test-qof.c || die
-
-	# Fix automagic on guile detection
-	epatch "${FILESDIR}"/${PN}-2.6.9-automagic-guile.patch
-
-	eautoreconf
 	gnome2_src_prepare
 }
 
@@ -98,7 +92,6 @@ src_configure() {
 }
 
 src_test() {
-	unset DBUS_SESSION_BUS_ADDRESS
 	GUILE_WARN_DEPRECATED=no \
 	GNC_DOT_DIR="${T}"/.gnucash \
 	emake check
@@ -111,4 +104,9 @@ src_install() {
 	rm -rf "${ED}"/usr/share/doc/${PF}/{examples/,COPYING,INSTALL,*win32-bin.txt,projects.html}
 	mv "${ED}"/usr/share/doc/${PF} "${T}"/cantuseprepalldocs || die
 	dodoc "${T}"/cantuseprepalldocs/*
+
+	# https://bugzilla.gnome.org/show_bug.cgi?id=766960
+	sed -i 's/exec gnucash-env [^[:space:]]*/exec gnucash-env guile/g' \
+		"${ED}/usr/libexec/gnucash/overrides/gnucash-make-guids" || die
+	rm -f "${ED}/usr/libexec/gnucash/overrides/guile" || die
 }
