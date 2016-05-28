@@ -22,7 +22,7 @@ SLOT="0"
 IUSE="test"
 
 RDEPEND="
-	=dev-python/snakeoil-9999[${PYTHON_USEDEP}]
+	>=dev-python/snakeoil-0.7.0[${PYTHON_USEDEP}]
 "
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
