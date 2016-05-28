@@ -4,7 +4,6 @@
 
 EAPI=6
 
-CMAKE_WARN_UNUSED_CLI=1
 inherit eutils cmake-utils
 
 DESCRIPTION="Development library for simulation games"
