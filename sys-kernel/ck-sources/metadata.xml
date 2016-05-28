@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="person">
-    <email>yngwin@gentoo.org</email>
-  </maintainer>
   <use>
     <flag name="bfsonly">BFS by itself vs the full ck patchset</flag>
     <flag name="experimental">Allow experimental code. Can break or degrade
