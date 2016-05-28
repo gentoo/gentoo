@@ -22,8 +22,8 @@ LICENSE="|| ( BSD GPL-2 )"
 SLOT="0"
 
 RDEPEND="
-	=sys-apps/pkgcore-9999[${PYTHON_USEDEP}]
-	=dev-python/snakeoil-9999[${PYTHON_USEDEP}]
+	>=sys-apps/pkgcore-0.9.3[${PYTHON_USEDEP}]
+	>=dev-python/snakeoil-0.7.0[${PYTHON_USEDEP}]
 	dev-python/lxml[${PYTHON_USEDEP}]
 "
 DEPEND="${RDEPEND}
