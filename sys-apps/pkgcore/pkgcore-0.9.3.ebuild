@@ -27,7 +27,7 @@ if [[ ${PV} == *9999 ]] ; then
 else
 	SPHINX="doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )"
 fi
-RDEPEND="=dev-python/snakeoil-9999[${PYTHON_USEDEP}]"
+RDEPEND=">=dev-python/snakeoil-0.7.0[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
 	${SPHINX}
 	dev-python/setuptools[${PYTHON_USEDEP}]
