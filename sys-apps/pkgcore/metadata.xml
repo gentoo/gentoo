@@ -9,7 +9,6 @@
     <flag name="doc">Build and install API docs.</flag>
   </use>
   <upstream>
-    <remote-id type="pypi">pkgcore</remote-id>
     <remote-id type="github">pkgcore/pkgcore</remote-id>
   </upstream>
 </pkgmetadata>

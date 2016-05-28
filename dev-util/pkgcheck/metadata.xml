@@ -6,7 +6,6 @@
     <name>Tim Harder</name>
   </maintainer>
   <upstream>
-    <remote-id type="pypi">pkgcheck</remote-id>
     <remote-id type="github">pkgcore/pkgcheck</remote-id>
   </upstream>
 </pkgmetadata>
