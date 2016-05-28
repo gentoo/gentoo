@@ -8821,7 +8821,7 @@ dev-ruby/domain_name 0.5.24 0.5.25 0.5.20160309 0.5.20160310: Domain Name manipu
 dev-ruby/dotenv 2.1.0 2.1.1: Loads environment variables from .env into ENV
 dev-ruby/duby 0.0.2-r1: Customizable typed programming language with Ruby-inspired syntax
 dev-ruby/dust 0.1.7-r2: Descriptive block syntax definition for Test::Unit
-dev-ruby/equalizer 0.0.9 0.0.11: Module to define equality, equivalence and inspection methods
+dev-ruby/equalizer 0.0.11: Module to define equality, equivalence and inspection methods
 dev-ruby/erubis 2.7.0-r2: Erubis is an implementation of eRuby
 dev-ruby/escape_utils 1.2.0 1.2.1: Faster string escaping routines for your ruby apps
 dev-ruby/ethon 0.8.1 0.9.0: Very lightweight libcurl wrapper
@@ -9149,7 +9149,7 @@ dev-ruby/ruby-openid 2.7.0: A robust library for verifying and serving OpenID id
 dev-ruby/ruby-pango 2.2.3 2.2.3-r1 2.2.5 3.0.7: Ruby Pango bindings
 dev-ruby/ruby-poppler 2.2.3 2.2.3-r1 2.2.5 3.0.7 3.0.7-r1: Ruby poppler-glib bindings
 dev-ruby/ruby-prof 0.15.9: A module for profiling Ruby code
-dev-ruby/ruby-progressbar 1.4.2 1.4.2-r1 1.7.5: A Text Progress Bar Library for Ruby
+dev-ruby/ruby-progressbar 1.4.2 1.4.2-r1 1.7.5 1.8.1: A Text Progress Bar Library for Ruby
 dev-ruby/ruby-rc4 0.1.5-r2: A pure Ruby implementation of the Rc4 algorithm
 dev-ruby/ruby-romkan 0.4-r6: A Romaji <-> Kana conversion library for Ruby
 dev-ruby/ruby-rsvg 2.2.3 2.2.3-r1 2.2.5 3.0.7: Ruby bindings for librsvg
