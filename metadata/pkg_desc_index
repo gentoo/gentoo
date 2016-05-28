@@ -10267,7 +10267,7 @@ games-board/peg-e 1.1.2: A peg solitaire game
 games-board/phalanx 22: A chess engine suitable for beginner and intermediate players
 games-board/pioneers 15.3: A clone of the popular board game The Settlers of Catan
 games-board/pokerth 1.1.1 1.1.1-r1: Texas Hold'em poker game
-games-board/polyglot 1.4.70b-r1: Protocol adapter to run UCI chess engines under xboard
+games-board/polyglot 1.4.70b-r2: Protocol adapter to run UCI chess engines under xboard
 games-board/pouetchess 0.2.0-r1: 3D and open source chess game
 games-board/pychess 0.10.1-r2 0.12.3: A chess client for Gnome
 games-board/pysolfc 2.0-r3: An exciting collection of more than 1000 solitaire card games
