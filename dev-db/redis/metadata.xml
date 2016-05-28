@@ -8,9 +8,6 @@
     <email>robbat2@gentoo.org</email>
   </maintainer>
   <maintainer type="person">
-    <email>lu_zero@gentoo.org</email>
-  </maintainer>
-  <maintainer type="person">
     <email>bugs@bergstroem.nu</email>
     <name>Johan Bergström</name>
     <description>Proxy-Maintainer, assign bugs</description>
