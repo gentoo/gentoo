@@ -4393,6 +4393,7 @@ media-sound/jalv:gtk2 - Adds support for GTK+2 in addition to GTK+3 controlled b
 media-sound/jalv:gtkmm - Adds support for dev-cpp/gtkmm: C++ interface for GTK+2
 media-sound/kid3:acoustid - Enable support for acoustic fingerprinting plugin using (media-libs/chromaprint)
 media-sound/kid3:phonon - Enable sound support via media-libs/phonon or dev-qt/qtphonon
+media-sound/klick:rubberband - Enable rubberband support
 media-sound/kwave:opus - Enable Opus audio codec support
 media-sound/kwave:phonon - Enable playback via Phonon
 media-sound/kwave:qtmedia - Enable playback via Qt5Multimedia
