@@ -14403,7 +14403,7 @@ net-libs/udns 0.4: Async-capable DNS stub resolver library
 net-libs/uhttpmock 0.4.0 0.5.0: HTTP web service mocking library
 net-libs/vanessa-mcast 1.0.0: Multicast Helper Library
 net-libs/vanessa-socket 0.0.12 0.0.13: Simplifies TCP/IP socket operations
-net-libs/webkit-gtk 2.4.9 2.4.9-r200 2.4.10 2.4.10-r200 2.8.5 2.10.7 2.10.9: Open source web browser engine
+net-libs/webkit-gtk 2.4.10 2.4.10-r200 2.4.11 2.4.11-r200 2.8.5 2.10.9: Open source web browser engine
 net-libs/wt 3.3.4: C++ library for developing interactive web applications
 net-libs/wvstreams 4.6.1-r2 4.6.1-r3: A network programming library in C++
 net-libs/xrootd 3.3.6 4.1.1: Extended ROOT remote file server
