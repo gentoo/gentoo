@@ -609,7 +609,7 @@ app-crypt/signing-party 1.1.4 1.1.11-r1 2.0 2.1 2.2: A collection of several too
 app-crypt/simp_le 9999: Simple Let's Encrypt Client
 app-crypt/simple-tpm-pk11 0.03 0.04: Simple PKCS11 provider for TPM chips
 app-crypt/ssdeep 2.10 2.11.1 2.12 2.13: Computes context triggered piecewise hashes (fuzzy hashes)
-app-crypt/ssh-multiadd 1.3.2 1.3.2-r1: Adds multiple ssh keys to the ssh authentication agent
+app-crypt/ssh-multiadd 1.3.2-r1: Adds multiple ssh keys to the ssh authentication agent
 app-crypt/stan 0.4.1: Stan is a console application that analyzes binary streams and calculates statistical information
 app-crypt/stoken 0.90: Software Token for Linux/UNIX
 app-crypt/tc-play 2.0: a free, pretty much fully featured and stable TrueCrypt implementation
@@ -7743,7 +7743,7 @@ dev-python/pyjwt 1.3.0 1.4.0: JSON Web Token implementation in Python
 dev-python/pykerberos 1.1.5 1.1.7 1.1.9: A high-level Python wrapper for Kerberos/GSSAPI operations
 dev-python/pykka 1.2.1: A Python implementation of the actor model
 dev-python/pykwalify 1.4.0 1.4.1 1.5.0 9999: Python lib/cli for JSON/YAML schema validation
-dev-python/pylast 0.5.11-r1 1.0.0: Python interface to last.fm and other api-compatible websites
+dev-python/pylast 1.0.0: Python interface to last.fm and other api-compatible websites
 dev-python/pyldap 2.4.20-r1 2.4.20-r2 2.4.21 2.4.25: Various LDAP-related Python modules
 dev-python/pylibacl 0.5.0-r1: POSIX ACLs (Access Control Lists) for Python
 dev-python/pyliblzma 0.5.3-r1: Python bindings for liblzma
