@@ -1,12 +1,12 @@
 DEFINED_PHASES=compile install postinst prepare unpack
-DEPEND=sys-libs/ncurses[unicode?] dev-vcs/git
+DEPEND=sys-libs/ncurses:0[unicode?] dev-vcs/git
 DESCRIPTION=Dynamic virtual terminal manager
 EAPI=5
 HOMEPAGE=http://www.brain-dump.org/projects/dvtm/
 IUSE=unicode savedconfig
 LICENSE=MIT
-RDEPEND=sys-libs/ncurses[unicode?]
+RDEPEND=sys-libs/ncurses:0[unicode?]
 SLOT=0
 _eclass_exported_funcs=pkg_postinst:- src_unpack:git-2 src_prepare:- src_compile:- src_install:-
 _eclasses_=git-2	672c3929a162f221a53b4ccb4d25d8a2	multilib	d062ae4ba2fc40a19c11de2ad89b6616	portability	bb1a0ed8ea152b957d17339f01d4d7f5	savedconfig	7de7daa586f6bf361639e77d6f2299db	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
-_md5_=12a5109a0ab52be2258a5e8fc1ae4788
+_md5_=68e64437a658e20b5524b5b8b87d404c

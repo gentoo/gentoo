@@ -1746,7 +1746,7 @@ app-misc/dnetc 2.9107.516 2.9108.517 2.9109.518 2.9110.519 2.9110.519b: distribu
 app-misc/dtach 0.8-r1: Emulates the detach feature of screen
 app-misc/dvorak7min 1.6.1: Simple ncurses-based typing tutor for learning the Dvorak keyboard layout
 app-misc/dvorakng 0.6.0: Dvorak typing tutor
-app-misc/dvtm 0.8 0.11 0.14 9999: Dynamic virtual terminal manager
+app-misc/dvtm 0.14 0.15 9999: Dynamic virtual terminal manager
 app-misc/editor-wrapper 4: Wrapper scripts that will execute EDITOR or PAGER
 app-misc/egads 0.9.5: Entropy Gathering And Distribution System
 app-misc/eid-viewer-bin 4.0.7_p184 4.1.9: Graphical interface to the Belgian Electronic Identity Card
