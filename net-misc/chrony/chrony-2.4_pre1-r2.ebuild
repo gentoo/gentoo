@@ -111,7 +111,7 @@ src_install() {
 	keepdir /var/{lib,log}/chrony
 
 	insinto /etc/logrotate.d
-	newins "${FILESDIR}"/chrony-2.4.logrotate chrony
+	newins "${FILESDIR}"/chrony-2.4-r1.logrotate chrony
 
 	systemd_newunit "${FILESDIR}"/chronyd.service-r2 chronyd.service
 	systemd_enable_ntpunit 50-chrony chronyd.service
