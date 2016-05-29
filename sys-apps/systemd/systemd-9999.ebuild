@@ -249,6 +249,9 @@ multilib_src_configure() {
 		--with-dbussystemservicedir="${EPREFIX}/usr/share/dbus-1/system-services"
 
 		--with-ntp-servers="0.gentoo.pool.ntp.org 1.gentoo.pool.ntp.org 2.gentoo.pool.ntp.org 3.gentoo.pool.ntp.org"
+
+		# Breaks screen, tmux, etc.
+		--without-kill-user-processes
 	)
 
 	# Work around bug 463846.
