@@ -5,9 +5,6 @@
 	<email>gokturk@gentoo.org</email>
 	<name>Göktürk Yüksek</name>
 </maintainer>
-<maintainer type="person">
-	<email>idella4@gentoo.org</email>
-</maintainer>
 <maintainer type="project">
 	<email>base-system@gentoo.org</email>
 	<name>Gentoo Base System</name>
