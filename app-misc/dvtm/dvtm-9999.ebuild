@@ -22,7 +22,7 @@ LICENSE="MIT"
 SLOT="0"
 IUSE="unicode"
 
-DEPEND="sys-libs/ncurses[unicode?]"
+DEPEND="sys-libs/ncurses:0[unicode?]"
 RDEPEND=${DEPEND}
 
 src_prepare() {
