@@ -76,7 +76,7 @@ src_install() {
 
 pkg_postinst() {
 	echo
-	elog "Make sure LibDir is either unset in ~/.mangrc either points to"
+	elog "Make sure LibDir is either unset in ~/.mangrc or points to"
 	elog " ${MY_DATADIR} for 'mangclient' to pick it up."
 	elog "Server binary is called 'mangband', and must be run under user"
 	elog " mangband, i.e. 'sudo -u mangband mangband' "
