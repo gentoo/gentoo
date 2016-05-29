@@ -13130,6 +13130,7 @@ media-sound/gst123 0.3.1 0.3.2 0.3.3 0.3.3-r1: A more flexible command line play
 media-sound/gstreamripper 0.2: A GTK+ toolkit based frontend for streamripper
 media-sound/gtick 0.5.0: a metronome application supporting different meters and speeds ranging
 media-sound/gtkguitune 0.8: A guitar tuning program that uses Schmitt-triggering for quick feedback
+media-sound/gtklick 0.6.4: A simple metronome with an easy-to-use GTK interface
 media-sound/guayadeque 0.3.5 0.3.6_pre1887 0.3.7 0.3.7-r1: Music management program designed for all music enthusiasts
 media-sound/guimup 0.3.2: A client for MPD with a clean, GTK interface
 media-sound/hearnet 0.0.9: Listen to your network
