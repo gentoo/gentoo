@@ -10716,6 +10716,7 @@ games-roguelike/angband 4.0.4 4.0.5: A roguelike dungeon exploration game based 
 games-roguelike/crossfire-client 1.71.0-r1: Client for the nethack-style but more in the line of UO
 games-roguelike/dwarf-fortress 0.40.24 0.42.06: A single-player fantasy game
 games-roguelike/hengband 1.6.2-r1: An Angband variant, with a Japanese/fantasy theme
+games-roguelike/mangband 1.1.3: Online multiplayer real-time roguelike game, derived from Angband.
 games-roguelike/mazesofmonad 1.0.9-r2: Console-based roguelike Role Playing Game similar to nethack
 games-roguelike/moria 5.5.2: Rogue-like D&D curses game similar to nethack (BUT BETTER)
 games-roguelike/nethack 3.6.0-r3: The ultimate old-school single player dungeon exploration game
@@ -15027,7 +15028,7 @@ net-p2p/rtorrent 0.9.3 0.9.4-r1 0.9.6: BitTorrent Client using libtorrent
 net-p2p/saku 3.11.0-r1: a clone of P2P anonymous BBS shinGETsu
 net-p2p/smet2html 0.1: Convert eDonkey2000 server.met to html
 net-p2p/soulseek-qt 20131106-r1: Official binary Qt SoulSeek client
-net-p2p/syncthing 0.12.25 0.13.2: Open Source Continuous File Synchronization
+net-p2p/syncthing 0.12.25 0.13.2 0.13.4: Open Source Continuous File Synchronization
 net-p2p/syncthing-relaysrv 0.12.18: Syncthing relay server
 net-p2p/syrep 0.9: A generic file repository synchronization tool
 net-p2p/torrentinfo 1.8.6: A torrent file parser
