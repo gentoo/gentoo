@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="Locate per-dist and per-module shared files"
 
 SLOT="0"
-KEYWORDS="amd64 hppa x86 ~ppc-aix ~x86-solaris"
+KEYWORDS="~alpha amd64 hppa x86 ~ppc-aix ~x86-solaris"
 IUSE=""
 
 RDEPEND="dev-perl/Class-Inspector"

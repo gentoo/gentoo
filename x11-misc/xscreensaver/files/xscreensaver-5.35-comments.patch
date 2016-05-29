@@ -1,0 +1,16 @@
+--- a/utils/grabclient.c
++++ b/utils/grabclient.c
+@@ -127,11 +127,11 @@
+   XtInputId pipe_id;
+   FILE *pipe;
+ 
+-# if !defined(USE_IPHONE) && !defined(HAVE_COCOA)  // Real X11
++# if !defined(USE_IPHONE) && !defined(HAVE_COCOA)  /* Real X11 */
+   pid_t pid;
+ # endif
+ 
+-# if !defined(USE_IPHONE) && defined(HAVE_COCOA)   // Desktop OSX
++# if !defined(USE_IPHONE) && defined(HAVE_COCOA)   /* Desktop OSX */
+   char *directory;
+ # endif
+ 

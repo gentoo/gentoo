@@ -77,28 +77,29 @@ SRC_URI="${KERNEL_URI} ${LX_INCP_URI} ${GENPATCHES_URI} ${ARCH_URI} ${CK_INCP_UR
 	experimental? (
 		urwlocks? ( ${XPR_1_URI} ${XPR_2_URI} ) )"
 
-UNIPATCH_LIST="${LX_INCP_LIST} ${PRE_CK_FIX} ${DISTDIR}"
+src_unpack() {
+	UNIPATCH_LIST="${LX_INCP_LIST} ${PRE_CK_FIX} ${DISTDIR}"
+	UNIPATCH_STRICTORDER="yes"
 
-if ! use bfsonly ; then
-	UNIPATCH_LIST="${UNIPATCH_LIST}/${CK_FILE}"
-else
-	UNIPATCH_LIST="${UNIPATCH_LIST}/${BFS_FILE}"
-fi
-
-UNIPATCH_LIST="${UNIPATCH_LIST} ${CK_INCP_LIST} ${POST_CK_FIX}"
-
-if use experimental ; then
-	if use urwlocks ; then
-		UNIPATCH_LIST="${UNIPATCH_LIST} ${DISTDIR}/${XPR_1_FILE} ${DISTDIR}/${XPR_2_FILE}:1"
+	if ! use bfsonly ; then
+		UNIPATCH_LIST="${UNIPATCH_LIST}/${CK_FILE}"
+	else
+		UNIPATCH_LIST="${UNIPATCH_LIST}/${BFS_FILE}"
 	fi
-fi
 
-UNIPATCH_STRICTORDER="yes"
+	UNIPATCH_LIST="${UNIPATCH_LIST} ${CK_INCP_LIST} ${POST_CK_FIX}"
+
+	if use experimental ; then
+		if use urwlocks ; then
+			UNIPATCH_LIST="${UNIPATCH_LIST} ${DISTDIR}/${XPR_1_FILE} ${DISTDIR}/${XPR_2_FILE}:1"
+		fi
+	fi
+
+	kernel-2_src_unpack
+}
 
 src_prepare() {
-
-#-- Comment out CK's EXTRAVERSION in Makefile ---------------------------------
-
+	#-- Comment out CK's EXTRAVERSION in Makefile ---------------------------------
 	sed -i -e 's/\(^EXTRAVERSION :=.*$\)/# \1/' "${S}/Makefile"
 }
 

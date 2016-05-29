@@ -10,7 +10,7 @@ inherit kde4-base
 
 DESCRIPTION="Kill the bots or they kill you!"
 HOMEPAGE="https://www.kde.org/applications/games/killbots/"
-KEYWORDS="amd64 ~arm ppc ppc64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm ~ppc ~ppc64 x86 ~amd64-linux ~x86-linux"
 IUSE="debug"
 
 DEPEND="$(add_kdeapps_dep libkdegames)"

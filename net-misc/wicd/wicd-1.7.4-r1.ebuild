@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -83,7 +83,10 @@ src_prepare() {
 	  -i setup.py || die "sed failed"
 	# Fix misc helper scripts:
 	sed -e "s:/usr/bin/env python:/usr/bin/env python2:" \
-		-i wicd/suspend.py wicd/autoconnect.py wicd/monitor.py
+		-i wicd/suspend.py wicd/autoconnect.py wicd/monitor.py || die
+	# fix shebang for openrc init script (bug #573846)
+	sed 's@/sbin/runscript@/sbin/openrc-run@' \
+		-i in/init=gentoo=wicd.in || die
 	if use nls; then
 	  # Asturian is faulty with PyBabel
 	  # (https://bugs.launchpad.net/wicd/+bug/928589)

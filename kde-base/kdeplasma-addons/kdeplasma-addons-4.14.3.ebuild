@@ -8,7 +8,7 @@ inherit flag-o-matic kde4-base
 
 DESCRIPTION="Extra Plasma applets and engines"
 LICENSE="GPL-2 LGPL-2"
-KEYWORDS="amd64 ~arm ppc ppc64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm ~ppc ~ppc64 x86 ~amd64-linux ~x86-linux"
 IUSE="attica debug desktopglobe exif fcitx ibus json +kdepim oauth qalculate
 qwt scim"
 

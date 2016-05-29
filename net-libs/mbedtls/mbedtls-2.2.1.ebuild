@@ -12,7 +12,7 @@ SRC_URI="https://github.com/ARMmbed/mbedtls/archive/mbedtls-${PV}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0/10" # slot for libmbedtls.so
-KEYWORDS="alpha ~amd64 ~arm ~hppa ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-fbsd ~x86-fbsd"
+KEYWORDS="alpha amd64 ~arm ~hppa ~mips ~ppc ~ppc64 ~s390 ~sparc x86 ~amd64-fbsd ~x86-fbsd"
 IUSE="cpu_flags_x86_sse2 doc havege libressl programs test threads zlib"
 
 RDEPEND="

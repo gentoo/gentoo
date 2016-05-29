@@ -11,8 +11,8 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="pypi">humanize</remote-id>
-		<remote-id type="github">hddmet/python-ctags</remote-id>
-		<bugs-to>https://github.com/hddmet/python-ctags/issues</bugs-to>
+		<remote-id type="pypi">python-ctags3</remote-id>
+		<remote-id type="github">jonashaag/python-ctags3</remote-id>
+		<bugs-to>https://github.com/jonashaag/python-ctags/issues</bugs-to>
 	</upstream>
 </pkgmetadata>

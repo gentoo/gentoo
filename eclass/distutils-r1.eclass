@@ -632,6 +632,12 @@ distutils-r1_run_phase() {
 	# in the sys.path_importer_cache)
 	mkdir -p "${BUILD_DIR}/lib" || die
 
+	# We need separate home for each implementation, for .pydistutils.cfg.
+	if [[ ! ${DISTUTILS_SINGLE_IMPL} ]]; then
+		local -x HOME=${HOME}/${EPYTHON}
+		mkdir -p "${HOME}" || die
+	fi
+
 	# Set up build environment, bug #513664.
 	local -x AR=${AR} CC=${CC} CPP=${CPP} CXX=${CXX}
 	tc-export AR CC CPP CXX

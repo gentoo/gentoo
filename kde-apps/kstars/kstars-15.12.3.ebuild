@@ -11,7 +11,7 @@ inherit kde5 python-single-r1
 
 DESCRIPTION="Desktop Planetarium"
 HOMEPAGE="https://www.kde.org/applications/education/kstars https://edu.kde.org/kstars"
-KEYWORDS=" ~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="indi wcs xplanet"
 
 # TODO: AstrometryNet requires new package
@@ -32,6 +32,7 @@ COMMON_DEPEND="
 	$(add_qt_dep qtdbus)
 	$(add_qt_dep qtgui)
 	$(add_qt_dep qtprintsupport)
+	$(add_qt_dep qtsql)
 	$(add_qt_dep qtsvg)
 	$(add_qt_dep qtwidgets)
 	$(add_qt_dep qtxml)

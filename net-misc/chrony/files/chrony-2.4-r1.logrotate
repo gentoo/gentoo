@@ -1,0 +1,7 @@
+/var/log/chrony/*.log {
+	missingok
+	sharedscripts
+	postrotate
+		/usr/bin/chronyc cyclelogs |grep -v '^200 OK'; return 0
+	endscript
+}

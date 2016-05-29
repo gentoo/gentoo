@@ -13,7 +13,7 @@ HOMEPAGE="
 	https://www.kde.org/applications/games/kshisen/
 	https://games.kde.org/game.php?game=kshisen
 "
-KEYWORDS="amd64 ~arm ppc ppc64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm ~ppc ~ppc64 x86 ~amd64-linux ~x86-linux"
 IUSE="debug"
 
 DEPEND="

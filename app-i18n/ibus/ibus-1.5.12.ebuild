@@ -17,7 +17,7 @@ HOMEPAGE="https://github.com/ibus/ibus/wiki"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc x86 ~x86-fbsd"
+KEYWORDS="alpha amd64 arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc x86 ~x86-fbsd"
 IUSE="deprecated gconf gtk +gtk3 +introspection nls +python test vala wayland +X"
 REQUIRED_USE="
 	|| ( gtk gtk3 X )

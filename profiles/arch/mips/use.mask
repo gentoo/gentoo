@@ -349,10 +349,6 @@ ocamlopt
 # mask d3d since we don't have wine
 d3d
 
-# Matt Turner <mattst88@gentoo.org) (10 Feb 2012)
-# mask wayland since dev-libs/wayland isn't keyworded
-wayland
-
 # Michael Sterrett <mr_bones_@gentoo.org) (24 Aug 2012)
 # media-sound/fluidsynth isn't keyworded
 fluidsynth

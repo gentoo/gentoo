@@ -16,10 +16,10 @@ SRC_URI="
 
 LICENSE="OFL-1.1" # https://github.com/googlei18n/noto-fonts/blob/master/NEWS
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~sparc x86"
+KEYWORDS="~alpha amd64 arm ~arm64 ~mips ~ppc ~ppc64 ~sparc x86"
 IUSE="cjk"
 
-DEPEND="!cjk? ( app-arch/unzip )"
+DEPEND="cjk? ( app-arch/unzip )"
 RESTRICT="binchecks strip"
 
 S=${WORKDIR}

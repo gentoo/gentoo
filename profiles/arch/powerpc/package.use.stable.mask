@@ -18,6 +18,22 @@
 
 #--- END OF EXAMPLES ---
 
+# Michael Palimaka <kensington@gentoo.org> (25 May 2016)
+# Dependencies not stable
+app-arch/p7zip kde
+app-i18n/uim kde
+app-text/kchmviewer kde
+dev-vcs/subversion kde
+games-arcade/jumpnbump kde
+media-video/vlc kde
+net-irc/quassel kde
+net-libs/libproxy kde
+net-voip/ekiga kde
+sys-auth/polkit kde
+www-plugins/gnash kde
+x11-themes/qtcurve kde
+x11-misc/xscreensaver new-login
+
 # Pacho Ramos <pacho@gentoo.org> (15 May 2015)
 # Missing stable
 dev-libs/protobuf python

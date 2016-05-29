@@ -10,7 +10,7 @@ DECLARATIVE_REQUIRED="always"
 inherit kde4-meta
 
 DESCRIPTION="Script engine and package tool for plasma"
-KEYWORDS="amd64 ~arm ppc ppc64 x86 ~x86-fbsd ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm ~ppc ~ppc64 x86 ~x86-fbsd ~amd64-linux ~x86-linux"
 IUSE="debug"
 
 DEPEND="

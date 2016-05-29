@@ -12,7 +12,7 @@ DESCRIPTION="Environment setting required for all KDE4 apps to run"
 SRC_URI=""
 ESVN_REPO_URI=""
 
-KEYWORDS="amd64 ~arm ~arm64 ppc ppc64 x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux"
 LICENSE="GPL-2"
 IUSE=""
 

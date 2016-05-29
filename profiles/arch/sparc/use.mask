@@ -328,10 +328,6 @@ phonon
 # mask d3d since we don't have wine
 d3d
 
-# Matt Turner <mattst88@gentoo.org) (10 Feb 2012)
-# mask wayland since dev-libs/wayland isn't keyworded
-wayland
-
 # Samuli Suominen <ssuominen@gentoo.org> (18 Jan 2013)
 # libdlm and cman are not keyworded
 cman

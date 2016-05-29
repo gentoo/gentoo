@@ -8,7 +8,7 @@ KDE_REQUIRED="never"
 inherit kde4-base
 
 DESCRIPTION="Scripting Meta Object Kompiler Engine - generators"
-KEYWORDS="amd64 ~arm ppc ppc64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm ~ppc ~ppc64 x86 ~amd64-linux ~x86-linux"
 IUSE="debug"
 HOMEPAGE="https://techbase.kde.org/Development/Languages/Smoke"
 

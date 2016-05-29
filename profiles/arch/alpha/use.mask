@@ -201,10 +201,6 @@ llvm
 # mask d3d since we don't have wine
 d3d
 
-# Matt Turner <mattst88@gentoo.org) (10 Feb 2012)
-# mask wayland since dev-libs/wayland isn't keyworded
-wayland
-
 # Matt Turner <mattst88@gentoo.org (27 May 2012)
 # net-misc/connman is not keyworded
 connman

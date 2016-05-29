@@ -12,7 +12,6 @@
 		<remote-id type="github">OpenRA/OpenRA</remote-id>
 	</upstream>
 	<use>
-		<flag name="cg">NVIDIA toolkit plugin</flag>
 		<flag name="tools">Install some development tools
 			such as editor.</flag>
 	</use>

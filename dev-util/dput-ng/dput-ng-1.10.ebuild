@@ -72,13 +72,8 @@ src_install() {
 		doins -r skel/"${dir}"
 	done
 
-	insinto /usr/share/man/man5
-	doins man/dput.cf.5
-	rm man/dput.cf.5 || die
-
-	for file in man/*; do
-		doman "${file}"
-	done
+	# doman incorrectly treats "cf" in dput.cf.5 as a lang code
+	doman -i18n="" man/*
 
 	newbashcomp debian/"${PN}".bash-completion dput
 }

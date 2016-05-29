@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="Information about Perl modules"
 
 SLOT="0"
-KEYWORDS="~amd64 ~mips ~ppc ~x86"
+KEYWORDS="~alpha ~amd64 ~mips ~ppc ~x86"
 IUSE="test"
 
 RDEPEND="

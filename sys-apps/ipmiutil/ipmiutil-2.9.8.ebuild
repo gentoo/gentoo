@@ -19,10 +19,6 @@ DEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.9.8-flags.patch
-
-	# Very ugly hack. Breaks make's jobserver
-	# Should be fixed in a better way.
-	#"${FILESDIR}"/${PN}-2.9.8-lanplus.patch
 )
 
 src_prepare() {

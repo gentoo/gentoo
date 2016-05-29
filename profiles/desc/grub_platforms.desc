@@ -7,7 +7,6 @@
 # Keep it sorted.
 
 coreboot - Coreboot platform support
-efi - Native EFI platform support
 efi-32 - EFI 32 bit platform support (Old MACs)
 efi-64 - EFI 64 bit platform support
 emu - Emulation platform support
@@ -18,5 +17,4 @@ pc - PC platform support
 qemu - QEMU platform support
 qemu-mips - QEMU MIPS platform support
 uboot - U-Boot platform support
-yeeloong - YEEELONG MIPS platform support
 xen - XEN (pvgrub2) platform support

@@ -30,6 +30,62 @@
 
 #--- END OF EXAMPLES ---
 
+# Johannes Huber <johu@gentoo.org> (26 May 2016)
+# Masked for removal in 30 days. Blocks app-misc/strigi cleanup.
+# Last release in 2014 with KDE SC 4.14.3. No development since
+# several years. Bug #583716
+kde-apps/kdesdk-strigi-analyzer
+
+# Michael Palimaka <kensington@gentoo.org> (26 May 2016)
+# Ancient. Unmaintained. Dead upstream. Masked for removal
+# in 30 days. Bug #583510.
+net-irc/iip
+
+# Michael Palimaka <kensington@gentoo.org> (26 May 2016)
+# No longer developed by upstream. No revdeps.
+# Masked for removal in 30 days. Bug 583776.
+dev-libs/hammer
+
+# Michael Palimaka <kensington@gentoo.org> (26 May 2016)
+# Depends on vulnerable slot of net-libs/webkit-gtk.
+# Dead upstream. Unmaintained. Masked for removal in 30 days.
+# Bug 584186.
+www-client/luakit
+
+# Chris Reffett <creffett@gentoo.org> (25 May 2016)
+# The webkit-gtk:4 backend for Xiphos has known text display issues.
+# Use at your own risk.
+=app-text/xiphos-4.0.4-r1
+
+# Mike Gilbert <floppym@gentoo.org> (25 May 2016)
+# Causes build failures in unrelated packages due to invasive
+# monkey-patching of easy_install (dev-python/setuptools).
+# Remove this package in 30 days.
+# Bug: https://bugs.gentoo.org/575844
+dev-python/buildutils
+
+# Johannes Huber <johu@gentoo.org> (25 May 2016)
+# Masked for removal in 30 days. Declared as dead by
+# upstream in 2015. Last release with KDE Applications 15.04.3.
+# Exported to user maintained overlay kde-sunset.
+kde-apps/pairs
+
+# Alexis Ballier <aballier@gentoo.org> (24 May 2016)
+# API change, breaks e.g. js_of_ocaml
+>=dev-ml/tyxml-4
+
+# Michał Górny <mgorny@gentoo.org> (24 May 2016)
+# No longer maintained upstream, no longer works with libzpaq-7*.
+# Masked for removal in 30 days.
+app-arch/zpipe
+
+# Sam Jorna <wraeth@gentoo.org> (24 May 2016)
+# Deprecated in favour of sci-geosciences/qmapshack.
+# See bugs 561788 and 582262
+# Masked for removal in 30 days.
+sci-geosciences/qlandkartegt
+sci-geosciences/qlandkartegt-garmindev
+
 # Göktürk Yüksek <gokturk@gentoo.org> (23 May 2016)
 # Replaced by app-admin/lastpass-binary-component.
 # Masked for removal in 30 days.
@@ -84,18 +140,9 @@ dev-haskell/tls-extra
 # Force gnutls-3.4 testing so we can stabilize it.
 >=net-libs/gnutls-3.5.0
 
-# Ian Delaney <idella4@gentoo.org> (12 May 2016)
-# on behalf of Ilya Tumaykin <itumaykin+gentoo@gmail.com>
-# Missing dev-python/rarfile-2.7 dependency. See bug #582500.
-~media-video/subliminal-2.0_rc1
-
 # Sergei Trofimovich <slyfox@gentoo.org> (11 May 2016)
 # Mask standalone hpc. dev-lang/ghc provides bundled hpc.
 dev-haskell/hpc
-
-# Michael Palimaka <kensington@gentoo.org> (11 May 2016)
-# Contents of tarball do not match package version.
-=kde-apps/khelpcenter-5.6.4
 
 # Michael Weber <xmw@gentoo.org> (08 May 2016)
 # Replaced by net-libs/libhubbub.
@@ -122,11 +169,6 @@ net-misc/asterisk-spandsp_codec_g726
 dev-vcs/blogc-git-receiver
 www-servers/blogc-runserver
 
-# James Le Cuirot <chewi@gentoo.org> (27 Apr 2016)
-# Very very dead upstream and probably doesn't work any more like
-# similar clients. Removal in 30 days.
-net-p2p/yaggui
-
 # Michael Palimaka <kensington@gentoo.org> (27 Apr 2016)
 # Ancient. Dead upstream. Unmaintained.
 # Masked for removal in 30 days.
@@ -146,17 +188,6 @@ dev-lang/dmd-bin
 # Security mask of older branches, wrt bug #5567810
 <dev-vcs/subversion-1.8
 
-# James Le Cuirot <chewi@gentoo.org> (25 Apr 2016)
-# Long dead upstream and no longer needed. Removal in 30 days.
-dev-java/charva
-dev-java/jakarta-slide-webdavclient
-dev-java/xml-im-exporter
-
-# Alex Brandt <alunduil@gentoo.org> (23 Apr 2016)
-# Contains collisions with dev-python/ipaddress.  See #580388 for more details.
-# Masked for removal in 30 days.
-dev-python/py2-ipaddress
-
 # Michael Sterrett <mr_bones_@gentoo.org> (19 Apr 2016)
 # No release in 6 years and segfaults on modern systems. (bug #311809)
 # Masked for removal on 20160519
@@ -167,33 +198,6 @@ games-sports/toycars
 # Should be kept in tree for some time
 # for users, that may experience problems with new versions
 <net-misc/quagga-1.0.20160315
-
-# Patrice Clement <monsieurp@gentoo.org> (17 Apr 2016)
-# Unmaintained ebuilds (EAPI 0!) which don't compile with Java 8.
-# Removal in 30 days. See bug 580094.
-dev-java/freehep-export
-dev-java/freehep-graphics2d
-dev-java/freehep-graphicsio
-dev-java/freehep-graphicsio-emf
-dev-java/freehep-graphicsio-java
-dev-java/freehep-graphicsio-pdf
-dev-java/freehep-graphicsio-ps
-dev-java/freehep-graphicsio-svg
-dev-java/freehep-graphicsio-swf
-dev-java/freehep-graphicsio-tests
-dev-java/freehep-io
-dev-java/freehep-mcfio
-dev-java/freehep-misc-deps
-dev-java/freehep-parameterdatabase
-dev-java/freehep-record
-dev-java/freehep-rootio
-dev-java/freehep-rtti
-dev-java/freehep-sio
-dev-java/freehep-stdhep
-dev-java/freehep-swing
-dev-java/freehep-util
-dev-java/freehep-xdr
-dev-java/freehep-xml
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (16 Apr 2016)
 # Masked because of security bug 580210
@@ -279,7 +283,7 @@ dev-vcs/statcvs
 # Breaks some of its rev deps, still in beta stage
 >=dev-lang/ocaml-4.03_beta
 >=dev-ml/camlp4-4.03
->=dev-ml/ppx_tools-4.03
+>=dev-ml/ppx_tools-5.0.4.03
 >=dev-ml/labltk-8.06.1
 >=dev-ml/parmap-1.0_rc7-r1
 

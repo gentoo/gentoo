@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -11,7 +11,7 @@ inherit python-single-r1 kde4-base
 DESCRIPTION="KDE4 translation tool"
 HOMEPAGE="https://www.kde.org/applications/development/lokalize
 https://l10n.kde.org/tools"
-KEYWORDS="amd64 ~arm ppc ppc64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm ~ppc ~ppc64 x86 ~amd64-linux ~x86-linux"
 IUSE="debug"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
@@ -22,7 +22,6 @@ DEPEND="
 	>=dev-qt/qtsql-4.5.0:4[sqlite]
 "
 RDEPEND="${DEPEND}
-	$(add_kdeapps_dep kdesdk-strigi-analyzer)
 	$(add_kdebase_dep krosspython "${PYTHON_USEDEP}")
 	$(add_kdebase_dep pykde4 "${PYTHON_USEDEP}")
 "

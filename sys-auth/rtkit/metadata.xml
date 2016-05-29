@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="project">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Gentoo Proxy Maintainers Project</name>
-	</maintainer>
 	<maintainer type="person">
 		<email>Marek.Szuba@cern.ch</email>
 		<name>Marek Szuba</name>
-		<description>Proxied maintainer; set to assignee in all bugs</description>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Gentoo Proxy Maintainers Project</name>
 	</maintainer>
 	<longdescription lang="en">
 	RealtimeKit is a DBus service that provides applications with an interface

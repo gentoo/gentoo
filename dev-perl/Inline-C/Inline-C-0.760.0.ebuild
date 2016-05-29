@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="C Language Support for Inline"
 
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~alpha ~amd64 ~x86"
 IUSE="test"
 
 DIST_TEST="do" # parallelism thwarted by race conditions

@@ -10,5 +10,5 @@ inherit kde4-base
 DESCRIPTION="KDE: a geography learning tool"
 HOMEPAGE="https://edu.kde.org/applications/miscellaneous/kgeography
 https://edu.kde.org/applications/all/kgeography"
-KEYWORDS="amd64 ~arm ppc ppc64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm ~ppc ~ppc64 x86 ~amd64-linux ~x86-linux"
 IUSE="debug"

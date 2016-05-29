@@ -1,8 +1,8 @@
 http://bugs.gentoo.org/481688
 http://trac.webkit.org/changeset/166490/trunk/Source/WebCore/platform/image-decoders/jpeg/JPEGImageDecoder.cpp
 
---- Source/WebCore/platform/image-decoders/jpeg/JPEGImageDecoder.cpp
-+++ Source/WebCore/platform/image-decoders/jpeg/JPEGImageDecoder.cpp
+--- a/Source/WebCore/platform/image-decoders/jpeg/JPEGImageDecoder.cpp
++++ b/Source/WebCore/platform/image-decoders/jpeg/JPEGImageDecoder.cpp
 @@ -334,5 +334,5 @@
          case JPEG_HEADER:
              // Read file parameters with jpeg_read_header().

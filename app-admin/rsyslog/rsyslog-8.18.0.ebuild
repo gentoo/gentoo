@@ -4,7 +4,7 @@
 
 EAPI=6
 
-inherit autotools eutils linux-info systemd
+inherit autotools linux-info systemd
 
 DESCRIPTION="An enhanced multi-threaded syslogd with database support and more"
 HOMEPAGE="http://www.rsyslog.com/"
@@ -319,7 +319,7 @@ src_install() {
 		doins plugins/ompgsql/createDB.sql
 	fi
 
-	prune_libtool_files
+	find "${ED}"usr/lib* -name '*.la' -delete || die
 }
 
 pkg_postinst() {

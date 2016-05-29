@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -7,17 +7,13 @@ EAPI=5
 inherit eutils toolchain-funcs flag-o-matic
 
 DESCRIPTION="standard informational utilities and process-handling tools"
-# http://packages.debian.org/sid/procps
-HOMEPAGE="http://procps.sourceforge.net/ https://gitlab.com/procps-ng/procps"
-# SRC_URI="mirror://debian/pool/main/p/${PN}/${PN}_${PV}.orig.tar.xz"
-#FEDORA_HASH="0980646fa25e0be58f7afb6b98f79d74"
-#SRC_URI="http://pkgs.fedoraproject.org/repo/pkgs/${PN}-ng/${PN}-ng-${PV}.tar.xz/${FEDORA_HASH}/${PN}-ng-${PV}.tar.xz"
+HOMEPAGE="http://procps-ng.sourceforge.net/ https://gitlab.com/procps-ng/procps"
 SRC_URI="mirror://sourceforge/${PN}-ng/${PN}-ng-${PV}.tar.xz
-https://gitlab.com/procps-ng/procps/commit/b2f49b105d23c833d733bf7dfb99cb98e4cae383.patch -> ${PN}-3.3.11-remove_Unix98_output_limits.patch"
+	https://gitlab.com/procps-ng/procps/commit/b2f49b105d23c833d733bf7dfb99cb98e4cae383.patch -> ${PN}-3.3.11-remove_Unix98_output_limits.patch"
 
 LICENSE="GPL-2"
 SLOT="0/5" # libprocps.so
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~ia64-linux ~x86-linux"
+KEYWORDS="alpha amd64 ~arm ~arm64 hppa ~ia64 ~m68k ~mips ~ppc ppc64 ~s390 ~sh ~sparc x86 ~amd64-linux ~ia64-linux ~x86-linux"
 IUSE="+kill +ncurses modern-top nls selinux static-libs systemd test unicode"
 
 RDEPEND="ncurses? ( >=sys-libs/ncurses-5.7-r7:=[unicode?] )
@@ -36,15 +32,14 @@ RDEPEND+="
 
 S="${WORKDIR}/${PN}-ng-${PV}"
 
-#src_unpack() {
-#	unpack ${A}
-#	mv ${WORKDIR}/${PN}-v${PV}-* ${WORKDIR}/${P} || die
-#}
+PATCHES=(
+	"${FILESDIR}"/${PN}-3.3.8-kill-neg-pid.patch # http://crbug.com/255209
+	"${DISTDIR}"/${P}-remove_Unix98_output_limits.patch # 555200
+	"${FILESDIR}"/${P}-sysctl-manpage.patch # 565304
+)
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-3.3.8-kill-neg-pid.patch # http://crbug.com/255209
-	epatch "${DISTDIR}"/${P}-remove_Unix98_output_limits.patch # 555200
-	epatch "${FILESDIR}"/${P}-sysctl-manpage.patch # 565304
+	epatch "${PATCHES[@]}"
 }
 
 src_configure() {

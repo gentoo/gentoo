@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -14,12 +14,12 @@ if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="git://git.openbox.org/dana/openbox"
 	SRC_URI="branding? (
 	https://dev.gentoo.org/~hwoarang/distfiles/surreal-gentoo.tar.gz )"
-	KEYWORDS="arm"
+	KEYWORDS="alpha arm"
 
 else
 	SRC_URI="http://openbox.org/dist/openbox/${P}.tar.gz
 	branding? ( https://dev.gentoo.org/~hwoarang/distfiles/surreal-gentoo.tar.gz )"
-	KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~arm-linux ~x86-linux"
+	KEYWORDS="alpha amd64 arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~arm-linux ~x86-linux"
 fi
 
 LICENSE="GPL-2"

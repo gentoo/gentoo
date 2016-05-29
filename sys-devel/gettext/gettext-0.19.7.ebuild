@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -16,7 +16,7 @@ SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
 # so put that license behind USE=cxx.
 LICENSE="GPL-3+ cxx? ( LGPL-2.1+ )"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
+KEYWORDS="alpha amd64 ~arm ~arm64 hppa ~ia64 ~m68k ~mips ~ppc ppc64 ~s390 ~sh ~sparc x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
 IUSE="acl -cvs +cxx doc emacs git java ncurses nls openmp static-libs"
 
 # only runtime goes multilib
@@ -57,7 +57,7 @@ multilib_src_configure() {
 	local myconf=(
 		# switches common to runtime and top-level
 		--cache-file="${BUILD_DIR}"/config.cache
-		--docdir="/usr/share/doc/${PF}"
+		--docdir="\$(datarootdir)/doc/${PF}"
 
 		# Emacs support is now in a separate package
 		--without-emacs

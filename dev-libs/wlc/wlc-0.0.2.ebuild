@@ -11,7 +11,7 @@ HOMEPAGE="https://github.com/Cloudef/wlc"
 
 SRC_URI="https://github.com/Cloudef/wlc/releases/download/v${PV}/${P}.tar.bz2"
 
-LICENSE="MIT"
+LICENSE="MIT ZLIB"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="X static-libs systemd"
@@ -31,6 +31,7 @@ RDEPEND="virtual/opengl
 		systemd? ( sys-apps/systemd sys-apps/dbus )"
 
 DEPEND="${RDEPEND}
+	virtual/pkgconfig
 		dev-libs/wayland-protocols"
 
 src_configure() {

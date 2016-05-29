@@ -9,7 +9,7 @@ KMMODULE="plasma"
 inherit kde4-meta
 
 DESCRIPTION="Additional Applets for Plasma"
-KEYWORDS=" ~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="debug"
 
 DEPEND="

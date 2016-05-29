@@ -6,10 +6,6 @@
 		<name>Johan Bergström</name>
 		<description>Proxy-Maintainer, assign bugs</description>
 	</maintainer>
-	<maintainer type="person">
-		<email>djc@gentoo.org</email>
-		<name>Dirkjan Ochtman</name>
-	</maintainer>
 	<maintainer type="project">
 		<email>python@gentoo.org</email>
 		<name>Python</name>

@@ -11,7 +11,7 @@ inherit kde5
 DESCRIPTION="KDE Archiving tool"
 HOMEPAGE="https://www.kde.org/applications/utilities/ark
 https://utils.kde.org/projects/ark"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="bzip2 lzma zlib"
 
 RDEPEND="
@@ -39,6 +39,9 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	sys-devel/gettext
 "
+
+# bug #560548, last checked with 16.04.1
+RESTRICT="test"
 
 src_configure() {
 	local mycmakeargs=(

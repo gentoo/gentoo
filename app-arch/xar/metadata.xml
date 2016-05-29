@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="person">
-    <email>yngwin@gentoo.org</email>
-  </maintainer>
   <longdescription lang="en">
 	The XAR project aims to provide an easily extensible archive format.
     Important design decisions include an easily extensible XML table of

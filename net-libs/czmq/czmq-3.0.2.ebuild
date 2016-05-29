@@ -14,7 +14,7 @@ SRC_URI="http://download.zeromq.org/${P}.tar.gz"
 
 LICENSE="LGPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~hppa ~x86"
+KEYWORDS="~amd64 arm ~hppa ~x86"
 IUSE="doc static-libs test"
 
 RDEPEND="

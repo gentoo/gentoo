@@ -10,7 +10,7 @@ inherit kde4-meta
 
 DESCRIPTION="Phonon KDE Integration"
 HOMEPAGE="https://phonon.kde.org"
-KEYWORDS="amd64 ~arm ppc ppc64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm ~ppc ~ppc64 x86 ~amd64-linux ~x86-linux"
 IUSE="alsa debug pulseaudio"
 
 DEPEND="

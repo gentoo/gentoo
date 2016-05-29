@@ -19,12 +19,10 @@
 		libwebsockets is a C library designed to make development of websockets clients and servers easier (possible).
 	</longdescription>
 	<use>
-		<flag name="ssl">Include SSL support (default <pkg>dev-libs/openssl</pkg>)</flag>
-		<flag name="zlib">Include zlib support</flag>
-		<flag name="static-libs">Build the static version of the library</flag>
-		<flag name="http2">Compile with support for http2</flag>
-		<flag name="ipv6">Compile with support for ipv6</flag>
+		<flag name="client">The client part of the library and libwebsockets-test-client</flag>
+		<flag name="http2">Support the HTTP/2 protocol</flag>
+		<flag name="libev">Support event loops via dev-libs/libev</flag>
+		<flag name="libuv">Support asynchronous I/O via dev-libs/libuv</flag>
 		<flag name="server">The server part of the library</flag>
-		<flag name="client">The client part of the library</flag>
 	</use>
 </pkgmetadata>

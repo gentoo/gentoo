@@ -16,9 +16,9 @@ LICENSE="MIT"
 SLOT="0"
 IUSE="doc examples test"
 
-CDEPEND=">=dev-libs/libuv-1.8.0:="
+RDEPEND=">=dev-libs/libuv-1.8.0:="
 DEPEND="
-	${CDEPEND}
+	${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	doc? (
 		>=dev-python/alabaster-0.6.2[${PYTHON_USEDEP}]
@@ -27,10 +27,8 @@ DEPEND="
 	)
 "
 
-RDEPEND="${CDEPEND}"
-
 src_prepare() {
-	cat <<EOF >> setup.cfg
+	cat <<EOF >> setup.cfg || die
 [build_ext]
 use-system-libuv=1
 EOF

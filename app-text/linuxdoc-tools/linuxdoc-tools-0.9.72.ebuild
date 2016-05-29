@@ -11,7 +11,7 @@ DESCRIPTION="A toolset for processing LinuxDoc DTD SGML files"
 HOMEPAGE="https://gitlab.com/agmartin/linuxdoc-tools"
 SRC_URI="https://gitlab.com/agmartin/${PN}/repository/archive.tar.gz?ref=v${PV} -> ${P}.tar.gz"
 
-LICENSE="MIT SGMLUG"
+LICENSE="GPL-3+ MIT SGMLUG"
 SLOT="0"
 KEYWORDS="~amd64 ~ia64 ~ppc ~x86 ~x86-fbsd"
 IUSE="doc"

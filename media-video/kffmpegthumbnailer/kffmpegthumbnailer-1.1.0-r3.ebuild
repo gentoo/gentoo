@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -16,7 +16,7 @@ KEYWORDS="amd64 x86"
 IUSE="debug"
 
 DEPEND="
-	>=media-video/ffmpegthumbnailer-2
+	<media-video/ffmpegthumbnailer-2.1.0
 "
 RDEPEND="${DEPEND}
 	$(add_kdeapps_dep kdebase-kioslaves)

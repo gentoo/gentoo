@@ -15,7 +15,7 @@ SRC_URI="http://www.kmuddy.com/releases/stable/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="4"
-KEYWORDS="amd64 ppc x86"
+KEYWORDS="amd64 ~ppc x86"
 IUSE="debug"
 
 DOC=( AUTHORS README CHANGELOG Scripting-HOWTO TODO DESIGN )

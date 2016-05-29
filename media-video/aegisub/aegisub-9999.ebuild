@@ -9,7 +9,7 @@ AUTOTOOLS_IN_SOURCE_BUILD=1
 PLOCALES="ar bg ca cs da de el es eu fa fi fr_FR gl hu id it ja ko nl pl pt_BR pt_PT ru sr_RS@latin sr_RS uk_UA vi zh_CN zh_TW"
 WX_GTK_VER="3.0"
 
-inherit autotools-utils fdo-mime flag-o-matic gnome2-utils l10n wxwidgets git-2
+inherit autotools-utils fdo-mime flag-o-matic gnome2-utils l10n wxwidgets git-r3
 
 DESCRIPTION="Advanced subtitle editor"
 HOMEPAGE="http://www.aegisub.org/"
@@ -58,6 +58,9 @@ DEPEND="${RDEPEND}
 REQUIRED_USE="
 	|| ( alsa openal oss portaudio pulseaudio )
 "
+
+# submodules are used to pull in bundled libraries
+EGIT_SUBMODULES=()
 
 PATCHES=(
 	"${FILESDIR}/${PN}-3.2.2_p20160306-fix-luajit-unbundling.patch"

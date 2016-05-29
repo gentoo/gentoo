@@ -4,11 +4,6 @@
 <use>
 <flag name="gcov">Build coverage support</flag>
 </use>
-	<maintainer type="person">
-		<email>idella4@gentoo.org</email>
-		<name>Ian Delnaeny</name>
-		<description>Maintainer / developer</description>
-	</maintainer>
 <maintainer type="project">
 		<email>mysql-bugs@gentoo.org</email>
 		<name>MySQL</name>

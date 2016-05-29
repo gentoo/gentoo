@@ -4,7 +4,7 @@
 
 EAPI=6
 
-inherit eutils fdo-mime git-r3
+inherit fdo-mime git-r3
 
 DESCRIPTION="Minimal image viewer designed for tiling window manager users"
 HOMEPAGE="https://github.com/eXeC64/imv"
@@ -23,10 +23,6 @@ RDEPEND="
 "
 
 DEPEND="${RDEPEND}"
-
-src_install() {
-	emake DESTDIR="${D}" install
-}
 
 pkg_postinst() {
 	fdo-mime_desktop_database_update
