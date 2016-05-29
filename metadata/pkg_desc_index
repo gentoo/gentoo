@@ -354,7 +354,7 @@ app-backup/cdbackup 0.7.1: Allows streaming backup utilities to dump/restore fro
 app-backup/cdbkup 1.0 1.0-r1: performs full/incremental backups of local/remote filesystems onto CD-R(W)s
 app-backup/cpdup 1.18: A comprehensive filesystem mirroring program
 app-backup/dar 2.4.9 2.4.20 2.4.21 2.5.3 2.5.4: A full featured backup tool, aimed for disks (floppy,CDR(W),DVDR(W),zip,jazz etc.)
-app-backup/deja-dup 34.0 34.1: Simple backup tool using duplicity back-end
+app-backup/deja-dup 34.0 34.1 34.2: Simple backup tool using duplicity back-end
 app-backup/dirvish 1.2.1: Dirvish is a fast, disk based, rotating network backup system
 app-backup/duplicity 0.6.26 0.7.07.1: Secure backup system using gnupg to encrypt data
 app-backup/duply 1.9.2 1.10 1.10.1 1.11 1.11.1 1.11.2: A shell frontend for duplicity
@@ -2302,7 +2302,7 @@ app-text/htp 1.16-r1: An HTML preprocessor
 app-text/hunspell 1.3.3 1.3.4 1.4.1: Hunspell spell checker - an improved replacement for myspell in OOo
 app-text/hyperestraier 1.4.13: a full-text search system for communities
 app-text/info2html 2.0: Converts GNU .info files to HTML
-app-text/iso-codes 3.61 3.63 3.64 3.65 3.67: ISO language, territory, currency, script codes and their translations
+app-text/iso-codes 3.63 3.65 3.68: ISO language, territory, currency, script codes and their translations
 app-text/itex2mml 1.5.2: A LaTeX into XHTML/MathML converter
 app-text/jabref 2.10-r2 2.10-r4: Java GUI for managing BibTeX and other bibliographies
 app-text/jabref-bin 2.10 2.11_beta_rc2 2.11_beta_rc3 2.11_beta_rc3-r1 2.11_beta_rc4 2.11 2.11.1 3.1 3.2 3.3: Java GUI for managing BibTeX and other bibliographies
@@ -4452,7 +4452,7 @@ dev-libs/ace 5.7.2 5.8.3: The Adaptive Communications Environment
 dev-libs/actor-framework 0.13.2 0.14.5: The C++ Actor Framework (CAF)
 dev-libs/angelscript 2.30.2-r1: A flexible, cross-platform scripting library
 dev-libs/antlr-c 3.5.2: The ANTLR3 C Runtime
-dev-libs/appstream-glib 0.5.0 0.5.7 0.5.9: Provides GObjects and helper methods to read and write AppStream metadata
+dev-libs/appstream-glib 0.5.0 0.5.9 0.5.15: Provides GObjects and helper methods to read and write AppStream metadata
 dev-libs/apr 1.5.0-r2 1.5.1-r1 1.5.2: Apache Portable Runtime Library
 dev-libs/apr-util 1.5.2 1.5.3-r2 1.5.4 1.5.4-r1: Apache Portable Runtime Utility Library
 dev-libs/argtable 2.13: An ANSI C library for parsing GNU-style command-line options with minimal fuss
@@ -4652,7 +4652,7 @@ dev-libs/libgit2-glib 0.22.8 0.23.10-r1 0.24.0: Git library for GLib
 dev-libs/libgpg-error 1.13 1.18 1.19 1.20 1.21 1.22: Contains error handling functions used by GnuPG software
 dev-libs/libgringotts 1.2.1: Needed by Gringotts
 dev-libs/libgudev 230: GObject bindings for libudev
-dev-libs/libgusb 0.2.7 0.2.8: GObject wrapper for libusb
+dev-libs/libgusb 0.2.7 0.2.8 0.2.9: GObject wrapper for libusb
 dev-libs/libgweather 3.16.1 3.18.1: Library to access weather information from online services
 dev-libs/libhid 0.2.16-r4: Provides a generic and flexible way to access and interact with USB HID devices
 dev-libs/libhome 0.10.2-r1: libhome is a library providing a getpwnam() emulation
@@ -4780,13 +4780,13 @@ dev-libs/libx86emu 1.1: A library for emulating x86
 dev-libs/libxdg-basedir 1.2.0-r1: Small library to access XDG Base Directories Specification paths
 dev-libs/libxdiff 0.23-r1: Library for creating diff files
 dev-libs/libxls 0.3.0_pre107: A library which can read Excel (xls) files
-dev-libs/libxml2 2.9.2-r4 2.9.3: Version 2 of the library to manipulate XML files
+dev-libs/libxml2 2.9.2-r4 2.9.3 2.9.4: Version 2 of the library to manipulate XML files
 dev-libs/libxr 1.0: Cross-platform XML-RPC client/server library written in C
-dev-libs/libxslt 1.1.28-r4 1.1.28-r5: XSLT libraries and tools
+dev-libs/libxslt 1.1.28-r5 1.1.29: XSLT libraries and tools
 dev-libs/libyaml 0.1.6: YAML 1.1 parser and emitter written in C
 dev-libs/libzeitgeist 0.3.18: Client library to interact with zeitgeist
 dev-libs/libzip 1.0.1 1.1.1 1.1.2: Library for manipulating zip archives
-dev-libs/link-grammar 4.8.6 5.3.3-r1: A Syntactic English parser
+dev-libs/link-grammar 4.8.6 5.3.3-r1 5.3.7: A Syntactic English parser
 dev-libs/lockdev 1.0.3.1.2-r2 1.0.3.1.2-r3: Library for locking devices
 dev-libs/log4c 1.2.1 1.2.4: Log4c is a library of C for flexible logging to files, syslog and other destinations
 dev-libs/log4cplus 1.1.2: C++ port of the Log for Java (log4j) logging library
@@ -10935,7 +10935,7 @@ gnome-base/gnome-core-apps 3.14.0 3.16.0 3.18.0: Sub-meta package for the core a
 gnome-base/gnome-core-libs 3.14.0 3.16.0 3.18.0: Sub-meta package for the core libraries of GNOME 3
 gnome-base/gnome-desktop 2.32.1-r2 3.16.2 3.18.2: Libraries for the gnome desktop that are not part of the UI
 gnome-base/gnome-extra-apps 3.16.0 3.18.0 3.18.0-r1: Sub-meta package for the applications of GNOME 3
-gnome-base/gnome-keyring 3.16.0-r1 3.18.3: Password and keyring managing daemon
+gnome-base/gnome-keyring 3.16.0-r1 3.18.3 3.18.3-r1: Password and keyring managing daemon
 gnome-base/gnome-light 3.16.0 3.18.0: Meta package for GNOME-Light, merge this package to install
 gnome-base/gnome-menus 3.10.1-r1 3.13.3 3.13.3-r1: Library for the Desktop Menu fd.o specification
 gnome-base/gnome-mime-data 2.18.0: MIME data for Gnome
@@ -10965,15 +10965,15 @@ gnome-extra/avant-window-navigator 0.4.2: A dock-like bar which sits at the bott
 gnome-extra/avant-window-navigator-extras 0.4.0: Applets for the Avant Window Navigator
 gnome-extra/cameramonitor 0.3.2: Local Webcam monitoring in system tray
 gnome-extra/chrome-gnome-shell 6: Provides integration with GNOME Shell extensions repository for Chrome browser
-gnome-extra/cinnamon 2.6.13 2.8.4 2.8.6: A fork of GNOME Shell with layout similar to GNOME 2
+gnome-extra/cinnamon 2.8.6 2.8.8: A fork of GNOME Shell with layout similar to GNOME 2
 gnome-extra/cinnamon-control-center 2.6.0-r1 2.8.1: Cinnamons's main interface to configure various aspects of the desktop
-gnome-extra/cinnamon-desktop 2.6.5 2.8.0: A collection of libraries and utilites used by Cinnamon
-gnome-extra/cinnamon-menus 2.6.0 2.8.0: Cinnamon's library for the Desktop Menu fd.o specification
-gnome-extra/cinnamon-screensaver 2.6.4 2.8.0 2.8.0-r1: Screensaver for Cinnamon
-gnome-extra/cinnamon-session 2.6.3 2.8.2: Cinnamon session manager
-gnome-extra/cinnamon-settings-daemon 2.6.3 2.8.2-r1 2.8.3: Cinnamon's settings daemon
-gnome-extra/cinnamon-translations 2.6.3 2.8.2 2.8.3: Translation data for Cinnamon
-gnome-extra/cjs 2.6.2 2.8.0: Linux Mint's fork of gjs for Cinnamon
+gnome-extra/cinnamon-desktop 2.8.0 2.8.1: A collection of libraries and utilites used by Cinnamon
+gnome-extra/cinnamon-menus 2.8.0: Cinnamon's library for the Desktop Menu fd.o specification
+gnome-extra/cinnamon-screensaver 2.8.0-r1: Screensaver for Cinnamon
+gnome-extra/cinnamon-session 2.8.2 2.8.3: Cinnamon session manager
+gnome-extra/cinnamon-settings-daemon 2.8.3 2.8.4: Cinnamon's settings daemon
+gnome-extra/cinnamon-translations 2.8.3: Translation data for Cinnamon
+gnome-extra/cjs 2.8.0: Linux Mint's fork of gjs for Cinnamon
 gnome-extra/docky 2.2.0 2.2.1.1: Elegant, powerful, clean dock
 gnome-extra/eiciel 0.9.11 0.9.11-r1: ACL editor for GNOME, with Nautilus extension
 gnome-extra/evolution-data-server 3.16.5 3.18.4 3.18.5: Evolution groupware backend
@@ -11023,7 +11023,7 @@ gnome-extra/nautilus-dropbox 1.6.2: Store, Sync and Share Files Online
 gnome-extra/nautilus-sendto 3.8.2-r1 3.8.3: A nautilus extension for sending files to locations
 gnome-extra/nautilus-share 0.7.3-r1: A nautilus plugin to easily share folders over the SMB protocol
 gnome-extra/nautilus-tracker-tags 1.6.1 1.6.2: Nautilus extension to tag files for Tracker
-gnome-extra/nemo 2.6.7 2.8.5 2.8.6: A file manager for Cinnamon, forked from Nautilus
+gnome-extra/nemo 2.8.6 2.8.7: A file manager for Cinnamon, forked from Nautilus
 gnome-extra/nm-applet 1.0.6 1.0.8 1.0.10: GNOME applet for NetworkManager
 gnome-extra/office-runner 1.0.2: Lighthearted tool to temporarily inhibit GNOME's suspend on lid close behavior
 gnome-extra/polkit-gnome 0.105-r1: A dbus session bus service that is used to bring up authentication dialogs
@@ -12133,7 +12133,7 @@ media-gfx/gnome-raw-thumbnailer 3.0.0: A lightweight and fast raw image thumbnai
 media-gfx/gnome-screenshot 3.16.2 3.18.0: Screenshot utility for GNOME
 media-gfx/gnome-specimen 0.4-r1: Font preview application
 media-gfx/gozer 0.7-r2: tool for rendering arbitrary text as graphics, using ttfs and styles
-media-gfx/gphoto2 2.5.6 2.5.8 2.5.9: Free, redistributable digital camera software application
+media-gfx/gphoto2 2.5.8 2.5.9 2.5.10: Free, redistributable digital camera software application
 media-gfx/gphotofs 0.5: FUSE file system for interfacing with digital cameras using gphoto2
 media-gfx/gpicview 0.2.4: A Simple and Fast Image Viewer for X
 media-gfx/gqview 2.1.5-r1: A GTK-based image browser
@@ -12480,7 +12480,7 @@ media-libs/libggiwmh 0.3.2: Library for General Graphics Interface
 media-libs/libgig 3.3.0 4.0.0: a C++ library for loading Gigasampler files and DLS (Downloadable Sounds) Level 1/2 files
 media-libs/libgii 1.0.2-r1: Fast and safe graphics and drivers for about any graphics card to the Linux kernel (sometimes)
 media-libs/libgltf 0.0.1 0.0.2 9999: C++ Library for rendering OpenGL models stored in glTF format
-media-libs/libgphoto2 2.5.8 2.5.9: Library that implements support for numerous digital cameras
+media-libs/libgphoto2 2.5.8 2.5.9 2.5.10: Library that implements support for numerous digital cameras
 media-libs/libgpod 0.8.3 0.8.3-r1: Shared library to access the contents of an iPod
 media-libs/libgroove 4.3.0: Streaming audio processing library.
 media-libs/libharu 2.3.0-r1: C/C++ library for PDF generation
@@ -14228,7 +14228,7 @@ net-libs/dleyna-core 0.5.0: utility library for higher level dLeyna libraries
 net-libs/dleyna-renderer 0.5.0: library implementing services that allow clients to discover and manipulate DLNA renderers
 net-libs/dslib 3.0-r1: Library to access Czech eGov system "Datove schranky"
 net-libs/enet 1.2.2 1.3.7 1.3.13: relatively thin, simple and robust network communication layer on top of UDP
-net-libs/farstream 0.1.2-r2 0.2.7: Audio/video conferencing framework specifically designed for instant messengers
+net-libs/farstream 0.1.2-r2 0.2.7 0.2.8: Audio/video conferencing framework specifically designed for instant messengers
 net-libs/ftplib 3.1.1 4.0 4.0-r1: A set of routines that implement the FTP protocol
 net-libs/glib-networking 2.44.0 2.46.1: Network-related giomodules for glib
 net-libs/gloox 1.0.9 1.0.13 1.0.14 1.0.14-r1: A portable high-level Jabber/XMPP library for C++
@@ -14260,7 +14260,7 @@ net-libs/libbluedevil 2.1: Qt wrapper for bluez used in the KDE bluetooth stack
 net-libs/libbtbb 2015.09.2-r1 2015.10.1 9999: A library to decode Bluetooth baseband packets
 net-libs/libcapi 3.0.7-r1: CAPI library used by AVM products
 net-libs/libcrafter 0.3 9999: a high level library for C++ designed to make easier the creation and decoding of network packets
-net-libs/libdmapsharing 2.9.31 2.9.32: A library that implements the DMAP family of protocols
+net-libs/libdmapsharing 2.9.32 2.9.35: A library that implements the DMAP family of protocols
 net-libs/libdom 0.3.0: implementation of the W3C DOM, written in C
 net-libs/libeXosip 3.5.0 4.0.0: library that hides the complexity of using the SIP protocol for multimedia session establishement
 net-libs/libecap 0.2.0 1.0.0: API for implementing ICAP content analysis and adaptation
@@ -14298,7 +14298,7 @@ net-libs/libmm-qt 1.0.1-r1: Modemmanager bindings for Qt
 net-libs/libmnl 1.0.3-r1: Minimalistic netlink library
 net-libs/libmrss 0.19.2: A C-library for parsing and writing RSS 0.91/0.92/1.0/2.0 files or streams
 net-libs/libnatpmp 20110808-r1 20130911 20140401-r1 20150609: An alternative protocol to UPnP IGD specification
-net-libs/libndp 1.4 1.5: Library for Neighbor Discovery Protocol
+net-libs/libndp 1.5 1.6: Library for Neighbor Discovery Protocol
 net-libs/libnet 1.0.2a-r5 1.1.6 1.2_rc3: library to provide an API for commonly used low-level network functions (mainly packet injection)
 net-libs/libnetfilter_acct 1.0.2: Userspace library providing interface to extended accounting infrastructure of NetFilter
 net-libs/libnetfilter_conntrack 1.0.4 1.0.5: programming interface (API) to the in-kernel connection tracking state table
@@ -14967,7 +14967,7 @@ net-nntp/leafnode 1.11.10 1.11.11: A USENET software package designed for small 
 net-nntp/newspost 2.1.1-r3: A usenet binary autoposter for unix
 net-nntp/nzb 0.3: A binary news grabber
 net-nntp/nzbget 14.1 14.2 15.0 16.4 17.0_pre1686: A command-line based binary newsgrabber supporting .nzb files
-net-nntp/pan 0.139 0.139-r1 0.139-r2: A newsreader for GNOME
+net-nntp/pan 0.139-r1 0.139-r2 0.140: A newsreader for GNOME
 net-nntp/sabnzbd 0.7.16 0.7.17 0.7.18 0.7.19 0.7.20: Binary newsgrabber with web-interface
 net-nntp/slrn 1.0.2: A s-lang based newsreader
 net-nntp/slrnconf 0.8.4: slrnconf is a graphical configuration utility for the newsreader slrn
@@ -18887,7 +18887,7 @@ x11-wm/lumina 0.8.8_p1 9999: Lumina desktop environment
 x11-wm/lwm 1.2.1 1.2.2 1.2.3: The ultimate lightweight window manager
 x11-wm/marco 1.8.2 1.10.3: MATE default window manager
 x11-wm/matwm2 0.1.1: Simple EWMH compatible window manager with titlebars and frames
-x11-wm/muffin 2.6.1 2.8.3 2.8.4: Compositing window manager forked from Mutter for use with Cinnamon
+x11-wm/muffin 2.8.4 2.8.5: Compositing window manager forked from Mutter for use with Cinnamon
 x11-wm/musca 0.9.24_p20100226-r3 0.9.24_p20100226-r4: A simple dynamic window manager for X, with features nicked from ratpoison and dwm
 x11-wm/mutter 3.16.4 3.18.2 3.18.2-r1 3.18.3 3.18.4: GNOME 3 compositing window manager based on Clutter
 x11-wm/notion 3_p2013030200 3_p2015061300-r1 9999: Notion is a tiling, tabbed window manager for the X window system
