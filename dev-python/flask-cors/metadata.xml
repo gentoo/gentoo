@@ -2,9 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="person">
-    <email>idella4@gentoo.org</email>
-  </maintainer>
-  <maintainer type="person">
     <email>wking@tremily.us</email>
     <name>W. Trevor King</name>
     <description>proxy maintainer</description>
