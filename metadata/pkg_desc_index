@@ -6555,7 +6555,7 @@ dev-perl/gtk2-spell 1.40.0-r1: Bindings for GtkSpell with Gtk2.x
 dev-perl/gtk2-trayicon 0.60.0-r1: Perl wrappers for the egg cup Gtk2::TrayIcon utilities
 dev-perl/gtk2-traymanager 0.50.0-r1: Perl bindings for EggTrayManager
 dev-perl/indirect 0.360.0: Lexically warn about using the indirect method call syntax
-dev-perl/libintl-perl 1.200.0-r1 1.240.0: High-Level Interface to Uniforum Message Translation
+dev-perl/libintl-perl 1.200.0-r1 1.240.0 1.240.0-r1: High-Level Interface to Uniforum Message Translation
 dev-perl/librg-utils-perl 1.0.43: Parsers and format conversion utilities used by (e.g.) profphd
 dev-perl/libvorbis-perl 0.50.0-r1: Ogg::Vorbis - Perl extension for Ogg Vorbis streams
 dev-perl/libwww-perl 6.150.0: A collection of Perl Modules for the WWW
