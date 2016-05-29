@@ -19,5 +19,4 @@ KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 RDEPEND="|| ( dev-python/markdown2 dev-python/markdown )"
 
 SITEFILE="50${PN}-gentoo.el"
-
-ELISP_PATCHES=( ${P}-text-auto-mode.patch )
+ELISP_PATCHES="${P}-text-auto-mode.patch"
