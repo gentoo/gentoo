@@ -1,9 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
-GCONF_DEBUG="no"
+EAPI=6
 PYTHON_COMPAT=( python2_7 )
 
 inherit autotools eutils gnome2 python-any-r1
@@ -67,7 +66,6 @@ RDEPEND="${COMMON_DEPEND}
 "
 
 src_prepare() {
-	epatch_user
 	eautoreconf
 	gnome2_src_prepare
 }

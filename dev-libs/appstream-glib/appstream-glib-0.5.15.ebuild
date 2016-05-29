@@ -1,9 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
-GCONF_DEBUG="no"
+EAPI=6
 GNOME2_LA_PUNT="yes"
 
 inherit bash-completion-r1 gnome2
@@ -24,8 +23,9 @@ RDEPEND="
 	app-arch/libarchive
 	dev-db/sqlite:3
 	>=dev-libs/glib-2.45.8:2
+	>=dev-libs/json-glib-1.1.1
 	dev-libs/libyaml
-	>=media-libs/fontconfig-2.11
+	>=media-libs/fontconfig-2.11:1.0
 	>=media-libs/freetype-2.4:2
 	>=net-libs/libsoup-2.51.92:2.4
 	sys-apps/util-linux

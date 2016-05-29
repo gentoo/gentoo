@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
+EAPI=6
 
 PLOCALES="af am ar as ast az be bg bn bn_IN br bs byn ca crh cs cy da de dz el en eo es et eu fa fi fo fr ga gez gl gu haw he hi hr hu hy ia id is it ja ka kk km kn ko kok ku lt lv mi mk ml mn mr ms mt nb ne nl nn nso oc or pa pl ps pt pt_BR ro ru rw si sk sl so sq sr sr@latin sv sw ta te th ti tig tk tl tr tt tt@iqtelif ug uk ve vi wa wal wo xh zh_CN zh_HK zh_TW zu"
 
@@ -40,7 +40,7 @@ check_existing_locales() {
 		popd >/dev/null
 	done
 
-	all_locales=$(echo $(printf '%s\n' "${all_locales[@]}" | sort -u))
+	all_locales=$(echo $(printf '%s\n' "${all_locales[@]}" | LC_COLLATE=C sort -u))
 	if [[ ${PLOCALES} != "${all_locales}" ]]; then
 		eend 1
 		eerror "There are changes in locales! This ebuild should be updated to:"
@@ -52,6 +52,8 @@ check_existing_locales() {
 }
 
 src_prepare() {
+	default
+
 	local std loc mylinguas
 	local all_stds=( iso_15924 iso_3166-{1,2,3} iso_4217 iso_639-{2,3,5} )
 

@@ -1,11 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
-GCONF_DEBUG="no"
-
-inherit gnome2
+EAPI=6
+inherit gnome2 multilib-minimal
 
 DESCRIPTION="Library for Neighbor Discovery Protocol"
 HOMEPAGE="http://libndp.org"
@@ -13,14 +11,15 @@ SRC_URI="http://libndp.org/files/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="debug"
+IUSE=""
 
-KEYWORDS="~alpha amd64 arm ~arm64 ~ia64 ppc ppc64 ~sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 
 DEPEND=""
-RDEPEND="${DEPEND}"
+RDEPEND=""
 
-src_configure() {
+multilib_src_configure() {
+	ECONF_SOURCE="${S}" \
 	gnome2_src_configure \
 		--disable-static \
 		--enable-logging

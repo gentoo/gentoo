@@ -1,10 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
-GCONF_DEBUG="no"
-
+EAPI=6
 inherit autotools eutils gnome2
 
 DESCRIPTION="Cinnamon session manager"
@@ -13,7 +11,7 @@ SRC_URI="https://github.com/linuxmint/cinnamon-session/archive/${PV}.tar.gz -> $
 
 LICENSE="GPL-2+ FDL-1.1+ LGPL-2+"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="doc ipv6 systemd"
 
 COMMON_DEPEND="
@@ -52,16 +50,12 @@ DEPEND="${COMMON_DEPEND}
 
 src_prepare() {
 	# make upower and logind check non-automagic
-	epatch "${FILESDIR}/${PN}-2.6.2-automagic.patch"
-	epatch_user
-
+	eapply "${FILESDIR}/${PN}-2.6.2-automagic.patch"
 	eautoreconf
 	gnome2_src_prepare
 }
 
 src_configure() {
-	DOCS="AUTHORS README README.md"
-
 	gnome2_src_configure \
 		--disable-gconf \
 		--disable-static \

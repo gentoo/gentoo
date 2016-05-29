@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
+EAPI=6
 inherit autotools
 
 DESCRIPTION="Free, redistributable digital camera software application"
@@ -11,19 +11,19 @@ SRC_URI="mirror://sourceforge/gphoto/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 hppa ppc ppc64 sparc x86"
+KEYWORDS="~alpha ~amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
 IUSE="aalib exif ncurses nls readline"
 
 # aalib -> needs libjpeg
 RDEPEND="
 	dev-libs/popt
-	>=media-libs/libgphoto2-2.5.6[exif?]
+	>=media-libs/libgphoto2-2.5.6:=[exif?]
 	aalib? (
 		media-libs/aalib
 		virtual/jpeg:0 )
 	exif? (	media-libs/libexif )
 	ncurses? ( dev-libs/cdk )
-	readline? ( sys-libs/readline )
+	readline? ( sys-libs/readline:0 )
 "
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
@@ -31,6 +31,7 @@ DEPEND="${RDEPEND}
 "
 
 src_prepare() {
+	default
 	# Leave GCC debug builds under user control
 	sed -r '/(C|LD)FLAGS/ s/ -g( |")/\1/' \
 		-i configure{.ac,} || die
@@ -38,14 +39,14 @@ src_prepare() {
 }
 
 src_configure() {
-	CPPFLAGS="-I/usr/include/cdk" econf \
-		--docdir=/usr/share/doc/${PF} \
-		$(use_with aalib) \
-		$(use_with aalib jpeg) \
-		$(use_with exif libexif auto) \
-		$(use_with ncurses cdk) \
-		$(use_enable nls) \
-		$(use_with readline)
+	CPPFLAGS="-I/usr/include/cdk" \
+		econf \
+			$(use_with aalib) \
+			$(use_with aalib jpeg) \
+			$(use_with exif libexif auto) \
+			$(use_with ncurses cdk) \
+			$(use_enable nls) \
+			$(use_with readline)
 }
 
 src_install() {
@@ -53,6 +54,6 @@ src_install() {
 		HTML_DIR="${D}"/usr/share/doc/${PF}/sgml \
 		install
 
-	dodoc ChangeLog NEWS* README AUTHORS
+	einstalldocs
 	rm -rf "${D}"/usr/share/doc/${PF}/sgml/gphoto2
 }

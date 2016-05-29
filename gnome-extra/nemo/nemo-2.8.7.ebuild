@@ -1,9 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
-GCONF_DEBUG="no"
+EAPI=6
 GNOME2_LA_PUNT="yes"
 PYTHON_COMPAT=( python2_7 )
 
@@ -65,14 +64,12 @@ DEPEND="${COMMON_DEPEND}
 #	gnome-base/gnome-common, dev-util/gtk-doc (not only -am!)
 
 src_prepare() {
-	epatch_user
 	eautoreconf
 	gnome2_src_prepare
 }
 
 src_configure() {
 	gnome2_src_configure \
-		--disable-update-mimedb \
 		--disable-more-warnings \
 		$(use_enable exif libexif) \
 		$(use_enable introspection) \
@@ -84,5 +81,5 @@ src_test() {
 	"${EROOT}${GLIB_COMPILE_SCHEMAS}" --allow-any-name "${S}/libnemo-private" || die
 
 	cd src # we don't care about translation tests
-	GSETTINGS_SCHEMA_DIR="${S}/libnemo-private" GSETTINGS_BACKEND="memory" Xemake check
+	GSETTINGS_SCHEMA_DIR="${S}/libnemo-private" Xemake check
 }

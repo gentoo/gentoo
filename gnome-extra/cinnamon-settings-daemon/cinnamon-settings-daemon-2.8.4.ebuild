@@ -1,9 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
-GCONF_DEBUG="yes"
+EAPI=6
 GNOME2_LA_PUNT="yes"
 
 inherit autotools eutils gnome2 virtualx
@@ -59,7 +58,7 @@ DEPEND="${RDEPEND}
 
 src_prepare() {
 	# make colord and wacom optional
-	epatch "${FILESDIR}"/${PN}-2.6.2-optional.patch
+	eapply "${FILESDIR}"/${PN}-2.6.2-optional.patch
 
 	# Disable broken test
 	sed -e '/g_test_add_func ("\/color\/edid/d' \
@@ -77,15 +76,11 @@ plugins/wacom/csd-wacom-osd-window.c
 plugins/wacom/org.cinnamon.settings-daemon.plugins.wacom.policy.in.in
 EOF
 
-	epatch_user
-
 	eautoreconf
 	gnome2_src_prepare
 }
 
 src_configure() {
-	DOCS="AUTHORS ChangeLog MAINTAINERS README"
-
 	# no point in disabling gudev since other plugins pull it in
 	gnome2_src_configure \
 		--disable-static \
@@ -100,6 +95,5 @@ src_configure() {
 }
 
 src_test() {
-	unset DISPLAY
 	Xemake check
 }
