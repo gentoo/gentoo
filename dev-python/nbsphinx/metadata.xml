@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>sci@gentoo.org</email>
+    <name>Gentoo Science Project</name>
+  </maintainer>
+  <longdescription>
+    nbsphinx is a Sphinx extension that provides a source parser for
+    *.ipynb files. Custom Sphinx directives are used to show Jupyter
+    Notebook code cells (and of course their results) in both HTML and
+    LaTeX output. Un-evaluated notebooks -- i.e. notebooks without
+    stored output cells -- will be automatically executed during the
+    Sphinx build process.
+  </longdescription>
+  <upstream>
+    <remote-id type="pypi">nbformat</remote-id>
+    <remote-id type="github">spatialaudio/nbsphinx</remote-id>
+  </upstream>
+</pkgmetadata>
