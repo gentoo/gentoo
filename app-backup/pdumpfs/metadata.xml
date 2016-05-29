@@ -6,10 +6,6 @@
 		<name>Paul Healy</name>
 		<description>Proxied maintainer; set to assignee in all bugs</description>
 	</maintainer>
-	<maintainer type="person">
-		<email>idella4@gentoo.org</email>
-		<name>Ian Delaney</name>
-	</maintainer>
 <maintainer type="project">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
