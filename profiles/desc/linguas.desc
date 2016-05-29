@@ -17,7 +17,6 @@ ar_JO - Arabic locale for Jordan
 ar_SA - Arabic locale for Saudi-Arabia
 ar_SY - Arabic locale for Syria
 as - Assamese locale
-as_IN - Assamese locale for India
 ast - Asturian locale
 az - Azeri locale
 be - Belarusian locale
@@ -29,7 +28,6 @@ bn - Bengali locale
 bn_BD - Bengali locale for Bangladesh
 bn_IN - Bengali locale for India
 bo - Tibetan locale
-bo_CN - Tibetan locale for China
 br - Breton locale
 brx - Bodo locale for India
 bs - Bosnian locale
@@ -53,7 +51,6 @@ de - German locale
 de_1901 - German locale with old spelling
 de_CH - German locale for Switzerland
 de_DE - German locale for Germany
-de_FR - German locale for France
 dgo - Dogri locale for India
 doi - Dogri locale
 dz - Dzongkha locale
@@ -75,7 +72,6 @@ es_419 - Latin American Spanish locale
 es_AR - Spanish locale for Argentina
 es_CL - Spanish locale for Chile
 es_CO - Spanish locale for Columbia
-es_CR - Spanish locale for Costa Rica
 es_DO - Spanish locale for Dominican Republic
 es_ES - Spanish locale for Spain
 es_LA - Spanish locale for Latin America
@@ -117,7 +113,6 @@ hne - Chhattisgarhi locale
 hr - Croatian locale
 hr_HR - Croatian locale
 hsb - Upper Sorbian locale
-ht - Haitian locale
 hu - Hungarian locale
 hu_HU - Hungarian locale
 hy - Armenian locale
@@ -164,16 +159,13 @@ mi - Maori locale
 mk - Macedonian locale
 mk_MK - Macedonian locale for Macedonia
 ml - Malayalam locale
-ml_IN - Malayalam locale for India
 mn - Mongolian locale
 mni - Manipuri locale
 mr - Marathi locale
-mr_IN - Marathi locale for India
 ms - Malay locale
 ms_MY - Malay locale for Malaysia
 mt - Maltese locale
 my - Burmese locale
-my_MM - Burmese  locale for Myanmar
 nan - Min Nan locale
 nb - Norwegian (Bokmal) locale
 nb_NO - Norwegian (Bokmal) locale for Norway
@@ -192,11 +184,9 @@ nso - Northern Sotho locale
 oc - Occitan locale
 om - Oromo locale
 or - Oriya locale
-or_IN - Oriya locale for India
 pa - Punjabi locale for India
 pa_IN - Punjabi locale for India
 pam - Kapampangan locale
-pap - Paiamento locale
 pl - Polish locale
 pl_PL - Polish locale
 ps - Pushto locale
@@ -218,8 +208,6 @@ sat - Santali locale
 sco - Scots locale
 sd - Sindhi locale
 se - Northern Saami locale
-sh - Serbo-Croatian locale
-sh_YU - Serbo-Croatian locale
 shn - Shan locale
 si - Sinhala locale
 si_LK - Sinhala locale
@@ -236,9 +224,6 @@ sr@Latn - Serbian (latin) locale
 sr@ijekavian - Serbian-Ijekavian locale
 sr@ijekavianlatin - Serbian-Ijekavian (latin) locale
 sr@latin - Serbian (latin) locale
-sr_BA - Serbian locale for Bosnia and Herzegovina
-sr_BA@latin - Serbian (latin) locale for Bosnia and Herzegovina
-sr_CS - Serbian locale
 sr_RS - Serbian locale for Serbia
 sr_RS@cyrillic - Serbian (cyrillic) locale for Serbia
 sr_RS@latin - Serbian (latin) locale for Serbia
@@ -253,13 +238,11 @@ ta - Tamil locale
 ta_IN - Tamil locale
 ta_LK - Tamil locale for Sri Lanka
 te - Telugu locale
-te_IN - Telugu locale for India
 tg - Tajik locale
 tg_TJ - Tajik locale Tajikistan
 th - Thai locale
 th_TH - Thai locale Thailand
 ti - Tigrinya locale
-ti_ER - Tigrinya locale for Eritrea
 tig - Tigre locale
 tk - Turkmen locale
 tl - Tagalog locale
@@ -276,7 +259,6 @@ ug - Uighur locale
 uk - Ukrainian locale
 uk_UA - Ukrainian locale for Ukraine
 ur - Urdu locale
-ur_IN - Urdu locale for India
 ur_PK - Urdu language locale for Pakistan
 uz - Uzbek locale
 uz@Cyrl - Uzbek (Cyrillic) locale
