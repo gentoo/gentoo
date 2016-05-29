@@ -24,6 +24,11 @@ DEPEND="${RDEPEND}
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-make-whitespace-usage-consistent.patch
+	"${FILESDIR}"/${P}-print-is-a-function-and-needs-parentheses.patch
+)
+
 src_configure() {
 	python_setup
 	xorg-2_src_configure
