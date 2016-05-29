@@ -156,7 +156,7 @@ src_prepare() {
 	eapply "${FILESDIR}"/${PN}-2.4.7-disable-webgl.patch
 
 	# https://bugs.webkit.org/show_bug.cgi?id=156510
-        eapply "${FILESDIR}"/${PN}-2.4.11-video-web-audio.patch
+	eapply "${FILESDIR}"/${PN}-2.4.11-video-web-audio.patch
 
 	AT_M4DIR=Source/autotools eautoreconf
 
