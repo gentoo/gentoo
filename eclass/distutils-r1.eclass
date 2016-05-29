@@ -555,8 +555,8 @@ distutils-r1_python_install() {
 		done
 	fi
 
-	local root=${D}/_${EPYTHON}
-	[[ ${DISTUTILS_SINGLE_IMPL} ]] && root=${D}
+	local root=${D%/}/_${EPYTHON}
+	[[ ${DISTUTILS_SINGLE_IMPL} ]] && root=${D%/}
 
 	esetup.py install --root="${root}" "${args[@]}"
 
