@@ -18128,7 +18128,7 @@ x11-libs/libva-vdpau-driver 0.7.4-r2 0.7.4-r3 9999: VDPAU Backend for Video Acce
 x11-libs/libvdpau 1.1.1: VDPAU wrapper and trace libraries
 x11-libs/libview 0.6.6-r2: VMware's Incredibly Exciting Widgets
 x11-libs/libwnck 2.31.0 3.14.0 3.14.1: A window navigation construction kit
-x11-libs/libxcb 1.9.1 1.9.1-r1 1.9.3 1.9.3-r1 1.10 1.11 1.11-r1 1.11.1: X C-language Bindings library
+x11-libs/libxcb 1.9.1 1.9.1-r1 1.9.3 1.9.3-r1 1.10 1.11 1.11-r1 1.11.1 1.12: X C-language Bindings library
 x11-libs/libxkbcommon 0.5.0 0.6.0 0.6.1: X.Org xkbcommon library
 x11-libs/libxkbfile 1.0.8 1.0.9: X.Org xkbfile library
 x11-libs/libxkbui 1.0.2-r1: X.Org xkbui library
@@ -18685,7 +18685,7 @@ x11-proto/scrnsaverproto 1.2.2-r1: X.Org ScrnSaver protocol headers
 x11-proto/trapproto 3.4.3: X.Org Trap protocol headers
 x11-proto/videoproto 2.3.2 2.3.3: X.Org Video protocol headers
 x11-proto/xcalibrateproto 0.1_pre20081210: Touchscreen calibration protocol
-x11-proto/xcb-proto 1.8-r3 1.9-r1 1.10 1.11 1.12: X C-language Bindings protocol headers
+x11-proto/xcb-proto 1.8-r3 1.9-r1 1.10 1.11 1.12-r1: X C-language Bindings protocol headers
 x11-proto/xcmiscproto 1.2.2: X.Org XCMisc protocol headers
 x11-proto/xextproto 7.3.0: X.Org XExt protocol headers
 x11-proto/xf86bigfontproto 1.2.0-r1: X.Org XF86BigFont protocol headers
