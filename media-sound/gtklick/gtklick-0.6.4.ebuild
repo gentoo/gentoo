@@ -1,8 +1,7 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
-
-EAPI="6"
+EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1
@@ -20,6 +19,7 @@ RDEPEND="dev-python/pygtk[${PYTHON_USEDEP}]
 	media-libs/pyliblo[${PYTHON_USEDEP}]
 	media-sound/klick[osc]
 	${PYTHON_DEPS}"
+
 DEPEND="${RDEPEND}"
 
 src_install() {
@@ -29,6 +29,6 @@ src_install() {
 	sed \
 		-e "s|[@]sharedir[@]|${EPREFIX}/usr/share/${PN}|g" \
 		-e "s|[@]localedir[@]|${EPREFIX}/usr/share/locale|g" \
-		"${FILESDIR}"/${PN} > "${T}"/${PN}
+		"${FILESDIR}"/${PN} > "${T}"/${PN} || die
 	python_replicate_script "${T}"/${PN}
 }
