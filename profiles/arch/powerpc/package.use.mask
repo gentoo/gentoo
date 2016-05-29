@@ -89,12 +89,6 @@ dev-util/bnfc test
 sys-apps/systemd terminal
 sys-apps/systemd xkb
 
-# Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (16 Sep 2014)
-# Needs libepoxy keywording, bug #510940
-x11-base/xorg-server glamor wayland
-x11-drivers/xf86-video-nouveau glamor
-x11-drivers/xf86-video-ati glamor
-
 # Anthony G. Basile <blueness@gentoo.org> (17 Aug 2014)
 # This pulls in qemu[smartcard] which is masked
 net-misc/spice-gtk smartcard
