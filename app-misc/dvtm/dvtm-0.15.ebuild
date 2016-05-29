@@ -1,21 +1,27 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=3
+EAPI=5
 
 inherit savedconfig toolchain-funcs
 
 DESCRIPTION="Dynamic virtual terminal manager"
 HOMEPAGE="http://www.brain-dump.org/projects/dvtm/"
-SRC_URI="http://www.brain-dump.org/projects/${PN}/${P}.tar.gz"
+
+if [[ ${PV} == 9999* ]]; then
+	inherit git-2
+	EGIT_REPO_URI="git://repo.or.cz/dvtm.git"
+else
+	SRC_URI="http://www.brain-dump.org/projects/${PN}/${P}.tar.gz"
+	KEYWORDS="~amd64 ~arm ~x86"
+fi
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 arm x86"
 IUSE="unicode"
 
-DEPEND="sys-libs/ncurses[unicode?]"
+DEPEND="sys-libs/ncurses:0[unicode?]"
 RDEPEND=${DEPEND}
 
 src_prepare() {
@@ -32,6 +38,7 @@ src_prepare() {
 	}
 	sed -i \
 		-e '/strip/d' \
+		-e 's:@tic :@tic -o ${DESTDIR}${PREFIX}/share/terminfo :g' \
 		Makefile || die "sed Makefile failed"
 
 	restore_config config.h
@@ -44,12 +51,12 @@ src_compile() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" PREFIX="/usr" install || die "emake install failed"
+	emake DESTDIR="${D}" PREFIX="/usr" install
 
 	insinto /usr/share/${PN}
-	newins config.h ${PF}.config.h || die "newins failed"
+	newins config.h ${PF}.config.h
 
-	dodoc README || die "dodoc failed"
+	dodoc README.md
 
 	save_config config.h
 }
