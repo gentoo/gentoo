@@ -14363,7 +14363,7 @@ net-libs/net6 1.3.14 1.3.14-r1: Network access framework for IPv4/IPv6 written i
 net-libs/netembryo 0.1.1: a network abstraction library
 net-libs/netwib 5.39.0: Library of Ethernet, IP, UDP, TCP, ICMP, ARP and RARP protocols
 net-libs/nfqueue-bindings 0.5: High-level language bindings for libnetfilter_queue
-net-libs/nghttp2 1.7.1 1.10.0 1.11.0 9999: HTTP/2 C Library
+net-libs/nghttp2 1.7.1 1.10.0 1.11.0 1.11.1 9999: HTTP/2 C Library
 net-libs/nodejs 0.12.6 0.12.7 0.12.10 4.4.0 4.4.1 5.9.1 5.10.1: A JavaScript runtime built on Chrome's V8 JavaScript engine
 net-libs/obby 0.4.8 0.4.8-r1: Library for collaborative text editing
 net-libs/onion 0.7 0.8 9999: C library to create simple HTTP servers and Web Applications
@@ -17610,7 +17610,7 @@ www-apache/mod_fcgid 2.3.9 2.3.9-r1: A binary-compatible alternative to mod_fast
 www-apache/mod_flvx 0.0.1-r1: mod_flvx allows to seek inside FLV files for streaming purposes
 www-apache/mod_ftpd 0.14-r1: Apache2 module which provides an FTP server
 www-apache/mod_geoip2 1.2.7-r1: Apache 2.x module for finding the country and city that a web request originated from
-www-apache/mod_gnutls 0.5.10-r1 0.7.3 0.7.4: mod_gnutls uses GnuTLS to provide SSL/TLS encryption for Apache2, similarly to mod_ssl
+www-apache/mod_gnutls 0.5.10-r1 0.7.3 0.7.4 0.7.5: mod_gnutls uses GnuTLS to provide SSL/TLS encryption for Apache2, similarly to mod_ssl
 www-apache/mod_h2 0.8.2 0.8.3 9999: HTTP/2 module for Apache
 www-apache/mod_jk 1.2.37 1.2.40: JK module for connecting Tomcat and Apache using the ajp13 protocol.
 www-apache/mod_layout 5.1: An Apache2 module for adding custom headers and/or footers
