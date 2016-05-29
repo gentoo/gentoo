@@ -2914,11 +2914,6 @@
       <name>Yixun Lan</name>
       <role>Member</role>
     </member>
-    <member is-lead="1">
-      <email>idella4@gentoo.org</email>
-      <name>Ian Delaney</name>
-      <role>Lead</role>
-    </member>
     <member>
       <email>k_f@gentoo.org</email>
       <name>Kristian Fiskerstrand</name>
@@ -3067,11 +3062,6 @@
       <email>floppym@gentoo.org</email>
       <name>Mike Gilbert</name>
       <role>Lead</role>
-    </member>
-    <member>
-      <email>idella4@gentoo.org</email>
-      <name>Ian Delaney</name>
-      <role>Member</role>
     </member>
     <member>
       <email>jlec@gentoo.org</email>
@@ -4470,10 +4460,6 @@
     <member>
       <email>dlan@gentoo.org</email>
       <name>Yixun Lan</name>
-    </member>
-    <member>
-      <email>idella4@gentoo.org</email>
-      <name>Ian Delaney</name>
     </member>
   </project>
   <project>
