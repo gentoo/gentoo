@@ -216,10 +216,6 @@ prelude
 # mask d3d since we don't have wine
 d3d
 
-# Matt Turner <mattst88@gentoo.org) (10 Feb 2012)
-# mask wayland since dev-libs/wayland isn't keyworded
-wayland
-
 # Julian Ospald <hasufell@gentoo.org> (25 Apr 2012)
 # Masked because nvidia-texture-tools is not (tested) for PowerPC
 nvtt
