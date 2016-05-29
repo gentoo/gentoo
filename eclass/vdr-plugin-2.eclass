@@ -612,15 +612,14 @@ vdr-plugin-2_src_install() {
 	create_header_checksum_file ${vdr_plugin_list}
 	create_plugindb_file ${vdr_plugin_list}
 
-	local commondoc=( README* HISTORY CHANGELOG )
-	for docfile in "${commondoc[@]}"; do
-		if [[ ${EAPI} == "6" ]]; then
-			local DOCS="${DOCS} ${docfile}"
-			[[ -f ${docfile} ]] && einstalldocs "${DOCS[@]}"
-		else
-			[[ -f ${docfile} ]] && dodoc ${docfile}
-		fi
-	done
+	if [[ ${EAPI} != [45] ]]; then
+		einstalldocs
+	else
+		local docfile
+			for docfile in README* HISTORY CHANGELOG; do
+				[[ -f ${docfile} ]] && dodoc ${docfile}
+			done
+	fi
 
 	# if VDR_CONFD_FILE is empty and ${FILESDIR}/confd exists take it
 	[[ -z ${VDR_CONFD_FILE} ]] && [[ -e ${FILESDIR}/confd ]] && VDR_CONFD_FILE=${FILESDIR}/confd
