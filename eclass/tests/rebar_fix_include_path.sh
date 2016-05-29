@@ -77,6 +77,25 @@ test_typical_config() {
 	[[ ${unit_rc}${diff_rc} = 00 ]]
 }
 
+test_typical_config_with_different_name() {
+	local diff_rc
+	local unit_rc
+
+	# Prepare
+	cd "${S}" || die
+	cp typical.config other.config || die
+
+	# Run unit
+	(rebar_fix_include_path foo other.config)
+	unit_rc=$?
+
+	# Test result
+	diff other.config typical.config.expected
+	diff_rc=$?
+
+	[[ ${unit_rc}${diff_rc} = 00 ]]
+}
+
 test_multiple_versions() {
 	local diff_rc
 	local unit_rc
@@ -142,6 +161,10 @@ setup
 
 tbegin "rebar_fix_include_path deals with typical config"
 test_typical_config
+tend $?
+
+tbegin "rebar_fix_include_path deals with typical config with different name"
+test_typical_config_with_different_name
 tend $?
 
 tbegin "rebar_fix_include_path fails on multiple versions of dependency"

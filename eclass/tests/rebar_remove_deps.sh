@@ -67,6 +67,25 @@ test_typical_config() {
 	[[ ${unit_rc}${diff_rc} = 00 ]]
 }
 
+test_typical_config_with_different_name() {
+	local diff_rc
+	local unit_rc
+
+	# Prepare
+	cd "${S}" || die
+	cp typical.config other.config || die
+
+	# Run unit
+	(rebar_remove_deps other.config)
+	unit_rc=$?
+
+	# Test result
+	diff other.config rebar.config.expected
+	diff_rc=$?
+
+	[[ ${unit_rc}${diff_rc} = 00 ]]
+}
+
 test_deps_in_one_line() {
 	local diff_rc
 	local unit_rc
@@ -90,6 +109,10 @@ setup
 
 tbegin "rebar_remove_deps deals with typical config"
 test_typical_config
+tend $?
+
+tbegin "rebar_remove_deps deals with typical config with different name"
+test_typical_config_with_different_name
 tend $?
 
 tbegin "rebar_remove_deps deals with all deps in one line"
