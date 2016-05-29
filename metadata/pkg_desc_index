@@ -11729,7 +11729,7 @@ mail-client/nail 12.4 12.4-r2 12.4-r3: an enhanced mailx-compatible mail client
 mail-client/nmh 1.3-r3: New MH mail reader
 mail-client/novell-groupwise-client 8.0.2.96933: Novell Groupwise Client for Linux
 mail-client/pinepgp 0.18.0-r1: Use GPG/PGP with Pine
-mail-client/roundcube 1.1.4 1.2_beta: A browser-based multilingual IMAP client with an application-like user interface
+mail-client/roundcube 1.1.4 1.2_beta 1.2.0: A browser-based multilingual IMAP client with an application-like user interface
 mail-client/squirrelmail 1.4.23_pre20140426: Webmail for nuts!
 mail-client/sylpheed 3.4.2 3.4.3 3.4.3-r1 3.5.0: A lightweight email client and newsreader
 mail-client/thunderbird 24.8.0 31.8.0 38.7.0 38.8.0 45.1.0: Thunderbird Mail Client
