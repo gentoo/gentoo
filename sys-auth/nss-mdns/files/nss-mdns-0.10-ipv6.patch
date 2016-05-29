@@ -1,0 +1,528 @@
+diff -u src/avahi.c src/avahi.c
+--- src/avahi.c	2006-04-29 05:14:09.000000000 +0800
++++ src/avahi.c	2013-01-04 10:00:05.025558790 +0800
+@@ -26,6 +26,7 @@
+ #include <sys/socket.h>
+ #include <string.h>
+ #include <stdio.h>
++#include <stdlib.h>
+ #include <sys/types.h>
+ #include <arpa/inet.h>
+ #include <sys/un.h>
+@@ -34,6 +35,7 @@
+ 
+ #include "avahi.h"
+ #include "util.h"
++#include "query.h"
+ 
+ #define WHITESPACE " \t"
+ 
+@@ -93,7 +95,8 @@
+     p = ln+1;
+     p += strspn(p, WHITESPACE);
+ 
+-    /* Skip interface */
++    /* Parse interface */
++    if (af == AF_INET6) ((ipv6_address_t*)data)->if_idx = strtoul(p, 0, 10);
+     p += strcspn(p, WHITESPACE);
+     p += strspn(p, WHITESPACE);
+ 
+diff -u src/avahi-test.c src/avahi-test.c
+--- src/avahi-test.c	2007-02-09 00:42:23.000000000 +0800
++++ src/avahi-test.c	2013-01-04 09:59:06.174017729 +0800
+@@ -24,6 +24,7 @@
+ #include <stdio.h>
+ 
+ #include "avahi.h"
++#include "query.h"
+ 
+ int main(int argc, char *argv[]) {
+     uint8_t data[64];
+@@ -35,15 +36,20 @@
+     else
+         printf("AF_INET: failed (%i).\n", r);
+ 
+-/*     if ((r = avahi_resolve_name(AF_INET6, argc >= 2 ? argv[1] : "cocaine.local", data)) == 0) */
+-/*         printf("AF_INET6: %s\n", inet_ntop(AF_INET6, data, t, sizeof(t))); */
+-/*     else */
+-/*         printf("AF_INET6: failed (%i).\n", r); */
+-
+     if ((r = avahi_resolve_address(AF_INET, data, t, sizeof(t))) == 0)
+         printf("REVERSE: %s\n", t);
+     else
+         printf("REVERSE: failed (%i).\n", r);
++
++     if ((r = avahi_resolve_name(AF_INET6, argc >= 2 ? argv[1] : "cocaine.local", data)) == 0)
++         printf("AF_INET6: %s, %u\n", inet_ntop(AF_INET6, data, t, sizeof(t)), ((ipv6_address_t*)data)->if_idx);
++     else
++         printf("AF_INET6: failed (%i).\n", r);
++
++    if ((r = avahi_resolve_address(AF_INET6, data, t, sizeof(t))) == 0)
++        printf("REVERSE: %s\n", t);
++    else
++        printf("REVERSE: failed (%i).\n", r);
+ 
+     return 0;
+ }
+diff -u src/bsdnss.c src/bsdnss.c
+--- src/bsdnss.c	2007-02-09 00:42:23.000000000 +0800
++++ src/bsdnss.c	2013-01-04 09:49:45.566389491 +0800
+@@ -258,6 +258,8 @@
+ 			ai->ai_addrlen = sizeof(struct sockaddr_in6);
+ 			memcpy(&((struct sockaddr_in6 *)psa)->sin6_addr, hap,
+ 			    ai->ai_addrlen);
++			if (((struct sockaddr_in6 *)psa)->sin6_addr[0] == 0xfe && ((struct sockaddr_in6 *)psa)->sin6_addr[0] == 0x80)
++			    ((struct sockaddr_in6 *)psa)->sin6_scope_id = ((struct ipv6_address_t*) hap)->if_idx;
+ 			break;
+ 		default:
+ 			ai->ai_addrlen = sizeof(struct sockaddr_storage);
+diff -u src/map-file src/map-file
+--- src/map-file	2007-01-02 02:36:21.000000000 +0800
++++ src/map-file	2013-01-07 08:56:56.406478774 +0800
+@@ -18,6 +18,12 @@
+ _nss_mdns_minimal_gethostbyname2_r;         
+ _nss_mdns4_minimal_gethostbyname2_r;
+ _nss_mdns6_minimal_gethostbyname2_r;
++_nss_mdns_gethostbyname4_r;         
++_nss_mdns4_gethostbyname4_r;
++_nss_mdns6_gethostbyname4_r;
++_nss_mdns_minimal_gethostbyname4_r;         
++_nss_mdns4_minimal_gethostbyname4_r;
++_nss_mdns6_minimal_gethostbyname4_r;
+ local: 
+ *;
+ };
+diff -u src/nss.c src/nss.c
+--- src/nss.c	2013-01-07 15:14:23.000000000 +0800
++++ src/nss.c	2013-01-07 16:52:38.399842517 +0800
+@@ -41,22 +41,27 @@
+ 
+ #if defined(NSS_IPV4_ONLY) && ! defined(MDNS_MINIMAL)
+ #define _nss_mdns_gethostbyname2_r _nss_mdns4_gethostbyname2_r
++#define _nss_mdns_gethostbyname4_r _nss_mdns4_gethostbyname4_r
+ #define _nss_mdns_gethostbyname_r  _nss_mdns4_gethostbyname_r
+ #define _nss_mdns_gethostbyaddr_r  _nss_mdns4_gethostbyaddr_r
+ #elif defined(NSS_IPV4_ONLY) && defined(MDNS_MINIMAL)
+ #define _nss_mdns_gethostbyname2_r _nss_mdns4_minimal_gethostbyname2_r
++#define _nss_mdns_gethostbyname4_r _nss_mdns4_minimal_gethostbyname4_r
+ #define _nss_mdns_gethostbyname_r  _nss_mdns4_minimal_gethostbyname_r
+ #define _nss_mdns_gethostbyaddr_r  _nss_mdns4_minimal_gethostbyaddr_r
+ #elif defined(NSS_IPV6_ONLY) && ! defined(MDNS_MINIMAL)
+ #define _nss_mdns_gethostbyname2_r _nss_mdns6_gethostbyname2_r
++#define _nss_mdns_gethostbyname4_r _nss_mdns6_gethostbyname4_r
+ #define _nss_mdns_gethostbyname_r  _nss_mdns6_gethostbyname_r
+ #define _nss_mdns_gethostbyaddr_r  _nss_mdns6_gethostbyaddr_r
+ #elif defined(NSS_IPV6_ONLY) && defined(MDNS_MINIMAL)
+ #define _nss_mdns_gethostbyname2_r _nss_mdns6_minimal_gethostbyname2_r
++#define _nss_mdns_gethostbyname4_r _nss_mdns6_minimal_gethostbyname4_r
+ #define _nss_mdns_gethostbyname_r  _nss_mdns6_minimal_gethostbyname_r
+ #define _nss_mdns_gethostbyaddr_r  _nss_mdns6_minimal_gethostbyaddr_r
+ #elif defined(MDNS_MINIMAL)
+ #define _nss_mdns_gethostbyname2_r _nss_mdns_minimal_gethostbyname2_r
++#define _nss_mdns_gethostbyname4_r _nss_mdns_minimal_gethostbyname4_r
+ #define _nss_mdns_gethostbyname_r  _nss_mdns_minimal_gethostbyname_r
+ #define _nss_mdns_gethostbyaddr_r  _nss_mdns_minimal_gethostbyaddr_r
+ #endif
+@@ -81,6 +86,12 @@
+         char *name[MAX_ENTRIES];
+     } data;
+ };
++struct user_gai_buf {
++    struct gaih_addrtuple *list_base;
++    int list_size;
++    int list_idx;
++    int wrote_name;
++};
+ 
+ #ifndef NSS_IPV6_ONLY
+ static void ipv4_callback(const ipv4_address_t *ipv4, void *userdata) {
+@@ -93,6 +104,21 @@
+     u->data.ipv4[u->count++] = *ipv4;
+     u->data_len += sizeof(ipv4_address_t);
+ }
++static void ipv4_gai_callback(const ipv4_address_t *ipv4, void *userdata) {
++    struct user_gai_buf *u = userdata;
++    assert(ipv4 && userdata);
++
++    if (u->list_idx+1 >= u->list_size)
++        return;
++
++    u->list_base[u->list_idx].name = 0;
++    u->list_base[u->list_idx].family = AF_INET;
++    u->list_base[u->list_idx].addr[0] = ipv4->address;
++    u->list_base[u->list_idx].scopeid = 0;
++    if (u->list_idx > 0) u->list_base[u->list_idx-1].next = &u->list_base[u->list_idx];
++    u->list_base[u->list_idx].next = 0;
++    u->list_idx += 1;
++}
+ #endif
+ 
+ #ifndef NSS_IPV4_ONLY
+@@ -106,6 +132,21 @@
+     u->data.ipv6[u->count++] = *ipv6;
+     u->data_len += sizeof(ipv6_address_t);
+ }
++static void ipv6_gai_callback(const ipv6_address_t *ipv6, void *userdata) {
++    struct user_gai_buf *u = userdata;
++    assert(ipv6 && userdata);
++
++    if (u->list_idx+1 >= u->list_size)
++        return;
++
++    u->list_base[u->list_idx].name = 0;
++    u->list_base[u->list_idx].family = AF_INET6;
++    memcpy(u->list_base[u->list_idx].addr, ipv6->address, sizeof(u->list_base[u->list_idx].addr));
++    u->list_base[u->list_idx].scopeid = ipv6->if_idx;
++    if (u->list_idx > 0) u->list_base[u->list_idx-1].next = &u->list_base[u->list_idx];
++    u->list_base[u->list_idx].next = 0;
++    u->list_idx += 1;
++}
+ #endif
+ 
+ static void name_callback(const char*name, void *userdata) {
+@@ -538,6 +579,265 @@
+ 
+     status = NSS_STATUS_SUCCESS;
+     
++finish:
++#ifdef ENABLE_LEGACY
++    if (fd >= 0)
++        close(fd);
++#endif
++
++    return status;
++}
++
++enum nss_status _nss_mdns_gethostbyname4_r(
++    const char *name,
++    struct gaih_addrtuple **pat,
++    char *buffer,
++    size_t buflen,
++    int *errnop,
++    int *h_errnop,
++    int32_t *ttlp) {
++
++    struct user_gai_buf u;
++    enum nss_status status = NSS_STATUS_UNAVAIL;
++    int i;
++    size_t l, idx;
++    void (*ipv4_func)(const ipv4_address_t *ipv4, void *userdata);
++    void (*ipv6_func)(const ipv6_address_t *ipv6, void *userdata);
++    int name_allowed;
++    int af = AF_UNSPEC;
++
++#ifdef ENABLE_AVAHI
++    int avahi_works = 1;
++    void * data[32];
++#endif
++
++#ifdef ENABLE_LEGACY
++    int fd = -1;
++#endif
++
++    if (pat) {
++	af = (*pat)->family;
++    }
++
++/*     DEBUG_TRAP; */
++
++#ifdef NSS_IPV6_ONLY
++    if (af == AF_UNSPEC)
++        af = AF_INET6;
++#endif
++
++#ifdef NSS_IPV4_ONLY
++    if (af == AF_UNSPEC)
++        af = AF_INET;
++#endif
++
++#ifdef NSS_IPV4_ONLY
++    if (af != AF_INET) 
++#elif NSS_IPV6_ONLY
++    if (af != AF_INET6)
++#else        
++    if (af != AF_INET && af != AF_INET6 && af != AF_UNSPEC)
++#endif        
++    {    
++        *errnop = EINVAL;
++        *h_errnop = NO_RECOVERY;
++
++        goto finish;
++    }
++
++    if (buflen <
++        sizeof(struct gaih_addrtuple))  {
++        
++        *errnop = ERANGE;
++        *h_errnop = NO_RECOVERY;
++        status = NSS_STATUS_TRYAGAIN;
++        
++        goto finish;
++    }
++    
++    u.list_base = (struct user_gai_buf*) buffer;
++    u.list_size = buflen / sizeof( struct user_gai_buf );
++    u.list_idx = 0;
++    u.wrote_name = 0;
++
++#ifdef NSS_IPV6_ONLY
++    ipv4_func = NULL;
++#else
++    ipv4_func = (af == AF_INET || af == AF_UNSPEC) ? ipv4_gai_callback : NULL;
++#endif    
++
++#ifdef NSS_IPV4_ONLY
++    ipv6_func = NULL;
++#else
++    ipv6_func = (af == AF_INET6 || af == AF_UNSPEC) ? ipv6_gai_callback : NULL;
++#endif
++
++    name_allowed = verify_name_allowed(name);
++    
++#ifdef ENABLE_AVAHI
++
++    if (avahi_works && name_allowed) {
++        int r;
++
++	if (af == AF_INET || af == AF_UNSPEC) {
++	    if ((r = avahi_resolve_name(AF_INET, name, data)) < 0)
++		avahi_works = 0;
++	    else if (r == 0) {
++		if (ipv4_func) {
++		    ipv4_func((ipv4_address_t*) data, &u);
++		}
++	    }
++	    else
++		status = NSS_STATUS_NOTFOUND;
++	}
++	if (af == AF_INET6 || af == AF_UNSPEC) {
++	    if ((r = avahi_resolve_name(AF_INET6, name, data)) < 0)
++		avahi_works = 0;
++	    else if (r == 0) {
++		if (ipv6_func)
++		    ipv6_func((ipv6_address_t*)data, &u);
++	    }
++	    else
++		status = NSS_STATUS_NOTFOUND;
++	}
++    }
++
++#ifdef HONOUR_SEARCH_DOMAINS
++    if (u.list_idx == 0 && avahi_works && !ends_with(name, ".")) {
++        char **domains;
++
++        if ((domains = get_search_domains())) {
++            char **p;
++            
++            /* Try to concatenate host names */
++	    for (p = domains; *p; p++) {
++                int fullnamesize;
++                char *fullname;
++                
++	        fullnamesize = strlen(name) + strlen(*p) + 2;
++
++                if (!(fullname = malloc(fullnamesize)))
++                    break;
++                
++		snprintf(fullname, fullnamesize, "%s.%s", name, *p);
++
++                if (verify_name_allowed(fullname)) {
++                    int r;
++
++		    if (af == AF_INET || af == AF_UNSPEC) {
++			r = avahi_resolve_name(AF_INET, fullname, data);
++                    
++			if (r < 0) {
++			    /* Lookup failed */
++			    avahi_works = 0;
++			    free(fullname);
++			    break;
++			} else if (r == 0) {
++			    /* Lookup succeeded */
++			    if (ipv4_func)
++				ipv4_func((ipv4_address_t*) data, &u);
++			}
++		    }
++		    if (af == AF_INET6 || af == AF_UNSPEC) {
++			r = avahi_resolve_name(AF_INET6, fullname, data);
++                    
++			if (r < 0) {
++			    /* Lookup failed */
++			    avahi_works = 0;
++			    free(fullname);
++			    break;
++			} else if (r == 0) {
++			    /* Lookup succeeded */
++			    if (ipv6_func)
++				ipv6_func((ipv6_address_t*)data, &u);
++			}
++		    }
++		    free(fullname);
++		    if (u.list_idx > 0) break;
++                    
++		} else
++                    free(fullname);
++	    }
++            
++	    free_domains(domains);
++	}
++    }
++#endif /* HONOUR_SEARCH_DOMAINS */
++#endif /* ENABLE_AVAHI */
++
++#if defined(ENABLE_LEGACY) && defined(ENABLE_AVAHI)
++    if (u.list_idx == 0 && !avahi_works) 
++#endif
++
++#if defined(ENABLE_LEGACY)
++    {
++        if ((fd = mdns_open_socket()) < 0) {
++            *errnop = errno;
++            *h_errnop = NO_RECOVERY;
++            goto finish;
++        }
++
++        if (name_allowed) {
++            /* Ignore return value */
++            mdns_query_name(fd, name, ipv4_func, ipv6_func, &u);
++
++            if (!u.list_idx)
++                status = NSS_STATUS_NOTFOUND;
++        }
++
++#ifdef HONOUR_SEARCH_DOMAINS
++        if (u.list_idx == 0 && !ends_with(name, ".")) {
++            char **domains;
++            
++            /* Try the search domains if the user did not use a traling '.' */
++            
++            if ((domains = get_search_domains())) {
++                char **p;
++                
++                for (p = domains; *p; p++) {
++                    int fullnamesize = 0;
++                    char *fullname = NULL;
++                    
++                    fullnamesize = strlen(name) + strlen(*p) + 2;
++                    if (!(fullname = malloc(fullnamesize)))
++                        break;
++                    
++                    snprintf(fullname, fullnamesize, "%s.%s", name, *p);
++                    
++                    if (verify_name_allowed(fullname)) {
++                        
++                        /* Ignore return value */
++                        mdns_query_name(fd, fullname, ipv4_func, ipv6_func, &u);
++                        
++                        if (u.list_idx > 0) {
++                            /* We found something, so let's quit */
++                            free(fullname);
++                            break;
++                        } else
++                            status = NSS_STATUS_NOTFOUND;
++
++                    }
++                    
++                    free(fullname);
++                }
++                
++                free_domains(domains);
++	    }
++        }
++#endif /* HONOUR_SEARCH_DOMAINS */
++    }
++#endif /* ENABLE_LEGACY */
++
++    if (u.list_idx == 0) {
++        *errnop = ETIMEDOUT;
++        *h_errnop = HOST_NOT_FOUND;
++        goto finish;
++    }
++    
++    *pat = (struct gaih_addrtuple*) buffer;
++
++    status = NSS_STATUS_SUCCESS;
++    
+ finish:
+ #ifdef ENABLE_LEGACY
+     if (fd >= 0)
+diff -u src/query.c src/query.c
+--- src/query.c	2007-02-09 00:42:23.000000000 +0800
++++ src/query.c	2013-01-04 09:57:03.778972196 +0800
+@@ -263,7 +263,7 @@
+     return n_sent;
+ }
+ 
+-static int recv_dns_packet(int fd, struct dns_packet **ret_packet, uint8_t *ret_ttl, struct timeval *end) {
++static int recv_dns_packet(int fd, struct dns_packet **ret_packet, uint8_t *ret_ttl, uint32_t *if_idx, struct timeval *end) {
+     struct dns_packet *p= NULL;
+     struct msghdr msg;
+     struct iovec io;
+@@ -286,6 +286,10 @@
+     msg.msg_controllen = sizeof(aux);
+     msg.msg_flags = 0;
+     
++#ifndef IP_PKTINFO
++    *if_idx = 0;
++#endif
++
+     for (;;) {
+         ssize_t l;
+         int r;
+@@ -304,6 +308,14 @@
+                     *ret_ttl = (uint8_t) (*(uint32_t*) CMSG_DATA(cmsg));
+                     break;
+                 }
++#ifdef IP_PKTINFO
++                if (cmsg->cmsg_level == IPPROTO_IP && cmsg->cmsg_type == IP_PKTINFO)
++		{
++                    *if_idx = ((struct in_pktinfo*) CMSG_DATA(cmsg))->ipi_ifindex;
++                    break;
++                }
++#endif
++
+             }
+                      
+             if (!cmsg)
+@@ -427,9 +439,10 @@
+ 
+     while (!done) {
+         uint8_t ttl;
++        uint32_t if_idx;
+         int r;
+ 
+-        if ((r = recv_dns_packet(fd, &p, &ttl, &end)) < 0)
++        if ((r = recv_dns_packet(fd, &p, &ttl, &if_idx, &end)) < 0)
+             return -1;
+         else if (r > 0) /* timeout */
+             return 1;
+@@ -488,6 +501,7 @@
+                         rdlength == sizeof(ipv6_address_t)) {
+                         
+                         ipv6_address_t ipv6;
++                        ipv6.if_idx = if_idx;
+                         
+                         if (dns_packet_consume_bytes(p, &ipv6, sizeof(ipv6_address_t)) < 0)
+                             break;
+@@ -584,9 +598,10 @@
+ 
+     while (!done) {
+         uint8_t ttl;
++        uint32_t if_idx;
+         int r;
+ 
+-        if ((r = recv_dns_packet(fd, &p, &ttl, &end)) < 0)
++        if ((r = recv_dns_packet(fd, &p, &ttl, &if_idx, &end)) < 0)
+             return -1;
+         else if (r > 0) /* timeout */
+             return 1;
+diff -u src/query.h src/query.h
+--- src/query.h	2005-06-21 22:43:23.000000000 +0800
++++ src/query.h	2013-01-03 14:09:22.138018327 +0800
+@@ -30,6 +30,7 @@
+ 
+ typedef struct {
+     uint8_t address[16];
++    uint32_t if_idx;
+ } ipv6_address_t;
+ 
