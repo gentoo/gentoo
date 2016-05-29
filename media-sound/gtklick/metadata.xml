@@ -2,19 +2,11 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>bugs@bergstroem.nu</email>
-		<name>Johan Bergström</name>
-		<description>Proxy-Maintainer, assign bugs</description>
-	</maintainer>
-	<maintainer type="project">
-		<email>python@gentoo.org</email>
-		<name>Python</name>
+		<email>karl.j.linden@gmail.com</email>
+		<name>Karl Linden</name>
 	</maintainer>
 	<maintainer type="project">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
-	<upstream>
-		<remote-id type="pypi">pylibmc</remote-id>
-	</upstream>
 </pkgmetadata>
