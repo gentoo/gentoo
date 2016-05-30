@@ -17,7 +17,7 @@ SRC_URI="https://github.com/imageworks/OpenColorIO/archive/v${PV}.tar.gz \
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="doc opengl pdf python cpu_flags_x86_sse2 test"
 
 RDEPEND="opengl? (
