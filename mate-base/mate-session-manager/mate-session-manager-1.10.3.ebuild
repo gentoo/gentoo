@@ -16,7 +16,7 @@ HOMEPAGE="http://mate-desktop.org/"
 
 LICENSE="GPL-2 LGPL-2 FDL-1.1"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm ~x86"
 
 IUSE="ipv6 elibc_FreeBSD gnome-keyring systemd upower"
 
