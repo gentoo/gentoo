@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201605-03">
+  <title>libfpx: Denial of Service</title>
+  <synopsis>A double free vulnerability has been discovered in libfpx that
+    allows remote attackers to cause a Denial of Service.
+  </synopsis>
+  <product type="ebuild">libfpx</product>
+  <announced>May 30, 2016</announced>
+  <revised>May 30, 2016: 1</revised>
+  <bug>395367</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-libs/libfpx" auto="yes" arch="*">
+      <unaffected range="ge">1.3.1_p6</unaffected>
+      <vulnerable range="lt">1.3.1_p6</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>A library for manipulating FlashPIX images.</p>
+  </background>
+  <description>
+    <p>A double free vulnerability has been discovered in the Free_All_Memory
+      function in jpeg/dectile.c.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to open a specially crafted FPX
+      image using an application linked against libfpx, possibly resulting in a
+      Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All libfpx users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=media-libs/libfpx-1.3.1_p6"
+    </code>
+    
+    <p>Packages which depend on this library may need to be recompiled. Tools
+      such as revdep-rebuild may assist in identifying these packages.
+    </p>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2012-0025">CVE-2012-0025</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 06 Apr 2016 23:28:31 +0000">b-man</metadata>
+  <metadata tag="submitter" timestamp="Mon, 30 May 2016 17:56:49 +0000">b-man</metadata>
+</glsa>
