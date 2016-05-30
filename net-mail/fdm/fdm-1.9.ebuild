@@ -15,8 +15,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="courierauth examples libressl pcre"
 
-DEPEND="!libressl? ( dev-libs/openssl:0 )
-	libressl? ( dev-libs/libressl:0 )
+DEPEND="!libressl? ( dev-libs/openssl:0= )
+	libressl? ( dev-libs/libressl:0= )
 	sys-libs/tdb
 	courierauth? ( net-libs/courier-authlib )
 	pcre? ( dev-libs/libpcre )"
