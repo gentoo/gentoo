@@ -53,7 +53,7 @@ multilib_src_compile() {
 		fi
 	fi
 	#fix multilib-script support. Bug #327449
-	sed -i "/^libdir/s:lib$:$(get_libdir)$:" librtmp/Makefile || die
+	sed -i "/^libdir/s:lib$:$(get_libdir):" librtmp/Makefile || die
 	if ! multilib_is_native_abi; then
 		cd librtmp || die
 	fi
