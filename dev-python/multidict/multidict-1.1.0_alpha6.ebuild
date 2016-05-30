@@ -15,7 +15,7 @@ SRC_URI="https://github.com/aio-libs/${PN}/archive/v${MY_PV}.tar.gz -> ${P}.tar.
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE="doc test"
 
 DEPEND="
