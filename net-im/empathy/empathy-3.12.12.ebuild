@@ -122,5 +122,5 @@ src_configure() {
 }
 
 src_test() {
-	dbus-launch Xemake check #504516
+	dbus-launch virtx emake check #504516
 }
