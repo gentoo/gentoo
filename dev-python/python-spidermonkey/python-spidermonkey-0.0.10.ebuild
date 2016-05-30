@@ -8,7 +8,7 @@ PYTHON_COMPAT=(python2_7)
 inherit distutils-r1
 
 DESCRIPTION="JavaScript / Python bridge"
-HOMEPAGE="http://github.com/davisp/python-spidermonkey"
+HOMEPAGE="https://github.com/davisp/python-spidermonkey"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"

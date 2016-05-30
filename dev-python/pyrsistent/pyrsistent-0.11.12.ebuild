@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python2_7 python3_{3,4,5} pypy pypy3 )
 inherit distutils-r1
 
 DESCRIPTION="Persistent/Functional/Immutable data structures"
-HOMEPAGE="http://github.com/tobgu/pyrsistent/ http://pypi.python.org/pypi/pyrsistent"
+HOMEPAGE="https://github.com/tobgu/pyrsistent/ http://pypi.python.org/pypi/pyrsistent"
 SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"

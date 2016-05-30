@@ -7,7 +7,7 @@ PYTHON_DEPEND="2"
 inherit python
 
 DESCRIPTION="release metatool used for creating Gentoo and Funtoo releases"
-HOMEPAGE="https://www.github.com/funtoo/metro"
+HOMEPAGE="https://github.com/funtoo/metro"
 SRC_URI="http://www.funtoo.org/archive/metro/${P}.tar.bz2"
 
 LICENSE="GPL-2"
