@@ -14432,7 +14432,7 @@ net-mail/email 2.5.0 3.0.5 3.1.2 3.1.3: Advanced CLI tool for sending email
 net-mail/eps 1.7: Inter7 Email Processing and mht System library
 net-mail/ezmlm-idx 6.0.0 7.0.0 7.0.0-r1 7.0.0-r2: Simple yet powerful mailing list manager for qmail
 net-mail/fastforward 0.51-r1: handle qmail forwarding according to a cdb database
-net-mail/fdm 1.7 1.8: fetch, filter and deliver mail
+net-mail/fdm 1.7 1.8 1.9: fetch, filter and deliver mail
 net-mail/fetchmail 6.3.26-r2: the legendary remote-mail retrieval and forwarding utility
 net-mail/gensig 2.3: Random ~/.signature generator
 net-mail/getmail 4.48.0 4.49.0: A POP3 mail retriever with reliable Maildir and mbox delivery
