@@ -2,7 +2,7 @@ DEFINED_PHASES=compile configure install prepare test
 DEPEND=dev-python/nose[python_targets_pypy(-)?,python_targets_pypy3(-)?,python_targets_python2_7(-)?,python_targets_python3_3(-)?,python_targets_python3_4(-)?,python_targets_python3_5(-)?,-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python2_7(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-)] dev-python/setuptools[python_targets_pypy(-)?,python_targets_pypy3(-)?,python_targets_python2_7(-)?,python_targets_python3_3(-)?,python_targets_python3_4(-)?,python_targets_python3_5(-)?,-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python2_7(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-)] python_targets_pypy? ( virtual/pypy:0= ) python_targets_pypy3? ( virtual/pypy3:0= ) python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) python_targets_python3_3? ( >=dev-lang/python-3.3.2-r2:3.3 ) python_targets_python3_4? ( dev-lang/python:3.4 ) python_targets_python3_5? ( dev-lang/python:3.5 ) >=dev-lang/python-exec-2:=[python_targets_pypy(-)?,python_targets_pypy3(-)?,python_targets_python2_7(-)?,python_targets_python3_3(-)?,python_targets_python3_4(-)?,python_targets_python3_5(-)?,-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python2_7(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-)]
 DESCRIPTION=Add flag to ignore unicode literal prefixes in doctests
 EAPI=5
-HOMEPAGE=https://pypi.python.org/pypi/doctest-ignore-unicode http://github.com/gnublade/doctest-ignore-unicode
+HOMEPAGE=https://pypi.python.org/pypi/doctest-ignore-unicode https://github.com/gnublade/doctest-ignore-unicode
 IUSE=test python_targets_pypy python_targets_pypy3 python_targets_python2_7 python_targets_python3_3 python_targets_python3_4 python_targets_python3_5
 KEYWORDS=amd64 ~ppc x86 ~amd64-linux ~x86-linux
 LICENSE=Apache-2.0
@@ -12,4 +12,4 @@ SLOT=0
 SRC_URI=mirror://pypi/d/doctest-ignore-unicode/doctest-ignore-unicode-0.1.2.tar.gz
 _eclass_exported_funcs=src_prepare:distutils-r1 src_configure:distutils-r1 src_compile:distutils-r1 src_test:distutils-r1 src_install:distutils-r1
 _eclasses_=distutils-r1	0a9f65ef41fe0434c3f5f0b455aa9419	eutils	792f83d5ec9536cb5ccef375469d8bde	multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	d062ae4ba2fc40a19c11de2ad89b6616	multiprocessing	e32940a7b2a9992ad217eccddb84d548	python-r1	0f6937650a475d673baa5d0c8c0b37b3	python-utils-r1	13d5b02ea59b21da41c77c9294f3b7f7	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
-_md5_=e6fc54ceb895e77e26d0f552e549c5fa
+_md5_=76d2114e79d20773d9ec06f4bba2b8de
