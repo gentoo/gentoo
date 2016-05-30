@@ -252,7 +252,7 @@ src_test() {
 
 	# Tests need virtualx, bug #294691, bug #310695
 	# Parallel tests sometimes fail
-	Xemake -j1 check
+	virtx emake -j1 check
 }
 
 src_install() {

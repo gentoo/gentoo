@@ -48,7 +48,7 @@ multilib_src_configure() {
 
 multilib_src_test() {
 	# Tests need dbus
-	Xemake check
+	virtx emake check
 }
 
 multilib_src_compile() {

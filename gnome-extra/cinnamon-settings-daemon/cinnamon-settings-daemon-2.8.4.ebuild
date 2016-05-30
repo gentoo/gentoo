@@ -95,5 +95,5 @@ src_configure() {
 }
 
 src_test() {
-	Xemake check
+	virtx emake check
 }

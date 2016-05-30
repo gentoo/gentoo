@@ -81,5 +81,5 @@ src_test() {
 	"${EROOT}${GLIB_COMPILE_SCHEMAS}" --allow-any-name "${S}/libnemo-private" || die
 
 	cd src # we don't care about translation tests
-	GSETTINGS_SCHEMA_DIR="${S}/libnemo-private" Xemake check
+	GSETTINGS_SCHEMA_DIR="${S}/libnemo-private" virtx emake check
 }
