@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201605-04">
+  <title>rsync: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in rsync, the worst of
+    which could allow remote attackers to write arbitrary files.
+  </synopsis>
+  <product type="ebuild"></product>
+  <announced>May 30, 2016</announced>
+  <revised>May 30, 2016: 1</revised>
+  <bug>519108</bug>
+  <bug>540000</bug>
+  <bug>569140</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/rsync" auto="yes" arch="*">
+      <unaffected range="ge">3.1.2</unaffected>
+      <vulnerable range="lt">3.1.2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>File transfer program to keep remote files into sync.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in rsync. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Remote attackers could write arbitrary files via symlink attacks.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All rsync users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-misc/rsync-3.1.2"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-8242">CVE-2014-8242</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-9512">CVE-2014-9512</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 25 Feb 2016 07:39:41 +0000">
+    BlueKnight
+  </metadata>
+  <metadata tag="submitter" timestamp="Mon, 30 May 2016 19:55:19 +0000">b-man</metadata>
+</glsa>
