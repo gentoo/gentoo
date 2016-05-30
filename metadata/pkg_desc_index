@@ -2551,7 +2551,7 @@ app-vim/foldutil 3.0: vim plugin: fold creation utility
 app-vim/fugitive 2.2 9999: vim plugin: a git wrapper for vim
 app-vim/fuzzyfinder 4.2.2: vim plugin: buffer/file/command/tag/etc explorer with fuzzy matching
 app-vim/genindent 1.1: vim plugin: library for simplifying indent files
-app-vim/gentoo-syntax 20150823 99999999: vim plugin: Gentoo and portage related syntax highlighting, filetype, and indent settings
+app-vim/gentoo-syntax 20150823 20160530 99999999: Gentoo and portage related syntax highlighting, filetype, and indent settings
 app-vim/genutils 2.5: vim plugin: library with various useful functions
 app-vim/gist 7.1 7.2: vim plugin: interact with gists (gist.github.com)
 app-vim/git-patch-tags 0.2: vim plugin: add git patch tags as used in linux kernel development
