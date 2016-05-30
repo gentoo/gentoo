@@ -2,9 +2,9 @@ DEFINED_PHASES=-
 DESCRIPTION=Meta package to facilitate easy use of x11-themes/mate-themes
 EAPI=5
 HOMEPAGE=https://wiki.gentoo.org/wiki/No_homepage
-KEYWORDS=~amd64 ~x86
+KEYWORDS=~amd64 ~arm ~x86
 LICENSE=metapackage
 RDEPEND=|| ( ( =x11-libs/gtk+-3.16*:3 =x11-themes/mate-themes-1.10*:0/3.16 ) ( =x11-libs/gtk+-3.18*:3 =x11-themes/mate-themes-1.10*:0/3.18 ) =x11-themes/mate-themes-1.10*:0 )
 SLOT=0
 _eclass_exported_funcs=-
-_md5_=8c28f1ec864559fb4b816274642cadbb
+_md5_=6bf63d020d8e95a2264691233836ac3e
