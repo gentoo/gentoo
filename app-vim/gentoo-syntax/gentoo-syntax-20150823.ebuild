@@ -6,7 +6,7 @@ EAPI=5
 
 inherit vim-plugin
 
-DESCRIPTION="vim plugin: Gentoo and portage related syntax highlighting, filetype, and indent settings"
+DESCRIPTION="Gentoo and portage related syntax highlighting, filetype, and indent settings"
 HOMEPAGE="https://github.com/gentoo/gentoo-syntax"
 SRC_URI="https://dev.gentoo.org/~floppym/dist/${P}.tar.bz2"
 
