@@ -2202,7 +2202,7 @@ app-text/bibus 1.5.2-r2: Bibliographic and reference management software, integr
 app-text/bibutils 4.12: Interconverts between various bibliography formats using a common XML intermediate
 app-text/binfind 0.0.3: binfind searches files for a byte sequence specified on the command line
 app-text/blahtexml 0.9: TeX-to-MathML converter
-app-text/blogc 0.9.0 9999: A blog compiler
+app-text/blogc 0.10.0 9999: A blog compiler
 app-text/bogosort 0.4.2-r1: A file sorting program which uses the bogosort algorithm
 app-text/build-docbook-catalog 1.19.1 1.20 1.21: DocBook XML catalog auto-updater
 app-text/c2ps 4.0: Generates a beautified ps document from a source file (c/c++)
@@ -12957,7 +12957,7 @@ media-plugins/vdr-sndctl 0.1.5.1: VDR plugin: Control the vol level of diff cont
 media-plugins/vdr-solitaire 0.0.3: VDR Plugin: Solitaire game
 media-plugins/vdr-span 0.0.7: VDR plugin: Spectrum Analyzer (SpAn)
 media-plugins/vdr-spider 0.2.2: VDR plugin: Spider patience game
-media-plugins/vdr-streamdev 0.6.1: VDR Plugin: Client/Server and http streaming plugin
+media-plugins/vdr-streamdev 0.6.1 0.6.1_p20160320: VDR Plugin: Client/Server and http streaming plugin
 media-plugins/vdr-sudoku 0.3.5: VDR plugin: to generate and solve Number Place puzzles, so called Sudokus
 media-plugins/vdr-suspendoutput 1.0.1: VDR Plugin: Show still image instead of live tv to safe cpu
 media-plugins/vdr-svdrposd 1.0.0: VDR plugin: export OSD via TCP to vdr-remoteosd
@@ -13997,7 +13997,7 @@ net-dns/nsd 3.2.20 3.2.21 4.1.7 4.1.9: An authoritative only, high performance, 
 net-dns/odsclient 1.03-r1: Client for the Open Domain Server's dynamic dns
 net-dns/opendnssec 1.3.18-r1 1.4.7 1.4.8.2: An open-source turn-key solution for DNSSEC
 net-dns/openresolv 3.6.1 3.6.2 3.7.0 3.7.2: A framework for managing DNS information
-net-dns/pdns 3.4.7 3.4.8: The PowerDNS Daemon
+net-dns/pdns 3.4.7 3.4.8 3.4.9: The PowerDNS Daemon
 net-dns/pdns-ldap-backend 0.2: Fork of the official but unmaintained LDAP backend
 net-dns/pdns-recursor 3.6.4 3.7.3: The PowerDNS Recursor
 net-dns/pdnsd 1.2.9a-r1: Proxy DNS server with permanent caching
