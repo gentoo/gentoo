@@ -364,8 +364,4 @@ p
 # mask d3d since we don't have wine
 d3d
 
-# Matt Turner <mattst88@gentoo.org) (10 Feb 2012)
-# mask wayland since dev-libs/wayland isn't keyworded
-wayland
-
 # DON'T TOUCH THIS FILE. Instead, file a bug and assign it to <hppa@gentoo.org>.
