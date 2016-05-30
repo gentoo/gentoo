@@ -2966,7 +2966,7 @@ dev-db/spatialite 2.4.0_rc4 3.0.1 4.1.1 4.3.0: A complete Spatial DBMS in a nuts
 dev-db/spatialite-tools 3.1.0 4.3.0: A complete Spatial DBMS in a nutshell built upon sqlite
 dev-db/sqlcipher 3.3.0: Full Database Encryption for SQLite
 dev-db/sqldeveloper 3.2.20.09.87 4.0.2.15.21 4.1.1.19.59 4.1.3.20.78 4.1.3.20.78-r1: Oracle SQL Developer is a graphical tool for database development
-dev-db/sqlite 3.11.1 3.12.0 3.12.1 3.12.2: A SQL Database Engine in a C Library
+dev-db/sqlite 3.11.1 3.12.0 3.12.1 3.12.2 3.13.0: A SQL Database Engine in a C Library
 dev-db/sqlitebrowser 3.7.0-r1 3.8.0: SQLite Database Browser
 dev-db/sqliteman 1.2.2-r1: Powerful GUI manager for the Sqlite3 database
 dev-db/sqliteodbc 0.96 0.99: ODBC driver to access local SQLite database files
@@ -3325,7 +3325,7 @@ dev-haskell/equivalence 0.2.5 0.3.1: Maintaining an equivalence relation impleme
 dev-haskell/erf 2.0.0.0-r1: The error function, erf, and related functions
 dev-haskell/errorcall-eq-instance 0.1.0: An orphan Eq instance for ErrorCall
 dev-haskell/errors 1.4.7: Simplified error-handling
-dev-haskell/esqueleto 1.3.5 1.4.1.2 2.1.3: Type-safe EDSL for SQL queries on persistent backends
+dev-haskell/esqueleto 2.1.3: Type-safe EDSL for SQL queries on persistent backends
 dev-haskell/exceptions 0.3.3 0.6.1 0.8.0.2 0.8.2.1: Extensible optionally-pure exceptions
 dev-haskell/executable-path 0.0.3-r1: Finding out the full path of the executable
 dev-haskell/extensible-exceptions 0.1.1.4: Extensible exceptions
@@ -3526,9 +3526,9 @@ dev-haskell/patience 0.1.1: Patience diff and longest increasing subsequence
 dev-haskell/pcap 0.4.5.2-r1: A system-independent interface for user-level packet capture
 dev-haskell/pcre-light 0.4-r1 0.4.0.4: Portable regex library for Perl 5 compatible regular expressions
 dev-haskell/pem 0.1.2 0.2.2: Privacy Enhanced Mail (PEM) format reader and writer
-dev-haskell/persistent 1.1.5.1 1.2.3.0 1.3.1.1 2.1.6: Type-safe, multi-backend data serialization
-dev-haskell/persistent-sqlite 1.1.5 1.2.1-r1 1.3.0.5 2.1.4.2: Backend for the persistent library using sqlite3
-dev-haskell/persistent-template 1.1.3.1 1.2.0.6 1.3.1.4 2.1.3.4: Type-safe, non-relational, multi-backend persistence
+dev-haskell/persistent 2.1.6: Type-safe, multi-backend data serialization
+dev-haskell/persistent-sqlite 2.1.4.2: Backend for the persistent library using sqlite3
+dev-haskell/persistent-template 2.1.3.4: Type-safe, non-relational, multi-backend persistence
 dev-haskell/pipes 4.1.7 4.1.9: Compositional pipelines
 dev-haskell/pointed 4.0 4.1.1 4.2.0.2: Pointed and copointed data
 dev-haskell/polyparse 1.9 1.11: A variety of alternative parser combinator libraries
@@ -3714,14 +3714,14 @@ dev-haskell/xml-hamlet 0.4.0.11: Hamlet-style quasiquoter for XML content
 dev-haskell/xml-types 0.3.4 0.3.6: Basic types for representing XML
 dev-haskell/xss-sanitize 0.3.5.6 0.3.5.7: sanitize untrusted HTML to prevent XSS attacks
 dev-haskell/yaml 0.8.10.1 0.8.15.2 0.8.17.1: Support for parsing and rendering YAML documents
-dev-haskell/yesod 1.2.6 1.4.2 1.4.3: Creation of type-safe, RESTful web applications
-dev-haskell/yesod-auth 1.2.7 1.3.1.1 1.4.11 1.4.13.2: Authentication for Yesod
-dev-haskell/yesod-auth-hashdb 1.3.0.1 1.4.2.2 1.5.1: Authentication plugin for Yesod
+dev-haskell/yesod 1.4.3: Creation of type-safe, RESTful web applications
+dev-haskell/yesod-auth 1.4.13.2: Authentication for Yesod
+dev-haskell/yesod-auth-hashdb 1.5.1: Authentication plugin for Yesod
 dev-haskell/yesod-core 1.2.7 1.4.18.1 1.4.20.2: Creation of type-safe, RESTful web applications
 dev-haskell/yesod-default 1.2.0: Default config and main functions for your yesod application (deprecated)
-dev-haskell/yesod-form 1.3.11 1.4.6 1.4.7.1: Form handling support for Yesod Web Framework
+dev-haskell/yesod-form 1.4.7.1: Form handling support for Yesod Web Framework
 dev-haskell/yesod-json 1.1.2.2 1.2.0: Generate content for Yesod using the aeson package. (deprecated)
-dev-haskell/yesod-persistent 1.2.3 1.4.0.3 1.4.0.5: Some helpers for using Persistent from Yesod
+dev-haskell/yesod-persistent 1.4.0.5: Some helpers for using Persistent from Yesod
 dev-haskell/yesod-platform 1.2.13.3: Meta package for Yesod (deprecated)
 dev-haskell/yesod-routes 1.1.2 1.2.0.7-r2: Efficient routing for Yesod
 dev-haskell/yesod-static 1.2.4 1.4.0.4 1.5.0.3: Static file serving subsite for Yesod Web Framework
@@ -17207,7 +17207,7 @@ sys-kernel/raspberrypi-image 4.1.17_p20160209 4.1.19_p20160309: Raspberry PI boo
 sys-kernel/raspberrypi-sources 3.10.1_pre-r20130719 3.10.9999 3.12.9999 3.14.9999 3.18.9999 4.1.9999 4.4.9999: Raspberry PI kernel sources
 sys-kernel/rt-sources 3.14.65_p68 3.18.29_p30 4.1.20_p23 4.4.6_p14 4.4.7_p16 4.4.9_p17: Full Linux 4.4 kernel sources with the CONFIG_PREEMPT_RT patch
 sys-kernel/spl 0.6.0_rc13-r2 0.6.0_rc14-r3 0.6.1-r3 0.6.2-r5 0.6.3-r1 0.6.4.2 0.6.5.2 0.6.5.3 0.6.5.3-r1 0.6.5.4 0.6.5.4-r1 0.6.5.6 9999: The Solaris Porting Layer is a Linux kernel module which provides many of the Solaris kernel APIs
-sys-kernel/tuxonice-sources 3.4.110 3.4.111 3.10.100 3.10.101 3.12.56 3.12.58 3.14.64 3.14.67 3.18.28 3.18.31 4.1.19 4.1.22 4.2.8 4.3.6 4.4.5 4.4.8 4.5.2: TuxOnIce + Gentoo patchset sources
+sys-kernel/tuxonice-sources 3.4.110 3.4.111 3.4.112 3.10.100 3.10.101 3.12.56 3.12.58 3.12.60 3.14.64 3.14.67 3.14.70 3.18.28 3.18.31 3.18.34 4.1.19 4.1.22 4.1.24 4.2.8 4.3.6 4.4.5 4.4.8 4.4.11 4.5.2 4.5.4: TuxOnIce + Gentoo patchset sources
 sys-kernel/vanilla-sources 3.2.80 3.4.112 3.10.101 3.12.60 3.14.70 3.16.35 3.18.34 4.1.25 4.4.11 4.5.5 4.6.0: Full sources for the Linux kernel
 sys-kernel/xbox-sources 2.6.16.26: Full sources for the Xbox Linux kernel
 sys-kernel/zen-sources 3.8.9999 3.9.9999 3.10.9999 3.11.9999 3.12.9999 3.13.9999: The Zen Kernel Live Sources
