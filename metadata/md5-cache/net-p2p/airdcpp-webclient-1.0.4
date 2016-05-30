@@ -2,14 +2,14 @@ DEFINED_PHASES=compile configure install postinst prepare setup test
 DEPEND=dev-lang/python:* app-arch/bzip2 dev-cpp/websocketpp dev-libs/boost dev-libs/geoip dev-libs/leveldb dev-libs/openssl:0= net-libs/miniupnpc sys-libs/zlib virtual/libiconv nat-pmp? ( net-libs/libnatpmp ) tbb? ( dev-cpp/tbb ) sys-devel/make >=dev-util/cmake-2.8.12
 DESCRIPTION=Cross-platform Direct Connect client
 EAPI=6
-HOMEPAGE=https://github.com/airdcpp-web/airdcpp-webclient
+HOMEPAGE=https://airdcpp-web.github.io/
 IUSE=nat-pmp +tbb +webui
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2
 PDEPEND=webui? ( www-apps/airdcpp-webui )
 RDEPEND=app-arch/bzip2 dev-cpp/websocketpp dev-libs/boost dev-libs/geoip dev-libs/leveldb dev-libs/openssl:0= net-libs/miniupnpc sys-libs/zlib virtual/libiconv nat-pmp? ( net-libs/libnatpmp ) tbb? ( dev-cpp/tbb )
 SLOT=0
-SRC_URI=https://github.com/airdcpp-web/airdcpp-webclient/archive/1.0.2.tar.gz -> airdcpp-webclient-1.0.2.tar.gz
+SRC_URI=https://github.com/airdcpp-web/airdcpp-webclient/archive/1.0.4.tar.gz -> airdcpp-webclient-1.0.4.tar.gz
 _eclass_exported_funcs=pkg_postinst:- pkg_setup:- src_prepare:cmake-utils src_configure:- src_compile:cmake-utils src_test:cmake-utils src_install:-
 _eclasses_=cmake-utils	9e0d156beee613940cde06d0bc00791b	eutils	792f83d5ec9536cb5ccef375469d8bde	flag-o-matic	d270fa247153df66074f795fa42dba3e	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	user	906f3c8eb3a2350a4f1191a89baa3e46	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=545fe88ad3c2a691aef007b3de75b9d3
+_md5_=130e88e8d7bec94eb1ffd595be92768b

@@ -14978,7 +14978,7 @@ net-nntp/suck 4.3.2: Grab news from a remote NNTP server and feed them to anothe
 net-nntp/tin 2.0.1-r1 2.2.1 2.3.1: A threaded NNTP and spool based UseNet newsreader
 net-nntp/ubh 2.5: The Usenet Binary Harvester
 net-nntp/xrn 9.02: A small and fast news reader for X
-net-p2p/airdcpp-webclient 1.0.1 1.0.2 1.0.3: Cross-platform Direct Connect client
+net-p2p/airdcpp-webclient 1.0.3 1.0.4: Cross-platform Direct Connect client
 net-p2p/amule 2.3.1 2.3.1-r2: aMule, the all-platform eMule p2p client
 net-p2p/bitcoin-cli 0.10.2 0.11.0 0.11.1 0.11.2 0.12.0 9999: Command-line client specifically designed for talking to Bitcoin Core Daemon
 net-p2p/bitcoin-qt 0.10.2 0.10.2-r1 0.11.0 0.11.1 0.11.2 0.12.0 9999: An end-user Qt GUI for the Bitcoin crypto-currency
