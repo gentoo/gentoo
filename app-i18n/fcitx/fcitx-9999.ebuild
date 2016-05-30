@@ -20,7 +20,7 @@ else
 	SRC_URI="https://download.fcitx-im.org/${PN}/${P}_dict.tar.xz"
 fi
 
-LICENSE="GPL-2+ LGPL-2+"
+LICENSE="GPL-2+ LGPL-2+ MIT"
 SLOT="0"
 KEYWORDS=""
 IUSE="+X +autostart +cairo +dbus debug +enchant gtk2 gtk3 +introspection lua nls opencc +pango qt4 static-libs +table test +xml"
