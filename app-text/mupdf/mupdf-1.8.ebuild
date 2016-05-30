@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -26,7 +26,7 @@ LIB_DEPEND="
 	virtual/jpeg[static-libs?]
 	X? ( x11-libs/libX11[static-libs?]
 		x11-libs/libXext[static-libs?] )
-	javascript? ( dev-lang/mujs )
+	javascript? ( <dev-lang/mujs-0_p20160504 )
 	opengl? ( >=media-libs/glfw-3 )"
 RDEPEND="${LIB_DEPEND}"
 DEPEND="${RDEPEND}

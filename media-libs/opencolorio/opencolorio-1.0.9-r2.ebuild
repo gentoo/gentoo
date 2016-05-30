@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 # Compatibility with Python 3 is declared by upstream, but it is broken in fact, check on bump
 PYTHON_COMPAT=( python2_7 )
@@ -13,7 +13,7 @@ DESCRIPTION="A color management framework for visual effects and animation"
 HOMEPAGE="http://opencolorio.org/"
 SRC_URI="https://github.com/imageworks/OpenColorIO/archive/v${PV}.tar.gz \
 		-> ${P}.tar.gz
-	https://dev.gentoo.org/~pinkbyte/distfiles/patches/${P}-yaml-0.5-compat.patch.bz2"
+	https://dev.gentoo.org/~pinkbyte/distfiles/patches/${P}-yaml-0.5-compat-v2.patch.bz2"
 
 LICENSE="BSD"
 SLOT="0"
@@ -47,7 +47,7 @@ RESTRICT="test"
 PATCHES=(
 	"${FILESDIR}/${PN}-1.0.8-documentation-gen.patch"
 	"${FILESDIR}/${P}-remove-external-doc-utilities.patch"
-	"${WORKDIR}/${P}-yaml-0.5-compat.patch"
+	"${WORKDIR}/${P}-yaml-0.5-compat-v2.patch"
 )
 
 pkg_setup() {
