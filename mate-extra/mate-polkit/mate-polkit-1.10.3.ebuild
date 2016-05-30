@@ -16,7 +16,7 @@ HOMEPAGE="https://github.com/mate-desktop/mate-polkit"
 
 LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm ~x86"
 
 IUSE="accountsservice appindicator +introspection"
 

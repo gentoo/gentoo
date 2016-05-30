@@ -17,7 +17,7 @@ HOMEPAGE="http://mate-desktop.org"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm ~x86"
 
 IUSE="+dbus hddtemp libnotify lm_sensors video_cards_fglrx video_cards_nvidia"
 

@@ -16,7 +16,7 @@ HOMEPAGE="http://mate-desktop.org"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm ~x86"
 
 RDEPEND=">=mate-base/mate-desktop-1.10.0:0
 	>=mate-base/mate-panel-1.10.0:0

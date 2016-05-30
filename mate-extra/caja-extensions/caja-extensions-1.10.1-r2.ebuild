@@ -17,7 +17,7 @@ HOMEPAGE="http://www.mate-desktop.org"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm ~x86"
 
 SENDTO="cdr gajim +mail pidgin upnp"
 IUSE="gksu image-converter +open-terminal share +wallpaper ${SENDTO}"
