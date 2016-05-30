@@ -15,7 +15,7 @@ fi
 inherit $vcs linux-info
 
 DESCRIPTION="espeakup is a small lightweight connector for espeak and speakup"
-HOMEPAGE="https://www.github.com/williamh/espeakup"
+HOMEPAGE="https://github.com/williamh/espeakup"
 
 LICENSE="GPL-3"
 SLOT="0"

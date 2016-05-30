@@ -7,7 +7,7 @@ EAPI=5
 SCM=""
 if [ "${PV#9999}" != "${PV}" ] ; then
 	SCM="git-r3"
-	EGIT_REPO_URI="http://github.com/ros/catkin"
+	EGIT_REPO_URI="https://github.com/ros/catkin"
 fi
 
 PYTHON_COMPAT=( python{2_7,3_3,3_4,3_5} )
@@ -20,7 +20,7 @@ if [ "${PV#9999}" != "${PV}" ] ; then
 	SRC_URI=""
 	KEYWORDS=""
 else
-	SRC_URI="http://github.com/ros/catkin/archive/${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/ros/catkin/archive/${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm"
 fi
 

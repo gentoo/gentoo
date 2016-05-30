@@ -10,7 +10,7 @@ inherit python-any-r1
 
 DESCRIPTION="Backup and recovery utilities for GitHub Enterprise"
 HOMEPAGE="https://github.com/github/backup-utils"
-SRC_URI="http://github.com/github/backup-utils/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/github/backup-utils/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
