@@ -10,7 +10,7 @@ GENTOO_DEVELOPER="polynomial-c"
 GENTOO_PATCHNAME="gentoo-apache-2.4.18-r1"
 
 # IUSE/USE_EXPAND magic
-IUSE_MPMS_FORK="peruser prefork"
+IUSE_MPMS_FORK="prefork"
 IUSE_MPMS_THREAD="event worker"
 
 # << obsolete modules:
