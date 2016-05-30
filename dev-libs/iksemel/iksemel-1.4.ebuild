@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -21,6 +21,7 @@ DEPEND="${RDEPEND}
 
 src_prepare() {
 	epatch "${FILESDIR}/${PN}-1.3-gnutls-2.8.patch"
+	epatch "${FILESDIR}/${PN}-1.4-gnutls-3.4.patch"
 	eautoreconf
 }
 
