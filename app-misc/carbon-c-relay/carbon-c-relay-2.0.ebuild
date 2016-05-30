@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 inherit toolchain-funcs user
 
@@ -29,7 +29,8 @@ src_configure() {
 
 src_install() {
 	newbin relay ${PN}
-	dodoc README.md
+	dodoc ChangeLog.md
+	doman ${PN}.1
 
 	newinitd "${FILESDIR}"/${PN}.initd ${PN}
 	newconfd "${FILESDIR}"/${PN}.confd ${PN}
