@@ -5054,7 +5054,7 @@ dev-ml/lambda-term 1.9 1.10: A cross-platform library for manipulating the termi
 dev-ml/lwt 2.4.3 2.5.1 2.5.2: Cooperative light-weight thread library for OCaml
 dev-ml/macaque 0.7.2 0.7.4: DSL for SQL Queries in Caml
 dev-ml/markup 0.7.2: Error-recovering streaming HTML5 and XML parsers
-dev-ml/menhir 20151112 20160303 20160504: LR(1) parser generator for the OCaml language
+dev-ml/menhir 20151112 20160303 20160504 20160526: LR(1) parser generator for the OCaml language
 dev-ml/mirage-profile 0.5 0.6 0.6.1 0.7.0-r1: Collect profiling information
 dev-ml/mongo 0.67.2: An ocaml driver for mongodb
 dev-ml/oasis 0.4.5-r1 0.4.6: OASIS is a tool to integrate a configure, build and install system in OCaml project
@@ -17786,7 +17786,7 @@ www-client/surfraw 2.2.9-r1: A fast unix command line interface to WWW
 www-client/uget 1.8.0 1.10.3 1.10.3-r1 1.10.4 9999: Download manager using gtk+ and libcurl
 www-client/vimb 2.9 2.11: a fast, lightweight, vim-like browser based on webkit
 www-client/vimprobable2 1.4.0 1.4.2 1.4.2-r1 9999: A minimal web browser that behaves like the Vimperator plugin for Firefox
-www-client/vivaldi 1.1.453.52_p1 1.2.485.14_p1 1.2.490.3_p1: A new browser for our friends
+www-client/vivaldi 1.1.453.52_p1 1.2.490.3_p1 1.2.490.27_p1: A new browser for our friends
 www-client/w3m 0.5.3-r5 0.5.3-r8: Text based WWW browser, supports tables and frames
 www-client/w3mir 1.0.10-r2: w3mir is a all purpose HTTP copying and mirroring tool
 www-client/w3mmee 0.3.2_p24-r7 0.3.2_p24-r9: A variant of w3m with support for multiple character encodings
