@@ -1843,7 +1843,7 @@ app-misc/matew 1.9: Make Album The Easy Way (Matew) is an HTML/CSS generator for
 app-misc/mc 4.8.14 4.8.15 4.8.16 4.8.17 9999: GNU Midnight Commander is a text based file manager
 app-misc/media-player-info 21-r1 22: A repository of data files describing media player capabilities
 app-misc/mediacrush-cli 1.1.2 9999: A bash script for working with MediaCrush from a shell
-app-misc/mencal 2.3: A calendar that can be used to track menstruation (or other) cycles conveniently
+app-misc/mencal 2.3 3.0: Calendar to track menstruation cycles
 app-misc/mepl 0.45: Self-employed-mode software for 3COM/USR message modems
 app-misc/metromap 0.1.4-r1: Metromap is simple pygtk+2 programm for finding paths in metro(subway) maps
 app-misc/mime-types 9: Provides /etc/mime.types file
