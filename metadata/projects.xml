@@ -3166,11 +3166,6 @@
     <url>https://wiki.gentoo.org/wiki/Project:Qt</url>
     <description>The Qt project handles the Qt ebuilds available in Gentoo's portage and the qt overlay. It also maintains various Qt packages and libraries that don't have dedicated maintainers.</description>
     <member>
-      <email>civil@gentoo.org</email>
-      <name>Vladimir Smirnov</name>
-      <role>Developer</role>
-    </member>
-    <member>
       <email>kensington@gentoo.org</email>
       <name>Michael Palimaka</name>
       <role>Developer</role>
