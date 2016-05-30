@@ -14953,7 +14953,7 @@ net-news/canto-curses 0.9.3: The ncurses client for canto-daemon
 net-news/canto-daemon 0.9.1: Daemon part of Canto-NG RSS reader
 net-news/liferea 1.8.8 1.8.11 1.10.8 1.10.9 1.10.12 1.10.16 1.10.17: News Aggregator for RDF/RSS/CDF/Atom/Echo feeds
 net-news/newsbeuter 2.9: A RSS/Atom feed reader for the text console
-net-news/quiterss 0.16.2 0.18.3 0.18.4 9999: A Qt-based RSS/Atom feed reader
+net-news/quiterss 0.16.2 0.18.4 9999: A Qt-based RSS/Atom feed reader
 net-news/rawdog 2.19 2.20: Rawdog - RSS Aggregator Without Delusions Of Grandeur
 net-news/rssguard 2.4.0: A tiny RSS and Atom feed reader
 net-news/rsstail 1.8: A tail-like RSS-reader
@@ -16052,7 +16052,7 @@ sci-mathematics/pspp 0.8.1-r1 0.8.3 0.10.1: Program for statistical analysis of 
 sci-mathematics/pymc 2.2 9999: Markov chain Monte Carlo for Python
 sci-mathematics/qtoctave 0.10.1-r1: Qt4 front-end for Octave
 sci-mathematics/reduce 20110414-r1: A general-purpose computer algebra system
-sci-mathematics/relational 0.11 2.4: Educational tool for relational algebra
+sci-mathematics/relational 2.4: Educational tool for relational algebra
 sci-mathematics/rkward 0.6.1: IDE for the R-project
 sci-mathematics/rngstreams 1.0.1: Multiple independent streams of pseudo-random numbers
 sci-mathematics/rstudio 0.97.336 0.97.551 0.98.490 0.98.490-r1 0.98.932 0.98.953 0.98.1028 0.98.1091 0.99.473-r1 0.99.482 0.99.483 0.99.484 0.99.486-r1 0.99.491 0.99.879 0.99.893 0.99.896 0.99.902: IDE for the R language
@@ -18824,7 +18824,7 @@ x11-themes/pearlgrey-xcursors 1.0: A simple crispy white-grey xcursor theme
 x11-themes/pidgin-penguins-smileys 1.0: Penguins pidgin smiley theme
 x11-themes/psi-themes 0.9.3_p1-r2: Iconsets for Psi, a Qt4 Jabber Client
 x11-themes/pulse-glass 20100616: The Pulse Glass x11 mouse cursor theme
-x11-themes/qtcurve 1.8.17-r1 1.8.18 1.8.18-r1: A set of widget styles for Qt and GTK2
+x11-themes/qtcurve 1.8.17-r1 1.8.18-r1: A set of widget styles for Qt and GTK2
 x11-themes/redhat-artwork 5.0.8-r4: RedHat's Bluecurve theme for GTK2, KDE, GDM, Metacity and Nautilus
 x11-themes/sawfish-themes 0.0.1-r3: Some nice themes for Sawfish
 x11-themes/shiki-colors 4.6: Shiki-Colors mixes the elegance of a dark theme with the usability of a light theme
