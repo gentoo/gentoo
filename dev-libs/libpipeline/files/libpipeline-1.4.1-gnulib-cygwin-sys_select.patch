@@ -1,0 +1,22 @@
+https://lists.gnu.org/archive/html/bug-gnulib/2016-03/msg00065.html
+
+--- gnulib/lib/sys_select.in.h.orig	2014-08-03 15:31:22.000000000 +0200
++++ gnulib/lib/sys_select.in.h	2016-05-19 12:57:51.243064700 +0200
+@@ -81,7 +81,7 @@
+    Also, Mac OS X, AIX, HP-UX, IRIX, Solaris, Interix declare select()
+    in <sys/time.h>.
+    But avoid namespace pollution on glibc systems.  */
+-# ifndef __GLIBC__
++# if !(defined __GLIBC__ || defined __NEWLIB__)
+ #  include <sys/time.h>
+ # endif
+ 
+@@ -102,7 +102,7 @@
+    But avoid namespace pollution on glibc systems.
+    Do this after the include_next (for the sake of OpenBSD 5.0) but before
+    the split double-inclusion guard (for the sake of Solaris).  */
+-#if !(defined __GLIBC__ && !defined __UCLIBC__)
++#if !((defined __GLIBC__ || defined __NEWLIB__) && !defined __UCLIBC__)
+ # include <signal.h>
+ #endif
+ 
