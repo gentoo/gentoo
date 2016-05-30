@@ -17,7 +17,7 @@ IUSE="aalib exif ncurses nls readline"
 # aalib -> needs libjpeg
 RDEPEND="
 	dev-libs/popt
-	>=media-libs/libgphoto2-2.5.6:=[exif?]
+	>=media-libs/libgphoto2-2.5.10:=[exif?]
 	aalib? (
 		media-libs/aalib
 		virtual/jpeg:0 )
