@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python2_7 python3_{3,4,5} )
 inherit distutils-r1
 
 DESCRIPTION="A command to search port names and numbers"
-HOMEPAGE="http://github.com/ncrocfer/whatportis http://pypi.python.org/pypi/whatportis"
+HOMEPAGE="https://github.com/ncrocfer/whatportis http://pypi.python.org/pypi/whatportis"
 SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"

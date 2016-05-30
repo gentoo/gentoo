@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -23,7 +23,8 @@ RDEPEND="${RDEPEND}
 	)"
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-0.10-avahi-socket.patch
+	epatch "${FILESDIR}"/${PN}-0.10-avahi-socket.patch \
+		"${FILESDIR}"/${PN}-0.10-ipv6.patch
 	epatch_user
 	eautoreconf
 }

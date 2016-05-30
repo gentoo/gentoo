@@ -6,7 +6,7 @@ EAPI=6
 
 inherit eutils qmake-utils
 
-DESCRIPTION="Qt4 XML Editor"
+DESCRIPTION="Simple Qt-based XML editor"
 HOMEPAGE="http://qxmledit.org/"
 SRC_URI="mirror://sourceforge/${PN}/${P}-src.tgz"
 

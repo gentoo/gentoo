@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -10,7 +10,7 @@ GENTOO_DEVELOPER="polynomial-c"
 GENTOO_PATCHNAME="gentoo-apache-2.4.10-r1"
 
 # IUSE/USE_EXPAND magic
-IUSE_MPMS_FORK="peruser prefork"
+IUSE_MPMS_FORK="prefork"
 IUSE_MPMS_THREAD="event worker"
 
 # << obsolete modules:

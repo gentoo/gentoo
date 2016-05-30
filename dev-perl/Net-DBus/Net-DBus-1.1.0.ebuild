@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Perl extension for the DBus message system"
 
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~ia64 ~ppc ~sparc ~x86"
+KEYWORDS="alpha amd64 ~arm ~arm64 ~ia64 ~ppc ~sparc ~x86"
 IUSE="test"
 
 RDEPEND="

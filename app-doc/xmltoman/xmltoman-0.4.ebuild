@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -10,7 +10,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 arm ~hppa ppc ~ppc64 sparc x86"
+KEYWORDS="alpha amd64 arm ~hppa ppc ~ppc64 sparc x86"
 IUSE=""
 
 RDEPEND="dev-lang/perl

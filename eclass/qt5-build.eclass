@@ -547,8 +547,8 @@ qt5_base_configure() {
 		-no-sql-db2 -no-sql-ibase -no-sql-mysql -no-sql-oci -no-sql-odbc
 		-no-sql-psql -no-sql-sqlite -no-sql-sqlite2 -no-sql-tds
 
-		# obsolete flag, does nothing
-		#-qml-debug
+		# ensure the QML debugging support (qmltooling) is built in qtdeclarative
+		$([[ ${QT5_MINOR_VERSION} -ge 6 ]] && echo -qml-debug)
 
 		# MIPS DSP instruction set extensions
 		$(is-flagq -mno-dsp   && echo -no-mips_dsp)
