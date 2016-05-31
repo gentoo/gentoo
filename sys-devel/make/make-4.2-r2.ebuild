@@ -23,15 +23,12 @@ RDEPEND="${CDEPEND}
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.82-darwin-library_search-dylib.patch
+	"${FILESDIR}"/${PN}-4.2-double_colon_targets.patch
+	"${FILESDIR}"/${PN}-4.2-reset_stack_limit_for_re-exec.patch
 )
 
 src_prepare() {
 	epatch "${PATCHES[@]}"
-
-	# Revert this upstream commit until a real fix is available.
-	# See https://bugs.gentoo.org/583812
-	EPATCH_OPTS="-R" \
-	epatch "${FILESDIR}"/${PN}-4.1-fix_double_colon_rules_plus_parallel_builds.patch
 }
 
 src_configure() {

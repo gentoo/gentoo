@@ -17,7 +17,7 @@ HOMEPAGE="https://mpv.io/"
 if [[ ${PV} != *9999* ]]; then
 	SRC_URI="
 		https://github.com/mpv-player/mpv/archive/v${PV}.tar.gz -> ${P}.tar.gz
-		https://dev.gentoo.org/~wraeth/distfiles/${P}-patches-04.tar.gz
+		https://dev.gentoo.org/~wraeth/distfiles/${P}-patches-05.tar.gz
 	"
 	KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux"
 	DOCS=( RELEASE_NOTES )
