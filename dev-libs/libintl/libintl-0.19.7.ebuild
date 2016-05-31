@@ -23,6 +23,7 @@ DEPEND=">=virtual/libiconv-0-r1[${MULTILIB_USEDEP}]"
 # Block C libraries known to provide libintl.
 RDEPEND="${DEPEND}
 	!sys-libs/glibc
+	!sys-libs/musl
 	!<sys-devel/gettext-0.19.6-r1"
 
 S="${WORKDIR}/${MY_P}/gettext-runtime"
