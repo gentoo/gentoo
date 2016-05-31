@@ -4,6 +4,7 @@
 
 EAPI=6
 
+PYTHON_REQ_USE="sqlite"
 PYTHON_COMPAT=( python2_7 )
 inherit cmake-utils python-single-r1
 
