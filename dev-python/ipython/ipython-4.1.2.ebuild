@@ -100,7 +100,7 @@ python_test() {
 		"${PYTHON}" -m IPython.testing.iptestcontroller --all || fail=1
 		popd > /dev/null || die
 	}
-	VIRTUALX_COMMAND=run_tests virtualmake
+	virtx run_tests
 	[[ ${fail} ]] && die "Tests fail with ${EPYTHON}"
 }
 
