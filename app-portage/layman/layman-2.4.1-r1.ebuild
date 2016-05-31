@@ -41,6 +41,10 @@ RDEPEND="
 	>=dev-python/ssl-fetch-0.4[${PYTHON_USEDEP}]
 	"
 
+PATCHES=(
+	"${FILESDIR}/layman-2.4.1-sourcefileattributechanges.patch"
+)
+
 layman_check_kernel_config() {
 	local CONFIG_CHECK
 	use squashfs && CONFIG_CHECK+=" ~BLK_DEV_LOOP ~SQUASHFS"
