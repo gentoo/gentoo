@@ -22,6 +22,7 @@ RDEPEND="${DEPEND}"
 src_prepare() {
 	sed -e "s/{MAKE} doc-install/{MAKE}/" \
 		-i Makefile || die #322355
+	default_src_prepare
 }
 
 src_compile() {
