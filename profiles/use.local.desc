@@ -1629,7 +1629,6 @@ dev-haskell/pandoc-citeproc:test_citeproc - Build the test-citeproc program
 dev-haskell/pandoc-citeproc:unicode_collation - Use Haskell bindings to the dev-libs/icu
 dev-haskell/persistent:nooverlap - Use OverlappingInstances only for String. Only developers should use this.
 dev-haskell/persistent-sqlite:build-sanity-exe - Build a sanity check test executable.
-dev-haskell/persistent-sqlite:systemlib - Use the system-wide sqlite library.
 dev-haskell/publicsuffixlist:create - export Network.PublicSuffixList.Create module
 dev-haskell/publicsuffixlist:runtimelist - read suffix list from dist at startup instead of embedding list into library
 dev-haskell/quickcheck:template_haskell - Enable additional test modules requiring Template Haskell support.
