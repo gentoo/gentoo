@@ -62,6 +62,16 @@ ghc-getghcpkgbin() {
 	fi
 }
 
+# @FUNCTION: ghc-host-prefix
+# @DESCRIPTION:
+# Returns root of installed ghc.
+# Some helpers (like best_version) require reference
+# host system as they are tied to compiler bing executed.
+ghc-host-root() {
+	has "${EAPI:-0}" 0 1 2 && ! use prefix && EPREFIX=
+	echo "${EPREFIX}/"
+}
+
 # @FUNCTION: ghc-version
 # @DESCRIPTION:
 # returns upstream version of ghc
@@ -85,7 +95,7 @@ ghc-pm-version() {
 	local pm_ghc_p
 
 	if [[ -z "${_GHC_PM_VERSION_CACHE}" ]]; then
-		pm_ghc_p=$(best_version dev-lang/ghc)
+		pm_ghc_p=$(ROOT=$(ghc-host-root) best_version dev-lang/ghc)
 		_GHC_PM_VERSION_CACHE="PM:${pm_ghc_p#dev-lang/ghc-}"
 	fi
 	echo "${_GHC_PM_VERSION_CACHE}"
