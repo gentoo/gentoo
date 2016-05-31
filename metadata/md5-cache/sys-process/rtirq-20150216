@@ -1,0 +1,11 @@
+DEFINED_PHASES=install postinst prepare
+DESCRIPTION=Modify realtime scheduling policy and priority of IRQ handlers
+EAPI=6
+HOMEPAGE=http://www.rncbc.org/jack/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=>=sys-apps/util-linux-2.13
+SLOT=0
+SRC_URI=http://www.rncbc.org/jack/rtirq-20150216.tar.gz
+_eclass_exported_funcs=pkg_postinst:- src_prepare:- src_install:-
+_md5_=e47c216e08ad7e84a038a4c8cb933bc9
