@@ -30,6 +30,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Johannes Huber <johu@gentoo.org> (31 May 2016)
+# Masked for removal in 30 days. Declared as dead by
+# upstream in 2015. Last release with KDE Applications 15.08.3.
+# Exported to user maintained overlay kde-sunset.
+kde-apps/superkaramba
+
 # Sergei Trofimovich <slyfox@gentoo.org> (30 May 2016)
 # Masked for removal. Fails to build with modern conduit,
 # bug #584586.
