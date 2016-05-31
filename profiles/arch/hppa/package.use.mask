@@ -4,6 +4,10 @@
 
 # DON'T TOUCH THIS FILE. Instead, file a bug and assign it to <hppa@gentoo.org>.
 
+# Jeroen Roovers <jer@gentoo.org> (31 May 2016)
+# Mask kde-frameworks/kapidox (bug #568972)
+kde-frameworks/extra-cmake-modules doc
+
 # Jeroen Roovers <jer@gentoo.org> (19 May 2016)
 # pulls in many dev-ruby/asciidoctor dependencies (bug #583390)
 net-misc/chrony html
