@@ -9851,7 +9851,7 @@ dev-util/setconf 0.6.6 0.6.7: A small python based utility used to change config
 dev-util/sgb 20030623: Stanford GraphBase
 dev-util/shards 0.6.1 0.6.2: Dependency manager for the Crystal language
 dev-util/shc 3.8.9: A (shell-) script compiler/scrambler
-dev-util/shellcheck 0.3.5-r1 0.3.6 0.3.7 0.3.8 0.4.1 0.4.3: Shell script analysis tool
+dev-util/shellcheck 0.4.4: Shell script analysis tool
 dev-util/shelltestrunner 1.3.4 1.3.5 1.3.5-r1: A tool for testing command-line programs
 dev-util/shflags 1.0.3: Command-line flags module for Unix shell scripts
 dev-util/shtool 2.0.8 2.0.8-r1: Set of stable and portable shell scripts
@@ -11438,7 +11438,7 @@ kde-base/perlkde 4.14.3: KDE Perl bindings
 kde-base/perlqt 4.14.3: Qt Perl bindings
 kde-base/plasma-workspace 4.11.22: Plasma: KDE desktop framework
 kde-base/powerdevil 4.11.22: PowerDevil is an utility for KDE4 for Laptop Powermanagement
-kde-base/pykde4 4.14.3 4.14.3-r1: Python bindings for KDE4
+kde-base/pykde4 4.14.3-r1: Python bindings for KDE4
 kde-base/qguiplatformplugin_kde 4.11.22: Helps integration of pure Qt applications with KDE Workspace
 kde-base/qtruby 4.14.3-r2: Qt Ruby bindings
 kde-base/qyoto 4.14.3: C# bindings for Qt
