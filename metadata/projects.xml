@@ -1932,7 +1932,7 @@
     <email>layman@gentoo.org</email>
     <name>Layman Overlay Manager</name>
     <url>https://wiki.gentoo.org/wiki/Project:Layman</url>
-    <description>Layman is a tool to manage overlays installed on a system.  It can add, sync, and delete overlays</description>
+    <description>Layman is a tool to manage overlays installed on a system. It can add, sync, and delete overlays</description>
     <member is-lead="1">
       <email>dolsen@gentoo.org</email>
       <name>Brian Dolbec</name>
