@@ -222,7 +222,7 @@ src_configure() {
 
 	if use redis; then
 		cat >> Makefile <<- EOC
-			EXPERIMENTAL_REDIS=yes
+			LOOKUP_REDIS=yes
 			LOOKUP_LIBS += -lhiredis
 		EOC
 	fi
