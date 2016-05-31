@@ -22,7 +22,6 @@ RDEPEND="
 	$(add_kdeapps_dep kteatime)
 	$(add_kdeapps_dep ktimer)
 	$(add_kdeapps_dep kwalletmanager)
-	$(add_kdeapps_dep superkaramba)
 	$(add_kdeapps_dep sweeper)
 	cups? ( $(add_kdeapps_dep print-manager) )
 	floppy? ( $(add_kdeapps_dep kfloppy) )
