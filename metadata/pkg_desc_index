@@ -1569,7 +1569,7 @@ app-i18n/tagainijisho 1.0.3-r1: Open-source Japanese dictionary and kanji lookup
 app-i18n/tegaki-zinnia-japanese 0.3: Handwriting model data of Japanese
 app-i18n/tomoe 0.6.0-r1 0.6.0-r2: Japanese handwriting recognition engine
 app-i18n/transifex-client 0.10 0.11.1_beta: A command line interface for Transifex
-app-i18n/translate-shell 0.9.3 0.9.3.2: Online command-line translator
+app-i18n/translate-shell 0.9.4: Online command-line translator
 app-i18n/uim 1.8.6-r1: Simple, secure and flexible input method library
 app-i18n/uim-tomoe-gtk 0.6.0: Japanese input method Tomoe IMEngine for uim
 app-i18n/unicode-data 6.0.0 6.1.0: Unicode data from unicode.org
@@ -7257,7 +7257,7 @@ dev-python/graphy 1.0-r1: Simple Chart Library for Python
 dev-python/greenlet 0.4.2 0.4.3 0.4.4 0.4.5 0.4.6 0.4.7 0.4.9: Lightweight in-process concurrent programming
 dev-python/gst-python 0.10.22-r1 1.2.1 1.4.0 1.6.1 1.6.2: A Python Interface to GStreamer
 dev-python/gtkspell-python 2.25.3-r1: GtkSpell bindings for Python
-dev-python/guessit 1.0.3-r1 2.0.5 9999: Python library for guessing information from video filenames
+dev-python/guessit 1.0.3-r1 2.0.5-r1 9999: Python library for guessing information from video filenames
 dev-python/guppy 0.1.10-r1: Guppy-PE -- A Python Programming Environment
 dev-python/guzzle_sphinx_theme 0.7.10: Sphinx theme used by Guzzle.
 dev-python/h5py 2.3.1 2.4.0 2.5.0: Simple Python interface to HDF5 files
@@ -10842,7 +10842,7 @@ games-strategy/defcon-demo 1.60: Global thermonuclear war simulation with multip
 games-strategy/dominions2 2.16: Dominions 2: The Ascension Wars is an epic turn-based fantasy strategy game
 games-strategy/dopewars 1.5.12-r2: Re-Write of the game Drug Wars
 games-strategy/dunelegacy 0.96.3: Updated clone of Westood Studios' Dune2
-games-strategy/endless-sky 0.8.11-r1 0.9.0: Space exploration, trading & combat in the tradition of Terminal Velocity
+games-strategy/endless-sky 0.8.11-r1 0.9.1: Space exploration, trading & combat in the tradition of Terminal Velocity
 games-strategy/freeciv 2.5.3 2.5.4: multiplayer strategy game (Civilization Clone)
 games-strategy/freecol 0.11.5 0.11.6: An open source clone of the game Colonization
 games-strategy/freeorion 0.4.5_pre 0.4.5: A free turn-based space empire and galactic conquest game
@@ -14347,7 +14347,7 @@ net-libs/libtorrent 0.13.3 0.13.4 0.13.6: BitTorrent library written in C++ for 
 net-libs/libtrace 3.0.22: A library and tools for trace processing
 net-libs/libupnp 1.6.18 1.6.18-r1 1.6.19: An Portable Open Source UPnP Development Kit
 net-libs/libvncserver 0.9.10-r3 0.9.10-r4 0.9.10_p20160127: library for creating vnc servers
-net-libs/libwebsockets 1.4 1.6.0 1.7.6 1.7.8: canonical libwebsockets.org websocket library
+net-libs/libwebsockets 1.4 1.6.0 1.7.6 1.7.8 2.0.1: canonical libwebsockets.org websocket library
 net-libs/libwhisker 2.5-r1: Perl module geared to HTTP testing
 net-libs/libyahoo2 1.0.1: interface to the new Yahoo! Messenger protocol
 net-libs/libzapojit 0.0.3: GLib/GObject wrapper for the SkyDrive and Hotmail REST APIs
