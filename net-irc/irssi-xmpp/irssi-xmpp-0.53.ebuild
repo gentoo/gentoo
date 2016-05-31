@@ -15,11 +15,14 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-DEPEND=">=net-irc/irssi-0.8.13
+DEPEND="
+	>=net-irc/irssi-0.8.13
 	>=net-libs/loudmouth-1.4.0"
+
 RDEPEND="${DEPEND}"
 
 src_prepare() {
+	default
 	sed -e "s/{MAKE} doc-install/{MAKE}/" \
 		-i Makefile || die #322355
 }
