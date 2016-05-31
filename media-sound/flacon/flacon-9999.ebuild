@@ -49,6 +49,8 @@ DEPEND="${COMMON_DEPEND}
 	virtual/pkgconfig
 	qt5? ( dev-qt/linguist-tools:5 )
 	test? (
+		media-sound/shntool
+		virtual/ffmpeg
 		!qt5? ( dev-qt/qttest:4 )
 		qt5? ( dev-qt/qttest:5 )
 	)
