@@ -16,6 +16,7 @@ DEPEND="
 	$(add_frameworks_dep kconfigwidgets)
 	$(add_frameworks_dep kcoreaddons)
 	$(add_frameworks_dep kdbusaddons)
+	$(add_frameworks_dep kdeclarative)
 	$(add_frameworks_dep ki18n)
 	$(add_frameworks_dep kio)
 	$(add_frameworks_dep knotifications)
