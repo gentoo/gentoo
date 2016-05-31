@@ -125,7 +125,9 @@ if [[ -n "${CABAL_USE_HSCOLOUR}" ]]; then
 fi
 
 if [[ -n "${CABAL_USE_HOOGLE}" ]]; then
-	IUSE="${IUSE} hoogle"
+	# enabled only in ::haskell
+	#IUSE="${IUSE} hoogle"
+	CABAL_USE_HOOGLE=
 fi
 
 if [[ -n "${CABAL_USE_ALEX}" ]]; then
