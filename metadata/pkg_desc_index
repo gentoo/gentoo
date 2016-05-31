@@ -6085,7 +6085,7 @@ dev-perl/Params-Util 1.60.0-r1: Utility functions to aid in parameter checking
 dev-perl/Params-Validate 1.70.0-r1 1.220.0 1.230.0: Flexible system for validation of method/function call parameters
 dev-perl/Parse-ErrorString-Perl 0.220.0: Parse error messages from the perl interpreter
 dev-perl/Parse-ExuberantCTags 1.20.0-r1: Efficiently parse exuberant ctags files
-dev-perl/Parse-RecDescent 1.967.9-r1 1.967.13: Generate Recursive-Descent Parsers
+dev-perl/Parse-RecDescent 1.967.13: Generate Recursive-Descent Parsers
 dev-perl/Parse-Syslog 1.100.0-r1: Parse::Syslog - Parse Unix syslog files
 dev-perl/Parse-Yapp 1.50.0-r1: Compiles yacc-like LALR grammars to generate Perl OO parser modules
 dev-perl/Passwd-Linux 1.200.0-r1 1.300.0: Perl module for manipulating the passwd and shadow files
@@ -6129,7 +6129,7 @@ dev-perl/Pod-Tests 1.190.0-r1: Extracts embedded tests and code examples from PO
 dev-perl/PortageXS 0.02.10-r4 0.2.10-r5 0.2.12-r1: Portage abstraction layer for perl
 dev-perl/PostScript 0.60.0-r1: An object that may be used to construct a block of text in PostScript
 dev-perl/PostScript-Simple 0.90.0: Allows you to have a simple method of writing PostScript files from Perl
-dev-perl/Probe-Perl 0.10.0-r1 0.30.0: Information about the currently running perl
+dev-perl/Probe-Perl 0.30.0: Information about the currently running perl
 dev-perl/Proc-Background 1.100.0-r1: Generic interface to background process management
 dev-perl/Proc-Daemon 0.230.0: Run Perl program as a daemon process
 dev-perl/Proc-ProcessTable 0.480.0 0.530.0: Unix process table information
@@ -6186,7 +6186,7 @@ dev-perl/Set-IntSpan 1.190.0-r1: Manages sets of integers
 dev-perl/Set-Object 1.310.0 1.350.0: set of objects and strings
 dev-perl/Set-Scalar 1.290.0: Scalar set operations
 dev-perl/Shell 0.720.0 0.730.0: Run shell commands transparently within perl
-dev-perl/Shell-EnvImporter 1.70.0-r1 1.70.0-r2: Import environment variable changes from external commands or shell scripts
+dev-perl/Shell-EnvImporter 1.70.0-r2: Import environment variable changes from external commands or shell scripts
 dev-perl/ShipIt 0.600.0: Software Release Tool
 dev-perl/Signal-Mask 0.8.0: Signal masks made easy
 dev-perl/Snowball-Norwegian 1.200.0-r1: Porters stemming algorithm for Norwegian
