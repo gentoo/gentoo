@@ -159,6 +159,21 @@ fi
 #
 # It can be overriden via env using ${PN}_LIVE_COMMIT variable.
 
+# @ECLASS-VARIABLE: EGIT_COMMIT_DATE
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# Attempt to check out the repository state for the specified timestamp.
+# The date should be in format understood by 'git rev-list'.
+#
+# The eclass will select the last commit with commit date preceding
+# the specified date. When merge commits are found, only first parents
+# will be considered in order to avoid switching into external branches
+# (assuming that merges are done correctly). In other words, each merge
+# will be considered alike a single commit with date corresponding
+# to the merge commit date.
+#
+# It can be overriden via env using ${PN}_LIVE_COMMIT_DATE variable.
+
 # @ECLASS-VARIABLE: EGIT_CHECKOUT_DIR
 # @DESCRIPTION:
 # The directory to check the git sources out to.
@@ -253,6 +268,15 @@ _git-r3_env_setup() {
 	EGIT_COMMIT=${!livevar-${EGIT_COMMIT}}
 	[[ ${!livevar} ]] \
 		&& ewarn "Using ${livevar}, no support will be provided"
+
+	livevar=${esc_pn}_LIVE_COMMIT_DATE
+	EGIT_COMMIT_DATE=${!livevar-${EGIT_COMMIT_DATE}}
+	[[ ${!livevar} ]] \
+		&& ewarn "Using ${livevar}, no support will be provided"
+
+	if [[ ${EGIT_COMMIT} && ${EGIT_COMMIT_DATE} ]]; then
+		die "EGIT_COMMIT and EGIT_COMMIT_DATE can not be specified simultaneously"
+	fi
 
 	# Migration helpers. Remove them when git-2 is removed.
 
@@ -495,7 +519,7 @@ _git-r3_is_local_repo() {
 }
 
 # @FUNCTION: git-r3_fetch
-# @USAGE: [<repo-uri> [<remote-ref> [<local-id>]]]
+# @USAGE: [<repo-uri> [<remote-ref> [<local-id> [<commit-date>]]]]
 # @DESCRIPTION:
 # Fetch new commits to the local clone of repository.
 #
@@ -518,6 +542,9 @@ _git-r3_is_local_repo() {
 # This default should be fine unless you are fetching multiple trees
 # from the same repository in the same ebuild.
 #
+# <commit-id> requests attempting to use repository state as of specific
+# date. For more details, see EGIT_COMMIT_DATE.
+#
 # The fetch operation will affect the EGIT_STORE only. It will not touch
 # the working copy, nor export any environment variables.
 # If the repository contains submodules, they will be fetched
@@ -538,6 +565,7 @@ git-r3_fetch() {
 	local remote_ref=${2:-${EGIT_COMMIT:-${branch:-HEAD}}}
 	local local_id=${3:-${CATEGORY}/${PN}/${SLOT%/*}}
 	local local_ref=refs/git-r3/${local_id}/__main__
+	local commit_date=${4:-${EGIT_COMMIT_DATE}}
 
 	[[ ${repos[@]} ]] || die "No URI provided and EGIT_REPO_URI unset"
 
@@ -621,6 +649,11 @@ git-r3_fetch() {
 					fi
 				fi
 
+				# checkout by date does not make sense in shallow mode
+				if [[ ${commit_date} && ${clone_type} == shallow ]]; then
+					clone_type=single
+				fi
+
 				if [[ ${fetch_l} == HEAD ]]; then
 					fetch_r=refs/git-r3/HEAD
 				else
@@ -667,17 +700,31 @@ git-r3_fetch() {
 		fi
 
 		# now let's see what the user wants from us
-		local full_remote_ref=$(
-			git rev-parse --verify --symbolic-full-name "${remote_ref}"
-		)
-
-		if [[ ${full_remote_ref} ]]; then
-			# when we are given a ref, create a symbolic ref
-			# so that we preserve the actual argument
-			set -- git symbolic-ref "${local_ref}" "${full_remote_ref}"
+		if [[ ${commit_date} ]]; then
+			local dated_commit_id=$(
+				git rev-list --first-parent --before="${commit_date}" \
+					-n 1 "${remote_ref}"
+			)
+			if [[ ${?} -ne 0 ]]; then
+				die "Listing ${remote_ref} failed (wrong ref?)."
+			elif [[ ! ${dated_commit_id} ]]; then
+				die "Unable to find commit for date ${commit_date}."
+			else
+				set -- git update-ref --no-deref "${local_ref}" "${dated_commit_id}"
+			fi
 		else
-			# otherwise, we were likely given a commit id
-			set -- git update-ref --no-deref "${local_ref}" "${remote_ref}"
+			local full_remote_ref=$(
+				git rev-parse --verify --symbolic-full-name "${remote_ref}"
+			)
+
+			if [[ ${full_remote_ref} ]]; then
+				# when we are given a ref, create a symbolic ref
+				# so that we preserve the actual argument
+				set -- git symbolic-ref "${local_ref}" "${full_remote_ref}"
+			else
+				# otherwise, we were likely given a commit id
+				set -- git update-ref --no-deref "${local_ref}" "${remote_ref}"
+			fi
 		fi
 
 		echo "${@}" >&2
