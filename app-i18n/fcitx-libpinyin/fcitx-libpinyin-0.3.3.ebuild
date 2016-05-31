@@ -2,7 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI="5"
+
 inherit cmake-utils gnome2-utils
 
 DESCRIPTION="Libpinyin module for Fcitx"
@@ -14,15 +15,19 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 IUSE="dictmanager"
 
-RDEPEND=">=app-i18n/fcitx-4.2.8
+RDEPEND=">=app-i18n/fcitx-4.2.8[dbus]
 	app-i18n/libpinyin
 	dev-libs/glib:2
-	dictmanager? ( >=app-i18n/fcitx-4.2.8[qt4]
-		dev-qt/qtcore:4
-		dev-qt/qtgui:4
-		dev-qt/qtwebkit:4 )"
-DEPEND="${RDEPEND}
+	sys-apps/dbus
 	virtual/libintl
+	dictmanager? (
+		>=app-i18n/fcitx-4.2.8[qt4]
+		dev-qt/qtcore:4
+		dev-qt/qtdbus:4
+		dev-qt/qtgui:4
+		dev-qt/qtwebkit:4
+	)"
+DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 src_configure() {
