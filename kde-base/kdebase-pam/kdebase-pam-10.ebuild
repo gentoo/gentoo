@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 inherit pam
 
@@ -21,5 +21,5 @@ S=${WORKDIR}
 
 src_install() {
 	newpamd "${FILESDIR}/kde.pam-${PV}" kde
-	newpamd "${FILESDIR}/kde-np.pam-9" kde-np
+	newpamd "${FILESDIR}/kde-np.pam-${PV}" kde-np
 }
