@@ -18,11 +18,10 @@ KEYWORDS=""
 IUSE="test"
 
 RDEPEND="
-	>=dev-python/rebulk-0.7.1[${PYTHON_USEDEP}]
 	>=dev-python/babelfish-0.5.5[${PYTHON_USEDEP}]
 	>=dev-python/python-dateutil-2.1[${PYTHON_USEDEP}]
 	<dev-python/python-dateutil-2.5.2[${PYTHON_USEDEP}]
-	dev-python/stevedore[${PYTHON_USEDEP}]
+	>=dev-python/rebulk-0.7.1[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
 "
