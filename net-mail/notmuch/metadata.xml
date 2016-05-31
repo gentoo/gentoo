@@ -8,7 +8,8 @@
 	<use>
 		<flag name="doc">Install API documentation for enabled bindings</flag>
 		<flag name="crypt">Support decryption and verification of PGP/MIME
-			messages and in Emacs UI - encryption</flag>
+			messages and in Emacs UI - encryption; support also S/MIME
+			signature verification since version 0.22</flag>
 		<flag name="emacs">Install Emacs UI (the main one)</flag>
 		<flag name="mutt">Install helper script for Mutt</flag>
 		<flag name="nmbug">Install experimental tag sharing /
