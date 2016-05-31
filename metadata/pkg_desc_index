@@ -7955,7 +7955,7 @@ dev-python/pythonutils 0.4.0-r1: Voidspace Python modules
 dev-python/pytidylib 0.2.4: Python wrapper for HTML Tidy (tidylib)
 dev-python/pytools 2014.3.5 2016.1 9999: A collection of tools missing from the Python standard library
 dev-python/pytz 2015.4 2015.6 2015.7 2016.3: World timezone definitions for Python
-dev-python/pyudev 0.16.1-r1 0.19.0: Python binding to libudev
+dev-python/pyudev 0.16.1-r1 0.19.0 0.20.0: Python binding to libudev
 dev-python/pyusb 0.4.3 1.0.0_beta2: USB support for Python
 dev-python/pyutil 2.0.0: A collection of utilities for Python programmers
 dev-python/pyutmp 0.2.1: Python UTMP wrapper for Un*x systems

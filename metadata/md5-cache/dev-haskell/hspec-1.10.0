@@ -3,12 +3,12 @@ DEPEND=>=dev-haskell/ansi-terminal-0.5:=[profile?] >=dev-haskell/async-2:=[profi
 DESCRIPTION=Behavior-Driven Development for Haskell
 EAPI=5
 HOMEPAGE=http://hspec.github.io/
-IUSE=doc hscolour profile test
+IUSE=doc hscolour hoogle profile test
 KEYWORDS=~amd64 ~x86
 LICENSE=MIT
 RDEPEND=>=dev-haskell/ansi-terminal-0.5:=[profile?] >=dev-haskell/async-2:=[profile?] >=dev-haskell/hspec-expectations-0.5.0:=[profile?] <dev-haskell/hspec-expectations-0.5.1:=[profile?] >=dev-haskell/hunit-1.2.5:=[profile?] >=dev-haskell/quickcheck-2.5.1:2=[profile?] dev-haskell/quickcheck-io:=[profile?] dev-haskell/random:=[profile?] dev-haskell/setenv:=[profile?] dev-haskell/tf-random:=[profile?] >=dev-haskell/transformers-0.2.2.0:=[profile?] >=dev-lang/ghc-7.4.1:=
 SLOT=0/1.10.0
 SRC_URI=mirror://hackage/packages/archive/hspec/1.10.0/hspec-1.10.0.tar.gz
 _eclass_exported_funcs=pkg_postrm:haskell-cabal pkg_postinst:haskell-cabal pkg_setup:haskell-cabal src_configure:haskell-cabal src_compile:haskell-cabal src_test:haskell-cabal src_install:haskell-cabal
-_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	ghc-package	892c6c35a9ac0993e65049c039438508	haskell-cabal	e93b3ae2b779ea727098c318740957e3	multilib	d062ae4ba2fc40a19c11de2ad89b6616	multiprocessing	e32940a7b2a9992ad217eccddb84d548	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	ghc-package	0269d47e1819247f102e9f72ae185b52	haskell-cabal	4d79df5f0e9a64c607226f89768a3456	multilib	d062ae4ba2fc40a19c11de2ad89b6616	multiprocessing	e32940a7b2a9992ad217eccddb84d548	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=9571e466a8efdf063a62b8bb8ef77ca3

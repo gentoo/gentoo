@@ -3,12 +3,12 @@ DEPEND=dev-haskell/json:=[profile?] dev-haskell/mtl:=[profile?] >=dev-haskell/pa
 DESCRIPTION=A Citation Style Language implementation in Haskell
 EAPI=5
 HOMEPAGE=http://istitutocolli.org/repos/citeproc-hs/
-IUSE=+bibutils embed_data_files +hexpat +network +small_base unicode_collation doc hscolour profile
+IUSE=+bibutils embed_data_files +hexpat +network +small_base unicode_collation doc hscolour hoogle profile
 KEYWORDS=~amd64 ~x86
 LICENSE=BSD
 RDEPEND=dev-haskell/json:=[profile?] dev-haskell/mtl:=[profile?] >=dev-haskell/pandoc-types-1.8:=[profile?] dev-haskell/parsec:=[profile?] dev-haskell/syb:=[profile?] dev-haskell/utf8-string:=[profile?] >=dev-lang/ghc-7.4.1:= bibutils? ( >=dev-haskell/hs-bibutils-0.3:=[profile?] ) embed_data_files? ( dev-haskell/file-embed:=[profile?] ) hexpat? ( >=dev-haskell/hexpat-0.20.2:=[profile?] ) !hexpat? ( dev-haskell/xml:=[profile?] ) network? ( >=dev-haskell/http-4000.0.9:=[profile?] >=dev-haskell/network-2.6:=[profile?] >=dev-haskell/network-uri-2.6:=[profile?] ) unicode_collation? ( dev-haskell/text:=[profile?] dev-haskell/text-icu:=[profile?] )
 SLOT=0/0.3.10
 SRC_URI=mirror://hackage/packages/archive/citeproc-hs/0.3.10/citeproc-hs-0.3.10.tar.gz
 _eclass_exported_funcs=pkg_postrm:haskell-cabal pkg_postinst:haskell-cabal pkg_setup:haskell-cabal src_prepare:- src_configure:- src_compile:haskell-cabal src_test:haskell-cabal src_install:haskell-cabal
-_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	ghc-package	892c6c35a9ac0993e65049c039438508	haskell-cabal	e93b3ae2b779ea727098c318740957e3	multilib	d062ae4ba2fc40a19c11de2ad89b6616	multiprocessing	e32940a7b2a9992ad217eccddb84d548	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	ghc-package	0269d47e1819247f102e9f72ae185b52	haskell-cabal	4d79df5f0e9a64c607226f89768a3456	multilib	d062ae4ba2fc40a19c11de2ad89b6616	multiprocessing	e32940a7b2a9992ad217eccddb84d548	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=34014b3cf0e114472dd02dfd2303c779
