@@ -1,15 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>tamiko@gentoo.org</email>
-		<name>Matthias Maier</name>
-		<description>Please assign bugs to me</description>
-	</maintainer>
-	<maintainer type="person">
-		<email>cardoe@gentoo.org</email>
-		<name>Doug Goldstein</name>
-	</maintainer>
 	<maintainer type="project">
 		<email>virtualization@gentoo.org</email>
 		<name>Gentoo Virtualization Project</name>
