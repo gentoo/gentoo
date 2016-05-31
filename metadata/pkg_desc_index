@@ -8270,7 +8270,7 @@ dev-python/websockify 0.6.0 0.7.0: WebSockets support for any application/server
 dev-python/webtest 1.4.3-r1 2.0.16 2.0.17 2.0.18: Helper to test WSGI applications
 dev-python/webut 0.1.0.2 0.1.0.2-r1: Miscellaneous utilities for nevow and twisted.web programming
 dev-python/wehjit 0.2.2-r1: A Python web-widget library
-dev-python/werkzeug 0.9.6 0.10 0.10.1 0.10.4 0.11.1 0.11.2 0.11.3 0.11.4 0.11.5 0.11.8 0.11.9: Collection of various utilities for WSGI applications
+dev-python/werkzeug 0.9.6 0.10.4 0.11.8 0.11.9 0.11.10: Collection of various utilities for WSGI applications
 dev-python/wheel 0.24.0 0.26.0 0.27.0 0.28.0 0.29.0: A built-package format for Python
 dev-python/whirlpool 0.3-r1: Bindings for whirlpool hash reference implementation
 dev-python/whisper 0.9.13 0.9.15: Fixed size round-robin style database
