@@ -59,6 +59,13 @@ inherit eutils ghc-package multilib multiprocessing
 # linking 'setup' faster.
 : ${GHC_BOOTSTRAP_FLAGS:=}
 
+# @ECLASS-VARIABLE: CABAL_EXTRA_TEST_FLAGS
+# @DESCRIPTION:
+# User-specified additional parameters passed to 'setup test'.
+# example: /etc/portage/make.conf:
+#    CABAL_EXTRA_TEST_FLAGS="-v3 --show-details=streaming"
+: ${CABAL_EXTRA_TEST_FLAGS:=}
+
 # @ECLASS-VARIABLE: CABAL_DEBUG_LOOSENING
 # @DESCRIPTION:
 # Show debug output for 'cabal_chdeps' function if set.
@@ -118,8 +125,7 @@ if [[ -n "${CABAL_USE_HSCOLOUR}" ]]; then
 fi
 
 if [[ -n "${CABAL_USE_HOOGLE}" ]]; then
-	# enabled only in ::haskell
-	CABAL_USE_HOOGLE=
+	IUSE="${IUSE} hoogle"
 fi
 
 if [[ -n "${CABAL_USE_ALEX}" ]]; then
@@ -169,7 +175,7 @@ cabal-version() {
 		else
 			# We ask portage, not ghc, so that we only pick up
 			# portage-installed cabal versions.
-			_CABAL_VERSION_CACHE="$(ghc-extractportageversion dev-haskell/cabal)"
+			_CABAL_VERSION_CACHE="$(ROOT=$(ghc-host-root) ghc-extractportageversion dev-haskell/cabal)"
 		fi
 	fi
 	echo "${_CABAL_VERSION_CACHE}"
@@ -602,13 +608,25 @@ haskell-cabal_src_compile() {
 }
 
 haskell-cabal_src_test() {
+	local cabaltest=()
+
 	pushd "${S}" > /dev/null || die
 
 	if cabal-is-dummy-lib; then
 		einfo ">>> No tests for dummy library: ${CATEGORY}/${PF}"
 	else
 		einfo ">>> Test phase [cabal test]: ${CATEGORY}/${PF}"
-		set -- test "$@"
+
+		# '--show-details=streaming' appeared in Cabal-1.20
+		if ./setup test --help | grep -q -- "'streaming'"; then
+			cabaltest+=(--show-details=streaming)
+		fi
+
+		set -- test \
+			"${cabaltest[@]}" \
+			${CABAL_TEST_FLAGS} \
+			${CABAL_EXTRA_TEST_FLAGS} \
+			"$@"
 		echo ./setup "$@"
 		./setup "$@" || die "cabal test failed"
 	fi

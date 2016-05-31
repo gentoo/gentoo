@@ -59,7 +59,7 @@ RDEPEND="
 	dev-libs/libnl:3
 	>=dev-libs/libxml2-2.7.6
 	>=net-analyzer/netcat6-1.0-r2
-	>=net-libs/gnutls-1.0.25
+	>=net-libs/gnutls-1.0.25:0=
 	net-libs/libssh2
 	>=net-misc/curl-7.18.0
 	sys-apps/dmidecode
