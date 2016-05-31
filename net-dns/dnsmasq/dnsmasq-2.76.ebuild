@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 inherit eutils toolchain-funcs flag-o-matic user systemd
 
@@ -12,8 +12,8 @@ SRC_URI="http://www.thekelleys.org.uk/dnsmasq/${P}.tar.xz"
 
 LICENSE="|| ( GPL-2 GPL-3 )"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~sparc-fbsd ~x86-fbsd"
-IUSE="auth-dns conntrack dbus +dhcp dhcp-tools dnssec idn ipv6 lua nls script selinux static tftp"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~sparc-fbsd ~x86-fbsd"
+IUSE="auth-dns conntrack dbus +dhcp dhcp-tools dnssec idn +inotify ipv6 lua nls script selinux static tftp"
 DM_LINGUAS="de es fi fr id it no pl pt_BR ro"
 for dm_lingua in ${DM_LINGUAS}; do
 	IUSE+=" linguas_${dm_lingua}"
@@ -21,12 +21,7 @@ done
 
 CDEPEND="dbus? ( sys-apps/dbus )
 	idn? ( net-dns/libidn )
-	lua? (
-		|| (
-			dev-lang/lua:0
-			dev-lang/lua:5.1
-		)
-	)
+	lua? ( dev-lang/lua:* )
 	conntrack? ( net-libs/libnetfilter_conntrack )
 	nls? (
 		sys-devel/gettext
@@ -69,9 +64,7 @@ use_have() {
 	shift
 
 	while [[ ${uword} ]]; do
-		# Switch to ^^ when we switch to EAPI=6.
-		#uword=${uword^^}
-		uword=$(tr '[:lower:]' '[:upper:]' <<<"${uword}")
+		uword="${uword^^}"
 
 		if ! use "${useflag}"; then
 			echo -n " -DNO_${uword}"
@@ -96,11 +89,10 @@ pkg_setup() {
 }
 
 src_prepare() {
+	default
+
 	sed -i -r 's:lua5.[0-9]+:lua:' Makefile
 	sed -i "s:%%PREFIX%%:${EPREFIX}/usr:" dnsmasq.conf.example
-
-	epatch "${FILESDIR}"/${P}-Fix-crash-on-receipt-of-certain-malformed-DNS-requests.patch
-	epatch "${FILESDIR}"/${P}-Fix-crash-caused-by-looking-up-servers.bind-when-many-servers-defined.patch
 }
 
 src_configure() {
@@ -108,6 +100,7 @@ src_configure() {
 	COPTS+="$(use_have conntrack)"
 	COPTS+="$(use_have dbus)"
 	COPTS+="$(use_have idn)"
+	COPTS+="$(use_have -n inotify)"
 	COPTS+="$(use_have -n dhcp dhcp dhcp6)"
 	COPTS+="$(use_have -n ipv6 ipv6 dhcp6)"
 	COPTS+="$(use_have lua luascript)"
@@ -120,6 +113,7 @@ src_configure() {
 src_compile() {
 	emake \
 		PREFIX=/usr \
+		MANDIR=/usr/share/man \
 		CC="$(tc-getCC)" \
 		CFLAGS="${CFLAGS}" \
 		LDFLAGS="${LDFLAGS}" \
@@ -129,6 +123,7 @@ src_compile() {
 
 	use dhcp-tools && emake -C contrib/wrt \
 		PREFIX=/usr \
+		MANDIR=/usr/share/man \
 		CC="$(tc-getCC)" \
 		CFLAGS="${CFLAGS}" \
 		LDFLAGS="${LDFLAGS}" \
@@ -140,6 +135,7 @@ src_install() {
 	emake \
 		PREFIX=/usr \
 		MANDIR=/usr/share/man \
+		COPTS="${COPTS}" \
 		DESTDIR="${D}" \
 		install$(use nls && echo "-i18n")
 
@@ -151,8 +147,8 @@ src_install() {
 	dodoc CHANGELOG CHANGELOG.archive FAQ dnsmasq.conf.example
 	dodoc -r logo
 
-	dodoc CHANGELOG FAQ
-	dohtml *.html
+	docinto html/
+	dodoc *.html
 
 	newinitd "${FILESDIR}"/dnsmasq-init-r2 ${PN}
 	newconfd "${FILESDIR}"/dnsmasq.confd-r1 ${PN}
@@ -178,7 +174,6 @@ src_install() {
 	fi
 
 	systemd_newunit "${FILESDIR}"/${PN}.service-r1 ${PN}.service
-
 }
 
 pkg_preinst() {

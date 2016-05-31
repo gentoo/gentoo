@@ -1,21 +1,21 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 PYTHON_COMPAT=( python{2_7,3_3,3_4} )
-#BACKPORTS=190680ba
+#BACKPORTS=
 
 inherit autotools eutils gnome2-utils python-r1 systemd multilib bash-completion-r1
 
 DESCRIPTION="A firewall daemon with D-BUS interface providing a dynamic firewall"
-HOMEPAGE="http://fedorahosted.org/firewalld"
-SRC_URI="https://fedorahosted.org/released/firewalld/${P}.tar.bz2
+HOMEPAGE="http://www.firewalld.org/"
+SRC_URI="https://fedorahosted.org/released/${PN}/${P}.tar.bz2
 	${BACKPORTS:+https://dev.gentoo.org/~cardoe/distfiles/${P}-${BACKPORTS}.tar.xz}"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="gui"
 
 RDEPEND="${PYTHON_DEPS}
@@ -26,7 +26,10 @@ RDEPEND="${PYTHON_DEPS}
 	net-firewall/ebtables
 	net-firewall/iptables[ipv6]
 	|| ( >=sys-apps/openrc-0.11.5 sys-apps/systemd )
-	gui? ( x11-libs/gtk+:3 )"
+	gui? (
+		x11-libs/gtk+:3
+		dev-python/PyQt4[${PYTHON_USEDEP}]
+	)"
 DEPEND="${RDEPEND}
 	dev-libs/glib:2
 	>=dev-util/intltool-0.35
@@ -37,7 +40,6 @@ src_prepare() {
 		EPATCH_FORCE=yes EPATCH_SUFFIX="patch" EPATCH_SOURCE="${S}/patches" \
 			epatch
 
-	epatch "${FILESDIR}/${P}-py3k-compat.patch"
 	epatch_user
 	eautoreconf
 }
@@ -47,6 +49,12 @@ src_configure() {
 
 	econf \
 		--enable-systemd \
+		--with-iptables="${EROOT}/sbin/iptables" \
+		--with-ip6tables="${EROOT}/sbin/ip6tables" \
+		--with-iptables_restore="${EROOT}/sbin/iptables-restore" \
+		--with-ip6tables_restore="${EROOT}/sbin/ip6tables-restore" \
+		--with-ebtables="${EROOT}/sbin/ebtables" \
+		--with-ebtables_restore="${EROOT}/sbin/ebtables-restore" \
 		"$(systemd_with_unitdir 'systemd-unitdir')" \
 		--with-bashcompletiondir="$(get_bashcompdir)"
 }

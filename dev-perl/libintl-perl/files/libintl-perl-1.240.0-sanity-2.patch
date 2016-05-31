@@ -1,7 +1,7 @@
 diff -ruN libintl-perl-1.24.orig/Makefile.PL libintl-perl-1.24/Makefile.PL
 --- libintl-perl-1.24.orig/Makefile.PL	2015-04-03 15:28:12.000000000 +0200
-+++ libintl-perl-1.24/Makefile.PL	2016-05-29 18:42:29.495587789 +0200
-@@ -163,56 +163,8 @@
++++ libintl-perl-1.24/Makefile.PL	2016-06-01 00:06:12.000000000 +0200
+@@ -163,47 +163,6 @@
  
  package MY;
  
@@ -48,25 +48,4 @@ diff -ruN libintl-perl-1.24.orig/Makefile.PL libintl-perl-1.24/Makefile.PL
 -
  package main;
  
--my $name = $0;
--$name =~ s,Makefile\.PL$,xs_disabled,;
--local *HANDLE;
--open HANDLE, ">$name" or die "cannot open '$name' for writing: $!";
--print HANDLE !$build_gettext_xs;
--close HANDLE or die "cannot close '$name': $!";
--
- WriteMakefile (
-     NAME		    => 'libintl-perl',
- 	VERSION_FROM	=> 'lib/Locale/Messages.pm',
-@@ -232,11 +184,6 @@
-         },
-     },
-     PL_FILES                => {},
--    DIR		            => [$build_gettext_xs ? ('gettext_xs') : ()],
--    clean		    => { FILES => 'xs_disabled build_xs' }
--    # If you want to build the XS version although the automatic detection
--    # suggests not to build it, uncomment the following line.
--    #DIR => [ ('gettext_xs') ],,
- );
- 
- sub MY::postamble {
+ my $name = $0;
