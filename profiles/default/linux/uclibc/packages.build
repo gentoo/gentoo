@@ -7,3 +7,4 @@
 
 dev-util/pkgconfig
 dev-libs/libiconv
+dev-libs/libintl
