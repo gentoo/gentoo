@@ -4,15 +4,16 @@
 
 EAPI=5
 
-inherit eutils git-r3 toolchain-funcs flag-o-matic
+inherit eutils toolchain-funcs flag-o-matic
 
+GIT_COMMIT="791d7df"
 DESCRIPTION="Command line media player for the Raspberry Pi"
 HOMEPAGE="https://github.com/popcornmix/omxplayer"
-EGIT_REPO_URI="https://github.com/popcornmix/omxplayer.git"
+SRC_URI="https://github.com/popcornmix/omxplayer/tarball/${GIT_COMMIT} -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~arm"
 IUSE="X"
 
 RDEPEND="dev-libs/libpcre
@@ -29,6 +30,8 @@ RDEPEND="dev-libs/libpcre
 	)"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
+
+S="${WORKDIR}/popcornmix-omxplayer-${GIT_COMMIT}"
 
 src_prepare() {
 	epatch "${FILESDIR}"/Makefile-0_p20160217.patch \
