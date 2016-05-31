@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -19,7 +19,6 @@ RDEPEND="
 	$(add_kdeapps_dep kgpg)
 	$(add_kdeapps_dep ktimer)
 	$(add_kdeapps_dep kwalletmanager)
-	$(add_kdeapps_dep superkaramba)
 	$(add_kdeapps_dep sweeper)
 	cups? ( $(add_kdeapps_dep print-manager) )
 	floppy? ( $(add_kdeapps_dep kfloppy) )
