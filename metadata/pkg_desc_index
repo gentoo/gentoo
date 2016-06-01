@@ -6197,11 +6197,11 @@ dev-perl/Sort-Key 1.330.0: sort objects by some (calculated) key
 dev-perl/Sort-Key-IPv4 0.30.0: Sort IP v4 addresses
 dev-perl/Sort-Naturally 1.30.0-r1: sort lexically, but sort numeral parts numerically
 dev-perl/Sort-Tree 1.90.0-r1: Organize list of objects into parent/child order
-dev-perl/Sort-Versions 1.500.0-r1 1.620.0: A perl 5 module for sorting of revision-like numbers
+dev-perl/Sort-Versions 1.620.0: A perl 5 module for sorting of revision-like numbers
 dev-perl/Speech-Recognizer-SPX 0.80.100-r1: Interface to Sphinx-II speech recognition
 dev-perl/Sphinx-Config 0.100.0: Sphinx search engine configuration file read/modify/write
 dev-perl/Sphinx-Search 0.290.0: Perl API client for Sphinx search engine
-dev-perl/Spiffy 0.310.0-r1 0.460.0: Spiffy Perl Interface Framework For You
+dev-perl/Spiffy 0.460.0: Spiffy Perl Interface Framework For You
 dev-perl/Spreadsheet-ParseExcel 0.590.0-r1 0.650.0: Read information from an Excel file
 dev-perl/Spreadsheet-WriteExcel 2.400.0: Write cross-platform Excel binary file
 dev-perl/Starlet 0.290.0: A simple, high-performance PSGI/Plack HTTP server
