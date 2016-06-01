@@ -11,7 +11,7 @@ inherit distutils-r1 git-r3
 DESCRIPTION="Python video metadata parser"
 HOMEPAGE="https://github.com/Diaoul/enzyme https://pypi.python.org/pypi/enzyme"
 EGIT_REPO_URI="git://github.com/Diaoul/${PN}.git"
-SRC_URI="test? ( http://downloads.sourceforge.net/project/matroska/test_files/matroska_test_w1_1.zip )"
+SRC_URI="test? ( mirror://sourceforge/matroska/test_files/matroska_test_w1_1.zip )"
 
 LICENSE="Apache-2.0"
 SLOT="0"
