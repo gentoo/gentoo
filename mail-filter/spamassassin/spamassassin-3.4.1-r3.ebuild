@@ -175,7 +175,7 @@ src_install () {
 
 	cat <<-EOF > "${T}/local.cf.example" || die
 		# Sensitive data, such as database connection info, should be stored in
-		# /etc/mail/spamassassin/secrets.cf with appropriate permissions
+		# ${EPREFIX}/etc/mail/spamassassin/secrets.cf with appropriate permissions
 EOF
 
 	insopts -m0644
