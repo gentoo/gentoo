@@ -18,10 +18,6 @@
 
 #--- END OF EXAMPLES ---
 
-# Michael Palimaka <kensington@gentoo.org> (01 Jun 2016)
-# Dependencies not stable
-net-irc/quassel qt5
-
 # Michael Palimaka <kensington@gentoo.org> (26 May 2016)
 # Dependencies not yet stable
 dev-cpp/eigen test
