@@ -82,6 +82,14 @@ src_configure() {
 	use ipv6 || IPV6_TARGETS=()
 }
 
+ldflag_resolv() {
+	# See if the system includes a libresolv. #584132
+	echo "main(){}" > "${T}"/resolv.c
+	if ${CC} ${CFLAGS} ${LDFLAGS} "${T}"/resolv.c -lresolv -o "${T}"/resolv 2>/dev/null ; then
+		echo -lresolv
+	fi
+}
+
 src_compile() {
 	tc-export CC
 	emake \
@@ -89,6 +97,7 @@ src_compile() {
 		USE_IDN=$(usex idn) \
 		USE_GCRYPT=$(usex gcrypt) \
 		USE_CRYPTO=$(usex ssl) \
+		LDFLAG_RESOLV=$(ldflag_resolv) \
 		IPV4_TARGETS="${IPV4_TARGETS[*]}" \
 		IPV6_TARGETS="${IPV6_TARGETS[*]}"
 
