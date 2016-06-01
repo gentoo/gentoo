@@ -68,6 +68,6 @@ APACHE2_OPTS="-D DEFAULT_VHOST -D LANGUAGE -D INFO -D SUEXEC"
 
 # Method to use when reloading the server
 # Valid options are 'restart' and 'graceful'
-# See http://httpd.apache.org/docs/2.2/stopping.html for information on
+# See https://httpd.apache.org/docs/2.2/stopping.html for information on
 # what they do and how they differ.
 #RELOAD_TYPE="graceful"

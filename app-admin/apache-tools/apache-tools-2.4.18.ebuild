@@ -6,7 +6,7 @@ EAPI=5
 inherit flag-o-matic eutils multilib toolchain-funcs
 
 DESCRIPTION="Useful Apache tools - htdigest, htpasswd, ab, htdbm"
-HOMEPAGE="http://httpd.apache.org/"
+HOMEPAGE="https://httpd.apache.org/"
 SRC_URI="mirror://apache/httpd/httpd-${PV}.tar.bz2"
 
 LICENSE="Apache-2.0"

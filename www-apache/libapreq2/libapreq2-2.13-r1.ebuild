@@ -8,7 +8,7 @@ inherit apache-module perl-module multilib
 
 DESCRIPTION="A library for manipulating client request data via the Apache API"
 SRC_URI="mirror://apache/httpd/libapreq/${P}.tar.gz"
-HOMEPAGE="http://httpd.apache.org/apreq/"
+HOMEPAGE="https://httpd.apache.org/apreq/"
 
 LICENSE="Apache-2.0"
 SLOT="2"

@@ -120,7 +120,7 @@ MODULE_CRITICAL="
 inherit eutils apache-2 systemd toolchain-funcs
 
 DESCRIPTION="The Apache Web Server"
-HOMEPAGE="http://httpd.apache.org/"
+HOMEPAGE="https://httpd.apache.org/"
 
 # some helper scripts are Apache-1.1, thus both are here
 LICENSE="Apache-2.0 Apache-1.1"

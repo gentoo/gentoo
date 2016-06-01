@@ -103,7 +103,7 @@ index 5561940..c85ff81 100644
 +#endif
  
  -- | Format the time as describe in the Apache combined log format.
- --   http://httpd.apache.org/docs/2.2/logs.html#combined
+ --   https://httpd.apache.org/docs/2.2/logs.html#combined
 diff --git a/src/Happstack/Server/Response.hs b/src/Happstack/Server/Response.hs
 index 7ae52b3..23f61b0 100644
 --- a/src/Happstack/Server/Response.hs

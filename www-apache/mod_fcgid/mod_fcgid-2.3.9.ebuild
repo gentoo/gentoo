@@ -5,7 +5,7 @@
 inherit apache-module eutils multilib
 
 DESCRIPTION="mod_fcgid is a binary-compatible alternative to mod_fastcgi with better process management"
-HOMEPAGE="http://httpd.apache.org/mod_fcgid/"
+HOMEPAGE="https://httpd.apache.org/mod_fcgid/"
 SRC_URI="mirror://apache/httpd/mod_fcgid/${P}.tar.bz2"
 
 LICENSE="GPL-2"
