@@ -8,7 +8,7 @@ inherit qt5-build
 DESCRIPTION="The Multimedia module for the Qt5 framework"
 
 if [[ ${QT5_BUILD_TYPE} == release ]]; then
-	KEYWORDS="amd64 arm ~hppa ppc64 ~x86"
+	KEYWORDS="amd64 arm ~hppa ppc64 x86"
 fi
 
 IUSE="alsa gles2 gstreamer gstreamer010 openal pulseaudio qml widgets"
