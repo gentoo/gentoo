@@ -245,10 +245,10 @@ src_install() {
 	domenu tools/Linux/kodi.desktop
 	newicon media/icon48x48.png kodi.png
 
-	# Remove fonconfig settings that are used only on MacOSX.
+	# Remove fontconfig settings that are used only on MacOSX.
 	# Can't be patched upstream because they just find all files and install
 	# them into same structure like they have in git.
-	rm -rf "${ED}"/usr/share/kodi/system/players/dvdplayer/etc
+	rm -rf "${ED}"/usr/share/kodi/system/players
 
 	# Replace bundled fonts with system ones.
 	rm "${ED}"/usr/share/kodi/addons/skin.confluence/fonts/Roboto-* || die
