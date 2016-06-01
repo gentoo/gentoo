@@ -9,5 +9,5 @@
 
 3. Please note that Apache2 sets AllowOverride None by default. You may have
    to edit it to process the .htaccess file provided by Bugzilla. Please see
-   http://httpd.apache.org/docs/2.2/mod/core.html#allowoverride and
+   https://httpd.apache.org/docs/2.2/mod/core.html#allowoverride and
    http://www.bugzilla.org/docs/${MY_PB}/en/html/configuration.html#http for more info.
