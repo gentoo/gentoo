@@ -272,12 +272,6 @@ x11-libs/libview
 # Not compatible with ruby21+, no reverse dependencies.
 dev-ruby/extlib
 
-# Patrice Clement <monsieurp@gentoo.org> (14 Mar 2016)
-# No activity nor release since 2010. Does not compile with Java 8.
-# Masked for removal. See bug 577368.
-dev-vcs/statsvn
-dev-vcs/statcvs
-
 # Ian Stakenvicius <axs@gentoo.org> (06 Mar 2016)
 # Mask old versions of thunderbird as they are no longer supported,
 # but we keep them in the repo for now in case there is a need
@@ -292,11 +286,6 @@ dev-vcs/statcvs
 >=dev-ml/ppx_tools-5.0.4.03
 >=dev-ml/labltk-8.06.1
 >=dev-ml/parmap-1.0_rc7-r1
-
-# Patrice Clement <monsieurp@gentoo.org> (29 Feb 2016)
-# Duplicate of dev-libs/libedit.
-# Masked for removal in 30 days.
-sys-libs/libedit
 
 # Patrick Lauer <patrick@gentoo.org> (22 Feb 2016)
 # Inactive upstream, build failures, obsoleted by rakudo/perl6
