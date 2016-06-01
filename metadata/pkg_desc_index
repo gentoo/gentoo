@@ -4338,7 +4338,6 @@ dev-lang/closure-compiler-bin 20120305 20121212 20130227 20130411 20150126: Java
 dev-lang/coffee-script 1.9.3-r1 1.10.0: A little language that compiles into javascript
 dev-lang/confluence 0.10.6: Functional programming language for reactive system design (digital logic, hard-real-time software)
 dev-lang/crystal 0.11.1 0.12.0 0.13.0 0.14.2 0.15.0: The Crystal Programming Language
-dev-lang/dmd-bin 1.016 2.008-r1: Digital Mars D Compiler
 dev-lang/ekopath 6.0.619_p20151213-r1 6.0.619_p20151213-r100 6.0.756_p20160409-r1 6.0.756_p20160409-r100 6.0.779_p20160428-r1 6.0.779_p20160428-r100: PathScale EKOPath Compiler Suite
 dev-lang/elixir 1.0.5 1.1.1 1.2.3 1.2.5: Elixir programming language
 dev-lang/epic 0.9.3.3-r1: Compiler for a simple functional language
@@ -15018,7 +15017,6 @@ net-p2p/mktorrent-borg 0.9.9: Console .torrent file creator. It support Multi Tr
 net-p2p/mldonkey 3.1.5-r1: A multi-network P2P application written in Ocaml, with its own Gtk GUI, web and telnet interface
 net-p2p/multibit 0.5.18: Secure, lightweight, international Bitcoin wallet written in Java
 net-p2p/myster 8.0-r1: Myster is a decentralized file sharing network
-net-p2p/nap 1.5.4-r1: Console Napster/OpenNap client
 net-p2p/ncdc 1.18.1 1.19 1.19.1 9999: ncurses directconnect client
 net-p2p/nicotine+ 1.2.16 1.2.16-r1: A fork of nicotine, a Soulseek client in Python
 net-p2p/opendchub 0.8.2: hub software for Direct Connect
