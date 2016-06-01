@@ -194,7 +194,7 @@ app-admin/rsyslog 8.13.0 8.16.0-r1 8.18.0: An enhanced multi-threaded syslogd wi
 app-admin/sagan 0.2.3 1.0.0_rc3: Sagan is a multi-threaded, real time system and event log monitoring system
 app-admin/sagan-rules 20130430 20140617 99999999: Rules for Sagan log analyzer
 app-admin/salt 2015.5.8 2015.5.9 2015.8.3 2015.8.5 2015.8.7 2015.8.8 9999: Salt is a remote execution and configuration manager
-app-admin/setools 3.3.8-r5 3.3.8-r7 4.0.0 4.0.1 9999: Policy Analysis Tools for SELinux
+app-admin/setools 3.3.8-r5 3.3.8-r7 4.0.1 9999: Policy Analysis Tools for SELinux
 app-admin/socklog 2.1.0: small secure replacement for syslogd with automatic log rotation
 app-admin/sshguard 1.5-r1 1.6.2 1.6.4: protects hosts from brute force attacks against ssh
 app-admin/stow 2.2.0-r2: Manage installation of software in /var/lib/
@@ -9547,7 +9547,7 @@ dev-util/abi-dumper 0.99.15: Dump ABI of an ELF object containing DWARF debug in
 dev-util/ald 0.1.7 0.1.7-r1: Assembly Language Debugger - a tool for debugging executable programs at the assembly level
 dev-util/alleyoop 0.9.8: A Gtk+ front-end to the Valgrind memory checker
 dev-util/amtterm 1.3-r1 1.4: A nice tool to manage amt-enabled machines
-dev-util/android-ndk 8b 8c 8d 8e 9 9b 9c 9d 10 10b 10d 10e 11c: Open Handset Alliance's Android NDK (Native Dev Kit)
+dev-util/android-ndk 8b 8c 8d 8e 9 9b 9c 9d 10 10b 10d 10e 11c 11c-r1: Open Handset Alliance's Android NDK (Native Dev Kit)
 dev-util/android-sdk-update-manager 21 21.1 22 22.0.1 22.0.1-r1 22.0.4 22.0.5 22.0.5-r1 22.2.1 22.3 22.6 22.6.1 23 23-r1 24.4.1: Open Handset Alliance's Android SDK
 dev-util/android-studio 1.5.2.0.141.2836215 2.1.1.0.143.2821654: A new Android development environment based on IntelliJ IDEA
 dev-util/android-tools 0_p20130218 5.1.1_p13: Android platform tools (adb, fastboot, and mkbootimg)
