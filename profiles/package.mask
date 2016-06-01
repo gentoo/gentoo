@@ -30,6 +30,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Michael Palimaka <kensington@gentoo.org> (1 Jun 2016)
+# Depends on vulnerable slot of net-libs/webkit-gtk. Dead upstream.
+# Masked for removal in 30 days. Bug 584164.
+net-print/foomatic-gui
+
 # Aaron Bauman <bman@gentoo.org> (1 Jun 2016)
 # Masked for removal in 30 days.  Unpatched security
 # vulnerabilities per bug #453308.
