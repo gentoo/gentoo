@@ -401,10 +401,6 @@ sys-fs/bedup
 # Breaking changes #563540
 =app-text/ghostscript-gpl-9.18
 
-# Mike Frysinger <vapier@gentoo.org> (18 Oct 2015)
-# apache-2.4.17 includes support for http2 now.
-www-apache/mod_h2
-
 # Mike Pagano <mpagano@gentoo.org> (2 Oct 2015)
 # A regression in kernel 4.1.9 could lead to a system
 # lockup.  This has been fixed in gentoo-sources-4.1.9-r1

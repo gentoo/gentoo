@@ -1,16 +1,17 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI="5"
 
 inherit apache-module
 
+MY_P="${PN/h2/http2}-${PV}"
+
 if [[ ${PV} == 9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/icing/mod_h2.git"
 	inherit git-2
 else
-	SRC_URI="https://github.com/icing/mod_h2/releases/download/v${PV}/${P}.tar.gz"
+	SRC_URI="https://github.com/icing/mod_h2/releases/download/v${PV}/${MY_P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
 fi
 
@@ -22,16 +23,17 @@ SLOT="0"
 IUSE="ssl"
 
 RDEPEND=">=net-libs/nghttp2-1.0
-	ssl? ( www-servers/apache[alpn] )"
+	>=www-servers/apache-2.4.20[-apache2_modules_http2,ssl?]"
 DEPEND="${RDEPEND}"
+
+S="${WORKDIR}/${MY_P}"
 
 need_apache2_4
 
 src_configure() {
 	econf \
 		--docdir='$(datarootdir)'/doc/${PF} \
-		--disable-werror \
-		--disable-sandbox
+		--disable-werror
 }
 
 src_compile() {
@@ -43,5 +45,5 @@ src_install() {
 
 	APACHE2_MOD_DEFINE="HTTP2"
 	insinto "${APACHE_MODULES_CONFDIR}"
-	newins "${FILESDIR}/mod_h2.conf" "75_mod_h2.conf"
+	newins "${FILESDIR}/mod_http2.conf" "41_mod_http2.conf"
 }
