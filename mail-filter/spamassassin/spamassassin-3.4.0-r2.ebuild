@@ -172,15 +172,16 @@ src_install () {
 		dodoc spamc/README.qmail
 	fi
 
-	cp "${FILESDIR}"/secrets.cf "${ED}"/etc/mail/spamassassin/secrets.cf.example || die
-	fperms 0400 /etc/mail/spamassassin/secrets.cf.example
+	insinto /etc/mail/spamassassin/
+	insopts -m0400
+	newins "${FILESDIR}"/secrets.cf secrets.cf.example
 
 	cat <<-EOF > "${T}/local.cf.example"
 		# Sensitive data, such as database connection info, should be stored in
 		# /etc/mail/spamassassin/secrets.cf with appropriate permissions
 EOF
 
-	insinto /etc/mail/spamassassin/
+	insopts -m0644
 	doins "${T}/local.cf.example"
 }
 
