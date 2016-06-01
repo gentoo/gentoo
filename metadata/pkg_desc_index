@@ -11634,7 +11634,7 @@ kde-misc/wacomtablet 2.1.0 3.0.0_beta1: KControl module for Wacom tablets
 kde-misc/wicd-client-kde 0.3.1-r1: Wicd client built on the KDE Development Platform
 kde-misc/yakuake 2.9.9-r3 3.0.2: Quake-style terminal emulator based on konsole
 kde-misc/yawp 0.4.5: Yet Another Weather Plasmoid
-kde-misc/zanshin 0.2.1-r1 0.2.2 0.3.0 0.3.1: Todo management application for KDE
+kde-misc/zanshin 0.2.1-r1 0.3.1: Todo management application by KDE
 kde-plasma/bluedevil 5.5.5 5.6.4: Bluetooth stack for KDE Plasma
 kde-plasma/breeze 5.5.5 5.6.4: Breeze visual style for the Plasma desktop
 kde-plasma/breeze-grub 5.6.4: Breeze theme for GRUB
@@ -14598,7 +14598,7 @@ net-misc/dleyna-server 0.5.0: library for implementing services that allow clien
 net-misc/dnetstats 1.2.6-r3: Qt4 network monitor utility
 net-misc/drive 0.3.5 0.3.6: Google Drive client for the commandline
 net-misc/dropbear 2014.66 2015.67 2015.68 2015.71 2016.72 2016.73: small SSH 2 client/server designed for small memory environments
-net-misc/dropbox 2.10.2 3.18.1 3.19.34: Dropbox daemon (pretends to be GUI-less)
+net-misc/dropbox 2.10.2 3.18.1 3.19.34 5.3.18: Dropbox daemon (pretends to be GUI-less)
 net-misc/dropbox-cli 1-r1 1.6.0: Cli interface for dropbox (python), part of nautilus-dropbox
 net-misc/efax 0.9a-r4: A simple fax program for single-user systems
 net-misc/electrum 2.1.1 2.3.3 2.5.4 2.6.4: User friendly Bitcoin client
@@ -16849,7 +16849,7 @@ sys-boot/shlilo-lantank 20040408: bootloader for the SuperH Lantank
 sys-boot/silo 1.4.14_p20100228 1.4.14_p20120226 1.4.14_p20120819: SPARC/UltraSPARC Improved Loader, a boot loader for sparc
 sys-boot/syslinux 3.86 4.07 5.10 6.03 6.04_pre1: SYSLINUX, PXELINUX, ISOLINUX, EXTLINUX and MEMDISK bootloaders
 sys-boot/systemrescuecd-x86-grub 0.1: Grub menu entries for the .iso image of systemrescuecd-x86
-sys-boot/tboot 1.8.3: Performs a measured and verified boot using Intel Trusted Execution Technology
+sys-boot/tboot 1.8.3 1.9.4: Performs a measured and verified boot using Intel Trusted Execution Technology
 sys-boot/unetbootin 608 619 625: UNetbootin installs Linux/BSD distributions to a partition or USB drive
 sys-boot/vboot-utils 1.0_p20130222 42_p20150219 51_p20160427: Chrome OS verified boot tools
 sys-boot/winusb 1.0.11: Creates windows installer on usb media from an iso image
