@@ -10,7 +10,7 @@ inherit kde5
 DESCRIPTION="Framework for providing different actions given a string query"
 SRC_URI="mirror://kde/stable/frameworks/${PV%.*}/portingAids/${P}.tar.xz"
 LICENSE="LGPL-2+"
-KEYWORDS="amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm x86"
 IUSE=""
 
 DEPEND="

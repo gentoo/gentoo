@@ -11,7 +11,7 @@ inherit kde5
 
 DESCRIPTION="Breeze SVG icon theme"
 LICENSE="LGPL-3"
-KEYWORDS="amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm x86"
 IUSE=""
 
 DEPEND="
