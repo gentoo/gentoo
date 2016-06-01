@@ -6828,6 +6828,7 @@ dev-python/CoverageTestRunner 1.9-r1 1.10: fail Python program unit tests unless
 dev-python/Flask-KVSession 0.6.1 0.6.2: Transparent server-side session support for flask
 dev-python/GridDataFormats 0.2.2 0.2.5: Reading and writing of data on regular grids in Python
 dev-python/Kivy 1.9.0-r1: A software library for rapid development of hardware-accelerated multitouch applications
+dev-python/Ming 0.5.4: Database mapping layer for MongoDB on Python
 dev-python/Numdifftools 0.9.12 0.9.13 0.9.14: Solves automatic numerical differentiation problems in one or more variables
 dev-python/PyContracts 1.7.6 1.7.9: Declare constraints on function parameters and return values
 dev-python/PyECLib 1.0.7-r2 1.2.0: Messaging API for RPC and notifications over a number of different messaging transports
@@ -11532,7 +11533,7 @@ kde-misc/colibri 0.3.0: Alternative to KDE4 Plasma notifications
 kde-misc/colord-kde 0.3.0: Provides interfaces and session daemon to colord
 kde-misc/commandwatch 0.1.1: KDE4 plasmoid which periodically runs a system command and displays its output
 kde-misc/cpuload 0.3.2: KDE4 plasmoid that shows CPU load on the screen
-kde-misc/customizable-weather 1.12.0 1.12.1: KDE4 weather plasmoid. It is highly customizable, but a little harder to setup
+kde-misc/customizable-weather 1.12.0 1.12.1: KDE Plasma 4 weather plasmoid. It aims to be highly customizable.
 kde-misc/drop2ftp 0.6: KDE4 plasmoid. Add files over KIO supported protocols, like ftp and ssh
 kde-misc/emerging-plasmoid 1.0.3: Portage emerge progress plasmoid
 kde-misc/eventlist 0.6-r1: Plasmoid showing the events from Akonadi resources
@@ -11542,7 +11543,7 @@ kde-misc/fsrunner 0.7.5: FSRunner give you instant access to any file or directo
 kde-misc/geekclock 1.0: Geeky Clock KDE4 Plasmoid
 kde-misc/gx-mail-notify 0.4.4: Plasmoid for checking unread mail
 kde-misc/hdaps_monitor 0.3-r1: KDE-based monitor for the IBM HDAPS system
-kde-misc/homerun 1.2.4 1.2.5: Application launcher for KDE Plasma desktop
+kde-misc/homerun 1.2.5: Application launcher for KDE Plasma desktop
 kde-misc/kanyremote 6.3.4 6.3.5: KDE frontend to Anyremote
 kde-misc/katelatexplugin 0.5: Kate LaTeX typesetting plugin
 kde-misc/kbiff 4.0: New mail notification utility
