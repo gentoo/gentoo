@@ -5,6 +5,11 @@
 # This file requires >=portage-2.1.1
 # New entries go on top.
 
+# Matthew Brewer <tomboy64@sina.cn> (02 June 2016)
+# Acked-by: Amy Winston <amynka@gentoo.org>
+# Currently broken upstream.
+>=dev-lang/rakudo-2016.05 java
+
 # Michał Górny <mgorny@gentoo.org> (14 May 2016)
 # (on behalf of QA team)
 # sys-devel/gcc[jit]:
@@ -18,6 +23,7 @@ sys-devel/gcc jit
 sys-devel/gcc vtv
 
 # Matthew Brewer <tomboy64@sina.cn> (08 May 2016)
+# Acked-by: Amy Winston <amynka@gentoo.org>
 # Upstream supports using Clang's address sanitizer, but apparently
 # invokes it wrong.
 dev-lang/moarvm asan
