@@ -6202,7 +6202,7 @@ dev-perl/Speech-Recognizer-SPX 0.80.100-r1: Interface to Sphinx-II speech recogn
 dev-perl/Sphinx-Config 0.100.0: Sphinx search engine configuration file read/modify/write
 dev-perl/Sphinx-Search 0.290.0: Perl API client for Sphinx search engine
 dev-perl/Spiffy 0.460.0: Spiffy Perl Interface Framework For You
-dev-perl/Spreadsheet-ParseExcel 0.590.0-r1 0.650.0: Read information from an Excel file
+dev-perl/Spreadsheet-ParseExcel 0.650.0: Read information from an Excel file
 dev-perl/Spreadsheet-WriteExcel 2.400.0: Write cross-platform Excel binary file
 dev-perl/Starlet 0.290.0: A simple, high-performance PSGI/Plack HTTP server
 dev-perl/Stat-lsMode 0.500.0-r1: The Perl Stat-lsMode Module
@@ -6228,7 +6228,7 @@ dev-perl/Sub-Install 0.928.0: Install subroutines into packages easily
 dev-perl/Sub-Name 0.50.0-r1 0.150.0: (Re)name a sub
 dev-perl/Sub-Override 0.90.0: Perl extension for easily overriding subroutines
 dev-perl/Sub-Uplevel 0.250.0: Apparently run a function in a higher stack frame
-dev-perl/Switch 2.160.0-r1 2.170.0: A switch statement for Perl
+dev-perl/Switch 2.170.0: A switch statement for Perl
 dev-perl/Symbol-Global-Name 0.50.0: Finds name and type of a global variable
 dev-perl/Symbol-Util 0.20.300-r1: Additional utils for Perl symbols manipulation
 dev-perl/Syntax-Highlight-Engine-Simple 0.90.0: Simple Syntax Highlight Engine
@@ -6283,9 +6283,9 @@ dev-perl/Test-Differences 0.610.0-r1 0.630.0 0.640.0: Test strings and data stru
 dev-perl/Test-DistManifest 1.12.0-r1 1.14.0: Author test that validates a package MANIFEST
 dev-perl/Test-Distribution 2.0.0-r1: perform tests on all modules of a distribution
 dev-perl/Test-EOL 1.600.0: Check the correct line endings in your project
-dev-perl/Test-Exception 0.320.0-r1 0.430.0: Test functions for exception based code
+dev-perl/Test-Exception 0.430.0: Test functions for exception based code
 dev-perl/Test-FailWarnings 0.8.0: Add test failures if warnings are caught
-dev-perl/Test-Fatal 0.10.0-r1 0.14.0: Incredibly simple helpers for testing code with exceptions
+dev-perl/Test-Fatal 0.14.0: Incredibly simple helpers for testing code with exceptions
 dev-perl/Test-File-ShareDir 1.1.1-r1: Create a Fake ShareDir for your modules for testing.
 dev-perl/Test-Inline 2.213.0-r1: Inline test suite support for Perl
 dev-perl/Test-Inter 1.30.0-r1 1.60.0: Framework for more readable interactive test scripts
@@ -11175,7 +11175,7 @@ kde-apps/kde-dev-utils 4.14.3 15.08.3 15.12.3 16.04.1: KDE Development Utilities
 kde-apps/kde-l10n 15.12.3-r2 16.04.1: KDE internationalization package
 kde-apps/kde-meta 4.14.3 4.14.3-r1 15.08.3 15.12.3 16.04.1: Merge this to pull in all KDE Plasma and Applications packages
 kde-apps/kde-wallpapers 4.14.3 15.08.3 15.08.3-r2: KDE wallpapers
-kde-apps/kde4-l10n 4.14.3 4.14.3-r1 15.08.3-r2 15.12.3-r1 16.04.1: KDE internationalization package
+kde-apps/kde4-l10n 4.14.3 4.14.3-r1 15.08.3-r2 15.12.3-r1 16.04.1-r1: KDE internationalization package
 kde-apps/kdeaccessibility-meta 4.14.3 15.08.3 15.12.3 16.04.1: kdeaccessibility - merge this to pull in all kdeaccessiblity-derived packages
 kde-apps/kdeadmin-meta 4.14.3 15.08.3 15.12.3 16.04.1: KDE administration tools - merge this to pull in all kdeadmin-derived packages
 kde-apps/kdeartwork-colorschemes 4.14.3 15.08.3: KDE extra colorschemes
@@ -16433,7 +16433,7 @@ sys-apps/bar 1.11.1: Console Progress Bar
 sys-apps/baselayout 2.2: Filesystem baselayout and init scripts
 sys-apps/baselayout-java 0.1.0: Baselayout for Java
 sys-apps/baselayout-prefix 1.12.5-r11 1.12.14 1.12.14-r1 2.2-r3 2.2-r4: Minimal baselayout for Gentoo Prefix installs
-sys-apps/biosdevname 0.6.1 0.6.2 0.7.1: Sets BIOS-given device names instead of kernel eth* names
+sys-apps/biosdevname 0.6.1 0.6.2 0.7.1 0.7.2: Sets BIOS-given device names instead of kernel eth* names
 sys-apps/biosdisk 0_p20100611-r1: A script that creates floppy boot images to flash Dell BIOSes
 sys-apps/bleachbit 1.2 1.4 1.9.1 1.11: Clean junk to free disk space and to maintain privacy
 sys-apps/busybox 1.24.1 1.24.2 9999: Utilities for rescue and embedded systems
