@@ -13,6 +13,7 @@ EGIT_REPO_URI="https://github.com/eXeC64/imv.git"
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS=""
+IUSE="test"
 
 RDEPEND="
 	!sys-apps/renameutils
@@ -22,7 +23,8 @@ RDEPEND="
 	media-libs/freeimage
 "
 
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	test? ( dev-util/cmocka )"
 
 pkg_postinst() {
 	fdo-mime_desktop_database_update

@@ -13,7 +13,8 @@ SRC_URI="https://github.com/eXeC64/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-RESTRICT="test"
+IUSE="test"
+RESTRICT="test" # this is fixed in >imv-2.1.2
 
 RDEPEND="
 	!sys-apps/renameutils
@@ -23,7 +24,8 @@ RDEPEND="
 	media-libs/freeimage
 "
 
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	test? ( dev-util/cmocka )"
 
 pkg_postinst() {
 	fdo-mime_desktop_database_update
