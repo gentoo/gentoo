@@ -81,7 +81,6 @@ RDEPEND="
 		dev-libs/libxslt:=
 		media-libs/flac:=
 		>=media-libs/harfbuzz-0.9.41:=[icu(+)]
-		>=media-libs/libjpeg-turbo-1.2.0-r1:=
 		>=media-libs/libwebp-0.4.0:=
 		sys-libs/zlib:=[minizip]
 	)"
@@ -193,6 +192,9 @@ src_prepare() {
 	epatch "${FILESDIR}/${PN}-widevine-r1.patch"
 	epatch "${FILESDIR}/${PN}-last-commit-position-r0.patch"
 	epatch "${FILESDIR}/${PN}-snapshot-toolchain-r1.patch"
+	epatch "${FILESDIR}/${PN}-pdfium-r0.patch"
+	epatch "${FILESDIR}/${PN}-system-zlib-r0.patch"
+	epatch "${FILESDIR}/${PN}-linker-warnings-r0.patch"
 
 	epatch_user
 
@@ -204,23 +206,13 @@ src_prepare() {
 		conditional_bundled_libraries+="
 			base/third_party/libevent
 			third_party/adobe
-			third_party/ffmpeg
-			third_party/flac
-			third_party/harfbuzz-ng
-			third_party/icu
 			third_party/jinja2
-			third_party/libjpeg_turbo
 			third_party/libpng
-			third_party/libwebp
-			third_party/libxml
-			third_party/libxslt
 			third_party/markupsafe
-			third_party/snappy
 			third_party/speech-dispatcher
 			third_party/usb_ids
 			third_party/xdg-utils
-			third_party/yasm
-			third_party/zlib
+			third_party/yasm/run_yasm.py
 		"
 	fi
 
@@ -239,7 +231,6 @@ src_prepare() {
 		'breakpad/src/third_party/curl' \
 		'chrome/third_party/mozilla_security_manager' \
 		'courgette/third_party' \
-		'crypto/third_party/nss' \
 		'net/third_party/mozilla_security_manager' \
 		'net/third_party/nss' \
 		'third_party/WebKit' \
@@ -280,6 +271,7 @@ src_prepare() {
 		'third_party/libXNVCtrl' \
 		'third_party/libaddressinput' \
 		'third_party/libjingle' \
+		'third_party/libjpeg_turbo' \
 		'third_party/libphonenumber' \
 		'third_party/libpng' \
 		'third_party/libsecret' \
@@ -288,8 +280,8 @@ src_prepare() {
 		'third_party/libusb' \
 		'third_party/libvpx' \
 		'third_party/libvpx/source/libvpx/third_party/x86inc' \
-		'third_party/libxml/chromium' \
 		'third_party/libwebm' \
+		'third_party/libxml/chromium' \
 		'third_party/libyuv' \
 		'third_party/lss' \
 		'third_party/lzma_sdk' \
@@ -308,9 +300,12 @@ src_prepare() {
 		'third_party/pdfium/third_party/lcms2-2.6' \
 		'third_party/pdfium/third_party/libjpeg' \
 		'third_party/pdfium/third_party/libopenjpeg20' \
+		'third_party/pdfium/third_party/libpng16' \
+		'third_party/pdfium/third_party/libtiff' \
 		'third_party/pdfium/third_party/zlib_v128' \
 		'third_party/polymer' \
 		'third_party/protobuf' \
+		'third_party/protobuf/third_party/six' \
 		'third_party/qcms' \
 		'third_party/re2' \
 		'third_party/sfntly' \
@@ -354,6 +349,7 @@ src_configure() {
 	# Use system-provided libraries.
 	# TODO: use_system_hunspell (upstream changes needed).
 	# TODO: use_system_icu (bug #576370).
+	# TODO: use_system_libjpeg (bug #584518).
 	# TODO: use_system_libpng (bug #578212).
 	# TODO: use_system_libsrtp (bug #459932).
 	# TODO: use_system_libusb (http://crbug.com/266149).
@@ -370,7 +366,6 @@ src_configure() {
 		-Duse_system_harfbuzz=1
 		-Duse_system_jsoncpp=1
 		-Duse_system_libevent=1
-		-Duse_system_libjpeg=1
 		-Duse_system_libwebp=1
 		-Duse_system_libxml=1
 		-Duse_system_libxslt=1
@@ -380,6 +375,21 @@ src_configure() {
 		-Duse_system_speex=1
 		-Duse_system_xdg_utils=1
 		-Duse_system_zlib=1"
+
+	local gn_system_libraries="
+		flac
+		harfbuzz-ng
+		libevent
+		libwebp
+		libxml
+		libxslt
+		snappy
+		yasm
+		zlib"
+	if use system-ffmpeg; then
+		gn_system_libraries+=" ffmpeg"
+	fi
+	build/linux/unbundle/replace_gn_files.py --system-libraries ${gn_system_libraries} || die
 
 	# Needed for system icu - we don't need additional data files.
 	# myconf_gyp+=" -Dicu_use_data_file_flag=0"
@@ -446,6 +456,7 @@ src_configure() {
 
 	ffmpeg_branding="$(usex proprietary-codecs Chrome Chromium)"
 	myconf_gyp+=" -Dproprietary_codecs=1 -Dffmpeg_branding=${ffmpeg_branding}"
+	myconf_gn+=" proprietary_codecs=true ffmpeg_branding=\"${ffmpeg_branding}\""
 
 	# Set up Google API keys, see http://www.chromium.org/developers/how-tos/api-keys .
 	# Note: these are for Gentoo use ONLY. For your own distribution,
@@ -537,8 +548,7 @@ src_configure() {
 	export TMPDIR="${WORKDIR}/temp"
 	mkdir -p -m 755 "${TMPDIR}" || die
 
-	# TODO: also do this for GN bundled ffmpeg build.
-	if ! use system-ffmpeg && ! use gn; then
+	if ! use system-ffmpeg; then
 		local build_ffmpeg_args=""
 		if use pic && [[ "${ffmpeg_target_arch}" == "ia32" ]]; then
 			build_ffmpeg_args+=" --disable-asm"
