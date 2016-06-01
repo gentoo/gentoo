@@ -8331,7 +8331,7 @@ dev-qt/qt-mobility 1.2.2_p20130703-r1: Additional Qt APIs for mobile devices and
 dev-qt/qt3support 4.8.6-r1 4.8.7: The Qt3Support module for the Qt toolkit
 dev-qt/qtbearer 4.8.6-r1 4.8.7: The network bearer plugins for the Qt toolkit
 dev-qt/qtbluetooth 5.5.1-r1 5.6.0: Bluetooth support library for the Qt5 framework
-dev-qt/qtchooser 0_p20150102 0_p20151008: Qt4/Qt5 version chooser
+dev-qt/qtchooser 0_p20151008: Qt4/Qt5 version chooser
 dev-qt/qtconcurrent 5.5.1 5.6.0: Multi-threading concurrence support library for the Qt5 framework
 dev-qt/qtcore 4.8.6-r2 4.8.7-r2 5.5.1-r1 5.6.0: Cross-platform application development framework
 dev-qt/qtdbus 4.8.6-r1 4.8.7 5.5.1 5.6.0: The D-Bus module for the Qt5 framework
