@@ -14005,7 +14005,7 @@ net-dns/pdns-ldap-backend 0.2: Fork of the official but unmaintained LDAP backen
 net-dns/pdns-recursor 3.6.4 3.7.3: The PowerDNS Recursor
 net-dns/pdnsd 1.2.9a-r1: Proxy DNS server with permanent caching
 net-dns/rbldnsd 0.997a-r2 0.998: DNS server designed to serve blacklist zones
-net-dns/resolv_wrapper 1.1.3: A wrapper for DNS name resolving or DNS faking
+net-dns/resolv_wrapper 1.1.3 1.1.4: A wrapper for DNS name resolving or DNS faking
 net-dns/resolvconf-symlink 0: Make /etc/resolv.conf a symlink to a runtime-writable location
 net-dns/sheerdns 1.0.3: Sheerdns is a small, simple, fast master only DNS server
 net-dns/tinystats 1.1: A tinydns logging helper app
