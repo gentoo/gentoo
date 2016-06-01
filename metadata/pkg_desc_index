@@ -1146,7 +1146,7 @@ app-emacs/emacs-wget 0.5.0-r1: Wget interface for Emacs
 app-emacs/emacs-wiki 2.72-r2: Maintain a local Wiki using Emacs-friendly markup
 app-emacs/emacs-wiki-blog 0.5: Emacs-Wiki add-on for maintaining a weblog
 app-emacs/emhacks 20070920: Useful Emacs Lisp libraries, including gdiff, jjar, jmaker, swbuff, and tabbar
-app-emacs/emms 3.0-r1: The Emacs Multimedia System
+app-emacs/emms 3.0-r1 4.1: The Emacs Multimedia System
 app-emacs/erobot 2.1.0-r1: Battle-bots for Emacs!
 app-emacs/eselect-mode 1.4.4 9999: Emacs major mode for editing eselect files
 app-emacs/ess 14.09 15.03.1 15.09.2: Emacs Speaks Statistics
