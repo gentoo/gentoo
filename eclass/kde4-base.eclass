@@ -827,7 +827,7 @@ kde4-base_src_test() {
 			debug-print "           kde4-base.eclass docs for details... Applying workaround."
 			_test_runner
 		else
-			VIRTUALX_COMMAND="_test_runner" virtualmake
+			virtx _test_runner
 		fi
 	else
 		_test_runner
