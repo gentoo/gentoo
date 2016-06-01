@@ -16956,7 +16956,7 @@ sys-devel/flex 2.5.39-r1 2.6.0 2.6.1: The Fast Lexical Analyzer
 sys-devel/gcc 2.95.3-r10 3.3.6-r1 3.4.6-r2 4.0.4 4.1.2 4.2.4-r1 4.3.6-r1 4.4.7 4.5.4 4.6.4 4.7.4 4.8.5 4.9.3 5.1.0 5.2.0 5.3.0: The GNU Compiler Collection
 sys-devel/gcc-apple 4.0.1_p5493 4.2.1_p5664 4.2.1_p5666-r1 4.2.1_p5666-r2: Apple branch of the GNU Compiler Collection, Developer Tools 4.0
 sys-devel/gcc-config 1.7.3 1.8 1.8-r1: utility to manage compilers
-sys-devel/gdb 7.9.1 7.10.1 7.11 9999: GNU debugger
+sys-devel/gdb 7.9.1 7.10.1 7.11 7.11.1 9999: GNU debugger
 sys-devel/gdb-apple 563 768-r1 960 962 966 1344 1346 1461 1518 1705 1708 1752: Apple branch of the GNU Debugger, Developer Tools 4.3
 sys-devel/gettext 0.19.4 0.19.6-r1 0.19.7: GNU locale utilities
 sys-devel/gnuconfig 20150727 20151214 20160402 99999999: Updated config.sub and config.guess file from GNU
