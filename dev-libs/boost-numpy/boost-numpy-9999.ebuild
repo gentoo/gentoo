@@ -1,15 +1,16 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-inherit cmake-utils
+PYTHON_COMPAT=( python{2_7,3_4,3_5} )
+inherit cmake-utils python-single-r1
 
 DESCRIPTION="Boost.Python interface for NumPy"
 HOMEPAGE="https://github.com/ndarray/Boost.NumPy"
 if [ ${PV} == 9999 ]; then
-	inherit git-2
+	inherit git-r3
 	EGIT_REPO_URI="git://github.com/ndarray/Boost.NumPy.git \
 		https://github.com/ndarray/Boost.NumPy.git"
 else
@@ -18,13 +19,24 @@ fi
 
 LICENSE="Boost-1.0"
 SLOT=0
-IUSE="doc examples"
 KEYWORDS=""
 
-CDEPEND="dev-python/numpy
-	dev-libs/boost[python]"
+IUSE="doc examples"
+
+CDEPEND="dev-python/numpy[${PYTHON_USEDEP}]
+	dev-libs/boost[python,${PYTHON_USEDEP}]"
 DEPEND="${CDEPEND}"
 RDEPEND="${CDEPEND}"
+
+src_prepare() {
+	# Make sure that new Python ABI names are searched too
+	sed -i \
+		-e 's/PythonLibsNew/PythonLibs/' \
+		-e 's/python3/python/' \
+		CMakeLists.txt || die
+
+	cmake-utils_src_prepare
+}
 
 src_install() {
 	cmake-utils_src_install
