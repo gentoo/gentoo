@@ -36,7 +36,6 @@ CDEPEND="net-wireless/wireless-tools
 	suid? ( sys-libs/libcap )
 	client? ( sys-libs/ncurses:0= )
 	!arm? ( speech? ( app-accessibility/flite ) )
-	ruby? ( dev-lang/ruby:* )
 	plugin-btscan? ( net-wireless/bluez )
 	plugin-dot15d4? ( virtual/libusb:0 )
 	plugin-spectools? ( net-wireless/spectools )
@@ -47,12 +46,12 @@ DEPEND="${CDEPEND}
 "
 
 RDEPEND="${CDEPEND}
+	ruby? ( dev-lang/ruby:* )
 	selinux? ( sec-policy/selinux-kismet )
 "
 
 src_prepare() {
 	epatch -p1 "${FILESDIR}"/${P}-tinfo.patch
-	eautoreconf
 
 	sed -i -e "s:^\(logtemplate\)=\(.*\):\1=/tmp/\2:" \
 		conf/kismet.conf.in
@@ -60,6 +59,9 @@ src_prepare() {
 	# Don't strip and set correct mangrp
 	sed -i -e 's| -s||g' \
 		-e 's|@mangrp@|root|g' Makefile.in
+
+	epatch_user
+	eautoreconf
 }
 
 src_configure() {

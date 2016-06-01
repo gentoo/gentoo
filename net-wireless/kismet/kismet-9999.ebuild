@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit eutils multilib user
+inherit autotools eutils multilib user
 
 MY_P=${P/\./-}
 MY_P=${MY_P/./-R}
@@ -34,9 +34,8 @@ CDEPEND="net-wireless/wireless-tools
 			)
 	pcre? ( dev-libs/libpcre )
 	suid? ( sys-libs/libcap )
-	client? ( sys-libs/ncurses:= )
+	client? ( sys-libs/ncurses:0= )
 	!arm? ( speech? ( app-accessibility/flite ) )
-	ruby? ( dev-lang/ruby:* )
 	plugin-btscan? ( net-wireless/bluez )
 	plugin-dot15d4? ( virtual/libusb:0 )
 	plugin-spectools? ( net-wireless/spectools )
@@ -47,6 +46,7 @@ DEPEND="${CDEPEND}
 "
 
 RDEPEND="${CDEPEND}
+	ruby? ( dev-lang/ruby:* )
 	selinux? ( sec-policy/selinux-kismet )
 "
 
@@ -57,6 +57,9 @@ src_prepare() {
 	# Don't strip and set correct mangrp
 	sed -i -e 's| -s||g' \
 		-e 's|@mangrp@|root|g' Makefile.in
+
+	epatch_user
+	eautoreconf
 }
 
 src_configure() {
