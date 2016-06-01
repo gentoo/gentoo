@@ -14,7 +14,7 @@ SRC_URI="https://github.com/libproxy/libproxy/archive/${PV}.tar.gz -> ${P}.tar.g
 LICENSE="LGPL-2.1+"
 SLOT="0"
 
-KEYWORDS="~alpha ~amd64 ~amd64-linux ~arm ~arm-linux ~hppa ~ia64 ~ia64-linux ~mips ~ppc ~ppc64 ~sh ~sparc ~sparc-solaris ~x64-macos ~x86 ~x86-fbsd ~x86-freebsd ~x86-interix ~x86-linux ~x86-macos ~x86-solaris"
+KEYWORDS="alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86 ~x86-fbsd ~x86-freebsd ~x86-interix ~amd64-linux ~arm-linux ~ia64-linux ~x86-linux ~x64-macos ~x86-macos ~sparc-solaris ~x86-solaris"
 
 IUSE="gnome kde mono networkmanager perl python spidermonkey test webkit"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
