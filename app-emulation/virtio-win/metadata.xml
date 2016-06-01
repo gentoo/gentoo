@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>wizardedit@gentoo.org</email>
+    <name>Austin English</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="github">crobinso/virtio-win-pkg-scripts</remote-id>
+  </upstream>
+</pkgmetadata>
