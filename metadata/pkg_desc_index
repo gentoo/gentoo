@@ -11573,7 +11573,7 @@ kde-misc/kio-locate 0.5.3: Locate KIO slave for KDE
 kde-misc/kio-mtp 0.75_p20150403: MTP KIO-Client for KDE
 kde-misc/kio-slp 0_p20120621: Service Location Protocol component for KIO
 kde-misc/kio_gopher 0.1.4: Gopher Kioslave for Konqueror
-kde-misc/kolor-manager 1.0.1 1.0.2: KControl module for Oyranos CMS cross desktop settings
+kde-misc/kolor-manager 1.0.2: KControl module for Oyranos CMS cross desktop settings
 kde-misc/konstruktor 0.9_beta1: LEGO CAD
 kde-misc/kookie 0.1.1: Manage recipes and shopping lists
 kde-misc/kopete-antispam 0.5: Antispam filter for Kopete instant messenger
@@ -17242,7 +17242,6 @@ sys-libs/libcap-ng 0.7.7: POSIX 1003.1e capabilities
 sys-libs/libchipcard 5.0.2: Libchipcard is a library for easy access to chip cards via chip card readers (terminals)
 sys-libs/libcxx 3.7.0 3.7.1 3.8.0 9999: New implementation of the C++ standard library, targeting C++11
 sys-libs/libcxxrt 0.0_p20140322 0.0_p20150423 9999: C++ Runtime from PathScale, FreeBSD and NetBSD
-sys-libs/libedit 3.1_p20150325: Port of the NetBSD editline library
 sys-libs/libfaketime 0.9.6-r1: Report faked system time to programs
 sys-libs/libfreevec 1.0.4: Altivec enabled libc memory function
 sys-libs/libhugetlbfs 2.18 2.19 2.19-r1 2.20: easy hugepage access
