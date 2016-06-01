@@ -77,6 +77,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-mysql-embedded.patch"
 	"${FILESDIR}/${P}-mysqld-rpath.patch"
 	"${FILESDIR}/${P}-scriptconsole.patch"
+	"${FILESDIR}/${P}-gcc6.patch"
 )
 
 src_configure() {
