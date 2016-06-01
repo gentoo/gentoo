@@ -30,6 +30,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Aaron Bauman <bman@gentoo.org> (1 Jun 2016)
+# Masked for removal in 30 days.  Unpatched security
+# vulnerabilities per bug #453308.
+net-irc/atheme-services
+
 # Johannes Huber <johu@gentoo.org> (31 May 2016)
 # Masked for removal in 30 days. Declared as dead by
 # upstream in 2015. Last release with KDE Applications 15.08.3.
