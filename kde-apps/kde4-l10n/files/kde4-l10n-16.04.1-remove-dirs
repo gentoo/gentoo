@@ -18,6 +18,7 @@ docs/kdesdk kapptemplate
 docs/kdesdk okteta
 docs/kdesdk umbrello
 docs/kdeutils kwalletmanager
+scripts kdeedu
 # Plasma 5
 docs kde-workspace
 docs/kde-runtime fundamentals
@@ -31,6 +32,7 @@ docs/kde-runtime/kcontrol ebrowsing
 docs/kde-runtime/kcontrol emoticons
 docs/kde-runtime/kcontrol icons
 docs/kde-runtime/kcontrol kcmcgi
+docs/kde-runtime/kcontrol nepomuk
 docs/kde-runtime/kcontrol smb
 docs/kde-runtime/kcontrol trash
 docs/kde-runtime/kcontrol useragent

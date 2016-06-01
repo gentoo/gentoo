@@ -21,7 +21,7 @@ RDEPEND="
 	minimal? ( >=kde-apps/kde-l10n-${PV} )
 "
 
-REMOVE_DIRS="${FILESDIR}/${PN}-16.03.91-remove-dirs"
+REMOVE_DIRS="${FILESDIR}/${PN}-16.04.1-remove-dirs"
 REMOVE_MSGS="${FILESDIR}/${PN}-16.03.91-remove-messages"
 
 LV="4.14.3"
@@ -77,6 +77,26 @@ src_unpack() {
 src_prepare() {
 	default
 	[[ -n ${A} ]] || return
+
+	# LINGUAS=sr variants are subdirs within sr/ ...
+	if use minimal && [[ -d "${KMNAME}-sr-${PV}" ]] ; then
+		for variant in "${KMNAME}"-sr-${PV}/4/sr/sr@*; do
+			mkdir -p "${KMNAME}-${variant##*/}-${PV}/4" ||
+				die "Failed to create LINGUAS=${variant##*/} subdir"
+			mv ${variant} "${KMNAME}-${variant##*/}-${PV}/4/sr" ||
+				die "Failed to move LINGUAS=${variant##*/}"
+			cp -f "${KMNAME}-sr-${PV}"/CMakeLists.txt "${KMNAME}-${variant##*/}-${PV}" ||
+				die "Failed to prepare LINGUAS=${variant##*/} subdir"
+			cp -f "${KMNAME}-sr-${PV}"/4/CMakeLists.txt "${KMNAME}-${variant##*/}-${PV}"/4 ||
+				die "Failed to prepare LINGUAS=${variant##*/} subdir"
+			cp -f "${KMNAME}-sr-${PV}"/4/sr/CMakeLists.txt "${KMNAME}-${variant##*/}-${PV}"/4/sr ||
+				die "Failed to prepare LINGUAS=${variant##*/} subdir"
+			sed -e "/^macro.*sr/d" \
+				-e "s/sr/${variant##*/}/" \
+				-i "${KMNAME}-${variant##*/}-${PV}"/4/sr/CMakeLists.txt ||
+				die "Failed to prepare LINGUAS=${variant##*/} subdir"
+		done
+	fi
 
 	# add all linguas to cmake
 	cat <<-EOF > CMakeLists.txt || die
