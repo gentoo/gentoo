@@ -1,5 +1,5 @@
---- krusader/Panel/panelfunc.cpp
-+++ krusader/Panel/panelfunc.cpp
+--- a/krusader/Panel/panelfunc.cpp
++++ b/krusader/Panel/panelfunc.cpp
 @@ -100,7 +100,7 @@
  {
  public:
