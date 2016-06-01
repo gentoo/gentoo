@@ -386,10 +386,6 @@ www-apps/389-dsgw
 # Mask this liferea version because upstream released it broken
 =net-news/liferea-1.10.17
 
-# Anthony G. Basile <blueness@gentoo.org> (06 Dec 2015)
-# Masked until we deal with SSLv3, bug #567554
-=dev-libs/libressl-2.3*
-
 # Michał Górny <mgorny@gentoo.org> (30 Oct 2015)
 # Uses unsafe ioctls that could result in data corruption. Upstream
 # is working on replacing them in the wip/dedup-syscall branch.
