@@ -11583,7 +11583,7 @@ kde-misc/kover 6: An easy to use WYSIWYG CD cover printer with CDDB support
 kde-misc/kprayertime 4.01: Islamic Prayer Times Plasmoid
 kde-misc/kraidmonitor 0.5: Indicator widget for raid arrays
 kde-misc/krcstat 0.7.6-r1: A Gentoo system management tool
-kde-misc/krecipes 2.0_beta2-r1 2.0.0: A KDE4 recipe application
+kde-misc/krecipes 2.0.0: A recipe application by KDE
 kde-misc/krename 4.0.9-r3: KRename - a very powerful batch file renamer
 kde-misc/krunner-googletranslate 0.1: Krunner plug-in for Google translate service
 kde-misc/krunner-kopete-contacts 0.4: A krunner plug-in that allows you to open conversation with your contact
