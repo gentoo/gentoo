@@ -13,7 +13,7 @@ inherit kde4-base
 MY_P="${P/_/-}"
 
 DESCRIPTION="An advanced twin-panel (commander-style) file-manager for KDE with many extras"
-HOMEPAGE="http://www.krusader.org/"
+HOMEPAGE="https://quickgit.kde.org/?p=krusader.git"
 SRC_URI="mirror://sourceforge/krusader/${MY_P}.tar.bz2"
 LICENSE="GPL-2"
 
