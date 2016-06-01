@@ -1,12 +1,12 @@
 DEFINED_PHASES=compile configure install postinst prepare unpack
-DEPEND=arping? ( !net-misc/arping ) rarpd? ( !net-misc/rarpd ) traceroute? ( !net-misc/traceroute ) !static? ( caps? ( sys-libs/libcap ) idn? ( net-dns/libidn ) ipv6? ( ssl? ( gcrypt? ( dev-libs/libgcrypt:0= ) !gcrypt? ( !libressl? ( dev-libs/openssl:0 ) libressl? ( dev-libs/libressl ) ) ) ) ) static? ( caps? ( sys-libs/libcap[static-libs(+)] ) idn? ( net-dns/libidn[static-libs(+)] ) ipv6? ( ssl? ( gcrypt? ( dev-libs/libgcrypt:0=[static-libs(+)] ) !gcrypt? ( !libressl? ( dev-libs/openssl:0[static-libs(+)] ) libressl? ( dev-libs/libressl[static-libs(+)] ) ) ) ) ) virtual/os-headers app-text/openjade dev-perl/SGMLSpm app-text/docbook-sgml-dtd app-text/docbook-sgml-utils filecaps? ( sys-libs/libcap ) dev-vcs/git
+DEPEND=arping? ( !net-misc/arping ) rarpd? ( !net-misc/rarpd ) traceroute? ( !net-analyzer/traceroute ) !static? ( caps? ( sys-libs/libcap ) idn? ( net-dns/libidn ) ipv6? ( ssl? ( gcrypt? ( dev-libs/libgcrypt:0= ) !gcrypt? ( !libressl? ( dev-libs/openssl:0 ) libressl? ( dev-libs/libressl ) ) ) ) ) static? ( caps? ( sys-libs/libcap[static-libs(+)] ) idn? ( net-dns/libidn[static-libs(+)] ) ipv6? ( ssl? ( gcrypt? ( dev-libs/libgcrypt:0=[static-libs(+)] ) !gcrypt? ( !libressl? ( dev-libs/openssl:0[static-libs(+)] ) libressl? ( dev-libs/libressl[static-libs(+)] ) ) ) ) ) virtual/os-headers app-text/openjade dev-perl/SGMLSpm app-text/docbook-sgml-dtd app-text/docbook-sgml-utils filecaps? ( sys-libs/libcap ) dev-vcs/git
 DESCRIPTION=Network monitoring tools including ping and ping6
 EAPI=5
 HOMEPAGE=http://www.linuxfoundation.org/collaborate/workgroups/networking/iputils
 IUSE=arping caps clockdiff doc gcrypt idn ipv6 libressl rarpd rdisc SECURITY_HAZARD ssl static tftpd tracepath traceroute +filecaps
 LICENSE=BSD-4
-RDEPEND=arping? ( !net-misc/arping ) rarpd? ( !net-misc/rarpd ) traceroute? ( !net-misc/traceroute ) !static? ( caps? ( sys-libs/libcap ) idn? ( net-dns/libidn ) ipv6? ( ssl? ( gcrypt? ( dev-libs/libgcrypt:0= ) !gcrypt? ( !libressl? ( dev-libs/openssl:0 ) libressl? ( dev-libs/libressl ) ) ) ) )
+RDEPEND=arping? ( !net-misc/arping ) rarpd? ( !net-misc/rarpd ) traceroute? ( !net-analyzer/traceroute ) !static? ( caps? ( sys-libs/libcap ) idn? ( net-dns/libidn ) ipv6? ( ssl? ( gcrypt? ( dev-libs/libgcrypt:0= ) !gcrypt? ( !libressl? ( dev-libs/openssl:0 ) libressl? ( dev-libs/libressl ) ) ) ) )
 SLOT=0
 _eclass_exported_funcs=pkg_postinst:- src_unpack:git-2 src_prepare:- src_configure:- src_compile:- src_install:-
 _eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	fcaps	6a1091a98b1dde01cc26ab3252da1a9b	flag-o-matic	d270fa247153df66074f795fa42dba3e	git-2	672c3929a162f221a53b4ccb4d25d8a2	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
-_md5_=c0f122c1295fb5c88bdd43ea7a78505b
+_md5_=a1b8fffcb2e8e82faf1897d24d1bffd5
