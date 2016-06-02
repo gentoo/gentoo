@@ -1,8 +1,8 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=5
 
 inherit autotools-utils eutils flag-o-matic linux-info
 
@@ -17,16 +17,21 @@ KEYWORDS="alpha amd64 hppa ia64 ~mips ppc ppc64 sparc x86"
 IUSE="cpusets +crypt doc drmaa kernel_linux munge server static-libs +syslog threads tk xml"
 
 # ed is used by makedepend-sh
-DEPEND_COMMON="sys-libs/ncurses
-	sys-libs/readline
+DEPEND_COMMON="
+	sys-libs/readline:0=
 	munge? ( sys-auth/munge )
-	tk? ( dev-lang/tk )
+	tk? (
+		dev-lang/tk:0=
+		dev-lang/tcl:0=
+	)
 	syslog? ( virtual/logger )
-	!games-util/qstat"
+	!!games-util/qstat"
 
+# libncurses.so is just needed so that configure will pass for the readline check
 DEPEND="${DEPEND_COMMON}
+	sys-libs/ncurses:*
 	sys-apps/ed
-	!sys-cluster/slurm"
+	!!sys-cluster/slurm"
 
 RDEPEND="${DEPEND_COMMON}
 	crypt? ( net-misc/openssh )
@@ -49,12 +54,11 @@ pkg_setup() {
 		fi
 	fi
 
-	USE_CPUSETS="--disable-cpuset"
 	if use cpusets; then
 		if ! use kernel_linux; then
 			einfo
 			elog "    Torque currently only has support for cpusets in linux."
-			elog "Assuming you didn't really want this USE flag."
+			elog "Assuming you didn't really want this USE flag and ignoring."
 			einfo
 		else
 			linux-info_pkg_setup
@@ -68,7 +72,6 @@ pkg_setup() {
 				elog "your kernel with CONFIG_CPUSETS enabled."
 				einfo
 			fi
-			USE_CPUSETS="--enable-cpuset"
 		fi
 	fi
 }
@@ -92,7 +95,6 @@ src_configure() {
 	local myeconfargs=( --with-rcp=mom_rcp )
 
 	use crypt && myeconfargs=( --with-rcp=scp )
-
 	myeconfargs+=(
 		$(use_enable tk gui)
 		$(use_enable tk tcl-qstat)
@@ -102,12 +104,12 @@ src_configure() {
 		$(use_enable threads high-availability)
 		$(use_enable xml server-xml)
 		$(use_enable munge munge-library)
+		$(usex kernel_linux $(use_enable cpusets cpuset) --disable-cpuset)
 		--with-server-home=${PBS_SERVER_HOME}
 		--with-environ=/etc/pbs_environment
 		--with-default-server=${PBS_SERVER_NAME}
 		--disable-gcc-warnings
 		--with-tcp-retry-limit=2
-		${USE_CPUSETS}
 		)
 	autotools-utils_src_configure
 }
