@@ -65,6 +65,9 @@ src_install() {
 
 	einstalldocs
 
+	dodoc example_tmux.conf
+	docompress -x /usr/share/doc/${PF}/example_tmux.conf
+
 	if use vim-syntax; then
 		insinto /usr/share/vim/vimfiles/ftdetect
 		doins "${FILESDIR}"/tmux.vim
