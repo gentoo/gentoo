@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -15,20 +15,28 @@ SRC_URI="http://www.adaptivecomputing.com/index.php?wpfb_dl=2849 -> ${P}.tar.gz"
 LICENSE="torque-2.5"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
-IUSE="cpusets +crypt doc drmaa kernel_linux munge nvidia server +syslog tk"
+IUSE="cpusets +crypt doc drmaa kernel_linux libressl munge nvidia server +syslog tk"
 
 DEPEND_COMMON="
-	sys-libs/ncurses
-	sys-libs/readline:*
+	sys-libs/zlib
+	sys-libs/readline:0=
+	dev-libs/libxml2
+	!libressl? ( dev-libs/openssl:0= )
+	libressl? ( dev-libs/libressl:0= )
 	cpusets? ( sys-apps/hwloc )
 	munge? ( sys-auth/munge )
 	nvidia? ( >=x11-drivers/nvidia-drivers-275 )
-	tk? ( dev-lang/tk:0 )
+	tk? (
+		dev-lang/tk:0=
+		dev-lang/tcl:0=
+	)
 	syslog? ( virtual/logger )
-	!games-util/qstat"
+	!!games-util/qstat"
 
+# libncurses.so is only needed for configure check on readline
 DEPEND="${DEPEND_COMMON}
-	!sys-cluster/slurm"
+	sys-libs/ncurses:*
+	!!sys-cluster/slurm"
 
 RDEPEND="${DEPEND_COMMON}
 	crypt? ( net-misc/openssh )
@@ -53,12 +61,11 @@ pkg_setup() {
 		fi
 	fi
 
-	USE_CPUSETS="--disable-cpuset"
 	if use cpusets; then
 		if ! use kernel_linux; then
 			einfo
 			elog "    Torque currently only has support for cpusets in linux."
-			elog "Assuming you didn't really want this USE flag."
+			elog "Assuming you didn't really want this USE flag and ignoring its state."
 			einfo
 		else
 			linux-info_pkg_setup
@@ -68,7 +75,6 @@ pkg_setup() {
 				elog "your kernel with CONFIG_CPUSETS enabled."
 				einfo
 			fi
-			USE_CPUSETS="--enable-cpuset"
 		fi
 	fi
 }
@@ -100,13 +106,13 @@ src_configure() {
 		$(use_enable drmaa) \
 		$(use_enable munge munge-auth) \
 		$(use_enable nvidia nvidia-gpus) \
+		$(usex kernel_linux $(use_enable cpusets cpuset) --disable-cpuset) \
 		--with-server-home=${PBS_SERVER_HOME} \
 		--with-environ=/etc/pbs_environment \
 		--with-default-server=${PBS_SERVER_NAME} \
 		--disable-gcc-warnings \
 		--with-tcp-retry-limit=2 \
 		--without-loadlibfile \
-		${USE_CPUSETS} \
 		${myconf}
 }
 
