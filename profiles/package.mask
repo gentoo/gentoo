@@ -30,6 +30,16 @@
 
 #--- END OF EXAMPLES ---
 
+# Patrice Clement <monsieurp@gentoo.org> (2 Jun 2016)
+# Ancient software (1996!). Unmaintained.
+# Masked for removal in 30 days.
+dev-util/weblint
+
+# Patrice Clement <monsieurp@gentoo.org> (2 Jun 2016)
+# Dead upstream. No release since 2009.
+# Masked for removal in 30 days.
+dev-util/osdt
+
 # Michael Palimaka <kensington@gentoo.org> (1 Jun 2016)
 # Ancient. Unused. Dead upstream. Masked for removal in 30 days.
 # Bug 584374.
