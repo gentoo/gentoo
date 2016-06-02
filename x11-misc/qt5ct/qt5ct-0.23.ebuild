@@ -12,8 +12,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64"
-DEPEND="${RDEPEND}
-	>=dev-qt/linguist-tools-5.4.0"
+DEPEND=">=dev-qt/linguist-tools-5.4.0"
 
 src_configure() {
 	eqmake5 ${PN}.pro
