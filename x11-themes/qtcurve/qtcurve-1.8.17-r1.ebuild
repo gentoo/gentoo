@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -12,7 +12,6 @@ HOMEPAGE="https://github.com/QtCurve/qtcurve"
 if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/QtCurve/qtcurve.git"
-	KEYWORDS="hppa"
 else
 	SRC_URI="https://github.com/QtCurve/${PN}/archive/${PV}.tar.gz  -> ${P}.tar.gz
 		https://github.com/QtCurve/${PN}/commit/69047935dd4a9549d238cbc457e9c3cfa37386ae.patch -> ${P}-old_config_file.patch"
