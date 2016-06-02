@@ -15,7 +15,7 @@ SRC_URI="https://launchpad.net/${PN}/${PV%.*}/${PV}/+download/${P}.tar.gz"
 
 LICENSE="LGPL-2.1 LGPL-3"
 SLOT="2"
-KEYWORDS="amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm x86"
 
 IUSE="+introspection python"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
