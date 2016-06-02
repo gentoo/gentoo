@@ -9,6 +9,9 @@
     <email>shell-tools@gentoo.org</email>
     <name>Gentoo Shell Tools Project</name>
   </maintainer>
+  <use>
+    <flag name="utempter">Include libutempter support</flag>
+  </use>
   <longdescription>
 		tmux is a "terminal multiplexer", it enables a number of terminals
 		(or windows) to be accessed and controlled from a single terminal.
