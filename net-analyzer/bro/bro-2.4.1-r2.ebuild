@@ -4,13 +4,13 @@
 
 EAPI=6
 
+PYTHON_REQ_USE="sqlite"
 PYTHON_COMPAT=( python2_7 )
 inherit cmake-utils python-single-r1
 
 DESCRIPTION="The Bro Network Security Monitor"
 HOMEPAGE="https://www.bro.org"
 SRC_URI="https://www.bro.org/downloads/release/${P}.tar.gz"
-
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
@@ -38,15 +38,11 @@ DEPEND="${RDEPEND}
 REQUIRED_USE="broker? ( python )
 	broctl? ( python )
 	python? ( ${PYTHON_REQUIRED_USE} )"
+PATCHES=( "${FILESDIR}/bro-2.4.1-remove-unnecessary-remove.patch"
+	"${FILESDIR}/bro-2.4.1-fix-python-install-dir.patch" )
 
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
-}
-
-src_prepare() {
-	eapply "${FILESDIR}/bro-2.4.1-remove-unnecessary-remove.patch"
-	eapply "${FILESDIR}/bro-2.4.1-fix-python-install-dir.patch"
-	eapply_user
 }
 
 src_configure() {

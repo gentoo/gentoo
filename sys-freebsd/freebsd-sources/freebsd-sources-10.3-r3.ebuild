@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -8,24 +8,15 @@ inherit bsdmk freebsd flag-o-matic toolchain-funcs
 
 DESCRIPTION="FreeBSD kernel sources"
 SLOT="0"
+LICENSE="BSD zfs? ( CDDL )"
 
 IUSE="+build-kernel debug dtrace zfs"
 
 # Security Advisory and Errata patches.
-UPSTREAM_PATCHES=( "SA-16:01/sctp.patch"
-	"SA-16:03/linux.patch"
-	"SA-16:04/linux.patch"
-	"SA-16:05/tcp.patch"
-	"SA-16:10/linux.patch"
-	"SA-16:15/sysarch.patch"
-	"SA-16:18/atkbd.patch"
+UPSTREAM_PATCHES=( "SA-16:18/atkbd.patch"
 	"SA-16:19/sendmsg.patch"
-	"EN-15:19/kqueue.patch"
-	"EN-15:20/vm.patch"
-	"EN-16:01/filemon.patch"
-	"EN-16:02/pf-10.2.patch"
-	"EN-16:04/hyperv.patch"
-	"EN-16:05/hv_netvsc.patch"
+	"SA-16:20/linux.patch"
+	"SA-16:21/stat.patch"
 	"EN-16:07/ipi.patch"
 	"EN-16:08/zfs.patch" )
 
