@@ -16948,7 +16948,7 @@ sys-devel/boost-m4 0.4 0.4-r1 0.4_p20160328: Another set of autoconf macros for 
 sys-devel/byfl 1.4 9999: Compiler-based Application Analysis
 sys-devel/clang 3.3-r100 3.4.2-r100 3.5.0-r100 3.5.2-r100 3.6.2-r100 3.7.1-r100 3.8.0-r100 9999-r100: C language family frontend for LLVM (meta-ebuild)
 sys-devel/cons 2.2.0: Extensible perl-based build utility
-sys-devel/crossdev 20150602 20150716 20151026 20151026-r1 99999999: Gentoo Cross-toolchain generator
+sys-devel/crossdev 20151026-r1 20160602 99999999: Gentoo Cross-toolchain generator
 sys-devel/ct-ng 1.21.0 1.22.0: crosstool-ng is a tool to build cross-compiling toolchains
 sys-devel/dev86 0.16.19 0.16.21 0.16.21-r2: Bruce's C compiler - Simple C compiler to generate 8086 code
 sys-devel/distcc 3.1-r10 3.2_rc1-r4: Distribute compilation of C code across several machines on a network
