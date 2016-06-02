@@ -77,12 +77,12 @@ src_configure() {
 		-DUSE_EXTERNAL_LCMS=ON
 		-DUSE_EXTERNAL_TINYXML=ON
 		-DUSE_EXTERNAL_YAML=ON
-		$(cmake-utils_use doc OCIO_BUILD_DOCS)
-		$(cmake-utils_use opengl OCIO_BUILD_APPS)
-		$(cmake-utils_use pdf OCIO_BUILD_PDF_DOCS)
-		$(cmake-utils_use python OCIO_BUILD_PYGLUE)
-		$(cmake-utils_use cpu_flags_x86_sse2 OCIO_USE_SSE)
-		$(cmake-utils_use test OCIO_BUILD_TESTS)
+		-DOCIO_BUILD_DOCS="$(usex doc)"
+		-DOCIO_BUILD_APPS="$(usex opengl)"
+		-DOCIO_BUILD_PDF_DOCS="$(usex pdf)"
+		-DOCIO_BUILD_PYGLUE="$(usex python)"
+		-DOCIO_USE_SSE="$(usex cpu_flags_x86_sse2)"
+		-DOCIO_BUILD_TESTS="$(usex test)"
 	)
 	cmake-utils_src_configure
 }
