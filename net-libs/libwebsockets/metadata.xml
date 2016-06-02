@@ -23,6 +23,5 @@
 		<flag name="http2">Support the HTTP/2 protocol</flag>
 		<flag name="libev">Support event loops via dev-libs/libev</flag>
 		<flag name="libuv">Support asynchronous I/O via dev-libs/libuv</flag>
-		<flag name="server">The server part of the library</flag>
 	</use>
 </pkgmetadata>
