@@ -1545,7 +1545,7 @@ app-i18n/pyzy 0.1.0 0.1.0-r1 0.1.0-r2: The Chinese PinYin and Bopomofo conversio
 app-i18n/qimhangul 0.2.0: a qt-based imhangul
 app-i18n/qkc 1.00: Quick KANJI code Converter
 app-i18n/rime-data 0.22 0.32 0.35: Data resources for Rime Input Method Engine
-app-i18n/scim 1.4.14 1.4.16: Smart Common Input Method (SCIM) is an Input Method (IM) development platform
+app-i18n/scim 1.4.14 1.4.16 1.4.17: Smart Common Input Method (SCIM) is an Input Method (IM) development platform
 app-i18n/scim-anthy 1.2.7-r1 1.3.1: Japanese input method Anthy IMEngine for SCIM
 app-i18n/scim-bridge 0.4.16-r2 0.4.16-r3: Yet another IM-client of SCIM
 app-i18n/scim-hangul 0.3.2 0.4.0: Hangul IMEngine for SCIM ported from imhangul
