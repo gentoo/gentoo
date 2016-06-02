@@ -18,6 +18,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Davide Pesavento <pesa@gentoo.org> (06 Jun 2016)
+# dev-qt/qtx11extras:5 not stable yet (bug 585228)
+media-video/vlc qt5
+x11-themes/qtcurve qt5
+
 # Ian Delaney <idella4@gentoo.org> (04 Jan 2016)
 # on behalf of Ilya Tumaykin <itumaykin+gentoo@gmail.com>
 # media-libs/libsdl2 wasn't stabilized in the past, but now
@@ -25,7 +30,7 @@
 =media-video/mpv-0.9.2-r1 sdl
 
 # Davide Pesavento <pesa@gentoo.org> (11 May 2015)
-# dev-qt/qtopenvg not yet stable
+# dev-qt/qtopenvg:4 won't be stabilized on this arch
 dev-qt/qtdemo openvg
 
 # Pacho Ramos <pacho@gentoo.org> (02 Jul 2014)
