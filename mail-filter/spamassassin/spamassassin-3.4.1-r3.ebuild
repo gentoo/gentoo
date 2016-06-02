@@ -184,10 +184,10 @@ EOF
 
 pkg_postinst() {
 	elog "If you plan on using the -u flag to spamd, please read the notes"
-	elog "in ${EROOT}/etc/conf.d/spamd regarding the location of the pid file."
+	elog "in ${EROOT%/}/etc/conf.d/spamd regarding the location of the pid file."
 	elog
 	elog "If you build ${PN} with optional dependancy support,"
-	elog "you can enable them in ${EROOT}/etc/mail/spamassassin/init.pre"
+	elog "you can enable them in ${EROOT%/}/etc/mail/spamassassin/init.pre"
 	elog
 	elog "You need to configure your database to be able to use Bayes filter"
 	elog "with database backend, otherwise it will still use (and need) the"
@@ -199,7 +199,7 @@ pkg_postinst() {
 	elog "including version 2.82 include a bug that will slow down the entire"
 	elog "perl interpreter.  Version 2.83 or later fixes this."
 	elog "If you do not plan to use this plugin, be sure to comment out"
-	elog "its loadplugin line in ${EROOT}/etc/mail/spamassassin/v310.pre."
+	elog "its loadplugin line in ${EROOT%/}/etc/mail/spamassassin/v310.pre."
 	elog
 	elog "The DKIM plugin is now enabled by default for new installs,"
 	elog "if the perl module Mail::DKIM is installed."
@@ -218,6 +218,6 @@ pkg_postinst() {
 	elog
 	elog "If you run sa-update and receive a GPG validation error."
 	elog "Then you need to import an updated sa-update key."
-	elog "sa-update --import ${EROOT}/usr/share/spamassassin/sa-update-pubkey.txt"
+	elog "sa-update --import ${EROOT%/}/usr/share/spamassassin/sa-update-pubkey.txt"
 	elog
 }
