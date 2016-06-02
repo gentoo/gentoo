@@ -1,10 +1,6 @@
-# Copyright 1999-2015 Gentoo Foundation.
+# Copyright 1999-2016 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
-
-# Davide Pesavento <pesa@gentoo.org> (26 Oct 2015)
-# Tests require non-keyworded qt5
-dev-qt/qtchooser test
 
 dev-libs/libpcre cxx
 sys-libs/ncurses cxx
