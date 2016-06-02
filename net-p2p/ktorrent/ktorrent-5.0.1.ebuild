@@ -96,7 +96,7 @@ RDEPEND="${COMMON_DEPEND}
 # 			-e "s:add_subdirectory(plasma):#nada:g" \
 # 			CMakeLists.txt || die "Failed to make plasmoid optional"
 # 	fi
-# 
+#
 # 	kde5_src_prepare
 # }
 
