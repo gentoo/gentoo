@@ -102,7 +102,7 @@ toolchain-glibc_src_install() {
 		has ${ldso_abi} $(get_install_abis) || continue
 
 		ldso_name="$(alt_prefix)${ldso_abi_list[i+1]}"
-		if [[ ! -L ${D}/${ldso_name} && ! -e ${D}/${ldso_name} ]] ; then
+		if [[ ! -L ${ED}/${ldso_name} && ! -e ${ED}/${ldso_name} ]] ; then
 			dosym ../$(get_abi_LIBDIR ${ldso_abi})/${ldso_name##*/} ${ldso_name}
 		fi
 	done
@@ -111,7 +111,7 @@ toolchain-glibc_src_install() {
 	# binary to be setuid.  This is because the default owners/perms will be
 	# exactly what we want.
 	if in_iuse suid && ! use suid ; then
-		find "${D}" -name pt_chown -exec chmod -s {} +
+		find "${ED}" -name pt_chown -exec chmod -s {} +
 	fi
 
 	#################################################################
