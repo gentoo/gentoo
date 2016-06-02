@@ -10,8 +10,7 @@ if [[ ${CATEGORY}/${PN} == sys-devel/gcc && ${EBUILD_PHASE} == configure ]]; the
     einfo "Prefixifying glibc dynamic linker..."
     for h in gcc/config/*/linux*.h; do
 	ebegin "  Updating $h"
-	sed -i -r "s,(GLIBC_DYNAMIC_LINKER.*\")(/lib),\1${EPREFIX}\2," \
-	    $h || eerror "Please file a bug about this"
+	sed -i -r "s,(GLIBC_DYNAMIC_LINKER.*\")(/lib),\1${EPREFIX}\2," $h
 	eend $?
     done
 
@@ -19,14 +18,13 @@ if [[ ${CATEGORY}/${PN} == sys-devel/gcc && ${EBUILD_PHASE} == configure ]]; the
     EXTRA_ECONF="${EXTRA_ECONF} --with-sysroot=${EPREFIX}"
 
     ebegin "remove --sysroot call on ld for native toolchain"
-    sed -i 's/--sysroot=%R//' \
-	gcc/gcc.c || eerror "Please file a bug about this"
+    sed -i 's/--sysroot=%R//' gcc/gcc.c
     eend $?
 elif [[ ${CATEGORY}/${PN} == sys-devel/binutils && ${EBUILD_PHASE} == prepare ]]; then
     cd "${S}"
     ebegin "Prefixifying native library path"
     sed -i -r "/NATIVE_LIB_DIRS/s,((/usr(/local|)|)/lib),${EPREFIX}\1,g" \
-	ld/configure.tgt || eerror "Please file a bug about this"
+	ld/configure.tgt
     eend $?
 elif [[ ${CATEGORY}/${PN} == sys-libs/glibc && ${EBUILD_PHASE} == configure ]]; then
     cd "${S}"
@@ -40,14 +38,13 @@ elif [[ ${CATEGORY}/${PN} == sys-libs/glibc && ${EBUILD_PHASE} == configure ]]; 
     do
 	ebegin "  Updating $f"
 	sed -i -r \
-	    -e "s,([:\"])/(etc|usr|bin|var),\1${EPREFIX}/\2,g" \
-	    $f || eerror "Please file a bug about this"
+	    -e "s,([:\"])/(etc|usr|bin|var),\1${EPREFIX}/\2,g" $f
 	eend $?
     done
     ebegin "  Updating nss/db-Makefile"
     sed -i -r \
 	-e "s,/(etc|var),${EPREFIX}/\1,g" \
-	nss/db-Makefile || eerror "Please file a bug about this"
+	nss/db-Makefile
     eend $?
 elif [[ ${CATEGORY}/${PN} == dev-lang/python && ${EBUILD_PHASE} == configure ]]; then
     # Guide h2py to look into glibc of Prefix
@@ -55,5 +52,11 @@ elif [[ ${CATEGORY}/${PN} == dev-lang/python && ${EBUILD_PHASE} == configure ]];
     export include="${EPREFIX}"/usr/include
     sed -i -r \
 	-e "s,/usr/include,\"${EPREFIX}\"/usr/include,g" "${S}"/Lib/plat-linux*/regen
+    eend $?
+elif [[ ${CATEGORY}/${PN} == sys-devel/make && ${EBUILD_PHASE} == prepare ]]; then
+    cd "${S}"
+    ebegin "Prefixifying default shell"
+    sed -i -r \
+	-e "/default_shell/s,\"(/bin/sh),\"${EPREFIX}\1," job.c
     eend $?
 fi
