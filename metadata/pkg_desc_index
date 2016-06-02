@@ -11586,7 +11586,7 @@ kde-misc/krecipes 2.0.0: A recipe application by KDE
 kde-misc/krename 4.0.9-r3: KRename - a very powerful batch file renamer
 kde-misc/krunner-googletranslate 0.1: Krunner plug-in for Google translate service
 kde-misc/krunner-kopete-contacts 0.4: A krunner plug-in that allows you to open conversation with your contact
-kde-misc/krusader 2.4.0_beta3-r1 2.4.0_beta3-r2: An advanced twin-panel (commander-style) file-manager for KDE with many extras
+kde-misc/krusader 2.4.0_beta3-r2: An advanced twin-panel (commander-style) file-manager for KDE with many extras
 kde-misc/kscreen 1.0.71_p20150824: Alternative KDE screen management
 kde-misc/kshutdown 3.2: A shutdown manager for KDE
 kde-misc/ksplasher 2.0_beta2-r2: A KSplashX engine (KDE4) Splash Screen Creator
@@ -16998,6 +16998,7 @@ sys-firmware/iwl6005-ucode 17.168.5.3 18.168.6.1: Intel (R) Wireless WiFi Advanc
 sys-firmware/iwl6030-ucode 17.168.5.2 18.168.6.1: Intel (R) Wireless WiFi Advanced N 6030 ucode
 sys-firmware/iwl6050-ucode 9.201.4.1 41.28.5.1: Intel (R) Wireless WiFi Link 6250-AGN ucode
 sys-firmware/iwl7260-ucode 0.7.1.22 0.8.15.22 0.8.24.22 0.9.214.23 0.9.228.25 0.10.11.23 0.10.15.23 0.12.16.25 0.12.17.25 0.13.30.25 0.15.227938 0.16.242414: Firmware for Intel (R) Dual Band Wireless-AC 7260
+sys-firmware/midisport-firmware 1.2: Firmware for M-Audio/Midiman USB MIDI devices
 sys-firmware/nvidia-firmware 325.15 340.32: Kernel and mesa firmware for nouveau (video accel and pgraph)
 sys-firmware/radeon-ucode 20150511 20160331 20160616: IRQ microcode for r6xx/r7xx/Evergreen/N.Islands/S.Islands Radeon GPUs and APUs
 sys-firmware/seabios 1.7.5 1.7.5-r1 1.8.2: Open Source implementation of a 16-bit x86 BIOS
@@ -17193,7 +17194,7 @@ sys-kernel/cryptodev 1.7: device that allows access to Linux kernel cryptographi
 sys-kernel/dracut 034-r4 040-r3 041-r3 043-r2 044: Generic initramfs generation tool
 sys-kernel/genkernel 3.4.45.1 3.4.48 3.4.49.2 3.4.50 3.4.51.4 3.4.52.2 3.4.52.3 3.4.52.4 3.4.52.4-r1 3.5.0.0 3.5.0.1 3.5.0.2 9999: Gentoo automatic kernel building scripts
 sys-kernel/genkernel-next 63 64: Gentoo automatic kernel building scripts, reloaded
-sys-kernel/gentoo-sources 3.4.110 3.4.111 3.4.112 3.4.9999 3.10.95 3.10.101 3.12.52-r1 3.12.57 3.12.58 3.12.59 3.12.60 3.12.9999 3.14.58-r1 3.14.69 3.14.70 3.18.25-r1 3.18.33 3.18.34 4.1.15-r1 4.1.24 4.1.25 4.4.6 4.4.7 4.4.8 4.4.9 4.4.10 4.4.11 4.5.0-r1 4.5.1 4.5.2 4.5.3 4.5.4 4.5.5 4.6.0: Full sources including the Gentoo patchset for the 4.6 kernel tree
+sys-kernel/gentoo-sources 3.4.110 3.4.111 3.4.112 3.4.9999 3.10.95 3.10.101 3.12.52-r1 3.12.57 3.12.58 3.12.59 3.12.60 3.12.9999 3.14.58-r1 3.14.69 3.14.70 3.14.71 3.18.25-r1 3.18.33 3.18.34 4.1.15-r1 4.1.24 4.1.25 4.4.6 4.4.7 4.4.8 4.4.9 4.4.10 4.4.11 4.5.0-r1 4.5.1 4.5.2 4.5.3 4.5.4 4.5.5 4.6.0: Full sources including the Gentoo patchset for the 4.6 kernel tree
 sys-kernel/git-sources 4.7_rc1: The very latest -git version of the Linux kernel
 sys-kernel/hardened-sources 4.3.3-r4 4.4.2 4.4.8-r1 4.5.5-r1 4.5.5-r2: Hardened kernel sources (kernel series 4.5)
 sys-kernel/kccmp 0.3: A simple tool for comparing two linux kernel .config files
