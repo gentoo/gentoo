@@ -17243,7 +17243,7 @@ sys-libs/libcxxrt 0.0_p20140322 0.0_p20150423 9999: C++ Runtime from PathScale, 
 sys-libs/libfaketime 0.9.6-r1: Report faked system time to programs
 sys-libs/libfreevec 1.0.4: Altivec enabled libc memory function
 sys-libs/libhugetlbfs 2.18 2.19 2.19-r1 2.20: easy hugepage access
-sys-libs/libhx 3.16 3.22: Platform independent library providing basic system functions
+sys-libs/libhx 3.16 3.22 3.22-r1: Platform independent library providing basic system functions
 sys-libs/libieee1284 0.2.11-r3: Library to query devices using IEEE1284
 sys-libs/libixp 0.5_p20110208-r3: A stand-alone client/server 9P library including ixpc client
 sys-libs/libkudzu 1.2.57.1: Red Hat Hardware detection tools
