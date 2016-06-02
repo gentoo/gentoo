@@ -2,28 +2,26 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python{2_7,3_3,3_4} )
 PYTHON_REQ_USE="threads,xml"
 
-inherit eutils fdo-mime linux-info python-single-r1 udev autotools toolchain-funcs
+inherit eutils linux-info python-single-r1 readme.gentoo-r1 udev autotools
 
 DESCRIPTION="HP Linux Imaging and Printing - Print, scan, fax drivers and service tools"
 HOMEPAGE="http://hplipopensource.com/hplip-web/index.html"
 SRC_URI="mirror://sourceforge/hplip/${P}.tar.gz
-		https://dev.gentoo.org/~billie/distfiles/${PN}-3.14.10-patches-1.tar.xz"
+		https://dev.gentoo.org/~billie/distfiles/${PN}-3.16.5-patches-1.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 arm ppc ppc64 x86"
+KEYWORDS="~amd64 ~arm ~x86"
 
-# zeroconf does not work properly with >=cups-1.4.
-# Thus support for it is also disabled in hplip.
-IUSE="doc fax +hpcups hpijs kde libnotify -libusb0 minimal parport policykit qt4 scanner snmp static-ppds X"
+IUSE="doc fax +hpcups hpijs kde -libusb0 minimal parport policykit +qt4 qt5 scanner +snmp static-ppds X"
 
-# TODO: check if net-print/cups, net-analyzer/net-snmp
-# are migrated to python-r1
+# dependency on dev-python/notify-python dropped due to python 3 incompatibility
+# possible replacement notify2 (https://pypi.python.org/pypi/notify2/0.3) not in tree
 
 COMMON_DEPEND="
 	virtual/jpeg:0
@@ -48,43 +46,44 @@ DEPEND="${COMMON_DEPEND}
 
 RDEPEND="${COMMON_DEPEND}
 	>=app-text/ghostscript-gpl-8.71-r3
-	policykit? (
-		sys-auth/polkit
-	)
+	policykit? ( sys-auth/polkit )
 	!minimal? (
-		>=dev-python/dbus-python-1.1.1-r1[${PYTHON_USEDEP}]
-		>=dev-python/pygobject-2.28.6-r53:2[${PYTHON_USEDEP}]
-		kernel_linux? ( virtual/udev !<sys-fs/udev-114 )
+		>=dev-python/dbus-python-1.2.0-r1[${PYTHON_USEDEP}]
+		dev-python/pygobject[${PYTHON_USEDEP}]
+		kernel_linux? ( virtual/udev )
 		scanner? (
-			>=dev-python/reportlab-2.6[${PYTHON_USEDEP}]
-			>=dev-python/pillow-1[${PYTHON_USEDEP}]
+			>=dev-python/reportlab-3.1.44-r2[${PYTHON_USEDEP}]
+			>=dev-python/pillow-3.1.1[${PYTHON_USEDEP}]
 			X? ( || (
 				kde? ( kde-misc/skanlite )
 				media-gfx/xsane
 				media-gfx/sane-frontends
 			) )
 		)
-		fax? (
-			>=dev-python/reportlab-2.6[${PYTHON_USEDEP}]
-			>=dev-python/dbus-python-1.1.1-r1[${PYTHON_USEDEP}]
-		)
-		qt4? (
-			>=dev-python/PyQt4-4.9.6-r2[dbus,X,${PYTHON_USEDEP}]
-			libnotify? (
-				>=dev-python/notify-python-0.1.1-r3[${PYTHON_USEDEP}]
-			)
-		)
+		fax? ( >=dev-python/reportlab-3.1.44-r2[${PYTHON_USEDEP}] )
+		qt4? ( >=dev-python/PyQt4-4.11.1[dbus,X,${PYTHON_USEDEP}] )
+		qt5? ( >=dev-python/PyQt5-5.5.1[dbus,gui,${PYTHON_USEDEP}] )
 	)"
 
-REQUIRED_USE="!minimal? ( ${PYTHON_REQUIRED_USE} )"
+REQUIRED_USE="!minimal? ( ${PYTHON_REQUIRED_USE} )
+	^^ ( qt4 qt5 )"
 
 CONFIG_CHECK="~PARPORT ~PPDEV"
 ERROR_PARPORT="Please make sure kernel parallel port support is enabled (PARPORT and PPDEV)."
 
+#DISABLE_AUTOFORMATTING="yes"
+DOC_CONTENTS="
+For more information on setting up your printer please take
+a look at the hplip section of the gentoo printing guide:
+https://wiki.gentoo.org/wiki/Printing
+
+Any user who wants to print must be in the lp group.
+"
+
 pkg_setup() {
 	use !minimal && python-single-r1_pkg_setup
 
-	! use qt4 && ewarn "You need USE=qt4 for the hplip GUI."
+	! use qt4 && ! use qt5 && ewarn "You need USE=qt4 or USE=qt5 for the hplip GUI."
 
 	use scanner && ! use X && ewarn "You need USE=X for the scanner GUI."
 
@@ -104,14 +103,14 @@ pkg_setup() {
 }
 
 src_prepare() {
+	eapply "${WORKDIR}/patches"
+
+	default
+
 	if use !minimal ; then
 		python_export EPYTHON PYTHON
 		python_fix_shebang .
 	fi
-
-	EPATCH_SUFFIX="patch" \
-	EPATCH_FORCE="yes" \
-	epatch "${WORKDIR}"
 
 	# Make desktop files follow the specification
 	# Gentoo bug: https://bugs.gentoo.org/show_bug.cgi?id=443680
@@ -150,7 +149,13 @@ src_prepare() {
 src_configure() {
 	local myconf drv_build minimal_build
 
-	if use fax || use qt4 ; then
+	if use qt4 || use qt5 ; then
+		myconf="${myconf} --enable-gui-build"
+	else
+		myconf="${myconf} --disable-gui-build"
+	fi
+
+	if use fax ||  use qt4 || use qt5 ; then
 		myconf="${myconf} --enable-dbus-build"
 	else
 		myconf="${myconf} --disable-dbus-build"
@@ -224,8 +229,8 @@ src_configure() {
 		$(use_enable parport pp-build) \
 		$(use_enable scanner scan-build) \
 		$(use_enable snmp network-build) \
-		$(use_enable qt4 gui-build) \
 		$(use_enable qt4) \
+		$(use_enable qt5) \
 		$(use_enable policykit)
 }
 
@@ -248,19 +253,10 @@ src_install() {
 		python_export EPYTHON PYTHON
 		python_optimize "${D}"/usr/share/hplip
 	fi
+
+	readme.gentoo_create_doc
 }
 
 pkg_postinst() {
-	if [[ -z "${REPLACING_VERSIONS}" ]]; then
-		elog "For more information on setting up your printer please take"
-		elog "a look at the hplip section of the gentoo printing guide:"
-		elog "https://wiki.gentoo.org/wiki/Printing"
-		elog
-		elog "Any user who wants to print must be in the lp group."
-		elog
-		elog "Please note: Printers requiring a binary plugin are currently"
-		elog "not supported. All bugs regarding the plugin are most likely"
-		elog "closed. A bug about including the plugin package to gentoo is"
-		elog "available here: https://bugs.gentoo.org/352439"
-	fi
+	readme.gentoo_print_elog
 }
