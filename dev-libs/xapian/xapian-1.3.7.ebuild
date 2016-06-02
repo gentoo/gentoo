@@ -13,7 +13,7 @@ HOMEPAGE="http://www.xapian.org/"
 SRC_URI="http://oligarchy.co.uk/xapian/${PV}/${MY_P}.tar.xz"
 
 LICENSE="GPL-2"
-SLOT="0/1.3.7" # ABI version of libxapian-1.3.so, prefixed with 1.3.
+SLOT="0/1.3.8" # ABI version of libxapian-1.3.so, prefixed with 1.3.
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
 IUSE="doc static-libs -cpu_flags_x86_sse +cpu_flags_x86_sse2 +brass +chert +inmemory"
 
