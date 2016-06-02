@@ -27,7 +27,7 @@ alt_headers() {
 }
 alt_build_headers() {
 	if [[ -z ${ALT_BUILD_HEADERS} ]] ; then
-		ALT_BUILD_HEADERS=$(alt_headers)
+		ALT_BUILD_HEADERS="${EPREFIX}$(alt_headers)"
 		if tc-is-cross-compiler ; then
 			ALT_BUILD_HEADERS=${SYSROOT}$(alt_headers)
 			if [[ ! -e ${ALT_BUILD_HEADERS}/linux/version.h ]] ; then

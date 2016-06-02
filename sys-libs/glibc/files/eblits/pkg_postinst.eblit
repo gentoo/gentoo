@@ -6,9 +6,9 @@ eblit-glibc-pkg_postinst() {
 	# nothing to do if just installing headers
 	just_headers && return
 
-	if ! tc-is-cross-compiler && [[ -x ${ROOT}/usr/sbin/iconvconfig ]] ; then
+	if ! tc-is-cross-compiler && [[ -x ${EROOT}/usr/sbin/iconvconfig ]] ; then
 		# Generate fastloading iconv module configuration file.
-		"${ROOT}"/usr/sbin/iconvconfig --prefix="${ROOT}"
+		"${EROOT}"/usr/sbin/iconvconfig --prefix="${ROOT}"
 	fi
 
 	if ! is_crosscompile && [[ ${ROOT} == "/" ]] ; then
@@ -17,10 +17,10 @@ eblit-glibc-pkg_postinst() {
 		/sbin/telinit U 2>/dev/null
 
 		# if the host locales.gen contains no entries, we'll install everything
-		local locale_list="${ROOT}etc/locale.gen"
+		local locale_list="${EROOT}etc/locale.gen"
 		if [[ -z $(locale-gen --list --config "${locale_list}") ]] ; then
 			ewarn "Generating all locales; edit /etc/locale.gen to save time/space"
-			locale_list="${ROOT}usr/share/i18n/SUPPORTED"
+			locale_list="${EROOT}usr/share/i18n/SUPPORTED"
 		fi
 		locale-gen -j $(makeopts_jobs) --config "${locale_list}"
 	fi
