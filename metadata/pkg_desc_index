@@ -12394,7 +12394,7 @@ media-libs/grilo 0.2.12 0.2.14 0.2.15: A framework for easy media discovery and 
 media-libs/gsound 1.0.1 1.0.2: Thin GObject wrapper around the libcanberra sound event library
 media-libs/gst-plugins-bad 0.10.23-r3 1.4.5 1.6.3: Less plugins for GStreamer
 media-libs/gst-plugins-base 0.10.36-r2 1.4.5 1.6.1 1.6.2 1.6.3: Basepack of plugins for gstreamer
-media-libs/gst-plugins-good 0.10.31-r1 1.4.5 1.6.1 1.6.2 1.6.3: Basepack of plugins for GStreamer
+media-libs/gst-plugins-good 0.10.31-r1 0.10.31-r2 1.4.5 1.6.1 1.6.2 1.6.3: Basepack of plugins for GStreamer
 media-libs/gst-plugins-ugly 0.10.19-r1 1.4.5 1.6.1 1.6.2 1.6.3: Basepack of plugins for gstreamer
 media-libs/gst-rtsp-server 0.10.8-r1 1.4.5 1.6.2: A GStreamer based RTSP server
 media-libs/gstreamer 0.10.36-r2 1.4.5 1.6.3: Open source multimedia framework
