@@ -1840,13 +1840,11 @@ dev-lang/moarvm:asan - Enable clang's Address Sanitizer functionality. Expect lo
 dev-lang/moarvm:clang - Use clang compiler instead of GCC
 dev-lang/moarvm:jit - Enable Just-In-Time-Compiler. Has no effect except on AMD64 and Darwin.
 dev-lang/moarvm:optimize - Enable optimization via CFLAGS
-dev-lang/moarvm:system-libs - Link against the system's shared libraries
 dev-lang/moarvm:ubsan - Enable clang's Undefined Behavior Sanitizer functionality. Expect longer compile time.
 dev-lang/mono:pax_kernel - Enable if the user plans to run the package under a pax enabled hardened kernel
 dev-lang/mono:xen - Make mono generate code that is considerably faster on xen VMs but slightly slower on for normal systems.
 dev-lang/nqp:clang - Toggle usage of the clang compiler in conjunction with MoarVM
 dev-lang/nqp:moar - Build the MoarVM backend (experimental/broken)
-dev-lang/nqp:system-libs - Use jars provided by the system instead of upstream
 dev-lang/ocaml:flambda - Enables the Flambda optimizer: A new intermediate representation (introduced in ocaml 4.03) in the depths of the compiler designed to allow for better inlining.
 dev-lang/orc:pax_kernel - Apply patch needed for pax enabled kernels.
 dev-lang/perl:ithreads - Enable Perl threads, has some compatibility problems

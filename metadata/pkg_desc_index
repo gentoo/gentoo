@@ -4383,7 +4383,7 @@ dev-lang/mercury 11.01 11.07 11.07.1 11.07.2 13.05 13.05.1 13.05.2: Mercury is a
 dev-lang/mercury-extras 11.01 11.07 11.07.1 11.07.2 13.05 13.05.1 13.05.2: Additional libraries and tools that are not part of the Mercury standard library
 dev-lang/mlton 20130715: Standard ML optimizing compiler and libraries
 dev-lang/mmix 20131017: Donald Knuth's MMIX Assembler and Simulator
-dev-lang/moarvm 2016.01-r1 2016.02 2016.03 2016.04 2016.04-r1 9999: A 6model-based VM for NQP and Rakudo Perl 6
+dev-lang/moarvm 2016.03 2016.04 2016.04-r2 2016.05 9999: A 6model-based VM for NQP and Rakudo Perl 6
 dev-lang/mono 2.10.9-r2 3.12.1 4.0.5.1 4.4.0.40 4.4.0.148: Mono runtime and class libraries, a C# compiler/interpreter
 dev-lang/mono-basic 2.10: Visual Basic .NET Runtime and Class Libraries
 dev-lang/mozart 1.4.0-r3: Advanced development platform for intelligent, distributed applications
@@ -4391,7 +4391,7 @@ dev-lang/mozart-stdlib 1.4.0-r1: The Mozart Standard Library
 dev-lang/mujs 0_p20150202 0_p20160504: lightweight Javascript interpreter
 dev-lang/nasm 2.11.08 2.12.01: groovy little assembler
 dev-lang/nqc 3.1_p6: Not Quite C - C-like compiler for Lego Mindstorms
-dev-lang/nqp 2016.01 2016.02 2016.03 2016.04 2016.04-r2 9999: Not Quite Perl, a Perl 6 bootstrapping compiler
+dev-lang/nqp 2016.03 2016.04 2016.04-r3 2016.05 9999: Not Quite Perl, a Perl 6 bootstrapping compiler
 dev-lang/nwcc 0.8.2 0.8.3: Nils Weller's C Compiler
 dev-lang/ocaml 3.12.1 4.02.3 4.02.3-r1 4.03.0: Fast modern type-inferring functional programming language descended from the ML family
 dev-lang/open-cobol 1.1: an open-source COBOL compiler
@@ -4408,7 +4408,7 @@ dev-lang/polyml 5.4.1 5.5.0 5.5.1 5.5.2: Poly/ML is a full implementation of Sta
 dev-lang/python 2.7.10-r1 2.7.11-r2 3.3.5-r3 3.3.5-r8 3.4.3-r1 3.4.3-r7 3.5.0-r2 3.5.1-r2: An interpreted, interactive, object-oriented programming language
 dev-lang/python-exec 2.0.1-r1 2.0.2 2.1 2.4.3 9999: Python script wrapper
 dev-lang/qu-prolog 9.1 9.1-r1 9.5 9.6 9.7: Extended Prolog supporting quantifiers, object-variables and substitutions
-dev-lang/rakudo 2016.01.1 2016.02 2016.03 2016.04 2016.04-r1 9999: A compiler for the Perl 6 programming language
+dev-lang/rakudo 2016.03 2016.04 2016.04-r2 2016.05 9999: A compiler for the Perl 6 programming language
 dev-lang/rebol 9999: Relative Expression-Based Object Language
 dev-lang/rebol-bin 3_pre111: Relative Expression-Based Object Language
 dev-lang/regina-rexx 3.6-r3 3.9.1-r1: Portable Rexx interpreter
