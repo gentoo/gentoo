@@ -61,7 +61,7 @@ src_configure() {
 		$(use_with png) \
 		$(use_with tiff) \
 		--with-rcdir=no \
- 		--with-browseremoteprotocols=DNSSD,CUPS \
+		--with-browseremoteprotocols=DNSSD,CUPS \
 		--without-php
 }
 
