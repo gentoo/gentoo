@@ -24,7 +24,8 @@ SLOT="0"
 IUSE="clang java +moar test"
 REQUIRED_USE="|| ( java moar )"
 
-CDEPEND="~dev-lang/nqp-${PV}:${SLOT}=[java?,moar?,clang=]"
+CDEPEND="~dev-lang/nqp-${PV}:${SLOT}=[java?,moar?,clang=]
+	>=dev-lang/nqp-2016.04-r3"
 RDEPEND="${CDEPEND}
 	java? ( >=virtual/jre-1.7 )"
 DEPEND="${CDEPEND}
@@ -32,7 +33,10 @@ DEPEND="${CDEPEND}
 	java? ( >=virtual/jdk-1.7 )
 	>=dev-lang/perl-5.10"
 
-PATCHES=( "${FILESDIR}/${PN}-2016.04-jna-lib.patch" )
+PATCHES=(
+	"${FILESDIR}/${PN}-2016.04-Makefile.in.patch"
+	"${FILESDIR}/${P}-jna-lib.patch"
+)
 
 pkg_pretend() {
 	if has_version dev-lang/rakudo; then

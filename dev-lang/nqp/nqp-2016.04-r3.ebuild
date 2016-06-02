@@ -36,6 +36,7 @@ DEPEND="${CDEPEND}
 	clang? ( sys-devel/clang )
 	java? ( >=virtual/jdk-1.7 )
 	dev-lang/perl"
+PATCHES=( "${FILESDIR}/enable-external-jars.patch" )
 
 pkg_pretend() {
 	if has_version dev-lang/rakudo || has_version dev-lang/nqp; then

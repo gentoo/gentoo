@@ -34,6 +34,7 @@ DEPEND="${RDEPEND}
 	clang? ( >=sys-devel/clang-3.1 )
 	dev-lang/perl"
 
+PATCHES=( "${FILESDIR}/Configure-2016.04.patch" )
 DOCS=( CREDITS README.markdown )
 
 # Tests are conducted via nqp
