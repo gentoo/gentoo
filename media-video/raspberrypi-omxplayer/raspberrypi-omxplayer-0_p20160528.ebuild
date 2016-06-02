@@ -34,11 +34,11 @@ DEPEND="${RDEPEND}
 S="${WORKDIR}/popcornmix-omxplayer-${GIT_COMMIT}"
 
 src_prepare() {
-	epatch "${FILESDIR}"/Makefile-0_p20160217.patch \
+	epatch "${FILESDIR}"/Makefile-0_p20160528.patch \
 		"${FILESDIR}"/fonts-path.patch
 
 	cat > Makefile.include << EOF
-LIBS=-lvchiq_arm -lvcos -lbcm_host -lEGL -lGLESv2 -lopenmaxil -lrt -lpthread
+LIBS=-lvchostif -lvchiq_arm -lvcos -lbcm_host -lEGL -lGLESv2 -lopenmaxil -lrt -lpthread
 EOF
 
 	tc-export CXX
