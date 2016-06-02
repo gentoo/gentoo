@@ -1,8 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="4"
+EAPI="5"
+inherit eutils
 
 if [[ ${PV} == "99999999" ]] ; then
 	EGIT_REPO_URI="git://anongit.gentoo.org/proj/crossdev.git"
@@ -25,8 +26,13 @@ IUSE=""
 RDEPEND=">=sys-apps/portage-2.1
 	>=app-portage/portage-utils-0.55
 	app-shells/bash
+	sys-apps/gentoo-functions
 	!sys-devel/crossdev-wrappers"
 DEPEND="app-arch/xz-utils"
+
+src_prepare() {
+	epatch "${FILESDIR}"/use-new-path-for-functions.sh.patch
+}
 
 src_install() {
 	default
