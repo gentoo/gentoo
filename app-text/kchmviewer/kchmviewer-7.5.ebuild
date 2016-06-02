@@ -17,7 +17,7 @@ IUSE="qt5"
 
 RDEPEND="
 	dev-libs/chmlib
-	dev-libs/libzip
+	dev-libs/libzip:=
 	qt5? (
 		dev-qt/qtcore:5
 		dev-qt/qtdbus:5

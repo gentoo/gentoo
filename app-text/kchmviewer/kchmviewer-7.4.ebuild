@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -17,7 +17,7 @@ IUSE="debug qt5"
 
 RDEPEND="
 	dev-libs/chmlib
-	dev-libs/libzip
+	dev-libs/libzip:=
 	qt5? (
 		dev-qt/qtcore:5
 		dev-qt/qtdbus:5
