@@ -6,7 +6,7 @@ EAPI=6
 
 if [[ ${PV} != *9999* ]]; then
 	SRC_URI="https://gstreamer.freedesktop.org/src/${PN}/${P}.tar.xz"
-	KEYWORDS="amd64 ~arm ~ppc ~ppc64 ~x86"
+	KEYWORDS="amd64 ~arm ~ppc ~ppc64 x86"
 else
 	EGIT_REPO_URI=( "git://anongit.freedesktop.org/gstreamer/${PN}" )
 	inherit git-r3
