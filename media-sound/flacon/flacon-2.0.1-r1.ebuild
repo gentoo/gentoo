@@ -7,20 +7,20 @@ EAPI=6
 # Ignore rudimentary et, uz@Latn, zh_TW translation(s).
 PLOCALES="cs cs_CZ de es es_MX fr gl hu it ja_JP lt nb pl pl_PL pt_BR pt_PT ro_RO ru sr tr uk zh_CN"
 
-inherit cmake-utils fdo-mime gnome2-utils l10n virtualx git-r3
+inherit cmake-utils fdo-mime gnome2-utils l10n virtualx
 
 DESCRIPTION="Extracts audio tracks from an audio CD image to separate tracks"
 HOMEPAGE="https://flacon.github.io/"
-EGIT_REPO_URI="git://github.com/${PN}/${PN}.git"
+SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1+"
 SLOT="0"
-KEYWORDS=""
-IUSE="aac flac mac mp3 opus qt4 qt5 replaygain test tta vorbis wavpack"
+KEYWORDS="~amd64 ~x86"
+IUSE="aac flac mac mp3 opus qt5 replaygain test tta vorbis wavpack"
 
 COMMON_DEPEND="
 	dev-libs/uchardet
-	qt4? (
+	!qt5? (
 		dev-qt/qtcore:4
 		dev-qt/qtgui:4
 	)
@@ -49,12 +49,12 @@ DEPEND="${COMMON_DEPEND}
 	virtual/pkgconfig
 	qt5? ( dev-qt/linguist-tools:5 )
 	test? (
-		qt4? ( dev-qt/qttest:4 )
+		media-sound/shntool
+		virtual/ffmpeg
+		!qt5? ( dev-qt/qttest:4 )
 		qt5? ( dev-qt/qttest:5 )
 	)
 "
-
-REQUIRED_USE="^^ ( qt4 qt5 )"
 
 src_prepare() {
 	cmake-utils_src_prepare
@@ -73,7 +73,7 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
-		-DUSE_QT4="$(usex qt4)"
+		-DUSE_QT4="$(usex !qt5)"
 		-DUSE_QT5="$(usex qt5)"
 		-DTEST_DATA_DIR="${S}/tests/data/"
 		-DBUILD_TESTS="$(usex test 'Yes')"
