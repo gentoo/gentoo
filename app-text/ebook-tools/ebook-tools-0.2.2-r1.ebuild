@@ -17,7 +17,7 @@ IUSE="+lit2epub"
 
 DEPEND="
 	dev-libs/libxml2
-	dev-libs/libzip
+	dev-libs/libzip:=
 "
 RDEPEND="${DEPEND}
 	lit2epub? ( app-text/convertlit	)
