@@ -9,7 +9,7 @@ inherit kde5
 
 DESCRIPTION="KDE menu editor"
 HOMEPAGE="https://projects.kde.org/projects/kde/workspace/kmenuedit"
-KEYWORDS="amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm x86"
 IUSE="+hotkeys"
 
 DEPEND="

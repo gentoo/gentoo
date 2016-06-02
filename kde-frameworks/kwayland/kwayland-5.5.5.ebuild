@@ -12,7 +12,7 @@ HOMEPAGE="https://projects.kde.org/projects/kde/workspace/kwayland"
 SRC_URI="mirror://kde/stable/plasma/${PV}/${P}.tar.xz"
 
 LICENSE="LGPL-2.1"
-KEYWORDS="amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm x86"
 IUSE=""
 
 DEPEND="

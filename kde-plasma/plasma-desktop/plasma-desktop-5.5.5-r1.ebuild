@@ -11,7 +11,7 @@ VIRTUALX_REQUIRED="test"
 inherit kde5
 
 DESCRIPTION="KDE Plasma desktop"
-KEYWORDS="amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm x86"
 IUSE="+evdev +fontconfig gtk2 gtk3 legacy-systray pulseaudio +qt4 touchpad"
 
 COMMON_DEPEND="
