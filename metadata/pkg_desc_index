@@ -12634,7 +12634,7 @@ media-libs/pyliblo 0.10.0: A Python wrapper for the liblo OSC library
 media-libs/pymemphis 0.2.1: Python bindings for the libmemphis library
 media-libs/qhull 2012.1-r1 2012.1-r3 2012.1-r4: Geometry library
 media-libs/qimageblitz 0.0.6-r1 0.0.6-r2: Graphical effect and filter library by KDE
-media-libs/qt-gstreamer 1.2.0-r1 1.2.0-r2: C++ bindings for GStreamer with a Qt-style API
+media-libs/qt-gstreamer 1.2.0-r2: C++ bindings for GStreamer with a Qt-style API
 media-libs/quarter 1.0.0-r1: A glue between Nokia Qt4 and Coin3D
 media-libs/quesoglc 0.7.2: A free implementation of the OpenGL Character Renderer (GLC)
 media-libs/quvi 0.2.19 0.4.2 0.9.4 0.9.5: A command line tool for parsing video download links
