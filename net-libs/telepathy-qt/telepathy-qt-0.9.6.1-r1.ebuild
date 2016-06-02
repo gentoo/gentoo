@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 inherit python-any-r1 cmake-utils virtualx multibuild
@@ -13,7 +13,7 @@ SRC_URI="https://telepathy.freedesktop.org/releases/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="amd64 ~arm x86"
+KEYWORDS="~amd64 ~arm ~x86"
 IUSE="debug farstream +qt4 qt5 test"
 
 REQUIRED_USE="|| ( qt4 qt5 )"
@@ -55,7 +55,13 @@ PATCHES=(
 	"${FILESDIR}/${P}-yes-release.patch"
 	"${FILESDIR}/${P}-gstreamer-1.5.patch"
 	"${FILESDIR}/${P}-qtpath.patch"
+	"${FILESDIR}/${P}-python.patch"
+	"${FILESDIR}/${P}-includes.patch"
+	"${FILESDIR}/${P}-service-dependencies.patch"
 )
+
+# bug 549448 - last checked with 0.9.6.1
+RESTRICT="test"
 
 pkg_setup() {
 	python-any-r1_pkg_setup
@@ -66,16 +72,16 @@ pkg_setup() {
 src_configure() {
 	myconfigure() {
 		local mycmakeargs=(
-			$(cmake-utils_use_enable debug DEBUG_OUTPUT)
-			$(cmake-utils_use_enable farstream)
-			$(cmake-utils_use_enable test TESTS)
+			-DENABLE_DEBUG_OUTPUT=$(usex debug)
+			-DENABLE_FARSTREAM=$(usex farstream)
+			-DENABLE_TESTS=$(usex test)
 			-DENABLE_EXAMPLES=OFF
 		)
 		if [[ ${MULTIBUILD_VARIANT} = qt4 ]]; then
-			mycmakeargs+=(-DDESIRED_QT_VERSION=4)
+			mycmakeargs+=( -DDESIRED_QT_VERSION=4 )
 		fi
 		if [[ ${MULTIBUILD_VARIANT} = qt5 ]]; then
-			mycmakeargs+=(-DDESIRED_QT_VERSION=5)
+			mycmakeargs+=( -DDESIRED_QT_VERSION=5 )
 		fi
 		cmake-utils_src_configure
 	}
@@ -88,10 +94,14 @@ src_compile() {
 }
 
 src_test() {
+	_test_runner() {
+		ctest -E '(CallChannel)'
+	}
+
 	mytest() {
-		pushd "${BUILD_DIR}" > /dev/null
-		VIRTUALX_COMMAND="ctest -E '(CallChannel)'" virtualmake || die "tests failed"
-		popd > /dev/null
+		pushd "${BUILD_DIR}" > /dev/null || die
+		virtx _test_runner
+		popd > /dev/null || die
 	}
 
 	multibuild_foreach_variant mytest
