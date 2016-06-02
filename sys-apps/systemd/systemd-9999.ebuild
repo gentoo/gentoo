@@ -8,19 +8,21 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/systemd/systemd.git"
 	inherit git-r3
 else
-	SRC_URI="https://github.com/systemd/systemd/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/systemd/systemd/archive/v${PV}.tar.gz -> ${P}.tar.gz
+		!doc? ( https://dev.gentoo.org/~floppym/dist/${P}-man.tar.gz )"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 fi
 
-inherit autotools bash-completion-r1 linux-info \
-	multilib-minimal pam systemd toolchain-funcs udev user
+PYTHON_COMPAT=( python{2_7,3_3,3_4,3_5} )
+
+inherit autotools bash-completion-r1 linux-info  multilib-minimal pam python-any-r1 systemd toolchain-funcs udev user
 
 DESCRIPTION="System and service manager for Linux"
 HOMEPAGE="https://www.freedesktop.org/wiki/Software/systemd"
 
 LICENSE="GPL-2 LGPL-2.1 MIT public-domain"
 SLOT="0/2"
-IUSE="acl apparmor audit cryptsetup curl elfutils +gcrypt gnuefi http
+IUSE="acl apparmor audit cryptsetup curl doc elfutils +gcrypt gnuefi http
 	idn importd +kdbus +kmod +lz4 lzma nat pam policykit
 	qrcode +seccomp selinux ssl sysv-utils test vanilla xkb"
 
@@ -93,7 +95,12 @@ DEPEND="${COMMON_DEPEND}
 	app-text/docbook-xml-dtd:4.5
 	app-text/docbook-xsl-stylesheets
 	dev-libs/libxslt:0
+	doc? ( $(python_gen_any_dep 'dev-python/lxml[${PYTHON_USEDEP}]') )
 "
+
+python_check_deps() {
+	has_version --host-root "dev-python/lxml[${PYTHON_USEDEP}]"
+}
 
 pkg_pretend() {
 	local CONFIG_CHECK="~AUTOFS4_FS ~BLK_DEV_BSG ~CGROUPS
@@ -166,6 +173,8 @@ src_configure() {
 	# Prevent conflicts with i686 cross toolchain, bug 559726
 	tc-export AR CC NM OBJCOPY RANLIB
 
+	use doc && python_setup
+
 	multilib-minimal_src_configure
 }
 
@@ -202,7 +211,6 @@ multilib_src_configure() {
 		# no deps
 		--enable-efi
 		--enable-ima
-		--without-python
 
 		# Optional components/dependencies
 		$(multilib_native_use_enable acl)
@@ -232,6 +240,7 @@ multilib_src_configure() {
 		$(multilib_native_use_enable test tests)
 		$(multilib_native_use_enable test dbus)
 		$(multilib_native_use_enable xkb xkbcommon)
+		$(multilib_native_use_with doc python)
 
 		# hardcode a few paths to spare some deps
 		KILL=/bin/kill
@@ -312,6 +321,10 @@ multilib_src_install() {
 multilib_src_install_all() {
 	prune_libtool_files --modules
 	einstalldocs
+
+	if [[ ${PV} != 9999 ]]; then
+		use doc || doman "${WORKDIR}"/man/systemd.{directives,index}.7
+	fi
 
 	if use sysv-utils; then
 		for app in halt poweroff reboot runlevel shutdown telinit; do
