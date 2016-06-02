@@ -4937,7 +4937,7 @@ dev-libs/xxl 1.0.1 1.0.1-r1: C/C++ library that provides exception handling and 
 dev-libs/yajl 1.0.11 1.0.11-r1 1.0.12 2.0.4-r3 2.1.0: Small event-driven (SAX-style) JSON parser
 dev-libs/yaz 3.0.50 3.0.53 4.2.30 4.2.51: C/C++ programmer's toolkit supporting the development of Z39.50v3 clients and servers
 dev-libs/zookeeper-c 3.4.8: C client interface to Zookeeper server
-dev-libs/zthread 2.3.2-r1 2.3.2-r2 2.3.2-r3: platform-independent multi-threading and synchronization library for C++
+dev-libs/zthread 2.3.2-r1 2.3.2-r2 2.3.2-r3 2.3.2-r4: platform-independent multi-threading and synchronization library for C++
 dev-libs/zziplib 0.13.60-r1 0.13.62 0.13.62-r1: Lightweight library for extracting data from files archived in a single zip file
 dev-lisp/abcl 0.0.9-r1 0.20.0: Armed Bear Common Lisp is a Common Lisp implementation for the JVM
 dev-lisp/asdf 1.86-r1 1.89 3.0.3 3.1.4 3.1.5 3.1.6 3.1.7: ASDF is Another System Definition Facility for Common Lisp
