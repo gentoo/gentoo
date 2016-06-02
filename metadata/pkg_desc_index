@@ -549,7 +549,7 @@ app-crypt/jacksum 1.7.0: Java utility for computing and verifying checksums: CRC
 app-crypt/jetring 0.21: GPG keyring maintenance using changesets
 app-crypt/johntheripper 1.7.9-r6 1.7.9-r10: fast password cracker
 app-crypt/kali-archive-keyring 2015.2: GnuPG archive keys of the Kali archive
-app-crypt/kencfs 1.5.0 1.6.0 1.6.2: GUI frontend for encfs
+app-crypt/kencfs 1.6.2: GUI frontend for encfs
 app-crypt/keybase 0.8.13 0.8.18 0.8.22 0.8.23 0.8.24 0.8.25 1.0.8.0 1.0.9.0 1.0.12.0 1.0.15: Client for keybase.io
 app-crypt/keylookup 2.2 2.2-r9999: A tool to fetch PGP keys from keyservers
 app-crypt/keynote 2.3-r3: The KeyNote Trust-Management System
@@ -11558,7 +11558,7 @@ kde-misc/kcometen4 1.0.8: OpenGL KDE4 screensaver
 kde-misc/kde-gtk-config 2.2.1: KDE systemsettings kcm to set GTK application look&feel
 kde-misc/kdeconnect 0.8-r1 0.9g: Adds communication between KDE and your smartphone
 kde-misc/kdesudo 3.4.2.4-r1: A frontend for sudo. Unlike kdesu, it uses directly sudo as backend
-kde-misc/kdiff3 0.9.98 0.9.98-r1: Qt/KDE based frontend to diff3
+kde-misc/kdiff3 0.9.98-r1: Qt/KDE based frontend to diff3
 kde-misc/kdirstat 2.7.5 3.0-r1: Nice KDE replacement to the du command
 kde-misc/kdmthemegenerator 0.8: Generates kdm theme from your current plasma theme and wallpaper
 kde-misc/kepas 0.9.3: A zeroconf KDE4 filetransfer tool
