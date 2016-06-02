@@ -96,6 +96,7 @@ games-rpg/dungeon-defenders
 games-rpg/eschalon-book-1-demo
 games-rpg/nwmouse
 games-rpg/penumbra-collection
+games-rpg/wasteland2
 games-server/etqw-ded
 games-server/ut2004-ded
 games-simulation/bcs-demo

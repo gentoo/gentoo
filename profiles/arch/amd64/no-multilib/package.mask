@@ -126,6 +126,7 @@ games-rpg/nwn-penultima
 games-rpg/nwn-penultimarerolled
 games-rpg/nwn-shadowlordsdreamcatcherdemon
 games-rpg/sacred-gold
+games-rpg/wasteland2
 games-server/etqw-ded
 games-server/nwn-ded
 games-server/ut2003-ded
