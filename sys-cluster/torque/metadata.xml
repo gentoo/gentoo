@@ -5,6 +5,10 @@
     <email>cluster@gentoo.org</email>
     <name>Gentoo Cluster Project</name>
   </maintainer>
+  <maintainer type="person">
+    <email>axs@gentoo.org</email>
+    <name>Ian Stakenvicius</name>
+  </maintainer>
   <use>
     <flag name="cpusets">Enable pbs_mom to utilize linux cpusets if available</flag>
     <flag name="drmaa">Enable the Distributed Resource Management Application API</flag>
