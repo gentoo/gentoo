@@ -1,9 +1,9 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
-inherit autotools eutils toolchain-funcs
+EAPI=6
+inherit autotools toolchain-funcs
 
 MY_P=${P/graphicsm/GraphicsM}
 
@@ -22,7 +22,7 @@ RDEPEND=">=sys-devel/libtool-2.2.6b
 	fpx? ( media-libs/libfpx )
 	imagemagick? ( !media-gfx/imagemagick )
 	jbig? ( media-libs/jbigkit )
-	jpeg? ( virtual/jpeg )
+	jpeg? ( virtual/jpeg:0 )
 	jpeg2k? ( media-libs/jasper )
 	lcms? ( media-libs/lcms:2 )
 	lzma? ( app-arch/xz-utils )
@@ -46,14 +46,14 @@ DEPEND="${RDEPEND}"
 
 S=${WORKDIR}/${MY_P}
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.3.19-flags.patch
+	"${FILESDIR}"/${PN}-1.3.19-perl.patch
+	"${FILESDIR}"/${PN}-1.3.20-powerpc.patch
+)
+
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-1.3.19-freetype.patch
-	epatch "${FILESDIR}"/${PN}-1.3.19-flags.patch
-	epatch "${FILESDIR}"/${PN}-1.3.19-perl.patch
-	epatch "${FILESDIR}"/${PN}-1.3.18-powerpc.patch
-
-	epatch_user #498942
-
+	default
 	eautoreconf
 }
 
@@ -92,7 +92,6 @@ src_configure() {
 		$(use_with webp) \
 		$(use_with jpeg) \
 		$(use_with jpeg2k jp2) \
-		--without-lcms \
 		$(use_with lcms lcms2) \
 		$(use_with lzma) \
 		$(use_with png) \
