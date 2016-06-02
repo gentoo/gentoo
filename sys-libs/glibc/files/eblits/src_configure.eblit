@@ -106,6 +106,8 @@ glibc_do_configure() {
 		$(use_with gd)
 		--with-headers=$(alt_build_headers)
 		--prefix="${EPREFIX}/usr"
+		--sysconfdir="${EPREFIX}/etc"
+		--localstatedir="${EPREFIX}/var"
 		--libdir='$(prefix)'/$(get_libdir)
 		--mandir='$(prefix)'/share/man
 		--infodir='$(prefix)'/share/info
