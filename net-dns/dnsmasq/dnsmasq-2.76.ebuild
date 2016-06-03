@@ -121,7 +121,7 @@ src_compile() {
 		CONFFILE="/etc/${PN}.conf" \
 		all$(use nls && echo "-i18n")
 
-	use dhcp-tools && emake -C contrib/wrt \
+	use dhcp-tools && emake -C contrib/lease-tools \
 		PREFIX=/usr \
 		MANDIR=/usr/share/man \
 		CC="$(tc-getCC)" \
@@ -169,8 +169,8 @@ src_install() {
 	fi
 
 	if use dhcp-tools; then
-		dosbin contrib/wrt/{dhcp_release,dhcp_lease_time}
-		doman contrib/wrt/{dhcp_release,dhcp_lease_time}.1
+		dosbin contrib/lease-tools/{dhcp_release,dhcp_lease_time}
+		doman contrib/lease-tools/{dhcp_release,dhcp_lease_time}.1
 	fi
 
 	systemd_newunit "${FILESDIR}"/${PN}.service-r1 ${PN}.service
