@@ -1,0 +1,192 @@
+# Copyright 1999-2016 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+myconf() {
+	# the myconf array is declared in src_configure
+	myconf=( "${myconf[@]}" "$@" )
+}
+
+eblit-perl-src_configure() {
+	declare -a myconf
+
+	export LC_ALL="C"
+	[[ ${COLUMNS:-1} -ge 1 ]] || unset COLUMNS # bug #394091
+
+	# some arches and -O do not mix :)
+	use ppc && replace-flags -O? -O1
+	# Perl has problems compiling with -Os in your flags with glibc
+	use elibc_uclibc || replace-flags "-Os" "-O2"
+	# This flag makes compiling crash in interesting ways
+	filter-flags "-malign-double"
+	# Fixes bug #97645
+	use ppc && filter-flags "-mpowerpc-gpopt"
+	# Fixes bug #143895 on gcc-4.1.1
+	filter-flags "-fsched2-use-superblocks"
+
+	use sparc && myconf -Ud_longdbl
+
+	export BUILD_BZIP2=0
+	export BZIP2_INCLUDE=${EPREFIX}/usr/include
+	export BZIP2_LIB=${EPREFIX}/usr/$(get_libdir)
+
+	export BUILD_ZLIB=False
+	export ZLIB_INCLUDE=${EPREFIX}/usr/include
+	export ZLIB_LIB=${EPREFIX}/usr/$(get_libdir)
+
+	# allow either gdbm to provide ndbm (in <gdbm/ndbm.h>) or db1
+
+	myndbm='U'
+	mygdbm='U'
+	mydb='U'
+
+	if use gdbm ; then
+		mygdbm='D'
+		myndbm='D'
+	fi
+	if use berkdb ; then
+		mydb='D'
+		has_version '=sys-libs/db-1*' && myndbm='D'
+	fi
+
+	myconf "-${myndbm}i_ndbm" "-${mygdbm}i_gdbm" "-${mydb}i_db"
+
+	if use alpha && [[ "$(tc-getCC)" = "ccc" ]] ; then
+		ewarn "Perl will not be built with berkdb support, use gcc if you needed it..."
+		myconf -Ui_db -Ui_ndbm
+	fi
+
+	use ithreads && myconf -Dusethreads
+
+	if use debug ; then
+		append-cflags "-g"
+		myconf -DDEBUGGING
+	elif [[ ${CFLAGS} == *-g* ]] ; then
+		myconf -DDEBUGGING=-g
+	else
+		myconf -DDEBUGGING=none
+	fi
+
+	if [[ -n ${PERL_OLDVERSEN} ]] ; then
+		local inclist=$(for v in ${PERL_OLDVERSEN}; do echo -n "${v}/${myarch}${mythreading} ${v} "; done )
+		myconf -Dinc_version_list="${inclist}"
+	fi
+
+	[[ ${ELIBC} == "FreeBSD" ]] && myconf "-Dlibc=/usr/$(get_libdir)/libc.a"
+
+	# Make sure we can do the final link #523730, need to set deployment
+	# target to override hardcoded 10.3 which breaks on modern OSX
+	[[ ${CHOST} == *-darwin* ]] && \
+		myconf "-Dld=env MACOSX_DEPLOYMENT_TARGET=${MACOSX_DEPLOYMENT_TARGET} $(tc-getCC)"
+
+	# Prefix: the host system needs not to follow Gentoo multilib stuff, and in
+	# Prefix itself we don't do multilib either, so make sure perl can find
+	# something compatible.
+	if use prefix ; then
+		# Set a hook to check for each detected library whether it actually works.
+		export libscheck="
+			( echo 'main(){}' > '${T}'/conftest.c &&
+			  $(tc-getCC) -o '${T}'/conftest '${T}'/conftest.c -l\$thislib >/dev/null 2>/dev/null
+			) || xxx=/dev/null"
+
+		# Use all host paths that might contain useful stuff, the hook above will filter out bad choices.
+		local paths="/lib/*-linux-gnu /usr/lib/*-linux-gnu /lib64 /lib/64 /usr/lib64 /usr/lib/64 /lib32 /usr/lib32 /lib /usr/lib"
+		myconf "-Dlibpth=${EPREFIX}/$(get_libdir) ${EPREFIX}/usr/$(get_libdir) ${paths}"
+	elif [[ $(get_libdir) != "lib" ]] ; then
+		# We need to use " and not ', as the written config.sh use ' ...
+		myconf "-Dlibpth=/usr/local/$(get_libdir) /$(get_libdir) /usr/$(get_libdir)"
+	fi
+
+	# don't try building ODBM, bug #354453
+	disabled_extensions="ODBM_File"
+
+	if ! use gdbm ; then
+		# workaround for bug #157774: don't try building GDBM related stuff with USE="-gdbm"
+		disabled_extensions="${disabled_extensions} GDBM_File NDBM_File"
+	fi
+
+	myconf -Dnoextensions="${disabled_extensions}"
+
+	echo Configuring Perl as follows:
+	echo sh Configure \
+		-des \
+		-Duseshrplib \
+		-Darchname="${myarch}" \
+		-Dcc="$(tc-getCC)" \
+		-Doptimize="${CFLAGS}" \
+		-Dldflags="${LDFLAGS}" \
+		-Dprefix="${EPREFIX}"'/usr' \
+		-Dinstallprefix="${EPREFIX}"'/usr' \
+		-Dsiteprefix="${EPREFIX}"'/usr/local' \
+		-Dvendorprefix="${EPREFIX}"'/usr' \
+		-Dscriptdir="${EPREFIX}"'/usr/bin' \
+		-Dprivlib="${EPREFIX}${PRIV_LIB}" \
+		-Darchlib="${EPREFIX}${ARCH_LIB}" \
+		-Dsitelib="${EPREFIX}${SITE_LIB}" \
+		-Dsitearch="${EPREFIX}${SITE_ARCH}" \
+		-Dvendorlib="${EPREFIX}${VENDOR_LIB}" \
+		-Dvendorarch="${EPREFIX}${VENDOR_ARCH}" \
+		-Dman1dir="${EPREFIX}"/usr/share/man/man1 \
+		-Dman3dir="${EPREFIX}"/usr/share/man/man3 \
+		-Dsiteman1dir="${EPREFIX}"/usr/local/man/man1 \
+		-Dsiteman3dir="${EPREFIX}"/usr/local/man/man3 \
+		-Dvendorman1dir="${EPREFIX}"/usr/share/man/man1 \
+		-Dvendorman3dir="${EPREFIX}"/usr/share/man/man3 \
+		-Dman1ext='1' \
+		-Dman3ext='3pm' \
+		-Dlibperl="${LIBPERL}" \
+		-Dlocincpth="${EPREFIX}"'/usr/include ' \
+		-Dglibpth="${EPREFIX}/$(get_libdir) ${EPREFIX}/usr/$(get_libdir)"' ' \
+		-Duselargefiles \
+		-Dd_semctl_semun \
+		-Dcf_by='Gentoo' \
+		-Dmyhostname='localhost' \
+		-Dperladmin='root@localhost' \
+		-Dinstallusrbinperl='n' \
+		-Ud_csh \
+		-Dsh="${EPREFIX}"/bin/sh \
+		-Dtargetsh="${EPREFIX}"/bin/sh \
+		-Uusenm \
+		"${myconf[@]}"
+
+	sh Configure \
+		-des \
+		-Duseshrplib \
+		-Darchname="${myarch}" \
+		-Dcc="$(tc-getCC)" \
+		-Doptimize="${CFLAGS}" \
+		-Dldflags="${LDFLAGS}" \
+		-Dprefix="${EPREFIX}"'/usr' \
+		-Dinstallprefix="${EPREFIX}"'/usr' \
+		-Dsiteprefix="${EPREFIX}"'/usr/local' \
+		-Dvendorprefix="${EPREFIX}"'/usr' \
+		-Dscriptdir="${EPREFIX}"'/usr/bin' \
+		-Dprivlib="${EPREFIX}${PRIV_LIB}" \
+		-Darchlib="${EPREFIX}${ARCH_LIB}" \
+		-Dsitelib="${EPREFIX}${SITE_LIB}" \
+		-Dsitearch="${EPREFIX}${SITE_ARCH}" \
+		-Dvendorlib="${EPREFIX}${VENDOR_LIB}" \
+		-Dvendorarch="${EPREFIX}${VENDOR_ARCH}" \
+		-Dman1dir="${EPREFIX}"/usr/share/man/man1 \
+		-Dman3dir="${EPREFIX}"/usr/share/man/man3 \
+		-Dsiteman1dir="${EPREFIX}"/usr/local/man/man1 \
+		-Dsiteman3dir="${EPREFIX}"/usr/local/man/man3 \
+		-Dvendorman1dir="${EPREFIX}"/usr/share/man/man1 \
+		-Dvendorman3dir="${EPREFIX}"/usr/share/man/man3 \
+		-Dman1ext='1' \
+		-Dman3ext='3pm' \
+		-Dlibperl="${LIBPERL}" \
+		-Dlocincpth="${EPREFIX}"'/usr/include ' \
+		-Dglibpth="${EPREFIX}/$(get_libdir) ${EPREFIX}/usr/$(get_libdir)"' ' \
+		-Duselargefiles \
+		-Dd_semctl_semun \
+		-Dcf_by='Gentoo' \
+		-Dmyhostname='localhost' \
+		-Dperladmin='root@localhost' \
+		-Dinstallusrbinperl='n' \
+		-Ud_csh \
+		-Dsh="${EPREFIX}"/bin/sh \
+		-Dtargetsh="${EPREFIX}"/bin/sh \
+		-Uusenm \
+		"${myconf[@]}" || die "Unable to configure"
+}
