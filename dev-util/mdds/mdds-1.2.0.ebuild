@@ -38,8 +38,7 @@ src_prepare(){
 src_configure() {
 	econf \
 		$(use_enable doc docs) \
-		$(use_enable valgrind memory_tests) \
-		--docdir="${EPREFIX}/usr/share/doc/${PF}"
+		$(use_enable valgrind memory_tests)
 }
 
 src_compile() { :; }
