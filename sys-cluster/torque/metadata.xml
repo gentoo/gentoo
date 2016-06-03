@@ -10,6 +10,7 @@
     <name>Ian Stakenvicius</name>
   </maintainer>
   <use>
+    <flag name="cgroups">Enable pbs_mom to use linux cgroups to isolate jobs</flag>
     <flag name="cpusets">Enable pbs_mom to utilize linux cpusets if available</flag>
     <flag name="drmaa">Enable the Distributed Resource Management Application API</flag>
     <flag name="munge">Enable authentication via munge</flag>
