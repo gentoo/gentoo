@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 KDE_REQUIRED="optional"
 QT_MINIMAL="4.7.4"
@@ -59,8 +59,7 @@ unset DEV_URI
 # These are bundles that can't be removed for now due to huge patchsets.
 # If you want them gone, patches are welcome.
 ADDONS_SRC=(
-	"${ADDONS_URI}/d62650a6f908e85643e557a236ea989c-vigra1.6.0.tar.gz"
-	"${ADDONS_URI}/1f24ab1d39f4a51faf22244c94a6203f-xmlsec1-1.2.14.tar.gz" # modifies source code
+	"${ADDONS_URI}/ce12af00283eb90d9281956524250d6e-xmlsec1-1.2.20.tar.gz" # modifies source code
 	"collada? ( ${ADDONS_URI}/4b87018f7fff1d054939d19920b751a0-collada2gltf-master-cb1d97788a.tar.bz2 )"
 	"java? ( ${ADDONS_URI}/17410483b5b5f267aa18b7e00b65e6e0-hsqldb_1_8_0.zip )"
 	# no release for 8 years, should we package it?
@@ -78,20 +77,17 @@ unset ADDONS_URI
 unset EXT_URI
 unset ADDONS_SRC
 
-IUSE="bluetooth +branding coinmp collada +cups dbus debug eds firebird gltf gnome gstreamer
-+gtk gtk3 jemalloc kde libressl mysql odk postgres telepathy test vlc"
-
-LO_EXTS="nlpsolver scripting-beanshell scripting-javascript wiki-publisher"
 # Unpackaged separate extensions:
 # diagram: lo has 0.9.5 upstream is weirdly patched 0.9.4 -> wtf?
 # hunart: only on ooo extensions -> fubared download path somewhere on sf
 # numbertext, typo, validator, watch-window: ^^
 # oooblogger: no homepage or anything
 # Extensions that need extra work:
-for lo_xt in ${LO_EXTS}; do
-	IUSE+=" libreoffice_extensions_${lo_xt}"
-done
-unset lo_xt
+LO_EXTS="nlpsolver scripting-beanshell scripting-javascript wiki-publisher"
+
+IUSE="bluetooth +branding coinmp collada +cups dbus debug eds firebird gltf gnome gstreamer
++gtk gtk3 jemalloc kde libressl mysql odk postgres telepathy test vlc
+$(printf 'libreoffice_extensions_%s ' ${LO_EXTS})"
 
 LICENSE="|| ( LGPL-3 MPL-1.1 )"
 SLOT="0"
@@ -102,37 +98,37 @@ COMMON_DEPEND="
 	${PYTHON_DEPS}
 	app-arch/zip
 	app-arch/unzip
-	>=app-text/hunspell-1.3.2-r3
+	app-text/hunspell
 	app-text/mythes
 	>=app-text/libabw-0.1.0
-	>=app-text/libexttextcat-3.2
-	>=app-text/libebook-0.1.1
-	>=app-text/libetonyek-0.1.2
+	app-text/libexttextcat
+	>=app-text/libebook-0.1
+	>=app-text/libetonyek-0.1
 	app-text/liblangtag
 	>=app-text/libmspub-0.1.0
-	>=app-text/libmwaw-0.3.5
+	>=app-text/libmwaw-0.3.1
 	>=app-text/libodfgen-0.1.0
 	app-text/libwpd:0.10[tools]
 	app-text/libwpg:0.3
-	=app-text/libwps-0.4*
-	>=app-text/poppler-0.16:=[cxx]
+	>=app-text/libwps-0.4
+	app-text/poppler:=[cxx]
 	>=dev-cpp/clucene-2.3.3.4-r2
 	=dev-cpp/libcmis-0.5*
 	dev-db/unixODBC
 	>=dev-libs/boost-1.55:=
 	dev-libs/expat
-	>=dev-libs/hyphen-2.7.1
-	>=dev-libs/icu-4.8.1.1:=
-	=dev-libs/liborcus-0.7*
-	>=dev-libs/librevenge-0.0.1
-	>=dev-libs/nspr-4.8.8
-	>=dev-libs/nss-3.12.9
+	dev-libs/hyphen
+	dev-libs/icu:=
+	>=dev-libs/liborcus-0.11.2
+	dev-libs/librevenge
+	dev-libs/nspr
+	dev-libs/nss
 	>=dev-lang/perl-5.0
 	!libressl? ( >=dev-libs/openssl-1.0.0d:0 )
 	libressl? ( dev-libs/libressl )
 	>=dev-libs/redland-1.0.16
 	media-gfx/graphite2
-	>=media-libs/fontconfig-2.8.0
+	media-libs/fontconfig
 	media-libs/freetype:2
 	>=media-libs/glew-1.10
 	>=media-libs/harfbuzz-0.9.18:=[icu(+)]
@@ -142,12 +138,12 @@ COMMON_DEPEND="
 	>=media-libs/libfreehand-0.1.0
 	media-libs/libpagemaker
 	>=media-libs/libvisio-0.1.0
-	>=net-misc/curl-7.21.4
+	net-misc/curl
 	net-libs/neon
 	net-nds/openldap
 	sci-mathematics/lpsolve
 	virtual/jpeg:0
-	>=x11-libs/cairo-1.10.0[X,-xlib-xcb]
+	x11-libs/cairo[X,-xlib-xcb]
 	x11-libs/libXinerama
 	x11-libs/libXrandr
 	x11-libs/libXrender
@@ -157,42 +153,37 @@ COMMON_DEPEND="
 	coinmp? ( sci-libs/coinor-mp )
 	collada? ( >=media-libs/opencollada-1.2.2_p20150207 )
 	cups? ( net-print/cups )
-	dbus? ( >=dev-libs/dbus-glib-0.92 )
-	eds? ( gnome-extra/evolution-data-server )
+	dbus? ( dev-libs/dbus-glib )
+	eds? (
+		dev-libs/glib:2
+		gnome-extra/evolution-data-server
+	)
 	firebird? ( >=dev-db/firebird-2.5 )
 	gltf? ( media-libs/libgltf )
-	gnome? ( gnome-base/gconf:2 )
 	gtk? (
 		x11-libs/gdk-pixbuf
 		>=x11-libs/gtk+-2.24:2
 	)
-	gtk3? ( >=x11-libs/gtk+-3.8:3 )
+	gtk3? (
+		dev-libs/glib:2
+		dev-libs/gobject-introspection
+		>=x11-libs/gtk+-3.8:3
+	)
 	gstreamer? (
 		media-libs/gstreamer:1.0
 		media-libs/gst-plugins-base:1.0
 	)
 	jemalloc? ( dev-libs/jemalloc )
-	libreoffice_extensions_scripting-beanshell? ( >=dev-java/bsh-2.0_beta4 )
+	libreoffice_extensions_scripting-beanshell? ( dev-java/bsh )
 	libreoffice_extensions_scripting-javascript? ( dev-java/rhino:1.6 )
-	libreoffice_extensions_wiki-publisher? (
-		dev-java/commons-codec:0
-		dev-java/commons-httpclient:3
-		dev-java/commons-lang:2.1
-		dev-java/commons-logging:0
-	)
-	mysql? ( >=dev-db/mysql-connector-c++-1.1.0 )
+	mysql? ( dev-db/mysql-connector-c++ )
 	postgres? ( >=dev-db/postgresql-9.0:*[kerberos] )
-	telepathy? (
-		dev-libs/glib:2
-		>=net-libs/telepathy-glib-0.18.0
-		>=x11-libs/gtk+-2.24:2
-	)
+	telepathy? ( net-libs/telepathy-glib )
 "
 
 RDEPEND="${COMMON_DEPEND}
 	!app-office/libreoffice-bin
 	!app-office/libreoffice-bin-debug
-	!<app-office/openoffice-bin-3.4.0-r1
 	!app-office/openoffice
 	media-fonts/libertine
 	media-fonts/liberation-fonts
@@ -221,9 +212,8 @@ DEPEND="${COMMON_DEPEND}
 	dev-util/cppunit
 	>=dev-util/gperf-3
 	dev-util/intltool
-	>=dev-util/mdds-0.12.0:0=
+	>=dev-util/mdds-1.2.0:1=
 	media-libs/glm
-	net-misc/npapi-sdk
 	sys-devel/bison
 	sys-devel/flex
 	sys-devel/gettext
@@ -249,8 +239,8 @@ REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
 	bluetooth? ( dbus )
 	collada? ( gltf )
-	gnome? ( gtk )
 	eds? ( gnome )
+	gnome? ( gtk )
 	telepathy? ( gtk )
 	libreoffice_extensions_nlpsolver? ( java )
 	libreoffice_extensions_scripting-beanshell? ( java )
@@ -260,15 +250,18 @@ REQUIRED_USE="
 
 PATCHES=(
 	# not upstreamable stuff
-	"${FILESDIR}/${PN}-4.4-system-pyuno.patch"
+	"${FILESDIR}/${PN}-5.2-system-pyuno.patch"
 )
 
 CHECKREQS_MEMORY="512M"
-if [[ ${MERGE_TYPE} != binary ]] ; then CHECKREQS_DISK_BUILD="6G" ; fi
+
+if [[ ${MERGE_TYPE} != binary ]] && is-flagq "-g*" && ! is-flagq "-g*0" ; then
+	CHECKREQS_DISK_BUILD="22G"
+elif [[ ${MERGE_TYPE} != binary ]] ; then
+	CHECKREQS_DISK_BUILD="6G"
+fi
 
 pkg_pretend() {
-	local pgslot
-
 	use java || \
 		ewarn "If you plan to use lbase application you should enable java or you will get various crashes."
 
@@ -276,9 +269,9 @@ pkg_pretend() {
 		check-reqs_pkg_pretend
 
 		if [[ $(gcc-major-version) -lt 4 ]] || {
-			[[ $(gcc-major-version) -eq 4 && $(gcc-minor-version) -lt 6 ]]; }
+			[[ $(gcc-major-version) -eq 4 && $(gcc-minor-version) -lt 7 ]]; }
 		then
-			eerror "Compilation with gcc older than 4.6 is not supported"
+			eerror "Compilation with gcc older than 4.7 is not supported"
 			die "Too old gcc found."
 		fi
 	fi
@@ -286,7 +279,7 @@ pkg_pretend() {
 	# Ensure pg version but we have to be sure the pg is installed (first
 	# install on clean system)
 	if use postgres && has_version dev-db/postgresql; then
-		 pgslot=$(postgresql-config show)
+		 local pgslot=$(postgresql-config show)
 		 if [[ ${pgslot//.} -lt 90 ]] ; then
 			eerror "PostgreSQL slot must be set to 9.0 or higher."
 			eerror "    postgresql-config set 9.0"
@@ -331,16 +324,9 @@ src_unpack() {
 }
 
 src_prepare() {
-	# patchset
-	if [[ -n ${PATCHSET} ]]; then
-		EPATCH_FORCE="yes" \
-		EPATCH_SOURCE="${WORKDIR}/${PATCHSET/.tar.xz/}" \
-		EPATCH_SUFFIX="patch" \
-		epatch
-	fi
-
-	epatch "${PATCHES[@]}"
-	epatch_user
+	[[ -n ${PATCHSET} ]] && eapply "${WORKDIR}/${PATCHSET/.tar.xz/}"
+	eapply "${PATCHES[@]}"
+	eapply_user
 
 	AT_M4DIR="m4" eautoreconf
 	# hack in the autogen.sh
@@ -369,13 +355,11 @@ src_prepare() {
 
 src_configure() {
 	local java_opts
-	local internal_libs
-	local lo_ext
 	local ext_opts
 
 	# optimization flags
 	export GMAKE_OPTIONS="${MAKEOPTS}"
-	# System python 2.7 enablement:
+	# System python enablement:
 	export PYTHON_CFLAGS=$(python_get_CFLAGS)
 	export PYTHON_LIBS=$(python_get_LIBS)
 
@@ -383,16 +367,6 @@ src_configure() {
 		export OPENCOLLADA_CFLAGS="-I/usr/include/opencollada/COLLADABaseUtils -I/usr/include/opencollada/COLLADAFramework -I/usr/include/opencollada/COLLADASaxFrameworkLoader -I/usr/include/opencollada/GeneratedSaxParser"
 		export OPENCOLLADA_LIBS="-L /usr/$(get_libdir)/opencollada -lOpenCOLLADABaseUtils -lOpenCOLLADAFramework -lOpenCOLLADASaxFrameworkLoader -lGeneratedSaxParser"
 	fi
-
-	# sane: just sane.h header that is used for scan in writer, not
-	#       linked or anything else, worthless to depend on
-	# vigra: just uses templates from there
-	#        it is serious pain in the ass for packaging
-	#        should be replaced by boost::gil if someone interested
-	internal_libs+="
-		--without-system-sane
-		--without-system-vigra
-	"
 
 	# libreoffice extensions handling
 	for lo_xt in ${LO_EXTS}; do
@@ -418,15 +392,6 @@ src_configure() {
 
 		use libreoffice_extensions_scripting-javascript && \
 			java_opts+=" --with-rhino-jar=$(java-pkg_getjar rhino-1.6 js.jar)"
-
-		if use libreoffice_extensions_wiki-publisher; then
-			java_opts+="
-				--with-commons-codec-jar=$(java-pkg_getjar commons-codec commons-codec.jar)
-				--with-commons-httpclient-jar=$(java-pkg_getjar commons-httpclient-3 commons-httpclient.jar)
-				--with-commons-lang-jar=$(java-pkg_getjar commons-lang-2.1 commons-lang.jar)
-				--with-commons-logging-jar=$(java-pkg_getjar commons-logging commons-logging.jar)
-			"
-		fi
 	fi
 
 	# system headers/libs/...: enforce using system packages
@@ -435,14 +400,13 @@ src_configure() {
 	# --enable-*-link: link to the library rather than just dlopen on runtime
 	# --enable-release-build: build the libreoffice as release
 	# --disable-fetch-external: prevent dowloading during compile phase
-	# --disable-gnome-vfs: old gnome virtual fs support
-	# --disable-kdeab: kde3 adressbook
-	# --disable-kde: kde3 support
 	# --disable-systray: quickstarter does not actually work at all so do not
 	#   promote it
 	# --enable-extension-integration: enable any extension integration support
 	# --without-{fonts,myspell-dicts,ppsd}: prevent install of sys pkgs
 	# --disable-report-builder: too much java packages pulled in without pkgs
+	# --without-system-sane: just sane.h header that is used for scan in writer,
+	#   not linked or anything else, worthless to depend on
 	econf \
 		--docdir="${EPREFIX}/usr/share/doc/${PF}/" \
 		--with-system-headers \
@@ -456,7 +420,6 @@ src_configure() {
 		--enable-neon \
 		--enable-python=system \
 		--enable-randr \
-		--enable-randr-link \
 		--enable-release-build \
 		--disable-hardlink-deliver \
 		--disable-ccache \
@@ -464,11 +427,8 @@ src_configure() {
 		--disable-dependency-tracking \
 		--disable-epm \
 		--disable-fetch-external \
-		--disable-gnome-vfs \
 		--disable-gstreamer-0-10 \
 		--disable-report-builder \
-		--disable-kdeab \
-		--disable-kde \
 		--disable-online-update \
 		--disable-systray \
 		--with-alloc=$(use jemalloc && echo "jemalloc" || echo "system") \
@@ -488,6 +448,7 @@ src_configure() {
 		--without-help \
 		--with-helppack-integration \
 		--without-sun-templates \
+		--without-system-sane \
 		$(use_enable bluetooth sdremote-bluetooth) \
 		$(use_enable coinmp) \
 		$(use_enable collada) \
@@ -497,9 +458,7 @@ src_configure() {
 		$(use_enable eds evolution2) \
 		$(use_enable firebird firebird-sdbc) \
 		$(use_enable gltf) \
-		$(use_enable gnome gconf) \
 		$(use_enable gnome gio) \
-		$(use_enable gnome lockdown) \
 		$(use_enable gstreamer gstreamer-1-0) \
 		$(use_enable gtk) \
 		$(use_enable gtk3) \
@@ -515,7 +474,6 @@ src_configure() {
 		$(use_with java) \
 		$(use_with mysql system-mysql-cppconn) \
 		$(use_with odk doxygen) \
-		${internal_libs} \
 		${java_opts} \
 		${ext_opts}
 }
@@ -562,11 +520,10 @@ src_install() {
 	make DESTDIR="${D}" distro-pack-install -o build -o check || die
 
 	# Fix bash completion placement
-	newbashcomp "${ED}"etc/bash_completion.d/libreoffice.sh ${PN}
+	newbashcomp "${ED}"usr/share/bash-completion/completions/libreoffice.sh ${PN}
 	bashcomp_alias \
 		libreoffice \
 		unopkg loimpress lobase localc lodraw lomath lowriter lofromtemplate loweb loffice
-	rm -rf "${ED}"etc/ || die
 
 	if use branding; then
 		insinto /usr/$(get_libdir)/${PN}/program

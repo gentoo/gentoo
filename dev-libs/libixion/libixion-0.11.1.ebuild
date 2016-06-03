@@ -4,33 +4,31 @@
 
 EAPI=6
 
-EGIT_REPO_URI="https://gitlab.com/orcus/orcus.git"
+EGIT_REPO_URI="https://gitlab.com/ixion/ixion.git"
 
-PYTHON_COMPAT=( python{3_4,3_5} )
+PYTHON_COMPAT=( python{3_3,3_4,3_5} )
 
 [[ ${PV} == 9999 ]] && GITECLASS="git-r3 autotools"
 inherit eutils python-single-r1 ${GITECLASS}
 unset GITECLASS
 
-DESCRIPTION="Standalone file import filter library for spreadsheet documents"
-HOMEPAGE="https://gitlab.com/orcus/orcus/blob/master/README.md"
-[[ ${PV} == 9999 ]] || SRC_URI="http://kohei.us/files/orcus/src/${P}.tar.xz"
+DESCRIPTION="General purpose formula parser & interpreter"
+HOMEPAGE="https://gitlab.com/ixion/ixion"
+[[ ${PV} == 9999 ]] || SRC_URI="http://kohei.us/files/ixion/src/${P}.tar.xz"
 
 LICENSE="MIT"
-SLOT="0/0.11" # based on SONAME of liborcus.so
+SLOT="0/0.11" # based on SONAME of libixion.so
 [[ ${PV} == 9999 ]] || \
 KEYWORDS=""
 # KEYWORDS="~amd64 ~arm ~ppc ~x86"
-IUSE="python +spreadsheet-model static-libs tools"
+IUSE="python static-libs"
 
 RDEPEND="
-	>=dev-libs/boost-1.51.0:=
-	sys-libs/zlib:=
+	dev-libs/boost:=[threads]
 	python? ( ${PYTHON_DEPS} )
-	spreadsheet-model? ( >=dev-libs/libixion-0.11.0:= )
 "
 DEPEND="${RDEPEND}
-	dev-util/mdds:1
+	>=dev-util/mdds-1.2.0:1=
 "
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
@@ -46,11 +44,8 @@ src_prepare() {
 
 src_configure() {
 	econf \
-		--disable-werror \
 		$(use_enable python) \
-		$(use_enable spreadsheet-model) \
-		$(use_enable static-libs static) \
-		$(use_with tools)
+		$(use_enable static-libs static)
 }
 
 src_install() {
