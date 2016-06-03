@@ -5,7 +5,7 @@
 EAPI="5"
 PYTHON_COMPAT=( python2_7 )
 
-CHROMIUM_LANGS="am ar bg bn ca cs da de el en_GB es es_LA et fa fi fil fr gu he
+CHROMIUM_LANGS="am ar bg bn ca cs da de el en_GB es es_419 et fa fi fil fr gu he
 	hi hr hu id it ja kn ko lt lv ml mr ms nb nl pl pt_BR pt_PT ro ru sk sl sr
 	sv sw ta te th tr uk vi zh_CN zh_TW"
 
@@ -102,6 +102,7 @@ RDEPEND=">=app-accessibility/speech-dispatcher-0.8:=
 	x11-libs/gdk-pixbuf:=
 	x11-libs/gtk+:2=
 	x11-libs/libdrm
+	x11-libs/libnotify:=
 	x11-libs/libX11:=
 	x11-libs/libXcomposite:=
 	x11-libs/libXcursor:=
