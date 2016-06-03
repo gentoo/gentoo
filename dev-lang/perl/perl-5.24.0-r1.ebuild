@@ -102,7 +102,7 @@ eblit-run() {
 	eblit-run-maybe eblit-$1-post
 }
 
-src_prepare()	{ eblit-run src_prepare   v50240001 ; }
+src_prepare()	{ eblit-run src_prepare   v50240002 ; }
 
 src_configure()	{ eblit-run src_configure v50240002 ; }
 
