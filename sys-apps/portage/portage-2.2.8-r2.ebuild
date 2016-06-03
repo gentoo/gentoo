@@ -6,9 +6,8 @@
 # syntax support) which also requires EAPI 2.
 EAPI=2
 PYTHON_COMPAT=(
-	pypy2_0
-	python3_2 python3_3 python3_4
-	python2_6 python2_7
+	python3_3 python3_4
+	python2_7
 )
 inherit eutils multilib
 
@@ -17,7 +16,7 @@ HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Portage"
 LICENSE="GPL-2"
 KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
 SLOT="0"
-IUSE="build doc epydoc +ipc linguas_ru pypy2_0 python2 python3 selinux xattr"
+IUSE="build doc epydoc +ipc linguas_ru python2 python3 selinux xattr"
 
 for _pyimpl in ${PYTHON_COMPAT[@]} ; do
 	IUSE+=" python_targets_${_pyimpl}"
@@ -27,20 +26,13 @@ unset _pyimpl
 # Import of the io module in python-2.6 raises ImportError for the
 # thread module if threading is disabled.
 python_dep_ssl="python3? ( =dev-lang/python-3*[ssl] )
-	!pypy2_0? ( !python2? ( !python3? (
-		|| ( >=dev-lang/python-2.7[ssl] dev-lang/python:2.6[threads,ssl] )
-	) ) )
-	pypy2_0? ( !python2? ( !python3? ( virtual/pypy:2.0[bzip2] ) ) )
-	python2? ( !python3? ( || ( dev-lang/python:2.7[ssl] dev-lang/python:2.6[ssl,threads] ) ) )"
+	!python3? ( >=dev-lang/python-2.7[ssl] )"
 python_dep="${python_dep_ssl//\[ssl\]}"
 python_dep="${python_dep//,ssl}"
 python_dep="${python_dep//ssl,}"
 
 python_dep="${python_dep}
-	python_targets_pypy2_0? ( virtual/pypy:2.0 )
-	python_targets_python2_6? ( dev-lang/python:2.6 )
 	python_targets_python2_7? ( dev-lang/python:2.7 )
-	python_targets_python3_2? ( dev-lang/python:3.2 )
 	python_targets_python3_3? ( dev-lang/python:3.3 )
 	python_targets_python3_4? ( dev-lang/python:3.4 )
 "
@@ -71,9 +63,8 @@ RDEPEND="${python_dep}
 	>=app-misc/pax-utils-0.1.17
 	selinux? ( || ( >=sys-libs/libselinux-2.0.94[python] <sys-libs/libselinux-2.0.94 ) )
 	xattr? ( kernel_linux? (
-		$(for python_impl in python{2_6,2_7,3_2} pypy2_0; do
-			echo "python_targets_${python_impl}? ( dev-python/pyxattr[python_targets_${python_impl}] )"
-		done) ) )
+		python_targets_python2_7? ( dev-python/pyxattr[python_targets_python2_7] )
+	) )
 	!<app-admin/logrotate-3.8.0"
 PDEPEND="
 	!build? (
@@ -133,10 +124,6 @@ get_python_interpreter() {
 		python*)
 			python=${impl/_/.}
 			;;
-		pypy*)
-			python=${impl/_/.}
-			python=${python/pypy/pypy-c}
-			;;
 		*)
 			die "Unrecognized python target: ${impl}"
 	esac
@@ -164,9 +151,6 @@ python_compileall() {
 			# and __doc__ is None when -OO is used.
 			"${PYTHON}" -O -m compileall -q -f -d "${d}" "${d_image}" || die
 			;;
-		pypy*)
-			"${PYTHON}" -m compileall -q -f -d "${d}" "${d_image}" || die
-			;;
 		*)
 			die "Unrecognized EPYTHON value: ${EPYTHON}"
 	esac
@@ -177,15 +161,7 @@ pkg_setup() {
 		ewarn "Both python2 and python3 USE flags are enabled, but only one"
 		ewarn "can be in the shebangs. Using python3."
 	fi
-	if use pypy2_0 && use python3 ; then
-		ewarn "Both pypy2_0 and python3 USE flags are enabled, but only one"
-		ewarn "can be in the shebangs. Using python3."
-	fi
-	if use pypy2_0 && use python2 ; then
-		ewarn "Both pypy2_0 and python2 USE flags are enabled, but only one"
-		ewarn "can be in the shebangs. Using python2"
-	fi
-	if ! use pypy2_0 && ! use python2 && ! use python3 && \
+	if ! use python2 && ! use python3 && \
 		! compatible_python_is_selected ; then
 		ewarn "Attempting to select a compatible default python interpreter"
 		local x success=0
@@ -214,8 +190,6 @@ pkg_setup() {
 		EPYTHON=python3
 	elif use python2; then
 		EPYTHON=python2
-	elif use pypy2_0; then
-		EPYTHON=pypy-c2.0
 	fi
 }
 
@@ -253,8 +227,6 @@ src_prepare() {
 		set_shebang=python3
 	elif use python2; then
 		set_shebang=python2
-	elif use pypy2_0; then
-		set_shebang=pypy-c2.0
 	fi
 	if [[ -n ${set_shebang} ]] ; then
 		einfo "Converting shebangs for ${set_shebang}..."
