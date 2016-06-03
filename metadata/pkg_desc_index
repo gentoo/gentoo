@@ -9312,7 +9312,7 @@ dev-scheme/ikarus 0.0.3_p1870: A free optimizing incremental native-code compile
 dev-scheme/jscheme 7.2: JScheme is a dialect of Scheme with a very simple interface to Java, called the Javadot notation
 dev-scheme/kawa 1.10 1.14: Kawa, the Java-based Scheme system & Language Framework
 dev-scheme/net-http 0.3.1 0.3.1-r1: Library for doing HTTP client-side programming in Guile
-dev-scheme/racket 5.3.6 6.0.1 6.2.1 6.4: General purpose, multi-paradigm programming language in the Lisp-Scheme family.
+dev-scheme/racket 5.3.6 6.0.1 6.2.1 6.4 6.5: General purpose, multi-paradigm programming language in the Lisp-Scheme family.
 dev-scheme/scheme48 1.8-r2 1.9.2: Scheme48 is an implementation of the Scheme Programming Language
 dev-scheme/schoca 0.3.0: Schoca is a Scheme implementation in OCaml
 dev-scheme/scm 5.5.6 5.5.6-r1 5.5.6-r2: SCM is a Scheme implementation from the author of slib
