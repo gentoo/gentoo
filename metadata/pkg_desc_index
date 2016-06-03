@@ -612,8 +612,8 @@ app-crypt/ssdeep 2.10 2.11.1 2.12 2.13: Computes context triggered piecewise has
 app-crypt/ssh-multiadd 1.3.2-r1: Adds multiple ssh keys to the ssh authentication agent
 app-crypt/stan 0.4.1: Stan is a console application that analyzes binary streams and calculates statistical information
 app-crypt/stoken 0.90: Software Token for Linux/UNIX
-app-crypt/tc-play 2.0: a free, pretty much fully featured and stable TrueCrypt implementation
-app-crypt/tinyca 2.0.7.5-r2: Simple Perl/Tk GUI to manage a small certification authority
+app-crypt/tc-play 2.0 2.0-r1: a free, pretty much fully featured and stable TrueCrypt implementation
+app-crypt/tinyca 2.0.7.5-r2 2.0.7.5-r3: Simple Perl/Tk GUI to manage a small certification authority
 app-crypt/tpm-emulator 0.7.4-r1: Emulator driver for tpm
 app-crypt/tpm-tools 1.3.8: TrouSerS' support tools for the Trusted Platform Modules
 app-crypt/trousers 0.3.10-r1 0.3.13 0.3.13-r1: An open-source TCG Software Stack (TSS) v1.1 implementation
