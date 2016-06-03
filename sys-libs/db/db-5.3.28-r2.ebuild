@@ -67,6 +67,9 @@ src_prepare() {
 	# core, ~300MB each. This patch uses links instead, saves a lot of space.
 	epatch "${FILESDIR}"/${PN}-6.0.20-test-link.patch
 
+	# Needed when compiling with clang
+	epatch "${FILESDIR}"/${PN}-5.1.29-rename-atomic-compare-exchange.patch
+
 	# Upstream release script grabs the dates when the script was run, so lets
 	# end-run them to keep the date the same.
 	export REAL_DB_RELEASE_DATE="$(awk \
