@@ -12,9 +12,12 @@ HOMEPAGE="http://freshmeat.net/projects/bincimap/"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~hppa ~ppc ~x86"
-IUSE="ssl"
+IUSE="libressl ssl"
 
-DEPEND="ssl? ( dev-libs/openssl )"
+DEPEND="ssl? (
+	!libressl? ( dev-libs/openssl:0= )
+	libressl? ( dev-libs/libressl:0= )
+)"
 
 RDEPEND="${DEPEND}
 	virtual/daemontools
