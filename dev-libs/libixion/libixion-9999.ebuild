@@ -27,7 +27,7 @@ RDEPEND="
 	python? ( ${PYTHON_DEPS} )
 "
 DEPEND="${RDEPEND}
-	dev-util/mdds:1=
+	>=dev-util/mdds-1.2.0:1=
 "
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
