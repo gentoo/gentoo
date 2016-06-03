@@ -4643,7 +4643,7 @@ dev-libs/libflatarray 0.1.1: Struct of arrays library with object oriented inter
 dev-libs/libg15 1.2.7-r1 9999: The libg15 library gives low-level access to the Logitech G15 keyboard
 dev-libs/libg15render 1.2-r2 9999: Small library for display text and graphics on a Logitech G15 keyboard
 dev-libs/libgamin 0.1.10-r4 0.1.10-r5: Library providing the FAM File Alteration Monitor API
-dev-libs/libgaminggear 0.11.1 0.11.2: Provides functionality for gaming input devices
+dev-libs/libgaminggear 0.11.1 0.11.2 0.13.0: Provides functionality for gaming input devices
 dev-libs/libgcrypt 1.5.4-r101 1.5.5 1.6.3-r4 1.6.3-r5 1.6.4 1.6.5 1.7.0: General purpose crypto library based on the code used in GnuPG
 dev-libs/libgdata 0.17.3 0.17.4 0.17.4-r1: GLib-based library for accessing online service APIs using the GData protocol
 dev-libs/libgee 0.6.7 0.6.8 0.14.0 0.16.1 0.18.0: GObject-based interfaces and classes for commonly used data structures
@@ -13506,7 +13506,7 @@ media-video/imagination 3.0 3.0-r1: Simple DVD slideshow maker
 media-video/isight-firmware-tools 1.6-r1: Extract, load or export firmware for the iSight webcams
 media-video/istanbul 0.2.2 0.2.2.1_pre20120909: Istanbul is a screencast application for the Unix desktop
 media-video/jubler 4.6.1-r3: Java subtitle editor
-media-video/kaffeine 1.2.2-r1 1.3.1: KDE media player with digital TV support
+media-video/kaffeine 1.2.2-r1 1.3.1 2.0.1: Media player with digital TV support by KDE
 media-video/kamerka 0.10: Simple photo taking application with fancy animated interface
 media-video/kamoso 3.1.0 3.2: Application to take pictures and videos from your webcam by KDE
 media-video/kffmpegthumbnailer 1.1.0-r3 1.1.0-r4: KDE thumbnailer based on ffmpegthumbnailer
@@ -16624,7 +16624,7 @@ sys-apps/rescan-scsi-bus 1.29 1.56 1.57 1.57-r1: Script to rescan the SCSI bus w
 sys-apps/restartd 0.2.2: A daemon for checking your running and not running processes
 sys-apps/rkflashtool 5.1: Tool for flashing Rockchip devices
 sys-apps/rng-tools 4-r7 5 5-r1 5-r2: Daemon to use hardware random number generators
-sys-apps/roccat-tools 3.7.0 3.9.0: Utility for advanced configuration of Roccat devices
+sys-apps/roccat-tools 3.7.0 3.9.0 5.1.0 5.1.1: Utility for advanced configuration of Roccat devices
 sys-apps/s390-tools 1.17.0 1.23.1: User space utilities for the zSeries (s390) Linux kernel and device drivers
 sys-apps/s6 2.1.3.0 2.2.4.3: skarnet.org's small and secure supervision software suite
 sys-apps/s6-linux-init 0.0.1.4: Generates an init binary for s6-based init systems
