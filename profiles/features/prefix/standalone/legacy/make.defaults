@@ -1,0 +1,6 @@
+# utimensat is missing or not reliable until linux-2.6.32.
+# needed by python-3.
+ac_cv_func_utimensat=no
+
+# >=python-3.4 is masked.
+PYTHON_TARGETS="python2_7 python3_3"
