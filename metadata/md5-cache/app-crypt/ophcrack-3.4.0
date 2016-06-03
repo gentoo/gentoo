@@ -1,14 +1,14 @@
 DEFINED_PHASES=configure install
-DEPEND=app-arch/unzip virtual/pkgconfig dev-libs/openssl net-libs/netwib qt4? ( dev-qt/qtgui:4 )
+DEPEND=app-arch/unzip virtual/pkgconfig !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) net-libs/netwib qt4? ( dev-qt/qtgui:4 )
 DESCRIPTION=A time-memory-trade-off-cracker
-EAPI=3
+EAPI=5
 HOMEPAGE=http://ophcrack.sourceforge.net/
-IUSE=qt4 debug +tables
+IUSE=debug libressl qt4 +tables
 KEYWORDS=~amd64 ~ppc ~x86
 LICENSE=GPL-2
-RDEPEND=tables? ( app-crypt/ophcrack-tables ) dev-libs/openssl net-libs/netwib qt4? ( dev-qt/qtgui:4 )
+RDEPEND=tables? ( app-crypt/ophcrack-tables ) !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) net-libs/netwib qt4? ( dev-qt/qtgui:4 )
 SLOT=0
 SRC_URI=mirror://sourceforge/ophcrack/ophcrack-3.4.0.tar.bz2
 _eclass_exported_funcs=src_configure:- src_install:-
 _eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
-_md5_=ec8f607fbf93152049b8108ec3769a79
+_md5_=95db893e0ab1d835acb9bbc116c8ba6e
