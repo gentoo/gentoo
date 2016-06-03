@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst prepare
+DEPEND=ssl? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) )
+DESCRIPTION=IMAP server for Maildir
+EAPI=5
+HOMEPAGE=http://freshmeat.net/projects/bincimap/
+IUSE=libressl ssl
+KEYWORDS=~amd64 ~hppa ~ppc ~x86
+LICENSE=GPL-2
+RDEPEND=ssl? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) ) virtual/daemontools sys-apps/ucspi-tcp net-mail/checkpassword !mail-mta/courier !net-mail/courier-imap !net-mail/cyrus-imapd !net-mail/uw-imap
+SLOT=0
+SRC_URI=http://www.bincimap.org/dl/tarballs/1.2/bincimap-1.2.13final.tar.bz2
+_eclass_exported_funcs=pkg_postinst:- src_prepare:- src_configure:- src_compile:- src_install:-
+_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=8fe3886f1a7c379ee4766d4972f57447
