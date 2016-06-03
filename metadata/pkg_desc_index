@@ -14752,7 +14752,7 @@ net-misc/networkmanager-vpnc 1.0.6 1.0.8: NetworkManager VPNC plugin
 net-misc/ng-utils 0.6: A collection of small tools for accessing netgroup contents
 net-misc/npapi-sdk 0.27 0.27.2 9999: NPAPI headers bundle
 net-misc/nstx 1.1_beta6-r3: IP over DNS tunnel
-net-misc/ntp 4.2.8_p3 4.2.8_p6 4.2.8_p7: Network Time Protocol suite/programs
+net-misc/ntp 4.2.8_p3 4.2.8_p6 4.2.8_p7 4.2.8_p8: Network Time Protocol suite/programs
 net-misc/ntpclient 2010.365 2015.365: A NTP (RFC-1305) client for unix-alike computers
 net-misc/nut-monitor 1.3-r2: A graphical application to monitor and manage UPSes connected to a NUT server
 net-misc/nx 3.5.0.30 3.5.0.32: NX compression technology core libraries
