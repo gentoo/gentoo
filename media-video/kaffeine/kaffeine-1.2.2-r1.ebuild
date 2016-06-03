@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -10,7 +10,7 @@ sr@ijekavian sr@ijekavianlatin sr@latin sv th tr uk zh_CN zh_TW"
 KDE_SCM="git"
 inherit kde4-base
 
-DESCRIPTION="KDE media player with digital TV support"
+DESCRIPTION="Media player with digital TV support by KDE"
 HOMEPAGE="https://kaffeine.kde.org/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 

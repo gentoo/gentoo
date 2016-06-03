@@ -10,7 +10,7 @@ sr@ijekavian sr@ijekavianlatin sr@latin sv th tr uk zh_CN zh_TW"
 KDE_SCM="git"
 inherit kde4-base
 
-DESCRIPTION="KDE media player with digital TV support"
+DESCRIPTION="Media player with digital TV support by KDE"
 HOMEPAGE="https://kaffeine.kde.org/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
