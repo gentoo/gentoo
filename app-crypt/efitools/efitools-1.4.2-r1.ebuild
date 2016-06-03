@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="4"
+EAPI="5"
 
 DESCRIPTION="Tools for manipulating UEFI secure boot platforms"
 HOMEPAGE="https://git.kernel.org/cgit/linux/kernel/git/jejb/efitools.git"
@@ -11,9 +11,11 @@ SRC_URI="http://blog.hansenpartnership.com/wp-uploads/2013/efitools-${PV}.tar.gz
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
+IUSE="libressl"
 
-RDEPEND="dev-libs/openssl
+RDEPEND="
+	!libressl? ( dev-libs/openssl:0= )
+	libressl? ( dev-libs/libressl:0= )
 	sys-apps/util-linux"
 DEPEND="${RDEPEND}
 	sys-apps/help2man
