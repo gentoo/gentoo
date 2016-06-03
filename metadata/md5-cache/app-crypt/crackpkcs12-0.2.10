@@ -8,6 +8,6 @@ KEYWORDS=~amd64 ~x86
 LICENSE=GPL-3+
 RDEPEND=!libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= )
 SLOT=0
-SRC_URI=mirror://sourceforge/crackpkcs12/crackpkcs12-0.2.9.tar.gz
+SRC_URI=mirror://sourceforge/crackpkcs12/crackpkcs12-0.2.10.tar.gz
 _eclass_exported_funcs=-
 _md5_=6dc886d08add7a891b88d80c371b19f5
