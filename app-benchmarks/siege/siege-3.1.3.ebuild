@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -15,9 +15,12 @@ SRC_URI="http://download.joedog.org/${PN}/${P}.tar.gz"
 LICENSE="GPL-2"
 KEYWORDS="~amd64 ~hppa ~mips ~ppc ~x86 ~x64-macos"
 SLOT="0"
-IUSE="ssl"
+IUSE="libressl ssl"
 
-RDEPEND="ssl? ( >=dev-libs/openssl-0.9.6d:= )"
+RDEPEND="ssl? (
+		!libressl? ( dev-libs/openssl:0= )
+		libressl? ( dev-libs/libressl:0= )
+	)"
 DEPEND="${RDEPEND}
 	sys-devel/libtool"
 
