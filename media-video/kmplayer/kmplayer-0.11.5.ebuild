@@ -7,7 +7,7 @@ EAPI=6
 inherit kde4-base
 
 DESCRIPTION="Video player plugin for Konqueror and basic MPlayer frontend"
-HOMEPAGE="https://projects.kde.org/projects/extragear/multimedia/kmplayer"
+HOMEPAGE="https://kmplayer.kde.org"
 COMMIT_ID="a28ff105e76a227b799c2bbf6e732791de5fb84e"
 SRC_URI="https://quickgit.kde.org/?p=kmplayer.git&a=snapshot&h=${COMMIT_ID}&fmt=tbz2 -> ${P}.tar.bz2"
 
