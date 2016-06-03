@@ -17,11 +17,14 @@ SRC_URI="mirror://sourceforge/opendkim/${P}.tar.gz"
 LICENSE="Sendmail-Open-Source BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
-IUSE="+berkdb gnutls ldap lmdb lua memcached opendbx poll sasl selinux +ssl static-libs unbound"
+IUSE="+berkdb gnutls ldap libressl lmdb lua memcached opendbx poll sasl selinux +ssl static-libs unbound"
 
 DEPEND="|| ( mail-filter/libmilter mail-mta/sendmail )
 	dev-libs/libbsd
-	ssl? ( >=dev-libs/openssl-0.9.8:* )
+	ssl? (
+		!libressl? ( dev-libs/openssl:0= )
+		libressl? ( dev-libs/libressl:0= )
+	)
 	berkdb? ( >=sys-libs/db-3.2:* )
 	opendbx? ( >=dev-db/opendbx-1.4.0 )
 	lua? ( dev-lang/lua:* )
