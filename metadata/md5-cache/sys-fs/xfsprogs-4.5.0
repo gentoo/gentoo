@@ -12,4 +12,4 @@ SLOT=0
 SRC_URI=ftp://oss.sgi.com/projects/xfs/cmd_tars/xfsprogs-4.5.0.tar.gz ftp://oss.sgi.com/projects/xfs/previous/cmd_tars/xfsprogs-4.5.0.tar.gz
 _eclass_exported_funcs=pkg_setup:- src_prepare:- src_configure:- src_install:-
 _eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
-_md5_=5f7e01c11a323cf4d980e0ba72c7d611
+_md5_=a4d9cefbd771f001f8b213f9a913e401
