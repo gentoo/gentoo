@@ -19,7 +19,7 @@ then
 else
 	# upstream stable
 	KEYWORDS="~amd64 ~x86"
-	SRC_URI="https://download.jetbrains.com/idea/${MY_PN}IU-${MY_PV}.tar.gz -> ${MY_PN}IU-${PV_STRING}.tar.gz"
+	SRC_URI="https://download.jetbrains.com/idea/${MY_PN}IU-${MY_PV}b.tar.gz -> ${MY_PN}IU-${PV_STRING}.tar.gz"
 fi
 
 DESCRIPTION="A complete toolset for web, mobile and enterprise development"
