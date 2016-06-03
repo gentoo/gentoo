@@ -5063,7 +5063,7 @@ dev-ml/ocaml-autoconf 1.1: autoconf macros to support configuration of OCaml pro
 dev-ml/ocaml-base64 2.0.0: Library for radix-64 representation (de)coding
 dev-ml/ocaml-cairo 0.5: OCaml Binding to Cairo
 dev-ml/ocaml-cstruct 1.7.1 1.8.0 1.9.0 2.0.0 2.1.0: Map OCaml arrays onto C-like structs
-dev-ml/ocaml-ctypes 0.4.1-r1 0.4.2 0.5.0 0.5.1: Library for binding to C libraries using pure OCaml
+dev-ml/ocaml-ctypes 0.4.1-r1 0.4.2 0.5.0 0.5.1 0.6.0: Library for binding to C libraries using pure OCaml
 dev-ml/ocaml-data-notation 0.0.11: This project uses type-conv to dump OCaml data structure using OCaml data notation
 dev-ml/ocaml-dns 0.15.3 0.16.0 0.18.0 0.18.1: A pure OCaml implementation of the DNS protocol
 dev-ml/ocaml-doc 3.12: Ocaml reference manual (html)
