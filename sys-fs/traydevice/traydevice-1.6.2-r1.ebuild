@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1
 
 DESCRIPTION="A little desktop application displaying systray icon for UDisks"
-HOMEPAGE="http://savannah.nongnu.org/projects/traydevice/"
+HOMEPAGE="https://savannah.nongnu.org/projects/traydevice/"
 SRC_URI="mirror://nongnu/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3"

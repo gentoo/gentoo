@@ -10,7 +10,7 @@ MY_P="${P/_/s}"
 
 DESCRIPTION="A graphical user interface toolkit for X"
 HOMEPAGE="http://www.nongnu.org/xforms/"
-SRC_URI="http://savannah.nongnu.org/download/xforms/${MY_P}.tar.gz"
+SRC_URI="https://savannah.nongnu.org/download/xforms/${MY_P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"

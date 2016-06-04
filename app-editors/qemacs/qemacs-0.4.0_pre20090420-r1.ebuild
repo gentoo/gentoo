@@ -7,7 +7,7 @@ EAPI=5
 inherit eutils flag-o-matic toolchain-funcs
 
 DESCRIPTION="QEmacs is a very small but powerful UNIX editor"
-HOMEPAGE="http://savannah.nongnu.org/projects/qemacs"
+HOMEPAGE="https://savannah.nongnu.org/projects/qemacs"
 SRC_URI="mirror://gentoo/${P}.tar.bz2"
 
 LICENSE="LGPL-2.1+ GPL-2+"

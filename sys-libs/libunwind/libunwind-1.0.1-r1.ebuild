@@ -7,7 +7,7 @@ EAPI="4"
 inherit autotools eutils
 
 DESCRIPTION="Portable and efficient API to determine the call-chain of a program"
-HOMEPAGE="http://savannah.nongnu.org/projects/libunwind"
+HOMEPAGE="https://savannah.nongnu.org/projects/libunwind"
 SRC_URI="http://download.savannah.nongnu.org/releases/libunwind/${P}.tar.gz"
 
 LICENSE="MIT"

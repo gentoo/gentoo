@@ -7,7 +7,7 @@ EAPI=5
 inherit eutils toolchain-funcs flag-o-matic
 
 DESCRIPTION="/sbin/init - parent of all processes"
-HOMEPAGE="http://savannah.nongnu.org/projects/sysvinit"
+HOMEPAGE="https://savannah.nongnu.org/projects/sysvinit"
 SRC_URI="mirror://nongnu/${PN}/${P}dsf.tar.bz2"
 
 LICENSE="GPL-2"

@@ -8,7 +8,7 @@ inherit flag-o-matic
 
 DESCRIPTION="A tool to color syslog files as well"
 HOMEPAGE="http://www.nongnu.org/regex-markup/"
-SRC_URI="http://savannah.nongnu.org/download/regex-markup/${P}.tar.gz"
+SRC_URI="https://savannah.nongnu.org/download/regex-markup/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

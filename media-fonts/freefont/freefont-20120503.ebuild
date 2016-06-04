@@ -7,7 +7,7 @@ EAPI=5
 inherit font
 
 DESCRIPTION="OpenType and TrueType Unicode fonts from the Free UCS Outline Fonts Project"
-HOMEPAGE="http://savannah.nongnu.org/projects/freefont/"
+HOMEPAGE="https://savannah.nongnu.org/projects/freefont/"
 SRC_URI="mirror://gnu/freefont/${PN}-ttf-${PV}.zip
 	mirror://gnu/freefont/${PN}-otf-${PV}.tar.gz"
 

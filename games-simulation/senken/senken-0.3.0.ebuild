@@ -6,7 +6,7 @@ EAPI=5
 inherit eutils games
 
 DESCRIPTION="city simulation game"
-HOMEPAGE="http://savannah.nongnu.org/projects/senken/"
+HOMEPAGE="https://savannah.nongnu.org/projects/senken/"
 SRC_URI="mirror://gentoo/${P}.tar.gz"
 
 LICENSE="GPL-2"

@@ -10,7 +10,7 @@ MY_P=${P/_beta/-beta}
 DBV=20080531
 
 DESCRIPTION="A simple utility to read the temperature of SMART capable hard drives"
-HOMEPAGE="http://savannah.nongnu.org/projects/hddtemp/"
+HOMEPAGE="https://savannah.nongnu.org/projects/hddtemp/"
 SRC_URI="http://download.savannah.gnu.org/releases/hddtemp/${MY_P}.tar.bz2 mirror://gentoo/hddtemp-${DBV}.db.bz2"
 
 LICENSE="GPL-2"

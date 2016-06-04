@@ -9,7 +9,7 @@ inherit eutils gnome2
 
 DESCRIPTION="Gtk2 frontend for rdesktop"
 HOMEPAGE="http://www.nongnu.org/grdesktop/"
-SRC_URI="http://savannah.nongnu.org/download/${PN}/${P}.tar.gz"
+SRC_URI="https://savannah.nongnu.org/download/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

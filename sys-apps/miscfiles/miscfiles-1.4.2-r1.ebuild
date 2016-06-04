@@ -8,7 +8,7 @@ inherit eutils
 
 UNI_PV=5.2.0
 DESCRIPTION="Miscellaneous files"
-HOMEPAGE="http://savannah.gnu.org/projects/miscfiles/"
+HOMEPAGE="https://savannah.gnu.org/projects/miscfiles/"
 # updated unicode data file from:
 # http://www.unicode.org/Public/${UNI_PV}/ucd/UnicodeData.txt
 SRC_URI="mirror://gnu/miscfiles/${P}.tar.gz

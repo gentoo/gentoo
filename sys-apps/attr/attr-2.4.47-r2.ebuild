@@ -7,7 +7,7 @@ EAPI="4"
 inherit eutils libtool toolchain-funcs multilib-minimal
 
 DESCRIPTION="Extended attributes tools"
-HOMEPAGE="http://savannah.nongnu.org/projects/attr"
+HOMEPAGE="https://savannah.nongnu.org/projects/attr"
 SRC_URI="mirror://nongnu/${PN}/${P}.src.tar.gz"
 
 LICENSE="LGPL-2.1"

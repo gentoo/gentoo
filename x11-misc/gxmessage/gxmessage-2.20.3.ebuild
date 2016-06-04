@@ -6,7 +6,7 @@ EAPI=5
 inherit gnome2-utils
 
 DESCRIPTION="A GTK+ based xmessage clone"
-HOMEPAGE="http://savannah.gnu.org/projects/gxmessage/ http://homepages.ihug.co.nz/~trmusson/programs.html#gxmessage"
+HOMEPAGE="https://savannah.gnu.org/projects/gxmessage/ http://homepages.ihug.co.nz/~trmusson/programs.html#gxmessage"
 SRC_URI="mirror://gnu/${PN}/${P}.tar.gz
 	http://homepages.ihug.co.nz/~trmusson/stuff/${P}.tar.gz"
 

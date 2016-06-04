@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1 multilib wxwidgets
 
 DESCRIPTION="Font preview application"
-HOMEPAGE="http://savannah.nongnu.org/projects/fontypython"
+HOMEPAGE="https://savannah.nongnu.org/projects/fontypython"
 SRC_URI="http://download.savannah.nongnu.org/releases/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3"

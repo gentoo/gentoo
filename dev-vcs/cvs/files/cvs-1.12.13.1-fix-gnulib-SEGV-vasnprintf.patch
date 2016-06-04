@@ -2,7 +2,7 @@ Attemt to use CVS leads to glibc crash:
 $ cvs up
   *** %n in writable segment detected ***
 
-Fixes: http://savannah.nongnu.org/bugs/?35432
+Fixes: https://savannah.nongnu.org/bugs/?35432
 Upstream gnulib commit:
 
 From 913c09becd9df89dbd9b9f386e7f35c240d5efe8 Mon Sep 17 00:00:00 2001

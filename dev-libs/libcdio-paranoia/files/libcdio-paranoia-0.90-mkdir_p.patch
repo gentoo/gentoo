@@ -1,6 +1,6 @@
 http://bugs.gentoo.org/455374
 http://github.com/rocky/libcdio-paranoia/issues/1
-http://savannah.gnu.org/bugs/index.php?38273
+https://savannah.gnu.org/bugs/index.php?38273
 
 --- configure.ac
 +++ configure.ac
