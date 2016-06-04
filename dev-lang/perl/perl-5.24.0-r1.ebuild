@@ -119,14 +119,6 @@ pkg_setup() {
 	VENDOR_LIB="/usr/$(get_libdir)/perl5/vendor_perl/${MY_PV}"
 	VENDOR_ARCH="/usr/$(get_libdir)/perl5/vendor_perl/${MY_PV}/${myarch}${mythreading}"
 
-	if use ithreads ; then
-		echo ""
-		ewarn "THREADS WARNING"
-		ewarn "PLEASE NOTE: You are compiling ${MY_P} with interpreter-level threading enabled."
-		ewarn "Threading is not supported by all applications that compile against perl. You"
-		ewarn "use threading at your own discretion."
-	fi
-
 	dual_scripts
 }
 
@@ -450,8 +442,6 @@ src_install() {
 		einfo "Removing ${D} from ${i}..."
 		sed -i -e "s:${D}::" "${i}" || die "Sed failed"
 	done
-
-	find "${ED}" -type f -name .packlist -delete || die
 
 	dodoc Changes* README AUTHORS
 

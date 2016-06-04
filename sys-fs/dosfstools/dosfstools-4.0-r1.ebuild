@@ -37,3 +37,12 @@ src_configure() {
 		$(use_enable compat compat-symlinks) \
 		$(use_with udev)
 }
+
+src_install() {
+	default
+	if ! use compat; then
+		# Keep fsck -t vfat and mkfs -t vfat working, bug 584980.
+		dosym fsck.fat /usr/sbin/fsck.vfat
+		dosym mkfs.fat /usr/sbin/mkfs.vfat
+	fi
+}
