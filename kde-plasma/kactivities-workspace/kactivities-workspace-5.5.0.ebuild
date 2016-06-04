@@ -47,4 +47,11 @@ src_prepare() {
 	# Remove conflict with kde-frameworks/kactivities
 	sed -e "/add_subdirectory.*imports/ s/^/#DONT/" \
 		-i src/workspace/CMakeLists.txt || die
+
+	# Fix bogus deps (bug #585044)
+	sed -e "s/KF5KCMUtils/KF5Service/" \
+		-e "/Declarative/d" \
+		-e "/KF5::KCMUtils/d" \
+		-i src/workspace/settings/CMakeLists.txt || die
+
 }
