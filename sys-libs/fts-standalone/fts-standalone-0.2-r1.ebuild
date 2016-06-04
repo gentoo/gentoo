@@ -12,7 +12,7 @@ SRC_URI="https://dev.gentoo.org/~blueness/fts-standalone/${MY_P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~mips ~ppc ~x86"
+KEYWORDS="amd64 ~arm ~mips ~ppc x86"
 IUSE=""
 
 DEPEND="
