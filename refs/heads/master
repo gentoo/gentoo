@@ -1,17 +1,13 @@
 certificate version 0.1
-pusher 9191A5F193491BB8 1465068242 +0000
-pushee git+ssh://git.gentoo.org/repo/gentoo
-nonce 1465069914-8b842b7821c24fc9b1b9
+pusher 0BBEEA1FEA4843A4 1465070283 -0400
+pushee ssh://git.gentoo.org/repo/gentoo.git
+nonce 1465070283-44088cdd3c7ea0f0724f
 
-9d40bc9df5cd1c5de3bcdd0d6e846ae832ede27b 5746529f65101744d9dba9141cdffd398361c1ae refs/heads/master
+5746529f65101744d9dba9141cdffd398361c1ae 888db523d7c61e467ba39971bd79d692cf7ac0b3 refs/heads/master
 -----BEGIN PGP SIGNATURE-----
 Version: GnuPG v2
 
-iQEcBAABCAAGBQJXUyrSAAoJEJGRpfGTSRu4G64H/0tJYJAVQ56d8jot5MzwFinT
-TTuBiU6CnI2AlcyFbvaT3rl1mhtCdFQwETyYN1zCmpoda4HpV66T2vwFTAyeqvHd
-4VprAKQ4iaZPb55kU+FhccYiKQPE9eEW3bm8uuBtU5+NT0VhJoB1qPF3uOuKN0xm
-Hg+YT1fDEvZCD8duD/iSdPU/dT9RJEDaM6D55Y4eBoM390i34p0fK/Xi1o+S7eOw
-AyxbCR+NpA5JGoaT9sqShPt8MDSLagJkckEYqmuk2w/4AavkzPmaRlsLo3F9++3m
-vhvFQQoQsbeaqPNRDTl+n3MBLyUvLLpC28fzyY0zCFKrcYHaa2YNSIna0n07hP0=
-=zyVT
+iF4EABEIAAYFAldTMssACgkQRxvnM+8pGj9P6gEAjhg/8eOhGGfXY8a++b20BWkN
+BfuA7Q9AjoqwiLULifYA+wRWU4xzV4mf7OaNueATSEnvsX5IIOo4uHJ8VQpkBfVS
+=I5is
 -----END PGP SIGNATURE-----
