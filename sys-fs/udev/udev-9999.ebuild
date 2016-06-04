@@ -251,8 +251,8 @@ multilib_src_compile() {
 
 multilib_src_install() {
 	if multilib_is_native_abi; then
-		local lib_LTLIBRARIES="libudev.la" \
-			pkgconfiglib_DATA="src/libudev/libudev.pc"
+		local lib_LTLIBRARIES="libudev.la"
+		local pkgconfiglib_DATA="src/libudev/libudev.pc"
 
 		local targets=(
 			install-libLTLIBRARIES
@@ -278,18 +278,16 @@ multilib_src_install() {
 			lib_LTLIBRARIES="${lib_LTLIBRARIES}"
 			pkgconfiglib_DATA="${pkgconfiglib_DATA}"
 			pkgconfigdata_DATA="src/udev/udev.pc"
-			INSTALL_DIRS='$(sysconfdir)/udev/rules.d \
-					$(sysconfdir)/udev/hwdb.d \
-					$(sysconfdir)/systemd/network'
+			INSTALL_DIRS='$(sysconfdir)/udev/rules.d $(sysconfdir)/udev/hwdb.d $(sysconfdir)/systemd/network'
 			dist_bashcompletion_DATA="shell-completion/bash/udevadm"
 			dist_network_DATA="network/99-default.link"
 		)
 		emake -j1 DESTDIR="${D}" "${targets[@]}"
 		doman man/{udev.conf.5,systemd.link.5,udev.7,systemd-udevd.service.8,udevadm.8}
 	else
-		local lib_LTLIBRARIES="libudev.la" \
-			pkgconfiglib_DATA="src/libudev/libudev.pc" \
-			include_HEADERS="src/libudev/libudev.h"
+		local lib_LTLIBRARIES="libudev.la"
+		local pkgconfiglib_DATA="src/libudev/libudev.pc"
+		local include_HEADERS="src/libudev/libudev.h"
 
 		local targets=(
 			install-libLTLIBRARIES
@@ -310,9 +308,8 @@ multilib_src_install_all() {
 	dodoc TODO
 
 	prune_libtool_files --all
-	rm -f \
-		"${D}"/lib/udev/rules.d/99-systemd.rules \
-		"${D}"/usr/share/doc/${PF}/{LICENSE.*,GVARIANT-SERIALIZATION,DIFFERENCES,PORTING-DBUS1,sd-shutdown.h}
+	rm -f "${D}"/lib/udev/rules.d/99-systemd.rules
+	rm -f "${D}"/usr/share/doc/${PF}/{LICENSE.*,GVARIANT-SERIALIZATION,DIFFERENCES,PORTING-DBUS1,sd-shutdown.h}
 
 	# see src_prepare() for content of 40-gentoo.rules
 	insinto /lib/udev/rules.d

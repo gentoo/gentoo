@@ -2,9 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=6
+EAPI=5
 
-inherit autotools bash-completion-r1 linux-info multilib multilib-minimal toolchain-funcs udev user versionator
+inherit autotools bash-completion-r1 eutils linux-info multilib multilib-minimal toolchain-funcs udev user versionator
 
 if [[ ${PV} = 9999* ]]; then
 	EGIT_REPO_URI="git://anongit.freedesktop.org/systemd/systemd"
@@ -14,10 +14,10 @@ else
 	SRC_URI="https://github.com/systemd/systemd/archive/v${PV}.tar.gz -> systemd-${PV}.tar.gz"
 	if [[ -n "${patchset}" ]]; then
 		SRC_URI+="
-			https://dev.gentoo.org/~williamh/dist/${P}-patches-${patchset}.tar.xz
-			https://dev.gentoo.org/~ssuominen/${P}-patches-${patchset}.tar.xz"
+			https://dev.gentoo.org/~ssuominen/${P}-patches-${patchset}.tar.xz
+			https://dev.gentoo.org/~williamh/dist/${P}-patches-${patchset}.tar.xz"
 	fi
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
+	KEYWORDS="alpha amd64 arm arm64 ~hppa ia64 m68k ~mips ppc ~ppc64 s390 sh sparc x86"
 fi
 
 DESCRIPTION="Linux dynamic and persistent device naming support (aka userspace devfs)"
@@ -29,7 +29,7 @@ IUSE="acl +kmod selinux static-libs"
 
 RESTRICT="test"
 
-COMMON_DEPEND=">=sys-apps/util-linux-2.27.1[${MULTILIB_USEDEP}]
+COMMON_DEPEND=">=sys-apps/util-linux-2.24
 	sys-libs/libcap[${MULTILIB_USEDEP}]
 	acl? ( sys-apps/acl )
 	kmod? ( >=sys-apps/kmod-16 )
@@ -104,7 +104,7 @@ pkg_setup() {
 src_prepare() {
 	if ! [[ ${PV} = 9999* ]]; then
 		# secure_getenv() disable for non-glibc systems wrt bug #443030
-		if ! [[ $(grep -r secure_getenv * | wc -l) -eq 26 ]]; then
+		if ! [[ $(grep -r secure_getenv * | wc -l) -eq 25 ]]; then
 			eerror "The line count for secure_getenv() failed, see bug #443030"
 			die
 		fi
@@ -112,13 +112,13 @@ src_prepare() {
 
 	# backport some patches
 	if [[ -n "${patchset}" ]]; then
-		eapply "${WORKDIR}"/patch
+		EPATCH_SUFFIX=patch EPATCH_FORCE=yes epatch
 	fi
 
 	cat <<-EOF > "${T}"/40-gentoo.rules
 	# Gentoo specific floppy and usb groups
-	ACTION=="add", SUBSYSTEM=="block", KERNEL=="fd[0-9]", GROUP="floppy"
-	ACTION=="add", SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", GROUP="usb"
+	SUBSYSTEM=="block", KERNEL=="fd[0-9]", GROUP="floppy"
+	SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", GROUP="usb"
 	EOF
 
 	# change rules back to group uucp instead of dialout for now wrt #454556
@@ -128,7 +128,7 @@ src_prepare() {
 	echo 'AC_DEFUN([AM_PATH_LIBGCRYPT],[:])' > m4/gcrypt.m4
 
 	# apply user patches
-	eapply_user
+	epatch_user
 
 	eautoreconf
 
@@ -157,7 +157,6 @@ multilib_src_configure() {
 	tc-export CC #463846
 	export cc_cv_CFLAGS__flto=no #502950
 	export cc_cv_CFLAGS__Werror_shadow=no #554454
-	export cc_cv_LDFLAGS__Wl__fuse_ld_gold=no #573874
 
 	# Keep sorted by ./configure --help and only pass --disable flags
 	# when *required* to avoid external deps or unnecessary compile
@@ -251,8 +250,8 @@ multilib_src_compile() {
 
 multilib_src_install() {
 	if multilib_is_native_abi; then
-		local lib_LTLIBRARIES="libudev.la" \
-			pkgconfiglib_DATA="src/libudev/libudev.pc"
+		local lib_LTLIBRARIES="libudev.la"
+		local pkgconfiglib_DATA="src/libudev/libudev.pc"
 
 		local targets=(
 			install-libLTLIBRARIES
@@ -278,18 +277,16 @@ multilib_src_install() {
 			lib_LTLIBRARIES="${lib_LTLIBRARIES}"
 			pkgconfiglib_DATA="${pkgconfiglib_DATA}"
 			pkgconfigdata_DATA="src/udev/udev.pc"
-			INSTALL_DIRS='$(sysconfdir)/udev/rules.d \
-					$(sysconfdir)/udev/hwdb.d \
-					$(sysconfdir)/systemd/network'
+			INSTALL_DIRS='$(sysconfdir)/udev/rules.d $(sysconfdir)/udev/hwdb.d $(sysconfdir)/systemd/network'
 			dist_bashcompletion_DATA="shell-completion/bash/udevadm"
 			dist_network_DATA="network/99-default.link"
 		)
 		emake -j1 DESTDIR="${D}" "${targets[@]}"
 		doman man/{udev.conf.5,systemd.link.5,udev.7,systemd-udevd.service.8,udevadm.8}
 	else
-		local lib_LTLIBRARIES="libudev.la" \
-			pkgconfiglib_DATA="src/libudev/libudev.pc" \
-			include_HEADERS="src/libudev/libudev.h"
+		local lib_LTLIBRARIES="libudev.la"
+		local pkgconfiglib_DATA="src/libudev/libudev.pc"
+		local include_HEADERS="src/libudev/libudev.h"
 
 		local targets=(
 			install-libLTLIBRARIES
@@ -310,9 +307,8 @@ multilib_src_install_all() {
 	dodoc TODO
 
 	prune_libtool_files --all
-	rm -f \
-		"${D}"/lib/udev/rules.d/99-systemd.rules \
-		"${D}"/usr/share/doc/${PF}/{LICENSE.*,GVARIANT-SERIALIZATION,DIFFERENCES,PORTING-DBUS1,sd-shutdown.h}
+	rm -f "${D}"/lib/udev/rules.d/99-systemd.rules
+	rm -f "${D}"/usr/share/doc/${PF}/{LICENSE.*,GVARIANT-SERIALIZATION,DIFFERENCES,PORTING-DBUS1,sd-shutdown.h}
 
 	# see src_prepare() for content of 40-gentoo.rules
 	insinto /lib/udev/rules.d
