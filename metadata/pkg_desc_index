@@ -5880,7 +5880,7 @@ dev-perl/Math-ModInt 0.11.0: modular integer arithmetic
 dev-perl/Math-NumSeq 71.0.0: number sequences (for example from OEIS)
 dev-perl/Math-NumberCruncher 5.0.0: Collection of useful math-related functions
 dev-perl/Math-Pari 2.10.806.50-r1 2.10.808: Perl interface to PARI
-dev-perl/Math-PlanePath 122.0.0: Mathematical paths through the 2-D plane
+dev-perl/Math-PlanePath 122.0.0 123.0.0: Mathematical paths through the 2-D plane
 dev-perl/Math-Prime-XS 0.260.0: Detect and calculate prime numbers with deterministic tests
 dev-perl/Math-Random 0.710.0-r1 0.720.0: Random Number Generators
 dev-perl/Math-Random-ISAAC 1.4.0-r1: Perl interface to the ISAAC PRNG algorithm
@@ -9669,7 +9669,7 @@ dev-util/dwarves 1.10_p20140618 9999: pahole (Poke-a-Hole) and other DWARF2 util
 dev-util/dwdiff 2.1.0 2.1.0-r1: diff-like program that operates at the word level instead of the line level
 dev-util/eggy 0.3.3-r1: An IDE/editor for several programming languages, including Python, Java, C, Perl and others
 dev-util/egypt 1.10: devilishly simple tool for creating call graphs of C programs
-dev-util/electron 0.36.12-r1: Cross platform application development framework based on web technologies
+dev-util/electron 0.36.12-r2: Cross platform application development framework based on web technologies
 dev-util/elfkickers 3.0-r1 3.0-r2 3.0a: collection of programs to manipulate ELF files: sstrip, rebind, elfls, elftoc
 dev-util/emilpro 3-r3 9999: a graphical disassembler for a large number of instruction sets
 dev-util/eric 4.5.25-r1 5.5.2: A full featured Python IDE using PyQt4 and QScintilla
