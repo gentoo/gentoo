@@ -5,7 +5,6 @@
 EAPI=6
 
 KDE_REQUIRED="optional"
-QT_MINIMAL="4.7.4"
 KDE_SCM="git"
 CMAKE_REQUIRED="never"
 
@@ -94,16 +93,14 @@ SLOT="0"
 [[ ${PV} == *9999* ]] || \
 KEYWORDS="~amd64 ~arm ~x86 ~amd64-linux ~x86-linux"
 
-COMMON_DEPEND="
-	${PYTHON_DEPS}
-	app-arch/zip
+COMMON_DEPEND="${PYTHON_DEPS}
 	app-arch/unzip
+	app-arch/zip
 	app-text/hunspell
-	app-text/mythes
 	>=app-text/libabw-0.1.0
-	app-text/libexttextcat
 	>=app-text/libebook-0.1
 	>=app-text/libetonyek-0.1
+	app-text/libexttextcat
 	app-text/liblangtag
 	>=app-text/libmspub-0.1.0
 	>=app-text/libmwaw-0.3.1
@@ -111,10 +108,12 @@ COMMON_DEPEND="
 	app-text/libwpd:0.10[tools]
 	app-text/libwpg:0.3
 	>=app-text/libwps-0.4
+	app-text/mythes
 	app-text/poppler:=[cxx]
 	>=dev-cpp/clucene-2.3.3.4-r2
 	=dev-cpp/libcmis-0.5*
 	dev-db/unixODBC
+	dev-lang/perl
 	>=dev-libs/boost-1.55:=
 	dev-libs/expat
 	dev-libs/hyphen
@@ -123,7 +122,6 @@ COMMON_DEPEND="
 	dev-libs/librevenge
 	dev-libs/nspr
 	dev-libs/nss
-	>=dev-lang/perl-5.0
 	!libressl? ( >=dev-libs/openssl-1.0.0d:0 )
 	libressl? ( dev-libs/libressl )
 	>=dev-libs/redland-1.0.16
@@ -133,13 +131,13 @@ COMMON_DEPEND="
 	>=media-libs/glew-1.10
 	>=media-libs/harfbuzz-0.9.18:=[icu(+)]
 	media-libs/lcms:2
-	>=media-libs/libpng-1.4:0=
 	>=media-libs/libcdr-0.1.0
 	>=media-libs/libfreehand-0.1.0
 	media-libs/libpagemaker
+	>=media-libs/libpng-1.4:0=
 	>=media-libs/libvisio-0.1.0
-	net-misc/curl
 	net-libs/neon
+	net-misc/curl
 	net-nds/openldap
 	sci-mathematics/lpsolve
 	virtual/jpeg:0
@@ -160,6 +158,10 @@ COMMON_DEPEND="
 	)
 	firebird? ( >=dev-db/firebird-2.5 )
 	gltf? ( media-libs/libgltf )
+	gstreamer? (
+		media-libs/gstreamer:1.0
+		media-libs/gst-plugins-base:1.0
+	)
 	gtk? (
 		x11-libs/gdk-pixbuf
 		>=x11-libs/gtk+-2.24:2
@@ -168,10 +170,6 @@ COMMON_DEPEND="
 		dev-libs/glib:2
 		dev-libs/gobject-introspection
 		>=x11-libs/gtk+-3.8:3
-	)
-	gstreamer? (
-		media-libs/gstreamer:1.0
-		media-libs/gst-plugins-base:1.0
 	)
 	jemalloc? ( dev-libs/jemalloc )
 	libreoffice_extensions_scripting-beanshell? ( dev-java/bsh )
@@ -185,8 +183,8 @@ RDEPEND="${COMMON_DEPEND}
 	!app-office/libreoffice-bin
 	!app-office/libreoffice-bin-debug
 	!app-office/openoffice
-	media-fonts/libertine
 	media-fonts/liberation-fonts
+	media-fonts/libertine
 	media-fonts/urw-fonts
 	java? ( >=virtual/jre-1.6 )
 	kde? ( $(add_kdeapps_dep kioclient) )
@@ -205,6 +203,7 @@ fi
 #        after everything upstream is under gbuild
 #        as dmake execute tests right away
 DEPEND="${COMMON_DEPEND}
+	!<sys-devel/make-3.82
 	>=dev-libs/libatomic_ops-7.2d
 	>=dev-libs/libxml2-2.7.8
 	dev-libs/libxslt
@@ -217,7 +216,6 @@ DEPEND="${COMMON_DEPEND}
 	sys-devel/bison
 	sys-devel/flex
 	sys-devel/gettext
-	!<sys-devel/make-3.82
 	sys-devel/ucpp
 	sys-libs/zlib
 	virtual/pkgconfig
@@ -228,15 +226,14 @@ DEPEND="${COMMON_DEPEND}
 	x11-proto/xineramaproto
 	x11-proto/xproto
 	java? (
+		dev-java/ant-core
 		>=virtual/jdk-1.6
-		>=dev-java/ant-core-1.7
 	)
 	odk? ( >=app-doc/doxygen-1.8.4 )
 	test? ( dev-util/cppunit )
 "
 
-REQUIRED_USE="
-	${PYTHON_REQUIRED_USE}
+REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	bluetooth? ( dbus )
 	collada? ( gltf )
 	eds? ( gnome )
@@ -538,7 +535,7 @@ src_install() {
 	insinto /usr/$(get_libdir)/libreoffice/help
 	doins xmlhelp/util/*.xsl
 
-	# Remove desktop files for support to old installs that can't parse mime
+	# Remove desktop files to support old installs that can't parse mime
 	rm -r "${ED}"usr/share/mimelnk/ || die
 
 	# FIXME: Hack add missing file
