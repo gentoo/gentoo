@@ -16484,7 +16484,7 @@ sys-apps/fakeroot-ng 0.17 0.18 0.18-r1: A utility to run commands with fake root
 sys-apps/fbset 2.1: A utility to set the framebuffer videomode
 sys-apps/file 5.22 5.25 5.26-r1 5.27 9999: identify a file's format by scanning binary data for patterns
 sys-apps/findutils 4.4.2-r2 4.5.18 4.6.0-r1: GNU utilities for finding files
-sys-apps/firejail 0.9.36 0.9.38 0.9.40 0.9.40-r1: Security sandbox for any type of processes
+sys-apps/firejail 0.9.36 0.9.38 0.9.40 0.9.40-r2: Security sandbox for any type of processes
 sys-apps/fix-gnustack 0.1: Utility to report and remove the executable flag from an ELF object's GNU_STACK
 sys-apps/flashrom 0.9.6.1 0.9.7 0.9.8 9999: Utility for reading, writing, erasing and verifying flash ROM chips
 sys-apps/flock 2.19: Manage locks from shell scripts
@@ -17057,7 +17057,7 @@ sys-fs/diskdev_cmds 332.14 332.14_p1: HFS and HFS+ utils ported from OSX, suppli
 sys-fs/dislocker 0.5.2 0.6.1 9999: Dislocker is used to read BitLocker encrypted partitions.
 sys-fs/dmg2img 1.6.4 1.6.5: Converts Apple DMG files to standard HFS+ images
 sys-fs/dmraid 1.0.0_rc16-r3: Device-mapper RAID tool and library
-sys-fs/dosfstools 3.0.28 4.0: DOS filesystem tools - provides mkdosfs, mkfs.msdos, mkfs.vfat
+sys-fs/dosfstools 3.0.28 4.0-r1: DOS filesystem tools - provides mkdosfs, mkfs.msdos, mkfs.vfat
 sys-fs/duperemove 0.09.1 0.09.2 0.09.3 0.09.4 0.09.5 0.10: Btrfs deduplication utility
 sys-fs/e2fsprogs 1.42.13 1.43: Standard EXT2/EXT3/EXT4 filesystem utilities
 sys-fs/e2tools 0.0.16: utilities to read, write, and manipulate files in an ext2/ext3 filesystem
