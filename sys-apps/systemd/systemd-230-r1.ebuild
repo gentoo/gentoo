@@ -16,7 +16,7 @@ fi
 
 PYTHON_COMPAT=( python{2_7,3_3,3_4,3_5} )
 
-inherit autotools bash-completion-r1 linux-info  multilib-minimal pam python-any-r1 systemd toolchain-funcs udev user
+inherit autotools bash-completion-r1 linux-info multilib-minimal pam python-any-r1 systemd toolchain-funcs udev user
 
 DESCRIPTION="System and service manager for Linux"
 HOMEPAGE="https://www.freedesktop.org/wiki/Software/systemd"
