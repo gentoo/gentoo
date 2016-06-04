@@ -5,7 +5,7 @@
 EAPI=6
 
 DIST_AUTHOR="KRYDE"
-DIST_VERSION="122"
+DIST_VERSION="123"
 inherit perl-module
 
 DESCRIPTION="Mathematical paths through the 2-D plane"
