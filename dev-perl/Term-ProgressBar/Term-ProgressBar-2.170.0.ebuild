@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="Perl module for Term-ProgressBar"
 
 SLOT="0"
-KEYWORDS="alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-linux"
+KEYWORDS="alpha amd64 hppa ia64 ppc ppc64 sparc x86 ~x86-linux"
 IUSE="test"
 
 RDEPEND="
