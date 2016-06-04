@@ -30,6 +30,41 @@
 
 #--- END OF EXAMPLES ---
 
+# Patrice Clement <monsieurp@gentoo.org> (4 Jun 2016)
+# Unmaintained packages. Upstream is either dead, nowhere to be found or has
+# been inactive for quite a while. Also, most of these packages are still
+# sitting in ~arch after years in the tree.
+# Masked for removal in 30 days.
+dev-util/ccmalloc
+dev-util/dwarves
+dev-util/tinlink
+dev-util/cdecl
+dev-util/redet
+dev-util/eggy
+dev-util/mock
+dev-util/par
+dev-util/injectso
+dev-util/dissembler
+dev-util/ghh
+dev-util/gengetopt
+dev-util/lsuio
+dev-util/rec
+dev-util/usb-robot
+dev-util/jif
+dev-util/httpup
+dev-util/crow-designer
+dev-util/qdevelop
+dev-util/intel2gas
+dev-util/webcpp
+dev-util/as11
+dev-util/duma
+dev-util/filepp
+dev-util/pretrace
+dev-util/ald
+dev-util/skelgen
+dev-util/kdoc
+dev-util/ftncheck
+
 # Hans de Graaff <graaff@gentoo.org> (4 Jun 2016)
 # Name-versioned dependency that was not used in any
 # version of cucumber we packaged and that is no longer
