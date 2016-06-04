@@ -2,4 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 <!-- maintainer-needed -->
+<longdescription lang="en">
+sc is a free curses-based spreadsheet program that uses key bindings similar to
+vi and less
+</longdescription>
 </pkgmetadata>
