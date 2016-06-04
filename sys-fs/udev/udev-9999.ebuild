@@ -4,7 +4,7 @@
 
 EAPI=6
 
-inherit autotools bash-completion-r1 linux-info multilib multilib-minimal toolchain-funcs udev user versionator
+inherit autotools bash-completion-r1 linux-info multilib-minimal toolchain-funcs udev user versionator
 
 if [[ ${PV} = 9999* ]]; then
 	EGIT_REPO_URI="git://anongit.freedesktop.org/systemd/systemd"
@@ -117,8 +117,8 @@ src_prepare() {
 
 	cat <<-EOF > "${T}"/40-gentoo.rules
 	# Gentoo specific floppy and usb groups
-	SUBSYSTEM=="block", KERNEL=="fd[0-9]", GROUP="floppy"
-	SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", GROUP="usb"
+	ACTION=="add", SUBSYSTEM=="block", KERNEL=="fd[0-9]", GROUP="floppy"
+	ACTION=="add", SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", GROUP="usb"
 	EOF
 
 	# change rules back to group uucp instead of dialout for now wrt #454556
