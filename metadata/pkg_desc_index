@@ -12156,7 +12156,7 @@ media-gfx/icc_examin 0.54 0.55 0.55-r1 9999: Viewer for ICC and CGATS profiles, 
 media-gfx/icon-slicer 0.3: utility for generating icon themes and libXcursor cursor themes
 media-gfx/icoutils 0.31.0: A set of programs for extracting and converting images in icon and cursor files (.ico, .cur)
 media-gfx/igal 2.0: Static HTML image gallery generator
-media-gfx/imagemagick 6.9.0.3 6.9.1.8 6.9.2.10 6.9.3.10 6.9.4.1 6.9.4.5 6.9.4.6 7.0.1.8: A collection of tools and libraries for many image formats
+media-gfx/imagemagick 6.9.0.3 6.9.1.8 6.9.2.10 6.9.3.10 6.9.4.1 6.9.4.5 6.9.4.6 6.9.4.7 7.0.1.9: A collection of tools and libraries for many image formats
 media-gfx/imageworsener 0.9.2 1.0.0 1.2.0: Utility for image scaling and processing
 media-gfx/imv 2.1.2 9999: Minimal image viewer designed for tiling window manager users
 media-gfx/inkscape 0.48.5-r1 0.91 0.91-r1: A SVG based generic vector-drawing program
