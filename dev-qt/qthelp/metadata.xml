@@ -7,7 +7,7 @@
 	</maintainer>
 	<use>
 		<flag name="compat">Build the extra compatibility layer required by a few packages, see
-			http://blog.qt.digia.com/blog/2010/06/22/qt-assistant-compat-version-available-as-extra-source-package/</flag>
+			http://blog.qt.io/blog/2010/06/22/qt-assistant-compat-version-available-as-extra-source-package/</flag>
 		<flag name="exceptions">Add support for exceptions - like catching them
 			inside the event loop (recommended by upstream)</flag>
 	</use>
