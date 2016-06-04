@@ -2350,7 +2350,7 @@ app-text/mftrace 1.2.18: Traces TeX fonts to PFA or PFB fonts (formerly pktrace)
 app-text/mht-rip 0.8: convert mht/mhtml files to something usable
 app-text/mpage 2.5.6-r1: Many to one page printing utility
 app-text/multitail 6.4.1 6.4.2: Tail with multiple windows
-app-text/mupdf 1.5-r1 1.8 9999: a lightweight PDF viewer and toolkit written in portable C
+app-text/mupdf 1.5-r1 1.8 1.9a 9999: a lightweight PDF viewer and toolkit written in portable C
 app-text/mythes 1.2.4: A simple thesaurus for Libreoffice
 app-text/namazu 2.0.21 2.0.22_p1: Namazu is a full-text search engine
 app-text/nfoview 1.15.1 9999: simple viewer for NFO files, which are ASCII art in the CP437 codepage
@@ -9601,7 +9601,7 @@ dev-util/ccmalloc 0.4.0-r2: A easy-to-use memory debugging library
 dev-util/cdecl 2.5-r2: Turn English phrases to C or C++ declarations
 dev-util/cdiff 0.9.7 0.9.8 9999: Term based view of colored, incremental diff in a Git/Mercurial/Svn workspace
 dev-util/cflow 1.4: C function call hierarchy analyzer
-dev-util/cgdb 0.6.6 0.6.7: A curses front-end for GDB, the GNU debugger
+dev-util/cgdb 0.6.6 0.6.7 0.6.8: A curses front-end for GDB, the GNU debugger
 dev-util/cgvg 1.6.2: A tiny version of cscope that is much more useful in certian instances
 dev-util/checkbashisms 2.15.10 2.16.2 2.16.4: Perl script to check for commonly used bash features not defined by POSIX
 dev-util/checkstyle 5.5-r1: Development tool to help write Java code that adheres to a coding standard
