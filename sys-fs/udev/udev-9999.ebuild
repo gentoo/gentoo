@@ -2,9 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-inherit autotools bash-completion-r1 eutils linux-info multilib multilib-minimal toolchain-funcs udev user versionator
+inherit autotools bash-completion-r1 linux-info multilib multilib-minimal toolchain-funcs udev user versionator
 
 if [[ ${PV} = 9999* ]]; then
 	EGIT_REPO_URI="git://anongit.freedesktop.org/systemd/systemd"
@@ -14,8 +14,8 @@ else
 	SRC_URI="https://github.com/systemd/systemd/archive/v${PV}.tar.gz -> systemd-${PV}.tar.gz"
 	if [[ -n "${patchset}" ]]; then
 		SRC_URI+="
-			https://dev.gentoo.org/~ssuominen/${P}-patches-${patchset}.tar.xz
-			https://dev.gentoo.org/~williamh/dist/${P}-patches-${patchset}.tar.xz"
+			https://dev.gentoo.org/~williamh/dist/${P}-patches-${patchset}.tar.xz
+			https://dev.gentoo.org/~ssuominen/${P}-patches-${patchset}.tar.xz"
 	fi
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
 fi
@@ -112,7 +112,7 @@ src_prepare() {
 
 	# backport some patches
 	if [[ -n "${patchset}" ]]; then
-		EPATCH_SUFFIX=patch EPATCH_FORCE=yes epatch
+		eapply "${WORKDIR}"/patch
 	fi
 
 	cat <<-EOF > "${T}"/40-gentoo.rules
@@ -128,7 +128,7 @@ src_prepare() {
 	echo 'AC_DEFUN([AM_PATH_LIBGCRYPT],[:])' > m4/gcrypt.m4
 
 	# apply user patches
-	epatch_user
+	eapply_user
 
 	eautoreconf
 
