@@ -6,7 +6,7 @@ EAPI="3"
 
 UNI_PV=6.0.0
 DESCRIPTION="Miscellaneous files"
-HOMEPAGE="http://savannah.gnu.org/projects/miscfiles/"
+HOMEPAGE="https://savannah.gnu.org/projects/miscfiles/"
 # http://www.unicode.org/Public/${UNI_PV}/ucd/UnicodeData.txt
 SRC_URI="mirror://gnu/miscfiles/${P}.tar.gz
 	mirror://gentoo/UnicodeData-${UNI_PV}.txt.xz"

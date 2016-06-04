@@ -8,7 +8,7 @@ inherit gnustep-2
 MY_P=${P/mpdc/MPDC}
 DESCRIPTION="GNUstep client for the Music Player Daemon"
 HOMEPAGE="http://gap.nongnu.org/mpdcon/"
-SRC_URI="http://savannah.nongnu.org/download/gap/${MY_P}.tar.gz"
+SRC_URI="https://savannah.nongnu.org/download/gap/${MY_P}.tar.gz"
 
 KEYWORDS="~amd64 ~x86"
 LICENSE="GPL-2"

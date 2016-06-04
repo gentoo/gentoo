@@ -89,7 +89,7 @@ src_prepare() {
 		use gui && append-ldflags -Wl,-rpath,"${EPREFIX}/usr/$(get_libdir)/qt4"
 	fi
 
-	# Octave fails to build with LLVM 3.5 http://savannah.gnu.org/bugs/?41061
+	# Octave fails to build with LLVM 3.5 https://savannah.gnu.org/bugs/?41061
 	use jit && \
 		has_version ">=sys-devel/llvm-3.5" && \
 		epatch "${FILESDIR}"/${PN}-4.0.0-llvm-3.5.patch && \

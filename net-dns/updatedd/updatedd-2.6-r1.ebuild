@@ -6,8 +6,8 @@ EAPI=6
 inherit eutils
 
 DESCRIPTION="Dynamic DNS client with plugins for several dynamic dns services"
-HOMEPAGE="http://savannah.nongnu.org/projects/updatedd/"
-SRC_URI="http://savannah.nongnu.org/download/updatedd/${PN}_${PV}.tar.gz"
+HOMEPAGE="https://savannah.nongnu.org/projects/updatedd/"
+SRC_URI="https://savannah.nongnu.org/download/updatedd/${PN}_${PV}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -8,7 +8,7 @@ inherit gnustep-2
 MY_P=${P/ac/AC}
 DESCRIPTION="Analog dockapp clock for GNUstep"
 HOMEPAGE="http://gap.nongnu.org/aclock/"
-SRC_URI="http://savannah.nongnu.org/download/gap/${MY_P}.tar.gz"
+SRC_URI="https://savannah.nongnu.org/download/gap/${MY_P}.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="amd64 ppc x86"

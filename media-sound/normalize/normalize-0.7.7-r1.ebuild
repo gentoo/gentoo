@@ -8,7 +8,7 @@ inherit eutils autotools
 
 DESCRIPTION="Audio file volume normalizer"
 HOMEPAGE="http://normalize.nongnu.org/"
-SRC_URI="http://savannah.nongnu.org/download/${PN}/${P}.tar.bz2
+SRC_URI="https://savannah.nongnu.org/download/${PN}/${P}.tar.bz2
 	https://dev.gentoo.org/~radhermit/distfiles/${P}-m4.patch.gz"
 
 LICENSE="GPL-2"

@@ -8,7 +8,7 @@ inherit eutils
 
 DESCRIPTION="backend library for the maitretarot clients"
 HOMEPAGE="http://www.nongnu.org/maitretarot/"
-SRC_URI="http://savannah.nongnu.org/download/maitretarot/${PN}.pkg/${PV}/${P}.tar.bz2"
+SRC_URI="https://savannah.nongnu.org/download/maitretarot/${PN}.pkg/${PV}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

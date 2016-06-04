@@ -4,7 +4,7 @@
 
 DESCRIPTION="Synchronise the two copy/paste buffers mainly used by X applications"
 HOMEPAGE="http://www.nongnu.org/autocutsel/"
-SRC_URI="http://savannah.nongnu.org/download/${PN}/${P}.tar.gz"
+SRC_URI="https://savannah.nongnu.org/download/${PN}/${P}.tar.gz"
 IUSE=""
 
 LICENSE="GPL-2"

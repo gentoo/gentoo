@@ -9,8 +9,8 @@ inherit eutils user
 IUSE=""
 
 DESCRIPTION="A milter for SpamAssassin"
-HOMEPAGE="http://savannah.nongnu.org/projects/spamass-milt/"
-SRC_URI="http://savannah.nongnu.org/download/spamass-milt/${P}.tar.bz2"
+HOMEPAGE="https://savannah.nongnu.org/projects/spamass-milt/"
+SRC_URI="https://savannah.nongnu.org/download/spamass-milt/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

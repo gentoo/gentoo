@@ -16,7 +16,7 @@ else
 fi
 
 DESCRIPTION="Updated config.sub and config.guess file from GNU"
-HOMEPAGE="http://savannah.gnu.org/projects/config"
+HOMEPAGE="https://savannah.gnu.org/projects/config"
 
 LICENSE="GPL-2"
 SLOT="0"

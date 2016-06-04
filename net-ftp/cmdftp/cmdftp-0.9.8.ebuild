@@ -6,7 +6,7 @@ EAPI=5
 
 DESCRIPTION="Light weight, yet robust command line FTP client with shell-like
 functions."
-HOMEPAGE="http://savannah.nongnu.org/projects/cmdftp/"
+HOMEPAGE="https://savannah.nongnu.org/projects/cmdftp/"
 SRC_URI="http://download.savannah.nongnu.org/releases/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3"

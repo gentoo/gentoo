@@ -7,7 +7,7 @@ inherit eutils games
 
 DESCRIPTION="unique multiplayer wargame"
 HOMEPAGE="http://www.ufoot.org/liquidwar/"
-SRC_URI="http://savannah.nongnu.org/download/liquidwar/${P}.tar.gz"
+SRC_URI="https://savannah.nongnu.org/download/liquidwar/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
