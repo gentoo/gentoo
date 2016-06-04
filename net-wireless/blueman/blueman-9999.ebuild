@@ -97,6 +97,12 @@ src_configure() {
 src_install() {
 	default
 
+	if use policykit; then
+		# Allow users in plugdev group to modify connections
+		insinto /usr/share/polkit-1/rules.d
+		doins "${FILESDIR}/01-org.blueman.rules"
+	fi
+
 	python_fix_shebang "${D}"
 	rm "${D}"/$(python_get_sitedir)/*.la || die
 }
