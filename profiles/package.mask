@@ -30,6 +30,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Hans de Graaff <graaff@gentoo.org> (4 Jun 2016)
+# Name-versioned dependency that was not used in any
+# version of cucumber we packaged and that is no longer
+# used upstream. Use dev-ruby/gherkin instead.
+# Masked for removal in 30 days.
+dev-ruby/gherkin3
+
 # Patrice Clement <monsieurp@gentoo.org> (2 Jun 2016)
 # Ancient software (1996!). Unmaintained.
 # Masked for removal in 30 days.

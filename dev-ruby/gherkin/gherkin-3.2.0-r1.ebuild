@@ -11,6 +11,9 @@ RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 RUBY_FAKEGEM_DOCDIR="rdoc"
 RUBY_FAKEGEM_EXTRADOC="README.md"
 
+# Don't install support scripts to avoid slot collisions.
+RUBY_FAKEGEM_BINWRAP=""
+
 inherit ruby-fakegem
 
 DESCRIPTION="Fast Gherkin lexer and parser"

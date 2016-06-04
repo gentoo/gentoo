@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -27,7 +27,7 @@ ruby_add_bdepend "
 USE_RUBY=${USE_RUBY/ruby22} ruby_add_bdepend "test? ( >=dev-ruby/kramdown-1.4.2 )"
 
 ruby_add_rdepend "
-	>=dev-ruby/gherkin3-3.1.0:3
+	>=dev-ruby/gherkin-3.2.0:3
 "
 
 each_ruby_prepare() {
