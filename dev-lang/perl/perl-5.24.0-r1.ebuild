@@ -443,8 +443,6 @@ src_install() {
 		sed -i -e "s:${D}::" "${i}" || die "Sed failed"
 	done
 
-	find "${ED}" -type f -name .packlist -delete || die
-
 	dodoc Changes* README AUTHORS
 
 	if use doc ; then
