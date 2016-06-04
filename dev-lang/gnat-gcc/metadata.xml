@@ -1,18 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="project">
+  <maintainer type="project">
     <email>ada@gentoo.org</email>
-    <name>Gentoo Resources for Ada</name>
+    <name>Gentoo Ada Project</name>
   </maintainer>
   <use>
-    <flag name="lto">Add support for link-time optimizations (unsupported, use
-      at your own risk).</flag>
+    <flag name="acats">
+      Installs ACATS source under LIBPATH.
+    </flag>
+    <flag name="lto">
+      Enable Link Time Optimization (somewhat unsafe).
+    </flag>
   </use>
-<longdescription>
-GNAT, the (GN)U (A)da (T)oolchain, is a high performance Ada 95
-development environment based on the mature GCC compiler technology. It
-implements the full Ada 95 language defined by the ISO standard and is upward
-compatible with Ada 83. This is an FSF supported version, integrated with gcc.
-</longdescription>
+  <longdescription>
+    GNAT, the (GN)U (A)da (T)oolchain, is a high performance Ada 95 development
+    environment based on the mature GCC compiler technology. It implements the
+    full Ada 95 language defined by the ISO standard and is upward compatible
+    with Ada 83. This is an FSF supported version, integrated with gcc.
+  </longdescription>
+  <upstream>
+    <remote-id type="cpe">cpe:/a:gnu:gcc</remote-id>
+  </upstream>
 </pkgmetadata>

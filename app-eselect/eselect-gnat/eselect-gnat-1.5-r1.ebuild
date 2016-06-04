@@ -12,10 +12,10 @@ SRC_URI=""
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~amd64 ~arm ~ppc ~x86 ~sparc"
 
 IUSE=""
-RDEPEND="app-admin/eselect"
+RDEPEND=">=app-admin/eselect-1.2.5"
 
 MODULEDIR="/usr/share/eselect/modules"
 
@@ -33,5 +33,5 @@ src_install() {
 	# !ATTN!
 	# Make sure to adjust version of installed file to a proper one if there is
 	# a change!
-	newins "${FILESDIR}"/gnat-common-1.3-r1.bash gnat-common.bash
+	newins "${FILESDIR}"/gnat-common-${PV}.bash gnat-common.bash
 }
