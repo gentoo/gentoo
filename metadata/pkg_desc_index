@@ -2038,7 +2038,7 @@ app-office/pybliographer 1.2.15-r1: Pybliographer is a tool for working with bib
 app-office/qcharselect 0.3: A Qt4 port of KCharSelect from KDE 3.5
 app-office/qchartdiary 0.6.4.1-r2: Free Qt4 diary/agenda application
 app-office/rubrica 2.1.6-r1: A contact database for Gnome
-app-office/sc 7.16-r1: sc is a free curses-based spreadsheet program that uses key bindings similar to vi and less
+app-office/sc 7.16-r1 7.16-r2: Spreadsheet Calculator
 app-office/scribus 1.4.5 1.4.6 1.5.0-r1 9999: Desktop publishing (DTP) and layout program
 app-office/skrooge 1.12.5 2.3.0: Personal finances manager, aiming at being simple and intuitive
 app-office/taskcoach 1.3.18 1.3.27 1.3.29 1.3.32 1.3.32-r1 1.3.40 1.4.2: Simple personal tasks and todo lists manager
@@ -4503,7 +4503,7 @@ dev-libs/dclog 1.1.1-r1: A logging library for C/C++ programs
 dev-libs/dee 1.2.7: Provide objects allowing to create Model-View-Controller type programs across DBus
 dev-libs/dietlibc 0.30-r2 0.33_pre20110403 0.34_pre20140729: A libc optimized for small size
 dev-libs/ding-libs 0.4.0: Library set needed for build sssd
-dev-libs/distorm64 1.7.30-r1 3.1 3.3 3.3-r1: The ultimate disassembler library (X86-32, X86-64)
+dev-libs/distorm64 3.3-r1 3.3.3: The ultimate disassembler library (X86-32, X86-64)
 dev-libs/djb 0.5.2: Library created from code by Dan Bernstein
 dev-libs/dmalloc 5.5.2-r4 5.5.2-r6: A Debug Malloc Library
 dev-libs/dotconf 1.3: dot.conf configuration file parser
