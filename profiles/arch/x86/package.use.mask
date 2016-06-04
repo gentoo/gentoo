@@ -4,6 +4,11 @@
 
 # This file requires >=portage-2.1.1
 
+# Patrice Clement <monsieurp@gentoo.org> (05 Jun 2016)
+# on behalf of Ilya Tumaykin <itumaykin+gentoo@gmail.com>
+# dev-lua/busted lacks x86 keyword. See bug #581210.
+media-video/aegisub test
+
 # Rick Farina <zerochaos@gentoo.org> (23 Mar 2016)
 # rspec:3 is not keyworded for x86 at this time
 =dev-ruby/bundler-audit-0.5.0 test
