@@ -10,7 +10,7 @@ inherit perl-module
 
 DESCRIPTION="Mathematical paths through the 2-D plane"
 
-LICENSE="GPL-3"
+LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="gmp test examples"
