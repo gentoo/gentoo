@@ -1,0 +1,10 @@
+--- mupdf-1.9a/Makefile
++++ mupdf-1.9a/Makefile
+@@ -1,6 +1,6 @@
+ # GNU Makefile
+ 
+-build ?= release
++build ?= debug
+ 
+ OUT := build/$(build)
+ GEN := generated
