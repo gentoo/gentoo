@@ -57,12 +57,28 @@ src_install() {
 	default
 
 	dodir /usr/libexec/${PN}
-	insinto /usr/libexec/${PN}
-	doins /usr/libexec/${PN}/${PN}.sh
+	exeinto /usr/libexec/${PN}
+	doexe "${FILESDIR}"/libexec/${PN}.sh
 
 	newconfd "${FILESDIR}"/${PN}.confd ${PN}
-	newinitd "${FILESDIR}"/${PN}.init-r2 ${PN}
+	newinitd "${FILESDIR}"/${PN}.init ${PN}
 	keepdir /var/lib/nftables
 
-	systemd_dounit "${FILESDIR}"/systemd/${PN}{,-{re,}store}.service
+	systemd_dounit "${FILESDIR}"/systemd/${PN}-restore.service
+	systemd_enable_service basic.target ${PN}-restore.service
+}
+
+pkg_postinst() {
+	local save_file
+	save_file="${EROOT}var/lib/nftables/rules-save"
+
+	elog "In order for the nftables-restore systemd service to start, "
+	elog "the file, ${save_file}, must exist.  To create this "
+	elog "file run the following command: "
+	elog ""
+	elog "	touch '${save_file}'"
+	elog ""
+	elog "Afterwards, the nftables-restore service should be manually started "
+	elog "to ensure firewall changes are stored on system shutdown.  The "
+	elog "systemd service will function normally thereafter."
 }
