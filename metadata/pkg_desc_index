@@ -6235,7 +6235,7 @@ dev-perl/Syntax-Highlight-Engine-Simple 0.90.0: Simple Syntax Highlight Engine
 dev-perl/Syntax-Highlight-Engine-Simple-Perl 0.20.0: Experimental Perl code highlighting class
 dev-perl/Syntax-Keyword-Junction 0.3.8: Perl6 style Junction operators in Perl5
 dev-perl/Sys-CPU 0.610.0: Access CPU info. number, etc on Win and UNIX
-dev-perl/Sys-Hostname-Long 1.400.0-r1 1.500.0: Try every conceivable way to get full hostname
+dev-perl/Sys-Hostname-Long 1.500.0: Try every conceivable way to get full hostname
 dev-perl/Sys-MemInfo 0.910.0-r1 0.980.0: Memory informations
 dev-perl/Sys-Mmap 0.170.0: Uses mmap to map in a file as a Perl variable
 dev-perl/Sys-SigAction 0.210.0: Perl extension for Consistent Signal Handling
@@ -6256,7 +6256,7 @@ dev-perl/Template-Toolkit 2.250.0-r1 2.260.0: The Template Toolkit
 dev-perl/Template-XML 2.170.0-r1: XML plugins for the Template Toolkit
 dev-perl/Term-ANSIScreen 1.500.0-r1: Terminal control using ANSI escape sequences
 dev-perl/Term-Encoding 0.20.0: Detect encoding of the current terminal
-dev-perl/Term-ProgressBar 2.150.0 2.170.0: Perl module for Term-ProgressBar
+dev-perl/Term-ProgressBar 2.170.0: Perl module for Term-ProgressBar
 dev-perl/Term-ProgressBar-Quiet 0.310.0: Provide a progress meter if run interactively
 dev-perl/Term-ProgressBar-Simple 0.30.0: Simple progess bars
 dev-perl/Term-ReadLine-Gnu 1.200.0-r2 1.310.0: GNU Readline XS library wrapper
@@ -6288,7 +6288,7 @@ dev-perl/Test-FailWarnings 0.8.0: Add test failures if warnings are caught
 dev-perl/Test-Fatal 0.14.0: Incredibly simple helpers for testing code with exceptions
 dev-perl/Test-File-ShareDir 1.1.1-r1: Create a Fake ShareDir for your modules for testing.
 dev-perl/Test-Inline 2.213.0-r1: Inline test suite support for Perl
-dev-perl/Test-Inter 1.30.0-r1 1.60.0: Framework for more readable interactive test scripts
+dev-perl/Test-Inter 1.60.0: Framework for more readable interactive test scripts
 dev-perl/Test-LeakTrace 0.150.0: Traces memory leaks
 dev-perl/Test-LongString 0.150.0-r1 0.170.0: A library to test long strings
 dev-perl/Test-Manifest 1.230.0-r1 2.20.0: Interact with a t/test_manifest file
@@ -14029,7 +14029,7 @@ net-firewall/fwknop 2.6.8-r1: Single Packet Authorization and Port Knocking appl
 net-firewall/gshield 2.8-r3: iptables firewall configuration system
 net-firewall/ipkungfu 0.5.2-r2 0.6.1-r1: A nice iptables firewall script
 net-firewall/ipsec-tools 0.8.2 0.8.2-r4: A port of KAME's IPsec utilities to the Linux-2.6 IPsec implementation
-net-firewall/ipset 6.15 6.16 6.16.1 6.17 6.19 6.20.1 6.21.1 6.24: IPset tool for iptables, successor to ippool
+net-firewall/ipset 6.15 6.16 6.16.1 6.17 6.19 6.20.1 6.21.1 6.24 6.29: IPset tool for iptables, successor to ippool
 net-firewall/ipt_netflow 2.1_p20160119 2.2: Netflow iptables module
 net-firewall/iptables 1.4.17 1.4.21-r1 1.4.21-r2 1.4.21-r3 1.4.21-r4 1.6.0: Linux kernel (2.4+) firewall, NAT and packet mangling tools
 net-firewall/itval 1.2_p20121104: Iptables policy testing and validation tool
