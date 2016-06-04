@@ -72,7 +72,7 @@ IUSE="${IUSE} bcmath berkdb bzip2 calendar cdb cjk
 	oci8-instant-client odbc +opcache pcntl pdo +phar +posix postgres qdbm
 	readline recode selinux +session sharedmem
 	+simplexml snmp soap sockets spell sqlite ssl
-	sysvipc systemd tidy +tokenizer truetype unicode vpx wddx
+	sysvipc systemd tidy +tokenizer truetype unicode wddx webp
 	+xml xmlreader xmlwriter xmlrpc xpm xslt zip zlib"
 
 DEPEND="
@@ -143,8 +143,8 @@ DEPEND="${DEPEND}
 			virtual/jpeg:0 media-libs/libpng:0= sys-libs/zlib )
 	)
 	unicode? ( dev-libs/oniguruma )
-	vpx? ( media-libs/libvpx )
 	wddx? ( >=dev-libs/libxml2-2.6.8 )
+	webp? ( media-libs/libwebp )
 	xml? ( >=dev-libs/libxml2-2.6.8 )
 	xmlrpc? ( >=dev-libs/libxml2-2.6.8 virtual/libiconv )
 	xmlreader? ( >=dev-libs/libxml2-2.6.8 )
@@ -166,7 +166,7 @@ php="=${CATEGORY}/${PF}"
 REQUIRED_USE="
 	cli? ( ^^ ( readline libedit ) )
 	truetype? ( gd )
-	vpx? ( gd )
+	webp? ( gd )
 	cjk? ( gd )
 	exif? ( gd )
 
@@ -421,8 +421,8 @@ src_configure() {
 		$(use_with gd png-dir "${EPREFIX}/usr")
 		$(use_with xpm xpm-dir "${EPREFIX}/usr")
 	)
-	if use vpx; then
-		our_conf+=( --with-vpx-dir="${EPREFIX}/usr" )
+	if use webp; then
+		our_conf+=( --with-webp-dir="${EPREFIX}/usr" )
 	fi
 	# enable gd last, so configure can pick up the previous settings
 	our_conf+=( $(use_with gd gd) )
