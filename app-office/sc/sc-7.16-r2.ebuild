@@ -27,6 +27,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-amd64.patch
 	"${FILESDIR}"/${P}-lex-syntax.patch
 	"${FILESDIR}"/${P}-c.patch
+	"${FILESDIR}"/${P}-printf.patch
 )
 
 src_prepare() {
