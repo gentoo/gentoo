@@ -16484,7 +16484,7 @@ sys-apps/fakeroot-ng 0.17 0.18 0.18-r1: A utility to run commands with fake root
 sys-apps/fbset 2.1: A utility to set the framebuffer videomode
 sys-apps/file 5.22 5.25 5.26-r1 5.27 9999: identify a file's format by scanning binary data for patterns
 sys-apps/findutils 4.4.2-r2 4.5.18 4.6.0-r1: GNU utilities for finding files
-sys-apps/firejail 0.9.36 0.9.38 0.9.40: Security sandbox for any type of processes
+sys-apps/firejail 0.9.36 0.9.38 0.9.40 0.9.40-r1: Security sandbox for any type of processes
 sys-apps/fix-gnustack 0.1: Utility to report and remove the executable flag from an ELF object's GNU_STACK
 sys-apps/flashrom 0.9.6.1 0.9.7 0.9.8 9999: Utility for reading, writing, erasing and verifying flash ROM chips
 sys-apps/flock 2.19: Manage locks from shell scripts
@@ -17046,7 +17046,7 @@ sys-fs/clamfs 1.0.1-r2: A FUSE-based user-space file system with on-access anti-
 sys-fs/cloudfuse 1.0: A FUSE filesystem for Rackspace's Cloud Files
 sys-fs/copyfs 1.0.1: fuse-based filesystem for maintaining configuration files
 sys-fs/cramfs 1.1: Linux filesystem designed to be simple, small, and to compress things well
-sys-fs/cryptsetup 1.6.5 1.6.8-r1 1.7.0-r1 1.7.1: Tool to setup encrypted devices with dm-crypt
+sys-fs/cryptsetup 1.6.5 1.6.8-r1 1.7.1 1.7.2: Tool to setup encrypted devices with dm-crypt
 sys-fs/ctmg 1.1 1.2: Simple wrapper around cryptsetup for encrypted containers
 sys-fs/davl 1.2.4-r1: Visualizes the fragmentation status of ext2/3 filesystems
 sys-fs/dd-rescue 1.28 1.46 1.99 1.99-r1: Similar to dd but can copy from source with errors

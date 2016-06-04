@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure prepare
+DESCRIPTION=Security sandbox for any type of processes
+EAPI=6
+HOMEPAGE=https://firejail.wordpress.com/
+IUSE=+bind +chroot +file-transfer +network network-restricted +seccomp +userns x11
+KEYWORDS=~amd64
+LICENSE=GPL-2
+RDEPEND=x11? ( x11-wm/xpra )
+SLOT=0
+SRC_URI=mirror://sourceforge/firejail/firejail-0.9.40.tar.bz2
+_eclass_exported_funcs=src_prepare:- src_configure:-
+_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=738dd68265990954d4db7cabd8a4613f
