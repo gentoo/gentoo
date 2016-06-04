@@ -6,7 +6,7 @@ EAPI=6
 
 inherit eutils alternatives flag-o-matic toolchain-funcs multilib multiprocessing
 
-PATCH_VER=1
+PATCH_VER=2
 
 PERL_OLDVERSEN=""
 MODULE_AUTHOR=RJBS
@@ -99,6 +99,7 @@ pkg_setup() {
 		*-darwin*)    osname="darwin" ;;
 		*-interix*)   osname="interix" ;;
 		*-aix*)       osname="aix" ;;
+		*-cygwin*)    osname="cygwin" ;;
 		*)            osname="linux" ;;
 	esac
 
