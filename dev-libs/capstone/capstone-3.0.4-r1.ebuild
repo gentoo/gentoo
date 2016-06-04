@@ -3,19 +3,14 @@
 # $Id$
 
 EAPI=6
-inherit cmake-utils flag-o-matic
 
 DESCRIPTION="disassembly/disassembler framework + bindings"
 HOMEPAGE="http://www.capstone-engine.org/"
 SRC_URI="https://github.com/aquynh/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
-SLOT="0"
+SLOT="0/3" # libcapstone.so.3
 KEYWORDS="~amd64 ~x86"
 
 RDEPEND=""
 DEPEND="${RDEPEND}"
-
-src_test() {
-	cmake-utils_src_make test
-}
