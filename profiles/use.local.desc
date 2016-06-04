@@ -2560,7 +2560,7 @@ dev-qt/qtgui:trace - Build the 'trace' graphicssystem engine which allows to rec
 dev-qt/qtgui:tslib - Enable support for touchscreen devices via x11-libs/tslib
 dev-qt/qtgui:tuio - Build plugin to receive touch events over the TUIO protocol
 dev-qt/qtgui:xcb - Build the XCB platform plugin and enable X11 integration
-dev-qt/qthelp:compat - Build the extra compatibility layer required by a few packages, see http://blog.qt.digia.com/blog/2010/06/22/qt-assistant-compat-version-available-as-extra-source-package/
+dev-qt/qthelp:compat - Build the extra compatibility layer required by a few packages, see http://blog.qt.io/blog/2010/06/22/qt-assistant-compat-version-available-as-extra-source-package/
 dev-qt/qthelp:exceptions - Add support for exceptions - like catching them inside the event loop (recommended by upstream)
 dev-qt/qtmultimedia:exceptions - Add support for exceptions - like catching them inside the event loop (recommended by upstream)
 dev-qt/qtmultimedia:gles2 - Use GLES 2.0 or later instead of full OpenGL

@@ -4474,6 +4474,7 @@ dev-libs/busybee 0.5.2 0.6.0 0.7.0: A messaging abstraction on top of TCP socket
 dev-libs/c-blosc 1.3.2 1.3.5 1.5.3: Blocking, shuffling and lossless compression library
 dev-libs/c-capnproto 0.1: C library/compiler for the Cap'n Proto serialization/RPC protocol
 dev-libs/capnproto 0.5.3: RPC/Serialization system with capabilities support
+dev-libs/capstone 3.0.4: disassembly/disassembler framework + bindings
 dev-libs/cdk 5.0.20131107 5.0.20141106: A library of curses widgets
 dev-libs/cgicc 3.2.9 3.2.10: A C++ class library for writing CGI applications
 dev-libs/cgilib 0.7: a simple and lightweight interface to the Common Gateway Interface (CGI) for C and C++ programs
