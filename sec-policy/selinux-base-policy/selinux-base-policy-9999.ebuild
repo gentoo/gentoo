@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 EAPI="5"
@@ -20,9 +20,9 @@ fi
 HOMEPAGE="https://www.gentoo.org/proj/en/hardened/selinux/"
 DESCRIPTION="SELinux policy for core modules"
 
-IUSE="+unconfined"
+IUSE="systemd +unconfined"
 
-RDEPEND="=sec-policy/selinux-base-${PVR}"
+RDEPEND="=sec-policy/selinux-base-${PVR}[systemd?]"
 PDEPEND="unconfined? ( sec-policy/selinux-unconfined )"
 DEPEND=""
 
@@ -34,6 +34,12 @@ S="${WORKDIR}/"
 # Code entirely copied from selinux-eclass (cannot inherit due to dependency on
 # itself), when reworked reinclude it. Only postinstall (where -b base.pp is
 # added) needs to remain then.
+
+pkg_setup() {
+	if use systemd; then
+		MODS="${MODS} systemd"
+	fi
+}
 
 pkg_pretend() {
 	for i in ${POLICY_TYPES}; do
