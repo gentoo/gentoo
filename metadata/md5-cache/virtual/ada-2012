@@ -1,0 +1,8 @@
+DEFINED_PHASES=-
+DESCRIPTION=Virtual for selecting an appropriate Ada compiler
+EAPI=5
+KEYWORDS=~amd64 ~arm ~x86
+RDEPEND=|| ( >=virtual/gnat-4.9 )
+SLOT=2012
+_eclass_exported_funcs=-
+_md5_=e700a3325e29614b2f99a5d4c5a2b57e

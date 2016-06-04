@@ -1387,7 +1387,7 @@ app-eselect/eselect-chuck 1.0.1: Manages the /usr/bin/chuck symlink
 app-eselect/eselect-ctags 1.18: Manages ctags implementations
 app-eselect/eselect-emacs 1.18: Manage multiple Emacs versions on one system
 app-eselect/eselect-fontconfig 1.0 1.1 1.1-r1: An eselect module to manage /etc/fonts/conf.d symlinks
-app-eselect/eselect-gnat 1.3-r1 1.4 1.4-r1 1.5: gnat module for eselect
+app-eselect/eselect-gnat 1.3-r1 1.4 1.4-r1 1.5 1.5-r1: gnat module for eselect
 app-eselect/eselect-gnome-shell-extensions 20120911: Manages system defaults for GNOME Shell extensions
 app-eselect/eselect-infinality 1: Eselect module to choose an infinality font configuration style
 app-eselect/eselect-java 0.2.0: A set of eselect modules for Java
@@ -4352,7 +4352,7 @@ dev-lang/fsharp 3.1.1.31 4.0.0.4: The F# Compiler
 dev-lang/gdl 0.9.6-r1: GNU Data Language
 dev-lang/gforth 0.7.3: GNU Forth is a fast and portable implementation of the ANSI Forth language
 dev-lang/ghc 7.4.2 7.6.3-r1 7.8.3 7.8.4 7.10.2 7.10.2-r1 7.10.3: The Glasgow Haskell Compiler
-dev-lang/gnat-gcc 3.4.6 4.1.2 4.2.3 4.3.5 4.3.6 4.3.6-r1 4.4.7 4.4.7-r1 4.5.4 4.5.4-r1 4.6.4 4.6.4-r1: GNAT Ada Compiler - gcc version
+dev-lang/gnat-gcc 3.4.6 4.1.2 4.2.3 4.3.5 4.3.6 4.3.6-r1 4.4.7 4.4.7-r1 4.5.4 4.5.4-r1 4.6.4 4.6.4-r1 4.9.3: GNAT Ada Compiler - gcc version
 dev-lang/gnat-gpl 3.4.5.2005 3.4.6.2006-r1 4.1.3.2007 4.1.3.2008-r2: GNAT Ada Compiler - AdaCore GPL version
 dev-lang/gnu-smalltalk 3.2.4: GNU Smalltalk
 dev-lang/go 1.6-r2 1.6.1 1.6.2 9999: A concurrent garbage collected and typesafe programming language
@@ -17381,7 +17381,7 @@ sys-process/wait_on_pid 0.0.2: small utility to wait for an arbitrary process to
 sys-process/watchpid 0.1-r1 0.1-r2: Watches a process for termination
 sys-process/xjobs 20140125 20151016: Reads commands line by line and executes them in parallel
 virtual/acl 0 0-r1 0-r2: Virtual for acl support (sys/acl.h)
-virtual/ada 1995 2005: Virtual for selecting an appropriate Ada compiler
+virtual/ada 1995 2005 2012: Virtual for selecting an appropriate Ada compiler
 virtual/awk 0 1: Virtual for awk implementation
 virtual/bitcoin-leveldb 0: Virtual for LevelDB versions known to be compatible with Bitcoin Core 0.9+
 virtual/blas 1.0: Virtual for FORTRAN 77 BLAS implementation
@@ -17401,7 +17401,7 @@ virtual/ffmpeg 0.10.3 0.10.3-r1 9 9-r1 9-r2: Virtual package for FFmpeg executab
 virtual/fortran 0: Virtual for Fortran Compiler
 virtual/freedesktop-icon-theme 0: A virtual to choose between different icon themes
 virtual/glu 9.0 9.0-r1: Virtual for OpenGL utility library
-virtual/gnat 3.4 4.1 4.2 4.3 4.4: Virtual for the gnat compiler selection
+virtual/gnat 3.4 4.1 4.2 4.3 4.4 4.9: Virtual for the gnat compiler selection
 virtual/gnustep-back 0.22.0 0.23.0 0.24.0 0.24.1: Virtual for back-end component for the GNUstep GUI Library
 virtual/gsasl 2: Virtual for the GNU SASL library
 virtual/httpd-basic 0-r1 0-r2: Virtual for static HTML-enabled webservers
