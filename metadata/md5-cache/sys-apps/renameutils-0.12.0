@@ -8,7 +8,7 @@ KEYWORDS=amd64 ppc x86
 LICENSE=GPL-3
 RDEPEND=>=sys-libs/readline-5.0-r2
 SLOT=0
-SRC_URI=http://savannah.nongnu.org/download/renameutils/renameutils-0.12.0.tar.gz
+SRC_URI=https://savannah.nongnu.org/download/renameutils/renameutils-0.12.0.tar.gz
 _eclass_exported_funcs=src_prepare:- src_configure:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	792f83d5ec9536cb5ccef375469d8bde	libtool	4890219c51da247200223277f993e054	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
-_md5_=c5db91f29a929d59eb24cb4877e2db6a
+_md5_=49b0537a0c97307dcd40d6233abe65b0
