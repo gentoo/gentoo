@@ -16,7 +16,7 @@ KEYWORDS="~amd64"
 IUSE="+bind +chroot +file-transfer +network network-restricted +seccomp
 	+userns x11"
 
-RDEPEND="x11? ( x11-wm/xpra )"
+RDEPEND="x11? ( x11-wm/xpra[client,server] )"
 
 PATCHES=( "${FILESDIR}"/${P}-sysmacros.patch )
 
