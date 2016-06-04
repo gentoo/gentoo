@@ -5,8 +5,8 @@
 EAPI=6
 
 EGIT_REPO_URI="git://anongit.freedesktop.org/git/libreoffice/libetonyek"
-inherit eutils
-[[ ${PV} == 9999 ]] && inherit autotools git-r3
+inherit autotools eutils
+[[ ${PV} == 9999 ]] && inherit git-r3
 
 DESCRIPTION="Library parsing Apple Keynote presentations"
 HOMEPAGE="https://wiki.documentfoundation.org/DLP/Libraries/libetonyek"
@@ -26,13 +26,15 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	dev-libs/boost
-	dev-util/mdds:1
+	>=dev-util/mdds-1.2.0:1
 	media-libs/glm
 	sys-devel/libtool
 	virtual/pkgconfig
 	doc? ( app-doc/doxygen )
 	test? ( dev-util/cppunit )
 "
+
+PATCHES=( "${FILESDIR}/${P}-mdds-1.2.patch" ) # patch taken from Debian
 
 pkg_pretend() {
 	if [[ $(gcc-major-version) -lt 4 ]] || {
@@ -44,9 +46,9 @@ pkg_pretend() {
 }
 
 src_prepare() {
-	eapply_user
+	default
 	[[ -d m4 ]] || mkdir "m4"
-	[[ ${PV} == 9999 ]] && eautoreconf
+	eautoreconf
 }
 
 src_configure() {
