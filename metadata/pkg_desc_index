@@ -4402,7 +4402,7 @@ dev-lang/parrot 7.1.0 7.5.0 7.11.0 8.1.0: Virtual machine designed to efficientl
 dev-lang/pasm 1.7: A portable assembler for processors of the PowerPC family
 dev-lang/pcc 1.1.0-r1 9999: pcc portable c compiler
 dev-lang/perl 5.20.2 5.20.2-r1 5.22.0 5.22.1 5.22.2 5.24.0 5.24.0-r1: Larry Wall's Practical Extraction and Report Language
-dev-lang/php 5.5.33 5.5.34 5.5.35 5.5.36 5.6.19 5.6.20 5.6.21 5.6.22 7.0.7: The PHP language runtime engine
+dev-lang/php 5.5.33 5.5.34 5.5.35 5.5.36 5.6.19 5.6.20 5.6.21 5.6.22 7.0.7-r1: The PHP language runtime engine
 dev-lang/pocl 0.11 0.12 0.13: PortableCL: opensource implementation of the OpenCL standard
 dev-lang/polyml 5.4.1 5.5.0 5.5.1 5.5.2: Poly/ML is a full implementation of Standard ML
 dev-lang/python 2.7.10-r1 2.7.11-r2 3.3.5-r3 3.3.5-r8 3.4.3-r1 3.4.3-r7 3.5.0-r2 3.5.1-r2: An interpreted, interactive, object-oriented programming language
@@ -4467,7 +4467,7 @@ dev-libs/blitz 0.10 0.10-r1: High-performance C++ numeric library
 dev-libs/boehm-gc 6.8 7.1-r1 7.2d 7.2d-r1 7.2e 7.4.0 7.4.2: The Boehm-Demers-Weiser conservative garbage collector
 dev-libs/boost 1.55.0-r2 1.56.0-r1 1.58.0-r1 1.59.0 1.60.0 1.61.0: Boost Libraries for C++
 dev-libs/boost-numpy 9999: Boost.Python interface for NumPy
-dev-libs/botan 1.10.12 1.11.28: A C++ crypto library
+dev-libs/botan 1.10.12 1.11.28 1.11.29: A C++ crypto library
 dev-libs/btparse 0.33 0.35: A C library to parse Bibtex files
 dev-libs/btparser 0.24 0.25 0.26: Parser and analyzer for backtraces produced by GDB
 dev-libs/busybee 0.5.2 0.6.0 0.7.0: A messaging abstraction on top of TCP sockets used in HyperDex
@@ -4815,7 +4815,7 @@ dev-libs/mpfr 2.4.2_p3-r1 3.1.3_p4 3.1.4: library for multiple-precision floatin
 dev-libs/mps 1.106.2 1.110.0 1.111.0 1.114.0: Ravenbrook Memory Pool System
 dev-libs/msgpack 0.5.9 1.0.0 1.0.1 1.1.0: MessagePack is a binary-based efficient data interchange format
 dev-libs/nanomsg 0.8 0.9: High-performance messaging interface for distributed applications
-dev-libs/nettle 3.1.1 3.2: Low-level cryptographic library
+dev-libs/nettle 3.2: Low-level cryptographic library
 dev-libs/newt 0.52.15 0.52.18: Redhat's Newt windowing toolkit development files
 dev-libs/npth 1.1 1.2: New GNU Portable Threads Library
 dev-libs/nsgenbind 0.3: generate javascript to dom bindings from w3c webidl files
