@@ -21,12 +21,14 @@ if [[ ${CATEGORY}/${PN} == sys-devel/gcc && ${EBUILD_PHASE} == configure ]]; the
     sed -i 's/--sysroot=%R//' gcc/gcc.c
     eend $?
 elif [[ ${CATEGORY}/${PN} == sys-devel/binutils && ${EBUILD_PHASE} == prepare ]]; then
-    cd "${S}"
     ebegin "Prefixifying native library path"
     sed -i -r "/NATIVE_LIB_DIRS/s,((/usr(/local|)|)/lib),${EPREFIX}\1,g" \
-	ld/configure.tgt
+	"${S}"/ld/configure.tgt
     eend $?
-elif [[ ${CATEGORY}/${PN} == sys-libs/glibc && ${EBUILD_PHASE} == configure ]]; then
+    ebegin "Prefixifying path to /etc/ld.so.conf"
+    sed -i -r "s,\"/etc,\"${EPREFIX}/etc," "${S}"/ld/emultempl/elf32.em
+    eend $?
+elif [[ ${CATEGORY}/${PN} == sys-libs/glibc && ${EBUILD_PHASE} == compile ]]; then
     cd "${S}"
     einfo "Prefixifying hardcoded path"
     
@@ -37,8 +39,7 @@ elif [[ ${CATEGORY}/${PN} == sys-libs/glibc && ${EBUILD_PHASE} == configure ]]; 
 		 sysdeps/{{generic,unix/sysv/linux}/paths.h,posix/system.c}
     do
 	ebegin "  Updating $f"
-	sed -i -r \
-	    -e "s,([:\"])/(etc|usr|bin|var),\1${EPREFIX}/\2,g" $f
+	sed -i -r "s,([:\"])/(etc|usr|bin|var),\1${EPREFIX}/\2,g" $f
 	eend $?
     done
     ebegin "  Updating nss/db-Makefile"
@@ -48,15 +49,22 @@ elif [[ ${CATEGORY}/${PN} == sys-libs/glibc && ${EBUILD_PHASE} == configure ]]; 
     eend $?
 elif [[ ${CATEGORY}/${PN} == dev-lang/python && ${EBUILD_PHASE} == configure ]]; then
     # Guide h2py to look into glibc of Prefix
-    ebegin "Guide h2py to look into Prefix"
+    ebegin "Guiding h2py to look into Prefix"
     export include="${EPREFIX}"/usr/include
     sed -i -r \
 	-e "s,/usr/include,\"${EPREFIX}\"/usr/include,g" "${S}"/Lib/plat-linux*/regen
     eend $?
-elif [[ ${CATEGORY}/${PN} == sys-devel/make && ${EBUILD_PHASE} == prepare ]]; then
-    cd "${S}"
-    ebegin "Prefixifying default shell"
+    ebegin "Prefixifying distutils paths"
+    sed -re "s,([^[:alnum:]])(/usr[/[:alnum:]]*/(lib[[:alnum:]]*|include)|/lib[[:alnum:]]*),\1${EPREFIX}\2,g" \
+	-i "${S}"/setup.py
+    eend $?
+elif [[ ${CATEGORY}/${PN} == dev-lang/perl && ${EBUILD_PHASE} == configure ]]; then
+    ebegin "Prefixifying pwd path"
     sed -i -r \
-	-e "/default_shell/s,\"(/bin/sh),\"${EPREFIX}\1," job.c
+	-e "s,'((|/usr)/bin/pwd),'${EPREFIX}\1," "${S}"/dist/PathTools/Cwd.pm
+    eend $?
+elif [[ ${CATEGORY}/${PN} == sys-devel/make && ${EBUILD_PHASE} == prepare ]]; then
+    ebegin "Prefixifying default shell"
+    sed -i -r "/default_shell/s,\"(/bin/sh),\"${EPREFIX}\1," "${S}"/job.c
     eend $?
 fi
