@@ -1,0 +1,11 @@
+--- mupdf-1.9a/Makerules
++++ mupdf-1.9a/Makerules
+@@ -10,7 +10,7 @@
+ CFLAGS += -Wall
+ 
+ ifeq "$(build)" "debug"
+-CFLAGS += -pipe -g -DDEBUG
++CFLAGS += -DDEBUG
+ LDFLAGS += -g
+ else ifeq "$(build)" "release"
+ CFLAGS += -pipe -O2 -DNDEBUG -fomit-frame-pointer
