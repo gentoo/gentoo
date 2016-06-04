@@ -9591,7 +9591,7 @@ dev-util/buildbot-slave 0.8.10 0.8.12 9999: BuildBot Slave Daemon
 dev-util/bumpversion 0.5.3: Version-bump your software with a single command
 dev-util/bustle 0.4.2-r1 0.4.7-r1 0.5.4: Draw sequence diagrams of D-Bus traffic
 dev-util/byacc 20140101 20141128 20150711: the best variant of the Yacc parser generator
-dev-util/catalyst 2.0.18-r1 2.0.18-r3 2.0.9999 2.9999 3.0_rc1 9999: Release metatool used for creating releases based on Gentoo Linux
+dev-util/catalyst 2.0.18-r1 2.0.18-r3 2.0.18-r4 2.0.9999 2.9999 3.0_rc1 9999: Release metatool used for creating releases based on Gentoo Linux
 dev-util/catfish 1.2.2: A frontend for find, (s)locate, doodle, tracker, beagle, strigi and pinot
 dev-util/catkin 0.6.16-r2 0.7.0 0.7.1 9999: Cmake macros and associated python code used to build some parts of ROS
 dev-util/ccache 3.2.4 3.2.5: fast compiler cache
@@ -15372,7 +15372,7 @@ sci-biology/bioruby 1.4.3.0001-r1 9999: An integrated environment for bioinforma
 sci-biology/biosql 1.0.1: A generic bioinformatics relational database model
 sci-biology/blat 34 34-r1: The BLAST-Like Alignment Tool, a fast genomic sequence aligner
 sci-biology/blossoc 1.4.0: A linkage disequilibrium association mapping tool
-sci-biology/bowtie 1.1.2 1.1.2-r1 2.2.6 2.2.8: Popular short read aligner for Next-generation sequencing data
+sci-biology/bowtie 1.1.2 1.1.2-r1 2.2.6 2.2.9: Popular short read aligner for Next-generation sequencing data
 sci-biology/bwa 0.7.12 0.7.13: Burrows-Wheeler Alignment Tool, a fast short genomic sequence aligner
 sci-biology/cd-hit 4.5.1 4.5.4 4.6: Clustering Database at High Identity with Tolerance
 sci-biology/clustal-omega 1.2.1: Scalable multiple alignment of protein sequences
