@@ -40,7 +40,6 @@ RDEPEND="${DEPEND}
 src_compile() {
 	emake \
 		release=1 \
-		threads=4 \
 		PATH="${PATH}":"${WORKDIR}"/${PN}-${BV}/bin \
 		CRYSTAL_PATH=src \
 		CRYSTAL_CONFIG_VERSION=${PV} \
