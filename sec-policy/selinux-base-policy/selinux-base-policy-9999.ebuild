@@ -22,9 +22,8 @@ DESCRIPTION="SELinux policy for core modules"
 
 IUSE="systemd +unconfined"
 
-RDEPEND="=sec-policy/selinux-base-${PVR}[systemd?]"
 PDEPEND="unconfined? ( sec-policy/selinux-unconfined )"
-DEPEND=""
+DEPEND="=sec-policy/selinux-base-${PVR}[systemd?]"
 
 MODS="application authlogin bootloader clock consoletype cron dmesg fstools getty hostname hotplug init iptables libraries locallogin logging lvm miscfiles modutils mount mta netutils nscd portage raid rsync selinuxutil setrans ssh staff storage su sysadm sysnetwork tmpfiles udev userdomain usermanage unprivuser xdg"
 LICENSE="GPL-2"

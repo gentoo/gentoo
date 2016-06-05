@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 inherit autotools eutils
 
@@ -18,7 +18,7 @@ IUSE=""
 LANGS="ar ca cs da de el es fr hu it nl pl pt pt_BR ro ru sv zh_CN zh_TW"
 
 for X in ${LANGS} ; do
-	IUSE="${IUSE} +linguas_${X}"
+	IUSE="${IUSE} linguas_${X}"
 done
 
 RDEPEND="
@@ -38,10 +38,11 @@ DOCS=( AUTHORS ChangeLog README.md )
 src_prepare() {
 	strip-linguas ${LANGS}
 	eautoreconf
+	default
 }
 
 pkg_postinst() {
-	elog "Gummi >=0.4.8 supports spell-checking through gtkspell. Support for"
-	elog "additional languages can be added by installing myspell-** packages"
-	elog "for your language of choice."
+	elog "Gummi supports spell-checking through gtkspell. Support for"
+	elog "additional languages can be added by installing myspell-**-"
+	elog "packages for your language of choice."
 }

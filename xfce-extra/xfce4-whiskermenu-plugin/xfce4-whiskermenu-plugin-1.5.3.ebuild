@@ -16,13 +16,13 @@ KEYWORDS="~amd64 ~arm ~x86"
 IUSE=""
 
 RDEPEND="
+	virtual/libintl:=
 	x11-libs/gtk+:2=
 	xfce-base/exo:=
 	xfce-base/garcon:=
 	xfce-base/libxfce4ui:=
 	xfce-base/libxfce4util:=
-	xfce-base/xfce4-panel:=
-	virtual/libintl:="
+	xfce-base/xfce4-panel:="
 
 DEPEND="${RDEPEND}
 	sys-devel/gettext

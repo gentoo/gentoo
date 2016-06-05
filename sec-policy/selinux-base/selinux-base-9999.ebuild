@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 EAPI="5"
@@ -26,8 +26,7 @@ LICENSE="GPL-2"
 SLOT="0"
 
 RDEPEND=">=sys-apps/policycoreutils-2.3
-	virtual/udev
-	!<=sec-policy/selinux-base-policy-2.20120725"
+	virtual/udev"
 DEPEND="${RDEPEND}
 	sys-devel/m4
 	>=sys-apps/checkpolicy-2.3"

@@ -30,6 +30,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Aaron Bauman <bman@gentoo.org> (5 Jun 2016)
+# Unpatched security vulnerability and dead upstream
+# per bug #500970.  Removal in 30 days
+sys-apps/9base
+
 # Hans de Graaff <graaff@gentoo.org> (4 Jun 2016)
 # Name-versioned dependency that was not used in any
 # version of cucumber we packaged and that is no longer
