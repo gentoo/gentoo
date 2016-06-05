@@ -15,38 +15,38 @@ SRC_URI="mirror://apache/spamassassin/source/${MY_P}.tar.bz2"
 LICENSE="Apache-2.0 GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~x86-macos"
-IUSE="+bayes berkdb ipv6 ldap libressl mysql postgres qmail sqlite ssl test"
+IUSE="+bayes berkdb cron ipv6 ldap libressl mysql postgres qmail sqlite ssl test"
 
 # You can do without a database unless you need the Bayes features.
 REQUIRED_USE="bayes? ( || ( berkdb mysql postgres sqlite ) )"
 
-DEPEND=">=dev-lang/perl-5.8.8-r8
-	virtual/perl-MIME-Base64
-	>=virtual/perl-Pod-Parser-1.510.0-r2
-	virtual/perl-Storable
-	virtual/perl-Time-HiRes
-	>=dev-perl/HTML-Parser-3.43
-	>=dev-perl/Mail-DKIM-0.37
-	>=dev-perl/Net-DNS-0.53
+# SpamAssassin doesn't use libwww-perl except as a fallback for when
+# curl/wget are missing, so we depend on one of those instead. Some
+# mirrors use https, so we need those utilities to support SSL.
+#
+# re2c is needed to compile the rules (sa-compile).
+#
+DEPEND="app-crypt/gnupg
+	dev-lang/perl
 	dev-perl/Digest-SHA1
-	dev-perl/libwww-perl
-	>=virtual/perl-Archive-Tar-1.23
-	app-crypt/gnupg
-	>=virtual/perl-IO-Zlib-1.04
-	>=dev-util/re2c-0.12.0
-	dev-perl/Mail-SPF
-	>=dev-perl/NetAddr-IP-4.0.1
-	dev-perl/Geo-IP
 	dev-perl/Encode-Detect
+	dev-perl/Geo-IP
+	dev-perl/HTML-Parser
+	dev-perl/HTTP-Date
+	dev-perl/Mail-DKIM
+	dev-perl/Mail-SPF
+	dev-perl/Net-DNS
 	dev-perl/Net-Patricia
-	ssl? (
-		dev-perl/IO-Socket-SSL
-		!libressl? ( dev-libs/openssl:0 )
-		libressl? ( dev-libs/libressl )
-	)
-	berkdb? (
-		virtual/perl-DB_File
-	)
+	dev-perl/NetAddr-IP
+	dev-util/re2c
+	|| ( net-misc/wget[ssl] net-misc/curl[ssl] )
+	virtual/perl-Archive-Tar
+	virtual/perl-IO-Zlib
+	virtual/perl-MIME-Base64
+	virtual/perl-Pod-Parser
+	virtual/perl-Time-HiRes
+	berkdb? ( virtual/perl-DB_File )
+	ipv6? ( dev-perl/IO-Socket-INET6 )
 	ldap? ( dev-perl/perl-ldap )
 	mysql? (
 		dev-perl/DBI
@@ -60,10 +60,12 @@ DEPEND=">=dev-lang/perl-5.8.8-r8
 		dev-perl/DBI
 		dev-perl/DBD-SQLite
 	)
-	ipv6? (
-		|| ( dev-perl/IO-Socket-INET6
-			virtual/perl-IO-Socket-IP )
+	ssl? (
+		dev-perl/IO-Socket-SSL
+		!libressl? ( dev-libs/openssl:0 )
+		libressl? ( dev-libs/libressl )
 	)"
+
 RDEPEND="${DEPEND}"
 
 # Some spamd tests fail, and it looks like the whole suite eventually
@@ -71,6 +73,7 @@ RDEPEND="${DEPEND}"
 RESTRICT=test
 
 PATCHES=(
+	"${FILESDIR}/spamassassin-3.4.1-bug_7199.patch"
 	"${FILESDIR}/spamassassin-3.4.1-bug_7223.patch"
 	"${FILESDIR}/spamassassin-3.4.1-bug_7231.patch"
 	"${FILESDIR}/spamassassin-3.4.1-bug_7265.patch"
@@ -133,12 +136,16 @@ src_install () {
 		|| die "failed to disable plugins by default"
 
 	# Add the init and config scripts.
-	newinitd "${FILESDIR}"/3.3.1-spamd.init spamd
-	newconfd "${FILESDIR}"/3.0.0-spamd.conf spamd
+	newinitd "${FILESDIR}"/3.4.1-spamd.init spamd
+	newconfd "${FILESDIR}"/3.4.1-spamd.conf spamd
 
 	systemd_newunit "${FILESDIR}"/${PN}.service-r1 ${PN}.service
 	systemd_install_serviced "${FILESDIR}"/${PN}.service.conf
 
+	# The sed statements in the following conditionals alter the init
+	# script to depend (or not) on the database being running before
+	# spamd is started. The sed commands either enable the dependency,
+	# or delete the line entirely.
 	if use postgres; then
 		sed -i -e 's:@USEPOSTGRES@::' "${ED}/etc/init.d/spamd" || die
 
@@ -155,12 +162,12 @@ src_install () {
 		sed -i -e '/@USEMYSQL@/d' "${ED}/etc/init.d/spamd" || die
 	fi
 
-	dodoc NOTICE TRADEMARK CREDITS INSTALL.VMS UPGRADE USAGE \
-		sql/README.bayes sql/README.awl procmailrc.example sample-nonspam.txt \
+	dodoc NOTICE TRADEMARK CREDITS UPGRADE USAGE sql/README.bayes \
+		sql/README.awl procmailrc.example sample-nonspam.txt \
 		sample-spam.txt spamd/PROTOCOL spamd/README.vpopmail \
 		spamd-apache2/README.apache
 
-	# Rename some docu files so they don't clash with others
+	# Rename some files so that they don't clash with others.
 	newdoc spamd/README README.spamd
 	newdoc sql/README README.sql
 	newdoc ldap/README README.ldap
@@ -180,16 +187,29 @@ src_install () {
 	# only to root prevents a warning on the command-line.
 	diropts -m0700
 	dodir /etc/mail/spamassassin/sa-update-keys
+
+	if use cron; then
+		# Install the cron job if they want it.
+		exeinto /etc/cron.daily
+		newexe "${FILESDIR}/update-spamassassin-rules.cron" \
+			   update-spamassassin-rules
+	fi
 }
 
 pkg_postinst() {
 	elog
-	elog "No rules are install by default. You will need to run sa-update"
-	elog "at least once, and most likely configure SpamAssassin before it"
-	elog "will work. You should also consider a cron job for sa-update."
+	elog 'No rules are installed by default. You will need to run sa-update'
+	elog 'at least once, and most likely configure SpamAssassin before it'
+	elog 'will work.'
+
+	if ! use cron; then
+		elog
+		elog 'You should consider a cron job for sa-update. One is provided'
+		elog 'for daily updates if you enable the "cron" USE flag.'
+	fi
 	elog
-	elog "Configuration and update help can be found on the wiki:"
+	elog 'Configuration and update help can be found on the wiki:'
 	elog
-	elog "  https://wiki.gentoo.org/wiki/SpamAssassin"
+	elog '  https://wiki.gentoo.org/wiki/SpamAssassin'
 	elog
 }
