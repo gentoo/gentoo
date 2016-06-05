@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201606-03">
+  <title>libjpeg-turbo: Multiple vulnerabilities</title>
+  <synopsis>Two vulnerabilities have been discovered in libjpeg-turbo, the
+    worse of which could allow remote attackers access to  sensitive
+    information.
+  </synopsis>
+  <product type="ebuild">libjpeg-turbo</product>
+  <announced>June 05, 2016</announced>
+  <revised>June 05, 2016: 2</revised>
+  <bug>491150</bug>
+  <bug>531418</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-libs/libjpeg-turbo" auto="yes" arch="*">
+      <unaffected range="ge">1.4.2</unaffected>
+      <vulnerable range="lt">1.4.2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>libjpeg-turbo is a MMX, SSE, and SSE2 SIMD accelerated JPEG library</p>
+  </background>
+  <description>
+    <p>libjpeg-turbo does not check for certain duplications of component data
+      during the reading of segments that follow Start Of Scan (SOS) JPEG
+      markers.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Remote attackers could obtain sensitive information from uninitialized
+      memory locations via a crafted JPEG images.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All libjpeg-turbo users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=media-libs/libjpeg-turbo-1.4.2"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6629">CVE-2013-6629</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2013-6630">CVE-2013-6630</uri>
+  </references>
+  <metadata tag="requester" timestamp="Thu, 19 Jun 2014 02:00:52 +0000">
+    BlueKnight
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 05 Jun 2016 19:54:52 +0000">mrueg</metadata>
+</glsa>
