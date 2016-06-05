@@ -18976,7 +18976,7 @@ xfce-extra/xfce4-notes-plugin 1.8.1: Xfce4 panel sticky notes plugin
 xfce-extra/xfce4-notifyd 0.2.4: Notification daemon for the Xfce desktop environment
 xfce-extra/xfce4-places-plugin 1.6.0 1.7.0: A panel plug-in to provide quick access to files, folders and removable media
 xfce-extra/xfce4-playercontrol-plugin 0.3.0: Audacious and MPD panel plugins
-xfce-extra/xfce4-power-manager 1.3.0 1.4.1 1.4.4 1.5.0 1.5.2: Power manager for the Xfce desktop environment
+xfce-extra/xfce4-power-manager 1.3.0 1.4.1 1.4.4 1.5.0 1.5.2 1.6.0: Power manager for the Xfce desktop environment
 xfce-extra/xfce4-pulseaudio-plugin 0.2.2-r1 0.2.3 0.2.4: A panel plug-in for PulseAudio volume control
 xfce-extra/xfce4-quicklauncher-plugin 1.9.4-r1: A quicklauncher plug-in for the Xfce panel
 xfce-extra/xfce4-radio-plugin 0.5.1 0.5.1-r1: V4L radio device control plug-in for the Xfce desktop environment
