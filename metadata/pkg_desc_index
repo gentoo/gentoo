@@ -7914,7 +7914,7 @@ dev-python/python-mhash 1.4-r1: Python interface to libmhash
 dev-python/python-mpd 0.5.4 0.5.5: Python MPD client library
 dev-python/python-msrplib 0.18.0: Client library for MSRP protocol and its relay extension
 dev-python/python-musicbrainz 0.7.4-r1: Python Bindings for the MusicBrainz XML Web Service
-dev-python/python-musicbrainz-ngs 0.4 0.5 0.6: Python bindings for the MusicBrainz NGS and the Cover Art Archive webservices
+dev-python/python-musicbrainz-ngs 0.6: Python bindings for the MusicBrainz NGS and the Cover Art Archive webservices
 dev-python/python-nbxmpp 0.5.3: Python library to use Jabber/XMPP networks in a non-blocking way
 dev-python/python-neutronclient 2.3.6 2.4.0 2.6.0 3.0.0 3.1.1 4.1.1: A client for the OpenStack Quantum API
 dev-python/python-novaclient 2.17.0 2.17.0-r1 2.20.0 2.23.2 2.25.0 2.27.0 2.30.1 2.30.2 3.3.0: A client for the OpenStack Nova API
@@ -11872,7 +11872,7 @@ media-fonts/courier-prime 1.203: A redesign of Courier
 media-fonts/cronyx-fonts 2.3.1-r2 2.3.8: Cronyx Cyrillic bitmap fonts for X
 media-fonts/croscorefonts 1.21.0 1.23.0: Open licensed fonts metrically compatible with MS corefonts
 media-fonts/culmus 0.120-r4: Hebrew Type1 fonts
-media-fonts/dejavu 2.33 2.34 2.35: DejaVu fonts, bitstream vera with ISO-8859-2 characters
+media-fonts/dejavu 2.34 2.35: DejaVu fonts, bitstream vera with ISO-8859-2 characters
 media-fonts/dina 2.89: A monospace bitmap font, primarily aimed at programmers
 media-fonts/droid 113-r3 113-r4: Font family from Google's Android project
 media-fonts/dzongkha-fonts 2009.09: Bhutanese/Tibetan fonts for dzongkha script, provided by the Bhutanese government
