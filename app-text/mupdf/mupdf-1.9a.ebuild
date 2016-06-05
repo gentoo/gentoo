@@ -14,11 +14,12 @@ LICENSE="AGPL-3"
 MY_SOVER=1.9
 SLOT="0/${MY_SOVER}"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~ppc-macos ~x64-macos ~x86-macos"
-IUSE="X vanilla +curl javascript libressl opengl +openssl static static-libs"
+IUSE="X vanilla +curl libressl opengl +openssl static static-libs"
 
 LIB_DEPEND="
 	!libressl? ( dev-libs/openssl:0[static-libs?] )
 	libressl? ( dev-libs/libressl[static-libs?] )
+	>=dev-lang/mujs-0_p20160504
 	media-libs/freetype:2[static-libs?]
 	media-libs/harfbuzz[static-libs?]
 	media-libs/jbig2dec[static-libs?]
@@ -28,7 +29,6 @@ LIB_DEPEND="
 	virtual/jpeg[static-libs?]
 	X? ( x11-libs/libX11[static-libs?]
 		x11-libs/libXext[static-libs?] )
-	javascript? ( >=dev-lang/mujs-0_p20160504 )
 	opengl? ( >=media-libs/glfw-3 )"
 RDEPEND="${LIB_DEPEND}"
 DEPEND="${RDEPEND}
@@ -84,7 +84,7 @@ src_prepare() {
 		-e "1iHAVE_X11 = $(usex X)" \
 		-e "1iWANT_OPENSSL = $(usex openssl)" \
 		-e "1iWANT_CURL = $(usex curl)" \
-		-e "1iHAVE_MUJS = $(usex javascript)" \
+		-e "1iHAVE_MUJS = yes" \
 		-e "1iMUJS_LIBS = -lmujs" \
 		-e "1iMUJS_CFLAGS =" \
 		-e "1iHAVE_GLFW = $(usex opengl yes no)" \
