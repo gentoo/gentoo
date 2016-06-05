@@ -65,8 +65,10 @@ RDEPEND="${COMMON_DEPEND}
 		qt5? ( >=dev-python/PyQt5-5.5.1[dbus,gui,${PYTHON_USEDEP}] )
 	)"
 
-REQUIRED_USE="!minimal? ( ${PYTHON_REQUIRED_USE} )
-	^^ ( qt4 qt5 )"
+REQUIRED_USE="
+	!minimal? ( ${PYTHON_REQUIRED_USE} )
+	!minimal? ( ^^ ( qt4 qt5 ) )
+"
 
 CONFIG_CHECK="~PARPORT ~PPDEV"
 ERROR_PARPORT="Please make sure kernel parallel port support is enabled (PARPORT and PPDEV)."
