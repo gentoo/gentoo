@@ -92,6 +92,7 @@ net-news/rssguard -qt4
 net-p2p/bitcoin-qt -qt4
 >=net-p2p/qbittorrent-3.2.0 -qt4
 net-p2p/transmission -qt4
+>=net-print/hplip-3.16.5 -qt4
 >=net-wireless/wpa_supplicant-2.5 -qt4
 >=sci-geosciences/merkaartor-0.18.2 -qt4
 >=sci-geosciences/qlandkartegt-1.8.0 -qt4

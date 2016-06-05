@@ -229,12 +229,6 @@ dev-haskell/hpc
 # Masked for removal in 30 days. Bug #582382.
 net-libs/hubbub
 
-# Michael Palimaka <kensington@gentoo.org> (05 May 2016)
-# Doesn't compile against latest media-libs/spandsp.
-# Not needed anymore for Asterisk 1.6.
-# Masked for removal in 30 days. Bug #575778.
-net-misc/asterisk-spandsp_codec_g726
-
 # Maciej Mrozowski <reavertm@gentoo.org> (3 May 2016)
 # Mask until >=net-libs/qxmpp-0.8.3 is provided with qt5 support.
 =net-im/kadu-3.0
