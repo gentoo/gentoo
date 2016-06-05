@@ -1,0 +1,13 @@
+Gentoo-bug: 500164
+
+--- a/src/codec_fluidsynth.cpp
++++ b/src/codec_fluidsynth.cpp
+@@ -30,6 +30,8 @@
+ #ifdef _WIN32
+ #include <io.h>
++#else
++#include <unistd.h>
+ #endif
+ 
+ #include <istream>
+ 
