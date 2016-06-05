@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -36,28 +36,32 @@ DEPEND="fontforge? ( x11-apps/mkfontscale
 		app-i18n/unicode-data
 		>media-libs/fontconfig-2.6.0 )"
 
-if use fontforge; then
-	S=${WORKDIR}/${MY_SP}
-	FONT_S=${S}/build
-else
-	S=${WORKDIR}/${MY_BP}
-	FONT_S=${S}/ttf
-fi
-
 FONT_CONF=(
-	"${S}"/fontconfig/20-unhint-small-dejavu-sans-mono.conf
-	"${S}"/fontconfig/20-unhint-small-dejavu-sans.conf
-	"${S}"/fontconfig/20-unhint-small-dejavu-serif.conf
-	"${S}"/fontconfig/57-dejavu-sans-mono.conf
-	"${S}"/fontconfig/57-dejavu-sans.conf
-	"${S}"/fontconfig/57-dejavu-serif.conf )
+	fontconfig/20-unhint-small-dejavu-sans-mono.conf
+	fontconfig/20-unhint-small-dejavu-sans.conf
+	fontconfig/20-unhint-small-dejavu-serif.conf
+	fontconfig/57-dejavu-sans-mono.conf
+	fontconfig/57-dejavu-sans.conf
+	fontconfig/57-dejavu-serif.conf
+)
 
+FONT_S="ttf"
 FONT_SUFFIX="ttf"
 DOCS="AUTHORS NEWS README status.txt langcover.txt unicover.txt"
+
+src_unpack() {
+	default
+	if use fontforge; then
+		mv "${MY_SP}" "${P}" || die
+	else
+		mv "${MY_BP}" "${P}" || die
+	fi
+}
 
 src_compile() {
 	if use fontforge; then
 		emake -j1 \
+			BUILDDIR=ttf \
 			BLOCKS=/usr/share/unicode-data/Blocks.txt \
 			UNICODEDATA=/usr/share/unicode-data/UnicodeData.txt \
 			FC-LANG=/usr/share/fc-lang \
@@ -69,6 +73,6 @@ src_compile() {
 src_install() {
 	font_src_install
 	if use fontforge; then
-		dodoc build/*.txt
+		dodoc ttf/*.txt
 	fi
 }
