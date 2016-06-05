@@ -102,6 +102,8 @@ src_install() {
 	dosym ${sysroot}/lib/${ldso} ${sysroot}/usr/bin/ldd
 
 	if [[ ${CATEGORY} != cross-* ]] ; then
+		# TODO: We may be able to simplify this code by obtianing the arch name with
+		# /usr/lib/libc.so 2>&1 | sed -n 's/^.*(\(.*\))$/\1/;1p'
 		local target=$(tc-arch) arch
 		local endian=$(musl_endian)
 		case ${target} in
