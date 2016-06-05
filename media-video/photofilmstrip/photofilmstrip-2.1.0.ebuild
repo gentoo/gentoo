@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -12,7 +12,7 @@ inherit distutils-r1
 DESCRIPTION="Movie slideshow creator using Ken Burns effect"
 HOMEPAGE="http://www.photofilmstrip.org"
 SRC_URI="mirror://sourceforge/photostoryx/${PN}/${PV}/${P}.tar.gz"
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 
 KEYWORDS="~amd64 ~x86"
@@ -34,22 +34,20 @@ DOCS=( CHANGES COPYING README )
 
 src_prepare() {
 	# Remove unneeded icon resources update needing running X
-	sed -i \
-        -e '/self\._make_resources\(\)/d' \
-        setup.py
-
 	# Fix app doc/help files paths
 	sed -i \
-         -e "s:\(os\.path\.join(\"share\", \"doc\", \"\)photofilmstrip:\1${PF}:" \
-         setup.py
+		-e '/self\._make_resources\(\)/d' \
+		-e "s:\(os\.path\.join(\"share\", \"doc\", \"\)photofilmstrip:\1${PF}:" \
+		setup.py || die
+
 	sed -i \
-         -e "s:\"photofilmstrip\":\"${PF}\":" \
-         photofilmstrip/gui/HelpViewer.py
+		 -e "s:\"photofilmstrip\":\"${PF}\":" \
+		 photofilmstrip/gui/HelpViewer.py || die
 
 	# Fix desktop file entry
 	sed -i \
-        -e '/^Version.*/d' \
-        data/photofilmstrip.desktop
+		-e '/^Version.*/d' \
+		data/photofilmstrip.desktop || die
 
 	distutils-r1_src_prepare
 }
