@@ -27,7 +27,7 @@ src_prepare() {
 src_configure() {
 	econf \
 		--enable-lfs \
-		--enable-syslog \
+		$(use_enable !debug syslog) \
 		$(use_enable debug) \
 		$(use_enable zlib gznbd)
 }
