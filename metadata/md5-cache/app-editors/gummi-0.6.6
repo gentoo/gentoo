@@ -1,9 +1,9 @@
 DEFINED_PHASES=postinst prepare
 DEPEND=dev-libs/glib:2 dev-texlive/texlive-latex dev-texlive/texlive-latexextra x11-libs/gtk+:2 app-text/gtkspell:2 app-text/poppler[cairo] x11-libs/gtksourceview:2.0 x11-libs/pango !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=Simple LaTeX editor for GTK+ users
-EAPI=5
+EAPI=6
 HOMEPAGE=https://github.com/alexandervdm/gummi
-IUSE=+linguas_ar +linguas_ca +linguas_cs +linguas_da +linguas_de +linguas_el +linguas_es +linguas_fr +linguas_hu +linguas_it +linguas_nl +linguas_pl +linguas_pt +linguas_pt_BR +linguas_ro +linguas_ru +linguas_sv +linguas_zh_CN +linguas_zh_TW
+IUSE=linguas_ar linguas_ca linguas_cs linguas_da linguas_de linguas_el linguas_es linguas_fr linguas_hu linguas_it linguas_nl linguas_pl linguas_pt linguas_pt_BR linguas_ro linguas_ru linguas_sv linguas_zh_CN linguas_zh_TW
 KEYWORDS=amd64 x86
 LICENSE=MIT
 RDEPEND=dev-libs/glib:2 dev-texlive/texlive-latex dev-texlive/texlive-latexextra x11-libs/gtk+:2
@@ -11,4 +11,4 @@ SLOT=0
 SRC_URI=https://github.com/alexandervdm/gummi/archive/0.6.6.tar.gz -> gummi-0.6.6.tar.gz
 _eclass_exported_funcs=pkg_postinst:- src_prepare:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	792f83d5ec9536cb5ccef375469d8bde	libtool	4890219c51da247200223277f993e054	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
-_md5_=74eb062810ed80396803288d65607a3e
+_md5_=0f87f2cacdf5eb914e4ec4d32ec95208

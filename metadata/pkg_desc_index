@@ -1026,7 +1026,7 @@ app-editors/gedit-plugins 3.16.0 3.18.0: Official plugins for gedit
 app-editors/ghex 3.18.0 3.18.1: GNOME hexadecimal editor
 app-editors/ghostwriter 1.2.5: A cross-platform, aesthetic, distraction-free Markdown editor
 app-editors/gobby 0.4.13 0.4.13-r1 0.4.94: GTK-based collaborative editor
-app-editors/gummi 0.6.6 9999: Simple LaTeX editor for GTK+ users
+app-editors/gummi 0.6.6: Simple LaTeX editor for GTK+ users
 app-editors/gvim 7.4.769 7.4.1583 7.4.1821 9999: GUI version of the Vim text editor
 app-editors/hexcurse 1.55: ncurses based hex editor
 app-editors/hexedit 1.2.13: View and edit files in hex or ASCII
@@ -8724,6 +8724,7 @@ dev-ruby/arel 3.0.3 4.0.2 5.0.1.20140414130214 6.0.2 6.0.3 7.0.0: Arel is a Rela
 dev-ruby/arel-helpers 2.1.1 2.2.0 2.3.0: Tools to help construct database queries
 dev-ruby/ascii85 1.0.2-r2: Methods for encoding/decoding Adobe's binary-to-text encoding of the same name
 dev-ruby/asciidoctor 1.5.4: Processor for converting AsciiDoc into HTML 5, DocBook 4.5 and other formats
+dev-ruby/asciidoctor-diagram 1.4.0: A set of Asciidoctor extensions that enable you to add diagrams
 dev-ruby/asciimath 1.0.2: A pure Ruby AsciiMath parsing and conversion library
 dev-ruby/ast 2.2.0: A library for working with abstract syntax trees
 dev-ruby/astrolabe 1.3.1: An object-oriented AST extension for Parser
@@ -8893,7 +8894,7 @@ dev-ruby/hoe-seattlerb 1.3.2-r1 1.3.3 1.3.4: Hoe plugins providing tasks used by
 dev-ruby/hpricot 0.8.6-r2 0.8.6-r3 0.8.6-r4: A fast and liberal HTML parser for Ruby
 dev-ruby/html2haml 2.0.0: Convert HTML and HTML+Erb to Haml
 dev-ruby/htmlentities 4.3.4: A simple library for encoding/decoding entities in (X)HTML documents
-dev-ruby/http 0.6.3 0.6.3-r1 0.9.8 1.0.2 2.0.0 2.0.1: An easy-to-use client library for making requests from Ruby
+dev-ruby/http 0.6.3-r1 0.9.8 1.0.2 2.0.0 2.0.1: An easy-to-use client library for making requests from Ruby
 dev-ruby/http-cookie 1.0.2-r1: A ruby library to handle HTTP cookies
 dev-ruby/http-form_data 1.0.1 1.0.1-r1: Utility-belt to build form data request bodies
 dev-ruby/http_parser_rb 0.6.0-r1: Simple callback-based HTTP request/response parser
@@ -9028,7 +9029,7 @@ dev-ruby/pdf-core 0.6.1: Implements low level PDF features for Prawn
 dev-ruby/pdf-inspector 1.1.0-r1 1.2.0 1.2.1: A tool for analyzing PDF output
 dev-ruby/pdf-reader 1.3.3 1.4.0: PDF parser conforming as much as possible to the PDF specification from Adobe
 dev-ruby/permutation 0.1.8-r1: Library performing operations with permutations of sequences (strings, arrays)
-dev-ruby/pg 0.17.1 0.17.1-r1 0.18.2 0.18.3 0.18.4: Ruby extension library providing an API to PostgreSQL
+dev-ruby/pg 0.17.1-r1 0.18.4: Ruby extension library providing an API to PostgreSQL
 dev-ruby/pg_array_parser 0.0.9-r1: Simple library to parse PostgreSQL arrays into a array of strings
 dev-ruby/pkg-config 1.1.6 1.1.7: A pkg-config implementation by Ruby
 dev-ruby/plist 3.2.0: A library to manipulate Property List files, also known as plists
@@ -11694,7 +11695,7 @@ lxde-base/lxsession 0.4.9.2-r3 0.5.2: LXDE session manager
 lxde-base/lxsession-edit 0.2.0: LXDE session autostart editor
 lxde-base/lxshortcut 0.1.2: LXDE tool to edit desktop entry files
 lxde-base/lxtask 0.1.4 0.1.4-r1 0.1.5 0.1.6: LXDE Task manager
-lxde-base/lxterminal 0.1.11 0.2.0: Lightweight vte-based tabbed terminal emulator for LXDE
+lxde-base/lxterminal 0.1.11 0.2.0-r1: Lightweight vte-based tabbed terminal emulator for LXDE
 lxde-base/menu-cache 0.3.3 0.4.1 0.5.1 1.0.0 1.0.0-r1 1.0.1: Library to create and utilize caches to speed up freedesktop application menus
 lxqt-base/liblxqt 0.10.0: Common base library for the LXQt desktop environment
 lxqt-base/libsysstat 0.3.1: A Qt-based interface to system statistics
@@ -11799,7 +11800,7 @@ mail-filter/spamass-milter 0.3.2: A milter for SpamAssassin
 mail-filter/spamassassin 3.4.0-r1 3.4.1 3.4.1-r2 3.4.1-r3 3.4.1-r4 3.4.1-r5: An extensible mail filter which can identify and tag spam
 mail-filter/spamassassin-botnet 0.8-r1: SpamAssassin plugin that attempts to detect messages sent by a botnet
 mail-filter/spambayes 1.1_alpha6-r2 1.1_beta1 1.1_beta2: An anti-spam filter using on Bayesian filtering
-mail-filter/spamdyke 4.3.0 4.3.0-r1: A drop-in connection-time spam filter for qmail
+mail-filter/spamdyke 4.3.0 4.3.0-r1 5.0.1: A drop-in connection-time spam filter for qmail
 mail-filter/spampd 2.30 2.42: spampd is a program to scan messages for possible Unsolicited Commercial E-mail content
 mail-filter/spamprobe 1.4d: Fast, intelligent, automatic spam detector using Bayesian analysis
 mail-filter/sqlgrey 1.7.6-r1: SQLgrey is a postfix policy service implementing a grey-listing policy
@@ -17276,7 +17277,7 @@ sys-libs/lrmi 0.10-r1: library for calling real mode BIOS routines under Linux
 sys-libs/lwp 2.2 2.5 2.6: Light weight process library (used by Coda). This is NOT libwww-perl
 sys-libs/mars 1.0.1: Multicore Application Runtime System
 sys-libs/mtdev 1.1.4 1.1.5: Multitouch Protocol Translation Library
-sys-libs/musl 1.1.12 1.1.14 1.1.14-r1 9999: Light, fast and simple C library focused on standards-conformance and safety
+sys-libs/musl 1.1.12 1.1.14 1.1.14-r2 9999: Light, fast and simple C library focused on standards-conformance and safety
 sys-libs/ncurses 5.9-r3 5.9-r4 5.9-r5 5.9-r99 5.9-r101 6.0 6.0-r1: console display library
 sys-libs/newlib 1.18.0 1.19.0 1.20.0 2.0.0 2.1.0 2.2.0 2.2.0.20150423 2.3.0.20160104 2.4.0 9999: Newlib is a C library intended for use on embedded systems
 sys-libs/nss-usrfiles 2.18.1: NSS module to read passwd/group files from CoreOS /usr location
@@ -17650,7 +17651,7 @@ www-apache/mod_xsendfile 1.0_beta1: Apache2 module that processes X-SENDFILE hea
 www-apache/modsec-flameeyes 20130216 99999999: Flameeyes's Ruleset for ModSecurity
 www-apache/modsecurity-crs 2.2.6-r1 2.2.7: Core Rule Set for ModSecurity
 www-apache/mpm_itk 2.4.7_p4-r1: Run virtual hosts under separate users/groups
-www-apache/passenger 4.0.60 5.0.26 5.0.27 5.0.28: Passenger makes deployment of Ruby on Rails applications a breeze
+www-apache/passenger 4.0.60 5.0.28: Passenger makes deployment of Ruby on Rails applications a breeze
 www-apache/pwauth 2.3.10: A Unix Web Authenticator
 www-apps/389-dsgw 1.1.10: 389 Directory Server Gateway Web Application
 www-apps/Apache-Gallery 1.0_rc3-r1: Apache gallery for mod_perl
@@ -17842,7 +17843,7 @@ www-servers/hiawatha 9.8 9.14 9.14-r1 9.15: Advanced and secure webserver
 www-servers/lighttpd 1.4.35 1.4.35-r1 1.4.35-r2 1.4.37 1.4.37-r1 1.4.39: Lightweight high-performance web server
 www-servers/mongoose 5.3: easy to use web server
 www-servers/mongrel2 1.11.0: A language agnostic web server focused on web applications
-www-servers/monkeyd 1.5.6-r1 1.6.7 1.6.8 9999: A small, fast, and scalable web server
+www-servers/monkeyd 1.5.6-r1 1.6.8 1.6.9 9999: A small, fast, and scalable web server
 www-servers/nginx 1.8.1 1.9.15 1.10.0: Robust, small and high performance http and reverse proxy server
 www-servers/ocsigenserver 2.5-r2 2.6 2.7: Ocaml-powered webserver and framework for dynamic web programming
 www-servers/pathod 0.10 0.11.1 0.12.0: A collection of pathological tools for testing and torturing HTTP clients and servers
@@ -18994,7 +18995,7 @@ xfce-extra/xfce4-volumed 0.1.13: Daemon to control volume up/down and mute keys
 xfce-extra/xfce4-volumed-pulse 0.2.0: Daemon to control volume up/down and mute keys for pulseaudio
 xfce-extra/xfce4-wavelan-plugin 0.5.11 0.5.12: A panel plug-in to display wireless interface statistics
 xfce-extra/xfce4-weather-plugin 0.8.3-r2 0.8.4 0.8.5 0.8.6: A weather plug-in for the Xfce desktop environment
-xfce-extra/xfce4-whiskermenu-plugin 1.5.0 1.5.1 1.5.2 1.5.3: Alternate application launcher for Xfce
+xfce-extra/xfce4-whiskermenu-plugin 1.5.0 1.5.3: Alternate application launcher for Xfce
 xfce-extra/xfce4-windowck-plugin 0.2.4: Xfce panel plugin which allows to put the maximized window title and windows buttons on the panel
 xfce-extra/xfce4-wmdock-plugin 0.6.0: a compatibility layer for running WindowMaker dockapps on Xfce4
 xfce-extra/xfce4-xkb-plugin 0.5.6 0.7.0 0.7.1 0.7.1-r1: XKB layout switching panel plug-in for the Xfce desktop environment
