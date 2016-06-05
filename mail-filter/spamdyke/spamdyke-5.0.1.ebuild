@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
+EAPI=5
 
 inherit eutils autotools
 
@@ -20,23 +20,27 @@ DEPEND="
 		!libressl? ( dev-libs/openssl:0 )
 		libressl? ( dev-libs/libressl )
 	)"
-RDEPEND="${DEPEND}
+
+RDEPEND="
+	${DEPEND}
 	virtual/qmail"
 
-S=${WORKDIR}/${P}/${PN}
+S="${WORKDIR}/${P}/${PN}"
 
 src_prepare() {
-	echo "# Configuration option for ${PN}" > ${PN}.conf
+	echo "# Configuration option for ${PN}" > ${PN}.conf || die
 	if use ssl; then
 		echo "tls-certificate-file=/var/qmail/control/clientcert.pem" \
-			>> ${PN}.conf
+			>> ${PN}.conf || die
 	fi
-	echo "graylist-level=always-create-dir" >> ${PN}.conf
-	echo "graylist-dir=/var/tmp/${PN}/graylist" >> ${PN}.conf
-	echo "reject-empty-rdns" >> ${PN}.conf
-	echo "reject-unresolvable-rdns" >> ${PN}.conf
-	echo "dns-blacklist-entry=zen.spamhaus.org" >> ${PN}.conf
-	echo "local-domains-file=/var/qmail/control/rcpthosts" >> ${PN}.conf
+	cat <<- EOF >> ${PN}.conf || die
+graylist-level=always-create-dir
+graylist-dir=/var/tmp/${PN}/graylist
+reject-empty-rdns
+reject-unresolvable-rdns
+dns-blacklist-entry=zen.spamhaus.org
+local-domains-file=/var/qmail/control/rcpthosts
+EOF
 	sed -i \
 		-e "/STRIP_CMD/d" \
 		Makefile.in || die "sed on Makefile.in failed"
@@ -45,25 +49,25 @@ src_prepare() {
 
 src_configure() {
 	econf \
-		$(use_enable ssl tls) || die "econf failed"
-	cd ../utils
-	econf || die "econf failed in utils"
+		$(use_enable ssl tls)
+	cd ../utils || die
+	econf
 }
 
 src_compile() {
-	emake CFLAGS="${CFLAGS}" || die "emake failed"
+	emake CFLAGS="${CFLAGS}"
 	cd ../utils
-	emake CFLAGS="${CFLAGS}" || die "emake in utils died"
+	emake CFLAGS="${CFLAGS}"
 }
 
 src_install() {
 	insinto /etc/${PN}
-	doins ${PN}.conf || die "Installing ${PN} configuration file failed"
+	doins ${PN}.conf
 	dodir /var/tmp/${PN}/graylist
 	fowners -R qmaild /var/tmp/${PN}/graylist
-	cd ../utils
-	dobin domain2path || die "Installing domain2path binary failed"
-	cd ../documentation
+	cd ../utils || die
+	dobin domain2path
+	cd ../documentation || die
 	dodoc {Changelog,INSTALL,UPGRADING}.txt
 	dohtml FAQ.html \
 		README.html \
