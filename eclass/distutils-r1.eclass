@@ -242,10 +242,19 @@ esetup.py() {
 	local die_args=()
 	[[ ${EAPI} != [45] ]] && die_args+=( -n )
 
+	[[ ${BUILD_DIR} ]] && _distutils-r1_create_setup_cfg
+
 	set -- "${PYTHON:-python}" setup.py "${mydistutilsargs[@]}" "${@}"
 
 	echo "${@}" >&2
-	"${@}" || die "${die_args[@]}" || return ${?}
+	"${@}" || die "${die_args[@]}"
+	local ret=${?}
+
+	if [[ ${BUILD_DIR} ]]; then
+		rm "${HOME}"/.pydistutils.cfg || die "${die_args[@]}"
+	fi
+
+	return ${ret}
 }
 
 # @FUNCTION: distutils_install_for_testing
@@ -436,7 +445,6 @@ _distutils-r1_copy_egg_info() {
 distutils-r1_python_compile() {
 	debug-print-function ${FUNCNAME} "${@}"
 
-	_distutils-r1_create_setup_cfg
 	_distutils-r1_copy_egg_info
 
 	esetup.py build "${@}"
@@ -511,9 +519,6 @@ distutils-r1_python_install() {
 	# enable compilation for the install phase.
 	local -x PYTHONDONTWRITEBYTECODE=
 
-	# re-create setup.cfg with install paths
-	_distutils-r1_create_setup_cfg
-
 	# python likes to compile any module it sees, which triggers sandbox
 	# failures if some packages haven't compiled their modules yet.
 	addpredict "${EPREFIX}/usr/$(get_libdir)/${EPYTHON}"
@@ -555,8 +560,8 @@ distutils-r1_python_install() {
 		done
 	fi
 
-	local root=${D}/_${EPYTHON}
-	[[ ${DISTUTILS_SINGLE_IMPL} ]] && root=${D}
+	local root=${D%/}/_${EPYTHON}
+	[[ ${DISTUTILS_SINGLE_IMPL} ]] && root=${D%/}
 
 	esetup.py install --root="${root}" "${args[@]}"
 
@@ -631,12 +636,6 @@ distutils-r1_run_phase() {
 	# not valid then associates a NullImporter object to ${BUILD_DIR}/lib storing it
 	# in the sys.path_importer_cache)
 	mkdir -p "${BUILD_DIR}/lib" || die
-
-	# We need separate home for each implementation, for .pydistutils.cfg.
-	if [[ ! ${DISTUTILS_SINGLE_IMPL} ]]; then
-		local -x HOME=${HOME}/${EPYTHON}
-		mkdir -p "${HOME}" || die
-	fi
 
 	# Set up build environment, bug #513664.
 	local -x AR=${AR} CC=${CC} CPP=${CPP} CXX=${CXX}
