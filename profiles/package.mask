@@ -30,6 +30,39 @@
 
 #--- END OF EXAMPLES ---
 
+# Patrice Clement <monsieurp@gentoo.org> (5 Jun 2016)
+# Unmaintained ebuilds. Upstream is either dead or AWOL. Also, most of these
+# ebuilds are still sitting in ~arch after years in the tree.
+# Masked for removal in 30 days.
+dev-util/ccmalloc
+dev-util/dwarves
+dev-util/tinlink
+dev-util/cdecl
+dev-util/redet
+dev-util/eggy
+dev-util/mock
+dev-util/par
+dev-util/injectso
+dev-util/dissembler
+dev-util/ghh
+dev-util/lsuio
+dev-util/rec
+dev-util/usb-robot
+dev-util/jif
+dev-util/httpup
+dev-util/crow-designer
+dev-util/qdevelop
+dev-util/intel2gas
+dev-util/webcpp
+dev-util/as11
+dev-util/duma
+dev-util/filepp
+dev-util/pretrace
+dev-util/ald
+dev-util/kdoc
+dev-util/skelgen
+dev-util/ftncheck
+
 # Aaron Bauman <bman@gentoo.org> (5 Jun 2016)
 # Unpatched security vulnerability and dead upstream
 # per bug #500970.  Removal in 30 days

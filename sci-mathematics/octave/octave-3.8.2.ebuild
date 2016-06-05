@@ -15,7 +15,7 @@ HOMEPAGE="http://www.octave.org/"
 SRC_URI="mirror://gnu/${PN}/${P}.tar.bz2"
 
 SLOT="0/${PV}"
-IUSE="curl doc fftw +glpk gnuplot gui hdf5 +imagemagick java jit opengl
+IUSE="curl doc fftw +glpk gnuplot gui hdf5 +imagemagick java opengl
 	postscript +qhull +qrupdate readline +sparse static-libs X zlib"
 KEYWORDS="amd64 ~arm hppa ppc ppc64 x86 ~x86-fbsd ~amd64-linux ~x86-linux"
 
@@ -34,7 +34,6 @@ RDEPEND="
 			media-gfx/graphicsmagick[cxx]
 			media-gfx/imagemagick[cxx] ) )
 	java? ( >=virtual/jre-1.6.0:* )
-	jit? ( <sys-devel/llvm-3.5:0= )
 	opengl? (
 		media-libs/freetype:2=
 		media-libs/fontconfig:1.0=
@@ -75,7 +74,6 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.4.3-texi.patch
 	"${FILESDIR}"/${PN}-3.8.0-disable-getcwd-path-max-test-as-it-is-too-slow.patch
 	"${FILESDIR}"/${PN}-3.8.0-imagemagick-configure.patch
-	"${FILESDIR}"/${PN}-3.8.0-llvm-configure.patch
 	"${FILESDIR}"/${PN}-3.8.1-imagemagick.patch
 	"${FILESDIR}"/${PN}-3.8.1-pkgbuilddir.patch
 )
@@ -86,9 +84,6 @@ src_prepare() {
 		use opengl && append-ldflags -Wl,-rpath,"${EPREFIX}/usr/$(get_libdir)/fltk-1"
 		use gui && append-ldflags -Wl,-rpath,"${EPREFIX}/usr/$(get_libdir)/qt4"
 	fi
-
-	has_version ">=sys-devel/llvm-3.4" && \
-		epatch "${FILESDIR}"/${PN}-3.8.0-llvm-3.4.patch
 
 	# Fix bug 501756
 	sed -i \
@@ -113,7 +108,8 @@ src_configure() {
 		$(use_enable doc docs)
 		$(use_enable java)
 		$(use_enable gui)
-		$(use_enable jit)
+		# requires llvm < 3.5
+		--disable-jit
 		$(use_enable readline)
 		$(use_with curl)
 		$(use_with fftw fftw3)
@@ -147,7 +143,7 @@ src_configure() {
 
 src_compile() {
 	emake
-	if use java || use jit ; then
+	if use java ; then
 		pax-mark m "${S}/src/.libs/octave-cli"
 	fi
 }
