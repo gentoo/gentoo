@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -24,7 +24,7 @@ PATCHES=( "${FILESDIR}"/${P}-vdr-1.3.18.diff
 src_prepare() {
 	vdr-plugin-2_src_prepare
 
-	remove_i18n_include console.c menu.c terminalemulation.c virtualconsole.c virtualconsoles.c
+	vdr_remove_i18n_include console.c menu.c terminalemulation.c virtualconsole.c virtualconsoles.c
 	sed  -i console.c -e "s:RegisterI18n://RegisterI18n:"
 
 	ewarn "plugin will not support the new fonthandling"

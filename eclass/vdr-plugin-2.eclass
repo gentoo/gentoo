@@ -77,7 +77,7 @@
 # fix_vdr_libsi_include bla.c foo.c
 # @CODE
 
-# @FUNCTION: remove_i18n_include
+# @FUNCTION: vdr_remove_i18n_include
 # @DESCRIPTION:
 # Compile will fail if plugin still use the old i18n language handling,
 # most parts are fixed by vdr-plugin-2.eclass internal functions itself.
@@ -86,7 +86,7 @@
 #
 # Example:
 # @CODE
-# remove_i18n_include bla.n foo.n
+# vdr_remove_i18n_include bla.n foo.n
 # @CODE
 
 # Applying your own local/user patches:
@@ -343,8 +343,7 @@ vdr_i18n() {
 	fi
 }
 
-remove_i18n_include() {
-	# ToDo: rename this to vdr_...; IMPORTANT!!! We use this in the tree
+vdr_remove_i18n_include() {
 	# remove uneeded i18.n includes
 
 	local f

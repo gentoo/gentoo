@@ -78,6 +78,7 @@ DEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}"/${P}-fix-buildsystem.patch
+	"${FILESDIR}"/${P}-remove-C-linkage.patch
 )
 
 pkg_setup() {
@@ -123,5 +124,5 @@ src_configure() {
 
 src_compile() {
 	cmake-utils_src_compile
-	use doc && emake -C doc
+	use doc && emake -C "${BUILD_DIR}"/doc
 }
