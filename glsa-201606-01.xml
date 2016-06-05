@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201606-01">
+  <title>PuTTY: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in PuTTY, the worst of
+    which could lead to arbitrary code execution, or cause a Denial of Service
+    condition.
+  </synopsis>
+  <product type="ebuild"></product>
+  <announced>June 05, 2016</announced>
+  <revised>June 05, 2016: 2</revised>
+  <bug>565080</bug>
+  <bug>576524</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/putty" auto="yes" arch="*">
+      <unaffected range="ge">0.67</unaffected>
+      <vulnerable range="lt">0.67</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>PuTTY is a telnet and SSH client.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in PuTTY. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Stack-based buffer overflow in the SCP command-line utility allows
+      remote servers to execute arbitrary code or cause a denial of service
+      condition via a crafted SCP-SINK file-size response to an SCP download
+      request.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All PuTTY users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-misc/putty-0.67"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-5309">CVE-2015-5309</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2563">CVE-2016-2563</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 05 Apr 2016 03:16:59 +0000">
+    BlueKnight
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 05 Jun 2016 16:25:06 +0000">b-man</metadata>
+</glsa>
