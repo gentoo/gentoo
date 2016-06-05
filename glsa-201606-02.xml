@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild"></product>
   <announced>June 05, 2016</announced>
-  <revised>June 05, 2016: 1</revised>
+  <revised>June 05, 2016: 3</revised>
   <bug>577450</bug>
   <bug>581372</bug>
   <access>remote</access>
@@ -41,25 +41,24 @@
     <p>There is no known workaround at this time.</p>
   </workaround>
   <resolution>
-    <p>All puppet-agent users should upgrade to the latest version:</p>
+    <p>All Puppet Agent users should upgrade to the latest version:</p>
     
     <code>
       # emerge --sync
       # emerge --ask --oneshot --verbose "&gt;=app-admin/puppet-agent-1.4.2"
     </code>
     
-    <p>All puppetserver users should upgrade to the latest version:</p>
+    <p>All Puppet Server users should upgrade to the latest version:</p>
     
     <code>
       # emerge --sync
       # emerge --ask --oneshot --verbose "&gt;=app-admin/puppetserver-2.3.2"
     </code>
-    
   </resolution>
   <references>
     <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2785">CVE-2016-2785</uri>
     <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-2786">CVE-2016-2786</uri>
   </references>
   <metadata tag="requester" timestamp="Tue, 15 Mar 2016 09:09:16 +0000">b-man</metadata>
-  <metadata tag="submitter" timestamp="Sun, 05 Jun 2016 18:17:44 +0000">b-man</metadata>
+  <metadata tag="submitter" timestamp="Sun, 05 Jun 2016 20:14:52 +0000">b-man</metadata>
 </glsa>
