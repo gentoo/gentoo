@@ -22,7 +22,7 @@ KEYWORDS="~alpha amd64 ~arm ~hppa ppc ppc64 x86 ~x86-fbsd ~amd64-linux ~x86-linu
 IUSE=""
 
 RDEPEND="${RDEPEND}
-	dev-db/postgresql"
+	dev-db/postgresql:*"
 DEPEND="${DEPEND}
 	dev-db/postgresql
 	test? ( dev-db/postgresql[server,threads] )"
