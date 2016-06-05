@@ -2,4 +2,4 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-ACCEPT_KEYWORDS="~${ARCH} ~${ARCH}-linux"
+ACCEPT_KEYWORDS="~${ARCH}"
