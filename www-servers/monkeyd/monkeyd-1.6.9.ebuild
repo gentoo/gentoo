@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -59,7 +59,7 @@ pkg_setup() {
 src_prepare() {
 	# Unconditionally get rid of the bundled jemalloc
 	rm -rf "${S}"/deps
-	epatch "${FILESDIR}"/${PN}-1.6.3-system-mbedtls.patch
+	epatch "${FILESDIR}"/${PN}-1.6.8-system-mbedtls.patch
 }
 
 src_configure() {
