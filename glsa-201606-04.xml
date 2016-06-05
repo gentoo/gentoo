@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201606-04">
+  <title>GnuPG: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in GnuPG and libgcrypt,
+    the worst of which may allow a local attacker to obtain confidential key
+    information.
+  </synopsis>
+  <product type="ebuild">gnupg</product>
+  <announced>June 05, 2016</announced>
+  <revised>June 05, 2016: 1</revised>
+  <bug>534110</bug>
+  <bug>541564</bug>
+  <bug>541568</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="app-crypt/gnupg" auto="yes" arch="*">
+      <unaffected range="ge">2.0.26-r3</unaffected>
+      <unaffected range="rge">1.4.19</unaffected>
+      <vulnerable range="lt">2.0.26-r3</vulnerable>
+    </package>
+    <package name="dev-libs/libgcrypt" auto="yes" arch="*">
+      <unaffected range="ge">1.6.3-r4</unaffected>
+      <vulnerable range="lt">1.6.3-r4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>The GNU Privacy Guard, GnuPG, is a free replacement for the PGP suite of
+      cryptographic software.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in GnuPG and libgcrypt,
+      please review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A local attacker could possibly cause a Denial of Service condition.
+      Side-channel attacks could be leveraged to obtain key material.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All GnuPG 2 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-crypt/gnupg-2.0.26-r3"
+    </code>
+    
+    <p>All GnuPG 1 users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-crypt/gnupg-1.4.19"
+    </code>
+    
+    <p>All libgcrypt users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-libs/libgcrypt-1.6.3-r4"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2014-3591">CVE-2014-3591</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-0837">CVE-2015-0837</uri>
+  </references>
+  <metadata tag="requester" timestamp="Mon, 16 Feb 2015 14:53:59 +0000">
+    BlueKnight
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 05 Jun 2016 20:20:04 +0000">stanley</metadata>
+</glsa>
