@@ -15,7 +15,7 @@ SRC_URI="http://seb.dbzteam.org/pub/pyinotify/releases/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~ppc x86 ~amd64-linux ~x86-linux"
 IUSE="examples"
 
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
