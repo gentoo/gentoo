@@ -7075,7 +7075,7 @@ dev-python/django-opensearch 0.2.4 0.2.5: A django reusable application to handl
 dev-python/django-openstack-auth 1.2.0 1.3.1: Django authentication backend for use with OpenStack Keystone Identity backend
 dev-python/django-otp 0.2.7 0.3.4: Framework for adding two-factor authentication to Django using one-time passwords
 dev-python/django-otp-yubikey 0.2.0 0.3.3: django-otp plugin that verifies YubiKey OTP tokens
-dev-python/django-phonenumber-field 0.7.2 1.0.0: Django model and form field for normalised phone numbers using python-phonenumbers
+dev-python/django-phonenumber-field 0.7.2 1.1.0: Django model and form field for normalised phone numbers using python-phonenumbers
 dev-python/django-picklefield 0.3.0 0.3.1 0.3.2: Implementation of a pickled object field for django
 dev-python/django-pipeline 1.3.26 1.5.4 1.6.0: An asset packaging library for Django
 dev-python/django-piston 0.2.3-r1 9999: A mini-framework for Django for creating RESTful APIs
@@ -7591,7 +7591,7 @@ dev-python/pexpect 3.3 4.0.1: Python module for spawning child applications and 
 dev-python/pgasync 2.01-r1: An asynchronous API to PostgreSQL for twisted
 dev-python/pgmagick 0.5.10 0.5.11 0.6: Yet another boost.python based wrapper for GraphicsMagick
 dev-python/pgpdump 1.5: PGP packet parser library
-dev-python/phonenumbers 7.2.3 7.2.6: Python port of Google's libphonenumber
+dev-python/phonenumbers 7.2.3 7.2.7: Python port of Google's libphonenumber
 dev-python/photutils 0.2.1: Python package for image astronomical photometry
 dev-python/pickleshare 0.5 0.6: A small 'shelve' like datastore with concurrency support
 dev-python/pid 2.0.1: Pidfile featuring stale detection and file-locking
