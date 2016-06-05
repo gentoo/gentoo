@@ -62,7 +62,7 @@ inherit flag-o-matic toolchain-funcs mozcoreconf-v3
 # @ECLASS-VARIABLE: MOZCONFIG_OPTIONAL_GTK2ONLY
 # @DESCRIPTION:
 # Set this variable before the inherit line, when an ebuild can provide
-# optional gtk2-only support via IUSE="force-gtk2".
+# optional gtk2-only support via IUSE="gtk2".
 #
 # Note that this option conflicts directly with MOZCONFIG_OPTIONAL_GTK3, both
 # variables cannot be set at the same time and this variable will be ignored if
@@ -138,12 +138,12 @@ if [[ -n ${MOZCONFIG_OPTIONAL_GTK3} ]]; then
 	gtk3? ( >=x11-libs/gtk+-3.4.0:3 )"
 elif [[ -n ${MOZCONFIG_OPTIONAL_GTK2ONLY} ]]; then
 	if [[ ${MOZCONFIG_OPTIONAL_GTK2ONLY} = "enabled" ]]; then
-		IUSE+=" +force-gtk2"
+		IUSE+=" +gtk2"
 	else
-		IUSE+=" force-gtk2"
+		IUSE+=" gtk2"
 	fi
 	RDEPEND+="
-	!force-gtk2? ( >=x11-libs/gtk+-3.4.0:3 )"
+	!gtk2? ( >=x11-libs/gtk+-3.4.0:3 )"
 fi
 if [[ -n ${MOZCONFIG_OPTIONAL_QT5} ]]; then
 	inherit qmake-utils
@@ -200,9 +200,9 @@ REQUIRED_USE="
 [[ -n ${MOZCONFIG_OPTIONAL_GTK3} ]] && [[ -n ${MOZCONFIG_OPTIONAL_QT5} ]] && \
 	REQUIRED_USE+=" ?? ( gtk3 qt5 )"
 
-# only one of force-gtk2 or qt5 should be permitted to be selected, since only one will be used.
+# only one of gtk2 or qt5 should be permitted to be selected, since only one will be used.
 [[ -n ${MOZCONFIG_OPTIONAL_GTK2ONLY} ]] && [[ -n ${MOZCONFIG_OPTIONAL_QT5} ]] && \
-	REQUIRED_USE+=" ?? ( force-gtk2 qt5 )"
+	REQUIRED_USE+=" ?? ( gtk2 qt5 )"
 
 # @FUNCTION: mozconfig_config
 # @DESCRIPTION:
@@ -299,10 +299,10 @@ mozconfig_config() {
 		fi
 	fi
 	if [[ -n ${MOZCONFIG_OPTIONAL_GTK2ONLY} ]]; then
-		if ! use force-gtk2 ; then
+		if ! use gtk2 ; then
 			toolkit="cairo-gtk3"
 		else
-			toolkit_comment="force-gtk2 use flag"
+			toolkit_comment="gtk2 use flag"
 		fi
 	fi
 	if [[ -n ${MOZCONFIG_OPTIONAL_QT5} ]]; then
