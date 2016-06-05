@@ -15528,7 +15528,7 @@ sci-chemistry/autodock_vina 1.1.2: Program for drug discovery, molecular docking
 sci-chemistry/avogadro 1.0.3-r2 1.1.0 1.1.1: Advanced molecular editor that uses Qt4 and OpenGL
 sci-chemistry/avogadro2 0.7.2 0.8.0: Advanced molecule editor and visualizer 2
 sci-chemistry/azara 2.8-r4 2.8-r5: A suite of programmes to process and view NMR data
-sci-chemistry/ball 1.4.2: Biochemical Algorithms Library
+sci-chemistry/ball 1.4.2-r1: Biochemical Algorithms Library
 sci-chemistry/bkchem 0.14.0_pre2-r1: Chemical drawing program
 sci-chemistry/bodr 9-r1 10: The Blue Obelisk Data Repository listing element and isotope properties
 sci-chemistry/burrow-owl 1.5.1: Visualize multidimensional nuclear magnetic resonance (NMR) spectra
