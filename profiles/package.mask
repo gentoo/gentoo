@@ -46,7 +46,6 @@ dev-util/par
 dev-util/injectso
 dev-util/dissembler
 dev-util/ghh
-dev-util/gengetopt
 dev-util/lsuio
 dev-util/rec
 dev-util/usb-robot
