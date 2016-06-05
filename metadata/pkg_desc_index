@@ -17710,7 +17710,7 @@ www-apps/moodle 2.7.14 2.8.12 2.9.6 3.0.4: The Moodle Course Management System
 www-apps/mypictures 20040202 20040202-r1: Simple photo-gallery for websites
 www-apps/mythweb 0.27.5 0.28: PHP scripts intended to manage MythTV from a web browser
 www-apps/nanoblogger 3.2.3 3.3 3.5_rc1: Small and simple weblog engine written in Bash for the command-line
-www-apps/nanoc 3.8.0 4.1.6: nanoc is a simple but very flexible static site generator written in Ruby
+www-apps/nanoc 3.8.0 4.1.6 4.2.0: nanoc is a simple but very flexible static site generator written in Ruby
 www-apps/nikola 7.2.0 7.6.0 7.6.1 7.6.2 7.6.3: A static website and blog generator
 www-apps/novnc 0.5 9999: noVNC is a VNC client implemented using HTML5 technologies
 www-apps/openwebstats 1.1: PHP stats application that reads Apache log files and imports the data to a MySQL database
