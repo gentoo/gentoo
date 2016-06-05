@@ -3,10 +3,13 @@
 <pkgmetadata>
   <!-- maintainer-needed -->
   <use>
-  <flag name="qmail">Build qmail functionality and docs</flag>
-  <flag name="bayes">
-    Require a database (MySQL, SQLite, Postgres, or BerkDB) backend to
-    enable the Bayesian filtering database.
-  </flag>
-</use>
+    <flag name="bayes">
+      Require a database (MySQL, SQLite, Postgres, or BerkDB) backend
+      to enable the Bayesian filtering database.
+    </flag>
+    <flag name="cron">
+      Install a cron job to update SpamAssassin's rules daily.
+    </flag>
+    <flag name="qmail">Build qmail functionality and docs</flag>
+  </use>
 </pkgmetadata>
