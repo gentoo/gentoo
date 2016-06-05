@@ -42,7 +42,7 @@ src_prepare() {
 	eapply "${FILESDIR}/${PN}-1.15.1-staticdata.patch"
 
 	# do not try to save exported html to python sitedir
-	eapply "${FILESDIR}/${PN}-1.1.8-html-export-path.patch"
+	eapply "${FILESDIR}/${PN}-1.20.2-html-export-path.patch"
 
 	# fix import path in the main script for systemwide installation
 	eapply "${FILESDIR}/${PN}-1.15.1-import-pyfa.patch"
