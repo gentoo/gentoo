@@ -14540,7 +14540,6 @@ net-misc/asterisk-extra-sounds 1.4.11: Extra sounds for asterisk
 net-misc/asterisk-g729 11.0.3.1.5 11.0.3.1.6: G.729 codec and supporting files for asterisk
 net-misc/asterisk-moh-opsound 2.03: asterisk moh music
 net-misc/asterisk-rate_engine 0.5.4: Asterisk application for least-cost routing
-net-misc/asterisk-spandsp_codec_g726 0.0.2_pre26: SpanDSP ITU G.726-32kbps codec for Asterisk
 net-misc/astmanproxy 1.28.2: Proxy for the Asterisk manager interface
 net-misc/autossh 1.4c 1.4d 1.4e: Automatically restart SSH sessions and tunnels
 net-misc/autoupnp 0.4.6 0.4.7 9999: Automatic open port forwarder using UPnP
