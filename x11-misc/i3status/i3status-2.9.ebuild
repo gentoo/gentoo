@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -15,7 +15,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-RDEPEND="dev-libs/confuse
+RDEPEND="dev-libs/confuse:=
 	>=dev-libs/yajl-2.0.2
 	media-libs/alsa-lib
 	net-wireless/wireless-tools"
