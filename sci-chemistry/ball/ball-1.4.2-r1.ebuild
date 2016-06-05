@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
@@ -15,13 +15,13 @@ SRC_URI="http://www.ball-project.org/Downloads/v${PV}/BALL-${PV}.tar.xz"
 SLOT="0"
 LICENSE="LGPL-2 GPL-3"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
-IUSE="cuda mpi +python sql test +threads +webkit"
+IUSE="cuda mpi +python sql test +threads"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="
 	dev-cpp/eigen:3
-	dev-libs/boost
+	dev-libs/boost:=
 	dev-qt/qtcore:4
 	dev-qt/qtgui:4
 	dev-qt/qtopengl:4
@@ -37,8 +37,7 @@ RDEPEND="
 	cuda? ( dev-util/nvidia-cuda-toolkit )
 	mpi? ( virtual/mpi )
 	python? ( ${PYTHON_DEPS} )
-	sql? ( dev-qt/qtsql:4 )
-	webkit? ( dev-qt/qtwebkit:4 )"
+	sql? ( dev-qt/qtsql:4 )"
 DEPEND="${RDEPEND}
 	dev-python/sip
 	sys-devel/bison
@@ -54,7 +53,10 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.4.1-BondOrder.xml.patch
 	"${FILESDIR}"/${P}-Fix-compilation-of-sipModularWidget.patch
 	"${FILESDIR}"/${P}-underlinking.patch
-	)
+	"${FILESDIR}"/${P}-fix-python-bindings.patch
+	"${FILESDIR}"/${P}-std-namespace-isnan.patch
+	"${FILESDIR}"/${P}-struct-swap-attribute.patch
+)
 
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
@@ -62,14 +64,14 @@ pkg_setup() {
 
 src_configure() {
 	local mycmakeargs=(
-		$(cmake-utils_use_use threads FFTW_THREADS)
-		$(cmake-utils_use cuda MT_ENABLE_CUDA)
-		$(cmake-utils_use mpi MT_ENABLE_MPI)
-		$(cmake-utils_use sql BALL_HAS_QTSQL)
-		$(cmake-utils_use_use webkit USE_QTWEBKIT)
-		$(cmake-utils_use python BALL_PYTHON_SUPPORT)
+		-DUSE_FFTW_THREADS=$(usex threads)
+		-DMT_ENABLE_CUDA=$(usex cuda)
+		-DMT_ENABLE_MPI=$(usex mpi)
+		-DBALL_HAS_QTSQL=$(usex sql)
+		-DBALL_PYTHON_SUPPORT=$(usex python)
 	)
 	cmake-utils_src_configure
+
 	local i
 	for i in "${S}"/data/*; do
 		ln -sf "${i}" "${BUILD_DIR}"/source/TEST/ || die
