@@ -6278,7 +6278,7 @@ dev-perl/Test-ClassAPI 1.60.0-r1: Provides basic first-pass API testing for larg
 dev-perl/Test-CleanNamespaces 0.180.0: Check for uncleaned imports
 dev-perl/Test-Command 0.80.0-r1 0.110.0: Test routines for external commands
 dev-perl/Test-Command-Simple 0.50.0: Test external commands (nearly) as easily as loaded modules
-dev-perl/Test-Deep 0.110.0-r2 1.120.0: Extremely flexible deep comparison testing
+dev-perl/Test-Deep 1.120.0: Extremely flexible deep comparison testing
 dev-perl/Test-Dependencies 0.120.0: Ensure that your Makefile.PL specifies all module dependencies
 dev-perl/Test-Differences 0.610.0-r1 0.630.0 0.640.0: Test strings and data structures and show differences if not ok
 dev-perl/Test-DistManifest 1.12.0-r1 1.14.0: Author test that validates a package MANIFEST
@@ -6292,7 +6292,7 @@ dev-perl/Test-Inline 2.213.0-r1: Inline test suite support for Perl
 dev-perl/Test-Inter 1.60.0: Framework for more readable interactive test scripts
 dev-perl/Test-LeakTrace 0.150.0: Traces memory leaks
 dev-perl/Test-LongString 0.150.0-r1 0.170.0: A library to test long strings
-dev-perl/Test-Manifest 1.230.0-r1 2.20.0: Interact with a t/test_manifest file
+dev-perl/Test-Manifest 2.20.0: Interact with a t/test_manifest file
 dev-perl/Test-Memory-Cycle 1.40.0-r1 1.60.0: Check for memory leaks and circular memory references
 dev-perl/Test-Mock-LWP-Dispatch 0.80.0: Mocks LWP::UserAgent and dispatches your requests/responses
 dev-perl/Test-MockModule 0.50.0-r2 0.110.0: Override subroutines in a module for unit testing
@@ -6306,8 +6306,8 @@ dev-perl/Test-Number-Delta 1.40.0 1.60.0: Compare the difference between numbers
 dev-perl/Test-Object 0.70.0-r1: Thoroughly testing objects via registered handlers
 dev-perl/Test-Output 1.30.0: Utilities to test STDOUT and STDERR messages
 dev-perl/Test-Perl-Critic 1.20.0-r1 1.30.0: Use Perl::Critic in test programs
-dev-perl/Test-Pod 1.480.0 1.510.0: Check for POD errors in files
-dev-perl/Test-Pod-Coverage 1.80.0-r1 1.100.0: Check for pod coverage in your distribution
+dev-perl/Test-Pod 1.510.0: Check for POD errors in files
+dev-perl/Test-Pod-Coverage 1.100.0: Check for pod coverage in your distribution
 dev-perl/Test-Portability-Files 0.60.0-r1: Check file names portability
 dev-perl/Test-Requires 0.60.0-r1 0.80.0 0.100.0: Checks to see if the module can be loaded
 dev-perl/Test-Script 1.70.0-r1 1.100.0: Cross-platform basic tests for scripts
