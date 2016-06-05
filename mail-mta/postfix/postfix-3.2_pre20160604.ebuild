@@ -73,6 +73,7 @@ src_prepare() {
 		src/util/sys_defs.h || die "sed failed"
 	# change default paths to better comply with portage standard paths
 	sed -i -e "s:/usr/local/:/usr/:g" conf/master.cf || die "sed failed"
+	eapply -p0 "${FILESDIR}/${PN}-libressl.patch"
 }
 
 src_configure() {
