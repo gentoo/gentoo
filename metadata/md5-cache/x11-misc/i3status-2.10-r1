@@ -1,14 +1,14 @@
 DEFINED_PHASES=compile postinst prepare
-DEPEND=dev-libs/confuse dev-libs/libnl:3 >=dev-libs/yajl-2.0.2 media-libs/alsa-lib pulseaudio? ( media-sound/pulseaudio ) app-text/asciidoc virtual/pkgconfig filecaps? ( sys-libs/libcap )
+DEPEND=dev-libs/confuse:= dev-libs/libnl:3 >=dev-libs/yajl-2.0.2 media-libs/alsa-lib pulseaudio? ( media-sound/pulseaudio ) app-text/asciidoc virtual/pkgconfig filecaps? ( sys-libs/libcap )
 DESCRIPTION=generates a status bar for dzen2, xmobar or similar
 EAPI=5
 HOMEPAGE=http://i3wm.org/i3status/
 IUSE=pulseaudio +filecaps
 KEYWORDS=~amd64 ~x86
 LICENSE=BSD
-RDEPEND=dev-libs/confuse dev-libs/libnl:3 >=dev-libs/yajl-2.0.2 media-libs/alsa-lib pulseaudio? ( media-sound/pulseaudio )
+RDEPEND=dev-libs/confuse:= dev-libs/libnl:3 >=dev-libs/yajl-2.0.2 media-libs/alsa-lib pulseaudio? ( media-sound/pulseaudio )
 SLOT=0
 SRC_URI=http://i3wm.org/i3status/i3status-2.10.tar.bz2
 _eclass_exported_funcs=pkg_postinst:- src_prepare:- src_compile:-
 _eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	fcaps	6a1091a98b1dde01cc26ab3252da1a9b	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
-_md5_=7976f0110bd46fa3b6c6991985232b1b
+_md5_=588424311145b8562b82e360fd14a76e
