@@ -1,14 +1,14 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 
-inherit eutils flag-o-matic autotools
+inherit eutils flag-o-matic autotools versionator
 
 DESCRIPTION="Extra tables, filters, and various other addons for OpenSMTPD"
 HOMEPAGE="https://github.com/OpenSMTPD/OpenSMTPD-extras"
-SRC_URI="https://www.opensmtpd.org/archives/${P}.tar.gz"
+SRC_URI="https://www.opensmtpd.org/archives/${PN}-$(get_version_component_range 4-).tar.gz"
 
 LICENSE="ISC BSD BSD-1 BSD-2 BSD-4"
 SLOT="0"
@@ -79,13 +79,14 @@ DEPEND="mail-mta/opensmtpd
 "
 RDEPEND="${DEPEND}"
 
+S=${WORKDIR}/${PN}-$(get_version_component_range 4-)
+
 src_prepare() {
 	eautoreconf
 }
 src_configure() {
 	econf \
-		--with-privsep-user=smtpd \
-		--with-privsep-path=/var/empty \
+		--with-user-smtpd=smtpd \
 		--sysconfdir=/etc/opensmtpd \
 		--with-lua-type=$(usex luajit luajit lua) \
 		$(for use in $MY_COMPONENTS; do use_with $use; done)
