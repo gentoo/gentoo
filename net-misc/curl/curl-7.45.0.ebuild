@@ -7,8 +7,8 @@ EAPI="5"
 inherit autotools eutils prefix multilib-minimal
 
 DESCRIPTION="A Client that groks URLs"
-HOMEPAGE="http://curl.haxx.se/"
-SRC_URI="http://curl.haxx.se/download/${P}.tar.bz2"
+HOMEPAGE="https://curl.haxx.se/"
+SRC_URI="https://curl.haxx.se/download/${P}.tar.bz2"
 
 LICENSE="MIT"
 SLOT="0"
