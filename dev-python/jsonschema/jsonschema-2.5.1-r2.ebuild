@@ -26,7 +26,8 @@ RDEPEND="
 	"
 DEPEND="${RDEPEND}
 	dev-python/vcversioner[${PYTHON_USEDEP}]
-	dev-python/setuptools[${PYTHON_USEDEP}]"
+	dev-python/setuptools[${PYTHON_USEDEP}]
+	test? ( dev-python/mock[${PYTHON_USEDEP}] )"
 
 python_test() {
 	"${PYTHON}" -m unittest discover || die "Testing failed with ${EPYTHON}"
