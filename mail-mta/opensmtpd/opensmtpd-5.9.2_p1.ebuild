@@ -16,11 +16,10 @@ SRC_URI="https://www.opensmtpd.org/archives/${MY_P/_}.tar.gz"
 
 LICENSE="ISC BSD BSD-1 BSD-2 BSD-4"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
-IUSE="libressl pam +mta"
+KEYWORDS="amd64 x86"
+IUSE="pam +mta"
 
-DEPEND="!libressl? ( dev-libs/openssl:0 )
-		libressl? ( dev-libs/libressl )
+DEPEND="dev-libs/openssl:0
 		sys-libs/zlib
 		pam? ( virtual/pam )
 		sys-libs/db:=
@@ -47,8 +46,6 @@ S=${WORKDIR}/${MY_P/_}
 src_prepare() {
 	# Use /run instead of /var/run
 	sed -i -e '/pidfile_path/s:_PATH_VARRUN:"/run/":' openbsd-compat/pidfile.c || die
-	use libressl && epatch "${FILESDIR}/${PN}-5.7.3p2-libressl-arc4random-circularity.patch"
-
 	epatch_user
 	eautoreconf
 }
@@ -56,14 +53,14 @@ src_prepare() {
 src_configure() {
 	tc-export AR
 	AR="$(which "$AR")" econf \
-		--enable-table-db \
-		--with-privsep-user=smtpd \
-		--with-queue-user=smtpq \
-		--with-privsep-path=/var/empty \
-		--with-sock-dir=/run \
+		--with-table-db \
+		--with-user-smtpd=smtpd \
+		--with-user-queue=smtpq \
+		--with-group-queue=smtpq \
+		--with-path-socket=/run \
+		--with-path-CAfile=/etc/ssl/certs/ca-certificates.crt \
 		--sysconfdir=/etc/opensmtpd \
-		--with-ca-file=/etc/ssl/certs/ca-certificates.crt \
-		$(use_with pam)
+		$(use_with pam auth-pam)
 }
 
 src_install() {
