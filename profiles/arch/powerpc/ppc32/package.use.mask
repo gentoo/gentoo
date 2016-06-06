@@ -4,18 +4,43 @@
 
 # This file requires >=portage-2.1.1
 
+# Davide Pesavento <pesa@gentoo.org> (06 Jun 2016)
+# Requires media-libs/phonon[qt5], masked below
+app-office/texstudio qt5
+media-libs/phonon-vlc qt5
+
+# Davide Pesavento <pesa@gentoo.org> (06 Jun 2016)
+# Requires unkeyworded dev-qt/qtmultimedia:5
+media-plugins/audacious-plugins qt5
+net-analyzer/wireshark qt5
+sci-astronomy/stellarium sound
+
+# Davide Pesavento <pesa@gentoo.org> (06 Jun 2016)
+# Requires unkeyworded dev-qt/qtwebkit:5, which is a PITA to maintain on
+# minor arches and has been declared deprecated by upstream. So we'd like
+# to avoid keywording it, unless requested by users.
+app-office/texmaker qt5
+app-text/kchmviewer qt5
+dev-qt/designer webkit
+net-irc/quassel webkit
+
+# Davide Pesavento <pesa@gentoo.org> (06 Jun 2016)
+# Requires unkeyworded dev-qt/qtx11extras:5 (bug 584860)
+app-office/lyx qt5
+media-libs/phonon-gstreamer qt5
+media-sound/qsynth qt5
+media-video/vlc qt5
+x11-themes/qtcurve qt5
+
+# Davide Pesavento <pesa@gentoo.org> (06 Jun 2016)
+# Requires unkeyworded kde-frameworks/extra-cmake-modules (bug 584874)
+media-libs/phonon qt5
+net-irc/quassel qt5
+
 # Ian Delaney <idella4@gentoo.org> (06 Apr 2016)
 # on behalf of Ilya Tumaykin <itumaykin+gentoo@gmail.com>
 # dev-libs/uchardet lacks ppc32 keyword. See bug #569114.
 media-video/mpv uchardet
-
-# Michael Palimaka <kensington@gentoo.org> (27 Mar 2016)
-# Requires unkeyworded dev-qt/qtwebkit
-dev-qt/designer webkit
-
-# Michael Palimaka <kensington@gentoo.org> (27 Mar 2016)
-# Requires unkeyworded dev-qt/qtmultimedia:5[widgets]
-sci-astronomy/stellarium sound
 
 # James Le Cuirot <chewi@gentoo.org) (30 Jan 2016)
 # scrollview requires Java, which is unsupported on ppc.

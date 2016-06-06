@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# Davide Pesavento <pesa@gentoo.org> (06 Jun 2016)
+# Requires unkeyworded dev-python/PyQt5
+net-print/hplip qt5
+
 # Johannes Huber <johu@gentoo.org> (26 Mar 2016)
 # Unkeyworded dependency x11-libs/snorenotify
 net-irc/quassel snorenotify
