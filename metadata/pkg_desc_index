@@ -1055,7 +1055,7 @@ app-editors/mousepad 0.3.0 0.4.0: GTK+-based editor for the Xfce Desktop Environ
 app-editors/mp 5.2.2: Minimum Profit: A text editor for programmers
 app-editors/nano 2.4.3 2.5.0 2.5.2 2.5.3 9999: GNU GPL'd Pico clone with more functionality
 app-editors/ne 2.5 3.0.1: the nice editor, easy to use for the beginner and powerful for the wizard
-app-editors/nedit 5.5_p20110116-r2 5.5_p20110116-r3 5.6-r1: Multi-purpose text editor for the X Window System
+app-editors/nedit 5.6-r1: Multi-purpose text editor for the X Window System
 app-editors/neovim 0.1.0 0.1.1-r1 0.1.2 0.1.3 0.1.4: Vim-fork focused on extensibility and agility.
 app-editors/ng 1.5_beta1 1.5_beta1-r1: Emacs like micro editor Ng -- based on mg2a
 app-editors/nvi 1.81.6-r3 1.81.6-r4 1.81.6-r5: Vi clone
@@ -13272,7 +13272,7 @@ media-sound/pms 0.42 0.42-r1 9999: Practical Music Search: an open source ncurse
 media-sound/pnmixer 0.6_pre20111213 0.6 9999: Volume mixer for the system tray
 media-sound/poc 0.4.1: mp3 and ogg streamer (include mp3cue and mp3cut)
 media-sound/podcatcher 3.1.6: Podcast client for the command-line written in Ruby
-media-sound/podget 0.7.14: A simple podcast aggregator optimized for running as a scheduled job
+media-sound/podget 0.7.14 0.8: A simple podcast aggregator optimized for running as a scheduled job
 media-sound/podracer 1.4: A simple podcast aggregator, designed for cron
 media-sound/positron 1.1: Synchronization manager for the Neuros Audio Computer (www.neurosaudio.com) portable music player
 media-sound/potamus 0.12 14 16: a lightweight audio player with a simple interface and an emphasis on high audio quality
@@ -18691,7 +18691,7 @@ x11-proto/scrnsaverproto 1.2.2-r1: X.Org ScrnSaver protocol headers
 x11-proto/trapproto 3.4.3: X.Org Trap protocol headers
 x11-proto/videoproto 2.3.2 2.3.3: X.Org Video protocol headers
 x11-proto/xcalibrateproto 0.1_pre20081210: Touchscreen calibration protocol
-x11-proto/xcb-proto 1.8-r3 1.9-r1 1.10 1.11 1.12-r1: X C-language Bindings protocol headers
+x11-proto/xcb-proto 1.8-r3 1.9-r1 1.10 1.11 1.12-r1 1.12-r2: X C-language Bindings protocol headers
 x11-proto/xcmiscproto 1.2.2: X.Org XCMisc protocol headers
 x11-proto/xextproto 7.3.0: X.Org XExt protocol headers
 x11-proto/xf86bigfontproto 1.2.0-r1: X.Org XF86BigFont protocol headers
