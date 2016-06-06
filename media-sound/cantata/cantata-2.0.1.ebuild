@@ -4,7 +4,7 @@
 
 EAPI=6
 
-PLOCALES="cs de en_GB es hu ko pl ru zh_CN"
+PLOCALES="cs de en_GB es fr hu ko pl ru zh_CN"
 inherit cmake-utils gnome2-utils l10n qmake-utils xdg
 
 DESCRIPTION="Featureful and configurable Qt client for the music player daemon (MPD)"
@@ -71,10 +71,6 @@ DEPEND="${RDEPEND}
 
 # cantata has no tests
 RESTRICT="test"
-PATCHES=(
-	"${FILESDIR}/${P}-gcc5.patch"
-	"${FILESDIR}/${P}-ffmpeg-3.0.patch"
-)
 
 src_prepare() {
 	cmake-utils_src_prepare
