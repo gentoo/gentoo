@@ -12,7 +12,7 @@ SRC_URI="http://www.molspaces.com/dl/progs/${P}.tar.gz"
 
 SLOT="0"
 LICENSE="GPL-3"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="debug +lzo +webkit"
 
 DEPEND="
