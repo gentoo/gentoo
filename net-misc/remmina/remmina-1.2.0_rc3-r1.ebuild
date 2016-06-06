@@ -11,7 +11,7 @@ MY_PV="${MY_PV_MAIN}-${MY_PV_RC//rc/rcgit.}"
 
 if [[ ${PV} != 9999 ]]; then
 	SRC_URI="https://github.com/FreeRDP/Remmina/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 ~x86"
 else
 	inherit git-2
 	SRC_URI=""
