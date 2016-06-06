@@ -1,5 +1,5 @@
 DEFINED_PHASES=configure install
-DEPEND=>=dev-libs/libverto-0.2.2 >=dev-libs/ding-libs-0.5.0 virtual/krb5 selinux? ( sys-libs/libselinux ) virtual/pkgconfig
+DEPEND=>=dev-libs/libverto-0.2.2 >=dev-libs/ding-libs-0.5.0 virtual/krb5 selinux? ( sys-libs/libselinux ) app-text/docbook-xml-dtd:4.4 dev-libs/libxslt virtual/pkgconfig
 DESCRIPTION=daemon to proxy GSSAPI context establishment and channel handling
 EAPI=5
 HOMEPAGE=https://fedorahosted.org/gss-proxy/
@@ -10,4 +10,4 @@ RDEPEND=>=dev-libs/libverto-0.2.2 >=dev-libs/ding-libs-0.5.0 virtual/krb5 selinu
 SLOT=0
 SRC_URI=https://fedorahosted.org/released/gss-proxy/gssproxy-0.5.0.tar.gz
 _eclass_exported_funcs=src_configure:- src_install:-
-_md5_=4ce4b2e1faa703f1529bb0c5504edaea
+_md5_=f39de908300e70ca2319b2fdea11858c
