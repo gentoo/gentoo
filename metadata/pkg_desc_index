@@ -2106,7 +2106,7 @@ app-portage/g-ctan 2011.1: Generate and install ebuilds from the TeXLive package
 app-portage/g-octave 0.4.1-r4: A tool that generates and installs ebuilds for Octave-Forge
 app-portage/g-sorcery 0.1-r1 0.2 0.2.1 0.2.1-r1 9999: framework for ebuild generators
 app-portage/genlop 0.30.9-r1 0.30.10 0.30.10-r1 9999: A nice emerge.log parser
-app-portage/gentoolkit 0.3.0.8-r2 0.3.0.9 0.3.0.9-r1 0.3.0.9-r2 0.3.1-r1 9999: Collection of administration scripts for Gentoo
+app-portage/gentoolkit 0.3.0.8-r2 0.3.0.9 0.3.0.9-r1 0.3.0.9-r2 0.3.1-r1 0.3.1.1 9999: Collection of administration scripts for Gentoo
 app-portage/gentoolkit-dev 0.2.8.3-r1 0.3.0 9999: Collection of developer scripts for Gentoo
 app-portage/gentoopm 0.2.9 9999: A common interface to Gentoo package managers
 app-portage/getdelta 0.7.9-r2: dynamic deltup client
