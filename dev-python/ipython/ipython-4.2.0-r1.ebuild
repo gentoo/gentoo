@@ -30,6 +30,7 @@ CDEPEND="
 	dev-python/simplegeneric[${PYTHON_USEDEP}]
 	>=dev-python/traitlets-4.2.1[${PYTHON_USEDEP}]
 	>=dev-python/prompt_toolkit-1.0.0[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep 'dev-python/backports-shutil_get_terminal_size[${PYTHON_USEDEP}]' python2_7)
 	matplotlib? ( dev-python/matplotlib[${PYTHON_USEDEP}] )
 	mongodb? ( <dev-python/pymongo-3[${PYTHON_USEDEP}] )
 	wxwidgets? ( $(python_gen_cond_dep 'dev-python/wxpython:*[${PYTHON_USEDEP}]' python2_7) )"
@@ -71,6 +72,7 @@ PDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/2.1.0-substitute-files.patch
+	"${FILESDIR}/${P}"-Fix-use-backports.shutil_get_terminal_size.patch
 	)
 
 DISTUTILS_IN_SOURCE_BUILD=1
