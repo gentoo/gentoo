@@ -15699,7 +15699,7 @@ sci-geosciences/gpscorrelate 1.6.1: Tool for adjusting EXIF tags of your photos 
 sci-geosciences/gpsd 3.9-r1 3.10 3.11 3.15 3.16 9999: GPS daemon and library for USB/serial GPS devices and GPS/mapping clients
 sci-geosciences/gpx-viewer 0.4.0-r1: Simple program to visualize a gpx file
 sci-geosciences/gpxpy 0.8.6: python GPX parser
-sci-geosciences/grass 7.0.1-r5 7.0.2 7.0.3: A free GIS with raster and vector functionality, as well as 3D vizualization
+sci-geosciences/grass 7.0.3 7.0.4: A free GIS with raster and vector functionality, as well as 3D vizualization
 sci-geosciences/gshhs 1.13: Global Self-consistent, Hierarchical, High-resolution Shoreline programs
 sci-geosciences/gshhs-data 2.2.0: Global Self-consistent, Hierarchical, High-resolution Shoreline programs data
 sci-geosciences/gtk-g-rays2 2.01 2.05: GUI for accessing the Wintec WBT 201 / G-Rays 2 GPS device
