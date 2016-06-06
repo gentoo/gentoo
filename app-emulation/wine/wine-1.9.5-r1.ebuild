@@ -186,9 +186,14 @@ wine_build_environment_check() {
 			return 1
 		fi
 	fi
-
-	if use abi_x86_64 && [[ $(( $(gcc-major-version) * 100 + $(gcc-minor-version) )) -lt 404 ]]; then
-		eerror "You need gcc-4.4+ to build 64-bit wine"
+    
+	if use abi_x86_64 && einfo "Checking for builtin_ms_va_list ..." && \
+	( $(tc-getCC) -O2 "${FILESDIR}"/builtin_ms_va_list.c -o "${T}"/builtin_ms_va_list >/dev/null 2>&1) ; then
+		einfo "$(tc-getCC) supports builtin_ms_va_list, enabling 64-bit wine"
+	else
+		eerror "This version of $(tc-getCC) does not support builtin_ms_va_list, can't enable 64-bit wine"
+		eerror
+		eerror "You need gcc-4.4+ or clang 3.8+ to build 64-bit wine"
 		eerror
 		return 1
 	fi
