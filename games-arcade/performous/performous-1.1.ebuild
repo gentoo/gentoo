@@ -27,7 +27,7 @@ LICENSE="GPL-2
 		CC-BY-NC-ND-2.5
 	)"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="midi songs tools webcam"
 
 RDEPEND="dev-cpp/glibmm
