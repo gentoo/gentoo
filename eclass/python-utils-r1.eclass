@@ -640,8 +640,14 @@ python_optimize() {
 		instpath=/${instpath##/}
 
 		case "${EPYTHON}" in
-			python*)
+			python2.7|python3.[34])
 				"${PYTHON}" -m compileall -q -f -d "${instpath}" "${d}"
+				"${PYTHON}" -OO -m compileall -q -f -d "${instpath}" "${d}"
+				;;
+			python*)
+				# both levels of optimization are separate since 3.5
+				"${PYTHON}" -m compileall -q -f -d "${instpath}" "${d}"
+				"${PYTHON}" -O -m compileall -q -f -d "${instpath}" "${d}"
 				"${PYTHON}" -OO -m compileall -q -f -d "${instpath}" "${d}"
 				;;
 			*)

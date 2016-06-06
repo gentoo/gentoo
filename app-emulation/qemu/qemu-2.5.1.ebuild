@@ -99,7 +99,7 @@ SOFTMMU_LIB_DEPEND="${COMMON_LIB_DEPEND}
 	)
 	infiniband? ( sys-infiniband/librdmacm:=[static-libs(+)] )
 	iscsi? ( net-libs/libiscsi )
-	jpeg? ( virtual/jpeg:=[static-libs(+)] )
+	jpeg? ( virtual/jpeg:0=[static-libs(+)] )
 	lzo? ( dev-libs/lzo:2[static-libs(+)] )
 	ncurses? ( sys-libs/ncurses:0=[static-libs(+)] )
 	nfs? ( >=net-fs/libnfs-1.9.3[static-libs(+)] )

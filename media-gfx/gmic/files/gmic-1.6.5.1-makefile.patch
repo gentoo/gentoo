@@ -35,7 +35,7 @@
 +MINC2_LIBS = -lminc_io -lvolume_io2 -lminc2 -lnetcdf -lhdf5 -lz
  
  # Flags to enable native support for downloading files from the network.
- # ( http://curl.haxx.se/libcurl/ )
+ # ( https://curl.haxx.se/libcurl/ )
 @@ -308,7 +307,6 @@
  
  cli:
