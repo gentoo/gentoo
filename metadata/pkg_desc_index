@@ -2337,7 +2337,7 @@ app-text/libwpg 0.2.2 0.3.0 0.3.1: C++ library to read and parse graphics in WPG
 app-text/libwps 0.2.9 0.3.1 0.4.2 0.4.3: Microsoft Works file word processor format import filter library
 app-text/libxmlpatch 0.3.3: A set of tools to create and apply patch to XML files using XPath
 app-text/linuxdoc-tools 0.9.71-r1 0.9.72: A toolset for processing LinuxDoc DTD SGML files
-app-text/llpp 20_p20140818 22 9999: a graphical PDF viewer which aims to superficially resemble less(1)
+app-text/llpp 20_p20140818 22 22_p20160324 9999: a graphical PDF viewer which aims to superficially resemble less(1)
 app-text/lodgeit 0.3_p20120507 0.3_p20120618-r1: Command-line interface to paste.pocoo.org
 app-text/logmerge 0.4_beta: Merge multiple logs such that multilined entries appear in chronological order without breaks
 app-text/lout 3.38-r1 3.39: high-level language for document formatting
@@ -2566,6 +2566,7 @@ app-vim/gtk-syntax 20130716: vim plugin: Syntax highlighting for GLib, Gtk+, Xli
 app-vim/gundo 2.5.0 2.6.1: vim plugin: visualize your vim undo tree
 app-vim/help-extra-syntax 20050106-r1: vim plugin: extra syntax highlighting for help files
 app-vim/increment 1.1: vim plugin: easily create sequences of incremented values
+app-vim/indentpython 0.3: vim plugin: Indent Python code according to PEP8
 app-vim/info 1.7-r1 1.7-r2: vim plugin: GNU info documentation browser
 app-vim/json 20130830 20140625 20150511: vim plugin: a better JSON for Vim
 app-vim/l9 1.1: vim plugin: library for vim scripts
