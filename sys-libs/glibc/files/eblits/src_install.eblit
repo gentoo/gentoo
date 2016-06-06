@@ -212,7 +212,7 @@ toolchain-glibc_headers_install() {
 	# Make sure we install the sys-include symlink so that when
 	# we build a 2nd stage cross-compiler, gcc finds the target
 	# system headers correctly.  See gcc/doc/gccinstall.info
-	dosym usr/include /usr/${CTARGET}/sys-include
+	dosym usr/include $(alt_prefix)/sys-include
 }
 
 src_strip() {
