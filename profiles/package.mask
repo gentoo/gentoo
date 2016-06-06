@@ -30,6 +30,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (6 Jun 2016)
+# New PyPy version, masked for testing.
+~dev-python/pypy-5.1.1
+~dev-python/pypy-bin-5.1.1
+~virtual/pypy-5.1.1
+
 # Patrice Clement <monsieurp@gentoo.org> (5 Jun 2016)
 # Unmaintained ebuilds. Upstream is either dead or AWOL. Also, most of these
 # ebuilds are still sitting in ~arch after years in the tree.
