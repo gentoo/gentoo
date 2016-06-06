@@ -1,11 +1,11 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
-PYTHON_REQ_USE="sqlite(-)?"
+PYTHON_REQ_USE="sqlite"  # bug 572440
 WANT_AUTOCONF="2.1"
 
 inherit eutils gnome2 fdo-mime multilib python-single-r1 versionator wxwidgets autotools
@@ -19,12 +19,13 @@ HOMEPAGE="http://grass.osgeo.org/"
 SRC_URI="http://grass.osgeo.org/${MY_PM}/source/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
-SLOT="0/7.0.1-r5"
+SLOT="0/7.0.3"
 KEYWORDS="~amd64 ~x86"
 IUSE="X blas cxx fftw geos lapack liblas mysql netcdf nls odbc opencl opengl openmp png postgres readline sqlite threads tiff truetype"
 
 RDEPEND="${PYTHON_DEPS}
 	>=app-admin/eselect-1.2
+	dev-python/numpy[${PYTHON_USEDEP}]
 	media-libs/libprojectm
 	sci-libs/proj
 	sci-libs/xdrfile
@@ -81,10 +82,7 @@ REQUIRED_USE="
 	opengl? ( X )"
 
 PATCHES=(
-	"${FILESDIR}/${P}"-include-errno.patch
-	"${FILESDIR}/${P}"-declare-inespg.patch
-	"${FILESDIR}/${PV}"-sec-format.patch
-	"${FILESDIR}/${P}"-soname.patch
+	"${FILESDIR}/${PN}"-7.0.1-declare-inespg.patch
 )
 
 pkg_setup() {
@@ -131,7 +129,9 @@ src_prepare() {
 	epatch_user
 	eautoconf
 
-	python_fix_shebang "${S}"
+	ebegin "Fixing python shebangs"
+	python_fix_shebang -q "${S}"
+	eend $?
 }
 
 src_configure() {
@@ -141,7 +141,7 @@ src_configure() {
 		need-wxwidgets unicode
 	fi
 
-	use opencl && addwrite "${ROOT}dev/dri/renderD128"
+	addwrite "${ROOT}dev/dri/renderD128"
 
 	econf \
 		--enable-shared \
