@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -63,11 +63,7 @@ for ((n--; n >= 0; n--)); do
 done
 
 # default lisp
-if use arm; then
-	DEF_LISP=2 # gcl
-else
-	DEF_LISP=0 # sbcl
-fi
+DEF_LISP=0 # sbcl
 
 DEF_DEP="${DEF_DEP} `depends ${DEF_LISP}`"
 
