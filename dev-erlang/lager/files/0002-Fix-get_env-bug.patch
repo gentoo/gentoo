@@ -1,0 +1,63 @@
+From 4c87abcd4f9d70a1136fff8f573dc7adcc833e43 Mon Sep 17 00:00:00 2001
+From: Alexander Petrovsky <askjuise@gmail.com>
+Date: Tue, 10 May 2016 22:37:22 +0300
+Subject: [PATCH 2/5] Fix get_env bug
+
+---
+ src/lager_app.erl | 20 +++++++++++---------
+ 1 file changed, 11 insertions(+), 9 deletions(-)
+
+diff --git a/src/lager_app.erl b/src/lager_app.erl
+index 8f1464d..8efd26b 100644
+--- a/src/lager_app.erl
++++ b/src/lager_app.erl
+@@ -138,11 +138,10 @@ maybe_install_sink_killer(_Sink, HWM, ReinstallTimer) ->
+     error_logger:error_msg("Invalid value for 'killer_hwm': ~p or 'killer_reinstall_after': ~p", [HWM, ReinstallTimer]),
+     throw({error, bad_config}).
+ 
+-start_error_logger_handler({ok, false}, _HWM, _Whitelist) ->
++-spec start_error_logger_handler(boolean(), pos_integer(), list()) -> list().
++start_error_logger_handler(false, _HWM, _Whitelist) ->
+     [];
+-start_error_logger_handler(_, HWM, undefined) ->
+-    start_error_logger_handler(ignore_me, HWM, {ok, []});
+-start_error_logger_handler(_, HWM, {ok, WhiteList}) ->
++start_error_logger_handler(true, HWM, WhiteList) ->
+     GlStrategy = case application:get_env(lager, error_logger_groupleader_strategy) of
+                     undefined ->
+                         handle;
+@@ -200,13 +199,16 @@ configure_extra_sinks(Sinks) ->
+     lists:foreach(fun({Sink, Proplist}) -> configure_sink(Sink, Proplist) end,
+                   Sinks).
+ 
++-spec get_env(atom(), atom()) -> term().
+ get_env(Application, Key) ->
+     get_env(Application, Key, undefined).
++
+ %% R15 doesn't know about application:get_env/3
++-spec get_env(atom(), atom(), term()) -> term().
+ get_env(Application, Key, Default) ->
+-    get_env_default(application:get_env(Application, Key),
+-                    Default).
++    get_env_default(application:get_env(Application, Key), Default).
+ 
++-spec get_env_default('undefined' | {'ok', term()}, term()) -> term().
+ get_env_default(undefined, Default) ->
+     Default;
+ get_env_default({ok, Value}, _Default) ->
+@@ -235,9 +237,9 @@ boot() ->
+     lager:update_loglevel_config(?DEFAULT_SINK),
+ 
+     SavedHandlers = start_error_logger_handler(
+-                      get_env(lager, error_logger_redirect),
+-                      interpret_hwm(get_env(lager, error_logger_hwm)),
+-                      get_env(lager, error_logger_whitelist)
++                                    get_env(lager, error_logger_redirect, true),
++                      interpret_hwm(get_env(lager, error_logger_hwm, 0)),
++                                    get_env(lager, error_logger_whitelist, [])
+                      ),
+ 
+     SavedHandlers.
+-- 
+2.8.3
+
