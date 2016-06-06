@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/stella/${P}-src.tar.xz"
 
 LICENSE="GPL-2+ BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="joystick"
 
 DEPEND="media-libs/libsdl2[joystick?,opengl,video]
