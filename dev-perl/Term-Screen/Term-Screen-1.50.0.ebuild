@@ -12,7 +12,7 @@ inherit perl-module
 DESCRIPTION="A simple Term::Cap based screen positioning module"
 
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="test"
 
 DEPEND="virtual/perl-ExtUtils-MakeMaker
