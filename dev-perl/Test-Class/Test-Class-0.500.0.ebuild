@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="Easily create test classes in an xUnit/JUnit style"
 
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
+KEYWORDS="amd64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
 IUSE="test"
 
 RDEPEND="

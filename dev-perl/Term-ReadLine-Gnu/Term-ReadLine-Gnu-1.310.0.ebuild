@@ -12,7 +12,7 @@ inherit perl-module
 DESCRIPTION="GNU Readline XS library wrapper"
 
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm ~ia64 ~ppc ~sparc ~x86"
 IUSE=""
 
 RDEPEND=">=sys-libs/readline-6.2:0="
