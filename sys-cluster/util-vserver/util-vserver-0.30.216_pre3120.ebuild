@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -87,7 +87,15 @@ pkg_postinst() {
 	# present when merging.
 
 	mkdir -p "${VDIRBASE}" || die
-	setattr --barrier "${VDIRBASE}" || die
+	if ! setattr --barrier "${VDIRBASE}"; then
+		ewarn "Filesystem on ${VDIRBASE} does not support chroot barriers."
+		ewarn "Chroot barrier is additional security measure that is used"
+		ewarn "when two vservers or the host system share the same filesystem."
+		ewarn "If you intend to use separate filesystem for every vserver"
+		ewarn "you can safely ignore this warning."
+		ewarn "To manually apply a barrier use: setattr --barrier ${VDIRBASE}"
+		ewarn "For details see: http://linux-vserver.org/Secure_chroot_Barrier"
+	fi
 
 	rm /etc/vservers/.defaults/vdirbase || die
 	ln -sf "${VDIRBASE}" /etc/vservers/.defaults/vdirbase || die

@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}-src.tgz"
 
 LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="qt5"
 
 DEPEND="
