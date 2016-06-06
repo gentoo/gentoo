@@ -11742,7 +11742,7 @@ mail-client/thunderbird-bin 31.8.0 38.8.0 45.1.0: Thunderbird Mail Client
 mail-client/trojita 0.4.1 0.5 0.6 9999: A Qt IMAP e-mail client
 mail-filter/MailScanner 4.84.5.2: Free Anti-Virus and Anti-Spam Filter
 mail-filter/amavisd-milter 1.5.0 1.5.0-r1 1.6.0 1.6.0-r1: sendmail milter for amavisd-new
-mail-filter/amavisd-new 2.7.2 2.8.1-r1 2.9.1-r1 2.10.1 2.10.1-r3 2.11.0: High-performance interface between the MTA and content checkers
+mail-filter/amavisd-new 2.7.2 2.8.1-r1 2.9.1-r2 2.10.1 2.10.1-r4 2.11.0-r1: High-performance interface between the MTA and content checkers
 mail-filter/anomy-sanitizer 1.76-r1: Perl based e-mail filtering tool, sensitive to html tags, mime types and attachments
 mail-filter/anubis 4.1.1 4.1.1-r1: GNU Anubis is an outgoing mail processor
 mail-filter/ask 2.4.1 2.5.3: Active Spam Killer: A program to filter spam
