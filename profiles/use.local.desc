@@ -7973,9 +7973,9 @@ www-client/epiphany:nss - Import passwords from older gecko based www-client/epi
 www-client/firefox:bindist - Disable official Firefox branding (icons, name) which are not binary-redistributable according to upstream.
 www-client/firefox:custom-optimization - Fine-tune custom compiler optimizations (-Os, -O0, -O1, -O2, -O3)
 www-client/firefox:egl - Enable EGL provider
-www-client/firefox:force-gtk2 - Use the cairo-gtk2 rendering engine
 www-client/firefox:gmp-autoupdate - Allow Gecko Media Plugins (binary blobs) to be automatically downloaded and kept up-to-date in user profiles
 www-client/firefox:gstreamer-0 - Use gstreamer:0.10 instead of gstreamer:1 for media support
+www-client/firefox:gtk2 - Use the cairo-gtk2 rendering engine
 www-client/firefox:gtk3 - Use the cairo-gtk3 rendering engine
 www-client/firefox:hwaccel - Use hardware-accelerated rendering
 www-client/firefox:jemalloc3 - Enable or disable jemalloc3 (forced-on when supported prior to 38.0)
