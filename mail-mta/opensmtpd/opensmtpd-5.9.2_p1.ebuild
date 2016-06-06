@@ -19,7 +19,8 @@ SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="pam +mta"
 
-DEPEND="sys-libs/zlib
+DEPEND="dev-libs/openssl:0
+		sys-libs/zlib
 		pam? ( virtual/pam )
 		sys-libs/db:=
 		dev-libs/libevent
