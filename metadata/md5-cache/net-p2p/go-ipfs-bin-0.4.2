@@ -1,0 +1,12 @@
+DEFINED_PHASES=install
+DESCRIPTION=go-ipfs is the main implementation of IPFS.
+EAPI=6
+HOMEPAGE=https://ipfs.io/
+IUSE=+fuse
+KEYWORDS=-* ~x86 ~amd64
+LICENSE=MIT
+RDEPEND=fuse? ( sys-fs/fuse )
+SLOT=0
+SRC_URI=amd64? ( https://dist.ipfs.io/go-ipfs/v0.4.2/go-ipfs_v0.4.2_linux-amd64.tar.gz ) x86? ( https://dist.ipfs.io/go-ipfs/v0.4.2/go-ipfs_v0.4.2_linux-386.tar.gz )
+_eclass_exported_funcs=src_install:-
+_md5_=e028f8a7be60cc049d0ce2a20e417db9
