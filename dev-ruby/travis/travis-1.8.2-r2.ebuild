@@ -7,6 +7,8 @@ USE_RUBY="ruby20 ruby21"
 RUBY_FAKEGEM_RECIPE_DOC="rdoc"
 RUBY_FAKEGEM_RECIPE_TEST="rspec"
 
+RUBY_FAKEGEM_GEMSPEC="travis.gemspec"
+
 inherit bash-completion-r1 ruby-fakegem
 
 DESCRIPTION="Travis CI Client (CLI and Ruby library) "
@@ -33,6 +35,10 @@ ruby_add_rdepend "
 	>dev-ruby/pusher-client-0.4
 	>=dev-ruby/typhoeus-0.6.8
 "
+
+all_ruby_prepare() {
+	sed -i -e '/typhoeus/s/~> 0.6/>= 0.6/' travis.gemspec || die
+}
 
 all_ruby_install() {
 	all_fakegem_install
