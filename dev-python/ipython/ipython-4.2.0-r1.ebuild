@@ -15,7 +15,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="doc examples matplotlib mongodb notebook nbconvert qt4 +smp test wxwidgets"
 
 REQUIRED_USE="
@@ -42,6 +42,8 @@ RDEPEND="${CDEPEND}
 	nbconvert? ( dev-python/nbconvert[${PYTHON_USEDEP}] )"
 DEPEND="${CDEPEND}
 	>=dev-python/setuptools-18.5[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep \
+		'dev-python/backports-shutil_get_terminal_size[${PYTHON_USEDEP}]' 'python2*')
 	test? (
 		app-text/dvipng
 		dev-python/jinja[${PYTHON_USEDEP}]
@@ -71,6 +73,7 @@ PDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/2.1.0-substitute-files.patch
+	"${FILESDIR}/${P}-only-use-backports-shutil-on-python2.patch"
 	)
 
 DISTUTILS_IN_SOURCE_BUILD=1
