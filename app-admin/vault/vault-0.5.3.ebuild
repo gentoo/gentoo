@@ -2,9 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-inherit eutils fcaps golang-build systemd user
+inherit fcaps golang-vcs-snapshot systemd user
 
 EGO_PN="github.com/hashicorp/${PN}/..."
 DESCRIPTION="A tool for managing secrets"
@@ -33,34 +33,15 @@ pkg_setup() {
 	enewuser ${PN} -1 -1 -1 ${PN}
 }
 
-src_unpack() {
-	local x
-
-	default
-	mv "${S}" "${S}_"
-	mkdir -p "$(dirname "${S}/src/${EGO_PN%/*}")" || die
-	mv "${S}_" "${S}/src/${EGO_PN%/*}" || die
-
-	# Create a writable GOROOT in order to avoid sandbox violations.
-	export GOROOT="${WORKDIR}/goroot"
-	cp -sR "${EPREFIX}"/usr/lib/go "${GOROOT}" || die
-	rm -rf "${GOROOT}"/{src,pkg/$(go env GOOS)_$(go env GOARCH)}/"${EGO_PN%/*}" || die
-
-	export GOPATH=${S}:${S}/src/github.com/hashicorp/vault/Godeps/_workspace:$(get_golibdir_gopath)
-
-	while read -r -d '' x; do
-		rm -rf "${GOROOT}/src/${x}" "${GOROOT}/pkg/$(go env GOOS)_$(go env GOARCH)/${x}"{,.a} || die
-	done < <(find "${P}/src/github.com/hashicorp/vault/Godeps/_workspace/src" -maxdepth 3 -mindepth 3 -type d -print0)
-}
-
 src_compile() {
-	go build -v -work -x ${EGO_BUILD_FLAGS} "${EGO_PN}" || die
-	go install -v -work -x ${EGO_BUILD_FLAGS} "${EGO_PN}" || die
+	GOPATH=${S} GO15VENDOREXPERIMENT=1 \
+		go install -v -work -x ${EGO_BUILD_FLAGS} "${EGO_PN}" || die
 }
 
 src_install() {
 	local x
 
+	dodoc "${S}"/src/${EGO_PN%/*}/{CHANGELOG.md,CONTRIBUTING.md,README.md}
 	newinitd "${FILESDIR}/${PN}.initd" "${PN}"
 	newconfd "${FILESDIR}/${PN}.confd" "${PN}"
 	systemd_dounit "${FILESDIR}/${PN}.service"
@@ -74,6 +55,7 @@ src_install() {
 
 	dobin "${S}/bin/${PN}"
 
+	rm -rf "${S}"/{src,pkg/$(go env GOOS)_$(go env GOARCH)}/${EGO_PN%/*}/vendor
 	find "${S}"/src/${EGO_PN%/*} -mindepth 1 -maxdepth 1 -type f -delete || die
 
 	while read -r -d '' x; do
