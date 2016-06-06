@@ -2,6 +2,6 @@
 	missingok
 	sharedscripts
 	postrotate
-		/usr/bin/chronyc cyclelogs |grep -v '^200 OK'; return 0
+		/usr/bin/chronyc cyclelogs |grep -v '^200 OK'; exit 0
 	endscript
 }
