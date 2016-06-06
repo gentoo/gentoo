@@ -18,7 +18,11 @@ RDEPEND=">=dev-libs/libverto-0.2.2
 	>=dev-libs/ding-libs-0.5.0
 	virtual/krb5
 	selinux? ( sys-libs/libselinux )"
+# We need xml stuff to build the man pages, and people really want/need
+# the man pages for this package :). #585200
 DEPEND="${RDEPEND}
+	app-text/docbook-xml-dtd:4.4
+	dev-libs/libxslt
 	virtual/pkgconfig"
 
 S="${WORKDIR}/${MY_P}"
