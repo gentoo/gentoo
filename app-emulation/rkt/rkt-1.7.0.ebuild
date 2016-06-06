@@ -11,10 +11,10 @@ inherit autotools-utils flag-o-matic systemd toolchain-funcs
 
 KEYWORDS="~amd64"
 
-PXE_VERSION="991.0.0"
-PXE_SYSTEMD_VERSION="v225"
+PXE_VERSION="1032.0.0"
+PXE_SYSTEMD_VERSION="v229"
 KVM_LINUX_VERSION="4.3.1"
-KVMTOOL_VERSION="3c8aec9e2b5066412390559629dabeb7816ee8f2"
+KVMTOOL_VERSION="d62653e177597251c24494a6dda60acd6d846671"
 PXE_URI="http://alpha.release.core-os.net/amd64-usr/${PXE_VERSION}/coreos_production_pxe_image.cpio.gz"
 PXE_FILE="${PN}-pxe-${PXE_VERSION}.img"
 
@@ -40,7 +40,8 @@ DEPEND=">=dev-lang/go-1.5
 	app-arch/cpio
 	app-crypt/trousers
 	sys-fs/squashfs-tools
-	dev-perl/Capture-Tiny"
+	dev-perl/Capture-Tiny
+	rkt_stage1_src? ( >=sys-apps/util-linux-2.27 )"
 
 RDEPEND="!app-emulation/rocket
 	rkt_stage1_host? ( systemd? (
