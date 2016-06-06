@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=6
-inherit autotools confutils flag-o-matic
+inherit confutils flag-o-matic
 
 DESCRIPTION="A full featured backup tool, aimed for disks (floppy,CDR(W),DVDR(W),zip,jazz etc.)"
 HOMEPAGE="http://dar.linux.free.fr/"
@@ -39,16 +39,8 @@ REQUIRED_USE="?? ( dar32 dar64 )
 
 DOCS="AUTHORS ChangeLog NEWS README THANKS TODO"
 
-PATCHES=(
-	"${FILESDIR}/${PN}-2.5.3-asneeded.patch"
-	"${FILESDIR}/${PN}-2.5.3-autoconf_missing_gpgme.patch" # 579698
-)
-
-src_prepare() {
-	default
-
-	eautoreconf
-}
+#PATCHES=(
+#)
 
 src_configure() {
 	local myconf=( --disable-upx )
