@@ -9767,7 +9767,7 @@ dev-util/memprof 0.6.2-r1: Profiling and leak detection tool
 dev-util/metro 1.5.1: release metatool used for creating Gentoo and Funtoo releases
 dev-util/min-cscope 16.1.0: Interactively examine a C program
 dev-util/mingw-runtime 3.18 3.20 3.20.2 4.0.3.1: Free Win32 runtime and import library definitions
-dev-util/mingw64-runtime 3.0.0 3.1.0 3.2.0-r1 4.0.1 4.0.4: Free Win64 runtime and import library definitions
+dev-util/mingw64-runtime 3.0.0 3.1.0 3.2.0-r1 4.0.1 4.0.4 4.0.6: Free Win64 runtime and import library definitions
 dev-util/mock 1.0.3: create chroots and build packages in them for Fedora and RedHat
 dev-util/molecule 0.9.24.6 0.9.24.8 2: Meta package for dev-util/molecule-core and dev-util/molecule-plugins
 dev-util/molecule-core 1.0.2: Sabayon distro-agnostic images build tool
