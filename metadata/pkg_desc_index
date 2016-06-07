@@ -14692,7 +14692,7 @@ net-misc/lambdamoo 1.8.1-r3: networked mud that can be used for different types 
 net-misc/lanmap 81-r1 81-r2: lanmap sits quietly on a network and builds a picture of what it sees
 net-misc/lcr 9999: Linux Call Router
 net-misc/leapcast 0.1.3-r1 9999: Simple ChromeCast emulation app
-net-misc/libres3 1.1 1.2: Skylable LibreS3 - Amazon S3 open source replacement
+net-misc/libres3 1.2 1.3: Skylable LibreS3 - Amazon S3 open source replacement
 net-misc/libreswan 3.15 3.17 9999: IPsec implementation for Linux, fork of Openswan
 net-misc/libss7 1.0.2: Signalling System 7 (SS7) protocol library
 net-misc/libteam 1.0 1.11 1.14 1.22: Library and tools set for controlling team network device
@@ -14871,7 +14871,6 @@ net-misc/stunnel 5.24 5.30 5.32: TLS/SSL - Port Wrapper
 net-misc/stuntman 1.2.6 1.2.6-r1 1.2.7: STUNTMAN is an open source implementation of the STUN protocol
 net-misc/suite3270 3.3.15_p9 3.4_p9 3.4_p10 3.5_p8: Complete 3270 access package
 net-misc/switzerland 0.1.0: Network Testing Tool
-net-misc/sx 1.2 2.0: Skylable SX - a distributed object-storage software for data clusters
 net-misc/taptap 1.0: A program to link two /dev/net/tun to form virtual ethernet
 net-misc/taylor-uucp 1.07-r2 1.07-r3: Taylor UUCP
 net-misc/tcpsound 0.3.1-r1: Play sounds in response to network traffic
@@ -16932,6 +16931,7 @@ sys-cluster/rgmanager 2.03.09 2.03.09-r1 3.1.5: Clustered resource group manager
 sys-cluster/rgmanager-agents 3.9.2: Resource Manager Agents
 sys-cluster/slurm 2.6.3: SLURM: A Highly Scalable Resource Manager
 sys-cluster/swift 2.5.0-r2 2.7.0: A highly available, distributed, and eventually consistent object/blob store
+sys-cluster/sx 2.0 2.1: Skylable SX - a distributed object-storage software for data clusters
 sys-cluster/torque 2.5.13-r1 4.1.7-r1 4.2.9-r5: Resource manager and queuing system based on OpenPBS
 sys-cluster/util-vserver 0.30.216_pre3025 0.30.216_pre3062 0.30.216_pre3120: Linux-VServer admin utilities
 sys-cluster/vzctl 4.9.1 4.9.4: OpenVZ ConTainers control utility
