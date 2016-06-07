@@ -1,12 +1,12 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=5
 
 MY_P="${PN/2/-II}-${PV}"
 
-inherit base user
+inherit eutils user
 
 DESCRIPTION="Connection pool server for PostgreSQL"
 HOMEPAGE="http://www.pgpool.net/"
@@ -16,13 +16,13 @@ SLOT="0"
 
 KEYWORDS="~amd64 ~x86"
 
-IUSE="memcached pam ssl static-libs"
+IUSE="doc memcached pam ssl static-libs"
 
 RDEPEND="
-	dev-db/postgresql
+	dev-db/postgresql:=
 	memcached? ( dev-libs/libmemcached )
 	pam? ( sys-auth/pambase )
-	ssl? ( dev-libs/openssl )
+	ssl? ( dev-libs/openssl:= )
 "
 DEPEND="${RDEPEND}
 	sys-devel/bison
@@ -42,7 +42,7 @@ pkg_setup() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}/pgpool_run_paths.patch"
+	epatch "${FILESDIR}/pgpool2-3.5.0-path-fix.patch"
 
 	local pg_config_manual="$(pg_config --includedir)/pg_config_manual.h"
 	local pgsql_socket_dir=$(grep DEFAULT_PGSOCKET_DIR "${pg_config_manual}" | \
@@ -50,10 +50,10 @@ src_prepare() {
 	local pgpool_socket_dir="$(dirname $pgsql_socket_dir)/pgpool"
 
 	sed "s|@PGSQL_SOCKETDIR@|${pgsql_socket_dir}|g" \
-		-i *.conf.sample* pool.h || die
+		-i src/sample/pgpool.conf.sample* src/include/pool.h || die
 
 	sed "s|@PGPOOL_SOCKETDIR@|${pgpool_socket_dir}|g" \
-		-i *.conf.sample* pool.h || die
+		-i src/sample/pgpool.conf.sample* src/include/pool.h || die
 }
 
 src_configure() {
@@ -73,34 +73,29 @@ src_configure() {
 src_compile() {
 	emake
 
-	emake -C sql
+	emake -C src/sql
 }
 
 src_install() {
 	emake DESTDIR="${D}" install
 
-	emake DESTDIR="${D}" -C sql install
-	cd "${S}"
-
-	# `contrib' moved to `extension' with PostgreSQL 9.1
-	local pgslot=$(postgresql-config show)
-	if [[ ${pgslot//.} > 90 ]] ; then
-		cd "${ED%/}$(pg_config --sharedir)"
-		mv contrib extension || die
-		cd "${S}"
-	fi
+	emake DESTDIR="${D}" -C src/sql install
 
 	newinitd "${FILESDIR}/${PN}.initd" ${PN}
 	newconfd "${FILESDIR}/${PN}.confd" ${PN}
 
 	# Documentation
-	dodoc NEWS TODO doc/where_to_send_queries.{pdf,odg}
-	dohtml -r doc
+	dodoc NEWS TODO
+	use doc && dohtml -r doc/*
 
 	# Examples and extras
-	insinto "/usr/share/${PN}"
-	doins doc/{pgpool_remote_start,basebackup.sh,recovery.conf.sample}
+	# mv some files that get installed to /usr/share/pgpool-II so that
+	# they all wind up in the same place
 	mv "${ED%/}/usr/share/${PN/2/-II}" "${ED%/}/usr/share/${PN}" || die
+	into "/usr/share/${PN}"
+	dobin doc/{pgpool_remote_start,basebackup.sh}
+	insinto "/usr/share/${PN}"
+	doins doc/recovery.conf.sample
 
 	# One more thing: Evil la files!
 	find "${ED}" -name '*.la' -exec rm -f {} +
