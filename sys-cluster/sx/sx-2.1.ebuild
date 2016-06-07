@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -12,7 +12,7 @@ SRC_URI="http://cdn.skylable.com/source/${P}.tar.gz"
 LICENSE="GPL-2 LGPL-2.1"
 # If a package appears that links against another .so apart from sxclient-2.0.0.so, change the subslot accordingly.
 SLOT="0/2"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE="+client ipv6 +server ssl"
 nginx_modules_use="nginx_modules_http_fastcgi(-),nginx_modules_http_gzip(-),nginx_modules_http_proxy(-),nginx_modules_http_scgi(-),nginx_modules_http_uwsgi(-)"
 DEPEND="

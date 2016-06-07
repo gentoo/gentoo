@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -68,8 +68,8 @@ src_install() {
 
 pkg_postinst() {
 	elog "*******************************************************************************"
-	elog "Just as a heads-up: LibreS3 requires a working SX cluster (net-misc/sx) to be"
-	elog "of any use. Since LibreS3 is capable of connecting to a remote SX cluster it"
+	elog "Just as a heads-up: LibreS3 requires a working SX cluster (sys-cluster/sx) to"
+	elog "be of any use. Since LibreS3 is capable of connecting to a remote SX cluster it"
 	elog "doesn't depend on it. Hence you will likely want to install it."
 	elog ""
 	elog "Standard S3 client libraries and tools (for example s3cmd, python-boto,"
