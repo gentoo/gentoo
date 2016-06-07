@@ -44,7 +44,7 @@ pkg_pretend() {
 }
 
 src_prepare() {
-	eapply_user
+	default
 	[[ -d m4 ]] || mkdir "m4"
 	[[ ${PV} == 9999 ]] && eautoreconf
 }
