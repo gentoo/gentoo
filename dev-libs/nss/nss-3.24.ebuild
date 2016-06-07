@@ -2,11 +2,11 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
+EAPI=6
 
 inherit eutils flag-o-matic multilib toolchain-funcs multilib-minimal
 
-NSPR_VER="4.10.8"
+NSPR_VER="4.12"
 RTM_NAME="NSS_${PV//./_}_RTM"
 # Rev of https://git.fedorahosted.org/cgit/nss-pem.git
 PEM_GIT_REV="015ae754dd9f6fbcd7e52030ec9732eb27fc06a8"
@@ -14,13 +14,13 @@ PEM_P="${PN}-pem-20140125"
 
 DESCRIPTION="Mozilla's Network Security Services library that implements PKI support"
 HOMEPAGE="http://www.mozilla.org/projects/security/pki/nss/"
-SRC_URI="http://archive.mozilla.org/pub/mozilla.org/security/nss/releases/${RTM_NAME}/src/${P}.tar.gz
+SRC_URI="https://archive.mozilla.org/pub/security/nss/releases/${RTM_NAME}/src/${P}.tar.gz
 	cacert? ( https://dev.gentoo.org/~anarchy/patches/${PN}-3.14.1-add_spi+cacerts_ca_certs.patch )
 	nss-pem? ( https://dev.gentoo.org/~anarchy/dist/${PEM_P}.tar.bz2 )"
 
 LICENSE="|| ( MPL-2.0 GPL-2 LGPL-2.1 )"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
 IUSE="+cacert +nss-pem utils"
 CDEPEND=">=dev-db/sqlite-3.8.2[${MULTILIB_USEDEP}]
 	>=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}]"
@@ -42,6 +42,13 @@ MULTILIB_CHOST_TOOLS=(
 	/usr/bin/nss-config
 )
 
+PATCHES=(
+	# Custom changes for gentoo
+	"${FILESDIR}/${PN}-3.21-gentoo-fixups.patch"
+	"${FILESDIR}/${PN}-3.21-gentoo-fixup-warnings.patch"
+	"${FILESDIR}/${PN}-3.23-hppa-byte_order.patch"
+)
+
 src_unpack() {
 	unpack ${A}
 	if use nss-pem ; then
@@ -50,17 +57,19 @@ src_unpack() {
 }
 
 src_prepare() {
-	# Custom changes for gentoo
-	epatch "${FILESDIR}/${PN}-3.21-gentoo-fixups.patch"
-	epatch "${FILESDIR}/${PN}-3.21-gentoo-fixup-warnings.patch"
-	epatch "${FILESDIR}/${PN}-3.21-hppa-byte_order.patch"
+	if use nss-pem ; then
+		PATCHES+=(
+			"${FILESDIR}/${PN}-3.21-enable-pem.patch"
+			"${FILESDIR}/${PN}-3.21-pem-werror.patch"
+		)
+	fi
+
+	default
 
 	if use cacert ; then
-		epatch "${DISTDIR}/${PN}-3.14.1-add_spi+cacerts_ca_certs.patch"
-		epatch "${FILESDIR}/${PN}-3.21-cacert-class3.patch" #521462
+			eapply -p4 "${DISTDIR}/${PN}-3.14.1-add_spi+cacerts_ca_certs.patch"
+			eapply "${FILESDIR}/${PN}-3.21-cacert-class3.patch" #521462
 	fi
-	use nss-pem && epatch "${FILESDIR}/${PN}-3.21-enable-pem.patch" \
-		"${FILESDIR}/${PN}-3.21-pem-werror.patch"
 
 	pushd coreconf >/dev/null || die
 	# hack nspr paths
@@ -282,7 +291,10 @@ multilib_src_install() {
 			# The tests we do not need to install.
 			#nssutils_test="bltest crmftest dbtest dertimetest
 			#fipstest remtest sdrtest"
-			nssutils="addbuiltin atob baddbdir btoa certcgi certutil checkcert
+			# checkcert utils has been removed in nss-3.22:
+			# https://bugzilla.mozilla.org/show_bug.cgi?id=1187545
+			# https://hg.mozilla.org/projects/nss/rev/df1729d37870
+			nssutils="addbuiltin atob baddbdir btoa certcgi certutil
 			cmsutil conflict crlutil derdump digest makepqg mangle modutil multinit
 			nonspr10 ocspclnt oidcalc p7content p7env p7sign p7verify pk11mode
 			pk12util pp rsaperf selfserv shlibsign signtool signver ssltap strsclnt
