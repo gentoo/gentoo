@@ -19,7 +19,6 @@ DEV_URI="
 	http://download.documentfoundation.org/libreoffice/src/${PV:0:5}/
 	http://download.documentfoundation.org/libreoffice/old/${PV}/
 "
-EXT_URI="http://ooo.itc.hu/oxygenoffice/download/libreoffice"
 ADDONS_URI="http://dev-www.libreoffice.org/src/"
 
 BRANDING="${PN}-branding-gentoo-0.8.tar.xz"
@@ -74,14 +73,8 @@ ADDONS_SRC=(
 SRC_URI+=" ${ADDONS_SRC[*]}"
 
 unset ADDONS_URI
-unset EXT_URI
 unset ADDONS_SRC
 
-# Unpackaged separate extensions:
-# diagram: lo has 0.9.5 upstream is weirdly patched 0.9.4 -> wtf?
-# hunart: only on ooo extensions -> fubared download path somewhere on sf
-# numbertext, typo, validator, watch-window: ^^
-# oooblogger: no homepage or anything
 # Extensions that need extra work:
 LO_EXTS="nlpsolver scripting-beanshell scripting-javascript wiki-publisher"
 
