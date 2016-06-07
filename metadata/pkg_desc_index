@@ -7460,6 +7460,7 @@ dev-python/mockldap 0.2.3 0.2.5 0.2.6: A simple mock implementation of python-ld
 dev-python/mockredispy 2.9.3: Mock for redis-py
 dev-python/mongoengine 0.8.3: A Python Object-Document-Mapper for working with MongoDB
 dev-python/monotonic 0.2 0.3 0.4 0.5 1.0: An implementation of time.monotonic() for Python 2 & < 3.3
+dev-python/montage-wrapper 0.9.8: Python wrapper for the Montage mosaicking toolkit
 dev-python/morbid 0.8.7.3 0.8.7.3-r1: A Twisted-based publish/subscribe messaging server that uses the STOMP protocol
 dev-python/more-itertools 2.2 2.2-r1: More routines for operating on iterables, beyond itertools
 dev-python/moto 0.3.8 0.4.3 0.4.8 0.4.21 0.4.22: Mock library for boto
@@ -15327,6 +15328,7 @@ sci-astronomy/ds9-bin 7.2 7.4: Data visualization application for astronomical F
 sci-astronomy/erfa 1.0.1 1.1.0 1.2.0: Essential Routines for Fundamental Astronomy
 sci-astronomy/esomidas 15.09: European Southern Observatory Munich Image Data Analysis System
 sci-astronomy/esorex 3.10.2 3.12 3.12.3: ESO Recipe Execution Tool to exec cpl scripts
+sci-astronomy/fitspng 0.3.5: FITS to PNG converter
 sci-astronomy/funtools 1.4.6: FITS library and utlities for astronomical images
 sci-astronomy/galaxy 2.2: Stellar simulation program
 sci-astronomy/gasgano 2.4.5 2.4.8: ESO astronomical data file organizer
@@ -15334,6 +15336,7 @@ sci-astronomy/healpix 3.30: Hierarchical Equal Area isoLatitude Pixelization of 
 sci-astronomy/idlastro 20160225: Astronomical user routines for IDL
 sci-astronomy/kapteyn 2.3: Collection of python tools for astronomy
 sci-astronomy/missfits 2.8.0: Performs basic maintenance and packaging tasks on FITS files
+sci-astronomy/montage 4.1: Toolkit for assembling FITS images into mosaics
 sci-astronomy/predict 2.2.3-r1: Satellite tracking and orbital prediction
 sci-astronomy/psfex 3.17.1: Extracts models of the Point Spread Function from FITS images
 sci-astronomy/pyephem 3.7.5.3 3.7.6.0: Astronomical routines for the python programming language
