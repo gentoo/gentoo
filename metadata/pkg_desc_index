@@ -1413,7 +1413,7 @@ app-eselect/eselect-postgresql 1.2.1: Utility to select the default PostgreSQL s
 app-eselect/eselect-python 20111108 20140125-r1 20151117-r2 20160222 99999999: Eselect module for management of multiple Python versions
 app-eselect/eselect-qtgraphicssystem 1.1.1: Utility to change the active Qt Graphics System
 app-eselect/eselect-rails 0.18 0.19 0.20 0.21: Manages Ruby on Rails symlinks
-app-eselect/eselect-renpy 0.4 0.5 0.6: Manages renpy symlink
+app-eselect/eselect-renpy 0.4 0.6: Manages renpy symlink
 app-eselect/eselect-ruby 20131227 20141227 20151229: Manages multiple Ruby versions
 app-eselect/eselect-rust 0.3_pre20150428: eselect module for rust
 app-eselect/eselect-scala 0.1.1: Manages multiple Scala versions
@@ -3103,6 +3103,33 @@ dev-embedded/upslug2 11: util for flashing NSLU2 machines remotely
 dev-embedded/urjtag 0.10 0.10-r1 9999: tool for communicating over JTAG with flash chips, CPUs, and many more (fork of openwince jtag)
 dev-embedded/usbprog 0.2.0-r1: flashtool for the multi purpose programming adapter usbprog
 dev-embedded/zmac 1.3: Z80 macro cross-assembler
+dev-erlang/cache_tab 1.0.2: In-memory cache Erlang and Elixir library
+dev-erlang/eredis 1.0.8: Erlang Redis client
+dev-erlang/esip 1.0.4: ProcessOne SIP server component
+dev-erlang/ezlib 1.0.1: Native zlib driver for Erlang and Elixir
+dev-erlang/fast_tls 1.0.3: TLS/SSL native driver for Erlang and Elixir
+dev-erlang/fast_xml 1.1.3: Fast Expat based Erlang XML parsing library
+dev-erlang/fast_yaml 1.0.3: Fast Yaml native library for Erlang and Elixir
+dev-erlang/goldrush 0.1.8.1: Small Erlang app that provides fast event stream processing
+dev-erlang/hamcrest 0.1.0_p20150103: Erlang port of Hamcrest
+dev-erlang/iconv 1.0.0: Fast encoding conversion library for Erlang and Elixir
+dev-erlang/jiffy 0.14.7: JSON NIFs for Erlang
+dev-erlang/lager 3.2.0: Logging framework for Erlang/OTP
+dev-erlang/luerl 0.2: Lua in Erlang
+dev-erlang/meck 0.8.3: Mocking library for Erlang
+dev-erlang/p1_mysql 1.0.1: Pure Erlang MySQL driver
+dev-erlang/p1_oauth2 0.6.1: Erlang OAuth 2.0 implementation
+dev-erlang/p1_pam 1.0.0: epam for ejabberd to help with PAM authentication support
+dev-erlang/p1_pgsql 1.1.0: Pure Erlang PostgreSQL driver
+dev-erlang/p1_utils 1.0.4: Erlang utility modules from ProcessOne
+dev-erlang/p1_xmlrpc 1.15.1: Erlang XMLRPC implementation with SSL, cookies, authentication
+dev-erlang/proper 1.1_p20160426: QuickCheck-inspired property-based testing tool for Erlang
+dev-erlang/protobuffs 0.8.2: Google's Protocol Buffers for Erlang
+dev-erlang/riak_pb 2.1.0.7: Riak Protocol Buffers messages
+dev-erlang/riakc 2.1.1_p20151111: Erlang clients for Riak
+dev-erlang/sqlite3 1.1.5: SQLite gen_server port for Erlang
+dev-erlang/stringprep 1.0.3: Fast Stringprep implementation for Erlang and Elixir
+dev-erlang/stun 1.0.3: STUN and TURN library for Erlang and Elixir
 dev-games/KXL 1.1.7-r2: Development Library for making games for X
 dev-games/aseprite 0.9.5-r1 1.1.4.1 1.1.5.1: Animated sprite editor & pixel art tool
 dev-games/cardpics 0.4: set of free cards sets
@@ -3125,7 +3152,7 @@ dev-games/libnw 1.30.02: Tools and libraries for NWN file manipulation
 dev-games/mercator 0.3.3: WorldForge library primarily aimed at terrain
 dev-games/mygui 3.2.2: A library for creating GUIs for games
 dev-games/newton 2.36 3.13: an integrated solution for real time simulation of physics environments
-dev-games/ode 0.11.1 0.12 0.13 0.14: Open Dynamics Engine SDK
+dev-games/ode 0.11.1 0.12 0.14: Open Dynamics Engine SDK
 dev-games/ogre 1.9.0-r1: Object-oriented Graphics Rendering Engine
 dev-games/ois 1.3: Object-oriented Input System - A cross-platform C++ input handling library
 dev-games/openscenegraph 3.2.1 3.2.1-r1 3.2.1-r2 3.4.0: Open source high performance 3D graphics toolkit
@@ -10257,7 +10284,7 @@ games-board/gnuchess 6.2.2-r1: Console based chess interface
 games-board/gnuchess-book 1.02: Opening book for gnuchess
 games-board/gnugo 3.9.1-r1: A Go-playing program
 games-board/gnushogi 1.4.1: Japanese version of chess (commandline + X-Version)
-games-board/goatee-gtk 0.3.0 0.3.1: A monadic take on a 2,500-year-old board game - GTK+ UI
+games-board/goatee-gtk 0.3.1: A monadic take on a 2,500-year-old board game - GTK+ UI
 games-board/grhino 0.16.1: Reversi game for GNOME, supporting the Go/Game Text Protocol
 games-board/gtkatlantic 0.6.1: Monopoly-like game that works with the monopd server
 games-board/gtkboard 0.11_pre0: Board games system
@@ -10370,7 +10397,7 @@ games-engines/gemrb 0.8.3: Reimplementation of the Infinity engine
 games-engines/love 0.7.2-r1 0.8.0 9999: A framework for 2D games in Lua
 games-engines/nazghul 0.7.1: A computer role-playing game (CRPG) engine with game called HaximA
 games-engines/odamex 0.7.0: An online multiplayer, free software engine for Doom and Doom II
-games-engines/openmw 0.36.1 0.39.0: An open source reimplementation of TES III: Morrowind
+games-engines/openmw 0.39.0: An open source reimplementation of TES III: Morrowind
 games-engines/openxcom 1.0.0 9999: An open-source reimplementation of the popular UFO: Enemy Unknown
 games-engines/qtads 2.1.6 2.1.7: Multimedia interpreter for TADS text adventures
 games-engines/renpy 6.15.7 6.16.5 6.17.7 6.18.3 6.99.6: Visual novel engine written in python
@@ -10402,7 +10429,7 @@ games-fps/doom3-inhell 1.1-r1: Doom 3 In Hell - Ultimate Doom-inspired levels fo
 games-fps/doom3-lms 4: Doom 3 Last Man Standing - add co-op support and/or play against swarms of monsters
 games-fps/doom3-mitm 20070129: Doom 3 Make it to Morning - Single player maps
 games-fps/doom3-roe 1: Doom III: Resurrection of Evil expansion pack
-games-fps/doomsday 1.14.5 1.15.7 1.15.8: A modern gaming engine for Doom, Heretic, and Hexen
+games-fps/doomsday 1.14.5 1.15.8: A modern gaming engine for Doom, Heretic, and Hexen
 games-fps/doomsday-resources 1.01-r1: Improved models & textures for doomsday
 games-fps/duke3d 20040817-r2: Port of the original Duke Nukem 3D
 games-fps/duke3d-data 1.0-r3: Duke Nukem 3D data files
@@ -10770,7 +10797,7 @@ games-rpg/gwiz 0.8: clone of old-school Wizardry(tm) games by SirTech
 games-rpg/kqlives 0.99: A console-style role playing game
 games-rpg/lure 1.1: Lure of the Temptress
 games-rpg/mana 0.6.1: A fully free and open source MMORPG game client
-games-rpg/manaplus 1.5.11.21 1.6.2.27 1.6.3.26 9999: OpenSource 2D MMORPG client for Evol Online and The Mana World
+games-rpg/manaplus 1.5.11.21 1.6.3.26 9999: OpenSource 2D MMORPG client for Evol Online and The Mana World
 games-rpg/nwmouse 20090906.183839: Hardware mouse cursors for Neverwinter Nights
 games-rpg/nwmovies 20090223.080954: Play Neverwinter Nights movies inside the Linux client
 games-rpg/nwn 1.68-r5 1.68-r6 1.69-r1: role-playing game set in a huge medieval fantasy world of Dungeons and Dragons
@@ -10841,8 +10868,8 @@ games-sports/trophy 2.0.3: 2D Racing Game
 games-sports/ultimatestunts 0.7.7: Remake of the famous Stunts game
 games-sports/vdrift 20120722: A driving simulation made with drift racing in mind
 games-sports/xmoto 0.5.11: A challenging 2D motocross platform game
-games-strategy/0ad 0.0.18_alpha-r4 0.0.20_alpha: A free, real-time strategy game
-games-strategy/0ad-data 0.0.18_alpha 0.0.20_alpha: Data files for 0ad
+games-strategy/0ad 0.0.20_alpha: A free, real-time strategy game
+games-strategy/0ad-data 0.0.20_alpha: Data files for 0ad
 games-strategy/asc 2.6.0.0-r1: turn based strategy game designed in the tradition of the Battle Isle series
 games-strategy/boswars 2.7-r1: Futuristic real-time strategy game
 games-strategy/crimson 0.5.3: Tactical war game in the tradition of Battle Isle
@@ -10893,7 +10920,7 @@ games-strategy/uqm 0.7.0-r2 0.7.0-r3: The Ur-Quan Masters: Port of Star Control 
 games-strategy/wargus 2.3.0: Warcraft II for the Stratagus game engine
 games-strategy/wargus-data 0: Warcraft II data for wargus (needs DOS CD)
 games-strategy/warmux 11.04.1: A free Worms clone
-games-strategy/warzone2100 3.1.2 3.1.3 3.1.5: 3D real-time strategy game
+games-strategy/warzone2100 3.1.2 3.1.5: 3D real-time strategy game
 games-strategy/wesnoth 1.12.5 1.12.6: Battle for Wesnoth - A fantasy turn-based strategy game
 games-strategy/widelands 0.17 0.18: A game similar to Settlers 2
 games-strategy/xbattleai 1.2.2-r1: A multi-player game of strategy and coordination
@@ -10913,7 +10940,7 @@ games-util/grfcodec 6.0.4 6.0.5: A suite of programs to modify openttd/Transport
 games-util/gslist 0.8.11a: A GameSpy server browser
 games-util/gtkevemon 1.8-r1 9999: A standalone skill monitoring application for EVE Online
 games-util/higan-purify 03: Rom purifier for higan
-games-util/joystick 1.4.8 1.4.8-r1 1.4.9 1.5.1: joystick testing utilities
+games-util/joystick 1.4.8 1.4.8-r1 1.5.1: joystick testing utilities
 games-util/linux-wbfs-manager 0.1.12 9999: WBFS manager for Linux using GTK+
 games-util/loki_patch 20091105: Loki Software binary patch tool
 games-util/lutris 0.3.6.3: Gaming platform for GNU/Linux
@@ -14115,7 +14142,7 @@ net-im/coccinella 0.96.20: Jabber Client With a Built-in Whiteboard and VoIP (ji
 net-im/corebird 0.8 1.0 1.1: Native GTK+3 Twitter client
 net-im/cpop 0.0.4-r1: GTK+ network popup message client. Compatible with the jpop protocol
 net-im/dianara 1.3.1-r1 1.3.3: Qt-based client for the pump.io distributed social network
-net-im/ejabberd 2.1.13-r2 15.03-r1 16.01-r1: The Erlang Jabber Daemon
+net-im/ejabberd 2.1.13-r2 15.03-r1 16.01-r1 16.04: Robust, scalable and extensible XMPP server
 net-im/ekg2 0.3.1-r2 9999: Text-based, multi-protocol instant messenger
 net-im/empathy 3.12.11 3.12.12: Telepathy instant messaging and video/audio call client for GNOME
 net-im/err 1.7.1-r1: Plugin based XMPP chatbot designed to be easily deployable, extensible and maintainable

@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile install prepare test
+DEPEND=>=dev-erlang/p1_utils-1.0.0 >=dev-lang/erlang-17.1 dev-libs/expat dev-lang/erlang dev-util/rebar >=sys-apps/gawk-4.1
+DESCRIPTION=Fast Expat based Erlang XML parsing library
+EAPI=6
+HOMEPAGE=https://github.com/processone/fast_xml
+IUSE=test
+KEYWORDS=~amd64 ~arm ~ppc ~x86
+LICENSE=Apache-2.0
+RDEPEND=>=dev-erlang/p1_utils-1.0.0 >=dev-lang/erlang-17.1 dev-libs/expat dev-lang/erlang
+RESTRICT=test
+SLOT=0
+SRC_URI=https://github.com/processone/fast_xml/archive/1.1.3.tar.gz -> fast_xml-1.1.3.tar.gz
+_eclass_exported_funcs=src_prepare:rebar src_compile:rebar src_test:rebar src_install:rebar
+_eclasses_=rebar	98c3519ff55e51c3d222cde7f9f5d2e9
+_md5_=2e0274ccf98af151a52d56c4af3e98ef

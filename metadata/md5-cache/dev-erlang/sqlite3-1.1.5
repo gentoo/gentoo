@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install prepare test
+DEPEND=>=dev-lang/erlang-17.1 dev-lang/erlang dev-util/rebar >=sys-apps/gawk-4.1
+DESCRIPTION=SQLite gen_server port for Erlang
+EAPI=6
+HOMEPAGE=https://github.com/processone/erlang-sqlite3
+KEYWORDS=~amd64 ~arm ~ppc ~x86
+LICENSE=ErlPL-1.1
+RDEPEND=>=dev-lang/erlang-17.1 dev-lang/erlang
+SLOT=0
+SRC_URI=https://github.com/processone/erlang-sqlite3/archive/1.1.5.tar.gz -> sqlite3-1.1.5.tar.gz
+_eclass_exported_funcs=src_prepare:rebar src_compile:rebar src_test:rebar src_install:rebar
+_eclasses_=rebar	98c3519ff55e51c3d222cde7f9f5d2e9
+_md5_=2e4f5f5d9eac6576b9e8ee04aed8e886

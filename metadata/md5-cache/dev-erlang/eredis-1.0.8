@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install prepare test
+DEPEND=>=dev-lang/erlang-17.1 dev-lang/erlang dev-util/rebar >=sys-apps/gawk-4.1
+DESCRIPTION=Erlang Redis client
+EAPI=6
+HOMEPAGE=https://github.com/wooga/eredis
+KEYWORDS=~amd64 ~arm ~ppc ~x86
+LICENSE=MIT
+RDEPEND=>=dev-lang/erlang-17.1 dev-lang/erlang
+RESTRICT=test
+SLOT=0
+SRC_URI=https://github.com/wooga/eredis/archive/v1.0.8.tar.gz -> eredis-1.0.8.tar.gz
+_eclass_exported_funcs=src_prepare:rebar src_compile:rebar src_test:rebar src_install:rebar
+_eclasses_=rebar	98c3519ff55e51c3d222cde7f9f5d2e9
+_md5_=6c07c73ec2eec5525a93e8616f139212
