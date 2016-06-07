@@ -3,10 +3,10 @@ DEPEND=!<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=s
 DESCRIPTION=iscsi client library and utilities
 EAPI=5
 HOMEPAGE=https://github.com/sahlberg/libiscsi
-KEYWORDS=amd64 ~hppa ~ppc64 x86
+KEYWORDS=~alpha amd64 ~hppa ~ppc64 x86
 LICENSE=GPL-2 LGPL-2
 SLOT=0
 SRC_URI=https://github.com/sahlberg/libiscsi/archive/1.9.0.tar.gz -> libiscsi-1.9.0.tar.gz
 _eclass_exported_funcs=src_prepare:- src_configure:autotools-utils src_compile:autotools-utils src_test:autotools-utils src_install:autotools-utils
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	autotools-utils	419811142edf3516b0d0cf1a254d93cb	eutils	792f83d5ec9536cb5ccef375469d8bde	libtool	4890219c51da247200223277f993e054	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
-_md5_=669ae000db6487f39e86d33c6a1e67f1
+_md5_=a9eb5e3eeac15903b9286f9d87afe2a1
