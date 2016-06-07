@@ -3,6 +3,11 @@
 # $Id$
 
 # Tobias Klausmann <klausman@gentoo.org> (07 Jun 2016)
+# cmus is one amongst many. When-if a user wants it, we'll reconsider it.
+# Same goes for libircclient
+app-admin/conky cmus irc
+
+# Tobias Klausmann <klausman@gentoo.org> (07 Jun 2016)
 # the nvidia SDK needs nvidia-drivers and thus can never work on alpha
 # Likewise, nasm is x86/x86-64 only
 media-video/ffmpeg nvenc openh264
