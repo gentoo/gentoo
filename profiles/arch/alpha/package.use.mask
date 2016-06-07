@@ -32,10 +32,6 @@ app-text/mupdf opengl
 # dev-lang/luajit lacks alpha keyword. See bug #488318.
 media-video/mpv luajit
 
-# Mike Frysinger <vapier@gentoo.org> (22 Dec 2015)
-# Needs keywording. #569254
-net-firewall/iptables nftables
-
 # Justin Lecher <jlec@gentoo.org> (18 Nov 2015)
 # requires dev-python/restkit which requires
 # dev-python/socketpool which requires dev-python/gevent which requires
