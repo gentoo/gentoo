@@ -14788,7 +14788,7 @@ net-misc/peervpn 0.044: P2P mesh VPN
 net-misc/pen 0.25.1: TCP Load Balancing Port Forwarder
 net-misc/pimpd 0.8: RFC1413-compliant identd server supporting masqueraded connections
 net-misc/pipes 1.16 1.16.1: Very versatile TCP pipes
-net-misc/plowshare 1.2.0 2.1.1 2.1.2 2.1.3: Command-line downloader and uploader for file-sharing websites
+net-misc/plowshare 1.2.0 2.1.1 2.1.2 2.1.3 9999: Command-line downloader and uploader for file-sharing websites
 net-misc/pmsvn 1.0.5 1.0.6 1.0.7: Server's configuration management and monitoring tool
 net-misc/polly 0.93.11 0.93.12: twitter client designed for multiple columns of multiple accounts
 net-misc/portfwd 0.29-r1: Port Forwarding Daemon
