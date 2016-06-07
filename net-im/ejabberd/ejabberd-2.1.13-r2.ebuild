@@ -23,7 +23,7 @@ DEPEND=">=net-im/jabber-base-0.01
 	<dev-lang/erlang-16
 	odbc? ( dev-db/unixODBC )
 	ldap? ( =net-nds/openldap-2* )
-	>=dev-libs/openssl-0.9.8e
+	>=dev-libs/openssl-0.9.8e:=
 	captcha? ( media-gfx/imagemagick[truetype,png] )
 	zlib? ( sys-libs/zlib )"
 #>=sys-apps/shadow-4.1.4.2-r3 - fixes bug in su that made ejabberdctl unworkable.
