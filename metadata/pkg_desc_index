@@ -7114,7 +7114,7 @@ dev-python/docopt 0.6.2 0.6.2-r1: Pythonic argument parser, that will make you s
 dev-python/doctest-ignore-unicode 0.1.2: Add flag to ignore unicode literal prefixes in doctests
 dev-python/docutils 0.9.1-r1 0.10 0.11 0.12: Python Documentation Utilities
 dev-python/docutils-glep 0.4-r1: Gentoo GLEP support for docutils
-dev-python/dogpile-cache 0.5.1 0.5.2 0.5.4 0.5.7: API built on a lock allowing access to expiring values while a single thread generates a new value.
+dev-python/dogpile-cache 0.5.7 0.6.1: A locking API for expiring values while a single thread generates a new value.
 dev-python/dogpile-core 0.4.1: A lock which allows a thread to generate an expensive resource while other threads use the old value
 dev-python/doit 0.23.0-r1 0.27.0 0.28.0 0.29.0: Automation tool
 dev-python/doit-py 0.3.0 0.4.0: doit tasks for python stuff
