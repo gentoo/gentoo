@@ -13,7 +13,7 @@ SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.xz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="alpha amd64 ~hppa ~ppc ppc64 ~sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="alpha amd64 hppa ~ppc ppc64 ~sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="bzip2 cxx debug fpx imagemagick jbig jpeg jpeg2k lcms lzma modules openmp
 	perl png postscript q16 q32 static-libs svg threads tiff truetype webp wmf X zlib"
 
