@@ -17,7 +17,7 @@ RDEPEND="dev-perl/Perl-Tags
 
 src_prepare() {
 	# Don't set tabstop and shiftwidth
-	sed -i '/=4/s/^/"/' ftplugin/perl.vim
+	sed -i '/=4/s/^/"/' ftplugin/perl.vim || die
 }
 
 src_install() {
