@@ -1,0 +1,12 @@
+diff --git a/src/daemon/priv-seccomp.c b/src/daemon/priv-seccomp.c
+index bccd378..7cd8e7d 100644
+--- a/src/daemon/priv-seccomp.c
++++ b/src/daemon/priv-seccomp.c
+@@ -152,6 +152,7 @@ priv_seccomp_init(int remote, int child)
+ 	    (rc = seccomp_rule_add(ctx, SCMP_ACT_ALLOW, SCMP_SYS(socket), 0)) < 0 ||
+ 	    (rc = seccomp_rule_add(ctx, SCMP_ACT_ALLOW, SCMP_SYS(bind), 0)) < 0 ||
+ 	    (rc = seccomp_rule_add(ctx, SCMP_ACT_ALLOW, SCMP_SYS(setsockopt), 0)) < 0 ||
++	    (rc = seccomp_rule_add(ctx, SCMP_ACT_ALLOW, SCMP_SYS(getsockname), 0)) < 0 ||
+ 	    (rc = seccomp_rule_add(ctx, SCMP_ACT_ALLOW, SCMP_SYS(uname), 0)) < 0 ||
+ 	    (rc = seccomp_rule_add(ctx, SCMP_ACT_ALLOW, SCMP_SYS(unlink), 0)) < 0 ||
+ 	    (rc = seccomp_rule_add(ctx, SCMP_ACT_ALLOW, SCMP_SYS(ioctl), 0)) < 0 ||

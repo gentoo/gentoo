@@ -8,6 +8,7 @@ pidfile=/run/lldpd.pid
 command=/usr/sbin/lldpd
 retry="TERM/10/KILL/5"
 command_args="${LLDPD_OPTS}"
+start_stop_daemon_args="--wait 300"
 
 depend() {
 	use net

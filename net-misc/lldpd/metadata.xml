@@ -29,6 +29,7 @@ lldpd also implements CDP (Cisco Discovery Protocol), FDP (Foundry Discovery Pro
 		<flag name="json-c">Enable JSON output via json-c</flag>
 		<flag name="lldpmed">Enable LLDP-MED extension</flag>
 		<flag name="old-kernel">Enable compatibility with Linux kernel older than 2.6.39</flag>
+		<flag name="sanitizers">Enable code instrumentation with selected sanitizers</flag>
 		<flag name="sonmp">Enable SynOptics Network Management</flag>
 		<flag name="snmp">Enable the use of SNMP</flag>
 	</use>
