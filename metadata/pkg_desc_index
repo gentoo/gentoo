@@ -3205,7 +3205,7 @@ dev-haskell/basic-prelude 0.3.11 0.4.1: An enhanced core prelude; a common found
 dev-haskell/bencode 0.5-r1 0.6.0.0: Parser and printer for bencoded data
 dev-haskell/bifunctors 3.2.0.1 4.1.1.1 4.2.1 5: Bifunctors
 dev-haskell/binary 0.5.1.1 0.7.1.0 0.7.2.3 0.7.5.0 0.7.6.1: Binary serialisation for Haskell values using lazy ByteStrings
-dev-haskell/bio 0.5.3-r1: A bioinformatics library
+dev-haskell/bio 0.5.3-r2: A bioinformatics library
 dev-haskell/biocore 0.3.1: A bioinformatics library
 dev-haskell/biofasta 0.0.3: Library for reading fasta sequence files
 dev-haskell/biosff 0.3.7.1: Library and executables for working with SFF files
@@ -8756,7 +8756,7 @@ dev-ruby/bsearch 1.5.0-r2: A binary search library for Ruby
 dev-ruby/bson 1.12.0 3.2.4 3.2.6: A Ruby BSON implementation for MongoDB. (Includes binary C-based extension.)
 dev-ruby/buftok 0.2.0-r1: Statefully split input data by a specifiable token
 dev-ruby/builder 3.0.4-r1 3.0.4-r2 3.1.4 3.2.2 3.2.2-r1: A builder to facilitate programatic generation of XML markup
-dev-ruby/bundler 1.8.9 1.9.10 1.10.6 1.11.2 1.12.4: An easy way to vendor gem dependencies
+dev-ruby/bundler 1.8.9 1.9.10 1.10.6 1.11.2 1.12.4 1.12.5: An easy way to vendor gem dependencies
 dev-ruby/bundler-audit 0.4.0 0.5.0: Provides patch-level verification for Bundled apps
 dev-ruby/bunny 2.3.0 2.3.1: Another synchronous Ruby AMQP client
 dev-ruby/calendar_date_select 2.1.2: A popular and flexible JavaScript DatePicker for RubyOnRails
