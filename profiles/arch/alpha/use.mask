@@ -2,6 +2,11 @@
 # Distributed under the terms of the GNU General Public License, v2
 # $Id$
 
+# Tobias Klausmann <klausman@gentoo.org> (07 Jun 2016)
+# We currently do not ave the resources to AT qt5 packages.
+# This may change when/if qt4 goes away.
+qt5
+
 # Tobias Klausmann <klausman@gentoo.org> (23 May 2016)
 # There is no luajit support on alpha.  Bug #554376.
 luajittex
