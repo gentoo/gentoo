@@ -186,7 +186,7 @@ wine_build_environment_check() {
 			return 1
 		fi
 	fi
-    
+
 	if use abi_x86_64 && einfo "Checking for builtin_ms_va_list ..." && \
 	( $(tc-getCC) -O2 "${FILESDIR}"/builtin_ms_va_list.c -o "${T}"/builtin_ms_va_list >/dev/null 2>&1) ; then
 		einfo "$(tc-getCC) supports builtin_ms_va_list, enabling 64-bit wine"
