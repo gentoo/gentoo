@@ -14,7 +14,23 @@
 		mostly written in Erlang, and works on many platforms.
 	</longdescription>
 	<use>
-		<flag name="captcha">Support for CAPTCHA Forms (XEP-158)</flag>
+		<flag name="captcha">Support for CAPTCHA Forms (XEP-158) on registration</flag>
+		<flag name="full-xml">Use XML features in XMPP stream (ex: CDATA),
+			requires XML compliant clients</flag>
+		<flag name="hipe">Compile natively with HiPE, not recommended</flag>
+		<flag name="mssql">Enable Microsoft SQL Server support (via ODBC) for
+			data storage</flag>
+		<flag name="mysql">Enable MySQL support for data storage</flag>
+		<flag name="nls">Enable character set conversion for mod_irc</flag>
+		<flag name="odbc">Enable ODBC support to access data storage</flag>
+		<flag name="postgres">Enable PostgreSQL support for data storage</flag>
+		<flag name="redis">Enable Redis support for transient data</flag>
+		<flag name="riak">Enable support for Riak - distributed NoSQL key-value
+			data store</flag>
+		<flag name="roster-gw">Turn on workaround for processing gateway subscriptions</flag>
+		<flag name="sqlite">Enable SQLite database support</flag>
+		<flag name="zlib">Enable Stream Compression (XEP-0138) using zlib</flag>
+
 		<flag name="mod_proxy65">Support for SOCKS5 Bytestreams (XEP-0065)</flag>
 		<flag name="mod_statsdx">Measures several statistics, and provides a new section in ejabberd Web Admin to view them.</flag>
 		<flag name="elixir">Enable Elixir language support (http://elixir-lang.org/). Use bundled plugin instead of dev-lang/elixir.</flag>
@@ -23,12 +39,6 @@
 		<flag name="mod_irc">Build irc gateway</flag>
 		<flag name="mod_muc">Build Multi User Chat module</flag>
 		<flag name="mod_pubsub">Build Pubsub module</flag>
-		<flag name="mssql">Build Microsoft SQL Server support</flag>
-		<flag name="mysql">Build Native MySQL support</flag>
-		<flag name="odbc">Build ODBC data storage support</flag>
-		<flag name="postgres">Build Native PostgreSQL support</flag>
-		<flag name="redis">Enable Redis support</flag>
-		<flag name="riak">Enable Riak support</flag>
 		<flag name="tools">Build development tools</flag>
 		<flag name="web">Enable web admin interface</flag>
 	</use>
