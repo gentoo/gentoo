@@ -64,55 +64,55 @@ REQUIRED_USE="|| ( abi_x86_32 abi_x86_64 )
 RESTRICT="test"
 
 COMMON_DEPEND="
-	truetype? ( >=media-libs/freetype-2.0.0[${MULTILIB_USEDEP}] )
+	alsa? ( media-libs/alsa-lib[${MULTILIB_USEDEP}] )
 	capi? ( net-dialup/capi4k-utils )
+	cups? ( net-print/cups:=[${MULTILIB_USEDEP}] )
 	d3d9? ( media-libs/mesa[d3d9,${MULTILIB_USEDEP}] )
-	ncurses? ( >=sys-libs/ncurses-5.2:0=[${MULTILIB_USEDEP}] )
-	udisks? ( sys-apps/dbus[${MULTILIB_USEDEP}] )
 	fontconfig? ( media-libs/fontconfig:=[${MULTILIB_USEDEP}] )
 	gphoto2? ( media-libs/libgphoto2:=[${MULTILIB_USEDEP}] )
-	openal? ( media-libs/openal:=[${MULTILIB_USEDEP}] )
+	gsm? ( media-sound/gsm:=[${MULTILIB_USEDEP}] )
 	gstreamer? (
 		media-libs/gstreamer:1.0[${MULTILIB_USEDEP}]
 		media-plugins/gst-plugins-meta:1.0[${MULTILIB_USEDEP}]
 	)
-	X? (
-		x11-libs/libXcursor[${MULTILIB_USEDEP}]
-		x11-libs/libXext[${MULTILIB_USEDEP}]
-		x11-libs/libXrandr[${MULTILIB_USEDEP}]
-		x11-libs/libXi[${MULTILIB_USEDEP}]
-		x11-libs/libXxf86vm[${MULTILIB_USEDEP}]
-	)
-	xinerama? ( x11-libs/libXinerama[${MULTILIB_USEDEP}] )
-	alsa? ( media-libs/alsa-lib[${MULTILIB_USEDEP}] )
-	cups? ( net-print/cups:=[${MULTILIB_USEDEP}] )
+	jpeg? ( virtual/jpeg:0=[${MULTILIB_USEDEP}] )
+	lcms? ( media-libs/lcms:2=[${MULTILIB_USEDEP}] )
+	ldap? ( net-nds/openldap:=[${MULTILIB_USEDEP}] )
+	mp3? ( >=media-sound/mpg123-1.5.0[${MULTILIB_USEDEP}] )
+	ncurses? ( >=sys-libs/ncurses-5.2:0=[${MULTILIB_USEDEP}] )
+	netapi? ( net-fs/samba[netapi(+),${MULTILIB_USEDEP}] )
+	nls? ( sys-devel/gettext[${MULTILIB_USEDEP}] )
+	odbc? ( dev-db/unixODBC:=[${MULTILIB_USEDEP}] )
+	openal? ( media-libs/openal:=[${MULTILIB_USEDEP}] )
 	opencl? ( virtual/opencl[${MULTILIB_USEDEP}] )
 	opengl? (
 		virtual/glu[${MULTILIB_USEDEP}]
 		virtual/opengl[${MULTILIB_USEDEP}]
 	)
-	gsm? ( media-sound/gsm:=[${MULTILIB_USEDEP}] )
-	jpeg? ( virtual/jpeg:0=[${MULTILIB_USEDEP}] )
-	ldap? ( net-nds/openldap:=[${MULTILIB_USEDEP}] )
-	lcms? ( media-libs/lcms:2=[${MULTILIB_USEDEP}] )
-	mp3? ( >=media-sound/mpg123-1.5.0[${MULTILIB_USEDEP}] )
-	netapi? ( net-fs/samba[netapi(+),${MULTILIB_USEDEP}] )
-	nls? ( sys-devel/gettext[${MULTILIB_USEDEP}] )
-	odbc? ( dev-db/unixODBC:=[${MULTILIB_USEDEP}] )
 	osmesa? ( media-libs/mesa[osmesa,${MULTILIB_USEDEP}] )
 	pcap? ( net-libs/libpcap[${MULTILIB_USEDEP}] )
+	png? ( media-libs/libpng:0=[${MULTILIB_USEDEP}] )
 	pulseaudio? ( media-sound/pulseaudio[${MULTILIB_USEDEP}] )
+	scanner? ( media-gfx/sane-backends:=[${MULTILIB_USEDEP}] )
+	ssl? ( net-libs/gnutls:=[${MULTILIB_USEDEP}] )
 	staging? ( sys-apps/attr[${MULTILIB_USEDEP}] )
+	truetype? ( >=media-libs/freetype-2.0.0[${MULTILIB_USEDEP}] )
+	udisks? ( sys-apps/dbus[${MULTILIB_USEDEP}] )
+	v4l? ( media-libs/libv4l[${MULTILIB_USEDEP}] )
+	vaapi? ( x11-libs/libva[X,${MULTILIB_USEDEP}] )
+	X? (
+		x11-libs/libXcursor[${MULTILIB_USEDEP}]
+		x11-libs/libXext[${MULTILIB_USEDEP}]
+		x11-libs/libXi[${MULTILIB_USEDEP}]
+		x11-libs/libXrandr[${MULTILIB_USEDEP}]
+		x11-libs/libXxf86vm[${MULTILIB_USEDEP}]
+	)
+	xcomposite? ( x11-libs/libXcomposite[${MULTILIB_USEDEP}] )
+	xinerama? ( x11-libs/libXinerama[${MULTILIB_USEDEP}] )
 	xml? (
 		dev-libs/libxml2[${MULTILIB_USEDEP}]
 		dev-libs/libxslt[${MULTILIB_USEDEP}]
 	)
-	scanner? ( media-gfx/sane-backends:=[${MULTILIB_USEDEP}] )
-	ssl? ( net-libs/gnutls:=[${MULTILIB_USEDEP}] )
-	png? ( media-libs/libpng:0=[${MULTILIB_USEDEP}] )
-	v4l? ( media-libs/libv4l[${MULTILIB_USEDEP}] )
-	vaapi? ( x11-libs/libva[X,${MULTILIB_USEDEP}] )
-	xcomposite? ( x11-libs/libXcomposite[${MULTILIB_USEDEP}] )
 	abi_x86_32? (
 		!app-emulation/emul-linux-x86-baselibs[-abi_x86_32(-)]
 		!<app-emulation/emul-linux-x86-baselibs-20140508-r14
@@ -133,26 +133,26 @@ COMMON_DEPEND="
 RDEPEND="${COMMON_DEPEND}
 	dos? ( games-emulation/dosbox )
 	perl? ( dev-lang/perl dev-perl/XML-Simple )
+	pulseaudio? ( realtime? ( sys-auth/rtkit ) )
 	s3tc? ( >=media-libs/libtxc_dxtn-1.0.1-r1[${MULTILIB_USEDEP}] )
 	samba? ( >=net-fs/samba-3.0.25[winbind] )
 	selinux? ( sec-policy/selinux-wine )
-	udisks? ( sys-fs/udisks:2 )
-	pulseaudio? ( realtime? ( sys-auth/rtkit ) )"
+	udisks? ( sys-fs/udisks:2 )"
 
 # tools/make_requests requires perl
 DEPEND="${COMMON_DEPEND}
+	sys-devel/flex
+	>=sys-kernel/linux-headers-2.6
+	virtual/pkgconfig
+	virtual/yacc
+	prelink? ( sys-devel/prelink )
 	staging? ( dev-lang/perl dev-perl/XML-Simple )
 	X? (
 		x11-proto/inputproto
 		x11-proto/xextproto
 		x11-proto/xf86vidmodeproto
 	)
-	xinerama? ( x11-proto/xineramaproto )
-	prelink? ( sys-devel/prelink )
-	>=sys-kernel/linux-headers-2.6
-	virtual/pkgconfig
-	virtual/yacc
-	sys-devel/flex"
+	xinerama? ( x11-proto/xineramaproto )"
 
 # These use a non-standard "Wine" category, which is provided by
 # /etc/xdg/applications-merged/wine.menu
