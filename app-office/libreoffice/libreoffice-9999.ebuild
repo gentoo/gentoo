@@ -84,8 +84,8 @@ unset ADDONS_SRC
 # Extensions that need extra work:
 LO_EXTS="nlpsolver scripting-beanshell scripting-javascript wiki-publisher"
 
-IUSE="bluetooth +branding coinmp collada +cups dbus debug eds firebird gltf gnome gstreamer
-+gtk gtk3 jemalloc kde libressl mysql odk postgres telepathy test vlc
+IUSE="bluetooth +branding coinmp collada +cups dbus debug eds firebird gltf gnome google
+gstreamer +gtk gtk3 jemalloc kde libressl mysql odk postgres telepathy test vlc
 $(printf 'libreoffice_extensions_%s ' ${LO_EXTS})"
 
 LICENSE="|| ( LGPL-3 MPL-1.1 )"
@@ -354,6 +354,12 @@ src_configure() {
 	local java_opts
 	local ext_opts
 
+	# Set up Google API keys, see http://www.chromium.org/developers/how-tos/api-keys
+	# Note: these are for Gentoo use ONLY. For your own distribution, please get
+	# your own set of keys. Feel free to contact chromium@gentoo.org for more info.
+	local google_default_client_id="329227923882.apps.googleusercontent.com"
+	local google_default_client_secret="vgKG0NNv7GoDpbtoFNLxCUXu"
+
 	# optimization flags
 	export GMAKE_OPTIONS="${MAKEOPTS}"
 	# System python enablement:
@@ -468,6 +474,8 @@ src_configure() {
 		$(use_with coinmp system-coinmp) \
 		$(use_with collada system-opencollada) \
 		$(use_with gltf system-libgltf) \
+		$(use_with google gdrive-client-id ${google_default_client_id}) \
+		$(use_with google gdrive-client-secret ${google_default_client_secret}) \
 		$(use_with java) \
 		$(use_with mysql system-mysql-cppconn) \
 		$(use_with odk doxygen) \
