@@ -18502,6 +18502,7 @@ x11-plugins/gkrellkam 2.0.0: an Image-Watcher-Plugin for GKrellM2
 x11-plugins/gkrellm-bgchanger 0.1.10 0.1.11 0.1.11-r1: Plugin for GKrellM2 to change your desktop background
 x11-plugins/gkrellm-bluez 0.2-r1: GKrellm plugin for monitoring bluetooth (Linux BlueZ) adapters
 x11-plugins/gkrellm-countdown 0.1.2: A simple countdown clock for GKrellM2
+x11-plugins/gkrellm-cpupower 0.1.6-r1: A Gkrellm2 plugin for displaying and manipulating CPU frequency
 x11-plugins/gkrellm-imonc 0.2: A GKrellM2 plugin to control a fli4l router
 x11-plugins/gkrellm-leds 0.8.1 0.8.2: GKrellM2 plugin for monitoring keyboard LEDs
 x11-plugins/gkrellm-mailwatch 2.4.3-r1: A GKrellM2 plugin that shows the status of additional mail boxes
