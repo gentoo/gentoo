@@ -2635,6 +2635,7 @@ app-vim/unite 2.0 4.0: vim plugin: unite all sources
 app-vim/uptime 1.3-r1: vim plugin: display vim uptimes
 app-vim/vcscommand 1.99.47: vim plugin: CVS/SVN/SVK/git/bzr/hg integration plugin
 app-vim/vim-addon-mw-utils 20121105: vim plugin: interpret a file by function and cache file automatically
+app-vim/vim-flake8 1.6: vim plugin: runs the currently open file through flake8
 app-vim/vim-latex 1.8.23.20130116 1.8.23.20141116: vim plugin: a comprehensive set of tools to view, edit and compile LaTeX documents
 app-vim/vim-misc 1.17.1 1.17.6: vim plugin: miscellaneous auto-load scripts
 app-vim/vim-r 1.0 1.2.6: vim plugin: integrate vim with R
@@ -2668,6 +2669,7 @@ app-vim/xquery-syntax 0.1-r1: vim plugin: XQuery syntax highlighting
 app-vim/xsl-syntax 0.3.11-r1: vim plugin: Syntax for XSLT (with HTML and others)
 app-vim/yankring 18.0 19.0: vim plugin: maintains a history of previous yanks and deletes
 app-vim/youcompleteme 20130910 99999999: vim plugin: a code-completion engine for Vim
+app-vim/zenburn 2.25: Low-contrast color scheme for Vim
 app-vim/zoomwin 24: vim plugin: brief-style window zooming
 app-xemacs/ada 1.14: Ada language support
 app-xemacs/apel 1.32 1.34: A Portable Emacs Library. Used by XEmacs MIME support
@@ -2948,7 +2950,7 @@ dev-db/pgagent 3.4.0 3.4.0-r1: pgAgent is a job scheduler for PostgreSQL
 dev-db/pgbadger 6.2 6.4 7.0: pgBadger is a PostgreSQL log analyzer.
 dev-db/pgbouncer 1.5.4 1.5.4-r1 1.5.5 1.7.2: Lightweight connection pooler for PostgreSQL
 dev-db/pgmemcache 2.1.2 2.2.0 2.3.0: A PostgreSQL API based on libmemcached to interface with memcached
-dev-db/pgpool2 3.2.5 3.3.6 3.3.7 3.3.8 9999: Connection pool server for PostgreSQL
+dev-db/pgpool2 3.5.2 9999: Connection pool server for PostgreSQL
 dev-db/pgrouting 2.0.0: pgRouting extends PostGIS and PostgreSQL with geospatial routing functionality.
 dev-db/pgtap 0.93.0: Unit testing for PostgreSQL
 dev-db/pgxnclient 1.2-r1 1.2.1: PostgreSQL Extension Network Client
