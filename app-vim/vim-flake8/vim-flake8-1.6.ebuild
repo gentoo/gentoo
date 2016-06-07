@@ -9,7 +9,7 @@ inherit vim-plugin
 DESCRIPTION="vim plugin: runs the currently open file through flake8"
 HOMEPAGE="https://github.com/nvie/vim-flake8"
 SRC_URI="https://github.com/nvie/${PN}/archive/${PV}.zip -> ${P}.zip"
-LICENSE="vim.org"
+LICENSE="BSD"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 
 DEPEND="app-arch/unzip"
