@@ -6257,7 +6257,7 @@ dev-perl/Template-GD 2.660.0-r1: GD plugin(s) for the Template Toolkit
 dev-perl/Template-Plugin-Cycle 1.60.0: Cyclically insert into a Template from a sequence of values
 dev-perl/Template-Plugin-Latex 2.170.0-r1 3.60.0: LaTeX support for the Template Toolkit
 dev-perl/Template-Tiny 1.120.0-r1: Template Toolkit reimplemented in as little code as possible
-dev-perl/Template-Toolkit 2.250.0-r1 2.260.0: The Template Toolkit
+dev-perl/Template-Toolkit 2.260.0: The Template Toolkit
 dev-perl/Template-XML 2.170.0-r1: XML plugins for the Template Toolkit
 dev-perl/Term-ANSIScreen 1.500.0-r1: Terminal control using ANSI escape sequences
 dev-perl/Term-Encoding 0.20.0: Detect encoding of the current terminal
@@ -6268,7 +6268,7 @@ dev-perl/Term-ReadLine-Gnu 1.200.0-r2 1.310.0: GNU Readline XS library wrapper
 dev-perl/Term-ReadLine-Perl 1.30.300-r1: Quick implementation of readline utilities
 dev-perl/Term-ReadLine-TTYtter 1.4: Quick implementation of readline utilities for ttytter
 dev-perl/Term-ReadPassword 0.110.0-r1: Term::ReadPassword - Asking the user for a password
-dev-perl/Term-Screen 1.30.0-r1 1.50.0: A simple Term::Cap based screen positioning module
+dev-perl/Term-Screen 1.50.0: A simple Term::Cap based screen positioning module
 dev-perl/Term-ScreenColor 1.200.0-r1: A Term::Screen based screen positioning and coloring module
 dev-perl/Term-Shell 0.90: A simple command-line shell framework
 dev-perl/Term-ShellUI 0.920.0-r1: A fully-featured shell-like command line environment
@@ -6277,7 +6277,7 @@ dev-perl/Test-Assert 0.50.400-r1: Assertion methods for those who like JUnit
 dev-perl/Test-Base 0.600.0-r1 0.880.0: A Data Driven Testing Framework
 dev-perl/Test-CPAN-Meta 0.250.0: Validate your CPAN META.yml file
 dev-perl/Test-CheckDeps 0.10.0: Check for presence of dependencies
-dev-perl/Test-Class 0.390.0-r1 0.500.0: Easily create test classes in an xUnit/JUnit style
+dev-perl/Test-Class 0.500.0: Easily create test classes in an xUnit/JUnit style
 dev-perl/Test-ClassAPI 1.60.0-r1: Provides basic first-pass API testing for large class trees
 dev-perl/Test-CleanNamespaces 0.180.0: Check for uncleaned imports
 dev-perl/Test-Command 0.80.0-r1 0.110.0: Test routines for external commands

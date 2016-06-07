@@ -4,11 +4,11 @@ DESCRIPTION=A simple Term::Cap based screen positioning module
 EAPI=6
 HOMEPAGE=http://search.cpan.org/dist/Term-Screen/
 IUSE=test examples
-KEYWORDS=amd64 ~x86
+KEYWORDS=amd64 x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/J/JS/JSTOWE/Term-Screen-1.05.tar.gz
 _eclass_exported_funcs=src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
 _eclasses_=multiprocessing	e32940a7b2a9992ad217eccddb84d548	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	c584f9e0fe426f3dcc2c46c6f7cb95ce
-_md5_=20da1a62e8fd3b5df4b7a1e3d9163088
+_md5_=9bb6b655581449607fa451f5bdd0a026
