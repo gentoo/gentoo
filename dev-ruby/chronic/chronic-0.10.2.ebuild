@@ -16,7 +16,7 @@ DESCRIPTION="Chronic is a natural language date/time parser written in pure Ruby
 HOMEPAGE="https://github.com/mojombo/chronic"
 LICENSE="MIT"
 
-KEYWORDS="~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~x86 ~x86-fbsd ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~x86 ~x86-fbsd ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 SLOT="0"
 IUSE=""
 
