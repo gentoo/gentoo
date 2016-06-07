@@ -1,3 +1,0 @@
-# Michael Palimaka <kensington@gentoo.org> (11 May 2016)
-# Not yet stable on x86. Bug #569924.
-qt5
