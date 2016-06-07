@@ -60,8 +60,13 @@ elif [[ ${CATEGORY}/${PN} == dev-lang/python && ${EBUILD_PHASE} == configure ]];
     eend $?
 elif [[ ${CATEGORY}/${PN} == dev-lang/perl && ${EBUILD_PHASE} == configure ]]; then
     ebegin "Prefixifying pwd path"
-    sed -i -r \
-	-e "s,'((|/usr)/bin/pwd),'${EPREFIX}\1," "${S}"/dist/PathTools/Cwd.pm
+    sed -r "s,'((|/usr)/bin/pwd),'${EPREFIX}\1," -i "${S}"/dist/PathTools/Cwd.pm
+    eend $?
+
+    # Configure checks for /system/lib/libandroid.so to override linux into linux-android,
+    # which is not desired for Gentoo
+    ebegin "Removing Android detection"
+    sed "/libandroid.so/d" -i "${S}"/Configure
     eend $?
 elif [[ ${CATEGORY}/${PN} == sys-devel/make && ${EBUILD_PHASE} == prepare ]]; then
     ebegin "Prefixifying default shell"
