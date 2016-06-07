@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -18,8 +18,9 @@ SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"
 IUSE="+examples test"
 
-RDEPEND=">=dev-haskell/binary-0.4:=[profile?] <dev-haskell/binary-0.8:=[profile?]
+RDEPEND=">=dev-haskell/binary-0.4:=[profile?]
 		dev-haskell/mtl:=[profile?]
+		dev-haskell/old-time:=[profile?]
 		dev-haskell/parallel:=[profile?]
 		dev-haskell/parsec:=[profile?]
 		>=dev-haskell/quickcheck-2:2=[profile?]
@@ -33,7 +34,7 @@ src_prepare() {
 	epatch "${FILESDIR}"/${P}-ghc-7.10.patch
 
 	cabal_chdeps \
-		'binary >=0.4 && <0.5' 'binary >=0.4 && <0.8'
+		'binary >=0.4 && <0.5' 'binary >=0.4'
 }
 
 src_configure() {

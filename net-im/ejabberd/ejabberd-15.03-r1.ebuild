@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -24,7 +24,7 @@ DEPEND=">=net-im/jabber-base-0.01
 	>=dev-lang/erlang-15.2[ssl]
 	odbc? ( dev-db/unixODBC )
 	ldap? ( =net-nds/openldap-2* )
-	>=dev-libs/openssl-0.9.8e
+	>=dev-libs/openssl-0.9.8e:=
 	captcha? ( media-gfx/imagemagick[truetype,png] )
 	zlib? ( >=sys-libs/zlib-1.2.3 )"
 RDEPEND="${DEPEND}
