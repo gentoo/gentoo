@@ -17,6 +17,7 @@ IUSE="qt5"
 
 DEPEND="
 	qt5? (
+		dev-qt/qtconcurrent:5
 		dev-qt/qtcore:5
 		dev-qt/qtgui:5
 		dev-qt/qtnetwork:5
@@ -33,7 +34,8 @@ DEPEND="
 		dev-qt/qtsql:4
 		dev-qt/qtsvg:4
 		dev-qt/qtxmlpatterns:4
-	)"
+	)
+"
 RDEPEND="${DEPEND}"
 
 DOCS=(AUTHORS NEWS README)
@@ -48,12 +50,11 @@ src_prepare() {
 
 src_configure() {
 	export \
-		QXMLEDIT_INST_DIR="/usr/bin" \
-		QXMLEDIT_INST_LIB_DIR="/usr/$(get_libdir)" \
-		QXMLEDIT_INST_INCLUDE_DIR="/usr/include/${PN}" \
-		QXMLEDIT_INST_DATA_DIR="/usr/share/${PN}" \
-		QXMLEDIT_INST_DOC_DIR="/usr/share/doc/${PF}" \
-		QXMLEDIT_INST_TRANSLATIONS_DIR="/usr/share/${PN}/translations"
+		QXMLEDIT_INST_DIR="${EPREFIX}/usr/bin" \
+		QXMLEDIT_INST_LIB_DIR="${EPREFIX}/usr/$(get_libdir)" \
+		QXMLEDIT_INST_INCLUDE_DIR="${EPREFIX}/usr/include/${PN}" \
+		QXMLEDIT_INST_DATA_DIR="${EPREFIX}/usr/share/${PN}" \
+		QXMLEDIT_INST_DOC_DIR="${EPREFIX}/usr/share/doc/${PF}"
 
 	if use qt5; then
 		eqmake5
@@ -64,6 +65,7 @@ src_configure() {
 
 src_install() {
 	emake INSTALL_ROOT="${D}" install
+
 	doicon install_scripts/environment/icon/qxmledit.png
 	domenu install_scripts/environment/desktop/QXmlEdit.desktop
 	einstalldocs
