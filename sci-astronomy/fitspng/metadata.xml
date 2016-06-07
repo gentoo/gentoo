@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+  <email>sci-astronomy@gentoo.org</email>
+  <name>Gentoo Astronomy Project</name>
+</maintainer>
+<longdescription lang="en">
+ Fitspng is an utility intended to convert of the natural high
+ dynamic range of FITS images, directly representing measured data,
+ to the limited numerical range of PNG format widely used
+ in computer graphics. Fitspng implements a global tone mapping
+ technique by a set of tone functions using parameters provided
+ by user or by machine estimate on base of a robust count statistics.
+ Moreover, the conversion keeps an important FITS meta-information
+ as a text part of PNG header.
+</longdescription>
+</pkgmetadata>
