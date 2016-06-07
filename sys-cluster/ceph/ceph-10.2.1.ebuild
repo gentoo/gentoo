@@ -111,7 +111,8 @@ UNBUNDLE_LIBS=(
 PATCHES=(
 	"${FILESDIR}/ceph-10.2.0-dont-use-virtualenvs.patch"
 	#"${FILESDIR}/ceph-10.2.1-unbundle-jerasure.patch"
-	"${FILESDIR}/ceph-10.2.1-armv7l-doesnt-support-momit-leaf-frame-pointer.patch"
+	"${FILESDIR}/${P}-libzfs.patch"
+	"${FILESDIR}/${P}-armv7l-doesnt-support-momit-leaf-frame-pointer.patch"
 )
 
 check-reqs_export_vars() {
