@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# Tobias Klausmann <klausman@gentoo.org> (07 Jun 2016)
+# the nvidia SDK needs nvidia-drivers and thus can never work on alpha
+media-video/ffmpeg nvenc
+
 # Justin Lecher <jlec@gentoo.org> (22 Feb 2016)
 # Missing test deps keyword #575366
 dev-cpp/eigen test
