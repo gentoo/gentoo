@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -13,7 +13,7 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Gucharmap"
 
 LICENSE="GPL-3"
 SLOT="2.90"
-KEYWORDS="~alpha amd64 arm ~ia64 ~ppc ppc64 ~sh ~sparc x86 ~x86-fbsd"
+KEYWORDS="alpha amd64 arm ~ia64 ~ppc ppc64 ~sh ~sparc x86 ~x86-fbsd"
 
 IUSE="cjk +introspection test vala"
 REQUIRED_USE="vala? ( introspection )"
