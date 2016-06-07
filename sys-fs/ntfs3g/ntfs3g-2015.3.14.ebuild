@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -14,7 +14,7 @@ SRC_URI="http://tuxera.com/opensource/${MY_P}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0/86"
-KEYWORDS="~alpha ~amd64 ~arm ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~arm-linux ~x86-linux"
+KEYWORDS="alpha ~amd64 ~arm ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~arm-linux ~x86-linux"
 IUSE="acl debug +external-fuse ntfsdecrypt +ntfsprogs static-libs suid xattr"
 
 RDEPEND="!<sys-apps/util-linux-2.20.1-r2
