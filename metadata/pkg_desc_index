@@ -16074,7 +16074,7 @@ sci-mathematics/mlpy 3.5.0: High-performance Python library for predictive model
 sci-mathematics/msieve 1.51 9999: A C library implementing a suite of algorithms to factor large integers
 sci-mathematics/nauty 2.5.9: Computing automorphism groups of graphs and digraphs
 sci-mathematics/nestedsums 1.4.12-r1: A GiNaC-based library for symbolic expansion of certain transcendental functions
-sci-mathematics/normaliz 2.12.2 3.1.0 3.1.1: Tool for computations in affine monoids and more
+sci-mathematics/normaliz 2.12.2 3.1.1: Tool for computations in affine monoids and more
 sci-mathematics/num-utils 0.3 0.5-r1: A set of programs for dealing with numbers from the command line
 sci-mathematics/nusmv 2.3.1 2.5.0 2.5.2 2.5.3 2.5.4: NuSMV: new symbolic model checker
 sci-mathematics/octave 3.6.4 3.6.4-r1 3.8.2 4.0.0 4.0.0-r1 4.0.1 4.0.1-r1 4.0.2-r1: High-level interactive language for numerical computations
