@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -59,7 +59,7 @@ CDEPEND="
 	)
 	sbc? ( media-libs/sbc )
 	smi? ( net-libs/libsmi )
-	ssl? ( net-libs/gnutls )
+	ssl? ( net-libs/gnutls:= )
 	zlib? ( sys-libs/zlib !=sys-libs/zlib-1.2.4 )
 "
 # We need perl for `pod2html`.  The rest of the perl stuff is to block older
