@@ -10,7 +10,7 @@ DESCRIPTION="An encoding detector library ported from Mozilla"
 HOMEPAGE="https://github.com/BYVoid/uchardet"
 SRC_URI="https://github.com/BYVoid/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="MPL-1.1"
+LICENSE="|| ( MPL-1.1 GPL-2+ LGPL-2.1+ )"
 SLOT="0"
 KEYWORDS="~alpha amd64 ~arm ~hppa ~ppc64 x86"
 IUSE="static-libs test"
