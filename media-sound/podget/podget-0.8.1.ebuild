@@ -20,12 +20,6 @@ RDEPEND="
 
 DOCS=( README Changelog )
 
-src_prepare() {
-	default_src_prepare
-	# See https://github.com/dvehrs/podget/issues/12
-	sed -i -e '/^VERSION=/s|$|.0|' podget || die
-}
-
 src_compile() {
 	# There is a Makefile that we don't want to use.
 	:;
