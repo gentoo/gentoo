@@ -2917,7 +2917,7 @@ dev-db/maxscale 1.2.0: A content aware, plug-able MySQL proxy server
 dev-db/metakit 2.4.9.7-r2: Embedded database library
 dev-db/mongodb 2.6.8 2.6.11 2.6.12 3.0.10 3.0.12 3.2.4 3.2.5: A high-performance, open source, schema-free document-oriented database
 dev-db/mtop 0.6.6-r3: Mysql top monitors a MySQL server
-dev-db/mycli 1.4.0 1.5.2 1.5.2-r1 1.6.0 9999: CLI for MySQL Database with auto-completion and syntax highlighting
+dev-db/mycli 1.4.0 1.5.2 1.5.2-r1 1.6.0 1.7.1 9999: CLI for MySQL Database with auto-completion and syntax highlighting
 dev-db/mydumper 0.6.2: A high-performance multi-threaded backup (and restore) toolset for MySQL and Drizzle
 dev-db/myodbc 5.2.7-r1 5.2.7-r2: ODBC driver for MySQL
 dev-db/mysql 5.5.47 5.5.48 5.5.49 5.6.28 5.6.29 5.6.30: A fast, multi-threaded, multi-user SQL database server
@@ -7967,7 +7967,7 @@ dev-python/python-slip 0.6.0 0.6.1: Miscellaneous convenience, extension and wor
 dev-python/python-social-auth 0.1.26 0.2.10: Easy to setup social auth mechanism with support for several frameworks and auth providers
 dev-python/python-socketio 0.7.0 0.9.1: Python implementation of the Socket.IO realtime server.
 dev-python/python-spidermonkey 0.0.10: JavaScript / Python bridge
-dev-python/python-sqlparse 0.1.10 0.1.13 0.1.14 0.1.15 0.1.16 0.1.18: A non-validating SQL parser module for Python
+dev-python/python-sqlparse 0.1.10 0.1.13 0.1.14 0.1.15 0.1.16 0.1.18 0.1.19: A non-validating SQL parser module for Python
 dev-python/python-stdnum 0.9 1.1 1.3: A module to handle standardized numbers and codes
 dev-python/python-swiftclient 2.0.3 2.1.0 2.2.0-r1 3.0.0: Python bindings to the OpenStack Object Storage API
 dev-python/python-systemd 230 231: Python module for native access to the systemd facilities
