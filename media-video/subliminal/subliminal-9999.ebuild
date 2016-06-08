@@ -47,7 +47,7 @@ DEPEND="${RDEPEND}
 	)
 "
 
-# Tests require network and severely broken too.
+# Tests require network.
 RESTRICT=test
 
 python_prepare_all() {
