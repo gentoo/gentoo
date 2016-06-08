@@ -19,6 +19,9 @@
       Only build the tcmalloc_minimal library, ignoring the heap
       checker and the profilers.
     </flag>
+	<flag name="optimisememory">
+	  To build libtcmalloc with smaller internal caches.
+	</flag>
   </use>
   <upstream>
     <remote-id type="github">gperftools/gperftools</remote-id>
