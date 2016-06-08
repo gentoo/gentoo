@@ -2209,7 +2209,7 @@ app-text/build-docbook-catalog 1.19.1 1.20 1.21: DocBook XML catalog auto-update
 app-text/c2ps 4.0: Generates a beautified ps document from a source file (c/c++)
 app-text/calibre 1.20 2.35.0-r2 2.47.0 2.55.0: Ebook management application
 app-text/catdoc 0.94.4 0.94.4-r1: Converter for Microsoft Word, Excel, PowerPoint and RTF files to text
-app-text/cb2bib 1.4.9 1.5.0: Tool for extracting unformatted bibliographic references
+app-text/cb2bib 1.5.0: Tool for extracting unformatted bibliographic references
 app-text/cedilla 0.6: UTF-8 to postscript converter
 app-text/chasen 2.4.4-r3: Japanese Morphological Analysis System, ChaSen
 app-text/cherrytree 0.36.9-r1: A hierarchical note taking application
@@ -14759,7 +14759,7 @@ net-misc/ndppd 0.2.3: Proxies NDP messages between interfaces
 net-misc/nemesis 1.4 1.4-r1: A commandline-based, portable human IP stack for UNIX/Linux
 net-misc/netctl 1.9 1.10 1.11 9999: Profile based network connection tool from Arch Linux
 net-misc/netdate 1.2: A Utility to synchronize the time with ntp-servers
-net-misc/netfleet 0.2.1 0.2.1-r2: Qt4 cross-platform multi-threaded download utility
+net-misc/netfleet 0.2.1-r2: Qt4 cross-platform multi-threaded download utility
 net-misc/netifrc 0.2.2 0.2.3 0.2.4 0.3.0 0.3.1 9999: Gentoo Network Interface Management Scripts
 net-misc/netkit-bootparamd 0.17-r2 0.17-r3: Netkit - bootparamd
 net-misc/netkit-bootpd 2.4-r1: Netkit - bootp
@@ -15704,7 +15704,7 @@ sci-electronics/petrify 4.2-r1: Synthesize Petri nets into asynchronous circuits
 sci-electronics/plcedit 2.2.1: Qt4 notepad for PLC programming
 sci-electronics/puff 20100127: microwave CAD software
 sci-electronics/pulseview 0.2.0-r1 9999: Qt based logic analyzer GUI for sigrok
-sci-electronics/qelectrotech 0.30 0.50 9999: Qt5 application to design electric diagrams
+sci-electronics/qelectrotech 0.50 9999: Qt5 application to design electric diagrams
 sci-electronics/quartus-prime-lite 15.1.0.185 15.1.0.185-r1: Full-featured EDA product for altera devices
 sci-electronics/qucs 0.0.17.130503: Quite Universal Circuit Simulator in Qt4
 sci-electronics/sigrok-cli 0.5.0 9999: Command-line client for the sigrok logic analyzer software
