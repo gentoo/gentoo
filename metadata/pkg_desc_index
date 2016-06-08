@@ -13328,7 +13328,7 @@ media-sound/qpitch 1.0.1-r1: A program to tune musical instruments using Qt4
 media-sound/qsampler 0.2.2_p2345 0.3.1: A graphical frontend to the LinuxSampler engine
 media-sound/qsynth 0.3.6 0.3.9 0.4.0 0.4.1: A Qt application to control FluidSynth
 media-sound/qtagconvert 2.0.0-r2: Qt4 tag editor for mp3 files
-media-sound/qtagger 1.0.1 1.0.1-r2: Simple Qt4 ID3v2 tag editor
+media-sound/qtagger 1.0.1-r2: Simple Qt4 ID3v2 tag editor
 media-sound/qtgain 0.9.5: A simple frontend to mp3gain, vorbisgain and metaflac
 media-sound/qtmpc 0.6.1: Qt MPD client with a tree view music library interface
 media-sound/qtractor 0.7.4 0.7.5 0.7.6 0.7.7: Qtractor is an Audio/MIDI multi-track sequencer
@@ -18381,7 +18381,7 @@ x11-misc/rodent 4.9.2 5.3.16.3: A fast, small and powerful file manager and grap
 x11-misc/rofi 1.0.1: A window switcher, run dialog and dmenu replacement
 x11-misc/rss-glx 0.9.1: Really Slick OpenGL Screensavers for XScreenSaver
 x11-misc/screen-message 0.23: Display a multi-line message large, fullscreen, black on white
-x11-misc/screengrab 1.0 1.2.1-r1: Qt application for getting screenshots
+x11-misc/screengrab 1.2.1-r1: Qt application for getting screenshots
 x11-misc/sddm 0.13.0-r3 0.13.0-r4: Simple Desktop Display Manager
 x11-misc/seetxt 0.72-r1: Clever, lightweight GUI text file and manual page viewer for X windows
 x11-misc/sent 0.2 9999: Simple plaintext presentation tool
