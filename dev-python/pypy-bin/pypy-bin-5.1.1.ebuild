@@ -180,7 +180,7 @@ src_install() {
 #    "gdbm": "_gdbm_build.py"  if sys.platform != "win32" else None,
 #    "pwdgrp": "_pwdgrp_build.py" if sys.platform != "win32" else None,
 #    "resource": "_resource_build.py" if sys.platform != "win32" else None,
-	cffi_targets=( audioop curses syslog gdbm pwdgrp resource )
+	cffi_targets=( audioop curses syslog pwdgrp resource )
 	use gdbm && cffi_targets+=( gdbm )
 	use sqlite && cffi_targets+=( sqlite3 )
 	use tk && cffi_targets+=( tkinter/tklib )
