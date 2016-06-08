@@ -18,8 +18,7 @@ KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86
 IUSE=""
 
 RDEPEND="virtual/man"
-DEPEND="${RDEPEND}
-	app-text/po4a"
+DEPEND="app-text/po4a"
 
 S=${WORKDIR}/${MY_P}
 

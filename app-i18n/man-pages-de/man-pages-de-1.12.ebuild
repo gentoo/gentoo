@@ -14,12 +14,11 @@ SRC_URI="http://manpages-de.alioth.debian.org/downloads/${MY_P}.tar.xz"
 
 LICENSE="GPL-3+ man-pages GPL-2+ GPL-2 BSD"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
+KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86"
 IUSE=""
 
 RDEPEND="virtual/man"
-DEPEND="${RDEPEND}
-	app-text/po4a"
+DEPEND="app-text/po4a"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-1.3-bzip2.patch"
