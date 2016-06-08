@@ -13305,7 +13305,7 @@ media-sound/pms 0.42 0.42-r1 9999: Practical Music Search: an open source ncurse
 media-sound/pnmixer 0.6_pre20111213 0.6 9999: Volume mixer for the system tray
 media-sound/poc 0.4.1: mp3 and ogg streamer (include mp3cue and mp3cut)
 media-sound/podcatcher 3.1.6: Podcast client for the command-line written in Ruby
-media-sound/podget 0.7.14 0.8: A simple podcast aggregator optimized for running as a scheduled job
+media-sound/podget 0.7.14 0.8.1: A simple podcast aggregator optimized for running as a scheduled job
 media-sound/podracer 1.4: A simple podcast aggregator, designed for cron
 media-sound/positron 1.1: Synchronization manager for the Neuros Audio Computer (www.neurosaudio.com) portable music player
 media-sound/potamus 0.12 14 16: a lightweight audio player with a simple interface and an emphasis on high audio quality
