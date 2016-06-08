@@ -18,8 +18,7 @@ KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86
 IUSE=""
 
 RDEPEND="virtual/man"
-DEPEND="${RDEPEND}
-	app-text/po4a"
+DEPEND="app-text/po4a"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-1.3-bzip2.patch"
