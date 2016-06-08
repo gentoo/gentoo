@@ -223,6 +223,27 @@ multilib_src_configure() {
 		sed -i -e '/SUBDIRS/s:src::' Makefile || die
 		sed -i -e '/SUBDIRS/s:scripts::' Makefile || die
 	fi
+
+	# Fix up the pkg-config file to be more robust.
+	# https://github.com/curl/curl/issues/864
+	local priv=() libs=()
+	# We always enable zlib.
+	libs+=( "-lz" )
+	priv+=( "zlib" )
+	if use http2; then
+		libs+=( "-lnghttp2" )
+		priv+=( "libnghttp2" )
+	fi
+	if use curl_ssl_openssl; then
+		libs+=( "-lssl" "-lcrypto" )
+		priv+=( "openssl" )
+	fi
+	grep -q Requires.private libcurl.pc && die "need to update ebuild"
+	libs=$(printf '|%s' "${libs[@]}")
+	sed -i -r \
+		-e "/^Libs.private/s:(${libs#|})( |$)::g" \
+		libcurl.pc || die
+	echo "Requires.private: ${priv[*]}" >> libcurl.pc
 }
 
 multilib_src_install_all() {
