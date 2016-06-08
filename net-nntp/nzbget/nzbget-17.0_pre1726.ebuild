@@ -1,43 +1,47 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-inherit autotools eutils user
+inherit eutils flag-o-matic user
 
-MY_P=${P/_pre/-testing-r}
+MY_PV=${PV/_pre/-r}
+MY_P=${PN}-${PV/_pre/-testing-r}
 
 DESCRIPTION="A command-line based binary newsgrabber supporting .nzb files"
-HOMEPAGE="http://nzbget.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.gz"
+HOMEPAGE="http://nzbget.net/"
+SRC_URI="https://github.com/${PN}/${PN}/releases/download/v${MY_PV}/${MY_P}-src.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
-IUSE="debug gnutls ncurses parcheck ssl zlib"
+KEYWORDS="~amd64 ~arm ~ppc ~x86"
+IUSE="debug gnutls ncurses parcheck ssl test zlib"
 
 RDEPEND="dev-libs/libxml2
-	ncurses? ( sys-libs/ncurses )
-	parcheck? (
-		app-arch/libpar2
-		dev-libs/libsigc++:2
-	)
+	ncurses? ( sys-libs/ncurses:0 )
 	ssl? (
 		gnutls? ( net-libs/gnutls )
-		!gnutls? ( dev-libs/openssl )
+		!gnutls? ( dev-libs/openssl:0= )
 	)
 	zlib? ( sys-libs/zlib )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
+DOCS=( ChangeLog README nzbget.conf )
 
-DOCS=( AUTHORS ChangeLog README nzbget.conf )
+S=${WORKDIR}/${PN}-${PV/_pre*/-testing}
 
-S=${WORKDIR}/${P/_pre*/-testing}
+pkg_pretend() {
+	if [[ ${MERGE_TYPE} != binary ]] && ! test-flag-CXX -std=c++14; then
+		eerror "${P} requires a C++14-capable compiler. Your current compiler"
+		eerror "does not seem to support the -std=c++14 option. Please"
+		eerror "upgrade to gcc-4.9 or an equivalent version supporting C++14."
+		die "The currently active compiler does not support -std=c++14"
+	fi
+}
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-14.0_pre1145-tinfo.patch
-
+	default
 	sed -i 's:^ScriptDir=.*:ScriptDir=/usr/share/nzbget/ppscripts:' nzbget.conf || die
 
 	sed \
@@ -47,11 +51,7 @@ src_prepare() {
 		-e 's:^WebDir=.*:WebDir=/usr/share/nzbget/webui:' \
 		-e 's:^ConfigTemplate=.*:ConfigTemplate=/usr/share/nzbget/nzbget.conf:' \
 		-e 's:^DaemonUsername=.*:DaemonUsername=nzbget:' \
-		"${S}"/nzbget.conf > "${S}"/nzbgetd.conf || die
-
-	sed -i "/^dist_doc_DATA/d" Makefile.am || die
-
-	eautoreconf
+		nzbget.conf > nzbgetd.conf || die
 }
 
 src_configure() {
@@ -61,7 +61,12 @@ src_configure() {
 		$(use_enable parcheck) \
 		$(use_enable ssl tls) \
 		$(use_enable zlib gzip) \
+		$(use_enable test tests) \
 		--with-tlslib=$(usex gnutls GnuTLS OpenSSL)
+}
+
+src_test() {
+	./nzbget --tests || die "Tests failed"
 }
 
 src_install() {
