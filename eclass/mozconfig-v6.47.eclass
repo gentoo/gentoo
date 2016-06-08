@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 #
-# @ECLASS: mozconfig-v6.44.eclass
+# @ECLASS: mozconfig-v6.46.eclass
 # @MAINTAINER:
 # mozilla team <mozilla@gentoo.org>
 # @BLURB: the new mozilla common configuration eclass for FF33 and newer, v6
@@ -18,11 +18,16 @@
 # This eclass inherits mozconfig helper functions as defined in mozcoreconf-v3,
 # and so ebuilds inheriting this eclass do not need to inherit that.
 
-inherit multilib flag-o-matic toolchain-funcs mozcoreconf-v3
-
 case ${EAPI} in
-	0|1|2|3|4) die "EAPI=${EAPI} not supported"
+	0|1|2|3|4)
+		die "EAPI=${EAPI} not supported"
+		;;
+	5)
+		inherit multilib
+		;;
 esac
+
+inherit flag-o-matic toolchain-funcs mozcoreconf-v4
 
 # @ECLASS-VARIABLE: MOZCONFIG_OPTIONAL_WIFI
 # @DESCRIPTION:
@@ -54,6 +59,19 @@ esac
 # Set the variable to "enabled" if the use flag should be enabled by default.
 # Set the variable to any value if the use flag should exist but not be default-enabled.
 
+# @ECLASS-VARIABLE: MOZCONFIG_OPTIONAL_GTK2ONLY
+# @DESCRIPTION:
+# Set this variable before the inherit line, when an ebuild can provide
+# optional gtk2-only support via IUSE="gtk2".
+#
+# Note that this option conflicts directly with MOZCONFIG_OPTIONAL_GTK3, both
+# variables cannot be set at the same time and this variable will be ignored if
+# MOZCONFIG_OPTIONAL_GTK3 is set.
+#
+# Leave the variable UNSET if gtk2-only support should not be available.
+# Set the variable to "enabled" if the use flag should be enabled by default.
+# Set the variable to any value if the use flag should exist but not be default-enabled.
+
 # @ECLASS-VARIABLE: MOZCONFIG_OPTIONAL_QT5
 # @DESCRIPTION:
 # Set this variable before the inherit line, when an ebuild can provide
@@ -65,8 +83,8 @@ esac
 # Set the variable to any value if the use flag should exist but not be default-enabled.
 
 # use-flags common among all mozilla ebuilds
-IUSE="${IUSE} dbus debug ffmpeg +gstreamer gstreamer-0 +jemalloc3 neon pulseaudio selinux startup-notification system-cairo
-	system-icu system-jpeg system-libevent system-sqlite system-libvpx"
+IUSE="${IUSE} dbus debug +jemalloc3 neon pulseaudio selinux startup-notification system-cairo
+	system-harfbuzz system-icu system-jpeg system-libevent system-sqlite system-libvpx"
 
 # some notes on deps:
 # gtk:2 minimum is technically 2.10 but gio support (enabled by default) needs 2.14
@@ -75,12 +93,11 @@ IUSE="${IUSE} dbus debug ffmpeg +gstreamer gstreamer-0 +jemalloc3 neon pulseaudi
 RDEPEND=">=app-text/hunspell-1.2
 	dev-libs/atk
 	dev-libs/expat
-	>=dev-libs/libevent-1.4.7
 	>=x11-libs/cairo-1.10[X]
 	>=x11-libs/gtk+-2.18:2
 	x11-libs/gdk-pixbuf
 	>=x11-libs/pango-1.22.0
-	>=media-libs/libpng-1.6.17:0=[apng]
+	>=media-libs/libpng-1.6.21:0=[apng]
 	>=media-libs/mesa-10.2:*
 	media-libs/fontconfig
 	>=media-libs/freetype-2.4.10
@@ -93,17 +110,7 @@ RDEPEND=">=app-text/hunspell-1.2
 	>=dev-libs/glib-2.26:2
 	>=sys-libs/zlib-1.2.3
 	>=virtual/libffi-3.0.10
-	ffmpeg? ( virtual/ffmpeg )
-	gstreamer? (
-		>=media-libs/gstreamer-1.4.5:1.0
-		>=media-libs/gst-plugins-base-1.4.5:1.0
-		>=media-libs/gst-plugins-good-1.4.5:1.0
-		>=media-plugins/gst-plugins-libav-1.4.5:1.0
-	)
-	gstreamer-0? (
-		>=media-libs/gstreamer-0.10.25:0.10
-		media-plugins/gst-plugins-meta:0.10[ffmpeg]
-	)
+	virtual/ffmpeg
 	x11-libs/libX11
 	x11-libs/libXcomposite
 	x11-libs/libXdamage
@@ -114,12 +121,14 @@ RDEPEND=">=app-text/hunspell-1.2
 	system-cairo? ( >=x11-libs/cairo-1.12[X,xcb] >=x11-libs/pixman-0.19.2 )
 	system-icu? ( >=dev-libs/icu-51.1:= )
 	system-jpeg? ( >=media-libs/libjpeg-turbo-1.2.1 )
-	system-libevent? ( =dev-libs/libevent-2.0* )
-	system-sqlite? ( >=dev-db/sqlite-3.9.1:3[secure-delete,debug=] )
-	system-libvpx? ( >=media-libs/libvpx-1.3.0:0=[postproc] )
+	system-libevent? ( =dev-libs/libevent-2.0*:0= )
+	system-sqlite? ( >=dev-db/sqlite-3.11.0:3[secure-delete,debug=] )
+	system-libvpx? ( >=media-libs/libvpx-1.5.0:0=[postproc] )
+	system-harfbuzz? ( >=media-libs/harfbuzz-1.2.2:0=[graphite,icu] >=media-gfx/graphite2-1.3.8 )
 "
 
 if [[ -n ${MOZCONFIG_OPTIONAL_GTK3} ]]; then
+	MOZCONFIG_OPTIONAL_GTK2ONLY=
 	if [[ ${MOZCONFIG_OPTIONAL_GTK3} = "enabled" ]]; then
 		IUSE+=" +gtk3"
 	else
@@ -127,6 +136,14 @@ if [[ -n ${MOZCONFIG_OPTIONAL_GTK3} ]]; then
 	fi
 	RDEPEND+="
 	gtk3? ( >=x11-libs/gtk+-3.4.0:3 )"
+elif [[ -n ${MOZCONFIG_OPTIONAL_GTK2ONLY} ]]; then
+	if [[ ${MOZCONFIG_OPTIONAL_GTK2ONLY} = "enabled" ]]; then
+		IUSE+=" +gtk2"
+	else
+		IUSE+=" gtk2"
+	fi
+	RDEPEND+="
+	!gtk2? ( >=x11-libs/gtk+-3.4.0:3 )"
 fi
 if [[ -n ${MOZCONFIG_OPTIONAL_QT5} ]]; then
 	inherit qmake-utils
@@ -175,12 +192,17 @@ DEPEND="app-arch/zip
 RDEPEND+="
 	selinux? ( sec-policy/selinux-mozilla )"
 
-# only one of gstreamer and gstreamer-0 can be enabled at a time, so set REQUIRED_USE to signify this
-REQUIRED_USE="?? ( gstreamer gstreamer-0 )"
+# force system-icu if system-harfbuzz is selected, to avoid potential ABI issues
+REQUIRED_USE="
+	system-harfbuzz? ( system-icu )"
 
 # only one of gtk3 or qt5 should be permitted to be selected, since only one will be used.
 [[ -n ${MOZCONFIG_OPTIONAL_GTK3} ]] && [[ -n ${MOZCONFIG_OPTIONAL_QT5} ]] && \
 	REQUIRED_USE+=" ?? ( gtk3 qt5 )"
+
+# only one of gtk2 or qt5 should be permitted to be selected, since only one will be used.
+[[ -n ${MOZCONFIG_OPTIONAL_GTK2ONLY} ]] && [[ -n ${MOZCONFIG_OPTIONAL_QT5} ]] && \
+	REQUIRED_USE+=" ?? ( gtk2 qt5 )"
 
 # @FUNCTION: mozconfig_config
 # @DESCRIPTION:
@@ -189,7 +211,7 @@ REQUIRED_USE="?? ( gstreamer gstreamer-0 )"
 #
 # Example:
 #
-# inherit mozconfig-v5.33
+# inherit mozconfig-v6.46
 #
 # src_configure() {
 # 	mozconfig_init
@@ -248,11 +270,11 @@ mozconfig_config() {
 	fi
 
 	# These are enabled by default in all mozilla applications
-	mozconfig_annotate '' --with-system-nspr --with-nspr-prefix="${EPREFIX}"/usr
-	mozconfig_annotate '' --with-system-nss --with-nss-prefix="${EPREFIX}"/usr
-	mozconfig_annotate '' --x-includes="${EPREFIX}"/usr/include --x-libraries="${EPREFIX}"/usr/$(get_libdir)
+	mozconfig_annotate '' --with-system-nspr --with-nspr-prefix="${SYSROOT}${EPREFIX}"/usr
+	mozconfig_annotate '' --with-system-nss --with-nss-prefix="${SYSROOT}${EPREFIX}"/usr
+	mozconfig_annotate '' --x-includes="${SYSROOT}${EPREFIX}"/usr/include --x-libraries="${SYSROOT}${EPREFIX}"/usr/$(get_libdir)
 	if use system-libevent; then
-		mozconfig_annotate '' --with-system-libevent="${EPREFIX}"/usr
+		mozconfig_annotate '' --with-system-libevent="${SYSROOT}${EPREFIX}"/usr
 	fi
 	mozconfig_annotate '' --prefix="${EPREFIX}"/usr
 	mozconfig_annotate '' --libdir="${EPREFIX}"/usr/$(get_libdir)
@@ -274,6 +296,13 @@ mozconfig_config() {
 		if use gtk3; then
 			toolkit="cairo-gtk3"
 			toolkit_comment="gtk3 use flag"
+		fi
+	fi
+	if [[ -n ${MOZCONFIG_OPTIONAL_GTK2ONLY} ]]; then
+		if ! use gtk2 ; then
+			toolkit="cairo-gtk3"
+		else
+			toolkit_comment="gtk2 use flag"
 		fi
 	fi
 	if [[ -n ${MOZCONFIG_OPTIONAL_QT5} ]]; then
@@ -302,19 +331,15 @@ mozconfig_config() {
 		mozconfig_annotate '' --enable-replace-malloc
 	fi
 
-	mozconfig_annotate '' --target="${CTARGET:-${CHOST}}"
-	mozconfig_annotate '' --build="${CTARGET:-${CHOST}}"
-
-	use ffmpeg || mozconfig_annotate '-ffmpeg' --disable-ffmpeg
-	if use gstreamer ; then
-		use ffmpeg && einfo "${PN} will not use ffmpeg unless gstreamer:1.0 is not available at runtime"
-		mozconfig_annotate '+gstreamer' --enable-gstreamer=1.0
-	elif use gstreamer-0 ; then
-		use ffmpeg && einfo "${PN} will not use ffmpeg unless gstreamer:0.10 is not available at runtime"
-		mozconfig_annotate '+gstreamer-0' --enable-gstreamer=0.10
-	else
-		mozconfig_annotate '' --disable-gstreamer
+	# Instead of the standard --build= and --host=, mozilla uses --host instead
+	# of --build, and --target intstead of --host.
+	# Note, mozilla also has --build but it does not do what you think it does.
+	mozconfig_annotate '' --target="${CHOST}"
+	if [[ "${CBUILD:-${CHOST}}" != "${CHOST}" ]]; then
+		# set --host only when cross-compiling
+		mozconfig_annotate '' --host="${CBUILD:-${CHOST}}"
 	fi
+
 	mozconfig_use_enable pulseaudio
 
 	mozconfig_use_enable system-cairo
@@ -322,6 +347,8 @@ mozconfig_config() {
 	mozconfig_use_with system-jpeg
 	mozconfig_use_with system-icu
 	mozconfig_use_with system-libvpx
+	mozconfig_use_with system-harfbuzz
+	mozconfig_use_with system-harfbuzz system-graphite2
 
 	# Modifications to better support ARM, bug 553364
 	if use neon ; then
@@ -337,5 +364,46 @@ mozconfig_config() {
 			sed -i -e "s|softfp|hard|" \
 				"${S}"/media/libvpx/moz.build
 		fi
+	fi
+}
+
+# @FUNCTION: mozconfig_install_prefs
+# @DESCRIPTION:
+# Set preferences into the prefs.js file specified as a parameter to
+# the function.  This sets both some common prefs to all mozilla
+# packages, and any prefs that may relate to the use flags administered
+# by mozconfig_config().
+#
+# Call this within src_install() phase, after copying the template
+# prefs file (if any) from ${FILESDIR}
+#
+# Example:
+#
+# inherit mozconfig-v6.46
+#
+# src_install() {
+# 	cp "${FILESDIR}"/gentoo-default-prefs.js \
+#	"${BUILD_OBJ_DIR}/dist/bin/browser/defaults/preferences/all-gentoo.js"  \
+#	|| die
+#
+# 	mozconfig_install_prefs \
+#	"${BUILD_OBJ_DIR}/dist/bin/browser/defaults/preferences/all-gentoo.js"
+#
+#	...
+# }
+
+mozconfig_install_prefs() {
+	local prefs_file="${1}"
+
+	einfo "Adding prefs from mozconfig to ${prefs_file}"
+
+	# set dictionary path, to use system hunspell
+	echo "pref(\"spellchecker.dictionary_path\", \"${EPREFIX}/usr/share/myspell\");" \
+		>>"${prefs_file}" || die
+
+	# force the graphite pref if system-harfbuzz is enabled, since the pref cant disable it
+	if use system-harfbuzz ; then
+		echo "sticky_pref(\"gfx.font_rendering.graphite.enabled\",true);" \
+			>>"${prefs_file}" || die
 	fi
 }

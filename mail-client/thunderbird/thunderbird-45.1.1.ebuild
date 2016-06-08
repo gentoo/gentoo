@@ -175,7 +175,6 @@ src_prepare() {
 }
 
 src_configure() {
-	declare MOZILLA_FIVE_HOME="/usr/$(get_libdir)/${PN}"
 	MEXTENSIONS="default"
 
 	####################################
@@ -186,9 +185,6 @@ src_configure() {
 
 	mozconfig_init
 	mozconfig_config
-
-	# We want rpath support to prevent unneeded hacks on different libc variants
-	append-ldflags -Wl,-rpath="${MOZILLA_FIVE_HOME}"
 
 	# It doesn't compile on alpha without this LDFLAGS
 	use alpha && append-ldflags "-Wl,--no-relax"
@@ -201,7 +197,6 @@ src_configure() {
 	mozconfig_annotate '' --enable-calendar
 
 	# Other tb-specific settings
-	mozconfig_annotate '' --with-default-mozilla-five-home=${MOZILLA_FIVE_HOME}
 	mozconfig_annotate '' --with-user-appdir=.thunderbird
 
 	mozconfig_use_enable ldap
@@ -257,8 +252,6 @@ src_compile() {
 }
 
 src_install() {
-	declare MOZILLA_FIVE_HOME="/usr/$(get_libdir)/${PN}"
-
 	declare emid
 	cd "${BUILD_OBJ_DIR}" || die
 
@@ -273,7 +266,7 @@ src_install() {
 	# dev-db/sqlite does not have FTS3_TOKENIZER support.
 	# gloda needs it to function, and bad crashes happen when its enabled and doesn't work
 	if in_iuse system-sqlite && use system-sqlite ; then
-		echo "pref(\"mailnews.database.global.indexer.enabled\", false);" \
+		echo "lockPref(\"mailnews.database.global.indexer.enabled\", false);" \
 			>>"${BUILD_OBJ_DIR}/dist/bin/defaults/pref/all-gentoo.js" || die
 	fi
 

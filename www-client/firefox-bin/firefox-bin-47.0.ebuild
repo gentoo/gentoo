@@ -3,35 +3,28 @@
 # $Id$
 
 EAPI="5"
-MOZ_ESR=1
 
 # Can be updated using scripts/get_langs.sh from mozilla overlay
-# Not officially supported as of yet
-# csb
-MOZ_LANGS=(af ar as ast be bg bn-BD bn-IN br bs ca cs cy da de el en
-en-GB en-US en-ZA eo es-AR es-CL es-ES es-MX et eu fa fi fr fy-NL ga-IE gd gl
-gu-IN he hi-IN hr hu hy-AM id is it ja kk kn ko lt lv mai mk ml mr nb-NO
-nl nn-NO or pa-IN pl pt-BR pt-PT rm ro ru si sk sl son sq sr sv-SE ta
-te tr uk vi zh-CN zh-TW)
+MOZ_LANGS=( ach af an ar as ast az be bg bn-BD bn-IN br bs ca cs cy da de
+el en en-GB en-US en-ZA eo es-AR es-CL es-ES es-MX et eu fa fi fr fy-NL
+ga-IE gd gl gu-IN he hi-IN hr hsb hu hy-AM id is it ja kk km kn ko lt
+lv mai mk ml mr ms nb-NO nl nn-NO or pa-IN pl pt-BR pt-PT rm ro ru si sk sl
+son sq sr sv-SE ta te th tr uk uz vi xh zh-CN zh-TW )
 
 # Convert the ebuild version to the upstream mozilla version, used by mozlinguas
 MOZ_PV="${PV/_beta/b}" # Handle beta for SRC_URI
 MOZ_PV="${MOZ_PV/_rc/rc}" # Handle rc for SRC_URI
 MOZ_PN="${PN/-bin}"
-if [[ ${MOZ_ESR} == 1 ]]; then
-	# ESR releases have slightly version numbers
-	MOZ_PV="${MOZ_PV}esr"
-fi
 MOZ_P="${MOZ_PN}-${MOZ_PV}"
 
-MOZ_HTTP_URI="http://archive.mozilla.org/pub/mozilla.org/${MOZ_PN}/releases"
+MOZ_HTTP_URI="http://archive.mozilla.org/pub/mozilla.org/${MOZ_PN}/releases/"
 
 inherit eutils multilib pax-utils fdo-mime gnome2-utils mozlinguas nsplugins
 
 DESCRIPTION="Firefox Web Browser"
 SRC_URI="${SRC_URI}
-	amd64? ( ${MOZ_HTTP_URI}/${MOZ_PV}/linux-x86_64/en-US/${MOZ_P}.tar.bz2 -> ${PN}_x86_64-${PV}.tar.bz2 )
-	x86? ( ${MOZ_HTTP_URI}/${MOZ_PV}/linux-i686/en-US/${MOZ_P}.tar.bz2 -> ${PN}_i686-${PV}.tar.bz2 )"
+	amd64? ( ${MOZ_HTTP_URI%/}/${MOZ_PV}/linux-x86_64/en-US/${MOZ_P}.tar.bz2 -> ${PN}_x86_64-${PV}.tar.bz2 )
+	x86? ( ${MOZ_HTTP_URI%/}/${MOZ_PV}/linux-i686/en-US/${MOZ_P}.tar.bz2 -> ${PN}_i686-${PV}.tar.bz2 )"
 HOMEPAGE="http://www.mozilla.com/firefox"
 RESTRICT="strip mirror"
 
@@ -51,6 +44,7 @@ RDEPEND="dev-libs/atk
 	>=x11-libs/cairo-1.10[X]
 	x11-libs/gdk-pixbuf
 	>=x11-libs/gtk+-2.18:2
+	>=x11-libs/gtk+-3.4.0:3
 	x11-libs/libX11
 	x11-libs/libXcomposite
 	x11-libs/libXdamage
@@ -168,8 +162,7 @@ pkg_postinst() {
 		einfo "gnome-base/orbit and net-misc/curl emerged."
 		einfo
 	fi
-	einfo "For HTML5 video you need media-video/ffmpeg installed.  Please note"
-	einfo "that gstreamer:0.10 will also be used, if available."
+	einfo "For HTML5 video you need media-video/ffmpeg installed."
 
 	# Drop requirement of curl not built with nss as it's not necessary anymore
 	#if has_version 'net-misc/curl[nss]'; then
