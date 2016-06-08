@@ -4,13 +4,11 @@
 
 EAPI=6
 
-# Qt 5.5 compat fixed in master
-QT_MINIMAL="5.6"
 inherit kde5
 
 DESCRIPTION="Media player with digital TV support by KDE"
 HOMEPAGE="https://kaffeine.kde.org/"
-SRC_URI="mirror://kde/stable/${PN}/${PV}/src/${P}.tar.bz2"
+SRC_URI="mirror://kde/stable/${PN}/${PV}/src/${P}.tar.xz"
 
 LICENSE="GPL-2 FDL-1.2"
 KEYWORDS="~amd64 ~x86"
@@ -48,9 +46,7 @@ RDEPEND="${CDEPEND}
 
 DOCS=( Changelog NOTES README )
 
-if [[ ${KDE_BUILD_TYPE} != live ]] ; then
-	S="${WORKDIR}"
-fi
+PATCHES=( "${FILESDIR}/${P}-bogus-dependency.patch" )
 
 src_configure() {
 	# tools working on $HOME directory for a local git checkout
