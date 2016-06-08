@@ -1,0 +1,9 @@
+# Copyright 1999-2016 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+# Davide Pesavento <pesa@gentoo.org> (08 Jun 2016)
+# The corresponding Qt5 modules are not stable on arm, and we don't
+# want to stabilize them solely because of PyQt5 while there are no
+# other in-tree users.
+dev-python/PyQt5 serialport websockets
