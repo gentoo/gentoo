@@ -21,7 +21,7 @@ SRC_URI="
 
 LICENSE="GPL-2 LGPL-2.1 FDL-1.2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 arm ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="doc static-libs"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
