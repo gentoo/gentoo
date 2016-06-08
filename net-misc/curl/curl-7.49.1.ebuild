@@ -230,8 +230,4 @@ multilib_src_install_all() {
 	prune_libtool_files --all
 
 	rm -rf "${ED}"/etc/
-
-	# https://sourceforge.net/tracker/index.php?func=detail&aid=1705197&group_id=976&atid=350976
-	insinto /usr/share/aclocal
-	doins docs/libcurl/libcurl.m4
 }
