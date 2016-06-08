@@ -11769,7 +11769,7 @@ mail-client/pinepgp 0.18.0-r1: Use GPG/PGP with Pine
 mail-client/roundcube 1.1.4 1.2_beta 1.2.0: A browser-based multilingual IMAP client with an application-like user interface
 mail-client/squirrelmail 1.4.23_pre20140426: Webmail for nuts!
 mail-client/sylpheed 3.4.2 3.4.3 3.4.3-r1 3.5.0: A lightweight email client and newsreader
-mail-client/thunderbird 24.8.0 31.8.0 38.7.0 38.8.0 45.1.0: Thunderbird Mail Client
+mail-client/thunderbird 24.8.0 31.8.0 38.7.0 38.8.0 45.1.1: Thunderbird Mail Client
 mail-client/thunderbird-bin 31.8.0 38.8.0 45.1.0: Thunderbird Mail Client
 mail-client/trojita 0.4.1 0.5 0.6 9999: A Qt IMAP e-mail client
 mail-filter/MailScanner 4.84.5.2: Free Anti-Virus and Anti-Spam Filter
@@ -16963,7 +16963,7 @@ sys-cluster/rgmanager-agents 3.9.2: Resource Manager Agents
 sys-cluster/slurm 2.6.3: SLURM: A Highly Scalable Resource Manager
 sys-cluster/swift 2.5.0-r2 2.7.0: A highly available, distributed, and eventually consistent object/blob store
 sys-cluster/sx 2.0 2.1: Skylable SX - a distributed object-storage software for data clusters
-sys-cluster/torque 2.5.13-r1 4.1.7-r1 4.2.9-r5: Resource manager and queuing system based on OpenPBS
+sys-cluster/torque 2.5.13-r1 4.1.7-r1 4.2.9-r5 6.0.1: Resource manager and queuing system based on OpenPBS
 sys-cluster/util-vserver 0.30.216_pre3025 0.30.216_pre3062 0.30.216_pre3120: Linux-VServer admin utilities
 sys-cluster/vzctl 4.9.1 4.9.4: OpenVZ ConTainers control utility
 sys-cluster/wulfware 2.6.0: Applications to monitor on a beowulf- or GRID-style clusters
@@ -17794,8 +17794,8 @@ www-client/dwb 2014.03.07-r1 9999: Dynamic web browser based on WebKit and GTK+
 www-client/elinks 0.12_pre6-r1 0.12_pre6-r2 9999: Advanced and well-established text-mode web browser
 www-client/epiphany 3.18.4 3.18.7: GNOME webbrowser based on Webkit
 www-client/fetch 1.0-r1 1.0-r2: HTTP download tool built atop the HTTP fetcher library
-www-client/firefox 38.7.0 38.8.0 45.1.0 46.0: Firefox Web Browser
-www-client/firefox-bin 38.8.0 45.1.0 46.0: Firefox Web Browser
+www-client/firefox 38.7.0 38.8.0 45.2.0 47.0: Firefox Web Browser
+www-client/firefox-bin 38.8.0 45.2.0 47.0: Firefox Web Browser
 www-client/google-chrome 51.0.2704.84: The web browser from Google
 www-client/google-chrome-beta 52.0.2743.24: The web browser from Google
 www-client/google-chrome-unstable 53.0.2756.0: The web browser from Google

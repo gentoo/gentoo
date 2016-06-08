@@ -7539,6 +7539,7 @@ sys-cluster/sx:client - Access the SX Cluster from this machine via its Nginx se
 sys-cluster/sx:ipv6 - Enable support for communication via IPv6.
 sys-cluster/sx:server - Enable SX's server component.
 sys-cluster/sx:ssl - Enable communication security via OpenSSL.
+sys-cluster/torque:cgroups - Enable pbs_mom to use linux cgroups to isolate jobs
 sys-cluster/torque:cpusets - Enable pbs_mom to utilize linux cpusets if available
 sys-cluster/torque:drmaa - Enable the Distributed Resource Management Application API
 sys-cluster/torque:munge - Enable authentication via munge
