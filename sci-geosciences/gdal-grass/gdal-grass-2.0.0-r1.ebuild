@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 inherit eutils
 
@@ -29,9 +29,13 @@ DEPEND="${RDEPEND}
 	sys-libs/zlib
 	postgres? ( dev-db/postgresql )"
 
+# these drivers are copied at install from the already installed GRASS
+QA_PREBUILT="/usr/share/gdal/grass/driver/db/*"
+
 src_prepare() {
-	# fix mkdir not called with -p in Makefile
-	epatch "${FILESDIR}/gdal-grass-makefile.patch"
+	sed -e 's:mkdir ${GRASSTABLES_DIR}$:mkdir -p ${GRASSTABLES_DIR}:' \
+		-i Makefile.in || die
+	default
 }
 
 src_configure() {
