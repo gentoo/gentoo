@@ -10,7 +10,7 @@ DESCRIPTION="An encoding detector library ported from Mozilla"
 HOMEPAGE="https://github.com/BYVoid/uchardet"
 EGIT_REPO_URI="git://github.com/BYVoid/${PN}.git"
 
-LICENSE="MPL-1.1"
+LICENSE="|| ( MPL-1.1 GPL-2+ LGPL-2.1+ )"
 SLOT="0"
 KEYWORDS=""
 IUSE="static-libs test"
