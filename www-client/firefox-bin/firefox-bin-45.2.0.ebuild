@@ -8,11 +8,11 @@ MOZ_ESR=1
 # Can be updated using scripts/get_langs.sh from mozilla overlay
 # Not officially supported as of yet
 # csb
-MOZ_LANGS=(af ar as ast be bg bn-BD bn-IN br bs ca cs cy da de el en
+MOZ_LANGS=(ach af an ar as ast az be bg bn-BD bn-IN br bs ca cs cy da de el en
 en-GB en-US en-ZA eo es-AR es-CL es-ES es-MX et eu fa fi fr fy-NL ga-IE gd gl
-gu-IN he hi-IN hr hu hy-AM id is it ja kk kn ko lt lv mai mk ml mr nb-NO
-nl nn-NO or pa-IN pl pt-BR pt-PT rm ro ru si sk sl son sq sr sv-SE ta
-te tr uk vi zh-CN zh-TW)
+gu-IN he hi-IN hr hsb hu hy-AM id is it ja kk km kn ko lt lv mai mk ml mr ms
+nb-NO nl nn-NO or pa-IN pl pt-BR pt-PT rm ro ru si sk sl son sq sr sv-SE ta te
+th tr uk uz vi xh zh-CN zh-TW )
 
 # Convert the ebuild version to the upstream mozilla version, used by mozlinguas
 MOZ_PV="${PV/_beta/b}" # Handle beta for SRC_URI
