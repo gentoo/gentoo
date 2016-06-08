@@ -1063,7 +1063,7 @@ app-editors/padre 0.980.0-r1 1.0.0: Perl Application Development and Refactoring
 app-editors/pluma 1.8.1 1.10.2: Pluma text editor for the MATE desktop
 app-editors/qemacs 0.4.0_pre20090420-r1 0.4.1_pre20150916: QEmacs is a very small but powerful UNIX editor
 app-editors/qwriter 0.1.9 0.1.9-r1: Advanced text editor with syntax highlighting
-app-editors/qxmledit 0.8.8.1 0.9.3: Simple Qt-based XML editor
+app-editors/qxmledit 0.9.3: Simple Qt-based XML editor
 app-editors/retext 4.1.3 5.3.0 5.3.1 9999: Simple editor for Markdown and reStructuredText
 app-editors/sandy 0.4: an ncurses text editor with an easy-to-read, hackable C source
 app-editors/scite 3.5.5 3.6.2 3.6.4 3.6.5: A very powerful editor for programmers
