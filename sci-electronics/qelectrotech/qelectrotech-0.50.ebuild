@@ -14,7 +14,7 @@ SRC_URI="http://download.tuxfamily.org/qet/tags/20151127/${MY_P}.tar.gz"
 
 LICENSE="CC-BY-3.0 GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="doc"
 
 RDEPEND="
