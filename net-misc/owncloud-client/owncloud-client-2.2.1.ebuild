@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 inherit cmake-utils
 
@@ -13,13 +13,17 @@ SRC_URI="http://download.owncloud.com/desktop/stable/${P/-}.tar.xz"
 LICENSE="CC-BY-3.0 GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="doc nautilus samba +sftp test qt4 +qt5"
+IUSE="doc dolphin nautilus samba +sftp test qt4 +qt5"
 
-REQUIRED_USE="^^ ( qt4 qt5 )"
+REQUIRED_USE="^^ ( qt4 qt5 )
+	dolphin? ( qt5 )"
 
 RDEPEND=">=dev-db/sqlite-3.4:3
 	sys-fs/inotify-tools
 	virtual/libiconv
+	dolphin? (
+		>=kde-frameworks/kcoreaddons-5.16:5
+		>=kde-frameworks/kio-5.16:5 )
 	nautilus? ( dev-python/nautilus-python )
 	qt4? (
 		dev-libs/qtkeychain[qt4]
@@ -50,6 +54,7 @@ DEPEND="${RDEPEND}
 		dev-texlive/texlive-latexextra
 		virtual/latex-base
 	)
+	dolphin? ( >=kde-frameworks/extra-cmake-modules-5.22.0 )
 	qt5? ( dev-qt/linguist-tools:5 )
 	test? (
 		dev-util/cmocka
@@ -61,10 +66,12 @@ S=${WORKDIR}/${P/-}
 
 src_prepare() {
 	# Keep tests in ${T}
-	sed -i -e "s#\"/tmp#\"${T}#g" test/test*.h || die "sed failed"
+	sed -i -e "s#\"/tmp#\"${T}#g" test/test*.cpp || die "sed failed"
 
 	use nautilus || sed -i -e "s/add_subdirectory(nautilus)//" \
 		shell_integration/CMakeLists.txt || die "sed failed"
+
+	default
 }
 
 src_configure() {
@@ -72,11 +79,12 @@ src_configure() {
 		-DSYSCONF_INSTALL_DIR="${EPREFIX}"/etc
 		-DCMAKE_INSTALL_DOCDIR=/usr/share/doc/${PF}
 		-DWITH_ICONV=ON
-		$(cmake-utils_use_with doc DOC)
-		$(cmake-utils_use test UNIT_TESTING)
-		$(cmake-utils_use_find_package samba Libsmbclient)
-		$(cmake-utils_use_find_package sftp LibSSH)
-		$(cmake-utils_use_build qt4 WITH_QT4)
+		-DWITH_DOC=$(usex doc)
+		-DCMAKE_DISABLE_FIND_PACKAGE_KF5=$(usex !dolphin)
+		-DBUILD_WITH_QT4=$(usex qt4)
+		-DCMAKE_DISABLE_FIND_PACKAGE_Libsmbclient=$(usex !samba)
+		-DCMAKE_DISABLE_FIND_PACKAGE_LibSSH=$(usex !sftp)
+		-DUSE_UNIT_TESTING=$(usex test)
 	)
 
 	cmake-utils_src_configure
