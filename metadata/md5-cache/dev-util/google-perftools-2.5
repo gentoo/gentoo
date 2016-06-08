@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare setup test unpack
+DEPEND=sys-libs/libunwind !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Fast, multi-threaded malloc() and nifty performance analysis tools
+EAPI=5
+HOMEPAGE=http://code.google.com/p/gperftools/
+IUSE=largepages +debug minimal optimisememory test static-libs abi_x86_32 abi_x86_64 abi_x86_x32 abi_mips_n32 abi_mips_n64 abi_mips_o32 abi_ppc_32 abi_ppc_64 abi_s390_32 abi_s390_64
+KEYWORDS=-* ~amd64 ~arm ~ppc ~ppc64 ~x86 ~x86-fbsd ~amd64-linux ~x86-linux
+LICENSE=MIT
+RDEPEND=sys-libs/libunwind
+SLOT=0/4
+SRC_URI=https://github.com/gperftools/gperftools/tarball/gperftools-2.5 -> gperftools-2.5.tar.gz
+_eclass_exported_funcs=pkg_setup:- src_unpack:vcs-snapshot src_prepare:autotools-multilib src_configure:autotools-multilib src_compile:autotools-multilib src_test:- src_install:autotools-multilib
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	autotools-multilib	77afca16a6cb82823eed6366a10e7f75	autotools-utils	419811142edf3516b0d0cf1a254d93cb	eutils	792f83d5ec9536cb5ccef375469d8bde	flag-o-matic	d270fa247153df66074f795fa42dba3e	libtool	4890219c51da247200223277f993e054	multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	d062ae4ba2fc40a19c11de2ad89b6616	multilib-build	8fe2e81aeb36cdf8a6cc5f50443879cc	multilib-minimal	0224dee31c0f98405d572e14ad6dee65	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	vcs-snapshot	b45be87e7012be0af8424e8a5644da1d
+_md5_=3788d934df7d2c6e39f4f1901f708a85
