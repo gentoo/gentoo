@@ -12094,7 +12094,7 @@ media-gfx/apngdis 2.7 2.8: extract PNG frames from an APNG
 media-gfx/apngopt 1.2: optimize APNG images
 media-gfx/aqsis 1.8.2: Open source RenderMan-compliant 3D rendering solution
 media-gfx/argyllcms 1.7.0 1.8.2 1.8.3: Open source, ICC compatible color management system
-media-gfx/arss 0.2.3: Analysis & Resynthesis Sound Spectrograph
+media-gfx/arss 0.2.3 0.2.3-r1: Analysis & Resynthesis Sound Spectrograph
 media-gfx/asymptote 2.32 2.35 2.36: A vector graphics language that provides a framework for technical drawing
 media-gfx/autopano-sift-C 2.5.1: SIFT algorithm for automatic panorama creation in C
 media-gfx/autotrace 0.31.1-r6: A program for converting bitmaps to vector graphics
@@ -12645,7 +12645,7 @@ media-libs/opencollada 1.2.2_p20150207 9999: Stream based read/write library for
 media-libs/opencolorio 1.0.8 1.0.9 1.0.9-r2: A color management framework for visual effects and animation
 media-libs/opencore-amr 0.1.3-r1: Implementation of Adaptive Multi Rate Narrowband and Wideband speech codec
 media-libs/openctm 1.0.3: OpenCTM - the Open Compressed Triangle Mesh.
-media-libs/opencv 2.4.11 2.4.12 3.0.0 3.1.0-r1 3.1.0-r3: A collection of algorithms and sample code for various computer vision problems
+media-libs/opencv 2.4.11 2.4.12 3.0.0 3.1.0-r1 3.1.0-r3 3.1.0-r4: A collection of algorithms and sample code for various computer vision problems
 media-libs/openexr 1.7.0 2.0.1-r1 2.1.0 2.2.0: ILM's OpenEXR high dynamic-range image file format libraries
 media-libs/openexr_ctl 1.0.1-r1 1.0.1-r2: OpenEXR CTL libraries
 media-libs/opengl-apple 3 4 5: Links to Apple's OpenGL X11 implementation
