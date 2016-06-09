@@ -1953,7 +1953,7 @@ app-misc/workrave 1.10.6-r1 1.10.6-r2 1.10.8: Helpful utility to attack Repetiti
 app-misc/wyrd 1.4.4 1.4.5 1.4.6: Text-based front-end to Remind
 app-misc/xmind 3.4.1.201401221918 3.5.1.201411201906 3.5.3.201506180105-r2 3.6.1-r1: A brainstorming and mind mapping software tool
 app-misc/yagtd 0.3.4 0.3.4-r1: CLI todo list manager based on the 'Getting Things Done' philosophy
-app-misc/ytree 1.97 1.98: A (curses-based) file manager
+app-misc/ytree 1.98-r1: A curses-based file manager
 app-misc/yworklog 0.0.7: Stack based utility with CLI interface helping to monitor time spent on tasks
 app-misc/zisofs-tools 1.0.6 1.0.8: User utilities for zisofs
 app-misc/zygrib 6.2.3 7.0.0: GRIB File Viewer - Weather data visualization
@@ -6341,21 +6341,21 @@ dev-perl/Test-Pod 1.510.0: Check for POD errors in files
 dev-perl/Test-Pod-Coverage 1.100.0: Check for pod coverage in your distribution
 dev-perl/Test-Portability-Files 0.60.0-r1: Check file names portability
 dev-perl/Test-Requires 0.60.0-r1 0.80.0 0.100.0: Checks to see if the module can be loaded
-dev-perl/Test-Script 1.70.0-r1 1.100.0: Cross-platform basic tests for scripts
+dev-perl/Test-Script 1.70.0-r1 1.100.0 1.120.0: Cross-platform basic tests for scripts
 dev-perl/Test-SharedFork 0.210.0-r1 0.330.0 0.350.0: fork test
 dev-perl/Test-Spec 0.470.0 0.510.0: Write tests in a declarative specification style
 dev-perl/Test-SubCalls 1.90.0-r1: Track the number of times subs are called
-dev-perl/Test-TCP 2.60.0 2.130.0 2.160.0: Testing TCP program
+dev-perl/Test-TCP 2.60.0 2.160.0: Testing TCP program
 dev-perl/Test-Taint 1.60.0-r1: Tools to test taintedness
-dev-perl/Test-Tester 0.108.0-r1 0.109.0-r1 0.114.0: Ease testing test modules built with Test::Builder
+dev-perl/Test-Tester 0.109.0-r1 0.114.0: Ease testing test modules built with Test::Builder
 dev-perl/Test-Time 0.40.0: Overrides the time() and sleep() core functions for testing
-dev-perl/Test-Trap 0.2.2-r1 0.3.0 0.3.2: Trap exit codes, exceptions, output, etc
+dev-perl/Test-Trap 0.2.2-r1 0.3.2: Trap exit codes, exceptions, output, etc
 dev-perl/Test-Unit-Lite 0.120.200-r1: Unit testing without external dependencies
-dev-perl/Test-UseAllModules 0.140.0-r1 0.170.0: do use_ok() for all the MANIFESTed modules
+dev-perl/Test-UseAllModules 0.170.0: do use_ok() for all the MANIFESTed modules
 dev-perl/Test-WWW-Mechanize 1.440.0-r1: Testing-specific WWW::Mechanize subclass
 dev-perl/Test-Warn 0.240.0-r1 0.300.0-r1: Perl extension to test methods for warnings
 dev-perl/Test-Warnings 0.16.0 0.26.0: Test for warnings and the lack of them
-dev-perl/Test-Without-Module 0.170.0 0.180.0: Test fallback behaviour in absence of modules
+dev-perl/Test-Without-Module 0.180.0: Test fallback behaviour in absence of modules
 dev-perl/Test-YAML 1.50.0 1.60.0: Testing Module for YAML Implementations
 dev-perl/Test-use-ok 0.110.0-r1 0.160.0: Alternative to Test::More::use_ok
 dev-perl/Text-Aligner 0.70.0-r1 0.130.0: Used to justify strings to various alignment styles

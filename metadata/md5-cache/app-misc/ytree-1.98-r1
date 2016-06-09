@@ -1,13 +1,13 @@
 DEFINED_PHASES=install prepare setup
-DEPEND=sys-libs/readline sys-libs/ncurses
-DESCRIPTION=A (curses-based) file manager
-EAPI=5
+DEPEND=sys-libs/ncurses:0= sys-libs/readline:0=
+DESCRIPTION=A curses-based file manager
+EAPI=6
 HOMEPAGE=http://www.han.de/~werner/ytree.html
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2
-RDEPEND=sys-libs/readline sys-libs/ncurses
+RDEPEND=sys-libs/ncurses:0= sys-libs/readline:0=
 SLOT=0
 SRC_URI=http://www.han.de/~werner/ytree-1.98.tar.gz
 _eclass_exported_funcs=pkg_setup:- src_prepare:- src_install:-
 _eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
-_md5_=c3a59f9d03b70261d3c3db51b5e85973
+_md5_=5fa68b55e68a311ae70a476287c5264d
