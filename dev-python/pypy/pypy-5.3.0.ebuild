@@ -5,19 +5,19 @@
 EAPI=5
 
 PYTHON_COMPAT=( python2_7 pypy )
-EHG_REPO_URI="https://bitbucket.org/pypy/pypy"
-inherit check-reqs eutils mercurial multilib multiprocessing pax-utils python-any-r1 toolchain-funcs versionator
+inherit check-reqs eutils multilib multiprocessing pax-utils python-any-r1 toolchain-funcs versionator
 
-CPY_PATCHSET_VERSION="2.7.10-0"
+CPY_PATCHSET_VERSION="2.7.11-0"
+MY_P=pypy2-v${PV}
 
 DESCRIPTION="A fast, compliant alternative implementation of the Python language"
 HOMEPAGE="http://pypy.org/"
-SRC_URI="
-	https://dev.gentoo.org/~floppym/python/python-gentoo-patches-${CPY_PATCHSET_VERSION}.tar.xz"
+SRC_URI="https://bitbucket.org/pypy/pypy/downloads/${MY_P}-src.tar.bz2
+	https://dev.gentoo.org/~djc/python-gentoo-patches-${CPY_PATCHSET_VERSION}.tar.xz"
 
 LICENSE="MIT"
 SLOT="0/$(get_version_component_range 1-2 ${PV})"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="bzip2 doc gdbm +jit libressl low-memory ncurses sandbox +shadowstack sqlite cpu_flags_x86_sse2 test tk"
 
 RDEPEND=">=sys-libs/zlib-1.1.3:0=
@@ -41,7 +41,7 @@ DEPEND="${RDEPEND}
 	test? ( dev-python/pytest )"
 PDEPEND="app-admin/python-updater"
 
-S="${WORKDIR}/${P}-src"
+S="${WORKDIR}/${MY_P}-src"
 
 pkg_pretend() {
 	if [[ ${MERGE_TYPE} != binary ]]; then
@@ -84,11 +84,6 @@ pkg_setup() {
 
 		python-any-r1_pkg_setup
 	fi
-}
-
-src_unpack() {
-	default
-	mercurial_src_unpack
 }
 
 src_prepare() {
