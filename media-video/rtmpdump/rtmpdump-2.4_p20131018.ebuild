@@ -38,6 +38,8 @@ src_unpack() {
 }
 
 src_prepare() {
+	# fix #571106 by restoring pre-GCC5 inline semantics
+	append-cflags -std=gnu89
 	# fix Makefile ( bug #298535 , bug #318353 and bug #324513 )
 	sed -i 's/\$(MAKEFLAGS)//g' Makefile \
 		|| die "failed to fix Makefile"
