@@ -31,6 +31,12 @@
 #--- END OF EXAMPLES ---
 
 # Michael Palimaka <kensington@gentoo.org> (9 Jun 2016)
+# Fails to build with newer giflib. Unmaintained. Dead upstream.
+# Use media-gfx/fbida instead.
+# Masked for removal in 30 days. Bug 571686.
+media-gfx/fbv
+
+# Michael Palimaka <kensington@gentoo.org> (9 Jun 2016)
 # Fails to build. Unmaintained. Masked for removal in 30 days.
 # Bug 574756
 media-gfx/wings
