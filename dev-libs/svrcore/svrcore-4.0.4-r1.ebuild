@@ -1,8 +1,8 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=2
+EAPI=5
 
 inherit multilib autotools eutils
 
@@ -30,7 +30,7 @@ src_configure() {
 }
 
 src_install () {
-	einstall  || die "emake failed"
+	default
 
 	# cope with libraries being in /usr/lib/svrcore
 	echo "LDPATH=/usr/$(get_libdir)/svrcore" > 08svrcore
