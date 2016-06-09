@@ -13,7 +13,7 @@ SRC_URI="ftp://invisible-island.net/${PN}/${P}.tgz"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~x86-interix ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
-IUSE="+openpty toolbar truetype unicode Xaw3d"
+IUSE="+openpty toolbar truetype unicode Xaw3d xinerama"
 
 COMMON_DEPEND="kernel_linux? ( sys-libs/libutempter )
 	kernel_FreeBSD? ( || ( >=sys-freebsd/freebsd-lib-9.0 sys-libs/libutempter ) )
@@ -27,7 +27,8 @@ COMMON_DEPEND="kernel_linux? ( sys-libs/libutempter )
 	x11-libs/libXrender
 	x11-libs/libXt
 	unicode? ( x11-apps/luit )
-	Xaw3d? ( x11-libs/libXaw3d )"
+	Xaw3d? ( x11-libs/libXaw3d )
+	xinerama? ( x11-libs/libXinerama )"
 RDEPEND="${COMMON_DEPEND}
 	media-fonts/font-misc-misc"
 DEPEND="${COMMON_DEPEND}
@@ -57,6 +58,7 @@ src_configure() {
 		--with-utempter \
 		--with-x \
 		$(use_with Xaw3d) \
+		$(use_with xinerama) \
 		--disable-imake \
 		--enable-256-color \
 		--enable-broken-osc \
