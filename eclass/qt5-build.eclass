@@ -537,7 +537,7 @@ qt5_base_configure() {
 		-shared
 
 		# always enable large file support
-		-largefile
+		$([[ ${QT5_MINOR_VERSION} -lt 8 ]] && echo -largefile)
 
 		# disabling accessibility is not recommended by upstream, as
 		# it will break QStyle and may break other internal parts of Qt
@@ -557,9 +557,11 @@ qt5_base_configure() {
 		# use pkg-config to detect include and library paths
 		-pkg-config
 
-		# prefer system libraries (only common deps here)
+		# prefer system libraries (only common hard deps here)
 		-system-zlib
 		-system-pcre
+		# TODO after bug 581054
+		#$([[ ${QT5_MINOR_VERSION} -ge 7 ]] && echo -system-doubleconversion)
 
 		# disable everything to prevent automagic deps (part 1)
 		-no-mtdev
@@ -571,7 +573,7 @@ qt5_base_configure() {
 		-no-xkbcommon-x11 -no-xkbcommon-evdev
 		-no-xinput2 -no-xcb-xlib
 
-		# don't specify -no-gif because there is no way to override it later
+		# cannot use -no-gif because there is no way to override it later
 		#-no-gif
 
 		# always enable glib event loop support
@@ -629,8 +631,7 @@ qt5_base_configure() {
 		-no-xkb -no-xrender
 
 		# disable obsolete/unused X11-related flags
-		# (not shown in ./configure -help output)
-		-no-mitshm -no-xcursor -no-xfixes -no-xrandr -no-xshape -no-xsync
+		$([[ ${QT5_MINOR_VERSION} -lt 8 ]] && echo -no-mitshm -no-xcursor -no-xfixes -no-xrandr -no-xshape -no-xsync)
 
 		# always enable session management support: it doesn't need extra deps
 		# at configure time and turning it off is dangerous, see bug 518262
