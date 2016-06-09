@@ -56,11 +56,13 @@ python_prepare_all() {
 	distutils-r1_python_prepare_all
 }
 
-_distutils-r1_create_setup_cfg() {
+esetup.py() {
 	# bug 531370: deluge has its own plugin system. No need to relocate its egg info files.
 	# Override this call from the distutils-r1 eclass.
 	# This does not respect the distutils-r1 API. DONOT copy this example.
-	:
+	set -- "${PYTHON}" setup.py "$@"
+	echo "$@"
+	"$@" || die
 }
 
 python_install_all() {
