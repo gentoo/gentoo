@@ -1,7 +1,7 @@
 DEFINED_PHASES=configure install prepare
 DEPEND=>=dev-libs/nss-3.11 >=dev-libs/nspr-4.6 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=Mozilla LDAP C SDK
-EAPI=2
+EAPI=5
 HOMEPAGE=http://wiki.mozilla.org/LDAP_C_SDK
 KEYWORDS=amd64 x86
 LICENSE=MPL-1.1 GPL-2 LGPL-2.1
@@ -10,4 +10,4 @@ SLOT=0
 SRC_URI=http://ftp.mozilla.org/pub/mozilla.org/directory/svrcore/releases/4.0.4/src/svrcore-4.0.4.tar.bz2
 _eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	792f83d5ec9536cb5ccef375469d8bde	libtool	4890219c51da247200223277f993e054	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
-_md5_=caf3fc7e12ee5af7af414dbb2b1ed133
+_md5_=8021efbf4f267a4c78d3a83ac060a266
