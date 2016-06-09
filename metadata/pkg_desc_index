@@ -11439,7 +11439,7 @@ kde-base/kcheckpass 4.11.22-r1: A simple password checker, used by any software 
 kde-base/kcminit 4.11.22: KCMInit - runs startups initialization for Control Modules
 kde-base/kde-env 4.14.3: Environment setting required for all KDE4 apps to run
 kde-base/kdebase-cursors 4.11.22: oxygen cursors from kdebase
-kde-base/kdebase-pam 9 10: pam.d files used by several KDE components
+kde-base/kdebase-pam 10: pam.d files used by several KDE components
 kde-base/kdebase-startkde 4.11.22 4.11.22-r1: Startkde script, which starts a complete KDE session, and associated scripts
 kde-base/kdelibs 4.14.16 4.14.20-r2: KDE libraries needed by all KDE programs
 kde-base/kdeplasma-addons 4.14.3 4.14.3-r1: Extra Plasma applets and engines
