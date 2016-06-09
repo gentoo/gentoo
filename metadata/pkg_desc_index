@@ -5095,7 +5095,7 @@ dev-ml/ocaml-autoconf 1.1: autoconf macros to support configuration of OCaml pro
 dev-ml/ocaml-base64 2.0.0: Library for radix-64 representation (de)coding
 dev-ml/ocaml-cairo 0.5: OCaml Binding to Cairo
 dev-ml/ocaml-cstruct 1.7.1 1.8.0 1.9.0 2.0.0 2.1.0: Map OCaml arrays onto C-like structs
-dev-ml/ocaml-ctypes 0.4.1-r1 0.4.2 0.5.0 0.5.1 0.6.0: Library for binding to C libraries using pure OCaml
+dev-ml/ocaml-ctypes 0.4.1-r1 0.4.2 0.5.0 0.5.1 0.6.0 0.6.2: Library for binding to C libraries using pure OCaml
 dev-ml/ocaml-data-notation 0.0.11: This project uses type-conv to dump OCaml data structure using OCaml data notation
 dev-ml/ocaml-dns 0.15.3 0.16.0 0.18.0 0.18.1: A pure OCaml implementation of the DNS protocol
 dev-ml/ocaml-doc 3.12: Ocaml reference manual (html)
@@ -8445,7 +8445,7 @@ dev-ros/controller_manager_tests 0.9.3 0.10.0 0.10.1 0.11.0 9999: Tests for the 
 dev-ros/convex_decomposition 0.1.10 0.1.11 9999: Convex Decomposition Tool for Robot Model
 dev-ros/costmap_2d 1.13.0 1.13.1 1.14.0 9999: Creates a 2D costmap from sensor data
 dev-ros/cpp_common 0.5.6 0.5.7 0.6.0 9999: C++ code for doing things that are not necessarily ROS related
-dev-ros/cv_bridge 1.11.8 1.11.9 1.11.10 1.11.11 1.11.12 1.12.0 9999: Converts between ROS Image messages and OpenCV images
+dev-ros/cv_bridge 1.12.0 9999: Converts between ROS Image messages and OpenCV images
 dev-ros/depth_image_proc 1.12.14 1.12.15 1.12.16 9999: Nodelets for processing depth images such as those produced by OpenNI camera
 dev-ros/depthimage_to_laserscan 1.0.7-r1 9999: Converts a depth image to a laser scan for use with navigation and localization
 dev-ros/diagnostic_aggregator 1.8.9 9999: Aggregates ROS diagnostics
