@@ -7833,7 +7833,7 @@ dev-python/pyproj 1.9.4: Python interface to PROJ.4 library
 dev-python/pyprotocols 1.0_pre2306-r1: Extends the PEP 246 adapt function with a new 'declaration API'
 dev-python/pyptlib 0.0.6: Python library for tor's pluggable transport managed-proxy protocol
 dev-python/pypy 4.0.1 5.0.0 5.1.1 5.3.0 9999: A fast, compliant alternative implementation of the Python language
-dev-python/pypy-bin 4.0.1-r1 5.0.0 5.1.1: Pre-built version of PyPy
+dev-python/pypy-bin 4.0.1-r1 5.0.0 5.1.1 5.3.0: Pre-built version of PyPy
 dev-python/pypy3 2.4.0-r2 9999: A fast, compliant alternative implementation of Python 3
 dev-python/pypy3-bin 2.4.0-r4: A fast, compliant alternative implementation of Python 3 (binary package)
 dev-python/pyqtgraph 0.9.9 0.9.10: a pure-python scientific graphics and GUI library built on PyQt4/PySide and numpy
@@ -12645,7 +12645,7 @@ media-libs/opencollada 1.2.2_p20150207 9999: Stream based read/write library for
 media-libs/opencolorio 1.0.8 1.0.9 1.0.9-r2: A color management framework for visual effects and animation
 media-libs/opencore-amr 0.1.3-r1: Implementation of Adaptive Multi Rate Narrowband and Wideband speech codec
 media-libs/openctm 1.0.3: OpenCTM - the Open Compressed Triangle Mesh.
-media-libs/opencv 2.4.11 2.4.12 3.0.0 3.1.0-r1 3.1.0-r3 3.1.0-r4: A collection of algorithms and sample code for various computer vision problems
+media-libs/opencv 2.4.11 2.4.12 2.4.12-r1 3.0.0 3.1.0-r1 3.1.0-r3 3.1.0-r4: A collection of algorithms and sample code for various computer vision problems
 media-libs/openexr 1.7.0 2.0.1-r1 2.1.0 2.2.0: ILM's OpenEXR high dynamic-range image file format libraries
 media-libs/openexr_ctl 1.0.1-r1 1.0.1-r2: OpenEXR CTL libraries
 media-libs/opengl-apple 3 4 5: Links to Apple's OpenGL X11 implementation
