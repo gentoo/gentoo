@@ -4915,7 +4915,7 @@ dev-libs/socketstream 0.7.0-r1: C++ Streaming sockets library
 dev-libs/softhsm 1.3.6 1.3.7 2.0.0: A software PKCS#11 implementation
 dev-libs/sord 0.12.0 0.12.2 0.14.0: Library for storing RDF data in memory
 dev-libs/squareball 0.2.0 9999: A general-purpose library for C99
-dev-libs/starpu 1.1.5: Unified runtime system for heterogeneous multicore architectures
+dev-libs/starpu 1.1.5 1.1.5-r1: Unified runtime system for heterogeneous multicore architectures
 dev-libs/stfl 0.22-r2 0.23 0.24: A library which implements a curses-based widget set for text terminals
 dev-libs/stlsoft 1.9.111: Robust, Lightweight, Cross-platform, Template Software
 dev-libs/svrcore 4.0.4: Mozilla LDAP C SDK
