@@ -30,6 +30,16 @@
 
 #--- END OF EXAMPLES ---
 
+# Michael Palimaka <kensington@gentoo.org> (9 Jun 2016)
+# Fails to build. Unmaintained. Masked for removal in 30 days.
+# Bug 574756
+media-gfx/wings
+
+# Michael Palimaka <kensington@gentoo.org> (9 Jun 2016)
+# Fails to build. Dead upstream. Masked for removal in 30 days.
+# Bug 575374.
+app-i18n/xsim
+
 # Sebastien Fabbro <bicatali@gentoo.org>  (6 Jun 2016)
 # Dead upstream, several bugs: 513972, 542384, 548988
 # Removal in 30 days
