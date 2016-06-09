@@ -33,6 +33,7 @@ REQUIRED_USE="
 "
 PATCHES=(
 	"${FILESDIR}/${PN}-1.3.12-fix_scheduler_plugin.patch"
+	"${FILESDIR}/${PN}-1.3.5-disable_libtorrent_internal_copy.patch"
 )
 
 CDEPEND=">=net-libs/rb_libtorrent-0.14.9[python,${PYTHON_USEDEP}]"
