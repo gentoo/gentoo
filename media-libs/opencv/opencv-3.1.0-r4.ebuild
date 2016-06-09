@@ -14,9 +14,8 @@ HOMEPAGE="http://opencv.org"
 SRC_URI="
 	mirror://sourceforge/opencvlibrary/opencv-unix/${PV}/${P}.zip
 	https://github.com/Itseez/${PN}/archive/${PV}.zip -> ${P}.zip
-	contrib? ( 
-		https://github.com/Itseez/${PN}_contrib/archive/cd5993c6576267875adac300b9ddd1f881bb1766.zip
-		-> ${P}_contrib.zip )" #commit from Sun, 27 Mar 2016 17:31:51
+	contrib? (
+		https://github.com/Itseez/${PN}_contrib/archive/cd5993c6576267875adac300b9ddd1f881bb1766.zip -> ${P}_contrib.zip )" #commit from Sun, 27 Mar 2016 17:31:51
 
 LICENSE="BSD"
 SLOT="0/3.1" # subslot = libopencv* soname version
@@ -229,7 +228,7 @@ src_configure() {
 		mycmakeargs+=( -DWITH_CUFFT=OFF )
 	fi
 
-	use contrib && mycmakeargs+=( 
+	use contrib && mycmakeargs+=(
 		-DOPENCV_EXTRA_MODULES_PATH="${WORKDIR}/opencv_contrib-${PV}/modules"
 	)
 
