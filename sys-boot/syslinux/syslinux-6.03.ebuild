@@ -89,15 +89,15 @@ src_compile() {
 	# build system abuses the LDFLAGS variable to pass arguments to ld
 	unset LDFLAGS
 	if [[ ! -z ${loaderarch} ]]; then
-		emake CC=$(tc-getCC) LD=$(tc-getLD) ${loaderarch}
+		emake CC="$(tc-getCC)" LD="$(tc-getLD)" ${loaderarch}
 	fi
-	emake CC=$(tc-getCC) LD=$(tc-getLD) ${loaderarch} installer
+	emake CC="$(tc-getCC)" LD="$(tc-getLD)" ${loaderarch} installer
 }
 
 src_install() {
 	# parallel install fails sometimes
 	einfo "loaderarch=${loaderarch}"
-	emake -j1 LD=$(tc-getLD) INSTALLROOT="${D}" MANDIR=/usr/share/man bios ${loaderarch} install
+	emake -j1 LD="$(tc-getLD)" INSTALLROOT="${D}" MANDIR=/usr/share/man bios ${loaderarch} install
 	dodoc README NEWS doc/*.txt
 }
 
