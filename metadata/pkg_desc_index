@@ -11595,7 +11595,7 @@ kde-misc/kde-gtk-config 2.2.1: KDE systemsettings kcm to set GTK application loo
 kde-misc/kdeconnect 0.8-r1 0.9g: Adds communication between KDE and your smartphone
 kde-misc/kdesudo 3.4.2.4-r1: A frontend for sudo. Unlike kdesu, it uses directly sudo as backend
 kde-misc/kdiff3 0.9.98-r1: Qt/KDE based frontend to diff3
-kde-misc/kdirstat 2.7.5 3.0-r1: Nice KDE replacement to the du command
+kde-misc/kdirstat 3.0-r1: Nice KDE replacement to the du command
 kde-misc/kdmthemegenerator 0.8: Generates kdm theme from your current plasma theme and wallpaper
 kde-misc/kepas 0.9.3: A zeroconf KDE4 filetransfer tool
 kde-misc/kfilebox 0.4.9: KDE dropbox client
