@@ -11580,7 +11580,7 @@ kde-misc/geekclock 1.0: Geeky Clock KDE4 Plasmoid
 kde-misc/gx-mail-notify 0.4.4: Plasmoid for checking unread mail
 kde-misc/hdaps_monitor 0.3-r1: KDE-based monitor for the IBM HDAPS system
 kde-misc/homerun 1.2.5: Application launcher for KDE Plasma desktop
-kde-misc/kanyremote 6.3.4 6.3.5: KDE frontend to Anyremote
+kde-misc/kanyremote 6.3.5: KDE frontend to Anyremote
 kde-misc/katelatexplugin 0.5: Kate LaTeX typesetting plugin
 kde-misc/kbiff 4.0: New mail notification utility
 kde-misc/kbstateapplet 0_p1268845: Plasmoid that shows the state of keyboard leds
