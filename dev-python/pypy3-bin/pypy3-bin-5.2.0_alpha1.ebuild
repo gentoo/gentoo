@@ -4,87 +4,89 @@
 
 EAPI=5
 
-# pypy3 needs to be built using python 2
+# some random parts need python 2...
 PYTHON_COMPAT=( python2_7 pypy )
-EHG_PROJECT="pypy"
-EHG_REPO_URI="https://bitbucket.org/pypy/pypy"
-EHG_REVISION="py3k"
-inherit check-reqs eutils mercurial multilib multiprocessing pax-utils \
-	python-any-r1 toolchain-funcs versionator
+inherit eutils multilib pax-utils python-any-r1 unpacker versionator
 
-DESCRIPTION="A fast, compliant alternative implementation of Python 3"
+CPY_PATCHSET_VERSION="3.3.5-0"
+MY_P=pypy3.3-v${PV/_/-}
+BINHOST="https://dev.gentoo.org/~mgorny/dist/pypy3-bin/${PV}"
+
+DESCRIPTION="A fast, compliant alternative implementation of Python 3.3 (binary package)"
 HOMEPAGE="http://pypy.org/"
-SRC_URI=""
+SRC_URI="https://bitbucket.org/pypy/pypy/downloads/${MY_P}-src.tar.bz2
+	https://dev.gentoo.org/~floppym/python-gentoo-patches-${CPY_PATCHSET_VERSION}.tar.xz
+	amd64? (
+		jit? ( shadowstack? (
+			${BINHOST}/${P}-amd64+bzip2+jit+ncurses+shadowstack.tar.lz
+		) )
+		jit? ( !shadowstack? (
+			${BINHOST}/${P}-amd64+bzip2+jit+ncurses.tar.lz
+		) )
+		!jit? ( !shadowstack? (
+			${BINHOST}/${P}-amd64+bzip2+ncurses.tar.lz
+		) )
+	)
+	x86? (
+		cpu_flags_x86_sse2? (
+			jit? ( shadowstack? (
+				${BINHOST}/${P}-x86+bzip2+jit+ncurses+shadowstack+sse2.tar.lz
+			) )
+			jit? ( !shadowstack? (
+				${BINHOST}/${P}-x86+bzip2+jit+ncurses+sse2.tar.lz
+			) )
+			!jit? ( !shadowstack? (
+				${BINHOST}/${P}-x86+bzip2+ncurses+sse2.tar.lz
+			) )
+		)
+		!cpu_flags_x86_sse2? (
+			!jit? ( !shadowstack? (
+				${BINHOST}/${P}-x86+bzip2+ncurses.tar.lz
+			) )
+		)
+	)"
+
+# Supported variants
+REQUIRED_USE="!jit? ( !shadowstack )
+	x86? ( !cpu_flags_x86_sse2? ( !jit !shadowstack ) )"
 
 LICENSE="MIT"
 SLOT="0/$(get_version_component_range 1-2 ${PV})"
-KEYWORDS=""
-IUSE="bzip2 gdbm +jit libressl low-memory ncurses sandbox +shadowstack sqlite cpu_flags_x86_sse2 tk"
+KEYWORDS="~amd64 ~x86"
+IUSE="gdbm +jit +shadowstack sqlite cpu_flags_x86_sse2 test tk"
 
-RDEPEND=">=sys-libs/zlib-1.1.3:0=
-	virtual/libffi:0=
-	virtual/libintl:0=
+# yep, world would be easier if people started filling subslots...
+RDEPEND="
+	app-arch/bzip2:0=
 	dev-libs/expat:0=
-	!libressl? ( dev-libs/openssl:0= )
-	libressl? ( dev-libs/libressl:= )
-	bzip2? ( app-arch/bzip2:0= )
+	dev-libs/libffi:0=
+	dev-libs/openssl:0=
+	sys-libs/glibc:2.2=
+	sys-libs/ncurses:0/6
+	sys-libs/zlib:0=
 	gdbm? ( sys-libs/gdbm:0= )
-	ncurses? ( sys-libs/ncurses:0= )
 	sqlite? ( dev-db/sqlite:3= )
 	tk? (
 		dev-lang/tk:0=
 		dev-tcltk/tix:0=
 	)
-	!dev-python/pypy3-bin:0"
+	!dev-python/pypy3:0"
 DEPEND="${RDEPEND}
-	low-memory? ( virtual/pypy:0 )
-	!low-memory? ( ${PYTHON_DEPS} )"
+	app-arch/lzip
+	test? ( ${PYTHON_DEPS} )"
+#	doc? ( ${PYTHON_DEPS}
+#		dev-python/sphinx )
 PDEPEND="app-admin/python-updater"
 
-S="${WORKDIR}/${P}-src"
+S=${WORKDIR}/${MY_P}-src
 
-pkg_pretend() {
-	if [[ ${MERGE_TYPE} != binary ]]; then
-		if use low-memory; then
-			CHECKREQS_MEMORY="1750M"
-			use amd64 && CHECKREQS_MEMORY="3500M"
-		else
-			CHECKREQS_MEMORY="3G"
-			use amd64 && CHECKREQS_MEMORY="6G"
-		fi
-
-		check-reqs_pkg_pretend
-	fi
-}
-
-pkg_setup() {
-	if [[ ${MERGE_TYPE} != binary ]]; then
-		pkg_pretend
-
-		# unset to allow forcing pypy below :)
-		use low-memory && local EPYTHON=
-		if python_is_installed pypy && [[ ! ${EPYTHON} || ${EPYTHON} == pypy ]]; then
-			einfo "Using PyPy to perform the translation."
-			local EPYTHON=pypy
-		else
-			einfo "Using ${EPYTHON:-python2} to perform the translation. Please note that upstream"
-			einfo "recommends using PyPy for that. If you wish to do so, please install"
-			einfo "virtual/pypy and ensure that EPYTHON variable is unset."
-		fi
-
-		python-any-r1_pkg_setup
-	fi
-}
-
-src_unpack() {
-	default
-	mercurial_src_unpack
-}
+QA_PREBUILT="
+	usr/lib*/pypy3/pypy-c
+	usr/lib*/pypy3/libpypy-c.so"
 
 src_prepare() {
 	epatch "${FILESDIR}/4.0.0-gentoo-path.patch" \
-		"${FILESDIR}/1.9-distutils.unixccompiler.UnixCCompiler.runtime_library_dir_option.patch" \
-		"${FILESDIR}"/2.5.0-shared-lib.patch	# 517002
+		"${FILESDIR}/1.9-distutils.unixccompiler.UnixCCompiler.runtime_library_dir_option.patch"
 
 	sed -e "s^@EPREFIX@^${EPREFIX}^" \
 		-e "s^@libdir@^$(get_libdir)^" \
@@ -92,75 +94,32 @@ src_prepare() {
 
 	# apply CPython stdlib patches
 	pushd lib-python/3 > /dev/null || die
-	epatch "${FILESDIR}"/5.2.0-distutils-c++.patch
+	epatch "${FILESDIR}"/5.2.0-distutils-c++.patch \
+		"${WORKDIR}"/patches/24_all_sqlite-3.8.4.patch
 	popd > /dev/null || die
 
 	epatch_user
 }
 
 src_compile() {
-	tc-export CC
-
-	local jit_backend
-	if use jit; then
-		jit_backend='--jit-backend='
-
-		# We only need the explicit sse2 switch for x86.
-		# On other arches we can rely on autodetection which uses
-		# compiler macros. Plus, --jit-backend= doesn't accept all
-		# the modern values...
-
-		if use x86; then
-			if use cpu_flags_x86_sse2; then
-				jit_backend+=x86
-			else
-				jit_backend+=x86-without-sse2
-			fi
-		else
-			jit_backend+=auto
-		fi
-	fi
-
-	local args=(
-		--shared
-		$(usex jit -Ojit -O2)
-		$(usex shadowstack --gcrootfinder=shadowstack '')
-		$(usex sandbox --sandbox '')
-
-		${jit_backend}
-		--make-jobs=$(makeopts_jobs)
-
-		pypy/goal/targetpypystandalone
-	)
-
-	# Avoid linking against libraries disabled by use flags
-	local opts=(
-		bzip2:bz2
-		ncurses:_minimal_curses
-	)
-
-	local opt
-	for opt in "${opts[@]}"; do
-		local flag=${opt%:*}
-		local mod=${opt#*:}
-
-		args+=(
-			$(usex ${flag} --withmod --withoutmod)-${mod}
-		)
-	done
-
-	local interp=( "${PYTHON}" )
-	if use low-memory; then
-		interp=( env PYPY_GC_MAX_DELTA=200MB
-			"${PYTHON}" --jit loop_longevity=300 )
-	fi
-
-	set -- "${interp[@]}" rpython/bin/rpython --batch "${args[@]}"
-	echo -e "\033[1m${@}\033[0m"
-	"${@}" || die "compile error"
+	# Tadaam! PyPy compiled!
+	mv "${WORKDIR}"/${P}*/{libpypy-c.so,pypy-c} . || die
+	mv "${WORKDIR}"/${P}*/include/*.h include/ || die
+	mv pypy/module/cpyext/include/*.h include/ || die
+	mv pypy/module/cpyext/include/numpy include/ || die
 
 	#use doc && emake -C pypy/doc/ html
+	#needed even without jit :( also needed in both compile and install phases
 	pax-mark m pypy-c libpypy-c.so
+}
+
+src_test() {
+	# (unset)
+	local -x PYTHONDONTWRITEBYTECODE
+
+	# Test runner requires Python 2 too. However, it spawns PyPy3
+	# internally so that we end up testing the correct interpreter.
+	"${PYTHON}" ./pypy/test_all.py --pypy=./pypy-c lib-python || die
 }
 
 src_install() {
@@ -215,11 +174,13 @@ src_install() {
 #    "tk": "_tkinter/tklib_build.py",
 #    "curses": "_curses_build.py" if sys.platform != "win32" else None,
 #    "syslog": "_syslog_build.py" if sys.platform != "win32" else None,
-#    "gdbm": "_gdbm_build.py"  if sys.platform != "win32" else None,
+#    "_gdbm": "_gdbm_build.py"  if sys.platform != "win32" else None,
 #    "pwdgrp": "_pwdgrp_build.py" if sys.platform != "win32" else None,
-	cffi_targets=( audioop syslog pwdgrp )
+#    "resource": "_resource_build.py" if sys.platform != "win32" else None,
+#    "lzma": "_lzma_build.py",
+#    "_decimal": "_decimal_build.py",
+	cffi_targets=( audioop curses syslog pwdgrp resource lzma decimal )
 	use gdbm && cffi_targets+=( gdbm )
-	use ncurses && cffi_targets+=( curses )
 	use sqlite && cffi_targets+=( sqlite3 )
 	use tk && cffi_targets+=( tkinter/tklib )
 

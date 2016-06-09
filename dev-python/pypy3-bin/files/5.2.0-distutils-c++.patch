@@ -1,8 +1,55 @@
-http://bugs.python.org/issue1222585
+From e3afe6721897c8de830055621313bc0659518415 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Thu, 9 Jun 2016 20:48:10 +0200
+Subject: [PATCH] distutils c++ fixes, python3.3 patch updated for pypy3.3
 
---- Lib/distutils/cygwinccompiler.py
-+++ Lib/distutils/cygwinccompiler.py
-@@ -136,9 +136,13 @@
+---
+ lib-python/3/_osx_support.py                | 10 +++---
+ lib-python/3/distutils/cygwinccompiler.py   | 21 +++++++++--
+ lib-python/3/distutils/emxccompiler.py      | 14 ++++++--
+ lib-python/3/distutils/sysconfig_cpython.py | 25 ++++++++++---
+ lib-python/3/distutils/unixccompiler.py     | 54 ++++++++++++++++-------------
+ 5 files changed, 83 insertions(+), 41 deletions(-)
+
+diff --git a/lib-python/3/_osx_support.py b/lib-python/3/_osx_support.py
+index 50b2d17..1d19599 100644
+--- a/lib-python/3/_osx_support.py
++++ b/lib-python/3/_osx_support.py
+@@ -14,13 +14,13 @@ __all__ = [
+ # configuration variables that may contain universal build flags,
+ # like "-arch" or "-isdkroot", that may need customization for
+ # the user environment
+-_UNIVERSAL_CONFIG_VARS = ('CFLAGS', 'LDFLAGS', 'CPPFLAGS', 'BASECFLAGS',
+-                            'BLDSHARED', 'LDSHARED', 'CC', 'CXX',
+-                            'PY_CFLAGS', 'PY_LDFLAGS', 'PY_CPPFLAGS',
+-                            'PY_CORE_CFLAGS')
++_UNIVERSAL_CONFIG_VARS = ('CFLAGS', 'CXXFLAGS', 'LDFLAGS', 'CPPFLAGS',
++                          'BASECFLAGS', 'BLDSHARED', 'LDSHARED', 'LDCXXSHARED',
++                          'CC', 'CXX', 'PY_CFLAGS', 'PY_LDFLAGS',
++                          'PY_CPPFLAGS', 'PY_CORE_CFLAGS')
+ 
+ # configuration variables that may contain compiler calls
+-_COMPILER_CONFIG_VARS = ('BLDSHARED', 'LDSHARED', 'CC', 'CXX')
++_COMPILER_CONFIG_VARS = ('BLDSHARED', 'LDSHARED', 'LDCXXSHARED', 'CC', 'CXX')
+ 
+ # prefix added to original configuration variable names
+ _INITPRE = '_OSX_SUPPORT_INITIAL_'
+diff --git a/lib-python/3/distutils/cygwinccompiler.py b/lib-python/3/distutils/cygwinccompiler.py
+index e0074a1..1b383d3 100644
+--- a/lib-python/3/distutils/cygwinccompiler.py
++++ b/lib-python/3/distutils/cygwinccompiler.py
+@@ -124,8 +124,10 @@ class CygwinCCompiler(UnixCCompiler):
+         # dllwrap 2.10.90 is buggy
+         if self.ld_version >= "2.10.90":
+             self.linker_dll = "gcc"
++            self.linker_dll_cxx = "g++"
+         else:
+             self.linker_dll = "dllwrap"
++            self.linker_dll_cxx = "dllwrap"
+ 
+         # ld_version >= "2.13" support -shared so use it instead of
+         # -mdll -static
+@@ -139,9 +141,13 @@ class CygwinCCompiler(UnixCCompiler):
          self.set_executables(compiler='gcc -mcygwin -O -Wall',
                               compiler_so='gcc -mcygwin -mdll -O -Wall',
                               compiler_cxx='g++ -mcygwin -O -Wall',
@@ -13,11 +60,11 @@ http://bugs.python.org/issue1222585
 +                                        (self.linker_dll, shared_option)),
 +                             linker_exe_cxx='g++ -mcygwin',
 +                             linker_so_cxx=('%s -mcygwin %s' %
-+                                            (self.linker_dll, shared_option)))
++                                            (self.linker_dll_cxx, shared_option)))
  
          # cygwin and mingw32 need different sets of libraries
          if self.gcc_version == "2.91.57":
-@@ -162,8 +166,12 @@
+@@ -165,8 +171,12 @@ class CygwinCCompiler(UnixCCompiler):
                  raise CompileError(msg)
          else: # for other files use the C-compiler
              try:
@@ -32,26 +79,26 @@ http://bugs.python.org/issue1222585
              except DistutilsExecError as msg:
                  raise CompileError(msg)
  
-@@ -294,10 +302,15 @@
-         self.set_executables(compiler='gcc -mno-cygwin -O -Wall',
-                              compiler_so='gcc -mno-cygwin -mdll -O -Wall',
-                              compiler_cxx='g++ -mno-cygwin -O -Wall',
-+                             compiler_so_cxx='g++ -mno-cygwin -mdll -O -Wall',
-                              linker_exe='gcc -mno-cygwin',
-                              linker_so='%s -mno-cygwin %s %s'
-                                         % (self.linker_dll, shared_option,
--                                           entry_point))
-+                                           entry_point),
-+                             linker_exe_cxx='g++ -mno-cygwin',
-+                             linker_so_cxx='%s -mno-cygwin %s %s'
-+                                            % (self.linker_dll, shared_option,
-+                                               entry_point))
+@@ -302,9 +312,14 @@ class Mingw32CCompiler(CygwinCCompiler):
+         self.set_executables(compiler='gcc%s -O -Wall' % no_cygwin,
+                              compiler_so='gcc%s -mdll -O -Wall' % no_cygwin,
+                              compiler_cxx='g++%s -O -Wall' % no_cygwin,
++                             compiler_so_cxx='g++%s -mdll -O -Wall' % no_cygwin,
+                              linker_exe='gcc%s' % no_cygwin,
+                              linker_so='%s%s %s %s'
+                                     % (self.linker_dll, no_cygwin,
++                                       shared_option, entry_point),
++                             linker_exe_cxx='g++%s' % no_cygwin,
++                             linker_so_cxx='%s%s %s %s'
++                                    % (self.linker_dll_cxx, no_cygwin,
+                                        shared_option, entry_point))
          # Maybe we should also append -mthreads, but then the finished
          # dlls need another dll (mingwm10.dll see Mingw32 docs)
-         # (-mthreads: Support thread-safe exception handling on `Mingw32')
---- Lib/distutils/emxccompiler.py
-+++ Lib/distutils/emxccompiler.py
-@@ -63,8 +63,12 @@
+diff --git a/lib-python/3/distutils/emxccompiler.py b/lib-python/3/distutils/emxccompiler.py
+index 3675f8d..17d2afa 100644
+--- a/lib-python/3/distutils/emxccompiler.py
++++ b/lib-python/3/distutils/emxccompiler.py
+@@ -63,8 +63,12 @@ class EMXCCompiler (UnixCCompiler):
          # XXX optimization, warnings etc. should be customizable.
          self.set_executables(compiler='gcc -Zomf -Zmt -O3 -fomit-frame-pointer -mprobe -Wall',
                               compiler_so='gcc -Zomf -Zmt -O3 -fomit-frame-pointer -mprobe -Wall',
@@ -65,7 +112,7 @@ http://bugs.python.org/issue1222585
  
          # want the gcc library statically linked (so that we don't have
          # to distribute a version dependent on the compiler we have)
-@@ -81,8 +85,12 @@
+@@ -81,8 +85,12 @@ class EMXCCompiler (UnixCCompiler):
                  raise CompileError(msg)
          else: # for other files use the C-compiler
              try:
@@ -80,9 +127,11 @@ http://bugs.python.org/issue1222585
              except DistutilsExecError as msg:
                  raise CompileError(msg)
  
---- Lib/distutils/sysconfig_cpython.py
-+++ Lib/distutils/sysconfig_cpython.py
-@@ -170,9 +170,12 @@
+diff --git a/lib-python/3/distutils/sysconfig_cpython.py b/lib-python/3/distutils/sysconfig_cpython.py
+index b947988..3f19020 100644
+--- a/lib-python/3/distutils/sysconfig_cpython.py
++++ b/lib-python/3/distutils/sysconfig_cpython.py
+@@ -191,9 +191,12 @@ def customize_compiler(compiler):
                  _osx_support.customize_compiler(_config_vars)
                  _config_vars['CUSTOMIZED_OSX_COMPILER'] = 'True'
  
@@ -96,9 +145,9 @@ http://bugs.python.org/issue1222585
 +        cflags = ''
 +        cxxflags = ''
  
-         newcc = None
          if 'CC' in os.environ:
-@@ -181,19 +184,27 @@
+             newcc = os.environ['CC']
+@@ -208,19 +211,27 @@ def customize_compiler(compiler):
              cxx = os.environ['CXX']
          if 'LDSHARED' in os.environ:
              ldshared = os.environ['LDSHARED']
@@ -127,7 +176,7 @@ http://bugs.python.org/issue1222585
          if 'AR' in os.environ:
              ar = os.environ['AR']
          if 'ARFLAGS' in os.environ:
-@@ -202,13 +213,17 @@
+@@ -229,13 +240,17 @@ def customize_compiler(compiler):
              archiver = ar + ' ' + ar_flags
  
          cc_cmd = cc + ' ' + cflags
@@ -146,9 +195,11 @@ http://bugs.python.org/issue1222585
              archiver=archiver)
  
          compiler.shared_lib_extension = shlib_suffix
---- Lib/distutils/unixccompiler.py
-+++ Lib/distutils/unixccompiler.py
-@@ -52,14 +52,17 @@
+diff --git a/lib-python/3/distutils/unixccompiler.py b/lib-python/3/distutils/unixccompiler.py
+index 6819d50..19345ee 100644
+--- a/lib-python/3/distutils/unixccompiler.py
++++ b/lib-python/3/distutils/unixccompiler.py
+@@ -52,14 +52,17 @@ class UnixCCompiler(CCompiler):
      # are pretty generic; they will probably have to be set by an outsider
      # (eg. using information discovered by the sysconfig about building
      # Python extensions).
@@ -174,7 +225,7 @@ http://bugs.python.org/issue1222585
                    }
  
      if sys.platform[:6] == "darwin":
-@@ -108,12 +111,19 @@
+@@ -123,12 +126,19 @@ class UnixCCompiler(CCompiler):
  
      def _compile(self, obj, src, ext, cc_args, extra_postargs, pp_opts):
          compiler_so = self.compiler_so
@@ -196,7 +247,7 @@ http://bugs.python.org/issue1222585
          except DistutilsExecError as msg:
              raise CompileError(msg)
  
-@@ -171,22 +181,16 @@
+@@ -186,22 +196,16 @@ class UnixCCompiler(CCompiler):
                  ld_args.extend(extra_postargs)
              self.mkpath(os.path.dirname(output_filename))
              try:
@@ -228,24 +279,6 @@ http://bugs.python.org/issue1222585
  
                  if sys.platform == 'darwin':
                      linker = _osx_support.compiler_fixup(linker, ld_args)
---- Lib/_osx_support.py
-+++ Lib/_osx_support.py
-@@ -14,13 +14,13 @@
- # configuration variables that may contain universal build flags,
- # like "-arch" or "-isdkroot", that may need customization for
- # the user environment
--_UNIVERSAL_CONFIG_VARS = ('CFLAGS', 'LDFLAGS', 'CPPFLAGS', 'BASECFLAGS',
--                            'BLDSHARED', 'LDSHARED', 'CC', 'CXX',
--                            'PY_CFLAGS', 'PY_LDFLAGS', 'PY_CPPFLAGS',
--                            'PY_CORE_CFLAGS')
-+_UNIVERSAL_CONFIG_VARS = ('CFLAGS', 'CXXFLAGS', 'LDFLAGS', 'CPPFLAGS',
-+                          'BASECFLAGS', 'BLDSHARED', 'LDSHARED', 'LDCXXSHARED',
-+                          'CC', 'CXX', 'PY_CFLAGS', 'PY_LDFLAGS',
-+                          'PY_CPPFLAGS', 'PY_CORE_CFLAGS')
- 
- # configuration variables that may contain compiler calls
--_COMPILER_CONFIG_VARS = ('BLDSHARED', 'LDSHARED', 'CC', 'CXX')
-+_COMPILER_CONFIG_VARS = ('BLDSHARED', 'LDSHARED', 'LDCXXSHARED', 'CC', 'CXX')
- 
- # prefix added to original configuration variable names
- _INITPRE = '_OSX_SUPPORT_INITIAL_'
+-- 
+2.8.4
+

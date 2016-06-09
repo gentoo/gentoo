@@ -6,27 +6,27 @@ EAPI=5
 
 # pypy3 needs to be built using python 2
 PYTHON_COMPAT=( python2_7 pypy )
-EHG_PROJECT="pypy"
-EHG_REPO_URI="https://bitbucket.org/pypy/pypy"
-EHG_REVISION="py3k"
-inherit check-reqs eutils mercurial multilib multiprocessing pax-utils \
-	python-any-r1 toolchain-funcs versionator
+inherit check-reqs eutils multilib multiprocessing pax-utils python-any-r1 toolchain-funcs versionator
 
-DESCRIPTION="A fast, compliant alternative implementation of Python 3"
+CPY_PATCHSET_VERSION="3.3.5-0"
+MY_P=pypy3.3-v${PV/_/-}
+
+DESCRIPTION="A fast, compliant alternative implementation of the Python (3.3) language"
 HOMEPAGE="http://pypy.org/"
-SRC_URI=""
+SRC_URI="https://bitbucket.org/pypy/pypy/downloads/${MY_P}-src.tar.bz2
+	https://dev.gentoo.org/~floppym/python-gentoo-patches-${CPY_PATCHSET_VERSION}.tar.xz"
 
 LICENSE="MIT"
 SLOT="0/$(get_version_component_range 1-2 ${PV})"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="bzip2 gdbm +jit libressl low-memory ncurses sandbox +shadowstack sqlite cpu_flags_x86_sse2 tk"
 
 RDEPEND=">=sys-libs/zlib-1.1.3:0=
 	virtual/libffi:0=
 	virtual/libintl:0=
 	dev-libs/expat:0=
-	!libressl? ( dev-libs/openssl:0= )
-	libressl? ( dev-libs/libressl:= )
+	!libressl? ( dev-libs/openssl:0=[-bindist] )
+	libressl? ( dev-libs/libressl:0= )
 	bzip2? ( app-arch/bzip2:0= )
 	gdbm? ( sys-libs/gdbm:0= )
 	ncurses? ( sys-libs/ncurses:0= )
@@ -39,9 +39,10 @@ RDEPEND=">=sys-libs/zlib-1.1.3:0=
 DEPEND="${RDEPEND}
 	low-memory? ( virtual/pypy:0 )
 	!low-memory? ( ${PYTHON_DEPS} )"
+#	doc? ( dev-python/sphinx )
 PDEPEND="app-admin/python-updater"
 
-S="${WORKDIR}/${P}-src"
+S="${WORKDIR}/${MY_P}-src"
 
 pkg_pretend() {
 	if [[ ${MERGE_TYPE} != binary ]]; then
@@ -76,11 +77,6 @@ pkg_setup() {
 	fi
 }
 
-src_unpack() {
-	default
-	mercurial_src_unpack
-}
-
 src_prepare() {
 	epatch "${FILESDIR}/4.0.0-gentoo-path.patch" \
 		"${FILESDIR}/1.9-distutils.unixccompiler.UnixCCompiler.runtime_library_dir_option.patch" \
@@ -92,7 +88,8 @@ src_prepare() {
 
 	# apply CPython stdlib patches
 	pushd lib-python/3 > /dev/null || die
-	epatch "${FILESDIR}"/5.2.0-distutils-c++.patch
+	epatch "${FILESDIR}"/5.2.0-distutils-c++.patch \
+		"${WORKDIR}"/patches/24_all_sqlite-3.8.4.patch
 	popd > /dev/null || die
 
 	epatch_user
@@ -159,8 +156,21 @@ src_compile() {
 	echo -e "\033[1m${@}\033[0m"
 	"${@}" || die "compile error"
 
+	# Exception occurred:
+	#  File "/tmp/1/pypy3-2.4.0-src/pypy/config/makerestdoc.py", line 199, in config_role
+	#    assert txt.check()
+	# AssertionError
 	#use doc && emake -C pypy/doc/ html
 	pax-mark m pypy-c libpypy-c.so
+}
+
+src_test() {
+	# (unset)
+	local -x PYTHONDONTWRITEBYTECODE
+
+	# Test runner requires Python 2 too. However, it spawns PyPy3
+	# internally so that we end up testing the correct interpreter.
+	"${PYTHON}" ./pypy/test_all.py --pypy=./pypy-c lib-python || die
 }
 
 src_install() {
@@ -215,9 +225,12 @@ src_install() {
 #    "tk": "_tkinter/tklib_build.py",
 #    "curses": "_curses_build.py" if sys.platform != "win32" else None,
 #    "syslog": "_syslog_build.py" if sys.platform != "win32" else None,
-#    "gdbm": "_gdbm_build.py"  if sys.platform != "win32" else None,
+#    "_gdbm": "_gdbm_build.py"  if sys.platform != "win32" else None,
 #    "pwdgrp": "_pwdgrp_build.py" if sys.platform != "win32" else None,
-	cffi_targets=( audioop syslog pwdgrp )
+#    "resource": "_resource_build.py" if sys.platform != "win32" else None,
+#    "lzma": "_lzma_build.py",
+#    "_decimal": "_decimal_build.py",
+	cffi_targets=( audioop syslog pwdgrp resource lzma decimal )
 	use gdbm && cffi_targets+=( gdbm )
 	use ncurses && cffi_targets+=( curses )
 	use sqlite && cffi_targets+=( sqlite3 )
