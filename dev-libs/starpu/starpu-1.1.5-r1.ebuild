@@ -2,23 +2,22 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-AUTOTOOLS_AUTORECONF=1
 FORTRAN_STANDARD=90
 
-inherit autotools-utils toolchain-funcs cuda fortran-2
+inherit autotools toolchain-funcs cuda fortran-2
 
 DESCRIPTION="Unified runtime system for heterogeneous multicore architectures"
 HOMEPAGE="http://runtime.bordeaux.inria.fr/StarPU/"
 SRC_URI="${HOMEPAGE}/files/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
-SLOT="0"
-KEYWORDS="~alpha amd64 ~x86 ~amd64-linux ~x86-linux"
+SLOT="0/8"
+KEYWORDS="~alpha ~amd64 ~x86 ~amd64-linux ~x86-linux"
 
-IUSE="blas cuda debug doc examples fftw gcc-plugin mpi opencl opengl qt4
-	static-libs test"
+IUSE="blas cuda debug doc examples fftw gcc-plugin mpi opencl opengl
+	qt4 static-libs test"
 
 RDEPEND="
 	sys-apps/hwloc:0=
@@ -42,45 +41,43 @@ DEPEND="${RDEPEND}
 	test? ( gcc-plugin? ( dev-scheme/guile ) )"
 
 src_prepare() {
+	default
 	# upstream did not want the patches so apply sed's
 	sed -i -e 's/-O3 $CFLAGS/$CFLAGS/' configure.ac || die
 	sed -i -e '/Libs.private/s/@LDFLAGS@//g' *.pc.in */*.pc.in || die
-	autotools-utils_src_prepare
+	eautoreconf
 	use cuda && cuda_src_prepare
 }
 
 src_configure() {
 	use blas && export BLAS_LIBS="$($(tc-getPKG_CONFIG) --libs blas)"
 
-	local myeconfargs=(
-		--disable-build-examples
-		$(use_enable cuda)
-		$(use_enable debug)
-		$(use_enable doc build-doc)
-		$(use_enable fftw starpufft)
-		$(use_enable gcc-plugin gcc-extensions)
-		$(use_enable opencl)
-		$(use_enable opengl opengl-render)
-		$(use_enable qt4 starpu-top)
-		$(use_with mpi mpicc "$(type -P mpicc)")
-		$(use cuda && use_enable blas magma)
+	econf \
+		--disable-build-examples \
+		$(use_enable cuda) \
+		$(use_enable debug) \
+		$(use_enable doc build-doc) \
+		$(use_enable fftw starpufft) \
+		$(use_enable gcc-plugin gcc-extensions) \
+		$(use_enable opencl) \
+		$(use_enable opengl opengl-render) \
+		$(use_enable qt4 starpu-top) \
+		$(use_enable static-libs static) \
+		$(use_with mpi mpicc "$(type -P mpicc)") \
+		$(use cuda && use_enable blas magma) \
 		$(use mpi && use_enable test mpi-check)
-	)
-	autotools-utils_src_configure
 }
 
 src_test() {
-	autotools-utils_src_test -j1 showcheck
+	emake -j1 showcheck
 }
 
 src_install() {
-	autotools-utils_src_install
-	if use doc; then
-		dodoc "${BUILD_DIR}"/doc/doxygen/*.pdf
-		dohtml -r "${BUILD_DIR}"/doc/doxygen/html/*
-	fi
+	default
+	use doc && dodoc -r doc/doxygen/*.pdf doc/doxygen/html
 	if use examples; then
 		insinto /usr/share/doc/${PF}/examples
 		doins -r examples/*
 	fi
+	prune_libtool_files --all
 }
