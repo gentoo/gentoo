@@ -8,7 +8,7 @@ EAPI=5
 PYTHON_COMPAT=( python2_7 pypy )
 inherit eutils multilib pax-utils python-any-r1 unpacker versionator
 
-BINHOST="https://dev.gentoo.org/~mgorny/dist/pypy-bin/${PV}-nossl2"
+BINHOST="https://dev.gentoo.org/~mgorny/dist/pypy3-bin/${PV}-nossl2"
 
 DESCRIPTION="A fast, compliant alternative implementation of Python 3 (binary package)"
 HOMEPAGE="http://pypy.org/"
