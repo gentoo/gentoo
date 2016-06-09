@@ -30,6 +30,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Sebastien Fabbro <bicatali@gentoo.org>  (6 Jun 2016)
+# Dead upstream, several bugs: 513972, 542384, 548988
+# Removal in 30 days
+sys-fs/redirfs
+
 # Michał Górny <mgorny@gentoo.org> (6 Jun 2016)
 # New PyPy versions, masked for testing.
 ~dev-python/pypy-5.1.1
