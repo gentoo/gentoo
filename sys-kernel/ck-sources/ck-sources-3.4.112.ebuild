@@ -11,7 +11,7 @@ HOMEPAGE="https://dev.gentoo.org/~mpagano/genpatches/
 	http://users.tpg.com.au/ckolivas/kernel/"
 
 K_WANT_GENPATCHES="base extras"
-K_GENPATCHES_VER="93"
+K_GENPATCHES_VER="95"
 K_SECURITY_UNSUPPORTED="1"
 K_DEBLOB_AVAILABLE="1"
 
