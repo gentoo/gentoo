@@ -16050,7 +16050,7 @@ sci-mathematics/frobby 0.9.0-r1: Software system and project for computations wi
 sci-mathematics/genius 1.0.17 1.0.19: Genius Mathematics Tool and the GEL Language
 sci-mathematics/geogebra 4.1.120.0: Mathematics software for geometry
 sci-mathematics/geomview 1.9.5: Interactive Geometry Viewer
-sci-mathematics/gfan 0.5: computes Groebner fans and tropical varities
+sci-mathematics/gfan 0.5 0.5-r1: computes Groebner fans and tropical varities
 sci-mathematics/ggnfs 0.77.1-r2: A suite of algorithms to help factoring large integers
 sci-mathematics/gimps 28.7 28.9: The Great Internet Mersenne Prime Search
 sci-mathematics/ginac 1.5.8 1.6.1 1.6.2 1.6.6: C++ library and tools for symbolic calculations
@@ -16186,7 +16186,7 @@ sci-visualization/qtiplot 0.9.8.9-r2 0.9.8.9-r3 0.9.8.9-r4: Qt based clone of th
 sci-visualization/quickplot 0.10.6 0.10.8: A fast interactive 2D plotter
 sci-visualization/spectromatic 1.0-r2: Generates time-frequency analysis images from wav files
 sci-visualization/spyview 20111018 20130823: Interactive plotting program
-sci-visualization/veusz 1.11 1.23 1.23.2 1.23.2-r1 1.24: Qt scientific plotting package with good Postscript output
+sci-visualization/veusz 1.11 1.24: Qt scientific plotting package with good Postscript output
 sci-visualization/visit 2.7.3 2.8.2 2.9.0 2.9.2: A software that delivers parallel interactive visualizations
 sci-visualization/xd3d 8.3.1: Scientific visualization tool
 sci-visualization/xds-viewer 0.6: Viewing X-ray diffraction and control images in the context of data processing by the XDS
