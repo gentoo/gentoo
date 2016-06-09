@@ -42,7 +42,7 @@ src_prepare() {
 	find . -name Makefile\* | xargs sed -i \
 		-e "/^CC.*=/s:\(gcc\|cc\):$(tc-getCC):g" \
 		-e "/^CFLAGS.*=/s:-g:${CFLAGS} $($(tc-getPKG_CONFIG) --cflags wcstools):g" \
-		-e "s:-I../../lib/freetype/include:$($(tc-getPKG_CONFIG) --cflags freetype2):g" \
+		-e "s:-I../../lib/freetype/include :$($(tc-getPKG_CONFIG) --cflags freetype2):g" \
 		-e 's:$(CC) -o:$(CC) $(LDFLAGS) -o:g' \
 		-e "s:-lwcs:$($(tc-getPKG_CONFIG) --libs wcstools):g" \
 		-e "s:-lcfitsio:$($(tc-getPKG_CONFIG) --libs cfitsio):g" \
