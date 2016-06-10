@@ -51,3 +51,8 @@ src_compile() {
 		emake CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}" CC="$(tc-getCC)" python
 	fi
 }
+
+src_install() {
+	default
+	python_optimize
+}
