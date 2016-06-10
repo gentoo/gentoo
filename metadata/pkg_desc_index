@@ -8900,7 +8900,7 @@ dev-ruby/gh 0.14.0: multi-layer client for the github api v3
 dev-ruby/gherkin 2.12.0-r2 2.12.0-r3 2.12.2 3.2.0-r1: Fast Gherkin lexer and parser
 dev-ruby/gherkin3 3.1.2: Fast Gherkin lexer and parser
 dev-ruby/git 1.2.9.1 1.3.0: Library for using Git in Ruby
-dev-ruby/github_api 0.11.3 0.11.3-r1 0.12.4: A Ruby wrapper for the GitHub REST API v3
+dev-ruby/github_api 0.11.3 0.11.3-r1 0.12.4 0.14.0: A Ruby wrapper for the GitHub REST API v3
 dev-ruby/globalid 0.3.6: Reference models by URI
 dev-ruby/gnuplot 2.6.2-r2: Gnuplot drawing library - Ruby Bindings
 dev-ruby/gpgme 2.0.12: Ruby language binding for GnuPG Made Easy
@@ -8914,7 +8914,7 @@ dev-ruby/hashie 2.1.2-r1 3.4.3 3.4.4: Hashie is a small collection of tools that
 dev-ruby/hashr 0.0.22 1.0.0 2.0.0: Simple Hash extension to make working with nested hashes easier
 dev-ruby/heredoc_unindent 1.2.0: Removes leading whitespace from Ruby heredocs
 dev-ruby/hiera 1.3.4 1.3.4-r1 2.0.0 3.0.1-r1 3.0.5 3.0.6 3.1.0 3.1.1 3.1.2 3.2.0: A simple pluggable Hierarchical Database
-dev-ruby/hiera-eyaml 2.0.8: Encrypted YAML backend for hiera
+dev-ruby/hiera-eyaml 2.0.8 2.1.0: Encrypted YAML backend for hiera
 dev-ruby/hiera-eyaml-gpg 0.4 0.5 0.6: A GPG backend for hiera-eyaml
 dev-ruby/hiera-eyaml-plaintext 0.6: A plaintext backend for hiera-eyaml
 dev-ruby/highline 1.7.6 1.7.8: Highline is a high-level command-line IO library for ruby
