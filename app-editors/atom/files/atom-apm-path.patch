@@ -1,5 +1,5 @@
---- build/app.asar/src/config-schema.js.orig	2016-05-24 16:59:41.284449076 -0400
-+++ build/app.asar/src/config-schema.js	2016-05-24 17:01:05.685447769 -0400
+--- build/app/src/config-schema.js.orig	2016-05-24 16:59:41.284449076 -0400
++++ build/app/src/config-schema.js	2016-05-24 17:01:05.685447769 -0400
 @@ -9,6 +9,11 @@
      core: {
        type: 'object',
