@@ -129,7 +129,7 @@ src_install() {
 	waf-utils_src_install
 	mv ${PN}.1 ${PN}${SLOT}.1
 	doman ${PN}${SLOT}.1
-	newicon icons/icon/ardour_icon_tango_48px_red.png ${PN}${SLOT}.png
+	newicon "${S}/gtk2_ardour/resources/Ardour-icon_48px.png" ${PN}${SLOT}.png
 	make_desktop_entry ardour4 ardour4 ardour4 AudioVideo
 }
 
