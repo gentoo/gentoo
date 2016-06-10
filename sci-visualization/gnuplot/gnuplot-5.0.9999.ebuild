@@ -4,13 +4,13 @@
 
 EAPI=5
 
-inherit eutils flag-o-matic multilib readme.gentoo-r1 toolchain-funcs wxwidgets
+inherit autotools eutils flag-o-matic multilib readme.gentoo-r1 toolchain-funcs wxwidgets
 
 DESCRIPTION="Command-line driven interactive plotting program"
 HOMEPAGE="http://www.gnuplot.info/"
 
 if [[ -z ${PV%%*9999} ]]; then
-	inherit autotools cvs
+	inherit cvs
 	ECVS_SERVER="gnuplot.cvs.sourceforge.net:/cvsroot/gnuplot"
 	ECVS_MODULE="gnuplot"
 	ECVS_BRANCH="branch-5-0-stable"
@@ -23,7 +23,6 @@ else
 	MY_P="${P/_/.}"
 	SRC_URI="mirror://sourceforge/gnuplot/${MY_P}.tar.gz"
 	KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86 ~ppc-aix ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
-	inherit autotools
 fi
 
 LICENSE="gnuplot bitmap? ( free-noncomm )"
@@ -50,7 +49,7 @@ RDEPEND="
 	libcerf? ( sci-libs/libcerf )
 	svga? ( media-libs/svgalib )
 	wxwidgets? (
-		x11-libs/wxGTK:2.8[X]
+		x11-libs/wxGTK:3.0[X]
 		x11-libs/cairo
 		x11-libs/pango
 		x11-libs/gtk+:2 )
@@ -69,12 +68,14 @@ E_SITEFILE="lisp/50${PN}-gentoo.el"
 TEXMF="${EPREFIX}/usr/share/texmf-site"
 
 src_prepare() {
+	# Fix underlinking
+	epatch "${FILESDIR}"/${PN}-5.0.1-fix-underlinking.patch
+
 	if [[ -z ${PV%%*9999} ]]; then
 		local dir
 		for dir in config demo m4 term tutorial; do
 			emake -C "$dir" -f Makefile.am.in Makefile.am
 		done
-		eautoreconf
 	fi
 
 	# Add special version identification as required by provision 2
@@ -98,6 +99,17 @@ src_prepare() {
 		you may have to set the GDFONTPATH and GNUPLOT_DEFAULT_GDFONT
 		environment variables. See the FAQ file in /usr/share/doc/${PF}/
 		for more information.'
+
+	mv configure.in configure.ac || die
+	eautoreconf
+
+	# Make sure we don't mix build & host flags.
+	sed -i \
+		-e 's:@CPPFLAGS@:$(BUILD_CPPFLAGS):' \
+		-e 's:@CFLAGS@:$(BUILD_CFLAGS):' \
+		-e 's:@LDFLAGS@:$(BUILD_LDFLAGS):' \
+		-e 's:@CC@:$(CC_FOR_BUILD):' \
+		docs/Makefile.in || die
 }
 
 src_configure() {
@@ -106,11 +118,13 @@ src_configure() {
 	fi
 
 	if use wxwidgets; then
-		WX_GTK_VER="2.8"
+		WX_GTK_VER="3.0"
 		need-wxwidgets unicode
 	fi
 
 	tc-export CC CXX			#453174
+	tc-export_build_env BUILD_CC
+	export CC_FOR_BUILD=${BUILD_CC}
 
 	econf \
 		--without-pdf \
@@ -131,13 +145,13 @@ src_configure() {
 		--enable-stats \
 		$(use_with qt4 qt qt4) \
 		$(use_enable wxwidgets) \
-		DIST_CONTACT="http://bugs.gentoo.org/" \
+		DIST_CONTACT="https://bugs.gentoo.org/" \
 		EMACS=no
 }
 
 src_compile() {
 	# Prevent access violations, see bug 201871
-	VARTEXFONTS="${T}/fonts"
+	export VARTEXFONTS="${T}/fonts"
 
 	# We believe that the following line is no longer needed.
 	# In case of problems file a bug report at bugs.gentoo.org.
