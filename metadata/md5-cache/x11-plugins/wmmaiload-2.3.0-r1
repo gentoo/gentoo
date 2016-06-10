@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare
+DEPEND=x11-libs/gtk+:2 x11-libs/libXpm virtual/pkgconfig
+DESCRIPTION=dockapp that monitors one or more mailboxes
+EAPI=6
+HOMEPAGE=http://tnemeth.free.fr/projets/dockapps.html
+KEYWORDS=~amd64 ~ppc ~ppc64 ~sparc ~x86
+LICENSE=GPL-2
+RDEPEND=x11-libs/gtk+:2 x11-libs/libXpm
+SLOT=0
+SRC_URI=http://tnemeth.free.fr/projets/programmes/wmmaiload-2.3.0.tar.bz2
+_eclass_exported_funcs=src_prepare:- src_configure:- src_compile:- src_install:-
+_eclasses_=multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=6ec6c730975a2ed03eb82a300830daa8
