@@ -5,7 +5,7 @@
 EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
-inherit flag-o-matic python-any-r1 eutils rpm
+inherit flag-o-matic python-any-r1 eutils multiprocessing rpm
 
 DESCRIPTION="A hackable text editor for the 21st Century"
 HOMEPAGE="https://atom.io"
@@ -274,7 +274,7 @@ src_prepare() {
 	_s="${WORKDIR}/$(package_dir asar)"
 	"${_s}"/node_modules/asar/bin/asar \
 		extract "${S}/usr/share/atom/resources/app.asar" \
-				"${S}/build/app.asar" || die
+				"${S}/build/app" || die
 
 	cd "${S}" || die
 
@@ -282,7 +282,7 @@ src_prepare() {
 	epatch "${FILESDIR}/asar-require.patch"
 
 	sed -i -e "s|{{ATOM_SUFFIX}}|${suffix}|g" \
-		"${S}/build/app.asar/src/config-schema.js" || die
+		"${S}/build/app/src/config-schema.js" || die
 
 	eapply_user
 }
@@ -310,6 +310,14 @@ src_configure() {
 
 src_compile() {
 	local binmod _s x nodegyp="/usr/$(get_libdir)/node_modules/npm/node_modules/node-gyp/bin/node-gyp.js"
+	local ctags_d="node_modules/symbols-view/vendor"
+	local jobs=$(makeopts_jobs) gypopts
+
+	gypopts="--nodedir=/usr/include/electron/node/ --verbose"
+
+	if [[ ${MAKEOPTS} == *-j* && ${jobs} != 999 ]]; then
+		gypopts+=" --jobs ${jobs}"
+	fi
 
 	mkdir -p "${S}/build/modules/" || die
 
@@ -317,17 +325,33 @@ src_compile() {
 		einfo "Building ${binmod}..."
 		_s="${WORKDIR}/$(package_dir ${binmod})"
 		cd "${_s}" || die
-		"${nodegyp}" --nodedir=/usr/include/electron/node/ --verbose build || die
+		"${nodegyp}" ${gypopts} build || die
 		x=${binmod##node-}
 		mkdir -p "${S}/build/modules/${x}"
 		cp build/Release/*.node "${S}/build/modules/${x}"
 	done
 
+	# Put compiled binary modules in place
+	_fix_binmods "${S}/build" "app"
+	_fix_binmods "${S}/usr/share/atom/resources" "app"
+
+	# Remove non-Linux vendored ctags binaries
+	rm "${S}/build/app/${ctags_d}/ctags-darwin" \
+	   "${S}/build/app/${ctags_d}/ctags-win32.exe"
+
 	# Re-pack app.asar
-	_s="${WORKDIR}/$(package_dir asar)"
-	"${_s}"/node_modules/asar/bin/asar \
-		pack "${S}/build/app.asar" \
-             "${S}/usr/share/atom/resources/app.asar" || die
+	# Keep unpack rules in sync with build/tasks/generate-asar-task.coffee
+	x="--unpack={*.node,ctags-config,ctags-linux,**/node_modules/spellchecker/**,**/resources/atom.png}"
+	_s="${WORKDIR}/$(package_dir asar)/node_modules/asar/bin"
+	cd "${S}/build" || die
+	echo "asar" pack "${x}" "app" "app.asar"
+	"${_s}/asar" pack "${x}" "app" "app.asar" || die
+	cd "${S}" || die
+
+	# Replace vendored ctags with a symlink to system ctags
+	rm "${S}/build/app.asar.unpacked/${ctags_d}/ctags-linux" || die
+	ln -s "/usr/bin/ctags" \
+		"${S}/build/app.asar.unpacked/${ctags_d}/ctags-linux" || die
 }
 
 _fix_binmods() {
@@ -345,7 +369,7 @@ _fix_binmods() {
 		mod=$(basename ${modpath})
 
 		# must copy here as symlinks will cause the module loading to fail
-		cp "${ED}/${install_dir}/modules/${mod}/${f}" "${path}" || die
+		cp -f "${S}/build/modules/${mod}/${f}" "${path}" || die
 		cruft=$(find "${d}" -name '*.a' -print)
 		if [ -n "${cruft}" ]; then
 			rm ${cruft} || die
@@ -356,25 +380,14 @@ _fix_binmods() {
 src_install() {
 	local install_dir="$(get_install_dir)"
 	local suffix="$(get_install_suffix)"
-	local ctags_d="${ED}/${install_dir}/app.asar.unpacked/node_modules/symbols-view/vendor"
 
 	cd "${S}" || die
 
 	insinto "${install_dir}"
-	doins -r build/modules
 
-	doins usr/share/atom/resources/app.asar
+	doins build/app.asar
+	doins -r build/app.asar.unpacked
 	doins -r usr/share/atom/resources/app
-	doins -r usr/share/atom/resources/app.asar.unpacked
-
-	_fix_binmods "${ED}/${install_dir}" "app"
-	_fix_binmods "${ED}/${install_dir}" "app.asar.unpacked"
-
-	rm -r "${ED}/${install_dir}/modules" || die
-
-	# Remove vendored ctags binary and replace with a symlink to system ctags
-	rm "${ctags_d}"/* || die
-	ln -s "/usr/bin/ctags" "${ctags_d}/ctags-linux" || die
 
 	insinto /usr/share/applications/
 	newins usr/share/applications/atom.desktop "atom${suffix}.desktop"
