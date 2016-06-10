@@ -17,8 +17,8 @@ IUSE="debug ft geoip mysql sasl tcpd"
 MY_CDEPEND="
 	net-analyzer/rrdtool[perl]
 	net-libs/libpcap
-	sys-libs/ncurses
-	sys-libs/readline
+	sys-libs/ncurses:=
+	sys-libs/readline:=
 	sys-libs/zlib
 	ft? ( net-analyzer/flow-tools )
 	geoip? ( dev-libs/geoip )
