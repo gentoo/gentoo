@@ -1,9 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
-USE_RUBY="ruby19 ruby20 ruby21 ruby22"
+USE_RUBY="ruby20 ruby21 ruby22"
 
 # NOTE: this package contains precompiled code. It appears that all
 # source code can be found at https://code.google.com/p/selenium/ but the
@@ -30,7 +30,6 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 ruby_add_rdepend ">=dev-ruby/childprocess-0.5.0
-	>=dev-ruby/multi_json-1.0.4
 	dev-ruby/rubyzip:1"
 
 all_ruby_prepare() {
