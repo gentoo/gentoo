@@ -8,6 +8,7 @@ USE_RUBY="ruby20 ruby21 ruby22"
 RUBY_FAKEGEM_RECIPE_DOC="yard"
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 RUBY_FAKEGEM_EXTRADOC="README.md CONTRIBUTING.md"
+RUBY_FAKEGEM_GEMSPEC="${PN}.gemspec"
 
 inherit multilib ruby-fakegem
 
