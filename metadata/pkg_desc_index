@@ -4764,7 +4764,7 @@ dev-libs/librdkafka 0.9.0.99: Apache Kafka C/C++ client library
 dev-libs/librelp 1.2.7-r1 1.2.9: An easy to use library for the RELP protocol
 dev-libs/librep 0.92.2.1 0.92.3 0.92.5: Shared library implementing a Lisp dialect
 dev-libs/libreport 2.0.13-r1: Generic library for reporting software bugs
-dev-libs/libressl 2.2.8 2.3.5 2.4.0: Free version of the SSL/TLS protocol forked from OpenSSL
+dev-libs/libressl 2.2.8 2.2.9 2.3.5 2.3.6 2.4.0 2.4.1: Free version of the SSL/TLS protocol forked from OpenSSL
 dev-libs/librevenge 0.0.1 0.0.2 0.0.3 0.0.4 9999: A helper library for REVerse ENGineered formats filters
 dev-libs/libroadnav 0.19: A library capable of plotting streetmaps and providing driving directions for US addresses
 dev-libs/librra 0.16: Implements the RRA protocol, for syncing pre WM-2005 PIM data, and files for all versions
