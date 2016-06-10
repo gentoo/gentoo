@@ -18676,7 +18676,7 @@ x11-plugins/wmpeople 1.3: Nice, highly configurable WMaker DockApp that monitors
 x11-plugins/wmpiki 0.2.1: Wmpiki is a dockapp which checks and displays small leds for indicate hosts activity
 x11-plugins/wmpinboard 1.0: Window Maker dock applet resembling a miniature pinboard
 x11-plugins/wmping 0.2.1: a simple host status monitoring dockapp
-x11-plugins/wmpop3 0.5.6a: dockapp for checking pop3 accounts
+x11-plugins/wmpop3 0.5.6a 0.5.6a-r1: dockapp for checking pop3 accounts
 x11-plugins/wmpop3lb 2.4.2-r2: dockapp for checking up to 7 pop3 accounts
 x11-plugins/wmpower 0.4.3: a dockapp to get/set power management status for laptops (APM, ACPI and CPUfreq)
 x11-plugins/wmppp 1.3.0 1.3.2-r1: PPP dial control and network load monitor with NeXTStep look
