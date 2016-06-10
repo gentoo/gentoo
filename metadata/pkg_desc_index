@@ -449,7 +449,7 @@ app-cdr/cdemu-daemon 3.0.2 3.0.4: Daemon of the CDEmu optical media image mounti
 app-cdr/cdlabelgen 4.0.0 4.1.0: CD cover, tray card and envelope generator
 app-cdr/cdrdao 1.2.3-r1 1.2.3-r2 1.2.3-r3: Burn CDs in disk-at-once mode -- with optional GUI frontend
 app-cdr/cdrkit 1.1.11-r2: A set of tools for CD/DVD reading and recording, including cdrecord
-app-cdr/cdrtools 3.01_alpha17 3.01_alpha24 3.02_alpha06: A set of tools for CD/DVD reading and recording, including cdrecord
+app-cdr/cdrtools 3.01_alpha17 3.01_alpha17-r1 3.01_alpha24 3.02_alpha06 3.02_alpha06-r1: A set of tools for CD/DVD reading and recording, including cdrecord
 app-cdr/cdw 0.8.0 9999: An ncurses based console frontend for cdrtools and dvd+rw-tools
 app-cdr/cue2toc 0.4: Convert CUE files to cdrdao's TOC format
 app-cdr/cuecue 0.2.2-r1: Cuecue is a suite to convert .cue + [.ogg|.flac|.wav|.mp3] to .cue + .bin
