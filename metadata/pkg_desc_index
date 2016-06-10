@@ -252,7 +252,7 @@ app-arch/cpio 2.11-r3 2.12 2.12-r1: A file archival tool which can also read and
 app-arch/createrepo 0.10.3 0.10.4: Creates a common rpm-metadata repository
 app-arch/deb2targz 1-r2: Convert a .deb file to a .tar.gz archive
 app-arch/defluff 0.3.2: deflate huffman optimizer
-app-arch/deltarpm 3.6_pre20110223-r1: tools to create and apply deltarpms
+app-arch/deltarpm 3.6_pre20110223-r2: tools to create and apply deltarpms
 app-arch/dpkg 1.17.26 1.17.27 1.18.6 1.18.7: Package maintenance system for Debian
 app-arch/duff 0.5.2: Command-line utility for quickly finding duplicates in a given set of files
 app-arch/dump 0.4.44-r1 0.4.44-r2 0.4.45: Dump/restore ext2fs backup utilities
@@ -15244,7 +15244,7 @@ net-wireless/wavemon 0.7.5 0.7.6: Ncurses based monitor for IEEE 802.11 wireless
 net-wireless/wepattack 0.1.3-r3: WLAN tool for breaking 802.11 WEP keys
 net-wireless/wepdecrypt 0.8-r2: Enhanced version of WepAttack a tool for breaking 802.11 WEP keys
 net-wireless/wifi-radar 2.0.8-r2: WiFi Radar is a Python/PyGTK2 utility for managing WiFi profiles
-net-wireless/wireless-regdb 20130213 20141118 20150925 20151022 20160208 20160502: Binary regulatory database for CRDA
+net-wireless/wireless-regdb 20160502 20160610: Binary regulatory database for CRDA
 net-wireless/wireless-tools 30_pre9: A collection of tools to configure IEEE 802.11 wireless LAN cards
 net-wireless/wpa_supplicant 2.5-r1: IEEE 802.1X/WPA supplicant for secure wireless transfers
 net-wireless/yatebts 4.0.0-r3 5.0.0 9999: The Yate GSM base station
