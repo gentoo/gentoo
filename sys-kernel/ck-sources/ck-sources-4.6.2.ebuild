@@ -5,7 +5,6 @@
 EAPI="5"
 ETYPE="sources"
 KEYWORDS="~amd64 ~x86"
-IUSE="bfsonly"
 
 HOMEPAGE="https://dev.gentoo.org/~mpagano/genpatches/
 	http://users.tpg.com.au/ckolivas/kernel/"
@@ -13,13 +12,11 @@ HOMEPAGE="https://dev.gentoo.org/~mpagano/genpatches/
 K_WANT_GENPATCHES="base extras experimental"
 K_EXP_GENPATCHES_PULL="1"
 K_EXP_GENPATCHES_NOUSE="1"
-K_GENPATCHES_VER="102"
+K_GENPATCHES_VER="3"
 K_SECURITY_UNSUPPORTED="1"
 K_DEBLOB_AVAILABLE="1"
 
 inherit kernel-2
-detect_version
-detect_arch
 
 K_BRANCH_ID="${KV_MAJOR}.${KV_MINOR}"
 
@@ -30,26 +27,23 @@ DESCRIPTION="Con Kolivas' high performance patchset and Gentoo's genpatches for 
 XTRA_INCP_MIN=""
 XTRA_INCP_MAX=""
 
+#-- Until BFQ patches make it into the genpatches list again
+
 #--
 
 CK_VERSION="1"
-BFS_VERSION="440"
 
-CK_FILE="patch-${K_BRANCH_ID}-ck${CK_VERSION}-r1.bz2"
-BFS_FILE="${K_BRANCH_ID}-sched-bfs-${BFS_VERSION}-r1.patch"
+CK_FILE="patch-${K_BRANCH_ID}-ck${CK_VERSION}.xz"
 
-CK_BASE_URL="http://ck.kolivas.org/patches/3.0"
+CK_BASE_URL="http://ck.kolivas.org/patches/4.0"
 CK_LVER_URL="${CK_BASE_URL}/${K_BRANCH_ID}/${K_BRANCH_ID}-ck${CK_VERSION}"
-CK_URI="https://dev.gentoo.org/~dlan/distfiles/${CK_FILE}
-	${CK_LVER_URL}/${CK_FILE}"
-BFS_URI="https://dev.gentoo.org/~dlan/distfiles/${BFS_FILE}
-	${CK_LVER_URL}/patches/${BFS_FILE}"
+CK_URI="${CK_LVER_URL}/${CK_FILE}"
 
 #-- Build extra incremental patches list --------------------------------------
 
 LX_INCP_URI=""
 LX_INCP_LIST=""
-if [ -n "${XTRA_INCP_MIN}" ]; then
+if [[ -n "${XTRA_INCP_MIN}" ]]; then
 	LX_INCP_URL="${KERNEL_BASE_URI}/incr"
 	for i in `seq ${XTRA_INCP_MIN} ${XTRA_INCP_MAX}`; do
 		LX_INCP[i]="patch-${K_BRANCH_ID}.${i}-$(($i+1)).bz2"
@@ -58,45 +52,37 @@ if [ -n "${XTRA_INCP_MIN}" ]; then
 	done
 fi
 
-#-- CK needs sometimes to patch itself... (3.7)--------------------------------
+#-- CK needs sometimes to patch itself... ---------------------------
 
 CK_INCP_URI=""
 CK_INCP_LIST=""
 
-#-- Local patches needed for the ck-patches to apply smoothly (3.4/3.5) -------
+#-- Local patches needed for the ck-patches to apply smoothly -------
 
 PRE_CK_FIX=""
 POST_CK_FIX=""
 
 #--
 
-SRC_URI="${KERNEL_URI} ${LX_INCP_URI} ${GENPATCHES_URI} ${ARCH_URI} ${CK_INCP_URI}
-	!bfsonly? ( ${CK_URI} )
-	bfsonly? ( ${BFS_URI} )"
+SRC_URI="${KERNEL_URI} ${LX_INCP_URI} ${GENPATCHES_URI} ${ARCH_URI} ${CK_INCP_URI} ${CK_URI}"
+
+UNIPATCH_LIST="${LX_INCP_LIST} ${PRE_CK_FIX} ${DISTDIR}/${CK_FILE} ${CK_INCP_LIST} ${POST_CK_FIX}"
+UNIPATCH_STRICTORDER="yes"
+
+#-- Since experimental genpatches && we want BFQ irrespective of experimental -
 
 K_EXP_GENPATCHES_LIST="50*_*.patch*"
 
-src_unpack() {
-	UNIPATCH_LIST="${LX_INCP_LIST} ${PRE_CK_FIX} ${DISTDIR}"
-	UNIPATCH_STRICTORDER="yes"
-
-	if ! use bfsonly ; then
-		UNIPATCH_LIST="${UNIPATCH_LIST}/${CK_FILE}"
-	else
-		UNIPATCH_LIST="${UNIPATCH_LIST}/${BFS_FILE}"
-	fi
-
-	UNIPATCH_LIST="${UNIPATCH_LIST} ${CK_INCP_LIST} ${POST_CK_FIX}"
-
-	#-- Since experimental genpatches && we want BFQ irrespective of experimental -
-	kernel-2_src_unpack
+pkg_setup() {
+	detect_version || die
+	detect_arch || die
 }
 
 src_prepare() {
 
 #-- Comment out CK's EXTRAVERSION in Makefile ---------------------------------
 
-	sed -i -e 's/\(^EXTRAVERSION :=.*$\)/# \1/' "${S}/Makefile"
+	sed -i -e 's/\(^EXTRAVERSION :=.*$\)/# \1/' "${S}/Makefile" || die
 }
 
 pkg_postinst() {
@@ -104,6 +90,8 @@ pkg_postinst() {
 	kernel-2_pkg_postinst
 
 	elog
+	elog "Currently no BFQ support as BFQ for linux version 4.6.x has not been released"
+	elog "If BFQ support is desired please use ck-sources-4.5.7"
 	elog "For more info on this patchset, see: https://forums.gentoo.org/viewtopic-t-941030-start-0.html"
 	elog
 }
