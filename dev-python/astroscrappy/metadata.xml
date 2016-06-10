@@ -6,11 +6,11 @@
     <name>Gentoo Astronomy Project</name>
   </maintainer>
   <longdescription lang="en">
-    ccdproc is a AstroPy-affliated package for the basic reduction of
-    CCD images. It provides a framework for accounting for error propagation
-    and bad pixel tracking through the reduction steps.
+    Astro-SCRAPPY is designed to detect cosmic rays in images (numpy arrays),
+    based on Pieter van Dokkum's L.A.Cosmic algorithm. Parallelization is
+    achieved using OpenMP.
   </longdescription>
   <upstream>
-    <remote-id type="pypi">ccdproc</remote-id>
+    <remote-id type="pypi">astroscrappy</remote-id>
   </upstream>
 </pkgmetadata>

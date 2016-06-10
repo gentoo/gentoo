@@ -13,13 +13,9 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS=""
 
-IUSE="convert-mozilla-cookies +gnutls idn nls openssl socks5 +ssl verify-file"
+IUSE="convert-mozilla-cookies +gnutls idn libressl nls socks5 +ssl verify-file"
 LFTP_LINGUAS=( cs de es fr it ja ko pl pt_BR ru uk zh_CN zh_HK zh_TW )
 IUSE+=" ${LFTP_LINGUAS[@]/#/linguas_}"
-
-REQUIRED_USE="
-	ssl? ( ^^ ( openssl gnutls ) )
-"
 
 RDEPEND="
 	>=sys-libs/ncurses-5.1:=
@@ -34,7 +30,10 @@ RDEPEND="
 	)
 	ssl? (
 		gnutls? ( >=net-libs/gnutls-1.2.3:= )
-		openssl? ( dev-libs/openssl:0= )
+		!gnutls? (
+			!libressl? ( dev-libs/openssl:0= )
+			libressl? ( dev-libs/libressl:0= )
+		)
 	)
 	verify-file? (
 		dev-perl/String-CRC32
@@ -71,9 +70,9 @@ src_prepare() {
 src_configure() {
 	econf \
 		$(use_enable nls) \
-		$(use_with gnutls) \
+		$(usex ssl "$(use_with gnutls)" '--without-gnutls') \
 		$(use_with idn libidn) \
-		$(use_with openssl openssl "${EPREFIX}"/usr) \
+		$(usex ssl "$(use_with !gnutls openssl ${EPREFIX}/usr)" '--without-openssl') \
 		$(use_with socks5 socksdante "${EPREFIX}"/usr) \
 		--enable-packager-mode \
 		--sysconfdir="${EPREFIX}"/etc/${PN} \

@@ -11,7 +11,7 @@ SRC_URI="https://dev.gentoo.org/~jer/${P}.tar.gz"
 LICENSE="GPL-2"
 
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~x86"
+KEYWORDS="amd64 ~hppa ~x86"
 IUSE="gnutls http icp idn priority smtp ssl tos postgres ldap"
 RESTRICT="test"
 

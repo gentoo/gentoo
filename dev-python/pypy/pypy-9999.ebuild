@@ -236,7 +236,8 @@ src_install() {
 #    "syslog": "_syslog_build.py" if sys.platform != "win32" else None,
 #    "gdbm": "_gdbm_build.py"  if sys.platform != "win32" else None,
 #    "pwdgrp": "_pwdgrp_build.py" if sys.platform != "win32" else None,
-	cffi_targets=( audioop syslog pwdgrp )
+#    "resource": "_resource_build.py" if sys.platform != "win32" else None,
+	cffi_targets=( audioop syslog pwdgrp resource )
 	use gdbm && cffi_targets+=( gdbm )
 	use ncurses && cffi_targets+=( curses )
 	use sqlite && cffi_targets+=( sqlite3 )

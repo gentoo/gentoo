@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -60,7 +60,7 @@ src_unpack() {
 }
 
 src_compile() {
-	emake CC=$(tc-getCC) installer || die
+	emake CC="$(tc-getCC)" installer || die
 }
 
 src_install() {

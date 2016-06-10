@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -18,6 +18,7 @@ IUSE=""
 RDEPEND="
 	dev-ros/roscpp
 	dev-ros/tf
+	dev-ros/rosbag
 	dev-ros/dynamic_reconfigure[${PYTHON_USEDEP}]
 	dev-libs/boost:=
 	dev-ros/nav_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]

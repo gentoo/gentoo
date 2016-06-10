@@ -18,6 +18,7 @@ IUSE=""
 RDEPEND="
 	dev-ros/roscpp
 	dev-ros/tf
+	dev-ros/rosbag
 	dev-ros/dynamic_reconfigure[${PYTHON_USEDEP}]
 	dev-libs/boost:=
 	dev-ros/nav_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]

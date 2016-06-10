@@ -8,8 +8,8 @@ inherit qmake-utils
 
 MY_P=${PN}-src-${PV}
 
-DESCRIPTION="Qt Build Suite"
-HOMEPAGE="http://wiki.qt.io/Qbs"
+DESCRIPTION="Cross-platform build tool"
+HOMEPAGE="https://wiki.qt.io/Qbs"
 SRC_URI="http://download.qt.io/official_releases/${PN}/${PV}/${MY_P}.tar.gz"
 
 LICENSE="|| ( LGPL-2.1 LGPL-3 )"
@@ -40,10 +40,6 @@ S=${WORKDIR}/${MY_P}
 src_prepare() {
 	default
 
-	# disable tests that require nodejs (bug 527652)
-	sed -i -e 's/!haveNodeJs()/true/' \
-		tests/auto/blackbox/tst_blackbox.cpp || die
-
 	if ! use examples; then
 		sed -i -e '/INSTALLS +=/ s:examples::' static.pro || die
 	fi
@@ -53,6 +49,16 @@ src_prepare() {
 	else
 		sed -i -e '/SUBDIRS =/ d' tests/tests.pro || die
 	fi
+
+	# skip several tests that fail and/or have additional deps
+	sed -i \
+		-e 's/findArchiver("7z")/""/'		`# requires p7zip, fails` \
+		-e 's/findArchiver(binaryName,.*/"";/'	`# requires zip and jar` \
+		-e 's/p\.value("java\./true||&/'	`# requires jdk, fails, bug 585398` \
+		-e 's/!haveMakeNsis/true/'		`# requires nsis` \
+		-e 's/!haveWiX(profile)/true/'		`# requires wix` \
+		-e 's/!haveNodeJs()/true/'		`# requires nodejs, bug 527652` \
+		tests/auto/blackbox/tst_blackbox.cpp || die
 }
 
 src_configure() {
@@ -74,14 +80,14 @@ src_test() {
 	export HOME=${T}
 	export LD_LIBRARY_PATH=${S}/$(get_libdir)
 
-	"${S}"/bin/qbs-setup-toolchains "${EROOT}usr/bin/gcc" gcc || die
+	"${S}"/bin/qbs-setup-toolchains /usr/bin/gcc gcc || die
 	"${S}"/bin/qbs-setup-qt "$(qt5_get_bindir)/qmake" qbs_autotests || die
 
 	einfo "Running autotests"
 
 	# simply exporting LD_LIBRARY_PATH doesn't work
 	# we have to use a custom testrunner script
-	local testrunner=${S}/gentoo-testrunner
+	local testrunner=${WORKDIR}/gentoo-testrunner
 	cat <<-EOF > "${testrunner}"
 	#!/bin/sh
 	export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}\${LD_LIBRARY_PATH:+:}\${LD_LIBRARY_PATH}"
