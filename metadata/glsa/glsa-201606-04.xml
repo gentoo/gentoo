@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">gnupg</product>
   <announced>June 05, 2016</announced>
-  <revised>June 05, 2016: 1</revised>
+  <revised>June 10, 2016: 2</revised>
   <bug>534110</bug>
   <bug>541564</bug>
   <bug>541568</bug>
@@ -17,6 +17,9 @@
     <package name="app-crypt/gnupg" auto="yes" arch="*">
       <unaffected range="ge">2.0.26-r3</unaffected>
       <unaffected range="rge">1.4.19</unaffected>
+      <unaffected range="rge">1.4.20</unaffected>
+      <unaffected range="rge">1.4.21</unaffected>
+      <unaffected range="rge">1.4.22</unaffected>
       <vulnerable range="lt">2.0.26-r3</vulnerable>
     </package>
     <package name="dev-libs/libgcrypt" auto="yes" arch="*">
@@ -72,5 +75,5 @@
   <metadata tag="requester" timestamp="Mon, 16 Feb 2015 14:53:59 +0000">
     BlueKnight
   </metadata>
-  <metadata tag="submitter" timestamp="Sun, 05 Jun 2016 20:20:04 +0000">stanley</metadata>
+  <metadata tag="submitter" timestamp="Fri, 10 Jun 2016 18:09:58 +0000">stanley</metadata>
 </glsa>
