@@ -1,14 +1,14 @@
 DEFINED_PHASES=configure install postinst
-DEPEND=x11-libs/cairo media-libs/libpng:* dev-libs/ossp-uuid rdesktop? ( <net-misc/freerdp-1.1.0_beta1_p20150312 ) ssh? ( x11-libs/pango net-libs/libssh2 ) telnet? ( net-libs/libtelnet x11-libs/pango ) vnc? ( net-libs/libvncserver pulseaudio? ( media-sound/pulseaudio ) ) ssl? ( dev-libs/openssl:* ) vorbis? ( media-libs/libvorbis ) virtual/pkgconfig
+DEPEND=x11-libs/cairo media-libs/libpng:* virtual/jpeg dev-libs/ossp-uuid rdesktop? ( <net-misc/freerdp-1.1.0_beta1_p20150312 ) ssh? ( x11-libs/pango net-libs/libssh2 ) telnet? ( net-libs/libtelnet x11-libs/pango ) vnc? ( net-libs/libvncserver[threads] pulseaudio? ( media-sound/pulseaudio ) ) ssl? ( dev-libs/openssl:* ) vorbis? ( media-libs/libvorbis ) virtual/pkgconfig
 DESCRIPTION=This is the proxy-daemon used by www-apps/guacamole
 EAPI=5
 HOMEPAGE=http://guac-dev.org/
 IUSE=rdesktop vnc ssh pulseaudio vorbis telnet ssl
 KEYWORDS=~amd64 ~x86
 LICENSE=MIT
-RDEPEND=x11-libs/cairo media-libs/libpng:* dev-libs/ossp-uuid rdesktop? ( <net-misc/freerdp-1.1.0_beta1_p20150312 ) ssh? ( x11-libs/pango net-libs/libssh2 ) telnet? ( net-libs/libtelnet x11-libs/pango ) vnc? ( net-libs/libvncserver pulseaudio? ( media-sound/pulseaudio ) ) ssl? ( dev-libs/openssl:* ) vorbis? ( media-libs/libvorbis )
+RDEPEND=x11-libs/cairo media-libs/libpng:* virtual/jpeg dev-libs/ossp-uuid rdesktop? ( <net-misc/freerdp-1.1.0_beta1_p20150312 ) ssh? ( x11-libs/pango net-libs/libssh2 ) telnet? ( net-libs/libtelnet x11-libs/pango ) vnc? ( net-libs/libvncserver[threads] pulseaudio? ( media-sound/pulseaudio ) ) ssl? ( dev-libs/openssl:* ) vorbis? ( media-libs/libvorbis )
 SLOT=0
 SRC_URI=mirror://sourceforge/guacamole/guacamole-server-0.9.9.tar.gz
 _eclass_exported_funcs=pkg_postinst:- src_configure:- src_install:-
 _eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	multilib	d062ae4ba2fc40a19c11de2ad89b6616	systemd	3165c885f3c71ffae7a867d931fb0e07	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	user	906f3c8eb3a2350a4f1191a89baa3e46
-_md5_=9e2d001e71e5b2d5a3f707372c20d282
+_md5_=6c879ce8c257cb31cb8120c564d255ec
