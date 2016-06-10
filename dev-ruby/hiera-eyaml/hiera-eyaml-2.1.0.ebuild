@@ -24,13 +24,17 @@ IUSE="test"
 ruby_add_rdepend ">=dev-ruby/highline-1.6.19"
 ruby_add_rdepend "dev-ruby/trollop:2"
 
-ruby_add_bdepend "test? ( dev-util/cucumber dev-util/aruba app-admin/puppet dev-ruby/hiera-eyaml-plaintext )"
+ruby_add_bdepend "test? ( dev-util/cucumber =dev-util/aruba-0.6.2 app-admin/puppet dev-ruby/hiera-eyaml-plaintext )"
 
 all_ruby_prepare() {
 	# Fix highline dependency to be compatible with more versions.
 	sed -i -e '/highline/ s/~>/>=/' \
 		-e '/gem.files/d' ${RUBY_FAKEGEM_GEMSPEC} || die
 
+	sed -i -e 's:/tmp:'${T}':' \
+		features/sandbox/puppet/environments/local/modules/test/manifests/init.pp \
+		features/sandbox/puppet-hiera-merge/environments/local/modules/test/manifests/init.pp \
+		features/puppet.feature
 }
 
 each_ruby_test() {
