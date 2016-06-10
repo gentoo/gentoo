@@ -1874,7 +1874,7 @@ app-misc/ps3pf_utils 2.1.1 2.2.0 2.3: Utilities to set the ps3 specific features
 app-misc/pwsafe 0.2.0-r2 0.2.0-r3: A Password Safe compatible command-line password manager
 app-misc/pysmssend 1.48 1.48-r1 9999: Python Application for sending sms over multiple ISPs
 app-misc/pystopwatch 2012.12.24.1 2012.12.24.1-r1: clock and two countdown functions that can minimize to the tray
-app-misc/qlcplus 4.10.2b 4.10.3: QLC+ - Q Light Controller Plus to control DMX interfaces
+app-misc/qlcplus 4.10.2b 4.10.3 4.10.4: QLC+ - Q Light Controller Plus to control DMX interfaces
 app-misc/ranger 1.7.1 1.7.2 9999: A vim-inspired file manager for the console
 app-misc/razertool 0.0.7-r3: Unofficial tool for controlling the Razer Copperhead mouse
 app-misc/realpath 1.17 1.18: Return the canonicalized absolute pathname
