@@ -36,6 +36,7 @@ DEPEND="
 		>=dev-python/testscenarios-0.4[${PYTHON_USEDEP}]
 		>=dev-python/testtools-1.4.0[${PYTHON_USEDEP}]
 		dev-python/virtualenv[${PYTHON_USEDEP}]
+		dev-python/wheel[${PYTHON_USEDEP}]
 		dev-vcs/git
 	)"
 PDEPEND=""
