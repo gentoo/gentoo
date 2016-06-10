@@ -8,8 +8,8 @@ inherit qmake-utils
 
 MY_P=${PN}-src-${PV}
 
-DESCRIPTION="Qt Build Suite"
-HOMEPAGE="http://wiki.qt.io/Qbs"
+DESCRIPTION="Cross-platform build tool"
+HOMEPAGE="https://wiki.qt.io/Qbs"
 SRC_URI="http://download.qt.io/official_releases/${PN}/${PV}/${MY_P}.tar.gz"
 
 LICENSE="|| ( LGPL-2.1 LGPL-3 )"
