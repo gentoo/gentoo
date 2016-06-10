@@ -5,7 +5,7 @@
 EAPI=5
 inherit cmake-utils eutils toolchain-funcs user
 
-DESCRIPTION="Yet another implementation of an HTTP proxy for Debian/Ubuntu software packages written in C++"
+DESCRIPTION="Yet another HTTP proxy for Debian/Ubuntu software packages"
 HOMEPAGE="
 	http://www.unix-ag.uni-kl.de/~bloch/acng/
 	http://packages.qa.debian.org/a/apt-cacher-ng.html
