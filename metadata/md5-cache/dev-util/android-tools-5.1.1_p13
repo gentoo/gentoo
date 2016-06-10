@@ -4,11 +4,11 @@ DESCRIPTION=Android platform tools (adb, fastboot, and mkbootimg)
 EAPI=5
 HOMEPAGE=https://android.googlesource.com/platform/system/core.git/
 IUSE=libressl
-KEYWORDS=~amd64 ~x86 ~arm-linux ~x86-linux
+KEYWORDS=amd64 ~x86 ~arm-linux ~x86-linux
 LICENSE=Apache-2.0 BSD-2
 RDEPEND=sys-libs/zlib:= !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) dev-libs/libpcre
 SLOT=0
 SRC_URI=https://projects.archlinux.org/svntogit/community.git/snapshot/community-caa300cf262afcf5bdb4dcc923dee54e3715fd5c.tar.gz -> android-tools-5.1.1_r13-arch.tar.gz https://github.com/android/platform_system_core/archive/android-5.1.1_r13.tar.gz -> android-tools-5.1.1_r13-core.tar.gz mirror://gentoo/android-tools-5.1.1_r13-extras.tar.gz mirror://gentoo/android-tools-5.1.1_r13-libselinux.tar.gz mirror://gentoo/android-tools-5.1.1_r13-f2fs-tools.tar.gz
 _eclass_exported_funcs=src_unpack:- src_prepare:- src_install:-
 _eclasses_=bash-completion-r1	acf715fa09463f043fbfdc1640f3fb85	eutils	792f83d5ec9536cb5ccef375469d8bde	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
-_md5_=06f363e85c32805e1101dee518025718
+_md5_=df2d8ff1c85109aa2dd7450bb672a2bf

@@ -4,11 +4,11 @@ DESCRIPTION=The Persistence of Vision Raytracer
 EAPI=6
 HOMEPAGE=http://www.povray.org/
 IUSE=debug +io-restrictions openexr static-libs tiff X test
-KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos
+KEYWORDS=~alpha amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos
 LICENSE=AGPL-3
 RDEPEND=>=dev-libs/boost-1.50.0:=[threads(+)] media-libs/libpng:0 sys-libs/zlib virtual/jpeg:0 openexr? ( media-libs/ilmbase media-libs/openexr ) tiff? ( media-libs/tiff:0 ) X? ( media-libs/libsdl )
 SLOT=0
 SRC_URI=https://github.com/POV-Ray/povray/archive/v3.7.0.0.tar.gz -> povray-3.7.0.0.tar.gz
 _eclass_exported_funcs=pkg_preinst:- src_prepare:- src_configure:- src_test:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	792f83d5ec9536cb5ccef375469d8bde	flag-o-matic	d270fa247153df66074f795fa42dba3e	libtool	4890219c51da247200223277f993e054	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	virtualx	86c9305a59b3e0459e7fbef3a5f30b96
-_md5_=cc41e5a1d7b3f497b2a036df23b75f21
+_md5_=4bde6a8679f9469d76af6f31cde94c83
