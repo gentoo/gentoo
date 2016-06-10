@@ -8336,7 +8336,7 @@ dev-python/xonsh 0.2.3 0.2.4 0.2.5 0.2.6: An exotic, usable shell
 dev-python/xvfbwrapper 0.2.2 0.2.4 0.2.8: Python wrapper for running a display inside X virtual framebuffer
 dev-python/yappi 0.93 0.94: Yet Another Python Profiler
 dev-python/yapps 2.2.0 2.2.0-r1: An easy to use parser generator
-dev-python/yapsy 1.10.423 1.11.023 1.11.223: A fat-free DIY Python plugin management toolkit
+dev-python/yapsy 1.10.423 1.11.023 1.11.223 1.11.223-r1: A fat-free DIY Python plugin management toolkit
 dev-python/yenc 0.4.0-r1: Module providing raw yEnc encoding/decoding
 dev-python/yolk 0.4.3-r1: Tool and library for querying PyPI and locally installed Python packages
 dev-python/yolk-portage 0.1-r1: Gentoo Portage plugin for yolk
