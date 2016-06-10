@@ -7567,7 +7567,7 @@ dev-python/os-testr 0.3.0 0.6.0: A testr wrapper to provide functionality for Op
 dev-python/os-virtual-interfacesv2-python-novaclient-ext 0.15 0.19: Adds Virtual Interfaces support to python-novaclient
 dev-python/os-win 0.4.0: Windows / Hyper-V library for OpenStack projects.
 dev-python/oslo-cache 1.6.0: Oslo Caching around dogpile.cache
-dev-python/oslo-concurrency 1.8.0 1.8.1 1.8.2 2.5.0 3.7.0: library for running multi-thread, multi-process applications
+dev-python/oslo-concurrency 1.8.0 1.8.1 1.8.2 2.5.0 3.7.0 3.7.1: library for running multi-thread, multi-process applications
 dev-python/oslo-config 1.9.3 2.3.0 2.4.0 3.9.0: Oslo Configuration API
 dev-python/oslo-context 0.1.0 0.1.0-r1 0.2.0 0.3.0 0.6.0 2.2.0: Helpers to maintain useful information about a request context
 dev-python/oslo-db 1.0.2 1.4.1 1.7.1 1.7.2 1.8.0 1.9.0 2.6.0 4.7.0: OpenStack Common DB Code
@@ -9043,7 +9043,7 @@ dev-ruby/notify 0.5.2-r1: A function to notify on cross platform
 dev-ruby/ntlm-http 0.1.1-r2: Ruby/NTLM HTTP provides NTLM authentication over http
 dev-ruby/oauth 0.4.7-r2 0.5.1: A RubyGem for implementing both OAuth clients and servers
 dev-ruby/oauth2 1.1.0: Wrapper for the OAuth 2.0 protocol with a similar style to the OAuth gem
-dev-ruby/octokit 4.2.0 4.3.0: Ruby toolkit for the Github API
+dev-ruby/octokit 4.2.0 4.3.0-r1: Ruby toolkit for the Github API
 dev-ruby/omniauth 1.2.2-r1 1.3.1: A generalized Rack framework for multiple-provider authentication
 dev-ruby/open4 1.3.4: Open3::popen3 with exit status
 dev-ruby/openssl-ccm 1.2.1: OpenSSL CBC-MAC (CCM) ruby gem
@@ -16941,7 +16941,7 @@ sys-cluster/mpich 3.0.4 3.1.3 3.1.4 3.2: A high performance and portable MPI imp
 sys-cluster/mpich2 1.5: A high performance and portable MPI implementation
 sys-cluster/mvapich2 1.6: MVAPICH2 MPI-over-infiniband package auto-configured for OpenIB
 sys-cluster/native-mpi 0: Use native OS MPI in prefix environment
-sys-cluster/neutron 7.0.4 7.1.0 8.0.0 8.1.1 2015.2.9999 2016.1.9999: A virtual network service for Openstack
+sys-cluster/neutron 7.0.4 7.1.0 7.1.1 8.0.0 8.1.1 8.1.2 2015.2.9999 2016.1.9999: A virtual network service for Openstack
 sys-cluster/nova 12.0.3 12.0.4 13.0.0 2015.2.9999 2016.1.9999: Cloud computing fabric controller (main part of an IaaS system) in Python
 sys-cluster/ocfs 1.0.14: The Oracle Cluster Filesystem
 sys-cluster/onesis 2.0.2: Diskless computing made easy
@@ -16961,7 +16961,7 @@ sys-cluster/resource-agents 1.0.4-r1 1.0.4-r2 3.9.4 3.9.5 3.9.6: Resources pack 
 sys-cluster/rgmanager 2.03.09 2.03.09-r1 3.1.5: Clustered resource group manager
 sys-cluster/rgmanager-agents 3.9.2: Resource Manager Agents
 sys-cluster/slurm 2.6.3: SLURM: A Highly Scalable Resource Manager
-sys-cluster/swift 2.5.0-r2 2.7.0: A highly available, distributed, and eventually consistent object/blob store
+sys-cluster/swift 2.5.0-r2 2.7.0 2.8.0: A highly available, distributed, and eventually consistent object/blob store
 sys-cluster/sx 2.0 2.1: Skylable SX - a distributed object-storage software for data clusters
 sys-cluster/torque 2.5.13-r1 4.1.7-r1 4.2.9-r5 6.0.1: Resource manager and queuing system based on OpenPBS
 sys-cluster/util-vserver 0.30.216_pre3025 0.30.216_pre3062 0.30.216_pre3120: Linux-VServer admin utilities
