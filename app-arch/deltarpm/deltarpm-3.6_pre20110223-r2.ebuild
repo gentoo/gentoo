@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -35,9 +35,11 @@ pkg_setup() {
 }
 
 src_prepare() {
+	# disable implicit python3 use, #568094
 	sed -i \
 		-e '/^prefix/s:/local::' \
 		-e '/^mandir/s:/man:/share/man:' \
+		-e '/for/s:python3::' \
 		Makefile || die
 	epatch "${FILESDIR}/3.6_pre20110223-build.patch"
 }
@@ -48,4 +50,9 @@ src_compile() {
 	if use python; then
 		emake CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}" CC="$(tc-getCC)" python
 	fi
+}
+
+src_install() {
+	default
+	python_optimize
 }
