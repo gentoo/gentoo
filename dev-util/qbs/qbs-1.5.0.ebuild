@@ -50,6 +50,17 @@ src_prepare() {
 	else
 		sed -i -e '/SUBDIRS =/ d' tests/tests.pro || die
 	fi
+
+	# skip several tests that fail and/or have additional deps
+	sed -i \
+		-e 's/findArchiver("7z")/""/'		`# requires p7zip, fails` \
+		-e 's/findArchiver(binaryName,.*/"";/'	`# requires zip and jar` \
+		-e 's/p\.value("java\./true||&/'	`# requires jdk, fails, bug 585398` \
+		-e 's/!haveMakeNsis/true/'		`# requires nsis` \
+		-e 's/!haveWiX(profile)/true/'		`# requires wix` \
+		-e 's/p\.value("nodejs\./true||&/'	`# requires nodejs, bug 527652` \
+		-e 's/\(p\.value\|m_qbsStderr\.contains\)("typescript\./true||&/' `# requires nodejs and typescript` \
+		tests/auto/blackbox/tst_blackbox.cpp || die
 }
 
 src_configure() {
@@ -78,7 +89,7 @@ src_test() {
 
 	# simply exporting LD_LIBRARY_PATH doesn't work
 	# we have to use a custom testrunner script
-	local testrunner=${S}/gentoo-testrunner
+	local testrunner=${WORKDIR}/gentoo-testrunner
 	cat <<-EOF > "${testrunner}"
 	#!/bin/sh
 	export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}\${LD_LIBRARY_PATH:+:}\${LD_LIBRARY_PATH}"
