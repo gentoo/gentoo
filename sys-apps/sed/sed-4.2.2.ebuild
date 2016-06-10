@@ -1,6 +1,8 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
+
+EAPI=5
 
 inherit eutils flag-o-matic toolchain-funcs
 
@@ -31,24 +33,23 @@ src_bootstrap_sed() {
 	fi
 }
 
-src_unpack() {
-	unpack ${A}
-	cd "${S}"
+src_prepare() {
 	epatch "${FILESDIR}"/${PN}-4.1.5-alloca.patch
-	# don't use sed here if we have to recover a broken host sed
-}
 
-src_compile() {
+	# don't use sed before bootstrap if we have to recover a broken host sed
 	src_bootstrap_sed
 	# this has to be after the bootstrap portion
 	sed -i \
 		-e '/docdir =/s:=.*/doc:= $(datadir)/doc/'${PF}'/html:' \
 		doc/Makefile.in || die "sed html doc"
+}
 
-	local myconf= bindir=/bin
-	if ! use userland_GNU ; then
-		myconf="--program-prefix=g"
-		bindir=/usr/bin
+src_configure() {
+	local myconf=()
+	if use userland_GNU; then
+		myconf+=( --exec-prefix="${EPREFIX}" )
+	else
+		myconf+=( --program-prefix=g )
 	fi
 
 	# Should be able to drop this hack in next release. #333887
@@ -57,14 +58,7 @@ src_compile() {
 	export ac_cv_header_selinux_{context,selinux}_h=$(usex selinux)
 	use static && append-ldflags -static
 	econf \
-		--bindir=${bindir} \
 		$(use_enable acl) \
 		$(use_enable nls) \
-		${myconf}
-	emake || die "build failed"
-}
-
-src_install() {
-	emake install DESTDIR="${D}" || die "Install failed"
-	dodoc NEWS README* THANKS AUTHORS BUGS ChangeLog
+		"${myconf[@]}"
 }
