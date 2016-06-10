@@ -3876,6 +3876,7 @@ media-gfx/imageworsener:webp - enable webp image format support
 media-gfx/inkscape:cdr - Enable support for CorelDRAW Diagrams
 media-gfx/inkscape:dia - pull in app-office/dia for dia import extension
 media-gfx/inkscape:inkjar - Enable support for OpenOffice.org SVG jar files
+media-gfx/inkscape:latex - pull in dependencies for LaTeX formulas
 media-gfx/inkscape:visio - Enable support for Microsoft Visio Diagrams
 media-gfx/inkscape:wpg - Enable support for WordPerfect Graphics
 media-gfx/iscan-plugin-gt-f500:minimal - Install the firmware only, and not the plugin.
