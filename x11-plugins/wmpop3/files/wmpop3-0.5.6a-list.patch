@@ -1,0 +1,127 @@
+diff -Naur wmpop3-0.5.6a.orig/wmgeneral/list.c wmpop3-0.5.6a/wmgeneral/list.c
+--- wmpop3-0.5.6a.orig/wmgeneral/list.c	1999-08-13 17:56:19.000000000 +0200
++++ wmpop3-0.5.6a/wmgeneral/list.c	2016-06-10 12:52:47.293968265 +0200
+@@ -38,7 +38,7 @@
+ 
+ /* Return a cons cell produced from (head . tail) */
+ 
+-INLINE LinkedList* 
++LinkedList* 
+ list_cons(void* head, LinkedList* tail)
+ {
+   LinkedList* cell;
+@@ -51,7 +51,7 @@
+ 
+ /* Return the length of a list, list_length(NULL) returns zero */
+ 
+-INLINE int
++int
+ list_length(LinkedList* list)
+ {
+   int i = 0;
+@@ -66,7 +66,7 @@
+ /* Return the Nth element of LIST, where N count from zero.  If N 
+    larger than the list length, NULL is returned  */
+ 
+-INLINE void*
++void*
+ list_nth(int index, LinkedList* list)
+ {
+   while(index-- != 0)
+@@ -81,7 +81,7 @@
+ 
+ /* Remove the element at the head by replacing it by its successor */
+ 
+-INLINE void
++void
+ list_remove_head(LinkedList** list)
+ {
+   if (!*list) return;  
+@@ -101,7 +101,7 @@
+ 
+ /* Remove the element with `car' set to ELEMENT */
+ /*
+-INLINE void
++void
+ list_remove_elem(LinkedList** list, void* elem)
+ {
+   while (*list)
+@@ -112,7 +112,7 @@
+     }
+ }*/
+ 
+-INLINE LinkedList *
++LinkedList *
+ list_remove_elem(LinkedList* list, void* elem)
+ {
+     LinkedList *tmp;
+@@ -132,7 +132,7 @@
+ 
+ /* Return element that has ELEM as car */
+ 
+-INLINE LinkedList*
++LinkedList*
+ list_find(LinkedList* list, void* elem)
+ {
+   while(list)
+@@ -146,7 +146,7 @@
+ 
+ /* Free list (backwards recursive) */
+ 
+-INLINE void
++void
+ list_free(LinkedList* list)
+ {
+   if(list)
+@@ -158,7 +158,7 @@
+ 
+ /* Map FUNCTION over all elements in LIST */
+ 
+-INLINE void
++void
+ list_mapcar(LinkedList* list, void(*function)(void*))
+ {
+   while(list)
+diff -Naur wmpop3-0.5.6a.orig/wmgeneral/list.h wmpop3-0.5.6a/wmgeneral/list.h
+--- wmpop3-0.5.6a.orig/wmgeneral/list.h	1999-08-13 17:56:19.000000000 +0200
++++ wmpop3-0.5.6a/wmgeneral/list.h	2016-06-10 12:52:56.598983075 +0200
+@@ -29,31 +29,25 @@
+ #ifndef __LIST_H_
+ #define __LIST_H_
+ 
+-#if defined(__GNUC__) && !defined(__STRICT_ANSI__)
+-# define INLINE inline
+-#else
+-# define INLINE
+-#endif
+-
+ typedef struct LinkedList {
+   void *head;
+   struct LinkedList *tail;
+ } LinkedList;
+ 
+-INLINE LinkedList* list_cons(void* head, LinkedList* tail);
++LinkedList* list_cons(void* head, LinkedList* tail);
+ 
+-INLINE int list_length(LinkedList* list);
++int list_length(LinkedList* list);
+ 
+-INLINE void* list_nth(int index, LinkedList* list);
++void* list_nth(int index, LinkedList* list);
+ 
+-INLINE void list_remove_head(LinkedList** list);
++void list_remove_head(LinkedList** list);
+ 
+-INLINE LinkedList *list_remove_elem(LinkedList* list, void* elem);
++LinkedList *list_remove_elem(LinkedList* list, void* elem);
+ 
+-INLINE void list_mapcar(LinkedList* list, void(*function)(void*));
++void list_mapcar(LinkedList* list, void(*function)(void*));
+ 
+-INLINE LinkedList*list_find(LinkedList* list, void* elem);
++LinkedList*list_find(LinkedList* list, void* elem);
+ 
+-INLINE void list_free(LinkedList* list);
++void list_free(LinkedList* list);
+ 
+ #endif
