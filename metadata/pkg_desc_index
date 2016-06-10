@@ -14731,7 +14731,7 @@ net-misc/linuxptp 1.5 1.6: The Linux Precision Time Protocol (PTP) implementatio
 net-misc/liveice 2000530-r1: Live Source Client For IceCast
 net-misc/livestreamer 1.11.1 1.12.1 1.12.2: CLI tool that pipes video streams from services like twitch.tv into a video player
 net-misc/lksctp-tools 1.0.13 1.0.16: Tools for Linux Kernel Stream Control Transmission Protocol implementation
-net-misc/lldpd 0.7.11-r3 0.7.13 0.9.1 0.9.3: Implementation of IEEE 802.1ab (LLDP)
+net-misc/lldpd 0.7.11-r3 0.7.13 0.9.1 0.9.3-r1: Implementation of IEEE 802.1ab (LLDP)
 net-misc/logmein-hamachi 2.1.0.139: LogMeIn Hamachi VPN tunneling engine
 net-misc/mdidentd 1.04c-r1: This is an identd with provides registering of idents
 net-misc/mediatomb 0.12.1-r8 0.12.2_pre20160522: MediaTomb is an open source UPnP MediaServer
@@ -15378,7 +15378,7 @@ sci-astronomy/stiff 2.4.0: Converts astronomical FITS images to the TIFF format
 sci-astronomy/stuff 1.26.0: Tool for automatic generation of astronomical catalogs
 sci-astronomy/swarp 2.38.0: Resample and coadd astronomical FITS images
 sci-astronomy/wcslib 4.25.1 5.14 5.15: Astronomical World Coordinate System transformations library
-sci-astronomy/wcstools 3.8.7 3.9.2: World Coordinate System library for astronomical FITS images
+sci-astronomy/wcstools 3.9.3: World Coordinate System library for astronomical FITS images
 sci-astronomy/weightwatcher 1.12: Combine weight maps and polygon for astronomical images weighting
 sci-astronomy/xephem 3.7.5 3.7.6 3.7.7: Interactive tool for astronomical ephemeris and sky simulation
 sci-astronomy/xfitsview 2.2-r1: Viewer for astronomical images in FITS format
