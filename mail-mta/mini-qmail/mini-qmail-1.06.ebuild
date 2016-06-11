@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -51,7 +51,7 @@ src_unpack() {
 }
 
 src_compile() {
-	qmail_src_compile
+	MAKEOPTS="${MAKEOPTS} -j1" qmail_src_compile #398135
 }
 
 # make check is actually an install-check target, see bug #364955
