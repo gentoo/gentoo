@@ -1,0 +1,17 @@
+certificate version 0.1
+pusher Christoph Junghans <ottxor@gentoo.org> 1465677643 -0600
+pushee git+ssh://git.gentoo.org/repo/gentoo.git
+nonce 1465677644-9c9b915a190db5c280d6
+
+0000000000000000000000000000000000000000 7f4ee94556e7736f71d49c2adce570f15899a6d3 refs/heads/dev-ruby/typhoeus
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
+
+iQEcBAABCAAGBQJXXHdLAAoJEOeBhlrCAAWGu3wH/1pv5qR+SoC90usgJnaCl5kg
+dCsKe6VXAbX8Ztsj7QsJu9b+tsnCN+ddxDnr/4iyF2jlLdPzrpm4PFLjp3ctJfW4
+OworFxvCcuqAcMYkiOjErEJ/rV4dnrs7SQB/6eX9U5QQZz/YRanpGuaML1UuWYb7
+F/XYtVdqDaQY0p+BShFKTPzwrBXJP85odQBwV9BxsUxu4nwcozxiY0C7QrTzyVHB
+Ck8t3uaGMhFHwO/nLLBl5+6yBHNE+iOjCfHLfiJc4pZcy0L01y8wJfswdHtyvM4F
+06ppkxJH2DAkbJJX2Sde40mFhSmDNwBdbr8oHkAvsD5JZ0HCF6sOBMQdN2xNpZk=
+=xQV4
+-----END PGP SIGNATURE-----
