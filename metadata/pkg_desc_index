@@ -9703,7 +9703,7 @@ dev-util/dogtail 0.9.0-r2 0.9.9: GUI test tool and automation framework using ac
 dev-util/dput-ng 1.10: Next generation Debian package upload tool
 dev-util/dropwatch 1.4-r1: A utility to interface to the kernel to monitor for dropped network packets
 dev-util/duma 2.5.13 2.5.15-r1: DUMA (Detect Unintended Memory Access) is a memory debugging library
-dev-util/dwarves 1.10_p20140618 9999: pahole (Poke-a-Hole) and other DWARF2 utilities
+dev-util/dwarves 1.10_p20140618 1.10_p20160519 9999: pahole (Poke-a-Hole) and other DWARF2 utilities
 dev-util/dwdiff 2.1.0 2.1.0-r1: diff-like program that operates at the word level instead of the line level
 dev-util/eggy 0.3.3-r1: An IDE/editor for several programming languages, including Python, Java, C, Perl and others
 dev-util/egypt 1.10: devilishly simple tool for creating call graphs of C programs
