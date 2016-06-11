@@ -252,7 +252,7 @@ app-arch/cpio 2.11-r3 2.12 2.12-r1: A file archival tool which can also read and
 app-arch/createrepo 0.10.3 0.10.4: Creates a common rpm-metadata repository
 app-arch/deb2targz 1-r2: Convert a .deb file to a .tar.gz archive
 app-arch/defluff 0.3.2: deflate huffman optimizer
-app-arch/deltarpm 3.6_pre20110223-r2: tools to create and apply deltarpms
+app-arch/deltarpm 3.6: tools to create and apply deltarpms
 app-arch/dpkg 1.17.26 1.17.27 1.18.6 1.18.7: Package maintenance system for Debian
 app-arch/duff 0.5.2: Command-line utility for quickly finding duplicates in a given set of files
 app-arch/dump 0.4.44-r1 0.4.44-r2 0.4.45: Dump/restore ext2fs backup utilities
@@ -2598,6 +2598,7 @@ app-vim/pushpop 4.0: vim plugin: pushd / popd from the vim commandline
 app-vim/pyclewn 2.0.1 2.1: Pyclewn allows using vim as a front end to a debugger (pdb or gdb)
 app-vim/pydiction 1.2.3: vim plugin: Tab-complete your Python code
 app-vim/pydoc 2.0: vim plugin: integrates python documentation view and search tool
+app-vim/pytest 1.1.4: vim plugin: run tests with py.test from within vim
 app-vim/python-mode 0.6.18-r3: Provide python code looking for bugs, refactoring and other useful things
 app-vim/rails 5.1 5.2: vim plugin: aids developing Ruby on Rails applications
 app-vim/rainbow_parentheses 1.0: vim plugin: Colour parentheses to differentiate nest levels
@@ -6869,7 +6870,7 @@ dev-python/PyECLib 1.0.7-r2 1.2.0: Messaging API for RPC and notifications over 
 dev-python/PyFoam 0.5.4-r2: Tool to analyze and plot the residual files of OpenFOAM computations
 dev-python/PyGithub 1.25.2: Python library to access the Github API v3
 dev-python/PyPDF2 1.24 1.25.1: Python library to work with pdf files
-dev-python/PyQt4 4.11.1 4.11.4 4.12_pre1605051544: Python bindings for the Qt framework
+dev-python/PyQt4 4.11.1 4.11.4 4.12_pre1606101416: Python bindings for the Qt framework
 dev-python/PyQt5 5.5.1 5.6.1_pre1604271126: Python bindings for the Qt framework
 dev-python/PyRSS2Gen 1.0.0-r1 1.1: RSS feed generator written in Python
 dev-python/PySocks 1.5.6: SOCKS client module
