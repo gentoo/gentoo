@@ -1,13 +1,15 @@
 certificate version 0.1
-pusher 0xB76BCFE97BD574E7 1465683106 +0200
+pusher Mikle Kolyada <zlogene@gentoo.org> 1465688319 +0300
 pushee git+ssh://git.gentoo.org/repo/gentoo.git
-nonce 1465683106-043c4cf46edbaf526afa
+nonce 1465688377-f35b9b316729b71b8f47
 
-1426be7f18ab854dc1b86bdbe64a9c0a02579db9 1e1c21623774123c66b7fdef57f538021c9daab9 refs/heads/master
+1e1c21623774123c66b7fdef57f538021c9daab9 1d49cb91c8193f602dce40ddc5ab265952848cad refs/heads/master
 -----BEGIN PGP SIGNATURE-----
 Version: GnuPG v2
 
-iEYEABECAAYFAldcjKIACgkQt2vP6XvVdOdnDgCgmv4pa2/6dSkht/SsBqYF+vmZ
-cTcAoNWHAdoQ7HSNOhrKzgdpITQ3X9nf
-=/icZ
+iJwEAAEIAAYFAldcoP8ACgkQG9wOWsQutdYwRQQA2jNL++jGUNsBVptVagHQZnl5
+x//wr0vt9NfPXf/4tN9qVCuvbKvA9Fk5Nk2R25TI48GF0LRk8HfWWIFNsTsprxR3
++JPPCOaQUkn2/y6pcAA9KOWgYX2NRCjAXrC1Gc5sY57DveUIu0WY/nTN4HtQmd1A
+l0LoD2kOGAGmgfxKSSM=
+=qaFM
 -----END PGP SIGNATURE-----
