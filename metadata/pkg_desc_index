@@ -2597,6 +2597,7 @@ app-vim/puppet-syntax 3.0.1: vim plugin: Puppet configuration files syntax
 app-vim/pushpop 4.0: vim plugin: pushd / popd from the vim commandline
 app-vim/pyclewn 2.0.1 2.1: Pyclewn allows using vim as a front end to a debugger (pdb or gdb)
 app-vim/pydiction 1.2.3: vim plugin: Tab-complete your Python code
+app-vim/pydoc 2.0: vim plugin: integrates python documentation view and search tool
 app-vim/python-mode 0.6.18-r3: Provide python code looking for bugs, refactoring and other useful things
 app-vim/rails 5.1 5.2: vim plugin: aids developing Ruby on Rails applications
 app-vim/rainbow_parentheses 1.0: vim plugin: Colour parentheses to differentiate nest levels
