@@ -4451,7 +4451,7 @@ dev-lang/scala 2.9.3 2.10.2-r3 2.10.3-r2 2.10.4-r2 2.10.6 2.11.1-r2 2.11.2-r2 2.
 dev-lang/scala-bin 2.11.7: The Scala Programming Language
 dev-lang/smlnj 110.75: Standard ML of New Jersey compiler and libraries
 dev-lang/snobol 0.99.4 0.99.44 1.1 1.4.1: Phil Budne's port of Macro SNOBOL4 in C, for modern machines
-dev-lang/spidermonkey 1.7.0-r3 1.8.5-r4 1.8.5-r5 17.0.0-r4 24.2.0-r3: Stand-alone JavaScript C library
+dev-lang/spidermonkey 1.7.0-r3 1.8.5-r4 1.8.5-r5 17.0.0-r4 17.0.0-r5 24.2.0-r3: Stand-alone JavaScript C library
 dev-lang/squirrel 2.2.4-r1 2.2.4-r2: A interpreted language mainly used for games
 dev-lang/srf 1.0-r1: The Simple Recursive Functions programming language
 dev-lang/swi-prolog 6.6.6 7.2.3-r1 7.3.19 7.3.20 7.3.21: free, small, and standard compliant Prolog compiler
