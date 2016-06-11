@@ -1,10 +1,11 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
+PYTHON_COMPAT=( python2_7 )
 
-inherit cron eutils multilib toolchain-funcs
+inherit cron eutils multilib python-any-r1 toolchain-funcs
 
 DESCRIPTION="A new cron system designed with secure operations in mind by Bruce Guenter"
 HOMEPAGE="http://untroubled.org/bcron/"
@@ -14,12 +15,16 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-DEPEND=">=dev-libs/bglibs-1.106"
-RDEPEND="${DEPEND}
+RDEPEND="
 	>=sys-process/cronbase-0.3.2
 	virtual/mta
 	sys-apps/ucspi-unix
-	virtual/daemontools"
+	virtual/daemontools
+"
+DEPEND="${RDEPEND}
+	${PYTHON_DEPS}
+	>=dev-libs/bglibs-1.106
+"
 
 CRON_SYSTEM_CRONTAB="yes"
 
