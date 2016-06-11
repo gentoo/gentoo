@@ -1,0 +1,18 @@
+Fix compilation of spidermonkey-17 with clang
+
+Gentoo-Bug: https://bugs.gentoo.org/show_bug.cgi?id=458142
+Upstream-Bug: https://bugzilla.mozilla.org/show_bug.cgi?id=887645
+
+b/js/src/js-config.in
+--- a/js/src/jsinterp.cpp	2016-06-03 00:08:04.376312080 -0500
++++ b/js/src/jsinterp.cpp	2016-06-03 00:12:17.740329180 -0500
+@@ -3664,7 +3664,9 @@
+ BEGIN_CASE(JSOP_LEAVEFORLETIN)
+ BEGIN_CASE(JSOP_LEAVEBLOCKEXPR)
+ {
++    #ifdef DEBUG
+     DebugOnly<uint32_t> blockDepth = regs.fp()->blockChain().stackDepth();
++    #endif
+ 
+     regs.fp()->popBlock(cx);
+ 
