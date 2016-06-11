@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="person">
-  <email>joker@gentoo.org</email>
-  <name>Christian Birchinger</name>
-  <description>Please take over if you want it</description>
-</maintainer>
 <longdescription>
  CCZE is my C port of RASZi's colorize, with a set of bug fixes and enhancements.
  It uses PCRE to do the matching, and NCurses for the output. The goal was to

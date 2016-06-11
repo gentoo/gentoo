@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="person">
-    <email>joker@gentoo.org</email>
-    <name>Christian Birchinger</name>
-</maintainer>
     <longdescription>sobexsrv is a Bluetooth OBEX server with Bluetooth
 Security Mode-2 (application triggered security) support. It implements
 OPUSH (put), OPULL (get) and OBEX-FTP (setpath + directory listing) and
