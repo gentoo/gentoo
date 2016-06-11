@@ -39,6 +39,7 @@ CDEPEND="x11-libs/wxGTK:${WX_GTK_VER}[X,opengl,webkit?]
 		dev-python/wxpython:${WX_GTK_VER}[opengl,${PYTHON_USEDEP}]
 		${PYTHON_DEPS}
 	)
+	<dev-libs/boost-1.61[context,nls,threads,python?]
 	>=dev-libs/boost-1.56[context,nls,threads,python?]
 	github? ( dev-libs/openssl:0 )
 	media-libs/glew
