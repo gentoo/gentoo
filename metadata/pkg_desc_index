@@ -9291,7 +9291,7 @@ dev-ruby/tokyocabinet 1.29.1 1.32.0: Ruby bindings for Tokyo Cabinet
 dev-ruby/toml 0.1.2: A sane configuration format
 dev-ruby/totoridipjp 0.1.0: A ruby binding to use totori.dip.jp Web API
 dev-ruby/transaction-simple 1.4.0.2-r2: Provides transaction support at the object level
-dev-ruby/travis 1.8.2-r1: Travis CI Client (CLI and Ruby library)
+dev-ruby/travis 1.8.2-r2: Travis CI Client (CLI and Ruby library)
 dev-ruby/treetop 1.6.5: Treetop is a language for describing languages
 dev-ruby/trollop 1.16.2-r4 2.0 2.1.2: Trollop is a commandline option parser for Ruby
 dev-ruby/ttfunk 1.2.1 1.4.0: A TrueType font parser written in pure ruby
