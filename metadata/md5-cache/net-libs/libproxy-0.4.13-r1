@@ -4,7 +4,7 @@ DESCRIPTION=Library for automatic proxy configuration management
 EAPI=6
 HOMEPAGE=https://github.com/libproxy/libproxy
 IUSE=gnome kde mono networkmanager perl python spidermonkey test webkit abi_x86_32 abi_x86_64 abi_x86_x32 abi_mips_n32 abi_mips_n64 abi_mips_o32 abi_ppc_32 abi_ppc_64 abi_s390_32 abi_s390_64 python_targets_python2_7
-KEYWORDS=alpha ~amd64 arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86 ~x86-fbsd ~x86-freebsd ~x86-interix ~amd64-linux ~arm-linux ~ia64-linux ~x86-linux ~x64-macos ~x86-macos ~sparc-solaris ~x86-solaris
+KEYWORDS=alpha amd64 arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86 ~x86-fbsd ~x86-freebsd ~x86-interix ~amd64-linux ~arm-linux ~ia64-linux ~x86-linux ~x64-macos ~x86-macos ~sparc-solaris ~x86-solaris
 LICENSE=LGPL-2.1+
 PDEPEND=networkmanager? ( net-misc/networkmanager )
 RDEPEND=gnome? ( dev-libs/glib:2[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_ppc_32(-)?,abi_ppc_64(-)?,abi_s390_32(-)?,abi_s390_64(-)?] ) mono? ( dev-lang/mono ) networkmanager? ( sys-apps/dbus:0[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_ppc_32(-)?,abi_ppc_64(-)?,abi_s390_32(-)?,abi_s390_64(-)?] ) perl? ( dev-lang/perl:= ) python? ( python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) spidermonkey? ( >=dev-lang/spidermonkey-1.8.5:0= ) webkit? ( net-libs/webkit-gtk:4 ) kde? ( || ( kde-frameworks/kconfig:5 kde-apps/kreadconfig:4 ) )
@@ -13,4 +13,4 @@ SLOT=0
 SRC_URI=https://github.com/libproxy/libproxy/archive/0.4.13.tar.gz -> libproxy-0.4.13.tar.gz
 _eclass_exported_funcs=pkg_setup:mono-env src_prepare:cmake-utils src_configure:- src_compile:cmake-multilib src_test:cmake-multilib src_install:cmake-multilib
 _eclasses_=cmake-multilib	273c15f5a0a06438a38bb5c3e98fa2db	cmake-utils	9e0d156beee613940cde06d0bc00791b	eutils	792f83d5ec9536cb5ccef375469d8bde	flag-o-matic	d270fa247153df66074f795fa42dba3e	mono-env	10809200679bcceefebac9e72bebb6e6	multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	d062ae4ba2fc40a19c11de2ad89b6616	multilib-build	8fe2e81aeb36cdf8a6cc5f50443879cc	multilib-minimal	0224dee31c0f98405d572e14ad6dee65	python-r1	0f6937650a475d673baa5d0c8c0b37b3	python-utils-r1	c0ed2a2f233d3af6dd556048695dc5cb	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=a55fa0b4511f7e1daaa165323b3891a4
+_md5_=b886c0263544456ba373bd081783ded5
