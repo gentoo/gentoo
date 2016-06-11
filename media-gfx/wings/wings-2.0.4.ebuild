@@ -14,7 +14,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 RDEPEND="
-	>=dev-lang/erlang-18.0[wxwidgets]
+	>=dev-lang/erlang-18.1[wxwidgets]
 	dev-libs/cl
 	media-libs/libsdl[opengl]
 "
