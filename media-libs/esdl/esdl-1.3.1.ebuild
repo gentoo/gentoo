@@ -15,7 +15,7 @@ KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="image truetype"
 
 RDEPEND="
-	>=dev-lang/erlang-14
+	>=dev-lang/erlang-14[wxwidgets]
 	media-libs/libsdl[opengl]
 	image? ( media-libs/sdl-image )
 	truetype? ( media-libs/sdl-ttf )
