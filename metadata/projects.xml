@@ -1857,11 +1857,6 @@
       <name>Daniel Gryniewicz</name>
       <role>Member (Kernel, User Mode Linux)</role>
     </member>
-    <member>
-      <email>joker@gentoo.org</email>
-      <name>Christian Birchinger</name>
-      <role>Member (Kernel, sparc-sources)</role>
-    </member>
     <member is-lead="1">
       <email>mpagano@gentoo.org</email>
       <name>Mike Pagano</name>
@@ -4035,6 +4030,10 @@
     <member is-lead="1">
       <email>hwoarang@gentoo.org</email>
       <name>Markos Chandras</name>
+    </member>
+    <member>
+      <email>johu@gentoo.org</email>
+      <name>Johannes Huber</name>
     </member>
     <member>
       <email>kensington@gentoo.org</email>
