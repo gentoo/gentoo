@@ -146,6 +146,15 @@ case ${KDE_AUTODEPS} in
 		RDEPEND+=" >=kde-frameworks/kf-env-3"
 		COMMONDEPEND+=" $(add_qt_dep qtcore)"
 
+		if [[ ${CATEGORY} = kde-plasma ]]; then
+			if [[ $(get_version_component_range 2) -eq 6 && $(get_version_component_range 3) -ge 5 ]]; then
+				QT_MINIMAL=5.6.1
+			fi
+			if [[ $(get_version_component_range 2) -ge 7 || ${PV} = 9999 ]]; then
+				QT_MINIMAL=5.6.1
+			fi
+		fi
+
 		if [[ ${CATEGORY} = kde-frameworks || ${CATEGORY} = kde-plasma && ${PN} != polkit-kde-agent ]]; then
 			local blocked_version=15.08.0-r1
 
