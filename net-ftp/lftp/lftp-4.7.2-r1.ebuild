@@ -75,6 +75,7 @@ src_configure() {
 		$(use_enable ipv6) \
 		$(usex ssl "$(use_with !gnutls openssl ${EPREFIX}/usr)" '--without-openssl') \
 		$(use_with socks5 socksdante "${EPREFIX}"/usr) \
+		--with-readline="${EPREFIX}"/usr \
 		--enable-packager-mode \
 		--sysconfdir="${EPREFIX}"/etc/${PN} \
 		--with-modules \
