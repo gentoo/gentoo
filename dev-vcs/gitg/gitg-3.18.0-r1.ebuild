@@ -14,7 +14,7 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Gitg"
 
 LICENSE="|| ( GPL-2 GPL-3 )"
 SLOT="0"
-KEYWORDS="amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
 
 IUSE="debug glade +python"
 REQUIRED_USE="python? ( ^^ ( $(python_gen_useflags '*') ) )"
