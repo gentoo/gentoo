@@ -1,5 +1,5 @@
-DEFINED_PHASES=prepare
-DEPEND=app-arch/xz-utils sys-devel/gettext
+DEFINED_PHASES=prepare setup
+DEPEND=|| ( dev-lang/python:3.5 dev-lang/python:3.4 ) app-arch/xz-utils sys-devel/gettext
 DESCRIPTION=ISO language, territory, currency, script codes and their translations
 EAPI=6
 HOMEPAGE=http://pkg-isocodes.alioth.debian.org/
@@ -9,6 +9,6 @@ LICENSE=LGPL-2.1+
 RESTRICT=binchecks strip
 SLOT=0
 SRC_URI=http://pkg-isocodes.alioth.debian.org/downloads/iso-codes-3.68.tar.xz
-_eclass_exported_funcs=src_prepare:-
-_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	l10n	e26ea0642846685782f1813642e7ff0f	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
-_md5_=0373ab871c9585fef6a0d6c2ffb077a0
+_eclass_exported_funcs=pkg_setup:python-any-r1 src_prepare:-
+_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	l10n	e26ea0642846685782f1813642e7ff0f	multilib	d062ae4ba2fc40a19c11de2ad89b6616	python-any-r1	8eb13cdf35f6e43c48107b911900b2cc	python-utils-r1	c0ed2a2f233d3af6dd556048695dc5cb	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_md5_=c3823cf75c3646f67f2fe141fae4a1ab
