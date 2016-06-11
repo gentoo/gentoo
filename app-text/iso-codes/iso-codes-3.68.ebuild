@@ -3,10 +3,10 @@
 # $Id$
 
 EAPI=6
-
+PYTHON_COMPAT=( python3_{4,5} )
 PLOCALES="af am ar as ast az be bg bn bn_IN br bs byn ca crh cs cy da de dz el en eo es et eu fa fi fo fr ga gez gl gu haw he hi hr hu hy ia id is it ja ka kk km kn ko kok ku lt lv mi mk ml mn mr ms mt nb ne nl nn nso oc or pa pl ps pt pt_BR ro ru rw si sk sl so sq sr sr@latin sv sw ta te th ti tig tk tl tr tt tt@iqtelif ug uk ve vi wa wal wo xh zh_CN zh_HK zh_TW zu"
 
-inherit eutils l10n
+inherit eutils l10n python-any-r1
 
 DESCRIPTION="ISO language, territory, currency, script codes and their translations"
 HOMEPAGE="http://pkg-isocodes.alioth.debian.org/"
@@ -18,7 +18,7 @@ KEYWORDS="alpha ~amd64 arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86 
 IUSE=""
 
 RDEPEND=""
-DEPEND="
+DEPEND="${PYTHON_DEPS}
 	app-arch/xz-utils
 	sys-devel/gettext
 "

@@ -5,6 +5,9 @@
 		<email>graphics@gentoo.org</email>
 		<name>Gentoo Graphics Project</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>jer@gentoo.org</email>
+	</maintainer>
 	<longdescription>
 Wings 3D is a polygon mesh modeler inspired by Nendo and 
 Mirai from Izware.
