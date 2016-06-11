@@ -4,7 +4,7 @@ DESCRIPTION=Password and keyring managing daemon
 EAPI=5
 HOMEPAGE=https://wiki.gnome.org/Projects/GnomeKeyring
 IUSE=+caps pam selinux +ssh-agent test +filecaps debug test
-KEYWORDS=alpha ~amd64 arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~sparc-solaris ~x86-solaris
+KEYWORDS=alpha amd64 arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~sparc-solaris ~x86-solaris
 LICENSE=GPL-2+ LGPL-2+
 PDEPEND=app-crypt/pinentry[gnome-keyring]
 RDEPEND=>=app-crypt/gcr-3.5.3:=[gtk] >=dev-libs/glib-2.38:2 app-misc/ca-certificates >=dev-libs/libgcrypt-1.2.2:0= caps? ( sys-libs/libcap-ng ) pam? ( virtual/pam ) >=app-crypt/gnupg-2.0.28:=
@@ -12,4 +12,4 @@ SLOT=0
 SRC_URI=mirror://gnome/sources/gnome-keyring/3.18/gnome-keyring-3.18.3.tar.xz
 _eclass_exported_funcs=pkg_preinst:gnome2 pkg_postrm:gnome2 pkg_postinst:- pkg_setup:- src_unpack:gnome2 src_prepare:- src_configure:- src_compile:gnome2 src_test:- src_install:gnome2
 _eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	fcaps	6a1091a98b1dde01cc26ab3252da1a9b	flag-o-matic	d270fa247153df66074f795fa42dba3e	gnome.org	ad34f378a3d57a6f2f2b8b4aaca4543e	gnome2	21c81ea94c12e45a63f7f14fba666e3d	gnome2-utils	c6dcdf3a2c22b578b16adb945dc85c35	libtool	4890219c51da247200223277f993e054	multilib	d062ae4ba2fc40a19c11de2ad89b6616	pam	3ecd5b75e39b0bb05a3183c08fcdfdb4	python-any-r1	8eb13cdf35f6e43c48107b911900b2cc	python-utils-r1	c0ed2a2f233d3af6dd556048695dc5cb	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	virtualx	86c9305a59b3e0459e7fbef3a5f30b96	xdg	a5c4c5ce4f5ce9a2e777f5d9a40a8723	xdg-utils	e2b2bd56125ce8cf59ce30c642b59d48
-_md5_=a266acf5ac61add616a249fe6f0992d1
+_md5_=0177c9af0e8c9e24e31a71b9beac61fb

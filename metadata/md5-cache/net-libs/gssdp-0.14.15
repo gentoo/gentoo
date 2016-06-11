@@ -4,11 +4,11 @@ DESCRIPTION=A GObject-based API for handling resource discovery and announcement
 EAPI=6
 HOMEPAGE=https://wiki.gnome.org/Projects/GUPnP
 IUSE=+introspection gtk abi_x86_32 abi_x86_64 abi_x86_x32 abi_mips_n32 abi_mips_n64 abi_mips_o32 abi_ppc_32 abi_ppc_64 abi_s390_32 abi_s390_64
-KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd
+KEYWORDS=~alpha amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd
 LICENSE=LGPL-2
 RDEPEND=>=dev-libs/glib-2.34.3:2[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_ppc_32(-)?,abi_ppc_64(-)?,abi_s390_32(-)?,abi_s390_64(-)?] >=net-libs/libsoup-2.44.2:2.4[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_ppc_32(-)?,abi_ppc_64(-)?,abi_s390_32(-)?,abi_s390_64(-)?,introspection?] gtk? ( >=x11-libs/gtk+-3.0:3 ) introspection? ( || ( dev-lang/vala:0.30[vapigen(+)] dev-lang/vala:0.28[vapigen(+)] dev-lang/vala:0.26[vapigen(+)] dev-lang/vala:0.24[vapigen(+)] dev-lang/vala:0.22[vapigen(+)] ) >=dev-libs/gobject-introspection-1.36:= ) !<net-libs/gupnp-vala-0.10.3
 SLOT=0/3
 SRC_URI=mirror://gnome/sources/gssdp/0.14/gssdp-0.14.15.tar.xz
 _eclass_exported_funcs=pkg_preinst:gnome2 pkg_postrm:gnome2 pkg_postinst:gnome2 src_prepare:- src_configure:multilib-minimal src_compile:multilib-minimal src_test:multilib-minimal src_install:multilib-minimal
 _eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	gnome.org	ad34f378a3d57a6f2f2b8b4aaca4543e	gnome2	21c81ea94c12e45a63f7f14fba666e3d	gnome2-utils	c6dcdf3a2c22b578b16adb945dc85c35	libtool	4890219c51da247200223277f993e054	multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	d062ae4ba2fc40a19c11de2ad89b6616	multilib-build	8fe2e81aeb36cdf8a6cc5f50443879cc	multilib-minimal	0224dee31c0f98405d572e14ad6dee65	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	vala	f946609697ad4b4b1d85b997f0c70204	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	xdg	a5c4c5ce4f5ce9a2e777f5d9a40a8723	xdg-utils	e2b2bd56125ce8cf59ce30c642b59d48
-_md5_=0aa9e6f9791fe4ca94aae7a2e222b092
+_md5_=cb727b158bf8de910fc38927d93ad503
