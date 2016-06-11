@@ -3,7 +3,7 @@ DEPEND=>=dev-lang/perl-5.6 virtual/pkgconfig !<dev-util/gtk-doc-1.25 app-arch/xz
 DESCRIPTION=Automake files from gtk-doc
 EAPI=5
 HOMEPAGE=http://www.gtk.org/gtk-doc/
-KEYWORDS=alpha amd64 arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~x64-freebsd ~x86-freebsd ~ia64-hpux ~x86-interix ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
+KEYWORDS=alpha amd64 arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc x86 ~ppc-aix ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~x64-freebsd ~x86-freebsd ~ia64-hpux ~x86-interix ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
 LICENSE=GPL-2 FDL-1.1
 RDEPEND=>=dev-lang/perl-5.6
 RESTRICT=test
@@ -11,4 +11,4 @@ SLOT=0
 SRC_URI=mirror://gnome/sources/gtk-doc/1.25/gtk-doc-1.25.tar.xz
 _eclass_exported_funcs=src_configure:- src_compile:- src_install:-
 _eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	gnome.org	ad34f378a3d57a6f2f2b8b4aaca4543e	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=a39a73f5b1a366015261096593835c75
+_md5_=c03a1e4063d1b6e7616265dbc8fc7ac2

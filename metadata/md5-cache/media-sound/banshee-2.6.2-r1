@@ -4,11 +4,11 @@ DESCRIPTION=Import, organize, play, and share your music using a simple and powe
 EAPI=6
 HOMEPAGE=http://banshee.fm/
 IUSE=+aac +cdda +bpm daap doc +encode ipod karma mtp test udev youtube
-KEYWORDS=amd64 ~x86
+KEYWORDS=amd64 x86
 LICENSE=MIT
 RDEPEND=>=dev-lang/mono-2.4.3 <dev-lang/mono-4 dev-libs/glib:2[dbus] gnome-base/gnome-settings-daemon sys-apps/dbus >=dev-dotnet/gtk-sharp-2.12:2 >=dev-dotnet/notify-sharp-0.4.0_pre20080912-r1 >=media-libs/gstreamer-0.10.21-r3:0.10 >=media-libs/gst-plugins-base-0.10.25.2:0.10 media-libs/gst-plugins-bad:0.10 media-libs/gst-plugins-good:0.10 media-libs/gst-plugins-ugly:0.10 >=media-plugins/gst-plugins-meta-0.10-r2:0.10 media-plugins/gst-plugins-gio:0.10 >=dev-dotnet/gconf-sharp-2.24.0:2 media-plugins/gst-plugins-gconf:0.10 cdda? ( || ( media-plugins/gst-plugins-cdparanoia:0.10 media-plugins/gst-plugins-cdio:0.10 ) ) media-libs/musicbrainz:3 dev-dotnet/dbus-sharp:1.0 dev-dotnet/dbus-sharp-glib:1.0 >=dev-dotnet/mono-addins-0.6.2[gtk] >=dev-dotnet/taglib-sharp-2.0.3.7 >=dev-db/sqlite-3.4:3 karma? ( >=media-libs/libkarma-0.1.0-r1 ) aac? ( media-plugins/gst-plugins-faad:0.10 ) bpm? ( media-plugins/gst-plugins-soundtouch:0.10 ) daap? ( >=dev-dotnet/mono-zeroconf-0.8.0-r1 ) doc? ( >=app-text/gnome-doc-utils-0.17.3 ) encode? ( media-plugins/gst-plugins-lame:0.10 media-plugins/gst-plugins-taglib:0.10 ) ipod? ( >=media-libs/libgpod-0.8.2[mono] ) mtp? ( >=media-libs/libmtp-0.3.0:= ) youtube? ( >=dev-dotnet/google-gdata-sharp-1.4 ) udev? ( app-misc/media-player-info dev-dotnet/gudev-sharp dev-dotnet/gkeyfile-sharp dev-dotnet/gtk-sharp-beans dev-dotnet/gio-sharp )
 SLOT=0
 SRC_URI=mirror://gnome/sources/banshee/2.6/banshee-2.6.2.tar.xz
 _eclass_exported_funcs=pkg_preinst:gnome2 pkg_postrm:gnome2 pkg_postinst:gnome2 pkg_setup:mono-env src_prepare:- src_configure:- src_compile:- src_install:gnome2
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	792f83d5ec9536cb5ccef375469d8bde	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	gnome.org	ad34f378a3d57a6f2f2b8b4aaca4543e	gnome2	21c81ea94c12e45a63f7f14fba666e3d	gnome2-utils	c6dcdf3a2c22b578b16adb945dc85c35	libtool	4890219c51da247200223277f993e054	mono-env	10809200679bcceefebac9e72bebb6e6	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	xdg	a5c4c5ce4f5ce9a2e777f5d9a40a8723	xdg-utils	e2b2bd56125ce8cf59ce30c642b59d48
-_md5_=bf474a6e55014f681c258929b31252fe
+_md5_=e326bbca1b4fff1d8150fd7970287e2c
