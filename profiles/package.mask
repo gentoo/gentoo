@@ -68,7 +68,6 @@ sys-fs/redirfs
 # ebuilds are still sitting in ~arch after years in the tree.
 # Masked for removal in 30 days.
 dev-util/ccmalloc
-dev-util/dwarves
 dev-util/tinlink
 dev-util/cdecl
 dev-util/redet
