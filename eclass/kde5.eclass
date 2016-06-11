@@ -152,6 +152,7 @@ case ${KDE_AUTODEPS} in
 			fi
 			if [[ $(get_version_component_range 2) -ge 7 || ${PV} = 9999 ]]; then
 				QT_MINIMAL=5.6.1
+				FRAMEWORKS_MINIMAL=5.23.0
 			fi
 		fi
 
