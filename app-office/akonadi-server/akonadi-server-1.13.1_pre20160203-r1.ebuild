@@ -18,7 +18,7 @@ else
 		SRC_URI="mirror://kde/stable/${PN/-server/}/src/${P/-server/}.tar.bz2"
 		S="${WORKDIR}/${P/-server/}"
 	fi
-	KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86 ~x86-fbsd ~amd64-linux ~x86-linux"
+	KEYWORDS="amd64 ~arm ~ppc ~ppc64 ~x86 ~x86-fbsd ~amd64-linux ~x86-linux"
 fi
 
 inherit cmake-utils ${scm_eclass}
