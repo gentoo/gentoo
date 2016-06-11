@@ -6361,17 +6361,17 @@ dev-perl/Test-Warnings 0.16.0 0.26.0: Test for warnings and the lack of them
 dev-perl/Test-Without-Module 0.180.0: Test fallback behaviour in absence of modules
 dev-perl/Test-YAML 1.50.0 1.60.0: Testing Module for YAML Implementations
 dev-perl/Test-use-ok 0.110.0-r1 0.160.0: Alternative to Test::More::use_ok
-dev-perl/Text-Aligner 0.70.0-r1 0.130.0: Used to justify strings to various alignment styles
+dev-perl/Text-Aligner 0.130.0: Used to justify strings to various alignment styles
 dev-perl/Text-Aspell 0.90.0-r1: Perl interface to the GNU Aspell Library
-dev-perl/Text-Autoformat 1.669.2-r1 1.720.0 1.740.0: Automatic text wrapping and reformatting
-dev-perl/Text-BibTeX 0.710.0 0.720.0: A Perl library for reading, parsing, and processing BibTeX files
+dev-perl/Text-Autoformat 1.669.2-r1 1.740.0: Automatic text wrapping and reformatting
+dev-perl/Text-BibTeX 0.720.0: A Perl library for reading, parsing, and processing BibTeX files
 dev-perl/Text-CSV 1.320.0-r1 1.330.0: Manipulate comma-separated value strings
 dev-perl/Text-CSV-Simple 1.0.0-r1: Text::CSV::Simple - Simpler parsing of CSV files
-dev-perl/Text-CSV_XS 0.950.0 1.190.0 1.230.0: Comma-separated values manipulation routines
+dev-perl/Text-CSV_XS 0.950.0 1.230.0: Comma-separated values manipulation routines
 dev-perl/Text-CharWidth 0.40.0-r1: Get number of occupied columns of a string on terminal
 dev-perl/Text-Diff 1.410.0-r1 1.430.0 1.440.0: Perform diffs on files and record sets
-dev-perl/Text-FindIndent 0.100.0-r1 0.110.0: Heuristically determine the indent style
-dev-perl/Text-Format 0.580.0-r1 0.590.0: Various subroutines to format text
+dev-perl/Text-FindIndent 0.110.0: Heuristically determine the indent style
+dev-perl/Text-Format 0.590.0: Various subroutines to format text
 dev-perl/Text-German 0.60.0-r1: German grundform reduction
 dev-perl/Text-Glob 0.90.0-r1: Match globbing patterns against text
 dev-perl/Text-Iconv 1.700.0-r1: A Perl interface to the iconv() codeset conversion function
@@ -6382,15 +6382,15 @@ dev-perl/Text-Markdown 1.0.31-r1: Convert MultiMarkdown syntax to (X)HTML
 dev-perl/Text-Netstring 0.70.0-r1: Create and manipulate netstrings
 dev-perl/Text-Password-Pronounceable 0.300.0-r1: Generate pronounceable passwords
 dev-perl/Text-Patch 1.800.0-r1: Patches text with given patch
-dev-perl/Text-Quoted 2.60.0-r1 2.80.0 2.90.0: Extract the structure of a quoted mail message
+dev-perl/Text-Quoted 2.60.0-r1 2.90.0: Extract the structure of a quoted mail message
 dev-perl/Text-Reform 1.200.0-r1: Manual text wrapping and reformatting
 dev-perl/Text-Roman 3.500.0: Allows conversion between Roman and Arabic algarisms
 dev-perl/Text-Shellwords 1.80.0-r1: Parses lines of text and returns a set of tokens using the same rules as the Unix shell
 dev-perl/Text-Soundex 3.50.0: Implementation of the soundex algorithm
-dev-perl/Text-Table 1.127.0-r1 1.130.0: Organize Data in Tables
+dev-perl/Text-Table 1.130.0: Organize Data in Tables
 dev-perl/Text-Template 1.460.0-r1: Expand template text with embedded Perl
 dev-perl/Text-Unaccent 1.80.0-r1: Removes accents from a string
-dev-perl/Text-Unidecode 0.40.0-r1 1.230.0 1.240.0 1.270.0: Plain ASCII transliterations of Unicode text
+dev-perl/Text-Unidecode 0.40.0-r1 1.270.0: Plain ASCII transliterations of Unicode text
 dev-perl/Text-VimColor 0.260: Syntax highlighting using vim
 dev-perl/Text-WikiFormat 0.800.0-r1 0.810.0: Translate Wiki formatted text into other formats
 dev-perl/Text-WrapI18N 0.60.0-r1: Internationalized substitute of Text::Wrap
