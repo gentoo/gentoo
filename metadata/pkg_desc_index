@@ -4597,7 +4597,7 @@ dev-libs/igraph 0.7.1-r2: Creating and manipulating undirected and directed grap
 dev-libs/iksemel 1.3 1.4: eXtensible Markup Language parser library designed for Jabber applications
 dev-libs/ilbc-rfc3951 0-r1: iLBC (internet Low Bitrate Codec) is a speech codec suitable for robust voice communication over IP
 dev-libs/iniparser 3.1 3.1-r1 4.0: A free stand-alone ini file parsing library
-dev-libs/injeqt 1.0.0 1.0.0-r1: Dependency injection framework for Qt5
+dev-libs/injeqt 1.0.0 1.0.0-r1 1.0.1: Dependency injection framework for Qt5
 dev-libs/intel-common 13.1.5.192 14.0.3.174 15.0.6.233: Common libraries and utilities needed for Intel compilers and libraries
 dev-libs/isl 0.11.1 0.12.2 0.13 0.14 0.14.1 0.15 0.16.1 0.17.1: A library for manipulating integer points bounded by linear constraints
 dev-libs/jansson 2.7: C library for encoding, decoding and manipulating JSON data
