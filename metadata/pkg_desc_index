@@ -9277,7 +9277,7 @@ dev-ruby/textpow 1.4.0: A library to parse and process Textmate bundles
 dev-ruby/thor 0.19.1: A scripting framework that replaces rake and sake
 dev-ruby/thread_order 1.1.0: Test helper for ordering threaded code
 dev-ruby/thread_safe 0.3.5: A collection of thread-safe versions of common core Ruby classes
-dev-ruby/tidy-ext 0.1.14-r1 0.1.14-r2: W3C HTML Tidy library implemented as a Ruby extension
+dev-ruby/tidy-ext 0.1.14-r1 0.1.14-r2 0.1.14-r3: W3C HTML Tidy library implemented as a Ruby extension
 dev-ruby/tidy_table 0.0.5-r4: Tool to convert an array of struct into an HTML table
 dev-ruby/tilt 1.4.1 1.4.1-r2 2.0.2 2.0.3 2.0.4 2.0.5: Thin interface over template engines to make their usage as generic as possible
 dev-ruby/timecop 0.7.1 0.8.0 0.8.1: A gem providing 'time travel' and 'time freezing' capabilities
@@ -14693,7 +14693,7 @@ net-misc/igmpproxy 0.1-r2: Multicast Routing Daemon using only IGMP signalling (
 net-misc/iodine 0.7.0: IP over DNS tunnel
 net-misc/ip-sentinel 0.12: Prevent unauthorized usage of IPs in the local ethernet broadcastdomain by answering ARP-requests
 net-misc/ipcalc 0.41: IP Calculator prints broadcast/network/etc for an IP address and netmask
-net-misc/iperf 2.0.5-r2 3.0.11 3.0.12 3.1.2 3.1.3: A TCP, UDP, and SCTP network bandwidth measurement tool
+net-misc/iperf 2.0.5-r2 3.0.11 3.0.12 3.1.3: A TCP, UDP, and SCTP network bandwidth measurement tool
 net-misc/iprange 1.0.2: iprange utility
 net-misc/ipsc 0.4.3.2-r2: IP Subnet Calculator
 net-misc/ipsorcery 2.0.9-r1: Ipsorcery allows you to generate IP, TCP, UDP, ICMP, and IGMP packets
