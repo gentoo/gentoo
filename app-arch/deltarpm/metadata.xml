@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!-- maintainer-needed -->
-	<longdescription>A tool to create and apply deltarpms.</longdescription>
+  <maintainer type="person">
+      <email>alonbl@gentoo.org</email>
+      <name>Alon Bar-Lev</name>
+  </maintainer>
+  <longdescription>A tool to create and apply deltarpms.</longdescription>
+  <use>
+    <flag name="system-zlib">
+      Use system
+      <pkg>sys-libs/zlib</pkg>.
+      Do not enable features of rsync friendly.
+    </flag>
+  </use>
 </pkgmetadata>
