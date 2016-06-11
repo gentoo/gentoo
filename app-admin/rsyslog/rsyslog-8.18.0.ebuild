@@ -4,7 +4,7 @@
 
 EAPI=6
 
-inherit autotools linux-info systemd
+inherit autotools eutils linux-info systemd
 
 DESCRIPTION="An enhanced multi-threaded syslogd with database support and more"
 HOMEPAGE="http://www.rsyslog.com/"
@@ -81,7 +81,7 @@ RDEPEND="
 	omhttpfs? ( >=net-misc/curl-7.35.0 )
 	omudpspoof? ( >=net-libs/libnet-1.1.6 )
 	postgres? ( >=dev-db/postgresql-8.4.20:= )
-	rabbitmq? ( >=net-libs/rabbitmq-c-0.3.0 )
+	rabbitmq? ( >=net-libs/rabbitmq-c-0.3.0:= )
 	redis? ( >=dev-libs/hiredis-0.11.0 )
 	relp? ( >=dev-libs/librelp-1.2.5:= )
 	rfc3195? ( >=dev-libs/liblogging-1.0.1:=[rfc3195] )
@@ -319,7 +319,7 @@ src_install() {
 		doins plugins/ompgsql/createDB.sql
 	fi
 
-	find "${ED}"usr/lib* -name '*.la' -delete || die
+	prune_libtool_files --modules
 }
 
 pkg_postinst() {
