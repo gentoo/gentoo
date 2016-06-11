@@ -52,5 +52,5 @@ src_install() {
 	use doc && local HTML_DOCS=( doc/relp.html )
 	default
 
-	find "${ED}"usr/lib* -name '*.la' -delete
+	find "${ED}"usr/lib* -name '*.la' -delete || die
 }
