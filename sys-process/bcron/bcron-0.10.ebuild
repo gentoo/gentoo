@@ -26,7 +26,6 @@ DEPEND="${RDEPEND}
 	>=dev-libs/bglibs-1.106
 "
 
-
 CRON_SYSTEM_CRONTAB="yes"
 
 src_prepare() {
