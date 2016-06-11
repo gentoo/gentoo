@@ -12,7 +12,7 @@ DESCRIPTION="C++ bindings for gpgme"
 COMMIT_ID="a791b69599c3571ff2f4b1cc9033d8fb30f1bc33"
 SRC_URI="https://quickgit.kde.org/?p=kdepimlibs.git&a=snapshot&h=${COMMIT_ID}&fmt=tgz -> ${KMNAME}-${PV}.tar.gz"
 
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 LICENSE="LGPL-2.1"
 IUSE="debug"
 
