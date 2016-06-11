@@ -23,11 +23,9 @@ SLOT="$(get_version_component_range 1-2)"
 KEYWORDS="~amd64"
 IUSE=""
 
-#RUBY_S="rails-${PV}/${PN}"
-
-ruby_add_rdepend "=dev-ruby/activesupport-4*
-	=dev-ruby/activemodel-4*
-	>=dev-ruby/rails-observers-0.1.1:0.1"
+ruby_add_rdepend "=dev-ruby/activesupport-4*:*
+	=dev-ruby/activemodel-4*:*
+	>=dev-ruby/rails-observers-0.1.2:0.1"
 
 ruby_add_bdepend "
 	test? (
@@ -38,9 +36,4 @@ ruby_add_bdepend "
 all_ruby_prepare() {
 	# Set test environment to our hand.
 	rm Gemfile || die "Unable to remove Gemfile"
-
-	# Pull in the correct version of minitest since we don't use bundler.
-	sed -i -e '1igem "minitest", "~>4.0"' \
-		-e '2igem "activemodel", "~>4.0.0"' test/abstract_unit.rb || die
-
 }
