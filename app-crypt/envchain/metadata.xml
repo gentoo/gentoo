@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>her@sorah.jp</email>
+    <name>Sorah Fukumori</name>
+  </maintainer>
+  <longdescription lang="en">
+    Set environment variables with OS X keychain or D-Bus secret service.
+
+    Envchain allows you to save credentials in a secure vault to use as environment variables only when you need them.
+  </longdescription>
+  <upstream>
+    <remote-id type="github">sorah/envchain</remote-id>
+    <bugs-to>https://github.com/sorah/envchain/issues</bugs-to>
+  </upstream>
+</pkgmetadata>
