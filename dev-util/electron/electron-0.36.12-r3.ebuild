@@ -128,7 +128,6 @@ DEPEND="${RDEPEND}
 	dev-perl/JSON
 	>=dev-util/gperf-3.0.3
 	dev-util/ninja
-	net-libs/nodejs[npm]
 	sys-apps/hwids[usb(+)]
 	>=sys-devel/bison-2.4.3
 	sys-devel/flex
@@ -261,6 +260,7 @@ src_prepare() {
 	# node patches
 	cd "${NODE_S}" || die
 	epatch "${FILESDIR}/node-gentoo-build-fixes.patch"
+	epatch "${FILESDIR}/node-external-snapshots.patch"
 	# make sure node uses the correct version of v8
 	rm -r deps/v8 || die
 	ln -s ../../../v8 deps/ || die
@@ -693,6 +693,7 @@ src_install() {
 	# Install Electron
 	insinto "${install_dir}"
 	exeinto "${install_dir}"
+	newexe out/R/nodebin node
 	doexe out/R/electron
 	doins out/R/libv8.so
 	doins out/R/libnode.so
