@@ -401,6 +401,9 @@ multilib_src_configure() {
 		-DWITH_DEFAULT_FEATURE_SET=0
 		-DINSTALL_SYSTEMD_UNITDIR="$(systemd_get_systemunitdir)"
 		-DENABLE_STATIC_LIBS=$(usex static-libs)
+		# The build forces this to be defined when cross-compiling.  We pass it
+		# all the time for simplicity and to make sure it is actually correct.
+		-DSTACK_DIRECTION=$(tc-stack-grows-down && echo -1 || echo 1)
 	)
 
 	if use test ; then
