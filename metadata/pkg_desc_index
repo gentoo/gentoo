@@ -7181,7 +7181,7 @@ dev-python/entrypoints 0.2.1: Discover and load entry points from installed pack
 dev-python/enum34 1.0.4 1.1.2 1.1.3: Python 3.4 Enum backported
 dev-python/envisage 4.4.0: Enthought Tool Suite: Extensible application framework
 dev-python/envoy 0.0.3: Simple API for running external processes
-dev-python/enzyme 0.4.1-r1 9999: Python video metadata parser
+dev-python/enzyme 0.4.1-r2 9999: Python video metadata parser
 dev-python/epsilon 0.7.0 0.7.1: Epsilon is a Python utilities package, most famous for its Time class
 dev-python/epydoc 3.0.1-r2: Tool for generating API documentation for Python modules from docstrings
 dev-python/errorhandler 1.1.1-r2: Logging framework handler that tracks when messages above a certain level have been logged
