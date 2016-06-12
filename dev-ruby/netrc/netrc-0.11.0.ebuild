@@ -15,7 +15,7 @@ DESCRIPTION="This library reads and writes .netrc files"
 HOMEPAGE="https://github.com/geemus/netrc"
 LICENSE="MIT"
 
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 ~x86 ~arm"
 SLOT="0"
 IUSE=""
 
