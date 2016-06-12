@@ -2883,7 +2883,7 @@ dev-db/db-je 3.3.75: Berkeley DB JE is a high performance, transactional storage
 dev-db/dbmodel 0.3: Qt4 tool for drawing entity-relational diagrams
 dev-db/etcd 2.0.10-r1 2.2.1 2.2.5: A highly-available key value store for shared configuration and service discovery
 dev-db/firebird 2.5.3.26780.0-r3: A relational database offering many ANSI SQL:2003 and some SQL:2008 features
-dev-db/freetds 0.91 0.91-r1 1.00: Tabular Datastream Library
+dev-db/freetds 0.91 0.91-r1 1.00 1.00.1: Tabular Datastream Library
 dev-db/gigabase 3.83-r1: OO-DBMS with interfaces for C/C++/Java/PHP/Perl
 dev-db/go-etcd 0_p20141013-r1 2.0.0 2.0.0-r1: Go client library for etcd
 dev-db/gqlplus 1.16: a front-end for Oracle program sqlplus with command-line editing
@@ -7627,7 +7627,7 @@ dev-python/pexpect 3.3 4.0.1: Python module for spawning child applications and 
 dev-python/pgasync 2.01-r1: An asynchronous API to PostgreSQL for twisted
 dev-python/pgmagick 0.5.10 0.5.11 0.6: Yet another boost.python based wrapper for GraphicsMagick
 dev-python/pgpdump 1.5: PGP packet parser library
-dev-python/phonenumbers 7.2.3 7.2.7: Python port of Google's libphonenumber
+dev-python/phonenumbers 7.2.3 7.2.8: Python port of Google's libphonenumber
 dev-python/photutils 0.2.1: Python package for image astronomical photometry
 dev-python/pickleshare 0.5 0.6: A small 'shelve' like datastore with concurrency support
 dev-python/pid 2.0.1: Pidfile featuring stale detection and file-locking
@@ -18745,7 +18745,7 @@ x11-terms/aterm 1.0.1-r2: A terminal emulator with transparency support as well 
 x11-terms/eterm 0.9.5 0.9.6 9999: A vt102 terminal emulator for X
 x11-terms/evilvte 0.5.1 0.5.2_pre1: VTE based, super lightweight terminal emulator
 x11-terms/gnome-terminal 3.16.2-r2 3.18.2 3.18.3: The Gnome Terminal
-x11-terms/guake 0.5.0 0.8.3 0.8.4 9999: Drop-down terminal for GTK+ desktops
+x11-terms/guake 0.8.3 0.8.4 0.8.5 9999: Drop-down terminal for GTK+ desktops
 x11-terms/hanterm 3.1.6-r2 3.1.6-r4: Hanterm -- Korean terminal
 x11-terms/kterm 6.2.0-r5: Japanese Kanji X Terminal
 x11-terms/lilyterm 0.9.9.4 0.9.9.4-r1: a terminal emulator based off of libvte that aims to be fast and lightweight
