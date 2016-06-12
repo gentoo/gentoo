@@ -23,11 +23,11 @@ RDEPEND=""
 S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
-    "${FILESDIR}"/${P}-no-fpermissive-r1.diff
-    "${FILESDIR}"/${P}-m4-quote.patch
-    "${FILESDIR}"/${P}-automake-r2.patch
-    "${FILESDIR}"/${P}-gcc47.patch
-    "${FILESDIR}"/${P}-clang.patch
+	"${FILESDIR}"/${P}-no-fpermissive-r1.diff
+	"${FILESDIR}"/${P}-m4-quote.patch
+	"${FILESDIR}"/${P}-automake-r2.patch
+	"${FILESDIR}"/${P}-gcc47.patch
+	"${FILESDIR}"/${P}-clang.patch
 )
 
 src_prepare() {
