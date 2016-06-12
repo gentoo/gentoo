@@ -106,7 +106,6 @@ src_compile() {
 	mv "${WORKDIR}"/${P}*/{libpypy-c.so,pypy-c} . || die
 	mv "${WORKDIR}"/${P}*/include/*.h include/ || die
 	mv pypy/module/cpyext/include/*.h include/ || die
-	mv pypy/module/cpyext/include/numpy include/ || die
 
 	#use doc && emake -C pypy/doc/ html
 	#needed even without jit :( also needed in both compile and install phases
