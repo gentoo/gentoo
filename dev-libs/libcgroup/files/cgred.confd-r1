@@ -1,5 +1,0 @@
-# /etc/conf.d/cgred.conf: config file for /etc/init.d/cgred
-
-# Options to pass to cgrulesengd;
-# See the cgrulesengd(8) man page for more info.
-CGRED_OPTS=""
