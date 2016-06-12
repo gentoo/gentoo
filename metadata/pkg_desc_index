@@ -13546,7 +13546,7 @@ media-video/imagination 3.0 3.0-r1: Simple DVD slideshow maker
 media-video/isight-firmware-tools 1.6-r1: Extract, load or export firmware for the iSight webcams
 media-video/istanbul 0.2.2 0.2.2.1_pre20120909: Istanbul is a screencast application for the Unix desktop
 media-video/jubler 4.6.1-r3: Java subtitle editor
-media-video/kaffeine 1.2.2-r1 1.3.1 2.0.2: Media player with digital TV support by KDE
+media-video/kaffeine 1.2.2-r1 1.3.1 2.0.3: Media player with digital TV support by KDE
 media-video/kamerka 0.10: Simple photo taking application with fancy animated interface
 media-video/kamoso 3.1.0 3.2: Application to take pictures and videos from your webcam by KDE
 media-video/kffmpegthumbnailer 1.1.0-r3 1.1.0-r4: KDE thumbnailer based on ffmpegthumbnailer

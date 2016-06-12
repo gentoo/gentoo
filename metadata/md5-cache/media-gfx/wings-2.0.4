@@ -1,4 +1,4 @@
-DEFINED_PHASES=compile configure install
+DEFINED_PHASES=compile configure install prepare
 DEPEND=>=dev-lang/erlang-18.1[wxwidgets] dev-libs/cl media-libs/libsdl[opengl]
 DESCRIPTION=Wings 3D is an advanced subdivision modeler
 EAPI=6
@@ -8,6 +8,6 @@ LICENSE=BSD
 RDEPEND=>=dev-lang/erlang-18.1[wxwidgets] dev-libs/cl media-libs/libsdl[opengl]
 SLOT=0
 SRC_URI=mirror://sourceforge/wings/wings-2.0.4.tar.bz2
-_eclass_exported_funcs=src_configure:- src_compile:- src_install:-
+_eclass_exported_funcs=src_prepare:- src_configure:- src_compile:- src_install:-
 _eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	c9d9187f4caa4026a0ceddd8dfceb3c1
-_md5_=d865283d35a9adca0b369d6a79eec8e3
+_md5_=bfd0860c00af9287161019d344145a16
