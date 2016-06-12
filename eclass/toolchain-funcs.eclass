@@ -221,6 +221,21 @@ tc-is-static-only() {
 	[[ ${host} == *-mint* ]]
 }
 
+# @FUNCTION: tc-stack-grows-down
+# @DESCRIPTION:
+# Return shell true if the stack grows down.  This is the default behavior
+# for the vast majority of systems out there and usually projects shouldn't
+# care about such internal details.
+tc-stack-grows-down() {
+	# List the few that grow up.
+	case ${ARCH} in
+	hppa|metag) return 1 ;;
+	esac
+
+	# Assume all others grow down.
+	return 0
+}
+
 # @FUNCTION: tc-export_build_env
 # @USAGE: [compiler variables]
 # @DESCRIPTION:
