@@ -18,6 +18,7 @@ LICENSE="BSD"
 SLOT="${PV}"
 KEYWORDS="~amd64 ~arm ~x86"
 IUSE=""
+RESTRICT=test
 
 ruby_add_rdepend "dev-ruby/metasploit-concern:2.0
 	>=dev-ruby/metasploit_data_models-1.2.0:*
