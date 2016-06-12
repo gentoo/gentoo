@@ -1,24 +1,24 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-GCONF_DEBUG=no
 GNOME2_LA_PUNT=yes
 PYTHON_COMPAT=( python2_7 )
 
-inherit autotools gnome2 python-single-r1
+inherit autotools eutils gnome2 python-single-r1
 
 DESCRIPTION="Drop-down terminal for GTK+ desktops"
-HOMEPAGE="http://guake.org/"
-SRC_URI="mirror://debian/pool/main/${PN:0:1}/${PN}/${PN}_${PV}.orig.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://github.com/Guake/guake"
+SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 arm x86"
+KEYWORDS="~amd64 ~arm ~x86"
 
 RDEPEND="
+	dev-libs/keybinder:0[python]
 	dev-python/dbus-python
 	dev-python/gconf-python
 	dev-python/notify-python
@@ -36,17 +36,12 @@ DEPEND="
 
 DOCS=( AUTHORS ChangeLog NEWS README.rst )
 
-S=${WORKDIR}/${PN}-${P}
-
 src_prepare() {
+	eapply_user
+
 	eautoreconf
 
-	# python_fix_shebang does not handle this?
-	sed -i -e '/^PYTHON=/s|python|'${EPYTHON}'|' src/guake-prefs || die
-
 	gnome2_src_prepare
-
-	G2CONF="--disable-static"
 }
 
 pkg_postinst() {

@@ -3,7 +3,7 @@
 # $Header: /var/cvsroot/gentoo-x86/media-libs/esdl/esdl-1.2.ebuild,v 1.1 2013/02/12 14:41:54 george Exp $
 
 EAPI=6
-inherit eutils fixheadtails multilib
+inherit eutils multilib
 
 DESCRIPTION="OpenCL bindings for Erlang"
 HOMEPAGE="https://github.com/tonyrog/cl"
@@ -21,6 +21,12 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 S=${WORKDIR}/${PN}-${P}
+
+src_prepare() {
+	sed -i -e "s|git|\"${PV}\"|" src/cl.app.src || die
+
+	eapply_user
+}
 
 src_compile() {
 	rebar compile || die
