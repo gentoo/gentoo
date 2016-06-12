@@ -406,10 +406,10 @@ src_configure() {
 	#   not linked or anything else, worthless to depend on
 	econf \
 		--docdir="${EPREFIX}/usr/share/doc/${PF}/" \
-		--with-system-headers \
-		--with-system-libs \
-		--with-system-jars \
 		--with-system-dicts \
+		--with-system-headers \
+		--with-system-jars \
+		--with-system-libs \
 		--enable-cairo-canvas \
 		--enable-graphite \
 		--enable-largefile \
@@ -418,15 +418,15 @@ src_configure() {
 		--enable-python=system \
 		--enable-randr \
 		--enable-release-build \
-		--disable-hardlink-deliver \
 		--disable-ccache \
 		--disable-crashdump \
 		--disable-dependency-tracking \
 		--disable-epm \
 		--disable-fetch-external \
 		--disable-gstreamer-0-10 \
-		--disable-report-builder \
+		--disable-hardlink-deliver \
 		--disable-online-update \
+		--disable-report-builder \
 		--disable-systray \
 		--with-alloc=$(use jemalloc && echo "jemalloc" || echo "system") \
 		--with-build-version="Gentoo official package" \
