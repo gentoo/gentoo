@@ -114,13 +114,12 @@ IUSE=""
 DEPEND="
 	!dev-util/apm
 	${PYTHON_DEPS}
-	>=net-libs/nodejs-5.9.0:=[npm]
 	>=app-text/hunspell-1.3.3:=
 	=dev-libs/libgit2-0.23*:=[ssh]
 	>=gnome-base/libgnome-keyring-3.12:=
 	>=dev-libs/oniguruma-5.9.5:=
 	>=dev-util/ctags-5.8
-	dev-util/electron:0/36
+	>=dev-util/electron-0.36.12-r3:0/36
 "
 RDEPEND="${DEPEND}"
 
@@ -146,6 +145,29 @@ get_install_suffix() {
 
 get_install_dir() {
 	echo -n "/usr/$(get_libdir)/atom$(get_install_suffix)"
+}
+
+get_electron_dir() {
+	echo -n "/usr/$(get_libdir)/electron"
+}
+
+enode_electron() {
+	"$(get_electron_dir)"/node $@
+}
+
+enodegyp_atom() {
+	local apmpath="/usr/share/atom/resources/app/apm"
+	local nodegyp="${S}/${apmpath}/node_modules/npm/node_modules/node-gyp/bin/node-gyp.js"
+
+	PATH="$(get_electron_dir):${PATH}" \
+		enode_electron "${nodegyp}" \
+			--nodedir=/usr/include/electron/node/ $@ || die
+}
+
+easar() {
+	local asar="${WORKDIR}/$(package_dir asar)/node_modules/asar/bin/asar"
+	echo "asar" $@
+	enode_electron "${asar}" $@ || die
 }
 
 package_dir() {
@@ -197,7 +219,7 @@ src_prepare() {
 	epatch "${FILESDIR}/${PN}-python.patch"
 	epatch "${FILESDIR}/${PN}-unbundle-electron.patch"
 
-	sed -i -e "s|{{ATOM_PATH}}|/usr/$(get_libdir)/electron/electron|g" \
+	sed -i -e "s|{{ATOM_PATH}}|$(get_electron_dir)/electron|g" \
 		./atom.sh \
 		|| die
 
@@ -207,7 +229,7 @@ src_prepare() {
 
 	local env="export NPM_CONFIG_NODEDIR=/usr/include/electron/node/"
 	sed -i -e \
-		"s|\"\$binDir/\$nodeBin\" --harmony_collections|${env}\nexec /usr/bin/node|g" \
+		"s|\"\$binDir/\$nodeBin\" --harmony_collections|${env}\nexec $(get_electron_dir)/node|g" \
 			apm/bin/apm || die
 
 	rm apm/bin/node || die
@@ -271,10 +293,7 @@ src_prepare() {
 	ln -s "${WORKDIR}/$(package_dir rimraf)" "${_s}/node_modules/rimraf" || die
 
 	# Unpack app.asar
-	_s="${WORKDIR}/$(package_dir asar)"
-	"${_s}"/node_modules/asar/bin/asar \
-		extract "${S}/usr/share/atom/resources/app.asar" \
-				"${S}/build/app" || die
+	easar extract "${S}/usr/share/atom/resources/app.asar" "${S}/build/app"
 
 	cd "${S}" || die
 
@@ -288,12 +307,12 @@ src_prepare() {
 }
 
 src_configure() {
-	local binmod _s nodegyp="/usr/$(get_libdir)/node_modules/npm/node_modules/node-gyp/bin/node-gyp.js"
+	local binmod _s
 
 	_s="${WORKDIR}/$(package_dir nodegit)"
 	cd "${_s}" || die
-	node generate/scripts/generateJson.js || die
-	node generate/scripts/generateNativeCode.js || die
+	enode_electron generate/scripts/generateJson.js || die
+	enode_electron generate/scripts/generateNativeCode.js || die
 
 	${EPYTHON} "${FILESDIR}/gyp-unbundle.py" \
 		--inplace --unbundle "nodegit;vendor/libgit2.gyp:libgit2;git2;ssh2" "${_s}/binding.gyp" || die
@@ -302,18 +321,16 @@ src_configure() {
 		einfo "Configuring ${binmod}..."
 		_s="${WORKDIR}/$(package_dir ${binmod})"
 		cd "${_s}" || die
-		"${nodegyp}" --nodedir=/usr/include/electron/node/ configure || die
-		# Unclobber MAKEFLAGS
-		sed -i -e '/MAKEFLAGS=-r/d' build/Makefile || die
+		enodegyp_atom configure
 	done
 }
 
 src_compile() {
-	local binmod _s x nodegyp="/usr/$(get_libdir)/node_modules/npm/node_modules/node-gyp/bin/node-gyp.js"
+	local binmod _s x
 	local ctags_d="node_modules/symbols-view/vendor"
 	local jobs=$(makeopts_jobs) gypopts
 
-	gypopts="--nodedir=/usr/include/electron/node/ --verbose"
+	gypopts="--verbose"
 
 	if [[ ${MAKEOPTS} == *-j* && ${jobs} != 999 ]]; then
 		gypopts+=" --jobs ${jobs}"
@@ -325,7 +342,7 @@ src_compile() {
 		einfo "Building ${binmod}..."
 		_s="${WORKDIR}/$(package_dir ${binmod})"
 		cd "${_s}" || die
-		"${nodegyp}" ${gypopts} build || die
+		enodegyp_atom ${gypopts} build
 		x=${binmod##node-}
 		mkdir -p "${S}/build/modules/${x}"
 		cp build/Release/*.node "${S}/build/modules/${x}"
@@ -341,11 +358,9 @@ src_compile() {
 
 	# Re-pack app.asar
 	# Keep unpack rules in sync with build/tasks/generate-asar-task.coffee
-	x="--unpack={*.node,ctags-config,ctags-linux,**/node_modules/spellchecker/**,**/resources/atom.png}"
-	_s="${WORKDIR}/$(package_dir asar)/node_modules/asar/bin"
 	cd "${S}/build" || die
-	echo "asar" pack "${x}" "app" "app.asar"
-	"${_s}/asar" pack "${x}" "app" "app.asar" || die
+	x="--unpack={*.node,ctags-config,ctags-linux,**/node_modules/spellchecker/**,**/resources/atom.png}"
+	easar pack "${x}" "app" "app.asar"
 	cd "${S}" || die
 
 	# Replace vendored ctags with a symlink to system ctags
