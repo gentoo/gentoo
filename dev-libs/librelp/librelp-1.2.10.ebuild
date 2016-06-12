@@ -10,7 +10,7 @@ DESCRIPTION="An easy to use library for the RELP protocol"
 HOMEPAGE="http://www.librelp.com/"
 SRC_URI="http://download.rsyslog.com/${PN}/${P}.tar.gz"
 
-LICENSE="GPL-3 doc? ( FDL-1.3 )"
+LICENSE="GPL-3+ doc? ( FDL-1.3 )"
 
 # subslot = soname version
 SLOT="0/0.1.0"
