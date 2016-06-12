@@ -20,7 +20,13 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.0.4-wx.patch
+)
+
 src_prepare() {
+	default
+
 	sed -i \
 		-e '/include_lib/s|wings/|../|' \
 		plugins_src/primitives/wpc_knot.erl \
@@ -54,7 +60,7 @@ src_install() {
 	find -name 'Makefile*' -exec rm -f '{}' \;
 
 	insinto ${WINGS_PATH}
-	doins -r e3d ebin fonts icons plugins psd shaders src textures tools
+	doins -r e3d ebin icons plugins psd shaders src textures tools
 
 	dosym ${WINGS_PATH} ${ERL_PATH}/${PN}
 	dosym ${ESDL_PATH} ${ERL_PATH}/esdl
