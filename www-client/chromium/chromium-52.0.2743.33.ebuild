@@ -23,7 +23,7 @@ IUSE="cups gn gnome gnome-keyring gtk3 +hangouts hidpi hotwording kerberos neon 
 RESTRICT="!system-ffmpeg? ( proprietary-codecs? ( bindist ) )"
 
 # TODO: bootstrapped gn binary hangs when using tcmalloc with portage's sandbox.
-REQUIRED_USE="gn? ( kerberos !system-ffmpeg !tcmalloc )"
+REQUIRED_USE="gn? ( !tcmalloc )"
 
 # Native Client binaries are compiled with different set of flags, bug #452066.
 QA_FLAGS_IGNORED=".*\.nexe"
@@ -188,7 +188,7 @@ pkg_setup() {
 
 src_prepare() {
 	epatch "${FILESDIR}/${PN}-system-ffmpeg-r2.patch"
-	epatch "${FILESDIR}/${PN}-system-jinja-r8.patch"
+	epatch "${FILESDIR}/${PN}-system-jinja-r9.patch"
 	epatch "${FILESDIR}/${PN}-widevine-r1.patch"
 	epatch "${FILESDIR}/${PN}-last-commit-position-r0.patch"
 	epatch "${FILESDIR}/${PN}-snapshot-toolchain-r1.patch"
@@ -206,9 +206,6 @@ src_prepare() {
 		conditional_bundled_libraries+="
 			base/third_party/libevent
 			third_party/adobe
-			third_party/jinja2
-			third_party/libpng
-			third_party/markupsafe
 			third_party/speech-dispatcher
 			third_party/usb_ids
 			third_party/xdg-utils
@@ -416,8 +413,9 @@ src_configure() {
 		$(gyp_use tcmalloc use_allocator tcmalloc none)
 		$(gyp_use widevine enable_widevine)"
 
-	myconf_gn+=" use_cups=$(usex cups true false)"
 	myconf_gn+=" use_allocator=$(usex tcmalloc \"tcmalloc\" \"none\")"
+	myconf_gn+=" use_cups=$(usex cups true false)"
+	myconf_gn+=" use_kerberos=$(usex kerberos true false)"
 
 	# Use explicit library dependencies instead of dlopen.
 	# This makes breakages easier to detect by revdep-rebuild.
