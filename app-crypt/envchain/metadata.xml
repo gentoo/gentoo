@@ -5,10 +5,14 @@
     <email>her@sorah.jp</email>
     <name>Sorah Fukumori</name>
   </maintainer>
+  <maintainer type="project">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
   <longdescription lang="en">
     Set environment variables with OS X keychain or D-Bus secret service.
-
-    Envchain allows you to save credentials in a secure vault to use as environment variables only when you need them.
+    Envchain allows you to save credentials in a secure vault to use as
+    environment variables only when you need them.
   </longdescription>
   <upstream>
     <remote-id type="github">sorah/envchain</remote-id>
