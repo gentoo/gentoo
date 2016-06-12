@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -14,7 +14,7 @@ SLOT="0"
 KEYWORDS="~x86 ~amd64 ~arm"
 IUSE=""
 
-DEPEND="sys-devel/binutils:*"
+DEPEND="sys-libs/binutils-libs:="
 RDEPEND="${DEPEND}"
 
 src_prepare() {
