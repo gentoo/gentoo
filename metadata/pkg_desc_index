@@ -12291,7 +12291,7 @@ media-gfx/qingy-themes 20050816: Collection of qingy themes
 media-gfx/qiv 2.2.4 2.3.1: Quick Image Viewer
 media-gfx/qiviewer 0.5.0-r1: Lightweight image viewer, similar to eog or viewnior for Gnome
 media-gfx/qosmic 1.5.0: A cosmic recursive flame fractal editor
-media-gfx/qrencode 3.3.1 3.4.3 3.4.4: C library for encoding data in a QR Code symbol
+media-gfx/qrencode 3.3.1 3.4.3 3.4.4-r1: C library for encoding data in a QR Code symbol
 media-gfx/qrencode-python 1.01-r1 1.02_pre140921: A simple wrapper for the C qrencode library
 media-gfx/quat 1.20: A 3D quaternionic fractal generator
 media-gfx/qvv 4.02: QVV Image Viewer and Browser
