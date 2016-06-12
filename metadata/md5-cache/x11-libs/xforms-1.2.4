@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=virtual/jpeg:0= x11-libs/libSM x11-libs/libX11 x11-libs/libXpm opengl? ( virtual/opengl ) x11-proto/xproto !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=A graphical user interface toolkit for X
+EAPI=6
+HOMEPAGE=http://xforms-toolkit.org/
+IUSE=doc opengl static-libs
+KEYWORDS=~amd64 ~arm ~ppc ~ppc64 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris
+LICENSE=LGPL-2.1
+RDEPEND=virtual/jpeg:0= x11-libs/libSM x11-libs/libX11 x11-libs/libXpm opengl? ( virtual/opengl )
+SLOT=0
+SRC_URI=http://git.savannah.gnu.org/cgit/xforms.git/snapshot/xforms_1.2.4.tar.gz -> xforms-1.2.4.tar.gz
+_eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	792f83d5ec9536cb5ccef375469d8bde	libtool	4890219c51da247200223277f993e054	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	c9d9187f4caa4026a0ceddd8dfceb3c1
+_md5_=b72fceb1a762d7702b3f75348f2dda86
