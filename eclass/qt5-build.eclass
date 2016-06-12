@@ -199,7 +199,7 @@ qt5-build_src_prepare() {
 
 		# Respect toolchain and flags in config.tests
 		find config.tests/unix -name '*.test' -type f -execdir \
-			sed -i -re '/(bin\/qmake|QMAKE")/ s/-nocache //' '{}' + || die
+			sed -i -e 's/-nocache //' '{}' + || die
 
 		# Don't inject -msse/-mavx/... into CXXFLAGS when detecting
 		# compiler support for extended instruction sets (bug 552942)
