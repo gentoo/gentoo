@@ -2,24 +2,20 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-AUTOTOOLS_AUTORECONF=1
-AUTOTOOLS_IN_SOURCE_BUILD=1
-DISABLE_AUTOFORMATTING=1
-
-DISTUTILS_OPTIONAL=1
-# Python extension supports only Python2
+# Python extension supports only Python 2.
 # See https://github.com/mrash/fwknop/issues/167
 PYTHON_COMPAT=( python2_7 )
+DISTUTILS_OPTIONAL=1
 
-inherit autotools-utils eutils distutils-r1 linux-info readme.gentoo-r1 systemd
+inherit autotools distutils-r1 eutils linux-info readme.gentoo-r1 systemd
 
 DESCRIPTION="Single Packet Authorization and Port Knocking application"
-HOMEPAGE="http://www.cipherdyne.org/fwknop/ https://github.com/mrash/fwknop"
+HOMEPAGE="https://www.cipherdyne.org/fwknop/ https://github.com/mrash/fwknop"
 SRC_URI="https://github.com/mrash/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="client extras firewalld gdbm gpg iptables python server udp-server"
@@ -40,17 +36,19 @@ DEPEND="
 RDEPEND="${DEPEND}"
 
 REQUIRED_USE="
-	python? ( ${PYTHON_REQUIRED_USE} )
 	firewalld? ( server )
+	gdbm? ( server )
 	iptables? ( server )
+	python? ( ${PYTHON_REQUIRED_USE} )
 	server? ( ^^ ( firewalld iptables ) )
 	udp-server? ( server )
 "
 
-DOCS=( ChangeLog README.md )
+DOCS=( AUTHORS ChangeLog README.md )
 
+DISABLE_AUTOFORMATTING=1
 DOC_CONTENTS="
-Example configuration files were installed in /etc/fwknopd directory.
+Example configuration files were installed to /etc/fwknopd directory.
 Please edit them to fit your needs and then remove the .example suffix.
 
 fwknopd supports several backends: firewalld, iptables, ipfw, pf, ipf.
@@ -58,55 +56,50 @@ You can set the desired backend via FIREWALL_EXE option in fwknopd.conf
 instead of the default one chosen at compile time.
 "
 
-pkg_pretend() {
-	if use server; then
-		if ! linux_config_exists || ! linux_chkconfig_present NETFILTER_XT_MATCH_COMMENT; then
-			ewarn "fwknopd uses the iptables 'comment' match to expire SPA rules,"
-			ewarn "which is a major security feature and is enabled by default."
-			ewarn "Please either enable NETFILTER_XT_MATCH_COMMENT support in your"
-			ewarn "kernel, or set the appropriate ENABLE_{FIREWD,IPT}_COMMENT_CHECK"
-			ewarn "to 'N' in your fwknopd.conf file."
-		fi
-	fi
-}
-
 src_prepare() {
-	# Install example configs with .example suffix
+	default_src_prepare
+
+	# Install example configs with .example suffix.
 	if use server; then
-		sed -i -e 's/conf;/conf.example;/g' "${S}"/Makefile.am || die
+		sed -i -e 's|conf;|conf.example;|g' Makefile.am || die
 	fi
 
-	autotools-utils_src_prepare
+	eautoreconf
 }
 
 src_configure() {
 	local myeconfargs=(
-		--localstatedir=/run
-		--enable-digest-cache
+		--localstatedir="${EPREFIX}/run"
 		$(use_enable client)
 		$(use_enable !gdbm file-cache)
 		$(use_enable server)
 		$(use_enable udp-server)
 		$(use_with gpg gpgme)
 	)
-	use firewalld && myeconfargs+=(--with-firewalld=/usr/sbin/firewalld)
-	use iptables && myeconfargs+=(--with-iptables=/sbin/iptables)
+	use firewalld && myeconfargs+=(--with-firewalld="${EPREFIX}/usr/sbin/firewalld")
+	use iptables && myeconfargs+=(--with-iptables="${EPREFIX}/sbin/iptables")
 
-	autotools-utils_src_configure
+	econf "${myeconfargs[@]}"
 }
 
 src_compile() {
-	autotools-utils_src_compile
+	default_src_compile
 
 	if use python; then
-		cd "${S}"/python || die
+		cd python || die
 		distutils-r1_src_compile
 	fi
 }
 
 src_install() {
-	autotools-utils_src_install
+	default_src_install
 	prune_libtool_files --modules
+
+	if use extras; then
+		dodoc extras/apparmor/usr.sbin.fwknopd
+		dodoc extras/console-qr/console-qr.sh
+		dodoc extras/fwknop-launcher/*
+	fi
 
 	if use server; then
 		newinitd "${FILESDIR}/fwknopd.init" fwknopd
@@ -116,16 +109,24 @@ src_install() {
 		readme.gentoo_create_doc
 	fi
 
-	use extras && dodoc "${S}/extras/apparmor/usr.sbin.fwknopd"
-
 	if use python; then
-		# Unset DOCS since distutils-r1.eclass interferes
+		# Redefine DOCS, otherwise distutils-r1 eclass interferes.
 		local DOCS=()
-		cd "${S}"/python || die
+		cd python || die
 		distutils-r1_src_install
 	fi
 }
 
 pkg_postinst() {
-	use server && readme.gentoo_print_elog
+	if use server; then
+		readme.gentoo_print_elog
+
+		if ! linux_config_exists || ! linux_chkconfig_present NETFILTER_XT_MATCH_COMMENT; then
+			echo
+			ewarn "fwknopd daemon relies on the 'comment' match in order to expire"
+			ewarn "created firewall rules, which is an important security feature."
+			ewarn "Please enable NETFILTER_XT_MATCH_COMMENT support in your kernel."
+			echo
+		fi
+	fi
 }
