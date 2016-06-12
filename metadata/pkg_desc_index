@@ -351,7 +351,7 @@ app-backup/boxbackup 0.11.1-r1: A completely automatic on-line backup system
 app-backup/burp 1.3.8-r1 1.3.48-r1 1.4.40-r1: Network backup and restore client and server for Unix and Windows
 app-backup/ccollect 0.8: (pseudo) incremental backup with different exclude lists using hardlinks and rsync
 app-backup/cdbackup 0.7.1: Allows streaming backup utilities to dump/restore from CD-R(W)s or DVD(+/-RW)s
-app-backup/cdbkup 1.0 1.0-r1: performs full/incremental backups of local/remote filesystems onto CD-R(W)s
+app-backup/cdbkup 1.0 1.0-r2: performs full/incremental backups of local/remote filesystems onto CD-R(W)s
 app-backup/cpdup 1.18: A comprehensive filesystem mirroring program
 app-backup/dar 2.4.9 2.4.20 2.4.21 2.4.22 2.5.4 2.5.5: A full featured backup tool, aimed for disks (floppy,CDR(W),DVDR(W),zip,jazz etc.)
 app-backup/deja-dup 34.0 34.1 34.2: Simple backup tool using duplicity back-end
