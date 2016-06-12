@@ -6970,7 +6970,7 @@ dev-python/blosc 1.2.8: High performance compressor optimized for binary data
 dev-python/bluelet 0.2.0: Module for pure Python asynchronous I/O using coroutines
 dev-python/blz 0.6.2: Chunked, compressed, Python data container for memory and disk
 dev-python/bokeh 0.7.1 0.10.0 0.11.0 0.11.1: Statistical and novel interactive HTML plots for Python
-dev-python/boto 2.27.0 2.31.1 2.34.0 2.35.1 2.38.0 2.39.0: Amazon Web Services API
+dev-python/boto 2.27.0 2.31.1 2.34.0 2.35.1 2.38.0 2.39.0 2.40.0: Amazon Web Services API
 dev-python/boto3 1.2.1 1.2.3 1.3.0: The AWS SDK for Python
 dev-python/botocore 1.3.22 1.4.19 1.4.22 1.4.25: Low-level, data-driven core of boto 3.
 dev-python/bottle 0.12.7 0.12.8 0.12.9: A fast and simple micro-framework for small web-applications
@@ -8308,7 +8308,7 @@ dev-python/webob 1.4 1.4.1 1.5.0 1.5.1 1.6.0 1.6.1: WSGI request and response ob
 dev-python/webpy 0.37 0.37-r1: A small and simple web framework for Python
 dev-python/websocket-client 0.21.0 0.34.0 0.35.0 0.37.0: WebSocket client for python with hybi13 support
 dev-python/websockify 0.6.0 0.7.0: WebSockets support for any application/server
-dev-python/webtest 1.4.3-r1 2.0.16 2.0.17 2.0.18: Helper to test WSGI applications
+dev-python/webtest 1.4.3-r1 2.0.16 2.0.17 2.0.18 2.0.21: Helper to test WSGI applications
 dev-python/webut 0.1.0.2 0.1.0.2-r1: Miscellaneous utilities for nevow and twisted.web programming
 dev-python/wehjit 0.2.2-r1: A Python web-widget library
 dev-python/werkzeug 0.9.6 0.10.4 0.11.8 0.11.9 0.11.10: Collection of various utilities for WSGI applications
