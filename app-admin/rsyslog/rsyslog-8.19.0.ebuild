@@ -1,18 +1,15 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
-AUTOTOOLS_AUTORECONF=1
+EAPI=6
 
-inherit autotools-utils eutils systemd
+inherit autotools eutils linux-info systemd
 
 DESCRIPTION="An enhanced multi-threaded syslogd with database support and more"
 HOMEPAGE="http://www.rsyslog.com/"
 
 BRANCH="8-stable"
-
-PATCHES=()
 
 if [[ ${PV} == "9999" ]]; then
 	EGIT_REPO_URI="
@@ -27,30 +24,53 @@ if [[ ${PV} == "9999" ]]; then
 
 	inherit git-r3
 else
-	SRC_URI="
-		http://www.rsyslog.com/files/download/${PN}/${P}.tar.gz
-		doc? ( http://www.rsyslog.com/files/download/${PN}/${PN}-doc-${PV}.tar.gz )
-	"
-	KEYWORDS="amd64 ~arm hppa x86"
+	MY_PV=${PV%_rc*}
+	MY_FILENAME="${PN}-${PV}.tar.gz"
+	MY_FILENAME_DOCS="${PN}-docs-${PV}.tar.gz"
+	S="${WORKDIR}/${PN}-${MY_PV}"
 
-	PATCHES+=( "${FILESDIR}"/${BRANCH}/50-${PN}-8.12.0-fix-re_extract.patch )
-	PATCHES+=( "${FILESDIR}"/${BRANCH}/50-${PN}-8.13.0-lookup-table-reload-bugfix.patch )
+	# Upstream URL schema:
+	# RC:      http://www.rsyslog.com/files/download/rsyslog/rc/rsyslog-8.18.0.tar.gz
+	#          http://www.rsyslog.com/files/download/rsyslog/rc2/rsyslog-8.18.0.tar.gz
+	# Release: http://www.rsyslog.com/files/download/rsyslog/rsyslog-8.18.0.tar.gz
+
+	MY_URL_PREFIX=
+	if [[ ${PV} = *_rc* ]]; then
+		_tmp_last_index=$(($(get_last_version_component_index ${PV})+1))
+		_tmp_suffix=$(get_version_component_range ${_tmp_last_index} ${PV})
+		if [[ ${_tmp_suffix} = *rc* ]]; then
+			MY_URL_PREFIX="${_tmp_suffix}/"
+		fi
+
+		# Cleaning up temporary variables
+		unset _tmp_last_index
+		unset _tmp_suffix
+	else
+		KEYWORDS="~amd64 ~arm ~hppa ~x86"
+	fi
+
+	SRC_URI="
+		http://www.rsyslog.com/files/download/${PN}/${MY_URL_PREFIX}${PN}-${MY_PV}.tar.gz -> ${MY_FILENAME}
+		doc? ( http://www.rsyslog.com/files/download/${PN}/${MY_URL_PREFIX}${PN}-doc-${MY_PV}.tar.gz -> ${MY_FILENAME_DOCS} )
+	"
 fi
 
 LICENSE="GPL-3 LGPL-3 Apache-2.0"
 SLOT="0"
-IUSE="dbi debug doc elasticsearch +gcrypt jemalloc kerberos libressl mongodb mysql normalize omudpspoof"
-IUSE+=" postgres rabbitmq redis relp rfc3195 rfc5424hmac snmp ssl systemd test usertools zeromq"
+IUSE="dbi debug doc elasticsearch +gcrypt grok jemalloc kafka kerberos libressl mongodb mysql normalize omhttpfs"
+IUSE+=" omudpspoof postgres rabbitmq redis relp rfc3195 rfc5424hmac snmp ssl systemd test usertools zeromq"
 
 RDEPEND="
-	>=dev-libs/json-c-0.11:=
+	>=dev-libs/libfastjson-0.99.2:=
 	>=dev-libs/libestr-0.1.9
 	>=dev-libs/liblogging-1.0.1:=[stdlog]
 	>=sys-libs/zlib-1.2.5
 	dbi? ( >=dev-db/libdbi-0.8.3 )
 	elasticsearch? ( >=net-misc/curl-7.35.0 )
 	gcrypt? ( >=dev-libs/libgcrypt-1.5.3:= )
-	jemalloc? ( >=dev-libs/jemalloc-3.3.1 )
+	grok? ( >=dev-libs/grok-0.9.2 )
+	jemalloc? ( >=dev-libs/jemalloc-3.3.1:= )
+	kafka? ( >=dev-libs/librdkafka-0.9.0.99:= )
 	kerberos? ( virtual/krb5 )
 	mongodb? ( >=dev-libs/libmongo-client-0.1.4 )
 	mysql? ( virtual/mysql )
@@ -58,22 +78,27 @@ RDEPEND="
 		>=dev-libs/libee-0.4.0
 		>=dev-libs/liblognorm-1.1.2:=
 	)
+	omhttpfs? ( >=net-misc/curl-7.35.0 )
 	omudpspoof? ( >=net-libs/libnet-1.1.6 )
 	postgres? ( >=dev-db/postgresql-8.4.20:= )
-	rabbitmq? ( >=net-libs/rabbitmq-c-0.3.0 )
+	rabbitmq? ( >=net-libs/rabbitmq-c-0.3.0:= )
 	redis? ( >=dev-libs/hiredis-0.11.0 )
-	relp? ( >=dev-libs/librelp-1.2.5 )
+	relp? ( >=dev-libs/librelp-1.2.5:= )
 	rfc3195? ( >=dev-libs/liblogging-1.0.1:=[rfc3195] )
 	rfc5424hmac? (
-		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( dev-libs/libressl:0= )
+		!libressl? ( >=dev-libs/openssl-0.9.8y:0= )
+		libressl? ( dev-libs/libressl:= )
 	)
 	snmp? ( >=net-analyzer/net-snmp-5.7.2 )
-	ssl? ( >=net-libs/gnutls-2.12.23 )
+	ssl? ( >=net-libs/gnutls-2.12.23:0= )
 	systemd? ( >=sys-apps/systemd-208 )
-	zeromq? ( >=net-libs/czmq-1.2.0 )"
+	zeromq? (
+		>=net-libs/zeromq-4.1.1:=
+		>=net-libs/czmq-3.0.0
+	)"
 DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+	virtual/pkgconfig
+	test? ( sys-libs/libfaketime )"
 
 if [[ ${PV} == "9999" ]]; then
 	DEPEND+=" doc? ( >=dev-python/sphinx-1.1.3-r7 )"
@@ -82,17 +107,8 @@ if [[ ${PV} == "9999" ]]; then
 	DEPEND+=" >=dev-python/docutils-0.12"
 fi
 
-# Maitainer note : open a bug to upstream
-# showing that building in a separate dir fails
-AUTOTOOLS_IN_SOURCE_BUILD=1
-
-AUTOTOOLS_PRUNE_LIBTOOL_FILES="modules"
-
-DOCS=(
-	AUTHORS
-	ChangeLog
-	"${FILESDIR}"/${BRANCH}/README.gentoo
-)
+CONFIG_CHECK="~INOTIFY_USER"
+WARNING_INOTIFY_USER="CONFIG_INOTIFY_USER isn't set. Imfile module on this system will only support polling mode!"
 
 src_unpack() {
 	if [[ ${PV} == "9999" ]]; then
@@ -105,7 +121,7 @@ src_unpack() {
 	if use doc; then
 		if [[ ${PV} == "9999" ]]; then
 			local _EGIT_BRANCH=
-			if [ -n "${EGIT_BRANCH}" ]; then
+			if [[ -n "${EGIT_BRANCH}" ]]; then
 				# Cannot use rsyslog commits/branches for documentation repository
 				_EGIT_BRANCH=${EGIT_BRANCH}
 				unset EGIT_BRANCH
@@ -114,19 +130,23 @@ src_unpack() {
 			git-r3_fetch "${DOC_REPO_URI}"
 			git-r3_checkout "${DOC_REPO_URI}" "${S}"/docs
 
-			if [ -n "${_EGIT_BRANCH}" ]; then
+			if [[ -n "${_EGIT_BRANCH}" ]]; then
 				# Restore previous EGIT_BRANCH information
 				EGIT_BRANCH=${_EGIT_BRANCH}
 			fi
 		else
-			local doc_tarball="${PN}-doc-${PV}.tar.gz"
-
-			cd "${S}" || die "Cannot change dir into '$S'"
+			cd "${S}" || die "Cannot change dir into '${S}'"
 			mkdir docs || die "Failed to create docs directory"
 			cd docs || die "Failed to change dir into '${S}/docs'"
-			unpack ${doc_tarball}
+			unpack ${MY_FILENAME_DOCS}
 		fi
 	fi
+}
+
+src_prepare() {
+	default
+
+	eautoreconf
 }
 
 src_configure() {
@@ -158,6 +178,7 @@ src_configure() {
 		# Message Modificiation Plugins without depedencies
 		--enable-mmanon
 		--enable-mmaudit
+		--enable-mmcount
 		--enable-mmfields
 		--enable-mmjsonparse
 		--enable-mmpstrucdata
@@ -191,8 +212,11 @@ src_configure() {
 		$(use_enable elasticsearch)
 		$(use_enable gcrypt libgcrypt)
 		$(use_enable jemalloc)
+		$(use_enable kafka omkafka)
 		$(use_enable kerberos gssapi-krb5)
 		$(use_enable normalize mmnormalize)
+		$(use_enable grok mmgrok)
+		$(use_enable omhttpfs)
 		$(use_enable omudpspoof)
 		$(use_enable rabbitmq omrabbitmq)
 		$(use_enable relp)
@@ -204,16 +228,18 @@ src_configure() {
 		$(use_enable systemd imjournal)
 		$(use_enable systemd omjournal)
 		$(use_enable usertools)
+		$(use_enable zeromq imczmq)
 		$(use_enable zeromq imzmq3)
+		$(use_enable zeromq omczmq)
 		$(use_enable zeromq omzmq3)
-		"$(systemd_with_unitdir)"
+		--with-systemdsystemunitdir="$(systemd_get_systemunitdir)"
 	)
 
-	autotools-utils_src_configure
+	econf "${myeconfargs[@]}"
 }
 
 src_compile() {
-	autotools-utils_src_compile
+	default
 
 	if use doc && [[ "${PV}" == "9999" ]]; then
 		einfo "Building documentation ..."
@@ -226,7 +252,7 @@ src_compile() {
 src_test() {
 	local _has_increased_ulimit=
 
-	# When adding new tests via patches we have to make them executable
+	# Sometimes tests aren't executable (i.e. when added via patch)
 	einfo "Adjusting permissions of test scripts ..."
 	find "${S}"/tests -type f -name '*.sh' \! -perm -111 -exec chmod a+x '{}' \; || \
 		die "Failed to adjust test scripts permission"
@@ -238,11 +264,11 @@ src_test() {
 	if ! emake --jobs 1 check; then
 		eerror "Test suite failed! :("
 
-		if [ -z "${_has_increased_ulimit}" ]; then
+		if [[ -z "${_has_increased_ulimit}" ]]; then
 			eerror "Probably because open file limit couldn't be set to 3072."
 		fi
 
-		if has userpriv $FEATURES; then
+		if has userpriv ${FEATURES}; then
 			eerror "Please try to reproduce the test suite failure with FEATURES=-userpriv " \
 				"before you submit a bug report."
 		fi
@@ -251,8 +277,15 @@ src_test() {
 }
 
 src_install() {
-	use doc && HTML_DOCS=( "${S}/docs/build/" )
-	autotools-utils_src_install
+	local DOCS=(
+		AUTHORS
+		ChangeLog
+		"${FILESDIR}"/${BRANCH}/README.gentoo
+	)
+
+	use doc && local HTML_DOCS=( "${S}/docs/build/." )
+
+	default
 
 	newconfd "${FILESDIR}/${BRANCH}/${PN}.confd-r1" ${PN}
 	newinitd "${FILESDIR}/${BRANCH}/${PN}.initd-r1" ${PN}
@@ -280,6 +313,8 @@ src_install() {
 		insinto /usr/share/doc/${PF}/scripts/pgsql
 		doins plugins/ompgsql/createDB.sql
 	fi
+
+	prune_libtool_files --modules
 }
 
 pkg_postinst() {
@@ -335,14 +370,14 @@ pkg_config() {
 	fi
 
 	# Make sure the certificates directory exists
-	CERTDIR="${EROOT}/etc/ssl/${PN}"
-	if [ ! -d "${CERTDIR}" ]; then
+	local CERTDIR="${EROOT}/etc/ssl/${PN}"
+	if [[ ! -d "${CERTDIR}" ]]; then
 		mkdir "${CERTDIR}" || die
 	fi
 	einfo "Your certificates will be stored in ${CERTDIR}"
 
 	# Create a default CA if needed
-	if [ ! -f "${CERTDIR}/${PN}_ca.cert.pem" ]; then
+	if [[ ! -f "${CERTDIR}/${PN}_ca.cert.pem" ]]; then
 		einfo "No CA key and certificate found in ${CERTDIR}, creating them for you..."
 		certtool --generate-privkey \
 			--outfile "${CERTDIR}/${PN}_ca.privkey.pem" &>/dev/null
