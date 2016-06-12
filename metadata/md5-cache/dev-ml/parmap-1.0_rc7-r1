@@ -10,5 +10,5 @@ RDEPEND=>=dev-lang/ocaml-4.03:=[ocamlopt?]
 SLOT=0/1.0_rc7
 SRC_URI=https://github.com/rdicosmo/parmap/archive/1.0-rc7-fix-for4.03+3.tar.gz -> parmap-1.0_rc7-ocaml-4.03.tar.gz
 _eclass_exported_funcs=src_test:- src_install:-
-_eclasses_=multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_eclasses_=multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	c9d9187f4caa4026a0ceddd8dfceb3c1
 _md5_=3324db9dd4d1de673b1eac048c61e21d

@@ -10,5 +10,5 @@ RDEPEND=alsa_cards_usb-usx2y? ( sys-apps/fxload ) alsa_cards_hdsp? ( media-sound
 SLOT=0
 SRC_URI=mirror://alsaproject/firmware/alsa-firmware-1.0.29.tar.bz2
 _eclass_exported_funcs=src_configure:- src_install:-
-_eclasses_=multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	udev	73058269b3e70e34e084fa3981282338
+_eclasses_=multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	c9d9187f4caa4026a0ceddd8dfceb3c1	udev	73058269b3e70e34e084fa3981282338
 _md5_=e98fda8c37e69f4ab014da9994737801

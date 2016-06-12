@@ -11,5 +11,5 @@ REQUIRED_USE=asm? ( amd64 ) ecdh? ( experimental ) schnorr? ( experimental )
 SLOT=0
 SRC_URI=https://github.com/bitcoin/secp256k1/archive/6c527eceee7f5105c33c98dfae24ffeffd71f7cf.tar.gz -> secp256k1-v0.0.0_pre20151118.tgz
 _eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
-_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	792f83d5ec9536cb5ccef375469d8bde	libtool	4890219c51da247200223277f993e054	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	792f83d5ec9536cb5ccef375469d8bde	libtool	4890219c51da247200223277f993e054	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	c9d9187f4caa4026a0ceddd8dfceb3c1
 _md5_=2abe3306772506ddd51a111bc5915fb6

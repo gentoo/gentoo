@@ -9,5 +9,5 @@ RDEPEND=sys-libs/zlib !sys-infiniband/mstflint:0 !sys-infiniband/mstflint:1.5.4.
 SLOT=3.12
 SRC_URI=https://www.openfabrics.org/downloads/OFED/ofed-3.12/OFED-3.12-rc1.tgz
 _eclass_exported_funcs=src_unpack:openib
-_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	multilib	d062ae4ba2fc40a19c11de2ad89b6616	openib	88d3cf78b98b3ff627670687fcb1c7e4	rpm	3e120fdd74b358f9fb42b825a6558f61	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	multilib	d062ae4ba2fc40a19c11de2ad89b6616	openib	88d3cf78b98b3ff627670687fcb1c7e4	rpm	3e120fdd74b358f9fb42b825a6558f61	toolchain-funcs	c9d9187f4caa4026a0ceddd8dfceb3c1	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=2840d8b56f1b49a6653026a02224a178

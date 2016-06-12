@@ -10,5 +10,5 @@ RDEPEND=dev-lang/perl ssl? ( dev-libs/openssl:= ) geoip? ( dev-libs/geoip ) gnut
 SLOT=0
 SRC_URI=https://github.com/inspircd/inspircd/archive/v2.0.21.tar.gz -> inspircd-2.0.21.tar.gz
 _eclass_exported_funcs=pkg_postinst:- pkg_setup:- src_prepare:- src_configure:- src_compile:- src_install:-
-_eclasses_=multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	user	906f3c8eb3a2350a4f1191a89baa3e46
+_eclasses_=multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	c9d9187f4caa4026a0ceddd8dfceb3c1	user	906f3c8eb3a2350a4f1191a89baa3e46
 _md5_=355f558dede32f402b1c45f855c4ecf6

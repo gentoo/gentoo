@@ -10,5 +10,5 @@ RDEPEND=~media-libs/libmp3splt-0.9.1a[flac?]
 SLOT=0
 SRC_URI=mirror://sourceforge/mp3splt/mp3splt-2.6.1a.tar.gz
 _eclass_exported_funcs=src_configure:- src_install:-
-_eclasses_=multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_eclasses_=multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	c9d9187f4caa4026a0ceddd8dfceb3c1
 _md5_=c5a82bcf2184736ddb75751cb74ba1c2

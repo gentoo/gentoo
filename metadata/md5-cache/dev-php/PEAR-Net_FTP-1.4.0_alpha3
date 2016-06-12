@@ -9,5 +9,5 @@ RDEPEND=dev-lang/php[ftp] dev-lang/php >=dev-php/pear-1.8.1
 SLOT=0
 SRC_URI=http://pear.php.net/get/Net_FTP-1.4.0a3.tgz
 _eclass_exported_funcs=pkg_setup:php-pear-r1 src_install:-
-_eclasses_=multilib	d062ae4ba2fc40a19c11de2ad89b6616	php-pear-r1	7d1434952f2d1483feac6ad812d605dd	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_eclasses_=multilib	d062ae4ba2fc40a19c11de2ad89b6616	php-pear-r1	7d1434952f2d1483feac6ad812d605dd	toolchain-funcs	c9d9187f4caa4026a0ceddd8dfceb3c1
 _md5_=fef9416fb8a0b3fe1e42624b567f6cc7

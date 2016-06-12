@@ -8,5 +8,5 @@ LICENSE=GPL-2 LGPL-2
 SLOT=0
 SRC_URI=ftp://ftp.gnome.org/pub/GNOME/sources/libunicode/0.4/libunicode-0.4.gnome.tar.gz
 _eclass_exported_funcs=src_prepare:- src_install:-
-_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	libtool	4890219c51da247200223277f993e054	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	libtool	4890219c51da247200223277f993e054	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	c9d9187f4caa4026a0ceddd8dfceb3c1
 _md5_=4b4f086af98afc4a9350c5fe56415f61

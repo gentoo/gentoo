@@ -10,5 +10,5 @@ RDEPEND=sys-libs/zlib || ( sys-libs/readline:0 dev-libs/libedit ) sqlite? ( dev-
 SLOT=0
 SRC_URI=http://www.fossil-scm.org/download/fossil-src-1.34.tar.gz
 _eclass_exported_funcs=src_configure:- src_install:-
-_eclasses_=multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_eclasses_=multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	c9d9187f4caa4026a0ceddd8dfceb3c1
 _md5_=3147c132c9be0118e7a2db379b123ab3

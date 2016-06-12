@@ -10,5 +10,5 @@ RDEPEND=>=sys-libs/db-4.5 >=app-i18n/libtabe-0.2.6 unicode? ( media-fonts/hkscs-
 SLOT=0
 SRC_URI=mirror://debian/pool/main/x/xcin/xcin_2.5.2.99.pre2+cvs20030224.orig.tar.gz mirror://debian/pool/main/x/xcin/xcin_2.5.2.99.pre2+cvs20030224-1.4.diff.gz
 _eclass_exported_funcs=src_prepare:- src_configure:- src_compile:- src_install:-
-_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	792f83d5ec9536cb5ccef375469d8bde	libtool	4890219c51da247200223277f993e054	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	792f83d5ec9536cb5ccef375469d8bde	libtool	4890219c51da247200223277f993e054	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	c9d9187f4caa4026a0ceddd8dfceb3c1
 _md5_=f19ad61968a602696829b8ffe73a7c51

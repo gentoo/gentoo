@@ -11,5 +11,5 @@ RESTRICT=test
 SLOT=0
 SRC_URI=https://bitbucket.org/skrattaren/lodgeit-script-gentoo/raw/03a5e8a6d1d4/scripts/lodgeit.py -> lodgeit-0.3_p20120507.py vim? ( http://www.vim.org/scripts/download_script.php?src_id=8848 -> lodgeit-0.3_p20120507.vim )
 _eclass_exported_funcs=pkg_setup:python src_unpack:- src_install:-
-_eclasses_=multilib	d062ae4ba2fc40a19c11de2ad89b6616	python	efc1c55fc44c5b7272fc2ffba73c3e6f	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_eclasses_=multilib	d062ae4ba2fc40a19c11de2ad89b6616	python	efc1c55fc44c5b7272fc2ffba73c3e6f	toolchain-funcs	c9d9187f4caa4026a0ceddd8dfceb3c1
 _md5_=8184cb3a52cd27c034253fb7f8a23802

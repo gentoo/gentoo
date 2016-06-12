@@ -9,5 +9,5 @@ RDEPEND==dev-lang/python-2*
 SLOT=0
 SRC_URI=http://www.webpy.org/static/web.py-0.37.tar.gz
 _eclass_exported_funcs=pkg_postrm:distutils pkg_postinst:distutils src_prepare:distutils src_compile:distutils src_test:- src_install:distutils
-_eclasses_=distutils	ad9e4720eb3e69090dd968b152fc611b	multilib	d062ae4ba2fc40a19c11de2ad89b6616	python	efc1c55fc44c5b7272fc2ffba73c3e6f	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_eclasses_=distutils	ad9e4720eb3e69090dd968b152fc611b	multilib	d062ae4ba2fc40a19c11de2ad89b6616	python	efc1c55fc44c5b7272fc2ffba73c3e6f	toolchain-funcs	c9d9187f4caa4026a0ceddd8dfceb3c1
 _md5_=1b572c604d3efd834c32f3064f45ffa2

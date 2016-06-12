@@ -9,5 +9,5 @@ RDEPEND=>=sys-apps/microcode-data-20090330 selinux? ( sec-policy/selinux-cpucont
 SLOT=0
 SRC_URI=https://fedorahosted.org/released/microcode_ctl/microcode_ctl-1.28.tar.xz
 _eclass_exported_funcs=pkg_preinst:- src_compile:- src_install:-
-_eclasses_=multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_eclasses_=multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	c9d9187f4caa4026a0ceddd8dfceb3c1
 _md5_=433d6ba3707b0f3c595f20cc6f950010

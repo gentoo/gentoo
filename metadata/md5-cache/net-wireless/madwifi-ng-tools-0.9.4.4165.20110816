@@ -8,5 +8,5 @@ RDEPEND=!net-wireless/madwifi-old-tools
 SLOT=0
 SRC_URI=http://snapshots.madwifi-project.org/madwifi-0.9.4/madwifi-0.9.4-r4165-20110816.tar.gz
 _eclass_exported_funcs=pkg_postinst:- src_prepare:- src_install:-
-_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	c9d9187f4caa4026a0ceddd8dfceb3c1	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=e893c5866780541fc47632d596c9706d

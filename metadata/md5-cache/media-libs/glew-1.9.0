@@ -10,5 +10,5 @@ RDEPEND=virtual/glu virtual/opengl x11-libs/libX11 x11-libs/libXext x11-libs/lib
 SLOT=0
 SRC_URI=mirror://sourceforge/glew/glew-1.9.0.tgz
 _eclass_exported_funcs=pkg_setup:- src_prepare:- src_compile:- src_install:-
-_eclasses_=multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_eclasses_=multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	c9d9187f4caa4026a0ceddd8dfceb3c1
 _md5_=36a62a4469913b15c2b0840b5f1aaf0b

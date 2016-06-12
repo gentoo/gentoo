@@ -10,5 +10,5 @@ RDEPEND=!dev-lang/tendra
 SLOT=0
 SRC_URI=http://download.savannah.gnu.org/releases/tinycc/tcc-0.9.26.tar.bz2
 _eclass_exported_funcs=src_prepare:- src_configure:- src_compile:- src_test:- src_install:-
-_eclasses_=multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_eclasses_=multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	c9d9187f4caa4026a0ceddd8dfceb3c1
 _md5_=fc19244e5ed6806f5dcf8d796610c866

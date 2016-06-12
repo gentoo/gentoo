@@ -7,5 +7,5 @@ LICENSE=photopc
 SLOT=0
 SRC_URI=mirror://sourceforge/photopc/photopc-3.07.tar.gz
 _eclass_exported_funcs=src_compile:- src_install:-
-_eclasses_=multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_eclasses_=multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	c9d9187f4caa4026a0ceddd8dfceb3c1
 _md5_=bf3716b9f47d675059f9094e8b1310ef

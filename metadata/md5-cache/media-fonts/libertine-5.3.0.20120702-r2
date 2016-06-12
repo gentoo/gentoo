@@ -10,5 +10,5 @@ RDEPEND=!<x11-libs/pango-1.20.4
 SLOT=0
 SRC_URI=mirror://sourceforge/linuxlibertine/LinLibertineOTF_5.3.0_2012_07_02.tgz
 _eclass_exported_funcs=pkg_postrm:font pkg_postinst:font pkg_setup:font src_install:font
-_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	font	cd7790315ca5b8c505e1e0513df6acce	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	font	cd7790315ca5b8c505e1e0513df6acce	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	c9d9187f4caa4026a0ceddd8dfceb3c1	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=845d704933cb576fd01bf93e2640f556

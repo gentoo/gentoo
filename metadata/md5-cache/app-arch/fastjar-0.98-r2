@@ -8,5 +8,5 @@ RDEPEND=!<=dev-java/kaffe-1.1.7-r5
 SLOT=0
 SRC_URI=http://download.savannah.nongnu.org/releases/fastjar/fastjar-0.98.tar.gz
 _eclass_exported_funcs=src_prepare:-
-_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	c9d9187f4caa4026a0ceddd8dfceb3c1
 _md5_=f31cf1d217158cb69de4f36f4a258b8a

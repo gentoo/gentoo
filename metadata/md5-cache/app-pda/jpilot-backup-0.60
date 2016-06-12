@@ -9,5 +9,5 @@ RDEPEND=>=x11-libs/gtk+-2.18.9:2 >=app-pda/pilot-link-0.12.3 >=app-pda/jpilot-0.
 SLOT=0
 SRC_URI=http://www.jlogday.com/code/jpilot-backup/jpilot-backup-0.60.tar.gz
 _eclass_exported_funcs=src_configure:- src_install:-
-_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	flag-o-matic	d270fa247153df66074f795fa42dba3e	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	flag-o-matic	d270fa247153df66074f795fa42dba3e	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	c9d9187f4caa4026a0ceddd8dfceb3c1
 _md5_=c2995324dcb608cf2d36fd477bf5c2de

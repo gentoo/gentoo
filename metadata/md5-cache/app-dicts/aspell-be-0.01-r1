@@ -10,5 +10,5 @@ RDEPEND=>=app-text/aspell-0.50
 SLOT=0
 SRC_URI=mirror://gnu/aspell/dict/be/aspell5-be-0.01.tar.bz2
 _eclass_exported_funcs=src_unpack:- src_compile:aspell-dict src_install:aspell-dict
-_eclasses_=aspell-dict	6df2ba61a621be13d44ec68128cc1343	eutils	792f83d5ec9536cb5ccef375469d8bde	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_eclasses_=aspell-dict	6df2ba61a621be13d44ec68128cc1343	eutils	792f83d5ec9536cb5ccef375469d8bde	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	c9d9187f4caa4026a0ceddd8dfceb3c1
 _md5_=f79ac25384d7a37ee0078302e19ca3cb

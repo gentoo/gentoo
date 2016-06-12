@@ -10,5 +10,5 @@ RDEPEND=dev-libs/openssl
 SLOT=0
 SRC_URI=http://pogostick.net/~pnh/ntpasswd/chntpw-source-110511.zip
 _eclass_exported_funcs=src_prepare:- src_compile:- src_install:-
-_eclasses_=multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_eclasses_=multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	c9d9187f4caa4026a0ceddd8dfceb3c1
 _md5_=23716202e2ba90a78e1f5a65045087bc

@@ -10,5 +10,5 @@ RDEPEND=X? ( || ( x11-misc/xclip x11-misc/xsel ) ) !libressl? ( dev-libs/openssl
 SLOT=0
 SRC_URI=https://github.com/lastpass/lastpass-cli/archive/v0.9.0.tar.gz -> lastpass-cli-0.9.0.tar.gz
 _eclass_exported_funcs=src_prepare:- src_compile:- src_install:-
-_eclasses_=multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_eclasses_=multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	c9d9187f4caa4026a0ceddd8dfceb3c1
 _md5_=9f21e7e7aa22123d0fc1e917f852d015

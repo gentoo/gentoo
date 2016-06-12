@@ -10,5 +10,5 @@ RDEPEND=>=media-libs/libv4l-1.0.0 qt4? ( dev-qt/qtgui:4 ) !media-tv/v4l2-ctl !<m
 SLOT=0
 SRC_URI=http://linuxtv.org/downloads/v4l-utils/v4l-utils-1.0.0.tar.bz2
 _eclass_exported_funcs=src_configure:- src_install:-
-_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	udev	73058269b3e70e34e084fa3981282338
+_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	c9d9187f4caa4026a0ceddd8dfceb3c1	udev	73058269b3e70e34e084fa3981282338
 _md5_=f6bcd9af869fff6c708540b00b968005

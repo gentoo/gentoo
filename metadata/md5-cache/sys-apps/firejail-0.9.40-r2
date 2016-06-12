@@ -9,5 +9,5 @@ RDEPEND=x11? ( x11-wm/xpra[client,server] )
 SLOT=0
 SRC_URI=mirror://sourceforge/firejail/firejail-0.9.40.tar.bz2
 _eclass_exported_funcs=src_prepare:- src_configure:-
-_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	c9d9187f4caa4026a0ceddd8dfceb3c1
 _md5_=66cf6f26ca1724bb90ef2fc04c1028db

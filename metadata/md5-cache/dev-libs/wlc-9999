@@ -8,5 +8,5 @@ LICENSE=MIT ZLIB
 RDEPEND=virtual/opengl media-libs/mesa[wayland,gbm,gles2,egl] x11-libs/libdrm x11-libs/pixman x11-libs/libxkbcommon dev-libs/libinput dev-libs/wayland X? ( x11-libs/libX11 x11-libs/libxcb x11-libs/xcb-util-image x11-libs/xcb-util-wm x11-libs/libXfixes ) systemd? ( sys-apps/systemd sys-apps/dbus )
 SLOT=0
 _eclass_exported_funcs=pkg_postinst:- src_unpack:git-r3 src_prepare:cmake-utils src_configure:- src_compile:cmake-utils src_test:cmake-utils src_install:cmake-utils
-_eclasses_=cmake-utils	9e0d156beee613940cde06d0bc00791b	eutils	792f83d5ec9536cb5ccef375469d8bde	flag-o-matic	d270fa247153df66074f795fa42dba3e	git-r3	00f60a84fc7b499c99edfe99caea9f95	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=cmake-utils	9e0d156beee613940cde06d0bc00791b	eutils	792f83d5ec9536cb5ccef375469d8bde	flag-o-matic	d270fa247153df66074f795fa42dba3e	git-r3	00f60a84fc7b499c99edfe99caea9f95	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	c9d9187f4caa4026a0ceddd8dfceb3c1	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=91861ebe4877ccc762a0b239cc072652

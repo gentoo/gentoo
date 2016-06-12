@@ -10,5 +10,5 @@ RDEPEND=dev-libs/glib:2 x11-libs/gtk+:2 =app-admin/gkrellm-2*
 SLOT=0
 SRC_URI=mirror://sourceforge/gkrelltop/gkrelltop_2.2.13.orig.tar.gz
 _eclass_exported_funcs=pkg_postinst:- pkg_setup:gkrellm-plugin src_prepare:- src_compile:- src_install:gkrellm-plugin
-_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	gkrellm-plugin	0d8a7ae1368b3384fb89d1cbcb650415	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	gkrellm-plugin	0d8a7ae1368b3384fb89d1cbcb650415	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	c9d9187f4caa4026a0ceddd8dfceb3c1
 _md5_=53abb50cfcebb702f8d98ef291426806

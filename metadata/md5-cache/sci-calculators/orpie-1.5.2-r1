@@ -10,5 +10,5 @@ RDEPEND=dev-ml/gsl-ocaml sys-libs/ncurses:0= || ( <dev-lang/ocaml-4.02 dev-ml/ca
 SLOT=0
 SRC_URI=http://pessimization.com/software/orpie/orpie-1.5.2.tar.gz
 _eclass_exported_funcs=src_prepare:- src_compile:- src_install:-
-_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	libtool	4890219c51da247200223277f993e054	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	libtool	4890219c51da247200223277f993e054	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	c9d9187f4caa4026a0ceddd8dfceb3c1
 _md5_=8e9c8c8280d5cb2a09061d58fb0bda56

@@ -9,5 +9,5 @@ RDEPEND=sys-libs/zlib
 SLOT=0
 SRC_URI=amd64? ( http://repo.yandex.ru/yandex-disk/rpm/stable/x86_64/yandex-disk-0.1.5.870-1.fedora.x86_64.rpm ) x86? ( http://repo.yandex.ru/yandex-disk/rpm/stable/i386/yandex-disk-0.1.5.870-1.fedora.i386.rpm )
 _eclass_exported_funcs=src_unpack:rpm src_prepare:- src_install:-
-_eclasses_=bash-completion-r1	acf715fa09463f043fbfdc1640f3fb85	eutils	792f83d5ec9536cb5ccef375469d8bde	multilib	d062ae4ba2fc40a19c11de2ad89b6616	rpm	3e120fdd74b358f9fb42b825a6558f61	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_eclasses_=bash-completion-r1	acf715fa09463f043fbfdc1640f3fb85	eutils	792f83d5ec9536cb5ccef375469d8bde	multilib	d062ae4ba2fc40a19c11de2ad89b6616	rpm	3e120fdd74b358f9fb42b825a6558f61	toolchain-funcs	c9d9187f4caa4026a0ceddd8dfceb3c1
 _md5_=94602a666c68ce59f8b720d863af9443

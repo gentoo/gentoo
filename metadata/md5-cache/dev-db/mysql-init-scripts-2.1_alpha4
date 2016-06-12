@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=!<dev-db/mysql-5.1 !<sys-apps/openrc-0.16.2
 SLOT=0
 _eclass_exported_funcs=pkg_postinst:- src_install:-
-_eclasses_=multilib	d062ae4ba2fc40a19c11de2ad89b6616	s6	1466d3a4bcf73111d8952cd1da2dbe4d	systemd	3165c885f3c71ffae7a867d931fb0e07	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_eclasses_=multilib	d062ae4ba2fc40a19c11de2ad89b6616	s6	1466d3a4bcf73111d8952cd1da2dbe4d	systemd	3165c885f3c71ffae7a867d931fb0e07	toolchain-funcs	c9d9187f4caa4026a0ceddd8dfceb3c1
 _md5_=6b721b85cad0a873ee6b23e2ee732a08

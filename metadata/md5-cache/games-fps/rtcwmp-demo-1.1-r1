@@ -10,5 +10,5 @@ RESTRICT=strip mirror
 SLOT=0
 SRC_URI=mirror://idsoftware/wolf/linux/old/wolfmpdemo-linux-1.1-MP.x86.run mirror://3dgamers/returnwolfenstein/wolfmpdemo-linux-1.1-MP.x86.run
 _eclass_exported_funcs=pkg_preinst:games pkg_postinst:- pkg_setup:games src_unpack:base src_prepare:base src_configure:games src_compile:games src_install:-
-_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	792f83d5ec9536cb5ccef375469d8bde	games	2cf0d67d765e6358b435ccda30c13ad8	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	unpacker	45d07319df5f40ee6af58418b0f930be	user	906f3c8eb3a2350a4f1191a89baa3e46
+_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	792f83d5ec9536cb5ccef375469d8bde	games	2cf0d67d765e6358b435ccda30c13ad8	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	c9d9187f4caa4026a0ceddd8dfceb3c1	unpacker	45d07319df5f40ee6af58418b0f930be	user	906f3c8eb3a2350a4f1191a89baa3e46
 _md5_=f38a228160f1a8994b571fa8579fc861

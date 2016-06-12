@@ -9,5 +9,5 @@ RDEPEND=virtual/latex-base !=dev-texlive/texlive-htmlxml-2007* virtual/latex-bas
 SLOT=0
 SRC_URI=mirror://gentoo/xmltex-1.9.tar.gz
 _eclass_exported_funcs=pkg_postrm:latex-package pkg_postinst:latex-package src_unpack:base src_prepare:base src_configure:base src_compile:- src_install:-
-_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	792f83d5ec9536cb5ccef375469d8bde	latex-package	e1ad4a8d21d1038232597822352b9d0e	multilib	d062ae4ba2fc40a19c11de2ad89b6616	texlive-common	cf8d3d36261adafe564b821b75b34a05	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	792f83d5ec9536cb5ccef375469d8bde	latex-package	e1ad4a8d21d1038232597822352b9d0e	multilib	d062ae4ba2fc40a19c11de2ad89b6616	texlive-common	cf8d3d36261adafe564b821b75b34a05	toolchain-funcs	c9d9187f4caa4026a0ceddd8dfceb3c1
 _md5_=ffff3d08f9e68b880b853d22f1970b38
