@@ -1,0 +1,12 @@
+DEFINED_PHASES=install
+DEPEND=sys-libs/readline:* app-crypt/libsecret
+DESCRIPTION=Set environment variables with OS X keychain or D-Bus Secret Service
+EAPI=6
+HOMEPAGE=https://github.com/sorah/envchain
+KEYWORDS=~amd64
+LICENSE=MIT
+RDEPEND=sys-libs/readline:* app-crypt/libsecret
+SLOT=0
+SRC_URI=https://github.com/sorah/envchain/archive/v1.0.0.tar.gz
+_eclass_exported_funcs=src_install:-
+_md5_=fb3c61a70a34a8e459b2f439b944f59d
