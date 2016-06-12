@@ -5307,13 +5307,14 @@ net-firewall/arno-iptables-firewall:plugins - Install optional plugins
 net-firewall/ebtables:perl - Install the ebtables-save script which uses perl
 net-firewall/firewalld:gui - Builds and installs GUI configurator and GTK+ applet
 net-firewall/fwknop:client - Build fwknop client
-net-firewall/fwknop:extras - Install example AppArmor policy for fwknopd server
+net-firewall/fwknop:extras - Install utility scripts and AppArmor policy for fwknopd
 net-firewall/fwknop:firewalld - Use net-firewall/firewalld as the default server backend
-net-firewall/fwknop:gdbm - Replace file-based digest-cache with gdbm one
+net-firewall/fwknop:gdbm - Use sys-libs/gdbm to store fwknopd digest cache
 net-firewall/fwknop:gpg - Enable GPG support via app-crypt/gpgme
 net-firewall/fwknop:iptables - Use net-firewall/iptables as the default server backend
+net-firewall/fwknop:nfqueue - Enable UDP-only NFQUEUE server mode (no net-libs/libpcap dependency)
 net-firewall/fwknop:server - Build fwknopd server
-net-firewall/fwknop:udp-server - Enable UDP server mode only (no net-libs/libpcap dependency)
+net-firewall/fwknop:udp-server - Enable UDP-only server mode (no net-libs/libpcap dependency)
 net-firewall/ipsec-tools:hybrid - Makes available both mode-cfg and xauth support
 net-firewall/ipsec-tools:idea - Enable support for the IDEA algorithm
 net-firewall/ipsec-tools:nat - Enable NAT-Traversal
