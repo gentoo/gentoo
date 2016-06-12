@@ -30,6 +30,63 @@
 
 #--- END OF EXAMPLES ---
 
+# Pacho Ramos <pacho@gentoo.org> (12 Jun 2016)
+# Buggy, upstream dead for ages (#148741). Removal in a month.
+app-cdr/dvd95
+
+# Pacho Ramos <pacho@gentoo.org> (12 Jun 2016)
+# Unmaintained, development stalled for a long time (#168283).
+# Removal in a month.
+app-portage/epm
+
+# Pacho Ramos <pacho@gentoo.org> (12 Jun 2016)
+# Unmaintained, buggy and not needed by anything in the tree (#221667).
+# Removal in a month.
+dev-libs/vdk
+
+# Pacho Ramos <pacho@gentoo.org> (12 Jun 2016)
+# Upstream dead for ages, multiple bugs (#345337)
+# Removal in a month.
+app-cdr/xcdroast
+
+# Pacho Ramos <pacho@gentoo.org> (12 Jun 2016)
+# No buildable version in the tree and nobody is taking care
+# of it (#349457). Removal in a month.
+media-tv/dvbstreamer
+
+# Pacho Ramos <pacho@gentoo.org> (12 Jun 2016)
+# Multiple bugs, upstream died for ages (#360631). Removal in a month.
+net-p2p/microdc2
+
+# Pacho Ramos <pacho@gentoo.org> (12 Jun 2016)
+# Upstream stopped taking care and suggests kodi as an alternative.
+# (#363513). Removal in a month.
+media-tv/freevo
+
+# Pacho Ramos <pacho@gentoo.org> (12 Jun 2016)
+# Obsolete mod, also buggy (#382055). Removal in a month.
+www-apache/mod-auth-mysql
+
+# Pacho Ramos <pacho@gentoo.org> (12 Jun 2016)
+#   Patrick Lauer <patrick@gentoo.org> (21 May 2013)
+#   broken dependencies -> uninstallable #470712
+# Removal in a month (#429998)
+app-portage/g-ctan
+
+# Pacho Ramos <pacho@gentoo.org> (12 Jun 2016)
+# Fails to build, nothing requires it in the tree (#432718)
+# Removal in a month.
+media-video/avinfo
+
+# Pacho Ramos <pacho@gentoo.org> (12 Jun 2016)
+# Unbuildable (#440044). Removal in a month.
+sys-apps/dmtcp
+
+# Pacho Ramos <pacho@gentoo.org> (12 Jun 2016)
+# Needs to be ported to new eclasses, obsoleted by hydrogen
+# Removal in a month (#442614)
+media-sound/trommler
+
 # Michael Palimaka <kensington@gentoo.org> (9 Jun 2016)
 # Fails to build. Unmaintained. Masked for removal in 30 days.
 # Bug 574174.
@@ -770,10 +827,6 @@ sci-geosciences/googleearth
 # Upstream stalled, improper rendering (#470818),
 # use app-editors/efte instead.
 =app-editors/fte-20110708
-
-# Patrick Lauer <patrick@gentoo.org> (21 May 2013)
-# broken dependencies -> uninstallable #470712
-app-portage/g-ctan
 
 # Michael Weber <xmw@gentoo.org> (18 Apr 2013)
 # Masked due test failures
