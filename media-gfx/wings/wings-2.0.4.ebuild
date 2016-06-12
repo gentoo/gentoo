@@ -20,6 +20,20 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 
+src_prepare() {
+	sed -i \
+		-e '/include_lib/s|wings/|../|' \
+		plugins_src/primitives/wpc_knot.erl \
+		plugins_src/primitives/wpc_plane.erl \
+		plugins_src/primitives/wpc_spiral.erl \
+		plugins_src/primitives/wpc_torus.erl \
+		plugins_src/wp9_dialogs.erl \
+		src/wings_text.erl \
+		|| die
+
+	eapply_user
+}
+
 src_configure() {
 	export ERL_PATH="/usr/$(get_libdir)/erlang/lib/"
 	export ESDL_PATH="${ERL_PATH}/$(best_version media-libs/esdl | cut -d/ -f2)"
@@ -28,7 +42,7 @@ src_configure() {
 src_compile() {
 	# Work around parallel make issues
 	emake vsn.mk
-	for subdir in intl_tools src fonts_src e3d icons plugins_src; do
+	for subdir in intl_tools src e3d icons plugins_src; do
 		emake ESDL_PATH="${ESDL_PATH}" -C ${subdir}
 	done
 }
