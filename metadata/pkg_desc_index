@@ -9810,7 +9810,7 @@ dev-util/monodevelop 3.0.2-r1 5.9.5.9 5.9.5.9-r1: Integrated Development Environ
 dev-util/monodevelop-database 3.0.2: Database Browser Extension for MonoDevelop
 dev-util/monodevelop-debugger-gdb 3.0.2: GDB Extension for MonoDevelop
 dev-util/mpatch 0.8-r1: Patch-like tool for applying diffs which can resolve common causes of patch rejects
-dev-util/mutrace 0.2: A mutex tracer/profiler
+dev-util/mutrace 0.2-r1: A mutex tracer/profiler
 dev-util/nemiver 0.9.5 0.9.6: A gtkmm front end to the GNU Debugger (gdb)
 dev-util/netbeans 8.0.2 8.1: Netbeans IDE
 dev-util/ninja 1.6.0 1.7.1 9999: A small build system similar to make
