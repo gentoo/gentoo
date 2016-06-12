@@ -67,7 +67,7 @@ RDEPEND="${COMMON_DEPEND}
 
 REQUIRED_USE="
 	!minimal? ( ${PYTHON_REQUIRED_USE} )
-	!minimal? ( ^^ ( qt4 qt5 ) )
+	!minimal? ( qt4? ( !qt5 ) )
 "
 
 CONFIG_CHECK="~PARPORT ~PPDEV"
