@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# Amy Winston <amynka@gentoo.org> (12 June 2016)
+# does not build on arm at all (upstream bug)
+dev-scheme/racket futures jit
+
 # Davide Pesavento <pesa@gentoo.org> (13 May 2016)
 # dev-qt/qtwebengine:5 not keyworded, bug 581478
 dev-qt/qt-creator webengine
