@@ -31,7 +31,6 @@ src_prepare() {
 
 src_configure() {
 	export ERL_PATH="/usr/$(get_libdir)/erlang/lib/"
-	export ESDL_PATH="${ERL_PATH}/$(best_version media-libs/esdl | cut -d/ -f2)"
 }
 
 src_compile() {
@@ -52,7 +51,6 @@ src_install() {
 	doins -r e3d ebin icons plugins psd shaders src textures tools
 
 	dosym ${WINGS_PATH} ${ERL_PATH}/${PN}
-	dosym ${ESDL_PATH} ${ERL_PATH}/esdl
 	newbin "${FILESDIR}"/wings.sh-r1 wings
 	dodoc AUTHORS README
 }
