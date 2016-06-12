@@ -7756,7 +7756,7 @@ dev-python/pyftpdlib 1.4.0: Python FTP server library
 dev-python/pygal 1.5.1 1.7.0 2.0.0 2.0.1 2.1.1: A python SVG charts generator
 dev-python/pygame 1.9.2_pre20120101-r2: Python bindings for SDL multimedia library
 dev-python/pygame_sdl2 6.99.6: Reimplementation of portions of the pygame API using SDL2
-dev-python/pygccxml 1.0.0: Generate an XML description of a C++ program from GCC's internal representation
+dev-python/pygccxml 1.0.0 1.7.5: Generate an XML description of a C++ program from GCC's internal representation
 dev-python/pygene 0.2.1-r1: Simple python genetic algorithms programming library
 dev-python/pygeocoder 1.2.5: Python wrapper for Google Geocoding API V3
 dev-python/pygit2 0.20.3 0.21.4-r1 0.22.1 0.23.0 0.23.3: Python bindings for libgit2
