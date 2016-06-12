@@ -8,7 +8,7 @@ KEYWORDS=~amd64 ~arm ~hppa ~sparc ~x86
 LICENSE=GPL-3+ doc? ( FDL-1.3 )
 RDEPEND=ssl? ( >=net-libs/gnutls-3.3.17.1:0= )
 SLOT=0/0.1.0
-SRC_URI=http://download.rsyslog.com/librelp/librelp-1.2.9.tar.gz
+SRC_URI=http://download.rsyslog.com/librelp/librelp-1.2.10.tar.gz
 _eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	libtool	4890219c51da247200223277f993e054	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	c9d9187f4caa4026a0ceddd8dfceb3c1
 _md5_=699cf4be8964d48fcae590f01d1f5883
