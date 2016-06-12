@@ -1547,7 +1547,7 @@ app-i18n/qkc 1.00: Quick KANJI code Converter
 app-i18n/rime-data 0.22 0.32 0.35: Data resources for Rime Input Method Engine
 app-i18n/scim 1.4.14 1.4.16 1.4.17: Smart Common Input Method (SCIM) is an Input Method (IM) development platform
 app-i18n/scim-anthy 1.2.7-r1 1.3.1: Japanese input method Anthy IMEngine for SCIM
-app-i18n/scim-bridge 0.4.16-r2 0.4.16-r3: Yet another IM-client of SCIM
+app-i18n/scim-bridge 0.4.16-r3: Yet another IM-client of SCIM
 app-i18n/scim-hangul 0.3.2 0.4.0: Hangul IMEngine for SCIM ported from imhangul
 app-i18n/scim-input-pad 0.1.3 0.1.3.1: Input pad for SCIM used to input symbols and special characters
 app-i18n/scim-m17n 0.2.3: scim-m17n is an input module for Smart Common Input Method (SCIM) which uses m17n as backend
@@ -13630,7 +13630,7 @@ media-video/super_demux 0.3: DVB transport stream TS to ES demultiplexer
 media-video/tcmplex-panteltje 0.4.7: audio video multiplexer for 8 audio channels
 media-video/tivodecode 0.2_pre4: TiVo File Decoder
 media-video/totem 3.16.4 3.18.1: Media player for GNOME
-media-video/tovid 0.34 0.34_p20120123 0.35.2: A collection of DVD authoring tools
+media-video/tovid 0.34 0.35.2: A collection of DVD authoring tools
 media-video/transcode 1.1.7-r3: A suite of utilities for transcoding video and audio codecs in different containers
 media-video/tsmuxer 1.10.6-r1 2.6.11: Utility to create and demux TS and M2TS files
 media-video/ttcut 0.19.6-r3: Tool for cutting MPEG files especially for removing commercials
