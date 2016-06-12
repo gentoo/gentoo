@@ -494,7 +494,7 @@ app-cdr/xdvdfs-tools 2.1-r1: Tools for manipulating Xbox ISO images
 app-cdr/xfburn 0.5.2 0.5.4: GTK+ based CD and DVD burning application
 app-crypt/WiRouterKeyRec 1.1.2: Recovery tool for wpa passphrase
 app-crypt/acme 0.1.0 0.6.0 9999: An implementation of the ACME protocol
-app-crypt/acr38u 1.7.11-r1 1.7.11-r3: Non CCID driver for ACR38 AC1038-based Smart Card Reader
+app-crypt/acr38u 1.7.11-r3: Non CCID driver for ACR38 AC1038-based Smart Card Reader
 app-crypt/aescrypt 3.0.6b: Advanced file encryption using AES
 app-crypt/aespipe 2.3e 2.4c-r1 2.4d: Encrypts data from stdin to stdout
 app-crypt/af_alg 0_pre20120229: AF_ALG for OpenSSL
@@ -503,14 +503,14 @@ app-crypt/asedriveiiie-usb 3.5: ASEDriveIIIe USB Card Reader
 app-crypt/asekey 3.7: ASEKey USB SIM Card Reader
 app-crypt/bcrypt 1.1: A file encryption utility using Paul Kocher's implementation of the blowfish algorithm
 app-crypt/bcwipe 1.9.8 1.9.13: Secure file removal utility
-app-crypt/bestcrypt 2.0.9 2.0.11: commercially licensed transparent filesystem encryption
+app-crypt/bestcrypt 2.0.11: commercially licensed transparent filesystem encryption
 app-crypt/bsign 0.4.5 0.4.5-r1: embed secure hashes (SHA1) and digital signatures (GNU Privacy Guard) into files
 app-crypt/cardpeek 0.7.2 0.8.4: Tool to read the contents of smartcards
-app-crypt/ccid 1.4.15 1.4.18 1.4.20 1.4.22 1.4.24: CCID free software driver
+app-crypt/ccid 1.4.15 1.4.18 1.4.24: CCID free software driver
 app-crypt/ccrypt 1.9 1.10: Encryption and decryption
 app-crypt/certbot 0.6.0 9999: Let's encrypt client to automate deployment of X.509 certificates
 app-crypt/certbot-apache 9999: Apache plugin for certbot (Let's Encrypt Client)
-app-crypt/chntpw 110511 140201: Offline Windows NT Password & Registry Editor
+app-crypt/chntpw 140201: Offline Windows NT Password & Registry Editor
 app-crypt/ckpass 0.2: An ncurses based password database client that is compatible with KeePass 1.x format databases
 app-crypt/codecrypt 1.4.1 1.6 1.7.2 1.7.5: Post-quantum cryptography tool
 app-crypt/codegroup 20080907-r1: encode / decode binary file as five letter codegroups
@@ -518,7 +518,7 @@ app-crypt/coolkey 1.1.0-r6: Linux Driver support for the CoolKey and CAC product
 app-crypt/crackpkcs12 0.2.9 0.2.10: multithreaded program to crack PKCS#12 files
 app-crypt/cryptkeeper 0.9.5: EncFS system tray applet for GNOME
 app-crypt/debian-archive-keyring 2014.3: GnuPG archive keys of the Debian archive
-app-crypt/dieharder 2.28.1 3.31.1 3.31.1-r1: An advanced suite for testing the randomness of RNG's
+app-crypt/dieharder 3.31.1-r1: An advanced suite for testing the randomness of RNG's
 app-crypt/dirmngr 1.1.1-r1: DirMngr is a daemon to handle CRL and certificate requests for GnuPG
 app-crypt/easy-rsa 2.2.2 2.2.2-r1 3.0.1-r1: Small RSA key management package, based on OpenSSL
 app-crypt/efitools 1.4.1 1.4.1-r1 1.4.1-r2 1.4.2 1.4.2-r1 1.7.0: Tools for manipulating UEFI secure boot platforms
@@ -540,10 +540,10 @@ app-crypt/gpg-ringmgr 1.12: GPG Keyring Manager to handle large GPG keyrings mor
 app-crypt/gpgme 1.5.5 1.6.0: GnuPG Made Easy is a library for making GnuPG easier to use
 app-crypt/gpgstats 0.5-r1: GPGstats calculates statistics on the keys in your key-ring
 app-crypt/hashalot 0.3-r2: CryptoAPI utils
-app-crypt/hashcat-bin 0.46 0.47 0.49: An multi-threaded multihash cracker
+app-crypt/hashcat-bin 0.49: An multi-threaded multihash cracker
 app-crypt/hashcat-gui 0.5.1: A gui for the *hashcat* suite of tools
 app-crypt/heimdal 1.5.3-r2: Kerberos 5 implementation from KTH
-app-crypt/hmaccalc 0.9.13 0.9.14: Tools for computing and checking HMAC values for files
+app-crypt/hmaccalc 0.9.14: Tools for computing and checking HMAC values for files
 app-crypt/ima-evm-utils 0.2 0.8 9999: Supporting tools for IMA and EVM
 app-crypt/jacksum 1.7.0: Java utility for computing and verifying checksums: CRC*, MD*, RIPEMD*, SHA*, TIGER*, WHIRLPOOL
 app-crypt/jetring 0.21: GPG keyring maintenance using changesets
@@ -557,7 +557,7 @@ app-crypt/kstart 4.1: Modified versions of kinit for refreshing kerberos tickets
 app-crypt/libscrypt 1.19 1.20: Shared library to impliment the scrypt algorithm. See http://www.tarsnap.com/scrypt.html.
 app-crypt/libsecret 0.18.3 0.18.4 0.18.5: GObject library for accessing the freedesktop.org Secret Service API
 app-crypt/libu2f-host 1.0.0 1.0.0-r1 1.1.0 1.1.1: Yubico Universal 2nd Factor (U2F) Host C Library
-app-crypt/libykneomgr 0.1.6 0.1.7 0.1.8: YubiKey NEO CCID Manager C Library
+app-crypt/libykneomgr 0.1.8: YubiKey NEO CCID Manager C Library
 app-crypt/loop-aes-losetup 2.21 2.26: Various useful Linux utilities
 app-crypt/mcrypt 2.6.8-r2: replacement of the old unix crypt(1)
 app-crypt/md4sum 0.02.03-r1: md4 and edonkey hash algorithm tool
@@ -571,7 +571,7 @@ app-crypt/monkeysign 2.0.2-r1: A user-friendly commandline tool to sign OpenGPG 
 app-crypt/monkeysphere 0.36-r1 0.36-r2 0.37: Leverage the OpenPGP web of trust for OpenSSH and Web authentication
 app-crypt/nasty 0.6-r1: Proof-of-concept GPG passphrase recovery tool
 app-crypt/nistp224 0.75-r1: nistp224 performs compressed Diffie-Hellman key exchange on the NIST P-224 elliptic curve
-app-crypt/nwipe 0.12 0.12-r1 0.13 0.14: Securely erase disks using a variety of recognized methods
+app-crypt/nwipe 0.14: Securely erase disks using a variety of recognized methods
 app-crypt/oclhashcat-lite-bin 0.15: An opencl hash cracker
 app-crypt/oclhashcat-plus-bin 0.15: An opencl multihash cracker
 app-crypt/onak 0.4.0: onak is an OpenPGP keyserver
@@ -581,23 +581,23 @@ app-crypt/openvpn-blacklist 0.4-r1 0.5: Detection of weak openvpn keys produced 
 app-crypt/ophcrack 3.1.0-r2 3.3.0 3.3.1 3.4.0 3.6.0: A time-memory-trade-off-cracker
 app-crypt/ophcrack-tables 1.0-r2: Tables available for ophcrack
 app-crypt/osslsigncode 1.4: Platform-independent tool for Authenticode signing of EXE/CAB files
-app-crypt/p11-kit 0.20.7 0.22.0 0.22.1 0.23.1 0.23.2: Provides a standard configuration setup for installing PKCS#11
+app-crypt/p11-kit 0.20.7 0.23.2: Provides a standard configuration setup for installing PKCS#11
 app-crypt/paperkey 1.3: OpenPGP key archiver
-app-crypt/pdfcrack 0.13 0.14 0.15: Tool for recovering passwords and content from PDF-files
+app-crypt/pdfcrack 0.15: Tool for recovering passwords and content from PDF-files
 app-crypt/pesign 0.108: Tools for manipulating signed PE-COFF binaries
 app-crypt/pgpdump 0.29 0.30 0.31: A PGP packet visualizer
 app-crypt/pinentry 0.9.0 0.9.0-r3 0.9.5 0.9.6-r6 0.9.7: Collection of simple PIN or passphrase entry dialogs which utilize the Assuan protocol
-app-crypt/pius 2.0.11 2.2.1: A tool for signing and email all UIDs on a set of PGP keys
-app-crypt/pkcrack 1.2.2 1.2.2-r1: PkZip cipher breaker
+app-crypt/pius 2.2.1: A tool for signing and email all UIDs on a set of PGP keys
+app-crypt/pkcrack 1.2.2-r1: PkZip cipher breaker
 app-crypt/pkcs11-data 0.7.4: Utilities for PKCS#11 data object manipulation in
 app-crypt/pkcs11-dump 0.3.4: Utilities for PKCS#11 token content dump
 app-crypt/qca 2.1.0.3 2.1.1 2.1.1-r1: Qt Cryptographic Architecture (QCA)
 app-crypt/quickcrypt 0.9.2b: gives you a quick MD5 Password from any string
-app-crypt/rainbowcrack 1.5 1.6.1: Hash cracker that precomputes plaintext - ciphertext pairs in advance
+app-crypt/rainbowcrack 1.6.1: Hash cracker that precomputes plaintext - ciphertext pairs in advance
 app-crypt/rotix 0.83: Rotix allows you to generate rotational obfuscations
 app-crypt/sbsigntool 0.6-r1: Utilities for signing and verifying files for UEFI Secure Boot
 app-crypt/scl011-bin 2.06: pcsc-lite driver for the German identification card (nPA)
-app-crypt/scrypt 1.1.6 1.2.0: A simple password-based encryption utility using the scrypt key derivation function
+app-crypt/scrypt 1.2.0: A simple password-based encryption utility using the scrypt key derivation function
 app-crypt/scute 1.4.0: A PKCS #11 module for OpenPGP smartcards
 app-crypt/seahorse 3.16.0-r1 3.18.0: A GNOME application for managing encryption keys
 app-crypt/seahorse-sharing 3.8.0 3.8.0_p20151117: Daemon for PGP public key sharing using DNS-SD and HKP
@@ -605,20 +605,20 @@ app-crypt/sgeps 0_pre15: simple GnuPG-encrypted password store written in perl
 app-crypt/shash 0.2.6-r2 0.2.6-r3: Generate or check digests or MACs of files
 app-crypt/sign 1.0.7: File signing and signature verification utility
 app-crypt/signify 17-r1: Cryptographically sign and verify files
-app-crypt/signing-party 1.1.4 1.1.11-r1 2.0 2.1 2.2: A collection of several tools related to OpenPGP
+app-crypt/signing-party 1.1.4 1.1.11-r1 2.2: A collection of several tools related to OpenPGP
 app-crypt/simp_le 9999: Simple Let's Encrypt Client
 app-crypt/simple-tpm-pk11 0.03 0.04: Simple PKCS11 provider for TPM chips
-app-crypt/ssdeep 2.10 2.11.1 2.12 2.13: Computes context triggered piecewise hashes (fuzzy hashes)
+app-crypt/ssdeep 2.13: Computes context triggered piecewise hashes (fuzzy hashes)
 app-crypt/ssh-multiadd 1.3.2-r1: Adds multiple ssh keys to the ssh authentication agent
 app-crypt/stan 0.4.1: Stan is a console application that analyzes binary streams and calculates statistical information
 app-crypt/stoken 0.90: Software Token for Linux/UNIX
-app-crypt/tc-play 2.0 2.0-r1: a free, pretty much fully featured and stable TrueCrypt implementation
+app-crypt/tc-play 2.0-r1: a free, pretty much fully featured and stable TrueCrypt implementation
 app-crypt/tinyca 2.0.7.5-r2 2.0.7.5-r3: Simple Perl/Tk GUI to manage a small certification authority
 app-crypt/tpm-emulator 0.7.4-r1: Emulator driver for tpm
 app-crypt/tpm-tools 1.3.8 1.3.8-r1: TrouSerS' support tools for the Trusted Platform Modules
 app-crypt/trousers 0.3.10-r1 0.3.13 0.3.13-r1: An open-source TCG Software Stack (TSS) v1.1 implementation
 app-crypt/ubuntu-keyring 2012.05.19: GnuPG archive keys of the Ubuntu archive
-app-crypt/xca 1.1.0 1.3.0 1.3.1 1.3.2 1.3.2-r1 1.3.2-r2: A GUI to OpenSSL, RSA public keys, certificates, signing requests etc
+app-crypt/xca 1.1.0 1.3.2 1.3.2-r2: A GUI to OpenSSL, RSA public keys, certificates, signing requests etc
 app-crypt/xor-analyze 0.5: program for cryptanalyzing xor 'encryption' with variable key length
 app-crypt/yubikey-neo-manager 1.1.0 1.1.0-r1 1.2.1 1.2.1-r1 1.3.0 1.3.0-r1 1.4.0: Cross platform personalization tool for the YubiKey NEO
 app-crypt/zuluCrypt 4.7.7: Front end to cryptsetup
@@ -4501,7 +4501,7 @@ dev-libs/blitz 0.10 0.10-r1: High-performance C++ numeric library
 dev-libs/boehm-gc 6.8 7.1-r1 7.2d 7.2d-r1 7.2e 7.4.0 7.4.2: The Boehm-Demers-Weiser conservative garbage collector
 dev-libs/boost 1.55.0-r2 1.56.0-r1 1.58.0-r1 1.59.0 1.60.0 1.61.0: Boost Libraries for C++
 dev-libs/boost-numpy 9999: Boost.Python interface for NumPy
-dev-libs/botan 1.10.12 1.11.28 1.11.29: A C++ crypto library
+dev-libs/botan 1.10.12 1.11.29: A C++ crypto library
 dev-libs/btparse 0.33 0.35: A C library to parse Bibtex files
 dev-libs/btparser 0.24 0.25 0.26: Parser and analyzer for backtraces produced by GDB
 dev-libs/busybee 0.5.2 0.6.0 0.7.0: A messaging abstraction on top of TCP sockets used in HyperDex
@@ -4784,7 +4784,7 @@ dev-libs/libsqlora8 2.3.3: libsqlora8 is a simple C-library to access Oracle dat
 dev-libs/libstrl 0.5.1: Compat library for functions like strlcpy(), strlcat(), strnlen(), getline(), and asprintf()
 dev-libs/libstroke 0.5.1: A Stroke and Gesture recognition Library
 dev-libs/libtar 1.2.20-r2 1.2.20-r3: C library for manipulating tar archives
-dev-libs/libtasn1 4.5 4.7 4.8: ASN.1 library
+dev-libs/libtasn1 4.5 4.8: ASN.1 library
 dev-libs/libtecla 1.6.1-r2 1.6.2 1.6.3: Tecla command-line editing library
 dev-libs/libtermkey 0.17 0.18: Library for easy processing of keyboard entry from terminal-based programs
 dev-libs/libtomcrypt 1.17: Modular and portable cryptographic toolkit
@@ -4859,8 +4859,8 @@ dev-libs/nss 3.20 3.22.2 3.23 3.24: Mozilla's Network Security Services library 
 dev-libs/ntl 5.5.2 6.1.0 9.3.0 9.6.4: High-performance and portable Number Theory C++ library
 dev-libs/ocl-icd 2.1.3 2.2.3 2.2.8: Alternative to vendor specific OpenCL ICD loaders
 dev-libs/oniguruma 5.9.2 5.9.2-r1 5.9.3 5.9.4 5.9.5: a regular expression library for different character encodings
-dev-libs/opencryptoki 3.3 3.4.1: PKCS#11 provider cryptographic hardware
-dev-libs/openct 0.6.20-r3 0.6.20-r4: library for accessing smart card terminals
+dev-libs/opencryptoki 3.4.1: PKCS#11 provider cryptographic hardware
+dev-libs/openct 0.6.20-r4: library for accessing smart card terminals
 dev-libs/openobex 1.5 1.7.1: An implementation of the OBEX protocol used for transferring data to mobile devices
 dev-libs/opensc 0.12.2-r2 0.13.0 0.14.0 0.15.0 0.16.0: Libraries and applications to access smartcards
 dev-libs/openspecfun 0.4-r1: A collection of special mathematical functions
@@ -4965,7 +4965,7 @@ dev-libs/xerces-c 3.1.2 3.1.3: A validating XML parser written in a portable sub
 dev-libs/xml-security-c 1.7.3: Apache C++ XML security libraries
 dev-libs/xmlrpc-c 1.32.05-r1: A lightweigt RPC library based on XML and HTTP
 dev-libs/xmlrpc-epi 0.54.2: Epinions implementation of XML-RPC protocol in C
-dev-libs/xmlsec 1.2.18 1.2.19 1.2.20: Command line tool for signing, verifying, encrypting and decrypting XML
+dev-libs/xmlsec 1.2.20: Command line tool for signing, verifying, encrypting and decrypting XML
 dev-libs/xmlwrapp 0.7.1 0.7.1-r1: modern style C++ library that provides a simple and easy interface to libxml2
 dev-libs/xplc 0.3.13-r1: cross platform lightweight components library for C++
 dev-libs/xqilla 2.2.4 2.3.0: An XQuery and XPath 2 library and command line utility written in C++
@@ -7856,7 +7856,7 @@ dev-python/pyrsistent 0.11.12: Persistent/Functional/Immutable data structures
 dev-python/pyrtf 0.45-r1 0.45-r2: Python library to produce RTF documents
 dev-python/pysaml2 2.1.0 3.0.0: Python implementation of SAML Version 2 to be used in a WSGI environment
 dev-python/pyscaffold 2.4.1 2.4.4: Tool for easily putting up the scaffold of a Python project
-dev-python/pyscard 1.9.1 1.9.2: Smart cards support in python
+dev-python/pyscard 1.9.2: Smart cards support in python
 dev-python/pysctp 0.6: PySCTP gives access to the SCTP transport protocol from Python
 dev-python/pysendfile 2.0.1: A python interface to sendfile(2) system call
 dev-python/pyserial 2.6-r1 2.7 2.7-r1: Python Serial Port Extension
@@ -16636,8 +16636,8 @@ sys-apps/paxctl 0.7-r2 0.8 0.9: Manages various PaX related program header flags
 sys-apps/paxctld 1.0 1.0.1 1.1: PaX flags maintenance daemon
 sys-apps/pciutils 3.3.1 3.4.1 3.5.1: Various utilities dealing with the PCI bus
 sys-apps/pcmciautils 018_p8 018_p8-r1: PCMCIA userspace utilities for Linux
-sys-apps/pcsc-lite 1.8.12-r1 1.8.13 1.8.13-r1 1.8.14 1.8.15 1.8.16 1.8.16-r1: PC/SC Architecture smartcard middleware library
-sys-apps/pcsc-slb-rf72-drv 1.1.0-r1 1.1.0-r2: Schlumberger Reflex 72 Serial Smartcard Reader
+sys-apps/pcsc-lite 1.8.12-r1 1.8.16-r1: PC/SC Architecture smartcard middleware library
+sys-apps/pcsc-slb-rf72-drv 1.1.0-r2: Schlumberger Reflex 72 Serial Smartcard Reader
 sys-apps/pcsc-tools 1.4.25 1.4.26: PC/SC Architecture smartcard tools
 sys-apps/pkgcore 0.9.1 0.9.2 0.9.4 9999: a framework for package management
 sys-apps/pmount 0.9.99_alpha-r3 0.9.99_alpha-r5: Policy based mounter that gives the ability to mount removable devices as a user
