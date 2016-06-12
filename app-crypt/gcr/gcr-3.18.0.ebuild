@@ -20,7 +20,6 @@ REQUIRED_USE="vala? ( introspection )"
 KEYWORDS="alpha amd64 arm ~arm64 hppa ~ia64 ~mips ~ppc ppc64 ~sh ~sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~sparc-solaris ~x86-solaris"
 
 COMMON_DEPEND="
-	>=app-crypt/gnupg-2
 	>=app-crypt/p11-kit-0.19
 	>=dev-libs/glib-2.38:2
 	>=dev-libs/libgcrypt-1.2.2:0=
