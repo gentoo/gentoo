@@ -1,11 +1,11 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 PYTHON_COMPAT=( python2_7 )
 
-inherit elisp-common autotools eutils python-single-r1
+inherit elisp-common autotools python-single-r1
 
 DESCRIPTION="GNU Music Typesetter"
 SRC_URI="http://download.linuxaudio.org/lilypond/sources/v${PV:0:4}/${P}.tar.gz"
@@ -19,7 +19,7 @@ IUSE="debug emacs profile vim-syntax ${LANGS// / linguas_}"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND=">=app-text/ghostscript-gpl-8.15
-	>=dev-scheme/guile-1.8.2[deprecated,regex]
+	>=dev-scheme/guile-1.8.2:12[deprecated,regex]
 	media-fonts/urw-fonts
 	media-libs/fontconfig
 	media-libs/freetype:2
@@ -29,12 +29,14 @@ RDEPEND=">=app-text/ghostscript-gpl-8.15
 DEPEND="${RDEPEND}
 	app-text/t1utils
 	dev-lang/perl
+	dev-libs/kpathsea
+	>=dev-texlive/texlive-metapost-2013
 	|| (
-		( >=dev-texlive/texlive-metapost-2013 >=dev-tex/metapost-1.803 )
-		<dev-texlive/texlive-metapost-2013
+		>=app-text/texlive-core-2013
+		>=dev-tex/metapost-1.803
 	)
 	virtual/pkgconfig
-	media-gfx/fontforge
+	media-gfx/fontforge[png]
 	>=sys-apps/texinfo-4.11
 	>=sys-devel/bison-2.0
 	sys-devel/flex
@@ -43,6 +45,13 @@ DEPEND="${RDEPEND}
 
 # Correct output data for tests isn't bundled with releases
 RESTRICT="test"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.17.2-tex-docs.patch
+	"${FILESDIR}"/${P}-fontforge.patch
+)
+
+DOCS=( AUTHORS.txt NEWS.txt README.txt )
 
 pkg_setup() {
 	# make sure >=metapost-1.803 is selected if it's installed, bug 498704
@@ -57,7 +66,7 @@ pkg_setup() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-2.17.2-tex-docs.patch
+	eapply "${PATCHES[@]}"
 
 	if ! use vim-syntax ; then
 		sed -i 's/vim//' GNUmakefile.in || die
@@ -75,6 +84,8 @@ src_prepare() {
 
 	# remove bundled texinfo file (fixes bug #448560)
 	rm tex/texinfo.tex || die
+
+	eapply_user
 
 	eautoreconf
 }
@@ -113,7 +124,9 @@ src_install () {
 		elisp-site-file-install "${FILESDIR}"/50${PN}-gentoo.el
 	fi
 
-	dodoc AUTHORS.txt HACKING NEWS.txt README.txt
+	python_fix_shebang "${ED}"
+
+	einstalldocs
 }
 
 pkg_postinst() {
