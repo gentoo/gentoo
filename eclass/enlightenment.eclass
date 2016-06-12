@@ -29,12 +29,10 @@ E_ECONF=()
 
 # E_STATE's:
 #	release      [default]
-#		KEYWORDS arch
 #		SRC_URI  $P.tar.gz
 #		S        $WORKDIR/$P
 #
 #	snap         $PV has .200##### datestamp or .### counter
-#		KEYWORDS ~arch
 #		SRC_URI  $P.tar.bz2
 #		S        $WORKDIR/$P
 #
@@ -113,11 +111,6 @@ fi
 
 LICENSE="BSD"
 SLOT="0"
-case ${EKEY_STATE:-${E_STATE}} in
-	release) KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-interix ~x86-solaris ~x64-solaris";;
-	snap)    KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-interix ~x86-solaris ~x64-solaris";;
-	live)    KEYWORDS="";;
-esac
 IUSE="nls doc"
 
 DEPEND="doc? ( app-doc/doxygen )
