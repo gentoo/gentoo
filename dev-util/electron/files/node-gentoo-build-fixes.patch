@@ -1,12 +1,14 @@
-From 668a003706d57c3e7a460e2fce5d110fe9737a62 Mon Sep 17 00:00:00 2001
+From 56b57ea7f0c111bfd9c719060cf17346e638fdd1 Mon Sep 17 00:00:00 2001
 From: Elvis Pranskevichus <elvis@magic.io>
 Date: Wed, 10 Feb 2016 14:45:13 -0500
-Subject: [PATCH] Parametrize v8.gyp location
+Subject: [PATCH] Build fixes
 
 ---
  node.gyp         | 5 +++--
- tools/install.py | 3 +++
- 2 files changed, 6 insertions(+), 2 deletions(-)
+ src/node.cc      | 8 --------
+ src/node.js      | 2 ++
+ src/node_main.cc | 2 ++
+ 4 files changed, 7 insertions(+), 10 deletions(-)
 
 diff --git a/node.gyp b/node.gyp
 index d431210..fea5e07 100644
@@ -31,20 +33,77 @@ index d431210..fea5e07 100644
        ],
  
        'include_dirs': [
-diff --git a/tools/install.py b/tools/install.py
-index cb86c65..ee85e33 100755
---- a/tools/install.py
-+++ b/tools/install.py
-@@ -207,6 +207,9 @@ def run(args):
-   if os.environ.get('HEADERS_ONLY'):
-     if cmd == 'install': return headers(install)
-     if cmd == 'uninstall': return headers(uninstall)
-+  elif os.environ.get('NPM_ONLY'):
-+    if cmd == 'install': return npm_files(install)
-+    if cmd == 'uninstall': return npm_files(uninstall)
-   else:
-     if cmd == 'install': return files(install)
-     if cmd == 'uninstall': return files(uninstall)
+diff --git a/src/node.cc b/src/node.cc
+index 7df6053..cbe1538 100644
+--- a/src/node.cc
++++ b/src/node.cc
+@@ -4085,15 +4085,11 @@ static void StartNodeInstance(void* arg) {
+       SealHandleScope seal(isolate);
+       bool more;
+       do {
+-#if 0
+         v8::platform::PumpMessageLoop(default_platform, isolate);
+-#endif
+         more = uv_run(env->event_loop(), UV_RUN_ONCE);
+ 
+         if (more == false) {
+-#if 0
+           v8::platform::PumpMessageLoop(default_platform, isolate);
+-#endif
+           EmitBeforeExit(env);
+ 
+           // Emit `beforeExit` if the loop became alive either after emitting
+@@ -4153,10 +4149,8 @@ int Start(int argc, char** argv) {
+ #endif
+ 
+   const int thread_pool_size = 4;
+-#if 0
+   default_platform = v8::platform::CreateDefaultPlatform(thread_pool_size);
+   V8::InitializePlatform(default_platform);
+-#endif
+   V8::Initialize();
+ 
+   int exit_code = 1;
+@@ -4173,10 +4167,8 @@ int Start(int argc, char** argv) {
+   }
+   V8::Dispose();
+ 
+-#if 0
+   delete default_platform;
+   default_platform = nullptr;
+-#endif
+ 
+   delete[] exec_argv;
+   exec_argv = nullptr;
+diff --git a/src/node.js b/src/node.js
+index 37aa371..a835d0a 100644
+--- a/src/node.js
++++ b/src/node.js
+@@ -40,7 +40,9 @@
+     startup.globalConsole();
+     }  // not isRenderer
+ 
++    if (!process.env.ELECTRON_NODE_DISABLE_ASAR_SUPPORT) {
+     startup.initAsarSupport();
++    }
+ 
+     startup.processAssert();
+     startup.processConfig();
+diff --git a/src/node_main.cc b/src/node_main.cc
+index 58e747e..24949f3 100644
+--- a/src/node_main.cc
++++ b/src/node_main.cc
+@@ -40,8 +40,10 @@ int wmain(int argc, wchar_t *wargv[]) {
+ }
+ #else
+ // UNIX
++#include <stdlib.h>
+ int main(int argc, char *argv[]) {
+   setvbuf(stderr, NULL, _IOLBF, 1024);
++  putenv("ELECTRON_NODE_DISABLE_ASAR_SUPPORT=1");
+   return node::Start(argc, argv);
+ }
+ #endif
 -- 
 2.7.3
 
