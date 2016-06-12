@@ -14,27 +14,16 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 RDEPEND="
-	>=dev-lang/erlang-18.1[wxwidgets]
+	>=dev-lang/erlang-18.1[smp,wxwidgets]
 	dev-libs/cl
 	media-libs/libsdl[opengl]
 "
 DEPEND="${RDEPEND}"
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-2.0.4-wx.patch
-)
-
 src_prepare() {
-	default
-
 	sed -i \
-		-e '/include_lib/s|wings/|../|' \
-		plugins_src/primitives/wpc_knot.erl \
-		plugins_src/primitives/wpc_plane.erl \
-		plugins_src/primitives/wpc_spiral.erl \
-		plugins_src/primitives/wpc_torus.erl \
-		plugins_src/wp9_dialogs.erl \
-		src/wings_text.erl \
+		-e '/include_lib/s|"wings/|"../|' \
+		$(find . -name '*'.erl) \
 		|| die
 
 	eapply_user
@@ -64,6 +53,6 @@ src_install() {
 
 	dosym ${WINGS_PATH} ${ERL_PATH}/${PN}
 	dosym ${ESDL_PATH} ${ERL_PATH}/esdl
-	newbin "${FILESDIR}"/wings.sh wings
+	newbin "${FILESDIR}"/wings.sh-r1 wings
 	dodoc AUTHORS README
 }
