@@ -18301,7 +18301,7 @@ x11-misc/gtkdialog 0.8.2 0.8.3-r1: A small utility for fast and easy GUI buildin
 x11-misc/gxmessage 2.20.1 2.20.3 3.4.2 3.4.3: A GTK+ based xmessage clone
 x11-misc/habak 0.2.5-r1: A simple but powerful tool to set desktop wallpaper
 x11-misc/hsetroot 1.0.2: Tool which allows you to compose wallpapers ('root pixmaps') for X
-x11-misc/i3lock 2.5 2.6 2.7: Simple screen locker
+x11-misc/i3lock 2.6 2.7 2.8: Simple screen locker
 x11-misc/i3status 2.7 2.8 2.9 2.10-r1: generates a status bar for dzen2, xmobar or similar
 x11-misc/i855crt 0.4-r1: Intel Montara 855GM CRT out auxiliary driver
 x11-misc/icewmcp 3.2-r2 3.2-r4: A complete control panel for IceWM using gtk & python
