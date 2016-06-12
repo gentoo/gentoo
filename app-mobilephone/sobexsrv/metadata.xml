@@ -1,13 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-    <longdescription>sobexsrv is a Bluetooth OBEX server with Bluetooth
-Security Mode-2 (application triggered security) support. It implements
-OPUSH (put), OPULL (get) and OBEX-FTP (setpath + directory listing) and
-therefore is a full OBEX server. Further it supports pulling generic
-mime-types and provides a capability object. sobexsrv was designed with
-flexibility and security in mind and supports chroot (if suid root drop to
-calling uid immediately). For flexibility a scripting interface provides
-access to all functionalities of the server and therefore allows
-implementation of further OBEX services on top of sobexsrv.</longdescription>
+  <maintainer type="person">
+    <email>bircoph@gentoo.org</email>
+    <name>Andrew Savchenko</name>
+  </maintainer>
+  <longdescription>
+	sobexsrv is a Bluetooth OBEX server with Bluetooth Security
+	Mode-2 (application triggered security) support. It implements
+	OPUSH (put), OPULL (get) and OBEX-FTP (setpath + directory
+	listing) and therefore is a full OBEX server. Further it
+	supports pulling generic mime-types and provides a capability
+	object. sobexsrv was designed with flexibility and security in
+	mind and supports chroot (if suid root drop to calling uid
+	immediately). For flexibility a scripting interface provides
+	access to all functionalities of the server and therefore
+	allows implementation of further OBEX services on top of
+	sobexsrv.
+  </longdescription>
 </pkgmetadata>
