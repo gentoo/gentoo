@@ -12,7 +12,7 @@ HOMEPAGE="https://git.kernel.org/cgit/devel/pahole/pahole.git/"
 
 LICENSE="GPL-2" # only
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE="debug"
 
 RDEPEND="${PYTHON_DEPS}
