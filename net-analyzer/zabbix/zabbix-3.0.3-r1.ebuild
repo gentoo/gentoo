@@ -17,7 +17,7 @@ LICENSE="GPL-2"
 SLOT="0"
 WEBAPP_MANUAL_SLOT="yes"
 KEYWORDS="~amd64 ~x86"
-IUSE="+agent java curl frontend ipv6 xmpp ldap libxml2 mysql openipmi oracle postgres proxy server ssh snmp sqlite odbc static"
+IUSE="+agent java curl frontend ipv6 xmpp ldap libxml2 mysql openipmi oracle postgres proxy server ssh ssl snmp sqlite odbc static"
 REQUIRED_USE="|| ( agent frontend proxy server )
 	proxy? ( ^^ ( mysql oracle postgres sqlite odbc ) )
 	server? ( ^^ ( mysql oracle postgres sqlite odbc ) )
@@ -39,7 +39,8 @@ COMMON_DEPEND="snmp? ( net-analyzer/net-snmp )
 	openipmi? ( sys-libs/openipmi )
 	ssh? ( net-libs/libssh2 )
 	java? ( virtual/jdk:* )
-	odbc? ( dev-db/unixODBC )"
+	odbc? ( dev-db/unixODBC )
+	ssl? ( dev-libs/openssl:= )"
 
 RDEPEND="${COMMON_DEPEND}
 	proxy? ( net-analyzer/fping )
@@ -137,6 +138,7 @@ src_configure() {
 		$(use_with ssh ssh2) \
 		$(use_with libxml2) \
 		$(use_with odbc unixodbc) \
+		$(use_with ssl openssl) \
 		|| die "econf failed"
 }
 
