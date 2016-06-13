@@ -4516,7 +4516,7 @@ dev-libs/cgilib 0.7: a simple and lightweight interface to the Common Gateway In
 dev-libs/check 0.9.8-r1 0.9.11 0.9.12 0.9.13 0.9.13-r1 0.10.0: A unit test framework for C
 dev-libs/chmlib 0.40-r1: Library for MS CHM (compressed html) file format
 dev-libs/cityhash 1.0.3 1.1.0 1.1.1: Google's CityHash family of hash functions
-dev-libs/cl 1.2.1 9999: OpenCL bindings for Erlang
+dev-libs/cl 1.2.1-r1 9999: OpenCL bindings for Erlang
 dev-libs/cloog 0.18.0 0.18.1 0.18.3 0.18.4 9999: A loop generator for scanning polyhedra
 dev-libs/collada-dom 2.4.0 2.4.3_pre20150112 9999: COLLADA Document Object Model (DOM) C++ Library
 dev-libs/confuse 2.7 2.8 3.0: a configuration file parser library
