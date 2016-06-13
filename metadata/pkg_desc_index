@@ -525,7 +525,7 @@ app-crypt/efitools 1.4.1 1.4.1-r1 1.4.1-r2 1.4.2 1.4.2-r1 1.7.0: Tools for manip
 app-crypt/eid-mw 4.1.4 4.1.9 9999: Electronic Identity Card middleware supplied by the Belgian Federal Government
 app-crypt/ekeyd 1.1.4-r2 1.1.5: Entropy Key userspace daemon
 app-crypt/elettra 1.0: Plausible deniable file cryptography
-app-crypt/envchain 1.0.0: Set environment variables with OS X keychain or D-Bus Secret Service
+app-crypt/envchain 1.0.0: Save environment variables in a secret vault
 app-crypt/etcd-ca 0_p20140903 0_p20150423 0_p20150423-r1: A simple certificate manager written in Go. Easy to use with limited capability
 app-crypt/fcrackzip 1.0: a zip password cracker
 app-crypt/gcr 3.16.0 3.18.0: Libraries for cryptographic UIs and accessing PKCS#11 modules
