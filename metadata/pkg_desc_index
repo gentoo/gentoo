@@ -1986,7 +1986,7 @@ app-mobilephone/sms 2.0.3 2.1.0: Command line program for sending SMS to Polish 
 app-mobilephone/smsclient 2.0.9a-r1: Utility to send SMS messages to mobile phones and pagers
 app-mobilephone/smssend 3.4: Universal SMS sender
 app-mobilephone/smstools 3.1.15-r1 3.1.15-r2: Send and receive short messages through GSM modems
-app-mobilephone/sobexsrv 1.0.1: Scripting/Secure OBEX Server (for BlueZ Linux)
+app-mobilephone/sobexsrv 1.0.1 1.0.1-r1: Scripting/Secure OBEX Server (for BlueZ Linux)
 app-mobilephone/vmoconv 1.0-r1: A tool that converts Siemens phones VMO and VMI audio files to gsm and wav
 app-mobilephone/wammu 0.35 0.35-r1 0.36-r1 0.40: Front-end for gammu to access mobile phones easily
 app-mobilephone/yaps 0.96-r5: Yet Another Pager Software (optional with CAPI support)
