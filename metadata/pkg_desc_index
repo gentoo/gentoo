@@ -13611,7 +13611,7 @@ media-video/rovclock 0.6e: Overclocking utility for ATI Radeon cards
 media-video/rtmpdump 2.4_p20131018 9999: Open source command-line RTMP client intended to stream audio or video flash content
 media-video/setpwc 1.3: Control various aspects of Philips (and compatible) webcams
 media-video/shrip 0.6.0: Command line tool for ripping DVDs and encoding to AVI/OGM/MKV/MP4
-media-video/smplayer 14.9.0-r1 16.1.0 16.4.0-r2: Great Qt GUI front-end for mplayer/mpv
+media-video/smplayer 14.9.0-r1 16.1.0 16.4.0-r2 16.6.0: Great Qt GUI front-end for mplayer/mpv
 media-video/smtube 15.11.0 15.11.0-r1 15.11.0-r2 16.1.0 16.3.0: YouTube Browser for SMPlayer
 media-video/snappy 1.0 1.0-r1: A simple media player written using GStreamer and Clutter
 media-video/sonic-snap 1.7: Webcam app for sn9c10x based camera controllers (with optional MPEG4 support)
