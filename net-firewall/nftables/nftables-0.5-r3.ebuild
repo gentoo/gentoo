@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -13,7 +13,7 @@ SRC_URI="http://git.netfilter.org/nftables/snapshot/v${PV}.tar.gz -> ${P}.tar.gz
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
-IUSE="debug gmp +readline"
+IUSE="debug doc gmp +readline"
 
 RDEPEND=">=net-libs/libmnl-1.0.3
 	>=net-libs/libnftnl-1.0.5
@@ -21,8 +21,10 @@ RDEPEND=">=net-libs/libmnl-1.0.3
 	readline? ( sys-libs/readline:0= )"
 DEPEND="${RDEPEND}
 	>=app-text/docbook2X-0.8.8-r4
+	doc? ( >=app-text/dblatex-0.3.7 )
 	sys-devel/bison
-	sys-devel/flex"
+	sys-devel/flex
+	virtual/pkgconfig"
 
 S="${WORKDIR}"/v${PV}
 
@@ -36,6 +38,7 @@ pkg_setup() {
 }
 
 src_prepare() {
+	epatch -p1 "${FILESDIR}/${P}-pdf-doc.patch"
 	epatch_user
 	eautoreconf
 }
@@ -44,6 +47,7 @@ src_configure() {
 	econf \
 		--sbindir="${EPREFIX}"/sbin \
 		$(use_enable debug) \
+		$(use_enable doc pdf-doc) \
 		$(use_with readline cli) \
 		$(use_with !gmp mini_gmp)
 }
@@ -52,7 +56,8 @@ src_install() {
 	default
 
 	dodir /usr/libexec/${PN}
-	cp -p "${FILESDIR}"/libexec/${PN}.sh "${D}"/usr/libexec/${PN}/${PN}.sh
+	insinto /usr/libexec/${PN}
+	doins "${FILESDIR}"/libexec/${PN}.sh
 
 	newconfd "${FILESDIR}"/${PN}.confd ${PN}
 	newinitd "${FILESDIR}"/${PN}.init-r2 ${PN}
