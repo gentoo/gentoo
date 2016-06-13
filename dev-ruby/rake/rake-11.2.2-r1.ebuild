@@ -10,6 +10,8 @@ RUBY_FAKEGEM_EXTRADOC="CHANGES README.rdoc TODO"
 
 RUBY_FAKEGEM_TASK_TEST=""
 
+RUBY_FAKEGEM_BINDIR="exe"
+
 inherit bash-completion-r1 ruby-fakegem
 
 DESCRIPTION="Make-like scripting in Ruby"
