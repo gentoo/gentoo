@@ -320,6 +320,12 @@ pkg_setup() {
 src_prepare() {
 	eapply "${FILESDIR}/${PN}-1.4.1-fix-perl-install-path.patch"
 
+	if use rtmp; then
+		cd "${RTMP_MODULE_WD}" || die
+		eapply "${FILESDIR}"/rtmp-nginx-1.11.0.patch
+		cd "${S}" || die
+	fi
+
 	if use nginx_modules_http_upstream_check; then
 		eapply -p0 "${HTTP_UPSTREAM_CHECK_MODULE_WD}/check_1.9.2+".patch
 	fi
@@ -348,7 +354,7 @@ src_prepare() {
 src_configure() {
 	# mod_security needs to generate nginx/modsecurity/config before including it
 	if use nginx_modules_http_security; then
-		cd "${HTTP_SECURITY_MODULE_WD}"
+		cd "${HTTP_SECURITY_MODULE_WD}" || die
 		if use luajit ; then
 			sed -i \
 				-e 's|^\(LUA_PKGNAMES\)=.*|\1="luajit"|' \
@@ -360,7 +366,7 @@ src_configure() {
 			$(use_with nginx_modules_http_lua lua) || die "configure failed for mod_security"
 	fi
 
-	cd "${S}"
+	cd "${S}" || die
 
 	local myconf=() http_enabled= mail_enabled= stream_enabled=
 
@@ -624,9 +630,10 @@ src_install() {
 	newins "${FILESDIR}"/nginx.logrotate-r1 nginx
 
 	if use nginx_modules_http_perl; then
-		cd "${S}"/objs/src/http/modules/perl/
+		cd "${S}"/objs/src/http/modules/perl/ || die
 		emake DESTDIR="${D}" INSTALLDIRS=vendor
 		perl_delete_localpod
+		cd "${S}" || die
 	fi
 
 	if use nginx_modules_http_cache_purge; then
