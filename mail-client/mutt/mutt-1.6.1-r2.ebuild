@@ -259,7 +259,7 @@ pkg_postinst() {
 		elog "Please visit http://www.neomutt.org/ to learn more about this project."
 		elog "As a result, SmartTime functionality has been replaced with"
 		elog "CondDate feature.  To mimic SmartTime, use this CondDate formatter:"
-		elog "%<[12m?%<[7d?%<[12H?%[%H:%M ]&%[%a-%d]>&%[%d-%b]>&%[%b-%y ]>"
+		elog "%<[12m?%<[7d?%<[12H?%[%H:%M ]&%[%a-%d]>&%[%d-%b]>&%[%b-%y]>"
 		echo
 	fi
 }
