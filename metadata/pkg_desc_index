@@ -9819,7 +9819,7 @@ dev-util/nemiver 0.9.5 0.9.6: A gtkmm front end to the GNU Debugger (gdb)
 dev-util/netbeans 8.0.2 8.1: Netbeans IDE
 dev-util/ninja 1.6.0 1.7.1 9999: A small build system similar to make
 dev-util/ninja-ide 2.3: Ninja-IDE Is Not Just Another IDE
-dev-util/nsis 2.46-r1 2.51: Nullsoft Scriptable Install System
+dev-util/nsis 2.51: Nullsoft Scriptable Install System
 dev-util/nvidia-cuda-sdk 6.5.14 7.5.18: NVIDIA CUDA Software Development Kit
 dev-util/nvidia-cuda-toolkit 6.5.14 6.5.19-r1 7.5.18-r2: NVIDIA CUDA Toolkit (compiler and friends)
 dev-util/objconv 2.32_pre20131127 2.42: object code file converted (COFF, ELF, OMF, MACHO)
