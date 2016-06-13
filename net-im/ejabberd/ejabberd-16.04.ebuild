@@ -64,6 +64,7 @@ RDEPEND="${CDEPEND}
 
 PATCHES=( "${FILESDIR}/${P}-ejabberdctl.patch" )
 
+EJABBERD_CERT="${EPREFIX}/etc/ssl/ejabberd/server.pem"
 # Paths in net-im/jabber-base
 JABBER_ETC="${EPREFIX}/etc/jabber"
 JABBER_LOG="${EPREFIX}/var/log/jabber"
@@ -73,8 +74,8 @@ JABBER_SPOOL="${EPREFIX}/var/spool/jabber"
 # - Use our sample certificates.
 # - Correct PAM service name.
 adjust_config() {
-	sed -e "s|/path/to/ssl.pem|/etc/ssl/ejabberd/server.pem|g" \
-		-e "s|pamservicename|xmpp|" \
+	sed -e "s|\"/path/to/ssl.pem\"|\"${EJABBERD_CERT}\"|g" \
+		-e "s|\"pamservicename\"|\"xmpp\"|" \
 		-i "${S}/ejabberd.yml.example" \
 		|| die 'failed to adjust example config'
 }
@@ -104,6 +105,28 @@ customize_epam_wrapper() {
 	sed -r -e "s@^(ERL_LIBS=).*\$@\1${EPREFIX}$(get_erl_libs)@" \
 		"${epam_wrapper_src}" >"${epam_wrapper_dst}" \
 		|| die 'failed to install epam-wrapper'
+}
+
+# Check if there already exists a certificate.
+ejabberd_cert_exists() {
+	local cert
+
+	for cert in $(gawk -- \
+			'match($0, /^[[:space:]]*certfile: "([^"]+)"/, m) {print m[1];}' \
+			"${EROOT}${JABBER_ETC}/ejabberd.yml"); do
+		[[ -f ${cert} ]] && return 0
+	done
+
+	return 1
+}
+
+# Generate and install sample ejabberd certificate. It's installed into
+# EJABBERD_CERT path.
+ejabberd_cert_install() {
+	SSL_ORGANIZATION="${SSL_ORGANIZATION:-ejabberd XMPP Server}"
+	install_cert "${EJABBERD_CERT%.*}"
+	chown root:jabber "${EROOT}${EJABBERD_CERT}" || die
+	chmod 0440 "${EROOT}${EJABBERD_CERT}" || die
 }
 
 # Get path to ejabberd lib directory.
@@ -137,15 +160,6 @@ skip_docs() {
 }
 1
 ' "${S}/Makefile.in" || die 'failed to remove docs section from Makefile.in'
-}
-
-# Generate and install sample ejabberd certificate.
-install_sample_ejabberd_cert() {
-	SSL_ORGANIZATION="${SSL_ORGANIZATION:-ejabberd XMPP Server}"
-	install_cert /etc/ssl/ejabberd/server || return
-	# Fix ssl cert permissions (bug #369809).
-	chown root:jabber "${EROOT}/etc/ssl/ejabberd/server.pem" || return
-	chmod 0440 "${EROOT}/etc/ssl/ejabberd/server.pem"
 }
 
 src_prepare() {
@@ -232,9 +246,7 @@ pkg_postinst() {
 		echo
 	fi
 
-	if ! install_sample_ejabberd_cert; then
-		eerror
-		eerror "Failed to install sample ejabberd certificate"
-		eerror
+	if ! ejabberd_cert_exists; then
+		ejabberd_cert_install
 	fi
 }
