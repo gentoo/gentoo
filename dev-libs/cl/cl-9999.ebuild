@@ -3,7 +3,7 @@
 # $Header: /var/cvsroot/gentoo-x86/media-libs/esdl/esdl-1.2.ebuild,v 1.1 2013/02/12 14:41:54 george Exp $
 
 EAPI=6
-inherit eutils fixheadtails git-r3 multilib
+inherit eutils git-r3 multilib
 
 DESCRIPTION="OpenCL bindings for Erlang"
 HOMEPAGE="https://github.com/tonyrog/cl"
@@ -25,10 +25,8 @@ src_compile() {
 }
 
 src_install() {
-	addpredict /usr/$(get_libdir)/erlang/lib
 	ERLANG_DIR="/usr/$(get_libdir)/erlang/lib"
 	CL_DIR="${ERLANG_DIR}/${P}"
-
 	insinto "${CL_DIR}"
 	doins -r ebin src include c_src examples
 }

@@ -33,6 +33,8 @@ src_compile() {
 }
 
 src_install() {
+	ERLANG_DIR="/usr/$(get_libdir)/erlang/lib"
+	CL_DIR="${ERLANG_DIR}/${P}"
 	insinto "${CL_DIR}"
 	doins -r ebin src include c_src examples
 }
