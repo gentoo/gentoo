@@ -320,6 +320,12 @@ pkg_setup() {
 src_prepare() {
 	eapply "${FILESDIR}/${PN}-1.4.1-fix-perl-install-path.patch"
 
+	if use rtmp; then
+		cd "${RTMP_MODULE_WD}" || die
+		eapply "${FILESDIR}"/rtmp-nginx-1.11.0.patch
+		cd "${S}" || die
+	fi
+
 	if use nginx_modules_http_upstream_check; then
 		eapply -p0 "${HTTP_UPSTREAM_CHECK_MODULE_WD}/check_1.9.2+".patch
 	fi
