@@ -1,17 +1,15 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 
-inherit autotools eutils git-r3 user systemd
+inherit autotools eutils user systemd
 
 DESCRIPTION="Encrypted P2P, messaging, and audio/video calling platform"
 HOMEPAGE="https://tox.chat"
-SRC_URI=""
-EGIT_REPO_URI="https://github.com/irungentoo/toxcore.git
-	git://github.com/irungentoo/toxcore.git"
 EGIT_COMMIT="94cc8b11ff473064526737936f64b6f9a19c239d"
+SRC_URI="https://github.com/irungentoo/toxcore/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"
@@ -29,6 +27,8 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	test? ( dev-libs/check )
 	virtual/pkgconfig"
+
+S="${WORKDIR}/toxcore-${EGIT_COMMIT}"
 
 src_prepare() {
 	epatch_user
