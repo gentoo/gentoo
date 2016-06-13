@@ -39,7 +39,6 @@ src_prepare() {
 }
 
 src_configure() {
-	# https://savannah.nongnu.org/bugs/index.php?34324
 	# --enable-cxx-exceptions: always enable it, headers provide the interface
 	# and on some archs it is disabled by default causing a mismatch between the
 	# API and the ABI, bug #418253
