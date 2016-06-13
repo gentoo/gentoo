@@ -30,6 +30,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Pawel Hajdan jr <phajdan.jr@gentoo.org> (13 Jun 2016)
+# Dev channel releases are only for people who are developers or want more
+# experimental features and accept a more unstable release.
+>=www-client/chromium-53
+
 # Pacho Ramos <pacho@gentoo.org> (12 Jun 2016)
 # Buggy, upstream dead for ages (#148741). Removal in a month.
 app-cdr/dvd95
@@ -331,11 +336,6 @@ net-libs/hubbub
 # app-text/blogc with USE=git and USE=httpd instead. Removal in 30 days.
 dev-vcs/blogc-git-receiver
 www-servers/blogc-runserver
-
-# Pawel Hajdan jr <phajdan.jr@gentoo.org> (27 Apr 2016)
-# Dev channel releases are only for people who are developers or want more
-# experimental features and accept a more unstable release.
->=www-client/chromium-52
 
 # Sergey Popov <pinkbyte@gentoo.org> (26 Apr 2016)
 # Security mask of older branches, wrt bug #5567810
