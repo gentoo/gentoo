@@ -22,9 +22,9 @@ IUSE=""
 
 RDEPEND="${RDEPEND} !dev-ruby/metasploit-model:0"
 
-ruby_add_rdepend ">=dev-ruby/railties-4.0.9:4.0
-			>=dev-ruby/activesupport-4.0.9:4.0
-			>=dev-ruby/activemodel-4.0.9:4.0"
+ruby_add_rdepend ">=dev-ruby/railties-4.2.6:4.2
+			>=dev-ruby/activesupport-4.2.6:4.2
+			>=dev-ruby/activemodel-4.2.6:4.2"
 #		development? (	dev-ruby/bundler
 #			dev-ruby/rake
 #			dev-ruby/i18n

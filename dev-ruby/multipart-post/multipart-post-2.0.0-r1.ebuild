@@ -21,6 +21,10 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86"
 IUSE="test"
 
+RESTRICT="test"
+
 each_ruby_test() {
+	#there is no possible way this can work
+	#/usr/bin/ruby21: No such file or directory -- testrb (LoadError)
 	${RUBY} -S testrb -Ilib test || die "Tests failed."
 }

@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=5
-USE_RUBY="ruby20 ruby21"
+USE_RUBY="ruby21"
 
 RUBY_FAKEGEM_RECIPE_DOC="rdoc"
 
@@ -18,11 +18,12 @@ LICENSE="BSD"
 SLOT="${PV}"
 KEYWORDS="~amd64 ~arm ~x86"
 IUSE=""
+RESTRICT=test
 
-ruby_add_rdepend ">=dev-ruby/metasploit-concern-1.0.0:1.0
+ruby_add_rdepend "dev-ruby/metasploit-concern:2.0
 	>=dev-ruby/metasploit_data_models-1.2.0:*
 	>=dev-ruby/metasploit-model-1.0.0
 	dev-ruby/rubyzip:1
 	dev-ruby/rubyntlm
-	>=dev-ruby/railties-4.0.9:4.0
+	>=dev-ruby/railties-4.2.6:4.2
 	dev-ruby/pg"

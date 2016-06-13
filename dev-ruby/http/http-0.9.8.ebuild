@@ -17,7 +17,7 @@ HOMEPAGE="https://github.com/tarcieri/http"
 
 LICENSE="MIT"
 SLOT="0.8"
-KEYWORDS="~amd64 ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm ~ppc64 ~x86"
 IUSE=""
 
 ruby_add_rdepend "

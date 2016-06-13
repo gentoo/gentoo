@@ -17,7 +17,7 @@ HOMEPAGE="https://github.com/httprb/form_data.rb"
 
 LICENSE="MIT"
 SLOT="1.0"
-KEYWORDS="~amd64 ~ppc64"
+KEYWORDS="~amd64 ~arm ~ppc64"
 IUSE=""
 
 all_ruby_prepare() {

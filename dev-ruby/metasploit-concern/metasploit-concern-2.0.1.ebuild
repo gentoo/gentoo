@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=5
-USE_RUBY="ruby20 ruby21"
+USE_RUBY="ruby21 ruby22"
 
 RUBY_FAKEGEM_EXTRAINSTALL="app spec"
 
@@ -22,5 +22,5 @@ IUSE=""
 
 RDEPEND="${RDEPEND} !dev-ruby/metasploit-concern:0"
 
-ruby_add_rdepend ">=dev-ruby/railties-4.0.9:4.0
-		  >=dev-ruby/activesupport-4.0.9:4.0"
+ruby_add_rdepend ">=dev-ruby/railties-4.2.6:4.2
+		  >=dev-ruby/activesupport-4.2.6:4.2"
