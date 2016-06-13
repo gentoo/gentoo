@@ -8792,7 +8792,7 @@ dev-ruby/buftok 0.2.0-r1: Statefully split input data by a specifiable token
 dev-ruby/builder 3.0.4-r1 3.0.4-r2 3.1.4 3.2.2 3.2.2-r1: A builder to facilitate programatic generation of XML markup
 dev-ruby/bundler 1.8.9 1.9.10 1.10.6 1.11.2 1.12.4 1.12.5: An easy way to vendor gem dependencies
 dev-ruby/bundler-audit 0.4.0 0.5.0: Provides patch-level verification for Bundled apps
-dev-ruby/bunny 2.3.0 2.3.1: Another synchronous Ruby AMQP client
+dev-ruby/bunny 2.3.0 2.3.1 2.4.0: Another synchronous Ruby AMQP client
 dev-ruby/calendar_date_select 2.1.2: A popular and flexible JavaScript DatePicker for RubyOnRails
 dev-ruby/camping 2.1.532: A small web framework modeled after Ruby on Rails
 dev-ruby/capistrano 2.15.5-r1 2.15.5-r2 3.3.5 3.4.0 3.4.1: A distributed application deployment system
@@ -8986,7 +8986,7 @@ dev-ruby/mash 0.1.1-r2: Mash is an extended Hash that gives simple pseudo-object
 dev-ruby/matchy 0.5.2-r1: RSpec-esque matchers for use in Test::Unit
 dev-ruby/maxitest 1.5.6 1.5.7 2.0.1: Minitest + all the features you always wanted
 dev-ruby/mecab-ruby 0.996-r1: Ruby binding for MeCab
-dev-ruby/mechanize 2.7.3 2.7.3-r1 2.7.4: A Ruby library used for automating interaction with websites
+dev-ruby/mechanize 2.7.3-r1 2.7.4: A Ruby library used for automating interaction with websites
 dev-ruby/memcache-client 1.8.5-r1 1.8.5-r2: A ruby library for accessing memcached
 dev-ruby/memoist 0.14.0: ActiveSupport::Memoizable with a few enhancements
 dev-ruby/memoizable 0.4.2: Memoize method return values
@@ -9029,8 +9029,8 @@ dev-ruby/nanotest 0.9.4.1: Extremely mynymal test framework
 dev-ruby/narray 0.6.0.8-r1 0.6.1.1 0.6.1.2: Numerical N-dimensional Array class
 dev-ruby/naught 1.1.0: A toolkit for building Null Objects in Ruby
 dev-ruby/nenv 0.3.0: Convenient wrapper for Ruby's ENV
-dev-ruby/net-http-digest_auth 1.4-r1 1.4-r2: An implementation of RFC 2617 - Digest Access Authentication
-dev-ruby/net-http-persistent 2.9.4 2.9.4-r2: Manages persistent connections using Net::HTTP plus a speed fix for Ruby 1.8
+dev-ruby/net-http-digest_auth 1.4-r2: An implementation of RFC 2617 - Digest Access Authentication
+dev-ruby/net-http-persistent 2.9.4-r2: Manages persistent connections using Net::HTTP plus a speed fix for Ruby 1.8
 dev-ruby/net-http-pipeline 1.0.1: An HTTP/1.1 pipelining implementation atop Net::HTTP
 dev-ruby/net-scp 1.1.2-r1 1.2.1: A pure Ruby implementation of the SCP client protocol
 dev-ruby/net-sftp 2.1.2-r1 2.1.2-r2: SFTP in pure Ruby
