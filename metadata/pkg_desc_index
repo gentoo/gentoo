@@ -4551,7 +4551,7 @@ dev-libs/elfio 1.0.3: ELF (Executable and Linkable Format) reader and producer i
 dev-libs/elfutils 0.163 0.164 0.165 0.166: Libraries/utilities to handle ELF objects (drop in replacement for libelf)
 dev-libs/engine_pkcs11 0.1.8 0.1.8-r1: engine_pkcs11 is an implementation of an engine for OpenSSL
 dev-libs/eventlog 0.2.12: Support library for syslog-ng
-dev-libs/expat 2.1.0-r5 2.1.1 2.1.1-r1: Stream-oriented XML parser library
+dev-libs/expat 2.1.0-r5 2.1.1 2.1.1-r1 2.1.1-r2: Stream-oriented XML parser library
 dev-libs/fampp2 6.0.1 7.0.1 7.0.1-r1: C++ wrapper for fam
 dev-libs/faxpp 0.4: Small, fast and conformant XML pull parser written in C with an API that can return UTF-8 or UTF-16 strings
 dev-libs/fcgi 2.4.1_pre0910052249-r2: FastCGI Developer's Kit
@@ -13945,7 +13945,7 @@ net-analyzer/wireshark 2.0.2 2.0.3 2.0.4 99999999: A network protocol analyzer f
 net-analyzer/xnetload 1.11.3-r1: displays a count and a graph of the traffic over a specified network connection
 net-analyzer/xprobe 0.3: Active OS fingerprinting tool - this is Xprobe2
 net-analyzer/yersinia 0.7.3: A layer 2 attack framework
-net-analyzer/zabbix 2.2.5 2.2.9 2.2.11 2.2.13 2.4.5 2.4.7 2.4.8 3.0.3: ZABBIX is software for monitoring of your applications, network and servers
+net-analyzer/zabbix 2.2.5 2.2.9 2.2.11 2.2.13 2.4.5 2.4.7 2.4.8 3.0.3-r1: ZABBIX is software for monitoring of your applications, network and servers
 net-analyzer/zmap 1.1.1 1.1.2 1.2.0 1.2.1 2.1.1 9999: Fast network scanner designed for Internet-wide network surveys
 net-analyzer/zniper 1.0-r1: Displays and kill active TCP connections seen by the selected interface
 net-dialup/accel-ppp 1.10.2 1.10.9999 9999: High performance PPTP, PPPoE and L2TP server
