@@ -12,4 +12,4 @@ SLOT=7
 SRC_URI=http://download.savannah.nongnu.org/releases/libunwind/libunwind-1.2-rc1.tar.gz
 _eclass_exported_funcs=src_prepare:- src_configure:- src_test:- src_install:-
 _eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	libtool	4890219c51da247200223277f993e054	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	c9d9187f4caa4026a0ceddd8dfceb3c1
-_md5_=eb4100646ebd11131065c3e1686041d1
+_md5_=213b61b768d4f1f4d083030378f24a5d
