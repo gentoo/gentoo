@@ -14150,7 +14150,7 @@ net-im/coccinella 0.96.20: Jabber Client With a Built-in Whiteboard and VoIP (ji
 net-im/corebird 0.8 1.0 1.1: Native GTK+3 Twitter client
 net-im/cpop 0.0.4-r1: GTK+ network popup message client. Compatible with the jpop protocol
 net-im/dianara 1.3.1-r1 1.3.3: Qt-based client for the pump.io distributed social network
-net-im/ejabberd 2.1.13-r2 15.03-r1 16.01-r1 16.04: Robust, scalable and extensible XMPP server
+net-im/ejabberd 2.1.13-r2 16.01-r1 16.04: Robust, scalable and extensible XMPP server
 net-im/ekg2 0.3.1-r2 9999: Text-based, multi-protocol instant messenger
 net-im/empathy 3.12.11 3.12.12: Telepathy instant messaging and video/audio call client for GNOME
 net-im/err 1.7.1-r1: Plugin based XMPP chatbot designed to be easily deployable, extensible and maintainable
