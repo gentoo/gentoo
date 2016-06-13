@@ -14411,7 +14411,7 @@ net-libs/nfqueue-bindings 0.5: High-level language bindings for libnetfilter_que
 net-libs/nghttp2 1.7.1 1.10.0 1.11.0 1.11.1 9999: HTTP/2 C Library
 net-libs/nodejs 0.12.6 0.12.7 0.12.10 4.4.0 4.4.1 5.9.1 5.10.1 5.11.0 6.2.1: A JavaScript runtime built on Chrome's V8 JavaScript engine
 net-libs/obby 0.4.8 0.4.8-r1: Library for collaborative text editing
-net-libs/onion 0.7 0.8 9999: C library to create simple HTTP servers and Web Applications
+net-libs/onion 0.8 9999: C library to create simple HTTP servers and Web Applications
 net-libs/opal 3.10.11 3.12.4: C++ class library normalising numerous telephony protocols
 net-libs/openmq-cclient 4.4.1: C-Client Library for Open Source Java Message Service (JMS)
 net-libs/openpgm 5.1.118-r1 5.2.122: Open source implementation of the Pragmatic General Multicast specification
