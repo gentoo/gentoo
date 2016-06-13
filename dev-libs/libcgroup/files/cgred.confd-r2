@@ -2,4 +2,4 @@
 
 # Options to pass to cgrulesengd;
 # See the cgrulesengd(8) man page for more info.
-CGRED_OPTS=""
+CGRED_OPTS="-n"

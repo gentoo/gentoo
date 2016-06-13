@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -13,7 +13,7 @@ SRC_URI="mirror://sourceforge/project/libcg/${PN}/v${PV}/${P}.tar.bz2"
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
-IUSE="+daemon elibc_musl debug pam static-libs +tools"
+IUSE="+daemon elibc_musl pam static-libs +tools"
 
 RDEPEND="pam? ( virtual/pam )"
 
@@ -42,6 +42,8 @@ src_prepare() {
 	# Change rules file location
 	sed -e 's:/etc/cgrules.conf:/etc/cgroup/cgrules.conf:' \
 		-i src/libcgroup-internal.h || die "sed failed"
+	sed -e 's:/etc/cgconfig.conf:/etc/cgroup/cgconfig.conf:' \
+		-i src/libcgroup-internal.h || die "sed failed"
 	sed -e 's:\(pam_cgroup_la_LDFLAGS.*\):\1\ -avoid-version:' \
 		-i src/pam/Makefile.am || die "sed failed"
 	sed -e 's#/var/run#/run#g' -i configure.in || die "sed failed"
@@ -60,7 +62,6 @@ src_configure() {
 	econf \
 		$(use_enable static-libs static) \
 		$(use_enable daemon) \
-		$(use_enable debug) \
 		$(use_enable pam) \
 		$(use_enable tools) \
 		${my_conf}
@@ -86,7 +87,7 @@ src_install() {
 	fi
 
 	if use daemon; then
-		newconfd "${FILESDIR}"/cgred.confd-r1 cgred || die
+		newconfd "${FILESDIR}"/cgred.confd-r2 cgred || die
 		newinitd "${FILESDIR}"/cgred.initd-r1 cgred || die
 	fi
 }
