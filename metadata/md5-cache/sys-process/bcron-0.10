@@ -3,11 +3,11 @@ DEPEND=>=sys-process/cronbase-0.3.2 virtual/mta sys-apps/ucspi-unix virtual/daem
 DESCRIPTION=A new cron system designed with secure operations in mind by Bruce Guenter
 EAPI=5
 HOMEPAGE=http://untroubled.org/bcron/
-KEYWORDS=~amd64 ~x86
+KEYWORDS=amd64 x86
 LICENSE=GPL-2
 RDEPEND=>=sys-process/cronbase-0.3.2 virtual/mta sys-apps/ucspi-unix virtual/daemontools >=sys-process/cronbase-0.3.2 !sys-process/vixie-cron !sys-process/cronie !sys-process/dcron !sys-process/fcron
 SLOT=0
 SRC_URI=http://untroubled.org/bcron/archive/bcron-0.10.tar.gz
 _eclass_exported_funcs=pkg_postinst:- pkg_setup:python-any-r1 src_prepare:- src_configure:- src_install:-
 _eclasses_=cron	3d3a6a85df42b2dbf24b5f9b97b0f55c	eutils	792f83d5ec9536cb5ccef375469d8bde	flag-o-matic	d270fa247153df66074f795fa42dba3e	multilib	d062ae4ba2fc40a19c11de2ad89b6616	python-any-r1	1c20f9b800324335a8e3b137363362e8	python-utils-r1	c0ed2a2f233d3af6dd556048695dc5cb	toolchain-funcs	c9d9187f4caa4026a0ceddd8dfceb3c1
-_md5_=7991ae0adf195c775b14184da3507d58
+_md5_=fe7d3d631fdb7d7394fb937cb6342f53
