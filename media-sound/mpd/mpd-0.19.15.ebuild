@@ -4,7 +4,7 @@
 
 EAPI=6
 
-inherit eutils flag-o-matic linux-info multilib systemd user
+inherit autotools eutils flag-o-matic linux-info multilib systemd user
 
 DESCRIPTION="The Music Player Daemon (mpd)"
 HOMEPAGE="http://www.musicpd.org"
@@ -102,7 +102,10 @@ RDEPEND="${CDEPEND}
 	selinux? ( sec-policy/selinux-mpd )
 "
 
-PATCHES=( "${FILESDIR}"/${PN}-0.18.conf.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.18.conf.patch
+	"${FILESDIR}"/${PN}-0.9.15-systemd.patch # bug 584742
+)
 
 pkg_setup() {
 	use network || ewarn "Icecast and Shoutcast streaming needs networking."
@@ -133,6 +136,7 @@ pkg_setup() {
 src_prepare() {
 	cp -f doc/mpdconf.example doc/mpdconf.dist || die "cp failed"
 	default
+	eautoreconf
 }
 
 src_configure() {
@@ -205,7 +209,7 @@ src_configure() {
 		$(use_enable sid sidplay)	\
 		$(use_enable sndfile sndfile) \
 		$(use_enable sqlite)		\
-		$(use_enable systemd systemd-daemon) \
+		$(use_enable systemd) \
 		$(use_enable vorbis)		\
 		$(use_enable wavpack)		\
 		$(use_enable wildmidi)		\
