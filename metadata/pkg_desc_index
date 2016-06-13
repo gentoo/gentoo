@@ -8995,11 +8995,11 @@ dev-ruby/mercenary 0.3.5 0.3.6: Lightweight and flexible library for writing com
 dev-ruby/metaclass 0.0.1-r1 0.0.4: Adds a __metaclass__ method to all Ruby objects
 dev-ruby/metaid 1.0-r3: An aid to Ruby metaprogramming
 dev-ruby/metasm 1.0.2-r3: cross-architecture assembler, disassembler, linker, and debugger
-dev-ruby/metasploit-concern 1.0.0: Metasploit concern allows you to define concerns in app/concerns.
-dev-ruby/metasploit-credential 1.0.0 1.0.1: Code for modeling and managing credentials in Metasploit
-dev-ruby/metasploit-model 1.0.0: Common code, such as validators and mixins
-dev-ruby/metasploit-payloads 1.0.15 1.0.19 1.0.21 1.0.22: Compiled binaries for Metasploit's Meterpreter
-dev-ruby/metasploit_data_models 1.2.9 1.2.10: The database layer for Metasploit
+dev-ruby/metasploit-concern 1.0.0 2.0.1: Metasploit concern allows you to define concerns in app/concerns.
+dev-ruby/metasploit-credential 1.0.0 1.0.1 2.0.3: Code for modeling and managing credentials in Metasploit
+dev-ruby/metasploit-model 1.0.0 2.0.0: Common code, such as validators and mixins
+dev-ruby/metasploit-payloads 1.0.15 1.0.19 1.0.21 1.0.22 1.1.11: Compiled binaries for Metasploit's Meterpreter
+dev-ruby/metasploit_data_models 1.2.9 1.2.10 2.0.0: The database layer for Metasploit
 dev-ruby/meterpreter_bins 0.0.22: Compiled binaries for Metasploit's Meterpreter
 dev-ruby/method_source 0.8.2-r3: Retrieve the source code for a method
 dev-ruby/mime-types 1.25.1 2.6.2 3.0 3.0-r1: Provides a mailcap-like MIME Content-Type lookup for Ruby
@@ -9061,6 +9061,7 @@ dev-ruby/packetfu 1.1.11-r1: A mid-level packet manipulation library
 dev-ruby/paint 1.0.1: Terminal painter
 dev-ruby/parser 2.3.0.7 2.3.1.0 2.3.1.2: A production-ready Ruby parser written in pure Ruby
 dev-ruby/parslet 1.7.1: A small PEG based parser library
+dev-ruby/patch_finder 1.0.2: Generic Patch Finder
 dev-ruby/patron 0.4.18-r2 0.4.20 0.5.0-r1 0.5.1 0.6.0 0.6.3 0.6.4: Patron is a Ruby HTTP client library based on libcurl
 dev-ruby/pcaprub 0.11.3-r2 0.12.1 0.12.4: Libpcap bindings for ruby compat
 dev-ruby/pdf-core 0.6.1: Implements low level PDF features for Prawn
@@ -13768,7 +13769,7 @@ net-analyzer/macchanger 1.7.0: Utility for viewing/manipulating the MAC address 
 net-analyzer/masscan 1.0.3-r1 1.0.3-r2: Mass IP port scanner
 net-analyzer/mate-netspeed 1.8.0 1.10.2: Applet showing network traffic for MATE
 net-analyzer/mbrowse 0.4.3: MBrowse is a graphical MIB browser
-net-analyzer/metasploit 4.11.5_p2015110401-r1 4.11.7 9999: Advanced framework for developing, testing, and using vulnerability exploit code
+net-analyzer/metasploit 4.11.5_p2015110401-r1 4.11.7 4.12.7 9999: Advanced framework for developing, testing, and using vulnerability exploit code
 net-analyzer/mk-livestatus 1.2.2_p3: Nagios/Icinga event broker module that allows quick/direct access to your status data
 net-analyzer/monitoring-plugins 2.1.1 2.1.2: 50+ standard plugins for Icinga, Naemon, Nagios, Shinken, Sensu
 net-analyzer/mping 2.01: IPv4/6 round-robin multiping client
