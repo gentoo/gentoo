@@ -34,6 +34,8 @@ src_prepare() {
 	# These tests like to fail.  bleh.
 	echo 'int main(){return 0;}' > tests/Gtest-dyn1.c
 	echo 'int main(){return 0;}' > tests/Ltest-dyn1.c
+
+	elibtoolize
 }
 
 src_configure() {
@@ -47,9 +49,9 @@ src_configure() {
 	ac_cv_header_atomic_ops_h=$(usex libatomic) \
 	econf \
 		--enable-cxx-exceptions \
-		--enable-coredump		\
-		--enable-ptrace		\
-		--enable-setjmp	\
+		--enable-coredump \
+		--enable-ptrace \
+		--enable-setjmp \
 		$(use_enable debug-frame) \
 		$(use_enable doc documentation) \
 		$(use_enable lzma minidebuginfo) \
