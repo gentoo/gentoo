@@ -42,8 +42,6 @@ src_prepare() {
 }
 
 src_configure() {
-	# do not $(use_enable) because the configure.in is broken and parses
-	# --disable-debug the same as --enable-debug.
 	# https://savannah.nongnu.org/bugs/index.php?34324
 	# --enable-cxx-exceptions: always enable it, headers provide the interface
 	# and on some archs it is disabled by default causing a mismatch between the
@@ -58,7 +56,7 @@ src_configure() {
 		$(use_enable lzma minidebuginfo) \
 		$(use_enable static-libs static) \
 		$(use_enable debug conservative_checks) \
-		$(use debug && echo --enable-debug)
+		$(use_enable debug)
 }
 
 src_test() {
