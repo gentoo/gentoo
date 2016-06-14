@@ -1,0 +1,52 @@
+From 75608455ab239c8dd05280e858f10026a31a5eac Mon Sep 17 00:00:00 2001
+From: Justin Bronder <jsbronder@gmail.com>
+Date: Thu, 3 Jan 2013 04:10:37 -0500
+Subject: [PATCH 1/4] use system configobj and feedparser
+
+---
+ sabnzbd/config.py | 4 +++-
+ sabnzbd/rss.py    | 3 ++-
+ 2 files changed, 5 insertions(+), 2 deletions(-)
+
+diff --git a/sabnzbd/config.py b/sabnzbd/config.py
+index 3bf777a..3e6551a 100644
+--- a/sabnzbd/config.py
++++ b/sabnzbd/config.py
+@@ -24,10 +24,12 @@ import re
+ import logging
+ import threading
+ import shutil
++
++import configobj
++
+ import sabnzbd.misc
+ from sabnzbd.constants import CONFIG_VERSION, NORMAL_PRIORITY, DEFAULT_PRIORITY, MAX_WIN_DFOLDER
+ from sabnzbd.utils import listquote
+-from sabnzbd.utils import configobj
+ from sabnzbd.decorators import synchronized
+ 
+ CONFIG_LOCK = threading.Lock()
+diff --git a/sabnzbd/rss.py b/sabnzbd/rss.py
+index 67ff94b..8b7d8c1 100644
+--- a/sabnzbd/rss.py
++++ b/sabnzbd/rss.py
+@@ -26,6 +26,8 @@ import threading
+ import urllib
+ import os
+ 
++import feedparser
++
+ import sabnzbd
+ from sabnzbd.constants import *
+ from sabnzbd.decorators import synchronized
+@@ -36,7 +38,6 @@ from sabnzbd.misc import cat_convert, sanitize_foldername, wildcard_to_re, cat_t
+ import sabnzbd.emailer as emailer
+ from sabnzbd.encoding import unicoder, xml_name
+ 
+-import sabnzbd.utils.feedparser as feedparser
+ 
+ __RSS = None  # Global pointer to RSS-scanner instance
+ 
+-- 
+2.4.10
+
