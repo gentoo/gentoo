@@ -28,6 +28,7 @@ ruby_add_rdepend "~dev-ruby/actionpack-${PV}
 ruby_add_bdepend "test? (
 	dev-ruby/bundler
 	dev-ruby/mocha:0.13
+	>=dev-ruby/test-unit-3:2
 )"
 
 all_ruby_prepare() {

@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=5
-USE_RUBY="ruby20 ruby21 ruby22"
+USE_RUBY="ruby20 ruby21 ruby22 ruby23"
 
 # no tests present
 RUBY_FAKEGEM_TASK_TEST=""
@@ -14,7 +14,7 @@ RUBY_FAKEGEM_EXTRADOC="README.txt History.txt"
 inherit ruby-fakegem
 
 DESCRIPTION="Hoe plugins providing tasks used by seattle.rb"
-HOMEPAGE="http://seattlerb.rubyforge.org/hoe-seattlerb"
+HOMEPAGE="https://github.com/seattlerb/hoe-seattlerb"
 
 LICENSE="MIT"
 SLOT="0"

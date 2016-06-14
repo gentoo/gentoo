@@ -1,6 +1,7 @@
 # -*- mode: shell-script; -*-
 # RAP specific patches that is pending upstream.
 # binutils: http://article.gmane.org/gmane.comp.gnu.binutils/67593
+# gcc: https://gcc.gnu.org/ml/gcc-patches/2014-12/msg00331.html
 
 # Disable RAP trick during bootstrap stage2
 [[ -z ${BOOTSTRAP_RAP_STAGE2} ]] || return 0
@@ -71,5 +72,10 @@ elif [[ ${CATEGORY}/${PN} == dev-lang/perl && ${EBUILD_PHASE} == configure ]]; t
 elif [[ ${CATEGORY}/${PN} == sys-devel/make && ${EBUILD_PHASE} == prepare ]]; then
     ebegin "Prefixifying default shell"
     sed -i -r "/default_shell/s,\"(/bin/sh),\"${EPREFIX}\1," "${S}"/job.c
+    eend $?
+elif [[ ${CATEGORY}/${PN} == dev-lang/php && ${EBUILD_PHASE} == prepare ]]; then
+    # introduced in bug 419525, subtle glibc location difference.
+    ebegin "Prefixifying ext/iconv/config.m4 paths"
+    sed -i -r "/for i in/s,(/usr(/local|)),${EPREFIX}\1,g" "${S}"/ext/iconv/config.m4
     eend $?
 fi

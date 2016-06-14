@@ -40,6 +40,7 @@ ruby_add_bdepend "
 		~dev-ruby/actionpack-${PV}
 		>=dev-ruby/sqlite3-1.3.5
 		dev-ruby/mocha:0.13
+		>=dev-ruby/test-unit-3:2
 	)"
 
 all_ruby_prepare() {
