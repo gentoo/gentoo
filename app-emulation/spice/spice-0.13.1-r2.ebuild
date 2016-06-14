@@ -4,7 +4,7 @@
 
 EAPI=5
 
-PYTHON_COMPAT=( python2_7 python3_4 )
+PYTHON_COMPAT=( python{2_7,3_4} )
 
 inherit eutils python-any-r1
 
@@ -15,7 +15,7 @@ SRC_URI="http://spice-space.org/download/releases/${P}.tar.bz2"
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="libressl sasl smartcard static-libs"
+IUSE="libressl lz4 sasl smartcard static-libs"
 
 # the libspice-server only uses the headers of libcacard
 RDEPEND="
@@ -27,6 +27,8 @@ RDEPEND="
 	>=x11-libs/pixman-0.17.7[static-libs(+)?]
 	!libressl? ( dev-libs/openssl:0[static-libs(+)?] )
 	libressl? ( dev-libs/libressl[static-libs(+)?] )
+	lz4? ( app-arch/lz4 )
+	smartcard? ( >=app-emulation/libcacard-0.1.2 )
 	sasl? ( dev-libs/cyrus-sasl[static-libs(+)?] )"
 
 DEPEND="
@@ -52,7 +54,11 @@ pkg_setup() {
 # * opengl support is currently broken
 
 src_prepare() {
-	epatch "${FILESDIR}/0.11.0-gold.patch"
+	epatch \
+		"${FILESDIR}"/${PV}-CVE-2016-0749-p1.patch \
+		"${FILESDIR}"/${PV}-CVE-2016-0749-p2.patch \
+		"${FILESDIR}"/${PV}-CVE-2016-2150-p1.patch \
+		"${FILESDIR}"/${PV}-CVE-2016-2150-p2.patch
 
 	epatch_user
 }
@@ -60,6 +66,7 @@ src_prepare() {
 src_configure() {
 	econf \
 		$(use_enable static-libs static) \
+		$(use_enable lz4) \
 		$(use_with sasl) \
 		$(use_enable smartcard) \
 		--disable-gui
