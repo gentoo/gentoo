@@ -14444,7 +14444,7 @@ net-libs/telepathy-accounts-signon 1.0: Mission control plugin for Telepathy to 
 net-libs/telepathy-farstream 0.6.2: Telepathy client library that uses Farstream to handle Call channels
 net-libs/telepathy-glib 0.24.0 0.24.1: GLib bindings for the Telepathy D-Bus protocol
 net-libs/telepathy-logger-qt 0.8.0 15.04.0: Qt bindings for the Telepathy logger
-net-libs/telepathy-qt 0.9.6.1 0.9.6.1-r1: Qt bindings for the Telepathy D-Bus protocol
+net-libs/telepathy-qt 0.9.6.1 0.9.6.1-r1 0.9.7: Qt bindings for the Telepathy D-Bus protocol
 net-libs/tox 0_p20160201 9999: Encrypted P2P, messaging, and audio/video calling platform
 net-libs/txtorcon 0.13.0: Twisted-based Tor controller client, with state-tracking and configuration abstractions
 net-libs/udns 0.4: Async-capable DNS stub resolver library
