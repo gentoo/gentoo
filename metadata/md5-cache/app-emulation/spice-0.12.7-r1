@@ -4,11 +4,11 @@ DESCRIPTION=SPICE server
 EAPI=5
 HOMEPAGE=http://spice-space.org/
 IUSE=libressl sasl smartcard static-libs
-KEYWORDS=~amd64 ~x86
+KEYWORDS=amd64 ~x86
 LICENSE=LGPL-2.1
 RDEPEND=>=dev-libs/glib-2.22:2[static-libs(+)?] >=media-libs/celt-0.5.1.1:0.5.1[static-libs(+)?] media-libs/opus[static-libs(+)?] sys-libs/zlib[static-libs(+)?] virtual/jpeg:0=[static-libs(+)?] >=x11-libs/pixman-0.17.7[static-libs(+)?] !libressl? ( dev-libs/openssl:0[static-libs(+)?] ) libressl? ( dev-libs/libressl[static-libs(+)?] ) sasl? ( dev-libs/cyrus-sasl[static-libs(+)?] )
 SLOT=0
 SRC_URI=http://spice-space.org/download/releases/spice-0.12.7.tar.bz2
 _eclass_exported_funcs=pkg_setup:- src_prepare:- src_configure:- src_install:-
 _eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	multilib	d062ae4ba2fc40a19c11de2ad89b6616	python-any-r1	1c20f9b800324335a8e3b137363362e8	python-utils-r1	c0ed2a2f233d3af6dd556048695dc5cb	toolchain-funcs	c9d9187f4caa4026a0ceddd8dfceb3c1
-_md5_=1fe203374df51312682fe1e0e7d1295d
+_md5_=1445998778404fc33c873d6521335809
