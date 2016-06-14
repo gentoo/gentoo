@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install postinst
+DEPEND=virtual/pkgconfig
+DESCRIPTION=Command line util for managing firewall rules
+EAPI=6
+HOMEPAGE=http://ferm.foo-projects.org/
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-2+
+RDEPEND=dev-lang/perl:* net-firewall/iptables virtual/perl-File-Spec
+SLOT=0
+SRC_URI=http://ferm.foo-projects.org/download/2.3/ferm-2.3.tar.gz
+_eclass_exported_funcs=pkg_postinst:- src_compile:- src_install:-
+_eclasses_=multilib	d062ae4ba2fc40a19c11de2ad89b6616	systemd	3165c885f3c71ffae7a867d931fb0e07	toolchain-funcs	c9d9187f4caa4026a0ceddd8dfceb3c1
+_md5_=6908f005d9a6cddbec382b33a56226f5
