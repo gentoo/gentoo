@@ -3,9 +3,11 @@
 # $Id$
 
 # Using a binary ebuild until a source ebuild is doable.
-# This is currently blocked by two major bugs upstream:
+# This was previously blocked by two major bugs upstream:
 # A lack of documented build instructions - https://www.jfrog.com/jira/browse/RTFACT-8960
 # A lack of source releases - https://www.jfrog.com/jira/browse/RTFACT-8961
+# Upstream now releases source and instructions (yay!), but most of artifactory's
+# dependencies are not in portage yet.
 
 EAPI=6
 
@@ -19,7 +21,7 @@ DESCRIPTION="The world's most advanced repository manager for maven"
 HOMEPAGE="http://www.jfrog.org/products.php"
 SRC_URI="https://bintray.com/artifact/download/jfrog/artifactory/jfrog-artifactory-oss-${MY_PV}.zip -> ${MY_P}.zip"
 
-LICENSE="LGPL-3+"
+LICENSE="AGPL-3+"
 SLOT="0"
 KEYWORDS="~x86 ~amd64"
 IUSE="ssl"

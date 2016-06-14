@@ -21,7 +21,7 @@ DESCRIPTION="The world's most advanced repository manager for maven"
 HOMEPAGE="http://www.jfrog.org/products.php"
 SRC_URI="https://bintray.com/artifact/download/jfrog/artifactory/jfrog-artifactory-oss-${MY_PV}.zip -> ${MY_P}.zip"
 
-LICENSE="Apache-2.0"
+LICENSE="LGPL-3+"
 SLOT="0"
 KEYWORDS="~x86 ~amd64"
 IUSE="ssl"
