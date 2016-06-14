@@ -1,5 +1,5 @@
 #!/sbin/openrc-run
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -10,21 +10,32 @@ depend() {
 PIDFILE="/var/run/spice-vdagentd/spice-vdagentd.pid"
 
 start() {
+    PORT="${PORT:-/dev/virtio-ports/com.redhat.spice.0}"
+    DEVICE="${DEVICE:-/dev/uinput}"
+
     ebegin "Checking for required modules and devices"
 
-    if [[ ! -d /sys/module/uinput ]] ; then
+    if [ ! -d /sys/module/uinput ]; then
+        modprobe -q uinput
+    fi
+
+    if [ ! -d /sys/module/uinput ]; then
         eerror "Module 'uinput' not loaded or not enabled in the kernel"
         eend 1
         return 1
     fi
 
-    if [[ ! -c "${PORT}" ]] ; then
+    if [ ! -c "${PORT}" ] ; then
         eerror "Required virtio port does not exist. Make sure you"
         eerror "started the virtual machine with appropriate parameters."
         eend 1
         return 1
     fi
     eend 0
+
+    if [ ! -c ${DEVICE} -a -c /dev/input/uinput ]; then
+        DEVICE=/dev/input/uinput
+    fi
 
     # recreate the directory since /var/run may reside on a ramdisk
     mkdir -p /var/run/spice-vdagentd
@@ -37,7 +48,7 @@ start() {
         --start \
         --pidfile "${PIDFILE}" \
         --exec /usr/sbin/spice-vdagentd \
-        -- ${SPICE_VDAGENT_ARGS}
+        -- -u "${DEVICE}" ${SPICE_VDAGENT_ARGS}
     eend $?
 }
 
