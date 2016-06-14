@@ -1342,7 +1342,7 @@ app-emulation/simh 3.9.0-r1: a simulator for historical computers such as Vax, P
 app-emulation/ski 1.3.2 1.3.2-r1: ia64 instruction set simulator
 app-emulation/softgun 0.21 0.22: ARM software emulator
 app-emulation/spectemu 0.99.3 0.99.3-r1: 48k ZX Spectrum Emulator
-app-emulation/spice 0.12.6-r2 0.12.7 0.13.1-r1 9999: SPICE server
+app-emulation/spice 0.12.6-r2 0.12.7-r1 0.13.1-r2 9999: SPICE server
 app-emulation/spice-protocol 0.12.10 0.12.11 9999: Headers defining the SPICE protocol
 app-emulation/spice-vdagent 0.16.0: SPICE VD Linux Guest Agent
 app-emulation/spim 8.0-r1: MIPS Simulator
