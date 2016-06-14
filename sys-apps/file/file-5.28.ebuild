@@ -96,7 +96,7 @@ multilib_src_install() {
 	if multilib_is_native_abi ; then
 		default
 	else
-		emake -C src install-{includeHEADERS,libLTLIBRARIES} DESTDIR="${D}"
+		emake -C src install-{nodist_includeHEADERS,libLTLIBRARIES} DESTDIR="${D}"
 	fi
 }
 
