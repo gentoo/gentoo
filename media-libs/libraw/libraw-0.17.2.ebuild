@@ -1,10 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-inherit autotools-multilib toolchain-funcs
+inherit multilib-minimal toolchain-funcs
 
 MY_PN=LibRaw
 MY_PV=${PV/_b/-B}
@@ -42,7 +42,7 @@ pkg_pretend() {
 	fi
 }
 
-src_configure() {
+multilib_src_configure() {
 	local myeconfargs=(
 		$(use_enable demosaic demosaic-pack-gpl2)
 		$(use_enable demosaic demosaic-pack-gpl3)
@@ -52,5 +52,6 @@ src_configure() {
 		$(use_enable lcms)
 		$(use_enable openmp)
 	)
-	autotools-multilib_src_configure
+	ECONF_SOURCE="${S}" \
+	econf "${myeconfargs[@]}"
 }
