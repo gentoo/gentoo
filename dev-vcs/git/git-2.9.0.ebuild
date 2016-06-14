@@ -120,7 +120,7 @@ REQUIRED_USE="
 
 PATCHES=(
 	# bug #350330 - automagic CVS when we don't want it is bad.
-	"${FILESDIR}"/git-2.2.2-optional-cvs.patch
+	"${FILESDIR}"/git-2.8.4-optional-cvs.patch
 
 	# install mediawiki perl modules also in vendor_dir
 	# hack, needs better upstream solution
