@@ -16,7 +16,7 @@ EGIT_REPO_URI="git://git.freedesktop.org/git/spice/spice"
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS=""
-IUSE="libressl sasl smartcard static-libs"
+IUSE="libressl lz4 sasl smartcard static-libs"
 
 RDEPEND="
 	>=dev-libs/glib-2.22:2[static-libs(+)?]
@@ -27,6 +27,7 @@ RDEPEND="
 	>=x11-libs/pixman-0.17.7[static-libs(+)?]
 	!libressl? ( dev-libs/openssl:0[static-libs(+)?] )
 	libressl? ( dev-libs/libressl[static-libs(+)?] )
+	lz4? ( app-arch/lz4 )
 	smartcard? ( >=app-emulation/libcacard-0.1.2 )
 	sasl? ( dev-libs/cyrus-sasl[static-libs(+)?] )"
 
@@ -50,6 +51,8 @@ pkg_setup() {
 }
 
 src_prepare() {
+	epatch_user
+
 	eautoreconf
 	default
 }
@@ -57,6 +60,7 @@ src_prepare() {
 src_configure() {
 	econf \
 		$(use_enable static-libs static) \
+		$(use_enable lz4) \
 		$(use_with sasl) \
 		$(use_enable smartcard) \
 		--disable-gui
