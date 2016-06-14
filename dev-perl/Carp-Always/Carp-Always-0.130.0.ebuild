@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="Warns and dies noisily with stack backtraces"
 
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm ~x86"
 IUSE="test"
 
 RDEPEND="

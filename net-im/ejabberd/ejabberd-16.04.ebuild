@@ -228,7 +228,7 @@ pkg_postinst() {
 		elog "  /usr/share/doc/${PF}/html/guide.html"
 		elog "or the online version at"
 		elog "  http://www.process-one.net/en/ejabberd/docs/"
-	elif [[ -f ${EROOT}/etc/jabber/ejabberd.cfg ]]; then
+	elif [[ -f ${EROOT}etc/jabber/ejabberd.cfg ]]; then
 		elog "Ejabberd now defaults to using a YAML format for its config file."
 		elog "The old ejabberd.cfg file can be converted using the following instructions:"
 		echo
