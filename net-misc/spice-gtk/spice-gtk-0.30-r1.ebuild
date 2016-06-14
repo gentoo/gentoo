@@ -83,6 +83,10 @@ DEPEND="${RDEPEND}
 # dev-lang/vala:0.14
 # dev-lang/perl
 
+# Prevent sandbox violations, bug #581836
+# https://bugzilla.gnome.org/show_bug.cgi?id=581836
+addpredict /dev
+
 src_prepare() {
 	epatch_user
 

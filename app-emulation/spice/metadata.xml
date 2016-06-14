@@ -10,6 +10,7 @@
 		<name>Gentoo Virtualization Project</name>
 	</maintainer>
 	<use>
+		<flag name="lz4">Enable support for LZ4 compression using <pkg>app-arch/lz4</pkg></flag>
 		<flag name="smartcard">Enable smartcard remoting using <pkg>app-emulation/libcacard</pkg></flag>
 	</use>
 </pkgmetadata>
