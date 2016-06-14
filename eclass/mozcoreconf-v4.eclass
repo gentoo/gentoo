@@ -2,16 +2,16 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 #
-# @ECLASS: mozcoreconf.eclass
+# @ECLASS: mozcoreconf-v4.eclass
 # @MAINTAINER:
 # Mozilla team <mozilla@gentoo.org>
 # @BLURB: core options and configuration functions for mozilla
 # @DESCRIPTION:
 #
-# inherit mozconfig-v5.* or above for mozilla configuration support
+# inherit mozconfig-v6.* or above for mozilla configuration support
 
 # @ECLASS-VARIABLE: MOZILLA_FIVE_HOME
-# @DESCCRIPTION:
+# @DESCRIPTION:
 # This is an eclass-generated variable that defines the rpath that the mozilla
 # product will be installed in.  Read-only
 
