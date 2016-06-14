@@ -8929,7 +8929,7 @@ dev-ruby/hike 1.2.3-r1 2.1.2: Hike is a Ruby library for finding files in a set 
 dev-ruby/hipchat 1.5.2 1.5.3: Ruby library to interact with HipChat
 dev-ruby/hitimes 1.2.2 1.2.3 1.2.4: A fast, high resolution timer library
 dev-ruby/hoe 3.13.0-r1 3.13.1 3.14.1: Hoe extends rake to provide full project automation
-dev-ruby/hoe-seattlerb 1.3.2-r1 1.3.3 1.3.4: Hoe plugins providing tasks used by seattle.rb
+dev-ruby/hoe-seattlerb 1.3.2-r1 1.3.4 1.3.5: Hoe plugins providing tasks used by seattle.rb
 dev-ruby/hpricot 0.8.6-r2 0.8.6-r3 0.8.6-r4: A fast and liberal HTML parser for Ruby
 dev-ruby/html2haml 2.0.0: Convert HTML and HTML+Erb to Haml
 dev-ruby/htmlentities 4.3.4: A simple library for encoding/decoding entities in (X)HTML documents
@@ -9063,7 +9063,7 @@ dev-ruby/paint 1.0.1: Terminal painter
 dev-ruby/parser 2.3.0.7 2.3.1.0 2.3.1.2: A production-ready Ruby parser written in pure Ruby
 dev-ruby/parslet 1.7.1: A small PEG based parser library
 dev-ruby/patch_finder 1.0.2: Generic Patch Finder
-dev-ruby/patron 0.4.18-r2 0.4.20 0.5.0-r1 0.5.1 0.6.0 0.6.3 0.6.4: Patron is a Ruby HTTP client library based on libcurl
+dev-ruby/patron 0.4.18-r2 0.4.20 0.5.0-r1 0.5.1 0.6.0 0.6.3 0.6.4 0.6.5: Patron is a Ruby HTTP client library based on libcurl
 dev-ruby/pcaprub 0.11.3-r2 0.12.1 0.12.4: Libpcap bindings for ruby compat
 dev-ruby/pdf-core 0.6.1: Implements low level PDF features for Prawn
 dev-ruby/pdf-inspector 1.1.0-r1 1.2.0 1.2.1: A tool for analyzing PDF output
