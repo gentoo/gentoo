@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -11,7 +11,7 @@ SRC_URI="https://uim.googlecode.com/files/${P}.tar.bz2"
 
 LICENSE="BSD GPL-2 LGPL-2.1"
 SLOT="0"
-KEYWORDS="amd64 hppa ppc ppc64 x86"
+KEYWORDS="amd64 ~arm hppa ppc ppc64 x86"
 IUSE="+anthy canna curl eb emacs expat libffi gtk gtk3 kde libedit libnotify m17n-lib ncurses nls qt4 skk sqlite ssl static-libs test unicode X xft linguas_zh_CN linguas_zh_TW linguas_ja linguas_ko"
 
 RESTRICT="test"
