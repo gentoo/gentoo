@@ -275,7 +275,7 @@ app-arch/libpar2 0.4: A library for par2, extracted from par2cmdline
 app-arch/libzpaq 6.53 7.04 7.13: Library to compress files in the ZPAQ format
 app-arch/lrzip 0.614 0.616 0.621: Long Range ZIP or Lzma RZIP optimized for compressing large files
 app-arch/lz4 0_p106-r1 0_p120 0_p131 9999: Extremely Fast Compression algorithm
-app-arch/lzip 1.16 1.17 1.18_pre1: lossless data compressor based on the LZMA algorithm
+app-arch/lzip 1.16 1.17 1.18: lossless data compressor based on the LZMA algorithm
 app-arch/lziprecover 1.16 1.17 1.18: Lziprecover is a data recovery tool and decompressor for files in the lzip compressed data format
 app-arch/lzlib 1.6 1.7 1.8: Library for lzip compression
 app-arch/lzma 9.20-r1: LZMA Stream Compressor from the SDK

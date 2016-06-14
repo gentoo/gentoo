@@ -1,11 +1,11 @@
 DEFINED_PHASES=configure
 DESCRIPTION=lossless data compressor based on the LZMA algorithm
-EAPI=4
+EAPI=5
 HOMEPAGE=http://www.nongnu.org/lzip/lzip.html
 KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
 LICENSE=GPL-2+
 SLOT=0
-SRC_URI=http://download.savannah.gnu.org/releases-noredirect/lzip/lzip-1.18-pre1.tar.gz
+SRC_URI=http://download.savannah.gnu.org/releases-noredirect/lzip/lzip-1.18.tar.gz
 _eclass_exported_funcs=src_configure:-
 _eclasses_=multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	c9d9187f4caa4026a0ceddd8dfceb3c1
-_md5_=127b6374023552ff16304014a97ddd74
+_md5_=86628d9d93cd77b6f82e8b7356d85a6b
