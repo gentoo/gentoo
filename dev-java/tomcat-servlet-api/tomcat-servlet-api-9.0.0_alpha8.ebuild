@@ -10,7 +10,7 @@ inherit eutils java-pkg-2 java-ant-2
 MY_PV="${PV/_alpha/.M}"
 MY_A="apache-${PN}-${MY_PV}-src"
 MY_P="${MY_A/-servlet-api/}"
-DESCRIPTION="Tomcat's Servlet API 4.0/JSP API 2.3 implementation"
+DESCRIPTION="Tomcat's Servlet API 4.0/JSP API 2.4?/EL API 3.1? implementation"
 HOMEPAGE="http://tomcat.apache.org/"
 SRC_URI="mirror://apache/tomcat/tomcat-9/v${MY_PV}/src/${MY_P}.tar.gz"
 
