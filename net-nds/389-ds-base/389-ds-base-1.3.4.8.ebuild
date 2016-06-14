@@ -12,7 +12,7 @@ DESCRIPTION="389 Directory Server (core librares and daemons )"
 HOMEPAGE="http://port389.org/"
 SRC_URI="http://directory.fedoraproject.org/sources/${P}.tar.bz2"
 
-LICENSE="GPL-3"
+LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="autobind auto-dn-suffix debug doc +pam-passthru +dna +ldapi +bitwise +presence kerberos selinux"
@@ -38,9 +38,8 @@ COMMON_DEPEND="
 
 DEPEND="${COMMON_DEPEND}
 	virtual/pkgconfig
-	sys-devel/libtool
-	doc? ( app-doc/doxygen )
-	sys-apps/sed"
+	doc? ( app-doc/doxygen )"
+
 RDEPEND="${COMMON_DEPEND}
 	selinux? ( sec-policy/selinux-dirsrv )
 	virtual/perl-Time-Local
