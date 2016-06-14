@@ -73,4 +73,9 @@ elif [[ ${CATEGORY}/${PN} == sys-devel/make && ${EBUILD_PHASE} == prepare ]]; th
     ebegin "Prefixifying default shell"
     sed -i -r "/default_shell/s,\"(/bin/sh),\"${EPREFIX}\1," "${S}"/job.c
     eend $?
+elif [[ ${CATEGORY}/${PN} == dev-lang/php && ${EBUILD_PHASE} == prepare ]]; then
+    # introduced in bug 419525, subtle glibc location difference.
+    ebegin "Prefixifying ext/iconv/config.m4 paths"
+    sed -i -r "/for i in/s,(/usr(/local|)),${EPREFIX}\1,g" "${S}"/ext/iconv/config.m4
+    eend $?
 fi
