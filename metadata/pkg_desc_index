@@ -6814,7 +6814,7 @@ dev-php/pecl-oauth 1.2.3-r3 2.0.0: OAuth is an authorization protocol built on t
 dev-php/pecl-pam 1.0.3-r1: This extension provides PAM (Pluggable Authentication Modules) integration
 dev-php/pecl-ps 1.3.7: PHP extension for creating PostScript files
 dev-php/pecl-radius 1.3.0 1.4.0_beta1: Provides support for RADIUS authentication (RFC 2865) and accounting (RFC 2866)
-dev-php/pecl-redis 2.2.7-r1: PHP extension for interfacing with Redis
+dev-php/pecl-redis 2.2.7-r1 3.0.0: PHP extension for interfacing with Redis
 dev-php/pecl-rrd 1.1.0 1.1.3 2.0.0: RRDtool bindings for PHP
 dev-php/pecl-sphinx 1.3.3: PHP extension to execute search queries on a sphinx daemon
 dev-php/pecl-spl_types 0.4.0-r1: Standard PHP library types add-on
