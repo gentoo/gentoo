@@ -34,5 +34,5 @@ src_install() {
 }
 
 pkg_postinst() {
-	elog "See /usr/share/doc/${PF}/examples for sample configs"
+	elog "See ${EROOT}/usr/share/doc/${PF}/examples for sample configs"
 }
