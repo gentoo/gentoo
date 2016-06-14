@@ -27,8 +27,12 @@ RDEPEND="dev-lang/perl
 
 S="${WORKDIR}/${MY_P}/scripts"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.15.9-command-vV.patch
+)
+
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-2.15.9-command-vV.patch
+	epatch "${PATCHES[@]}"
 }
 
 src_compile() { :; }
