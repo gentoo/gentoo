@@ -14970,7 +14970,7 @@ net-misc/ytalk 3.3.0: Multi-user replacement for UNIX talk
 net-misc/zssh 1.5c-r1: An ssh wrapper enabling zmodem up/download in ssh
 net-misc/zsync 0.6.2-r1: Partial/differential file download client over HTTP which uses the rsync algorithm
 net-nds/389-admin 1.1.31-r1: 389 Directory Server (admin)
-net-nds/389-ds-base 1.3.4.8 1.3.5.1 1.3.5.4 9999: 389 Directory Server (core librares and daemons )
+net-nds/389-ds-base 1.3.4.8 1.3.5.4 9999: 389 Directory Server (core librares and daemons )
 net-nds/adtool 1.3.3: Utility for Active Directory administration
 net-nds/gosa-core 2.6.10 2.6.11 2.6.12: LDAP administration frontend for user administration
 net-nds/gosa-plugin-mail 2.6.10 2.6.11 2.6.12 2.6.12-r1: GOsa plugin for Mail integration
