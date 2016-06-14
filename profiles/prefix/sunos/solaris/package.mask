@@ -1,7 +1,11 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+
+# Fabian Groffen <grobian@gentoo.org> (14 Jun 2016)
+# Fails to link due to missing libiconv.so, bug #585924
+=net-misc/wget-1.18
 
 # Fabian Groffen <grobian@gentoo.org> (13 Jun 2015)
 # Needs patching to compile (d_type and DT_REG), bug #551696
