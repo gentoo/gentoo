@@ -5,6 +5,10 @@
 # This file requires >=portage-2.1.1
 # New entries go on top.
 
+# Brian Evans <grknight@gentoo.org> (14 Jun 2016)
+# Igbinary is not ready for php 7
+>=dev-php/pecl-redis-3.0 igbinary
+
 # Matthew Brewer <tomboy64@sina.cn> (02 June 2016)
 # Acked-by: Amy Winston <amynka@gentoo.org>
 # Currently broken upstream.
