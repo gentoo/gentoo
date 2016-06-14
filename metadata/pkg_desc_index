@@ -294,7 +294,7 @@ app-arch/pdv 1.5.1-r2: build a self-extracting and self-installing binary packag
 app-arch/pet2tgz 0.3: Puppy Linux .pet to .tar.gz converter
 app-arch/pigz 2.3.3: A parallel implementation of gzip
 app-arch/pixz 1.0.3 9999: Parallel Indexed XZ compressor
-app-arch/plzip 1.3 1.4: Parallel lzip compressor
+app-arch/plzip 1.3 1.4 1.5: Parallel lzip compressor
 app-arch/pure-sfv 0.3-r1: utility to test and create .sfv files and create .par files
 app-arch/pxz 5.0_pre20110811 9999: parallel LZMA compressor (no parallel decompression!)
 app-arch/rar 5.2.1 5.3.0: RAR compressor/uncompressor
@@ -14282,7 +14282,7 @@ net-libs/glib-networking 2.44.0 2.46.1: Network-related giomodules for glib
 net-libs/gloox 1.0.9 1.0.14-r1 1.0.15: A portable high-level Jabber/XMPP library for C++
 net-libs/gnet 2.0.8-r2: A simple network library
 net-libs/gnome-online-accounts 3.16.4.1 3.18.3 3.18.4: GNOME framework for accessing online accounts
-net-libs/gnutls 3.3.17.1 3.3.23 3.4.13 3.5.0: A TLS 1.2 and SSL 3.0 implementation for the GNU project
+net-libs/gnutls 3.3.17.1 3.3.23 3.4.13 3.5.0 3.5.1: A TLS 1.2 and SSL 3.0 implementation for the GNU project
 net-libs/gsnmp 0.3.0: An SNMP library based on glib and gnet
 net-libs/gsoap 2.7.17 2.7.17-r2 2.8.23 2.8.31 2.8.32: A cross-platform open source C and C++ SDK for SOAP/XML Web services
 net-libs/gssdp 0.14.14 0.14.15: A GObject-based API for handling resource discovery and announcement over SSDP
