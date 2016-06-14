@@ -1,6 +1,7 @@
 # -*- mode: shell-script; -*-
 # RAP specific patches that is pending upstream.
 # binutils: http://article.gmane.org/gmane.comp.gnu.binutils/67593
+# gcc: https://gcc.gnu.org/ml/gcc-patches/2014-12/msg00331.html
 
 # Disable RAP trick during bootstrap stage2
 [[ -z ${BOOTSTRAP_RAP_STAGE2} ]] || return 0
