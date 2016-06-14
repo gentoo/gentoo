@@ -2380,7 +2380,7 @@ app-text/pdfsandwich 0.1.4: generator of sandwich OCR pdf files
 app-text/pdfshuffler 0.6.0 0.6.0-r1: GUI app that can merge or split pdfs and rotate, crop and rearrange their pages
 app-text/pdftk 2.02: A tool for manipulating PDF documents
 app-text/peg-markdown 0.4.14: Implementation of markdown in C, using a PEG grammar
-app-text/pelican 3.6.0 3.6.3: A tool to generate a static blog, with restructured text or markdown input files
+app-text/pelican 3.6.0 3.6.3 9999: A tool to generate a static blog, with restructured text or markdown input files
 app-text/pep 2.8-r1: General purpose filter and file cleaning program
 app-text/pinfo 0.6.10-r5: Hypertext info and man viewer based on (n)curses
 app-text/po4a 0.45-r1 0.45-r2 0.45-r3: Tools for helping translation of documentation
@@ -9644,7 +9644,7 @@ dev-util/cdiff 0.9.7 0.9.8 9999: Term based view of colored, incremental diff in
 dev-util/cflow 1.4: C function call hierarchy analyzer
 dev-util/cgdb 0.6.6 0.6.7 0.6.8: A curses front-end for GDB, the GNU debugger
 dev-util/cgvg 1.6.2: A tiny version of cscope that is much more useful in certian instances
-dev-util/checkbashisms 2.15.10 2.16.2 2.16.4: Perl script to check for commonly used bash features not defined by POSIX
+dev-util/checkbashisms 2.15.10 2.16.4 2.16.5: Perl script to check for commonly used bash features not defined by POSIX
 dev-util/checkstyle 5.5-r1: Development tool to help write Java code that adheres to a coding standard
 dev-util/cligh 0.1_p20120630 0.2 9999: Command-line interface to GitHub
 dev-util/clion 1.2.4.143.1186: A complete toolset for C and C++ development
@@ -17109,7 +17109,7 @@ sys-fs/ecryptfs-utils 108: eCryptfs userspace utilities
 sys-fs/encfs 1.7.5 1.8.1 1.8.1-r1: An implementation of encrypted filesystem in user-space using FUSE
 sys-fs/etcd-fs 0_p20140620: Use etcd as a FUSE filesystem
 sys-fs/eudev 1.9-r2 1.10-r2 3.1.2 3.1.5 3.2 9999: Linux dynamic and persistent device naming support (aka userspace devfs)
-sys-fs/exfat-utils 1.0.1 1.1.1 1.2.1 1.2.2 1.2.3: exFAT filesystem utilities
+sys-fs/exfat-utils 1.0.1 1.1.1 1.2.1 1.2.3 1.2.4: exFAT filesystem utilities
 sys-fs/ext3grep 0.10.2: Recover deleted files on an ext3 file system
 sys-fs/ext4magic 0.3.2: Linux admin tool, can help to recover deleted or overwritten files on ext3 and ext4 filesystems
 sys-fs/extundelete 0.2.0-r1 0.2.0-r2 0.2.4: A utility to undelete files from an ext3 or ext4 partition
@@ -17118,7 +17118,7 @@ sys-fs/fatsort 1.3: Sorts files on FAT16/32 partitions, ideal for basic audio pl
 sys-fs/fur 0.5: A RAPI (SynCE) based FUSE module
 sys-fs/fuse 2.9.4 2.9.5 2.9.6: An interface for filesystems implemented in userspace
 sys-fs/fuse-convmvfs 0.2.6: FUSE file system to convert filename charset
-sys-fs/fuse-exfat 1.0.1 1.1.0 1.2.2 1.2.3: exFAT filesystem FUSE module
+sys-fs/fuse-exfat 1.0.1 1.1.0 1.2.3 1.2.4: exFAT filesystem FUSE module
 sys-fs/fuse-zip 0.3.0 0.4.0: FUSE file system to navigate, extract, create and modify ZIP archives
 sys-fs/fuse4bsd 0.3.0 0.3.9_pre1: Fuse for FreeBSD
 sys-fs/fuseiso 20070708-r1: Fuse module to mount ISO9660
@@ -17169,7 +17169,7 @@ sys-fs/rarfs 0.1.1: Fuse module to mount uncompressed RAR archives
 sys-fs/redirfs 0.8 0.10.20120313 9999: Layer between virtual file system switch and file system drivers
 sys-fs/reiser4progs 1.0.9 1.1.0: reiser4progs: mkfs, fsck, etc...
 sys-fs/reiserfs-defrag 0.2.1 0.2.2: Small defragmentation tool for reiserfs
-sys-fs/reiserfsprogs 3.6.21-r1 3.6.23 3.6.24: Reiserfs Utilities
+sys-fs/reiserfsprogs 3.6.24 3.6.25: Reiserfs Utilities
 sys-fs/s3backer 1.3.7: FUSE-based single file backing store via Amazon S3
 sys-fs/s3fs 1.74 1.78: Amazon mounting S3 via fuse
 sys-fs/s3ql 1.19 2.11 2.11.1 2.12 2.14 2.14-r1 2.17.1: A full-featured file system for online data storage
