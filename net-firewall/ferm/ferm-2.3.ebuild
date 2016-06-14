@@ -4,7 +4,7 @@
 
 EAPI=6
 
-inherit eutils systemd
+inherit systemd
 
 DESCRIPTION="Command line util for managing firewall rules"
 HOMEPAGE="http://ferm.foo-projects.org/"
