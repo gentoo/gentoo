@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
+EAPI="6"
 
 inherit cmake-utils
 
@@ -16,12 +16,12 @@ KEYWORDS="~amd64 ~x86"
 
 IUSE="debug imagemagick opencv3"
 
-RDEPEND="media-libs/giflib:0
+RDEPEND="<media-libs/giflib-4.2.3:0
 	dev-qt/qtcore:4
 	dev-qt/qtgui:4
 	imagemagick? ( media-gfx/imagemagick:0 )
-	!opencv3? ( >=media-libs/opencv-2.4.9[ffmpeg] <media-libs/opencv-3.0.0[ffmpeg] )
-	opencv3? ( >=media-libs/opencv-3.0.0[ffmpeg] )
+	!opencv3? ( media-libs/opencv:0/2.4[ffmpeg] )
+	opencv3? ( media-libs/opencv:0/3.0[ffmpeg] )
 	virtual/ffmpeg:0"
 
 DEPEND="${RDEPEND}
@@ -35,6 +35,7 @@ src_prepare() {
 	if use opencv3 ; then
 		epatch "${FILESDIR}"/${P}-opencv3.patch
 	fi
+	eapply_user
 }
 
 src_configure() {
