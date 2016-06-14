@@ -24,9 +24,11 @@ index c79c270..9409a8c 100644
  sharedir := $(DESTDIR)$(PREFIX)/share/kak
  docdir := $(DESTDIR)$(PREFIX)/share/doc/kak
 @@ -53,11 +51,10 @@ else ifneq (,$(findstring CYGWIN,$(os)))
-     LIBS += -lncursesw -lboost_regex -ldbghelp
+-    LIBS += -lncursesw -lboost_regex -ldbghelp
++    LIBS += -lboost_regex -ldbghelp
  else
-     LIBS += -lncursesw -lboost_regex
+-    LIBS += -lncursesw -lboost_regex
++    LIBS += -lboost_regex
 -    CPPFLAGS += -I$(NCURSESW_INCLUDE)
      LDFLAGS += -rdynamic
  endif
