@@ -16929,7 +16929,7 @@ sys-cluster/heartbeat 3.0.5-r2: Heartbeat high availability cluster manager
 sys-cluster/hpl 2.0-r3: A Portable Implementation of the High-Performance Linpack Benchmark for Distributed-Memory Computers
 sys-cluster/hpx 0.9.8 0.9.9 0.9.10: C++ runtime system for parallel and distributed applications
 sys-cluster/ipvsadm 1.21-r1 1.24 1.26-r2 1.27-r1 1.28: utility to administer the IP virtual server services
-sys-cluster/keepalived 1.2.2-r4 1.2.15 1.2.19: A strong & robust keepalive facility to the Linux Virtual Server project
+sys-cluster/keepalived 1.2.2-r4 1.2.15 1.2.19 1.2.21: A strong & robust keepalive facility to the Linux Virtual Server project
 sys-cluster/knem 1.1.1 9999: High-Performance Intra-Node MPI Communication
 sys-cluster/libccs 3.1.5 3.2.0: Cluster Configuration System Library
 sys-cluster/libccs-perl 3.1.5: Cluster Configuration System Library Perl-Bindings
