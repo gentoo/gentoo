@@ -11,7 +11,7 @@ inherit eutils java-pkg-2 java-ant-2 prefix user
 MY_PV="${PV/_alpha/.M}"
 MY_P="apache-${PN}-${MY_PV}-src"
 
-DESCRIPTION="Tomcat Servlet-4.0/JSP-2.3 Container"
+DESCRIPTION="Tomcat Servlet-4.0/JSP-2.4?/EL-3.1?/WebSocket-1.2?/JASPIC-1.1 Container"
 HOMEPAGE="http://tomcat.apache.org/"
 SRC_URI="mirror://apache/${PN}/tomcat-9/v${MY_PV}/src/${MY_P}.tar.gz"
 
@@ -52,7 +52,7 @@ java_prepare() {
 	# Remove bundled servlet-api
 	rm -rv java/javax/{el,servlet} || die
 
-	epatch "${FILESDIR}/${P}-build.xml.patch" "${FILESDIR}/${P}-processmanifest.patch"
+	epatch "${FILESDIR}/${P}-build.xml.patch"
 
 	# For use of catalina.sh in netbeans
 	sed -i -e "/^# ----- Execute The Requested Command/ a\
