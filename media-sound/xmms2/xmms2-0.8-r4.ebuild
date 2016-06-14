@@ -83,6 +83,8 @@ DEPEND="${RDEPEND}
 		valgrind? ( dev-util/valgrind ) )
 "
 
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+
 S="${WORKDIR}/${MY_P}"
 
 pkg_setup() {
