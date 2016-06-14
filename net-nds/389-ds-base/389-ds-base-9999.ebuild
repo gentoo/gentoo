@@ -13,7 +13,7 @@ HOMEPAGE="http://port389.org/"
 SRC_URI=""
 EGIT_REPO_URI="https://git.fedorahosted.org/git/389/ds.git"
 
-LICENSE="GPL-3"
+LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS=""
 IUSE="autobind auto-dn-suffix debug doc +pam-passthru +dna +ldapi +bitwise +presence kerberos selinux"
@@ -39,9 +39,8 @@ COMMON_DEPEND="
 
 DEPEND="${COMMON_DEPEND}
 	virtual/pkgconfig
-	sys-devel/libtool
-	doc? ( app-doc/doxygen )
-	sys-apps/sed"
+	doc? ( app-doc/doxygen )"
+
 RDEPEND="${COMMON_DEPEND}
 	selinux? ( sec-policy/selinux-dirsrv )
 	virtual/perl-Time-Local
