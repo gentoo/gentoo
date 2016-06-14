@@ -4,7 +4,7 @@ DESCRIPTION=An SMTP client and SMTP plugin for mail user agents such as Mutt
 EAPI=5
 HOMEPAGE=http://msmtp.sourceforge.net/
 IUSE=doc gnutls idn libressl libsecret +mta nls sasl ssl vim-syntax
-KEYWORDS=~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x86-macos
+KEYWORDS=~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x86-macos
 LICENSE=GPL-3
 RDEPEND=idn? ( net-dns/libidn ) libsecret? ( app-crypt/libsecret ) nls? ( virtual/libintl ) sasl? ( virtual/gsasl ) ssl? ( gnutls? ( net-libs/gnutls ) !gnutls? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) ) ) net-mail/mailbase mta? ( !mail-mta/courier !mail-mta/esmtp !mail-mta/exim !mail-mta/mini-qmail !mail-mta/netqmail !mail-mta/nullmailer !mail-mta/postfix !mail-mta/qmail-ldap !mail-mta/sendmail !mail-mta/opensmtpd !<mail-mta/ssmtp-2.64-r2 !>=mail-mta/ssmtp-2.64-r2[mta] )
 REQUIRED_USE=gnutls? ( ssl )
@@ -12,4 +12,4 @@ SLOT=0
 SRC_URI=mirror://sourceforge/msmtp/msmtp-1.6.3.tar.xz
 _eclass_exported_funcs=pkg_postinst:- src_prepare:- src_configure:- src_compile:- src_install:-
 _eclasses_=multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	c9d9187f4caa4026a0ceddd8dfceb3c1
-_md5_=1d27874ce4891730175798fd5dc501d0
+_md5_=a9fe64043cfb2efff028e1898bb5f761
