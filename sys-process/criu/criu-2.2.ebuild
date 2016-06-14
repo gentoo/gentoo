@@ -38,6 +38,7 @@ RESTRICT="test"
 PATCHES=(
 	"${FILESDIR}"/${PV}/${P}-flags.patch
 	"${FILESDIR}"/${PV}/${P}-makefile.patch
+	"${FILESDIR}"/${PV}/${P}-no-git.patch
 	"${FILESDIR}"/2.0/${PN}-2.0-automagic-libbsd.patch
 	"${FILESDIR}"/2.0/${PN}-2.0-sysroot.patch
 )
