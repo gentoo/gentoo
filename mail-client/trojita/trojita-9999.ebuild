@@ -11,7 +11,7 @@ inherit cmake-utils fdo-mime gnome2-utils virtualx
 DESCRIPTION="A Qt IMAP e-mail client"
 HOMEPAGE="http://trojita.flaska.net/"
 if [[ ${PV} != 9999 ]]; then
-	SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
+	SRC_URI="mirror://sourceforge/${PN}/${P}.tar.xz"
 	KEYWORDS="~amd64 ~x86"
 fi
 
