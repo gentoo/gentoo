@@ -11491,7 +11491,7 @@ kde-base/smokegen 4.14.3: Scripting Meta Object Kompiler Engine - generators
 kde-base/smokekde 4.14.3: Scripting Meta Object Kompiler Engine - KDE bindings
 kde-base/smokeqt 4.14.3-r1: Scripting Meta Object Kompiler Engine - Qt bindings
 kde-base/solid-actions-kcm 4.11.22: KDE control module for Solid actions
-kde-base/systemsettings 4.11.22-r1 4.11.22-r2: System settings utility
+kde-base/systemsettings 4.11.22-r2: System settings utility
 kde-frameworks/attica 5.21.0 5.22.0: Framework providing access to Open Collaboration Services
 kde-frameworks/baloo 5.21.0 5.22.0: Framework for searching and managing metadata
 kde-frameworks/bluez-qt 5.21.0 5.22.0: Qt wrapper for Bluez 5 DBus API
@@ -14924,7 +14924,7 @@ net-misc/tipcutils 2.0.0 2.0.3: Utilities for TIPC (Transparent Inter-Process Co
 net-misc/tlsdate 0.0.1 0.0.4 0.0.4-r1 0.0.4-r2 0.0.5 0.0.6 0.0.11 0.0.12 0.0.12-r1 0.0.12-r2 0.0.13: Update local time over HTTPS
 net-misc/tn5250 0.17.4: Telnet client for the IBM AS/400 that emulates 5250 terminals and printers
 net-misc/tokyotyrant 1.1.41-r1: A network interface to Tokyo Cabinet
-net-misc/tor 0.2.7.6 0.2.8.2_alpha 0.2.8.3_alpha: Anonymizing overlay network for TCP
+net-misc/tor 0.2.7.6 0.2.8.3_alpha 0.2.8.4_rc: Anonymizing overlay network for TCP
 net-misc/ttytter 2.1.00: A multi-functional, console-based Twitter client
 net-misc/ucarp 1.5.2-r3 1.5.2-r4: Portable userland implementation of Common Address Redundancy Protocol (CARP)
 net-misc/udpcast 20120424 20120424-r1: Multicast file transfer tool
