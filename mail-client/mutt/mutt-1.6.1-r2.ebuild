@@ -106,6 +106,7 @@ src_prepare() {
 		-e '/ReachingUs = N_(/a\"This release of Mutt is heavily enriched by NeoMutt patches.\\nFor this reason, any bugs are better reported at https://bugs.gentoo.org/\\nor directly to the NeoMutt project.\\n\\n"' \
 		version.c || die "Failed to add bug instructions"
 
+	epatch "${FILESDIR}"/mutt-1.6.1-neomutt-index_format_truncation_problem.patch
 	local upatches=
 	# allow user patches
 	eapply_user && upatches=" with user patches"
