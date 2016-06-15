@@ -2,6 +2,11 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# Göktürk Yüksek <gokturk@gentoo.org> (14 June 2016) on behalf of
+# Nicholas Vinson <nvinso234@gmail.com> (proxy-maint)
+# net-firewall/nftables[doc] requires dblatex which is not keyworded
+net-firewall/nftables doc
+
 # Amy Winston <amynka@gentoo.org> (12 June 2016)
 # does not build on arm at all (upstream bug)
 dev-scheme/racket futures jit

@@ -100,7 +100,7 @@ use_legacy() {
     major_ver=$(uname -r | cut -d '.' -f1)
     minor_ver=$(uname -r | cut -d '.' -f2)
 
-    [[ $major_ver -ge 4 || $major_ver -eq 3 && $minor_ver -ge 18 ]] && return 1
+    [ $major_ver -ge 4 -o $major_ver -eq 3 -a $minor_ver -ge 18 ] && return 1
     return 0
 }
 
