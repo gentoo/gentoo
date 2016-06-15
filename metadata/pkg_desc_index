@@ -4992,7 +4992,7 @@ dev-lisp/flexi-streams 1.0.15: Flexible bivalent streams for Common Lisp
 dev-lisp/gcl 2.6.10 2.6.11 2.6.12: GNU Common Lisp
 dev-lisp/gentoo-init 0.1 1.0: Simple ASDF2 configuration for Gentoo Common Lisp ports
 dev-lisp/hyperspec 7.0 7.0-r1: Common Lisp ANSI-standard Hyperspec
-dev-lisp/sbcl 1.1.18 1.1.18-r1 1.3.0 1.3.3 1.3.4 1.3.5: Steel Bank Common Lisp (SBCL) is an implementation of ANSI Common Lisp
+dev-lisp/sbcl 1.1.18 1.1.18-r1 1.3.0 1.3.3 1.3.4 1.3.5 1.3.6: Steel Bank Common Lisp (SBCL) is an implementation of ANSI Common Lisp
 dev-lisp/trivial-gray-streams 9999 20081102: A thin compatibility layer between Gray Stream Common Lisp implementations
 dev-lisp/uiop 3.0.3 3.1.4 3.1.5 3.1.6 3.1.7: UIOP is a portability layer spun off ASDF3
 dev-lua/LuaBitOp 1.0.1-r1 1.0.2 1.0.2-r1: Bit Operations Library for the Lua Programming Language
