@@ -4,11 +4,11 @@ DESCRIPTION=Tools for accessing and converting various ebook file formats
 EAPI=6
 HOMEPAGE=http://sourceforge.net/projects/ebook-tools
 IUSE=+lit2epub
-KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~x86 ~amd64-fbsd
+KEYWORDS=~alpha amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 x86 ~amd64-fbsd
 LICENSE=MIT
 RDEPEND=dev-libs/libxml2 dev-libs/libzip:= lit2epub? ( app-text/convertlit )
 SLOT=0
 SRC_URI=mirror://sourceforge/ebook-tools/ebook-tools-0.2.2.tar.gz
 _eclass_exported_funcs=src_prepare:- src_configure:cmake-utils src_compile:cmake-utils src_test:cmake-utils src_install:cmake-utils
 _eclasses_=cmake-utils	9e0d156beee613940cde06d0bc00791b	eutils	792f83d5ec9536cb5ccef375469d8bde	flag-o-matic	d270fa247153df66074f795fa42dba3e	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	c9d9187f4caa4026a0ceddd8dfceb3c1	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=e3c72c5927f4212657a81a9f3899e9a2
+_md5_=6b36e4a3d9fc5956519a4f1e8965e97a
