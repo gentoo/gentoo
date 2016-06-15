@@ -49,6 +49,8 @@ pkg_setup() {
 src_prepare() {
 	java-pkg-opt-2_src_prepare
 
+	epatch "${FILESDIR}"/${PN}-0.19.7-disable-libintl.patch #564168
+
 	epunt_cxx
 	elibtoolize
 }
