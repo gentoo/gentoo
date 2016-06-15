@@ -2071,6 +2071,7 @@ dev-libs/libsecp256k1:recovery - Enable ECDSA pubkey recovery module
 dev-libs/libsecp256k1:schnorr - Enable Schnorr signature module
 dev-libs/libsodium:asm - Enables assembly implementations
 dev-libs/libsodium:urandom - Use /dev/urandom instead of /dev/random
+dev-libs/libsolv:rpm - Enable support for RPM files
 dev-libs/libsqlora8:orathreads - Use Oracle threads
 dev-libs/libtermkey:demos - Install demos, which pulls in dev-libs/glib
 dev-libs/libucl:regex - Enable regex checking for schema
