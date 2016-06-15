@@ -8901,7 +8901,7 @@ dev-ruby/flickraw 0.9.8: A library to access flickr api in a simple way
 dev-ruby/flog 4.3.2 4.4.0: Flog reports the most tortured code in an easy to read pain report
 dev-ruby/forgery 0.6.0: Easy and customizable generation of forged data
 dev-ruby/fuubar 2.0.0: Instafailing RSpec progress bar formatter
-dev-ruby/fxruby 1.6.29 1.6.29-r1: Ruby language binding to the FOX GUI toolkit
+dev-ruby/fxruby 1.6.29 1.6.29-r1 1.6.34: Ruby language binding to the FOX GUI toolkit
 dev-ruby/gettext_i18n_rails 1.4.0 1.5.0 1.7.0 1.7.1 1.7.2: FastGettext / Rails integration
 dev-ruby/gh 0.14.0: multi-layer client for the github api v3
 dev-ruby/gherkin 2.12.0-r2 2.12.0-r3 2.12.2 3.2.0-r1: Fast Gherkin lexer and parser
@@ -9191,7 +9191,7 @@ dev-ruby/ruby-oci8 2.1.7 2.1.7-r1 2.1.8 2.2.1: A Ruby library for Oracle OCI8
 dev-ruby/ruby-odbc 0.99997-r1: RubyODBC - For accessing ODBC data sources from the Ruby language
 dev-ruby/ruby-oembed 0.9.0 0.10.0 0.10.1: An oEmbed consumer library written in Ruby.
 dev-ruby/ruby-ole 1.2.12: Ruby library for easy read/write access to OLE compound documents
-dev-ruby/ruby-opengl 0.8.0 0.9.2: OpenGL / GLUT bindings for ruby
+dev-ruby/ruby-opengl 0.8.0 0.9.2 0.9.2-r1: OpenGL / GLUT bindings for ruby
 dev-ruby/ruby-openid 2.7.0: A robust library for verifying and serving OpenID identities
 dev-ruby/ruby-pango 2.2.3 2.2.3-r1 2.2.5 3.0.7: Ruby Pango bindings
 dev-ruby/ruby-poppler 2.2.3 2.2.3-r1 2.2.5 3.0.7 3.0.7-r1: Ruby poppler-glib bindings
