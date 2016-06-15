@@ -11577,7 +11577,7 @@ kde-misc/colibri 0.3.0: Alternative to KDE4 Plasma notifications
 kde-misc/colord-kde 0.3.0: Provides interfaces and session daemon to colord
 kde-misc/commandwatch 0.1.1: KDE4 plasmoid which periodically runs a system command and displays its output
 kde-misc/cpuload 0.3.2: KDE4 plasmoid that shows CPU load on the screen
-kde-misc/customizable-weather 1.12.0 1.12.1: KDE Plasma 4 weather plasmoid. It aims to be highly customizable.
+kde-misc/customizable-weather 1.12.1: KDE Plasma 4 weather plasmoid. It aims to be highly customizable.
 kde-misc/drop2ftp 0.6: KDE4 plasmoid. Add files over KIO supported protocols, like ftp and ssh
 kde-misc/emerging-plasmoid 1.0.3: Portage emerge progress plasmoid
 kde-misc/eventlist 0.6-r1: Plasmoid showing the events from Akonadi resources
