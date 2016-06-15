@@ -14078,7 +14078,7 @@ net-firewall/iptables 1.4.17 1.4.21-r1 1.4.21-r2 1.4.21-r3 1.4.21-r4 1.6.0: Linu
 net-firewall/itval 1.2_p20121104: Iptables policy testing and validation tool
 net-firewall/lutelwall 0.99: IPTables firewall setup script
 net-firewall/nfacct 1.0.1: Command line tool to create/retrieve/delete accounting objects in NetFilter
-net-firewall/nftables 0.5-r3: Linux kernel (3.13+) firewall, NAT and packet mangling tools
+net-firewall/nftables 0.5-r4: Linux kernel (3.13+) firewall, NAT and packet mangling tools
 net-firewall/nufw 2.2.22-r1: An enterprise grade authenticating firewall based on netfilter
 net-firewall/pftop 0.7-r2: Tool for real-time display of active states and rule statistics for pf
 net-firewall/pglinux 2.2.4 2.3.0 2.3.1: Privacy oriented firewall application
