@@ -13,7 +13,7 @@ PYTHON_COMPAT=( python2_7 python3_4 )
 inherit autotools eutils multibuild python-single-r1 vala
 
 DESCRIPTION="Set of GObject and Gtk objects for connecting to Spice servers and a client GUI"
-HOMEPAGE="http://spice-space.org http://gitorious.org/spice-gtk"
+HOMEPAGE="http://spice-space.org https://cgit.freedesktop.org/spice/spice-gtk/"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
