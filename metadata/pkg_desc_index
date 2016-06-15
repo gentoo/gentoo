@@ -12236,7 +12236,7 @@ media-gfx/llgal 0.13.17-r2: Command-line static web gallery generator
 media-gfx/luminance-hdr 2.3.0 2.4.0: Luminance HDR is a graphical user interface that provides a workflow for HDR imaging
 media-gfx/lximage-qt 0.4.0: LXImage Image Viewer - GPicView replacement
 media-gfx/mandelbulber 1.11 1.12.1 1.21.1: Tool to render 3D fractals
-media-gfx/mcomix 1.00-r1 1.01 1.2.1: A fork of comix, a GTK image viewer for comic book archives
+media-gfx/mcomix 1.2.1: A fork of comix, a GTK image viewer for comic book archives
 media-gfx/meshlab 1.3.2 1.3.3: A mesh processing system
 media-gfx/metapixel 1.0.2: a program for generating photomosaics
 media-gfx/mirage 0.9.5.1 0.9.5.2 0.9.5.2-r1: A fast and simple image viewer based on python and GTK+
@@ -18947,7 +18947,7 @@ x11-wm/oroborus 2.0.20: Small and fast window manager
 x11-wm/page 1.9.6-r4 1.9.6-r5: A mouse friendly tiling window manager
 x11-wm/pekwm 0.1.17-r1: A lightweight window manager initially based on aewm++
 x11-wm/plwm 2.7_rc1-r1: Python classes for, and an implementation of, a window manager
-x11-wm/qtile 0.10.1 0.10.2 0.10.5 9999: A full-featured, hackable tiling window manager written in Python
+x11-wm/qtile 0.10.5 0.10.6 9999: A full-featured, hackable tiling window manager written in Python
 x11-wm/ratpoison 1.4.8 1.4.8-r1 9999: window manager without mouse dependency
 x11-wm/sawfish 1.9.1-r2: Extensible window manager using a Lisp-based scripting language
 x11-wm/selectwm 0.4.1: window manager selector tool
