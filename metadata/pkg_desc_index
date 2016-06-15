@@ -11825,7 +11825,7 @@ mail-filter/popfile 1.1.3 1.1.3-r1: Anti-spam bayesian filter
 mail-filter/postfwd 1.35-r3: Versatile Postfix policy server with a flexible ruleset based configuration
 mail-filter/postgrey 1.34-r3 1.35-r2 1.36-r1: Postgrey is a Postfix policy server implementing greylisting
 mail-filter/postsrsd 1.4: Postfix Sender Rewriting Scheme daemon
-mail-filter/procmail 3.22-r10: Mail delivery agent/filter
+mail-filter/procmail 3.22-r10 3.22-r11: Mail delivery agent/filter
 mail-filter/procmail-lib 20081108 20091202: Procmail Module Library is a collection of modules for Procmail
 mail-filter/pypolicyd-spf 1.1 1.3.1 1.3.2-r1: Python-based policy daemon for Postfix SPF verification
 mail-filter/qmail-scanner 1.25-r1 2.05 2.06 2.08: E-Mail virus scanner for qmail
