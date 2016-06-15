@@ -4,7 +4,6 @@
 
 EAPI=6
 
-KDE_DOXYGEN="true"
 KDE_TEST="forceoptional"
 inherit kde5
 
@@ -59,7 +58,6 @@ RDEPEND="${COMMON_DEPEND}
 
 src_configure() {
 	local mycmakeargs=(
-		$(cmake-utils_use_find_package doc Doxygen)
 		$(cmake-utils_use_find_package sso KAccounts)
 		$(cmake-utils_use_find_package sso AccountsQt5)
 		$(cmake-utils_use_find_package otr Libgcrypt)
@@ -67,14 +65,4 @@ src_configure() {
 	)
 
 	kde5_src_configure
-}
-
-src_compile() {
-	kde5_src_compile
-	use doc && kde5_src_compile apidox
-}
-
-src_install() {
-	kde5_src_install
-	use doc && dodoc "${BUILD_DIR}"/KTp/docs/html/*
 }
