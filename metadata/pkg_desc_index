@@ -10386,7 +10386,7 @@ games-emulation/pcsx2 1.4.0 9999: A PlayStation 2 emulator
 games-emulation/pcsxr 1.9.94 1.9.94-r1: PCSX-Reloaded: a fork of PCSX, the discontinued Playstation emulator
 games-emulation/ppsspp 1.2.2 9999: A PSP emulator written in C++.
 games-emulation/raine 0.51.9: R A I N E M680x0 Arcade Emulation
-games-emulation/sdlmame 0.168 0.173: Multiple Arcade Machine Emulator + Multi Emulator Super System (MESS)
+games-emulation/sdlmame 0.168 0.174: Multiple Arcade Machine Emulator + Multi Emulator Super System (MESS)
 games-emulation/snes9x 1.53: Super Nintendo Entertainment System (SNES) emulator
 games-emulation/stella 4.0 4.7.2: Stella Atari 2600 VCS Emulator
 games-emulation/vbam 2.0.0_pre1507 9999: Game Boy, GBC, and GBA emulator forked from VisualBoyAdvance
