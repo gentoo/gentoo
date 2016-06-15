@@ -29,7 +29,7 @@ RDEPEND="!games-emulation/sdlmametools
 	dev-libs/expat
 	media-libs/fontconfig
 	media-libs/flac
-	media-libs/libsdl2[joystick,opengl?,sound,video]
+	media-libs/libsdl2[joystick,opengl?,sound,video,X]
 	media-libs/portaudio
 	media-libs/sdl2-ttf
 	sys-libs/zlib
