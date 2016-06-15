@@ -9,7 +9,7 @@ inherit vim-plugin
 DESCRIPTION="vim plugin: a better JSON for Vim"
 HOMEPAGE="https://github.com/elzr/vim-json/"
 LICENSE="MIT"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 src_prepare() {
 	rm *-test.* license.md || die
