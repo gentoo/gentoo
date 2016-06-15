@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 PYTHON_COMPAT=( python{2_7,3_4,3_5} )
 
 inherit distutils-r1 virtualx
@@ -23,7 +23,10 @@ SLOT="0"
 IUSE="test"
 # docs require sphinxcontrib-blockdiag and sphinxcontrib-seqdiag
 
-RDEPEND="x11-libs/pango
+RDEPEND="
+	x11-libs/cairo[xcb]
+	x11-libs/pango
+	dev-python/setuptools[${PYTHON_USEDEP}]
 	>=dev-python/cairocffi-0.7[${PYTHON_USEDEP}]
 	>=dev-python/cffi-1.1.0[${PYTHON_USEDEP}]
 	>=dev-python/six-1.4.1[${PYTHON_USEDEP}]
@@ -31,7 +34,6 @@ RDEPEND="x11-libs/pango
 	$(python_gen_cond_dep 'dev-python/trollius[${PYTHON_USEDEP}]' 'python2*')
 "
 DEPEND="${RDEPEND}
-	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
 		dev-python/nose[${PYTHON_USEDEP}]
 		x11-base/xorg-server[kdrive]
