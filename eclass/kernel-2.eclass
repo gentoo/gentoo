@@ -105,6 +105,8 @@ fi
 HOMEPAGE="https://www.kernel.org/ https://www.gentoo.org/ ${HOMEPAGE}"
 : ${LICENSE:="GPL-2"}
 
+has "${EAPI:-0}" 0 1 2 && ED=${D} EPREFIX= EROOT=${ROOT}
+
 # This is the latest KV_PATCH of the deblob tool available from the
 # libre-sources upstream. If you bump this, you MUST regenerate the Manifests
 # for ALL kernel-2 consumer packages where deblob is available.
@@ -345,7 +347,7 @@ detect_version() {
 	KV_FULL=${OKV}${EXTRAVERSION}
 
 	# we will set this for backwards compatibility.
-	S=${WORKDIR}/linux-${KV_FULL}
+	S="${WORKDIR}"/linux-${KV_FULL}
 	KV=${KV_FULL}
 
 	# -rc-git pulls can be achieved by specifying CKV
@@ -667,7 +669,7 @@ compile_headers() {
 
 		# autoconf.h isnt generated unless it already exists. plus, we have
 		# no guarantee that any headers are installed on the system...
-		[[ -f ${ROOT}/usr/include/linux/autoconf.h ]] \
+		[[ -f ${EROOT}usr/include/linux/autoconf.h ]] \
 			|| touch include/linux/autoconf.h
 
 		# if K_DEFCONFIG isn't set, force to "defconfig"
@@ -688,7 +690,7 @@ compile_headers() {
 		# symlink in /usr/include/, and make defconfig will fail, so we have
 		# to force an include path with $S.
 		HOSTCFLAGS="${HOSTCFLAGS} -I${S}/include/"
-		ln -sf asm-${KARCH} "${S}"/include/asm
+		ln -sf asm-${KARCH} "${S}"/include/asm || die
 		cross_pre_c_headers && return 0
 
 		make ${K_DEFCONFIG} HOSTCFLAGS="${HOSTCFLAGS}" ${xmakeopts} || die "defconfig failed (${K_DEFCONFIG})"
@@ -705,7 +707,7 @@ compile_headers_tweak_config() {
 	# .config based upon any info we may have
 	case ${CTARGET} in
 	sh*)
-		sed -i '/CONFIG_CPU_SH/d' .config
+		sed -i '/CONFIG_CPU_SH/d' .config || die
 		echo "CONFIG_CPU_SH${CTARGET:2:1}=y" >> .config
 		return 0;;
 	esac
@@ -731,10 +733,10 @@ install_headers() {
 	# of this crap anymore :D
 	if kernel_is ge 2 6 18 ; then
 		env_setup_xmakeopts
-		emake headers_install INSTALL_HDR_PATH="${D}"/${ddir}/.. ${xmakeopts} || die
+		emake headers_install INSTALL_HDR_PATH="${ED}"${ddir}/.. ${xmakeopts} || die
 
 		# let other packages install some of these headers
-		rm -rf "${D}"/${ddir}/scsi  #glibc/uclibc/etc...
+		rm -rf "${ED}"${ddir}/scsi || die #glibc/uclibc/etc...
 		return 0
 	fi
 
@@ -742,15 +744,15 @@ install_headers() {
 	# $S values where the cmdline to cp is too long
 	pushd "${S}" >/dev/null
 	dodir ${ddir}/linux
-	cp -pPR "${S}"/include/linux "${D}"/${ddir}/ || die
-	rm -rf "${D}"/${ddir}/linux/modules
+	cp -pPR "${S}"/include/linux "${ED}"${ddir}/ || die
+	rm -rf "${ED}"${ddir}/linux/modules || die
 
 	dodir ${ddir}/asm
-	cp -pPR "${S}"/include/asm/* "${D}"/${ddir}/asm
+	cp -pPR "${S}"/include/asm/* "${ED}"${ddir}/asm || die
 
 	if kernel_is 2 6 ; then
 		dodir ${ddir}/asm-generic
-		cp -pPR "${S}"/include/asm-generic/* "${D}"/${ddir}/asm-generic
+		cp -pPR "${S}"/include/asm-generic/* "${ED}"${ddir}/asm-generic || die
 	fi
 
 	# clean up
@@ -784,7 +786,7 @@ install_sources() {
 			> "${S}"/patches.txt
 	fi
 
-	mv ${WORKDIR}/linux* "${D}"/usr/src
+	mv "${WORKDIR}"/linux* "${ED}"usr/src || die
 
 	if [[ -n "${UNIPATCH_DOCS}" ]] ; then
 		for i in ${UNIPATCH_DOCS}; do
@@ -797,8 +799,8 @@ install_sources() {
 #==============================================================
 preinst_headers() {
 	local ddir=$(kernel_header_destdir)
-	[[ -L ${ddir}/linux ]] && rm ${ddir}/linux
-	[[ -L ${ddir}/asm ]] && rm ${ddir}/asm
+	[[ -L ${EPREFIX}${ddir}/linux ]] && { rm "${EPREFIX}"${ddir}/linux || die; }
+	[[ -L ${EPREFIX}${ddir}/asm ]] && { rm "${EPREFIX}"${ddir}/asm || die; }
 }
 
 # pkg_postinst functions
@@ -819,21 +821,19 @@ postinst_sources() {
 
 	# if we are to forcably symlink, delete it if it already exists first.
 	if [[ ${K_SYMLINK} > 0 ]]; then
-		[[ -h ${ROOT}usr/src/linux ]] && rm ${ROOT}usr/src/linux
+		[[ -h ${EROOT}usr/src/linux ]] && { rm "${EROOT}"usr/src/linux || die; }
 		MAKELINK=1
 	fi
 
 	# if the link doesnt exist, lets create it
-	[[ ! -h ${ROOT}usr/src/linux ]] && MAKELINK=1
+	[[ ! -h ${EROOT}usr/src/linux ]] && MAKELINK=1
 
 	if [[ ${MAKELINK} == 1 ]]; then
-		cd "${ROOT}"usr/src
-		ln -sf linux-${KV_FULL} linux
-		cd ${OLDPWD}
+		ln -sf linux-${KV_FULL} "${EROOT}"usr/src/linux || die
 	fi
 
 	# Don't forget to make directory for sysfs
-	[[ ! -d ${ROOT}sys ]] && kernel_is 2 6 && mkdir ${ROOT}sys
+	[[ ! -d ${EROOT}sys ]] && kernel_is 2 6 && { mkdir "${EROOT}"sys || die ; }
 
 	echo
 	elog "If you are upgrading from a previous kernel, you may be interested"
@@ -1095,7 +1095,7 @@ unipatch() {
 					ebegin "Applying ${i/*\//} (-p1)"
 					if [ $(patch -p1 --no-backup-if-mismatch -f < ${i} >> ${STDERR_T}) "$?" -le 2 ]; then
 						eend 0
-						rm ${STDERR_T}
+						rm ${STDERR_T} || die
 						break
 					else
 						eend 1
@@ -1119,7 +1119,7 @@ unipatch() {
 					echo "=======================================================" >> ${STDERR_T}
 					if [ $(patch -p${PATCH_DEPTH} --no-backup-if-mismatch -f < ${i} >> ${STDERR_T}) "$?" -eq 0 ]; then
 						eend 0
-						rm ${STDERR_T}
+						rm ${STDERR_T} || die
 						break
 					else
 						eend 1
@@ -1153,9 +1153,9 @@ unipatch() {
 	local tmp
 	for x in ${KPATCH_DIR}; do
 		for i in ${UNIPATCH_DOCS}; do
-			if [[ -f "${x}/${i}" ]] ; then
+			if [[ -f ${x}/${i} ]] ; then
 				tmp="${tmp} ${i}"
-				cp -f "${x}/${i}" "${T}"/
+				cp -f "${x}/${i}" "${T}"/ || die
 			fi
 		done
 	done
@@ -1353,11 +1353,11 @@ kernel-2_pkg_postrm() {
 	[[ ${ETYPE} == headers ]] && return 0
 
 	# If there isn't anything left behind, then don't complain.
-	[[ -e ${ROOT}usr/src/linux-${KV_FULL} ]] || return 0
+	[[ -e ${EROOT}usr/src/linux-${KV_FULL} ]] || return 0
 	echo
 	ewarn "Note: Even though you have successfully unmerged "
 	ewarn "your kernel package, directories in kernel source location: "
-	ewarn "${ROOT}usr/src/linux-${KV_FULL}"
+	ewarn "${EROOT}usr/src/linux-${KV_FULL}"
 	ewarn "with modified files will remain behind. By design, package managers"
 	ewarn "will not remove these modified files and the directories they reside in."
 	echo
