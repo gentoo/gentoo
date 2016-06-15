@@ -48,7 +48,7 @@ DOCS=( AUTHORS ChangeLog README.md )
 
 DISABLE_AUTOFORMATTING=1
 DOC_CONTENTS="
-Example configuration files were installed to /etc/fwknopd directory.
+Example configuration files were installed to ${EPREFIX}/etc/fwknopd directory.
 Please edit them to fit your needs and then remove the .example suffix.
 
 fwknopd supports several backends: firewalld, iptables, ipfw, pf, ipf.
