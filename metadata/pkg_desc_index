@@ -14091,7 +14091,7 @@ net-firewall/shorewall 5.0.4 5.0.7.2 5.0.9: A high-level tool for configuring Ne
 net-firewall/ufw 0.34_pre805-r2 0.35: A program used to manage a netfilter firewall
 net-firewall/ufw-frontends 0.3.2-r3: Provides graphical frontend to ufw
 net-firewall/xtables-addons 1.47.1 2.8 2.9 2.10 2.11: iptables extensions not yet accepted in the main kernel
-net-fs/autofs 5.0.7-r4 5.0.7-r5 5.0.10 5.1.0-r1 5.1.1 5.1.1-r1: Kernel based automounter
+net-fs/autofs 5.0.7-r4 5.0.7-r5 5.0.10 5.1.1-r1 5.1.2: Kernel based automounter
 net-fs/cifs-utils 6.4 6.5: Tools for Managing Linux CIFS Client Filesystems
 net-fs/curlftpfs 0.9.2-r3: File system for accessing ftp hosts based on FUSE
 net-fs/cvmfs 2.1.19 2.1.20.0_p05 9999: HTTP read-only file system for distributing software
