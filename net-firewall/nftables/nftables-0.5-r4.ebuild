@@ -56,8 +56,8 @@ src_install() {
 	default
 
 	dodir /usr/libexec/${PN}
-	insinto /usr/libexec/${PN}
-	doins "${FILESDIR}"/libexec/${PN}.sh
+	exeinto /usr/libexec/${PN}
+	doexe "${FILESDIR}"/libexec/${PN}.sh
 
 	newconfd "${FILESDIR}"/${PN}.confd ${PN}
 	newinitd "${FILESDIR}"/${PN}.init-r2 ${PN}
