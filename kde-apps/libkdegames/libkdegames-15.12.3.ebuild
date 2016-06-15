@@ -5,7 +5,6 @@
 EAPI=6
 
 KDE_BLOCK_SLOT4="false"
-KDE_DOXYGEN="true"
 KDE_TEST="forceoptional"
 VIRTUALX_REQUIRED="test"
 inherit kde5

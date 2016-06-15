@@ -19,8 +19,6 @@ else
 	KEYWORDS=""
 fi
 
-KDE_DOXYGEN="true"
-KDE_DOX_DIR="doc"
 KDE_TEST="forceoptional"
 VIRTUALX_REQUIRED="test"
 inherit kde5
