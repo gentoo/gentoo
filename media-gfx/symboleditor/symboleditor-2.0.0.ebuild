@@ -4,7 +4,6 @@
 
 EAPI=6
 
-KDE_DOXYGEN="true"
 KDE_HANDBOOK="true"
 inherit kde5
 
@@ -41,7 +40,6 @@ RDEPEND="${COMMON_DEPEND}
 
 src_configure() {
 	local mycmakeargs=(
-		$(cmake-utils_use_find_package doc Doxygen)
 		$(cmake-utils_use_find_package handbook KF5DocTools)
 	)
 
