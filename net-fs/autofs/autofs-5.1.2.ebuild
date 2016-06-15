@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -46,11 +46,6 @@ DEPEND="${RDEPEND}
 	virtual/yacc"
 
 CONFIG_CHECK="~AUTOFS4_FS"
-
-PATCHES=(
-	"${FILESDIR}/${P}-fix-missing-stdarg.patch"
-	"${FILESDIR}"/${PN}-5.0.7-sloppy-mount.patch #545258
-)
 
 src_prepare() {
 	# Upstream's patchset
