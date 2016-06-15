@@ -40,7 +40,7 @@ COMMON_DEPEND="snmp? ( net-analyzer/net-snmp )
 	ssh? ( net-libs/libssh2 )
 	java? ( virtual/jdk:* )
 	odbc? ( dev-db/unixODBC )
-	ssl? ( dev-libs/openssl:= )"
+	ssl? ( dev-libs/openssl:=[-bindist] )"
 
 RDEPEND="${COMMON_DEPEND}
 	proxy? ( net-analyzer/fping )
