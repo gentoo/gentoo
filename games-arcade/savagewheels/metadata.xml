@@ -4,6 +4,7 @@
 	<maintainer type="person">
 		<email>nvinson234@gmail.com</email>
 		<name>Nicholas Vinson</name>
+		<description>Proxied Maintainer</description>
 	</maintainer>
 	<maintainer type="project">
 		<email>proxy-maint@gentoo.org</email>
