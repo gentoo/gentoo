@@ -69,6 +69,7 @@ RDEPEND="${COMMON_DEPEND}
 	>=sys-apps/baselayout-2.2
 	selinux? ( sec-policy/selinux-base-policy[systemd] )
 	!sys-auth/nss-myhostname
+	!<sys-kernel/dracut-044
 	!sys-fs/eudev
 	!sys-fs/udev"
 
