@@ -10,7 +10,7 @@ DESCRIPTION="A video-based animated GIF creator"
 HOMEPAGE="https://sourceforge.net/projects/qgifer/"
 SRC_URI="mirror://sourceforge/${PN}/${P}-source.tar.gz"
 
-LICENSE="GPL-3"
+LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
@@ -24,16 +24,15 @@ RDEPEND="<media-libs/giflib-4.2.3:0
 	opencv3? ( media-libs/opencv:0/3.0[ffmpeg] )
 	virtual/ffmpeg:0"
 
-DEPEND="${RDEPEND}
-	>=dev-util/cmake-2.8:0"
+DEPEND="${RDEPEND}"
 
 S="${WORKDIR}/${P}-source"
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-desktop.patch
+	eapply -p0 "${FILESDIR}/${P}-desktop.patch"
 
 	if use opencv3 ; then
-		epatch "${FILESDIR}"/${P}-opencv3.patch
+		eapply "${FILESDIR}/${P}-opencv3.patch"
 	fi
 	eapply_user
 }
