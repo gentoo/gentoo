@@ -56,21 +56,12 @@ EXPORT_FUNCTIONS pkg_setup src_unpack src_prepare src_configure src_compile src_
 # Otherwise, add debug to IUSE to control building with that flag.
 : ${KDE_DEBUG:=true}
 
-# @ECLASS-VARIABLE: KDE_DOXYGEN
+# @ECLASS-VARIABLE: KDE_DESIGNERPLUGIN
 # @DESCRIPTION:
 # If set to "false", do nothing.
-# Otherwise, add "doc" to IUSE, add appropriate dependencies, and generate and
-# install API documentation.
-if [[ ${CATEGORY} = kde-frameworks ]]; then
-	: ${KDE_DOXYGEN:=true}
-else
-	: ${KDE_DOXYGEN:=false}
-fi
-
-# @ECLASS-VARIABLE: KDE_DOX_DIR
-# @DESCRIPTION:
-# Defaults to ".". Otherwise, use alternative KDE doxygen path.
-: ${KDE_DOX_DIR:=.}
+# Otherwise, add "designer" to IUSE to toggle build of designer plugins
+# and add the necessary DEPENDs.
+: ${KDE_DESIGNERPLUGIN:=false}
 
 # @ECLASS-VARIABLE: KDE_EXAMPLES
 # @DESCRIPTION:
@@ -155,6 +146,16 @@ case ${KDE_AUTODEPS} in
 		RDEPEND+=" >=kde-frameworks/kf-env-3"
 		COMMONDEPEND+=" $(add_qt_dep qtcore)"
 
+		if [[ ${CATEGORY} = kde-plasma ]]; then
+			if [[ $(get_version_component_range 2) -eq 6 && $(get_version_component_range 3) -ge 5 ]]; then
+				QT_MINIMAL=5.6.1
+			fi
+			if [[ $(get_version_component_range 2) -ge 7 || ${PV} = 9999 ]]; then
+				QT_MINIMAL=5.6.1
+				FRAMEWORKS_MINIMAL=5.23.0
+			fi
+		fi
+
 		if [[ ${CATEGORY} = kde-frameworks || ${CATEGORY} = kde-plasma && ${PN} != polkit-kde-agent ]]; then
 			local blocked_version=15.08.0-r1
 
@@ -174,21 +175,21 @@ case ${KDE_AUTODEPS} in
 		;;
 esac
 
-case ${KDE_DOXYGEN} in
-	false)	;;
-	*)
-		IUSE+=" doc"
-		DEPEND+=" doc? (
-				$(add_frameworks_dep kapidox)
-				app-doc/doxygen
-			)"
-		;;
-esac
-
 case ${KDE_DEBUG} in
 	false)	;;
 	*)
 		IUSE+=" debug"
+		;;
+esac
+
+case ${KDE_DESIGNERPLUGIN} in
+	false)  ;;
+	*)
+		IUSE+=" designer"
+		DEPEND+=" designer? (
+			$(add_frameworks_dep kdesignerplugin)
+			$(add_qt_dep designer)
+		)"
 		;;
 esac
 
@@ -298,7 +299,7 @@ _calculate_live_repo() {
 			# @DESCRIPTION:
 			# This variable allows easy overriding of default kde mirror service
 			# (anongit) with anything else you might want to use.
-			EGIT_MIRROR=${EGIT_MIRROR:=git://anongit.kde.org}
+			EGIT_MIRROR=${EGIT_MIRROR:=https://anongit.kde.org}
 
 			local _kmname
 
@@ -484,6 +485,10 @@ kde5_src_configure() {
 		cmakeargs+=( -DCMAKE_DISABLE_FIND_PACKAGE_KF5DocTools=ON )
 	fi
 
+	if ! use_if_iuse designer && [[ ${KDE_DESIGNERPLUGIN} != false ]] ; then
+		cmakeargs+=( -DCMAKE_DISABLE_FIND_PACKAGE_Qt5Designer=ON )
+	fi
+
 	# install mkspecs in the same directory as qt stuff
 	cmakeargs+=(-DKDE_INSTALL_USE_QT_SYS_PATHS=ON)
 
@@ -500,11 +505,6 @@ kde5_src_compile() {
 	debug-print-function ${FUNCNAME} "$@"
 
 	cmake-utils_src_compile "$@"
-
-	# Build doxygen documentation if applicable
-	if use_if_iuse doc ; then
-		kgenapidox ${KDE_DOX_DIR} || die
-	fi
 }
 
 # @FUNCTION: kde5_src_test
@@ -543,11 +543,6 @@ kde5_src_test() {
 # Function for installing KDE 5.
 kde5_src_install() {
 	debug-print-function ${FUNCNAME} "$@"
-
-	# Install doxygen documentation if applicable
-	if use_if_iuse doc ; then
-		dodoc -r apidocs/html
-	fi
 
 	cmake-utils_src_install
 

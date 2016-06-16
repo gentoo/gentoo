@@ -628,7 +628,7 @@ enable_cmake-utils_src_configure() {
 		-DCMAKE_INSTALL_PREFIX="${EPREFIX}${PREFIX}"
 		"${mycmakeargs_local[@]}"
 		-DCMAKE_BUILD_TYPE="${CMAKE_BUILD_TYPE}"
-		-DCMAKE_INSTALL_DO_STRIP=OFF
+		$([[ ${EAPI} == [2345] ]] && echo -DCMAKE_INSTALL_DO_STRIP=OFF)
 		-DCMAKE_USER_MAKE_RULES_OVERRIDE="${build_rules}"
 		-DCMAKE_TOOLCHAIN_FILE="${toolchain_file}"
 		"${MYCMAKEARGS}"
@@ -751,6 +751,7 @@ enable_cmake-utils_src_test() {
 
 	[[ -n ${TEST_VERBOSE} ]] && myctestargs+=( --extra-verbose --output-on-failure )
 
+	echo ctest "${myctestargs[@]}" "$@"
 	if ctest "${myctestargs[@]}" "$@" ; then
 		einfo "Tests succeeded."
 		popd > /dev/null || die
