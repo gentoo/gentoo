@@ -154,17 +154,10 @@ src_configure() {
 		--with-regex \
 		--with-exec-shell=${EPREFIX}/bin/sh"
 
-	case $CHOST in
-		*-solaris*)
-			# Solaris has no flock in the standard headers
-			myconf+=" --enable-fcntl --disable-flock"
-			# wchar_t depends on locale
-			myconf+=" --without-wc-funcs"
-		;;
-		*)
-			myconf+=" --disable-fcntl --enable-flock"
-		;;
-	esac
+	if [[ ${CHOST} == *-solaris* ]] ; then
+		# arrows in index view do not show when using wchar_t
+		myconf+=" --without-wc-funcs"
+	fi
 
 	# mutt prioritizes gdbm over bdb, so we will too.
 	# hcache feature requires at least one database is in USE.
