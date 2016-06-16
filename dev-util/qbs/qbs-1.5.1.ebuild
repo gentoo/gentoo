@@ -17,6 +17,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
 IUSE="doc examples test"
 
+# see bug 581874 for the qttest dep in RDEPEND
 RDEPEND="
 	dev-qt/qtcore:5=
 	dev-qt/qtgui:5
@@ -24,16 +25,14 @@ RDEPEND="
 	dev-qt/qtscript:5
 	dev-qt/qtwidgets:5
 	dev-qt/qtxml:5
+	test? ( dev-qt/qttest:5 )
 "
 DEPEND="${RDEPEND}
 	doc? (
 		dev-qt/qdoc:5
 		dev-qt/qthelp:5
 	)
-	test? (
-		dev-qt/qtdeclarative:5
-		dev-qt/qttest:5
-	)
+	test? ( dev-qt/qtdeclarative:5 )
 "
 
 S=${WORKDIR}/${MY_P}
