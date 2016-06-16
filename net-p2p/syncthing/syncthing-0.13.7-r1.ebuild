@@ -24,6 +24,10 @@ RDEPEND=""
 pkg_setup() {
 	enewgroup ${PN}
 	enewuser ${PN} -1 -1 /var/lib/${PN} ${PN}
+
+	# separate user for relaysrv
+	enewgroup ${PN}-relaysrv
+	enewuser ${PN}-relaysrv -1 -1 /var/lib/${PN}-relaysrv ${PN}-relaysrv
 }
 
 src_compile() {
@@ -51,6 +55,12 @@ src_install() {
 	fowners ${PN}:${PN} /var/{lib,log}/${PN}
 	insinto /etc/logrotate.d
 	newins "${FILESDIR}/${PN}.logrotate" ${PN}
+
+	# for relaysrv
+	systemd_dounit "${S}"/src/${EGO_PN}/cmd/relaysrv/etc/linux-systemd/${PN}-relaysrv.service
+	newconfd "${FILESDIR}/${PN}-relaysrv.confd" ${PN}-relaysrv
+	newinitd "${FILESDIR}/${PN}-relaysrv.initd" ${PN}-relaysrv
+	keepdir /var/lib/${PN}-relaysrv
 }
 
 pkg_postinst() {
