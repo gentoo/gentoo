@@ -1,10 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-inherit eutils autotools
+inherit autotools
 
 MY_P="${PN/-/}-${PV}"
 
@@ -14,16 +14,20 @@ SRC_URI="http://manpages-de.alioth.debian.org/downloads/${MY_P}.tar.xz"
 
 LICENSE="GPL-3+ man-pages GPL-2+ GPL-2 BSD"
 SLOT="0"
-KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
 IUSE=""
 
 RDEPEND="virtual/man"
 DEPEND="app-text/po4a"
 
+PATCHES=(
+	"${FILESDIR}/${PN}-1.3-bzip2.patch"
+)
+
 S=${WORKDIR}/${MY_P}
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-1.3-bzip2.patch
+	default
 
 	# Use the same compression as every other manpage
 	local PORTAGE_COMPRESS_LOCAL=${PORTAGE_COMPRESS-bzip2}
