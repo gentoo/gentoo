@@ -7,7 +7,7 @@ EAPI=5
 inherit eutils
 
 DESCRIPTION="Long Range ZIP or Lzma RZIP optimized for compressing large files"
-HOMEPAGE="http://ck.kolivas.org/apps/lrzip/README"
+HOMEPAGE="http://ck.kolivas.org/apps/lrzip/README.md"
 SRC_URI="http://ck.kolivas.org/apps/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
