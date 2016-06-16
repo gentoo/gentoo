@@ -23,7 +23,7 @@ RDEPEND="sys-libs/ncurses:=
 DEPEND="${RDEPEND}
 	dev-libs/boost"
 
-PATCHES=( "${FILESDIR}/${P}-tinfo.patch" )
+PATCHES=( "${FILESDIR}/${PN}-2.46.4-tinfo.patch" )
 
 S="${WORKDIR}/${PN}-${PN}-master-${PV}"
 
