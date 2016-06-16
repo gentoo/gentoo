@@ -540,3 +540,7 @@ app-admin/rsyslog zeromq
 # Ian Whyman <thev00d00@gentoo.org> (22 May 2016)
 # RPI support on arm
 dev-libs/libcec -raspberry-pi
+
+# Nicholas Vinson <nvinso234@gmail.com> (13 June 2016)
+# net-firewall/nftables[doc] requires dblatex whish is not keyworded
+net-firewall/nftables doc
