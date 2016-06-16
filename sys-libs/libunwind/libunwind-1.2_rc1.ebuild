@@ -35,6 +35,10 @@ src_prepare() {
 	echo 'int main(){return 0;}' > tests/Gtest-dyn1.c
 	echo 'int main(){return 0;}' > tests/Ltest-dyn1.c
 
+	# Since we have tests disabled via RESTRICT, disable building in the subdir
+	# entirely.  This worksaround some build errors too. #484846
+	sed -i -e '/^SUBDIRS/s:tests::' Makefile.in || die
+
 	elibtoolize
 }
 
