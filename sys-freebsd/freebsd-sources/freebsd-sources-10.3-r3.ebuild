@@ -71,6 +71,10 @@ pkg_setup() {
 src_prepare() {
 	local conf="${S}/$(tc-arch-kernel)/conf/${KERN_BUILD}"
 
+	cd "${WORKDIR}" || die
+	epatch "${FILESDIR}/freebsd-ubin-10.3-bmake-workaround.patch"
+	cd "${S}" || die
+
 	# This replaces the gentoover patch, it doesn't need reapply every time.
 	sed -i -e 's:^REVISION=.*:REVISION="'${PVR}'":' \
 		-e 's:^BRANCH=.*:BRANCH="Gentoo":' \
