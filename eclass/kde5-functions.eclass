@@ -141,6 +141,10 @@ _add_category_dep() {
 add_frameworks_dep() {
 	debug-print-function ${FUNCNAME} "$@"
 
+	if [[ $# -gt 4 ]]; then
+		die "${FUNCNAME} was called with too many arguments"
+	fi
+
 	local version
 
 	if [[ -n ${3} ]]; then
@@ -169,6 +173,10 @@ add_frameworks_dep() {
 add_plasma_dep() {
 	debug-print-function ${FUNCNAME} "$@"
 
+	if [[ $# -gt 4 ]]; then
+		die "${FUNCNAME} was called with too many arguments"
+	fi
+
 	local version
 
 	if [[ -n ${3} ]]; then
@@ -196,6 +204,10 @@ add_plasma_dep() {
 # of parentheses).
 add_kdeapps_dep() {
 	debug-print-function ${FUNCNAME} "$@"
+
+	if [[ $# -gt 4 ]]; then
+		die "${FUNCNAME} was called with too many arguments"
+	fi
 
 	local version
 
@@ -229,6 +241,10 @@ add_kdeapps_dep() {
 # of parentheses).
 add_qt_dep() {
 	debug-print-function ${FUNCNAME} "$@"
+
+	if [[ $# -gt 4 ]]; then
+		die "${FUNCNAME} was called with too many arguments"
+	fi
 
 	local version
 
