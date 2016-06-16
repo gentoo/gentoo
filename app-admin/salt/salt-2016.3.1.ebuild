@@ -24,7 +24,7 @@ fi
 LICENSE="Apache-2.0"
 SLOT="0"
 IUSE="cherrypy ldap libcloud libvirt gnupg keyring mako mongodb mysql neutron nova"
-IUSE+=" openssl profile redis selinux test timelib raet +zeromq vim-syntax"
+IUSE+=" openssl portage profile redis selinux test timelib raet +zeromq vim-syntax"
 
 RDEPEND="sys-apps/pciutils
 	dev-python/jinja[${PYTHON_USEDEP}]
@@ -54,6 +54,7 @@ RDEPEND="sys-apps/pciutils
 	)
 	cherrypy? ( >=dev-python/cherrypy-3.2.2[${PYTHON_USEDEP}] )
 	mongodb? ( dev-python/pymongo[${PYTHON_USEDEP}] )
+	portage? ( sys-apps/portage[${PYTHON_USEDEP}] )
 	keyring? ( dev-python/keyring[${PYTHON_USEDEP}] )
 	mysql? ( dev-python/mysql-python[${PYTHON_USEDEP}] )
 	redis? ( dev-python/redis-py[${PYTHON_USEDEP}] )
