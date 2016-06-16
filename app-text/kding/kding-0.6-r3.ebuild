@@ -14,7 +14,7 @@ SRC_URI="http://www.rexi.org/downloads/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="4"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="debug"
 
 DEPEND="media-libs/libpng:0"
