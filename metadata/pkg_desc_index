@@ -12109,7 +12109,7 @@ media-gfx/autopano-sift-C 2.5.1: SIFT algorithm for automatic panorama creation 
 media-gfx/autotrace 0.31.1-r6: A program for converting bitmaps to vector graphics
 media-gfx/aview 1.3.0_rc1-r1 1.3.0_rc1-r3: An ASCII Image Viewer
 media-gfx/birdfont 2.15.5: free font editor which lets you create vector graphics and export TTF, EOT and SVG fonts
-media-gfx/blender 2.72b-r3: 3D Creation/Animation/Publishing System
+media-gfx/blender 2.72b-r3 2.72b-r4: 3D Creation/Animation/Publishing System
 media-gfx/bootsplash-themes 20060913: A collection of Bootsplash themes
 media-gfx/brlcad 7.18.4: Constructive solid geometry modeling system
 media-gfx/cairosvg 1.0 1.0.7: A simple cairo based SVG converter with support for PDF, PostScript and PNG formats
@@ -17804,9 +17804,9 @@ www-client/epiphany 3.18.4 3.18.7: GNOME webbrowser based on Webkit
 www-client/fetch 1.0-r1 1.0-r2: HTTP download tool built atop the HTTP fetcher library
 www-client/firefox 38.7.0 38.8.0 45.2.0 47.0: Firefox Web Browser
 www-client/firefox-bin 38.8.0 45.2.0 47.0: Firefox Web Browser
-www-client/google-chrome 51.0.2704.84: The web browser from Google
-www-client/google-chrome-beta 52.0.2743.33: The web browser from Google
-www-client/google-chrome-unstable 53.0.2763.0: The web browser from Google
+www-client/google-chrome 51.0.2704.103: The web browser from Google
+www-client/google-chrome-beta 52.0.2743.41: The web browser from Google
+www-client/google-chrome-unstable 53.0.2767.4: The web browser from Google
 www-client/httrack 3.48.21-r1 3.48.21-r2: HTTrack Website Copier, Open Source Offline Browser
 www-client/jd 2.8.5_p120826: gtk2 based 2ch browser written in C++
 www-client/jumanji 0.0.0_p20111209 0.0.0_p20130103-r1 0.0.0_p20150527 9999: highly customizable and functional web browser with minimalistic and space saving interface
@@ -17862,7 +17862,7 @@ www-misc/wsmake 0.6.4: Website Pre-processor
 www-misc/xxv 1.6.1-r1: WWW Admin for the VDR (Video Disk Recorder)
 www-misc/zoneminder 1.27.0 1.28.0 1.28.1: ZoneMinder allows you to capture, analyse, record and monitor any cameras attached to your system
 www-plugins/adobe-flash 11.2.202.621 11.2.202.626: Adobe Flash Player
-www-plugins/chrome-binary-plugins 51.0.2704.84 52.0.2743.33_beta 53.0.2763.0_alpha: Binary plugins from Google Chrome for use in Chromium
+www-plugins/chrome-binary-plugins 51.0.2704.103 52.0.2743.41_beta 53.0.2767.4_alpha: Binary plugins from Google Chrome for use in Chromium
 www-plugins/freshplayerplugin 0.3.1-r2 0.3.2 0.3.3 0.3.3-r1 0.3.3-r2 0.3.4 0.3.4-r1: PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers
 www-plugins/gecko-mediaplayer 1.0.8 1.0.9: A browser plugin that uses GNOME MPlayer
 www-plugins/gnash 0.8.10_p20131019 0.8.10_p20150316 0.8.10_p20160329: GNU Flash movie player that supports many SWF v7,8,9 features
@@ -18183,10 +18183,10 @@ x11-libs/libxkbui 1.0.2-r1: X.Org xkbui library
 x11-libs/libxklavier 5.3 5.3-r1: A library for the X Keyboard Extension (high-level API)
 x11-libs/libxsettings-client 0.17 0.17-r1: XSETTINGS client code
 x11-libs/libxshmfence 1.1 1.2: Shared memory fences using futexes
-x11-libs/libyui 3.0.13: UI abstraction library
-x11-libs/libyui-gtk 2.44.5: UI abstraction library - GTK plugin
-x11-libs/libyui-ncurses 2.46.4: UI abstraction library - ncurses plugin
-x11-libs/libyui-qt 2.44.0: UI abstraction library - Qt plugin
+x11-libs/libyui 3.0.13 3.2.5: UI abstraction library
+x11-libs/libyui-gtk 2.44.5 2.44.7: UI abstraction library - GTK plugin
+x11-libs/libyui-ncurses 2.46.4 2.47.6: UI abstraction library - ncurses plugin
+x11-libs/libyui-qt 2.44.0 2.46.21: UI abstraction library - Qt plugin
 x11-libs/motif 2.2.3-r12 2.3.4-r3 2.3.5: The Motif user interface component toolkit
 x11-libs/mx 1.4.7-r2: A widget toolkit using Clutter
 x11-libs/neXtaw 0.15.1-r1: Athena Widgets with N*XTSTEP appearance
