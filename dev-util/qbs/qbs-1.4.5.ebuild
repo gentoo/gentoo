@@ -24,14 +24,14 @@ RDEPEND="
 	dev-qt/qtscript:5
 	dev-qt/qtwidgets:5
 	dev-qt/qtxml:5
+	test? ( dev-qt/qttest:5 )
 "
 DEPEND="${RDEPEND}
 	doc? (
 		dev-qt/qdoc:5
 		dev-qt/qthelp:5
 	)
-	test? ( dev-qt/qtdeclarative:5
-		dev-qt/qttest:5 )
+	test? ( dev-qt/qtdeclarative:5 )
 "
 
 S=${WORKDIR}/${MY_P}
