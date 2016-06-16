@@ -298,7 +298,7 @@ _calculate_live_repo() {
 			# @DESCRIPTION:
 			# This variable allows easy overriding of default kde mirror service
 			# (anongit) with anything else you might want to use.
-			EGIT_MIRROR=${EGIT_MIRROR:=git://anongit.kde.org}
+			EGIT_MIRROR=${EGIT_MIRROR:=https://anongit.kde.org}
 
 			local _kmname
 
