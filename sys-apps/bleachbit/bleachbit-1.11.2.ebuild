@@ -20,7 +20,9 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="+gtk nls"
 
-RDEPEND="gtk? ( dev-python/pygtk:2[$PYTHON_USEDEP] )"
+RDEPEND="
+	dev-python/notify-python[$PYTHON_USEDEP]
+	gtk? ( dev-python/pygtk:2[$PYTHON_USEDEP] )"
 
 DEPEND="${RDEPEND}
 	nls? ( sys-devel/gettext )"

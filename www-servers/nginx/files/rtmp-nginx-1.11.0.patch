@@ -1,0 +1,39 @@
+From 965523f3970e449e3abbaa6c9b0db1ce251f2b68 Mon Sep 17 00:00:00 2001
+From: RocFang <fangpeng1986@gmail.com>
+Date: Mon, 30 May 2016 22:56:16 +0800
+Subject: [PATCH] compile with nginx-1.11.0
+
+From https://github.com/arut/nginx-rtmp-module/issues/820
+
+---
+ ngx_rtmp_core_module.c | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+diff --git a/ngx_rtmp_core_module.c b/ngx_rtmp_core_module.c
+index 643702f..567f011 100644
+--- a/ngx_rtmp_core_module.c
++++ b/ngx_rtmp_core_module.c
+@@ -557,7 +557,11 @@ ngx_rtmp_core_listen(ngx_conf_t *cf, ngx_command_t *cmd, void *conf)
+             break;
+         }
+ 
++#if (nginx_version >= 1011000)
++        if (ngx_memcmp(ls[i].sockaddr + off, &u.sockaddr + off, len) != 0) {
++#else
+         if (ngx_memcmp(ls[i].sockaddr + off, u.sockaddr + off, len) != 0) {
++#endif
+             continue;
+         }
+ 
+@@ -577,7 +581,11 @@ ngx_rtmp_core_listen(ngx_conf_t *cf, ngx_command_t *cmd, void *conf)
+ 
+     ngx_memzero(ls, sizeof(ngx_rtmp_listen_t));
+ 
++#if (nginx_version >= 1011000)
++    ngx_memcpy(ls->sockaddr, &u.sockaddr, u.socklen);
++#else
+     ngx_memcpy(ls->sockaddr, u.sockaddr, u.socklen);
++#endif
+ 
+     ls->socklen = u.socklen;
+     ls->wildcard = u.wildcard;
