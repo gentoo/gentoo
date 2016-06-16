@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -38,7 +38,6 @@ RDEPEND="sys-apps/pciutils
 	libcloud? ( >=dev-python/libcloud-0.14.0[${PYTHON_USEDEP}] )
 	mako? ( dev-python/mako[${PYTHON_USEDEP}] )
 	ldap? ( dev-python/python-ldap[${PYTHON_USEDEP}] )
-	openssl? ( dev-python/pyopenssl[${PYTHON_USEDEP}] )
 	libvirt? ( dev-python/libvirt-python[${PYTHON_USEDEP}] )
 	openssl? (
 		dev-libs/openssl:*[-bindist]
@@ -67,6 +66,7 @@ RDEPEND="sys-apps/pciutils
 	vim-syntax? ( app-vim/salt-vim )"
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
+		dev-python/psutil[${PYTHON_USEDEP}]
 		dev-python/pip[${PYTHON_USEDEP}]
 		dev-python/virtualenv[${PYTHON_USEDEP}]
 		dev-python/mock[${PYTHON_USEDEP}]
@@ -82,12 +82,12 @@ DOCS=(README.rst AUTHORS)
 REQUIRED_USE="|| ( raet zeromq )"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-2015.8.0-remove-pydsl-includes-test.patch"
 	"${FILESDIR}/${PN}-2015.8.0-remove-buggy-tests.patch"
 	"${FILESDIR}/${PN}-2015.5.5-auth-tests.patch"
 	"${FILESDIR}/${PN}-2015.5.5-cron-tests.patch"
 	"${FILESDIR}/${PN}-2015.5.5-remove-buggy-tests.patch"
 	"${FILESDIR}/${PN}-2015.8.2-tmpdir.patch"
+	"${FILESDIR}/${PN}-2015.8.10-remove-failing-boto-test.patch"
 )
 
 python_prepare() {

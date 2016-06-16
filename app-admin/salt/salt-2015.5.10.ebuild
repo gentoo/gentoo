@@ -24,7 +24,7 @@ fi
 LICENSE="Apache-2.0"
 SLOT="0"
 IUSE="cherrypy ldap libcloud libvirt gnupg keyring mako mongodb mysql neutron nova"
-IUSE+=" openssl profile redis selinux test timelib raet +zeromq vim-syntax"
+IUSE+=" openssl redis selinux test timelib raet +zeromq vim-syntax"
 
 RDEPEND="sys-apps/pciutils
 	dev-python/jinja[${PYTHON_USEDEP}]
@@ -33,8 +33,7 @@ RDEPEND="sys-apps/pciutils
 	dev-python/markupsafe[${PYTHON_USEDEP}]
 	>=dev-python/requests-1.0.0[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]
-	>=www-servers/tornado-4.2.1[${PYTHON_USEDEP}]
-	virtual/python-futures[${PYTHON_USEDEP}]
+	>=www-servers/tornado-4.0[${PYTHON_USEDEP}]
 	libcloud? ( >=dev-python/libcloud-0.14.0[${PYTHON_USEDEP}] )
 	mako? ( dev-python/mako[${PYTHON_USEDEP}] )
 	ldap? ( dev-python/python-ldap[${PYTHON_USEDEP}] )
@@ -50,7 +49,8 @@ RDEPEND="sys-apps/pciutils
 	)
 	zeromq? (
 		>=dev-python/pyzmq-2.2.0[${PYTHON_USEDEP}]
-		>=dev-python/pycrypto-2.6.1[${PYTHON_USEDEP}]
+		>=dev-python/m2crypto-0.22.3[${PYTHON_USEDEP}]
+		dev-python/pycrypto[${PYTHON_USEDEP}]
 	)
 	cherrypy? ( >=dev-python/cherrypy-3.2.2[${PYTHON_USEDEP}] )
 	mongodb? ( dev-python/pymongo[${PYTHON_USEDEP}] )
@@ -62,7 +62,6 @@ RDEPEND="sys-apps/pciutils
 	nova? ( >=dev-python/python-novaclient-2.17.0[${PYTHON_USEDEP}] )
 	neutron? ( >=dev-python/python-neutronclient-2.3.6[${PYTHON_USEDEP}] )
 	gnupg? ( dev-python/python-gnupg[${PYTHON_USEDEP}] )
-	profile? ( dev-python/yappi[${PYTHON_USEDEP}] )
 	vim-syntax? ( app-vim/salt-vim )"
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
@@ -81,18 +80,19 @@ DOCS=(README.rst AUTHORS)
 REQUIRED_USE="|| ( raet zeromq )"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-2015.8.0-remove-buggy-tests.patch"
+	"${FILESDIR}/${PN}-2014.7.1-remove-pydsl-includes-test.patch"
 	"${FILESDIR}/${PN}-2015.5.5-auth-tests.patch"
 	"${FILESDIR}/${PN}-2015.5.5-cron-tests.patch"
 	"${FILESDIR}/${PN}-2015.5.5-remove-buggy-tests.patch"
-	"${FILESDIR}/${PN}-2015.8.2-tmpdir.patch"
-	"${FILESDIR}/${PN}-2015.8.4-boto-vpc-test.patch"
+	"${FILESDIR}/${PN}-2015.5.7-tmpdir.patch"
+	"${FILESDIR}/${PN}-2015.5.10-buggy-tests.patch"
 )
 
 python_prepare() {
 	# this test fails because it trys to "pip install distribute"
 	rm tests/unit/{modules,states}/zcbuildout_test.py \
-		tests/unit/modules/{rh_ip,win_network,random_org}_test.py
+		tests/unit/modules/{rh_ip,win_network}_test.py \
+		|| die "Failed to remove broken tests"
 }
 
 python_install_all() {

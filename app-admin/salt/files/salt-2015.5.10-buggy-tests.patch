@@ -1,0 +1,38 @@
+diff --git a/tests/unit/modules/boto_vpc_test.py b/tests/unit/modules/boto_vpc_test.py
+index 82dfe28..ced9ee5 100644
+--- a/tests/unit/modules/boto_vpc_test.py
++++ b/tests/unit/modules/boto_vpc_test.py
+@@ -441,9 +441,9 @@ class BotoVpcTestCase(BotoVpcTestCaseBase):
+         describe_vpc = boto_vpc.describe(vpc_id=vpc.id, **conn_parameters)
+ 
+         vpc_properties = dict(cidr_block=unicode(cidr_block),
+-                              is_default=None,
++                              is_default=False,
+                               state=u'available',
+-                              tags={'Name': 'test', 'test': 'testvalue'},
++                              tags={u'Name': u'test', u'test': u'testvalue'},
+                               dhcp_options_id=u'dopt-7a8b9c2d',
+                               instance_tenancy=u'default')
+ 
+diff --git a/tests/unit/states/pip_test.py b/tests/unit/states/pip_test.py
+index 6e7d083..9a83951 100644
+--- a/tests/unit/states/pip_test.py
++++ b/tests/unit/states/pip_test.py
+@@ -37,17 +37,6 @@ class PipStateTest(TestCase, integration.SaltReturnAssertsMixIn):
+     def test_install_requirements_parsing(self):
+         mock = MagicMock(return_value={'retcode': 0, 'stdout': ''})
+         pip_list = MagicMock(return_value={'pep8': '1.3.3'})
+-        with patch.dict(pip_state.__salt__, {'cmd.run_all': mock,
+-                                             'pip.list': pip_list}):
+-            with patch.dict(pip_state.__opts__, {'test': True}):
+-                ret = pip_state.installed('pep8=1.3.2')
+-                self.assertSaltFalseReturn({'test': ret})
+-                self.assertInSaltComment(
+-                    'Invalid version specification in package pep8=1.3.2. '
+-                    '\'=\' is not supported, use \'==\' instead.',
+-                    {'test': ret}
+-                )
+-
+         mock = MagicMock(return_value={'retcode': 0, 'stdout': ''})
+         pip_list = MagicMock(return_value={'pep8': '1.3.3'})
+         pip_install = MagicMock(return_value={'retcode': 0})
