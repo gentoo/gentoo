@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -16,7 +16,7 @@ SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0/${PV}"
 KEYWORDS="amd64 x86"
-IUSE="+newbase +splitbase"
+IUSE=""
 
 RDEPEND=">=dev-haskell/regex-base-0.93:=[profile?]
 	>=dev-haskell/regex-tdfa-1.1.0:=[profile?]
@@ -25,9 +25,3 @@ RDEPEND=">=dev-haskell/regex-base-0.93:=[profile?]
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-1.6.0.3
 "
-
-src_configure() {
-	haskell-cabal_src_configure \
-		$(cabal_flag newbase newbase) \
-		$(cabal_flag splitbase splitbase)
-}
