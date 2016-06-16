@@ -11,7 +11,7 @@ SRC_URI="http://sourceforge.net/projects/chessx/files/chessx/${PV}/${P}.tgz"
 
 LICENSE="GPL-2+ LGPL-2+ LGPL-2.1+ ZLIB"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE=""
 
 RDEPEND="dev-qt/qtprintsupport:5
