@@ -33,7 +33,6 @@ DEPEND="
 	>=net-libs/gnutls-3.2:=
 	x11-libs/libX11
 	hatchet? ( dev-cpp/websocketpp )
-	xmpp? ( net-libs/jreen )
 	!qt5? (
 		app-crypt/qca:2[qt4(+)]
 		>=dev-libs/libattica-0.4.0
@@ -51,6 +50,7 @@ DEPEND="
 		>=media-libs/libechonest-2.3.1:=[qt4]
 		media-libs/liblastfm[qt4]
 		telepathy? ( net-libs/telepathy-qt[qt4] )
+		xmpp? ( net-libs/jreen[qt4] )
 	)
 	qt5? (
 		app-crypt/qca:2[qt5(+)]
@@ -66,6 +66,7 @@ DEPEND="
 		>=media-libs/libechonest-2.3.1:=[qt5]
 		media-libs/liblastfm[qt5]
 		telepathy? ( net-libs/telepathy-qt[qt5] )
+		xmpp? ( net-libs/jreen[qt5] )
 	)
 "
 RDEPEND="${DEPEND}
