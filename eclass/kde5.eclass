@@ -63,22 +63,6 @@ EXPORT_FUNCTIONS pkg_setup src_unpack src_prepare src_configure src_compile src_
 # and add the necessary DEPENDs.
 : ${KDE_DESIGNERPLUGIN:=false}
 
-# @ECLASS-VARIABLE: KDE_DOXYGEN
-# @DESCRIPTION:
-# If set to "false", do nothing.
-# Otherwise, add "doc" to IUSE, add appropriate dependencies, and generate and
-# install API documentation.
-if [[ ${CATEGORY} = kde-frameworks ]]; then
-	: ${KDE_DOXYGEN:=true}
-else
-	: ${KDE_DOXYGEN:=false}
-fi
-
-# @ECLASS-VARIABLE: KDE_DOX_DIR
-# @DESCRIPTION:
-# Defaults to ".". Otherwise, use alternative KDE doxygen path.
-: ${KDE_DOX_DIR:=.}
-
 # @ECLASS-VARIABLE: KDE_EXAMPLES
 # @DESCRIPTION:
 # If set to "false", unconditionally ignore a top-level examples subdirectory.
@@ -178,17 +162,6 @@ case ${KDE_AUTODEPS} in
 		if [[ ${KDE_BLOCK_SLOT4} = true && ${CATEGORY} = kde-apps ]]; then
 			RDEPEND+=" !kde-apps/${PN}:4"
 		fi
-		;;
-esac
-
-case ${KDE_DOXYGEN} in
-	false)	;;
-	*)
-		IUSE+=" doc"
-		DEPEND+=" doc? (
-				$(add_frameworks_dep kapidox)
-				app-doc/doxygen
-			)"
 		;;
 esac
 
@@ -522,11 +495,6 @@ kde5_src_compile() {
 	debug-print-function ${FUNCNAME} "$@"
 
 	cmake-utils_src_compile "$@"
-
-	# Build doxygen documentation if applicable
-	if use_if_iuse doc ; then
-		kgenapidox ${KDE_DOX_DIR} || die
-	fi
 }
 
 # @FUNCTION: kde5_src_test
@@ -565,11 +533,6 @@ kde5_src_test() {
 # Function for installing KDE 5.
 kde5_src_install() {
 	debug-print-function ${FUNCNAME} "$@"
-
-	# Install doxygen documentation if applicable
-	if use_if_iuse doc ; then
-		dodoc -r apidocs/html
-	fi
 
 	cmake-utils_src_install
 
