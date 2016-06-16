@@ -74,6 +74,7 @@ STRIP_MASK="/usr/lib*/rados-classes/*"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.79-libzfs.patch
+	"${FILESDIR}"/${P}-libxfs.patch
 )
 
 check-reqs_export_vars() {
