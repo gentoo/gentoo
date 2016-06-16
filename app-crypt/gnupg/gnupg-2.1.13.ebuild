@@ -19,7 +19,7 @@ IUSE="bzip2 doc +gnutls ldap nls readline selinux smartcard tofu tools usb"
 COMMON_DEPEND_LIBS="
 	dev-libs/npth
 	>=dev-libs/libassuan-2.4.1
-	>=dev-libs/libgcrypt-1.6.2[threads]
+	>=dev-libs/libgcrypt-1.7.1
 	>=dev-libs/libgpg-error-1.21
 	>=dev-libs/libksba-1.2.0
 	>=net-misc/curl-7.10
@@ -48,8 +48,7 @@ RDEPEND="${COMMON_DEPEND_LIBS}
 S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
-	epatch "${FILESDIR}/${P}-fix-signature-checking.patch" \
-		"${FILESDIR}/${PN}-2.1-fix-gentoo-dash-issue.patch"
+	epatch "${FILESDIR}/${PN}-2.1-fix-gentoo-dash-issue.patch"
 	epatch_user
 }
 
