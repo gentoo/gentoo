@@ -14610,7 +14610,7 @@ net-misc/cgminer 4.7.0 4.8.0 4.9.0 4.9.1 4.9.2: Bitcoin CPU/GPU/FPGA/ASIC miner 
 net-misc/cgterm 1.6: Connect to C64 telnet BBS's with the correct colours and font
 net-misc/charm 1.9.1 1.9.2-r1: A text based livejournal client
 net-misc/chrome-remote-desktop 47.0.2526.18 49.0.2623.40 50.0.2661.22: access remote computers via Chrome!
-net-misc/chrony 2.2.1 2.3 2.4_pre1 2.4_pre1-r3 9999: NTP client and server programs
+net-misc/chrony 2.2.1 2.3 2.4 9999: NTP client and server programs
 net-misc/clamz 0.4 0.5: Command-line downloader for the Amazon.com MP3 music store
 net-misc/clipgrab 3.5.6: Download from various internet video services like Youtube etc.
 net-misc/clockspeed 0.62-r6: A simple Network Time Protocol (NTP) client
@@ -17817,7 +17817,7 @@ www-client/midori 0.5.10 0.5.11 0.5.11-r1: A lightweight web browser based on We
 www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
 www-client/netsurf 3.4 3.5: a free, open source web browser
 www-client/opera 12.16_p1860-r1 38.0.2220.29 38.0.2220.31: A fast and secure web browser
-www-client/opera-beta 38.0.2220.11 38.0.2220.12 38.0.2220.25: A fast and secure web browser
+www-client/opera-beta 38.0.2220.25 39.0.2256.4: A fast and secure web browser
 www-client/opera-developer 39.0.2245.0 39.0.2248.0: A fast and secure web browser
 www-client/otter 0.9.09 0.9.10 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
 www-client/phantomjs 1.9.8 2.0.0 2.0.0-r1: A headless WebKit scriptable with a JavaScript API
