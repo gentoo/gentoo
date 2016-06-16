@@ -6,8 +6,8 @@ EAPI=5
 
 inherit cmake-utils
 
-DESCRIPTION="UI abstraction library - ncurses plugin"
-HOMEPAGE="https://github.com/libyui/libyui-ncurses"
+DESCRIPTION="UI abstraction library - GTK plugin"
+HOMEPAGE="https://github.com/libyui/libyui-gtk"
 SRC_URI="https://github.com/libyui/${PN}/archive/${PN}/master/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
@@ -16,14 +16,13 @@ KEYWORDS="~amd64 ~x86"
 
 IUSE="static-libs"
 
-RDEPEND="sys-libs/ncurses:=
+RDEPEND="
+	x11-libs/gtk+:3
 	x11-libs/libyui:${SLOT}
 "
 # Only Boost headers are needed
 DEPEND="${RDEPEND}
 	dev-libs/boost"
-
-PATCHES=( "${FILESDIR}/${P}-tinfo.patch" )
 
 S="${WORKDIR}/${PN}-${PN}-master-${PV}"
 

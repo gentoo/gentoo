@@ -1,57 +1,71 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="project">
-    <email>graphics@gentoo.org</email>
-    <name>Gentoo Graphics Project</name>
-  </maintainer>
+	<maintainer restrict="&gt;=media-gfx/blender-2.72b-r4" type="person">
+		<email>j.scruggs@gmail.com</email>
+		<name>Jonathan Scruggs</name>
+		<description>Proxy maintainer</description>
+	</maintainer>
+	<maintainer restrict="&gt;=media-gfx/blender-2.72b-r4" type="person">
+		<email>agrigo2001@yahoo.com.au</email>
+		<name>Adrian Grigo</name>
+		<description>Proxy maintainer</description>
+	</maintainer>
+	<maintainer type="project">
+		<email>graphics@gentoo.org</email>
+		<name>Gentoo Graphics Project</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
 
-  <longdescription>
-    Blender, the open source software for 3D modeling, animation,
-    rendering, post-production, interactive creation and playback.
-  </longdescription>
+	<longdescription>
+		Blender, the open source software for 3D modeling, animation,
+		rendering, post-production, interactive creation and playback.
+	</longdescription>
 
-  <use>
-    <flag name="game-engine" restrict="&gt;=media-gfx/blender-2.50">
-      Adds Game Engine support to Blender.
-    </flag>
-    <flag name="collada">
-      Add support for Collada interchange format through
-      <pkg>media-libs/opencollada</pkg>.
-    </flag>
-    <flag name="cycles">
-      Build cycles renderer (requires <pkg>media-libs/openimageio</pkg> and
-      <pkg>dev-libs/boost</pkg>).
-    </flag>
-    <flag name="dds">
-      Adds DDS textures support to Blender.
-    </flag>
-    <flag name="player">
-      Build the Blender Player. THis requires the Game engine.
-    </flag>
-    <flag name="elbeem">
-      Adds surface fluid simulation to Blender using El'Beem library.
-    </flag>
-    <flag name="doc">
-      Build C and Python API documentation directly from the source code.
-    </flag>
-    <flag name="redcode">
-      This flag add support for RED CODE camera digital format (5K HD
-      images *.r3d) - EXPERIMENTAL.
-    </flag>
-    <flag name="boost">
-      Enable features depending on boost.
-    </flag>
-	<flag name="bullet">
-      Enable Bullet (Physics Engine).
-	</flag>
-	<flag name="colorio">
-      Enable OpenColorIO color management.
-	</flag>
-	<flag name="ndof">
-      Enable NDOF input devices (SpaceNavigator and friends).
-  </flag>
-  <flag name="openimageio">Enable OpenImageIO Support</flag>
-  <flag name="opennl">Enable use of Open Numerical Library</flag>
-  </use>
+	<use>
+		<flag name="game-engine" restrict="&gt;=media-gfx/blender-2.50">
+			Adds Game Engine support to Blender.
+		</flag>
+		<flag name="collada">
+			Add support for Collada interchange format through
+			<pkg>media-libs/opencollada</pkg>.
+		</flag>
+		<flag name="cycles">
+			Build cycles renderer (requires <pkg>media-libs/openimageio</pkg> and
+			<pkg>dev-libs/boost</pkg>).
+		</flag>
+		<flag name="dds">
+			Adds DDS textures support to Blender.
+		</flag>
+		<flag name="player">
+			Build the Blender Player. THis requires the Game engine.
+		</flag>
+		<flag name="elbeem">
+			Adds surface fluid simulation to Blender using El'Beem library.
+		</flag>
+		<flag name="doc">
+			Build C and Python API documentation directly from the source code.
+		</flag>
+		<flag name="redcode">
+			This flag add support for RED CODE camera digital format (5K HD
+			images *.r3d) - EXPERIMENTAL.
+		</flag>
+		<flag name="boost">
+			Enable features depending on boost.
+		</flag>
+		<flag name="bullet">
+			Enable Bullet (Physics Engine).
+		</flag>
+		<flag name="colorio">
+			Enable OpenColorIO color management.
+		</flag>
+		<flag name="ndof">
+			Enable NDOF input devices (SpaceNavigator and friends).
+		</flag>
+		<flag name="openimageio">Enable OpenImageIO Support</flag>
+		<flag name="opennl">Enable use of Open Numerical Library</flag>
+	</use>
 </pkgmetadata>

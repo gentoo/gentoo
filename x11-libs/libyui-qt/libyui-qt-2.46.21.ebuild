@@ -6,8 +6,8 @@ EAPI=5
 
 inherit cmake-utils
 
-DESCRIPTION="UI abstraction library - ncurses plugin"
-HOMEPAGE="https://github.com/libyui/libyui-ncurses"
+DESCRIPTION="UI abstraction library - Qt plugin"
+HOMEPAGE="https://github.com/libyui/libyui-qt"
 SRC_URI="https://github.com/libyui/${PN}/archive/${PN}/master/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
@@ -16,14 +16,18 @@ KEYWORDS="~amd64 ~x86"
 
 IUSE="static-libs"
 
-RDEPEND="sys-libs/ncurses:=
+RDEPEND="
+	dev-qt/qtgui:5
+	media-libs/freetype
+	x11-libs/libX11
 	x11-libs/libyui:${SLOT}
 "
 # Only Boost headers are needed
+# QtSvg headers only required, no linking
 DEPEND="${RDEPEND}
-	dev-libs/boost"
-
-PATCHES=( "${FILESDIR}/${P}-tinfo.patch" )
+	dev-libs/boost
+	dev-qt/qtx11extras:5
+	dev-qt/qtsvg:5"
 
 S="${WORKDIR}/${PN}-${PN}-master-${PV}"
 
