@@ -30,6 +30,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Michael Palimaka <kensington@gentoo.org> (16 Jun 2016)
+# No longer does anything. Masked for removal in 30 days.
+# Bug 585786.
+kde-misc/akonadi-facebook
+
 # Pawel Hajdan jr <phajdan.jr@gentoo.org> (13 Jun 2016)
 # Dev channel releases are only for people who are developers or want more
 # experimental features and accept a more unstable release.
