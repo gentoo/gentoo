@@ -315,10 +315,6 @@ sci-libs/torch
 # Force gnutls-3.4 testing so we can stabilize it.
 >=net-libs/gnutls-3.5.0
 
-# Sergei Trofimovich <slyfox@gentoo.org> (11 May 2016)
-# Mask standalone hpc. dev-lang/ghc provides bundled hpc.
-dev-haskell/hpc
-
 # Michael Weber <xmw@gentoo.org> (08 May 2016)
 # Replaced by net-libs/libhubbub.
 # Masked for removal in 30 days. Bug #582382.
