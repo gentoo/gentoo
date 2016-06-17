@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201606-06">
+  <title>nginx: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in nginx, the worst of
+    which may allow a remote attacker to cause a Denial of Service.
+  </synopsis>
+  <product type="ebuild"></product>
+  <announced>June 17, 2016</announced>
+  <revised>June 17, 2016: 1</revised>
+  <bug>560854</bug>
+  <bug>573046</bug>
+  <bug>584744</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-servers/nginx" auto="yes" arch="*">
+      <unaffected range="ge">1.10.1</unaffected>
+      <vulnerable range="lt">1.10.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>nginx is a robust, small, and high performance HTTP and reverse proxy
+      server.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in nginx. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could possibly cause a Denial of Service condition via
+      a crafted packet.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All nginx users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=www-servers/nginx-1.10.1"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-3587">
+      CVE-2013-3587
+    </uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-0742">CVE-2016-0742</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-0746">CVE-2016-0746</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-0747">CVE-2016-0747</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-4450">CVE-2016-4450</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-4450">CVE-2016-4450</uri>
+  </references>
+  <metadata tag="requester" timestamp="Tue, 14 Jun 2016 08:44:21 +0000">b-man</metadata>
+  <metadata tag="submitter" timestamp="Fri, 17 Jun 2016 18:26:31 +0000">b-man</metadata>
+</glsa>
