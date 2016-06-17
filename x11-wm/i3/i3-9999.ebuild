@@ -28,6 +28,7 @@ CDEPEND="dev-lang/perl
 	x11-libs/xcb-util-cursor
 	x11-libs/xcb-util-keysyms
 	x11-libs/xcb-util-wm
+	x11-libs/xcb-util-xrm
 	pango? (
 		>=x11-libs/pango-1.30.0[X]
 		>=x11-libs/cairo-1.12.2[X,xcb]
