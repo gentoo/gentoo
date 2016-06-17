@@ -59,7 +59,7 @@ tc-getCC() { tc-getPROG CC gcc "$@"; }
 # @FUNCTION: tc-getCPP
 # @USAGE: [toolchain prefix]
 # @RETURN: name of the C preprocessor
-tc-getCPP() { tc-getPROG CPP cpp "$@"; }
+tc-getCPP() { tc-getPROG CPP "${CC:-gcc} -E" "$@"; }
 # @FUNCTION: tc-getCXX
 # @USAGE: [toolchain prefix]
 # @RETURN: name of the C++ compiler
@@ -132,7 +132,7 @@ tc-getBUILD_CC() { tc-getBUILD_PROG CC gcc "$@"; }
 # @FUNCTION: tc-getBUILD_CPP
 # @USAGE: [toolchain prefix]
 # @RETURN: name of the C preprocessor for building binaries to run on the build machine
-tc-getBUILD_CPP() { tc-getBUILD_PROG CPP cpp "$@"; }
+tc-getBUILD_CPP() { tc-getBUILD_PROG CPP "$(tc-getBUILD_CC) -E" "$@"; }
 # @FUNCTION: tc-getBUILD_CXX
 # @USAGE: [toolchain prefix]
 # @RETURN: name of the C++ compiler for building binaries to run on the build machine
