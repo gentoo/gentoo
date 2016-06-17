@@ -35,7 +35,6 @@ COMMON_DEPEND="
 	app-arch/snappy
 	dev-libs/boost:=[threads]
 	dev-libs/libaio
-	dev-libs/libedit
 	dev-python/sphinx[$(python_gen_usedep 'python2*')]
 	dev-libs/leveldb[snappy]
 	nss? ( dev-libs/nss )
