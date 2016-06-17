@@ -1,0 +1,140 @@
+Backport various webkit-related build fixes:
+
+a309157a	Don't include "webview" in "standard" libraries.
+d24f711f	Only link webview library with libwebkitgtk in wxGTK, not the core one.
+bde287ba	Rebake webview sample makefile after EXTRALIBS_WEBVIEW addition	
+037f6977	Report libraries in EXTRALIBS_WEBVIEW in wx-config output
+
+
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -65,6 +65,7 @@ EXTRALIBS_MEDIA = @EXTRALIBS_MEDIA@
+ EXTRALIBS_GUI = @EXTRALIBS_GUI@
+ EXTRALIBS_OPENGL = @EXTRALIBS_OPENGL@
+ EXTRALIBS_SDL = @EXTRALIBS_SDL@
++EXTRALIBS_WEBVIEW = @EXTRALIBS_WEBVIEW@
+ CXXWARNINGS = @CXXWARNINGS@
+ HOST_SUFFIX = @HOST_SUFFIX@
+ DYLIB_RPATH_INSTALL = @DYLIB_RPATH_INSTALL@
+@@ -15493,7 +15494,7 @@ distclean: clean
+ @COND_SHARED_0_USE_STC_1@	rm -f $(DESTDIR)$(libdir)/$(LIBPREFIX)wxscintilla$(WX_LIB_FLAVOUR)-$(WX_RELEASE)$(HOST_SUFFIX)$(LIBEXT)
+ 
+ @COND_MONOLITHIC_1_SHARED_1@$(LIBDIRNAME)/$(DLLPREFIX)$(WXDLLNAMEPREFIXGUI)$(WXUNICODEFLAG)$(WXDEBUGFLAG)$(WX_LIB_FLAVOUR)$(WXCOMPILER)$(VENDORTAG)$(WXDLLVERSIONTAG)$(dll___targetsuf3): $(MONODLL_OBJECTS) $(__wxtiff___depname) $(__wxjpeg___depname) $(__wxpng___depname) $(__wxscintilla___depname) $(__wxexpat___depname) $(__wxzlib___depname) $(__wxregex___depname) $(__monodll___win32rc) $(__wxscintilla_library_link_DEP)
+-@COND_MONOLITHIC_1_SHARED_1@	$(SHARED_LD_CXX) $@ $(MONODLL_OBJECTS) $(__wxscintilla_library_link_LIBR)    -L$(LIBDIRNAME) $(__monodll___macinstnamecmd) $(__monodll___importlib) $(__monodll___soname_flags) $(WXMACVERSION_CMD) $(LDFLAGS)  $(__LIB_TIFF_p) $(__LIB_JPEG_p) $(__LIB_PNG_p)  $(EXTRALIBS_FOR_GUI) $(__LIB_ZLIB_p) $(__LIB_REGEX_p) $(__LIB_EXPAT_p) $(EXTRALIBS_FOR_BASE) $(EXTRALIBS_XML) $(EXTRALIBS_HTML) $(EXTRALIBS_MEDIA) $(PLUGIN_ADV_EXTRALIBS) $(__wxscintilla_library_link_LIBR_1) $(LIBS)
++@COND_MONOLITHIC_1_SHARED_1@	$(SHARED_LD_CXX) $@ $(MONODLL_OBJECTS) $(__wxscintilla_library_link_LIBR)    -L$(LIBDIRNAME) $(__monodll___macinstnamecmd) $(__monodll___importlib) $(__monodll___soname_flags) $(WXMACVERSION_CMD) $(LDFLAGS)  $(__LIB_TIFF_p) $(__LIB_JPEG_p) $(__LIB_PNG_p)  $(EXTRALIBS_FOR_GUI) $(__LIB_ZLIB_p) $(__LIB_REGEX_p) $(__LIB_EXPAT_p) $(EXTRALIBS_FOR_BASE) $(EXTRALIBS_XML) $(EXTRALIBS_HTML) $(EXTRALIBS_MEDIA) $(PLUGIN_ADV_EXTRALIBS) $(EXTRALIBS_WEBVIEW) $(__wxscintilla_library_link_LIBR_1) $(LIBS)
+ @COND_MONOLITHIC_1_SHARED_1@	$(DYLIB_RPATH_POSTLINK)
+ @COND_MONOLITHIC_1_SHARED_1@	
+ @COND_MONOLITHIC_1_SHARED_1@	$(__monodll___so_symlinks_cmd)
+@@ -15750,7 +15751,7 @@ distclean: clean
+ @COND_MONOLITHIC_0_USE_HTML_1@wxhtml: $(____wxhtml_namedll_DEP) $(____wxhtml_namelib_DEP)
+ 
+ @COND_MONOLITHIC_0_SHARED_1_USE_GUI_1_USE_WEBVIEW_1@$(LIBDIRNAME)/$(DLLPREFIX)$(WXDLLNAMEPREFIXGUI)$(WXUNICODEFLAG)$(WXDEBUGFLAG)$(WX_LIB_FLAVOUR)_webview$(WXCOMPILER)$(VENDORTAG)$(WXDLLVERSIONTAG)$(dll___targetsuf3): $(WEBVIEWDLL_OBJECTS) $(__wxtiff___depname) $(__wxjpeg___depname) $(__wxpng___depname) $(__wxscintilla___depname) $(__wxexpat___depname) $(__wxzlib___depname) $(__wxregex___depname) $(__webviewdll___win32rc) $(__coredll___depname) $(__basedll___depname)
+-@COND_MONOLITHIC_0_SHARED_1_USE_GUI_1_USE_WEBVIEW_1@	$(SHARED_LD_CXX) $@ $(WEBVIEWDLL_OBJECTS) -L$(LIBDIRNAME) -L$(LIBDIRNAME)    -L$(LIBDIRNAME) $(__webviewdll___macinstnamecmd) $(__webviewdll___importlib) $(__webviewdll___soname_flags) $(WXMACVERSION_CMD) $(LDFLAGS)  $(__LIB_TIFF_p) $(__LIB_JPEG_p) $(__LIB_PNG_p)  $(EXTRALIBS_FOR_GUI) $(__LIB_ZLIB_p) $(__LIB_REGEX_p) $(__LIB_EXPAT_p) $(EXTRALIBS_FOR_BASE) -lwx_$(PORTNAME)$(WXUNIVNAME)$(WXUNICODEFLAG)$(WXDEBUGFLAG)$(WX_LIB_FLAVOUR)_core-$(WX_RELEASE)$(HOST_SUFFIX) -lwx_base$(WXBASEPORT)$(WXUNICODEFLAG)$(WXDEBUGFLAG)$(WX_LIB_FLAVOUR)-$(WX_RELEASE)$(HOST_SUFFIX) $(LIBS)
++@COND_MONOLITHIC_0_SHARED_1_USE_GUI_1_USE_WEBVIEW_1@	$(SHARED_LD_CXX) $@ $(WEBVIEWDLL_OBJECTS) -L$(LIBDIRNAME) -L$(LIBDIRNAME)    -L$(LIBDIRNAME) $(__webviewdll___macinstnamecmd) $(__webviewdll___importlib) $(__webviewdll___soname_flags) $(WXMACVERSION_CMD) $(LDFLAGS)  $(__LIB_TIFF_p) $(__LIB_JPEG_p) $(__LIB_PNG_p)  $(EXTRALIBS_FOR_GUI) $(__LIB_ZLIB_p) $(__LIB_REGEX_p) $(__LIB_EXPAT_p) $(EXTRALIBS_FOR_BASE) -lwx_$(PORTNAME)$(WXUNIVNAME)$(WXUNICODEFLAG)$(WXDEBUGFLAG)$(WX_LIB_FLAVOUR)_core-$(WX_RELEASE)$(HOST_SUFFIX) -lwx_base$(WXBASEPORT)$(WXUNICODEFLAG)$(WXDEBUGFLAG)$(WX_LIB_FLAVOUR)-$(WX_RELEASE)$(HOST_SUFFIX) $(EXTRALIBS_WEBVIEW) $(LIBS)
+ @COND_MONOLITHIC_0_SHARED_1_USE_GUI_1_USE_WEBVIEW_1@	$(DYLIB_RPATH_POSTLINK)
+ @COND_MONOLITHIC_0_SHARED_1_USE_GUI_1_USE_WEBVIEW_1@	
+ @COND_MONOLITHIC_0_SHARED_1_USE_GUI_1_USE_WEBVIEW_1@	$(__webviewdll___so_symlinks_cmd)
+--- a/build/bakefiles/config.bkl
++++ b/build/bakefiles/config.bkl
+@@ -423,6 +423,7 @@ to run the tests, include CppUnit library here.
+         <option name="EXTRALIBS_GUI"/>
+         <option name="EXTRALIBS_OPENGL"/>
+         <option name="EXTRALIBS_SDL"/>
++        <option name="EXTRALIBS_WEBVIEW"/>
+         <option name="CXXWARNINGS"/>
+         <option name="HOST_SUFFIX"/>
+         <option name="DYLIB_RPATH_INSTALL"/>
+@@ -506,6 +507,7 @@ it if SHARED=1 unless you know what you are doing.
+             <if cond="COMPILER=='gcc'">-lopengl32 -lglu32</if>
+         </set>
+         <set var="EXTRALIBS_SDL"/>
++        <set var="EXTRALIBS_WEBVIEW"/>
+ 
+         <set var="WITH_PLUGIN_SDL">0</set>
+ 
+--- a/build/bakefiles/monolithic.bkl
++++ b/build/bakefiles/monolithic.bkl
+@@ -26,6 +26,7 @@
+         <ldlibs>$(EXTRALIBS_HTML)</ldlibs>
+         <ldlibs>$(EXTRALIBS_MEDIA)</ldlibs>
+         <ldlibs>$(PLUGIN_MONOLIB_EXTRALIBS)</ldlibs>
++        <ldlibs>$(EXTRALIBS_WEBVIEW)</ldlibs>
+         <library>$(wxscintilla_library_link)</library>
+     </dll>
+ 
+--- a/build/bakefiles/multilib.bkl
++++ b/build/bakefiles/multilib.bkl
+@@ -183,6 +183,7 @@
+         <sources>$(WEBVIEW_SRC)</sources>
+         <library>coredll</library>
+         <library>basedll</library>
++        <ldlibs>$(EXTRALIBS_WEBVIEW)</ldlibs>
+         <msvc-headers>$(WEBVIEW_HDR)</msvc-headers>
+     </dll>
+ 
+--- a/build/bakefiles/wxwin.py
++++ b/build/bakefiles/wxwin.py
+@@ -51,6 +51,7 @@ EXTRALIBS = {
+     'html' : '$(EXTRALIBS_HTML)',
+     'adv' : '$(PLUGIN_ADV_EXTRALIBS)',
+     'media' : '$(EXTRALIBS_MEDIA)',
++    'webview' : '$(EXTRALIBS_WEBVIEW)',
+ }
+ 
+ def mkLibName(wxid):
+--- a/configure.in
++++ b/configure.in
+@@ -7249,7 +7249,7 @@ if test "$wxUSE_WEBVIEW" = "yes"; then
+                               [
+                                 USE_WEBVIEW_WEBKIT=1
+                                 CPPFLAGS="$CPPFLAGS $WEBKIT_CFLAGS"
+-                                GUI_TK_LIBRARY="$GUI_TK_LIBRARY $WEBKIT_LIBS"
++                                EXTRALIBS_WEBVIEW="$WEBKIT_LIBS"
+                               ],
+                               [
+                                 AC_MSG_WARN([webkitgtk not found.])
+@@ -7689,7 +7689,6 @@ if test "$wxUSE_GUI" = "yes"; then
+         BUILT_WX_LIBS="stc $BUILT_WX_LIBS"
+     fi
+     if test "$wxUSE_WEBVIEW" = "yes" ; then
+-        STD_GUI_LIBS="webview $STD_GUI_LIBS"
+         BUILT_WX_LIBS="webview $BUILT_WX_LIBS"
+     fi
+     if test "$wxUSE_XRC" = "yes" ; then
+@@ -8002,6 +8001,7 @@ AC_SUBST(EXTRALIBS_GUI)
+ AC_SUBST(EXTRALIBS_OPENGL)
+ AC_SUBST(EXTRALIBS_SDL)
+ AC_SUBST(EXTRALIBS_STC)
++AC_SUBST(EXTRALIBS_WEBVIEW)
+ AC_SUBST(WITH_PLUGIN_SDL)
+ AC_SUBST(UNICODE)
+ AC_SUBST(DEBUG_INFO)
+--- a/samples/webview/Makefile.in
++++ b/samples/webview/Makefile.in
+@@ -33,6 +33,7 @@ EXTRALIBS = @EXTRALIBS@
+ EXTRALIBS_XML = @EXTRALIBS_XML@
+ EXTRALIBS_GUI = @EXTRALIBS_GUI@
+ EXTRALIBS_SDL = @EXTRALIBS_SDL@
++EXTRALIBS_WEBVIEW = @EXTRALIBS_WEBVIEW@
+ CXXWARNINGS = @CXXWARNINGS@
+ HOST_SUFFIX = @HOST_SUFFIX@
+ SAMPLES_RPATH_FLAG = @SAMPLES_RPATH_FLAG@
+@@ -163,7 +164,7 @@ distclean: clean
+ 	rm -f config.cache config.log config.status bk-deps bk-make-pch shared-ld-sh Makefile
+ 
+ webview$(EXEEXT): $(WEBVIEW_OBJECTS) $(__webview___win32rc)
+-	$(CXX) -o $@ $(WEBVIEW_OBJECTS)    -L$(LIBDIRNAME) $(LDFLAGS_GUI) $(SAMPLES_RPATH_FLAG) $(LDFLAGS)  $(__WXLIB_WEBVIEW_p)  $(__WXLIB_STC_p)  $(__WXLIB_ADV_p) $(PLUGIN_ADV_EXTRALIBS) $(__WXLIB_CORE_p)  $(__WXLIB_BASE_p)  -lwxscintilla$(WXDEBUGFLAG)$(WX_LIB_FLAVOUR)-$(WX_RELEASE)$(HOST_SUFFIX) $(__WXLIB_MONO_p) $(__LIB_SCINTILLA_IF_MONO_p) $(__LIB_TIFF_p) $(__LIB_JPEG_p) $(__LIB_PNG_p)  $(EXTRALIBS_FOR_GUI) $(__LIB_ZLIB_p) $(__LIB_REGEX_p) $(__LIB_EXPAT_p) $(EXTRALIBS_FOR_BASE) $(LIBS)
++	$(CXX) -o $@ $(WEBVIEW_OBJECTS)    -L$(LIBDIRNAME) $(LDFLAGS_GUI) $(SAMPLES_RPATH_FLAG) $(LDFLAGS)  $(__WXLIB_WEBVIEW_p) $(EXTRALIBS_WEBVIEW) $(__WXLIB_STC_p)  $(__WXLIB_ADV_p) $(PLUGIN_ADV_EXTRALIBS) $(__WXLIB_CORE_p)  $(__WXLIB_BASE_p)  -lwxscintilla$(WXDEBUGFLAG)$(WX_LIB_FLAVOUR)-$(WX_RELEASE)$(HOST_SUFFIX) $(__WXLIB_MONO_p) $(__LIB_SCINTILLA_IF_MONO_p) $(__LIB_TIFF_p) $(__LIB_JPEG_p) $(__LIB_PNG_p)  $(EXTRALIBS_FOR_GUI) $(__LIB_ZLIB_p) $(__LIB_REGEX_p) $(__LIB_EXPAT_p) $(EXTRALIBS_FOR_BASE) $(LIBS)
+ 	
+ 	$(__webview___mac_setfilecmd)
+ 	$(__webview___os2_emxbindcmd)
+--- a/wx-config.in
++++ b/wx-config.in
+@@ -1032,6 +1032,7 @@ ldlibs_html="@EXTRALIBS_HTML@"
+ ldlibs_xml="@EXTRALIBS_XML@"
+ ldlibs_adv="@EXTRALIBS_SDL@"
+ ldlibs_stc="@EXTRALIBS_STC@"
++ldlibs_webview="@EXTRALIBS_WEBVIEW@"
+ 
+ 
+ # Order the libraries passed to us correctly for static linking.

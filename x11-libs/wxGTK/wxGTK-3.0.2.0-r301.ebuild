@@ -4,7 +4,7 @@
 
 EAPI="6"
 
-inherit multilib-minimal
+inherit autotools multilib-minimal
 
 DESCRIPTION="GTK+ version of wxWidgets, a cross-platform C++ GUI toolkit"
 HOMEPAGE="http://wxwidgets.org/"
@@ -45,7 +45,7 @@ RDEPEND="
 		libnotify? ( x11-libs/libnotify[${MULTILIB_USEDEP}] )
 		opengl? ( virtual/opengl[${MULTILIB_USEDEP}] )
 		tiff?   ( media-libs/tiff:0[${MULTILIB_USEDEP}] )
-		webkit? ( net-libs/webkit-gtk:2 )
+		webkit? ( net-libs/webkit-gtk:3 )
 		)
 	aqua? (
 		x11-libs/gtk+:3[aqua=,${MULTILIB_USEDEP}]
@@ -71,6 +71,16 @@ LICENSE="wxWinLL-3
 S="${WORKDIR}/wxPython-src-${PV}"
 
 src_prepare() {
+	PATCHES=( "${FILESDIR}"/${P}-webview-fixes.patch )
+
+	eapply "${PATCHES[@]}"
+	eapply_user
+
+	for f in $(find "${S}" -name configure.in); do
+		mv "${f}" "${f/in/ac}" || die
+	done
+	AT_M4DIR="${S}/build/aclocal" eautoreconf
+
 	# Versionating
 	sed -i \
 		-e "s:\(WX_RELEASE = \).*:\1${WXRELEASE}:"\
@@ -91,8 +101,6 @@ src_prepare() {
 		-e "s:\(WX_SUBVERSION=\).*:\1${WXSUBVERSION}:" \
 		-e '/WX_VERSION_TAG=/ s:${WX_RELEASE}:3.0:' \
 		configure || die
-
-	default
 }
 
 multilib_src_configure() {
