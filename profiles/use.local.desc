@@ -277,6 +277,7 @@ app-admin/salt:mongodb - Support returning data to a mongodb server.
 app-admin/salt:neutron - Support the OpenStack neutron network service.
 app-admin/salt:nova - Enable support for the OpenStack Nova API
 app-admin/salt:openssl - Add support for using TLS via OpenSSL.
+app-admin/salt:portage - Add support for package state enforcement using sys-apps/portage
 app-admin/salt:raet - Add support for the new RAET transport.
 app-admin/salt:redis - Support returning data to a redis database.
 app-admin/salt:timelib - Use timelib to parse english textual date descriptions.
