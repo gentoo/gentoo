@@ -1,0 +1,40 @@
+--- libsodium-1.0.10/configure.ac
++++ libsodium-1.0.10/configure.ac
+@@ -344,6 +344,10 @@
+     [AC_MSG_RESULT(no)])
+   CFLAGS="$oldcflags"
+ 
++AC_ARG_ENABLE(sse4_1, [AS_HELP_STRING(--disable-sse4_1,Do not use sse4.1 code)],
++  AS_IF([test "x$enableval" = "xyes"], check_sse4_1="yes", check_sse4_1="no"),
++  check_sse4_1="yes")
++AS_IF([test "$check_sse4_1" = "yes"],[
+   oldcflags="$CFLAGS"
+   AX_CHECK_COMPILE_FLAG([-msse4.1], [CFLAGS="$CFLAGS -msse4.1"])
+   AC_MSG_CHECKING(for SSE4.1 instructions set)
+@@ -356,6 +360,7 @@
+      AX_CHECK_COMPILE_FLAG([-msse4.1], [CFLAGS_SSE41="-msse4.1"])],
+     [AC_MSG_RESULT(no)])
+   CFLAGS="$oldcflags"
++  ])
+ 
+   oldcflags="$CFLAGS"
+   AX_CHECK_COMPILE_FLAG([-mavx], [CFLAGS="$CFLAGS -mavx"])
+@@ -393,6 +398,10 @@
+     [AC_MSG_RESULT(no)])
+   CFLAGS="$oldcflags"
+ 
++AC_ARG_ENABLE(aesni, [AS_HELP_STRING(--disable-aesni,Do not use aesni code)],
++  AS_IF([test "x$enableval" = "xyes"], check_aeni="yes", check_aesni="no"),
++  check_aesni="yes")
++AS_IF([test "$check_aesni" = "yes"],[
+   oldcflags="$CFLAGS"
+   AX_CHECK_COMPILE_FLAG([-maes], [CFLAGS="$CFLAGS -maes"])
+   AX_CHECK_COMPILE_FLAG([-mpclmul], [CFLAGS="$CFLAGS -mpclmul"])
+@@ -410,6 +419,7 @@
+      ],
+     [AC_MSG_RESULT(no)])
+   CFLAGS="$oldcflags"
++  ])
+ 
+ ])
+ 
