@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit eutils multilib python-any-r1 scons-utils toolchain-funcs
 
 DESCRIPTION="A Statistical Language Model based Chinese input method library"
-HOMEPAGE="https://sunpinyin.googlecode.com/"
+HOMEPAGE="https://github.com/sunpinyin/sunpinyin"
 SRC_URI="https://dev.gentoo.org/~yngwin/distfiles/${P}.tar.xz"
 
 LICENSE="LGPL-2.1 CDDL"
