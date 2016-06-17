@@ -204,11 +204,6 @@ net-print/foomatic-gui
 # Exported to user maintained overlay kde-sunset.
 kde-apps/superkaramba
 
-# Sergei Trofimovich <slyfox@gentoo.org> (30 May 2016)
-# Masked for removal. Fails to build with modern conduit,
-# bug #584586.
-dev-haskell/pool-conduit
-
 # Johannes Huber <johu@gentoo.org> (26 May 2016)
 # Masked for removal in 30 days. Blocks app-misc/strigi cleanup.
 # Last release in 2014 with KDE SC 4.14.3. No development since
@@ -311,17 +306,9 @@ dev-perl/Gtk2-WebKit
 # does not build with current CUDA releases. See bug #583068.
 sci-libs/torch
 
-# Sergei Trofimovich <slyfox@gentoo.org> (14 May 2016)
-# Masked for removal. Deprecated, use dev-haskell/tls instead.
-dev-haskell/tls-extra
-
 # Alon Bar-Lev <alonbl@gentoo.org) (13 May 2016)
 # Force gnutls-3.4 testing so we can stabilize it.
 >=net-libs/gnutls-3.5.0
-
-# Sergei Trofimovich <slyfox@gentoo.org> (11 May 2016)
-# Mask standalone hpc. dev-lang/ghc provides bundled hpc.
-dev-haskell/hpc
 
 # Michael Weber <xmw@gentoo.org> (08 May 2016)
 # Replaced by net-libs/libhubbub.
