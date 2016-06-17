@@ -76,12 +76,10 @@ DEPEND="${COMMON_DEPEND}
 		dev-python/virtualenv[${PYTHON_USEDEP}]
 	)"
 RDEPEND="${COMMON_DEPEND}
-	sys-apps/which
 	sys-apps/hdparm
 	sys-block/parted
 	sys-fs/cryptsetup
 	sys-apps/gptfdisk
-	sys-apps/findutils
 	dev-python/flask[${PYTHON_USEDEP}]
 	dev-python/requests[${PYTHON_USEDEP}]
 	"
