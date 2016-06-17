@@ -2935,6 +2935,11 @@
       <role>Member</role>
     </member>
     <member>
+      <email>mgorny@gentoo.org</email>
+      <name>Michał Górny</name>
+      <role>Member</role>
+    </member>
+    <member>
       <email>monsieurp@gentoo.org</email>
       <name>Patrice Clement</name>
       <role>Member</role>
@@ -3437,27 +3442,6 @@
     </member>
   </project>
   <project>
-    <email>reviewers@gentoo.org</email>
-    <name>Reviewers</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Reviewers</url>
-    <description>Team dedicated to reviewing pull requests and commits</description>
-    <member>
-      <email>jlec@gentoo.org</email>
-      <name>Justin Lecher</name>
-      <role>Member</role>
-    </member>
-    <member is-lead="1">
-      <email>mgorny@gentoo.org</email>
-      <name>Michał Górny</name>
-      <role>Lead</role>
-    </member>
-    <member>
-      <email>monsieurp@gentoo.org</email>
-      <name>Patrice Clement</name>
-      <role>Member</role>
-    </member>
-  </project>
-  <project>
     <email>ruby@gentoo.org</email>
     <name>Gentoo Ruby Project</name>
     <url>https://wiki.gentoo.org/wiki/Project:Ruby</url>
@@ -3869,6 +3853,11 @@
       <email>chithanh@gentoo.org</email>
       <name>Chí-Thanh Christopher Nguyễn</name>
       <role>Ebuild review</role>
+    </member>
+    <member>
+      <email>mgorny@gentoo.org</email>
+      <name>Michał Górny</name>
+      <role>Project pre-removal cleanup</role>
     </member>
     <member is-lead="1">
       <email>tommy@gentoo.org</email>
