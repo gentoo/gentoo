@@ -35,7 +35,6 @@ COMMON_DEPEND="
 	app-arch/snappy
 	dev-libs/boost:=[threads]
 	dev-libs/libaio
-	dev-python/sphinx[$(python_gen_usedep 'python2*')]
 	dev-libs/leveldb[snappy]
 	nss? ( dev-libs/nss )
 	libatomic? ( dev-libs/libatomic_ops )
@@ -69,6 +68,7 @@ DEPEND="${COMMON_DEPEND}
 	app-arch/cpio
 	sys-apps/lsb-release
 	virtual/pkgconfig
+	dev-python/sphinx
 	test? (
 		sys-fs/btrfs-progs
 		sys-apps/grep[pcre]
