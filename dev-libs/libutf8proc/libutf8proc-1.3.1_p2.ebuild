@@ -19,3 +19,5 @@ IUSE=""
 
 RDEPEND=""
 DEPEND="${RDEPEND}"
+
+S="${WORKDIR}/${P/_p/-}"
