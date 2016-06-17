@@ -30,6 +30,8 @@ IUSE+=" libatomic lttng +nss +radosgw static-libs tcmalloc test xfs zfs"
 
 COMMON_DEPEND="
 	app-arch/snappy
+	app-arch/lz4:=
+	app-arch/bzip2
 	dev-libs/boost:=[threads]
 	dev-libs/fcgi
 	dev-libs/libaio

@@ -33,6 +33,8 @@ IUSE+=" libatomic lttng +nss +radosgw static-libs tcmalloc test xfs zfs"
 #>=dev-libs/gf-complete-2.0.0
 COMMON_DEPEND="
 	app-arch/snappy
+	app-arch/lz4:=
+	app-arch/bzip2
 	dev-libs/boost:=[threads]
 	dev-libs/libaio
 	dev-libs/leveldb[snappy]
