@@ -2961,7 +2961,7 @@ dev-db/pgtap 0.93.0: Unit testing for PostgreSQL
 dev-db/pgxnclient 1.2-r1 1.2.1: PostgreSQL Extension Network Client
 dev-db/phpmyadmin 4.0.10.15 4.4.15.5 4.5.5.1 4.6.0 4.6.1: Web-based administration for MySQL database in PHP
 dev-db/phppgadmin 5.1 9999: Web-based administration for Postgres database in php
-dev-db/postgis 2.0.3 2.0.6 2.1.1 2.1.8 2.2.0 2.2.1 2.2.2 9999: Geographic Objects for PostgreSQL
+dev-db/postgis 2.1.1 2.1.8 2.2.0 2.2.1 2.2.2 9999: Geographic Objects for PostgreSQL
 dev-db/postgresql 9.0.23-r1 9.1.19-r1 9.1.20 9.1.21 9.1.22 9.2.14-r1 9.2.15 9.2.16 9.2.17 9.3.10-r1 9.3.10-r2 9.3.11 9.3.12 9.3.13 9.4.5-r1 9.4.5-r2 9.4.6 9.4.7 9.4.8 9.5.1 9.5.2 9.5.3 9.6_beta1 9999: PostgreSQL RDBMS
 dev-db/psqlodbc 09.01.0200 09.02.0100 09.03.0210: Official ODBC driver for PostgreSQL
 dev-db/qdbm 1.8.78-r1: Quick Database Manager
@@ -15965,7 +15965,7 @@ sci-libs/nlopt 2.2.4 2.4.2 2.4.2-r1: Non-linear optimization library
 sci-libs/oc 2.0: Network Data Access Protocol client C library
 sci-libs/octomap 1.6.8 9999: An Efficient Probabilistic 3D Mapping Framework Based on Octrees
 sci-libs/ogdi 3.1.5-r1 3.2.0_beta2: Open Geographical Datastore Interface, a GIS support library
-sci-libs/opencascade 6.7.1 6.8.0 6.9.0: Software development platform for CAD/CAE, 3D surface/solid modeling and data exchange
+sci-libs/opencascade 6.7.1 6.8.0 6.9.0 6.9.1: Software development platform for CAD/CAE, 3D surface/solid modeling and data exchange
 sci-libs/openfoam 2.2.1 2.2.2 2.3.0-r1 2.3.1-r1 2.4.0-r1: Open Field Operation and Manipulation - CFD Simulation Toolbox
 sci-libs/openfoam-bin 1.6: Open Field Operation and Manipulation - CFD Simulation Toolbox
 sci-libs/openlibm 0.2 0.3: High quality system independent, open source libm
@@ -17180,7 +17180,7 @@ sys-fs/shake 0.999 1.0: defragmenter that runs in userspace while the system is 
 sys-fs/siefs 0.5-r2: Siemens FS
 sys-fs/simple-mtpfs 0.1 0.2 9999: Simple MTP fuse filesystem driver
 sys-fs/snapraid 6.2 6.3 7.0 7.1 8.1 10.0: a backup program for disk array for home media centers
-sys-fs/squashfs-tools 3.2_p2 3.4 4.3 4.3-r1: Tool for creating compressed filesystem type squashfs
+sys-fs/squashfs-tools 3.2_p2 3.4 4.3 4.3-r1 4.3-r2: Tool for creating compressed filesystem type squashfs
 sys-fs/squashfuse 0.1_p20130530: FUSE filesystem to mount squashfs archives
 sys-fs/sshfs 2.5 2.7: Fuse-filesystem utilizing the sftp service
 sys-fs/static-dev 0.1: A skeleton, statically managed /dev
