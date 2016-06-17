@@ -7401,7 +7401,7 @@ dev-python/kaa-base 0.6.0-r1: Basic Framework for all Kaa Python Modules
 dev-python/kaa-display 0.1.0 0.1.0-r1: Python API providing Low level support for various displays, such as X11 or framebuffer
 dev-python/kaa-imlib2 0.2.3-r1 0.2.3-r2: Imlib2 wrapper for Python
 dev-python/kaa-metadata 0.7.7-r1: Powerful media metadata parser for media files in Python, successor of MMPython
-dev-python/kafka-python 1.1.1: Kafka protocol support in Python
+dev-python/kafka-python 1.1.1 1.2.0 1.2.1: Kafka protocol support in Python
 dev-python/kazoo 1.3.1 2.0 2.2.1: A high-level Python library that makes it easier to use Apache Zookeeper
 dev-python/keepassx 0.0.3 0.1.0: Python API and CLI for KeePassX
 dev-python/keyczar 0.71c 0.715: Toolkit for safe and simple cryptography
