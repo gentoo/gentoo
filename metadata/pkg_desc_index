@@ -92,7 +92,7 @@ app-admin/elektra 0.7.1-r5 0.8.12 0.8.15 9999: Framework to store config paramet
 app-admin/emacs-updater 1.14 1.15: Rebuild Emacs packages
 app-admin/entr 3.5: Run arbitrary commands when files change
 app-admin/equo 254: Entropy Package Manager text-based client
-app-admin/eselect 1.3.8 1.4.4 1.4.5 9999: Gentoo's multi-purpose configuration and management tool
+app-admin/eselect 1.4.5 1.4.6 9999: Gentoo's multi-purpose configuration and management tool
 app-admin/evtxtools 1.1.1-r1: Read, decode and dump Windows Vista/2008/7 event log file
 app-admin/fam 2.7.0-r6 2.7.0-r7: FAM, the File Alteration Monitor
 app-admin/fetchlog 1.0 1.4: Displays the last new messages of a logfile
