@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 PYTHON_COMPAT=(python2_7)
 
 inherit eutils systemd distutils-r1
@@ -24,7 +24,7 @@ fi
 LICENSE="Apache-2.0"
 SLOT="0"
 IUSE="cherrypy ldap libcloud libvirt gnupg keyring mako mongodb mysql neutron nova"
-IUSE+=" openssl portage redis selinux test timelib raet +zeromq vim-syntax"
+IUSE+=" openssl portage profile redis selinux test timelib raet +zeromq vim-syntax"
 
 RDEPEND="sys-apps/pciutils
 	dev-python/jinja[${PYTHON_USEDEP}]
@@ -33,7 +33,8 @@ RDEPEND="sys-apps/pciutils
 	dev-python/markupsafe[${PYTHON_USEDEP}]
 	>=dev-python/requests-1.0.0[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]
-	>=www-servers/tornado-4.0[${PYTHON_USEDEP}]
+	>=www-servers/tornado-4.2.1[${PYTHON_USEDEP}]
+	virtual/python-futures[${PYTHON_USEDEP}]
 	libcloud? ( >=dev-python/libcloud-0.14.0[${PYTHON_USEDEP}] )
 	mako? ( dev-python/mako[${PYTHON_USEDEP}] )
 	ldap? ( dev-python/python-ldap[${PYTHON_USEDEP}] )
@@ -49,8 +50,7 @@ RDEPEND="sys-apps/pciutils
 	)
 	zeromq? (
 		>=dev-python/pyzmq-2.2.0[${PYTHON_USEDEP}]
-		>=dev-python/m2crypto-0.22.3[${PYTHON_USEDEP}]
-		dev-python/pycrypto[${PYTHON_USEDEP}]
+		>=dev-python/pycrypto-2.6.1[${PYTHON_USEDEP}]
 	)
 	cherrypy? ( >=dev-python/cherrypy-3.2.2[${PYTHON_USEDEP}] )
 	mongodb? ( dev-python/pymongo[${PYTHON_USEDEP}] )
@@ -63,37 +63,44 @@ RDEPEND="sys-apps/pciutils
 	nova? ( >=dev-python/python-novaclient-2.17.0[${PYTHON_USEDEP}] )
 	neutron? ( >=dev-python/python-neutronclient-2.3.6[${PYTHON_USEDEP}] )
 	gnupg? ( dev-python/python-gnupg[${PYTHON_USEDEP}] )
+	profile? ( dev-python/yappi[${PYTHON_USEDEP}] )
 	vim-syntax? ( app-vim/salt-vim )"
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
+		dev-python/psutil[${PYTHON_USEDEP}]
 		dev-python/pip[${PYTHON_USEDEP}]
 		dev-python/virtualenv[${PYTHON_USEDEP}]
 		dev-python/mock[${PYTHON_USEDEP}]
 		dev-python/timelib[${PYTHON_USEDEP}]
 		>=dev-python/boto-2.32.1[${PYTHON_USEDEP}]
+		!x86? ( dev-python/boto3[${PYTHON_USEDEP}] )
 		>=dev-python/moto-0.3.6[${PYTHON_USEDEP}]
-		>=dev-python/SaltTesting-2015.2.16[${PYTHON_USEDEP}]
+		>=dev-python/SaltTesting-2016.5.11[${PYTHON_USEDEP}]
+		>=dev-python/libcloud-0.14.0[${PYTHON_USEDEP}]
 		${RDEPEND}
 	)"
 
 DOCS=(README.rst AUTHORS)
 
 REQUIRED_USE="|| ( raet zeromq )"
+RESTRICT="x86? ( test )"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-2014.7.1-remove-pydsl-includes-test.patch"
-	"${FILESDIR}/${PN}-2015.5.5-auth-tests.patch"
-	"${FILESDIR}/${PN}-2015.5.5-cron-tests.patch"
-	"${FILESDIR}/${PN}-2015.5.5-remove-buggy-tests.patch"
-	"${FILESDIR}/${PN}-2015.5.7-tmpdir.patch"
-	"${FILESDIR}/${PN}-2015.5.10-buggy-tests.patch"
+	"${FILESDIR}/${PN}-2015.8.2-tmpdir.patch"
+	"${FILESDIR}/${PN}-2016.3.1-dont-realpath-tmpdir.patch"
+	"${FILESDIR}/${PN}-2016.3.1-broken-tests.patch"
 )
 
 python_prepare() {
 	# this test fails because it trys to "pip install distribute"
 	rm tests/unit/{modules,states}/zcbuildout_test.py \
-		tests/unit/modules/{rh_ip,win_network}_test.py \
-		|| die "Failed to remove broken tests"
+		tests/unit/modules/{rh_ip,win_network,random_org}_test.py
+
+	# apparently libcloud does not know about this?
+	rm tests/unit/cloud/clouds/dimensiondata_test.py
+
+	# seriously? "ValueError: Missing (or not readable) key file: '/home/dany/PRIVKEY.pem'"
+	rm tests/unit/cloud/clouds/gce_test.py
 }
 
 python_install_all() {
@@ -126,7 +133,8 @@ python_test() {
 		addwrite "${tempdir}"
 		ln -s "$(realpath --relative-to=/tmp "${T}/$(basename "${tempdir}")")" "${tempdir}"
 
-		USE_SETUPTOOLS=1 SHELL="/bin/bash" TMPDIR="${tempdir}" \
+		USE_SETUPTOOLS=1 SHELL="/bin/bash" \
+			TMPDIR="${tempdir}" \
 			${EPYTHON} tests/runtests.py \
 			--unit-tests --no-report --verbose
 
