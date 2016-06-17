@@ -9915,7 +9915,7 @@ dev-util/stressapptest 1.0.4 1.0.6 1.0.6-r1 1.0.6-r2 1.0.7_p1: Stressful Applica
 dev-util/stubgen 2.08: a member function stub generator for C++
 dev-util/suse-build 2014.09.18 2015.11.05 9999: Script to build SUSE Linux RPMs
 dev-util/synopsis 0.13: General source code documentation tool
-dev-util/sysdig 0.5.1 0.6.0 0.9.0: A system exploration and troubleshooting tool
+dev-util/sysdig 0.5.1 0.6.0 0.9.0 0.10.0: A system exploration and troubleshooting tool
 dev-util/sysprof 1.2.0: System-wide Linux Profiler
 dev-util/systemtap 2.4-r1 2.5 2.9: A linux trace/probe tool
 dev-util/tailor 0.9.35-r1: A tool to migrate changesets between version control systems
