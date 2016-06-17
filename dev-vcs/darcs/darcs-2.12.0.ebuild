@@ -51,8 +51,7 @@ RDEPEND=">=dev-haskell/async-2.0.1.4:=[profile?] <dev-haskell/async-2.2:=[profil
 	>=dev-haskell/zip-archive-0.2.3:=[profile?] <dev-haskell/zip-archive-0.4:=[profile?]
 	>=dev-haskell/zlib-0.5.4.1:=[profile?] <dev-haskell/zlib-0.7.0.0:=[profile?]
 	>=dev-lang/ghc-7.6.2:=
-	|| ( ( >=dev-haskell/transformers-0.3:=[profile?] <dev-haskell/transformers-0.4.0.0:=[profile?] )
-		( >dev-haskell/transformers-0.4.0.0:=[profile?] <dev-haskell/transformers-0.6:=[profile?] ) )
+	>=dev-haskell/transformers-0.3:=[profile?] <dev-haskell/transformers-0.6:=[profile?]
 	curl? ( net-misc/curl )
 	network-uri? ( >=dev-haskell/network-2.6:=[profile?] <dev-haskell/network-2.7:=[profile?]
 			>=dev-haskell/network-uri-2.6:=[profile?] <dev-haskell/network-uri-2.7:=[profile?] )
