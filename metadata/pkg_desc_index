@@ -3821,6 +3821,7 @@ dev-java/boilerpipe 1.2.0: Boilerplate Removal and Fulltext Extraction from HTML
 dev-java/browserlauncher2 1.3-r1: BrowserLauncher2 is a library that facilitates opening a browser from a Java application
 dev-java/bsf 2.4.0-r2: Bean Script Framework
 dev-java/bsh 2.0_beta6: A small embeddable Java source interpreter
+dev-java/btf 1.2: Generic interfaces to the classical builder pattern
 dev-java/byaccj 1.15-r1: A java extension of BSD YACC-compatible parser generator
 dev-java/bytelist 1.0.10: JRuby support library
 dev-java/c3p0 0.9.5.1: JDBC drivers with JNDI-bindable DataSources
