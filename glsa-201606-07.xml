@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild"></product>
   <announced>June 18, 2016</announced>
-  <revised>June 18, 2016: 1</revised>
+  <revised>June 18, 2016: 2</revised>
   <bug>571152</bug>
   <access>remote</access>
   <affected>
@@ -20,7 +20,7 @@
     <p>A fully featured, yet light weight RFC2131 compliant DHCP client</p>
   </background>
   <description>
-    <p>A heap overflow can be trigged via malformed DHCP responses in the
+    <p>A heap overflow can be triggered via malformed DHCP responses in the
       print_option (via dhcp_envoption1) due to incorrect option length values.
        These vulnerabilities could also allow remote attackers to trigger an
       invalid read/crash via malformed DHCP responses.
@@ -47,5 +47,5 @@
     <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2016-1504">CVE-2016-1504</uri>
   </references>
   <metadata tag="requester" timestamp="Mon, 08 Feb 2016 20:32:46 +0000">K_F</metadata>
-  <metadata tag="submitter" timestamp="Sat, 18 Jun 2016 15:51:23 +0000">b-man</metadata>
+  <metadata tag="submitter" timestamp="Sat, 18 Jun 2016 19:11:50 +0000">b-man</metadata>
 </glsa>
