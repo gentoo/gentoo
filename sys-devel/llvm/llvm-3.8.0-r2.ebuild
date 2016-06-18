@@ -170,6 +170,9 @@ src_prepare() {
 	# disable use of SDK on OSX, bug #568758
 	sed -i -e 's/xcrun/false/' utils/lit/lit/util.py || die
 
+	# Workaround, can be compiled with gcc on Gentoo/FreeBSD, bug #578064
+	use kernel_FreeBSD && [[ $(tc-getCC) == *gcc* ]] && append-cppflags "-D_GLIBCXX_USE_C99"
+
 	if use clang; then
 		# Automatically select active system GCC's libraries, bugs #406163 and #417913
 		eapply "${FILESDIR}"/clang-3.5-gentoo-runtime-gcc-detection-v3.patch
@@ -197,6 +200,10 @@ src_prepare() {
 		# (that is used only to find LLVMgold.so)
 		# https://llvm.org/bugs/show_bug.cgi?id=23793
 		eapply "${FILESDIR}"/cmake/clang-0002-cmake-Make-CLANG_LIBDIR_SUFFIX-overridable.patch
+
+		# Fix 'stdarg.h' file not found on Gentoo/FreeBSD, bug #578064
+		# https://llvm.org/bugs/show_bug.cgi?id=26651
+		eapply "${FILESDIR}"/clang-3.8-compiler-rt-fbsd.patch
 
 		pushd projects/compiler-rt >/dev/null || die
 
