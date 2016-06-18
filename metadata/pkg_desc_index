@@ -12427,7 +12427,7 @@ media-libs/gexiv2 0.10.2 0.10.3: GObject-based wrapper around the Exiv2 library
 media-libs/giblib 1.2.4 1.2.4-r1: a graphics library built on top of imlib2
 media-libs/giflib 4.1.6-r2 4.1.6-r3 4.2.3-r1 5.0.6 5.1.3 5.1.4: Library to handle, display and manipulate GIF images
 media-libs/glew 1.9.0 1.10.0-r1 1.10.0-r2 1.11.0 1.12.0 1.13.0: The OpenGL Extension Wrangler Library
-media-libs/glfw 2.7.7 3.1.2: The Portable OpenGL FrameWork
+media-libs/glfw 3.1.2: The Portable OpenGL FrameWork
 media-libs/glm 0.9.2.4 0.9.3.2 0.9.5.1 0.9.6.1 0.9.7.1 0.9.7.2: OpenGL Mathematics
 media-libs/glpng 1.46-r1: An OpenGL PNG image library
 media-libs/glu 9.0.0-r1 9999: The OpenGL Utility Library
@@ -14630,7 +14630,7 @@ net-misc/datapipe 1.0-r1: bind a local port and connect it to a remote socket
 net-misc/dcetest 2.0: dcetest is a clone of the Windows rpcinfo
 net-misc/dhcdrop 0.5: Effectively suppresses illegal DHCP servers on the LAN
 net-misc/dhcp 4.3.1-r2 4.3.3_p1 4.3.4: ISC Dynamic Host Configuration Protocol (DHCP) client/server
-net-misc/dhcpcd 6.10.0 6.10.1 6.10.2 6.10.3 6.11.0 9999: A fully featured, yet light weight RFC2131 compliant DHCP client
+net-misc/dhcpcd 6.10.0 6.10.1 6.10.2 6.10.3 6.11.0 6.11.1 9999: A fully featured, yet light weight RFC2131 compliant DHCP client
 net-misc/dhcpcd-ui 0.7.4 0.7.5: Desktop notification and configuration for dhcpcd
 net-misc/dhcpd-pools 2.21: ISC dhcpd lease analysis and reporting
 net-misc/dhcping 1.2: Utility for sending a dhcp request to a dhcp server to see if it is responding
