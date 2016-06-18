@@ -9669,6 +9669,7 @@ dev-util/cppunit 1.13.1 1.13.2-r2 9999: C++ port of the famous JUnit framework f
 dev-util/cpputest 3.6 3.7.2: unit testing and mocking framework for C/C++
 dev-util/cproto 4.7e: Generate C function prototypes from C source code
 dev-util/cpuinfo-collection 20060720 20070104 20101114: huge collection of /proc/cpuinfo files
+dev-util/cram 0.7: Functional testing framework for command line applications
 dev-util/crash 6.1.4 7.0.0 7.0.3 7.0.7 7.1.4: Red Hat crash utility; used for analyzing kernel core dumps
 dev-util/creduce 2.4.0: C-Reduce - a plugin-based C program reducer
 dev-util/crow-designer 2.21.0 2.99.0: GTK+ GUI building tool
