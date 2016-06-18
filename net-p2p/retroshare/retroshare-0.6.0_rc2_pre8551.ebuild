@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -16,7 +16,7 @@ SRC_URI="mirror://sourceforge/retroshare/${PN}_${MY_PV}_src.tgz"
 # pegmarkdown can also be used with MIT
 LICENSE="GPL-2 GPL-3 Apache-2.0 LGPL-2.1"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 IUSE="cli feedreader +qt5 voip"
 REQUIRED_USE="|| ( cli qt5 )
