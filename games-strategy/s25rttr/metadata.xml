@@ -9,7 +9,4 @@
         <changelog>http://www.siedler25.org/index.php?com=dynamic&amp;mod=9&amp;PHPSESSID=e5fa4f90c4db5df0cb1e417e128300b5</changelog>
         <bugs-to>https://bugs.launchpad.net/s25rttr</bugs-to>
 	</upstream>
-	<use>
-		<flag name="glfw">Compile another video driver based on <pkg>media-libs/glfw</pkg>.</flag>
-	</use>
 </pkgmetadata>
