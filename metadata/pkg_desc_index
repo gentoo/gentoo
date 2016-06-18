@@ -10916,7 +10916,7 @@ games-strategy/netherearth 0.52: A remake of the SPECTRUM game Nether Earth
 games-strategy/netpanzer 0.8.2: Fast-action multiplayer strategic network game
 games-strategy/openra 20140722-r1 20141029-r2: A free RTS engine supporting games like Command & Conquer and Red Alert
 games-strategy/outerspace 0.5.68: on-line strategy game taking place in the dangerous universe
-games-strategy/s25rttr 0.8.1-r1 0.8.1-r2: Open Source remake of The Settlers II game (needs original game files)
+games-strategy/s25rttr 0.8.1-r2: Open Source remake of The Settlers II game (needs original game files)
 games-strategy/scorched3d 44-r1: Multi-player tank battle in 3D (OpenGL)
 games-strategy/seven-kingdoms 2.14.4 2.14.5: Seven Kingdoms: Ancient Adversaries
 games-strategy/smac 6.0a: Linux port of the popular strategy game from Firaxis
