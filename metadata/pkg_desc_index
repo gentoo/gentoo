@@ -18361,7 +18361,7 @@ x11-misc/openbox-menu 0.5.1 0.7.0 0.8.0: Another dynamic menu generator for Open
 x11-misc/oroborus-desklaunch 1.1.8: utility for creating desktop icons for Oroborus
 x11-misc/oroborus-deskmenu 1.4.5: root menu program for Oroborus
 x11-misc/oroborus-keylaunch 1.3.9: utility for binding keys in Oroborus
-x11-misc/outwiker 1.8.0: The tree notes organizer
+x11-misc/outwiker 1.8.0 1.9.0.790: The tree notes organizer
 x11-misc/parcellite 1.1.9: A lightweight GTK+ based clipboard manager
 x11-misc/pathfinder 1.6.36 1.7.45 1.7.47 1.7.49: File manager based on the FOX Toolkit
 x11-misc/pcmanfm 0.9.10 1.1.2 1.2.2 1.2.3 9999: Fast lightweight tabbed filemanager
