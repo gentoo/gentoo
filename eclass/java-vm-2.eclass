@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -66,8 +66,8 @@ java-vm-2_pkg_setup() {
 # @DESCRIPTION:
 # default pkg_postinst
 #
-# Set the generation-2 system VM and Java plugin, if it isn't set or the
-# setting is invalid. Also update mime database.
+# Set the generation-2 system VM, if it isn't set or the setting is
+# invalid. Also update mime database.
 
 java-vm-2_pkg_postinst() {
 	has ${EAPI:-0} 0 1 2 && ! use prefix && EROOT=${ROOT}
@@ -84,61 +84,7 @@ java-vm-2_pkg_postinst() {
 		fi
 	fi
 
-	if [[ "${_install_mozilla_plugin_called}" = 1 ]]; then
-		java-vm_check-nsplugin
-		java_mozilla_clean_
-	fi
-
 	fdo-mime_desktop_database_update
-}
-
-
-# @FUNCTION: java-vm_check-nsplugin
-# @INTERNAL
-# @DESCRIPTION:
-# Check if the nsplugin needs updating
-
-java-vm_check-nsplugin() {
-	local libdir
-	if [[ ${VMHANDLE} =~ emul-linux-x86 ]]; then
-		libdir=lib32
-	else
-		libdir=lib
-	fi
-
-	has ${EAPI:-0} 0 1 2 && ! use prefix && EPREFIX=
-
-	# Install a default nsplugin if we don't already have one
-	if in_iuse nsplugin && use nsplugin; then
-		if [[ ! -f "${ROOT}${EPREFIX}"/usr/${libdir}/nsbrowser/plugins/javaplugin.so ]]; then
-			einfo "No system nsplugin currently set."
-			java-vm_set-nsplugin
-		else
-			einfo "System nsplugin is already set, not changing it."
-		fi
-		einfo "You can change nsplugin with eselect java-nsplugin."
-	fi
-}
-
-
-# @FUNCTION: java-vm_set-nsplugin
-# @INTERNAL
-# @DESCRIPTION:
-# Set the nsplugin implemetation.
-
-java-vm_set-nsplugin() {
-	local extra_args
-	if use amd64; then
-		if [[ ${VMHANDLE} =~ emul-linux-x86 ]]; then
-			extra_args="32bit"
-		else
-			extra_args="64bit"
-		fi
-		einfo "Setting ${extra_args} nsplugin to ${VMHANDLE}"
-	else
-		einfo "Setting nsplugin to ${VMHANDLE}..."
-	fi
-	eselect java-nsplugin set ${extra_args} ${VMHANDLE}
 }
 
 
@@ -344,58 +290,4 @@ java-vm_sandbox-predict() {
 	dodir /etc/sandbox.d
 	echo "SANDBOX_PREDICT=\"${path}\"" > "${ED}/etc/sandbox.d/20${VMHANDLE}" \
 		|| die "Failed to write sandbox control file"
-}
-
-
-# @FUNCTION: java_get_plugin_dir_
-# @INTERNAL
-# @DESCRIPTION:
-# Get the java plugin dir.
-
-java_get_plugin_dir_() {
-	has ${EAPI:-0} 0 1 2 && ! use prefix && EPREFIX=
-	echo "${EPREFIX}"/usr/$(get_libdir)/nsbrowser/plugins
-}
-
-
-# @FUNCTION: install_mozilla_plugin
-# @DESCRIPTION:
-# Register a netscape java-plugin.
-
-install_mozilla_plugin() {
-	_install_mozilla_plugin_called=1
-
-	local plugin="${1}"
-	local variant="${2}"
-
-	has ${EAPI:-0} 0 1 2 && ! use prefix && ED="${D}"
-	if [[ ! -f "${ED}/${plugin}" ]]; then
-		die "Cannot find mozilla plugin at ${ED}/${plugin}"
-	fi
-
-	if [[ -n "${variant}" ]]; then
-		variant="-${variant}"
-	fi
-
-	local plugin_dir="/usr/share/java-config-2/nsplugin"
-	dodir "${plugin_dir}"
-	dosym "${plugin}" "${plugin_dir}/${VMHANDLE}${variant}-javaplugin.so"
-}
-
-
-# @FUNCTION: java_mozilla_clean_
-# @INTERNAL
-# @DESCRIPTION:
-# Because previously some ebuilds installed symlinks outside of pkg_install
-# and are left behind, which forces you to manualy remove them to select the
-# jdk/jre you want to use for java
-
-java_mozilla_clean_() {
-	local plugin_dir=$(java_get_plugin_dir_)
-	for file in ${plugin_dir}/javaplugin_*; do
-		rm -f ${file}
-	done
-	for file in ${plugin_dir}/libjavaplugin*; do
-		rm -f ${file}
-	done
 }
