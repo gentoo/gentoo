@@ -241,7 +241,8 @@ src_prepare() {
 		"${FILESDIR}"/${PN}-6.00.01-dotfont.patch \
 		"${FILESDIR}"/${PN}-6.00.01-llvm.patch \
 		"${FILESDIR}"/${PN}-6.00.01-nobyte-compile.patch \
-		"${FILESDIR}"/${P}-prop-flags.patch
+		"${FILESDIR}"/${P}-prop-flags.patch \
+		"${FILESDIR}"/${P}-gsl2.patch
 		# "${FILESDIR}"/${PN}-6.02.05-xrootd4.patch
 		# "${FILESDIR}"/${PN}-6.02.05-dictpch.patch \
 
