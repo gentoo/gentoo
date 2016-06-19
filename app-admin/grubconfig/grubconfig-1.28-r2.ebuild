@@ -6,7 +6,7 @@ EAPI=6
 
 DESCRIPTION="Simple Tool to configure Grub-Bootloader"
 HOMEPAGE="https://web.archive.org/web/20100410042718/http://www.tux.org/pub/people/kent-robotti/looplinux"
-SRC_URI="http://www.tux.org/pub/people/kent-robotti/looplinux/${P}.tar.gz"
+SRC_URI="http://gentoo/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
