@@ -31,6 +31,10 @@
 #--- END OF EXAMPLES ---
 
 # Michael Palimaka <kensington@gentoo.org> (19 Jun 2016)
+# Ancient, untested, never unmasked. Removal in 30 days. Bug 586172.
+sys-auth/pam_keystore
+
+# Michael Palimaka <kensington@gentoo.org> (19 Jun 2016)
 # Fails to build. Unmaintained. Dead upstream.
 # Masked for removal in 30 days. Bug 586348.
 net-misc/mdidentd
@@ -886,10 +890,6 @@ media-libs/shivavg
 # Added <sys-fs/e2fsprogs as well (halcy0n)
 <sys-libs/e2fsprogs-libs-1.41.8
 <sys-fs/e2fsprogs-1.41.9
-
-# Diego E. Pettenò <flameeyes@gmail.com> (09 Oct 2009)
-# Untested yet; documented only in Russian, help is appreciated.
-sys-auth/pam_keystore
 
 # Diego E. Pettenò <flameeyes@gentoo.org> (08 Aug 2009)
 #  on behalf of QA Team
