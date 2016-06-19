@@ -3955,7 +3955,7 @@ dev-java/ical4j 1.0.5: a Java library for handling iCalendar data streams
 dev-java/icedtea 3.0.1 7.2.6.6: A harness to build OpenJDK using Free Software build tools and dependencies
 dev-java/icedtea-bin 3.0.1 7.2.6.5 7.2.6.6-r1: A Gentoo-made binary build of the IcedTea JDK
 dev-java/icedtea-sound 1.0.1: Plugins for javax.sound
-dev-java/icedtea-web 1.6.1-r1: FOSS Java browser plugin and Web Start implementation
+dev-java/icedtea-web 1.6.1-r1 1.6.2: FOSS Java browser plugin and Web Start implementation
 dev-java/icu4j 54.1.1 55.1: A set of Java libraries providing Unicode and Globalization support
 dev-java/idm-console-framework 1.1.7: A Java Management Console framework used for remote server management
 dev-java/ini4j 0.5.1: Simple Java API Windows style .ini file handling
