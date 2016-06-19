@@ -11514,7 +11514,7 @@ kde-frameworks/kcrash 5.21.0 5.22.0 5.23.0: Framework for intercepting and handl
 kde-frameworks/kdbusaddons 5.21.0 5.22.0 5.23.0: Framework for registering services and applications per freedesktop standards
 kde-frameworks/kdeclarative 5.21.0 5.22.0 5.23.0: Framework providing integration of QML and KDE work spaces
 kde-frameworks/kded 5.21.0 5.22.0 5.23.0: Central daemon of KDE workspaces
-kde-frameworks/kdelibs4support 5.21.0 5.22.0 5.23.0: Framework easing the development transition from KDE 4 to KF 5
+kde-frameworks/kdelibs4support 5.21.0 5.22.0 5.23.0 5.23.0-r1: Framework easing the development transition from KDE 4 to KF 5
 kde-frameworks/kdesignerplugin 5.21.0 5.22.0 5.23.0: Framework providing plugins to use KDE frameworks widgets in QtDesigner
 kde-frameworks/kdesu 5.21.0 5.22.0 5.23.0: Framework to handle super user actions
 kde-frameworks/kdewebkit 5.21.0 5.22.0 5.23.0: Framework providing KDE integration of QtWebKit
@@ -11523,7 +11523,7 @@ kde-frameworks/kdoctools 5.21.0 5.22.0 5.23.0: Tools to generate documentation i
 kde-frameworks/kemoticons 5.21.0 5.22.0 5.23.0: Framework for converting text emoticons to graphical representations
 kde-frameworks/kf-env 3 4: Environment setting required for all KDE Frameworks apps to run
 kde-frameworks/kfilemetadata 5.21.0 5.22.0 5.23.0: Library for extracting file metadata
-kde-frameworks/kglobalaccel 5.21.0 5.22.0 5.23.0: Framework to handle global shortcuts
+kde-frameworks/kglobalaccel 5.21.0 5.22.0 5.23.0 5.23.0-r1: Framework to handle global shortcuts
 kde-frameworks/kguiaddons 5.21.0 5.22.0 5.23.0: Framework providing assorted high-level user interface components
 kde-frameworks/khtml 5.21.0 5.22.0 5.23.0: KHTML web rendering engine
 kde-frameworks/ki18n 5.21.0 5.22.1 5.23.0: Framework based on Gettext for internationalizing user interface text
@@ -11556,7 +11556,7 @@ kde-frameworks/kwallet 5.21.0 5.22.0 5.23.0: Framework providing desktop-wide st
 kde-frameworks/kwayland 5.5.5 5.22.0 5.23.0: Qt-style client and server library wrapper for Wayland libraries
 kde-frameworks/kwidgetsaddons 5.21.0 5.22.0 5.23.0: An assortment of high-level widgets for common tasks
 kde-frameworks/kwindowsystem 5.21.0 5.22.0 5.23.0: Framework providing access to properties and features of the window manager
-kde-frameworks/kxmlgui 5.21.0 5.22.0 5.23.0: Framework for managing menu and toolbar actions in an abstract way
+kde-frameworks/kxmlgui 5.21.0 5.22.0 5.23.0 5.23.0-r1: Framework for managing menu and toolbar actions in an abstract way
 kde-frameworks/kxmlrpcclient 5.21.0 5.22.0 5.23.0: Framework providing client-side support for the XML-RPC protocol
 kde-frameworks/modemmanager-qt 5.21.0 5.22.0 5.23.0: ModemManager bindings for Qt
 kde-frameworks/networkmanager-qt 5.21.0 5.22.0 5.23.0: NetworkManager bindings for Qt
