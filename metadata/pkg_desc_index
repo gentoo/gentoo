@@ -987,7 +987,7 @@ app-doc/phrack-all 68: Hacker magazine by the community, for the community (this
 app-doc/pms 6_p20151113 9999: Gentoo Package Manager Specification (draft)
 app-doc/podbrowser 0.12-r3: PodBrowser is a documentation browser for Perl
 app-doc/psmark 2.1: Prints watermark-like text on any PostScript document
-app-doc/root-docs 5.34.26 5.34.32 6.02.05 6.04.06: Documentation for ROOT Data Analysis Framework
+app-doc/root-docs 5.34.26 5.34.32 6.04.06: Documentation for ROOT Data Analysis Framework
 app-doc/selfhtml 8.1.2: "The" German HTML/XHTML/CSS/XML/DHTML/CGI/Perl/JavaScript Documentation
 app-doc/selflinux 0.13.0: german-language hypertext tutorial about Linux
 app-doc/single-unix-specification 3 4-r1: The Single UNIX Specification, Version 4, 2008 Edition (8 Volumes)
@@ -16162,7 +16162,7 @@ sci-physics/paw 2.14.04-r4 2.14.04-r5: CERN's Physics Analysis Workstation data 
 sci-physics/pythia 6.4.28 6.4.28-r1 8.1.86 8.1.86-r1 8.2.10: Lund Monte Carlo high-energy physics event generator
 sci-physics/reduze 2.0.9: Program for reducing Feynman integrals
 sci-physics/rivet 2.3.0: Toolkit for validation of Monte Carlo HEP event generators
-sci-physics/root 5.34.26 5.34.32 6.02.05-r2 6.04.06: C++ data analysis framework and interpreter from CERN
+sci-physics/root 5.34.26 5.34.32 6.04.06: C++ data analysis framework and interpreter from CERN
 sci-physics/sassena 1.4.2: Software for Calculating Scattering Diagrams on Massively Parallel Computers
 sci-physics/siscone 2.0.6: Hadron Seedless Infrared-Safe Cone jet algorithm
 sci-physics/thepeg 1.9.2 2.0.0: Toolkit for High Energy Physics Event Generation
