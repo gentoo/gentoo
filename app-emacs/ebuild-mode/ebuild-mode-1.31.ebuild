@@ -16,6 +16,6 @@ KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~x86-
 
 DOCS="ChangeLog keyword-generation.sh"
 ELISP_TEXINFO="${PN}.texi"
-SITEFILE="50${PN}-gentoo-1.30.el"
+SITEFILE="50${PN}-gentoo-1.31.el"
 DOC_CONTENTS="Some optional features may require installation of additional
 	packages, like app-portage/gentoolkit-dev for echangelog."
