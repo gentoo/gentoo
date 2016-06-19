@@ -323,12 +323,6 @@ net-libs/hubbub
 # Broken reverse deps. At least one header file has been moved around.
 >=media-gfx/imagemagick-7.0.1.0
 
-# Rafael G. Martins <rafaelmartins@gentoo.org> (30 Apr 2016)
-# Packages merged upstream with app-text/blogc. Please install
-# app-text/blogc with USE=git and USE=httpd instead. Removal in 30 days.
-dev-vcs/blogc-git-receiver
-www-servers/blogc-runserver
-
 # Sergey Popov <pinkbyte@gentoo.org> (26 Apr 2016)
 # Security mask of older branches, wrt bug #5567810
 <dev-vcs/subversion-1.8
