@@ -4882,7 +4882,7 @@ dev-libs/pslib 0.4.1-r2 0.4.5: pslib is a C-library to create PostScript files o
 dev-libs/ptexenc 1.3.0_p20120701 1.3.1_p20130530 1.3.2_p20140525 1.3.2_p20140525-r1 1.3.3_p20150521: Library for Japanese pTeX providing a better way of handling character encodings
 dev-libs/pth 2.0.7-r3: GNU Portable Threads
 dev-libs/pugixml 1.5 1.6 1.7: Light-weight, simple, and fast XML parser for C++ with XPath support
-dev-libs/purpose 1.0 1.1: Library for providing abstractions to get the developer's purposes fulfilled
+dev-libs/purpose 1.0 1.1 1.1-r1: Library for providing abstractions to get the developer's purposes fulfilled
 dev-libs/qcodeedit 2.2.3 2.2.3-r2: Qt-Framework for code editing
 dev-libs/qcustomplot 1.3.2: Qt C++ widget for plotting and data visualization
 dev-libs/qjson 0.8.1-r1: A library for mapping JSON data to QVariant objects
