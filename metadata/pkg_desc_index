@@ -11502,7 +11502,7 @@ kde-frameworks/kactivities 5.21.0 5.22.0 5.23.0: Framework for working with KDE 
 kde-frameworks/kactivities-stats 5.21.0 5.22.0 5.23.0: Framework for getting the usage statistics collected by the activities service
 kde-frameworks/kapidox 5.21.0 5.22.0 5.23.0: Framework for building KDE API documentation in a standard format and style
 kde-frameworks/karchive 5.21.0 5.22.0 5.23.0: Framework for reading, creation, and manipulation of various archive formats
-kde-frameworks/kauth 5.21.0 5.22.0 5.23.0: Framework to let applications perform actions as a privileged user
+kde-frameworks/kauth 5.21.0 5.22.0 5.23.0 5.23.0-r1: Framework to let applications perform actions as a privileged user
 kde-frameworks/kbookmarks 5.21.0 5.22.0 5.23.0: Framework for managing bookmarks stored in XBEL format
 kde-frameworks/kcmutils 5.21.0 5.22.0 5.23.0: Framework to work with KDE System Settings modules
 kde-frameworks/kcodecs 5.21.0 5.22.0 5.23.0: Framework for manipulating strings using various encodings
