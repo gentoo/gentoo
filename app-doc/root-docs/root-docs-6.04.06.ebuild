@@ -34,6 +34,7 @@ VIRTUALX_REQUIRED="api"
 DEPEND="
 	app-text/pandoc
 	dev-haskell/pandoc-citeproc[bibutils]
+	dev-texlive/texlive-fontsrecommended
 	dev-texlive/texlive-latex
 	virtual/pkgconfig
 	api? (
