@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -48,7 +48,7 @@ src_compile() {
 
 	# delete nativeAuth prebuilt libs:
 	#    uses outdated unmaintained libshaj, does not support amd64
-	rm -rfv target/openfire/resources/nativeAuth || dir
+	rm -rfv target/openfire/resources/nativeAuth || die
 }
 
 src_install() {
