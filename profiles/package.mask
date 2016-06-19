@@ -30,6 +30,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Michael Palimaka <kensington@gentoo.org> (19 Jun 2016)
+# Fails to build. Unmaintained. Dead upstream.
+# Masked for removal in 30 days. Bug 586348.
+net-misc/mdidentd
+
 # Michael Palimaka <kensington@gentoo.org> (16 Jun 2016)
 # No longer does anything. Masked for removal in 30 days.
 # Bug 585786.
