@@ -113,10 +113,10 @@ src_compile() {
 src_install() {
 	into /
 	dobin ping
-	dosym ping "${EPREFIX}"/bin/ping4
+	dosym ping /bin/ping4
 	if use ipv6 ; then
-		dosym ping "${EPREFIX}"/bin/ping6
-		dosym ping.8 "${EPREFIX}"/usr/share/man/man8/ping6.8
+		dosym ping /bin/ping6
+		dosym ping.8 /usr/share/man/man8/ping6.8
 	fi
 	doman doc/ping.8
 
@@ -140,7 +140,7 @@ src_install() {
 
 	if use tracepath && use ipv6 ; then
 		dosbin tracepath6
-		dosym tracepath.8 "${EPREFIX}"/usr/share/man/man8/tracepath6.8
+		dosym tracepath.8 /usr/share/man/man8/tracepath6.8
 	fi
 
 	if use traceroute && use ipv6 ; then
