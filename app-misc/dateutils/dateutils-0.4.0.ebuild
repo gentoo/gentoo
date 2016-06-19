@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 DESCRIPTION="command line date and time utilities"
 HOMEPAGE="https://hroptatyr.github.com/dateutils/"
