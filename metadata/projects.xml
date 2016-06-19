@@ -2546,6 +2546,11 @@
     <name>Package Manager Specification</name>
     <url>https://wiki.gentoo.org/wiki/Project:Package_Manager_Specification</url>
     <description>The Package Manager Specification aims to document what is required of a Gentoo package manager, and what ebuilds may assume about their environment.</description>
+    <member>
+      <email>mgorny@gentoo.org</email>
+      <name>Michał Górny</name>
+      <role>Member</role>
+    </member>
     <member is-lead="1">
       <email>ulm@gentoo.org</email>
       <name>Ulrich Müller</name>
