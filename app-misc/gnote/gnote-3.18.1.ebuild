@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -48,6 +48,10 @@ src_prepare() {
 
 	# Do not alter CFLAGS
 	sed 's/-DDEBUG -g/-DDEBUG/' -i configure.ac configure || die
+
+	# Prevent m4_copy error when running aclocal, bug #581308
+	# m4_copy: won't overwrite defined macro: glib_DEFUN
+	rm m4/glib-gettext.m4 || die
 
 	eautoreconf
 	gnome2_src_prepare
