@@ -8,7 +8,7 @@ inherit kde5
 
 DESCRIPTION="Framework for getting the usage statistics collected by the activities service"
 LICENSE="LGPL-2+"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm ~x86"
 IUSE=""
 
 RDEPEND="
