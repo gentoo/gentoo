@@ -1,12 +1,12 @@
 DEFINED_PHASES=compile configure test
 DEPEND=app-arch/xz-utils sys-libs/timezone-data
 DESCRIPTION=command line date and time utilities
-EAPI=5
+EAPI=6
 HOMEPAGE=https://hroptatyr.github.com/dateutils/
 KEYWORDS=~amd64 ~x86
 LICENSE=BSD
 RDEPEND=!sys-infiniband/dapl
 SLOT=0
-SRC_URI=https://bitbucket.org/hroptatyr/dateutils/downloads/dateutils-0.3.4.tar.xz
+SRC_URI=https://bitbucket.org/hroptatyr/dateutils/downloads/dateutils-0.4.0.tar.xz
 _eclass_exported_funcs=src_configure:- src_compile:- src_test:-
-_md5_=aba45e577ed64fa764649a64a81a1c31
+_md5_=8d244467559f5291998dad53becd0b2d

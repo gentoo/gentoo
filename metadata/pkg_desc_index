@@ -1734,7 +1734,7 @@ app-misc/cw 1.0.16-r3: A non-intrusive real-time ANSI color wrapper for common u
 app-misc/cwiid 20110107-r2: Library, input driver, and utilities for the Nintendo Wiimote
 app-misc/dailystrips 1.0.28-r2: dailystrips automatically downloads your favorite online comics from the web
 app-misc/datefudge 1.17: A program (and preload library) to fake system date
-app-misc/dateutils 0.3.3 0.3.4 0.3.5: command line date and time utilities
+app-misc/dateutils 0.3.5 0.4.0: command line date and time utilities
 app-misc/datovka 3.0.3 3.0.3-r1: GUI to access Czech eGov "Datove schranky"
 app-misc/ddate 0.2.1: Perpetual date converter from gregorian to poee calendar
 app-misc/ddccontrol 0.4.2_p20140105-r1: DDCControl allows control of monitor parameters via DDC
@@ -4457,7 +4457,7 @@ dev-lang/spidermonkey 1.7.0-r3 1.8.5-r4 1.8.5-r5 17.0.0-r4 17.0.0-r5 24.2.0-r3: 
 dev-lang/squirrel 2.2.4-r1 2.2.4-r2: A interpreted language mainly used for games
 dev-lang/srf 1.0-r1: The Simple Recursive Functions programming language
 dev-lang/swi-prolog 6.6.6 7.2.3-r1 7.3.19 7.3.20 7.3.21: free, small, and standard compliant Prolog compiler
-dev-lang/swig 1.3.40-r2 2.0.9 2.0.12 3.0.2 3.0.4 3.0.5 3.0.6 3.0.7 3.0.8: Simplified Wrapper and Interface Generator
+dev-lang/swig 1.3.40-r2 2.0.9 2.0.12 3.0.5 3.0.8 3.0.10: Simplified Wrapper and Interface Generator
 dev-lang/tcc 0.9.26-r1 0.9.26-r2 0.9.26-r3 9999: A very small C compiler for ix86/amd64
 dev-lang/tcl 8.5.17 8.5.17-r100 8.6.4 8.6.5: Tool Command Language
 dev-lang/teyjus 2.0.2: Higher-order logic programming language Lambda Prolog
@@ -16697,7 +16697,7 @@ sys-apps/systemd-sysv-utils 208 212 215 216 217: sysvinit compatibility symlinks
 sys-apps/sysvinit 2.88-r7 2.88-r9: /sbin/init - parent of all processes
 sys-apps/tcp-wrappers 7.6.22-r1: TCP Wrappers
 sys-apps/texinfo 4.13-r2 5.2 6.0 6.1: The GNU info program and utilities
-sys-apps/the_silver_searcher 0.31.0: A code-searching tool similar to ack, but faster
+sys-apps/the_silver_searcher 0.31.0 0.32.0: A code-searching tool similar to ack, but faster
 sys-apps/timer_entropyd 0.2: A timer-based entropy generator
 sys-apps/tomoyo-tools 2.5.0_p20130214: TOMOYO Linux tools
 sys-apps/toybox 0.6.0 0.6.1 0.7.0 0.7.1 9999: Common linux commands in a multicall binary
@@ -17406,7 +17406,7 @@ sys-process/parallel 20150522 20160222 20160522: A shell tool for executing jobs
 sys-process/pidof-bsd 20050501-r4: pidof(1) utility for *BSD
 sys-process/pkill-darwin 1.0: pgrep(1) and pkill(1) for Darwin
 sys-process/prll 0.6.2: A utility for parallelizing execution of shell functions
-sys-process/procenv 0.39 0.45: command-line utility to show process environment
+sys-process/procenv 0.45 0.46: command-line utility to show process environment
 sys-process/procexp 1.5.277: Graphical process explorer
 sys-process/procps 3.3.9-r2 3.3.10-r1 3.3.11-r3: standard informational utilities and process-handling tools
 sys-process/psinfo 0.12: Process information and statistics using the kernel /proc interface
