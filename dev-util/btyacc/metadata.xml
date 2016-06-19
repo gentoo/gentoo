@@ -2,14 +2,14 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 <maintainer type="person">
-<email>patrick@gentoo.org</email>
-<name>Patrick Lauer</name>
-<description>Proxy maintainer. CC him on bugs</description>
-</maintainer>
-<maintainer type="person">
 <email>wlt@obsidian-studios.com</email>
 <name>William L. Thomson Jr.</name>
 <description>Maintainer. Assign bugs to him</description>
+</maintainer>
+<maintainer type="person">
+<email>patrick@gentoo.org</email>
+<name>Patrick Lauer</name>
+<description>Proxy maintainer. CC him on bugs</description>
 </maintainer>
 <maintainer type="project">
 <email>proxy-maint@gentoo.org</email>

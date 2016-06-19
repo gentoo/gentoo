@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+	<maintainer type="project">
+		<email>vim@gentoo.org</email>
+		<name>Gentoo Vim Project</name>
+	</maintainer>
 	<maintainer type="person">
 		<email>ferret@explodingferret.com</email>
 		<description>Please Cc: James Noble (ferret on IRC, not a Gentoo
 			developer) on any bugs related to this package as he knows more
 			about it than me.</description>
-	</maintainer>
-	<maintainer type="project">
-		<email>vim@gentoo.org</email>
-		<name>Gentoo Vim Project</name>
 	</maintainer>
 	<use>
 		<flag name="html">Install HTML documentation</flag>

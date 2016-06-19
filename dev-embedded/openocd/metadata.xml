@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+	<maintainer type="project">
+		<email>embedded@gentoo.org</email>
+		<name>Embedded Gentoo</name>
+	</maintainer>
 	<maintainer type="person">
 		<email>fercerpav@gmail.com</email>
 		<name>Paul Fertser</name>
 		<description>Upstream contact. CC him on bugs</description>
-	</maintainer>
-	<maintainer type="project">
-		<email>embedded@gentoo.org</email>
-		<name>Embedded Gentoo</name>
 	</maintainer>
 	<use>
 		<flag name="blaster">Enable support for Altera USE-Blaster</flag>
