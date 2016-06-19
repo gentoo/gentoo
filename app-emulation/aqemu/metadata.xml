@@ -2,12 +2,12 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>maksbotan@gentoo.org</email>
-		<description>Proxy maintainer (CC on bugs)</description>
-	</maintainer>
-	<maintainer type="person">
 		<email>andreis.vinogradovs@gmail.com</email>
 		<description>Proxied maintainer (assign bugs)</description>
+	</maintainer>
+	<maintainer type="person">
+		<email>maksbotan@gentoo.org</email>
+		<description>Proxy maintainer (CC on bugs)</description>
 	</maintainer>
 	<maintainer type="project">
 		<email>proxy-maint@gentoo.org</email>
