@@ -5,6 +5,6 @@
     <email>slis@gentoo.org</email>
   </maintainer>
   <upstream>
-    <remote-id type="pypi">aldryn-common</remote-id>
+    <remote-id type="pypi">aldryn-boilerplates</remote-id>
   </upstream>
 </pkgmetadata>
