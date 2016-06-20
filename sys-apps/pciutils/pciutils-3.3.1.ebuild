@@ -58,6 +58,7 @@ pemake() {
 		CROSS_COMPILE="${CHOST}-" \
 		CC="$(tc-getCC)" \
 		AR="$(tc-getAR)" \
+		PKG_CONFIG="$(tc-getPKG_CONFIG)" \
 		RANLIB="$(tc-getRANLIB)" \
 		DNS=$(usex dns) \
 		IDSDIR='$(SHAREDIR)/misc' \
