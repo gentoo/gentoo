@@ -1893,7 +1893,7 @@ app-misc/roadnav 0.19-r1: Roadnav is a street map application with routing and G
 app-misc/rox-filer 2.11: ROX-Filer a drag and drop spatial file manager
 app-misc/run-mailcap 3.39_p1 3.52_p1: Execute programs via entries in the mailcap file
 app-misc/scope 0.04-r1: Serial Line Analyser
-app-misc/screen 4.3.1-r1 9999: Full-screen window manager that multiplexes physical terminals between several processes
+app-misc/screen 4.3.1-r1 4.4.0 9999: screen manager with VT100/ANSI terminal emulation
 app-misc/screenfetch 2.7.7 3.2.2 3.6.5 3.7.0 9999: Bash Screenshot Information Tool
 app-misc/screenie 1.30.0-r1: screen(1) frontend that is designed to be a session handler
 app-misc/scrub 2.5.2 2.6.1: Write patterns on disk/file
@@ -6879,8 +6879,10 @@ dev-python/PyZilla 0.1.0-r1: Python wrapper for the BugZilla XML-RPC API
 dev-python/RecSQL 0.7.8: Simple SQL analysis of python records
 dev-python/SaltTesting 2014.8.5 2015.2.16 2015.5.8 2015.7.10 2016.5.11: Required testing tools needed in the several Salt Stack projects
 dev-python/SchemaObject 0.5.3: A simple Python object interface to a MySQL database schema
+dev-python/URLObject 2.4.0: A utility class for manipulating URLs
 dev-python/WSME 0.6.2 0.8.0: Simplify the writing of REST APIs, and extend them with additional protocols.
 dev-python/XenAPI 1.2: Xen API SDK, for communication with Citrix XenServer and Xen Cloud Platform
+dev-python/YURL 0.13: Yurl is the replacement of built in python urlparse module
 dev-python/aadict 0.2.2: An auto-attribute dict (and a couple of other useful dict functions)
 dev-python/abstract_rendering 0.5.1: Rendering as a binning process
 dev-python/addons 0.7: Dynamically extend other objects (formerly ObjectRoles)
@@ -6889,7 +6891,10 @@ dev-python/adodb-py 2.20-r1: Active Data Objects Data Base library for Python
 dev-python/aioeventlet 0.4 0.5.1: asyncio event loop scheduling callbacks in eventlet
 dev-python/aiohttp 0.20.2 0.21.4 0.21.5 0.21.6: http client/server for asyncio
 dev-python/alabaster 0.7.6 0.7.7: A configurable sidebar-enabled Sphinx theme
+dev-python/aldryn-boilerplates 0.7.4: Allows re-usable apps to provide sets of templates and staticfiles
 dev-python/aldryn-bootstrap3 0.5.1 1.0.7: django CMS plugins for bootstrap3 markup
+dev-python/aldryn-common 1.0.3: django CMS plugins with common utilities
+dev-python/aldryn-search 0.2.12: An extension to django CMS to provide multilingual Haystack indexes
 dev-python/alembic 0.7.7 0.8.2 0.8.4 0.8.5 0.8.6: database migrations tool, written by the author of SQLAlchemy
 dev-python/algopy 0.5.1 0.5.2 0.5.3: Taylor Arithmetic Computation and Algorithmic Differentiation
 dev-python/amodem 1.12.0 1.13: Transmit data between two computers using audio
@@ -7122,6 +7127,9 @@ dev-python/django-sekizai 0.8.2 0.9.0: Django Template Blocks with extra functio
 dev-python/django-select2 3.2.1 4.0.0 4.2.2 4.3.1 5.5.0: A Django integration of Select2
 dev-python/django-setuptest 0.1.6 0.2.1: Simple test suite enabling Django app testing via setup.py
 dev-python/django-social-auth 0.7.28: An easy to setup social authentication/authorization mechanism for Django projects
+dev-python/django-sortedm2m 1.3.0: Drop-in replacement for django's many to many field with sorted relations
+dev-python/django-spurl 0.6.4: A Django template library for manipulating URLs
+dev-python/django-standard-form 1.1.1: Quick and simple django templatetags for displaying forms
 dev-python/django-tables2 1.1.0 1.1.1 1.1.2: Table/data-grid framework for Django
 dev-python/django-tagging 0.3.4 0.3.6 0.4 0.4.1: Generic tagging application for Django
 dev-python/django-tastypie 0.9.15 0.13.3: A flexible and capable API layer for django utilising serialisers
@@ -17241,7 +17249,7 @@ sys-kernel/dracut 034-r4 040-r3 041-r3 043-r2 044: Generic initramfs generation 
 sys-kernel/genkernel 3.4.45.1 3.4.48 3.4.49.2 3.4.50 3.4.51.4 3.4.52.2 3.4.52.3 3.4.52.4 3.4.52.4-r1 3.5.0.0 3.5.0.1 3.5.0.2 9999: Gentoo automatic kernel building scripts
 sys-kernel/genkernel-next 63 64: Gentoo automatic kernel building scripts, reloaded
 sys-kernel/gentoo-sources 3.4.110 3.4.111 3.4.112 3.4.9999 3.10.95 3.10.101 3.12.52-r1 3.12.60 3.12.9999 3.14.58-r1 3.14.69 3.14.70 3.14.71 3.14.72 3.18.25-r1 3.18.33 3.18.34 3.18.35 4.1.15-r1 4.1.24 4.1.25 4.1.26 4.4.6 4.4.12 4.4.13 4.5.6 4.5.7 4.6.0 4.6.1 4.6.2: Full sources including the Gentoo patchset for the 4.6 kernel tree
-sys-kernel/git-sources 4.7_rc1 4.7_rc2 4.7_rc3: The very latest -git version of the Linux kernel
+sys-kernel/git-sources 4.7_rc1 4.7_rc2 4.7_rc3 4.7_rc4: The very latest -git version of the Linux kernel
 sys-kernel/hardened-sources 4.3.3-r4 4.4.2 4.4.8-r1 4.5.5-r1 4.5.5-r2 4.5.6 4.5.7 4.5.7-r1 4.5.7-r2: Hardened kernel sources (kernel series 4.5)
 sys-kernel/kccmp 0.3: A simple tool for comparing two linux kernel .config files
 sys-kernel/kergen 0.1.1 0.1.3: Kernel config generator
@@ -17862,7 +17870,7 @@ www-misc/visitors 0.7-r1: Fast web log analyzer
 www-misc/wsmake 0.6.4: Website Pre-processor
 www-misc/xxv 1.6.1-r1: WWW Admin for the VDR (Video Disk Recorder)
 www-misc/zoneminder 1.27.0 1.28.0 1.28.1: ZoneMinder allows you to capture, analyse, record and monitor any cameras attached to your system
-www-plugins/adobe-flash 11.2.202.621 11.2.202.626: Adobe Flash Player
+www-plugins/adobe-flash 11.2.202.626: Adobe Flash Player
 www-plugins/chrome-binary-plugins 51.0.2704.103 52.0.2743.41_beta 53.0.2767.4_alpha: Binary plugins from Google Chrome for use in Chromium
 www-plugins/freshplayerplugin 0.3.1-r2 0.3.2 0.3.3 0.3.3-r1 0.3.3-r2 0.3.4 0.3.4-r1: PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers
 www-plugins/gecko-mediaplayer 1.0.8 1.0.9: A browser plugin that uses GNOME MPlayer
