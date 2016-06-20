@@ -49,7 +49,8 @@ S="${WORKDIR}/${ROOT_PN}-${PV}"
 
 src_prepare() {
 	epatch \
-		"${FILESDIR}/${PN}-6.00.01-makehtml.patch"
+		"${FILESDIR}/${PN}-6.00.01-makehtml.patch" \
+		"${FILESDIR}/${PN}-6.04.06-tightlist.patch"
 
 	# prefixify the configure script
 	sed -i \
