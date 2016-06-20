@@ -20,5 +20,9 @@
 		the process name</flag>
 	<flag name="webinterface">Install dependencies needed for the web
 		interface</flag>
+	<flag name="console">Enable default console UI</flag>
+	<flag name="linguas_nap">Neapolitan locale</flag>
+	<flag name="linguas_iu">Inuktitut locale</flag>
+	<flag name="linguas_pms">Piemontese locale</flag>
 </use>
 </pkgmetadata>
