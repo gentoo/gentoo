@@ -4,17 +4,15 @@
 
 EAPI=5
 
-EGIT_REPO_URI="git://git.savannah.gnu.org/screen.git"
-EGIT_CHECKOUT_DIR="${WORKDIR}/${P}" # needed for setting S later on
-
-inherit eutils flag-o-matic toolchain-funcs pam autotools user git-r3
+inherit autotools eutils flag-o-matic pam toolchain-funcs user
 
 DESCRIPTION="screen manager with VT100/ANSI terminal emulation"
 HOMEPAGE="https://www.gnu.org/software/screen/"
+SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~sparc-fbsd ~x86-fbsd ~hppa-hpux ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="debug nethack pam selinux multiuser"
 
 CDEPEND="
@@ -25,7 +23,11 @@ RDEPEND="${CDEPEND}
 DEPEND="${CDEPEND}
 	sys-apps/texinfo"
 
-S="${WORKDIR}"/${P}/src
+# Patches:
+# - Don't use utempter even if it is found on the system.
+PATCHES=(
+	"${FILESDIR}"/${PN}-4.3.0-no-utempter.patch
+)
 
 pkg_setup() {
 	# Make sure utmp group exists, as it's used later on.
@@ -33,8 +35,8 @@ pkg_setup() {
 }
 
 src_prepare() {
-	# Don't use utempter even if it is found on the system
-	epatch "${FILESDIR}"/${PN}-4.3.0-no-utempter.patch
+	# Apply patches.
+	epatch "${PATCHES[@]}"
 
 	# sched.h is a system header and causes problems with some C libraries
 	mv sched.h _sched.h || die
@@ -46,9 +48,13 @@ src_prepare() {
 		-e "s:/usr/local/screens:${EPREFIX}/tmp/screen:g" \
 		-e "s:/local/etc/screenrc:${EPREFIX}/etc/screenrc:g" \
 		-e "s:/etc/utmp:${EPREFIX}/var/run/utmp:g" \
-		-e "s:/local/screens/S-:${EPREFIX}/tmp/screen/S-:g" \
+		-e "s:/local/screens/S\\\-:${EPREFIX}/tmp/screen/S\\\-:g" \
 		doc/screen.1 \
 		|| die
+
+	if [[ ${CHOST} == *-darwin* ]] ; then
+		sed -i -e '/^#define UTMPOK/s/define/undef/' acconfig.h || die
+	fi
 
 	# reconfigure
 	eautoreconf
@@ -57,7 +63,13 @@ src_prepare() {
 src_configure() {
 	append-cppflags "-DMAXWIN=${MAX_SCREEN_WINDOWS:-100}"
 
-	[[ ${CHOST} == *-solaris* ]] && append-libs -lsocket -lnsl
+	if [[ ${CHOST} == *-solaris* ]] ; then
+		# https://lists.gnu.org/archive/html/screen-devel/2014-04/msg00095.html
+		append-cppflags -D_XOPEN_SOURCE \
+			-D_XOPEN_SOURCE_EXTENDED=1 \
+			-D__EXTENSIONS__
+		append-libs -lsocket -lnsl
+	fi
 
 	use nethack || append-cppflags "-DNONETHACK"
 	use debug && append-cppflags "-DDEBUG"
@@ -67,12 +79,15 @@ src_configure() {
 		--with-sys-screenrc="${EPREFIX}/etc/screenrc" \
 		--with-pty-mode=0620 \
 		--with-pty-group=5 \
+		--enable-rxvt_osc \
 		--enable-telnet \
+		--enable-colors256 \
 		$(use_enable pam)
 }
 
 src_compile() {
 	LC_ALL=POSIX emake comm.h term.h
+	emake osdef.h
 
 	emake -C doc screen.info
 	default
@@ -97,7 +112,7 @@ src_install() {
 
 	dodir /etc/tmpfiles.d
 	echo "d /tmp/screen ${tmpfiles_perms} root ${tmpfiles_group}" \
-		>"${ED}"/etc/tmpfiles.d/screen.conf
+		> "${ED}"/etc/tmpfiles.d/screen.conf
 
 	insinto /usr/share/screen
 	doins terminfo/{screencap,screeninfo.src}
@@ -109,7 +124,7 @@ src_install() {
 	pamd_mimic_system screen auth
 
 	dodoc \
-		README ChangeLog INSTALL TODO NEWS* \
+		README ChangeLog INSTALL TODO NEWS* patchlevel.h \
 		doc/{FAQ,README.DOTSCREEN,fdpat.ps,window_to_display.ps}
 
 	doman doc/screen.1
@@ -137,5 +152,5 @@ pkg_postinst() {
 		chgrp ${tmpfiles_group} "${rundir}"
 	fi
 
-	ewarn "This revision changes the screen socket location to /run/screen."
+	ewarn "This revision changes the screen socket location to ${rundir}"
 }
