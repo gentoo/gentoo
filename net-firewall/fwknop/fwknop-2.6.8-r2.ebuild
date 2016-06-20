@@ -48,8 +48,8 @@ DOCS=( AUTHORS ChangeLog README.md )
 
 DISABLE_AUTOFORMATTING=1
 DOC_CONTENTS="
-Example configuration files were installed to /etc/fwknopd directory.
-Please edit them to fit your needs and then remove the .example suffix.
+Example configuration files were installed to '${EPREFIX}/etc/fwknopd/'.
+Please edit them to suit your needs and then remove the .example suffix.
 
 fwknopd supports several backends: firewalld, iptables, ipfw, pf, ipf.
 You can set the desired backend via FIREWALL_EXE option in fwknopd.conf
