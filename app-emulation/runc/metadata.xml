@@ -9,6 +9,11 @@
 		<email>cardoe@gentoo.org</email>
 		<name>Doug Goldstein</name>
 	</maintainer>
+	<use>
+		<flag name="apparmor">
+			Enable AppArmor support.
+		</flag>
+	</use>
 	<upstream>
 		<remote-id type="github">opencontainers/runc</remote-id>
 	</upstream>
