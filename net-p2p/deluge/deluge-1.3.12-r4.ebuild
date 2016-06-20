@@ -84,8 +84,8 @@ esetup.py() {
 	# Override this call from the distutils-r1 eclass.
 	# This does not respect the distutils-r1 API. DONOT copy this example.
 	set -- "${PYTHON}" setup.py "$@"
-    echo "$@"
-    "$@" || die
+	echo "$@"
+	"$@" || die
 }
 
 python_install_all() {
