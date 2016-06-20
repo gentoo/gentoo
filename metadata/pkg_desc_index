@@ -6441,7 +6441,7 @@ dev-perl/UNIVERSAL-can 1.201.207.260-r1 1.201.401.240 1.201.403.280: Hack around
 dev-perl/UNIVERSAL-isa 1.201.207.260-r1 1.201.506.140: Attempt to recover from people calling UNIVERSAL::isa as a function
 dev-perl/UNIVERSAL-moniker 0.80.0-r1: adds a moniker to every class or module
 dev-perl/UNIVERSAL-require 0.160.0 0.180.0: UNIVERSAL::require - require() modules from a variable
-dev-perl/URI 1.600.0-r1 1.680.0 1.690.0 1.710.0: Uniform Resource Identifiers (absolute and relative)
+dev-perl/URI 1.600.0-r1 1.710.0: Uniform Resource Identifiers (absolute and relative)
 dev-perl/URI-Encode 0.90.0 1.1.0: Simple percent Encoding/Decoding
 dev-perl/URI-Fetch 0.90.0-r1 0.110.0: Smart URI fetching/caching
 dev-perl/URI-Find 20111103.0.0-r1 20140709.0.0: Find URIs in plain text
