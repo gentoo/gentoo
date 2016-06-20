@@ -20,7 +20,7 @@ LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~ia64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris"
 
-IUSE="doc examples emacs test"
+IUSE="doc emacs test"
 
 RDEPEND="
 	emacs? ( virtual/emacs )
@@ -64,7 +64,6 @@ python_test() {
 python_install_all() {
 	local DOCS=( CHANGES.rst README.txt ToDo.txt USAGE.txt )
 	use doc && local HTML_DOCS=( docs/build/html/. )
-	use examples && local EXAMPLES=( Demos/. )
 	distutils-r1_python_install_all
 
 	if use emacs; then
