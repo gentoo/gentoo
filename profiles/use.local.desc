@@ -2203,6 +2203,7 @@ dev-ml/dose3:parmap - Adds multi-core CPU support via dev-ml/parmap.
 dev-ml/dose3:rpm4 - Adds support for handling rpm4 files.
 dev-ml/dose3:zip - Adds support for handling zip files.
 dev-ml/eliom:ppx - Enable PPX syntax extension support.
+dev-ml/js_of_ocaml:async - Enable support of dev-ml/async_kernel.
 dev-ml/js_of_ocaml:deriving - Enable dev-ml/deriving support for improving the type safety.
 dev-ml/js_of_ocaml:ppx - Enables the ppx syntax extension
 dev-ml/js_of_ocaml:ppx-deriving - Enables deriving support through ppx syntax extensions.
