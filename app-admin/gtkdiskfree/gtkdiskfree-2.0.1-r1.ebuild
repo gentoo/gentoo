@@ -12,7 +12,7 @@ DESCRIPTION="Graphical tool to show free disk space"
 HOMEPAGE="https://gitlab.com/mazes_80/gtkdiskfree"
 SRC_URI="mirror://gentoo/${P}.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="amd64 ~ia64 ~ppc ~ppc64 ~sparc x86"
 IUSE="nls"
