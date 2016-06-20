@@ -254,8 +254,9 @@ dev-python/buildutils
 kde-apps/pairs
 
 # Alexis Ballier <aballier@gentoo.org> (24 May 2016)
-# API change, breaks e.g. js_of_ocaml
+# API change, breaks e.g. ocsigenserver
 >=dev-ml/tyxml-4
+>=dev-ml/js_of_ocaml-2.8
 
 # Michał Górny <mgorny@gentoo.org> (24 May 2016)
 # No longer maintained upstream, no longer works with libzpaq-7*.
