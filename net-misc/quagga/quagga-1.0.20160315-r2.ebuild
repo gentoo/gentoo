@@ -36,7 +36,8 @@ RDEPEND="${COMMON_DEPEND}
 
 PATCHES=(
 	"${FILESDIR}/${PN}-0.99.22.4-ipctl-forwarding.patch"
-	"${FILESDIR}/${PN}-1.0.20160315-ripd-null-pointer-fix.patch"
+	"${FILESDIR}/${P}-ripd-null-pointer-fix.patch"
+	"${FILESDIR}/${P}-ospfd-dangling-pointer-fix.patch"
 )
 
 DISABLE_AUTOFORMATTING=1
