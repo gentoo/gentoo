@@ -1,14 +1,14 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 inherit eutils systemd toolchain-funcs
 
 DESCRIPTION="A tool for dynamically adjusting the nice-level of processes"
-HOMEPAGE="http://thermal.cnde.iastate.edu/~sdh4/verynice/"
-SRC_URI="http://thermal.cnde.iastate.edu/~sdh4/verynice/down/${P}.tar.gz"
+HOMEPAGE="https://web.archive.org/web/20130621090315/http://thermal.cnde.iastate.edu/~sdh4/verynice/"
+SRC_URI="http://gentoo/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -18,7 +18,7 @@ IUSE=""
 S=${WORKDIR}/${PN}
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-build.patch
+	eapply "${FILESDIR}"/${P}-build.patch
 }
 
 src_compile() {
