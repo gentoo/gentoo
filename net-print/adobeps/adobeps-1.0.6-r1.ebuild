@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -20,7 +20,7 @@ IUSE="cups"
 DEPEND="app-arch/cabextract"
 RDEPEND="cups? ( >=net-print/cups-1.2 )"
 
-IUSE_LINGUAS=( en da de es fi fr it ja ko nl no pt_BR se zh_CN )
+IUSE_LINGUAS=( en da de es fi fr it ja ko nl no pt_BR sv zh_CN )
 IUSE_FILES=( winsteng winstDan winstger winstspa winstfin winstfre winstita
 	winstjpn winstkor winstdut winstnor winstbrz winstswe Winstchs ) # winstcht
 
