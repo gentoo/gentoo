@@ -342,12 +342,6 @@ net-libs/hubbub
 # Masked for removal on 20160519
 games-sports/toycars
 
-# Sergey Popov <pinkbyte@gentoo.org> (19 Apr 2016)
-# Security mask, wrt bug #577156
-# Should be kept in tree for some time
-# for users, that may experience problems with new versions
-<net-misc/quagga-1.0.20160315
-
 # Andreas K. Hüttel <dilfridge@gentoo.org> (16 Apr 2016)
 # Masked because of security bug 580210
 =www-misc/monitorix-3.6.0
