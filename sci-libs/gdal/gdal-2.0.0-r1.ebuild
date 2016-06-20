@@ -252,7 +252,7 @@ src_configure() {
 
 src_compile() {
 	if use perl; then
-		rm "${S}"/swig/perl/*_wrap.cpp
+		rm "${S}"/swig/perl/*_wrap.cpp || die
 		emake -C "${S}"/swig/perl generate
 	fi
 
@@ -268,7 +268,7 @@ src_compile() {
 	use doc && emake docs
 
 	compile_python() {
-		rm -f swig/python/*_wrap.cpp
+		rm -f swig/python/*_wrap.cpp || die
 		emake -C swig/python generate
 		emake -C swig/python build
 	}
