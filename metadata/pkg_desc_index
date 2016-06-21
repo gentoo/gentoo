@@ -211,7 +211,7 @@ app-admin/syslog-ng 3.4.8 3.6.2 3.6.4 3.7.2 3.7.3: syslog replacement with advan
 app-admin/syslog-summary 1.14-r1: Summarizes the contents of a syslog log file
 app-admin/syslogread 0.92-r1: Syslog message handling tools
 app-admin/sysrqd 14: daemon providing access to the kernel sysrq functions via network
-app-admin/sysstat 11.0.2 11.2.2 11.2.3 11.2.4 11.3.3 11.3.4: System performance tools for Linux
+app-admin/sysstat 11.0.2 11.2.2 11.2.3 11.2.4 11.2.4-r1 11.3.3 11.3.4 11.3.4-r1: System performance tools for Linux
 app-admin/system-config-printer 1.4.8: GNOME frontend for a Red Hat's printer administration tool
 app-admin/system-tools-backends 2.10.2: Tools aimed to make easy the administration of UNIX systems
 app-admin/systemrescuecd-x86 4.4.1 4.5.0 4.5.1 4.5.2 4.5.3 4.5.4 4.6.0 4.6.1 4.7.0 4.7.1 4.7.2: The .iso image of SystemRescueCD rescue disk, x86 (+ amd64) variant
