@@ -23,7 +23,7 @@ RESTRICT="installsources"
 DEPEND=">=dev-ml/findlib-1.0
 		pcre? ( >=dev-ml/pcre-ocaml-5:= )
 		>=dev-lang/ocaml-3.10.2:=[ocamlopt?]
-		tk? ( || ( dev-ml/labltk:= <dev-lang/ocaml-4.02[tk] ) )
+		tk? ( || ( dev-ml/labltk <dev-lang/ocaml-4.02[tk] ) )
 		cryptokit? ( dev-ml/cryptokit:= )
 		gtk? ( >=dev-ml/lablgtk-2:= )
 		ssl? ( >=dev-ml/ocaml-ssl-0.4:= )
