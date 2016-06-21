@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -17,7 +17,7 @@ SLOT="0/${PV}"
 KEYWORDS="~amd64"
 IUSE=""
 
-DEPEND="|| ( dev-ml/camlp4:= <dev-lang/ocaml-4.02.0 )"
+DEPEND="|| ( dev-ml/camlp4 <dev-lang/ocaml-4.02.0 )"
 RDEPEND="${DEPEND}"
 
 DOCS=( CHANGES.md README.md )

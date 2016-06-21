@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -16,7 +16,7 @@ KEYWORDS="~amd64"
 IUSE="+ocamlopt type-conv"
 
 DEPEND=">=dev-lang/ocaml-3.12:=[ocamlopt?]
-	|| ( dev-ml/camlp4:= <dev-lang/ocaml-4.02.0 )
+	|| ( dev-ml/camlp4 <dev-lang/ocaml-4.02.0 )
 	type-conv? ( >=dev-ml/type-conv-108:= )"
 RDEPEND="${DEPEND}"
 
