@@ -4570,7 +4570,7 @@ dev-libs/girara 0.2.2 0.2.3 0.2.4 0.2.5 9999: A library that implements a user i
 dev-libs/gjs 1.44.0: Javascript bindings for GNOME
 dev-libs/glib 1.2.10-r6 2.44.1-r1 2.46.2-r2 2.46.2-r3 2.48.0 2.48.0-r1: The GLib library of C routines
 dev-libs/gmime 2.6.20 2.6.20-r1 2.6.20-r2 2.6.20-r3: Utilities for creating and parsing messages using MIME
-dev-libs/gmp 4.3.2-r1 5.1.3-r1 6.0.0a 6.1.0: Library for arithmetic on arbitrary precision integers, rational numbers, and floating-point numbers
+dev-libs/gmp 4.3.2-r1 6.0.0a 6.1.0 6.1.1: Library for arithmetic on arbitrary precision integers, rational numbers, and floating-point numbers
 dev-libs/gnulib 2009.03.03.14.07.45-r1 2013.10.28.22.33.52 9999-r1: Gnulib is a library of common routines intended to be shared at the source level
 dev-libs/go-fuse 0_p20140812-r1 0_p20150422 9999: native bindings for the FUSE kernel module
 dev-libs/go-usb 9999: CGO bindings for libusb
