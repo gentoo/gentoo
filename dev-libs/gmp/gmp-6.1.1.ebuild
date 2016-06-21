@@ -1,30 +1,31 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI="4"
+EAPI="5"
 
-inherit eutils libtool toolchain-funcs multilib-minimal
+inherit flag-o-matic eutils libtool multilib-minimal
 
 MY_PV=${PV/_p*}
+MY_PV=${MY_PV/_/-}
 MY_P=${PN}-${MY_PV}
 PLEVEL=${PV/*p}
 DESCRIPTION="Library for arithmetic on arbitrary precision integers, rational numbers, and floating-point numbers"
 HOMEPAGE="http://gmplib.org/"
-SRC_URI="mirror://gnu/${PN}/${MY_P}.tar.xz
-	ftp://ftp.gmplib.org/pub/${MY_P}/${MY_P}.tar.xz
+SRC_URI="ftp://ftp.gmplib.org/pub/${MY_P}/${MY_P}.tar.xz
+	mirror://gnu/${PN}/${MY_P}.tar.xz
 	doc? ( http://gmplib.org/${PN}-man-${MY_PV}.pdf )"
 
-LICENSE="LGPL-3"
-SLOT="0"
-KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
-IUSE="doc cxx pgo static-libs"
+LICENSE="|| ( LGPL-3+ GPL-2+ )"
+# The subslot reflects the C & C++ SONAMEs.
+SLOT="0/10.4"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
+IUSE="+asm doc cxx pgo static-libs"
 
 DEPEND="sys-devel/m4
 	app-arch/xz-utils"
 RDEPEND=""
 
-S=${WORKDIR}/${MY_P}
+S=${WORKDIR}/${MY_P%a}
 
 DOCS=( AUTHORS ChangeLog NEWS README doc/configuration doc/isa_abi_headache )
 HTML_DOCS=( doc )
@@ -32,10 +33,11 @@ MULTILIB_WRAPPED_HEADERS=( /usr/include/gmp.h )
 
 src_prepare() {
 	[[ -d ${FILESDIR}/${PV} ]] && EPATCH_SUFFIX="diff" EPATCH_FORCE="yes" epatch "${FILESDIR}"/${PV}
-	epatch "${FILESDIR}"/${PN}-4.1.4-noexecstack.patch
 
 	# note: we cannot run autotools here as gcc depends on this package
 	elibtoolize
+
+	epatch "${FILESDIR}"/${PN}-6.1.0-noexecstack-detect.patch
 
 	# GMP uses the "ABI" env var during configure as does Gentoo (econf).
 	# So, to avoid patching the source constantly, wrap things up.
@@ -64,8 +66,9 @@ multilib_src_configure() {
 
 	tc-export CC
 	ECONF_SOURCE="${S}" econf \
-		--localstatedir=/var/state/gmp \
+		--localstatedir="${EPREFIX}"/var/state/gmp \
 		--enable-shared \
+		$(use_enable asm assembly) \
 		$(use_enable cxx) \
 		$(use_enable static-libs static)
 }
@@ -104,12 +107,4 @@ multilib_src_install() {
 multilib_src_install_all() {
 	einstalldocs
 	use doc && cp "${DISTDIR}"/gmp-man-${MY_PV}.pdf "${D}"/usr/share/doc/${PF}/
-}
-
-pkg_preinst() {
-	preserve_old_lib /usr/$(get_libdir)/libgmp.so.3
-}
-
-pkg_postinst() {
-	preserve_old_lib_notify /usr/$(get_libdir)/libgmp.so.3
 }
