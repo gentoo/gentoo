@@ -21,7 +21,6 @@
       code in the C library (DO NOT ENABLE THIS IF YOU DON'T KNOW WHAT IT DOES)</flag>
     <flag name="mpx">Enable support for Intel Memory Protection Extensions (MPX)</flag>
     <flag name="mudflap">Add support for mudflap, a pointer use checking library</flag>
-    <flag name="multislot">Allow for multiple versions to be emerged at once for same CTARGET</flag>
     <flag name="nopie">Disable PIE support (NOT FOR GENERAL USE)</flag>
     <flag name="nossp">Disable SSP support (NOT FOR GENERAL USE)</flag>
     <flag name="objc">Build support for the Objective C code language</flag>
