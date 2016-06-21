@@ -131,7 +131,7 @@ else
 	LICENSE="GPL-2+ LGPL-2.1+ FDL-1.1+"
 fi
 
-IUSE="multislot regression-test vanilla"
+IUSE="regression-test vanilla"
 IUSE_DEF=( nls nptl )
 
 if [[ ${PN} != "kgcc64" && ${PN} != gcc-* ]] ; then
@@ -2141,10 +2141,6 @@ should_we_gcc_config() {
 	local curr_config_ver=$(env -i ROOT="${ROOT}" gcc-config -S ${curr_config} | awk '{print $2}')
 
 	local curr_branch_ver=$(get_version_component_range 1-2 ${curr_config_ver})
-
-	# If we're using multislot, just run gcc-config if we're installing
-	# to the same profile as the current one.
-	use multislot && return $([[ ${curr_config_ver} == ${GCC_CONFIG_VER} ]])
 
 	if [[ ${curr_branch_ver} == ${GCC_BRANCH_VER} ]] ; then
 		return 0
