@@ -1,0 +1,43 @@
+https://bugs.gentoo.org/580088
+https://bugs.freedesktop.org/show_bug.cgi?id=94231
+
+From c57842fa1f58104f5c5df7e46bb2d0a60de96ee3 Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Tue, 21 Jun 2016 12:18:15 -0400
+Subject: [PATCH] pull in sys/sysmacros.h when available
+
+This header provides major/minor/makedev funcs under most Linux C
+libs.  Pull it in to fix building with newer versions that drop the
+implicit include via sys/types.h.
+
+Signed-off-by: Mike Frysinger <vapier@gentoo.org>
+---
+ configure.ac   | 2 +-
+ libkms/linux.c | 3 +++
+ xf86drm.c      | 3 +++
+ 3 files changed, 7 insertions(+), 1 deletion(-)
+
+--- a/libkms/linux.c
++++ b/libkms/linux.c
+@@ -44,6 +44,9 @@
+ #ifdef HAVE_SYS_MKDEV_H
+ #include <sys/mkdev.h>
+ #endif
++#ifdef __linux__
++#include <sys/sysmacros.h>
++#endif
+ 
+ #include "libdrm_macros.h"
+ #include "internal.h"
+--- a/xf86drm.c
++++ b/xf86drm.c
+@@ -57,6 +57,9 @@
+ #ifdef HAVE_SYS_MKDEV_H
+ # include <sys/mkdev.h> /* defines major(), minor(), and makedev() on Solaris */
+ #endif
++#ifdef __linux__
++#include <sys/sysmacros.h>
++#endif
+ #include <math.h>
+ 
+ /* Not all systems have MAP_FAILED defined */
