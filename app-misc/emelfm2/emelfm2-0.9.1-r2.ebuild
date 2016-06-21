@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -28,7 +28,7 @@ COMMON_DEPEND="
 "
 RDEPEND="
 	${COMMON_DEPEND}
-	udisks? ( sys-fs/udisks:0 )
+	udisks? ( sys-fs/udisks:2 )
 "
 DEPEND="
 	${COMMON_DEPEND}
@@ -61,7 +61,7 @@ src_configure() {
 		$(usex nls I18N=1 I18N=0)
 		$(usex policykit WITH_POLKIT=1 WITH_POLKIT=0)
 		$(usex spell EDITOR_SPELLCHECK=1 EDITOR_SPELLCHECK=0)
-		$(usex udisks WITH_DEVKIT=1 WITH_DEVKIT=0)
+		$(usex udisks WITH_UDISKS=1 WITH_UDISKS=0)
 		DOCS_VERSION=1
 		STRIP=0
 		WITH_TRANSPARENCY=1
@@ -80,9 +80,9 @@ src_install() {
 	emake \
 		LIB_DIR="${D}/usr/$(get_libdir)" \
 		PREFIX="${D}/usr" \
+		XDG_DESKTOP_DIR="${D}/usr/share/applications" \
 		${myemelconf[@]} \
-		install \
-		$(usex nls install_i18n '')
+		install $(usex nls install_i18n '')
 
 	newicon icons/${PN}_48.png ${PN}.png
 }
