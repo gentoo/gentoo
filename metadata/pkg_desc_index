@@ -1754,7 +1754,7 @@ app-misc/egads 0.9.5: Entropy Gathering And Distribution System
 app-misc/eid-viewer-bin 4.0.7_p184 4.1.9: Graphical interface to the Belgian Electronic Identity Card
 app-misc/elasticsearch 1.7.4 1.7.5 2.1.1 2.1.2 2.2.0 2.2.2 2.3.0 2.3.1 2.3.2 2.3.3: Open Source, Distributed, RESTful, Search Engine
 app-misc/email2trac 2.6.2-r1 2.8.4 2.8.8: Utilities to convert emails to trac tickets
-app-misc/emelfm2 0.8.1 0.9.1 0.9.1-r1: A file manager that implements the popular two-pane design
+app-misc/emelfm2 0.9.1-r1 0.9.1-r2: A file manager that implements the popular two-pane design
 app-misc/empty 0.6.19b: Small shell utility, similar to expect(1)
 app-misc/enum 1.1-r1: Replacement for GNU seq and BSD jot
 app-misc/esekeyd 1.2.7: Multimedia key daemon that uses the Linux event interface
