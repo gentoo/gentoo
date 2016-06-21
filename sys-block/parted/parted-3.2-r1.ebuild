@@ -34,7 +34,8 @@ src_prepare() {
 	epatch \
 		"${FILESDIR}"/${PN}-3.2-devmapper.patch \
 		"${FILESDIR}"/${PN}-3.2-po4a-mandir.patch \
-		"${FILESDIR}"/${PN}-3.2-fix-resizing-FAT16.patch
+		"${FILESDIR}"/${PN}-3.2-fix-resizing-FAT16.patch \
+		"${FILESDIR}"/${PN}-3.2-sysmacros.patch
 
 	eautoreconf
 }

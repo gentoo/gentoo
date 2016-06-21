@@ -71,7 +71,7 @@ RDEPEND="
 	iptc? ( media-libs/libiptcdata )
 	iso? ( >=sys-libs/libosinfo-0.2.9:= )
 	jpeg? ( virtual/jpeg:0 )
-	upower? ( || ( >=sys-power/upower-0.9:= sys-power/upower-pm-utils ) )
+	upower? ( || ( >=sys-power/upower-0.9 sys-power/upower-pm-utils ) )
 	mp3? ( >=media-libs/taglib-1.6 )
 	networkmanager? ( >=net-misc/networkmanager-0.8 )
 	pdf? (

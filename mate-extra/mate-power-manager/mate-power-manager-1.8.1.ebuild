@@ -28,7 +28,7 @@ COMMON_DEPEND="app-text/rarian:0
 	>=dev-libs/glib-2.13:2
 	>=media-libs/libcanberra-0.10:0[gtk]
 	>=sys-apps/dbus-1:0
-	|| ( >=sys-power/upower-0.9.23:= >=sys-power/upower-pm-utils-0.9.23 )
+	|| ( >=sys-power/upower-0.9.23 >=sys-power/upower-pm-utils-0.9.23 )
 	>=x11-apps/xrandr-1.2:0
 	>=x11-libs/cairo-1:0
 	>=x11-libs/gdk-pixbuf-2.11:2
