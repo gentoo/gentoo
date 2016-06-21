@@ -30,7 +30,9 @@ S="${WORKDIR}/ipxe-${GIT_SHORT}/src"
 
 src_prepare() {
 	epatch "${FILESDIR}"/${P}-git-version.patch #482804
+}
 
+src_configure() {
 	cat <<-EOF > "${S}"/config/local/general.h
 #undef BANNER_TIMEOUT
 #define BANNER_TIMEOUT 0
@@ -42,10 +44,11 @@ EOF
 #define CONSOLE_VMWARE
 EOF
 	fi
+
+	tc-ld-disable-gold
 }
 
 src_compile() {
-	tc-ld-disable-gold
 	ipxemake() {
 		# Q='' makes the build verbose since that's what everyone loves now
 		emake Q='' \
