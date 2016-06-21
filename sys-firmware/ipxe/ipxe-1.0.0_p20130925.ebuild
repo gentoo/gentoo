@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit toolchain-funcs eutils
+inherit toolchain-funcs eutils savedconfig
 
 GIT_REV="cba22d36b77da53890bd65fdadd0e63925687af0"
 GIT_SHORT="cba22d3"
@@ -16,7 +16,7 @@ SRC_URI="https://git.ipxe.org/ipxe.git/snapshot/${GIT_REV}.tar.bz2 -> ${P}-${GIT
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE="iso lkrn +qemu undi usb vmware"
+IUSE="ipv6 iso lkrn +qemu undi usb vmware"
 
 DEPEND="dev-lang/perl
 	sys-libs/zlib
@@ -30,11 +30,15 @@ S="${WORKDIR}/ipxe-${GIT_SHORT}/src"
 
 src_prepare() {
 	epatch "${FILESDIR}"/${P}-git-version.patch #482804
+}
 
+src_configure() {
 	cat <<-EOF > "${S}"/config/local/general.h
 #undef BANNER_TIMEOUT
 #define BANNER_TIMEOUT 0
 EOF
+
+	use ipv6 && echo "#define NET_PROTO_IPV6" >> "${S}"/config/local/general.h
 
 	if use vmware; then
 		cat <<-EOF >> "${S}"/config/local/general.h
@@ -42,10 +46,13 @@ EOF
 #define CONSOLE_VMWARE
 EOF
 	fi
+
+	restore_config config/local/general.h
+
+	tc-ld-disable-gold
 }
 
 src_compile() {
-	tc-ld-disable-gold
 	ipxemake() {
 		# Q='' makes the build verbose since that's what everyone loves now
 		emake Q='' \
@@ -94,4 +101,6 @@ src_install() {
 	use undi && doins bin/*.kpxe
 	use usb && doins bin/*.usb
 	use lkrn && doins bin/*.lkrn
+
+	save_config config/local/general.h
 }
