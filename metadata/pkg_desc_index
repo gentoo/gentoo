@@ -8868,7 +8868,7 @@ dev-ruby/delayer-deferred 1.0.3: Ruby implementation of JSDeferred
 dev-ruby/dep_selector 0.1.1: constraint based package dependency resolver
 dev-ruby/deprecated 3.0.1-r2: A Ruby library for handling deprecated code
 dev-ruby/descendants_tracker 0.0.4: Module that adds descendant tracking to a class
-dev-ruby/did_you_mean 1.0.0 1.0.1: 'did you mean?'experience in Ruby
+dev-ruby/did_you_mean 1.0.0 1.0.1 1.0.2: 'did you mean?'experience in Ruby
 dev-ruby/diff-lcs 1.2.5 1.2.5-r1: Use the McIlroy-Hunt LCS algorithm to compute differences
 dev-ruby/dnsruby 1.59.1 1.59.2 1.59.3: A pure Ruby DNS client library
 dev-ruby/docile 1.1.5: Turns any Ruby object into a DSL
@@ -9120,7 +9120,7 @@ dev-ruby/rails_autolink 1.1.6: This is an extraction of the auto_link method fro
 dev-ruby/railties 3.2.22.2 4.0.13 4.1.15 4.2.6: Tools for creating, working with, and running Rails applications
 dev-ruby/rainbow 1.1.4-r1 2.0.0-r1 2.1.0: Colorize printed text on ANSI terminals
 dev-ruby/rake 0.9.6-r1 10.5.0 11.1.2 11.2.2-r1: Make-like scripting in Ruby
-dev-ruby/rake-compiler 0.9.2 0.9.2-r1 0.9.6 0.9.7 0.9.8 0.9.9: Provide a standard and simplified way to build and package Ruby extensions
+dev-ruby/rake-compiler 0.9.2 0.9.2-r1 0.9.9: Provide a standard and simplified way to build and package Ruby extensions
 dev-ruby/rake-remote_task 2.3.0 2.3.1: Extends Rake with remote task goodness
 dev-ruby/rash 0.4.0-r2: Rash is an extension to Hashie
 dev-ruby/rb-gsl 1.16.0.6: Ruby interface to GNU Scientific Library
@@ -9193,7 +9193,7 @@ dev-ruby/ruby-gtksourceview 2.2.3 2.2.3-r1 2.2.5 3.0.7: Ruby bindings for gtksou
 dev-ruby/ruby-gtksourceview3 2.2.3 2.2.3-r1 2.2.5 3.0.7: Ruby Gtk3 bindings
 dev-ruby/ruby-hmac 0.4.0-r1: A common interface to HMAC functionality as documented in RFC2104
 dev-ruby/ruby-inifile 2.0.0-r2: Small library to parse INI-files in Ruby
-dev-ruby/ruby-ldap 0.9.16-r1 0.9.17 0.9.18: A Ruby interface to some LDAP libraries
+dev-ruby/ruby-ldap 0.9.16-r1 0.9.17 0.9.18 0.9.19: A Ruby interface to some LDAP libraries
 dev-ruby/ruby-mp3info 0.8.8 0.8.9: A pure Ruby library for access to mp3 files (internal infos and tags)
 dev-ruby/ruby-net-ldap 0.14.0: Pure ruby LDAP client implementation
 dev-ruby/ruby-oci8 2.1.7 2.1.7-r1 2.1.8 2.2.1: A Ruby library for Oracle OCI8
