@@ -156,7 +156,7 @@ For other desktop environments, try one of the following:
 "
 
 pkg_pretend() {
-	if [[ $(tc-getCC)$ == *gcc* ]] && \
+	if [[ $(tc-getCC) == *gcc* ]] && \
 		[[ $(gcc-major-version)$(gcc-minor-version) -lt 48 ]]; then
 		die 'At least gcc 4.8 is required, see bugs: #535730, #525374, #518668.'
 	fi
@@ -188,7 +188,7 @@ pkg_setup() {
 
 src_prepare() {
 	epatch "${FILESDIR}/${PN}-system-ffmpeg-r2.patch"
-	epatch "${FILESDIR}/${PN}-system-jinja-r10.patch"
+	epatch "${FILESDIR}/${PN}-system-jinja-r11.patch"
 	epatch "${FILESDIR}/${PN}-widevine-r1.patch"
 	epatch "${FILESDIR}/${PN}-last-commit-position-r0.patch"
 	epatch "${FILESDIR}/${PN}-system-zlib-r0.patch"
@@ -231,6 +231,7 @@ src_prepare() {
 		'third_party/WebKit' \
 		'third_party/analytics' \
 		'third_party/angle' \
+		'third_party/angle/src/common/third_party/numerics' \
 		'third_party/angle/src/third_party/compiler' \
 		'third_party/angle/src/third_party/libXNVCtrl' \
 		'third_party/angle/src/third_party/murmurhash' \

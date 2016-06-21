@@ -18,7 +18,7 @@ KEYWORDS="~amd64 ~mips ~x86"
 IUSE="jemalloc jit static-libs"
 
 CDEPEND="
-	|| ( dev-libs/libedit sys-libs/readline:= )
+	|| ( dev-libs/libedit sys-libs/readline )
 	dev-libs/libpcre[jit?]
 	jemalloc? ( dev-libs/jemalloc )
 	sys-libs/ncurses:="

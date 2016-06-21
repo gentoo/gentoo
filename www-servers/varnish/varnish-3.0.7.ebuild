@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -18,7 +18,7 @@ KEYWORDS="amd64 ~mips x86"
 IUSE="doc jemalloc jit static-libs +tools"
 
 CDEPEND="
-	|| ( dev-libs/libedit sys-libs/readline:= )
+	|| ( dev-libs/libedit sys-libs/readline )
 	dev-libs/libpcre[jit?]
 	jemalloc? ( dev-libs/jemalloc )
 	tools? ( sys-libs/ncurses:= )"

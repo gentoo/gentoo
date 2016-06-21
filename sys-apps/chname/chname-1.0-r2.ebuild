@@ -1,6 +1,8 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
+
+EAPI=6
 
 inherit toolchain-funcs
 
@@ -10,19 +12,19 @@ SRC_URI="https://chname.googlecode.com/files/chname-1.0.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND=">=sys-kernel/linux-headers-2.6.16"
 RDEPEND=""
 
 src_compile() {
-	emake CC=$(tc-getCC) CFLAGS="${CFLAGS} ${LDFLAGS}" chname || die
+	emake CC=$(tc-getCC) CFLAGS="${CFLAGS} ${LDFLAGS}" "${PN}"
 }
 
 src_install() {
-	dobin chname
-	doman chname.1
+	dobin "${PN}"
+	doman "${PN}.1"
 }
 
 pkg_postinst() {

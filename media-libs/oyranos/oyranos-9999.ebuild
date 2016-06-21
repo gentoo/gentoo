@@ -18,10 +18,7 @@ IUSE="X cairo cups doc exif fltk jpeg qt4 qt5 raw scanner test tiff"
 #OY_LINGUAS="cs;de;eo;eu;fr;ru" #TODO
 
 COMMON_DEPEND="
-	|| (
-		=app-admin/elektra-0.7*:0[${MULTILIB_USEDEP}]
-		>=app-admin/elektra-0.8.4:0[${MULTILIB_USEDEP}]
-	)
+	>=app-admin/elektra-0.8.4:0[${MULTILIB_USEDEP}]
 	>=dev-libs/libxml2-2.9.1-r4[${MULTILIB_USEDEP}]
 	>=dev-libs/yajl-2.0.4-r1[${MULTILIB_USEDEP}]
 	>=media-libs/lcms-2.5:2[${MULTILIB_USEDEP}]
