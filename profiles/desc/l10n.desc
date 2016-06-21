@@ -1,0 +1,167 @@
+# Copyright 1999-2016 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+# This file contains descriptions of L10N USE_EXPAND flags.
+
+# Keep it sorted. Entries must be valid IETF language tags (BCP 47).
+
+# The following are considered duplicates. Use the generic language
+# tag without region subtag instead.
+# fy-NL - Western Frisian (Netherlands)
+# ga-IE - Irish (Ireland)
+# gu-IN - Gujarati (India)
+# hi-IN - Hindi (India)
+# hy-AM - Armenian (Armenia)
+# kn-IN - Kannada (India)
+# nb-NO - Norwegian Bokmål (Norway)
+# nn-NO - Norwegian Nynorsk (Norway)
+# pa-IN - Punjabi (India)
+# sv-SE - Swedish (Sweden)
+
+ach - Acoli
+af - Afrikaans
+am - Amharic
+an - Aragonese
+ar - Arabic
+as - Assamese
+ast - Asturian
+az - Azerbaijani
+be - Belarusian
+bg - Bulgarian
+bn - Bengali
+bn-BD - Bengali (Bangladesh)
+bn-IN - Bengali (India)
+bo - Tibetan
+br - Breton
+brx - Bodo (India)
+bs - Bosnian
+ca - Catalan
+ca-valencia - Catalan (Valencian)
+chr - Cherokee
+cs - Czech
+csb - Kashubian
+cy - Welsh
+da - Danish
+de - German
+de-1901 - German (traditional orthography)
+dgo - Dogri (individual language)
+doi - Dogri (macrolanguage)
+dz - Dzongkha
+el - Modern Greek
+en - English
+en-GB - English (United Kingdom)
+en-US - English (United States)
+en-ZA - English (South Africa)
+eo - Esperanto
+es - Spanish
+es-AR - Spanish (Argentina)
+es-CL - Spanish (Chile)
+es-ES - Spanish (Spain)
+es-MX - Spanish (Mexico)
+et - Estonian
+eu - Basque
+fa - Persian
+fi - Finnish
+fo - Faroese
+fr - French
+fy - Western Frisian
+ga - Irish
+gd - Scottish Gaelic
+gl - Galician
+gu - Gujarati
+gug - Paraguayan Guarani
+he - Hebrew
+hi - Hindi
+hr - Croatian
+hsb - Upper Sorbian
+hu - Hungarian
+hy - Armenian
+ia - Interlingua
+id - Indonesian
+is - Icelandic
+it - Italian
+ja - Japanese
+ka - Georgian
+kk - Kazakh
+km - Central Khmer
+kmr-Latn - Northern Kurdish (Latin script)
+kn - Kannada
+ko - Korean
+kok - Konkani (macrolanguage)
+ks - Kashmiri
+ku - Kurdish
+la - Latin
+lb - Luxembourgish
+lo - Lao
+lt - Lithuanian
+lv - Latvian
+mai - Maithili
+mk - Macedonian
+ml - Malayalam
+mn - Mongolian
+mni - Manipuri
+mr - Marathi
+ms - Malay (macrolanguage)
+my - Burmese
+nb - Norwegian Bokmål
+nds - Low German
+ne - Nepali
+nl - Dutch
+nn - Norwegian Nynorsk
+no - Norwegian
+nr - South Ndebele
+nso - Northern Sotho
+oc - Occitan
+om - Oromo
+or - Oriya (macrolanguage)
+pa - Punjabi
+pl - Polish
+pt - Portuguese
+pt-BR - Portuguese (Brazil)
+pt-PT - Portuguese (Portugal)
+rm - Romansh
+ro - Romanian
+ru - Russian
+rw - Kinyarwanda
+sa-IN - Sanskrit (India)
+sat - Santali
+sco - Scots
+sd - Sindhi
+si - Sinhala
+sid - Sidamo
+sk - Slovak
+sl - Slovenian
+son - Songhai languages
+sq - Albanian
+sr - Serbian
+sr-Latn - Serbian (Latin script)
+ss - Swati
+st - Southern Sotho
+sv - Swedish
+sw - Swahili (macrolanguage)
+sw-TZ - Swahili (Tanzania)
+syc - Classical Syriac
+ta - Tamil
+ta-LK - Tamil (Sri Lanka)
+te - Telugu
+tg - Tajik
+th - Thai
+tk - Turkmen
+tl - Tagalog
+tn - Tswana
+tr - Turkish
+ts - Tsonga
+tt - Tatar
+ug - Uyghur
+uk - Ukrainian
+ur-PK - Urdu (Pakistan)
+uz - Uzbek
+ve - Venda
+vi - Vietnamese
+wa - Walloon
+xh - Xhosa
+zh - Chinese
+zh-CN - Chinese (China)
+zh-TW - Chinese (Taiwan)
+zu - Zulu
