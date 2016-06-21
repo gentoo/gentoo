@@ -12,4 +12,4 @@ SLOT=0
 SRC_URI=mirror://gnu/parted/parted-3.2.tar.xz
 _eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	792f83d5ec9536cb5ccef375469d8bde	flag-o-matic	d270fa247153df66074f795fa42dba3e	libtool	4890219c51da247200223277f993e054	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	c9d9187f4caa4026a0ceddd8dfceb3c1
-_md5_=8d7e16225b4e3f25e24db2ddd9860a9b
+_md5_=58056a18e50d5c256ce599a6a541121d
