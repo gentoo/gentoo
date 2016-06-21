@@ -1,24 +1,26 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=5
+EAPI="5"
 
 inherit toolchain-funcs eutils savedconfig
 
-GIT_REV="cba22d36b77da53890bd65fdadd0e63925687af0"
-GIT_SHORT="cba22d3"
+GIT_REV="694c18addc0dfdf51369f6d598dd0c8ca4bf2861"
+GIT_SHORT=${GIT_REV:0:7}
 
 DESCRIPTION="Open source network boot (PXE) firmware"
-HOMEPAGE="http://ipxe.org"
+HOMEPAGE="http://ipxe.org/"
 SRC_URI="https://git.ipxe.org/ipxe.git/snapshot/${GIT_REV}.tar.bz2 -> ${P}-${GIT_SHORT}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+# TODO: Add arm/arm64 once figure out how to build w/out including
+# all the x86-specific drivers (that use I/O insns).
+KEYWORDS="-* ~amd64 ~x86"
 IUSE="efi ipv6 iso lkrn +qemu undi usb vmware"
 
-DEPEND="dev-lang/perl
+DEPEND="app-arch/xz-utils
+	dev-lang/perl
 	sys-libs/zlib
 	iso? (
 		sys-boot/syslinux
@@ -29,7 +31,6 @@ RDEPEND=""
 S="${WORKDIR}/ipxe-${GIT_SHORT}/src"
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-git-version.patch #482804
 	epatch "${FILESDIR}"/${P}-no-pie.patch #585752
 }
 
@@ -53,20 +54,22 @@ EOF
 	tc-ld-disable-gold
 }
 
-src_compile() {
-	ipxemake() {
-		# Q='' makes the build verbose since that's what everyone loves now
-		emake Q='' \
-			CC="$(tc-getCC)" \
-			LD="$(tc-getLD)" \
-			AR="$(tc-getAR)" \
-			OBJCOPY="$(tc-getOBJCOPY)" \
-			RANLIB="$(tc-getRANLIB)" \
-			OBJDUMP="$(tc-getOBJDUMP)" \
-			HOST_CC="$(tc-getBUILD_CC)" \
-			"$@"
-	}
+ipxemake() {
+	# Q='' makes the build verbose since that's what everyone loves now
+	emake Q='' \
+		CC="$(tc-getCC)" \
+		LD="$(tc-getLD)" \
+		AS="$(tc-getAS)" \
+		AR="$(tc-getAR)" \
+		NM="$(tc-getNM)" \
+		OBJCOPY="$(tc-getOBJCOPY)" \
+		RANLIB="$(tc-getRANLIB)" \
+		OBJDUMP="$(tc-getOBJDUMP)" \
+		HOST_CC="$(tc-getBUILD_CC)" \
+		"$@"
+}
 
+src_compile() {
 	export NO_WERROR=1
 	if use qemu; then
 		ipxemake bin/808610de.rom # pxe-e1000.rom (old)
@@ -76,7 +79,7 @@ src_compile() {
 		ipxemake bin/10222000.rom # pxe-pcnet.rom
 		ipxemake bin/10ec8139.rom # pxe-rtl8139.rom
 		ipxemake bin/1af41000.rom # pxe-virtio.rom
-		fi
+	fi
 
 	if use vmware; then
 		ipxemake bin/8086100f.mrom # e1000

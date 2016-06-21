@@ -6,6 +6,7 @@
 <name>Doug Goldstein</name>
 </maintainer>
 <use>
+	<flag name="efi">Build an EFI program for using PXE</flag>
 	<flag name="iso">Build a bootable ISO for using PXE</flag>
 	<flag name="lkrn">Build a linux kernel bootable file for using with grub/etc...</flag>
 	<flag name="usb">Build a bootable USB image for using PXE</flag>
