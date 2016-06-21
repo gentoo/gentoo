@@ -18,7 +18,7 @@ RUBY_S="github-${PV}"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc64"
+KEYWORDS="~amd64 ~arm ~ppc64"
 IUSE=""
 
 ruby_add_rdepend "
