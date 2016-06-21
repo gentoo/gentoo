@@ -35,6 +35,7 @@ src_prepare() {
 		# tests are restricted, no point in building them
 		sed -ie 's/tests //' "${S}"/Makefile.am
 	fi
+	epatch "${FILESDIR}"/${PN}-2.4.68-sysmacros.patch #580088
 	xorg-2_src_prepare
 }
 
