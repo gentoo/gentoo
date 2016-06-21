@@ -1,14 +1,14 @@
 DEFINED_PHASES=compile install
-DEPEND=>=dev-lang/ocaml-3.10.2:=[ocamlopt?] || ( dev-ml/camlp4:= <dev-lang/ocaml-4.02.0 ) >=dev-ml/findlib-1.0.4-r1
+DEPEND=>=dev-lang/ocaml-3.10.2:=[ocamlopt?] || ( dev-ml/camlp4 <dev-lang/ocaml-4.02.0 ) >=dev-ml/findlib-1.0.4-r1
 DESCRIPTION=Standard library extensions for O'Caml
 EAPI=5
 HOMEPAGE=https://code.google.com/p/ocaml-extlib/
 IUSE=doc +ocamlopt
 KEYWORDS=amd64 ppc x86 ~amd64-linux ~x86-linux ~ppc-macos
 LICENSE=LGPL-2.1
-RDEPEND=>=dev-lang/ocaml-3.10.2:=[ocamlopt?] || ( dev-ml/camlp4:= <dev-lang/ocaml-4.02.0 )
+RDEPEND=>=dev-lang/ocaml-3.10.2:=[ocamlopt?] || ( dev-ml/camlp4 <dev-lang/ocaml-4.02.0 )
 SLOT=0/1.6.1
 SRC_URI=https://ocaml-extlib.googlecode.com/files/extlib-1.6.1.tar.gz
 _eclass_exported_funcs=src_compile:- src_install:-
 _eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	findlib	9909e5ca0f77ff5b693885a3d7aeadb7	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	c9d9187f4caa4026a0ceddd8dfceb3c1
-_md5_=76224b4591a4afabadeb94552963cb67
+_md5_=b28c526f1f68877ad11359ae9d895434

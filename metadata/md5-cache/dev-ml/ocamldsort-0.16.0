@@ -1,12 +1,12 @@
 DEFINED_PHASES=compile install
-DEPEND=>=dev-lang/ocaml-3.12:= || ( dev-ml/camlp4:= <dev-lang/ocaml-4.02.0 )
+DEPEND=>=dev-lang/ocaml-3.12:= || ( dev-ml/camlp4 <dev-lang/ocaml-4.02.0 )
 DESCRIPTION=A dependency sorter for OCaml source files
 EAPI=5
 HOMEPAGE=http://dimitri.mutu.net/ocaml.html
 KEYWORDS=~amd64 ppc x86
 LICENSE=LGPL-2
-RDEPEND=>=dev-lang/ocaml-3.12:= || ( dev-ml/camlp4:= <dev-lang/ocaml-4.02.0 )
+RDEPEND=>=dev-lang/ocaml-3.12:= || ( dev-ml/camlp4 <dev-lang/ocaml-4.02.0 )
 SLOT=0
 SRC_URI=ftp://quatramaran.ens.fr/pub/ara/ocamldsort/ocamldsort-0.16.0.tar.gz
 _eclass_exported_funcs=src_compile:- src_install:-
-_md5_=c19ccf646e311e8aa2d6f437ad0157a4
+_md5_=189c6e846a8fe061d83ce127c2ae24b5

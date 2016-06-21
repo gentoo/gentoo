@@ -1,14 +1,14 @@
 DEFINED_PHASES=compile configure install prepare test unpack
-DEPEND=>=dev-ml/type-conv-109.20.00:= || ( dev-ml/camlp4:= <dev-lang/ocaml-4.02.0 ) >=dev-ml/findlib-1.0.4-r1 >=dev-lang/ocaml-3.12:=[ocamlopt?] || ( dev-ml/ocamlbuild <dev-lang/ocaml-4.02.3-r1 )
+DEPEND=>=dev-ml/type-conv-109.20.00:= || ( dev-ml/camlp4 <dev-lang/ocaml-4.02.0 ) >=dev-ml/findlib-1.0.4-r1 >=dev-lang/ocaml-3.12:=[ocamlopt?] || ( dev-ml/ocamlbuild <dev-lang/ocaml-4.02.3-r1 )
 DESCRIPTION=Camlp4 syntax extension that derives comparison functions from type representations
 EAPI=5
 HOMEPAGE=http://www.janestreet.com/ocaml
 IUSE=+ocamlopt debug
 KEYWORDS=~amd64
 LICENSE=LGPL-2.1-with-linking-exception
-RDEPEND=>=dev-ml/type-conv-109.20.00:= || ( dev-ml/camlp4:= <dev-lang/ocaml-4.02.0 ) >=dev-lang/ocaml-3.12:=[ocamlopt?]
+RDEPEND=>=dev-ml/type-conv-109.20.00:= || ( dev-ml/camlp4 <dev-lang/ocaml-4.02.0 ) >=dev-lang/ocaml-3.12:=[ocamlopt?]
 SLOT=0/113.00.00
 SRC_URI=http://ocaml.janestreet.com/ocaml-core/113.00/files/comparelib-113.00.00.tar.gz
 _eclass_exported_funcs=src_unpack:base src_prepare:base src_configure:oasis src_compile:oasis src_test:oasis src_install:oasis
 _eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	792f83d5ec9536cb5ccef375469d8bde	findlib	9909e5ca0f77ff5b693885a3d7aeadb7	multilib	d062ae4ba2fc40a19c11de2ad89b6616	oasis	cc6dfb8b0c04cedd9840ff2ec5e38539	toolchain-funcs	c9d9187f4caa4026a0ceddd8dfceb3c1
-_md5_=b40047c4e07feca173c47f2e4dbcd817
+_md5_=452341c42cc756a3ff5427313b81a6e4

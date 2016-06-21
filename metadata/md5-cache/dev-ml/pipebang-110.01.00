@@ -1,14 +1,14 @@
 DEFINED_PHASES=compile configure install prepare test unpack
-DEPEND=>=dev-ml/type-conv-109.60:= || ( dev-ml/camlp4:= <dev-lang/ocaml-4.02.0 ) >=dev-ml/findlib-1.0.4-r1 >=dev-lang/ocaml-3.12:=[ocamlopt?] || ( dev-ml/ocamlbuild <dev-lang/ocaml-4.02.3-r1 )
+DEPEND=>=dev-ml/type-conv-109.60:= || ( dev-ml/camlp4 <dev-lang/ocaml-4.02.0 ) >=dev-ml/findlib-1.0.4-r1 >=dev-lang/ocaml-3.12:=[ocamlopt?] || ( dev-ml/ocamlbuild <dev-lang/ocaml-4.02.3-r1 )
 DESCRIPTION=Syntax extension to transform x |! f into f x
 EAPI=5
 HOMEPAGE=https://bitbucket.org/yminsky/ocaml-core/wiki/Home
 IUSE=+ocamlopt debug
 KEYWORDS=~amd64
 LICENSE=Apache-2.0
-RDEPEND=>=dev-ml/type-conv-109.60:= || ( dev-ml/camlp4:= <dev-lang/ocaml-4.02.0 ) >=dev-lang/ocaml-3.12:=[ocamlopt?]
+RDEPEND=>=dev-ml/type-conv-109.60:= || ( dev-ml/camlp4 <dev-lang/ocaml-4.02.0 ) >=dev-lang/ocaml-3.12:=[ocamlopt?]
 SLOT=0/110.01.00
 SRC_URI=http://ocaml.janestreet.com/ocaml-core/110.01.00/individual/pipebang-110.01.00.tar.gz https://dev.gentoo.org/~aballier/distfiles/pipebang-110.01.00.tar.gz
 _eclass_exported_funcs=src_unpack:base src_prepare:base src_configure:oasis src_compile:oasis src_test:oasis src_install:oasis
 _eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	792f83d5ec9536cb5ccef375469d8bde	findlib	9909e5ca0f77ff5b693885a3d7aeadb7	multilib	d062ae4ba2fc40a19c11de2ad89b6616	oasis	cc6dfb8b0c04cedd9840ff2ec5e38539	toolchain-funcs	c9d9187f4caa4026a0ceddd8dfceb3c1
-_md5_=368068e5072b0913be02cdd11adcd97c
+_md5_=f0b46bc9e795c4dd07b3b199b3060688
