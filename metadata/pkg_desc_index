@@ -9802,9 +9802,9 @@ dev-util/linklint 2.3.5: A Perl program that checks links on web sites
 dev-util/lockrun 20120508: Lockrun - runs cronjobs with overrun protection
 dev-util/lsuio 0.2.0: list available userspace I/O (UIO) devices
 dev-util/ltrace 0.5.3.1 0.7.2 0.7.3 0.7.3_p4: trace library calls made at runtime
-dev-util/lttng-modules 2.6.4 2.7.1: LTTng Kernel Tracer Modules
-dev-util/lttng-tools 2.6.1 2.7.1: Linux Trace Toolkit - next generation
-dev-util/lttng-ust 2.6.5 2.7.1: Linux Trace Toolkit - UST library
+dev-util/lttng-modules 2.6.4 2.7.1 2.7.4 2.8.0: LTTng Kernel Tracer Modules
+dev-util/lttng-tools 2.6.1 2.7.1 2.7.3 2.8.0: Linux Trace Toolkit - next generation
+dev-util/lttng-ust 2.6.5 2.7.1 2.7.4 2.8.1: Linux Trace Toolkit - UST library
 dev-util/makeheaders 0_p4: simple utility that will automatically generate header files
 dev-util/makepp 1.18 1.40.1a 1.50_pre110621 2.0-r1 2.0.98.4 2.0.98.5: GNU make replacement
 dev-util/mdds 0.10.3 0.11.2-r1 0.12.0 0.12.1 1.2.0 9999: A collection of multi-dimensional data structure and indexing algorithm
