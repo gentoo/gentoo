@@ -1,0 +1,31 @@
+https://github.com/hasse69/rar2fs/pull/51
+
+From e8c477f726eb7bfd65ef33e2b080063e6f8013c0 Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Tue, 21 Jun 2016 14:54:06 -0400
+Subject: [PATCH] include sys/sysmacros.h for major/minor/makedev
+
+These funcs are defined in sys/sysmacros.h, so include the header to
+fix building with C libs that don't implicitly include via sys/types.h.
+
+Signed-off-by: Mike Frysinger <vapier@gentoo.org>
+---
+ configure.ac | 2 +-
+ rar2fs.c     | 3 +++
+ 2 files changed, 4 insertions(+), 1 deletion(-)
+
+--- a/rar2fs.c
++++ b/rar2fs.c
+@@ -56,6 +56,9 @@
+ #ifdef HAVE_SYS_XATTR_H
+ # include <sys/xattr.h>
+ #endif
++#ifdef __linux__
++# include <sys/sysmacros.h>
++#endif
+ #ifdef HAVE_ICONV
+ #include <iconv.h>
+ #endif
+-- 
+2.8.2
+

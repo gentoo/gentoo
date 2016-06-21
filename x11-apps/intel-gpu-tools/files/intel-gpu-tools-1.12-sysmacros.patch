@@ -1,0 +1,35 @@
+https://bugs.gentoo.org/581080
+
+From 3e8cc82d371b23303cd4f30e4bcc9c5ecb10ad11 Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Tue, 21 Jun 2016 14:24:42 -0400
+Subject: [PATCH] pull in headers for major/minor/makedev funcs
+
+Use the portable autoconf helper to figure out which header to include
+for these funcs.  Linux C libs are moving to not implicitly include them
+via sys/types.h anymore, and other OS's have long required you to pull
+in the right header directly.
+
+Bugzilla: https://bugs.freedesktop.org/show_bug.cgi?id=96618
+Signed-off-by: Mike Frysinger <vapier@gentoo.org>
+---
+ configure.ac    | 1 +
+ lib/igt_sysfs.c | 9 +++++++++
+ tools/aubdump.c | 8 +++++++-
+ 3 files changed, 17 insertions(+), 1 deletion(-)
+
+--- a/tools/aubdump.c
++++ b/tools/aubdump.c
+@@ -38,6 +38,9 @@
+ #include <errno.h>
+ #include <sys/mman.h>
+ #include <dlfcn.h>
++#ifdef __linux__
++#include <sys/sysmacros.h>
++#endif
+ #include <i915_drm.h>
+ 
+ #include "intel_aub.h"
+-- 
+2.8.2
+

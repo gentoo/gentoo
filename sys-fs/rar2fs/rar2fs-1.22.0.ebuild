@@ -4,6 +4,8 @@
 
 EAPI=5
 
+inherit eutils
+
 DESCRIPTION="A FUSE based filesystem that can mount one or multiple RAR archive(s)"
 HOMEPAGE="http://hasse69.github.io/rar2fs/ https://github.com/hasse69/rar2fs"
 SRC_URI="https://github.com/hasse69/${PN}/releases/download/v${PV}/${P}.tar.gz"
@@ -18,6 +20,10 @@ RDEPEND=">=app-arch/unrar-5:=
 DEPEND="${RDEPEND}"
 
 DOCS="AUTHORS ChangeLog"
+
+src_prepare() {
+	epatch "${FILESDIR}"/${PN}-1.22.0-sysmacros.patch #580852
+}
 
 src_configure() {
 	export USER_CFLAGS="${CFLAGS}"
