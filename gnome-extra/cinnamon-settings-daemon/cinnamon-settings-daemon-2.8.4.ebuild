@@ -45,7 +45,7 @@ RDEPEND="
 		x11-drivers/xf86-input-wacom
 		x11-libs/libXtst )
 	smartcard? ( >=dev-libs/nss-3.11.2 )
-	|| ( >=sys-power/upower-0.9.11:= sys-power/upower-pm-utils )
+	|| ( >=sys-power/upower-0.9.11 sys-power/upower-pm-utils )
 	systemd? ( sys-apps/systemd:0= )
 	!systemd? ( sys-auth/consolekit:0= )
 "
