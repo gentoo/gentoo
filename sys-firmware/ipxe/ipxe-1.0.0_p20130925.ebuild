@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit toolchain-funcs eutils
+inherit toolchain-funcs eutils savedconfig
 
 GIT_REV="cba22d36b77da53890bd65fdadd0e63925687af0"
 GIT_SHORT="cba22d3"
@@ -46,6 +46,8 @@ EOF
 #define CONSOLE_VMWARE
 EOF
 	fi
+
+	restore_config config/local/general.h
 
 	tc-ld-disable-gold
 }
@@ -99,4 +101,6 @@ src_install() {
 	use undi && doins bin/*.kpxe
 	use usb && doins bin/*.usb
 	use lkrn && doins bin/*.lkrn
+
+	save_config config/local/general.h
 }
