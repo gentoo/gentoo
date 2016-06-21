@@ -2512,7 +2512,7 @@ app-vim/automatictexplugin 12.5-r1: vim plugin: a comprehensive plugin for editi
 app-vim/bash-support 3.12 4.1 4.2.1: vim plugin: Bash-IDE - Write and run bash scripts using menus and hotkeys
 app-vim/bnf-syntax 1.2-r1: vim plugin: BNF file syntax highlighting
 app-vim/brainfuck-syntax 1.0.2 1.0.3: vim plugin: BrainFuck source file syntax highlighting
-app-vim/breakpts 4.0: vim plugin: sets vim breakpoints visually
+app-vim/breakpts 4.0-r1: vim plugin: sets vim breakpoints visually
 app-vim/bufexplorer 7.4.6 7.4.9-r1: vim plugin: easily browse vim buffers
 app-vim/c-support 6.0 6.1 6.1.1: vim plugin: C/C++-IDE -- Write and run programs using menus and hotkeys
 app-vim/calendar 2.9: vim plugin: calendar window
@@ -10253,7 +10253,7 @@ games-arcade/triplexinvaders 1.08: An Alien Invaders style game with 3d graphics
 games-arcade/tuxanci 20110429 99999999: Tuxanci is first tux shooter inspired by game Bulanci
 games-arcade/tuxdash 0.8: A simple BoulderDash clone
 games-arcade/tuxpuck 0.8.2-r1: Hover hockey
-games-arcade/vor 0.5.5: Variations on Rockdodger: Dodge the rocks until you die
+games-arcade/vor 0.5.5 0.5.7: Variations on Rockdodger: Dodge the rocks until you die
 games-arcade/watermelons 1.1.1-r1: A thrilling watermelon bouncing game
 games-arcade/whichwayisup 0.7.9-r1: A traditional and challenging 2D platformer game with a slight rotational twist
 games-arcade/wop 0.4.3-r1: Worms of Prey - A multi-player, real-time clone of Worms
