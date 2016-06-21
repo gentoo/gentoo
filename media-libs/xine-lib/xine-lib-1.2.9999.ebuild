@@ -49,7 +49,7 @@ RDEPEND="${NLS_RDEPEND}
 	flac? ( media-libs/flac )
 	fusion? ( media-libs/FusionSound )
 	gtk? ( x11-libs/gdk-pixbuf:2 )
-	imagemagick? ( || ( media-gfx/imagemagick:= media-gfx/graphicsmagick ) )
+	imagemagick? ( || ( media-gfx/imagemagick media-gfx/graphicsmagick ) )
 	jack? ( >=media-sound/jack-audio-connection-kit-0.100 )
 	jpeg? ( virtual/jpeg:0 )
 	libcaca? ( media-libs/libcaca )
