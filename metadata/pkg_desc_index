@@ -11855,7 +11855,7 @@ mail-filter/spamprobe 1.4d: Fast, intelligent, automatic spam detector using Bay
 mail-filter/sqlgrey 1.7.6-r1: SQLgrey is a postfix policy service implementing a grey-listing policy
 mail-filter/tmda 1.1.12: Python-based SPAM reduction system
 mail-filter/zdkimfilter 1.1: DKIM filter for Courier-MTA
-mail-mta/courier 0.71 0.74.0 0.74.1 0.74.1-r1 0.75.0 0.75.0-r1: An MTA designed specifically for maildirs
+mail-mta/courier 0.75.0 0.75.0-r1: An MTA designed specifically for maildirs
 mail-mta/esmtp 1.2 1.2-r1: esmtp is a user configurable relay-only Mail Transfer Agent (MTA) with a sendmail compatible syntax
 mail-mta/exim 4.84 4.84.2 4.85 4.85.2 4.86-r1 4.86.2 4.87: A highly configurable, drop-in replacement for sendmail
 mail-mta/mini-qmail 1.05 1.05-r1 1.06: a small null client that forwards mail via QMQP to a full qmail server
@@ -13155,6 +13155,7 @@ media-sound/flake 0.11: An alternative to the FLAC reference encoder
 media-sound/fluid-soundfont 3.1: The Fluid R3 soundfont
 media-sound/fluidsynth 1.1.6 1.1.6-r1: Fluidsynth is a software real-time synthesizer based on the Soundfont 2 specifications
 media-sound/fmdrv 1.0.7: Console mode MIDI player with builtin userland OPL2 driver
+media-sound/fmit 1.0.15: Free Music Instrument Tuner
 media-sound/fmtools 2.0.7: A collection of programs for controlling v4l radio card drivers
 media-sound/forked-daapd 23.2-r1: A DAAP (iTunes) media server
 media-sound/freebirth 0.3.2-r1: Free software bass synthesizer step sequencer
