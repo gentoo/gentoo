@@ -24,6 +24,7 @@ RDEPEND="${DEPEND}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.12-inttypes.patch #582430
+	"${FILESDIR}"/${PN}-1.12-sysmacros.patch #581080
 )
 
 pkg_setup() {
