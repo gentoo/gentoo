@@ -27,9 +27,10 @@ RDEPEND="
 	dev-libs/expat
 	dev-libs/icu:=
 	||	(
-		=sys-libs/db-5*:=[cxx]
-		=sys-libs/db-4*:=[cxx]
+		=sys-libs/db-5*[cxx]
+		=sys-libs/db-4*[cxx]
 		)
+	<sys-libs/db-6:=[cxx]
 	x11-libs/gtk+:3
 	x11-libs/wxGTK:${WX_GTK_VER}[X]
 	"

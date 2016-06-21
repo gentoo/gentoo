@@ -23,7 +23,7 @@ else
 	inherit git-r3
 fi
 SRC_URI+=" https://waf.io/waf-${WAF_PV}"
-DOCS+=( CONTRIBUTING.md README.md )
+DOCS+=( README.md )
 
 # See Copyright in sources and Gentoo bug 506946. Waf is BSD, libmpv is ISC.
 LICENSE="GPL-2+ BSD ISC"
@@ -84,7 +84,7 @@ COMMON_DEPEND="
 	)
 	libcaca? ( >=media-libs/libcaca-0.99_beta18 )
 	lua? (
-		!luajit? ( || ( =dev-lang/lua-5.1*:= =dev-lang/lua-5.2*:= ) )
+		!luajit? ( <dev-lang/lua-5.3:= )
 		luajit? ( dev-lang/luajit:2 )
 	)
 	openal? ( >=media-libs/openal-1.13 )
@@ -142,8 +142,6 @@ src_configure() {
 	local mywafargs=(
 		--confdir="${EPREFIX}/etc/${PN}"
 		--docdir="${EPREFIX}/usr/share/doc/${PF}"
-
-		--disable-gpl3			# Unclear license info. See Gentoo bug 571728.
 
 		$(usex cli '' '--disable-cplayer')
 		$(use_enable libmpv libmpv-shared)
