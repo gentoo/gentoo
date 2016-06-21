@@ -28,7 +28,7 @@ COMMON_DEPEND=">=sys-apps/sed-4.0.5
 	pam? ( virtual/pam )
 	tcpd? ( sys-apps/tcp-wrappers )
 	ssl? (
-		!libressl? ( dev-libs/openssl:0=[-bindist] )
+		!libressl? ( dev-libs/openssl:0= )
 		libressl? ( dev-libs/libressl:= )
 	)
 	gnutls? ( net-libs/gnutls[pkcs11?]
