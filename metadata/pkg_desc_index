@@ -16794,7 +16794,7 @@ sys-auth/polkit-qt 0.112.0-r1: PolicyKit Qt4 API wrapper library
 sys-auth/realtime-base 0.1: Sets up realtime scheduling
 sys-auth/rtkit 0.11-r1 0.11-r2: Realtime Policy and Watchdog Daemon
 sys-auth/skey 1.1.5-r10: Linux Port of OpenBSD Single-key Password System
-sys-auth/sssd 1.9.6-r3 1.9.7 1.12.1 1.12.4 1.12.5 1.13.0 1.13.1: System Security Services Daemon provides access to identity and authentication
+sys-auth/sssd 1.12.1 1.12.4 1.12.5 1.13.0 1.13.1: System Security Services Daemon provides access to identity and authentication
 sys-auth/tfm-fingerprint 1.0: TouchChip TFM/ESS FingerPrint BSP
 sys-auth/thinkfinger 0.3-r3: Support for the UPEK/SGS Thomson Microelectronics fingerprint reader, often seen in Thinkpads
 sys-auth/ykclient 2.13 2.14: Yubico C client library
@@ -17042,7 +17042,7 @@ sys-firmware/b43legacy-firmware 3.130.20.0: broadcom firmware for b43legacy/bcm4
 sys-firmware/bluez-firmware 1.2: Firmware for Broadcom BCM203x and STLC2300 Bluetooth chips
 sys-firmware/ipw2100-firmware 1.3: Firmware for the Intel PRO/Wireless 2100 3B miniPCI adapter
 sys-firmware/ipw2200-firmware 3.1: Firmware for the Intel PRO/Wireless 2200BG/2915ABG miniPCI and 2225BG PCI adapters
-sys-firmware/ipxe 1.0.0_p20130925: Open source network boot (PXE) firmware
+sys-firmware/ipxe 1.0.0_p20130925 1.0.0_p20160620: Open source network boot (PXE) firmware
 sys-firmware/ivtv-firmware 20080701-r1: firmware for Hauppauge PVR-x50 and Conexant 2341x based cards
 sys-firmware/iwl1000-ucode 39.31.5.1 128.50.3.1: Intel (R) Wireless WiFi Link 1000BGN ucode
 sys-firmware/iwl3160-7260-bt-ucode 37.8.10 37.8.10_p1 37.8.10_p2: Firmware for Intel (R) Wireless 3160, 7260, 7265 Bluetooth
