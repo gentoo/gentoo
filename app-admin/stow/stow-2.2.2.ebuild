@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -21,10 +21,6 @@ DEPEND="dev-lang/perl
 		dev-perl/Test-Output
 	)"
 RDEPEND="dev-lang/perl"
-
-src_prepare() {
-	epatch "${FILESDIR}/${P}-avoid-precedence-warning.patch"
-}
 
 src_install() {
 	emake DESTDIR="${D}" install || die "emake install failed."
