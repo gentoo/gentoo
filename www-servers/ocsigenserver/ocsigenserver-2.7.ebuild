@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -23,7 +23,7 @@ DEPEND=">=dev-ml/lwt-2.5.0:=[react,ssl]
 		dev-ml/cryptokit:=
 		>=dev-ml/ocamlnet-3.6:=[pcre]
 		>=dev-ml/pcre-ocaml-6.2.5:=
-		>=dev-ml/tyxml-3.3:=
+		>=dev-ml/tyxml-3.3:=[camlp4(+)]
 		>=dev-lang/ocaml-3.12:=[ocamlopt?]
 		dev-ml/ocaml-ipaddr:=
 		dbm? ( || ( dev-ml/camldbm:= >=dev-lang/ocaml-3.12[gdbm] ) )
@@ -33,6 +33,10 @@ RDEPEND="${DEPEND}"
 pkg_setup() {
 	enewgroup ocsigenserver
 	enewuser ocsigenserver -1 -1 /var/www ocsigenserver
+}
+
+src_prepare() {
+	has_version '>=dev-ml/tyxml-4' && epatch "${FILESDIR}/tyxml.patch"
 }
 
 src_configure() {
