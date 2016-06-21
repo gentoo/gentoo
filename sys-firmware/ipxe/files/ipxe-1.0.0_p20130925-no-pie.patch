@@ -1,0 +1,32 @@
+https://bugs.gentoo.org/585752
+
+From cea213034635e4d765b2f362057b696febbe509f Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Tue, 21 Jun 2016 00:47:32 -0400
+Subject: [PATCH] [build] fix PIE disable flag
+
+The flag is "-no-pie", not "-nopie".
+
+Signed-off-by: Mike Frysinger <vapier@gentoo.org>
+---
+ src/arch/i386/Makefile | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/arch/i386/Makefile b/src/arch/i386/Makefile
+index fe3adc9ce436..59ad25b6e0af 100644
+--- a/src/Makefile.housekeeping
++++ b/src/Makefile.housekeeping
+@@ -75,8 +75,8 @@ CFLAGS			+= -Ui386
+ # output on stderr instead of checking the exit status.
+ #
+ ifeq ($(CCTYPE),gcc)
+-PIE_TEST = [ -z "`$(CC) -fno-PIE -nopie -x c -c /dev/null -o /dev/null 2>&1`" ]
+-PIE_FLAGS := $(shell $(PIE_TEST) && $(ECHO) '-fno-PIE -nopie')
++PIE_TEST = [ -z "`$(CC) -fno-PIE -no-pie -x c -c /dev/null -o /dev/null 2>&1`" ]
++PIE_FLAGS := $(shell $(PIE_TEST) && $(ECHO) '-fno-PIE -no-pie')
+ WORKAROUND_CFLAGS += $(PIE_FLAGS)
+ endif
+ 
+-- 
+2.8.2
+
