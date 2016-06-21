@@ -1,0 +1,104 @@
+commit 556a155376669aba34f1e93a88a9b308107af8be
+Author: Vasilis Papavasileiou <git@vasilis.airpost.net>
+Date:   Mon Apr 11 12:31:21 2016 +0000
+
+    Catch up with Tyxml
+    
+    - Html5.M -> Tyxml.Html
+    - Bump-up dependency constraint
+
+diff --git a/.jenkins.sh b/.jenkins.sh
+index 0865cba..1c40a09 100644
+--- a/.jenkins.sh
++++ b/.jenkins.sh
+@@ -1,5 +1,6 @@
+ opam pin add --no-action ocsigenserver .
+ opam install camlzip
++opam pin add tyxml --dev-repo
+ opam install --deps-only ocsigenserver
+ opam install --verbose ocsigenserver
+ 
+diff --git a/opam b/opam
+index 9537632..82b1860 100644
+--- a/opam
++++ b/opam
+@@ -27,7 +27,7 @@ depends: [
+   "ocamlnet" {>= "4.0.2"}
+   "pcre"
+   "cryptokit"
+-  "tyxml" {>= "3.4.0"}
++  "tyxml" {> "3.6.0"}
+   ("dbm" | "sqlite3")
+   "ipaddr" {>= "2.1"}
+   "camlp4"
+diff --git a/src/http/ocsigen_senders.ml b/src/http/ocsigen_senders.ml
+index 708b6a8..bf7c30c 100644
+--- a/src/http/ocsigen_senders.ml
++++ b/src/http/ocsigen_senders.ml
+@@ -77,7 +77,7 @@ module Make_XML_Content(Xml : Xml_sigs.Iterable)
+          ~stream:(x, None) ())
+ end
+ 
+-module Html5_content = Make_XML_Content(Xml)(Html5.M)
++module Html_content = Make_XML_Content(Tyxml.Xml)(Tyxml.Html)
+ 
+ 
+ (*****************************************************************************)
+@@ -473,11 +473,11 @@ struct
+   let get_etag ?options c = None
+ 
+   let error_page s msg c =
+-    Html5.M.html
+-      (Html5.M.head (Html5.M.title (Html5.M.pcdata s)) [])
+-      (Html5.M.body
+-         (Html5.M.h1 [Html5.M.pcdata msg]::
+-          Html5.M.p [Html5.M.pcdata s]::
++    Tyxml.Html.html
++      (Tyxml.Html.head (Tyxml.Html.title (Tyxml.Html.pcdata s)) [])
++      (Tyxml.Html.body
++         (Tyxml.Html.h1 [Tyxml.Html.pcdata msg]::
++          Tyxml.Html.p [Tyxml.Html.pcdata s]::
+           c)
+       )
+ 
+@@ -512,11 +512,11 @@ struct
+         error_page
+           ("Error "^str_code)
+           error_msg
+-          [Html5.M.p
+-             [Html5.M.pcdata (Printexc.to_string exn);
+-              Html5.M.br ();
+-              Html5.M.em
+-                [Html5.M.pcdata "(Ocsigen running in debug mode)"]
++          [Tyxml.Html.p
++             [Tyxml.Html.pcdata (Printexc.to_string exn);
++              Tyxml.Html.br ();
++              Tyxml.Html.em
++                [Tyxml.Html.pcdata "(Ocsigen running in debug mode)"]
+              ]]
+       | _ ->
+         error_page
+@@ -524,7 +524,7 @@ struct
+           error_msg
+           []
+     in
+-    Html5_content.result_of_content err_page >>= fun r ->
++    Html_content.result_of_content err_page >>= fun r ->
+     Lwt.return
+       (Result.update r
+          ~cookies:cookies_to_set
+diff --git a/src/http/ocsigen_senders.mli b/src/http/ocsigen_senders.mli
+index b6d956f..54364b0 100644
+--- a/src/http/ocsigen_senders.mli
++++ b/src/http/ocsigen_senders.mli
+@@ -23,8 +23,8 @@ module File_content : Ocsigen_http_frame.HTTP_CONTENT
+   with  type t =
+     string * Ocsigen_charset_mime.charset_assoc * Ocsigen_charset_mime.mime_assoc
+ 
+-module Html5_content :
+-  Ocsigen_http_frame.HTTP_CONTENT with type t = Html5.M.doc
++module Html_content :
++  Ocsigen_http_frame.HTTP_CONTENT with type t = Tyxml.Html.doc
+ 
+ module Make_XML_Content(Xml : Xml_sigs.Iterable)
+     (Typed_xml : Xml_sigs.Typed_xml with module Xml := Xml) :

@@ -35,6 +35,10 @@ pkg_setup() {
 	enewuser ocsigenserver -1 -1 /var/www ocsigenserver
 }
 
+src_prepare() {
+	has_version '>=dev-ml/tyxml-4' && epatch "${FILESDIR}/tyxml.patch"
+}
+
 src_configure() {
 	sh configure \
 		--prefix /usr \
