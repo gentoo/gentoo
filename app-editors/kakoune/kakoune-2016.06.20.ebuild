@@ -34,7 +34,7 @@ src_configure() {
 	append-libs $(pkg-config --libs ncursesw)
 	export CXX=$(tc-getCXX)
 	export debug=$(usex debug)
-	S+="/src"
+	S="${WORKDIR}/${P}/src"
 }
 
 src_install() {
