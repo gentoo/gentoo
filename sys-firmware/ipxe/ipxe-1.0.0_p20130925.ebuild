@@ -16,7 +16,7 @@ SRC_URI="https://git.ipxe.org/ipxe.git/snapshot/${GIT_REV}.tar.bz2 -> ${P}-${GIT
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE="iso lkrn +qemu undi usb vmware"
+IUSE="ipv6 iso lkrn +qemu undi usb vmware"
 
 DEPEND="dev-lang/perl
 	sys-libs/zlib
@@ -37,6 +37,8 @@ src_configure() {
 #undef BANNER_TIMEOUT
 #define BANNER_TIMEOUT 0
 EOF
+
+	use ipv6 && echo "#define NET_PROTO_IPV6" >> "${S}"/config/local/general.h
 
 	if use vmware; then
 		cat <<-EOF >> "${S}"/config/local/general.h
