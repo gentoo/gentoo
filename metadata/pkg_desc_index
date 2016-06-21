@@ -14397,7 +14397,7 @@ net-libs/libsrtp 1.4.4-r1 1.4.4-r2 1.4.4_p20121108 1.4.4_p20121108-r1 1.5.2 1.5.
 net-libs/libssh 0.7.3 0.7.3-r1 9999: Access a working SSH implementation by means of a library
 net-libs/libssh2 1.7.0 9999: Library implementing the SSH2 protocol
 net-libs/libtelnet 0.21 9999: Simple RFC-complient TELNET implementation as a C library
-net-libs/libtirpc 0.1.10 0.2.4-r1 0.2.4-r2 0.2.5 0.3.1 1.0.1: Transport Independent RPC library (SunRPC replacement)
+net-libs/libtirpc 0.2.4-r1 0.2.4-r2 0.2.5 0.3.1 1.0.1: Transport Independent RPC library (SunRPC replacement)
 net-libs/libtorrent 0.13.3 0.13.4 0.13.6: BitTorrent library written in C++ for *nix
 net-libs/libtrace 3.0.22: A library and tools for trace processing
 net-libs/libupnp 1.6.18 1.6.18-r1 1.6.19: An Portable Open Source UPnP Development Kit
