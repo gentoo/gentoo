@@ -254,7 +254,7 @@ dev-python/buildutils
 kde-apps/pairs
 
 # Alexis Ballier <aballier@gentoo.org> (24 May 2016)
-# API change, breaks e.g. ocsigenserver
+# API change, breaks e.g. eliom
 >=dev-ml/tyxml-4
 >=dev-ml/js_of_ocaml-2.8
 
