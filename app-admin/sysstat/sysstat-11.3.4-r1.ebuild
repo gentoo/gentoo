@@ -89,5 +89,5 @@ src_install() {
 	newinitd "${FILESDIR}"/${PN}.init.d ${PN}
 	systemd_dounit ${PN}.service
 
-	use doc && rm -f "${D}"usr/share/doc/${PF}/COPYING
+	rm -f "${D}"usr/share/doc/${PF}/COPYING
 }
