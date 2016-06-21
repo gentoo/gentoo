@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -22,7 +22,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 CDEPEND=">=dev-lang/ocaml-3.12:=[ocamlopt?]
 	dev-ml/sexplib:=[ocamlopt?]
 	dev-ml/menhir:=[ocamlopt?]
-	|| ( dev-ml/camlp4:=[ocamlopt?] <dev-lang/ocaml-4.02.0 )
+	|| ( dev-ml/camlp4[ocamlopt?] <dev-lang/ocaml-4.02.0 )
 	dev-ml/parmap:=[ocamlopt?]
 	emacs? ( virtual/emacs )
 	ocaml? ( dev-ml/findlib:= )

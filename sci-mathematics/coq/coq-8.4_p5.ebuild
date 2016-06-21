@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -21,7 +21,7 @@ IUSE="gtk debug +ocamlopt doc camlp5"
 RDEPEND="
 	>=dev-lang/ocaml-3.11.2:=[ocamlopt?]
 	camlp5? ( >=dev-ml/camlp5-6.02.3:=[ocamlopt?] )
-	!camlp5? ( || ( dev-ml/camlp4:= <dev-lang/ocaml-4.02.0 ) )
+	!camlp5? ( || ( dev-ml/camlp4 <dev-lang/ocaml-4.02.0 ) )
 	gtk? ( >=dev-ml/lablgtk-2.10.1:=[ocamlopt?] )"
 DEPEND="${RDEPEND}
 	doc? (

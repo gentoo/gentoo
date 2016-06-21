@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -21,7 +21,7 @@ DEPEND=">=dev-ml/lwt-2.4.0:=[react]
 	>=dev-ml/zed-1.2:=
 	>=dev-ml/cppo-1.0.1:=
 	emacs? ( virtual/emacs )
-	camlp4? ( || ( dev-ml/camlp4:= <dev-lang/ocaml-4.02.0 ) )"
+	camlp4? ( || ( dev-ml/camlp4 <dev-lang/ocaml-4.02.0 ) )"
 RDEPEND="${DEPEND}"
 
 DOCS=( "CHANGES.md" "README.md" )

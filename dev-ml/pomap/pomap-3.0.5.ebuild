@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -13,7 +13,7 @@ HOMEPAGE="http://mmottl.github.io/pomap/"
 SRC_URI="https://github.com/mmottl/pomap/releases/download/v${PV}/${P}.tar.gz"
 LICENSE="LGPL-2.1-with-linking-exception"
 
-DEPEND="|| ( dev-ml/camlp4:= <dev-lang/ocaml-4.02.0 )"
+DEPEND="|| ( dev-ml/camlp4 <dev-lang/ocaml-4.02.0 )"
 RDEPEND="${DEPEND}"
 SLOT="0/${PV}"
 KEYWORDS="amd64 ppc x86"

@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -19,7 +19,7 @@ RDEPEND=">=dev-lang/ocaml-3.12.1:=
 	>=dev-ml/ocaml-fileutils-0.4.0:=
 	>=dev-ml/camomile-0.8.3:=
 	sys-devel/gettext
-	|| ( dev-ml/camlp4:= <dev-lang/ocaml-4.02.0 )
+	|| ( dev-ml/camlp4 <dev-lang/ocaml-4.02.0 )
 	"
 DEPEND="${RDEPEND}
 	doc? ( app-text/docbook-xsl-stylesheets dev-libs/libxslt )
