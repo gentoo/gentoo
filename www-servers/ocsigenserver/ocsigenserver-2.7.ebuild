@@ -26,7 +26,7 @@ DEPEND=">=dev-ml/lwt-2.5.0:=[react,ssl]
 		>=dev-ml/tyxml-3.3:=[camlp4(+)]
 		>=dev-lang/ocaml-3.12:=[ocamlopt?]
 		dev-ml/ocaml-ipaddr:=
-		dbm? ( || ( dev-ml/camldbm:= >=dev-lang/ocaml-3.12[gdbm] ) )
+		dbm? ( || ( dev-ml/camldbm >=dev-lang/ocaml-3.12[gdbm] ) )
 		sqlite? ( dev-ml/ocaml-sqlite3:= )"
 RDEPEND="${DEPEND}"
 
