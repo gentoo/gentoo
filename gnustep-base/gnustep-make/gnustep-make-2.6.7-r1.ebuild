@@ -20,7 +20,7 @@ DEPEND="${GNUSTEP_CORE_DEPEND}
 		sys-devel/clang )
 	!libobjc2? ( !!gnustep-base/libobjc2
 		|| (
-			>=sys-devel/gcc-3.3:=[objc]
+			>=sys-devel/gcc-3.3[objc]
 			sys-devel/clang
 		) )"
 RDEPEND="${DEPEND}"
