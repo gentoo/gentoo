@@ -30,6 +30,7 @@ S="${WORKDIR}/ipxe-${GIT_SHORT}/src"
 
 src_prepare() {
 	epatch "${FILESDIR}"/${P}-git-version.patch #482804
+	epatch "${FILESDIR}"/${P}-no-pie.patch #585752
 }
 
 src_configure() {
