@@ -552,7 +552,6 @@ src_test() {
 qemu_python_install() {
 	python_domodule "${S}/scripts/qmp/qmp.py"
 
-	python_doscript "${S}/scripts/kvm/kvm_stat"
 	python_doscript "${S}/scripts/kvm/vmxcap"
 	python_doscript "${S}/scripts/qmp/qmp-shell"
 	python_doscript "${S}/scripts/qmp/qemu-ga-client"
