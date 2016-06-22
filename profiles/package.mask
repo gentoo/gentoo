@@ -30,6 +30,13 @@
 
 #--- END OF EXAMPLES ---
 
+# James Le Cuirot <chewi@gentoo.org> (22 Jun 2016)
+# Not practical as a system JVM and you'd be better off with
+# IcedTea. In-tree version is ancient. java-overlay version is newer
+# but not the latest. It can't be moved to the tree because
+# gnu-classpath-0.99 has packaging issues. Removal in 30 days.
+<dev-java/cacao-1.6
+
 # Michael Palimaka <kensington@gentoo.org> (19 Jun 2016)
 # Ancient, untested, never unmasked. Removal in 30 days. Bug 586172.
 sys-auth/pam_keystore
