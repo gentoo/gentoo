@@ -35,9 +35,9 @@ pkg_setup() {
 }
 
 src_prepare() {
-	ls -al *
 	# patching location of relaysrv binary
 	epatch "${FILESDIR}/relaysrv.systemd.patch"
+	
 	eapply_user
 }
 
@@ -96,6 +96,9 @@ src_install() {
 		
 		keepdir /var/lib/${PN}-relaysrv
 		fowners ${PN}-relaysrv:${PN}-relaysrv /var/{lib,log}/${PN}
+	
+		insinto /etc/logrotate.d
+		newins "${FILESDIR}/syncthing-relaysrv.logrotate" syncthing-relaysrv
 	fi
 }
 
