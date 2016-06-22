@@ -12,4 +12,4 @@ SLOT=0
 SRC_URI=mirror://gnupg/gnupg/gnupg-2.0.26.tar.bz2
 _eclass_exported_funcs=pkg_postinst:- src_prepare:- src_configure:- src_compile:- src_install:-
 _eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	flag-o-matic	d270fa247153df66074f795fa42dba3e	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	c9d9187f4caa4026a0ceddd8dfceb3c1
-_md5_=80141059f6ed31f996c45c0394e539e2
+_md5_=1c56bfba87d34909d7dbeefafad1b440
