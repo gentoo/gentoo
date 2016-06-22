@@ -6,7 +6,7 @@ EAPI=6
 
 inherit flag-o-matic toolchain-funcs vcs-snapshot
 
-REF="1788126f385c0d656b6addb0731f6205cc4856e5"
+REF="34c8e6a9cf15410a433c8a8c3901703708b85611"
 
 DESCRIPTION="Selection-oriented code editor inspired by vim"
 HOMEPAGE="https://github.com/mawww/kakoune"
@@ -18,7 +18,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="debug"
 
 RDEPEND="
-	sys-libs/ncurses:*[unicode]
+	sys-libs/ncurses:=[unicode]
 	dev-libs/boost
 "
 DEPEND="
@@ -31,18 +31,12 @@ PATCHES=( "${FILESDIR}/${PN}-makefile.patch" )
 
 src_configure() {
 	append-cppflags $(pkg-config --cflags ncursesw)
+	append-libs $(pkg-config --libs ncursesw)
 	export CXX=$(tc-getCXX)
 	export debug=$(usex debug)
-}
-
-src_compile() {
-	emake -C src
-}
-
-src_test() {
-	emake -C src test
+	S="${WORKDIR}/${P}/src"
 }
 
 src_install() {
-	emake -C src DESTDIR="${D}" PREFIX="/usr" install
+	emake DESTDIR="${D}" PREFIX="/usr" docdir="${D}/usr/share/doc/${PF}" install
 }
