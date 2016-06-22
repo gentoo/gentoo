@@ -13225,7 +13225,7 @@ media-sound/kaudiocreator 1.3-r3: KDE CD ripper and audio encoder frontend
 media-sound/kenvy24 1.2: VIA Envy24 based sound card control utility for KDE
 media-sound/kid3 3.3.2-r1 3.4.0: A simple tag editor for KDE
 media-sound/klick 0.12.2: An advanced command-line based metronome for JACK
-media-sound/kmetronome 0.10.1-r1 1.0.0: MIDI based metronome using ALSA sequencer
+media-sound/kmetronome 1.0.0: MIDI based metronome using ALSA sequencer
 media-sound/kmid 2.4.0-r1: A MIDI/Karaoke player for KDE
 media-sound/kmidimon 0.7.5: A MIDI monitor for ALSA sequencer
 media-sound/konvertible 1.0.1: A program to convert audio formats with FFmpeg
