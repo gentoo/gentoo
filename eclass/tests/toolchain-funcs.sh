@@ -111,5 +111,45 @@ tc-ld-disable-gold
 )
 tend $?
 
+unset CPP
+
+tbegin "tc-get-compiler-type (gcc)"
+(
+export CC=gcc
+[[ $(tc-get-compiler-type) == gcc ]]
+)
+tend $?
+
+if type -P clang &>/dev/null; then
+	tbegin "tc-get-compiler-type (clang)"
+	(
+	export CC=clang
+	[[ $(tc-get-compiler-type) == clang ]]
+	)
+	tend $?
+fi
+
+if type -P pathcc &>/dev/null; then
+	tbegin "tc-get-compiler-type (pathcc)"
+	(
+	export CC=pathcc
+	[[ $(tc-get-compiler-type) == pathcc ]]
+	)
+	tend $?
+
+	tbegin "! tc-is-gcc (pathcc)"
+	(
+	export CC=pathcc
+	! tc-is-gcc
+	)
+	tend $?
+
+	tbegin "! tc-is-clang (pathcc)"
+	(
+	export CC=pathcc
+	! tc-is-clang
+	)
+	tend $?
+fi
 
 texit

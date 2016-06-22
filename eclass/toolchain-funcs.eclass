@@ -585,6 +585,28 @@ tc-endian() {
 	esac
 }
 
+# @FUNCTION: tc-get-compiler-type
+# @RETURN: keyword identifying the compiler: gcc, clang, pathcc, unknown
+tc-get-compiler-type() {
+	local code='
+#if defined(__PATHSCALE__)
+	HAVE_PATHCC
+#elif defined(__clang__)
+	HAVE_CLANG
+#elif defined(__GNUC__)
+	HAVE_GCC
+#endif
+'
+	local res=$($(tc-getCPP "$@") -E -P - <<<"${code}")
+
+	case ${res} in
+		*HAVE_PATHCC*)	echo pathcc;;
+		*HAVE_CLANG*)	echo clang;;
+		*HAVE_GCC*)		echo gcc;;
+		*)				echo unknown;;
+	esac
+}
+
 # Internal func.  The first argument is the version info to expand.
 # Query the preprocessor to improve compatibility across different
 # compilers rather than maintaining a --version flag matrix. #335943
