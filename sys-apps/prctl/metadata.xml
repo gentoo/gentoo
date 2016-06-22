@@ -5,6 +5,10 @@
 		<email>ia64@gentoo.org</email>
 		<name>Gentoo Linux IA-64 Development</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>slyfox@gentoo.org</email>
+		<name>Sergei Trofimovich</name>
+	</maintainer>
 	<upstream>
 		<remote-id type="sourceforge">prctl</remote-id>
 	</upstream>
