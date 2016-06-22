@@ -112,14 +112,19 @@ fi
 # @ECLASS-VARIABLE: EGIT_REPO_URI
 # @REQUIRED
 # @DESCRIPTION:
-# URIs to the repository, e.g. git://foo, https://foo. If multiple URIs
-# are provided, the eclass will consider them as fallback URIs to try
-# if the first URI does not work. For supported URI syntaxes, read up
-# the manpage for git-clone(1).
+# URIs to the repository, e.g. git://foo, https://foo. If multiple URIs are
+# provided, the eclass will consider them as fallback URIs to try if the first
+# URI does not work. For supported URI syntaxes, read up the manpage for
+# git-clone(1). EGIT_REPO_URI can also be a whitespace-separated list or an
+# array.
 #
-# It can be overriden via env using ${PN}_LIVE_REPO variable.
-#
-# Can be a whitespace-separated list or an array.
+# It can be overridden via env using the ${PN}_LIVE_REPO variable. Hyphens and
+# pluses in ${PN} must be substituted for underscores to form a valid variable
+# name.
+
+# Additionally, a .bashrc or hook function can use the EGIT_LIVE_REPO[${PN}]
+# associative array (bash 4 only). Its value can be a whitespace-spearated
+# list. EGIT_LIVE_REPO takes precedence over ${PN}_LIVE_REPO.
 #
 # Example:
 # @CODE
@@ -148,7 +153,8 @@ fi
 # The branch name to check out. If unset, the upstream default (HEAD)
 # will be used.
 #
-# It can be overriden via env using ${PN}_LIVE_BRANCH variable.
+# It can be overridden via env using ${PN}_LIVE_BRANCH variable or via
+# EGIT_LIVE_BRANCH[${PN}] associative array.
 
 # @ECLASS-VARIABLE: EGIT_COMMIT
 # @DEFAULT_UNSET
@@ -157,7 +163,8 @@ fi
 # commit from the branch will be used. If set, EGIT_BRANCH will
 # be ignored.
 #
-# It can be overriden via env using ${PN}_LIVE_COMMIT variable.
+# It can be overridden via env using ${PN}_LIVE_COMMIT variable or via
+# EGIT_LIVE_COMMIT[${PN}] associative array.
 
 # @ECLASS-VARIABLE: EGIT_COMMIT_DATE
 # @DEFAULT_UNSET
@@ -172,7 +179,8 @@ fi
 # will be considered alike a single commit with date corresponding
 # to the merge commit date.
 #
-# It can be overriden via env using ${PN}_LIVE_COMMIT_DATE variable.
+# It can be overridden via env using ${PN}_LIVE_COMMIT_DATE variable or via
+# EGIT_LIVE_COMMIT_DATE[${PN}] associative array.
 
 # @ECLASS-VARIABLE: EGIT_CHECKOUT_DIR
 # @DESCRIPTION:
@@ -251,28 +259,30 @@ _git-r3_env_setup() {
 		die 'EGIT_SUBMODULES must be an array.'
 	fi
 
-	local esc_pn livevar
-	esc_pn=${PN//[-+]/_}
+	# Pairs of variable names associating eclass variables with the
+	# user-configurable variables for overriding them.
+	local -a livevars=(
+		EGIT_REPO_URI LIVE_REPO
+		{EGIT,LIVE}_BRANCH
+		{EGIT,LIVE}_COMMIT
+		{EGIT,LIVE}_COMMIT_DATE
+	)
 
-	livevar=${esc_pn}_LIVE_REPO
-	EGIT_REPO_URI=${!livevar-${EGIT_REPO_URI}}
-	[[ ${!livevar} ]] \
-		&& ewarn "Using ${livevar}, no support will be provided"
+	local idx ref esc_pn=${PN//[-+]/_}
+	for ((idx = 0; idx <= ${#livevars[@]}; idx += 2)); do
+		[[
+			( BASH_VERSINFO[0] -ge 4 || EAPI -ge 6 ) &&
+			$(declare -p "EGIT_${livevars[idx+1]}" 2>/dev/null) == 'declare -A'*
+		]] && ref=EGIT_${livevars[idx+1]}[\$PN]
 
-	livevar=${esc_pn}_LIVE_BRANCH
-	EGIT_BRANCH=${!livevar-${EGIT_BRANCH}}
-	[[ ${!livevar} ]] \
-		&& ewarn "Using ${livevar}, no support will be provided"
+		[[ ${!ref} ]] || ref=${esc_pn}_${livevars[idx+1]}
 
-	livevar=${esc_pn}_LIVE_COMMIT
-	EGIT_COMMIT=${!livevar-${EGIT_COMMIT}}
-	[[ ${!livevar} ]] \
-		&& ewarn "Using ${livevar}, no support will be provided"
-
-	livevar=${esc_pn}_LIVE_COMMIT_DATE
-	EGIT_COMMIT_DATE=${!livevar-${EGIT_COMMIT_DATE}}
-	[[ ${!livevar} ]] \
-		&& ewarn "Using ${livevar}, no support will be provided"
+		if [[ ${!ref} ]]; then
+			ewarn "Using ${livevars[idx]} = ${!ref}. This build is unsupported."
+			printf -v "${livevars[idx]}" -- %s "${!ref}"
+		fi
+		unset -v ref
+	done
 
 	if [[ ${EGIT_COMMIT} && ${EGIT_COMMIT_DATE} ]]; then
 		die "EGIT_COMMIT and EGIT_COMMIT_DATE can not be specified simultaneously"
