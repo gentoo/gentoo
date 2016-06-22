@@ -17002,7 +17002,7 @@ sys-devel/binutils-hppa64 2.19.1 2.20.1 2.21.1-r1 2.22 2.23.1 2.23.2 2.24 2.25 2
 sys-devel/bison 1.875d 2.4.3 2.7.1 3.0.3-r1 3.0.4 3.0.4-r1: A general-purpose (yacc-compatible) parser generator
 sys-devel/bmake 20140214 20151010 20151220 20160220 20160315: NetBSD's portable make
 sys-devel/boost-m4 0.4 0.4-r1 0.4_p20160328: Another set of autoconf macros for compiling against boost
-sys-devel/byfl 1.4 9999: Compiler-based Application Analysis
+sys-devel/byfl 1.4-r1 1.5 9999: Compiler-based Application Analysis
 sys-devel/clang 3.4.2-r100 3.5.0-r100 3.5.2-r100 3.6.2-r100 3.7.1-r100 3.8.0-r100 9999-r100: C language family frontend for LLVM (meta-ebuild)
 sys-devel/cons 2.2.0: Extensible perl-based build utility
 sys-devel/crossdev 20151026-r1 20160602 99999999: Gentoo Cross-toolchain generator

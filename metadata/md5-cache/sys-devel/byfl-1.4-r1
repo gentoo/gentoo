@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure prepare
+DEPEND=>=sys-devel/clang-3.7.0 >=sys-devel/llvm-3.7.0 <sys-devel/llvm-3.8 sys-devel/binutils:* dev-lang/perl:= dev-perl/Switch hdf5? ( sci-libs/hdf5[cxx] ) sqlite? ( dev-db/sqlite:3 )
+DESCRIPTION=Compiler-based Application Analysis
+EAPI=6
+HOMEPAGE=https://github.com/losalamos/Byfl
+IUSE=hdf5 static-libs sqlite
+KEYWORDS=~amd64 ~amd64-linux
+LICENSE=BSD
+RDEPEND=>=sys-devel/clang-3.7.0 >=sys-devel/llvm-3.7.0 <sys-devel/llvm-3.8 sys-devel/binutils:* dev-lang/perl:= dev-perl/Switch hdf5? ( sci-libs/hdf5[cxx] ) sqlite? ( dev-db/sqlite:3 )
+SLOT=0
+SRC_URI=https://github.com/losalamos/Byfl/releases/download/v1.4-llvm-3.7.0/byfl-1.4-llvm-3.7.0.tar.gz
+_eclass_exported_funcs=src_prepare:- src_configure:-
+_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	flag-o-matic	d270fa247153df66074f795fa42dba3e	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	c9d9187f4caa4026a0ceddd8dfceb3c1
+_md5_=5f5fd7e5caf57957a6cf9416922d7573
