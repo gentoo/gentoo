@@ -16,8 +16,8 @@ SRC_URI="mirror://kernel/linux/docs/man-pages/Archive/${P}.tar.xz
 LICENSE="man-pages GPL-2+ BSD"
 SLOT="0"
 KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~amd64-linux ~arm-linux ~ia64-linux ~x86-linux"
-IUSE_LINGUAS=" da de fr it ja nl pl ro ru zh_CN"
-IUSE="nls ${IUSE_LINGUAS// / linguas_}"
+IUSE_L10N=" da de fr it ja nl pl ro ru zh-CN"
+IUSE="nls ${IUSE_L10N// / l10n_}"
 RESTRICT="binchecks"
 
 # Block packages that used to install colliding man pages #341953 #548900
@@ -25,16 +25,16 @@ RDEPEND="virtual/man
 	!<sys-apps/attr-2.4.47-r2
 	!<dev-libs/libaio-0.3.109-r2"
 PDEPEND="nls? (
-	linguas_da? ( app-i18n/man-pages-da )
-	linguas_de? ( app-i18n/man-pages-de )
-	linguas_fr? ( app-i18n/man-pages-fr )
-	linguas_it? ( app-i18n/man-pages-it )
-	linguas_ja? ( app-i18n/man-pages-ja )
-	linguas_nl? ( app-i18n/man-pages-nl )
-	linguas_pl? ( app-i18n/man-pages-pl )
-	linguas_ro? ( app-i18n/man-pages-ro )
-	linguas_ru? ( app-i18n/man-pages-ru )
-	linguas_zh_CN? ( app-i18n/man-pages-zh_CN )
+	l10n_da? ( app-i18n/man-pages-da )
+	l10n_de? ( app-i18n/man-pages-de )
+	l10n_fr? ( app-i18n/man-pages-fr )
+	l10n_it? ( app-i18n/man-pages-it )
+	l10n_ja? ( app-i18n/man-pages-ja )
+	l10n_nl? ( app-i18n/man-pages-nl )
+	l10n_pl? ( app-i18n/man-pages-pl )
+	l10n_ro? ( app-i18n/man-pages-ro )
+	l10n_ru? ( app-i18n/man-pages-ru )
+	l10n_zh-CN? ( app-i18n/man-pages-zh_CN )
 	)
 	sys-apps/man-pages-posix"
 
