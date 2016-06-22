@@ -7139,7 +7139,7 @@ dev-python/django-tinymce 1.5.3: TinyMCE integration for Django
 dev-python/django-treebeard 3.0 4.0: Efficient tree implementations for Django 1.6+
 dev-python/django-two-factor-auth 1.2.1 1.3.0: User-friendly Two-Factor Authentication for Django
 dev-python/django-xslt 0.4.5-r1: an XSLT template system for Django
-dev-python/django_polymorphic 0.7.2: Seamless Polymorphic Inheritance for Django Models
+dev-python/django_polymorphic 0.7.2 0.9.2: Seamless Polymorphic Inheritance for Django Models
 dev-python/djangocms-admin-style 0.2.8 1.1.0 1.2.2: Adds pretty CSS styles for the django CMS admin interface.
 dev-python/djangocms-file 0.1 1.0: File plugin for django CMS
 dev-python/djangocms-flash 0.2.0 0.3.0: Flash plugin for django CMS
@@ -13278,7 +13278,7 @@ media-sound/mp3unicode 1.2.1: Commandline utility to convert ID3 tags in mp3 fil
 media-sound/mp3wrap 0.5: Command-line utility that wraps quickly two or more mp3 files in one single large playable mp3
 media-sound/mpc 0.25 0.26 0.27: A commandline client for Music Player Daemon (media-sound/mpd)
 media-sound/mpck 0.15: Checks MP3s for errors
-media-sound/mpd 0.19.10 0.19.11 0.19.12 0.19.14: The Music Player Daemon (mpd)
+media-sound/mpd 0.19.10 0.19.11 0.19.12 0.19.14 0.19.15: The Music Player Daemon (mpd)
 media-sound/mpdas 0.4.0-r1 0.4.1: An AudioScrobbler client for MPD written in C++
 media-sound/mpdscribble 0.22: An MPD client that submits information to Audioscrobbler
 media-sound/mpfc 1.3.7-r1 1.3.8.1 1.3.8.1-r1 1.3.8.1-r2: Music Player For Console
@@ -17215,8 +17215,8 @@ sys-fs/yaffs-utils 9999: tools for generating YAFFS images
 sys-fs/yaffs2-utils 9999: tools for generating YAFFS images
 sys-fs/yaffs2utils 0.2.9: tools for generating YAFFS images
 sys-fs/zerofree 1.0.1 1.0.3 1.0.4: Zero's out all free space on a filesystem
-sys-fs/zfs 0.6.0_rc13-r2 0.6.0_rc14-r1 0.6.1-r4 0.6.2-r5 0.6.3-r2 0.6.4.2 0.6.5.2-r1 0.6.5.3 0.6.5.3-r1 0.6.5.3-r3 0.6.5.3-r4 0.6.5.3-r5 0.6.5.4 0.6.5.4-r1 0.6.5.4-r2 0.6.5.6 9999: Userland utilities for ZFS Linux kernel module
-sys-fs/zfs-kmod 0.6.0_rc13-r4 0.6.0_rc14-r5 0.6.1-r2 0.6.2-r3 0.6.3-r1 0.6.4.2 0.6.5-r1 0.6.5.2 0.6.5.3 0.6.5.3-r4 0.6.5.4 0.6.5.4-r1 0.6.5.6 9999: Linux ZFS kernel module for sys-fs/zfs
+sys-fs/zfs 0.6.0_rc13-r2 0.6.0_rc14-r1 0.6.1-r4 0.6.2-r5 0.6.3-r2 0.6.4.2 0.6.5.2-r1 0.6.5.3 0.6.5.3-r1 0.6.5.3-r3 0.6.5.3-r4 0.6.5.3-r5 0.6.5.4 0.6.5.4-r1 0.6.5.4-r2 0.6.5.6 0.6.5.7 9999: Userland utilities for ZFS Linux kernel module
+sys-fs/zfs-kmod 0.6.0_rc13-r4 0.6.0_rc14-r5 0.6.1-r2 0.6.2-r3 0.6.3-r1 0.6.4.2 0.6.5-r1 0.6.5.2 0.6.5.3 0.6.5.3-r4 0.6.5.4 0.6.5.4-r1 0.6.5.6 0.6.5.7 9999: Linux ZFS kernel module for sys-fs/zfs
 sys-infiniband/compat-dapl 1.2.19-r1: OpenIB - Direct Access Provider Library v1.2
 sys-infiniband/dapl 2.0.36 2.0.40: OpenIB - Direct Access Provider Library
 sys-infiniband/ibacm 1.0.7 1.0.8: IB CM pre-connection service application
@@ -17265,7 +17265,7 @@ sys-kernel/pf-sources 2.6.31_p9 2.6.32_p16 2.6.33_p4 2.6.34_p7 2.6.35_p11 2.6.36
 sys-kernel/raspberrypi-image 4.1.17_p20160209 4.1.19_p20160309: Raspberry PI boot loader and firmware
 sys-kernel/raspberrypi-sources 3.10.1_pre-r20130719 3.10.9999 3.12.9999 3.14.9999 3.18.9999 4.1.9999 4.4.9999: Raspberry PI kernel sources
 sys-kernel/rt-sources 3.14.65_p68 3.18.29_p30 4.1.20_p23 4.4.9_p17 4.4.12_p19 4.6.1_p3 4.6.2_p5: Full Linux 4.6 kernel sources with the CONFIG_PREEMPT_RT patch
-sys-kernel/spl 0.6.0_rc13-r2 0.6.0_rc14-r3 0.6.1-r3 0.6.2-r5 0.6.3-r1 0.6.4.2 0.6.5.2 0.6.5.3 0.6.5.3-r1 0.6.5.4 0.6.5.4-r1 0.6.5.6 9999: The Solaris Porting Layer is a Linux kernel module which provides many of the Solaris kernel APIs
+sys-kernel/spl 0.6.0_rc13-r2 0.6.0_rc14-r3 0.6.1-r3 0.6.2-r5 0.6.3-r1 0.6.4.2 0.6.5.2 0.6.5.3 0.6.5.3-r1 0.6.5.4 0.6.5.4-r1 0.6.5.6 0.6.5.7 9999: The Solaris Porting Layer is a Linux kernel module which provides many of the Solaris kernel APIs
 sys-kernel/tuxonice-sources 3.4.110 3.4.111 3.4.112 3.10.100 3.10.101 3.12.56 3.12.58 3.12.60 3.14.64 3.14.67 3.14.70 3.18.28 3.18.31 3.18.34 4.1.19 4.1.22 4.1.24 4.2.8 4.3.6 4.4.5 4.4.8 4.4.11 4.5.2 4.5.4: TuxOnIce + Gentoo patchset sources
 sys-kernel/vanilla-sources 3.2.81 3.4.112 3.10.102 3.12.60 3.14.72 3.16.36 3.18.35 4.1.26 4.4.13 4.5.7 4.6.2: Full sources for the Linux kernel
 sys-kernel/xbox-sources 2.6.16.26: Full sources for the Xbox Linux kernel
@@ -17830,7 +17830,7 @@ www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
 www-client/netsurf 3.4 3.5: a free, open source web browser
 www-client/opera 12.16_p1860-r1 38.0.2220.29 38.0.2220.31: A fast and secure web browser
 www-client/opera-beta 38.0.2220.25 39.0.2256.4: A fast and secure web browser
-www-client/opera-developer 39.0.2245.0 39.0.2248.0: A fast and secure web browser
+www-client/opera-developer 39.0.2245.0 39.0.2248.0 40.0.2267.0: A fast and secure web browser
 www-client/otter 0.9.09 0.9.10 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
 www-client/phantomjs 1.9.8 2.0.0 2.0.0-r1: A headless WebKit scriptable with a JavaScript API
 www-client/pybugz 0.12.1 9999: Command line interface to (Gentoo) Bugzilla
