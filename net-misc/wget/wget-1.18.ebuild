@@ -50,6 +50,12 @@ pkg_setup() {
 
 src_prepare() {
 	epatch "${FILESDIR}"/${PN}-1.17.1-gnulib-cygwin-sys_select.patch
+	# revert some hack that breaks linking, bug #585924
+	if [[ ${CHOST} == *-darwin* ]] || [[ ${CHOST} == *-solaris* ]] ; then
+		sed -i \
+			-e 's/^  LIBICONV=$/:/' \
+			configure || die
+	fi
 }
 
 src_configure() {
