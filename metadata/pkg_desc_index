@@ -8918,7 +8918,7 @@ dev-ruby/gh 0.14.0: multi-layer client for the github api v3
 dev-ruby/gherkin 2.12.0-r2 2.12.0-r3 2.12.2 3.2.0-r1 4.0.0: Fast Gherkin lexer and parser
 dev-ruby/gherkin3 3.1.2: Fast Gherkin lexer and parser
 dev-ruby/git 1.2.9.1 1.3.0: Library for using Git in Ruby
-dev-ruby/github_api 0.11.3 0.11.3-r1 0.12.4 0.14.0: A Ruby wrapper for the GitHub REST API v3
+dev-ruby/github_api 0.11.3 0.11.3-r1 0.12.4 0.14.0 0.14.1: A Ruby wrapper for the GitHub REST API v3
 dev-ruby/globalid 0.3.6: Reference models by URI
 dev-ruby/gnuplot 2.6.2-r2: Gnuplot drawing library - Ruby Bindings
 dev-ruby/gpgme 2.0.12: Ruby language binding for GnuPG Made Easy
