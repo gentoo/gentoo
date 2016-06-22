@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -13,7 +13,7 @@ SRC_URI="http://www.yatex.org/${P/-/}.tar.gz"
 KEYWORDS="amd64 ppc ~ppc64 x86"
 SLOT="0"
 LICENSE="YaTeX"
-IUSE="linguas_ja"
+IUSE="l10n_ja"
 
 S="${WORKDIR}/${P/-/}"
 ELISP_PATCHES="${PN}-1.76-gentoo.patch
@@ -27,7 +27,7 @@ src_compile() {
 	cd docs
 	makeinfo yatexe.tex yahtmle.tex || die
 
-	if use linguas_ja; then
+	if use l10n_ja; then
 		iconv -f WINDOWS-31J -t UTF-8 yatexj.tex >yatex-ja.texi || die
 		iconv -f WINDOWS-31J -t UTF-8 yahtmlj.tex >yahtml-ja.texi || die
 		makeinfo yatex-ja.texi yahtml-ja.texi || die
@@ -43,7 +43,7 @@ src_install() {
 	doinfo docs/yatex.info* docs/yahtml.info*
 	dodoc docs/*.eng
 
-	if use linguas_ja; then
+	if use l10n_ja; then
 		doins help/YATEXHLP.jp
 		doinfo docs/yatex-ja.info* docs/yahtml-ja.info*
 		dodoc 00readme install docs/{htmlqa,qanda} docs/*.doc

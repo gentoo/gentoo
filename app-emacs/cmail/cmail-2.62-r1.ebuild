@@ -1,4 +1,4 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge.jp/${PN}/2191/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ppc x86"
-IUSE="linguas_ja"
+IUSE="l10n_ja"
 
 RDEPEND="app-emacs/apel
 	virtual/emacs-flim
@@ -38,7 +38,7 @@ src_install() {
 	dodoc ChangeLog INTRO.en README.en sample.* \
 		doc/README.{POP,gnuspop3}.en doc/cmail-r2c.en.doc || die "dodoc failed"
 
-	if use linguas_ja; then
+	if use l10n_ja; then
 		dodoc README.ja RELNOTES.ja doc/FAQ \
 			doc/README.{FETCHMAIL,POP,bbdb,cmail-crypt,cvs-access} \
 			doc/README.{feedmail,folders,gnuspop3,imap4} \

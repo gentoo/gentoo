@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -13,7 +13,7 @@ SRC_URI="http://www.mew.org/Release/${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="amd64 ppc x86"
-IUSE="ssl linguas_ja"
+IUSE="ssl l10n_ja"
 RESTRICT="test"
 
 DEPEND="sys-libs/zlib"
@@ -30,13 +30,13 @@ src_configure() {
 
 src_compile() {
 	emake
-	use linguas_ja && emake jinfo
+	use l10n_ja && emake jinfo
 	rm -f info/*~				# remove spurious backup files
 }
 
 src_install() {
 	emake DESTDIR="${D}" install
-	use linguas_ja && emake DESTDIR="${D}" install-jinfo
+	use l10n_ja && emake DESTDIR="${D}" install-jinfo
 	elisp-site-file-install "${FILESDIR}/${SITEFILE}"
 	dodoc 00api 00changes* 00diff 00readme dot.*
 
