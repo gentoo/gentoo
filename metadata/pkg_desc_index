@@ -40,7 +40,7 @@ app-admin/389-admin-console 1.1.8-r1: 389 Server Management Console (jar and hel
 app-admin/389-console 1.1.7-r1: A Java based console for remote management 389 server
 app-admin/389-ds-console 1.2.6-r1: Java based remote management console used for Managing 389-admin 389-ds
 app-admin/abrt 2.0.12-r2: Automatic bug detection and reporting tool
-app-admin/aerospike-amc-community 3.6.8: Web UI based monitoring tool for Aerospike Community Edition Server
+app-admin/aerospike-amc-community 3.6.8 3.6.8.2: Web UI based monitoring tool for Aerospike Community Edition Server
 app-admin/amazon-ec2-init 20101127-r1: Init script to setup Amazon EC2 instance parameters
 app-admin/analog 6.0-r4: A webserver log analyzer
 app-admin/ansible 1.9.4 1.9.6 2.0.2.0-r1 2.1.0.0 9999: Model-driven deployment, config management, and command execution framework
@@ -17737,6 +17737,7 @@ www-apps/eyeos 2.5: AJAX web-based desktop environment
 www-apps/freeradius-dialupadmin 1.70.3 1.80: Web administration interface of freeradius server
 www-apps/gitit 0.12.1.1: Wiki using happstack, git or darcs, and pandoc
 www-apps/gnopaste 0.5.5: gnopaste is a nopaste script based on PHP with MySQL
+www-apps/grafana-bin 3.0.4: Gorgeous metric viz, dashboards & editors for Graphite, InfluxDB & OpenTSDB
 www-apps/groupoffice 3.7.52 4.0.47 4.0.97 4.0.144 4.1.7: Group-Office is a powerful modular Intranet application framework
 www-apps/guacamole 0.9.0 0.9.2 0.9.3 0.9.7 0.9.8 0.9.9: Guacamole is a html5 vnc client as servlet
 www-apps/hiawatha-monitor 1.0 1.2 1.3: Monitoring application for www-servers/hiawatha
