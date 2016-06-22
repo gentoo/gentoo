@@ -3,7 +3,7 @@ DEPEND=>=app-emacs/apel-10.6 virtual/emacs-flim app-emacs/semi bbdb? ( app-emacs
 DESCRIPTION=Yet Another Message Interface on Emacsen
 EAPI=5
 HOMEPAGE=https://github.com/wanderlust/wanderlust http://emacswiki.org/emacs/WanderLust
-IUSE=bbdb ssl linguas_ja
+IUSE=bbdb ssl l10n_ja
 KEYWORDS=amd64 ppc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos
 LICENSE=GPL-2+
 RDEPEND=>=app-emacs/apel-10.6 virtual/emacs-flim app-emacs/semi bbdb? ( app-emacs/bbdb ) >=virtual/emacs-23
@@ -11,4 +11,4 @@ SLOT=0
 SRC_URI=https://dev.gentoo.org/~ulm/distfiles/wanderlust-2.15.9_p20130619.tar.xz
 _eclass_exported_funcs=pkg_postrm:elisp pkg_postinst:elisp pkg_setup:elisp src_unpack:elisp src_prepare:elisp src_configure:- src_compile:- src_install:-
 _eclasses_=elisp	7e36316fe822639d5a29fa10d5529eb9	elisp-common	9f56c4e9bf1282dbfc2a5a09e1124e74	eutils	792f83d5ec9536cb5ccef375469d8bde	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	c9d9187f4caa4026a0ceddd8dfceb3c1
-_md5_=50ea7fa5fd624b0d800868962b1466fd
+_md5_=c1fd184f04ae5f1d2cfcff1ef8309dd2
