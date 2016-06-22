@@ -29,6 +29,15 @@
 
 #--- END OF EXAMPLES ---
 
+# Gentoo Java team <java@gentoo.org> (18 Aug 2017)
+# Mark Java 9 as it's early access, intended only for developers
+# and those who enjoy breaking things and picking up the pieces.
+dev-java/java-sdk-docs:9
+dev-java/oracle-jdk-bin:9
+dev-java/oracle-jre-bin:9
+virtual/jdk:9
+virtual/jre:9
+
 # Mats Lidell <matsl@gentoo.org> (17 Aug 2017)
 # Masked ede and all its dependencies due to security reasons. 
 # bug #398241
@@ -65,6 +74,11 @@ kde-apps/ktraderclient
 =dev-java/javatoolkit-0.4.0
 =dev-java/javatoolkit-0.5.0
 =dev-java/javatoolkit-9999
+
+# Denis Dupeyron <calchan@gentoo.org> (09 AUg 2017)
+# Masked for testing of fix for long standing incompatibility between recent versions of ansible and jinja
+# https://github.com/ansible/ansible/issues/20494
+=app-admin/ansible-2.3.2.0-r1
 
 # Pawel Hajdan, Jr. <phajdan.jr@gentoo.org> (09 Aug 2017)
 # Dev channel releases are only for people who are developers or want more
