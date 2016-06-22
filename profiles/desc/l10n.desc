@@ -17,6 +17,7 @@
 # nb-NO - Norwegian Bokmål (Norway)
 # nn-NO - Norwegian Nynorsk (Norway)
 # pa-IN - Punjabi (India)
+# sa-IN - Sanskrit (India)
 # sv-SE - Swedish (Sweden)
 
 ach - Acoli
@@ -124,7 +125,7 @@ rm - Romansh
 ro - Romanian
 ru - Russian
 rw - Kinyarwanda
-sa-IN - Sanskrit (India)
+sa - Sanskrit
 sat - Santali
 sco - Scots
 sd - Sindhi
