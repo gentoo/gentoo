@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -14,7 +14,7 @@ SRC_URI="http://cx4a.org/pub/${PN}/${P}.tar.bz2"
 LICENSE="GPL-3+ FDL-1.1+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="linguas_ja"
+IUSE="l10n_ja"
 
 SITEFILE="50${PN}-gentoo.el"
 
@@ -28,7 +28,7 @@ src_install() {
 	dodoc README.txt TODO.txt etc/test.txt
 	cd doc
 	dodoc index.txt manual.txt demo.txt changes.txt *.png
-	if use linguas_ja; then
+	if use l10n_ja; then
 		dodoc index.ja.txt manual.ja.txt changes.ja.txt
 	fi
 }
