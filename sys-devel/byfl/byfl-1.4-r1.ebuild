@@ -1,18 +1,16 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-inherit autotools-utils flag-o-matic
+inherit flag-o-matic
 
 if [ "${PV}" = "9999" ]; then
-	LLVM_VERSION="3.7.0"
-	# Switch to ^b when we switch to EAPI=6.
-	EGIT_REPO_URI="git://github.com/losalamos/B${PN:1}.git https://github.com/losalamos/${PN}.git"
-	inherit git-2
+	LLVM_VERSION="3.8.0"
+	EGIT_REPO_URI="git://github.com/losalamos/${PN^b}.git https://github.com/losalamos/${PN}.git"
+	inherit autotools git-r3
 	KEYWORDS=""
-	AUTOTOOLS_AUTORECONF=1
 else
 	LLVM_VERSION="3.7.0"
 	MY_P="${P}-llvm-${LLVM_VERSION}"
@@ -31,6 +29,7 @@ IUSE="hdf5 static-libs sqlite"
 RDEPEND="
 	>=sys-devel/clang-${LLVM_VERSION}
 	>=sys-devel/llvm-${LLVM_VERSION}
+	<sys-devel/llvm-3.8
 	sys-devel/binutils:*
 	dev-lang/perl:=
 	dev-perl/Switch
@@ -38,8 +37,13 @@ RDEPEND="
 	sqlite? ( dev-db/sqlite:3 )"
 DEPEND="${RDEPEND}"
 
+src_prepare() {
+	default
+	[[ ${PV} = 9999 ]] && eautoreconf
+}
+
 src_configure() {
 	append-cxxflags -std=c++11
 	use sqlite || export ac_cv_lib_sqlite3_sqlite3_errstr=no
-	autotools-utils_src_configure H5CXX=$(usex hdf5 h5c++ no)
+	econf H5CXX=$(usex hdf5 h5c++ no)
 }
