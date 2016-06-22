@@ -16661,7 +16661,7 @@ sys-apps/pmount-gui 0_pre20130806: A simple graphical frontend for pmount
 sys-apps/policycoreutils 2.2.5-r4 2.3-r3 2.4 2.4-r1 2.4-r2 2.5 9999: SELinux core utilities
 sys-apps/portage 2.2.8-r2 2.2.20.1 2.2.24 2.2.26 2.2.27 2.2.28 2.3.0_rc1-r1 9999: Portage is the package management and distribution system for Gentoo
 sys-apps/powerpc-utils 1.1.3.18-r2: PowerPC utilities including nvsetenv, and additional OldWorld apps
-sys-apps/prctl 1.5: Tool to query and modify process behavior
+sys-apps/prctl 1.5 1.6: Tool to query and modify process behavior
 sys-apps/prefix-chain-utils 0.2-r5: Chained EPREFIX utilities and wrappers
 sys-apps/preload 0.6.4-r3: Adaptive readahead daemon
 sys-apps/progress 0.13: Coreutils Viewer: show progress for cp, rm, dd, and so forth
