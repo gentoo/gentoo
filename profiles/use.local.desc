@@ -6466,6 +6466,10 @@ net-p2p/bitcoinxtd:upnp - Enable Universal Plug and Play
 net-p2p/bitcoinxtd:wallet - Enable wallet support
 net-p2p/datacoin-hp:logrotate - Use app-admin/logrotate for rotating logs
 net-p2p/dbhub:switch_user - Enable support for switching user
+net-p2p/deluge:console - Enable default console UI
+net-p2p/deluge:linguas_iu - Inuktitut locale
+net-p2p/deluge:linguas_nap - Neapolitan locale
+net-p2p/deluge:linguas_pms - Piemontese locale
 net-p2p/deluge:setproctitle - Install dependencies needed for beautifying the process name
 net-p2p/deluge:webinterface - Install dependencies needed for the web interface
 net-p2p/dogecoin-qt:qrcode - Enable generation of QR Codes for receiving payments

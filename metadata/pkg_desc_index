@@ -15051,7 +15051,7 @@ net-p2p/ctorrent 3.3.2-r2 3.3.2-r3: Enhanced CTorrent is a BitTorrent console cl
 net-p2p/datacoin-hp 9999: High-performance version of datacoin (primecoin-hp fork)
 net-p2p/dbhub 0.451-r1: Hub software for Direct Connect, fork of opendchub
 net-p2p/dclib 0.3.23: DirectConnect client library
-net-p2p/deluge 1.3.12 1.3.12-r3 9999: BitTorrent client with a client/server model
+net-p2p/deluge 1.3.12 1.3.12-r4 1.3.9999 9999: BitTorrent client with a client/server model
 net-p2p/dogecoin-qt 1.6: P2P Internet currency favored by Shiba Inus worldwide
 net-p2p/ed2k_hash 0.4.0-r1: Tool for generating eDonkey2000 links
 net-p2p/eiskaltdcpp 2.2.9 9999: Qt based client for DirectConnect and ADC protocols, based on DC++ library
