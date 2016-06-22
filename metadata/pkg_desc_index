@@ -11790,7 +11790,7 @@ mail-client/squirrelmail 1.4.23_pre20140426: Webmail for nuts!
 mail-client/sylpheed 3.4.2 3.4.3 3.4.3-r1 3.5.0: A lightweight email client and newsreader
 mail-client/thunderbird 24.8.0 31.8.0 38.7.0 38.8.0 45.1.1: Thunderbird Mail Client
 mail-client/thunderbird-bin 31.8.0 38.8.0 45.1.1: Thunderbird Mail Client
-mail-client/trojita 0.4.1 0.5 0.6 0.7 9999: A Qt IMAP e-mail client
+mail-client/trojita 0.4.1 0.5 0.6 0.7-r1 9999: A Qt IMAP e-mail client
 mail-filter/MailScanner 4.84.5.2: Free Anti-Virus and Anti-Spam Filter
 mail-filter/amavisd-milter 1.5.0 1.5.0-r1 1.6.0 1.6.0-r1: sendmail milter for amavisd-new
 mail-filter/amavisd-new 2.7.2 2.8.1-r1 2.9.1-r2 2.10.1 2.10.1-r4 2.11.0-r1: High-performance interface between the MTA and content checkers
