@@ -37,11 +37,16 @@ pkg_setup() {
 src_compile() {
 	export GOPATH="${S}:$(get_golibdir_gopath)"
 	cd src/${EGO_PN}
+
+	# if we pass "build" to build.go, it builds only syncthing itself, and places the
+	# binary in the root folder.
+	# if we do not pass "build", all the tools are built, and all binaries are placed 
+	# in folder ./bin
+	ST_BUILD="build"
 	if use tools ; then
-		go run build.go -version "v${PV}" -no-upgrade || die "build failed"
-	else
-		go run build.go -version "v${PV}" -no-upgrade build || die "build failed"
+		ST_BUILD=""
 	fi
+	go run build.go -version "v${PV}" -no-upgrade ${ST_BUILD} || die "build failed"
 }
 
 src_test() {
@@ -58,7 +63,7 @@ src_install() {
 		dobin bin/syncthing
 		exeinto /usr/libexec/syncthing
 		for exe in bin/* ; do
-			[ "${exe}" = "bin/syncthing" ] || doexe ${exe}
+			[ "${exe}" = "bin/syncthing" ] || doexe "${exe}"
 		done
 	else
 		dobin syncthing
