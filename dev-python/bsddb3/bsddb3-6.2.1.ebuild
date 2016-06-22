@@ -19,9 +19,6 @@ KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x
 
 RDEPEND="
 	<sys-libs/db-6.3:=
-"
-DEPEND="${RDEPEND}
-	dev-python/setuptools[${PYTHON_USEDEP}]
 	|| (
 		sys-libs/db:6.2
 		sys-libs/db:6.1
@@ -31,6 +28,8 @@ DEPEND="${RDEPEND}
 		sys-libs/db:4.7
 	)
 "
+DEPEND="${RDEPEND}
+	dev-python/setuptools[${PYTHON_USEDEP}]"
 
 DISTUTILS_IN_SOURCE_BUILD=1
 
