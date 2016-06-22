@@ -607,6 +607,18 @@ tc-get-compiler-type() {
 	esac
 }
 
+# @FUNCTION: tc-is-gcc
+# @RETURN: Shell true if the current compiler is GCC, false otherwise.
+tc-is-gcc() {
+	[[ $(tc-get-compiler-type) == gcc ]]
+}
+
+# @FUNCTION: tc-is-clang
+# @RETURN: Shell true if the current compiler is clang, false otherwise.
+tc-is-clang() {
+	[[ $(tc-get-compiler-type) == clang ]]
+}
+
 # Internal func.  The first argument is the version info to expand.
 # Query the preprocessor to improve compatibility across different
 # compilers rather than maintaining a --version flag matrix. #335943
