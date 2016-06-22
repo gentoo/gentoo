@@ -7,7 +7,7 @@ EAPI=6
 PYTHON_COMPAT=( python2_7 )
 DISTUTILS_SINGLE_IMPL=true
 
-inherit fdo-mime distutils-r1
+inherit xdg distutils-r1
 
 DESCRIPTION='A hierarchical note taking application'
 HOMEPAGE='http://www.giuspen.com/cherrytree'
@@ -34,6 +34,8 @@ PLOCALES='cs de es fr hy it ja lt nl pl pt_BR ru sl tr uk zh_CN'
 inherit l10n
 
 python_prepare_all() {
+	xdg_src_prepare
+
 	if use nls ; then
 		l10n_find_plocales_changes 'locale' '' '.po'
 
@@ -43,17 +45,11 @@ python_prepare_all() {
 		l10n_for_each_disabled_locale_do rm_loc
 	fi
 
-	sed -i '\|update-desktop-database|d' 'setup.py' || die
+	sed -r -e '/\bupdate-desktop-database\b/d' -i -- 'setup.py' || die
 
 	distutils-r1_python_prepare_all
 }
 
 python_configure_all() {
-	use nls || mydistutilsargs+=( '--without-gettext' )
-	distutils-r1_python_configure_all
-}
-
-pkg_postinst() {
-	fdo-mime_desktop_database_update
-	fdo-mime_mime_database_update
+	use nls || mydistutilsargs+=( --without-gettext )
 }
