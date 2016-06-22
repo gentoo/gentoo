@@ -2,5 +2,5 @@
     missingok
     notifempty
     sharedscripts
-	copytruncate
+    copytruncate
 }
