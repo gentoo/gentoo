@@ -6,7 +6,7 @@ SR_GROUP=syncthing-relaysrv
 SR_HOMEDIR=/var/lib/syncthing-relaysrv
 
 description="Relay service for syncthing"
-command="/usr/bin/relaysrv"
+command="/usr/libexec/syncthing/relaysrv"
 command_args="${SR_OPTS}"
 pidfile="/run/relaysrv.pid"
 start_stop_daemon_args="--background

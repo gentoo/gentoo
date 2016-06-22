@@ -34,6 +34,13 @@ pkg_setup() {
 	fi
 }
 
+src_prepare() {
+	ls -al *
+	# patching location of relaysrv binary
+	epatch "${FILESDIR}/relaysrv.systemd.patch"
+	eapply_user
+}
+
 src_compile() {
 	export GOPATH="${S}:$(get_golibdir_gopath)"
 	cd src/${EGO_PN}
