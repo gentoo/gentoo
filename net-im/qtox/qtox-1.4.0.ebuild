@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 inherit eutils qmake-utils
 
@@ -55,10 +55,6 @@ pkg_pretend() {
 			fi
 		fi
 	fi
-}
-
-src_prepare() {
-	epatch_user
 }
 
 src_configure() {
