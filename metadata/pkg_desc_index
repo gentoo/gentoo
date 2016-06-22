@@ -4449,7 +4449,7 @@ dev-lang/rebol-bin 3_pre111: Relative Expression-Based Object Language
 dev-lang/regina-rexx 3.6-r3 3.9.1-r1: Portable Rexx interpreter
 dev-lang/rubinius 2.5.3 2.5.5: A re-implementation of the Ruby VM designed for speed
 dev-lang/ruby 2.0.0_p647-r1 2.0.0_p648 2.1.7 2.1.9 2.1.10 2.2.5 2.3.0 2.3.1: An object-oriented scripting language
-dev-lang/rust 1.2.0 1.3.0 1.5.0 1.7.0 1.7.0-r100 1.8.0 1.8.0-r100: Systems programming language from Mozilla
+dev-lang/rust 1.2.0 1.3.0 1.5.0 1.7.0 1.7.0-r100 1.8.0 1.8.0-r100 1.9.0: Systems programming language from Mozilla
 dev-lang/rust-bin 1.2.0 1.3.0 1.5.0 1.6.0 1.7.0 1.8.0: Systems programming language from Mozilla
 dev-lang/scala 2.9.3 2.10.2-r3 2.10.3-r2 2.10.4-r2 2.10.6 2.11.1-r2 2.11.2-r2 2.11.4-r1 2.11.4-r2 2.11.6-r1 2.11.7-r1: The Scala Programming Language
 dev-lang/scala-bin 2.11.7: The Scala Programming Language
