@@ -11,7 +11,7 @@ else
 	MY_PV="${PV/_/-}"
 	EGIT_COMMIT="v${MY_PV}"
 	SRC_URI="https://${EGO_PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="amd64"
+	KEYWORDS="~amd64"
 	inherit golang-vcs-snapshot
 fi
 
@@ -23,14 +23,12 @@ SLOT="0"
 IUSE="+seccomp"
 
 DEPEND=""
-RDEPEND="=app-emulation/runc-0.1.0
-	seccomp? ( sys-libs/libseccomp )"
+RDEPEND="
+	=app-emulation/runc-0.1.1*
+	seccomp? ( sys-libs/libseccomp )
+"
 
 S=${WORKDIR}/${P}/src/${EGO_PN}
-
-src_prepare() {
-	eapply_user
-}
 
 src_compile() {
 	local options=( $(usex seccomp "seccomp") )
