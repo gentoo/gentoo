@@ -30,7 +30,7 @@ DEPEND="
 
 S=${WORKDIR}/${MY_P}
 
-DOCS=( ChangeLog NEWS README )
+DOCS=( ChangeLog README )
 
 src_prepare() {
 	default
