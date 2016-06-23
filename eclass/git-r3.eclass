@@ -122,7 +122,7 @@ fi
 # pluses in ${PN} must be substituted for underscores to form a valid variable
 # name.
 
-# Additionally, a .bashrc or hook function can use the EGIT_LIVE_REPO[${PN}]
+# Additionally, a bashrc or hook function can use the EGIT_LIVE_REPO[${PN}]
 # associative array (bash 4 only). Its value can be a whitespace-spearated
 # list. EGIT_LIVE_REPO takes precedence over ${PN}_LIVE_REPO.
 #
@@ -268,10 +268,12 @@ _git-r3_env_setup() {
 		{EGIT,LIVE}_COMMIT_DATE
 	)
 
+	(( ${#livevars[@]} % 2 )) && die '"livevars" array has mismatched elements.'
+
 	local idx ref esc_pn=${PN//[-+]/_}
 	for ((idx = 0; idx <= ${#livevars[@]}; idx += 2)); do
 		[[ BASH_VERSINFO[0] -ge 4 && $(declare -p "EGIT_${livevars[idx+1]}" 2>/dev/null) == 'declare -A'* ]] \
-			&& ref=EGIT_${livevars[idx+1]}[\$PN]
+			&& ref=EGIT_${livevars[idx+1]}[\${PN}]
 
 		[[ ${!ref} ]] || ref=${esc_pn}_${livevars[idx+1]}
 
@@ -279,6 +281,7 @@ _git-r3_env_setup() {
 			ewarn "Using ${livevars[idx]} = ${!ref}. This build is unsupported."
 			printf -v "${livevars[idx]}" -- %s "${!ref}"
 		fi
+
 		unset -v ref
 	done
 
