@@ -48,7 +48,7 @@ media-libs/mesa egl wayland
 net-libs/libproxy -kde
 
 # Required by kde-apps/kdenlive
->=media-libs/mlt-0.9.8-r2 kdenlive melt -kde -qt4
+>=media-libs/mlt-0.9.8-r2 kdenlive melt
 
 # Allow certain KDE 4 components to be coinstalled with Plasma 5
 <dev-util/kdevelop-4.8.0 -gdbui
