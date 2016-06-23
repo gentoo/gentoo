@@ -3168,7 +3168,7 @@ dev-games/ps2-packer 0.4.4: another ELF packer for the PS2
 dev-games/quake4-sdk 1.4.2: Quake4 SDK
 dev-games/simgear 3.4.0 2016.1.1 2016.2.1 9999: Development library for simulation games
 dev-games/t4k-common 0.1.1: A library of code shared between tuxmath and tuxtype
-dev-games/tiled 0.16.0 0.16.1: A general purpose tile map editor
+dev-games/tiled 0.16.1: A general purpose tile map editor
 dev-games/vamos 0.7.1: an automotive simulation framework
 dev-games/wfmath 1.0.2: Worldforge math library
 dev-go/bee 1.4.1_p20160125: A tool for helping develop with beego app framework
@@ -17329,7 +17329,7 @@ sys-libs/mars 1.0.1: Multicore Application Runtime System
 sys-libs/mtdev 1.1.4 1.1.5: Multitouch Protocol Translation Library
 sys-libs/musl 1.1.12 1.1.14 1.1.14-r2 9999: Light, fast and simple C library focused on standards-conformance and safety
 sys-libs/ncurses 5.9-r3 5.9-r4 5.9-r5 5.9-r99 5.9-r101 6.0 6.0-r1: console display library
-sys-libs/newlib 1.18.0 1.19.0 1.20.0 2.0.0 2.1.0 2.2.0 2.2.0.20150423 2.3.0.20160104 2.4.0 9999: Newlib is a C library intended for use on embedded systems
+sys-libs/newlib 2.0.0 2.1.0 2.2.0 2.2.0.20150423 2.3.0.20160104 2.4.0 9999: Newlib is a C library intended for use on embedded systems
 sys-libs/nss-usrfiles 2.18.1: NSS module to read passwd/group files from CoreOS /usr location
 sys-libs/nss_wrapper 1.1.2 1.1.3: A wrapper for the user, group and hosts NSS API
 sys-libs/ntdb 1.0-r1: A not-so trivial keyword/data database system
@@ -18235,7 +18235,7 @@ x11-misc/Xorgautoconfig 0.2.4-r1: Xorgautconfig generates xorg.conf files for PP
 x11-misc/accessx 0951-r1: Interface to the XKEYBOARD extension in X11
 x11-misc/afbinit 1.0.1-r7: loads the microcode for Elite3D framebuffers to use X
 x11-misc/alacarte 3.10.0 3.11.91: Simple GNOME menu editor
-x11-misc/albert 0.8.2 0.8.7.1 0.8.7.2 0.8.7.3 0.8.9: Desktop agnostic launcher
+x11-misc/albert 0.8.9 0.8.10: Desktop agnostic launcher
 x11-misc/alock 94 94-r1: locks the local X display until a password is entered
 x11-misc/andromeda 0.3: Qt4-based filemanager
 x11-misc/appmenu-qt 0.2.6: Application menu module for Qt
