@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -14,7 +14,7 @@ KEYWORDS="~amd64 ppc x86"
 IUSE=""
 
 DEPEND=">=dev-lang/ocaml-3.12:=
-	|| ( dev-ml/camlp4 <dev-lang/ocaml-4.02.0 )"
+	|| ( dev-ml/camlp4:= <dev-lang/ocaml-4.02.0 )"
 RDEPEND="${DEPEND}"
 
 src_compile() {

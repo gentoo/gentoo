@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -12,7 +12,7 @@ SRC_URI="https://ocaml-extlib.googlecode.com/files/${P}.tar.gz"
 LICENSE="LGPL-2.1"
 DEPEND="
 	>=dev-lang/ocaml-3.10.2:=[ocamlopt?]
-	|| ( dev-ml/camlp4 <dev-lang/ocaml-4.02.0 )
+	|| ( dev-ml/camlp4:= <dev-lang/ocaml-4.02.0 )
 "
 RDEPEND="${DEPEND}"
 SLOT="0/${PV}"

@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -21,7 +21,7 @@ DEPEND="react? ( >=dev-ml/react-1.2:= )
 	ssl? ( >=dev-ml/ocaml-ssl-0.4.0:= )
 	gtk? ( dev-ml/lablgtk:= dev-libs/glib:2 )
 	ppx? ( dev-ml/ppx_tools:= )
-	|| ( dev-ml/camlp4 <dev-lang/ocaml-4.02.0 )"
+	|| ( dev-ml/camlp4:= <dev-lang/ocaml-4.02.0 )"
 
 RDEPEND="${DEPEND}
 	!<www-servers/ocsigen-1.1"
