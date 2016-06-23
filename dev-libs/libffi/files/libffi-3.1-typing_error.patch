@@ -1,5 +1,5 @@
-http://bugs.gentoo.org/511752
-http://sourceware.org/ml/libffi-discuss/2014/msg00059.html
+https://bugs.gentoo.org/511752
+https://sourceware.org/ml/libffi-discuss/2014/msg00059.html
 
 --- include/ffi.h.in
 +++ include/ffi.h.in

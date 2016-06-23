@@ -25,7 +25,7 @@ if [[ ${CTARGET} == ${CHOST} ]] ; then
 fi
 
 DESCRIPTION="Newlib is a C library intended for use on embedded systems"
-HOMEPAGE="http://sourceware.org/newlib/"
+HOMEPAGE="https://sourceware.org/newlib/"
 
 LICENSE="NEWLIB LIBGLOSS GPL-2"
 SLOT="0"
@@ -53,10 +53,15 @@ src_configure() {
 	unset LDFLAGS
 	CHOST=${CTARGET} strip-unsupported-flags
 
-	local myconf=""
+	local myconf=(
+		# Disable legacy syscall stub code in newlib.  These have been
+		# moved to libgloss for a long time now, so the code in newlib
+		# itself just gets in the way.
+		--disable-newlib-supplied-syscalls
+	)
 	[[ ${CTARGET} == "spu" ]] \
-		&& myconf="${myconf} --disable-newlib-multithread" \
-		|| myconf="${myconf} $(use_enable threads newlib-multithread)"
+		&& myconf+=( --disable-newlib-multithread ) \
+		|| myconf+=( $(use_enable threads newlib-multithread) )
 
 	mkdir -p "${NEWLIBBUILD}"
 	cd "${NEWLIBBUILD}"
@@ -65,7 +70,7 @@ src_configure() {
 	econf \
 		$(use_enable unicode newlib-mb) \
 		$(use_enable nls) \
-		${myconf}
+		"${myconf[@]}"
 }
 
 src_compile() {

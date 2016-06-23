@@ -60,7 +60,7 @@ src_unpack() {
 	# unionfs filesystem over the cd9660 readonly filesystem.
 	epatch "${FILESDIR}/${PN}-7.0-tmpfs_whiteout_stub.patch"
 
-	# See http://sourceware.org/bugzilla/show_bug.cgi?id=5391
+	# See https://sourceware.org/bugzilla/show_bug.cgi?id=5391
 	# ld doesn't provide symbols constructed as the __start_set_(s) ones
 	# are on FreeBSD modules.
 	# This patch adds code to generate a list of these and adds them
