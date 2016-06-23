@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -31,9 +31,8 @@ else
 	KEYWORDS=""
 fi
 IUSE="+drm egl opengl vdpau wayland X"
-REQUIRED_USE="|| ( drm wayland X )"
 
-VIDEO_CARDS="dummy nvidia intel fglrx"
+VIDEO_CARDS="dummy nvidia intel fglrx nouveau"
 for x in ${VIDEO_CARDS}; do
 	IUSE+=" video_cards_${x}"
 done
@@ -51,6 +50,7 @@ RDEPEND=">=x11-libs/libdrm-2.4.46[${MULTILIB_USEDEP}]
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 PDEPEND="video_cards_nvidia? ( >=x11-libs/libva-vdpau-driver-0.7.4-r1[${MULTILIB_USEDEP}] )
+	video_cards_nouveau? ( >=x11-libs/libva-vdpau-driver-0.7.4-r3[${MULTILIB_USEDEP}] )
 	vdpau? ( >=x11-libs/libva-vdpau-driver-0.7.4-r1[${MULTILIB_USEDEP}] )
 	video_cards_fglrx? (
 		|| ( >=x11-drivers/ati-drivers-14.12-r3[${MULTILIB_USEDEP}]
@@ -59,7 +59,8 @@ PDEPEND="video_cards_nvidia? ( >=x11-libs/libva-vdpau-driver-0.7.4-r1[${MULTILIB
 	video_cards_intel? ( >=x11-libs/libva-intel-driver-1.2.2-r1[${MULTILIB_USEDEP}] )
 	"
 
-REQUIRED_USE="opengl? ( X )"
+REQUIRED_USE="|| ( drm wayland X )
+		opengl? ( X )"
 
 DOCS=( NEWS )
 
