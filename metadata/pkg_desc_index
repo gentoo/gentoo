@@ -15006,7 +15006,7 @@ net-news/canto-curses 0.9.3: The ncurses client for canto-daemon
 net-news/canto-daemon 0.9.1: Daemon part of Canto-NG RSS reader
 net-news/liferea 1.8.8 1.8.11 1.10.8 1.10.9 1.10.12 1.10.16 1.10.17: News Aggregator for RDF/RSS/CDF/Atom/Echo feeds
 net-news/newsbeuter 2.9: A RSS/Atom feed reader for the text console
-net-news/quiterss 0.16.2 0.18.4 9999: A Qt-based RSS/Atom feed reader
+net-news/quiterss 0.18.4 9999: A Qt-based RSS/Atom feed reader
 net-news/rawdog 2.19 2.20: Rawdog - RSS Aggregator Without Delusions Of Grandeur
 net-news/rssguard 2.4.0: A tiny RSS and Atom feed reader
 net-news/rsstail 1.8: A tail-like RSS-reader
@@ -17832,7 +17832,7 @@ www-client/otter 0.9.09 0.9.10 9999: Project aiming to recreate classic Opera (1
 www-client/phantomjs 1.9.8 2.0.0 2.0.0-r1: A headless WebKit scriptable with a JavaScript API
 www-client/pybugz 0.12.1 9999: Command line interface to (Gentoo) Bugzilla
 www-client/qtweb 3.8.5_p108: Lightweight, fast, secure and portable browser for the Web
-www-client/qupzilla 1.8.9 2.0.0: A cross-platform web browser using QtWebEngine
+www-client/qupzilla 1.8.9 2.0.0 2.0.1: A cross-platform web browser using QtWebEngine
 www-client/qutebrowser 0.4.1-r1 0.5.1 0.6.0 0.6.1 0.6.2 9999: A keyboard-driven, vim-like browser based on PyQt5 and QtWebKit
 www-client/rekonq 2.4.2-r1: A browser based on qtwebkit
 www-client/ripe-atlas-cousteau 1.0.6 1.0.7 1.2: A Python wrapper around the RIPE Atlas API
