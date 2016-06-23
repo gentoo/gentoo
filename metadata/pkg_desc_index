@@ -1952,7 +1952,7 @@ app-misc/when 1.1.33 1.1.35: Extremely simple personal calendar program aimed at
 app-misc/wipe 2.3.1: Secure file wiping utility based on Peter Gutman's patterns
 app-misc/worker 2.19.6: Worker Filemanager: Amiga Directory Opus 4 clone
 app-misc/workrave 1.10.6-r1 1.10.6-r2 1.10.8: Helpful utility to attack Repetitive Strain Injury (RSI)
-app-misc/wyrd 1.4.4 1.4.5 1.4.6: Text-based front-end to Remind
+app-misc/wyrd 1.4.6 1.4.6-r1: Text-based front-end to Remind
 app-misc/xmind 3.4.1.201401221918 3.5.1.201411201906 3.5.3.201506180105-r2 3.6.1-r1: A brainstorming and mind mapping software tool
 app-misc/yagtd 0.3.4 0.3.4-r1: CLI todo list manager based on the 'Getting Things Done' philosophy
 app-misc/ytree 1.98-r1: A curses-based file manager
@@ -5084,7 +5084,7 @@ dev-ml/js-build-tools 113.33.03 113.33.04: Collection of tools to help building 
 dev-ml/js_of_ocaml 2.7 2.8: A compiler from OCaml bytecode to javascript
 dev-ml/jsonm 0.9.1: Non-blocking streaming JSON codec for OCaml
 dev-ml/kaputt 1.2: Unit testing tool for the Objective Caml language
-dev-ml/lablgl 1.04-r1 1.05: Objective CAML interface for OpenGL
+dev-ml/lablgl 1.05 1.05-r1: Objective CAML interface for OpenGL
 dev-ml/lablgtk 2.18.3 2.18.4: Objective CAML interface for Gtk+2
 dev-ml/labltk 8.06.0 8.06.1: OCaml interface to the Tcl/Tk GUI framework
 dev-ml/lambda-term 1.9 1.10: A cross-platform library for manipulating the terminal
