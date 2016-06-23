@@ -270,10 +270,8 @@ _git-r3_env_setup() {
 
 	local idx ref esc_pn=${PN//[-+]/_}
 	for ((idx = 0; idx <= ${#livevars[@]}; idx += 2)); do
-		[[
-			( BASH_VERSINFO[0] -ge 4 || EAPI -ge 6 ) &&
-			$(declare -p "EGIT_${livevars[idx+1]}" 2>/dev/null) == 'declare -A'*
-		]] && ref=EGIT_${livevars[idx+1]}[\$PN]
+		[[ BASH_VERSINFO[0] -ge 4 && $(declare -p "EGIT_${livevars[idx+1]}" 2>/dev/null) == 'declare -A'* ]] \
+			&& ref=EGIT_${livevars[idx+1]}[\$PN]
 
 		[[ ${!ref} ]] || ref=${esc_pn}_${livevars[idx+1]}
 
