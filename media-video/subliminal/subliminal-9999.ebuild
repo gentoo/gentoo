@@ -5,6 +5,7 @@
 EAPI=6
 
 PYTHON_COMPAT=( python{2_7,3_4} )
+PYTHON_REQ_USE='xml(+)'
 
 inherit distutils-r1 git-r3
 
@@ -22,10 +23,10 @@ RDEPEND="
 	>=dev-python/guessit-2.0.1[${PYTHON_USEDEP}]
 	>=dev-python/babelfish-0.5.2[${PYTHON_USEDEP}]
 	>=dev-python/enzyme-0.4.1[${PYTHON_USEDEP}]
-	>=dev-python/beautifulsoup-4.2.0:4[${PYTHON_USEDEP}]
-	>=dev-python/requests-2.0.1[${PYTHON_USEDEP}]
+	>=dev-python/beautifulsoup-4.4.0:4[${PYTHON_USEDEP}]
+	>=dev-python/requests-2.0[${PYTHON_USEDEP}]
 	>=dev-python/click-4.0[${PYTHON_USEDEP}]
-	>=dev-python/dogpile-cache-0.5.4[${PYTHON_USEDEP}]
+	>=dev-python/dogpile-cache-0.6.0[${PYTHON_USEDEP}]
 	>=dev-python/stevedore-1.0.0[${PYTHON_USEDEP}]
 	>=dev-python/chardet-2.3.0[${PYTHON_USEDEP}]
 	>=dev-python/pysrt-1.0.1[${PYTHON_USEDEP}]
@@ -39,15 +40,15 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	test? (
 		>=dev-python/vcrpy-1.6.1[${PYTHON_USEDEP}]
+		dev-python/pytest[${PYTHON_USEDEP}]
 		dev-python/pytest-cov[${PYTHON_USEDEP}]
 		dev-python/pytest-runner[${PYTHON_USEDEP}]
-		dev-python/pytest[${PYTHON_USEDEP}]
 		dev-python/sympy[${PYTHON_USEDEP}]
 		$(python_gen_cond_dep 'dev-python/mock[${PYTHON_USEDEP}]' python2_7)
 	)
 "
 
-# Tests require network and severely broken too.
+# Tests require network.
 RESTRICT=test
 
 python_prepare_all() {

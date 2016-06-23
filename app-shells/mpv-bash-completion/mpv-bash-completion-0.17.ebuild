@@ -15,15 +15,12 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE=""
 
-DEPEND="
-	media-video/mpv[cli]
-	!<app-shells/bash-4
-"
+DEPEND="media-video/mpv[cli]"
 RDEPEND="${DEPEND}
 	>=app-shells/bash-completion-2.3-r1
 "
 
-PATCHES=( "${FILESDIR}/${P}-fix-no-flag-options-completion.patch" )
+DOCS=( KNOWN_BUGS README.mkd )
 
 src_compile() {
 	"${S}"/gen.sh > ${PN} || die
