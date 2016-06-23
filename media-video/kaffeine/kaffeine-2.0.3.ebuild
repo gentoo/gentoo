@@ -45,6 +45,17 @@ RDEPEND="${CDEPEND}
 
 DOCS=( Changelog NOTES README.md )
 
+src_prepare() {
+	kde5_src_prepare
+
+	# unused dependencies incorrectly added during the release process
+	# they do not appear in upstream git
+	sed -i \
+		-e "/find_package(KF5DocTools CONFIG REQUIRED)/d" \
+		-e "/kdoctools_install(po)/d" \
+		CMakeLists.txt || die
+}
+
 src_configure() {
 	# tools working on $HOME directory for a local git checkout
 	local mycmakeargs=(
