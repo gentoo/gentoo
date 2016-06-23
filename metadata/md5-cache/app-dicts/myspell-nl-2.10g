@@ -8,5 +8,5 @@ LICENSE=BSD-2 CC-BY-3.0
 SLOT=0
 SRC_URI=http://opentaal.org/bestanden/license_result/20-woordenlijst-v-210g-voor-openofficeorg-3?bid=20&agree=1 -> myspell-nl-2.10g.oxt http://data.opentaal.org/opentaalbank/thesaurus/download/thes_nl.oxt -> myspell-nl-2.10g_thes.oxt
 _eclass_exported_funcs=src_unpack:myspell-r2 src_prepare:- src_install:myspell-r2
-_eclasses_=myspell-r2	3f98144882500b2caaa0ab2bf3202ada
+_eclasses_=myspell-r2	d7e8733370dd6a9a1a3b64fdda0146d2
 _md5_=eeb70d3b10b83666d2784158efbae95f

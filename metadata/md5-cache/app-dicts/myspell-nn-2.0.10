@@ -8,5 +8,5 @@ LICENSE=GPL-2
 SLOT=0
 SRC_URI=https://alioth.debian.org/frs/download.php/2357/no_NO-pack2-2.0.10.zip
 _eclass_exported_funcs=src_unpack:- src_install:myspell-r2
-_eclasses_=myspell-r2	3f98144882500b2caaa0ab2bf3202ada
+_eclasses_=myspell-r2	d7e8733370dd6a9a1a3b64fdda0146d2
 _md5_=5b9b3b3ce801dfbc0dc29d832438aa62

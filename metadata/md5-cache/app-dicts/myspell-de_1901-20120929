@@ -8,5 +8,5 @@ LICENSE=|| ( GPL-2 GPL-3 )
 SLOT=0
 SRC_URI=http://extensions.libreoffice.org/extension-center/german-de-de-1901-old-spelling-dictionaries/pscreleasefolder.2011-11-04.1209635399/2012.09.29/dict-de_de-1901_oldspell_2012-09-29.oxt
 _eclass_exported_funcs=src_unpack:myspell-r2 src_prepare:- src_install:myspell-r2
-_eclasses_=myspell-r2	3f98144882500b2caaa0ab2bf3202ada
+_eclasses_=myspell-r2	d7e8733370dd6a9a1a3b64fdda0146d2
 _md5_=a86da145672f08ac9b32af109e7fd9c1

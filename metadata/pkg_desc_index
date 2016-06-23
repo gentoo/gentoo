@@ -9992,7 +9992,7 @@ dev-vcs/cvsutils 0.2.5: A small bundle of utilities to work with CVS repositorie
 dev-vcs/cvsync 2014.08.24.014706 9999: portable CVS repository synchronization utility
 dev-vcs/darcs 2.8.4-r6 2.10.1 2.10.3-r1 2.12.0: a distributed, interactive, smart revision control system
 dev-vcs/easygit 1.6.5.5: Easy GIT is a wrapper for git, designed to make git easy to learn and use
-dev-vcs/fossil 1.34 20150119112900: Simple, high-reliability, source control management, and more
+dev-vcs/fossil 1.34 1.35 20150119112900: Simple, high-reliability, source control management, and more
 dev-vcs/giggle 0.7-r1: GTK+ Frontend for GIT
 dev-vcs/git 2.4.11 2.5.5 2.6.6 2.7.3-r1 2.7.4 2.8.4 2.9.0 9999 9999-r1 9999-r2 9999-r3: stupid content tracker: distributed VCS designed for speed and efficiency
 dev-vcs/git-annex 6.20160126 6.20160318 6.20160419: manage files with git, without checking their contents into git

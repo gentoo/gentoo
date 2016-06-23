@@ -8,5 +8,5 @@ LICENSE=|| ( GPL-2 GPL-3 )
 SLOT=0
 SRC_URI=mirror://sourceforge/project/aoo-extensions/1057/8/dict-de_de-1901_oldspell_2016-04-03.oxt
 _eclass_exported_funcs=src_unpack:myspell-r2 src_prepare:- src_install:myspell-r2
-_eclasses_=myspell-r2	3f98144882500b2caaa0ab2bf3202ada
+_eclasses_=myspell-r2	d7e8733370dd6a9a1a3b64fdda0146d2
 _md5_=5161fd040f6d5460e86c8c23d586162d

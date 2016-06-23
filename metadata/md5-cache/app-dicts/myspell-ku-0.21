@@ -8,5 +8,5 @@ LICENSE=GPL-3 LGPL-3 MPL-1.1
 SLOT=0
 SRC_URI=mirror://sourceforge/myspellkurdish/ku_TR-021.zip
 _eclass_exported_funcs=src_unpack:myspell-r2 src_install:myspell-r2
-_eclasses_=myspell-r2	3f98144882500b2caaa0ab2bf3202ada
+_eclasses_=myspell-r2	d7e8733370dd6a9a1a3b64fdda0146d2
 _md5_=cafc3be49a15651cbbf32201f5084eb8

@@ -9,5 +9,5 @@ LICENSE=GPL-2 MIT
 SLOT=0
 SRC_URI=http://darkstar.ist.utl.pt/openoffice.org/pt/oo3x-pt-PT.oxt preao? ( http://darkstar.ist.utl.pt/openoffice.org/pt/oo3x-pt-PT-preao.oxt )
 _eclass_exported_funcs=src_unpack:myspell-r2 src_install:myspell-r2
-_eclasses_=myspell-r2	3f98144882500b2caaa0ab2bf3202ada
+_eclasses_=myspell-r2	d7e8733370dd6a9a1a3b64fdda0146d2
 _md5_=a3bf1b7e26cbfcad355cdde76da40962

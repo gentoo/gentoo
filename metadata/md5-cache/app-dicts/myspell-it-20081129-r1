@@ -8,5 +8,5 @@ LICENSE=AGPL-3 GPL-3 LGPL-3
 SLOT=0
 SRC_URI=mirror://sourceforge/linguistico/Dizionari.IT_20081129.oxt
 _eclass_exported_funcs=src_unpack:myspell-r2 src_prepare:- src_install:myspell-r2
-_eclasses_=myspell-r2	3f98144882500b2caaa0ab2bf3202ada
+_eclasses_=myspell-r2	d7e8733370dd6a9a1a3b64fdda0146d2
 _md5_=134ae4b7be5ccca1e2e75e7038a8224d

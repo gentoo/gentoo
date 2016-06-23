@@ -8,5 +8,5 @@ LICENSE=GPL-2 LGPL-2
 SLOT=0
 SRC_URI=http://extensions.libreoffice.org/extension-center/german-de-at-frami-dictionaries/pscreleasefolder.2011-11-05.7614737245/2015.12.28/dict-de_at-frami_2015-12-28.oxt http://extensions.libreoffice.org/extension-center/german-de-de-frami-dictionaries/releases/2015.12.28/dict-de_de-frami_2015-12-28.oxt http://extensions.libreoffice.org/extension-center/german-de-ch-frami-dictionaries/pscreleasefolder.2011-11-05.5296069116/2015.12.28/dict-de_ch-frami_2015-12-28.oxt
 _eclass_exported_funcs=src_unpack:myspell-r2 src_prepare:- src_install:myspell-r2
-_eclasses_=myspell-r2	3f98144882500b2caaa0ab2bf3202ada
+_eclasses_=myspell-r2	d7e8733370dd6a9a1a3b64fdda0146d2
 _md5_=344b6de4b725e7e2305ae09d69885482

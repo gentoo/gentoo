@@ -8,5 +8,5 @@ LICENSE=CC-SA-1.0 LGPL-3 GPL-3 MPL-1.1
 SLOT=0
 SRC_URI=http://sjp.pl/slownik/ort/sjp-myspell-pl-20130306.zip http://www.openoffice.org/pl/pliki/hyph_pl_PL.zip -> myspell-pl-20130306-hyph.zip mirror://sourceforge/synonimy/OOo2-Thesaurus-1.5.zip -> myspell-pl-20130306-thes.zip
 _eclass_exported_funcs=src_unpack:- src_install:myspell-r2
-_eclasses_=myspell-r2	3f98144882500b2caaa0ab2bf3202ada
+_eclasses_=myspell-r2	d7e8733370dd6a9a1a3b64fdda0146d2
 _md5_=d7fdabc474b555abdd8dc31ae28e9684
