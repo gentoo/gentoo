@@ -6785,7 +6785,7 @@ dev-php/mockery 0.9.0: Simple yet flexible PHP mock object framework for use in 
 dev-php/onphp 1.0.10: onPHP is the LGPL'ed multi-purpose object-oriented PHP framework
 dev-php/pear 1.9.4 1.9.5 1.10.1: PEAR - PHP Extension and Application Repository
 dev-php/pecl-amqp 1.4.0 1.7.0: PHP Bindings for AMQP 0-9-1 compatible brokers
-dev-php/pecl-apcu 4.0.7-r1 4.0.8 4.0.10 5.1.2: Stripped down version of APC supporting only user cache
+dev-php/pecl-apcu 4.0.7-r1 4.0.8 4.0.10 5.1.5: Stripped down version of APC supporting only user cache
 dev-php/pecl-apcu_bc 1.0.3: Provides APC backwards compatibility functions via APCu
 dev-php/pecl-bbcode 1.0.3_beta1-r1: A quick and efficient BBCode Parsing Library
 dev-php/pecl-cairo 0.3.2: Cairo bindings for PHP
@@ -8386,7 +8386,7 @@ dev-qt/qtchooser 0_p20151008: Qt4/Qt5 version chooser
 dev-qt/qtconcurrent 5.5.1 5.6.0 5.6.1: Multi-threading concurrence support library for the Qt5 framework
 dev-qt/qtcore 4.8.6-r2 4.8.7-r2 5.5.1-r1 5.6.0 5.6.1: Cross-platform application development framework
 dev-qt/qtdbus 4.8.6-r1 4.8.7 5.5.1 5.6.0 5.6.1: The D-Bus module for the Qt5 framework
-dev-qt/qtdeclarative 4.8.6-r1 4.8.7 5.5.1-r1 5.6.0 5.6.1: The QML and Quick modules for the Qt5 framework
+dev-qt/qtdeclarative 4.8.6-r1 4.8.7 5.5.1-r1 5.6.0 5.6.1-r1: The QML and Quick modules for the Qt5 framework
 dev-qt/qtdemo 4.8.6-r1 4.8.7: Demonstration module and examples for the Qt toolkit
 dev-qt/qtdiag 5.5.1-r1 5.6.0 5.6.1: Tool for reporting diagnostic information about Qt and its environment
 dev-qt/qtgraphicaleffects 5.5.1-r1 5.6.0 5.6.1: Set of QML types for adding visual effects to user interfaces
@@ -18282,7 +18282,7 @@ x11-misc/dzen 0.9.5-r1: a general purpose messaging, notification and menuing pr
 x11-misc/e16keyedit 0.7: Key binding editor for enlightenment 16
 x11-misc/e16menuedit2 0.0.3: Menu editor for enlightenment DR16 written in GTK2
 x11-misc/easystroke 0.6.0 0.6.0-r1 0.6.0-r2: a gesture-recognition application for X11
-x11-misc/efax-gtk 3.2.9 3.2.11 3.2.12 3.2.13: A graphical frontend for the 'efax' application
+x11-misc/efax-gtk 3.2.9 3.2.13: A graphical frontend for the 'efax' application
 x11-misc/electricsheep 2.7_beta11: realize the collective dream of sleeping computers from all over the internet
 x11-misc/etm 696-r1: Event and Task Manager, an intuitive time management application
 x11-misc/evolvotron 0.6.2 0.6.3: Generative art image evolver
