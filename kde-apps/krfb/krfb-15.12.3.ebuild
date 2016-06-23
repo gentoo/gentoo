@@ -9,7 +9,7 @@ inherit kde5
 
 DESCRIPTION="VNC-compatible server to share KDE desktops"
 HOMEPAGE="https://www.kde.org/applications/system/krfb/"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 DEPEND="

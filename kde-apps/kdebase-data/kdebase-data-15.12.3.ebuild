@@ -10,7 +10,7 @@ inherit kde4-meta
 
 DESCRIPTION="Icons, localization data and various .desktop files from kdebase"
 IUSE="+wallpapers"
-KEYWORDS=" amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 RDEPEND="
 	x11-themes/hicolor-icon-theme

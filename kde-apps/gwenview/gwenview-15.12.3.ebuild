@@ -13,7 +13,7 @@ HOMEPAGE="
 	https://www.kde.org/applications/graphics/gwenview/
 	https://userbase.kde.org/Gwenview
 "
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="kipi raw semantic-desktop X"
 
 # requires running environment

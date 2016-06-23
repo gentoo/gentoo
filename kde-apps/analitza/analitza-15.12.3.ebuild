@@ -9,7 +9,7 @@ VIRTUALX_REQUIRED="test"
 inherit kde5
 
 DESCRIPTION="KDE library for mathematical features"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="eigen opengl"
 
 DEPEND="

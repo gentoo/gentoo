@@ -9,7 +9,7 @@ inherit kde5
 
 DESCRIPTION="Pac-Man clone for KDE"
 HOMEPAGE="https://www.kde.org/applications/games/kapman/"
-KEYWORDS=" amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 DEPEND="

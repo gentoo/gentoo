@@ -11,7 +11,7 @@ inherit kde5
 
 DESCRIPTION="Plasma filemanager focusing on usability"
 HOMEPAGE="https://dolphin.kde.org https://www.kde.org/applications/system/dolphin"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="semantic-desktop thumbnail"
 
 DEPEND="
