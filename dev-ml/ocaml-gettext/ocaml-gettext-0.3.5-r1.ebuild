@@ -1,14 +1,14 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 
-inherit findlib
+inherit findlib eutils
 
 DESCRIPTION="Provides support for internationalization of OCaml program"
 HOMEPAGE="http://forge.ocamlcore.org/projects/ocaml-gettext"
-SRC_URI="http://forge.ocamlcore.org/frs/download.php/676/${P}.tar.gz"
+SRC_URI="http://forge.ocamlcore.org/frs/download.php/1433/${P}.tar.gz"
 
 LICENSE="LGPL-2.1-with-linking-exception"
 SLOT="0/${PV}"
@@ -19,10 +19,15 @@ RDEPEND=">=dev-lang/ocaml-3.12.1:=
 	>=dev-ml/ocaml-fileutils-0.4.0:=
 	>=dev-ml/camomile-0.8.3:=
 	sys-devel/gettext
+	dev-ml/camlp4:=
 	"
 DEPEND="${RDEPEND}
 	doc? ( app-text/docbook-xsl-stylesheets dev-libs/libxslt )
 	test? ( dev-ml/ounit )"
+
+src_prepare() {
+	has_version '>=dev-lang/ocaml-4.03' && epatch "${FILESDIR}/oc43.patch"
+}
 
 src_configure() {
 	econf \
