@@ -14,7 +14,7 @@ HOMEPAGE="https://www.kde.org/ https://community.kde.org/KDEConnect"
 SRC_URI="mirror://kde/unstable/${PN}/0.9/src/${KMNAME}-${PV}.tar.xz"
 
 LICENSE="GPL-2+"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE="app +telepathy wayland"
 
 DEPEND="
