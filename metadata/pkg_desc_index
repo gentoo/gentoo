@@ -5053,7 +5053,7 @@ dev-ml/camomile 0.8.4 0.8.5: Camomile is a comprehensive Unicode library for oca
 dev-ml/cmdliner 0.9.8: Declarative definition of command line interfaces for OCaml
 dev-ml/comparelib 109.60.00 113.00.00: Camlp4 syntax extension that derives comparison functions from type representations
 dev-ml/core 113.24.00 113.24.01 113.24.02 113.33.00 113.33.02: Jane Street's alternative to the standard library
-dev-ml/core_bench 112.35.00 113.24.00 113.33.00: Micro-benchmarking library for OCaml
+dev-ml/core_bench 113.33.00: Micro-benchmarking library for OCaml
 dev-ml/core_extended 113.24.00 113.33.00: Jane Street's alternative to the standard library
 dev-ml/core_kernel 113.24.00 113.33.00 113.33.01: System-independent part of Core
 dev-ml/core_profiler 113.24.00 113.33.00: Jane Street's profiling library
@@ -11509,7 +11509,7 @@ kde-frameworks/kactivities 5.21.0 5.23.0: Framework for working with KDE activit
 kde-frameworks/kactivities-stats 5.21.0 5.23.0: Framework for getting the usage statistics collected by the activities service
 kde-frameworks/kapidox 5.21.0 5.23.0: Framework for building KDE API documentation in a standard format and style
 kde-frameworks/karchive 5.21.0 5.23.0: Framework for reading, creation, and manipulation of various archive formats
-kde-frameworks/kauth 5.21.0 5.23.0 5.23.0-r1: Framework to let applications perform actions as a privileged user
+kde-frameworks/kauth 5.21.0 5.23.0-r1: Framework to let applications perform actions as a privileged user
 kde-frameworks/kbookmarks 5.21.0 5.23.0: Framework for managing bookmarks stored in XBEL format
 kde-frameworks/kcmutils 5.21.0 5.23.0: Framework to work with KDE System Settings modules
 kde-frameworks/kcodecs 5.21.0 5.23.0: Framework for manipulating strings using various encodings
@@ -11521,7 +11521,7 @@ kde-frameworks/kcrash 5.21.0 5.23.0: Framework for intercepting and handling app
 kde-frameworks/kdbusaddons 5.21.0 5.23.0: Framework for registering services and applications per freedesktop standards
 kde-frameworks/kdeclarative 5.21.0 5.23.0: Framework providing integration of QML and KDE work spaces
 kde-frameworks/kded 5.21.0 5.23.0: Central daemon of KDE workspaces
-kde-frameworks/kdelibs4support 5.21.0 5.23.0 5.23.0-r1: Framework easing the development transition from KDE 4 to KF 5
+kde-frameworks/kdelibs4support 5.21.0 5.23.0-r1: Framework easing the development transition from KDE 4 to KF 5
 kde-frameworks/kdesignerplugin 5.21.0 5.23.0: Framework providing plugins to use KDE frameworks widgets in QtDesigner
 kde-frameworks/kdesu 5.21.0 5.23.0: Framework to handle super user actions
 kde-frameworks/kdewebkit 5.21.0 5.23.0: Framework providing KDE integration of QtWebKit
@@ -11530,7 +11530,7 @@ kde-frameworks/kdoctools 5.21.0 5.23.0: Tools to generate documentation in vario
 kde-frameworks/kemoticons 5.21.0 5.23.0: Framework for converting text emoticons to graphical representations
 kde-frameworks/kf-env 3 4: Environment setting required for all KDE Frameworks apps to run
 kde-frameworks/kfilemetadata 5.21.0 5.23.0: Library for extracting file metadata
-kde-frameworks/kglobalaccel 5.21.0 5.23.0 5.23.0-r1: Framework to handle global shortcuts
+kde-frameworks/kglobalaccel 5.21.0 5.23.0-r1: Framework to handle global shortcuts
 kde-frameworks/kguiaddons 5.21.0 5.23.0: Framework providing assorted high-level user interface components
 kde-frameworks/khtml 5.21.0 5.23.0: KHTML web rendering engine
 kde-frameworks/ki18n 5.21.0 5.23.0: Framework based on Gettext for internationalizing user interface text
@@ -11563,7 +11563,7 @@ kde-frameworks/kwallet 5.21.0 5.23.0: Framework providing desktop-wide storage f
 kde-frameworks/kwayland 5.5.5 5.23.0: Qt-style client and server library wrapper for Wayland libraries
 kde-frameworks/kwidgetsaddons 5.21.0 5.23.0: An assortment of high-level widgets for common tasks
 kde-frameworks/kwindowsystem 5.21.0 5.23.0: Framework providing access to properties and features of the window manager
-kde-frameworks/kxmlgui 5.21.0 5.23.0 5.23.0-r1: Framework for managing menu and toolbar actions in an abstract way
+kde-frameworks/kxmlgui 5.21.0 5.23.0-r1: Framework for managing menu and toolbar actions in an abstract way
 kde-frameworks/kxmlrpcclient 5.21.0 5.23.0: Framework providing client-side support for the XML-RPC protocol
 kde-frameworks/modemmanager-qt 5.21.0 5.23.0: ModemManager bindings for Qt
 kde-frameworks/networkmanager-qt 5.21.0 5.23.0: NetworkManager bindings for Qt
