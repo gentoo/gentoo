@@ -17,23 +17,26 @@ IUSE="ncurses nls readline static-libs"
 KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
 
 RDEPEND="
-	ncurses? ( sys-libs/ncurses )
-	readline? ( sys-libs/readline )"
+	ncurses? ( sys-libs/ncurses:0= )
+	readline? ( sys-libs/readline:= )"
 DEPEND="${RDEPEND}
 	sys-devel/gettext"
 
 # describe properly mi
-LANGS="af bg ca cs cy da de de_1901 el en eo es et fo fr ga gl he hr hu ia id
-is it km ku lt lv mk ms nb nl nn pl pt pt_BR ro ru sk sl sq sv sw tn uk zu"
+LANGS="af bg ca cs cy da de de-1901 el en eo es et fo fr ga gl he hr hu ia id
+is it km ku lt lv mk ms nb nl nn pl pt pt-BR ro ru sk sl sq sv sw tn uk zu"
 
-DICT_DEP="app-dicts/myspell-en"
+PDEPEND="app-dicts/myspell-en"
 for lang in ${LANGS}; do
-	DICT_DEP+=" linguas_${lang}? ( app-dicts/myspell-${lang/pt_BR/pt-br} )"
-	IUSE+=" linguas_${lang}"
+	IUSE+=" l10n_${lang}"
+	case ${lang} in
+		de-1901) dict="de_1901" ;;
+		pt-BR)   dict="pt-br"   ;;
+		*)       dict="${lang}" ;;
+	esac
+	PDEPEND+=" l10n_${lang}? ( app-dicts/myspell-${dict} )"
 done
-PDEPEND="${DICT_DEP}"
-
-unset lang LANGS DICT_DEP
+unset dict lang LANGS
 
 S=${WORKDIR}/${MY_P}
 
