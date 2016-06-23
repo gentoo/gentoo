@@ -30,3 +30,4 @@ move kde-base/kdebindings-meta kde-apps/kdebindings-meta
 move app-crypt/letsencrypt app-crypt/certbot
 move app-crypt/letsencrypt-apache app-crypt/certbot-apache
 move net-misc/sx sys-cluster/sx
+slotmove >=dev-php/pecl-apcu-5.0 0 7
