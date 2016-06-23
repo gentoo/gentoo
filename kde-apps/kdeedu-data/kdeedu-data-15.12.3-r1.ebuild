@@ -9,7 +9,7 @@ KDE_DEBUG="false"
 inherit kde5
 
 DESCRIPTION="Shared icons, artwork and data files for educational applications"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 DEPEND="

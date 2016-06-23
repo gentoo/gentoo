@@ -10,7 +10,7 @@ inherit kde4-meta
 
 DESCRIPTION="KDE SC solid runtime modules (autoeject, automounter and others)"
 HOMEPAGE="https://solid.kde.org"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="debug bluetooth networkmanager"
 
 KMEXTRA="

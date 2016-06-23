@@ -8,7 +8,7 @@ KDE_HANDBOOK="forceoptional"
 inherit kde5
 
 DESCRIPTION="Screenshot capture utility"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="kipi"
 
 DEPEND="

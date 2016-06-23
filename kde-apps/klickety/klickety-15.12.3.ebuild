@@ -9,7 +9,7 @@ KDE_SELINUX_MODULE="games"
 inherit kde5
 
 DESCRIPTION="A game almost the same as ksame, but a bit different by KDE"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 DEPEND="

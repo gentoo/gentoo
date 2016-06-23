@@ -8,7 +8,7 @@ KDE_HANDBOOK="false"
 inherit kde5
 
 DESCRIPTION="Extra Dolphin plugins"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="bazaar dropbox git mercurial subversion"
 
 # FIXME: required in root CMakeLists.txt, but:

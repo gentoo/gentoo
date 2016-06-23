@@ -9,7 +9,7 @@ inherit kde4-base
 
 DESCRIPTION="An advanced download manager for KDE"
 HOMEPAGE="https://www.kde.org/applications/internet/kget/"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="debug bittorrent gpg mms sqlite webkit"
 
 RDEPEND="

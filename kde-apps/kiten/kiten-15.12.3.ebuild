@@ -9,7 +9,7 @@ inherit kde5
 
 DESCRIPTION="KDE Japanese dictionary and reference"
 HOMEPAGE="https://www.kde.org/applications/education/kiten https://edu.kde.org/kiten"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 DEPEND="

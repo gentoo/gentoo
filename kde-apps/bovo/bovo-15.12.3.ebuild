@@ -9,7 +9,7 @@ inherit kde5
 
 DESCRIPTION="Five-in-a-row Board Game"
 HOMEPAGE="https://www.kde.org/applications/games/bovo/"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 DEPEND="

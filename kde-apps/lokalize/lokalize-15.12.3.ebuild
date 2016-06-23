@@ -11,7 +11,7 @@ inherit python-single-r1 kde5
 DESCRIPTION="KDE Applications 5 translation tool"
 HOMEPAGE="https://www.kde.org/applications/development/lokalize
 http://l10n.kde.org/tools"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"

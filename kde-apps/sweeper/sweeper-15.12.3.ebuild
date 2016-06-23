@@ -10,5 +10,5 @@ inherit kde4-base
 DESCRIPTION="KDE Privacy Settings Widget"
 HOMEPAGE="https://www.kde.org/applications/utilities/sweeper
 https://utils.kde.org/projects/sweeper"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="debug"
