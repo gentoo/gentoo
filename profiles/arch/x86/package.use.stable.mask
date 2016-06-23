@@ -22,10 +22,6 @@
 # Dependencies not yet stable
 dev-cpp/eigen test
 
-# Arfrever Frehtes Taifersar Arahesis <arfrever.fta@gmail.com> (26 Feb 2016)
-# KDE Frameworks 5 not yet stable.
->=net-irc/kvirc-4.4_pre20150000000000 kde
-
 # Pacho Ramos <pacho@gentoo.org> (08 Mar 2015)
 # mayavi is broken, bug #500104
 dev-python/apptools test
