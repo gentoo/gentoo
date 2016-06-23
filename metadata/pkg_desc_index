@@ -5128,7 +5128,7 @@ dev-ml/ocamlgraph 0.99b 1.8.5 1.8.6 1.8.7: O'Caml Graph library
 dev-ml/ocamlgsl 0.6.0: OCaml bindings for the GSL library
 dev-ml/ocamlify 0.0.2: OCamlify allows to create OCaml source code by including whole file into OCaml string or string list
 dev-ml/ocamlmod 0.0.8: Generate OCaml modules from source files
-dev-ml/ocamlnet 3.7.7 4.0.4 4.1.1: Modules for OCaml application-level Internet protocols
+dev-ml/ocamlnet 3.7.7 4.0.4 4.1.1 4.1.2: Modules for OCaml application-level Internet protocols
 dev-ml/ocamlpam 1.1: OCamlPAM - an OCaml library for PAM
 dev-ml/ocamlsdl 0.9.1: OCaml SDL Bindings
 dev-ml/ocamlweb 1.38-r1 1.39: O'Caml literate programming tool
@@ -9665,7 +9665,7 @@ dev-util/cmdtest 0.16 0.18: black box tests Unix command line tools
 dev-util/cmocka 0.3.1 0.3.1-r1 0.4.1 1.0.1: A unit testing framework for C
 dev-util/cmt 1.26: Cross platform configuration management environment
 dev-util/coccigrep 1.10 1.11 1.12 1.13: A semantic grep for the C language
-dev-util/coccinelle 1.0.0 1.0.1 1.0.2 1.0.4: Program matching and transformation engine
+dev-util/coccinelle 1.0.0 1.0.1 1.0.2 1.0.4 1.0.5: Program matching and transformation engine
 dev-util/codeblocks 13.12 9999: The open source, cross platform, free C++ IDE
 dev-util/colm 0.12.0 0.13.0.3: COmputer Language Manipulation
 dev-util/colorgcc 1.3.2-r6 1.3.2-r7: Perl script to colorise the gcc output.
