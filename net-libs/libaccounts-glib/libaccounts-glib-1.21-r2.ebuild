@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit autotools eutils vcs-snapshot
+inherit autotools eutils vcs-snapshot xdg-utils
 
 DESCRIPTION="Accounts SSO (Single Sign-On) management library for GLib applications"
 HOMEPAGE="https://01.org/gsso/"
@@ -27,6 +27,10 @@ DEPEND="${RDEPEND}
 RESTRICT="test"
 
 DOCS=( AUTHORS NEWS )
+
+pkg_setup() {
+	xdg_environment_reset
+}
 
 src_prepare() {
 	eautoreconf
