@@ -9,19 +9,24 @@ PHP_EXT_INI="yes"
 PHP_EXT_ZENDEXT="no"
 DOCS="NOTICE README.md TECHNOTES.txt TODO"
 
-USE_PHP="php7-0"
+# Define 5.6 here so we get the USE and REQUIRED_USE from the eclass
+# This allows us to depend on the other slot
+USE_PHP="php5-6 php7-0"
 
 inherit php-ext-pecl-r2 confutils
+
+# However, we only really build for 7.0; so redefine it here
+USE_PHP="php7-0"
 
 KEYWORDS="~amd64 ~x86"
 
 DESCRIPTION="Stripped down version of APC supporting only user cache"
 LICENSE="PHP-3.01"
-SLOT="0"
+SLOT="7"
 IUSE="+mmap"
 
 DEPEND=""
-RDEPEND="${DEPEND}"
+RDEPEND="${DEPEND} php_targets_php5-6? ( dev-php/pecl-apcu:0[php_targets_php5-6] )"
 
 LOCKS="pthreadmutex pthreadrw spinlock semaphore"
 
@@ -44,17 +49,21 @@ src_configure() {
 }
 
 src_install() {
-	php-ext-pecl-r2_src_install
+	if use php_targets_php7-0 ; then
+		php-ext-pecl-r2_src_install
 
-	insinto "${PHP_EXT_SHARED_DIR}"
-	doins apc.php
+		insinto /usr/share/php7/apcu
+		doins apc.php
+	fi
 }
 
 pkg_postinst() {
-	elog "The apc.php file shipped with this release of pecl-apcu was"
-	elog "installed into ${PHP_EXT_SHARED_DIR}/."
-	elog
-	elog "If you depend on the apc_* functions,"
-	elog "please install dev-php/pecl-apcu_bc as this extension no longer"
-	elog "provides backwards compatibility."
+	if use php_targets_php7-0 ; then
+		elog "The apc.php file shipped with this release of pecl-apcu was"
+		elog "installed into ${EPREFIX}/usr/share/php7/apcu/."
+		elog
+		elog "If you depend on the apc_* functions,"
+		elog "please install dev-php/pecl-apcu_bc as this extension no longer"
+		elog "provides backwards compatibility."
+	fi
 }
