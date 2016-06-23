@@ -213,7 +213,7 @@ app-admin/sysrqd 14: daemon providing access to the kernel sysrq functions via n
 app-admin/sysstat 11.0.2 11.2.2 11.2.3 11.2.4 11.2.4-r1 11.3.3 11.3.4 11.3.4-r1: System performance tools for Linux
 app-admin/system-config-printer 1.4.8: GNOME frontend for a Red Hat's printer administration tool
 app-admin/system-tools-backends 2.10.2: Tools aimed to make easy the administration of UNIX systems
-app-admin/systemrescuecd-x86 4.4.1 4.5.0 4.5.1 4.5.2 4.5.3 4.5.4 4.6.0 4.6.1 4.7.0 4.7.1 4.7.2: The .iso image of SystemRescueCD rescue disk, x86 (+ amd64) variant
+app-admin/systemrescuecd-x86 4.4.1 4.5.0 4.5.1 4.5.2 4.5.3 4.5.4 4.6.0 4.6.1 4.7.0 4.7.1 4.7.2 4.7.3: The .iso image of SystemRescueCD rescue disk, x86 (+ amd64) variant
 app-admin/tenshi 0.12 0.14 0.15: Log parsing and notification program
 app-admin/testdisk 7.0-r2 7.0-r3: Checks and undeletes partitions + PhotoRec, signature based recovery tool
 app-admin/tmpreaper 1.6.13: A utility for removing files based on when they were last accessed
@@ -2818,7 +2818,7 @@ dev-cpp/antlr-cpp 2.7.7: The ANTLR 2 C++ Runtime
 dev-cpp/asio 1.4.5 1.4.8-r1 1.10.6: Asynchronous Network Library
 dev-cpp/atkmm 2.22.7-r1 2.24.1 2.24.2: C++ interface for the ATK library
 dev-cpp/cairomm 1.10.0-r1 1.12.0 1.12.0-r1: C++ bindings for the Cairo vector graphics library
-dev-cpp/catch 1.5.0 9999: Modern C++ header-only framework for unit-tests
+dev-cpp/catch 1.5.0 1.5.6 9999: Modern C++ header-only framework for unit-tests
 dev-cpp/clucene 2.3.3.4-r5 2.3.3.4-r6: High-performance, full-featured text search engine based off of lucene in C++
 dev-cpp/commoncpp2 1.8.1-r1: C++ framework offering portable support for threading, sockets, file access, daemons, persistence, serial I/O, XML parsing, and system services
 dev-cpp/ctemplate 2.2 2.2_p129 2.3: A simple but powerful template language for C++
@@ -4372,7 +4372,7 @@ dev-lang/closure-compiler-bin 20120305 20121212 20130227 20130411 20150126: Java
 dev-lang/coffee-script 1.9.3-r1 1.10.0: A little language that compiles into javascript
 dev-lang/confluence 0.10.6: Functional programming language for reactive system design (digital logic, hard-real-time software)
 dev-lang/crystal 0.11.1 0.12.0 0.13.0 0.14.2 0.15.0: The Crystal Programming Language
-dev-lang/ekopath 6.0.619_p20151213-r1 6.0.619_p20151213-r100 6.0.756_p20160409-r1 6.0.756_p20160409-r100 6.0.779_p20160428-r1 6.0.779_p20160428-r100: PathScale EKOPath Compiler Suite
+dev-lang/ekopath 6.0.619_p20151213-r1 6.0.619_p20151213-r100 6.0.756_p20160409-r1 6.0.756_p20160409-r100 6.0.779_p20160428-r1 6.0.779_p20160428-r100 6.0.844_p20160623-r1 6.0.844_p20160623-r100: PathScale EKOPath Compiler Suite
 dev-lang/elixir 1.0.5 1.1.1 1.2.3 1.2.5 1.3.0: Elixir programming language
 dev-lang/epic 0.9.3.3-r1: Compiler for a simple functional language
 dev-lang/erlang 15.2.3.1 17.5 18.0-r2 18.2.1 18.3: Erlang programming language, runtime environment and libraries (OTP)
@@ -9594,7 +9594,7 @@ dev-util/App-SVN-Bisect 1.1-r1: Binary search through svn revisions
 dev-util/Orange 2.7.2: Open source data visualization and analysis for novice and experts.
 dev-util/a8 0.11-r2 1.0: An ultra-lightweight IDE, that embeds Vim, a terminal emulator, and a file browser
 dev-util/aap 1.076 1.091-r2: Bram Moolenaar's super-make program
-dev-util/abi-compliance-checker 1.99.19 1.99.20 9999: A tool for checking backward compatibility of a C/C++ library
+dev-util/abi-compliance-checker 1.99.19 1.99.20 1.99.21 9999: A tool for checking backward compatibility of a C/C++ library
 dev-util/abi-dumper 0.99.15: Dump ABI of an ELF object containing DWARF debug info
 dev-util/ald 0.1.7 0.1.7-r1: Assembly Language Debugger - a tool for debugging executable programs at the assembly level
 dev-util/alleyoop 0.9.8: A Gtk+ front-end to the Valgrind memory checker
@@ -9925,7 +9925,7 @@ dev-util/stressapptest 1.0.4 1.0.6 1.0.6-r1 1.0.6-r2 1.0.7_p1: Stressful Applica
 dev-util/stubgen 2.08: a member function stub generator for C++
 dev-util/suse-build 2014.09.18 2015.11.05 9999: Script to build SUSE Linux RPMs
 dev-util/synopsis 0.13: General source code documentation tool
-dev-util/sysdig 0.5.1 0.6.0 0.9.0 0.10.0: A system exploration and troubleshooting tool
+dev-util/sysdig 0.5.1 0.6.0 0.9.0 0.10.0 0.10.1: A system exploration and troubleshooting tool
 dev-util/sysprof 1.2.0: System-wide Linux Profiler
 dev-util/systemtap 2.4-r1 2.5 2.9: A linux trace/probe tool
 dev-util/tailor 0.9.35-r1: A tool to migrate changesets between version control systems
@@ -13496,7 +13496,7 @@ media-video/atomicparsley-wez 0.9.6: command line program for reading, parsing a
 media-video/avidemux 2.6.8 9999: Video editor designed for simple cutting, filtering and encoding tasks
 media-video/avinfo 1.0_alpha15 1.0_alpha15_p1: Utility for displaying AVI information
 media-video/baka-mplayer 2.0.3 2.0.4: Cross-platform libmpv-based multimedia player with uncluttered design
-media-video/bashnapi 1.1.5: Napiprojekt.pl subtitle downloader in bash
+media-video/bashnapi 1.1.5 1.3.5: Napiprojekt.pl subtitle downloader in bash
 media-video/bbtools 1.9: bbdmux, bbinfo, bbvinfo and bbainfo from Brent Beyeler
 media-video/bdsup2sub 4.0.0-r1: A tool to convert and tweak bitmap based subtitle streams
 media-video/bdsup2sub++ 1.0.2: C++ port of BDSup2Sub
@@ -14579,7 +14579,7 @@ net-misc/aggregate-flim 1.0.2: aggregate is a tool for aggregating CIDR networks
 net-misc/aiccu 2007.01.15-r5: AICCU Client to configure an IPv6 tunnel to SixXS
 net-misc/apt-cacher-ng 0.9.2 0.9.3: Yet another caching HTTP proxy for Debian/Ubuntu software packages
 net-misc/apt-proxy 1.3.0: Caching proxy for the Debian package system
-net-misc/aria2 1.15.2 1.19.0 1.19.2 1.21.0 1.23.0: A download utility with segmented downloading with BitTorrent support
+net-misc/aria2 1.15.2 1.19.0 1.19.2 1.21.0 1.23.0 1.24.0: A download utility with segmented downloading with BitTorrent support
 net-misc/arm 1.4.5.0-r2 1.4.5.0_p20140714-r2: A ncurses-based status monitor for Tor relays
 net-misc/arpd 0.2-r1: ARP server which claims all unassigned addresses (for network monitoring or simulation)
 net-misc/arpsponge 3.12.2: Sweeps up stray ARP queries from a peering LAN
@@ -17089,7 +17089,7 @@ sys-fs/autorun 3.17: auto cdrom mounter for the lazy user
 sys-fs/avfs 1.0.1 1.0.2 1.0.3: AVFS is a virtual filesystem that allows browsing of compressed files
 sys-fs/bashmount 3.2.0: A bash script that uses udisks to handle removable devices without dependencies on any GUI
 sys-fs/bcache-tools 1.0.5 1.0.8 1.0.8_p20140220-r1 9999: Tools for bcachefs
-sys-fs/bedup 0.10.0 9999: Btrfs file de-duplication tool
+sys-fs/bedup 0.10.0 0.10.1 9999: Btrfs file de-duplication tool
 sys-fs/bindfs 1.12.6 1.13.0 1.13.1: FUSE filesystem for mounting a directory to another location and altering permissions
 sys-fs/btrfs-progs 3.14.2 3.16.2 3.17.3 3.18.2 3.19.1 4.0 4.0.1 4.1 4.1.2 4.2 4.2.2 4.3.1 4.4.1 4.5.1 4.5.2 4.5.3 9999: Btrfs filesystem utilities
 sys-fs/cachefilesd 0.10.5-r4: Provides a caching directory on an already mounted filesystem
