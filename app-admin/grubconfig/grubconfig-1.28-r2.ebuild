@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-inherit multilib
+EAPI=6
 
 DESCRIPTION="Simple Tool to configure Grub-Bootloader"
 HOMEPAGE="https://web.archive.org/web/20100410042718/http://www.tux.org/pub/people/kent-robotti/looplinux"
@@ -13,17 +13,16 @@ SLOT="0"
 KEYWORDS="-* amd64 x86"
 IUSE=""
 
-DEPEND=">=dev-util/dialog-0.7"
+RDEPEND=">=dev-util/dialog-0.7"
 
-src_unpack() {
-	unpack ${A}
-	cd "${S}"
+src_prepare() {
 	sed -i \
 		-e "s:/usr/lib/grub:/$(get_libdir)/grub:g" \
 		grubconfig || die
+	eapply_user
 }
 
 src_install() {
-	dosbin grubconfig || die
+	dosbin grubconfig
 	dodoc README
 }

@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 python3_3 python3_4 python3_5 )
 
 inherit distutils-r1
 
-MY_PV=${PV/_beta2/-beta-2}
+MY_PV=${PV/_beta/-beta-}
 
 DESCRIPTION="Google's Protocol Buffers - official Python bindings"
 HOMEPAGE="https://github.com/google/protobuf/ https://developers.google.com/protocol-buffers/"
@@ -30,7 +30,7 @@ DEPEND="${RDEPEND}
 	dev-python/six[${PYTHON_USEDEP}]"
 S="${WORKDIR}/protobuf-${MY_PV}/python"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
-PATCHES=( "${FILESDIR}/protobuf-${PV}-link-against-installed-lib.patch" )
+PATCHES=( "${FILESDIR}/${P}-link-against-installed-lib.patch" )
 
 python_test() {
 	distutils_install_for_testing
