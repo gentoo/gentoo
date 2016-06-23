@@ -203,9 +203,6 @@ app-admin/glance:swift - Adds swift storage support
 app-admin/gtkdiskfree:gtk2 - Support GTK+ 2.x instead of GTK+ 3.x
 app-admin/hddtemp:network-cron - Monthly cronjob to update hddtemp.db.
 app-admin/keepass:aot - Generate native code at build time, rather than runtime.
-app-admin/lastpass:chrome - Support for www-client/google-chrome
-app-admin/lastpass:chromium - Support for www-client/chromium
-app-admin/lastpass:firefox - Support for www-client/firefox
 app-admin/lastpass-cli:X - Use x11-misc/xclip or x11-misc/xsel to copy passwords to the clipboard.
 app-admin/lastpass-cli:pinentry - Use app-crypt/pinentry to prompt for passwords.
 app-admin/logrotate:acl - Installs acl support
