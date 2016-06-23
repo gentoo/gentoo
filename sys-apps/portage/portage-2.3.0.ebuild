@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -6,7 +6,7 @@ EAPI=5
 
 PYTHON_COMPAT=(
 	pypy
-	python3_3 python3_4
+	python3_3 python3_4 python3_5
 	python2_7
 )
 PYTHON_REQ_USE='bzip2(+)'
@@ -17,7 +17,7 @@ DESCRIPTION="Portage is the package management and distribution system for Gento
 HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Portage"
 
 LICENSE="GPL-2"
-KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
 SLOT="0"
 IUSE="build doc epydoc +ipc linguas_ru selinux xattr"
 
@@ -78,6 +78,10 @@ TARBALL_PV=${PV}
 SRC_URI="mirror://gentoo/${PN}-${TARBALL_PV}.tar.bz2
 	$(prefix_src_archives ${PN}-${TARBALL_PV}.tar.bz2)"
 
+pkg_setup() {
+	use epydoc && DISTUTILS_ALL_SUBPHASE_IMPLS=( python2.7 )
+}
+
 python_prepare_all() {
 	distutils-r1_python_prepare_all
 
@@ -120,10 +124,7 @@ python_prepare_all() {
 			-i cnf/make.globals || die "sed failed"
 
 		einfo "Adjusting repos.conf ..."
-		sed -e "s|^\(main-repo = \).*|\\1gentoo_prefix|" \
-			-e "s|^\\[gentoo\\]|[gentoo_prefix]|" \
-			-e "s|^\(location = \)\(/usr/portage\)|\\1${EPREFIX}\\2|" \
-			-e "s|^\(sync-uri = \).*|\\1rsync://rsync.prefix.bitzolder.nl/gentoo-portage-prefix|" \
+		sed -e "s|^\(location = \)\(/usr/portage\)|\\1${EPREFIX}\\2|" \
 			-i cnf/repos.conf || die "sed failed"
 
 		einfo "Adding FEATURES=force-prefix to make.globals ..."
@@ -352,13 +353,9 @@ pkg_postinst() {
 	fi
 
 	einfo ""
-	einfo "The 'websync' module has now been properly renamed to 'webrsync'"
-	einfo "Please update your repos.conf/gentoo.conf file if needed."
-	einfo ""
-	einfo "This release of portage removed the new squashfs sync module "
-	einfo "introduced in portage-2.2.19."
-	einfo "Look for it to be released as an installable portage module soon."
-	einfo "This will allow it to develop at its own pace partially independent"
-	einfo "of portage."
+	einfo "This release of portage NO LONGER contains the repoman code base."
+	einfo "Repoman has its own ebuild and release package."
+	einfo "For repoman functionality please emerge app-portage/repoman"
+	einfo "Please report any bugs you may encounter."
 	einfo ""
 }
