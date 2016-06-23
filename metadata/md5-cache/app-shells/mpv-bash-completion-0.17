@@ -1,13 +1,13 @@
 DEFINED_PHASES=compile install
-DEPEND=media-video/mpv[cli] !<app-shells/bash-4
+DEPEND=media-video/mpv[cli]
 DESCRIPTION=Bash completion for the mpv video player
 EAPI=6
 HOMEPAGE=https://2ion.github.io/mpv-bash-completion/
 KEYWORDS=~amd64
 LICENSE=GPL-3+
-RDEPEND=media-video/mpv[cli] !<app-shells/bash-4 >=app-shells/bash-completion-2.3-r1
+RDEPEND=media-video/mpv[cli] >=app-shells/bash-completion-2.3-r1
 SLOT=0
-SRC_URI=https://github.com/2ion/mpv-bash-completion/archive/0.16.tar.gz -> mpv-bash-completion-0.16.tar.gz
+SRC_URI=https://github.com/2ion/mpv-bash-completion/archive/0.17.tar.gz -> mpv-bash-completion-0.17.tar.gz
 _eclass_exported_funcs=src_compile:- src_install:-
 _eclasses_=bash-completion-r1	acf715fa09463f043fbfdc1640f3fb85	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	c9d9187f4caa4026a0ceddd8dfceb3c1
-_md5_=6a85c3deca01c5faf5d6d17b3c0ff061
+_md5_=5e183dcc0eb6240cbabc2522276b9e6d
