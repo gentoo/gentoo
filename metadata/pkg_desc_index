@@ -5146,7 +5146,7 @@ dev-ml/parmap 1.0_rc7 1.0_rc7-r1: Library allowing to exploit multicore architec
 dev-ml/pcre-ocaml 6.2.5 7.1.6 7.2.2 7.2.3: Perl Compatibility Regular Expressions for O'Caml
 dev-ml/pgocaml 2.2 2.3: PG'OCaml is a set of OCaml bindings for the PostgreSQL database
 dev-ml/pipebang 110.01.00 113.00.00: Syntax extension to transform x |! f into f x
-dev-ml/pomap 3.0.2 3.0.3 3.0.5: Partially Ordered Map ADT for O'Caml
+dev-ml/pomap 3.0.5 3.0.5-r1: Partially Ordered Map ADT for O'Caml
 dev-ml/postgresql-ocaml 2.0.5 3.2.2 4.0.1: A package for ocaml that provides access to PostgreSQL databases
 dev-ml/ppx_assert 113.24.00 113.33.00: Assert-like extension nodes that raise useful errors on failure
 dev-ml/ppx_bench 113.24.00 113.33.00: Syntax extension for writing in-line benchmarks in ocaml code
@@ -5189,7 +5189,7 @@ dev-ml/typerep 113.24.00: Library for creating runtime representation of OCaml t
 dev-ml/typerep_extended 113.24.00 113.33.00: Runtime types for OCaml (Extended)
 dev-ml/tyxml 3.5.0 3.6.0 4.0.0: A libary to build xml trees typechecked by OCaml
 dev-ml/ulex 1.1: A lexer generator for unicode
-dev-ml/utop 1.18.2 1.19 1.19.1 1.19.2: A new toplevel for OCaml with completion and colorization
+dev-ml/utop 1.19.2-r1: A new toplevel for OCaml with completion and colorization
 dev-ml/uuidm 0.9.5: OCaml module implementing 128 bits universally unique identifiers
 dev-ml/uutf 0.9.4: Non-blocking streaming Unicode codec for OCaml
 dev-ml/variantslib 113.24.00: OCaml variants as first class values
@@ -11169,7 +11169,6 @@ java-virtuals/transaction-api 1.1: Virtual for Transaction API (javax.transactio
 java-virtuals/xmlrpc-api 0: Virtual for XML RPC API (javax.xml.rpc)
 kde-apps/akonadiconsole 4.14.10 4.14.11_pre20160211: Akonadi developer console
 kde-apps/akregator 4.4.2015.06 4.4.2016.01 4.14.10 4.14.11_pre20160211: KDE news feed aggregator
-kde-apps/amor 4.14.3 15.08.3: KDE: Amusing Misuse Of Resources - desktop-dwelling creature
 kde-apps/analitza 4.14.3 15.12.3 16.04.1: KDE library for mathematical features
 kde-apps/ark 4.14.3-r1 15.12.3 16.04.1: KDE Archiving tool
 kde-apps/artikulate 4.14.3 15.12.3 16.04.1: Language learning application that helps improving pronunciation skills
@@ -11274,7 +11273,6 @@ kde-apps/kdesdk-meta 4.14.3 15.08.3 15.12.3 16.04.1: KDE SDK - merge this to pul
 kde-apps/kdesdk-strigi-analyzer 4.14.3: kdesdk: strigi plugins
 kde-apps/kdesdk-thumbnailers 15.12.3 16.04.1: Thumbnail generator for PO files
 kde-apps/kdesu 4.14.3 15.08.3 15.12.3 16.04.1: KDE gui for su(1)
-kde-apps/kdetoys-meta 4.14.3 15.08.3: KDE toys - merge this to pull in all kdetoys-derived packages
 kde-apps/kdeutils-meta 4.14.3 15.08.3 15.12.3 16.04.1: kdeutils - merge this to pull in all kdeutils-derived packages
 kde-apps/kdewebdev-meta 4.14.3 15.08.3 15.12.3 16.04.1: KDE WebDev - merge this to pull in all kdewebdev-derived packages
 kde-apps/kdf 4.14.3 15.08.3 15.12.3 16.04.1: KDE free disk space utility
@@ -11390,7 +11388,6 @@ kde-apps/ktp-text-ui 0.9.0 15.12.3 16.04.1: KDE Telepathy text chat window
 kde-apps/ktraderclient 4.14.3 15.08.3 15.12.3 16.04.1: A command-line tool for querying the KDE trader system
 kde-apps/ktuberling 4.14.3 15.08.3 15.12.3 16.04.1: Potato game for kids by KDE
 kde-apps/kturtle 4.14.3 15.12.3 16.04.1: Educational programming environment using the Logo programming language
-kde-apps/ktux 4.14.3 15.08.3: KDE: screensaver featuring the Space-Faring Tux
 kde-apps/kubrick 4.14.3 15.08.3 15.12.3 16.04.1: A game based on the "Rubik's Cube" puzzle
 kde-apps/kuiserver 4.14.3 15.08.3 15.12.3 16.04.1: KDE: Progress Info UI server
 kde-apps/kurifilter-plugins 4.14.3 15.08.3 15.12.3 16.04.1: KDE: Plugins to manage filtering URIs
@@ -17899,7 +17896,7 @@ www-servers/mongoose 5.3: easy to use web server
 www-servers/mongrel2 1.11.0: A language agnostic web server focused on web applications
 www-servers/monkeyd 1.5.6-r1 1.6.8 1.6.9 9999: A small, fast, and scalable web server
 www-servers/nginx 1.10.1 1.11.1: Robust, small and high performance http and reverse proxy server
-www-servers/ocsigenserver 2.7: Ocaml-powered webserver and framework for dynamic web programming
+www-servers/ocsigenserver 2.7-r1: Ocaml-powered webserver and framework for dynamic web programming
 www-servers/pathod 0.10 0.11.1 0.12.0: A collection of pathological tools for testing and torturing HTTP clients and servers
 www-servers/pound 2.6 2.7d 2.7f 2.7f-r1: A http/https reverse-proxy and load-balancer
 www-servers/pshs 0.2.6 0.3 0.3-r1 9999: Pretty small HTTP server -- a command-line tool to share files

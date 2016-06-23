@@ -1,14 +1,14 @@
 DEFINED_PHASES=compile configure install prepare test
-DEPEND=>=dev-lang/ocaml-3.12:=[ocamlopt?] || ( dev-ml/camlp4 <dev-lang/ocaml-4.02.0 ) type-conv? ( >=dev-ml/type-conv-108:= ) >=dev-ml/findlib-1.0.4-r1
+DEPEND=>=dev-lang/ocaml-3.12:=[ocamlopt?] || ( dev-ml/camlp4:= <dev-lang/ocaml-4.02.0 ) type-conv? ( >=dev-ml/type-conv-108:= ) >=dev-ml/findlib-1.0.4-r1
 DESCRIPTION=A deriving library for Ocsigen
 EAPI=5
 HOMEPAGE=http://ocsigen.org
 IUSE=+ocamlopt type-conv
 KEYWORDS=~amd64
 LICENSE=LGPL-2.1-with-linking-exception
-RDEPEND=>=dev-lang/ocaml-3.12:=[ocamlopt?] || ( dev-ml/camlp4 <dev-lang/ocaml-4.02.0 ) type-conv? ( >=dev-ml/type-conv-108:= )
+RDEPEND=>=dev-lang/ocaml-3.12:=[ocamlopt?] || ( dev-ml/camlp4:= <dev-lang/ocaml-4.02.0 ) type-conv? ( >=dev-ml/type-conv-108:= )
 SLOT=0/0.3c
 SRC_URI=http://www.ocsigen.org/download/deriving-ocsigen-0.3c.tar.gz
 _eclass_exported_funcs=src_prepare:- src_configure:- src_compile:- src_test:- src_install:-
 _eclasses_=findlib	9909e5ca0f77ff5b693885a3d7aeadb7
-_md5_=ae35a600a839d17ca6f4bd8e768fb368
+_md5_=77055416deee6bff9a355ce2f6e9b5fe
