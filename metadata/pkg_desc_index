@@ -110,7 +110,7 @@ app-admin/github-backup-utils 2.5.0 2.6.0: Backup and recovery utilities for Git
 app-admin/gkrellm 2.3.5-r4 2.3.6_rc1 2.3.6_rc1-r1 2.3.7: Single process stack of various system monitors
 app-admin/glance 11.0.1-r1 12.0.0 2015.2.9999 2016.1.9999: Services for discovering, registering, and retrieving VM images
 app-admin/gnome-system-log 3.9.90: System log viewer for GNOME
-app-admin/grubconfig 1.28-r1: Simple Tool to configure Grub-Bootloader
+app-admin/grubconfig 1.28-r1 1.28-r2: Simple Tool to configure Grub-Bootloader
 app-admin/gtkdiskfree 2.0.1-r1 2.0.2: Graphical tool to show free disk space like df
 app-admin/hardening-check 2.5 2.6 2.7: Report the hardening characterists of a set of binaries
 app-admin/hardinfo 0.5.2_pre20130823: A system information and benchmark tool for Linux systems
@@ -4225,7 +4225,7 @@ dev-java/plexus-classworlds 2.2.3: The class loader framework of the Plexus proj
 dev-java/portletapi 1.0-r1 2.0-r1: Portlet API 2.0 developed by the Java Community Process JSR-286
 dev-java/prefuse 20071021_beta: UI toolkit for building highly interactive visualizations of structured and unstructured data
 dev-java/proguard 4.5 4.7 4.8 5.2.1: Free Java class file shrinker, optimizer, and obfuscator
-dev-java/protobuf-java 3.0.0_beta2: Google's Protocol Buffers - official Java Bindings
+dev-java/protobuf-java 3.0.0_beta3: Google's Protocol Buffers - official Java Bindings
 dev-java/qdox 1.6.3 1.12.1-r1: Parser for extracting class/interface/method definitions
 dev-java/radeox 1.0_beta2-r1: Radeox Wiki render engine
 dev-java/rat 0.11: Apache Rat is a release audit tool, focused on licenses.
@@ -4877,7 +4877,7 @@ dev-libs/poco 1.4.6_p4 1.4.6_p4-r1: C++ class libraries to simplify the developm
 dev-libs/polylib 9999: ppl port of cloog
 dev-libs/popt 1.16-r1 1.16-r2: Parse Options - Command line parser
 dev-libs/ppl 0.12.1-r1 1.1: The Parma Polyhedra Library provides numerical abstractions for analysis of complex systems
-dev-libs/protobuf 2.5.0-r2 2.6.1-r3 3.0.0_beta2: Google's Protocol Buffers -- an efficient method of encoding structured data
+dev-libs/protobuf 2.5.0-r2 2.6.1-r3 3.0.0_beta3: Google's Protocol Buffers -- an efficient method of encoding structured data
 dev-libs/protobuf-c 1.0.2-r1 1.1.1 1.2.1-r1: Protocol Buffers implementation in C
 dev-libs/pslib 0.4.1-r2 0.4.5: pslib is a C-library to create PostScript files on the fly
 dev-libs/ptexenc 1.3.0_p20120701 1.3.1_p20130530 1.3.2_p20140525 1.3.2_p20140525-r1 1.3.3_p20150521: Library for Japanese pTeX providing a better way of handling character encodings
@@ -7677,7 +7677,7 @@ dev-python/progress 1.2: Easy to use progress bars
 dev-python/progressbar 2.3-r1 2.3-r2: Text progressbar library for python
 dev-python/promise 0.2.2-r1 0.4.1: Bytecode optimisation using staticness assertions
 dev-python/prompt_toolkit 0.45 0.46 0.47 0.48 0.50 0.52 0.53 0.54 0.57 0.58 0.60 1.0.0: Building powerful interactive command lines in Python
-dev-python/protobuf-python 3.0.0_beta2: Google's Protocol Buffers - official Python bindings
+dev-python/protobuf-python 3.0.0_beta3: Google's Protocol Buffers - official Python bindings
 dev-python/protorpc 0.10.0 0.11.1: Google Protocol RPC
 dev-python/pssi 1.0-r1: Python Simple Smartcard Interpreter
 dev-python/psutil 1.2.1 2.1.3 3.0.1 3.1.1 3.2.2 3.3.0 3.4.2 4.0.0 4.1.0: Retrieve information on running processes and system utilization
