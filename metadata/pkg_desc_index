@@ -2314,7 +2314,7 @@ app-text/jist 1.5.1: A ruby gem to publish a gist
 app-text/jmupdf 0.3.0 0.4.1 0.4.1-r1 9999: Java library for rendering PDF, XPS and CBZ (Comic Book) documents
 app-text/jpdftweak 0.9-r1: Swiss Army Knife for PDF files
 app-text/kbibtex 0.6: BibTeX editor for KDE to edit bibliographies used with LaTeX
-app-text/kchmviewer 6.0-r1 7.4 7.5 7.5-r1: Feature rich chm file viewer, based on Qt
+app-text/kchmviewer 7.5-r1: Feature rich chm file viewer, based on Qt
 app-text/kding 0.6-r3: KDE port of Ding, a dictionary lookup program
 app-text/keepnote 0.7.9-r2: A note taking application
 app-text/kpaste 1.0: Command-line tool to paste to paste.kde.org
@@ -18378,7 +18378,7 @@ x11-misc/pcmanfm-qt 0.10.0: Fast lightweight tabbed filemanager (Qt port)
 x11-misc/peksystray 0.2.1 0.4.0: A system tray dockapp for window managers supporting docking
 x11-misc/piedock 1.6.6: A little bit like the famous OS X dock but in shape of a pie menu
 x11-misc/ptbatterysystemtray 1.0.0_rc2: A simple battery monitor in the system tray
-x11-misc/py3status 2.9: py3status is an extensible i3status wrapper written in python
+x11-misc/py3status 3.0: py3status is an extensible i3status wrapper written in python
 x11-misc/pypanel 2.4-r1: A lightweight panel/taskbar for X11 window managers
 x11-misc/qcomicbook 0.9.0-r1: A viewer for comic book archives containing jpeg/png images
 x11-misc/qlipper 2.0.2: Lightweight and cross-platform clipboard history applet
