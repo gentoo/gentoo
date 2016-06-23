@@ -30,6 +30,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (23 Jun 2016)
+# Integrated in media-video/bashnapi. Removal in 30 days.
+media-video/subotage
+
 # James Le Cuirot <chewi@gentoo.org> (22 Jun 2016)
 # Not practical as a system JVM and you'd be better off with
 # IcedTea. In-tree version is ancient. java-overlay version is newer
