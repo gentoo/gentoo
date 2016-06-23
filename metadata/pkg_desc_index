@@ -5070,7 +5070,7 @@ dev-ml/enumerate 111.08.00: Syntax extension to produce a list of all values of 
 dev-ml/extlib 1.5.4 1.6.1 1.7.0-r1: Standard library extensions for O'Caml
 dev-ml/facile 1.1 1.1.1 1.1.2: A constraint programming library on integer and integer set finite domains written in OCaml
 dev-ml/faillib 109.60.00 111.17.00: Syntax extension for inserting the current location
-dev-ml/fieldslib 109.20.03 113.00.00 113.24.00: Folding over record fields
+dev-ml/fieldslib 113.24.00: Folding over record fields
 dev-ml/findlib 1.4 1.5.6 1.6.1 1.6.1-r1 1.6.2: OCaml tool to find/use non-standard packages
 dev-ml/fort 0.4.2: provides an environment for testing programs and Objective Caml modules
 dev-ml/gd4o 1.0_alpha5: OCaml interface to the GD graphics library
@@ -5088,7 +5088,7 @@ dev-ml/lablgl 1.05 1.05-r1: Objective CAML interface for OpenGL
 dev-ml/lablgtk 2.18.3 2.18.4: Objective CAML interface for Gtk+2
 dev-ml/labltk 8.06.0 8.06.1: OCaml interface to the Tcl/Tk GUI framework
 dev-ml/lambda-term 1.9 1.10: A cross-platform library for manipulating the terminal
-dev-ml/lwt 2.4.3 2.5.1 2.5.2: Cooperative light-weight thread library for OCaml
+dev-ml/lwt 2.4.3 2.5.1 2.5.2-r1: Cooperative light-weight thread library for OCaml
 dev-ml/macaque 0.7.2 0.7.4: DSL for SQL Queries in Caml
 dev-ml/markup 0.7.2: Error-recovering streaming HTML5 and XML parsers
 dev-ml/menhir 20151112 20160303 20160504 20160526: LR(1) parser generator for the OCaml language
@@ -5107,7 +5107,7 @@ dev-ml/ocaml-doc 3.12: Ocaml reference manual (html)
 dev-ml/ocaml-expat 0.9.1: OCaml bindings for expat
 dev-ml/ocaml-expect 0.0.4 0.0.5: Ocaml implementation of expect to help building unitary testing
 dev-ml/ocaml-fileutils 0.4.5 0.5.0: Pure OCaml functions to manipulate real file (POSIX like) and filename
-dev-ml/ocaml-gettext 0.3.4 0.3.5: Provides support for internationalization of OCaml program
+dev-ml/ocaml-gettext 0.3.5-r1: Provides support for internationalization of OCaml program
 dev-ml/ocaml-hashcons 1.0 1.2: OCaml hash-consing library
 dev-ml/ocaml-ipaddr 2.6.1 2.7.0: OCaml library for manipulation of IP (and MAC) address representations
 dev-ml/ocaml-make 6.37.0: Generic O'Caml Makefile for GNU Make
@@ -5136,16 +5136,16 @@ dev-ml/ocplib-endian 0.8-r1: Optimised functions to read and write int16/32/64 f
 dev-ml/ocurl 0.6.1 0.7.4 0.7.5 0.7.6 0.7.7: OCaml interface to the libcurl library
 dev-ml/odns 0.3-r1: OCaml library to query DNS servers
 dev-ml/opam 1.2.2-r1: A source-based package manager for OCaml
-dev-ml/optcomp 1.6: Optional compilation for OCaml with cpp-like directives
+dev-ml/optcomp 1.6-r1: Optional compilation for OCaml with cpp-like directives
 dev-ml/ounit 1.1.2 2.0.0: Unit testing framework for OCaml
-dev-ml/pa_bench 109.55.02 111.28.00 112.06.00: Syntax extension writing inline benchmarks
+dev-ml/pa_bench 112.06.00: Syntax extension writing inline benchmarks
 dev-ml/pa_ounit 112.35.00 113.00.00: Syntax extension that helps writing in-line test in ocaml
 dev-ml/pa_sexp_conv 113.00.01: Deprecated camlp4 syntax extension for sexplib.
 dev-ml/pa_structural_sexp 112.35.00 113.00.00: Quotation expanders to simplify building s-expressions from ocaml values
 dev-ml/parmap 1.0_rc7 1.0_rc7-r1: Library allowing to exploit multicore architectures for OCaml programs with minimal modifications
 dev-ml/pcre-ocaml 6.2.5 7.1.6 7.2.2 7.2.3: Perl Compatibility Regular Expressions for O'Caml
 dev-ml/pgocaml 2.2 2.3: PG'OCaml is a set of OCaml bindings for the PostgreSQL database
-dev-ml/pipebang 110.01.00 113.00.00: Syntax extension to transform x |! f into f x
+dev-ml/pipebang 113.00.00: Syntax extension to transform x |! f into f x
 dev-ml/pomap 3.0.5 3.0.5-r1: Partially Ordered Map ADT for O'Caml
 dev-ml/postgresql-ocaml 2.0.5 3.2.2 4.0.1: A package for ocaml that provides access to PostgreSQL databases
 dev-ml/ppx_assert 113.24.00 113.33.00: Assert-like extension nodes that raise useful errors on failure
@@ -17345,7 +17345,7 @@ sys-libs/system-config-base 1-r1: system-config-* layout package
 sys-libs/talloc 2.1.5 2.1.6 2.1.7: Samba talloc library
 sys-libs/tdb 1.3.8 1.3.9: A simple database API
 sys-libs/tevent 0.9.26 0.9.27 0.9.28: Samba tevent library
-sys-libs/timezone-data 2016c 2016d 2016e: Timezone data (/usr/share/zoneinfo) and utilities (tzselect/zic/zdump)
+sys-libs/timezone-data 2016d 2016e: Timezone data (/usr/share/zoneinfo) and utilities (tzselect/zic/zdump)
 sys-libs/uclibc 0.9.33.2-r15 0.9.33.9999 9999: C library for developing embedded Linux systems
 sys-libs/uclibc-ng 1.0.14 1.0.15 9999: C library for developing embedded Linux systems
 sys-libs/uid_wrapper 1.1.1 1.2.0 1.2.1: A wrapper to fake privilege separation

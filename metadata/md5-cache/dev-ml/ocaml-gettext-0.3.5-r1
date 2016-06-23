@@ -1,14 +1,14 @@
 DEFINED_PHASES=compile configure install prepare
-DEPEND=>=dev-lang/ocaml-3.12.1:= >=dev-ml/ocaml-fileutils-0.4.0:= >=dev-ml/camomile-0.8.3:= sys-devel/gettext || ( dev-ml/camlp4:= <dev-lang/ocaml-4.02.0 ) doc? ( app-text/docbook-xsl-stylesheets dev-libs/libxslt ) test? ( dev-ml/ounit ) >=dev-ml/findlib-1.0.4-r1
+DEPEND=>=dev-lang/ocaml-3.12.1:= >=dev-ml/ocaml-fileutils-0.4.0:= >=dev-ml/camomile-0.8.3:= sys-devel/gettext dev-ml/camlp4:= doc? ( app-text/docbook-xsl-stylesheets dev-libs/libxslt ) test? ( dev-ml/ounit ) >=dev-ml/findlib-1.0.4-r1
 DESCRIPTION=Provides support for internationalization of OCaml program
 EAPI=5
 HOMEPAGE=http://forge.ocamlcore.org/projects/ocaml-gettext
 IUSE=doc test
 KEYWORDS=~amd64 ~x86
 LICENSE=LGPL-2.1-with-linking-exception
-RDEPEND=>=dev-lang/ocaml-3.12.1:= >=dev-ml/ocaml-fileutils-0.4.0:= >=dev-ml/camomile-0.8.3:= sys-devel/gettext || ( dev-ml/camlp4:= <dev-lang/ocaml-4.02.0 )
+RDEPEND=>=dev-lang/ocaml-3.12.1:= >=dev-ml/ocaml-fileutils-0.4.0:= >=dev-ml/camomile-0.8.3:= sys-devel/gettext dev-ml/camlp4:=
 SLOT=0/0.3.5
 SRC_URI=http://forge.ocamlcore.org/frs/download.php/1433/ocaml-gettext-0.3.5.tar.gz
 _eclass_exported_funcs=src_prepare:- src_configure:- src_compile:- src_install:-
 _eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	findlib	9909e5ca0f77ff5b693885a3d7aeadb7	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	c9d9187f4caa4026a0ceddd8dfceb3c1
-_md5_=21358f9dd3e446d3db5d4ff11a172be2
+_md5_=4ac2f108c61ba0c8b4e7d5795e72c87b
