@@ -73,7 +73,7 @@ RDEPEND="${COMMON_DEPEND}
 	media-plugins/gst-plugins-taglib:1.0
 "
 DEPEND="${COMMON_DEPEND}
-	>=dev-libs/boost-1.39
+	>=dev-libs/boost-1.39:=
 	virtual/pkgconfig
 	sys-devel/gettext
 	dev-qt/qttest:4
