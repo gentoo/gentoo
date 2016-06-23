@@ -21,7 +21,7 @@ DEPEND=">=dev-ml/lwt-2.4.0:=[react]
 	>=dev-ml/zed-1.2:=
 	>=dev-ml/cppo-1.0.1:=
 	emacs? ( virtual/emacs )
-	camlp4? ( || ( dev-ml/camlp4 <dev-lang/ocaml-4.02.0 ) )"
+	camlp4? ( dev-ml/camlp4:= )"
 RDEPEND="${DEPEND}"
 
 DOCS=( "CHANGES.md" "README.md" )

@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -16,7 +16,7 @@ IUSE="unicode"
 RDEPEND="
 	sys-libs/ncurses[unicode?]
 	>=app-misc/remind-03.01
-	|| ( dev-ml/camlp4 <dev-lang/ocaml-4.02.0 )
+	|| ( dev-ml/camlp4:= <dev-lang/ocaml-4.02.0 )
 "
 DEPEND="${RDEPEND}
 	>=dev-lang/ocaml-3.08

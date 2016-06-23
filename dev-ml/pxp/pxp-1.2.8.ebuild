@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -20,7 +20,7 @@ DEPEND=">=dev-ml/pcre-ocaml-4.31:=
 	>=dev-ml/ulex-0.5:=
 	>=dev-ml/ocamlnet-4:=
 	>=dev-lang/ocaml-3.10.2:=[ocamlopt?]
-	|| ( dev-ml/camlp4 <dev-lang/ocaml-4.02.0 )"
+	|| ( dev-ml/camlp4:= <dev-lang/ocaml-4.02.0 )"
 RDEPEND="${DEPEND}"
 
 IUSE="examples +ocamlopt"

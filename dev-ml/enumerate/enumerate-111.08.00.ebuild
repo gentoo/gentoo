@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -19,7 +19,7 @@ IUSE=""
 
 DEPEND="
 	>=dev-ml/type-conv-111.13:=
-	|| ( dev-ml/camlp4 <dev-lang/ocaml-4.02.0 )"
+	|| ( dev-ml/camlp4:= <dev-lang/ocaml-4.02.0 )"
 
 RDEPEND="${DEPEND}"
 

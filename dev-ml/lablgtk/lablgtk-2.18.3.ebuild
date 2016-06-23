@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -22,7 +22,7 @@ RDEPEND=">=x11-libs/gtk+-2.10:2
 		>=x11-libs/gtkglarea-1.9:2 )
 	spell? ( app-text/gtkspell:2 )
 	sourceview? ( x11-libs/gtksourceview:2.0 )
-	|| ( dev-ml/camlp4 <dev-lang/ocaml-4.02.0 )
+	|| ( dev-ml/camlp4:= <dev-lang/ocaml-4.02.0 )
 	"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"

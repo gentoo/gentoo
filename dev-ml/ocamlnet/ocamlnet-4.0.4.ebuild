@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -23,7 +23,7 @@ RESTRICT="installsources"
 RDEPEND=">=dev-ml/findlib-1.0
 		pcre? ( >=dev-ml/pcre-ocaml-5:= )
 		>=dev-lang/ocaml-3.10.2:=[ocamlopt?]
-		tk? ( || ( dev-ml/labltk <dev-lang/ocaml-4.02[tk] ) )
+		tk? ( || ( dev-ml/labltk:= <dev-lang/ocaml-4.02[tk] ) )
 		ssl? ( net-libs/gnutls:= )
 		gtk? ( >=dev-ml/lablgtk-2:= )
 		kerberos? ( virtual/krb5 )

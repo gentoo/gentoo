@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -19,12 +19,12 @@ RDEPEND="
 	x11-libs/libX11
 	virtual/opengl
 	virtual/glu
-	|| ( dev-ml/camlp4 <dev-lang/ocaml-4.02.0 )
+	|| ( dev-ml/camlp4:= <dev-lang/ocaml-4.02.0 )
 	glut? ( media-libs/freeglut )
 	tk? (
 		>=dev-lang/tcl-8.3:0=
 		>=dev-lang/tk-8.3:0=
-		|| ( dev-ml/labltk <dev-lang/ocaml-4.02[tk] )
+		|| ( dev-ml/labltk:= <dev-lang/ocaml-4.02[tk] )
 	)
 	"
 
