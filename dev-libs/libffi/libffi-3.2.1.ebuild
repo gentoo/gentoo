@@ -6,7 +6,7 @@ EAPI=5
 inherit eutils libtool multilib multilib-minimal toolchain-funcs
 
 DESCRIPTION="a portable, high level programming interface to various calling conventions"
-HOMEPAGE="http://sourceware.org/libffi/"
+HOMEPAGE="https://sourceware.org/libffi/"
 SRC_URI="ftp://sourceware.org/pub/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"

@@ -51,7 +51,7 @@ esac
 
 PATCH_VER=""
 DESCRIPTION="GNU debugger"
-HOMEPAGE="http://sourceware.org/gdb/"
+HOMEPAGE="https://sourceware.org/gdb/"
 SRC_URI="${SRC_URI} ${PATCH_VER:+mirror://gentoo/${P}-patches-${PATCH_VER}.tar.xz}"
 
 LICENSE="GPL-2 LGPL-2"
@@ -196,7 +196,7 @@ src_install() {
 		return 0
 	fi
 	# Install it by hand for now:
-	# http://sourceware.org/ml/gdb-patches/2011-12/msg00915.html
+	# https://sourceware.org/ml/gdb-patches/2011-12/msg00915.html
 	# Only install if it exists due to the twisted behavior (see
 	# notes in src_configure above).
 	[[ -e gdb/gdbserver/gdbreplay ]] && dobin gdb/gdbserver/gdbreplay
