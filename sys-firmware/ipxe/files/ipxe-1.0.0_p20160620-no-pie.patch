@@ -22,8 +22,8 @@ index fe3adc9ce436..59ad25b6e0af 100644
  ifeq ($(CCTYPE),gcc)
 -PIE_TEST = [ -z "`$(CC) -fno-PIE -nopie -x c -c /dev/null -o /dev/null 2>&1`" ]
 -PIE_FLAGS := $(shell $(PIE_TEST) && $(ECHO) '-fno-PIE -nopie')
-+PIE_TEST = [ -z "`$(CC) -fno-PIE -no-pie -x c -c /dev/null -o /dev/null 2>&1`" ]
-+PIE_FLAGS := $(shell $(PIE_TEST) && $(ECHO) '-fno-PIE -no-pie')
++PIE_TEST = for f in -nopie -no-pie; do [ -z "`$(CC) -fno-PIE $$f -x c -c /dev/null -o /dev/null 2>&1`" ] && $(ECHO) -fno-PIE $$f; done
++PIE_FLAGS := $(shell $(PIE_TEST))
  WORKAROUND_CFLAGS += $(PIE_FLAGS)
  endif
  
