@@ -1,13 +1,13 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
-PYTHON_COMPAT=( python2_7 pypy )
+PYTHON_COMPAT=( python{2_7,3_4,3_5} pypy )
 PYTHON_REQ_USE="threads(+)"
 
-MY_P="python-${P}"
-MY_PN="python-${PN}"
+MY_P=python-${P}
+MY_PN=python-${PN}
 
 inherit distutils-r1
 
@@ -25,8 +25,6 @@ DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 	test? ( dev-python/nose[${PYTHON_USEDEP}] )"
 
 S=${WORKDIR}/${MY_P}
-
-PATCHES=( "${FILESDIR}"/${PN}-0.3-tests.patch )
 
 python_test() {
 	if ! ${PYTHON} test.py; then
