@@ -12066,7 +12066,7 @@ media-fonts/sil-galatia 2.1: The Galatia SIL Greek Unicode Fonts package
 media-fonts/sil-gentium 1.508 5.000: Gentium Plus unicode font for Latin and Greek languages
 media-fonts/sil-padauk 2.8: SIL fonts for Myanmar script
 media-fonts/sophia-nubian 1.0: Unicode sans-serif typeface for Coptic/Nubian languages
-media-fonts/source-han-sans 1.001 1.001-r1: Pan-CJK OpenType/CFF font family
+media-fonts/source-han-sans 1.001: Pan-CJK OpenType/CFF font family
 media-fonts/source-pro 20121216 20130316 20141211: Adobe's open source typeface family designed for UI environments
 media-fonts/stix-fonts 1.0.0-r1 1.1.1: Comprehensive OpenType font set of mathematical symbols and alphabets
 media-fonts/symbola 7.12 8.00: Unicode font for Basic Latin, IPA Extensions, Greek, Cyrillic and many Symbol Blocks
