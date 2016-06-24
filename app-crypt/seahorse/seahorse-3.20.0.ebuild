@@ -1,11 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
-GCONF_DEBUG="no"
-
-inherit autotools eutils gnome2
+EAPI=6
+inherit gnome2
 
 DESCRIPTION="A GNOME application for managing encryption keys"
 HOMEPAGE="https://wiki.gnome.org/Apps/Seahorse"
@@ -13,7 +11,7 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Seahorse"
 LICENSE="GPL-2+ FDL-1.1+"
 SLOT="0"
 IUSE="debug ldap zeroconf"
-KEYWORDS="~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc x86 ~x86-fbsd"
+KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
 
 COMMON_DEPEND="
 	>=app-crypt/gcr-3.11.91:=
@@ -49,10 +47,6 @@ src_prepare() {
 		-e '/CFLAGS="$CFLAGS -O0/d' \
 		-i configure.ac configure || die "sed 1 failed"
 
-	# Avoid binding seahorse to the build-time version of gpg (from 'master')
-	epatch "${FILESDIR}"/${PN}-3.16.0-gnupg-detection.patch
-
-	eautoreconf
 	gnome2_src_prepare
 }
 
