@@ -17,48 +17,48 @@ HOMEPAGE="https://code.google.com/p/tesseract-ocr/"
 SRC_URI="https://dev.gentoo.org/~tomka/files/${PN}-3.03-rc1.tar.gz
 	${URI_PREFIX}/${DL_P}.eng.tar.gz
 	doc? ( ${URI_PREFIX}/${DL_P}.02-doc-html.tar.gz )
-	linguas_ar? ( ${URI_PREFIX}/${DL_P}.ara.tar.gz )
-	linguas_bg? ( ${URI_PREFIX}/bul.traineddata.gz )
-	linguas_ca? ( ${URI_PREFIX}/cat.traineddata.gz )
-	linguas_chr? ( ${URI_PREFIX}/chr.traineddata.gz )
-	linguas_cs? ( ${URI_PREFIX}/ces.traineddata.gz )
-	linguas_de? ( ${URI_PREFIX}/deu.traineddata.gz
-				${URI_PREFIX}/deu-frak.traineddata.gz )
-	linguas_da? ( ${URI_PREFIX}/dan.traineddata.gz
-				${URI_PREFIX}/dan-frak.traineddata.gz )
-	linguas_el? ( ${URI_PREFIX}/ell.traineddata.gz )
-	linguas_es? ( ${URI_PREFIX}/spa.traineddata.gz )
-	linguas_fi? ( ${URI_PREFIX}/fin.traineddata.gz )
-	linguas_fr? ( ${URI_PREFIX}/fra.traineddata.gz )
-	linguas_he? ( ${URI_PREFIX}/${DL_P}.heb.tar.gz
-				${URI_PREFIX}/${MY_PN}-3.01.heb-com.tar.gz )
-	linguas_hi? ( ${URI_PREFIX}/${DL_P}.hin.tar.gz )
-	linguas_hu? ( ${URI_PREFIX}/hun.traineddata.gz )
-	linguas_id? ( ${URI_PREFIX}/ind.traineddata.gz )
-	linguas_it? ( ${URI_PREFIX}/ita.traineddata.gz )
-	linguas_ja? ( ${URI_PREFIX}/jpn.traineddata.gz )
-	linguas_ko? ( ${URI_PREFIX}/kor.traineddata.gz )
-	linguas_lt? ( ${URI_PREFIX}/lit.traineddata.gz )
-	linguas_lv? ( ${URI_PREFIX}/lav.traineddata.gz )
-	linguas_nl? ( ${URI_PREFIX}/nld.traineddata.gz )
-	linguas_no? ( ${URI_PREFIX}/nor.traineddata.gz )
-	linguas_pl? ( ${URI_PREFIX}/pol.traineddata.gz )
-	linguas_pt? ( ${URI_PREFIX}/por.traineddata.gz )
-	linguas_ro? ( ${URI_PREFIX}/ron.traineddata.gz )
-	linguas_ru? ( ${URI_PREFIX}/rus.traineddata.gz )
-	linguas_sk? ( ${URI_PREFIX}/slk.traineddata.gz
-				${URI_PREFIX}/${MY_PN}-3.01.slk-frak.tar.gz )
-	linguas_sl? ( ${URI_PREFIX}/slv.traineddata.gz )
-	linguas_sr? ( ${URI_PREFIX}/srp.traineddata.gz )
-	linguas_sv? ( ${URI_PREFIX}/swe.traineddata.gz
-				${URI_PREFIX}/swe-frak.traineddata.gz )
-	linguas_th? ( ${URI_PREFIX}/${DL_P}.tha.tar.gz )
-	linguas_tl? ( ${URI_PREFIX}/tgl.traineddata.gz )
-	linguas_tr? ( ${URI_PREFIX}/tur.traineddata.gz )
-	linguas_uk? ( ${URI_PREFIX}/ukr.traineddata.gz )
-	linguas_vi? ( ${URI_PREFIX}/vie.traineddata.gz )
-	linguas_zh_CN? ( ${URI_PREFIX}/chi_sim.traineddata.gz )
-	linguas_zh_TW? ( ${URI_PREFIX}/chi_tra.traineddata.gz )
+	l10n_ar? ( ${URI_PREFIX}/${DL_P}.ara.tar.gz )
+	l10n_bg? ( ${URI_PREFIX}/bul.traineddata.gz )
+	l10n_ca? ( ${URI_PREFIX}/cat.traineddata.gz )
+	l10n_chr? ( ${URI_PREFIX}/chr.traineddata.gz )
+	l10n_cs? ( ${URI_PREFIX}/ces.traineddata.gz )
+	l10n_de? ( ${URI_PREFIX}/deu.traineddata.gz
+			   ${URI_PREFIX}/deu-frak.traineddata.gz )
+	l10n_da? ( ${URI_PREFIX}/dan.traineddata.gz
+			   ${URI_PREFIX}/dan-frak.traineddata.gz )
+	l10n_el? ( ${URI_PREFIX}/ell.traineddata.gz )
+	l10n_es? ( ${URI_PREFIX}/spa.traineddata.gz )
+	l10n_fi? ( ${URI_PREFIX}/fin.traineddata.gz )
+	l10n_fr? ( ${URI_PREFIX}/fra.traineddata.gz )
+	l10n_he? ( ${URI_PREFIX}/${DL_P}.heb.tar.gz
+			   ${URI_PREFIX}/${MY_PN}-3.01.heb-com.tar.gz )
+	l10n_hi? ( ${URI_PREFIX}/${DL_P}.hin.tar.gz )
+	l10n_hu? ( ${URI_PREFIX}/hun.traineddata.gz )
+	l10n_id? ( ${URI_PREFIX}/ind.traineddata.gz )
+	l10n_it? ( ${URI_PREFIX}/ita.traineddata.gz )
+	l10n_ja? ( ${URI_PREFIX}/jpn.traineddata.gz )
+	l10n_ko? ( ${URI_PREFIX}/kor.traineddata.gz )
+	l10n_lt? ( ${URI_PREFIX}/lit.traineddata.gz )
+	l10n_lv? ( ${URI_PREFIX}/lav.traineddata.gz )
+	l10n_nl? ( ${URI_PREFIX}/nld.traineddata.gz )
+	l10n_no? ( ${URI_PREFIX}/nor.traineddata.gz )
+	l10n_pl? ( ${URI_PREFIX}/pol.traineddata.gz )
+	l10n_pt? ( ${URI_PREFIX}/por.traineddata.gz )
+	l10n_ro? ( ${URI_PREFIX}/ron.traineddata.gz )
+	l10n_ru? ( ${URI_PREFIX}/rus.traineddata.gz )
+	l10n_sk? ( ${URI_PREFIX}/slk.traineddata.gz
+			   ${URI_PREFIX}/${MY_PN}-3.01.slk-frak.tar.gz )
+	l10n_sl? ( ${URI_PREFIX}/slv.traineddata.gz )
+	l10n_sr? ( ${URI_PREFIX}/srp.traineddata.gz )
+	l10n_sv? ( ${URI_PREFIX}/swe.traineddata.gz
+			   ${URI_PREFIX}/swe-frak.traineddata.gz )
+	l10n_th? ( ${URI_PREFIX}/${DL_P}.tha.tar.gz )
+	l10n_tl? ( ${URI_PREFIX}/tgl.traineddata.gz )
+	l10n_tr? ( ${URI_PREFIX}/tur.traineddata.gz )
+	l10n_uk? ( ${URI_PREFIX}/ukr.traineddata.gz )
+	l10n_vi? ( ${URI_PREFIX}/vie.traineddata.gz )
+	l10n_zh-CN? ( ${URI_PREFIX}/chi_sim.traineddata.gz )
+	l10n_zh-TW? ( ${URI_PREFIX}/chi_tra.traineddata.gz )
 	osd? ( ${URI_PREFIX}/${MY_PN}-3.01.osd.tar.gz )
 "
 
@@ -66,7 +66,7 @@ LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~alpha amd64 ~arm ~mips ~ppc ppc64 ~sparc ~x86"
 
-IUSE="doc examples jpeg png tiff -webp +scrollview static-libs linguas_ar linguas_bg linguas_ca linguas_chr linguas_cs linguas_de linguas_da linguas_el linguas_es linguas_fi linguas_fr linguas_he linguas_hi linguas_hu linguas_id linguas_it linguas_ja linguas_ko linguas_lt linguas_lv linguas_nl linguas_no linguas_pl linguas_pt linguas_ro linguas_ru linguas_sk linguas_sl linguas_sr linguas_sv linguas_th linguas_tl linguas_tr linguas_uk linguas_vi linguas_zh_CN linguas_zh_TW osd"
+IUSE="doc examples jpeg png tiff -webp +scrollview static-libs l10n_ar l10n_bg l10n_ca l10n_chr l10n_cs l10n_de l10n_da l10n_el l10n_es l10n_fi l10n_fr l10n_he l10n_hi l10n_hu l10n_id l10n_it l10n_ja l10n_ko l10n_lt l10n_lv l10n_nl l10n_no l10n_pl l10n_pt l10n_ro l10n_ru l10n_sk l10n_sl l10n_sr l10n_sv l10n_th l10n_tl l10n_tr l10n_uk l10n_vi l10n_zh-CN l10n_zh-TW osd"
 
 DEPEND=">=media-libs/leptonica-1.70[zlib,tiff?,jpeg?,png?,webp?]"
 RDEPEND="${DEPEND}"

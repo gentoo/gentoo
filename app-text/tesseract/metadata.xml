@@ -20,8 +20,6 @@
     <flag name="webp"> Enable support for webp image format.</flag>
     <flag name="math"> Enable support for recognition of equations.</flag>
     <flag name="scrollview"> Enable graphics support (ScrollView).</flag>
-    <flag name="linguas_chr"> Enable support for the Cherokee language.</flag>
-    <flag name="linguas_ja"> Enable support for Japanese.</flag>
     <flag name="osd"> Enable support orientation and script detection.</flag>
     <flag name="opencl">Enable opencl support for speedup using GPU computation.</flag>
     <flag name="training">Install training applications to add support for new languages.</flag>
