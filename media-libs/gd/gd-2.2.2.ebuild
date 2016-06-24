@@ -30,6 +30,10 @@ DEPEND="${RDEPEND}
 
 S="${WORKDIR}/lib${P}"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-osx-libtool.patch #583584
+)
+
 src_prepare() {
 	default
 	elibtoolize  # for shared library on Solaris
