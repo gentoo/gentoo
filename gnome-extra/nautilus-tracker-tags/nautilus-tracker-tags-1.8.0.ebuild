@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
+EAPI=6
 GNOME_ORG_MODULE="tracker"
 
 inherit gnome.org toolchain-funcs
@@ -12,7 +12,7 @@ HOMEPAGE="https://wiki.gnome.org/Projects/Tracker"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE=""
 
 COMMON_DEPEND="
@@ -35,6 +35,7 @@ pkg_setup() {
 }
 
 src_prepare() {
+	default
 	cp "${FILESDIR}/0.12.5-Makefile" Makefile || die "cp failed"
 	# config.h is not used, but is included in every source file...
 	sed -e 's:#include "config.h"::' -i *.c *.h || die "sed failed"
