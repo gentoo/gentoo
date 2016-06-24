@@ -27,11 +27,9 @@ RDEPEND="|| ( virtual/jre:1.8 virtual/jre:1.7 )"
 
 S="${WORKDIR}/${MY_P}"
 
-pkg_setup() {
-	if use standard && use all-plugins; then
-		die "Both standard and all-plugins USE selected, please pick just one."
-	fi
+REQUIRED_USE="?? ( standard all-plugins )"
 
+pkg_setup() {
 	enewgroup ${MY_PN}
 	enewuser ${MY_PN} -1 -1 /var/lib/${MY_PN} ${MY_PN} -m
 }
