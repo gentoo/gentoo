@@ -4163,7 +4163,7 @@ dev-java/miglayout 4.0: Easy to use yet very powerful Java Swing layout manager
 dev-java/milton-api 2.7.1.3: Milton WebDav library
 dev-java/milton-mail-api 2.7.1.3: Milton WebDav library
 dev-java/mimepull 1.8 1.9.6-r1: Pull API for parsing MIME messages
-dev-java/mina-core 1.1.7: Apache MINA Project
+dev-java/mina-core 1.1.7 2.0.7: MINA (Multipurpose Infrastructure for Network Application) core framework
 dev-java/minlog 1.2: Minimal overhead Java logging
 dev-java/mockito 1.9.5-r1: A mocking framework for Java
 dev-java/mojarra 2.2.12-r1: Project Mojarra - GlassFish's Implementation for JavaServer Faces API
