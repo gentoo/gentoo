@@ -2,15 +2,15 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 inherit vdr-plugin-2 ssl-cert
 
-VERSION="1747" # every bump, new version
+VERSION="1971" # every bump, new version
 
 DESCRIPTION="VDR Plugin: remote programming VDR using VDR-Manager running on Android devices"
 HOMEPAGE="http://projects.vdr-developer.org/projects/vdr-manager/wiki"
-SRC_URI="mirror://vdr-developerorg/${VERSION}/${P}.tar.gz"
+SRC_URI="mirror://vdr-developerorg/${VERSION}/${P}.tgz"
 
 KEYWORDS="~x86 ~amd64"
 SLOT="0"
