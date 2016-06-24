@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -16,22 +16,20 @@ KEYWORDS="alpha amd64 arm hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86 ~a
 IUSE="nls"
 
 PDEPEND="app-dicts/aspell-en"
-LANGS="af be bg br ca cs cy da de el en eo es et fi fo fr ga gl he hr is it la
-lt nl no pl pt pt_BR ro ru sk sl sr sv uk vi"
+LANGS="af be bg br ca cs cy da de de-1901 el en eo es et fi fo fr ga gl he hr
+is it la lt nl no pl pt pt-BR ro ru sk sl sr sv uk vi"
 for lang in ${LANGS}; do
-	dep="linguas_${lang}? ( app-dicts/aspell-${lang/pt_BR/pt-br} )"
-	if [[ ${lang} == de ]] ; then
-		dep="linguas_${lang}? (
-			|| (
-				app-dicts/aspell-${lang}
-				app-dicts/aspell-${lang}-alt
-			)
-		)"
-	fi
-	PDEPEND+=" ${dep}"
-	IUSE+=" linguas_${lang}"
+	IUSE+=" l10n_${lang}"
+	# Need to keep linguas_* for now, since aspell uses gettext
+	IUSE+=" linguas_${lang/-/_}"
+	case ${lang} in
+		de-1901) dict="de-alt"  ;;
+		pt-BR)   dict="pt-br"   ;;
+		*)       dict="${lang}" ;;
+	esac
+	PDEPEND+=" l10n_${lang}? ( app-dicts/aspell-${dict} )"
 done
-unset dep
+unset dict lang LANGS
 
 COMMON_DEPEND="
 	>=sys-libs/ncurses-5.2:0=
@@ -99,9 +97,9 @@ src_install() {
 }
 
 pkg_postinst() {
-	elog "In case LINGUAS was not set correctly you may need to install"
+	elog "In case L10N was not set correctly you may need to install"
 	elog "dictionaries now. Please choose an aspell-<LANG> dictionary or"
-	elog "set LINGUAS correctly and let aspell pull in required packages."
+	elog "set L10N correctly and let aspell pull in required packages."
 	elog "After installing an aspell dictionary for your language(s),"
 	elog "You may use the aspell-import utility to import your personal"
 	elog "dictionaries from ispell, pspell and the older aspell"

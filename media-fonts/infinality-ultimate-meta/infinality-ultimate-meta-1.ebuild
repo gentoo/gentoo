@@ -1,11 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
-PLOCALES="as bn brx bo doi dz gu hi ja km kn_IN ko kok ks mai ml mr ne or pa_IN
-sa_IN sat sd si syc ta te zh"
-inherit l10n
 
 DESCRIPTION="Meta package for infinality-ultimate with fonts"
 HOMEPAGE="http://bohoomil.com/"
@@ -14,6 +11,13 @@ LICENSE="metapackage"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="minimal +latin +free ms"
+
+LANGS="as bn bo brx doi dz gu hi ja km kn ko kok ks mai ml mr ne or pa
+	sa sat sd si syc ta te zh"
+for lang in ${LANGS}; do
+	IUSE+=" l10n_${lang}"
+done
+unset lang LANGS
 
 RDEPEND="media-libs/fontconfig-ultimate
 	free? (
@@ -38,47 +42,47 @@ RDEPEND="media-libs/fontconfig-ultimate
 				media-fonts/urw-fonts
 			)
 		)
-		linguas_brx? ( media-fonts/lohit-devanagari )
-		linguas_doi? ( media-fonts/lohit-devanagari )
-		linguas_dz? ( media-fonts/dzongkha-fonts )
-		linguas_hi? ( media-fonts/lohit-devanagari )
-		linguas_ja? ( media-fonts/ja-ipafonts )
-		linguas_km? ( media-fonts/khmer )
-		linguas_ko? ( media-fonts/unfonts )
-		linguas_kok? ( media-fonts/lohit-devanagari )
-		linguas_ks? ( media-fonts/lohit-devanagari )
-		linguas_mai? ( media-fonts/lohit-devanagari )
-		linguas_mr? ( media-fonts/lohit-devanagari )
-		linguas_ne? ( media-fonts/lohit-devanagari )
-		linguas_or? ( media-fonts/lohit-odia )
-		linguas_sa_IN? ( media-fonts/lohit-devanagari )
-		linguas_sat? ( media-fonts/lohit-devanagari )
-		linguas_sd? ( media-fonts/lohit-devanagari )
-		linguas_si? ( media-fonts/lklug )
-		linguas_syc? ( media-fonts/font-misc-meltho )
+		l10n_brx? ( media-fonts/lohit-devanagari )
+		l10n_doi? ( media-fonts/lohit-devanagari )
+		l10n_dz? ( media-fonts/dzongkha-fonts )
+		l10n_hi? ( media-fonts/lohit-devanagari )
+		l10n_ja? ( media-fonts/ja-ipafonts )
+		l10n_km? ( media-fonts/khmer )
+		l10n_ko? ( media-fonts/unfonts )
+		l10n_kok? ( media-fonts/lohit-devanagari )
+		l10n_ks? ( media-fonts/lohit-devanagari )
+		l10n_mai? ( media-fonts/lohit-devanagari )
+		l10n_mr? ( media-fonts/lohit-devanagari )
+		l10n_ne? ( media-fonts/lohit-devanagari )
+		l10n_or? ( media-fonts/lohit-odia )
+		l10n_sa? ( media-fonts/lohit-devanagari )
+		l10n_sat? ( media-fonts/lohit-devanagari )
+		l10n_sd? ( media-fonts/lohit-devanagari )
+		l10n_si? ( media-fonts/lklug )
+		l10n_syc? ( media-fonts/font-misc-meltho )
 		!minimal? (
-			linguas_as? ( media-fonts/lohit-assamese )
-			linguas_bn? ( media-fonts/lohit-bengali )
-			linguas_bo? ( media-fonts/tibetan-machine-font )
-			linguas_gu? ( media-fonts/lohit-gujarati )
-			linguas_ja? (
+			l10n_as? ( media-fonts/lohit-assamese )
+			l10n_bn? ( media-fonts/lohit-bengali )
+			l10n_bo? ( media-fonts/tibetan-machine-font )
+			l10n_gu? ( media-fonts/lohit-gujarati )
+			l10n_ja? (
 				media-fonts/ipaex
 				media-fonts/koruri
 				media-fonts/mplus-fonts
 				media-fonts/vlgothic
 			)
-			linguas_kn_IN? ( media-fonts/lohit-kannada )
-			linguas_ko? ( media-fonts/nanum )
-			linguas_ml? ( media-fonts/lohit-malayalam )
-			linguas_mr? ( media-fonts/lohit-marathi )
-			linguas_ne? ( media-fonts/lohit-nepali )
-			linguas_pa_IN? ( media-fonts/lohit-gurmukhi )
-			linguas_ta? (
+			l10n_kn? ( media-fonts/lohit-kannada )
+			l10n_ko? ( media-fonts/nanum )
+			l10n_ml? ( media-fonts/lohit-malayalam )
+			l10n_mr? ( media-fonts/lohit-marathi )
+			l10n_ne? ( media-fonts/lohit-nepali )
+			l10n_pa? ( media-fonts/lohit-gurmukhi )
+			l10n_ta? (
 				media-fonts/lohit-tamil
 				media-fonts/lohit-tamil-classical
 			)
-			linguas_te? ( media-fonts/lohit-telugu )
-			linguas_zh? ( media-fonts/wqy-zenhei )
+			l10n_te? ( media-fonts/lohit-telugu )
+			l10n_zh? ( media-fonts/wqy-zenhei )
 		)
 	)
 	ms? (

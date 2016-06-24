@@ -22,18 +22,20 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	sys-devel/gettext"
 
-# describe properly mi
-LANGS="af bg ca cs cy da de de_1901 el en eo es et fo fr ga gl he hr hu ia id
-is it km ku lt lv mk ms nb nl nn pl pt pt_BR ro ru sk sl sq sv sw tn uk zu"
+LANGS="af bg ca cs cy da de de-1901 el en eo es et fo fr ga gl he hr hu ia id
+is it km ku lt lv mi mk ms nb nl nn pl pt pt-BR ro ru sk sl sq sv sw tn uk zu"
 
-DICT_DEP="app-dicts/myspell-en"
+PDEPEND="app-dicts/myspell-en"
 for lang in ${LANGS}; do
-	DICT_DEP+=" linguas_${lang}? ( app-dicts/myspell-${lang/pt_BR/pt-br} )"
-	IUSE+=" linguas_${lang}"
+	IUSE+=" l10n_${lang}"
+	case ${lang} in
+		de-1901) dict="de_1901" ;;
+		pt-BR)   dict="pt-br"   ;;
+		*)       dict="${lang}" ;;
+	esac
+	PDEPEND+=" l10n_${lang}? ( app-dicts/myspell-${dict} )"
 done
-PDEPEND="${DICT_DEP}"
-
-unset lang LANGS DICT_DEP
+unset dict lang LANGS
 
 S=${WORKDIR}/${MY_P}
 
