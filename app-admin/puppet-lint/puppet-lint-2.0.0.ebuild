@@ -2,12 +2,13 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="4"
+EAPI=5
 USE_RUBY="ruby20 ruby21"
 
-RUBY_FAKEGEM_RECIPE_TEST="rspec"
-RUBY_FAKEGEM_EXTRADOC="README*"
-RUBY_FAKEGEM_DOCDIR="html"
+RUBY_FAKEGEM_RECIPE_TEST="rspec3"
+
+RUBY_FAKEGEM_RECIPE_DOC="rdoc"
+RUBY_FAKEGEM_EXTRADOC="README.md"
 
 inherit eutils ruby-fakegem
 
@@ -19,4 +20,6 @@ SLOT="0"
 IUSE=""
 KEYWORDS="~amd64"
 
-ruby_add_rdepend "dev-ruby/rake"
+ruby_add_bdepend "test? (
+	dev-ruby/rspec-its:1
+	dev-ruby/rspec-collection_matchers:1 )"
