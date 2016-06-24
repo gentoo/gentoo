@@ -46,7 +46,6 @@ RDEPEND="
 	qrcode? ( media-gfx/zbar[qt4] )
 "
 DEPEND="${RDEPEND}
-	>=dev-libs/boost-1.46
 	virtual/pkgconfig
 "
 
