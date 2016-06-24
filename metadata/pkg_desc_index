@@ -17389,7 +17389,7 @@ sys-process/at 3.1.16 3.1.18-r1: Queues jobs for later execution
 sys-process/atop 1.27_p3 2.0.2 2.1 2.2: Resource-specific view of processes
 sys-process/audit 1.7.18 2.0.5 2.1.3-r1 2.2.2-r2 2.2.2-r3 2.4.1 2.4.1-r1 2.4.3 2.4.3-r1: Userspace utilities for storing and processing auditing records
 sys-process/bcron 0.09 0.09-r2 0.10: A new cron system designed with secure operations in mind by Bruce Guenter
-sys-process/criu 1.8 2.1 2.2: utility to checkpoint/restore a process tree
+sys-process/criu 1.8 2.1 2.2 2.3: utility to checkpoint/restore a process tree
 sys-process/cronbase 0.3.7-r1: base for all cron ebuilds
 sys-process/cronie 1.5.0 1.5.0-r1: Cronie is a standard UNIX daemon cron based on the original vixie-cron
 sys-process/cronutils 1.5 1.9: Utilities to assist running batch processing jobs
