@@ -15151,7 +15151,7 @@ net-proxy/havp 0.92a-r2: HTTP AntiVirus Proxy
 net-proxy/http-replicator 3.0-r4 3.0-r6 4.0_alpha2-r5: Proxy cache for Gentoo packages
 net-proxy/httpush 0.9_beta11-r1: Httpush is an intercepting proxy, allowing user to modify HTTP requests on-the-fly
 net-proxy/mitmproxy 0.10.1 0.11.1 0.11.3: An interactive, SSL-capable, man-in-the-middle HTTP proxy
-net-proxy/nutcracker 0.2.4 0.3.0: A fast, light-weight proxy for Memcached and Redis. (Twitter's Twemproxy)
+net-proxy/nutcracker 0.2.4 0.3.0 0.4.1: A fast, light-weight proxy for Memcached and Redis. (Twitter's Twemproxy)
 net-proxy/nylon 1.21-r2: A lightweight SOCKS proxy server
 net-proxy/obfs4proxy 0.0.6 9999: An obfuscating proxy supporting Tor's pluggable transport protocol obfs4
 net-proxy/obfsproxy 0.2.11 0.2.12 0.2.13: An obfuscating proxy using Tor's pluggable transport protocol
