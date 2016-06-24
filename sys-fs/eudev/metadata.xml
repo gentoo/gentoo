@@ -5,12 +5,15 @@
     <email>eudev@gentoo.org</email>
   </maintainer>
   <use>
+	<flag name="blkid">enable blkid support</flag>
+	<flag name="efi">enable EFI support</flag>
     <flag name="gudev">enable libudev gobject interface</flag>
     <flag name="hwdb">read vendor/device string database and add it to udev database</flag>
     <flag name="keymap">map custom hardware's multimedia keys</flag>
     <flag name="kmod">enable module loading through libkmod</flag>
     <flag name="modutils">enable module loading support - use modutils calls if kmod not enabled</flag>
     <flag name="openrc">install the OpenRC init scripts</flag>
+    <flag name="smack">enable SMACK security model</flag>
     <flag name="rule-generator">install legacy rule generator rules and support scripts - note
 	that the functionality within was dropped from sys-fs/udev as it is not stable in
 	all cases; use at your own risk</flag>
