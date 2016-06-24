@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit cmake-utils user
+inherit cmake-utils user systemd
 
 DESCRIPTION="Rapid spam filtering system"
 SRC_URI="https://rspamd.com/downloads/${P}.tar.xz"
@@ -15,7 +15,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="+jit"
 
-DEPEND="dev-libs/openssl:0
+DEPEND="dev-libs/openssl:0[-bindist]
 		jit? (
 			dev-libs/libpcre[jit]
 			dev-lang/luajit:2
@@ -59,4 +59,7 @@ src_install() {
 
 	insinto /etc/logrotate.d
 	newins "${FILESDIR}/rspamd.logrotate" rspamd
+
+	systemd_newunit rspamd.service rspamd.service
+	systemd_newunit rspamd.socket rspamd.socket
 }
