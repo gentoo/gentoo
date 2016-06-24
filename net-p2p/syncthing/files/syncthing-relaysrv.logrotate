@@ -1,4 +1,4 @@
-/var/log/syncthing/syncthing.log {
+/var/log/syncthing/relaysrv.log {
     missingok
     notifempty
     sharedscripts

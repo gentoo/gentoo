@@ -1,0 +1,30 @@
+#!/sbin/openrc-run
+# Copyright 1999-2016 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+SR_USER=syncthing-relaysrv
+SR_GROUP=syncthing-relaysrv
+SR_HOMEDIR=/var/lib/syncthing-relaysrv
+SR_LOGFILE=/var/log/syncthing/relaysrv.log
+
+
+description="Relay service for syncthing"
+command="/usr/libexec/syncthing/relaysrv"
+command_args="${SR_OPTS}"
+pidfile="/run/relaysrv.pid"
+start_stop_daemon_args="--background
+  --user ${SR_USER}
+  --group ${SR_GROUP}
+  --chdir \"${SR_HOMEDIR}\"
+  --make-pidfile
+  --stdout \"${SR_LOGFILE}\"
+  --stderr \"${SR_LOGFILE}\" 
+  "
+
+depend() {
+  need net
+}
+
+start_pre() {
+  checkpath -q -d -o ${SR_USER}:${SR_GROUP} ${SR_HOMEDIR}
+  checkpath -q -f -o ${SR_USER}:${SR_GROUP} ${SR_LOGFILE}
+}
