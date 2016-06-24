@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install postinst prepare test
+DEPEND=|| ( >=dev-python/wxpython-2.8.9.2:2.8[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/wxpython:3.0[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) >=dev-python/twisted-core-10.0 python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
+DESCRIPTION=Simple personal tasks and todo lists manager
+EAPI=5
+HOMEPAGE=http://www.taskcoach.org https://pypi.python.org/pypi/TaskCoach
+IUSE=libnotify python_targets_python2_7
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=|| ( >=dev-python/wxpython-2.8.9.2:2.8[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/wxpython:3.0[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) >=dev-python/twisted-core-10.0 libnotify? ( dev-python/notify-python[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
+REQUIRED_USE=|| ( python_targets_python2_7 )
+SLOT=0
+SRC_URI=mirror://sourceforge/taskcoach/TaskCoach-1.4.3.tar.gz
+_eclass_exported_funcs=pkg_postinst:- src_prepare:- src_configure:distutils-r1 src_compile:distutils-r1 src_test:distutils-r1 src_install:distutils-r1
+_eclasses_=distutils-r1	3a17743abcc9335483329f33c87b472d	eutils	792f83d5ec9536cb5ccef375469d8bde	multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	d062ae4ba2fc40a19c11de2ad89b6616	multiprocessing	e32940a7b2a9992ad217eccddb84d548	python-r1	0f6937650a475d673baa5d0c8c0b37b3	python-utils-r1	c0ed2a2f233d3af6dd556048695dc5cb	toolchain-funcs	c9d9187f4caa4026a0ceddd8dfceb3c1	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=22557ac31f207d5c9bfb1c9a6110161b
