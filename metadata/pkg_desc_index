@@ -7318,7 +7318,7 @@ dev-python/hcluster 0.2.0-r1: Python hierarchical clustering package for Scipy
 dev-python/hcs-utils 1.4 1.5: A library containing some useful snippets
 dev-python/healpy 1.9.1: Python wrapper for healpix
 dev-python/hgdistver 0.22 0.25: utility lib to generate python package version infos from mercurial tags
-dev-python/hglib 1.0 1.5: Library for using the Mercurial Command Server from Python
+dev-python/hglib 1.5 2.1: Library for using the Mercurial Command Server from Python
 dev-python/hgtools 6.0 6.3 6.5.1: Classes and setuptools plugin for Mercurial repositories
 dev-python/hiredis 0.1.1-r2 0.2.0: Python extension that wraps hiredis
 dev-python/hp3parclient 2.0.0 3.0.0: A python interface to sendfile(2) system call
