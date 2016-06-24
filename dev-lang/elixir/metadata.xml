@@ -9,6 +9,10 @@
 		<email>styx.mp@gmail.com</email>
 		<name>Mikhail</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>slyfox@gentoo.org</email>
+		<name>Sergei Trofimovich</name>
+	</maintainer>
 	<upstream>
 		<bugs-to>
 			https://github.com/elixir-lang/elixir/issues
