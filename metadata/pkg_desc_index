@@ -1286,7 +1286,7 @@ app-emulation/armv8-fast-model 0.8.5206: emulator for a basic ARMv8 platform env
 app-emulation/bochs 2.6 2.6.8: LGPL-ed pc emulator
 app-emulation/cloud-init 0.7.6-r1 0.7.6-r2 0.7.6_p1212: EC2 initialisation magic
 app-emulation/coldfire 0.3.1: Motorola Coldfire Emulator
-app-emulation/containerd 0.2.0 0.2.2 9999: A daemon to control runC
+app-emulation/containerd 0.2.0 0.2.2 0.2.2_p20160622 9999: A daemon to control runC
 app-emulation/crossover-bin 12.5.0-r2 12.5.1-r2 13.0.0-r2 13.0.1-r2 13.1.0-r2 13.1.2-r2 13.1.3-r2 13.2.0-r2 14.0.3-r1 14.1.4-r1 15.0.0 15.0.1 15.1.0: Commercial version of app-emulation/wine with paid support.
 app-emulation/crossover-office-bin 6.0.0 6.0.1 6.1.0 6.2.0: simplified/streamlined version of wine with commercial support
 app-emulation/crossover-office-pro-bin 5.0.0 5.0.1 5.0.3 6.0.0 6.1.0 6.2.0 7.0.2 7.1.0 8.0.0 9.0.0 9.0.1 9.1.0 9.2.0: simplified/streamlined version of wine with commercial support
@@ -16618,7 +16618,6 @@ sys-apps/memtest86 3.3 4.3.6 4.3.7: A stand alone memory test for x86 computers
 sys-apps/memtest86+ 2.01 4.00 4.20-r1 4.20-r2 5.01-r1: Memory tester based on memtest86
 sys-apps/memtester 4.2.2 4.3.0: userspace utility for testing the memory subsystem for faults
 sys-apps/microcode-ctl 1.23 1.27 1.28 1.28-r1: Intel processor microcode update utility
-sys-apps/microcode-data 20140430 20140624 20140913 20150121 20150121-r1 20151106: Intel IA32 microcode update data
 sys-apps/miller 4.0.0: A tool like sed, awk, cut, join, and sort for name-indexed data (CSV, JSON, ..)
 sys-apps/minised 1.13 1.14: a smaller, cheaper, faster SED implementation
 sys-apps/miscfiles 1.4.2-r1 1.5 1.5-r1: Miscellaneous files
@@ -17039,6 +17038,7 @@ sys-firmware/atmel-firmware 1.3-r1: Firmware and config for atmel and atmel_cs w
 sys-firmware/b43-firmware 5.100.138 6.30.163.46: broadcom firmware for b43 LP PHY and >=linux-3.2
 sys-firmware/b43legacy-firmware 3.130.20.0: broadcom firmware for b43legacy/bcm43xx
 sys-firmware/bluez-firmware 1.2: Firmware for Broadcom BCM203x and STLC2300 Bluetooth chips
+sys-firmware/intel-microcode 20140430 20140624 20140913 20150121 20150121-r1 20151106: Intel IA32 microcode update data
 sys-firmware/ipw2100-firmware 1.3: Firmware for the Intel PRO/Wireless 2100 3B miniPCI adapter
 sys-firmware/ipw2200-firmware 3.1: Firmware for the Intel PRO/Wireless 2200BG/2915ABG miniPCI and 2225BG PCI adapters
 sys-firmware/ipxe 1.0.0_p20130925 1.0.0_p20160620: Open source network boot (PXE) firmware
