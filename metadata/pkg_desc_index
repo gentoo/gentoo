@@ -1,7 +1,7 @@
 app-accessibility/SphinxTrain 0.9.1-r1 1.0.8: Speech Recognition (Training Module)
 app-accessibility/accerciser 3.14.0: Interactive Python accessibility explorer
-app-accessibility/at-spi2-atk 2.16.0-r1 2.18.1: Gtk module for bridging AT-SPI to Atk
-app-accessibility/at-spi2-core 2.16.0 2.18.3: D-Bus accessibility specifications and registration daemon
+app-accessibility/at-spi2-atk 2.16.0-r1 2.18.1 2.20.1: Gtk module for bridging AT-SPI to Atk
+app-accessibility/at-spi2-core 2.16.0 2.18.3 2.20.2: D-Bus accessibility specifications and registration daemon
 app-accessibility/brltty 5.2-r1: Daemon that provides access to the Linux/Unix console for a blind person
 app-accessibility/caribou 0.4.19 0.4.20: Input assistive technology intended for switch and pointer users
 app-accessibility/edbrowse 3.5.1: editor, browser, and mail client using the /bin/ed interface
@@ -22,7 +22,7 @@ app-accessibility/freetts 1.2.1-r2 1.2.2: A speech synthesis system written enti
 app-accessibility/julius 4.2.2: Large Vocabulary Continuous Speech Recognition Engine
 app-accessibility/mbrola 3.0.1h-r6: Speech synthesizer based on the concatenation of diphones. Includes sample voices
 app-accessibility/nfbtrans 7.74 7.74-r1: braille translator from the National Federation of the Blind
-app-accessibility/orca 3.16.3 3.18.2: Extensible screen reader that provides access to the desktop
+app-accessibility/orca 3.18.2 3.20.2: Extensible screen reader that provides access to the desktop
 app-accessibility/perlbox-voice 0.09-r2: A voice enabled application to bring your desktop under your command
 app-accessibility/pidgin-festival 2.4: A plugin for pidgin which enables text-to-speech output of conversations using festival
 app-accessibility/pocketsphinx 0.8: Large open source vocabulary, speaker-independent continuous speech recognition engine
@@ -257,7 +257,7 @@ app-arch/duff 0.5.2: Command-line utility for quickly finding duplicates in a gi
 app-arch/dump 0.4.44-r1 0.4.44-r2 0.4.45: Dump/restore ext2fs backup utilities
 app-arch/engrampa 1.8.1-r1 1.10.2: Engrampa archive manager for MATE
 app-arch/fastjar 0.98-r2 0.98-r3: A jar program written in C
-app-arch/file-roller 3.16.4-r1 3.16.5: Archive manager for GNOME
+app-arch/file-roller 3.16.5 3.20.2: Archive manager for GNOME
 app-arch/freeze 2.5.0-r1: Freeze/unfreeze compression program
 app-arch/funzix 1.0: unpacker for the bogus ZIX format
 app-arch/gcab 0.6 0.7: Library and tool for working with Microsoft Cabinet (CAB) files
@@ -527,7 +527,7 @@ app-crypt/elettra 1.0: Plausible deniable file cryptography
 app-crypt/envchain 1.0.0: Save environment variables in a secret vault
 app-crypt/etcd-ca 0_p20140903 0_p20150423 0_p20150423-r1: A simple certificate manager written in Go. Easy to use with limited capability
 app-crypt/fcrackzip 1.0: a zip password cracker
-app-crypt/gcr 3.16.0 3.18.0: Libraries for cryptographic UIs and accessing PKCS#11 modules
+app-crypt/gcr 3.16.0 3.18.0 3.20.0: Libraries for cryptographic UIs and accessing PKCS#11 modules
 app-crypt/gentoo-keys 201511260245: A Openpgp/gpg keyring of official Gentoo release media gpg keys
 app-crypt/gifshuffle 2.0: GIF colourmap steganography
 app-crypt/gkeys 0.2 9999: An OpenPGP/GPG key management tool and python libs
@@ -599,7 +599,7 @@ app-crypt/sbsigntool 0.6-r1: Utilities for signing and verifying files for UEFI 
 app-crypt/scl011-bin 2.06: pcsc-lite driver for the German identification card (nPA)
 app-crypt/scrypt 1.2.0: A simple password-based encryption utility using the scrypt key derivation function
 app-crypt/scute 1.4.0: A PKCS #11 module for OpenPGP smartcards
-app-crypt/seahorse 3.16.0-r1 3.18.0: A GNOME application for managing encryption keys
+app-crypt/seahorse 3.18.0 3.20.0: A GNOME application for managing encryption keys
 app-crypt/seahorse-sharing 3.8.0 3.8.0_p20151117: Daemon for PGP public key sharing using DNS-SD and HKP
 app-crypt/sgeps 0_pre15: simple GnuPG-encrypted password store written in perl
 app-crypt/shash 0.2.6-r2 0.2.6-r3: Generate or check digests or MACs of files
@@ -687,7 +687,7 @@ app-dicts/freedict-eng-swe 1.0: Freedict for language translation from English t
 app-dicts/freedict-fra-eng 1.0: Freedict for language translation from French to English
 app-dicts/freedict-ita-eng 1.0: Freedict for language translation from Italian to English
 app-dicts/gjiten 2.6-r3: A Japanese dictionary program for Gnome
-app-dicts/gnome-dictionary 3.16.2 3.18.0 3.18.1: Dictionary utility for GNOME
+app-dicts/gnome-dictionary 3.18.1: Dictionary utility for GNOME
 app-dicts/gwaei 3.0.2 3.2.0 3.6.2: Japanese-English Dictionary for GNOME
 app-dicts/hunspell-kk 1.1.2: Kazakh dictionaries for myspell/hunspell
 app-dicts/ipadic 2.7.0-r2: Japanese dictionary for ChaSen
@@ -1053,7 +1053,7 @@ app-editors/mlview 0.9.0-r1: XML editor for the GNOME environment
 app-editors/moe 1.6 1.7: A powerful and user-friendly console text editor
 app-editors/mousepad 0.3.0 0.4.0: GTK+-based editor for the Xfce Desktop Environment
 app-editors/mp 5.2.2: Minimum Profit: A text editor for programmers
-app-editors/nano 2.4.3 2.5.0 2.5.2 2.5.3 9999: GNU GPL'd Pico clone with more functionality
+app-editors/nano 2.4.3 2.5.3 9999: GNU GPL'd Pico clone with more functionality
 app-editors/ne 2.5 3.0.1: the nice editor, easy to use for the beginner and powerful for the wizard
 app-editors/nedit 5.6-r1: Multi-purpose text editor for the X Window System
 app-editors/neovim 0.1.0 0.1.1-r1 0.1.2 0.1.3 0.1.4 9999: Vim-fork focused on extensibility and agility.
@@ -15083,7 +15083,7 @@ net-p2p/rtorrent 0.9.3 0.9.4-r1 0.9.6: BitTorrent Client using libtorrent
 net-p2p/saku 3.11.0-r1: a clone of P2P anonymous BBS shinGETsu
 net-p2p/smet2html 0.1: Convert eDonkey2000 server.met to html
 net-p2p/soulseek-qt 20131106-r1: Official binary Qt SoulSeek client
-net-p2p/syncthing 0.12.25 0.13.7: Open Source Continuous File Synchronization
+net-p2p/syncthing 0.12.25 0.13.7 0.13.7-r1: Open Source Continuous File Synchronization
 net-p2p/syncthing-relaysrv 0.12.18: Syncthing relay server
 net-p2p/syrep 0.9: A generic file repository synchronization tool
 net-p2p/torrentinfo 1.8.6: A torrent file parser
@@ -17038,7 +17038,7 @@ sys-firmware/atmel-firmware 1.3-r1: Firmware and config for atmel and atmel_cs w
 sys-firmware/b43-firmware 5.100.138 6.30.163.46: broadcom firmware for b43 LP PHY and >=linux-3.2
 sys-firmware/b43legacy-firmware 3.130.20.0: broadcom firmware for b43legacy/bcm43xx
 sys-firmware/bluez-firmware 1.2: Firmware for Broadcom BCM203x and STLC2300 Bluetooth chips
-sys-firmware/intel-microcode 20140430 20140624 20140913 20150121 20150121-r1 20151106: Intel IA32 microcode update data
+sys-firmware/intel-microcode 20140430 20140624 20140913 20150121 20150121-r1 20151106 20160607: Intel IA32/IA64 microcode update data
 sys-firmware/ipw2100-firmware 1.3: Firmware for the Intel PRO/Wireless 2100 3B miniPCI adapter
 sys-firmware/ipw2200-firmware 3.1: Firmware for the Intel PRO/Wireless 2200BG/2915ABG miniPCI and 2225BG PCI adapters
 sys-firmware/ipxe 1.0.0_p20130925 1.0.0_p20160620: Open source network boot (PXE) firmware

@@ -6515,6 +6515,7 @@ net-p2p/retroshare:links-cloud - Enables LinkClouds plugin
 net-p2p/retroshare:qt4 - Enables the GUI using qt4
 net-p2p/retroshare:voip - Enables VOIP plugin
 net-p2p/rtorrent:daemon - Uses app-misc/screen to daemonize this application
+net-p2p/syncthing:tools - Install discosrv, relaysrv and other tools to /usr/libexec/synsthing/.
 net-p2p/transmission:lightweight - Optimize transmission for low-resource systems (smaller cache size, prefer unencrypted peer connections, etc.)
 net-p2p/transmission:xfs - Enable XFS filesystem capabilities by using sys-fs/xfsprogs headers (in building of fdlimit(.c))
 net-p2p/transmission-remote-gtk:libproxy - Use net-libs/libproxy for getting the HTTP/HTTPS/SOCKS proxy configuration.
