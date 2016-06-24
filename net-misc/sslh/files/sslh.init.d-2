@@ -8,7 +8,7 @@ start() {
 	start-stop-daemon --start \
 		--pidfile /var/run/${SVCNAME}.pid \
 		--exec /usr/sbin/sslh -- \
-			${OPTIONS} \
+			${DAEMON_OPTS} \
 			--pidfile /var/run/${SVCNAME}.pid
 	eend $?
 }
