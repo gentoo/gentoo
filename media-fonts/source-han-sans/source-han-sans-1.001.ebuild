@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -11,24 +11,24 @@ inherit font
 
 DESCRIPTION="Pan-CJK OpenType/CFF font family"
 HOMEPAGE="https://github.com/adobe-fonts/source-han-sans/"
-SRC_URI="linguas_ja? ( https://dev.gentoo.org/~yngwin/distfiles/${PN}-ja-${PV}.tar.xz )
-	linguas_ko? ( https://dev.gentoo.org/~yngwin/distfiles/${PN}-ko-${PV}.tar.xz )
-	linguas_zh_CN? ( https://dev.gentoo.org/~yngwin/distfiles/${PN}-zh_CN-${PV}.tar.xz )
-	linguas_zh_TW? ( https://dev.gentoo.org/~yngwin/distfiles/${PN}-zh_TW-${PV}.tar.xz )"
+SRC_URI="l10n_ja? ( https://dev.gentoo.org/~yngwin/distfiles/${PN}-ja-${PV}.tar.xz )
+	l10n_ko? ( https://dev.gentoo.org/~yngwin/distfiles/${PN}-ko-${PV}.tar.xz )
+	l10n_zh-CN? ( https://dev.gentoo.org/~yngwin/distfiles/${PN}-zh_CN-${PV}.tar.xz )
+	l10n_zh-TW? ( https://dev.gentoo.org/~yngwin/distfiles/${PN}-zh_TW-${PV}.tar.xz )"
 
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="alpha amd64 arm ~arm64 ia64 ppc ppc64 ~sh sparc x86 ~x86-fbsd ~x64-macos"
-IUSE="linguas_ja linguas_ko +linguas_zh_CN linguas_zh_TW"
-REQUIRED_USE="|| ( linguas_ja linguas_ko linguas_zh_CN linguas_zh_TW )"
+IUSE="l10n_ja l10n_ko +l10n_zh-CN l10n_zh-TW"
+REQUIRED_USE="|| ( l10n_ja l10n_ko l10n_zh-CN l10n_zh-TW )"
 
 S=${WORKDIR}
 FONT_SUFFIX="otf"
 RESTRICT="binchecks strip"
 
 src_install() {
-	for l in ja ko zh_CN zh_TW; do
-		use linguas_${l} && FONT_S="${S}/source-han-sans-${l}-${PV}" font_src_install
+	for l in ja ko zh-CN zh-TW; do
+		use l10n_${l} && FONT_S="${S}/source-han-sans-${l}-${PV}" font_src_install
 	done
 	dodoc source-han-sans-*-${PV}/*md source-han-sans-*-${PV}/*pdf
 }
