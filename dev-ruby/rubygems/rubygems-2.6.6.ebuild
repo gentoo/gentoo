@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -40,7 +40,7 @@ all_ruby_prepare() {
 	sed -i -e '/test_default_gems_use_full_paths/,/^  end/ s:^:#:' test/rubygems/test_gem.rb || die
 	sed -i -e '/test_execute_ignore_default_gem_verbose/,/^  end/ s:^:#:' test/rubygems/test_gem_commands_cleanup_command.rb || die
 	sed -i -e '/test_execute_default_gem/,/^  end/ s:^:#:' test/rubygems/test_gem_commands_contents_command.rb test/rubygems/test_gem_commands_pristine_command.rb || die
-	sed -i -e '/test_execute_default_details/,/^  end/ s:^:#:' test/rubygems/test_gem_commands_query_command.rb || die
+	sed -i -e '/test_execute_\(default_details\|show_default_gems\)/,/^  end/ s:^:#:' test/rubygems/test_gem_commands_query_command.rb || die
 	sed -i -e '/test_execute_all/,/^  end/ s:^:#:' test/rubygems/test_gem_commands_uninstall_command.rb || die
 	sed -i -e '/\(test_default_gem\|test_check_executable_overwrite\|test_require_works_after_cleanup\)/,/^  end/ s:^:#:' \
 		test/rubygems/test_{gem_installer,require}.rb || die
