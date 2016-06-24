@@ -5,9 +5,9 @@ HOMEPAGE=https://fedorahosted.org/microcode_ctl/
 IUSE=selinux
 KEYWORDS=-* ~amd64 ~x86
 LICENSE=GPL-2
-RDEPEND=>=sys-apps/microcode-data-20090330 selinux? ( sec-policy/selinux-cpucontrol )
+RDEPEND=>=sys-firmware/intel-microcode-20090330 selinux? ( sec-policy/selinux-cpucontrol )
 SLOT=0
 SRC_URI=https://fedorahosted.org/released/microcode_ctl/microcode_ctl-1.28.tar.xz
 _eclass_exported_funcs=pkg_postinst:- pkg_setup:linux-info src_compile:- src_install:-
 _eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	linux-info	fd1e29abbb02cbc49f1a14299846e9c4	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	c9d9187f4caa4026a0ceddd8dfceb3c1	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=67c3573ceb0702a102fe0bed72c858fb
+_md5_=44d617a5d7bdeb277ac06a4b6f22432e
