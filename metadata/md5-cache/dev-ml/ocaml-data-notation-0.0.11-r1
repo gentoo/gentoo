@@ -1,14 +1,14 @@
 DEFINED_PHASES=compile configure install prepare test unpack
-DEPEND=>=dev-ml/type-conv-108.07.01:= || ( dev-ml/camlp4:= <dev-lang/ocaml-4.02.0 ) test? ( >=dev-ml/ounit-2.0.0[ocamlopt?] dev-ml/ocaml-fileutils[ocamlopt?] ) >=dev-ml/findlib-1.0.4-r1 >=dev-lang/ocaml-3.12:=[ocamlopt?] || ( dev-ml/ocamlbuild <dev-lang/ocaml-4.02.3-r1 )
+DEPEND=>=dev-ml/type-conv-108.07.01:= dev-ml/camlp4:= test? ( >=dev-ml/ounit-2.0.0[ocamlopt?] dev-ml/ocaml-fileutils[ocamlopt?] ) >=dev-ml/findlib-1.0.4-r1 >=dev-lang/ocaml-3.12:=[ocamlopt?] || ( dev-ml/ocamlbuild <dev-lang/ocaml-4.02.3-r1 )
 DESCRIPTION=This project uses type-conv to dump OCaml data structure using OCaml data notation
 EAPI=5
 HOMEPAGE=http://forge.ocamlcore.org/projects/odn
 IUSE=+ocamlopt debug test
 KEYWORDS=~amd64
 LICENSE=LGPL-2.1
-RDEPEND=>=dev-ml/type-conv-108.07.01:= || ( dev-ml/camlp4:= <dev-lang/ocaml-4.02.0 ) >=dev-lang/ocaml-3.12:=[ocamlopt?]
+RDEPEND=>=dev-ml/type-conv-108.07.01:= dev-ml/camlp4:= >=dev-lang/ocaml-3.12:=[ocamlopt?]
 SLOT=0/0.0.11
 SRC_URI=http://forge.ocamlcore.org/frs/download.php/1310/ocaml-data-notation-0.0.11.tar.gz
 _eclass_exported_funcs=src_unpack:base src_prepare:base src_configure:oasis src_compile:oasis src_test:oasis src_install:oasis
 _eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	792f83d5ec9536cb5ccef375469d8bde	findlib	9909e5ca0f77ff5b693885a3d7aeadb7	multilib	d062ae4ba2fc40a19c11de2ad89b6616	oasis	cc6dfb8b0c04cedd9840ff2ec5e38539	toolchain-funcs	c9d9187f4caa4026a0ceddd8dfceb3c1
-_md5_=3e0fd31962a17aeaf1d877e831922b62
+_md5_=3a3a1bc6f52211bcbb6786e4ddff5ce5
