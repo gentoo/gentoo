@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
+EAPI=5
 
 inherit eutils multilib
 
@@ -15,7 +15,7 @@ SRC_URI="http://${PN}.inria.fr/distrib/V${MY_PV}/files/${MY_P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ppc x86"
 IUSE="gtk debug +ocamlopt doc camlp5"
 
 RDEPEND="
@@ -23,6 +23,7 @@ RDEPEND="
 	camlp5? ( >=dev-ml/camlp5-6.02.3:=[ocamlopt?] )
 	!camlp5? ( dev-ml/camlp4:= )
 	gtk? ( >=dev-ml/lablgtk-2.10.1:=[sourceview,ocamlopt?] )"
+
 DEPEND="${RDEPEND}
 	doc? (
 		media-libs/netpbm[png,zlib]
@@ -34,11 +35,15 @@ DEPEND="${RDEPEND}
 		dev-texlive/texlive-latexextra
 		)"
 
-S=${WORKDIR}/${MY_P}
+S="${WORKDIR}/${MY_P}"
+
+PATCHES=(
+	"${FILESDIR}/${PN}-8.5-do-not-install-revision.patch"
+	"${FILESDIR}/${PN}-8.4_p5-no-clean-before-test.patch"
+)
 
 src_prepare() {
-	epatch "${FILESDIR}/${PN}-8.5-do-not-install-revision.patch"
-	epatch "${FILESDIR}/${PN}-8.4_p5-no-clean-before-test.patch"
+	epatch "${PATCHES[@]}"
 }
 
 src_configure() {

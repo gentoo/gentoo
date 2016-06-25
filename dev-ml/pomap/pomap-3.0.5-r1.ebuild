@@ -16,7 +16,7 @@ LICENSE="LGPL-2.1-with-linking-exception"
 DEPEND="dev-ml/camlp4:="
 RDEPEND="${DEPEND}"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ppc x86"
 IUSE="examples"
 
 DOCS=( "AUTHORS.txt" "CHANGES.txt" "README.md" )
