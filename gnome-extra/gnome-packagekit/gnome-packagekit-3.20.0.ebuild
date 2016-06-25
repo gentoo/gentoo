@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=6
-inherit gnome2 virtualx
+inherit autotools gnome2 virtualx
 
 DESCRIPTION="PackageKit client for the GNOME desktop"
 HOMEPAGE="https://www.freedesktop.org/software/PackageKit/"
@@ -67,6 +67,10 @@ src_prepare() {
 	# FIXME: touching configure.ac triggers maintainer-mode
 	sed -e '/CPPFLAGS="$CPPFLAGS -g"/d' -i configure || die
 
+	# Fix compat with current systemd
+	sed -i -e 's/libsystemd-login/libsystemd/' configure.ac || die
+
+	eautoreconf
 	gnome2_src_prepare
 }
 
