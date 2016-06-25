@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/naev/${P}.tar.bz2
 
 LICENSE="GPL-2 GPL-3 public-domain CC-BY-3.0 CC-BY-SA-3.0"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="debug +mixer +openal"
 
 RDEPEND="media-libs/libsdl2[X,sound,video]
