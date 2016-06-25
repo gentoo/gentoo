@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -13,7 +13,7 @@ DESCRIPTION="TreeLine is a structured information storage program"
 HOMEPAGE="http://treeline.bellz.org/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="amd64 ppc x86"
 
@@ -37,7 +37,7 @@ S="${WORKDIR}/TreeLine"
 src_unpack() {
 	unpack ${P}.tar.gz
 	local lingua
-	for lingua in ${TLLINGUAS}; do
+	for lingua in "${TLLINGUAS[@]}"; do
 		if use linguas_${lingua}; then
 			tar xozf "${DISTDIR}"/${PN}-i18n-${PV}a.tar.gz \
 				TreeLine/doc/{readme_${lingua}.trl,README_${lingua}.html} \
