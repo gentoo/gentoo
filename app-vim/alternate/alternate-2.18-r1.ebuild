@@ -1,6 +1,8 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
+
+EAPI=6
 
 inherit vim-plugin eutils
 
@@ -16,9 +18,10 @@ VIM_PLUGIN_HELPTEXT=\
 file and the associated .h file. There is also :AS to split windows and
 :AV to split windows vertiically."
 
-src_unpack() {
-	unpack ${A}
-	cd "${S}"
-	# fix switching between .cc and .hh files, thanks ciaranm
-	epatch "${FILESDIR}"/${P}-hh-cc-alternation.patch
+PATCHES=(
+	"${FILESDIR}"/${P}-hh-cc-alternation.patch
+)
+
+src_prepare() {
+	default
 }
