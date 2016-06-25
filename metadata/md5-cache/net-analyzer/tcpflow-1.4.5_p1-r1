@@ -4,11 +4,11 @@ DESCRIPTION=A tool for monitoring, capturing and storing TCP connections flows
 EAPI=5
 HOMEPAGE=https://github.com/simsong/tcpflow http://packages.qa.debian.org/t/tcpflow.html
 IUSE=cairo test
-KEYWORDS=amd64 ~arm ~ppc ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos
+KEYWORDS=amd64 ~arm ~ppc x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos
 LICENSE=GPL-3
 RDEPEND=app-forensics/afflib dev-libs/boost dev-libs/openssl:= net-libs/http-parser:= net-libs/libpcap sys-libs/zlib cairo? ( x11-libs/cairo )
 SLOT=0
 SRC_URI=mirror://debian/pool/main/t/tcpflow/tcpflow_1.4.5+repack1.orig.tar.gz mirror://debian/pool/main/t/tcpflow/tcpflow_1.4.5+repack1-1.debian.tar.xz
 _eclass_exported_funcs=src_prepare:- src_configure:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	792f83d5ec9536cb5ccef375469d8bde	libtool	4890219c51da247200223277f993e054	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	c9d9187f4caa4026a0ceddd8dfceb3c1
-_md5_=6618de5275124d4ba9c826200c3f727a
+_md5_=4d5b0a5ec98238564ce8cdc32b118812

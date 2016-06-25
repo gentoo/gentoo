@@ -4,7 +4,7 @@ DESCRIPTION=A lightweight display manager
 EAPI=5
 HOMEPAGE=https://www.freedesktop.org/wiki/Software/LightDM
 IUSE=audit +gtk +introspection kde qt4 qt5 +gnome
-KEYWORDS=amd64 ~arm ~arm64 ~ppc ~x86
+KEYWORDS=amd64 ~arm ~arm64 ~ppc x86
 LICENSE=GPL-3 LGPL-3
 PDEPEND=gtk? ( x11-misc/lightdm-gtk-greeter ) kde? ( x11-misc/lightdm-kde )
 RDEPEND=audit? ( sys-process/audit ) >=dev-libs/glib-2.32.3:2 dev-libs/libxml2 gnome? ( sys-apps/accountsservice ) virtual/pam x11-libs/libX11 >=x11-libs/libxklavier-5 introspection? ( >=dev-libs/gobject-introspection-1 ) qt4? ( dev-qt/qtcore:4 dev-qt/qtdbus:4 dev-qt/qtgui:4 ) qt5? ( dev-qt/qtcore:5 dev-qt/qtdbus:5 dev-qt/qtgui:5 ) >=sys-auth/pambase-20101024-r2
@@ -14,4 +14,4 @@ SLOT=0
 SRC_URI=https://launchpad.net/lightdm/1.16/1.16.7/+download/lightdm-1.16.7.tar.xz mirror://gentoo/introspection-20110205.m4.tar.bz2
 _eclass_exported_funcs=pkg_postinst:readme.gentoo src_prepare:- src_configure:- src_install:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	792f83d5ec9536cb5ccef375469d8bde	flag-o-matic	d270fa247153df66074f795fa42dba3e	libtool	4890219c51da247200223277f993e054	multilib	d062ae4ba2fc40a19c11de2ad89b6616	pam	3ecd5b75e39b0bb05a3183c08fcdfdb4	readme.gentoo	df3fc8fdaf5a519e7d48c83e7592c95f	systemd	3165c885f3c71ffae7a867d931fb0e07	toolchain-funcs	c9d9187f4caa4026a0ceddd8dfceb3c1	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=612d1c2ed84f98b8c721f4dc611a5a1b
+_md5_=436deb75b48fed30512e8547e018680a

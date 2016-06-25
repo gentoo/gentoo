@@ -4,7 +4,7 @@ DESCRIPTION=A lightweight wired and wireless network manager for Linux
 EAPI=6
 HOMEPAGE=https://launchpad.net/wicd
 IUSE=doc X ambiance +gtk ioctl libnotify mac4lin ncurses nls +pm-utils gnome-shell python_targets_python2_7
-KEYWORDS=amd64 ~arm ~mips ~ppc ~ppc64 ~x86
+KEYWORDS=amd64 ~arm ~mips ~ppc ~ppc64 x86
 LICENSE=GPL-2
 RDEPEND=python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7[ncurses?,xml] ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/dbus-python[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] X? ( gtk? ( dev-python/pygtk[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) || ( x11-misc/ktsuss x11-libs/gksu kde-apps/kdesu ) ) || ( net-misc/dhcpcd net-misc/dhcp net-misc/pump ) net-wireless/wireless-tools net-wireless/wpa_supplicant || ( sys-apps/net-tools sys-apps/ethtool ) !gtk? ( dev-python/pygobject:2[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) ioctl? ( dev-python/python-iwscan[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/python-wpactrl[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) libnotify? ( dev-python/notify-python[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) ncurses? ( dev-python/urwid[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/pygobject:2[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) pm-utils? ( sys-power/pm-utils ) gnome-shell? ( gnome-base/gnome-shell ) python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7[ncurses?,xml] ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
 REQUIRED_USE=|| ( python_targets_python2_7 )
@@ -12,4 +12,4 @@ SLOT=0
 SRC_URI=https://launchpad.net/wicd/1.7/1.7.4/+download/wicd-1.7.4.tar.gz mac4lin? ( https://dev.gentoo.org/~anarchy/dist/wicd-mac4lin-icons.tar.xz ) ambiance? ( http://freetimesblog.altervista.org/blog/wp-content/uploads/downloads/2010/05/Icone-Wicd-Lucid.tar.gz )
 _eclass_exported_funcs=pkg_postinst:- pkg_setup:linux-info src_prepare:- src_configure:- src_compile:distutils-r1 src_test:distutils-r1 src_install:-
 _eclasses_=distutils-r1	3a17743abcc9335483329f33c87b472d	eutils	792f83d5ec9536cb5ccef375469d8bde	linux-info	fd1e29abbb02cbc49f1a14299846e9c4	multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	d062ae4ba2fc40a19c11de2ad89b6616	multiprocessing	e32940a7b2a9992ad217eccddb84d548	python-r1	0f6937650a475d673baa5d0c8c0b37b3	python-utils-r1	c0ed2a2f233d3af6dd556048695dc5cb	readme.gentoo-r1	03878c06495db70bc36bd717383c09f7	systemd	3165c885f3c71ffae7a867d931fb0e07	toolchain-funcs	c9d9187f4caa4026a0ceddd8dfceb3c1	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=3d8767377bbf7a016da9e6c24359cc6e
+_md5_=90133096c5bdb26f092b7d0fd8d8e5bf

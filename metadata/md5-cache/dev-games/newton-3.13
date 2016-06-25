@@ -3,10 +3,10 @@ DEPEND=app-arch/unzip sys-devel/make >=dev-util/cmake-2.8.12
 DESCRIPTION=an integrated solution for real time simulation of physics environments
 EAPI=5
 HOMEPAGE=http://newtondynamics.com/forum/newton.php
-KEYWORDS=amd64 ~x86
+KEYWORDS=amd64 x86
 LICENSE=ZLIB
 SLOT=0
 SRC_URI=https://github.com/MADEAPPS/newton-dynamics/archive/newton-3.13.zip
 _eclass_exported_funcs=src_unpack:unpacker src_prepare:- src_configure:- src_compile:- src_test:cmake-utils src_install:cmake-utils
 _eclasses_=cmake-utils	ac5bd012586c6cf0d9826400d9de2830	eutils	792f83d5ec9536cb5ccef375469d8bde	flag-o-matic	d270fa247153df66074f795fa42dba3e	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	c9d9187f4caa4026a0ceddd8dfceb3c1	unpacker	45d07319df5f40ee6af58418b0f930be	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=34b5e38edc964f21381d805f7d0a5ec3
+_md5_=57d838adf3b58bac1161d671ce1cf40e

@@ -4,11 +4,11 @@ DESCRIPTION=Texas Hold'em poker game
 EAPI=5
 HOMEPAGE=http://www.pokerth.net/
 IUSE=dedicated
-KEYWORDS=amd64 ~x86
+KEYWORDS=amd64 x86
 LICENSE=AGPL-3 GPL-1 GPL-2 GPL-3 BitstreamVera public-domain
 RDEPEND=dev-db/sqlite:3 dev-libs/boost:=[threads(+)] dev-libs/protobuf dev-libs/libgcrypt:0 dev-libs/tinyxml[stl] >=net-libs/libircclient-1.6-r2 >=net-misc/curl-7.16 dev-qt/qtcore:5 dev-qt/qtnetwork:5 virtual/gsasl !dedicated? ( media-libs/libsdl:0 media-libs/sdl-mixer[mod,vorbis] dev-qt/qtgui:5 dev-qt/qtwidgets:5 ) games-misc/games-envd
 SLOT=0
 SRC_URI=mirror://sourceforge/pokerth/PokerTH-1.1.1-src.tar.bz2
 _eclass_exported_funcs=pkg_preinst:games pkg_postinst:games pkg_setup:games src_unpack:base src_prepare:- src_configure:- src_compile:games src_install:-
 _eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	792f83d5ec9536cb5ccef375469d8bde	flag-o-matic	d270fa247153df66074f795fa42dba3e	games	2cf0d67d765e6358b435ccda30c13ad8	multilib	d062ae4ba2fc40a19c11de2ad89b6616	qmake-utils	0a242e7177789b0028b4045f336dd4db	toolchain-funcs	c9d9187f4caa4026a0ceddd8dfceb3c1	user	906f3c8eb3a2350a4f1191a89baa3e46
-_md5_=adf866f79de3524c251d65176c1f7cbe
+_md5_=b683caf13ba83eaf0f4597da5e837c0a

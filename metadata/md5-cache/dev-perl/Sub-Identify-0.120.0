@@ -4,11 +4,11 @@ DESCRIPTION=Retrieve names of code references
 EAPI=6
 HOMEPAGE=http://search.cpan.org/dist/Sub-Identify/
 IUSE=test
-KEYWORDS=~alpha amd64 ~arm ~hppa ~ppc ~ppc64 ~x86 ~ppc-macos ~x64-macos ~x86-solaris
+KEYWORDS=~alpha amd64 ~arm ~hppa ~ppc ~ppc64 x86 ~ppc-macos ~x64-macos ~x86-solaris
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=virtual/perl-Exporter virtual/perl-XSLoader dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/R/RG/RGARCIA/Sub-Identify-0.12.tar.gz
 _eclass_exported_funcs=src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:- src_install:perl-module
 _eclasses_=multiprocessing	e32940a7b2a9992ad217eccddb84d548	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	c584f9e0fe426f3dcc2c46c6f7cb95ce
-_md5_=f189b89137a83fb08efbae1a87f14fbf
+_md5_=82c3c779441d5185b7f6d2db14a5bfe5
