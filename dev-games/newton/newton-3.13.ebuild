@@ -12,7 +12,7 @@ SRC_URI="https://github.com/MADEAPPS/newton-dynamics/archive/${P}.zip"
 
 LICENSE="ZLIB"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 RDEPEND=""
