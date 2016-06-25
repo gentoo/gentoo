@@ -8,7 +8,7 @@ PYTHON_REQ_USE="xml"
 
 inherit gnome2 python-single-r1 toolchain-funcs versionator
 
-DESCRIPTION="Introspection infrastructure for generating gobject library bindings for various languages"
+DESCRIPTION="Introspection system for GObject-based libraries"
 HOMEPAGE="https://wiki.gnome.org/Projects/GObjectIntrospection"
 
 LICENSE="LGPL-2+ GPL-2+"
