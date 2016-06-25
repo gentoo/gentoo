@@ -9964,7 +9964,7 @@ dev-util/xesam-tools 0.7.0-r1: Development tools and examples for the Xesam desk
 dev-util/xfce4-dev-tools 4.10.0 4.11.0 4.12.0: A set of scripts and m4/autoconf macros that ease build system maintenance
 dev-util/xmlindent 0.2.17-r1 0.2.17-r2: XML stream reformatter written in ANSI C
 dev-util/xxdi 1.0.0: Simple alternative to vim's 'xxd -i' mode
-dev-util/xxdiff 4.0_beta1_p20110426 4.0_beta1_p20110426-r1: A graphical file and directories comparator and merge tool
+dev-util/xxdiff 4.0_beta1_p20110426 4.0_beta1_p20110426-r1 4.0.1: A graphical file and directories comparator and merge tool
 dev-util/yacc 1.9.1-r4 1.9.1-r5 1.9.1-r6: Yacc: Yet Another Compiler-Compiler
 dev-util/yuicompressor 2.4.8-r2: JavaScript and CSS compressor
 dev-vcs/archway 0.2.1: A GUI for GNU Arch
@@ -11065,28 +11065,28 @@ gnome-extra/gnome-shell-frippery 3.18.2 3.20.0: Unofficial extension pack provid
 gnome-extra/gnome-software 3.18.3: Gnome install & update software
 gnome-extra/gnome-system-monitor 3.18.2 3.20.1: The Gnome System Monitor
 gnome-extra/gnome-tweak-tool 3.18.1-r2 3.20.1: Tool to customize GNOME 3 options
-gnome-extra/gnome-user-docs 3.18.1: GNOME end user documentation
+gnome-extra/gnome-user-docs 3.18.1 3.20.2: GNOME end user documentation
 gnome-extra/gnome-user-share 3.18.0 3.18.1 3.18.1-r1: Personal file sharing for the GNOME desktop
 gnome-extra/gnome-utils 3.8.0: Meta package for utilities for the GNOME desktop
-gnome-extra/gnome-weather 3.16.2.1 3.18.1: A weather application for GNOME
+gnome-extra/gnome-weather 3.18.1 3.20.1: A weather application for GNOME
 gnome-extra/gnome-web-photo 0.10.6: A tool to generate images and thumbnails from HTML files
 gnome-extra/gpointing-device-settings 1.5.1-r3: A GTK+ based configuration utility for the synaptics driver
 gnome-extra/gtkhtml 4.8.5 4.10.0: Lightweight HTML rendering/printing/editing engine
 gnome-extra/gucharmap 3.0.1-r200 3.16.2 3.18.2: Unicode character map viewer and library
 gnome-extra/libgda 5.2.4 5.2.4-r1: GNOME database access library
-gnome-extra/libgsf 1.14.34 1.14.36: The GNOME Structured File Library
+gnome-extra/libgsf 1.14.34 1.14.36 1.14.37: The GNOME Structured File Library
 gnome-extra/mousetweaks 3.12.0: Mouse accessibility enhancements for the GNOME desktop
 gnome-extra/nautilus-actions 3.2.3 3.2.4: Configures programs to be launched when files are selected in Nautilus
 gnome-extra/nautilus-dropbox 1.6.2: Store, Sync and Share Files Online
 gnome-extra/nautilus-sendto 3.8.2-r1 3.8.3: A nautilus extension for sending files to locations
 gnome-extra/nautilus-share 0.7.3-r1: A nautilus plugin to easily share folders over the SMB protocol
 gnome-extra/nautilus-tracker-tags 1.6.2 1.8.0: Nautilus extension to tag files for Tracker
-gnome-extra/nemo 2.8.6 2.8.7: A file manager for Cinnamon, forked from Nautilus
+gnome-extra/nemo 2.8.7 3.0.6: A file manager for Cinnamon, forked from Nautilus
 gnome-extra/nm-applet 1.0.6 1.0.8 1.0.10: GNOME applet for NetworkManager
 gnome-extra/office-runner 1.0.2: Lighthearted tool to temporarily inhibit GNOME's suspend on lid close behavior
 gnome-extra/polkit-gnome 0.105-r1: A dbus session bus service that is used to bring up authentication dialogs
 gnome-extra/seahorse-nautilus 3.10.1 3.11.92: Nautilus extension for encrypting and decrypting files with GnuPG
-gnome-extra/sushi 3.16.0 3.18.0: A quick previewer for Nautilus, the GNOME file manager
+gnome-extra/sushi 3.18.0 3.20.0: A quick previewer for Nautilus, the GNOME file manager
 gnome-extra/synapse 0.2.99.1: A program launcher in the style of GNOME Do
 gnome-extra/yelp 3.16.1 3.18.1-r1: Help browser for GNOME
 gnome-extra/yelp-xsl 3.16.1 3.18.1: XSL stylesheets for yelp
