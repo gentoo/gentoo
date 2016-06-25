@@ -1,15 +1,14 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="3"
-PYTHON_DEPEND="2:2.5"
-SUPPORT_PYTHON_ABIS="1"
-RESTRICT_PYTHON_ABIS="2.4 3.*"
+EAPI=5
+
+PYTHON_COMPAT=( python2_7 )
 EGIT_REPO_URI="git://github.com/hwoarang/${PN}.git
 	https://github.com/hwoarang/${PN}.git"
 
-inherit distutils eutils git-2
+inherit distutils-r1 eutils git-r3
 
 DESCRIPTION="Python Application for sending sms over multiple ISPs"
 HOMEPAGE="http://pysmssend.silverarrow.org/"
@@ -19,36 +18,35 @@ SLOT="0"
 KEYWORDS=""
 IUSE="qt4"
 
-DEPEND=">=dev-python/mechanize-0.1.9
-	qt4? ( >=dev-python/PyQt4-4.3[X] )"
+DEPEND=">=dev-python/mechanize-0.1.9[${PYTHON_USEDEP}]
+	qt4? ( >=dev-python/PyQt4-4.3[X,${PYTHON_USEDEP}] )"
 RDEPEND="${DEPEND}"
 
-S="${WORKDIR}/pysmssend"
+python_install() {
+	distutils-r1_python_install
 
-PYTHON_MODNAME="pysmssendmod"
-
-src_prepare() {
-	python_convert_shebangs -r 2 .
+	python_doscript pysmssendcmd
+	if use qt4; then
+		python_doscript pysmssend
+	else
+		ln -s pysmssendcmd "${D}$(python_get_scriptdir)"/pysmssend || die
+	fi
 }
 
 src_install() {
-	distutils_src_install
+	distutils-r1_src_install
 	if use qt4; then
-		insinto /usr/share/${PN}/Icons || die "insinto failed"
-		doins   Icons/* || die "doins failed"
-		doicon  Icons/pysmssend.png || die "doicon failed"
-		dobin   pysmssend pysmssendcmd || die "failed to create executables"
-		domenu	${PN}.desktop || die "make_desktop_entry failed"
+		insinto /usr/share/${PN}/Icons
+		doins   Icons/*
+		doicon  Icons/pysmssend.png
+		domenu	${PN}.desktop
 	else
-		dobin   pysmssendcmd || die "failed to create executable"
-		dosym   pysmssendcmd /usr/bin/pysmssend || die "dosym failed"
+		dosym   pysmssendcmd /usr/bin/pysmssend
 	fi
-	dodoc README AUTHORS TODO || die "dodoc failed"
+	dodoc README AUTHORS TODO
 }
 
 pkg_postinst() {
-	distutils_pkg_postinst
-	elog
 	elog "${PN} can use dev-python/python-gnupg"
 	elog "for keeping your account data encrypted"
 	elog "and secured. If you want to use it,"
