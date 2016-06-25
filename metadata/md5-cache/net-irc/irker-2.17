@@ -1,0 +1,13 @@
+DEFINED_PHASES=install prepare setup
+DEPEND=app-text/docbook-xml-dtd:4.1.2 app-text/xmlto socks5? ( dev-python/PySocks[python_targets_python2_7(-)?,python_targets_python3_3(-)?,python_targets_python3_4(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_5(-),python_single_target_python2_7(+)?,python_single_target_python3_3(+)?,python_single_target_python3_4(+)?] ) virtual/pkgconfig
+DESCRIPTION=Submission tools for IRC notifications
+EAPI=5
+HOMEPAGE=http://www.catb.org/esr/irker/
+IUSE=socks5 python_targets_python2_7 python_targets_python3_3 python_targets_python3_4 python_single_target_python2_7 python_single_target_python3_3 python_single_target_python3_4
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD
+SLOT=0
+SRC_URI=http://www.catb.org/esr/irker/irker-2.17.tar.gz
+_eclass_exported_funcs=pkg_setup:python-single-r1 src_prepare:- src_install:-
+_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	multilib	d062ae4ba2fc40a19c11de2ad89b6616	python-single-r1	2ebea8fbab356d63110245129a67a6dd	python-utils-r1	c0ed2a2f233d3af6dd556048695dc5cb	systemd	3165c885f3c71ffae7a867d931fb0e07	toolchain-funcs	c9d9187f4caa4026a0ceddd8dfceb3c1
+_md5_=49e9e978abcff6b3a890c6430aa8bea9

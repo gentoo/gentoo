@@ -14223,7 +14223,7 @@ net-irc/ircii 20110228 20111115: An IRC and ICB client that runs under most UNIX
 net-irc/ircmap 0.99: Scripts to treate diagrams of IRC networks using the LINKS command
 net-irc/ircservices 5.1.24: ChanServ, NickServ, and MemoServ with support for several IRC daemons
 net-irc/ircstats 1.1-r1: IRCStats tries to be a log analyzer for Linux similar to mIRCStats
-net-irc/irker 2.9 2.11 2.12 2.13 2.15 2.16: Submission tools for IRC notifications
+net-irc/irker 2.9 2.11 2.12 2.13 2.15 2.16 2.17: Submission tools for IRC notifications
 net-irc/iroffer-dinoex 3.29: IRC fileserver using DCC
 net-irc/irssi 0.8.17 0.8.18 0.8.19 9999: A modular textUI IRC client with IPv6 support
 net-irc/irssi-otr 1.0.0-r1: Off-The-Record messaging (OTR) for irssi
