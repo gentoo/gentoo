@@ -1,12 +1,13 @@
-DEFINED_PHASES=compile configure install postinst postrm preinst prepare setup test unpack
-DEPEND=virtual/libusb:0 >=dev-libs/libg15-9999 >=dev-libs/libg15render-9999 perl? ( dev-lang/perl dev-perl/GDGraph >=dev-perl/Inline-0.4 ) python? ( dev-lang/python ) || ( dev-vcs/subversion[http] dev-vcs/subversion[webdav-neon] dev-vcs/subversion[webdav-serf] ) net-misc/rsync !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEFINED_PHASES=compile configure install postinst preinst prepare setup test unpack
+DEPEND=virtual/libusb:0 >=dev-libs/libg15-9999 >=dev-libs/libg15render-9999 perl? ( dev-lang/perl dev-perl/GDGraph >=dev-perl/Inline-0.4 ) python? ( python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) || ( dev-vcs/subversion[http] dev-vcs/subversion[webdav-neon] dev-vcs/subversion[webdav-serf] ) net-misc/rsync !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=G15daemon takes control of the G15 keyboard, through the linux kernel uinput device driver
 EAPI=5
 HOMEPAGE=http://g15daemon.sourceforge.net/
-IUSE=perl python static-libs
+IUSE=perl python static-libs python_targets_python2_7
 LICENSE=GPL-2
-RDEPEND=virtual/libusb:0 >=dev-libs/libg15-9999 >=dev-libs/libg15render-9999 perl? ( dev-lang/perl dev-perl/GDGraph >=dev-perl/Inline-0.4 ) python? ( dev-lang/python )
+RDEPEND=virtual/libusb:0 >=dev-libs/libg15-9999 >=dev-libs/libg15render-9999 perl? ( dev-lang/perl dev-perl/GDGraph >=dev-perl/Inline-0.4 ) python? ( python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] )
+REQUIRED_USE=python? ( || ( python_targets_python2_7 ) )
 SLOT=0
-_eclass_exported_funcs=pkg_preinst:subversion pkg_postrm:- pkg_postinst:- pkg_setup:- src_unpack:- src_prepare:- src_configure:- src_compile:- src_test:perl-module src_install:-
-_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	792f83d5ec9536cb5ccef375469d8bde	libtool	4890219c51da247200223277f993e054	linux-info	fd1e29abbb02cbc49f1a14299846e9c4	multilib	d062ae4ba2fc40a19c11de2ad89b6616	multiprocessing	e32940a7b2a9992ad217eccddb84d548	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	c584f9e0fe426f3dcc2c46c6f7cb95ce	python	efc1c55fc44c5b7272fc2ffba73c3e6f	subversion	4fee0a764150bb4dda27ed4d2c4ed7ce	toolchain-funcs	c9d9187f4caa4026a0ceddd8dfceb3c1	unpacker	45d07319df5f40ee6af58418b0f930be	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=bb584a2ff1676730fd822614e7fbd971
+_eclass_exported_funcs=pkg_preinst:subversion pkg_postinst:- pkg_setup:- src_unpack:- src_prepare:- src_configure:- src_compile:- src_test:perl-module src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	792f83d5ec9536cb5ccef375469d8bde	libtool	4890219c51da247200223277f993e054	linux-info	fd1e29abbb02cbc49f1a14299846e9c4	multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	d062ae4ba2fc40a19c11de2ad89b6616	multiprocessing	e32940a7b2a9992ad217eccddb84d548	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	c584f9e0fe426f3dcc2c46c6f7cb95ce	python-r1	0f6937650a475d673baa5d0c8c0b37b3	python-utils-r1	c0ed2a2f233d3af6dd556048695dc5cb	subversion	4fee0a764150bb4dda27ed4d2c4ed7ce	toolchain-funcs	c9d9187f4caa4026a0ceddd8dfceb3c1	unpacker	45d07319df5f40ee6af58418b0f930be	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=90e88b3eb74a318bd18ea6d3994cfc67

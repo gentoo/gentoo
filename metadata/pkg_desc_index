@@ -1769,7 +1769,7 @@ app-misc/fslurp 2.1.4: Read and display data from Fronius IG and IG Plus inverte
 app-misc/fsniper 1.3.1-r1: Tool that monitors a given set of directories for new files
 app-misc/fujiplay 1.33: Utility for Fujifilm/Leica digital cameras (via serial port)
 app-misc/g15composer 3.1 3.2: A library to render text and shapes into a buffer usable by the Logitech G15 keyboard
-app-misc/g15daemon 1.9.5.3-r11 1.9.5.3-r12 9999: G15daemon takes control of the G15 keyboard, through the linux kernel uinput device driver
+app-misc/g15daemon 1.9.5.3-r11 1.9.5.3-r13 1.9.5.3-r20 1.9.5.3-r21 9999: G15daemon takes control of the G15 keyboard, through the linux kernel uinput device driver
 app-misc/g15macro 1.0.3-r1: Macro recording plugin to G15daemon
 app-misc/g15message 1.0.0: A simple message/alert client for G15daemon
 app-misc/g15mpd 1.0.0-r1: MPD (music player daemon) plugin to G15daemon
