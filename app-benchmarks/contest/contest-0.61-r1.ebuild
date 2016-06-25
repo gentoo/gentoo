@@ -7,8 +7,8 @@ EAPI=6
 inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="Test system responsiveness to compare different kernels"
-HOMEPAGE="http://members.optusnet.com.au/ckolivas/contest/"
-SRC_URI="http://members.optusnet.com.au/ckolivas/${PN}/${P}.tar.gz"
+HOMEPAGE="http://users.tpg.com.au/ckolivas/contest/"
+SRC_URI="http://www.tux.org/pub/kernel/people/ck/apps/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
