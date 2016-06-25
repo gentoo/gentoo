@@ -14,7 +14,7 @@ SRC_URI="${HOMEPAGE}/${MYP}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
 IUSE="doc static-libs"
 
 RDEPEND=">=sci-libs/cfitsio-3.080"
