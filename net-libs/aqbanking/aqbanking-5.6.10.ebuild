@@ -31,7 +31,7 @@ DEPEND="${RDEPEND}
 MAKEOPTS="${MAKEOPTS} -j1" # 5.0.x fails with -j9 on quadcore
 
 src_configure() {
-	local backends="aqhbci aqnone aqpaypal"
+	local backends="aqhbci aqnone"
 	use ofx && backends="${backends} aqofxconnect"
 	use ebics && backends="${backends} aqebics"
 
@@ -49,7 +49,7 @@ src_configure() {
 src_install() {
 	emake DESTDIR="${D}" install
 
-	rm -rv "${ED}"/usr/share/doc/aq{banking,hbci,paypal} || die
+	rm -rv "${ED}"/usr/share/doc/ || die
 
 	dodoc AUTHORS ChangeLog NEWS README TODO
 
