@@ -1,0 +1,13 @@
+# Copyright 1999-2016 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+# DON'T TOUCH THIS FILE. Instead, file a bug and assign it to <hppa@gentoo.org>.
+
+# Davide Pesavento <pesa@gentoo.org> (06 Jun 2016)
+# dev-qt/qtmultimedia:5 not stable
+net-analyzer/wireshark qt5
+
+# Davide Pesavento <pesa@gentoo.org> (06 Jun 2016)
+# dev-qt/qtx11extras:5 not stable yet (bug 585228)
+x11-themes/qtcurve qt5
