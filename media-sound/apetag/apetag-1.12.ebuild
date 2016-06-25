@@ -14,7 +14,7 @@ SRC_URI="http://muth.org/Robert/Apetag/${PN}.${PV}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~ppc64 x86"
 IUSE=""
 
 S=${WORKDIR}/Apetag
