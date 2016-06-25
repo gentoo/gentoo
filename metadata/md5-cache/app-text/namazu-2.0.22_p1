@@ -1,13 +1,13 @@
 DEFINED_PHASES=compile configure install postinst postrm prepare test
-DEPEND=>=dev-perl/File-MMagic-1.20 emacs? ( virtual/emacs ) linguas_ja? ( app-i18n/nkf || ( dev-perl/Text-Kakasi app-i18n/kakasi app-text/chasen app-text/mecab ) ) nls? ( virtual/libintl ) tk? ( dev-lang/tk www-client/lynx ) nls? ( sys-devel/gettext )
+DEPEND=>=dev-perl/File-MMagic-1.20 emacs? ( virtual/emacs ) l10n_ja? ( app-i18n/nkf || ( dev-perl/Text-Kakasi app-i18n/kakasi app-text/chasen app-text/mecab ) ) nls? ( virtual/libintl ) tk? ( dev-lang/tk:0 www-client/lynx ) nls? ( sys-devel/gettext )
 DESCRIPTION=Namazu is a full-text search engine
 EAPI=5
 HOMEPAGE=http://www.namazu.org/
-IUSE=emacs nls tk linguas_ja
+IUSE=emacs nls tk l10n_ja
 LICENSE=GPL-2
-RDEPEND=>=dev-perl/File-MMagic-1.20 emacs? ( virtual/emacs ) linguas_ja? ( app-i18n/nkf || ( dev-perl/Text-Kakasi app-i18n/kakasi app-text/chasen app-text/mecab ) ) nls? ( virtual/libintl ) tk? ( dev-lang/tk www-client/lynx )
+RDEPEND=>=dev-perl/File-MMagic-1.20 emacs? ( virtual/emacs ) l10n_ja? ( app-i18n/nkf || ( dev-perl/Text-Kakasi app-i18n/kakasi app-text/chasen app-text/mecab ) ) nls? ( virtual/libintl ) tk? ( dev-lang/tk:0 www-client/lynx )
 SLOT=0
 SRC_URI=http://www.namazu.org/test/namazu-2.0.22pre1.tar.gz
 _eclass_exported_funcs=pkg_postrm:- pkg_postinst:- src_prepare:autotools-utils src_configure:- src_compile:- src_test:autotools-utils src_install:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	autotools-utils	419811142edf3516b0d0cf1a254d93cb	elisp-common	9f56c4e9bf1282dbfc2a5a09e1124e74	eutils	792f83d5ec9536cb5ccef375469d8bde	libtool	4890219c51da247200223277f993e054	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	c9d9187f4caa4026a0ceddd8dfceb3c1
-_md5_=f75c8e6d48db9af2c8fa779711c4301c
+_md5_=de222117ff898b8f6730525214d3860e

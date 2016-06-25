@@ -1,14 +1,14 @@
 DEFINED_PHASES=compile configure install postinst postrm prepare
-DEPEND=>=dev-perl/File-MMagic-1.20 emacs? ( virtual/emacs ) linguas_ja? ( app-i18n/nkf || ( dev-perl/Text-Kakasi app-i18n/kakasi app-text/chasen app-text/mecab ) ) nls? ( virtual/libintl ) tk? ( dev-lang/tk www-client/lynx ) nls? ( sys-devel/gettext )
+DEPEND=>=dev-perl/File-MMagic-1.20 emacs? ( virtual/emacs ) l10n_ja? ( app-i18n/nkf || ( dev-perl/Text-Kakasi app-i18n/kakasi app-text/chasen app-text/mecab ) ) nls? ( virtual/libintl ) tk? ( dev-lang/tk:0 www-client/lynx ) nls? ( sys-devel/gettext )
 DESCRIPTION=Namazu is a full-text search engine
 EAPI=5
 HOMEPAGE=http://www.namazu.org/
-IUSE=emacs nls tk linguas_ja
+IUSE=emacs nls tk l10n_ja
 KEYWORDS=amd64 ~ppc ~ppc64 x86
 LICENSE=GPL-2
-RDEPEND=>=dev-perl/File-MMagic-1.20 emacs? ( virtual/emacs ) linguas_ja? ( app-i18n/nkf || ( dev-perl/Text-Kakasi app-i18n/kakasi app-text/chasen app-text/mecab ) ) nls? ( virtual/libintl ) tk? ( dev-lang/tk www-client/lynx )
+RDEPEND=>=dev-perl/File-MMagic-1.20 emacs? ( virtual/emacs ) l10n_ja? ( app-i18n/nkf || ( dev-perl/Text-Kakasi app-i18n/kakasi app-text/chasen app-text/mecab ) ) nls? ( virtual/libintl ) tk? ( dev-lang/tk:0 www-client/lynx )
 SLOT=0
 SRC_URI=http://www.namazu.org/stable/namazu-2.0.21.tar.gz
 _eclass_exported_funcs=pkg_postrm:- pkg_postinst:- src_prepare:- src_configure:- src_compile:- src_install:-
 _eclasses_=elisp-common	9f56c4e9bf1282dbfc2a5a09e1124e74	eutils	792f83d5ec9536cb5ccef375469d8bde	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	c9d9187f4caa4026a0ceddd8dfceb3c1
-_md5_=a356080ef046617ac3f0aa4ebbbf8c8f
+_md5_=8b083238199cb16d3855c34b629b662c
