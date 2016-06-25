@@ -15,7 +15,7 @@ SRC_URI="mirror://sourceforge/warzone2100/${P}.tar.xz
 
 LICENSE="GPL-2+ CC-BY-SA-3.0 public-domain"
 SLOT="0"
-KEYWORDS="amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc x86"
 # upstream requested debug support
 IUSE="debug nls qt4 videos"
 
