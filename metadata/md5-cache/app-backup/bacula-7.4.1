@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install postinst prepare setup unpack
+DEPEND=dev-libs/gmp:0 !bacula-clientonly? ( postgres? ( dev-db/postgresql:*[threads] ) mysql? ( virtual/mysql ) sqlite? ( dev-db/sqlite:3 ) !bacula-nodir? ( virtual/mta ) ) qt4? ( dev-qt/qtsvg:4 x11-libs/qwt:5 ) logwatch? ( sys-apps/logwatch ) tcpd? ( >=sys-apps/tcp-wrappers-7.6 ) readline? ( sys-libs/readline:0 ) static? ( acl? ( virtual/acl[static-libs] ) sys-libs/zlib[static-libs] dev-libs/lzo[static-libs] sys-libs/ncurses:=[static-libs] ssl? ( !libressl? ( dev-libs/openssl:0=[static-libs] ) libressl? ( dev-libs/libressl:0=[static-libs] ) ) ) !static? ( acl? ( virtual/acl ) sys-libs/zlib dev-libs/lzo sys-libs/ncurses:= ssl? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) ) ) virtual/pkgconfig
+DESCRIPTION=Featureful client/server network backup suite
+EAPI=5
+HOMEPAGE=http://www.bacula.org/
+IUSE=acl bacula-clientonly bacula-nodir bacula-nosd examples ipv6 libressl logwatch mysql postgres qt4 readline +sqlite ssl static tcpd vim-syntax X
+KEYWORDS=~amd64 ~ppc ~sparc ~x86
+LICENSE=AGPL-3
+RDEPEND=dev-libs/gmp:0 !bacula-clientonly? ( postgres? ( dev-db/postgresql:*[threads] ) mysql? ( virtual/mysql ) sqlite? ( dev-db/sqlite:3 ) !bacula-nodir? ( virtual/mta ) ) qt4? ( dev-qt/qtsvg:4 x11-libs/qwt:5 ) logwatch? ( sys-apps/logwatch ) tcpd? ( >=sys-apps/tcp-wrappers-7.6 ) readline? ( sys-libs/readline:0 ) static? ( acl? ( virtual/acl[static-libs] ) sys-libs/zlib[static-libs] dev-libs/lzo[static-libs] sys-libs/ncurses:=[static-libs] ssl? ( !libressl? ( dev-libs/openssl:0=[static-libs] ) libressl? ( dev-libs/libressl:0=[static-libs] ) ) ) !static? ( acl? ( virtual/acl ) sys-libs/zlib dev-libs/lzo sys-libs/ncurses:= ssl? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) ) ) !bacula-clientonly? ( !bacula-nosd? ( sys-block/mtx app-arch/mt-st ) ) vim-syntax? ( || ( app-editors/vim app-editors/gvim ) )
+REQUIRED_USE=|| ( ^^ ( mysql postgres sqlite ) bacula-clientonly ) static? ( bacula-clientonly )
+SLOT=0
+SRC_URI=mirror://sourceforge/bacula/bacula-7.4.1.tar.gz
+_eclass_exported_funcs=pkg_postinst:- pkg_setup:- src_unpack:qt4-r2 src_prepare:- src_configure:- src_compile:- src_install:-
+_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	792f83d5ec9536cb5ccef375469d8bde	libtool	4890219c51da247200223277f993e054	multilib	d062ae4ba2fc40a19c11de2ad89b6616	qmake-utils	0a242e7177789b0028b4045f336dd4db	qt4-r2	d6c113024bb3086a1facc65cd338930e	systemd	3165c885f3c71ffae7a867d931fb0e07	toolchain-funcs	c9d9187f4caa4026a0ceddd8dfceb3c1	user	906f3c8eb3a2350a4f1191a89baa3e46
+_md5_=b01d9096ef433d74e5339845e86c3100
