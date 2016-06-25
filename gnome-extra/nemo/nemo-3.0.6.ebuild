@@ -1,9 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
-GCONF_DEBUG="no"
+EAPI=6
 GNOME2_LA_PUNT="yes"
 PYTHON_COMPAT=( python2_7 )
 
@@ -15,7 +14,7 @@ SRC_URI="https://github.com/linuxmint/nemo/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+ LGPL-2+ FDL-1.1"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="exif +introspection +nls packagekit tracker xmp"
 
 COMMON_DEPEND="
@@ -65,7 +64,6 @@ DEPEND="${COMMON_DEPEND}
 #	gnome-base/gnome-common, dev-util/gtk-doc (not only -am!)
 
 src_prepare() {
-	epatch_user
 	eautoreconf
 	gnome2_src_prepare
 }
@@ -83,5 +81,5 @@ src_test() {
 	"${EROOT}${GLIB_COMPILE_SCHEMAS}" --allow-any-name "${S}/libnemo-private" || die
 
 	cd src # we don't care about translation tests
-	GSETTINGS_SCHEMA_DIR="${S}/libnemo-private" Xemake check
+	GSETTINGS_SCHEMA_DIR="${S}/libnemo-private" virtx emake check
 }

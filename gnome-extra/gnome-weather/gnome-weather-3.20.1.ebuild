@@ -1,10 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
-GCONF_DEBUG="no"
-
+EAPI=6
 inherit gnome2 virtualx
 
 DESCRIPTION="A weather application for GNOME"
@@ -12,14 +10,16 @@ HOMEPAGE="https://wiki.gnome.org/Design/Apps/Weather"
 
 LICENSE="GPL-2+ LGPL-2+ MIT CC-BY-3.0 CC-BY-SA-3.0"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="test"
 
 RDEPEND="
+	>=app-misc/geoclue-2.3.1:2.0
 	>=dev-libs/gjs-1.43.3
 	>=dev-libs/glib-2.32:2
-	>=dev-libs/gobject-introspection-1.35.9
-	>=dev-libs/libgweather-3.15.90
+	>=dev-libs/gobject-introspection-1.35.9:=
+	>=dev-libs/libgweather-3.17.2:=
+	gnome-base/gsettings-desktop-schemas
 	>=x11-libs/gtk+-3.11.4:3
 "
 DEPEND="${RDEPEND}
@@ -34,5 +34,5 @@ src_configure() {
 }
 
 src_test() {
-	Xemake check TESTS_ENVIRONMENT="dbus-run-session"
+	virtx emake check TESTS_ENVIRONMENT="dbus-run-session"
 }
