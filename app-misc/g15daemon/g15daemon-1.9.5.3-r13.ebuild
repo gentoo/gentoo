@@ -6,23 +6,21 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
 GENTOO_DEPEND_ON_PERL="no"
-ESVN_PROJECT=${PN}/trunk
-ESVN_REPO_URI="https://${PN}.svn.sourceforge.net/svnroot/${ESVN_PROJECT}/${PN}-wip"
 
-inherit eutils linux-info perl-module python-r1 base subversion autotools
+inherit eutils linux-info perl-module python-r1 base
 
 DESCRIPTION="G15daemon takes control of the G15 keyboard, through the linux kernel uinput device driver"
 HOMEPAGE="http://g15daemon.sourceforge.net/"
-[[ ${PV} = *9999* ]] || SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 IUSE="perl python static-libs"
 
 DEPEND="virtual/libusb:0
-	>=dev-libs/libg15-9999
-	>=dev-libs/libg15render-9999
+	>=dev-libs/libg15-1.2.4
+	>=dev-libs/libg15render-1.2
 	perl? (
 		dev-lang/perl
 		dev-perl/GDGraph
@@ -33,11 +31,9 @@ RDEPEND="${DEPEND}"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-1.9.5.3-g510-keys.patch"
+	"${FILESDIR}/${P}-forgotten-open-mode.patch"
+	"${FILESDIR}/${P}-overflow-fix.patch"
 )
-# "${FILESDIR}/${PN}-1.9.5.3-forgotten-open-mode.patch"
-# "${FILESDIR}/${PN}-1.9.5.3-overflow-fix.patch"
-
 uinput_check() {
 	ebegin "Checking for uinput support"
 	local rc=1
@@ -61,11 +57,7 @@ pkg_setup() {
 }
 
 src_unpack() {
-	if [[ ${PV} = *9999* ]]; then
-		subversion_src_unpack
-	else
-		unpack ${A}
-	fi
+	unpack ${A}
 	if use perl; then
 		unpack "./${P}/lang-bindings/perl-G15Daemon-0.2.tar.gz"
 	fi
@@ -75,9 +67,6 @@ src_unpack() {
 }
 
 src_prepare() {
-	if [[ ${PV} = *9999* ]]; then
-		subversion_wc_info
-	fi
 	if use perl; then
 		perl-module_src_prepare
 		sed -i \
@@ -86,9 +75,6 @@ src_prepare() {
 	else
 		# perl-module_src_prepare always calls base_src_prepare
 		base_src_prepare
-	fi
-	if [[ ${PV} = *9999* ]]; then
-		eautoreconf
 	fi
 }
 
