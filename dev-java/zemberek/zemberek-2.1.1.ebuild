@@ -18,7 +18,7 @@ LANGS="tr tk"
 
 S=${WORKDIR}/${P}-nolibs-src
 
-IUSE="linguas_tk +linguas_tr"
+IUSE="l10n_tk +l10n_tr"
 
 RDEPEND=">=virtual/jre-1.5"
 
@@ -41,18 +41,22 @@ java_prepare() {
 }
 
 src_compile() {
-	strip-linguas ${LANGS}
-	local anttargs
-	for jar in cekirdek demo ${LINGUAS}; do
+	local anttargs langs="" jar
+	for jar in ${LANGS}; do
+		use l10n_${jar} && langs+=" ${jar}"
+	done
+	for jar in cekirdek demo ${langs}; do
 		anttargs="${anttargs} jar-${jar}"
 	done
 	eant ${anttargs} $(use_doc javadocs)
 }
 
 src_install() {
-	strip-linguas ${LANGS}
-	local sourcetrees=""
-	for jar in cekirdek demo ${LINGUAS}; do
+	local sourcetrees="" langs="" jar
+	for jar in ${LANGS}; do
+		use l10n_${jar} && langs+=" ${jar}"
+	done
+	for jar in cekirdek demo ${langs}; do
 		java-pkg_newjar dagitim/jar/zemberek-${jar}-${PV}.jar zemberek2-${jar}.jar
 		sourcetrees="${sourcetrees} src/${jar}/net"
 	done
