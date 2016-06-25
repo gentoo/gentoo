@@ -10985,24 +10985,24 @@ games-util/xqf 1.0.6.2: A server browser for many FPS games (frontend for qstat)
 gnome-base/dconf 0.24.0 0.26.0: Simple low-level configuration system
 gnome-base/dconf-editor 3.16.1 3.18.2 3.20.2: Graphical tool for editing the dconf configuration database
 gnome-base/gconf 3.2.6-r3 3.2.6-r4: GNOME configuration system and daemon
-gnome-base/gdm 3.18.2 3.18.3: GNOME Display Manager for managing graphical display servers and user logins
+gnome-base/gdm 3.18.3 3.20.1: GNOME Display Manager for managing graphical display servers and user logins
 gnome-base/gnome 3.14.0 3.16.0 3.18.0: Meta package for GNOME 3, merge this package to install
 gnome-base/gnome-common 3.14.0-r1 3.18.0: Common files for development of Gnome packages
-gnome-base/gnome-control-center 3.16.3 3.18.2: GNOME's main interface to configure various aspects of the desktop
+gnome-base/gnome-control-center 3.18.2 3.20.1: GNOME's main interface to configure various aspects of the desktop
 gnome-base/gnome-core-apps 3.14.0 3.16.0 3.18.0: Sub-meta package for the core applications integrated with GNOME 3
 gnome-base/gnome-core-libs 3.14.0 3.16.0 3.18.0: Sub-meta package for the core libraries of GNOME 3
-gnome-base/gnome-desktop 2.32.1-r2 3.16.2 3.18.2: Libraries for the gnome desktop that are not part of the UI
+gnome-base/gnome-desktop 2.32.1-r2 3.18.2 3.20.2: Libraries for the gnome desktop that are not part of the UI
 gnome-base/gnome-extra-apps 3.16.0 3.18.0 3.18.0-r1: Sub-meta package for the applications of GNOME 3
-gnome-base/gnome-keyring 3.16.0-r1 3.18.3 3.18.3-r1: Password and keyring managing daemon
+gnome-base/gnome-keyring 3.16.0-r1 3.18.3 3.18.3-r1 3.20.0: Password and keyring managing daemon
 gnome-base/gnome-light 3.16.0 3.18.0: Meta package for GNOME-Light, merge this package to install
 gnome-base/gnome-menus 3.10.1-r1 3.13.3 3.13.3-r1: Library for the Desktop Menu fd.o specification
 gnome-base/gnome-mime-data 2.18.0: MIME data for Gnome
-gnome-base/gnome-session 3.16.0 3.18.1.2: Gnome session manager
-gnome-base/gnome-settings-daemon 3.18.2 3.18.3: Gnome Settings Daemon
-gnome-base/gnome-shell 3.16.4 3.18.3 3.18.4 3.18.4-r1 3.18.5: Provides core UI functions for the GNOME 3 desktop
+gnome-base/gnome-session 3.18.1.2 3.20.1: Gnome session manager
+gnome-base/gnome-settings-daemon 3.18.3 3.20.1: Gnome Settings Daemon
+gnome-base/gnome-shell 3.18.5 3.20.2: Provides core UI functions for the GNOME 3 desktop
 gnome-base/gnome-vfs 2.24.4-r2 2.24.4-r3 2.24.4-r4 2.24.4-r5: Gnome Virtual Filesystem
-gnome-base/gsettings-desktop-schemas 3.16.1 3.18.1: Collection of GSettings schemas for GNOME desktop
-gnome-base/gvfs 1.24.2-r1 1.26.2-r1 1.26.3 1.28.0: Virtual filesystem implementation for gio
+gnome-base/gsettings-desktop-schemas 3.16.1 3.18.1 3.20.0: Collection of GSettings schemas for GNOME desktop
+gnome-base/gvfs 1.24.2-r1 1.26.3 1.28.2: Virtual filesystem implementation for gio
 gnome-base/libbonobo 2.24.3-r1: GNOME CORBA framework
 gnome-base/libbonoboui 2.24.5-r1: User Interface part of libbonobo
 gnome-base/libglade 2.6.4-r2: Library to construct graphical interfaces at runtime
@@ -11013,9 +11013,9 @@ gnome-base/libgnomekbd 3.6.0: Gnome keyboard configuration library
 gnome-base/libgnomeprint 2.18.8-r1: Printer handling for Gnome
 gnome-base/libgnomeprintui 2.18.6-r1: User interface libraries for gnome print
 gnome-base/libgnomeui 2.24.5-r1: User Interface routines for Gnome
-gnome-base/libgtop 2.30.0 2.32.0: A library that provides top functionality to applications
+gnome-base/libgtop 2.30.0 2.32.0 2.34.0: A library that provides top functionality to applications
 gnome-base/librsvg 2.40.11 2.40.13 2.40.13-r1 2.40.15: Scalable Vector Graphics (SVG) rendering library
-gnome-base/nautilus 3.16.2 3.18.2 3.18.2-r1 3.18.3 3.18.4 3.18.5: A file manager for the GNOME desktop
+gnome-base/nautilus 3.18.5 3.20.1: A file manager for the GNOME desktop
 gnome-base/orbit 2.14.19-r4 2.14.19-r5: ORBit2 is a high-performance CORBA ORB
 gnome-extra/activity-log-manager 0.9.7-r1: GUI which lets you easily control what gets logged by Zeitgeist
 gnome-extra/assogiate 0.2.1 0.2.1-r1: assoGiate is an editor of the file types database for GNOME
@@ -11023,27 +11023,27 @@ gnome-extra/avant-window-navigator 0.4.2: A dock-like bar which sits at the bott
 gnome-extra/avant-window-navigator-extras 0.4.0: Applets for the Avant Window Navigator
 gnome-extra/cameramonitor 0.3.2: Local Webcam monitoring in system tray
 gnome-extra/chrome-gnome-shell 6: Provides integration with GNOME Shell extensions repository for Chrome browser
-gnome-extra/cinnamon 2.8.6 2.8.8: A fork of GNOME Shell with layout similar to GNOME 2
-gnome-extra/cinnamon-control-center 2.6.0-r1 2.8.1: Cinnamons's main interface to configure various aspects of the desktop
-gnome-extra/cinnamon-desktop 2.8.0 2.8.1: A collection of libraries and utilites used by Cinnamon
-gnome-extra/cinnamon-menus 2.8.0: Cinnamon's library for the Desktop Menu fd.o specification
-gnome-extra/cinnamon-screensaver 2.8.0-r1: Screensaver for Cinnamon
-gnome-extra/cinnamon-session 2.8.2 2.8.3: Cinnamon session manager
-gnome-extra/cinnamon-settings-daemon 2.8.3 2.8.4: Cinnamon's settings daemon
-gnome-extra/cinnamon-translations 2.8.3: Translation data for Cinnamon
-gnome-extra/cjs 2.8.0: Linux Mint's fork of gjs for Cinnamon
+gnome-extra/cinnamon 2.8.8 3.0.6: A fork of GNOME Shell with layout similar to GNOME 2
+gnome-extra/cinnamon-control-center 2.8.1 3.0.1: Cinnamons's main interface to configure various aspects of the desktop
+gnome-extra/cinnamon-desktop 2.8.1 3.0.2: A collection of libraries and utilites used by Cinnamon
+gnome-extra/cinnamon-menus 2.8.0 3.0.2: Cinnamon's library for the Desktop Menu fd.o specification
+gnome-extra/cinnamon-screensaver 2.8.0-r1 3.0.1: Screensaver for Cinnamon
+gnome-extra/cinnamon-session 2.8.2 2.8.3 3.0.1: Cinnamon session manager
+gnome-extra/cinnamon-settings-daemon 2.8.3 2.8.4 3.0.1: Cinnamon's settings daemon
+gnome-extra/cinnamon-translations 2.8.3 3.0.3: Translation data for Cinnamon
+gnome-extra/cjs 2.8.0 3.0.1: Linux Mint's fork of gjs for Cinnamon
 gnome-extra/docky 2.2.0 2.2.1.1: Elegant, powerful, clean dock
 gnome-extra/eiciel 0.9.11 0.9.11-r1: ACL editor for GNOME, with Nautilus extension
 gnome-extra/evolution-data-server 3.16.5 3.18.4 3.18.5: Evolution groupware backend
 gnome-extra/evolution-ews 3.16.5 3.18.4 3.18.5: Evolution module for connecting to Microsoft Exchange Web Services
 gnome-extra/gconf-editor 3.0.1-r1: An editor to the GNOME config system
 gnome-extra/gnome-activity-journal 0.8.0-r4 0.8.0-r5: Tool for easily browsing and finding files on your computer
-gnome-extra/gnome-boxes 3.16.2 3.18.1: Simple GNOME 3 application to access remote or virtual systems
+gnome-extra/gnome-boxes 3.18.1 3.20.2: Simple GNOME 3 application to access remote or virtual systems
 gnome-extra/gnome-builder 3.16.3 3.18.1: Builder attempts to be an IDE for writing software for GNOME
-gnome-extra/gnome-calculator 3.16.2 3.18.2 3.18.3: A calculator application for GNOME
-gnome-extra/gnome-calendar 3.18.2.1 3.18.3: Manage your online calendars with simple and modern interface
-gnome-extra/gnome-characters 3.16.2 3.18.1: Unicode character map viewer and library
-gnome-extra/gnome-clocks 3.16.2 3.18.0: Clocks application for GNOME
+gnome-extra/gnome-calculator 3.18.3 3.20.1: A calculator application for GNOME
+gnome-extra/gnome-calendar 3.18.3 3.20.2: Manage your online calendars with simple and modern interface
+gnome-extra/gnome-characters 3.18.1 3.20.1: Unicode character map viewer and library
+gnome-extra/gnome-clocks 3.18.0 3.20.1: Clocks application for GNOME
 gnome-extra/gnome-color-chooser 0.2.5: GTK+/GNOME color customization tool
 gnome-extra/gnome-color-manager 3.16.0 3.18.0: Color profile manager for the GNOME desktop
 gnome-extra/gnome-commander 1.4.2 1.4.6 1.4.7 1.4.8: A graphical, full featured, twin-panel file manager
@@ -12390,7 +12390,7 @@ media-libs/ccaudio2 2.1.3: C++ class framework for manipulating audio data
 media-libs/celt 0.5.1.3 0.11.1-r1: CELT is a very low delay audio codec designed for high-quality communications
 media-libs/chromaprint 1.2 1.2-r1 1.3.1: A client-side library that implements a custom algorithm for extracting fingerprints
 media-libs/cimg 1.5.2: C++ template image processing toolkit
-media-libs/clutter 1.22.4 1.24.2: Clutter is a library for creating graphical user interfaces
+media-libs/clutter 1.24.2 1.26.0: Clutter is a library for creating graphical user interfaces
 media-libs/clutter-gst 2.0.16 2.0.18 3.0.16 3.0.18: GStreamer integration library for Clutter
 media-libs/clutter-gtk 1.6.2 1.6.6 1.6.6-r1: Library for embedding a Clutter canvas (stage) in GTK+
 media-libs/cogl 1.20.0 1.22.0 1.22.0-r1 1.22.0-r2: A library for using 3D graphics hardware to draw pretty pictures
@@ -12442,7 +12442,7 @@ media-libs/glu 9.0.0-r1 9999: The OpenGL Utility Library
 media-libs/glyr 1.0.5 1.0.7: A music related metadata searchengine, both with commandline interface and C API
 media-libs/gmtk 1.0.8 1.0.9: GTK+ widget and function libraries for gnome-mplayer
 media-libs/gnonlin 0.10.17 1.4.0: Gnonlin is a set of GStreamer elements to ease the creation of non-linear multimedia editors
-media-libs/grilo 0.2.12 0.2.14 0.2.15: A framework for easy media discovery and browsing
+media-libs/grilo 0.2.15 0.3.0 0.3.1: A framework for easy media discovery and browsing
 media-libs/gsound 1.0.1 1.0.2: Thin GObject wrapper around the libcanberra sound event library
 media-libs/gst-plugins-bad 0.10.23-r3 1.4.5 1.6.3: Less plugins for GStreamer
 media-libs/gst-plugins-base 0.10.36-r2 1.4.5 1.6.1 1.6.2 1.6.3: Basepack of plugins for gstreamer
@@ -12799,7 +12799,7 @@ media-plugins/gmpc-playlistsort 0.20.0: This plugin adds a dialog to sort the cu
 media-plugins/gmpc-shout 0.20.0: This plugin calls ogg123 and points it at mpd's shoutstream
 media-plugins/gmpc-tagedit 11.8.16: This plugin allows you to edit tags in your library
 media-plugins/gmpc-wikipedia 11.8.16: This plugin shows the Wikipedia article about the currently playing artist
-media-plugins/grilo-plugins 0.2.12 0.2.14 0.2.16 0.2.17: A framework for easy media discovery and browsing
+media-plugins/grilo-plugins 0.2.12 0.2.17 0.3.2: A framework for easy media discovery and browsing
 media-plugins/gst-plugins-a52dec 0.10.19-r1 1.4.5 1.6.1 1.6.2 1.6.3: plugin for gstreamer
 media-plugins/gst-plugins-alsa 0.10.36-r1: plugin for gstreamer
 media-plugins/gst-plugins-amr 0.10.19-r1 1.4.5 1.6.1 1.6.2 1.6.3: GStreamer plugin for AMRNB/AMRWB codec
@@ -18097,7 +18097,7 @@ x11-libs/fltk 1.3.3-r3 1.3.9999: C++ user interface toolkit for X and OpenGL
 x11-libs/fox 1.6.49 1.6.50 1.7.49 1.7.53 1.7.54: C++ based Toolkit for developing Graphical User Interfaces easily and effectively
 x11-libs/fox-wrapper 2 3: wrapper for fox-config to manage multiple versions
 x11-libs/fxscintilla 3.3.5: A free source code editing component for the FOX-Toolkit
-x11-libs/gdk-pixbuf 2.32.1 2.32.3: Image loading library for GTK+
+x11-libs/gdk-pixbuf 2.32.1 2.32.3 2.34.0: Image loading library for GTK+
 x11-libs/gksu 2.0.2-r1: A gtk+ frontend for libgksu
 x11-libs/gl2ps 1.3.8: OpenGL to PostScript printing library
 x11-libs/glamor 0.6.0 0.6.0-r1: OpenGL based 2D rendering acceleration library
@@ -18950,9 +18950,9 @@ x11-wm/lumina 0.8.8_p1 9999: Lumina desktop environment
 x11-wm/lwm 1.2.1 1.2.2 1.2.3: The ultimate lightweight window manager
 x11-wm/marco 1.8.2 1.10.3: MATE default window manager
 x11-wm/matwm2 0.1.1: Simple EWMH compatible window manager with titlebars and frames
-x11-wm/muffin 2.8.4 2.8.5: Compositing window manager forked from Mutter for use with Cinnamon
+x11-wm/muffin 2.8.5 3.0.5: Compositing window manager forked from Mutter for use with Cinnamon
 x11-wm/musca 0.9.24_p20100226-r3 0.9.24_p20100226-r4: A simple dynamic window manager for X, with features nicked from ratpoison and dwm
-x11-wm/mutter 3.16.4 3.18.2 3.18.2-r1 3.18.3 3.18.4: GNOME 3 compositing window manager based on Clutter
+x11-wm/mutter 3.18.4 3.20.2: GNOME 3 compositing window manager based on Clutter
 x11-wm/notion 3_p2013030200 3_p2015061300-r1 9999: Notion is a tiling, tabbed window manager for the X window system
 x11-wm/openbox 3.5.2-r1 3.6 3.6.1 9999: A standards compliant, fast, light-weight, extensible window manager
 x11-wm/oroborus 2.0.20: Small and fast window manager
