@@ -16,7 +16,7 @@ SRC_URI="
 LICENSE="Vidyo-EULA"
 SLOT="0"
 RESTRICT="mirror strip"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 S="${WORKDIR}"
