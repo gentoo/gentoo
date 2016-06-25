@@ -5886,7 +5886,7 @@ dev-perl/MP4-Info 1.130.0: Fetch info from MPEG-4 files (.mp4, .m4a, .m4p, .3gp)
 dev-perl/MRO-Compat 0.120.0-r1: Lets you build groups of accessors
 dev-perl/Mac-Pasteboard 0.3.0: Manipulate Mac OS X clipboards/pasteboards
 dev-perl/Mail-Audit 2.228.0-r1: Mail sorting/delivery module for Perl
-dev-perl/Mail-Box 2.109.0-r1 2.118.0: Mail folder manager and MUA backend
+dev-perl/Mail-Box 2.118.0: Mail folder manager and MUA backend
 dev-perl/Mail-Builder 2.90.0: Easily create plaintext/html e-mail messages with attachments and inline images
 dev-perl/Mail-Builder-Simple 0.160.0-r1: Send UTF-8 HTML and text email using templates
 dev-perl/Mail-DKIM 0.400.0: Mail::DKIM - Signs/verifies Internet mail using DKIM message signatures
@@ -5920,7 +5920,7 @@ dev-perl/Math-NumberCruncher 5.0.0: Collection of useful math-related functions
 dev-perl/Math-Pari 2.10.806.50-r1 2.10.808: Perl interface to PARI
 dev-perl/Math-PlanePath 122.0.0 123.0.0: Mathematical paths through the 2-D plane
 dev-perl/Math-Prime-XS 0.260.0: Detect and calculate prime numbers with deterministic tests
-dev-perl/Math-Random 0.710.0-r1 0.720.0: Random Number Generators
+dev-perl/Math-Random 0.720.0: Random Number Generators
 dev-perl/Math-Random-ISAAC 1.4.0-r1: Perl interface to the ISAAC PRNG algorithm
 dev-perl/Math-Random-ISAAC-XS 1.4.0-r1: C implementation of the ISAAC PRNG algorithm
 dev-perl/Math-Random-MT 1.170.0: The Mersenne Twister PRNG
@@ -5950,7 +5950,7 @@ dev-perl/Module-Runtime 0.14.0: Runtime module handling
 dev-perl/Module-Runtime-Conflicts 0.2.0: Provide information on conflicts for Module::Runtime
 dev-perl/Module-ScanDeps 1.200.0: Recursively scan Perl code for dependencies
 dev-perl/Module-Signature 0.790.0: Module signature file manipulation
-dev-perl/Module-Starter 1.600.0-r1 1.710.0: A simple starter kit for any module
+dev-perl/Module-Starter 1.710.0: A simple starter kit for any module
 dev-perl/Module-Util 1.90.0: Module name tools and transformations
 dev-perl/Module-Versions-Report 1.60.0-r1: Report versions of all modules in memory
 dev-perl/MogileFS-Client 1.170.0-r1: Client library for the MogileFS distributed file system
@@ -6075,7 +6075,7 @@ dev-perl/ORLite 1.980.0-r1: Extremely light weight SQLite-specific ORM
 dev-perl/ORLite-Migrate 1.100.0-r1: Extremely light weight SQLite-specific schema migration
 dev-perl/Object-Enum 0.75.0: Replacement for if ($foo eq 'bar')
 dev-perl/Object-MultiType 0.50.0: Perl Objects as Hash, Array, Scalar, Code and Glob at the same time
-dev-perl/Object-Realize-Later 0.180.0-r1 0.190.0: Delayed creation of objects
+dev-perl/Object-Realize-Later 0.190.0: Delayed creation of objects
 dev-perl/Ogg-Vorbis-Header 0.30.0-r1: An object-oriented interface to Ogg Vorbis information and comment fields
 dev-perl/Ogg-Vorbis-Header-PurePerl 1.0.0-r1: Object-oriented interface to Ogg Vorbis information and comment fields
 dev-perl/Olson-Abbreviations 0.40.0: Globally unique timezones abbreviation handling
@@ -6153,7 +6153,7 @@ dev-perl/Perlbal 1.800.0-r1: Reverse-proxy load balancer and webserver
 dev-perl/Perlbal-XS-HTTPHeaders 0.200.0-r1: XS acceleration for Perlbal header processing
 dev-perl/PlRPC 0.202.0-r2: The Perl RPC Module
 dev-perl/Plack 1.3.900: Perl Superglue for Web frameworks and Web Servers (PSGI toolkit)
-dev-perl/Plucene 1.250.0-r1 1.250.0-r2: Plucene - the Perl lucene port
+dev-perl/Plucene 1.250.0-r2: Plucene - the Perl lucene port
 dev-perl/Pod-Abstract 0.200.0-r1: Abstract document tree for Perl POD documents
 dev-perl/Pod-Coverage 0.230.0-r1: Checks if the documentation of a module is comprehensive
 dev-perl/Pod-LaTeX 0.610.0: Convert Pod data to formatted LaTeX
@@ -6200,7 +6200,7 @@ dev-perl/SGMLSpm 1.03-r7 1.1-r1: Perl library for parsing the output of nsgmls
 dev-perl/SNMP_Session 1.13-r2: A SNMP Perl Module
 dev-perl/SOAP-Lite 1.040.0-r1 1.190.0: Lightweight interface to the SOAP protocol both on client and server side
 dev-perl/SOAP-WSDL 3.3.0: SOAP with WSDL support
-dev-perl/SQL-Abstract 1.780.0 1.810.0: Generate SQL from Perl data structures
+dev-perl/SQL-Abstract 1.810.0: Generate SQL from Perl data structures
 dev-perl/SQL-Abstract-Limit 0.141.0-r1: Portable LIMIT emulation
 dev-perl/SQL-Statement 1.405.0-r1 1.409.0 1.410.0: Small SQL parser and engine
 dev-perl/SQL-Translator 0.110.210: Manipulate structured data definitions (SQL and more)
@@ -6221,9 +6221,9 @@ dev-perl/Server-Starter 0.320.0: A superdaemon for hot-deploying server programs
 dev-perl/Set-Crontab 1.30.0: Expand crontab(5)-style integer lists
 dev-perl/Set-Infinite 0.650.0-r1: Sets of intervals
 dev-perl/Set-IntSpan 1.190.0-r1: Manages sets of integers
-dev-perl/Set-Object 1.310.0 1.350.0: set of objects and strings
+dev-perl/Set-Object 1.350.0: set of objects and strings
 dev-perl/Set-Scalar 1.290.0: Scalar set operations
-dev-perl/Shell 0.720.0 0.730.0: Run shell commands transparently within perl
+dev-perl/Shell 0.730.0: Run shell commands transparently within perl
 dev-perl/Shell-EnvImporter 1.70.0-r2: Import environment variable changes from external commands or shell scripts
 dev-perl/ShipIt 0.600.0: Software Release Tool
 dev-perl/Signal-Mask 0.8.0: Signal masks made easy
@@ -6244,7 +6244,7 @@ dev-perl/Spreadsheet-ParseExcel 0.650.0: Read information from an Excel file
 dev-perl/Spreadsheet-WriteExcel 2.400.0: Write cross-platform Excel binary file
 dev-perl/Starlet 0.290.0: A simple, high-performance PSGI/Plack HTTP server
 dev-perl/Stat-lsMode 0.500.0-r1: The Perl Stat-lsMode Module
-dev-perl/Statistics-Descriptive 3.60.300-r1 3.61.200: Module of basic descriptive statistical functions
+dev-perl/Statistics-Descriptive 3.61.200: Module of basic descriptive statistical functions
 dev-perl/Statistics-Descriptive-Discrete 0.70.0-r1: Statistics-Descriptive-Discrete module
 dev-perl/Statistics-Distributions 1.02: Perl module for calculating critical values
 dev-perl/Statistics-TTest 1.1.0: module to compute the confidence interval
@@ -6318,7 +6318,7 @@ dev-perl/Test-Command-Simple 0.50.0: Test external commands (nearly) as easily a
 dev-perl/Test-Deep 1.120.0: Extremely flexible deep comparison testing
 dev-perl/Test-Dependencies 0.120.0: Ensure that your Makefile.PL specifies all module dependencies
 dev-perl/Test-Differences 0.610.0-r1 0.630.0 0.640.0: Test strings and data structures and show differences if not ok
-dev-perl/Test-DistManifest 1.12.0-r1 1.14.0: Author test that validates a package MANIFEST
+dev-perl/Test-DistManifest 1.14.0: Author test that validates a package MANIFEST
 dev-perl/Test-Distribution 2.0.0-r1: perform tests on all modules of a distribution
 dev-perl/Test-EOL 1.600.0: Check the correct line endings in your project
 dev-perl/Test-Exception 0.430.0: Test functions for exception based code
@@ -6349,7 +6349,7 @@ dev-perl/Test-Portability-Files 0.60.0-r1: Check file names portability
 dev-perl/Test-Requires 0.60.0-r1 0.80.0 0.100.0: Checks to see if the module can be loaded
 dev-perl/Test-Script 1.70.0-r1 1.100.0 1.120.0: Cross-platform basic tests for scripts
 dev-perl/Test-SharedFork 0.210.0-r1 0.330.0 0.350.0: fork test
-dev-perl/Test-Spec 0.470.0 0.510.0: Write tests in a declarative specification style
+dev-perl/Test-Spec 0.510.0: Write tests in a declarative specification style
 dev-perl/Test-SubCalls 1.90.0-r1: Track the number of times subs are called
 dev-perl/Test-TCP 2.60.0 2.160.0: Testing TCP program
 dev-perl/Test-Taint 1.60.0-r1: Tools to test taintedness
