@@ -12,7 +12,7 @@ inherit perl-module
 DESCRIPTION="A framework for creating multitasking programs in Perl"
 
 SLOT="0"
-KEYWORDS="amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc x86"
 IUSE="ipv6 libwww ncurses tk test"
 
 RDEPEND="
