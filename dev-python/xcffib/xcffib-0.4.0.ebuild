@@ -14,7 +14,7 @@ HOMEPAGE="https://github.com/tych0/xcffib"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="test"
 
 COMMON_DEPEND="x11-libs/libxcb"
