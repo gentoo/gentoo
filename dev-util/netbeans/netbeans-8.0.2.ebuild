@@ -131,14 +131,14 @@ pkg_setup() {
 		lang=${lang/-/_}
 
 		case ${lang} in
-			ar) lang="ar_EG,ar_SA" ;;
-			es) lang="es,es_CO"    ;;
-			gl) lang="gl_ES"       ;;
-			hi) lang="hi_IN"       ;;
-			id) lang="in_ID"       ;;
-			nl) lang="nl_BE,nl_NL" ;;
-			ta) lang="ta_IN"       ;;
-			tl) lang="fil_PH"      ;;
+			ar)  lang="ar_EG,ar_SA" ;;
+			es)  lang="es,es_CO"    ;;
+			fil) lang="fil_PH"      ;;
+			gl)  lang="gl_ES"       ;;
+			hi)  lang="hi_IN"       ;;
+			id)  lang="in_ID"       ;;
+			nl)  lang="nl_BE,nl_NL" ;;
+			ta)  lang="ta_IN"       ;;
 		esac
 
 		if use ${lingua} ; then
@@ -248,10 +248,5 @@ pkg_postinst() {
 	if use l10n_nl ; then
 		einfo
 		einfo "You selected Dutch locale so you can choose either nl:BE or nl:NL variant."
-	fi
-
-	if use l10n_tl ; then
-		einfo
-		einfo "You selected Tagalog locale which has for Filipino locale code fil:PH in Netbeans."
 	fi
 }
