@@ -78,7 +78,9 @@ multilib_src_compile() {
 	if multilib_is_native_abi ; then
 		emake
 	else
-		emake -C src libmagic.la
+		cd src
+		emake magic.h #586444
+		emake libmagic.la
 	fi
 }
 
