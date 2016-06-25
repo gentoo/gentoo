@@ -22,7 +22,7 @@ SRC_URI="${SRC_URI}
 
 LICENSE="LGPL-2+"
 SLOT="2"
-IUSE="dbus fam kernel_linux +mime selinux static-libs systemtap test utils xattr"
+IUSE="dbus debug fam kernel_linux +mime selinux static-libs systemtap test utils xattr"
 REQUIRED_USE="
 	utils? ( ${PYTHON_REQUIRED_USE} )
 	test? ( ${PYTHON_REQUIRED_USE} )
@@ -164,6 +164,7 @@ multilib_src_configure() {
 
 	# libelf used only by the gresource bin
 	ECONF_SOURCE="${S}" gnome2_src_configure ${myconf} \
+		$(usex debug --enable-debug=yes ' ') \
 		$(use_enable xattr) \
 		$(use_enable fam) \
 		$(use_enable selinux) \
