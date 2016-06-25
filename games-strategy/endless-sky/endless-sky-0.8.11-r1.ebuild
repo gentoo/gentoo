@@ -12,7 +12,7 @@ SRC_URI="https://github.com/endless-sky/endless-sky/archive/v${PV}.tar.gz -> ${P
 
 LICENSE="CC-BY-SA-4.0 CC-BY-SA-3.0 GPL-3+ public-domain"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 RDEPEND="media-libs/glew
 	media-libs/libsdl2
