@@ -4,11 +4,11 @@ DESCRIPTION=Objective CAML interface for OpenGL
 EAPI=5
 HOMEPAGE=http://wwwfun.kurims.kyoto-u.ac.jp/soft/olabl/lablgl.html
 IUSE=doc glut +ocamlopt tk
-KEYWORDS=~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux
+KEYWORDS=alpha amd64 hppa ~ia64 ppc ppc64 ~sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux
 LICENSE=BSD
 RDEPEND=>=dev-lang/ocaml-3.10.2:=[ocamlopt?] x11-libs/libXext x11-libs/libXmu x11-libs/libX11 virtual/opengl virtual/glu dev-ml/camlp4:= glut? ( media-libs/freeglut ) tk? ( >=dev-lang/tcl-8.3:0= >=dev-lang/tk-8.3:0= dev-ml/labltk:= )
 SLOT=0/1.05
 SRC_URI=http://wwwfun.kurims.kyoto-u.ac.jp/soft/olabl/dist/lablgl-1.05.tar.gz
 _eclass_exported_funcs=src_configure:- src_compile:- src_install:-
 _eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	c9d9187f4caa4026a0ceddd8dfceb3c1
-_md5_=fae76782037d6226373b8ed26a6e8eb7
+_md5_=06887bb138c879722be7da8336bb1a61

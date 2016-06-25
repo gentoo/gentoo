@@ -5124,7 +5124,7 @@ dev-ml/ocaml-text 0.8: Library for dealing with 'text'
 dev-ml/ocaml-uri 1.9.1-r1 1.9.2: RFC3986 URI parsing library for OCaml
 dev-ml/ocamlbuild 0.9.2: OCamlbuild
 dev-ml/ocamldap 2.2: an implementation of the Light Weight Directory Access Protocol
-dev-ml/ocamldsort 0.16.0 0.16.0-r1: A dependency sorter for OCaml source files
+dev-ml/ocamldsort 0.16.0-r1: A dependency sorter for OCaml source files
 dev-ml/ocamlgraph 0.99b 1.8.5 1.8.6 1.8.7: O'Caml Graph library
 dev-ml/ocamlgsl 0.6.0: OCaml bindings for the GSL library
 dev-ml/ocamlify 0.0.2: OCamlify allows to create OCaml source code by including whole file into OCaml string or string list
@@ -5147,7 +5147,7 @@ dev-ml/parmap 1.0_rc7 1.0_rc7-r1: Library allowing to exploit multicore architec
 dev-ml/pcre-ocaml 6.2.5 7.1.6 7.2.2 7.2.3: Perl Compatibility Regular Expressions for O'Caml
 dev-ml/pgocaml 2.2 2.3: PG'OCaml is a set of OCaml bindings for the PostgreSQL database
 dev-ml/pipebang 113.00.00: Syntax extension to transform x |! f into f x
-dev-ml/pomap 3.0.5 3.0.5-r1: Partially Ordered Map ADT for O'Caml
+dev-ml/pomap 3.0.5-r1: Partially Ordered Map ADT for O'Caml
 dev-ml/postgresql-ocaml 2.0.5 3.2.2 4.0.1: A package for ocaml that provides access to PostgreSQL databases
 dev-ml/ppx_assert 113.24.00 113.33.00: Assert-like extension nodes that raise useful errors on failure
 dev-ml/ppx_bench 113.24.00 113.33.00: Syntax extension for writing in-line benchmarks in ocaml code
@@ -13716,7 +13716,7 @@ net-analyzer/dnstracer 1.9-r1: Determines where a given nameserver gets its info
 net-analyzer/dosdetector 20060621 20060621-r1: Tool to analyze and detect suspicious traffic from IP and alert about it
 net-analyzer/driftnet 0.1.6_p20090401 0.1.6_p20090401-r1: A program which listens to network traffic and picks out images from TCP streams it observes
 net-analyzer/dsniff 2.4_beta1-r4 2.4_beta1-r7 2.4_beta1-r8: A collection of tools for network auditing and penetration testing
-net-analyzer/echoping 6.0.2_p434 6.0.2_p434-r2: Small program to test performances of remote servers
+net-analyzer/echoping 6.0.2_p434-r2: Small program to test performances of remote servers
 net-analyzer/egressor 1.0-r2: tool for checking router configuration
 net-analyzer/etherape 0.9.13 0.9.14: A graphical network monitor for Unix modeled after etherman
 net-analyzer/ethloop 10-r3: Local simulator for testing Linux QoS disciplines
@@ -17016,7 +17016,7 @@ sys-devel/gettext 0.19.4 0.19.6-r1 0.19.7 0.19.8.1: GNU locale utilities
 sys-devel/gnuconfig 20150727 20151214 20160402 99999999: Updated config.sub and config.guess file from GNU
 sys-devel/heirloom-devtools 070527-r1 999999: Original UNIX development tools
 sys-devel/icecream 0.9.7-r1 1.0.0-r1: icecc is a program for distributed compiling of C(++) code across several machines; based on distcc
-sys-devel/kgcc64 3.4.6 4.1.2 4.2.4 4.3.5 4.4.5 4.4.6 4.5.3 4.5.4 4.6.3 4.6.4 4.7.3 4.7.4 4.8.1 4.8.2 4.8.3 4.8.5 4.9.1 4.9.2 4.9.3 5.3.0: 64bit kernel compiler
+sys-devel/kgcc64 3.4.6 4.1.2 4.2.4 4.3.5 4.4.5 4.4.6 4.5.3 4.5.4 4.6.3 4.6.4 4.7.3 4.7.4 4.8.1 4.8.2 4.8.3 4.8.5 4.9.1 4.9.2 4.9.3 5.3.0 5.4.0: 64bit kernel compiler
 sys-devel/libtool 2.4.2-r1 2.4.4 2.4.5 2.4.6 2.4.6-r1 2.4.6-r2 9999: A shared library tool for developers
 sys-devel/llvm 3.4.2 3.5.0 3.5.2 3.6.2 3.7.1-r2 3.8.0-r2 9999: Low Level Virtual Machine
 sys-devel/m4 1.4.16 1.4.17: GNU macro processor
@@ -17299,7 +17299,7 @@ sys-libs/libfaketime 0.9.6-r1: Report faked system time to programs
 sys-libs/libfreevec 1.0.4: Altivec enabled libc memory function
 sys-libs/libhugetlbfs 2.18 2.19 2.19-r1 2.20: easy hugepage access
 sys-libs/libhx 3.16 3.22 3.22-r1: Platform independent library providing basic system functions
-sys-libs/libieee1284 0.2.11-r3: Library to query devices using IEEE1284
+sys-libs/libieee1284 0.2.11-r3 0.2.11-r4: Library to query devices using IEEE1284
 sys-libs/libixp 0.5_p20110208-r3: A stand-alone client/server 9P library including ixpc client
 sys-libs/libkudzu 1.2.57.1: Red Hat Hardware detection tools
 sys-libs/libmath++ 0.0.4-r1: template based math library, written in C++, for symbolic and numeric calculus applications
