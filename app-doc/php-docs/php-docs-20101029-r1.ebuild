@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -16,26 +16,26 @@ IUSE=""
 
 RESTRICT="strip binchecks"
 
-LANGS="en de es fa fr ja pl pt_BR ro tr"
+LANGS="en de es fa fr ja pl pt-BR ro tr"
 for lang in ${LANGS} ; do
-	IUSE="${IUSE} linguas_${lang}"
-	SRC_URI="${SRC_URI}
-		linguas_${lang}? ( http://olemarkus.org/~olemarkus/gentoo/${MY_PN}_${lang}-${PV}.tar.gz )"
+	IUSE+=" l10n_${lang}"
+	SRC_URI+=" l10n_${lang}? ( http://olemarkus.org/~olemarkus/gentoo/${MY_PN}_${lang/-/_}-${PV}.tar.gz )"
 done
 
 REQUIRED_USE="|| ( ${IUSE} )"
 
 # Set English to default
-IUSE="${IUSE/linguas_en/+linguas_en}"
+IUSE="${IUSE/l10n_en/+l10n_en}"
 
 S=${WORKDIR}
 
 src_unpack() {
 	for lang in ${LANGS} ; do
-		if use linguas_${lang} ; then
-			mkdir ${lang}
-			pushd ${lang} >/dev/null
-			unpack ${MY_PN}_${lang}-${PV}.tar.gz || die "unpack failed on ${lang}"
+		if use l10n_${lang} ; then
+			mkdir ${lang/-/_}
+			pushd ${lang/-/_} >/dev/null
+			unpack ${MY_PN}_${lang/-/_}-${PV}.tar.gz \
+				|| die "unpack failed on ${lang}"
 			popd >/dev/null
 		fi
 	done
@@ -50,9 +50,10 @@ src_install() {
 	dodir /usr/share/doc/${PF}
 
 	for lang in ${LANGS} ; do
-		if use linguas_${lang} ; then
+		if use l10n_${lang} ; then
 			ebegin "Installing ${lang} manual, will take a while"
-			cp -R "${WORKDIR}"/${lang} "${ED}"/usr/share/doc/${PF} || die "cp failed on ${lang}"
+			cp -R "${WORKDIR}"/${lang/-/_} "${ED}"/usr/share/doc/${PF} \
+				|| die "cp failed on ${lang}"
 			eend $?
 		fi
 	done
