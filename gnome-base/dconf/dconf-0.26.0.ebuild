@@ -49,10 +49,6 @@ src_install() {
 	echo 'CONFIG_PROTECT_MASK="/etc/dconf"' >> 51dconf
 	echo 'GSETTINGS_BACKEND="dconf"' >> 51dconf
 	doenvd 51dconf
-
-	# Install bash-completion file properly to the system
-	rm -rv "${ED}usr/share/bash-completion" || die
-	dobashcomp "${S}/bin/completion/dconf"
 }
 
 pkg_postinst() {
