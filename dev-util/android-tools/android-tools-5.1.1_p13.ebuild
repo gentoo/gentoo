@@ -21,7 +21,7 @@ mirror://gentoo/${MY_P}-f2fs-tools.tar.gz"
 # The entire source code is Apache-2.0, except for fastboot which is BSD-2.
 LICENSE="Apache-2.0 BSD-2"
 SLOT="0"
-KEYWORDS="amd64 ~x86 ~arm-linux ~x86-linux"
+KEYWORDS="amd64 x86 ~arm-linux ~x86-linux"
 IUSE="libressl"
 
 RDEPEND="sys-libs/zlib:=
