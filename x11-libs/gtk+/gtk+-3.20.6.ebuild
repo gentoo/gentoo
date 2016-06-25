@@ -130,7 +130,7 @@ src_prepare() {
 	fi
 
 	# gtk-update-icon-cache is installed by dev-util/gtk-update-icon-cache
-        eapply "${FILESDIR}"/${PN}-3.16.2-remove_update-icon-cache.patch
+	eapply "${FILESDIR}"/${PN}-3.16.2-remove_update-icon-cache.patch
 
 	eautoreconf
 	gnome2_src_prepare
@@ -183,6 +183,7 @@ multilib_src_install() {
 multilib_src_install_all() {
 	insinto /etc/gtk-3.0
 	doins "${FILESDIR}"/settings.ini
+	einstalldocs
 }
 
 pkg_preinst() {
