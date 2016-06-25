@@ -17,7 +17,7 @@ SRC_URI="
 		linguas_fr? ( mirror://sourceforge/csound/${MY_P}_manual-fr_html.zip )
 	)"
 
-LICENSE="FDL-1.3"
+LICENSE="FDL-1.2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="html"
