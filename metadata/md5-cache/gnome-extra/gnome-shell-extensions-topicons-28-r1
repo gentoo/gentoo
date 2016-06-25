@@ -1,0 +1,13 @@
+DEFINED_PHASES=install postinst prepare unpack
+DEPEND=app-arch/xz-utils
+DESCRIPTION=Shows legacy tray icons on top
+EAPI=6
+HOMEPAGE=https://extensions.gnome.org/extension/495/topicons/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2+
+RDEPEND=app-eselect/eselect-gnome-shell-extensions >=gnome-base/gnome-shell-3.10
+SLOT=0
+SRC_URI=http://94.247.144.115/repo/topicons/snapshot/topicons-28.tar.xz -> gnome-shell-extensions-topicons-28.tar.xz
+_eclass_exported_funcs=pkg_postinst:- src_unpack:vcs-snapshot src_prepare:- src_install:-
+_eclasses_=vcs-snapshot	b45be87e7012be0af8424e8a5644da1d
+_md5_=f6bfca25eefc51f78b317043f62c0cf0
