@@ -10,7 +10,7 @@ SRC_URI="http://pessimization.com/software/wyrd/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ppc x86"
 IUSE="unicode"
 
 RDEPEND="
