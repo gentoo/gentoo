@@ -7,7 +7,6 @@
 	</maintainer>
 	<use>
 		<flag name="dvi">Enable the built-in DVI viewer</flag>
-		<flag name="libsecret">Enable support for credentials store</flag>
 		<flag name="nautilus">Enable property page extension in <pkg>gnome-base/nautilus</pkg></flag>
 		<flag name="t1lib">Enable the Type-1 fonts for the built-in DVI viewer
 			(<pkg>media-libs/t1lib</pkg>)</flag>
