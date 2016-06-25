@@ -15,12 +15,12 @@ SRC_URI="http://fcron.free.fr/archives/${MY_P}.src.tar.gz"
 
 LICENSE="GPL-2"
 KEYWORDS="amd64 arm hppa ia64 ~mips ppc ~ppc64 sparc x86 ~x86-fbsd"
-IUSE="debug pam selinux linguas_fr +mta +system-crontab readline"
+IUSE="debug pam selinux l10n_fr +mta +system-crontab readline"
 
 DEPEND="selinux? ( sys-libs/libselinux )
 	mta? ( virtual/mta )
 	pam? ( virtual/pam )
-	readline? ( sys-libs/readline )"
+	readline? ( sys-libs/readline:= )"
 
 RDEPEND="${DEPEND}
 	>=app-misc/editor-wrapper-3
@@ -164,7 +164,7 @@ src_install() {
 	doman doc/en/man/*.{1,5,8}
 
 	for lang in fr; do
-		use linguas_${lang} || continue
+		use l10n_${lang} || continue
 
 		doman -i18n=${lang} doc/${lang}/man/*.{1,5,8} || die
 		docinto html/${lang}
