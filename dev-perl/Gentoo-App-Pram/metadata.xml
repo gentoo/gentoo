@@ -12,6 +12,6 @@
   <upstream>
     <remote-id type="cpan">Gentoo-App-Pram</remote-id>
     <remote-id type="cpan-module">Gentoo::App::Pram</remote-id>
-    <remote-id type="github">monsieur/Gentoo-App-Pram</remote-id>
+    <remote-id type="github">monsieurp/Gentoo-App-Pram</remote-id>
   </upstream>
 </pkgmetadata>
