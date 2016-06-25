@@ -4,7 +4,7 @@
 
 EAPI=5
 
-PLOCALES="ar ca cs de el en es fa fr he hu it ja ko nb nl pl pt_BR pt ru sr sv tr zh_CN zh_TW"
+PLOCALES="ar ca cs da_DK de el en es fa fr hr hu it ja ko ms_MY nb nl pl pt_BR pt ro_RO ru sr sv tr zh_CN zh_TW"
 PLOCALE_BACKUP="en"
 WX_GTK_VER="3.0"
 
@@ -161,7 +161,7 @@ src_configure() {
 		$( cmake-utils_use_enable evdev EVDEV )
 		$( cmake-utils_use_enable lto LTO )
 		$( cmake-utils_use_enable pch PCH )
-		$( cmake-utils_use_enable qt5 QT )
+		$( cmake-utils_use_enable qt5 QT2 )
 		$( cmake-utils_use_enable sdl SDL )
 		$( cmake-utils_use_use egl EGL )
 		$( cmake-utils_use_use upnp UPNP )
