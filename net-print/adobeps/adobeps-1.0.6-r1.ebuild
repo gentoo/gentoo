@@ -20,17 +20,17 @@ IUSE="cups"
 DEPEND="app-arch/cabextract"
 RDEPEND="cups? ( >=net-print/cups-1.2 )"
 
-IUSE_LINGUAS=( en da de es fi fr it ja ko nl no pt_BR sv zh_CN )
+IUSE_L10N=( en da de es fi fr it ja ko nl no pt-BR sv zh-CN zh-TW )
 IUSE_FILES=( winsteng winstDan winstger winstspa winstfin winstfre winstita
-	winstjpn winstkor winstdut winstnor winstbrz winstswe Winstchs ) # winstcht
+	winstjpn winstkor winstdut winstnor winstbrz winstswe Winstchs winstcht )
 
 IUSE_LANGS=""
 IUSE_CLOSE=""
-for ((X=0; X < ${#IUSE_LINGUAS[*]}; X++)); do
-	IUSE="${IUSE} linguas_${IUSE_LINGUAS[X]}"
-	SRC_URI="${SRC_URI} linguas_${IUSE_LINGUAS[X]}? ( ${SRC_URI_BASE}/${IUSE_FILES[X]}.exe )"
-	IUSE_LANGS="${IUSE_LANGS} !linguas_${IUSE_LINGUAS[X]}? ("
-	IUSE_CLOSE="${IUSE_CLOSE} )"
+for (( X=0; X < ${#IUSE_L10N[@]}; X++ )); do
+	IUSE+=" l10n_${IUSE_L10N[X]}"
+	SRC_URI+=" l10n_${IUSE_L10N[X]}? ( ${SRC_URI_BASE}/${IUSE_FILES[X]}.exe )"
+	IUSE_LANGS+=" !l10n_${IUSE_L10N[X]}? ("
+	IUSE_CLOSE+=" )"
 done
 SRC_URI="${SRC_URI} ${IUSE_LANGS} ${SRC_URI_BASE}/${IUSE_FILES[0]}.exe${IUSE_CLOSE}"
 
@@ -39,14 +39,16 @@ S="${WORKDIR}"
 pkg_setup() {
 	local X L=""
 	ADOBEPS_LANG=""
-	for X in ${LINGUAS}; do
-		if [[ " ${IUSE_LINGUAS[*]} " =~ " ${X} " ]]; then
-			[ -z "${ADOBEPS_LANG}" ] && ADOBEPS_LANG="${X}"
-			L="${L} ${X}"
+	for X in "${IUSE_L10N[@]}"; do
+		if use l10n_"${X}"; then
+			L+=" ${X}"
+			[[ -z ${ADOBEPS_LANG} ]] && ADOBEPS_LANG="${X}"
 		fi
 	done
-	if [ -z "${ADOBEPS_LANG}" ]; then
-		L="${IUSE_LINGUAS[0]}"; ADOBEPS_LANG="${L}"
+	# default to English if no L10N flags are set
+	if [[ -z ${ADOBEPS_LANG} ]]; then
+		L="en"
+		ADOBEPS_LANG="en"
 	fi
 	elog "Selected languages:" ${L}
 	use cups && elog "CUPS drivers language: ${ADOBEPS_LANG}"
@@ -54,10 +56,10 @@ pkg_setup() {
 
 src_unpack() {
 	local X L
-	for ((X=0; X < ${#IUSE_LINGUAS[*]}; X++)); do
-		L="${IUSE_LINGUAS[X]}"
-		if use linguas_${L} || [ "${L}" = "${ADOBEPS_LANG}" ]; then
-			cabextract -Lq -d "${S}/${IUSE_LINGUAS[X]}" \
+	for (( X=0; X < ${#IUSE_L10N[@]}; X++ )); do
+		L="${IUSE_L10N[X]}"
+		if use l10n_"${L}" || [[ ${L} = "${ADOBEPS_LANG}" ]]; then
+			cabextract -Lq -d "${S}/${IUSE_L10N[X]}" \
 				"${DISTDIR}/${IUSE_FILES[X]}.exe" || die "unpack failed"
 		fi
 	done
@@ -65,10 +67,10 @@ src_unpack() {
 
 src_install() {
 	local X
-	for X in ${IUSE_LINGUAS[*]}; do
-		if use linguas_${X} || [ "${X}" = "${ADOBEPS_LANG}" ]; then
+	for X in "${IUSE_L10N[@]}"; do
+		if use l10n_"${X}" || [[ ${X} = "${ADOBEPS_LANG}" ]]; then
 			# files and filenames taken from cupsaddsmb man-page
-			insinto "/usr/share/${PN}/${X}"
+			insinto "/usr/share/${PN}/${X/-/_}"
 			# Windows 2000 and higher
 			doins ${X}/winxp/{ps5ui.dll,pscript.hlp,pscript.ntf,pscript5.dll}
 			# Windows 95, 98, and Me
@@ -84,7 +86,8 @@ src_install() {
 		dodir /usr/share/cups/drivers
 		for X in ps5ui.dll pscript.hlp pscript.ntf pscript5.dll \
 			ADFONTS.MFM ADOBEPS4.DRV ADOBEPS4.HLP ICONLIB.DLL PSMON.DLL; do
-			dosym "../../${PN}/${ADOBEPS_LANG}/${X}" "/usr/share/cups/drivers/${X}"
+			dosym "../../${PN}/${ADOBEPS_LANG/-/_}/${X}" \
+				"/usr/share/cups/drivers/${X}"
 		done
 	fi
 }

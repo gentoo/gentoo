@@ -30,11 +30,6 @@
 
 #--- END OF EXAMPLES ---
 
-# Aaron Bauman <bman@gentoo.org> (25 Jun 2016)
-# Unpatched security vulnerabilities per bugs
-# 509354 and 519216
-dev-java/smack
-
 # Michał Górny <mgorny@gentoo.org> (23 Jun 2016)
 # Integrated in media-video/bashnapi. Removal in 30 days.
 media-video/subotage
