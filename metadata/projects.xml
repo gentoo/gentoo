@@ -653,6 +653,10 @@
       <name>Jorge Manuel B. S. Vicetto</name>
     </member>
     <member>
+      <email>kensington@gentoo.org</email>
+      <name>Michael Palimaka</name>
+    </member>
+    <member>
       <email>keytoaster@gentoo.org</email>
       <name>Tobias Heinlein</name>
     </member>
@@ -4033,10 +4037,12 @@
     <member>
       <email>johu@gentoo.org</email>
       <name>Johannes Huber</name>
+      <role>Member</role>
     </member>
     <member>
       <email>kensington@gentoo.org</email>
       <name>Michael Palimaka</name>
+      <role>Member</role>
     </member>
     <member>
       <email>moult@gentoo.org</email>
