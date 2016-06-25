@@ -2505,7 +2505,7 @@ app-vim/ackvim 1.0.9: vim plugin: run ack from within vim
 app-vim/airline 0.8 9999: vim plugin: lean & mean statusline for vim that's light as air
 app-vim/airline-themes 9999: vim plugin: a collection of themes for vim-airline
 app-vim/align 43: vim plugin: commands and maps to help produce aligned text
-app-vim/alternate 2.18: vim plugin: quickly switch between .c and .h files
+app-vim/alternate 2.18-r1: vim plugin: quickly switch between .c and .h files
 app-vim/ansiesc 12: vim plugin: ansi escape sequences concealed, but highlighted as specified
 app-vim/ant_menu 0.5.7.1: vim plugin: Java ant build system integration
 app-vim/autoalign 13 14: vim plugin: automatically align bib, c, c++, tex and vim code
