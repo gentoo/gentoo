@@ -30,6 +30,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Alexey Korepanov <kaikaikai@yandex.ru> (25 Jun 2016)
+# net-p2p/syncthing-relaysrv has been merged into net-p2p/syncthing
+# both upstream and in Gentoo.
+# Removal in 30 days.
+net-p2p/syncthing-relaysrv
+
 # Michał Górny <mgorny@gentoo.org> (23 Jun 2016)
 # Integrated in media-video/bashnapi. Removal in 30 days.
 media-video/subotage
