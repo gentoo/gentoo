@@ -13,7 +13,7 @@ SRC_URI="https://github.com/clojure/clojure/tarball/${P} -> ${P}.tar.gz"
 
 LICENSE="EPL-1.0 Apache-2.0 BSD"
 SLOT="1.8"
-KEYWORDS="amd64 ~x86 ~x86-linux"
+KEYWORDS="amd64 x86 ~x86-linux"
 IUSE=""
 RESTRICT="test" # patches welcome to fix the test
 

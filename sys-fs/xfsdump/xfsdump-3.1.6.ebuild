@@ -13,7 +13,7 @@ SRC_URI="ftp://oss.sgi.com/projects/xfs/cmd_tars/${P}.tar.gz
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="alpha amd64 hppa ia64 ~mips ~ppc ppc64 -sparc ~x86"
+KEYWORDS="alpha amd64 hppa ia64 ~mips ~ppc ppc64 -sparc x86"
 IUSE="nls"
 
 RDEPEND="sys-fs/e2fsprogs

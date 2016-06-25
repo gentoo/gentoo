@@ -15,7 +15,7 @@ SRC_URI="https://git.netfilter.org/${PN}2/snapshot/${COMMIT_ID}.tar.gz -> ${P}.t
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~ia64 ~ppc ~x86"
+KEYWORDS="amd64 ~ia64 ~ppc x86"
 IUSE="dbi doc json mysql nfacct +nfct +nflog pcap postgres sqlite -ulog"
 
 RDEPEND="

@@ -12,7 +12,7 @@ DESCRIPTION="set of objects and strings"
 
 LICENSE="Artistic-2"
 SLOT="0"
-KEYWORDS="amd64 ~hppa ~ppc ~x86"
+KEYWORDS="amd64 ~hppa ~ppc x86"
 IUSE="test"
 
 RDEPEND="

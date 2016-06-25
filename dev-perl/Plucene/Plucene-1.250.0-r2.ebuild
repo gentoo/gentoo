@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="Plucene - the Perl lucene port"
 
 SLOT="0"
-KEYWORDS="amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc x86"
 IUSE="test"
 
 RDEPEND="

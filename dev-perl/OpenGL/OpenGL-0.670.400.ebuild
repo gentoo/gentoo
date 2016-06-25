@@ -12,7 +12,7 @@ inherit perl-module eutils
 DESCRIPTION="Perl interface providing graphics display using OpenGL"
 
 SLOT="0"
-KEYWORDS="amd64 arm ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 arm ~ppc ~ppc64 x86 ~amd64-linux ~x86-linux"
 IUSE="examples"
 
 RDEPEND="

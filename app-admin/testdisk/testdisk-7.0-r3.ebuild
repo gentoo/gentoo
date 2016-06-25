@@ -14,7 +14,7 @@ SRC_URI="http://www.cgsecurity.org/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~ppc ~x86"
+KEYWORDS="amd64 ~arm ~ppc x86"
 IUSE="ewf jpeg ntfs reiserfs static qt4"
 
 REQUIRED_USE="static? ( !qt4 )"

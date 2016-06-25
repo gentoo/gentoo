@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/dar/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~ppc ~sparc ~x86 ~amd64-linux"
+KEYWORDS="amd64 ~ppc ~sparc x86 ~amd64-linux"
 IUSE="acl dar32 dar64 doc gcrypt lzo nls static static-libs"
 
 RESTRICT="test" # need to be run as root
