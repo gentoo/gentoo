@@ -14,7 +14,7 @@ SRC_URI="http://pdisp01.c-wss.com/gdl/WWUFORedirectTarget.do?id=MDEwMDAwMjcwODEx
 
 LICENSE="Canon-UFR-II"
 SLOT="0"
-KEYWORDS="-* amd64 x86"
+KEYWORDS="-* ~amd64 ~x86"
 IUSE=""
 
 # Needed because GPL2 stuff miss their sources in tarball
@@ -48,15 +48,15 @@ QA_SONAME="/usr/$(get_abi_LIBDIR x86)/libcaiocnpkbidi.so.1.0.0"
 
 src_unpack() {
 	unpack ${A}
-	cd "${WORKDIR}/${SOURCES_NAME}/Sources/"
+	cd "${WORKDIR}/${SOURCES_NAME}/Sources/" || die
 	unpack ./${P}-1.tar.gz
 }
 
 change_dir() {
 	for i in ppd pstoufr2cpca cngplp cngplp/files cpca ; do
-		cd "${i}"
+		cd "${i}" || die
 		"${@}"
-		cd "${S}"
+		cd "${S}" || die
 	done
 }
 
@@ -80,11 +80,11 @@ src_install() {
 
 	prune_libtool_files
 
-	cd "${S}/data"
+	cd "${S}/data" || die
 	insinto /usr/share/caepcm
 	doins *
 
-	cd "${S}/libs"
+	cd "${S}/libs" || die
 	insinto /usr/share/cnpkbidi
 	doins cnpkbidi_info*
 
