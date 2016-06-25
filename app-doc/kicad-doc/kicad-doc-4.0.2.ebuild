@@ -16,7 +16,7 @@ KEYWORDS="~amd64"
 IUSE="html pdf"
 LANGS="en fr it ja nl pl"
 for lang in ${LANGS}; do
-	IUSE+=" linguas_${lang}"
+	IUSE+=" l10n_${lang}"
 done
 
 DEPEND=">=app-text/asciidoc-8.6.9
@@ -25,7 +25,7 @@ DEPEND=">=app-text/asciidoc-8.6.9
 	>=sys-devel/gettext-0.18
 	dev-util/source-highlight
 	dev-perl/Unicode-LineBreak
-	linguas_ja? ( media-fonts/vlgothic )"
+	l10n_ja? ( media-fonts/vlgothic )"
 RDEPEND=""
 
 src_prepare() {
@@ -49,7 +49,7 @@ src_configure() {
 
 	# find out which language is requested
 	for lang in ${LANGS}; do
-		if use linguas_${lang}; then
+		if use l10n_${lang}; then
 			if [[ -z ${doclang} ]]; then
 				doclang="${lang}"
 			else
