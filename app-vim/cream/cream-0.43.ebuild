@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -15,12 +15,12 @@ DICT_ES="spa_3.0"
 DICT_DE="ger_2.0.1"
 
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz
-	linguas_en? ( ${HOMEPAGE}/cream-spell-dict-${DICT_EN}.zip )
-	linguas_fr? ( ${HOMEPAGE}/cream-spell-dict-${DICT_FR}.zip )
-	linguas_es? ( ${HOMEPAGE}/cream-spell-dict-${DICT_ES}.zip )
-	linguas_de? ( ${HOMEPAGE}/cream-spell-dict-${DICT_DE}.zip )"
+	l10n_de? ( ${HOMEPAGE}/cream-spell-dict-${DICT_DE}.zip )
+	l10n_en? ( ${HOMEPAGE}/cream-spell-dict-${DICT_EN}.zip )
+	l10n_es? ( ${HOMEPAGE}/cream-spell-dict-${DICT_ES}.zip )
+	l10n_fr? ( ${HOMEPAGE}/cream-spell-dict-${DICT_FR}.zip )"
 
-IUSE="linguas_en linguas_fr linguas_es linguas_de"
+IUSE="l10n_de l10n_en l10n_fr l10n_es"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="alpha amd64 ia64 ~mips ppc sparc x86"
@@ -68,16 +68,14 @@ pkg_setup() {
 	elog "all cases, at least a small English dictionary will be installed."
 	elog
 	elog "To specify which optional dictionaries are installed, set the"
-	elog "LINGUAS variable in /etc/make.conf. For example, to install full"
+	elog "L10N variable in /etc/make.conf. For example, to install full"
 	elog "English and French dictionaries, use:"
-	elog "    LINGUAS=\"en fr\""
+	elog "    L10N=\"en fr\""
 	elog
 	elog "Available dictionaries are:"
 	for dict in "English en" "French fr" "German de" "Spanish es" ; do
-		# portage bug: shouldn't get a QA notice for linguas stuff...
-		elog "    ${dict% *} \t(${dict#* }) $( ( \
-			use linguas_${dict#* } &>/dev/null && \
-			echo '(Will be installed)' ) || echo '(Will not be installed)' )"
+		elog "    ${dict% *} \t(${dict#* }) $(usex l10n_${dict#* } \
+			"(Will be installed)" "(Will not be installed)")"
 	done
 	elog
 }
@@ -135,7 +133,7 @@ src_install() {
 		doins ${dir}/*
 	done
 
-	if [[ -n ${LINGUAS} ]] ; then
+	if [[ -n ${L10N} ]] ; then
 		insinto /usr/share/vim/cream/spelldicts
 		doins spelldicts/*
 	fi
