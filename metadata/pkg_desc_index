@@ -11400,21 +11400,21 @@ kde-apps/kwordquiz 4.14.3 15.12.3-r1 16.04.1: A powerful flashcard and vocabular
 kde-apps/kwrite 4.14.3 15.12.3 16.04.1: KDE simple text editor
 kde-apps/libkcddb 4.14.3 15.12.3 16.04.1: KDE library for CDDB
 kde-apps/libkcompactdisc 4.14.3 15.12.3-r1 16.04.1: KDE library for playing & ripping CDs
-kde-apps/libkdcraw 4.14.3 4.14.3-r1 15.12.3 16.04.1: Digital camera raw image library wrapper
+kde-apps/libkdcraw 4.14.3 4.14.3-r1 15.08.3 15.12.3 16.04.1: Digital camera raw image library wrapper
 kde-apps/libkdeedu 4.14.3 15.12.3: Common library for KDE educational apps
 kde-apps/libkdegames 4.14.3 4.14.3-r1 15.12.3 16.04.1: Base library common to many KDE games
 kde-apps/libkdepim 4.4.2015.06 4.4.2016.01: Common library for KDE PIM apps (noakonadi branch)
 kde-apps/libkeduvocdocument 15.12.3 16.04.1: Library for reading/writing KVTML
-kde-apps/libkexiv2 4.14.3 15.12.3 16.04.1: KDE Image Plugin Interface: an exiv2 library wrapper
+kde-apps/libkexiv2 4.14.3 15.08.3 15.12.3 16.04.1: KDE Image Plugin Interface: an exiv2 library wrapper
 kde-apps/libkface 4.4.0 4.12.0 15.08.3 15.12.3 16.04.1: Qt/C++ wrapper around LibFace to perform face recognition and detection
 kde-apps/libkgeomap 4.4.0 4.12.0 15.08.3 15.12.3 16.04.1: Wrapper library for world map components as marble, openstreetmap and googlemap
-kde-apps/libkipi 4.14.3 15.12.3 16.04.1: A library for image plugins accross KDE applications
+kde-apps/libkipi 4.14.3 15.08.3 15.08.3-r1 15.12.3 16.04.1: A library for image plugins accross KDE applications
 kde-apps/libkleo 4.4.2015.06 4.4.2016.01: KDE library for encryption handling
 kde-apps/libkmahjongg 4.14.3 15.12.3 16.04.1: Mahjongg library based on Qt/KDE Frameworks
 kde-apps/libkomparediff2 4.14.3 15.12.3 16.04.1: KDE library to compare files and strings
 kde-apps/libkonq 4.14.3 15.12.3 16.04.1: The embeddable part of konqueror
 kde-apps/libkpgp 4.4.2015.06 4.4.2016.01: KDE pgp abstraction library
-kde-apps/libksane 4.14.3 15.12.3 16.04.1: SANE Library interface based on KDE Frameworks
+kde-apps/libksane 4.14.3 15.08.3 15.08.3-r1 15.12.3 16.04.1: SANE Library interface based on KDE Frameworks
 kde-apps/lokalize 4.14.3 15.12.3 16.04.1: KDE Applications 5 translation tool
 kde-apps/lskat 4.14.3 15.12.3 16.04.1: Skat game by KDE
 kde-apps/marble 4.14.3 15.12.3 16.04.1: Generic geographical map widget
