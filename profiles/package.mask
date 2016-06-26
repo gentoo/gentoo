@@ -261,13 +261,6 @@ www-client/luakit
 >=dev-ml/tyxml-4
 >=dev-ml/js_of_ocaml-2.8
 
-# Sam Jorna <wraeth@gentoo.org> (24 May 2016)
-# Deprecated in favour of sci-geosciences/qmapshack.
-# See bugs 561788 and 582262
-# Masked for removal in 30 days.
-sci-geosciences/qlandkartegt
-sci-geosciences/qlandkartegt-garmindev
-
 # Luca Barbato <lu_zero@gentoo.org> (23 May 2016)
 # Masked for testing, vlc-2.2 configure rejects it.
 =media-video/libav-12*
