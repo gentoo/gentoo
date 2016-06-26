@@ -2420,7 +2420,7 @@ app-text/sablotron 1.0.3: An XSLT Parser in C++
 app-text/sary 1.2.0-r1: Sary: suffix array library and tools
 app-text/scrollkeeper 9999-r1: Dummy scrollkeeper for testing rarian
 app-text/scrollkeeper-dtd 1.0: DTD from the Scrollkeeper package
-app-text/sdcv 0.4.2 0.5.0_beta2 0.5.0_beta2-r1: Console version of Stardict program
+app-text/sdcv 0.5.0_beta2 0.5.0_beta2-r1: Console version of Stardict program
 app-text/searchmonkey 0.8.1 2.0.0: Powerful text searches using regular expressions
 app-text/sgml-common 0.6.3-r5: Base ISO character entities and utilities for SGML
 app-text/sgmltools-lite 3.0.3-r14: Python interface to SGML software in a DocBook/OpenJade env
@@ -5050,7 +5050,7 @@ dev-ml/camlp4 4.02.1_p3 4.03_p1: System for writing extensible parsers for progr
 dev-ml/camlp5 6.14 6.15 6.16: A preprocessor-pretty-printer of ocaml
 dev-ml/camlpdf 2.1.1: OCaml library for reading, writing, and modifying PDF files
 dev-ml/camlzip 1.05: Compressed file access ML library (ZIP, GZIP and JAR)
-dev-ml/camomile 0.8.4 0.8.5-r1: Camomile is a comprehensive Unicode library for ocaml
+dev-ml/camomile 0.8.5-r1: Camomile is a comprehensive Unicode library for ocaml
 dev-ml/cmdliner 0.9.8: Declarative definition of command line interfaces for OCaml
 dev-ml/comparelib 109.60.00 113.00.00: Camlp4 syntax extension that derives comparison functions from type representations
 dev-ml/core 113.24.00 113.24.01 113.24.02 113.33.00 113.33.02: Jane Street's alternative to the standard library
