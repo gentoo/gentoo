@@ -282,11 +282,6 @@ www-client/luakit
 # Force gnutls-3.4 testing so we can stabilize it.
 >=net-libs/gnutls-3.5.0
 
-# Michael Weber <xmw@gentoo.org> (08 May 2016)
-# Replaced by net-libs/libhubbub.
-# Masked for removal in 30 days. Bug #582382.
-net-libs/hubbub
-
 # Maciej Mrozowski <reavertm@gentoo.org> (3 May 2016)
 # Mask until >=net-libs/qxmpp-0.8.3 is provided with qt5 support.
 =net-im/kadu-3.0
