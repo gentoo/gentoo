@@ -9,5 +9,5 @@ RDEPEND=!libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) sy
 RESTRICT=test
 SLOT=0
 _eclass_exported_funcs=src_unpack:git-2 src_prepare:- src_configure:- src_compile:- src_install:-
-_eclasses_=git-2	672c3929a162f221a53b4ccb4d25d8a2	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	c9d9187f4caa4026a0ceddd8dfceb3c1
+_eclasses_=git-2	672c3929a162f221a53b4ccb4d25d8a2	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	bfd09e8e66991dd5ce9e57610d8d1e6c
 _md5_=e3d209e58b07504ec4a93ec9c354d101

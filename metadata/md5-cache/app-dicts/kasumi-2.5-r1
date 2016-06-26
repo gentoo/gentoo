@@ -10,5 +10,5 @@ RDEPEND=>=x11-libs/gtk+-2.6:2 nls? ( virtual/libintl ) virtual/libiconv >=app-i1
 SLOT=0
 SRC_URI=mirror://sourceforge.jp/kasumi/41436/kasumi-2.5.tar.gz
 _eclass_exported_funcs=src_prepare:- src_configure:-
-_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	c9d9187f4caa4026a0ceddd8dfceb3c1
+_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	bfd09e8e66991dd5ce9e57610d8d1e6c
 _md5_=29ad8ca1bed12de9971f3b5bce0639c2

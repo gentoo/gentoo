@@ -10,5 +10,5 @@ RDEPEND=>=dev-lang/tcl-8.3:0=[-threads] >=dev-tcltk/tclx-8.3 dev-tcltk/tcllib de
 SLOT=0
 SRC_URI=https://github.com/bammv/sguil/archive/v0.9.0.tar.gz -> sguil-0.9.0.tar.gz
 _eclass_exported_funcs=pkg_postinst:- pkg_setup:- src_prepare:- src_install:-
-_eclasses_=multilib	d062ae4ba2fc40a19c11de2ad89b6616	ssl-cert	b031e94f4c7c34e1d677376b8929821a	toolchain-funcs	c9d9187f4caa4026a0ceddd8dfceb3c1	user	906f3c8eb3a2350a4f1191a89baa3e46
+_eclasses_=multilib	d062ae4ba2fc40a19c11de2ad89b6616	ssl-cert	b031e94f4c7c34e1d677376b8929821a	toolchain-funcs	bfd09e8e66991dd5ce9e57610d8d1e6c	user	906f3c8eb3a2350a4f1191a89baa3e46
 _md5_=06abede1dcc713eb9a4c153fe5c33506

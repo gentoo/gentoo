@@ -9,5 +9,5 @@ RDEPEND=dev-libs/ocl-icd >=sys-devel/llvm-3.7[clang] sys-apps/hwloc >=app-eselec
 SLOT=0
 SRC_URI=http://portablecl.org/downloads/pocl-0.13.tar.gz
 _eclass_exported_funcs=pkg_pretend:- src_prepare:-
-_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	libtool	4890219c51da247200223277f993e054	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	c9d9187f4caa4026a0ceddd8dfceb3c1
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	libtool	4890219c51da247200223277f993e054	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	bfd09e8e66991dd5ce9e57610d8d1e6c
 _md5_=4d8c3994f5376e8f228098a6ff6ba90b

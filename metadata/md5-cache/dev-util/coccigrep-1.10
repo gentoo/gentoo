@@ -10,5 +10,5 @@ RDEPEND=dev-util/coccinelle[python] emacs? ( virtual/emacs ) vim? ( || ( app-edi
 SLOT=0
 SRC_URI=https://github.com/regit/coccigrep/tarball/v1.10 -> coccigrep-1.10.tar.gz
 _eclass_exported_funcs=pkg_postrm:- pkg_postinst:- pkg_setup:- src_unpack:vcs-snapshot src_prepare:distutils src_compile:- src_install:-
-_eclasses_=distutils	ad9e4720eb3e69090dd968b152fc611b	elisp-common	9f56c4e9bf1282dbfc2a5a09e1124e74	multilib	d062ae4ba2fc40a19c11de2ad89b6616	python	efc1c55fc44c5b7272fc2ffba73c3e6f	toolchain-funcs	c9d9187f4caa4026a0ceddd8dfceb3c1	vcs-snapshot	b45be87e7012be0af8424e8a5644da1d
+_eclasses_=distutils	ad9e4720eb3e69090dd968b152fc611b	elisp-common	9f56c4e9bf1282dbfc2a5a09e1124e74	multilib	d062ae4ba2fc40a19c11de2ad89b6616	python	efc1c55fc44c5b7272fc2ffba73c3e6f	toolchain-funcs	bfd09e8e66991dd5ce9e57610d8d1e6c	vcs-snapshot	b45be87e7012be0af8424e8a5644da1d
 _md5_=4c02456182779ed60b386e958c65b90f

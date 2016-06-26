@@ -9,5 +9,5 @@ RDEPEND=>=dev-libs/geoip-1.4.8 =www-servers/apache-2*
 SLOT=0
 SRC_URI=http://geolite.maxmind.com/download/geoip/api/mod_geoip2/mod_geoip2_1.2.7.tar.gz
 _eclass_exported_funcs=pkg_postinst:apache-module pkg_setup:depend.apache src_unpack:- src_compile:apache-module src_install:apache-module
-_eclasses_=apache-module	5e66430013d92dfe0bf8672b05319b6d	depend.apache	e3c541cb90838388f81620d630c28f41	eutils	792f83d5ec9536cb5ccef375469d8bde	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	c9d9187f4caa4026a0ceddd8dfceb3c1
+_eclasses_=apache-module	5e66430013d92dfe0bf8672b05319b6d	depend.apache	e3c541cb90838388f81620d630c28f41	eutils	792f83d5ec9536cb5ccef375469d8bde	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	bfd09e8e66991dd5ce9e57610d8d1e6c
 _md5_=28588fbc2456d25a86af925ccb9cb712

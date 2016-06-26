@@ -9,5 +9,5 @@ RDEPEND=virtual/latex-base
 SLOT=0
 SRC_URI=mirror://gentoo/frakturx-20070103-base.zip mirror://gentoo/frakturx-20070103-tfrak.zip mirror://gentoo/frakturx-20070103-obibel.zip mirror://gentoo/frakturx-20070103-odedruck.zip mirror://gentoo/frakturx-20070103-odeschmk.zip mirror://gentoo/frakturx-20070103-oweissfr.zip mirror://gentoo/frakturx-20070103-oweissgo.zip mirror://gentoo/frakturx-20070103-talteswab.zip mirror://gentoo/frakturx-20070103-tbrtkpf.zip mirror://gentoo/frakturx-20070103-tkngsbg.zip mirror://gentoo/frakturx-20070103-twieynk.zip mirror://gentoo/frakturx-20070103-twieyvig.zip mirror://gentoo/frakturx-20070103-tzentenar.zip
 _eclass_exported_funcs=pkg_postrm:latex-package pkg_postinst:latex-package src_unpack:base src_prepare:- src_configure:base src_compile:latex-package src_install:-
-_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	792f83d5ec9536cb5ccef375469d8bde	latex-package	e1ad4a8d21d1038232597822352b9d0e	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	c9d9187f4caa4026a0ceddd8dfceb3c1
+_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	792f83d5ec9536cb5ccef375469d8bde	latex-package	e1ad4a8d21d1038232597822352b9d0e	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	bfd09e8e66991dd5ce9e57610d8d1e6c
 _md5_=e747a68cea39a282e297d5c81023ebd7

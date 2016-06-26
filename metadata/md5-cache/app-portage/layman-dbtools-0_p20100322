@@ -8,5 +8,5 @@ LICENSE=|| ( GPL-2 GPL-3 )
 RDEPEND=app-portage/layman =dev-lang/python-2* =dev-lang/python-2*[xml]
 SLOT=0
 _eclass_exported_funcs=pkg_postrm:- pkg_postinst:- pkg_setup:python src_unpack:git-2 src_install:-
-_eclasses_=git-2	672c3929a162f221a53b4ccb4d25d8a2	multilib	d062ae4ba2fc40a19c11de2ad89b6616	python	efc1c55fc44c5b7272fc2ffba73c3e6f	toolchain-funcs	c9d9187f4caa4026a0ceddd8dfceb3c1
+_eclasses_=git-2	672c3929a162f221a53b4ccb4d25d8a2	multilib	d062ae4ba2fc40a19c11de2ad89b6616	python	efc1c55fc44c5b7272fc2ffba73c3e6f	toolchain-funcs	bfd09e8e66991dd5ce9e57610d8d1e6c
 _md5_=25c99680d5e7e037a40127e24ce5fc3f

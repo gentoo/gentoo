@@ -10,5 +10,5 @@ RDEPEND=media-libs/vamp-plugin-sdk media-libs/libsamplerate media-libs/libsndfil
 SLOT=0
 SRC_URI=http://code.breakfastquay.com/attachments/download/23/rubberband-1.7.0.tar.bz2
 _eclass_exported_funcs=src_prepare:- src_install:-
-_eclasses_=multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	c9d9187f4caa4026a0ceddd8dfceb3c1
+_eclasses_=multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	bfd09e8e66991dd5ce9e57610d8d1e6c
 _md5_=dfce7516f75118e373436cf15c2eab79

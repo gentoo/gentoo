@@ -10,5 +10,5 @@ RDEPEND=virtual/mta >=sys-libs/db-3.2.9 >=sys-apps/sed-4 >=net-nds/portmap-5b-r6
 SLOT=0
 SRC_URI=ftp://ftp.cc.umanitoba.ca/src/drac.tar.Z
 _eclass_exported_funcs=pkg_postinst:- src_compile:- src_install:-
-_eclasses_=multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	c9d9187f4caa4026a0ceddd8dfceb3c1
+_eclasses_=multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	bfd09e8e66991dd5ce9e57610d8d1e6c
 _md5_=623ba8f66f9263254db671b014ee11ea

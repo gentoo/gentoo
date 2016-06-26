@@ -9,5 +9,5 @@ RDEPEND=>=dev-python/kaa-base-0.3.0 dev-libs/libxml2[python] media-libs/imlib2 |
 SLOT=0
 SRC_URI=mirror://sourceforge/freevo/kaa-imlib2-0.2.3.tar.gz
 _eclass_exported_funcs=pkg_postrm:distutils pkg_postinst:distutils src_prepare:- src_compile:distutils src_install:distutils
-_eclasses_=distutils	ad9e4720eb3e69090dd968b152fc611b	eutils	792f83d5ec9536cb5ccef375469d8bde	multilib	d062ae4ba2fc40a19c11de2ad89b6616	python	efc1c55fc44c5b7272fc2ffba73c3e6f	toolchain-funcs	c9d9187f4caa4026a0ceddd8dfceb3c1
+_eclasses_=distutils	ad9e4720eb3e69090dd968b152fc611b	eutils	792f83d5ec9536cb5ccef375469d8bde	multilib	d062ae4ba2fc40a19c11de2ad89b6616	python	efc1c55fc44c5b7272fc2ffba73c3e6f	toolchain-funcs	bfd09e8e66991dd5ce9e57610d8d1e6c
 _md5_=e72c8e515a1ef351f770cf096189752d

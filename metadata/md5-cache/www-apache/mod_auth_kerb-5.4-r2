@@ -9,5 +9,5 @@ RDEPEND=virtual/krb5 =www-servers/apache-2*
 SLOT=0
 SRC_URI=mirror://sourceforge/modauthkerb/mod_auth_kerb-5.4.tar.gz
 _eclass_exported_funcs=pkg_postinst:apache-module pkg_setup:depend.apache src_prepare:- src_configure:- src_compile:- src_install:-
-_eclasses_=apache-module	5e66430013d92dfe0bf8672b05319b6d	depend.apache	e3c541cb90838388f81620d630c28f41	eutils	792f83d5ec9536cb5ccef375469d8bde	multilib	d062ae4ba2fc40a19c11de2ad89b6616	systemd	3165c885f3c71ffae7a867d931fb0e07	toolchain-funcs	c9d9187f4caa4026a0ceddd8dfceb3c1
+_eclasses_=apache-module	5e66430013d92dfe0bf8672b05319b6d	depend.apache	e3c541cb90838388f81620d630c28f41	eutils	792f83d5ec9536cb5ccef375469d8bde	multilib	d062ae4ba2fc40a19c11de2ad89b6616	systemd	3165c885f3c71ffae7a867d931fb0e07	toolchain-funcs	bfd09e8e66991dd5ce9e57610d8d1e6c
 _md5_=2e82a9e951af06a8d8426d17ebafc7d4

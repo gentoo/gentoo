@@ -10,5 +10,5 @@ RDEPEND=virtual/httpd-php >=app-admin/webapp-config-1.50.15
 SLOT=3.3.9-r2
 SRC_URI=mirror://sourceforge/sitebar/SiteBar-3.3.9.tar.bz2 plugins? ( mirror://sourceforge/sitebar/SiteBarPluginIMAP_3.3.7_1.1.zip mirror://sourceforge/sitebar/SiteBarPluginLDAP_3.3.7_1.1.zip mirror://sourceforge/sitebar/SiteBarPluginMailGate_3.3.7_1.0.4.zip mirror://sourceforge/sitebar/SiteBarPluginMessenger_3.3.7_1.2.zip mirror://sourceforge/sitebar/SiteBarPluginXBELSync_3.3.7_1.1.zip )
 _eclass_exported_funcs=pkg_prerm:webapp pkg_postinst:webapp pkg_setup:webapp src_unpack:base src_prepare:base src_configure:base src_compile:base src_install:-
-_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	792f83d5ec9536cb5ccef375469d8bde	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	c9d9187f4caa4026a0ceddd8dfceb3c1	webapp	42c6ef7af496b228f9854b3c81e4b226
+_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	792f83d5ec9536cb5ccef375469d8bde	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	bfd09e8e66991dd5ce9e57610d8d1e6c	webapp	42c6ef7af496b228f9854b3c81e4b226
 _md5_=916a95530675db5e2a3ce41f141a4b44

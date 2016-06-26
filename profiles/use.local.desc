@@ -1073,10 +1073,6 @@ app-office/libreoffice:jemalloc - Use dev-libs/jemalloc for allocations
 app-office/libreoffice:odk - Build the Office Development Kit
 app-office/libreoffice:telepathy - Enable document colaboration features using telepathy communication framework.
 app-office/libreoffice:vlc - Use media-video/vlc for video embedding
-app-office/libreoffice-l10n:linguas_ca_valencia - Catalan locale (Valencia)
-app-office/libreoffice-l10n:linguas_kmr_Latn - kmr_Latn localization
-app-office/libreoffice-l10n:linguas_sid - sid localization
-app-office/libreoffice-l10n:linguas_sr_Latn - Serbian (Latin) locale
 app-office/libreoffice-l10n:offlinehelp - Install help files locally instead of using the LibreOffice Wiki
 app-office/lyx:aspell - Add support for aspell spellchecking
 app-office/lyx:dia - Add support for diagrams (app-office/dia)

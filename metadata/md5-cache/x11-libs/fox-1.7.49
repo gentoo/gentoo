@@ -10,5 +10,5 @@ RDEPEND=x11-libs/libXrandr x11-libs/libXcursor x11-libs/fox-wrapper >=sys-devel/
 SLOT=1.7
 SRC_URI=ftp://ftp.fox-toolkit.org/pub/fox-1.7.49.tar.gz
 _eclass_exported_funcs=pkg_postinst:- src_unpack:fox src_prepare:- src_configure:- src_compile:fox src_install:-
-_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	792f83d5ec9536cb5ccef375469d8bde	fox	e4d855999fa2c4077e6723d257808bbe	libtool	4890219c51da247200223277f993e054	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	c9d9187f4caa4026a0ceddd8dfceb3c1	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	792f83d5ec9536cb5ccef375469d8bde	fox	e4d855999fa2c4077e6723d257808bbe	libtool	4890219c51da247200223277f993e054	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	bfd09e8e66991dd5ce9e57610d8d1e6c	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=418cccfe7906559d6825744b60d0a288

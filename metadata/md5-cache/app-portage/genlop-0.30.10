@@ -9,5 +9,5 @@ RDEPEND=dev-lang/perl dev-perl/Date-Manip dev-perl/libwww-perl
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~dilfridge/distfiles/genlop-0.30.10.tar.gz
 _eclass_exported_funcs=src_install:-
-_eclasses_=bash-completion-r1	acf715fa09463f043fbfdc1640f3fb85	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	c9d9187f4caa4026a0ceddd8dfceb3c1
+_eclasses_=bash-completion-r1	acf715fa09463f043fbfdc1640f3fb85	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	bfd09e8e66991dd5ce9e57610d8d1e6c
 _md5_=b9ebf9c875f29b62a08ea87d94a66d8e

@@ -11,5 +11,5 @@ REQUIRED_USE=|| ( office_implementation_libreoffice office_implementation_openof
 SLOT=0
 SRC_URI=https://ooo2gd.googlecode.com/files/ooo2gd_3.0.0.oxt
 _eclass_exported_funcs=pkg_prerm:office-ext-r1 pkg_postinst:office-ext-r1 src_unpack:office-ext-r1 src_install:office-ext-r1
-_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	multilib	d062ae4ba2fc40a19c11de2ad89b6616	office-ext-r1	60f5f222dd37820c823e1451bbd621cf	toolchain-funcs	c9d9187f4caa4026a0ceddd8dfceb3c1
+_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	multilib	d062ae4ba2fc40a19c11de2ad89b6616	office-ext-r1	60f5f222dd37820c823e1451bbd621cf	toolchain-funcs	bfd09e8e66991dd5ce9e57610d8d1e6c
 _md5_=8eb0b64d54bbe5f2f76f6cd01e71d336

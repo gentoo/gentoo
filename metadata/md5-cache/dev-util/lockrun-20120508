@@ -6,5 +6,5 @@ KEYWORDS=amd64 hppa x86
 LICENSE=public-domain
 SLOT=0
 _eclass_exported_funcs=src_unpack:- src_compile:- src_install:-
-_eclasses_=multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	c9d9187f4caa4026a0ceddd8dfceb3c1
+_eclasses_=multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	bfd09e8e66991dd5ce9e57610d8d1e6c
 _md5_=7d024d5e610b857c08418daef7f27437

@@ -8,5 +8,5 @@ LICENSE=|| ( Artistic GPL-2 )
 RDEPEND=virtual/perl-File-Path virtual/perl-File-Spec dev-perl/Log-Agent virtual/perl-Memoize virtual/perl-IO dev-perl/Shell-EnvImporter virtual/perl-Term-ANSIColor >=dev-perl/YAML-0.60 >=sys-apps/portage-2.0.0 dev-lang/perl:=
 SLOT=0
 _eclass_exported_funcs=pkg_postinst:- src_unpack:git-r3 src_prepare:perl-module src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:-
-_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	git-r3	00f60a84fc7b499c99edfe99caea9f95	multilib	d062ae4ba2fc40a19c11de2ad89b6616	multiprocessing	e32940a7b2a9992ad217eccddb84d548	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	c584f9e0fe426f3dcc2c46c6f7cb95ce	toolchain-funcs	c9d9187f4caa4026a0ceddd8dfceb3c1
+_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	git-r3	00f60a84fc7b499c99edfe99caea9f95	multilib	d062ae4ba2fc40a19c11de2ad89b6616	multiprocessing	e32940a7b2a9992ad217eccddb84d548	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	c584f9e0fe426f3dcc2c46c6f7cb95ce	toolchain-funcs	bfd09e8e66991dd5ce9e57610d8d1e6c
 _md5_=95d246f77ccbb3576d8e804e43c54915

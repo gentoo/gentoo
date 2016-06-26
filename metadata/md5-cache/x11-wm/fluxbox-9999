@@ -9,5 +9,5 @@ RDEPEND=!!<=x11-misc/fbdesk-1.2.1 !!<=x11-misc/fluxconf-0.9.9 !!<x11-themes/flux
 REQUIRED_USE=systray? ( toolbar )
 SLOT=0
 _eclass_exported_funcs=src_unpack:git-2 src_prepare:- src_configure:- src_compile:- src_install:-
-_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	flag-o-matic	d270fa247153df66074f795fa42dba3e	git-2	672c3929a162f221a53b4ccb4d25d8a2	multilib	d062ae4ba2fc40a19c11de2ad89b6616	prefix	e7f2b9c6e57342e5d25eac22fce23062	toolchain-funcs	c9d9187f4caa4026a0ceddd8dfceb3c1
+_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	flag-o-matic	d270fa247153df66074f795fa42dba3e	git-2	672c3929a162f221a53b4ccb4d25d8a2	multilib	d062ae4ba2fc40a19c11de2ad89b6616	prefix	e7f2b9c6e57342e5d25eac22fce23062	toolchain-funcs	bfd09e8e66991dd5ce9e57610d8d1e6c
 _md5_=a2ba828a5a3233688261f1a4b08ec46e

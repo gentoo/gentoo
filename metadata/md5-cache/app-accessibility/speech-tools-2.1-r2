@@ -10,5 +10,5 @@ RDEPEND=nas? ( media-libs/nas ) X? ( x11-libs/libX11 x11-libs/libXt ) >=media-li
 SLOT=0
 SRC_URI=http://www.festvox.org/packed/festival/2.1/speech_tools-2.1-release.tar.gz https://dev.gentoo.org/~neurogeek/speech-tools/speech_tools-2.1-r3-patches.tar.gz
 _eclass_exported_funcs=src_prepare:- src_configure:- src_compile:- src_install:-
-_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	flag-o-matic	d270fa247153df66074f795fa42dba3e	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	c9d9187f4caa4026a0ceddd8dfceb3c1
+_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	flag-o-matic	d270fa247153df66074f795fa42dba3e	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	bfd09e8e66991dd5ce9e57610d8d1e6c
 _md5_=6d33b0e3204641a0f614d8e22f3018a9

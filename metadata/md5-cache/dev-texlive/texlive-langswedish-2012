@@ -10,5 +10,5 @@ RDEPEND=>=dev-texlive/texlive-basic-2012 >=app-text/texlive-core-2012
 SLOT=0
 SRC_URI=mirror://gentoo/texlive-module-swebib-2012.tar.xz mirror://gentoo/texlive-module-hyphen-swedish-2012.tar.xz mirror://gentoo/texlive-module-collection-langswedish-2012.tar.xz doc? ( mirror://gentoo/texlive-module-swebib.doc-2012.tar.xz )
 _eclass_exported_funcs=pkg_postrm:texlive-module pkg_postinst:texlive-module src_unpack:texlive-module src_prepare:texlive-module src_compile:texlive-module src_install:texlive-module
-_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	multilib	d062ae4ba2fc40a19c11de2ad89b6616	texlive-common	cf8d3d36261adafe564b821b75b34a05	texlive-module	9b17379edf5bdf6418f88d18496927ed	toolchain-funcs	c9d9187f4caa4026a0ceddd8dfceb3c1
+_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	multilib	d062ae4ba2fc40a19c11de2ad89b6616	texlive-common	cf8d3d36261adafe564b821b75b34a05	texlive-module	9b17379edf5bdf6418f88d18496927ed	toolchain-funcs	bfd09e8e66991dd5ce9e57610d8d1e6c
 _md5_=4579ac0c35758f6091093fe8575b315e

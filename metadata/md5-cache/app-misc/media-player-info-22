@@ -10,5 +10,5 @@ RESTRICT=binchecks strip
 SLOT=0
 SRC_URI=https://www.freedesktop.org/software/media-player-info/media-player-info-22.tar.gz
 _eclass_exported_funcs=pkg_postinst:- pkg_setup:python-any-r1
-_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	multilib	d062ae4ba2fc40a19c11de2ad89b6616	python-any-r1	1c20f9b800324335a8e3b137363362e8	python-utils-r1	c0ed2a2f233d3af6dd556048695dc5cb	toolchain-funcs	c9d9187f4caa4026a0ceddd8dfceb3c1
+_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	multilib	d062ae4ba2fc40a19c11de2ad89b6616	python-any-r1	1c20f9b800324335a8e3b137363362e8	python-utils-r1	c0ed2a2f233d3af6dd556048695dc5cb	toolchain-funcs	bfd09e8e66991dd5ce9e57610d8d1e6c
 _md5_=9cd3a90b0d738cf1b915b4fd3abbf1d6

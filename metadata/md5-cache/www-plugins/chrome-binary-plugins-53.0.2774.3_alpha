@@ -10,5 +10,5 @@ RESTRICT=bindist mirror strip
 SLOT=unstable
 SRC_URI=https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-unstable/google-chrome-unstable_53.0.2774.3-1_amd64.deb
 _eclass_exported_funcs=src_unpack:unpacker src_install:-
-_eclasses_=multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	c9d9187f4caa4026a0ceddd8dfceb3c1	unpacker	45d07319df5f40ee6af58418b0f930be
+_eclasses_=multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	bfd09e8e66991dd5ce9e57610d8d1e6c	unpacker	45d07319df5f40ee6af58418b0f930be
 _md5_=3f9adad9a03c5e3b2d8060ceecea56e5

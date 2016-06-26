@@ -9,5 +9,5 @@ LICENSE=GPL-2
 SLOT=0
 SRC_URI=mirror://gentoo/readahead-list-1.20060421.1016.tar.bz2
 _eclass_exported_funcs=pkg_postinst:- src_unpack:base src_compile:- src_install:-
-_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	792f83d5ec9536cb5ccef375469d8bde	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	c9d9187f4caa4026a0ceddd8dfceb3c1
+_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	792f83d5ec9536cb5ccef375469d8bde	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	bfd09e8e66991dd5ce9e57610d8d1e6c
 _md5_=2d2fdaa11a3a08f04f95de4c1f37bd85

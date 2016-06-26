@@ -10,5 +10,5 @@ RDEPEND=media-video/vdr >=dev-libs/tntnet-2.2.1[ssl=] >=dev-libs/cxxtools-2.2.1 
 SLOT=0
 SRC_URI=mirror://gentoo/vdr-live-0.3.0_p20130504.tar.bz2 https://dev.gentoo.org/~hd_brummy/distfiles/vdr-live-0.3.0_p20130504.tar.bz2
 _eclass_exported_funcs=pkg_postrm:vdr-plugin-2 pkg_postinst:- pkg_setup:vdr-plugin-2 src_unpack:vdr-plugin-2 src_prepare:- src_configure:- src_compile:vdr-plugin-2 src_install:-
-_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	flag-o-matic	d270fa247153df66074f795fa42dba3e	multilib	d062ae4ba2fc40a19c11de2ad89b6616	ssl-cert	b031e94f4c7c34e1d677376b8929821a	toolchain-funcs	c9d9187f4caa4026a0ceddd8dfceb3c1	unpacker	45d07319df5f40ee6af58418b0f930be	vdr-plugin-2	793155a4c77b7ce10630747d0afcac0c
+_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	flag-o-matic	d270fa247153df66074f795fa42dba3e	multilib	d062ae4ba2fc40a19c11de2ad89b6616	ssl-cert	b031e94f4c7c34e1d677376b8929821a	toolchain-funcs	bfd09e8e66991dd5ce9e57610d8d1e6c	unpacker	45d07319df5f40ee6af58418b0f930be	vdr-plugin-2	793155a4c77b7ce10630747d0afcac0c
 _md5_=19bf88a606970063593576315125c568

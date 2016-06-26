@@ -7,5 +7,5 @@ PDEPEND=virtual/libmysqlclient[static-libs?,abi_x86_32(-)?,abi_x86_64(-)?,abi_x8
 RDEPEND=embedded? ( || ( =dev-db/mariadb-10.1*[client-libs(+),embedded,static=] =dev-db/mariadb-10.0*[client-libs(+),embedded,static=] =dev-db/mysql-5.6*[client-libs(+),embedded,static=] =dev-db/percona-server-5.6*[client-libs(+),embedded,static=] =dev-db/mariadb-galera-10.0*[client-libs(+),embedded,static=] =dev-db/mysql-cluster-7.3*[client-libs(+),embedded,static=] ) ) !embedded? ( || ( =dev-db/mariadb-10.1*[-embedded,static=] =dev-db/mariadb-10.0*[-embedded,static=] =dev-db/mysql-5.6*[-embedded,static=] =dev-db/percona-server-5.6*[-embedded,static=] =dev-db/mariadb-galera-10.0*[-embedded,static=] =dev-db/mysql-cluster-7.3*[-embedded,static=] ) )
 SLOT=0/18
 _eclass_exported_funcs=-
-_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	d062ae4ba2fc40a19c11de2ad89b6616	multilib-build	8fe2e81aeb36cdf8a6cc5f50443879cc	toolchain-funcs	c9d9187f4caa4026a0ceddd8dfceb3c1
+_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	d062ae4ba2fc40a19c11de2ad89b6616	multilib-build	8fe2e81aeb36cdf8a6cc5f50443879cc	toolchain-funcs	bfd09e8e66991dd5ce9e57610d8d1e6c
 _md5_=3309463a479793e409299e59787d9f23

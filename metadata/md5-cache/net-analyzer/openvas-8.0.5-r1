@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=dev-db/redis >=net-analyzer/openvas-libraries-8.0.5 >=net-analyzer/openvas-scanner-5.0.4 >=net-analyzer/openvas-manager-6.0.6 >=net-analyzer/openvas-cli-1.4.3 net-analyzer/openvas-tools pdf? ( app-text/htmldoc dev-texlive/texlive-latexextra virtual/latex-base )
 SLOT=0
 _eclass_exported_funcs=pkg_postinst:- src_install:readme.gentoo
-_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	multilib	d062ae4ba2fc40a19c11de2ad89b6616	readme.gentoo	df3fc8fdaf5a519e7d48c83e7592c95f	toolchain-funcs	c9d9187f4caa4026a0ceddd8dfceb3c1
+_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	multilib	d062ae4ba2fc40a19c11de2ad89b6616	readme.gentoo	df3fc8fdaf5a519e7d48c83e7592c95f	toolchain-funcs	bfd09e8e66991dd5ce9e57610d8d1e6c
 _md5_=ed5bbee855a988a2630c7f7b8ee8a582

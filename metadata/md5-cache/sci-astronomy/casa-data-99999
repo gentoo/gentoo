@@ -6,5 +6,5 @@ HOMEPAGE=https://safe.nrao.edu/wiki/bin/view/Software/ObtainingCasaDataRepositor
 LICENSE=GPL-2
 SLOT=0
 _eclass_exported_funcs=pkg_preinst:subversion src_unpack:subversion src_prepare:subversion src_install:-
-_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	multilib	d062ae4ba2fc40a19c11de2ad89b6616	subversion	4fee0a764150bb4dda27ed4d2c4ed7ce	toolchain-funcs	c9d9187f4caa4026a0ceddd8dfceb3c1
+_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	multilib	d062ae4ba2fc40a19c11de2ad89b6616	subversion	4fee0a764150bb4dda27ed4d2c4ed7ce	toolchain-funcs	bfd09e8e66991dd5ce9e57610d8d1e6c
 _md5_=1b8b513c78faf8fe4d1b44e0bdf2d4a7

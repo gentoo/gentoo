@@ -9,5 +9,5 @@ RDEPEND=media-video/mpv[cli] >=app-shells/bash-completion-2.3-r1
 SLOT=0
 SRC_URI=https://github.com/2ion/mpv-bash-completion/archive/0.17.tar.gz -> mpv-bash-completion-0.17.tar.gz
 _eclass_exported_funcs=src_compile:- src_install:-
-_eclasses_=bash-completion-r1	acf715fa09463f043fbfdc1640f3fb85	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	c9d9187f4caa4026a0ceddd8dfceb3c1
+_eclasses_=bash-completion-r1	acf715fa09463f043fbfdc1640f3fb85	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	bfd09e8e66991dd5ce9e57610d8d1e6c
 _md5_=5e183dcc0eb6240cbabc2522276b9e6d

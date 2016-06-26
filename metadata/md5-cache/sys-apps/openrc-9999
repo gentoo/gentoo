@@ -9,5 +9,5 @@ PDEPEND=netifrc? ( net-misc/netifrc )
 RDEPEND=kernel_FreeBSD? ( || ( >=sys-freebsd/freebsd-ubin-9.0_rc sys-process/fuser-bsd ) ) ncurses? ( sys-libs/ncurses:0= ) pam? ( sys-auth/pambase virtual/pam ) tools? ( dev-lang/perl ) audit? ( sys-process/audit ) kernel_linux? ( sys-process/psmisc !<sys-process/procps-3.3.9-r2 ) selinux? ( sys-apps/policycoreutils sys-libs/libselinux ) !<sys-apps/baselayout-2.1-r1 !<sys-fs/udev-init-scripts-27 !prefix? ( kernel_linux? ( || ( >=sys-apps/sysvinit-2.86-r6 sys-process/runit ) ) kernel_FreeBSD? ( sys-freebsd/freebsd-sbin ) ) selinux? ( sec-policy/selinux-base-policy sec-policy/selinux-openrc )
 SLOT=0
 _eclass_exported_funcs=pkg_preinst:- pkg_postinst:- src_unpack:git-r3 src_prepare:- src_compile:- src_install:-
-_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	flag-o-matic	d270fa247153df66074f795fa42dba3e	git-r3	00f60a84fc7b499c99edfe99caea9f95	multilib	d062ae4ba2fc40a19c11de2ad89b6616	pam	3ecd5b75e39b0bb05a3183c08fcdfdb4	toolchain-funcs	c9d9187f4caa4026a0ceddd8dfceb3c1
+_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	flag-o-matic	d270fa247153df66074f795fa42dba3e	git-r3	00f60a84fc7b499c99edfe99caea9f95	multilib	d062ae4ba2fc40a19c11de2ad89b6616	pam	3ecd5b75e39b0bb05a3183c08fcdfdb4	toolchain-funcs	bfd09e8e66991dd5ce9e57610d8d1e6c
 _md5_=3d74878edf4366ae9219207c75ca2197

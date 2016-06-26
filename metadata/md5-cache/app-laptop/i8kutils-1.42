@@ -10,5 +10,5 @@ RDEPEND=tk? ( dev-lang/tk:0 ) sys-power/acpi
 SLOT=0
 SRC_URI=https://launchpad.net/i8kutils/trunk/1.42/+download/i8kutils_1.42.tar.xz
 _eclass_exported_funcs=src_prepare:- src_install:-
-_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	multilib	d062ae4ba2fc40a19c11de2ad89b6616	systemd	3165c885f3c71ffae7a867d931fb0e07	toolchain-funcs	c9d9187f4caa4026a0ceddd8dfceb3c1
+_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	multilib	d062ae4ba2fc40a19c11de2ad89b6616	systemd	3165c885f3c71ffae7a867d931fb0e07	toolchain-funcs	bfd09e8e66991dd5ce9e57610d8d1e6c
 _md5_=e53ac32844165753bc9016f3ac002381

@@ -10,5 +10,5 @@ RDEPEND=acl? ( virtual/acl ) caps? ( sys-libs/libcap ) nls? ( virtual/libintl ) 
 SLOT=0
 SRC_URI=mirror://sourceforge/cdrtools/alpha/cdrtools-3.01a17.tar.bz2
 _eclass_exported_funcs=pkg_postinst:- src_prepare:- src_configure:- src_compile:- src_install:-
-_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	fcaps	6a1091a98b1dde01cc26ab3252da1a9b	flag-o-matic	d270fa247153df66074f795fa42dba3e	gnuconfig	3920de1188fc7bfee873515453ed1d10	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	c9d9187f4caa4026a0ceddd8dfceb3c1
+_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	fcaps	6a1091a98b1dde01cc26ab3252da1a9b	flag-o-matic	d270fa247153df66074f795fa42dba3e	gnuconfig	3920de1188fc7bfee873515453ed1d10	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	bfd09e8e66991dd5ce9e57610d8d1e6c
 _md5_=b5b8c566fc2740c878e9d5ae0f5a8c82

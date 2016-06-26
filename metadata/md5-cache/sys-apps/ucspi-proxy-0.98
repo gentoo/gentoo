@@ -9,5 +9,5 @@ RDEPEND=>=dev-libs/bglibs-1.106
 SLOT=0
 SRC_URI=http://untroubled.org/ucspi-proxy/archive/ucspi-proxy-0.98.tar.gz
 _eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
-_eclasses_=multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	c9d9187f4caa4026a0ceddd8dfceb3c1
+_eclasses_=multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	bfd09e8e66991dd5ce9e57610d8d1e6c
 _md5_=50908a7c12068e38e9bf21152922ab28

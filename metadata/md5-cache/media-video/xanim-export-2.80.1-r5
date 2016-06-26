@@ -9,5 +9,5 @@ RDEPEND=virtual/jpeg media-libs/libpng x11-libs/libXext x11-libs/libXt media-lib
 SLOT=0
 SRC_URI=http://heroine.linuxave.net/xanim_exporting_edition.tar.gz sparc? ( ftp://xanim.va.pubnix.com/modules/xa1.0_cyuv_sparcELF.o.Z ftp://xanim.va.pubnix.com/modules/xa2.0_cvid_sparcELF.o.Z ftp://xanim.va.pubnix.com/modules/xa2.0_iv32_sparcELF.o.Z ) ppc? ( ftp://xanim.va.pubnix.com/modules/xa1.0_cyuv_linuxPPC.o.Z ftp://xanim.va.pubnix.com/modules/xa2.0_cvid_linuxPPC.o.Z ftp://xanim.va.pubnix.com/modules/xa2.0_iv32_linuxPPC.o.Z ) x86? ( ftp://xanim.va.pubnix.com/modules/xa1.0_cyuv_linuxELFg21.o.gz ftp://xanim.va.pubnix.com/modules/xa2.0_cvid_linuxELFg21.o.gz ftp://xanim.va.pubnix.com/modules/xa2.1_iv32_linuxELFg21.o.gz )
 _eclass_exported_funcs=src_unpack:- src_compile:- src_install:-
-_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	flag-o-matic	d270fa247153df66074f795fa42dba3e	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	c9d9187f4caa4026a0ceddd8dfceb3c1
+_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	flag-o-matic	d270fa247153df66074f795fa42dba3e	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	bfd09e8e66991dd5ce9e57610d8d1e6c
 _md5_=55c81fcc3f3aff096d5b9af073114637

@@ -8,5 +8,5 @@ RDEPEND=|| ( >=www-client/firefox-5.0 >=www-client/firefox-bin-23.0 )
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~ulm/distfiles/conkeror-1.0_pre20141005.tar.gz https://dev.gentoo.org/~ulm/distfiles/conkeror.png
 _eclass_exported_funcs=pkg_postrm:- pkg_postinst:- src_unpack:- src_compile:- src_install:-
-_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	c9d9187f4caa4026a0ceddd8dfceb3c1
+_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	bfd09e8e66991dd5ce9e57610d8d1e6c
 _md5_=ad0ea19f4cb53b705e397abbc29ed986

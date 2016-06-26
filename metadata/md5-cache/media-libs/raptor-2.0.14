@@ -10,5 +10,5 @@ RDEPEND=dev-libs/libxml2 dev-libs/libxslt curl? ( net-misc/curl ) json? ( dev-li
 SLOT=2
 SRC_URI=http://download.librdf.org/source/raptor2-2.0.14.tar.gz
 _eclass_exported_funcs=src_prepare:- src_configure:- src_test:- src_install:-
-_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	libtool	4890219c51da247200223277f993e054	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	c9d9187f4caa4026a0ceddd8dfceb3c1
+_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	libtool	4890219c51da247200223277f993e054	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	bfd09e8e66991dd5ce9e57610d8d1e6c
 _md5_=e4dbbcde2ce980cb55a9b979cac7f093

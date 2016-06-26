@@ -7,5 +7,5 @@ LICENSE=OPL
 SLOT=0
 SRC_URI=ftp://ftp.ics.com/openmotif/openmotif-2.3.0-manual.pdf.tgz
 _eclass_exported_funcs=pkg_postinst:readme.gentoo src_install:readme.gentoo
-_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	multilib	d062ae4ba2fc40a19c11de2ad89b6616	readme.gentoo	df3fc8fdaf5a519e7d48c83e7592c95f	toolchain-funcs	c9d9187f4caa4026a0ceddd8dfceb3c1
+_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	multilib	d062ae4ba2fc40a19c11de2ad89b6616	readme.gentoo	df3fc8fdaf5a519e7d48c83e7592c95f	toolchain-funcs	bfd09e8e66991dd5ce9e57610d8d1e6c
 _md5_=f632d935d3d06b6047a7bb3fca1b7975

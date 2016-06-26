@@ -9,5 +9,5 @@ RDEPEND=>=dev-lang/lua-5.1:=
 SLOT=0
 SRC_URI=https://github.com/amireh/lua_cliargs/archive/v2.5-5.tar.gz -> lua_cliargs-2.5_p5.tar.gz
 _eclass_exported_funcs=src_install:-
-_eclasses_=multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	c9d9187f4caa4026a0ceddd8dfceb3c1
+_eclasses_=multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	bfd09e8e66991dd5ce9e57610d8d1e6c
 _md5_=db9cb2d11a4b915ee721abe300fa6662

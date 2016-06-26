@@ -9,5 +9,5 @@ RDEPEND=dev-perl/Archive-Extract dev-perl/Archive-Zip dev-perl/Capture-Tiny dev-
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/F/FR/FROGGS/Alien-SDL-1.446.tar.gz
 _eclass_exported_funcs=src_unpack:perl-module src_prepare:- src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
-_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	multilib	d062ae4ba2fc40a19c11de2ad89b6616	multiprocessing	e32940a7b2a9992ad217eccddb84d548	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	c584f9e0fe426f3dcc2c46c6f7cb95ce	toolchain-funcs	c9d9187f4caa4026a0ceddd8dfceb3c1	unpacker	45d07319df5f40ee6af58418b0f930be
+_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	multilib	d062ae4ba2fc40a19c11de2ad89b6616	multiprocessing	e32940a7b2a9992ad217eccddb84d548	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	c584f9e0fe426f3dcc2c46c6f7cb95ce	toolchain-funcs	bfd09e8e66991dd5ce9e57610d8d1e6c	unpacker	45d07319df5f40ee6af58418b0f930be
 _md5_=0c6dc5cf5b5c671c33a4cc135851f647

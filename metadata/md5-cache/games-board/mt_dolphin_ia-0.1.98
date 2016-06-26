@@ -9,5 +9,5 @@ RDEPEND=dev-libs/glib:2 dev-libs/libxml2 dev-games/libmaitretarot dev-games/libm
 SLOT=0
 SRC_URI=https://savannah.nongnu.org/download/maitretarot/mt_dolphin_ia.pkg/0.1.98/mt_dolphin_ia-0.1.98.tar.bz2
 _eclass_exported_funcs=pkg_preinst:games pkg_postinst:games pkg_setup:games src_unpack:base src_prepare:- src_configure:games src_compile:games src_install:-
-_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	792f83d5ec9536cb5ccef375469d8bde	games	2cf0d67d765e6358b435ccda30c13ad8	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	c9d9187f4caa4026a0ceddd8dfceb3c1	user	906f3c8eb3a2350a4f1191a89baa3e46
+_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	792f83d5ec9536cb5ccef375469d8bde	games	2cf0d67d765e6358b435ccda30c13ad8	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	bfd09e8e66991dd5ce9e57610d8d1e6c	user	906f3c8eb3a2350a4f1191a89baa3e46
 _md5_=a23b96d1cb755ca3322b388d57dc8390

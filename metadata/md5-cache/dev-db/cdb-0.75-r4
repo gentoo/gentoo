@@ -9,5 +9,5 @@ RDEPEND=>=sys-apps/sed-4 !dev-db/tinycdb
 SLOT=0
 SRC_URI=http://cr.yp.to/cdb/cdb-0.75.tar.gz
 _eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
-_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	c9d9187f4caa4026a0ceddd8dfceb3c1
+_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	bfd09e8e66991dd5ce9e57610d8d1e6c
 _md5_=010b368acb96dfc1498f2e30351c3806

@@ -9,5 +9,5 @@ RDEPEND=>=app-text/docbook-xsl-stylesheets-1.65 >=app-text/build-docbook-catalog
 SLOT=4.1.2
 SRC_URI=http://www.docbook.org/xml/4.1.2/docbkx412.zip
 _eclass_exported_funcs=pkg_prerm:sgml-catalog pkg_postrm:- pkg_postinst:- src_unpack:- src_compile:sgml-catalog src_install:-
-_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	792f83d5ec9536cb5ccef375469d8bde	multilib	d062ae4ba2fc40a19c11de2ad89b6616	sgml-catalog	b6e9d36507f43d79b6df9cb78d6eb4dd	toolchain-funcs	c9d9187f4caa4026a0ceddd8dfceb3c1
+_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	792f83d5ec9536cb5ccef375469d8bde	multilib	d062ae4ba2fc40a19c11de2ad89b6616	sgml-catalog	b6e9d36507f43d79b6df9cb78d6eb4dd	toolchain-funcs	bfd09e8e66991dd5ce9e57610d8d1e6c
 _md5_=972ad1bcdc687d187e0bdc16b782e7ca
