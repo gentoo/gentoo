@@ -890,10 +890,6 @@ kde-misc/kgtk
 # - no SLOTting yet!
 =dev-scheme/guile-2.0.0
 
-# Markos Chandras <hwoarang@gentoo.org> (01 Nov 2010)
-# Masking alpha releases
-net-analyzer/ncrack
-
 # Mike Frysinger <vapier@gentoo.org> (07 Mar 2010)
 # Very old packages that people should have upgraded away from
 # long ago.  Courtesy mask ... time to upgrade.
