@@ -17,8 +17,10 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="debug exif gps libproxy qrcode qt4 qt5"
 
-REQUIRED_USE="^^ ( qt4 qt5 )"
-
+REQUIRED_USE="
+	^^ ( qt4 qt5 )
+	qrcode? ( qt4 )
+"
 RDEPEND="
 	qt4? (
 		dev-qt/qtcore:4
