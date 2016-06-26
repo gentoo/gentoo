@@ -165,18 +165,6 @@ app-i18n/xsim
 # Removal in 30 days
 sys-fs/redirfs
 
-# Michał Górny <mgorny@gentoo.org> (6 Jun 2016)
-# New PyPy versions, masked for testing.
-~dev-python/pypy-5.1.1
-~dev-python/pypy-5.3.0
-~dev-python/pypy3-5.2.0_alpha1
-~dev-python/pypy-bin-5.1.1
-~dev-python/pypy-bin-5.3.0
-~dev-python/pypy3-bin-5.2.0_alpha1
-~virtual/pypy-5.1.1
-~virtual/pypy-5.3.0
-~virtual/pypy3-5.2.0_alpha1
-
 # Patrice Clement <monsieurp@gentoo.org> (5 Jun 2016)
 # Unmaintained ebuilds. Upstream is either dead or AWOL. Also, most of these
 # ebuilds are still sitting in ~arch after years in the tree.
@@ -642,16 +630,6 @@ dev-python/south
 # but please be careful.
 =net-misc/asterisk-13*
 
-# Aaron W. Swenson <titanofold@gentoo.org> (28 Dec 2014)
-# Split ebuilds are no longer maintained. Migrate to the unified
-# ebuilds invoking the following, substituting SLOT for the desired
-# slot and optionally enabling the server and/or docs USE flags:
-#   emerge dev-db/postgresql:SLOT
-# No further action is required.
-dev-db/postgresql-docs
-dev-db/postgresql-base
-dev-db/postgresql-server
-
 # Jeroen Roovers <jer@gentoo.org> (12 Dec 2014)
 # The 96 and 173 branches are no longer supported and remain vulnerable to
 # CVE-2014-8298 (bug #532342). You may be able to mitigate the vulnerability by
@@ -660,6 +638,8 @@ dev-db/postgresql-server
 
 # Patrick Lauer <patrick@gentoo.org> (24 Nov 2014)
 # Missing deps, uninstallable
+# Michał Górny <mgorny@gentoo.org> (26 Jun 2016)
+# Removal in 14 days, #528198.
 www-apps/trac-downloads
 
 # Michał Górny <mgorny@gentoo.org> (15 Sep 2014)
@@ -747,31 +727,10 @@ app-eselect/eselect-lua
 # Security mask of vulnerable versions, wrt bug #424167
 <net-nds/openldap-2.4.35
 
-# Lars Wendler <polynomial-c@gentoo.org> (14 Mar 2014)
-# Masked for security reasons.
-# Do NOT remove this mask or the affected packages without speaking to
-# bonsaikitten first! You have been warned!
-<net-fs/samba-3.6
-
 # Mike Gilbert <floppym@gentoo.org> (04 Mar 2014)
 # Dev channel releases are only for people who are developers or want more
 # experimental features and accept a more unstable release.
 www-plugins/chrome-binary-plugins:unstable
-
-# Samuli Suominen <ssuominen@gentoo.org> (03 Mar 2014)
-# gnome-extra/polkit-gnome is the "GTK+ polkit agent" and has no extra
-# dependencies that installing lxde-base/lxpolkit would solve, thus
-# the only motivation for creation of lxpolkit was to drop the word
-# 'gnome' from the package's name. The packages are near identical
-# by the outlook, determined by the used GTK+ theme.
-#
-# Raise yourself above the word 'gnome' and install the de facto GTK+ agent:
-# emerge -C lxpolkit
-# emerge -1 polkit-gnome
-#
-# Removal will happen at later date, but since there is no hurry, give it
-# until rest of the year.
-lxde-base/lxpolkit
 
 # Tim Harder <radhermit@gentoo.org> (04 Feb 2014)
 # Mask development releases
