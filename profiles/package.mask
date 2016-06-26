@@ -31,6 +31,12 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (26 Jun 2016)
+# Unmaintained, unused, upstream gone. The only revdep (crow-designer)
+# is already last rited for removal, #587142.
+dev-libs/guiloader
+dev-libs/guiloader-c++
+
+# Michał Górny <mgorny@gentoo.org> (26 Jun 2016)
 # Unmaintained, not updated since 2012. Not really useful for anything.
 # Removal in 30 days, #587138.
 app-portage/pms-test-suite
