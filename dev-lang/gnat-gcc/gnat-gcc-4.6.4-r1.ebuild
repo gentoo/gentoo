@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -9,7 +9,7 @@ DESCRIPTION="GNAT Ada Compiler - gcc version"
 HOMEPAGE="https://gcc.gnu.org/"
 LICENSE="GMGPL"
 
-IUSE="doc lto openmp"
+IUSE="doc openmp"
 
 BOOT_SLOT="4.4"
 

@@ -9,9 +9,6 @@
     <flag name="acats">
       Installs ACATS source under LIBPATH.
     </flag>
-    <flag name="lto">
-      Enable Link Time Optimization (somewhat unsafe).
-    </flag>
   </use>
   <longdescription>
     GNAT, the (GN)U (A)da (T)oolchain, is a high performance Ada 95 development
