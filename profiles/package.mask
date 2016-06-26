@@ -630,16 +630,6 @@ dev-python/south
 # but please be careful.
 =net-misc/asterisk-13*
 
-# Aaron W. Swenson <titanofold@gentoo.org> (28 Dec 2014)
-# Split ebuilds are no longer maintained. Migrate to the unified
-# ebuilds invoking the following, substituting SLOT for the desired
-# slot and optionally enabling the server and/or docs USE flags:
-#   emerge dev-db/postgresql:SLOT
-# No further action is required.
-dev-db/postgresql-docs
-dev-db/postgresql-base
-dev-db/postgresql-server
-
 # Jeroen Roovers <jer@gentoo.org> (12 Dec 2014)
 # The 96 and 173 branches are no longer supported and remain vulnerable to
 # CVE-2014-8298 (bug #532342). You may be able to mitigate the vulnerability by
