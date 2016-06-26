@@ -803,12 +803,6 @@ www-client/google-chrome:unstable
 # See #471512 for more details.
 www-apache/mod_spdy
 
-# Agostino Sarubbo <ago@gentoo.org> (23 Sep 2013)
-# Masked because of vulnerable versions
-# DO NOT REMOVE OLDER VERSIONS
-# temporarily disabled as it also breaks s390 keywording
-#<net-nds/openldap-2.4.35
-
 # Sergey Popov <pinkbyte@gentoo.org> (18 Sep 2013)
 # Mask development releases of botan:
 # - causes many API breakages
