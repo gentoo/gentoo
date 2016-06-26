@@ -22,7 +22,7 @@ inherit multilib
 _tc-getPROG() {
 	local tuple=$1
 	local v var vars=$2
-	local prog=$3
+	local prog=( $3 )
 
 	var=${vars%% *}
 	for v in ${vars} ; do
@@ -34,11 +34,11 @@ _tc-getPROG() {
 	done
 
 	local search=
-	[[ -n $4 ]] && search=$(type -p "$4-${prog}")
-	[[ -z ${search} && -n ${!tuple} ]] && search=$(type -p "${!tuple}-${prog}")
-	[[ -n ${search} ]] && prog=${search##*/}
+	[[ -n $4 ]] && search=$(type -p $4-${prog[0]})
+	[[ -z ${search} && -n ${!tuple} ]] && search=$(type -p ${!tuple}-${prog[0]})
+	[[ -n ${search} ]] && prog[0]=${search##*/}
 
-	export ${var}=${prog}
+	export ${var}="${prog[*]}"
 	echo "${!var}"
 }
 tc-getBUILD_PROG() { _tc-getPROG CBUILD "BUILD_$1 $1_FOR_BUILD HOST$1" "${@:2}"; }
@@ -59,7 +59,7 @@ tc-getCC() { tc-getPROG CC gcc "$@"; }
 # @FUNCTION: tc-getCPP
 # @USAGE: [toolchain prefix]
 # @RETURN: name of the C preprocessor
-tc-getCPP() { tc-getPROG CPP cpp "$@"; }
+tc-getCPP() { tc-getPROG CPP "${CC:-gcc} -E" "$@"; }
 # @FUNCTION: tc-getCXX
 # @USAGE: [toolchain prefix]
 # @RETURN: name of the C++ compiler
@@ -132,7 +132,7 @@ tc-getBUILD_CC() { tc-getBUILD_PROG CC gcc "$@"; }
 # @FUNCTION: tc-getBUILD_CPP
 # @USAGE: [toolchain prefix]
 # @RETURN: name of the C preprocessor for building binaries to run on the build machine
-tc-getBUILD_CPP() { tc-getBUILD_PROG CPP cpp "$@"; }
+tc-getBUILD_CPP() { tc-getBUILD_PROG CPP "$(tc-getBUILD_CC) -E" "$@"; }
 # @FUNCTION: tc-getBUILD_CXX
 # @USAGE: [toolchain prefix]
 # @RETURN: name of the C++ compiler for building binaries to run on the build machine
@@ -583,6 +583,40 @@ tc-endian() {
 		x86_64*)	echo little;;
 		*)			echo wtf;;
 	esac
+}
+
+# @FUNCTION: tc-get-compiler-type
+# @RETURN: keyword identifying the compiler: gcc, clang, pathcc, unknown
+tc-get-compiler-type() {
+	local code='
+#if defined(__PATHSCALE__)
+	HAVE_PATHCC
+#elif defined(__clang__)
+	HAVE_CLANG
+#elif defined(__GNUC__)
+	HAVE_GCC
+#endif
+'
+	local res=$($(tc-getCPP "$@") -E -P - <<<"${code}")
+
+	case ${res} in
+		*HAVE_PATHCC*)	echo pathcc;;
+		*HAVE_CLANG*)	echo clang;;
+		*HAVE_GCC*)		echo gcc;;
+		*)				echo unknown;;
+	esac
+}
+
+# @FUNCTION: tc-is-gcc
+# @RETURN: Shell true if the current compiler is GCC, false otherwise.
+tc-is-gcc() {
+	[[ $(tc-get-compiler-type) == gcc ]]
+}
+
+# @FUNCTION: tc-is-clang
+# @RETURN: Shell true if the current compiler is clang, false otherwise.
+tc-is-clang() {
+	[[ $(tc-get-compiler-type) == clang ]]
 }
 
 # Internal func.  The first argument is the version info to expand.
