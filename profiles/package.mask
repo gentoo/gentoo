@@ -532,10 +532,6 @@ dev-python/south
 # Mask live ebuild
 =dev-util/radare2-9999
 
-# Anthony G. Basile <blueness@gentoo.org> (9 Jan 2015)
-# p.mask the -9999 version
-=dev-misc/i2pd-9999
-
 # Tony Vroon <chainsaw@gentoo.org> (5 Jan 2015)
 # Asterisk 13 is an LTS release but has not seen
 # sufficient releases to be considered ready for
