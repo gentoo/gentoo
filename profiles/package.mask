@@ -278,11 +278,6 @@ www-client/luakit
 # See tracker bug https://bugs.gentoo.org/583478
 >=app-text/hunspell-1.4.0
 
-# David Seifert <soap@gentoo.org> (15 May 2016)
-# Masked for removal. Deprecated, relies on ancient CUDA APIs,
-# does not build with current CUDA releases. See bug #583068.
-sci-libs/torch
-
 # Alon Bar-Lev <alonbl@gentoo.org) (13 May 2016)
 # Force gnutls-3.4 testing so we can stabilize it.
 >=net-libs/gnutls-3.5.0
