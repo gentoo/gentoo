@@ -758,21 +758,6 @@ app-eselect/eselect-lua
 # experimental features and accept a more unstable release.
 www-plugins/chrome-binary-plugins:unstable
 
-# Samuli Suominen <ssuominen@gentoo.org> (03 Mar 2014)
-# gnome-extra/polkit-gnome is the "GTK+ polkit agent" and has no extra
-# dependencies that installing lxde-base/lxpolkit would solve, thus
-# the only motivation for creation of lxpolkit was to drop the word
-# 'gnome' from the package's name. The packages are near identical
-# by the outlook, determined by the used GTK+ theme.
-#
-# Raise yourself above the word 'gnome' and install the de facto GTK+ agent:
-# emerge -C lxpolkit
-# emerge -1 polkit-gnome
-#
-# Removal will happen at later date, but since there is no hurry, give it
-# until rest of the year.
-lxde-base/lxpolkit
-
 # Tim Harder <radhermit@gentoo.org> (04 Feb 2014)
 # Mask development releases
 =media-sound/lilypond-2.19*
