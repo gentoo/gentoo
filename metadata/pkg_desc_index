@@ -336,7 +336,6 @@ app-arch/zoo 2.10-r4: Manipulate archives of files in compressed form
 app-arch/zopfli 1.0.0 1.0.0_p20140705 1.0.0_p20141006 1.0.1: Very good, but slow, deflate or zlib compression
 app-arch/zpaq 6.53 7.04 7.13: Journaling incremental deduplicating archiving compressor
 app-arch/zpaq-extras 3: A set of additional compression profiles for app-arch/zpaq
-app-arch/zpipe 2.01-r1: Pipe compressor/decompressor for ZPAQ
 app-backup/amanda 3.3.3 3.3.3-r1 3.3.5 3.3.7 3.3.9: The Advanced Maryland Automatic Network Disk Archiver
 app-backup/attic 0.16 9999: Attic is a deduplicating backup program written in Python.
 app-backup/backintime 1.1.8-r1 1.1.12: Backup system inspired by TimeVault and FlyBack, with a GUI for GNOME and KDE4
@@ -4585,7 +4584,6 @@ dev-libs/gtx 0.2.2: Small collection of convenience functions intended to enhanc
 dev-libs/guiloader 2.21.0 2.99.0: library to create GTK+ interfaces from GuiXml at runtime
 dev-libs/guiloader-c++ 2.21.0-r1 2.99.0: C++ binding to GuiLoader library
 dev-libs/gumbo 0.9.2 0.9.3 0.9.4 0.10.1: An implementation of the HTML5 parsing algorithm implemented as a pure C99 library
-dev-libs/hammer 9999: Hammer is a parsing library, which is bit-oriented and features several parsing backends
 dev-libs/handystats 1.11.0 1.11.1 1.11.3: C++ library for collecting user-defined in-process runtime statistics with low overhead.
 dev-libs/hashit 0.9.7-r1: Generic C hash library which supports multiple collision handling methods
 dev-libs/hidapi 0.8.0_rc1_p20140719: A multi-platform library for USB and Bluetooth HID-Class devices
@@ -5706,7 +5704,6 @@ dev-perl/Gtk2-Ex-Simple-List 0.500.0-r1: A simple interface to Gtk2's complex MV
 dev-perl/Gtk2-ImageView 0.50.0-r1: Perl binding for the GtkImageView image viewer widget
 dev-perl/Gtk2-Notify 0.05-r1: A perl interface to the notification library
 dev-perl/Gtk2-Unique 0.50.0-r1: Perl binding for C libunique library
-dev-perl/Gtk2-WebKit 0.90.0-r1: Web content engine library for Gtk2
 dev-perl/Guard 1.23.0: Safe cleanup blocks
 dev-perl/HTML-Clean 0.800.0-r1: Cleans up HTML code for web browsers, not humans
 dev-perl/HTML-Element-Extended 1.180.0-r1: Extension for manipulating a table composed of HTML::Element style components
@@ -6986,7 +6983,6 @@ dev-python/bottleneck 0.8.0 1.0.0: Fast NumPy array functions written in Cython
 dev-python/bpython 0.13.2 0.14 0.14.2 0.15: Syntax highlighting and autocompletion for the Python interpreter
 dev-python/brython 3.2.6: A Python 3 implementation for client-side web programming
 dev-python/bsddb3 6.0.1 6.1.0 6.1.1 6.2.1: Python bindings for Berkeley DB
-dev-python/buildutils 0.3-r1: Extensions for developing Python libraries and applications
 dev-python/buzhug 1.8-r1: Fast, pure-Python database engine, using a syntax that Python programmers should find very intuitive
 dev-python/bytecodeassembler 0.6: Generate Python code objects by assembling bytecode
 dev-python/cached-property 0.1.5 1.0.0 1.2.0: A cached-property for decorating methods in classes
@@ -10881,7 +10877,6 @@ games-sports/ski 6.8 6.9: A simple text-mode skiing game
 games-sports/speed-dreams 1.4.0: A fork of the famous open racing car simulator TORCS
 games-sports/stormbaancoureur 2.1.6: Simulated obstacle course for automobiles
 games-sports/torcs 1.3.6: The Open Racing Car Simulator
-games-sports/toycars 0.3.10: a physics based 2-D racer inspired by Micro Machines
 games-sports/trigger 0.6.1: Free OpenGL rally car racing game
 games-sports/trophy 2.0.3: 2D Racing Game
 games-sports/ultimatestunts 0.7.7: Remake of the famous Stunts game
@@ -11271,7 +11266,6 @@ kde-apps/kdepim-wizards 4.4.2015.06 4.4.2016.01: KDE PIM wizards (noakonadi bran
 kde-apps/kdepimlibs 4.14.10 4.14.11_pre20160211: Common library for KDE PIM apps
 kde-apps/kdesdk-kioslaves 4.14.3 15.12.3 16.04.1: kioslaves from kdesdk package
 kde-apps/kdesdk-meta 4.14.3 15.12.3 16.04.1: KDE SDK - merge this to pull in all kdesdk-derived packages
-kde-apps/kdesdk-strigi-analyzer 4.14.3: kdesdk: strigi plugins
 kde-apps/kdesdk-thumbnailers 15.12.3 16.04.1: Thumbnail generator for PO files
 kde-apps/kdesu 4.14.3 15.12.3 16.04.1: KDE gui for su(1)
 kde-apps/kdeutils-meta 4.14.3 15.12.3 16.04.1: kdeutils - merge this to pull in all kdeutils-derived packages
@@ -11423,7 +11417,6 @@ kde-apps/mplayerthumbs 4.14.3 15.12.3: Thumbnail Generator for Video Files on KD
 kde-apps/nsplugins 4.14.3 15.12.3 16.04.1: Netscape plugins support for Konqueror
 kde-apps/okteta 4.14.3 15.12.3 16.04.1: KDE hexeditor
 kde-apps/okular 4.14.3 15.12.3 16.04.1: Universal document viewer based on KPDF
-kde-apps/pairs 4.14.3 15.04.3: KDE memory and pairs game
 kde-apps/palapeli 4.14.3 15.12.3 16.04.1: KDE jigsaw puzzle game
 kde-apps/parley 4.14.3 15.12.3 16.04.1: A vocabulary trainer to help you memorize things
 kde-apps/phonon-kde 4.14.3 15.12.3 16.04.1: Phonon KDE Integration
@@ -13475,7 +13468,6 @@ media-tv/nvtv 0.4.7-r2: TV-Out for NVidia cards
 media-tv/shoutcast2vdr 0.0.8 0.0.8-r1: VDR script: generate shoutcast playlists
 media-tv/tvbrowser 3.4.1.0-r1 3.4.3 9999-r1: Themeable and easy to use TV Guide - written in Java
 media-tv/tvheadend 3.4.27 4.0.6 4.0.8 4.0.9 9999: Tvheadend is a TV streaming server and digital video recorder
-media-tv/tvmovie2vdr 0.5.13: load the program guide from tvmovie and others to vdr
 media-tv/tvnamer 2.3: Automatic TV episode file renamer, data from thetvdb.com
 media-tv/v4l-dvb-saa716x 0.0.1_p20140322 0.0.1_p20141109 0.0.1_p20141109-r1 0.0.1_p20141109-r2: driver for saa716x based dvb cards like Technotrend S2-6400 or Technisat Skystar 2 eXpress HD
 media-tv/v4l-utils 1.6.2 1.10.1: Separate utilities ebuild from upstream v4l-utils package
@@ -14213,7 +14205,6 @@ net-irc/epic4 2.10.1: Epic4 IRC Client
 net-irc/epic5 1.1.10-r1: Epic5 IRC Client
 net-irc/hexchat 2.10.2 2.10.2-r1 9999: Graphical IRC client based on XChat
 net-irc/ii 1.6 1.7: A minimalist FIFO and filesystem-based IRC client
-net-irc/iip 1.2: Proxy server for encrypted anonymous IRC-like network
 net-irc/inspircd 2.0.20 2.0.21: Inspire IRCd - The Stable, High-Performance Modular IRCd
 net-irc/irc-client 2.10.3_p7: A simplistic RFC compliant IRC client
 net-irc/irc-server 2.11.1_p1-r3: RFC compliant IRC server
@@ -14299,7 +14290,6 @@ net-libs/gupnp-igd 0.2.2-r1 0.2.3-r1 0.2.4: Library to handle UPnP IGD port mapp
 net-libs/gupnp-ui 0.1.1: Collection of simple GTK+ widgets on top of GUPnP
 net-libs/h323plus 1.25.0-r1 1.25.0-r2: Open Source implementation of the ITU H.323 teleconferencing protocol, successor to OpenH323
 net-libs/http-parser 2.3 2.4.1 2.4.2 2.5.0 2.6.1 2.6.2: Http request/response parser for C
-net-libs/hubbub 0.1.2 0.1.2-r1: HTML5 compliant parsing library, written in C
 net-libs/iax 0.2.2 0.2.2-r1 0.2.2-r3: IAX (Inter Asterisk eXchange) Library
 net-libs/ignition-transport 1.1.0 1.2.0: Combines ZeroMQ with Protobufs to create a fast and efficient message passing system
 net-libs/jreen 1.2.1: Qt XMPP library
@@ -15784,8 +15774,6 @@ sci-geosciences/osm2mp 0.80: Converts openstreetmap data to mp format (used e. g
 sci-geosciences/osm2pgsql 0.84.0 0.86.0 0.87.0 0.87.1 0.88.1 0.90.0 99999999: Converts OSM planet.osm data to a PostgreSQL/PostGIS database
 sci-geosciences/osmosis 0.35.1: Commandline tool to process openstreetmap data
 sci-geosciences/qgis 1.8.0 2.12.1 2.12.2: User friendly Geographic Information System
-sci-geosciences/qlandkartegt 1.7.6-r2 1.7.7 1.8.0 1.8.1: View and upload map files, track and waypoint data to your Garmin GPS device
-sci-geosciences/qlandkartegt-garmindev 0.3.4: Garmin drivers for qlandkartegt
 sci-geosciences/qmapshack 1.3.0 1.5.1 1.6.1-r1: GPS mapping utility
 sci-geosciences/readosm 1.0.0 1.0.0e: A complete Spatial DBMS in a nutshell built upon sqlite
 sci-geosciences/routino 3.0_p1: Routing application based on openstreetmap data
@@ -16021,7 +16009,6 @@ sci-libs/ta-lib 0.4.0: Technical Analysis Library for analyzing financial market
 sci-libs/tamu_anova 0.2.1: ANOVA Extensions to the GNU Scientific Library
 sci-libs/taucs 2.2: C library of sparse linear solvers
 sci-libs/tnt 1.2.6 3.0.12: Template Numerical Toolkit: C++ headers for array and matrices
-sci-libs/torch 3 3.1: Machine-learning library, written in simple C++
 sci-libs/udunits 2.1.24-r1 2.2.20: Library for manipulating units of physical quantities
 sci-libs/ufconfig 3.5.0 3.6.1 3.7.0 3.7.1: Common configuration scripts for the SuiteSparse libraries
 sci-libs/umfpack 5.2.0 5.6.2: Unsymmetric multifrontal sparse LU factorization library
@@ -18181,7 +18168,6 @@ x11-libs/libva 1.6.2 1.7.0 1.7.1 9999: Video Acceleration (VA) API for Linux
 x11-libs/libva-intel-driver 1.6.2 1.7.0 1.7.1 9999: HW video decode support for Intel integrated graphics
 x11-libs/libva-vdpau-driver 0.7.4-r2 0.7.4-r3 9999: VDPAU Backend for Video Acceleration (VA) API
 x11-libs/libvdpau 1.1.1: VDPAU wrapper and trace libraries
-x11-libs/libview 0.6.6-r2: VMware's Incredibly Exciting Widgets
 x11-libs/libwnck 2.31.0 3.14.0 3.14.1: A window navigation construction kit
 x11-libs/libxcb 1.9.1 1.9.1-r1 1.9.3 1.9.3-r1 1.10 1.11 1.11-r1 1.11.1 1.12: X C-language Bindings library
 x11-libs/libxkbcommon 0.5.0 0.6.0 0.6.1: X.Org xkbcommon library

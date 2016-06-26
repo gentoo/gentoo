@@ -6834,11 +6834,6 @@ sci-geosciences/qgis:bundled-libs - Use internal copy of x11-libs/qwtpolar
 sci-geosciences/qgis:grass - Add support for sci-geosciences/grass
 sci-geosciences/qgis:mapserver - Determines whether mapserver should be built
 sci-geosciences/qgis:spatialite - Enable Spatial DBMS over sqlite dev-db/spatialite
-sci-geosciences/qlandkartegt:dmtx - Enable libdmtx support for summarizing waypoints as 2D barcode
-sci-geosciences/qlandkartegt:gpsbabel - Enable support for wide range of geodata file formats
-sci-geosciences/qlandkartegt:gpx-extensions - Enable support for GPX extensions
-sci-geosciences/qlandkartegt:mikrokopter - Enable telemtry with a mikrokopter
-sci-geosciences/qlandkartegt:rmap - Enable support for TwoNav RMAP file format
 sci-geosciences/viking:libexif - Use media-libs/libexif for EXIF support
 sci-geosciences/viking:magic - Use libmagic to determine mimetypes
 sci-geosciences/viking:mapnik - Enable a layer based on sci-geosciences/mapnik
