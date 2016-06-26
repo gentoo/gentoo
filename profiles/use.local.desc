@@ -1807,7 +1807,6 @@ dev-lang/ghc:ghcbootstrap - Bootstrap from an existing GHC installation.
 dev-lang/ghc:ghcmakebinary - Build with less runtime depends (bundle libffi for building bootstrap binaries).
 dev-lang/ghc:llvm - Enable llvm code generator for ghc (-fllvm).
 dev-lang/gnat-gcc:acats - Installs ACATS source under LIBPATH.
-dev-lang/gnat-gcc:lto - Enable Link Time Optimization (somewhat unsafe).
 dev-lang/go:gccgo - Enable bootstrapping using gccgo
 dev-lang/icon:iplsrc - install the icon programming library source
 dev-lang/io:clutter - Build add-on for media-libs/clutter

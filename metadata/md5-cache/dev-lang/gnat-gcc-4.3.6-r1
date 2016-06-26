@@ -1,14 +1,14 @@
-DEFINED_PHASES=compile install postinst postrm setup unpack
-DEPEND=>=dev-libs/mpfr-2.3.1:* >=dev-libs/gmp-4.2.2:* >=sys-libs/zlib-1.1.4 >=sys-libs/ncurses-5.2-r2:0 <sys-apps/texinfo-5.1 >=sys-devel/bison-1.875 >=sys-libs/glibc-2.8 >=sys-devel/binutils-2.15.94 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=sys-apps/sed-4 sys-devel/gnuconfig >=app-eselect/eselect-gnat-1.3 sys-devel/bc
+DEFINED_PHASES=compile unpack
+DEPEND=>=dev-libs/mpfr-2.3.1:* >=dev-libs/gmp-4.2.2:* >=sys-libs/zlib-1.1.4 >=sys-libs/ncurses-5.2-r2:0 <sys-apps/texinfo-5.1 >=sys-devel/bison-1.875 >=sys-libs/glibc-2.8 >=sys-devel/binutils-2.15.94 >=sys-apps/sed-4 sys-devel/gnuconfig app-eselect/eselect-gnat virtual/libiconv nls? ( virtual/libintl ) >=app-eselect/eselect-gnat-1.3-r1 >=sys-libs/glibc-2.12 >=sys-devel/binutils-2.23 sys-devel/bc >=sys-devel/bison-1.875 >=sys-devel/flex-2.5.4 nls? ( sys-devel/gettext )
 DESCRIPTION=GNAT Ada Compiler - gcc version
 EAPI=5
 HOMEPAGE=https://gcc.gnu.org/
-IUSE=doc lto nls
+IUSE=doc nls
 KEYWORDS=~amd64 ~ppc ~x86
 LICENSE=GMGPL
-RDEPEND=>=dev-libs/mpfr-2.3.1:* >=dev-libs/gmp-4.2.2:* >=sys-libs/zlib-1.1.4 >=sys-libs/ncurses-5.2-r2:0 app-eselect/eselect-gnat
+RDEPEND=>=dev-libs/mpfr-2.3.1:* >=dev-libs/gmp-4.2.2:* >=sys-libs/zlib-1.1.4 >=sys-libs/ncurses-5.2-r2:0 app-eselect/eselect-gnat virtual/libiconv nls? ( virtual/libintl )
 SLOT=4.3
 SRC_URI=ftp://gcc.gnu.org/pub/gcc/releases/gcc-4.3.6/gcc-core-4.3.6.tar.bz2 ftp://gcc.gnu.org/pub/gcc/releases/gcc-4.3.6/gcc-ada-4.3.6.tar.bz2 amd64? ( https://dev.gentoo.org/~george/src/gnatboot-4.3-amd64.tar.bz2 ) x86? ( https://dev.gentoo.org/~george/src/gnatboot-4.3-i686.tar.bz2 ) ppc? ( https://dev.gentoo.org/~george/src/gnatboot-4.1-ppc.tar.bz2 )
-_eclass_exported_funcs=pkg_postrm:gnatbuild pkg_postinst:gnatbuild pkg_setup:gnatbuild src_unpack:- src_compile:- src_install:gnatbuild
-_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	792f83d5ec9536cb5ccef375469d8bde	fixheadtails	2f44773656577fe2653bacc8bdcb2174	flag-o-matic	d270fa247153df66074f795fa42dba3e	gnatbuild	d35ec9fa00b26c1fa3a1297c83e4cb12	gnuconfig	3920de1188fc7bfee873515453ed1d10	libtool	4890219c51da247200223277f993e054	multilib	d062ae4ba2fc40a19c11de2ad89b6616	pax-utils	ecf634cba91bb9591a8fdb6f6145f1bb	toolchain-funcs	c9d9187f4caa4026a0ceddd8dfceb3c1	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=0e54d5e28d4fd2bdb18c1abeb7a36b47
+_eclass_exported_funcs=src_unpack:- src_compile:-
+_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	fixheadtails	2f44773656577fe2653bacc8bdcb2174	flag-o-matic	d270fa247153df66074f795fa42dba3e	gnatbuild	d597b04fed8c40bab46c23ae2e7de68d	gnuconfig	3920de1188fc7bfee873515453ed1d10	libtool	4890219c51da247200223277f993e054	multilib	d062ae4ba2fc40a19c11de2ad89b6616	pax-utils	ecf634cba91bb9591a8fdb6f6145f1bb	toolchain-funcs	c9d9187f4caa4026a0ceddd8dfceb3c1	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=b426b7fdd5d4399f6d774a461de99193

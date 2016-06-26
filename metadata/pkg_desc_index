@@ -17454,7 +17454,7 @@ virtual/ffmpeg 0.10.3 0.10.3-r1 9 9-r1 9-r2: Virtual package for FFmpeg executab
 virtual/fortran 0: Virtual for Fortran Compiler
 virtual/freedesktop-icon-theme 0: A virtual to choose between different icon themes
 virtual/glu 9.0 9.0-r1: Virtual for OpenGL utility library
-virtual/gnat 3.4 4.1 4.2 4.3 4.4 4.9: Virtual for the gnat compiler selection
+virtual/gnat 3.4 4.1 4.2 4.3 4.4 4.6 4.9: Virtual for the gnat compiler selection
 virtual/gnustep-back 0.22.0 0.23.0 0.24.0 0.24.1: Virtual for back-end component for the GNUstep GUI Library
 virtual/gsasl 2: Virtual for the GNU SASL library
 virtual/httpd-basic 0-r1 0-r2: Virtual for static HTML-enabled webservers
