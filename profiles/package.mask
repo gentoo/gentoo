@@ -30,6 +30,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Aaron Bauman <bman@gentoo.org> (26 Jun 2016)
+# Unpatched security vulnerability and dead upstream
+# per bug #475120.  Removal in 30 days
+media-video/motion
+
+
 # Michał Górny <mgorny@gentoo.org> (25 Jun 2016)
 # Obsolete packages for removal in 30 days. Replacements and bugs:
 # dev-ml/comparelib -> dev-ml/ppx_compare, #586904
