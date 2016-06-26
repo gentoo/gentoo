@@ -1,0 +1,140 @@
+commit 59740e7416bb2b3a9852212fa4b213e5ba76deb7
+Author: Andreas Hartmetz <ahartmetz@gmail.com>
+Date:   Thu Jun 23 19:40:40 2016 +0200
+
+    Revert "Remove saving and loading (and client matching by) WM_COMMAND."
+    
+    This reverts commit 2eac7634cc524bf5e425cf081a639a6b6407e380.
+    
+    CCBUG: 362671
+
+diff --git a/activities.cpp b/activities.cpp
+index 25eb1c1..42c5db8 100644
+--- a/activities.cpp
++++ b/activities.cpp
+@@ -169,7 +169,7 @@ void Activities::reallyStop(const QString &id)
+         const Client* c = (*it);
+         const QByteArray sessionId = c->sessionId();
+         if (sessionId.isEmpty()) {
+-            continue;
++            continue; //TODO support old wm_command apps too?
+         }
+ 
+         //qDebug() << sessionId;
+diff --git a/sm.cpp b/sm.cpp
+index 08810a4..ca1edea 100644
+--- a/sm.cpp
++++ b/sm.cpp
+@@ -109,8 +109,12 @@ void Workspace::storeSession(KConfig* config, SMSavePhase phase)
+     for (ClientList::Iterator it = clients.begin(); it != clients.end(); ++it) {
+         Client* c = (*it);
+         QByteArray sessionId = c->sessionId();
++        QByteArray wmCommand = c->wmCommand();
+         if (sessionId.isEmpty())
+-            continue;
++            // remember also applications that are not XSMP capable
++            // and use the obsolete WM_COMMAND / WM_SAVE_YOURSELF
++            if (wmCommand.isEmpty())
++                continue;
+         count++;
+         if (c->isActive())
+             active_client = count;
+@@ -140,6 +144,7 @@ void Workspace::storeClient(KConfigGroup &cg, int num, Client *c)
+     QString n = QString::number(num);
+     cg.writeEntry(QLatin1String("sessionId") + n, c->sessionId().constData());
+     cg.writeEntry(QLatin1String("windowRole") + n, c->windowRole().constData());
++    cg.writeEntry(QLatin1String("wmCommand") + n, c->wmCommand().constData());
+     cg.writeEntry(QLatin1String("resourceName") + n, c->resourceName().constData());
+     cg.writeEntry(QLatin1String("resourceClass") + n, c->resourceClass().constData());
+     cg.writeEntry(QLatin1String("geometry") + n, QRect(c->calculateGravitation(true), c->clientSize()));   // FRAME
+@@ -180,8 +185,12 @@ void Workspace::storeSubSession(const QString &name, QSet<QByteArray> sessionIds
+     for (ClientList::Iterator it = clients.begin(); it != clients.end(); ++it) {
+         Client* c = (*it);
+         QByteArray sessionId = c->sessionId();
++        QByteArray wmCommand = c->wmCommand();
+         if (sessionId.isEmpty())
+-            continue;
++            // remember also applications that are not XSMP capable
++            // and use the obsolete WM_COMMAND / WM_SAVE_YOURSELF
++            if (wmCommand.isEmpty())
++                continue;
+         if (!sessionIds.contains(sessionId))
+             continue;
+ 
+@@ -221,6 +230,7 @@ void Workspace::addSessionInfo(KConfigGroup &cg)
+         session.append(info);
+         info->sessionId = cg.readEntry(QLatin1String("sessionId") + n, QString()).toLatin1();
+         info->windowRole = cg.readEntry(QLatin1String("windowRole") + n, QString()).toLatin1();
++        info->wmCommand = cg.readEntry(QLatin1String("wmCommand") + n, QString()).toLatin1();
+         info->resourceName = cg.readEntry(QLatin1String("resourceName") + n, QString()).toLatin1();
+         info->resourceClass = cg.readEntry(QLatin1String("resourceClass") + n, QString()).toLower().toLatin1();
+         info->geometry = cg.readEntry(QLatin1String("geometry") + n, QRect());
+@@ -269,6 +279,7 @@ SessionInfo* Workspace::takeSessionInfo(Client* c)
+     SessionInfo *realInfo = 0;
+     QByteArray sessionId = c->sessionId();
+     QByteArray windowRole = c->windowRole();
++    QByteArray wmCommand = c->wmCommand();
+     QByteArray resourceName = c->resourceName();
+     QByteArray resourceClass = c->resourceClass();
+ 
+@@ -302,8 +313,10 @@ SessionInfo* Workspace::takeSessionInfo(Client* c)
+             if (info->resourceName == resourceName
+                     && info->resourceClass == resourceClass
+                     && sessionInfoWindowTypeMatch(c, info)) {
+-                realInfo = info;
+-                session.removeAll(info);
++                if (wmCommand.isEmpty() || info->wmCommand == wmCommand) {
++                    realInfo = info;
++                    session.removeAll(info);
++                }
+             }
+         }
+     }
+diff --git a/sm.h b/sm.h
+index 4c5fda6..529187d 100644
+--- a/sm.h
++++ b/sm.h
+@@ -41,6 +41,7 @@ class Client;
+ struct SessionInfo {
+     QByteArray sessionId;
+     QByteArray windowRole;
++    QByteArray wmCommand;
+     QByteArray wmClientMachine;
+     QByteArray resourceName;
+     QByteArray resourceClass;
+diff --git a/toplevel.cpp b/toplevel.cpp
+index af368b5..4a7ec6d 100644
+--- a/toplevel.cpp
++++ b/toplevel.cpp
+@@ -177,6 +177,19 @@ QByteArray Toplevel::sessionId() const
+     return result;
+ }
+ 
++/*!
++  Returns command property for this client,
++  taken either from its window or from the leader window.
++ */
++QByteArray Toplevel::wmCommand()
++{
++    QByteArray result = Xcb::StringProperty(window(), XCB_ATOM_WM_COMMAND);
++    if (result.isEmpty() && wmClientLeaderWin && wmClientLeaderWin != window())
++        result = Xcb::StringProperty(wmClientLeaderWin, XCB_ATOM_WM_COMMAND);
++    result.replace(0, ' ');
++    return result;
++}
++
+ void Toplevel::getWmClientMachine()
+ {
+     m_clientMachine->resolve(window(), wmClientLeader());
+diff --git a/toplevel.h b/toplevel.h
+index 3133851..91eee5f 100644
+--- a/toplevel.h
++++ b/toplevel.h
+@@ -274,6 +274,7 @@ public:
+     QByteArray sessionId() const;
+     QByteArray resourceName() const;
+     QByteArray resourceClass() const;
++    QByteArray wmCommand();
+     QByteArray wmClientMachine(bool use_localhost) const;
+     const ClientMachine *clientMachine() const;
+     Window wmClientLeader() const;

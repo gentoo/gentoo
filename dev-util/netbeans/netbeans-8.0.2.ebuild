@@ -20,6 +20,7 @@ SRC_URI="l10n_af? ( ${ALL_URLS} )
 	l10n_de? ( ${ALL_URLS} )
 	l10n_el? ( ${ALL_URLS} )
 	l10n_es? ( ${ALL_URLS} )
+	l10n_fil? ( ${ALL_URLS} )
 	l10n_fr? ( ${ALL_URLS} )
 	l10n_gl? ( ${ALL_URLS} )
 	l10n_hi? ( ${ALL_URLS} )
@@ -39,7 +40,6 @@ SRC_URI="l10n_af? ( ${ALL_URLS} )
 	l10n_sr? ( ${ALL_URLS} )
 	l10n_sv? ( ${ALL_URLS} )
 	l10n_ta? ( ${ALL_URLS} )
-	l10n_tl? ( ${ALL_URLS} )
 	l10n_tr? ( ${ALL_URLS} )
 	l10n_vi? ( ${ALL_URLS} )
 	l10n_zh-CN? ( ${ALL_URLS} )
@@ -72,6 +72,7 @@ IUSE_L10N="
 	l10n_de
 	l10n_el
 	l10n_es
+	l10n_fil
 	l10n_fr
 	l10n_gl
 	l10n_hi
@@ -91,7 +92,6 @@ IUSE_L10N="
 	l10n_sr
 	l10n_sv
 	l10n_ta
-	l10n_tl
 	l10n_tr
 	l10n_vi
 	l10n_zh-CN
