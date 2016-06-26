@@ -516,26 +516,6 @@ dev-libs/iniparser:4
 # See #551724 and duplicates
 =sys-fs/udev-init-scripts-29
 
-# Michał Górny <mgorny@gentoo.org> (28 Mar 2015)
-# on behalf of gx86-multilib project <multilib@gentoo.org>
-# Removed lastrited emul-linux-x86. The mask is kept post-removal
-# per Arfrever's request so that the PM warns about masked packages
-# being installed.
-app-emulation/emul-linux-x86-baselibs
-app-emulation/emul-linux-x86-cpplibs
-app-emulation/emul-linux-x86-db
-app-emulation/emul-linux-x86-gstplugins
-app-emulation/emul-linux-x86-gtklibs
-app-emulation/emul-linux-x86-gtkmmlibs
-app-emulation/emul-linux-x86-medialibs
-app-emulation/emul-linux-x86-motif
-app-emulation/emul-linux-x86-opengl
-app-emulation/emul-linux-x86-qtlibs
-app-emulation/emul-linux-x86-sdl
-app-emulation/emul-linux-x86-soundlibs
-app-emulation/emul-linux-x86-xlibs
-app-emulation/emul-linux-x86-jna
-
 # Justin Lecher <jlec@gentoo.org> (28 Feb 2015)
 # Unfixed security problems
 # No upstream support anymore
