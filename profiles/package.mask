@@ -341,12 +341,6 @@ dev-libs/libtomcrypt
 =dev-lisp/asdf-3.1.7
 =dev-lisp/uiop-3.1.7
 
-# Andreas K. Huettel <dilfridge@gentoo.org> (19 Mar 2016)
-# Dead upstream since 2010, new VMware uses new incompatible
-# proprietary libview. No other consumers. Removal in 30 days.
-# Bug 569930
-x11-libs/libview
-
 # Aaron Bauman <bman@gentoo.org> (19 Mar 2016)
 # Unpatched security vulnerability per bug #512356.
 # Masked for removal in 30 days.
