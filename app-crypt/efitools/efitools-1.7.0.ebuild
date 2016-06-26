@@ -3,14 +3,10 @@
 # $Id$
 
 EAPI="5"
-inherit git-r3
 
 DESCRIPTION="Tools for manipulating UEFI secure boot platforms"
 HOMEPAGE="https://git.kernel.org/cgit/linux/kernel/git/jejb/efitools.git"
-SRC_URI=""
-
-EGIT_REPO_URI="git://git.kernel.org/pub/scm/linux/kernel/git/jejb/efitools.git"
-EGIT_COMMIT="v1.7.0"
+SRC_URI="https://git.kernel.org/cgit/linux/kernel/git/jejb/efitools.git/snapshot/v${PV}.tar.bz2 -> ${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -27,3 +23,5 @@ DEPEND="${RDEPEND}
 	app-crypt/sbsigntool
 	virtual/pkgconfig
 	dev-perl/File-Slurp"
+
+S=${WORKDIR}/v${PV}
