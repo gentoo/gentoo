@@ -747,12 +747,6 @@ app-eselect/eselect-lua
 # Security mask of vulnerable versions, wrt bug #424167
 <net-nds/openldap-2.4.35
 
-# Lars Wendler <polynomial-c@gentoo.org> (14 Mar 2014)
-# Masked for security reasons.
-# Do NOT remove this mask or the affected packages without speaking to
-# bonsaikitten first! You have been warned!
-<net-fs/samba-3.6
-
 # Mike Gilbert <floppym@gentoo.org> (04 Mar 2014)
 # Dev channel releases are only for people who are developers or want more
 # experimental features and accept a more unstable release.
