@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
+EAPI=5
 
 inherit findlib eutils
 
@@ -12,7 +12,7 @@ SRC_URI="https://github.com/yoriyuki/Camomile/releases/download/rel-${PV}/${P}.t
 
 LICENSE="LGPL-2"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ppc x86"
 IUSE="debug +ocamlopt"
 
 RDEPEND="
