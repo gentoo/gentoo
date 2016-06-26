@@ -165,18 +165,6 @@ app-i18n/xsim
 # Removal in 30 days
 sys-fs/redirfs
 
-# Michał Górny <mgorny@gentoo.org> (6 Jun 2016)
-# New PyPy versions, masked for testing.
-~dev-python/pypy-5.1.1
-~dev-python/pypy-5.3.0
-~dev-python/pypy3-5.2.0_alpha1
-~dev-python/pypy-bin-5.1.1
-~dev-python/pypy-bin-5.3.0
-~dev-python/pypy3-bin-5.2.0_alpha1
-~virtual/pypy-5.1.1
-~virtual/pypy-5.3.0
-~virtual/pypy3-5.2.0_alpha1
-
 # Patrice Clement <monsieurp@gentoo.org> (5 Jun 2016)
 # Unmaintained ebuilds. Upstream is either dead or AWOL. Also, most of these
 # ebuilds are still sitting in ~arch after years in the tree.
