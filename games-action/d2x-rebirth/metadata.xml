@@ -8,7 +8,7 @@
   <use>
     <flag name="demo">Install <pkg>games-action/descent2-demodata</pkg> as well</flag>
     <flag name="music">Support for ingame music</flag>
-    <flag name="linguas_de">Provides German translations for the game's
+    <flag name="l10n_de">Provides German translations for the game's
       briefings, robot descriptions, and outro of the original campaign</flag>
     <flag name="opl3-musicpack">Include alternate version of the game's music, recorded
       with the Yamaha YMF262 OPL3 soundchip</flag>
