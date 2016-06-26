@@ -711,13 +711,6 @@ sci-geosciences/googleearth
 # Masked to ensure users are aware before they install.
 app-text/cuneiform
 
-# Rick Farina <zerochaos@gentoo.org> (21 Dec 2012)
-# madwifi has been replaced by ath5k and ath9k in kernel
-# drivers and is subject to numerous long standing bugs
-# stable wpa_supplicant sometimes wants madwifi-ng-tools
-#net-wireless/madwifi-ng-tools
-net-wireless/madwifi-ng
-
 # Robin H. Johnson <robbat2@gentoo.org> (09 Feb 2012)
 # Needs to be slotted better
 # Andreas K. Hüttel <dilfridge@gentoo.org> (08 Apr 2016)

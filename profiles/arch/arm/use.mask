@@ -112,7 +112,6 @@ nvtv
 mzscheme
 xemacs
 scanner
-madwifi
 libupnp
 zvbi
 fluidsynth
