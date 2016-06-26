@@ -15220,8 +15220,6 @@ net-wireless/kismet 2013.03.1-r2 2016.01.1 9999: IEEE 802.11 wireless LAN sniffe
 net-wireless/kismet-ubertooth 2015.09.2 2015.10.1 9999: Provides basic bluetooth support in kismet
 net-wireless/lorcon 0.0_p20150109 9999: A generic library for injecting 802.11 frames
 net-wireless/lorcon-old 9999: A generic library for injecting 802.11 frames
-net-wireless/madwifi-ng 0.9.3.3 0.9.4 0.9.4-r1 0.9.4.4119.20100201 0.9.4.4133.20100621 0.9.4.4165.20110816 0.9.4.4180.20120502: Next Generation driver for Atheros based IEEE 802.11a/b/g wireless LAN cards
-net-wireless/madwifi-ng-tools 0.9.3.3 0.9.4 0.9.4.4119.20100201 0.9.4.4133.20100621 0.9.4.4165.20110816 0.9.4.4180.20120502: Next Generation tools for configuration of Atheros based IEEE 802.11a/b/g wireless LAN cards
 net-wireless/madwimax 0.1.1-r1: A reverse-engineered Linux driver for mobile WiMAX devices based on Samsung CMC-730 chip
 net-wireless/mdk 3.6-r1: Wireless injection tool with various functions
 net-wireless/mfoc 0.10.7: Mifare Classic Offline Cracker
