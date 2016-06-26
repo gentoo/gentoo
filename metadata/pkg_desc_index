@@ -18397,7 +18397,7 @@ x11-misc/redshift 1.10 1.11: A screen color temperature adjusting software
 x11-misc/rendercheck 1.4 1.5: Tests for compliance with X RENDER extension
 x11-misc/revelation 0.4.14-r1: A password manager for GNOME
 x11-misc/rodent 4.9.2 5.3.16.3: A fast, small and powerful file manager and graphical shell
-x11-misc/rofi 1.0.1: A window switcher, run dialog and dmenu replacement
+x11-misc/rofi 1.0.1 1.1.0: A window switcher, run dialog and dmenu replacement
 x11-misc/rss-glx 0.9.1: Really Slick OpenGL Screensavers for XScreenSaver
 x11-misc/screen-message 0.23: Display a multi-line message large, fullscreen, black on white
 x11-misc/screengrab 1.2.1-r1: Qt application for getting screenshots
