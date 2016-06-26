@@ -21,23 +21,22 @@ IUSE="offlinehelp"
 #
 # when changing the language lists, please be careful to preserve the spaces (bug 491728)
 #
-LANGUAGES_HELP=" am ast bg bn_IN bn bo bs ca_valencia ca cs da de dz el en_GB en en_ZA eo es et eu fi fr gl gu he hi hr hu id is it ja ka km ko mk nb ne nl nn om pl pt_BR pt ru si sk sl sq sv tg tr ug uk vi zh_CN zh_TW "
-LANGUAGES="${LANGUAGES_HELP}af ar as be br brx cy dgo fa ga gd gug kk kmr_Latn kn kok ks lb lo lt lv mai ml mn mni mr my nr nso oc or pa_IN ro rw sa_IN sat sd sid sr_Latn sr ss st sw_TZ ta te th tn ts tt uz ve xh zu "
+# "en:en-US" for mapping from Gentoo "en" to upstream "en-US" etc.
+LANGUAGES_HELP=" am ast bg bn-IN bn bo bs ca-valencia ca cs da de dz el en-GB en:en-US en-ZA eo es et eu fi fr gl gu he hi hr hu id is it ja ka km ko mk nb ne nl nn om pl pt-BR pt ru si sk sl sq sv tg tr ug uk vi zh-CN zh-TW "
+LANGUAGES="${LANGUAGES_HELP}af ar as be br brx cy dgo fa ga gd gug kk kmr-Latn kn kok ks lb lo lt lv mai ml mn mni mr my nr nso oc or pa:pa-IN ro rw sa:sa-IN sat sd sid sr-Latn sr ss st sw-TZ ta te th tn ts tt uz ve xh zu "
 
 for lang in ${LANGUAGES_HELP}; do
-	helppack=""
-	[[ ${lang} == en ]] && lang2=${lang/en/en_US} || lang2=${lang}
-	helppack="offlinehelp? ( ${BASE_SRC_URI_STABLE}/x86/LibreOffice_${MY_PV}_Linux_x86_rpm_helppack_${lang2/_/-}.tar.gz -> LibreOffice_${PV}_Linux_x86_rpm_helppack_${lang2/_/-}.tar.gz  ${BASE_SRC_URI_TESTING}/x86/LibreOffice_${PV}_Linux_x86_rpm_helppack_${lang2/_/-}.tar.gz )"
-	SRC_URI+=" linguas_${lang}? ( ${helppack} )"
+	helppack="offlinehelp? ( ${BASE_SRC_URI_STABLE}/x86/LibreOffice_${MY_PV}_Linux_x86_rpm_helppack_${lang#*:}.tar.gz -> LibreOffice_${PV}_Linux_x86_rpm_helppack_${lang#*:}.tar.gz ${BASE_SRC_URI_TESTING}/x86/LibreOffice_${PV}_Linux_x86_rpm_helppack_${lang#*:}.tar.gz )"
+	SRC_URI+=" l10n_${lang%:*}? ( ${helppack} )"
 done
 for lang in ${LANGUAGES}; do
-	langpack=""
-	[[ ${lang} == en ]] \
-		|| langpack="${BASE_SRC_URI_STABLE}/x86/LibreOffice_${MY_PV}_Linux_x86_rpm_langpack_${lang/_/-}.tar.gz -> LibreOffice_${PV}_Linux_x86_rpm_langpack_${lang/_/-}.tar.gz   ${BASE_SRC_URI_TESTING}/x86/LibreOffice_${PV}_Linux_x86_rpm_langpack_${lang/_/-}.tar.gz"
-	[[ -z ${langpack} ]] || SRC_URI+=" linguas_${lang}? ( ${langpack} )"
-	IUSE+=" linguas_${lang}"
+	if [[ ${lang%:*} != en ]]; then
+		langpack="${BASE_SRC_URI_STABLE}/x86/LibreOffice_${MY_PV}_Linux_x86_rpm_langpack_${lang#*:}.tar.gz -> LibreOffice_${PV}_Linux_x86_rpm_langpack_${lang#*:}.tar.gz ${BASE_SRC_URI_TESTING}/x86/LibreOffice_${PV}_Linux_x86_rpm_langpack_${lang#*:}.tar.gz"
+		SRC_URI+=" l10n_${lang%:*}? ( ${langpack} )"
+	fi
+	IUSE+=" l10n_${lang%:*}"
 done
-unset lang helppack langpack lang2
+unset lang helppack langpack
 
 RDEPEND+="app-text/hunspell"
 
@@ -54,19 +53,18 @@ src_prepare() {
 	find "${S}" -name *dict*.rpm -delete || die "Failed to remove dictionaries"
 
 	for lang in ${LANGUAGES}; do
-		# break away if not enabled; paludis support
-		use_if_iuse linguas_${lang} || continue
+		# break away if not enabled
+		use l10n_${lang%:*} || continue
 
-		dir=${lang/_/-}
+		dir=${lang#*:}
 
 		# for english we provide just helppack, as translation is always there
-		if [[ ${lang} != en ]]; then
+		if [[ ${lang%:*} != en ]]; then
 			rpmdir="LibreOffice_${PV}_Linux_x86_rpm_langpack_${dir}/RPMS/"
 			[[ -d ${rpmdir} ]] || die "Missing directory: ${rpmdir}"
 			rpm_unpack ./${rpmdir}/*.rpm
 		fi
 		if [[ "${LANGUAGES_HELP}" =~ " ${lang} " ]] && use offlinehelp; then
-			[[ ${lang} == en ]] && dir="en-US"
 			rpmdir="LibreOffice_${PV}_Linux_x86_rpm_helppack_${dir}/RPMS/"
 			[[ -d ${rpmdir} ]] || die "Missing directory: ${rpmdir}"
 			rpm_unpack ./${rpmdir}/*.rpm
@@ -79,7 +77,7 @@ src_compile() { :; }
 
 src_install() {
 	local dir="${S}"/opt/${PN/-l10n/}$(get_version_component_range 1-2)/
-	# Condition required for people that do not install anything eg no linguas
+	# Condition required for people that do not install anything eg no l10n
 	# or just english with no offlinehelp.
 	if [[ -d "${dir}" ]] ; then
 		insinto /usr/$(get_libdir)/${PN/-l10n/}/
