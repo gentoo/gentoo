@@ -528,10 +528,6 @@ dev-libs/iniparser:4
 # Not supported by any django version upstream supports
 dev-python/south
 
-# Sergei Trofimovich <slyfox@gentoo.org> (29 Jan 2015)
-# Mask live ebuild
-=dev-util/radare2-9999
-
 # Tony Vroon <chainsaw@gentoo.org> (5 Jan 2015)
 # Asterisk 13 is an LTS release but has not seen
 # sufficient releases to be considered ready for
