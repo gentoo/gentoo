@@ -638,6 +638,8 @@ dev-python/south
 
 # Patrick Lauer <patrick@gentoo.org> (24 Nov 2014)
 # Missing deps, uninstallable
+# Michał Górny <mgorny@gentoo.org> (26 Jun 2016)
+# Removal in 14 days, #528198.
 www-apps/trac-downloads
 
 # Michał Górny <mgorny@gentoo.org> (15 Sep 2014)
