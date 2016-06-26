@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201606-13">
+  <title>sudo: Unauthorized privilege escalation in sudoedit</title>
+  <synopsis>sudo is vulnerable to an escalation of privileges via a symlink
+    attack.
+  </synopsis>
+  <product type="ebuild"></product>
+  <announced>June 26, 2016</announced>
+  <revised>June 26, 2016: 1</revised>
+  <bug>564774</bug>
+  <access>local</access>
+  <affected>
+    <package name="app-admin/sudo" auto="yes" arch="*">
+      <unaffected range="ge">1.8.15-r1</unaffected>
+      <vulnerable range="lt">1.8.15-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>sudo (su “do”) allows a system administrator to delegate authority
+      to give certain users (or groups of users) the ability to run some (or
+      all) commands as root or another user while providing an audit trail of
+      the commands and their arguments.
+    </p>
+  </background>
+  <description>
+    <p>sudoedit in sudo is vulnerable to the escalation of privileges by local
+      users via a symlink attack.  This can be exploited by a file whose full
+      path is defined using multiple wildcards in /etc/sudoers, as demonstrated
+      by “/home/<em>/</em>/file.txt.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Local users are able to gain unauthorized privileges on the system.</p>
+  </impact>
+  <workaround>
+    <p>There is no known work around at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All sudo users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-admin/sudo-1.8.15-r1"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-5602">
+      CVE-2015-5602
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 23 Dec 2015 23:28:50 +0000">
+    BlueKnight
+  </metadata>
+  <metadata tag="submitter" timestamp="Sun, 26 Jun 2016 13:48:21 +0000">b-man</metadata>
+</glsa>
