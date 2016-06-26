@@ -246,11 +246,6 @@ net-print/foomatic-gui
 kde-apps/superkaramba
 
 # Michael Palimaka <kensington@gentoo.org> (26 May 2016)
-# No longer developed by upstream. No revdeps.
-# Masked for removal in 30 days. Bug 583776.
-dev-libs/hammer
-
-# Michael Palimaka <kensington@gentoo.org> (26 May 2016)
 # Depends on vulnerable slot of net-libs/webkit-gtk.
 # Dead upstream. Unmaintained. Masked for removal in 30 days.
 # Bug 584186.
