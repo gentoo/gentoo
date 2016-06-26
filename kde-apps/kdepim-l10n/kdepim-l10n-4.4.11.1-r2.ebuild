@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -28,7 +28,7 @@ MY_LANGS="ar bg ca ca@valencia cs csb da de el en_GB eo es et eu
 
 PIM_L10N="kdepim kdepimlibs"
 
-URI_BASE="${SRC_URI/-${PV}.tar.bz2/}"
+URI_BASE="mirror://kde/Attic/4.4.5/src/kde-l10n"
 SRC_URI=""
 
 for MY_LANG in ${MY_LANGS} ; do
