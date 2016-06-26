@@ -13,11 +13,14 @@ SRC_URI="https://github.com/OpenSC/OpenSC/releases/download/${PV}/${P}.tar.gz"
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
-IUSE="doc +pcsc-lite secure-messaging openct ctapi readline ssl zlib"
+IUSE="doc +pcsc-lite secure-messaging openct ctapi readline libressl ssl zlib"
 
 RDEPEND="zlib? ( sys-libs/zlib )
 	readline? ( sys-libs/readline:0= )
-	ssl? ( dev-libs/openssl:0= )
+	ssl? (
+		!libressl? ( dev-libs/openssl:0= )
+		libressl? ( dev-libs/libressl:0= )
+	)
 	openct? ( >=dev-libs/openct-0.5.0 )
 	pcsc-lite? ( >=sys-apps/pcsc-lite-1.3.0 )"
 DEPEND="${RDEPEND}
