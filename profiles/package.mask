@@ -881,12 +881,6 @@ kde-misc/kgtk
 # Masked for security bug #294253, use only at your own risk!
 =media-libs/fmod-3*
 
-# Peter Volkov <pva@gentoo.org> (23 Jul 2011)
-# Mask release candidates
-=dev-libs/guiloader-2.99.0
-=dev-libs/guiloader-c++-2.99.0
-=dev-util/crow-designer-2.99.0
-
 # Marijn Schouten <hkBst@gentoo.org> (07 April 2011)
 # Masked for number of issues, but can be used to
 # test against if people are impatient ;P
