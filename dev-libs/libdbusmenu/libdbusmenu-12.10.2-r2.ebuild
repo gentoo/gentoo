@@ -8,7 +8,7 @@ VALA_MIN_API_VERSION=0.16
 VALA_USE_DEPEND=vapigen
 PYTHON_COMPAT=( python2_7 )
 
-inherit eutils flag-o-matic multilib-minimal python-single-r1 vala
+inherit eutils flag-o-matic multilib-minimal python-single-r1 vala xdg-utils
 
 DESCRIPTION="Library to pass menu structure across DBus"
 HOMEPAGE="https://launchpad.net/dbusmenu"
@@ -47,6 +47,11 @@ src_prepare() {
 	# remove reliance on custom Ubuntu hacks in old GTK+2
 	epatch "${FILESDIR}/${P}-gtk2-signal-fix.patch"
 	epatch_user
+}
+
+pkg_setup() {
+	xdg_environment_reset
+	python-single-r1_pkg_setup
 }
 
 multilib_src_configure() {
