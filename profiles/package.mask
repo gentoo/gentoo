@@ -30,6 +30,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Sergei Trofimovich <slyfox@gentoo.org> (26 Jun 2016)
+# Deprecated by upstream in favour of dev-haskell/conduit-extra.
+# Masked for removal.
+dev-haskell/filesystem-conduit
+
 # Michał Górny <mgorny@gentoo.org> (26 Jun 2016)
 # Used to convert ancient layman files, has some ancient hardcoded data.
 # Not really useful anymore, masked for being live since 2009.
