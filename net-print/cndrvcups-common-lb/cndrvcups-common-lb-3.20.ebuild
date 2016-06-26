@@ -14,7 +14,7 @@ SRC_URI="http://pdisp01.c-wss.com/gdl/WWUFORedirectTarget.do?id=MDEwMDAwMjcwODEx
 
 LICENSE="Canon-UFR-II GPL-2 MIT"
 SLOT="0"
-KEYWORDS="-* amd64 x86"
+KEYWORDS="-* ~amd64 ~x86"
 IUSE=""
 
 # Needed because GPL2 stuff miss their sources in tarball
@@ -46,15 +46,15 @@ QA_SONAME="/usr/$(get_abi_LIBDIR x86)/libcaiousb.so.1.0.0"
 
 src_unpack() {
 	unpack ${A}
-	cd "${WORKDIR}/${SOURCES_NAME}/Sources/"
+	cd "${WORKDIR}/${SOURCES_NAME}/Sources/" || die
 	unpack ./${P/-lb/}-1.tar.gz
 }
 
 change_dir() {
 	for i in cngplp buftool backend; do
-		cd "${i}"
+		cd "${i}" || die
 		"${@}"
-		cd "${S}"
+		cd "${S}" || die
 	done
 }
 
@@ -75,7 +75,7 @@ src_compile() {
 	change_dir emake
 
 	# Cannot be moved to 'change_dir' as it doesn't need eautoreconf
-	cd "${S}/c3plmod_ipc" && emake
+	( cd "${S}/c3plmod_ipc" || die ) && emake
 }
 
 src_install() {
@@ -83,17 +83,17 @@ src_install() {
 
 	einstalldocs
 
-	cd "${S}/c3plmod_ipc"
+	cd "${S}/c3plmod_ipc" || die
 	dolib.so libcanonc3pl.so.1.0.0
 	dosym libcanonc3pl.so.1.0.0 "/usr/$(get_libdir)/libcanonc3pl.so.1"
 	dosym libcanonc3pl.so.1.0.0 "/usr/$(get_libdir)/libcanonc3pl.so"
 
-	cd "${S}/data"
+	cd "${S}/data" || die
 	insinto /usr/share/caepcm
 	doins *
 
 	ABI=x86
-	cd "${S}/libs"
+	cd "${S}/libs" || die
 	exeinto $(cups-config --serverbin)/filter
 	doexe c3pldrv
 	dolib.so libcaepcm.so.1.0
