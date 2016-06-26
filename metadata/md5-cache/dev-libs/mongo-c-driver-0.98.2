@@ -1,14 +1,14 @@
 DEFINED_PHASES=configure install prepare test
-DEPEND=>=dev-libs/libbson-0.98.0 sasl? ( dev-libs/cyrus-sasl ) ssl? ( dev-libs/openssl:= ) test? ( dev-db/mongodb ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=>=dev-libs/libbson-0.98.0 sasl? ( dev-libs/cyrus-sasl ) ssl? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) ) test? ( dev-db/mongodb ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=A high-performance MongoDB driver for C
 EAPI=5
 HOMEPAGE=https://github.com/mongodb/mongo-c-driver
-IUSE=debug examples sasl ssl static-libs test
+IUSE=debug examples libressl sasl ssl static-libs test
 KEYWORDS=~amd64 ~hppa ~x86
 LICENSE=BSD
-RDEPEND=>=dev-libs/libbson-0.98.0 sasl? ( dev-libs/cyrus-sasl ) ssl? ( dev-libs/openssl:= )
+RDEPEND=>=dev-libs/libbson-0.98.0 sasl? ( dev-libs/cyrus-sasl ) ssl? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) )
 SLOT=0
 SRC_URI=https://github.com/mongodb/mongo-c-driver/releases/download/0.98.2/mongo-c-driver-0.98.2.tar.gz
 _eclass_exported_funcs=src_prepare:- src_configure:- src_test:- src_install:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	792f83d5ec9536cb5ccef375469d8bde	libtool	4890219c51da247200223277f993e054	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	c9d9187f4caa4026a0ceddd8dfceb3c1
-_md5_=6730f98c646ccd5002f0d8d2a243f08a
+_md5_=125c7f2501bbf5810727faa772c2ebdd
