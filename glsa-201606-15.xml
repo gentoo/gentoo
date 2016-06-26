@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201606-15">
+  <title>FreeXL: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in FreeXL, allowing remote
+    attackers to executive arbitrary code or cause Denial of Service.
+  </synopsis>
+  <product type="ebuild"></product>
+  <announced>June 26, 2016</announced>
+  <revised>June 26, 2016: 1</revised>
+  <bug>544426</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-libs/freexl" auto="yes" arch="*">
+      <unaffected range="ge">1.0.1</unaffected>
+      <vulnerable range="lt">1.0.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>FreeXL is an open source library to extract valid data from within an
+      Excel (.xls) spreadsheet.
+    </p>
+  </background>
+  <description>
+    <p>FreeXL’s shared strings and workbook functions are vulnerable to the
+      remote execution of arbitrary code and Denial of Service.  This can be
+      achieved through specially crafted workbooks from attackers.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Remote attackers could potentially execute arbitrary code or cause
+      Denial of Service.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All FreeXL users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "dev-libs/freexl-1.0.1"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-2753">CVE-2015-2753</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-2754">CVE-2015-2754</uri>
+    <uri link="http://nvd.nist.gov/nvd.cfm?cvename=CVE-2015-2776">CVE-2015-2776</uri>
+  </references>
+  <metadata tag="requester" timestamp="Wed, 16 Mar 2016 12:15:29 +0000">b-man</metadata>
+  <metadata tag="submitter" timestamp="Sun, 26 Jun 2016 23:53:53 +0000">b-man</metadata>
+</glsa>
