@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -16,9 +16,11 @@ SRC_URI="!tao? ( http://download.dre.vanderbilt.edu/previous_versions/ACE-${PV}.
 LICENSE="ACE BSD BSD-4 BSD-2 tao? ( sun-iiop RSA )"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
-IUSE="X ciao ipv6 static-libs tao"
+IUSE="X ciao ipv6 libressl static-libs tao"
 
-COMMON_DEPEND="dev-libs/openssl:0"
+COMMON_DEPEND="
+	!libressl? ( dev-libs/openssl:0= )
+	libressl? ( dev-libs/libressl:0= )"
 # TODO probably more
 RDEPEND="${COMMON_DEPEND}
 	X? ( x11-libs/libXt x11-libs/libXaw )"
