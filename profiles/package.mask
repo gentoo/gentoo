@@ -30,6 +30,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Alexey Korepanov <kaikaikai@yandex.ru> (5 Jul 2016)
+# net-p2p/syncthing-relaysrv has been merged into net-p2p/syncthing
+# both upstream and in Gentoo.
+# Removal in 30 days.
+net-p2p/syncthing-relaysrv
+
 # Agostino Sarubbo <ago@gentoo.org> (5 Jul 2016)
 # Dead upstream and fails to compile, wrt bug #587766
 # Masked for removal in 30 days.
