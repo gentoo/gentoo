@@ -3,8 +3,8 @@
 # $Id$
 
 EAPI=5
-# no longer compatible with ruby 1.8.
-USE_RUBY="ruby20"
+
+USE_RUBY="ruby20 ruby21 ruby22 ruby23"
 
 RUBY_FAKEGEM_TASK_TEST=""
 
@@ -15,12 +15,12 @@ RUBY_FAKEGEM_EXTRAINSTALL="support"
 inherit ruby-fakegem
 
 DESCRIPTION="Non-interactive SSH processing in pure Ruby"
-HOMEPAGE="http://net-ssh.rubyforge.org/"
+HOMEPAGE="https://github.com/net-ssh/net-ssh"
 SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> net-ssh-git-${PV}.tgz"
 
 LICENSE="GPL-2"
-SLOT="2.6"
-KEYWORDS="amd64 ppc ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x64-solaris ~x86-solaris"
+SLOT="3"
+KEYWORDS="~amd64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x64-solaris ~x86-solaris"
 IUSE="test"
 
 ruby_add_rdepend "virtual/ruby-ssl"
