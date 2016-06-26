@@ -1,7 +1,7 @@
-diff --git src/github.com/syncthing/syncthing/cmd/relaysrv/etc/linux-systemd/syncthing-relaysrv.service src/github.com/syncthing/syncthing/cmd/relaysrv/etc/linux-systemd/syncthing-relaysrv.service
+diff --git a/src/github.com/syncthing/syncthing/cmd/relaysrv/etc/linux-systemd/syncthing-relaysrv.service b/src/github.com/syncthing/syncthing/cmd/relaysrv/etc/linux-systemd/syncthing-relaysrv.service
 index b9d3173..7f8e2c0 100644
---- src/github.com/syncthing/syncthing/cmd/relaysrv/etc/linux-systemd/syncthing-relaysrv.service
-+++ src/github.com/syncthing/syncthing/cmd/relaysrv/etc/linux-systemd/syncthing-relaysrv.service
+--- a/src/github.com/syncthing/syncthing/cmd/relaysrv/etc/linux-systemd/syncthing-relaysrv.service
++++ b/src/github.com/syncthing/syncthing/cmd/relaysrv/etc/linux-systemd/syncthing-relaysrv.service
 @@ -5,7 +5,7 @@ After=network.target
  [Service]
  User=syncthing-relaysrv
