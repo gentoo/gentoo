@@ -1,22 +1,23 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=2
+EAPI=5
 inherit eutils autotools
 
-DESCRIPTION="C/C++ programmer's toolkit supporting the development of Z39.50v3 clients and servers"
+DESCRIPTION="C/C++ toolkit for Z39.50v3 clients and servers"
 HOMEPAGE="http://www.indexdata.dk/yaz"
 SRC_URI="http://ftp.indexdata.dk/pub/${PN}/${P}.tar.gz"
 
 LICENSE="BSD GPL-2"
 SLOT="4"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
-IUSE="debug icu tcpd ziffy"
+IUSE="debug icu libressl tcpd ziffy"
 
 RDEPEND="dev-libs/libxml2
 	dev-libs/libxslt
-	dev-libs/openssl
+	!libressl? ( dev-libs/openssl:0= )
+	libressl? ( dev-libs/libressl:0= )
 	icu? ( dev-libs/icu )
 	tcpd? ( sys-apps/tcp-wrappers )
 	ziffy? ( net-libs/libpcap )"
