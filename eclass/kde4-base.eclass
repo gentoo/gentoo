@@ -433,10 +433,6 @@ _calculate_src_uri() {
 	case ${KDEBASE} in
 		kde-base)
 			case ${PV} in
-				4.4.11.1)
-					# KDEPIM 4.4, special case
-					# TODO: Remove this part when KDEPIM 4.4 gets out of the tree
-					SRC_URI="mirror://kde/stable/kdepim-${PV}/src/${_kmname_pv}.tar.bz2" ;;
 				4.4.20*)
 					# KDEPIM 4.4 no-akonadi branch, special case
 					# TODO: Remove this part when KDEPIM 4.4 gets out of the tree
@@ -444,18 +440,12 @@ _calculate_src_uri() {
 				4.?.[6-9]? | 4.??.[6-9]?)
 					# Unstable KDE SC releases
 					SRC_URI="mirror://kde/unstable/${PV}/src/${_kmname_pv}.tar.xz" ;;
-				4.11.19)
-					# Part of 15.04.1 actually, sigh. Not stable for next release!
-					SRC_URI="mirror://kde/Attic/applications/15.04.1/src/${_kmname_pv}.tar.xz" ;;
 				4.11.22)
 					# Part of 15.08.0 actually, sigh. Not stable for next release!
 					SRC_URI="mirror://kde/stable/applications/15.08.0/src/${_kmname_pv}.tar.xz" ;;
 				4.14.3)
 					# Last SC release
 					SRC_URI="mirror://kde/stable/${PV}/src/${_kmname_pv}.tar.xz" ;;
-				4.14.8)
-					# Part of 15.04.1 actually, sigh. Used by kdelibs and KDE PIM 4.
-					SRC_URI="mirror://kde/Attic/applications/15.04.1/src/${_kmname_pv}.tar.xz" ;;
 				4.14.10)
 					# Part of 15.04.3 actually, sigh. Used by last version of KDE PIM 4.
 					SRC_URI="mirror://kde/Attic/applications/15.04.3/src/${_kmname_pv}.tar.xz" ;;
