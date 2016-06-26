@@ -11737,7 +11737,6 @@ lxde-base/lxinput 0.3.2: LXDE keyboard and mouse configuration tool
 lxde-base/lxlauncher 0.2.2: An open source clone of the Asus launcher for EeePC
 lxde-base/lxmenu-data 0.1.2 0.1.4: Provides files needed for LXDE application menus
 lxde-base/lxpanel 0.7.0-r1 0.8.1: Lightweight X11 desktop panel for LXDE
-lxde-base/lxpolkit 0.1.0-r1 0.1.0-r2: A simple PolicyKit authentication agent
 lxde-base/lxrandr 0.1.2: LXDE GUI interface to RandR extention
 lxde-base/lxsession 0.4.9.2-r3 0.5.2: LXDE session manager
 lxde-base/lxsession-edit 0.2.0: LXDE session autostart editor
@@ -14112,7 +14111,7 @@ net-fs/nfstest 1.0.2: Tools for testing either the NFS client or the NFS server
 net-fs/openafs 1.6.17 1.6.18: The OpenAFS distributed file system
 net-fs/openafs-kernel 1.6.17 1.6.18: The OpenAFS distributed file system kernel module
 net-fs/openafs-legacy 0.1: Legacy path symlinks to access FHS-compliant OpenAFS installation
-net-fs/samba 3.5.21 3.5.22 3.6.25 4.2.9 4.2.11 4.2.12 4.3.9 4.3.10 4.4.3 4.4.4: Samba Suite Version 4
+net-fs/samba 3.6.25 4.2.9 4.2.11 4.2.12 4.3.9 4.3.10 4.4.3 4.4.4: Samba Suite Version 4
 net-fs/smbnetfs 0.5.3b 0.6.0 0.6.0-r1: FUSE filesystem for SMB shares
 net-fs/smbtad 1.2.6: Data receiver of the SMB Traffic Analyzer project
 net-fs/smbtatools 1.2.6-r1: Tools for configuration and query of SMB Traffic Analyzer
