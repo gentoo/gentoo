@@ -8,4 +8,4 @@ SLOT=0
 SRC_URI=http://dotat.at/prog/unifdef/unifdef-2.11.tar.gz
 _eclass_exported_funcs=src_prepare:-
 _eclasses_=multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	c9d9187f4caa4026a0ceddd8dfceb3c1
-_md5_=14d0d3ed99fb34e56d7294f9147b1677
+_md5_=662baa3834bbf049c1425c7970f0ccbd

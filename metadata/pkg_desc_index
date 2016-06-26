@@ -12262,7 +12262,7 @@ media-gfx/opencsg 1.3.2-r1: The Constructive Solid Geometry rendering library
 media-gfx/openexr_viewers 1.0.2 2.0.1 2.1.0 2.2.0: OpenEXR Viewers
 media-gfx/openmesh 3.2 3.3 4.1: A generic and efficient data structure for representing and manipulating polygonal meshes
 media-gfx/openscad 2015.03 2015.03_p2: The Programmers Solid 3D CAD Modeller
-media-gfx/optipng 0.7.3 0.7.3-r1 0.7.4 0.7.5 0.7.5-r1 0.7.6: Compress PNG files without affecting image quality
+media-gfx/optipng 0.7.5-r1 0.7.6: Compress PNG files without affecting image quality
 media-gfx/paint-mono 0.1.63: An unofficial effort to port Paint.NET 3.0 to Linux using Mono
 media-gfx/panini 0.71.104: OpenGL-based panoramic image viewer
 media-gfx/pdf2svg 0.2.1 0.2.2: pdf2svg is based on poppler and cairo and can convert pdf to svg files
