@@ -31,6 +31,12 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (26 Jun 2016)
+# Used to convert ancient layman files, has some ancient hardcoded data.
+# Not really useful anymore, masked for being live since 2009.
+# Removal in 14 days, #587156.
+app-portage/layman-dbtools
+
+# Michał Górny <mgorny@gentoo.org> (26 Jun 2016)
 # Unmaintained, unused, upstream gone. The only revdep (crow-designer)
 # is already last rited for removal, #587142.
 dev-libs/guiloader
@@ -858,7 +864,6 @@ kde-misc/kgtk
 # per QA team policy, all these need to be kept masked by default, if
 # available in the tree.
 =app-misc/sleepyhead-9999
-app-portage/layman-dbtools
 =www-plugins/google-talkplugin-9999
 
 # Tiziano Müller <dev-zero@gentoo.org> (08 Apr 2009)
