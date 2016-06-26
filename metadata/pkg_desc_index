@@ -11187,7 +11187,7 @@ kde-apps/dolphin 4.14.3 4.14.3-r1 15.12.3-r1 16.04.1: Plasma filemanager focusin
 kde-apps/dolphin-plugins 4.14.3 15.12.3 16.04.1: Extra Dolphin plugins
 kde-apps/dragon 4.14.3 15.12.3 16.04.1: A simple video player
 kde-apps/drkonqi 4.14.3 15.12.3 16.04.1: KDE crash handler, gives the user feedback if a program crashed
-kde-apps/ffmpegthumbs 4.14.3 15.12.3 16.04.1: FFmpeg based thumbnail generator for video files
+kde-apps/ffmpegthumbs 4.14.3 15.08.3 15.12.3 16.04.1: FFmpeg based thumbnail generator for video files
 kde-apps/filelight 4.14.3 15.12.3 16.04.1: Visualise disk usage with interactive map of concentric, segmented rings
 kde-apps/gpgmepp 4.14.10 4.14.11_pre20160211 15.12.3: C++ bindings for gpgme
 kde-apps/granatier 4.14.3 15.12.3 16.04.1: KDE Bomberman game
@@ -11203,7 +11203,7 @@ kde-apps/kajongg 4.14.3 15.12.3 16.04.1: The classical Mah Jongg for four player
 kde-apps/kalarm 4.4.2015.06 4.4.2016.01 4.14.10 4.14.11_pre20160211: Personal alarm message, command and email scheduler for KDE
 kde-apps/kalgebra 4.14.3 15.12.3 16.04.1: MathML-based graph calculator by KDE
 kde-apps/kalzium 4.14.3 15.12.3-r2 16.04.1: Periodic table of the elements
-kde-apps/kamera 4.14.3 15.12.3 16.04.1: Plasma integration for gphoto2 cameras
+kde-apps/kamera 4.14.3 15.08.3 15.12.3 16.04.1: Plasma integration for gphoto2 cameras
 kde-apps/kanagram 4.14.3 15.12.3 16.04.1: Game based on anagrams of words
 kde-apps/kapman 4.14.3 15.12.3 16.04.1: Pac-Man clone by KDE
 kde-apps/kapptemplate 4.14.3 15.12.3-r1 16.04.1: A shell script to create the necessary framework to develop KDE applications
@@ -11442,7 +11442,7 @@ kde-apps/step 4.14.3 15.12.3 16.04.1: Interactive physics simulator
 kde-apps/superkaramba 4.14.3 15.08.3: A tool to create interactive applets for the KDE desktop
 kde-apps/svgpart 4.14.3 15.12.3 16.04.1: Svgpart is a kpart for viewing SVGs
 kde-apps/sweeper 4.14.3 15.12.3 16.04.1: KDE Privacy Settings Widget
-kde-apps/thumbnailers 4.14.3 15.12.3 16.04.1: Thumbnail generators for PDF/PS and RAW files
+kde-apps/thumbnailers 4.14.3 15.08.3 15.12.3 16.04.1: Thumbnail generators for PDF/PS and RAW files
 kde-apps/umbrello 4.14.3 15.12.3 16.04.1: KDE UML Modeller
 kde-apps/zeroconf-ioslave 4.14.3 15.12.3 16.04.1: A DNSSD (DNS Service Discovery - part of Rendezvous) ioslave and kded module
 kde-base/baloo 4.14.3: Next generation of the Nepomuk project
