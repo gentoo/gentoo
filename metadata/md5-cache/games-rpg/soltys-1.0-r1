@@ -3,12 +3,12 @@ DEPEND=app-arch/unzip app-arch/unzip app-arch/unzip app-arch/unzip app-arch/unzi
 DESCRIPTION=Classic adventure game
 EAPI=5
 HOMEPAGE=http://wiki.scummvm.org/index.php/Soltys
-IUSE=linguas_en linguas_es linguas_pl
+IUSE=l10n_en l10n_es l10n_pl
 KEYWORDS=amd64 x86
 LICENSE=Soltys
 RDEPEND=>=games-engines/scummvm-1.5 games-misc/games-envd
 SLOT=0
-SRC_URI=linguas_en? ( mirror://sourceforge/scummvm/soltys-en-v1.0.zip ) linguas_es? ( mirror://sourceforge/scummvm/soltys-es-v1.0.zip ) linguas_pl? ( mirror://sourceforge/scummvm/soltys-pl-v1.0.zip ) !linguas_en? ( !linguas_es? ( !linguas_pl? ( mirror://sourceforge/scummvm/soltys-en-v1.0.zip ) ) ) http://www.scummvm.org/images/cat-soltys.png
+SRC_URI=l10n_en? ( mirror://sourceforge/scummvm/soltys-en-v1.0.zip ) l10n_es? ( mirror://sourceforge/scummvm/soltys-es-v1.0.zip ) l10n_pl? ( mirror://sourceforge/scummvm/soltys-pl-v1.0.zip ) !l10n_en? ( !l10n_es? ( !l10n_pl? ( mirror://sourceforge/scummvm/soltys-en-v1.0.zip ) ) ) http://www.scummvm.org/images/cat-soltys.png
 _eclass_exported_funcs=pkg_preinst:games pkg_postinst:games pkg_setup:games src_unpack:- src_prepare:- src_configure:games src_compile:games src_install:-
 _eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	792f83d5ec9536cb5ccef375469d8bde	games	2cf0d67d765e6358b435ccda30c13ad8	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	c9d9187f4caa4026a0ceddd8dfceb3c1	unpacker	45d07319df5f40ee6af58418b0f930be	user	906f3c8eb3a2350a4f1191a89baa3e46
-_md5_=32430dbd6a4ebc71c65d2c7a43418ddd
+_md5_=afb305c96446cd35b8b732739c218e0a
