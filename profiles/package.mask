@@ -31,6 +31,12 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (26 Jun 2016)
+# Unmaintained, unused, upstream gone. The only revdep (crow-designer)
+# is already last rited for removal, #587142.
+dev-libs/guiloader
+dev-libs/guiloader-c++
+
+# Michał Górny <mgorny@gentoo.org> (26 Jun 2016)
 # Unmaintained, not updated since 2012. Not really useful for anything.
 # Removal in 30 days, #587138.
 app-portage/pms-test-suite
@@ -797,12 +803,6 @@ www-client/google-chrome:unstable
 # See #471512 for more details.
 www-apache/mod_spdy
 
-# Agostino Sarubbo <ago@gentoo.org> (23 Sep 2013)
-# Masked because of vulnerable versions
-# DO NOT REMOVE OLDER VERSIONS
-# temporarily disabled as it also breaks s390 keywording
-#<net-nds/openldap-2.4.35
-
 # Sergey Popov <pinkbyte@gentoo.org> (18 Sep 2013)
 # Mask development releases of botan:
 # - causes many API breakages
@@ -874,12 +874,6 @@ kde-misc/kgtk
 # Samuli Suominen <ssuominen@gentoo.org> (30 Oct 2011)
 # Masked for security bug #294253, use only at your own risk!
 =media-libs/fmod-3*
-
-# Peter Volkov <pva@gentoo.org> (23 Jul 2011)
-# Mask release candidates
-=dev-libs/guiloader-2.99.0
-=dev-libs/guiloader-c++-2.99.0
-=dev-util/crow-designer-2.99.0
 
 # Marijn Schouten <hkBst@gentoo.org> (07 April 2011)
 # Masked for number of issues, but can be used to
