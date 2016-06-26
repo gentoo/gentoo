@@ -894,10 +894,6 @@ kde-misc/kgtk
 # Masking alpha releases
 net-analyzer/ncrack
 
-# Luca Barbato <lu_zero@gentoo.org> (21 Jul 2010)
-# Not ready for public consumption, clashes with current mesa-git
-media-libs/shivavg
-
 # Mike Frysinger <vapier@gentoo.org> (07 Mar 2010)
 # Very old packages that people should have upgraded away from
 # long ago.  Courtesy mask ... time to upgrade.
