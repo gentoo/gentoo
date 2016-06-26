@@ -1,13 +1,13 @@
 DEFINED_PHASES=compile configure install prepare unpack
-DEPEND=dev-libs/openssl:0 sys-libs/zlib !bundled-libs? ( dev-lang/luajit:2[lua52compat] >=dev-libs/yajl-2.0.4 ) virtual/pkgconfig dev-vcs/git
+DEPEND=!libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) sys-libs/zlib !bundled-libs? ( dev-lang/luajit:2[lua52compat] >=dev-libs/yajl-2.0.4 ) virtual/pkgconfig dev-vcs/git
 DESCRIPTION=Takes node.js' architecture and dependencies and fits it in the Lua language
 EAPI=5
 HOMEPAGE=http://luvit.io/
-IUSE=bundled-libs examples
+IUSE=bundled-libs examples libressl
 LICENSE=Apache-2.0 bundled-libs? ( BSD MIT )
-RDEPEND=dev-libs/openssl:0 sys-libs/zlib !bundled-libs? ( dev-lang/luajit:2[lua52compat] >=dev-libs/yajl-2.0.4 )
+RDEPEND=!libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) sys-libs/zlib !bundled-libs? ( dev-lang/luajit:2[lua52compat] >=dev-libs/yajl-2.0.4 )
 RESTRICT=test
 SLOT=0
 _eclass_exported_funcs=src_unpack:git-2 src_prepare:- src_configure:- src_compile:- src_install:-
 _eclasses_=git-2	672c3929a162f221a53b4ccb4d25d8a2	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	c9d9187f4caa4026a0ceddd8dfceb3c1
-_md5_=e0f7ced332860df07f51055530e93a93
+_md5_=e3d209e58b07504ec4a93ec9c354d101

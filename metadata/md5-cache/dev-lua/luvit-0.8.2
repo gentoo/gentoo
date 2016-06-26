@@ -1,15 +1,15 @@
 DEFINED_PHASES=compile configure install prepare
-DEPEND=dev-libs/openssl:0 sys-libs/zlib !bundled-libs? ( dev-lang/luajit:2[lua52compat] >=dev-libs/yajl-2.0.2 net-libs/http-parser ) virtual/pkgconfig
+DEPEND=!libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) sys-libs/zlib !bundled-libs? ( dev-lang/luajit:2[lua52compat] >=dev-libs/yajl-2.0.2 net-libs/http-parser ) virtual/pkgconfig
 DESCRIPTION=Takes node.js' architecture and dependencies and fits it in the Lua language
 EAPI=5
 HOMEPAGE=http://luvit.io/
-IUSE=bundled-libs examples
+IUSE=bundled-libs examples libressl
 KEYWORDS=~amd64 ~x86
 LICENSE=Apache-2.0 bundled-libs? ( BSD MIT )
-RDEPEND=dev-libs/openssl:0 sys-libs/zlib !bundled-libs? ( dev-lang/luajit:2[lua52compat] >=dev-libs/yajl-2.0.2 net-libs/http-parser )
+RDEPEND=!libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) sys-libs/zlib !bundled-libs? ( dev-lang/luajit:2[lua52compat] >=dev-libs/yajl-2.0.2 net-libs/http-parser )
 RESTRICT=test
 SLOT=0
 SRC_URI=http://luvit.io/dist/latest/luvit-0.8.2.tar.gz
 _eclass_exported_funcs=src_prepare:- src_configure:- src_compile:- src_install:-
 _eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	c9d9187f4caa4026a0ceddd8dfceb3c1
-_md5_=82eaf12d10ca463b0d7ffe2cb567c079
+_md5_=184b7961709e4f3ac184d4880161cf7e
