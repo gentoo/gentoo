@@ -14331,7 +14331,7 @@ net-libs/libkgapi 2.2.0: Library for accessing Google calendar and contact resou
 net-libs/libkolab 0.5.2 0.5.3: Advanced Kolab Object Handling Library
 net-libs/libkolabxml 1.0.1 1.0.3 1.1.0 1.1.2: Kolab XML format schema definitions library
 net-libs/libkpeople 0.3.0: KDE contact person abstraction library
-net-libs/libktorrent 1.3.1 2.0 2.0.1: BitTorrent library based on KDE Frameworks
+net-libs/libktorrent 1.3.1 2.0.1: BitTorrent library based on KDE Frameworks
 net-libs/libkvkontakte 4.4.0 4.12.0: Library for accessing the features of social networking site vkontakte.ru
 net-libs/liblockfile 1.09: Implements functions designed to lock the standard mailboxes
 net-libs/libmbim 1.6.0 1.10.0 1.12.2 1.12.4 9999: MBIM modem protocol helper library
@@ -15047,7 +15047,7 @@ net-p2p/gtk-gnutella 1.1.8 1.1.9-r1: A GTK+ Gnutella client
 net-p2p/gtorrentviewer 0.2b: A GTK2-based viewer and editor for BitTorrent meta files
 net-p2p/i2p 0.9.24-r2 0.9.25-r1: A privacy-centric, anonymous network.
 net-p2p/kmldonkey 2.0.7: Provides integration for the MLDonkey P2P software and KDE 4
-net-p2p/ktorrent 4.3.1-r1 5.0 5.0.1: Powerful BitTorrent client based on KDE Frameworks
+net-p2p/ktorrent 4.3.1-r1 5.0.1: Powerful BitTorrent client based on KDE Frameworks
 net-p2p/litecoin-qt 0.10.2.2-r4: P2P Internet currency based on Bitcoin but easier to mine
 net-p2p/litecoind 0.10.2.2-r4: P2P Internet currency based on Bitcoin but easier to mine
 net-p2p/microdc2 0.15.6-r2: A small command-line based Direct Connect client
@@ -16835,7 +16835,7 @@ sys-block/scsiadd 1.97: Add and remove SCSI devices from your Linux system durin
 sys-block/scsiping 0.0.1: SCSIPing pings a host on the SCSI-chain
 sys-block/scsirastools 1.5.7 1.6.4: Serviceability for SCSI Disks and Arrays
 sys-block/sedutil 1.12: The Drive Trust Alliance Self Encrypting Drive Utility
-sys-block/seekwatcher 0.6 0.12 0.12_p20091015: Seekwatcher generates graphs from blktrace runs to help visualize IO patterns and performance
+sys-block/seekwatcher 0.6 0.12 0.12_p20091015 0.12_p20091015-r1: generates graphs from blktrace to help visualize IO patterns and performance
 sys-block/smp_utils 0.97 0.98: Utilities for SAS management protocol (SMP)
 sys-block/spindown 0.4.0-r5: Spindown is a daemon that can spin down idle disks
 sys-block/tapecat 1.0.0: tapecat is a tape utility used to describe the physical content of a tape

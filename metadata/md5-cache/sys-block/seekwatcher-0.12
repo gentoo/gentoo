@@ -1,5 +1,5 @@
 DEFINED_PHASES=install postinst
-DESCRIPTION=Seekwatcher generates graphs from blktrace runs to help visualize IO patterns and performance
+DESCRIPTION=generates graphs from blktrace to help visualize IO patterns and performance
 EAPI=0
 HOMEPAGE=http://oss.oracle.com/~mason/seekwatcher/
 KEYWORDS=~amd64 ~ppc ~x86
@@ -8,4 +8,4 @@ RDEPEND=>=dev-python/matplotlib-0.90.1 >=sys-block/btrace-0.0.20070730162628
 SLOT=0
 SRC_URI=http://oss.oracle.com/~mason/seekwatcher/seekwatcher-0.12.tar.bz2
 _eclass_exported_funcs=pkg_postinst:- src_install:-
-_md5_=15f017d0d51ff68f284a2a47332b6c8e
+_md5_=8213efa3d30b15946b2ff28c2b51c75a
