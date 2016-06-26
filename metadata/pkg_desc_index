@@ -14062,7 +14062,7 @@ net-dns/resolvconf-symlink 0: Make /etc/resolv.conf a symlink to a runtime-writa
 net-dns/sheerdns 1.0.3: Sheerdns is a small, simple, fast master only DNS server
 net-dns/tinystats 1.1: A tinydns logging helper app
 net-dns/totd 1.5.1: Trick Or Treat Daemon, a DNS proxy for 6to4
-net-dns/unbound 1.4.22-r1 1.5.1-r2 1.5.7 1.5.8: A validating, recursive and caching DNS resolver
+net-dns/unbound 1.5.1-r2 1.5.7 1.5.8: A validating, recursive and caching DNS resolver
 net-dns/updatedd 2.6 2.6-r1: Dynamic DNS client with plugins for several dynamic dns services
 net-dns/validns 0.7 0.8: A high performance DNS/DNSSEC zone validator
 net-dns/valtz 0.7: Validation tool for tinydns-data zone files
@@ -14365,7 +14365,7 @@ net-libs/libnetfilter_log 1.0.1: interface to packets that have been logged by t
 net-libs/libnetfilter_queue 1.0.2: API to packets that have been queued by the kernel packet filter
 net-libs/libnfnetlink 1.0.1: the low-level library for netfilter related kernel/userspace communication
 net-libs/libnfsidmap 0.24 0.25 0.25-r1: NFSv4 ID <-> name mapping library
-net-libs/libnftnl 1.0.5: Netlink API to the in-kernel nf_tables subsystem
+net-libs/libnftnl 1.0.5 1.0.6: Netlink API to the in-kernel nf_tables subsystem
 net-libs/libnice 0.1.8 0.1.10 0.1.13: An implementation of the Interactice Connectivity Establishment standard (ICE)
 net-libs/libnids 1.24-r6: an implementation of an E-component of Network Intrusion Detection System
 net-libs/libnipper 0.12.6-r1: A router configuration security analysis library
@@ -16619,7 +16619,7 @@ sys-apps/memtest86 3.3 4.3.6 4.3.7: A stand alone memory test for x86 computers
 sys-apps/memtest86+ 2.01 4.00 4.20-r1 4.20-r2 5.01-r1: Memory tester based on memtest86
 sys-apps/memtester 4.2.2 4.3.0: userspace utility for testing the memory subsystem for faults
 sys-apps/microcode-ctl 1.23 1.27 1.28 1.28-r1: Intel processor microcode update utility
-sys-apps/miller 4.0.0: A tool like sed, awk, cut, join, and sort for name-indexed data (CSV, JSON, ..)
+sys-apps/miller 4.0.0 4.2.0: A tool like sed, awk, cut, join, and sort for name-indexed data (CSV, JSON, ..)
 sys-apps/minised 1.13 1.14: a smaller, cheaper, faster SED implementation
 sys-apps/miscfiles 1.4.2-r1 1.5 1.5-r1: Miscellaneous files
 sys-apps/mlocate 0.26-r1: Merging locate is an utility to index and quickly search for files
