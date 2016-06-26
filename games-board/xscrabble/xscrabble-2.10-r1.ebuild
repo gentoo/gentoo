@@ -11,7 +11,7 @@ SRC_URI="ftp://ftp.ac-grenoble.fr/ge/educational_games/${P}.tgz
 	l10n_fr? ( ftp://ftp.ac-grenoble.fr/ge/educational_games/xscrabble_fr.tgz )
 	ftp://ftp.ac-grenoble.fr/ge/educational_games/xscrabble_en.tgz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="l10n_fr"
