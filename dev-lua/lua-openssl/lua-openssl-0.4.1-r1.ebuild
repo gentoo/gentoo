@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -13,12 +13,14 @@ SRC_URI="https://github.com/zhaozg/lua-openssl/archive/${PV}.tar.gz -> ${P}.tar.
 LICENSE="MIT openssl PHP-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="luajit"
+IUSE="libressl luajit"
 
 RDEPEND="
 	luajit? ( dev-lang/luajit:2 )
 	!luajit? ( >=dev-lang/lua-5.1:0 )
-	dev-libs/openssl:0[-bindist]"
+	!libressl? ( dev-libs/openssl:0=[-bindist] )
+	libressl? ( dev-libs/libressl:0= )
+	"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
