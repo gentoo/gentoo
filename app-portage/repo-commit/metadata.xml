@@ -2,18 +2,10 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="person">
-    <email>mgorny@gentoo.org</email>
-    <name>Michał Górny</name>
-  </maintainer>
-  <maintainer type="person">
     <email>binki@gentoo.org</email>
     <name>Nathan Phillip Brink</name>
   </maintainer>
   <upstream>
-    <maintainer status="active">
-      <email>mgorny@gentoo.org</email>
-      <name>Michał Górny</name>
-    </maintainer>
     <maintainer status="active">
       <email>binki@gentoo.org</email>
       <name>Nathan Phillip Brink</name>
