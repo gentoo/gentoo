@@ -404,10 +404,6 @@ dev-lang/niecza-bin
 # tree should have actually been 2.0_beta1. There are no revdeps.
 dev-java/jcs
 
-# Wolfram Schlich <wschlich@gentoo.org> (06 Feb 2016)
-# Mask live ebuild
-=net-im/mcabber-9999
-
 # Mike Frysinger <vapier@gentoo.org> (18 Jan 2016)
 # Force people to migrate to the new combined libraries:
 # media-libs/elementary & dev-libs/efl. #571796
