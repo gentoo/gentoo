@@ -13,7 +13,7 @@ SRC_URI="http://download.camlcity.org/download/${MY_P}.tar.gz"
 
 LICENSE="ZLIB GPL-2+"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~ppc ~x86 ~x86-fbsd"
+KEYWORDS="amd64 ppc x86 x86-fbsd"
 IUSE="gtk kerberos tk httpd +ocamlopt +pcre ssl zip"
 RESTRICT="installsources"
 
