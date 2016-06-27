@@ -7,8 +7,8 @@ IUSE=doc +ocamlopt test
 KEYWORDS=~amd64
 LICENSE=MIT
 RDEPEND=dev-ml/ppx_tools:= >=dev-lang/ocaml-4.02.3:=[ocamlopt?]
-SLOT=0/3.0
-SRC_URI=https://github.com/whitequark/ppx_deriving/archive/v3.0.tar.gz -> ppx_deriving-3.0.tar.gz
+SLOT=0/4.0
+SRC_URI=https://github.com/whitequark/ppx_deriving/archive/v4.0.tar.gz -> ppx_deriving-4.0.tar.gz
 _eclass_exported_funcs=src_compile:- src_test:- src_install:-
 _eclasses_=findlib	9909e5ca0f77ff5b693885a3d7aeadb7
-_md5_=c67d06d083b88f2183f9a7deea3835f5
+_md5_=e1b76e47be8345f5fc2c1344fcb6cf95
