@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -32,7 +32,7 @@ SRC_URI="http://linux.avasys.jp/drivers/iscan/${PV}/${PN}_${PV}-${SRC_REV}.tar.g
 LICENSE="GPL-2 AVASYS"
 SLOT="0"
 
-IUSE="X gimp jpeg png tiff doc"
+IUSE="X gimp jpeg png tiff doc l10n_ja"
 IUSE_LINGUAS="ar de es fr it ja ko nl pt zh_CN zh_TW"
 
 for X in ${IUSE_LINGUAS}; do IUSE="${IUSE} linguas_${X}"; done
@@ -64,7 +64,7 @@ src_prepare() {
 	local i
 
 	# convert japanese docs to UTF-8
-	if use linguas_ja; then
+	if use l10n_ja; then
 		for i in {NEWS,README}.ja non-free/*.ja.txt; do
 			if [ -f "${i}" ]; then
 				echo ">>> Converting ${i} to UTF-8"
@@ -113,7 +113,7 @@ src_install() {
 
 	# install docs
 	dodoc AUTHORS NEWS README
-	use linguas_ja && dodoc NEWS.ja README.ja
+	use l10n_ja && dodoc NEWS.ja README.ja
 
 	# install sane config
 	insinto /etc/sane.d
