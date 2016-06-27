@@ -5,6 +5,10 @@
 		<email>mgorny@gentoo.org</email>
 		<name>Michał Górny</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>wizardedit@gentoo.org</email>
+		<name>Austin English</name>
+	</maintainer>
 	<longdescription>The goal of the Clang project is to create a new C, C++, Objective C and Objective C++ front-end for the LLVM compiler.
 
 Features and Goals
