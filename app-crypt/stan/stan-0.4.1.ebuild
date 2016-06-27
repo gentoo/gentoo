@@ -5,9 +5,9 @@
 EAPI="2"
 inherit autotools eutils
 
-DESCRIPTION="Stan is a console application that analyzes binary streams and calculates statistical information"
-HOMEPAGE="http://www.roqe.org/stan/"
-SRC_URI="http://www.roqe.org/${PN}/${P}.tar.gz"
+DESCRIPTION="Stan analyzes binary streams and calculates statistical information"
+HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
+SRC_URI="mirror://gentoo/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
