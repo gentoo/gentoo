@@ -48,16 +48,6 @@ python_prepare_all() {
 	distutils-r1_python_prepare_all
 
 	if [[ -n ${EPREFIX} ]] ; then
-		einfo "Setting portage.const.EPREFIX ..."
-		sed -e "s|^\(SANDBOX_BINARY[[:space:]]*=[[:space:]]*\"\)\(/usr/bin/sandbox\"\)|\\1${EPREFIX}\\2|" \
-			-e "s|^\(FAKEROOT_BINARY[[:space:]]*=[[:space:]]*\"\)\(/usr/bin/fakeroot\"\)|\\1${EPREFIX}\\2|" \
-			-e "s|^\(BASH_BINARY[[:space:]]*=[[:space:]]*\"\)\(/bin/bash\"\)|\\1${EPREFIX}\\2|" \
-			-e "s|^\(MOVE_BINARY[[:space:]]*=[[:space:]]*\"\)\(/bin/mv\"\)|\\1${EPREFIX}\\2|" \
-			-e "s|^\(PRELINK_BINARY[[:space:]]*=[[:space:]]*\"\)\(/usr/sbin/prelink\"\)|\\1${EPREFIX}\\2|" \
-			-e "s|^\(EPREFIX[[:space:]]*=[[:space:]]*\"\).*|\\1${EPREFIX}\"|" \
-			-i pym/portage/const.py || \
-			die "Failed to patch portage.const.EPREFIX"
-
 		einfo "Prefixing shebangs ..."
 		while read -r -d $'\0' ; do
 			local shebang=$(head -n1 "$REPLY")
