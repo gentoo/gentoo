@@ -107,6 +107,8 @@ pkg_pretend() {
 
 pkg_setup() {
 	pkg_pretend
+
+	python-single-r1_pkg_setup
 }
 
 src_unpack() {
@@ -140,6 +142,8 @@ src_unpack() {
 }
 
 src_prepare() {
+	python_setup
+
 	# Make ocaml warnings non-fatal, bug #537308
 	sed -e "/RUN/s/-warn-error A//" -i test/Bindings/OCaml/*ml  || die
 	# Fix libdir for ocaml bindings install, bug #559134
@@ -202,8 +206,6 @@ src_prepare() {
 
 	# User patches
 	eapply_user
-
-	python_setup
 
 	# Native libdir is used to hold LLVMgold.so
 	NATIVE_LIBDIR=$(get_libdir)
