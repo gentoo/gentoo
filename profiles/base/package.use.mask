@@ -106,7 +106,7 @@ app-arch/cfv bittorrent
 
 # Pawel Hajdan jr <phajdan.jr@gentoo.org> (19 Nov 2015)
 # GN build for Chromium is still experimental.
-www-client/chromium gn
+<www-client/chromium-53.0.2767.4 gn
 
 # Alexis Ballier <aballier@gentoo.org> (14 Nov 2015)
 # MMAL is only available on the Raspberry Pi:
