@@ -72,6 +72,7 @@ CONFIG_CHECK="
 	~CGROUPS ~CGROUP_CPUACCT ~CGROUP_DEVICE ~CGROUP_FREEZER ~CGROUP_SCHED ~CPUSETS ~MEMCG
 	~KEYS ~MACVLAN ~VETH ~BRIDGE ~BRIDGE_NETFILTER
 	~NF_NAT_IPV4 ~IP_NF_FILTER ~IP_NF_TARGET_MASQUERADE
+	~IP_VS
 	~NETFILTER_XT_MATCH_ADDRTYPE ~NETFILTER_XT_MATCH_CONNTRACK
 	~NF_NAT ~NF_NAT_NEEDED
 
@@ -84,6 +85,7 @@ CONFIG_CHECK="
 	~CGROUP_HUGETLB
 	~NET_CLS_CGROUP
 	~CFS_BANDWIDTH ~FAIR_GROUP_SCHED ~RT_GROUP_SCHED
+	~XFRM_ALGO ~XFRM_USER
 "
 
 ERROR_KEYS="CONFIG_KEYS: is mandatory"
@@ -95,6 +97,8 @@ ERROR_BLK_CGROUP="CONFIG_BLK_CGROUP: is optional for container statistics gather
 ERROR_IOSCHED_CFQ="CONFIG_IOSCHED_CFQ: is optional for container statistics gathering"
 ERROR_CGROUP_PERF="CONFIG_CGROUP_PERF: is optional for container statistics gathering"
 ERROR_CFS_BANDWIDTH="CONFIG_CFS_BANDWIDTH: is optional for container statistics gathering"
+ERROR_XFRM_ALGO="CONFIG_XFRM_ALGO: is optional for secure networks"
+ERROR_XFRM_USER="CONFIG_XFRM_USER: is optional for secure networks"
 
 pkg_setup() {
 	if kernel_is lt 3 10; then
@@ -166,14 +170,6 @@ pkg_setup() {
 	enewgroup docker
 }
 
-src_prepare() {
-	cd "src/${EGO_PN}" || die
-	sed -i 's/docker-containerd/containerd/g; s/docker-runc/runc/g' libcontainerd/remote_linux.go
-	# allow user patches (use sparingly - upstream won't support them)
-	cd -
-	eapply_user
-}
-
 src_compile() {
 	cd "src/${EGO_PN}" || die
 	export GOPATH="${WORKDIR}/${P}:${PWD}/vendor"
@@ -228,6 +224,8 @@ src_install() {
 	VERSION="$(cat VERSION)"
 	newbin "bundles/$VERSION/dynbinary-client/docker-$VERSION" docker
 	newbin "bundles/$VERSION/dynbinary-daemon/dockerd-$VERSION" dockerd
+	dosym containerd /usr/bin/docker-containerd
+	dosym runc /usr/bin/docker-runc
 
 	newinitd contrib/init/openrc/docker.initd docker
 	newconfd contrib/init/openrc/docker.confd docker
