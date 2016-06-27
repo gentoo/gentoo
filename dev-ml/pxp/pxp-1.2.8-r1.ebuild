@@ -13,7 +13,7 @@ HOMEPAGE="http://projects.camlcity.org/projects/pxp.html"
 SRC_URI="http://download.camlcity.org/download/${MY_P}.tar.gz"
 
 LICENSE="MIT"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ppc x86"
 
 SLOT="0/${PV}"
 DEPEND=">=dev-ml/pcre-ocaml-4.31:=
