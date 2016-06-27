@@ -36,7 +36,7 @@ src_prepare() {
 	fi
 
 	# Fix the doc path
-	sed -i -e "s|share/doc/qgifer|share/doc/${PF}|" CMakeLists.txt
+	sed -i -e "s|share/doc/qgifer|share/doc/${PF}|" CMakeLists.txt || die
 
 	eapply_user
 }
