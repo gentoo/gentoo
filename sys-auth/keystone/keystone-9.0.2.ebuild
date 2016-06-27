@@ -101,9 +101,8 @@ RDEPEND="
 		www-servers/gunicorn[${PYTHON_USEDEP}]
 	)"
 
-PATCHES=(
-	"${FILESDIR}/CVE-2016-4911_9.0.0.patch"
-)
+#PATCHES=(
+#)
 
 pkg_setup() {
 	enewgroup keystone
