@@ -749,7 +749,6 @@ kde-misc/kgtk
 # live ebuilds, nor the availability of the server hosting them. As
 # per QA team policy, all these need to be kept masked by default, if
 # available in the tree.
-=app-misc/sleepyhead-9999
 =www-plugins/google-talkplugin-9999
 
 # Tiziano Müller <dev-zero@gentoo.org> (08 Apr 2009)
