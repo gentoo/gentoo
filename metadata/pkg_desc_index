@@ -5127,7 +5127,7 @@ dev-ml/ocamlgraph 0.99b 1.8.5 1.8.6 1.8.7: O'Caml Graph library
 dev-ml/ocamlgsl 0.6.0: OCaml bindings for the GSL library
 dev-ml/ocamlify 0.0.2: OCamlify allows to create OCaml source code by including whole file into OCaml string or string list
 dev-ml/ocamlmod 0.0.8: Generate OCaml modules from source files
-dev-ml/ocamlnet 3.7.7 4.0.4 4.1.1 4.1.2: Modules for OCaml application-level Internet protocols
+dev-ml/ocamlnet 4.1.2: Modules for OCaml application-level Internet protocols
 dev-ml/ocamlpam 1.1: OCamlPAM - an OCaml library for PAM
 dev-ml/ocamlsdl 0.9.1: OCaml SDL Bindings
 dev-ml/ocamlweb 1.38-r1 1.39: O'Caml literate programming tool
@@ -5172,7 +5172,7 @@ dev-ml/ppx_tools 4.02.3 5.0.4.02.0 5.0.4.03.0: Tools for authors of ppx rewriter
 dev-ml/ppx_type_conv 113.24.00 113.33.00: Support Library for type-driven code generators
 dev-ml/ppx_typerep_conv 113.24.00 113.33.00: Generation of runtime types from type declarations
 dev-ml/ppx_variants_conv 113.24.00 113.33.00: Generation of accessor and iteration functions for ocaml variant types
-dev-ml/pxp 1.2.4 1.2.7 1.2.8 1.2.8-r1: validating XML parser library for O'Caml
+dev-ml/pxp 1.2.8-r1: validating XML parser library for O'Caml
 dev-ml/qcheck 0.4.0.1: QuickCheck inspired property-based testing for OCaml
 dev-ml/re2 113.24.00 113.33.00: OCaml bindings for RE2
 dev-ml/react 0.9.4 1.2.0: OCaml module for functional reactive programming
