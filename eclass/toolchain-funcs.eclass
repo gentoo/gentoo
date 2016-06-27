@@ -460,10 +460,6 @@ ninj() { [[ ${type} == "kern" ]] && echo $1 || echo $2 ; }
 	local host=$2
 	[[ -z ${host} ]] && host=${CTARGET:-${CHOST}}
 
-	local KV=${KV:-${KV_FULL}}
-	[[ ${type} == "kern" ]] && [[ -z ${KV} ]] && \
-	ewarn "QA: Kernel version could not be determined, please inherit kernel-2 or linux-info"
-
 	case ${host} in
 		aarch64*)	echo arm64;;
 		alpha*)		echo alpha;;
@@ -479,7 +475,7 @@ ninj() { [[ ${type} == "kern" ]] && echo $1 || echo $2 ; }
 			# Starting with linux-2.6.24, the 'x86_64' and 'i386'
 			# trees have been unified into 'x86'.
 			# FreeBSD still uses i386
-			if [[ ${type} == "kern" ]] && [[ $(KV_to_int ${KV}) -lt $(KV_to_int 2.6.24) || ${host} == *freebsd* ]] ; then
+			if [[ ${type} == "kern" && ${host} == *freebsd* ]] ; then
 				echo i386
 			else
 				echo x86
@@ -497,14 +493,8 @@ ninj() { [[ ${type} == "kern" ]] && echo $1 || echo $2 ; }
 			# Starting with linux-2.6.15, the 'ppc' and 'ppc64' trees
 			# have been unified into simply 'powerpc', but until 2.6.16,
 			# ppc32 is still using ARCH="ppc" as default
-			if [[ ${type} == "kern" ]] && [[ $(KV_to_int ${KV}) -ge $(KV_to_int 2.6.16) ]] ; then
+			if [[ ${type} == "kern" ]] ; then
 				echo powerpc
-			elif [[ ${type} == "kern" ]] && [[ $(KV_to_int ${KV}) -eq $(KV_to_int 2.6.15) ]] ; then
-				if [[ ${host} == powerpc64* ]] || [[ ${PROFILE_ARCH} == "ppc64" ]] ; then
-					echo powerpc
-				else
-					echo ppc
-				fi
 			elif [[ ${host} == powerpc64* ]] ; then
 				echo ppc64
 			elif [[ ${PROFILE_ARCH} == "ppc64" ]] ; then
@@ -529,7 +519,7 @@ ninj() { [[ ${type} == "kern" ]] && echo $1 || echo $2 ; }
 		x86_64*)
 			# Starting with linux-2.6.24, the 'x86_64' and 'i386'
 			# trees have been unified into 'x86'.
-			if [[ ${type} == "kern" ]] && [[ $(KV_to_int ${KV}) -ge $(KV_to_int 2.6.24) ]] ; then
+			if [[ ${type} == "kern" ]] ; then
 				echo x86
 			else
 				ninj x86_64 amd64
