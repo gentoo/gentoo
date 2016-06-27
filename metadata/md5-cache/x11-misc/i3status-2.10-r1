@@ -10,5 +10,5 @@ RDEPEND=dev-libs/confuse:= dev-libs/libnl:3 >=dev-libs/yajl-2.0.2 media-libs/als
 SLOT=0
 SRC_URI=http://i3wm.org/i3status/i3status-2.10.tar.bz2
 _eclass_exported_funcs=pkg_postinst:- src_prepare:- src_compile:-
-_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	fcaps	6a1091a98b1dde01cc26ab3252da1a9b	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	bfd09e8e66991dd5ce9e57610d8d1e6c
+_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	fcaps	6a1091a98b1dde01cc26ab3252da1a9b	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	77f907363e91028a361ce5a3e9e7ed1e
 _md5_=588424311145b8562b82e360fd14a76e

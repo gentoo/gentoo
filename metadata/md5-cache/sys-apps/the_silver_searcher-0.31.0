@@ -10,5 +10,5 @@ RDEPEND=dev-libs/libpcre lzma? ( app-arch/xz-utils ) zlib? ( sys-libs/zlib )
 SLOT=0
 SRC_URI=https://github.com/ggreer/the_silver_searcher/archive/0.31.0.tar.gz -> the_silver_searcher-0.31.0.tar.gz
 _eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
-_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	bash-completion-r1	acf715fa09463f043fbfdc1640f3fb85	libtool	4890219c51da247200223277f993e054	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	bfd09e8e66991dd5ce9e57610d8d1e6c
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	bash-completion-r1	acf715fa09463f043fbfdc1640f3fb85	libtool	4890219c51da247200223277f993e054	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	77f907363e91028a361ce5a3e9e7ed1e
 _md5_=95fe0fc2ed6b1e3fa577002d80ddd33a

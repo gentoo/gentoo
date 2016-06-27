@@ -10,5 +10,5 @@ RDEPEND=virtual/libusb:0 ncurses? ( sys-libs/ncurses ) gtk? ( x11-libs/gtk+:2 )
 SLOT=0
 SRC_URI=http://www.kismetwireless.net/code/spectools-2011-08-R1.tar.gz
 _eclass_exported_funcs=src_compile:- src_install:-
-_eclasses_=multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	bfd09e8e66991dd5ce9e57610d8d1e6c	udev	73058269b3e70e34e084fa3981282338
+_eclasses_=multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	77f907363e91028a361ce5a3e9e7ed1e	udev	73058269b3e70e34e084fa3981282338
 _md5_=4aefb434b8b29cf96d148f003312b338

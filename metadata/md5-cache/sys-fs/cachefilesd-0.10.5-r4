@@ -10,5 +10,5 @@ RDEPEND=selinux? ( sec-policy/selinux-cachefilesd )
 SLOT=0
 SRC_URI=https://people.redhat.com/~dhowells/fscache/cachefilesd-0.10.5.tar.bz2 -> cachefilesd-0.10.5.tar
 _eclass_exported_funcs=pkg_postinst:- src_prepare:- src_install:-
-_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	flag-o-matic	d270fa247153df66074f795fa42dba3e	multilib	d062ae4ba2fc40a19c11de2ad89b6616	systemd	3165c885f3c71ffae7a867d931fb0e07	toolchain-funcs	bfd09e8e66991dd5ce9e57610d8d1e6c
+_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	flag-o-matic	d270fa247153df66074f795fa42dba3e	multilib	d062ae4ba2fc40a19c11de2ad89b6616	systemd	3165c885f3c71ffae7a867d931fb0e07	toolchain-funcs	77f907363e91028a361ce5a3e9e7ed1e
 _md5_=6c9dc38ca9edeb5a75e8ece6eb3221d6

@@ -9,5 +9,5 @@ RDEPEND=>=dev-python/pygtk-2.12 gnome-base/librsvg =dev-lang/python-2*
 SLOT=0
 SRC_URI=mirror://sourceforge/nicotine-plus/nicotine+-1.2.16.tar.bz2
 _eclass_exported_funcs=pkg_postrm:distutils pkg_postinst:- pkg_setup:- src_prepare:- src_compile:distutils src_install:-
-_eclasses_=distutils	ad9e4720eb3e69090dd968b152fc611b	multilib	d062ae4ba2fc40a19c11de2ad89b6616	python	efc1c55fc44c5b7272fc2ffba73c3e6f	toolchain-funcs	bfd09e8e66991dd5ce9e57610d8d1e6c
+_eclasses_=distutils	ad9e4720eb3e69090dd968b152fc611b	multilib	d062ae4ba2fc40a19c11de2ad89b6616	python	efc1c55fc44c5b7272fc2ffba73c3e6f	toolchain-funcs	77f907363e91028a361ce5a3e9e7ed1e
 _md5_=e00c520b8fa839093b61275c727e98fe

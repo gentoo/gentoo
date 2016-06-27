@@ -10,5 +10,5 @@ RDEPEND=>=dev-lang/ocaml-3.12:=[ocamlopt?]
 SLOT=0/1.0_rc7
 SRC_URI=https://github.com/rdicosmo/parmap/archive/1.0-rc7.tar.gz -> parmap-1.0_rc7.tar.gz
 _eclass_exported_funcs=src_test:- src_install:-
-_eclasses_=multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	bfd09e8e66991dd5ce9e57610d8d1e6c
+_eclasses_=multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	77f907363e91028a361ce5a3e9e7ed1e
 _md5_=9dd869db9bf9c6397c20d54a172be4d8

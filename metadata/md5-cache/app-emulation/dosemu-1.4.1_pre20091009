@@ -10,5 +10,5 @@ RDEPEND=X? ( x11-libs/libXxf86vm x11-libs/libXau x11-libs/libXdmcp x11-apps/xset
 SLOT=0
 SRC_URI=mirror://sourceforge/dosemu/dosemu-freedos-1.0-bin.tgz mirror://gentoo/dosemu-1.4.1_pre20091009.tar.bz2
 _eclass_exported_funcs=src_compile:- src_install:-
-_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	flag-o-matic	d270fa247153df66074f795fa42dba3e	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	bfd09e8e66991dd5ce9e57610d8d1e6c
+_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	flag-o-matic	d270fa247153df66074f795fa42dba3e	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	77f907363e91028a361ce5a3e9e7ed1e
 _md5_=c05707626fedb290f18bd8f75d8ae630

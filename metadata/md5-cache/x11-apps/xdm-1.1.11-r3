@@ -10,5 +10,5 @@ RDEPEND=x11-apps/xrdb x11-libs/libXdmcp x11-libs/libXaw >=x11-apps/xinit-1.0.2-r
 SLOT=0
 SRC_URI=http://xorg.freedesktop.org/releases/individual/app/xdm-1.1.11.tar.bz2
 _eclass_exported_funcs=pkg_postrm:xorg-2 pkg_postinst:xorg-2 pkg_setup:- src_unpack:xorg-2 src_prepare:- src_configure:xorg-2 src_compile:xorg-2 src_test:autotools-utils src_install:-
-_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	autotools-utils	419811142edf3516b0d0cf1a254d93cb	eutils	792f83d5ec9536cb5ccef375469d8bde	flag-o-matic	d270fa247153df66074f795fa42dba3e	libtool	4890219c51da247200223277f993e054	multilib	d062ae4ba2fc40a19c11de2ad89b6616	pam	3ecd5b75e39b0bb05a3183c08fcdfdb4	systemd	3165c885f3c71ffae7a867d931fb0e07	toolchain-funcs	bfd09e8e66991dd5ce9e57610d8d1e6c	xorg-2	b41f09eee8d441f780b7413dba7e120b
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	autotools-utils	419811142edf3516b0d0cf1a254d93cb	eutils	792f83d5ec9536cb5ccef375469d8bde	flag-o-matic	d270fa247153df66074f795fa42dba3e	libtool	4890219c51da247200223277f993e054	multilib	d062ae4ba2fc40a19c11de2ad89b6616	pam	3ecd5b75e39b0bb05a3183c08fcdfdb4	systemd	3165c885f3c71ffae7a867d931fb0e07	toolchain-funcs	77f907363e91028a361ce5a3e9e7ed1e	xorg-2	b41f09eee8d441f780b7413dba7e120b
 _md5_=69f492543d7be736d139a45316315e1f

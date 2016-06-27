@@ -10,5 +10,5 @@ RDEPEND=~sys-libs/e2fsprogs-libs-1.42.13 >=sys-apps/util-linux-2.16 nls? ( virtu
 SLOT=0
 SRC_URI=mirror://sourceforge/e2fsprogs/e2fsprogs-1.42.13.tar.gz elibc_mintlib? ( mirror://gentoo/e2fsprogs-1.42.9-mint-r1.patch.xz )
 _eclass_exported_funcs=src_prepare:- src_configure:- src_compile:- src_install:-
-_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	flag-o-matic	d270fa247153df66074f795fa42dba3e	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	bfd09e8e66991dd5ce9e57610d8d1e6c
+_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	flag-o-matic	d270fa247153df66074f795fa42dba3e	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	77f907363e91028a361ce5a3e9e7ed1e
 _md5_=6f4016df0d424cd9b67b13f51e413c20

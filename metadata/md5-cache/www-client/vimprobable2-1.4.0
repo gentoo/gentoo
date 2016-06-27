@@ -9,5 +9,5 @@ RDEPEND=net-libs/libsoup:2.4 net-libs/webkit-gtk:2 x11-libs/gtk+:2 x11-libs/libX
 SLOT=0
 SRC_URI=mirror://sourceforge/vimprobable/vimprobable2_1.4.0.tar.bz2
 _eclass_exported_funcs=src_prepare:- src_install:-
-_eclasses_=multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	bfd09e8e66991dd5ce9e57610d8d1e6c
+_eclasses_=multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	77f907363e91028a361ce5a3e9e7ed1e
 _md5_=df0bc425d2985f4b58d0a49f6c628a85

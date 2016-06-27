@@ -10,5 +10,5 @@ RDEPEND=|| ( ~app-mobilephone/kannel-1.5.0[mysql] ~app-mobilephone/kannel-1.5.0[
 SLOT=0
 SRC_URI=http://www.kannel.org/download/1.5.0/gateway-1.5.0.tar.gz
 _eclass_exported_funcs=pkg_postinst:- pkg_setup:- src_configure:- src_install:-
-_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	flag-o-matic	d270fa247153df66074f795fa42dba3e	multilib	d062ae4ba2fc40a19c11de2ad89b6616	readme.gentoo-r1	03878c06495db70bc36bd717383c09f7	toolchain-funcs	bfd09e8e66991dd5ce9e57610d8d1e6c
+_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	flag-o-matic	d270fa247153df66074f795fa42dba3e	multilib	d062ae4ba2fc40a19c11de2ad89b6616	readme.gentoo-r1	03878c06495db70bc36bd717383c09f7	toolchain-funcs	77f907363e91028a361ce5a3e9e7ed1e
 _md5_=4f2a3440a5dd10414d6605cfcd0931dc

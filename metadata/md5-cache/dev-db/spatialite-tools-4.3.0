@@ -10,5 +10,5 @@ RDEPEND=>=dev-db/spatialite-3.0.1[geos,xls] dev-libs/expat >=sci-libs/geos-3.3 s
 SLOT=0
 SRC_URI=http://www.gaia-gis.it/gaia-sins/spatialite-tools-sources/spatialite-tools-4.3.0.tar.gz
 _eclass_exported_funcs=src_configure:-
-_eclasses_=multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	bfd09e8e66991dd5ce9e57610d8d1e6c
+_eclasses_=multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	77f907363e91028a361ce5a3e9e7ed1e
 _md5_=8d671ae3b3089205ffae7264e42b87ab

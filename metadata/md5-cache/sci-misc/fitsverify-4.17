@@ -9,5 +9,5 @@ RDEPEND=sci-libs/cfitsio:0=
 SLOT=0
 SRC_URI=http://heasarc.gsfc.nasa.gov/docs/software/ftools/fitsverify//fitsverify-4.17.tar.gz
 _eclass_exported_funcs=src_compile:- src_install:-
-_eclasses_=multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	bfd09e8e66991dd5ce9e57610d8d1e6c
+_eclasses_=multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	77f907363e91028a361ce5a3e9e7ed1e
 _md5_=93366feb34e34087b7f5641d643ae4ed

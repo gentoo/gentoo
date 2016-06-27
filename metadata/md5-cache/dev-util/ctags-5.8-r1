@@ -9,5 +9,5 @@ RDEPEND=app-eselect/eselect-ctags
 SLOT=0
 SRC_URI=mirror://sourceforge/ctags/ctags-5.8.tar.gz ada? ( mirror://sourceforge/gnuada/ctags-ada-mode-4.3.11.tar.bz2 )
 _eclass_exported_funcs=pkg_postrm:- pkg_postinst:- src_prepare:- src_configure:- src_install:-
-_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	bfd09e8e66991dd5ce9e57610d8d1e6c
+_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	77f907363e91028a361ce5a3e9e7ed1e
 _md5_=2b8b327ffcefc5c9521a1bc11b78c7d0

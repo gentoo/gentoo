@@ -13600,7 +13600,7 @@ media-video/pitivi 0.95: A non-linear video editor using the GStreamer multimedi
 media-video/plasma-mediacenter 1.3.0: Unified media experience for any device capable of running KDE
 media-video/projectx 0.91.0.10: Converts, splits and demuxes DVB and other MPEG recordings
 media-video/pymp 1.1: a lean, flexible frontend to mplayer written in python
-media-video/qgifer 0.2.1 0.2.1-r1 0.2.1-r2: A video-based animated GIF creator
+media-video/qgifer 0.2.1-r2 0.2.1-r3: A video-based animated GIF creator
 media-video/qt-recordmydesktop 0.3.8-r2: Qt4 interface for RecordMyDesktop
 media-video/qx11grab 0.4.12: X11 desktop video grabber tray
 media-video/raspberrypi-omxplayer 0_p20160217 0_p20160528 9999: Command line media player for the Raspberry Pi

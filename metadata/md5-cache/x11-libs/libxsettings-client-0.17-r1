@@ -10,5 +10,5 @@ RDEPEND=x11-proto/xproto x11-libs/libX11
 SLOT=0
 SRC_URI=http://gpe.linuxtogo.org/download/source/libxsettings-client-0.17.tar.bz2
 _eclass_exported_funcs=src_unpack:gpe src_prepare:- src_configure:- src_compile:gpe src_install:-
-_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	792f83d5ec9536cb5ccef375469d8bde	gpe	c3c32a733e5fea9f469011e87dd339eb	libtool	4890219c51da247200223277f993e054	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	bfd09e8e66991dd5ce9e57610d8d1e6c
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	792f83d5ec9536cb5ccef375469d8bde	gpe	c3c32a733e5fea9f469011e87dd339eb	libtool	4890219c51da247200223277f993e054	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	77f907363e91028a361ce5a3e9e7ed1e
 _md5_=c31521452afacdd1873ca0e751d7b22d

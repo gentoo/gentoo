@@ -11,5 +11,5 @@ REQUIRED_USE=pam? ( !static )
 SLOT=0
 SRC_URI=http://matt.ucc.asn.au/dropbear/releases/dropbear-2015.68.tar.bz2 http://matt.ucc.asn.au/dropbear/testing/dropbear-2015.68.tar.bz2
 _eclass_exported_funcs=pkg_preinst:- pkg_postinst:savedconfig src_prepare:- src_configure:- src_compile:- src_install:-
-_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	flag-o-matic	d270fa247153df66074f795fa42dba3e	multilib	d062ae4ba2fc40a19c11de2ad89b6616	pam	3ecd5b75e39b0bb05a3183c08fcdfdb4	portability	bb1a0ed8ea152b957d17339f01d4d7f5	savedconfig	7de7daa586f6bf361639e77d6f2299db	toolchain-funcs	bfd09e8e66991dd5ce9e57610d8d1e6c	user	906f3c8eb3a2350a4f1191a89baa3e46
+_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	flag-o-matic	d270fa247153df66074f795fa42dba3e	multilib	d062ae4ba2fc40a19c11de2ad89b6616	pam	3ecd5b75e39b0bb05a3183c08fcdfdb4	portability	bb1a0ed8ea152b957d17339f01d4d7f5	savedconfig	7de7daa586f6bf361639e77d6f2299db	toolchain-funcs	77f907363e91028a361ce5a3e9e7ed1e	user	906f3c8eb3a2350a4f1191a89baa3e46
 _md5_=82d6693789a873361e7113d67ea109b7

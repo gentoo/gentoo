@@ -9,5 +9,5 @@ RDEPEND=x11-libs/libX11 x11-libs/libXext x11-libs/libXpm
 SLOT=0
 SRC_URI=http://www.swanson.ukfsn.org/wmdock/wminet-3.0.0.tar.gz
 _eclass_exported_funcs=src_compile:- src_install:-
-_eclasses_=multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	bfd09e8e66991dd5ce9e57610d8d1e6c
+_eclasses_=multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	77f907363e91028a361ce5a3e9e7ed1e
 _md5_=0a6a118cbf736eab8ea827304d6a6772

@@ -9,5 +9,5 @@ LICENSE=MIT GPL-2
 SLOT=0
 SRC_URI=mirror://sourceforge.jp/canna/9565/Canna37p3.tar.bz2
 _eclass_exported_funcs=pkg_prerm:- pkg_postrm:- pkg_postinst:- pkg_setup:cannadic src_unpack:- src_compile:- src_install:-
-_eclasses_=cannadic	ce62a23ce863000e8ee601a3ae189731	eutils	792f83d5ec9536cb5ccef375469d8bde	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	bfd09e8e66991dd5ce9e57610d8d1e6c
+_eclasses_=cannadic	ce62a23ce863000e8ee601a3ae189731	eutils	792f83d5ec9536cb5ccef375469d8bde	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	77f907363e91028a361ce5a3e9e7ed1e
 _md5_=e0dee81df021af8ecc5717af493ba8e0

@@ -11,5 +11,5 @@ REQUIRED_USE=udisks? ( automount ) doc? ( gtk )
 SLOT=0/4.3.0
 SRC_URI=https://dev.gentoo.org/~hwoarang/distfiles/libfm-1.2.3.tar.xz
 _eclass_exported_funcs=pkg_preinst:- pkg_postrm:- pkg_postinst:- src_prepare:- src_configure:- src_install:-
-_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	792f83d5ec9536cb5ccef375469d8bde	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	libtool	4890219c51da247200223277f993e054	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	bfd09e8e66991dd5ce9e57610d8d1e6c	vala	7541b78609c301de4ea866a8cc1b53a6
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	792f83d5ec9536cb5ccef375469d8bde	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	libtool	4890219c51da247200223277f993e054	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	77f907363e91028a361ce5a3e9e7ed1e	vala	7541b78609c301de4ea866a8cc1b53a6
 _md5_=89d7d63d6564641faa2a402ff0347b21

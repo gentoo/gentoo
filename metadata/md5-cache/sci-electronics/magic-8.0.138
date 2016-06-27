@@ -10,5 +10,5 @@ RDEPEND=sys-libs/ncurses:0= sys-libs/readline:0= dev-lang/tcl:0= dev-lang/tk:0= 
 SLOT=0
 SRC_URI=http://www.opencircuitdesign.com/magic/archive/magic-8.0.138.tgz ftp://ftp.mosis.edu/pub/sondeen/magic/new/beta/2002a.tar.gz
 _eclass_exported_funcs=src_prepare:- src_configure:- src_compile:- src_install:-
-_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	792f83d5ec9536cb5ccef375469d8bde	libtool	4890219c51da247200223277f993e054	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	bfd09e8e66991dd5ce9e57610d8d1e6c
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	792f83d5ec9536cb5ccef375469d8bde	libtool	4890219c51da247200223277f993e054	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	77f907363e91028a361ce5a3e9e7ed1e
 _md5_=8a4cad26798e366f3f66c6615a099a62

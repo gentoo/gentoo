@@ -12,5 +12,5 @@ RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/jabberd2/jabberd2/releases/download/jabberd-2.3.2/jabberd-2.3.2.tar.xz
 _eclass_exported_funcs=pkg_postinst:- src_prepare:- src_configure:- src_install:-
-_eclasses_=db-use	a4966c7f4f7df444ead1212848c13cc9	eutils	792f83d5ec9536cb5ccef375469d8bde	flag-o-matic	d270fa247153df66074f795fa42dba3e	multilib	d062ae4ba2fc40a19c11de2ad89b6616	pam	3ecd5b75e39b0bb05a3183c08fcdfdb4	toolchain-funcs	bfd09e8e66991dd5ce9e57610d8d1e6c	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=db-use	a4966c7f4f7df444ead1212848c13cc9	eutils	792f83d5ec9536cb5ccef375469d8bde	flag-o-matic	d270fa247153df66074f795fa42dba3e	multilib	d062ae4ba2fc40a19c11de2ad89b6616	pam	3ecd5b75e39b0bb05a3183c08fcdfdb4	toolchain-funcs	77f907363e91028a361ce5a3e9e7ed1e	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=42658c381a0035d5d34aca53a0b367e5

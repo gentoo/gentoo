@@ -9,5 +9,5 @@ RDEPEND=>=sys-apps/policycoreutils-2.0.82 >=sec-policy/selinux-base-policy-2.201
 SLOT=0
 SRC_URI=https://raw.githubusercontent.com/wiki/TresysTechnology/refpolicy/files/refpolicy-2.20151208.tar.bz2 https://dev.gentoo.org/~swift/patches/selinux-base-policy/patchbundle-selinux-base-policy-2.20151208-r1.tar.bz2
 _eclass_exported_funcs=pkg_postrm:selinux-policy-2 pkg_postinst:selinux-policy-2 src_unpack:selinux-policy-2 src_prepare:selinux-policy-2 src_compile:selinux-policy-2 src_install:selinux-policy-2
-_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	multilib	d062ae4ba2fc40a19c11de2ad89b6616	selinux-policy-2	de3221b44061d1a089c15c628b625d38	toolchain-funcs	bfd09e8e66991dd5ce9e57610d8d1e6c
+_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	multilib	d062ae4ba2fc40a19c11de2ad89b6616	selinux-policy-2	de3221b44061d1a089c15c628b625d38	toolchain-funcs	77f907363e91028a361ce5a3e9e7ed1e
 _md5_=c8701db7f256bc3bf8edd456a9fb8c43

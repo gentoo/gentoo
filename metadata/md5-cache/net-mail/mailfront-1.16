@@ -9,5 +9,5 @@ RDEPEND=>=dev-libs/bglibs-1.106 >=net-libs/cvm-0.81 virtual/qmail net-libs/cvm
 SLOT=0
 SRC_URI=http://untroubled.org/mailfront/archive/mailfront-1.16.tar.gz
 _eclass_exported_funcs=pkg_postinst:- src_configure:- src_install:-
-_eclasses_=multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	bfd09e8e66991dd5ce9e57610d8d1e6c
+_eclasses_=multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	77f907363e91028a361ce5a3e9e7ed1e
 _md5_=f640fdae2674eb2142b9a1eba82beb39

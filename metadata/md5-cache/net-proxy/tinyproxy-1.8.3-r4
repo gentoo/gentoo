@@ -10,5 +10,5 @@ REQUIRED_USE=test? ( xtinyproxy-header )
 SLOT=0
 SRC_URI=http://www.banu.com/pub/tinyproxy/1.8/tinyproxy-1.8.3.tar.bz2
 _eclass_exported_funcs=pkg_postinst:- pkg_setup:- src_prepare:- src_configure:- src_test:- src_install:-
-_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	libtool	4890219c51da247200223277f993e054	multilib	d062ae4ba2fc40a19c11de2ad89b6616	systemd	3165c885f3c71ffae7a867d931fb0e07	toolchain-funcs	bfd09e8e66991dd5ce9e57610d8d1e6c	user	906f3c8eb3a2350a4f1191a89baa3e46
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	libtool	4890219c51da247200223277f993e054	multilib	d062ae4ba2fc40a19c11de2ad89b6616	systemd	3165c885f3c71ffae7a867d931fb0e07	toolchain-funcs	77f907363e91028a361ce5a3e9e7ed1e	user	906f3c8eb3a2350a4f1191a89baa3e46
 _md5_=f6eb5d5318a284eaa6e2c2870fe0b4d8

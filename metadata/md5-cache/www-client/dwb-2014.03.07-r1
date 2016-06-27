@@ -10,5 +10,5 @@ RDEPEND=>=net-libs/libsoup-2.32:2.4 dev-libs/json-c net-libs/gnutls !gtk3? ( >=n
 SLOT=0
 SRC_URI=https://www.bitbucket.org/portix/dwb/downloads/dwb-2014.03.07.tar.gz
 _eclass_exported_funcs=src_prepare:- src_compile:- src_install:-
-_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	bfd09e8e66991dd5ce9e57610d8d1e6c
+_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	77f907363e91028a361ce5a3e9e7ed1e
 _md5_=546608b3c5e0a7bcfc2a4c8ee7f5564d

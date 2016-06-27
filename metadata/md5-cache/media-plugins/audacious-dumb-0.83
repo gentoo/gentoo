@@ -9,5 +9,5 @@ RDEPEND=>=media-sound/audacious-3.5 >=media-libs/dumb-0.9.3
 SLOT=0
 SRC_URI=http://www.netswarm.net/misc/audacious-dumb-0.83.tar.gz
 _eclass_exported_funcs=src_compile:- src_install:-
-_eclasses_=multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	bfd09e8e66991dd5ce9e57610d8d1e6c
+_eclasses_=multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	77f907363e91028a361ce5a3e9e7ed1e
 _md5_=5093461e3b809b895a7a293bc0f86adb

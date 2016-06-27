@@ -9,5 +9,5 @@ RDEPEND=|| ( >=sys-libs/gdbm-1.9.1-r2[berkdb] <sys-libs/gdbm-1.9.1-r2 ) >=dev-la
 SLOT=0/1.0
 SRC_URI=http://forge.ocamlcore.org/frs/download.php/728/camldbm-1.0.tgz
 _eclass_exported_funcs=src_unpack:base src_prepare:base src_configure:base src_compile:base src_install:-
-_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	792f83d5ec9536cb5ccef375469d8bde	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	bfd09e8e66991dd5ce9e57610d8d1e6c
+_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	792f83d5ec9536cb5ccef375469d8bde	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	77f907363e91028a361ce5a3e9e7ed1e
 _md5_=7d44b43d8d4b1c0c01566128fe8b1f3e

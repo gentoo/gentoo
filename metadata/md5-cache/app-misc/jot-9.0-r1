@@ -8,5 +8,5 @@ LICENSE=BSD
 SLOT=0
 SRC_URI=http://www.mit.edu/afs/athena/system/rhlinux/athena-9.0/free/SRPMS/athena-jot-9.0-3.src.rpm
 _eclass_exported_funcs=src_unpack:rpm src_prepare:-
-_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	multilib	d062ae4ba2fc40a19c11de2ad89b6616	rpm	3e120fdd74b358f9fb42b825a6558f61	toolchain-funcs	bfd09e8e66991dd5ce9e57610d8d1e6c
+_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	multilib	d062ae4ba2fc40a19c11de2ad89b6616	rpm	3e120fdd74b358f9fb42b825a6558f61	toolchain-funcs	77f907363e91028a361ce5a3e9e7ed1e
 _md5_=6a24cbf8d86520b3db605412cb290f3e

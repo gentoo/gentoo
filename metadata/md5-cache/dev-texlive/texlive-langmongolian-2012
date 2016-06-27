@@ -10,5 +10,5 @@ RDEPEND=>=dev-texlive/texlive-basic-2012 !=dev-texlive/texlive-langmanju-2007* >
 SLOT=0
 SRC_URI=mirror://gentoo/texlive-module-hyphen-mongolian-2012.tar.xz mirror://gentoo/texlive-module-mongolian-babel-2012.tar.xz mirror://gentoo/texlive-module-montex-2012.tar.xz mirror://gentoo/texlive-module-collection-langmongolian-2012.tar.xz doc? ( mirror://gentoo/texlive-module-mongolian-babel.doc-2012.tar.xz mirror://gentoo/texlive-module-montex.doc-2012.tar.xz ) source? ( mirror://gentoo/texlive-module-mongolian-babel.source-2012.tar.xz )
 _eclass_exported_funcs=pkg_postrm:texlive-module pkg_postinst:texlive-module src_unpack:texlive-module src_prepare:texlive-module src_compile:texlive-module src_install:texlive-module
-_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	multilib	d062ae4ba2fc40a19c11de2ad89b6616	texlive-common	cf8d3d36261adafe564b821b75b34a05	texlive-module	9b17379edf5bdf6418f88d18496927ed	toolchain-funcs	bfd09e8e66991dd5ce9e57610d8d1e6c
+_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	multilib	d062ae4ba2fc40a19c11de2ad89b6616	texlive-common	cf8d3d36261adafe564b821b75b34a05	texlive-module	9b17379edf5bdf6418f88d18496927ed	toolchain-funcs	77f907363e91028a361ce5a3e9e7ed1e
 _md5_=a6b4036890bec0281c478e8c1d036a10

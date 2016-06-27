@@ -7,5 +7,5 @@ LICENSE=MIT
 RDEPEND=x11-libs/libX11 x11-libs/libXft x11-libs/libXinerama
 SLOT=0
 _eclass_exported_funcs=src_unpack:git-2 src_compile:- src_install:-
-_eclasses_=git-2	672c3929a162f221a53b4ccb4d25d8a2	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	bfd09e8e66991dd5ce9e57610d8d1e6c
+_eclasses_=git-2	672c3929a162f221a53b4ccb4d25d8a2	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	77f907363e91028a361ce5a3e9e7ed1e
 _md5_=2649ca3104e992bb45f673a2faf2619f
