@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -61,7 +61,7 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	sys-devel/flex
 	sys-devel/libtool
-	guile?	( dev-scheme/guile dev-lang/swig )
+	guile?	( dev-scheme/guile[deprecated] dev-lang/swig )
 	java?	( >=virtual/jdk-1.5 dev-lang/swig )
 	nls?	( >=sys-devel/gettext-0.14.5 )
 	perl?	( dev-lang/swig )
