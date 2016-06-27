@@ -7,7 +7,7 @@ EAPI=5
 inherit eutils
 
 DESCRIPTION="A general driver for making and maintaining backups"
-HOMEPAGE="https://web.archive.org/web/20110109221843/http://tinyplanet.ca/projects/tob/"
+HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
 SRC_URI="mirror://gentoo/${P}.tgz"
 
 LICENSE="GPL-2"
