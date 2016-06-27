@@ -1,9 +1,9 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=3
-inherit eutils flag-o-matic elisp-common
+EAPI=6
+inherit flag-o-matic elisp-common
 
 DESCRIPTION="GNU Ubiquitous Intelligent Language for Extensions"
 HOMEPAGE="https://www.gnu.org/software/guile/"
@@ -29,11 +29,15 @@ DEPEND="${RDEPEND}
 SLOT="2"
 MAJOR="2.0"
 
+PATCHES=(
+	"${FILESDIR}/${P}-clang-apicontrol-texi.patch"
+	)
+
 src_configure() {
 	# see bug #178499
 	filter-flags -ftree-vectorize
 
-	#will fail for me if posix is disabled or without modules -- hkBst
+	# will fail for me if posix is disabled or without modules -- hkBst
 	econf \
 		--disable-error-on-warning \
 		--disable-static \
@@ -51,26 +55,15 @@ src_configure() {
 #		EMACS=no
 }
 
-src_compile()  {
-	emake || die "make failed"
-
-	# Above we have disabled the build system's Emacs support;
-	# for USE=emacs we compile (and install) the files manually
-	# if use emacs; then
-	# 	cd emacs
-	# 	make
-	# 	elisp-compile *.el || die
-	# fi
-}
-
 src_install() {
-	einstall || die "install failed"
+	default
 
-	dodoc AUTHORS ChangeLog GUILE-VERSION HACKING NEWS README THANKS || die
+	dodoc GUILE-VERSION HACKING
 
 	# texmacs needs this, closing bug #23493
 	dodir /etc/env.d
-	echo "GUILE_LOAD_PATH=\"${EPREFIX}/usr/share/guile/${MAJOR}\"" > "${ED}"/etc/env.d/50guile
+	echo "GUILE_LOAD_PATH=\"${EPREFIX}/usr/share/guile/${MAJOR}\"" \
+	> "${ED}"/etc/env.d/50guile || die
 
 	# necessary for registering slib, see bug 206896
 	keepdir /usr/share/guile/site
