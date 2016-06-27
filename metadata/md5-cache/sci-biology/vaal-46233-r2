@@ -10,5 +10,5 @@ RDEPEND=!sci-biology/allpaths !sci-biology/allpathslg
 SLOT=0
 SRC_URI=ftp://ftp.broad.mit.edu/pub/crd/VAAL/latest_source_code/vaal-46233.tar.gz ftp://ftp.broad.mit.edu/pub/crd/VAAL/VAAL_manual.doc
 _eclass_exported_funcs=src_prepare:- src_configure:-
-_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	libtool	4890219c51da247200223277f993e054	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	77f907363e91028a361ce5a3e9e7ed1e
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	libtool	4890219c51da247200223277f993e054	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	e886935aae2b45a545665444ab0667cf
 _md5_=a1c2d330ae12a66a3df20e7f8cd20509

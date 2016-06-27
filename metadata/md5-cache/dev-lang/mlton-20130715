@@ -10,5 +10,5 @@ RDEPEND=dev-libs/gmp
 SLOT=0/20130715
 SRC_URI=!binary? ( mirror://sourceforge/mlton/mlton-20130715.src.tgz ) binary? ( amd64? ( mirror://sourceforge/mlton/mlton-20130715-1.amd64-linux.tgz ) x86? ( mirror://sourceforge/mlton/mlton-20130715-1.x86-linux.tgz ) )
 _eclass_exported_funcs=pkg_pretend:- pkg_postinst:- pkg_setup:check-reqs src_unpack:- src_prepare:- src_compile:- src_install:-
-_eclasses_=check-reqs	aee25bdf4e2f459af86d17f7c41dcdf6	eutils	792f83d5ec9536cb5ccef375469d8bde	multilib	d062ae4ba2fc40a19c11de2ad89b6616	pax-utils	ecf634cba91bb9591a8fdb6f6145f1bb	toolchain-funcs	77f907363e91028a361ce5a3e9e7ed1e
+_eclasses_=check-reqs	aee25bdf4e2f459af86d17f7c41dcdf6	eutils	792f83d5ec9536cb5ccef375469d8bde	multilib	d062ae4ba2fc40a19c11de2ad89b6616	pax-utils	ecf634cba91bb9591a8fdb6f6145f1bb	toolchain-funcs	e886935aae2b45a545665444ab0667cf
 _md5_=cbaf2e1b2f946750d3229ea5df7d6401

@@ -10,5 +10,5 @@ RDEPEND=net-libs/libnet:1.1 net-libs/libpcap
 SLOT=0
 SRC_URI=mirror://sourceforge/ntwib/netwib-5.39.0-src.tgz doc? ( mirror://sourceforge/ntwib/netwib-5.39.0-doc_html.tgz )
 _eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
-_eclasses_=multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	77f907363e91028a361ce5a3e9e7ed1e
+_eclasses_=multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	e886935aae2b45a545665444ab0667cf
 _md5_=bef895da509c860f8cf4ad8c73be11c3

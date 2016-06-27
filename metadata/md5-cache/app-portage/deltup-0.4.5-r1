@@ -9,5 +9,5 @@ RDEPEND=dev-libs/openssl:0 sys-libs/zlib app-arch/bzip2 || ( dev-util/bdelta =de
 SLOT=0
 SRC_URI=http://deltup.org/e107_files/downloads//deltup-0.4.5.tar.gz
 _eclass_exported_funcs=src_prepare:- src_compile:- src_install:-
-_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	flag-o-matic	d270fa247153df66074f795fa42dba3e	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	77f907363e91028a361ce5a3e9e7ed1e
+_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	flag-o-matic	d270fa247153df66074f795fa42dba3e	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	e886935aae2b45a545665444ab0667cf
 _md5_=befaadc07676e648f3daae3721cb9638

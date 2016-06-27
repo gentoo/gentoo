@@ -9,5 +9,5 @@ RDEPEND=media-libs/libpng media-libs/tiff virtual/glu virtual/opengl x11-libs/li
 SLOT=0
 SRC_URI=mirror://sourceforge/viewmol/viewmol-2.4.1.src.tgz
 _eclass_exported_funcs=pkg_setup:- src_prepare:- src_compile:- src_install:-
-_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	multilib	d062ae4ba2fc40a19c11de2ad89b6616	prefix	e7f2b9c6e57342e5d25eac22fce23062	python	efc1c55fc44c5b7272fc2ffba73c3e6f	toolchain-funcs	77f907363e91028a361ce5a3e9e7ed1e
+_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	multilib	d062ae4ba2fc40a19c11de2ad89b6616	prefix	e7f2b9c6e57342e5d25eac22fce23062	python	efc1c55fc44c5b7272fc2ffba73c3e6f	toolchain-funcs	e886935aae2b45a545665444ab0667cf
 _md5_=440d36f21052f971349596c35f0dbffd

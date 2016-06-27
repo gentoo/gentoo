@@ -9,5 +9,5 @@ RDEPEND=>=app-arch/zpaq-6.19
 SLOT=0
 SRC_URI=http://mattmahoney.net/dc/bwt_j3.zip http://mattmahoney.net/dc/bwt_slowmode1.zip http://mattmahoney.net/dc/exe_j1.zip http://mattmahoney.net/dc/jpg_test2.zip http://mattmahoney.net/dc/min.zip http://mattmahoney.net/dc/fast.cfg -> zpaq-fast.cfg http://mattmahoney.net/dc/mid.cfg -> zpaq-mid.cfg http://mattmahoney.net/dc/max.cfg -> zpaq-max.cfg http://mattmahoney.net/dc/bmp_j4c.zip http://mattmahoney.net/dc/lz1.zip http://mattmahoney.net/dc/lazy100.zip http://mattmahoney.net/dc/lazy210.zip
 _eclass_exported_funcs=src_unpack:- src_configure:- src_compile:- src_install:-
-_eclasses_=multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	77f907363e91028a361ce5a3e9e7ed1e
+_eclasses_=multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	e886935aae2b45a545665444ab0667cf
 _md5_=c5a7fac8c83399ce571a207594c0b68f

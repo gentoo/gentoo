@@ -10,5 +10,5 @@ RDEPEND=iconv? ( virtual/libiconv ) dev-libs/kpathsea
 SLOT=0
 SRC_URI=mirror://gentoo/texlive-20130530-source.tar.xz
 _eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
-_eclasses_=libtool	4890219c51da247200223277f993e054	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	77f907363e91028a361ce5a3e9e7ed1e
+_eclasses_=libtool	4890219c51da247200223277f993e054	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	e886935aae2b45a545665444ab0667cf
 _md5_=10d737cc3ffcc08111e7277cb8565ccb

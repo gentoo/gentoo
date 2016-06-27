@@ -10,5 +10,5 @@ RESTRICT=mirror
 SLOT=0
 SRC_URI=http://www.exljbris.com/dl/delicious-123.zip http://www.exljbris.com/dl/Diavlo_II_37b2.zip http://www.exljbris.com/dl/fontin2_pc.zip http://www.exljbris.com/dl/FontinSans_49.zip http://www.exljbris.com/dl/tallys_15b2.zip
 _eclass_exported_funcs=pkg_postrm:font pkg_postinst:font pkg_setup:font src_unpack:- src_install:font
-_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	font	cd7790315ca5b8c505e1e0513df6acce	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	77f907363e91028a361ce5a3e9e7ed1e
+_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	font	cd7790315ca5b8c505e1e0513df6acce	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	e886935aae2b45a545665444ab0667cf
 _md5_=2cb71274f1d2dc6bd4bc733c52029e88

@@ -12,5 +12,5 @@ RESTRICT=test
 SLOT=0/1
 SRC_URI=https://www.freedesktop.org/software/colord/releases/colord-gtk-0.1.25.tar.xz
 _eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
-_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	77f907363e91028a361ce5a3e9e7ed1e	vala	7541b78609c301de4ea866a8cc1b53a6
+_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	e886935aae2b45a545665444ab0667cf	vala	7541b78609c301de4ea866a8cc1b53a6
 _md5_=a066f324eace2a5204b9214c4af12dba

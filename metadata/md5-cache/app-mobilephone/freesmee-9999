@@ -8,5 +8,5 @@ LICENSE=GPL-3
 RDEPEND=dev-util/ticpp dev-qt/qtcore:4 dev-qt/qtgui:4 dev-qt/qtwebkit:4
 SLOT=0
 _eclass_exported_funcs=src_unpack:git-2 src_prepare:qt4-r2 src_configure:qt4-r2 src_compile:qt4-r2 src_install:-
-_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	792f83d5ec9536cb5ccef375469d8bde	git-2	672c3929a162f221a53b4ccb4d25d8a2	multilib	d062ae4ba2fc40a19c11de2ad89b6616	qmake-utils	0a242e7177789b0028b4045f336dd4db	qt4-r2	d6c113024bb3086a1facc65cd338930e	toolchain-funcs	77f907363e91028a361ce5a3e9e7ed1e
+_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	792f83d5ec9536cb5ccef375469d8bde	git-2	672c3929a162f221a53b4ccb4d25d8a2	multilib	d062ae4ba2fc40a19c11de2ad89b6616	qmake-utils	0a242e7177789b0028b4045f336dd4db	qt4-r2	d6c113024bb3086a1facc65cd338930e	toolchain-funcs	e886935aae2b45a545665444ab0667cf
 _md5_=2a857e8546a82b6e062cf1b520911cb5

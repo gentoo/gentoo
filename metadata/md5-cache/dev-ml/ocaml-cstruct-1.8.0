@@ -10,5 +10,5 @@ RDEPEND=async? ( dev-ml/async:= ) camlp4? ( dev-ml/camlp4:= ) lwt? ( dev-ml/lwt:
 SLOT=0/1.8.0
 SRC_URI=https://github.com/mirage/ocaml-cstruct/archive/v1.8.0.tar.gz -> ocaml-cstruct-1.8.0.tar.gz
 _eclass_exported_funcs=src_unpack:base src_prepare:base src_configure:- src_compile:oasis src_test:oasis src_install:oasis
-_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	792f83d5ec9536cb5ccef375469d8bde	findlib	9909e5ca0f77ff5b693885a3d7aeadb7	multilib	d062ae4ba2fc40a19c11de2ad89b6616	oasis	cc6dfb8b0c04cedd9840ff2ec5e38539	toolchain-funcs	77f907363e91028a361ce5a3e9e7ed1e
+_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	792f83d5ec9536cb5ccef375469d8bde	findlib	9909e5ca0f77ff5b693885a3d7aeadb7	multilib	d062ae4ba2fc40a19c11de2ad89b6616	oasis	cc6dfb8b0c04cedd9840ff2ec5e38539	toolchain-funcs	e886935aae2b45a545665444ab0667cf
 _md5_=f8eefdf5dee5bf7544ba5b8e3df8c203

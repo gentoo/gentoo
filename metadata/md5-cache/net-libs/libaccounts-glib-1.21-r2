@@ -11,5 +11,5 @@ RESTRICT=test
 SLOT=0
 SRC_URI=https://gitlab.com/accounts-sso/libaccounts-glib/repository/archive.tar.gz?ref=VERSION_1.21 -> libaccounts-glib-1.21.tar.gz
 _eclass_exported_funcs=pkg_setup:- src_unpack:vcs-snapshot src_prepare:- src_configure:- src_install:-
-_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	792f83d5ec9536cb5ccef375469d8bde	libtool	4890219c51da247200223277f993e054	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	77f907363e91028a361ce5a3e9e7ed1e	vcs-snapshot	b45be87e7012be0af8424e8a5644da1d	xdg-utils	e2b2bd56125ce8cf59ce30c642b59d48
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	792f83d5ec9536cb5ccef375469d8bde	libtool	4890219c51da247200223277f993e054	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	e886935aae2b45a545665444ab0667cf	vcs-snapshot	b45be87e7012be0af8424e8a5644da1d	xdg-utils	e2b2bd56125ce8cf59ce30c642b59d48
 _md5_=5ef1985bfeca4bb95baac7f6ff6a06ee

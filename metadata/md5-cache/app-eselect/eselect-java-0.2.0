@@ -9,5 +9,5 @@ RDEPEND=!app-eselect/eselect-ecj !app-eselect/eselect-maven !<dev-java/java-conf
 SLOT=0
 SRC_URI=https://gitweb.gentoo.org/proj/eselect-java.git/snapshot/eselect-java-0.2.0.tar.bz2
 _eclass_exported_funcs=pkg_postinst:- src_prepare:-
-_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	libtool	4890219c51da247200223277f993e054	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	77f907363e91028a361ce5a3e9e7ed1e
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	libtool	4890219c51da247200223277f993e054	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	e886935aae2b45a545665444ab0667cf
 _md5_=75b2eaced9bb2824a3cf57eaca0c72ed

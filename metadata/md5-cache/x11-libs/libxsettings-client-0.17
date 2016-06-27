@@ -9,5 +9,5 @@ LICENSE=LGPL-2
 SLOT=0
 SRC_URI=http://gpe.linuxtogo.org/download/source/libxsettings-client-0.17.tar.bz2
 _eclass_exported_funcs=src_unpack:- src_compile:gpe src_install:gpe
-_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	gpe	c3c32a733e5fea9f469011e87dd339eb	libtool	4890219c51da247200223277f993e054	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	77f907363e91028a361ce5a3e9e7ed1e
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	gpe	c3c32a733e5fea9f469011e87dd339eb	libtool	4890219c51da247200223277f993e054	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	e886935aae2b45a545665444ab0667cf
 _md5_=5229e78c133db933a2af52b473852c7c

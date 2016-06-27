@@ -9,5 +9,5 @@ RDEPEND=snmp? ( >=dev-perl/Net-SNMP-4.0.1-r2 >=net-analyzer/net-snmp-5.0.6 )
 SLOT=0
 SRC_URI=mirror://sourceforge/fetchlog/fetchlog-1.0.tar.gz
 _eclass_exported_funcs=pkg_preinst:- src_compile:- src_install:-
-_eclasses_=multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	77f907363e91028a361ce5a3e9e7ed1e
+_eclasses_=multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	e886935aae2b45a545665444ab0667cf
 _md5_=cc1cddf5f242ee303a9bbf887db365a8

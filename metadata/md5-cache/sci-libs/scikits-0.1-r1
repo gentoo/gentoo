@@ -10,5 +10,5 @@ REQUIRED_USE=|| ( python_targets_pypy python_targets_python2_7 python_targets_py
 SLOT=0
 SRC_URI=mirror://pypi/s/scikits.example/scikits.example-0.1.tar.gz
 _eclass_exported_funcs=src_install:-
-_eclasses_=multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	d062ae4ba2fc40a19c11de2ad89b6616	python-r1	0f6937650a475d673baa5d0c8c0b37b3	python-utils-r1	c0ed2a2f233d3af6dd556048695dc5cb	toolchain-funcs	77f907363e91028a361ce5a3e9e7ed1e
+_eclasses_=multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	d062ae4ba2fc40a19c11de2ad89b6616	python-r1	0f6937650a475d673baa5d0c8c0b37b3	python-utils-r1	c0ed2a2f233d3af6dd556048695dc5cb	toolchain-funcs	e886935aae2b45a545665444ab0667cf
 _md5_=9383aefae8150d0ed5a727f06f2da381

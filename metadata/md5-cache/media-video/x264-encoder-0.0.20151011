@@ -11,5 +11,5 @@ REQUIRED_USE=ffmpegsource? ( ffmpeg )
 SLOT=0
 SRC_URI=http://download.videolan.org/pub/videolan/x264/snapshots/x264-snapshot-20151011-2245.tar.bz2
 _eclass_exported_funcs=src_prepare:- src_configure:-
-_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	flag-o-matic	d270fa247153df66074f795fa42dba3e	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	77f907363e91028a361ce5a3e9e7ed1e	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	flag-o-matic	d270fa247153df66074f795fa42dba3e	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	e886935aae2b45a545665444ab0667cf	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
 _md5_=9cd378184cf5dcbc9c504eed6661ffec

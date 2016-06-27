@@ -8,5 +8,5 @@ LICENSE=SURF
 SLOT=0
 SRC_URI=http://www.ks.uiuc.edu/Research/vmd/extsrcs/surf.tar.Z -> surf-1.0.tar.Z
 _eclass_exported_funcs=src_prepare:- src_compile:- src_install:-
-_eclasses_=multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	77f907363e91028a361ce5a3e9e7ed1e
+_eclasses_=multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	e886935aae2b45a545665444ab0667cf
 _md5_=fedd82c07b1b5c4def13402f0ae9ccb4

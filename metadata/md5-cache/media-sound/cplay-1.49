@@ -10,5 +10,5 @@ RDEPEND=vorbis? ( media-sound/vorbis-tools ) mp3? ( || ( media-sound/mpg123 medi
 SLOT=0
 SRC_URI=http://mask.tf.hut.fi/~flu/cplay/cplay-1.49.tar.gz
 _eclass_exported_funcs=src_prepare:- src_install:-
-_eclasses_=multilib	d062ae4ba2fc40a19c11de2ad89b6616	python	efc1c55fc44c5b7272fc2ffba73c3e6f	toolchain-funcs	77f907363e91028a361ce5a3e9e7ed1e
+_eclasses_=multilib	d062ae4ba2fc40a19c11de2ad89b6616	python	efc1c55fc44c5b7272fc2ffba73c3e6f	toolchain-funcs	e886935aae2b45a545665444ab0667cf
 _md5_=a47b6be6ad3d43bb9c36214477fd86e8

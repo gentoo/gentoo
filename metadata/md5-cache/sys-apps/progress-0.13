@@ -9,5 +9,5 @@ RDEPEND=sys-libs/ncurses
 SLOT=0
 SRC_URI=https://github.com/Xfennec/progress/archive/v0.13.tar.gz -> progress-0.13.tar.gz
 _eclass_exported_funcs=src_prepare:- src_install:-
-_eclasses_=multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	77f907363e91028a361ce5a3e9e7ed1e
+_eclasses_=multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	e886935aae2b45a545665444ab0667cf
 _md5_=678f429e4c484bb7351f5a60722f44cf

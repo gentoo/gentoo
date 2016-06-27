@@ -10,5 +10,5 @@ RESTRICT=binchecks
 SLOT=0
 SRC_URI=https://github.com/raspberrypi/firmware/archive/1.20160209.tar.gz -> raspberrypi-firmware-1.20160209.tar.gz
 _eclass_exported_funcs=src_unpack:vcs-snapshot src_prepare:- src_install:-
-_eclasses_=multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	77f907363e91028a361ce5a3e9e7ed1e	vcs-snapshot	b45be87e7012be0af8424e8a5644da1d
+_eclasses_=multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	e886935aae2b45a545665444ab0667cf	vcs-snapshot	b45be87e7012be0af8424e8a5644da1d
 _md5_=f79341013dbc02b3ced7f525f7532fd2

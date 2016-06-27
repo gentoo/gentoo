@@ -9,5 +9,5 @@ RDEPEND=>=dev-lang/lua-5.1:=
 SLOT=0
 SRC_URI=https://github.com/Olivine-Labs/mediator_lua/archive/v1.1.2-0.tar.gz -> mediator_lua-1.1.2_p0.tar.gz
 _eclass_exported_funcs=src_install:-
-_eclasses_=multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	77f907363e91028a361ce5a3e9e7ed1e
+_eclasses_=multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	e886935aae2b45a545665444ab0667cf
 _md5_=354099a2b8e8760febb95bf1df81ff84

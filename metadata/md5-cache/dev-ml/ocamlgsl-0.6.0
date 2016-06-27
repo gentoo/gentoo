@@ -10,5 +10,5 @@ RDEPEND=>=dev-lang/ocaml-3.10:= sci-libs/gsl !dev-ml/gsl-ocaml
 SLOT=0/0.6.0
 SRC_URI=http://oandrieu.nerim.net/ocaml/gsl/ocamlgsl-0.6.0.tar.gz
 _eclass_exported_funcs=src_unpack:base src_prepare:base src_configure:base src_compile:- src_install:-
-_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	792f83d5ec9536cb5ccef375469d8bde	findlib	9909e5ca0f77ff5b693885a3d7aeadb7	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	77f907363e91028a361ce5a3e9e7ed1e
+_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	792f83d5ec9536cb5ccef375469d8bde	findlib	9909e5ca0f77ff5b693885a3d7aeadb7	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	e886935aae2b45a545665444ab0667cf
 _md5_=4f269385320b7b5af4191f03462326ee

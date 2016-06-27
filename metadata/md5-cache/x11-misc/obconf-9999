@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=gnome-base/libglade:2.0 x11-libs/gtk+:2 x11-libs/startup-notification =x11-wm/openbox-9999
 SLOT=0
 _eclass_exported_funcs=pkg_postrm:- pkg_postinst:- src_unpack:git-2 src_prepare:- src_configure:- src_install:-
-_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	git-2	672c3929a162f221a53b4ccb4d25d8a2	libtool	4890219c51da247200223277f993e054	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	77f907363e91028a361ce5a3e9e7ed1e
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	git-2	672c3929a162f221a53b4ccb4d25d8a2	libtool	4890219c51da247200223277f993e054	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	e886935aae2b45a545665444ab0667cf
 _md5_=1df00eb9a62f88748a2e65eb4ff62dd5

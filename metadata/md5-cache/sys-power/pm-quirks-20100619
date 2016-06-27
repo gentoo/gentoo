@@ -7,5 +7,5 @@ LICENSE=GPL-2
 SLOT=0
 SRC_URI=https://pm-utils.freedesktop.org/releases/pm-quirks-20100619.tar.gz
 _eclass_exported_funcs=src_install:-
-_eclasses_=multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	77f907363e91028a361ce5a3e9e7ed1e
+_eclasses_=multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	e886935aae2b45a545665444ab0667cf
 _md5_=284c74a248a10a7e78221ceb6ee710f3

@@ -11,5 +11,5 @@ REQUIRED_USE=|| ( mysqli postgres )
 SLOT=2.7.14
 SRC_URI=http://download.moodle.org/stable27/moodle-2.7.14.tgz
 _eclass_exported_funcs=pkg_prerm:webapp pkg_postinst:- pkg_setup:- src_prepare:- src_install:-
-_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	77f907363e91028a361ce5a3e9e7ed1e	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	webapp	42c6ef7af496b228f9854b3c81e4b226
+_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	e886935aae2b45a545665444ab0667cf	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	webapp	42c6ef7af496b228f9854b3c81e4b226
 _md5_=23702fa69a9db164028b82a71441e34f

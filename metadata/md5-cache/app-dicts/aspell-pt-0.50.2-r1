@@ -9,5 +9,5 @@ RDEPEND=>=app-text/aspell-0.50
 SLOT=0
 SRC_URI=mirror://gnu/aspell/dict/pt/aspell-pt-0.50-2.tar.bz2
 _eclass_exported_funcs=src_compile:aspell-dict src_install:-
-_eclasses_=aspell-dict	6df2ba61a621be13d44ec68128cc1343	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	77f907363e91028a361ce5a3e9e7ed1e
+_eclasses_=aspell-dict	6df2ba61a621be13d44ec68128cc1343	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	e886935aae2b45a545665444ab0667cf
 _md5_=719366f3be4c6aaf950e140cb9330ab7

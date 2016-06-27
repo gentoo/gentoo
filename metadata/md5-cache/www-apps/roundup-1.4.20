@@ -9,5 +9,5 @@ RDEPEND=>=sys-libs/db-3.2.9 =dev-lang/python-2*
 SLOT=0
 SRC_URI=mirror://pypi/r/roundup/roundup-1.4.20.tar.gz
 _eclass_exported_funcs=pkg_postrm:distutils pkg_postinst:- pkg_setup:python src_prepare:distutils src_compile:distutils src_install:-
-_eclasses_=distutils	ad9e4720eb3e69090dd968b152fc611b	multilib	d062ae4ba2fc40a19c11de2ad89b6616	python	efc1c55fc44c5b7272fc2ffba73c3e6f	toolchain-funcs	77f907363e91028a361ce5a3e9e7ed1e
+_eclasses_=distutils	ad9e4720eb3e69090dd968b152fc611b	multilib	d062ae4ba2fc40a19c11de2ad89b6616	python	efc1c55fc44c5b7272fc2ffba73c3e6f	toolchain-funcs	e886935aae2b45a545665444ab0667cf
 _md5_=1552193daa4008643579bca5ccda06bf

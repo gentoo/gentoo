@@ -10,5 +10,5 @@ RDEPEND=pcsc-lite? ( sys-apps/pcsc-lite ) readline? ( sys-libs/readline:0 ) usb?
 SLOT=0
 SRC_URI=https://libnfc.googlecode.com/files/libnfc-1.7.0.tar.bz2
 _eclass_exported_funcs=src_configure:- src_compile:- src_install:-
-_eclasses_=multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	77f907363e91028a361ce5a3e9e7ed1e
+_eclasses_=multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	e886935aae2b45a545665444ab0667cf
 _md5_=c4287e5106b22fc02a4d1e692eb31fc4

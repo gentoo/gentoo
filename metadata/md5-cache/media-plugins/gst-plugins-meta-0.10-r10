@@ -9,5 +9,5 @@ RDEPEND=>=media-libs/gstreamer-0.10.36-r2:0.10[abi_x86_32(-)?,abi_x86_64(-)?,abi
 REQUIRED_USE=opus? ( ogg ) theora? ( ogg ) vorbis? ( ogg )
 SLOT=0.10
 _eclass_exported_funcs=-
-_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	d062ae4ba2fc40a19c11de2ad89b6616	multilib-build	8fe2e81aeb36cdf8a6cc5f50443879cc	toolchain-funcs	77f907363e91028a361ce5a3e9e7ed1e
+_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	d062ae4ba2fc40a19c11de2ad89b6616	multilib-build	8fe2e81aeb36cdf8a6cc5f50443879cc	toolchain-funcs	e886935aae2b45a545665444ab0667cf
 _md5_=3a169a52f9d4f0a87050c6a13f9f7be1

@@ -10,5 +10,5 @@ RDEPEND=system-libs? ( media-libs/libpng:0= sys-libs/zlib:= )
 SLOT=0
 SRC_URI=system-libs? ( mirror://sourceforge/pmt/pngcrush-1.7.86-nolib.tar.xz ) !system-libs? ( mirror://sourceforge/pmt/pngcrush-1.7.86.tar.xz )
 _eclass_exported_funcs=pkg_setup:- src_compile:- src_install:-
-_eclasses_=multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	77f907363e91028a361ce5a3e9e7ed1e
+_eclasses_=multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	e886935aae2b45a545665444ab0667cf
 _md5_=35553610affa4f1ab52d05913368b7a2

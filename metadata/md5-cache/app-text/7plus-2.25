@@ -8,5 +8,5 @@ LICENSE=7plus
 SLOT=0
 SRC_URI=http://home.t-online.de/home/dg1bbq/7pl225sr.tgz
 _eclass_exported_funcs=src_unpack:- src_compile:- src_install:-
-_eclasses_=multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	77f907363e91028a361ce5a3e9e7ed1e
+_eclasses_=multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	e886935aae2b45a545665444ab0667cf
 _md5_=3ea733f124b0f9535ad878b77ca4bace
