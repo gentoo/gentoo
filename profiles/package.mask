@@ -404,10 +404,6 @@ dev-lang/niecza-bin
 # tree should have actually been 2.0_beta1. There are no revdeps.
 dev-java/jcs
 
-# Wolfram Schlich <wschlich@gentoo.org> (06 Feb 2016)
-# Mask live ebuild
-=net-im/mcabber-9999
-
 # Mike Frysinger <vapier@gentoo.org> (18 Jan 2016)
 # Force people to migrate to the new combined libraries:
 # media-libs/elementary & dev-libs/efl. #571796
@@ -741,16 +737,6 @@ kde-misc/kgtk
 # Added <sys-fs/e2fsprogs as well (halcy0n)
 <sys-libs/e2fsprogs-libs-1.41.8
 <sys-fs/e2fsprogs-1.41.9
-
-# Diego E. Pettenò <flameeyes@gentoo.org> (08 Aug 2009)
-#  on behalf of QA Team
-#
-# Mass-masking of live ebuilds; we cannot guarantee working state of
-# live ebuilds, nor the availability of the server hosting them. As
-# per QA team policy, all these need to be kept masked by default, if
-# available in the tree.
-=app-misc/sleepyhead-9999
-=www-plugins/google-talkplugin-9999
 
 # Tiziano Müller <dev-zero@gentoo.org> (08 Apr 2009)
 # pre-releases
