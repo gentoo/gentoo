@@ -1,0 +1,33 @@
+From 95b8f96ad66ab555c763dafebac8a49b9c6f3d51 Mon Sep 17 00:00:00 2001
+From: Monsta <monsta@inbox.ru>
+Date: Thu, 1 Oct 2015 11:20:49 +0300
+Subject: [PATCH] configure.ac: add support for new libsystemd library
+
+From 6d4a81780e3598435b565569e8e16f1410cb5761 Mon Sep 17 00:00:00 2001
+From: Monsta <monsta@inbox.ru>
+Date: Mon, 5 Oct 2015 16:30:14 +0300
+Subject: [PATCH] fix build w/o systemd support
+
+fixes https://github.com/mate-desktop/mate-screensaver/issues/83
+
+---
+ configure.ac | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 379f9b1..87ab770 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -934,9 +934,9 @@ AC_ARG_WITH(systemd,
+             [Add systemd support]),
+             [with_systemd=$withval], [with_systemd=auto])
+ 
+-PKG_CHECK_MODULES(SYSTEMD,
+-                  [libsystemd-login],
+-                  [have_systemd=yes], [have_systemd=no])
++PKG_CHECK_MODULES(SYSTEMD, [libsystemd], [have_systemd=yes],
++                  [PKG_CHECK_MODULES(SYSTEMD, [libsystemd-login],
++                  [have_systemd=yes], [have_systemd=no])])
+ 
+ if test "x$with_systemd" = "xauto" ; then
+         if test x$have_systemd = xno ; then
