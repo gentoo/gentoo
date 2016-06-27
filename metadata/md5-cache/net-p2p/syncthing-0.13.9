@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install postinst setup test unpack
+DEPEND=>=dev-lang/go-1.4.2:= virtual/pkgconfig
+DESCRIPTION=Open Source Continuous File Synchronization
+EAPI=6
+HOMEPAGE=https://syncthing.net
+IUSE=tools
+KEYWORDS=~amd64 ~x86 ~arm
+LICENSE=MPL-2.0
+SLOT=0
+SRC_URI=https://github.com/syncthing/syncthing/archive/v0.13.9.tar.gz -> syncthing-0.13.9.tar.gz
+_eclass_exported_funcs=pkg_postinst:- pkg_setup:- src_unpack:golang-vcs-snapshot src_compile:- src_test:- src_install:-
+_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	golang-base	08fe6e0e2b4750daff8887a7f0e1f873	golang-vcs-snapshot	1caa6d8238d2378ad688ae068ff22e5a	multilib	d062ae4ba2fc40a19c11de2ad89b6616	systemd	3165c885f3c71ffae7a867d931fb0e07	toolchain-funcs	e886935aae2b45a545665444ab0667cf	user	906f3c8eb3a2350a4f1191a89baa3e46	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=231f18e7ca71185f30931e39a1fcf58a
