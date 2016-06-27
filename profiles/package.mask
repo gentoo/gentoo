@@ -646,23 +646,6 @@ www-plugins/chrome-binary-plugins:unstable
 # Mask development releases
 =media-sound/lilypond-2.19*
 
-# Mike Gilbert <floppym@gentoo.org> (19 Jan 2014)
-# To prevent accidental switching of release channels (bug 498306),
-# google-chrome has been split into 3 packages:
-#
-# www-client/google-chrome
-# www-client/google-chrome-beta
-# www-client/google-chrome-unstable
-#
-# The stable channel remains as www-client/google-chrome, but has been
-# switched to SLOT="0".
-#
-# Please unmerge your currently installed version and remerge one of the new
-# packages.
-www-client/google-chrome:beta
-www-client/google-chrome:stable
-www-client/google-chrome:unstable
-
 # Justin Lecher <jlec@gentoo.org> (14 Oct 2013)
 # Seems to break all deps - API change?
 >=sci-libs/metis-5
