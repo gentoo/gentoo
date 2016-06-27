@@ -299,15 +299,12 @@ app-admin/testdisk:reiserfs - Include reiserfs reading ability
 app-admin/tripwire:ssl - Adds support for Secure Socket Layer connections
 app-admin/tripwire:static - Builds the package statically
 app-admin/tripwire:tools - Installs app-admin/mktwpol, providing scripts for the installation/setup of tripwire, including generating the tripwire policy file and maintenance of the tripwire database
-app-admin/ulogd:json - Build JSON output plugin to save packets in JSON file format.
-app-admin/ulogd:mysql - Build MySQL output plugin to save packets in a mysql database.
-app-admin/ulogd:nfacct - Build NFACCT input plugin to support traffic accounting via nfnetlink_acct.
-app-admin/ulogd:nfct - Build NFCT input plugin to support stateful flow-based logging via nf_conntrack_netlink.
-app-admin/ulogd:nflog - Build NFLOG input plugin to support stateless packet-based logging via nfnetlink_queue.
-app-admin/ulogd:pcap - Build PCAP output plugin to save packets in libpcap file format.
-app-admin/ulogd:postgres - Build PGSQL output plugin to save packets in a postgres database.
-app-admin/ulogd:sqlite - Build SQLITE3 output plugin to save packets in a sqlite database.
-app-admin/ulogd:ulog - Build ULOG input plugin to support deprecated packet-based logging via ULOG target.
+app-admin/ulogd:json - Build JSON output plugin to save packets in JSON file format
+app-admin/ulogd:nfacct - Build NFACCT input plugin to support traffic accounting via nfnetlink_acct
+app-admin/ulogd:nfct - Build NFCT input plugin to support stateful flow-based logging via nfnetlink_conntrack
+app-admin/ulogd:nflog - Build NFLOG input plugin to support stateless packet-based logging via nfnetlink_log
+app-admin/ulogd:pcap - Build PCAP output plugin to save packets in libpcap file format
+app-admin/ulogd:ulog - Build ULOG input plugin to support deprecated packet-based logging via ULOG target
 app-admin/webalizer:xtended - Include the 404 extension
 app-admin/webapp-config:portage - Propagete python_targets dependencies to sys-apps/portage
 app-admin/yaala:storable - Support for persistence of Perl data structures.
