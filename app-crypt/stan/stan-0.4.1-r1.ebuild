@@ -17,7 +17,7 @@ IUSE=""
 src_prepare() {
 	eapply -p0 "${FILESDIR}/${P}-errno.patch"
 	# Update autotools deprecated file name and macro for bug 468750
-	mv configure.in configure.ac || die "configure rename failed"
+	mv configure.{in,ac} || die
 	sed -i \
 			-e "s/-O3/${CFLAGS}/" \
 			-e "s/AM_CONFIG_HEADER/AC_CONFIG_HEADERS/g" configure.ac || die
