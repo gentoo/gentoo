@@ -65,6 +65,8 @@ RDEPEND="
 
 RESTRICT="installsources strip"
 
+S="${WORKDIR}/${P}/src/${EGO_PN}"
+
 # see "contrib/check-config.sh" from upstream's sources
 CONFIG_CHECK="
 	~NAMESPACES ~NET_NS ~PID_NS ~IPC_NS ~UTS_NS
@@ -171,7 +173,6 @@ pkg_setup() {
 }
 
 src_compile() {
-	cd "src/${EGO_PN}" || die
 	export GOPATH="${WORKDIR}/${P}:${PWD}/vendor"
 
 	# setup CFLAGS and LDFLAGS for separate build target
@@ -220,7 +221,6 @@ src_compile() {
 }
 
 src_install() {
-	cd "src/${EGO_PN}" || die
 	VERSION="$(cat VERSION)"
 	newbin "bundles/$VERSION/dynbinary-client/docker-$VERSION" docker
 	newbin "bundles/$VERSION/dynbinary-daemon/dockerd-$VERSION" dockerd
