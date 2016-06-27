@@ -3,14 +3,14 @@ DEPEND=dev-libs/libxml2 media-gfx/iscan-data media-gfx/sane-backends virtual/ude
 DESCRIPTION=EPSON Image Scan! for Linux (including sane-epkowa backend)
 EAPI=5
 HOMEPAGE=http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
-IUSE=X doc gimp jpeg png tiff linguas_ar linguas_de linguas_es linguas_fr linguas_it linguas_ja linguas_ko linguas_nl linguas_pt linguas_zh_CN linguas_zh_TW
+IUSE=X doc gimp jpeg png tiff l10n_ja linguas_ar linguas_de linguas_es linguas_fr linguas_it linguas_ja linguas_ko linguas_nl linguas_pt linguas_zh_CN linguas_zh_TW
 KEYWORDS=amd64 x86
 LICENSE=GPL-2 AVASYS
 RDEPEND=dev-libs/libxml2 media-gfx/iscan-data media-gfx/sane-backends virtual/udev virtual/libusb:1 X? ( x11-libs/gtk+:2 ) gimp? ( media-gfx/gimp ) jpeg? ( virtual/jpeg:= ) png? ( media-libs/libpng:= ) tiff? ( media-libs/tiff:= )
 REQUIRED_USE=gimp? ( X ) jpeg? ( X ) png? ( X ) tiff? ( X )
 RESTRICT=test
 SLOT=0
-SRC_URI=https://dev.gentoo.org/~idella4/tarballs/iscan_2.30.1-1.tar.gz https://dev.gentoo.org/~flameeyes/avasys/iscan_2.30.1-1.tar.gz doc? ( https://dev.gentoo.org/~flameeyes/avasys/userg_revQ_e.pdf linguas_ja? ( https://dev.gentoo.org/~flameeyes/avasys/userg_revQ_j.pdf ) )
+SRC_URI=https://dev.gentoo.org/~idella4/tarballs/iscan_2.30.1-1.tar.gz https://dev.gentoo.org/~flameeyes/avasys/iscan_2.30.1-1.tar.gz doc? ( https://dev.gentoo.org/~flameeyes/avasys/userg_revQ_e.pdf l10n_ja? ( https://dev.gentoo.org/~flameeyes/avasys/userg_revQ_j.pdf ) )
 _eclass_exported_funcs=pkg_postinst:- src_prepare:- src_configure:- src_install:-
 _eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	792f83d5ec9536cb5ccef375469d8bde	flag-o-matic	d270fa247153df66074f795fa42dba3e	libtool	4890219c51da247200223277f993e054	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	e886935aae2b45a545665444ab0667cf	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=9bdeedfef3a30feb022b91693b9790aa
+_md5_=fd8df5e8b964a6d082285a4a0f73b0af
