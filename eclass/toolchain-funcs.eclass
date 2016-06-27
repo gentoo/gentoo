@@ -612,7 +612,7 @@ tc-is-clang() {
 # compilers rather than maintaining a --version flag matrix. #335943
 _gcc_fullversion() {
 	local ver="$1"; shift
-	set -- `$(tc-getCPP "$@") -E -P - <<<"__GNUC__ __GNUC_MINOR__ __GNUC_PATCHLEVEL__"`
+	set -- $($(tc-getCPP "$@") -E -P - <<<"__GNUC__ __GNUC_MINOR__ __GNUC_PATCHLEVEL__")
 	eval echo "$ver"
 }
 
