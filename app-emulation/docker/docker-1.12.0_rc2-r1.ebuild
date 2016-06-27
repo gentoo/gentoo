@@ -15,7 +15,8 @@ else
 	MY_PV="${PV/_/-}"
 	DOCKER_GITCOMMIT="906eacd"
 	EGIT_COMMIT="v${MY_PV}"
-	SRC_URI="https://${EGO_PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://${EGO_PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz
+	https://dev.gentoo.org/~williamh/dist/${P}-23859.patch"
 	KEYWORDS="~amd64"
 	[ "$DOCKER_GITCOMMIT" ] || die "DOCKER_GITCOMMIT must be added manually for each bump!"
 	inherit golang-vcs-snapshot
@@ -64,6 +65,8 @@ RDEPEND="
 "
 
 RESTRICT="installsources strip"
+
+S="${WORKDIR}/${P}/src/${EGO_PN}"
 
 # see "contrib/check-config.sh" from upstream's sources
 CONFIG_CHECK="
@@ -170,8 +173,12 @@ pkg_setup() {
 	enewgroup docker
 }
 
+PATCHES=(
+	# https://github.com/docker/docker/pull/23859
+	"${DISTDIR}"/${P}-23859.patch
+)
+
 src_compile() {
-	cd "src/${EGO_PN}" || die
 	export GOPATH="${WORKDIR}/${P}:${PWD}/vendor"
 
 	# setup CFLAGS and LDFLAGS for separate build target
@@ -220,7 +227,6 @@ src_compile() {
 }
 
 src_install() {
-	cd "src/${EGO_PN}" || die
 	VERSION="$(cat VERSION)"
 	newbin "bundles/$VERSION/dynbinary-client/docker-$VERSION" docker
 	newbin "bundles/$VERSION/dynbinary-daemon/dockerd-$VERSION" dockerd

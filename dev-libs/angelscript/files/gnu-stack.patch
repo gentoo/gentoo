@@ -1,0 +1,18 @@
+--- a/angelscript/source/as_callfunc_arm_gcc.S	2015-06-09 21:40:30.000000000 +0100
++++ b/angelscript/source/as_callfunc_arm_gcc.S	2016-06-27 23:23:46.912297799 +0100
+@@ -717,13 +717,13 @@
+ 
+ #endif /* hard float abi */
+ 
++#endif /* arm */
++
+ #if defined(__linux__) && defined(__ELF__)
+ /* ref: http://hardened.gentoo.org/gnu-stack.xml */
+ .section .note.GNU-stack,"",%progbits
+ #endif
+ 
+-#endif /* arm */
+-
+ #endif /* !AS_MAX_PORTABILITY */
+ 
+ 
