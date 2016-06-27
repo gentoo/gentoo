@@ -12,7 +12,7 @@ SRC_URI="https://uim.googlecode.com/files/${P}.tar.bz2"
 LICENSE="BSD GPL-2 LGPL-2.1"
 SLOT="0"
 KEYWORDS="amd64 ~arm hppa ppc ppc64 x86"
-IUSE="+anthy canna curl eb emacs expat libffi gtk gtk3 kde libedit libnotify m17n-lib ncurses nls qt4 skk sqlite ssl static-libs test unicode X xft linguas_zh_CN linguas_zh_TW linguas_ja linguas_ko"
+IUSE="+anthy canna curl eb emacs expat libffi gtk gtk3 kde libedit libnotify m17n-lib ncurses nls qt4 skk sqlite ssl static-libs test unicode X xft l10n_ja l10n_ko l10n_zh-CN l10n_zh-TW"
 
 RESTRICT="test"
 
@@ -43,12 +43,12 @@ RDEPEND="X? (
 	libedit? ( dev-libs/libedit )
 	libnotify? ( >=x11-libs/libnotify-0.4 )
 	m17n-lib? ( >=dev-libs/m17n-lib-1.3.1 )
-	ncurses? ( sys-libs/ncurses )
+	ncurses? ( sys-libs/ncurses:0= )
 	nls? ( virtual/libintl )
 	qt4? ( dev-qt/qtgui:4[qt3support] )
 	skk? ( app-i18n/skk-jisyo )
 	sqlite? ( dev-db/sqlite:3 )
-	ssl? ( dev-libs/openssl )
+	ssl? ( dev-libs/openssl:0 )
 	!dev-scheme/sigscheme"
 #	scim? ( >=app-i18n/scim-1.3.0 ) # broken
 #	wnn? ( app-i18n/wnn )
@@ -66,18 +66,10 @@ DEPEND="${RDEPEND}
 RDEPEND="${RDEPEND}
 	X? (
 		media-fonts/font-sony-misc
-		linguas_zh_CN? (
-			|| ( media-fonts/font-isas-misc media-fonts/intlfonts )
-		)
-		linguas_zh_TW? (
-			media-fonts/intlfonts
-		)
-		linguas_ja? (
-			|| ( media-fonts/font-jis-misc media-fonts/intlfonts )
-		)
-		linguas_ko? (
-			|| ( media-fonts/font-daewoo-misc media-fonts/intlfonts )
-		)
+		l10n_ja? ( || ( media-fonts/font-jis-misc media-fonts/intlfonts ) )
+		l10n_ko? ( || ( media-fonts/font-daewoo-misc media-fonts/intlfonts ) )
+		l10n_zh-CN? ( || ( media-fonts/font-isas-misc media-fonts/intlfonts ) )
+		l10n_zh-TW? ( media-fonts/intlfonts )
 	)"
 #	test? ( dev-scheme/gauche )
 
