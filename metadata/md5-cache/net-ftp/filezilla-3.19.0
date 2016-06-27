@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install prepare pretend
+DEPEND=>=app-eselect/eselect-wxwidgets-0.7-r1 >=dev-libs/nettle-3.1:= >=dev-db/sqlite-3.7 >=dev-libs/libfilezilla-0.5.3 >=dev-libs/pugixml-1.7 net-dns/libidn >=net-libs/gnutls-3.1.12 >=x11-libs/wxGTK-3.0.2.0-r1:3.0[X] x11-misc/xdg-utils dbus? ( sys-apps/dbus ) virtual/pkgconfig >=sys-devel/libtool-1.4 nls? ( >=sys-devel/gettext-0.11 ) test? ( dev-util/cppunit ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=FTP client with lots of useful features and an intuitive interface
+EAPI=5
+HOMEPAGE=http://filezilla-project.org/
+IUSE=dbus nls test
+KEYWORDS=~amd64 ~arm ~x86
+LICENSE=GPL-2
+RDEPEND=>=app-eselect/eselect-wxwidgets-0.7-r1 >=dev-libs/nettle-3.1:= >=dev-db/sqlite-3.7 >=dev-libs/libfilezilla-0.5.3 >=dev-libs/pugixml-1.7 net-dns/libidn >=net-libs/gnutls-3.1.12 >=x11-libs/wxGTK-3.0.2.0-r1:3.0[X] x11-misc/xdg-utils dbus? ( sys-apps/dbus )
+SLOT=0
+SRC_URI=mirror://sourceforge/filezilla/FileZilla_3.19.0_src.tar.bz2
+_eclass_exported_funcs=pkg_pretend:- src_prepare:- src_configure:- src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	792f83d5ec9536cb5ccef375469d8bde	flag-o-matic	d270fa247153df66074f795fa42dba3e	libtool	4890219c51da247200223277f993e054	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	e886935aae2b45a545665444ab0667cf	wxwidgets	9b34ce3ca77f4e418e8fd9951c4c1cb1
+_md5_=56bd6e51f7cece40c8c0b49d36671949

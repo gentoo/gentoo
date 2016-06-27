@@ -3822,7 +3822,9 @@ media-gfx/freewrl:java - Build and install java EAI/SAI support library
 media-gfx/freewrl:libeai - Build EAI C library
 media-gfx/freewrl:opencl - Enable OpenCL support
 media-gfx/freewrl:osc - Allows for OSC-based control and communication between multiple freewrl instances
+media-gfx/geeqie:gpu-accel - Enable GPU acceleration support - experimental
 media-gfx/geeqie:gtk3 - Link against x11-libs/gtk+:3 instead of x11-libs/gtk+:2
+media-gfx/geeqie:map - Enable items map display - experimental
 media-gfx/gimp:smp - Enable support for multiprocessors
 media-gfx/gmic:graphicsmagick - Enable support for many common image file formats using the GraphicsMagick++ library
 media-gfx/gmic:opencv - Enable support for webcams using the OpenCV library
