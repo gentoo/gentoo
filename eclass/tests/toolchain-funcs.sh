@@ -25,13 +25,6 @@ test-tc-arch-kernel() {
 	done
 	return ${ret}
 }
-tbegin "tc-arch-kernel() (KV=2.6.0)"
-test-tc-arch-kernel 2.6.0 \
-	alpha arm{,eb}:arm avr32 bfin:blackfin cris hppa:parisc \
-	i{3..6}86:i386 ia64 m68k mips{,eb}:mips nios2 powerpc:ppc powerpc64:ppc64 \
-	s390{,x}:s390 sh{1..4}{,eb}:sh sparc{,64} vax x86_64 \
-	i{3..6}86-gentoo-freebsd:i386
-tend $?
 tbegin "tc-arch-kernel() (KV=2.6.30)"
 test-tc-arch-kernel 2.6.30 \
 	i{3..6}86:x86 x86_64:x86 \
