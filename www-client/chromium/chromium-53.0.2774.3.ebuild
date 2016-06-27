@@ -193,7 +193,6 @@ src_prepare() {
 	epatch "${FILESDIR}/${PN}-last-commit-position-r0.patch"
 	epatch "${FILESDIR}/${PN}-system-zlib-r0.patch"
 	epatch "${FILESDIR}/${PN}-linker-warnings-r0.patch"
-	epatch "${FILESDIR}/${PN}-gn-r2.patch"
 
 	epatch_user
 
