@@ -30,6 +30,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Alexis Ballier <aballier@gentoo.org> (27 Jun 2016)
+# Breaks dev-ml/ppx_type_conv
+>=dev-ml/ppx_deriving-4
+
 # Sergei Trofimovich <slyfox@gentoo.org> (26 Jun 2016)
 # Deprecated by upstream in favour of dev-haskell/conduit-extra.
 # Masked for removal.
