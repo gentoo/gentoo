@@ -16,7 +16,7 @@ SRC_URI="http://www.modsecurity.org/tarball/${PV}/${MY_P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 ~ppc ~sparc ~x86"
+KEYWORDS="amd64 ~ppc ~sparc x86"
 IUSE="geoip curl lua jit"
 
 DEPEND=">=dev-libs/libxml2-2.7.8
