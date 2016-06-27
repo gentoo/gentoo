@@ -65,6 +65,7 @@ pkg_setup() {
 src_prepare() {
 	epatch "${FILESDIR}/eom-1.10-fix-introspection.patch"
 	epatch "${FILESDIR}/eom-cve-2013-7447.patch"
+	gnome2_src_prepare
 	eautoreconf
 }
 
