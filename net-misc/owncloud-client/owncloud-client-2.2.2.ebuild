@@ -15,7 +15,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="doc dolphin nautilus samba +sftp test qt4 +qt5"
 
-REQUIRED_USE="^^ ( qt4 qt5 )"
+REQUIRED_USE="^^ ( qt4 qt5 )
+	dolphin? ( qt5 )"
 
 RDEPEND=">=dev-db/sqlite-3.4:3
 	sys-fs/inotify-tools
@@ -53,6 +54,7 @@ DEPEND="${RDEPEND}
 		dev-texlive/texlive-latexextra
 		virtual/latex-base
 	)
+	dolphin? ( >=kde-frameworks/extra-cmake-modules-5.22.0 )
 	qt5? ( dev-qt/linguist-tools:5 )
 	test? (
 		dev-util/cmocka
@@ -64,7 +66,7 @@ S=${WORKDIR}/${P/-}
 
 src_prepare() {
 	# Keep tests in ${T}
-	sed -i -e "s#\"/tmp#\"${T}#g" test/test*.h || die "sed failed"
+	sed -i -e "s#\"/tmp#\"${T}#g" test/test*.cpp || die "sed failed"
 
 	use nautilus || sed -i -e "s/add_subdirectory(nautilus)//" \
 		shell_integration/CMakeLists.txt || die "sed failed"
