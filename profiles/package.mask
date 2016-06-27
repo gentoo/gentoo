@@ -657,6 +657,8 @@ www-plugins/chrome-binary-plugins:unstable
 # Diego Elio Pettenò <flameeyes@gentoo.org> (13 Oct 2013)
 # Requires a NPN support in mod_ssl (www-server/apache) to work.
 # See #471512 for more details.
+# Michał Górny <mgorny@gentoo.org> (27 Jun 2016)
+# Replaced by mod_h2 (in Apache). Removal in 14 days, #587146.
 www-apache/mod_spdy
 
 # Sergey Popov <pinkbyte@gentoo.org> (18 Sep 2013)
