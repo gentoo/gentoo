@@ -497,8 +497,6 @@ ninj() { [[ ${type} == "kern" ]] && echo $1 || echo $2 ; }
 				echo powerpc
 			elif [[ ${host} == powerpc64* ]] ; then
 				echo ppc64
-			elif [[ ${PROFILE_ARCH} == "ppc64" ]] ; then
-				ninj ppc64 ppc
 			else
 				echo ppc
 			fi
@@ -522,7 +520,7 @@ ninj() { [[ ${type} == "kern" ]] && echo $1 || echo $2 ; }
 			if [[ ${type} == "kern" ]] ; then
 				echo x86
 			else
-				ninj x86_64 amd64
+				echo amd64
 			fi
 			;;
 		xtensa*)	echo xtensa;;
