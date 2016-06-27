@@ -18810,7 +18810,7 @@ x11-themes/gnome-colors-themes 5.5.1: Some gnome-colors iconsets including a Gen
 x11-themes/gnome-icon-theme 3.12.0: GNOME default icon theme
 x11-themes/gnome-icon-theme-extras 3.6.2 3.12.0: Extra GNOME icons for specific devices and file types
 x11-themes/gnome-icon-theme-symbolic 3.10.1 3.12.0: Symbolic icons for GNOME default icon theme
-x11-themes/gnome-themes-standard 3.16.2 3.18.0: Standard Themes for GNOME Applications
+x11-themes/gnome-themes-standard 3.16.2 3.18.0 3.20.2: Standard Themes for GNOME Applications
 x11-themes/gnustep-neos-theme 0.1: GNUstep theme closely following the original NeXT look and feel
 x11-themes/gnustep-silver-theme 2.5 3.1: a GNUstep silver theme
 x11-themes/goddard-backgrounds 13.0.0.3: Fedora official background artwork
