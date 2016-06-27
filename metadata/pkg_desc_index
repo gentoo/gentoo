@@ -7039,7 +7039,7 @@ dev-python/compizconfig-python 0.8.4-r5: Compizconfig Python Bindings
 dev-python/configargparse 0.9.3 0.10.0: A drop-in replacement for argparse that adds support for config files and/or environment variables
 dev-python/configclass 0.1.0: A Python to class to hold configuration values
 dev-python/configobj 4.7.2-r2 5.0.5 5.0.6: Simple config file reader and writer
-dev-python/configparser 3.3.0.2: Backport of Python-3 built-in configparser
+dev-python/configparser 3.3.0.2 3.5.0: Backport of Python-3 built-in configparser
 dev-python/configshell 9999: ConfigShell Community Edition for target_core_mod/ConfigFS
 dev-python/contextlib2 0.4.0 0.5.1: Backports and enhancements for the contextlib module
 dev-python/cookies 2.2.1: Friendlier RFC 6265-compliant cookie parser/renderer
