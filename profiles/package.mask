@@ -742,15 +742,6 @@ kde-misc/kgtk
 <sys-libs/e2fsprogs-libs-1.41.8
 <sys-fs/e2fsprogs-1.41.9
 
-# Diego E. Pettenò <flameeyes@gentoo.org> (08 Aug 2009)
-#  on behalf of QA Team
-#
-# Mass-masking of live ebuilds; we cannot guarantee working state of
-# live ebuilds, nor the availability of the server hosting them. As
-# per QA team policy, all these need to be kept masked by default, if
-# available in the tree.
-=www-plugins/google-talkplugin-9999
-
 # Tiziano Müller <dev-zero@gentoo.org> (08 Apr 2009)
 # pre-releases
 >=app-editors/gobby-0.4.91
