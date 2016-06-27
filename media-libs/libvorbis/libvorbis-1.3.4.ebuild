@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -27,6 +27,7 @@ src_prepare() {
 	sed -i \
 		-e '/CFLAGS/s:-O20::' \
 		-e '/CFLAGS/s:-mcpu=750::' \
+		-e '/CFLAGS/s:-mno-ieee-fp::' \
 		configure.ac || die
 
 	# Un-hack docdir redefinition.
