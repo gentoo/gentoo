@@ -28,7 +28,7 @@ RESTRICT="binchecks strip"
 
 src_install() {
 	for l in ja ko zh-CN zh-TW; do
-		use l10n_${l} && FONT_S="${S}/source-han-sans-${l}-${PV}" font_src_install
+		use l10n_${l} && FONT_S="${S}/source-han-sans-${l//-/_}-${PV}" font_src_install
 	done
 	dodoc source-han-sans-*-${PV}/*md source-han-sans-*-${PV}/*pdf
 }
