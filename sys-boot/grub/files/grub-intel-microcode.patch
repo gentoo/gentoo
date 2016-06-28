@@ -1,0 +1,24 @@
+--- a/util/grub.d/10_linux.in
++++ b/util/grub.d/10_linux.in 
+@@ -67,6 +67,12 @@
+ 	;;
+ esac
+ 
++intel_ucode=
++if test -e "/boot/microcode.cpio" ; then
++    gettext_printf "Found Intel Microcode\n" >&2
++    intel_ucode="$(make_system_path_relative_to_its_root /boot/microcode.cpio)"
++fi
++
+ title_correction_code=
+ 
+ linux_entry ()
+@@ -140,7 +146,7 @@
+     message="$(gettext_printf "Loading initial ramdisk ...")"
+     sed "s/^/$submenu_indentation/" << EOF
+ 	echo	'$(echo "$message" | grub_quote)'
+-	initrd	${rel_dirname}/${initrd}
++	initrd	${intel_ucode} ${rel_dirname}/${initrd}
+ EOF
+   fi
+   sed "s/^/$submenu_indentation/" << EOF
