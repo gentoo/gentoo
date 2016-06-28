@@ -1,0 +1,40 @@
+#!/sbin/openrc-run
+# Copyright 1999-2016 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+USER="${USER:-nobody}"
+PIDFILE="${PIDFILE:-/var/run/nutcracker.pid}"
+NUTCRACKER_BIN="${NUTCRACKER_BIN:-/usr/sbin/nutcracker}"
+CONF_FILE="${CONF_FILE:-/etc/nutcracker/nutcracker.yml}"
+
+depend() {
+    need net
+}
+
+checkconf() {
+	ebegin "Testing configuration"
+	${NUTCRACKER_BIN} --test-conf \
+		--conf-file=${CONF_FILE} \
+		>/dev/null 2>&1
+	eend $?
+}
+
+start() {
+	checkconf || exit 1
+        ebegin "Starting Nutcracker"
+        start-stop-daemon --start -u ${USER} \
+		--name ${SVCNAME} \
+                --exec ${NUTCRACKER_BIN} -- \
+		--conf-file="${CONF_FILE}" \
+                --pid-file=${PIDFILE} \
+		${NUTCRACKER_OPTS}
+        eend $?
+}
+
+stop() {
+        ebegin "Stopping Nutcracker"
+        start-stop-daemon --stop --pidfile "${PIDFILE}"
+        eend $?
+}
+
