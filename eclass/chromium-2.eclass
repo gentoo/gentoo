@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -43,7 +43,7 @@ chromium_suid_sandbox_check_kernel_config() {
 # @DESCRIPTION:
 # List of language packs available for this package.
 
-_chromium_set_linguas_IUSE() {
+_chromium_set_l10n_IUSE() {
 	[[ ${EAPI:-0} == 0 ]] && die "EAPI=${EAPI} is not supported"
 
 	local lang
@@ -51,28 +51,13 @@ _chromium_set_linguas_IUSE() {
 		# Default to enabled since we bundle them anyway.
 		# USE-expansion will take care of disabling the langs the user has not
 		# selected via LINGUAS.
-		IUSE+=" +linguas_${lang}"
+		IUSE+=" +l10n_${lang}"
 	done
 }
 
 if [[ ${CHROMIUM_LANGS} ]]; then
-	_chromium_set_linguas_IUSE
+	_chromium_set_l10n_IUSE
 fi
-
-_chromium_crlang() {
-	echo "${@/_/-}"
-}
-
-_chromium_syslang() {
-	echo "${@/-/_}"
-}
-
-_chromium_strip_pak() {
-	local x
-	for x in "$@"; do
-		echo "${x%.pak}"
-	done
-}
 
 # @FUNCTION: chromium_remove_language_paks
 # @USAGE:
@@ -81,30 +66,29 @@ _chromium_strip_pak() {
 # not selected via the LINGUAS variable.
 # Also performs QA checks to ensure CHROMIUM_LANGS has been set correctly.
 chromium_remove_language_paks() {
-	local crlangs=$(_chromium_crlang ${CHROMIUM_LANGS})
-	local present_crlangs=$(_chromium_strip_pak *.pak)
-	local present_langs=$(_chromium_syslang ${present_crlangs})
-	local lang
+	local lang pak
 
 	# Look for missing pak files.
-	for lang in ${crlangs}; do
-		if ! has ${lang} ${present_crlangs}; then
+	for lang in ${CHROMIUM_LANGS}; do
+		if [[ ! -e ${lang}.pak ]]; then
 			eqawarn "LINGUAS warning: no .pak file for ${lang} (${lang}.pak not found)"
 		fi
 	done
 
 	# Look for extra pak files.
 	# Remove pak files that the user does not want.
-	for lang in ${present_langs}; do
-		if [[ ${lang} == en_US ]]; then
+	for pak in *.pak; do
+		lang=${pak%.pak}
+
+		if [[ ${lang} == en-US ]]; then
 			continue
 		fi
 		if ! has ${lang} ${CHROMIUM_LANGS}; then
 			eqawarn "LINGUAS warning: no ${lang} in LANGS"
 			continue
 		fi
-		if ! use linguas_${lang}; then
-			rm "$(_chromium_crlang ${lang}).pak" || die
+		if ! use l10n_${lang}; then
+			rm "${pak}" || die
 		fi
 	done
 }
