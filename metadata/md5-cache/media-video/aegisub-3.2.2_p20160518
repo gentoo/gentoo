@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure postinst postrm preinst prepare pretend test unpack
+DEPEND=x11-libs/wxGTK:3.0[X,opengl,debug?] dev-lang/luajit:2[lua52compat] dev-libs/boost:=[icu,nls,threads] dev-libs/icu:= media-libs/ffmpegsource:= media-libs/fontconfig media-libs/freetype media-libs/libass:=[fontconfig] sys-libs/zlib virtual/libiconv virtual/opengl alsa? ( media-libs/alsa-lib ) fftw? ( >=sci-libs/fftw-3.3:= ) openal? ( media-libs/openal ) portaudio? ( =media-libs/portaudio-19* ) pulseaudio? ( media-sound/pulseaudio ) spell? ( app-text/hunspell ) uchardet? ( dev-libs/uchardet ) dev-util/intltool sys-devel/gettext virtual/pkgconfig oss? ( virtual/os-headers ) test? ( ~dev-cpp/gtest-1.7.0 dev-lua/busted dev-lua/luarocks ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=sys-apps/sed-4
+DESCRIPTION=Advanced subtitle editor
+EAPI=6
+HOMEPAGE=http://www.aegisub.org/ https://github.com/Aegisub/Aegisub
+IUSE=alsa debug +fftw openal oss portaudio pulseaudio spell test +uchardet linguas_ar linguas_bg linguas_ca linguas_cs linguas_da linguas_de linguas_el linguas_es linguas_eu linguas_fa linguas_fi linguas_fr_FR linguas_gl linguas_hu linguas_id linguas_it linguas_ja linguas_ko linguas_nl linguas_pl linguas_pt_BR linguas_pt_PT linguas_ru linguas_sr_RS linguas_sr_RS@latin linguas_uk_UA linguas_vi linguas_zh_CN linguas_zh_TW
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD MIT
+RDEPEND=x11-libs/wxGTK:3.0[X,opengl,debug?] dev-lang/luajit:2[lua52compat] dev-libs/boost:=[icu,nls,threads] dev-libs/icu:= media-libs/ffmpegsource:= media-libs/fontconfig media-libs/freetype media-libs/libass:=[fontconfig] sys-libs/zlib virtual/libiconv virtual/opengl alsa? ( media-libs/alsa-lib ) fftw? ( >=sci-libs/fftw-3.3:= ) openal? ( media-libs/openal ) portaudio? ( =media-libs/portaudio-19* ) pulseaudio? ( media-sound/pulseaudio ) spell? ( app-text/hunspell ) uchardet? ( dev-libs/uchardet )
+REQUIRED_USE=|| ( alsa openal oss portaudio pulseaudio )
+SLOT=0
+SRC_URI=https://github.com/Aegisub/Aegisub/archive/b118fe7e7a5c37540e2f0aa75af105e272bad234.tar.gz -> aegisub-3.2.2_p20160518.tar.gz
+_eclass_exported_funcs=pkg_pretend:- pkg_preinst:- pkg_postrm:- pkg_postinst:- src_unpack:vcs-snapshot src_prepare:- src_configure:- src_compile:- src_test:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	792f83d5ec9536cb5ccef375469d8bde	fdo-mime	92d07846ea8ea54172f8c0112a47ae3d	flag-o-matic	d270fa247153df66074f795fa42dba3e	gnome2-utils	c6dcdf3a2c22b578b16adb945dc85c35	l10n	e26ea0642846685782f1813642e7ff0f	libtool	4890219c51da247200223277f993e054	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	e886935aae2b45a545665444ab0667cf	vcs-snapshot	b45be87e7012be0af8424e8a5644da1d	wxwidgets	9b34ce3ca77f4e418e8fd9951c4c1cb1	xdg-utils	e2b2bd56125ce8cf59ce30c642b59d48
+_md5_=2e298a165e111ac32344a994cc310b45

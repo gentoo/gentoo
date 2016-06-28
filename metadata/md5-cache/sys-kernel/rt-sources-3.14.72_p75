@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile install postinst postrm preinst setup test unpack
+DEPEND=!build? ( sys-apps/sed >=sys-devel/binutils-2.11.90.0.31 ) deblob? ( || ( >=dev-lang/python-2.7.5-r2:2.7 ) )
+DESCRIPTION=Full Linux 3.14 kernel sources with the CONFIG_PREEMPT_RT patch
+EAPI=5
+HOMEPAGE=https://www.kernel.org/ https://www.gentoo.org/ https://www.kernel.org/pub/linux/kernel/projects/rt/ http://www.fsfla.org/svn/fsfla/software/linux-libre/releases/tags
+IUSE=symlink build deblob
+KEYWORDS=~amd64
+LICENSE=GPL-2 !deblob? ( freedist )
+RDEPEND=!build? ( >=sys-libs/ncurses-5.2 sys-devel/make dev-lang/perl sys-devel/bc )
+RESTRICT=binchecks strip
+SLOT=3.14.72_p75
+SRC_URI=mirror://kernel/linux/kernel/v3.x/patch-3.14.72.xz mirror://kernel/linux/kernel/v3.x/linux-3.14.tar.xz deblob? ( http://www.fsfla.org/svn/fsfla/software/linux-libre/releases/tags/3.14-gnu/deblob-3.14 http://www.fsfla.org/svn/fsfla/software/linux-libre/releases/tags/3.14-gnu/deblob-check -> deblob-check-3.14 ) mirror://kernel/linux/kernel/projects/rt/3.14/patch-3.14.72-rt75.patch.xz mirror://kernel/linux/kernel/projects/rt/3.14/older/patch-3.14.72-rt75.patch.xz
+_eclass_exported_funcs=pkg_preinst:kernel-2 pkg_postrm:kernel-2 pkg_postinst:- pkg_setup:kernel-2 src_unpack:kernel-2 src_compile:kernel-2 src_test:kernel-2 src_install:kernel-2
+_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	kernel-2	42f76647114dfe0b91855624a26b2cc2	multilib	d062ae4ba2fc40a19c11de2ad89b6616	python-any-r1	1c20f9b800324335a8e3b137363362e8	python-utils-r1	c0ed2a2f233d3af6dd556048695dc5cb	toolchain-funcs	e886935aae2b45a545665444ab0667cf	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=60f2dacbe2734b96817f33ce57dfb649
