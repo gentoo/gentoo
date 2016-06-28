@@ -30,6 +30,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (27 Jun 2016)
+# (on behalf of QA & proxy-maint)
+# Major QA violations, bug #587342 (#585722 in particular).
+games-emulation/ppsspp
+
 # Alexis Ballier <aballier@gentoo.org> (27 Jun 2016)
 # Breaks dev-ml/ppx_type_conv
 >=dev-ml/ppx_deriving-4
