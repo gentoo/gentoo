@@ -9,11 +9,7 @@
 # Mike Gilbert <floppym@gentoo.org>
 # @BLURB: Shared functions for chromium and google-chrome
 
-inherit eutils fdo-mime gnome2-utils linux-info
-
-if [[ ${CHROMIUM_EXPORT_PHASES} != no ]]; then
-	EXPORT_FUNCTIONS pkg_preinst pkg_postinst pkg_postrm
-fi
+inherit eutils linux-info
 
 if [[ ${PN} == chromium ]]; then
 	IUSE+=" custom-cflags"
@@ -113,47 +109,6 @@ chromium_remove_language_paks() {
 	done
 }
 
-chromium_pkg_preinst() {
-	gnome2_icon_savelist
-}
-
-chromium_pkg_postinst() {
-	fdo-mime_desktop_database_update
-	gnome2_icon_cache_update
-
-	# For more info see bug #292201, bug #352263, bug #361859.
-	if ! has_version x11-themes/gnome-icon-theme &&
-		! has_version x11-themes/oxygen-icons ; then
-		elog
-		elog "Depending on your desktop environment, you may need"
-		elog "to install additional packages to get icons on the Downloads page."
-		elog
-		elog "For KDE, the required package is kde-frameworks/oxygen-icons."
-		elog
-		elog "For other desktop environments, try one of the following:"
-		elog " - x11-themes/gnome-icon-theme"
-		elog " - x11-themes/tango-icon-theme"
-	fi
-
-	# For more info see bug #359153.
-	elog
-	elog "Some web pages may require additional fonts to display properly."
-	elog "Try installing some of the following packages if some characters"
-	elog "are not displayed properly:"
-	elog " - media-fonts/arphicfonts"
-	elog " - media-fonts/bitstream-cyberbit"
-	elog " - media-fonts/droid"
-	elog " - media-fonts/ipamonafont"
-	elog " - media-fonts/ja-ipafonts"
-	elog " - media-fonts/takao-fonts"
-	elog " - media-fonts/wqy-microhei"
-	elog " - media-fonts/wqy-zenhei"
-}
-
-chromium_pkg_postrm() {
-	gnome2_icon_cache_update
-}
-
 chromium_pkg_die() {
 	if [[ "${EBUILD_PHASE}" != "compile" ]]; then
 		return
@@ -231,28 +186,4 @@ egyp_chromium() {
 gyp_use() {
 	local gypflag="-D${2:-use_${1//-/_}}="
 	usex "$1" "${gypflag}" "${gypflag}"  "${3-1}" "${4-0}"
-}
-
-# @FUNCTION: chromium_bundled_v8_version
-# @USAGE: [path to version.cc]
-# @DESCRIPTION:
-# Outputs the version of v8 parsed from a (bundled) copy of the source code.
-chromium_bundled_v8_version() {
-	local vf=${1:-v8/src/version.cc}
-	local major minor build patch
-	major=$(sed -ne 's/#define MAJOR_VERSION *\([0-9]*\)/\1/p' "${vf}")
-	minor=$(sed -ne 's/#define MINOR_VERSION *\([0-9]*\)/\1/p' "${vf}")
-	build=$(sed -ne 's/#define BUILD_NUMBER *\([0-9]*\)/\1/p' "${vf}")
-	patch=$(sed -ne 's/#define PATCH_LEVEL *\([0-9]*\)/\1/p' "${vf}")
-	echo "${major}.${minor}.${build}.${patch}"
-}
-
-# @FUNCTION: chromium_installed_v8_version
-# @USAGE:
-# @DESCRIPTION:
-# Outputs the version of dev-lang/v8 currently installed on the host system.
-chromium_installed_v8_version() {
-	local cpf=$(best_version dev-lang/v8)
-	local pvr=${cpf#dev-lang/v8-}
-	echo "${pvr%-r*}"
 }
