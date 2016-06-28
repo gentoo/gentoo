@@ -11180,7 +11180,7 @@ kde-apps/bovo 4.14.3 15.12.3 16.04.2: Five-in-a-row Board Game
 kde-apps/calendarjanitor 4.14.10 4.14.11_pre20160211: A tool to scan calendar data for buggy instances
 kde-apps/cantor 4.14.3 15.12.3-r1 16.04.2: Interface for doing mathematics and scientific computing
 kde-apps/cervisia 4.14.3 15.12.3 16.04.2: CVS frontend by KDE
-kde-apps/dolphin 4.14.3 4.14.3-r1 15.12.3-r1 16.04.2: Plasma filemanager focusing on usability
+kde-apps/dolphin 4.14.3-r1 15.12.3-r1 16.04.2: Plasma filemanager focusing on usability
 kde-apps/dolphin-plugins 4.14.3 15.12.3 16.04.2: Extra Dolphin plugins
 kde-apps/dragon 4.14.3 15.12.3 16.04.2: A simple video player
 kde-apps/drkonqi 4.14.3 15.12.3 16.04.2: KDE crash handler, gives the user feedback if a program crashed
@@ -17238,7 +17238,7 @@ sys-kernel/hardened-sources 4.3.3-r4 4.4.2 4.4.8-r1 4.5.7-r3 4.5.7-r4 4.5.7-r5: 
 sys-kernel/kccmp 0.3: A simple tool for comparing two linux kernel .config files
 sys-kernel/kergen 0.1.1 0.1.3: Kernel config generator
 sys-kernel/linux-docs 3.4.104 3.10.58 3.12.30 3.14.22 4.1.12 4.2.5 4.3: Developer documentation generated from the Linux kernel
-sys-kernel/linux-firmware 20151207 20160223 20160331 20160616 99999999: Linux firmware files
+sys-kernel/linux-firmware 20151207 20160223 20160331 20160616 20160628 99999999: Linux firmware files
 sys-kernel/linux-headers 2.4.33.3 2.4.36 3.18 4.3 4.4 4.5 4.6: Linux system headers
 sys-kernel/mips-sources 4.2.8 4.3.3: Linux-Mips GIT sources for MIPS-based machines, dated 20151126
 sys-kernel/openvz-sources 2.6.32.108.5 2.6.32.108.8 2.6.32.111.12 2.6.32.112.15 2.6.32.113.11 2.6.32.116.1: Kernel sources with OpenVZ patchset
