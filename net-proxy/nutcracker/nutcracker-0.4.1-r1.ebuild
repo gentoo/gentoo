@@ -37,8 +37,8 @@ src_install() {
 	insinto /etc/nutcracker
 	newins conf/nutcracker.yml nutcracker.yml.example
 
-	newconfd "${FILESDIR}/nutcracker.confd" nutcracker
-	newinitd "${FILESDIR}/nutcracker.initd" nutcracker
+	newconfd "${FILESDIR}/nutcracker.confd.2" nutcracker
+	newinitd "${FILESDIR}/nutcracker.initd.2" nutcracker
 
 	if use doc; then
 		dodoc -r notes
