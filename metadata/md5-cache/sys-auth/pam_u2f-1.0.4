@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure prepare
+DEPEND=app-crypt/libu2f-host app-crypt/libu2f-server virtual/pam virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Library for authenticating against PAM with a Yubikey
+EAPI=6
+HOMEPAGE=https://github.com/Yubico/pam-u2f
+IUSE=debug
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD
+RDEPEND=app-crypt/libu2f-host app-crypt/libu2f-server virtual/pam
+SLOT=0
+SRC_URI=https://developers.yubico.com/pam-u2f/Releases/pam_u2f-1.0.4.tar.gz
+_eclass_exported_funcs=src_prepare:- src_configure:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	792f83d5ec9536cb5ccef375469d8bde	flag-o-matic	d270fa247153df66074f795fa42dba3e	libtool	4890219c51da247200223277f993e054	multilib	d062ae4ba2fc40a19c11de2ad89b6616	pam	3ecd5b75e39b0bb05a3183c08fcdfdb4	toolchain-funcs	e886935aae2b45a545665444ab0667cf
+_md5_=7a43edec65001e86eafd040d94236379
