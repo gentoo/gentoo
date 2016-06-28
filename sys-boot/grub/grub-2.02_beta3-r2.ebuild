@@ -6,7 +6,7 @@ EAPI=6
 
 if [[ ${PV} == 9999  ]]; then
 	PYTHON_COMPAT=( python{2_7,3_3,3_4,3_5} )
-	inherit autotools python-any-r1
+	inherit python-any-r1
 fi
 
 inherit autotools bash-completion-r1 flag-o-matic multibuild pax-utils toolchain-funcs versionator
@@ -33,6 +33,9 @@ fi
 PATCHES=(
 	"${FILESDIR}"/gfxpayload.patch
 	"${FILESDIR}"/grub-2.02_beta2-KERNEL_GLOBS.patch
+	"${FILESDIR}"/2.02_beta3-10_linux-UUID.patch
+	"${FILESDIR}"/2.02_beta3-sysmacros.patch
+	"${FILESDIR}"/2.02_beta3-gcc6-ld-no-pie.patch
 	"${FILESDIR}"/grub-intel-microcode.patch
 )
 
@@ -149,12 +152,8 @@ src_prepare() {
 		sed -i -e 's/^\* GRUB:/* GRUB2:/' -e 's/(grub)/(grub2)/' docs/grub.texi || die
 	fi
 
-	if [[ ${PV} == 9999 ]]; then
-		python_setup
-		bash autogen.sh || die
-		autopoint() { :; }
-		eautoreconf
-	fi
+	autopoint() { :; }
+	eautoreconf
 }
 
 grub_do() {
