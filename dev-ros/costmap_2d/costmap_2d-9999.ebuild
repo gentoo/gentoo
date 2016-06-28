@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -32,7 +32,7 @@ RDEPEND="
 	dev-ros/tf
 	dev-ros/voxel_grid
 	dev-cpp/eigen:3
-	sci-libs/pcl
+	sci-libs/pcl:=
 	dev-libs/boost:=[threads]
 "
 DEPEND="${RDEPEND}
