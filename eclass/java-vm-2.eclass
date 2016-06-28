@@ -10,7 +10,12 @@
 # This eclass provides functionality which assists with installing
 # virtual machines, and ensures that they are recognized by java-config.
 
-inherit eutils fdo-mime multilib pax-utils prefix
+case ${EAPI:-0} in
+	5|6) ;;
+	*) die "EAPI=${EAPI} is not supported" ;;
+esac
+
+inherit fdo-mime multilib pax-utils prefix
 
 EXPORT_FUNCTIONS pkg_setup pkg_postinst pkg_prerm pkg_postrm
 
@@ -18,7 +23,6 @@ RDEPEND="
 	>=dev-java/java-config-2.2.0-r3
 	>=app-eselect/eselect-java-0.2.0"
 DEPEND="${RDEPEND}"
-has "${EAPI}" 0 1 && DEPEND="${DEPEND} >=sys-apps/portage-2.1"
 
 export WANT_JAVA_CONFIG=2
 
@@ -70,7 +74,6 @@ java-vm-2_pkg_setup() {
 # invalid. Also update mime database.
 
 java-vm-2_pkg_postinst() {
-	has ${EAPI:-0} 0 1 2 && ! use prefix && EROOT=${ROOT}
 	# Note that we cannot rely on java-config here, as it will silently recognize
 	# e.g. icedtea6-bin as valid system VM if icedtea6 is set but invalid (e.g. due
 	# to the migration to icedtea-6)
@@ -95,7 +98,6 @@ java-vm-2_pkg_postinst() {
 # Warn user if removing system-vm.
 
 java-vm-2_pkg_prerm() {
-	# Although REPLACED_BY_VERSION is EAPI=4, we shouldn't need to check EAPI for this use case
 	if [[ "$(GENTOO_VM="" java-config -f 2>/dev/null)" == "${VMHANDLE}" && -z "${REPLACED_BY_VERSION}" ]]; then
 		ewarn "It appears you are removing your system-vm!"
 		ewarn "Please run java-config -L to list available VMs,"
@@ -148,11 +150,6 @@ get_system_arch() {
 # TODO rename to something more evident, like install_env_file
 set_java_env() {
 	debug-print-function ${FUNCNAME} $*
-
-	if has ${EAPI:-0} 0 1 2 && ! use prefix ; then
-		ED="${D}"
-		EPREFIX=""
-	fi
 
 	local platform="$(get_system_arch)"
 	local env_file="${ED}${JAVA_VM_CONFIG_DIR}/${VMHANDLE}"
@@ -255,11 +252,6 @@ java-vm_set-pax-markings() {
 # @CODE
 
 java-vm_revdep-mask() {
-	if has ${EAPI:-0} 0 1 2 && ! use prefix; then
-		ED="${D}"
-		EPREFIX=
-	fi
-
 	local VMROOT="${1-"${EPREFIX}"/opt/${P}}"
 
 	dodir /etc/revdep-rebuild/
@@ -280,8 +272,6 @@ java-vm_revdep-mask() {
 java-vm_sandbox-predict() {
 	debug-print-function ${FUNCNAME} "$*"
 	[[ -z "${1}" ]] && die "${FUNCNAME} takes at least one argument"
-
-	has ${EAPI:-0} 0 1 2 && ! use prefix && ED="${D}"
 
 	local path path_arr=("$@")
 	# subshell this to prevent IFS bleeding out dependant on bash version.
