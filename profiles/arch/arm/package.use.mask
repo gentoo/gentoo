@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# Alexandre Rostovtsev <tetromino@gentoo.org> (28 Jun 2016)
+# Missing keywords on app-text/gspell - bug #587368
+>=app-editors/gedit-3.20 spell
+
 # Göktürk Yüksek <gokturk@gentoo.org> (14 June 2016) on behalf of
 # Nicholas Vinson <nvinso234@gmail.com> (proxy-maint)
 # net-firewall/nftables[doc] requires dblatex which is not keyworded
