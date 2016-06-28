@@ -1,5 +1,5 @@
-http://devel.aegisub.org/ticket/1899
-http://devel.aegisub.org/ticket/1900
+See http://devel.aegisub.org/ticket/1899
+and http://devel.aegisub.org/ticket/1900
 
 diff --git a/configure.ac b/configure.ac
 index 1649efc..2f4470b 100644

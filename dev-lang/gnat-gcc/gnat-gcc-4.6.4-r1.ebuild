@@ -19,10 +19,11 @@ SRC_URI="ftp://gcc.gnu.org/pub/gcc/releases/gcc-${PV}/gcc-core-${PV}.tar.bz2
 	ftp://gcc.gnu.org/pub/gcc/releases/gcc-${PV}/gcc-ada-${PV}.tar.bz2
 	amd64? ( https://dev.gentoo.org/~george/src/gnatboot-${BOOT_SLOT}-amd64.tar.bz2 )
 	sparc? ( https://dev.gentoo.org/~george/src/gnatboot-${BOOT_SLOT}-sparc.tar.bz2 )
-	x86?   ( https://dev.gentoo.org/~george/src/gnatboot-${BOOT_SLOT}-i686.tar.bz2 )"
+	x86?   ( https://dev.gentoo.org/~george/src/gnatboot-${BOOT_SLOT}-i686.tar.bz2 )
+	arm?   ( https://dev.gentoo.org/~nerdboy/files/gnatboot-${BOOT_SLOT}-arm.tar.xz )"
 #	ppc?   ( mirror://gentoo/gnatboot-${BOOT_SLOT}-ppc.tar.bz2 )
 
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm ~sparc ~x86"
 
 # starting with 4.3.0 gnat needs these libs
 RDEPEND=">=dev-libs/mpfr-3.1.2
@@ -32,14 +33,13 @@ RDEPEND=">=dev-libs/mpfr-3.1.2
 	>=sys-libs/ncurses-5.7:0"
 
 DEPEND="${RDEPEND}
-	doc? ( >=sys-apps/texinfo-5 )
-	>=sys-devel/bison-1.875
-	>=sys-libs/glibc-2.8
-	>=sys-devel/binutils-2.20"
+	doc? ( >=sys-apps/texinfo-5 )"
 
 src_unpack() {
-	gnatbuild_src_unpack
+	gnatbuild_src_unpack all
+}
 
+src_prepare() {
 	#fixup some hardwired flags
 	cd "${S}"/gcc/ada
 
@@ -55,8 +55,16 @@ src_unpack() {
 	sed -i -e "s:libgui zlib:libgui:" "${S}"/configure
 }
 
+src_configure() {
+	:
+}
+
 src_compile() {
 	# looks like gnatlib_and_tools and gnatlib_shared have become part of
 	# bootstrap
 	gnatbuild_src_compile configure make-tools bootstrap
+}
+
+src_install() {
+	gnatbuild_src_install all
 }

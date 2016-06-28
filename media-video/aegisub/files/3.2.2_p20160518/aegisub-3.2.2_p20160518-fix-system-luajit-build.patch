@@ -1,22 +1,6 @@
-From 11bd157747ebb855d56d2bc59952a1093cfd9ddc Mon Sep 17 00:00:00 2001
-From: Ilya Tumaykin <itumaykin@gmail.com>
-Date: Mon, 7 Mar 2016 11:21:10 +0300
-Subject: Properly separate bundled and system luajit builds
-
-Build bundled luajit bits only when using bundled luajit.
-Properly set up linker flags when using system luajit.
-
-Closes #1904.
-
-Bug: http://devel.aegisub.org/ticket/1904
----
- Makefile.inc.in     | 1 +
- automation/Makefile | 8 +++++++-
- configure.ac        | 2 ++
- header.mk           | 5 ++++-
- src/Makefile        | 9 +++++++--
- tools/Makefile      | 2 ++
- 6 files changed, 23 insertions(+), 4 deletions(-)
+See http://devel.aegisub.org/ticket/1904
+and http://devel.aegisub.org/ticket/1913
+and http://devel.aegisub.org/ticket/1922
 
 diff --git a/Makefile.inc.in b/Makefile.inc.in
 index d8b3f4a..52e4cf6 100644
@@ -53,10 +37,10 @@ index 5483dbd..1231aab 100644
 
  test-automation: $(PROGRAM)
 diff --git a/configure.ac b/configure.ac
-index 1649efc..7ebe9d8 100644
+index 1649efc..81b1413 100644
 --- a/configure.ac
 +++ b/configure.ac
-@@ -429,6 +429,8 @@ AS_IF([test $with_system_luajit = no],
+@@ -429,13 +429,15 @@ AS_IF([test $with_system_luajit = no],
        [AC_SUBST([LUAJIT_CFLAGS], ['-I$(TOP)vendor/luajit/include'])
         AC_SUBST([LUAJIT_LIBS], ['$(TOP)vendor/luajit/src/libluajit.a'])])
 
@@ -64,7 +48,16 @@ index 1649efc..7ebe9d8 100644
 +
  # We also need a Lua binary to run part of the build system
  # Which version doesn't matter as the scripts are portable between them
- AC_CHECK_PROGS([LUA], [lua luajit lua5.3 lua-5.3 lua5.2 lua-5.2 lua5.1 lua-5.1])
+-AC_CHECK_PROGS([LUA], [lua luajit lua5.3 lua-5.3 lua5.2 lua-5.2 lua5.1 lua-5.1])
++AC_PATH_PROGS([LUA], [luajit lua lua5.3 lua-5.3 lua5.2 lua-5.2 lua5.1 lua-5.1])
+
+ # If the user doesn't have an installed copy of Lua, just use the one built
+ # as part of building LuaJIT
+-AS_IF([test -z $LUA], [LUA="$srcdir/vendor/luajit/src/host/minilua"])
++AS_IF([test -z $LUA], [LUA='$(TOP)vendor/luajit/src/host/minilua'])
+
+ ######################################################
+ # Debugging support
 diff --git a/header.mk b/header.mk
 index 613b38f..a9ce1d7 100644
 --- a/header.mk
@@ -113,15 +106,16 @@ index 0ee6c84..1a6f015 100644
  src_OBJ += $(d)font_file_lister_coretext.o
  src_OBJ += $(subst .mm,.o,$(wildcard $(d)osx/*.mm))
 diff --git a/tools/Makefile b/tools/Makefile
-index de6166a..e17eaa2 100644
+index de6166a..e3d108a 100644
 --- a/tools/Makefile
 +++ b/tools/Makefile
 @@ -12,6 +12,8 @@ repack-thes-dict_CPPFLAGS := -I$(TOP) -I$(TOP)libaegisub/include $(CFLAGS_ICU)
 
  PROGRAM += $(d)repack-thes-dict
 
+-$(TOP)tools/respack.lua: $(shell command -v "$(BIN_LUA)")
 +ifeq (no, $(SYSTEM_LUAJIT))
- $(TOP)tools/respack.lua: $(shell command -v "$(BIN_LUA)")
++$(TOP)tools/respack.lua: $(BIN_LUA)
 +endif
 
  include $(TOP)Makefile.target
