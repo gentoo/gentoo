@@ -6,6 +6,7 @@
 	<name>Gentoo ML Project</name>
 	</maintainer>
 <use>
+	<flag name="cryptokit">Enables encryption support via <pkg>dev-ml/cryptokit</pkg></flag>
 	<flag name="httpd">Enables net-httpd web server component</flag>
 	<flag name="zip">Enables netzip support to read/write gzip data using object channels</flag>
 </use>
