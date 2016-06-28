@@ -2319,7 +2319,7 @@ app-text/keepnote 0.7.9-r2: A note taking application
 app-text/kpaste 1.0: Command-line tool to paste to paste.kde.org
 app-text/krop 0.4.7 0.4.8 0.4.9: A tool to crop PDF files
 app-text/landslide 1.1.1 1.1.3: Landslide generates a slideshow using the slides that power the html5-slides presentation
-app-text/lcdf-typetools 2.97 2.104 2.105: Font utilities for eg manipulating OTF
+app-text/lcdf-typetools 2.97 2.104 2.105 2.106: Font utilities for eg manipulating OTF
 app-text/lesspipe 1.83: a preprocessor for less
 app-text/letterize 1.3 1.4: Generate English-plausible alphabetic mnemonics for a phone number
 app-text/libabw 0.0.2 0.1.0 0.1.1: Library parsing abiword documents
@@ -8456,7 +8456,7 @@ dev-ros/controller_manager 0.9.3 0.10.0 0.10.1 0.11.0 9999: The controller manag
 dev-ros/controller_manager_msgs 0.9.3 0.10.0 0.10.1 0.11.0 9999: The controller manager
 dev-ros/controller_manager_tests 0.9.3 0.10.0 0.10.1 0.11.0 9999: Tests for the controller manager
 dev-ros/convex_decomposition 0.1.10 0.1.11 9999: Convex Decomposition Tool for Robot Model
-dev-ros/costmap_2d 1.13.0 1.13.1 1.14.0 9999: Creates a 2D costmap from sensor data
+dev-ros/costmap_2d 1.14.0-r1 9999: Creates a 2D costmap from sensor data
 dev-ros/cpp_common 0.5.6 0.5.7 0.6.0 9999: C++ code for doing things that are not necessarily ROS related
 dev-ros/cv_bridge 1.12.0 9999: Converts between ROS Image messages and OpenCV images
 dev-ros/depth_image_proc 1.12.14 1.12.15 1.12.16 9999: Nodelets for processing depth images such as those produced by OpenNI camera
@@ -8559,9 +8559,9 @@ dev-ros/opencv_tests 1.11.8 1.11.9 1.11.10 1.11.11 1.11.12 1.12.0 9999: Tests fo
 dev-ros/openni2_camera 0.2.5 0.2.6 0.2.7 9999: ROS drivers for the Asus Xtion and Primesense Devices
 dev-ros/openni2_launch 0.2.2 9999: Launch files to start the openni2_camera drivers using rgbd_launch
 dev-ros/openslam_gmapping 0.1.1 0.1.2 9999: ROS-ified version of gmapping SLAM
-dev-ros/pcl_conversions 0.2.1 9999: Provides conversions from PCL data types and ROS message types
+dev-ros/pcl_conversions 0.2.1-r1 9999: Provides conversions from PCL data types and ROS message types
 dev-ros/pcl_msgs 0.2.0 9999: PCL (Point Cloud Library)-related ROS messages
-dev-ros/pcl_ros 1.4.0 1.4.1 9999: PCL (Point Cloud Library) ROS interface stack
+dev-ros/pcl_ros 1.4.1-r1 9999: PCL (Point Cloud Library) ROS interface stack
 dev-ros/pluginlib 1.10.1 1.10.2 9999: Provides tools for writing and dynamically loading plugins using the ROS build infrastructure
 dev-ros/pluginlib_tutorials 0.1.8 9999: Pluginlib tutorials
 dev-ros/pointcloud_to_laserscan 1.3.0 9999: Converts a 3D Point Cloud into a 2D laser scan
@@ -15965,7 +15965,7 @@ sci-libs/orocos_kdl 1.3.0 9999: Kinematics and Dynamics Library (KDL)
 sci-libs/parmetis 3.2.0: Parallel graph partitioner
 sci-libs/parmgridgen 1.0: Software for parallel (mpi) generating coarse grids
 sci-libs/pastix 5.2.2.22-r1: Parallel solver for very large sparse linear systems
-sci-libs/pcl 1.7.2 9999: 2D/3D image and point cloud processing
+sci-libs/pcl 1.7.2 1.8.0 9999: 2D/3D image and point cloud processing
 sci-libs/pgplot 5.2.2-r6: FORTRAN/C device-independent scientific graphic library
 sci-libs/plotmm 0.1.2: Plot widget for GTKmm
 sci-libs/plplot 5.10.0-r1 5.11.0-r1 5.11.1 5.11.1-r1: Multi-language scientific plotting library
