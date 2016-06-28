@@ -15,7 +15,7 @@ SLOT="0"
 IUSE=""
 
 RDEPEND="
-	>=dev-ros/mavlink-gbp-release-2015.12.12
+	>=dev-ros/mavlink-gbp-release-2016.6.24
 	dev-libs/boost:=
 	dev-libs/console_bridge
 "
