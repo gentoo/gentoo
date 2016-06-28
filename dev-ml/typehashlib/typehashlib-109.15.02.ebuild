@@ -19,7 +19,7 @@ IUSE=""
 
 DEPEND=">=dev-lang/ocaml-4.00.0:=
 	>=dev-ml/type-conv-${PV}:=
-	|| ( dev-ml/camlp4:= <dev-lang/ocaml-4.02.0 )"
+	dev-ml/camlp4:="
 RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${MY_P}"
