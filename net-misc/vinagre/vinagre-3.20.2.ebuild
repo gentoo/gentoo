@@ -1,11 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
-GCONF_DEBUG="no"
-VALA_MIN_API_VERSION="0.18"
-
+EAPI=6
 inherit gnome2 linux-info vala
 
 DESCRIPTION="VNC client for the GNOME desktop"
@@ -13,13 +10,13 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Vinagre"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~ia64 ~ppc ~ppc64 x86"
+KEYWORDS="~amd64 ~arm ~ia64 ~ppc ~ppc64 ~x86"
 IUSE="rdp +ssh spice +telepathy zeroconf"
 
 # cairo used in vinagre-tab
 # gdk-pixbuf used all over the place
 RDEPEND="
-	>=dev-libs/glib-2.28.0:2
+	>=dev-libs/glib-2.32.0:2
 	>=x11-libs/gtk+-3.9.6:3
 	app-crypt/libsecret
 	>=dev-libs/libxml2-2.6.31:2
@@ -42,6 +39,7 @@ DEPEND="${RDEPEND}
 	>=dev-lang/perl-5
 	dev-libs/appstream-glib
 	>=dev-util/intltool-0.50
+	dev-util/itstool
 	>=sys-devel/gettext-0.17
 	virtual/pkgconfig
 	$(vala_depend)
@@ -54,20 +52,15 @@ pkg_pretend() {
 }
 
 src_prepare() {
-	# Fix RDP initialization with recent FreeRDP (from 'master')
-	epatch "${FILESDIR}"/${PN}-3.16.1-freerdp.patch
-
 	vala_src_prepare
 	gnome2_src_prepare
 }
 
 src_configure() {
-	DOCS="AUTHORS ChangeLog ChangeLog.pre-git NEWS README"
 	gnome2_src_configure \
 		$(use_enable rdp) \
 		$(use_enable ssh) \
 		$(use_enable spice) \
 		$(use_with telepathy) \
-		$(use_with zeroconf avahi) \
-		ITSTOOL=$(type -P true)
+		$(use_with zeroconf avahi)
 }

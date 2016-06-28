@@ -1,19 +1,17 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
-GCONF_DEBUG="yes"
-
-inherit eutils gnome2
+EAPI=6
+inherit gnome2
 
 DESCRIPTION="An integrated VNC server for GNOME"
 HOMEPAGE="https://wiki.gnome.org/Projects/Vino"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc x86 ~x86-fbsd"
-IUSE="crypt gnome-keyring ipv6 jpeg ssl +telepathy zeroconf +zlib"
+KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
+IUSE="crypt debug gnome-keyring ipv6 jpeg ssl +telepathy zeroconf +zlib"
 # bug #394611; tight encoding requires zlib encoding
 REQUIRED_USE="jpeg? ( zlib )"
 
@@ -53,21 +51,11 @@ DEPEND="${RDEPEND}
 "
 # libsecret is always required at build time per bug 322763
 
-src_prepare() {
-	# Improve handling of name resolution failure (from 'master')
-	epatch "${FILESDIR}"/${P}-name-resolution.patch
-
-	# Avoid a crash when showing the preferences (from 'master')
-	epatch "${FILESDIR}"/${P}-fix-crash.patch
-
-	gnome2_src_prepare
-}
-
 src_configure() {
 	gnome2_src_configure \
-		--with-gcrypt \
 		$(use_enable ipv6) \
 		$(use_with crypt gcrypt) \
+		$(usex debug --enable-debug=yes ' ') \
 		$(use_with gnome-keyring secret) \
 		$(use_with jpeg) \
 		$(use_with ssl gnutls) \

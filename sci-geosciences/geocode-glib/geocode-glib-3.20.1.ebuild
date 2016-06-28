@@ -2,9 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
-GCONF_DEBUG="no" # --enable-debug does not do anything useful
-
+EAPI=6
 inherit gnome2
 
 DESCRIPTION="GLib geocoding library that uses the Yahoo! Place Finder service"
@@ -12,7 +10,7 @@ HOMEPAGE="https://git.gnome.org/browse/geocode-glib"
 
 LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="+introspection test"
 
 RDEPEND="
@@ -20,9 +18,7 @@ RDEPEND="
 	>=dev-libs/json-glib-0.99.2[introspection?]
 	gnome-base/gvfs[http]
 	>=net-libs/libsoup-2.42:2.4[introspection?]
-	introspection? (
-		>=dev-libs/gobject-introspection-0.6.3:=
-		net-libs/libsoup:2.4[introspection] )
+	introspection? ( >=dev-libs/gobject-introspection-0.6.3:= )
 "
 DEPEND="${RDEPEND}
 	>=dev-util/gtk-doc-am-1.13
@@ -38,8 +34,8 @@ DEPEND="${RDEPEND}
 # need various locales to be present
 RESTRICT="test"
 
-src_prepare() {
-	epatch "${FILESDIR}"/${P}-fix-GLIBC-features.patch
+src_configure() {
+	gnome2_src_configure $(use_enable introspection)
 }
 
 src_test() {
