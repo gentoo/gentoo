@@ -5,7 +5,7 @@
 EAPI=6
 inherit autotools eutils fdo-mime mono-env versionator gnome2
 
-DESCRIPTION="Import, organize, play, and share your music using a simple and powerful interface"
+DESCRIPTION="Import, play and share your music using a simple and powerful interface"
 HOMEPAGE="http://banshee.fm/"
 
 LICENSE="MIT"
