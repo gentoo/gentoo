@@ -225,6 +225,7 @@ src_install() {
 	newbin "bundles/$VERSION/dynbinary-client/docker-$VERSION" docker
 	newbin "bundles/$VERSION/dynbinary-daemon/dockerd-$VERSION" dockerd
 	dosym containerd /usr/bin/docker-containerd
+	dosym containerd-shim /usr/bin/docker-containerd-shim
 	dosym runc /usr/bin/docker-runc
 
 	newinitd contrib/init/openrc/docker.initd docker
