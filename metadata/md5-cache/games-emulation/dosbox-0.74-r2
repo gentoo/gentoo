@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install
+DEPEND=alsa? ( media-libs/alsa-lib ) debug? ( sys-libs/ncurses:0 ) opengl? ( virtual/glu virtual/opengl ) media-libs/libpng:0 media-libs/libsdl[joystick,video,X] media-libs/sdl-net media-libs/sdl-sound
+DESCRIPTION=DOS emulator
+EAPI=6
+HOMEPAGE=http://dosbox.sourceforge.net/
+IUSE=alsa debug hardened opengl
+KEYWORDS=~amd64 ~arm ~ppc ~ppc64 ~sparc ~x86
+LICENSE=GPL-2
+RDEPEND=alsa? ( media-libs/alsa-lib ) debug? ( sys-libs/ncurses:0 ) opengl? ( virtual/glu virtual/opengl ) media-libs/libpng:0 media-libs/libsdl[joystick,video,X] media-libs/sdl-net media-libs/sdl-sound
+SLOT=0
+SRC_URI=mirror://sourceforge/dosbox/dosbox-0.74.tar.gz
+_eclass_exported_funcs=src_configure:- src_install:-
+_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	e886935aae2b45a545665444ab0667cf
+_md5_=11f338eee03ad751a38d2e5d19af69dd

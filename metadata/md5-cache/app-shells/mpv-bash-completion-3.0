@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=media-video/mpv[cli] !luajit? ( dev-lang/lua:* ) luajit? ( dev-lang/luajit:2 )
+DESCRIPTION=Bash completion for the mpv video player
+EAPI=6
+HOMEPAGE=https://2ion.github.io/mpv-bash-completion/
+IUSE=luajit
+KEYWORDS=~amd64
+LICENSE=GPL-3+
+RDEPEND=media-video/mpv[cli] >=app-shells/bash-completion-2.3-r1
+SLOT=0
+SRC_URI=https://github.com/2ion/mpv-bash-completion/archive/3.0.tar.gz -> mpv-bash-completion-3.0.tar.gz
+_eclass_exported_funcs=src_prepare:- src_compile:- src_install:-
+_eclasses_=bash-completion-r1	acf715fa09463f043fbfdc1640f3fb85	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	e886935aae2b45a545665444ab0667cf
+_md5_=936b0ddcf152af8885f60b766a239019
