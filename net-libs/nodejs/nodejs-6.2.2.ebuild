@@ -117,8 +117,6 @@ src_compile() {
 	emake -C out mksnapshot
 	pax-mark m "out/${BUILDTYPE}/mksnapshot"
 	emake -C out
-
-	use doc && emake doc
 }
 
 src_install() {
@@ -139,7 +137,7 @@ src_install() {
 			sed -i '/fonts.googleapis.com/ d' $i;
 		done
 		# Install docs!
-		dohtml -r "${S}"/out/doc/api/*
+		dohtml -r "${S}"/doc/*
 	fi
 
 	if use npm; then
