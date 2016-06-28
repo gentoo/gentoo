@@ -16,7 +16,7 @@ KEYWORDS="~amd64"
 IUSE=""
 
 DEPEND=">=dev-ml/type-conv-109.20.00:=
-	|| ( dev-ml/camlp4:= <dev-lang/ocaml-4.02.0 )"
+	dev-ml/camlp4:="
 RDEPEND="${DEPEND}"
 
 DOCS=( "README.txt" )

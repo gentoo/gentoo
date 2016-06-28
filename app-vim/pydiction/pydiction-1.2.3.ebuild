@@ -10,7 +10,7 @@ DESCRIPTION="vim plugin: Tab-complete your Python code"
 HOMEPAGE="https://rkulla.github.io/pydiction/"
 SRC_URI="https://dev.gentoo.org/~monsieurp/packages/${P}.zip"
 LICENSE="vim"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ppc ppc64 x86"
 
 DEPEND="app-arch/unzip"
 RDEPEND="dev-lang/python:*"

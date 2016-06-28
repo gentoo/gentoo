@@ -18,7 +18,7 @@ IUSE=""
 
 DEPEND="
 	dev-ml/herelib:=
-	|| ( dev-ml/camlp4:= <dev-lang/ocaml-4.02.0 )
+	dev-ml/camlp4:=
 	"
 RDEPEND="${DEPEND}"
 
