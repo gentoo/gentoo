@@ -10,8 +10,9 @@
   </maintainer>
   <use>
     <flag name="gpg">Enable support for <pkg>app-crypt/gpgme</pkg></flag>
-    <flag name="pop">Enable support for pop</flag>
-    <flag name="sidebar">Use the vanilla tree + sidebar patch</flag>
+    <flag name="pop">Enable support for POP3</flag>
+	<flag name="notmuch">Enable support for <pkg>net-mail/notmuch</pkg></flag>
+    <flag name="sidebar">Enable the sidebar feature</flag>
     <flag name="smime">Enable support for smime</flag>
     <flag name="smtp">Enable support for smtp</flag>
     <flag name="tokyocabinet">Enable tokyocabinet database backend for header
