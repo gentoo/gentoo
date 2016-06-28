@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -16,7 +16,7 @@ IUSE="+tools debug"
 
 LANGS="de en it pl pt ru uk"
 for L in ${LANGS} ; do
-	IUSE="${IUSE} linguas_${L}"
+	IUSE="${IUSE} l10n_${L}"
 done
 unset L
 
@@ -47,7 +47,7 @@ src_configure() {
 
 	local l langs
 	for l in ${LANGS}; do
-		if use linguas_${l}; then
+		if use l10n_${l}; then
 			langs="${langs} ${l}"
 		fi
 	done
