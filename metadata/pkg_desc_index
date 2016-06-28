@@ -5127,7 +5127,7 @@ dev-ml/ocamlgraph 0.99b 1.8.5 1.8.6 1.8.7: O'Caml Graph library
 dev-ml/ocamlgsl 0.6.0: OCaml bindings for the GSL library
 dev-ml/ocamlify 0.0.2: OCamlify allows to create OCaml source code by including whole file into OCaml string or string list
 dev-ml/ocamlmod 0.0.8: Generate OCaml modules from source files
-dev-ml/ocamlnet 4.1.2: Modules for OCaml application-level Internet protocols
+dev-ml/ocamlnet 3.7.7-r1 4.1.2: Modules for OCaml application-level Internet protocols
 dev-ml/ocamlpam 1.1: OCamlPAM - an OCaml library for PAM
 dev-ml/ocamlsdl 0.9.1: OCaml SDL Bindings
 dev-ml/ocamlweb 1.38-r1 1.39: O'Caml literate programming tool
