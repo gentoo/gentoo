@@ -15,7 +15,8 @@ else
 	MY_PV="${PV/_/-}"
 	DOCKER_GITCOMMIT="906eacd"
 	EGIT_COMMIT="v${MY_PV}"
-	SRC_URI="https://${EGO_PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://${EGO_PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz
+	https://dev.gentoo.org/~williamh/dist/${P}-23859.patch"
 	KEYWORDS="~amd64"
 	[ "$DOCKER_GITCOMMIT" ] || die "DOCKER_GITCOMMIT must be added manually for each bump!"
 	inherit golang-vcs-snapshot
@@ -171,6 +172,11 @@ pkg_setup() {
 	# create docker group for the code checking for it in /etc/group
 	enewgroup docker
 }
+
+PATCHES=(
+	# https://github.com/docker/docker/pull/23859
+	"${DISTDIR}"/${P}-23859.patch
+)
 
 src_compile() {
 	export GOPATH="${WORKDIR}/${P}:${PWD}/vendor"
