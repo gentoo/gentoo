@@ -7,7 +7,7 @@ inherit games
 
 MY_P=0ad-${PV/_/-}
 DESCRIPTION="Data files for 0ad"
-HOMEPAGE="http://wildfiregames.com/0ad/"
+HOMEPAGE="https://play0ad.com/"
 SRC_URI="mirror://sourceforge/zero-ad/${MY_P}-unix-data.tar.xz"
 
 LICENSE="GPL-2 CC-BY-SA-3.0 LPPL-1.3c BitstreamVera"

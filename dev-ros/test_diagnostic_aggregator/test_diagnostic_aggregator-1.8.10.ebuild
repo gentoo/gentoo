@@ -3,20 +3,23 @@
 # $Id$
 
 EAPI=5
-ROS_REPO_URI="https://github.com/mavlink/mavros"
+ROS_REPO_URI="https://github.com/ros/diagnostics"
 KEYWORDS="~amd64 ~arm"
 ROS_SUBDIR=${PN}
 
 inherit ros-catkin
 
-DESCRIPTION="MAVLink communication library"
-LICENSE="GPL-3 LGPL-3 BSD"
+DESCRIPTION="diagnostic_aggregator tests"
+LICENSE="BSD"
 SLOT="0"
 IUSE=""
 
 RDEPEND="
-	>=dev-ros/mavlink-gbp-release-2016.6.24
-	dev-libs/boost:=
-	dev-libs/console_bridge
+	dev-ros/diagnostic_aggregator
+	dev-ros/diagnostic_msgs
+	dev-ros/pluginlib
+	dev-ros/roscpp
+	dev-ros/rospy
+	dev-ros/rostest
 "
 DEPEND="${RDEPEND}"
