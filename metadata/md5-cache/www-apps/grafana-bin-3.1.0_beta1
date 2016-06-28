@@ -1,0 +1,11 @@
+DEFINED_PHASES=install setup
+DESCRIPTION=Gorgeous metric viz, dashboards & editors for Graphite, InfluxDB & OpenTSDB
+EAPI=5
+HOMEPAGE=http://grafana.org
+LICENSE=Apache-2.0
+RDEPEND=>=dev-lang/go-1.5 net-libs/nodejs
+SLOT=0
+SRC_URI=https://grafanarel.s3.amazonaws.com/builds/grafana-3.1.0-1466666977beta1.linux-x64.tar.gz -> grafana-bin-3.1.0_beta1.tar.gz
+_eclass_exported_funcs=pkg_setup:- src_install:-
+_eclasses_=user	906f3c8eb3a2350a4f1191a89baa3e46
+_md5_=aac27f8cedb750982e834bcc6910007d
