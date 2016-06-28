@@ -3,15 +3,15 @@
 # $Id$
 
 EAPI=6
-ESVN_REPO_URI="https://dosbox.svn.sourceforge.net/svnroot/dosbox/dosbox/trunk"
-inherit autotools eutils subversion
+inherit eutils
 
 DESCRIPTION="DOS emulator"
 HOMEPAGE="http://dosbox.sourceforge.net/"
+SRC_URI="mirror://sourceforge/dosbox/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~sparc ~x86"
 IUSE="alsa debug hardened opengl"
 
 DEPEND="alsa? ( media-libs/alsa-lib )
@@ -23,17 +23,12 @@ DEPEND="alsa? ( media-libs/alsa-lib )
 	media-libs/sdl-sound"
 RDEPEND=${DEPEND}
 
-S=${WORKDIR}/${PN}
-
-src_unpack() {
-	subversion_src_unpack
-}
-
-src_prepare() {
-	default
-	subversion_src_prepare
-	eautoreconf
-}
+PATCHES=(
+	"${FILESDIR}"/${P}-clang.patch
+	"${FILESDIR}"/${P}-gcc46.patch
+	"${FILESDIR}"/${P}-wine-drive-z.patch
+	"${FILESDIR}"/${P}-wine-filenames.patch
+)
 
 src_configure() {
 	econf \
