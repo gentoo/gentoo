@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-libs/boost:= dev-ros/angles dev-ros/collada_parser dev-ros/resource_retriever dev-ros/urdf dev-ros/geometric_shapes dev-ros/tf media-libs/assimp dev-libs/tinyxml dev-libs/collada-dom sys-devel/make >=dev-util/cmake-2.8.12 dev-util/catkin dev-python/empy
+DESCRIPTION=Tool to convert Unified Robot Description Format (URDF) documents into COLLADA documents
+EAPI=5
+HOMEPAGE=http://wiki.ros.org/collada_urdf
+IUSE=test
+KEYWORDS=~amd64 ~arm
+LICENSE=BSD
+RDEPEND=dev-libs/boost:= dev-ros/angles dev-ros/collada_parser dev-ros/resource_retriever dev-ros/urdf dev-ros/geometric_shapes dev-ros/tf media-libs/assimp dev-libs/tinyxml dev-libs/collada-dom dev-util/catkin dev-python/empy
+SLOT=0
+SRC_URI=https://github.com/ros/robot_model/archive/1.12.3.tar.gz -> robot_model-1.12.3.tar.gz
+_eclass_exported_funcs=src_prepare:ros-catkin src_configure:ros-catkin src_compile:ros-catkin src_test:ros-catkin src_install:ros-catkin
+_eclasses_=cmake-utils	ac5bd012586c6cf0d9826400d9de2830	eutils	792f83d5ec9536cb5ccef375469d8bde	flag-o-matic	d270fa247153df66074f795fa42dba3e	multilib	d062ae4ba2fc40a19c11de2ad89b6616	ros-catkin	8b7e3d7128bd81dfe56a947e63201e78	toolchain-funcs	e886935aae2b45a545665444ab0667cf	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=02a96145740d9f01c97d057ce7bc9165
