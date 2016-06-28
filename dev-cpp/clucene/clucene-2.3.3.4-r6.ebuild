@@ -22,7 +22,7 @@ IUSE="debug doc static-libs"
 DEPEND="
 	doc? ( >=app-doc/doxygen-1.4.2 )
 "
-RDEPEND="!<app-misc/strigi-0.7.5-r3"
+RDEPEND=""
 
 RESTRICT="test"
 
