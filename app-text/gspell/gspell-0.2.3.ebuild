@@ -11,7 +11,7 @@ inherit gnome2 vala
 DESCRIPTION="Spell check library for GTK+ applications"
 HOMEPAGE="https://wiki.gnome.org/Projects/gspell"
 
-LICENSE="GPL-2+"
+LICENSE="LGPL-2.1+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="+introspection vala"
