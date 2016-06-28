@@ -4299,7 +4299,6 @@ media-sound/banshee:bpm - Build beats per minute detection extension
 media-sound/banshee:cdda - Build with audio CD support
 media-sound/banshee:daap - Build with Daap support
 media-sound/banshee:karma - Build with karma support
-media-sound/banshee:web - Enable support for plugins that access web-based services such as Amazon and wikipedia (requires net-libs/webkit-gtk)
 media-sound/banshee:youtube - Enable the Youtube plugin
 media-sound/beets:beatport - Enable support for beatport.com API
 media-sound/beets:bpd - Enable support for media-sound/mpd server emulation

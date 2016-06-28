@@ -13087,7 +13087,7 @@ media-sound/audiotag 0.19: A command-line tool for mass tagging/renaming of audi
 media-sound/aumix 2.9.1: Aumix volume/mixer control program
 media-sound/awesfx 0.5.1d 0.5.1e: AWE32 Sound Driver Utility Programs
 media-sound/aylet 0.5: Aylet plays music files in the .ay format
-media-sound/banshee 2.6.2 2.6.2-r1: Import, organize, play, and share your music using a simple and powerful interface
+media-sound/banshee 2.6.2-r1: Import, play and share your music using a simple and powerful interface
 media-sound/baudline 1.08-r1: A time-frequency browser designed for scientific visualization of the spectral domain
 media-sound/beets 1.3.3-r1 1.3.13: A media library management system for obsessive-compulsive music geeks
 media-sound/bempc 0.11: Qt4 MPD client with experimental UI
@@ -14426,7 +14426,7 @@ net-libs/qtweetlib 0.5 9999: Qt based Twitter library
 net-libs/qxmpp 0.7.4 0.7.5 0.7.6 0.7.6-r1 0.8.0 0.8.2 9999: A cross-platform C++ XMPP client library based on the Qt framework
 net-libs/rabbitmq-c 0.5.0 0.8.0: RabbitMQ C client
 net-libs/rb_libtorrent 0.16.17 0.16.17-r2 0.16.19 1.0.7 1.0.8 1.0.9 1.0.9-r1: C++ BitTorrent implementation focusing on efficiency and scalability
-net-libs/rest 0.7.93 0.7.93-r1 0.8.0: Helper library for RESTful services
+net-libs/rest 0.7.93 0.8.0: Helper library for RESTful services
 net-libs/ripe-atlas-sagan 1.1.8 1.1.10: A parsing library for RIPE Atlas result strings
 net-libs/roadrunner 0.9.1: RoadRunner library provides API for using Blocks Extensible Exchange Protocol
 net-libs/rpc2 2.0 2.8 2.10: Remote procedure call package for IP/UDP (used by Coda)
@@ -14936,8 +14936,8 @@ net-misc/utelnetd 0.1.9-r2 0.1.11-r1: A small Telnet daemon, derived from the Ax
 net-misc/valve 1.0: Copies data while enforcing a specified maximum transfer rate
 net-misc/vconfig 1.9: 802.1Q vlan control utility
 net-misc/vde 2.2.2 2.2.2-r1 2.3.2-r2: Virtual distributed ethernet emulator for emulators like qemu, bochs, and uml
-net-misc/vinagre 3.16.1 3.18.2: VNC client for the GNOME desktop
-net-misc/vino 3.16.0-r1 3.18.1: An integrated VNC server for GNOME
+net-misc/vinagre 3.18.2 3.20.2: VNC client for the GNOME desktop
+net-misc/vino 3.18.1 3.20.2: An integrated VNC server for GNOME
 net-misc/vmnet 0.4: A simple virtual networking program - SLIP over stdin/out
 net-misc/vmpsd 1.4: An open-source VLAN management system
 net-misc/vncrec 0.2-r1: VNC session recorder and player
@@ -15200,7 +15200,7 @@ net-wireless/cpyrit-opencl 0.4.0-r1: A sub-package that adds OpenCL-capability t
 net-wireless/crackle 0.1: Crackle cracks BLE Encryption (AKA Bluetooth Smart)
 net-wireless/crda 1.1.3-r1 3.18-r1: Central Regulatory Domain Agent for wireless networks
 net-wireless/dump1090 0.0_p20140919 9999: simple Mode S decoder for RTLSDR devices
-net-wireless/gnome-bluetooth 3.18.2 3.18.3: Bluetooth graphical utilities integrated with GNOME
+net-wireless/gnome-bluetooth 3.18.3 3.20.0: Bluetooth graphical utilities integrated with GNOME
 net-wireless/gnuradio 3.6.5.1-r2 3.7.6.1-r2 3.7.7.1 3.7.8 3.7.8.1 3.7.9 3.7.9.2 9999: Toolkit that provides signal processing blocks to implement software radios
 net-wireless/gobi_loader 0.7-r2: gobi_loader is a firmware loader for Qualcomm Gobi USB chipsets
 net-wireless/gqrx 2.3.1 2.3.2 2.4 2.5 2.5.3 9999: Software defined radio receiver powered by GNU Radio and Qt
@@ -15726,10 +15726,10 @@ sci-geosciences/congen 1.6.2: A package for generating the speeds, equilibrium a
 sci-geosciences/foxtrotgps 1.1.0 1.1.1 1.2.0: Easy to use, fast and lightweight mapping application (fork of tangogps)
 sci-geosciences/gdal-grass 2.0.0-r1 2.1.0: GDAL plugin to access GRASS data
 sci-geosciences/gebabbel 0.4: QT-Frontend to load and convert gps tracks with gpsbabel
-sci-geosciences/geocode-glib 3.18.1 3.18.2: GLib geocoding library that uses the Yahoo! Place Finder service
+sci-geosciences/geocode-glib 3.18.2 3.20.1: GLib geocoding library that uses the Yahoo! Place Finder service
 sci-geosciences/gmapcatcher 0.8.0.4: An offline viewer for different map providers
 sci-geosciences/gmt 4.5.6 4.5.8 4.5.9: Powerful map generator
-sci-geosciences/gnome-maps 3.16.2 3.18.2: A map application for GNOME
+sci-geosciences/gnome-maps 3.18.2 3.20.1: A map application for GNOME
 sci-geosciences/googleearth 7.1.4.1529: A 3D interface to the planet
 sci-geosciences/gpsbabel 1.4.3 1.4.4: GPS waypoints, tracks and routes converter
 sci-geosciences/gpscorrelate 1.6.1: Tool for adjusting EXIF tags of your photos with a recorded GPS trace
@@ -16452,7 +16452,7 @@ sec-policy/selinux-xscreensaver 2.20141203-r1 2.20141203-r2 2.20141203-r3 2.2014
 sec-policy/selinux-xserver 2.20141203-r1 2.20141203-r2 2.20141203-r3 2.20141203-r4 2.20141203-r5 2.20141203-r6 2.20141203-r7 2.20141203-r8 2.20141203-r9 2.20141203-r10 2.20151208-r1 2.20151208-r2 2.20151208-r3 2.20151208-r4 9999: SELinux policy for xserver
 sec-policy/selinux-zabbix 2.20141203-r1 2.20141203-r2 2.20141203-r3 2.20141203-r4 2.20141203-r5 2.20141203-r6 2.20141203-r7 2.20141203-r8 2.20141203-r9 2.20141203-r10 2.20151208-r1 2.20151208-r2 2.20151208-r3 2.20151208-r4 9999: SELinux policy for zabbix
 sys-apps/9base 6-r1: A port of various original Plan 9 tools for Unix, based on plan9port
-sys-apps/accountsservice 0.6.39 0.6.40: D-Bus interfaces for querying and manipulating user account information
+sys-apps/accountsservice 0.6.40 0.6.42: D-Bus interfaces for querying and manipulating user account information
 sys-apps/ack 2.14: ack is a tool like grep, aimed at programmers with large trees of heterogeneous source code
 sys-apps/acl 2.2.52-r1: access control list utilities, libraries and headers
 sys-apps/adjtime 0.4-r2: A perl script to adjust the clock tick of the hardware clock on the system board
@@ -16465,7 +16465,7 @@ sys-apps/apply-default-acl 0.0.4: Apply default POSIX ACLs to files and director
 sys-apps/arrayprobe 2.0-r2: CLI utility that reports the status of a HP (Compaq) array controller (both IDA & CCISS supported)
 sys-apps/attr 2.4.47-r2: Extended attributes tools
 sys-apps/audio-entropyd 2.0.3-r1: Audio-entropyd generates entropy-data for the /dev/random device
-sys-apps/baobab 3.16.1 3.18.1: Disk usage browser for GNOME
+sys-apps/baobab 3.18.1 3.20.1: Disk usage browser for GNOME
 sys-apps/bar 1.11.1: Console Progress Bar
 sys-apps/baselayout 2.2: Filesystem baselayout and init scripts
 sys-apps/baselayout-java 0.1.0: Baselayout for Java
@@ -16531,7 +16531,7 @@ sys-apps/gawk 3.1.8 4.0.2 4.1.2 4.1.3: GNU awk pattern-matching language
 sys-apps/gcp 0.1.3: File copying utility with progress and I/O indicator
 sys-apps/gentoo-functions 0.10 9999: base functions required by all gentoo systems
 sys-apps/gentoo-systemd-integration 2 4 5 6 9999: systemd integration files for Gentoo
-sys-apps/gnome-disk-utility 3.16.2 3.18.2 3.18.3.1: Disk Utility for GNOME using udisks
+sys-apps/gnome-disk-utility 3.18.3.1 3.20.2: Disk Utility for GNOME using udisks
 sys-apps/gpet 0.4: GTK+ based TOMOYO policy editor
 sys-apps/gptfdisk 0.8.10 1.0.0 1.0.1: GPT partition table manipulator for Linux
 sys-apps/gradm 3.1.201507191652 3.1.201603152148: Administrative interface for the grsecurity Role Based Access Control system
@@ -17289,7 +17289,7 @@ sys-libs/libkudzu 1.2.57.1: Red Hat Hardware detection tools
 sys-libs/libmath++ 0.0.4-r1: template based math library, written in C++, for symbolic and numeric calculus applications
 sys-libs/libnih 1.0.3-r3: Light-weight 'standard library' of C functions
 sys-libs/libomp 3.7.0 3.7.1 3.8.0: OpenMP runtime library for LLVM/clang compiler
-sys-libs/libosinfo 0.2.12 0.3.0: GObject library for managing information about real and virtual OSes
+sys-libs/libosinfo 0.3.0: GObject library for managing information about real and virtual OSes
 sys-libs/libraw1394 2.1.0-r1 2.1.1 2.1.2: library that provides direct access to the IEEE 1394 bus
 sys-libs/librtas 1.3.6 1.3.8 1.3.13: A set of libraries for userspace access to RTAS on the PowerPC platform(s)
 sys-libs/libseccomp 2.2.3 2.3.0 2.3.1: high level interface to Linux seccomp filter
@@ -18168,7 +18168,7 @@ x11-libs/libva 1.6.2 1.7.0 1.7.1 9999: Video Acceleration (VA) API for Linux
 x11-libs/libva-intel-driver 1.6.2 1.7.0 1.7.1 9999: HW video decode support for Intel integrated graphics
 x11-libs/libva-vdpau-driver 0.7.4-r2 0.7.4-r3 9999: VDPAU Backend for Video Acceleration (VA) API
 x11-libs/libvdpau 1.1.1: VDPAU wrapper and trace libraries
-x11-libs/libwnck 2.31.0 3.14.0 3.14.1: A window navigation construction kit
+x11-libs/libwnck 2.31.0 3.14.0 3.14.1 3.20.0: A window navigation construction kit
 x11-libs/libxcb 1.9.1 1.9.1-r1 1.9.3 1.9.3-r1 1.10 1.11 1.11-r1 1.11.1 1.12: X C-language Bindings library
 x11-libs/libxkbcommon 0.5.0 0.6.0 0.6.1: X.Org xkbcommon library
 x11-libs/libxkbfile 1.0.8 1.0.9: X.Org xkbfile library
@@ -18183,7 +18183,7 @@ x11-libs/libyui-qt 2.44.0 2.46.21: UI abstraction library - Qt plugin
 x11-libs/motif 2.2.3-r12 2.3.4-r3 2.3.5 2.3.6: The Motif user interface component toolkit
 x11-libs/mx 1.4.7-r2: A widget toolkit using Clutter
 x11-libs/neXtaw 0.15.1-r1: Athena Widgets with N*XTSTEP appearance
-x11-libs/pango 1.36.8 1.36.8-r1 1.38.1: Internationalized text layout and rendering library
+x11-libs/pango 1.36.8-r1 1.38.1 1.40.1: Internationalized text layout and rendering library
 x11-libs/pangox-compat 0.0.2 0.0.2-r1: PangoX compatibility library
 x11-libs/pixman 0.32.8 0.33.4 0.33.6 0.34.0 9999: Low-level pixel manipulation routines
 x11-libs/qscintilla 2.8.4-r1 2.9.1 2.9.2: A Qt port of Neil Hodgson's Scintilla C++ editor class
@@ -18806,7 +18806,7 @@ x11-themes/gentoo-xcursors 0.3.1: A high quality set of animated mouse cursors
 x11-themes/gentoo10-backgrounds 20110309: Gentoo - 10 Years Compiling Background Artwork
 x11-themes/geramik 0.27-r1: GTK+1 and GTK+2 Geramik Themes
 x11-themes/gkrellm-themes 0.1: A pack of ~200 themes for GKrellM
-x11-themes/gnome-backgrounds 3.16.0 3.18.0: A set of backgrounds packaged with the GNOME desktop
+x11-themes/gnome-backgrounds 3.18.0 3.20: A set of backgrounds packaged with the GNOME desktop
 x11-themes/gnome-colors-common 5.5.1: Colorized icons shared between all gnome-colors iconsets
 x11-themes/gnome-colors-themes 5.5.1: Some gnome-colors iconsets including a Gentoo one
 x11-themes/gnome-icon-theme 3.12.0: GNOME default icon theme
