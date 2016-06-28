@@ -12,7 +12,7 @@
 	<use>
 		<flag name="mac">Add support for Monkey's Audio input files</flag>
 		<flag name="opus">Add support for Opus output files</flag>
-		<flag name="replaygain">Support for Replay Gain metadata, for relative volume adjustment</flag>
+		<flag name="replaygain">Support Replay Gain metadata for relative volume adjustment</flag>
 		<flag name="tta">Add support for True Audio input files</flag>
 	</use>
 	<upstream>
