@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install prepare test unpack
+DEPEND=sys-devel/make >=dev-util/cmake-2.8.12
+DESCRIPTION=A small, fast, and high performance math library for robot applications
+EAPI=5
+HOMEPAGE=http://ignitionrobotics.org/libraries/math
+KEYWORDS=~amd64
+LICENSE=Apache-2.0
+SLOT=2/2
+SRC_URI=https://bitbucket.org/ignitionrobotics/ign-math/get/ignition-math2_2.4.0.tar.bz2
+_eclass_exported_funcs=src_unpack:vcs-snapshot src_prepare:cmake-utils src_configure:- src_compile:cmake-utils src_test:cmake-utils src_install:cmake-utils
+_eclasses_=cmake-utils	ac5bd012586c6cf0d9826400d9de2830	eutils	792f83d5ec9536cb5ccef375469d8bde	flag-o-matic	d270fa247153df66074f795fa42dba3e	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	e886935aae2b45a545665444ab0667cf	vcs-snapshot	b45be87e7012be0af8424e8a5644da1d	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=85cb0033ced09a4530ceea94625d38ed
