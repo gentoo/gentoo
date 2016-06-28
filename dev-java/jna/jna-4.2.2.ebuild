@@ -30,6 +30,7 @@ RDEPEND="${CDEPEND}
 
 DEPEND="${CDEPEND}
 	>=virtual/jdk-1.7
+	x11-libs/libXt
 	virtual/pkgconfig
 	test? (
 		dev-java/ant-junit:0
