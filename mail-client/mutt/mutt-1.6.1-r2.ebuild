@@ -13,7 +13,7 @@ HOMEPAGE="http://www.mutt.org/"
 SRC_URI="ftp://ftp.mutt.org/pub/mutt/${P}.tar.gz
 	https://bitbucket.org/${PN}/${PN}/downloads/${P}.tar.gz
 	https://github.com/neomutt/integration/archive/${NEOMUTT}.zip -> ${P}-neomutt-patches-${NEOMUTT}.zip"
-IUSE="berkdb crypt debug doc gdbm gnutls gpg idn imap kerberos libressl mbox nls nntp pop qdbm sasl selinux sidebar slang smime smtp ssl tokyocabinet"
+IUSE="berkdb crypt debug doc gdbm gnutls gpg idn imap kerberos libressl mbox nls nntp notmuch pop qdbm sasl selinux sidebar slang smime smtp ssl tokyocabinet"
 SLOT="0"
 LICENSE="GPL-2"
 # this needs some testing due to full-on neomutt changes
@@ -66,6 +66,7 @@ CDEPEND="
 		!libressl? ( >=dev-libs/openssl-0.9.6:0 )
 		libressl? ( dev-libs/libressl )
 	)
+	notmuch? ( net-mail/notmuch )
 	slang? ( sys-libs/slang )
 	!slang? ( >=sys-libs/ncurses-5.2:0 )
 "
@@ -142,6 +143,7 @@ src_configure() {
 		$(use_enable sidebar) \
 		$(use_enable smime) \
 		$(use_enable smtp) \
+		$(use_enable notmuch) \
 		$(use_with idn) \
 		$(use_with kerberos gss) \
 		$(use slang && echo --with-slang=${EPREFIX}/usr) \
