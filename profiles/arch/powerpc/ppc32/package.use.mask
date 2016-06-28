@@ -4,6 +4,10 @@
 
 # This file requires >=portage-2.1.1
 
+# Alexandre Rostovtsev <tetromino@gentoo.org> (28 Jun 2016)
+# Missing keywords on app-text/gspell - bug #587368
+>=app-editors/gedit-3.20 spell
+
 # Davide Pesavento <pesa@gentoo.org> (06 Jun 2016)
 # Requires media-libs/phonon[qt5], masked below
 app-office/texstudio qt5
