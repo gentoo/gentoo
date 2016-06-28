@@ -32,7 +32,7 @@ RDEPEND="
 	dev-ros/tf
 	dev-ros/voxel_grid
 	dev-cpp/eigen:3
-	sci-libs/pcl
+	sci-libs/pcl:=
 	dev-libs/boost:=[threads]
 "
 DEPEND="${RDEPEND}
