@@ -4,7 +4,7 @@
 
 EAPI="5"
 
-inherit eutils toolchain-funcs
+inherit eutils libtool toolchain-funcs
 
 DESCRIPTION="standard informational utilities and process-handling tools"
 # http://packages.debian.org/sid/procps
@@ -34,6 +34,7 @@ src_prepare() {
 	epatch "${FILESDIR}"/${PN}-3.3.8-kill-neg-pid.patch # http://crbug.com/255209
 	epatch "${FILESDIR}"/${P}-pmap-unreadable.patch #404389
 	epatch "${FILESDIR}"/${P}-tests-no-tty.patch #461302
+	elibtoolize #580792
 	sed -i -e 's:systemd-login:systemd:' configure || die #501306
 }
 

@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=4
-inherit eutils flag-o-matic pam user
+inherit eutils libtool flag-o-matic pam user
 
 DESCRIPTION="Console-based application to efficiently save raw partition data to an image file"
 HOMEPAGE="http://www.partimage.org/"
@@ -34,6 +34,7 @@ pkg_setup() {
 src_prepare() {
 	epatch "${FILESDIR}"/${P}-zlib-1.2.5.2.patch #405323
 	epatch "${FILESDIR}"/${P}-minor-typo.patch #580290
+	elibtoolize
 }
 
 src_configure() {

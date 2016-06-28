@@ -4,6 +4,8 @@
 
 EAPI=5
 
+inherit libtool
+
 DESCRIPTION="Main event loop abstraction library"
 HOMEPAGE="https://fedorahosted.org/libverto/"
 SRC_URI="https://fedorahosted.org/releases/l/i/libverto/${P}.tar.gz"
@@ -31,6 +33,7 @@ src_prepare() {
 	# callback on error, but we explicitly test for this behaviour.  Do not run
 	# tevent tests for now.
 	sed -i -e 's/def HAVE_TEVENT/ 0/' tests/test.h || die
+	elibtoolize
 }
 
 src_configure() {

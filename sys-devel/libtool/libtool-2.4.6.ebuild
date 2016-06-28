@@ -47,6 +47,7 @@ src_prepare() {
 	use vanilla && return 0
 
 	epatch "${FILESDIR}"/${PN}-2.4.3-use-linux-version-in-fbsd.patch #109105
+	epatch "${FILESDIR}"/${PN}-2.4.6-libtool-m4-for-ppc64le.patch #581314
 	pushd libltdl >/dev/null
 	AT_NOELIBTOOLIZE=yes eautoreconf
 	popd >/dev/null
