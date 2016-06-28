@@ -16,7 +16,7 @@ KEYWORDS="~amd64"
 IUSE="+ocamlopt type-conv"
 
 DEPEND=">=dev-lang/ocaml-3.12:=[ocamlopt?]
-	|| ( dev-ml/camlp4:= <dev-lang/ocaml-4.02.0 )
+	dev-ml/camlp4:=
 	type-conv? ( >=dev-ml/type-conv-108:= )"
 RDEPEND="${DEPEND}"
 
