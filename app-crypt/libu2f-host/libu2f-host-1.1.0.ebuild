@@ -12,7 +12,7 @@ SRC_URI="https://developers.yubico.com/${PN}/Releases/${P}.tar.xz"
 
 LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE="kernel_linux static-libs systemd"
 
 RDEPEND="

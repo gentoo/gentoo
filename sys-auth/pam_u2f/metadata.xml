@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>shirk+gentoo@bitspin.org</email>
+    <name>René Köcher</name>
+  </maintainer>
+  <maintainer type="person">
+    <email>gokturk@gentoo.org</email>
+    <name>Göktürk Yüksek</name>
+  </maintainer>
+  <use>
+    <flag name="debug">
+      Enable debug messages using the pam logging macros.
+      (Note: these will be visible on stdout for terminal logins).
+    </flag>
+  </use>
+  <upstream>
+    <remote-id type="github">Yubico/pam-u2f</remote-id>
+    <bugs-to>https://github.com/Yubico/pam-u2f/issues</bugs-to>
+  </upstream>
+</pkgmetadata>
