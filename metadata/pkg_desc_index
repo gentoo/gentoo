@@ -3827,7 +3827,6 @@ dev-java/btf 1.2: Generic interfaces to the classical builder pattern
 dev-java/byaccj 1.15-r1: A java extension of BSD YACC-compatible parser generator
 dev-java/bytelist 1.0.10: JRuby support library
 dev-java/c3p0 0.9.5.1: JDBC drivers with JNDI-bindable DataSources
-dev-java/cacao 0.99.4: Cacao Java Virtual Machine
 dev-java/cal10n 0.8.1: java library for writing localized messages using resource bundle
 dev-java/cdegroot-db 0.08-r1: OO database written in Java
 dev-java/cdi-api 1.2 1.2-r1: Contexts and Dependency Injection for the Java EE platform
@@ -5087,10 +5086,10 @@ dev-ml/js_of_ocaml 2.7 2.8: A compiler from OCaml bytecode to javascript
 dev-ml/jsonm 0.9.1: Non-blocking streaming JSON codec for OCaml
 dev-ml/kaputt 1.2: Unit testing tool for the Objective Caml language
 dev-ml/lablgl 1.05 1.05-r1: Objective CAML interface for OpenGL
-dev-ml/lablgtk 2.18.3 2.18.4-r1: Objective CAML interface for Gtk+2
+dev-ml/lablgtk 2.18.3 2.18.3-r1 2.18.4-r1: Objective CAML interface for Gtk+2
 dev-ml/labltk 8.06.0 8.06.1: OCaml interface to the Tcl/Tk GUI framework
 dev-ml/lambda-term 1.9 1.10: A cross-platform library for manipulating the terminal
-dev-ml/lwt 2.4.3 2.5.1 2.5.2-r1: Cooperative light-weight thread library for OCaml
+dev-ml/lwt 2.4.3 2.5.2-r1: Cooperative light-weight thread library for OCaml
 dev-ml/macaque 0.7.4: DSL for SQL Queries in Caml
 dev-ml/markup 0.7.2: Error-recovering streaming HTML5 and XML parsers
 dev-ml/menhir 20151112 20160303 20160504 20160526: LR(1) parser generator for the OCaml language
