@@ -4,6 +4,7 @@
 
 EAPI=5
 
+VALA_MIN_API_VERSION="0.30"
 VALA_USE_DEPEND="vapigen"
 
 inherit eutils autotools gnome2-utils vala vcs-snapshot
