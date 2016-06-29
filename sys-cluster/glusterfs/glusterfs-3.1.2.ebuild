@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -17,7 +17,7 @@ IUSE="emacs extras +fuse infiniband static-libs vim-syntax"
 
 RDEPEND="emacs? ( virtual/emacs )
 		fuse? ( >=sys-fs/fuse-2.7.0 )
-		infiniband? ( sys-infiniband/libibverbs )"
+		infiniband? ( sys-fabric/libibverbs )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	sys-devel/bison

@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -25,7 +25,7 @@ RDEPEND="bd-xlator? ( sys-fs/lvm2 )
 	emacs? ( virtual/emacs )
 	fuse? ( >=sys-fs/fuse-2.7.0 )
 	georeplication? ( ${PYTHON_DEPS} )
-	infiniband? ( sys-infiniband/libibverbs:* sys-infiniband/librdmacm:* )
+	infiniband? ( sys-fabric/libibverbs:* sys-fabric/librdmacm:* )
 	qemu-block? ( dev-libs/glib:2 )
 	systemtap? ( dev-util/systemtap )
 	xml? ( dev-libs/libxml2 )
