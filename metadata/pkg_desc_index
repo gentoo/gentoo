@@ -8311,7 +8311,7 @@ dev-python/warlock 1.0.1 1.1.0 1.2.0: Python object model built on JSON schema a
 dev-python/watchdog 0.8.1 0.8.3: Python API and shell utilities to monitor file system events
 dev-python/wcsaxes 0.8: Framework for plotting astronomical and geospatial data
 dev-python/wcwidth 0.1.4 0.1.5 0.1.6 0.1.6-r1: Measures number of Terminal column cells of wide-character codes
-dev-python/weasyprint 0.21-r1 0.22 0.23 0.26: Visual rendering engine for HTML and CSS that can export to PDF
+dev-python/weasyprint 0.21-r1 0.22 0.23 0.26 0.29: Visual rendering engine for HTML and CSS that can export to PDF
 dev-python/webassets 0.10.1: Asset management for Python web development
 dev-python/webcolors 1.5: Color names and value formats defined by the HTML and CSS specifications
 dev-python/webencodings 0.4: Character encoding aliases for legacy web content
