@@ -11,7 +11,8 @@
     <flag name="detection">Enable detection modules</flag>
     <flag name="luajit">Enable Luajit support</flag>
     <flag name="nflog">Enable libnetfilter_log support</flag>
-    <flag name="nfqueue">Enable AF_PACKET support</flag>
-    <flag name="rules">Enable AF_PACKET support</flag>
+    <flag name="nfqueue">Enable NFQUEUE support for inline IDP</flag>
+    <flag name="redis">Enable Redis support</flag>
+    <flag name="rules">Install default ruleset</flag>
   </use>
 </pkgmetadata>
