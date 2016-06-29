@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install prepare setup test
+DEPEND=test? ( dev-python/nose[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),python_single_target_python2_7(+)] ) >=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),python_single_target_python2_7(+)]
+DESCRIPTION=Bytecode optimisation using staticness assertions
+EAPI=5
+HOMEPAGE=https://github.com/rfk/promise/ https://pypi.python.org/pypi/promise
+IUSE=test python_targets_python2_7
+KEYWORDS=~amd64 ~x86
+LICENSE=MIT
+RDEPEND=>=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),python_single_target_python2_7(+)] >=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),python_single_target_python2_7(+)]
+REQUIRED_USE=python_targets_python2_7
+SLOT=0
+SRC_URI=mirror://pypi/p/promise/promise-0.4.2.tar.gz
+_eclass_exported_funcs=pkg_setup:- src_prepare:distutils-r1 src_configure:distutils-r1 src_compile:distutils-r1 src_test:distutils-r1 src_install:distutils-r1
+_eclasses_=distutils-r1	3a17743abcc9335483329f33c87b472d	eutils	792f83d5ec9536cb5ccef375469d8bde	multilib	d062ae4ba2fc40a19c11de2ad89b6616	python-single-r1	2ebea8fbab356d63110245129a67a6dd	python-utils-r1	c0ed2a2f233d3af6dd556048695dc5cb	toolchain-funcs	e886935aae2b45a545665444ab0667cf
+_md5_=0a4f28a8283746981ed3579956792e39
