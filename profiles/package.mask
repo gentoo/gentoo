@@ -30,6 +30,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Anthony G. Basile <blueness@gentoo.org> (29 Jun 2016)
+# Masked for bug #585726
+net-dns/namecoind
+net-dns/namecoin-qt
+
 # Michael Palimaka <kensington@gentoo.org> (29 Jun 2016)
 # No longer released upstream. Use kde-apps/ffmpegthumbs instead.
 # Masked for removal in 30 days.

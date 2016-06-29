@@ -1,0 +1,75 @@
+From 4c3450ebebfe677e35ed11109ee4f4208f68c86b Mon Sep 17 00:00:00 2001
+From: Doug Goldstein <cardoe@cardoe.com>
+Date: Mon, 27 Jun 2016 08:56:26 -0500
+Subject: [PATCH 4/4] build: add docdir to configure
+
+Add a docdir argument to the configure script to allow distros or users
+with non-standard paths to customize the installation as needed.
+
+Signed-off-by: Doug Goldstein <cardoe@cardoe.com>
+---
+ Makefile.in | 4 ++--
+ configure   | 4 ++++
+ 2 files changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/Makefile.in b/Makefile.in
+index 2503cd5..a0e20c2 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -273,7 +273,7 @@ prepare-image-$(1):
+ 	rm -rf $$(IMGDIR_$(1))
+ 	mkdir -p $$(IMGDIR_$(1))/bin $$(IMGDIR_$(1))/$(CFG_LIBDIR)/cargo \
+ 		$$(IMGDIR_$(1))$(CFG_MANDIR)/man1 \
+-		$$(IMGDIR_$(1))$(CFG_DATADIR)/doc/cargo \
++		$$(IMGDIR_$(1))$(CFG_DOCDIR) \
+ 		$$(IMGDIR_$(1))$(CFG_DATADIR)/zsh/site-functions \
+ 		$$(IMGDIR_$(1))$(CFG_SYSCONFDIR)/bash_completion.d
+ 	cp $$(TARGET_$(1))/cargo$$(X) $$(IMGDIR_$(1))/bin
+@@ -282,7 +282,7 @@ prepare-image-$(1):
+ 	cp $(S)src/etc/cargo.bashcomp.sh $$(IMGDIR_$(1))$(CFG_SYSCONFDIR)/bash_completion.d/cargo
+ 	cp $(S)README.md $(S)LICENSE-MIT $(S)LICENSE-APACHE \
+ 		$(S)LICENSE-THIRD-PARTY \
+-		$$(IMGDIR_$(1))$(CFG_DATADIR)/doc/cargo
++		$$(IMGDIR_$(1))$(CFG_DOCDIR)
+ 
+ prepare-overlay-$(1):
+ 	rm -Rf $$(OVERLAYDIR_$(1))
+diff --git a/configure b/configure
+index 0b23dcd..1634dd3 100755
+--- a/configure
++++ b/configure
+@@ -325,6 +325,7 @@ valopt localstatedir "/var/lib" "local state directory"
+ valopt sysconfdir "/etc" "install system configuration files"
+ valopt datadir "${CFG_PREFIX}/share" "install data"
+ valopt infodir "${CFG_PREFIX}/share/info" "install additional info"
++valopt docdir "${CFG_PREFIX}/share/doc/cargo" "install extra docs"
+ valopt mandir "${CFG_PREFIX}/share/man" "install man pages in PATH"
+ valopt libdir "${CFG_PREFIX}/lib" "install libraries"
+ valopt local-cargo "" "local cargo to bootstrap from"
+@@ -355,6 +356,7 @@ fi
+ CFG_PREFIX=${CFG_PREFIX%/}
+ CFG_DATADIR=${CFG_DATADIR%/}
+ CFG_INFODIR=${CFG_INFODIR%/}
++CFG_DOCDIR=${CFG_DOCDIR%/}
+ CFG_MANDIR=${CFG_MANDIR%/}
+ CFG_LIBDIR=${CFG_LIBDIR%/}
+ CFG_HOST="$(echo $CFG_HOST | tr ',' ' ')"
+@@ -364,6 +366,7 @@ CFG_TARGET="$(echo $CFG_TARGET | tr ',' ' ')"
+ # install.sh's --prefix value can be used instead
+ CFG_DATADIR=${CFG_DATADIR#${CFG_PREFIX}}
+ CFG_INFODIR=${CFG_INFODIR#${CFG_PREFIX}}
++CFG_DOCDIR=${CFG_DOCDIR#${CFG_PREFIX}}
+ CFG_MANDIR=${CFG_MANDIR#${CFG_PREFIX}}
+ CFG_LIBDIR=${CFG_LIBDIR#${CFG_PREFIX}}
+ 
+@@ -410,6 +413,7 @@ putvar CFG_BUILD
+ putvar CFG_HOST
+ putvar CFG_TARGET
+ putvar CFG_DATADIR
++putvar CFG_DOCDIR
+ putvar CFG_INFODIR
+ putvar CFG_MANDIR
+ putvar CFG_LIBDIR
+-- 
+2.7.3
+
