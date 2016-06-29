@@ -1,5 +1,5 @@
---- etswitch.desktop.in.orig	2008-02-02 10:54:51.000000000 -0500
-+++ etswitch.desktop.in	2008-02-02 11:17:40.000000000 -0500
+--- a/etswitch.desktop.in	2008-02-02 10:54:51.000000000 -0500
++++ b/etswitch.desktop.in	2008-02-02 11:17:40.000000000 -0500
 @@ -1,5 +1,4 @@
  [Desktop Entry]
 -Encoding=UTF-8
