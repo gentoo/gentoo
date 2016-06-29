@@ -2,8 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
-inherit autotools eutils games
+EAPI=6
+inherit autotools eutils
 
 PATCH=3989
 DESCRIPTION="DOS emulator"
@@ -12,7 +12,7 @@ SRC_URI="mirror://gentoo/dosbox-code-0-${PATCH}-dosbox-trunk.zip"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~sparc ~x86"
 IUSE="alsa debug hardened opengl"
 
 RDEPEND="alsa? ( media-libs/alsa-lib )
@@ -27,12 +27,17 @@ DEPEND="${RDEPEND}
 
 S=${WORKDIR}/${PN}-code-0-${PATCH}-dosbox-trunk
 
+PATCHES=(
+"${FILESDIR}"/dosbox-0.74-gcc46.patch
+)
+
 src_prepare() {
+	default
 	eautoreconf
 }
 
 src_configure() {
-	egamesconf \
+	econf \
 		$(use_enable alsa alsa-midi) \
 		$(use_enable !hardened dynamic-core) \
 		$(use_enable !hardened dynamic-x86) \
@@ -44,5 +49,4 @@ src_install() {
 	default
 	make_desktop_entry dosbox DOSBox /usr/share/pixmaps/dosbox.ico
 	doicon src/dosbox.ico
-	prepgamesdirs
 }
