@@ -169,26 +169,23 @@ grub_configure() {
 	local platform
 
 	case ${MULTIBUILD_VARIANT} in
-		efi-32)
-			platform=efi
+		efi*) platform=efi ;;
+		xen*) platform=xen ;;
+		guessed) ;;
+		*) platform=${MULTIBUILD_VARIANT} ;;
+	esac
+
+	case ${MULTIBUILD_VARIANT} in
+		*-32)
 			if [[ ${CTARGET:-${CHOST}} == x86_64* ]]; then
-				local CTARGET=${CTARGET:-i386}
-			fi ;;
-		efi-64)
-			platform=efi
-			if [[ ${CTARGET:-${CHOST}} == i?86* ]]; then
-				local CTARGET=${CTARGET:-x86_64}
-				local TARGET_CFLAGS="-Os -march=x86-64 ${TARGET_CFLAGS}"
-				local TARGET_CPPFLAGS="-march=x86-64 ${TARGET_CPPFLAGS}"
-				export TARGET_CFLAGS TARGET_CPPFLAGS
-			fi ;;
-		xen-32)
-			platform=xen
-			if [[ ${CHOST} == x86_64* ]]; then
 				local CTARGET=i386
 			fi ;;
-		guessed) ;;
-		*)	platform=${MULTIBUILD_VARIANT} ;;
+		*-64)
+			if [[ ${CTARGET:-${CHOST}} == i?86* ]]; then
+				local CTARGET=x86_64
+				local -x TARGET_CFLAGS="-Os -march=x86-64 ${TARGET_CFLAGS}"
+				local -x TARGET_CPPFLAGS="-march=x86-64 ${TARGET_CPPFLAGS}"
+			fi ;;
 	esac
 
 	local myeconfargs=(
