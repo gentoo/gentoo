@@ -18,3 +18,4 @@ qemu - QEMU platform support
 qemu-mips - QEMU MIPS platform support
 uboot - U-Boot platform support
 xen - XEN (pvgrub2) platform support
+xen-32 - Build 32-bit XEN (pvgrub2) platform support on amd64

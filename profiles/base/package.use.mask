@@ -5,6 +5,10 @@
 # This file requires >=portage-2.1.1
 # New entries go on top.
 
+# Mike Gilbert <floppym@gentoo.org> (23 Jun 2016)
+# This flag only has meaning on amd64
+sys-boot/grub:2 grub_platforms_xen-32
+
 # Brian Evans <grknight@gentoo.org> (14 Jun 2016)
 # Igbinary is not ready for php 7
 >=dev-php/pecl-redis-3.0 igbinary

@@ -48,7 +48,7 @@ LICENSE="GPL-3 fonts? ( GPL-2-with-font-exception ) themes? ( BitstreamVera )"
 SLOT="2/${PVR}"
 IUSE="debug device-mapper doc efiemu +fonts mount +multislot nls static sdl test +themes truetype libzfs"
 
-GRUB_ALL_PLATFORMS=( coreboot efi-32 efi-64 emu ieee1275 loongson multiboot qemu qemu-mips pc uboot xen )
+GRUB_ALL_PLATFORMS=( coreboot efi-32 efi-64 emu ieee1275 loongson multiboot qemu qemu-mips pc uboot xen xen-32 )
 IUSE+=" ${GRUB_ALL_PLATFORMS[@]/#/grub_platforms_}"
 
 REQUIRED_USE="
@@ -82,6 +82,7 @@ DEPEND="${RDEPEND}
 	sys-apps/texinfo
 	fonts? ( media-libs/freetype:2 )
 	grub_platforms_xen? ( app-emulation/xen-tools:= )
+	grub_platforms_xen-32? ( app-emulation/xen-tools:= )
 	static? (
 		app-arch/xz-utils[static-libs(+)]
 		truetype? (
@@ -180,6 +181,11 @@ grub_configure() {
 				local TARGET_CFLAGS="-Os -march=x86-64 ${TARGET_CFLAGS}"
 				local TARGET_CPPFLAGS="-march=x86-64 ${TARGET_CPPFLAGS}"
 				export TARGET_CFLAGS TARGET_CPPFLAGS
+			fi ;;
+		xen-32)
+			platform=xen
+			if [[ ${CHOST} == x86_64* ]]; then
+				local CTARGET=i386
 			fi ;;
 		guessed) ;;
 		*)	platform=${MULTIBUILD_VARIANT} ;;

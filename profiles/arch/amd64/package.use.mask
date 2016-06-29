@@ -18,6 +18,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Mike Gilbert <floppym@gentoo.org> (23 Jun 2016)
+# This flag only has meaning on amd64
+sys-boot/grub:2 -grub_platforms_xen-32
+
 # Nathan Phillip Brink <binki@gentoo.org> (26 Sep 2015)
 # git useflag requires dev-libs/libgit2 which few arches support
 dev-util/geany-plugins -git
