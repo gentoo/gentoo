@@ -6893,7 +6893,7 @@ dev-python/adns-python 1.2.1-r1: Python bindings for ADNS
 dev-python/adodb-py 2.20-r1: Active Data Objects Data Base library for Python
 dev-python/aioeventlet 0.4 0.5.1: asyncio event loop scheduling callbacks in eventlet
 dev-python/aiohttp 0.20.2 0.21.4 0.21.5 0.21.6: http client/server for asyncio
-dev-python/alabaster 0.7.6 0.7.7: A configurable sidebar-enabled Sphinx theme
+dev-python/alabaster 0.7.6 0.7.7 0.7.8: A configurable sidebar-enabled Sphinx theme
 dev-python/aldryn-boilerplates 0.7.4: Allows re-usable apps to provide sets of templates and staticfiles
 dev-python/aldryn-bootstrap3 0.5.1 1.0.7: django CMS plugins for bootstrap3 markup
 dev-python/aldryn-common 1.0.3: django CMS plugins with common utilities
@@ -7045,7 +7045,7 @@ dev-python/configclass 0.1.0: A Python to class to hold configuration values
 dev-python/configobj 4.7.2-r2 5.0.5 5.0.6: Simple config file reader and writer
 dev-python/configparser 3.3.0.2 3.5.0: Backport of Python-3 built-in configparser
 dev-python/configshell 9999: ConfigShell Community Edition for target_core_mod/ConfigFS
-dev-python/contextlib2 0.4.0 0.5.1: Backports and enhancements for the contextlib module
+dev-python/contextlib2 0.4.0 0.5.1 0.5.3: Backports and enhancements for the contextlib module
 dev-python/cookies 2.2.1: Friendlier RFC 6265-compliant cookie parser/renderer
 dev-python/cosmolopy 0.1.104-r1: Cosmology routines built on NumPy/SciPy
 dev-python/couchdb-python 1.0 1.0.1: Python library for working with CouchDB
@@ -7068,7 +7068,7 @@ dev-python/cytoolz 0.7.1 0.7.2-r2 0.7.3 0.7.4 0.7.5: Cython implementation of To
 dev-python/d2to1 0.2.11 0.2.12 0.2.12_p1: Allows using distutils2-like setup.cfg files for a package metadata
 dev-python/dap 2.2.6.7-r1: Data Access Protocol client and server
 dev-python/dask 0.8.1: Task scheduling and blocked algorithms for parallel processing
-dev-python/datashape 0.4.2 0.4.4 0.4.5 0.4.6 0.4.7 0.5.0 0.5.1: Language defining a data description protocol
+dev-python/datashape 0.4.2 0.4.4 0.4.5 0.4.6 0.4.7 0.5.0 0.5.1 0.5.2: Language defining a data description protocol
 dev-python/dbus-python 1.2.0-r1 1.2.4: Python bindings for the D-Bus messagebus
 dev-python/dbutils 1.1-r1: Database connections for multi-threaded environments
 dev-python/ddt 1.0.0 1.0.1: A library to multiply test cases
@@ -7383,7 +7383,7 @@ dev-python/jaraco-utils 10.0.2: General utility modules that supply commonly-use
 dev-python/jaxml 3.02-r1: XML generator written in Python
 dev-python/jdcal 1.0 1.2: Julian dates from proleptic Gregorian and Julian calendars
 dev-python/jedi 0.9.0: Autocompletion library for Python
-dev-python/jellyfish 0.5.1 0.5.2: Python module for doing approximate and phonetic matching of strings
+dev-python/jellyfish 0.5.1 0.5.2 0.5.6: Python module for doing approximate and phonetic matching of strings
 dev-python/jenkins-autojobs 0.14.3: Scripts for automatically creating Jenkins jobs from scm branches
 dev-python/jenkins-webapi 0.3.2 0.4.0-r1 0.5.0: Module for interacting with the Jenkins CI server
 dev-python/jenkinsapi 0.2.26 0.2.29: API to access resources on a Jenkins continuous-integration server
@@ -7888,7 +7888,7 @@ dev-python/pystdf 1.3.1-r1: Python module that makes it easy to work with STDF
 dev-python/pysvg 0.2.1-r1: Python SVG document creation library
 dev-python/pysvn 1.8.0: Object-oriented python bindings for subversion
 dev-python/pytables 3.1.1-r2 3.2.0 3.2.1 3.2.1.1 3.2.2: Hierarchical datasets for Python
-dev-python/pyte 0.4.9 0.4.10 0.5.1: Simple VTXXX-compatible terminal emulator
+dev-python/pyte 0.4.9 0.4.10 0.5.1 0.5.2: Simple VTXXX-compatible terminal emulator
 dev-python/pytest 2.7.2 2.8.2 2.8.7 9999: simple powerful testing with Python
 dev-python/pytest-cache 1.0: mechanisms for caching across test runs
 dev-python/pytest-capturelog 0.7: py.test plugin to capture log messages
