@@ -30,10 +30,7 @@ RDEPEND="${DEPEND}
 	$(add_kdeapps_dep konsolepart)
 	thumbnail? (
 		$(add_kdeapps_dep thumbnailers)
-		|| (
-			$(add_kdeapps_dep ffmpegthumbs)
-			$(add_kdeapps_dep mplayerthumbs)
-		)
+		$(add_kdeapps_dep ffmpegthumbs)
 	)
 "
 
