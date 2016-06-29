@@ -1,0 +1,13 @@
+DEFINED_PHASES=unpack
+DEPEND=sys-fabric/libibverbs:3.12 >=app-arch/rpm2targz-9.0.0.3g
+DESCRIPTION=OpenIB User MAD library functions which sit on top of the user MAD modules in the kernel
+EAPI=5
+HOMEPAGE=http://www.openfabrics.org/
+KEYWORDS=~amd64 ~x86 ~amd64-linux
+LICENSE=|| ( GPL-2 BSD-2 )
+RDEPEND=sys-fabric/libibverbs:3.12 !sys-fabric/libibumad:0 !sys-fabric/libibumad:3.5
+SLOT=3.12
+SRC_URI=https://www.openfabrics.org/downloads/OFED/ofed-3.12/OFED-3.12-rc1.tgz
+_eclass_exported_funcs=src_unpack:openib
+_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	multilib	d062ae4ba2fc40a19c11de2ad89b6616	openib	aa5846c3e1cd51c0127dd854cfed901c	rpm	3e120fdd74b358f9fb42b825a6558f61	toolchain-funcs	e886935aae2b45a545665444ab0667cf	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=9d49fe456d4231c7033292c060575dae

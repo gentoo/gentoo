@@ -7363,7 +7363,7 @@ sys-block/fio:glusterfs - Enable GlusterFS gfapi support via sys-cluster/gluster
 sys-block/fio:gnuplot - Install tools for generating gnuplots
 sys-block/fio:numa - Enable numa support
 sys-block/fio:rbd - Enable Rados block device support via sys-cluster/ceph
-sys-block/fio:rdma - Enable infiniband support via sys-infiniband/librdmacm
+sys-block/fio:rdma - Enable infiniband support via sys-fabric/librdmacm
 sys-block/gparted:btrfs - Include Btrfs support (sys-fs/btrfs-progs)
 sys-block/gparted:dmraid - Support for dmraid devices, also known as ATA-RAID, or Fake RAID.
 sys-block/gparted:f2fs - Include F2FS support (sys-fs/f2fs-tools)
@@ -7584,6 +7584,18 @@ sys-devel/llvm:udis86 - Enable support for dev-libs/udis86 disassembler library
 sys-devel/sparse:gtk - Build the test-inspect utility (requires x11-libs/gtk+ version 2)
 sys-devel/sparse:llvm - Build the sparse-llvm utility
 sys-devel/sparse:xml - Build the c2xml utility (requires dev-libs/libxml2).
+sys-fabric/ofed:compat-dapl - Add support for DAPL v1.2 abstraction layer
+sys-fabric/ofed:dapl - Add support for DAPL abstraction layer
+sys-fabric/ofed:diags - Add dignostic tools for infiniband
+sys-fabric/ofed:ibacm - Add support for userspace pre-connection services
+sys-fabric/ofed:mstflint - Tools to burn Mellanox firmware
+sys-fabric/ofed:opensm - Add OpenSM - Subnet manager for infiniband
+sys-fabric/ofed:perftest - Add perftest utils
+sys-fabric/ofed:qperf - Add rdma tests
+sys-fabric/ofed:rds - Tools to manage rds sockets
+sys-fabric/ofed:sdp - Add SDP tools
+sys-fabric/ofed:srp - Suport for userspace part for srp initiator
+sys-fabric/opensm:tools - Install ssld extra tool
 sys-firmware/amdgpu-ucode:legacy - Install firmware for older chipsets which are optionally supported by AMDGPU
 sys-firmware/intel-microcode:initramfs - install a small initramfs for use with CONFIG_MICROCODE_EARLY
 sys-firmware/intel-microcode:monolithic - install the large text microcode.dat (used by older kernels via microcode_ctl)
@@ -7711,18 +7723,6 @@ sys-fs/zfs:kernel-builtin - Disable dependency on sys-fs/zfs-kmod under the assu
 sys-fs/zfs:rootfs - Enable dependencies required for booting off a pool containing a rootfs
 sys-fs/zfs:test-suite - Install regression test suite
 sys-fs/zfs-kmod:rootfs - Install zfs-shutdown script to support exporting a pool containing rootfs
-sys-infiniband/ofed:compat-dapl - Add support for DAPL v1.2 abstraction layer
-sys-infiniband/ofed:dapl - Add support for DAPL abstraction layer
-sys-infiniband/ofed:diags - Add dignostic tools for infiniband
-sys-infiniband/ofed:ibacm - Add support for userspace pre-connection services
-sys-infiniband/ofed:mstflint - Tools to burn Mellanox firmware
-sys-infiniband/ofed:opensm - Add OpenSM - Subnet manager for infiniband
-sys-infiniband/ofed:perftest - Add perftest utils
-sys-infiniband/ofed:qperf - Add rdma tests
-sys-infiniband/ofed:rds - Tools to manage rds sockets
-sys-infiniband/ofed:sdp - Add SDP tools
-sys-infiniband/ofed:srp - Suport for userspace part for srp initiator
-sys-infiniband/opensm:tools - Install ssld extra tool
 sys-kernel/aufs-sources:deblob - Remove binary blobs from kernel sources to provide libre license compliance.
 sys-kernel/aufs-sources:experimental - Apply experimental patches; for more information, see "https://wiki.gentoo.org/wiki/Project:Kernel/Experimental".
 sys-kernel/aufs-sources:kdbus - Apply the kdbus patch. This also requires the "experimental" use flag.
