@@ -5069,7 +5069,7 @@ dev-ml/dose3 4.2 4.3: Library and a collection of tools to perform la large spec
 dev-ml/easy-format 1.0.2: Pretty-printing library for OCaml
 dev-ml/eliom 5.0.0: A web framework to program client/server applications
 dev-ml/enumerate 111.08.00-r1: Syntax extension to produce a list of all values of a type
-dev-ml/extlib 1.5.4 1.6.1 1.7.0-r1: Standard library extensions for O'Caml
+dev-ml/extlib 1.5.4 1.6.1-r1 1.7.0-r1: Standard library extensions for O'Caml
 dev-ml/facile 1.1 1.1.1 1.1.2: A constraint programming library on integer and integer set finite domains written in OCaml
 dev-ml/faillib 109.60.00 111.17.00: Syntax extension for inserting the current location
 dev-ml/fieldslib 113.24.00 113.33.03: Folding over record fields
