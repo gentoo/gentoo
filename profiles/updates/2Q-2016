@@ -32,3 +32,5 @@ move app-crypt/letsencrypt-apache app-crypt/certbot-apache
 move net-misc/sx sys-cluster/sx
 slotmove >=dev-php/pecl-apcu-5.0 0 7
 move sys-apps/microcode-data sys-firmware/intel-microcode
+slotmove >=dev-php/pecl-rrd-2.0 0 7
+slotmove >=dev-php/pecl-oauth-2.0 0 7

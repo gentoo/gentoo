@@ -8,8 +8,8 @@ inherit eutils fdo-mime gnome2-utils pax-utils unpacker
 DESCRIPTION="Spotify is a social music platform"
 HOMEPAGE="https://www.spotify.com/ch-de/download/previews/"
 SRC_BASE="http://repository.spotify.com/pool/non-free/${PN:0:1}/${PN}-client/"
-SRC_URI="amd64? ( ${SRC_BASE}${PN}-client_${PV}.56.g526cfefe-33_amd64.deb )
-	x86? ( ${SRC_BASE}${PN}-client_${PV}.56.g526cfefe-1_i386.deb )"
+SRC_URI="amd64? ( ${SRC_BASE}${PN}-client_${PV}.96.g3c8a06e6-37_amd64.deb )
+	x86? ( ${SRC_BASE}${PN}-client_${PV}.96.g3c8a06e6-3_i386.deb )"
 LICENSE="Spotify"
 SLOT="0"
 KEYWORDS="amd64 x86"
