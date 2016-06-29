@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install
+DESCRIPTION=Remote connection client for Minecraft servers
+EAPI=6
+HOMEPAGE=http://sourceforge.net/projects/mcrcon/
+KEYWORDS=~amd64
+LICENSE=ZLIB
+SLOT=0
+SRC_URI=mirror://sourceforge/mcrcon/mcrcon-0.0.5-src.zip
+_eclass_exported_funcs=src_compile:- src_install:-
+_eclasses_=multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	e886935aae2b45a545665444ab0667cf
+_md5_=e8d9f90da066a2e8ab6971dcd4e44e4f

@@ -10955,14 +10955,14 @@ games-util/fteqcc 2501: QC compiler
 games-util/gamepick 0.35: Launch opengl games with custom graphic settings
 games-util/glbsp 2.24: A node builder specially designed for OpenGL ports of the DOOM game engine
 games-util/grfcodec 6.0.4 6.0.5: A suite of programs to modify openttd/Transport Tycoon Deluxe's GRF files
-games-util/gslist 0.8.11a: A GameSpy server browser
+games-util/gslist 0.8.11a 0.8.11a-r1: A GameSpy server browser
 games-util/gtkevemon 1.8-r1 9999: A standalone skill monitoring application for EVE Online
 games-util/higan-purify 03: Rom purifier for higan
 games-util/joystick 1.4.8 1.4.8-r1 1.5.1: joystick testing utilities
 games-util/linux-wbfs-manager 0.1.12 9999: WBFS manager for Linux using GTK+
 games-util/loki_patch 20091105: Loki Software binary patch tool
 games-util/lutris 0.3.6.3: Gaming platform for GNU/Linux
-games-util/mcrcon 0.0.5: Remote connection client for Minecraft servers
+games-util/mcrcon 0.0.5 0.0.5-r1: Remote connection client for Minecraft servers
 games-util/nml 0.4.2-r1 0.4.4: Compiler of NML files into grf/nfo files
 games-util/pyfa 1.21.3 9999: Python Fitting Assistant - a ship fitting application for EVE Online
 games-util/qjoypad 4.1.0: Translate gamepad/joystick input into key strokes/mouse actions in X
@@ -14399,7 +14399,7 @@ net-libs/libyahoo2 1.0.1: interface to the new Yahoo! Messenger protocol
 net-libs/libzapojit 0.0.3: GLib/GObject wrapper for the SkyDrive and Hotmail REST APIs
 net-libs/libzrtpcpp 2.3.4 4.2.4: GNU RTP stack for the zrtp protocol developed by Phil Zimmermann
 net-libs/loudmouth 1.4.3-r2 1.5.2-r1 1.5.3: Lightweight C Jabber library
-net-libs/mbedtls 2.1.3 2.2.0 2.2.1: Cryptographic library for embedded systems
+net-libs/mbedtls 2.2.1 2.3.0: Cryptographic library for embedded systems
 net-libs/meanwhile 1.0.2-r1: Meanwhile (Sametime protocol) library
 net-libs/miniupnpc 1.8 1.9.20150427 1.9.20150917-r1 1.9.20151008: UPnP client library and a simple UPnP client
 net-libs/nacl 0_p20110221: high-speed software library for network communication, encryption, decryption, signatures
@@ -17237,7 +17237,7 @@ sys-kernel/genkernel 3.4.45.1 3.4.48 3.4.49.2 3.4.50 3.4.51.4 3.4.52.2 3.4.52.3 
 sys-kernel/genkernel-next 63 64: Gentoo automatic kernel building scripts, reloaded
 sys-kernel/gentoo-sources 3.4.110 3.4.111 3.4.112 3.4.9999 3.10.95 3.10.101 3.10.102 3.12.52-r1 3.12.60 3.12.61 3.12.9999 3.14.58-r1 3.14.69 3.14.70 3.14.71 3.14.72 3.14.73 3.18.25-r1 3.18.33 3.18.34 3.18.35 3.18.36 4.1.15-r1 4.1.24 4.1.25 4.1.26 4.1.27 4.4.6 4.4.12 4.4.13 4.4.14 4.5.6 4.5.7 4.6.0 4.6.1 4.6.2 4.6.3: Full sources including the Gentoo patchset for the 4.6 kernel tree
 sys-kernel/git-sources 4.7_rc1 4.7_rc2 4.7_rc3 4.7_rc4 4.7_rc5: The very latest -git version of the Linux kernel
-sys-kernel/hardened-sources 4.3.3-r4 4.4.2 4.4.8-r1 4.5.7-r3 4.5.7-r4 4.5.7-r5: Hardened kernel sources (kernel series 4.5)
+sys-kernel/hardened-sources 4.3.3-r4 4.4.2 4.4.8-r1 4.5.7-r5: Hardened kernel sources (kernel series 4.5)
 sys-kernel/kccmp 0.3: A simple tool for comparing two linux kernel .config files
 sys-kernel/kergen 0.1.1 0.1.3: Kernel config generator
 sys-kernel/linux-docs 3.4.104 3.10.58 3.12.30 3.14.22 4.1.12 4.2.5 4.3: Developer documentation generated from the Linux kernel
