@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=>=sys-devel/make-3.81
+DESCRIPTION=skarnet.org general-purpose libraries
+EAPI=6
+HOMEPAGE=http://www.skarnet.org/software/skalibs/index.html
+IUSE=doc ipv6 static-libs
+KEYWORDS=~amd64 ~x86
+LICENSE=ISC
+SLOT=0
+SRC_URI=http://www.skarnet.org/software/skalibs/skalibs-2.3.10.0.tar.gz
+_eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
+_md5_=504ada1a56e9ad05e4d65ddacec298f7

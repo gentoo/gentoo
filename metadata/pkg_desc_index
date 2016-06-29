@@ -4379,7 +4379,7 @@ dev-lang/elixir 1.0.5 1.1.1 1.2.3 1.2.5 1.3.0 1.3.0-r1: Elixir programming langu
 dev-lang/epic 0.9.3.3-r1: Compiler for a simple functional language
 dev-lang/erlang 15.2.3.1 17.5 18.0-r2 18.2.1 18.3: Erlang programming language, runtime environment and libraries (OTP)
 dev-lang/esco 0.512: Combine interpreter of esoteric languages
-dev-lang/execline 2.1.1.0 2.1.4.5: a non-interactive scripting language similar to SH
+dev-lang/execline 2.1.1.0 2.1.4.5 2.1.5.0: a non-interactive scripting language similar to SH
 dev-lang/f2c 20060507 20100827: Fortran to C converter
 dev-lang/falcon 0.9.6.8: An open source general purpose untyped language written in C++
 dev-lang/ferite 1.1.17-r1: A clean, lightweight, object oriented scripting language
@@ -4913,7 +4913,7 @@ dev-libs/sdformat 3.6.0 3.7.0 4.0.0 4.1.0: Simulation Description Format (SDF) p
 dev-libs/serd 0.18.2 0.20.0 0.22.0: Library for RDF syntax which supports reading and writing Turtle and NTriples
 dev-libs/serdisplib 1.97.9: Library to drive serial/parallel/usb displays with built-in controllers
 dev-libs/shhopt 1.1.7-r2: library for parsing command line options
-dev-libs/skalibs 2.3.2.0 2.3.9.0: development files used for building software at skarnet.org: essentially general-purpose libraries
+dev-libs/skalibs 2.3.2.0 2.3.9.0 2.3.10.0: skarnet.org general-purpose libraries
 dev-libs/skyutils 2.8-r2 2.8-r3: Library of assorted C utility functions
 dev-libs/smack 0.5.0: low-level IO storage which packs data into sorted compressed blobs
 dev-libs/sni-qt 0.2.6-r1: A Qt plugin which turns all QSystemTrayIcon into StatusNotifierItems
@@ -7882,7 +7882,7 @@ dev-python/pysolr 3.3.0 3.3.2: Lightweight python wrapper for Apache Solr
 dev-python/pyspf 2.0.11 2.0.12: Python implementation of the Sender Policy Framework (SPF) protocol
 dev-python/pysrt 1.0.1 1.1.0 1.1.1 9999: Python library used to edit or create SubRip files
 dev-python/pystache 0.5.3 0.5.4: Mustache for Python
-dev-python/pystatgrab 0.6: pystatgrab is a set of Python bindings for the libstatgrab library
+dev-python/pystatgrab 0.6 0.7: pystatgrab is a set of Python bindings for the libstatgrab library
 dev-python/pystdf 1.3.1-r1: Python module that makes it easy to work with STDF
 dev-python/pysvg 0.2.1-r1: Python SVG document creation library
 dev-python/pysvn 1.8.0: Object-oriented python bindings for subversion
@@ -8151,7 +8151,7 @@ dev-python/snakeoil 0.6.6 0.7.0 9999: misc common functionality and useful optim
 dev-python/snappy 0.5-r2: Python library for the snappy compression library from Google
 dev-python/snowballstemmer 1.2.0 1.2.1: Stemmer algorithms generated from Snowball algorithms
 dev-python/soappy 0.12.5-r2 0.12.20 0.12.22: SOAP Services for Python
-dev-python/socketio-client 0.6.5: A socket.io client library for Python
+dev-python/socketio-client 0.6.5 0.6.6: A socket.io client library for Python
 dev-python/socketpool 0.5.3: A simple Python socket pool
 dev-python/south 1.0: Intelligent schema migrations for Django apps
 dev-python/soya 0.14-r1: A high-level 3D engine for Python, designed with games in mind
@@ -8191,7 +8191,7 @@ dev-python/stevedore 1.1.0-r1 1.3.0 1.4.0-r1 1.6.0 1.6.0-r1 1.10.0 1.12.0: Manag
 dev-python/stomper 0.3.0: Transport neutral client implementation of the STOMP protocol
 dev-python/storm 0.20-r1: An object-relational mapper for Python developed at Canonical
 dev-python/stormpath 2.1.5 2.1.6 2.3.1: Official Stormpath SDK, used to interact with the Stormpath REST API.
-dev-python/strict-rfc3339 0.6: Strict, simple, lightweight RFC3339 functions
+dev-python/strict-rfc3339 0.6 0.7: Strict, simple, lightweight RFC3339 functions
 dev-python/stripogram 1.5-r1: Strip-o-Gram HTML Conversion Library
 dev-python/structlog 16.1.0: Structured Logging for Python
 dev-python/stsci-distutils 0.3.7: Utilities used to package some of STScI's Python projects
@@ -15698,7 +15698,7 @@ sci-electronics/gtkwave 3.3.65 3.3.66 3.3.68: A wave viewer for LXT, LXT2, VZT, 
 sci-electronics/gwave 20090213-r1: Analog waveform viewer for SPICE-like simulations
 sci-electronics/irsim 9.7.79 9.7.87 9.7.93: IRSIM is a "switch-level" simulator
 sci-electronics/iverilog 0.9.6 0.9.7: A Verilog simulation and synthesis tool
-sci-electronics/kicad 4.0.1-r1 4.0.2-r1 4.0.2-r2: Electronic Schematic and PCB design tools.
+sci-electronics/kicad 4.0.1-r1 4.0.2-r1 4.0.2-r2 4.0.2-r3: Electronic Schematic and PCB design tools.
 sci-electronics/klayout 0.23.10: Viewer and editor for GDS and OASIS integrated circuit layouts
 sci-electronics/linsmith 0.99.28 0.99.30: Smith charting program, mainly designed for educational use
 sci-electronics/magic 7.5.202-r1 7.5.231 8.0.138 8.0.207: The VLSI design CAD tool
@@ -16665,11 +16665,11 @@ sys-apps/rkflashtool 5.1: Tool for flashing Rockchip devices
 sys-apps/rng-tools 4-r7 5 5-r1 5-r2: Daemon to use hardware random number generators
 sys-apps/roccat-tools 3.7.0 3.9.0 5.1.0 5.1.1: Utility for advanced configuration of Roccat devices
 sys-apps/s390-tools 1.17.0 1.23.1: User space utilities for the zSeries (s390) Linux kernel and device drivers
-sys-apps/s6 2.1.3.0 2.2.4.3: skarnet.org's small and secure supervision software suite
-sys-apps/s6-linux-init 0.0.1.4: Generates an init binary for s6-based init systems
-sys-apps/s6-linux-utils 2.0.2.3: Set of tiny linux utilities
-sys-apps/s6-portable-utils 2.0.5.3: Set of tiny portable unix utilities
-sys-apps/s6-rc 0.0.2.1: Service manager for the s6 supervision suite
+sys-apps/s6 2.1.3.0 2.2.4.3 2.3.0.0: skarnet.org's small and secure supervision software suite
+sys-apps/s6-linux-init 0.0.1.4 0.1.0.0: Generates an init binary for s6-based init systems
+sys-apps/s6-linux-utils 2.0.2.3 2.1.0.0: Set of tiny linux utilities
+sys-apps/s6-portable-utils 2.0.5.3 2.0.6.0: Set of tiny portable unix utilities
+sys-apps/s6-rc 0.0.2.1 0.0.3.0: Service manager for the s6 supervision suite
 sys-apps/salinfo 1.2: decode Itanium SAL records (e.g. various hardware errors)
 sys-apps/sandbox 2.6-r1 2.7 2.8 2.9 2.10-r1 2.10-r2 2.11-r2: sandbox'd LD_PRELOAD hack
 sys-apps/sdparm 1.07 1.09 1.10: Utility to output and modify parameters on a SCSI device, like hdparm
