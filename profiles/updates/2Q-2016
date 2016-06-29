@@ -34,3 +34,31 @@ slotmove >=dev-php/pecl-apcu-5.0 0 7
 move sys-apps/microcode-data sys-firmware/intel-microcode
 slotmove >=dev-php/pecl-rrd-2.0 0 7
 slotmove >=dev-php/pecl-oauth-2.0 0 7
+move sys-infiniband/compat-dapl sys-fabric/compat-dapl
+move sys-infiniband/dapl sys-fabric/dapl
+move sys-infiniband/ibacm sys-fabric/ibacm
+move sys-infiniband/ibutils sys-fabric/ibutils
+move sys-infiniband/infiniband-diags sys-fabric/infiniband-diags
+move sys-infiniband/infinipath-psm sys-fabric/infinipath-psm
+move sys-infiniband/libcxgb3 sys-fabric/libcxgb3
+move sys-infiniband/libcxgb4 sys-fabric/libcxgb4
+move sys-infiniband/libehca sys-fabric/libehca
+move sys-infiniband/libibcm sys-fabric/libibcm
+move sys-infiniband/libibmad sys-fabric/libibmad
+move sys-infiniband/libibumad sys-fabric/libibumad
+move sys-infiniband/libibverbs sys-fabric/libibverbs
+move sys-infiniband/libibvpp sys-fabric/libibvpp
+move sys-infiniband/libipathverbs sys-fabric/libipathverbs
+move sys-infiniband/libmlx4 sys-fabric/libmlx4
+move sys-infiniband/libmlx5 sys-fabric/libmlx5
+move sys-infiniband/libmthca sys-fabric/libmthca
+move sys-infiniband/libnes sys-fabric/libnes
+move sys-infiniband/libocrdma sys-fabric/libocrdma
+move sys-infiniband/librdmacm sys-fabric/librdmacm
+move sys-infiniband/mstflint sys-fabric/mstflint
+move sys-infiniband/ofed sys-fabric/ofed
+move sys-infiniband/opensm sys-fabric/opensm
+move sys-infiniband/perftest sys-fabric/perftest
+move sys-infiniband/qperf sys-fabric/qperf
+move sys-infiniband/rds-tools sys-fabric/rds-tools
+move sys-infiniband/srptools sys-fabric/srptools

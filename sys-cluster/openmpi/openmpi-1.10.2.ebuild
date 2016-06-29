@@ -63,12 +63,12 @@ CDEPEND="
 	sys-libs/zlib
 	cuda? ( dev-util/nvidia-cuda-toolkit )
 	elibc_FreeBSD? ( dev-libs/libexecinfo )
-	openmpi_fabrics_ofed? ( sys-infiniband/ofed:* )
+	openmpi_fabrics_ofed? ( sys-fabric/ofed:* )
 	openmpi_fabrics_knem? ( sys-cluster/knem )
-	openmpi_fabrics_psm? ( sys-infiniband/infinipath-psm:* )
+	openmpi_fabrics_psm? ( sys-fabric/infinipath-psm:* )
 	openmpi_rm_pbs? ( sys-cluster/torque )
 	openmpi_rm_slurm? ( sys-cluster/slurm )
-	openmpi_ofed_features_rdmacm? ( sys-infiniband/librdmacm:* )"
+	openmpi_ofed_features_rdmacm? ( sys-fabric/librdmacm:* )"
 
 RDEPEND="${CDEPEND}
 	java? ( >=virtual/jre-1.6 )"

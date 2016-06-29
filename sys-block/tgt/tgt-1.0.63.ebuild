@@ -21,8 +21,8 @@ CDEPEND="dev-perl/Config-General
 	dev-libs/libxslt
 	rbd? ( sys-cluster/ceph )
 	infiniband? (
-		sys-infiniband/libibverbs:=
-		sys-infiniband/librdmacm:=
+		sys-fabric/libibverbs:=
+		sys-fabric/librdmacm:=
 	)"
 DEPEND="${CDEPEND}
 	app-text/docbook-xsl-stylesheets"

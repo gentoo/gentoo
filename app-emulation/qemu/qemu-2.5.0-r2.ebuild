@@ -97,7 +97,7 @@ SOFTMMU_LIB_DEPEND="${COMMON_LIB_DEPEND}
 			vte? ( x11-libs/vte:2.90 )
 		)
 	)
-	infiniband? ( sys-infiniband/librdmacm:=[static-libs(+)] )
+	infiniband? ( sys-fabric/librdmacm:=[static-libs(+)] )
 	iscsi? ( net-libs/libiscsi )
 	jpeg? ( virtual/jpeg:0=[static-libs(+)] )
 	lzo? ( dev-libs/lzo:2[static-libs(+)] )

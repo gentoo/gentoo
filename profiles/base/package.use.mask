@@ -415,7 +415,7 @@ media-video/rtmpdump polarssl
 
 # Alexey Shvetsov <alexxy@gentoo.org> (16 Apr 2014)
 # libehca only works on ppc*
-sys-infiniband/ofed ofed_drivers_ehca
+sys-fabric/ofed ofed_drivers_ehca
 
 # Andreas K. Huettel <dilfridge@gentoo.org> (12 Apr 2014)
 # Upstream regularly forgets to update the bindings after changes in API,

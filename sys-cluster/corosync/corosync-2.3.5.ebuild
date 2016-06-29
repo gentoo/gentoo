@@ -23,8 +23,8 @@ IUSE="doc infiniband static-libs systemd xml"
 # --enable-watchdog : Watchdog support
 RDEPEND="!sys-cluster/heartbeat
 	infiniband? (
-		sys-infiniband/libibverbs:*
-		sys-infiniband/librdmacm:*
+		sys-fabric/libibverbs:*
+		sys-fabric/librdmacm:*
 	)
 	dev-libs/nss
 	>=sys-cluster/libqb-0.14.4"
