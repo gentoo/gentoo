@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=python_targets_pypy? ( virtual/pypy:0= ) python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_pypy(-)?,python_targets_python2_7(-)?,-python_single_target_pypy(-),-python_single_target_python2_7(-)]
+DESCRIPTION=Powerful multi-threaded object-oriented CGI/FastCGI/mod_python/html-templating facilities
+EAPI=5
+HOMEPAGE=http://jonpy.sourceforge.net/ https://pypi.python.org/pypi/jonpy
+IUSE=doc examples python_targets_pypy python_targets_python2_7
+KEYWORDS=~amd64 ~x86
+LICENSE=MIT
+RDEPEND=python_targets_pypy? ( virtual/pypy:0= ) python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_pypy(-)?,python_targets_python2_7(-)?,-python_single_target_pypy(-),-python_single_target_python2_7(-)]
+REQUIRED_USE=|| ( python_targets_pypy python_targets_python2_7 )
+SLOT=0
+SRC_URI=mirror://pypi/j/jonpy/jonpy-0.13.tar.gz
+_eclass_exported_funcs=src_prepare:distutils-r1 src_configure:distutils-r1 src_compile:distutils-r1 src_test:distutils-r1 src_install:distutils-r1
+_eclasses_=distutils-r1	3a17743abcc9335483329f33c87b472d	eutils	792f83d5ec9536cb5ccef375469d8bde	multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	d062ae4ba2fc40a19c11de2ad89b6616	multiprocessing	e32940a7b2a9992ad217eccddb84d548	python-r1	0f6937650a475d673baa5d0c8c0b37b3	python-utils-r1	c0ed2a2f233d3af6dd556048695dc5cb	toolchain-funcs	e886935aae2b45a545665444ab0667cf
+_md5_=8e52eeecd51b354da0a36b7d0f234f32
