@@ -6855,7 +6855,7 @@ dev-php/twig 1.20.0: PHP templating engine with syntax similar to Django
 dev-php/xcache 3.0.4 3.1.2 3.2.0: A fast and stable PHP opcode cacher
 dev-php/xdebug 2.2.6 2.2.7 2.3.1 2.3.3 2.4.0: A PHP debugging and profiling extension
 dev-php/xdebug-client 2.2.2 2.2.3 2.2.5 2.2.6 2.2.7 2.3.1 2.3.3 2.4.0: Xdebug client for the Common Debugger Protocol (DBGP)
-dev-php/xhprof 0.9.4: A Hierarchical Profiler for PHP
+dev-php/xhprof 0.9.4 0.9.4_p20150226: A Hierarchical Profiler for PHP
 dev-python/3to2 1.1.1: Tool to refactor valid 3.x syntax into valid 2.x syntax
 dev-python/APScheduler 3.1.0: In-process task scheduler with Cron-like capabilities
 dev-python/Babel 2.0 2.1.1 2.2.0: A collection of tools for internationalizing Python applications
@@ -10357,7 +10357,7 @@ games-emulation/dboxfe 0.1.3: Creates and manages configuration files for DOSBox
 games-emulation/desmume 0.9.8 0.9.9 0.9.10 0.9.11: Nintendo DS emulator
 games-emulation/dgen-sdl 1.33: A Linux/SDL-Port of the famous DGen MegaDrive/Genesis-Emulator
 games-emulation/dolphin 5.0 9999: Gamecube and Wii game emulator
-games-emulation/dosbox 0.74 3989 9999: DOS emulator
+games-emulation/dosbox 0.74 0.74_p20160629 9999: DOS emulator
 games-emulation/emutos 0.9.3 0.9.4: a single-user single-tasking operating system for 32 bit Atari computer emulators
 games-emulation/fakenes 0.5.8-r2: portable, Open Source NES emulator which is written mostly in C
 games-emulation/fbzx 2.10.0 3.0.0: A Sinclair Spectrum emulator, designed to work at full screen using the FrameBuffer

@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=alsa? ( media-libs/alsa-lib ) opengl? ( virtual/glu virtual/opengl ) debug? ( sys-libs/ncurses:0 ) media-libs/libpng:0 media-libs/libsdl[joystick,video,X] media-libs/sdl-net media-libs/sdl-sound app-arch/unzip !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=DOS emulator
+EAPI=6
+HOMEPAGE=http://dosbox.sourceforge.net/
+IUSE=alsa debug hardened opengl
+KEYWORDS=~amd64 ~arm ~ppc ~ppc64 ~sparc ~x86
+LICENSE=GPL-2
+RDEPEND=alsa? ( media-libs/alsa-lib ) opengl? ( virtual/glu virtual/opengl ) debug? ( sys-libs/ncurses:0 ) media-libs/libpng:0 media-libs/libsdl[joystick,video,X] media-libs/sdl-net media-libs/sdl-sound
+SLOT=0
+SRC_URI=mirror://gentoo/dosbox-code-0-3989-dosbox-trunk.zip
+_eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	792f83d5ec9536cb5ccef375469d8bde	libtool	4890219c51da247200223277f993e054	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	e886935aae2b45a545665444ab0667cf
+_md5_=a9f7c5752f9f0df9475a957df13be36f
