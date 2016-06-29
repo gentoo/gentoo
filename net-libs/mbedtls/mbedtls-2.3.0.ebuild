@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -12,13 +12,13 @@ SRC_URI="https://github.com/ARMmbed/mbedtls/archive/mbedtls-${PV}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0/10" # slot for libmbedtls.so
-KEYWORDS="~alpha ~amd64 arm hppa ~mips ~ppc ppc64 ~s390 ~sparc ~x86 ~amd64-fbsd ~x86-fbsd"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd"
 IUSE="cpu_flags_x86_sse2 doc havege libressl programs test threads zlib"
 
 RDEPEND="
 	programs? (
-		!libressl? ( dev-libs/openssl:0 )
-		libressl? ( dev-libs/libressl )
+		!libressl? ( dev-libs/openssl:0= )
+		libressl? ( dev-libs/libressl:0= )
 	)
 	zlib? ( >=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}] )"
 DEPEND="${RDEPEND}
