@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<longdescription lang="en">
+		git-deps is a tool for performing automatic analysis of dependencies
+		between commits in a git repository.
+	</longdescription>
+</pkgmetadata>
