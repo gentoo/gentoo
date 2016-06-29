@@ -16,7 +16,7 @@ DEPEND="app-arch/xz-utils
 	sys-libs/timezone-data"
 
 # bug 429810
-RDEPEND="!sys-infiniband/dapl"
+RDEPEND="!sys-fabric/dapl"
 
 src_configure() {
 	econf \
