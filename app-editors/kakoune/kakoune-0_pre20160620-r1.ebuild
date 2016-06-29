@@ -4,15 +4,17 @@
 
 EAPI=6
 
-inherit flag-o-matic toolchain-funcs git-r3
+inherit flag-o-matic toolchain-funcs vcs-snapshot
+
+REF="34c8e6a9cf15410a433c8a8c3901703708b85611"
 
 DESCRIPTION="Selection-oriented code editor inspired by vim"
 HOMEPAGE="https://github.com/mawww/kakoune"
-EGIT_REPO_URI="https://github.com/mawww/kakoune.git"
+SRC_URI="https://github.com/mawww/${PN}/tarball/${REF} -> ${P}.tar.gz"
 
 LICENSE="Unlicense"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="debug"
 
 RDEPEND="
