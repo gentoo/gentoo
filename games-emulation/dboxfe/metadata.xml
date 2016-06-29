@@ -5,6 +5,10 @@
 		<email>games@gentoo.org</email>
 		<name>Gentoo Games Project</name>
 	</maintainer>
+	<maintainer type="project">
+		<email>wine@gentoo.org</email>
+		<name>Gentoo Wine Project</name>
+	</maintainer>
 	<upstream>
 		<remote-id type="sourceforge">dboxfe.berlios</remote-id>
 	</upstream>
