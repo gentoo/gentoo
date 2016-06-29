@@ -575,6 +575,7 @@ app-crypt/nwipe 0.14: Securely erase disks using a variety of recognized methods
 app-crypt/oclhashcat-lite-bin 0.15: An opencl hash cracker
 app-crypt/oclhashcat-plus-bin 0.15: An opencl multihash cracker
 app-crypt/onak 0.4.0: onak is an OpenPGP keyserver
+app-crypt/openssl-af_alg-engine 0.0.1: af_alg is an openssl crypto engine kernel interface thing
 app-crypt/openssl-blacklist 0.5.3: Detection of weak ssl keys produced by certain debian versions between 2006 and 2008
 app-crypt/openssl-tpm-engine 0.4.1 0.4.2: This provides a OpenSSL engine that uses private keys stored in TPM hardware
 app-crypt/openvpn-blacklist 0.4-r1 0.5: Detection of weak openvpn keys produced by certain debian versions in 2006-2008

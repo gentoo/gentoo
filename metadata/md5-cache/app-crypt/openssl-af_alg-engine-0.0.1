@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install prepare setup
+DEPEND=virtual/linux-sources >=dev-libs/openssl-1.0.0d !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=af_alg is an openssl crypto engine kernel interface thing
+EAPI=5
+HOMEPAGE=https://github.com/sarnold/af_alg
+KEYWORDS=~amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86
+LICENSE=openssl
+RESTRICT=test
+SLOT=0
+SRC_URI=mirror://gentoo/af_alg-0.0.1.tar.gz
+_eclass_exported_funcs=pkg_setup:linux-info src_prepare:- src_configure:- src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	792f83d5ec9536cb5ccef375469d8bde	libtool	4890219c51da247200223277f993e054	linux-info	fd1e29abbb02cbc49f1a14299846e9c4	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	e886935aae2b45a545665444ab0667cf	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=69a0ae23068083731a5f834f3a8a7634
