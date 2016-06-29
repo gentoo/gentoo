@@ -30,6 +30,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Michael Palimaka <kensington@gentoo.org> (29 Jun 2016)
+# No longer released upstream. Use kde-apps/ffmpegthumbs instead.
+# Masked for removal in 30 days.
+kde-apps/mplayerthumbs
+
 # Johannes Huber <johu@gentoo.org> (28 Jun 2016)
 # Masked for removal in 30 days. Dead upstream. Was only
 # useful with Nepomuk, superseded by Baloo long time ago.

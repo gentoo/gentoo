@@ -14,8 +14,6 @@ HOMEPAGE="
 KEYWORDS="amd64 x86"
 IUSE="+ffmpeg"
 
-# Add back whenever it is ported - no change since 4.10
-# 	mplayer? ( $(add_kdeapps_dep mplayerthumbs) )
 RDEPEND="
 	$(add_kdeapps_dep audiocd-kio)
 	$(add_kdeapps_dep dragon)
