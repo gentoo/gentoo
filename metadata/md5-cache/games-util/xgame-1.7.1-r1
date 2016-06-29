@@ -1,0 +1,11 @@
+DEFINED_PHASES=install
+DESCRIPTION=Run games in a separate X session
+EAPI=6
+HOMEPAGE=http://xgame.tlhiv.com/
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-2
+RDEPEND=dev-lang/perl
+SLOT=0
+SRC_URI=http://downloads.tlhiv.com/xgame/xgame-1.7.1.tar.gz
+_eclass_exported_funcs=src_install:-
+_md5_=a25648011ff4d6cb1b99df176f565a38
