@@ -10950,9 +10950,9 @@ games-util/datutil 2.46: Converter for dat files for Rom Managers
 games-util/deutex 4.4.0: A wad composer for Doom, Heretic, Hexen and Strife
 games-util/dfarc 3.12: Frontend and .dmod installer for GNU FreeDink
 games-util/dzip 2.9-r3: compressor/uncompressor for demo recordings from id's Quake
-games-util/etswitch 0.1.14: *nix minimizer for a few games
+games-util/etswitch 0.1.14 0.1.14-r1: *nix minimizer for a few games
 games-util/fteqcc 2501: QC compiler
-games-util/gamepick 0.35: Launch opengl games with custom graphic settings
+games-util/gamepick 0.35 0.35-r1: Launch opengl games with custom graphic settings
 games-util/glbsp 2.24: A node builder specially designed for OpenGL ports of the DOOM game engine
 games-util/grfcodec 6.0.4 6.0.5: A suite of programs to modify openttd/Transport Tycoon Deluxe's GRF files
 games-util/gslist 0.8.11a 0.8.11a-r1: A GameSpy server browser
