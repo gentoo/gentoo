@@ -573,11 +573,6 @@ www-apps/trac-downloads
 # someone needs to investigate.
 >=net-libs/libzrtpcpp-4
 
-# Christian Faulhammer <fauli@gentoo.org> (02 Sep 2014)
-# website not working anymore and will stay like this,
-# tool is useless. See bug 504734
-app-admin/hwreport
-
 # Sergey Popov <pinkbyte@gentoo.org> (28 Aug 2014)
 # Security mask, wrt bug #519650
 # If your application is broken due to this mask,
