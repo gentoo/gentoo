@@ -54,10 +54,7 @@ CDEPEND="
 RDEPEND="${CDEPEND}
 	$(add_kdeapps_dep kreadconfig)
 	media-plugins/kipi-plugins:4
-	video? ( || (
-		$(add_kdeapps_dep ffmpegthumbs)
-		$(add_kdeapps_dep mplayerthumbs)
-	) )
+	video? ( $(add_kdeapps_dep ffmpegthumbs) )
 "
 DEPEND="${CDEPEND}
 	dev-cpp/eigen:3

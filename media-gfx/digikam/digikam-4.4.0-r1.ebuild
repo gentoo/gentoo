@@ -60,8 +60,6 @@ RDEPEND="${CDEPEND}
 	video? (
 		|| (
 			kde-apps/ffmpegthumbs:4
-			kde-apps/mplayerthumbs:4
-			$(add_kdeapps_dep mplayerthumbs)
 			$(add_kdeapps_dep ffmpegthumbs)
 		)
 	)
