@@ -138,7 +138,7 @@ sys-devel
 sys-firmware
 sys-freebsd
 sys-fs
-sys-infiniband
+sys-fabric
 sys-kernel
 sys-libs
 sys-power

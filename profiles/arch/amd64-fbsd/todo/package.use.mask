@@ -172,16 +172,16 @@ media-video/vlc fluidsynth
 # sys-cluster/knem
 sys-cluster/openmpi openmpi_fabrics_knem
 
-# sys-infiniband/dapl
+# sys-fabric/dapl
 sys-cluster/openmpi openmpi_fabrics_dapl
 
-# sys-infiniband/ofed
+# sys-fabric/ofed
 sys-cluster/openmpi openmpi_fabrics_ofed
 
-# sys-infiniband/infinipath-psm
+# sys-fabric/infinipath-psm
 sys-cluster/openmpi openmpi_fabrics_psm
 
-# sys-infiniband/librdmacm
+# sys-fabric/librdmacm
 sys-cluster/openmpi openmpi_ofed_features_rdmacm
 
 # sys-cluster/open-mx
