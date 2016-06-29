@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -21,8 +21,8 @@ CDEPEND="dev-perl/Config-General
 	dev-libs/libxslt
 	rbd? ( sys-cluster/ceph )
 	infiniband? (
-		sys-infiniband/libibverbs:=
-		sys-infiniband/librdmacm:=
+		sys-fabric/libibverbs:=
+		sys-fabric/librdmacm:=
 	)"
 DEPEND="${CDEPEND}
 	app-text/docbook-xsl-stylesheets"
