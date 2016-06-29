@@ -14910,7 +14910,7 @@ net-misc/switzerland 0.1.0: Network Testing Tool
 net-misc/taptap 1.0: A program to link two /dev/net/tun to form virtual ethernet
 net-misc/taylor-uucp 1.07-r2 1.07-r3: Taylor UUCP
 net-misc/tcpsound 0.3.1-r1: Play sounds in response to network traffic
-net-misc/teamviewer 9.0.32150 10.0.41499-r1 11.0.57095: All-In-One Solution for Remote Access and Support over the Internet
+net-misc/teamviewer 9.0.32150 10.0.41499-r1 11.0.57095-r1: All-In-One Solution for Remote Access and Support over the Internet
 net-misc/telnet-bsd 1.2-r1: Telnet and telnetd ported from OpenBSD with IPv6 support
 net-misc/termpkg 3.3.9.1-r2: Termpkg, the Poor Man's Terminal Server
 net-misc/termtter 2.2.3: Termtter is a terminal based Twitter client
@@ -14953,6 +14953,7 @@ net-misc/whatmask 1.2-r1: little C program to compute different subnet mask nota
 net-misc/whatportis 0.2 0.3 0.4 0.5 0.6: A command to search port names and numbers
 net-misc/whois 5.0.25 5.0.26 5.1.5 5.2.11 5.2.12: improved Whois Client
 net-misc/wicd 1.7.3-r2 1.7.4-r1: A lightweight wired and wireless network manager for Linux
+net-misc/wireguard 9999: Simple yet fast and modern VPN that utilizes state-of-the-art cryptography.
 net-misc/wol 0.7.1-r1: Wake up hardware that is Magic Packet compliant
 net-misc/wput 0.6.1: A tiny, wget-alike program, that is designed to upload files/whole directories to remote ftp-servers
 net-misc/x11-ssh-askpass 1.2.4.1-r1: X11-based passphrase dialog for use with OpenSSH
