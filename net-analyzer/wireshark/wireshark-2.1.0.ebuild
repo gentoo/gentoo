@@ -213,7 +213,6 @@ src_install() {
 	# install headers
 	local wsheader
 	for wsheader in \
-		color.h \
 		config.h \
 		epan/*.h \
 		epan/crypt/*.h \
