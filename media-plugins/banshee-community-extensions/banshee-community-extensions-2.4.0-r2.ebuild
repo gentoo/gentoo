@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -13,10 +13,10 @@ SRC_URI="http://download.banshee-project.org/${PN}/${PV}/${P}.tar.bz2"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE="doc lastfmfingerprint lirc lyrics mirage telepathy zeitgeist"
+IUSE="doc lastfmfingerprint lirc mirage telepathy zeitgeist"
 
 DEPEND=">=dev-lang/mono-2.0
-	>=media-sound/banshee-2.4.0[web]
+	>=media-sound/banshee-2.4.0
 	>=gnome-base/gconf-2.0
 	dev-dotnet/gconf-sharp:2
 	doc? ( >=app-text/gnome-doc-utils-0.17.3 )
@@ -42,7 +42,6 @@ DEPEND=">=dev-lang/mono-2.0
 		dev-dotnet/zeitgeist-sharp
 	)"
 RDEPEND="${DEPEND}
-	!media-plugins/banshee-lyrics
 	!media-plugins/banshee-mirage"
 
 DOCS=( AUTHORS NEWS README )
@@ -54,6 +53,7 @@ src_configure() {
 	# Disable OpenVP as some of its dependencies are not in the tree
 	# Disable SoundMenu as it requires indicate-sharp
 	# Disable zeitgeistdataprovider as it requires zeitgeist-sharp
+	# Disable Lyrics, Karaoke & Jamendo as they require banshee[web]
 	local myconf="--enable-gnome
 		--disable-static
 		--enable-release
@@ -62,15 +62,15 @@ src_configure() {
 		--with-vendor-build-id=Gentoo/${PN}/${PVR}
 		--disable-scrollkeeper
 		--disable-clutterflow --disable-appindicator --disable-openvp
-		--enable-ampache --enable-karaoke --enable-jamendo
+		--enable-ampache --disable-karaoke --disable-jamendo
 		--enable-randombylastfm --enable-albumartwriter
-		--enable-duplicatesongdetector --enable-foldersync"
+		--enable-duplicatesongdetector --enable-foldersync
+		--disable-lyrics"
 
 	econf \
 		$(use_enable doc user-help) \
 		$(use_enable lastfmfingerprint) \
 		$(use_enable lirc) \
-		$(use_enable lyrics) \
 		$(use_enable mirage) \
 		$(use_enable telepathy) \
 		$(use_enable zeitgeist zeitgeistdataprovider) \
