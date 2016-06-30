@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare unpack
+DEPEND=>=dev-lang/mono-2.0 >=media-sound/banshee-2.4.0 >=gnome-base/gconf-2.0 dev-dotnet/gconf-sharp:2 doc? ( >=app-text/gnome-doc-utils-0.17.3 ) lastfmfingerprint? ( sci-libs/fftw:3.0 media-libs/libsamplerate ) lirc? ( app-misc/lirc ) mirage? ( dev-libs/glib:2 dev-db/sqlite:3 sci-libs/fftw:3.0 media-libs/libsamplerate >=media-libs/gstreamer-0.10.15:0.10 >=media-libs/gst-plugins-base-0.10.15:0.10 ) telepathy? ( dev-dotnet/notify-sharp >=dev-lang/mono-2.4.2 ) zeitgeist? ( dev-libs/libzeitgeist dev-dotnet/zeitgeist-sharp )
+DESCRIPTION=Community-developed plugins for the Banshee media player
+EAPI=4
+HOMEPAGE=http://banshee.fm/download/extensions/
+IUSE=doc lastfmfingerprint lirc mirage telepathy zeitgeist
+KEYWORDS=amd64 x86
+LICENSE=MIT
+RDEPEND=>=dev-lang/mono-2.0 >=media-sound/banshee-2.4.0 >=gnome-base/gconf-2.0 dev-dotnet/gconf-sharp:2 doc? ( >=app-text/gnome-doc-utils-0.17.3 ) lastfmfingerprint? ( sci-libs/fftw:3.0 media-libs/libsamplerate ) lirc? ( app-misc/lirc ) mirage? ( dev-libs/glib:2 dev-db/sqlite:3 sci-libs/fftw:3.0 media-libs/libsamplerate >=media-libs/gstreamer-0.10.15:0.10 >=media-libs/gst-plugins-base-0.10.15:0.10 ) telepathy? ( dev-dotnet/notify-sharp >=dev-lang/mono-2.4.2 ) zeitgeist? ( dev-libs/libzeitgeist dev-dotnet/zeitgeist-sharp ) !media-plugins/banshee-mirage
+SLOT=0
+SRC_URI=http://download.banshee-project.org/banshee-community-extensions/2.4.0/banshee-community-extensions-2.4.0.tar.bz2
+_eclass_exported_funcs=src_unpack:base src_prepare:base src_configure:- src_compile:base src_install:-
+_eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	eutils	792f83d5ec9536cb5ccef375469d8bde	mono	3fb22ec265e021c7294a29e720f3d5f7	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	e886935aae2b45a545665444ab0667cf
+_md5_=7608c5dcc728328a48b39ca179dca232
