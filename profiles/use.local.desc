@@ -7584,7 +7584,6 @@ sys-devel/llvm:udis86 - Enable support for dev-libs/udis86 disassembler library
 sys-devel/sparse:gtk - Build the test-inspect utility (requires x11-libs/gtk+ version 2)
 sys-devel/sparse:llvm - Build the sparse-llvm utility
 sys-devel/sparse:xml - Build the c2xml utility (requires dev-libs/libxml2).
-sys-fabric/ofed:compat-dapl - Add support for DAPL v1.2 abstraction layer
 sys-fabric/ofed:dapl - Add support for DAPL abstraction layer
 sys-fabric/ofed:diags - Add dignostic tools for infiniband
 sys-fabric/ofed:ibacm - Add support for userspace pre-connection services
@@ -7593,7 +7592,6 @@ sys-fabric/ofed:opensm - Add OpenSM - Subnet manager for infiniband
 sys-fabric/ofed:perftest - Add perftest utils
 sys-fabric/ofed:qperf - Add rdma tests
 sys-fabric/ofed:rds - Tools to manage rds sockets
-sys-fabric/ofed:sdp - Add SDP tools
 sys-fabric/ofed:srp - Suport for userspace part for srp initiator
 sys-fabric/opensm:tools - Install ssld extra tool
 sys-firmware/amdgpu-ucode:legacy - Install firmware for older chipsets which are optionally supported by AMDGPU
