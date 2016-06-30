@@ -1,0 +1,11 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -23,7 +23,7 @@
+ AC_CONFIG_HEADER(src/config.h)
+ 
+ PACKAGE=winefish
+-VERSION=1.3.2
++VERSION=1.3.3
+ AC_SUBST(PACKAGE)
+ AC_SUBST(VERSION)
+ AC_DEFINE_UNQUOTED(PACKAGE, "$PACKAGE")
