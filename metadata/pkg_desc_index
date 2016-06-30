@@ -3150,7 +3150,7 @@ dev-games/guichan 0.8.2: a portable C++ GUI library designed for games using All
 dev-games/hawknl 1.68-r2: A cross-platform network library designed for games
 dev-games/hdl_dump 0.8.6.20060901: game installer for playstation 2 HD Loader
 dev-games/higan-ananke 094: A higan helper library needed for extra rom load options
-dev-games/hlsdk 2.3: Half-Life Software Development Kit for mod authors
+dev-games/hlsdk 2.3 2.3-r1: Half-Life Software Development Kit for mod authors
 dev-games/irrlicht 1.8.1-r1: open source high performance realtime 3D engine written in C++
 dev-games/libmaitretarot 0.1.98: backend library for the maitretarot games
 dev-games/libmt_client 0.1.98: backend library for the maitretarot clients
