@@ -1,8 +1,8 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="2"
+EAPI=6
 
 JAVA_PKG_IUSE="source doc"
 
@@ -16,20 +16,20 @@ SRC_URI="mirror://sourceforge/${PN}/${MY_P}.zip"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
-COMMON_DEPEND=""
-RDEPEND=">=virtual/jre-1.5
-	${COMMON_DEPEND}"
-DEPEND=">=virtual/jdk-1.5
-	app-arch/unzip
-	${COMMON_DEPEND}"
+RDEPEND=">=virtual/jre-1.5"
+DEPEND=">=virtual/jdk-1.5"
 
 S="${WORKDIR}/${PN}"
 
+src_prepare() {
+	default
+}
+
 src_install() {
-	java-pkg_newjar lib/${PN}.jar ${PN}.jar
+	java-pkg_newjar lib/${P}.jar ${PN}.jar
 	use source && java-pkg_dosrc src
 	use doc && java-pkg_dojavadoc doc/api
 }
