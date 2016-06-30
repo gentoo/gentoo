@@ -38,6 +38,11 @@ pkg_setup() {
 	kernel_is -lt 4 1 0 && die "This version of ${PN} requires Linux >= 4.1"
 }
 
+src_prepare() {
+	default
+	sed -i 's/install -s/install/' src/tools/Makefile
+}
+
 src_compile() {
 	linux-mod_src_compile
 	emake -C src/tools
