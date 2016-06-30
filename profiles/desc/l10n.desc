@@ -75,6 +75,7 @@ gu - Gujarati
 gug - Paraguayan Guarani
 he - Hebrew
 hi - Hindi
+hne - Chhattisgarhi
 hr - Croatian
 hsb - Upper Sorbian
 hu - Hungarian
@@ -131,6 +132,7 @@ sa - Sanskrit
 sat - Santali
 sco - Scots
 sd - Sindhi
+se - Northern Sami
 si - Sinhala
 sid - Sidamo
 sk - Slovak
@@ -138,7 +140,9 @@ sl - Slovenian
 son - Songhai languages
 sq - Albanian
 sr - Serbian
+sr-ijekavsk - Serbian (Ijekavian pronunciation)
 sr-Latn - Serbian (Latin script)
+sr-Latn-ijekavsk - Serbian (Latin script, Ijekavian pronunciation)
 ss - Swati
 st - Southern Sotho
 sv - Swedish
@@ -160,11 +164,13 @@ ug - Uyghur
 uk - Ukrainian
 ur-PK - Urdu (Pakistan)
 uz - Uzbek
+uz-Cyrl - Uzbek (Cyrillic script)
 ve - Venda
 vi - Vietnamese
 wa - Walloon
 xh - Xhosa
 zh - Chinese
 zh-CN - Chinese (China)
+zh-HK - Chinese (Hong Kong)
 zh-TW - Chinese (Taiwan)
 zu - Zulu
