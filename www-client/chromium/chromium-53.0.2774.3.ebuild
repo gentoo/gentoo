@@ -84,6 +84,7 @@ RDEPEND="
 		sys-libs/zlib:=[minizip]
 	)"
 DEPEND="${RDEPEND}
+	>=app-arch/gzip-1.7
 	!arm? (
 		dev-lang/yasm
 	)
