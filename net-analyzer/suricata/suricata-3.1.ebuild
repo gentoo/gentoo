@@ -55,7 +55,6 @@ src_configure() {
 		$(use_enable af-packet) \
 		$(use_enable detection) \
 		$(use_enable nfqueue) \
-		$(use_enable redis hiredis) \
 		$(use_enable test coccinelle) \
 		$(use_enable test unittests) \
 		$(use_enable control-socket unix-socket)
@@ -75,6 +74,9 @@ src_configure() {
 	fi
 	if use nflog ; then
 		myeconfargs+=( $(use_enable nflog) )
+	fi
+	if use redis ; then
+		myeconfargs+=( $(use_enable redis hiredis) )
 	fi
 	# not supported yet (no pfring in portage)
 # 	if use pfring ; then
