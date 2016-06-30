@@ -16808,7 +16808,7 @@ sys-block/fio 2.2.9 2.2.10 2.2.13 2.5 2.6 2.8: Jens Axboe's Flexible IO tester
 sys-block/flashbench 20120606: Tool for benchmarking and classifying flash memory drives
 sys-block/fwdl 1.2.3: Seagate Fibre-Channel disk firmware upgrade tool
 sys-block/gpart 0.1h-r2: Partition table rescue/guessing tool
-sys-block/gparted 0.25.0 0.26.0: Gnome Partition Editor
+sys-block/gparted 0.25.0 0.26.0 0.26.0-r1: Gnome Partition Editor
 sys-block/hdrecover 0.4: Attempts to recover a hard disk that has bad blocks on it
 sys-block/hpacucli 9.30.15.0: HP Array Configuration Utility Command Line Interface (HPACUCLI, formerly CPQACUXE)
 sys-block/iscsitarget 0.4.17 1.4.19 1.4.20.2 1.4.20.2_p20130103 1.4.20.2_p20130821 9999: Open Source iSCSI target with professional features
@@ -17805,7 +17805,7 @@ www-client/fetch 1.0-r1 1.0-r2: HTTP download tool built atop the HTTP fetcher l
 www-client/firefox 38.7.0 38.8.0 45.2.0 47.0: Firefox Web Browser
 www-client/firefox-bin 38.8.0 45.2.0 47.0: Firefox Web Browser
 www-client/google-chrome 51.0.2704.106: The web browser from Google
-www-client/google-chrome-beta 52.0.2743.49: The web browser from Google
+www-client/google-chrome-beta 52.0.2743.60: The web browser from Google
 www-client/google-chrome-unstable 53.0.2783.2: The web browser from Google
 www-client/httrack 3.48.21-r1 3.48.21-r2: HTTrack Website Copier, Open Source Offline Browser
 www-client/jd 2.8.5_p120826: gtk2 based 2ch browser written in C++
@@ -17862,7 +17862,7 @@ www-misc/wsmake 0.6.4: Website Pre-processor
 www-misc/xxv 1.6.1-r1: WWW Admin for the VDR (Video Disk Recorder)
 www-misc/zoneminder 1.27.0 1.28.0 1.28.1: ZoneMinder allows you to capture, analyse, record and monitor any cameras attached to your system
 www-plugins/adobe-flash 11.2.202.626: Adobe Flash Player
-www-plugins/chrome-binary-plugins 51.0.2704.106 52.0.2743.49_beta 53.0.2783.2_alpha: Binary plugins from Google Chrome for use in Chromium
+www-plugins/chrome-binary-plugins 51.0.2704.106 52.0.2743.60_beta 53.0.2783.2_alpha: Binary plugins from Google Chrome for use in Chromium
 www-plugins/freshplayerplugin 0.3.1-r2 0.3.2 0.3.3 0.3.3-r1 0.3.3-r2 0.3.4 0.3.4-r1: PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers
 www-plugins/gecko-mediaplayer 1.0.8 1.0.9: A browser plugin that uses GNOME MPlayer
 www-plugins/gnash 0.8.10_p20131019 0.8.10_p20150316 0.8.10_p20160329: GNU Flash movie player that supports many SWF v7,8,9 features
