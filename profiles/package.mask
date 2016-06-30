@@ -30,6 +30,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Aaron Bauman <bman@gentoo.org> (30 Jun 2016)
+# Unpatched security vulnerability per bug #509920.
+# Removal in 30 days
+www-apps/egroupware
+
 # Anthony G. Basile <blueness@gentoo.org> (29 Jun 2016)
 # Masked for bug #585726
 net-dns/namecoind
