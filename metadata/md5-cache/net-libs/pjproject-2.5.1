@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install
+DEPEND=alsa? ( media-libs/alsa-lib ) oss? ( media-libs/portaudio[oss] ) portaudio? ( media-libs/portaudio ) amr? ( media-libs/opencore-amr ) gsm? ( media-sound/gsm ) ilbc? ( dev-libs/ilbc-rfc3951 ) opus? ( media-libs/opus ) speex? ( media-libs/speex ) ffmpeg? ( virtual/ffmpeg:= ) sdl? ( media-libs/libsdl ) openh264? ( media-libs/openh264 ) resample? ( media-libs/libsamplerate ) ssl? ( dev-libs/openssl:= ) net-libs/libsrtp virtual/pkgconfig
+DESCRIPTION=Open source SIP, Media, and NAT Traversal Library
+EAPI=6
+HOMEPAGE=http://www.pjsip.org/
+IUSE=amr debug doc epoll examples ipv6 opus resample silk ssl static-libs webrtc g711 g722 g7221 gsm ilbc speex l16 sdl ffmpeg v4l2 openh264 libyuv alsa oss portaudio
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=alsa? ( media-libs/alsa-lib ) oss? ( media-libs/portaudio[oss] ) portaudio? ( media-libs/portaudio ) amr? ( media-libs/opencore-amr ) gsm? ( media-sound/gsm ) ilbc? ( dev-libs/ilbc-rfc3951 ) opus? ( media-libs/opus ) speex? ( media-libs/speex ) ffmpeg? ( virtual/ffmpeg:= ) sdl? ( media-libs/libsdl ) openh264? ( media-libs/openh264 ) resample? ( media-libs/libsamplerate ) ssl? ( dev-libs/openssl:= ) net-libs/libsrtp
+REQUIRED_USE=?? ( alsa oss portaudio )
+SLOT=0
+SRC_URI=http://www.pjsip.org/release/2.5.1/pjproject-2.5.1.tar.bz2
+_eclass_exported_funcs=src_configure:- src_compile:- src_install:-
+_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	flag-o-matic	d270fa247153df66074f795fa42dba3e	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	e886935aae2b45a545665444ab0667cf
+_md5_=7825896df3d8fa362396315e5eeace53
