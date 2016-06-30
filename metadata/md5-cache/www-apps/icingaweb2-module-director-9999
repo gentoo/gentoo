@@ -1,0 +1,11 @@
+DEFINED_PHASES=install unpack
+DEPEND=>=net-analyzer/icinga2-2.4.3 >=www-apps/icingaweb2-2.2.0 || ( dev-lang/php:5.6[curl] dev-lang/php:7.0[curl] ) >=dev-vcs/git-1.8.2.1
+DESCRIPTION=Icinga Web 2 plugin for configuration
+EAPI=6
+HOMEPAGE=https://dev.icinga.org/projects/icingaweb2-module-director/
+LICENSE=GPL-2
+RDEPEND=>=net-analyzer/icinga2-2.4.3 >=www-apps/icingaweb2-2.2.0 || ( dev-lang/php:5.6[curl] dev-lang/php:7.0[curl] )
+SLOT=0
+_eclass_exported_funcs=src_unpack:git-r3 src_install:-
+_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	git-r3	00f60a84fc7b499c99edfe99caea9f95	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	e886935aae2b45a545665444ab0667cf
+_md5_=228f5d0d9d2846be3dd31c1c27533b9a
