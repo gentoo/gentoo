@@ -1,0 +1,38 @@
+#!/sbin/openrc-run
+# Copyright 1999-2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+description="Virtual Machine Management daemon (libvirt)"
+
+LIBVIRTD_OPTS=${LIBVIRTD_OPTS:-"${LIBVIRTD_OPTS}"}
+LIBVIRTD_TIMEOUT=${LIBVIRTD_TERMTIMEOUT:-"TERM/25/KILL/5"}
+
+command="/usr/sbin/libvirtd"
+command_args="-d ${LIBVIRTD_OPTS}"
+start_stop_daemon_args="--env KRB5_KTNAME=/etc/libvirt/krb5.tab"
+pidfile="/var/run/libvirtd.pid"
+retry="${LIBVIRTD_TERMTIMEOUT}"
+
+depend() {
+	USE_FLAG_FIREWALLD
+	use USE_FLAG_AVAHI USE_FLAG_ISCSI USE_FLAG_RBD dbus virtlockd
+	after ntp-client ntpd nfs nfsmount portmap rpc.statd iptables ip6tables ebtables corosync sanlock cgconfig xenconsoled
+}
+
+start_pre() {
+	# Test configuration directories in /etc/libvirt/ to be either not
+	# present or a directory, i.e. not a regular file, bug #532892
+	local has_errors=0
+	ebegin "Checking for suitable directories in \"/etc/libvirt\""
+
+	for dir in lxc nwfilter qemu storage; do
+		if [ -f /etc/libvirt/$dir ]; then
+			has_errors=1
+			eerror "/etc/libvirt/$dir was created as a regular file. It must be either"
+			eerror "a directory or not present for libvirtd to start up successfully."
+		fi
+	done
+
+	eend ${has_errors} "Please correct the error(s) above"
+}
