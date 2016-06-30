@@ -2290,7 +2290,7 @@ app-text/gtkspell 2.0.16 3.0.4 3.0.7: Spell checking widget for GTK
 app-text/gtranslator 2.91.6 2.91.7: An enhanced gettext po file editor for GNOME
 app-text/gv 3.7.3-r1 3.7.3.90: Viewer for PostScript and PDF documents using Ghostscript
 app-text/hd2u 1.0.3: Dos2Unix like text file converter
-app-text/highlight 3.17 3.25 3.27 3.28: converts source code to formatted text ((X)HTML, RTF, (La)TeX, XSL-FO, XML) with syntax highlight
+app-text/highlight 3.17 3.25 3.27 3.28 3.29: converts source code to formatted text ((X)HTML, RTF, (La)TeX, XSL-FO, XML) with syntax highlight
 app-text/hnb 1.9.18-r1: A program to organize many kinds of data in one place
 app-text/htag 0.0.24-r1: random signature maker
 app-text/html-xml-utils 6.9 6.9-r1 7.0: A number of simple utilities for manipulating HTML and XML files
@@ -8422,7 +8422,7 @@ dev-qt/qtwidgets 5.5.1-r1 5.6.0 5.6.1: Set of components for creating classic de
 dev-qt/qtx11extras 5.5.1 5.6.0 5.6.1: Linux/X11-specific support library for the Qt5 framework
 dev-qt/qtxml 5.5.1 5.6.0 5.6.1: SAX and DOM implementation library for the Qt5 framework
 dev-qt/qtxmlpatterns 4.8.6-r1 4.8.7 5.5.1-r1 5.6.0 5.6.1: XPath, XQuery, and XSLT support library for the Qt5 framework
-dev-ros/actionlib 1.11.4 1.11.5 9999: Provides a standardized interface for interfacing with preemptable tasks
+dev-ros/actionlib 1.11.5 1.11.6 9999: Provides a standardized interface for interfacing with preemptable tasks
 dev-ros/actionlib_msgs 1.12.3 1.12.4 9999: Common messages to interact with an action server and an action client
 dev-ros/actionlib_tutorials 0.1.8 9999: Actionlib tutorials
 dev-ros/amcl 1.14.0 9999: Probabilistic localization system for a robot moving in 2D
@@ -8442,7 +8442,7 @@ dev-ros/camera_calibration 1.12.14 1.12.15 1.12.16 9999: Calibration of monocula
 dev-ros/camera_calibration_parsers 1.11.7 1.11.8 1.11.9 1.11.10 9999: Routines for reading and writing camera calibration parameters
 dev-ros/camera_info_manager 1.11.7 1.11.8 1.11.9 1.11.10 9999: C++ interface for camera calibration information
 dev-ros/carrot_planner 1.13.0 1.13.1 1.14.0 9999: Attempts to find a legal place to put a carrot for the robot to follow
-dev-ros/class_loader 0.3.2 0.3.3 9999: ROS-independent package for loading plugins
+dev-ros/class_loader 0.3.3 0.3.4 9999: ROS-independent package for loading plugins
 dev-ros/clear_costmap_recovery 1.13.0 1.13.1 1.14.0 9999: Recovery behavior that attempts to clear space by reverting the costmaps to the static map
 dev-ros/cmake_modules 0.4.0 9999: CMake Modules which are not distributed with CMake but are commonly used by ROS packages
 dev-ros/collada_parser 1.11.8 1.11.9 1.11.10 1.12.0 1.12.2 1.12.3 9999: C++ parser for the Collada robot description format
@@ -8452,7 +8452,7 @@ dev-ros/combined_robot_hw_tests 0.11.0 9999: Combined Robot HW class tests
 dev-ros/compressed_depth_image_transport 1.9.2-r1 1.9.3 9999: Plugin to image_transport for transparently sending depth images using PNG compression
 dev-ros/compressed_image_transport 1.9.2-r1 1.9.3 9999: Plugin to image_transport for transparently sending images encoded as JPEG or PNG
 dev-ros/control_msgs 1.3.1 1.4.0 9999: Base messages and actions useful for controlling robots
-dev-ros/control_toolbox 1.13.2 1.14.0 9999: Modules that are useful across all controllers
+dev-ros/control_toolbox 1.14.0 1.15.0 9999: Modules that are useful across all controllers
 dev-ros/controller_interface 0.9.3 0.10.0 0.10.1 0.11.0 9999: Interface base class for controllers
 dev-ros/controller_manager 0.9.3 0.10.0 0.10.1 0.11.0 9999: The controller manager
 dev-ros/controller_manager_msgs 0.9.3 0.10.0 0.10.1 0.11.0 9999: The controller manager
@@ -8479,7 +8479,7 @@ dev-ros/gazebo_msgs 2.5.1 2.5.2 2.5.3 2.5.6 2.5.7 9999: Message and service data
 dev-ros/gazebo_plugins 2.5.2 2.5.3 2.5.6 2.5.7 9999: Robot-independent Gazebo plugins for sensors, motors and dynamic reconfigurable components
 dev-ros/gazebo_ros 2.5.1 2.5.2 2.5.3 2.5.6 2.5.7 9999: ROS plugins that offer message and service publishers for interfacing with gazebo
 dev-ros/gazebo_ros_control 2.5.1 2.5.2 2.5.3 2.5.6 2.5.7 9999: ROS control plugins for gazebo
-dev-ros/gencpp 0.5.3 0.5.4 9999: ROS C++ message definition and serialization generators
+dev-ros/gencpp 0.5.3 0.5.4 0.5.5 9999: ROS C++ message definition and serialization generators
 dev-ros/geneus 2.2.5 9999: EusLisp ROS message and service generators
 dev-ros/genlisp 0.4.15 9999: Common-Lisp ROS message and service generators
 dev-ros/genmsg 0.5.6 0.5.7 9999: Python library for generating ROS message and service data structures for various languages
@@ -8580,7 +8580,7 @@ dev-ros/qt_gui_cpp 0.3.2 9999: Foundation for C++-bindings for dev-ros/qt_gui an
 dev-ros/qt_gui_py_common 0.2.29 0.2.30 0.3.0 0.3.1 0.3.2 9999: Common functionality for ROS RQT GUI plugins written in Python
 dev-ros/random_numbers 0.3.0 0.3.1 9999: Wrappers for generating floating point values, integers, quaternions using boost libraries
 dev-ros/realtime_tools 1.9.1 1.9.2 9999: Set of tools that can be used from a hard realtime thread, without breaking the realtime behavior
-dev-ros/resource_retriever 1.11.6 1.12.0 9999: Retrieves data from url-format files
+dev-ros/resource_retriever 1.12.0 1.12.2 9999: Retrieves data from url-format files
 dev-ros/rgbd_launch 2.2.0 2.2.1 9999: Launch files to open an RGBD device
 dev-ros/robot_pose_ekf 1.13.0 1.13.1 1.14.0 9999: Estimate the 3D pose of a robot, based on (partial) pose measurements coming from different sources
 dev-ros/robot_pose_publisher 0.2.4 9999: A Simple Node to Publish the Robot's Position Relative to the Map using TFs
@@ -8737,7 +8737,7 @@ dev-ros/visp_tracker 0.8.0 0.9.1 9999: Wraps the ViSP moving edge tracker provid
 dev-ros/visualization_marker_tutorials 0.9.2 0.10.1 9999: Visualization marker tutorials
 dev-ros/visualization_msgs 1.12.3 1.12.4 9999: Messages used by higher level packages that deal in visualization-specific data.
 dev-ros/voxel_grid 1.13.0 1.13.1 1.14.0 9999: Implementation of an efficient 3D voxel grid
-dev-ros/xacro 1.10.6 1.11.0 9999: XML macro language
+dev-ros/xacro 1.11.0 1.11.1 9999: XML macro language
 dev-ros/xmlrpcpp 1.11.14 1.11.15-r1 1.11.16-r1 1.11.17 1.12.0 1.12.1 1.12.2 9999: C++ implementation of the XML-RPC protocol
 dev-ruby/GeoRuby 2.2.1-r2 2.5.2: Ruby data holder for OGC Simple Features
 dev-ruby/RubyInline 3.12.3 3.12.4: Allows to embed C/C++ in Ruby code
@@ -12881,7 +12881,7 @@ media-plugins/kodi-pvr-hts 16_p20160220 16_p20160419 16.9999: Tvheadend Live TV 
 media-plugins/ladspa-bs2b 0.9.1: LADSPA plugin for bs2b headphone filter
 media-plugins/libvisual-plugins 0.4.0-r3: collection of visualization plugins for use with the libvisual framework
 media-plugins/libvisual-projectm 2.1.0: A libvisual graphical music visualization plugin similar to milkdrop
-media-plugins/live 2013.02.11 2016.02.09 2016.02.22 2016.03.16 2016.04.01 2016.05.20: Libraries for standards-based RTP/RTCP/RTSP multimedia streaming
+media-plugins/live 2013.02.11 2016.05.20 2016.06.26: Libraries for standards-based RTP/RTCP/RTSP multimedia streaming
 media-plugins/mcp-plugins 0.4.0 0.4.0-r1: MCP ladspa plugins package. Includes moogvcf, phaser & chorus
 media-plugins/mda-lv2 1.0.0 1.2.2: LV2 port of the MDA plugins by Paul Kellett
 media-plugins/mediastreamer-amr 0.0.1: mediastreamer plugin: add AMR Narrow Band support
@@ -13273,7 +13273,7 @@ media-sound/mpd 0.19.10 0.19.11 0.19.12 0.19.14 0.19.15: The Music Player Daemon
 media-sound/mpdas 0.4.0-r1 0.4.1: An AudioScrobbler client for MPD written in C++
 media-sound/mpdscribble 0.22: An MPD client that submits information to Audioscrobbler
 media-sound/mpfc 1.3.7-r1 1.3.8.1 1.3.8.1-r1 1.3.8.1-r2: Music Player For Console
-media-sound/mpg123 1.18.1 1.22.4 1.23.3 1.23.4: a realtime MPEG 1.0/2.0/2.5 audio player for layers 1, 2 and 3
+media-sound/mpg123 1.18.1 1.22.4 1.23.3 1.23.4 1.23.6: a realtime MPEG 1.0/2.0/2.5 audio player for layers 1, 2 and 3
 media-sound/mpg321 0.3.1-r1 0.3.2: A realtime MPEG 1.0/2.0/2.5 audio player for layers 1, 2 and 3
 media-sound/mplay 0.80: A Curses front-end for mplayer
 media-sound/mserv 0.35-r1: Jukebox-style music server
