@@ -4740,7 +4740,7 @@ dev-libs/libmowgli 1.0.0 2.0.0 2.0.0-r1 9999: Useful set of performance and usab
 dev-libs/libmowgli-glib 0.1: GLib bridge for libmowgli-2 eventing
 dev-libs/libnatspec 0.2.6 0.2.6-r1: library to smooth charset/localization issues
 dev-libs/libnfc 1.4.2 1.5.0 1.5.1 1.5.1-r1 1.7.0-r1 1.7.1: Near Field Communications (NFC) library
-dev-libs/libnl 1.1.4 3.2.27 3.2.9999: A collection of libraries providing APIs to netlink protocol based Linux kernel interfaces
+dev-libs/libnl 1.1.4 3.2.27 3.2.28_rc1 3.2.9999: A collection of libraries providing APIs to netlink protocol based Linux kernel interfaces
 dev-libs/libnsfb 0.1.4: framebuffer abstraction library, written in C
 dev-libs/libnsutils 0.0.2: base64 and time library, written in C
 dev-libs/libntru 0.4.1: C Implementation of NTRUEncrypt
@@ -13945,7 +13945,7 @@ net-analyzer/vnstat 1.13 1.15: Console-based network traffic monitor that keeps 
 net-analyzer/w3af 1.1-r1 1.5: Web Application Attack and Audit Framework
 net-analyzer/wapiti 2.3.0 9999: Web-application vulnerability scanner
 net-analyzer/webfuzzer 0.2.0-r1: Poor man's web vulnerability scanner
-net-analyzer/wireshark 2.0.2 2.0.3 2.0.4 99999999: A network protocol analyzer formerly known as ethereal
+net-analyzer/wireshark 2.0.2 2.0.3 2.0.4 2.1.0 99999999: A network protocol analyzer formerly known as ethereal
 net-analyzer/xnetload 1.11.3-r1: displays a count and a graph of the traffic over a specified network connection
 net-analyzer/xprobe 0.3: Active OS fingerprinting tool - this is Xprobe2
 net-analyzer/yersinia 0.7.3: A layer 2 attack framework
@@ -15026,7 +15026,7 @@ net-nntp/suck 4.3.2: Grab news from a remote NNTP server and feed them to anothe
 net-nntp/tin 2.0.1-r1 2.2.1 2.3.1: A threaded NNTP and spool based UseNet newsreader
 net-nntp/ubh 2.5: The Usenet Binary Harvester
 net-nntp/xrn 9.02: A small and fast news reader for X
-net-p2p/airdcpp-webclient 1.0.3 1.0.4: Cross-platform Direct Connect client
+net-p2p/airdcpp-webclient 1.0.4 1.0.6: Cross-platform Direct Connect client
 net-p2p/amule 2.3.1 2.3.1-r2: aMule, the all-platform eMule p2p client
 net-p2p/bitcoin-cli 0.10.2 0.11.0 0.11.1 0.11.2 0.12.0 9999: Command-line client specifically designed for talking to Bitcoin Core Daemon
 net-p2p/bitcoin-qt 0.10.2 0.10.2-r1 0.11.0 0.11.1 0.11.2 0.12.0 9999: An end-user Qt GUI for the Bitcoin crypto-currency
@@ -17697,7 +17697,7 @@ www-apache/pwauth 2.3.10: A Unix Web Authenticator
 www-apps/389-dsgw 1.1.10: 389 Directory Server Gateway Web Application
 www-apps/Apache-Gallery 1.0_rc3-r1: Apache gallery for mod_perl
 www-apps/agendav 1.2.6.2: multilanguage CalDAV web client
-www-apps/airdcpp-webui 1.0.4 1.0.5 1.0.6: Web interface for airdcpp-webclient
+www-apps/airdcpp-webui 1.0.5 1.0.6 1.0.7: Web interface for airdcpp-webclient
 www-apps/ampache 3.8.1 3.8.2: PHP-based tool for managing,updating and playing audio files via a web interface
 www-apps/b2evolution 4.1.7: Multilingual multiuser multi-blog engine
 www-apps/baikal 0.2.4 0.2.7 0.3.5 0.4.4: Lightweight CalDAV+CardDAV server
