@@ -11436,7 +11436,6 @@ kde-apps/signon-kwallet-extension 15.12.3 16.04.2: KWallet extension for signond
 kde-apps/solid-runtime 4.14.3 15.12.3 16.04.2: KDE SC solid runtime modules (autoeject, automounter and others)
 kde-apps/spectacle 15.12.3 16.04.2: Screenshot capture utility
 kde-apps/step 4.14.3 15.12.3 16.04.2: Interactive physics simulator
-kde-apps/superkaramba 4.14.3 15.08.3: A tool to create interactive applets for the KDE desktop
 kde-apps/svgpart 4.14.3 15.12.3 16.04.2: Svgpart is a kpart for viewing SVGs
 kde-apps/sweeper 4.14.3 15.12.3 16.04.2: KDE Privacy Settings Widget
 kde-apps/thumbnailers 4.14.3 15.08.3 15.12.3 16.04.2: Thumbnail generators for PDF/PS and RAW files
