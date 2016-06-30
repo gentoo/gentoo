@@ -22,5 +22,6 @@
   that provides headers and command line tools.</slot>
  <slot name="0.9.8">For binary compatibility, provides libcrypto.so.0.9.8
   and libssl.so.0.9.8 only.</slot>
+ <subslots>Reflect ABI of libcrypto.so and libssl.so.</subslots>
 </slots>
 </pkgmetadata>
