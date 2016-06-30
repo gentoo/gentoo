@@ -128,9 +128,9 @@ src_configure() {
 }
 
 src_compile() {
-	emake \
-		OTHERLDFLAGS="${LDFLAGS}" \
-		sedscript all
+	for target in snmplib agent sedscript all; do
+		emake OTHERLDFLAGS="${LDFLAGS}" ${target}
+	done
 
 	use doc && emake docsdox
 }
