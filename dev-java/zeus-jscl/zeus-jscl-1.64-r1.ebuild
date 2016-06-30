@@ -24,6 +24,10 @@ DEPEND=">=virtual/jdk-1.5"
 
 S="${WORKDIR}/${PN}"
 
+src_prepare() {
+	default
+}
+
 src_install() {
 	java-pkg_newjar lib/${P}.jar ${PN}.jar
 	use source && java-pkg_dosrc src
