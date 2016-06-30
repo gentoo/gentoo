@@ -13,7 +13,7 @@ SRC_URI="https://developers.yubico.com/${PN}/Releases/${P}.tar.xz"
 LICENSE="BSD-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="static-libs test"
+IUSE="static-libs"
 
 RDEPEND="
 	dev-libs/openssl:0=[${MULTILIB_USEDEP}]
@@ -22,7 +22,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
-	test? ( dev-libs/check[${MULTILIB_USEDEP}] )
+	dev-libs/check[${MULTILIB_USEDEP}]
 "
 
 src_prepare() {
