@@ -207,7 +207,7 @@ RDEPEND="
 	<=dev-python/alembic-0.8.3[${PYTHON_USEDEP}]
 	>=dev-python/os-brick-0.4.0[${PYTHON_USEDEP}]
 	<=dev-python/os-brick-0.6.0[${PYTHON_USEDEP}]
-	<=dev-python/libvirt-python-1.3.0[${PYTHON_USEDEP}]
+	>=dev-python/libvirt-python-1.3.4[${PYTHON_USEDEP}]
 	app-emulation/libvirt[iscsi?]
 	novncproxy? ( www-apps/novnc )
 	sys-apps/iproute2

@@ -15,11 +15,16 @@ SRC_URI="https://github.com/shadowsocks/${PN}/archive/${MY_PV}.tar.gz -> ${P}.ta
 LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="debug +openssl polarssl"
+IUSE="debug +openssl polarssl +system-libs"
 
 DEPEND="openssl? ( dev-libs/openssl:= )
 	polarssl? ( net-libs/polarssl )
 	<sys-kernel/linux-headers-4.5
+	system-libs? ( 
+		dev-libs/libev
+		dev-libs/libsodium
+		net-libs/udns
+	)
 	"
 RDEPEND="${DEPEND}"
 
@@ -28,6 +33,7 @@ REQUIRED_USE=" ^^ ( openssl polarssl )"
 src_configure() {
 	econf \
 		$(use_enable debug assert) \
+		$(use_enable system-libs system-shared-lib) \
 		--with-crypto-library=$(usex openssl openssl polarssl)
 }
 
