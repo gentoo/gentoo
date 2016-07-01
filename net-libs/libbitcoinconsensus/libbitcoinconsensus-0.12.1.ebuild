@@ -1,12 +1,12 @@
-# Copyright 2010-2015 Gentoo Foundation
+# Copyright 2010-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 
-BITCOINCORE_COMMITHASH="188ca9c305d3dd0fb462b9d6a44048b1d99a05f3"
-BITCOINCORE_LJR_DATE="20160226"
-BITCOINCORE_LJR_PREV="rc1"
+BITCOINCORE_COMMITHASH="9779e1e1f320a45255f2e81325f2feceec3fa944"
+BITCOINCORE_LJR_DATE="20160629"
+BITCOINCORE_LJR_PREV="rc2"
 BITCOINCORE_IUSE="test"
 BITCOINCORE_NO_DEPEND="libevent"
 inherit bitcoincore eutils
@@ -15,12 +15,6 @@ DESCRIPTION="Bitcoin Core consensus library"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~x86 ~amd64-linux ~x86-linux"
-
-src_prepare() {
-	bitcoincore_prepare
-	epatch "${FILESDIR}/${PV}-no_univalue.patch"
-	bitcoincore_autoreconf
-}
 
 src_configure() {
 	bitcoincore_conf \
