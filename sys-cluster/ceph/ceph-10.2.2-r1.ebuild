@@ -33,10 +33,10 @@ IUSE+=" libatomic lttng +nss +radosgw static-libs tcmalloc test xfs zfs"
 #>=dev-libs/gf-complete-2.0.0
 COMMON_DEPEND="
 	app-arch/snappy
+	app-arch/lz4:=
+	app-arch/bzip2
 	dev-libs/boost:=[threads]
 	dev-libs/libaio
-	dev-libs/libedit
-	dev-python/sphinx[$(python_gen_usedep 'python2*')]
 	dev-libs/leveldb[snappy]
 	nss? ( dev-libs/nss )
 	libatomic? ( dev-libs/libatomic_ops )
@@ -70,6 +70,7 @@ DEPEND="${COMMON_DEPEND}
 	app-arch/cpio
 	sys-apps/lsb-release
 	virtual/pkgconfig
+	dev-python/sphinx
 	test? (
 		sys-fs/btrfs-progs
 		sys-apps/grep[pcre]
@@ -77,12 +78,10 @@ DEPEND="${COMMON_DEPEND}
 		dev-python/virtualenv[${PYTHON_USEDEP}]
 	)"
 RDEPEND="${COMMON_DEPEND}
-	sys-apps/which
 	sys-apps/hdparm
 	sys-block/parted
 	sys-fs/cryptsetup
 	sys-apps/gptfdisk
-	sys-apps/findutils
 	dev-python/flask[${PYTHON_USEDEP}]
 	dev-python/requests[${PYTHON_USEDEP}]
 	"
@@ -111,8 +110,9 @@ UNBUNDLE_LIBS=(
 PATCHES=(
 	"${FILESDIR}/ceph-10.2.0-dont-use-virtualenvs.patch"
 	#"${FILESDIR}/ceph-10.2.1-unbundle-jerasure.patch"
-	"${FILESDIR}/${P}-libzfs.patch"
-	"${FILESDIR}/${P}-armv7l-doesnt-support-momit-leaf-frame-pointer.patch"
+	"${FILESDIR}/${PN}-10.2.1-libzfs.patch"
+	"${FILESDIR}/${PN}-10.2.1-armv7l-doesnt-support-momit-leaf-frame-pointer.patch"
+	"${FILESDIR}/${PN}-CVE-2016-5009.patch"
 )
 
 check-reqs_export_vars() {
