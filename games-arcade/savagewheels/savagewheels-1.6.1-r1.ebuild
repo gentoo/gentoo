@@ -62,11 +62,9 @@ src_configure() {
 	fi
 
 	mycmakeargs+=(
-		-DCMAKE_INSTALL_DATADIR=/usr/share/games/${PN}
-		-DCMAKE_INSTALL_DATAROOTDIR=/usr/share
-		-DCMAKE_INSTALL_DOCDIR=/usr/share/doc/${P}
+		-DCMAKE_INSTALL_DATADIR=/usr/share/${PN}
 		-DCMAKE_INSTALL_LIBEXECDIR=/usr/libexec/${PN}
-		-DCMAKE_INSTALL_PREFIX=/usr/games
+		-DCMAKE_INSTALL_PREFIX=/usr
 	)
 	cmake-utils_src_configure
 }
@@ -74,8 +72,6 @@ src_configure() {
 src_install() {
 	cmake-utils_src_install
 
-	insinto "/usr/share/games/${PN}"
-	for d in "${WORKDIR}/${GAMEDATA}/*"; do
-		doins -r ${d}
-	done
+	insinto "/usr/share/${PN}"
+	doins -r "${WORKDIR}/${GAMEDATA}/."
 }
