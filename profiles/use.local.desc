@@ -2198,7 +2198,6 @@ dev-ml/lablgtk:sourceview - Enable GtkSourceView support
 dev-ml/lwt:ppx - Enables the ppx syntax extension
 dev-ml/lwt:react - Enables support for dev-ml/react: Functional reactive programming (signals, events, etc.).
 dev-ml/ocaml-cstruct:async - Support for asynchronous execution
-dev-ml/ocaml-cstruct:camlp4 - Enable support for camlp4
 dev-ml/ocaml-cstruct:lwt - Enable threads via lwt
 dev-ml/ocaml-cstruct:ppx - Enable the ppx syntax extension
 dev-ml/ocaml-dns:async - support for asynchronous execution
