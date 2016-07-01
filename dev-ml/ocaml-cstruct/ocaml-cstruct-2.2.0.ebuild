@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -15,11 +15,10 @@ SRC_URI="https://github.com/mirage/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="ISC"
 SLOT="0/${PV}"
 KEYWORDS="~amd64"
-IUSE="async +camlp4 +lwt +ppx"
+IUSE="async +lwt +ppx"
 
 RDEPEND="
 	async? ( dev-ml/async:= )
-	camlp4? ( dev-ml/camlp4:= )
 	lwt? ( dev-ml/lwt:= )
 	ppx? ( dev-ml/ppx_tools:= )
 	>=dev-lang/ocaml-4.01:=
@@ -35,7 +34,6 @@ DEPEND="
 src_configure() {
 	oasis_configure_opts="
 		$(use_enable lwt)
-		$(use_enable camlp4)
 		$(use_enable async)
 		$(use_enable ppx)
 		--enable-unix
