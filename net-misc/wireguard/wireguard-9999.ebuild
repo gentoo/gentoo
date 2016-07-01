@@ -14,8 +14,8 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://git.zx2c4.com/WireGuard"
 	KEYWORDS=""
 else
-	SRC_URI="https://git.zx2c4.com/WireGuard/snapshot/experimental/${PV}.tar.xz -> ${P}.tar.xz"
-	S="${WORKDIR}/experimental/${PV}"
+	SRC_URI="https://git.zx2c4.com/WireGuard/snapshot/WireGuard-experimental-${PV}.tar.xz"
+	S="${WORKDIR}/WireGuard-experimental-${PV}"
 	KEYWORDS="~amd64 ~x86 ~mips ~arm ~arm64"
 fi
 
