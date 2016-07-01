@@ -612,7 +612,7 @@ tc-is-clang() {
 # compilers rather than maintaining a --version flag matrix. #335943
 _gcc_fullversion() {
 	local ver="$1"; shift
-	set -- `$(tc-getCPP "$@") -E -P - <<<"__GNUC__ __GNUC_MINOR__ __GNUC_PATCHLEVEL__"`
+	set -- $($(tc-getCPP "$@") -E -P - <<<"__GNUC__ __GNUC_MINOR__ __GNUC_PATCHLEVEL__")
 	eval echo "$ver"
 }
 
@@ -640,6 +640,39 @@ gcc-minor-version() {
 # @RETURN: micro compiler version (micro: 3.4.[6])
 gcc-micro-version() {
 	_gcc_fullversion '$3' "$@"
+}
+
+# Internal func. Based on _gcc_fullversion() above.
+_clang_fullversion() {
+	local ver="$1"; shift
+	set -- $($(tc-getCPP "$@") -E -P - <<<"__clang_major__ __clang_minor__ __clang_patchlevel__")
+	eval echo "$ver"
+}
+
+# @FUNCTION: clang-fullversion
+# @RETURN: compiler version (major.minor.micro: [3.4.6])
+clang-fullversion() {
+	_clang_fullversion '$1.$2.$3' "$@"
+}
+# @FUNCTION: clang-version
+# @RETURN: compiler version (major.minor: [3.4].6)
+clang-version() {
+	_clang_fullversion '$1.$2' "$@"
+}
+# @FUNCTION: clang-major-version
+# @RETURN: major compiler version (major: [3].4.6)
+clang-major-version() {
+	_clang_fullversion '$1' "$@"
+}
+# @FUNCTION: clang-minor-version
+# @RETURN: minor compiler version (minor: 3.[4].6)
+clang-minor-version() {
+	_clang_fullversion '$2' "$@"
+}
+# @FUNCTION: clang-micro-version
+# @RETURN: micro compiler version (micro: 3.4.[6])
+clang-micro-version() {
+	_clang_fullversion '$3' "$@"
 }
 
 # Returns the installation directory - internal toolchain
