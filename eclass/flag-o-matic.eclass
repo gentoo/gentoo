@@ -30,7 +30,7 @@ setup-allowed-flags() {
 		-fno-PIE -fno-pie -nopie -fno-unit-at-a-time
 		-g '-g[0-9]' -ggdb '-ggdb[0-9]' '-gdwarf-*' gstabs -gstabs+
 		-fno-ident -fpermissive -frecord-gcc-switches
-		'-fdiagnostics*'
+		'-fdiagnostics*' '-fplugin*'
 		'-W*' -w
 
 		# CPPFLAGS and LDFLAGS
