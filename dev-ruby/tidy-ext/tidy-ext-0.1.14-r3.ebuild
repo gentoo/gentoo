@@ -16,7 +16,7 @@ HOMEPAGE="https://github.com/carld/tidy"
 
 LICENSE="HTML-Tidy"
 SLOT="0"
-KEYWORDS="alpha ~amd64 arm hppa ~ia64 ~ppc ppc64 ~sparc ~x86"
+KEYWORDS="alpha amd64 arm hppa ~ia64 ~ppc ppc64 ~sparc ~x86"
 IUSE=""
 
 RUBY_PATCHES=( 11CVE-2015-5522.patch )
