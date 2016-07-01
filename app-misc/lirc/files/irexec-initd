@@ -1,0 +1,28 @@
+#!/sbin/runscript
+# Copyright 2003 Martin Hierling <mad@cc.fh-lippe.de>
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+: ${IREXEC_USER:=root}
+
+depend() {
+	need lircd
+}
+
+start() {
+	if [ "x${IREXEC_USER}" = "xroot" -a "x${IREXEC_DISABLE_ROOT_WARNING}" != "xyes" ]; then
+		ewarn "Warning: Running irexec as root can open security holes"
+	fi
+
+	ebegin "Starting irexec"
+	start-stop-daemon --start --chuid ${IREXEC_USER} --user ${IREXEC_USER} --chdir / \
+		--exec /usr/bin/irexec -- --daemon ${IREXEC_OPTS}
+	eend $? "Failed to start irexec."
+}
+
+stop() {
+	ebegin "Stopping irexec"
+	start-stop-daemon --stop --exec /usr/bin/irexec --user ${IREXEC_USER}
+	eend $? "Failed to stop irexec."
+}
+
