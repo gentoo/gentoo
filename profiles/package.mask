@@ -30,6 +30,22 @@
 
 #--- END OF EXAMPLES ---
 
+# Hans de Graaff <graaff@gentoo.org> (1 Jul 2016)
+# With the release of Rails 5.0 versions older than 4.2 are no longer
+# supported. Mask Rails 3.2 and related packages for removal in 30 days.
+dev-ruby/rails:3.2
+dev-ruby/railties:3.2
+dev-ruby/activerecord:3.2
+dev-ruby/actionmailer:3.2
+dev-ruby/actionpack:3.2
+dev-ruby/activeresource:3.2
+dev-ruby/activemodel:3.2
+dev-ruby/activesupport:3.2
+dev-ruby/coffee-rails:3.2
+dev-ruby/sass-rails:3.2
+dev-ruby/activeldap:3
+=www-apps/redmine-2.6.10
+
 # Aaron Bauman <bman@gentoo.org> (30 Jun 2016)
 # Unpatched security vulnerability per bug #509920.
 # Removal in 30 days
@@ -367,10 +383,6 @@ dev-libs/libtomcrypt
 # Unpatched security vulnerability per bug #512356.
 # Masked for removal in 30 days.
 =app-forensics/chkrootkit-0.49
-
-# Hans de Graaff <graaff@gentoo.org> (14 Mar 2016)
-# Not compatible with ruby21+, no reverse dependencies.
-dev-ruby/extlib
 
 # Ian Stakenvicius <axs@gentoo.org> (06 Mar 2016)
 # Mask old versions of thunderbird as they are no longer supported,
