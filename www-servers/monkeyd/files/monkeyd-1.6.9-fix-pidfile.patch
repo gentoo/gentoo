@@ -1,0 +1,12 @@
+diff -Naur monkey-1.6.9.orig/CMakeLists.txt monkey-1.6.9/CMakeLists.txt
+--- monkey-1.6.9.orig/CMakeLists.txt	2016-06-04 19:16:47.000000000 -0400
++++ monkey-1.6.9/CMakeLists.txt	2016-07-01 13:08:51.237213196 -0400
+@@ -285,7 +285,7 @@
+ 
+   # Custom PIDPATH
+   if(NOT PID_PATH)
+-    set(MK_PATH_PIDPATH ${CMAKE_INSTALL_FULL_LOCALSTATEDIR}/run/ CACHE STRING "Server PID path")
++    set(MK_PATH_PIDPATH /run/ CACHE STRING "Server PID path")
+   else()
+     set(MK_PATH_PIDPATH ${PID_PATH} CACHE STRING "Server PID path")
+   endif()
