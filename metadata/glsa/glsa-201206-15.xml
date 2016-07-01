@@ -24,6 +24,7 @@
       <unaffected range="rge">1.2.53</unaffected>
       <unaffected range="rge">1.2.54</unaffected>
       <unaffected range="rge">1.2.55</unaffected>
+      <unaffected range="rge">1.2.56</unaffected>
       <vulnerable range="lt">1.5.10</vulnerable>
     </package>
   </affected>
