@@ -30,12 +30,6 @@
 
 #--- END OF EXAMPLES ---
 
-
-# Aaron Bauman <bman@gentoo.org> (1 Jul 2016)
-# Unpatched security vulnerabilities and dead upstream
-# per bugs #459274 and #473770  Removal in 30 days
-www-servers/monkeyd
-
 # Aaron Bauman <bman@gentoo.org> (30 Jun 2016)
 # Unpatched security vulnerability per bug #509920.
 # Removal in 30 days
