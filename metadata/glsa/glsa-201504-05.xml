@@ -19,6 +19,7 @@
     </package>
     <package name="dev-db/mariadb" auto="yes" arch="*">
       <unaffected range="ge">10.0.16</unaffected>
+      <unaffected range="rge">5.5.49</unaffected>
       <vulnerable range="lt">10.0.16</vulnerable>
     </package>
   </affected>
