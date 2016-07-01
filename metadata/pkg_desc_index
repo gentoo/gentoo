@@ -8770,7 +8770,7 @@ dev-ruby/annoy 0.5.6-r1: Like your annoying friend that asks you questions all t
 dev-ruby/ansi 1.5.0: The Ruby ANSI project is collection of ANSI escape codes for Ruby
 dev-ruby/archive-tar-minitar 0.5.4-r2: Provides POSIX tarchive management from Ruby programs
 dev-ruby/arel 3.0.3 4.0.2 5.0.1.20140414130214 6.0.2 6.0.3 7.0.0: Arel is a Relational Algebra for Ruby
-dev-ruby/arel-helpers 2.1.1 2.2.0 2.3.0: Tools to help construct database queries
+dev-ruby/arel-helpers 2.3.0: Tools to help construct database queries
 dev-ruby/ascii85 1.0.2-r2: Methods for encoding/decoding Adobe's binary-to-text encoding of the same name
 dev-ruby/asciidoctor 1.5.4: Processor for converting AsciiDoc into HTML 5, DocBook 4.5 and other formats
 dev-ruby/asciidoctor-diagram 1.4.0: A set of Asciidoctor extensions that enable you to add diagrams
@@ -8886,7 +8886,6 @@ dev-ruby/eventmachine 1.0.9.1 1.2.0.1: EventMachine is a fast, simple event-proc
 dev-ruby/execjs 1.4.0 2.6.0 2.7.0: ExecJS lets you run JavaScript code from Ruby
 dev-ruby/exifr 1.2.4: A library to read EXIF info from JPEG and TIFF images
 dev-ruby/expression_parser 0.9.0_p20130518: A math parser
-dev-ruby/extlib 0.9.16-r1: Support library for DataMapper and Merb
 dev-ruby/facets 2.9.3: Facets is the premier collection of extension methods for Ruby
 dev-ruby/facter 2.4.1 2.4.1-r1 2.4.6 3.1.4-r1 3.1.6-r2 3.1.8: A cross-platform ruby library for retrieving facts from operating systems
 dev-ruby/factory_girl 4.5.0 4.7.0: factory_girl provides a framework and DSL for defining and using factories
@@ -8907,7 +8906,7 @@ dev-ruby/file-tail 1.1.0 1.1.1: A small ruby library that allows it to 'tail' fi
 dev-ruby/filesize 0.1.1: small ruby class for handling filesizes with both the SI and binary prefixes
 dev-ruby/fivemat 1.3.2: MiniTest/RSpec/Cucumber formatter that gives each test file its own line of dots
 dev-ruby/flexmock 1.3.3-r1 2.0.5 2.1.0: Simple mock object library for Ruby unit testing
-dev-ruby/flickraw 0.9.8: A library to access flickr api in a simple way
+dev-ruby/flickraw 0.9.8 0.9.9: A library to access flickr api in a simple way
 dev-ruby/flog 4.3.2 4.4.0: Flog reports the most tortured code in an easy to read pain report
 dev-ruby/forgery 0.6.0: Easy and customizable generation of forged data
 dev-ruby/fuubar 2.0.0: Instafailing RSpec progress bar formatter
@@ -8995,7 +8994,7 @@ dev-ruby/map 6.5.5 6.6.0: A string/symbol indifferent ordered hash that works in
 dev-ruby/maruku 0.7.2 0.7.2-r1: A Markdown-superset interpreter written in Ruby
 dev-ruby/mash 0.1.1-r2: Mash is an extended Hash that gives simple pseudo-object functionality
 dev-ruby/matchy 0.5.2-r1: RSpec-esque matchers for use in Test::Unit
-dev-ruby/maxitest 1.5.6 1.5.7 2.0.1: Minitest + all the features you always wanted
+dev-ruby/maxitest 1.5.6 1.5.7 2.0.1 2.0.2: Minitest + all the features you always wanted
 dev-ruby/mecab-ruby 0.996-r1: Ruby binding for MeCab
 dev-ruby/mechanize 2.7.3-r1 2.7.4: A Ruby library used for automating interaction with websites
 dev-ruby/memcache-client 1.8.5-r2: A ruby library for accessing memcached
@@ -14967,7 +14966,7 @@ net-misc/xrdp 0.8.0-r1: An open source Remote Desktop Protocol server
 net-misc/yajhfc 0.5.2 0.5.7: Yet another Java HylaFAX Plus Client
 net-misc/yandex-disk 0.1.5.758_p1 0.1.5.870_p1 0.1.5.940_p1: CLI to access Yandex Disk file storage service
 net-misc/you-get 0.4.365: A tiny command-line utility to download media contents from the Web.
-net-misc/youtube-dl 2016.01.01 2016.06.25 2016.06.27 99999999: Download videos from YouTube.com (and more sites...)
+net-misc/youtube-dl 2016.01.01 2016.06.27 2016.07.01 99999999: Download videos from YouTube.com (and more sites...)
 net-misc/youtube-viewer 3.1.9 3.2.0 9999: A command line utility for viewing youtube-videos in Mplayer
 net-misc/ytalk 3.3.0: Multi-user replacement for UNIX talk
 net-misc/zssh 1.5c-r1: An ssh wrapper enabling zmodem up/download in ssh
