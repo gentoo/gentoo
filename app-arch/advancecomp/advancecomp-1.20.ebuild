@@ -4,6 +4,8 @@
 
 EAPI=5
 
+die TEST
+
 inherit eutils
 
 DESCRIPTION="Recompress ZIP, PNG and MNG, considerably improving compression"
