@@ -198,7 +198,14 @@ fi
 if [ "${BITCOINCORE_NEED_LIBSECP256K1}" = "1" ]; then
 	BITCOINCORE_COMMON_DEPEND="${BITCOINCORE_COMMON_DEPEND} $LIBSECP256K1_DEPEND"
 fi
-if [ "${PN}" != "libbitcoinconsensus" ]; then
+if [ "${PN}" = "libbitcoinconsensus" ]; then
+	BITCOINCORE_COMMON_DEPEND="${BITCOINCORE_COMMON_DEPEND}
+		test? (
+			${UNIVALUE_DEPEND}
+			>=dev-libs/boost-1.52.0[threads(+)]
+		)
+	"
+else
 	BITCOINCORE_COMMON_DEPEND="${BITCOINCORE_COMMON_DEPEND}
 		${UNIVALUE_DEPEND}
 		>=dev-libs/boost-1.52.0[threads(+)]
