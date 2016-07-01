@@ -42,6 +42,7 @@ dev-ruby/activeresource:3.2
 dev-ruby/activemodel:3.2
 dev-ruby/activesupport:3.2
 dev-ruby/coffee-rails:3.2
+dev-ruby/mongoid
 dev-ruby/sass-rails:3.2
 dev-ruby/activeldap:3
 =www-apps/redmine-2.6.10
