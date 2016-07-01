@@ -1,16 +1,16 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 inherit eutils toolchain-funcs fdo-mime
 
 DESCRIPTION="A Mozilla-based web browser whose design is inspired by GNU Emacs"
 HOMEPAGE="http://conkeror.org/"
-# snapshot from http://repo.or.cz/w/conkeror.git
+# snapshot from git://repo.or.cz/conkeror.git
 # conkeror.png is derived from http://commons.wikimedia.org/wiki/File:Conker.jpg
-SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.tar.gz
+SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.tar.xz
 	https://dev.gentoo.org/~ulm/distfiles/${PN}.png"
 
 # CC-BY-SA-3.0 for conkeror.png
@@ -23,7 +23,7 @@ RDEPEND="|| ( >=www-client/firefox-5.0 >=www-client/firefox-bin-23.0 )"
 S="${WORKDIR}/${PN}"
 
 src_unpack() {
-	unpack ${P}.tar.gz
+	unpack ${P}.tar.xz
 	cp "${DISTDIR}/${PN}.png" . || die
 }
 
@@ -47,7 +47,7 @@ src_install() {
 	doicon "${WORKDIR}/conkeror.png"
 
 	doman contrib/man/conkeror.1
-	dodoc CREDITS
+	dodoc CREDITS README
 }
 
 pkg_postinst() {
