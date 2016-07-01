@@ -3034,6 +3034,7 @@ dev-dotnet/notify-sharp 0.4.0_pre20090305 0.4.0_pre20090305-r1: a C# client impl
 dev-dotnet/nuget 2.8.3 2.8.7: Nuget - .NET Package Manager
 dev-dotnet/pango-sharp 2.12.10: GtkSharp's pango module of the gtk-sharp tarball
 dev-dotnet/pe-format 2.1.2 2.1.2-r1 9999: Intelligent PE executable wrapper for binfmt_misc
+dev-dotnet/referenceassemblies-pcl 4.6: .NET Portable Class Library reference assemblies
 dev-dotnet/rsvg-sharp 2.24.0-r10: GtkSharp's rsvg module of the gnome-desktop-sharp tarball
 dev-dotnet/smartirc4net 0.4.5.1: Multi-threaded and thread-safe IRC library written in C#
 dev-dotnet/taglib-sharp 2.0.4.0 2.1.0.0: Taglib# 2.0 - Managed tag reader/writer
@@ -5093,7 +5094,7 @@ dev-ml/lwt 2.4.3 2.5.2-r1: Cooperative light-weight thread library for OCaml
 dev-ml/macaque 0.7.4: DSL for SQL Queries in Caml
 dev-ml/markup 0.7.2: Error-recovering streaming HTML5 and XML parsers
 dev-ml/menhir 20151112 20160303 20160504 20160526: LR(1) parser generator for the OCaml language
-dev-ml/mirage-profile 0.5 0.6 0.6.1 0.7.0-r1: Collect profiling information
+dev-ml/mirage-profile 0.7.0-r1: Collect profiling information
 dev-ml/mongo 0.67.2: An ocaml driver for mongodb
 dev-ml/oasis 0.4.5-r1 0.4.6: OASIS is a tool to integrate a configure, build and install system in OCaml project
 dev-ml/ocaml-augeas 0.5: Ocaml bindings for Augeas
@@ -5113,7 +5114,7 @@ dev-ml/ocaml-hashcons 1.0 1.2: OCaml hash-consing library
 dev-ml/ocaml-ipaddr 2.6.1 2.7.0: OCaml library for manipulation of IP (and MAC) address representations
 dev-ml/ocaml-make 6.37.0: Generic O'Caml Makefile for GNU Make
 dev-ml/ocaml-mysql 1.1.1 1.2.0: A package for ocaml that provides access to mysql databases
-dev-ml/ocaml-pcap 0.3.3 0.4.0: Read and write pcap-formatted network packet traces.
+dev-ml/ocaml-pcap 0.4.0: Read and write pcap-formatted network packet traces.
 dev-ml/ocaml-re 1.5.0 1.6.0 1.6.1: Regular expression library for OCaml
 dev-ml/ocaml-redis 0.2.3: Redis bindings for OCaml
 dev-ml/ocaml-safepass 1.2: A library offering facilities for the safe storage of user passwords
@@ -9821,7 +9822,7 @@ dev-util/molecule-core 1.0.2: Sabayon distro-agnostic images build tool
 dev-util/molecule-plugins 1.0.2: A set fo base plugins for Molecule
 dev-util/monkeystudio 1.9.0.4: A cross platform Qt 4 IDE
 dev-util/mono-debugger 2.10: Debugger for .NET managed and unmanaged applications
-dev-util/monodevelop 3.0.2-r1 5.9.5.9 5.9.5.9-r1: Integrated Development Environment for .NET
+dev-util/monodevelop 6.0.0.4761: Integrated Development Environment for .NET
 dev-util/monodevelop-database 3.0.2: Database Browser Extension for MonoDevelop
 dev-util/monodevelop-debugger-gdb 3.0.2: GDB Extension for MonoDevelop
 dev-util/mpatch 0.8-r1: Patch-like tool for applying diffs which can resolve common causes of patch rejects
@@ -15713,7 +15714,7 @@ sci-electronics/puff 20100127: microwave CAD software
 sci-electronics/pulseview 0.2.0-r1 9999: Qt based logic analyzer GUI for sigrok
 sci-electronics/qelectrotech 0.50 9999: Qt5 application to design electric diagrams
 sci-electronics/quartus-prime-lite 15.1.0.185 15.1.0.185-r1: Full-featured EDA product for altera devices
-sci-electronics/qucs 0.0.17.130503: Quite Universal Circuit Simulator in Qt4
+sci-electronics/qucs 0.0.17.130503 0.0.18: Quite Universal Circuit Simulator in Qt4
 sci-electronics/sigrok-cli 0.5.0 9999: Command-line client for the sigrok logic analyzer software
 sci-electronics/spice 3.5.5-r1: general-purpose circuit simulation program
 sci-electronics/splat 1.4.1-r1 1.4.2: RF Signal Propagation, Loss, And Terrain analysis tool for the spectrum between 20 MHz and 20 GHz

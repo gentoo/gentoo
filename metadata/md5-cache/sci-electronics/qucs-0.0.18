@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure
+DEPEND=dev-qt/qtcore:4[qt3support] dev-qt/qtgui:4[qt3support] dev-qt/qt3support:4 x11-libs/libX11:0=
+DESCRIPTION=Quite Universal Circuit Simulator in Qt4
+EAPI=6
+HOMEPAGE=http://qucs.sourceforge.net/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=dev-qt/qtcore:4[qt3support] dev-qt/qtgui:4[qt3support] dev-qt/qt3support:4 x11-libs/libX11:0=
+SLOT=0
+SRC_URI=mirror://sourceforge/qucs/qucs-0.0.18.tar.gz
+_eclass_exported_funcs=src_configure:-
+_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	flag-o-matic	8632fcd33a047954f007dee9a137bdcc	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	e886935aae2b45a545665444ab0667cf
+_md5_=dba5dc204ba54891a036a867533ce77d
