@@ -7,5 +7,5 @@ LICENSE=BSD
 SLOT=0
 SRC_URI=mirror://sourceforge/odessa/pasco_20040505_1.tar.gz
 _eclass_exported_funcs=src_compile:- src_install:-
-_eclasses_=multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	e886935aae2b45a545665444ab0667cf
+_eclasses_=multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	82165206dedb2075f9a0fb8f9b1f9441
 _md5_=24663e7ce32654008a2df31f3ce29c8a

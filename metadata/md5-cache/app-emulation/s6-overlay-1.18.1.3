@@ -1,0 +1,12 @@
+DEFINED_PHASES=install unpack
+DESCRIPTION=an s6-based init system for containers
+EAPI=6
+HOMEPAGE=https://github.com/just-containers/s6-overlay
+KEYWORDS=~amd64
+LICENSE=ISC
+RDEPEND=sys-apps/s6 sys-apps/s6-portable-utils
+SLOT=0
+SRC_URI=https://github.com/just-containers/s6-overlay/archive/v1.18.1.3.tar.gz -> s6-overlay-1.18.1.3.tar.gz
+_eclass_exported_funcs=src_unpack:vcs-snapshot src_install:-
+_eclasses_=vcs-snapshot	b45be87e7012be0af8424e8a5644da1d
+_md5_=1dc41af8560251e4d61a21ad62eb0454
