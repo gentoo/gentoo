@@ -16,6 +16,12 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~x86 ~amd64-linux ~x86-linux"
 
+src_prepare() {
+	bitcoincore_prepare
+	epatch "${FILESDIR}/${PV}-no_univalue.patch"
+	bitcoincore_autoreconf
+}
+
 src_configure() {
 	bitcoincore_conf \
 		--with-libs
