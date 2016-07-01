@@ -31,12 +31,12 @@ MY_LANGS="ar ast bg bs ca ca@valencia cs da de el en_GB eo es et eu fa fi fr ga
 gl he hi hr hu ia id is it ja kk km ko lt lv mr nb nds nl nn pa pl pt pt_BR ro
 ru sk sl sr sv tr ug uk wa zh_CN zh_TW"
 
-IUSE="$(printf 'linguas_%s ' ${MY_LANGS})"
+IUSE="$(printf 'l10n_%s ' ${MY_LANGS//[_@]/-})"
 
 URI_BASE="${SRC_URI/-${PV}.tar.xz/}"
 SRC_URI=""
 for my_lang in ${MY_LANGS} ; do
-	SRC_URI="${SRC_URI} linguas_${my_lang}? ( ${URI_BASE}/${PN}-${my_lang}-${PV}.tar.xz )"
+	SRC_URI="${SRC_URI} l10n_${my_lang//[_@]/-}? ( ${URI_BASE}/${PN}-${my_lang}-${PV}.tar.xz )"
 done
 
 S="${WORKDIR}"
@@ -44,12 +44,10 @@ S="${WORKDIR}"
 pkg_setup() {
 	if [[ -z ${A} ]]; then
 		elog
-		elog "You either have the LINGUAS variable unset, or it only"
-		elog "contains languages not supported by ${P}."
-		elog "You won't have any additional language support."
+		elog "None of the requested L10N are supported by ${P}."
 		elog
 		elog "${P} supports these language codes:"
-		elog "${MY_LANGS}"
+		elog "${MY_LANGS//[@_]/-}"
 		elog
 	fi
 	[[ -n ${A} ]] && kde5_pkg_setup
@@ -67,7 +65,7 @@ src_prepare() {
 	default
 	[[ -n ${A} ]] || return
 
-	# add all linguas to cmake
+	# add all l10n to cmake
 	cat <<-EOF > CMakeLists.txt || die
 project(kde-l10n)
 cmake_minimum_required(VERSION 2.8.12)

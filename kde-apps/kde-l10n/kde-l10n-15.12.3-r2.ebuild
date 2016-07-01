@@ -34,12 +34,12 @@ MY_LANGS="ar bg bs ca ca@valencia cs da de el en_GB eo es et eu fa fi fr ga gl
 he hi hr hu ia id is it ja kk km ko lt lv mr nb nds nl nn pa pl pt pt_BR ro ru
 sk sl sr sv tr ug uk wa zh_CN zh_TW"
 
-IUSE="$(printf 'linguas_%s ' ${MY_LANGS})"
+IUSE="$(printf 'l10n_%s ' ${MY_LANGS//[_@]/-})"
 
 URI_BASE="${SRC_URI/-${PV}.tar.xz/}"
 SRC_URI="mirror://kde/stable/plasma/${KHC_PV}/${KHC}.tar.xz"
 for my_lang in ${MY_LANGS} ; do
-	SRC_URI="${SRC_URI} linguas_${my_lang}? ( ${URI_BASE}/${PN}-${my_lang}-${PV}.tar.xz )"
+	SRC_URI="${SRC_URI} l10n_${my_lang//[_@]/-}? ( ${URI_BASE}/${PN}-${my_lang}-${PV}.tar.xz )"
 done
 
 S="${WORKDIR}"
@@ -47,12 +47,10 @@ S="${WORKDIR}"
 pkg_setup() {
 	if [[ -z ${A} ]]; then
 		elog
-		elog "You either have the LINGUAS variable unset, or it only"
-		elog "contains languages not supported by ${P}."
-		elog "You won't have any additional language support."
+		elog "None of the requested L10N are supported by ${P}."
 		elog
 		elog "${P} supports these language codes:"
-		elog "${MY_LANGS}"
+		elog "${MY_LANGS//[@_]/-}"
 		elog
 	fi
 	MULTIBUILD_VARIANTS=( l10n khelpcenter-l10n )
@@ -75,9 +73,9 @@ src_unpack() {
 
 src_prepare() {
 	default
-	[[ ${LINGUAS} = "" ]] && return
+	[[ ${L10N} = "" ]] && return
 
-	# add all linguas to cmake
+	# add all l10n to cmake
 	cat <<-EOF > CMakeLists.txt || die
 project(kde-l10n)
 cmake_minimum_required(VERSION 2.8.12)
@@ -100,7 +98,7 @@ EOF
 	if [[ -d ${KHC}/po ]] ; then
 		pushd ${KHC}/po > /dev/null || die
 		for lang in *; do
-			if [[ -d ${lang} ]] && ! has ${lang} ${LINGUAS} ; then
+			if [[ -d ${lang} ]] && ! has "${lang/[@_]/-}" ${L10N} ; then
 				rm -r ${lang} || die
 				if [[ -e CMakeLists.txt ]] ; then
 					cmake_comment_add_subdirectory ${lang}
@@ -148,15 +146,15 @@ src_configure() {
 		fi
 		kde5_src_configure
 	}
-	[[ ${LINGUAS} != "" ]] && multibuild_foreach_variant myconfigure
+	[[ ${L10N} != "" ]] && multibuild_foreach_variant myconfigure
 }
 
 src_compile() {
-	[[ ${LINGUAS} != "" ]] && multibuild_foreach_variant kde5_src_compile
+	[[ ${L10N} != "" ]] && multibuild_foreach_variant kde5_src_compile
 }
 
 src_test() { :; }
 
 src_install() {
-	[[ ${LINGUAS} != "" ]] && multibuild_foreach_variant kde5_src_install
+	[[ ${L10N} != "" ]] && multibuild_foreach_variant kde5_src_install
 }
