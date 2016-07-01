@@ -212,7 +212,7 @@ app-admin/sysrqd 14: daemon providing access to the kernel sysrq functions via n
 app-admin/sysstat 11.0.2 11.2.2 11.2.3 11.2.4 11.2.4-r1 11.3.3 11.3.4 11.3.4-r1: System performance tools for Linux
 app-admin/system-config-printer 1.4.8: GNOME frontend for a Red Hat's printer administration tool
 app-admin/system-tools-backends 2.10.2: Tools aimed to make easy the administration of UNIX systems
-app-admin/systemrescuecd-x86 4.4.1 4.5.0 4.5.1 4.5.2 4.5.3 4.5.4 4.6.0 4.6.1 4.7.0 4.7.1 4.7.2 4.7.3: The .iso image of SystemRescueCD rescue disk, x86 (+ amd64) variant
+app-admin/systemrescuecd-x86 4.4.1 4.5.0 4.5.1 4.5.2 4.5.3 4.5.4 4.6.0 4.6.1 4.7.0 4.7.1 4.7.2 4.7.3 4.8.0: The .iso image of SystemRescueCD rescue disk, x86 (+ amd64) variant
 app-admin/tenshi 0.12 0.14 0.15: Log parsing and notification program
 app-admin/testdisk 7.0-r2 7.0-r3: Checks and undeletes partitions + PhotoRec, signature based recovery tool
 app-admin/tmpreaper 1.6.13: A utility for removing files based on when they were last accessed
@@ -9823,7 +9823,7 @@ dev-util/molecule-core 1.0.2: Sabayon distro-agnostic images build tool
 dev-util/molecule-plugins 1.0.2: A set fo base plugins for Molecule
 dev-util/monkeystudio 1.9.0.4: A cross platform Qt 4 IDE
 dev-util/mono-debugger 2.10: Debugger for .NET managed and unmanaged applications
-dev-util/monodevelop 6.0.0.4761: Integrated Development Environment for .NET
+dev-util/monodevelop 3.0.2-r1 6.0.0.4761: Integrated Development Environment for .NET
 dev-util/monodevelop-database 3.0.2: Database Browser Extension for MonoDevelop
 dev-util/monodevelop-debugger-gdb 3.0.2: GDB Extension for MonoDevelop
 dev-util/mpatch 0.8-r1: Patch-like tool for applying diffs which can resolve common causes of patch rejects
