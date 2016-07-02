@@ -35,8 +35,8 @@ URI_BASE="${SRC_URI/-${PV}.tar.xz/}"
 SRC_URI=""
 
 for MY_LANG in ${MY_LANGS} ; do
-	IUSE="${IUSE} linguas_${MY_LANG}"
-	SRC_URI="${SRC_URI} linguas_${MY_LANG}? ( ${URI_BASE/kdepim/kde}/kde-l10n-${MY_LANG}-${PV}.tar.xz )"
+	IUSE="${IUSE} l10n_${MY_LANG/[@_]/-}"
+	SRC_URI="${SRC_URI} l10n_${MY_LANG/[@_]/-}? ( ${URI_BASE/kdepim/kde}/kde-l10n-${MY_LANG}-${PV}.tar.xz )"
 done
 
 S="${WORKDIR}"
@@ -44,12 +44,10 @@ S="${WORKDIR}"
 src_unpack() {
 	if [[ -z ${A} ]]; then
 		elog
-		elog "You either have the LINGUAS variable unset, or it only"
-		elog "contains languages not supported by ${P}."
-		elog "You won't have any additional language support."
+		elog "None of the requested L10N are supported by ${P}."
 		elog
 		elog "${P} supports these language codes:"
-		elog "${MY_LANGS}"
+		elog "${MY_LANGS//[@_]/-}"
 		elog
 	fi
 
@@ -60,9 +58,9 @@ src_prepare() {
 	default
 
 	local LNG DIR
-	# add all linguas to cmake
+	# add all l10n to cmake
 	if [[ -n ${A} ]]; then
-		for LNG in ${LINGUAS}; do
+		for LNG in ${MY_LANGS}; do
 			DIR="kde-l10n-${LNG}-${PV}"
 			SDIR="${S}/${DIR}/5/${LNG}"
 			if [[ -d "${DIR}" ]] ; then
