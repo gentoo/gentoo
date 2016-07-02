@@ -17,6 +17,11 @@ extra_started_commands="reload summary"
 description_reload="Reloads configuration"
 description_summary="Displays main status monitor summary"
 
+get_backup_dir() {
+	grep '^directory = ' "${BURP_CONFIG}" \
+		| sed -e 's/^directory = //'
+}
+
 depend() {
 	need localmount
 	after bootmisc
@@ -28,7 +33,7 @@ start_pre() {
 	checkpath -o root:burp -m 0640 -f /etc/burp/burp-server.conf
 	checkpath -o root:burp -m 0750 -d /etc/burp/clientconfdir
 	checkpath -o burp:burp -m 0775 -d /run/lock/burp
-	checkpath -o root:burp -m 0750 -d /var/spool/burp
+	checkpath -o root:burp -m 0770 -d "$(get_backup_dir)"
 }
 
 reload() {
