@@ -1,10 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-inherit eutils flag-o-matic linux-info linux-mod multilib readme.gentoo toolchain-funcs
+inherit eutils flag-o-matic linux-info linux-mod multilib readme.gentoo-r1 toolchain-funcs
 
 AUFS_VERSION="${PV%%_p*}"
 # highest branch version
@@ -12,7 +12,7 @@ PATCH_MAX_VER=19
 # highest supported version
 KERN_MAX_VER=20
 # lowest supported version
-KERN_MIN_VER=14
+KERN_MIN_VER=18
 
 DESCRIPTION="An entirely re-designed and re-implemented Unionfs"
 HOMEPAGE="http://aufs.sourceforge.net/"
@@ -20,7 +20,7 @@ SRC_URI="https://dev.gentoo.org/~jlec/distfiles/aufs3-standalone-${PV}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="debug doc fuse hfs inotify kernel-patch nfs pax_kernel ramfs"
 
 DEPEND="
@@ -42,21 +42,24 @@ pkg_setup() {
 	use nfs && CONFIG_CHECK+=" EXPORTFS"
 	use fuse && CONFIG_CHECK+=" ~FUSE_FS"
 	use hfs && CONFIG_CHECK+=" ~HFSPLUS_FS"
-	use pax_kernel && CONFIG_CHECK+=" PAX" && ERROR_PAX="Please use hardened sources"
+	use pax_kernel && CONFIG_CHECK+=" PAX" \
+		&& ERROR_PAX="Please use hardened sources"
 
-	# this is needed so merging a binpkg ${PN} is possible w/out a kernel unpacked on the system
-	[ -n "$PKG_SETUP_HAS_BEEN_RAN" ] && return
+	# this is needed so merging a binpkg ${PN} is
+	# possible w/out a kernel unpacked on the system
+	[[ -n "$PKG_SETUP_HAS_BEEN_RAN" ]] && return
 
 	get_version
-	kernel_is lt 3 ${KERN_MIN_VER} 0 && die "the kernel version isn't supported by upstream anymore. Please upgrade."
+	kernel_is lt 3 ${KERN_MIN_VER} 0 && \
+		die "the kernel version isn't supported by upstream anymore. Please upgrade."
 	kernel_is gt 3 ${KERN_MAX_VER} 99 && die "kernel too new"
 
 	linux-mod_pkg_setup
 
 	if [[ "${KV_MINOR}" -gt "${PATCH_MAX_VER}" ]]; then
 		PATCH_BRANCH="x-rcN"
-	elif [[ "${KV_MINOR}" == "14" ]] && [[ "${KV_PATCH}" -ge "21" ]]; then
-		PATCH_BRANCH="${KV_MINOR}".21+
+	elif [[ "${KV_MINOR}" == "18" ]] && [[ "${KV_PATCH}" -ge "25" ]]; then
+		PATCH_BRANCH="${KV_MINOR}".25+
 	elif [[ "${KV_MINOR}" == "18" ]] && [[ "${KV_PATCH}" -ge "1" ]]; then
 		PATCH_BRANCH="${KV_MINOR}".1+
 	else
@@ -76,19 +79,30 @@ pkg_setup() {
 			;;
 	esac
 
-	pushd "${T}" &> /dev/null
+	pushd "${T}" &> /dev/null || die
 	unpack ${A}
+
 	cd ${PN}-standalone || die
+
 	local module_branch=origin/${PN}.${PATCH_BRANCH}
+
 	einfo "Using ${module_branch} as patch source"
 	git checkout -q -b local-${PN}.${PATCH_BRANCH} ${module_branch} || die
-	combinediff ${PN}-base.patch ${PN}-standalone.patch  > "${T}"/combined-1.patch
-	combinediff "${T}"/combined-1.patch ${PN}-mmap.patch > ${PN}-standalone-base-mmap-combined.patch
+
+	combinediff \
+		${PN}-base.patch ${PN}-standalone.patch > "${T}"/combined-1.patch
+	combinediff \
+		"${T}"/combined-1.patch ${PN}-mmap.patch \
+		> ${PN}-standalone-base-mmap-combined.patch
+
 	if ! ( patch -p1 --dry-run --force -R -d ${KV_DIR} < ${PN}-standalone-base-mmap-combined.patch > /dev/null ); then
 		if use kernel-patch; then
 			cd ${KV_DIR}
 			ewarn "Patching your kernel..."
-			patch --no-backup-if-mismatch --force -p1 -R -d ${KV_DIR} < "${T}"/${PN}-standalone/${PN}-standalone-base-mmap-combined.patch >/dev/null
+			patch \
+				--no-backup-if-mismatch --force -p1 -R -d ${KV_DIR} \
+				< "${T}"/${PN}-standalone/${PN}-standalone-base-mmap-combined.patch \
+				> /dev/null
 			epatch "${T}"/${PN}-standalone/${PN}-standalone-base-mmap-combined.patch
 			ewarn "You need to compile your kernel with the applied patch"
 			ewarn "to be able to load and use the aufs kernel module"
@@ -99,13 +113,15 @@ pkg_setup() {
 			die "missing kernel patch, please apply it first"
 		fi
 	fi
+
 	popd &> /dev/null
 	export PKG_SETUP_HAS_BEEN_RAN=1
 }
 
 set_config() {
 	for option in $*; do
-		grep -q "^CONFIG_AUFS_${option} =" config.mk || die "${option} is not a valid config option"
+		grep -q "^CONFIG_AUFS_${option} =" config.mk || \
+			die "${option} is not a valid config option"
 		sed "/^CONFIG_AUFS_${option}/s:=:= y:g" -i config.mk || die
 	done
 }
@@ -129,15 +145,11 @@ src_prepare() {
 	use nfs && ( use amd64 || use ppc64 ) && set_config INO_T_64
 	use ramfs && set_config BR_RAMFS
 
-	if use pax_kernel; then
-		if kernel_is ge 3 11; then
-			epatch "${FILESDIR}"/pax-3.11.patch
-		else
-			epatch "${FILESDIR}"/pax-3.patch
-		fi
-	fi
+	use pax_kernel && epatch "${FILESDIR}"/pax-3.11.patch
 
-	sed -i "s:aufs.ko usr/include/linux/aufs_type.h:aufs.ko:g" Makefile || die
+	sed \
+		-e "s:aufs.ko usr/include/linux/aufs_type.h:aufs.ko:g" \
+		-i Makefile || die
 }
 
 src_compile() {
@@ -155,18 +167,19 @@ src_compile() {
 src_install() {
 	linux-mod_src_install
 
-	insinto /usr/share/doc/${PF}
+	use doc && dodoc -r Documentation
 
-	use doc && doins -r Documentation
+	use kernel-patch || \
+		doins "${T}"/${PN}-standalone/${PN}-standalone-base-mmap-combined.patch
 
-	use kernel-patch || doins "${T}"/${PN}-standalone/${PN}-standalone-base-mmap-combined.patch
-
-	dodoc Documentation/filesystems/aufs/README "${T}"/${PN}-standalone/{aufs3-loopback,vfs-ino,tmpfs-idr}.patch
+	dodoc \
+		Documentation/filesystems/aufs/README \
+		"${T}"/${PN}-standalone/{aufs3-loopback,vfs-ino,tmpfs-idr}.patch
 
 	readme.gentoo_create_doc
 }
 
 pkg_postinst() {
-	readme.gentoo_pkg_postinst
+	readme.gentoo_print_elog
 	linux-mod_pkg_postinst
 }
