@@ -151,6 +151,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	)
 	firebird? ( >=dev-db/firebird-2.5 )
 	gltf? ( media-libs/libgltf )
+	gnome? ( gnome-base/dconf )
 	gstreamer? (
 		media-libs/gstreamer:1.0
 		media-libs/gst-plugins-base:1.0
@@ -456,6 +457,7 @@ src_configure() {
 		$(use_enable firebird firebird-sdbc) \
 		$(use_enable gltf) \
 		$(use_enable gnome gio) \
+		$(use_enable gnome dconf) \
 		$(use_enable gstreamer gstreamer-1-0) \
 		$(use_enable gtk) \
 		$(use_enable gtk3) \
