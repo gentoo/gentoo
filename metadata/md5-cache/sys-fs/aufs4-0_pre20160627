@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install postinst postrm preinst prepare setup
+DEPEND=dev-util/patchutils dev-vcs/git kernel_linux? ( virtual/modutils ) sys-apps/sed kernel_linux? ( virtual/linux-sources )
+DESCRIPTION=An entirely re-designed and re-implemented Unionfs
+EAPI=6
+HOMEPAGE=http://aufs.sourceforge.net/
+IUSE=debug doc fuse hfs inotify kernel-patch nfs pax_kernel ramfs kernel_linux
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=sys-fs/aufs-util !sys-fs/aufs !sys-fs/aufs2 !sys-fs/aufs3 kernel_linux? ( virtual/modutils )
+SLOT=0
+SRC_URI=https://dev.gentoo.org/~jlec/distfiles/aufs4-standalone-0_pre20160627.tar.xz
+_eclass_exported_funcs=pkg_preinst:linux-mod pkg_postrm:linux-mod pkg_postinst:- pkg_setup:- src_prepare:- src_compile:- src_install:-
+_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	flag-o-matic	8632fcd33a047954f007dee9a137bdcc	linux-info	fd1e29abbb02cbc49f1a14299846e9c4	linux-mod	4755518412586c2fd655ff6e55780bcb	multilib	d062ae4ba2fc40a19c11de2ad89b6616	readme.gentoo-r1	03878c06495db70bc36bd717383c09f7	toolchain-funcs	82165206dedb2075f9a0fb8f9b1f9441	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=db5a1eab7f2d3c3a56d680619fd97754

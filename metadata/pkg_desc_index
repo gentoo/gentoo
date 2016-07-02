@@ -526,7 +526,7 @@ app-crypt/envchain 1.0.0: Save environment variables in a secret vault
 app-crypt/etcd-ca 0_p20140903 0_p20150423 0_p20150423-r1: A simple certificate manager written in Go. Easy to use with limited capability
 app-crypt/fcrackzip 1.0: a zip password cracker
 app-crypt/gcr 3.16.0 3.18.0 3.20.0: Libraries for cryptographic UIs and accessing PKCS#11 modules
-app-crypt/gentoo-keys 201511260245: A Openpgp/gpg keyring of official Gentoo release media gpg keys
+app-crypt/gentoo-keys 201607021514: A Openpgp/gpg keyring of official Gentoo release media gpg keys
 app-crypt/gifshuffle 2.0: GIF colourmap steganography
 app-crypt/gkeys 0.2 9999: An OpenPGP/GPG key management tool and python libs
 app-crypt/gkeys-gen 0.2 9999: Tool for generating OpenPGP/GPG keys using a specifications file
@@ -13952,7 +13952,7 @@ net-analyzer/xnetload 1.11.3-r1: displays a count and a graph of the traffic ove
 net-analyzer/xprobe 0.3: Active OS fingerprinting tool - this is Xprobe2
 net-analyzer/yersinia 0.7.3: A layer 2 attack framework
 net-analyzer/zabbix 2.2.5 2.2.9 2.2.11 2.2.13 2.4.5 2.4.7 2.4.8 3.0.3-r1: ZABBIX is software for monitoring of your applications, network and servers
-net-analyzer/zmap 1.1.1 1.1.2 1.2.0 1.2.1 2.1.1 9999: Fast network scanner designed for Internet-wide network surveys
+net-analyzer/zmap 1.2.1 2.1.1 9999: Fast network scanner designed for Internet-wide network surveys
 net-analyzer/zniper 1.0-r1: Displays and kill active TCP connections seen by the selected interface
 net-dialup/accel-ppp 1.10.2 1.10.9999 9999: High performance PPTP, PPPoE and L2TP server
 net-dialup/capi4k-utils 20050718-r7: CAPI4Linux Utils
@@ -15420,7 +15420,7 @@ sci-biology/blossoc 1.4.0: A linkage disequilibrium association mapping tool
 sci-biology/bowtie 1.1.2 1.1.2-r1 2.2.6 2.2.9: Popular short read aligner for Next-generation sequencing data
 sci-biology/bwa 0.7.12 0.7.13: Burrows-Wheeler Alignment Tool, a fast short genomic sequence aligner
 sci-biology/cd-hit 4.5.1 4.5.4 4.6: Clustering Database at High Identity with Tolerance
-sci-biology/clustal-omega 1.2.1: Scalable multiple alignment of protein sequences
+sci-biology/clustal-omega 1.2.1 1.2.2: Scalable multiple alignment of protein sequences
 sci-biology/clustalw 1.83-r3 2.1: General purpose multiple alignment program for DNA and proteins
 sci-biology/clustalw-mpi 0.13-r1: A parallel (MPI) implemention of the Clustal-W general purpose multiple alignment algorithm
 sci-biology/clustalx 2.1-r1: Graphical interface for the ClustalW multiple alignment program
@@ -17102,8 +17102,8 @@ sys-fs/arm-fdisk 3.0.6-r1: edit disk partitions on Acorn machines
 sys-fs/atari-fdisk 0.7.1.5.4: create and edit the partition table of a disk partitioned in Atari format
 sys-fs/aufs-headers 3.19_p20150323 3.19_p20150420 4.0_p20150420 4.0_p20151116: User space headers for aufs3
 sys-fs/aufs-util 3.19_p20150323 3.19_p20150420 4.0_p20150420 4.0_p20151116: Utilities are always necessary for aufs
-sys-fs/aufs3 3_p20150622 3_p20160219 3_p20160223: An entirely re-designed and re-implemented Unionfs
-sys-fs/aufs4 0_pre20160219 0_pre20160223: An entirely re-designed and re-implemented Unionfs
+sys-fs/aufs3 3_p20160219 3_p20160223 3_p20160627: An entirely re-designed and re-implemented Unionfs
+sys-fs/aufs4 0_pre20160219 0_pre20160223 0_pre20160627: An entirely re-designed and re-implemented Unionfs
 sys-fs/autorun 3.17: auto cdrom mounter for the lazy user
 sys-fs/avfs 1.0.1 1.0.2 1.0.3: AVFS is a virtual filesystem that allows browsing of compressed files
 sys-fs/bashmount 3.2.0: A bash script that uses udisks to handle removable devices without dependencies on any GUI
