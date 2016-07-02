@@ -8,7 +8,7 @@ DICT_PREFIX="jmdict-"
 
 inherit stardict
 
-HOMEPAGE="http://stardict.sourceforge.net/Dictionaries_ja.php"
+HOMEPAGE="http://download.huzheng.org/ja/"
 SRC_URI="mirror://sourceforge/stardict/${P}.tar.bz2"
 
 LICENSE="GDLS"

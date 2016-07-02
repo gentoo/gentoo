@@ -9,7 +9,7 @@ DICT_SUFFIX="gb"
 
 inherit stardict
 
-HOMEPAGE="http://stardict.sourceforge.net/Dictionaries_zh_GB.php"
+HOMEPAGE="http://download.huzheng.org/zh_CN/"
 
 KEYWORDS="~amd64 ~arm ~ppc ~sparc ~x86"
 IUSE=""

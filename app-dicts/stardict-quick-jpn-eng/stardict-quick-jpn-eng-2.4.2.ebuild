@@ -8,7 +8,7 @@ DICT_PREFIX="quick_"
 
 inherit stardict
 
-HOMEPAGE="http://stardict.sourceforge.net/Dictionaries_Quick.php"
+HOMEPAGE="http://download.huzheng.org/Quick/"
 
 KEYWORDS="~amd64 ~ppc ~sparc ~x86"
 IUSE=""

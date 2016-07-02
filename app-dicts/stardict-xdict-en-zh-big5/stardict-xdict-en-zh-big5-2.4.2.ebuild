@@ -9,7 +9,7 @@ DICT_SUFFIX="big5"
 
 inherit stardict
 
-HOMEPAGE="http://stardict.sourceforge.net/Dictionaries_zh_TW.php"
+HOMEPAGE="http://download.huzheng.org/zh_TW/"
 
 KEYWORDS="~amd64 ~ppc ~sparc ~x86"
 IUSE=""
