@@ -21,7 +21,9 @@ DEPEND="
 	$(add_kdeapps_dep libkleo '' 4.4.2015)
 	$(add_kdeapps_dep libkpgp '' 4.4.2015)
 "
-RDEPEND="${DEPEND}"
+RDEPEND="${DEPEND}
+	!>=kde-apps/kdepimlibs-4.14.11_pre20160211
+"
 
 KMEXTRACTONLY="
 	korganizer/org.kde.Korganizer.Calendar.xml

@@ -286,20 +286,6 @@ dev-util/weblint
 # Masked for removal in 30 days.
 dev-util/osdt
 
-# Michael Palimaka <kensington@gentoo.org> (1 Jun 2016)
-# Ancient. Unused. Dead upstream. Masked for removal in 30 days.
-# Bug 584374.
-sys-libs/libfreevec
-
-# Michael Palimaka <kensington@gentoo.org> (1 Jun 2016)
-# Obsolete package. Masked for removal in 30 days. Bug 584454.
-app-admin/sulfur
-
-# Michael Palimaka <kensington@gentoo.org> (1 Jun 2016)
-# Depends on vulnerable slot of net-libs/webkit-gtk. Dead upstream.
-# Masked for removal in 30 days. Bug 584164.
-net-print/foomatic-gui
-
 # Michael Palimaka <kensington@gentoo.org> (26 May 2016)
 # Depends on vulnerable slot of net-libs/webkit-gtk.
 # Dead upstream. Unmaintained. Masked for removal in 30 days.
