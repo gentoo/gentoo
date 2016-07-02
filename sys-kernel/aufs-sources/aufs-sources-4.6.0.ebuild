@@ -6,15 +6,13 @@ EAPI=5
 
 ETYPE="sources"
 K_WANT_GENPATCHES="base extras experimental"
-K_GENPATCHES_VER=27
+K_GENPATCHES_VER=1
 K_DEBLOB_AVAILABLE="0"
 K_KDBUS_AVAILABLE="0"
 UNIPATCH_STRICTORDER=1
 inherit kernel-2 eutils readme.gentoo-r1
-detect_version
-detect_arch
 
-AUFS_VERSION=4.1.13+_p20160328
+AUFS_VERSION=4.6_p20160627
 AUFS_TARBALL="aufs-sources-${AUFS_VERSION}.tar.xz"
 # git archive -v --remote=git://git.code.sf.net/p/aufs/aufs4-standalone aufs${AUFS_VERSION/_p*} > aufs-sources-${AUFS_VERSION}.tar
 AUFS_URI="https://dev.gentoo.org/~jlec/distfiles/${AUFS_TARBALL}"
@@ -23,7 +21,7 @@ KEYWORDS="~amd64 ~x86"
 HOMEPAGE="https://dev.gentoo.org/~mpagano/genpatches http://aufs.sourceforge.net/"
 IUSE="deblob experimental module vanilla"
 
-DESCRIPTION="Full sources including the Gentoo patchset for the ${KV_MAJOR}.${KV_MINOR} kernel tree and aufs4 support"
+DESCRIPTION="Full sources including the Gentoo patchset for the linux kernel tree and aufs4 support"
 SRC_URI="
 	${KERNEL_URI}
 	${ARCH_URI}
@@ -36,6 +34,8 @@ PDEPEND="=sys-fs/aufs-util-4*"
 README_GENTOO_SUFFIX="-r1"
 
 src_unpack() {
+	detect_version
+	detect_arch
 	if use vanilla; then
 		unset UNIPATCH_LIST_GENPATCHES UNIPATCH_LIST_DEFAULT
 		ewarn "You are using USE=vanilla"
