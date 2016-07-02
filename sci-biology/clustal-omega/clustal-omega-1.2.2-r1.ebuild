@@ -4,7 +4,7 @@
 
 EAPI=6
 
-inherit autotools
+inherit autotools eutils
 
 DESCRIPTION="Scalable multiple alignment of protein sequences"
 HOMEPAGE="http://www.clustal.org/omega/"
@@ -28,7 +28,5 @@ src_prepare() {
 
 src_install() {
 	default
-	if ! use static-libs; then
-		rm -f "${ED}"/usr/$(get_libdir)/*.a || die
-	fi
+	prune_libtool_files --all
 }
