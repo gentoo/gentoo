@@ -8,7 +8,7 @@ TO_LANG="English"
 inherit stardict
 
 HOMEPAGE="https://sourceforge.net/projects/ovdp/"
-SRC_URI="http://james.dyndns.ws/pub/Dictionary/StarDict-James/VietAnh23K.zip"
+SRC_URI="mirror://gentoo/VietAnh23K.zip"
 
 KEYWORDS="~amd64 ~x86"
 IUSE=""
