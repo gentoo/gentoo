@@ -1,10 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
-GCONF_DEBUG=no
-
+EAPI=6
 inherit gnome2
 
 DESCRIPTION="Documentation package for GnuCash"
@@ -13,12 +11,12 @@ SRC_URI="mirror://sourceforge/gnucash/${P}.tar.gz"
 
 SLOT="0"
 LICENSE="GPL-2 FDL-1.1"
-KEYWORDS="amd64 ~ppc ~ppc64 x86"
+KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 IUSE="test"
 
 RDEPEND="!<=app-office/gnucash-2.2.1"
 DEPEND="${RDEPEND}
-	>=dev-libs/libxml2-2.5.10
+	>=dev-libs/libxml2-2.5.10:2
 	dev-libs/libxslt
 	app-text/docbook-xsl-stylesheets
 	app-text/docbook-xml-dtd:4.1.2

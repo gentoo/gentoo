@@ -35,7 +35,7 @@ RDEPEND="
 	>=dev-libs/libpeas-1.5.0[gtk]
 	>=dev-libs/libxml2-2.9.0:2
 	>=gnome-base/gsettings-desktop-schemas-0.1.1
-	>=x11-libs/gtk+-3.19.0:3
+	>=x11-libs/gtk+-3.20.0:3
 	>=x11-libs/gtksourceview-3.10:3.0
 	x11-themes/adwaita-icon-theme
 	glade? ( >=dev-util/glade-3.2:3.10 )

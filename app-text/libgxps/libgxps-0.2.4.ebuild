@@ -1,10 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
+EAPI=6
 GNOME2_LA_PUNT="yes"
-GCONF_DEBUG="yes"
 
 inherit gnome2
 
@@ -13,8 +12,8 @@ HOMEPAGE="https://wiki.gnome.org/Projects/libgxps"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ia64 ppc ppc64 sparc x86"
-IUSE="+introspection jpeg lcms static-libs tiff"
+KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+IUSE="debug +introspection jpeg lcms static-libs tiff"
 
 RDEPEND="
 	>=app-arch/libarchive-2.8
@@ -22,10 +21,10 @@ RDEPEND="
 	media-libs/freetype:2
 	media-libs/libpng:0
 	>=x11-libs/cairo-1.10[svg]
-	introspection? ( >=dev-libs/gobject-introspection-0.10.1 )
-	jpeg? ( virtual/jpeg )
+	introspection? ( >=dev-libs/gobject-introspection-0.10.1:= )
+	jpeg? ( virtual/jpeg:0 )
 	lcms? ( media-libs/lcms:2 )
-	tiff? ( media-libs/tiff[zlib] )
+	tiff? ( media-libs/tiff:0[zlib] )
 "
 DEPEND="${RDEPEND}
 	app-text/docbook-xsl-stylesheets
@@ -41,6 +40,7 @@ src_configure() {
 	gnome2_src_configure \
 		--enable-man \
 		--disable-test \
+		$(use_enable debug) \
 		$(use_enable introspection) \
 		$(use_with jpeg libjpeg) \
 		$(use_with lcms liblcms2) \

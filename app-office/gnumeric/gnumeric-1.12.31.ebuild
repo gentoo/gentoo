@@ -1,9 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
-GCONF_DEBUG="no"
+EAPI="6"
 GNOME2_LA_PUNT="yes"
 PYTHON_COMPAT=( python2_7 )
 
@@ -14,7 +13,7 @@ HOMEPAGE="http://www.gnumeric.org/"
 LICENSE="GPL-2"
 
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc x86 ~x86-fbsd"
+KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
 
 IUSE="+introspection libgda perl python"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
@@ -31,7 +30,7 @@ RDEPEND="
 	sys-libs/zlib
 	>=dev-libs/glib-2.38.0:2
 	>=gnome-extra/libgsf-1.14.33:=
-	>=x11-libs/goffice-0.10.27:0.10
+	>=x11-libs/goffice-0.10.28:0.10
 	>=dev-libs/libxml2-2.4.12:2
 	>=x11-libs/pango-1.24.0:=
 
