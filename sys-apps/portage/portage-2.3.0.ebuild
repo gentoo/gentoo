@@ -124,7 +124,10 @@ python_prepare_all() {
 			-i cnf/make.globals || die "sed failed"
 
 		einfo "Adjusting repos.conf ..."
-		sed -e "s|^\(location = \)\(/usr/portage\)|\\1${EPREFIX}\\2|" \
+		sed -e "s|^\(main-repo = \).*|\\1gentoo_prefix|" \
+			-e "s|^\\[gentoo\\]|[gentoo_prefix]|" \
+			-e "s|^\(location = \)\(/usr/portage\)|\\1${EPREFIX}\\2|" \
+			-e "s|^\(sync-uri = \).*|\\1rsync://rsync.prefix.bitzolder.nl/gentoo-portage-prefix|" \
 			-i cnf/repos.conf || die "sed failed"
 
 		einfo "Adding FEATURES=force-prefix to make.globals ..."
