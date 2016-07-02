@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit autotools-utils
+inherit xdg-utils autotools-utils
 
 DESCRIPTION="An interface library to access tags for identifying languages"
 HOMEPAGE="https://tagoh.bitbucket.org/liblangtag/"
@@ -28,6 +28,7 @@ DEPEND="${RDEPEND}
 RESTRICT="test"
 
 src_configure() {
+	xdg_environment_reset
 	local myeconfargs=(
 		$(use_enable introspection)
 		$(use_enable test)
