@@ -51,6 +51,7 @@ RDEPEND="${COMMON_DEPEND}
 PDEPEND="app-eselect/eselect-package-manager"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
+RESTRICT="!test? ( test )"
 
 pkg_pretend() {
 	if [[ ${MERGE_TYPE} != buildonly ]]; then

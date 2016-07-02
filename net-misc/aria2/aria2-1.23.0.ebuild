@@ -52,6 +52,7 @@ RDEPEND="${CDEPEND}
 
 REQUIRED_USE="jemalloc? ( !tcmalloc )
 	tcmalloc? ( !jemalloc )"
+RESTRICT="!test? ( test )"
 
 pkg_setup() {
 	if use scripts && use !xmlrpc && use !metalink; then

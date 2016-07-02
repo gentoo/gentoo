@@ -1,10 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
-
-inherit autotools-utils versionator
+EAPI=6
 
 TESTS_PV=0.3
 
@@ -27,15 +25,17 @@ DEPEND="${COMMON_DEPEND}
 RDEPEND="${COMMON_DEPEND}
 	pinentry? ( app-crypt/pinentry )"
 
+RESTRICT="!test? ( test )"
+
 src_configure() {
-	myeconfargs=(
+	local myconf=(
 		$(use_with pinentry libassuan)
 	)
 
-	autotools-utils_src_configure
+	econf "${myconf[@]}"
 }
 
 src_test() {
 	mv "${WORKDIR}"/${PN}-${TESTS_PV}/tests/* tests/ || die
-	autotools-utils_src_test
+	default
 }

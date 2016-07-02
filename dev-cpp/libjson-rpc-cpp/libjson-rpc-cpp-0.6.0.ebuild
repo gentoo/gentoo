@@ -24,6 +24,8 @@ DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen )
 	test? ( dev-cpp/catch )"
 
+RESTRICT="!test? ( test )"
+
 src_prepare() {
 	default
 

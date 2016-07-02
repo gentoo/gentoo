@@ -44,6 +44,8 @@ RDEPEND="${CDEPEND}
 	nls? ( virtual/libiconv virtual/libintl )
 	scripts? ( dev-lang/ruby )"
 
+RESTRICT="!test? ( test )"
+
 pkg_setup() {
 	if use scripts && use !xmlrpc && use !metalink; then
 		ewarn "Please note that you may need to enable USE=xmlrpc to run the aria2rpc"

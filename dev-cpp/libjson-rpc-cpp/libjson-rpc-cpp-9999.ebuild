@@ -26,6 +26,8 @@ DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen )
 	test? ( dev-cpp/catch )"
 
+RESTRICT="!test? ( test )"
+
 src_configure() {
 	local mycmakeargs=(
 		-DHTTP_CLIENT=$(usex http-client)

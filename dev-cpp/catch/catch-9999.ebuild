@@ -14,21 +14,18 @@ SRC_URI=""
 LICENSE="Boost-1.0"
 SLOT="0"
 KEYWORDS=""
-IUSE="test"
+IUSE=""
 
 CMAKE_USE_DIR=${S}/projects/CMake
 
-src_configure() {
-	# CMake is only used to build & run tests
-	use test && cmake-utils_src_configure
-}
-
-src_compile() {
-	use test && cmake-utils_src_compile
-}
+# CMake is only used to build & run tests, so override phases
+src_configure() { :; }
+src_compile() { :; }
 
 src_test() {
-	use test && cmake-utils_src_test
+	cmake-utils_src_configure
+	cmake-utils_src_compile
+	cmake-utils_src_test
 }
 
 src_install() {
