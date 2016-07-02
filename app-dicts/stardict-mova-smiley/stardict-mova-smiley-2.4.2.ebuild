@@ -7,7 +7,7 @@ DICT_PREFIX="dictd_www.mova.org_"
 inherit stardict
 
 DESCRIPTION="Stardict Dictionary for Mova.org's Smiley Dictionary"
-HOMEPAGE="http://stardict.sourceforge.net/Dictionaries_dictd-www.mova.org.php"
+HOMEPAGE="http://download.huzheng.org/mova.org/"
 
 KEYWORDS="~amd64 ~ppc ~sparc ~x86"
 IUSE=""

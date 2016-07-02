@@ -10,7 +10,7 @@ DICT_SUFFIX="quick_rus-eng"
 inherit stardict
 
 DESCRIPTION="Quick but still useful Russian to English dictionary"
-HOMEPAGE="http://stardict.sourceforge.net/Dictionaries_dictd-www.mova.org.php"
+HOMEPAGE="http://download.huzheng.org/Quick/"
 
 KEYWORDS="amd64 x86"
 IUSE=""

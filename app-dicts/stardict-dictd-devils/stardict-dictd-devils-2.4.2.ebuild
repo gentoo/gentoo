@@ -7,7 +7,7 @@ DICT_PREFIX="dictd_www.dict.org_"
 inherit stardict
 
 DESCRIPTION="Stardict Dictionary for Dictd.org's Devil's Dictionary"
-HOMEPAGE="http://stardict.sourceforge.net/Dictionaries_dictd-www.dict.org.php"
+HOMEPAGE="http://download.huzheng.org/dict.org/"
 
 KEYWORDS="~amd64 ppc sparc x86"
 IUSE=""
