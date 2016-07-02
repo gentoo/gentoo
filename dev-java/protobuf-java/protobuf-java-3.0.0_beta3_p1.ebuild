@@ -8,13 +8,14 @@ JAVA_PKG_IUSE="doc source"
 inherit eutils java-pkg-2 java-pkg-simple
 
 MY_PV=${PV/_beta/-beta-}
+MY_PV=${MY_PV/_p/.}
 
 DESCRIPTION="Google's Protocol Buffers - official Java Bindings"
 HOMEPAGE="https://github.com/google/protobuf/ https://developers.google.com/protocol-buffers/"
 SRC_URI="https://github.com/google/protobuf/archive/v${MY_PV}.tar.gz -> protobuf-${PV}.tar.gz"
 
 LICENSE="Apache-2.0"
-SLOT="0/10"
+SLOT="0/10b3"
 KEYWORDS="~amd64 ~arm ~arm64 ~mips ~ppc64 ~sh ~x86 ~amd64-linux ~arm-linux ~x86-linux ~x64-macos ~x86-macos"
 IUSE="nano"
 
