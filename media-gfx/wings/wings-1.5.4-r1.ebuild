@@ -21,6 +21,15 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 
+src_prepare() {
+	sed -i \
+		-e '/include_lib/s|"wings/|"../|' \
+		$(find . -name '*'.erl) \
+		|| die
+
+	eapply_user
+}
+
 src_configure() {
 	export ERL_PATH="/usr/$(get_libdir)/erlang/lib/"
 	export ESDL_PATH="${ERL_PATH}/$(best_version media-libs/esdl | cut -d/ -f2)"
