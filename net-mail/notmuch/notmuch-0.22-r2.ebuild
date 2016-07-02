@@ -12,7 +12,8 @@ inherit bash-completion-r1 elisp-common eutils flag-o-matic pax-utils \
 
 DESCRIPTION="Thread-based e-mail indexer, supporting quick search and tagging"
 HOMEPAGE="http://notmuchmail.org/"
-SRC_URI="${HOMEPAGE%/}/releases/${P}.tar.gz"
+SRC_URI="${HOMEPAGE%/}/releases/${P}.tar.gz
+	test? ( ${HOMEPAGE%/}/releases/test-databases/database-v1.tar.xz )"
 
 LICENSE="GPL-3"
 # Sub-slot corresponds to major wersion of libnotmuch.so.X.Y.  Bump of Y is
@@ -22,9 +23,9 @@ KEYWORDS="~amd64 ~x86"
 REQUIRED_USE="
 	nmbug? ( python )
 	python? ( ${PYTHON_REQUIRED_USE} )
-	test? ( crypt debug emacs python )
+	test? ( crypt emacs python valgrind )
 	"
-IUSE="crypt debug doc emacs mutt nmbug python test"
+IUSE="crypt doc emacs mutt nmbug python test valgrind"
 
 CDEPEND="
 	>=app-shells/bash-completion-1.9
@@ -35,7 +36,6 @@ CDEPEND="
 	>=sys-libs/zlib-1.2.5.2
 	sys-libs/talloc
 	crypt? ( >=dev-libs/gmime-2.6.20-r2:2.6[smime] )
-	debug? ( dev-util/valgrind )
 	emacs? ( >=virtual/emacs-23 )
 	python? ( ${PYTHON_DEPS} )
 	"
@@ -45,6 +45,7 @@ DEPEND="${CDEPEND}
 	test? ( app-misc/dtach || ( >=app-editors/emacs-23[libxml2]
 		>=app-editors/emacs-vcs-23[libxml2] ) sys-devel/gdb
 		crypt? ( app-crypt/gnupg dev-libs/openssl ) )
+	valgrind? ( dev-util/valgrind )
 	"
 RDEPEND="${CDEPEND}
 	crypt? ( app-crypt/gnupg )
@@ -90,6 +91,11 @@ pkg_setup() {
 	fi
 }
 
+src_unpack() {
+	unpack "${P}".tar.gz
+	cp "${DISTDIR}"/database-v1.tar.xz "${S}"/test-databases/
+}
+
 src_prepare() {
 	[[ "${MY_PATCHES[@]}" ]] && epatch "${MY_PATCHES[@]}"
 
@@ -99,7 +105,7 @@ src_prepare() {
 
 	rm -f Makefile.config # assure that new Makefile.config will be generated
 
-	if use debug; then
+	if use test; then
 		append-cflags -g
 		append-cxxflags -g
 	fi
@@ -141,8 +147,7 @@ src_compile() {
 
 src_test() {
 	pax-mark -m notmuch
-	emake download-test-databases
-	LD_LIBRARY_PATH="${MY_LD_LIBRARY_PATH}" default
+	LD_LIBRARY_PATH="${MY_LD_LIBRARY_PATH}" V=1 default
 	pax-mark -ze notmuch
 }
 

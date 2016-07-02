@@ -1,5 +1,5 @@
 #!/sbin/openrc-run
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -24,10 +24,11 @@ depend() {
 }
 
 start_pre() {
-	checkpath -o burp:burp -m 0775 -d /run/lock/burp
 	checkpath -o root:burp -m 0775 -d /etc/burp
-	checkpath -o root:burp -m 0750 -d /etc/burp/clientconfdir
 	checkpath -o root:burp -m 0640 -f /etc/burp/burp-server.conf
+	checkpath -o root:burp -m 0750 -d /etc/burp/clientconfdir
+	checkpath -o burp:burp -m 0775 -d /run/lock/burp
+	checkpath -o root:burp -m 0750 -d /var/spool/burp
 }
 
 reload() {
