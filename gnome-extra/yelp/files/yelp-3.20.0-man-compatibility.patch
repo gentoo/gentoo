@@ -1,6 +1,6 @@
-From 7e181e8d74f7e67b8b3acb8524fc85157ed39c8e Mon Sep 17 00:00:00 2001
+From b7f00d9fc5f4c948b3b412fa22488517e71a2987 Mon Sep 17 00:00:00 2001
 From: Alexandre Rostovtsev <tetromino@gmail.com>
-Date: Sun, 1 May 2011 22:52:14 -0400
+Date: Sun, 27 Mar 2016 17:11:59 +0200
 Subject: [PATCH] Enable compatibility with traditional man (#648854)
 
 As of commit 46a82ade3e6f0fac8f08b18e7fc23d8665f6f728, Yelp runs
@@ -16,31 +16,34 @@ using a small shell script (/usr/libexec/yelp-groff), both for for
 clarity and for ease of modification on systems with weird man setups.
 
 Signed-off-by: Alexandre Rostovtsev <tetromino@gmail.com>
+Signed-off-by: Ole Reifschneider <tranquility@gentoo.org>
 ---
- libyelp/Makefile.am       |    2 +
- libyelp/yelp-groff        |   49 +++++++++++++++++++++++++++++++++++++++++++++
- libyelp/yelp-man-parser.c |    4 +-
- 3 files changed, 53 insertions(+), 2 deletions(-)
+ Makefile.am               |  2 ++
+ libyelp/yelp-groff        | 49 +++++++++++++++++++++++++++++++++++++++++++++++
+ libyelp/yelp-man-parser.c |  2 +-
+ 3 files changed, 52 insertions(+), 1 deletion(-)
  create mode 100755 libyelp/yelp-groff
 
-diff --git a/libyelp/Makefile.am b/libyelp/Makefile.am
-index a4dd68b..5d55bf1 100644
---- a/libyelp/Makefile.am
-+++ b/libyelp/Makefile.am
-@@ -1,4 +1,5 @@
- lib_LTLIBRARIES = libyelp.la
-+libexec_SCRIPTS = yelp-groff
- 
- libyelp_la_SOURCES =                \
- 	yelp-bookmarks.c            \
-@@ -49,6 +50,7 @@ endif
- libyelp_la_CFLAGS =                             \
- 	$(YELP_CFLAGS)                          \
- 	-DDATADIR=\""$(datadir)"\"              \
-+	-DLIBEXECDIR=\"$(libexecdir)\"           \
- 	-DYELP_ICON_PATH=\"$(YELP_ICON_PATH)\"
- 
- libyelp_la_LIBADD = $(YELP_LIBS)
+diff --git a/Makefile.am b/Makefile.am
+index 30eba2c..b87f2b2 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -6,6 +6,7 @@ BUILT_SOURCES = \
+ 	$(nodist_libyelp_libyelp_la_SOURCES)
+
+ lib_LTLIBRARIES = libyelp/libyelp.la
++libexec_SCRIPTS = libyelp/yelp-groff
+
+ libyelp_libyelp_la_SOURCES = \
+ 	libyelp/yelp-bookmarks.c \
+@@ -58,6 +59,7 @@ libyelp_libyelp_la_CFLAGS = \
+
+ libyelp_libyelp_la_CPPFLAGS = \
+ 	-DDATADIR=\""$(datadir)"\" \
++	-DLIBEXECDIR=\"$(libexecdir)\" \
+ 	-DYELP_ICON_PATH=\"$(YELP_ICON_PATH)\" \
+ 	-DYELP_WEB_EXTENSIONS_DIR=\""$(pkglibdir)/"web-extensions\" \
+ 	-I$(top_builddir)/libyelp
 diff --git a/libyelp/yelp-groff b/libyelp/yelp-groff
 new file mode 100755
 index 0000000..5348024
@@ -97,21 +100,18 @@ index 0000000..5348024
 +# unless MANROFFSEQ is defined.
 +${cat} ${filename} | groff -${MANROFFSEQ:-t} -man -Z -Tutf8
 diff --git a/libyelp/yelp-man-parser.c b/libyelp/yelp-man-parser.c
-index 4001d38..9818803 100644
+index 46073a2..792e695 100644
 --- a/libyelp/yelp-man-parser.c
 +++ b/libyelp/yelp-man-parser.c
-@@ -371,9 +371,9 @@ get_troff (gchar *path, GError **error)
+@@ -369,7 +369,7 @@ get_troff (gchar *path, GError **error)
  {
-     gint stdout;
+     gint ystdout;
      GError *err = NULL;
--    gchar *argv[] = { "man", "-Z", "-Tutf8", "-EUTF-8", NULL, NULL };
-+    gchar *argv[] = { LIBEXECDIR "/yelp-groff", NULL, NULL };
- 
--    argv[4] = path;
-+    argv[1] = path;
- 
-     if (!g_spawn_async_with_pipes (NULL, argv, NULL,
-                                    G_SPAWN_SEARCH_PATH, NULL, NULL,
--- 
-1.7.5.rc3
+-    const gchar *argv[] = { "man", "-Z", "-Tutf8", "-EUTF-8", path, NULL };
++    const gchar *argv[] = { LIBEXECDIR "/yelp-groff", path, NULL };
+     gchar **my_argv;
+
+     /* g_strdupv() should accept a "const gchar **". */
+--
+2.7.4
 

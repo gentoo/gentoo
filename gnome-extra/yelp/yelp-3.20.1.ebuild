@@ -1,11 +1,11 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
-GCONF_DEBUG="no"
+EAPI=6
+GNOME2_LA_PUNT="yes"
 
-inherit autotools eutils gnome2
+inherit autotools gnome2
 
 DESCRIPTION="Help browser for GNOME"
 HOMEPAGE="https://wiki.gnome.org/Apps/Yelp"
@@ -13,7 +13,7 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Yelp"
 LICENSE="GPL-2+"
 SLOT="0"
 IUSE=""
-KEYWORDS="~alpha amd64 ~arm ~ia64 ~mips ~ppc ~ppc64 ~sparc x86 ~x86-freebsd ~amd64-linux ~x86-linux ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~x86-freebsd ~amd64-linux ~x86-linux ~x86-solaris"
 
 RDEPEND="
 	app-arch/bzip2:=
@@ -23,13 +23,14 @@ RDEPEND="
 	>=dev-libs/libxml2-2.6.5:2
 	>=dev-libs/libxslt-1.1.4
 	>=gnome-extra/yelp-xsl-3.12
-	>=net-libs/webkit-gtk-1.3.10:3
+	>=net-libs/webkit-gtk-2.7.2:4
 	>=x11-libs/gtk+-3.13.3:3
-	x11-themes/gnome-icon-theme-symbolic
+	x11-themes/adwaita-icon-theme
 "
 DEPEND="${RDEPEND}
 	>=dev-util/gtk-doc-am-1.13
 	>=dev-util/intltool-0.41.0
+	dev-util/itstool
 	>=sys-devel/gettext-0.17
 	virtual/pkgconfig
 "
@@ -37,7 +38,7 @@ DEPEND="${RDEPEND}
 src_prepare() {
 	# Fix compatibility with Gentoo's sys-apps/man
 	# https://bugzilla.gnome.org/show_bug.cgi?id=648854
-	epatch "${FILESDIR}"/${PN}-3.16.0-man-compatibility.patch
+	eapply "${FILESDIR}"/${PN}-3.20.0-man-compatibility.patch
 	eautoreconf
 	gnome2_src_prepare
 }
@@ -46,6 +47,11 @@ src_configure() {
 	gnome2_src_configure \
 		--disable-static \
 		--enable-bz2 \
-		--enable-lzma \
-		ITSTOOL=$(type -P true)
+		--enable-lzma
+}
+
+src_install() {
+	gnome2_src_install
+	exeinto /usr/libexec/
+	doexe "${S}"/libyelp/yelp-groff
 }

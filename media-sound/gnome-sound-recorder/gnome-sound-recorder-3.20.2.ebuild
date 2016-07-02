@@ -1,18 +1,16 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
-GCONF_DEBUG="no"
-
+EAPI=6
 inherit gnome2
 
 DESCRIPTION="Simple sound recorder"
-HOMEPAGE="https://wiki.gnome.org/ThreePointEleven/Features/SoundRecorder"
+HOMEPAGE="https://wiki.gnome.org/Design/Apps/SoundRecorder"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 # For the list of plugins, see src/audioProfile.js
@@ -26,7 +24,7 @@ RDEPEND="${COMMON_DEPEND}
 	media-libs/gstreamer:1.0[introspection]
 	media-libs/gst-plugins-base:1.0[introspection]
 "
-DEPEND="${RDEPEND}
+DEPEND="${COMMON_DEPEND}
 	>=dev-util/intltool-0.26
 	virtual/pkgconfig
 "

@@ -1,20 +1,19 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
-GCONF_DEBUG="no"
+EAPI=6
 GNOME2_LA_PUNT="yes"
 VALA_USE_DEPEND="vapigen"
 
 inherit gnome2 vala
 
 DESCRIPTION="Library providing DLNA-related functionality for MediaServers"
-HOMEPAGE="http://gupnp.org/"
+HOMEPAGE="https://wiki.gnome.org/Projects/GUPnP"
 
 LICENSE="LGPL-2"
 SLOT="2.0"
-KEYWORDS="~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="+introspection"
 
 RDEPEND="
@@ -57,6 +56,6 @@ src_configure() {
 }
 
 src_install() {
-	# Parallel install fails, upstream bug #720053
+	# https://bugzilla.gnome.org/show_bug.cgi?id=720053
 	MAKEOPTS="${MAKEOPTS} -j1" gnome2_src_install
 }

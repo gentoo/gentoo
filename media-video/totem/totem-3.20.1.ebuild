@@ -1,11 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
-GCONF_DEBUG="yes"
+EAPI=6
 GNOME2_LA_PUNT="yes" # plugins are dlopened
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python{2_7,3_4,3_5} )
 PYTHON_REQ_USE="threads"
 
 inherit autotools eutils gnome2 multilib python-single-r1
@@ -15,14 +14,14 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Videos"
 
 LICENSE="GPL-2+ LGPL-2+"
 SLOT="0"
-IUSE="+introspection lirc nautilus +python test zeitgeist"
+IUSE="debug +introspection lirc nautilus +python test zeitgeist"
 # see bug #359379
 REQUIRED_USE="
 	python? ( introspection ${PYTHON_REQUIRED_USE} )
 	zeitgeist? ( introspection )
 "
 
-KEYWORDS="amd64 ~arm ~ia64 ~ppc ~ppc64 x86 ~x86-fbsd"
+KEYWORDS="~amd64 ~ppc ~ppc64 ~x86 ~x86-fbsd"
 
 # FIXME:
 # Runtime dependency on gnome-session-2.91
@@ -33,24 +32,24 @@ RDEPEND="
 	>=dev-libs/totem-pl-parser-3.10.1:0=[introspection?]
 	>=media-libs/clutter-1.17.3:1.0[gtk]
 	>=media-libs/clutter-gst-2.99.2:3.0
-	>=media-libs/clutter-gtk-1.5.5:1.0
+	>=media-libs/clutter-gtk-1.7.1:1.0
 	>=x11-libs/cairo-1.14
 	>=x11-libs/gdk-pixbuf-2.23.0:2
-	>=x11-libs/gtk+-3.16:3[introspection?]
+	>=x11-libs/gtk+-3.19.4:3[introspection?]
 
-	>=media-libs/grilo-0.2.12:0.2[playlist]
-	media-plugins/grilo-plugins:0.2
-	>=media-libs/gstreamer-1.3.1:1.0
-	>=media-libs/gst-plugins-base-1.4.2:1.0[X,introspection?,pango]
+	>=media-libs/grilo-0.3.0:0.3[playlist]
+	media-plugins/grilo-plugins:0.3
+	>=media-libs/gstreamer-1.6.0:1.0
+	>=media-libs/gst-plugins-base-1.6.0:1.0[X,introspection?,pango]
 	media-libs/gst-plugins-good:1.0
 	media-plugins/gst-plugins-meta:1.0
 	media-plugins/gst-plugins-taglib:1.0
 
 	x11-libs/libX11
 
-	gnome-base/gnome-desktop:3
+	gnome-base/gnome-desktop:3=
 	gnome-base/gsettings-desktop-schemas
-	x11-themes/gnome-icon-theme-symbolic
+	x11-themes/adwaita-icon-theme
 
 	introspection? ( >=dev-libs/gobject-introspection-0.6.7:= )
 	lirc? ( app-misc/lirc )

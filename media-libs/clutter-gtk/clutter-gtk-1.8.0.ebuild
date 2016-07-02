@@ -1,9 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
-GCONF_DEBUG="yes"
+EAPI=6
 GNOME2_LA_PUNT="yes"
 
 inherit gnome2
@@ -14,11 +13,11 @@ LICENSE="LGPL-2.1+"
 
 SLOT="1.0"
 KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
-IUSE="examples +introspection"
+IUSE="X debug examples gtk +introspection wayland"
 
 RDEPEND="
-	>=x11-libs/gtk+-3.8.0:3[introspection?]
-	>=media-libs/clutter-1.23.7:1.0[introspection?]
+	>=x11-libs/gtk+-3.19.4:3[X=,introspection?,wayland=]
+	>=media-libs/clutter-1.23.7:1.0[X=,gtk=,introspection?,wayland=]
 	media-libs/cogl:1.0=[introspection?]
 	introspection? ( >=dev-libs/gobject-introspection-0.9.12:= )
 "
@@ -32,6 +31,7 @@ src_configure() {
 	gnome2_src_configure \
 		--disable-maintainer-flags \
 		--enable-deprecated \
+		$(usex debug --enable-debug=yes ' ') \
 		$(use_enable introspection)
 }
 

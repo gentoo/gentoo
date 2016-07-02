@@ -1,13 +1,11 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
-
+EAPI=6
 PYTHON_COMPAT=( python2_7 )
 
 # vala and introspection support is broken, bug #468208
-VALA_MIN_API_VERSION=0.20
 VALA_USE_DEPEND=vapigen
 
 inherit versionator gnome2-utils eutils autotools python-any-r1 vala
@@ -27,12 +25,15 @@ HOMEPAGE="http://www.gegl.org/"
 LICENSE="|| ( GPL-3 LGPL-3 )"
 SLOT="0.3"
 
-IUSE="cairo cpu_flags_x86_mmx cpu_flags_x86_sse debug ffmpeg +introspection jpeg jpeg2k lcms lensfun libav openexr png raw sdl svg test tiff umfpack vala v4l webp"
+IUSE="cairo cpu_flags_x86_mmx cpu_flags_x86_sse debug ffmpeg +introspection jpeg jpeg2k lcms lensfun openexr png raw sdl svg test tiff umfpack vala v4l webp"
 REQUIRED_IUSE="
 	svg? ( cairo )
 	vala? ( introspection )
 "
 
+# NOTE: Even current libav 11.4 does not have AV_CODEC_CAP_VARIABLE_FRAME_SIZE
+#       so there is no chance to support libav right now (Gentoo bug #567638)
+#       If it returns, please check prior GEGL ebuilds for how libav was integrated.  Thanks!
 RDEPEND="
 	>=dev-libs/glib-2.36:2
 	dev-libs/json-glib
@@ -43,10 +44,9 @@ RDEPEND="
 
 	cairo? ( x11-libs/cairo )
 	ffmpeg? (
-		libav? ( media-video/libav:0= )
-		!libav? ( media-video/ffmpeg:0= )
+		>=media-video/ffmpeg-2.8:0=
 	)
-	introspection? ( >=dev-libs/gobject-introspection-1.32 )
+	introspection? ( >=dev-libs/gobject-introspection-1.32:= )
 	jpeg? ( virtual/jpeg:0= )
 	jpeg2k? ( >=media-libs/jasper-1.900.1 )
 	lcms? ( >=media-libs/lcms-2.2:2 )
@@ -77,6 +77,9 @@ pkg_setup() {
 }
 
 src_prepare() {
+	default
+	eapply "${FILESDIR}"/${PN}-0.3.4-without-jpeg-png.patch
+
 	# FIXME: the following should be proper patch sent to upstream
 	# fix OSX loadable module filename extension
 	sed -i -e 's/\.dylib/.bundle/' configure.ac || die
@@ -92,8 +95,9 @@ src_prepare() {
 		-e '/composite-transform.xml/d' \
 		-i tests/compositions/Makefile.am || die
 
-	epatch_user
 	eautoreconf
+
+	gnome2_environment_reset
 
 	use vala && vala_src_prepare
 }
@@ -165,13 +169,7 @@ src_configure() {
 		$(use_with webp)
 }
 
-src_test() {
-	gnome2_environment_reset  # sandbox issues
-	default
-}
-
 src_compile() {
-	gnome2_environment_reset  # sandbox issues (bug #396687)
 	default
 
 	[[ ${PV} == *9999* ]] && emake ./ChangeLog  # "./" prevents "Circular ChangeLog <- ChangeLog dependency dropped."
