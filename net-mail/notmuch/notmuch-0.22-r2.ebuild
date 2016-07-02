@@ -22,9 +22,9 @@ KEYWORDS="~amd64 ~x86"
 REQUIRED_USE="
 	nmbug? ( python )
 	python? ( ${PYTHON_REQUIRED_USE} )
-	test? ( crypt debug emacs python )
+	test? ( crypt emacs python valgrind )
 	"
-IUSE="crypt debug doc emacs mutt nmbug python test"
+IUSE="crypt doc emacs mutt nmbug python test valgrind"
 
 CDEPEND="
 	>=app-shells/bash-completion-1.9
@@ -35,7 +35,6 @@ CDEPEND="
 	>=sys-libs/zlib-1.2.5.2
 	sys-libs/talloc
 	crypt? ( >=dev-libs/gmime-2.6.20-r2:2.6[smime] )
-	debug? ( dev-util/valgrind )
 	emacs? ( >=virtual/emacs-23 )
 	python? ( ${PYTHON_DEPS} )
 	"
@@ -45,6 +44,7 @@ DEPEND="${CDEPEND}
 	test? ( app-misc/dtach || ( >=app-editors/emacs-23[libxml2]
 		>=app-editors/emacs-vcs-23[libxml2] ) sys-devel/gdb
 		crypt? ( app-crypt/gnupg dev-libs/openssl ) )
+	valgrind? ( dev-util/valgrind )
 	"
 RDEPEND="${CDEPEND}
 	crypt? ( app-crypt/gnupg )
@@ -99,7 +99,7 @@ src_prepare() {
 
 	rm -f Makefile.config # assure that new Makefile.config will be generated
 
-	if use debug; then
+	if use test; then
 		append-cflags -g
 		append-cxxflags -g
 	fi
