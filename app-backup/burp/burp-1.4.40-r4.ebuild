@@ -21,7 +21,7 @@ DEPEND="
 	libressl? ( dev-libs/libressl:0= )
 	dev-libs/uthash
 	sys-libs/libcap
-	<net-libs/librsync-2.0
+	net-libs/librsync:0=
 	sys-libs/ncurses:0=
 	sys-libs/zlib
 	acl? ( sys-apps/acl )
@@ -49,6 +49,8 @@ pkg_setup() {
 src_prepare() {
 	epatch "${PATCHES[@]}"
 	eautoreconf
+	sed -e '/autoupgrade/d' -i "${S}"/Makefile.in || die
+	rm "${S}"/docs/autoupgrade.txt || die
 }
 
 src_configure() {
@@ -69,12 +71,14 @@ src_configure() {
 src_install() {
 	default
 
-	fowners root:burp /etc/burp /var/spool/burp
-	fperms 0775 /etc/burp /var/spool/burp
-	fowners root:burp /etc/burp/clientconfdir
-	fperms 0750 /etc/burp/clientconfdir
+	fowners root:burp /etc/burp
+	fperms 0775 /etc/burp
 	fowners root:burp /etc/burp/burp-server.conf
 	fperms 0640 /etc/burp/burp-server.conf
+	fowners root:burp /etc/burp/clientconfdir
+	fperms 0750 /etc/burp/clientconfdir
+	fowners root:burp /var/spool/burp
+	fperms 0770 /var/spool/burp
 
 	newinitd "${FILESDIR}"/${PN}.initd ${PN}
 	dodoc docs/*
@@ -84,11 +88,15 @@ src_install() {
 	local script
 	for script in notify_script ssl_extra_checks_script summary_script \
 			timer_script; do
-		mv "${D}etc/burp/${script}" "${D}${scripts_dir}/"
+		mv "${D}etc/burp/${script}" "${D}${scripts_dir}/" || die
 		sed -r \
 			-e "s|(=\\s*)/etc/burp/${script}\\s*$|\1${scripts_dir}/${script}|" \
-			-i "${D}etc/burp/burp-server.conf"
+			-i "${D}etc/burp/burp-server.conf" \
+			|| die
 	done
+
+	sed -e '/autoupgrade/d' -i "${D}etc/burp/burp.conf" || die
+	sed -e '/autoupgrade/,+1d' -i "${D}etc/burp/burp-server.conf" || die
 
 	sed -e 's|^# user=graham|user = burp|' \
 		-e 's|^# group=nogroup|group = burp|' \
