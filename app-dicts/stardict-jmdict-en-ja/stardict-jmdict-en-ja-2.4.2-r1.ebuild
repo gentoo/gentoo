@@ -9,7 +9,7 @@ DICT_PREFIX="jmdict-"
 inherit stardict
 
 HOMEPAGE="http://download.huzheng.org/ja/"
-SRC_URI="mirror://sourceforge/stardict/${P}.tar.bz2"
+SRC_URI="http://download.huzheng.org/ja/${P}.tar.bz2"
 
 LICENSE="GDLS"
 KEYWORDS="~amd64 ~ppc sparc x86"
