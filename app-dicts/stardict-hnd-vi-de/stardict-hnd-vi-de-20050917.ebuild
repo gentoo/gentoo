@@ -8,7 +8,7 @@ TO_LANG="German"
 inherit stardict
 
 HOMEPAGE="https://sourceforge.net/projects/ovdp/"
-SRC_URI="http://james.dyndns.ws/pub/Dictionary/StarDict-James/VietDuc12K.zip"
+SRC_URI="mirror://gentoo/VietDuc12K.zip"
 
 KEYWORDS="~amd64 ~x86"
 IUSE=""
