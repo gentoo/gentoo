@@ -7,7 +7,7 @@ TO_LANG="English"
 
 inherit stardict
 
-HOMEPAGE="http://forum.vnoss.org/viewtopic.php?id=1818"
+HOMEPAGE="https://sourceforge.net/projects/ovdp/"
 SRC_URI="http://james.dyndns.ws/pub/Dictionary/StarDict-James/VietAnh23K.zip"
 
 KEYWORDS="~amd64 ~x86"
