@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 inherit linux-info scons-utils toolchain-funcs systemd udev
 
 MY_P=${PN}-linux-${PV}
@@ -13,9 +13,8 @@ SRC_URI="http://pingus.seul.org/~grumbel/xboxdrv/${MY_P}.tar.bz2"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
-RDEPEND="dev-libs/boost
+RDEPEND="dev-libs/boost:=
 	dev-libs/dbus-glib:=
 	virtual/libudev:=
 	sys-apps/dbus:=
@@ -27,11 +26,12 @@ DEPEND="${RDEPEND}
 
 S=${WORKDIR}/${MY_P}
 
-CONFIG_CHECK="~INPUT_EVDEV ~INPUT_JOYDEV ~INPUT_UINPUT ~!JOYSTICK_XPAD"
+PATCHES=(
+	"${FILESDIR}"/${P}-scons.patch
+	"${FILESDIR}"/github-144.patch
+)
 
-src_prepare() {
-	epatch "${FILESDIR}"/${P}-scons.patch
-}
+CONFIG_CHECK="~INPUT_EVDEV ~INPUT_JOYDEV ~INPUT_UINPUT ~!JOYSTICK_XPAD"
 
 src_compile() {
 	escons \
@@ -46,7 +46,7 @@ src_compile() {
 src_install() {
 	dobin xboxdrv
 	doman doc/xboxdrv.1
-	dodoc AUTHORS NEWS PROTOCOL README TODO
+	dodoc AUTHORS NEWS PROTOCOL README.md TODO
 
 	newinitd "${FILESDIR}"/xboxdrv.initd xboxdrv
 	newconfd "${FILESDIR}"/xboxdrv.confd xboxdrv
