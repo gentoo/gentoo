@@ -24,7 +24,7 @@ CDEPEND="
 	<dev-python/cached-property-2[${PYTHON_USEDEP}]
 	>=dev-python/dockerpty-0.4.1[${PYTHON_USEDEP}]
 	<dev-python/dockerpty-0.5[${PYTHON_USEDEP}]
-	>=dev-python/docker-py-1.7.2[${PYTHON_USEDEP}]
+	>=dev-python/docker-py-1.8.1[${PYTHON_USEDEP}]
 	<dev-python/docker-py-2[${PYTHON_USEDEP}]
 	>=dev-python/docopt-0.6.1[${PYTHON_USEDEP}]
 	<dev-python/docopt-0.7[${PYTHON_USEDEP}]
