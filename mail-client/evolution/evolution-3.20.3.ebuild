@@ -1,12 +1,11 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
-GCONF_DEBUG="no"
+EAPI=6
 GNOME2_LA_PUNT="yes"
 
-inherit eutils flag-o-matic readme.gentoo-r1 gnome2
+inherit flag-o-matic readme.gentoo-r1 gnome2
 
 DESCRIPTION="Integrated mail, addressbook and calendaring functionality"
 HOMEPAGE="https://wiki.gnome.org/Apps/Evolution"
@@ -17,7 +16,7 @@ SLOT="2.0"
 
 IUSE="+bogofilter crypt highlight ldap map spamassassin spell ssl +weather"
 
-KEYWORDS="~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 x86 ~x86-fbsd"
+KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~x86 ~x86-fbsd"
 
 # We need a graphical pinentry frontend to be able to ask for the GPG
 # password from inside evolution, bug 160302
@@ -29,13 +28,13 @@ PINENTRY_DEPEND="|| ( app-crypt/pinentry[gnome-keyring] app-crypt/pinentry[gtk] 
 # gnome-desktop support is optional with --enable-gnome-desktop
 # gnome-autoar (currently disabled because no release has been made)
 COMMON_DEPEND="
-	>=app-crypt/gcr-3.4
+	>=app-crypt/gcr-3.4:=
 	>=app-text/enchant-1.1.7
 	>=dev-libs/glib-2.40:2[dbus]
 	>=dev-libs/libxml2-2.7.3:2
 	>=gnome-base/gnome-desktop-2.91.3:3=
 	>=gnome-base/gsettings-desktop-schemas-2.91.92
-	>=gnome-extra/evolution-data-server-3.18.2:=[gtk,weather?]
+	>=gnome-extra/evolution-data-server-3.20.0:=[gtk,weather?]
 	>=media-libs/libcanberra-0.25[gtk3]
 	>=net-libs/libsoup-2.42:2.4
 	>=net-libs/webkit-gtk-2.2:3
@@ -98,12 +97,6 @@ x-scheme-handler/https=firefox.desktop
 (replace firefox.desktop with the name of the appropriate .desktop
 file from /usr/share/applications if you use a different browser)."
 
-src_prepare() {
-	# Fix relink issues in src_install
-	ELTCONF="--reverse-deps"
-	gnome2_src_prepare
-}
-
 src_configure() {
 	# Use NSS/NSPR only if 'ssl' is enabled.
 	gnome2_src_configure \
@@ -130,8 +123,6 @@ src_configure() {
 }
 
 src_install() {
-	DOCS="AUTHORS ChangeLog* HACKING MAINTAINERS NEWS* README"
-
 	gnome2_src_install
 
 	# Problems with prelink:

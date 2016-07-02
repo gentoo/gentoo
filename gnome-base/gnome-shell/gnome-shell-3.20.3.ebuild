@@ -97,7 +97,7 @@ RDEPEND="${COMMON_DEPEND}
 	x11-misc/xdg-utils
 
 	media-fonts/dejavu
-	x11-themes/adwaita-icon-theme
+	>=x11-themes/adwaita-icon-theme-3.19.90
 
 	networkmanager? (
 		net-misc/mobile-broadband-provider-info
