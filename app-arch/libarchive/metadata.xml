@@ -14,24 +14,27 @@
     It has a number of advantages over previous tar implementations.
   </longdescription>
   <use>
-    <flag name="zlib">
-      Allow accessing gzip-compressed archives through
-      <pkg>sys-libs/zlib</pkg>. This only affects libarchive's native
-      support: bsdtar will keep using gunzip as a filter if that's not
-      built-in. It's also needed for supporting extraction of ZIP
-      files.
-    </flag>
     <flag name="bzip2">
       Allow accessing bzip2-compressed archives through libbz2 (which
       comes with <pkg>app-arch/bzip2</pkg>). This only affects
       libarchive's native support: bsdtar will keep using bunzip2 as a
       filter if that's not built-in.
     </flag>
+    <flag name="e2fsprogs">
+      Use file flags from <pkg>sys-fs/e2fsprogs</pkg> headers instead of <pkg>virtual/os-headers</pkg> headers
+    </flag>
+	<flag name="lz4">
+		Enable support for LZ4 compression using <pkg>app-arch/lz4</pkg>
+	</flag>
     <flag name="nettle">
       Use <pkg>dev-libs/nettle</pkg> as crypto backend
     </flag>
-    <flag name="e2fsprogs">
-      Use file flags from <pkg>sys-fs/e2fsprogs</pkg> headers instead of <pkg>virtual/os-headers</pkg> headers
+    <flag name="zlib">
+      Allow accessing gzip-compressed archives through
+      <pkg>sys-libs/zlib</pkg>. This only affects libarchive's native
+      support: bsdtar will keep using gunzip as a filter if that's not
+      built-in. It's also needed for supporting extraction of ZIP
+      files.
     </flag>
   </use>
 </pkgmetadata>

@@ -136,6 +136,8 @@ src_unpack() {
 }
 
 src_prepare() {
+	python_setup
+
 	# Make ocaml warnings non-fatal, bug #537308
 	sed -e "/RUN/s/-warn-error A//" -i test/Bindings/OCaml/*ml  || die
 	# Fix libdir for ocaml bindings install, bug #559134
@@ -187,6 +189,9 @@ src_prepare() {
 		eapply "${FILESDIR}"/clang-3.4-darwin_prefix-include-paths.patch
 		eprefixify tools/clang/lib/Frontend/InitHeaderSearch.cpp
 
+		# Fix -isystem support in ccc-analyzer
+		eapply "${FILESDIR}"/clang-3.7.1-ccc-analyzer-isystem.patch
+
 		sed -i -e "s^@EPREFIX@^${EPREFIX}^" \
 			tools/clang/tools/scan-build/scan-build || die
 
@@ -204,6 +209,9 @@ src_prepare() {
 		# https://llvm.org/bugs/show_bug.cgi?id=23793
 		eapply "${FILESDIR}"/cmake/clang-0002-cmake-Make-CLANG_LIBDIR_SUFFIX-overridable.patch
 
+		# Fix git-clang-format shebang, bug #562688
+		python_fix_shebang tools/clang/tools/clang-format/git-clang-format
+
 		pushd projects/compiler-rt >/dev/null || die
 
 		# Fix msan with newer kernels, compiler-rt part, #569894
@@ -211,8 +219,8 @@ src_prepare() {
 
 		# Fix WX sections, bug #421527
 		find lib/builtins -type f -name '*.S' -exec sed \
-			 -e '$a\\n#if defined(__linux__) && defined(__ELF__)\n.section .note.GNU-stack,"",%progbits\n#endif' \
-			 -i {} + || die
+			-e '$a\\n#if defined(__linux__) && defined(__ELF__)\n.section .note.GNU-stack,"",%progbits\n#endif' \
+			-i {} + || die
 
 		popd >/dev/null || die
 	fi
@@ -235,8 +243,6 @@ src_prepare() {
 
 	# User patches
 	eapply_user
-
-	python_setup
 
 	# Native libdir is used to hold LLVMgold.so
 	NATIVE_LIBDIR=$(get_libdir)
