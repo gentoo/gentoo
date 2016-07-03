@@ -1,8 +1,8 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="4"
+EAPI=6
 
 inherit vdr-plugin-2
 
@@ -17,3 +17,12 @@ IUSE=""
 
 DEPEND="media-video/vdr"
 RDEPEND="${DEPEND}"
+
+src_prepare() {
+	vdr-plugin-2_src_prepare
+
+	# compile fix, wrt bug 574162
+	sed -e 246c"unsigned int TimeoutMs, bool runOnce)" \
+		-e 254c"unsigned int TimeoutMs, bool runOnce)" \
+		-i timer.h
+}

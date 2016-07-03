@@ -242,6 +242,9 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 "
 
 PATCHES=(
+	# from 5.2 branch
+	"${FILESDIR}/${PN}-5.1.4.2-gcc6.patch"
+
 	# not upstreamable stuff
 	"${FILESDIR}/${PN}-4.4-system-pyuno.patch"
 )
