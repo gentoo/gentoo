@@ -33,7 +33,7 @@ src_prepare() {
 
 src_configure() {
 	econf \
-		--docdir=/usr/share/doc/${PF} \
+		--docdir="${EPREFIX}"/usr/share/doc/${PF} \
 		$(use_enable compat compat-symlinks) \
 		$(use_with udev)
 }
