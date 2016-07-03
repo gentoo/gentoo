@@ -2,6 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+EAPI=6
+
 FROM_LANG="Traditional Chinese (BIG5)"
 TO_LANG="English"
 DICT_PREFIX="xdict-ce-"
