@@ -29,7 +29,7 @@ ruby_add_bdepend "test? ( dev-ruby/minitest:5 dev-ruby/concurrent-ruby )"
 # make them dependencies at all.
 
 # Block against versions in older slots that also try to install a binary.
-RDEPEND="${RDEPEND} !<dev-ruby/rack-1.4.5-r1:1.4 !<dev-ruby/rack-1.5.2-r4:1.5 !<dev-ruby/rack-1.6.4-r2"
+RDEPEND="${RDEPEND} !<dev-ruby/rack-1.4.5-r1:1.4 !<dev-ruby/rack-1.5.2-r4:1.5 !<dev-ruby/rack-1.6.4-r2:1.6"
 
 all_ruby_prepare() {
 	# The build system tries to generate the ChangeLog from git. Create
