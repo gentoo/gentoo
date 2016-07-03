@@ -1,19 +1,18 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
-GCONF_DEBUG="no"
+EAPI=6
 GNOME2_LA_PUNT="yes"
 
-inherit gnome2 versionator virtualx
+inherit gnome2 systemd versionator virtualx
 
 DESCRIPTION="Rygel is an open source UPnP/DLNA MediaServer"
 HOMEPAGE="https://wiki.gnome.org/Projects/Rygel"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="X +introspection +sqlite tracker test transcode"
 
 # The deps for tracker? and transcode? are just the earliest available
@@ -29,7 +28,7 @@ RDEPEND="
 	media-plugins/gst-plugins-soup:1.0
 	>=net-libs/gssdp-0.13
 	>=net-libs/gupnp-0.20.14
-	>=net-libs/gupnp-av-0.12.4
+	>=net-libs/gupnp-av-0.12.8
 	>=net-libs/libsoup-2.44:2.4
 	>=sys-apps/util-linux-2.20
 	x11-misc/shared-mime-info
@@ -49,7 +48,7 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	dev-util/gtk-doc-am
 	>=dev-util/intltool-0.40
-	sys-devel/gettext
+	>=sys-devel/gettext-0.19.7
 	virtual/pkgconfig
 "
 # Maintainer only
@@ -65,8 +64,10 @@ src_configure() {
 		--enable-mediathek-plugin \
 		--with-media-engine=gstreamer \
 		--enable-nls \
+		--with-systemduserunitdir=$(systemd_get_userunitdir) \
 		$(use_enable introspection) \
 		$(use_enable sqlite media-export-plugin) \
+		$(use_enable sqlite lms-plugin) \
 		$(use_enable test tests) \
 		$(use_enable tracker tracker-plugin) \
 		$(use_with X ui)

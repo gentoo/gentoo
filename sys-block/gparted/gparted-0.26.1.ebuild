@@ -1,10 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
-GCONF_DEBUG="no"
-
+EAPI=6
 inherit gnome2
 
 DESCRIPTION="Gnome Partition Editor"
@@ -13,10 +11,9 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2+ FDL-1.2+"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~ppc x86"
+KEYWORDS="~amd64 ~arm ~ppc ~x86"
 IUSE="btrfs dmraid f2fs fat hfs jfs kde mdadm ntfs policykit reiserfs reiser4 xfs"
 
-# FIXME: add gpart support
 COMMON_DEPEND="
 	>=dev-cpp/glibmm-2.14:2
 	>=dev-cpp/gtkmm-2.22:2.4
@@ -25,7 +22,7 @@ COMMON_DEPEND="
 "
 RDEPEND="${COMMON_DEPEND}
 	!policykit? (
-		kde? ( kde-apps/kdesu ) )
+		kde? ( kde-plasma/kde-cli-tools[kdesu] ) )
 	policykit? ( sys-auth/polkit )
 
 	>=sys-apps/util-linux-2.20
@@ -83,7 +80,7 @@ src_install() {
 	else
 		if use kde; then
 			cp "${_ddir}"/gparted{,-kde}.desktop
-			sed -i -e 's:Exec=:Exec=kdesu :' "${_ddir}"/gparted-kde.desktop
+			sed -i -e 's:Exec=:Exec=kdesu5 :' "${_ddir}"/gparted-kde.desktop
 			echo 'OnlyShowIn=KDE;' >> "${_ddir}"/gparted-kde.desktop
 		fi
 	fi
