@@ -16,6 +16,5 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="app-arch/unzip"
-RDEPEND=""
 
 S=${WORKDIR}/DucViet

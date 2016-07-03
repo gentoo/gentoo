@@ -17,5 +17,3 @@ LICENSE="GDLS"
 KEYWORDS="~amd64 ~ppc sparc x86"
 IUSE=""
 
-DEPEND=""
-RDEPEND=""

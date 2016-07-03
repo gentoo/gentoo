@@ -16,5 +16,3 @@ HOMEPAGE="http://download.huzheng.org/zh_CN/"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~sparc ~x86"
 IUSE=""
 
-DEPEND=""
-RDEPEND=""
