@@ -1,13 +1,12 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
-GCONF_DEBUG="no"
+EAPI=6
 GNOME2_LA_PUNT="yes"
 VALA_USE_DEPEND="vapigen"
 
-inherit gnome2 user readme.gentoo udev vala
+inherit gnome2 user readme.gentoo-r1 udev vala
 
 DESCRIPTION="Modem and mobile broadband management libraries"
 HOMEPAGE="https://cgit.freedesktop.org/ModemManager/ModemManager/"
@@ -15,7 +14,8 @@ SRC_URI="https://www.freedesktop.org/software/ModemManager/ModemManager-${PV}.ta
 
 LICENSE="GPL-2+"
 SLOT="0/1" # subslot = dbus interface version, i.e. N in org.freedesktop.ModemManager${N}
-KEYWORDS="~alpha amd64 arm ~ia64 ~mips ppc ppc64 ~sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
+
 IUSE="+introspection mbim policykit +qmi qmi-newest vala"
 REQUIRED_USE="
 	qmi-newest? ( qmi )
@@ -25,7 +25,7 @@ REQUIRED_USE="
 RDEPEND="
 	>=dev-libs/glib-2.32:2
 	virtual/libgudev:=
-	introspection? ( >=dev-libs/gobject-introspection-0.9.6 )
+	introspection? ( >=dev-libs/gobject-introspection-0.9.6:= )
 	mbim? ( >=net-libs/libmbim-1.10 )
 	policykit? ( >=sys-auth/polkit-0.106[introspection] )
 	qmi? ( >=net-libs/libqmi-1.12.4:= )

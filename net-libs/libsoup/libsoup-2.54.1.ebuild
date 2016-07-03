@@ -1,28 +1,31 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
-GCONF_DEBUG="yes"
+EAPI=6
 GNOME2_LA_PUNT="yes"
-PYTHON_COMPAT=( python{2_7,3_3,3_4} )
+PYTHON_COMPAT=( python{2_7,3_3,3_4,3_5} )
+VALA_USE_DEPEND="vapigen"
 
-inherit gnome2 multilib-minimal python-any-r1
+inherit gnome2 multilib-minimal python-any-r1 vala
 
 DESCRIPTION="An HTTP library implementation in C"
-HOMEPAGE="https://wiki.gnome.org/LibSoup"
+HOMEPAGE="https://wiki.gnome.org/Projects/libsoup"
 
 LICENSE="LGPL-2+"
 SLOT="2.4"
-IUSE="debug +introspection samba ssl test"
-KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~x86-freebsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x86-solaris"
+
+IUSE="debug gssapi +introspection samba ssl test vala"
+REQUIRED_IUSE="vala? ( introspection )"
+
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~x86-freebsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x86-solaris"
 
 RDEPEND="
 	>=dev-libs/glib-2.34.3:2[${MULTILIB_USEDEP}]
 	>=dev-libs/libxml2-2.9.1-r4:2[${MULTILIB_USEDEP}]
 	>=dev-db/sqlite-3.8.2:3[${MULTILIB_USEDEP}]
 	>=net-libs/glib-networking-2.38.2[ssl?,${MULTILIB_USEDEP}]
-	introspection? ( >=dev-libs/gobject-introspection-0.9.5 )
+	introspection? ( >=dev-libs/gobject-introspection-0.9.5:= )
 	samba? ( net-fs/samba )
 "
 DEPEND="${RDEPEND}
@@ -32,6 +35,7 @@ DEPEND="${RDEPEND}
 	sys-devel/gettext
 	>=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}]
 	test? ( >=dev-libs/glib-2.40:2[${MULTILIB_USEDEP}] )
+	vala? ( $(vala_depend) )
 "
 #	test? (	www-servers/apache[ssl,apache2_modules_auth_digest,apache2_modules_alias,apache2_modules_auth_basic,
 #		apache2_modules_authn_file,apache2_modules_authz_host,apache2_modules_authz_user,apache2_modules_dir,
@@ -40,16 +44,6 @@ DEPEND="${RDEPEND}
 #		net-misc/curl
 #		net-libs/glib-networking[ssl])"
 
-# They hang for some unknown reason, bug #537836, also bug #326957 is pending
-RESTRICT="test"
-
-RDEPEND="${RDEPEND}
-	abi_x86_32? (
-		!<=app-emulation/emul-linux-x86-baselibs-20140508-r8
-		!app-emulation/emul-linux-x86-baselibs[-abi_x86_32(-)]
-	)
-"
-
 src_prepare() {
 	if ! use test; then
 		# don't waste time building tests (bug #226271)
@@ -57,10 +51,7 @@ src_prepare() {
 			|| die "sed failed"
 	fi
 
-	# FIXME: does not behave as expected
-	sed -e 's|\(g_test_add.*\)|/*\1*/|' \
-		-i tests/socket-test.c || die
-
+	use vala && vala_src_prepare
 	gnome2_src_prepare
 }
 
@@ -80,7 +71,10 @@ multilib_src_configure() {
 		--disable-tls-check \
 		--without-gnome \
 		--without-apache-httpd \
+		$(usex debug --enable-debug=yes ' ') \
+		$(multilib_native_use_with gssapi) \
 		$(multilib_native_use_enable introspection) \
+		$(multilib_native_use_enable vala) \
 		$(use_with samba ntlm-auth '${EPREFIX}'/usr/bin/ntlm_auth)
 
 	if multilib_is_native_abi; then
