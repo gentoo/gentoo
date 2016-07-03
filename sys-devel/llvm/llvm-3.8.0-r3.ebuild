@@ -173,7 +173,7 @@ src_prepare() {
 	sed -i -e 's/xcrun/false/' utils/lit/lit/util.py || die
 
 	# Workaround, can be compiled with gcc on Gentoo/FreeBSD, bug #578064
-	use kernel_FreeBSD && [[ $(tc-getCC) == *gcc* ]] && append-cppflags "-D_GLIBCXX_USE_C99"
+	use kernel_FreeBSD && tc-is-gcc && append-cppflags "-D_GLIBCXX_USE_C99"
 
 	if use clang; then
 		# Automatically select active system GCC's libraries, bugs #406163 and #417913
