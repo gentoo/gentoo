@@ -134,6 +134,15 @@ get_ejabberd_path() {
 	echo "$(get_erl_libs)/${P}"
 }
 
+# Make ejabberd.service for systemd from upstream provided template.
+make_ejabberd_service() {
+	sed -r \
+		-e 's!@ctlscriptpath@!/usr/sbin!' \
+		-e 's!(User|Group)=(.*)!\1=jabber!' \
+		"${PN}.service.template" >"${PN}.service" \
+		|| die 'failed to make ejabberd.service'
+}
+
 # Set paths to defined by net-im/jabber-base.
 set_jabberbase_paths() {
 	sed -e "/^ETCDIR[[:space:]]*=/{s:@sysconfdir@/ejabberd:${JABBER_ETC}:}" \
@@ -168,6 +177,7 @@ src_prepare() {
 	rebar_remove_deps
 	correct_ejabberd_paths
 	set_jabberbase_paths
+	make_ejabberd_service
 	skip_docs
 	adjust_config
 	customize_epam_wrapper "${FILESDIR}/epam-wrapper"
@@ -215,7 +225,7 @@ src_install() {
 
 	newconfd "${FILESDIR}/${PN}-3.confd" "${PN}"
 	newinitd "${FILESDIR}/${PN}-3.initd" "${PN}"
-	systemd_dounit "${FILESDIR}/${PN}.service"
+	systemd_dounit "${PN}.service"
 	systemd_dotmpfilesd "${FILESDIR}/${PN}.tmpfiles.conf"
 
 	insinto /etc/logrotate.d

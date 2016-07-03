@@ -3,6 +3,8 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+extra_started_commands="reload"
+
 depend() {
 	use dns
 	need epmd net
@@ -16,6 +18,12 @@ start() {
 	fi
 	ebegin "Starting ejabberd"
 	/usr/sbin/ejabberdctl ${EJABBERDCTL_OPTS} start
+	eend $?
+}
+
+reload() {
+	ebegin "Reloading ejabberd configuration"
+	/usr/sbin/ejabberdctl ${EJABBERDCTL_OPTS} reload_config
 	eend $?
 }
 
