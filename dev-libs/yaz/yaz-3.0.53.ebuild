@@ -18,7 +18,7 @@ RDEPEND="dev-libs/libxml2
 	dev-libs/libxslt
 	!libressl? ( dev-libs/openssl:0= )
 	libressl? ( dev-libs/libressl:0= )
-	icu? ( dev-libs/icu )
+	icu? ( dev-libs/icu:= )
 	tcpd? ( sys-apps/tcp-wrappers )
 	ziffy? ( net-libs/libpcap )"
 DEPEND="${RDEPEND}
