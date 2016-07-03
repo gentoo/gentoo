@@ -20,7 +20,7 @@ RDEPEND="
 	dev-libs/libxml2
 	introspection? ( >=dev-libs/gobject-introspection-0.10.8 )"
 DEPEND="${RDEPEND}
-	dev-libs/gobject-introspection-common
+	introspection? ( dev-libs/gobject-introspection-common )
 	sys-devel/gettext
 	test? ( dev-libs/check )"
 
