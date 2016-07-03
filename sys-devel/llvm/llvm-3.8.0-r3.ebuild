@@ -173,7 +173,7 @@ src_prepare() {
 	sed -i -e 's/xcrun/false/' utils/lit/lit/util.py || die
 
 	# Workaround, can be compiled with gcc on Gentoo/FreeBSD, bug #578064
-	use kernel_FreeBSD && [[ $(tc-getCC) == *gcc* ]] && append-cppflags "-D_GLIBCXX_USE_C99"
+	use kernel_FreeBSD && tc-is-gcc && append-cppflags "-D_GLIBCXX_USE_C99"
 
 	if use clang; then
 		# Automatically select active system GCC's libraries, bugs #406163 and #417913
@@ -366,6 +366,23 @@ multilib_src_configure() {
 		# some flags clang does not support
 		# (if you know some more flags that don't work, let us know)
 		#filter-flags -msahf -frecord-gcc-switches
+	fi
+
+	if tc-is-cross-compiler; then
+		[[ -x "/usr/bin/llvm-tblgen" ]] \
+			|| die "/usr/bin/llvm-tblgen not found or usable"
+		mycmakeargs+=(
+			-DCMAKE_CROSSCOMPILING=ON
+			-DLLVM_TABLEGEN=/usr/bin/llvm-tblgen
+		)
+
+		if use clang; then
+			[[ -x "/usr/bin/clang-tblgen" ]] \
+				|| die "/usr/bin/clang-tblgen not found or usable"
+			mycmakeargs+=(
+				-DCLANG_TABLEGEN=/usr/bin/clang-tblgen
+			)
+		fi
 	fi
 
 	cmake-utils_src_configure
