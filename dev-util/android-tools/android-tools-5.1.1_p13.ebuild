@@ -61,6 +61,6 @@ src_prepare() {
 }
 
 src_install() {
-	default
+	emake DESTDIR="${ED}" install
 	newbashcomp arch/*/trunk/bash_completion fastboot
 }
