@@ -18,7 +18,7 @@ RDEPEND="dev-lang/perl
 DEPEND="${RDEPEND}"
 
 src_install() {
-	emake DESTDIR="${D}" PREFIX="/usr" install
+	emake DESTDIR="${D}" PREFIX="${EPREFIX}/usr" install
 	dodoc README
 	doman xmltoman.1 xmlmantohtml.1
 }
