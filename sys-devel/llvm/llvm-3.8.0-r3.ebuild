@@ -214,8 +214,8 @@ src_prepare() {
 
 		# Fix WX sections, bug #421527
 		find lib/builtins -type f -name '*.S' -exec sed \
-			 -e '$a\\n#if defined(__linux__) && defined(__ELF__)\n.section .note.GNU-stack,"",%progbits\n#endif' \
-			 -i {} + || die
+			-e '$a\\n#if defined(__linux__) && defined(__ELF__)\n.section .note.GNU-stack,"",%progbits\n#endif' \
+			-i {} + || die
 
 		popd >/dev/null || die
 	fi
