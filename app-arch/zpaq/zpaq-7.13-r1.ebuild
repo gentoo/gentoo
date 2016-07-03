@@ -4,7 +4,7 @@
 
 EAPI=6
 
-inherit flag-o-matic toolchain-funcs
+inherit flag-o-matic pax-utils toolchain-funcs
 
 MY_P=${PN}${PV/./}
 DESCRIPTION="Journaling incremental deduplicating archiving compressor"
@@ -38,11 +38,13 @@ src_compile() {
 
 src_test() {
 	local -x LD_LIBRARY_PATH=".${LD_LIBRARY_PATH+:${LD_LIBRARY_PATH}}"
+	use jit && pax-mark m zpaq
 	default
 }
 
 src_install() {
 	emake install PREFIX="${ED%/}"/usr LIBDIR="\$(PREFIX)/$(get_libdir)"
+	use jit && pax-mark m "${ED%/}"/usr/bin/zpaq
 	einstalldocs
 }
 
