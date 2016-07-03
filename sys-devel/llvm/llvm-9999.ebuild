@@ -343,6 +343,23 @@ multilib_src_configure() {
 		#filter-flags -msahf -frecord-gcc-switches
 	fi
 
+	if tc-is-cross-compiler; then
+		[[ -x "/usr/bin/llvm-tblgen" ]] \
+			|| die "/usr/bin/llvm-tblgen not found or usable"
+		mycmakeargs+=(
+			-DCMAKE_CROSSCOMPILING=ON
+			-DLLVM_TABLEGEN=/usr/bin/llvm-tblgen
+		)
+
+		if use clang; then
+			[[ -x "/usr/bin/clang-tblgen" ]] \
+				|| die "/usr/bin/clang-tblgen not found or usable"
+			mycmakeargs+=(
+				-DCLANG_TABLEGEN=/usr/bin/clang-tblgen
+			)
+		fi
+	fi
+
 	cmake-utils_src_configure
 }
 
