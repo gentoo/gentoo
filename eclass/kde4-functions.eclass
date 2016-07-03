@@ -76,6 +76,27 @@ case ${KDE_SCM} in
 	*) die "KDE_SCM: ${KDE_SCM} is not supported" ;;
 esac
 
+# @FUNCTION: kde4_lingua_to_l10n
+# @USAGE: <lingua>...
+# @INTERNAL
+# @DESCRIPTION:
+# Output l10n flag name(s) (without prefix(es)) appropriate for given KDE
+# locale(s).
+kde4_lingua_to_l10n() {
+	local l
+	for l; do
+		case ${l} in
+			ca@valencia) echo ca-valencia;;
+			sr@ijekavian) echo sr-ijekavsk;;
+			sr@ijekavianlatin) echo sr-Latn-ijekavsk;;
+			sr@latin|sr@Latn) echo sr-Latn;;
+			uz@cyrillic) echo uz-Cyrl;;
+			*@*) die "${FUNCNAME}: Unhandled KDE_LINGUAS: ${l}";;
+			*) echo "${l/_/-}";;
+		esac
+	done
+}
+
 # @ECLASS-VARIABLE: KDE_LINGUAS
 # @DESCRIPTION:
 # This is a whitespace-separated list of translations this ebuild supports.
@@ -86,8 +107,8 @@ esac
 #
 # Example: KDE_LINGUAS="de en_GB nl"
 if [[ ${KDE_BUILD_TYPE} != live || -n ${KDE_LINGUAS_LIVE_OVERRIDE} ]]; then
-	for _lingua in ${KDE_LINGUAS}; do
-		IUSE="${IUSE} linguas_${_lingua}"
+	for _lingua in $(kde4_lingua_to_l10n ${KDE_LINGUAS}); do
+		IUSE="${IUSE} l10n_${_lingua}"
 	done
 fi
 
@@ -139,18 +160,13 @@ comment_all_add_subdirectory() {
 
 # @FUNCTION: enable_selected_linguas
 # @DESCRIPTION:
-# Enable translations based on LINGUAS settings and translations supported by
+# Enable translations based on L10N settings and translations supported by
 # the package (see KDE_LINGUAS). By default, translations are found in "${S}"/po
 # but this default can be overridden by defining KDE_LINGUAS_DIR.
 enable_selected_linguas() {
 	debug-print-function ${FUNCNAME} "$@"
 
 	local x
-
-	# if there is no linguas defined we enable everything
-	if ! $(env | grep -q "^LINGUAS="); then
-		return 0
-	fi
 
 	# @ECLASS-VARIABLE: KDE_LINGUAS_DIR
 	# @DESCRIPTION:
@@ -171,7 +187,7 @@ enable_selected_linguas() {
 
 # @FUNCTION: enable_selected_doc_linguas
 # @DESCRIPTION:
-# Enable only selected linguas enabled doc folders.
+# Enable only selected L10N enabled doc folders.
 enable_selected_doc_linguas() {
 	debug-print-function ${FUNCNAME} "$@"
 
@@ -195,11 +211,6 @@ enable_selected_doc_linguas() {
 				-e "/ADD_SUBDIRECTORY[[:space:]]*([[:space:]]*${handbookdir}[[:space:]]*)/s/^/#DONOTCOMPILE /" \
 				-i CMakeLists.txt || die 'failed to comment out all handbooks'
 		else
-			# if there is no linguas defined we enable everything (i.e. comment out nothing)
-			if ! $(env | grep -q "^LINGUAS="); then
-				return 0
-			fi
-
 			# Disable subdirectories recursively
 			comment_all_add_subdirectory "${handbookdir}"
 
@@ -213,7 +224,7 @@ enable_selected_doc_linguas() {
 			# Add requested translations
 			local lingua
 			for lingua in en ${KDE_LINGUAS}; do
-				if [[ ${lingua} = en ]] || use linguas_${lingua}; then
+				if [[ ${lingua} = en ]] || use "l10n_$(kde4_lingua_to_l10n "${lingua}")"; then
 					if [[ -d ${handbookdir}/${translationdir//%lingua/${lingua}} ]]; then
 						sed -e "/add_subdirectory[[:space:]]*([[:space:]]*${translationdir//%lingua/${lingua}}/s/^#DONOTCOMPILE //" \
 							-e "/ADD_SUBDIRECTORY[[:space:]]*([[:space:]]*${translationdir//%lingua/${lingua}}/s/^#DONOTCOMPILE //" \
@@ -376,7 +387,7 @@ _enable_selected_linguas_dir() {
 	done
 
 	for lingua in ${KDE_LINGUAS}; do
-		if use linguas_${lingua} ; then
+		if use "l10n_$(kde4_lingua_to_l10n ${lingua})" ; then
 			if [[ -d ${lingua} ]]; then
 				linguas="${linguas} ${lingua}"
 				sed -e "/add_subdirectory([[:space:]]*${lingua}[[:space:]]*)[[:space:]]*$/ s/^#DONOTCOMPILE //" \

@@ -39,13 +39,13 @@ LURI_BASE="mirror://kde/stable/${LV}/src/${KMNAME}"
 SRC_URI=""
 
 for MY_LANG in ${LEGACY_LANGS} ; do
-	IUSE="${IUSE} linguas_${MY_LANG}"
-	SRC_URI="${SRC_URI} linguas_${MY_LANG}? ( ${LURI_BASE}/${KMNAME}-${MY_LANG}-${LV}.tar.xz )"
+	IUSE="${IUSE} l10n_${MY_LANG/[@_]/-}"
+	SRC_URI="${SRC_URI} l10n_${MY_LANG/[@_]/-}? ( ${LURI_BASE}/${KMNAME}-${MY_LANG}-${LV}.tar.xz )"
 done
 
 for MY_LANG in ${MY_LANGS} ; do
-	IUSE="${IUSE} linguas_${MY_LANG}"
-	SRC_URI="${SRC_URI} linguas_${MY_LANG}? ( ${URI_BASE}/${KMNAME}-${MY_LANG}-${PV}.tar.xz )"
+	IUSE="${IUSE} l10n_${MY_LANG/[@_]/-}"
+	SRC_URI="${SRC_URI} l10n_${MY_LANG/[@_]/-}? ( ${URI_BASE}/${KMNAME}-${MY_LANG}-${PV}.tar.xz )"
 done
 
 S="${WORKDIR}"
@@ -53,12 +53,10 @@ S="${WORKDIR}"
 src_unpack() {
 	if [[ -z ${A} ]]; then
 		elog
-		elog "You either have the LINGUAS variable unset, or it only"
-		elog "contains languages not supported by ${P}."
-		elog "You won't have any additional language support."
+		elog "None of the requested L10N are supported by ${P}."
 		elog
 		elog "${P} supports these language codes:"
-		elog "${MY_LANGS}"
+		elog "${MY_LANGS//[@_]/-}"
 		elog
 	fi
 
@@ -67,9 +65,9 @@ src_unpack() {
 
 src_prepare() {
 	local LNG DIR LDIR SDIR
-	# add all linguas to cmake
+	# add all l10n to cmake
 	if [[ -n ${A} ]]; then
-		for LNG in ${LINGUAS}; do
+		for LNG in ${MY_LANGS} ; do
 			DIR="${KMNAME}-${LNG}-${PV}"
 			LDIR="${KMNAME}-${LNG}-${LV}"
 			SDIR="${S}/${DIR}/4/${LNG}"
@@ -97,7 +95,7 @@ src_prepare() {
 					einfo "   messages..."
 					for path in $(grep -v "^#" "${REMOVE_MSGS}") ; do
 						rm -f "${SDIR}"/messages/${path}
-						# Quirk for LINGUAS=sr variants
+						# Quirk for L10N=sr variants
 						if [[ ${LNG} = "sr" ]] ; then
 							rm -f "${SDIR}"/${LNG}\@*/messages/${path} || die
 						fi
