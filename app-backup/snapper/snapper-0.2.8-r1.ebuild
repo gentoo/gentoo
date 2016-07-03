@@ -4,16 +4,15 @@
 
 EAPI=6
 
-EGIT_REPO_URI="git://github.com/openSUSE/snapper.git"
-inherit autotools eutils git-r3
+inherit eutils
 
 DESCRIPTION="Command-line program for btrfs and ext4 snapshot management"
 HOMEPAGE="http://snapper.io/"
-SRC_URI=""
+SRC_URI="ftp://ftp.suse.com/pub/projects/snapper/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="+btrfs ext4 lvm pam xattr"
 
 RDEPEND=">=dev-libs/boost-1.61.0-r100:=[threads]
@@ -34,14 +33,7 @@ DEPEND="${RDEPEND}
 	sys-devel/gettext
 	virtual/pkgconfig"
 
-DOCS=( AUTHORS README.md package/snapper.changes )
-
 PATCHES=( "${FILESDIR}"/cron-confd.patch )
-
-src_prepare() {
-	default
-	eautoreconf
-}
 
 src_configure() {
 	econf \
