@@ -47,7 +47,7 @@ src_configure() {
 	# in our src_install, so no need to manually delete it.
 	myeconfargs=(
 		--docdir="${EPREFIX}/usr/share/doc/${PF}"
-		--with-drivedbdir=/var/db/${PN} #575292
+		--with-drivedbdir="${EPREFIX}/var/db/${PN}" #575292
 		--with-initscriptdir="${EPREFIX}/etc/init.d"
 		$(use_with caps libcap-ng)
 		$(use_with selinux)
