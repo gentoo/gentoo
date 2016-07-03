@@ -2,6 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+EAPI=6
+
 FROM_LANG="English"
 TO_LANG="Latin"
 DICT_PREFIX="dictd_www.freedict.de_"

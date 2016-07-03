@@ -2,6 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+EAPI=6
+
 FROM_LANG="German"
 TO_LANG="Vietnamese"
 
