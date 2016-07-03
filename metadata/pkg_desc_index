@@ -11040,13 +11040,13 @@ gnome-extra/evolution-ews 3.18.5 3.20.3: Evolution module for connecting to Micr
 gnome-extra/gconf-editor 3.0.1-r1: An editor to the GNOME config system
 gnome-extra/gnome-activity-journal 0.8.0-r4 0.8.0-r5: Tool for easily browsing and finding files on your computer
 gnome-extra/gnome-boxes 3.18.1 3.20.2: Simple GNOME 3 application to access remote or virtual systems
-gnome-extra/gnome-builder 3.16.3 3.18.1: Builder attempts to be an IDE for writing software for GNOME
+gnome-extra/gnome-builder 3.18.1: Builder attempts to be an IDE for writing software for GNOME
 gnome-extra/gnome-calculator 3.18.3 3.20.1: A calculator application for GNOME
 gnome-extra/gnome-calendar 3.18.3 3.20.2: Manage your online calendars with simple and modern interface
 gnome-extra/gnome-characters 3.18.1 3.20.1: Unicode character map viewer and library
 gnome-extra/gnome-clocks 3.18.0 3.20.1: Clocks application for GNOME
 gnome-extra/gnome-color-chooser 0.2.5: GTK+/GNOME color customization tool
-gnome-extra/gnome-color-manager 3.18.0: Color profile manager for the GNOME desktop
+gnome-extra/gnome-color-manager 3.18.0 3.20.0: Color profile manager for the GNOME desktop
 gnome-extra/gnome-commander 1.4.2 1.4.6 1.4.7 1.4.8: A graphical, full featured, twin-panel file manager
 gnome-extra/gnome-contacts 3.18.1 3.20.0: GNOME contact management application
 gnome-extra/gnome-directory-thumbnailer 0.1.6 0.1.7: Thumbnail generator for directories
@@ -18256,7 +18256,7 @@ x11-misc/cbatticon 1.3.2 1.6.3 1.6.4: A lightweight and fast battery icon that s
 x11-misc/ccsm 0.8.4-r4 0.8.4-r5: Compizconfig Settings Manager
 x11-misc/cdm 0.5.3 0.6.1_pre20130419: The Console Display Manager
 x11-misc/chgres 0.1-r1: A very simple command line utility for changing X resolutions
-x11-misc/colord 1.2.12: System service to accurately color manage input and output devices
+x11-misc/colord 1.2.12 1.3.2: System service to accurately color manage input and output devices
 x11-misc/compton 0.1_beta1 0.1_beta2 9999: A compositor for X, and a fork of xcompmgr-dana
 x11-misc/dclock 2.2.2_p4 2.2.2_p4-r1: Digital clock for the X window system
 x11-misc/denu 2.3.2-r1: A menu generation program for fluxbox, waimea, openbox, icewm, gnome and kde
