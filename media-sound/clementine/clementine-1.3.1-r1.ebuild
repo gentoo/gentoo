@@ -65,7 +65,7 @@ COMMON_DEPEND="
 # 06-fix-numeric-locale.patch
 # 08-stdlib.h-for-rand.patch
 RDEPEND="${COMMON_DEPEND}
-	dbus? ( udisks? ( sys-fs/udisks:2 ) )
+	dbus? ( udisks? ( sys-fs/udisks:0 ) )
 	mms? ( media-plugins/gst-plugins-libmms:1.0 )
 	mtp? ( gnome-base/gvfs )
 	media-plugins/gst-plugins-meta:1.0
@@ -73,7 +73,7 @@ RDEPEND="${COMMON_DEPEND}
 	media-plugins/gst-plugins-taglib:1.0
 "
 DEPEND="${COMMON_DEPEND}
-	>=dev-libs/boost-1.39
+	>=dev-libs/boost-1.39:=
 	virtual/pkgconfig
 	sys-devel/gettext
 	dev-qt/qttest:4
