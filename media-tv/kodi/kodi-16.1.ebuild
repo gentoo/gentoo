@@ -10,7 +10,7 @@ PYTHON_REQ_USE="sqlite"
 
 inherit eutils linux-info python-single-r1 multiprocessing autotools toolchain-funcs
 
-CODENAME="Krypton"
+CODENAME="Jarvis"
 case ${PV} in
 9999)
 	EGIT_REPO_URI="git://github.com/xbmc/xbmc.git"
@@ -35,7 +35,7 @@ HOMEPAGE="https://kodi.tv/ http://kodi.wiki/"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="airplay alsa bluetooth bluray caps cec dbus debug gles java midi mysql nfs +opengl profile pulseaudio +samba sftp test +texturepacker udisks upnp upower +usb vaapi vdpau webserver +X zeroconf"
+IUSE="airplay alsa bluetooth bluray caps cec css dbus debug gles java joystick midi mysql nfs +opengl profile pulseaudio rtmp +samba sftp test +texturepacker udisks upnp upower +usb vaapi vdpau webserver +X zeroconf"
 # gles/vaapi: http://trac.kodi.tv/ticket/10552 #464306
 REQUIRED_USE="
 	|| ( gles opengl )
@@ -50,6 +50,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	app-arch/zip
 	app-i18n/enca
 	airplay? ( app-pda/libplist )
+	dev-libs/boost:=
 	dev-libs/expat
 	dev-libs/fribidi
 	dev-libs/libcdio[-minimal]
@@ -61,10 +62,8 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	dev-libs/tinyxml[stl]
 	>=dev-libs/yajl-2
 	dev-python/simplejson[${PYTHON_USEDEP}]
-	dev-python/pillow[${PYTHON_USEDEP}]
-	media-fonts/anonymous-pro
 	media-fonts/corefonts
-	media-fonts/dejavu
+	media-fonts/roboto
 	alsa? ( media-libs/alsa-lib )
 	media-libs/flac
 	media-libs/fontconfig
@@ -73,14 +72,22 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	media-libs/jbigkit
 	>=media-libs/libass-0.9.7
 	bluray? ( >=media-libs/libbluray-0.7.0 )
+	css? ( media-libs/libdvdcss )
 	media-libs/libmad
 	media-libs/libmodplug
 	media-libs/libmpeg2
+	media-libs/libogg
+	media-libs/libpng:0=
 	media-libs/libsamplerate
-	>=media-libs/taglib-1.9
+	joystick? ( media-libs/libsdl2 )
+	>=media-libs/taglib-1.8
+	media-libs/libvorbis
 	media-libs/tiff:0=
+	media-sound/dcadec
+	pulseaudio? ( media-sound/pulseaudio )
 	media-sound/wavpack
-	>=media-video/ffmpeg-3.0:=[encode]
+	>=media-video/ffmpeg-2.6:=[encode]
+	rtmp? ( media-video/rtmpdump )
 	nfs? ( net-fs/libnfs:= )
 	webserver? ( net-libs/libmicrohttpd[messages] )
 	sftp? ( net-libs/libssh[sftp] )
@@ -138,6 +145,7 @@ DEPEND="${COMMON_DEPEND}
 PATCHES=(
 	"${FILESDIR}"/${PN}-9999-no-arm-flags.patch #400618887
 	"${FILESDIR}"/${PN}-9999-texturepacker.patch
+	"${FILESDIR}"/${PN}-16-ffmpeg3.patch
 )
 
 CONFIG_CHECK="~IP_MULTICAST"
@@ -214,15 +222,18 @@ src_configure() {
 		$(use_enable bluray libbluray) \
 		$(use_enable caps libcap) \
 		$(use_enable cec libcec) \
+		$(use_enable css dvdcss) \
 		$(use_enable dbus) \
 		$(use_enable debug) \
 		$(use_enable gles) \
+		$(use_enable joystick) \
 		$(use_enable midi mid) \
 		$(use_enable mysql) \
 		$(use_enable nfs) \
 		$(use_enable opengl gl) \
 		$(use_enable profile profiling) \
 		$(use_enable pulseaudio pulse) \
+		$(use_enable rtmp) \
 		$(use_enable samba) \
 		$(use_enable sftp ssh) \
 		$(use_enable usb libusb) \
@@ -253,14 +264,11 @@ src_install() {
 	rm -rf "${ED%/}"/usr/share/kodi/system/players/dvdplayer/etc || die
 
 	# Replace bundled fonts with system ones.
-	rm "${ED%/}"/usr/share/kodi/addons/skin.estouchy/fonts/DejaVuSans-Bold.ttf || die
-	dosym /usr/share/fonts/dejavu/DejaVuSans-Bold.ttf \
-		/usr/share/kodi/addons/skin.estouchy/fonts/DejaVuSans-Bold.ttf
-	rm "${ED%/}"/usr/share/kodi/addons/skin.estuary/fonts/AnonymousPro.ttf || die
-	dosym /usr/share/fonts/anonymous-pro/Anonymous\ Pro.ttf \
-		/usr/share/kodi/addons/skin.estuary/fonts/AnonymousPro.ttf
-	#lato is also present but cannot be unbundled because
-	#lato isn't (yet) in portage: https://bugs.gentoo.org/show_bug.cgi?id=589288
+	rm "${ED%/}"/usr/share/kodi/addons/skin.confluence/fonts/Roboto-* || die
+	dosym /usr/share/fonts/roboto/Roboto-Regular.ttf \
+		/usr/share/kodi/addons/skin.confluence/fonts/Roboto-Regular.ttf
+	dosym /usr/share/fonts/roboto/Roboto-Bold.ttf \
+		/usr/share/kodi/addons/skin.confluence/fonts/Roboto-Bold.ttf
 
 	python_domodule tools/EventClients/lib/python/xbmcclient.py
 	python_newscript "tools/EventClients/Clients/Kodi Send/kodi-send.py" kodi-send

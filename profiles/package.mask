@@ -30,6 +30,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Craig Andrews <candrews@integralblue.com> (25 Oct 2016)
+# >=media-tv/kodi-17.0_alpha requires >=media-video/ffmpeg-3.0
+# which is hard masked see #574788
+>=media-tv/kodi-17.0_beta3
+
 # Mike Gilbert <floppym@gentoo.org> (24 Oct 2016)
 # Dev channel releases are only for people who are developers or want more
 # experimental features and accept a more unstable release.
