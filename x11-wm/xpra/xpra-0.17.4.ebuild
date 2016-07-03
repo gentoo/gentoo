@@ -19,7 +19,8 @@ IUSE="+client +clipboard csc cups dec_av2 libav lz4 lzo opengl pulseaudio server
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	clipboard? ( || ( server client ) )
 	opengl? ( client )
-	|| ( client server )"
+	|| ( client server )
+	client? ( x264? ( dec_av2 ) x265? ( dec_av2 ) )"
 
 # x264/old-libav.path situation see bug 459218
 COMMON_DEPEND=""${PYTHON_DEPS}"
