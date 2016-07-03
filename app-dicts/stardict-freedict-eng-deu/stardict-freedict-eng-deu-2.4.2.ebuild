@@ -13,4 +13,3 @@ inherit stardict
 HOMEPAGE="http://download.huzheng.org/freedict.de/"
 KEYWORDS="amd64 ppc sparc x86"
 IUSE=""
-

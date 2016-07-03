@@ -13,4 +13,3 @@ HOMEPAGE="http://download.huzheng.org/mova.org/"
 
 KEYWORDS="~amd64 ~ppc ~sparc ~x86"
 IUSE=""
-

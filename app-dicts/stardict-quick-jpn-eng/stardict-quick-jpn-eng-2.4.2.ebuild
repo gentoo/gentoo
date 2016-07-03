@@ -14,4 +14,3 @@ HOMEPAGE="http://download.huzheng.org/Quick/"
 
 KEYWORDS="~amd64 ~ppc ~sparc ~x86"
 IUSE=""
-
