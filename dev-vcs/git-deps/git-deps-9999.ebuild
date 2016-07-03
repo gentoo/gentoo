@@ -18,7 +18,9 @@ LICENSE="GPL-2"
 SLOT="0"
 
 RDEPEND="
+	dev-python/flask
 	dev-python/pygit2
+	net-libs/nodejs
 	${PYTHON_DEPS}
 	"
 DEPEND="${RDEPEND}"
@@ -26,4 +28,8 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 src_install() {
 	python_foreach_impl python_newexe git-deps.py git-deps
+}
+
+pkg_postinst() {
+	einfo "Please run 'npm install browserify' to use git-deps with the web UI."
 }
