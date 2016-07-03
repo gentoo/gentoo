@@ -189,6 +189,9 @@ src_prepare() {
 		eapply "${FILESDIR}"/clang-3.4-darwin_prefix-include-paths.patch
 		eprefixify tools/clang/lib/Frontend/InitHeaderSearch.cpp
 
+		# Fix -isystem support in ccc-analyzer
+		eapply "${FILESDIR}"/clang-3.7.1-ccc-analyzer-isystem.patch
+
 		sed -i -e "s^@EPREFIX@^${EPREFIX}^" \
 			tools/clang/tools/scan-build/scan-build || die
 
