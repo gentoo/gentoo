@@ -14,7 +14,9 @@ KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86
 IUSE="static-libs"
 
 RDEPEND="app-text/hunspell"
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	dev-lang/perl
+"
 
 DOCS="AUTHORS ChangeLog NEWS README* THANKS TODO"
 
