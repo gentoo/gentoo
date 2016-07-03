@@ -13,7 +13,7 @@ SRC_URI="https://github.com/processone/${PN}/archive/${PV}.tar.gz
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~x86"
+KEYWORDS="~amd64 ~arm ~ia64 ~ppc ~sparc ~x86"
 
 DEPEND=">=dev-erlang/fast_tls-1.0.0
 	>=dev-erlang/p1_utils-1.0.2

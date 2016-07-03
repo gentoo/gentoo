@@ -12,7 +12,7 @@ SRC_URI="https://dev.gentoo.org/~aidecoe/distfiles/${CATEGORY}/${PN}/${P}.tar.gz
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~x86"
+KEYWORDS="~amd64 ~arm ~ia64 ~ppc ~sparc ~x86"
 
 DEPEND=">=dev-erlang/riak_pb-2.1.0.7
 	>=dev-lang/erlang-17.1"
