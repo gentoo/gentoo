@@ -99,7 +99,7 @@ RDEPEND="
 	)
 	marble? ( $(add_kdeapps_dep marble) )
 	mysql? ( virtual/mysql )
-	okular? ( $(add_kdeapps_dep okular) )
+	okular? ( >=kde-apps/okular-4.4:4=[aqua=] )
 	opengl? (
 		media-libs/glew
 		virtual/glu
