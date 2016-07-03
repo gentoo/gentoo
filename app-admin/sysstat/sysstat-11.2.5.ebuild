@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -12,7 +12,7 @@ SRC_URI="${HOMEPAGE}${P}.tar.xz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
-IUSE="debug +doc isag nls lm_sensors selinux static"
+IUSE="debug isag nls lm_sensors selinux static"
 
 CDEPEND="
 	isag? (
@@ -59,14 +59,14 @@ src_configure() {
 		conf_dir=/etc \
 		rcdir=${SYSSTAT_FAKE_RC_DIR} \
 		econf \
-			--enable-copy-only \
-			--with-systemdsystemunitdir=$(systemd_get_unitdir) \
 			$(use_enable debug debuginfo) \
-			$(use_enable doc documentation ) \
 			$(use_enable isag install-isag) \
 			$(use_enable lm_sensors sensors) \
 			$(use_enable nls) \
-			--enable-install-cron
+			--enable-copy-only \
+			--enable-documentation \
+			--enable-install-cron \
+			--with-systemdsystemunitdir=$(systemd_get_unitdir)
 }
 
 src_compile() {
@@ -89,5 +89,5 @@ src_install() {
 	newinitd "${FILESDIR}"/${PN}.init.d ${PN}
 	systemd_dounit ${PN}.service
 
-	use doc && rm -f "${D}"usr/share/doc/${PF}/COPYING
+	rm -f "${D}"usr/share/doc/${PF}/COPYING
 }
