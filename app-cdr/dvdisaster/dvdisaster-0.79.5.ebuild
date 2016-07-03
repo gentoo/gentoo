@@ -14,9 +14,9 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="debug nls"
 
-dvdi_langs="cs de it pt_BR ru sv"
+dvdi_langs="cs de it pt-BR ru sv"
 for dvdi_lang in ${dvdi_langs}; do
-	IUSE+=" linguas_${dvdi_lang}"
+	IUSE+=" l10n_${dvdi_lang}"
 done
 unset dvdi_lang
 
@@ -62,10 +62,10 @@ src_install() {
 
 	local dvdi_lang
 	for dvdi_lang in ${dvdi_langs}; do
-		use linguas_${dvdi_lang} || rm -rf \
-			${dest}/doc/${PF}/${dvdi_lang} \
-			${dest}/doc/${PF}/CREDITS.${dvdi_lang} \
-			${dest}/man/${dvdi_lang}
+		use l10n_${dvdi_lang} || rm -rf \
+			${dest}/doc/${PF}/${dvdi_lang/-/_} \
+			${dest}/doc/${PF}/CREDITS.${dvdi_lang/-/_} \
+			${dest}/man/${dvdi_lang/-/_}
 	done
 
 	rm -f "${D}"usr/bin/*-uninstall.sh
