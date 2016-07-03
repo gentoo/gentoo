@@ -147,4 +147,3 @@ deletetable() {
 }
 
 main "$@"
-exit $?

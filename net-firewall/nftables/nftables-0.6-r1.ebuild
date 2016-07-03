@@ -2,9 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-inherit autotools linux-info eutils systemd
+inherit autotools linux-info systemd
 
 DESCRIPTION="Linux kernel (3.13+) firewall, NAT and packet mangling tools"
 HOMEPAGE="http://netfilter.org/projects/nftables/"
@@ -16,7 +16,7 @@ KEYWORDS="~amd64 ~arm ~x86"
 IUSE="debug doc gmp +readline"
 
 RDEPEND=">=net-libs/libmnl-1.0.3
-	>=net-libs/libnftnl-1.0.5
+	>=net-libs/libnftnl-1.0.6
 	gmp? ( dev-libs/gmp:0= )
 	readline? ( sys-libs/readline:0= )"
 DEPEND="${RDEPEND}
@@ -26,7 +26,9 @@ DEPEND="${RDEPEND}
 	sys-devel/flex
 	virtual/pkgconfig"
 
-S="${WORKDIR}"/v${PV}
+S="${WORKDIR}/v${PV}"
+
+PATCHES=( "${FILESDIR}/${PN}-0.5-pdf-doc.patch" )
 
 pkg_setup() {
 	if kernel_is ge 3 13; then
@@ -38,16 +40,15 @@ pkg_setup() {
 }
 
 src_prepare() {
-	epatch -p1 "${FILESDIR}/${P}-pdf-doc.patch"
-	epatch_user
+	default
 	eautoreconf
 }
 
 src_configure() {
 	econf \
 		--sbindir="${EPREFIX}"/sbin \
-		$(use_enable debug) \
 		$(use_enable doc pdf-doc) \
+		$(use_enable debug) \
 		$(use_with readline cli) \
 		$(use_with !gmp mini_gmp)
 }
@@ -60,8 +61,24 @@ src_install() {
 	doexe "${FILESDIR}"/libexec/${PN}.sh
 
 	newconfd "${FILESDIR}"/${PN}.confd ${PN}
-	newinitd "${FILESDIR}"/${PN}.init-r2 ${PN}
+	newinitd "${FILESDIR}"/${PN}.init ${PN}
 	keepdir /var/lib/nftables
 
-	systemd_dounit "${FILESDIR}"/systemd/${PN}{,-{re,}store}.service
+	systemd_dounit "${FILESDIR}"/systemd/${PN}-restore.service
+	systemd_enable_service basic.target ${PN}-restore.service
+}
+
+pkg_postinst() {
+	local save_file
+	save_file="${EROOT}var/lib/nftables/rules-save"
+
+	elog "In order for the nftables-restore systemd service to start, "
+	elog "the file, ${save_file}, must exist.  To create this "
+	elog "file run the following command: "
+	elog ""
+	elog "	touch '${save_file}'"
+	elog ""
+	elog "Afterwards, the nftables-restore service should be manually started "
+	elog "to ensure firewall changes are stored on system shutdown.  The "
+	elog "systemd service will function normally thereafter."
 }
