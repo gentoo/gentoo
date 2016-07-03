@@ -18,6 +18,7 @@ version</longdescription>
     <flag name="gtk3">Enable highly experimental gtk3 frontend</flag>
     <flag name="jemalloc">Use <pkg>dev-libs/jemalloc</pkg> for allocations</flag>
     <flag name="odk">Build the Office Development Kit</flag>
+    <flag name="quickstarter">Build the system tray quickstarter</flag>
     <flag name="telepathy">Enable document colaboration features using telepathy communication framework.</flag>
     <flag name="vlc">Use <pkg>media-video/vlc</pkg> for video embedding</flag>
   </use>
