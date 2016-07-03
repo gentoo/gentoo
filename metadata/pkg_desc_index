@@ -333,7 +333,7 @@ app-arch/xz-utils 5.2.2 9999: utils for managing LZMA compressed files
 app-arch/zip 2.32-r1 3.0 3.0-r1 3.0-r2 3.0-r3: Info ZIP (encryption support)
 app-arch/zoo 2.10-r4: Manipulate archives of files in compressed form
 app-arch/zopfli 1.0.0 1.0.0_p20140705 1.0.0_p20141006 1.0.1: Very good, but slow, deflate or zlib compression
-app-arch/zpaq 6.53 7.04 7.13: Journaling incremental deduplicating archiving compressor
+app-arch/zpaq 6.53 7.04 7.13 7.13-r1: Journaling incremental deduplicating archiving compressor
 app-arch/zpaq-extras 3: A set of additional compression profiles for app-arch/zpaq
 app-backup/amanda 3.3.3 3.3.3-r1 3.3.5 3.3.7 3.3.9: The Advanced Maryland Automatic Network Disk Archiver
 app-backup/attic 0.16 9999: Attic is a deduplicating backup program written in Python.
@@ -14387,7 +14387,7 @@ net-libs/libs3 2.0-r1: A C Library API for Amazon S3
 net-libs/libsignon-glib 1.13: GLib binding for the D-Bus API provided by signond
 net-libs/libsmi 0.4.8-r1 0.5.0: A Library to Access SMI MIB Information
 net-libs/libsoup 2.50.0 2.52.2 2.54.1: An HTTP library implementation in C
-net-libs/libsoup-gnome 2.48.1 2.50.0 2.52.2: GNOME plugin for libsoup
+net-libs/libsoup-gnome 2.50.0 2.52.2: GNOME plugin for libsoup
 net-libs/libsrtp 1.4.4-r1 1.4.4-r2 1.4.4_p20121108 1.4.4_p20121108-r1 1.5.2 1.5.2-r1: Open-source implementation of the Secure Real-time Transport Protocol (SRTP)
 net-libs/libssh 0.7.3 0.7.3-r1 9999: Access a working SSH implementation by means of a library
 net-libs/libssh2 1.7.0 9999: Library implementing the SSH2 protocol
