@@ -13,4 +13,3 @@ HOMEPAGE="http://download.huzheng.org/dict.org/"
 
 KEYWORDS="~amd64 ppc sparc x86"
 IUSE=""
-

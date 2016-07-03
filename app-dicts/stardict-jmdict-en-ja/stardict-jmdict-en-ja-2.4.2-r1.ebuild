@@ -16,4 +16,3 @@ SRC_URI="http://download.huzheng.org/ja/${P}.tar.bz2"
 LICENSE="GDLS"
 KEYWORDS="~amd64 ~ppc sparc x86"
 IUSE=""
-

@@ -15,4 +15,3 @@ HOMEPAGE="http://download.huzheng.org/zh_TW/"
 
 KEYWORDS="~amd64 ~ppc ~sparc ~x86"
 IUSE=""
-
