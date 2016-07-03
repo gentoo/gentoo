@@ -30,6 +30,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas K. Hüttel <dilfridge@gentoo.org> (3 Jul 2016)
+# One of the last reverse dependencies of the deprecated libgnomeprint*
+# libs and some others; unmaintained; obsolete version.
+# Masked for removal in 30 days.
+app-office/lotus-notes
+
 # Hans de Graaff <graaff@gentoo.org> (2 Jul 2016)
 # This slot has unfixed security issues. With dev-ruby/rails:3.2
 # masked there are no reverse dependencies anymore.
