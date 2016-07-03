@@ -7,7 +7,7 @@ CMAKE_MIN_VERSION="3.0"
 
 PYTHON_COMPAT=( python3_4 python3_5 )
 
-inherit eutils cmake-utils python-single-r1
+inherit cmake-utils python-single-r1
 
 my_pn="Sigil"
 
@@ -15,7 +15,7 @@ DESCRIPTION="Sigil is a multi-platform WYSIWYG ebook editor for ePub format"
 HOMEPAGE="http://sigil-ebook.com/"
 SRC_URI="https://github.com/Sigil-Ebook/${my_pn}/releases/download/${PV}/${my_pn}-${PV}-Code.zip"
 
-LICENSE="GPL-3"
+LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
@@ -45,6 +45,7 @@ DEPEND="${RDEPEND}
 	>=sys-devel/gcc-4.8
 	virtual/pkgconfig
 	>=dev-qt/linguist-tools-5.4:5
+	app-arch/unzip
 "
 
 S="${WORKDIR}"
