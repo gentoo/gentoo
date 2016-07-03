@@ -19,9 +19,7 @@ IUSE="test"
 RDEPEND=">=dev-erlang/p1_utils-1.0.0
 	>=dev-lang/erlang-17.1
 	dev-libs/expat"
-DEPEND="${RDEPEND}"
-	# FIXME: test? ( >=dev-lang/elixir-1.1 ) needs ~arm and ~ppc keywords
-
-RESTRICT="test"  # FIXME: Restore test when elixir gets ~arm and ~ppc keywords.
+DEPEND="${RDEPEND}
+	test? ( >=dev-lang/elixir-1.1 )"
 
 DOCS=( CHANGELOG.md  README.md )
