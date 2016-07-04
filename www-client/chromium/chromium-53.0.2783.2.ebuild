@@ -5,12 +5,11 @@
 EAPI="5"
 PYTHON_COMPAT=( python2_7 )
 
-CHROMIUM_LANGS="am ar bg bn ca cs da de el en_GB es es_419 et fa fi fil fr gu he
-	hi hr hu id it ja kn ko lt lv ml mr ms nb nl pl pt_BR pt_PT ro ru sk sl sr
-	sv sw ta te th tr uk vi zh_CN zh_TW"
+CHROMIUM_LANGS="am ar bg bn ca cs da de el en-GB es es-419 et fa fi fil fr gu he
+	hi hr hu id it ja kn ko lt lv ml mr ms nb nl pl pt-BR pt-PT ro ru sk sl sr
+	sv sw ta te th tr uk vi zh-CN zh-TW"
 
-inherit check-reqs chromium eutils flag-o-matic multilib multiprocessing pax-utils \
-	portability python-any-r1 readme.gentoo-r1 toolchain-funcs versionator virtualx
+inherit check-reqs chromium-2 eutils gnome2-utils flag-o-matic multilib multiprocessing pax-utils portability python-any-r1 readme.gentoo-r1 toolchain-funcs versionator virtualx xdg-utils
 
 DESCRIPTION="Open-source version of Google Chrome web browser"
 HOMEPAGE="http://chromium.org/"
@@ -23,7 +22,7 @@ IUSE="cups gn gnome gnome-keyring gtk3 +hangouts kerberos neon pic +proprietary-
 RESTRICT="!system-ffmpeg? ( proprietary-codecs? ( bindist ) )"
 
 # TODO: bootstrapped gn binary hangs when using tcmalloc with portage's sandbox.
-REQUIRED_USE="gn? ( gnome-keyring !tcmalloc )"
+REQUIRED_USE="gn? ( gnome gnome-keyring !tcmalloc )"
 
 # Native Client binaries are compiled with different set of flags, bug #452066.
 QA_FLAGS_IGNORED=".*\.nexe"
@@ -85,6 +84,7 @@ RDEPEND="
 		sys-libs/zlib:=[minizip]
 	)"
 DEPEND="${RDEPEND}
+	>=app-arch/gzip-1.7
 	!arm? (
 		dev-lang/yasm
 	)
@@ -707,8 +707,17 @@ src_install() {
 	readme.gentoo_create_doc
 }
 
-pkg_postinst() {
-	fdo-mime_desktop_database_update
+pkg_preinst() {
+	gnome2_icon_savelist
+}
+
+pkg_postrm() {
 	gnome2_icon_cache_update
+	xdg_desktop_database_update
+}
+
+pkg_postinst() {
+	gnome2_icon_cache_update
+	xdg_desktop_database_update
 	readme.gentoo_print_elog
 }
