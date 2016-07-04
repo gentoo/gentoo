@@ -34,7 +34,7 @@ RDEPEND="
 					!app-emulation/emul-linux-x86-soundlibs[-abi_x86_32(-)] )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
-	test? ( ${PYTHON_DEPS} )"
+	${PYTHON_DEPS}"
 
 S=${WORKDIR}/${MY_P}
 
