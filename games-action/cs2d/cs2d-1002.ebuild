@@ -34,8 +34,7 @@ RDEPEND="
 		>=x11-libs/libXxf86vm-1.1.3[abi_x86_32(-)]
 	)"
 
-QA_PRESTRIPPED="opt/cs2d/CounterStrike2D"
-QA_EXECSTACK="opt/cs2d/CounterStrike2D"
+QA_PREBUILT="opt/cs2d/CounterStrike2D"
 
 S=${WORKDIR}
 
