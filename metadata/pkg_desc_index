@@ -9712,7 +9712,7 @@ dev-util/difffilter 0.3.1 0.3.3: Filter files out of unified diffs using POSIX e
 dev-util/diffstat 1.60 1.61: Display a histogram of diff changes
 dev-util/diffuse 0.4.6 0.4.7-r1 0.4.8: A graphical tool to compare and merge text files
 dev-util/dirdiff 2.1-r2: A tool for differing and merging directories
-dev-util/dissembler 0.9: polymorphs bytecode to a printable ASCII string
+dev-util/dissembler 0.9-r1: polymorphs bytecode to a printable ASCII string
 dev-util/distro-info 0.14: Provides information about the Debian distributions' releases
 dev-util/distro-info-data 0.29: Information about the Debian distributions' releases (data files)
 dev-util/dmake 4.12.2: Improved make
