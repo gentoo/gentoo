@@ -1252,7 +1252,6 @@ app-text/wdiff:experimental - Build experimental utilities (mdiff, unify, wdiff2
 app-text/webgen:builder - Enable programmatic HTML/XML generation
 app-text/webgen:highlight - Enable syntax highlighting for certain plugins
 app-text/webgen:markdown - Markdown support
-app-text/wgetpaste:lodgeit-default - Set one of lodgeit-like (ex http://paste.pocoo.org) services as default
 app-text/wklej:vim - Install the vim plugin allowing to paste through ':Wklej'.
 app-text/writerperfect:abiword - Add support for abiword format using app-text/libabw
 app-text/writerperfect:ebook - Add support for various ebook formats using app-text/libebook
