@@ -6404,26 +6404,26 @@ dev-perl/TheSchwartz 1.120.0: Reliable job queue
 dev-perl/Thread-SigMask 0.4.0: Thread specific signal masks
 dev-perl/Throwable 0.200.11 0.200.13: A role for classes that can be thrown
 dev-perl/Tie-Array-Sorted 1.410.0-r1: An array which is kept sorted
-dev-perl/Tie-CPHash 1.60.0 2.0.0: Case preserving but case insensitive hash table
+dev-perl/Tie-CPHash 2.0.0: Case preserving but case insensitive hash table
 dev-perl/Tie-Cache 0.190.0-r1 0.210.0: In memory size limited LRU cache
-dev-perl/Tie-Cache-LRU 20110205.0.0-r1 20150301.0.0: A Least-Recently Used cache
+dev-perl/Tie-Cache-LRU 20150301.0.0: A Least-Recently Used cache
 dev-perl/Tie-Cache-LRU-Expires 0.550.0-r1: Extends Tie::Cache::LRU with expiring
-dev-perl/Tie-Cycle 1.190.0-r1 1.210.0 1.221.0: Cycle through a list of values via a scalar
+dev-perl/Tie-Cycle 1.221.0: Cycle through a list of values via a scalar
 dev-perl/Tie-EncryptedHash 1.240.0-r1: Hashes (and objects based on hashes) with encrypting fields
 dev-perl/Tie-Hash-Method 0.20.0: Tied hash with specific methods overriden by callbacks
 dev-perl/Tie-IxHash 1.230.0: Ordered associative arrays for Perl
-dev-perl/Tie-LLHash 1.3.0-r1 1.4.0: Implements an ordered hash-like object
+dev-perl/Tie-LLHash 1.4.0: Implements an ordered hash-like object
 dev-perl/Tie-ShadowHash 1.0.0-r1: Merge multiple data sources into a hash
 dev-perl/Tie-Simple 1.03-r1 1.40.0: Module for creating easier variable ties
 dev-perl/Tie-StrictHash 1.0.0-r1: A hash with strict-like semantics
 dev-perl/Tie-Sub 1.1.0-r1: Tying a subroutine, function or method to a hash
 dev-perl/Tie-ToObject 0.30.0-r1: Tie to an existing object
 dev-perl/Time-Duration 1.60.0-r1 1.200.0: Rounded or exact English expression of durations
-dev-perl/Time-Duration-Parse 0.60.0-r1 0.130.0: Parse string that represents time duration
+dev-perl/Time-Duration-Parse 0.130.0: Parse string that represents time duration
 dev-perl/Time-Format 1.120.0: Easy-to-use date/time formatting
 dev-perl/Time-Moment 0.380.0: Represents a date and time of day with an offset from UTC
 dev-perl/Time-Out 0.110.0: Easily timeout long running operations
-dev-perl/Time-ParseDate 2011.51.700-r1 2013.91.200 2015.103.0: A Date/Time Parsing Perl Module
+dev-perl/Time-ParseDate 2011.51.700-r1 2015.103.0: A Date/Time Parsing Perl Module
 dev-perl/Time-Period 1.240.0-r1 1.250.0: Time period Perl module
 dev-perl/Time-Piece-MySQL 0.60.0-r1: MySQL-specific functions for Time::Piece
 dev-perl/Time-Stopwatch 1.0.0: Use tied scalars as timers
