@@ -11,12 +11,13 @@ MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Tool for managing events and logs"
 HOMEPAGE="https://www.elastic.co/products/logstash"
-SRC_URI="https://download.elastic.co/${MY_PN}/${MY_PN}/${MY_P}.tar.gz"
+SRC_URI="standard? ( https://download.elastic.co/${MY_PN}/${MY_PN}/${MY_P}.tar.gz )
+	all-plugins? ( https://download.elastic.co/${MY_PN}/${MY_PN}/${MY_PN}-all-plugins-${PV}.tar.gz )"
 
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE=""
+IUSE="+standard all-plugins"
 
 RESTRICT="strip"
 QA_PREBUILT="opt/logstash/vendor/jruby/lib/jni/*/libjffi*.so"
@@ -25,6 +26,8 @@ DEPEND=""
 RDEPEND="|| ( virtual/jre:1.8 virtual/jre:1.7 )"
 
 S="${WORKDIR}/${MY_P}"
+
+REQUIRED_USE="?? ( standard all-plugins )"
 
 pkg_setup() {
 	enewgroup ${MY_PN}
