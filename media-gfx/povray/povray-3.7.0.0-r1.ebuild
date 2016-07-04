@@ -118,9 +118,7 @@ src_configure() {
 }
 
 src_test() {
-	# For the beta releases, we generate a license extension in case needed
-	VIRTUALX_COMMAND="autotools-utils_src_test"
-	virtualmake
+	virtx default
 }
 
 pkg_preinst() {
