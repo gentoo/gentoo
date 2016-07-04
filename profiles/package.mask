@@ -243,7 +243,6 @@ sys-fs/redirfs
 # ebuilds are still sitting in ~arch after years in the tree.
 # Masked for removal in 30 days.
 dev-util/ccmalloc
-dev-util/tinlink
 dev-util/cdecl
 dev-util/redet
 dev-util/eggy
@@ -251,9 +250,7 @@ dev-util/mock
 dev-util/par
 dev-util/injectso
 dev-util/ghh
-dev-util/lsuio
 dev-util/rec
-dev-util/usb-robot
 dev-util/jif
 dev-util/httpup
 dev-util/crow-designer
@@ -261,10 +258,7 @@ dev-util/qdevelop
 dev-util/intel2gas
 dev-util/webcpp
 dev-util/as11
-dev-util/duma
 dev-util/filepp
-dev-util/pretrace
-dev-util/ald
 dev-util/kdoc
 dev-util/skelgen
 dev-util/ftncheck
