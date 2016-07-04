@@ -9,7 +9,4 @@
 		<email>maksbotan@gentoo.org</email>
 		<name>Maxim Koltsov</name>
 	</maintainer>
-	<use>
-		<flag name="lodgeit-default">Set one of lodgeit-like (ex http://paste.pocoo.org) services as default</flag>
-	</use>
 </pkgmetadata>
