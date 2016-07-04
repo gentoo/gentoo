@@ -21,6 +21,7 @@ RDEPEND="virtual/opengl
 		x11-libs/libdrm
 		x11-libs/pixman
 		x11-libs/libxkbcommon
+		x11-misc/xkeyboard-config
 		dev-libs/libinput
 		dev-libs/wayland
 		X? ( x11-libs/libX11
