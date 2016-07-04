@@ -47,7 +47,6 @@ criu_arch() {
 	# criu infers the arch from $(uname -m).  We never want this to happen.
 	case ${ARCH} in
 	amd64) echo "x86";;
-	arm64) echo "aarch64";;
 	*)     echo "${ARCH}";;
 	esac
 }
