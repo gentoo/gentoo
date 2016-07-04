@@ -1,12 +1,12 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
 
 DESCRIPTION="Simple Event Correlator"
-HOMEPAGE="http://simple-evcorr.sourceforge.net/"
-SRC_URI="mirror://sourceforge/simple-evcorr/${P}.tar.gz"
+HOMEPAGE="https://github.com/simple-evcorr/sec"
+SRC_URI="${HOMEPAGE}/releases/download/${PV}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

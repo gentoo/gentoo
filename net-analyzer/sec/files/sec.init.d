@@ -1,5 +1,5 @@
 #!/sbin/openrc-run
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -18,8 +18,8 @@ checkconfig() {
 start() {
 	checkconfig || return 1
 	ebegin "Starting sec"
-	start-stop-daemon --start --quiet --exec /usr/bin/sec \
-		-- -pid=/run/sec.pid \
+	start-stop-daemon --start --quiet --interpreted --exec /usr/bin/sec -- \
+		-pid=/run/sec.pid \
 		-detach -log=/var/log/sec.log \
 		-conf=/etc/sec.conf \
 		${INPUT_FILES} \
