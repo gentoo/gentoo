@@ -7,7 +7,13 @@ EAPI="5"
 inherit eutils toolchain-funcs multilib pam systemd
 
 IUSE="dane dcc +dkim dlfunc dmarc +dnsdb doc dovecot-sasl dsn exiscan-acl gnutls ipv6 ldap libressl lmtp maildir mbx mysql nis pam perl pkcs11 postgres +prdr proxy radius redis sasl selinux spf sqlite srs ssl syslog tcpd tpda X elibc_glibc"
-REQUIRED_USE="spf? ( exiscan-acl ) srs? ( exiscan-acl ) dmarc? ( spf dkim ) pkcs11? ( gnutls )"
+REQUIRED_USE="
+	dane? ( !gnutls )
+	dmarc? ( spf dkim )
+	pkcs11? ( gnutls )
+	spf? ( exiscan-acl )
+	srs? ( exiscan-acl )
+"
 
 COMM_URI="ftp://ftp.exim.org/pub/exim/exim4$([[ ${PV} == *_rc* ]] && echo /test)"
 
