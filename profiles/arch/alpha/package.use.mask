@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# Tobias Klausmann <klausman@gentoo.org> (04 Jul 2016)
+# Mask USE=test since it implies USE=valgrind
+net-mail/notmuch test
+
 # Tobias Klausmann <klausman@gentoo.org> (14 Jun 2016)
 # asciidoctor pulls in a lot of Ruby deps
 >=net-misc/chrony-2.4_pre1 html
