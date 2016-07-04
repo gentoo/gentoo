@@ -1066,7 +1066,7 @@ app-editors/qwriter 0.1.9 0.1.9-r1: Advanced text editor with syntax highlightin
 app-editors/qxmledit 0.9.3 0.9.4: Simple Qt-based XML editor
 app-editors/retext 4.1.3 5.3.0 5.3.1 9999: Simple editor for Markdown and reStructuredText
 app-editors/sandy 0.4: an ncurses text editor with an easy-to-read, hackable C source
-app-editors/scite 3.5.5 3.6.2 3.6.4 3.6.5: A very powerful editor for programmers
+app-editors/scite 3.5.5 3.6.2-r1 3.6.4-r1 3.6.5-r1: A very powerful editor for programmers
 app-editors/shed 1.12 1.13 1.15: Simple Hex EDitor
 app-editors/tea 41.1.1: Small, lightweight Qt text editor
 app-editors/teco 1.00-r4: Classic TECO editor, Predecessor to EMACS
@@ -2426,7 +2426,7 @@ app-text/searchmonkey 0.8.1 2.0.0: Powerful text searches using regular expressi
 app-text/sgml-common 0.6.3-r5: Base ISO character entities and utilities for SGML
 app-text/sgmltools-lite 3.0.3-r14: Python interface to SGML software in a DocBook/OpenJade env
 app-text/sgrep 1.94a: Use structural criteria to grep and index text, SGML, XML and HTML and filter text streams
-app-text/sigil 0.8.7-r1 0.9.5: Sigil is a multi-platform WYSIWYG ebook editor for ePub format
+app-text/sigil 0.8.7-r1 0.9.5-r1: Sigil is a multi-platform WYSIWYG ebook editor for ePub format
 app-text/silvercity 0.9.7 0.9.7-r1: A lexical analyser for many languages
 app-text/sloccount 2.26-r3: Tools for counting Source Lines of Code (SLOC) for a large number of languages
 app-text/spellutils 0.7: spellutils includes 'newsbody' (useful for spellchecking in mails, etc.)
@@ -7490,7 +7490,7 @@ dev-python/milk 0.5.1 0.5.3 0.6.1: Machine learning toolkit in Python
 dev-python/milksets 0.1.3-r1: Datasets in a common Pythonic interface to use with milk
 dev-python/mimeparse 0.1.4-r1 1.5.1 1.5.2: Basic functions for handling mime-types in python
 dev-python/mimerender 0.5.4 0.5.5 0.6.0: RESTful HTTP Content Negotiation for Flask, Bottle, web.py and webapp2
-dev-python/minidb 2.0.1: Simple SQLite-based object store
+dev-python/minidb 2.0.1-r1: Simple SQLite-based object store
 dev-python/minimock 1.2.8-r1: The simplest possible mock library
 dev-python/miniupnpc 1.8 1.9.20150917 1.9.20151008: Python bindings for UPnP client library
 dev-python/misaka 1.0.2: The Python binding for Sundown, a markdown parsing library
@@ -13597,7 +13597,7 @@ media-video/nvidia-settings 340.58 340.58-r1 355.11 358.16: NVIDIA Linux X11 Set
 media-video/nvidia_video_sdk 6.0.1: NVIDIA Video Codec SDK
 media-video/obs-studio 0.14.2 9999: Software for Recording and Streaming Live Video Content
 media-video/ogmrip 1.0.1: Graphical frontend and libraries for ripping DVDs and encoding to AVI/OGM/MKV/MP4
-media-video/openshot 1.4.3-r1 2.0.6 2.0.7-r1: Free, open-source, non-linear video editor to create and edit videos and movies
+media-video/openshot 1.4.3-r1 2.0.6-r1 2.0.7-r1: Free, open-source, non-linear video editor to create and edit videos and movies
 media-video/oxine 0.7.1-r1: OSD frontend for Xine
 media-video/parole 0.5.4 0.6.1 0.7.0 0.8.0-r1 0.8.1: a simple media player based on the GStreamer framework for the Xfce4 desktop
 media-video/pgcedit 0.8.6: DVD IFO and Menu editor
