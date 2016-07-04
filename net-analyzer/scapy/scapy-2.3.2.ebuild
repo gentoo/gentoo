@@ -10,7 +10,7 @@ inherit eutils distutils-r1
 
 DESCRIPTION="A Python interactive packet manipulation program for mastering the network"
 HOMEPAGE="http://www.secdev.org/projects/scapy/"
-SRC_URI="https://github.com/secdev/${PN}/archive/v${PV}.tar.gz"
+SRC_URI="https://github.com/secdev/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
