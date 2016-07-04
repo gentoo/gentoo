@@ -250,7 +250,6 @@ dev-util/eggy
 dev-util/mock
 dev-util/par
 dev-util/injectso
-dev-util/dissembler
 dev-util/ghh
 dev-util/lsuio
 dev-util/rec
