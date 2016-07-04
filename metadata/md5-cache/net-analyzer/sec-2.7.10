@@ -1,11 +1,11 @@
 DEFINED_PHASES=install
 DESCRIPTION=Simple Event Correlator
 EAPI=5
-HOMEPAGE=http://simple-evcorr.sourceforge.net/
+HOMEPAGE=https://github.com/simple-evcorr/sec
 KEYWORDS=~amd64 ~ppc ~x86 ~amd64-linux
 LICENSE=GPL-2
 RDEPEND=>=dev-lang/perl-5.8.0
 SLOT=0
-SRC_URI=mirror://sourceforge/simple-evcorr/sec-2.7.8.tar.gz
+SRC_URI=https://github.com/simple-evcorr/sec/releases/download/2.7.10/sec-2.7.10.tar.gz
 _eclass_exported_funcs=src_install:-
-_md5_=2b250de751761c55b2215fb43a5b4e3d
+_md5_=91ecd7010a9f832f12e96a187e394473
