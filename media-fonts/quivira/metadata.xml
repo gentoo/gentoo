@@ -5,8 +5,13 @@
 		<email>chithanh@gentoo.org</email>
 		<name>Chí-Thanh Christopher Nguyễn</name>
 	</maintainer>
-<maintainer type="project">
+	<maintainer type="project">
 		<email>fonts@gentoo.org</email>
 		<name>Fonts</name>
 	</maintainer>
+	<longdescription>
+		This is a Unicode font for alphabetic writing systems and elder
+		scripts like Runes, Gothic and ancient Greek. It also includes
+		emoticons, geometric shapes and other symbols.
+	</longdescription>
 </pkgmetadata>
