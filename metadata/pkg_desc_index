@@ -12048,7 +12048,7 @@ media-fonts/pothana2k 2006-r1: Pothana 2000 and Vemana fonts for the Telugu scri
 media-fonts/powerline-symbols 20150224: OpenType Unicode font with symbols for Powerline/Airline
 media-fonts/proggy-fonts 1: A set of monospaced bitmap programming fonts
 media-fonts/qomolangma 2012.05: Tibetan Unicode Ucan and Umed fonts
-media-fonts/quivira 4.0: Unicode font for alphabetic writing systems and elder scripts like Runes, Gothic and ancient Greek
+media-fonts/quivira 4.0 4.1: Unicode font with emoticons and elder scripts like Runes, Gothic, ancient Greek
 media-fonts/ricty 3.2.0 3.2.0-r1: A beautiful sans-serif monotype Japanese font designed for code listings
 media-fonts/roboto 1.2 2015.03: Standard font for Android 4.0 (Ice Cream Sandwich) and later
 media-fonts/sazanami 20040629: Sazanami Japanese TrueType fonts
