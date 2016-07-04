@@ -1,1 +1,0 @@
-Please make sure to edit /etc/backuppc/config.pl to suit your needs.
