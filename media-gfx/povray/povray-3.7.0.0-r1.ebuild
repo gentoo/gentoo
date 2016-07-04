@@ -50,8 +50,8 @@ src_prepare() {
 		PATCHES+=( "${FILESDIR}"/${PN}-3.7.0_rc6-darwin-defaults.patch )
 	eapply "${FILESDIR}"/${PF}-boost-1.50.patch
 
-	pushd unix
-		pushd config
+	pushd unix &>/dev/null || die
+		pushd config &>/dev/null || die
 		rm -rf \
 			acx_pthread.m4 \
 			ax_boost_base.m4 \
@@ -59,9 +59,9 @@ src_prepare() {
 			ax_compare_version.m4 \
 			ax_compiler_vendor.m4 \
 			ax_compiler_version.m4 || die
-		popd
+		popd &>/dev/null || die
 	bash -x prebuild.sh || die
-	popd
+	popd &>/dev/null || die
 
 	rm -rf libraries || die
 
@@ -118,9 +118,7 @@ src_configure() {
 }
 
 src_test() {
-	# For the beta releases, we generate a license extension in case needed
-	VIRTUALX_COMMAND="autotools-utils_src_test"
-	virtualmake
+	virtx default
 }
 
 pkg_preinst() {
