@@ -8844,7 +8844,7 @@ dev-ruby/commander 4.3.7 4.3.8 4.4.0: The complete solution for Ruby command-lin
 dev-ruby/compass 1.0.1-r1 1.0.3-r1: Compass Stylesheet Authoring Framework
 dev-ruby/compass-core 1.0.1 1.0.3-r1: Compass Stylesheet Authoring Framework
 dev-ruby/compass-import-once 1.0.5: Speed up your Sass compilation by making @import only import each file once
-dev-ruby/concurrent-ruby 1.0.0 1.0.1 1.0.2: Modern concurrency tools including agents, futures, promises, thread pools, more
+dev-ruby/concurrent-ruby 1.0.0 1.0.1 1.0.2 1.0.2-r1: Modern concurrency tools including agents, futures, promises, thread pools, more
 dev-ruby/configliere 0.4.22: Settings manager for Ruby scripts
 dev-ruby/connection_pool 2.2.0: Generic connection pooling for Ruby
 dev-ruby/contracts 0.13.0 0.14.0: provides contracts for Ruby
