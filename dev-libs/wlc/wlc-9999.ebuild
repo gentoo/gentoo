@@ -21,6 +21,7 @@ RDEPEND="virtual/opengl
 		x11-libs/libdrm
 		x11-libs/pixman
 		x11-libs/libxkbcommon
+		x11-misc/xkeyboard-config
 		dev-libs/libinput
 		dev-libs/wayland
 		X? ( x11-libs/libX11
@@ -32,7 +33,7 @@ RDEPEND="virtual/opengl
 
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
-		dev-libs/wayland-protocols"
+	dev-libs/wayland-protocols"
 
 src_configure() {
 	local mycmakeargs=(
