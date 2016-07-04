@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="Maintains info about a physical person"
 
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~alpha amd64 x86"
 IUSE="test"
 
 RDEPEND="
