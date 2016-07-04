@@ -299,13 +299,9 @@ pkg_postinst() {
 pkg_config() {
 	# configure tls
 	if use ssl ; then
-		if "${EROOT}"usr/sbin/postfix tls all-default-client ; then
-			elog "Configuring client side TLS settings"
-			"${EROOT}"usr/sbin/postfix tls enable-client
-		fi
-		if "${EROOT}"usr/sbin/postfix tls all-default-server ; then
-			elog "Configuring server side TLS settings"
-			"${EROOT}"usr/sbin/postfix tls enable-server
-		fi
+		elog "To configure client side TLS settings:"
+		elog "${EROOT}"usr/sbin/postfix tls enable-client
+		elog "To configure server side TLS settings:"
+		elog "${EROOT}"usr/sbin/postfix tls enable-server
 	fi
 }
