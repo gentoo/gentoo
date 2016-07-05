@@ -88,7 +88,8 @@ python_prepare_all() {
 
 	epatch \
 		"${FILESDIR}"/${PN}-0.13.1-ignore-gentoo-no-compile.patch \
-		"${FILESDIR}"/${PN}-0.16.2-prefix.patch
+		"${FILESDIR}"/${PN}-0.16.2-prefix.patch \
+		"${FILESDIR}"/${PN}-0.17.4-deprecated-avcodec.patch
 
 	if use libav ; then
 		if ! has_version ">=media-video/libav-9" ; then
