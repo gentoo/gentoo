@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install
+DESCRIPTION=Command to duplicate standard input to more than one program
+EAPI=6
+HOMEPAGE=http://www.eurogaran.com/downloads/tpipe
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=http://www.eurogaran.com/downloads/tpipe/tpipe-1.6.tar.gz
+_eclass_exported_funcs=src_compile:- src_install:-
+_eclasses_=multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	82165206dedb2075f9a0fb8f9b1f9441
+_md5_=5c4490c3ef67c46f9c9d4bc91ccb91e3
