@@ -10061,7 +10061,7 @@ dev-vcs/veracity 1.0.0.10517 1.1.0.10565: A modern and featureful DVCS (distribu
 games-action/0verkill 0.16-r3 0.16-r4: a bloody 2D action deathmatch-like game in ASCII-ART
 games-action/abuse 0.8 0.8-r1: Port of Abuse by Crack Dot Com
 games-action/accelerator3d 0.1.1-r2 0.1.1-r3: Fast-paced, 3D, first-person shoot/dodge-'em-up, in the vain of Tempest or n2o
-games-action/armagetronad 0.2.8.3.2 0.2.8.3.3: Fast-paced 3D lightcycle game based on Tron
+games-action/armagetronad 0.2.8.3.2 0.2.8.3.3 0.2.8.3.3-r1: Fast-paced 3D lightcycle game based on Tron
 games-action/atanks 6.4 6.4-r1: Worms and Scorched Earth-like game
 games-action/awesomenauts 2013.5.21.3-r1: Team-based competetive arena play
 games-action/barrage 1.0.4 1.0.4-r1: A violent point-and-click shooting game
