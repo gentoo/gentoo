@@ -1,0 +1,13 @@
+DEFINED_PHASES=install postinst prepare
+DEPEND=>=media-libs/libsdl-1.1.6[sound,opengl,video] media-libs/sdl-mixer virtual/opengl !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Port of Abuse by Crack Dot Com
+EAPI=6
+HOMEPAGE=http://abuse.zoy.org/
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-2 WTFPL-2
+RDEPEND=>=media-libs/libsdl-1.1.6[sound,opengl,video] media-libs/sdl-mixer virtual/opengl
+SLOT=0
+SRC_URI=http://abuse.zoy.org/raw-attachment/wiki/download/abuse-0.8.tar.gz
+_eclass_exported_funcs=pkg_postinst:- src_prepare:- src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	libtool	4890219c51da247200223277f993e054	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	82165206dedb2075f9a0fb8f9b1f9441
+_md5_=95931a7daee0fcbcd98344d361ced5c8
