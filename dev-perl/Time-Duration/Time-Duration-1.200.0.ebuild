@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="Rounded or exact English expression of durations"
 
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-linux"
+KEYWORDS="alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-linux"
 IUSE="test"
 
 RDEPEND="virtual/perl-Exporter"
