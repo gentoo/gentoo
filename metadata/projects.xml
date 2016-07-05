@@ -915,7 +915,7 @@
     </member>
     <member>
       <email>cynede@gentoo.org</email>
-      <name>Heather Cynede</name>
+      <name>Mikhail Pukhlikov</name>
       <role>Member</role>
     </member>
   </project>
@@ -1605,7 +1605,7 @@
     </member>
     <member>
       <email>cynede@gentoo.org</email>
-      <name>Heather Cynede</name>
+      <name>Mikhail Pukhlikov</name>
     </member>
     <member>
       <email>gienah@gentoo.org</email>
@@ -2344,7 +2344,7 @@
     <email>gmn@gentoo.org</email>
     <name>News Project</name>
     <url>https://wiki.gentoo.org/wiki/Project:News</url>
-    <description>Presenting news as it develops, the News project is intended to give anyone interested in Gentoo a single-location for information on changes in the Gentoo universe.</description>
+    <description>Presenting news as it develops, the News project is intended to provide anyone interested in Gentoo a stream of information for changes in the Gentoo universe.</description>
     <member is-lead="1">
       <email>maffblaster@gentoo.org</email>
       <name>Matthew Marchese</name>
@@ -3507,7 +3507,7 @@
     </member>
     <member>
       <email>cynede@gentoo.org</email>
-      <name>Heather Cynede</name>
+      <name>Mikhail Pukhlikov</name>
     </member>
     <member>
       <email>jauhien@gentoo.org</email>
