@@ -32,7 +32,7 @@ pkg_setup() {
 	enewgroup icingaweb2
 	enewgroup icingacmd
 	use nginx && usermod -a -G icingacmd,icingaweb2 nginx
-	use apache2 && usermod -a -G icingacmd,icingaweb2 apache2
+	use apache2 && usermod -a -G icingacmd,icingaweb2 apache
 }
 
 pkg_config() {
