@@ -22,6 +22,8 @@ SLOT="1"
 KEYWORDS="~amd64 ~arm ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE=""
 
+ruby_add_bdepend "test? ( >=dev-ruby/timecop-0.7.4 )"
+
 RUBY_PATCHES=( ${P}-alpha.patch )
 
 all_ruby_prepare() {
