@@ -15220,7 +15220,7 @@ net-wireless/gr-rds 9999: gnuradio FM RDS Receiver
 net-wireless/gr-scan 20160104: Frequency scanner for GNU Radio
 net-wireless/hackrf-tools 2015.07.2-r1 9999: tools for communicating with HackRF SDR platform
 net-wireless/hidclient 20120728: Use your machine as a bluetooh keyboard/mouse
-net-wireless/horst 4.2 9999: Small 802.11 wireless LAN analyzer
+net-wireless/horst 4.2 5.0 9999: Small 802.11 wireless LAN analyzer
 net-wireless/hostap-utils 0.4.7-r1: Utilities for Intersil Prism2/2.5/3 based IEEE 802.11b wireless LAN products
 net-wireless/hostapd 2.5: IEEE 802.11 wireless LAN Host AP daemon
 net-wireless/inspectrum 0.1.1 9999: a tool for analysing captured signals from software-defined radio receivers

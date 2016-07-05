@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile install unpack
+DEPEND=sys-libs/ncurses:0 pcap? ( net-libs/libpcap ) test? ( sys-devel/sparse )
+DESCRIPTION=Small 802.11 wireless LAN analyzer
+EAPI=5
+HOMEPAGE=http://br1.einfach.org/tech/horst/
+IUSE=debug +pcap test
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=sys-libs/ncurses:0 pcap? ( net-libs/libpcap )
+RESTRICT=test
+SLOT=0
+SRC_URI=https://github.com/br101/horst/archive/version-5.0.tar.gz -> horst-5.0.tar.gz
+_eclass_exported_funcs=src_unpack:vcs-snapshot src_compile:- src_install:-
+_eclasses_=multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	82165206dedb2075f9a0fb8f9b1f9441	vcs-snapshot	b45be87e7012be0af8424e8a5644da1d
+_md5_=526ebccab95d1d024557a2cfb287ee1a
