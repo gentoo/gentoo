@@ -1293,7 +1293,7 @@ app-emulation/crossover-office-pro-bin 5.0.0 5.0.1 5.0.3 6.0.0 6.1.0 6.2.0 7.0.2
 app-emulation/dinero 4.7-r1: Cache simulator
 app-emulation/diskimage-builder 1.15.0: Golden Disk Image builder.
 app-emulation/dlx 1.0.0 1.0.0-r1: DLX Simulator
-app-emulation/docker 1.11.0 1.12.0_rc2-r2 9999: The core functions you need to create Docker images and run Docker containers
+app-emulation/docker 1.11.0 1.12.0_rc2-r2 1.12.0_rc3 9999: The core functions you need to create Docker images and run Docker containers
 app-emulation/docker-compose 1.7.0 1.7.1 1.8.0_rc1: Multi-container orchestration for Docker
 app-emulation/docker-machine 0.6.0 0.7.0: Machine management for a container-centric world
 app-emulation/docker-registry 2.4.0: Docker Registry 2.0
@@ -11297,6 +11297,7 @@ kde-apps/kgoldrunner 4.14.3 15.12.3 16.04.2: Game of action and puzzle solving b
 kde-apps/kgpg 4.14.3 4.14.3-r1 15.12.3 16.04.2: Frontend for GnuPG, a powerful encryption utility by KDE
 kde-apps/khangman 4.14.3 15.12.3 16.04.2: Classical hangman game by KDE
 kde-apps/khelpcenter 4.14.3 5.5.5-r1 5.6.2-r1 16.04.2: The KDE Help Center
+kde-apps/kholidays 16.04.2: Library to determine holidays and other special events for a geographical region
 kde-apps/kiconfinder 4.14.3 15.12.3 16.04.2: Finds an icon based on its name
 kde-apps/kig 4.14.3 15.12.3 16.04.2: KDE Interactive Geometry tool
 kde-apps/kigo 4.14.3 15.12.3 16.04.2: Go game by KDE
