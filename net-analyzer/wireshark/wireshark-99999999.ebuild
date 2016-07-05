@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -13,20 +13,15 @@ LICENSE="GPL-2"
 SLOT="0/${PV}"
 KEYWORDS=""
 IUSE="
-	adns androiddump +caps cpu_flags_x86_sse4_2 crypt doc doc-pdf geoip +gtk3
-	ipv6 kerberos lua +netlink +pcap portaudio +qt4 qt5 sbc selinux smi ssl
-	tfshark zlib
+	adns androiddump +caps cpu_flags_x86_sse4_2 crypt doc doc-pdf geoip +gtk
+	kerberos lua +netlink +pcap portaudio +qt4 qt5 sbc selinux smi ssl tfshark
+	zlib
 "
 REQUIRED_USE="
 	ssl? ( crypt )
 	?? ( qt4 qt5 )
 "
 
-GTK_COMMON_DEPEND="
-	x11-libs/gdk-pixbuf
-	x11-libs/pango
-	x11-misc/xdg-utils
-"
 CDEPEND="
 	>=dev-libs/glib-2.14:2
 	netlink? ( dev-libs/libnl:3 )
@@ -34,9 +29,11 @@ CDEPEND="
 	crypt? ( dev-libs/libgcrypt:0 )
 	caps? ( sys-libs/libcap )
 	geoip? ( dev-libs/geoip )
-	gtk3? (
-		${GTK_COMMON_DEPEND}
+	gtk? (
+		x11-libs/gdk-pixbuf
 		x11-libs/gtk+:3
+		x11-libs/pango
+		x11-misc/xdg-utils
 	)
 	kerberos? ( virtual/krb5 )
 	lua? ( >=dev-lang/lua-5.1:* )
@@ -57,7 +54,7 @@ CDEPEND="
 	)
 	sbc? ( media-libs/sbc )
 	smi? ( net-libs/libsmi )
-	ssl? ( net-libs/gnutls )
+	ssl? ( net-libs/gnutls:= )
 	zlib? ( sys-libs/zlib !=sys-libs/zlib-1.2.4 )
 "
 # We need perl for `pod2html`.  The rest of the perl stuff is to block older
@@ -81,7 +78,7 @@ DEPEND="
 "
 RDEPEND="
 	${CDEPEND}
-	gtk3? ( virtual/freedesktop-icon-theme )
+	gtk? ( virtual/freedesktop-icon-theme )
 	qt4? ( virtual/freedesktop-icon-theme )
 	qt5? ( virtual/freedesktop-icon-theme )
 	selinux? ( sec-policy/selinux-wireshark )
@@ -123,7 +120,7 @@ src_configure() {
 	fi
 
 	# Enable wireshark binary with any supported GUI toolkit (bug #473188)
-	if use gtk3 || use qt4 || use qt5; then
+	if use gtk || use qt4 || use qt5; then
 		myconf+=( "--enable-wireshark" )
 	else
 		myconf+=( "--disable-wireshark" )
@@ -158,15 +155,17 @@ src_configure() {
 		$(use_with caps libcap) \
 		$(use_with crypt gcrypt) \
 		$(use_with geoip) \
-		$(use_with gtk3) \
+		$(use_with gtk gtk 3) \
 		$(use_with kerberos krb5) \
 		$(use_with lua) \
 		$(use_with pcap dumpcap-group wireshark) \
 		$(use_with pcap) \
 		$(use_with portaudio) \
+		$(usex qt4 --with-qt=4 '') \
 		$(usex qt4 MOC=$(qt4_get_bindir)/moc '') \
 		$(usex qt4 RCC=$(qt4_get_bindir)/rcc '') \
 		$(usex qt4 UIC=$(qt4_get_bindir)/uic '') \
+		$(usex qt5 --with-qt=5 '') \
 		$(usex qt5 MOC=$(qt5_get_bindir)/moc '') \
 		$(usex qt5 RCC=$(qt5_get_bindir)/rcc '') \
 		$(usex qt5 UIC=$(qt5_get_bindir)/uic '') \
@@ -177,23 +176,26 @@ src_configure() {
 		$(usex netlink --with-libnl=3 --without-libnl) \
 		$(usex cpu_flags_x86_sse4_2 --enable-sse4_2 '') \
 		--disable-profile-build \
-		--disable-usr-local \
 		--disable-warnings-as-errors \
 		--sysconfdir="${EPREFIX}"/etc/wireshark \
-		--without-adns \
 		${myconf[@]}
 }
 
 src_compile() {
 	default
+
 	if use doc; then
-		use doc-pdf && addpredict "/root/.java"
 		emake -j1 -C docbook
+		if use doc-pdf; then
+			addpredict "/root/.java"
+			emake -C docbook all-pdf
+		fi
 	fi
 }
 
 src_install() {
 	default
+
 	if use doc; then
 		dohtml -r docbook/{release-notes.html,ws{d,u}g_html{,_chunked}}
 		if use doc-pdf; then
@@ -229,7 +231,7 @@ src_install() {
 	insinto /usr/include/wiretap
 	doins wiretap/wtap.h
 
-	if use gtk3 || use qt4 || use qt5; then
+	if use gtk || use qt4 || use qt5; then
 		local c d
 		for c in hi lo; do
 			for d in 16 32 48; do
