@@ -89,7 +89,7 @@ pkg_setup() {
 src_prepare() {
 	# change rules back to group uucp instead of dialout for now
 	sed -e 's/GROUP="dialout"/GROUP="uucp"/' -i rules/*.rules \
-	|| die "failed to change group dialout to uucp"
+		|| die "failed to change group dialout to uucp"
 
 	epatch_user
 	eautoreconf
@@ -107,10 +107,11 @@ multilib_src_configure() {
 		ac_cv_header_sys_capability_h=yes
 		DBUS_CFLAGS=' '
 		DBUS_LIBS=' '
+		--prefix=/
 		--libdir=/usr/$(get_libdir)
+		--includedir=/usr/include
 		--enable-manpages
 		--disable-hwdb
-		--exec-prefix=/
 	)
 
 	# Only build libudev for non-native_abi, and only install it to libdir,
