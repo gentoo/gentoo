@@ -208,7 +208,7 @@ mozconfig_init() {
 	append-flags "$MAKEEDIT_FLAGS"
 
 	# Use the MOZILLA_FIVE_HOME for the rpath
-	append-ldflags -Wl,-rpath="${MOZILLA_FIVE_HOME}"
+	append-ldflags -Wl,-rpath="${MOZILLA_FIVE_HOME}",--enable-new-dtags
 	# Set MOZILLA_FIVE_HOME in mozconfig
 	mozconfig_annotate '' --with-default-mozilla-five-home=${MOZILLA_FIVE_HOME}
 
@@ -219,19 +219,9 @@ mozconfig_init() {
 	####################################
 
 	mozconfig_annotate disable_update_strip \
-		--disable-pedantic \
 		--disable-updater \
 		--disable-strip \
-		--disable-install-strip \
-		--disable-installer \
-		--disable-strip-libs
-
-	if [[ ${PN} != seamonkey ]]; then
-		mozconfig_annotate basic_profile \
-			--disable-profilelocking \
-			--enable-single-profile \
-			--disable-profilesharing
-	fi
+		--disable-install-strip
 
 	# Here is a strange one...
 	if is-flag '-mcpu=ultrasparc*' || is-flag '-mtune=ultrasparc*'; then

@@ -15,7 +15,7 @@
 # Some use flags which may be optional in particular mozilla packages can be
 # supported through setting eclass variables.
 #
-# This eclass inherits mozconfig helper functions as defined in mozcoreconf-v3,
+# This eclass inherits mozconfig helper functions as defined in mozcoreconf-v4,
 # and so ebuilds inheriting this eclass do not need to inherit that.
 
 case ${EAPI} in
@@ -216,6 +216,19 @@ REQUIRED_USE="
 # }
 
 mozconfig_config() {
+	# Migrated from mozcoreconf-v3
+	mozconfig_annotate 'more disable_update_strip' \
+		--disable-pedantic \
+		--disable-installer \
+		--disable-strip-libs
+
+	if [[ ${PN} != seamonkey ]]; then
+		mozconfig_annotate 'basic_profile' \
+			--disable-profilelocking \
+			--enable-single-profile \
+			--disable-profilesharing
+	fi
+
 	# Migrated from mozcoreconf-2
 	mozconfig_annotate 'system_libs' \
 		--with-system-zlib \
