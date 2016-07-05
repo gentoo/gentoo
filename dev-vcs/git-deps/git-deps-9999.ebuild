@@ -26,6 +26,8 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
+PATCHES="${FILESDIR}/html_location.patch"
+
 HTML_DOCS="html/."
 
 src_install() {
