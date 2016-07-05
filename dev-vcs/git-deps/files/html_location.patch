@@ -1,0 +1,13 @@
+--- git-deps.orig	2016-07-05 14:15:35.520601179 +0200
++++ git-deps	    2016-07-05 14:18:38.601254285 +0200
+@@ -689,9 +689,7 @@
+         abort("Cannot find flask module which is required for webserver mode.")
+ 
+     webserver = Flask('git-deps')
+-    here = os.path.dirname(os.path.realpath(__file__))
+-    root = os.path.join(here, 'html')
+-    webserver.root_path = root
++    webserver.root_path = os.path.expanduser('~/git-deps-html')
+ 
+     ##########################################################
+     # Static content
