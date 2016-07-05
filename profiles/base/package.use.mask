@@ -5,6 +5,11 @@
 # This file requires >=portage-2.1.1
 # New entries go on top.
 
+# Michał Górny <mgorny@gentoo.org> (05 Jul 2016)
+# Mask system-clang support as it requires llvm-3.4 that is subject
+# to security bug cleanup, #585102.
+dev-util/intel-ocl-sdk system-clang
+
 # Mike Gilbert <floppym@gentoo.org> (23 Jun 2016)
 # This flag only has meaning on amd64
 sys-boot/grub:2 grub_platforms_xen-32
