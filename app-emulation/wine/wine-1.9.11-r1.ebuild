@@ -18,45 +18,58 @@ if [[ ${PV} == "9999" ]] ; then
 else
 	MAJOR_V=$(get_version_component_range 1-2)
 	SRC_URI="https://dl.winehq.org/wine/source/${MAJOR_V}/${P}.tar.bz2"
-	KEYWORDS="-* amd64 x86 ~x86-fbsd"
+	KEYWORDS="-* ~amd64 ~x86 ~x86-fbsd"
 fi
 
-GV="2.40"
-MV="4.5.6"
+GV="2.44"
+MV="4.6.2"
+STAGING_GV="2.47-beta1"
+STAGING_MV="4.6.2"
 [[ ${MAJOR_V} == "1.8" ]] && SUFFIX="-unofficial"
 STAGING_P="wine-staging-${PV}"
 STAGING_DIR="${WORKDIR}/${STAGING_P}${SUFFIX}"
+D3D9_P="wine-d3d9-${PV}"
+D3D9_DIR="${WORKDIR}/wine-d3d9-patches-${D3D9_P}"
 WINE_GENTOO="wine-gentoo-2015.03.07"
-GST_P="wine-1.8-gstreamer-1.0"
 DESCRIPTION="Free implementation of Windows(tm) on Unix"
 HOMEPAGE="http://www.winehq.org/"
 SRC_URI="${SRC_URI}
-	gecko? (
-		abi_x86_32? ( https://dl.winehq.org/wine/wine-gecko/${GV}/wine_gecko-${GV}-x86.msi )
-		abi_x86_64? ( https://dl.winehq.org/wine/wine-gecko/${GV}/wine_gecko-${GV}-x86_64.msi )
+	!staging? (
+		gecko? (
+			abi_x86_32? ( https://dl.winehq.org/wine/wine-gecko/${GV}/wine_gecko-${GV}-x86.msi )
+			abi_x86_64? ( https://dl.winehq.org/wine/wine-gecko/${GV}/wine_gecko-${GV}-x86_64.msi )
+		)
+		mono? ( https://dl.winehq.org/wine/wine-mono/${MV}/wine-mono-${MV}.msi )
 	)
-	mono? ( https://dl.winehq.org/wine/wine-mono/${MV}/wine-mono-${MV}.msi )
-	https://dev.gentoo.org/~np-hardass/distfiles/${PN}/${GST_P}.patch.bz2
+	staging? (
+		gecko? (
+			abi_x86_32? ( https://dl.winehq.org/wine/wine-gecko/${STAGING_GV}/wine_gecko-${STAGING_GV}-x86.msi )
+			abi_x86_64? ( https://dl.winehq.org/wine/wine-gecko/${STAGING_GV}/wine_gecko-${STAGING_GV}-x86_64.msi )
+		)
+		mono? ( https://dl.winehq.org/wine/wine-mono/${STAGING_MV}/wine-mono-${STAGING_MV}.msi )
+	)
 	https://dev.gentoo.org/~tetromino/distfiles/${PN}/${WINE_GENTOO}.tar.bz2"
 
 if [[ ${PV} == "9999" ]] ; then
 	STAGING_EGIT_REPO_URI="git://github.com/wine-compholio/wine-staging.git"
+	D3D9_EGIT_REPO_URI="git://github.com/sarnex/wine-d3d9-patches.git"
 else
 	SRC_URI="${SRC_URI}
-	staging? ( https://github.com/wine-compholio/wine-staging/archive/v${PV}${SUFFIX}.tar.gz -> ${STAGING_P}.tar.gz )"
+	staging? ( https://github.com/wine-compholio/wine-staging/archive/v${PV}${SUFFIX}.tar.gz -> ${STAGING_P}.tar.gz )
+	d3d9? ( https://github.com/sarnex/wine-d3d9-patches/archive/${D3D9_P}.tar.gz )"
 fi
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-IUSE="+abi_x86_32 +abi_x86_64 +alsa capi cups custom-cflags dos elibc_glibc +fontconfig +gecko gphoto2 gsm gstreamer +jpeg +lcms ldap +mono mp3 ncurses netapi nls odbc openal opencl +opengl osmesa oss +perl pcap pipelight +png prelink pulseaudio +realtime +run-exes s3tc samba scanner selinux +ssl staging test +threads +truetype +udisks v4l vaapi +X +xcomposite xinerama +xml"
+IUSE="+abi_x86_32 +abi_x86_64 +alsa capi cups custom-cflags d3d9 dos elibc_glibc +fontconfig +gecko gphoto2 gsm gstreamer +jpeg kernel_FreeBSD +lcms ldap +mono mp3 ncurses netapi nls odbc openal opencl +opengl osmesa oss +perl pcap pipelight +png prelink pulseaudio +realtime +run-exes s3tc samba scanner selinux +ssl staging test +threads +truetype +udisks v4l vaapi +X +xcomposite xinerama +xml"
 REQUIRED_USE="|| ( abi_x86_32 abi_x86_64 )
+	X? ( truetype )
 	elibc_glibc? ( threads )
-	mono? ( abi_x86_32 )
+	osmesa? ( opengl )
 	pipelight? ( staging )
 	s3tc? ( staging )
 	test? ( abi_x86_32 )
-	vaapi? ( staging )
-	osmesa? ( opengl )" #286560
+	vaapi? ( staging )" # osmesa-opengl #286560 # X-truetype #551124
 
 # FIXME: the test suite is unsuitable for us; many tests require net access
 # or fail due to Xvfb's opengl limitations.
@@ -70,10 +83,10 @@ COMMON_DEPEND="
 		x11-libs/libXi[${MULTILIB_USEDEP}]
 		x11-libs/libXxf86vm[${MULTILIB_USEDEP}]
 	)
-	xinerama? ( x11-libs/libXinerama[${MULTILIB_USEDEP}] )
 	alsa? ( media-libs/alsa-lib[${MULTILIB_USEDEP}] )
-	capi? ( net-dialup/capi4k-utils )
+	capi? ( net-libs/libcapi[${MULTILIB_USEDEP}] )
 	cups? ( net-print/cups:=[${MULTILIB_USEDEP}] )
+	d3d9? ( media-libs/mesa[d3d9,${MULTILIB_USEDEP}] )
 	fontconfig? ( media-libs/fontconfig:=[${MULTILIB_USEDEP}] )
 	gphoto2? ( media-libs/libgphoto2:=[${MULTILIB_USEDEP}] )
 	gsm? ( media-sound/gsm:=[${MULTILIB_USEDEP}] )
@@ -82,8 +95,8 @@ COMMON_DEPEND="
 		media-plugins/gst-plugins-meta:1.0[${MULTILIB_USEDEP}]
 	)
 	jpeg? ( virtual/jpeg:0=[${MULTILIB_USEDEP}] )
-	ldap? ( net-nds/openldap:=[${MULTILIB_USEDEP}] )
 	lcms? ( media-libs/lcms:2=[${MULTILIB_USEDEP}] )
+	ldap? ( net-nds/openldap:=[${MULTILIB_USEDEP}] )
 	mp3? ( >=media-sound/mpg123-1.5.0[${MULTILIB_USEDEP}] )
 	ncurses? ( >=sys-libs/ncurses-5.2:0=[${MULTILIB_USEDEP}] )
 	netapi? ( net-fs/samba[netapi(+),${MULTILIB_USEDEP}] )
@@ -99,14 +112,15 @@ COMMON_DEPEND="
 	pcap? ( net-libs/libpcap[${MULTILIB_USEDEP}] )
 	png? ( media-libs/libpng:0=[${MULTILIB_USEDEP}] )
 	pulseaudio? ( media-sound/pulseaudio[${MULTILIB_USEDEP}] )
-	staging? ( sys-apps/attr[${MULTILIB_USEDEP}] )
 	scanner? ( media-gfx/sane-backends:=[${MULTILIB_USEDEP}] )
 	ssl? ( net-libs/gnutls:=[${MULTILIB_USEDEP}] )
+	staging? ( sys-apps/attr[${MULTILIB_USEDEP}] )
 	truetype? ( >=media-libs/freetype-2.0.0[${MULTILIB_USEDEP}] )
 	udisks? ( sys-apps/dbus[${MULTILIB_USEDEP}] )
 	v4l? ( media-libs/libv4l[${MULTILIB_USEDEP}] )
 	vaapi? ( x11-libs/libva[X,${MULTILIB_USEDEP}] )
 	xcomposite? ( x11-libs/libXcomposite[${MULTILIB_USEDEP}] )
+	xinerama? ( x11-libs/libXinerama[${MULTILIB_USEDEP}] )
 	xml? (
 		dev-libs/libxml2[${MULTILIB_USEDEP}]
 		dev-libs/libxslt[${MULTILIB_USEDEP}]
@@ -129,7 +143,7 @@ COMMON_DEPEND="
 	)"
 
 RDEPEND="${COMMON_DEPEND}
-	dos? ( games-emulation/dosbox )
+	dos? ( >=games-emulation/dosbox-0.74_p20160629 )
 	perl? (
 		dev-lang/perl
 		dev-perl/XML-Simple
@@ -148,15 +162,15 @@ DEPEND="${COMMON_DEPEND}
 	>=sys-kernel/linux-headers-2.6
 	virtual/pkgconfig
 	virtual/yacc
-	prelink? ( sys-devel/prelink )
-	staging? (
-		dev-lang/perl
-		dev-perl/XML-Simple
-	)
 	X? (
 		x11-proto/inputproto
 		x11-proto/xextproto
 		x11-proto/xf86vidmodeproto
+	)
+	prelink? ( sys-devel/prelink )
+	staging? (
+		dev-lang/perl
+		dev-perl/XML-Simple
 	)
 	xinerama? ( x11-proto/xineramaproto )"
 
@@ -174,10 +188,12 @@ wine_compiler_check() {
 	if tc-is-gcc; then
 		# bug #549768
 		if use abi_x86_64 && [[ $(gcc-major-version) = 5 && $(gcc-minor-version) -le 2 ]]; then
-			einfo "Checking for gcc-5 ms_abi compiler bug ..."
+			ebegin "Checking for gcc-5 ms_abi compiler bug"
 			$(tc-getCC) -O2 "${FILESDIR}"/pr66838.c -o "${T}"/pr66838 || die
 			# Run in subshell to prevent "Aborted" message
-			if ! ( "${T}"/pr66838 || false ) >/dev/null 2>&1; then
+			( "${T}"/pr66838 || false ) >/dev/null 2>&1
+			eend $?
+			if [[ $? -ne 0 ]] ; then
 				eerror "64-bit wine cannot be built with gcc-5.1 or initial patchset of 5.2.0"
 				eerror "due to compiler bugs; please re-emerge the latest gcc-5.2.x ebuild,"
 				eerror "or use gcc-config to select a different compiler version."
@@ -188,9 +204,11 @@ wine_compiler_check() {
 		fi
 		# bug #574044
 		if use abi_x86_64 && [[ $(gcc-major-version) = 5 && $(gcc-minor-version) = 3 ]]; then
-			einfo "Checking for gcc-5-3 stack realignment compiler bug ..."
+			ebegin "Checking for gcc-5-3 stack realignment compiler bug"
 			# Compile in subshell to prevent "Aborted" message
-			if ! ( $(tc-getCC) -O2 -mincoming-stack-boundary=3 "${FILESDIR}"/pr69140.c -o "${T}"/pr69140 || false ) >/dev/null 2>&1; then
+			( $(tc-getCC) -O2 -mincoming-stack-boundary=3 "${FILESDIR}"/pr69140.c -o "${T}"/pr69140 || false ) >/dev/null 2>&1
+			eend $?
+			if [[ $? -ne 0 ]] ; then
 				eerror "Wine cannot be built with this version of gcc-5.3"
 				eerror "due to compiler bugs; please re-emerge the latest gcc-5.3.x ebuild,"
 				eerror "or use gcc-config to select a different compiler version."
@@ -203,10 +221,11 @@ wine_compiler_check() {
 
 	# Ensure compiler support
 	if use abi_x86_64; then
-		einfo "Checking for builtin_ms_va_list ..."
-		if ( $(tc-getCC) -O2 "${FILESDIR}"/builtin_ms_va_list.c -o "${T}"/builtin_ms_va_list >/dev/null 2>&1) ; then
-			einfo "$(tc-getCC) supports builtin_ms_va_list, enabling 64-bit wine"
-		else
+		ebegin "Checking for 64-bit compiler with builtin_ms_va_list support"
+		# Compile in subshell to prevent "Aborted" message
+		( $(tc-getCC) -O2 "${FILESDIR}"/builtin_ms_va_list.c -o "${T}"/builtin_ms_va_list >/dev/null 2>&1)
+		eend $?
+		if [[ $? -ne 0 ]]; then
 			eerror "This version of $(tc-getCC) does not support builtin_ms_va_list, can't enable 64-bit wine"
 			eerror
 			eerror "You need gcc-4.4+ or clang 3.8+ to build 64-bit wine"
@@ -230,6 +249,17 @@ wine_build_environment_check() {
 pkg_pretend() {
 	wine_compiler_check || die
 	wine_build_environment_check || die
+
+	# Verify OSS support
+	if use oss && ! use kernel_FreeBSD; then
+		local oss_vers=$(best_version media-sound/oss)
+		if [[ -z ${oss_vers} ]] || ! version_is_at_least "4" ${oss_vers}; then
+			eerror "You cannot build wine with USE=oss without having support from a"
+			eerror "FreeBSD kernel or >=media-sound/oss-4 (only available through external repos)"
+			eerror
+			die
+		fi
+	fi
 }
 
 pkg_setup() {
@@ -255,13 +285,18 @@ src_unpack() {
 				einfo "Example: EGIT_COMMIT=${STAGING_COMMIT} emerge -1 wine"
 			fi
 		fi
+		if use d3d9; then
+			EGIT_REPO_URI="${D3D9_EGIT_REPO_URI}"
+			unset ${PN}_LIVE_{REPO,BRANCH,COMMIT} EGIT_COMMIT;
+			EGIT_CHECKOUT_DIR="${D3D9_DIR}" git-r3_src_unpack
+		fi
 	else
 		unpack ${P}.tar.bz2
 		use staging && unpack "${STAGING_P}.tar.gz"
+		use d3d9 && unpack "${D3D9_P}.tar.gz"
 	fi
 
 	unpack "${WINE_GENTOO}.tar.bz2"
-	unpack "${GST_P}.patch.bz2"
 
 	l10n_find_plocales_changes "${S}/po" "" ".po"
 }
@@ -273,8 +308,7 @@ src_prepare() {
 		"${FILESDIR}"/${PN}-1.9.5-multilib-portage.patch #395615
 		"${FILESDIR}"/${PN}-1.7.12-osmesa-check.patch #429386
 		"${FILESDIR}"/${PN}-1.6-memset-O3.patch #480508
-		"${WORKDIR}/${GST_P}.patch"
-		"${FILESDIR}"/${PN}-sysmacros.patch #580046
+		"${FILESDIR}"/${PN}-1.8-gnutls-3.5-compat.patch #587028
 	)
 	if use staging; then
 		ewarn "Applying the Wine-Staging patchset. Any bug reports to the"
@@ -296,6 +330,14 @@ src_prepare() {
 		if [[ ! -z ${SUFFIX} ]]; then
 			sed -i "s/(Staging)/(Staging [Unofficial])/" libs/wine/Makefile.in || die
 		fi
+	fi
+	if use d3d9; then
+		if use staging; then
+			PATCHES+=( "${D3D9_DIR}/staging-helper.patch" )
+		else
+			PATCHES+=( "${D3D9_DIR}/d3d9-helper.patch" )
+		fi
+		PATCHES+=( "${D3D9_DIR}/wine-d3d9.patch" )
 	fi
 
 	default
@@ -370,6 +412,7 @@ multilib_src_configure() {
 		--with-xattr
 		$(use_with vaapi va)
 	)
+	use d3d9 && myconf+=( $(use_with d3d9 d3dadapter) )
 
 	local PKG_CONFIG AR RANLIB
 	# Avoid crossdev's i686-pc-linux-gnu-pkg-config if building wine32 on amd64; #472038
@@ -432,6 +475,13 @@ multilib_src_install_all() {
 		rm "${D}"usr/bin/{wine{dump,maker},function_grep.pl} "${D}"usr/share/man/man1/wine{dump,maker}.1 || die
 	fi
 
+	# Remove wineconsole if neither backend is installed #551124
+	if ! use X && ! use ncurses; then
+		rm	"${D}"/usr/{bin/,man/man1/}wineconsole* || die
+		use abi_x86_32 && rm "${D}"/usr/lib32/wine/{,fakedlls/}wineconsole.exe* || die
+		use abi_x86_64 && rm "${D}"/usr/lib64/wine/{,fakedlls/}wineconsole.exe* || die
+	fi
+
 	use abi_x86_32 && pax-mark psmr "${D}"usr/bin/wine{,-preloader} #255055
 	use abi_x86_64 && pax-mark psmr "${D}"usr/bin/wine64{,-preloader}
 
@@ -465,12 +515,6 @@ pkg_postinst() {
 		ewarn "implementation of .NET.  Many windows applications rely upon"
 		ewarn "the existence of a .NET implementation, so you will likely need"
 		ewarn "to install an external one, like via winetricks"
-	fi
-
-	if use gstreamer; then
-		ewarn "This package uses a Gentoo specific patchset to provide"
-		ewarn "GStreamer 1.0 support.  Any bugs related to GStreamer should"
-		ewarn "be filed at Gentoo's bugzilla, not upstream's."
 	fi
 }
 
