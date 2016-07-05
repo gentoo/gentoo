@@ -5,5 +5,4 @@
 		<email>pinkbyte@gentoo.org</email>
 		<name>Sergey Popov</name>
 	</maintainer>
-	<longdescription>Combined filter, redirector and access controller plugin for Squid</longdescription>
 </pkgmetadata>
