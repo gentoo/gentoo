@@ -267,7 +267,7 @@ app-arch/ipkg-utils 1.7.050831-r2: Tools for working with the ipkg binary packag
 app-arch/lbzip2 2.3-r1 2.5: Parallel bzip2 utility
 app-arch/lcab 1.0_beta12: CAB file creation tool
 app-arch/lha 114i-r7 114i-r8: Utility for creating and opening lzh archives
-app-arch/libarchive 3.1.2-r1 3.1.2-r2 3.1.2-r3 3.1.2-r4 3.1.2-r5 3.2.1-r1 3.2.1-r2: BSD tar command
+app-arch/libarchive 3.1.2-r1 3.1.2-r2 3.1.2-r3 3.1.2-r4 3.1.2-r5 3.2.1-r1 3.2.1-r3: BSD tar command
 app-arch/libpar2 0.4: A library for par2, extracted from par2cmdline
 app-arch/libzpaq 6.53 7.04 7.13: Library to compress files in the ZPAQ format
 app-arch/lrzip 0.614 0.621: Long Range ZIP or Lzma RZIP optimized for compressing large files
@@ -4407,7 +4407,7 @@ dev-lang/io 2011.09.12-r2: Io is a small, prototype-based programming language
 dev-lang/ispc 1.8.2-r2 1.8.2-r4 1.9.0: Intel SPMD Program Compiler
 dev-lang/j 701-r2: Modern, high-level, general-purpose, high-performance programming language
 dev-lang/jimtcl 0.70_pre20110317 0.73 0.74-r1 0.75 0.75-r1 0.76 9999: Small footprint implementation of Tcl programming language
-dev-lang/julia 0.3.0 0.4.3: High-performance programming language for technical computing
+dev-lang/julia 0.4.3: High-performance programming language for technical computing
 dev-lang/jwasm 2.10-r1 2.11 2.11a: MASM-compatible TASM-similar assembler (fork of Wasm)
 dev-lang/lazarus 1.0.12 1.2.2 1.2.4 1.2.6 1.6.0-r1: Lazarus IDE is a feature rich visual programming environment emulating Delphi
 dev-lang/lfe 0.7 0.10.1 1.0: Lisp-flavoured Erlang
@@ -16993,7 +16993,7 @@ sys-devel/bison 1.875d 2.4.3 2.7.1 3.0.3-r1 3.0.4 3.0.4-r1: A general-purpose (y
 sys-devel/bmake 20140214 20151010 20151220 20160220 20160315: NetBSD's portable make
 sys-devel/boost-m4 0.4 0.4-r1 0.4_p20160328: Another set of autoconf macros for compiling against boost
 sys-devel/byfl 1.4-r1 1.5 9999: Compiler-based Application Analysis
-sys-devel/clang 3.4.2-r100 3.5.0-r100 3.5.2-r100 3.6.2-r100 3.7.1-r100 3.8.0-r100 9999-r100: C language family frontend for LLVM (meta-ebuild)
+sys-devel/clang 3.5.0-r100 3.5.2-r100 3.6.2-r100 3.7.1-r100 3.8.0-r100 9999-r100: C language family frontend for LLVM (meta-ebuild)
 sys-devel/cons 2.2.0: Extensible perl-based build utility
 sys-devel/crossdev 20151026-r1 20160602 99999999: Gentoo Cross-toolchain generator
 sys-devel/ct-ng 1.21.0 1.22.0: crosstool-ng is a tool to build cross-compiling toolchains
@@ -17012,7 +17012,7 @@ sys-devel/heirloom-devtools 070527-r1 999999: Original UNIX development tools
 sys-devel/icecream 0.9.7-r1 1.0.0-r1: icecc is a program for distributed compiling of C(++) code across several machines; based on distcc
 sys-devel/kgcc64 3.4.6 4.1.2 4.2.4 4.3.5 4.4.5 4.4.6 4.5.3 4.5.4 4.6.3 4.6.4 4.7.3 4.7.4 4.8.1 4.8.2 4.8.3 4.8.5 4.9.1 4.9.2 4.9.3 5.3.0 5.4.0: 64bit kernel compiler
 sys-devel/libtool 2.4.2-r1 2.4.4 2.4.5 2.4.6 2.4.6-r1 2.4.6-r2 9999: A shared library tool for developers
-sys-devel/llvm 3.4.2 3.5.0 3.5.2 3.6.2 3.7.1-r3 3.8.0-r3 9999: Low Level Virtual Machine
+sys-devel/llvm 3.5.0 3.5.2 3.6.2 3.7.1-r3 3.8.0-r3 9999: Low Level Virtual Machine
 sys-devel/m4 1.4.16 1.4.17: GNU macro processor
 sys-devel/make 3.80-r4 3.81-r2 3.82-r4 4.0-r1 4.1-r1 4.2-r2 4.2.1: Standard tool to compile source trees
 sys-devel/multilib-gcc-wrapper 0: Wrappers for gcc tools to be used on non-native CHOSTs
