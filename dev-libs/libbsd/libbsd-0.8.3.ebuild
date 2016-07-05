@@ -18,7 +18,7 @@ DEPEND=">=sys-kernel/linux-headers-3.17"
 RDEPEND=""
 
 pkg_setup() {
-	local f="${ROOT}/usr/$(get_libdir)/${PN}.a"
+	local f="${EROOT}/usr/$(get_libdir)/${PN}.a"
 	local m="You need to remove ${f} by hand or re-emerge sys-libs/glibc first."
 	if ! has_version ${CATEGORY}/${PN}; then
 		if [[ -e ${f} ]]; then
