@@ -79,7 +79,7 @@ unset ADDONS_SRC
 LO_EXTS="nlpsolver scripting-beanshell scripting-javascript wiki-publisher"
 
 IUSE="bluetooth +branding coinmp collada +cups dbus debug eds firebird gltf gnome google
-gstreamer +gtk gtk3 jemalloc kde libressl mysql odk postgres telepathy test vlc
+gstreamer +gtk gtk3 jemalloc kde libressl mysql odk postgres quickstarter telepathy test vlc
 $(printf 'libreoffice_extensions_%s ' ${LO_EXTS})"
 
 LICENSE="|| ( LGPL-3 MPL-1.1 )"
@@ -414,8 +414,6 @@ src_configure() {
 	# --enable-*-link: link to the library rather than just dlopen on runtime
 	# --enable-release-build: build the libreoffice as release
 	# --disable-fetch-external: prevent dowloading during compile phase
-	# --disable-systray: quickstarter does not actually work at all so do not
-	#   promote it
 	# --enable-extension-integration: enable any extension integration support
 	# --without-{fonts,myspell-dicts,ppsd}: prevent install of sys pkgs
 	# --disable-report-builder: too much java packages pulled in without pkgs
@@ -443,7 +441,6 @@ src_configure() {
 		--disable-gstreamer-0-10 \
 		--disable-report-builder \
 		--disable-online-update \
-		--disable-systray \
 		--with-alloc=$(use jemalloc && echo "jemalloc" || echo "system") \
 		--with-build-version="Gentoo official package" \
 		--enable-extension-integration \
@@ -479,6 +476,7 @@ src_configure() {
 		$(use_enable mysql ext-mariadb-connector) \
 		$(use_enable odk) \
 		$(use_enable postgres postgresql-sdbc) \
+		$(use_enable quickstarter systray) \
 		$(use_enable telepathy) \
 		$(use_enable vlc) \
 		$(use_with coinmp system-coinmp) \
