@@ -15,7 +15,7 @@ HOMEPAGE="https://rack.github.com/"
 
 LICENSE="MIT"
 SLOT="$(get_version_component_range 1-2)"
-KEYWORDS="~amd64 ~arm"
+KEYWORDS="~alpha ~amd64 ~arm"
 IUSE=""
 
 RUBY_PATCHES=( ${PN}-1.2.1-gentoo.patch )
