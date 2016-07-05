@@ -47,6 +47,10 @@ DEPEND="${RDEPEND}
 
 CONFIG_CHECK="~AUTOFS4_FS"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-libtirpc-as-need.patch
+)
+
 src_prepare() {
 	# Upstream's patchset
 	if [[ -n ${PATCH_VER} ]]; then
