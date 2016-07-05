@@ -43,7 +43,7 @@ PATCHES=(
 
 src_prepare() {
 	default
-	eautoreconf
+	eautoreconf # elibtoolize is required for Solaris sol2_ld linker fix
 }
 
 multilib_src_configure() {
