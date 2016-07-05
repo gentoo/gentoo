@@ -16,10 +16,11 @@ SRC_URI="https://www.opensmtpd.org/archives/${MY_P/_}.tar.gz"
 
 LICENSE="ISC BSD BSD-1 BSD-2 BSD-4"
 SLOT="0"
-KEYWORDS="amd64 x86"
-IUSE="pam +mta"
+KEYWORDS="~amd64 ~x86"
+IUSE="libressl pam +mta"
 
-DEPEND="dev-libs/openssl:0
+DEPEND="!libressl? ( dev-libs/openssl:0 )
+		libressl? ( dev-libs/libressl )
 		sys-libs/zlib
 		pam? ( virtual/pam )
 		sys-libs/db:=
@@ -68,6 +69,8 @@ src_install() {
 	newinitd "${FILESDIR}"/smtpd.initd smtpd
 	systemd_dounit "${FILESDIR}"/smtpd.{service,socket}
 	use pam && newpamd "${FILESDIR}"/smtpd.pam smtpd
+	dosym /usr/sbin/smtpctl /usr/sbin/makemap
+	dosym /usr/sbin/smtpctl /usr/sbin/newaliases
 	if use mta ; then
 		dodir /usr/sbin
 		dosym /usr/sbin/smtpctl /usr/sbin/sendmail

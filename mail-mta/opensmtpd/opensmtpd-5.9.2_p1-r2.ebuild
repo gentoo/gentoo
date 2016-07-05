@@ -69,6 +69,8 @@ src_install() {
 	newinitd "${FILESDIR}"/smtpd.initd smtpd
 	systemd_dounit "${FILESDIR}"/smtpd.{service,socket}
 	use pam && newpamd "${FILESDIR}"/smtpd.pam smtpd
+	dosym /usr/sbin/smtpctl /usr/sbin/makemap
+	dosym /usr/sbin/smtpctl /usr/sbin/newaliases
 	if use mta ; then
 		dodir /usr/sbin
 		dosym /usr/sbin/smtpctl /usr/sbin/sendmail
