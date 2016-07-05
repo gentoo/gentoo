@@ -2,12 +2,12 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="xml"
 
-inherit eutils java-pkg-opt-2 linux-info python-any-r1 readme.gentoo
+inherit eutils java-pkg-opt-2 linux-info python-any-r1 readme.gentoo-r1
 
 if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="git://git.infradead.org/users/dwmw2/${PN}.git"
@@ -26,10 +26,6 @@ HOMEPAGE="http://www.infradead.org/openconnect.html"
 LICENSE="LGPL-2.1 GPL-2"
 SLOT="0/5"
 IUSE="doc +gnutls gssapi java libressl libproxy nls smartcard static-libs stoken"
-ILINGUAS="ar cs de el en_GB en_US es eu fi fr gl id lt nl pa pl pt pt_BR sk sl tg ug uk zh_CN zh_TW"
-for lang in $ILINGUAS; do
-	IUSE="${IUSE} linguas_${lang}"
-done
 
 DEPEND="dev-libs/libxml2
 	sys-libs/zlib
@@ -63,30 +59,31 @@ pkg_pretend() {
 
 pkg_setup() {
 	java-pkg-opt-2_pkg_setup
-
-	if use doc; then
-		python-any-r1_pkg_setup
-	fi
 }
 
 src_unpack() {
 	if [[ ${PV} == 9999 ]]; then
 		git-r3_src_unpack
 	fi
-	unpack ${A}
+	default
 }
 
 src_prepare() {
-	epatch_user
+	default
 	if [[ ${PV} == 9999 ]]; then
 		eautoreconf
 	fi
 }
 
 src_configure() {
-	strip-linguas $ILINGUAS
-	echo ${LINGUAS} > po/LINGUAS
-	if ! use doc; then
+	if [[ ${LINGUAS+set} == set ]]; then
+		strip-linguas -u po
+		echo "${LINGUAS}" > po/LINGUAS || die
+	fi
+
+	if use doc; then
+		python_setup
+	else
 		# If the python cannot be found, the docs will not build
 		sed -e 's#"${ac_cv_path_PYTHON}"#""#' -i configure || die
 	fi
