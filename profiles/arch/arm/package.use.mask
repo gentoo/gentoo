@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+# Johannes Huber <johu@gentoo.org> (5 Jul 2016)
+# Missing keywords on kde-apps/kholidays
+kde-plasma/plasma-workspace calendar
+
 # Alexandre Rostovtsev <tetromino@gentoo.org> (28 Jun 2016)
 # Missing keywords on app-text/gspell - bug #587368
 >=app-editors/gedit-3.20 spell
