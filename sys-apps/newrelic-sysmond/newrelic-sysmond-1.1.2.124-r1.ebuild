@@ -8,11 +8,11 @@ inherit user
 
 DESCRIPTION="NewRelic System Monitor"
 HOMEPAGE="http://www.newrelic.com/"
-SRC_URI="http://download.newrelic.com/server_monitor/release/${P}-linux.tar.gz"
+SRC_URI="http://download.newrelic.com/server_monitor/archive/${PV}/${P}-linux.tar.gz"
 
 LICENSE="newrelic Apache-2.0 MIT ISC openssl GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~amd64"
+KEYWORDS="-* ~x86 ~amd64"
 IUSE=""
 RESTRICT="strip"
 
