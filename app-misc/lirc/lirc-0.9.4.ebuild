@@ -72,8 +72,6 @@ src_install() {
 
 	if use doc ; then
 		dodoc -r doc/html
-		insinto /usr/share/doc/${PF}/images
-		doins doc/images/*
 	fi
 
 	keepdir /etc/lirc
