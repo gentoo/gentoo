@@ -5389,7 +5389,7 @@ dev-perl/Config-Properties 1.800.0: Configuration using Java style properties
 dev-perl/Config-Simple 4.590.0-r1: Config::Simple - simple configuration file class
 dev-perl/Config-Tiny 2.230.0: Read/Write .ini style files with as little code as possible
 dev-perl/ConfigReader 0.500.0-r1: Read directives from a configuration file
-dev-perl/Const-Fast 0.13.0 0.14.0-r1: Facility for creating read-only scalars, arrays, and hashes
+dev-perl/Const-Fast 0.14.0-r1: Facility for creating read-only scalars, arrays, and hashes
 dev-perl/Context-Preserve 0.10.0-r1: Pass chained return values from subs, modifying their values, without losing context
 dev-perl/Contextual-Return 0.4.7-r1: Create context-sensitive return values
 dev-perl/Convert-ASN1 0.270.0: Standard en/decode of ASN.1 structures
@@ -6080,7 +6080,7 @@ dev-perl/Object-Realize-Later 0.190.0: Delayed creation of objects
 dev-perl/Ogg-Vorbis-Header 0.30.0-r1: An object-oriented interface to Ogg Vorbis information and comment fields
 dev-perl/Ogg-Vorbis-Header-PurePerl 1.0.0-r1: Object-oriented interface to Ogg Vorbis information and comment fields
 dev-perl/Olson-Abbreviations 0.40.0: Globally unique timezones abbreviation handling
-dev-perl/OpenGL 0.670.3 0.670.400: Perl interface providing graphics display using OpenGL
+dev-perl/OpenGL 0.670.400: Perl interface providing graphics display using OpenGL
 dev-perl/PAR 1.10.0: Perl Archive Toolkit
 dev-perl/PAR-Dist 0.490.0-r1: Create and manipulate PAR distributions
 dev-perl/PBKDF2-Tiny 0.5.0: Minimalist PBKDF2 (RFC 2898) with HMAC-SHA1 or HMAC-SHA2
@@ -6090,7 +6090,7 @@ dev-perl/PDF-Create 1.290.0: Create PDF documents in Perl
 dev-perl/PDL 2.4.11: Perl Data Language for scientific computing
 dev-perl/PGPLOT 2.210.0: allow subroutines in the PGPLOT graphics library to be called from Perl
 dev-perl/PHP-Serialization 0.340.0-r1: Convert PHP's serialize() into the equivalent Perl structure, and vice versa
-dev-perl/POE 1.356-r1 1.367: A framework for creating multitasking programs in Perl
+dev-perl/POE 1.367: A framework for creating multitasking programs in Perl
 dev-perl/POE-API-Peek 2.200.0-r1: Peek into the internals of a running POE env
 dev-perl/POE-Component-Client-DNS 1.54.0: Non-blocking, parallel DNS client
 dev-perl/POE-Component-Client-Keepalive 0.272.0: Manage connections, with keep-alive
@@ -6135,7 +6135,7 @@ dev-perl/Path-FindDev 0.5.2: Find a development path somewhere in an upper hiera
 dev-perl/Path-IsDev 1.1.2: Determine if a given Path resembles a development source tree
 dev-perl/Path-Tiny 0.61.0 0.84.0: File path utility
 dev-perl/Pegex 0.600.0: Acmeist PEG Parser Framework
-dev-perl/Perl-Critic 1.118.0-r1 1.123 1.126.0: Critique Perl source code for best-practices
+dev-perl/Perl-Critic 1.123 1.126.0: Critique Perl source code for best-practices
 dev-perl/Perl-Critic-Deprecated 1.119.0: Perl::Critic policies which have been superseded by others
 dev-perl/Perl-Critic-Dynamic 0.50.0-r1: Base class for dynamic Policies
 dev-perl/Perl-Critic-Nits 1.0.0-r1: policies of nits I like to pick
@@ -6144,7 +6144,7 @@ dev-perl/Perl-Tags 0.320.0: Generate (possibly exuberant) Ctags style tags for P
 dev-perl/Perl-Tidy 20160302.0.0: Perl script indenter and beautifier
 dev-perl/Perl-Unsafe-Signals 0.30.0: Allow unsafe handling of signals in selected blocks
 dev-perl/Perl6-Junction 1.600.0: Perl6 style Junction operators in Perl5
-dev-perl/PerlIO-Layers 0.10.0 0.11.0: Querying your filehandle's capabilities
+dev-perl/PerlIO-Layers 0.11.0: Querying your filehandle's capabilities
 dev-perl/PerlIO-eol 0.140.0-r1: PerlIO::eol - PerlIO layer for normalizing line endings
 dev-perl/PerlIO-gzip 0.180.0-r1 0.190.0: PerlIO layer to gzip/gunzip
 dev-perl/PerlIO-via-Timeout 0.320.0: PerlIO layer that adds read & write timeout to a handle
@@ -6177,7 +6177,7 @@ dev-perl/Proc-Wait3 0.50.0: Perl extension for wait3 system call
 dev-perl/Proc-WaitStat 1.0.0-r1: Interpret and act on wait() status values
 dev-perl/Quota 1.7.0 1.7.2: Perl interface to file system quotas
 dev-perl/REST-Client 249 273: A simple client for interacting with RESTful http/https resources
-dev-perl/RPC-XML 0.770.0-r1 0.790.0: An implementation of XML-RPC
+dev-perl/RPC-XML 0.790.0: An implementation of XML-RPC
 dev-perl/RRD-Simple 1.440.0-r1: Simple interface to create and store data in RRD files
 dev-perl/RTF-Writer 1.110.0-r2: RTF::Writer - for generating documents in Rich Text Format
 dev-perl/RadiusPerl 0.220.0-r1: Communicate with a Radius server from Perl
@@ -6207,7 +6207,7 @@ dev-perl/SQL-Statement 1.405.0-r1 1.409.0 1.410.0: Small SQL parser and engine
 dev-perl/SQL-Translator 0.110.210: Manipulate structured data definitions (SQL and more)
 dev-perl/SRU 1.10.0: Search and Retrieval by URL
 dev-perl/SUPER 1.201.411.170: control superclass method dispatch
-dev-perl/SVG 2.590.0 2.640.0: Perl extension for generating Scalable Vector Graphics (SVG) documents
+dev-perl/SVG 2.640.0: Perl extension for generating Scalable Vector Graphics (SVG) documents
 dev-perl/SVG-Graph 0.20.0-r1: Visualize your data in Scalable Vector Graphics (SVG) format
 dev-perl/SVN-Simple 0.280.0-r1: SVN::Simple::Edit - Simple interface to SVN::Delta::Editor
 dev-perl/Safe-Hole 0.130.0-r1: Exec subs in the original package from Safe
@@ -6216,7 +6216,7 @@ dev-perl/Sane 0.50.0-r1: The Sane module allows you to access SANE-compatible sc
 dev-perl/Scalar-Properties 1.100.860-r1: run-time properties on scalar variables
 dev-perl/Schedule-At 1.150.0-r1: OS independent interface to the Unix 'at' command
 dev-perl/Schedule-Cron-Events 1.950.0: Take a line from a crontab and find out when events will occur
-dev-perl/Scope-Guard 0.200.0-r1 0.210.0: Lexically scoped resource management
+dev-perl/Scope-Guard 0.210.0: Lexically scoped resource management
 dev-perl/Search-Xapian 1.2.19.0 1.2.22.0 1.2.23.0 1.2.23.0-r1: Perl XS frontend to the Xapian C++ search library
 dev-perl/Server-Starter 0.320.0: A superdaemon for hot-deploying server programs
 dev-perl/Set-Crontab 1.30.0: Expand crontab(5)-style integer lists
@@ -6329,12 +6329,12 @@ dev-perl/Test-File-ShareDir 1.1.1-r1: Create a Fake ShareDir for your modules fo
 dev-perl/Test-Inline 2.213.0-r1: Inline test suite support for Perl
 dev-perl/Test-Inter 1.60.0: Framework for more readable interactive test scripts
 dev-perl/Test-LeakTrace 0.150.0: Traces memory leaks
-dev-perl/Test-LongString 0.150.0-r1 0.170.0: A library to test long strings
+dev-perl/Test-LongString 0.170.0: A library to test long strings
 dev-perl/Test-Manifest 2.20.0: Interact with a t/test_manifest file
 dev-perl/Test-Memory-Cycle 1.40.0-r1 1.60.0: Check for memory leaks and circular memory references
 dev-perl/Test-Mock-LWP-Dispatch 0.80.0: Mocks LWP::UserAgent and dispatches your requests/responses
 dev-perl/Test-MockModule 0.50.0-r2 0.110.0: Override subroutines in a module for unit testing
-dev-perl/Test-MockObject 1.201.203.10-r1 1.201.505.270: Perl extension for emulating troublesome interfaces
+dev-perl/Test-MockObject 1.201.505.270: Perl extension for emulating troublesome interfaces
 dev-perl/Test-MockRandom 1.10.0: Replaces random number generation with non-random number generation
 dev-perl/Test-MockTime 0.150.0: Replaces actual time with simulated time
 dev-perl/Test-Most 0.310.0-r1 0.340.0: Most commonly needed test functions and features
