@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=6
+EAPI=5
 inherit fdo-mime font gnome2-utils unpacker versionator
 
 MY_PV="$(get_version_component_range 1-4)"
