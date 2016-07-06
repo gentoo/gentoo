@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -13,7 +13,7 @@ HOMEPAGE="https://projects.kde.org/kde-gtk-config"
 SRC_URI="mirror://kde/stable/${PN}/${PV}/src/${P}.tar.xz"
 
 LICENSE="GPL-3"
-KEYWORDS="amd64 ~arm ~ppc ~ppc64 x86 ~x86-fbsd"
+KEYWORDS="amd64 ~arm x86 ~x86-fbsd"
 SLOT="4"
 IUSE="debug"
 
