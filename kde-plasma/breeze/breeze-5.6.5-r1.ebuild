@@ -11,7 +11,7 @@ HOMEPAGE="https://projects.kde.org/projects/kde/workspace/breeze"
 KEYWORDS="~amd64 ~arm ~x86"
 IUSE="qt4"
 
-COMMON_DEPEND="
+DEPEND="
 	$(add_frameworks_dep frameworkintegration)
 	$(add_frameworks_dep kcmutils)
 	$(add_frameworks_dep kconfig)
@@ -19,9 +19,9 @@ COMMON_DEPEND="
 	$(add_frameworks_dep kcoreaddons)
 	$(add_frameworks_dep kguiaddons)
 	$(add_frameworks_dep ki18n)
-	$(add_frameworks_dep kwayland)
 	$(add_frameworks_dep kwidgetsaddons)
 	$(add_frameworks_dep kwindowsystem)
+	$(add_frameworks_dep plasma)
 	$(add_plasma_dep kdecoration)
 	$(add_qt_dep qtdbus)
 	$(add_qt_dep qtgui)
@@ -33,10 +33,7 @@ COMMON_DEPEND="
 		x11-libs/libX11
 	)
 "
-DEPEND="${COMMON_DEPEND}
-	$(add_frameworks_dep kpackage)
-"
-RDEPEND="${COMMON_DEPEND}
+RDEPEND="${DEPEND}
 	$(add_frameworks_dep breeze-icons)
 	$(add_plasma_dep kde-cli-tools)
 "
@@ -62,6 +59,10 @@ src_configure() {
 
 src_compile() {
 	multibuild_foreach_variant kde5_src_compile
+}
+
+src_test() {
+	multibuild_foreach_variant kde5_src_test
 }
 
 src_install() {
