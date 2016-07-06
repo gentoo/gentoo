@@ -23,7 +23,7 @@ HOMEPAGE="https://cgit.freedesktop.org/plymouth/"
 LICENSE="GPL-2"
 SLOT="0"
 [[ ${PV} == 9999 ]] || \
-KEYWORDS="alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc x86"
+KEYWORDS="alpha amd64 ~arm ~ia64 ppc ~ppc64 ~sparc x86"
 IUSE="debug gdm +gtk +libkms +pango static-libs"
 
 CDEPEND="
