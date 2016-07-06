@@ -46,6 +46,10 @@ src_compile() {
 	multibuild_foreach_variant kde5_src_compile
 }
 
+src_test() {
+	multibuild_foreach_variant kde5_src_test
+}
+
 src_install() {
 	multibuild_foreach_variant kde5_src_install
 }
