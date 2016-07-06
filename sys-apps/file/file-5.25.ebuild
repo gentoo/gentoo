@@ -14,7 +14,7 @@ if [[ ${PV} == "9999" ]] ; then
 else
 	SRC_URI="ftp://ftp.astron.com/pub/file/${P}.tar.gz
 		ftp://ftp.gw.com/mirrors/pub/unix/file/${P}.tar.gz"
-	KEYWORDS="alpha amd64 arm ~arm64 hppa ~ia64 ~m68k ~mips ~ppc ppc64 ~s390 ~sh ~sparc x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
+	KEYWORDS="alpha amd64 arm ~arm64 hppa ~ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh ~sparc x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
 fi
 
 DESCRIPTION="identify a file's format by scanning binary data for patterns"
