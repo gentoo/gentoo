@@ -27,7 +27,7 @@ if [[ ${KDE_BUILD_TYPE} = live ]]; then
 	esac
 fi
 
-if [[ ${CATEGORY} != kde-frameworks ]]; then
+if [[ -v KDE_GCC_MINIMAL ]]; then
 	EXPORT_FUNCTIONS pkg_pretend
 fi
 
@@ -157,15 +157,9 @@ case ${KDE_AUTODEPS} in
 		fi
 
 		if [[ ${CATEGORY} = kde-frameworks || ${CATEGORY} = kde-plasma && ${PN} != polkit-kde-agent ]]; then
-			local blocked_version=15.08.0-r1
-
-			if [[ ${CATEGORY} = kde-plasma && $(get_version_component_range 2) -ge 6 ]]; then
-				blocked_version=15.12.3-r1
-			fi
-
 			RDEPEND+="
-				!kde-apps/kde4-l10n[-minimal(-)]
-				!<kde-apps/kde4-l10n-${blocked_version}
+				!kde-apps/kde4-l10n[-minimal(+)]
+				!<kde-apps/kde4-l10n-15.12.3-r1
 			"
 		fi
 

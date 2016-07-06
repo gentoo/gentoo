@@ -39,14 +39,9 @@ esac
 : ${KDE_APPS_MINIMAL:=14.12.0}
 
 # @ECLASS-VARIABLE: KDE_GCC_MINIMAL
+# @DEFAULT_UNSET
 # @DESCRIPTION:
 # Minimal GCC version to require for the package.
-if [[ ${CATEGORY} = kde-frameworks ]]; then
-	: ${KDE_GCC_MINIMAL:=4.5}
-else
-	: ${KDE_GCC_MINIMAL:=4.8}
-fi
-
 
 # @ECLASS-VARIABLE: KDEBASE
 # @DESCRIPTION:
@@ -81,16 +76,26 @@ export KDE_BUILD_TYPE
 # @DESCRIPTION:
 # Determine if the current GCC version is acceptable, otherwise die.
 _check_gcc_version() {
-	if [[ ${MERGE_TYPE} != binary ]]; then
+	if [[ ${MERGE_TYPE} != binary && -v KDE_GCC_MINIMAL ]]; then
+
 		local version=$(gcc-version)
 		local major=${version%.*}
 		local minor=${version#*.}
 		local min_major=${KDE_GCC_MINIMAL%.*}
 		local min_minor=${KDE_GCC_MINIMAL#*.}
 
+		debug-print "GCC version check activated"
+		debug-print "Version detected:"
+		debug-print "	- Full: ${version}"
+		debug-print "	- Major: ${major}"
+		debug-print "	- Minor: ${minor}"
+		debug-print "Version required:"
+		debug-print "	- Major: ${min_major}"
+		debug-print "	- Minor: ${min_minor}"
+
 		[[ ${major} -lt ${min_major} ]] || \
 				( [[ ${major} -eq ${min_major} && ${minor} -lt ${min_minor} ]] ) \
-			&& die "Sorry, but gcc-${KDE_GCC_MINIMAL} or later is required for this package."
+			&& die "Sorry, but gcc-${KDE_GCC_MINIMAL} or later is required for this package (found ${version})."
 	fi
 }
 
@@ -141,6 +146,10 @@ _add_category_dep() {
 add_frameworks_dep() {
 	debug-print-function ${FUNCNAME} "$@"
 
+	if [[ $# -gt 4 ]]; then
+		die "${FUNCNAME} was called with too many arguments"
+	fi
+
 	local version
 
 	if [[ -n ${3} ]]; then
@@ -169,6 +178,10 @@ add_frameworks_dep() {
 add_plasma_dep() {
 	debug-print-function ${FUNCNAME} "$@"
 
+	if [[ $# -gt 4 ]]; then
+		die "${FUNCNAME} was called with too many arguments"
+	fi
+
 	local version
 
 	if [[ -n ${3} ]]; then
@@ -196,6 +209,10 @@ add_plasma_dep() {
 # of parentheses).
 add_kdeapps_dep() {
 	debug-print-function ${FUNCNAME} "$@"
+
+	if [[ $# -gt 4 ]]; then
+		die "${FUNCNAME} was called with too many arguments"
+	fi
 
 	local version
 
@@ -229,6 +246,10 @@ add_kdeapps_dep() {
 # of parentheses).
 add_qt_dep() {
 	debug-print-function ${FUNCNAME} "$@"
+
+	if [[ $# -gt 4 ]]; then
+		die "${FUNCNAME} was called with too many arguments"
+	fi
 
 	local version
 
