@@ -1,0 +1,52 @@
+diff --git a/kernel/nvidia-uvm/uvm8_gpu.c b/kernel/nvidia-uvm/uvm8_gpu.c
+index ff49934..7f731fb 100755
+--- a/kernel/nvidia-uvm/uvm8_gpu.c
++++ b/kernel/nvidia-uvm/uvm8_gpu.c
+@@ -637,7 +637,7 @@ static void remove_gpu(uvm_gpu_t *gpu)
+                    gpu->id, uvm_gpu_retained_count(gpu));
+ 
+     // All channels should have been removed before the retained count went to 0
+-    UVM_ASSERT(radix_tree_empty(&gpu->instance_ptr_table));
++    UVM_ASSERT(radix_tree_is_empty(&gpu->instance_ptr_table));
+ 
+     // Remove the GPU from the table.
+     uvm_spin_lock_irqsave(&g_uvm_global.gpu_table_lock);
+diff --git a/kernel/nvidia-uvm/uvm_linux.h b/kernel/nvidia-uvm/uvm_linux.h
+index 7de5f3a..132e7ee 100755
+--- a/kernel/nvidia-uvm/uvm_linux.h
++++ b/kernel/nvidia-uvm/uvm_linux.h
+@@ -554,7 +554,7 @@ static void uvm_init_radix_tree_preloadable(struct radix_tree_root *tree)
+     INIT_RADIX_TREE(tree, GFP_NOWAIT);
+ }
+ 
+-static bool radix_tree_empty(struct radix_tree_root *tree)
++static bool radix_tree_is_empty(struct radix_tree_root *tree)
+ {
+     void *dummy;
+     return radix_tree_gang_lookup(tree, &dummy, 0, 1) == 0;
+diff --git a/kernel/nvidia-drm/nvidia-drm-fb.c b/kernel/nvidia-drm/nvidia-drm-fb.c
+index dccad84..39d9090 100644
+--- a/kernel/nvidia-drm/nvidia-drm-fb.c
++++ b/kernel/nvidia-drm/nvidia-drm-fb.c
+@@ -114,7 +114,7 @@ static struct drm_framebuffer *internal_framebuffer_create
+      * We don't support any planar format, pick up first buffer only.
+      */
+ 
+-    gem = drm_gem_object_lookup(dev, file, cmd->handles[0]);
++    gem = drm_gem_object_lookup(file, cmd->handles[0]);
+ 
+     if (gem == NULL)
+     {
+diff --git a/kernel/nvidia-drm/nvidia-drm-gem.c b/kernel/nvidia-drm/nvidia-drm-gem.c
+index 6e265ce..2873ca4 100644
+--- a/kernel/nvidia-drm/nvidia-drm-gem.c
++++ b/kernel/nvidia-drm/nvidia-drm-gem.c
+@@ -408,7 +408,7 @@ int nvidia_drm_dumb_map_offset
+ 
+     mutex_lock(&dev->struct_mutex);
+ 
+-    gem = drm_gem_object_lookup(dev, file, handle);
++    gem = drm_gem_object_lookup(file, handle);
+ 
+     if (gem == NULL)
+     {
