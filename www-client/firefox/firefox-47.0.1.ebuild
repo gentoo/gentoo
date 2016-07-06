@@ -113,7 +113,9 @@ src_unpack() {
 
 src_prepare() {
 	# Apply our patches
-	eapply "${WORKDIR}/firefox"
+	eapply "${WORKDIR}/firefox" \
+		"${FILESDIR}"/${PN}-47.0-crashreporter.patch \
+		"${FILESDIR}"/${PN}-47.0-define-HUNSPELL_STATIC-conditionally.patch
 
 	# Enable gnomebreakpad
 	if use debug ; then
