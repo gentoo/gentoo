@@ -213,7 +213,7 @@ app-admin/system-config-printer 1.4.8: GNOME frontend for a Red Hat's printer ad
 app-admin/system-tools-backends 2.10.2: Tools aimed to make easy the administration of UNIX systems
 app-admin/systemrescuecd-x86 4.4.1 4.5.0 4.5.1 4.5.2 4.5.3 4.5.4 4.6.0 4.6.1 4.7.0 4.7.1 4.7.2 4.7.3 4.8.0: The .iso image of SystemRescueCD rescue disk, x86 (+ amd64) variant
 app-admin/tenshi 0.12 0.14 0.15: Log parsing and notification program
-app-admin/testdisk 7.0-r2 7.0-r3: Checks and undeletes partitions + PhotoRec, signature based recovery tool
+app-admin/testdisk 7.0-r3: Checks and undeletes partitions + PhotoRec, signature based recovery tool
 app-admin/tmpreaper 1.6.13: A utility for removing files based on when they were last accessed
 app-admin/tmpwatch 2.11 2.11-r1: Files which haven't been accessed in a given period of time are removed from specified directories
 app-admin/tripwire 2.4.2.2-r4 2.4.3.1: Open Source File Integrity Checker and IDS
@@ -1428,7 +1428,7 @@ app-eselect/eselect-vi 1.1.7-r1 1.1.8 1.1.9: Manages the /usr/bin/vi symlink
 app-eselect/eselect-wxwidgets 20140423: Eselect module and wrappers for wxWidgets
 app-eselect/eselect-xvmc 0.4: Manages XvMC implementations
 app-forensics/afflib 3.7.4 3.7.7: Library that implements the AFF image standard
-app-forensics/afl 1.80b 1.96b 2.07b 2.12b: american fuzzy lop - compile-time instrumentation fuzzer
+app-forensics/afl 2.12b 2.19b: american fuzzy lop - compile-time instrumentation fuzzer
 app-forensics/aide 0.14.2 0.15.1: AIDE (Advanced Intrusion Detection Environment) is a replacement for Tripwire
 app-forensics/air 2.0.0-r1: A GUI front-end to dd/dc3dd
 app-forensics/autopsy 2.24-r1: A graphical interface to the digital forensic analysis tools in The Sleuth Kit
@@ -12150,7 +12150,7 @@ media-gfx/evoluspencil 2.0.5: A simple GUI prototyping tool to create mockups
 media-gfx/exact-image 0.8.1-r1: A fast, modern and generic image processing library
 media-gfx/exif 0.6.21: Small CLI util to show EXIF infos hidden in JPEG files
 media-gfx/exiftags 1.01: Extracts JPEG EXIF headers from digital camera photos
-media-gfx/exiv2 0.24-r1 0.25-r1 0.25-r2: EXIF, IPTC and XMP metadata C++ library and command line utility
+media-gfx/exiv2 0.25-r2: EXIF, IPTC and XMP metadata C++ library and command line utility
 media-gfx/farbfeld 1 2 9999: farbfeld simple image format tools
 media-gfx/fbgrab 1.0-r2 1.3: Framebuffer screenshot utility
 media-gfx/fbida 2.10 2.12: Image viewers for the framebuffer console (fbi) and X11 (ida)
@@ -13461,7 +13461,7 @@ media-tv/channeleditor 1.9.2.1-r1: Editor for VDR channels.conf
 media-tv/dvbstream 0.7_pre20080516: simple command line tools for DVB cards. Includes a RTP multicast stream server
 media-tv/dvbstreamer 1.1-r1 2.0.0_rc1: DVB over UDP streaming solution
 media-tv/dvbtune 0.5-r1: simple tuning app for DVB cards
-media-tv/freevo 1.9.0 1.9.0-r1: Digital video jukebox (PVR, DVR)
+media-tv/freevo 1.9.0-r1: Digital video jukebox (PVR, DVR)
 media-tv/gentoo-vdr-scripts 2.0.0 2.5 2.7 2.7.2 2.7.3 2.7.5 2.7.5.1: Scripts necessary for use of vdr as a set-top-box
 media-tv/gtk-v4l 0.4: A control application for Video 4 Linux (based on C and GTK+)
 media-tv/ivtv-utils 1.4.1: IVTV utilities for Hauppauge PVR PCI cards
@@ -17757,7 +17757,7 @@ www-apps/mypictures 20040202 20040202-r1: Simple photo-gallery for websites
 www-apps/mythweb 0.27.5 0.28: PHP scripts intended to manage MythTV from a web browser
 www-apps/nanoblogger 3.2.3 3.3 3.5_rc1: Small and simple weblog engine written in Bash for the command-line
 www-apps/nanoc 3.8.0 4.1.6 4.2.0: nanoc is a simple but very flexible static site generator written in Ruby
-www-apps/nextcloud 9.0.51: Personal cloud that runs on your own server
+www-apps/nextcloud 9.0.51 9.0.52: Personal cloud that runs on your own server
 www-apps/nikola 7.2.0 7.6.0 7.6.1 7.6.2 7.6.3: A static website and blog generator
 www-apps/novnc 0.5 9999: noVNC is a VNC client implemented using HTML5 technologies
 www-apps/openwebstats 1.1: PHP stats application that reads Apache log files and imports the data to a MySQL database
