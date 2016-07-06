@@ -19,13 +19,13 @@ REQUIRED_USE="|| ( qt4 qt5 )"
 
 COMMON_DEPEND="
 	qt4? (
-		dev-qt/qtcore:4
+		dev-qt/qtcore:4[ssl]
 		dev-qt/qtdbus:4
 	)
 	qt5? (
 		dev-qt/qtcore:5
 		dev-qt/qtdbus:5
-		dev-qt/qtnetwork:5
+		dev-qt/qtnetwork:5[ssl]
 		dev-qt/qtxml:5
 	)
 	fingerprint? (

@@ -5,7 +5,7 @@
 EAPI=5
 
 PYTHON_COMPAT=( python{2_7,3_3,3_4,3_5} )
-inherit autotools python-r1 vcs-snapshot
+inherit autotools python-r1 vcs-snapshot xdg-utils
 
 DESCRIPTION="GLib binding for the D-Bus API provided by signond"
 HOMEPAGE="https://01.org/gsso/"
@@ -42,6 +42,8 @@ src_prepare() {
 }
 
 src_configure() {
+	xdg_environment_reset
+
 	myconfigure() {
 		local myeconfargs=(
 			$(use_enable debug)
