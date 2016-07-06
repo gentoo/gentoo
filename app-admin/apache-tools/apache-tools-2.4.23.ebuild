@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 inherit flag-o-matic eutils multilib toolchain-funcs
 
 DESCRIPTION="Useful Apache tools - htdigest, htpasswd, ab, htdbm"
@@ -11,7 +11,7 @@ SRC_URI="mirror://apache/httpd/httpd-${PV}.tar.bz2"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc64-solaris ~x64-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~x86-freebsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc64-solaris ~x64-solaris"
 IUSE="libressl ssl"
 RESTRICT="test"
 
@@ -30,8 +30,12 @@ DEPEND="${RDEPEND}
 
 S="${WORKDIR}/httpd-${PV}"
 
+PATCHES=(
+	"${FILESDIR}/${PN}-2.4.7-Makefile.patch" #459446
+)
+
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-2.4.7-Makefile.patch #459446
+	default
 
 	# This package really should upgrade to using pcre's .pc file.
 	cat <<-\EOF >"${T}"/pcre-config
