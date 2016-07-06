@@ -30,12 +30,12 @@
 
 #--- END OF EXAMPLES ---
 
-# Michał Górny <mgorny@gentoo.org> (8 Jul 2016)
+# Michał Górny <mgorny@gentoo.org> (6 Jul 2016)
 # No development since 2012, upstream repository removed in Jan 2016.
 # No longer builds. Removal in 30 days, #582448.
 dev-util/rootstrap
 
-# Michał Górny <mgorny@gentoo.org> (8 Jul 2016)
+# Michał Górny <mgorny@gentoo.org> (6 Jul 2016)
 # Deprecated upstream. Replaced by dev-python/chardet.
 # Removal in 30 days, #548866.
 dev-python/charade
