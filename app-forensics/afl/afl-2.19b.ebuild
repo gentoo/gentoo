@@ -24,7 +24,7 @@ src_compile() {
 		PREFIX="/usr" \
 		HELPER_PATH="/usr/$(get_libdir)/afl" \
 		DOC_PATH="/usr/share/doc/${PF}"
-	CC="clang" strip-unsupported-flags
+	CC="clang" CXX="clang++" strip-unsupported-flags
 	cd llvm_mode
 	emake \
 		PREFIX="/usr" \
