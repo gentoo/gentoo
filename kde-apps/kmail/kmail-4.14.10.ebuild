@@ -12,7 +12,7 @@ inherit flag-o-matic kde4-meta
 
 DESCRIPTION="Email component of Kontact, the integrated personal information manager of KDE"
 HOMEPAGE="https://www.kde.org/applications/internet/kmail/"
-KEYWORDS="amd64 ~arm ~ppc ~ppc64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm x86 ~amd64-linux ~x86-linux"
 IUSE="debug"
 
 DEPEND="
