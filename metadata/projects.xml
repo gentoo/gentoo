@@ -2603,6 +2603,11 @@
     <url>https://wiki.gentoo.org/wiki/Project:Physics</url>
     <description>The Physics Project handles all physics related activities in Gentoo.</description>
     <member>
+      <email>amadio@gentoo.org</email>
+      <name>Guilherme Amadio</name>
+      <role>High Energy Physics</role>
+    </member>
+    <member>
       <email>bicatali@gentoo.org</email>
       <name>Sebastien Fabbro</name>
       <role>High Energy Physics, Cosmology</role>
@@ -3676,6 +3681,11 @@
       <email>alexxy@gentoo.org</email>
       <name>Alexey Shvetsov</name>
       <role>Chemistry, Physics, *</role>
+    </member>
+    <member>
+      <email>amadio@gentoo.org</email>
+      <name>Guilherme Amadio</name>
+      <role>Physics, *</role>
     </member>
     <member>
       <email>bicatali@gentoo.org</email>

@@ -11687,7 +11687,7 @@ kde-misc/yakuake 2.9.9-r3 3.0.2: Quake-style terminal emulator based on konsole
 kde-misc/yawp 0.4.5: Yet Another Weather Plasmoid
 kde-misc/zanshin 0.2.1-r1 0.3.1: Todo management application by KDE
 kde-plasma/bluedevil 5.5.5 5.6.5 5.7.0: Bluetooth stack for KDE Plasma
-kde-plasma/breeze 5.5.5 5.6.5 5.7.0: Breeze visual style for the Plasma desktop
+kde-plasma/breeze 5.5.5 5.6.5-r1 5.7.0-r1: Breeze visual style for the Plasma desktop
 kde-plasma/breeze-grub 5.6.5 5.7.0: Breeze theme for GRUB
 kde-plasma/breeze-gtk 5.5.5 5.6.5 5.7.0: Official GTK+ port of KDE's Breeze widget style
 kde-plasma/breeze-plymouth 5.6.5 5.7.0: Breeze theme for Plymouth
@@ -11705,7 +11705,7 @@ kde-plasma/kscreen 5.5.5 5.6.5 5.6.5-r1 5.7.0: KDE Plasma screen management
 kde-plasma/kscreenlocker 5.5.5 5.6.5 5.7.0: Library and components for secure lock screen architecture
 kde-plasma/ksshaskpass 5.5.5 5.6.5 5.7.0: KDE implementation of ssh-askpass with Kwallet integration
 kde-plasma/ksysguard 5.5.5 5.6.5 5.7.0: Network-enabled task manager and system monitor
-kde-plasma/kwallet-pam 5.6.4-r1 5.6.5 5.7.0: KWallet PAM module to not enter password again
+kde-plasma/kwallet-pam 5.6.4-r1 5.6.5-r1 5.7.0-r1: KWallet PAM module to not enter password again
 kde-plasma/kwayland-integration 5.5.5 5.6.5 5.7.0: Provides integration plugins for various KDE frameworks for Wayland
 kde-plasma/kwin 5.5.5 5.6.5 5.6.5-r1 5.7.0: KDE window manager
 kde-plasma/kwrited 5.5.5 5.6.5 5.7.0: KDE daemon listening for wall and write messages
