@@ -15,7 +15,7 @@
 # This is an eclass-generated variable that defines the rpath that the mozilla
 # product will be installed in.  Read-only
 
-if [[ ! ${_MOZCORECONF_V3} ]]; then
+if [[ ! ${_MOZCORECONF} ]]; then
 
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE='ncurses,sqlite,ssl,threads'
@@ -86,6 +86,8 @@ moz_pkgsetup() {
 	export LC_CTYPE="C"
 
 	# Ensure we use correct toolchain
+	export HOST_CC="$(tc-getBUILD_CC)"
+	export HOST_CXX="$(tc-getBUILD_CXX)"
 	tc-export CC CXX LD PKG_CONFIG
 
 	# Ensure that we have a sane build enviroment
@@ -208,7 +210,7 @@ mozconfig_init() {
 	append-flags "$MAKEEDIT_FLAGS"
 
 	# Use the MOZILLA_FIVE_HOME for the rpath
-	append-ldflags -Wl,-rpath="${MOZILLA_FIVE_HOME}"
+	append-ldflags -Wl,-rpath="${MOZILLA_FIVE_HOME}",--enable-new-dtags
 	# Set MOZILLA_FIVE_HOME in mozconfig
 	mozconfig_annotate '' --with-default-mozilla-five-home=${MOZILLA_FIVE_HOME}
 
@@ -219,19 +221,9 @@ mozconfig_init() {
 	####################################
 
 	mozconfig_annotate disable_update_strip \
-		--disable-pedantic \
 		--disable-updater \
 		--disable-strip \
-		--disable-install-strip \
-		--disable-installer \
-		--disable-strip-libs
-
-	if [[ ${PN} != seamonkey ]]; then
-		mozconfig_annotate basic_profile \
-			--disable-profilelocking \
-			--enable-single-profile \
-			--disable-profilesharing
-	fi
+		--disable-install-strip
 
 	# Here is a strange one...
 	if is-flag '-mcpu=ultrasparc*' || is-flag '-mtune=ultrasparc*'; then
@@ -273,5 +265,5 @@ mozconfig_final() {
 	echo "ac_add_options --enable-extensions=${exts// /,}" >> .mozconfig
 }
 
-_MOZCORECONF_V3=1
+_MOZCORECONF=1
 fi
