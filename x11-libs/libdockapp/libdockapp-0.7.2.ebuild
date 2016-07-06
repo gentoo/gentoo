@@ -12,7 +12,7 @@ SRC_URI="https://dev.gentoo.org/~voyageur/distfiles/${P}.tar.gz"
 
 LICENSE="MIT public-domain"
 SLOT="0/3"
-KEYWORDS="alpha amd64 ~ppc ~ppc64 ~sparc x86"
+KEYWORDS="alpha amd64 ppc ~ppc64 ~sparc x86"
 # Required for font eclass
 IUSE="+X"
 REQUIRED_USE="X"
