@@ -12554,7 +12554,7 @@ media-libs/libjpeg-turbo 1.4.2 1.5.0: MMX, SSE, and SSE2 SIMD accelerated JPEG l
 media-libs/libjsw 1.5.8: provide a uniform API and user configuration for joysticks and game controllers
 media-libs/libkarma 0.1.2: Support library for using Rio devices with mtp
 media-libs/libkate 0.3.7 0.3.8 0.4.1: Codec for karaoke and text encapsulation for Ogg
-media-libs/liblastfm 1.0.9: Collection of libraries to integrate Last.fm services
+media-libs/liblastfm 1.0.9-r1: Collection of libraries to integrate Last.fm services
 media-libs/liblingoteach 0.2.3: A library to support lingoteach-ui and for generic lesson development
 media-libs/liblo 0.26 0.27 0.28: Lightweight OSC (Open Sound Control) implementation
 media-libs/liblqr 0.4.2-r1: An easy to use C/C++ seam carving library
