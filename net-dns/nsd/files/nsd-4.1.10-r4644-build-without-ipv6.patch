@@ -1,0 +1,23 @@
+ 4.1.10
+Index: query.c
+===================================================================
+diff --git a/query.c b/query.c
+--- a/query.c	(revision 4643)
++++ b/query.c	(revision 4644)
+@@ -704,11 +704,16 @@
+ 	result = answer_add_rrset(answer, section, owner, rrset);
+ 	switch (rrset_rrtype(rrset)) {
+ 	case TYPE_NS:
++#if defined(INET6)
+ 		/* if query over IPv6, swap A and AAAA; put AAAA first */
+ 		add_additional_rrsets(query, answer, rrset, 0, 1,
+ 			(query->addr.ss_family == AF_INET6)?
+ 			swap_aaaa_additional_rr_types:
+ 			default_additional_rr_types);
++#else
++		add_additional_rrsets(query, answer, rrset, 0, 1,
++				      default_additional_rr_types);
++#endif
+ 		break;
+ 	case TYPE_MB:
+ 		add_additional_rrsets(query, answer, rrset, 0, 0,
