@@ -10,7 +10,7 @@ inherit kde5
 DESCRIPTION="KDE internationalization package"
 HOMEPAGE="http://l10n.kde.org"
 
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm ~x86"
 
 DEPEND="
 	$(add_frameworks_dep ki18n)

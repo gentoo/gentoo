@@ -9,7 +9,7 @@ inherit kde4-base
 
 DESCRIPTION="VNC-compatible server to share KDE desktops"
 HOMEPAGE="https://www.kde.org/applications/system/krfb/"
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64 ~arm x86"
 IUSE="debug telepathy ktp"
 REQUIRED_USE="ktp? ( telepathy )"
 
