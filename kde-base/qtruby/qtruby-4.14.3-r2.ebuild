@@ -16,7 +16,7 @@ USE_RUBY="ruby20"
 inherit kde4-base ruby-ng
 
 DESCRIPTION="Qt Ruby bindings"
-KEYWORDS="amd64 ~arm ~ppc ~ppc64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm x86 ~amd64-linux ~x86-linux"
 IUSE="debug phonon qscintilla qwt webkit"
 HOMEPAGE="https://techbase.kde.org/Development/Languages/Ruby"
 
