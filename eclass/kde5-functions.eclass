@@ -84,9 +84,18 @@ _check_gcc_version() {
 		local min_major=${KDE_GCC_MINIMAL%.*}
 		local min_minor=${KDE_GCC_MINIMAL#*.}
 
+		debug-print "GCC version check activated"
+		debug-print "Version detected:"
+		debug-print "	- Full: ${version}"
+		debug-print "	- Major: ${major}"
+		debug-print "	- Minor: ${minor}"
+		debug-print "Version required:"
+		debug-print "	- Major: ${min_major}"
+		debug-print "	- Minor: ${min_minor}"
+
 		[[ ${major} -lt ${min_major} ]] || \
 				( [[ ${major} -eq ${min_major} && ${minor} -lt ${min_minor} ]] ) \
-			&& die "Sorry, but gcc-${KDE_GCC_MINIMAL} or later is required for this package."
+			&& die "Sorry, but gcc-${KDE_GCC_MINIMAL} or later is required for this package (found ${version})."
 	fi
 }
 
