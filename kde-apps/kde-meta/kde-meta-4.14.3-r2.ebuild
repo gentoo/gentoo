@@ -22,9 +22,8 @@ RDEPEND="
 	$(add_kdeapps_dep kdeutils-meta)
 	accessibility? ( $(add_kdeapps_dep kdeaccessibility-meta) )
 	kdepim? ( $(add_kdeapps_dep kdepim-meta '' 4.4.11.1) )
-	nls? ( $(add_kdeapps_dep kde4-l10n) )
+	nls? ( $(add_kdeapps_dep kde4-l10n '' 4.14.3-r1) )
 	sdk? (
-		$(add_kdeapps_dep kdebindings-meta)
 		$(add_kdeapps_dep kdesdk-meta)
 		$(add_kdeapps_dep kdewebdev-meta)
 	)
