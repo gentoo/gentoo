@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure postinst prepare test
+DEPEND=sys-libs/ncurses:0= sys-devel/bc sys-devel/gettext X? ( x11-misc/xsel ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=fish is the Friendly Interactive SHell
+EAPI=6
+HOMEPAGE=http://fishshell.com/
+IUSE=X
+KEYWORDS=~amd64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris
+LICENSE=GPL-2
+RDEPEND=sys-libs/ncurses:0= sys-devel/bc sys-devel/gettext X? ( x11-misc/xsel )
+SLOT=0
+SRC_URI=https://github.com/fish-shell/fish-shell/archive/2.3.1.tar.gz -> fish-2.3.1.tar.gz
+_eclass_exported_funcs=pkg_postinst:- src_prepare:- src_configure:- src_test:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	libtool	4890219c51da247200223277f993e054	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	82165206dedb2075f9a0fb8f9b1f9441
+_md5_=f12f5c3efc9ec1caaa8d5b36720c16b3
