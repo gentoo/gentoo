@@ -13,7 +13,7 @@ SRC_URI=" http://windowmaker.org/pub/source/release/${P/windowm/WindowM}.tar.gz
 SLOT="0"
 LICENSE="GPL-2"
 IUSE="gif imagemagick jpeg modelock nls png tiff webp xinerama +xpm xrandr"
-KEYWORDS="alpha amd64 ~arm ~hppa ~mips ~ppc ~ppc64 ~sparc x86 ~amd64-fbsd ~x86-fbsd ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="alpha amd64 ~arm ~hppa ~mips ppc ~ppc64 ~sparc x86 ~amd64-fbsd ~x86-fbsd ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
 
 DEPEND="media-libs/fontconfig
 	>=x11-libs/libXft-2.1.0
