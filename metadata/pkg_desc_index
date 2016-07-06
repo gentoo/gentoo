@@ -10072,7 +10072,7 @@ games-action/bomberclone 0.11.8: BomberMan clone with network game support
 games-action/brutal-legend 20130615-r1: Unleash the power of Heavy Metal to reign down fire from the sky
 games-action/btanks 0.9.8083: Fast 2D tank arcade game with multiplayer and split-screen modes
 games-action/bzflag 2.4.2-r1 2.4.4: 3D tank combat simulator game
-games-action/chickens 0.2.4: Target chickens with rockets and shotguns. Funny
+games-action/chickens 0.2.4 0.2.4-r1: Target chickens with rockets and shotguns. Funny
 games-action/chromium-bsu 0.9.15.1: Chromium B.S.U. - an arcade game
 games-action/clanbomber 2.1.1: Bomberman-like multiplayer game
 games-action/cs2d 0127 1002: A freeware clone of Counter-Strike with some added features in gameplay
@@ -16634,7 +16634,7 @@ sys-apps/netplug 1.2.9.2-r1: Brings up/down ethernet ports automatically with ca
 sys-apps/newrelic-sysmond 1.1.2.124-r1: NewRelic System Monitor
 sys-apps/noexec 1.1.0: a package for preventing processes from using exec system calls
 sys-apps/nvme-cli 0_pre20150821 0.6: NVM-Express user space tooling for Linux
-sys-apps/openrc 0.17 0.18.4 0.19.1 0.20.4 0.20.5 0.21 0.21.1 9999: OpenRC manages the services, startup and shutdown of a host
+sys-apps/openrc 0.17 0.18.4 0.19.1 0.20.4 0.20.5 0.21 0.21.1 0.21.2 9999: OpenRC manages the services, startup and shutdown of a host
 sys-apps/pacman 4.0.1 4.0.3 4.0.3-r1: Archlinux's binary package manager
 sys-apps/paludis 2.0.0 2.4.0 2.6.0 9999: paludis, the other package mangler
 sys-apps/paxctl 0.7-r2 0.8 0.9: Manages various PaX related program header flags for Elf32, Elf64, binaries
