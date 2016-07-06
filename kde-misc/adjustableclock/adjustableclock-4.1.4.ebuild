@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -29,7 +29,7 @@ src_prepare() {
 
 	local lang
 	for lang in ${KDE_LINGUAS} ; do
-		if ! use linguas_${lang} ; then
+		if ! use "l10n_$(kde4_lingua_to_l10n "${lang}")" ; then
 			rm ${KDE_LINGUAS_DIR}/${lang}.mo
 		fi
 	done
