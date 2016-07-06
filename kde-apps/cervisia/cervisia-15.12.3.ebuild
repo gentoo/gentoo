@@ -9,7 +9,7 @@ inherit kde4-base
 
 DESCRIPTION="A KDE CVS frontend"
 HOMEPAGE="https://www.kde.org/applications/development/cervisia"
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64 ~arm x86"
 IUSE="debug"
 
 RDEPEND="

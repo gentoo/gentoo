@@ -9,7 +9,7 @@ inherit kde4-base
 
 DESCRIPTION="KDE Tron game"
 HOMEPAGE="https://www.kde.org/applications/games/ksnakeduel/"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm ~x86"
 IUSE="debug"
 
 DEPEND="

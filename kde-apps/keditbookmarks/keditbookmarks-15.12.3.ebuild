@@ -9,7 +9,7 @@ VIRTUALX_REQUIRED="test"
 inherit kde4-meta
 
 DESCRIPTION="KDE's bookmarks editor"
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64 ~arm x86"
 IUSE="debug"
 
 DEPEND="
