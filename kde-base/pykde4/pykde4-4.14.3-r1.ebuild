@@ -11,7 +11,7 @@ CMAKE_MAKEFILE_GENERATOR="emake"
 inherit python-r1 portability kde4-base multilib eutils
 
 DESCRIPTION="Python bindings for KDE4"
-KEYWORDS="amd64 ~arm ~ppc ~ppc64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm x86 ~amd64-linux ~x86-linux"
 IUSE="akonadi debug doc examples test"
 HOMEPAGE="https://techbase.kde.org/Development/Languages/Python"
 
