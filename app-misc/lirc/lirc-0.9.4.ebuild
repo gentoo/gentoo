@@ -48,6 +48,7 @@ RDEPEND="
 	iguanair? ( app-misc/iguanaIR )
 	ftdi? ( dev-embedded/libftdi:0 )
 	inputlirc? ( app-misc/inputlircd )
+	virtual/libusb:0
 "
 
 src_configure() {
