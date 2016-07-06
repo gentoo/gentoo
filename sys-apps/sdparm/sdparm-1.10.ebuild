@@ -10,7 +10,7 @@ SRC_URI="http://sg.danny.cz/sg/p/${P}.tgz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc x86 ~amd64-linux ~arm-linux ~x86-linux"
+KEYWORDS="alpha amd64 arm ~hppa ~ia64 ~mips ppc ~ppc64 ~s390 ~sh ~sparc x86 ~amd64-linux ~arm-linux ~x86-linux"
 IUSE=""
 
 # Older releases contain a conflicting sas_disk_blink

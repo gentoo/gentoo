@@ -11,7 +11,7 @@ SRC_URI="http://mmonit.com/monit/dist/${P}.tar.gz"
 
 LICENSE="AGPL-3"
 SLOT="0"
-KEYWORDS="amd64 ~ppc ~ppc64 x86 ~amd64-linux"
+KEYWORDS="amd64 ppc ~ppc64 x86 ~amd64-linux"
 IUSE="libressl pam ssl"
 
 RDEPEND="

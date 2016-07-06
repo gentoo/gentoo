@@ -10,7 +10,7 @@ SRC_URI="http://www.coker.com.au/bonnie++/experimental/${P}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc x86"
+KEYWORDS="alpha amd64 ~arm ~hppa ~ia64 ~mips ppc ~ppc64 ~sparc x86"
 IUSE="debug"
 
 S="${WORKDIR}/${P}.1"
