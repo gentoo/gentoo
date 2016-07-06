@@ -8,5 +8,5 @@ KMNAME="kde-baseapps"
 inherit kde4-meta
 
 DESCRIPTION="Can be used to show nice dialog boxes from shell scripts"
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64 ~arm x86"
 IUSE="debug"

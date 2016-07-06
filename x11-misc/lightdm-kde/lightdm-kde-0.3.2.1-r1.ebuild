@@ -15,7 +15,7 @@ HOMEPAGE="https://projects.kde.org/projects/playground/base/lightdm"
 [[ ${PV} = 9999* ]] || SRC_URI="mirror://kde/unstable/${PN}/src/${P}.tar.bz2"
 
 LICENSE="GPL-3"
-KEYWORDS="amd64 ~arm ~ppc x86"
+KEYWORDS="amd64 ~arm x86"
 SLOT="4"
 IUSE="debug"
 

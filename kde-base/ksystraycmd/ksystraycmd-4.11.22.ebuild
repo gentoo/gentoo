@@ -8,7 +8,7 @@ KMNAME="kde-workspace"
 inherit kde4-meta
 
 DESCRIPTION="Ksystraycmd embeds applications given as argument into the system tray"
-KEYWORDS="amd64 ~arm ~ppc ~ppc64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm x86 ~amd64-linux ~x86-linux"
 IUSE="debug"
 
 DEPEND="x11-libs/libX11"

@@ -30,6 +30,16 @@
 
 #--- END OF EXAMPLES ---
 
+# Michael Palimaka <kensington@gentoo.org) (6 Jul 2016)
+# Requires obsolete kde-apps/kate:4. No further upstream development.
+# Masked for removal in 30 days.
+kde-misc/katelatexplugin
+
+# Michael Palimaka <kensington@gentoo.org) (6 Jul 2016)
+# Requires obsolete kde-apps/kmix:4. No further upstream development.
+# Masked for removal in 30 days.
+kde-misc/kosd
+
 # Michał Górny <mgorny@gentoo.org> (8 Jul 2016)
 # No development since 2012, upstream repository removed in Jan 2016.
 # No longer builds. Removal in 30 days, #582448.

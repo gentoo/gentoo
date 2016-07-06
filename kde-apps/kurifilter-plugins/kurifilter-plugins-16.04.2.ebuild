@@ -8,7 +8,7 @@ KMNAME="kde-runtime"
 inherit kde4-meta
 
 DESCRIPTION="KDE: Plugins to manage filtering URIs"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm ~x86"
 IUSE="debug"
 
 RESTRICT=test

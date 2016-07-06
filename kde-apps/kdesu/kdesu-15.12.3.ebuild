@@ -12,7 +12,7 @@ inherit kde4-meta
 # if not, USE-flag ?
 DESCRIPTION="KDE gui for su(1)"
 HOMEPAGE+=" https://techbase.kde.org/Projects/kdesu"
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64 ~arm x86"
 IUSE="debug"
 
 src_configure() {

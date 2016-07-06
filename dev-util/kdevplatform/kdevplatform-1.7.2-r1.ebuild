@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -19,7 +19,7 @@ LICENSE="GPL-2 LGPL-2"
 IUSE="+classbrowser cvs debug +konsole reviewboard subversion"
 
 if [[ ${KDE_BUILD_TYPE} = release ]]; then
-	KEYWORDS="amd64 ~ppc x86"
+	KEYWORDS="amd64 x86"
 fi
 
 RESTRICT="test"

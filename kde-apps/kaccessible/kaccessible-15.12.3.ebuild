@@ -7,7 +7,7 @@ EAPI=5
 inherit kde4-base
 
 DESCRIPTION="Provides accessibility services like focus tracking"
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64 ~arm x86"
 IUSE="debug +speechd"
 
 DEPEND="speechd? ( app-accessibility/speech-dispatcher )"
