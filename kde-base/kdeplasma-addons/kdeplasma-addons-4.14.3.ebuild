@@ -8,7 +8,7 @@ inherit flag-o-matic kde4-base
 
 DESCRIPTION="Extra Plasma applets and engines"
 LICENSE="GPL-2 LGPL-2"
-KEYWORDS="amd64 ~arm ~ppc ~ppc64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm x86 ~amd64-linux ~x86-linux"
 IUSE="attica debug desktopglobe exif fcitx ibus json +kdepim oauth qalculate
 qwt scim"
 
@@ -41,8 +41,6 @@ RDEPEND="${COMMON_DEPEND}
 "
 
 src_configure() {
-	# bug 560884
-	use ppc64 && append-flags -mno-altivec
 	local mycmakeargs=(
 		-DDBUS_INTERFACES_INSTALL_DIR="${EPREFIX}/usr/share/dbus-1/interfaces/"
 		-DWITH_Nepomuk=OFF

@@ -9,7 +9,7 @@ KMMODULE="libs/kdm"
 inherit kde4-meta
 
 DESCRIPTION="Conversation widgets for KDM greeter"
-KEYWORDS="amd64 ~arm ~ppc ~ppc64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm x86 ~amd64-linux ~x86-linux"
 IUSE="debug"
 
 DEPEND="
