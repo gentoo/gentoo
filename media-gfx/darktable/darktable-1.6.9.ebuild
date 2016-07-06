@@ -118,7 +118,7 @@ src_install() {
 	use doc && dodoc "${DISTDIR}"/${PN}-usermanual-${DOC_PV}.pdf
 
 	for lang in ${LANGS} ; do
-		use l10n_${lang} || rm -r "${ED}"/usr/share/locale/${lang}
+		use l10n_${lang} || rm -r "${ED}"/usr/share/locale/${lang/-/_}
 	done
 
 	if use pax_kernel && use opencl ; then
