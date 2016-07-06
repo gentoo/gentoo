@@ -8757,7 +8757,7 @@ dev-ruby/activerecord 3.2.22.2 4.0.13 4.1.15 4.2.6: Implements the ActiveRecord 
 dev-ruby/activerecord-deprecated_finders 1.0.4: Used to extract and deprecate old-style finder option hashes in Active Record
 dev-ruby/activeresource 3.2.22.2 4.0.0 4.1.0: Think Active Record for web resources
 dev-ruby/activesupport 3.2.22.2 4.0.13-r1 4.1.15 4.2.6 4.2.6-r1: Utility Classes and Extension to the Standard Library
-dev-ruby/acts_as_list 0.7.4: Capabilities for sorting and reordering a number of objects in a list
+dev-ruby/acts_as_list 0.7.4 0.7.5: Capabilities for sorting and reordering a number of objects in a list
 dev-ruby/addressable 2.3.6 2.3.8 2.4.0: A replacement for the URI implementation that is part of Ruby's standard library
 dev-ruby/ae 1.8.2: Assertive Expressive is an assertions library designed for reuse
 dev-ruby/afm 0.2.2: A very simple library to read Adobe Font Metrics files
@@ -8831,7 +8831,7 @@ dev-ruby/cliver 0.3.2: An easy way to detect and use command-line dependencies
 dev-ruby/cmdparse 2.0.6-r1 3.0.1: Advanced command line parser supporting commands
 dev-ruby/cocaine 0.5.8: A small library for doing command lines
 dev-ruby/coderay 1.1.0-r1 1.1.0-r2 1.1.1: A Ruby library for syntax highlighting
-dev-ruby/coffee-rails 3.2.2 4.0.1 4.1.0 4.1.1 4.1.1-r1: Coffee Script adapter for the Rails asset pipeline
+dev-ruby/coffee-rails 3.2.2 4.0.1 4.1.1-r1 4.2.1: Coffee Script adapter for the Rails asset pipeline
 dev-ruby/coffee-script 2.4.1: Ruby CoffeeScript is a bridge to the official CoffeeScript compiler
 dev-ruby/coffee-script-source 1.9.3 1.10.0: Ruby CoffeeScript is a bridge to the official CoffeeScript compiler
 dev-ruby/color 1.8: Colour management with Ruby
