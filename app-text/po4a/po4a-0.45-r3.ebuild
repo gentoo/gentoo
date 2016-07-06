@@ -17,7 +17,7 @@ SRC_URI="mirror://debian/pool/main/p/po4a/${PN}_${PV}.orig.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc x86 ~x86-fbsd ~amd64-linux ~ia64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris ~x86-solaris"
+KEYWORDS="alpha amd64 arm ~arm64 ~hppa ~ia64 ~m68k ~mips ppc ~ppc64 ~s390 ~sh ~sparc x86 ~x86-fbsd ~amd64-linux ~ia64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris ~x86-solaris"
 IUSE="test"
 
 RDEPEND="dev-perl/SGMLSpm
