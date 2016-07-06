@@ -11,7 +11,7 @@ SRC_URI="http://www.aczoom.com/pub/tools/${P}.tgz"
 
 LICENSE="aczoom"
 SLOT="0"
-KEYWORDS="amd64 ~ppc ~sparc x86"
+KEYWORDS="amd64 ppc ~sparc x86"
 IUSE=""
 
 RDEPEND="dev-lang/perl"
