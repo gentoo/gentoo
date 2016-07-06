@@ -4,7 +4,7 @@
 
 EAPI="5"
 MOZ_ESR=""
-MOZ_LIGHTNING_VER="4.7"
+MOZ_LIGHTNING_VER="4.7.2"
 
 # Can be updated using scripts/get_langs.sh from mozilla overlay
 MOZ_LANGS=(ar ast be bg bn-BD br ca cs cy da de el en en-GB en-US es-AR
@@ -26,7 +26,7 @@ MOZ_P="${MOZ_PN}-${MOZ_PV}"
 
 MOZ_HTTP_URI="https://archive.mozilla.org/pub/${MOZ_PN}/releases"
 
-inherit eutils multilib pax-utils fdo-mime gnome2-utils mozlinguas nsplugins
+inherit eutils multilib pax-utils fdo-mime gnome2-utils nsplugins mozlinguas-v2
 
 DESCRIPTION="Thunderbird Mail Client"
 SRC_URI="${SRC_URI}
