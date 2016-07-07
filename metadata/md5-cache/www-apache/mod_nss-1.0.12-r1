@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst prepare setup
+DEPEND=>=dev-libs/nspr-4.6.4 >=dev-libs/nss-3.11.4 sys-apps/sed virtual/pkgconfig =www-servers/apache-2* !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=SSL/TLS module for the Apache HTTP server
+EAPI=6
+HOMEPAGE=https://fedorahosted.org/mod_nss/
+IUSE=+ecc
+KEYWORDS=~amd64 ~x86
+LICENSE=Apache-2.0
+RDEPEND=>=dev-libs/nspr-4.6.4 >=dev-libs/nss-3.11.4 net-dns/bind-tools =www-servers/apache-2*
+SLOT=0
+SRC_URI=https://fedorahosted.org/released/mod_nss/mod_nss-1.0.12.tar.gz
+_eclass_exported_funcs=pkg_postinst:apache-module pkg_setup:depend.apache src_prepare:- src_configure:- src_compile:- src_install:-
+_eclasses_=apache-module	5e66430013d92dfe0bf8672b05319b6d	autotools	07e71b3b5690738ef7e8bc097077e00c	depend.apache	e3c541cb90838388f81620d630c28f41	eutils	792f83d5ec9536cb5ccef375469d8bde	libtool	4890219c51da247200223277f993e054	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	82165206dedb2075f9a0fb8f9b1f9441
+_md5_=ec884ae079a1aa2c7f7c598dcdce401f

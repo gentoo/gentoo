@@ -1,0 +1,11 @@
+DEFINED_PHASES=-
+DESCRIPTION=Generate and install ebuilds from the TeXLive package manager
+EAPI=6
+HOMEPAGE=https://launchpad.net/g-ctan
+KEYWORDS=~amd64 ~mips ~x86
+LICENSE=GPL-3
+RDEPEND=~app-text/texlive-2011 app-arch/xz-utils >=dev-libs/libpcre-0.7.6
+SLOT=0
+SRC_URI=https://launchpad.net/g-ctan/2011/2011.1/+download/g-ctan-2011.1.tar.bz2
+_eclass_exported_funcs=-
+_md5_=a3ccb9c9e1bf848075ea7afabc015a3e
