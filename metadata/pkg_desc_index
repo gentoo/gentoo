@@ -487,7 +487,7 @@ app-cdr/sync2cd 1.3 1.3-r1: An incremental archiving tool to CD/DVD
 app-cdr/tkdvd 4.0.9-r1: A Tcl/Tk GUI for writing DVDs and CDs
 app-cdr/uif2iso 0.1.7c: Converts MagicISO CD-images to iso
 app-cdr/xbiso 0.6.1 0.6.1-r1 0.6.1-r2: Xbox xdvdfs ISO extraction utility
-app-cdr/xcdroast 0.98_alpha16 0.98_alpha16-r1: Lightweight cdrtools front-end for CD and DVD writing
+app-cdr/xcdroast 0.98_alpha16 0.98_alpha16-r1 0.98_alpha16-r2: Lightweight cdrtools front-end for CD and DVD writing
 app-cdr/xdvdfs-tools 2.1-r1: Tools for manipulating Xbox ISO images
 app-cdr/xfburn 0.5.2 0.5.4: GTK+ based CD and DVD burning application
 app-crypt/WiRouterKeyRec 1.1.2: Recovery tool for wpa passphrase
@@ -12288,7 +12288,7 @@ media-gfx/pngquant 1.8.2 1.8.3 2.0.2 2.1.0 2.2.0 2.3.3 2.5.2: command-line utili
 media-gfx/pngrewrite 1.3.0 1.4.0: A utility which reduces large palettes in PNG images
 media-gfx/pngtoico 1.0.1-r1: Convert png images to MS ico format
 media-gfx/pngtools 0.4-r2: A series of tools for the PNG image format
-media-gfx/pornview 0.2.2: Image viewer/manager with optional support for MPEG movies
+media-gfx/pornview 0.2.2 0.2.2-r1: Image viewer/manager with optional support for MPEG movies
 media-gfx/postr 0.13.1: Flickr uploader for GNOME
 media-gfx/potrace 1.10-r1 1.11 1.12 1.13: Transforming bitmaps into vector graphics
 media-gfx/povray 3.7.0.0 3.7.0.0-r1: The Persistence of Vision Raytracer
