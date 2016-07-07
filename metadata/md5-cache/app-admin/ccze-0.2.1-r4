@@ -1,0 +1,14 @@
+DEFINED_PHASES=prepare
+DEPEND=dev-libs/libpcre sys-libs/ncurses >=sys-apps/sed-4 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=A flexible and fast logfile colorizer
+EAPI=6
+HOMEPAGE=https://dev.gentoo.org/~joker/ccze/ccze.txt
+KEYWORDS=~amd64 ~ppc ~x86 ~x86-fbsd
+LICENSE=GPL-2
+RDEPEND=dev-libs/libpcre sys-libs/ncurses
+RESTRICT=test
+SLOT=0
+SRC_URI=mirror://gentoo/ccze-0.2.1.tar.gz
+_eclass_exported_funcs=src_prepare:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	792f83d5ec9536cb5ccef375469d8bde	fixheadtails	2f44773656577fe2653bacc8bdcb2174	libtool	4890219c51da247200223277f993e054	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	82165206dedb2075f9a0fb8f9b1f9441
+_md5_=0b02add58520c7b86d795c27c8210dc7
