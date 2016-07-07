@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+	<!-- maintainer-needed -->
 	<longdescription lang="en">AACGain is a modification to Glen Sawyer's excellent mp3gain program.
 		It supports AAC (mp4/m4a/QuickTime) audio files in addtion to mp3 files.
 		If you are not familiar with mp3gain, stop reading this, and go to
