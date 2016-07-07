@@ -6,6 +6,7 @@
 		<name>Gentoo Games Project</name>
 	</maintainer>
 	<use>
+		<flag name="icarus">Build icarus library manager</flag>
 		<flag name="profile_accuracy">
 			Compile a binary optimized for accuracy</flag>
 		<flag name="profile_balanced">
