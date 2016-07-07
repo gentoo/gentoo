@@ -7,8 +7,8 @@ EAPI=5
 inherit eutils toolchain-funcs
 
 DESCRIPTION="top like program for network activity"
-SRC_URI="http://srparish.net/scripts/${P}.tar.gz"
-HOMEPAGE="http://srparish.net/software/"
+SRC_URI="mirror://gentoo/${P}.tar.gz"
+HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
 
 SLOT="0"
 LICENSE="BSD"
