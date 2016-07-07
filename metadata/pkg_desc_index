@@ -10099,7 +10099,7 @@ games-action/intrusion2 1.024: Fast paced action sidescroller set in a sci-fi en
 games-action/koth 0.8.0: Multiplayer, networked game of little tanks with really big weapons
 games-action/lugaru 9999 20151204: 3D arcade with unique fighting system and anthropomorphic characters
 games-action/luola 1.3.2: A 2D multiplayer arcade game resembling V-Wing
-games-action/maelstrom 3.0.6-r2: An asteroids battle game
+games-action/maelstrom 3.0.6-r2 3.0.6-r3: An asteroids battle game
 games-action/minetest 0.4.13 0.4.14: An InfiniMiner/Minecraft inspired game
 games-action/minetest_game 0.4.13 0.4.14: The main game for the Minetest game engine
 games-action/moon-buggy 1.0.51: A simple console game, where you drive a car across the moon's surface
@@ -14265,7 +14265,7 @@ net-libs/NativeThread 0_pre20080330: NativeThread for priorities on linux for fr
 net-libs/accounts-qt 1.13: Qt5 bindings for libaccounts-glib
 net-libs/adns 1.4 1.4-r1: Advanced, easy to use, asynchronous-capable DNS client library and utilities
 net-libs/aqbanking 5.0.25 5.4.3_beta 5.5.1 5.6.10: Generic Online Banking Interface
-net-libs/axtls 1.5.0 1.5.1 1.5.2 1.5.3: Embedded client/server TLSv1 SSL library and small HTTP(S) server
+net-libs/axtls 1.5.3 1.5.4: Embedded client/server TLSv1 SSL library and small HTTP(S) server
 net-libs/balde 0.1.1: A microframework for C based on GLib and bad intentions
 net-libs/balde-markdown 0.1: A balde extension that adds Markdown support
 net-libs/biblesync 1.1.2: A multicast protocol to support Bible software shared co-navigation
