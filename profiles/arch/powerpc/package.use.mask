@@ -7,12 +7,16 @@
 app-misc/hachoir-metadata kde
 dev-util/eric kde
 dev-vcs/subversion kde
+games-arcade/jumpnbump kde
 kde-base/katepart handbook
 kde-base/kdelibs handbook policykit
+net-libs/libproxy kde
+net-voip/ekiga kde
 sys-auth/polkit kde
 sys-block/gparted kde
 www-plugins/gnash kde
 x11-misc/lightdm kde
+x11-themes/qtcurve kde
 x11-wm/compiz kde
 
 # Davide Pesavento <pesa@gentoo.org> (06 Jun 2016)

@@ -5,9 +5,4 @@
 		<email>kde@gentoo.org</email>
 		<name>Gentoo KDE Project</name>
 	</maintainer>
-	<use>
-		<flag name="display-manager">Pull in a graphical display manager</flag>
-		<flag name="minimal">Disable install of various KDE SC 4 based packages</flag>
-		<flag name="wallpapers">Install the KDE wallpapers</flag>
-	</use>
 </pkgmetadata>
