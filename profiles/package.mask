@@ -30,6 +30,22 @@
 
 #--- END OF EXAMPLES ---
 
+# Michael Palimaka <kensington@gentoo.org> (7 Jul 2016)
+# Dead upstream and unsupported. Bug 586276.
+# Masked for removal in 30 days.
+kde-apps/kdebindings-meta
+kde-base/kimono
+kde-base/korundum
+kde-base/krossjava
+kde-base/krossruby
+kde-base/perlkde
+kde-base/perlqt
+kde-base/qtruby
+kde-base/qyoto
+kde-base/smokegen
+kde-base/smokekde
+kde-base/smokeqt
+
 # Michał Górny <mgorny@gentoo.org> (6 Jul 2016)
 # No development since 2012, upstream repository removed in Jan 2016.
 # No longer builds. Removal in 30 days, #582448.
