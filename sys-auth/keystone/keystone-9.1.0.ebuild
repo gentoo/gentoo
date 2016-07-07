@@ -6,16 +6,15 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1 git-r3 user
+inherit distutils-r1 user
 
 DESCRIPTION="The Openstack authentication, authorization, and service catalog"
 HOMEPAGE="https://launchpad.net/keystone"
-EGIT_REPO_URI="https://github.com/openstack/keystone.git"
-EGIT_BRANCH="stable/mitaka"
+SRC_URI="https://tarballs.openstack.org/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="+sqlite ldap memcached mongo mysql postgres test"
 REQUIRED_USE="|| ( mysql postgres sqlite )"
 
