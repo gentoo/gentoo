@@ -34,8 +34,6 @@ DEPEND="${RDEPEND}
 	)
 "
 
-PATCHES=( "${FILESDIR}/${PN}-2.0.5-support-noninteractive-shells.patch" )
-
 python_prepare_all() {
 	# Disable benchmarks as they require unavailable pytest-benchmark.
 	rm guessit/test/test_benchmark.py || die
