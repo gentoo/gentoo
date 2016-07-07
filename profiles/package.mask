@@ -320,11 +320,6 @@ dev-ruby/gherkin3
 # Masked for removal in 30 days.
 dev-util/weblint
 
-# Patrice Clement <monsieurp@gentoo.org> (2 Jun 2016)
-# Dead upstream. No release since 2009.
-# Masked for removal in 30 days.
-dev-util/osdt
-
 # Michael Palimaka <kensington@gentoo.org> (26 May 2016)
 # Depends on vulnerable slot of net-libs/webkit-gtk.
 # Dead upstream. Unmaintained. Masked for removal in 30 days.
