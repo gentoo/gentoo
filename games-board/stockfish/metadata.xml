@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+  <!-- maintainer-needed -->
   <use>
     <flag name="armv7">Build for armv7; enables PIE</flag>
     <flag name="general-32">Generic unoptimized 32-bits build</flag>
