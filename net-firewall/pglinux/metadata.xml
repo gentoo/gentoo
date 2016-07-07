@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+	<!-- maintainer-needed -->
 	<upstream>
 		<changelog>https://sourceforge.net/news/?group_id=131687</changelog>
 		<doc lang="en">https://sourceforge.net/projects/peerguardian/support</doc>
