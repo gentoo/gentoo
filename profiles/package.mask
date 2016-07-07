@@ -91,8 +91,7 @@ dev-ruby/activeldap:3
 =www-apps/redmine-2.6.10
 
 # Aaron Bauman <bman@gentoo.org> (30 Jun 2016)
-# Unpatched security vulnerability per bug #509920.
-# Removal in 30 days
+# Unpatched security vulnerability per bug #509920
 www-apps/egroupware
 
 # Anthony G. Basile <blueness@gentoo.org> (29 Jun 2016)
@@ -143,8 +142,7 @@ dev-libs/guiloader-c++
 app-portage/pms-test-suite
 
 # Aaron Bauman <bman@gentoo.org> (26 Jun 2016)
-# Unpatched security vulnerability and dead upstream
-# per bug #475120.  Removal in 30 days
+# Unpatched security vulnerability per bug #475120
 media-video/motion
 
 # Michał Górny <mgorny@gentoo.org> (25 Jun 2016)
@@ -399,7 +397,6 @@ dev-libs/libtomcrypt
 
 # Aaron Bauman <bman@gentoo.org> (19 Mar 2016)
 # Unpatched security vulnerability per bug #512356.
-# Masked for removal in 30 days.
 =app-forensics/chkrootkit-0.49
 
 # Ian Stakenvicius <axs@gentoo.org> (06 Mar 2016)
