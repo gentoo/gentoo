@@ -308,13 +308,6 @@ dev-util/kdoc
 dev-util/skelgen
 dev-util/ftncheck
 
-# Hans de Graaff <graaff@gentoo.org> (4 Jun 2016)
-# Name-versioned dependency that was not used in any
-# version of cucumber we packaged and that is no longer
-# used upstream. Use dev-ruby/gherkin instead.
-# Masked for removal in 30 days.
-dev-ruby/gherkin3
-
 # Michael Palimaka <kensington@gentoo.org> (26 May 2016)
 # Depends on vulnerable slot of net-libs/webkit-gtk.
 # Dead upstream. Unmaintained. Masked for removal in 30 days.
