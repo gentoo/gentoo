@@ -19,6 +19,7 @@ RDEPEND="virtual/jre"
 RESTRICT="mirror"
 
 src_prepare() {
+	default
 	find . -name '*.cmd' -delete || die
 }
 
