@@ -76,7 +76,7 @@ export KDE_BUILD_TYPE
 # @DESCRIPTION:
 # Determine if the current GCC version is acceptable, otherwise die.
 _check_gcc_version() {
-	if [[ ${MERGE_TYPE} != binary && -v KDE_GCC_MINIMAL ]]; then
+	if [[ ${MERGE_TYPE} != binary && -v KDE_GCC_MINIMAL ]] && tc-is-gcc; then
 
 		local version=$(gcc-version)
 		local major=${version%.*}
