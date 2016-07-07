@@ -10,6 +10,7 @@ privilege hardware accesses. The user interface tools are "razercfg", a
 commandline tool; and "qrazercfg", a QT4 based graphical device configuration
 tool.
 </longdescription>
+<!-- maintainer-needed -->
 <use>
 	<flag name="pm-utils">Installs the pm-utils hooks for suspend/resume and
 		requires <pkg>sys-power/pm-utils</pkg></flag>
