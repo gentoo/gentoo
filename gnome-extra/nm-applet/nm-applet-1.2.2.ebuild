@@ -1,9 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
-GCONF_DEBUG="no"
+EAPI=6
 GNOME2_LA_PUNT="yes"
 GNOME_ORG_MODULE="network-manager-applet"
 
@@ -14,7 +13,7 @@ HOMEPAGE="https://wiki.gnome.org/Projects/NetworkManager"
 
 LICENSE="GPL-2+"
 SLOT="0"
-IUSE="bluetooth +introspection modemmanager"
+IUSE="+introspection"
 KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 
 RDEPEND="
@@ -27,12 +26,10 @@ RDEPEND="
 	>=x11-libs/libnotify-0.7.0
 
 	app-text/iso-codes
-	>=net-misc/networkmanager-1.0.0[introspection?]
+	>=net-misc/networkmanager-1.2:=[introspection?]
 	net-misc/mobile-broadband-provider-info
 
-	bluetooth? ( >=net-wireless/gnome-bluetooth-2.27.6:= )
 	introspection? ( >=dev-libs/gobject-introspection-0.9.6:= )
-	modemmanager? ( >=net-misc/modemmanager-0.7.990 )
 	virtual/freedesktop-icon-theme
 	virtual/libgudev:=
 "
@@ -45,11 +42,9 @@ PDEPEND="virtual/notification-daemon" #546134
 
 src_configure() {
 	gnome2_src_configure \
+		--without-appindicator \
 		--disable-more-warnings \
 		--disable-static \
-		--disable-migration \
 		--localstatedir=/var \
-		$(use_with bluetooth) \
-		$(use_enable introspection) \
-		$(use_with modemmanager modem-manager-1)
+		$(use_enable introspection)
 }
