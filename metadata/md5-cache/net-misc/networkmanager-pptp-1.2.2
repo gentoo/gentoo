@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare
+DEPEND=>=net-misc/networkmanager-1.1:= >=dev-libs/dbus-glib-0.74 >=dev-libs/glib-2.32:2 net-dialup/ppp:= net-dialup/pptpclient gtk? ( app-crypt/libsecret >=gnome-extra/nm-applet-0.9.10 >=x11-libs/gtk+-3.4:3 ) sys-devel/gettext dev-util/intltool virtual/pkgconfig app-arch/xz-utils >=sys-apps/sed-4 dev-util/desktop-file-utils x11-misc/shared-mime-info
+DESCRIPTION=NetworkManager PPTP plugin
+EAPI=6
+HOMEPAGE=https://wiki.gnome.org/Projects/NetworkManager
+IUSE=gtk
+KEYWORDS=~amd64 ~arm ~x86
+LICENSE=GPL-2+
+RDEPEND=>=net-misc/networkmanager-1.1:= >=dev-libs/dbus-glib-0.74 >=dev-libs/glib-2.32:2 net-dialup/ppp:= net-dialup/pptpclient gtk? ( app-crypt/libsecret >=gnome-extra/nm-applet-0.9.10 >=x11-libs/gtk+-3.4:3 )
+SLOT=0
+SRC_URI=mirror://gnome/sources/NetworkManager-pptp/1.2/NetworkManager-pptp-1.2.2.tar.xz
+_eclass_exported_funcs=pkg_preinst:gnome2 pkg_postrm:gnome2 pkg_postinst:gnome2 src_prepare:gnome2 src_configure:- src_compile:gnome2 src_install:gnome2
+_eclasses_=eutils	792f83d5ec9536cb5ccef375469d8bde	gnome.org	ad34f378a3d57a6f2f2b8b4aaca4543e	gnome2	21c81ea94c12e45a63f7f14fba666e3d	gnome2-utils	c6dcdf3a2c22b578b16adb945dc85c35	libtool	4890219c51da247200223277f993e054	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	82165206dedb2075f9a0fb8f9b1f9441	versionator	99ae9d758cbe7cfed19170e7d48f5a9c	xdg	a5c4c5ce4f5ce9a2e777f5d9a40a8723	xdg-utils	e2b2bd56125ce8cf59ce30c642b59d48
+_md5_=b6b761ba622931824a49e24016276b52
