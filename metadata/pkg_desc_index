@@ -51,7 +51,7 @@ app-admin/augeas 0.10.0-r2 1.1.0 1.3.0 1.5.0: A library for changing configurati
 app-admin/authbind 2.1.1: Bind sockets to privileged ports without root
 app-admin/aws-as-tools 1.0.49.1: The API tools serve as the client interface to the Auto Scaling web service
 app-admin/aws-cw-tools 1.0.12.1: The API tools serve as the client interface to the Amazon CloudWatch web service
-app-admin/aws-elb-tools 1.0.15.1: The API tools serve as the client interface to the Elastic Load Balancing web service
+app-admin/aws-elb-tools 1.0.15.1 1.0.15.1-r1: Serves as the client interface to the Elastic Load Balancing web service
 app-admin/aws-iam-tools 1.3.0: The Command Line Interface (CLI) for the AWS Identity and Access Management (IAM) Service
 app-admin/aws-rds-tools 1.6.001: The Command Line Toolkit for the Amazon Relational Database Service
 app-admin/bastille 3.0.9-r1: Bastille-Linux is a security hardening tool
@@ -9983,7 +9983,7 @@ dev-vcs/bzr-rewrite 0.6.3: Bazaar plugin that adds support for rebasing, similar
 dev-vcs/bzr-xmloutput 0.8.8-r1 0.8.8-r2: A Bazaar plugin that provides a option to generate XML output forbuiltin commands.
 dev-vcs/bzrtools 2.4.1 2.5: bzrtools is a useful collection of utilities for bzr
 dev-vcs/colorcvs 1.4-r1: A tool based on colorgcc to beautify cvs output
-dev-vcs/colorsvn 0.3.2-r2: Subversion output colorizer
+dev-vcs/colorsvn 0.3.2-r2 0.3.2-r3: Subversion output colorizer
 dev-vcs/cssc 1.4.0: The GNU Project's replacement for SCCS
 dev-vcs/cvs 1.12.12-r10: Concurrent Versions System - source code revision control tools
 dev-vcs/cvs-fast-export 1.26 1.38: fast-export history from a CVS repository or RCS collection
