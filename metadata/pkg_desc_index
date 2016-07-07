@@ -4403,7 +4403,7 @@ dev-lang/idb 13.0.5.192 14.0.3.174: Intel C/C++/FORTRAN debugger
 dev-lang/ifc 13.1.5.192 14.0.3.174 15.0.6.233: Intel FORTRAN Compiler
 dev-lang/inform 6.33.1_p2: design system for interactive fiction
 dev-lang/interprolog 2.1.2: InterProlog is a Java front-end and enhancement for Prolog
-dev-lang/io 2011.09.12-r2: Io is a small, prototype-based programming language
+dev-lang/io 2011.09.12-r2 2011.09.12-r3: Io is a small, prototype-based programming language
 dev-lang/ispc 1.8.2-r2 1.8.2-r4 1.9.0: Intel SPMD Program Compiler
 dev-lang/j 701-r2: Modern, high-level, general-purpose, high-performance programming language
 dev-lang/jimtcl 0.70_pre20110317 0.73 0.74-r1 0.75 0.75-r1 0.76 9999: Small footprint implementation of Tcl programming language
@@ -13059,7 +13059,7 @@ media-radio/xlog 2.0.13: An amateur radio logging program
 media-radio/xwxapt 2.2 2.4: GTK+ linux weather satellite APT image decoder software
 media-sound/SmarTagger 0.1-r1: Perl script for renaming and tagging mp3s
 media-sound/a2jmidid 8 8-r1: Daemon for exposing legacy ALSA sequencer applications in JACK MIDI system
-media-sound/aacgain 1.9: AACGain normalizes the volume of digital music files using the Replay Gain algorithm
+media-sound/aacgain 1.9 1.9-r1: AACGain normalizes the volume of digital music files using the Replay Gain algorithm
 media-sound/aacplusenc 0.17.5: High-Efficiency AAC (AAC+) Encoder
 media-sound/abcde 2.5.4-r1 2.7 2.7.1: A command line CD encoder
 media-sound/abcm2ps 6.6.22 8.5.2 8.8.3 8.8.4: A program to convert abc files to Postscript files
@@ -14626,7 +14626,7 @@ net-misc/cmst 2016.04.03: Qt GUI for Connman with system tray icon
 net-misc/cocaine-core 0.9.2-r1 0.11.2.5 0.11.3.2: Cloud platform, core parts
 net-misc/connect 1.100 1.103: network connection relaying command (proxy)
 net-misc/connman 1.29 1.32: Provides a daemon for managing internet connections
-net-misc/connman-gtk 1.0: GTK GUI for Connman
+net-misc/connman-gtk 1.0 1.0-r1: GTK GUI for Connman
 net-misc/connman-ui 9999: A full-featured GTK based trayicon UI for ConnMan
 net-misc/corkscrew 2.0: a tool for tunneling SSH through HTTP proxies
 net-misc/csync 0.50.0: lightweight file synchronizer utility

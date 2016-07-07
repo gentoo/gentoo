@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=clutter? ( media-libs/clutter ) dbi? ( dev-db/libdbi ) editline? ( dev-libs/libedit ) image? ( virtual/jpeg media-libs/tiff media-libs/libpng ) xmpp? ( net-libs/loudmouth ) libffi? ( virtual/libffi ) libxml2? ( dev-libs/libxml2 ) lzo? ( dev-libs/lzo ) ncurses? ( sys-libs/ncurses ) ogg? ( media-libs/libogg ) opengl? ( virtual/opengl ) pcre? ( dev-libs/libpcre ) postgres? ( dev-db/postgresql[server] ) readline? ( sys-libs/readline ) sndfile? ( media-libs/libsndfile ) sqlite? ( >=dev-db/sqlite-3.0.0 ) theora? ( media-libs/libtheora ) truetype? ( media-libs/freetype ) vorbis? ( media-libs/libvorbis ) zlib? ( sys-libs/zlib ) sys-devel/make >=dev-util/cmake-2.8.12
+DESCRIPTION=Io is a small, prototype-based programming language
+EAPI=6
+HOMEPAGE=http://www.iolanguage.com
+IUSE=cgi clutter dbi doc editline google gui http image libffi libxml2 lzo md5sum ncurses ogg opengl postgres pcre python readline sha1 sndfile sockets sqlite syslog theora threads truetype twitter vorbis xmpp zlib
+KEYWORDS=~x86 ~amd64
+LICENSE=BSD
+REQUIRED_USE=vorbis? ( ogg )
+SLOT=0
+SRC_URI=mirror://gentoo/io-2011.09.12.tar.gz https://dev.gentoo.org/~araujo/snapshots/io-2011.09.12.tar.gz
+_eclass_exported_funcs=src_prepare:- src_configure:- src_compile:- src_test:cmake-utils src_install:-
+_eclasses_=cmake-utils	ac5bd012586c6cf0d9826400d9de2830	eutils	792f83d5ec9536cb5ccef375469d8bde	flag-o-matic	8632fcd33a047954f007dee9a137bdcc	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	82165206dedb2075f9a0fb8f9b1f9441	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=82f0c2ecde4ef532300b67058dde2a2d
