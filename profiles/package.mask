@@ -278,11 +278,6 @@ media-gfx/fbv
 # Bug 575374.
 app-i18n/xsim
 
-# Sebastien Fabbro <bicatali@gentoo.org>  (6 Jun 2016)
-# Dead upstream, several bugs: 513972, 542384, 548988
-# Removal in 30 days
-sys-fs/redirfs
-
 # Patrice Clement <monsieurp@gentoo.org> (5 Jun 2016)
 # Unmaintained ebuilds. Upstream is either dead or AWOL. Also, most of these
 # ebuilds are still sitting in ~arch after years in the tree.
@@ -307,23 +302,6 @@ dev-util/filepp
 dev-util/kdoc
 dev-util/skelgen
 dev-util/ftncheck
-
-# Hans de Graaff <graaff@gentoo.org> (4 Jun 2016)
-# Name-versioned dependency that was not used in any
-# version of cucumber we packaged and that is no longer
-# used upstream. Use dev-ruby/gherkin instead.
-# Masked for removal in 30 days.
-dev-ruby/gherkin3
-
-# Patrice Clement <monsieurp@gentoo.org> (2 Jun 2016)
-# Ancient software (1996!). Unmaintained.
-# Masked for removal in 30 days.
-dev-util/weblint
-
-# Patrice Clement <monsieurp@gentoo.org> (2 Jun 2016)
-# Dead upstream. No release since 2009.
-# Masked for removal in 30 days.
-dev-util/osdt
 
 # Michael Palimaka <kensington@gentoo.org> (26 May 2016)
 # Depends on vulnerable slot of net-libs/webkit-gtk.
