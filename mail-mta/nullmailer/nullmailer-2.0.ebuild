@@ -59,7 +59,7 @@ src_configure() {
 	# https://github.com/bruceg/nullmailer/pull/31/commits
 	append-lfs-flags #471102
 	econf \
-		--localstatedir=/var \
+		--localstatedir="${EPREFIX}"/var \
 		$(use_enable ssl tls)
 }
 
@@ -99,20 +99,20 @@ src_install() {
 }
 
 pkg_postinst() {
-	if [ ! -e "${ROOT}"/var/spool/nullmailer/trigger ]; then
-		mkfifo "${ROOT}"/var/spool/nullmailer/trigger || die
+	if [ ! -e ${EROOT}var/spool/nullmailer/trigger ]; then
+		mkfifo "${EROOT}"var/spool/nullmailer/trigger || die
 	fi
 	chown nullmail:nullmail \
-		"${ROOT}"/var/log/nullmailer \
-		"${ROOT}"/var/spool/nullmailer/{tmp,queue,trigger} || die
+		"${EROOT}"var/log/nullmailer \
+		"${EROOT}"var/spool/nullmailer/{tmp,queue,trigger} || die
 	chmod 770 \
-		"${ROOT}"/var/log/nullmailer \
-		"${ROOT}"/var/spool/nullmailer/{tmp,queue} || die
-	chmod 660 "${ROOT}"/var/spool/nullmailer/trigger || die
+		"${EROOT}"var/log/nullmailer \
+		"${EROOT}"var/spool/nullmailer/{tmp,queue} || die
+	chmod 660 "${EROOT}"var/spool/nullmailer/trigger || die
 
 	# This contains passwords, so should be secure
-	chmod 0640 "${ROOT}"/etc/nullmailer/remotes || die
-	chown root:nullmail "${ROOT}"/etc/nullmailer/remotes || die
+	chmod 0640 "${EROOT}"etc/nullmailer/remotes || die
+	chown root:nullmail "${EROOT}"etc/nullmailer/remotes || die
 
 	if [[ -z ${REPLACING_VERSIONS} ]]; then
 		elog "To create an initial setup, please do:"
@@ -121,18 +121,18 @@ pkg_postinst() {
 }
 
 pkg_postrm() {
-	if [[ -e "${ROOT}"/var/spool/nullmailer/trigger ]]; then
-		rm "${ROOT}"/var/spool/nullmailer/trigger || die
+	if [[ -e ${EROOT}var/spool/nullmailer/trigger ]]; then
+		rm "${EROOT}"var/spool/nullmailer/trigger || die
 	fi
 }
 
 pkg_config() {
-	if [ ! -s "${ROOT}"/etc/nullmailer/me ]; then
+	if [ ! -s ${EROOT}etc/nullmailer/me ]; then
 		einfo "Setting /etc/nullmailer/me"
-		/bin/hostname --fqdn > "${ROOT}"/etc/nullmailer/me
+		hostname --fqdn > "${EROOT}"etc/nullmailer/me
 	fi
-	if [ ! -s "${ROOT}"/etc/nullmailer/defaultdomain ]; then
+	if [ ! -s ${EROOT}etc/nullmailer/defaultdomain ]; then
 		einfo "Setting /etc/nullmailer/defaultdomain"
-		/bin/hostname --domain > "${ROOT}"/etc/nullmailer/defaultdomain
+		hostname --domain > "${EROOT}"etc/nullmailer/defaultdomain
 	fi
 }
