@@ -6,7 +6,7 @@ EAPI="6"
 
 CHROMIUM_LANGS="am ar bg bn ca cs da de el en-GB es es-419 et fa fi fil fr gu he
 	hi hr hu id it ja kn ko lt lv ml mr ms nb nl pl pt-BR pt-PT ro ru sk sl sr
-	sv sw ta te th tr uk vi zh-CN zh-TW fake-bidi"
+	sv sw ta te th tr uk vi zh-CN zh-TW"
 
 inherit readme.gentoo-r1 chromium-2 eutils gnome2-utils pax-utils unpacker xdg-utils
 
