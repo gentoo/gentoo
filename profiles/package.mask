@@ -278,11 +278,6 @@ media-gfx/fbv
 # Bug 575374.
 app-i18n/xsim
 
-# Sebastien Fabbro <bicatali@gentoo.org>  (6 Jun 2016)
-# Dead upstream, several bugs: 513972, 542384, 548988
-# Removal in 30 days
-sys-fs/redirfs
-
 # Patrice Clement <monsieurp@gentoo.org> (5 Jun 2016)
 # Unmaintained ebuilds. Upstream is either dead or AWOL. Also, most of these
 # ebuilds are still sitting in ~arch after years in the tree.
