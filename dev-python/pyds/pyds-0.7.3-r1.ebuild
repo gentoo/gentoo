@@ -10,8 +10,8 @@ inherit distutils-r1
 MY_P="PyDS-${PV}"
 
 DESCRIPTION="Python Desktop Server"
-HOMEPAGE="http://pyds.muensterland.org/"
-SRC_URI="http://simon.bofh.ms/~gb/${MY_P}.tar.gz"
+HOMEPAGE="https://wiki.python.org/moin/PyDS"
+SRC_URI="mirror://gentoo/${MY_P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
