@@ -8013,7 +8013,6 @@ www-client/google-chrome:linguas_fake_bidi - Install fake-bidi translation
 www-client/google-chrome:plugins - Add system plugins path to launcher
 www-client/google-chrome-beta:linguas_fake_bidi - Install fake-bidi translation
 www-client/google-chrome-beta:plugins - Add system plugins path to launcher
-www-client/google-chrome-unstable:l10n_fake-bidi - Install fake-bidi translation
 www-client/google-chrome-unstable:plugins - Add system plugins path to launcher
 www-client/luakit:luajit - Use the lua just-in-time compiler dev-lang/luajit instead of dev-lang/lua, which should make luakit faster.
 www-client/luakit:pax_kernel - Use paxctl to mark the luakit binary.
