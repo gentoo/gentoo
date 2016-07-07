@@ -30,7 +30,6 @@ PATCHES=(
 	"${FILESDIR}"/suid-perms.patch
 )
 
-DOCS=( AUTHORS ChangeLog README doc )
 src_prepare() {
 	default
 
@@ -55,9 +54,7 @@ src_compile() {
 
 src_install() {
 	emake PREFIX=/usr DESTDIR="${D}" install
-
-	insinto /usr/share/doc/${PF}/manual
-	doins doc/manual/xcdroast-manual.pdf
+	dodoc -r AUTHORS ChangeLog README doc/*
 
 	insinto /usr/share/icons/hicolor/48x48/apps
 	newins xpms/xcdricon.xpm xcdroast.xpm
