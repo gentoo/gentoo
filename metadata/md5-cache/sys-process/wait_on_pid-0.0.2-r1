@@ -1,0 +1,11 @@
+DEFINED_PHASES=install prepare
+DESCRIPTION=small utility to wait for an arbitrary process to exit
+EAPI=6
+HOMEPAGE=https://dev.gentoo.org/~zzam/wait_on_pid/
+KEYWORDS=~amd64 ~arm ~arm64 ~ppc ~x86 ~amd64-linux ~x86-linux
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=mirror://gentoo/wait_on_pid-0.0.2.tar.bz2 https://dev.gentoo.org/~zzam/wait_on_pid/wait_on_pid-0.0.2.tar.bz2
+_eclass_exported_funcs=src_prepare:- src_install:-
+_eclasses_=multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	82165206dedb2075f9a0fb8f9b1f9441
+_md5_=412b2234700ab44e03b947a32b257d37

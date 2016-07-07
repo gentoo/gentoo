@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install
+DEPEND=net-im/pidgin[gtk] dev-util/intltool sys-devel/gettext virtual/pkgconfig
+DESCRIPTION=Plugin for Pidgin that reminds you of your buddies birthdays
+EAPI=6
+HOMEPAGE=https://launchpad.net/pidgin-birthday-reminder
+IUSE=static-libs
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=net-im/pidgin[gtk]
+SLOT=0
+SRC_URI=https://launchpad.net/pidgin-birthday-reminder/trunk/1.7/+download/pidgin-birthday-reminder-1.7.tar.gz
+_eclass_exported_funcs=src_configure:- src_install:-
+_md5_=4f91fc1b3978c6dd2c95718630a26c26

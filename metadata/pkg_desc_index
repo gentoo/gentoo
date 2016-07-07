@@ -1686,7 +1686,7 @@ app-misc/actkbd 0.2.8-r2: A keyboard shortcut daemon
 app-misc/aldo 0.7.7: A morse tutor
 app-misc/anki 2.0.31 2.0.33 2.0.34 2.0.35 2.0.36: A spaced-repetition memory training program (flash cards)
 app-misc/asciinema 0.9.8: Command line recorder for asciinema.org service
-app-misc/astrolog 5.40-r1 5.40-r2: A many featured astrology chart calculation program
+app-misc/astrolog 5.40-r1 5.40-r2 5.40-r3: A many featured astrology chart calculation program
 app-misc/astrolog-ephemeris 5.40: ephemeris files for optional extended accuracy of astrolog's calculations
 app-misc/away 0.9.5-r1: Terminal locking program with few additional features
 app-misc/banner 1.3.3: The well known banner program for Linux
@@ -1795,7 +1795,7 @@ app-misc/golly 2.4-r1 2.7-r1: simulator for Conway's Game of Life and other cell
 app-misc/goobook 1.8 1.9: Google Contacts wrapper for mutt
 app-misc/gourmet 0.17.4 0.17.4-r1: Recipe Organizer and Shopping List Generator for Gnome
 app-misc/grabcartoons 2.8.4_p20141112 9999: Comic-summarizing utility
-app-misc/gramps 3.4.5-r1 3.4.9: Genealogical Research and Analysis Management Programming System
+app-misc/gramps 3.4.5-r1 3.4.9 3.4.9-r1: Genealogical Research and Analysis Management Programming System
 app-misc/graphlcd-base 0.1.5-r1 0.1.9: Graphical LCD Driver
 app-misc/grc 1.5: Generic Colouriser beautifies your logfiles or output of commands
 app-misc/gtk-sunlight 0.4.2: Real-time Sunlight Wallpaper
@@ -2854,7 +2854,7 @@ dev-cpp/libjson-rpc-cpp 0.5.0 0.6.0 9999: JSON-RPC (1.0 & 2.0) framework for C++
 dev-cpp/libmcpp 2.7.2-r1: A portable C++ preprocessor
 dev-cpp/libxmlpp 2.38.1 2.40.1: C++ wrapper for the libxml2 XML parser library
 dev-cpp/libxsd-frontend 1.18.0-r3: A compiler frontend for the W3C XML Schema definition language
-dev-cpp/luabind 0.9.1: Creates bindings for lua on c++
+dev-cpp/luabind 0.9.1 0.9.1-r1: Creates bindings for lua on c++
 dev-cpp/lucene++ 3.0.7: C++ port of Java Lucene library, a high-performance, full-featured text search engine
 dev-cpp/metslib 0.5.3: Metaheuristic modeling framework and optimization toolkit
 dev-cpp/mm-common 0.9.8 0.9.9 0.9.10: Build infrastructure and utilities for GNOME C++ bindings
@@ -10342,7 +10342,7 @@ games-board/simsu 1.2.3: A basic sudoku game
 games-board/sirius 0.8.0: A program for playing the game of othello/reversi
 games-board/sjeng 11.2-r1: Console based chess interface
 games-board/spider 1.2_p4-r1: Spider Solitaire
-games-board/stockfish 6-r1: Free UCI chess engine, claimed to be the strongest in the world
+games-board/stockfish 6-r1 6-r2: Free UCI chess engine, claimed to be the strongest in the world
 games-board/tali 3.18.0 3.20.0: Beat the odds in a poker-style dice game
 games-board/teg 0.11.2: Gnome Risk Clone
 games-board/tetzle 2.0.3: A jigsaw puzzle game that uses tetrominoes for the pieces
@@ -13970,7 +13970,7 @@ net-dialup/dgcmodem 1.10: Driver for Connexant DGC modems
 net-dialup/dial 1.2-r1: A simple client for DWUN
 net-dialup/diald 1.0-r2 1.0-r3: Daemon that provides on demand IP links via SLIP or PPP
 net-dialup/drdsl 1.2.0: AVM DSL Assistant for autodetecting DSL values (VPI, VCI, VPP) for 'fcdsl' based cards
-net-dialup/dtrace 2.01-r2: DTRACE traces ISDN messages with AVM ISDN-controllers
+net-dialup/dtrace 2.01-r2 2.01-r3: DTRACE traces ISDN messages with AVM ISDN-controllers
 net-dialup/dwun 0.96e-r2 0.96e-r4: Dialer Without a Useful Name (DWUN)
 net-dialup/fbgetty 0.1.698-r1: An extended getty for the framebuffer console
 net-dialup/fcpci 0.1-r3: AVM kernel modules for Fritz!Card PCI
@@ -14514,7 +14514,7 @@ net-mail/mboxgrep 0.7.9-r1: Grep for mbox files
 net-mail/mess822 0.58-r2: Collection of utilities for parsing Internet mail messages
 net-mail/metamail 2.7.53.3-r1: Metamail (with Debian patches) - Generic MIME package
 net-mail/mhonarc 2.6.18-r2: Perl Mail-to-HTML Converter
-net-mail/mhonarc-gentoo 2.6.18-r1: Perl Mail-to-HTML Converter, Gentoo fork
+net-mail/mhonarc-gentoo 2.6.18-r1 2.6.18-r2: Perl Mail-to-HTML Converter, Gentoo fork
 net-mail/mlmmj 1.2.18.0 1.2.18.1 1.2.19.0 1.2.19.0-r1: Mailing list managing made joyful
 net-mail/mpack 1.6-r3: Command-line MIME encoding and decoding utilities
 net-mail/mpop 1.2.2 1.2.4: A small, fast, and portable POP3 client
@@ -17123,7 +17123,7 @@ sys-fs/copyfs 1.0.1: fuse-based filesystem for maintaining configuration files
 sys-fs/cramfs 1.1: Linux filesystem designed to be simple, small, and to compress things well
 sys-fs/cryptsetup 1.6.5 1.6.8-r1 1.7.1 1.7.2: Tool to setup encrypted devices with dm-crypt
 sys-fs/ctmg 1.1 1.2: Simple wrapper around cryptsetup for encrypted containers
-sys-fs/davl 1.2.4-r1: Visualizes the fragmentation status of ext2/3 filesystems
+sys-fs/davl 1.2.4-r1 1.2.4-r2: Visualizes the fragmentation status of ext2/3 filesystems
 sys-fs/dd-rescue 1.28 1.46 1.99 1.99-r1: Similar to dd but can copy from source with errors
 sys-fs/ddrescue 1.20 1.21: Copy data from one file or block device to another with read-error recovery
 sys-fs/devfsd 1.3.25-r9: Daemon for the Linux Device Filesystem
@@ -17238,7 +17238,7 @@ sys-fs/zerofree 1.0.1 1.0.3 1.0.4: Zero's out all free space on a filesystem
 sys-fs/zfs 0.6.0_rc13-r2 0.6.0_rc14-r1 0.6.1-r4 0.6.2-r5 0.6.3-r2 0.6.4.2 0.6.5.2-r1 0.6.5.3 0.6.5.3-r1 0.6.5.3-r3 0.6.5.3-r4 0.6.5.3-r5 0.6.5.4 0.6.5.4-r1 0.6.5.4-r2 0.6.5.6 0.6.5.7 9999: Userland utilities for ZFS Linux kernel module
 sys-fs/zfs-kmod 0.6.0_rc13-r4 0.6.0_rc14-r5 0.6.1-r2 0.6.2-r3 0.6.3-r1 0.6.4.2 0.6.5-r1 0.6.5.2 0.6.5.3 0.6.5.3-r4 0.6.5.4 0.6.5.4-r1 0.6.5.6 0.6.5.7 9999: Linux ZFS kernel module for sys-fs/zfs
 sys-kernel/aufs-sources 3.18.36 4.4.6 4.4.12 4.4.13 4.4.14 4.5.6 4.5.7 4.6.0 4.6.1 4.6.2 4.6.3: Full sources including the Gentoo patchset for the linux kernel tree and aufs4 support
-sys-kernel/ck-sources 3.4.110 3.10.97 3.14.61 3.18.27 4.1.18 4.3.6: Con Kolivas' high performance patchset and Gentoo's genpatches for Linux 4.3
+sys-kernel/ck-sources 3.4.110 3.10.97 3.14.61 3.18.27 4.1.18 4.3.6 4.3.6-r1: Con Kolivas' high performance patchset and Gentoo's genpatches for Linux 4.3
 sys-kernel/cryptodev 1.7: device that allows access to Linux kernel cryptographic drivers
 sys-kernel/dracut 034-r4 040-r3 041-r3 043-r2 044: Generic initramfs generation tool
 sys-kernel/genkernel 3.4.45.1 3.4.48 3.4.49.2 3.4.50 3.4.51.4 3.4.52.2 3.4.52.3 3.4.52.4 3.4.52.4-r1 3.5.0.0 3.5.0.1 3.5.0.2 9999: Gentoo automatic kernel building scripts
@@ -17424,7 +17424,7 @@ sys-process/tiptop 2.2 2.3: top for performance counters
 sys-process/top-apple 73: Apple's top from Mac OS X Lion 10.7
 sys-process/unixtop 3.8_beta1-r3: top for UNIX systems
 sys-process/vixie-cron 4.1-r14: Paul Vixie's cron daemon, a fully featured crond implementation
-sys-process/wait_on_pid 0.0.2: small utility to wait for an arbitrary process to exit
+sys-process/wait_on_pid 0.0.2 0.0.2-r1: small utility to wait for an arbitrary process to exit
 sys-process/watchpid 0.1-r1 0.1-r2: Watches a process for termination
 sys-process/xjobs 20140125 20151016: Reads commands line by line and executes them in parallel
 virtual/acl 0 0-r1 0-r2: Virtual for acl support (sys/acl.h)
@@ -18476,7 +18476,7 @@ x11-misc/xdialog 2.3.1: drop-in replacement for cdialog using GTK
 x11-misc/xdiskusage 1.48_p20111016 1.51: user-friendly program to show you what is using up all your disk space
 x11-misc/xdo 0.3 0.4 0.5: Small X utility to perform elementary actions on windows
 x11-misc/xdock 0.3.0: emulates Window Maker docks (runs in any window manager)
-x11-misc/xdotool 2.20110530.1 3.20150503.1: Simulate keyboard input and mouse activity, move and resize windows
+x11-misc/xdotool 2.20110530.1 3.20150503.1 3.20150503.1-r1: Simulate keyboard input and mouse activity, move and resize windows
 x11-misc/xearth 1.1-r1: Xearth sets the X root window to an image of the Earth
 x11-misc/xfe 1.40.1 1.41: MS-Explorer-like minimalist file manager for X
 x11-misc/xfishtank 2.1-r1: Turns your root window into an aquarium
@@ -18572,7 +18572,7 @@ x11-plugins/guifications 2.16: Guifications is a graphical notification plugin f
 x11-plugins/hexchat-javascript 0.3.1 0.3.2: Javascript interface for HexChat
 x11-plugins/i8krellm 2.5 2.5-r1: GKrellM2 Plugin for the Dell Inspiron and Latitude notebooks
 x11-plugins/monto 0.1.1-r1: a simple manual device mounter (up to four devices)
-x11-plugins/pidgin-birthday-reminder 1.7: Plugin for Pidgin that reminds you of your buddies birthdays
+x11-plugins/pidgin-birthday-reminder 1.7 1.7-r1: Plugin for Pidgin that reminds you of your buddies birthdays
 x11-plugins/pidgin-bot-sentry 1.3.0: Bot Sentry is a Pidgin plugin to prevent Instant Message (IM) spam
 x11-plugins/pidgin-encryption 3.1: Pidgin IM Encryption PlugIn
 x11-plugins/pidgin-extprefs 0.7-r1: Extra preferences that are desired but not are not considered worthy of inclusion in Pidgin itself
@@ -18810,7 +18810,7 @@ x11-themes/fvwm_sounds 1.0: Sounds for use with FVWM
 x11-themes/gargantuan-icon-theme 1.7: Gargantuan Icon Theme
 x11-themes/gartoon 0.5-r2: Gartoon SVG icon theme
 x11-themes/gartoon-redux 1.10-r1: A massively improved variant of the well-known Gartoon theme
-x11-themes/geany-themes 1.22.2: A collection of colour schemes for Geany
+x11-themes/geany-themes 1.22.2 1.22.2-r1: A collection of colour schemes for Geany
 x11-themes/gentoo-artwork 0.4.2-r1: A collection of miscellaneous Gentoo Linux logos and artwork
 x11-themes/gentoo-artwork-livecd 2006.1 2007.0: A collection of Gentoo Linux wallpapers for the LiveCD
 x11-themes/gentoo-xcursors 0.3.1: A high quality set of animated mouse cursors
@@ -18924,7 +18924,7 @@ x11-wm/awesome 3.4.15 3.5.6-r1 3.5.6-r2 3.5.7 3.5.8 3.5.9: A dynamic floating an
 x11-wm/blackbox 0.70.1-r1: A small, fast, full-featured window manager for X
 x11-wm/bspwm 0.8.8-r1 0.8.9 0.9 0.9.1: Tiling window manager based on binary space partitioning
 x11-wm/compiz 0.8.8-r3: OpenGL window and compositing manager
-x11-wm/compiz-fusion 0.8.8: Compiz Fusion (meta)
+x11-wm/compiz-fusion 0.8.8 0.8.8-r1: Compiz Fusion (meta)
 x11-wm/ctwm 3.7 3.8a-r1 3.8.2: A clean, light window manager
 x11-wm/cwm 5.1 5.1_p20130728 5.5 5.6 9999: OpenBSD fork of calmwm, a clean and lightweight window manager
 x11-wm/dwm 6.0 6.1: a dynamic window manager for X11
