@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+	<!-- maintainer-needed -->
 	<upstream>
 		<bugs-to>https://bugs.launchpad.net/pidgin-birthday-reminder</bugs-to>
 		<remote-id type="launchpad">pidgin-birthday-reminder</remote-id>
