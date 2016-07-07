@@ -439,7 +439,7 @@ app-cdr/burn-cd 1.7.4 1.8.0-r1 1.8.1: Smart console frontend for the cdrkit/cdrt
 app-cdr/burncdda 1.8.0: Console app for copying burning audio cds
 app-cdr/burncenter 3.2.1: A Perl module and a collection of easy-to-use text based interfaces to the UNIX CD burning tools
 app-cdr/ccd2iso 0.3: Converts CloneCD images (popular under Windows) to ISOs
-app-cdr/cdck 0.7.0-r1: Measure the read time per sector on CD or DVD to check the quality
+app-cdr/cdck 0.7.0-r1 0.7.0-r2: Measure the read time per sector on CD or DVD to check the quality
 app-cdr/cdcover 0.7.4-r1: cdcover allows the creation of inlay-sheets for jewel cd-cases
 app-cdr/cddetect 2.1: A tool for detecting the type of a CD/DVD without mounting it
 app-cdr/cdemu 3.0.0 3.0.1: Command-line tool for controlling cdemu-daemon
@@ -509,7 +509,7 @@ app-crypt/ccrypt 1.9 1.10: Encryption and decryption
 app-crypt/certbot 0.6.0 9999: Let's encrypt client to automate deployment of X.509 certificates
 app-crypt/certbot-apache 9999: Apache plugin for certbot (Let's Encrypt Client)
 app-crypt/chntpw 140201: Offline Windows NT Password & Registry Editor
-app-crypt/ckpass 0.2: An ncurses based password database client that is compatible with KeePass 1.x format databases
+app-crypt/ckpass 0.2 0.2-r1: ncurses based password database client compatible with KeePass 1.x databases
 app-crypt/codecrypt 1.4.1 1.6 1.7.2 1.7.5: Post-quantum cryptography tool
 app-crypt/codegroup 20080907-r1: encode / decode binary file as five letter codegroups
 app-crypt/coolkey 1.1.0-r6: Linux Driver support for the CoolKey and CAC products

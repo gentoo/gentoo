@@ -1,0 +1,13 @@
+DEFINED_PHASES=prepare
+DEPEND=>=dev-libs/libkpass-6 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=ncurses based password database client compatible with KeePass 1.x databases
+EAPI=6
+HOMEPAGE=http://ckpass.sourceforge.net/
+KEYWORDS=~amd64
+LICENSE=GPL-3
+RDEPEND=>=dev-libs/libkpass-6
+SLOT=0
+SRC_URI=mirror://sourceforge/ckpass/ckpass-0.2.tar.gz
+_eclass_exported_funcs=src_prepare:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	libtool	4890219c51da247200223277f993e054	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	82165206dedb2075f9a0fb8f9b1f9441
+_md5_=88f0c1e2ad172a0978b6cf785926c205
