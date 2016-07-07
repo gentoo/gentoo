@@ -8,7 +8,7 @@ KMNAME="kde-wallpapers"
 inherit kde4-base
 
 DESCRIPTION="KDE wallpapers"
-KEYWORDS="amd64 ~arm ~ppc ~ppc64 x86 ~x86-fbsd ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm x86 ~x86-fbsd ~amd64-linux ~x86-linux"
 IUSE="+minimal"
 
 src_configure() {

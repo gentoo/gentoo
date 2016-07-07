@@ -2,9 +2,18 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-# Michael Palimaka <kensington@gentoo.org> (30 Jun 2016)
-# Requires unkeyworded kde-plasma/kde-cli-tools[kdesu]
->=sys-block/gparted-0.26.0-r1 kde
+# Michael Palimaka <kensington@gentoo.org> (07 Jul 2016)
+# Requires unkeyworded dependencies
+app-misc/hachoir-metadata kde
+dev-util/eric kde
+dev-vcs/subversion kde
+kde-base/katepart handbook
+kde-base/kdelibs handbook policykit
+sys-auth/polkit kde
+sys-block/gparted kde
+www-plugins/gnash kde
+x11-misc/lightdm kde
+x11-wm/compiz kde
 
 # Davide Pesavento <pesa@gentoo.org> (06 Jun 2016)
 # Requires unkeyworded dev-python/PyQt5

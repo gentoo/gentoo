@@ -75,6 +75,9 @@ chromium_remove_language_paks() {
 		fi
 	done
 
+	# Bug 588198
+	rm -f fake-bidi.pak || die
+
 	# Look for extra pak files.
 	# Remove pak files that the user does not want.
 	for pak in *.pak; do

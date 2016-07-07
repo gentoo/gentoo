@@ -9,7 +9,7 @@ inherit kde4-base
 
 DESCRIPTION="KDE multi-protocol IM client"
 HOMEPAGE="https://kopete.kde.org https://www.kde.org/applications/internet/kopete"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm ~x86"
 IUSE="debug ssl v4l"
 
 # tests hang, last checked for 4.2.96

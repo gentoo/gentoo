@@ -8,7 +8,7 @@ KMNAME="kde-baseapps"
 inherit kde4-meta pax-utils
 
 DESCRIPTION="Netscape plugins support for Konqueror"
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64 ~arm x86"
 IUSE="debug"
 
 DEPEND="

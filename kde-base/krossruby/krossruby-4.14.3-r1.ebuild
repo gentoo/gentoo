@@ -16,7 +16,7 @@ USE_RUBY="ruby20"
 inherit kde4-meta ruby-ng
 
 DESCRIPTION="Kross scripting framework: Ruby interpreter"
-KEYWORDS="amd64 ~arm ~ppc ~ppc64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm x86 ~amd64-linux ~x86-linux"
 IUSE="debug"
 
 DEPEND=""

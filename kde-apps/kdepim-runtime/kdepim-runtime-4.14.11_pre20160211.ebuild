@@ -13,7 +13,7 @@ COMMIT_ID="bb194cc299839cb00b808c9c5740169815ba9e39"
 SRC_URI="https://quickgit.kde.org/?p=kdepim-runtime.git&a=snapshot&h=${COMMIT_ID}&fmt=tgz -> ${KMNAME}-${PV}.tar.gz"
 S=${WORKDIR}/${PN}
 
-KEYWORDS="amd64 ~arm ~ppc ~ppc64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm x86 ~amd64-linux ~x86-linux"
 IUSE="debug google kolab"
 
 RESTRICT="test"

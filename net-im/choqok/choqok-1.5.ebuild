@@ -15,7 +15,7 @@ HOMEPAGE="http://choqok.gnufolks.org/"
 
 if [[ ${PV} != *9999* ]]; then
 	SRC_URI="mirror://sourceforge/${PN}/${P}.tar.xz"
-	KEYWORDS="amd64 ~ppc x86"
+	KEYWORDS="amd64 x86"
 else
 	KEYWORDS=""
 fi

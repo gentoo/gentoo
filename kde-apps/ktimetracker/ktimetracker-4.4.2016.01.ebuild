@@ -10,7 +10,7 @@ inherit kde4-meta
 
 DESCRIPTION="KTimeTracker tracks time spent on various tasks (noakonadi branch)"
 HOMEPAGE="https://launchpad.net/~pali/+archive/ubuntu/kdepim-noakonadi"
-KEYWORDS="amd64 ~ppc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="debug"
 
 RDEPEND="

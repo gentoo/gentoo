@@ -9,7 +9,7 @@ KMNAME="kde-baseapps"
 inherit kde4-meta
 
 DESCRIPTION="KDE GUI for passwd"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm ~x86"
 IUSE="debug"
 
 DEPEND="
