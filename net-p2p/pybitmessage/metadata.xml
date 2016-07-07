@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+	<!-- maintainer-needed -->
 	<longdescription lang="en">
 		Bitmessage is a P2P communications protocol used to send encrypted
 		messages to another person or to many subscribers. It is
