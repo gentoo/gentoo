@@ -29,5 +29,6 @@ RDEPEND="
 		kde-apps/knotify
 		x11-misc/mate-notification-daemon
 		lxqt-base/lxqt-notificationd
-		kde-frameworks/knotifications ) )"
+		kde-frameworks/knotifications
+		kde-misc/colibri ) )"
 DEPEND=""
