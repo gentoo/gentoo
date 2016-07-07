@@ -2,14 +2,14 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
+EAPI="6"
 PYTHON_COMPAT=( python{3_4,3_5} )
 
 inherit distutils-r1
 
 DESCRIPTION="A tool for monitoring webpages for updates"
-HOMEPAGE="http://thp.io/2008/urlwatch/ https://pypi.python.org/pypi/urlwatch"
-SRC_URI="http://thp.io/2008/${PN}/${P}.tar.gz"
+HOMEPAGE="https://thp.io/2008/urlwatch/ https://pypi.python.org/pypi/urlwatch"
+SRC_URI="https://thp.io/2008/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
@@ -20,6 +20,7 @@ RDEPEND="
 	dev-python/keyring[${PYTHON_USEDEP}]
 	dev-python/pyyaml[${PYTHON_USEDEP}]
 	dev-python/minidb[${PYTHON_USEDEP}]
+	dev-python/requests[${PYTHON_USEDEP}]
 	|| ( www-client/lynx app-text/html2text )
 "
 DEPEND="
@@ -30,7 +31,16 @@ DEPEND="
 	)
 "
 
+PATCHES=( "${FILESDIR}/${P}-fix-install.patch" )
+
 python_test() {
-	# https://github.com/thp/urlwatch/issues/34
 	nosetests test || die "tests failed with ${EPYTHON}"
+}
+
+pkg_postinst() {
+	if [[ -z "${REPLACING_VERSIONS}" ]] && \
+		! has_version dev-python/chump; then
+		elog "Install 'dev-python/chump' to enable Pushover" \
+			"notifications support"
+	fi
 }
