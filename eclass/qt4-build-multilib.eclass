@@ -113,10 +113,13 @@ multilib_src_install_all()	{ qt4_multilib_src_install_all; }
 # @DESCRIPTION:
 # Unpacks the sources.
 qt4-build-multilib_src_unpack() {
-	if [[ $(gcc-major-version) -lt 4 ]] || [[ $(gcc-major-version) -eq 4 && $(gcc-minor-version) -lt 4 ]]; then
-		ewarn
-		ewarn "Using a GCC version lower than 4.4 is not supported."
-		ewarn
+	if tc-is-gcc; then
+		if [[ $(gcc-major-version) -lt 4 ]] || \
+		   [[ $(gcc-major-version) -eq 4 && $(gcc-minor-version) -lt 4 ]]; then
+			ewarn
+			ewarn "Using a GCC version lower than 4.4 is not supported"
+			ewarn
+		fi
 	fi
 
 	if [[ ${PN} == qtwebkit ]]; then
@@ -172,7 +175,7 @@ qt4-build-multilib_src_prepare() {
 	if [[ ${PN} == qtdeclarative ]]; then
 		# Bug 551560
 		# gcc-4.8 ICE with -Os, fixed in 4.9
-		if use x86 && [[ $(gcc-version) == 4.8 ]]; then
+		if use x86 && tc-is-gcc && [[ $(gcc-version) == 4.8 ]]; then
 			replace-flags -Os -O2
 		fi
 	fi

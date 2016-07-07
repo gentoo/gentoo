@@ -141,19 +141,21 @@ EXPORT_FUNCTIONS src_unpack src_prepare src_configure src_compile src_install sr
 # @DESCRIPTION:
 # Unpacks the sources.
 qt5-build_src_unpack() {
-	local min_gcc4_minor_version=5
-	if [[ ${QT5_MINOR_VERSION} -ge 7 || ${PN} == qtwebengine ]]; then
-		min_gcc4_minor_version=7
-	fi
-	if [[ $(gcc-major-version) -lt 4 ]] || \
-	   [[ $(gcc-major-version) -eq 4 && $(gcc-minor-version) -lt ${min_gcc4_minor_version} ]]; then
-		if [[ ${QT5_MINOR_VERSION} -ge 6 ]]; then
-			eerror "GCC version 4.${min_gcc4_minor_version} or later is required to build this package"
-			die "GCC 4.${min_gcc4_minor_version} or later required"
-		else
-			ewarn
-			ewarn "Using a GCC version lower than 4.${min_gcc4_minor_version} is not supported"
-			ewarn
+	if tc-is-gcc; then
+		local min_gcc4_minor_version=5
+		if [[ ${QT5_MINOR_VERSION} -ge 7 || ${PN} == qtwebengine ]]; then
+			min_gcc4_minor_version=7
+		fi
+		if [[ $(gcc-major-version) -lt 4 ]] || \
+		   [[ $(gcc-major-version) -eq 4 && $(gcc-minor-version) -lt ${min_gcc4_minor_version} ]]; then
+			if [[ ${QT5_MINOR_VERSION} -ge 6 ]]; then
+				eerror "GCC version 4.${min_gcc4_minor_version} or later is required to build this package"
+				die "GCC 4.${min_gcc4_minor_version} or later required"
+			else
+				ewarn
+				ewarn "Using a GCC version lower than 4.${min_gcc4_minor_version} is not supported"
+				ewarn
+			fi
 		fi
 	fi
 

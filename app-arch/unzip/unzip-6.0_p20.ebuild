@@ -54,6 +54,8 @@ src_prepare() {
 
 	# Delete bundled code to make sure we don't use it.
 	rm -r bzip2 || die
+
+	epatch_user
 }
 
 src_configure() {
