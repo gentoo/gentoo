@@ -315,11 +315,6 @@ dev-util/ftncheck
 # Masked for removal in 30 days.
 dev-ruby/gherkin3
 
-# Patrice Clement <monsieurp@gentoo.org> (2 Jun 2016)
-# Ancient software (1996!). Unmaintained.
-# Masked for removal in 30 days.
-dev-util/weblint
-
 # Michael Palimaka <kensington@gentoo.org> (26 May 2016)
 # Depends on vulnerable slot of net-libs/webkit-gtk.
 # Dead upstream. Unmaintained. Masked for removal in 30 days.
