@@ -151,6 +151,7 @@ app-admin/mms-agent 3.7.0.212_p1: MongoDB MMS agents
 app-admin/mongo-tools 3.0.10 3.0.12 3.2.4 3.2.5: A high-performance, open source, schema-free document-oriented database
 app-admin/monit 5.15 5.17.1 5.18: a utility for monitoring and managing daemons or similar programs running on a Unix system
 app-admin/multilog-watch 1.12: Watches a multilog file for irregularities
+app-admin/needrestart 2.8 9999: Restart daemons after library updates
 app-admin/newsyslog 1.1: a highly configurable program for managing and archiving log files
 app-admin/ngxtop 0.0.2-r1 0.0.3_pre141201: real-time metrics for nginx server (and others)
 app-admin/openrc-settingsd 1.0.1: System settings D-Bus service for OpenRC
@@ -7021,6 +7022,7 @@ dev-python/cheetah 2.4.4-r1: Python-powered template engine and code generator
 dev-python/cheetah-docs 0.9.16_alpha1: Documentation for Cheetah templates
 dev-python/cherrypy 3.3.0 3.7.0 3.8.0: CherryPy is a pythonic, object-oriented HTTP framework
 dev-python/cherrytemplate 1.0.0-r1: Easy and powerful templating module for Python
+dev-python/chump 1.5.1: API wrapper for Pushover
 dev-python/cliapp 1.20130808 1.20140315 1.20150305: Framework for Unix-like command line programs
 dev-python/click 2.0 5.1 6.2 6.3 6.5: A Python package for creating beautiful command line interfaces
 dev-python/click-log 0.1.3: Logging integration for Click.
@@ -17859,7 +17861,7 @@ www-misc/profile-sync-daemon 5.45.1: Symlinks and syncs browser profile dirs to 
 www-misc/reflector 2011.05.13.1: archlinux's take on mirrorselect
 www-misc/shellinabox 2.19: Web server that can export arbitrary command line tools to a web based terminal emulator
 www-misc/surl 0.7.1.1: URL shortening command line application that supports various sites
-www-misc/urlwatch 1.18 2.0-r2 2.1: A tool for monitoring webpages for updates
+www-misc/urlwatch 1.18 2.1 2.2: A tool for monitoring webpages for updates
 www-misc/vdradmin-am 3.6.9 3.6.9-r3 3.6.10: WWW Admin for the Video Disk Recorder
 www-misc/visitors 0.7-r1: Fast web log analyzer
 www-misc/wsmake 0.6.4: Website Pre-processor
