@@ -205,7 +205,7 @@ multilib_src_compile() {
 		emake
 	else
 		emake all-am
-		emake -C include
+		emake -C shared
 		emake -C introspection # generated headers, needed for libnm
 		emake -C libnm-core
 		emake -C libnm
@@ -227,7 +227,7 @@ multilib_src_install() {
 		gnome2_src_install completiondir="$(get_bashcompdir)"
 	else
 		emake DESTDIR="${D}" install-am
-		emake DESTDIR="${D}" install -C include
+		emake DESTDIR="${D}" install -C shared
 		emake DESTDIR="${D}" install -C introspection
 		emake DESTDIR="${D}" install -C libnm-core
 		emake DESTDIR="${D}" install -C libnm
