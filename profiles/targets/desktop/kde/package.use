@@ -25,6 +25,3 @@ dev-qt/qt-mobility multimedia
 
 # Required by app-office/libreoffice
 media-libs/phonon designer
-
-# Enable crash-reporter here instead of in ebuild
-kde-apps/kdebase-runtime-meta crash-reporter

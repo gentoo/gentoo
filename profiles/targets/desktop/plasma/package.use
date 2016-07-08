@@ -56,7 +56,6 @@ kde-apps/kde-meta:4 -kdepim minimal
 kde-apps/kde-wallpapers minimal
 kde-apps/kde4-l10n minimal
 kde-apps/kdebase-meta:4 minimal
-kde-apps/kdebase-runtime-meta:4 -crash-reporter minimal
 kde-apps/kwalletmanager:4 minimal
 kde-apps/libkipi:4 minimal
 kde-apps/libksane:4 minimal
