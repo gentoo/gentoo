@@ -7,7 +7,7 @@ EAPI=6
 inherit kde5-meta-pkg
 
 DESCRIPTION="Merge this to pull in all kdebase-runtime-derived packages"
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64 ~arm x86"
 IUSE="+oldwallet pam"
 
 RDEPEND="
