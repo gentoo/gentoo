@@ -1,0 +1,51 @@
+From 0d6304b5922b712694fa82979cdf1ed85bc9c778 Mon Sep 17 00:00:00 2001
+From: Doug Goldstein <cardoe@cardoe.com>
+Date: Mon, 27 Jun 2016 08:46:36 -0500
+Subject: [PATCH 3/4] build: respect datadir, infodir, mandir, libdir, and
+ sysconfdir
+
+The configure script exposes datadir, infodir, mandir, libdir, and
+sysconfdir but then they are unused so distros or users with
+non-standard paths are not able to change things as would be expected by
+the configure script.
+
+Signed-off-by: Doug Goldstein <cardoe@cardoe.com>
+---
+ Makefile.in | 18 +++++++++---------
+ 1 file changed, 9 insertions(+), 9 deletions(-)
+
+diff --git a/Makefile.in b/Makefile.in
+index fadcb4b..2503cd5 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -271,18 +271,18 @@ prepare-image-$(1):
+ 	@[ -f $$(TARGET_$(1))/cargo$$(X) ] || echo 'Please run `make` first'
+ 	@[ -f $$(TARGET_$(1))/cargo$$(X) ]
+ 	rm -rf $$(IMGDIR_$(1))
+-	mkdir -p $$(IMGDIR_$(1))/bin $$(IMGDIR_$(1))/lib/cargo \
+-		$$(IMGDIR_$(1))/share/man/man1 \
+-		$$(IMGDIR_$(1))/share/doc/cargo \
+-		$$(IMGDIR_$(1))/share/zsh/site-functions \
+-		$$(IMGDIR_$(1))/etc/bash_completion.d
++	mkdir -p $$(IMGDIR_$(1))/bin $$(IMGDIR_$(1))/$(CFG_LIBDIR)/cargo \
++		$$(IMGDIR_$(1))$(CFG_MANDIR)/man1 \
++		$$(IMGDIR_$(1))$(CFG_DATADIR)/doc/cargo \
++		$$(IMGDIR_$(1))$(CFG_DATADIR)/zsh/site-functions \
++		$$(IMGDIR_$(1))$(CFG_SYSCONFDIR)/bash_completion.d
+ 	cp $$(TARGET_$(1))/cargo$$(X) $$(IMGDIR_$(1))/bin
+-	cp $(S)src/etc/man/*.1 $$(IMGDIR_$(1))/share/man/man1
+-	cp $(S)src/etc/_cargo $$(IMGDIR_$(1))/share/zsh/site-functions/_cargo
+-	cp $(S)src/etc/cargo.bashcomp.sh $$(IMGDIR_$(1))/etc/bash_completion.d/cargo
++	cp $(S)src/etc/man/*.1 $$(IMGDIR_$(1))$(CFG_MANDIR)/man1
++	cp $(S)src/etc/_cargo $$(IMGDIR_$(1))$(CFG_DATADIR)/zsh/site-functions/_cargo
++	cp $(S)src/etc/cargo.bashcomp.sh $$(IMGDIR_$(1))$(CFG_SYSCONFDIR)/bash_completion.d/cargo
+ 	cp $(S)README.md $(S)LICENSE-MIT $(S)LICENSE-APACHE \
+ 		$(S)LICENSE-THIRD-PARTY \
+-		$$(IMGDIR_$(1))/share/doc/cargo
++		$$(IMGDIR_$(1))$(CFG_DATADIR)/doc/cargo
+ 
+ prepare-overlay-$(1):
+ 	rm -Rf $$(OVERLAYDIR_$(1))
+-- 
+2.7.3
+
