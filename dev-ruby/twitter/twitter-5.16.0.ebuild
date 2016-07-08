@@ -29,7 +29,7 @@ ruby_add_rdepend "
 	>=dev-ruby/faraday-0.9.0
 	dev-ruby/http:1.0
 	>=dev-ruby/http_parser_rb-0.6.0
-	>=dev-ruby/json-1.8
+	>=dev-ruby/json-1.8:0
 	>=dev-ruby/memoizable-0.4.0
 	>=dev-ruby/naught-1.0
 	=dev-ruby/simple_oauth-0.3*
