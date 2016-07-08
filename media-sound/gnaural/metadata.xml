@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+	<!-- maintainer-needed -->
 	<longdescription>
 		Gnaural is an opensource programmable auditory binaural-beat generator, implementing the principle described in the October 1973 Scientific American article "Auditory Beats in the Brain" by Gerald Oster. The theme of the article is that the processing of binaural beats involves different neural pathways than conventional hearing. Research inspired by the article went on to show that binaural beats can induce a "frequency-following response" (FFR) in brainwave activity.
 	</longdescription>
