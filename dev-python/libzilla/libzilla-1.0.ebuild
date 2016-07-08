@@ -20,4 +20,5 @@ IUSE=""
 RDEPEND=""
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
-	dev-python/docopt[${PYTHON_USEDEP}]"
+	dev-python/docopt[${PYTHON_USEDEP}]
+	dev-python/requests[${PYTHON_USEDEP}]"
