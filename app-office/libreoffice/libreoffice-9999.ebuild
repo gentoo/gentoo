@@ -57,7 +57,7 @@ unset DEV_URI
 # These are bundles that can't be removed for now due to huge patchsets.
 # If you want them gone, patches are welcome.
 ADDONS_SRC=(
-	"${ADDONS_URI}/ce12af00283eb90d9281956524250d6e-xmlsec1-1.2.20.tar.gz" # modifies source code
+	"${ADDONS_URI}/0fb1bb06d60d7708abc4797008209bcc-xmlsec1-1.2.22.tar.gz" # modifies source code
 	"collada? ( ${ADDONS_URI}/4b87018f7fff1d054939d19920b751a0-collada2gltf-master-cb1d97788a.tar.bz2 )"
 	"java? ( ${ADDONS_URI}/17410483b5b5f267aa18b7e00b65e6e0-hsqldb_1_8_0.zip )"
 	# no release for 8 years, should we package it?
@@ -241,7 +241,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 
 PATCHES=(
 	# not upstreamable stuff
-	"${FILESDIR}/${PN}-5.2-system-pyuno.patch"
+	"${FILESDIR}/${PN}-5.3-system-pyuno.patch"
 )
 
 CHECKREQS_MEMORY="512M"
@@ -424,7 +424,6 @@ src_configure() {
 		--disable-epm \
 		--disable-fetch-external \
 		--disable-gstreamer-0-10 \
-		--disable-hardlink-deliver \
 		--disable-online-update \
 		--disable-report-builder \
 		--with-alloc=$(use jemalloc && echo "jemalloc" || echo "system") \
@@ -443,7 +442,6 @@ src_configure() {
 		--without-myspell-dicts \
 		--without-help \
 		--with-helppack-integration \
-		--without-sun-templates \
 		--without-system-sane \
 		$(use_enable bluetooth sdremote-bluetooth) \
 		$(use_enable coinmp) \
