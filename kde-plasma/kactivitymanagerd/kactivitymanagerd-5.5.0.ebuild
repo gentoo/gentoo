@@ -33,7 +33,7 @@ DEPEND="${COMMON_DEPEND}
 "
 RDEPEND="${COMMON_DEPEND}
 	!<kde-base/kactivities-4.13.3-r1:4[-minimal(-)]
-	!kde-base/kactivitymanagerd
+	!kde-plasma/kactivitymanagerd:4
 	!<kde-frameworks/kactivities-5.20.0
 "
 PDEPEND="
