@@ -21,6 +21,7 @@ RDEPEND="virtual/opengl
 		x11-libs/libdrm
 		x11-libs/pixman
 		x11-libs/libxkbcommon
+		x11-misc/xkeyboard-config
 		dev-libs/libinput
 		dev-libs/wayland
 		X? ( x11-libs/libX11
@@ -32,7 +33,7 @@ RDEPEND="virtual/opengl
 
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
-		dev-libs/wayland-protocols"
+	dev-libs/wayland-protocols"
 
 src_configure() {
 	local mycmakeargs=(
@@ -41,10 +42,10 @@ src_configure() {
 
 		-DWLC_BUILD_STATIC=$(usex static-libs)
 
+		-DWLC_X11_SUPPORT=$(usex X)
+
 		$(cmake-utils_use_find_package systemd Systemd)
 		$(cmake-utils_use_find_package systemd Dbus)
-		$(cmake-utils_use_find_package X X11)
-		$(cmake-utils_use_find_package X XCB)
 	)
 
 	cmake-utils_src_configure
