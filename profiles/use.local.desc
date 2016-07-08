@@ -3278,7 +3278,6 @@ kde-apps/kdenetwork-meta:ppp - Enable support for net-dialup/ppp.
 kde-apps/kdenetwork-meta:telepathy - Enable build of kde-apps/plasma-telepathy-meta, otherwise kde-apps/kopete.
 kde-apps/kdenlive:gles2 - Use GLES 2.0 or later instead of full OpenGL
 kde-apps/kdepim-common-libs:google - Google service integration via net-libs/libkgapi
-kde-apps/kdepim-runtime:facebook - Facebook service integration via net-libs/libkfbapi
 kde-apps/kdepim-runtime:google - Google service integration via net-libs/libkgapi
 kde-apps/kdepimlibs:prison - Enable support for QRcodes in contacts
 kde-apps/kdeutils-meta:floppy - Install kde-apps/kfloppy to format and create DOS or ext2fs filesystems in a floppy.
