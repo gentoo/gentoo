@@ -11248,7 +11248,7 @@ kde-apps/kdebase-kioslaves 15.12.3 16.04.2: KDE VFS framework - kioslaves presen
 kde-apps/kdebase-menu 15.12.3 16.04.2: KDE Menu query tool
 kde-apps/kdebase-menu-icons 15.12.3 16.04.2: KDE menu icons
 kde-apps/kdebase-meta 15.12.3 16.04.2: Transitional package to pull in plasma-meta plus basic applications
-kde-apps/kdebase-runtime-meta 4.14.3 15.12.3 16.04.2: Merge this to pull in all kdebase-runtime-derived packages
+kde-apps/kdebase-runtime-meta 15.12.3 16.04.2: Merge this to pull in all kdebase-runtime-derived packages
 kde-apps/kdebindings-meta 16.04.2: KDE bindings - merge this to pull in all kdebindings-derived packages
 kde-apps/kdebugdialog 15.12.3 16.04.2: Dialog box for setting preferences for debug output
 kde-apps/kdebugsettings 15.12.3 16.04.2: Application to enable/disable qCDebug
