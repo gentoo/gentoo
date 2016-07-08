@@ -48,6 +48,7 @@ RDEPEND="
 	iguanair? ( app-misc/iguanaIR )
 	ftdi? ( dev-embedded/libftdi:0 )
 	inputlirc? ( app-misc/inputlircd )
+	virtual/libusb:0
 "
 
 src_configure() {
@@ -72,8 +73,6 @@ src_install() {
 
 	if use doc ; then
 		dodoc -r doc/html
-		insinto /usr/share/doc/${PF}/images
-		doins doc/images/*
 	fi
 
 	keepdir /etc/lirc

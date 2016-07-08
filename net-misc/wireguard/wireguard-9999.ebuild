@@ -51,7 +51,6 @@ src_compile() {
 
 src_install() {
 	dodoc README.md
-	docompress -x /usr/share/doc/${PF}/examples
 	dodoc -r contrib/examples
 	linux-mod_src_install
 	emake DESTDIR="${D}" PREFIX="${EPREFIX}/usr" -C src/tools install
@@ -66,4 +65,25 @@ pkg_postinst() {
 	ewarn
 	ewarn "    team@wireguard.io    security@wireguard.io"
 	ewarn
+
+	einfo
+	einfo "After installing WireGuard, if you'd like to try sending some packets through"
+	einfo "WireGuard, you may use, for testing purposes only, the insecure client.sh"
+	einfo "test example script:"
+	einfo
+	einfo "  \$ bzcat /usr/share/doc/${PF}/examples/ncat-client-server/client.sh.bz2 | sudo bash -"
+	einfo
+	einfo "This will automatically setup interface wg0, through a very insecure transport"
+	einfo "that is only suitable for demonstration purposes. You can then try loading the"
+	einfo "hidden website or sending pings:"
+	einfo
+	einfo "  \$ chromium http://192.168.4.1"
+	einfo "  \$ ping 192.168.4.1"
+	einfo
+	einfo "If you'd like to redirect your internet traffic, you can run it with the"
+	einfo "\"default-route\" argument. You may not use this server for any abusive or illegal"
+	einfo "purposes. It is for quick testing only."
+	einfo
+	einfo "More info on getting started can be found at: https://www.wireguard.io/quickstart/"
+	einfo
 }
