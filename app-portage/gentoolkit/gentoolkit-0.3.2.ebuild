@@ -1,17 +1,17 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
+EAPI="6"
 
-PYTHON_COMPAT=(python{2_7,3_3} pypy)
+PYTHON_COMPAT=(python{2_7,3_3,3_4,3_5} pypy)
 PYTHON_REQ_USE="xml(+),threads(+)"
 
-inherit distutils-r1
+inherit distutils-r1 eutils
 
 DESCRIPTION="Collection of administration scripts for Gentoo"
 HOMEPAGE="https://www.gentoo.org/proj/en/portage/tools/index.xml"
-SRC_URI="mirror://gentoo/${P}.tar.gz"
+SRC_URI="http://dev.gentoo.org/~dolsen/releases/gentoolkit/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -27,33 +27,15 @@ RDEPEND="${DEPEND}
 	sys-apps/gentoo-functions
 	sys-apps/grep"
 
-PATCHES=(
-	"${FILESDIR}"/${PV}-revdep-rebuild-py-504654-1.patch
-	"${FILESDIR}"/${PV}-revdep-rebuild-py-504654-2.patch
-)
-
 python_prepare_all() {
 	python_setup
 	echo VERSION="${PVR}" "${PYTHON}" setup.py set_version
 	VERSION="${PVR}" "${PYTHON}" setup.py set_version
-	mv ./bin/revdep-rebuild{,.py} || die
 	distutils-r1_python_prepare_all
 }
 
 python_install_all() {
 	distutils-r1_python_install_all
-
-	# Rename the python versions of revdep-rebuild, since we are not ready
-	# to switch to the python version yet. Link /usr/bin/revdep-rebuild to
-	# revdep-rebuild.sh. Leaving the python version available for potential
-	# testing by a wider audience.
-	dosym revdep-rebuild.sh /usr/bin/revdep-rebuild
-
-	# TODO: Fix this as it is now a QA violation
-	# Create cache directory for revdep-rebuild
-	keepdir /var/cache/revdep-rebuild
-	use prefix || fowners root:0 /var/cache/revdep-rebuild
-	fperms 0700 /var/cache/revdep-rebuild
 
 	# remove on Gentoo Prefix platforms where it's broken anyway
 	if use prefix; then
@@ -67,6 +49,10 @@ python_install_all() {
 }
 
 pkg_postinst() {
+	# Create cache directory for revdep-rebuild
+	mkdir -p -m 0755 "${EROOT%/}"/var/cache
+	mkdir -p -m 0700 "${EROOT%/}"/var/cache/revdep-rebuild
+
 	# Only show the elog information on a new install
 	if [[ ! ${REPLACING_VERSIONS} ]]; then
 		elog
