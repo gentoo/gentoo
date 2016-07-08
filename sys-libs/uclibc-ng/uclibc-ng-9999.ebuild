@@ -309,7 +309,7 @@ src_configure() {
 	if [[ ${target} == "i386" ]]; then
 		[[ ${CTARGET} == i[456]86* ]] && cpu="${CTARGET:1:1}86"
 		sed -i -e "s|default CONFIG_686|default CONFIG_${cpu:-486}|" \
-			extra/Configs/Config.i385 || die
+			extra/Configs/Config.i386 || die
 	fi
 
 	# For arm
