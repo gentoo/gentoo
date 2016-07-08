@@ -1,0 +1,79 @@
+diff -Naur a/higan/GNUmakefile b/higan/GNUmakefile
+--- a/higan/GNUmakefile	2016-06-17 18:56:06.414883957 +0200
++++ b/higan/GNUmakefile	2016-06-17 18:56:19.075903050 +0200
+@@ -4,7 +4,7 @@
+ # target := loki
+ # console := true
+ 
+-flags += -I. -I.. -O3
++flags += -I. -I..
+ objects := libco audio video resource
+ 
+ # profile-guided optimization mode
+@@ -31,7 +31,7 @@
+ else ifeq ($(platform),macosx)
+   flags += -march=native
+ else ifneq ($(filter $(platform),linux bsd),)
+-  flags += -march=native -fopenmp
++  flags += -fopenmp
+   link += -fopenmp
+   link += -Wl,-export-dynamic
+   link += -lX11 -lXext
+@@ -42,9 +42,9 @@
+ compile = \
+   $(strip \
+     $(if $(filter %.c,$<), \
+-      $(compiler) $(cflags) $(flags) $1 -c $< -o $@, \
++      $(compiler) $(cflags) $(flags) $(CFLAGS) $1 -c $< -o $@, \
+       $(if $(filter %.cpp,$<), \
+-        $(compiler) $(cppflags) $(flags) $1 -c $< -o $@ \
++        $(compiler) $(cppflags) $(flags) $(CXXFLAGS) $1 -c $< -o $@ \
+       ) \
+     ) \
+   )
+
+--- a/higan/target-tomoko/GNUmakefile	2016-06-17 19:10:27.729182818 +0200
++++ b/higan/target-tomoko/GNUmakefile	2016-06-17 19:14:34.034554246 +0200
+@@ -45,10 +45,10 @@
+ objects := $(patsubst %,obj/%.o,$(objects))
+ 
+ obj/ruby.o: ../ruby/ruby.cpp $(call rwildcard,../ruby/)
+-	$(compiler) $(rubyflags) -c $< -o $@
++	$(compiler) $(rubyflags) $(CXXFLAGS) -c $< -o $@
+ 
+ obj/hiro.o: ../hiro/hiro.cpp $(call rwildcard,../hiro/)
+-	$(compiler) $(hiroflags) -c $< -o $@
++	$(compiler) $(hiroflags) $(CXXFLAGS) -c $< -o $@
+ 
+ obj/ui-tomoko.o: $(ui)/tomoko.cpp $(call rwildcard,$(ui)/)
+ obj/ui-program.o: $(ui)/program/program.cpp $(call rwildcard,$(ui)/)
+@@ -64,7 +64,7 @@
+ 
+ # targets
+ build: $(objects)
+-	$(strip $(compiler) -o out/$(name) $(objects) $(link))
++	$(strip $(CXX) $(CXXFLAGS) -o out/$(name) $(objects) $(link))
+ ifeq ($(platform),macosx)
+ 	@if [ -d out/$(name).app ]; then rm -r out/$(name).app; fi
+ 	mkdir -p out/$(name).app/Contents/MacOS/
+
+--- a/icarus/GNUmakefile	2016-07-05 16:42:09.198091772 +0200
++++ b/icarus/GNUmakefile	2016-07-05 16:48:14.388351427 +0200
+@@ -2,7 +2,7 @@
+ include ../hiro/GNUmakefile
+ 
+ name := icarus
+-flags += -I.. -O3
++flags += -I.. $(CXXFLAGS)
+ link +=
+ 
+ ifeq ($(platform),windows)
+@@ -14,7 +14,7 @@
+ objects += $(if $(call streq,$(platform),windows),obj/resource.o)
+ 
+ all: $(objects)
+-	$(call unique,$(compiler) -o out/$(name) $(objects) $(link) $(hirolink))
++	$(call unique,$(compiler) -o out/$(name) $(objects) $(link) $(hirolink) $(LDFLAGS))
+ ifeq ($(platform),macosx)
+ 	@if [ -d out/$(name).app ]; then rm -r out/$(name).app; fi
+ 	mkdir -p out/$(name).app/Contents/MacOS/

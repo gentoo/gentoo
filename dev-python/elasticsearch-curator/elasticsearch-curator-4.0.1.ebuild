@@ -2,12 +2,12 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 PYTHON_COMPAT=( python{2_7,3_4,3_5} )
 
 MY_PN="curator"
-ES_VERSION="2.2.0"
+ES_VERSION="2.3.3"
 
 inherit distutils-r1
 
@@ -22,16 +22,17 @@ KEYWORDS="~amd64 ~x86"
 IUSE="doc test"
 
 RDEPEND="
-	>=dev-python/elasticsearch-py-1.8.0[${PYTHON_USEDEP}]
-	<dev-python/elasticsearch-py-2.4.0[${PYTHON_USEDEP}]
+	>=dev-python/elasticsearch-py-2.3.0[${PYTHON_USEDEP}]
+	<dev-python/elasticsearch-py-5.1.0[${PYTHON_USEDEP}]
 	>=dev-python/click-3.3[${PYTHON_USEDEP}]
 	dev-python/certifi[${PYTHON_USEDEP}]
 	>=dev-python/urllib3-1.8.3[${PYTHON_USEDEP}]"
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 	dev-python/sphinx[${PYTHON_USEDEP}]
+	>=dev-python/pyyaml-3.10[${PYTHON_USEDEP}]
 	test? ( ${RDEPEND}
 		|| ( virtual/jre:1.8 virtual/jre:1.7 )
-		~dev-python/mock-1.0.1[${PYTHON_USEDEP}]
+		dev-python/mock[${PYTHON_USEDEP}]
 		dev-python/nose[${PYTHON_USEDEP}]
 		dev-python/coverage[${PYTHON_USEDEP}]
 		dev-python/nosexcover[${PYTHON_USEDEP}]
@@ -83,6 +84,12 @@ python_test() {
 	pkill -F ${PID}
 }
 
+python_prepare_all() {
+	# avoid downloading from net
+	sed -e '/^intersphinx_mapping/,+3d' -i docs/conf.py || die
+	distutils-r1_python_prepare_all
+}
+
 python_compile_all() {
 	cd docs || die
 	emake man $(usex doc html "")
@@ -92,7 +99,6 @@ python_install_all() {
 	use doc && local HTML_DOCS=( docs/_build/html/. )
 	doman docs/_build/man/*
 	distutils-r1_python_install_all
-
 }
 
 pkg_postinst() {
