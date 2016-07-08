@@ -6430,17 +6430,17 @@ dev-perl/Time-Stopwatch 1.0.0: Use tied scalars as timers
 dev-perl/Time-TAI64 2.110.0-r1: Time manipulation in the TAI64* formats
 dev-perl/Time-TZOffset 0.40.0: Show timezone offset strings like +0900
 dev-perl/TimeDate 2.300.0: A Date/Time Parsing Perl Module
-dev-perl/Tk 804.32.0-r1 804.33.0: A Perl Module for Tk
+dev-perl/Tk 804.33.0: A Perl Module for Tk
 dev-perl/Tk-CursorControl 0.400.0-r1: Manipulate the mouse cursor programmatically
 dev-perl/Tk-JPEG-Lite 2.14.30-r1 2.15.0: lite JPEG loader for Tk::Photo
 dev-perl/Tk-TableMatrix 1.230.0-r1: Perl module for Tk-TableMatrix
-dev-perl/Tree-DAG_Node 1.60.0-r1 1.240.0 1.270.0 1.290.0: (Super)class for representing nodes in a tree
-dev-perl/Tree-Simple 1.180.0-r1 1.250.0 1.270.0: A simple tree object
+dev-perl/Tree-DAG_Node 1.60.0-r1 1.290.0: (Super)class for representing nodes in a tree
+dev-perl/Tree-Simple 1.180.0-r1 1.270.0 1.290.0: A simple tree object
 dev-perl/Try-Tiny 0.220.0 0.240.0: Minimal try/catch with proper localization of $@
 dev-perl/Type-Tiny 1.0.5: tiny, yet Moo(se)-compatible type constraint
 dev-perl/Type-Tiny-XS 0.12.0: provides an XS boost for some of Type::Tiny's built-in type constraints
 dev-perl/Types-Serialiser 1.0.0: simple data types for common serialisation formats
-dev-perl/UNIVERSAL-can 1.201.207.260-r1 1.201.401.240 1.201.403.280: Hack around people calling UNIVERSAL::can() as a function
+dev-perl/UNIVERSAL-can 1.201.401.240 1.201.403.280: Hack around people calling UNIVERSAL::can() as a function
 dev-perl/UNIVERSAL-isa 1.201.207.260-r1 1.201.506.140: Attempt to recover from people calling UNIVERSAL::isa as a function
 dev-perl/UNIVERSAL-moniker 0.80.0-r1: adds a moniker to every class or module
 dev-perl/UNIVERSAL-require 0.160.0 0.180.0: UNIVERSAL::require - require() modules from a variable
@@ -6452,13 +6452,13 @@ dev-perl/UUID 0.50.0 0.250.0: Perl extension for using UUID interfaces as define
 dev-perl/UUID-Tiny 1.40.0: Pure Perl UUID Support With Functional Interface
 dev-perl/UltraDNS 0.60.0-r1: Client API for the NeuStar UltraDNS Transaction Protocol
 dev-perl/Unicode-EastAsianWidth 1.330.0-r1: East Asian Width properties
-dev-perl/Unicode-LineBreak 2015.60.0 2016.3.0: UAX #14 Unicode Line Breaking Algorithm
+dev-perl/Unicode-LineBreak 2016.3.0: UAX #14 Unicode Line Breaking Algorithm
 dev-perl/Unicode-Map 0.112.0-r1: Map charsets from and to utf16 code
 dev-perl/Unicode-Map8 0.130.0: Convert between most 8bit encodings
 dev-perl/Unicode-MapUTF8 1.110.0-r1: Conversions to and from arbitrary character sets and UTF8
 dev-perl/Unicode-String 2.90.0-r1: String manipulation for Unicode strings
 dev-perl/Unicode-Stringprep 1.105.0-r1: Preparation of Internationalized Strings (RFC 3454)
-dev-perl/Unicode-UTF8 0.580.0 0.590.0 0.600.0: Encoding and decoding of UTF-8 encoding form
+dev-perl/Unicode-UTF8 0.600.0: Encoding and decoding of UTF-8 encoding form
 dev-perl/Unicode-UTF8simple 1.60.0: Conversions to/from UTF8 from/to charactersets
 dev-perl/Unix-Getrusage 0.030.0: Perl interface to the Unix getrusage system call
 dev-perl/Unix-Syslog 1.100.0-r1: A Perl module which provides access to the system logger
@@ -11449,7 +11449,6 @@ kde-apps/zeroconf-ioslave 15.12.3 16.04.2: A DNSSD (DNS Service Discovery - part
 kde-base/baloo 4.14.3: Next generation of the Nepomuk project
 kde-base/freespacenotifier 4.11.22: A module that monitors free disk space on the home dir
 kde-base/kactivities 4.13.3-r2: KDE Activity Manager
-kde-base/kactivitymanagerd 4.13.3-r1: KDE Activity Manager Daemon
 kde-base/katepart 4.14.3: KDE Editor KPart
 kde-base/kcheckpass 4.11.22-r1: A simple password checker, used by any software in need of user authentication
 kde-base/kcminit 4.11.22: KCMInit - runs startups initialization for Control Modules
