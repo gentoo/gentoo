@@ -16,7 +16,6 @@ IUSE="+wallpapers"
 # These provide the most minimal KDE desktop.
 RDEPEND="
 	$(add_kdebase_dep kcminit)
-	$(add_kdeapps_dep kdebase-runtime-meta)
 	$(add_kdeapps_dep kfmclient)
 	$(add_kdeapps_dep knotify)
 	$(add_kdeapps_dep kreadconfig)
@@ -29,6 +28,7 @@ RDEPEND="
 	$(add_kdeapps_dep plasma-apps)
 	$(add_kdebase_dep plasma-workspace)
 	$(add_kdebase_dep systemsettings)
+	kde-apps/kdebase-runtime-meta:5
 	x11-apps/mkfontdir
 	x11-apps/xmessage
 	x11-apps/xprop
