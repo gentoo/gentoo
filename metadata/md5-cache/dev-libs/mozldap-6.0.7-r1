@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=>=dev-libs/nss-3.11.4 >=dev-libs/nspr-4.0.1 >=dev-libs/svrcore-4.0.0 sasl? ( dev-libs/cyrus-sasl ) virtual/pkgconfig !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) ~sys-devel/autoconf-2.13 >=sys-devel/libtool-2.4
+DESCRIPTION=Mozilla LDAP C SDK
+EAPI=6
+HOMEPAGE=http://wiki.mozilla.org/LDAP_C_SDK
+IUSE=ipv6 debug +sasl
+KEYWORDS=~amd64 ~x86
+LICENSE=MPL-1.1 GPL-2 LGPL-2.1
+RDEPEND=>=dev-libs/nss-3.11.4 >=dev-libs/nspr-4.0.1 >=dev-libs/svrcore-4.0.0 sasl? ( dev-libs/cyrus-sasl )
+SLOT=0
+SRC_URI=ftp://ftp.mozilla.org/pub/mozilla.org/directory/c-sdk/releases/v6.0.7/src/mozldap-6.0.7.tar.gz
+_eclass_exported_funcs=src_prepare:- src_configure:- src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	eutils	792f83d5ec9536cb5ccef375469d8bde	libtool	4890219c51da247200223277f993e054	multilib	d062ae4ba2fc40a19c11de2ad89b6616	toolchain-funcs	82165206dedb2075f9a0fb8f9b1f9441	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
+_md5_=74c8c07810d17280efaf98835f0a017b
