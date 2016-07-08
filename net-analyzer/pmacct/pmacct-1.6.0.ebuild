@@ -21,7 +21,7 @@ RDEPEND="
 	net-libs/libpcap
 	geoip? ( dev-libs/geoip )
 	geoipv2? ( dev-libs/libmaxminddb )
-        mongodb? (
+	mongodb? (
 		>=dev-libs/mongo-c-driver-0.8.1-r1
 		<dev-libs/mongo-c-driver-0.98
 	)
