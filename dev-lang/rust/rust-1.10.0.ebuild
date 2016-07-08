@@ -23,21 +23,16 @@ else
 	KEYWORDS="~amd64 ~x86"
 fi
 
-# from src/snapshots.txt
-RUST_SNAPSHOT_DATE="2016-02-17"
-RUST_SNAPSHOT_SRCHASH="4d3eebf"
-RUST_SNAPSHOT_HASH_amd64="d29b7607d13d64078b6324aec82926fb493f59ba"
-RUST_SNAPSHOT_HASH_x86="5f194aa7628c0703f0fd48adc4ec7f3cc64b98c7"
-RUST_STAGE0="rust-stage0-${RUST_SNAPSHOT_DATE}-${RUST_SNAPSHOT_SRCHASH}"
-RUST_STAGE0_amd64="${RUST_STAGE0}-linux-x86_64-${RUST_SNAPSHOT_HASH_amd64}"
-RUST_STAGE0_x86="${RUST_STAGE0}-linux-i386-${RUST_SNAPSHOT_HASH_x86}"
+STAGE0_VERSION="1.$(($(get_version_component_range 2) - 1)).0"
+RUST_STAGE0_amd64="rustc-${STAGE0_VERSION}-x86_64-unknown-linux-gnu"
+RUST_STAGE0_x86="rustc-${STAGE0_VERSION}-i686-unknown-linux-gnu"
 
 DESCRIPTION="Systems programming language from Mozilla"
 HOMEPAGE="http://www.rust-lang.org/"
 
-SRC_URI="http://static.rust-lang.org/dist/${SRC} -> rustc-${PV}-src.tar.gz
-	amd64? ( http://static.rust-lang.org/stage0-snapshots/${RUST_STAGE0_amd64}.tar.bz2 )
-	x86? ( http://static.rust-lang.org/stage0-snapshots/${RUST_STAGE0_x86}.tar.bz2 )
+SRC_URI="https://static.rust-lang.org/dist/${SRC} -> rustc-${PV}-src.tar.gz
+	amd64? ( https://static.rust-lang.org/dist/${RUST_STAGE0_amd64}.tar.gz )
+	x86? ( https://static.rust-lang.org/dist/${RUST_STAGE0_x86}.tar.gz )
 "
 
 LICENSE="|| ( MIT Apache-2.0 ) BSD-1 BSD-2 BSD-4 UoI-NCSA"
@@ -65,7 +60,7 @@ src_unpack() {
 	mkdir "${MY_P}/dl" || die
 	local stagename="RUST_STAGE0_${ARCH}"
 	local stage0="${!stagename}"
-	cp "${DISTDIR}/${stage0}.tar.bz2" "${MY_P}/dl/" || die "cp stage0"
+	cp "${DISTDIR}/${stage0}.tar.gz" "${MY_P}/dl/" || die "cp stage0"
 }
 
 src_prepare() {
