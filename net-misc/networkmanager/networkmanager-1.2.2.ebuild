@@ -117,6 +117,9 @@ src_prepare() {
 	# Don't build examples, they are not needed and can cause build failure
 	sed -e '/^\s*examples\s*\\/d' -i Makefile.{am,in} || die
 
+	# Upstream patches from 1.2 branch
+	eapply "${FILESDIR}/${P}-sleep-monitor-upower-include.patch" #588278
+
 	use vala && vala_src_prepare
 	gnome2_src_prepare
 }
