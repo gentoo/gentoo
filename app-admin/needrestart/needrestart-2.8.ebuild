@@ -30,6 +30,10 @@ RDEPEND="
 DEPEND="${RDEPEND}
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-parallelmake.patch # https://bugs.gentoo.org/show_bug.cgi?id=588216
+)
+
 src_install() {
 	default
 	doman man/*.1
