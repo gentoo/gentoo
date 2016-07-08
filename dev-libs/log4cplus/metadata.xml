@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+	<!-- maintainer-needed -->
 	<use>
 		<flag name="working-locale">Use C++'s std::locale for wchar_t &lt;-&gt; char conversions. See also log4cplus's unicode.txt documentation</flag>
 		<flag name="working-c-locale">Use the C99 locale facilities for wchar_t &lt;-&gt; char conversions. See also log4cplus's unicode.txt documentation </flag>
