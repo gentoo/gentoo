@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-python/notify-python[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] gtk? ( dev-python/pygtk:2[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) nls? ( sys-devel/gettext ) python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7[sqlite] ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
+DESCRIPTION=Clean junk to free disk space and to maintain privacy
+EAPI=6
+HOMEPAGE=https://www.bleachbit.org
+IUSE=+gtk nls python_targets_python2_7 linguas_ar linguas_ast linguas_be linguas_bg linguas_bn linguas_bs linguas_ca linguas_cs linguas_da linguas_de linguas_el linguas_en_AU linguas_en_CA linguas_en_GB linguas_eo linguas_es linguas_et linguas_eu linguas_fa linguas_fi linguas_fo linguas_fr linguas_gl linguas_he linguas_hi linguas_hr linguas_hu linguas_hy linguas_ia linguas_id linguas_it linguas_ja linguas_ko linguas_ku linguas_ky linguas_lt linguas_lv linguas_ms linguas_my linguas_nb linguas_nds linguas_nl linguas_nn linguas_pl linguas_pt_BR linguas_pt linguas_ro linguas_ru linguas_se linguas_si linguas_sk linguas_sl linguas_sr linguas_sv linguas_ta linguas_te linguas_th linguas_tr linguas_ug linguas_uk linguas_uz linguas_vi linguas_zh_CN linguas_zh_TW
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=dev-python/notify-python[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] gtk? ( dev-python/pygtk:2[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7[sqlite] ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
+REQUIRED_USE=|| ( python_targets_python2_7 )
+SLOT=0
+SRC_URI=mirror://sourceforge/bleachbit/bleachbit-1.12.tar.bz2
+_eclass_exported_funcs=src_prepare:distutils-r1 src_configure:distutils-r1 src_compile:distutils-r1 src_test:distutils-r1 src_install:distutils-r1
+_eclasses_=distutils-r1	674dae153419b2200ae54e879cc65b57	eutils	792f83d5ec9536cb5ccef375469d8bde	l10n	e26ea0642846685782f1813642e7ff0f	multibuild	742139c87a9fa3766f0c2b155e5522bf	multilib	d062ae4ba2fc40a19c11de2ad89b6616	multiprocessing	e32940a7b2a9992ad217eccddb84d548	python-r1	0f6937650a475d673baa5d0c8c0b37b3	python-utils-r1	c0ed2a2f233d3af6dd556048695dc5cb	toolchain-funcs	82165206dedb2075f9a0fb8f9b1f9441	xdg-utils	e2b2bd56125ce8cf59ce30c642b59d48
+_md5_=0de3630a138bcdd88bdda5fad05f9118
