@@ -51,6 +51,8 @@ src_compile() {
 
 src_install() {
 	dodoc README.md
+	docompress -x /usr/share/doc/${PF}/examples
+	dodoc -r contrib/examples
 	linux-mod_src_install
 	emake DESTDIR="${D}" PREFIX="${EPREFIX}/usr" -C src/tools install
 }
