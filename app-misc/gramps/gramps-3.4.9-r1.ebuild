@@ -4,7 +4,6 @@
 
 EAPI=6
 PYTHON_COMPAT=( python2_7 )
-GCONF_DEBUG="no"
 
 inherit gnome2 python-single-r1
 

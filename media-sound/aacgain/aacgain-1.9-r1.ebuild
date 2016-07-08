@@ -46,7 +46,7 @@ src_unpack() {
 }
 
 PATCHES=(
-	"${FILESDIR}"/${PN}/mp4v2.patch
+	${PN}/mp4v2.patch
 	"${FILESDIR}"/${P}-patch-dotdot.patch
 )
 
