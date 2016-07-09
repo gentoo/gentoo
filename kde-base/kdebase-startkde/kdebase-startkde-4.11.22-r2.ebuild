@@ -9,7 +9,7 @@ KMNOMODULE="true"
 inherit kde4-meta prefix
 
 DESCRIPTION="Startkde script, which starts a complete KDE session, and associated scripts"
-KEYWORDS="amd64 ~arm x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~arm ~x86 ~amd64-linux ~x86-linux"
 IUSE="crash-reporter +handbook +wallpapers"
 
 # The KDE apps called from the startkde script.
@@ -70,7 +70,7 @@ RDEPEND="
 	x11-apps/xset
 	crash-reporter? ( $(add_kdeapps_dep drkonqi ) )
 	handbook? ( kde-apps/khelpcenter:* )
-	wallpapers? ( $(add_kdeapps_dep kde-wallpapers '' 15.08.3) )
+	wallpapers? ( kde-apps/kde-wallpapers:* )
 "
 
 KMEXTRACTONLY="
@@ -82,6 +82,7 @@ KMEXTRACTONLY="
 PATCHES=(
 	"${FILESDIR}/gentoo-startkde4-4.patch"
 	"${FILESDIR}/${PN}-kscreen.patch"
+	"${FILESDIR}/${PN}-kwalletd-pam.patch"
 )
 
 src_prepare() {
