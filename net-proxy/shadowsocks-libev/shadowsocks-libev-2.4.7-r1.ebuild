@@ -20,7 +20,7 @@ IUSE="debug +openssl polarssl +system-libs"
 DEPEND="openssl? ( dev-libs/openssl:= )
 	polarssl? ( net-libs/polarssl )
 	<sys-kernel/linux-headers-4.5
-	system-libs? ( 
+	system-libs? (
 		dev-libs/libev
 		dev-libs/libsodium
 		net-libs/udns
