@@ -40,4 +40,3 @@ multilib_src_configure() {
 	gstreamer_multilib_src_configure \
 		--with-hls-crypto=nettle
 }
-	
