@@ -19,7 +19,7 @@ SLOT="0" # add subslot if libnm-util.so.2 or libnm-glib.so.4 bumps soname versio
 
 IUSE="bluetooth connection-sharing consolekit +dhclient gnutls +introspection \
 kernel_linux +nss +modemmanager ncurses +ppp resolvconf selinux systemd teamd test \
-vala +wext +wifi zeroconf"
+vala +wext +wifi"
 
 REQUIRED_USE="
 	modemmanager? ( ppp )
@@ -59,7 +59,6 @@ COMMON_DEPEND="
 	systemd? ( >=sys-apps/systemd-209:0= )
 	!systemd? ( || ( sys-power/upower sys-power/upower-pm-utils ) )
 	teamd? ( >=net-misc/libteam-1.9 )
-	zeroconf? ( net-dns/avahi:=[autoipd] )
 "
 RDEPEND="${COMMON_DEPEND}
 	consolekit? ( sys-auth/consolekit )
