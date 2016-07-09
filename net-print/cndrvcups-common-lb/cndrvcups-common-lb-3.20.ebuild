@@ -10,7 +10,7 @@ SOURCES_NAME="Linux_UFRII_PrinterDriver_V${MY_PV}_uk_EN"
 
 DESCRIPTION="Common files for Canon drivers"
 HOMEPAGE="http://support-au.canon.com.au/contents/AU/EN/0100270808.html"
-SRC_URI="http://pdisp01.c-wss.com/gdl/WWUFORedirectTarget.do?id=MDEwMDAwMjcwODEx&cmp=ABS&lang=EN -> ${SOURCES_NAME}.tar.gz"
+SRC_URI="http://pdisp01.c-wss.com/gdl/WWUFORedirectTarget.do?id=MDEwMDAwMjcwODE0&cmp=ABS&lang=EN -> ${SOURCES_NAME}.tar.gz"
 
 LICENSE="Canon-UFR-II GPL-2 MIT"
 SLOT="0"
@@ -28,7 +28,7 @@ RDEPEND="
 "
 DEPEND="${DEPEND}"
 
-S="${WORKDIR}/${SOURCES_NAME}/Sources/${P/-lb/}"
+S="${WORKDIR}/${SOURCES_NAME}/Sources/${P/-lb-${PV}/-3.60}"
 
 # Don't raise a fuss over pre-built binaries
 QA_PREBUILT="
@@ -47,7 +47,7 @@ QA_SONAME="/usr/$(get_abi_LIBDIR x86)/libcaiousb.so.1.0.0"
 src_unpack() {
 	unpack ${A}
 	cd "${WORKDIR}/${SOURCES_NAME}/Sources/" || die
-	unpack ./${P/-lb/}-1.tar.gz
+	unpack ./${P/-lb-${PV}/-3.60}-1.tar.gz
 }
 
 change_dir() {
@@ -75,7 +75,7 @@ src_compile() {
 	change_dir emake
 
 	# Cannot be moved to 'change_dir' as it doesn't need eautoreconf
-	( cd "${S}/c3plmod_ipc" || die ) && emake
+	( cd "${S}/c3plmod_ipc" && emake ) || die
 }
 
 src_install() {
