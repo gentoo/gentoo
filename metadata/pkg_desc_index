@@ -5310,7 +5310,7 @@ dev-perl/CQL-Parser 1.130.0: compiles CQL strings into parse trees of Node subty
 dev-perl/CSS-Minifier 0.10.0-r1: Perl extension for minifying CSS
 dev-perl/CSS-Packer 2.0.0: Another CSS minifier
 dev-perl/CSS-Squish 0.100.0-r1: Compact many CSS files into one big file
-dev-perl/Cache 2.40.0-r1: the Cache interface
+dev-perl/Cache 2.40.0-r1 2.110.0: the Cache interface
 dev-perl/Cache-Cache 1.60.0-r1 1.80.0: Generic cache interface and implementations
 dev-perl/Cache-FastMmap 1.400.0: Uses an mmaped file to act as a shared memory interprocess cache
 dev-perl/Cache-Memcached 1.300.0-r1: Perl API for memcached
