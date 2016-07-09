@@ -8,7 +8,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="NVM-Express user space tooling for Linux"
 HOMEPAGE="https://github.com/linux-nvme/nvme-cli"
-SRC_URI="https://github.com/linux-nvme/nvme-cli/archive/v${PV}.tar.gz"
+SRC_URI="https://github.com/linux-nvme/nvme-cli/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
