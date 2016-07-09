@@ -6,6 +6,8 @@ EAPI="5"
 
 inherit bash-completion-r1 eutils multilib multilib-minimal pax-utils
 
+# yes the manifest code should get fixed
+
 DESCRIPTION="Open source multimedia framework"
 HOMEPAGE="https://gstreamer.freedesktop.org/"
 SRC_URI="https://${PN}.freedesktop.org/src/${PN}/${P}.tar.xz"
