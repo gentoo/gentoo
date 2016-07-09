@@ -15,7 +15,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~ia64 ~ppc ~sparc ~x86"
 IUSE="test"
 
-CDEPEND=">=dev-lang/erlang-17.1"
+CDEPEND=">=dev-lang/erlang-17.1
+	<dev-lang/erlang-19"
 DEPEND="${CDEPEND}
 	test? ( >=dev-erlang/proper-1.1 )"
 RDEPEND="${CDEPEND}"
