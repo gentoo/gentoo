@@ -15,6 +15,7 @@ RDEPEND="
 	$(add_frameworks_dep karchive)
 	app-text/docbook-xml-dtd:4.5
 	app-text/docbook-xsl-stylesheets
+	app-text/sgml-common
 	dev-libs/libxml2:2
 	dev-libs/libxslt
 "
