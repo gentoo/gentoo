@@ -8,11 +8,11 @@ PYTHON_COMPAT=(python{2_7,3_4,3_5})
 if [[ ${PV} == 9999* ]]; then
 	EGIT_REPO_URI="https://github.com/certbot/certbot.git"
 	inherit git-r3
-	KEYWORDS=""
+	KEYWORDS="~x86"
 	S=${WORKDIR}/${P}/${PN}
 else
 	SRC_URI="https://github.com/certbot/certbot/archive/v${PV}.tar.gz -> certbot-${PV}.tar.gz"
-	KEYWORDS="~amd64 ~arm"
+	KEYWORDS="~amd64 ~arm ~x86"
 	S=${WORKDIR}/certbot-${PV}/acme
 fi
 
