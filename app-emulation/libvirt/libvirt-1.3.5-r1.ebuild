@@ -6,7 +6,7 @@ EAPI=5
 
 inherit eutils user autotools-utils linux-info systemd readme.gentoo
 
-BACKPORTS=""
+BACKPORTS="20160709" # CVE-2016-5008
 
 if [[ ${PV} = *9999* ]]; then
 	inherit git-r3
@@ -227,8 +227,7 @@ src_prepare() {
 		"${FILESDIR}"/${PN}-1.2.16-fix_paths_in_libvirt-guests_sh.patch \
 		"${FILESDIR}"/${PN}-1.3.1-fix_paths_for_apparmor.patch \
 		"${FILESDIR}"/${PN}-1.2.21-avoid_deprecated_pc_file.patch \
-		"${FILESDIR}"/${PN}-1.3.4-glibc-2.23.patch \
-		"${FILESDIR}"/${P}-CVE-2016-5008.patch
+		"${FILESDIR}"/${PN}-1.3.4-glibc-2.23.patch
 
 	[[ -n ${BACKPORTS} ]] &&
 		EPATCH_FORCE=yes EPATCH_SUFFIX="patch" \
