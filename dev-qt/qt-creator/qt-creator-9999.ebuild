@@ -5,7 +5,7 @@
 EAPI=6
 PLOCALES="cs de fr ja pl ru sl uk zh_CN zh_TW"
 
-inherit eutils l10n qmake-utils virtualx
+inherit eutils l10n qmake-utils toolchain-funcs virtualx
 
 DESCRIPTION="Lightweight IDE for C++/QML development centering around Qt"
 HOMEPAGE="http://doc.qt.io/qtcreator/"
@@ -39,7 +39,7 @@ IUSE="doc systemd test webengine webkit ${QTC_PLUGINS[@]%:*}"
 REQUIRED_USE="?? ( webengine webkit )"
 
 # minimum Qt version required
-QT_PV="5.5.0:5"
+QT_PV="5.6.0:5"
 
 RDEPEND="
 	=dev-libs/botan-1.10*[-bindist,threads]
@@ -60,9 +60,9 @@ RDEPEND="
 	>=dev-qt/qtxml-${QT_PV}
 	>=sys-devel/gdb-7.5[client,python]
 	clangcodemodel? ( >=sys-devel/clang-3.6.2:= )
-	qbs? ( >=dev-util/qbs-1.5.1 )
+	qbs? ( >=dev-util/qbs-1.5.2 )
 	systemd? ( sys-apps/systemd:= )
-	webengine? ( >=dev-qt/qtwebengine-5.6.0:5 )
+	webengine? ( >=dev-qt/qtwebengine-${QT_PV} )
 	webkit? ( >=dev-qt/qtwebkit-${QT_PV} )
 "
 DEPEND="${RDEPEND}
@@ -71,8 +71,8 @@ DEPEND="${RDEPEND}
 	doc? ( >=dev-qt/qdoc-${QT_PV} )
 	test? ( >=dev-qt/qttest-${QT_PV} )
 "
+# qt translations must be installed for qt-creator translations to work
 for x in ${PLOCALES}; do
-	# qt translations must be installed for qt-creator translations to work
 	RDEPEND+=" linguas_${x}? ( >=dev-qt/qttranslations-${QT_PV} )"
 done
 unset x
@@ -90,9 +90,12 @@ PDEPEND="
 "
 
 src_unpack() {
-	if [[ $(gcc-major-version) -lt 4 ]] || [[ $(gcc-major-version) -eq 4 && $(gcc-minor-version) -lt 7 ]]; then
-		eerror "GCC version 4.7 or later is required to build Qt Creator ${PV}"
-		die "GCC >= 4.7 required"
+	if tc-is-gcc; then
+		if [[ $(gcc-major-version) -lt 4 ]] || \
+		   [[ $(gcc-major-version) -eq 4 && $(gcc-minor-version) -lt 8 ]]; then
+			eerror "GCC version 4.8 or later is required to build Qt Creator ${PV}"
+			die "GCC >= 4.8 required"
+		fi
 	fi
 
 	if [[ ${PV} == *9999 ]]; then
