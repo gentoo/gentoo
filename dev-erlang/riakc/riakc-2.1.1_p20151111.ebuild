@@ -15,7 +15,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~ia64 ~ppc ~sparc ~x86"
 
 DEPEND=">=dev-erlang/riak_pb-2.1.0.7
-	>=dev-lang/erlang-17.1"
+	>=dev-lang/erlang-17.1
+	<dev-lang/erlang-19"
 RDEPEND="${DEPEND}"
 
 DOCS=( README.md )
