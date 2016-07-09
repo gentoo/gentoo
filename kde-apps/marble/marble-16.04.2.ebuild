@@ -6,6 +6,7 @@ EAPI=6
 
 KDE_HANDBOOK="forceoptional"
 KDE_TEST="forceoptional"
+VIRTUALX_REQUIRED="test"
 inherit kde5
 
 DESCRIPTION="Generic geographical map widget"
@@ -51,6 +52,9 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	aprs? ( dev-lang/perl )
 "
+
+# bug 588320
+RESTRICT=test
 
 src_configure() {
 	local mycmakeargs=(
