@@ -13,7 +13,7 @@ SRC_URI="https://github.com/linuxmint/cinnamon-control-center/archive/${PV}.tar.
 
 LICENSE="GPL-2+"
 SLOT="0"
-IUSE="+colord +cups debug input_devices_wacom"
+IUSE="+colord +cups debug input_devices_wacom systemd"
 KEYWORDS="~amd64 ~x86"
 
 # False positives caused by nested configure scripts
@@ -49,7 +49,8 @@ COMMON_DEPEND="
 # <gnome-color-manager-3.1.2 has file collisions with g-c-c-3.1.x
 # libgnomekbd needed only for gkbd-keyboard-display tool
 RDEPEND="${COMMON_DEPEND}
-	|| ( >=sys-apps/systemd-31 ( app-admin/openrc-settingsd sys-auth/consolekit ) )
+	systemd? ( >=sys-apps/systemd-31 )
+	!systemd? ( app-admin/openrc-settingsd sys-auth/consolekit )
 	x11-themes/adwaita-icon-theme
 	colord? ( >=gnome-extra/gnome-color-manager-3 )
 	cups? (
