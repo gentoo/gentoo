@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 inherit fdo-mime font gnome2-utils unpacker versionator
 
 MY_PV="$(get_version_component_range 1-4)"
