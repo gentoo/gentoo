@@ -31,7 +31,7 @@ COMMON_DEPEND="
 	>=gnome-extra/nm-applet-0.9.8
 	media-libs/fontconfig
 	>=net-misc/modemmanager-0.7
-	>=net-misc/networkmanager-0.9.8[modemmanager]
+	>=net-misc/networkmanager-0.9.8:=[modemmanager]
 	>=sys-auth/polkit-0.103
 	>=x11-libs/gdk-pixbuf-2.23.0:2
 	>=x11-libs/gtk+-3.4.1:3
