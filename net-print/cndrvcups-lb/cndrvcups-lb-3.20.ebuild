@@ -10,7 +10,7 @@ SOURCES_NAME="Linux_UFRII_PrinterDriver_V${MY_PV}_uk_EN"
 
 DESCRIPTION="Canon UFR II / LIPSLX Printer Driver for Linux"
 HOMEPAGE="http://support-au.canon.com.au/contents/AU/EN/0100270808.html"
-SRC_URI="http://pdisp01.c-wss.com/gdl/WWUFORedirectTarget.do?id=MDEwMDAwMjcwODEx&cmp=ABS&lang=EN -> ${SOURCES_NAME}.tar.gz"
+SRC_URI="http://pdisp01.c-wss.com/gdl/WWUFORedirectTarget.do?id=MDEwMDAwMjcwODE0&cmp=ABS&lang=EN -> ${SOURCES_NAME}.tar.gz"
 
 LICENSE="Canon-UFR-II"
 SLOT="0"
