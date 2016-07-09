@@ -26,7 +26,7 @@
 inherit eutils multilib multilib-minimal toolchain-funcs versionator xdg-utils
 
 case "${EAPI:-0}" in
-	5)
+	5|6)
 		;;
 	0|1|2|3|4)
 		die "EAPI=\"${EAPI:-0}\" is not supported anymore"
@@ -268,7 +268,11 @@ gstreamer_multilib_src_install_all() {
 
 	for plugin_dir in ${GST_PLUGINS_BUILD_DIR} ; do
 		local dir=$(gstreamer_get_plugin_dir ${plugin_dir})
-		[[ -e ${dir}/README ]] && dodoc "${dir}"/README
+		if has ${EAPI:-0} 5; then
+			[[ -e ${dir}/README ]] && dodoc "${dir}"/README
+		else
+			einstalldocs
+		fi
 	done
 
 	prune_libtool_files --modules
