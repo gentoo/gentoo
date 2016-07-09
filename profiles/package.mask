@@ -30,6 +30,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Andrew Savchenko <bircoph@gentoo.org> (09 Jul 2016)
+# Vulnerable due to wrong suid binary permissions (#345337)
+<app-cdr/xcdroast-0.98_alpha16-r2
+
 # Michael Palimaka <kensington@gentoo.org) (7 Jul 2016)
 # Requires obsolete kde-apps/kate:4. No further upstream development.
 # Masked for removal in 30 days.
@@ -218,11 +222,6 @@ app-portage/epm
 # Unmaintained, buggy and not needed by anything in the tree (#221667).
 # Removal in a month.
 dev-libs/vdk
-
-# Pacho Ramos <pacho@gentoo.org> (12 Jun 2016)
-# Upstream dead for ages, multiple bugs (#345337)
-# Removal in a month.
-app-cdr/xcdroast
 
 # Pacho Ramos <pacho@gentoo.org> (12 Jun 2016)
 # No buildable version in the tree and nobody is taking care
