@@ -10,7 +10,7 @@ inherit distutils-r1
 DESCRIPTION="Magnificent app which corrects your previous console command"
 HOMEPAGE="https://github.com/nvbn/thefuck"
 SRC_URI="https://github.com/nvbn/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 
 LICENSE="MIT"
 SLOT="0"

@@ -110,6 +110,7 @@ gcj - Enable building with gcj (The GNU Compiler for the Javatm Programming Lang
 gd - Add support for media-libs/gd (to generate graphics on the fly)
 gdbm - Add support for sys-libs/gdbm (GNU database libraries)
 geoip - Add geoip support for country and city lookup based on IPs
+geolocation - Enable physical position determination
 ggi - Add support for media-libs/libggi (non-X video api/drivers)
 gif - Add GIF image support
 gimp - Build a plugin for the GIMP

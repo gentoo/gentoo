@@ -1,8 +1,8 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=4
+EAPI=6
 inherit autotools eutils
 
 DESCRIPTION="A library for rendering Postscript documents"
@@ -11,21 +11,21 @@ SRC_URI="https://libspectre.freedesktop.org/releases/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ia64 ~mips ppc ppc64 sparc x86 ~amd64-fbsd ~x86-fbsd ~x86-interix ~amd64-linux ~x86-linux ~x64-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~x86-interix ~amd64-linux ~x86-linux ~x64-solaris"
 IUSE="debug doc static-libs"
 
 RDEPEND=">=app-text/ghostscript-gpl-8.62"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
-	doc? ( app-doc/doxygen )"
+	doc? ( app-doc/doxygen )
+"
 
 # does not actually test anything, see bug 362557
 RESTRICT="test"
 
-DOCS="NEWS README TODO"
-
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-0.2.0-interix.patch
+	default
+	eapply "${FILESDIR}"/${PN}-0.2.0-interix.patch
 	eautoreconf # need new libtool for interix
 }
 
@@ -47,5 +47,5 @@ src_compile() {
 src_install() {
 	default
 	use doc && dohtml -r doc/html/*
-	find "${ED}" -name '*.la' -exec rm -f {} +
+	prune_libtool_files
 }

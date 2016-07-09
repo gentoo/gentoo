@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=6
-inherit autotools eutils gnome2
+inherit gnome2
 
 DESCRIPTION="A frontend for gPhoto 2"
 HOMEPAGE="http://gphoto.org/proj/gtkam"

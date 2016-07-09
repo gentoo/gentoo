@@ -13,7 +13,7 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Empathy"
 
 LICENSE="GPL-2 CC-BY-SA-3.0 FDL-1.3 LGPL-2.1"
 SLOT="0"
-IUSE="debug +geoloc gnome gnome-online-accounts +map spell test +v4l"
+IUSE="debug +geolocation gnome gnome-online-accounts +map spell test +v4l"
 KEYWORDS="~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc x86 ~x86-linux"
 
 # False positives caused by nested configure scripts
@@ -52,7 +52,7 @@ COMMON_DEPEND="
 	net-libs/libsoup:2.4
 	x11-libs/libX11
 
-	geoloc? (
+	geolocation? (
 		>=app-misc/geoclue-2.1:2.0
 		>=sci-geosciences/geocode-glib-3.10 )
 	gnome-online-accounts? ( >=net-libs/gnome-online-accounts-3.5.1:= )
@@ -112,8 +112,8 @@ src_configure() {
 		--disable-ubuntu-online-accounts \
 		--enable-gst-1.0 \
 		$(use_enable debug) \
-		$(use_enable geoloc geocode) \
-		$(use_enable geoloc location) \
+		$(use_enable geolocation geocode) \
+		$(use_enable geolocation location) \
 		$(use_enable gnome-online-accounts goa) \
 		$(use_enable map) \
 		$(use_enable spell) \
