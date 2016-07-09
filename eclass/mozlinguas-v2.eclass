@@ -175,7 +175,7 @@ else
 		if [[ -n ${MOZ_L10N_URI_PREFIX} ]]; then
 			SRC_URI+=" l10n_${xflag/[_@]/-}? ( ${MOZ_L10N_URI_PREFIX}${x}${MOZ_L10N_URI_SUFFIX} )"
 		fi
-		IUSE+=" l10n_${x/[_@]/-}"
+		IUSE+=" l10n_${xflag/[_@]/-}"
 	done
 fi
 unset x xflag
@@ -348,9 +348,9 @@ mozlinguas_xpistage_langpacks() {
 mozlinguas_src_install() {
 	local x
 	mozlinguas_export
-	if [[ -n ${MOZ_GENERATE_LANGPACKS} ]]; then
+	if [[ -n ${MOZ_GENERATE_LANGPACKS} ]] && [[ -n ${mozlinguas[*]} ]]; then
 		local repopath="${WORKDIR}/${PN}-generated-langpacks"
-		mkdir -p "${repopath}"
+		mkdir -p "${repopath}" || die
 		pushd "${BUILD_OBJ_DIR:-.}"/dist/*/xpi > /dev/null || die
 		for x in "${mozlinguas[@]}"; do
 			cp "${MOZ_P}.${x}.langpack.xpi" \
