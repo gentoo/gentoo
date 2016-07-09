@@ -7,8 +7,7 @@
 </maintainer>
 <use>
   <flag name="cacert">
-    Include root/class3 certs from CAcert (http://http://www.cacert.org/) and
-    Software in the Public Interest (http://www.spi-inc.org/)
+    Include root/class3 certs from CAcert (http://http://www.cacert.org/)
   </flag>
   <flag name="nss-pem">Add support for libnsspem</flag>
   <flag name="utils">Install utilities included with the library</flag>
