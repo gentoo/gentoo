@@ -24,6 +24,7 @@ QA_CONFIGURE_OPTIONS=".*"
 
 COMMON_DEPEND="
 	>=dev-libs/glib-2.31:2
+	dev-libs/libxml2:2
 	>=gnome-base/libgnomekbd-2.91.91:0=
 	>=gnome-extra/cinnamon-desktop-1.0:0=
 	>=gnome-extra/cinnamon-menus-1.0:0=
