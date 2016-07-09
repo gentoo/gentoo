@@ -7,10 +7,10 @@ EAPI=6
 KDE_LINGUAS_DIR=( po convert-presets/po )
 PLUGINS=(
 	alsa-sound dbus gui-docking-menu gui-error-log gui-quickbar
-	gui-standard-display internetradio lirc oss-sound radio recording shortcuts
+	gui-standard-display internetradio lirc mpris oss-sound radio recording shortcuts
 	soundserver streaming timecontrol timeshifter v4lradio
 )
-KDE_LINGUAS="cs de es is it pl pt pt_BR ru sk tr uk"
+KDE_LINGUAS="cs de es is it pl pt pt_BR ru sk sr@latin tr uk"
 inherit kde4-base
 
 MY_P=${PN}4-${PV/_/-}
@@ -48,7 +48,7 @@ PATCHES=( "${FILESDIR}/${PN}-4.0.7-include.patch" )
 src_prepare() {
 	local lang
 	for lang in ${KDE_LINGUAS} ; do
-		if ! use linguas_${lang} ; then
+		if ! use "l10n_$(kde4_lingua_to_l10n "${lang}")" ; then
 			for dir in "${KDE_LINGUAS_DIR[@]}" ; do
 				rm ${dir}/${lang}.po
 			done
