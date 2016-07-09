@@ -191,6 +191,7 @@ DEPEND=">=net-im/jabber-base-0.01
 	>=dev-libs/expat-1.95
 	>=dev-libs/libyaml-0.1.4
 	>=dev-lang/erlang-17.1[ssl]
+	<dev-lang/erlang-19
 	odbc? ( dev-db/unixODBC[-minimal] )
 	ldap? ( =net-nds/openldap-2* )
 	!libressl? ( dev-libs/openssl:0= )

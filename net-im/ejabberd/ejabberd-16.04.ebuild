@@ -43,6 +43,7 @@ CDEPEND="
 	>=dev-erlang/stringprep-1.0.3
 	>=dev-erlang/stun-1.0.3
 	>=dev-lang/erlang-17.1[hipe?,odbc?,ssl]
+	<dev-lang/erlang-19
 	>=net-im/jabber-base-0.01
 	ldap? ( =net-nds/openldap-2* )
 	mysql? ( >=dev-erlang/p1_mysql-1.0.1 )

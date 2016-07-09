@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/xcdroast/${P/_/}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~sparc ~x86"
-IUSE="nls"
+IUSE="nls suid"
 
 RDEPEND=">=x11-libs/gtk+-2:2
 	app-cdr/cdrtools"
@@ -28,6 +28,8 @@ PATCHES=(
 	"${FILESDIR}"/io_compile.patch
 	"${FILESDIR}"/io_progressbar_fix.patch
 	"${FILESDIR}"/suid-perms.patch
+	"${FILESDIR}"/disable_version_check.patch
+	"${FILESDIR}"/format-security.patch
 )
 
 src_prepare() {
@@ -42,6 +44,7 @@ src_prepare() {
 src_configure() {
 	econf \
 		$(use_enable nls) \
+		$(use_enable suid nonrootmode) \
 		--enable-gtk2 \
 		--disable-dependency-tracking \
 		--mandir=/usr/share/man \
