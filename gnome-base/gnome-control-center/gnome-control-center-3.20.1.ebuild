@@ -65,7 +65,7 @@ COMMON_DEPEND="
 	kerberos? ( app-crypt/mit-krb5 )
 	networkmanager? (
 		>=gnome-extra/nm-applet-0.9.7.995
-		>=net-misc/networkmanager-0.9.8[modemmanager]
+		>=net-misc/networkmanager-0.9.8:=[modemmanager]
 		>=net-misc/modemmanager-0.7.990 )
 	v4l? (
 		media-libs/clutter-gtk:1.0

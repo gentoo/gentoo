@@ -61,7 +61,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	>=x11-wm/muffin-3.0.0[introspection]
 	networkmanager? (
 		gnome-base/libgnome-keyring
-		>=net-misc/networkmanager-0.8.999[introspection] )
+		>=net-misc/networkmanager-0.8.999:=[introspection] )
 "
 #bluetooth? ( >=net-wireless/gnome-bluetooth-3.1:=[introspection] )
 

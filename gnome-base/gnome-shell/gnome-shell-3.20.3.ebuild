@@ -66,7 +66,7 @@ COMMON_DEPEND="
 	networkmanager? (
 		app-crypt/libsecret
 		>=gnome-extra/nm-applet-0.9.8
-		>=net-misc/networkmanager-0.9.8[introspection] )
+		>=net-misc/networkmanager-0.9.8:=[introspection] )
 "
 # Runtime-only deps are probably incomplete and approximate.
 # Introspection deps generated using:

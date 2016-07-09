@@ -24,7 +24,7 @@ RDEPEND="
 	>=dev-libs/glib-2.32:2
 	>=sys-apps/dbus-0.95
 	>=net-libs/telepathy-glib-0.20
-	networkmanager? ( >=net-misc/networkmanager-0.7 )
+	networkmanager? ( >=net-misc/networkmanager-0.7:= )
 "
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
