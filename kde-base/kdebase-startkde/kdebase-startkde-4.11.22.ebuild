@@ -10,25 +10,57 @@ inherit kde4-meta prefix
 
 DESCRIPTION="Startkde script, which starts a complete KDE session, and associated scripts"
 KEYWORDS="amd64 ~arm x86 ~amd64-linux ~x86-linux"
-IUSE="+wallpapers"
+IUSE="crash-reporter +handbook +wallpapers"
 
 # The KDE apps called from the startkde script.
 # These provide the most minimal KDE desktop.
 RDEPEND="
-	$(add_kdebase_dep kcminit)
+	$(add_kdeapps_dep attica)
+	$(add_kdeapps_dep kcmshell)
+	$(add_kdeapps_dep kcontrol)
+	$(add_kdeapps_dep kdebase-data)
+	$(add_kdeapps_dep kdebase-desktoptheme)
+	$(add_kdeapps_dep kdebase-kioslaves)
+	$(add_kdeapps_dep kdebase-menu)
+	$(add_kdeapps_dep kdebase-menu-icons)
+	$(add_kdeapps_dep kdebugdialog)
+	$(add_kdeapps_dep kdesu)
+	$(add_kdeapps_dep kdontchangethehostname)
+	$(add_kdeapps_dep keditfiletype)
+	$(add_kdeapps_dep kfile)
 	$(add_kdeapps_dep kfmclient)
+	$(add_kdeapps_dep kglobalaccel)
+	$(add_kdeapps_dep kiconfinder)
+	$(add_kdeapps_dep kimgio)
+	$(add_kdeapps_dep kioclient)
+	$(add_kdeapps_dep kmimetypefinder)
+	$(add_kdeapps_dep knetattach)
+	$(add_kdeapps_dep knewstuff)
 	$(add_kdeapps_dep knotify)
+	$(add_kdeapps_dep knotify)
+	$(add_kdeapps_dep kpasswdserver)
+	$(add_kdeapps_dep kquitapp)
 	$(add_kdeapps_dep kreadconfig)
+	$(add_kdeapps_dep kstart)
+	$(add_kdeapps_dep ktimezoned)
+	$(add_kdeapps_dep ktraderclient)
+	$(add_kdeapps_dep kuiserver)
+	$(add_kdeapps_dep kurifilter-plugins)
+	$(add_kdeapps_dep kwalletd)
+	$(add_kdeapps_dep kwalletmanager)
+	$(add_kdeapps_dep phonon-kde)
+	$(add_kdeapps_dep plasma-apps)
+	$(add_kdeapps_dep plasma-runtime)
+	$(add_kdeapps_dep renamedlg-plugins)
+	$(add_kdeapps_dep solid-runtime)
+	$(add_kdebase_dep kcminit)
 	$(add_kdebase_dep krunner)
 	$(add_kdebase_dep ksmserver)
 	$(add_kdebase_dep ksplash)
 	$(add_kdebase_dep kstartupconfig)
 	$(add_kdebase_dep kwin)
-	$(add_kdeapps_dep phonon-kde)
-	$(add_kdeapps_dep plasma-apps)
 	$(add_kdebase_dep plasma-workspace)
 	$(add_kdebase_dep systemsettings)
-	kde-apps/kdebase-runtime-meta:5
 	x11-apps/mkfontdir
 	x11-apps/xmessage
 	x11-apps/xprop
@@ -36,6 +68,8 @@ RDEPEND="
 	x11-apps/xrdb
 	x11-apps/xsetroot
 	x11-apps/xset
+	crash-reporter? ( $(add_kdeapps_dep drkonqi ) )
+	handbook? ( kde-apps/khelpcenter:* )
 	wallpapers? ( $(add_kdeapps_dep kde-wallpapers '' 15.08.3) )
 "
 

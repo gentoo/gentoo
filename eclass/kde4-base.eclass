@@ -892,16 +892,6 @@ kde4-base_pkg_postinst() {
 			einfo "Do _NOT_ file bugs at bugs.gentoo.org because of this ebuild!"
 			echo
 		fi
-		# for all 3rd party soft tell user that he SHOULD install kdebase-startkde or kdebase-runtime-meta
-		if [[ ${KDEBASE} != kde-base ]] && \
-				! has_version 'kde-apps/kdebase-runtime-meta'; then
-			if [[ ${KDE_REQUIRED} == always ]] || ( [[ ${KDE_REQUIRED} == optional ]] && use kde ); then
-				echo
-				ewarn "WARNING! Your system configuration does not contain \"kde-apps/kdebase-runtime-meta\"."
-				ewarn "With this setting you are unsupported by KDE team."
-				ewarn "All missing features you report for misc packages will be probably ignored or closed as INVALID."
-			fi
-		fi
 	fi
 }
 
