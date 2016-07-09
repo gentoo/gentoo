@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -6,7 +6,7 @@ EAPI=5
 
 inherit eutils user autotools-utils linux-info systemd readme.gentoo
 
-BACKPORTS="20151222" # CVE-2015-5313
+BACKPORTS="20160709" # CVE-2015-5313 CVE-2016-5008
 
 if [[ ${PV} = *9999* ]]; then
 	inherit git-r3
@@ -174,7 +174,13 @@ pkg_setup() {
 		~!GRKERNSEC_CHROOT_CAPS"
 	# Handle specific kernel versions for different features
 	kernel_is lt 3 6 && CONFIG_CHECK+=" ~CGROUP_MEM_RES_CTLR"
-	kernel_is ge 3 6 && CONFIG_CHECK+=" ~MEMCG ~MEMCG_SWAP ~MEMCG_KMEM"
+	kernel_is lt 3 6 && CONFIG_CHECK+=" ~CGROUP_MEM_RES_CTLR"
+	if $(kernel_is ge 3 6); then
+		CONFIG_CHECK+=" ~MEMCG ~MEMCG_SWAP "
+		if $(kernel_is lt 4 5); then
+			CONFIG_CHECK+=" ~MEMCG_KMEM "
+		fi
+	fi
 
 	use macvtap && CONFIG_CHECK+="
 		~MACVTAP"

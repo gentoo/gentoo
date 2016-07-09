@@ -6,7 +6,7 @@ EAPI=5
 
 inherit eutils user autotools-utils linux-info systemd readme.gentoo
 
-BACKPORTS=""
+BACKPORTS="20160709" # CVE-2016-5008
 
 if [[ ${PV} = *9999* ]]; then
 	inherit git-r3
@@ -174,7 +174,12 @@ pkg_setup() {
 		~!GRKERNSEC_CHROOT_CAPS"
 	# Handle specific kernel versions for different features
 	kernel_is lt 3 6 && CONFIG_CHECK+=" ~CGROUP_MEM_RES_CTLR"
-	kernel_is ge 3 6 && CONFIG_CHECK+=" ~MEMCG ~MEMCG_SWAP ~MEMCG_KMEM"
+	if $(kernel_is ge 3 6); then
+		CONFIG_CHECK+=" ~MEMCG ~MEMCG_SWAP "
+		if $(kernel_is lt 4 5); then
+			CONFIG_CHECK+=" ~MEMCG_KMEM "
+		fi
+	fi
 
 	use macvtap && CONFIG_CHECK+="
 		~MACVTAP"
@@ -222,8 +227,7 @@ src_prepare() {
 		"${FILESDIR}"/${PN}-1.2.16-fix_paths_in_libvirt-guests_sh.patch \
 		"${FILESDIR}"/${PN}-1.3.1-fix_paths_for_apparmor.patch \
 		"${FILESDIR}"/${PN}-1.2.21-avoid_deprecated_pc_file.patch \
-		"${FILESDIR}"/${PN}-1.3.4-glibc-2.23.patch \
-		"${FILESDIR}"/${P}-CVE-2016-5008.patch
+		"${FILESDIR}"/${PN}-1.3.4-glibc-2.23.patch
 
 	[[ -n ${BACKPORTS} ]] &&
 		EPATCH_FORCE=yes EPATCH_SUFFIX="patch" \

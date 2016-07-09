@@ -18,7 +18,7 @@ LICENSE="GPL-2"
 # FIXME: should we also bump for libgphoto2_port.so soname version?
 SLOT="0/6" # libgphoto2.so soname version
 
-KEYWORDS="alpha amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~ia64-linux ~x86-linux"
+KEYWORDS="alpha amd64 ~arm ~hppa ~ia64 ppc ~ppc64 ~sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~ia64-linux ~x86-linux"
 IUSE="doc examples exif gd jpeg nls serial"
 
 # By default, drivers for all supported cameras will be compiled.

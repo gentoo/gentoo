@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -17,9 +17,9 @@ if [[ ${PV} = *9999* ]]; then
 else
 	# Versions with 4 numbers are stable updates:
 	if [[ ${PV} =~ ^[0-9]+(\.[0-9]+){3} ]]; then
-		SRC_URI="http://libvirt.org/sources/stable_updates/${P}.tar.gz"
+		SRC_URI="http://libvirt.org/sources/stable_updates/${P}.tar.xz"
 	else
-		SRC_URI="http://libvirt.org/sources/${P}.tar.gz"
+		SRC_URI="http://libvirt.org/sources/${P}.tar.xz"
 	fi
 	SRC_URI+=" ${BACKPORTS:+
 		https://dev.gentoo.org/~cardoe/distfiles/${P}-${BACKPORTS}.tar.xz
@@ -173,7 +173,6 @@ pkg_setup() {
 		~!GRKERNSEC_CHROOT_CHMOD
 		~!GRKERNSEC_CHROOT_CAPS"
 	# Handle specific kernel versions for different features
-	krnel_is lt 3 6 && CONFIG_CHECK+=" ~CGROUP_MEM_RES_CTLR"
 	kernel_is lt 3 6 && CONFIG_CHECK+=" ~CGROUP_MEM_RES_CTLR"
 	if $(kernel_is ge 3 6); then
 		CONFIG_CHECK+=" ~MEMCG ~MEMCG_SWAP "
@@ -238,9 +237,9 @@ src_prepare() {
 	# Tweak the init script:
 	cp "${FILESDIR}/libvirtd.init-r16" "${S}/libvirtd.init" || die
 	sed -e "s/USE_FLAG_FIREWALLD/$(usex firewalld 'need firewalld' '')/" \
-		-e "s/USE_FLAG_AVAHI/$(usex avahi avahi-daemon '')/" \
-		-e "s/USE_FLAG_ISCSI/$(usex iscsi iscsid '')/" \
-		-e "s/USE_FLAG_RBD/$(usex rbd  ceph '')/" \
+		-e "s/USE_FLAG_AVAHI/$(usex avahi 'use avahi-daemon' '')/" \
+		-e "s/USE_FLAG_ISCSI/$(usex iscsi 'use iscsid' '')/" \
+		-e "s/USE_FLAG_RBD/$(usex rbd 'use ceph' '')/" \
 		-i "${S}/libvirtd.init" || die "sed failed"
 
 	AUTOTOOLS_AUTORECONF=true
@@ -319,6 +318,10 @@ src_configure() {
 		# bug #377279
 		(cd .gnulib && git reset --hard > /dev/null)
 	fi
+
+	# Workaround: Sometimes this subdirectory is missing and leads to a
+	# build failure.
+	mkdir -p "${BUILD_DIR}"/docs/internals
 }
 
 src_test() {
