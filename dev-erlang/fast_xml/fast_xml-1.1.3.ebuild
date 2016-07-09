@@ -18,6 +18,7 @@ IUSE="test"
 
 RDEPEND=">=dev-erlang/p1_utils-1.0.0
 	>=dev-lang/erlang-17.1
+	<dev-lang/erlang-19
 	dev-libs/expat"
 DEPEND="${RDEPEND}
 	test? ( >=dev-lang/elixir-1.1 )"
