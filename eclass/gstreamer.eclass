@@ -268,11 +268,7 @@ gstreamer_multilib_src_install_all() {
 
 	for plugin_dir in ${GST_PLUGINS_BUILD_DIR} ; do
 		local dir=$(gstreamer_get_plugin_dir ${plugin_dir})
-		if has ${EAPI:-0} 5; then
-			[[ -e ${dir}/README ]] && dodoc "${dir}"/README
-		else
-			einstalldocs
-		fi
+		[[ -e ${dir}/README ]] && dodoc "${dir}"/README
 	done
 
 	prune_libtool_files --modules
