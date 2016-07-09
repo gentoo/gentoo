@@ -7,9 +7,8 @@ IUSE=test
 KEYWORDS=~amd64 ~arm ~ia64 ~ppc ~sparc ~x86
 LICENSE=BSD
 RDEPEND=>=dev-lang/erlang-17.1 <dev-lang/erlang-19 dev-lang/erlang
-RESTRICT=test
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~aidecoe/distfiles/dev-erlang/hamcrest/hamcrest-0.1.0_p20150103.tar.gz
 _eclass_exported_funcs=src_prepare:- src_compile:rebar src_test:- src_install:rebar
 _eclasses_=rebar	98c3519ff55e51c3d222cde7f9f5d2e9
-_md5_=c43203763a4aab3c4f73e043f41ac52c
+_md5_=0fb17892e990d2cddfed0558090cb7a5
