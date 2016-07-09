@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -6,7 +6,7 @@ EAPI=5
 
 inherit autotools eutils multilib pax-utils user
 
-DESCRIPTION="Apache CouchDB is a distributed, fault-tolerant and schema-free document-oriented database."
+DESCRIPTION="Distributed, fault-tolerant and schema-free document-oriented database"
 HOMEPAGE="http://couchdb.apache.org/"
 SRC_URI="mirror://apache/couchdb/source/${PV}/apache-${P}.tar.gz"
 
@@ -16,7 +16,7 @@ KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="libressl selinux test"
 
 RDEPEND=">=dev-libs/icu-4.3.1:=
-		dev-lang/erlang[ssl]
+		<dev-lang/erlang-19.0[ssl]
 		!libressl? ( >=dev-libs/openssl-0.9.8j:0 )
 		libressl? ( dev-libs/libressl )
 		>=net-misc/curl-7.18.2
