@@ -173,8 +173,14 @@ pkg_setup() {
 		~!GRKERNSEC_CHROOT_CHMOD
 		~!GRKERNSEC_CHROOT_CAPS"
 	# Handle specific kernel versions for different features
+	krnel_is lt 3 6 && CONFIG_CHECK+=" ~CGROUP_MEM_RES_CTLR"
 	kernel_is lt 3 6 && CONFIG_CHECK+=" ~CGROUP_MEM_RES_CTLR"
-	kernel_is ge 3 6 && CONFIG_CHECK+=" ~MEMCG ~MEMCG_SWAP ~MEMCG_KMEM"
+	if $(kernel_is ge 3 6); then
+		CONFIG_CHECK+=" ~MEMCG ~MEMCG_SWAP "
+		if $(kernel_is lt 4 5); then
+			CONFIG_CHECK+=" ~MEMCG_KMEM "
+		fi
+	fi
 
 	use macvtap && CONFIG_CHECK+="
 		~MACVTAP"
