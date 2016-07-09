@@ -1,14 +1,15 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="4"
+EAPI=6
 
 # This list can be updated with scripts/get_langs.sh from the mozilla overlay
-MOZ_LANGS=(be ca cs de en-GB en-US es-AR es-ES fi fr gl hu it ja lt nb-NO nl pl
+MOZ_LANGS=(be cs de en-GB en-US es-AR es-ES fr gl hu it ja lt nb-NO nl pl
 pt-PT ru sk sv-SE tr uk zh-CN zh-TW)
 
-MOZ_PV="${PV/_alpha/a}" # Handle alpha for SRC_URI
+MOZ_PV="${PV/_pre*}" # drop prerelease when it is an unofficial release
+MOZ_PV="${MOZ_PV/_alpha/a}" # Handle alpha for SRC_URI
 MOZ_PV="${MOZ_PV/_beta/b}" # Handle beta for SRC_URI
 MOZ_PV="${MOZ_PV/_rc/rc}" # Handle rc for SRC_URI
 MOZ_PN="${PN/-bin}"
@@ -17,18 +18,29 @@ MOZ_P="${MOZ_PN}-${MOZ_PV}"
 MOZ_LANGPACK_PREFIX="${MOZ_PV}/langpack/${MOZ_P}."
 MOZ_LANGPACK_SUFFIX=".langpack.xpi"
 
-MOZ_HTTP_URI="http://archive.mozilla.org/pub/mozilla.org/${MOZ_PN}/releases"
+# official URL
+#MOZ_HTTP_URI="http://archive.mozilla.org/pub/mozilla.org/${MOZ_PN}/releases"
 
-inherit eutils multilib mozextension pax-utils nsplugins fdo-mime gnome2-utils mozlinguas
+# Pre-release URL and langpack definitions
+MOZ_HTTP_URI="https://l10n.mozilla-community.org/~akalla/unofficial/seamonkey/nightly/latest-comm-release-linux64"
+MOZ_LANGPACK_PREFIX="${MOZ_P}."
+MOZ_LANGPACK_SUFFIX=".langpack.xpi"
+
+inherit eutils multilib mozextension pax-utils nsplugins fdo-mime gnome2-utils mozlinguas-v2
 
 DESCRIPTION="Mozilla Application Suite - web browser, email, HTML editor, IRC"
 SRC_URI="${SRC_URI}
-	amd64? ( ${MOZ_HTTP_URI}/${MOZ_PV}/contrib/${MOZ_P}.en-US.linux-x86_64.tar.bz2 -> ${PN}_x86_64-${PV}.tar.bz2 )
-	x86? ( ${MOZ_HTTP_URI}/${MOZ_PV}/linux-i686/en-US/${MOZ_P}.tar.bz2 -> ${PN}_i686-${PV}.tar.bz2 )"
+	amd64? ( ${MOZ_HTTP_URI}/${MOZ_P}.en-US.linux-x86_64.tar.bz2 -> ${PN}_x86_64-${PV}.tar.bz2 )
+	x86? ( ${MOZ_HTTP_URI/linux64/linux32}/${MOZ_P}.en-US.linux-i686.tar.bz2 -> ${PN}_i686-${PV}.tar.bz2 )"
+
+# official uris
+#	amd64? ( ${MOZ_HTTP_URI}/${MOZ_PV}/contrib/${MOZ_P}.en-US.linux-x86_64.tar.bz2 -> ${PN}_x86_64-${PV}.tar.bz2 )
+#	x86? ( ${MOZ_HTTP_URI}/${MOZ_PV}/linux-i686/en-US/${MOZ_P}.tar.bz2 -> ${PN}_i686-${PV}.tar.bz2 )"
+
 HOMEPAGE="http://www.seamonkey-project.org/"
 RESTRICT="strip mirror"
 
-KEYWORDS="-* amd64 x86"
+KEYWORDS="-* ~amd64 ~x86"
 SLOT="0"
 LICENSE="MPL-2.0 GPL-2 LGPL-2.1"
 IUSE="startup-notification"
@@ -46,6 +58,7 @@ RDEPEND="dev-libs/atk
 	>=x11-libs/cairo-1.10[X]
 	x11-libs/gdk-pixbuf
 	>=x11-libs/gtk+-2.14:2
+	>=x11-libs/gtk+-3.4:3
 	x11-libs/libX11
 	x11-libs/libXcomposite
 	x11-libs/libXdamage
