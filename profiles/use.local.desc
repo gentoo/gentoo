@@ -3341,6 +3341,7 @@ kde-apps/okular:mobi - Add mobipocket support
 kde-apps/spectacle:kipi - Enable support for the KDE Image Plugin Interface
 kde-apps/spectacle:share - Enable support for a share menu using dev-libs/purpose
 kde-apps/step:qalculate - Enable the libqalculate library for unit conversion
+kde-base/kdebase-startkde:crash-reporter - Builds a gui tool to submit crash information to the upstream backtracker
 kde-base/kdebase-startkde:wallpapers - Install the KDE wallpapers
 kde-base/kdelibs:opengl - Enable OpenGL support for Plasma (GLApplet)
 kde-base/kdeplasma-addons:attica - Enable support for dev-libs/libattica
