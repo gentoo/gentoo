@@ -11297,7 +11297,7 @@ kde-apps/kglobalaccel 15.12.3 16.04.2: KDE's Global Shortcut Daemon
 kde-apps/kgoldrunner 15.12.3 16.04.2: Game of action and puzzle solving by KDE
 kde-apps/kgpg 15.12.3 16.04.2: Frontend for GnuPG, a powerful encryption utility by KDE
 kde-apps/khangman 15.12.3 16.04.2: Classical hangman game by KDE
-kde-apps/khelpcenter 4.14.3 5.5.5-r1 5.6.2-r1 16.04.2: The KDE Help Center
+kde-apps/khelpcenter 5.5.5-r1 5.6.2-r1 16.04.2: The KDE Help Center
 kde-apps/kholidays 16.04.2: Library to determine holidays and other special events for a geographical region
 kde-apps/kiconfinder 15.12.3 16.04.2: Finds an icon based on its name
 kde-apps/kig 15.12.3 16.04.2: KDE Interactive Geometry tool
