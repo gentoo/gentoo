@@ -7,7 +7,7 @@ inherit eutils flag-o-matic multilib versionator
 
 DESCRIPTION="A re-implementation of the Ruby VM designed for speed"
 HOMEPAGE="http://rubini.us"
-SRC_URI="http://releases.rubini.us/${P}.tar.bz2"
+SRC_URI="https://rubinius-releases-rubinius-com.s3.amazonaws.com/${P}.tar.bz2"
 
 LICENSE="BSD"
 KEYWORDS="~amd64"
@@ -15,7 +15,7 @@ SLOT="0"
 IUSE="+llvm"
 
 RDEPEND="
-	llvm? ( >=sys-devel/llvm-3.2 )
+	llvm? ( >=sys-devel/llvm-3.6 )
 	dev-libs/openssl:0
 	sys-libs/ncurses
 	sys-libs/readline:0
@@ -37,6 +37,9 @@ src_prepare() {
 	# src_test will wait until all processes are reaped, so tune down
 	# the long sleep process a bit.
 	sed -i -e 's/sleep 1000/sleep 300/' spec/ruby/core/io/popen_spec.rb || die
+
+	# Avoid specs that cannot work in the portage context
+	rm -f spec/ruby/core/argf/read_nonblock_spec.rb || die
 
 	# Drop error CFLAGS per Gentoo policy.
 	sed -i -e '/Werror/ s:^:#:' rakelib/blueprint.rb || die
@@ -61,7 +64,7 @@ src_configure() {
 }
 
 src_compile() {
-	RBXOPT="-Xsystem.log=/dev/null" rake build || die "Compilation failed"
+	RBXOPT="-Xsystem.log=syslog" rake build || die "Compilation failed"
 }
 
 src_test() {
@@ -76,11 +79,11 @@ src_install() {
 	local minor_version=$(get_version_component_range 1-2)
 	local librbx="usr/$(get_libdir)/rubinius"
 
-	RBXOPT="-Xsystem.log=/dev/null" DESTDIR="${D}" rake install || die "Installation failed"
+	RBXOPT="-Xsystem.log=syslog" DESTDIR="${D}" rake install || die "Installation failed"
 
 	dosym /${librbx}/bin/rbx /usr/bin/rbx || die "Couldn't make rbx symlink"
 
 	insinto /${librbx}/${minor_version}/site
 	doins "${FILESDIR}/auto_gem.rb" || die "Couldn't install rbx auto_gem.rb"
-	RBXOPT="-Xsystem.log=/dev/null" RBX_RUNTIME="${S}/runtime" RBX_LIB="${S}/lib" bin/rbx compile "${D}/${librbx}/${minor_version}/site/auto_gem.rb" || die "Couldn't bytecompile auto_gem.rb"
+	RBXOPT="-Xsystem.log=syslog" RBX_RUNTIME="${S}/runtime" RBX_LIB="${S}/lib" bin/rbx compile "${D}/${librbx}/${minor_version}/site/auto_gem.rb" || die "Couldn't bytecompile auto_gem.rb"
 }

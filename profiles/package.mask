@@ -647,10 +647,10 @@ app-emulation/openstack-guest-agents-unix
 app-emulation/xe-guest-utilities
 
 # Hans de Graaff <graaff@gentoo.org> (1 Jun 2014)
-# Mask new rubinius version for testing. Current versions have some
-# issues that should be solved in the forthcoming rubinius 2.3
-# release.
-=dev-lang/rubinius-2*
+# Mask new rubinius version for testing. This needs more work
+# to fully integrate it in our Gentoo ruby handling. Volunteers
+# welcome.
+=dev-lang/rubinius-3*
 
 # Tom Wijsman <TomWij@gentoo.org> (03 May 2014)
 # Needs to be further tested and revised by both Java and Ruby herds.
