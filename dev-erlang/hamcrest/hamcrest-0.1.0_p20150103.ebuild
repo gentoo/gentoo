@@ -22,10 +22,7 @@ DEPEND="${CDEPEND}
 RDEPEND="${CDEPEND}"
 
 DOCS=( NOTES  README.markdown TODO.md )
-
-# FIXME: Fails, reported upstream:
-# FIXME: https://github.com/hyperthunk/hamcrest-erlang/issues/21
-RESTRICT="test"
+PATCHES=( "${FILESDIR}"/${PV}-0001-OTP-19-support.patch )
 
 # Override with EAPI default because it's missing hamcrest.app.src and doesn't
 # have any deps.
