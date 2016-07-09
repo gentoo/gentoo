@@ -24,7 +24,7 @@ src_prepare() {
 	sed -i -e "s!^CC.*!CC = $(tc-getCC)!" \
 		-e "s!^CFLAGS.*!CFLAGS = ${CFLAGS}!" \
 		-e "s!^AR.*!AR = $(tc-getAR)!" \
-		-e "/^prefix/s!/usr/local!${EROOT}usr!" \
+		-e "/^prefix/s!/usr/local!${EPREFIX}/usr!" \
 		-e "/^libdir/s!lib\$!$(get_libdir)!" \
 		-e "s!shared!shared -Wl,-soname,liblmdb.so.0!" \
 		"${S}/Makefile" || die
@@ -39,10 +39,10 @@ src_compile() {
 }
 
 src_install() {
-	emake DESTDIR="${ED}" install
+	emake DESTDIR="${D}" install
 
 	mv "${ED}"usr/$(get_libdir)/liblmdb.so{,.0} || die
-	dosym liblmdb.so.0 "${EROOT}"usr/$(get_libdir)/liblmdb.so
+	dosym liblmdb.so.0 /usr/$(get_libdir)/liblmdb.so
 
 	use static-libs || rm "${ED}"usr/$(get_libdir)/liblmdb.a || die
 }
