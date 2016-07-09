@@ -10,7 +10,12 @@ HOMEPAGE="https://git.gnome.org/browse/mutter/"
 
 LICENSE="GPL-2+"
 SLOT="0"
+
 IUSE="+introspection +kms test wayland"
+REQUIRED_USE="
+	wayland? ( kms )
+"
+
 KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 
 # libXi-1.7.4 or newer needed per:
