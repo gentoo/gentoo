@@ -22,7 +22,7 @@ DEPEND="${CDEPEND}
 RDEPEND="${CDEPEND}"
 
 DOCS=( NOTES  README.markdown TODO.md )
-PATCHES=( "${FILESDIR}"/${PV}-0001-OTP-19-support.patch )
+PATCHES=( "${FILESDIR}"/${PV}-0001-Fix-unittests.patch )
 
 # Override with EAPI default because it's missing hamcrest.app.src and doesn't
 # have any deps.
