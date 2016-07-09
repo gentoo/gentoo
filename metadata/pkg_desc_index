@@ -5776,7 +5776,7 @@ dev-perl/IO-Event 0.813.0: Tied Filehandles for Nonblocking IO with Object Callb
 dev-perl/IO-HTML 1.1.0: Open an HTML file with automatic charset detection
 dev-perl/IO-Handle-Util 0.10.0: Functions for working with IO::Handle like objects
 dev-perl/IO-Interactive 1.21.0: Utilities for interactive I/O
-dev-perl/IO-Interface 1.60.0-r1 1.90.0: Perl extension for access to network card configuration information
+dev-perl/IO-Interface 1.90.0: Perl extension for access to network card configuration information
 dev-perl/IO-LockedFile 0.230.0-r1: Supply object methods for locking files
 dev-perl/IO-Multiplex 1.160.0: Manage IO on many file handles
 dev-perl/IO-Pager 0.350.0: Select a pager, optionally pipe it output if destination is a TTY
@@ -6347,7 +6347,7 @@ dev-perl/Test-Perl-Critic 1.20.0-r1 1.30.0: Use Perl::Critic in test programs
 dev-perl/Test-Pod 1.510.0: Check for POD errors in files
 dev-perl/Test-Pod-Coverage 1.100.0: Check for pod coverage in your distribution
 dev-perl/Test-Portability-Files 0.60.0-r1: Check file names portability
-dev-perl/Test-Requires 0.60.0-r1 0.80.0 0.100.0: Checks to see if the module can be loaded
+dev-perl/Test-Requires 0.60.0-r1 0.100.0: Checks to see if the module can be loaded
 dev-perl/Test-Script 1.70.0-r1 1.100.0 1.120.0: Cross-platform basic tests for scripts
 dev-perl/Test-SharedFork 0.210.0-r1 0.330.0 0.350.0: fork test
 dev-perl/Test-Spec 0.510.0: Write tests in a declarative specification style
@@ -9141,7 +9141,7 @@ dev-ruby/rdoc 4.0.1-r2 4.2.0 4.2.1 4.2.2: An extended version of the RDoc librar
 dev-ruby/rdtool 0.6.38-r2: A multipurpose documentation format for Ruby
 dev-ruby/recog 2.0.6-r1 2.0.14-r1: Pattern recognition for hosts, services, and content
 dev-ruby/redcarpet 3.2.3 3.3.2 3.3.3 3.3.4: A Ruby wrapper for Upskirt
-dev-ruby/redcloth 4.2.9-r3 4.2.9-r4 4.3.0 4.3.1: A module for using Textile in Ruby
+dev-ruby/redcloth 4.2.9-r3 4.2.9-r4 4.3.2: A module for using Textile in Ruby
 dev-ruby/redis 3.0.6 3.0.7 3.2.1 3.2.2 3.3.0: A Ruby client library for Redis
 dev-ruby/regexp_parser 0.3.1 0.3.2: A library for tokenizing, lexing, and parsing Ruby regular expressions
 dev-ruby/request_store 1.0.5 1.3.0 1.3.1: Per-request global storage for Rack
@@ -13984,7 +13984,7 @@ net-dialup/linux-atm 2.5.0 2.5.2: Tools for ATM
 net-dialup/lrzsz 0.12.20-r3: Communication package providing the X, Y, and ZMODEM file transfer protocols
 net-dialup/martian-modem 20100123-r1: ltmodem alternative driver providing support for Agere Systems winmodems
 net-dialup/mgetty 1.1.37-r1: fax and voice modem programs
-net-dialup/mingetty 1.08 1.08-r1: A compact getty program for virtual consoles only
+net-dialup/mingetty 1.08-r1: A compact getty program for virtual consoles only
 net-dialup/minicom 2.6 2.7: Serial Communication Program
 net-dialup/moserial 3.0.10: A clean and friendly gtk-based serial terminal
 net-dialup/mwavem 2.0-r1 2.0-r2: User level application for IBM Mwave modem
