@@ -47,6 +47,7 @@ RDEPEND="
 	)
 	virtual/opengl
 	network? ( media-plugins/gst-plugins-soup:1.0 )
+	!dev-qt/qtwebkit:4[gstreamer]
 "
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
