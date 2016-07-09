@@ -66,7 +66,7 @@ RDEPEND="
 	jpeg? ( virtual/jpeg:0 )
 	upower? ( || ( >=sys-power/upower-0.9 sys-power/upower-pm-utils ) )
 	mp3? ( >=media-libs/taglib-1.6 )
-	networkmanager? ( >=net-misc/networkmanager-0.8 )
+	networkmanager? ( >=net-misc/networkmanager-0.8:= )
 	pdf? (
 		>=x11-libs/cairo-1:=
 		>=app-text/poppler-0.16:=[cairo,utils]
