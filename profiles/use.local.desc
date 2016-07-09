@@ -5470,7 +5470,6 @@ net-im/ekg2:openssl - Support encryption in sim plugin, using OpenSSL.
 net-im/ekg2:oracle - Support logging messages into Oracle database.
 net-im/ekg2:sqlite - Support logging messages into SQLite3 database.
 net-im/ekg2:ssl - Enable the complete SSL/TLS support through OpenSSL. This also enables the 'sim' plugin which relies on OpenSSL.
-net-im/empathy:geoloc - Enable geolocation support through app-misc/geoclue
 net-im/empathy:gnome-online-accounts - Enable using net-libs/gnome-online-accounts for authorization (e.g. for Google Talk)
 net-im/empathy:map - Enable world map support through media-libs/libchamplain
 net-im/err:irc - Pull optional dependencies, needed for IRC backend
