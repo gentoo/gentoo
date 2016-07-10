@@ -3,11 +3,11 @@
 # $Id$
 
 EAPI=5
-USE_RUBY="ruby19 ruby20 ruby21 ruby22"
+USE_RUBY="ruby20 ruby21 ruby22"
 
 RUBY_FAKEGEM_TASK_TEST="test:units"
 
-RUBY_FAKEGEM_TASK_DOC="yardoc"
+RUBY_FAKEGEM_RECIPE_DOC="rdoc"
 RUBY_FAKEGEM_DOCDIR="doc"
 RUBY_FAKEGEM_EXTRADOC="README.rdoc RELEASE.rdoc"
 
@@ -20,11 +20,10 @@ HOMEPAGE="http://gofreerange.com/mocha/docs/"
 
 LICENSE="MIT"
 SLOT="0.12"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE=""
 
 ruby_add_bdepend "
-	doc? ( dev-ruby/yard )
 	test? ( >=dev-ruby/test-unit-2.5.1-r1 )"
 
 ruby_add_rdepend "dev-ruby/metaclass" #metaclass ~> 0.0.1
