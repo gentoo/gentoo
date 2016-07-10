@@ -36,7 +36,7 @@ DEPEND="${COMMON_DEPEND}
 "
 RDEPEND="${COMMON_DEPEND}
 	media-video/mplayer
-	kipi? ( >=media-plugins/kipi-plugins-4.7.0 )
+	kipi? ( >=media-plugins/kipi-plugins-4.7.0:4 )
 "
 
 DOCS=( ChangeLog README )
