@@ -7,6 +7,10 @@
 
 # Johannes Huber <johu@gentoo.org> (10 Jul 2016)
 # Unreleased dependencies.
+>=media-gfx/digikam-5.0.0 addressbook
+
+# Johannes Huber <johu@gentoo.org> (10 Jul 2016)
+# Unreleased dependencies.
 >=media-plugins/kipi-plugins-5.0.0 mediawiki vkontakte
 
 # Michał Górny <mgorny@gentoo.org> (05 Jul 2016)
