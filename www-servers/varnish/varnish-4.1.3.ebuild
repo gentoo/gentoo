@@ -18,10 +18,10 @@ KEYWORDS="~amd64 ~mips ~x86"
 IUSE="jemalloc jit static-libs"
 
 CDEPEND="
-	|| ( dev-libs/libedit sys-libs/readline )
+	sys-libs/readline:0=
 	dev-libs/libpcre[jit?]
 	jemalloc? ( dev-libs/jemalloc )
-	sys-libs/ncurses:="
+	sys-libs/ncurses:0="
 
 #varnish compiles stuff at run time
 RDEPEND="
@@ -38,7 +38,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RESTRICT="test" #315725
 
-DOCS=( README doc/changes.rst )
+DOCS=( README.rst doc/changes.rst )
 
 AUTOTOOLS_AUTORECONF="yes"
 
@@ -53,6 +53,9 @@ src_prepare() {
 	# Remove bundled libjemalloc. We also fix
 	# automagic dep in our patches, bug #461638
 	rm -rf lib/libjemalloc
+
+	# Remove -Werror bug #528354
+	sed -i -e 's/-Werror\([^=]\)/\1/g' configure.ac
 
 	autotools-utils_src_prepare
 }
