@@ -20,10 +20,10 @@ esac
 EXPORT_FUNCTIONS src_unpack
 
 ECARGO_HOME="${WORKDIR}/cargo_home"
-ECARGO_REGISTRY="github.com-88ac128001ac3a9a"
-ECARGO_INDEX="${ECARGO_HOME}/registry/index/${ECARGO_REGISTRY}"
-ECARGO_SRC="${ECARGO_HOME}/registry/src/${ECARGO_REGISTRY}"
-ECARGO_CACHE="${ECARGO_HOME}/registry/cache/${ECARGO_REGISTRY}"
+ECARGO_REPO="github.com-88ac128001ac3a9a"
+ECARGO_INDEX="${ECARGO_HOME}/registry/index/${ECARGO_REPO}"
+ECARGO_SRC="${ECARGO_HOME}/registry/src/${ECARGO_REPO}"
+ECARGO_CACHE="${ECARGO_HOME}/registry/cache/${ECARGO_REPO}"
 
 # @FUNCTION: cargo_crate_uris
 # @DESCRIPTION:
