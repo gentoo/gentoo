@@ -6348,6 +6348,7 @@ dev-perl/Test-Pod 1.510.0: Check for POD errors in files
 dev-perl/Test-Pod-Coverage 1.100.0: Check for pod coverage in your distribution
 dev-perl/Test-Portability-Files 0.60.0-r1: Check file names portability
 dev-perl/Test-Requires 0.60.0-r1 0.100.0: Checks to see if the module can be loaded
+dev-perl/Test-RequiresInternet 0.50.0: Easily test network connectivity
 dev-perl/Test-Script 1.70.0-r1 1.100.0 1.120.0: Cross-platform basic tests for scripts
 dev-perl/Test-SharedFork 0.210.0-r1 0.330.0 0.350.0: fork test
 dev-perl/Test-Spec 0.510.0: Write tests in a declarative specification style
@@ -6445,8 +6446,8 @@ dev-perl/UNIVERSAL-isa 1.201.207.260-r1 1.201.506.140: Attempt to recover from p
 dev-perl/UNIVERSAL-moniker 0.80.0-r1: adds a moniker to every class or module
 dev-perl/UNIVERSAL-require 0.160.0 0.180.0: UNIVERSAL::require - require() modules from a variable
 dev-perl/URI 1.710.0: Uniform Resource Identifiers (absolute and relative)
-dev-perl/URI-Encode 0.90.0 1.1.0: Simple percent Encoding/Decoding
-dev-perl/URI-Fetch 0.90.0-r1 0.110.0: Smart URI fetching/caching
+dev-perl/URI-Encode 1.1.0 1.1.1: Simple percent Encoding/Decoding
+dev-perl/URI-Fetch 0.110.0 0.130.0: Smart URI fetching/caching
 dev-perl/URI-Find 20111103.0.0-r1 20140709.0.0: Find URIs in plain text
 dev-perl/UUID 0.50.0 0.250.0: Perl extension for using UUID interfaces as defined in e2fsprogs
 dev-perl/UUID-Tiny 1.40.0: Pure Perl UUID Support With Functional Interface
@@ -12133,7 +12134,7 @@ media-gfx/cutycapt 0_p20120409: Qt WebKit Web Page Rendering Capture Utility
 media-gfx/darktable 1.6.9 2.0.3 2.0.4 2.0.5 9999: A virtual lighttable and darkroom for photographers
 media-gfx/dawn 3.90b: 3D geometrical postscript renderer
 media-gfx/dcraw 9.24.4 9.25.0 9.26.0 9.27.0: command-line decoder for raw digital photos
-media-gfx/digikam 4.4.0-r1 4.14.0-r1: Digital photo management application for KDE
+media-gfx/digikam 4.4.0-r1 4.14.0-r1 5.0.0: Digital photo management application
 media-gfx/displaycal 3.1.2.0 3.1.3.1: Display calibration and characterization powered by Argyll CMS
 media-gfx/dpic 20130310: Converts PIC plots into pstricks, PGF/TikZ, PostScript, MetaPost and TeX
 media-gfx/drqueue 0.64.4-r1 9999: Render farm managing software

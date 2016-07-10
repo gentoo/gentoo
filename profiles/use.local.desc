@@ -3791,10 +3791,14 @@ media-gfx/darktable:slideshow - Build the opengl slideshow viewer
 media-gfx/darktable:squish - Enable thumbnail compression via libsquish
 media-gfx/darktable:web-services - Add support for uploading photos to facebook and picasa
 media-gfx/darktable:webp - Enable WebP export support
-media-gfx/digikam:addressbook - Add support for kdepim
+media-gfx/digikam:addressbook - Enable akonadi contact integration
+media-gfx/digikam:kipi - Enable support for media-plugins/kipi-plugins
+media-gfx/digikam:lensfun - Enable support for media-libs/lensfun
+media-gfx/digikam:marble - Enable support for geolocation using kde-apps/marble
+media-gfx/digikam:semantic-desktop - Enable kde-frameworks/kfilemetadata support
 media-gfx/digikam:themedesigner - Build the digikam theme designer
 media-gfx/digikam:thumbnails - Enable thumbnails database support
-media-gfx/digikam:video - Pull in mplayerthumbs to enable video thumbnails
+media-gfx/digikam:video - Enable video player support
 media-gfx/enblend:gpu - GPU support for Enblend
 media-gfx/enblend:image-cache - allow for processing of large images
 media-gfx/eog-plugins:flickr - Enable uploading to Flickr
