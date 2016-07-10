@@ -57,7 +57,7 @@ CDEPEND="${PYTHON_DEPS}
 	>=sys-libs/tdb-1.3.8[python,${PYTHON_USEDEP},${MULTILIB_USEDEP}]
 	>=sys-libs/tevent-0.9.28[${MULTILIB_USEDEP}]
 	sys-libs/zlib[${MULTILIB_USEDEP}]
-	virtual/pam
+	pam? ( virtual/pam )
 	acl? ( virtual/acl )
 	addns? ( net-dns/bind-tools[gssapi] )
 	cluster? ( !dev-db/ctdb )
@@ -115,10 +115,10 @@ multilib_src_configure() {
 	local myconf=()
 	myconf=(
 		--enable-fhs
-		--sysconfdir=/etc
-		--localstatedir=/var
-		--with-modulesdir=/usr/$(get_libdir)/samba
-		--with-piddir=/run/${PN}
+		--sysconfdir="${EPREFIX}/etc"
+		--localstatedir="${EPREFIX}/var"
+		--with-modulesdir="${EPREFIX}/usr/$(get_libdir)/samba"
+		--with-piddir="${EPREFIX}/run/${PN}"
 		--bundled-libraries=NONE
 		--builtin-libraries=NONE
 		--disable-rpath
@@ -142,7 +142,7 @@ multilib_src_configure() {
 			$(use_enable iprint)
 			$(use_with ldap)
 			$(use_with pam)
-			$(usex pam "--with-pammodulesdir=/$(get_libdir)/security" '')
+			$(usex pam "--with-pammodulesdir=${EPREFIX}/$(get_libdir)/security" '')
 			$(use_with quota quotas)
 			$(use_with syslog)
 			$(use_with systemd)
@@ -175,7 +175,7 @@ multilib_src_configure() {
 		)
 	fi
 
-	CPPFLAGS="-I${SYSROOT}/usr/include/et ${CPPFLAGS}" \
+	CPPFLAGS="-I${SYSROOT}${EPREFIX}/usr/include/et ${CPPFLAGS}" \
 		waf-utils_src_configure ${myconf[@]}
 }
 
