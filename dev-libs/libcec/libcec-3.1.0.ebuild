@@ -19,7 +19,6 @@ IUSE="cubox exynos python raspberry-pi +xrandr"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="virtual/udev
-	dev-libs/lockdev
 	dev-libs/libplatform
 	raspberry-pi? ( >=media-libs/raspberrypi-userland-0_pre20160305-r1 )
 	xrandr? ( x11-libs/libXrandr )"
