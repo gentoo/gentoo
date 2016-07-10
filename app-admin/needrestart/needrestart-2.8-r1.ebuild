@@ -21,13 +21,16 @@ SLOT="0"
 LICENSE="GPL-2+"
 
 RDEPEND="
+	>=sys-apps/sed-4.2.2
+	dev-perl/libintl-perl
 	dev-perl/Module-Find
 	dev-perl/Module-ScanDeps
 	dev-perl/Proc-ProcessTable
 	dev-perl/Sort-Naturally
-	dev-perl/Term-ProgressBar-Simple
+	dev-perl/TermReadKey
 "
 DEPEND="${RDEPEND}
+	sys-devel/gettext
 "
 
 PATCHES=(
