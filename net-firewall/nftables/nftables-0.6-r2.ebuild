@@ -28,7 +28,10 @@ DEPEND="${RDEPEND}
 
 S="${WORKDIR}/v${PV}"
 
-PATCHES=( "${FILESDIR}/${PN}-0.5-pdf-doc.patch" )
+PATCHES=(
+	"${FILESDIR}/${PN}-0.5-pdf-doc.patch"
+	"${FILESDIR}/${P}-null-payload-desc-fix.patch"
+)
 
 pkg_setup() {
 	if kernel_is ge 3 13; then
