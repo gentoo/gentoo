@@ -1371,7 +1371,7 @@ app-emulation/vmware-workstation 9.0.3.1410761 10.0.6.2700073-r1 11.1.2.2780323-
 app-emulation/vov 2.0.0: vov (Vov's Obsessive Von-Neumann) is a tool that emulates the behavior of a Von-Neumann machine
 app-emulation/vpcs 0.6: Simulate up to 9 PCs in place of VMware boxes in a Dynamips network
 app-emulation/wine 1.8-r1 1.8.1-r1 1.8.2 1.9.4-r1 1.9.5-r1 1.9.6-r1 1.9.7-r1 1.9.8 1.9.9 1.9.10 1.9.11 9999: Free implementation of Windows(tm) on Unix
-app-emulation/winetricks 20160425 99999999: Easy way to install DLLs needed to work around problems in Wine
+app-emulation/winetricks 20160709 99999999: Easy way to install DLLs needed to work around problems in Wine
 app-emulation/x48 0.6.4: HP48 Calculator Emulator
 app-emulation/xe-guest-utilities 5.6.0_p595 6.1.0_p1033 6.2.0_p1120: XenServer Virtual Machine Tools
 app-emulation/xen 4.6.0-r9 4.6.0-r10 4.6.1 4.6.1-r1 4.6.1-r2 4.6.1-r3 4.6.3 4.7.0: The Xen virtual machine monitor
