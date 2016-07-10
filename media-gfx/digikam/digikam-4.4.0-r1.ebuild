@@ -56,7 +56,7 @@ CDEPEND="
 "
 RDEPEND="${CDEPEND}
 	kde-apps/kreadconfig:4
-	media-plugins/kipi-plugins
+	media-plugins/kipi-plugins:4
 	video? (
 		|| (
 			kde-apps/ffmpegthumbs:4
