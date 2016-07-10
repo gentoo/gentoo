@@ -2276,6 +2276,7 @@ dev-python/Kivy:camera - Install libraries needed to support camera
 dev-python/Kivy:garden - Install garden tool to manage user maintained widgets
 dev-python/PyFoam:extras - Enable optional dependencies
 dev-python/PyQt4:X - Build bindings for the QtGui module
+dev-python/PyQt4:compat - Install the deprecated pyqtconfig module for backward compatibility
 dev-python/PyQt4:dbus - Build bindings for the QtDBus module
 dev-python/PyQt4:declarative - Build bindings for the QtDeclarative module
 dev-python/PyQt4:designer - Build bindings for the QtDesigner module and enable the designer plugin
