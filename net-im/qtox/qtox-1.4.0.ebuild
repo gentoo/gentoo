@@ -48,7 +48,7 @@ DEPEND="${RDEPEND}
 
 pkg_pretend() {
 	if [[ ${MERGE_TYPE} != binary ]]; then
-		if [[ $(tc-getCXX) == *g++ ]] ; then
+		if tc-is-gcc ; then
 			if [[ $(gcc-major-version) == 4 && $(gcc-minor-version) -lt 8 || $(gcc-major-version) -lt 4 ]] ; then
 				eerror "You need at least sys-devel/gcc-4.8.3"
 				die "You need at least sys-devel/gcc-4.8.3"
