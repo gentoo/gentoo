@@ -1,25 +1,25 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-inherit autotools-utils
-
-DESCRIPTION="Pretty small HTTP server - a command-line tool to share files"
-HOMEPAGE="https://bitbucket.org/mgorny/pshs/"
-SRC_URI="https://www.bitbucket.org/mgorny/${PN}/downloads/${P}.tar.bz2"
+DESCRIPTION="Pretty small HTTP server -- a command-line tool to share files"
+HOMEPAGE="https://github.com/mgorny/pshs/"
+SRC_URI="https://github.com/mgorny/${PN}/releases/download/v${PV}/${P}.tar.bz2"
 
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="+magic +netlink qrcode ssl upnp"
+IUSE="libressl +magic +netlink qrcode ssl upnp"
 
 RDEPEND=">=dev-libs/libevent-2:0=
 	magic? ( sys-apps/file:0= )
 	qrcode? ( media-gfx/qrencode:0= )
 	ssl? ( >=dev-libs/libevent-2.1:0=[ssl]
-		dev-libs/openssl:0= )
+		!libressl? ( dev-libs/openssl:0= )
+		libressl? ( dev-libs/libressl:= )
+	)
 	upnp? ( net-libs/miniupnpc:0= )"
 DEPEND="${RDEPEND}
 	netlink? ( sys-apps/iproute2
@@ -27,7 +27,7 @@ DEPEND="${RDEPEND}
 # libnetlink is static only ATM
 
 src_configure() {
-	myeconfargs=(
+	local myconf=(
 		$(use_enable magic libmagic)
 		$(use_enable netlink)
 		$(use_enable qrcode qrencode)
@@ -35,5 +35,5 @@ src_configure() {
 		$(use_enable upnp)
 	)
 
-	autotools-utils_src_configure
+	econf "${myconf[@]}"
 }
