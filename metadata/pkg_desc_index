@@ -17809,7 +17809,7 @@ www-client/firefox 38.8.0 45.2.0 47.0.1: Firefox Web Browser
 www-client/firefox-bin 38.8.0 45.2.0 47.0: Firefox Web Browser
 www-client/google-chrome 51.0.2704.106: The web browser from Google
 www-client/google-chrome-beta 52.0.2743.60: The web browser from Google
-www-client/google-chrome-unstable 53.0.2785.8: The web browser from Google
+www-client/google-chrome-unstable 53.0.2785.8-r1: The web browser from Google
 www-client/httrack 3.48.21-r1 3.48.21-r2: HTTrack Website Copier, Open Source Offline Browser
 www-client/jd 2.8.5_p120826: gtk2 based 2ch browser written in C++
 www-client/jumanji 0.0.0_p20111209 0.0.0_p20130103-r1 0.0.0_p20150527 9999: highly customizable and functional web browser with minimalistic and space saving interface
