@@ -7,6 +7,8 @@ GST_ORG_MODULE="gst-plugins-bad"
 
 inherit eutils flag-o-matic gstreamer virtualx
 
+# yes the manifest code should get fixed
+
 DESCRIPTION="Less plugins for GStreamer"
 HOMEPAGE="https://gstreamer.freedesktop.org/"
 
