@@ -10,6 +10,7 @@
 	</maintainer>
 	<use>
 		<flag name="expoblending">Build the expoblending plugin, which requires media-gfx/hugin</flag>
+		<flag name="flashexport">Build the flash export plugin</flag>
 		<flag name="gpssync">Build the gpssync plugin, which requires kde-apps/libkgeomap and thereby marble</flag>
 		<flag name="mediawiki">Build the mediawiki export plugin</flag>
 		<flag name="panorama">Pull in dependencies needed by panorama plugin</flag>
