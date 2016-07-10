@@ -1,11 +1,11 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
-MODULE_AUTHOR=MITHUN
-MODULE_VERSION=0.09
+DIST_AUTHOR=MITHUN
+DIST_VERSION=v1.1.1
 inherit perl-module
 
 DESCRIPTION="Simple percent Encoding/Decoding"
@@ -15,7 +15,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="test"
 
 RDEPEND="
-	virtual/perl-Encode
+	>=virtual/perl-Encode-2.120.0
 "
 DEPEND="${RDEPEND}
 	>=dev-perl/Module-Build-0.380.0
