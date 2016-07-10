@@ -1,0 +1,16 @@
+DEFINED_PHASES=compile configure install postinst prepare unpack
+DEPEND=!dev-php/eaccelerator !dev-php/pecl-apc virtual/httpd-php:* php_targets_php5-5? ( !dev-lang/php:5.5[opcache] ) !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 sys-devel/m4 sys-devel/libtool php_targets_php5-5? ( dev-lang/php:5.5 ) php_targets_php5-6? ( dev-lang/php:5.6 )
+DESCRIPTION=A fast and stable PHP opcode cacher
+EAPI=6
+HOMEPAGE=http://xcache.lighttpd.net/
+IUSE=coverage php_targets_php5-5 php_targets_php5-6
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD
+RDEPEND=!dev-php/eaccelerator !dev-php/pecl-apc virtual/httpd-php:* php_targets_php5-5? ( !dev-lang/php:5.5[opcache] ) php_targets_php5-5? ( dev-lang/php:5.5 ) php_targets_php5-6? ( dev-lang/php:5.6 )
+REQUIRED_USE=|| ( php_targets_php5-5 php_targets_php5-6 )
+RESTRICT=test
+SLOT=0
+SRC_URI=http://xcache.lighttpd.net/pub/Releases/3.2.0/xcache-3.2.0.tar.bz2
+_eclass_exported_funcs=pkg_postinst:- src_unpack:php-ext-source-r3 src_prepare:php-ext-source-r3 src_configure:- src_compile:php-ext-source-r3 src_install:-
+_eclasses_=autotools	07e71b3b5690738ef7e8bc097077e00c	confutils	18995f74ac4ffafb7ad853dfe133f209	eutils	792f83d5ec9536cb5ccef375469d8bde	libtool	4890219c51da247200223277f993e054	multilib	d062ae4ba2fc40a19c11de2ad89b6616	php-ext-source-r3	3772105f27fbde7de9a8b3bfb48e1e41	toolchain-funcs	82165206dedb2075f9a0fb8f9b1f9441
+_md5_=e71da1e43d7c379e605d31510b61c078
