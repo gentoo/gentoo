@@ -5,7 +5,7 @@
 EAPI=6
 PYTHON_COMPAT=( python2_7 python3_{3,4,5} )
 
-inherit multibuild python-r1 qmake-utils
+inherit multibuild python-r1 qmake-utils toolchain-funcs
 
 DESCRIPTION="Python bindings for the Qt framework"
 HOMEPAGE="http://www.riverbankcomputing.com/software/pyqt/intro
@@ -22,7 +22,7 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
 
-IUSE="X dbus debug declarative designer doc examples help kde multimedia
+IUSE="X compat dbus debug declarative designer doc examples help kde multimedia
 	opengl phonon script scripttools sql svg testlib webkit xmlpatterns"
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
@@ -78,6 +78,11 @@ src_prepare() {
 	default
 }
 
+pyqt_run() {
+	echo "$@"
+	"${PYTHON}" "$@"
+}
+
 pyqt_use_enable() {
 	use "$1" || return
 
@@ -87,22 +92,18 @@ pyqt_use_enable() {
 src_configure() {
 	configuration() {
 		local myconf=(
-			"${PYTHON}"
-			"${S}"/configure-ng.py
 			$(usex debug '--debug --trace' '')
 			--verbose
 			--confirm-license
 			--qmake="$(qt4_get_bindir)"/qmake
 			--bindir="${EPREFIX}/usr/bin"
 			--destdir="$(python_get_sitedir)"
-			--sip-incdir="$(python_get_includedir)"
 			--qsci-api
 			--enable=QtCore
 			--enable=QtNetwork
 			--enable=QtXml
 			$(pyqt_use_enable X QtGui)
 			$(pyqt_use_enable dbus QtDBus)
-			$(usex dbus '' --no-python-dbus)
 			$(pyqt_use_enable declarative)
 			$(pyqt_use_enable designer)
 			$(usex designer '' --no-designer-plugin)
@@ -118,8 +119,38 @@ src_configure() {
 			$(pyqt_use_enable webkit QtWebKit)
 			$(pyqt_use_enable xmlpatterns QtXmlPatterns)
 		)
-		echo "${myconf[@]}"
-		"${myconf[@]}" || die
+
+		if use compat; then
+			local compat_build_dir=${BUILD_DIR%/}-compat
+			cp -Rp "${S}" "${compat_build_dir}" || die
+			pushd "${compat_build_dir}" >/dev/null || die
+
+			local mycompatconf=(
+				"${myconf[@]}"
+				AR="$(tc-getAR) cqs"
+				CC="$(tc-getCC)"
+				CFLAGS="${CFLAGS}"
+				CFLAGS_RELEASE=
+				CXX="$(tc-getCXX)"
+				CXXFLAGS="${CXXFLAGS}"
+				CXXFLAGS_RELEASE=
+				LINK="$(tc-getCXX)"
+				LINK_SHLIB="$(tc-getCXX)"
+				LFLAGS="${LDFLAGS}"
+				LFLAGS_RELEASE=
+				RANLIB=
+				STRIP=
+			)
+			pyqt_run configure.py "${mycompatconf[@]}" || die
+
+			popd >/dev/null || die
+		fi
+
+		myconf+=(
+			--sip-incdir="$(python_get_includedir)"
+			$(usex dbus '' --no-python-dbus)
+		)
+		pyqt_run "${S}"/configure-ng.py "${myconf[@]}" || die
 
 		eqmake4 -recursive ${PN}.pro
 	}
@@ -146,6 +177,13 @@ src_install() {
 		rm "${tmp_root}${EPREFIX}"/usr/bin/pyuic4 || die
 
 		multibuild_merge_root "${tmp_root}" "${D}"
+
+		if use compat; then
+			local compat_build_dir=${BUILD_DIR%/}-compat
+			python_moduleinto ${PN}
+			python_domodule "${compat_build_dir}"/pyqtconfig.py
+		fi
+
 		python_optimize
 	}
 	python_foreach_impl run_in_build_dir installation
