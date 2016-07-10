@@ -1,9 +1,0 @@
-diff -uNr smstools.ORIG/scripts/sendsms smstools/scripts/sendsms
---- smstools.ORIG/scripts/sendsms	2006-12-02 15:26:09.000000000 +0000
-+++ smstools/scripts/sendsms	2006-12-02 15:26:52.000000000 +0000
-@@ -26,3 +26,5 @@
- echo "" >> $FILE
- echo -n "$TEXT" >> $FILE
- 
-+chmod 660 $FILE
-+
