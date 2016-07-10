@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -17,7 +17,7 @@ IUSE="gnome"
 RDEPEND=">=sys-fs/fuse-2.3:=
 	>=net-fs/samba-3.2:=[smbclient(+)]
 	>=dev-libs/glib-2.30:=
-	gnome? ( gnome-base/gnome-keyring:= )"
+	gnome? ( gnome-base/libgnome-keyring:= )"
 
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
