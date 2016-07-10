@@ -25,7 +25,7 @@ SRC_URI="http://www.opensource.apple.com/tarballs/ld64/${LD64}.tar.gz
 	http://dev.gentoo.org/~grobian/distfiles/${PN}-patches-7.0-r1.tar.bz2"
 
 LICENSE="APSL-2"
-KEYWORDS="~x64-macos ~x86-macos"
+KEYWORDS="~ppc-macos ~x64-macos ~x86-macos"
 IUSE="test multitarget"
 
 # ld64 can now only be compiled using llvm and libc++ since it massivley uses
