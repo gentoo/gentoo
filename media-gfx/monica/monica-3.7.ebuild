@@ -22,6 +22,7 @@ src_prepare() {
 	epatch \
 		"${FILESDIR}"/${PN}-3.6-makefile-cleanup.patch \
 		"${FILESDIR}"/${P}-gcc44.patch
+	eapply_user
 
 	emake clean
 }
