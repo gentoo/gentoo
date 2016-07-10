@@ -17,7 +17,7 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux"
 IUSE="gtk3 +vte"
 
-RDEPEND=">=dev-libs/glib-2.28:2
+RDEPEND=">=dev-libs/glib-2.32:2
 	!gtk3? (
 		>=x11-libs/gtk+-2.24:2
 		vte? ( x11-libs/vte:0 )
