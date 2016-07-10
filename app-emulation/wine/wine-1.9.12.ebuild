@@ -21,9 +21,9 @@ else
 	KEYWORDS="-* ~amd64 ~x86 ~x86-fbsd"
 fi
 
-GV="2.47"
+GV="2.44"
 MV="4.6.3"
-STAGING_GV="2.47"
+STAGING_GV="2.47-beta1"
 STAGING_MV="4.6.3"
 [[ ${MAJOR_V} == "1.8" ]] && SUFFIX="-unofficial"
 STAGING_P="wine-staging-${PV}"
@@ -312,6 +312,7 @@ src_prepare() {
 		"${FILESDIR}"/${PN}-1.9.5-multilib-portage.patch #395615
 		"${FILESDIR}"/${PN}-1.7.12-osmesa-check.patch #429386
 		"${FILESDIR}"/${PN}-1.6-memset-O3.patch #480508
+		"${FILESDIR}"/${PN}-1.8-gnutls-3.5-compat.patch #587028
 	)
 	if use staging; then
 		ewarn "Applying the Wine-Staging patchset. Any bug reports to the"

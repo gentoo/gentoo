@@ -6,7 +6,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit flag-o-matic python-r1
+inherit flag-o-matic python-r1 qmake-utils
 
 MY_P="PyQwt-${PV}"
 DESCRIPTION="Python bindings for the Qwt library"
@@ -20,16 +20,16 @@ IUSE="debug doc examples svg"
 
 RDEPEND="
 	x11-libs/qwt:5[svg?]
-	dev-python/PyQt4[${PYTHON_USEDEP}]
-	dev-python/numpy[${PYTHON_USEDEP}]"
-DEPEND="${DEPEND}
-	dev-python/sip[${PYTHON_USEDEP}]
-	~dev-python/PyQt4-4.11.1[${PYTHON_USEDEP}]
+	|| ( >=dev-python/PyQt4-4.11.2-r1[${PYTHON_USEDEP},compat(-)] <dev-python/PyQt4-4.11.2-r1[${PYTHON_USEDEP}] )
+	dev-python/numpy[${PYTHON_USEDEP}]
+	dev-python/sip[${PYTHON_USEDEP}]"
+DEPEND="${RDEPEND}
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )"
 
 S="${WORKDIR}/${MY_P}/configure"
 
 src_prepare() {
+	sed -i -e "s|configuration.qt_dir, 'bin'|'$(qt4_get_bindir)'|" configure.py || die
 	python_copy_sources
 	append-flags -fPIC
 }
