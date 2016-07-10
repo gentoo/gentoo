@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 EGIT_REPO_URI="https://github.com/mgorny/${PN}.git"
 
@@ -31,6 +31,7 @@ DEPEND="${RDEPEND}
 # libnetlink is static only ATM
 
 src_prepare() {
+	default
 	eautoreconf
 }
 
