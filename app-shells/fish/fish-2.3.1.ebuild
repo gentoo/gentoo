@@ -6,11 +6,9 @@ EAPI=6
 
 PYTHON_COMPAT=( python{2_7,3_3,3_4,3_5} )
 
-inherit autotools
-
 DESCRIPTION="fish is the Friendly Interactive SHell"
 HOMEPAGE="http://fishshell.com/"
-SRC_URI="https://github.com/fish-shell/fish-shell/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="http://fishshell.com/files/${PV}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -23,13 +21,6 @@ DEPEND="sys-libs/ncurses:0=
 	X? ( x11-misc/xsel )"
 
 RDEPEND="${DEPEND}"
-
-S="${WORKDIR}/${PN}-shell-${PV}"
-
-src_prepare() {
-	default
-	eautoreconf
-}
 
 src_configure() {
 	# Set things up for fish to be a default shell.
