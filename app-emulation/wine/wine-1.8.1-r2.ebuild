@@ -262,6 +262,10 @@ pkg_pretend() {
 
 pkg_setup() {
 	wine_build_environment_check || die
+	if use staging; then
+		GV=${STAGING_GV}
+		MV=${STAGING_MV}
+	fi
 }
 
 src_unpack() {
