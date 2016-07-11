@@ -9242,7 +9242,7 @@ dev-ruby/safe_yaml 1.0.4 1.0.4-r2: Parse YAML safely, alternative implementation
 dev-ruby/samuel 0.3.3-r1 0.3.3-r2: An automatic logger for HTTP requests in Ruby
 dev-ruby/sanitize 2.0.6-r1 2.1.0 4.0.0-r1 4.0.1: Sanitize is a whitelist-based HTML sanitizer
 dev-ruby/sass 3.2.19-r1 3.2.19-r2 3.3.14-r1 3.4.15 3.4.21 3.4.22: An extension of CSS3, adding nested rules, variables, mixins, and more
-dev-ruby/sass-rails 3.2.6 4.0.5 5.0.4-r1 5.0.5: Official Ruby-on-Rails Integration with Sass
+dev-ruby/sass-rails 3.2.6 4.0.5 5.0.4-r1 5.0.5 5.0.5-r1: Official Ruby-on-Rails Integration with Sass
 dev-ruby/sawyer 0.7.0: Secret User Agent of HTTP
 dev-ruby/sdoc 0.4.1: rdoc generator html with javascript search index
 dev-ruby/seed-fu 2.3.5 2.3.6: Advanced seed data handling for Rails
