@@ -9,11 +9,6 @@
 >=app-editors/gedit-3.20 spell
 
 # Davide Pesavento <pesa@gentoo.org> (06 Jun 2016)
-# Requires media-libs/phonon[qt5], masked below
-app-office/texstudio qt5
-net-irc/quassel qt5
-
-# Davide Pesavento <pesa@gentoo.org> (06 Jun 2016)
 # Requires unkeyworded dev-qt/qtmultimedia:5
 media-plugins/audacious-plugins qt5
 net-analyzer/wireshark qt5
@@ -27,16 +22,6 @@ app-office/texmaker qt5
 app-text/kchmviewer qt5
 dev-qt/designer webkit
 net-irc/quassel webkit
-
-# Davide Pesavento <pesa@gentoo.org> (06 Jun 2016)
-# Requires unkeyworded dev-qt/qtx11extras:5 (bug 584860)
-app-office/lyx qt5
-media-libs/phonon qt5
-media-libs/phonon-gstreamer qt5
-media-libs/phonon-vlc qt5
-media-sound/qsynth qt5
-media-video/vlc qt5
-x11-themes/qtcurve qt5
 
 # Ian Delaney <idella4@gentoo.org> (06 Apr 2016)
 # on behalf of Ilya Tumaykin <itumaykin+gentoo@gmail.com>
