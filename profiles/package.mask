@@ -30,6 +30,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Anthony G. Basile <blueness@gentoo.org> (11 Jul 2016)
+# Upstream is in bad shape, bug #585726
+net-dns/namecoind
+net-dns/namecoin-qt
+
 # Kent Fredric <kentnl@gentoo.org> (10 Jul 2016)
 # Only produces Segfaults since Perl 5.20 (#588528), upstream
 # dead. Masked for removal in 30 days.
