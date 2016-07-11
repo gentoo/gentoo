@@ -47,7 +47,6 @@ x11-libs/gksu gnome
 # Chí-Thanh Christopher Nguyễn (11 Jul 2016)
 # Requires media-libs/phonon[qt5], masked below
 =app-office/texstudio-2.10.2 qt5
-=net-irc/quassel-0.12.2-r3 qt5
 
 # Chí-Thanh Christopher Nguyễn (11 Jul 2016)
 # Requires unstable dev-qt/qtx11extras:5 (bug 585228)
