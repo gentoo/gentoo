@@ -11,7 +11,7 @@ else
 	MY_PV="${PV/_/-}"
 	EGIT_COMMIT="v${MY_PV}"
 	SRC_URI="https://${EGO_PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64"
+	KEYWORDS="~amd64 ~ppc64"
 	inherit golang-vcs-snapshot
 fi
 

@@ -10,7 +10,7 @@ if [[ ${PV} == *9999 ]]; then
 else
 	EGIT_COMMIT=14e7949
 	SRC_URI="https://${EGO_PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64"
+	KEYWORDS="~amd64 ~ppc64"
 	inherit golang-vcs-snapshot
 fi
 
