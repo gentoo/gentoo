@@ -21,8 +21,8 @@ else
 	KEYWORDS="-* ~amd64 ~x86 ~x86-fbsd"
 fi
 
-GV="2.44"
-MV="4.6.0"
+VANILLA_GV="2.44"
+VANILLA_MV="4.6.0"
 STAGING_GV="2.44"
 STAGING_MV="4.6.0"
 [[ ${MAJOR_V} == "1.8" ]] && SUFFIX="-unofficial"
@@ -34,10 +34,10 @@ HOMEPAGE="http://www.winehq.org/"
 SRC_URI="${SRC_URI}
 	!staging? (
 		gecko? (
-			abi_x86_32? ( https://dl.winehq.org/wine/wine-gecko/${GV}/wine_gecko-${GV}-x86.msi )
-			abi_x86_64? ( https://dl.winehq.org/wine/wine-gecko/${GV}/wine_gecko-${GV}-x86_64.msi )
+			abi_x86_32? ( https://dl.winehq.org/wine/wine-gecko/${VANILLA_GV}/wine_gecko-${VANILLA_GV}-x86.msi )
+			abi_x86_64? ( https://dl.winehq.org/wine/wine-gecko/${VANILLA_GV}/wine_gecko-${VANILLA_GV}-x86_64.msi )
 		)
-		mono? ( https://dl.winehq.org/wine/wine-mono/${MV}/wine-mono-${MV}.msi )
+		mono? ( https://dl.winehq.org/wine/wine-mono/${VANILLA_MV}/wine-mono-${VANILLA_MV}.msi )
 	)
 	staging? (
 		gecko? (
@@ -259,7 +259,10 @@ pkg_pretend() {
 
 pkg_setup() {
 	wine_build_environment_check || die
-	if use staging; then
+	if ! use staging; then
+		GV=${VANILLA_GV}
+		MV=${VANILLA_MV}
+	else
 		GV=${STAGING_GV}
 		MV=${STAGING_MV}
 	fi
@@ -342,7 +345,7 @@ src_prepare() {
 	# hi-res default icon, #472990, http://bugs.winehq.org/show_bug.cgi?id=24652
 	cp "${WORKDIR}"/${WINE_GENTOO}/icons/oic_winlogo.ico dlls/user32/resources/ || die
 
-	l10n_get_locales > po/LINGUAS # otherwise wine doesn't respect LINGUAS
+	l10n_get_locales > po/LINGUAS || die # otherwise wine doesn't respect LINGUAS
 }
 
 src_configure() {
