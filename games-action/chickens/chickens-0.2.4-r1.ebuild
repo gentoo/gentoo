@@ -44,6 +44,7 @@ src_prepare() {
 }
 
 src_configure() {
+	# econf (sometimes) fails, see https://bugs.gentoo.org/588544
 	bash ./configure || die
 }
 
