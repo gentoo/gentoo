@@ -14194,7 +14194,7 @@ net-im/silc-toolkit 1.1.10: SDK for the SILC protocol
 net-im/simpserver-bin 2.1.0-r2: SimpServer for Unix: IM instant security transparent proxy
 net-im/skype 4.3.0.37-r5 4.3.0.37-r6: P2P Internet Telephony (VoiceIP) client
 net-im/skypetab-ng 0.5.2 0.5.2_p20150201 9999: An LD_PRELOAD wrapper that adds tabs to Skype for Linux
-net-im/telegram-desktop-bin 0.9.51: Official desktop client for Telegram (binary package)
+net-im/telegram-desktop-bin 0.9.51 0.9.56: Official desktop client for Telegram (binary package)
 net-im/telepathy-connection-managers 2-r2: Meta-package for Telepathy Connection Managers
 net-im/telepathy-logger 0.8.1 0.8.2: Telepathy Logger is a session daemon that should be activated whenever telepathy is being used
 net-im/telepathy-mission-control 5.16.3 5.16.3-r1: An account manager and channel dispatcher for the Telepathy framework
