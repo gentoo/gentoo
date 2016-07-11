@@ -15,17 +15,19 @@ KEYWORDS="amd64 x86"
 IUSE=""
 
 COMMON_DEPEND="sys-apps/dbus
-        !sys-apps/hal"
+	!sys-apps/hal"
 RDEPEND="${COMMON_DEPEND}
-        sys-fs/udisks"
+	sys-fs/udisks"
 DEPEND="${COMMON_DEPEND}
-        virtual/pkgconfig"
+	virtual/pkgconfig"
 
 DOCS="README"
 
-src_prepare() { eautoreconf; eapply_user; }
+src_prepare() {
+	eautoreconf; eapply_user;
+}
 
 src_install() {
-        default
-        prune_libtool_files
+	default
+	prune_libtool_files
 }
