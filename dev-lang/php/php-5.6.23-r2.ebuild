@@ -255,7 +255,7 @@ php_install_ini() {
 	dodir "${PHP_EXT_INI_DIR#${EPREFIX}}"
 	dodir "${PHP_EXT_INI_DIR_ACTIVE#${EPREFIX}}"
 
-	if use_if_iuse opcache; then
+	if use opcache; then
 		elog "Adding opcache to $PHP_EXT_INI_DIR"
 		echo "zend_extension=${PHP_DESTDIR}/$(get_libdir)/opcache.so" >> \
 			 "${D}/${PHP_EXT_INI_DIR}"/opcache.ini
@@ -666,7 +666,8 @@ src_install() {
 	done
 
 	# Installing opcache module
-	if use_if_iuse opcache ; then
+	if use opcache ; then
+		into "${PHP_DESTDIR#${EPREFIX}}"
 		dolib.so "modules/opcache$(get_libname)"
 	fi
 
