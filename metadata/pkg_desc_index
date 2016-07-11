@@ -5039,7 +5039,7 @@ dev-ml/async_unix 113.24.00 113.33.00: Jane Street Capital's asynchronous execut
 dev-ml/batteries 2.4.0 2.5.2: The community-maintained foundation library for your OCaml projects
 dev-ml/bignum 113.24.00 113.33.00: Core-flavoured wrapper around zarith's arbitrary-precision rationals
 dev-ml/bin-prot 113.24.00 113.33.00: A binary protocol generator
-dev-ml/biniou 1.0.9: A binary data serialization format inspired by JSON for OCaml
+dev-ml/biniou 1.0.9 1.0.12: A binary data serialization format inspired by JSON for OCaml
 dev-ml/bolt 1.4: Logging tool for the Objective Caml language
 dev-ml/bson 0.89.3: An ocaml implementation for bson
 dev-ml/cairo-ocaml 1.2.0: Ocaml bindings for the cairo vector graphics library
@@ -5117,7 +5117,7 @@ dev-ml/ocaml-make 6.37.0: Generic O'Caml Makefile for GNU Make
 dev-ml/ocaml-mysql 1.1.1 1.2.0: A package for ocaml that provides access to mysql databases
 dev-ml/ocaml-pcap 0.4.0: Read and write pcap-formatted network packet traces.
 dev-ml/ocaml-re 1.5.0 1.6.0 1.6.1: Regular expression library for OCaml
-dev-ml/ocaml-redis 0.2.3: Redis bindings for OCaml
+dev-ml/ocaml-redis 0.2.3 0.3.0: Redis bindings for OCaml
 dev-ml/ocaml-safepass 1.2: A library offering facilities for the safe storage of user passwords
 dev-ml/ocaml-sha 1.8 1.9: A binding for SHA interface code in OCaml
 dev-ml/ocaml-sqlite3 4.0.3 4.0.4 4.0.5: A package for ocaml that provides access to SQLite databases
@@ -14964,7 +14964,7 @@ net-misc/whatmask 1.2-r1: little C program to compute different subnet mask nota
 net-misc/whatportis 0.2 0.3 0.4 0.5 0.6: A command to search port names and numbers
 net-misc/whois 5.0.25 5.0.26 5.1.5 5.2.11 5.2.12: improved Whois Client
 net-misc/wicd 1.7.3-r2 1.7.4-r1: A lightweight wired and wireless network manager for Linux
-net-misc/wireguard 0.0.20160708.1 9999: Simple yet fast and modern VPN that utilizes state-of-the-art cryptography.
+net-misc/wireguard 0.0.20160711 9999: Simple yet fast and modern VPN that utilizes state-of-the-art cryptography.
 net-misc/wol 0.7.1-r1: Wake up hardware that is Magic Packet compliant
 net-misc/wput 0.6.1: A tiny, wget-alike program, that is designed to upload files/whole directories to remote ftp-servers
 net-misc/x11-ssh-askpass 1.2.4.1-r1: X11-based passphrase dialog for use with OpenSSH
