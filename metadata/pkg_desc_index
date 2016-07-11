@@ -209,7 +209,7 @@ app-admin/syslog-ng 3.4.8 3.6.2 3.6.4 3.7.2 3.7.3: syslog replacement with advan
 app-admin/syslog-summary 1.14-r1: Summarizes the contents of a syslog log file
 app-admin/syslogread 0.92-r1: Syslog message handling tools
 app-admin/sysrqd 14: daemon providing access to the kernel sysrq functions via network
-app-admin/sysstat 11.0.2 11.2.2 11.2.4-r1 11.2.5 11.3.4-r1 11.3.5: System performance tools for Linux
+app-admin/sysstat 11.0.2 11.2.2 11.2.4-r1 11.2.5 11.3.5: System performance tools for Linux
 app-admin/system-config-printer 1.4.8: GNOME frontend for a Red Hat's printer administration tool
 app-admin/system-tools-backends 2.10.2: Tools aimed to make easy the administration of UNIX systems
 app-admin/systemrescuecd-x86 4.4.1 4.5.0 4.5.1 4.5.2 4.5.3 4.5.4 4.6.0 4.6.1 4.7.0 4.7.1 4.7.2 4.7.3 4.8.0: The .iso image of SystemRescueCD rescue disk, x86 (+ amd64) variant
@@ -9281,7 +9281,7 @@ dev-ruby/sqlite3 1.3.10 1.3.10-r1 1.3.11: An extension library to access a SQLit
 dev-ruby/sshkit 1.10.0 1.11.0: SSHKit makes it easy to write structured, testable SSH commands in Ruby
 dev-ruby/stamp 0.5.0-r1 0.6.0: Date and time formatting for humans
 dev-ruby/state_machine 1.2.0: Adds support for creating state machines for attributes on any Ruby class
-dev-ruby/stomp 1.3.4 1.3.5 1.4.0: Ruby bindings for the stomp messaging protocol
+dev-ruby/stomp 1.3.4 1.3.5 1.4.0 1.4.1: Ruby bindings for the stomp messaging protocol
 dev-ruby/stringex 2.5.2 2.6.0 2.6.0-r1: Extensions for Ruby's String class
 dev-ruby/subexec 0.2.3-r1: Subexec spawns an external command with a timeout
 dev-ruby/syntax 1.2.0-r1: Syntax highlighting for sourcecode and HTML
@@ -9317,7 +9317,7 @@ dev-ruby/trollop 1.16.2-r4 2.0 2.1.2: Trollop is a commandline option parser for
 dev-ruby/ttfunk 1.2.1 1.4.0: A TrueType font parser written in pure ruby
 dev-ruby/turbolinks 2.5.3: Makes following links in your web application faster
 dev-ruby/twitter 5.16.0: Ruby wrapper around the Twitter API
-dev-ruby/twitter-text 1.13.3 1.13.4: Text handling for Twitter
+dev-ruby/twitter-text 1.13.3 1.13.4 1.14.0: Text handling for Twitter
 dev-ruby/typed-array 0.1.2-r1: Gem provides enforced-type functionality to Arrays
 dev-ruby/typhoeus 1.0.1 1.0.2: Runs HTTP requests in parallel while cleanly encapsulating handling logic
 dev-ruby/tzinfo 0.3.43 0.3.44 0.3.48 1.2.2: Daylight-savings aware timezone library
@@ -9704,7 +9704,7 @@ dev-util/cyclo 2.1.0: Computes cyclomatic complexity metrics on C source code.
 dev-util/d-feet 0.3.10 0.3.11: D-Feet is a powerful D-Bus debugger
 dev-util/dbus-test-runner 12.10.1: Run executables under a new DBus session for testing
 dev-util/ddd 3.3.12-r3 3.3.12-r4: Graphical front-end for command-line debuggers
-dev-util/debhelper 9.20150101 9.20160403: Collection of programs that can be used to automate common tasks in debian/rules
+dev-util/debhelper 9.20150101 9.20160403 9.20160709: Collection of programs that can be used to automate common tasks in debian/rules
 dev-util/debootstrap 1.0.75 1.0.80 1.0.81: Debian/Ubuntu bootstrap scripts
 dev-util/debugedit 5.3.5-r1: standalone debugedit taken from rpm
 dev-util/dejagnu 1.4.4-r3 1.5: framework for testing other programs
