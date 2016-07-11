@@ -5,6 +5,10 @@
     <email>ottxor@gentoo.org</email>
     <name>Christoph Junghans</name>
   </maintainer>
+  <maintainer type="person">
+	  <email>alexxy@gentoo.org</email>
+	  <name>Alexey Shvetsov</name>
+  </maintainer>
   <maintainer type="project">
     <email>sci-chemistry@gentoo.org</email>
     <name>Gentoo Chemistry Project</name>

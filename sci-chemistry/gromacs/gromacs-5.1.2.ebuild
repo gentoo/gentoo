@@ -1,12 +1,12 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 CMAKE_MAKEFILE_GENERATOR="ninja"
 
-inherit bash-completion-r1 cmake-utils cuda eutils multilib readme.gentoo toolchain-funcs
+inherit bash-completion-r1 cmake-utils cuda eutils multilib readme.gentoo-r1 toolchain-funcs
 
 if [[ $PV = *9999* ]]; then
 	EGIT_REPO_URI="git://git.gromacs.org/gromacs.git
