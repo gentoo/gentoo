@@ -314,7 +314,7 @@ src_prepare() {
 	# hi-res default icon, #472990, http://bugs.winehq.org/show_bug.cgi?id=24652
 	cp "${WORKDIR}"/${WINE_GENTOO}/icons/oic_winlogo.ico dlls/user32/resources/ || die
 
-	l10n_get_locales > po/LINGUAS # otherwise wine doesn't respect LINGUAS
+	l10n_get_locales > po/LINGUAS || die # otherwise wine doesn't respect LINGUAS
 }
 
 src_configure() {
