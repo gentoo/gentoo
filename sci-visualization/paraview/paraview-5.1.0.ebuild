@@ -77,6 +77,7 @@ RDEPEND="
 	tk? ( dev-lang/tk:0= )"
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
+	>=dev-util/cmake-3.3.1
 	boost? ( >=dev-libs/boost-1.40.0[mpi?,${PYTHON_USEDEP}] )
 	doc? ( app-doc/doxygen )"
 
@@ -91,7 +92,8 @@ src_prepare() {
 	# see patch headers for description
 	epatch "${FILESDIR}"/${PN}-4.0.1-xdmf-cstring.patch \
 		"${FILESDIR}"/${PN}-4.3.1-fix-development-install.patch \
-		"${FILESDIR}"/${PN}-4.4.0-removesqlite.patch
+		"${FILESDIR}"/${PN}-4.4.0-removesqlite.patch \
+		"${FILESDIR}"/${P}-only-require-cmake-3.3.patch
 
 	# lib64 fixes
 	sed -i \
