@@ -5400,7 +5400,7 @@ dev-perl/Convert-Color 0.80.0-r1: Color space conversions and named lookups
 dev-perl/Convert-TNEF 0.180.0-r1: A Perl module for reading TNEF files
 dev-perl/Convert-UUlib 1.400.0-r1 1.400.0-r2 1.500.0: A Perl interface to the uulib library
 dev-perl/Cookie-Baker 0.60.0: Cookie string generator / parser
-dev-perl/Coro 6.480.100: The only real threads in perl
+dev-perl/Coro 6.480.100 6.511.0: The only real threads in perl
 dev-perl/Crypt-Blowfish 2.140.0-r1: Crypt::Blowfish module for perl
 dev-perl/Crypt-CAST5_PP 1.40.0-r1: CAST5 block cipher in pure Perl
 dev-perl/Crypt-CBC 2.330.0-r1: Encrypt Data with Cipher Block Chaining Mode

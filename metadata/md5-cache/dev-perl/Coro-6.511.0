@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=>=dev-perl/AnyEvent-5 >=dev-perl/Guard-0.500.0 virtual/perl-Scalar-List-Utils >=virtual/perl-Storable-2.150.0 dev-perl/common-sense dev-perl/Canary-Stability >=virtual/perl-ExtUtils-MakeMaker-6.520.0 dev-lang/perl:=
+DESCRIPTION=The only real threads in perl
+EAPI=6
+HOMEPAGE=http://search.cpan.org/dist/Coro/
+IUSE=vanilla
+KEYWORDS=~amd64 ~x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=>=dev-perl/AnyEvent-5 >=dev-perl/Guard-0.500.0 virtual/perl-Scalar-List-Utils >=virtual/perl-Storable-2.150.0 dev-perl/common-sense dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/M/ML/MLEHMANN/Coro-6.511.tar.gz
+_eclass_exported_funcs=src_prepare:- src_configure:perl-module src_compile:perl-module src_test:perl-module src_install:perl-module
+_eclasses_=multiprocessing	e32940a7b2a9992ad217eccddb84d548	perl-functions	aac50de73be0a80ebe780e0b20850130	perl-module	c584f9e0fe426f3dcc2c46c6f7cb95ce
+_md5_=109c740926c8e2ac974b2e9ec3d3d2b3
