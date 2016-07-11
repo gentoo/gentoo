@@ -4876,6 +4876,7 @@ media-video/smplayer:autoshutdown - Enable the option to shutdown your computer 
 media-video/smplayer:mpris - Enable support for MPRIS2 (Media Player Remote Interfacing Specification, version 2), a DBus interface for remote control, which requires dev-qt/qtdbus as dependency.
 media-video/smplayer:streaming - Support for streaming video sites through net-misc/youtube-dl (MPV only).
 media-video/smtube:qt5 - Build using Qt 5 instead of Qt 4
+media-video/subtitlecomposer:mpv - Build mpv backend support
 media-video/totem:lirc - Enable support for controlling Totem with a remote control using app-misc/lirc
 media-video/totem:nautilus - Enable the nautilus extension
 media-video/totem:python - Build support for dev-lang/python plugins
