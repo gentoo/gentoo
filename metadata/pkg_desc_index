@@ -1391,7 +1391,7 @@ app-eselect/eselect-fontconfig 1.0 1.1 1.1-r1: An eselect module to manage /etc/
 app-eselect/eselect-gnat 1.3-r1 1.4 1.4-r1 1.5 1.5-r1: gnat module for eselect
 app-eselect/eselect-gnome-shell-extensions 20120911: Manages system defaults for GNOME Shell extensions
 app-eselect/eselect-infinality 1: Eselect module to choose an infinality font configuration style
-app-eselect/eselect-java 0.2.0: A set of eselect modules for Java
+app-eselect/eselect-java 0.2.0 0.2.0-r1: A set of eselect modules for Java
 app-eselect/eselect-lapack 0.1: LAPACK module for eselect
 app-eselect/eselect-lcdfilter 1 2: Eselect module to choose Freetype infinality-enhanced LCD filtering settings
 app-eselect/eselect-lib-bin-symlink 0.1 0.1.1 9999: An eselect library to manage executable symlinks
