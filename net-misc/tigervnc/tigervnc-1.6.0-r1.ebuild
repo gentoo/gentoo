@@ -94,6 +94,8 @@ src_prepare() {
 }
 
 src_configure() {
+	use arm || use hppa && append-flags "-fPIC"
+
 	local mycmakeargs=(
 		-DENABLE_GNUTLS=$(usex gnutls)
 		-DENABLE_PAM=$(usex pam)
