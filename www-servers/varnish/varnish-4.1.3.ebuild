@@ -14,7 +14,7 @@ SRC_URI="http://repo.varnish-cache.org/source/${P}.tar.gz"
 
 LICENSE="BSD-2 GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~mips ~x86"
+KEYWORDS="~amd64 ~mips ~ppc ~ppc64 ~x86"
 IUSE="jemalloc jit static-libs"
 
 CDEPEND="
