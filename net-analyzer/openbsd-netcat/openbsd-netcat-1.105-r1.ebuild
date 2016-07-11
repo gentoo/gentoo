@@ -4,7 +4,7 @@
 
 EAPI=6
 
-inherit toolchain-funcs flag-o-matic
+inherit toolchain-funcs eutils
 
 DESCRIPTION="The OpenBSD network swiss army knife"
 HOMEPAGE="http://www.openbsd.org/cgi-bin/cvsweb/src/usr.bin/nc/"
@@ -29,10 +29,8 @@ PATCHES=( "${WORKDIR}/debian/patches" )
 src_prepare() {
 	default
 	if [[ ${CHOST} == *-darwin* ]] ; then
-		# Darwin = BSD, so remove libbsd dependency
-		sed -i -e '/#include/s|bsd/||' -e 's/strtonum/strtoimax/' *.[ch] || die
-		# Clang defaults to C99, but strtoimax isn't in C99
-		append-flags -DIPTOS_LOWCOST=0x02 -std=c89
+		# this undoes some of the Debian/Linux changes
+		epatch "${FILESDIR}"/${P}-darwin.patch
 	fi
 }
 
