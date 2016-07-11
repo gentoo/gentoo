@@ -30,7 +30,7 @@ DEPEND="
 	)
 	test? (
 		$(python_gen_cond_dep 'dev-python/mock[${PYTHON_USEDEP}]' python2_7)
-		dev-python/nose[${PYTHON_USEDEP}]
+		dev-python/pytest-cov[${PYTHON_USEDEP}]
 		)
 	"
 
@@ -48,7 +48,7 @@ python_compile_all() {
 }
 
 python_test() {
-	nosetests --verbosity=3 traitlets || die
+	py.test --cov traitlets -v traitlets || die
 }
 
 python_install_all() {
