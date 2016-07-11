@@ -43,6 +43,10 @@ src_prepare() {
 		configure || die
 }
 
+src_configure() {
+	bash ./configure || die
+}
+
 src_install() {
 	dobin ${PN}
 	insinto /usr/share/${PN}
