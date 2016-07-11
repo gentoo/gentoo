@@ -6517,7 +6517,7 @@ dev-perl/XML-Filter-DOMFilter-LibXML 0.20.0-r1 0.40.0: SAX Filter allowing DOM p
 dev-perl/XML-Generator 1.40.0-r1: Perl XML::Generator - A module to help in generating XML documents
 dev-perl/XML-Grove 0.46_alpha-r2: A Perl module providing a simple API to parsed XML instances
 dev-perl/XML-Handler-YAWriter 0.230.0-r1: A Perl module providing a simple API to parsed XML instances
-dev-perl/XML-LibXML 2.12.100 2.12.400: Perl binding for libxml2
+dev-perl/XML-LibXML 2.12.100 2.12.400 2.12.600: Perl binding for libxml2
 dev-perl/XML-LibXML-Iterator 1.40.0-r1: Iterator class for XML::LibXML parsed documents
 dev-perl/XML-LibXML-Simple 0.950.0 0.970.0: XML::LibXML based XML::Simple clone
 dev-perl/XML-LibXSLT 1.810.0-r1 1.870.0 1.920.0 1.940.0: A Perl module to parse XSL Transformational sheets using gnome's libXSLT
