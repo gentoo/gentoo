@@ -22,6 +22,7 @@ app-office/texmaker qt5
 app-text/kchmviewer qt5
 dev-qt/designer webkit
 net-irc/quassel webkit
+kde-plasma/libksysguard detailedmemory
 
 # Ian Delaney <idella4@gentoo.org> (06 Apr 2016)
 # on behalf of Ilya Tumaykin <itumaykin+gentoo@gmail.com>
