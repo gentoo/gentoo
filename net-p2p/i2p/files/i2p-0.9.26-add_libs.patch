@@ -1,6 +1,6 @@
 diff -Naur a/wrapper.config b/wrapper.config
---- a/wrapper.config	2016-02-07 23:19:48.714569016 +0100
-+++ b/wrapper.config	2016-02-07 23:20:37.523566840 +0100
+--- a/installer/resources/wrapper.config	2016-02-07 23:19:48.714569016 +0100
++++ b/installer/resources/wrapper.config	2016-02-07 23:20:37.523566840 +0100
 @@ -61,12 +61,18 @@
  # Be sure there are no other duplicate classes.
  #
