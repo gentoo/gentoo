@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="5"
+EAPI="6"
 
 inherit eutils java-pkg-2 java-ant-2 systemd user
 
@@ -15,7 +15,7 @@ SLOT="0"
 
 # Until the deps reach other arches
 KEYWORDS="~amd64 ~x86"
-IUSE="nls"
+IUSE="+ecdsa nls"
 
 # dev-java/ant-core is automatically added due to java-ant-2.eclass
 CDEPEND="dev-java/bcprov:1.50
@@ -27,21 +27,24 @@ CDEPEND="dev-java/bcprov:1.50
 
 DEPEND="${CDEPEND}
 	dev-java/eclipse-ecj:*
-	dev-libs/gmp:*
-	nls? ( sys-devel/gettext )
+	dev-libs/gmp:0
+	nls? ( >=sys-devel/gettext-0.19 )
 	>=virtual/jdk-1.7"
 
 RDEPEND="${CDEPEND}
-	|| (
-		dev-java/icedtea:7[-sunec]
-		dev-java/icedtea:8[-sunec]
-		dev-java/icedtea:7[nss,-sunec]
-		dev-java/icedtea-bin:7[nss]
-		dev-java/icedtea-bin:7
-		dev-java/icedtea-bin:8
-		dev-java/oracle-jre-bin
-		dev-java/oracle-jdk-bin
-	)"
+	ecdsa? (
+		|| (
+			dev-java/icedtea:7[-sunec]
+			dev-java/icedtea:8[-sunec]
+			dev-java/icedtea:7[nss,-sunec]
+			dev-java/icedtea-bin:7[nss]
+			dev-java/icedtea-bin:7
+			dev-java/icedtea-bin:8
+			dev-java/oracle-jre-bin
+			dev-java/oracle-jdk-bin
+		)
+	)
+	!ecdsa? ( >=virtual/jre-1.7 )"
 
 EANT_BUILD_TARGET="pkg"
 EANT_GENTOO_CLASSPATH="java-service-wrapper,jrobin,slf4j-api,tomcat-jstl-impl,tomcat-jstl-spec,bcprov-1.50"
@@ -49,7 +52,13 @@ JAVA_ANT_ENCODING="UTF-8"
 
 I2P_ROOT='/usr/share/i2p'
 I2P_CONFIG_HOME='/var/lib/i2p'
-I2P_CONFIG_DIR="${I2P_HOME}/.i2p"
+I2P_CONFIG_DIR="${I2P_CONFIG_HOME}/.i2p"
+
+RES_DIR='installer/resources'
+
+PATCHES=(
+	"${FILESDIR}/${P}-add_libs.patch"
+)
 
 pkg_setup() {
 	java-pkg-2_pkg_setup
@@ -68,39 +77,39 @@ src_prepare() {
 	java-pkg-2_src_prepare
 
 	# We're on GNU/Linux, we don't need .exe files
-	echo "noExe=true" > override.properties
+	echo "noExe=true" > override.properties || die
 	if ! use nls; then
-		echo "require.gettext=false" >> override.properties
+		echo "require.gettext=false" >> override.properties || die
 	fi
-}
-
-src_install() {
-	# Cd into pkg-temp.
-	cd "${S}/pkg-temp" || die
-
-	# add libs
-	epatch "${FILESDIR}/${P}_add-libs.patch"
 
 	# avoid auto starting browser
 	sed -i 's|clientApp.4.startOnLoad=true|clientApp.4.startOnLoad=false|' \
-		clients.config || die
+		"${RES_DIR}/clients.config" || die
+
+	# we do it now so we can resolve path after
+	default
 
 	# replace paths as the installer would
 	sed -i "s|%INSTALL_PATH|${I2P_ROOT}|" \
-		eepget i2prouter runplain.sh  || die
-	sed -i "s|\$INSTALL_PATH|${I2P_ROOT}|" wrapper.config || die
+		"${RES_DIR}/"{eepget,i2prouter,runplain.sh}  || die
+	sed -i "s|\$INSTALL_PATH|${I2P_ROOT}|" "${RES_DIR}/wrapper.config" || die
 	sed -i "s|%SYSTEM_java_io_tmpdir|${I2P_CONFIG_DIR}|" \
-		i2prouter runplain.sh || die
-	sed -i "s|%USER_HOME|${I2P_CONFIG_HOME}|" i2prouter || die
+		"${RES_DIR}/"{i2prouter,runplain.sh} || die
+	sed -i "s|%USER_HOME|${I2P_CONFIG_HOME}|" "${RES_DIR}/i2prouter" || die
+}
 
-	# This is ugly, but to satisfy all non-system .jar dependencies, jetty and
-	# systray4j would need to be packaged. The former would be too large a task
-	# for an unseasoned developer and systray4j hasn't been touched in over 10
-	# years. This seems to be the most pragmatic solution
+src_install() {
+	# cd into pkg-temp.
+	cd "${S}/pkg-temp" || die
+
+	# This is ugly, but to satisfy all non-system .jar dependencies, jetty
+	# would need to be packaged. It would be too large a task
+	# for an unseasoned developer. This seems to be the most pragmatic solution
 	java-pkg_jarinto "${I2P_ROOT}/lib"
+	local i
 	for i in BOB commons-el commons-logging i2p i2psnark i2ptunnel \
 		jasper-compiler jasper-runtime javax.servlet jbigi jetty* mstreaming org.mortbay.* router* \
-		sam standard streaming systray systray4j; do
+		sam standard streaming systray; do
 		java-pkg_dojar lib/${i}.jar
 	done
 
@@ -123,11 +132,11 @@ src_install() {
 	java-pkg_dowar webapps/*.war
 
 	# Install daemon files
-	newinitd "${FILESDIR}/${P}_initd" i2p
-	systemd_newunit "${FILESDIR}"/i2p.service i2p.service
+	newinitd "${FILESDIR}/${P}.initd" i2p
+	systemd_newunit "${FILESDIR}/${P}.service" i2p.service
 
 	# setup user
-	dodir "${I2P_CONFIG_DIR}"
+	keepdir "${I2P_CONFIG_DIR}"
 	fowners -R i2p:i2p "${I2P_CONFIG_DIR}"
 }
 
@@ -148,5 +157,4 @@ pkg_postinst() {
 	ewarn "This is purely a run-time issue. You're free to build i2p with any JDK, as long as"
 	ewarn 'the JVM you run it with is one of the above listed and from the same or a newer generation'
 	ewarn 'as the one you built with.'
-
 }
