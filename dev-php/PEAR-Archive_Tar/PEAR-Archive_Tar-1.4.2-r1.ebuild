@@ -14,10 +14,10 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
 IUSE=""
 SRC_URI="http://pear.php.net/get/${MY_P}.tgz"
-DEPEND=">=dev-lang/php-5.4:*[pcre(+)]
+DEPEND="dev-lang/php:*[pcre(+)]
 		>=dev-php/PEAR-PEAR-1.9.0
 "
-RDEPEND=">=dev-lang/php-5.4:*[bzip2,posix,zlib]
+RDEPEND="dev-lang/php:*[bzip2,zlib]
 	${DEPEND}"
 PDEPEND="dev-php/pear"
 HOMEPAGE="http://pear.php.net/package/Archive_Tar"
