@@ -79,9 +79,9 @@ DEPEND="
 	>=dev-haskell/hslogger-1.1.4:0=
 	<dev-haskell/hslogger-1.3:0=
 	>=dev-haskell/json-0.5:0=
-	<dev-haskell/json-1.0:0=
+	<dev-haskell/json-0.9:0=
 	>=dev-haskell/lens-3.10:0=
-	<=dev-haskell/lens-4.13.1:0=
+	<dev-haskell/lens-4.8:0=
 	>=dev-haskell/lifted-base-0.2.0.3:0=
 	<dev-haskell/lifted-base-0.3:0=
 	>=dev-haskell/monad-control-0.3.1.3:0=
