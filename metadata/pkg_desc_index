@@ -10109,7 +10109,7 @@ games-action/minetest_game 0.4.13 0.4.14: The main game for the Minetest game en
 games-action/moon-buggy 1.0.51 1.0.51-r1: A simple console game, where you drive a car across the moon's surface
 games-action/mutantstorm-demo 1.33: shoot through crazy psychedelic 3D environments
 games-action/nighthawk 2.2: A tribute to Paradroid by Andrew Braybrook
-games-action/noiz2sa 0.51a: Abstract Shooting Game
+games-action/noiz2sa 0.51a 0.51a-r1: Abstract Shooting Game
 games-action/openastromenace 1.3.2: Modern 3D space shooter with spaceship upgrade possibilities
 games-action/openclonk 7.0: A free multiplayer action game where you control clonks
 games-action/openlierox 0.58_rc3: Real-time excessive Worms-clone
