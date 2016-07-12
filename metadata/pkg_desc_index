@@ -6711,7 +6711,7 @@ dev-php/PEAR-Net_POP3 1.3.8: Provides a POP3 class to access POP3 server
 dev-php/PEAR-Net_Ping 2.4.5-r1: OS independent wrapper class for executing ping calls
 dev-php/PEAR-Net_SMTP 1.6.2 1.7.1: An implementation of the SMTP protocol
 dev-php/PEAR-Net_Server 1.0.2-r1 1.0.3: Generic server class for PHP
-dev-php/PEAR-Net_Sieve 1.3.2 1.3.3: Provides an API to talk to the timsieved server that comes with Cyrus IMAPd
+dev-php/PEAR-Net_Sieve 1.3.2 1.3.3 1.5.2: An API for talking to sieve (RFC 3028) servers
 dev-php/PEAR-Net_SmartIRC 1.1.4: Net_SmartIRC is a PHP class for communication with IRC networks
 dev-php/PEAR-Net_Socket 1.0.14: class interface to TCP sockets
 dev-php/PEAR-Net_Traceroute 0.21.3: OS independet wrapper class for executing traceroute calls
