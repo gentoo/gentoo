@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -9,7 +9,7 @@ PHP_EXT_INI="yes"
 PHP_EXT_ZENDEXT="no"
 
 # php5-6 fails to build
-USE_PHP="php5-5 php5-4"
+USE_PHP="php5-5"
 
 inherit php-ext-pecl-r2
 
@@ -22,7 +22,6 @@ IUSE=""
 
 # Specifying targets due to USE flag transition
 DEPEND="
-	php_targets_php5-4? ( dev-lang/php:5.4[mysqlnd] )
 	php_targets_php5-5? ( || (
 				 dev-lang/php:5.5[-libmysqlclient,mysql]
 				 dev-lang/php:5.5[-libmysqlclient,mysqli]
