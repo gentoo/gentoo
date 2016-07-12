@@ -4999,7 +4999,7 @@ dev-lisp/sbcl 1.1.18 1.1.18-r1 1.3.0 1.3.3 1.3.4 1.3.5 1.3.6: Steel Bank Common 
 dev-lisp/trivial-gray-streams 9999 20081102: A thin compatibility layer between Gray Stream Common Lisp implementations
 dev-lisp/uiop 3.0.3 3.1.4 3.1.5 3.1.6 3.1.7: UIOP is a portability layer spun off ASDF3
 dev-lua/LuaBitOp 1.0.1-r1 1.0.2 1.0.2-r1: Bit Operations Library for the Lua Programming Language
-dev-lua/busted 2.0_rc11_p0: Elegant Lua unit testing
+dev-lua/busted 2.0_rc11_p0 2.0_rc12_p1: Elegant Lua unit testing
 dev-lua/dkjson 2.5: David Kolf's JSON module for Lua
 dev-lua/lanes 3.10.0: lightweight, native, lazy evaluating multithreading library
 dev-lua/lgi 0.6.2 0.6.2-r1 0.7.2 0.9.0: Lua bindings using gobject-introspection
@@ -5008,7 +5008,7 @@ dev-lua/lua-cjson 2.1.0: A fast JSON encoding/parsing module for Lua
 dev-lua/lua-openssl 0.4.1-r1: OpenSSL binding for Lua
 dev-lua/lua-term 0.3: Terminal functions for Lua
 dev-lua/lua-zlib 0.3 0.4 0.4-r1: Lua bindings to zlib
-dev-lua/lua_cliargs 2.5_p5: A command-line argument parser.
+dev-lua/lua_cliargs 2.5_p5 3.0_p1: A command-line argument parser.
 dev-lua/luacov 0.8: LuaCov is a simple coverage analyzer for Lua scripts
 dev-lua/luacrypto 0.3.2-r1: Lua frontend to OpenSSL
 dev-lua/luadbi 0.5-r5: DBI module for Lua
@@ -5023,6 +5023,7 @@ dev-lua/luarocks 2.0.7.1 2.0.8 2.0.12 2.2.0: A deployment and management system 
 dev-lua/luasec 0.4.1 0.4.1_p20130620 0.5 0.5.1: Lua binding for OpenSSL library to provide TLS/SSL communication
 dev-lua/luasocket 2.0.2 3.0_rc1-r3: Networking support library for the Lua language
 dev-lua/luassert 1.7.9: Lua Assertions Extension
+dev-lua/luasystem 0.2.0_p0: platform independent system calls for lua
 dev-lua/luvit 0.7.0 0.8.2 9999: Takes node.js' architecture and dependencies and fits it in the Lua language
 dev-lua/mediator_lua 1.1.2_p0: Event handling through channels
 dev-lua/messagepack 0.3.2: A pure Lua implementation of the MessagePack serialization format
@@ -6915,7 +6916,7 @@ dev-python/aplpy 1.0: Astronomical Plotting Library in Python
 dev-python/appdirs 1.4.0: Module for determining appropriate platform-specific dirs
 dev-python/apptools 4.2.1 4.3.0: Enthought Tool Suite: Application tools
 dev-python/apse 0.2-r3: Approximate String Matching in Python
-dev-python/apsw 3.8.7.1_p1 3.8.10.1_p1 3.8.11.1_p1 3.9.2_p1-r1 3.11.1_p1: APSW - Another Python SQLite Wrapper
+dev-python/apsw 3.11.1_p1 3.13.0_p1: APSW - Another Python SQLite Wrapper
 dev-python/aquarium 2.3-r1: Aquarium web application framework
 dev-python/argcomplete 0.8.1 0.8.9 0.9.0 1.0.0 1.1.0 1.1.1: Bash tab completion for argparse
 dev-python/argh 0.25.0 0.26.0 0.26.1 0.26.2: A simple argparse wrapper
@@ -7172,7 +7173,7 @@ dev-python/doublex-expects 0.4.0 0.7.0_rc1 0.7.0_rc2: Expects matchers for Doubl
 dev-python/dpkt 1.8-r1: Fast, simple packet creation / parsing, with definitions for the basic TCP/IP protocols
 dev-python/dreampie 1.2.1: pygtk-based python shell
 dev-python/drpython 3.11.4: A powerful cross-platform IDE for Python
-dev-python/dugong 3.4 3.5: Python library for communicating with HTTP 1.1 servers
+dev-python/dugong 3.4 3.5 3.7: Python library for communicating with HTTP 1.1 servers
 dev-python/dulwich 0.9.9 0.12.0-r1 0.13.0: Pure-Python implementation of the Git file formats and protocols
 dev-python/dynd-python 0.6.5 0.6.6: Python exposure of multidimensionnal array library libdynd
 dev-python/easy-thumbnails 2.2: Easy thumbnails for Django
@@ -7452,7 +7453,7 @@ dev-python/libzilla 1.1: Library for managing Bugzilla bug reports from the CLI
 dev-python/line_profiler 1.0 9999: Line-by-line profiler
 dev-python/linecache2 1.0.0: Backports of the linecache module
 dev-python/livereload 2.3.2 2.4.0 2.4.1: Python LiveReload is an awesome tool for web developers
-dev-python/llfuse 0.40 0.41 0.42.1 0.43-r1 1.0: Python bindings for the low-level FUSE API
+dev-python/llfuse 0.40 0.41 0.42.1 0.43-r1 1.0 1.1: Python bindings for the low-level FUSE API
 dev-python/llvmlite 0.2.1 0.2.2 0.5.0 0.6.0 0.8.0 0.9.0 0.10.0 0.11.0: Python wrapper around the llvm C++ library
 dev-python/locket 0.2.0: File-based locks for Python
 dev-python/lockfile 0.11.0-r1 0.12.2: Platform-independent file locking module
@@ -17148,7 +17149,7 @@ sys-fs/extundelete 0.2.0-r1 0.2.0-r2 0.2.4: A utility to undelete files from an 
 sys-fs/f2fs-tools 1.6.0 1.6.1: Tools for Flash-Friendly File System (F2FS)
 sys-fs/fatsort 1.3: Sorts files on FAT16/32 partitions, ideal for basic audio players
 sys-fs/fur 0.5: A RAPI (SynCE) based FUSE module
-sys-fs/fuse 2.9.4 2.9.5 2.9.6: An interface for filesystems implemented in userspace
+sys-fs/fuse 2.9.4 2.9.5 2.9.6 2.9.7: An interface for filesystems implemented in userspace
 sys-fs/fuse-convmvfs 0.2.6: FUSE file system to convert filename charset
 sys-fs/fuse-exfat 1.0.1 1.1.0 1.2.3 1.2.4: exFAT filesystem FUSE module
 sys-fs/fuse-zip 0.3.0 0.4.0: FUSE file system to navigate, extract, create and modify ZIP archives
@@ -17212,7 +17213,7 @@ sys-fs/simple-mtpfs 0.1 0.2 9999: Simple MTP fuse filesystem driver
 sys-fs/snapraid 6.2 6.3 7.0 7.1 8.1 10.0: a backup program for disk array for home media centers
 sys-fs/squashfs-tools 3.2_p2 3.4 4.3 4.3-r1 4.3-r2: Tool for creating compressed filesystem type squashfs
 sys-fs/squashfuse 0.1_p20130530: FUSE filesystem to mount squashfs archives
-sys-fs/sshfs 2.5 2.7: Fuse-filesystem utilizing the sftp service
+sys-fs/sshfs 2.5 2.7 2.8: Fuse-filesystem utilizing the sftp service
 sys-fs/static-dev 0.1: A skeleton, statically managed /dev
 sys-fs/sysfsutils 2.1.0: System Utilities Based on Sysfs
 sys-fs/traydevice 1.6.2-r1: A little desktop application displaying systray icon for UDisks
