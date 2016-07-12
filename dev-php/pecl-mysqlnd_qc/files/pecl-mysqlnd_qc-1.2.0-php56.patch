@@ -1,0 +1,48 @@
+--- a/mysqlnd_qc.c	2013/09/17 08:28:58	331414
++++ b/mysqlnd_qc.c	2014/03/22 08:20:55	333056
+@@ -613,7 +613,11 @@
+ 
+ /* {{{ MYSQLND_METHOD(mysqlnd_qc, store_result) */
+ static MYSQLND_RES *
++#if PHP_VERSION_ID < 50600
+ MYSQLND_METHOD(mysqlnd_qc, store_result)(MYSQLND_CONN_DATA * const conn TSRMLS_DC)
++#else
++MYSQLND_METHOD(mysqlnd_qc, store_result)(MYSQLND_CONN_DATA * const conn, const unsigned int flags TSRMLS_DC)
++#endif
+ {
+ 	MYSQLND_RES * result;
+ 	uint64_t store_time;
+@@ -621,7 +625,11 @@
+ 	DBG_ENTER("mysqlnd_qc::store_result");
+ 
+ 	STATS_TIME_SET(store_time);
++#if PHP_VERSION_ID < 50600
+ 		result = QC_CALL_ORIGINAL_CONN_DATA_METHOD(store_result)(conn TSRMLS_CC);
++#else
++		result = QC_CALL_ORIGINAL_CONN_DATA_METHOD(store_result)(conn, flags TSRMLS_CC);
++#endif
+ 	STATS_TIME_DIFF(store_time);
+ 	MYSQLND_QC_INC_STATISTIC_W_VALUE(QC_STAT_QUERY_AGGR_STORE_TIME_TOTAL, (uint64_t)store_time);
+ 
+@@ -777,13 +785,21 @@
+ 
+ /* {{{ MYSQLND_METHOD(mysqlnd_qc, use_result) */
+ static MYSQLND_RES *
++#if PHP_VERSION_ID < 50600
+ MYSQLND_METHOD(mysqlnd_qc, use_result)(MYSQLND_CONN_DATA * const conn TSRMLS_DC)
++#else
++MYSQLND_METHOD(mysqlnd_qc, use_result)(MYSQLND_CONN_DATA * const conn, const unsigned int flags TSRMLS_DC)
++#endif
+ {
+ 	MYSQLND_RES * ret;
+ 	DBG_ENTER("mysqlnd_qc::use_result");
+ 	MYSQLND_QC_INC_STATISTIC_W_VALUE2(QC_STAT_MISS, 1, QC_STAT_QUERY_UNCACHED_USE_RESULT, 1);
+ 
++#if PHP_VERSION_ID < 50600
+ 	ret = QC_CALL_ORIGINAL_CONN_DATA_METHOD(use_result)(conn TSRMLS_CC);
++#else
++	ret = QC_CALL_ORIGINAL_CONN_DATA_METHOD(use_result)(conn, flags TSRMLS_CC);
++#endif
+ 	if (ret) {
+ 		QC_DECLARE_AND_LOAD_CONN_DATA(conn_data_pp, conn);
+ 
