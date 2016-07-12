@@ -1,0 +1,13 @@
+DEFINED_PHASES=install postinst test
+DEPEND=test? ( dev-php/phpunit )
+DESCRIPTION=The simple PHP template alternative to Smarty
+EAPI=6
+HOMEPAGE=https://github.com/saltybeagle/Savant3
+IUSE=minimal test
+KEYWORDS=~amd64 ~x86
+LICENSE=LGPL-2.1
+RDEPEND=dev-lang/php:* !minimal? ( >=dev-php/Savant3-Plugin-Form-0.2.1 )
+SLOT=0
+SRC_URI=https://github.com/saltybeagle/Savant3/archive/f3b4b70422bc743168d8e01443abc385d8acbef9.tar.gz
+_eclass_exported_funcs=pkg_postinst:- src_test:- src_install:-
+_md5_=f211c6875e2a0a7594c7212196bda025

@@ -6767,7 +6767,7 @@ dev-php/PHP_TokenStream 1.1.3: Wrapper around PHP's tokenizer extension
 dev-php/PHPonTrax 0.18.0: Web-application and persistance framework based on Ruby on Rails
 dev-php/SabreAMF 1.3.234: SabreAMF is a Flash Remoting server and client for PHP
 dev-php/Savant2 2.4.3-r1: The simple PHP template alternative to Smarty
-dev-php/Savant3 3.0.1: The simple PHP template alternative to Smarty
+dev-php/Savant3 3.0.1-r1: The simple PHP template alternative to Smarty
 dev-php/Savant3-Plugin-Form 0.2.1: The Form Plugin for Savant3
 dev-php/Text_Template 1.1.1: Simple template engine
 dev-php/YAML 1.0.6-r1: The Symfony YAML Component
