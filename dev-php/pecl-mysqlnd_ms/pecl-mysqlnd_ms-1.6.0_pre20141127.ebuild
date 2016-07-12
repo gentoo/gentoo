@@ -23,14 +23,15 @@ IUSE=""
 
 # Specifying targets due to USE flag transition
 DEPEND="
+	dev-libs/libxml2
 	php_targets_php5-5? ( || (
-				 dev-lang/php:5.5[-libmysqlclient,mysql]
-				 dev-lang/php:5.5[-libmysqlclient,mysqli]
+				 dev-lang/php:5.5[-libmysqlclient,mysql,json]
+				 dev-lang/php:5.5[-libmysqlclient,mysqli,json]
 				)
 			)
 	php_targets_php5-6? ( || (
-				 dev-lang/php:5.6[-libmysqlclient,mysql]
-				 dev-lang/php:5.6[-libmysqlclient,mysqli]
+				 dev-lang/php:5.6[-libmysqlclient,mysql,json]
+				 dev-lang/php:5.6[-libmysqlclient,mysqli,json]
 				)
 			)
 "
