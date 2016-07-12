@@ -41,7 +41,7 @@ HOMEPAGE="http://www.ganeti.org/"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="drbd haskell-daemons htools ipv6 kvm lxc monitoring multiple-users rbd syslog test xen"
+IUSE="drbd haskell-daemons htools ipv6 kvm lxc monitoring multiple-users rbd syslog test xen restricted-commands"
 
 REQUIRED_USE="|| ( kvm xen lxc )
 	test? ( ipv6 )
@@ -159,7 +159,7 @@ DEPEND+="
 		>=dev-haskell/quickcheck-2.4.2:2=
 		<dev-haskell/quickcheck-2.8.3:2=
 		sys-apps/fakeroot
-		net-misc/socat
+		>=net-misc/socat-1.7
 		dev-util/shelltestrunner
 	)"
 
@@ -251,6 +251,7 @@ src_configure () {
 		--with-ssh-initscript=/etc/init.d/sshd \
 		--with-export-dir=/var/lib/ganeti-storage/export \
 		--with-os-search-path=/usr/share/${PN}/os \
+		$(use_enable restricted-commands) \
 		$(use_enable test haskell-tests) \
 		$(usex multiple-users "--with-default-user=" "" "gnt-daemons" "") \
 		$(usex multiple-users "--with-user-prefix=" "" "${USER_PREFIX}" "") \
@@ -259,7 +260,10 @@ src_configure () {
 		$(use_enable syslog) \
 		$(use_enable monitoring) \
 		$(usex kvm '--with-kvm-path=' '' "/usr/bin/qemu-system-${kvm_arch}" '') \
-		$(usex haskell-daemons "--enable-confd=haskell" '' '' '')
+		$(usex haskell-daemons "--enable-confd=haskell" '' '' '') \
+		--with-haskell-flags="-optl -Wl,-z,relro -optl -Wl,--as-needed" \
+		--enable-socat-escape \
+		--enable-socat-compress
 }
 
 src_install () {
