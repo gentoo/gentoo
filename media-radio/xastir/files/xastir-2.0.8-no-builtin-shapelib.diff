@@ -1,0 +1,58 @@
+--- configure.ac.orig	2016-07-12 07:08:17.988160777 +0200
++++ configure.ac	2016-07-12 07:11:42.591138389 +0200
+@@ -382,27 +382,17 @@
+ 
+ # Check for Shapelib
+ use_shapelib=yes
+-force_internal_shapelib=no
+ shapelib_desired=yes
+ LIBSHP=""
+ SUBSHP=""
+ # This symbol will be blank if the proj library hasn't been found, and will
+ # have the three programs that need proj if it has
+ CONTSHP=""
+-AC_ARG_WITH(internal-shapelib,[  --with-internal-shapelib  Force use of internal shapelib library.],force_internal_shapelib=$withval)
+ AC_ARG_WITH(shapelib,[  --without-shapelib        Disable shapelib features.],shapelib_desired=$withval)
+ if test "${shapelib_desired}" = "no"; then
+   use_shapelib=no
+-  force_internal_shapelib=no
+ fi
+-if test "${force_internal_shapelib}" = "yes"; then
+-  AC_MSG_WARN([***************************************************************** ])  
+-  AC_MSG_WARN([Internal Shapelib library has been forced.                        ])
+-  AC_MSG_WARN([***************************************************************** ])
+-  # Temporary setting to get into if block below
+-  use_shapelib=no
+-fi
+-if test "${shapelib_desired}" = "yes" -a "${force_internal_shapelib}" = "no"; then
++if test "${shapelib_desired}" = "yes" ; then
+   use_shapelib=no
+   AC_CHECK_HEADERS(shapefil.h libshp/shapefil.h, [AC_CHECK_LIB(shp, DBFOpen, use_shapelib=yes
+     LIBS="$LIBS -lshp"
+@@ -411,26 +401,6 @@
+     AC_DEFINE(HAVE_LIBSHP, , Define to 1 if you have the `shp' library (-lshp). )
+     break)])
+ fi
+-if test "${shapelib_desired}" = "yes" -a "${use_shapelib}" = "no"; then
+- AC_MSG_WARN([**************************************************************** ])  
+- AC_MSG_WARN([Your system does not have shapelib installed.  Using an internal ])
+- AC_MSG_WARN([version.  This may lead to a larger filesize for the executable. ])
+- AC_MSG_WARN([Install shapelib on your system to eliminate this warning.       ])
+- AC_MSG_WARN([**************************************************************** ])  
+- LIBSHP="-Lshapelib -lshape"
+- CPPFLAGS="-I\$(top_srcdir)/src/shapelib $CPPFLAGS"
+- SUBSHP="shapelib" 
+- use_shapelib=yes
+- force_internal_shapelib=yes
+- AC_DEFINE(HAVE_DBFGETFIELDINDEX, , Define to 1 if your `shp' library has DBFGetFieldIndex. ) 
+- AC_DEFINE(HAVE_LIBSHP, , Define to 1 if you have the `shp' library (-lshp). )
+- AC_DEFINE(HAVE_SHAPEFIL_H, , Define to 1 if you have the `shapefil.h' header. )
+-
+- if  test  $use_proj = "yes" 
+- then
+-   CONTSHP="shpcentrd$(EXEEXT) shpproj$(EXEEXT) shpdata$(EXEEXT) shpwkb$(EXEEXT)"
+- fi
+-fi
+ AC_SUBST(SUBSHP)
+ AC_SUBST(CONTSHP)
+ AC_SUBST(LIBSHP)
