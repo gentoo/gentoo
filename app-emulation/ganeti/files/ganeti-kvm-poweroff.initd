@@ -35,7 +35,7 @@ stop() {
             break
         fi
 
-        echo -n "."
+        printf "."
         for vm_monitor in $(find $CONTROL_PATH -type s -name '*.monitor') ; do
             if ! echo | socat -U UNIX:$vm_monitor STDIO > /dev/null 2>&1; then
                 rm -rf $vm_monitor
@@ -43,7 +43,7 @@ stop() {
         done
 
         sleep 5
-        let remaining-=5 1
+        remaining=$((remaining - 5))
     done
 
     if [ -n "$(find $CONTROL_PATH -type s -name '*.monitor')" ] ; then
