@@ -29,7 +29,6 @@ else
 	  "${WORKDIR}"/debian/patches/do-not-backup-export-dir.patch
 	  "${WORKDIR}"/debian/patches/Makefile.am-use-C.UTF-8
 	  "${WORKDIR}"/debian/patches/relax-deps
-	  "${WORKDIR}"/debian/patches/ghc-7.10-compatibility.patch
 	  "${WORKDIR}"/debian/patches/zlib-0.6-compatibility
 	  "${WORKDIR}"/debian/patches/fix_FTBFS_with_sphinx-1.3.5
 	  "${WORKDIR}"/debian/patches/fix_ftbfs_with_sphinx_1.4
@@ -205,6 +204,12 @@ pkg_setup () {
 
 src_prepare() {
 	local testfile
+	if has_version '>=dev-lang/ghc-7.10'; then
+		# Breaks the build on 7.8
+		PATCHES+=( 
+			"${WORKDIR}"/debian/patches/ghc-7.10-compatibility.patch 
+		)
+	fi
 	eapply "${PATCHES[@]}"
 	# Upstream commits:
 	# 4c3c2ca2a97a69c0287a3d23e064bc17978105eb
