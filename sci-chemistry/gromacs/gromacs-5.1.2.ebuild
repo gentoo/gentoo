@@ -145,14 +145,14 @@ src_configure() {
 
 	mycmakeargs_pre+=(
 		"${fft_opts[@]}"
-		$(cmake-utils_use X GMX_X11)
-		$(cmake-utils_use blas GMX_EXTERNAL_BLAS)
-		$(cmake-utils_use lapack GMX_EXTERNAL_LAPACK)
-		$(cmake-utils_use openmp GMX_OPENMP)
-		$(cmake-utils_use offensive GMX_COOL_QUOTES)
-		$(cmake-utils_use boost GMX_EXTERNAL_BOOST)
-		$(cmake-utils_use tng GMX_USE_TNG)
-		$(cmake-utils_use doc GMX_BUILD_MANUAL)
+		-DGMX_X11=$(usex X)
+		-DGMX_EXTERNAL_BLAS=$(usex blas)
+		-DGMX_EXTERNAL_LAPACK=$(usex lapack)
+		-DGMX_OPENMP=$(usex openmp)
+		-DGMX_COOL_QUOTES=$(usex offensive)
+		-DGMX_EXTERNAL_BOOST=$(usex boost)
+		-DGMX_USE_TNG=$(usex tng)
+		-DGMX_BUILD_MANUAL=$(usex doc)
 		-DGMX_DEFAULT_SUFFIX=off
 		-DGMX_SIMD="$acce"
 		-DGMX_LIB_INSTALL_DIR="$(get_libdir)"
@@ -178,7 +178,7 @@ src_configure() {
 		mycmakeargs=(
 			${mycmakeargs_pre[@]} ${p}
 			-DGMX_MPI=OFF
-			$(cmake-utils_use threads GMX_THREAD_MPI)
+			-DGMX_THREAD_MPI=$(usex threads)
 			"${cuda[@]}"
 			-DGMX_OPENMM=OFF
 			"$(use test && echo -DREGRESSIONTEST_PATH="${WORKDIR}/${P}_${x}/tests")"
