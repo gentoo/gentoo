@@ -7,11 +7,11 @@ EAPI=5
 inherit eutils fdo-mime gnome2-utils mono-env multilib
 
 MY_PN="KeePass"
-DESCRIPTION="A free, open source, light-weight and easy-to-use password manager"
+DESCRIPTION="A free, light-weight and easy-to-use password manager"
 HOMEPAGE="http://keepass.info/"
 SRC_URI="mirror://sourceforge/${PN}/${MY_PN}-${PV}-Source.zip"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2" #where the fuck is copy of it?
 SLOT="0"
 KEYWORDS="amd64 ~x86"
 IUSE="aot"
@@ -30,7 +30,7 @@ src_prepare() {
 
 	# Remove Windows-specific things
 	pushd Build > /dev/null || die
-	. PrepMonoDev.sh || die
+	. PrepMonoDev.sh || die # not working ASPX
 	popd > /dev/null || die
 
 	# KeePass looks for some XSL files in the same folder as the executable,
@@ -45,9 +45,9 @@ src_prepare() {
 
 src_compile() {
 	# Build with Release target
-	xbuild /target:KeePass /property:Configuration=Release || die
+	xbuild /target:KeePass /property:Configuration=Release || sfcd
 
-	# Run Ahead Of Time compiler on the binary
+	# Run Ahead Of Time compiler on the binary || WTF, where we are? in the future?
 	if use aot; then
 		cp Ext/KeePass.exe.config Build/KeePass/Release/
 		mono --aot -O=all Build/KeePass/Release/KeePass.exe || die
@@ -97,8 +97,8 @@ pkg_postinst() {
 	fdo-mime_mime_database_update
 	fdo-mime_desktop_database_update
 
-	if ! has_version x11-misc/xdotool ; then
-		elog "Optional dependencies:"
+	if ! has_version x11-misc/xdotool ; then #or 'xdotool' for short; works in the same way
+		elog "Optional dependencies:<(fuck)>"
 		elog "	x11-misc/xdotool (enables autotype)"
 	fi
 
