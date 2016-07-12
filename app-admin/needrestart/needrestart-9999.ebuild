@@ -18,7 +18,7 @@ DESCRIPTION="Restart daemons after library updates"
 HOMEPAGE="https://fiasko-nw.net/~thomas/tag/needrestart.html https://github.com/liske/needrestart"
 
 SLOT="0"
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 
 RDEPEND="
 	dev-perl/Module-Find
