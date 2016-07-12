@@ -6670,7 +6670,7 @@ dev-php/PEAR-HTML_TreeMenu 1.2.2: Provides an API to create a HTML tree
 dev-php/PEAR-HTTP 1.4.1-r2: Miscellaneous HTTP utilities
 dev-php/PEAR-HTTP_Client 1.2.1: Provides functionality to perform multiple HTTP requests and process their results
 dev-php/PEAR-HTTP_Download 1.1.4: Provides functionality to send HTTP downloads
-dev-php/PEAR-HTTP_Header 1.2.1-r1: Provides interface to handle and modify HTTP headers and status codes
+dev-php/PEAR-HTTP_Header 1.2.1-r1 1.2.1-r2: Handle and modify HTTP headers and status codes in PHP
 dev-php/PEAR-HTTP_Request 1.4.4: Provides an easy way to perform HTTP requests
 dev-php/PEAR-HTTP_Request2 2.0.0 2.1.1 2.2.1: Provides an easy way to perform HTTP requests
 dev-php/PEAR-HTTP_Session2 0.7.3-r1: Wraps PHP's session_* functions, providing extras like db storage for session data
@@ -6952,7 +6952,7 @@ dev-python/babelfish 0.5.5-r1 9999: Python library to work with countries and la
 dev-python/backports 1.0: Namespace for backported Python features
 dev-python/backports-abc 0.4: Backport of Python 3.5's 'collections.abc' module
 dev-python/backports-functools-lru-cache 1.2.1: Backport of functools.lru_cache from Python 3.3
-dev-python/backports-lzma 0.0.3: Backport of Python 3.3's lzma module for XZ/LZMA compressed files
+dev-python/backports-lzma 0.0.3 0.0.6: Backport of Python 3.3's lzma module for XZ/LZMA compressed files
 dev-python/backports-shutil_get_terminal_size 1.0.0-r1: A backport of the get_terminal_size function from Python 3.3's shutil
 dev-python/backports-ssl-match-hostname 3.4.0.2 3.5.0.1-r1: Backport of the ssl.match_hostname function
 dev-python/backports-unittest-mock 1.1.1: Backport of unittest.mock
@@ -17829,7 +17829,7 @@ www-client/phantomjs 1.9.8 2.0.0 2.0.0-r1: A headless WebKit scriptable with a J
 www-client/pybugz 0.12.1 9999: Command line interface to (Gentoo) Bugzilla
 www-client/qtweb 3.8.5_p108: Lightweight, fast, secure and portable browser for the Web
 www-client/qupzilla 1.8.9 2.0.0 2.0.1: A cross-platform web browser using QtWebEngine
-www-client/qutebrowser 0.4.1-r1 0.5.1 0.6.0 0.6.1 0.6.2 9999: A keyboard-driven, vim-like browser based on PyQt5 and QtWebKit
+www-client/qutebrowser 0.6.2 0.7.0 9999: A keyboard-driven, vim-like browser based on PyQt5 and QtWebKit
 www-client/rekonq 2.4.2-r1: A browser based on qtwebkit
 www-client/ripe-atlas-cousteau 1.0.6 1.0.7 1.2: A Python wrapper around the RIPE Atlas API
 www-client/seamonkey 2.39 2.40: Seamonkey Web Browser
